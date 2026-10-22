@@ -91,7 +91,7 @@ After authorizing API access:
 python campaigns.py inspect --config /private/path/operator.json --output /private/path/inventory.json
 python campaigns.py plan --config /private/path/operator.json --spec /private/path/search.json
 python campaigns.py apply-paused --config /private/path/operator.json --spec /private/path/search.json --output /private/path/receipt.json
-python campaigns.py report --config /private/path/operator.json --output /private/path/report.json
+python campaigns.py report --config /private/path/operator.json --since 2026-10-01 --until 2026-10-21 --output /private/path/report.json
 ```
 
 Online `plan` validates an atomic Google Ads mutation without creating resources. `apply-paused` repeats validation, creates a new campaign with paused ad groups and ads, then reads back delivery state, budget, network settings, bids, URLs, and copy. It resolves Arkansas's state target from Google's geo catalog, uses physical-presence targeting, and disables search partners and Display. Campaigns use manual CPC until conversion measurement and bidding strategy have been deliberately reviewed.
@@ -99,6 +99,14 @@ Online `plan` validates an atomic Google Ads mutation without creating resources
 Campaign names include a specification fingerprint. Repeating a specification reads and verifies the matching campaign without writing. A different revision under the same campaign slug is refused. Uncertain writes are not automatically retried; run inspection before another attempt. Concurrent applies for the same specification are unsupported: use one operator at a time. Google campaign names are not a uniqueness constraint.
 
 The readback does not certify platform approval, audience delivery, conversion tracking, or every criterion against later manual changes. Before activation, inspect all geographic, language, keyword, exclusion, budget, destination, and conversion settings in the platform. Reports contain platform-attributed conversions; these are not proof of paid or fulfilled EFA orders. Reconcile revenue with verified payment records and refunds.
+
+### Comparing campaign delivery with purchases
+
+Google `report` requires `--since` and `--until` as inclusive ISO dates spanning at most 93 days. It returns an object with account identity, USD currency, account time zone, date range, GAQL query and `rows`. Each row is one day/ad group under a campaign whose name starts `AMP | AR | `. Historical metrics include paused and removed groups/campaigns. Integer `cost_micros` strings preserve exact spend: divide by 1,000,000 for dollars. Read `rows` from the envelope; do not treat the output as an unscoped list of campaign totals.
+
+[Google segmentation](https://developers.google.com/google-ads/api/docs/reporting/segmentation) defines these daily rows. [Google conversion metrics](https://support.google.com/google-ads/answer/6270625?hl=en) use interaction dates and configured conversion windows. Meta requests seven-day click attribution and dates actions by conversion time. Both exports carry the advertiser time zone; AMP’s first-party cash evidence uses UTC. [Google date ranges](https://developers.google.com/google-ads/api/docs/query/date-ranges) use the serving account’s time zone. A shared calendar-date label is not necessarily the same time interval. Preserve the metadata, align interval boundaries, and account for conversion lag before comparing spend, assessments and paid orders.
+
+`amp/scripts/report-campaign.ts` reports first-party activity, assessment events and verified EFA cash separately. Creative breakdowns are subsets of totals; do not add them again. Platform conversions are not verified settlements, and net cash is not profit. Empty platform rows do not certify healthy tracking. These read-only reports do not require enabling customer-data uploads, enhanced conversions or learner-event sharing.
 
 ## Google Ads Scripts route
 
@@ -158,7 +166,7 @@ For a video still processing, rerun with the same journal after processing compl
 
 Readback checks delivery status, budget, destination, identity, copy and targeting. Unexpected targeting fields stop the command for review. Platform review, billing, dataset integration, actual conversion delivery and visual previews remain separate launch checks. Tests cover request construction, pagination, interrupted writes, video processing, duplicate prevention, privacy and paused readback using synthetic responses; they do not certify live Meta access.
 
-`report` reads only campaigns whose names begin `AMP | AR | ` and exports daily ad/placement spend, impressions, reach, clicks and attributed actions/values for an inclusive date range of at most 93 days. It requests seven-day click attribution and dates actions by conversion time. Preserve the query metadata with the rows. Recent attribution can change, reach cannot be summed across rows, and platform purchase values must be reconciled with verified settlements and refunds. No parent identifiers or learner data are requested.
+`report` reads only campaigns whose names begin `AMP | AR | ` and exports daily ad/placement spend, impressions, reach, clicks and attributed actions/values for an inclusive date range of at most 93 days. It requests seven-day click attribution and dates actions by conversion time. Preserve the query, inclusive date range and advertiser time zone with the rows. Recent attribution can change, reach cannot be summed across rows, and platform purchase values must be reconciled with verified settlements and refunds. No parent identifiers or learner data are requested.
 
 Meta specifications generate `utm_content` from the campaign slug. AMP's first-party creative breakdown accepts only the fixed labels in `amp/src/analytics/campaign.ts`; the public landing client and database CHECK constraint use the same allowlist. A new creative requires an additive migration extending that constraint, followed by compatible API and client allowlists. Apply the migration before accepting the new label; an unsupported database value rolls back its transaction, including a funded purchase. Do not edit an already applied migration or remove labels referenced by retained financial records. Unrecognized labels contribute only to coarse counts when the client discards them. This attribution is distinct from Meta's own ad IDs and reporting.
 

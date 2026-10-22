@@ -14,6 +14,7 @@ import re
 import stat
 import sys
 from datetime import date
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from pathlib import Path
 from urllib.parse import urlencode, urlparse
 
@@ -154,6 +155,13 @@ def report(graph, c, inventory, since, until):
     start, end = date.fromisoformat(since), date.fromisoformat(until)
     if start > end or (end - start).days > 92 or start.isoformat() != since or end.isoformat() != until:
         raise ValueError("Use an inclusive ISO date range of at most 93 days")
+    timezone = inventory.get("account", {}).get("timezone_name")
+    try:
+        if not isinstance(timezone, str) or not timezone:
+            raise ValueError("Missing account time zone")
+        ZoneInfo(timezone)
+    except (ValueError, ZoneInfoNotFoundError):
+        raise ValueError("Report requires a valid account time zone") from None
     campaigns = [identifier(row["id"]) for row in inventory["campaigns"] if row["name"].startswith("AMP | AR | ")]
     if len(campaigns) > 100:
         raise ValueError("Report campaign limit exceeded; narrow the inventory before reporting")
@@ -167,8 +175,9 @@ def report(graph, c, inventory, since, until):
     }
     return {
         "api_version": VERSION, "account_id": c["account_id"], "currency": "USD",
+        "timezone": timezone, "date_range": {"since": since, "until": until, "inclusive": True},
         "query": query, "rows": graph.all("act_" + c["account_id"] + "/insights", query) if campaigns else [],
-        "interpretation": "Platform attribution, not verified EFA settlement. Reach is not additive across rows. Incomplete recent attribution can change.",
+        "interpretation": "Platform attribution, not verified EFA settlement. Dates use the advertiser time zone; AMP cash evidence uses UTC. Align time boundaries before comparing periods. Reach is not additive across rows. Incomplete recent attribution can change.",
     }
 
 

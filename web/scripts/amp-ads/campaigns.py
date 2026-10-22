@@ -10,6 +10,8 @@ import json
 import os
 import re
 import sys
+from datetime import date
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -101,6 +103,66 @@ def rows(client, cid, query):
     return list(
         client.get_service("GoogleAdsService").search(customer_id=cid, query=query)
     )
+
+
+def report_dates(since, until):
+    try:
+        start, end = date.fromisoformat(since), date.fromisoformat(until)
+    except (TypeError, ValueError):
+        raise ValueError("Use --since and --until as ISO dates YYYY-MM-DD") from None
+    if start.isoformat() != since or end.isoformat() != until or start > end or (end - start).days > 92:
+        raise ValueError("Use an inclusive ISO date range of at most 93 days")
+    return {"since": since, "until": until, "inclusive": True}
+
+
+def report(client, cid, since, until):
+    window = report_dates(since, until)
+    account = rows(client, cid, "SELECT customer.id,customer.currency_code,customer.time_zone FROM customer")
+    if len(account) != 1 or str(account[0].customer.id) != cid or account[0].customer.currency_code != "USD":
+        raise ValueError("Report account identity or currency mismatch")
+    timezone = account[0].customer.time_zone
+    try:
+        if not timezone:
+            raise ValueError("Missing account time zone")
+        ZoneInfo(timezone)
+    except (ValueError, ZoneInfoNotFoundError):
+        raise ValueError("Report requires a valid account time zone") from None
+    query = (
+        "SELECT campaign.id,campaign.name,campaign.status,ad_group.id,ad_group.name,ad_group.status,"
+        "segments.date,metrics.impressions,metrics.clicks,metrics.cost_micros,"
+        "metrics.conversions,metrics.conversions_value FROM ad_group "
+        f"WHERE segments.date BETWEEN '{since}' AND '{until}' "
+        "AND campaign.name LIKE 'AMP | AR | %' "
+        "AND campaign.status IN ('ENABLED','PAUSED','REMOVED') "
+        "AND ad_group.status IN ('ENABLED','PAUSED','REMOVED') "
+        "ORDER BY segments.date,campaign.id,ad_group.id"
+    )
+    found = rows(client, cid, query)
+    for row in found:
+        if not row.campaign.name.startswith("AMP | AR | ") or not since <= row.segments.date <= until:
+            raise ValueError("Report row is outside the requested campaign/date scope")
+    return {
+        "api_version": "v26", "customer_id": cid, "currency": "USD", "timezone": timezone,
+        "date_range": window, "query": query,
+        "rows": [{
+            "campaign": {"id": str(row.campaign.id), "name": row.campaign.name, "status": row.campaign.status.name},
+            "ad_group": {"id": str(row.ad_group.id), "name": row.ad_group.name, "status": row.ad_group.status.name},
+            "segments": {"date": row.segments.date},
+            "metrics": {
+                "impressions": str(row.metrics.impressions), "clicks": str(row.metrics.clicks),
+                "cost_micros": str(row.metrics.cost_micros), "conversions": row.metrics.conversions,
+                "conversions_value": row.metrics.conversions_value,
+            },
+        } for row in found],
+        "interpretation": (
+            "Daily ad-group metrics for campaigns named AMP | AR | ..., in the advertiser time zone. "
+            "Cost is integer micros of USD (1,000,000 per dollar). Conversions/value are platform-attributed "
+            "using configured action windows and interaction dates, not verified EFA settlement or net cash. "
+            "Recent attribution can change. Empty rows do not prove working tracking. "
+            "AMP cash evidence uses UTC dates; align time boundaries before comparing periods. "
+            "Campaign/ad-group names are configuration labels, not verified ad-click attribution."
+        ),
+    }
 
 
 def campaign_name(spec):
@@ -411,7 +473,16 @@ def main():
     p.add_argument("--spec")
     p.add_argument("--config")
     p.add_argument("--output")
+    p.add_argument("--since")
+    p.add_argument("--until")
     a = p.parse_args()
+    if a.command == "report":
+        try:
+            report_dates(a.since, a.until)
+        except ValueError as error:
+            p.error(str(error))
+    elif a.since or a.until:
+        p.error("--since and --until are only valid for report")
     spec = validate(json.loads(Path(a.spec).read_text())) if a.spec else None
     if a.command in ["validate", "plan", "apply-paused", "export-script"] and spec is None:
         p.error("--spec required")
@@ -452,13 +523,11 @@ def main():
     client = client_from_config(config)
     cid = config["customer_id"]
     if a.command in ["inspect", "report"]:
-        query = (
-            "SELECT campaign.id,campaign.name,campaign.status FROM campaign WHERE campaign.status != REMOVED"
-            if a.command == "inspect"
-            else "SELECT campaign.name,metrics.impressions,metrics.clicks,metrics.cost_micros,metrics.conversions,metrics.conversions_value FROM campaign WHERE segments.date DURING LAST_30_DAYS"
-        )
-        found = rows(client, cid, query)
-        data = [type(x).to_dict(x) for x in found]
+        if a.command == "report":
+            data = report(client, cid, a.since, a.until)
+        else:
+            found = rows(client, cid, "SELECT campaign.id,campaign.name,campaign.status FROM campaign WHERE campaign.status != REMOVED")
+            data = [type(x).to_dict(x) for x in found]
         if a.output:
             Path(a.output).write_text(json.dumps(data, indent=2))
         else:
