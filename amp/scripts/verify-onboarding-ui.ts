@@ -1,3 +1,4 @@
+import { META_PURCHASE_MEASUREMENT_NOTICE } from "../src/advertising/permission-contracts";
 import AxeBuilder from "@axe-core/playwright";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -78,6 +79,9 @@ type State = {
   /** Polls before a processing purchase is verified as paid. */
   settleAfter: number;
   polls: number;
+  metaSharing: boolean;
+  metaContexts: unknown[];
+  metaContextHold?: Promise<void>;
 };
 function me(state: State) {
   const learners = state.learners.map((l) => ({
@@ -104,6 +108,19 @@ function me(state: State) {
     },
     learners,
     family: {
+      ...(state.metaSharing
+        ? {
+            metaPurchaseMeasurement: {
+              available: true,
+              eligible: true,
+              status: "active",
+              revision: "ef7c2ca3-05fc-4dd1-9d54-13296c49b95c",
+              noticeVersion: META_PURCHASE_MEASUREMENT_NOTICE.version,
+              grantedAt: "2026-01-01T00:00:00.000Z",
+              expiresAt: "2099-01-01T00:00:00.000Z",
+            },
+          }
+        : {}),
       consent: {
         status: state.consent ? "active" : "not-recorded",
         policyVersion: null,
@@ -151,6 +168,8 @@ function fresh(): State {
     claims: [],
     settleAfter: 2,
     polls: 0,
+    metaSharing: false,
+    metaContexts: [],
   };
 }
 function purchase(phase: string, url: string | null = null) {
@@ -175,6 +194,19 @@ async function serve(page: Page, state: State, faults: string[]) {
   await page.route("**/api/v1/**", async (route) => {
     const req = route.request(),
       path = new URL(req.url()).pathname.replace("/api/v1", "");
+    if (path === "/advertising/meta/purchase-context") {
+      assert.equal(req.method(), "POST");
+      assert.equal(state.enrollment.purchase?.phase, "paid");
+      assert.equal(state.metaSharing, true);
+      assert.deepEqual(req.postDataJSON(), { checkoutId: purchaseId });
+      assert.equal(
+        req.headers().referer,
+        `${origin}/start/purchase?billing=processing&purchase=${purchaseId}`,
+      );
+      state.metaContexts.push(req.postDataJSON());
+      await state.metaContextHold;
+      return route.fulfill({ json: { recorded: true } });
+    }
     if (path === "/me") return route.fulfill({ json: me(state) });
     if (path === "/billing/offer")
       return route.fulfill({
@@ -330,6 +362,7 @@ const shift = (page: Page) =>
 const viewports = [
   [320, 568],
   [390, 844],
+  [768, 1024],
   [844, 390],
   [1280, 800],
 ] as const;
@@ -543,12 +576,28 @@ try {
         purchase: purchase("processing"),
       };
       state.settleAfter = 2;
+      state.metaSharing = true;
+      let releaseContext!: () => void;
+      state.metaContextHold = new Promise<void>((resolve) => {
+        releaseContext = resolve;
+      });
+      const contextSent = page.waitForRequest((request) =>
+        request.url().endsWith("/advertising/meta/purchase-context"),
+      );
+      const contextRecorded = page.waitForResponse((response) =>
+        response.url().endsWith("/advertising/meta/purchase-context"),
+      );
       await page.goto(
         `${origin}/start/purchase?billing=processing&purchase=${purchaseId}`,
       );
       await page
         .getByRole("heading", { name: "Confirming your payment" })
         .waitFor();
+      assert.equal(
+        state.metaContexts.length,
+        0,
+        "processing is not a verified purchase",
+      );
       const returnCard = page.locator("main section").first(),
         processing = await box(returnCard);
       await fits(page, `${tag} processing`);
@@ -568,10 +617,14 @@ try {
         shiftBefore,
         `${tag}: no layout shift between phases`,
       );
+      await contextSent;
       await fits(page, `${tag} paid`);
       await page.screenshot({ path: `${shots}/paid-${tag}.png` });
       await page.getByRole("link", { name: "Continue", exact: true }).click();
       await page.waitForURL("**/start/name");
+      releaseContext();
+      await contextRecorded;
+      assert.deepEqual(state.metaContexts, [{ checkoutId: purchaseId }]);
       await page.getByLabel("Learner name").fill("Avery");
       await page.getByRole("button", { name: "Continue", exact: true }).click();
       await page.waitForURL("**/start/birth-year");
@@ -599,6 +652,11 @@ try {
         `${tag}: one learner, created after payment`,
       );
       assert.equal(state.learners[0]!.birthYear, 2016);
+      assert.equal(
+        state.metaContexts.length,
+        1,
+        "no context from learner setup or practice",
+      );
       assert.deepEqual(
         faults,
         [],
@@ -859,7 +917,7 @@ try {
       await context.close();
     }
   console.log(
-    "Onboarding: confirm email → plan → acknowledgement → Stripe redirect; return processing → paid → learner → birth year → claim → practice; every return phase, claim retry and unavailable enrollment at 320x568/390x844/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
+    "Onboarding: confirm email → plan → acknowledgement → Stripe redirect; return processing → paid → learner → birth year → claim → practice; every return phase, claim retry and unavailable enrollment at 320x568/390x844/768x1024/1280x800 (strict) and 844x390 (phone-landscape smoke) × light/dark; no overflow, stable card geometry, zero layout shift between phases.",
   );
 } finally {
   await browser.close();

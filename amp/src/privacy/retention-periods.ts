@@ -30,6 +30,8 @@ export const RETENTION = {
   problemFlagDays: 365,
   /** Adult purchase measurement preferences after expiry or withdrawal. */
   advertisingPermissionDays: 90,
+  /** Meta browser confirmation context: at most seven days after payment. */
+  advertisingContextDays: 7,
   /** Purchase-measurement preparation records, from the payment evidence date. */
   advertisingPaymentDays: 90,
   /** Privacy activity log. */
