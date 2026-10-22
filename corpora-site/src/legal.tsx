@@ -189,7 +189,9 @@ export function Legal({
             Do Not Track received on an authenticated AMP request also withdraw
             the preference. AMP retains the current preference for its duration
             and up to 90 days after withdrawal or expiry. It appears in the family
-            export. Google handles received information under its{" "}
+            export. Local purchase-measurement preparation records are retained
+            for up to 90 days after the purchase and included in the family export.
+            Withdrawal cancels unsent preparations. Google handles received information under its{" "}
             <a href="https://policies.google.com/privacy">privacy policy</a>.
           </p>
           <h2>Free practice</h2>

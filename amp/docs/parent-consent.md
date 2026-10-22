@@ -83,6 +83,7 @@ Withdrawal and account-wide learning deletion cancel pending enrollment within t
 | Orders, payments, refunds, licences, entitlements, webhook receipts, linked funded invoices (including a required student billing name) and their learner references | 7 years after the later of the last transaction and the end of the licence period bought. A checkout that is still the evidence of a purchase consent first follows the consent-evidence period below. |
 | Offline packs and offline answers | 30 days after the pack expires |
 | "Report a problem" reports | Notes: 90 days after sending (`problemFlagNoteDays`). Reports: 365 days (`problemFlagDays`). Deleting a learner's learning data, by a parent or by retention, unlinks their reports and erases the notes first |
+| Local purchase-measurement preparation records | 90 days after the payment evidence date (`advertisingPaymentDays`); withdrawal cancels unsent records |
 | Privacy activity log | 90 days |
 | Consent contact and evidence | Uncompleted requests: the policy's `pendingContactDays` (2–14; 7 in the reviewed policy). Completed evidence: `withdrawnEvidenceDays` (1–730; 180) after withdrawal or policy replacement, then a do-not-collect flag. |
 
@@ -119,3 +120,5 @@ Policy replacement or expiry before initial reconciliation rejects present colle
 ## Adult purchase measurement preference
 
 The optional Google purchase-sharing preference in Family privacy controls is separate from this learning-consent workflow. It covers only a confirmed adult purchaser's email and minimal purchase fields, requires an explicit adult/own-email attestation, and does not authorize disclosure of child information or make email-plus eligible for otherwise unsupported disclosures. Learning-consent withdrawal and learning-data deletion also withdraw this preference. Its current record is retained for its duration (up to 365 days) and 90 days after withdrawal or expiry; the email binding digest is removed on withdrawal. See [purchase measurement](google-purchase-measurement.md) for the transport boundary and outstanding payment/delivery integration.
+
+Local purchase-measurement preparations retain the financial source reference, adult account link, random export reference, destination, value/date and permission revision. They contain no email, learner details or learning events. Withdrawal cancels unsent preparations; cancelled entries cannot be restored by a later grant. The privacy worker deletes them 90 days after the payment evidence date, and family exports include their status and purchase/permission dates without internal routing identifiers.

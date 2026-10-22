@@ -74,7 +74,9 @@ export async function purchaseMeasurementView(
     eligible: !!email,
     status,
     revision: row?.revision ?? null,
-    noticeVersion: PURCHASE_MEASUREMENT_NOTICE.version,
+    // Shipped v1 browsers require this literal to parse the whole /me snapshot.
+    noticeVersion: "google-adult-purchase-v1",
+    currentNoticeVersion: PURCHASE_MEASUREMENT_NOTICE.version,
     grantedAt: row?.granted_at?.toISOString() ?? null,
     expiresAt: row?.expires_at?.toISOString() ?? null,
   };
@@ -87,6 +89,17 @@ export async function revokeAdvertisingPermission(
   account: string,
 ) {
   if (!(await installed(client))) return;
+  if (
+    (
+      await client.query(
+        "SELECT to_regclass('amp_google_purchase_queue') AS relation",
+      )
+    ).rows[0]?.relation
+  )
+    await client.query(
+      "UPDATE amp_google_purchase_queue SET state='cancelled',cancellation_reason='withdrawn',hold_reason=NULL,updated_at=clock_timestamp() WHERE account_id=$1 AND state IN ('ready','held')",
+      [account],
+    );
   await client.query(
     `INSERT INTO amp_advertising_permissions(account_id,revision,notice_version,adult_attested,withdrawn_at)
     VALUES($1,$2,$3,false,clock_timestamp()) ON CONFLICT(account_id) DO UPDATE SET withdrawn_at=clock_timestamp(),email_digest=NULL,revision=$2 WHERE amp_advertising_permissions.withdrawn_at IS NULL`,

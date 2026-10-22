@@ -106,6 +106,30 @@ try {
         name: "Allow purchase measurement",
         exact: true,
       });
+      if (width === 320 && theme === "light") {
+        // New bundle + old pod/future notice: account view survives, opt-in waits.
+        for (const version of [undefined, "future-notice"]) {
+          await page.route("**/api/v1/me", async (route) => {
+            const response = await route.fetch();
+            const body = await response.json();
+            if (version)
+              body.family.purchaseMeasurement.currentNoticeVersion = version;
+            else delete body.family.purchaseMeasurement.currentNoticeVersion;
+            await route.fulfill({ response, json: body });
+          });
+          await page.reload();
+          await page
+            .getByText(
+              "Reload to review the current purchase-sharing notice. You can always withdraw permission.",
+              { exact: true },
+            )
+            .waitFor();
+          assert.equal(await save.count(), 0);
+          await page.unroute("**/api/v1/me");
+        }
+        await page.reload();
+        await control.waitFor();
+      }
       assert.equal(await control.getAttribute("aria-checked"), "false");
       assert.ok(await save.isDisabled());
       await control.click();
