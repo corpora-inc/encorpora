@@ -1,21 +1,23 @@
 // Aggregate campaign counts, never identity or learning data.
 (() => {
   const script = document.querySelector("script[data-campaign-endpoint]");
-  const root = document.querySelector('[data-campaign-program="arkansas-efa"]');
-  if (!script || !root || navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") return;
+  const root = document.querySelector('[data-campaign-program]');
+  const programs = {"arkansas-efa": {state:"AR",campaign:"ar-efa-launch"}, "arizona-esa": {state:"AZ",campaign:"az-esa-launch"}};
+  const program = programs[root?.dataset.campaignProgram];
+  if (!script || !root || !program || navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") return;
   const query = new URLSearchParams(location.search);
   const pick = (key, allowed, fallback) => {
     const value = query.get(key);
     return allowed.includes(value) ? value : fallback;
   };
   const fields = {
-    state: "AR", program: "arkansas-efa",
-    campaign: pick("utm_campaign", ["ar-efa-launch"], "none"),
+    state: program.state, program: root.dataset.campaignProgram,
+    campaign: pick("utm_campaign", [program.campaign], "none"),
     source: pick("utm_source", ["facebook", "instagram", "google", "email", "youtube"], "direct"),
     medium: pick("utm_medium", ["paid-social", "cpc", "email", "organic-social"], "none"),
   };
   const creative = pick("utm_content", ["az-esa-math","az-homeschool-math","shared-hook-ampd-portrait-v1","shared-hook-ampd-square-v1","shared-hook-next-portrait-v1","shared-hook-next-square-v1","az-hook-ampd-portrait-v1","az-hook-ampd-square-v1","az-hook-next-portrait-v1","az-hook-next-square-v1","efa-math", "homeschool-math", "efa-product-v1", "efa-facebook-feed-v1", "efa-facebook-vertical-v1", "efa-instagram-vertical-v1", "hook-ampd-efa-v2", "hook-ampd-assessment-v2", "hook-next-efa-v2", "hook-next-assessment-v2", "hook-path-efa-v2", "hook-path-assessment-v2", "hook-ampd-up-efa-v2", "hook-ampd-up-assessment-v2", "hook-plug-efa-v2", "hook-plug-assessment-v2"], undefined);
-  if (fields.campaign === "ar-efa-launch" && creative) fields.creative = creative;
+  if (fields.campaign !== "none" && creative) fields.creative = creative;
   const send = action => {
     try {
       void fetch(script.dataset.campaignEndpoint, {
