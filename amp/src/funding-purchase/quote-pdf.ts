@@ -5,7 +5,12 @@ import {
   type PDFFont,
   type PDFPage,
 } from "pdf-lib";
-import type { FundingOffer, FundingRequest } from "./contracts.js";
+import {
+  FundingPurchaseError,
+  studentBillingNameSchema,
+  type FundingOffer,
+  type FundingRequest,
+} from "./contracts.js";
 
 function displayDate(iso: string): string {
   return (
@@ -48,15 +53,41 @@ export async function validateQuoteFonts(
     }
 }
 
+/** Reject unsupported text before retaining it; never alter a student's name. */
+export async function validateInvoiceStudentName(value: string): Promise<void> {
+  studentBillingNameSchema.parse(value);
+  const document = await PDFDocument.create();
+  const font = await document.embedFont(StandardFonts.Helvetica);
+  try {
+    font.encodeText(value);
+  } catch {
+    throw new FundingPurchaseError(400, "invoice_name_font_unsupported");
+  }
+}
+
 export async function renderFundingQuotePdf(
   request: FundingRequest,
 ): Promise<Uint8Array> {
   const o = request.offer;
+  const invoice = o.documentPolicy === "named-student-invoice";
+  if (invoice) {
+    if (!request.studentBillingName)
+      throw new FundingPurchaseError(400, "invoice_student_name_required");
+    await validateInvoiceStudentName(request.studentBillingName);
+  }
   await validateQuoteFonts([o]);
   const document = await PDFDocument.create();
-  document.setTitle("Education purchase quote — unpaid");
+  document.setTitle(
+    invoice
+      ? "Education purchase invoice"
+      : "Education purchase quote — unpaid",
+  );
   document.setAuthor(o.merchant.legalName);
-  document.setSubject("Purchase consideration only; not an invoice or receipt");
+  document.setSubject(
+    invoice
+      ? "Program payment request; not a receipt or confirmation of payment"
+      : "Purchase consideration only; not an invoice or receipt",
+  );
   const regular = await document.embedFont(StandardFonts.Helvetica);
   const bold = await document.embedFont(StandardFonts.HelveticaBold);
   const ink = rgb(0.08, 0.22, 0.2),
@@ -126,14 +157,23 @@ export async function renderFundingQuotePdf(
     text(label, { strong: true, gap: 2 });
     text(value);
   }
-  text("Education purchase quote", { size: 25, strong: true, gap: 10 });
-  text("UNPAID — no access granted", { size: 13, strong: true });
+  text(invoice ? "Education purchase invoice" : "Education purchase quote", {
+    size: 25,
+    strong: true,
+    gap: 10,
+  });
+  text(invoice ? "For program payment request" : "UNPAID — no access granted", {
+    size: 13,
+    strong: true,
+  });
   text(
-    "For purchase consideration only. This is not an invoice, receipt, funding approval or promise of reimbursement.",
+    invoice
+      ? "This invoice is not a receipt or confirmation of payment, program approval or learning access. Check the transaction status before submitting a payment request."
+      : "For purchase consideration only. This is not an invoice, receipt, funding approval or promise of reimbursement.",
   );
-  field("Quote reference", request.id);
+  field(invoice ? "Invoice number" : "Quote reference", request.id);
   field(
-    "Prepared / valid until",
+    invoice ? "Issued / submit by" : "Prepared / valid until",
     `${displayDate(request.createdAt)} / ${displayDate(request.expiresAt)}`,
   );
   field(
@@ -141,7 +181,10 @@ export async function renderFundingQuotePdf(
     `${o.merchant.legalName}\n${o.merchant.postalAddress}\n${o.merchant.supportEmail}`,
   );
   field("Program", `${o.programName} · ${o.programYear}`);
-  field("Student reference", request.learnerId);
+  field(
+    invoice ? "Student name" : "Student reference",
+    invoice ? request.studentBillingName! : request.learnerId,
+  );
   field("Product", `${o.productTitle}\nSKU: ${o.sku}\n${o.productDescription}`);
   field(
     "Access term",
@@ -164,12 +207,14 @@ export async function renderFundingQuotePdf(
   });
   field("Next step", o.instructions);
   text(
-    "Complete the program's required process. Reporting submission here does not verify approval or payment. Do not send payment using this quote.",
+    invoice
+      ? "Submit this invoice through the program's approved payment route only once. Do not also pay by card. Reporting submission in AMP does not verify approval or payment."
+      : "Complete the program's required process. Reporting submission here does not verify approval or payment. Do not send payment using this quote.",
   );
   const pages = document.getPages();
   pages.forEach((p, index) =>
     p.drawText(
-      `Unpaid quote | ${request.id} | ${index + 1} / ${pages.length}`,
+      `${invoice ? "Invoice" : "Unpaid quote"} | ${request.id} | ${index + 1} / ${pages.length}`,
       { x: margin, y: 32, font: regular, size: 9, color: muted },
     ),
   );

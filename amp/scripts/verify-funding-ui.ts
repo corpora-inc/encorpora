@@ -18,7 +18,7 @@ await writeFile(
 );
 await writeFile(
   new URL("entry.tsx", directory),
-  `import React from 'react';import{createRoot}from'react-dom/client';import{FundingPurchaseCenter}from'../../src/web/FundingPurchaseCenter';import'../../src/web/style.css';const root=createRoot(document.getElementById('root')!);const learners=[{id:'10720fef-40bf-4e75-8982-208b5e05f84a',name:'Sample learner'}];(window as any).fundingRender=(identity='parent-a',token='token-a',consentActive=true)=>root.render(<FundingPurchaseCenter identity={identity} token={token} consentActive={consentActive} learners={learners} onClose={()=>{}}/>);(window as any).fundingRender();`,
+  `import React from 'react';import{createRoot}from'react-dom/client';import{FundingPurchaseCenter}from'../../src/web/FundingPurchaseCenter';import'../../src/web/app/styles';const root=createRoot(document.getElementById('root')!);const learners=[{id:'10720fef-40bf-4e75-8982-208b5e05f84a',name:'Sample learner'}];(window as any).fundingRender=(identity='parent-a',token='token-a',consentActive=true)=>root.render(<FundingPurchaseCenter identity={identity} token={token} consentActive={consentActive} learners={learners} onClose={()=>{}}/>);(window as any).fundingRender();`,
 );
 const vite = await createServer({
   configFile: new URL("../vite.config.ts", import.meta.url).pathname,
@@ -206,7 +206,7 @@ try {
     offerWithdrawn = false;
     record!.expiresAt = "2020-01-01T00:00:00.000Z";
     await page.getByRole("button", { name: "Refresh status" }).click();
-    await page.getByText("Quote expired", { exact: true }).waitFor();
+    await page.getByText("Request expired", { exact: true }).waitFor();
     await page.screenshot({
       path: new URL(`expired-${viewport.width}.png`, directory).pathname,
     });

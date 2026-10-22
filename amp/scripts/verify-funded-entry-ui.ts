@@ -340,7 +340,7 @@ try {
       await page.getByRole("alert").waitFor();
       await capture(page, `failed-request-${width}-${theme}`);
       await page
-        .getByRole("button", { name: "Refresh status", exact: true })
+        .getByRole("button", { name: "Dismiss message", exact: true })
         .click();
       await page.getByRole("button", { name: "Prepare unpaid quote" }).click();
       await page

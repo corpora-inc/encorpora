@@ -15,6 +15,7 @@ import {
   type FundingOffer,
   type FundingRequest,
 } from "./contracts.js";
+import { validateInvoiceStudentName } from "./quote-pdf.js";
 const iso = (value: Date | string) => new Date(value).toISOString();
 export function fundingRequestRow(row: Record<string, any>): FundingRequest {
   return {
@@ -27,6 +28,9 @@ export function fundingRequestRow(row: Record<string, any>): FundingRequest {
     status: row.status,
     offer: row.offer_snapshot,
     orderId: row.order_id,
+    ...(row.student_billing_name
+      ? { studentBillingName: row.student_billing_name }
+      : {}),
   };
 }
 export class FundingPurchaseRepository {
@@ -90,7 +94,8 @@ export class FundingPurchaseRepository {
         if (
           request.learnerId !== data.learnerId ||
           request.offer.id !== data.offerId ||
-          request.offer.revision !== data.offerRevision
+          request.offer.revision !== data.offerRevision ||
+          request.studentBillingName !== data.studentBillingName
         )
           throw new FundingPurchaseError(409, "idempotency_payload_mismatch");
         return request;
@@ -99,6 +104,16 @@ export class FundingPurchaseRepository {
         (o) => o.id === data.offerId && o.revision === data.offerRevision,
       );
       if (!offer) throw new FundingPurchaseError(409, "offer_unavailable");
+      if (offer.documentPolicy === "named-student-invoice") {
+        if (!data.studentBillingName)
+          throw new FundingPurchaseError(400, "invoice_student_name_required");
+        await validateInvoiceStudentName(data.studentBillingName);
+      } else if (data.studentBillingName !== undefined) {
+        throw new FundingPurchaseError(
+          400,
+          "invoice_student_name_not_required",
+        );
+      }
       if (
         data.campaignAttribution &&
         (offer.programId !== "ar-efa" || offer.jurisdiction !== "AR")
@@ -108,7 +123,7 @@ export class FundingPurchaseRepository {
         Math.min(at.getTime() + 30 * 86400000, Date.parse(offer.validUntil)),
       );
       const result = await client.query(
-        "INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,offer_id,offer_revision,offer_snapshot,created_at,expires_at,campaign_attribution) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *",
+        "INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,offer_id,offer_revision,offer_snapshot,created_at,expires_at,campaign_attribution,student_billing_name) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *",
         [
           randomUUID(),
           account,
@@ -122,6 +137,7 @@ export class FundingPurchaseRepository {
           data.campaignAttribution
             ? JSON.stringify(data.campaignAttribution)
             : null,
+          data.studentBillingName ?? null,
         ],
       );
       if (data.campaignAttribution)

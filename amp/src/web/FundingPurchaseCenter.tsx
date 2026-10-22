@@ -3,8 +3,10 @@ import {
   fundedAttribution,
   type CampaignSearch,
 } from "./lib/funded-entry";
-import { useLoggedError, requestMessage } from "./feedback";
+import { useLoggedError } from "./feedback";
 import { Select } from "./PremiumControls";
+import { TextField } from "./ui/TextField";
+import { Toast } from "./ui/Toast";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type {
   PublicFundingOffer,
@@ -31,14 +33,22 @@ const errors: Record<string, string> = {
   idempotency_payload_mismatch:
     "This request reference was used for different details. Select the offer again.",
   request_expired:
-    "This quote expired. Prepare a new request using the current offer.",
+    "This purchase request expired. Prepare a new request using the current offer.",
   request_cancelled: "This request was cancelled.",
   request_already_provisioned:
     "This request already has a verified order. Refresh to see its status.",
   learner_not_found: "This learner is no longer available in your account.",
   request_not_found: "This request is not available in your account.",
   quote_unavailable:
-    "This quote is no longer available. Refresh the request status.",
+    "This purchase document is no longer available. Refresh the request status.",
+  invoice_student_name_required:
+    "Enter the student's name as it appears in the funding program.",
+  invoice_student_name_not_required:
+    "This program uses a student reference. Select the offer again.",
+  invoice_name_font_unsupported:
+    "The PDF cannot represent a character in this name. Contact the merchant for an invoice; do not change the student's name.",
+  invalid_funding_request:
+    "Check the purchase details and student name, then try again.",
   sign_in_required: "Sign in again to manage education-fund purchases.",
 };
 const money = (minor: number) =>
@@ -57,10 +67,12 @@ function status(request: PublicFundingRequest) {
       : !request.offerAvailable
         ? "Offer no longer available"
         : request.expired
-          ? "Quote expired"
+          ? "Request expired"
           : request.status === "parent-reported-submitted"
             ? "Submission reported"
-            : "Quote prepared";
+            : request.offer.documentPolicy === "named-student-invoice"
+              ? "Invoice prepared"
+              : "Quote prepared";
 }
 export function FundingPurchaseCenter({
   token,
@@ -78,6 +90,7 @@ export function FundingPurchaseCenter({
   const [offerId, setOfferId] = useState(""),
     [learnerId, setLearnerId] = useState(""),
     [selected, setSelected] = useState<string | null>(null);
+  const [studentBillingName, setStudentBillingName] = useState("");
   const [programOpened, setProgramOpened] = useState<string | null>(null);
   const [busy, setBusy] = useState(false),
     [loading, setLoading] = useState(true),
@@ -94,6 +107,7 @@ export function FundingPurchaseCenter({
     offerId: string;
     revision: string;
     learnerId: string;
+    studentBillingName?: string;
     key: string;
   } | null>(null);
   tokenRef.current = token;
@@ -108,6 +122,7 @@ export function FundingPurchaseCenter({
     setProgramOpened(null);
     setOfferId("");
     setLearnerId("");
+    setStudentBillingName("");
     setError("");
     setLoading(true);
     setBusy(false);
@@ -204,6 +219,10 @@ export function FundingPurchaseCenter({
           : (learners[0]?.id ?? ""),
     );
   }, [learners, identity]);
+  useEffect(() => {
+    setStudentBillingName("");
+    retry.current = null;
+  }, [offerId, learnerId]);
   async function action(run: () => Promise<void>) {
     if (busyRef.current) return;
     const active = epoch.current;
@@ -229,17 +248,25 @@ export function FundingPurchaseCenter({
   async function prepare() {
     const active = epoch.current;
     if (!offer || !learnerId || !consentActive) return;
+    const billingName =
+      offer.documentPolicy === "named-student-invoice"
+        ? studentBillingName.trim()
+        : undefined;
+    if (offer.documentPolicy === "named-student-invoice" && !billingName)
+      return;
     const previous = retry.current;
     const key =
       previous?.offerId === offer.id &&
       previous.revision === offer.revision &&
-      previous.learnerId === learnerId
+      previous.learnerId === learnerId &&
+      previous.studentBillingName === billingName
         ? previous.key
         : crypto.randomUUID();
     retry.current = {
       offerId: offer.id,
       revision: offer.revision,
       learnerId,
+      studentBillingName: billingName,
       key,
     };
     const created = await json<PublicFundingRequest>("/requests", {
@@ -247,6 +274,7 @@ export function FundingPurchaseCenter({
       offerRevision: offer.revision,
       learnerId,
       idempotencyKey: key,
+      ...(billingName ? { studentBillingName: billingName } : {}),
       ...(offer.programId === "ar-efa" && offer.jurisdiction === "AR"
         ? { campaignAttribution: fundedAttribution(campaignSearch) }
         : {}),
@@ -260,14 +288,14 @@ export function FundingPurchaseCenter({
   async function quote(record: PublicFundingRequest) {
     const active = epoch.current;
     const result = await response(
-      `/requests/${encodeURIComponent(record.id)}/quote`,
+      `/requests/${encodeURIComponent(record.id)}/${record.offer.documentPolicy === "named-student-invoice" ? "invoice" : "quote"}`,
     );
     const blob = await result.blob();
     if (!current(active)) return;
     const url = URL.createObjectURL(blob),
       link = document.createElement("a");
     link.href = url;
-    link.download = `education-quote-${record.id}.pdf`;
+    link.download = `education-${record.offer.documentPolicy === "named-student-invoice" ? "invoice" : "quote"}-${record.id}.pdf`;
     link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
@@ -287,6 +315,10 @@ export function FundingPurchaseCenter({
     !request.orderId &&
     !request.expired &&
     request.status !== "cancelled";
+  const documentName =
+    request?.offer.documentPolicy === "named-student-invoice"
+      ? "invoice"
+      : "quote";
   return (
     <section className="funding-center" aria-label="Education fund purchases">
       <header className="funding-heading">
@@ -306,17 +338,7 @@ export function FundingPurchaseCenter({
         </button>
       </header>
       <div ref={body} className="funding-body">
-        {error && (
-          <div className="funding-error" role="alert">
-            <p>{error}</p>
-            {(!request ||
-              (usable && request.status !== "parent-reported-submitted")) && (
-              <button onClick={() => void action(refresh)} disabled={busy}>
-                Refresh status
-              </button>
-            )}
-          </div>
-        )}
+        <Toast message={error} onDismiss={() => setError("")} />
         {loading ? (
           <p role="status">Loading purchase options…</p>
         ) : selected && !request ? (
@@ -341,6 +363,11 @@ export function FundingPurchaseCenter({
                 · 12 months
               </span>
             </p>
+            {request.studentBillingName && (
+              <p className="funding-short-note">
+                Student on invoice: {request.studentBillingName}
+              </p>
+            )}
             {request.commerce ? (
               <>
                 <dl>
@@ -367,17 +394,20 @@ export function FundingPurchaseCenter({
             ) : (
               <>
                 <p className="funding-short-note">
-                  Unpaid quote · no learning access yet.
+                  Unpaid {documentName} · no learning access yet.
                 </p>
                 {!request.offerAvailable && (
                   <p className="funding-notice">
                     This offer changed or was withdrawn. Do not submit this
-                    quote. Return to purchase options; contact the merchant if
-                    you already submitted it.
+                    {documentName}. Return to purchase options; contact the
+                    merchant if you already submitted it.
                   </p>
                 )}
                 <details className="funding-details">
-                  <summary>Quote details and instructions</summary>
+                  <summary>
+                    {documentName === "invoice" ? "Invoice" : "Quote"} details
+                    and instructions
+                  </summary>
                   <p>{request.offer.instructions}</p>
                   <p>
                     Valid until{" "}
@@ -402,9 +432,9 @@ export function FundingPurchaseCenter({
                   {usable && (
                     <>
                       <p>
-                        Cancelling this quote here does not cancel an order you
-                        submitted to the program. Contact the program separately
-                        about its order.
+                        Cancelling this {documentName} here does not cancel an
+                        order you submitted to the program. Contact the program
+                        separately about its order.
                       </p>
                       <button
                         className="funding-secondary"
@@ -413,7 +443,7 @@ export function FundingPurchaseCenter({
                           void action(() => update(request, "cancelled"))
                         }
                       >
-                        Cancel quote here
+                        Cancel {documentName} here
                       </button>
                     </>
                   )}
@@ -466,6 +496,7 @@ export function FundingPurchaseCenter({
                   value={offerId}
                   onValueChange={(e) => {
                     setOfferId(e);
+                    setStudentBillingName("");
                     retry.current = null;
                   }}
                   disabled={busy}
@@ -483,6 +514,7 @@ export function FundingPurchaseCenter({
                   value={learnerId}
                   onValueChange={(e) => {
                     setLearnerId(e);
+                    setStudentBillingName("");
                     retry.current = null;
                   }}
                   disabled={busy || !learners.length}
@@ -493,6 +525,31 @@ export function FundingPurchaseCenter({
                     </option>
                   ))}
                 </Select>
+                {offer?.documentPolicy === "named-student-invoice" && (
+                  <>
+                    <TextField
+                      label="Student name on invoice"
+                      value={studentBillingName}
+                      onChange={(event) =>
+                        setStudentBillingName(event.target.value)
+                      }
+                      maxLength={180}
+                      autoComplete="off"
+                      spellCheck={false}
+                      disabled={busy || !consentActive}
+                      required
+                    />
+                    <p className="funding-name-note">
+                      Use the name in your program account. This name appears on
+                      the invoice and is kept with the financial record; it does
+                      not change the learner's profile. For help, contact{" "}
+                      <a href={`mailto:${offer.merchant.supportEmail}`}>
+                        {offer.merchant.supportEmail}
+                      </a>
+                      .
+                    </p>
+                  </>
+                )}
                 {!learners.length && (
                   <p>
                     Add an eligible learner in family settings before preparing
@@ -520,11 +577,16 @@ export function FundingPurchaseCenter({
                 )}
               </>
             ) : (
-              <p>
-                {program
-                  ? `No ${program.name} offers are available. Refresh to check again or return to purchase help.`
-                  : "No funded offers are available. Return to family access to see other purchase options."}
-              </p>
+              <div>
+                <p>
+                  {program
+                    ? `No ${program.name} offers are available. Refresh to check again or return to purchase help.`
+                    : "No funded offers are available. Return to family access to see other purchase options."}
+                </p>
+                <button disabled={busy} onClick={() => void action(refresh)}>
+                  Refresh purchase options
+                </button>
+              </div>
             )}
             {!!requests.length && (
               <section className="funding-history">
@@ -557,7 +619,7 @@ export function FundingPurchaseCenter({
                     disabled={busy}
                     onClick={() => void action(() => quote(request))}
                   >
-                    Download unpaid PDF quote
+                    Download unpaid PDF {documentName}
                   </button>
                   <a
                     className="funding-primary funding-program-link"
@@ -575,6 +637,15 @@ export function FundingPurchaseCenter({
                     <p className="funding-footer-status">
                       Submission reported · awaiting verification
                     </p>
+                  )}
+                  {request.orderId && documentName === "invoice" && (
+                    <button
+                      className="funding-secondary"
+                      disabled={busy}
+                      onClick={() => void action(() => quote(request))}
+                    >
+                      Download original PDF invoice
+                    </button>
                   )}
                   <button
                     className="funding-secondary"
@@ -595,11 +666,21 @@ export function FundingPurchaseCenter({
               )}
               <button
                 disabled={
-                  loading || busy || !offer || !learnerId || !consentActive
+                  loading ||
+                  busy ||
+                  !offer ||
+                  !learnerId ||
+                  !consentActive ||
+                  (offer.documentPolicy === "named-student-invoice" &&
+                    !studentBillingName.trim())
                 }
                 onClick={() => void action(prepare)}
               >
-                {busy ? "Preparing…" : "Prepare unpaid quote"}
+                {busy
+                  ? "Preparing…"
+                  : offer?.documentPolicy === "named-student-invoice"
+                    ? "Prepare unpaid invoice"
+                    : "Prepare unpaid quote"}
               </button>
             </>
           )}
