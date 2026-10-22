@@ -114,3 +114,8 @@ An existing paid entitlement can be assigned after fresh effective consent throu
 
 
 Policy replacement or expiry before initial reconciliation rejects present collection authority even when the charge settled under an earlier policy. That rejection stops future renewal and preserves the receipt for reviewed recovery or refund handling; a historical payment timestamp cannot enable collection under an invalidated notice. Before executing a queued cancellation, the worker rechecks that no paid entitlement has been established by recovery.
+
+
+## Adult purchase measurement preference
+
+The optional Google purchase-sharing preference in Family privacy controls is separate from this learning-consent workflow. It covers only a confirmed adult purchaser's email and minimal purchase fields, requires an explicit adult/own-email attestation, and does not authorize disclosure of child information or make email-plus eligible for otherwise unsupported disclosures. Learning-consent withdrawal and learning-data deletion also withdraw this preference. Its current record is retained for its duration (up to 365 days) and 90 days after withdrawal or expiry; the email binding digest is removed on withdrawal. See [purchase measurement](google-purchase-measurement.md) for the transport boundary and outstanding payment/delivery integration.

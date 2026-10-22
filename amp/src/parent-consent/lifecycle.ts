@@ -1,3 +1,4 @@
+import { revokeAdvertisingPermission } from "../advertising/permission.js";
 import type { Pool, PoolClient } from "pg";
 export async function cancelPendingConsent(
   client: PoolClient,
@@ -63,11 +64,14 @@ export async function purgeConsentRecords(pool: Pool): Promise<number> {
           "DELETE FROM amp_purchase_consents WHERE account_id=$1 AND ((consent_at IS NULL AND expires_at+((notice->>'pendingContactDays')::int * interval '1 day')<=now()) OR purge_after<=now()) RETURNING checkout_id",
           [account],
         );
-        if (removed.rowCount)
-          await client.query(
+        if (removed.rowCount) {
+          const withdrawn = await client.query(
             `UPDATE amp_parent_consents SET policy_version='consent-evidence-deleted',verification_method='parent-withdrawal',evidence_reference='preference-only',recorded_at=now(),withdrawn_at=COALESCE(withdrawn_at,now()) WHERE account_id=$1 AND verification_method='monetary-transaction' AND evidence_reference=ANY($2::text[])`,
             [account, removed.rows.map((row) => String(row.checkout_id))],
           );
+          if (withdrawn.rowCount)
+            await revokeAdvertisingPermission(client, account);
+        }
         purchaseRemoved += removed.rowCount ?? 0;
         await client.query("COMMIT");
       } catch (error) {
@@ -125,12 +129,15 @@ export async function purgeConsentRecords(pool: Pool): Promise<number> {
         "DELETE FROM amp_consent_requests WHERE account_id=$1 AND ((completed_at IS NULL AND expires_at<=now()) OR purge_after<=now()) RETURNING id",
         [account],
       );
-      if (result.rowCount)
-        await client.query(
+      if (result.rowCount) {
+        const withdrawn = await client.query(
           `UPDATE amp_parent_consents SET policy_version='consent-evidence-deleted',verification_method='parent-withdrawal',evidence_reference='preference-only',recorded_at=now(),withdrawn_at=COALESCE(withdrawn_at,now())
         WHERE account_id=$1 AND verification_method='internal-email-plus-v1' AND evidence_reference=ANY($2::text[])`,
           [account, result.rows.map((row) => String(row.id))],
         );
+        if (withdrawn.rowCount)
+          await revokeAdvertisingPermission(client, account);
+      }
       removed += result.rowCount ?? 0;
       await client.query("COMMIT");
     } catch (e) {

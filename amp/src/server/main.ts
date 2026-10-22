@@ -1,3 +1,5 @@
+import { withAdvertisingPrivacySignals } from "../advertising/permission.js";
+import { registerAdvertisingPermissionRoutes } from "../advertising/permission-routes.js";
 import { isIP } from "node:net";
 import {
   campaignOrigin,
@@ -67,7 +69,7 @@ const accounts =
   authMode === "accounts"
     ? await createAccounts(repository.pool, accountsConfiguration(process.env))
     : null;
-const authenticate = development
+const authenticateIdentity = development
   ? developmentAuth()
   : accounts
     ? accountsAuth(accounts)
@@ -80,6 +82,10 @@ const authenticate = development
             ? "token-use-access"
             : "rfc9068",
       });
+const authenticate = withAdvertisingPrivacySignals(
+  repository.pool,
+  authenticateIdentity,
+);
 const app = buildApp({
   repository,
   authenticate,
@@ -87,12 +93,16 @@ const app = buildApp({
   logger: true,
   trustedProxies: trustedProxies(process.env.AMP_TRUSTED_PROXIES),
 });
-if (accounts) await registerAccountRoutes(app, accounts);
+if (accounts) await registerAccountRoutes(app, accounts, authenticate);
 // Without AMP accounts, the browser uses the development or OIDC flow.
 else
   app.get("/api/v1/auth-config", async () => ({
     mode: development ? "development" : "oidc",
   }));
+await registerAdvertisingPermissionRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+});
 const billingConfig = stripeConfig(process.env);
 await registerFamilyRoutes(app, {
   pool: repository.pool,
