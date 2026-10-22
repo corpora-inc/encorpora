@@ -340,48 +340,56 @@ test(
       assert.equal(rt.calls.length, 3);
     }),
 );
-test(
-  "EFA settlement and full refund use trusted ledger facts and the original reference",
-  enabled,
-  () =>
-    fixture(async (pool) => {
-      const p = await esa(pool);
-      const q = await queueGooglePayment(
-        pool,
-        destination,
-        sources,
-        p.reference,
-      );
-      assert.ok("transactionId" in q);
-      const rt = runtime();
-      assert.equal(
-        await deliverGooglePayment(pool, config, q.transactionId, rt),
-        "accepted",
-      );
-      await due(pool);
-      await diagnoseGooglePayment(
-        pool,
-        config,
-        runtime(async () => status()),
-      );
-      await applyCommerceEvent(pool, {
-        ...p.base,
-        id: randomUUID(),
-        type: "refund.completed",
-        occurredAt: new Date().toISOString(),
-        amountMinor: 49900,
-        currency: "USD",
-        evidence: "synthetic completed refund",
-      });
-      await queueGooglePayment(pool, destination, sources, p.reference);
-      assert.equal(
-        await deliverGooglePayment(pool, config, q.transactionId, rt),
-        "accepted",
-      );
-      assert.equal(rt.calls[1].body.events[0].conversionValue, 0);
-      assert.equal(rt.calls[1].body.events[0].transactionId, q.transactionId);
-    }),
-);
+for (const kind of ["arkansas-efa", "arizona-esa"] as const)
+  test(
+    `${kind} settlement and full refund use trusted ledger facts and the original reference`,
+    enabled,
+    () =>
+      fixture(async (pool) => {
+        const p = await esa(pool, { kind });
+        const q = await queueGooglePayment(
+          pool,
+          destination,
+          sources,
+          p.reference,
+        );
+        assert.ok("transactionId" in q);
+        const rt = runtime();
+        assert.equal(
+          await deliverGooglePayment(pool, config, q.transactionId, rt),
+          "accepted",
+        );
+        assert.equal(rt.calls[0].body.events[0].eventSource, "OTHER");
+        assert.equal(rt.calls[0].body.events[0].conversionValue, 499);
+        assert.equal(
+          await deliverGooglePayment(pool, config, q.transactionId, rt),
+          "blocked",
+        );
+        assert.equal(rt.calls.length, 1);
+        await due(pool);
+        await diagnoseGooglePayment(
+          pool,
+          config,
+          runtime(async () => status()),
+        );
+        await applyCommerceEvent(pool, {
+          ...p.base,
+          id: randomUUID(),
+          type: "refund.completed",
+          occurredAt: new Date().toISOString(),
+          amountMinor: 49900,
+          currency: "USD",
+          evidence: "synthetic completed refund",
+        });
+        await queueGooglePayment(pool, destination, sources, p.reference);
+        assert.equal(
+          await deliverGooglePayment(pool, config, q.transactionId, rt),
+          "accepted",
+        );
+        assert.equal(rt.calls[1].body.events[0].conversionValue, 0);
+        assert.equal(rt.calls[1].body.events[0].transactionId, q.transactionId);
+      }),
+  );
 test(
   "diagnostics wait, back off, retain warnings, reject wrong counts and stop at deadline",
   enabled,

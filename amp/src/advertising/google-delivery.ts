@@ -141,7 +141,7 @@ async function candidate(
     ...(click && Date.parse(click.observedAt) <= Date.parse(payment.occurredAt)
       ? { adIdentifiers: googleClickIdentifiersSchema.parse(click.identifiers) }
       : {}),
-    eventSource: row.source_kind === "arkansas-efa" ? "OTHER" : "WEB",
+    eventSource: row.source_kind === "stripe" ? "WEB" : "OTHER",
     transactionId: row.transaction_id,
     occurredAt: payment.occurredAt,
     amountMinor: payment.netMinor,
@@ -392,6 +392,7 @@ function configKey(config: GoogleDeliveryConfig) {
         googleConversionDestinationKey(config.destination),
         config.sources.stripeNamespace ?? null,
         config.sources.efaChannelReference ?? null,
+        config.sources.azEsaChannelReference ?? null,
       ]),
     )
     .digest("hex");
@@ -415,7 +416,7 @@ export async function googleMeasurementBatch(
   const counts: Record<string, number> = {};
   const kinds =
     operation === "collect"
-      ? (["stripe", "arkansas-efa"] as const)
+      ? (["stripe", "arkansas-efa", "arizona-esa"] as const)
       : (["delivery"] as const);
   for (const kind of kinds) {
     await pool.query(
