@@ -556,7 +556,7 @@ export class FamilyRepository {
       )
         datasets.push([
           "funding-invoice",
-          `SELECT jsonb_build_object('id',i.id,'parentEmail',i.parent_email,'studentBillingName',i.student_billing_name,'createdAt',i.created_at,'expiresAt',i.expires_at,'state',i.state,'claimedRequestId',i.claimed_request_id) AS value FROM amp_funding_invoice_intents i WHERE i.claimed_account_id=$1 OR (i.claimed_account_id IS NULL AND EXISTS (SELECT 1 FROM amp_auth_users u WHERE 'amp|' || u.id=$1 AND u."emailVerified" AND lower(trim(u.email))=i.parent_email)) ORDER BY i.created_at,i.id`,
+          `SELECT jsonb_build_object('id',i.id,'parentEmail',i.parent_email,'studentBillingName',i.student_billing_name,'createdAt',i.created_at,'expiresAt',i.expires_at,'state',i.state,'claimedRequestId',i.claimed_request_id,'campaignAttribution',i.campaign_attribution) AS value FROM amp_funding_invoice_intents i WHERE i.claimed_account_id=$1 OR (i.claimed_account_id IS NULL AND EXISTS (SELECT 1 FROM amp_auth_users u WHERE 'amp|' || u.id=$1 AND u."emailVerified" AND lower(trim(u.email))=i.parent_email)) ORDER BY i.created_at,i.id`,
         ]);
       if (
         (
