@@ -38,3 +38,17 @@ test('existing Meta cookie values are preserved, never generated in the browser'
   const result=run('?fbclid=Meta_1',{},'/esa/arkansas-efa/','_fbc=fb.1.1790000000000.Meta_1; _fbp=fb.1.1790000000000.123');
   assert.deepEqual(JSON.parse(result.sent[0].options.body).clicks[0].identifiers,{fbclid:'Meta_1',fbc:'fb.1.1790000000000.Meta_1',fbp:'fb.1.1790000000000.123'});
 });
+
+test('acquisition preserves every authored creative label and rejects arbitrary text',()=>{
+  const contract=readFileSync(new URL('../../amp/src/analytics/campaign.ts',import.meta.url),'utf8');
+  const declaration=contract.match(/export const CAMPAIGN_CREATIVES = \[([\s\S]*?)\] as const/);
+  assert.ok(declaration);
+  const labels=[...declaration[1].matchAll(/"([a-z0-9-]+)"/g)].map(m=>m[1]);
+  assert.ok(labels.length>0);
+  for(const label of labels){
+    const result=run(`?gclid=Google_1&utm_campaign=ar-efa-launch&utm_source=google&utm_medium=cpc&utm_content=${label}`);
+    assert.equal(JSON.parse(result.sent[0].options.body).labels.creative,label);
+  }
+  const unknown=run('?gclid=Google_1&utm_campaign=ar-efa-launch&utm_content=private%40example.test');
+  assert.equal(JSON.parse(unknown.sent[0].options.body).labels.creative,undefined);
+});
