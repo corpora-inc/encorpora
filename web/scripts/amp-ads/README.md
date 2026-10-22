@@ -17,6 +17,8 @@ npm test
 
 The tests encode a short captioned video and inspect real Google Ads SDK messages without accessing an ad account. The path-gated `web-io` CI job runs these checks and feeds the existing `ci-gate`.
 
+The Google Ads CLI uses the installed certifi bundle for gRPC certificate verification. The pinned certifi release excludes the affected emSign ECC Root CA - G3 root ([security advisory](https://github.com/certifi/python-certifi/security/advisories/GHSA-6q48-6c7w-9gw2)). gRPC ships a separate root bundle, so updating certifi alone does not update its default trust. The CLI sets `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` to certifi before constructing the client, replacing any inherited value; missing or malformed bundles stop the command. Run the CLI in a fresh process: already initialized gRPC transports can cache roots. TLS tests use OpenSSL to generate temporary certificates and a loopback server; no account credentials are required.
+
 ## Render assets
 
 Store campaign manifests, product captures, narration, music, and exports outside this public repository. Paths in a manifest are relative to that manifest. A minimal image manifest is:
