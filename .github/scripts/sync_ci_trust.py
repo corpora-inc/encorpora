@@ -3,8 +3,8 @@
 from pathlib import Path
 import sys
 
-HELPER_COMMIT = 'b322c6b3d3cf79cb24184e11c83de2e46edbe16d'
-HELPER_SHA256 = '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2'
+HELPER_COMMIT = '4aa31ea9b905faf587df857265b2160cd380c7fb'
+HELPER_SHA256 = '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee'
 LOADER = '''      - name: Initialize verified client trust
         id: ci-trust
         shell: bash
@@ -24,7 +24,7 @@ LOADER = '''      - name: Initialize verified client trust
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', 'COMMIT'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY

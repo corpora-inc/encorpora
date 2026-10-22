@@ -61,19 +61,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -357,19 +357,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -425,19 +425,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -476,19 +476,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -524,19 +524,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -601,19 +601,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -706,19 +706,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -748,19 +748,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -804,19 +804,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -897,19 +897,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -944,19 +944,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -998,19 +998,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -1052,19 +1052,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -1125,19 +1125,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -1332,19 +1332,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -1663,19 +1663,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -1716,19 +1716,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -1771,19 +1771,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -1851,19 +1851,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -1903,19 +1903,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
@@ -1980,19 +1980,19 @@ jobs:
         run: |
           python3 -I - <<'PY'
           import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
-          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/b322c6b3d3cf79cb24184e11c83de2e46edbe16d/.github/scripts/ci_trust.py'
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
           opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
           with opener.open(url, timeout=30) as response:
               if response.url != url:
                   raise SystemExit('Unexpected CI trust helper redirect')
               source = response.read(50001)
-          if hashlib.sha256(source).hexdigest() != '4d46e0eb5c54f5cbf3286364b86cf2874e8d3ff6c8ea1573ca4552757878f9b2':
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
               raise SystemExit('CI trust helper checksum mismatch')
           descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
           try:
               with os.fdopen(descriptor, 'wb') as output:
                   output.write(source)
-              subprocess.run([sys.executable, '-I', name], check=True)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
           finally:
               pathlib.Path(name).unlink()
           PY
