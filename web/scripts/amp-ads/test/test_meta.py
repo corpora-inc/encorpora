@@ -234,17 +234,26 @@ class MetaTests(unittest.TestCase):
 
     def test_report_scopes_campaigns_and_distinguishes_platform_attribution(self):
         with patch.object(self.graph, "all", create=True, return_value=[{"spend": "1.00"}]) as read:
-            result = meta.report(self.graph, self.config, {"campaigns": [{"id": "1", "name": "AMP | AR | example"}, {"id": "2", "name": "Another product"}]}, "2026-10-01", "2026-10-21")
+            result = meta.report(self.graph, self.config, {"account": {"timezone_name": "America/New_York"}, "campaigns": [{"id": "1", "name": "AMP | AR | example"}, {"id": "2", "name": "Another product"}]}, "2026-10-01", "2026-10-21")
             self.assertEqual(result["rows"], [{"spend": "1.00"}])
+            self.assertEqual(result["timezone"], "America/New_York")
+            self.assertEqual(result["date_range"], {"since": "2026-10-01", "until": "2026-10-21", "inclusive": True})
             self.assertEqual(read.call_args.args[1]["filtering"][0]["value"], ["1"])
             self.assertEqual(read.call_args.args[1]["action_attribution_windows"], ["7d_click"])
             self.assertIn("not verified EFA settlement", result["interpretation"])
             read.reset_mock()
-            self.assertEqual(meta.report(self.graph, self.config, {"campaigns": []}, "2026-10-01", "2026-10-21")["rows"], [])
+            self.assertEqual(meta.report(self.graph, self.config, {"account": {"timezone_name": "America/New_York"}, "campaigns": []}, "2026-10-01", "2026-10-21")["rows"], [])
             read.assert_not_called()
             for dates in [("2026-01-01", "2026-10-21"), ("2026-10-21", "2026-10-01"), ("20261001", "2026-10-21")]:
                 with self.assertRaises(ValueError):
-                    meta.report(self.graph, self.config, {"campaigns": []}, *dates)
+                    meta.report(self.graph, self.config, {"account": {"timezone_name": "America/New_York"}, "campaigns": []}, *dates)
+
+    def test_report_rejects_missing_or_unknown_time_zone_before_insights(self):
+        for timezone in [None, "", "Unknown/Timezone"]:
+            with patch.object(self.graph, "all", create=True) as read:
+                with self.assertRaisesRegex(ValueError, "time zone"):
+                    meta.report(self.graph, self.config, {"account": {"timezone_name": timezone}, "campaigns": []}, "2026-10-01", "2026-10-21")
+                read.assert_not_called()
 
 
 if __name__ == "__main__":
