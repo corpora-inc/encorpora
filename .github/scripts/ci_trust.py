@@ -223,12 +223,19 @@ def refresh_docker():
             try:
                 run(args + ['pull', host + '/corpora-ca-check:unused'])
             except subprocess.CalledProcessError as error:
-                require('certificate signed by unknown authority' in error.stderr.lower(),
+                diagnostic = (error.stderr or '').strip().lower()
+                # Go 1.26.10 / 1.27.3 also reject distrusted intermediate keys
+                # after chain construction. Accept only the bare rejection;
+                # policy/usage failures append details and are inconclusive.
+                rejected = ('certificate signed by unknown authority' in diagnostic or
+                            diagnostic.endswith('tls: failed to verify certificate: '
+                                                'x509: no valid chains built'))
+                require(rejected,
                         'Docker incident path is accepted or inconclusive')
             else:
                 raise RuntimeError('Docker accepted an incident test endpoint')
         run(args + ['pull', 'registry.k8s.io/pause:3.10'])
-    return {'available': True, 'incident_issuer_rejections': len(HOSTS), 'valid_control': True}
+    return {'available': True, 'incident_certificate_rejections': len(HOSTS), 'valid_control': True}
 
 
 class RejectWindowsAssetRedirect(urllib.request.HTTPRedirectHandler):
