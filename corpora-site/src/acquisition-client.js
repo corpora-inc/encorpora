@@ -1,7 +1,7 @@
-// First-party acquisition on the parent-facing EFA page; no learning events.
+// First-party acquisition on the parent-facing AMP and EFA pages; no learning events.
 (() => {
   const script = document.querySelector("script[data-acquisition-endpoint]");
-  if (!script || location.pathname !== "/esa/arkansas-efa/") return;
+  if (!script || !["/amp/", "/esa/arkansas-efa/"].includes(location.pathname)) return;
   const query = new URLSearchParams(location.search);
   const ids = ["gclid", "gbraid", "wbraid", "fbclid"];
   const opaque = /^[A-Za-z0-9._~+=/-]{1,2048}$/;
@@ -31,7 +31,7 @@
     labels.source = ["facebook","instagram","google","email","youtube"].includes(query.get("utm_source")) ? query.get("utm_source") : "direct";
     labels.medium = ["paid-social","cpc","email","organic-social"].includes(query.get("utm_medium")) ? query.get("utm_medium") : "none";
     const creative = query.get("utm_content");
-    if (["efa-math","homeschool-math","efa-product-v1","efa-facebook-feed-v1","efa-facebook-vertical-v1","efa-instagram-vertical-v1"].includes(creative)) labels.creative = creative;
+    if (["az-esa-math","az-homeschool-math","shared-hook-ampd-portrait-v1","shared-hook-ampd-square-v1","shared-hook-next-portrait-v1","shared-hook-next-square-v1","az-hook-ampd-portrait-v1","az-hook-ampd-square-v1","az-hook-next-portrait-v1","az-hook-next-square-v1","efa-math","homeschool-math","efa-product-v1","efa-facebook-feed-v1","efa-facebook-vertical-v1","efa-instagram-vertical-v1", "hook-ampd-efa-v2", "hook-ampd-assessment-v2", "hook-next-efa-v2", "hook-next-assessment-v2", "hook-path-efa-v2", "hook-path-assessment-v2", "hook-ampd-up-efa-v2", "hook-ampd-up-assessment-v2", "hook-plug-efa-v2", "hook-plug-assessment-v2"].includes(creative)) labels.creative = creative;
   }
   try {
     void fetch(script.dataset.acquisitionEndpoint, {

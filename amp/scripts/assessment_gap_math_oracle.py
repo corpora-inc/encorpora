@@ -33,10 +33,10 @@ def solve(public):
         require(radius > 0 and 0 < arc / radius < 2 * math.pi, 'Invalid sub-turn arc')
         require(public['response']['kind'] in ('number', 'fraction'), 'Expected numeric radians')
         return str(arc / radius)
-    m = re.fullmatch(r'A random sample of (\d+) (residents|households) estimates (the percentage of residents supporting a proposed park|the mean daily water use per household in liters) as ' + N + r'(%| liters)\. A 95% confidence interval uses a margin of error of ' + N + r' (percentage points|liters)\. Which interval is produced by this estimate and margin of error\?', prompt)
+    m = re.fullmatch(r'A random sample of (\d+) (residents|households) estimates (the percentage of residents supporting a proposed park|the mean daily water use per household in liters) as ' + N + r'(%| liters)\. A 95% confidence interval uses a margin of error of ' + N + r' (percentage points?|liters?)\. Which interval is produced by this estimate and margin of error\?', prompt)
     require(m is not None, 'Unknown confidence-interval wording')
     percentage = m[2] == 'residents'
-    require((m[3].startswith('the percentage')) == percentage and (m[5] == '%') == percentage and (m[7] == 'percentage points') == percentage, 'Mismatched estimate units')
+    require((m[3].startswith('the percentage')) == percentage and (m[5] == '%') == percentage and m[7].startswith('percentage point') == percentage, 'Mismatched estimate units')
     estimate, margin = Q(m[4]), Q(m[6])
     require(int(m[1]) > 0 and margin > 0, 'Invalid sample or margin')
     expected = (estimate - margin, estimate + margin)
@@ -86,8 +86,11 @@ def self_test():
         cases.append({'public':{'templateId':'radian-arc-ratio','prompt':f'A circle has radius {radius} cm. Starting at $A$, a counterclockwise arc to $B$ has length {arc} cm and makes less than one full turn. What is the angle swept out at the center, in radians? Enter an exact fraction if needed.','response':{'kind':'fraction'}},'answer':str(Q(arc,radius))})
     for percent in [True, False]:
         unit = '%' if percent else ' liters'
-        people, context, margin_unit = ('residents','the percentage of residents supporting a proposed park','percentage points') if percent else ('households','the mean daily water use per household in liters','liters')
-        cases.append({'public':{'templateId':'margin-of-error-interval','prompt':f'A random sample of 400 {people} estimates {context} as 60{unit}. A 95% confidence interval uses a margin of error of 5 {margin_unit}. Which interval is produced by this estimate and margin of error?','response':{'kind':'choice','options':[{'id':str(i),'label':f'From {lo}{unit} to {hi}{unit}.'} for i,(lo,hi) in enumerate([(55,65),(57.5,62.5),(60,70),(50,60)])]}},'answer':'0'})
+        people, context = ('residents','the percentage of residents supporting a proposed park') if percent else ('households','the mean daily water use per household in liters')
+        for margin in [1, 5]:
+            margin_unit = ('percentage point' if percent else 'liter') + ('' if margin == 1 else 's')
+            intervals = [(60-margin,60+margin),(60-margin/2,60+margin/2),(60,60+2*margin),(60-2*margin,60)]
+            cases.append({'public':{'templateId':'margin-of-error-interval','prompt':f'A random sample of 400 {people} estimates {context} as 60{unit}. A 95% confidence interval uses a margin of error of {margin} {margin_unit}. Which interval is produced by this estimate and margin of error?','response':{'kind':'choice','options':[{'id':str(i),'label':f'From {lo}{unit} to {hi}{unit}.'} for i,(lo,hi) in enumerate(intervals)]}},'answer':'0'})
     cases[4]['public']['figure'] = {'kind':'scene','scene':{'elements':[{'type':'circleDiagram','center':True,'points':[{'name':'A','at':0},{'name':'B','at':5*180/math.pi}],'segments':[{'from':'O','to':'A','label':'2 cm'},{'from':'O','to':'B'}],'arcs':[{'from':'A','to':'B','label':'10 cm'}]}]}}
     rejected = 0
     def reject(case):

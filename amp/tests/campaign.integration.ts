@@ -109,6 +109,38 @@ test(
           202,
           creative,
         );
+      const az = {
+        ...payload,
+        state: "AZ",
+        program: "arizona-esa",
+        campaign: "az-esa-launch",
+        creative: "az-esa-math",
+      };
+      assert.equal(
+        (
+          await app.inject({
+            method: "POST",
+            url: "/api/v1/campaign-events",
+            headers: { origin: "https://example.test" },
+            payload: az,
+          })
+        ).statusCode,
+        202,
+      );
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT campaign,creative,count FROM amp_campaign_creative_daily WHERE campaign='az-esa-launch'",
+          )
+        ).rows,
+        [{ campaign: "az-esa-launch", creative: "az-esa-math", count: "1" }],
+      );
+      await assert.rejects(
+        pool.query(
+          "UPDATE amp_campaign_daily SET state='AR' WHERE campaign='az-esa-launch'",
+        ),
+        /amp_campaign_daily_program_campaign_check/,
+      );
       assert.equal(
         (await pool.query("SELECT count(*) FROM amp_funnel_visitors")).rows[0]
           .count,
