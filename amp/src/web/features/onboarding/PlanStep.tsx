@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useIsMutating, useMutation, useQuery } from "@tanstack/react-query";
 import { Link, Navigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { signOut, type AuthSession } from "../../auth";
@@ -18,6 +18,8 @@ import {
   refreshEnrollment,
   useEnrollmentCheckout,
 } from "../billing";
+import type { SignedInMe } from "../../../account/contracts";
+import { CheckoutPrivacy } from "./CheckoutPrivacy";
 import { Progress } from "./Progress";
 import styles from "./Start.module.css";
 import { track } from "../../lib/analytics";
@@ -32,9 +34,11 @@ const names = { year: "annual", month: "monthly" } as const;
  */
 export function PlanStep({
   session,
+  family,
   trial = false,
 }: {
   session: AuthSession;
+  family: SignedInMe["family"];
   /** The parent has no purchase yet and can return to free practice. */
   trial?: boolean;
 }) {
@@ -50,6 +54,10 @@ export function PlanStep({
     enabled: available === false,
   });
   const checkout = useEnrollmentCheckout(session);
+  const savingPrivacy =
+    useIsMutating({
+      mutationKey: ["account", session.accountId, "purchase-measurement"],
+    }) > 0;
   const exit = useMutation({
     mutationFn: signOut,
     onError: () => new AppError("unavailable", exitFailed, true).log(),
@@ -206,9 +214,15 @@ export function PlanStep({
             finish; nothing is charged until you pay.
           </p>
           <div className={styles.actions}>
-            <a className={buttonClass("primary")} href={resume ?? undefined}>
+            <Button
+              variant="primary"
+              disabled={savingPrivacy}
+              onClick={() => {
+                if (resume) window.location.assign(resume);
+              }}
+            >
               Resume checkout
-            </a>
+            </Button>
           </div>
         </>
       ) : (
@@ -224,7 +238,7 @@ export function PlanStep({
           <div className={styles.actions}>
             <Button
               variant="primary"
-              disabled={!agreed || checkout.isPending}
+              disabled={!agreed || checkout.isPending || savingPrivacy}
               onClick={() => {
                 track("checkout_start", { interval: offer.interval });
                 const requestId = (requests.current[offer.interval] ??=
@@ -272,6 +286,12 @@ export function PlanStep({
           )}
         </>
       )}
+      <CheckoutPrivacy
+        key={session.accountId}
+        session={session}
+        family={family}
+        disabled={checkout.isPending || checkout.isSuccess}
+      />
     </section>
   );
 }
