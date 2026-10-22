@@ -1,8 +1,11 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
 
+import { META_PURCHASE_MEASUREMENT_NOTICE } from "./permission-contracts.js";
+
 const origin = "https://graph.facebook.com/v26.0/";
-export const META_PURCHASE_PERMISSION_VERSION = "meta-adult-purchase-v1";
+export const META_PURCHASE_PERMISSION_VERSION =
+  META_PURCHASE_MEASUREMENT_NOTICE.version;
 const instant = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/)

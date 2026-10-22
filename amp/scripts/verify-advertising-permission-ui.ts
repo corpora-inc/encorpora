@@ -87,61 +87,93 @@ try {
   const origin = `http://127.0.0.1:${address.port}`;
   browser = await chromium.launch();
   for (const width of [320, 390, 768, 1280])
-    for (const theme of ["light", "dark"] as const) {
-      await pool.query("DELETE FROM amp_advertising_permissions");
-      const page = await browser.newPage({
-        viewport: { width, height: 900 },
-        colorScheme: theme,
-      });
-      const errors: string[] = [];
-      page.on("pageerror", (e) => errors.push(e.message));
-      await page.goto(origin + "/family/privacy");
-      await page.getByRole("button", { name: /Purchase measurement/ }).click();
-      await page
-        .getByRole("heading", { name: "Google purchase measurement" })
-        .waitFor();
-      assert.equal(new URL(page.url()).pathname, "/family/privacy/measurement");
-      const control = page.getByRole("checkbox");
-      const save = page.getByRole("button", {
-        name: "Allow purchase measurement",
-        exact: true,
-      });
-      if (width === 320 && theme === "light") {
-        // New bundle + old pod/future notice: account view survives, opt-in waits.
-        for (const version of [undefined, "future-notice"]) {
-          await page.route("**/api/v1/me", async (route) => {
-            const response = await route.fetch();
-            const body = await response.json();
-            if (version)
-              body.family.purchaseMeasurement.currentNoticeVersion = version;
-            else delete body.family.purchaseMeasurement.currentNoticeVersion;
-            await route.fulfill({ response, json: body });
-          });
+    for (const theme of ["light", "dark"] as const)
+      for (const provider of ["google", "meta"] as const) {
+        const table =
+          provider === "google"
+            ? "amp_advertising_permissions"
+            : "amp_meta_advertising_permissions";
+        const endpoint =
+          provider === "google"
+            ? "/family/purchase-measurement"
+            : "/family/meta-purchase-measurement";
+        const title =
+          provider === "google"
+            ? "Google purchase measurement"
+            : "Meta purchase measurement and ad delivery";
+        await pool.query("DELETE FROM amp_advertising_permissions");
+        await pool.query("DELETE FROM amp_meta_advertising_permissions");
+        const page = await browser.newPage({
+          viewport: { width, height: 900 },
+          colorScheme: theme,
+        });
+        const errors: string[] = [];
+        page.on("pageerror", (e) => errors.push(e.message));
+        await page.goto(origin + "/family/privacy");
+        await page
+          .getByRole("button", { name: /Purchase measurement/ })
+          .click();
+        await page.getByRole("heading", { name: title }).waitFor();
+        assert.equal(
+          new URL(page.url()).pathname,
+          "/family/privacy/measurement",
+        );
+        const card = page.locator(`[data-purchase-measurement="${provider}"]`);
+        const other = page.locator(
+          `[data-purchase-measurement="${provider === "google" ? "meta" : "google"}"]`,
+        );
+        const control = card.getByRole("checkbox");
+        const save = card.getByRole("button", {
+          name: "Allow purchase measurement",
+          exact: true,
+        });
+        if (width === 320 && theme === "light" && provider === "google") {
+          // New bundle + old pod/future notice: account view survives, opt-in waits.
+          for (const version of [undefined, "future-notice"]) {
+            await page.route("**/api/v1/me", async (route) => {
+              const response = await route.fetch();
+              const body = await response.json();
+              if (version)
+                body.family.purchaseMeasurement.currentNoticeVersion = version;
+              else delete body.family.purchaseMeasurement.currentNoticeVersion;
+              await route.fulfill({ response, json: body });
+            });
+            await page.reload();
+            await page
+              .getByText(
+                "Reload to review the current purchase-sharing notice. You can always withdraw permission.",
+                { exact: true },
+              )
+              .waitFor();
+            assert.equal(await save.count(), 0);
+            await page.unroute("**/api/v1/me");
+          }
           await page.reload();
-          await page
-            .getByText(
-              "Reload to review the current purchase-sharing notice. You can always withdraw permission.",
-              { exact: true },
-            )
-            .waitFor();
-          assert.equal(await save.count(), 0);
-          await page.unroute("**/api/v1/me");
+          await control.waitFor();
         }
-        await page.reload();
-        await control.waitFor();
-      }
-      assert.equal(await control.getAttribute("aria-checked"), "false");
-      assert.ok(await save.isDisabled());
-      await control.click();
-      assert.ok(await save.isEnabled());
-      await page.screenshot({
-        path: new URL(`off-${width}-${theme}.png`, directory).pathname,
-        fullPage: true,
-      });
-      let fail = true;
-      await page.route(
-        "**/api/v1/family/purchase-measurement",
-        async (route) => {
+        assert.equal(await control.getAttribute("aria-checked"), "false");
+        assert.ok(await save.isDisabled());
+        await control.click();
+        assert.ok(await save.isEnabled());
+        assert.equal(
+          await other.getByRole("checkbox").getAttribute("aria-checked"),
+          "false",
+        );
+        assert.ok(
+          await other
+            .getByRole("button", {
+              name: "Allow purchase measurement",
+              exact: true,
+            })
+            .isDisabled(),
+        );
+        await page.screenshot({
+          path: new URL(`off-${provider}-${width}-${theme}.png`, directory)
+            .pathname,
+          fullPage: true,
+        });
+        let fail = true;
+        await page.route("**/api/v1" + endpoint, async (route) => {
           await new Promise((r) => setTimeout(r, 180));
           if (fail) {
             fail = false;
@@ -151,124 +183,167 @@ try {
             });
           }
           return route.continue();
-        },
-      );
-      await save.scrollIntoViewIfNeeded();
-      const before = await save.boundingBox();
-      await save.click();
-      await page.getByText("Saving your preference…").waitFor();
-      assert.ok(await save.isDisabled());
-      assert.deepEqual(await save.boundingBox(), before);
-      await page
-        .getByText(
-          "Your purchase preference could not be saved. Refresh and try again.",
-        )
-        .waitFor();
-      assert.deepEqual(await save.boundingBox(), before);
-      await page.screenshot({
-        path: new URL(`error-${width}-${theme}.png`, directory).pathname,
-      });
-      await save.click();
-      await page
-        .getByRole("button", { name: "Withdraw permission", exact: true })
-        .waitFor();
-      await page.reload();
-      await page
-        .getByRole("button", { name: "Withdraw permission", exact: true })
-        .waitFor();
-      const geometry = await page.evaluate(() => ({
-        width: document.documentElement.scrollWidth,
-        viewport: innerWidth,
-        controls: [
-          ...document.querySelectorAll<HTMLButtonElement>(
-            "[data-purchase-measurement] button",
-          ),
-        ].map((b) => ({
-          height: b.getBoundingClientRect().height,
-          width: b.getBoundingClientRect().width,
-        })),
-      }));
-      assert.ok(
-        geometry.width <= geometry.viewport + 1,
-        JSON.stringify(geometry),
-      );
-      assert.ok(geometry.controls.every((b) => b.height >= 44));
-      await page.screenshot({
-        path: new URL(`active-${width}-${theme}.png`, directory).pathname,
-        fullPage: true,
-      });
-      await page.goBack();
-      await page
-        .getByRole("heading", { name: "Privacy and records" })
-        .waitFor();
-      await page.goForward();
-      await page
-        .getByRole("button", { name: "Withdraw permission", exact: true })
-        .waitFor();
-      await page
-        .getByRole("button", { name: "Withdraw permission", exact: true })
-        .click();
-      await save.waitFor();
-      assert.equal(await control.getAttribute("aria-checked"), "false");
-      await control.click();
-      await page.evaluate(() => (window as any).switchAccount("amp|other"));
-      await page.waitForFunction(
-        () =>
-          document
-            .querySelector('[role="checkbox"]')
-            ?.getAttribute("aria-checked") === "false",
-      );
-      assert.ok(await save.isDisabled());
-      // A parent response arriving after account change cannot alter the other view.
-      await page.evaluate(() => (window as any).switchAccount("amp|parent"));
-      await control.waitFor();
-      await control.click();
-      const sent = page.waitForResponse((response) =>
-        response.url().endsWith("/family/purchase-measurement"),
-      );
-      await save.click();
-      await page.evaluate(() => (window as any).switchAccount("amp|other"));
-      await sent;
-      await page.waitForFunction(
-        () =>
-          document
-            .querySelector('[role="checkbox"]')
-            ?.getAttribute("aria-checked") === "false",
-      );
-      assert.ok(await save.isDisabled());
-      await page.reload();
-      await page
-        .getByRole("button", { name: "Withdraw permission", exact: true })
-        .waitFor();
-      const allowedRevision = (
-        await pool.query(
-          "SELECT revision FROM amp_advertising_permissions WHERE account_id='amp|parent'",
-        )
-      ).rows[0].revision;
-      await page.addInitScript(() =>
-        Object.defineProperty(navigator, "globalPrivacyControl", {
-          value: true,
-        }),
-      );
-      await page.setExtraHTTPHeaders({ "Sec-GPC": "1" });
-      await page.reload();
-      await page
-        .getByText("Purchase sharing is off.", { exact: true })
-        .waitFor();
-      assert.equal(await save.count(), 0);
-      const stopped = (
-        await pool.query(
-          "SELECT revision,email_digest,withdrawn_at FROM amp_advertising_permissions WHERE account_id='amp|parent'",
-        )
-      ).rows[0];
-      assert.equal(stopped.email_digest, null);
-      assert.ok(stopped.withdrawn_at);
-      assert.notEqual(stopped.revision, allowedRevision);
-      assert.equal(errors.length, 0, errors.join("\n"));
-      await page.close();
-    }
+        });
+        await save.scrollIntoViewIfNeeded();
+        const before = await save.boundingBox();
+        await save.click();
+        await card.getByText("Saving your preference…").waitFor();
+        assert.ok(await save.isDisabled());
+        assert.deepEqual(await save.boundingBox(), before);
+        await page
+          .getByText(
+            "Your purchase preference could not be saved. Refresh and try again.",
+          )
+          .waitFor();
+        assert.deepEqual(await save.boundingBox(), before);
+        await page.screenshot({
+          path: new URL(`error-${provider}-${width}-${theme}.png`, directory)
+            .pathname,
+        });
+        await save.click();
+        await card
+          .getByRole("button", { name: "Withdraw permission", exact: true })
+          .waitFor();
+        await page.reload();
+        await card
+          .getByRole("button", { name: "Withdraw permission", exact: true })
+          .waitFor();
+        const geometry = await page.evaluate(() => ({
+          width: document.documentElement.scrollWidth,
+          viewport: innerWidth,
+          controls: [
+            ...document.querySelectorAll<HTMLButtonElement>(
+              "[data-purchase-measurement] button",
+            ),
+          ].map((b) => ({
+            height: b.getBoundingClientRect().height,
+            width: b.getBoundingClientRect().width,
+          })),
+        }));
+        assert.ok(
+          geometry.width <= geometry.viewport + 1,
+          JSON.stringify(geometry),
+        );
+        assert.ok(geometry.controls.every((b) => b.height >= 44));
+        await page.screenshot({
+          path: new URL(`active-${provider}-${width}-${theme}.png`, directory)
+            .pathname,
+          fullPage: true,
+        });
+        await other.getByRole("checkbox").click();
+        await other
+          .getByRole("button", {
+            name: "Allow purchase measurement",
+            exact: true,
+          })
+          .click();
+        await other
+          .getByRole("button", { name: "Withdraw permission", exact: true })
+          .waitFor();
+        await page.goBack();
+        await page
+          .getByRole("heading", { name: "Privacy and records" })
+          .waitFor();
+        await page.goForward();
+        await card
+          .getByRole("button", { name: "Withdraw permission", exact: true })
+          .waitFor();
+        await card
+          .getByRole("button", { name: "Withdraw permission", exact: true })
+          .click();
+        await save.waitFor();
+        assert.equal(
+          await other
+            .getByRole("button", { name: "Withdraw permission", exact: true })
+            .count(),
+          1,
+        );
+        assert.equal(await control.getAttribute("aria-checked"), "false");
+        await control.click();
+        await page.evaluate(() => (window as any).switchAccount("amp|other"));
+        await page.waitForFunction(
+          (recipient) =>
+            document
+              .querySelector(
+                `[data-purchase-measurement="${recipient}"] [role="checkbox"]`,
+              )
+              ?.getAttribute("aria-checked") === "false",
+          provider,
+        );
+        assert.ok(await save.isDisabled());
+        // A parent response arriving after account change cannot alter the other view.
+        await page.evaluate(() => (window as any).switchAccount("amp|parent"));
+        await control.waitFor();
+        await control.click();
+        const sent = page.waitForResponse((response) =>
+          response.url().endsWith(endpoint),
+        );
+        await save.click();
+        await page.evaluate(() => (window as any).switchAccount("amp|other"));
+        await sent;
+        await page.waitForFunction(
+          (recipient) =>
+            document
+              .querySelector(
+                `[data-purchase-measurement="${recipient}"] [role="checkbox"]`,
+              )
+              ?.getAttribute("aria-checked") === "false",
+          provider,
+        );
+        assert.ok(await save.isDisabled());
+        await page.reload();
+        await card
+          .getByRole("button", { name: "Withdraw permission", exact: true })
+          .waitFor();
+        const allowedRevision = (
+          await pool.query(
+            `SELECT revision FROM ${table} WHERE account_id='amp|parent'`,
+          )
+        ).rows[0].revision;
+        await page.addInitScript(() =>
+          Object.defineProperty(navigator, "globalPrivacyControl", {
+            value: true,
+          }),
+        );
+        await page.setExtraHTTPHeaders({ "Sec-GPC": "1" });
+        await page.reload();
+        await card
+          .getByText("Purchase sharing is off.", { exact: true })
+          .waitFor();
+        assert.equal(await save.count(), 0);
+        const stopped = (
+          await pool.query(
+            `SELECT revision,email_digest,withdrawn_at FROM ${table} WHERE account_id='amp|parent'`,
+          )
+        ).rows[0];
+        assert.equal(stopped.email_digest, null);
+        assert.ok(stopped.withdrawn_at);
+        assert.notEqual(stopped.revision, allowedRevision);
+        const otherTable =
+          provider === "google"
+            ? "amp_meta_advertising_permissions"
+            : "amp_advertising_permissions";
+        const otherStopped = (
+          await pool.query(
+            `SELECT email_digest,withdrawn_at FROM ${otherTable} WHERE account_id='amp|parent'`,
+          )
+        ).rows[0];
+        assert.equal(otherStopped.email_digest, null);
+        assert.ok(otherStopped.withdrawn_at);
+        assert.equal(
+          await other
+            .getByRole("button", {
+              name: "Allow purchase measurement",
+              exact: true,
+            })
+            .count(),
+          0,
+        );
+        assert.equal(errors.length, 0, errors.join("\n"));
+        await page.close();
+      }
   console.log(
-    "Purchase preferences: real API/database, opt-in, failure/retry, withdrawal, reload/history, account isolation, GPC, 320/390/768/1280 light/dark passed.",
+    "Independent Google/Meta purchase preferences: real API/database, opt-in, failure/retry, withdrawal, reload/history, account isolation, GPC, 320/390/768/1280 light/dark passed.",
   );
 } catch (error) {
   for (const context of browser?.contexts() ?? [])

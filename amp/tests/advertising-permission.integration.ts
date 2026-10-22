@@ -10,7 +10,10 @@ import {
   purgeAdvertisingPermissions,
   withAdvertisingPrivacySignals,
 } from "../src/advertising/permission.js";
-import { PURCHASE_MEASUREMENT_NOTICE as notice } from "../src/advertising/permission-contracts.js";
+import {
+  PURCHASE_MEASUREMENT_NOTICE as notice,
+  META_PURCHASE_MEASUREMENT_NOTICE as metaNotice,
+} from "../src/advertising/permission-contracts.js";
 import { registerAdvertisingPermissionRoutes } from "../src/advertising/permission-routes.js";
 import { FamilyRepository } from "../src/family/repository.js";
 import { accountSummary } from "../src/account/repository.js";
@@ -505,5 +508,359 @@ test(
       } finally {
         await app.close();
       }
+    }),
+);
+
+const allowMeta = (revision: string | null = null) => ({
+  ...allow(revision),
+  noticeVersion: metaNotice.version,
+});
+async function metaView(pool: Pool, account = "amp|parent") {
+  const client = await pool.connect();
+  try {
+    return await purchaseMeasurementView(client, account, "meta");
+  } finally {
+    client.release();
+  }
+}
+test(
+  "Meta permission is independently attested, bound to confirmed email, and cannot consume a Google grant",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      for (const account of [
+        "amp|unconfirmed",
+        "amp|missing",
+        "oidc|parent",
+        "trial:fixture",
+      ])
+        await assert.rejects(
+          changeAdvertisingPermission(
+            pool,
+            account,
+            allowMeta(),
+            false,
+            "meta",
+          ),
+          /purchase_measurement_email_required/,
+        );
+      for (const extra of [
+        { noticeVersion: notice.version },
+        { adultAttestation: false },
+        { accountId: "amp|other" },
+        { email: "child@example.invalid" },
+        { learnerId: "child" },
+        { purpose: "measurement-only" },
+      ])
+        await assert.rejects(
+          changeAdvertisingPermission(
+            pool,
+            "amp|parent",
+            { ...allowMeta(), ...extra },
+            false,
+            "meta",
+          ),
+        );
+      const google = await changeAdvertisingPermission(
+        pool,
+        "amp|parent",
+        allow(),
+      );
+      assert.equal((await metaView(pool)).status, "off");
+      const meta = await changeAdvertisingPermission(
+        pool,
+        "amp|parent",
+        allowMeta(),
+        false,
+        "meta",
+      );
+      assert.equal(meta.status, "active");
+      assert.equal(meta.noticeVersion, metaNotice.version);
+      assert.equal(
+        Date.parse(meta.expiresAt!) - Date.parse(meta.grantedAt!),
+        365 * 86400000,
+      );
+      assert.deepEqual(
+        await changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          allowMeta(meta.revision),
+          false,
+          "meta",
+        ),
+        meta,
+      );
+      const me = await accountSummary(
+        pool,
+        new FamilyRepository(pool),
+        "amp|parent",
+      );
+      assert.equal(me.family.metaPurchaseMeasurement?.status, "active");
+      assert.equal(me.consent.status, "none");
+      assert.equal((await metaView(pool, "amp|other")).status, "off");
+      await changeAdvertisingPermission(
+        pool,
+        "amp|parent",
+        { action: "withdraw" },
+        false,
+        "meta",
+      );
+      assert.deepEqual(await view(pool), google);
+      const off = await metaView(pool);
+      assert.equal(off.status, "off");
+      assert.notEqual(off.revision, meta.revision);
+      await assert.rejects(
+        changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          allowMeta(meta.revision),
+          false,
+          "meta",
+        ),
+        /purchase_measurement_changed/,
+      );
+      await changeAdvertisingPermission(
+        pool,
+        "amp|parent",
+        allowMeta(off.revision),
+        false,
+        "meta",
+      );
+      await changeAdvertisingPermission(pool, "amp|parent", {
+        action: "withdraw",
+      });
+      assert.equal((await metaView(pool)).status, "active");
+      await pool.query(
+        `UPDATE amp_auth_users SET email='changed@example.invalid' WHERE id='parent'`,
+      );
+      assert.equal((await metaView(pool)).status, "review-required");
+      for (const update of [
+        "UPDATE amp_meta_advertising_permissions SET notice_version='old'",
+        "UPDATE amp_meta_advertising_permissions SET granted_at=now()-interval '366 days', expires_at=now()-interval '1 day'",
+      ]) {
+        await changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          allowMeta((await metaView(pool)).revision),
+          false,
+          "meta",
+        );
+        await pool.query(update);
+        assert.notEqual((await metaView(pool)).status, "active");
+      }
+    }),
+);
+test(
+  "Meta endpoint honors authenticated identity, strict notice and persistent global privacy withdrawal",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const app = Fastify();
+      const authenticate = withAdvertisingPrivacySignals(
+        pool,
+        async (request) => {
+          if (request.headers.authorization !== "Bearer synthetic-parent")
+            throw Object.assign(new Error("unauthorized"), { statusCode: 401 });
+          return "amp|parent";
+        },
+      );
+      await registerAdvertisingPermissionRoutes(app, { pool, authenticate });
+      try {
+        const url = "/api/v1/family/meta-purchase-measurement";
+        const headers = { authorization: "Bearer synthetic-parent" };
+        assert.equal(
+          (await app.inject({ method: "POST", url, payload: allowMeta() }))
+            .statusCode,
+          401,
+        );
+        assert.equal(
+          (await app.inject({ method: "POST", url, headers, payload: allow() }))
+            .statusCode,
+          400,
+        );
+        const injected = await app.inject({
+          method: "POST",
+          url,
+          headers,
+          payload: { ...allowMeta(), accountId: "amp|other" },
+        });
+        assert.equal(injected.statusCode, 400);
+        assert.ok(!injected.body.includes("amp|other"));
+        const granted = await app.inject({
+          method: "POST",
+          url,
+          headers,
+          payload: allowMeta(),
+        });
+        assert.equal(granted.statusCode, 200);
+        assert.equal(granted.headers["cache-control"], "no-store");
+        await changeAdvertisingPermission(
+          pool,
+          "amp|other",
+          allowMeta(),
+          false,
+          "meta",
+        );
+        for (const signal of [{ "sec-gpc": "1" }, { dnt: "1" }]) {
+          await changeAdvertisingPermission(
+            pool,
+            "amp|parent",
+            allow((await view(pool)).revision),
+          );
+          await changeAdvertisingPermission(
+            pool,
+            "amp|parent",
+            allowMeta((await metaView(pool)).revision),
+            false,
+            "meta",
+          );
+          const stale = (await metaView(pool)).revision;
+          const result = await app.inject({
+            method: "POST",
+            url,
+            headers: { ...headers, ...signal },
+            payload: allowMeta(stale),
+          });
+          assert.equal(result.statusCode, 200);
+          assert.equal(result.json().status, "off");
+          assert.equal((await view(pool)).status, "off");
+          assert.equal((await metaView(pool)).status, "off");
+          assert.equal((await metaView(pool, "amp|other")).status, "active");
+          assert.equal(
+            (
+              await app.inject({
+                method: "POST",
+                url,
+                headers,
+                payload: allowMeta(stale),
+              })
+            ).statusCode,
+            409,
+          );
+        }
+      } finally {
+        await app.close();
+      }
+    }),
+);
+test(
+  "Meta preference export excludes email binding; family withdrawal/deletion revoke both providers only for the owning account",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const family = new FamilyRepository(pool);
+      await changeAdvertisingPermission(
+        pool,
+        "amp|other",
+        allowMeta(),
+        false,
+        "meta",
+      );
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name) VALUES('synthetic-child','amp|parent','Sample learner')",
+      );
+      for (const operation of [
+        () => family.withdraw("amp|parent"),
+        () => family.deleteLearning("amp|parent", "synthetic-child"),
+        () => family.deleteLearning("amp|parent"),
+      ]) {
+        await changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          allow((await view(pool)).revision),
+        );
+        const granted = await changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          allowMeta((await metaView(pool)).revision),
+          false,
+          "meta",
+        );
+        const rows: string[] = [];
+        for await (const row of family.export("amp|parent")) rows.push(row);
+        const exported = rows.join("");
+        assert.ok(
+          exported.includes('"type":"meta-purchase-measurement-permission"'),
+        );
+        assert.ok(exported.includes(granted.revision!));
+        assert.ok(!exported.includes("email_digest"));
+        assert.ok(!exported.includes("parent@example.invalid"));
+        assert.ok(
+          !exported.includes((await metaView(pool, "amp|other")).revision!),
+        );
+        await operation();
+        assert.equal((await metaView(pool)).status, "off");
+        assert.equal((await view(pool)).status, "off");
+        assert.equal((await metaView(pool, "amp|other")).status, "active");
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT email_digest FROM amp_meta_advertising_permissions WHERE account_id='amp|parent'",
+            )
+          ).rows[0].email_digest,
+          null,
+        );
+      }
+    }),
+);
+test(
+  "Meta grant races serialize and retention observes each recipient's evidence boundary",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const attempts = await Promise.allSettled([
+        changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          allowMeta(),
+          false,
+          "meta",
+        ),
+        changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          allowMeta(),
+          false,
+          "meta",
+        ),
+      ]);
+      assert.equal(attempts.filter((x) => x.status === "fulfilled").length, 1);
+      assert.equal(
+        attempts.filter(
+          (x) =>
+            x.status === "rejected" &&
+            /purchase_measurement_changed/.test(String(x.reason)),
+        ).length,
+        1,
+      );
+      await changeAdvertisingPermission(pool, "amp|parent", allow());
+      await changeAdvertisingPermission(
+        pool,
+        "amp|other",
+        allowMeta(),
+        false,
+        "meta",
+      );
+      await pool.query(
+        "UPDATE amp_meta_advertising_permissions SET granted_at=now()-interval '500 days',expires_at=now()-interval '135 days' WHERE account_id='amp|parent'",
+      );
+      assert.equal(await purgeAdvertisingPermissions(pool), 1);
+      assert.equal((await view(pool)).status, "active");
+      assert.equal((await metaView(pool, "amp|other")).status, "active");
+      await changeAdvertisingPermission(
+        pool,
+        "amp|other",
+        { action: "withdraw" },
+        false,
+        "meta",
+      );
+      await pool.query(
+        "UPDATE amp_meta_advertising_permissions SET withdrawn_at=now()-interval '89 days' WHERE account_id='amp|other'",
+      );
+      assert.equal(await purgeAdvertisingPermissions(pool), 0);
+      await pool.query(
+        "UPDATE amp_meta_advertising_permissions SET withdrawn_at=now()-interval '91 days' WHERE account_id='amp|other'",
+      );
+      assert.equal(await purgeAdvertisingPermissions(pool), 1);
     }),
 );

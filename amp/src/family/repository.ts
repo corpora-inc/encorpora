@@ -112,6 +112,11 @@ export class FamilyRepository {
       );
       return {
         purchaseMeasurement: await purchaseMeasurementView(client, accountId),
+        metaPurchaseMeasurement: await purchaseMeasurementView(
+          client,
+          accountId,
+          "meta",
+        ),
         consent: {
           status: consent
             ? consent.withdrawn_at
@@ -405,6 +410,17 @@ export class FamilyRepository {
         datasets.push([
           "purchase-measurement-permission",
           "SELECT to_jsonb(p) - 'account_id' - 'email_digest' AS value FROM amp_advertising_permissions p WHERE account_id=$1",
+        ]);
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_meta_advertising_permissions') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "meta-purchase-measurement-permission",
+          "SELECT to_jsonb(p) - 'account_id' - 'email_digest' AS value FROM amp_meta_advertising_permissions p WHERE account_id=$1",
         ]);
       if (
         (

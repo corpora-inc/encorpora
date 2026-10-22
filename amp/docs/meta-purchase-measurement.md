@@ -6,7 +6,11 @@
 
 A request contains one `Purchase` event, its actual time, a random `amp_meta_` reference, USD amount and the confirmed adult purchaser's SHA-256 email hash. Email normalization trims the ends and lowercases; it preserves dots and plus tags. Google-specific Gmail normalization is not interchangeable.
 
-The caller must supply evidence of current adult permission naming Meta and the purpose `measurement-and-ad-delivery`. The transport requires the `meta-adult-purchase-v1` version; that contract is not a deployed notice or permission grant. AMP's Google purchase preference does not authorize Meta sharing. Before wiring this transport to payments, implement the separate adult disclosure, attestation, withdrawal, expiry, export and retention controls. Do not promise attribution-only handling: Meta documents measurement, custom audience and optimization capabilities for all action sources.
+The caller must supply evidence of current adult permission naming Meta and the purpose `measurement-and-ad-delivery`. The transport requires the `meta-adult-purchase-v1` version shared with AMP’s separate Meta notice in Family → Privacy and records → Purchase measurement. The parent must explicitly attest to being at least 18 and using their own confirmed email. Google permission does not authorize Meta sharing; neither choice grants learning consent.
+
+Each provider’s preference lasts one year and can be withdrawn independently. An email change or notice revision requires a fresh explicit grant. Learning-consent withdrawal, learning-data deletion, and an authenticated request carrying Global Privacy Control or Do Not Track withdraw both preferences. Withdrawal removes the local email binding; the remaining preference is retained for up to 90 days after withdrawal or expiry. The family export includes the preference without its email binding.
+
+The permission API is `/api/v1/family/meta-purchase-measurement`; it accepts only the authenticated account’s strict, versioned allow/withdraw request. It does not upload purchase events. A current preference is a prerequisite for a future dispatcher, not evidence of payment or delivery. Do not promise attribution-only handling: Meta documents measurement, custom audience and optimization capabilities for all action sources.
 
 A website event requires the purchaser's actual browser user agent and an allowed adult purchase-page URL. No query, fragment, account or learner identifier is accepted. The fixed URL allowlist is a privacy boundary, not proof that a conversion happened there. Do not substitute an AMP landing page for a hosted checkout URL. Transactions whose actual page is not supported are ineligible until their truthful representation is established.
 
@@ -36,7 +40,7 @@ Zero or negative purchases are rejected. There is no refund or restatement metho
 
 ## Integration required before activation
 
-The transport must be connected to trusted initial-payment/Arkansas-settlement selection, Meta-specific adult permission, verified channel context, a durable queue, retention/export handling and a bounded operator schedule. Current permission, confirmed email and payment/refund holds must be checked immediately before sending under the shared account privacy lock. Test permission withdrawal and email changes racing delivery, crash uncertainty, duplicate workers and refund transitions against the database.
+The transport must be connected to trusted initial-payment/Arkansas-settlement selection, current Meta-specific adult permission, verified channel context, a durable queue, retention/export handling and a bounded operator schedule. Current permission, confirmed email and payment/refund holds must be checked immediately before sending under the shared account privacy lock. Test permission withdrawal and email changes racing delivery, crash uncertainty, duplicate workers and refund transitions against the database.
 
 Verify the actual authorized app/token/dataset, disclosure and platform terms, event permissions and diagnostic results before activation. A test code does not replace those prerequisites. No campaign-spending authorization follows from an export configuration.
 
