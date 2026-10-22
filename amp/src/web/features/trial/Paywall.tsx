@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { brand } from "../../../brand";
 import { strandNames } from "../../BirthYearPrompt";
 import { gradeName } from "../../Home";
+import { fundedPrograms } from "../../lib/funded-entry";
 import { rememberPlanChoice } from "../../lib/pending-trial";
 import { sessionOptions } from "../../lib/query";
 import { Button, buttonClass } from "../../ui/Button";
@@ -78,7 +79,7 @@ export function Paywall() {
   return (
     <PlansView
       key={reason}
-      arkansas={search.program === "ar-efa"}
+      programId={search.program}
       reason={reason}
       run={run}
       catalog={catalog.data}
@@ -90,7 +91,7 @@ export function Paywall() {
 }
 
 function PlansView({
-  arkansas,
+  programId,
   reason,
   run,
   catalog,
@@ -98,7 +99,7 @@ function PlansView({
   signedIn,
   record,
 }: {
-  arkansas: boolean;
+  programId?: string;
   reason: "limit" | "choice";
   run: TrialProgress | null;
   catalog: TrialCatalog;
@@ -196,7 +197,7 @@ function PlansView({
         ) : (
           <>
             <p className={styles.lede}>
-              {arkansas
+              {programId
                 ? "Card checkout isn’t available."
                 : "Enrollment isn’t open yet."}{" "}
               Your free practice stays saved on this device.
@@ -208,20 +209,28 @@ function PlansView({
             </div>
           </>
         )}
-        {arkansas ? (
-          <Link className={styles.esa} to="/purchase/arkansas-efa">
-            Use Arkansas EFA funds
-          </Link>
-        ) : (
-          <a
-            className={styles.esa}
-            href={ESA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Paying with education savings funds?
+        <div className={styles.esa}>
+          <p>Pay with education funds</p>
+          {Object.values(fundedPrograms)
+            .filter((program) =>
+              programId
+                ? program.id === programId
+                : program.id === "ar-efa" || program.id === "az-esa",
+            )
+            .map((program) => (
+              <Link
+                key={program.slug}
+                className={buttonClass("secondary")}
+                to={`/invoice/${program.slug}`}
+                onClick={() => rememberPlanChoice(interval)}
+              >
+                Use {program.name} funds
+              </Link>
+            ))}
+          <a href={ESA_URL} target="_blank" rel="noopener noreferrer">
+            Other programs
           </a>
-        )}
+        </div>
       </section>
       <Dialog
         open={asking}
