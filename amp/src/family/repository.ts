@@ -483,6 +483,28 @@ export class FamilyRepository {
       if (
         (
           await client.query(
+            "SELECT to_regclass('amp_meta_purchase_queue') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "meta-purchase-measurement-preparation",
+          "SELECT jsonb_build_object('provider','Meta','purchaseAt',occurred_at,'originalAmountMinor',original_minor,'currency','USD','state',state,'noticeVersion',permission_notice,'createdAt',created_at) AS value FROM amp_meta_purchase_queue WHERE account_id=$1 ORDER BY occurred_at,event_id",
+        ]);
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_meta_delivery_attempts') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "meta-purchase-measurement-delivery",
+          "SELECT jsonb_build_object('provider','Meta','purchaseAt',q.occurred_at,'amountMinor',a.amount_minor,'currency','USD','state',a.state,'errorCode',a.error_code,'messageCount',a.receipt->'messageCount','createdAt',a.created_at,'completedAt',a.completed_at) AS value FROM amp_meta_delivery_attempts a JOIN amp_meta_purchase_queue q USING(event_id) WHERE q.account_id=$1 ORDER BY a.created_at,a.id",
+        ]);
+      if (
+        (
+          await client.query(
             "SELECT to_regclass('amp_problem_flags') AS relation",
           )
         ).rows[0]?.relation

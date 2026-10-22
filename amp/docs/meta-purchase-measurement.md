@@ -1,6 +1,6 @@
 # Meta purchase measurement
 
-`src/advertising/meta-conversions.ts` is an internal Conversions API transport for a verified adult purchase. It has no delivery worker, scheduler or credential-file loader. Nothing invokes this transport from the running application. A separate authenticated route collects local confirmation context as described below; it does not upload events. The default operation is a local preview, and delivery is disabled unless the destination explicitly sets `enabled: true`.
+AMP can prepare and deliver one optional Meta `Purchase` event for a verified live initial enrollment payment with current adult Meta permission and an observed confirmation page. `src/advertising/meta-delivery.ts` provides a durable queue and bounded operator commands around the Conversions API transport. No route invokes external delivery and no schedule is installed. Configuration defaults to disabled; collecting browser context does not enable uploads.
 
 ## Payload and permission
 
@@ -10,7 +10,7 @@ The caller must supply evidence of current adult permission naming Meta and the 
 
 Each provider’s preference lasts one year and can be withdrawn independently. An email change or notice revision requires a fresh explicit grant. Learning-consent withdrawal, learning-data deletion, and an authenticated request carrying Global Privacy Control or Do Not Track withdraw both preferences. Withdrawal removes the local email binding; the remaining preference is retained for up to 90 days after withdrawal or expiry. The family export includes the preference without its email binding.
 
-The permission API is `/api/v1/family/meta-purchase-measurement`; it accepts only the authenticated account’s strict, versioned allow/withdraw request. It does not upload purchase events. A current preference is a prerequisite for a future dispatcher, not evidence of payment or delivery. Do not promise attribution-only handling: Meta documents measurement, custom audience and optimization capabilities for all action sources.
+The permission API is `/api/v1/family/meta-purchase-measurement`; it accepts only the authenticated account’s strict, versioned allow/withdraw request. It does not upload purchase events. A current preference is a dispatcher prerequisite, not evidence of payment or delivery. Do not promise attribution-only handling: Meta documents measurement, custom audience and optimization capabilities for all action sources.
 
 A website event requires the purchaser's actual browser user agent and an allowed adult purchase-page URL. No query, fragment, account or learner identifier is accepted. The fixed URL allowlist is a privacy boundary, not proof that a conversion happened there. Do not substitute an AMP landing page for a hosted checkout URL. Transactions whose actual page is not supported are ineligible until their truthful representation is established.
 
@@ -28,11 +28,11 @@ Only the fixed `https://amp.corpora.inc/start/purchase` address is retained: que
 
 Meta's [official archived online CAPI example](https://github.com/fbsamples/lead-ads-webhook-sample/blob/main/postman/FB%20Conversions%20API%20%28Part%201%20-%20online%29.postman_collection.json) uses a purchase thank-you page as `event_source_url`. The AMP integration records the confirmation page actually visited. It does not label invoice preparation or a ClassWallet settlement webhook as a website conversion.
 
-A dispatcher must re-read current permission, confirmed email, financial evidence and context expiry before submission. The context row is not authorization to bypass those checks and is not a delivered event.
+The dispatcher re-reads current permission, confirmed email, financial evidence and context expiry before submission. The context row cannot bypass those checks and is not a delivered event.
 
 ## Preview, test and live requests
 
-Construct `MetaConversions` with a numeric dataset ID, an access-token callback and optional fetch/clock dependencies for tests. The token belongs in approved secret storage. The application has no production token configuration for this transport.
+Construct `MetaConversions` with a numeric dataset ID, an access-token callback and optional fetch/clock dependencies for tests. The token belongs in approved secret storage. The private command configuration below is separate from Marketing API campaign-management authorization.
 
 - `purchase(input)` validates locally and returns a redacted preview. It does not obtain credentials or send a request.
 - `purchase(input, { kind: "test", testEventCode: "TEST123" })` sends to Meta's Test Events feature only when delivery is enabled. **Meta states that these events are not dropped and can be used for targeting and measurement.** This mode is not a privacy-safe dry run.
@@ -46,13 +46,37 @@ Events must be no more than seven days old, cannot be future-dated, and must fol
 
 A successful receipt means the API reported receiving one event. It does not prove matching, attribution, optimization eligibility or net revenue. Inspect Events Manager's received, matched, attributed and diagnostic views separately. A receipt with messages needs review; the count is not certification that the event is usable.
 
-The transport never retries. Network failures, timeouts, unexpected responses, rate-limit responses and server failures have an `unknown` outcome; ordinary definite client rejection has a `rejected` outcome. A durable dispatcher must record intent before I/O, serialize a payment's submissions and preserve uncertain results. Never create a new event reference merely to retry. Provider deduplication is not a permanent exactly-once guarantee.
+The transport never retries. Network failures, timeouts, unexpected responses, rate-limit responses and server failures have an `unknown` outcome; ordinary definite client rejection has a `rejected` outcome. The dispatcher commits an `unknown` intent before I/O, then reacquires the account privacy lock and rechecks every fact. Confirmed email stays locked through submission. Changed evidence prevents sending; the attempt becomes `not_sent`. A process or database interruption leaves a durable uncertain result. PostgreSQL and Meta cannot commit atomically.
+
+A payment has one immutable random event reference and destination. Concurrent workers serialize on the account lock. Accepted, rejected and uncertain attempts block automatic resubmission, including after a destination change. Only an attempt known not to have sent can be retried with the same reference and fresh eligibility checks. Withdrawal cancels unsent entries and deletes browser context while preserving minimal delivery history; regrant cannot restore a cancelled entry. Provider deduplication is not a permanent exactly-once guarantee.
+
+Queue and attempt records contain financial references, amount/time, permission revision, destination and a redacted receipt or error code. They contain no email hash, browser context or raw provider messages. They expire 90 days after payment, after the seven-day submission window has closed. Family export includes preparation and attempt status, amounts, dates and receipt message count without internal source, account, event, destination or trace identifiers.
 
 Zero or negative purchases are rejected. There is no refund or restatement method. Sending a negative `Purchase`, changing its reference, or sending a custom refund event is not evidence that Meta reversed the original purchase attribution. Use verified first-party settlement/refund reporting for net cash, and make the distinction explicit in campaign reporting. Block unsent fully refunded payments; reconcile later refunds locally.
 
-## Integration required before activation
+## Private operator commands
 
-The transport must be connected to trusted initial-payment/Arkansas-settlement selection, current Meta-specific adult permission, verified channel context, a durable queue, retention/export handling and a bounded operator schedule. Current permission, confirmed email and payment/refund holds must be checked immediately before sending under the shared account privacy lock. Test permission withdrawal and email changes racing delivery, crash uncertainty, duplicate workers and refund transitions against the database.
+Set `AMP_META_MEASUREMENT_CONFIG` to a private regular JSON file with mode `0600`. The example uses synthetic identifiers; replace them with independently verified destination and Stripe account values. Configuration accepts only the live Stripe enrollment source because funded/existing-learner purchases have no supported confirmation-context collector.
+
+```json
+{
+  "enabled": false,
+  "destination": { "datasetId": "1234567890" },
+  "sources": { "stripeNamespace": "acct_example:live" }
+}
+```
+
+`AMP_DATABASE_URL` identifies the migrated application database. For delivery, `AMP_META_MEASUREMENT_CREDENTIALS` identifies a separate private `0600` JSON file containing only `access_token`. Never put the token in command arguments, logs or the repository. The loader rejects symlinks, non-regular files, oversized files and group/world-readable permissions, and re-reads credentials to support rotation. The dispatcher bounds credential acquisition and external response time.
+
+- `npm run advertising:meta -- collect 20` visits up to 20 eligible confirmation records and allocates immutable event references locally.
+- `npm run advertising:meta -- deliver 20` visits up to 20 queued events and submits eligible, unsent events. It sends real live events when enabled; it is not a preview.
+- `npm run advertising:meta -- report` prints aggregate queue/attempt states and counts of accepted receipts with messages. It exposes no event or purchaser identifiers.
+
+Collection and delivery stop before database or credential access when disabled. Report is read-only and can run while disabled. Commands accept limits from 1 to 200; the default is 20. Separate persisted keyset cursors wrap for repeated sweeps. Checkpoints advance only after a full page completes; concurrent compare-and-set updates and immutable identities make interrupted pages safe to revisit. These are finite commands, not an installed background schedule. After authorization and provider validation, an operator can schedule small collection/delivery batches with overlap protection and inspect reports between batches. No command enables campaign spending.
+
+## Verification required before activation
+
+The worker supports verified live initial enrollment confirmations only. Arkansas funded settlements and existing-learner checkout require truthful channel evidence before they can enter Meta delivery. Google's broader payment selection does not authorize a Meta payload.
 
 Verify the actual authorized app/token/dataset, disclosure and platform terms, event permissions and diagnostic results before activation. A test code does not replace those prerequisites. No campaign-spending authorization follows from an export configuration.
 
@@ -68,3 +92,5 @@ The contract was checked against Meta's current documentation on 2026-10-22:
 `tests/meta-conversions.test.ts` exercises synthetic payloads and mocked HTTP only. It verifies the published email-hash vector, field exclusion, source context, permission/time boundaries, no-I/O preview, disabled delivery, token handling, response uncertainty and timeouts. It does not establish live Meta acceptance.
 
 `tests/meta-context.integration.ts` uses real PostgreSQL and authenticated routes to test evidence selection, ownership, permission boundaries, browser-field exclusion, withdrawal races, expiry and export. The onboarding browser verifier checks a matching return stays unrecorded while processing and records context only after its synthetic billing API reports payment confirmed; it does not perform a real Stripe payment.
+
+`tests/meta-delivery.integration.ts` exercises the real PostgreSQL queue and privacy locks with mocked external HTTP: concurrent workers, durable unknown intent, connection loss, withdrawal/email races, changed financial evidence, partial/full refunds, bounded pagination, destination immutability, retention and family export. `tests/meta-credentials.test.ts` checks private credential handling and disabled/redacted commands. These tests do not establish actual provider acceptance, matching or attribution.
