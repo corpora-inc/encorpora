@@ -76,11 +76,11 @@ Withdrawal and account-wide learning deletion cancel pending enrollment within t
 
 | Records | Deleted |
 |---|---|
-| Learner name, birth year, starting level, generated problems, answers, skill estimates, offline packs | 24 months after the latest of the learner's last practice activity, the family's last purchase activity (order, checkout, payment or funding request) and the scheduled end of the family's latest licence or entitlement. Uses the parent deletion path: a financially linked learner keeps only an opaque "Deleted learner" reference. |
+| Learner profile name, birth year, starting level, generated problems, answers, skill estimates, offline packs | 24 months after the latest of the learner's last practice activity, the family's last purchase activity (order, checkout, payment or funding request) and the scheduled end of the family's latest licence or entitlement. Uses the parent deletion path: the learner profile keeps only an opaque "Deleted learner" reference. Names on verified financial invoices follow the financial period below. |
 | Unsaved anonymous trial and its answers | 14 days after it starts |
 | Trial milestone events and trial records, saved or not | 90 days after creation; a saved trial's learner follows learner retention |
 | Funnel analytics events, visitor records and checkout attribution | 90 days (`funnelEventDays`): events from when they occurred, visitor records from their last event, checkout links from creation. A converted visitor's events first add to monthly counts by event, source, device and grade band, with no visitor ID |
-| Orders, payments, refunds, licences, entitlements, webhook receipts and the opaque learner references in them | 7 years after the later of the last transaction and the end of the licence period bought. A checkout that is still the evidence of a purchase consent first follows the consent-evidence period below. |
+| Orders, payments, refunds, licences, entitlements, webhook receipts, linked funded invoices (including a required student billing name) and their learner references | 7 years after the later of the last transaction and the end of the licence period bought. A checkout that is still the evidence of a purchase consent first follows the consent-evidence period below. |
 | Offline packs and offline answers | 30 days after the pack expires |
 | "Report a problem" reports | Notes: 90 days after sending (`problemFlagNoteDays`). Reports: 365 days (`problemFlagDays`). Deleting a learner's learning data, by a parent or by retention, unlinks their reports and erases the notes first |
 | Privacy activity log | 90 days |

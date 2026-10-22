@@ -46,6 +46,6 @@ Learning-data deletion removes unconverted requests, including drafts for a lear
 
 ## Deployment and program review
 
-Apply migration `0029-funding-invoices.sql` and deploy the compatible API and parent interface before enabling a named-invoice offer. Existing opaque-reference offers and records keep their quote behavior. Do not change an issued offer snapshot or edit an applied migration. Use a new offer revision when document requirements change.
+Apply migration `0029-funding-invoices.sql` and deploy the compatible API and parent interface before enabling a named-invoice offer. Review the deployed parent notice for the student billing-name purpose and financial retention before collecting it. Existing opaque-reference offers and records keep their quote behavior. Do not change an issued offer snapshot or edit an applied migration. Use a new offer revision when document requirements change.
 
 The Arkansas [vendor invoicing guide](https://efavendoronboardingchecklist.my.canva.site/efa-vendor-invoicing-and-payment-guide) requires a student name for services, vendor identification, itemized charges and a total matching the payment request. Rendering these fields does not establish approval for a specific SKU or successful ClassWallet submission. Verify the actual vendor/product route and payment/refund process before activation. The workflow continues to require verified parent consent; it does not modify the deployed consent policy.

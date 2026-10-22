@@ -323,7 +323,7 @@ export function FamilyCenter({
         onSelectLearner?.("");
         onLearningInvalidated();
         setNotice(
-          `${receipt.deletedLearners} learner ${receipt.deletedLearners === 1 ? "history was" : "histories were"} removed from the live application. ${receipt.retainedBillingReferences ? "Only the linked billing references remain. " : ""}${receipt.consentWithdrawn ? "Consent is withdrawn. " : ""}${receipt.billingManagementRequired ? "A billing link remains: check and cancel renewal in billing if needed." : "Check your purchase provider for any renewal commitments."}`,
+          `${receipt.deletedLearners} learner ${receipt.deletedLearners === 1 ? "history was" : "histories were"} removed from the live application. ${receipt.retainedBillingReferences ? "Linked financial records remain, including any student name required on an invoice. " : ""}${receipt.consentWithdrawn ? "Consent is withdrawn. " : ""}${receipt.billingManagementRequired ? "A billing link remains: check and cancel renewal in billing if needed." : "Check your purchase provider for any renewal commitments."}`,
         );
       }
       const epoch = generation.current;
@@ -966,12 +966,13 @@ export function FamilyCenter({
             ) : (
               <>
                 <p>
-                  Saved problems, answers and the learner name will be removed
-                  from the live application. This cannot be undone. Download
-                  your family data first if you want to keep a copy.
+                  Saved problems, answers and the learner profile name will be
+                  removed from the live application. This cannot be undone.
+                  Download your family data first if you want to keep a copy.
                 </p>
                 <p>
-                  Payment records and your parent sign-in remain.{" "}
+                  Payment records, including any student name on a verified
+                  invoice, and your parent sign-in remain.{" "}
                   <strong>This does not cancel a subscription.</strong> Use
                   billing management to check renewal.{" "}
                   {confirmation.learner

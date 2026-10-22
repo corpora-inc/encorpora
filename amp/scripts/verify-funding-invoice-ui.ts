@@ -17,7 +17,7 @@ await writeFile(
 );
 await writeFile(
   new URL("entry.tsx", directory),
-  `import React from 'react';import{createRoot}from'react-dom/client';import{FundingPurchaseCenter}from'../../src/web/FundingPurchaseCenter';import'../../src/web/app/styles';const root=createRoot(document.getElementById('root')!);(window as any).renderInvoice=(identity='synthetic-parent')=>root.render(<FundingPurchaseCenter identity={identity} token='synthetic-token' consentActive learners={[{id:'synthetic-learner',name:'Sample learner'}]} onClose={()=>{}}/>);(window as any).renderInvoice();`,
+  `import React from 'react';import{createRoot}from'react-dom/client';import{FundingPurchaseCenter}from'../../src/web/FundingPurchaseCenter';import'../../src/web/app/styles';const root=createRoot(document.getElementById('root')!);(window as any).renderInvoice=(identity='synthetic-parent')=>root.render(<FundingPurchaseCenter identity={identity} token='synthetic-token' consentActive learners={[{id:'synthetic-learner',name:'Sample learner'},{id:'synthetic-learner-two',name:'Second learner'}]} onClose={()=>{}}/>);(window as any).renderInvoice();`,
 );
 const offer = {
   ...testFundingOffer,
@@ -171,6 +171,25 @@ try {
       );
       await name.waitFor();
       assert.equal(await name.inputValue(), "");
+      if (width === 320 && theme === "light") {
+        await name.fill("Name for first learner");
+        await page
+          .getByRole("button", { name: "Learner: Sample learner", exact: true })
+          .click();
+        await page
+          .getByRole("option", { name: "Second learner", exact: true })
+          .click();
+        assert.equal(await name.inputValue(), "");
+        await name.fill("W".repeat(180));
+        await prepare.click();
+        await download.waitFor();
+        assert.equal(
+          await page.evaluate(
+            () => document.documentElement.scrollWidth <= innerWidth,
+          ),
+          true,
+        );
+      }
       assert.deepEqual(errors, []);
       await page.close();
     }
