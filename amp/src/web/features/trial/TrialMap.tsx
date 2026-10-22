@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { strandNames } from "../../BirthYearPrompt";
 import { FrontierMap, gradeName } from "../../Home";
 import { buttonClass } from "../../ui/Button";
-import { frameCard, PageFrame } from "../../ui/PageFrame";
+import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import {
   catalogOptions,
   progressOptions,
@@ -75,6 +75,7 @@ function MapView({ session }: { session: TrialSession }) {
   return (
     <PageFrame centered>
       <section className={`${frameCard} ${styles.panel}`}>
+        <FrameBrand expanded />
         <p className={styles.eyebrow}>
           {p.phase === "placement" ? "Placement in progress" : "Free practice"}
         </p>
