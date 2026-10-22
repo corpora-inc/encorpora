@@ -134,6 +134,8 @@ Start with [`examples/meta.json`](examples/meta.json). The example budget is nom
 
 The campaign uses Sales, website Purchase optimization, a seven-day click attribution window, and ad-set budgeting in USD cents. Targeting resolves Arkansas from Meta's catalog, includes adults 18 and older, explicitly requests `home`, `recent`, and `frequently_in` location types as returned by Meta v26, and selects only the specified placements. This can include people frequently in Arkansas; it does not identify EFA recipients or guarantee Arkansas residency. The verifier requires exactly those three location types and the selected region; additional countries, regions, or location types fail verification. Advantage audience is disabled. Creative enhancement and multi-advertiser enrollment are explicitly opted out. Platform acceptance and previews must confirm these settings; an offline specification is not proof of API eligibility.
 
+Creative requests use individual v26 enhancement controls; the deprecated `standard_enhancements` field is omitted. Readback must confirm every requested control and every additional returned control is `OPT_OUT`. Missing, unknown, or enabled enrollment states stop setup before ad creation. Meta may append a generated suffix to creative names. After verifying the creative's identity, content, destination and controls, the CLI journals a supported name update and verifies the complete creative again. An uncertain update requires reconciliation before retrying; a completed journal replays without another update.
+
 Store the operator configuration outside this public repository:
 
 ```json
