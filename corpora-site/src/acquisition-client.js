@@ -1,7 +1,7 @@
 // First-party acquisition on the parent-facing AMP and EFA pages; no learning events.
 (() => {
   const script = document.querySelector("script[data-acquisition-endpoint]");
-  if (!script || !["/amp/", "/esa/arkansas-efa/"].includes(location.pathname)) return;
+  if (!script || !["/amp/", "/esa/arkansas-efa/", "/esa/arizona-esa/"].includes(location.pathname)) return;
   const query = new URLSearchParams(location.search);
   const ids = ["gclid", "gbraid", "wbraid", "fbclid"];
   const opaque = /^[A-Za-z0-9._~+=/-]{1,2048}$/;
@@ -26,8 +26,8 @@
   }
   if (!optedOut && !clicks.length) return;
   const labels = {};
-  if (query.get("utm_campaign") === "ar-efa-launch") {
-    labels.campaign = "ar-efa-launch";
+  if (["ar-efa-launch", "az-esa-launch"].includes(query.get("utm_campaign"))) {
+    labels.campaign = query.get("utm_campaign");
     labels.source = ["facebook","instagram","google","email","youtube"].includes(query.get("utm_source")) ? query.get("utm_source") : "direct";
     labels.medium = ["paid-social","cpc","email","organic-social"].includes(query.get("utm_medium")) ? query.get("utm_medium") : "none";
     const creative = query.get("utm_content");
@@ -37,7 +37,7 @@
     void fetch(script.dataset.acquisitionEndpoint, {
       method:"POST", credentials:"include", referrerPolicy:"no-referrer", keepalive:true,
       headers:{"Content-Type":"application/json"},
-      body:JSON.stringify(optedOut ? {optOut:true} : {clicks,...(labels.campaign ? {labels} : {})}),
+      body:JSON.stringify(optedOut ? {optOut:true} : {clicks,sourcePath:location.pathname,...(labels.campaign ? {labels} : {})}),
     }).catch(()=>{});
   } catch { /* Acquisition never blocks trying or buying the product. */ }
 })();
