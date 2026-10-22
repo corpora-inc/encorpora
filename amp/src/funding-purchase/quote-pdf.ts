@@ -66,7 +66,17 @@ export async function validateInvoiceStudentName(value: string): Promise<void> {
 }
 
 export async function renderFundingQuotePdf(
-  request: FundingRequest,
+  request:
+    | FundingRequest
+    | Pick<
+        FundingRequest,
+        | "id"
+        | "offer"
+        | "createdAt"
+        | "expiresAt"
+        | "studentBillingName"
+        | "learnerId"
+      >,
 ): Promise<Uint8Array> {
   const o = request.offer;
   const invoice = o.documentPolicy === "named-student-invoice";

@@ -79,13 +79,7 @@ export function Paywall() {
   return (
     <PlansView
       key={reason}
-      program={
-        search.program === "ar-efa"
-          ? fundedPrograms["arkansas-efa"]
-          : search.program === "az-esa"
-            ? fundedPrograms["arizona-esa"]
-            : undefined
-      }
+      programId={search.program}
       reason={reason}
       run={run}
       catalog={catalog.data}
@@ -97,7 +91,7 @@ export function Paywall() {
 }
 
 function PlansView({
-  program,
+  programId,
   reason,
   run,
   catalog,
@@ -105,7 +99,7 @@ function PlansView({
   signedIn,
   record,
 }: {
-  program?: (typeof fundedPrograms)[keyof typeof fundedPrograms];
+  programId?: string;
   reason: "limit" | "choice";
   run: TrialProgress | null;
   catalog: TrialCatalog;
@@ -203,7 +197,7 @@ function PlansView({
         ) : (
           <>
             <p className={styles.lede}>
-              {program
+              {programId
                 ? "Card checkout isn’t available."
                 : "Enrollment isn’t open yet."}{" "}
               Your free practice stays saved on this device.
@@ -215,20 +209,28 @@ function PlansView({
             </div>
           </>
         )}
-        {program ? (
-          <Link className={styles.esa} to={program.path}>
-            Use {program.name} funds
-          </Link>
-        ) : (
-          <a
-            className={styles.esa}
-            href={ESA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Paying with education savings funds?
+        <div className={styles.esa}>
+          <p>Pay with education funds</p>
+          {Object.values(fundedPrograms)
+            .filter((program) =>
+              programId
+                ? program.id === programId
+                : program.id === "ar-efa" || program.id === "az-esa",
+            )
+            .map((program) => (
+              <Link
+                key={program.slug}
+                className={buttonClass("secondary")}
+                to={`/invoice/${program.slug}`}
+                onClick={() => rememberPlanChoice(interval)}
+              >
+                Use {program.name} funds
+              </Link>
+            ))}
+          <a href={ESA_URL} target="_blank" rel="noopener noreferrer">
+            Other programs
           </a>
-        )}
+        </div>
       </section>
       <Dialog
         open={asking}

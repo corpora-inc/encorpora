@@ -293,6 +293,25 @@ const fundedArizona = createRoute({
     "FundedEntry",
   ),
 });
+const invoiceForm = lazyRouteComponent(
+  () => import("../features/funding/InvoiceForm"),
+  "InvoiceForm",
+);
+const invoiceArkansas = createRoute({
+  getParentRoute: () => root,
+  path: "/invoice/arkansas-efa",
+  component: invoiceForm,
+});
+const invoiceArizona = createRoute({
+  getParentRoute: () => root,
+  path: "/invoice/arizona-esa",
+  component: invoiceForm,
+});
+const invoiceNewHampshire = createRoute({
+  getParentRoute: () => root,
+  path: "/invoice/new-hampshire-efa",
+  component: invoiceForm,
+});
 const fallback = createRoute({
   getParentRoute: () => root,
   path: "/$",
@@ -320,6 +339,9 @@ export const router = createRouter({
     funded,
     fundedNewHampshire,
     fundedArizona,
+    invoiceArkansas,
+    invoiceArizona,
+    invoiceNewHampshire,
     fallback,
   ]),
   history: nativeRuntime
