@@ -1,3 +1,11 @@
+import {
+  eraseAccountAdClicks,
+  invoiceAcquisitionSnapshot,
+} from "../advertising/click-evidence.js";
+import {
+  fundedCampaignSchema,
+  incrementFundedCampaign,
+} from "../analytics/funded-campaign.js";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { PoolClient } from "pg";
@@ -74,7 +82,11 @@ export class FundingInvoiceRepository {
       (o) => o.documentPolicy === "named-student-invoice",
     );
   }
-  async create(input: unknown, at = new Date()): Promise<PrivateInvoiceIntent> {
+  async create(
+    input: unknown,
+    at = new Date(),
+    acquisition?: string,
+  ): Promise<PrivateInvoiceIntent> {
     const data = createInvoiceIntentSchema.parse(input);
     await validateInvoiceStudentName(data.studentBillingName);
     // A random key is not an ownership credential; exact billing fields are also
@@ -113,8 +125,25 @@ export class FundingInvoiceRepository {
         const expiresAt = new Date(
           Math.min(at.getTime() + 30 * 86400000, Date.parse(offer.validUntil)),
         );
+        let attribution: Awaited<
+          ReturnType<typeof invoiceAcquisitionSnapshot>
+        > = null;
+        await client.query("SAVEPOINT invoice_acquisition");
+        try {
+          attribution = await invoiceAcquisitionSnapshot(
+            client,
+            acquisition,
+            offer,
+            at,
+          );
+          await client.query("RELEASE SAVEPOINT invoice_acquisition");
+        } catch {
+          await client.query("ROLLBACK TO SAVEPOINT invoice_acquisition");
+          await client.query("RELEASE SAVEPOINT invoice_acquisition");
+          console.warn("Invoice acquisition snapshot unavailable");
+        }
         const result = await client.query(
-          `INSERT INTO amp_funding_invoice_intents(id,idempotency_key,parent_email,student_billing_name,offer_snapshot,created_at,expires_at) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
+          `INSERT INTO amp_funding_invoice_intents(id,idempotency_key,parent_email,student_billing_name,offer_snapshot,created_at,expires_at,acquisition_journey_id,campaign_attribution) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`,
           [
             randomUUID(),
             data.idempotencyKey,
@@ -123,6 +152,8 @@ export class FundingInvoiceRepository {
             JSON.stringify(offer),
             at.toISOString(),
             expiresAt.toISOString(),
+            attribution?.journeyId ?? null,
+            attribution?.labels ? JSON.stringify(attribution.labels) : null,
           ],
         );
         return rowIntent(result.rows[0]);
@@ -184,6 +215,7 @@ export class FundingInvoiceRepository {
     id: string,
     learnerId: string,
     at = new Date(),
+    attributionAllowed = true,
   ): Promise<FundingRequest> {
     return this.funding.transaction(account, async (client) => {
       const email = await this.verifiedEmail(client, account);
@@ -195,6 +227,47 @@ export class FundingInvoiceRepository {
       );
       if (!learner.rowCount)
         throw new FundingPurchaseError(404, "learner_not_found");
+      // Match retention's journey -> invoice lock order. Reserve an anonymous
+      // journey only after the authenticated parent and learner are verified.
+      let retainedJourney: string | null = null;
+      let withdrawn = false;
+      let acquisitionFailed = false;
+      await client.query("SAVEPOINT invoice_claim_acquisition");
+      try {
+        const withdrawals = await client.query<{ provider: "google" | "meta" }>(
+          "SELECT provider FROM amp_ad_collection_withdrawals WHERE account_id=$1",
+          [account],
+        );
+        withdrawn = withdrawals.rows.length > 0;
+        if (attributionAllowed) {
+          const journey = (
+            await client.query(
+              `SELECT j.id FROM amp_ad_click_journeys j
+             JOIN amp_funding_invoice_intents i ON i.acquisition_journey_id=j.id
+             WHERE i.id=$1 AND i.parent_email=$2 AND i.state='prepared'
+               AND (j.account_id IS NULL OR j.account_id=$3) AND j.expires_at>clock_timestamp()
+             FOR UPDATE OF j`,
+              [id, email, account],
+            )
+          ).rows[0];
+          if (journey) {
+            retainedJourney = journey.id;
+            await client.query(
+              "UPDATE amp_ad_click_journeys SET account_id=$2 WHERE id=$1 AND account_id IS NULL",
+              [retainedJourney, account],
+            );
+            for (const { provider } of withdrawals.rows)
+              await eraseAccountAdClicks(client, account, provider);
+          }
+        }
+        await client.query("RELEASE SAVEPOINT invoice_claim_acquisition");
+      } catch {
+        await client.query("ROLLBACK TO SAVEPOINT invoice_claim_acquisition");
+        await client.query("RELEASE SAVEPOINT invoice_claim_acquisition");
+        retainedJourney = null;
+        acquisitionFailed = true;
+        console.warn("Invoice acquisition claim unavailable");
+      }
       const rows = await client.query(
         "SELECT * FROM amp_funding_invoice_intents WHERE id=$1 AND parent_email=$2 FOR UPDATE",
         [id, email],
@@ -202,6 +275,11 @@ export class FundingInvoiceRepository {
       if (!rows.rowCount)
         throw new FundingPurchaseError(404, "invoice_not_found");
       const intent = rowIntent(rows.rows[0]);
+      if (!attributionAllowed || acquisitionFailed)
+        await client.query(
+          "UPDATE amp_funding_invoice_intents SET acquisition_journey_id=NULL,campaign_attribution=NULL WHERE id=$1",
+          [id],
+        );
       if (intent.state === "claimed") {
         const existing = await client.query(
           "SELECT * FROM amp_funding_requests WHERE id=$1 AND account_id=$2 AND learner_id=$3",
@@ -224,8 +302,13 @@ export class FundingInvoiceRepository {
         )
       )
         throw new FundingPurchaseError(409, "offer_unavailable");
+      const attribution =
+        retainedJourney !== null &&
+        retainedJourney === rows.rows[0].acquisition_journey_id;
+      const labels =
+        attribution && !withdrawn ? rows.rows[0].campaign_attribution : null;
       const result = await client.query(
-        `INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,offer_id,offer_revision,offer_snapshot,created_at,expires_at,student_billing_name) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
+        `INSERT INTO amp_funding_requests(id,account_id,learner_id,idempotency_key,offer_id,offer_revision,offer_snapshot,created_at,expires_at,student_billing_name,campaign_attribution) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
         [
           id,
           account,
@@ -237,8 +320,30 @@ export class FundingInvoiceRepository {
           intent.createdAt,
           intent.expiresAt,
           intent.studentBillingName,
+          null,
         ],
       );
+      if (labels) {
+        await client.query("SAVEPOINT invoice_campaign");
+        try {
+          await client.query(
+            "UPDATE amp_funding_requests SET campaign_attribution=$2 WHERE id=$1",
+            [id, JSON.stringify(fundedCampaignSchema.parse(labels))],
+          );
+          await incrementFundedCampaign(
+            client,
+            labels,
+            "request_prepared",
+            intent.createdAt,
+          );
+          await client.query("RELEASE SAVEPOINT invoice_campaign");
+          result.rows[0].campaign_attribution = labels;
+        } catch {
+          await client.query("ROLLBACK TO SAVEPOINT invoice_campaign");
+          await client.query("RELEASE SAVEPOINT invoice_campaign");
+          console.warn("Invoice campaign binding unavailable");
+        }
+      }
       await client.query(
         "UPDATE amp_funding_invoice_intents SET state='claimed',claimed_account_id=$2,claimed_request_id=id WHERE id=$1",
         [id, account],
