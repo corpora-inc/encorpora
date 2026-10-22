@@ -6,6 +6,7 @@ import Fastify from "fastify";
 import { migrate } from "../scripts/migrate";
 import { arkansasOrderSummary } from "../src/analytics/campaign-orders";
 import { registerCampaignRoutes } from "../src/analytics/campaign-routes";
+import { CAMPAIGN_CREATIVES } from "../src/analytics/campaign";
 
 test(
   "campaign POST persists counts without creating visitor or invoice records",
@@ -93,6 +94,21 @@ test(
         ).rows[0].n,
         0,
       );
+      // A new API label also needs a deployed database CHECK extension. This
+      // exercises the real schema so an incomplete allowlist change fails CI.
+      for (const creative of CAMPAIGN_CREATIVES)
+        assert.equal(
+          (
+            await app.inject({
+              method: "POST",
+              url: "/api/v1/campaign-events",
+              headers: { origin: "https://example.test" },
+              payload: { ...payload, creative },
+            })
+          ).statusCode,
+          202,
+          creative,
+        );
       assert.equal(
         (await pool.query("SELECT count(*) FROM amp_funnel_visitors")).rows[0]
           .count,
