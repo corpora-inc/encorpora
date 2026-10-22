@@ -1,3 +1,5 @@
+import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
+import type { ProblemHint } from "../../math/contracts";
 import {
   refreshMe,
   sessionOptions,
@@ -252,8 +254,8 @@ function LegacyScreen() {
     familySummary?.consent.status === "active" ||
     familySummary?.consent.status === "development";
   const [family, setFamily] = useState(""),
-    [problem, setProblem] = useState<PublicProblem | null>(null),
-    [queue, setQueue] = useState<PublicProblem[]>([]),
+    [problem, setProblem] = useState<HintedProblem | null>(null),
+    [queue, setQueue] = useState<HintedProblem[]>([]),
     [lesson, setLesson] = useState<Lesson | null>(null),
     [lessonSearch, setLessonSearch] = useState("");
   const [books, setBooks] = useState<BookSummary[]>([]);
@@ -327,6 +329,7 @@ function LegacyScreen() {
     [pending, setPending] = useState<{
       requestId: string;
       response: string;
+      hintViewed?: boolean;
     } | null>(null);
   useLoggedError(error);
   function updateAuth(session: AuthSession | null) {
@@ -389,6 +392,7 @@ function LegacyScreen() {
     setQueue([]);
     setOutcome(null);
     setHint("");
+    setHintCue(null);
     setPending(null);
     setResponse("");
     setError("");
@@ -795,21 +799,26 @@ function LegacyScreen() {
     progressLessonReturn.current = skillId;
     setReadingLesson(selected);
   }
-  function showProblem(p: PublicProblem) {
+  function showProblem(p: HintedProblem) {
     setProblem(p);
     setResponse("");
     setOutcome(null);
     setHint("");
+    setHintCue(null);
     setPending(null);
   }
-  type Batch = { problems: PublicProblem[]; lesson: Lesson | null };
+  type Batch = {
+    problems: HintedProblem[];
+    lesson: Lesson | null;
+    hints?: Record<string, ProblemHint>;
+  };
   function requestBatch(templateId = family) {
     return api<Batch>(`/learners/${learner!.id}/batches`, {
       ...(templateId ? { templateId } : {}),
       count: 1,
       responseCapabilities: ["single-choice-v1"],
       figureCapabilities: [...figureCapabilities],
-    });
+    }).then(withProblemHints);
   }
   // The next problem is planned as soon as an answer is recorded, so it adapts
   // to that answer and is already on hand when the learner continues.
@@ -873,7 +882,11 @@ function LegacyScreen() {
   }
   async function submit() {
     if (!learner || !problem) return;
-    const attempt = pending ?? { requestId: crypto.randomUUID(), response };
+    const attempt = pending ?? {
+      requestId: crypto.randomUUID(),
+      response,
+      ...(problem.hintSupport && hint ? { hintViewed: true } : {}),
+    };
     setPending(attempt);
     try {
       const result = await api<Outcome>(`/learners/${learner.id}/attempts`, {
@@ -1479,7 +1492,15 @@ function LegacyScreen() {
                 )
               ).lesson
             }
-            requestHint={() =>
+            requestHint={() => {
+              if (problem.hintSupport) {
+                const data = problem.hintSupport;
+                setHint(data.hint);
+                setHintCue(
+                  data.cue ? { problemId: problem.id, steps: data.cue } : null,
+                );
+                return;
+              }
               void action(async () => {
                 const data = await api<{ hint: string; cue?: Step[] }>(
                   `/learners/${learner.id}/hints`,
@@ -1489,8 +1510,8 @@ function LegacyScreen() {
                 setHintCue(
                   data.cue ? { problemId: problem.id, steps: data.cue } : null,
                 );
-              })
-            }
+              });
+            }}
           />
         ) : (learner.birthYear != null || problem) && !changingBirthYear ? (
           <Home

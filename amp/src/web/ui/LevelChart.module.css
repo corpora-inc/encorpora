@@ -61,27 +61,33 @@
 }
 .axis {
   position: relative;
-  display: block;
-  height: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 12px;
+  min-height: 18px;
   font-size: 12px;
   font-weight: 600;
   line-height: 18px;
   color: var(--color-subtle-text);
   font-variant-numeric: tabular-nums;
 }
-.axis span {
+.axisStart,
+.axisEnd {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.axisStart {
+  justify-self: start;
+}
+.axisEnd {
+  justify-self: end;
+  text-align: right;
+}
+.axisCenter {
   position: absolute;
   top: 0;
   white-space: nowrap;
-}
-.axis span:nth-child(1) {
-  left: 0;
-}
-.axis span:nth-child(2) {
   transform: translateX(-50%);
-}
-.axis span:nth-child(3) {
-  right: 0;
 }
 .trend {
   position: relative;

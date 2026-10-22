@@ -534,7 +534,7 @@ export function PracticeWorkspace(props: Props) {
         ) : (
           <button
             className="text-button"
-            disabled={busy}
+            disabled={busy || props.pending}
             onClick={() => {
               setPanel("hint");
               if (!hint) props.requestHint();

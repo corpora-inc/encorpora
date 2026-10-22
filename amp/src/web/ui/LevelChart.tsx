@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import { levelRange, type TrendPoint } from "../../learning/level-check";
 import styles from "./LevelChart.module.css";
 
@@ -76,14 +76,46 @@ export function LevelAxis({
   scale: LevelScale;
   name: (level: number) => string;
 }) {
+  const axis = useRef<HTMLSpanElement>(null);
+  const [showCenter, setShowCenter] = useState(false);
+  const low = name(scale.lo),
+    center = name(scale.center),
+    high = name(scale.hi);
+  useLayoutEffect(() => {
+    const element = axis.current;
+    if (!element) return;
+    const labels = [...element.children] as HTMLElement[];
+    const measure = () => {
+      const [left, middle, right] = labels.map((label) =>
+        label.getBoundingClientRect(),
+      );
+      setShowCenter(
+        center !== low &&
+          center !== high &&
+          middle!.left >= left!.right + 8 &&
+          middle!.right + 8 <= right!.left,
+      );
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(element);
+    labels.forEach((label) => observer.observe(label));
+    return () => observer.disconnect();
+  }, [low, center, high, scale.lo, scale.hi, scale.center]);
   return (
-    <span className={styles.axis} aria-hidden="true">
-      <span>{name(scale.lo)}</span>
-      <span style={{ left: pct(scaleAt(scale, scale.center)) }}>
-        {name(scale.center)}
+    <span ref={axis} className={styles.axis} aria-hidden="true">
+      <span className={styles.axisStart}>{low}</span>
+      <span
+        className={styles.axisCenter}
+        style={{
+          left: pct(scaleAt(scale, scale.center)),
+          visibility: showCenter ? "visible" : "hidden",
+        }}
+      >
+        {center}
       </span>
-      <span>
-        {name(scale.hi)}
+      <span className={styles.axisEnd}>
+        {high}
         {scale.hi < COLLEGE ? "+" : ""}
       </span>
     </span>
