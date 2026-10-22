@@ -12,6 +12,11 @@ import {
 } from "./click-identifiers.js";
 
 export const AD_CLICK_SOURCE_URL = "https://corpora.inc/esa/arkansas-efa/";
+export const adClickSourceSchema = z.enum([
+  AD_CLICK_SOURCE_URL,
+  "https://corpora.inc/amp/",
+  "https://corpora.inc/esa/arizona-esa/",
+]);
 const tokenSchema = z.string().regex(/^[a-f0-9]{64}$/);
 const digest = (v: string) => createHash("sha256").update(v).digest("hex");
 const targetSchema = z.discriminatedUnion("kind", [
@@ -32,7 +37,9 @@ export async function retainAdClick(
   token?: string,
   labels?: FundedCampaign,
   predecessorToken?: string,
+  sourceUrl: string = AD_CLICK_SOURCE_URL,
 ) {
+  sourceUrl = adClickSourceSchema.parse(sourceUrl);
   const parsed = clickEvidenceSchema.safeParse(input);
   if (
     !parsed.success ||
@@ -133,7 +140,7 @@ export async function retainAdClick(
       identifiers,
       key,
       now,
-      AD_CLICK_SOURCE_URL,
+      sourceUrl,
       clickKey,
       firstObserved ?? now,
       campaignLabels,

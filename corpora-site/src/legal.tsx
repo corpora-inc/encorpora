@@ -139,7 +139,7 @@ export function Legal({
           </p>
           <h2>Ad clicks and purchases</h2>
           <p>
-            When you follow an ad to the Arkansas funding page, our server may
+            When you follow an ad to the AMP overview or Arkansas funding page, our server may
             retain its Google or Meta click identifier, existing Meta browser
             identifiers, the observation time and fixed campaign labels for up
             to 90 days. A secure, host-only browser cookie contains a random
