@@ -152,6 +152,8 @@ References: [Google Ads MCP](https://developers.google.com/google-ads/api/docs/d
 
 ## Google purchase measurement authorization
 
+Before accepting Google's customer-data declaration or enabling enhanced-conversion uploads, establish eligibility under [Google's customer data policies](https://support.google.com/google-ads/answer/7475709?hl=en). The restriction covers data collected from sites or apps directed to children under 13, even when the selected fields describe an adult purchaser. Adult consent and hashing do not establish that eligibility. Keep exports disabled while the collection surface's classification is unresolved; see the [measurement prerequisites](../../../amp/docs/google-purchase-measurement.md#prerequisites). Paused campaign preparation does not require customer-data uploads.
+
 Add `--measurement` when running `auth-google.py` to request the Data Manager scope alongside Google Ads. The default continues to request Ads only. The helper refuses to overwrite a token file; preserve existing credentials and use a new approved destination when adding scopes. Neither authorization nor a validation-only API request establishes parent permission to share data.
 
 New offline-conversion integrations use Google's [Data Manager API](https://developers.google.com/data-manager/api/devguides/events/google-ads/offline). AMP's [transport contract and outstanding integration requirements](../../../amp/docs/google-purchase-measurement.md) describe the separate adult-permission, verified-payment, delivery and refund responsibilities. Campaign creation does not install this integration.
