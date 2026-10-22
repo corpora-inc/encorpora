@@ -1,3 +1,4 @@
+import { advertisingOptOut } from "../advertising/permission-contracts.js";
 import {
   rememberVerifiedProvider,
   sessionMethodAuthority,
@@ -517,6 +518,7 @@ export function accountsAuth({ auth }: Accounts): Authenticator {
 export async function registerAccountRoutes(
   app: FastifyInstance,
   { auth, config }: Accounts,
+  privacyAuthenticate?: Authenticator,
 ) {
   // Tells the browser which sign-in methods this deployment offers.
   app.get("/api/v1/auth-config", async () => ({
@@ -537,6 +539,23 @@ export async function registerAccountRoutes(
       url: "/api/auth/*",
       config: { rateLimit: { max: 60, timeWindow: "1 minute" } },
       handler: async (request, reply) => {
+        if (privacyAuthenticate && advertisingOptOut(request.headers)) {
+          try {
+            await privacyAuthenticate(request);
+          } catch (error) {
+            // Anonymous sign-in/signup requests have no account to withdraw.
+            // Never take identity from their body or a URL parameter.
+            if (!(
+              error &&
+              typeof error === "object" &&
+              "statusCode" in error &&
+              error.statusCode === 401
+            ))
+              return reply
+                .code(503)
+                .send({ error: "purchase_measurement_unavailable" });
+          }
+        }
         const headers = fromNodeHeaders(request.headers);
         headers.set(CLIENT_IP_HEADER, request.ip);
         const body =

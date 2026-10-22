@@ -1,3 +1,4 @@
+import { PurchaseMeasurement } from "./features/privacy/PurchaseMeasurement";
 import { Toast } from "./ui/Toast";
 import { useLoggedError, requestMessage } from "./feedback";
 import { useAppRoute, type FamilySection } from "./app-routes";
@@ -93,8 +94,11 @@ export function FamilyCenter({
   };
   const privacy =
     section === "privacy" &&
-    ["export", "consent", "delete", "retention"].includes(route.parts[2])
-      ? (route.parts[2] as "export" | "consent" | "delete" | "retention")
+    ["export", "consent", "delete", "retention", "measurement"].includes(
+      route.parts[2],
+    )
+      ? (route.parts[2] as
+          "export" | "consent" | "delete" | "retention" | "measurement")
       : null;
   const setPrivacy = (value: typeof privacy) => {
     if (value) route.navigate(`/family/privacy/${value}`);
@@ -792,7 +796,7 @@ export function FamilyCenter({
             )}
             {section === "privacy" && !privacy && (
               <section className="family-section privacy-choices">
-                <h2 tabIndex={-1}>Your learning records</h2>
+                <h2 tabIndex={-1}>Privacy and records</h2>
                 {(
                   [
                     [
@@ -815,6 +819,15 @@ export function FamilyCenter({
                       "What is retained?",
                       "Understand billing, sign-in, and backups.",
                     ],
+                    ...(family.purchaseMeasurement?.available && !nativeRuntime
+                      ? [
+                          [
+                            "measurement",
+                            "Purchase measurement",
+                            "Choose whether Google receives adult purchase details.",
+                          ] as const,
+                        ]
+                      : []),
                   ] as const
                 ).map(([key, title, detail]) => (
                   <button
@@ -837,9 +850,20 @@ export function FamilyCenter({
                 ← Privacy choices
               </button>
             )}
+            {section === "privacy" &&
+              privacy === "measurement" &&
+              family.purchaseMeasurement?.available &&
+              !nativeRuntime && (
+                <PurchaseMeasurement
+                  key={identity}
+                  view={family.purchaseMeasurement}
+                  token={token}
+                  identity={identity}
+                />
+              )}
             {section === "privacy" && privacy === "export" && (
               <section className="family-section">
-                <h2 tabIndex={-1}>Your learning records</h2>
+                <h2 tabIndex={-1}>Privacy and records</h2>
                 <p>
                   Download an NDJSON file containing this account’s learners,
                   problems, answers, licenses, orders and privacy activity. This
