@@ -198,7 +198,7 @@ export async function measurementPaymentPage(
   limit = 100,
 ): Promise<{ references: PaymentReference[]; next: string | null }> {
   const sources = measurementSourcesSchema.parse(rawSources);
-  z.enum(["stripe", "arkansas-efa"]).parse(kind);
+  z.enum(["stripe", "arkansas-efa", "arizona-esa"]).parse(kind);
   z.number().int().min(1).max(200).parse(limit);
   if (after !== null) paymentReferenceSchema.parse({ kind, id: after });
   let result;
@@ -210,13 +210,23 @@ export async function measurementPaymentPage(
       [sources.stripeNamespace, after, limit + 1],
     );
   } else {
-    if (!sources.efaChannelReference) return { references: [], next: null };
+    const channel =
+      kind === "arizona-esa"
+        ? sources.azEsaChannelReference
+        : sources.efaChannelReference;
+    if (!channel) return { references: [], next: null };
     result = await pool.query(
       `SELECT o.id FROM amp_commerce_orders o JOIN amp_funding_requests r ON r.order_id=o.id AND r.account_id=o.account_id
        WHERE o.channel='esa' AND o.channel_reference=$1 AND ($2::text IS NULL OR o.id>$2)
-       AND r.offer_snapshot->>'programId'='ar-efa' AND r.offer_snapshot->>'jurisdiction'='AR'
+       AND r.offer_snapshot->>'programId'=$4 AND r.offer_snapshot->>'jurisdiction'=$5
        ORDER BY o.id LIMIT $3`,
-      [sources.efaChannelReference, after, limit + 1],
+      [
+        channel,
+        after,
+        limit + 1,
+        kind === "arizona-esa" ? "az-esa" : "ar-efa",
+        kind === "arizona-esa" ? "AZ" : "AR",
+      ],
     );
   }
   const references = result.rows
