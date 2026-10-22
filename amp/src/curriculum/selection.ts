@@ -9,7 +9,7 @@ export interface SelectionObjective {
   basis: "editorial";
   skills: readonly string[];
 }
-export const CURRICULUM_MIX_VERSION = "2026-10-21.1";
+export const CURRICULUM_MIX_VERSION = "2026-10-22.1";
 // objective | instructional importance | assessment emphasis | member skills
 // 6 = central, 3 = regular, 1 = extension; intermediate values are intentional.
 const rows = `
@@ -134,4 +134,24 @@ export function auditSelectionCatalog(
       .filter((id) => !knownTemplates.has(id))
       .map((id) => `Unknown weighted family: ${id}`),
   ];
+}
+
+/** Build explicit objective weights for a policy. Zero uses instructional importance;
+ * one uses editorial assessment emphasis. Neither is an empirical item frequency. */
+export function objectiveExposureWeights(
+  assessmentBlend: number,
+): Record<string, number> {
+  if (
+    !Number.isFinite(assessmentBlend) ||
+    assessmentBlend < 0 ||
+    assessmentBlend > 1
+  )
+    throw new Error("Assessment blend must be between 0 and 1");
+  return Object.fromEntries(
+    selectionObjectives.map((o) => [
+      o.id,
+      (1 - assessmentBlend) * o.importance +
+        assessmentBlend * o.assessmentEmphasis,
+    ]),
+  );
 }

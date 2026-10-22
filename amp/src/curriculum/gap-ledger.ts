@@ -1,3 +1,4 @@
+import { buildAssessmentSampleAudit } from "./assessment-sample";
 import { skills, standards } from "./catalog";
 import { coverageTargets } from "./coverage-targets";
 import { buildCoverageManifest, type CoverageInput } from "../content/coverage";
@@ -47,7 +48,7 @@ export const initialGapTasks: readonly GapTask[] = [
     objective:
       "Connect arc length, radian measure, unit-circle coordinates and trigonometric values.",
     existingSupport:
-      "Arc/sector measurement and special right triangles have practice; the radian and unit-circle skill has no bound family.",
+      "Arc/sector measurement, special right triangles and radian-arc-ratio have practice. Degree conversion and signed unit-circle coordinates still require bound families.",
     acceptance: [
       "Start with angle as arc length divided by radius, then degrees/radians conversions.",
       "Connect signed coordinates to sine and cosine, including quadrants and axis angles.",
@@ -256,6 +257,9 @@ export function buildGapLedger(input: CoverageInput = {}) {
     // Narrow gap tasks are intentionally separate from the broad facet statuses.
     // Never mark them complete merely because a related skill has a template.
     initialTasks: initialGapTasks,
+    assessmentSample: buildAssessmentSampleAudit(
+      rows.flatMap((row) => row.templateIds),
+    ),
   };
 }
 
@@ -288,6 +292,17 @@ export function renderGapLedger(
     "| --- | ---: | ---: |",
     ...report.grades.map(
       (g) => `| ${g.gradeBand} | ${g.withPractice} | ${g.skills} |`,
+    ),
+    "",
+    "## Released-test sample",
+    "",
+    "Purposive gap-finding sample; not a test-frequency estimate or complete standards inventory.",
+    "",
+    "| Source/item | Requirement | Related practice | Remaining scope |",
+    "| --- | --- | --- | --- |",
+    ...report.assessmentSample.items.map(
+      (item) =>
+        `| ${cell(item.sourceId + " / " + item.item)} | ${cell(item.requirement)} | ${item.availableTemplateIds.join(", ") || "—"} | ${cell(item.limitations)} |`,
     ),
     "",
     "## Initial gap tasks",
