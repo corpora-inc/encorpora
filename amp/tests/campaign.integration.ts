@@ -6,6 +6,7 @@ import Fastify from "fastify";
 import { migrate } from "../scripts/migrate";
 import { arkansasOrderSummary } from "../src/analytics/campaign-orders";
 import { registerCampaignRoutes } from "../src/analytics/campaign-routes";
+import { CAMPAIGN_CREATIVES } from "../src/analytics/campaign";
 
 test(
   "campaign POST persists counts without creating visitor or invoice records",
@@ -52,6 +53,62 @@ test(
         await pool.query("SELECT action,count FROM amp_campaign_daily")
       ).rows;
       assert.deepEqual(rows, [{ action: "invoice_click", count: "2" }]);
+      for (const creative of [
+        "efa-facebook-feed-v1",
+        "efa-facebook-feed-v1",
+        "efa-facebook-vertical-v1",
+      ]) {
+        assert.equal(
+          (
+            await app.inject({
+              method: "POST",
+              url: "/api/v1/campaign-events",
+              headers: { origin: "https://example.test" },
+              payload: { ...payload, creative },
+            })
+          ).statusCode,
+          202,
+        );
+      }
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT creative,count FROM amp_campaign_creative_daily ORDER BY creative",
+          )
+        ).rows,
+        [
+          { creative: "efa-facebook-feed-v1", count: "2" },
+          { creative: "efa-facebook-vertical-v1", count: "1" },
+        ],
+      );
+      assert.equal(
+        (await pool.query("SELECT count FROM amp_campaign_daily")).rows[0]
+          .count,
+        "5",
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_campaign_creative_daily WHERE day != (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date",
+          )
+        ).rows[0].n,
+        0,
+      );
+      // A new API label also needs a deployed database CHECK extension. This
+      // exercises the real schema so an incomplete allowlist change fails CI.
+      for (const creative of CAMPAIGN_CREATIVES)
+        assert.equal(
+          (
+            await app.inject({
+              method: "POST",
+              url: "/api/v1/campaign-events",
+              headers: { origin: "https://example.test" },
+              payload: { ...payload, creative },
+            })
+          ).statusCode,
+          202,
+          creative,
+        );
       assert.equal(
         (await pool.query("SELECT count(*) FROM amp_funnel_visitors")).rows[0]
           .count,

@@ -58,13 +58,15 @@ const root = createRootRoute({
   component: Outlet,
   validateSearch: (search): z.infer<typeof searchSchema> & CampaignSearch => {
     const parsed = searchSchema.parse(search);
-    const { utm_source, utm_medium, utm_campaign, ...rest } = parsed;
+    const { utm_source, utm_medium, utm_campaign, utm_content, ...rest } =
+      parsed;
     return {
       ...rest,
       utm_source: undefined,
       utm_medium: undefined,
       utm_campaign: undefined,
-      ...campaignSearch({ utm_source, utm_medium, utm_campaign }),
+      utm_content: undefined,
+      ...campaignSearch({ utm_source, utm_medium, utm_campaign, utm_content }),
     };
   },
   search: {
@@ -74,6 +76,7 @@ const root = createRootRoute({
           "utm_source",
           "utm_medium",
           "utm_campaign",
+          "utm_content",
           "program",
         ])({ search, next });
         // Validation merges into raw router search. Explicitly erase rejected
@@ -83,6 +86,7 @@ const root = createRootRoute({
           utm_source: undefined,
           utm_medium: undefined,
           utm_campaign: undefined,
+          utm_content: undefined,
           ...campaignSearch(result),
           program:
             result.program === "ar-efa" ? ("ar-efa" as const) : undefined,

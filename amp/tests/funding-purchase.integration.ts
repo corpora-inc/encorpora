@@ -54,6 +54,7 @@ const campaignAttribution = {
   campaign: "ar-efa-launch",
   source: "facebook",
   medium: "paid-social",
+  creative: "efa-product-v1",
 } as const;
 const arkansasOffer = { ...offer, programId: "ar-efa", jurisdiction: "AR" };
 async function campaignCounts(pool: Pool) {
@@ -191,7 +192,11 @@ test(
       assert.equal(new Set(results.map((r) => r.id)).size, 1);
       await repo.create("owner", {
         ...input,
-        campaignAttribution: { ...campaignAttribution, source: "google" },
+        campaignAttribution: {
+          ...campaignAttribution,
+          source: "google",
+          creative: "efa-facebook-feed-v1",
+        },
       });
       assert.deepEqual(await campaignCounts(pool), [
         { action: "request_prepared", count: 1 },
@@ -337,6 +342,14 @@ test(
         { action: "refund_completed", count: 1 },
         { action: "request_prepared", count: 1 },
       ]);
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT action,count::int FROM amp_campaign_creative_daily WHERE creative='efa-product-v1' ORDER BY action",
+          )
+        ).rows,
+        await campaignCounts(pool),
+      );
       assert.equal(
         await purgeExpiredFundingRequests(pool, new Date("2100-01-01")),
         0,
@@ -366,6 +379,7 @@ test(
         { source: "parent@example.test" },
         { campaign: "unknown" },
         { medium: "paid_social" },
+        { creative: "private@example.test" },
       ])
         await assert.rejects(
           repo.create("owner", {
@@ -411,6 +425,28 @@ test(
       } finally {
         await app.close();
       }
+    }),
+);
+
+test(
+  "legacy campaign labels retain coarse counts without invented creative attribution",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const repo = new FundingPurchaseRepository(pool, [arkansasOffer]);
+      const { creative: _creative, ...legacy } = campaignAttribution;
+      await repo.create("owner", { ...create(), campaignAttribution: legacy });
+      assert.deepEqual(await campaignCounts(pool), [
+        { action: "request_prepared", count: 1 },
+      ]);
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_campaign_creative_daily",
+          )
+        ).rows[0].n,
+        0,
+      );
     }),
 );
 test(

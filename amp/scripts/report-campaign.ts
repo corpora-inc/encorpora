@@ -30,6 +30,12 @@ try {
     [days - 1],
   );
   const arkansasOrders = await arkansasOrderSummary(pool, days);
+  const creatives = await pool.query(
+    `SELECT day,campaign,source,medium,creative,action,count FROM amp_campaign_creative_daily
+     WHERE day >= (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date - $1::int
+     ORDER BY day,campaign,source,medium,creative,action`,
+    [days - 1],
+  );
   const fundedCampaign = await pool.query(
     `SELECT day,campaign,source,medium,action,count FROM amp_funded_campaign_daily
      WHERE day >= (CURRENT_TIMESTAMP AT TIME ZONE 'UTC')::date - $1::int
@@ -48,6 +54,8 @@ try {
             "Existing AMP first-touch campaign events. Purchase means a server-verified Stripe purchase, not an ESA/ClassWallet order. No cross-domain visitor join; campaign totals only. Existing visitors may retain an earlier campaign.",
           fundedCampaign:
             "Historical server-verified transitions for Arkansas requests with fixed labels supplied at creation. Request preparation uses its creation date; order/refund events use their evidence date in UTC. Each action counts once per request. Labels are self-reported campaign context, not independently verified ad clicks or proof of causal lift. No ad-platform export.",
+          creatives:
+            "Optional breakdown of activity and fundedCampaign by fixed authored creative label. These counts are subsets of the coarse totals, not additional conversions. Unknown or absent creatives are omitted, not inferred. No creative attribution is added to learner or assessment events.",
         },
         limitations: [
           "Arkansas order totals are current states for retained funding requests created in the report window, not purchases attributed to an ad. Expired unconverted requests are deleted, so request counts are not historical lead totals.",
@@ -57,6 +65,7 @@ try {
         ],
         arkansasOrders,
         fundedCampaign: fundedCampaign.rows,
+        creatives: creatives.rows,
         activity: activity.rows,
         funnel: funnel.rows,
       },

@@ -53,7 +53,7 @@ await writeFile(
   `import React from 'react';import{createRoot}from'react-dom/client';import{ParentConsentCenter}from'../../src/web/ParentConsentCenter';import'../../src/web/style.css';const identity=new URLSearchParams(location.search).get('identity')||'synthetic-parent';createRoot(document.getElementById('root')!).render(<ParentConsentCenter token="synthetic" identity={identity} onClose={()=>{}}/>);`,
 );
 const campaign =
-  "utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch";
+  "utm_source=facebook&utm_medium=paid-social&utm_campaign=ar-efa-launch&utm_content=efa-facebook-feed-v1";
 const ar = {
   ...testFundingOffer,
   id: "ar-fixture",
@@ -355,6 +355,7 @@ try {
         campaign: "ar-efa-launch",
         source: "facebook",
         medium: "paid-social",
+        creative: "efa-facebook-feed-v1",
       });
       assert.equal(
         await page.evaluate(() =>
@@ -368,7 +369,13 @@ try {
     }
   // Privacy signals never prevent the same funded purchase, and invalid labels
   // cannot survive actual router links, redirects, or request serialization.
-  for (const privacy of ["gpc", "dnt", "invalid", "allowed"] as const) {
+  for (const privacy of [
+    "gpc",
+    "dnt",
+    "invalid",
+    "invalid-creative",
+    "allowed",
+  ] as const) {
     const context = await browser.newContext({
       viewport: { width: 390, height: 844 },
     });
@@ -391,7 +398,9 @@ try {
     const tags =
       privacy === "invalid"
         ? campaign.replace("facebook", "private%40example.test")
-        : campaign;
+        : privacy === "invalid-creative"
+          ? campaign.replace("efa-facebook-feed-v1", "private%40example.test")
+          : campaign;
     await page.goto(`${origin}/try/plans?program=ar-efa&${tags}`);
     await page.getByRole("link", { name: "Use Arkansas EFA funds" }).click();
     await page
@@ -399,20 +408,25 @@ try {
       .waitFor();
     assert.equal(
       page.url().includes("utm_"),
-      privacy === "allowed",
+      privacy === "allowed" || privacy === "invalid-creative",
       `${privacy}: router filters labels`,
     );
+    assert.equal(page.url().includes("utm_content"), privacy === "allowed");
+    assert.equal(page.url().includes("private"), false);
     await page.getByRole("button", { name: "Prepare unpaid quote" }).click();
     await page
       .getByRole("heading", { name: "Purchase request", exact: true })
       .waitFor();
     assert.deepEqual(
       state.payloads[0]!.campaignAttribution,
-      privacy === "allowed"
+      privacy === "allowed" || privacy === "invalid-creative"
         ? {
             campaign: "ar-efa-launch",
             source: "facebook",
             medium: "paid-social",
+            ...(privacy === "allowed"
+              ? { creative: "efa-facebook-feed-v1" }
+              : {}),
           }
         : undefined,
     );

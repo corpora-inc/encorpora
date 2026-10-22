@@ -23,6 +23,8 @@ test("campaign rejects identifiers, arbitrary labels and purchase events", () =>
     { email: "parent@example.test" },
     { visitorId: "id" },
     { source: "personal-name" },
+    { creative: "personal-name" },
+    { creative: "efa-math", campaign: "none" },
     { action: "purchase" },
     { program: "other" },
     { url: "https://example.test" },
@@ -93,6 +95,20 @@ test("campaign endpoint requires configured origin and writes only validated agg
       ).statusCode,
       400,
     );
+    assert.equal(queries.length, 0);
+    for (const privacy of [{ "sec-gpc": "1" }, { dnt: "1" }]) {
+      assert.equal(
+        (
+          await app.inject({
+            method: "POST",
+            url: "/api/v1/campaign-events",
+            headers: { ...headers, ...privacy },
+            payload: { ...payload, creative: "efa-math" },
+          })
+        ).statusCode,
+        204,
+      );
+    }
     assert.equal(queries.length, 0);
     const response = await app.inject({
       method: "POST",

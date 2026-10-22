@@ -1,6 +1,11 @@
 import type { PoolClient } from "pg";
 import { z } from "zod";
-import { CAMPAIGN_MEDIA, CAMPAIGN_SOURCES } from "./campaign.js";
+import {
+  CAMPAIGN_MEDIA,
+  CAMPAIGN_SOURCES,
+  CAMPAIGN_CREATIVES,
+} from "./campaign.js";
+import { incrementCreativeCampaign } from "./creative-campaign.js";
 import type { CommerceEvent } from "../commerce/contracts.js";
 
 /** Coarse first-party labels only; never ad-platform identifiers or learning data. */
@@ -8,6 +13,7 @@ export const fundedCampaignSchema = z.strictObject({
   campaign: z.literal("ar-efa-launch"),
   source: z.enum(CAMPAIGN_SOURCES),
   medium: z.enum(CAMPAIGN_MEDIA),
+  creative: z.enum(CAMPAIGN_CREATIVES).optional(),
 });
 export type FundedCampaign = z.infer<typeof fundedCampaignSchema>;
 type Action =
@@ -27,6 +33,7 @@ export async function incrementFundedCampaign(
      DO UPDATE SET count=amp_funded_campaign_daily.count+1`,
     [occurredAt, labels.campaign, labels.source, labels.medium, action],
   );
+  await incrementCreativeCampaign(client, labels, action, occurredAt);
 }
 
 /** Count a verified transition once per linked funded request. The deduplication

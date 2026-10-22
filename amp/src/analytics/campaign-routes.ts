@@ -1,6 +1,7 @@
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { campaignEventSchema } from "./campaign.js";
+import { incrementCreativeCampaign } from "./creative-campaign.js";
 
 /** Explicit deployment opt-in; no wildcard or credentialed CORS. */
 export function campaignOrigin(value: string | undefined): string | undefined {
@@ -50,6 +51,8 @@ export async function registerCampaignRoutes(
         },
       },
       async (request, reply) => {
+        if (request.headers["sec-gpc"] === "1" || request.headers.dnt === "1")
+          return reply.code(204).send();
         const parsed = campaignEventSchema.safeParse(request.body);
         if (!parsed.success)
           return reply.code(400).send({ error: "invalid_campaign_event" });
@@ -76,6 +79,7 @@ export async function registerCampaignRoutes(
                 e.action,
               ],
             });
+            await incrementCreativeCampaign(client, e, e.action);
             await client.query("COMMIT");
           } catch (error) {
             await client.query("ROLLBACK").catch(() => {});

@@ -140,7 +140,8 @@ export function Legal({
           <h2>Education-fund purchase measurement</h2>
           <p>
             When campaign labels accompany an Arkansas funding purchase request,
-            we retain the fixed campaign, source and medium with that request
+            we retain the fixed campaign, source, medium and, when supplied,
+            an allowlisted ad creative label with that request
             and count verified order, payment and refund transitions in daily
             totals. These totals contain no parent, learner or order identifier.
             Unconverted requests expire; linked request labels follow the
