@@ -32,9 +32,16 @@ const payload = {
   },
 };
 
-for (const campaign of ["ar-efa-launch", "az-esa-launch"] as const)
+for (const [campaign, creative] of [
+  ["ar-efa-launch", "efa-math"],
+  ["az-esa-launch", "efa-math"],
+  ["ar-efa-launch", "ar-premium-efa-v1"],
+  ["ar-efa-launch", "ar-premium-homeschool-v1"],
+  ["az-esa-launch", "az-premium-esa-v1"],
+  ["az-esa-launch", "az-premium-homeschool-v1"],
+] as const)
   test(
-    `landing capture ${campaign} returns a secure cookie and binds through the funding route`,
+    `landing capture ${campaign}/${creative} returns a secure cookie and binds through the funding route`,
     enabled,
     async () =>
       fixture(async (pool) => {
@@ -45,7 +52,7 @@ for (const campaign of ["ar-efa-launch", "az-esa-launch"] as const)
         const capturePayload = {
           ...payload,
           sourcePath,
-          labels: { ...payload.labels, campaign },
+          labels: { ...payload.labels, campaign, creative },
         };
         const app = Fastify();
         try {
@@ -133,10 +140,15 @@ for (const campaign of ["ar-efa-launch", "az-esa-launch"] as const)
           assert.deepEqual(
             (
               await pool.query(
-                "SELECT DISTINCT source_url,campaign_labels->>'campaign' AS campaign FROM amp_ad_click_evidence",
+                "SELECT DISTINCT source_url,campaign_labels AS labels FROM amp_ad_click_evidence",
               )
             ).rows,
-            [{ source_url: `https://corpora.inc${sourcePath}`, campaign }],
+            [
+              {
+                source_url: `https://corpora.inc${sourcePath}`,
+                labels: capturePayload.labels,
+              },
+            ],
           );
           const exported = [];
           for await (const line of new FamilyRepository(pool).export(
@@ -147,7 +159,11 @@ for (const campaign of ["ar-efa-launch", "az-esa-launch"] as const)
             (x) => x.type === "ad-acquisition",
           );
           assert.equal(acquisition.length, 2);
-          assert.equal(acquisition[0].data.campaignLabels.creative, "efa-math");
+          assert.ok(
+            acquisition.every(
+              (entry) => entry.data.campaignLabels.creative === creative,
+            ),
+          );
           assert.ok(!JSON.stringify(acquisition).includes(token!));
           await changeAdvertisingPermission(
             pool,

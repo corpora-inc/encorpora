@@ -65,6 +65,10 @@ export const CAMPAIGN_CREATIVES = [
   "shared-premium-feed-v1",
   "ar-premium-feed-v1",
   "az-premium-feed-v1",
+  "ar-premium-efa-v1",
+  "ar-premium-homeschool-v1",
+  "az-premium-esa-v1",
+  "az-premium-homeschool-v1",
 ] as const;
 export const campaignEventSchema = z
   .strictObject({
