@@ -293,7 +293,7 @@ export const principles: Record<string, string> = {
   "mixed-fraction-difference":
     "Regrouping a whole: $w \\tfrac{a}{b} = (w - 1) (a + b)/b$, which allows the fractional parts to be subtracted.",
   "add-fractions":
-    "Adding unlike fractions: a/b + c/d = (ad + bc)/(bd), by rewriting both with a common denominator.",
+    "For integers $a,c$ and positive integers $b,d$, $\\frac{a}{b}+\\frac{c}{d}=\\frac{ad+bc}{bd}$. Multiplying a fraction’s numerator and denominator by the same nonzero number preserves its value. With a common denominator, add the numerators and keep the denominator.",
   "unlike-fraction-difference":
     "Subtracting unlike fractions: a/b − c/d = (ad − bc)/(bd), using a common denominator.",
   "fraction-distance-gap":

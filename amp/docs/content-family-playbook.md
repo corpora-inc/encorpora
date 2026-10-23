@@ -26,17 +26,19 @@ Generator integration normally touches the runtime engine registry, template-to-
 
 A template can assess only part of a broad skill. Record its actual scope and exclusions. Selecting an equation, explanation or graph does not certify constructing one. Written explanations awaiting rubric review cannot produce automatic mastery credit.
 
-## New lesson structure
+## Lesson structure
 
-Use this sequence for new or substantially revised lessons:
+Every lesson builds through these layers:
 
-1. Plain explanation and essential definitions: name the quantities, the goal, and any genuinely needed prerequisites. Define each term before first use.
-2. Worked example: state the givens and requested answer, show justified steps, and check the result.
-3. Visualization or animation: explain the same quantities and why the method works. Provide stepping, replay, reduced motion and an equivalent static figure or sequence.
-4. Optional application: include it only when it illuminates a useful or interesting relationship. Omit decorative stories and repetitive contexts.
-5. Precise statement: give the general rule, assumptions, restrictions and appropriate justification or proof. Keep elementary statements readable without sacrificing correctness.
+1. Simple statement and intuition: explain the idea in plain language and give a short meaning for any term needed immediately.
+2. Example: state the givens and requested answer, show justified steps, and check the result.
+3. Method: generalize the example into reusable steps. Place each visualization beside the explanation it supports. Include a real application only when it teaches a useful relationship.
+4. Watch for: explain the likely mistake and how to avoid or detect it.
+5. Principle and definitions: collect the precise rule, notation, assumptions, restrictions and appropriate justification or proof.
 
-Rigor develops through the example and explanation; the closing statement collects it. Do not postpone definitions or mathematical conditions needed earlier. Review one elementary, one middle-school and one high-school pilot before applying a revised presentation broadly. Existing lessons need not be rewritten solely for ordering.
+Reference lessons mark sections as `intuition`, `method` or `formal`; the shared library/PDF renderer orders them around the example and pitfalls. Problem lessons put the plain `intuition` before their generated example and the formal `principle` and `terms` at the end. Mathematical conditions must be accurate throughout. Explain essential vocabulary briefly at first use even when its fuller definition belongs at the end.
+
+Independently review elementary, middle-school and high-school examples before extending a revised authoring pattern across the inventory. Keep diagrams and intermediate reasoning that teach the idea; remove repetition and intimidating openings rather than stripping explanations to slogans.
 
 Inspect mobile widths 320 and 390, larger widths 768 and 1280, both themes, reduced motion, and Letter/A4 pages. Check first-time comprehension, not just overflow. Practice and feedback belong in the active view.
 

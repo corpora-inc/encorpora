@@ -1,6 +1,8 @@
 # Standalone mathematics lessons
 
-For new and substantially revised lessons, follow the plain explanation → worked example → visualization → optional useful application → precise statement sequence in [the content-family playbook](../../docs/content-family-playbook.md). Define terms before first use and preserve rigorous conditions throughout. Existing lessons do not require a bulk rewrite.
+Every lesson follows **plain explanation and intuition → worked example → method → watch for → principle and definitions**. State the idea in ordinary language, then show a concrete example before generalizing. Keep helpful visualizations beside the example or method they explain. The final section gives the full mathematical statement, definitions, assumptions and restrictions.
+
+Reference lessons label their sections with `stage: "intuition"`, `"method"`, or `"formal"`. The summary is the short plain-language opening; intuition sections may expand it. The shared renderer places the example and pitfalls between the appropriate layers. Problem lessons use `intuition` for a family-specific explanation, falling back to the reference summary, and retain `goal` as the task description. Do not use unexplained technical terms early merely because their formal definitions appear at the end: give a short plain meaning at first use. Preserve accurate conditions throughout.
 
 A lesson must teach its stated objective to a learner who has not read another AMP lesson. Repeat a needed definition rather than relying on a link or a prerequisite label. State any basic skills the lesson genuinely requires.
 

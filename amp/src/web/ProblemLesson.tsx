@@ -11,7 +11,7 @@ const LessonAnimation = lazy(
   () => import("./lesson-animation/LessonAnimation"),
 );
 
-/** The lesson for one problem type: goal, terms, method, worked example. */
+/** Build from a plain explanation and example to the general rule. */
 export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
   const figure = lesson.example.figure;
   // A scene with a walkthrough plays it, revealed, on the example's numbers.
@@ -25,38 +25,8 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
   return (
     <article className="problem-lesson">
       <p className="lesson-goal">
-        <MathText text={lesson.goal} />
+        <MathText text={lesson.intuition ?? lesson.goal} />
       </p>
-      {lesson.principle && (
-        <p className="lesson-principle">
-          <strong>Principle</strong>
-          <MathText text={lesson.principle} />
-        </p>
-      )}
-      {lesson.terms.length > 0 && (
-        <dl className="lesson-terms">
-          {lesson.terms.map(({ term, meaning }) => (
-            <div key={term}>
-              <dt>
-                <MathText text={term} />
-              </dt>
-              <dd>
-                <MathText text={meaning} />
-              </dd>
-            </div>
-          ))}
-        </dl>
-      )}
-      <section>
-        <h3>Method</h3>
-        <ol className="lesson-method">
-          {lesson.method.map((step) => (
-            <li key={step}>
-              <MathText text={step} />
-            </li>
-          ))}
-        </ol>
-      </section>
       <section className="lesson-example">
         <h3>Example</h3>
         <p className="lesson-example-prompt">
@@ -108,11 +78,45 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
           </strong>
         </p>
       </section>
+      <section>
+        <h3>Method</h3>
+        <ol className="lesson-method">
+          {lesson.method.map((step) => (
+            <li key={step}>
+              <MathText text={step} />
+            </li>
+          ))}
+        </ol>
+      </section>
       {lesson.watch && (
         <p className="lesson-watch">
           <strong>Watch for</strong>
           <MathText text={lesson.watch} />
         </p>
+      )}
+      {(lesson.principle || lesson.terms.length > 0) && (
+        <section className="lesson-formal">
+          <h3>Principle and definitions</h3>
+          {lesson.principle && (
+            <p className="lesson-principle">
+              <MathText text={lesson.principle} />
+            </p>
+          )}
+          {lesson.terms.length > 0 && (
+            <dl className="lesson-terms">
+              {lesson.terms.map(({ term, meaning }) => (
+                <div key={term}>
+                  <dt>
+                    <MathText text={term} />
+                  </dt>
+                  <dd>
+                    <MathText text={meaning} />
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          )}
+        </section>
       )}
     </article>
   );
