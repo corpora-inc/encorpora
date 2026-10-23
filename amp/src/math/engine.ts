@@ -199,6 +199,10 @@ import {
   generatePercentChangeProblem,
 } from "./percent-change-practice";
 import {
+  successivePercentChangeTemplate,
+  generateSuccessivePercentChangeProblem,
+} from "./successive-percent-change";
+import {
   linearSystemTemplates,
   generateLinearSystemProblem,
 } from "./linear-system-practice";
@@ -423,6 +427,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...timeMoneyTemplates,
   ...decimalTemplates,
   ...percentChangeTemplates,
+  successivePercentChangeTemplate,
   ...inequalityTemplates,
   ...linearSystemTemplates,
   ...rationalExpressionTemplates,
@@ -636,6 +641,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...integerExponentTemplates,
     ...descriptiveStatisticsTemplates,
     ...percentChangeTemplates,
+    successivePercentChangeTemplate,
     ...inequalityTemplates,
     ...linearSystemTemplates,
     ...rationalExpressionTemplates,
@@ -772,6 +778,8 @@ function generateRawProblem(
     return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
     return generatePercentChangeProblem(templateId, seed);
+  if (templateId === successivePercentChangeTemplate.id)
+    return generateSuccessivePercentChangeProblem(seed);
   if (radicalEquationTemplates.some((t) => t.id === templateId))
     return generateRadicalEquationProblem(templateId, seed);
   if (rationalEquationTemplates.some((t) => t.id === templateId))

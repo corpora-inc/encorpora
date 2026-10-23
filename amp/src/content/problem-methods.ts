@@ -51,6 +51,7 @@ import { circleMeasurementMethods } from "./circle-measurement-lessons";
 import { integerExponentMethods } from "./integer-exponent-lessons";
 import { descriptiveStatisticsMethods } from "./descriptive-statistics-lessons";
 import { percentChangeMethods } from "./percent-change-lessons";
+import { successivePercentChangeMethod } from "./successive-percent-change-lesson";
 import { inequalityMethods } from "./inequality-lessons";
 import { linearSystemMethods } from "./linear-system-lessons";
 import { rightTriangleMethods } from "./right-triangle-lessons";
@@ -116,6 +117,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...rationalMethods,
   ...circleMeasurementMethods,
   ...percentChangeMethods,
+  "successive-percent-change": successivePercentChangeMethod,
   ...inequalityMethods,
   ...linearSystemMethods,
   ...rationalExpressionMethods,

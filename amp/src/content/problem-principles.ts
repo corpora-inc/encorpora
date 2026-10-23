@@ -51,6 +51,7 @@ import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
 import { integerExponentPrinciples } from "./integer-exponent-lessons";
 import { descriptiveStatisticsPrinciples } from "./descriptive-statistics-lessons";
 import { percentChangePrinciples } from "./percent-change-lessons";
+import { successivePercentChangePrinciple } from "./successive-percent-change-lesson";
 import { inequalityPrinciples } from "./inequality-lessons";
 import { linearSystemPrinciples } from "./linear-system-lessons";
 import { rightTrianglePrinciples } from "./right-triangle-lessons";
@@ -113,6 +114,7 @@ export const principles: Record<string, string> = {
   ...circleMeasurementPrinciples,
   ...completingSquarePrinciples,
   ...percentChangePrinciples,
+  "successive-percent-change": successivePercentChangePrinciple,
   ...inequalityPrinciples,
   ...linearSystemPrinciples,
   ...rationalExpressionPrinciples,

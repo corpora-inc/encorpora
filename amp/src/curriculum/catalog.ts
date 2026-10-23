@@ -1357,7 +1357,7 @@ for (const [id, description] of [
     status: "implemented",
   });
 
-// These numeric tasks cover selected single-change applications, not all percent reasoning.
+// These numeric tasks cover selected applications, not all percent reasoning.
 const percentChangeSkill = skills.find((s) => s.id === "percent-change")!;
 percentChangeSkill.alignments.push({
   standardId: "SAT.data",
@@ -1384,6 +1384,13 @@ for (const [suffix, description] of [
     description: description!,
     status: "planned",
   });
+
+percentChangeSkill.facets.push({
+  id: "percent-change.successive-changes",
+  description:
+    "Apply two successive percentage changes using the changed quantity as the second base, with final monetary rounding when specified.",
+  status: "implemented",
+});
 
 const linearSystemSkill = skills.find((s) => s.id === "linear-systems")!;
 linearSystemSkill.alignments.push({
