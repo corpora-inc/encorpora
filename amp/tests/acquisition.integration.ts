@@ -77,6 +77,10 @@ for (const [campaign, creative] of [
   ["ar-efa-launch", "ar-funded-funded-choice-portrait-v3"],
   ["ar-efa-launch", "ar-funded-funded-choice-feed-v3"],
   ["ar-efa-launch", "ar-funded-funded-choice-wide-v3"],
+  ["ar-efa-launch", "ar-funded-pmax-child-v1"],
+  ["ar-efa-launch", "ar-funded-pmax-planning-v1"],
+  ["az-esa-launch", "az-funded-pmax-child-v1"],
+  ["az-esa-launch", "az-funded-pmax-planning-v1"],
 ] as const)
   test(
     `landing capture ${campaign}/${creative} returns a secure cookie and binds through the funding route`,
