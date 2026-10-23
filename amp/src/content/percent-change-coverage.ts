@@ -1,6 +1,13 @@
 import type { FacetMapping } from "./coverage";
 export const percentChangeFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "successive-percent-change",
+    facetId: "percent-change.successive-changes",
+    extent: "partial",
+    rationale:
+      "Numeric final prices after two stated increases or decreases, including equal opposite rates, discount then tax, decimal rates and final-only half-up cent rounding. Inverse recovery, three or more changes, rounding after each step and constructed explanations are not assessed.",
+  },
+  {
     templateId: "percent-change-rate",
     facetId: "percent-change.relative-change",
     extent: "partial",

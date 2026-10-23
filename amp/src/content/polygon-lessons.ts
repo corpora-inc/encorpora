@@ -110,7 +110,7 @@ export const polygonLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "A quadrilateral has all 4 sides marked equal and no right-angle marks. What is its most exact name?",
+        "A quadrilateral has all 4 sides marked equal and has no right angles. What is its most exact name?",
       steps: [
         "4 equal sides: it is a rhombus.",
         "No right angles: it is not a rectangle, so it is not a square.",
@@ -129,26 +129,30 @@ export const polygonLessons: Lesson[] = [
     id: "quadrilateral-hierarchy",
     title: "The quadrilateral family tree",
     summary:
-      "A parallelogram has two pairs of opposite sides parallel. A rectangle adds four right angles; a rhombus has four equal sides. A square has both features, so several names fit it.",
+      "A quadrilateral is a closed flat shape with four straight sides. Its names describe its features: square corners, equal side lengths, or opposite sides that stay the same distance apart. One shape can meet several descriptions.",
     templateIds: [
       "quadrilateral-names",
       "hierarchy-statement",
       "inherited-property",
+      "quadrilateral-hierarchy-multiselect",
     ],
     includeGeneratedRepresentation: false,
     objectives: [
       "Name every category a quadrilateral belongs to.",
       "Use that a subcategory has every property of its category.",
+      "Check every statement when several answers may be true.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "A square can have several names",
         paragraphs: [
-          "A square has equal sides and square corners. Those features make it both a rectangle, with four right angles, and a rhombus, with four equal sides. A parallelogram has two pairs of opposite sides parallel; every rhombus has that feature too.",
+          "A right angle is a square corner, measuring $90^\\circ$ (90 degrees). Parallel sides lie on lines that stay the same distance apart and never meet. Opposite sides do not share a corner. A parallelogram has two pairs of parallel opposite sides.",
+          "A rectangle has four right angles; a rhombus has four equal sides. A square has both features, so it is both a rectangle and a rhombus. Each of these shapes is also a parallelogram.",
         ],
       },
       {
+        stage: "method",
         title: "Categories inside categories",
         paragraphs: [
           "A parallelogram has 2 pairs of parallel sides. A rectangle is a parallelogram with 4 right angles; a rhombus is a parallelogram with 4 equal sides; a square is both.",
@@ -157,10 +161,12 @@ export const polygonLessons: Lesson[] = [
         illustration: "quadrilateral-tree",
       },
       {
+        stage: "method",
         title: "Testing a statement",
         paragraphs: [
-          '"Every $X$ is a $Y$" is false if you can draw one $X$ that is not a $Y$. A long, thin rectangle is a rectangle but not a square, so "every rectangle is a square" is false.',
-          "If no such drawing exists, the statement is true: every square has 4 right angles, so every square is a rectangle.",
+          "First compare the features the starting shape must have with the features being claimed. Every square has four right angles, so every square meets the rectangle definition.",
+          "To disprove a statement, find a counterexample: one shape that fits its starting description but fails its claim. A rectangle 2 cm wide and 5 cm long is not a square, so the claim that every rectangle is a square is false. Failing to imagine a counterexample does not prove a statement true; use the definitions.",
+          "When several statements may be true, test each separately. Keep every statement supported by the definitions, and check that the number selected matches the question.",
         ],
       },
     ],
@@ -169,7 +175,8 @@ export const polygonLessons: Lesson[] = [
         stage: "formal",
         title: "Every special case belongs above it",
         paragraphs: [
-          "If a figure satisfies the defining properties of a narrower class, it also belongs to every broader class whose properties it satisfies. Thus every square is both a rectangle and a rhombus, and each is a parallelogram.",
+          "A quadrilateral is a polygon (a closed flat shape with straight sides) with four sides. A parallelogram is a quadrilateral with two pairs of parallel opposite sides. A rectangle is a quadrilateral with four right angles. A rhombus is a quadrilateral with four equal sides. A square has both four equal sides and four right angles.",
+          "These definitions include special cases: squares are rectangles and rhombuses; rectangles and rhombuses are parallelograms. A subcategory is a group inside a larger category, so every property of the larger category holds throughout the subcategory. The reverse inclusion need not hold.",
         ],
       },
     ],
@@ -185,6 +192,7 @@ export const polygonLessons: Lesson[] = [
     pitfalls: [
       "A square is not only a square: it is a rectangle, a rhombus, a parallelogram and a quadrilateral too.",
       "Inclusion runs one way: every square is a rectangle, but not every rectangle is a square.",
+      "For a question with several true statements, check all choices before submitting the requested number.",
     ],
     parentGuide:
       "Play 'always, sometimes, never': is a rectangle always a parallelogram? Sometimes a square? Never a triangle? Ask for a drawing to prove each answer.",
@@ -293,6 +301,41 @@ export const polygonMethods: Record<string, ProblemMethod> = {
     watch:
       "A shape that only sometimes belongs to the category need not have the property.",
   },
+  "quadrilateral-hierarchy-multiselect": {
+    goal: "Given statements about quadrilaterals, choose all 3 that are always true.",
+    intuition:
+      "A quadrilateral is a closed flat shape with four straight sides. A rectangle has four right angles, or square corners; a rhombus has four equal sides. A square has both, so it belongs to both groups. A parallelogram has two pairs of parallel opposite sides: the lines containing them never meet. A shape keeps every name whose description it meets.",
+    terms: [
+      ["quadrilateral", "A closed flat shape with four straight sides."],
+      ["right angle", "A square corner, measuring $90^\\circ$ (90 degrees)."],
+      ["opposite sides", "Sides that do not share a corner."],
+      [
+        "parallel sides",
+        "Sides on lines that never meet and stay the same distance apart.",
+      ],
+      [
+        "parallelogram",
+        "A quadrilateral with two pairs of parallel opposite sides.",
+      ],
+      ["rectangle", "A quadrilateral with four right angles."],
+      ["rhombus", "A quadrilateral with four equal sides."],
+      [
+        "square",
+        "A quadrilateral with four equal sides and four right angles.",
+      ],
+      [
+        "counterexample",
+        "One example that fits the starting description but makes the claim false.",
+      ],
+    ],
+    method: [
+      "For each statement, compare the properties required by its starting description with the properties it claims.",
+      "Keep a statement when the definitions guarantee its claim. Reject it if one counterexample fits the starting description but fails the claim.",
+      "Check every statement separately, then select all 3 true statements.",
+    ],
+    watch:
+      "Check the direction: every square is a rectangle, but a rectangle with unequal neighboring sides is not a square.",
+  },
 };
 export const polygonPrinciples: Record<string, string> = {
   "name-polygon": "A polygon is named by how many sides it has.",
@@ -309,4 +352,6 @@ export const polygonPrinciples: Record<string, string> = {
     "Every $X$ is a $Y$ when each defining property of $Y$ is also a property of every $X$.",
   "inherited-property":
     "A subcategory has every property of the category that contains it.",
+  "quadrilateral-hierarchy-multiselect":
+    "An always-true claim follows from the defining properties of every shape it describes; one counterexample makes it false. Quadrilaterals have four sides, parallelograms have two pairs of parallel opposite sides, rectangles have four right angles, rhombuses have four equal sides, and squares have both. These categories include their special cases.",
 };

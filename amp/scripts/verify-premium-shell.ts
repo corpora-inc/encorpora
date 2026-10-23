@@ -12,8 +12,10 @@ import {
 } from "../src/server/accounts";
 import { registerFamilyRoutes } from "../src/family/routes";
 import { migrate } from "./migrate";
+import { assertTestDatabaseTarget } from "./test-database-preflight";
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url) throw Error("AMP_TEST_DATABASE_URL is required");
+assertTestDatabaseTarget(url);
 await migrate(url);
 const repository = new PostgresRepository(url, { development: true });
 const origin = "http://localhost:4384";
@@ -44,9 +46,14 @@ const serverOptions = {
   proxy: { "/api": { target: "http://127.0.0.1:4385" } },
 };
 const built = process.argv.includes("--production");
+const apiEnvironment = process.env.NODE_ENV;
 const vite = built
   ? await preview({ preview: serverOptions })
   : await createServer({ server: serverOptions });
+// Preview selects compiled browser assets and also mutates NODE_ENV. Keep the
+// isolated fixture API in its original environment when restarting it below.
+if (apiEnvironment === undefined) delete process.env.NODE_ENV;
+else process.env.NODE_ENV = apiEnvironment;
 if ("listen" in vite) await vite.listen();
 const browser = await chromium.launch();
 const originalInfo = console.info;
@@ -157,11 +164,11 @@ try {
       });
       await page.goto(`${origin}/sign-up`);
       await page
-        .getByRole("heading", { name: "Create your parent account" })
+        .getByRole("heading", { name: "Create your account" })
         .waitFor();
       await page.reload();
       await page
-        .getByRole("heading", { name: "Create your parent account" })
+        .getByRole("heading", { name: "Create your account" })
         .waitFor();
       assert.ok(page.url().endsWith("/sign-up"));
       await fits(page);

@@ -9,6 +9,10 @@ import {
 import { fundingRequestRow } from "./repository.js";
 import { provisionFundingRequest } from "./provision.js";
 import {
+  reconcilePayBySettlement,
+  verifyPayByReportBinding,
+} from "./classwallet-settlement.js";
+import {
   ClassWalletError,
   classWalletConfigSchema,
   prepareClassWalletProvision,
@@ -77,6 +81,16 @@ export async function stageClassWalletPayment(
       config,
       at.toISOString(),
     );
+    const checkout =
+      quote.offer.activationPolicy === "after-approval"
+        ? (
+            await client.query(
+              "SELECT purchase_order_id,callback_status,stopped_at,exception_code FROM amp_classwallet_checkouts WHERE request_id=$1",
+              [quote.id],
+            )
+          ).rows[0]
+        : undefined;
+    if (checkout) verifyPayByReportBinding(row, config, checkout);
     const existing = await client.query(
       "SELECT * FROM amp_classwallet_payments WHERE order_id=$1 OR invoice_id=$2 FOR UPDATE",
       [verified.orderId, quote.id],
@@ -95,7 +109,10 @@ export async function stageClassWalletPayment(
         ).evidence !== verified.evidence
       )
         throw new ClassWalletError("previous_payment_mismatch");
-    } else if (verified.updated > iso(stored.expires_at))
+    } else if (
+      verified.updated > iso(stored.expires_at) &&
+      !(checkout && stored.order_id)
+    )
       throw new ClassWalletError("payment_after_invoice_expiry");
     const safeRow = Object.fromEntries(
       economicFields.map((key) => [key, row[key]]),
@@ -144,6 +161,28 @@ export async function reconcileClassWalletPayments(
     deferred = 0,
     stopped = orphaned.rowCount ?? 0;
   for (const { order_id: orderId } of pending.rows) {
+    try {
+      const result = await reconcilePayBySettlement(pool, orderId);
+      if (result !== "unhandled") {
+        if (result === "completed") provisioned++;
+        else deferred++;
+        continue;
+      }
+    } catch (error) {
+      const permanent =
+        error instanceof ClassWalletError || error instanceof z.ZodError;
+      const result = await pool.query(
+        "UPDATE amp_classwallet_payments SET attempts=attempts+1,error_code=$2,next_attempt_at=now()+interval '5 minutes',stopped_at=CASE WHEN $3 OR attempts+1>=8 THEN now() ELSE stopped_at END WHERE order_id=$1 AND completed_at IS NULL RETURNING stopped_at",
+        [
+          orderId,
+          permanent ? "invalid_payby_settlement" : "settlement_unavailable",
+          permanent,
+        ],
+      );
+      if (result.rows[0]?.stopped_at) stopped++;
+      else deferred++;
+      continue;
+    }
     const client = await pool.connect();
     let payload: unknown;
     try {

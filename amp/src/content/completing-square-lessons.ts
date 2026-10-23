@@ -165,7 +165,7 @@ export const completingSquareLessons: Lesson[] = [
       steps: [
         "Factor -2 from both variable terms: $-2x^2 + 6x + 1 = -2(x^2 - 3x) + 1$.",
         "Halve -3: $h = -\\frac{3}{2}$. Its square is $h^2 = \\frac{9}{4}$.",
-        "Add and subtract that square inside: $-2\\left(x^2 - 3x + \\frac{9}{4} - \\frac{9}{4}\\right) + 1$. The added and subtracted terms cancel, so the expression is unchanged.",
+        "Add and subtract $\\frac{9}{4}$ inside the parentheses. These terms cancel, so the value stays the same. The first three terms are $x^2 - 3x + \\frac{9}{4}$.",
         "Group the square and distribute -2 across the remaining term: $-2\\left(x - \\frac{3}{2}\\right)^2 + \\frac{9}{2} + 1 = -2\\left(x - \\frac{3}{2}\\right)^2 + \\frac{11}{2}$.",
         "Check: the coefficient of $x$ is $2 \\times (-2) \\times \\left(-\\frac{3}{2}\\right) = 6$. The constant is $-\\frac{9}{2} + \\frac{11}{2} = 1$. The leading coefficient remains -2.",
       ],

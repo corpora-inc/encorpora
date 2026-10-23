@@ -174,7 +174,8 @@ def report(graph, c, inventory, since, until):
         ZoneInfo(timezone)
     except (ValueError, ZoneInfoNotFoundError):
         raise ValueError("Report requires a valid account time zone") from None
-    campaigns = [identifier(row["id"]) for row in inventory["campaigns"] if row["name"].startswith("AMP | AR | ")]
+    prefixes = ("AMP | AR | ", "AMP | AZ | ")
+    campaigns = [identifier(row["id"]) for row in inventory["campaigns"] if row["name"].startswith(prefixes)]
     if len(campaigns) > 100:
         raise ValueError("Report campaign limit exceeded; narrow the inventory before reporting")
     query = {
@@ -185,11 +186,25 @@ def report(graph, c, inventory, since, until):
         "breakdowns": ["publisher_platform", "platform_position"],
         "action_attribution_windows": ["7d_click"], "action_report_time": "conversion",
     }
+    found = graph.all("act_" + c["account_id"] + "/insights", query) if campaigns else []
+    for row in found:
+        if row.get("campaign_id") not in campaigns or not row.get("campaign_name", "").startswith(prefixes):
+            raise ValueError("Report row is outside the requested campaign scope")
+        day = row.get("date_start", "")
+        if not since <= day <= until or row.get("date_stop") != day:
+            raise ValueError("Report row is outside the requested daily date scope")
+        try:
+            if date.fromisoformat(day).isoformat() != day:
+                raise ValueError()
+        except (TypeError, ValueError):
+            raise ValueError("Report row has an invalid daily date") from None
+        identifier(row.get("ad_id"))
     return {
         "api_version": VERSION, "account_id": c["account_id"], "currency": "USD",
+        "granularity": "day_ad_placement", "campaign_prefixes": list(prefixes),
         "timezone": timezone, "date_range": {"since": since, "until": until, "inclusive": True},
-        "query": query, "rows": graph.all("act_" + c["account_id"] + "/insights", query) if campaigns else [],
-        "interpretation": "Platform attribution, not verified EFA settlement. Dates use the advertiser time zone; AMP cash evidence uses UTC. Align time boundaries before comparing periods. Reach is not additive across rows. Incomplete recent attribution can change.",
+        "query": query, "rows": found,
+        "interpretation": "Daily ad/placement metrics for AMP Arkansas and Arizona campaigns. Platform attribution, not verified EFA/ESA settlement. Dates use the advertiser time zone; AMP cash evidence uses UTC. Align time boundaries before comparing periods. Reach is not additive across rows. Incomplete recent attribution can change. Empty rows do not prove working tracking.",
     }
 
 

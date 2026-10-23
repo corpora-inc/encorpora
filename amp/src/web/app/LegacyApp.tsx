@@ -1,3 +1,4 @@
+import { AccountMenu } from "../features/account/AccountMenu";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
 import type { ProblemHint } from "../../math/contracts";
 import {
@@ -26,6 +27,10 @@ import { nativeRuntime } from "../native-runtime";
 import { ALREADY_REPORTED, noteAllowed } from "../../feedback/problem-flags";
 import { NativeFamily } from "../NativeGate";
 import { learningRequest, learningCatalog } from "../learning-transport";
+import {
+  batchWithCapabilityFallback,
+  validationPaths,
+} from "../lib/batch-capability-fallback";
 import { ParentConsentCenter } from "../ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "../consent-link";
 import { ProgressWorkspace, type ProgressView } from "../ProgressWorkspace";
@@ -89,8 +94,13 @@ class HttpError extends Error {
   constructor(
     public status: number,
     message: string,
+    public validationPaths:
+      readonly (readonly (string | number)[])[] | null = null,
   ) {
     super(message);
+  }
+  get code() {
+    return this.message;
   }
 }
 type Catalog = {
@@ -433,7 +443,13 @@ function LegacyScreen() {
     if (epoch !== authEpoch.current)
       throw new Error("Your account session changed.");
     if (!result.ok)
-      throw new HttpError(result.status, data.error ?? "Request failed");
+      throw new HttpError(
+        result.status,
+        data?.error ?? "Request failed",
+        data?.error === "Invalid request"
+          ? validationPaths(data.details)
+          : null,
+      );
     return data;
   }
   async function action(run: () => Promise<void>) {
@@ -820,18 +836,29 @@ function LegacyScreen() {
     hints?: Record<string, ProblemHint>;
   };
   function requestBatch(templateId = family) {
-    return api<Batch>(`/learners/${learner!.id}/batches`, {
-      ...(templateId ? { templateId } : {}),
-      count: 1,
-      responseCapabilities: ["single-choice-v1"],
-      figureCapabilities: [...figureCapabilities],
-    }).then(withProblemHints);
+    const learnerId = learner!.id;
+    const epoch = authEpoch.current;
+    return batchWithCapabilityFallback(
+      {
+        ...(templateId ? { templateId } : {}),
+        count: 1,
+        responseCapabilities: ["single-choice-v1", "multi-select-v1"],
+        figureCapabilities: [...figureCapabilities],
+      },
+      (body) => api<Batch>(`/learners/${learnerId}/batches`, body),
+      () => authEpoch.current === epoch && learnerRef.current === learnerId,
+    ).then(withProblemHints);
   }
   // The next problem is planned as soon as an answer is recorded, so it adapts
   // to that answer and is already on hand when the learner continues.
   const upcoming = useRef<{ learnerId: string; batch: Promise<Batch> } | null>(
     null,
   );
+  useLayoutEffect(() => {
+    upcoming.current = null;
+    setQueue([]);
+    navigationEpoch.current++;
+  }, [learner?.id, !!learner?.satMathFocus]);
   function applyBatch(data: Batch) {
     if (route.location.pathname !== "/practice") navigate("/practice");
     if (new URLSearchParams(route.location.search).has("skill"))
@@ -1128,14 +1155,14 @@ function LegacyScreen() {
           )}
           {token && !familyOpen && (
             <Menu
-              label="Family"
-              aria-label="Family menu"
+              label="Account"
+              aria-label="Account menu"
               open={familyMenuOpen}
               onOpenChange={setFamilyMenuOpen}
               triggerRef={familyMenuTrigger}
               triggerClassName="account-menu-trigger"
             >
-              <MenuItem onSelect={openFamily}>Manage family</MenuItem>
+              <MenuItem onSelect={openFamily}>Manage account</MenuItem>
               {learner && learner.birthYear != null && (
                 <MenuItem
                   disabled={busy}
@@ -1358,7 +1385,7 @@ function LegacyScreen() {
             <button onClick={() => void action(loadFamily)}>Try again</button>
           )}
           <button className="secondary" onClick={openFamily}>
-            Manage family
+            Manage account
           </button>
         </section>
       ) : !learningAllowed ? (
@@ -1382,7 +1409,7 @@ function LegacyScreen() {
             Continue setup
           </button>
           <button className="secondary" onClick={openFamily}>
-            Manage family
+            Manage account
           </button>
         </section>
       ) : !learner && nativeRuntime ? (
@@ -1433,11 +1460,13 @@ function LegacyScreen() {
       ) : tab === "practice" ? (
         problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
+            account={nativeRuntime ? undefined : <AccountMenu />}
             exit={() => setExploring(true)}
             exitHref="/"
             key={problem.id}
             problem={problem}
             meta={meta}
+            satMathFocus={!!learner?.satMathFocus}
             strand={
               catalog?.skills.find((skill) => skill.id === problem.skillId)
                 ?.strand
@@ -1741,6 +1770,10 @@ function LegacyScreen() {
         <footer>
           <span>
             {brand.name} · {brand.expansion} · {brand.company}
+            {" · "}
+            <a href="mailto:support@corpora.inc" style={{ display: "inline-flex", alignItems: "center", minHeight: "var(--target-size)" }}>
+              support@corpora.inc
+            </a>
           </span>
           <span>
             {catalog?.mode === "development"

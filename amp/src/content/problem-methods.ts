@@ -1,3 +1,4 @@
+import { satCompletionMethods } from "./sat-completion-lessons";
 import { congruenceMethods } from "./congruence-lessons";
 import { assessmentGapMethods } from "./assessment-gap-lessons";
 import { radicalEquationMethods } from "./radical-equation-lessons";
@@ -51,6 +52,8 @@ import { circleMeasurementMethods } from "./circle-measurement-lessons";
 import { integerExponentMethods } from "./integer-exponent-lessons";
 import { descriptiveStatisticsMethods } from "./descriptive-statistics-lessons";
 import { percentChangeMethods } from "./percent-change-lessons";
+import { successivePercentChangeMethod } from "./successive-percent-change-lesson";
+import { slopeTriangleStatementsMethod } from "./slope-triangle-statements-lesson";
 import { inequalityMethods } from "./inequality-lessons";
 import { linearSystemMethods } from "./linear-system-lessons";
 import { rightTriangleMethods } from "./right-triangle-lessons";
@@ -65,6 +68,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
   ...assessmentGapMethods,
+  ...satCompletionMethods,
   ...completingSquareMethods,
   ...factoringMethods,
   ...volumeCoordinateMethods,
@@ -116,6 +120,8 @@ export const methods: Record<string, ProblemMethod> = {
   ...rationalMethods,
   ...circleMeasurementMethods,
   ...percentChangeMethods,
+  "successive-percent-change": successivePercentChangeMethod,
+  "slope-triangle-statements": slopeTriangleStatementsMethod,
   ...inequalityMethods,
   ...linearSystemMethods,
   ...rationalExpressionMethods,
@@ -1436,6 +1442,33 @@ export const methods: Record<string, ProblemMethod> = {
       "$b$ is the output when the input is 0.",
     ],
     watch: "Subtract the rate times the input, not the rate alone.",
+  },
+  "linear-initial-value-meaning": {
+    goal: "Explain the starting amount in a linear model.",
+    intuition:
+      "A model is a rule linking an input, such as time, to an output, such as an amount of water. The changing part depends on the input. At input zero, that part contributes nothing, so the remaining number is the starting amount. On the graph, it is the amount where the line meets the vertical axis.",
+    terms: [
+      [
+        "input",
+        "The number put into the model, such as minutes since filling began.",
+      ],
+      [
+        "output",
+        "The amount the model gives for an input, such as liters of water.",
+      ],
+      [
+        "initial value",
+        "The output when the input is zero, if zero belongs to the situation.",
+      ],
+      ["rate", "How much the output changes for each one unit of input."],
+    ],
+    method: [
+      "Read what the input measures and identify the moment or distance represented by zero.",
+      "Set the input to zero in the model. Its multiplied term becomes zero; read the remaining output with its units.",
+      "Choose the statement about that output at zero, and check that it does not describe a per-unit change or a later amount.",
+    ],
+    watch:
+      "Keep amount and rate units separate: a starting amount uses output units, while a rate uses output units per input unit.",
   },
   "predict-linear-output": {
     goal: "Given two points on a line, find the output at a new input.",

@@ -2,6 +2,12 @@
  * Descriptions are original summaries; source questions and artwork are not copied. */
 export const assessmentSources = [
   {
+    id: "ny-2026-7",
+    url: "https://www.nysedregents.org/ei/math/2026/2026-released-items-math-g7.pdf",
+    version: "Spring 2026, grade 7 released mathematics questions",
+    reviewedAt: "2026-10-23",
+  },
+  {
     id: "sat-framework-2026",
     url: "https://satsuite.collegeboard.org/media/pdf/assessment-framework-for-digital-sat-suite.pdf",
     version: "Version 4, September 2026",
@@ -42,6 +48,15 @@ export interface AssessmentSampleItem {
 }
 export const assessmentSample: readonly AssessmentSampleItem[] = [
   {
+    sourceId: "ny-2026-7",
+    item: "17; printed p.10; PDF p.12; standard map PDF p.38",
+    requirement:
+      "Apply a discount, then tax to the discounted price, and round the final amount to cents (NY-7.RP.3)",
+    templateIds: ["successive-percent-change"],
+    limitations:
+      "Original numeric-response problems assess two stated changes with a changing base and final-only half-up cent rounding, including decimal rates. Selecting among the released item's distractors, inverse recovery, stepwise rounding and constructed justification are not assessed. This occurrence does not establish frequency or complete standards coverage.",
+  },
+  {
     sourceId: "mcas-2025-5",
     item: "1; printed p.5",
     requirement: "Contextual multidigit multiplication",
@@ -59,11 +74,15 @@ export const assessmentSample: readonly AssessmentSampleItem[] = [
   },
   {
     sourceId: "mcas-2025-5",
-    item: "8; printed p.11",
-    requirement: "Select every true quadrilateral classification",
-    templateIds: ["classify-quadrilateral"],
+    item: "8; printed p.11; PDF p.13",
+    requirement:
+      "Select three true quadrilateral hierarchy statements (5.G.B.4)",
+    templateIds: [
+      "classify-quadrilateral",
+      "quadrilateral-hierarchy-multiselect",
+    ],
     limitations:
-      "Related classification exists; selecting all valid statements is not the same response as one choice.",
+      "Original items select three true statements from five or six choices, including the released item's three-of-six format. Inclusive categories, inherited properties, and defining conditions are assessed; drawing a hierarchy, creating counterexamples, and written justification are unassessed. This sample does not establish full standard coverage.",
   },
   {
     sourceId: "mcas-2025-5",
@@ -100,10 +119,10 @@ export const assessmentSample: readonly AssessmentSampleItem[] = [
   {
     sourceId: "mcas-2025-8",
     item: "10; printed p.13",
-    requirement: "Interpret a model intercept in context",
-    templateIds: ["recover-linear-intercept"],
+    requirement: "Interpret a model intercept in context (8.SP.A.3)",
+    templateIds: ["recover-linear-intercept", "linear-initial-value-meaning"],
     limitations:
-      "Related intercept calculation exists; verbal interpretation of the parameter and units needs direct verification.",
+      "Intercept calculation and one-choice interpretation of an explicitly stated linear model are assessed. Fitting a model from data, graph-only inference, and constructed explanations remain unassessed by these families.",
   },
   {
     sourceId: "mcas-2025-8",
@@ -115,11 +134,11 @@ export const assessmentSample: readonly AssessmentSampleItem[] = [
   },
   {
     sourceId: "mcas-2025-8",
-    item: "19; printed p.23",
+    item: "19; printed p.23; PDF p.25; standard map printed p.25",
     requirement: "Relate similar triangles to equal slopes",
-    templateIds: [],
+    templateIds: ["slope-triangle-statements"],
     limitations:
-      "Combines similarity, slope reasoning and multiple statements; isolated numeric slopes do not close it.",
+      "Original three-of-six statement selections compare right triangles on one nonvertical line, including matching angles, similarity versus congruence, lengths and equal signed slopes. Separated triangles with horizontal and vertical legs are used; constructed proofs, arbitrary orientations and full 8.EE.B.6 coverage are not established. This occurrence does not estimate frequency.",
   },
   {
     sourceId: "mcas-2025-10",

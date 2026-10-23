@@ -1,0 +1,33 @@
+.help {
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--space-4);
+  color: var(--color-muted-text);
+  font-size: 14px;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.help p {
+  margin: 0;
+}
+.help a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+  color: var(--color-on-surface);
+}
+.form {
+  display: grid;
+  gap: var(--space-3);
+}
+.form p {
+  margin: 0;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.status {
+  min-height: 2.8em;
+}

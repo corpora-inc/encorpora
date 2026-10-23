@@ -1,3 +1,4 @@
+import { satPracticeEligible } from "../curriculum/sat";
 import {
   DEFAULT_PRACTICE_POLICY,
   assertPracticePolicy,
@@ -177,7 +178,10 @@ export class OfflineRepository {
       if (!(await learningConsentActive(c, account)))
         throw new ApiError(403, "offline_consent_required");
       const tx = new PgTransaction(c, learner);
-      const supported = supportedOfflineTemplates(input);
+      const satMathFocus = await tx.satMathFocus();
+      const supported = supportedOfflineTemplates(input).filter(
+        (t) => !satMathFocus || satPracticeEligible(t),
+      );
       if (!supported.length)
         throw new ApiError(409, "offline_no_supported_content");
       const packId = randomUUID();

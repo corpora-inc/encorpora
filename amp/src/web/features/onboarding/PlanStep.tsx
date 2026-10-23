@@ -1,3 +1,4 @@
+import { SupportHelp } from "../support/SupportHelp";
 import { useIsMutating, useMutation, useQuery } from "@tanstack/react-query";
 import { Link, Navigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
@@ -288,6 +289,7 @@ export function PlanStep({
           )}
         </>
       )}
+      <SupportHelp context="plans" contact={false} />
       <CheckoutPrivacy
         key={session.accountId}
         session={session}

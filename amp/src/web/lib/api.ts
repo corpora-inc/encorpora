@@ -1,5 +1,6 @@
 import type { z } from "zod";
 import { AppError } from "./AppError";
+import { validationPaths } from "./batch-capability-fallback";
 const messages: Record<string, string> = {
   confirmed_parent_email_required:
     "Sign in and confirm the parent email used on your invoice.",
@@ -140,6 +141,13 @@ export async function request<T>(
       response.status >= 500,
       requestId,
       code || null,
+      response.status,
+      code === "Invalid request" &&
+        data &&
+        typeof data === "object" &&
+        "details" in data
+        ? validationPaths(data.details)
+        : null,
     );
     error.log();
     throw error;

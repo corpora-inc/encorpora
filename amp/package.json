@@ -14,7 +14,7 @@
     "test": "node scripts/test-suite.mjs all",
     "test:placement-sim": "tsx --test tests/*.sim.ts",
     "test:db": "tsx scripts/test-database-preflight.ts && tsx --test tests/*.integration.ts",
-    "test:ui": "tsx scripts/verify-ui.ts && npm run test:calculator-ui && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && tsx scripts/verify-unit-region-reader.ts && tsx scripts/verify-ratio-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui && npm run test:measurement-ui && npm run test:lesson-animation-ui",
+    "test:ui": "tsx scripts/verify-ui.ts && npm run test:calculator-ui && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && tsx scripts/verify-unit-region-reader.ts && tsx scripts/verify-ratio-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:multiselect-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui && npm run test:measurement-ui && npm run test:lesson-animation-ui && npm run test:sat-ui",
     "tsc": "tsc --noEmit",
     "lint:colors": "tsx scripts/check-color-literals.ts --strict",
     "test:contrast": "tsx scripts/verify-contrast.ts --strict",
@@ -32,7 +32,8 @@
     "report:insights": "tsx scripts/insights-report.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
     "infra": "tsx scripts/external-config.ts",
-    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-free-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && npm run test:social-ui && npm run test:passkey-ui && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:funded-entry-ui && npm run test:funnel-ui && npm run test:flag-ui && npm run test:skip-ui && npm run test:level-ui && npm run test:pathways-ui && npm run test:advertising-ui && npm run test:acquisition-ui && npm run test:instant-hints-ui",
+    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-free-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && npm run test:account-controls-ui && npm run test:social-ui && npm run test:passkey-ui && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:funded-entry-ui && npm run test:funnel-ui && npm run test:flag-ui && npm run test:skip-ui && npm run test:level-ui && npm run test:pathways-ui && npm run test:advertising-ui && npm run test:acquisition-ui && npm run test:instant-hints-ui && npm run test:parent-feedback-ui",
+    "test:account-controls-ui": "tsx scripts/verify-account-controls-ui.ts",
     "test:acquisition-ui": "tsx scripts/verify-acquisition-ui.ts",
     "test:social-ui": "tsx scripts/verify-social-sign-in-ui.ts",
     "test:passkey-ui": "tsx scripts/verify-passkey-sign-up-ui.ts",
@@ -72,7 +73,12 @@
     "test:advertising-ui": "tsx scripts/verify-advertising-permission-ui.ts && tsx scripts/verify-checkout-privacy-ui.ts",
     "advertising:google": "tsx scripts/google-measurement.ts",
     "advertising:meta": "tsx scripts/meta-measurement.ts",
-    "test:instant-hints-ui": "tsx scripts/verify-instant-hints-ui.ts"
+    "test:instant-hints-ui": "tsx scripts/verify-instant-hints-ui.ts",
+    "test:multiselect-ui": "tsx scripts/verify-multiselect-ui.ts",
+    "coverage:sat": "tsx scripts/sat-coverage.ts",
+    "test:sat-ui": "tsx scripts/verify-sat-ui.ts",
+    "report:parent-feedback": "tsx scripts/parent-feedback-report.ts",
+    "test:parent-feedback-ui": "tsx scripts/verify-parent-feedback-ui.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",

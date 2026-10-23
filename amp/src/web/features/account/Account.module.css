@@ -1,0 +1,76 @@
+.control {
+  display: inline-flex;
+  flex: none;
+  vertical-align: middle;
+}
+.control .trigger {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  gap: 2px;
+  background: transparent;
+  color: inherit;
+}
+.person {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+.initial {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: 13px;
+  font-weight: 700;
+}
+.readyHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.ready {
+  padding: clamp(24px, 5vw, 40px);
+}
+.ready h1 {
+  margin: var(--space-5) 0 var(--space-3);
+  font-size: clamp(26px, 5vw, 34px);
+  line-height: 1.15;
+}
+.email {
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+.actions {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: account-spin 0.8s linear infinite;
+}
+@keyframes account-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}

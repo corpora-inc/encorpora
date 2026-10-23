@@ -1,3 +1,4 @@
+import { AccountMenu } from "../account/AccountMenu";
 import {
   useMemo,
   useRef,
@@ -27,7 +28,8 @@ import {
   catalogSchema,
   crystal,
   neighborhoods,
-  relatedSkills,
+  relatedConnections,
+  connectionLabel,
   neighborhood,
   progressSchema,
   frontierSchema,
@@ -330,8 +332,8 @@ export function MapView({
   ) => {
     const skillId = values.skill === undefined ? selectedId : values.skill;
     const nextSearch = {
-      topic: values.topic === undefined ? query || undefined : values.topic,
-      filter: values.filter === undefined ? band || undefined : values.filter,
+      topic: (values.topic === undefined ? query : values.topic) || undefined,
+      filter: (values.filter === undefined ? band : values.filter) || undefined,
       context: assessmentContext ? ("trial" as const) : undefined,
     };
     if (skillId)
@@ -359,6 +361,7 @@ export function MapView({
   const selectedEvidence = selected ? stats.get(selected.id) : undefined;
   const families =
     catalog.data?.templates.filter((t) => t.skillId === selected?.id) ?? [];
+  const related = selected ? relatedConnections(skills ?? [], selected.id) : [];
   const links = (ids: string[]) =>
     ids.length ? (
       <ul>
@@ -441,7 +444,19 @@ export function MapView({
           This skill is not in the map. Browse the curriculum to find a skill.
         </p>
       )}
-      <div className="pathways-toolbar">
+      <div
+        className="pathways-toolbar"
+        onKeyDown={(event) => {
+          if (
+            event.key === "Escape" &&
+            !event.nativeEvent.isComposing &&
+            event.currentTarget.contains(event.target as Node)
+          ) {
+            event.preventDefault();
+            setBrowse(false);
+          }
+        }}
+      >
         <label className="pathways-search">
           {" "}
           <span className="sr-only">Find a skill</span>
@@ -449,11 +464,12 @@ export function MapView({
             type="search"
             aria-label="Find a skill"
             placeholder="Find a skill…"
+            maxLength={100}
             value={query}
             onFocus={() => setBrowse(true)}
             onChange={(e) => {
               setBrowse(true);
-              update({ topic: e.target.value || undefined }, true);
+              update({ topic: e.target.value }, true);
             }}
           />
         </label>
@@ -470,6 +486,7 @@ export function MapView({
             {browse ? "Close" : "Browse"}
           </span>
         </button>
+        <AccountMenu />
       </div>
       {catalog.isError ? (
         <div role="alert">
@@ -491,9 +508,7 @@ export function MapView({
                 Grade or course
                 <select
                   value={band}
-                  onChange={(e) =>
-                    update({ filter: e.target.value || undefined }, true)
-                  }
+                  onChange={(e) => update({ filter: e.target.value }, true)}
                 >
                   <option value="">All grades & courses</option>
                   {bands.map((b) => (
@@ -669,10 +684,31 @@ export function MapView({
                   <i className="pathways-dot related" />
                   Related skills
                 </h3>
-                <p className="pathways-muted">
-                  Other skills with shared foundations.
-                </p>
-                {links(relatedSkills(skills, selected.id).map((s) => s.id))}
+                {related.length ? (
+                  <ul className="pathways-connections">
+                    {related.map(({ skill, connection }) => (
+                      <li key={skill.id}>
+                        <Link
+                          to="/pathways/$skillId"
+                          params={{ skillId: skill.id }}
+                          search={linkSearch()}
+                          onClick={() => setBrowse(false)}
+                        >
+                          {skill.title}
+                          <small>
+                            {bandLabel(skill.gradeBand)}
+                            {connection
+                              ? ` · ${connectionLabel(connection)}`
+                              : " · Shared foundations"}
+                          </small>
+                        </Link>
+                        {connection && <p>{connection.explanation}</p>}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="pathways-muted">None listed.</p>
+                )}
                 {range && (
                   <p className="pathways-range">
                     {strandNames[selected.strand] ?? selected.strand} frontier:{" "}

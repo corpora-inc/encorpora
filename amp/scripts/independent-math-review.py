@@ -1,11 +1,15 @@
+from sat_completion_math_oracle import SUPPORTED as SAT_COMPLETION, CHOICE as SAT_COMPLETION_CHOICE, solve as solve_sat_completion, self_test as review_sat_completion_fixtures, review_problem as review_sat_completion_problem
 #!/usr/bin/env python3
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
+from slope_triangle_math_oracle import SUPPORTED as SLOPE_TRIANGLE, solve as solve_slope_triangle, review_problem as review_slope_triangle_problem, self_test as review_slope_triangle_fixtures
+from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MULTISELECT, solve as solve_hierarchy_multiselect, review_problem as review_hierarchy_multiselect_problem, self_test as review_hierarchy_multiselect_fixtures
 from complex_math_oracle import SUPPORTED as COMPLEX, solve as solve_complex, review_problem as review_complex_problem, self_test as review_complex_fixtures
 from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_CHOICE, solve_rational_equation, review_rational_equation_fixtures, review_rational_equation_problem
 from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, review_geometry_proof_fixtures, review_geometry_proof_problem
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
 from assessment_gap_math_oracle import SUPPORTED as ASSESSMENT_GAP, CHOICE as ASSESSMENT_GAP_CHOICE, solve as solve_assessment_gap, self_test as review_assessment_gap_fixtures, review_problem as review_assessment_gap_problem
 from triangle_congruence_math_oracle import SUPPORTED as TRIANGLE_CONGRUENCE, solve as solve_triangle_congruence, review_problem as review_triangle_congruence_problem, self_test as review_triangle_congruence_fixtures
+from linear_initial_value_math_oracle import SUPPORTED as LINEAR_INITIAL_VALUE, solve as solve_linear_initial_value, review_problem as review_linear_initial_value_problem, self_test as review_linear_initial_value_fixtures
 from study_design_math_oracle import SUPPORTED as STUDY_DESIGN, solve as solve_study_design, review_problem as review_study_design_problem, self_test as review_study_design_fixtures
 from quadratic_irrational_math_oracle import SUPPORTED as QUADRATIC_IRRATIONAL, solve as solve_quadratic_irrational, review_problem as review_quadratic_irrational_problem, self_test as review_quadratic_irrational_fixtures
 from relation_repair_math_oracle import SUPPORTED as RELATION_REPAIR, solve as solve_relation_repair, review_problem as review_relation_repair_problem, self_test as review_relation_repair_fixtures
@@ -32,6 +36,7 @@ from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, rev
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
 from factoring_math_oracle import FACTORING, solve_factoring, review_factoring_fixtures, review_explanation as review_factoring_explanation, FactoringReview, review_factoring_content
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
+from successive_percent_math_oracle import SUPPORTED as SUCCESSIVE_PERCENT, solve as solve_successive_percent, review_problem as review_successive_percent_problem, self_test as review_successive_percent_fixtures
 from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, review_percent_change_fixtures, check_explanation as review_percent_explanation, review_percent_change_content
 from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review_linear_system_fixtures, LinearSystemReview, review_linear_system_explanation, review_linear_system_content
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
@@ -103,7 +108,8 @@ SUPPORTED |= QUADRATIC_IRRATIONAL
 SUPPORTED |= RELATION_REPAIR
 SUPPORTED |= COMPLEX
 SUPPORTED |= INVERSE_ROUNDING
-SUPPORTED |= STUDY_DESIGN
+SUPPORTED |= SLOPE_TRIANGLE | SUCCESSIVE_PERCENT | STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT
+SUPPORTED |= SAT_COMPLETION
 SUPPORTED |= ASSESSMENT_GAP
 SUPPORTED |= RADICAL_EQUATION | RATIONAL_EQUATION | GEOMETRY_PROOF
 SUPPORTED |= RATIONAL_EXPRESSION
@@ -197,6 +203,12 @@ def solve(public):
 
 
 def solve_family(public):
+    if public["templateId"] in SLOPE_TRIANGLE:
+        return solve_slope_triangle(public)
+    if public["templateId"] in SUCCESSIVE_PERCENT:
+        return solve_successive_percent(public)
+    if public["templateId"] in HIERARCHY_MULTISELECT:
+        return solve_hierarchy_multiselect(public)
     if public["templateId"] in COMPLEX:
         return solve_complex(public)
     if public["templateId"] in INVERSE_ROUNDING:
@@ -207,8 +219,12 @@ def solve_family(public):
         return solve_triangle_congruence(public)
     if public["templateId"] in QUADRATIC_IRRATIONAL:
         return solve_quadratic_irrational(public)
+    if public["templateId"] in LINEAR_INITIAL_VALUE:
+        return solve_linear_initial_value(public)
     if public["templateId"] in STUDY_DESIGN:
         return solve_study_design(public)
+    if public["templateId"] in SAT_COMPLETION:
+        return solve_sat_completion(public)
     if public["templateId"] in ASSESSMENT_GAP:
         return solve_assessment_gap(public)
     if public["templateId"] in RADICAL_EQUATION:
@@ -569,6 +585,8 @@ def review(stream):
             if record:
                 factoring_review.record(public, solved)
             review_factoring_explanation(problem)
+        if template in SUCCESSIVE_PERCENT:
+            review_successive_percent_problem(problem)
         if template in PERCENT_CHANGE:
             review_percent_explanation(public, problem['explanation'])
         if template in INEQUALITY:
@@ -598,8 +616,12 @@ def review(stream):
             review_complex_problem(problem)
         if template in INVERSE_ROUNDING:
             review_inverse_rounding_problem(problem)
+        if template in LINEAR_INITIAL_VALUE:
+            review_linear_initial_value_problem(problem)
         if template in STUDY_DESIGN:
             review_study_design_problem(problem)
+        if template in SAT_COMPLETION:
+            review_sat_completion_problem(problem)
         if template in ASSESSMENT_GAP:
             review_assessment_gap_problem(problem)
         if template in RADICAL_EQUATION:
@@ -661,7 +683,13 @@ def review(stream):
             review_rational_problem(problem)
             if record:
                 rational_corpus.record(public, solved)
-        if template in FRACTION_CHOICE | COMPLEX | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in SLOPE_TRIANGLE:
+            expected = review_slope_triangle_problem(problem)
+            actual = problem["answer"]
+        elif template in HIERARCHY_MULTISELECT:
+            expected = review_hierarchy_multiselect_problem(problem)
+            actual = problem["answer"]
+        elif template in LINEAR_INITIAL_VALUE | FRACTION_CHOICE | COMPLEX | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -723,7 +751,11 @@ def review(stream):
     review_complex_fixtures()
     review_fraction_expression_fixtures()
     review_inverse_rounding_fixtures()
+    review_linear_initial_value_fixtures()
+    review_hierarchy_multiselect_fixtures()
+    review_slope_triangle_fixtures()
     review_study_design_fixtures()
+    review_sat_completion_fixtures()
     review_assessment_gap_fixtures()
     review_radical_equation_fixtures()
     review_rational_equation_fixtures()
@@ -795,6 +827,7 @@ def review(stream):
     review_factoring_fixtures()
     review_inequality_fixtures()
     review_percent_change_fixtures()
+    review_successive_percent_fixtures()
     review_linear_system_fixtures()
     review_right_triangle_fixtures()
     print('Independent area/volume review: ' + json.dumps({**area_volume_fixtures, 'checkedEqualities': area_volume_equalities}), file=sys.stderr)

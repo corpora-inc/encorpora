@@ -155,3 +155,10 @@ export function MenuItem({
     </DropdownMenu.Item>
   );
 }
+
+/** Noninteractive context for the actions in a menu. */
+export function MenuLabel({ children }: { children: ReactNode }) {
+  return (
+    <DropdownMenu.Label className={styles.label}>{children}</DropdownMenu.Label>
+  );
+}

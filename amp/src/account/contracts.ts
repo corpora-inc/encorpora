@@ -14,6 +14,7 @@ export const familySummarySchema = z.object({
       id: z.string(),
       name: z.string(),
       birthYear: z.number().int().nullable().optional(),
+      satMathFocus: z.boolean().optional(),
       deletedAt: z.string().nullable(),
       access: z.array(
         z.object({

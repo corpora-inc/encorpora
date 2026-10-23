@@ -363,20 +363,36 @@ class MetaTests(unittest.TestCase):
             graph.assert_not_called()
 
     def test_report_scopes_campaigns_and_distinguishes_platform_attribution(self):
-        with patch.object(self.graph, "all", create=True, return_value=[{"spend": "1.00"}]) as read:
-            result = meta.report(self.graph, self.config, {"account": {"timezone_name": "America/New_York"}, "campaigns": [{"id": "1", "name": "AMP | AR | example"}, {"id": "2", "name": "Another product"}]}, "2026-10-01", "2026-10-21")
-            self.assertEqual(result["rows"], [{"spend": "1.00"}])
+        records = [
+            {"campaign_id": "1", "campaign_name": "AMP | AR | example", "ad_id": "10", "date_start": "2026-10-01", "date_stop": "2026-10-01", "spend": "1.00"},
+            {"campaign_id": "3", "campaign_name": "AMP | AZ | example", "ad_id": "30", "date_start": "2026-10-02", "date_stop": "2026-10-02", "spend": "2.00"},
+        ]
+        with patch.object(self.graph, "all", create=True, return_value=records) as read:
+            result = meta.report(self.graph, self.config, {"account": {"timezone_name": "America/New_York"}, "campaigns": [{"id": "1", "name": "AMP | AR | example"}, {"id": "2", "name": "Another product"}, {"id": "3", "name": "AMP | AZ | example"}, {"id": "4", "name": "AMP | CA | example"}, {"id": "5", "name": "AMP | AZextra | example"}]}, "2026-10-01", "2026-10-21")
+            self.assertEqual(result["rows"], records)
+            self.assertEqual(result["granularity"], "day_ad_placement")
+            self.assertEqual(result["campaign_prefixes"], ["AMP | AR | ", "AMP | AZ | "])
             self.assertEqual(result["timezone"], "America/New_York")
             self.assertEqual(result["date_range"], {"since": "2026-10-01", "until": "2026-10-21", "inclusive": True})
-            self.assertEqual(read.call_args.args[1]["filtering"][0]["value"], ["1"])
+            self.assertEqual(read.call_args.args[1]["filtering"][0]["value"], ["1", "3"])
+            self.assertEqual(read.call_args.args[1]["level"], "ad")
+            self.assertEqual(read.call_args.args[1]["breakdowns"], ["publisher_platform", "platform_position"])
             self.assertEqual(read.call_args.args[1]["action_attribution_windows"], ["7d_click"])
-            self.assertIn("not verified EFA settlement", result["interpretation"])
+            self.assertIn("not verified EFA/ESA settlement", result["interpretation"])
             read.reset_mock()
             self.assertEqual(meta.report(self.graph, self.config, {"account": {"timezone_name": "America/New_York"}, "campaigns": []}, "2026-10-01", "2026-10-21")["rows"], [])
             read.assert_not_called()
             for dates in [("2026-01-01", "2026-10-21"), ("2026-10-21", "2026-10-01"), ("20261001", "2026-10-21")]:
                 with self.assertRaises(ValueError):
                     meta.report(self.graph, self.config, {"account": {"timezone_name": "America/New_York"}, "campaigns": []}, *dates)
+
+    def test_report_rejects_foreign_campaigns_dates_and_missing_ad_identity(self):
+        inventory = {"account": {"timezone_name": "America/New_York"}, "campaigns": [{"id": "1", "name": "AMP | AZ | example"}]}
+        original = {"campaign_id": "1", "campaign_name": "AMP | AZ | example", "ad_id": "10", "date_start": "2026-10-01", "date_stop": "2026-10-01"}
+        for change in [{"campaign_id": "2"}, {"campaign_name": "Other product"}, {"date_start": "2026-09-30"}, {"date_stop": "2026-10-02"}, {"date_start": "2026-10-99", "date_stop": "2026-10-99"}, {"ad_id": None}]:
+            with self.subTest(change=change), patch.object(self.graph, "all", create=True, return_value=[original | change]):
+                with self.assertRaises(ValueError):
+                    meta.report(self.graph, self.config, inventory, "2026-10-01", "2026-10-21")
 
     def test_report_rejects_missing_or_unknown_time_zone_before_insights(self):
         for timezone in [None, "", "Unknown/Timezone"]:

@@ -62,7 +62,7 @@ export const polynomialLessons: Lesson[] = [
     id: "polynomial-addition",
     title: "Add polynomials",
     summary:
-      "Combine coefficients of like terms without changing their powers.",
+      "Pieces with the same variable power count the same kind of amount. Add their signed numbers and keep that power; pieces with different powers stay separate.",
     templateIds: ["polynomial-addition"],
     objectives: [
       "Identify like terms, including missing powers and constants.",
@@ -114,7 +114,7 @@ export const polynomialLessons: Lesson[] = [
     id: "polynomial-subtraction",
     title: "Subtract polynomials",
     summary:
-      "Negate every term of the second polynomial, then combine like terms.",
+      "Subtracting a whole expression means adding its opposite. Change the sign of every piece in the expression being subtracted, then combine pieces with the same variable power.",
     templateIds: ["polynomial-subtraction"],
     objectives: [
       "Distribute a minus sign to every term of a polynomial.",
@@ -165,7 +165,8 @@ export const polynomialLessons: Lesson[] = [
   {
     id: "polynomial-multiplication",
     title: "Multiply polynomials",
-    summary: "Distribute each term, multiply powers, and combine like terms.",
+    summary:
+      "To multiply two sums, multiply each piece of the first by every piece of the second. Then add products that have the same variable power.",
     templateIds: ["polynomial-multiplication"],
     objectives: [
       "Include every pair of terms when distributing a product.",

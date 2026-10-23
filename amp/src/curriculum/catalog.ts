@@ -1,4 +1,5 @@
 import type { GradeBand, Skill, Standard } from "./types.js";
+import { connectionsFor } from "./connections.js";
 
 // Original K–8 summaries from the Corpora catalog; identifiers reviewed 2026-09-27.
 const rows: [string, string, string][] = [
@@ -639,6 +640,7 @@ export const skills: Skill[] = outline
       strand,
       prerequisites: dependencies ? dependencies.split(",") : [],
       prerequisiteBasis: "editorial",
+      connections: connectionsFor(id),
       status: "planned",
       lessonId: `lesson.${id}`,
       alignments: references
@@ -1355,7 +1357,7 @@ for (const [id, description] of [
     status: "implemented",
   });
 
-// These numeric tasks cover selected single-change applications, not all percent reasoning.
+// These numeric tasks cover selected applications, not all percent reasoning.
 const percentChangeSkill = skills.find((s) => s.id === "percent-change")!;
 percentChangeSkill.alignments.push({
   standardId: "SAT.data",
@@ -1382,6 +1384,13 @@ for (const [suffix, description] of [
     description: description!,
     status: "planned",
   });
+
+percentChangeSkill.facets.push({
+  id: "percent-change.successive-changes",
+  description:
+    "Apply two successive percentage changes using the changed quantity as the second base, with final monetary rounding when specified.",
+  status: "implemented",
+});
 
 const linearSystemSkill = skills.find((s) => s.id === "linear-systems")!;
 linearSystemSkill.alignments.push({
@@ -1413,6 +1422,16 @@ skills
     id: "integer-powers.whole-number-powers",
     description:
       "Evaluate mental-math-sized whole-number powers, find a missing exponent, move between repeated products and powers, compare powers, evaluate products and sums containing a power, and read doubling or tripling as a power.",
+    status: "implemented",
+  });
+
+// Interpret an initial amount in a stated linear context (8.F.B.4).
+skills
+  .find((s) => s.id === "linear-models")!
+  .facets.push({
+    id: "linear-models.initial-value-in-context",
+    description:
+      "Choose the meaning and output units of the amount at a meaningful zero input in a stated contextual linear equation.",
     status: "implemented",
   });
 
@@ -1452,6 +1471,13 @@ for (const [skillId, suffix, description] of [
       description,
       status: "implemented",
     });
+
+skills.find((skill) => skill.id === "slope")!.facets.push({
+  id: "slope.similar-triangle-reasoning",
+  description:
+    "Relate matching angles and proportional side lengths of right triangles on one line to equal slopes, distinguishing similarity from congruence.",
+  status: "implemented",
+});
 
 // High-school coordinate geometry and circles (G-GPE, G-C).
 for (const [skillId, suffix, description] of [

@@ -32,6 +32,15 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
         <p className="lesson-example-prompt">
           <MathText text={lesson.example.prompt} />
         </p>
+        {lesson.example.choices && (
+          <ol type="A" aria-label="Example choices">
+            {lesson.example.choices.map((choice) => (
+              <li key={choice}>
+                <MathText text={choice} />
+              </li>
+            ))}
+          </ol>
+        )}
         {animation?.kind === "exchange" && lesson.example.figure && (
           <Figure figure={lesson.example.figure} />
         )}

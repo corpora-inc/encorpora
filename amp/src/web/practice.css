@@ -715,13 +715,27 @@ nav button {
   margin-bottom: 8px;
 }
 .choice-options {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
   gap: 8px;
+}
+.multi-select-form .choice-options {
+  /* Full statements read in one column, including in the narrow tablet dock. */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  /* The scrollport may shrink, but its text rows must keep their content height. */
+  grid-auto-rows: max-content;
+  align-content: start;
 }
 .answer-dock .choice-option {
   position: relative;
   display: flex;
+  /* Intrinsic width decides whether two complete answers fit. Long answers
+     take a full row; short ones share equal halves, even in a narrow dock. */
+  flex: 1 1 max-content;
+  min-width: calc(50% - 4px);
+  max-width: 100%;
   align-items: center;
   gap: 10px;
   min-height: 54px;
@@ -735,12 +749,24 @@ nav button {
   line-height: 1.3;
   cursor: pointer;
 }
+.choice-content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .choice-option input {
   position: absolute;
   opacity: 0;
   width: 1px;
   height: 1px;
   margin: 0;
+}
+.multi-select-form .choice-option input {
+  position: static;
+  opacity: 1;
+  width: 22px;
+  height: 22px;
+  flex: none;
+  accent-color: var(--color-primary);
 }
 .choice-option:has(input:focus-visible) {
   outline: 3px solid var(--color-focus-ring);
@@ -768,6 +794,17 @@ nav button {
 }
 .choice-form fieldset:disabled .choice-option {
   cursor: default;
+}
+.selection-count {
+  flex: none;
+  margin: 8px 0 0;
+  color: var(--color-muted-text);
+  font-size: 14px;
+  line-height: 1.3;
+}
+.multi-select-form .choice-submit {
+  /* The count gate changes fill and text together, without a low-contrast fade. */
+  transition: none;
 }
 .choice-submit {
   width: 100%;
@@ -866,6 +903,84 @@ nav button {
   line-height: 1.35;
   margin-bottom: 8px;
 }
+.multi-select-entry-dialog .dialog-content,
+.multi-select-entry-dialog .compact-entry,
+.multi-select-entry-dialog .multi-select-form,
+.multi-select-entry-dialog .multi-select-form fieldset {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.multi-select-entry-dialog .dialog-content,
+.multi-select-entry-dialog .compact-entry,
+.multi-select-entry-dialog .multi-select-form {
+  flex: 1 1 auto;
+}
+.multi-select-entry-dialog .dialog-content {
+  overflow: hidden;
+}
+.multi-select-entry-dialog .answer-prompt-summary {
+  flex: none;
+}
+.multi-select-entry-dialog .compact-entry {
+  max-height: none;
+}
+.multi-select-entry-dialog .multi-select-form fieldset,
+.multi-select-entry-dialog .multi-select-form .choice-options {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.multi-select-entry-dialog .multi-select-form .choice-options {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 3px;
+  margin: -3px;
+}
+.multi-select-entry-dialog .multi-select-form .selection-count,
+.multi-select-entry-dialog .multi-select-form .choice-submit {
+  flex: none;
+}
+
+/* A diagram and its givens can be taller than the phone. Keep them available
+   beside the choices in one scroll area, with selection count and Check fixed. */
+.multi-select-entry-dialog .multi-select-context-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 3px;
+  margin: -3px;
+}
+.multi-select-entry-dialog .multi-select-context-scroll fieldset,
+.multi-select-entry-dialog .multi-select-context-scroll .choice-options {
+  flex: none;
+  overflow: visible;
+}
+.multi-select-entry-dialog .multi-select-context-scroll .choice-options {
+  padding: 0;
+  margin: 0;
+}
+.multi-select-question {
+  margin-bottom: 8px;
+}
+.multi-select-question > summary {
+  min-height: 44px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  list-style-position: inside;
+  color: var(--color-on-surface);
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.multi-select-question > summary:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+  border-radius: 6px;
+}
+.multi-select-question .choice-model {
+  margin-bottom: 12px;
+}
 
 /* Keep coordinate annotations readable when the prompt shares a short viewport. */
 .problem-content .choice-coordinate {
@@ -874,9 +989,6 @@ nav button {
 }
 
 /* Three statements read as a vertical comparison on the compact answer sheet. */
-.choice-entry-dialog .choice-form[data-choice-count="3"] .choice-options {
-  grid-template-columns: minmax(0, 1fr);
-}
 .choice-entry-dialog .choice-form[data-choice-count="3"] legend {
   position: absolute;
   width: 1px;

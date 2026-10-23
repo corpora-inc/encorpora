@@ -155,6 +155,8 @@
 }
 .pathways-status select {
   width: 180px;
+  font-size: 16px;
+  height: 2.75em;
 }
 .pathways-status button {
   min-height: 44px;
@@ -173,7 +175,7 @@
 }
 .pathways-search input {
   width: 100%;
-  font-size: 13px;
+  font-size: 16px;
 }
 .pathways input::placeholder {
   color: var(--atlas-muted);
@@ -330,7 +332,9 @@
 .pathways-browser select {
   width: 100%;
   min-width: 0;
-  font-size: 12px;
+  font-size: 16px;
+  /* Native WebKit selects shrink below min-height without an explicit height. */
+  height: 2.75em;
 }
 .pathways ul {
   list-style: none;
@@ -495,6 +499,12 @@
 .pathways-range {
   border-top: 1px solid var(--atlas-border);
   padding-top: 12px;
+}
+.pathways-detail .pathways-connections p {
+  margin: 0 0 14px;
+  color: var(--atlas-muted);
+  font-size: 12px;
+  line-height: 1.55;
 }
 .pathways-footer {
   position: relative;
@@ -827,7 +837,7 @@
     font-size: 11px;
   }
   .pathways-status label select {
-    font-size: 12px;
+    font-size: 16px;
   }
 }
 :root:fullscreen .pathways {
@@ -898,7 +908,7 @@
 @media (max-width: 650px) {
   .pathways.has-selection .pathways-toolbar {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 88px;
+    grid-template-columns: minmax(0, 1fr) 76px 44px;
   }
   .pathways.has-selection .pathways-search {
     width: auto;
@@ -1120,7 +1130,7 @@
   }
   .pathways .pathways-toolbar {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 88px;
+    grid-template-columns: minmax(0, 1fr) 76px 44px;
   }
   .pathways .pathways-search {
     width: auto;

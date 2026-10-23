@@ -15,16 +15,19 @@ The API shares one pool across learning, accounts, family exports, consent, bill
 Parent accounts are stored in AMP's own database: migration `0016-accounts.sql`, implemented with Better Auth (`src/server/accounts.ts`). They support email and password, passkeys, TOTP two-factor with backup codes, and Google, Apple, Microsoft and GitHub sign-in, with linked logins. Web sessions use an HttpOnly cookie. The session token also works as `Authorization: Bearer` for the API and native apps. An account id is `amp|<user id>`.
 
 **Required settings**
+
 - `AMP_ACCOUNTS_URL`: the public HTTPS origin. Loopback HTTP is allowed outside production.
 - `AMP_ACCOUNTS_SECRET`: at least 32 random characters.
 
 **Email.** `AMP_MAIL_RESEND_API_KEY` and `AMP_MAIL_FROM` send verification and reset emails.
+
 - In production without mail, email and password sign-in is off.
 - With mail, new password accounts must confirm their email before signing in.
 - A new parent can instead create the account with a passkey and sign in at once; the email is confirmed later, before consent or purchase ([account security](account-security.md#passkey-sign-up)). Passkey sign-up needs mail (or development) and a domain origin: WebAuthn rejects IP-address origins, so use `localhost`, not `127.0.0.1`, to try it locally.
 - In development, links are printed to the server log.
 
 **Providers.** Each provider is enabled only when all of its settings are present. `/api/v1/auth-config` lists the enabled providers, and the sign-in screens show a button only for those.
+
 - Google: `AMP_GOOGLE_CLIENT_ID` and `AMP_GOOGLE_CLIENT_SECRET`.
 - GitHub: `AMP_GITHUB_CLIENT_ID` and `AMP_GITHUB_CLIENT_SECRET`.
 - Microsoft: `AMP_MICROSOFT_CLIENT_ID` and `AMP_MICROSOFT_CLIENT_SECRET`, plus optional `AMP_MICROSOFT_TENANT_ID` (default `common`). The ID token must carry the optional claims `email` and `xms_edov`. Microsoft's `email` claim alone does not prove ownership, so AMP treats it as verified only when `xms_edov` is true or the address is listed in `verified_primary_email` or `verified_secondary_email`.
@@ -37,6 +40,7 @@ Parent accounts are stored in AMP's own database: migration `0016-accounts.sql`,
 `AMP_ACCOUNTS_TRUSTED_ORIGINS` lists extra allowed origins, such as native app schemes.
 
 **Linking.**
+
 - A provider sign-in links to an existing parent with the same email only when the provider verified that email and the parent's own address is confirmed. No provider is trusted past its verification flag.
 - A parent who removed that identity, or who protects password sign-in with an authenticator, links it from **Security** instead (migration `0023`).
 - A signed-in parent may link a login that uses a different email.
@@ -73,6 +77,7 @@ A merge to `main` that touches `amp/` becomes deployable after its focused CI ch
 3. **Deploy.** Every five minutes the hosting repository's deploy workflow (`deploy-corpora-amp`, outside this repository) deploys the newest green `main` commit touching `amp/` wherever it is not already live. When the newest commit is red or still running, it deploys the newest earlier green one, and its log says so: `newest X is red (amp failure); deploying last green Y`. The poll only moves forward: it never replaces a live release with an older commit, so a CI re-run cannot bring back a replaced release. A poll with nothing new succeeds quietly. Stage and production deploy in parallel. Each must pass smoke checks, including that `/api/v1/health` reports the commit just deployed, or it rolls back automatically.
 
 **What is live.** `amp/scripts/release-status.sh` prints `main`'s head and its CI verdict, the newest green commit, the commit stage and production run, and how far production is behind `main` and behind green. It uses only the public GitHub API and the health endpoints. Directly:
+
 - `curl https://amp.corpora.inc/api/v1/health` returns `commit` (the full source commit) and `builtAt` (UTC);
 - the web serves the same at `/version.json`.
 
@@ -84,7 +89,7 @@ Both are `null` for an image built without the pipeline's `SOURCE_COMMIT` and `B
 
 ## Operations
 
-Serve `dist/` and proxy `/api` to the application. `Dockerfile` builds both: target `api` (the server, migrations and scheduled jobs; non-root, read-only root filesystem compatible) and target `web` (nginx serving `dist/` with a single-page fallback, `docker/nginx.conf`). Each listens on port 8080. Deployment configuration for a particular host lives outside this repository. The API defaults to loopback; set `AMP_HOST` deliberately for container networking only in hosted mode. Set up TLS, database backups and restore drills, secret storage, monitoring, and alerting before external availability. Keep the database and object storage private. The local PDF delivery adapter reads built artifacts; production distribution needs an immutable object-storage/CDN release and download policy.
+Serve `dist/` and proxy `/api` to the application. `Dockerfile` builds both: target `api` (the server, migrations and scheduled jobs; non-root, read-only root filesystem compatible) and target `web` (nginx serving `dist/` with a single-page fallback, `docker/nginx.conf`). Each listens on port 8080. Deployment configuration for a particular host lives outside this repository. The API defaults to loopback; set `AMP_HOST` deliberately for container networking only in hosted mode. Set up TLS, database backups and restore drills, secret storage, monitoring, and alerting before external availability. Keep the database and object storage private. The API image includes immutable, catalog-matched PDFs generated in a separate Docker build stage. Lesson, workbook, and solution downloads include Letter and A4 editions; book downloads include their validated Letter edition. The build stage installs Chromium and Poppler, renders the current catalog, verifies publication hashes and book content/page-count manifests, and copies only delivery files into the API image. Browser binaries and development dependencies are excluded from the runtime. A locked BuildKit cache reuses PDFs only with a matching source/toolchain fingerprint and verified file bytes. Download routes retain parent authentication, consent, learner ownership, and active-license checks; no public PDF directory or external storage mount is required. A later object-storage adapter must preserve those checks and bind files to the deployed content version.
 
 `AMP_FREE_PROBLEMS` sets how many problems an anonymous visitor answers before the paywall: placement (a fifth of the allowance, at most 20), then adaptive practice with lessons, hints and review. It must be a whole number from 1 to 1000 and defaults to 100. Invalid values stop startup.
 
@@ -114,3 +119,15 @@ Family exports stream bounded cursor batches with a two-minute limit. The shared
 Native app distribution, store purchasing, automated provider onboarding, public hosting, and complete curriculum certification are separate release requirements. Local browser tests and PDF generation do not establish those outcomes.
 
 Optional [finite offline packs](offline-packs.md) require separately provisioned signing and identity-binding keys. Their server API records provisional activity without independent progress credit. Native pack storage, local practice and synchronization are not implemented by that API.
+
+### PDF image acceptance
+
+Build the API target, then run its delivery check without network or database access:
+
+```sh
+docker build --target api -t amp-api:pdf-check amp
+docker run --rm --network none --read-only --tmpfs /tmp amp-api:pdf-check \
+  node_modules/.bin/tsx scripts/verify-pdf-delivery.ts
+```
+
+The check runs as the image’s unprivileged user. It validates the complete catalog’s artifact inventory and hashes, requests representative Letter/A4 publications and every book through the actual Fastify routes, and checks authentication, consent, license, and ownership rejection using synthetic in-memory fixtures. It does not create a listener or access learner records. The publisher logs PDF counts, byte totals, cache status, and elapsed generation time.

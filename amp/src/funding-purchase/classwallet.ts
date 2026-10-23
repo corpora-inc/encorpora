@@ -34,6 +34,8 @@ export const classWalletConfigSchema = z
     dateFormat: z.literal("canonical-utc-iso"),
     settledStatus: z.literal("Settled"),
     lastUpdateMeaning: z.literal("settlement-time-for-settled-rows"),
+    // Enable only after the provider confirms the report/callback identifier mapping.
+    payByPurchaseOrderColumn: z.literal("Order ID").optional(),
     programs: z
       .array(
         z.strictObject({

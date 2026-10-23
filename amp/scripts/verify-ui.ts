@@ -26,6 +26,7 @@ import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { migrate } from "./migrate";
+import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { templates } from "../src/math/engine";
 /** Problem types allowed to need a scroll at one tablet size: a very tall
  * figure past its legible floor. The sweep prints the list it measured. */
@@ -33,6 +34,7 @@ const TABLET_SCROLL_BUDGET = 0;
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
+assertTestDatabaseTarget(url);
 await migrate(url);
 const repository = new PostgresRepository(url, { development: true });
 const account = "development-household";
@@ -229,7 +231,10 @@ try {
   // answered problem stays mounted until the next one arrives, so wait for its
   // feedback to leave before accepting either answer form.
   await page.locator(".solution-panel").waitFor({ state: "detached" });
-  await page.locator("#answer, .choice-form").first().waitFor();
+  await page
+    .locator("#answer, .choice-form, .compact-answer-action")
+    .first()
+    .waitFor();
   const opened = await page.locator(".problem-stage").evaluate((stage) => {
     const top = stage.scrollTop;
     stage.style.paddingBottom = "";
@@ -478,7 +483,10 @@ try {
       );
       throw failure;
     });
-    await page.locator("#answer, .choice-form").first().waitFor();
+    await page
+      .locator("#answer, .choice-form, .compact-answer-action")
+      .first()
+      .waitFor();
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -496,12 +504,14 @@ try {
     ]) {
       await page.setViewportSize(size);
       // Let the media-query subscription commit the appropriate answer surface.
-      await page.waitForFunction(() => {
-        const compact = matchMedia(
-          "(max-width: 650px) and (max-height: 640px)",
-        ).matches;
+      await page.waitForFunction((multiSelect) => {
+        const compact =
+          matchMedia("(max-width: 650px) and (max-height: 640px)").matches ||
+          (multiSelect &&
+            !!document.querySelector(".problem-content svg") &&
+            matchMedia("(max-width: 899px)").matches);
         return !!document.querySelector(".compact-answer-action") === compact;
-      });
+      }, template.requiredResponseCapability === "multi-select-v1");
       if (isPhoneLandscape(size)) {
         await assertPhoneLandscapeSmoke(page, template.id);
         continue;
@@ -628,16 +638,16 @@ try {
   await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator(".progress-skill-card").first().waitFor();
-  // The Family menu: a tap outside, Escape and the trigger each close it;
+  // The Account menu: a tap outside, Escape and the trigger each close it;
   // nothing in the header moves, the panel fits a phone inside its safe gutter,
   // and focus comes back to the trigger.
   // While open the menu is modal, so the page behind it, trigger included,
   // leaves the accessibility tree.
   const familyMenu = page.getByRole("button", {
-    name: "Family menu",
+    name: "Account menu",
     includeHidden: true,
   });
-  const familyList = page.getByRole("menu", { name: "Family menu" });
+  const familyList = page.getByRole("menu", { name: "Account menu" });
   const headerBoxes = () =>
     page.evaluate(() =>
       [
@@ -665,14 +675,14 @@ try {
     assert.equal(
       await headerBoxes(),
       closed,
-      `Opening the Family menu moves nothing at ${size.width}px`,
+      `Opening the Account menu moves nothing at ${size.width}px`,
     );
     const panel = (await familyList.boundingBox())!;
     assert.ok(
       panel.x >= 16 &&
         panel.x + panel.width <= size.width - 16 &&
         panel.y + panel.height <= size.height - 16,
-      `Family menu fits ${size.width}px: ${JSON.stringify(panel)}`,
+      `Account menu fits ${size.width}px: ${JSON.stringify(panel)}`,
     );
     for (const item of await page.getByRole("menuitem").all())
       assert.ok((await item.boundingBox())!.height >= 44);
@@ -702,7 +712,7 @@ try {
   await familyList.waitFor();
   assert.equal(
     await page.evaluate(() => document.activeElement?.textContent),
-    "Manage family",
+    "Manage account",
   );
   await page.keyboard.press("End");
   await page.keyboard.press("Home");
@@ -714,7 +724,7 @@ try {
     () => {
       const active = document.activeElement as HTMLElement | null;
       return (
-        active?.getAttribute("aria-label") === "Family menu" &&
+        active?.getAttribute("aria-label") === "Account menu" &&
         active.matches(":focus-visible") &&
         getComputedStyle(active).outlineStyle !== "none"
       );
@@ -722,7 +732,7 @@ try {
     undefined,
     { timeout: 5_000 },
   );
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page
     .getByRole("menuitem", { name: "Add learner", exact: true })
     .click();
@@ -750,9 +760,9 @@ try {
   );
   // Family opens on the current learner, and choosing one there makes them
   // the current learner on every screen.
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage account", exact: true })
     .click();
   assert.equal(
     await page.getByLabel("Family learner").getAttribute("data-value"),
@@ -771,7 +781,7 @@ try {
     learnerIds.at(-1)!,
   );
   await page.getByRole("button", { name: "Practice", exact: true }).click();
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page
     .getByRole("menuitem", { name: "Change birth year", exact: true })
     .click();
@@ -783,9 +793,9 @@ try {
     "A maximum-length learner nickname must fit a phone viewport",
   );
   // The real application mounts parent controls independently of learning consent.
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage account", exact: true })
     .click();
   await page.locator(".family-center").waitFor();
   for (const size of [
@@ -832,11 +842,11 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Back", exact: true }).click();
   await page.waitForFunction(
-    () => document.activeElement?.getAttribute("aria-label") === "Family menu",
+    () => document.activeElement?.getAttribute("aria-label") === "Account menu",
   );
   // Family exits to the workspace; open the profile route before editing again.
   assert.equal(new URL(page.url()).pathname, "/");
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page
     .getByRole("menuitem", { name: "Change birth year", exact: true })
     .click();
@@ -857,9 +867,9 @@ try {
   await page.getByRole("button", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Go", exact: true }).click();
   await familyBatchWaiting;
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage account", exact: true })
     .click();
   await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
   await page
@@ -908,9 +918,9 @@ try {
     await page.getByRole("navigation", { name: "Learning sections" }).count(),
     0,
   );
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage account", exact: true })
     .click();
   await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
   assert.deepEqual(errors, []);

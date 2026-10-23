@@ -136,12 +136,26 @@ test("guess chance comes from each family's answer schema and is never understat
     for (let i = 0; i < 120; i++) {
       const response = generateProblem(template.id, `audit:${i}`).public
         .response;
-      assert.equal(response.kind, "choice", template.id);
+      assert.equal(
+        response.kind,
+        template.requiredResponseCapability === "multi-select-v1"
+          ? "multi-select"
+          : "choice",
+        template.id,
+      );
       if (response.kind === "choice")
         assert.ok(
           chance >= 1 / response.options.length - 1e-12,
           `${template.id} seed ${i}: ${response.options.length} options, chance ${chance}`,
         );
+      if (response.kind === "multi-select") {
+        // Enumerate permitted sets independently of the binomial implementation.
+        const possibilities = Array.from(
+          { length: 2 ** response.options.length },
+          (_, mask) => mask.toString(2).replaceAll("0", "").length,
+        ).filter((count) => count === response.selectionCount).length;
+        assert.ok(chance >= 1 / possibilities - 1e-12, template.id);
+      }
     }
   }
   assert.ok(choiceFamilies > 40, String(choiceFamilies));

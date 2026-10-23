@@ -268,7 +268,7 @@ export const combinatoricsLessons: Lesson[] = [
     id: "independent-events-probability",
     title: "Independent events: both, neither and at least one",
     summary:
-      "Multiply probabilities of independent events, and use complements for neither and at least one.",
+      "Two events are independent when knowing one result does not change the chance of the other. Multiply their chances to find the chance of both. To find at least one, subtract the chance of neither from 1.",
     templateIds: ["independent-events-probability"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -327,7 +327,7 @@ export const combinatoricsLessons: Lesson[] = [
     id: "expected-value",
     title: "Expected value",
     summary:
-      "Weight each payoff by its probability and add; subtract a fixed cost for an expected net gain.",
+      "A game may pay different amounts. Its expected payoff is the average per play over many repetitions: multiply each possible payoff by its chance and add. Subtract the cost of playing to find the expected gain or loss.",
     templateIds: ["expected-value"],
     includeGeneratedRepresentation: false,
     objectives: [

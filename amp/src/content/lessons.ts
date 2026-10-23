@@ -1,3 +1,5 @@
+import type { SemanticFigure } from "../math/contracts";
+import { satCompletionLessons } from "./sat-completion-lessons";
 import { congruenceLessons } from "./congruence-lessons";
 import { assessmentGapLessons } from "./assessment-gap-lessons";
 import { radicalEquationLessons } from "./radical-equation-lessons";
@@ -59,6 +61,8 @@ import { circleMeasurementLessons } from "./circle-measurement-lessons";
 import { integerExponentLessons } from "./integer-exponent-lessons";
 import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
 import { percentChangeLessons } from "./percent-change-lessons";
+import { successivePercentChangeLesson } from "./successive-percent-change-lesson";
+import { slopeTriangleStatementsLesson } from "./slope-triangle-statements-lesson";
 import { inequalityLessons } from "./inequality-lessons";
 import { linearSystemLessons } from "./linear-system-lessons";
 import { rightTriangleLessons } from "./right-triangle-lessons";
@@ -228,6 +232,8 @@ export interface Lesson {
   closingSections?: Lesson["sections"];
   workedExample: {
     prompt: string;
+    figure?: SemanticFigure;
+    choices?: string[];
     steps: string[];
     answer: string;
     answerUnit?: string;
@@ -657,6 +663,7 @@ export const baseLessons: Lesson[] = [
 
 export const lessons: readonly Lesson[] = [
   ...assessmentGapLessons,
+  ...satCompletionLessons,
   ...completingSquareLessons,
   ...factoringLessons,
   ...integerExponentLessons,
@@ -709,6 +716,8 @@ export const lessons: readonly Lesson[] = [
   ...algebraStatisticsLessons,
   ...powerLessons,
   ...percentChangeLessons,
+  successivePercentChangeLesson,
+  slopeTriangleStatementsLesson,
   ...inequalityLessons,
   ...linearSystemLessons,
   ...rationalExpressionLessons,

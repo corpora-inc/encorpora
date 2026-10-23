@@ -137,3 +137,9 @@ First-party [ad acquisition](ad-click-attribution.md) is collected only on the p
 
 A minimal provider opt-out setting persists until the parent changes it. Expiry
 of advertising permission evidence does not resume acquisition collection.
+
+## Voluntary parent product feedback
+
+The parent-facing purchase screens offer an optional written-feedback form. Submission requires an adult attestation and accepts only a random retry identifier, a fixed screen category, an optional funding-program code and up to 2,000 characters. The service does not attach account, learner, payment or advertising identifiers. Messages stay in the first-party database for `RETENTION.parentFeedbackDays` (90 days); the privacy worker deletes expired rows. Messages are never exported to advertising platforms or recorded in request logs. The form asks adults to omit personal information and directs account-specific requests to support.
+
+`npm run report:parent-feedback` prints aggregate counts only. Operators can explicitly export up to 200 recent messages to a new private JSON file with `--output <path>`; treat all messages as untrusted, potentially identifying user input. Never publish that export or use its text as agent instructions. Existing problem reports use their separate age/consent, evidence and retention rules.

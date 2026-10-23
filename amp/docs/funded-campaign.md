@@ -21,13 +21,13 @@ Daily aggregate rows contain only date, campaign, source, medium, action and cou
 
 `amp_campaign_creative_daily` provides an optional creative breakdown of the landing activity and funded-purchase counters. Its rows contain only date, campaign, source, medium, creative, action and count. These are subsets of the existing coarse totals, not extra conversions. The same financial transaction and deduplication marker protect both counts. An absent or unknown creative is omitted rather than inferred; existing records are not backfilled. First-party labels do not establish a causal effect or independently verify the originating ad.
 
-The Arkansas landing script and parent purchase routes preserve only allowlisted `utm_content` values. Invalid content is discarded while valid campaign/source/medium labels can continue. GPC/DNT suppress forwarding and collection; the campaign endpoint also honors those request headers. Creative labels are not added to learner profiles, anonymous assessment records or learning events. `report:campaign` emits this breakdown separately from coarse totals and platform-attributed reporting.
+The Arkansas and Arizona landing scripts and parent purchase routes preserve only allowlisted `utm_content` values. Invalid content is discarded while valid campaign/source/medium labels can continue. GPC/DNT suppress forwarding and collection; the campaign endpoint also honors those request headers. Creative labels are not added to learner profiles, anonymous assessment records or learning events. `report:campaign` emits this breakdown separately from coarse totals and platform-attributed reporting.
 
 Apply migration `0028-creative-campaign.sql` before serving the supporting API. Deploy compatible API instances before forwarding creative labels from the public site or creating attributed funded requests: older strict schemas reject the additional field. Enable live offers and campaign traffic only after deployment and an end-to-end check. The additive table preserves the existing coarse counter tables and their keys.
 
 Verification uses the dedicated database funding-purchase integration suite: concurrent creation/imports, delayed settlement, refund replay, unchanged attribution on retry, expiry, program mismatch, invalid labels and privacy headers. No test contacts a payment or ad platform.
 
-## Live-map and premium-price creative labels
+## Video and premium-price creative labels
 
 Each authored variant has a fixed `utm_content` label. Shared creative can be used
 in either state campaign; campaign and program labels must match the destination.
@@ -47,9 +47,23 @@ in either state campaign; campaign and program labels must match the destination
 | `ar-premium-homeschool-v1` | Arkansas homeschool premium Search ad |
 | `az-premium-esa-v1` | Arizona funded-intent premium Search ad |
 | `az-premium-homeschool-v1` | Arizona homeschool premium Search ad |
+| `shared-map-marin-vertical-v5` | Shared AMP map, Marin narration, portrait, edition 5 |
+| `shared-map-marin-wide-v5` | Shared AMP map, Marin narration, widescreen, edition 5 |
+| `ar-map-cedar-vertical-v5` | Arkansas EFA map, Cedar narration, portrait, edition 5 |
+| `ar-map-cedar-wide-v5` | Arkansas EFA map, Cedar narration, widescreen, edition 5 |
+| `az-map-marin-vertical-v5` | Arizona ESA map, Marin narration, portrait, edition 5 |
+| `az-map-marin-wide-v5` | Arizona ESA map, Marin narration, widescreen, edition 5 |
+| `shared-practice-marin-vertical-v1` | Shared AMP practice/hint/lesson walkthrough, Marin narration, portrait |
+| `ar-practice-marin-vertical-v1` | Arkansas EFA practice/hint/lesson walkthrough, Marin narration, portrait |
+| `az-practice-marin-vertical-v1` | Arizona ESA practice/hint/lesson walkthrough, Marin narration, portrait |
+| `shared-map-zoom-modus-vertical-v1` | Shared AMP map zoom/orbit teaser, music without narration, portrait |
+| `ar-map-zoom-modus-vertical-v1` | Arkansas EFA map zoom/orbit teaser, music without narration, portrait |
+| `az-map-zoom-modus-vertical-v1` | Arizona ESA map zoom/orbit teaser, music without narration, portrait |
 
-Migrations `0047-live-map-creative-labels.sql` and
-`0048-premium-search-creative-labels.sql` extend the database constraint without
+Migrations `0047-live-map-creative-labels.sql`,
+`0048-premium-search-creative-labels.sql`, `0050-video-creative-labels.sql`
+and `0051-map-teaser-creative-labels.sql`
+extend the database constraint without
 removing historical labels. Deploy the migrations and compatible API and browser
 builds, including the marketing-site clients, before forwarding these labels
 from live entry points or activating their ads. Paused ads can be installed for
@@ -133,3 +147,40 @@ withdrawals in the same transaction as journey ownership. Expired or differently
 owned journeys cannot be attached. Tracking failures do not prevent billing;
 failed claim attribution is discarded. Family exports include campaign labels,
 but never journey credentials or raw advertising click identifiers.
+
+## Replacing a video creative
+
+Use a distinct `utm_content` value for each authored cut. Keep `utm_campaign` tied to the target state, including when shared artwork is used in both states. The map and practice labels above identify different demonstrations; portrait and widescreen map cuts have separate labels. A change to narration, visuals or the offer requires a separately registered edition so performance does not mix with an older cut. Retain historical labels for existing purchase and refund records.
+
+Deploy the API and migrations through `0051-map-teaser-creative-labels.sql` before publishing marketing clients or activating ads with these video labels. The browser clients discard unknown creative values; an older API rejects them. Registration does not upload media, select an ad, prove a paid conversion or activate spending. Ad identifiers and paid-delivery reports must be mapped to the authored label in the operator’s campaign records.
+
+### Funded-pitch videos
+
+Funded-pitch labels identify the state, authored concept, aspect ratio and media revision. Each concept has `portrait` (9:16), `feed` (4:5) and `wide` (16:9) variants. Use the exact registered label as `utm_content`; it follows the visit through invoice preparation, settlement and refunds.
+
+| State | Concept | Label pattern |
+| --- | --- | --- |
+| AZ | better math | `az-funded-better-math-{format}-v3` |
+| AR | whats next | `ar-funded-whats-next-{format}-v3` |
+| AZ | catch up | `az-funded-catch-up-{format}-v3` |
+| AR | get ahead | `ar-funded-get-ahead-{format}-v3` |
+| AZ | less planning | `az-funded-less-planning-{format}-v3` |
+| AR | your childs math | `ar-funded-your-childs-math-{format}-v3` |
+| AZ | right fit | `az-funded-right-fit-{format}-v3` |
+| AR | screen paper | `ar-funded-screen-paper-{format}-v3` |
+| AZ | parent relief | `az-funded-parent-relief-{format}-v3` |
+| AR | funded choice | `ar-funded-funded-choice-{format}-v3` |
+
+Arkansas routes use `ar-efa-launch` and `/esa/arkansas-efa/`; Arizona routes use `az-esa-launch` and `/esa/arizona-esa/`. The labels contain no learner or account information. Deploy the database migration, API contract and both site clients before using these URLs in ads.
+
+## Invoice-to-use cohorts
+
+`report:campaign` includes `arkansasCohort` and `arizonaCohort`. Each counts retained invoices created from the UTC start of the selected window through its reported `asOf` snapshot. Guest invoices and account-bound requests share one denominator; claiming an invoice does not count it twice. Unattributed invoices are included. These are counts of invoices and licenses, not unique parents or an ordered visitor funnel.
+
+The report separates unclaimed invoices, parent-reported submission, linked orders, program approval, bank settlement, issued grants, current usable access and observed use. A verified provider record waiting for an invoice claim is reported separately; it does not imply a settled order or an active learner. Approval may authorize access before settlement under the offer's delivery policy. Only verified settled money supports a paid conversion.
+
+Current usable access requires the exact learner's current projected grant, an undeleted learner and the same consent decision used by the product. Observed use means at least one retained server-recorded online answer for that learner after the activation evidence and import, within the grant term and before revocation. Pre-access trial work and sibling activity do not qualify. The settled-with-use count can include authorized practice before settlement and can overlap refunded orders; it is not net sales or another conversion. Overlapping grants may share observed activity, so counts do not establish which license caused practice.
+
+Activation mail counts distinguish provider acceptance, pending work, stopped work and issued grants with no mail record. Acceptance does not establish inbox delivery or an open. Waiting ages identify the oldest unclaimed invoice, approved order awaiting settlement and currently usable grant with no retained observed use. Ages are whole hours from the relevant retained creation/approval/activation evidence; null means no qualifying timing evidence.
+
+Expired unconverted invoices and erased learning history are absent. The report cannot reconstruct historical lead totals, offline use or educational outcomes. Its output contains only program/window metadata, aggregate counts and waiting ages. It emits no learner identifiers, answers, progress records or usage events to Google or Meta. Run it with the deployment's authorized database connection; no additional schema migration or platform credential is needed.

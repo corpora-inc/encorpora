@@ -1,3 +1,4 @@
+import { purgeParentFeedback } from "../src/feedback/parent-retention.js";
 import { purgeMetaPurchaseContexts } from "../src/advertising/meta-context.js";
 import { purgeAcquisition } from "../src/advertising/acquisition.js";
 import { purgeMetaPurchaseQueue } from "../src/advertising/meta-delivery.js";
@@ -37,6 +38,7 @@ try {
       ...(await purgeTrialRecords(pool)),
       ...(await purgeFunnelEvents(pool)),
       ...(await purgeProblemFlags(pool)),
+      expiredParentFeedback: await purgeParentFeedback(pool),
       ...(await purgeInactiveLearners(pool)),
       ...(await purgeFinancialRecords(pool)),
     }),

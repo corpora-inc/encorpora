@@ -54,3 +54,53 @@ test("a bare symbol named in prose keeps its comma as prose", () => {
   const comma = s.findIndex((x) => !x.math && x.text.startsWith(","));
   assert.ok(comma > 0 && s[comma - 1]!.math, JSON.stringify(s));
 });
+
+test("coordinate lists wrap between complete pairs, with or without negative coordinates", () => {
+  for (const pairs of [
+    ["(1, 2)", "(3, 4)", "(5, 6)"],
+    ["(-3, 2)", "(-2, 2)", "(-1, -4)"],
+    ["(0.5, -2.5)", "(3, 4)", "(5, 6)"],
+  ]) {
+    for (const [open, close] of [
+      ["", ""],
+      ["{", "}"],
+    ]) {
+      const text = open + pairs.join(", ") + close;
+      const parts = segments(text);
+      assert.deepEqual(
+        parts.filter((s) => s.math).map((s) => s.plain),
+        pairs,
+      );
+      assert.equal(parts.map((s) => s.plain ?? s.text).join(""), text);
+      assert.equal(
+        parts.filter((s) => !s.math && s.text.includes(", ")).length,
+        2,
+      );
+    }
+  }
+});
+
+test("wrapping opportunities do not split grouped expressions or explicit TeX", () => {
+  assert.deepEqual(
+    segments("(x + 1)/(x - 2), 3/4")
+      .filter((s) => s.math)
+      .map((s) => s.plain),
+    ["(x + 1)/(x - 2)", "3/4"],
+  );
+  assert.deepEqual(segments("$\\frac{a,b}{c,d}$"), [
+    { text: "\\frac{a,b}{c,d}", math: true, plain: "\\frac{a,b}{c,d}" },
+  ]);
+  assert.equal(segments("f(1, 2) = 4").filter((s) => s.math).length, 1);
+});
+
+test("a variable introducing a grouped formula stays typeset", () => {
+  const parts = segments("Factor out x: 16x² − 32x = x(16x − 32) = 0.");
+  assert.ok(parts.some((part) => part.math && part.text === "x"));
+  assert.equal(
+    parts
+      .filter((part) => !part.math)
+      .map((part) => part.text)
+      .join(""),
+    "Factor out : .",
+  );
+});

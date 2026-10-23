@@ -1,3 +1,4 @@
+import { SupportHelp } from "../features/support/SupportHelp";
 import { Link } from "@tanstack/react-router";
 import { useLayoutEffect, type ReactNode } from "react";
 import { brand } from "../../brand";
@@ -35,6 +36,7 @@ export function PageFrame({
     return (
       <div className={`${styles.frame} ${styles.centered} ${className}`}>
         <main className={styles.main}>{children}</main>
+        <SupportHelp feedback={false} />
       </div>
     );
   return (
@@ -45,6 +47,7 @@ export function PageFrame({
         </Link>
       </header>
       <main className={styles.main}>{children}</main>
+      <SupportHelp feedback={false} />
     </div>
   );
 }

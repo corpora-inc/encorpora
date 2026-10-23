@@ -37,7 +37,7 @@ const browser = await (
       ? firefox
       : chromium
 ).launch();
-const output = "artifacts/pathways";
+const output = process.env.AMP_MAP_OUTPUT ?? "artifacts/pathways";
 await mkdir(output, { recursive: true });
 const target = skills.find((s) => s.id === "nonlinear-systems")!;
 const other = skills.find((s) => s.id === "nonlinear-intersection-count")!;
@@ -285,11 +285,18 @@ async function noOverflow(page: Page) {
     );
   assert.deepEqual(bad, [], "44px controls");
   const learner = page.locator(".pathways-status select");
-  if (await learner.count())
+  if (await learner.count()) {
+    assert(
+      (await learner.evaluate((el) =>
+        parseFloat(getComputedStyle(el).fontSize),
+      )) >= 16,
+      "readable learner selector text",
+    );
     assert(
       (await learner.boundingBox())!.width >= 180,
       "readable learner selector",
     );
+  }
 }
 async function verifySettledLabels(page: Page, animated = false) {
   const overlay = page.locator(".pathways-map-labels");
@@ -604,7 +611,163 @@ async function verifyLessonRecovery() {
     await page.close();
   }
 }
+async function verifySearchFilters() {
+  for (const [width, colorScheme] of [
+    [320, "light"],
+    [390, "dark"],
+    [768, "light"],
+    [1280, "dark"],
+  ] as const) {
+    const page = await browser.newPage({
+      viewport: { width, height: 844 },
+      colorScheme,
+      reducedMotion: "reduce",
+    });
+    try {
+      await fixture(page, { signedIn: width !== 390 });
+      await page.goto(`${origin}/pathways/${target.id}?topic=L&filter=K`);
+      const input = page.getByRole("searchbox", {
+        name: "Find a skill",
+        exact: true,
+      });
+      await input.waitFor();
+      assert.equal(await input.inputValue(), "L");
+      assert(
+        (await input.evaluate((el) =>
+          parseFloat(getComputedStyle(el).fontSize),
+        )) >= 16,
+        "Search text is readable on phones",
+      );
+      await input.focus();
+      await input.press("Backspace");
+      await page.waitForURL((url) => !url.searchParams.has("topic"));
+      assert.equal(
+        await input.inputValue(),
+        "",
+        "Backspace removes the last character",
+      );
+      assert(
+        await input.evaluate((el) => el === document.activeElement),
+        "Deleting keeps the keyboard focused on search",
+      );
+      assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
+      const grade = page.getByRole("combobox", { name: "Grade or course" });
+      await grade.selectOption("");
+      await page.waitForURL((url) => !url.searchParams.has("filter"));
+      assert.equal(
+        await grade.inputValue(),
+        "",
+        "All grades clears the grade filter",
+      );
+      assert.equal(
+        await page.locator(".pathways-skill-list a").count(),
+        skills.length,
+      );
+      await input.pressSequentially("linear", { delay: 10 });
+      await page.waitForURL(
+        (url) => url.searchParams.get("topic") === "linear",
+      );
+      assert.equal(await input.inputValue(), "linear");
+      await input.press("Escape");
+      assert.equal(await page.locator("#pathways-browser").isVisible(), false);
+      assert.equal(
+        await input.inputValue(),
+        "linear",
+        "Escape dismisses results without deleting the query",
+      );
+      assert(await input.evaluate((el) => el === document.activeElement));
+      await input.press("Escape");
+      assert.equal(
+        await page.locator("#pathways-browser").isVisible(),
+        false,
+        "Repeated Escape does not reopen results",
+      );
+      assert.equal(await input.inputValue(), "linear");
+      await input.fill("L".repeat(101));
+      await page.waitForURL(
+        (url) => url.searchParams.get("topic")?.length === 100,
+      );
+      assert.equal(
+        (await input.inputValue()).length,
+        100,
+        "Long paste is bounded before navigation",
+      );
+      assert.equal(await page.locator("#pathways-browser").isVisible(), true);
+      await input.fill("");
+      await page.waitForURL((url) => !url.searchParams.has("topic"));
+      assert.equal(
+        await input.inputValue(),
+        "",
+        "Clearing the search removes the URL filter",
+      );
+      assert.equal(new URL(page.url()).pathname, `/pathways/${target.id}`);
+      await page.reload();
+      await input.waitFor();
+      assert.equal(
+        await input.inputValue(),
+        "",
+        "The cleared search survives reload",
+      );
+      await page.goto(
+        `${origin}/pathways/${target.id}?topic=${"L".repeat(101)}&filter=K`,
+      );
+      await input.waitFor();
+      assert.equal(
+        await input.inputValue(),
+        "",
+        "An overlong shared query is ignored without an error screen",
+      );
+      await input.focus();
+      assert.equal(
+        await grade.inputValue(),
+        "K",
+        "Other valid filters survive a malformed query",
+      );
+      await input.fill("linear");
+      await page.waitForURL(
+        (url) => url.searchParams.get("topic") === "linear",
+      );
+      await input.fill("Count To 20");
+      await page.waitForURL(
+        (url) => url.searchParams.get("topic") === "Count To 20",
+      );
+      await page.getByRole("link", { name: /Count To 20/ }).click();
+      await page.waitForURL((url) => url.pathname === "/pathways/count-to-20");
+      await page.goBack();
+      await input.waitFor();
+      assert.equal(
+        await input.inputValue(),
+        "Count To 20",
+        "Browser Back restores the search",
+      );
+      await page.goForward();
+      await input.waitFor();
+      assert.equal(
+        await input.inputValue(),
+        "Count To 20",
+        "Browser Forward restores the search",
+      );
+      await input.fill("");
+      await page.waitForURL((url) => !url.searchParams.has("topic"));
+      await grade.selectOption("");
+      await page.waitForURL((url) => !url.searchParams.has("filter"));
+      await input.focus();
+      await noOverflow(page);
+      await page.screenshot({
+        path: `${output}/search-cleared-${width}-${colorScheme}.png`,
+        fullPage: true,
+      });
+    } finally {
+      await page.close();
+    }
+  }
+  console.log(
+    "Pathways search: editing, clear/reset, Escape, long paste/link recovery, focus, reload and browser history passed at four widths.",
+  );
+}
+
 try {
+  await verifySearchFilters();
   if (!process.env.AMP_MAP_FOCUS) await verifyLessonRecovery();
   for (const width of process.env.AMP_MAP_FOCUS ? [] : [320, 390, 768, 1280])
     for (const theme of ["light", "dark"] as const) {
@@ -1350,6 +1513,54 @@ try {
     "pending label timer cannot resurrect labels after context loss",
   );
   await lost.close();
+  // Authored navigation works across grade bands without creating prerequisite links.
+  for (const width of [320, 390, 768, 1280]) {
+    for (const colorScheme of ["light", "dark"] as const) {
+      const parity = await browser.newPage({
+        viewport: { width, height: 900 },
+        colorScheme,
+        reducedMotion: "reduce",
+      });
+      await fixture(parity, { signedIn: false });
+      await parity.goto(`${origin}/pathways/odd-and-even`);
+      const related = parity.locator(".pathways-connections");
+      await related
+        .getByText("When each kit holds two items", { exact: false })
+        .waitFor();
+      assert.equal(await related.locator("p").count(), 4);
+      const application = related.getByRole("link", { name: /Event Sets/ });
+      assert.equal(
+        await application.getAttribute("href"),
+        "/pathways/event-sets",
+      );
+      await related.scrollIntoViewIfNeeded();
+      await noOverflow(parity);
+      if (width <= 390)
+        assert(
+          await parity
+            .locator(".pathways-detail")
+            .evaluate((el) => el.scrollHeight <= el.clientHeight + 2),
+          "related explanations expand the phone card",
+        );
+      await parity.screenshot({
+        path: `${output}/connections-${width}-${colorScheme}.png`,
+      });
+      await application.click();
+      await parity.waitForURL("**/pathways/event-sets");
+      await parity
+        .getByRole("heading", { name: "Event Sets", exact: true })
+        .waitFor();
+      await parity
+        .locator(".pathways-connections")
+        .getByRole("link", { name: /Odd And Even/ })
+        .click();
+      await parity.waitForURL("**/pathways/odd-and-even");
+      await parity
+        .getByRole("heading", { name: "Odd And Even", exact: true })
+        .waitFor();
+      await parity.close();
+    }
+  }
   console.log(
     process.env.AMP_MAP_FOCUS
       ? "Pathways focused cases: guest/trial entry, canonical links, learner states, and phone card scrolling passed."

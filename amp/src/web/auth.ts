@@ -114,7 +114,10 @@ export async function signIn(intent?: "create") {
 export async function signOut() {
   if (nativeRuntime) return nativeSignOut();
   if ((await authConfig()).mode === "accounts") {
-    await accountClient.signOut();
+    const result = await accountClient.signOut();
+    if (result.error)
+      throw new Error(result.error.message ?? "Sign out did not finish");
+    notifyAccountSessionChanged();
     location.assign("/");
     return;
   }

@@ -14,6 +14,12 @@
 .scene-player .scene-figure {
   margin: 0 auto;
 }
+.scene-player[data-playback="static"] {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+}
 .scene-player-captions {
   display: grid;
   min-width: 0;
@@ -80,10 +86,7 @@
 
 /* Short explanations keep both lines readable while the diagram guides focus. */
 .scene-player-story {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 44px;
-  align-items: start;
-  gap: var(--space-1);
+  min-width: 0;
 }
 .scene-player-prose {
   display: grid;
@@ -109,24 +112,10 @@
   background: var(--color-figure-accent-fill);
   color: var(--color-on-surface-raised);
 }
-.scene-player-toggle {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  min-height: 44px;
+.scene-player[data-playback="static"] .scene-player-prose li {
   padding: 0;
   border: 0;
-  border-radius: 50%;
+  border-radius: 0;
   background: transparent;
-  color: var(--color-muted-text);
-  cursor: pointer;
-}
-.scene-player-toggle:hover {
-  background: var(--color-surface-raised-hover);
   color: var(--color-on-surface-raised);
-}
-.scene-player-toggle:focus-visible {
-  outline: 3px solid var(--color-focus-ring);
-  outline-offset: 2px;
 }

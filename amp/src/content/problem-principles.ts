@@ -1,3 +1,4 @@
+import { satCompletionPrinciples } from "./sat-completion-lessons";
 import { congruencePrinciples } from "./congruence-lessons";
 import { assessmentGapPrinciples } from "./assessment-gap-lessons";
 import { radicalEquationPrinciples } from "./radical-equation-lessons";
@@ -51,6 +52,8 @@ import { circleMeasurementPrinciples } from "./circle-measurement-lessons";
 import { integerExponentPrinciples } from "./integer-exponent-lessons";
 import { descriptiveStatisticsPrinciples } from "./descriptive-statistics-lessons";
 import { percentChangePrinciples } from "./percent-change-lessons";
+import { successivePercentChangePrinciple } from "./successive-percent-change-lesson";
+import { slopeTriangleStatementsPrinciple } from "./slope-triangle-statements-lesson";
 import { inequalityPrinciples } from "./inequality-lessons";
 import { linearSystemPrinciples } from "./linear-system-lessons";
 import { rightTrianglePrinciples } from "./right-triangle-lessons";
@@ -62,6 +65,7 @@ import { absoluteValuePrinciples } from "./absolute-value-lessons";
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
   ...assessmentGapPrinciples,
+  ...satCompletionPrinciples,
   ...factoringPrinciples,
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
@@ -113,6 +117,8 @@ export const principles: Record<string, string> = {
   ...circleMeasurementPrinciples,
   ...completingSquarePrinciples,
   ...percentChangePrinciples,
+  "successive-percent-change": successivePercentChangePrinciple,
+  "slope-triangle-statements": slopeTriangleStatementsPrinciple,
   ...inequalityPrinciples,
   ...linearSystemPrinciples,
   ...rationalExpressionPrinciples,
@@ -369,6 +375,8 @@ export const principles: Record<string, string> = {
     "A linear function has a constant rate of change: (y₂ − y₁)/(x₂ − x₁) is the same for every pair of points.",
   "recover-linear-intercept":
     "Slope-intercept form y = mx + b: $b$ is the value of $y$ when x = 0.",
+  "linear-initial-value-meaning":
+    "For a linear model $y=mx+b$, $x$ is the input, $y$ is the output, $m$ is the number multiplying $x$, and $b$ is the remaining number. Setting $x=0$ gives $y=b$. If zero is an allowed input, $b$ is the output amount there, with output units, and the graph passes through $(0,b)$. The rate $m$ has output units per input unit and describes a change. If zero is outside the allowed inputs, $b$ need not describe an observed starting amount.",
   "predict-linear-output":
     "Linear functions change by equal amounts over equal intervals: y = y₁ + m(x − x₁).",
   "graph-equation-choice":

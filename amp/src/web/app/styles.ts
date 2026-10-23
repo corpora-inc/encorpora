@@ -2,6 +2,7 @@
 // must not append global surface rules after the theme on a route transition.
 import "../style.css";
 import "../practice.css";
+import "../scene/scene-player.css";
 import "../native-session.css";
 import "../parent-consent.css";
 import "../progress-workspace.css";

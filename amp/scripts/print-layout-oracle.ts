@@ -83,11 +83,42 @@ async function inspect(html: string, format: "Letter" | "A4") {
       }
       for (const section of document.querySelectorAll(
         ".exercise,.example,.representation,.lesson-illustration",
-      ))
+      )) {
+        if (section.classList.contains("exercise--solutions")) continue;
         if (section.getBoundingClientRect().height > pageHeight)
-          issues.push(
-            "A section kept together is taller than a printable page",
-          );
+          issues.push("A section kept together is taller than a printable page");
+      }
+      const solutions = document.querySelector(".publication-kind")?.textContent?.trim() === "Worked solutions";
+      for (const exercise of document.querySelectorAll<HTMLElement>(".exercise")) {
+        if (!solutions && !exercise.classList.contains("exercise--solutions")) continue;
+        if (!solutions || !exercise.classList.contains("exercise--solutions")) {
+          issues.push("Solution exercise must use the breakable solution layout");
+          continue;
+        }
+        const children = [...exercise.children] as HTMLElement[];
+        const steps = children.find((child) => child.tagName === "OL" && !child.classList.contains("print-choices"));
+        const answer = children.at(-1);
+        const stepItems = steps ? [...steps.children] as HTMLElement[] : [];
+        const question = steps ? children.slice(0, children.indexOf(steps)) : [];
+        if (question[0]?.tagName !== "H2" || !steps || !stepItems.length ||
+            !stepItems.every((item) => item.tagName === "LI") ||
+            answer?.tagName !== "P" || !answer.querySelector("strong")?.textContent?.trim().startsWith("Answer:")) {
+          issues.push("Solution exercise lacks a complete question, explanation, or answer group");
+          continue;
+        }
+        if (getComputedStyle(exercise).breakInside !== "auto")
+          issues.push("Solution exercise cannot flow across pages");
+        const questionHeight = question.at(-1)!.getBoundingClientRect().bottom - question[0]!.getBoundingClientRect().top;
+        if (questionHeight > pageHeight || question.some((item) => !["avoid", "avoid-page"].includes(getComputedStyle(item).breakAfter)))
+          issues.push("Solution question and figure do not form one printable group");
+        if (stepItems.some((item) => item.getBoundingClientRect().height > pageHeight || !["avoid", "avoid-page"].includes(getComputedStyle(item).breakInside)))
+          issues.push("Solution explanation item can split or exceed a page");
+        const lastStep = stepItems.at(-1)!;
+        const conclusionHeight = answer.getBoundingClientRect().bottom - lastStep.getBoundingClientRect().top;
+        if (conclusionHeight > pageHeight || !["avoid", "avoid-page"].includes(getComputedStyle(lastStep).breakAfter) ||
+            !["avoid", "avoid-page"].includes(getComputedStyle(answer).breakBefore) || !["avoid", "avoid-page"].includes(getComputedStyle(answer).breakInside))
+          issues.push("Final explanation and answer do not form one printable group");
+      }
       for (const svg of document.querySelectorAll<SVGSVGElement>(
         "svg.figure,svg[data-lesson-illustration]",
       )) {
@@ -129,6 +160,9 @@ try {
     "<html><body><article><p>A short printed sentence.</p></article></body></html>";
   if ((await inspect(valid, "Letter")).length)
     throw new Error("Valid layout reference failed");
+  const safeSolution = `<style>.exercise--solutions{break-inside:auto}.exercise--solutions>h2{break-after:avoid}.exercise--solutions>ol>li{break-inside:avoid}.exercise--solutions>ol>li:last-child{break-after:avoid}.exercise--solutions>p{break-before:avoid;break-inside:avoid}</style><article><p class="publication-kind">Worked solutions</p><section class="exercise exercise--solutions"><h2>1. A complete question</h2><ol><li>A reason.</li></ol><p><strong>Answer: one.</strong></p></section></article>`;
+  if ((await inspect(safeSolution, "Letter")).length)
+    throw new Error("Valid breakable solution reference failed");
   const mutations = [
     `<p style="white-space:nowrap">${"Long printed text ".repeat(80)}TAIL</p>`,
     `<p style="width:80px;overflow:hidden;white-space:nowrap">${"Hidden text ".repeat(30)}TAIL</p>`,
@@ -150,6 +184,18 @@ try {
       throw new Error(
         "Layout oracle accepted a shrinking or clipped reference",
       );
+  const solutionMutations = [
+    safeSolution.replace("exercise exercise--solutions", "exercise"),
+    safeSolution.replace("<ol><li>A reason.</li></ol>", ""),
+    safeSolution.replace("<p><strong>Answer: one.</strong></p>", ""),
+    safeSolution.replace("<h2>1. A complete question</h2>", "<h2 style=\"height:2000px\">1. A complete question</h2>"),
+    safeSolution.replace("<li>A reason.</li>", "<li style=\"height:2000px\">A reason.</li>"),
+    safeSolution.replace("<li>A reason.</li>", "<li style=\"break-after:auto\">A reason.</li>"),
+    safeSolution.replace("class=\"exercise exercise--solutions\"", "class=\"exercise exercise--solutions\" style=\"break-inside:avoid\""),
+  ];
+  for (const mutation of solutionMutations)
+    if (!(await inspect(mutation, "Letter")).length)
+      throw new Error("Layout oracle accepted a broken solution pagination group");
   const cache = new Map<string, string>();
   for (const document of documents) {
     if (!cache.has(document.file))
@@ -165,7 +211,7 @@ try {
   console.log(
     JSON.stringify({
       documents: documents.length,
-      rejectedMutations: mutations.length,
+      rejectedMutations: mutations.length + solutionMutations.length,
     }),
   );
 } finally {

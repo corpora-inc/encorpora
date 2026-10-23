@@ -51,7 +51,7 @@ const vite = await createServer({
     host: "127.0.0.1",
     port: 4356,
     strictPort: true,
-    proxy: { "/api": { target: "http://127.0.0.1:4357" } },
+    proxy: { "/api": "http://127.0.0.1:4357" },
   },
 });
 await vite.listen();
@@ -85,7 +85,7 @@ async function fits(page: Page, label: string, focus?: string) {
   }
 }
 const signedIn = (page: Page) =>
-  page.getByRole("button", { name: "Family menu" }).waitFor();
+  page.getByRole("button", { name: "Account menu" }).waitFor();
 
 try {
   const context = await browser.newContext({
@@ -95,7 +95,11 @@ try {
   const errors: string[] = [];
   page.on("response", (r) => {
     if (r.status() >= 429)
-      console.error("Account browser HTTP failure status", r.status());
+      console.error(
+        "Account browser HTTP failure",
+        new URL(r.url()).pathname,
+        r.status(),
+      );
   });
   page.on("pageerror", (error) => errors.push(error.message));
   const email = `parent-${Date.now()}@example.com`;
@@ -106,15 +110,15 @@ try {
   await page.getByRole("button", { name: "Parent sign in" }).click();
   await page.getByRole("heading", { name: "Sign in" }).waitFor();
   await page.getByRole("button", { name: "Create an account" }).click();
-  await page
-    .getByRole("heading", { name: "Create your parent account" })
-    .waitFor();
+  await page.getByRole("heading", { name: "Create your account" }).waitFor();
   await fits(page, "create");
   // A passkey is the first choice; this flow uses the password option.
   await page.getByRole("button", { name: "Use a password instead" }).click();
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill(password);
   await page.getByRole("button", { name: "Create account" }).click();
+  await page.getByRole("heading", { name: "Your account is ready" }).waitFor();
+  await page.getByRole("link", { name: "Continue setup" }).click();
   await page.getByLabel("Learner name").fill("Sample learner");
   await page.getByRole("button", { name: "Continue", exact: true }).click();
   await page.getByRole("button", { name: "2016", exact: true }).click();
@@ -123,7 +127,7 @@ try {
   await signedIn(page);
 
   // Sign out, then back in; a wrong password is reported in place.
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page.getByRole("menuitem", { name: "Sign out" }).click();
   await page.getByRole("button", { name: "Try free" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
@@ -137,7 +141,7 @@ try {
   await signedIn(page);
 
   // Forgotten password: the emailed link sets a new one.
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page.getByRole("menuitem", { name: "Sign out" }).click();
   await page.getByRole("button", { name: "Try free" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
@@ -261,9 +265,9 @@ try {
     .waitFor();
   await fits(page, "password-changed");
   assert.equal((await siblingRefresh).status(), 200);
-  await sibling.getByRole("button", { name: "Family menu" }).click();
+  await sibling.getByRole("button", { name: "Account menu" }).click();
   await sibling
-    .getByRole("menuitem", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage account", exact: true })
     .click();
   await sibling
     .getByRole("button", { name: "Add learner", exact: false })
@@ -284,7 +288,7 @@ try {
   await page.getByRole("button", { name: "Add learner", exact: true }).click();
   await page.getByText("Maya added.", { exact: true }).waitFor();
   await page.getByRole("button", { name: "Back", exact: true }).click();
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page.getByRole("menuitem", { name: "Sign out", exact: true }).click();
   // Sign-out redirects asynchronously; finish it before starting another navigation.
   await page.getByRole("button", { name: "Try free" }).waitFor();

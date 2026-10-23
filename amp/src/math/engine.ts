@@ -1,4 +1,13 @@
 import {
+  satCompletionTemplates,
+  generateSatCompletionProblem,
+} from "./sat-completion-practice";
+import { normalizeSelection } from "./selection-response";
+import {
+  quadrilateralHierarchyMultiselectTemplate,
+  generateQuadrilateralHierarchyMultiselect,
+} from "./quadrilateral-hierarchy-multiselect";
+import {
   congruenceTemplates,
   generateCongruenceProblem,
 } from "./congruence-practice";
@@ -194,6 +203,14 @@ import {
   generatePercentChangeProblem,
 } from "./percent-change-practice";
 import {
+  successivePercentChangeTemplate,
+  generateSuccessivePercentChangeProblem,
+} from "./successive-percent-change";
+import {
+  slopeTriangleStatementsTemplate,
+  generateSlopeTriangleStatementsProblem,
+} from "./slope-triangle-statements";
+import {
   linearSystemTemplates,
   generateLinearSystemProblem,
 } from "./linear-system-practice";
@@ -242,6 +259,10 @@ import {
   fractionDivisionExpressionTemplate,
   fractionDivisionExpressionCase,
 } from "./fraction-division-expression";
+import {
+  linearInitialValueMeaningTemplate,
+  linearInitialValueMeaningCase,
+} from "./linear-initial-value-meaning";
 import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
@@ -414,6 +435,8 @@ export const templates: readonly TemplateMetadata[] = [
   ...timeMoneyTemplates,
   ...decimalTemplates,
   ...percentChangeTemplates,
+  successivePercentChangeTemplate,
+  slopeTriangleStatementsTemplate,
   ...inequalityTemplates,
   ...linearSystemTemplates,
   ...rationalExpressionTemplates,
@@ -426,6 +449,8 @@ export const templates: readonly TemplateMetadata[] = [
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
   fractionDivisionExpressionTemplate,
+  linearInitialValueMeaningTemplate,
+  quadrilateralHierarchyMultiselectTemplate,
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
@@ -434,6 +459,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...distributionTemplates,
   ...inferenceTemplates,
   ...assessmentGapTemplates,
+  ...satCompletionTemplates,
   ...bivariateTemplates,
 ];
 
@@ -476,6 +502,8 @@ export function isValidResponse(
   problem: PublicProblem,
   response: string,
 ): boolean {
+  if (problem.response.kind === "multi-select")
+    return normalizeSelection(problem.response, response) !== null;
   return problem.response.kind === "choice"
     ? problem.response.options.some((option) => option.id === response)
     : normalizeAnswer(response) !== null;
@@ -484,6 +512,13 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "multi-select") {
+    const answer = normalizeSelection(problem.public.response, response);
+    return (
+      answer !== null &&
+      answer === normalizeSelection(problem.public.response, problem.answer)
+    );
+  }
   if (problem.public.response.kind === "choice")
     return (
       isValidResponse(problem.public, response) && response === problem.answer
@@ -579,6 +614,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
+    quadrilateralHierarchyMultiselectTemplate,
     ...exponentialTemplates,
     ...angleTemplates,
     ...patternFunctionTemplates,
@@ -591,6 +627,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...distributionTemplates,
     ...inferenceTemplates,
     ...assessmentGapTemplates,
+    ...satCompletionTemplates,
     ...bivariateTemplates,
     ...partWholeTemplates,
     ...attributeTemplates,
@@ -615,6 +652,8 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...integerExponentTemplates,
     ...descriptiveStatisticsTemplates,
     ...percentChangeTemplates,
+    successivePercentChangeTemplate,
+    slopeTriangleStatementsTemplate,
     ...inequalityTemplates,
     ...linearSystemTemplates,
     ...rationalExpressionTemplates,
@@ -667,6 +706,8 @@ function generateRawProblem(
     return generateAttributeProblem(templateId, seed);
   if (ratioRateTemplates.some((t) => t.id === templateId))
     return generateRatioRateProblem(templateId, seed);
+  if (satCompletionTemplates.some((t) => t.id === templateId))
+    return generateSatCompletionProblem(templateId, seed);
   if (assessmentGapTemplates.some((t) => t.id === templateId))
     return generateAssessmentGapProblem(templateId, seed);
   if (inferenceTemplates.some((t) => t.id === templateId))
@@ -751,6 +792,10 @@ function generateRawProblem(
     return generateDescriptiveStatisticsProblem(templateId, seed);
   if (percentChangeTemplates.some((t) => t.id === templateId))
     return generatePercentChangeProblem(templateId, seed);
+  if (templateId === successivePercentChangeTemplate.id)
+    return generateSuccessivePercentChangeProblem(seed);
+  if (templateId === slopeTriangleStatementsTemplate.id)
+    return generateSlopeTriangleStatementsProblem(seed);
   if (radicalEquationTemplates.some((t) => t.id === templateId))
     return generateRadicalEquationProblem(templateId, seed);
   if (rationalEquationTemplates.some((t) => t.id === templateId))
@@ -787,6 +832,10 @@ function generateRawProblem(
     return generateFractionPracticeProblem(templateId, seed);
   if (templateId === fractionDivisionExpressionTemplate.id)
     return fractionDivisionExpressionCase(seed).problem;
+  if (templateId === linearInitialValueMeaningTemplate.id)
+    return linearInitialValueMeaningCase(seed).problem;
+  if (templateId === quadrilateralHierarchyMultiselectTemplate.id)
+    return generateQuadrilateralHierarchyMultiselect(seed);
   if (elementaryTemplates.some((t) => t.id === templateId))
     return generateElementaryProblem(templateId, seed);
   if (graphicalTemplates.some((t) => t.id === templateId))

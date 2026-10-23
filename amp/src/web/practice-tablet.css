@@ -59,6 +59,9 @@
   .practice-surface > .answer-dock .choice-options {
     grid-template-columns: minmax(0, 1fr);
   }
+  .practice-surface > .answer-dock .choice-option {
+    flex-basis: 100%;
+  }
   /* Absolutely placed in the answer column's grid area: the sheet covers the
      column it replaces, whatever the answer form's height. Both lines are
      explicit; an auto end line would mean the card's padding edge. */
@@ -89,7 +92,8 @@
   }
   /* Study descriptions include sampling, assignment and inference conditions.
      Keep the complete passage visible in the narrower landscape column. */
-  .problem-content[data-template="scope-of-inference-choice"] .question {
+  .problem-content[data-template="scope-of-inference-choice"] .question,
+  .problem-content[data-template="slope-triangle-statements"] .question {
     font-size: 22px;
     text-align: left;
   }

@@ -4,6 +4,7 @@ import {
   timestamp,
   jsonb,
   integer,
+  boolean,
   uniqueIndex,
   index,
 } from "drizzle-orm/pg-core";
@@ -15,6 +16,7 @@ export const learners = pgTable(
     name: text("name").notNull(),
     startingBand: text("starting_band"),
     birthYear: integer("birth_year"),
+    satMathFocus: boolean("sat_math_focus").notNull().default(false),
     startingPolicy: integer("starting_policy"),
     startingExcludedStrands: text("starting_excluded_strands").array(),
     deletedAt: timestamp("deleted_at", { withTimezone: true }),

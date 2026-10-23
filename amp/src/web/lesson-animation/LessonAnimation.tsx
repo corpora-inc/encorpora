@@ -114,40 +114,77 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
   }
 }
 
+/** Keep each ordered pair together, but let a list wrap between pairs. */
+function CaptionMath({ math }: { math: string }) {
+  const text = /^\$\\text\{([^{}]+)\}\$$/.exec(math);
+  if (text) return <>{text[1]}</>;
+  const normalized = math.replace(/\\ /g, " ");
+  if (normalized.startsWith("$") && normalized.endsWith("$")) {
+    const inner = normalized.slice(1, -1);
+    const pairs = inner.match(
+      /\([+−-]?\d+(?:\.\d+)?,\s*[+−-]?\d+(?:\.\d+)?\)/g,
+    );
+    if (pairs && pairs.length > 1 && pairs.join(", ") === inner)
+      return (
+        <span className="animation-pair-list">
+          {pairs.map((pair, index) => (
+            <span key={`${pair}-${index}`} className="animation-pair">
+              <MathText text={`$${pair}$`} />
+              {index < pairs.length - 1 ? "," : ""}
+            </span>
+          ))}
+        </span>
+      );
+  }
+  return <MathText text={math} />;
+}
+
 export default function LessonAnimation({ model }: { model: AnimationModel }) {
   const panelRef = useRef<HTMLElement>(null);
   const [reduced, setReduced] = useState(
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
   const [step, setStep] = useState(reduced ? 2 : 0);
-  const [playing, setPlaying] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [pageVisible, setPageVisible] = useState(
+    () => document.visibilityState === "visible",
+  );
   const frames = animationFrames(model);
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const change = () => {
       setReduced(media.matches);
-      if (media.matches) {
-        setPlaying(false);
-        setStep(2);
-        if (panelRef.current?.contains(document.activeElement))
-          panelRef.current.focus();
-      }
+      setStep(media.matches ? 2 : 0);
     };
     media.addEventListener("change", change);
     return () => media.removeEventListener("change", change);
   }, []);
   useEffect(() => {
-    if (!playing || reduced) return;
-    const timer = window.setTimeout(() => {
-      if (step === 2) setPlaying(false);
-      else {
-        setStep(step + 1);
-        if (step === 1) setPlaying(false);
-      }
-    }, 1800);
+    const panel = panelRef.current;
+    if (!panel) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(Boolean(entry?.isIntersecting)),
+      { threshold: 0.3 },
+    );
+    observer.observe(panel);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const update = () => setPageVisible(document.visibilityState === "visible");
+    document.addEventListener("visibilitychange", update);
+    return () => document.removeEventListener("visibilitychange", update);
+  }, []);
+  useEffect(() => {
+    if (reduced || !visible || !pageVisible) return;
+    const timer = window.setTimeout(
+      () => {
+        setStep((current) => (current + 1) % frames.length);
+      },
+      step === frames.length - 1 ? 3200 : 2300,
+    );
     return () => window.clearTimeout(timer);
-  }, [playing, reduced, step]);
-  const current = reduced ? 2 : step;
+  }, [frames.length, pageVisible, reduced, step, visible]);
+  const current = reduced ? frames.length - 1 : step;
   return (
     <section
       ref={panelRef}
@@ -156,10 +193,11 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
       aria-label="Explore the example"
       data-animation={model.kind}
       data-step={current}
+      data-reduced={reduced}
+      data-visible={visible && pageVisible}
     >
       <div className="animation-heading">
         <strong>Explore the example</strong>
-        <span>{current + 1} / 3</span>
       </div>
       <svg
         className="animation-stage"
@@ -170,59 +208,33 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
         <title>{frames[current].title}</title>
         <Stage model={model} step={current} />
       </svg>
-      <div className="animation-copy" aria-live="polite" aria-atomic="true">
+      <div className="animation-copy" aria-hidden={!reduced}>
         {frames.map((frame, index) => (
           <div
             key={index}
             className="animation-frame"
-            style={{ visibility: index === current ? "visible" : "hidden" }}
-            aria-hidden={index !== current}
+            style={{
+              visibility: reduced || index === current ? "visible" : "hidden",
+            }}
+            aria-hidden={!reduced && index !== current}
           >
             <h4>{frame.title}</h4>
             <p>{frame.text}</p>
             <p className="animation-equation">
-              <MathText text={frame.math} />
+              <CaptionMath math={frame.math} />
             </p>
           </div>
         ))}
       </div>
-      {reduced ? (
-        <p className="animation-static">Complete model</p>
-      ) : (
-        <div className="animation-controls">
-          <button
-            type="button"
-            onClick={() => {
-              if (playing) setPlaying(false);
-              else {
-                if (step === 2) setStep(0);
-                setPlaying(true);
-              }
-            }}
-          >
-            {playing ? "Pause" : "Play"}
-          </button>
-          <button
-            type="button"
-            aria-disabled={current === 2}
-            onClick={() => {
-              if (current === 2) return;
-              setPlaying(false);
-              setStep(step + 1);
-            }}
-          >
-            Step
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setPlaying(false);
-              setStep(0);
-            }}
-          >
-            Replay
-          </button>
-        </div>
+      {!reduced && (
+        <ol className="animation-transcript">
+          {frames.map((frame, index) => (
+            <li key={index}>
+              <strong>{frame.title}.</strong> {frame.text}{" "}
+              <CaptionMath math={frame.math} />
+            </li>
+          ))}
+        </ol>
       )}
     </section>
   );
