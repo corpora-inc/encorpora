@@ -18,7 +18,8 @@
     "tsc": "tsc --noEmit",
     "lint:colors": "tsx scripts/check-color-literals.ts --strict",
     "test:contrast": "tsx scripts/verify-contrast.ts --strict",
-    "build": "npm run tsc && vite build",
+    "build": "npm run tsc && vite build && npm run build:public-pathways",
+    "build:public-pathways": "tsx scripts/build-public-pathways.ts",
     "audit": "tsx scripts/audit.ts",
     "publications": "tsx scripts/publications.ts",
     "commerce:import": "tsx scripts/commerce-event.ts",
@@ -106,6 +107,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@tauri-apps/cli": "^2.11.4",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",

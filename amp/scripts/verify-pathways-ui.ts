@@ -41,7 +41,7 @@ const output = "artifacts/pathways";
 await mkdir(output, { recursive: true });
 const target = skills.find((s) => s.id === "nonlinear-systems")!;
 const other = skills.find((s) => s.id === "nonlinear-intersection-count")!;
-function me(account: string) {
+function me(account: string, learnerCount = 2) {
   return fixtureMe(
     {
       consent: {
@@ -69,7 +69,7 @@ function me(account: string) {
           stripeLinked: false,
           canPractice: false,
         },
-      ],
+      ].slice(0, learnerCount),
       retained: retentionNotice,
     },
     account,
@@ -82,34 +82,54 @@ async function fixture(
     failProgress = false,
     trial = false,
     catalogSkills = skills,
+    catalogFree = 100,
+    trialRemaining = 70,
+    learnerCount = 2,
+    selectedLearnerId = "parent-one-a" as string | null,
+    failTrialLookup = false,
   } = {},
 ) {
   const batches: { templateId?: string }[] = [];
   await page.addInitScript(
-    ({ signedIn, trial }) => {
+    ({ signedIn, trial, selectedLearnerId }) => {
       if (trial)
         localStorage.setItem("amp.trial", "atlas-synthetic-trial-token-1413");
       (window as any).pathwaysAccount = signedIn ? "parent-one" : null;
       localStorage.setItem(
         "amp.learner",
-        JSON.stringify({ state: { learnerId: "parent-one-a" }, version: 1 }),
+        JSON.stringify({ state: { learnerId: selectedLearnerId }, version: 1 }),
       );
     },
-    { signedIn, trial },
+    { signedIn, trial, selectedLearnerId },
   );
   await page.route("**/api/v1/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
+    if (
+      failTrialLookup &&
+      pathname.endsWith("/learners") &&
+      route.request().headers().authorization?.startsWith("Trial ")
+    )
+      return route.fulfill({ status: 503, json: { error: "unavailable" } });
     if (pathname.endsWith("/learners"))
       return route.fulfill({
-        json: { learners: [{ id: "parent-one-a", birthYear: 2016 }] },
+        json: {
+          learners: [
+            {
+              id: route.request().headers().authorization?.startsWith("Trial ")
+                ? "trial-learner"
+                : "parent-one-a",
+              birthYear: 2016,
+            },
+          ],
+        },
       });
     if (pathname.endsWith("/trial-progress"))
       return route.fulfill({
         json: {
           phase: "practice",
-          free: 100,
+          free: catalogFree,
           placement: 20,
-          remaining: 70,
+          remaining: trialRemaining,
           totals: { answered: 30, correct: 24, assisted: 0 },
           mastered: [],
           frontier: {
@@ -124,17 +144,26 @@ async function fixture(
       });
     if (pathname.endsWith("/catalog"))
       return route.fulfill({
-        json: { skills: catalogSkills, templates, lessons: [], mode: "hosted" },
+        json: {
+          skills: catalogSkills,
+          templates,
+          lessons: [],
+          mode: "hosted",
+          trial: { free: catalogFree, placement: 20 },
+        },
       });
     if (pathname.endsWith("/auth-config"))
       return route.fulfill({
         json: { mode: "accounts", passwords: true, providers: [] },
       });
+    if (pathname.endsWith("/events"))
+      return route.fulfill({ status: 204, body: "" });
     if (pathname.endsWith("/me"))
       return route.fulfill({
         json: me(
           route.request().headers().authorization?.replace("Bearer ", "") ??
             "parent-one",
+          learnerCount,
         ),
       });
     if (pathname.includes("/problem-lessons/"))
@@ -169,26 +198,37 @@ async function fixture(
           : {
               json: {
                 asOf: new Date().toISOString(),
-                skills: pathname.includes("parent-one-a")
+                skills: pathname.includes("trial-learner")
                   ? [
                       {
                         skillId: target.id,
-                        attempts: 25,
-                        independentCorrect: 20,
-                        independentOccasions: 0,
+                        attempts: 4,
+                        independentCorrect: 3,
+                        independentOccasions: 1,
                         status: "practicing",
                         reviewDueAt: null,
                       },
-                      {
-                        skillId: other.id,
-                        attempts: 6,
-                        independentCorrect: 5,
-                        independentOccasions: 2,
-                        status: "review-ready",
-                        reviewDueAt: null,
-                      },
                     ]
-                  : [],
+                  : pathname.includes("parent-one-a")
+                    ? [
+                        {
+                          skillId: target.id,
+                          attempts: 25,
+                          independentCorrect: 20,
+                          independentOccasions: 0,
+                          status: "practicing",
+                          reviewDueAt: null,
+                        },
+                        {
+                          skillId: other.id,
+                          attempts: 6,
+                          independentCorrect: 5,
+                          independentOccasions: 2,
+                          status: "review-ready",
+                          reviewDueAt: null,
+                        },
+                      ]
+                    : [],
               },
             },
       );
@@ -232,7 +272,9 @@ async function noOverflow(page: Page) {
     )}`,
   );
   const bad = await page
-    .locator(".pathways button,.pathways select,.pathways input,.pathways-go")
+    .locator(
+      ".pathways button,.pathways select,.pathways input,.pathways-go,.pathways li a",
+    )
     .evaluateAll((elements) =>
       elements
         .filter((el) => {
@@ -563,8 +605,8 @@ async function verifyLessonRecovery() {
   }
 }
 try {
-  await verifyLessonRecovery();
-  for (const width of [320, 390, 768, 1280])
+  if (!process.env.AMP_MAP_FOCUS) await verifyLessonRecovery();
+  for (const width of process.env.AMP_MAP_FOCUS ? [] : [320, 390, 768, 1280])
     for (const theme of ["light", "dark"] as const) {
       const page = await browser.newPage({
         viewport: { width, height: 900 },
@@ -599,13 +641,21 @@ try {
         .getByRole("searchbox", { name: "Find a skill", exact: true })
         .fill(target.title);
       const button = page
-        .locator(".pathways-skill-list button")
+        .locator(".pathways-skill-list a")
         .filter({ hasText: target.title });
       await button.click();
       await page
         .getByRole("heading", { name: target.title, exact: true })
         .waitFor();
-      assert.equal(new URL(page.url()).searchParams.get("skill"), target.id);
+      assert.equal(new URL(page.url()).pathname, `/pathways/${target.id}`);
+      assert.equal(
+        await page.locator('link[rel="canonical"]').getAttribute("href"),
+        `https://amp.corpora.inc/pathways/${target.id}`,
+      );
+      assert.equal(
+        await page.title(),
+        `${target.title} · Algebra 2 | AMP Pathways`,
+      );
       assert.match(
         (await page
           .getByRole("link", { name: "Try a problem" })
@@ -722,11 +772,13 @@ try {
       assert.deepEqual(errors, []);
       await page.close();
     }
-  for (const viewport of [
-    { width: 320, height: 568 },
-    { width: 844, height: 390 },
-    { width: 1024, height: 768 },
-  ]) {
+  for (const viewport of process.env.AMP_MAP_FOCUS
+    ? []
+    : [
+        { width: 320, height: 568 },
+        { width: 844, height: 390 },
+        { width: 1024, height: 768 },
+      ]) {
     const page = await browser.newPage({ viewport, reducedMotion: "reduce" });
     await fixture(page, { signedIn: false });
     await page.goto(`${origin}/pathways`);
@@ -736,7 +788,7 @@ try {
       .getByRole("searchbox", { name: "Find a skill", exact: true })
       .fill(target.title);
     await page
-      .locator(".pathways-skill-list button")
+      .locator(".pathways-skill-list a")
       .filter({ hasText: target.title })
       .click();
     await page
@@ -757,7 +809,13 @@ try {
       await page
         .getByRole("button", { name: "Exit full screen", exact: true })
         .click();
+      await page.waitForFunction(() => !document.fullscreenElement);
     }
+    if (viewport.width === 320)
+      assert(
+        await page.evaluate(() => document.documentElement.scrollHeight > innerHeight),
+        "selected skill uses page scroll after leaving fullscreen",
+      );
     await page.screenshot({
       path: `${output}/${viewport.width}-${viewport.height}-compact.png`,
       fullPage: true,
@@ -801,10 +859,27 @@ try {
       exact: true,
     })
     .waitFor({ state: "attached" });
+  await trialPage
+    .getByText("1 skills illuminated", { exact: false })
+    .waitFor({ state: "attached" });
+  assert.match(
+    (await trialPage.locator(".pathways-earned").textContent()) ?? "",
+    /3 independent successes/,
+    "the trial's earned evidence must not be replaced by parent evidence",
+  );
   assert.equal(
     await trialPage.getByRole("combobox", { name: /^Learner/ }).count(),
     0,
   );
+  const related = trialPage
+    .locator(".pathways-detail a")
+    .filter({ hasText: "Nonlinear Intersection Reading" });
+  assert.match((await related.getAttribute("href")) ?? "", /context=trial/);
+  await related.click();
+  await trialPage.waitForURL(/pathways\/nonlinear-intersection-reading/);
+  assert.equal(new URL(trialPage.url()).searchParams.get("context"), "trial");
+  await trialPage.goBack();
+  await trialPage.getByRole("heading", { name: target.title }).waitFor();
   await trialPage
     .getByRole("button", { name: "View lesson", exact: true })
     .click();
@@ -819,6 +894,261 @@ try {
   );
   await trialPage.waitForURL(`${origin}/try/practice`);
   await trialPage.close();
+
+  // Public entry copy uses the catalog allowance and never creates a trial.
+  const guest = await browser.newPage({
+    viewport: { width: 320, height: 568 },
+  });
+  const trialStarts: string[] = [];
+  const reelRequests: string[] = [];
+  guest.on("request", (request) => {
+    if (request.method() !== "GET" && /\/trials?$/.test(request.url()))
+      trialStarts.push(request.url());
+    if (request.url().includes("facebook.com/reel/2346490016085488"))
+      reelRequests.push(request.url());
+  });
+  await fixture(guest, { signedIn: false, catalogFree: 37 });
+  await guest.goto(`${origin}/pathways?utm_source=example`);
+  await guest.getByText("37 free problems", { exact: false }).waitFor();
+  assert.equal(
+    await guest
+      .getByRole("link", { name: "Start free assessment →" })
+      .getAttribute("href"),
+    "/try",
+  );
+  assert.deepEqual(trialStarts, []);
+  assert.deepEqual(reelRequests, []);
+  assert.equal(
+    await guest
+      .getByRole("link", { name: "See the map light up" })
+      .getAttribute("target"),
+    "_blank",
+  );
+  await guest.goto(
+    `${origin}/pathways?skill=${target.id}&topic=systems&filter=algebra-2&utm_campaign=unknown`,
+  );
+  await guest.getByRole("heading", { name: target.title }).waitFor();
+  assert.equal(
+    await guest.locator('link[rel="canonical"]').getAttribute("href"),
+    `https://amp.corpora.inc/pathways/${target.id}`,
+  );
+  assert.equal(
+    await guest.locator('meta[name="description"]').getAttribute("content"),
+    `${target.description}. Explore this skill and its connections in AMP's free math map.`,
+  );
+  const parentLink = guest
+    .locator(".pathways-detail a")
+    .filter({ hasText: "Nonlinear Intersection Reading" });
+  const parentUrl = new URL((await parentLink.getAttribute("href"))!, origin);
+  assert.equal(parentUrl.pathname, "/pathways/nonlinear-intersection-reading");
+  assert.equal(parentUrl.searchParams.get("topic"), "systems");
+  assert.equal(parentUrl.searchParams.get("filter"), "algebra-2");
+  await guest.getByRole("button", { name: "Close skill" }).click();
+  await guest.waitForURL((url) => url.pathname === "/pathways");
+  assert.equal(await guest.title(), "Explore Math Skills | AMP Pathways");
+  await guest.locator(".pathways-brand").click();
+  await guest.waitForURL(origin + "/");
+  await guest.waitForFunction(
+    () => document.title === "AMP · Adaptive Math Pathways",
+  );
+  assert.equal(await guest.title(), "AMP · Adaptive Math Pathways");
+  assert.equal(await guest.locator('link[rel="canonical"]').count(), 0);
+  await noOverflow(guest);
+  await guest.close();
+
+  // An exhausted assessment keeps earned evidence and goes straight to plans.
+  const exhausted = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+  });
+  await fixture(exhausted, { signedIn: false, trial: true, trialRemaining: 0 });
+  await exhausted.goto(`${origin}/pathways?context=trial&skill=${target.id}`);
+  await exhausted.getByText("choose a plan", { exact: false }).waitFor();
+  assert.equal(
+    await exhausted
+      .getByRole("link", { name: "See plans →" })
+      .getAttribute("href"),
+    "/try/plans",
+  );
+  assert.equal(
+    await exhausted
+      .getByRole("link", { name: "See plans", exact: true })
+      .getAttribute("href"),
+    "/try/plans",
+  );
+  await exhausted
+    .getByText("1 skills illuminated", { exact: false })
+    .waitFor({ state: "attached" });
+  await exhausted.close();
+
+  // Zero learners use the authorized add-learner flow; a saved assessment wins.
+  const empty = await browser.newPage({
+    viewport: { width: 320, height: 568 },
+  });
+  await fixture(empty, { learnerCount: 0 });
+  await empty.goto(`${origin}/pathways`);
+  await empty.getByText("Add a learner to see earned skills.").waitFor();
+  assert.equal(
+    await empty.getByRole("combobox", { name: /^Learner/ }).count(),
+    0,
+  );
+  assert.equal(
+    await empty
+      .getByRole("link", { name: "Add a learner →" })
+      .getAttribute("href"),
+    "/start",
+  );
+  await empty.close();
+  const saved = await browser.newPage({
+    viewport: { width: 320, height: 568 },
+  });
+  await fixture(saved, { learnerCount: 0, trial: true });
+  await saved.goto(`${origin}/pathways`);
+  await saved.getByText("1 skills illuminated", { exact: false }).waitFor();
+  assert.equal(
+    await saved.getByText("Choose a learner to see earned skills.").count(),
+    0,
+  );
+  assert.equal(
+    await saved.getByText("Add a learner to see earned skills.").count(),
+    0,
+  );
+  await saved.close();
+  const savedError = await browser.newPage({
+    viewport: { width: 320, height: 568 },
+  });
+  await fixture(savedError, {
+    learnerCount: 0,
+    trial: true,
+    failTrialLookup: true,
+  });
+  await savedError.goto(`${origin}/pathways`);
+  await savedError
+    .getByText("Your assessment could not be loaded.", { exact: false })
+    .waitFor();
+  assert.equal(
+    await savedError.getByRole("link", { name: "Add a learner →" }).count(),
+    0,
+  );
+  assert.equal(
+    await savedError.getByRole("button", { name: "Retry" }).count(),
+    1,
+  );
+  await savedError.close();
+  const assessmentLoading = await browser.newPage({
+    viewport: { width: 320, height: 568 },
+  });
+  await fixture(assessmentLoading, { trial: true, failTrialLookup: true });
+  await assessmentLoading.goto(`${origin}/pathways?context=trial`);
+  await assessmentLoading
+    .getByRole("button", { name: "Browse skills" })
+    .click();
+  const loadingLink = assessmentLoading
+    .locator(".pathways-skill-list a")
+    .filter({ hasText: target.title });
+  await loadingLink.waitFor();
+  assert.equal(
+    new URL((await loadingLink.getAttribute("href"))!, origin).searchParams.get(
+      "context",
+    ),
+    "trial",
+  );
+  await assessmentLoading.close();
+
+  // Invalid direct and legacy skill URLs do not advertise an indexable skill.
+  for (const path of [
+    "/pathways/not-a-catalog-skill",
+    "/pathways?skill=not-a-catalog-skill",
+  ]) {
+    const unknown = await browser.newPage({
+      viewport: { width: 390, height: 844 },
+    });
+    await fixture(unknown, { signedIn: false });
+    await unknown.goto(`${origin}${path}`);
+    await unknown
+      .getByText("This skill is not in the map.", { exact: false })
+      .waitFor();
+    assert.equal(
+      await unknown.locator('meta[name="robots"]').getAttribute("content"),
+      "noindex",
+    );
+    await unknown.close();
+  }
+
+  const long = [...skills].sort(
+    (a, b) =>
+      b.prerequisites.length +
+      skills.filter((skill) => skill.prerequisites.includes(b.id)).length -
+      (a.prerequisites.length +
+        skills.filter((skill) => skill.prerequisites.includes(a.id)).length),
+  )[0]!;
+  for (const width of [320, 390]) {
+    const phone = await browser.newPage({
+      viewport: { width, height: 568 },
+      reducedMotion: "reduce",
+    });
+    await fixture(phone, { signedIn: false });
+    await phone.goto(`${origin}/pathways/${long.id}`);
+    await phone
+      .getByRole("heading", { name: long.title, exact: true })
+      .waitFor();
+    const card = await phone
+      .locator(".pathways-detail")
+      .evaluate((element) => ({
+        scrollHeight: element.scrollHeight,
+        clientHeight: element.clientHeight,
+        overflow: getComputedStyle(element).overflowY,
+      }));
+    assert(
+      card.scrollHeight <= card.clientHeight + 1,
+      "phone card has no inner scroll",
+    );
+    assert.equal(card.overflow, "visible");
+    assert(
+      await phone.evaluate(() => document.documentElement.scrollHeight > innerHeight),
+      "long skill card grows the phone document",
+    );
+    await phone
+      .locator(".pathways-detail > ul li:last-child")
+      .last()
+      .evaluate((el) => el.scrollIntoView({ block: "end" }));
+    assert(
+      await phone
+        .locator(".pathways-detail > ul li:last-child")
+        .last()
+        .evaluate((el) => el.getBoundingClientRect().bottom <= innerHeight + 1),
+      "last relationship stays reachable by page scroll",
+    );
+    assert(
+      await phone.evaluate(() => scrollY > 0),
+      "page scroll reaches relationships",
+    );
+    await noOverflow(phone);
+    await phone.screenshot({
+      path: `${output}/${width}-long-skill.png`,
+      fullPage: true,
+    });
+    await phone.close();
+  }
+
+  for (const learnerCount of [1, 2]) {
+    const unselected = await browser.newPage({
+      viewport: { width: 390, height: 844 },
+    });
+    await fixture(unselected, { learnerCount, selectedLearnerId: null });
+    await unselected.goto(`${origin}/pathways`);
+    await unselected
+      .getByText("Choose a learner to see earned skills.")
+      .waitFor();
+    assert.equal(
+      await unselected.getByRole("combobox", { name: /^Learner/ }).count(),
+      1,
+    );
+    assert.equal(
+      await unselected.getByRole("link", { name: "Add a learner →" }).count(),
+      0,
+    );
+    await unselected.close();
+  }
   // The account-scoped store must not carry earned crystals into another learner or account.
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await fixture(page);
@@ -919,7 +1249,7 @@ try {
     .waitFor();
   assert.equal(
     await fallback
-      .getByRole("link", { name: "Start learning →" })
+      .getByRole("link", { name: "Start free assessment →" })
       .getAttribute("href"),
     "/try",
   );
@@ -957,7 +1287,9 @@ try {
   );
   await lost.close();
   console.log(
-    "Pathways: camera gesture/settle checks, 8 viewport/theme cases, durable crystals, URL restoration, learner/account isolation, WebGL fallback, and progress-error recovery passed.",
+    process.env.AMP_MAP_FOCUS
+      ? "Pathways focused cases: guest/trial entry, canonical links, learner states, and phone card scrolling passed."
+      : "Pathways: camera gesture/settle checks, 8 viewport/theme cases, guest/trial entry, canonical links, learner states, phone card scrolling, durable crystals, URL restoration, WebGL fallback, and error recovery passed.",
   );
 } finally {
   await browser.close();

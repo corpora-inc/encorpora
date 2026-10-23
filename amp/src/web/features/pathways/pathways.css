@@ -120,6 +120,20 @@
   line-height: 1.6;
   margin: 0;
 }
+.pathways-guest-intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  font-size: 12px;
+  color: var(--atlas-muted);
+}
+.pathways-guest-intro p {
+  margin: 8px 0 0;
+}
+.pathways-guest-intro a {
+  margin-top: 8px;
+}
 .pathways-status {
   display: flex;
   justify-content: space-between;
@@ -323,20 +337,37 @@
   padding: 0;
   margin: 8px 0;
 }
-.pathways li button {
+.pathways li button,
+.pathways li a {
+  display: block;
   width: 100%;
   text-align: left;
   margin-bottom: 6px;
   line-height: 1.45;
   font-size: 12px;
+  min-height: 44px;
+  border: 1px solid var(--atlas-border);
+  border-radius: 10px;
+  background: var(--atlas-panel);
+  color: var(--atlas-on-panel);
+  padding: 10px 14px;
+  text-decoration: none;
 }
-.pathways li button small {
+.pathways li a:hover {
+  border-color: var(--atlas-muted);
+}
+.pathways li a[aria-current="page"] {
+  border-color: var(--atlas-accent);
+}
+.pathways li button small,
+.pathways li a small {
   display: block;
   font-size: 10px;
   color: var(--atlas-muted);
   margin-top: 4px;
 }
-.pathways-skill-list button {
+.pathways-skill-list button,
+.pathways-skill-list a {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -974,6 +1005,37 @@
   .pathways.has-selection .pathways-viewport {
     flex: 1;
     min-width: 0;
+  }
+}
+
+/* On a phone, the selected skill is read by scrolling the page, not a card. */
+@media (max-width: 650px) {
+  .pathways.has-selection {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+  .pathways.has-selection .pathways-workspace {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    flex: none;
+  }
+  .pathways.has-selection .pathways-viewport {
+    height: 320px;
+    min-height: 0;
+    flex: none;
+  }
+  .pathways.has-selection .pathways-detail {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+    flex: none;
+  }
+  :root:fullscreen .pathways.has-selection {
+    height: 100dvh;
+    overflow: auto;
   }
 }
 
