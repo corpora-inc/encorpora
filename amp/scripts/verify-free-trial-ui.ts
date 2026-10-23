@@ -723,12 +723,46 @@ try {
         monthly = page.getByRole("radio", { name: /Monthly/ });
       assert.match((await annual.textContent()) ?? "", /\$499\.00 per year/);
       assert.match((await monthly.textContent()) ?? "", /\$49\.00 per month/);
-      const stats = page.locator("dl");
-      assert.match(
-        (await stats.textContent()) ?? "",
-        new RegExp(`Problems${FREE}`),
+      const trialToken = await page.evaluate(() =>
+        localStorage.getItem("amp.trial"),
       );
-      await page.getByText("After placement").waitFor();
+      assert(trialToken);
+      const learnersResponse = await app.inject({
+        method: "GET",
+        url: "/api/v1/learners",
+        headers: { authorization: `Trial ${trialToken}` },
+      });
+      const trialLearner = learnersResponse.json().learners[0].id;
+      const evidenceResponse = await app.inject({
+        method: "GET",
+        url: `/api/v1/learners/${trialLearner}/progress`,
+        headers: { authorization: `Trial ${trialToken}` },
+      });
+      assert.equal(evidenceResponse.statusCode, 200);
+      const illuminated = evidenceResponse
+        .json()
+        .skills.filter(
+          (entry: { independentCorrect: number }) =>
+            entry.independentCorrect > 0,
+        ).length;
+      await page
+        .getByText(
+          illuminated
+            ? `${illuminated} ${illuminated === 1 ? "skill" : "skills"} illuminated`
+            : "Room to explore",
+          { exact: true },
+        )
+        .waitFor();
+      assert.equal(
+        await page.locator('[data-illuminated="true"]').count(),
+        illuminated,
+      );
+      assert.match(
+        (await page
+          .getByRole("link", { name: "Explore full map →" })
+          .getAttribute("href")) ?? "",
+        /context=trial/,
+      );
       const card = page.locator("main section").first(),
         before = await box(card),
         paywallShift = await shift(page);
