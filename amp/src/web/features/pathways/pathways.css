@@ -966,3 +966,26 @@
     min-width: 0;
   }
 }
+
+.pathways-earned > strong {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pathways-earned > span {
+  min-width: 0;
+}
+@media (max-height: 700px) and (min-width: 651px) {
+  .pathways.has-selection .pathways-heading,
+  .pathways.has-selection .pathways-status > p:not([data-priority="true"]) {
+    display: none;
+  }
+  .pathways.has-selection .pathways-workspace {
+    height: max(230px, calc(100dvh - 210px));
+    flex: none;
+  }
+  .pathways.has-selection .pathways-detail,
+  .pathways.has-selection .pathways-viewport {
+    height: 100%;
+    min-height: 0;
+  }
+}
