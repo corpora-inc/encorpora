@@ -132,7 +132,7 @@ export async function purgeConsentRecords(pool: Pool): Promise<number> {
       if (result.rowCount) {
         const withdrawn = await client.query(
           `UPDATE amp_parent_consents SET policy_version='consent-evidence-deleted',verification_method='parent-withdrawal',evidence_reference='preference-only',recorded_at=now(),withdrawn_at=COALESCE(withdrawn_at,now())
-        WHERE account_id=$1 AND verification_method='internal-email-plus-v1' AND evidence_reference=ANY($2::text[])`,
+        WHERE account_id=$1 AND verification_method LIKE 'internal-email-plus%' AND evidence_reference=ANY($2::text[])`,
           [account, result.rows.map((row) => String(row.id))],
         );
         if (withdrawn.rowCount)

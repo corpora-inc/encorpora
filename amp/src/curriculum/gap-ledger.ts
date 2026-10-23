@@ -1,3 +1,9 @@
+import { templates as registeredTemplates } from "../math/engine";
+import {
+  reconcileSources,
+  type SourceInventory,
+} from "./source-reconciliation";
+import { texasGrade5Inventory } from "./texas-grade5";
 import { buildAssessmentSampleAudit } from "./assessment-sample";
 import { skills, standards } from "./catalog";
 import { coverageTargets } from "./coverage-targets";
@@ -152,10 +158,31 @@ export const initialGapTasks: readonly GapTask[] = [
   },
 ];
 
-export function buildGapLedger(input: CoverageInput = {}) {
+export interface GapLedgerInput extends CoverageInput {
+  sourceInventories?: readonly SourceInventory[];
+}
+
+export function buildGapLedger(input: GapLedgerInput = {}) {
   const manifest = buildCoverageManifest(input);
   const nodes = input.skills ?? skills;
   const refs = input.standards ?? standards;
+  const sourceReconciliation = reconcileSources(
+    input.sourceInventories ??
+      (input.skills || input.templates || input.standards
+        ? []
+        : [texasGrade5Inventory]),
+    nodes,
+    input.templates ?? registeredTemplates,
+    coverageTargets.map((target) => target.id),
+  );
+  const targets = coverageTargets.map((target) => ({
+    ...target,
+    sourceInventory: sourceReconciliation.slices.some(
+      (slice) => slice.valid && slice.targetId === target.id,
+    )
+      ? ("partial" as const)
+      : ("pending" as const),
+  }));
   const mappings = manifest.facetMappings;
   const nodeById = new Map(nodes.map((s) => [s.id, s]));
   const rows = manifest.skills.map((row) => {
@@ -221,11 +248,12 @@ export function buildGapLedger(input: CoverageInput = {}) {
     .map((a) => a.sourceId);
   return {
     schemaVersion: 1,
-    valid: manifest.valid,
-    errors: manifest.errors,
+    valid: manifest.valid && sourceReconciliation.valid,
+    errors: [...manifest.errors, ...sourceReconciliation.errors],
     target: "US-50-states-DC-general-math-assessments-and-SAT-Suite",
     targetComplete: false,
-    targets: coverageTargets,
+    targets,
+    sourceReconciliation,
     blockers: [
       "State and assessment source inventories require versioned component-level reconciliation.",
       "Existing catalog facets are not an exhaustive assessment blueprint.",
@@ -243,7 +271,13 @@ export function buildGapLedger(input: CoverageInput = {}) {
         ]),
       ),
       templatesWithoutFacetMapping: unmappedTemplates.length,
-      pendingTargetInventories: coverageTargets.length,
+      pendingTargetInventories: targets.filter(
+        (t) => t.sourceInventory === "pending",
+      ).length,
+      partialTargetInventories: targets.filter(
+        (t) => t.sourceInventory === "partial",
+      ).length,
+      incompleteTargetInventories: targets.length,
     },
     grades,
     sources: refs.map(({ id, sourceUrl, sourceReviewedAt, scope }) => ({
@@ -294,6 +328,34 @@ export function renderGapLedger(
       (g) => `| ${g.gradeBand} | ${g.withPractice} | ${g.skills} |`,
     ),
     "",
+    "## State requirement reconciliation",
+    "",
+    ...report.sourceReconciliation.slices.flatMap((slice) => [
+      `### ${slice.targetId} grade ${slice.grade}`,
+      "",
+      `Identifier inventory complete: ${slice.identifierInventoryComplete}. Partially reconciled: ${slice.summary.partiallyReconciled}/${slice.summary.requirements}. Statewide complete: ${slice.statewideComplete}.`,
+      "",
+      ...slice.sources.map(
+        (source) =>
+          `- [${source.edition}](${source.url}); retrieved ${source.retrievedAt}; SHA-256 ${source.sha256}`,
+      ),
+      ...slice.limitations.map((limitation) => `- ${limitation}`),
+      "",
+      "| Requirement | Source location | Scope | Reconciliation | Task links |",
+      "| --- | --- | --- | --- | --- |",
+      ...slice.requirements.map(
+        (r) =>
+          `| ${r.id} | ${cell(r.locator)} | ${cell(r.description + ": " + r.scope)} | ${r.reconciliation} | ${r.taskIds.join(", ") || "—"} |`,
+      ),
+      "",
+      "| Reusable task | Disposition | Related practice | Limits and evidence |",
+      "| --- | --- | --- | --- |",
+      ...slice.tasks.map(
+        (t) =>
+          `| ${t.id} | ${t.disposition} | ${t.templateIds.join(", ") || "—"} | ${cell(t.limitations + " " + t.evidence.map((e) => `${e.sourceId}, ${e.locator}: ${e.observation}`).join("; "))} |`,
+      ),
+      "",
+    ]),
     "## Released-test sample",
     "",
     "Purposive gap-finding sample; not a test-frequency estimate or complete standards inventory.",

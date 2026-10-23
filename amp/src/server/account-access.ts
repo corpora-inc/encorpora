@@ -1,4 +1,8 @@
 import type { PoolClient } from "pg";
+import {
+  EMAIL_PLUS_METHOD,
+  isEmailPlusMethod,
+} from "../parent-consent/contracts.js";
 /** All learning writers take this lock before a learner lock. Privacy mutations
  * take its exclusive counterpart, then lock learners in sorted ID order. */
 export async function lockLearningAccount(
@@ -52,7 +56,10 @@ export async function learningConsentActive(
     );
     return !!effective.rowCount;
   }
-  if (consent.verification_method !== "internal-email-plus-v1") return true;
+  if (!isEmailPlusMethod(consent.verification_method)) return true;
+  // A newer workflow must never fall through to the manual-verification path
+  // while older application instances are finishing a rolling deployment.
+  if (consent.verification_method !== EMAIL_PLUS_METHOD) return false;
   const effective = await client.query(
     `SELECT 1 FROM amp_consent_requests r JOIN amp_consent_policy p ON p.singleton AND p.digest=r.policy_digest AND p.generation=r.policy_generation
     WHERE r.id::text=$1 AND r.account_id=$2 AND r.phase='active' AND r.completed_at IS NOT NULL AND p.enabled AND p.reviewed_until>clock_timestamp() FOR SHARE OF p`,
