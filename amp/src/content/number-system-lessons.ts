@@ -398,6 +398,8 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
   },
   "gcf-factor-sum": {
     goal: "Rewrite a sum of two whole numbers as their greatest common factor times a sum.",
+    intuition:
+      "A factor divides a whole number evenly. If both numbers in a sum share a factor, move it outside parentheses: 12 + 18 = 6(2 + 3), meaning six times the sum 2 + 3. This uses the distributive property, and 6 is the greatest factor 12 and 18 share.",
     terms: [
       ["distributive property", "a × b + a × c = a(b + c)."],
       ["factor out", "Write a sum as a common factor times the remaining sum."],

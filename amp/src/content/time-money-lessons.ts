@@ -141,7 +141,7 @@ export const timeMoneyLessons: Lesson[] = [
     id: "coins-and-bills",
     title: "Coins and bills",
     summary:
-      "A coin's value, not its physical size, tells how much money it adds to a total.",
+      "Count coins by value: a quarter is 25 cents, a dime 10, a nickel 5, and a penny 1. One dollar is 100 cents.",
     templateIds: [
       "coin-total",
       "money-total-dollars",

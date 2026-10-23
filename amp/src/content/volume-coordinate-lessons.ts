@@ -6,7 +6,7 @@ export const volumeCoordinateLessons: Lesson[] = [
     id: "volume-unit-cubes",
     title: "Volume: count cubes by layers",
     summary:
-      "Volume counts the equal-sized cubes that fill a solid without gaps.",
+      "A rectangular prism is a box. Count the unit cubes that fill it without gaps: cubes one unit long on each edge measure its volume in cubic units.",
     templateIds: ["unit-cube-volume", "cube-layer-count"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -68,7 +68,7 @@ export const volumeCoordinateLessons: Lesson[] = [
     id: "rectangular-prism-volume",
     title: "Volume of a rectangular prism",
     summary:
-      "A box's volume is the number of cubes in one layer times the number of layers.",
+      "A rectangular prism is a box. Its volume in cubic units is the count of unit cubes in one layer times the number of layers.",
     templateIds: [
       "prism-volume-edges",
       "prism-missing-edge",

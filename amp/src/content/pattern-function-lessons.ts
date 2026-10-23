@@ -384,7 +384,7 @@ export const patternFunctionLessons: Lesson[] = [
     id: "linear-function-choice",
     title: "Linear or not linear",
     summary:
-      "A linear rule has a constant change in output for each equal change in input.",
+      "A function gives one output for each input. It is linear when each equal step in input changes the output by the same amount; its graph is a line.",
     templateIds: ["linear-function-choice"],
     includeGeneratedRepresentation: false,
     objectives: [

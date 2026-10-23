@@ -292,6 +292,8 @@ export const distributionMethods: Record<string, ProblemMethod> = {
   },
   "box-plot-read": {
     goal: "Read a summary or a share of the data from a box plot.",
+    intuition:
+      "A box plot marks the least value, greatest value, middle value (median), and the middles of the lower and upper halves (quartiles). Each of its four intervals holds about one quarter of the ordered data.",
     terms: [
       ["quartiles", "The ends of the box: Q1 on the left, Q3 on the right."],
       ["interquartile range", "Q3 − Q1, the length of the box."],
@@ -304,6 +306,8 @@ export const distributionMethods: Record<string, ProblemMethod> = {
   },
   "dot-plot-mad": {
     goal: "Find the mean absolute deviation of dot-plot data.",
+    intuition:
+      "The mean is the total of the values divided by their count. Mean absolute deviation is the average distance from that mean: find each distance without a plus or minus sign, then average them.",
     terms: [
       [
         "mean absolute deviation",
@@ -319,6 +323,8 @@ export const distributionMethods: Record<string, ProblemMethod> = {
   },
   "dot-plot-iqr": {
     goal: "Find the interquartile range of dot-plot data.",
+    intuition:
+      "Order the values, then find the middle of each half. Those middle values are the lower and upper quartiles. The interquartile range is the upper one minus the lower one.",
     method: [
       "Read the values in order, left to right.",
       "Split them into halves, leaving out the middle value when the count is odd.",

@@ -74,7 +74,7 @@ export const measurementLessons: Lesson[] = [
     id: "border-and-cover-are-different",
     title: "Walk the border, cover the inside",
     summary:
-      "The distance around a shape and the space inside it answer different questions.",
+      "Perimeter is the distance around a shape; area is the space inside. Add a rectangle's four sides for perimeter and multiply adjacent sides for area.",
     templateIds: [
       "rectangle-border-length",
       "rectangle-missing-border-side",
@@ -152,7 +152,7 @@ export const measurementLessons: Lesson[] = [
     id: "same-length-different-unit",
     title: "Rename the length before combining it",
     summary:
-      "A length stays fixed when you rename it in smaller or larger units.",
+      "A length stays fixed when you rename its units: 1 meter is 100 centimeters. For a rectangle's perimeter, add the lengths of all four sides in one unit.",
     templateIds: [
       "metric-length-rename",
       "metric-length-reverse",
@@ -228,7 +228,7 @@ export const measurementLessons: Lesson[] = [
     id: "rectangles-with-two-conditions",
     title: "Find every candidate, then test the conditions",
     summary:
-      "Several pairs of side lengths can cover the same area; check each pair against the other requirement.",
+      "A rectangle's area is adjacent sides multiplied; its perimeter is all four sides added. Check every whole-number side pair against both conditions.",
     templateIds: [
       "rectangle-two-constraints-choice",
       "rectangle-existence-choice",

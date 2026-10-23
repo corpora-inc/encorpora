@@ -246,7 +246,7 @@ export const descriptiveStatisticsMethods: Record<string, ProblemMethod> = {
   "median-data": {
     goal: "Find the middle of a numerical dataset by position.",
     intuition:
-      "Sort every recorded value, keeping repeats. The middle position shows the center; if two positions share the middle, take their halfway value.",
+      "The median is the middle value after sorting all recorded values, keeping repeats. If two values share the middle, average them.",
     terms: [
       [
         "median",

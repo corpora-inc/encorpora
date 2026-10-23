@@ -6,7 +6,7 @@ export const polygonLessons: Lesson[] = [
     id: "polygons-and-solids",
     title: "Polygons, faces, edges and vertices",
     summary:
-      "Polygons are closed flat shapes with straight sides. Boxes, prisms, and pyramids have flat faces that meet along edges.",
+      "A polygon is a closed flat shape with straight sides. A prism has two matching ends; a pyramid has one base and sides meeting at a tip. Their flat faces meet along edges and their corners are vertices.",
     templateIds: ["name-polygon", "polygon-with-angles", "solid-parts"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -129,7 +129,7 @@ export const polygonLessons: Lesson[] = [
     id: "quadrilateral-hierarchy",
     title: "The quadrilateral family tree",
     summary:
-      "A square belongs to every four-sided shape category whose defining features it has.",
+      "A parallelogram has two pairs of opposite sides parallel. A rectangle adds four right angles; a rhombus has four equal sides. A square has both features, so several names fit it.",
     templateIds: [
       "quadrilateral-names",
       "hierarchy-statement",

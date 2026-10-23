@@ -83,7 +83,7 @@ export const areaVolumeLessons: Lesson[] = [
     },
     pitfalls: [
       "Do not multiply a slanted side by the base; the height is the perpendicular distance.",
-      "Remember the 1/2: base × height alone is the area of the whole parallelogram.",
+      "Halve base × height: that product is the area of the whole parallelogram.",
       "In an obtuse triangle, the height may land outside the triangle; it is still the distance to the line of the base.",
     ],
     parentGuide:
@@ -666,6 +666,8 @@ export const areaVolumeLessons: Lesson[] = [
 export const areaVolumeMethods: Record<string, ProblemMethod> = {
   "triangle-area-base-height": {
     goal: "Find a triangle's area from a base and the height to that base.",
+    intuition:
+      "Choose one side as the base. Its height is the perpendicular distance to the opposite corner, not a slanted side. Two matching triangles make a parallelogram, so one triangle covers half of base times height.",
     terms: [
       [
         "height",
@@ -682,6 +684,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "polygon-area-decompose": {
     goal: "Find the area of a parallelogram, trapezoid or pentagon by splitting it.",
+    intuition:
+      "Area measures how much flat space a shape covers. Split a many-sided shape into rectangles and triangles without gaps or overlaps; add their areas. A triangle covers half of its base times its perpendicular height.",
     terms: [
       [
         "trapezoid",
@@ -698,6 +702,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "net-surface-area": {
     goal: "Find a solid's surface area by adding the areas of the faces in its net.",
+    intuition:
+      "A net is a solid's outside faces laid flat without overlap. Surface area is the space all those faces cover together, so find and add each face's area once.",
     terms: [
       ["net", "A flat pattern of faces that folds into the solid."],
       ["surface area", "The total area of all the faces."],
@@ -711,6 +717,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "unit-fraction-cube-packing": {
     goal: "Count fraction-edge cubes that fill a prism and find its volume.",
+    intuition:
+      "A rectangular prism is a box. Its volume is the space it holds. Count how many identical small cubes fit along its length, width, and height, then multiply those counts.",
     terms: [
       ["unit fraction", "A fraction with numerator 1, such as 1/2."],
       ["volume", "The space a solid fills, in cubic units."],
@@ -724,6 +732,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "fraction-edge-volume": {
     goal: "Find a prism's volume or a missing edge when edges are fractions.",
+    intuition:
+      "A rectangular prism is a box. Multiply its length, width, and height to get its volume, the space it holds. A mixed number such as $2\\tfrac{1}{2}$ is two wholes and one half.",
     terms: [
       ["mixed number", "A whole number plus a fraction, such as 2 1/2 = 5/2."],
       [
@@ -766,6 +776,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "composite-face-prism-surface-area": {
     goal: "Find the surface area of a right prism with an L- or T-shaped face.",
+    intuition:
+      "A right prism has matching front and back faces joined straight across. Surface area adds all outside faces. The side faces together make a strip as wide as the front face's perimeter, its distance around, and as tall as the prism's depth.",
     terms: [["perimeter", "The total length of a shape's edges."]],
     method: [
       "Find every edge of the face, including unlabeled ones.",
@@ -776,6 +788,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "cylinder-volume": {
     goal: "Find a cylinder's volume, or its height, from its radius or diameter.",
+    intuition:
+      "A cylinder is a solid like a can. Its volume is its circular base area times its height. The radius goes from the circle's center to its edge; the diameter crosses the center and is twice as long. The number $\\pi$ (pi), about 3.14159, is every circle's circumference divided by its diameter. Base area is $\\pi$ times radius times radius; in $a\\pi$, $a$ asks for the number multiplying $\\pi$.",
     terms: [
       ["radius", "Center to circle; half the diameter."],
       ["base area", "The area of a circle of radius $r$: $\\pi r^2$."],
@@ -789,6 +803,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "cone-sphere-volume": {
     goal: "Find the volume of a cone, sphere or hemisphere.",
+    intuition:
+      "A radius goes from a circle's or sphere's center to its edge; a diameter passes through the center and is twice as long. The number $\\pi$ (pi), about 3.14159, is a circle's circumference divided by its diameter. A cylinder's volume is $\\pi$ times radius squared times height; a matching cone holds one third as much. A sphere holds four thirds of $\\pi$ times radius cubed, and a hemisphere is half a sphere. In $a\\pi$, $a$ asks for the number multiplying $\\pi$.",
     terms: [
       ["cone", "1/3 of the cylinder with the same base and height."],
       [

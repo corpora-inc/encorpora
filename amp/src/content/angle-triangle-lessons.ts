@@ -320,6 +320,8 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   },
   "angle-equation": {
     goal: "Write an equation from an angle relationship, solve for $x$, and find an angle if asked.",
+    intuition:
+      "A ray starts at a point and extends in one direction. Two rays make an angle at their shared endpoint. Side-by-side angles on a straight line add to 180 degrees. A letter such as $x$ stands for an unknown number of degrees.",
     terms: [
       [
         "adjacent angles",
@@ -375,6 +377,8 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   },
   "parallel-lines-angle": {
     goal: "Find an angle where a transversal crosses two parallel lines.",
+    intuition:
+      "Parallel lines run in the same direction without meeting. A line crossing both makes two sets of angles. Angles in matching positions are equal. Angles on opposite sides of the crossing line are also equal when both are between the parallel lines or both are outside them; inside angles on the same side add to 180 degrees.",
     terms: [
       ["transversal", "A line that crosses two other lines."],
       [
@@ -440,9 +444,11 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   },
   "cross-section-shape": {
     goal: "Name the shape where a plane slices a prism or pyramid.",
+    intuition:
+      "A cross-section is the flat shape left where a plane cuts a solid. A prism has two matching ends; a pyramid has one base and sides meeting at its tip, called the apex. Trace which faces the cut crosses to see the new shape.",
     terms: [
       ["cross-section", "The flat shape where a plane cuts through a solid."],
-      ["apex", "The point of a pyramid, above the center of its base."],
+      ["apex", "The vertex where a pyramid's triangular side faces meet."],
     ],
     method: [
       "List the faces the plane crosses; each gives one straight side.",
@@ -454,6 +460,8 @@ export const angleTriangleMethods: Record<string, ProblemMethod> = {
   },
   "cross-section-area": {
     goal: "Find the area of a slice of a prism or pyramid from its dimensions.",
+    intuition:
+      "A cross-section is the flat shape where a plane cuts a solid. A rectangular prism is a box; a cut parallel to one of its faces makes a copy of that face. Area measures the space the cut face covers.",
     terms: [
       ["cross-section", "The flat shape where a plane cuts through a solid."],
     ],

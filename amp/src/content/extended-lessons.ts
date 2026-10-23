@@ -119,7 +119,7 @@ export const extendedLessons: Lesson[] = [
     id: "comparing-fractions",
     title: "Compare pieces with the same unit",
     summary:
-      "Rename fractions as equal-sized pieces to see which amount is larger.",
+      "Rename fractions with the same denominator, the bottom number that sets piece size. Then compare how many pieces each has.",
     templateIds: ["compare-fractions"],
     objectives: [
       "Find a common denominator.",
@@ -233,7 +233,7 @@ export const extendedLessons: Lesson[] = [
     id: "dividing-fractions",
     title: "How many fractional groups fit?",
     summary:
-      "Dividing by a fraction asks how many groups of that size fit in the starting amount.",
+      "Dividing by a fraction asks how many groups of that size fit. Multiply by the divisor's reciprocal, made by swapping its top and bottom numbers.",
     templateIds: ["divide-fractions"],
     objectives: [
       "Interpret division by a fraction.",
@@ -581,7 +581,7 @@ export const extendedLessons: Lesson[] = [
     id: "equally-likely-probability",
     title: "Count favorable outcomes",
     summary:
-      "For equally likely possibilities, compare favorable outcomes with all possible outcomes.",
+      "Probability means chance. When outcomes are equally likely, divide the favorable count by the count of all possible outcomes.",
     templateIds: ["simple-probability"],
     objectives: [
       "Identify the event and the sample space.",
@@ -640,7 +640,7 @@ export const extendedLessons: Lesson[] = [
     id: "arithmetic-sequence-terms",
     title: "Repeated addition in a sequence",
     summary:
-      "An arithmetic sequence adds the same amount between each pair of neighboring terms.",
+      "A sequence is an ordered list of numbers called terms. An arithmetic sequence adds the same amount, its common difference, to get each next term.",
     templateIds: ["arithmetic-term"],
     objectives: [
       "Generate terms with a common difference.",
@@ -697,7 +697,8 @@ export const extendedLessons: Lesson[] = [
   {
     id: "function-input-output",
     title: "Substitute an input into a function",
-    summary: "A function assigns one output to each allowed input.",
+    summary:
+      "A function assigns one output to each allowed input. In $f(x)$, $x$ is the input and $f(x)$ is its output.",
     templateIds: ["function-evaluation"],
     objectives: [
       "Interpret function notation.",

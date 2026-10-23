@@ -294,6 +294,10 @@ export const circleMeasurementMethods: Record<string, ProblemMethod> =
       lesson.id,
       {
         goal: lesson.objectives[1]!,
+        intuition:
+          lesson.sections
+            .find((section) => section.stage === "intuition")
+            ?.paragraphs.join(" ") ?? lesson.summary,
         terms: [
           ["radius", "The distance from the center to the circle."],
           [

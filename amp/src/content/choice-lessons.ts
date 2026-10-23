@@ -70,7 +70,7 @@ export const choiceLessons: Lesson[] = [
     id: "equation-solution-sets",
     title: "When the variable terms disappear",
     summary:
-      "When each side has a fixed number of copies of one unknown plus a fixed amount, one value may work, none may work, or every value may work.",
+      "A letter such as $x$ stands for an unknown number; $5x$ means five copies of it. A linear equation in $x$ may work for one number, none, or every number.",
     templateIds: ["equation-solution-count"],
     objectives: [
       "Distinguish one solution, no solution, and infinitely many solutions.",
@@ -134,7 +134,7 @@ export const choiceLessons: Lesson[] = [
     id: "graph-to-equation",
     title: "A starting height and a steady climb",
     summary:
-      "Use where a line meets the vertical axis and how steeply it changes to write its rule.",
+      "In $(x,y)$, $x$ is the horizontal input and $y$ the vertical output. A line's rule uses its output at $x=0$ and its rise for each step right.",
     templateIds: ["graph-equation-choice"],
     objectives: [
       "Read a $y$-intercept and a rate of change from two labeled points.",

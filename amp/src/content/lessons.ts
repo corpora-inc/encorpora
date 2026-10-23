@@ -446,7 +446,7 @@ export const baseLessons: Lesson[] = [
     id: "area",
     title: "Cover a rectangle with unit squares",
     summary:
-      "Area tells you how much space a flat shape covers. Imagine covering a rectangle with equal little squares, with no gaps or overlaps. Instead of counting every square one at a time, count how many are in a row and how many rows there are.",
+      "Area tells you how much space a flat shape covers. One square centimeter is a square one centimeter wide on each side. Cover a rectangle with these squares, without gaps or overlaps, then count the squares in one row and the number of rows.",
     templateIds: ["rectangle-area"],
     objectives: [
       "Explain the rectangle area formula using rows of squares.",
@@ -499,7 +499,7 @@ export const baseLessons: Lesson[] = [
     id: "linear-equations",
     title: "Keep an equation balanced",
     summary:
-      "An equation says two amounts are equal, like a balanced scale. To find a missing number, undo what was done to it. Make the same change on both sides so they stay equal.",
+      "An equation says two amounts are equal, like a balanced scale. A letter such as $x$ stands for a missing number; $3x$ means three times that number. Undo what was done to $x$, making the same change on both sides.",
     templateIds: ["linear-equation"],
     objectives: [
       "Solve a two-step linear equation.",
@@ -587,7 +587,7 @@ export const baseLessons: Lesson[] = [
       prompt: "What is the mean of 3, 4, 4, 7, 8?",
       steps: [
         "Add every value: 3 + 4 + 4 + 7 + 8 = 26.",
-        "There are 5 observations.",
+        "There are 5 values.",
         "26 ÷ 5 = 26/5 = 5.2.",
       ],
       answer: "26/5",
@@ -603,7 +603,7 @@ export const baseLessons: Lesson[] = [
     id: "quadratics",
     title: "Read a quadratic minimum",
     summary:
-      "Multiplying a real number by itself cannot give a negative result. The smallest square is zero. If a rule takes a square, doubles it, and adds five, the result can never fall below five. We can use that idea to find the lowest value without trying lots of numbers.",
+      "A real number is any number on the usual number line, including fractions and negatives. Its square cannot be negative. In $f(x)$, $x$ is the input and $f(x)$ is the output. If a rule doubles a square and adds five, its lowest output is five.",
     templateIds: ["quadratic-vertex"],
     objectives: [
       "Interpret a positive multiple of a square.",
@@ -630,7 +630,7 @@ export const baseLessons: Lesson[] = [
         stage: "formal",
         title: "Vertex form and extreme values",
         paragraphs: [
-          "For real constants $a,h,k$ with $a \\ne 0$, the quadratic function $f(x)=a(x-h)^2+k$ is in vertex form. Its graph is a parabola with vertex $(h,k)$ and real-number domain.",
+          "For real constants $a,h,k$ with $a \\ne 0$, the quadratic function $f(x)=a(x-h)^2+k$ is in vertex form. Its graph is a parabola, a bowl-shaped curve that may face upward or downward. Its vertex $(h,k)$ is the turning point, and its domain is all real-number inputs.",
           "Because $(x-h)^2 \\ge 0$ for every real $x$, with equality exactly at $x=h$, a positive $a$ gives a minimum output $k$ at input $h$. A negative $a$ gives a maximum output $k$ at the same input. The input where the extreme occurs and the extreme output are different quantities.",
         ],
       },

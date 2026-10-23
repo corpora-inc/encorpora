@@ -294,6 +294,8 @@ export const rationalMethods: Record<string, ProblemMethod> = {
   },
   "signed-fraction-product": {
     goal: "Find the exact product or quotient of two signed fractions.",
+    intuition:
+      "First multiply or divide the fraction sizes, then use their signs. For division, multiply by the nonzero divisor's reciprocal: swap its top and bottom numbers. Two negative factors make a positive result.",
     terms: [
       ...fractionTerms,
       ["Reciprocal", "The fraction flipped over; a number times it equals 1."],
@@ -308,6 +310,8 @@ export const rationalMethods: Record<string, ProblemMethod> = {
   },
   "complex-fraction": {
     goal: "Write the complex fraction as one exact fraction or integer.",
+    intuition:
+      "The long bar means divide the entire amount above it by the entire amount below it. Find each amount first. Then divide by multiplying by the bottom fraction's reciprocal, made by swapping its top and bottom numbers.",
     terms: [
       ...fractionTerms,
       [
@@ -325,6 +329,8 @@ export const rationalMethods: Record<string, ProblemMethod> = {
   },
   "rational-power": {
     goal: "Find the exact value of a positive fraction raised to a fractional exponent.",
+    intuition:
+      "A root undoes a power: the fourth root of 16 is 2 because 2 to the fourth power is 16. In a fractional exponent, the bottom number names the root and the top number names the power. A negative exponent takes the reciprocal, swapping the top and bottom of the result.",
     terms: [
       ...fractionTerms,
       ["nth root", "The positive number whose nth power is the given number."],

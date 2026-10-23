@@ -75,6 +75,7 @@ export const ratioRateLessons: Lesson[] = [
         "The runner takes 8.5 minutes for each mile.",
       ],
       answer: "8.5",
+      answerUnit: "minutes per mile",
     },
     pitfalls: [
       "For minutes per mile, divide minutes by miles; read the units before dividing.",
@@ -493,6 +494,8 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
   },
   "fraction-unit-rate": {
     goal: "Find a unit rate when the quantities are fractions.",
+    intuition:
+      "A unit rate tells what goes with one unit. Divide the given amount by its fraction of a unit; dividing by a nonzero fraction means multiplying by its reciprocal, made by swapping its top and bottom numbers.",
     terms: [
       ["unit rate", "The amount for exactly 1 unit."],
       ["reciprocal", "The fraction with numerator and denominator swapped."],
