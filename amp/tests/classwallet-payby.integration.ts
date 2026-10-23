@@ -11,6 +11,10 @@ import {
   type ClassWalletPayByConfig,
 } from "../src/funding-purchase/classwallet-payby.js";
 import { FundingPurchaseError } from "../src/funding-purchase/contracts.js";
+import {
+  provisionFundingRequest,
+  annualTermEnd,
+} from "../src/funding-purchase/provision.js";
 import { testFundingOffer } from "./funding-purchase.fixture.js";
 
 test(
@@ -355,6 +359,76 @@ test(
       assert.equal(
         (await pool.query("SELECT count(*)::int n FROM amp_grants")).rows[0].n,
         2,
+      );
+      // A complete callback for a settlement-only offer is not access. The
+      // separate trusted financial bundle can activate it after real settlement.
+      const at = new Date().toISOString(),
+        orderId = "synthetic-settled-order";
+      const envelope = {
+        orderId,
+        channel: "esa",
+        channelReference: settledOffer.channelReference,
+        occurredAt: at,
+      };
+      const settlement = {
+        requestId: pending.id,
+        events: [
+          {
+            ...envelope,
+            id: randomUUID(),
+            type: "order.created",
+            order: {
+              id: orderId,
+              account: { id: "owner" },
+              license: {
+                accountId: "owner",
+                learnerId: "settled-child",
+                sku: settledOffer.sku,
+                startsAt: at,
+                endsAt: annualTermEnd(at),
+              },
+              channel: "esa",
+              channelReference: settledOffer.channelReference,
+              externalOrderId: "verified-fixture-report",
+              currency: "USD",
+              amountMinor: settledOffer.subtotalMinor,
+              activationPolicy: "after-settlement",
+            },
+          },
+          {
+            ...envelope,
+            id: randomUUID(),
+            type: "order.approved",
+            evidence: "synthetic-approval",
+          },
+          {
+            ...envelope,
+            id: randomUUID(),
+            type: "order.settled",
+            amountMinor: settledOffer.subtotalMinor,
+            currency: "USD",
+            evidence: "synthetic-verified-settlement",
+          },
+          {
+            ...envelope,
+            id: randomUUID(),
+            type: "order.fulfilled",
+            evidence: "synthetic-fulfillment",
+          },
+          {
+            ...envelope,
+            id: randomUUID(),
+            type: "license.activated",
+            evidence: "synthetic-activation",
+          },
+        ],
+      };
+      await provisionFundingRequest(pool, settlement, offers);
+      await provisionFundingRequest(pool, settlement, offers);
+      assert.equal((await repo.read("owner", pending.id)).orderId, orderId);
+      assert.equal(
+        (await pool.query("SELECT count(*)::int n FROM amp_grants")).rows[0].n,
+        3,
       );
       const start = await app.inject({
         method: "POST",

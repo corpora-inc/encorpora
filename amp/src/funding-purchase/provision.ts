@@ -93,8 +93,10 @@ export async function provisionFundingRequest(
         (checkout.callback_status !== "complete" ||
           checkout.stopped_at ||
           checkout.exception_code ||
-          canonicalCommercePayload(checkout.provisioning_payload) !==
-            canonicalCommercePayload(data))
+          (request.offer.activationPolicy === "after-approval"
+            ? canonicalCommercePayload(checkout.provisioning_payload) !==
+              canonicalCommercePayload(data)
+            : !data.events.some((event) => event.type === "order.settled")))
       )
         throw new FundingPurchaseError(409, "classwallet_approval_unavailable");
       if (request.orderId) {
