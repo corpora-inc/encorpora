@@ -21,6 +21,7 @@ import {
 import type { SignedInMe } from "../../../account/contracts";
 import { CheckoutPrivacy } from "./CheckoutPrivacy";
 import { Progress } from "./Progress";
+import { TrialPathwaysOffer } from "../pathways/TrialPathwaysOffer";
 import styles from "./Start.module.css";
 import { track } from "../../lib/analytics";
 
@@ -196,6 +197,7 @@ export function PlanStep({
       <Progress step={1} />
       <h1>Choose your plan</h1>
       <p>Adaptive practice, lessons and printable books for one learner.</p>
+      <TrialPathwaysOffer hideWithoutTrial />
       <PlanChoice
         offers={plans}
         interval={offer.interval}

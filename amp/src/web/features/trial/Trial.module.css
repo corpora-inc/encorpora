@@ -340,17 +340,31 @@
   color: var(--color-on-surface);
 }
 .esa {
-  justify-self: start;
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  align-items: stretch;
+  gap: 10px;
+  min-width: 0;
   color: var(--color-primary);
   font-size: var(--text-label);
-  font-weight: 650;
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
-.esa:focus-visible {
+.esa > p {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-weight: 650;
+}
+.esa > a {
+  min-width: 0;
+  min-height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-align: center;
+}
+.esa > a:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
   border-radius: 6px;

@@ -1,9 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { brand } from "../../../brand";
-import { strandNames } from "../../BirthYearPrompt";
-import { gradeName } from "../../Home";
 import { fundedPrograms } from "../../lib/funded-entry";
 import { rememberPlanChoice } from "../../lib/pending-trial";
 import { sessionOptions } from "../../lib/query";
@@ -12,18 +9,15 @@ import { Dialog } from "../../ui/Dialog";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { PlanChoice } from "../billing";
 import {
-  catalogOptions,
   pricesOptions,
   progressOptions,
   recordPaywall,
   trialSessionOptions,
-  type TrialFrontier,
   type TrialProgress,
 } from "./api";
 import { track, trackSessionStart } from "./analytics";
-import { FreeMeter } from "./FreeMeter";
-import { isEnded, TrialEnded, TrialFailure, TrialSkeleton } from "./TrialFrame";
-import type { TrialCatalog } from "./types";
+import { TrialFailure, TrialSkeleton } from "./TrialFrame";
+import { TrialPathwaysOffer } from "../pathways/TrialPathwaysOffer";
 import styles from "./Trial.module.css";
 
 export const ESA_URL = "https://corpora.inc/esa/";
@@ -43,16 +37,10 @@ export function Paywall() {
     ...progressOptions(trial.data ?? { token: "", learnerId: "" }),
     enabled: !!trial.data,
   });
-  const catalog = useQuery(catalogOptions);
   const prices = useQuery(pricesOptions);
   const parent = useQuery(sessionOptions);
   const search = useSearch({ from: "/try/plans" });
-  if (isEnded(progress.error)) return <TrialEnded />;
-  const failed =
-    trial.error ??
-    (progress.data ? null : progress.error) ??
-    prices.error ??
-    catalog.error;
+  const failed = prices.error;
   if (failed)
     return (
       <TrialFailure
@@ -61,28 +49,20 @@ export function Paywall() {
         retry={() => {
           void trial.refetch();
           void prices.refetch();
-          void catalog.refetch();
           if (trial.data) void progress.refetch();
         }}
       />
     );
-  const ready =
-    !trial.isPending &&
-    (!trial.data || progress.data) &&
-    prices.data &&
-    catalog.data &&
-    !parent.isPending;
+  const ready = prices.data && !parent.isPending;
   if (!ready) return <TrialSkeleton wide centered />;
   const run = progress.data ?? null;
   const reason =
     run && run.remaining === 0 ? "limit" : (search.reason ?? "choice");
   return (
     <PlansView
-      key={reason}
       programId={search.program}
       reason={reason}
       run={run}
-      catalog={catalog.data}
       offers={prices.data.available ? prices.data.offers : []}
       signedIn={!!parent.data}
       record={() => (trial.data ? recordPaywall(trial.data) : null)}
@@ -94,7 +74,6 @@ function PlansView({
   programId,
   reason,
   run,
-  catalog,
   offers,
   signedIn,
   record,
@@ -102,7 +81,6 @@ function PlansView({
   programId?: string;
   reason: "limit" | "choice";
   run: TrialProgress | null;
-  catalog: TrialCatalog;
   offers: Parameters<typeof PlanChoice>[0]["offers"];
   signedIn: boolean;
   record: () => Promise<unknown> | null;
@@ -111,15 +89,20 @@ function PlansView({
   const [interval, setChosen] = useState<"year" | "month">("year");
   const [asking, setAsking] = useState(false);
   const seen = useRef(false);
+  const recorded = useRef(false);
   useEffect(() => {
     if (seen.current) return;
     seen.current = true;
     trackSessionStart();
     track("paywall_view", { reason });
-    void record()?.catch((error: unknown) =>
-      console.error("Paywall view not recorded", error),
-    );
   }, []);
+  useEffect(() => {
+    if (recorded.current) return;
+    const pending = record();
+    if (!pending) return;
+    recorded.current = true;
+    void pending.catch(() => console.error("Paywall view not recorded"));
+  }, [record]);
   const left = run?.remaining ?? 0;
   function dismiss(why: DismissReason) {
     track("paywall_dismiss", { reason: why });
@@ -134,39 +117,24 @@ function PlansView({
     <PageFrame centered>
       <section className={`${frameCard} ${styles.panel}`}>
         <FrameBrand expanded />
-        <p className={styles.eyebrow}>
-          {reason === "limit" && run
-            ? `All ${run.free} free problems used`
-            : brand.productName}
-        </p>
+        {reason === "limit" && run && (
+          <p className={styles.eyebrow}>All {run.free} free problems used</p>
+        )}
         <h1 className={styles.title}>
           {reason === "limit" ? "Keep going from here" : "Choose a plan"}
         </h1>
-        {run && run.totals.answered > 0 && (
-          <Summary run={run} catalog={catalog} />
-        )}
+        <TrialPathwaysOffer />
         {offer ? (
           <>
             <p className={styles.value}>
-              For one learner: adaptive practice with no limit, a lesson with
-              every problem, review that comes back on schedule, and printable
-              books.
+              Unlimited adaptive practice, lessons, and printable books for one
+              learner.
             </p>
             <PlanChoice
               offers={offers}
               interval={offer.interval}
               onChange={setChosen}
             />
-            <ul className={styles.assurances}>
-              <li>
-                <strong>30-day full refund.</strong> Ask within 30 days of
-                payment and the whole payment is refunded.
-              </li>
-              <li>
-                <strong>Your free practice carries over.</strong> Every answer
-                and the map move into your family account.
-              </li>
-            </ul>
             <div className={styles.actions}>
               <Button
                 variant="primary"
@@ -188,6 +156,16 @@ function PlansView({
                 Not now
               </Button>
             </div>
+            <ul className={styles.assurances}>
+              <li>
+                <strong>30-day full refund.</strong> Ask within 30 days of
+                payment and the whole payment is refunded.
+              </li>
+              <li>
+                <strong>Your free practice carries over.</strong> Every answer
+                and the map move into your family account.
+              </li>
+            </ul>
             <p className={styles.fine}>
               {signedIn
                 ? "Next: review the parent notice, then pay securely with Stripe."
@@ -255,123 +233,5 @@ function PlansView({
         </p>
       </Dialog>
     </PageFrame>
-  );
-}
-
-/** Problems, independent correct answers, skills mastered, and each sampled
- * area's estimate at placement and now. */
-function Summary({
-  run,
-  catalog,
-}: {
-  run: TrialProgress;
-  catalog: TrialCatalog;
-}) {
-  const titles = run.mastered.map(
-    (id) => catalog.skills.find((skill) => skill.id === id)?.title ?? id,
-  );
-  return (
-    <div className={styles.summary}>
-      <FreeMeter answered={run.totals.answered} free={run.free} />
-      <dl className={styles.stats}>
-        <div>
-          <dt>Problems</dt>
-          <dd>{run.totals.answered}</dd>
-        </div>
-        <div>
-          <dt>Correct</dt>
-          <dd>{run.totals.correct}</dd>
-        </div>
-        {titles.length > 0 ? (
-          <div>
-            <dt>Skills mastered</dt>
-            <dd>{titles.length}</dd>
-          </div>
-        ) : (
-          <div>
-            <dt>Areas practiced</dt>
-            <dd>
-              {
-                Object.values(run.frontier.current.strands).filter(
-                  (strand) => strand.answered > 0,
-                ).length
-              }
-            </dd>
-          </div>
-        )}
-      </dl>
-      {titles.length > 0 && (
-        <ul className={styles.mastered} aria-label="Skills mastered">
-          {titles.map((title) => (
-            <li key={title}>{title}</li>
-          ))}
-        </ul>
-      )}
-      {run.frontier.placement && (
-        <BeforeAfter
-          before={run.frontier.placement}
-          after={run.frontier.current}
-        />
-      )}
-    </div>
-  );
-}
-
-/** Each sampled area: the placement estimate (hollow) and now (filled). */
-function BeforeAfter({
-  before,
-  after,
-}: {
-  before: TrialFrontier;
-  after: TrialFrontier;
-}) {
-  const rows = Object.keys(strandNames)
-    .filter((strand) => after.strands[strand]?.answered)
-    .slice(0, 6);
-  if (!rows.length) return null;
-  const levels = rows.flatMap((strand) => [
-    before.strands[strand]?.level ?? before.overall.level,
-    after.strands[strand]!.level,
-  ]);
-  const lo = Math.floor(Math.min(...levels, after.expected) - 0.5),
-    hi = Math.ceil(Math.max(...levels, after.expected) + 0.5);
-  const at = (v: number) => `${((v - lo) / Math.max(1, hi - lo)) * 100}%`;
-  return (
-    <figure className={styles.compare}>
-      <figcaption>
-        <span>The map</span>
-        <span className={styles.legend}>
-          <i className={styles.dotBefore} aria-hidden="true" /> After placement
-          <i className={styles.dotAfter} aria-hidden="true" /> Now
-        </span>
-      </figcaption>
-      <ul>
-        {rows.map((strand) => {
-          const from = before.strands[strand]?.level ?? before.overall.level;
-          const to = after.strands[strand]!.level;
-          return (
-            <li key={strand}>
-              <span className={styles.compareName}>{strandNames[strand]}</span>
-              <span className={styles.compareTrack} aria-hidden="true">
-                <span
-                  className={styles.compareSpan}
-                  style={{
-                    left: at(Math.min(from, to)),
-                    width: `calc(${at(Math.max(from, to))} - ${at(Math.min(from, to))})`,
-                  }}
-                />
-                <span className={styles.dotBefore} style={{ left: at(from) }} />
-                <span className={styles.dotAfter} style={{ left: at(to) }} />
-              </span>
-              <span className={styles.compareValue}>
-                {gradeName(from) === gradeName(to)
-                  ? gradeName(to)
-                  : `${gradeName(from)} → ${gradeName(to)}`}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-    </figure>
   );
 }
