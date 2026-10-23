@@ -257,6 +257,58 @@ function RoundingLine() {
   );
 }
 
+/** The exact half-up interval for values rounding to 4.68 hundredths. */
+function InverseRoundingLine() {
+  const marks = [
+    { x: 48, value: "4.67" },
+    { x: 174, value: "4.675" },
+    { x: 300, value: "4.68" },
+    { x: 426, value: "4.685" },
+    { x: 552, value: "4.69" },
+  ];
+  return (
+    <svg
+      className="lesson-illustration"
+      viewBox="0 0 600 182"
+      role="img"
+      aria-label="Number line from 4.67 to 4.69. The shaded interval for decimals rounding to 4.68 starts at 4.675 with a filled dot and ends at 4.685 with an open dot. Halfway rounds up."
+    >
+      <rect x="174" y="58" width="252" height="34" fill={accentFill} />
+      <line x1="48" x2="552" y1="92" y2="92" stroke={ink} strokeWidth="2" />
+      {marks.map((mark) => (
+        <g key={mark.value}>
+          <line
+            x1={mark.x}
+            x2={mark.x}
+            y1="78"
+            y2="105"
+            stroke={ink}
+            strokeWidth="2"
+          />
+          <Text x={mark.x} y={135} size={mark.value.length > 4 ? 17 : 19}>
+            {mark.value}
+          </Text>
+        </g>
+      ))}
+      <circle cx="174" cy="92" r="7" fill={ink} />
+      <circle
+        cx="426"
+        cy="92"
+        r="7"
+        fill={empty}
+        stroke={ink}
+        strokeWidth="2"
+      />
+      <Text x={174} y={49} size={17}>
+        included
+      </Text>
+      <Text x={426} y={49} size={17}>
+        excluded
+      </Text>
+    </svg>
+  );
+}
+
 /** 12.5 + 3.75 with the points lined up and an added 0 in the hundredths. */
 function AlignedSum() {
   const xs = [200, 250, 330, 380]; // tens, ones | tenths, hundredths
@@ -328,10 +380,12 @@ export function DecimalIllustration({
     | "decimal-tenths-hundredths"
     | "decimal-compare-chart"
     | "decimal-rounding-line"
+    | "inverse-decimal-rounding-line"
     | "decimal-aligned-sum";
 }) {
   if (kind === "decimal-tenths-hundredths") return <TenthsHundredths />;
   if (kind === "decimal-compare-chart") return <CompareChart />;
   if (kind === "decimal-rounding-line") return <RoundingLine />;
+  if (kind === "inverse-decimal-rounding-line") return <InverseRoundingLine />;
   return <AlignedSum />;
 }

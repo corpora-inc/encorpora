@@ -1,5 +1,9 @@
 import { z } from "zod";
 export const EMAIL_PLUS_METHOD = "internal-email-plus-v1";
+/** Reserve the entire self-service family, including versions this server cannot read. */
+export function isEmailPlusMethod(method: string): boolean {
+  return method.startsWith("internal-email-plus");
+}
 const text = z
   .string()
   .trim()

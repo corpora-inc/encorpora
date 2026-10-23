@@ -167,6 +167,7 @@ export interface Lesson {
       | "decimal-tenths-hundredths"
       | "decimal-compare-chart"
       | "decimal-rounding-line"
+      | "inverse-decimal-rounding-line"
       | "decimal-aligned-sum"
       | "column-addition"
       | "base-ten-trade"

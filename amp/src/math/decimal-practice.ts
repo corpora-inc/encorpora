@@ -16,6 +16,7 @@ decimal-digit-value|Value of a decimal digit|decimal-place-value|3–5|Name the 
 expanded-decimal|Decimal from expanded form|decimal-place-value|3–5|Write a decimal from ones, tenths, hundredths and thousandths, including empty places.
 compare-decimals-thousandths|Compare decimals to thousandths|decimal-place-value|3–5|Choose the greater or lesser of two decimals with up to three places, including shorter-but-greater pairs.
 round-decimal|Round a decimal|decimal-place-value|3–5|Round a decimal with up to three places to the nearest whole number, tenth or hundredth.
+inverse-round-decimal|Find an original decimal|decimal-place-value|3–5|Choose one positive decimal that rounds to a given tenth or hundredth, including halfway cases.
 multidigit-decimal-sum|Add and subtract multidigit decimals|decimal-algorithms|6–8|Add or subtract decimals with different numbers of places up to thousandths.
 multidigit-decimal-product|Multiply multidigit decimals|decimal-algorithms|6–8|Multiply two decimals with one or two places each.
 multidigit-decimal-quotient|Divide by a decimal|decimal-algorithms|6–8|Divide a decimal by a decimal with one or two places when the quotient terminates.
@@ -41,6 +42,9 @@ export const decimalTemplates: readonly TemplateMetadata[] = definitions.map(
     skillId,
     gradeBand,
     description,
+    ...(id === "inverse-round-decimal"
+      ? { requiredResponseCapability: "single-choice-v1" as const }
+      : {}),
   }),
 );
 
@@ -75,6 +79,7 @@ type Draft = {
   answer: string;
   label: string;
   figure?: SemanticFigure;
+  choices?: { value: string; feedback: string }[];
 };
 
 /** A pair of unequal decimals with up to `max` places, chosen so that the
@@ -378,6 +383,53 @@ function draft(templateId: string, r: Random): Draft {
         label: "Rounded number",
       };
     }
+    case "inverse-round-decimal": {
+      // All boundaries are integer thousandths. Halfway belongs to the higher
+      // rounded value; there is no floating-point comparison at an endpoint.
+      const precision = r(1, 2);
+      const unit = precision === 1 ? 100 : 10;
+      const targetCount =
+        r(0, 3) === 0
+          ? 10 ** precision * r(1, 80) // whole-number carry, e.g. 20.995 → 21.00
+          : precision === 1
+            ? r(25, 875)
+            : r(250, 8750);
+      const rounded = targetCount * unit;
+      const half = unit / 2;
+      const lower = rounded - half;
+      const upper = rounded + half;
+      const good = pick(r, [lower, lower + 1, rounded + 1, upper - 1]);
+      const other = rounded + (r(0, 1) ? unit : -unit);
+      const values = [lower - 1, good, upper, other];
+      for (let i = values.length - 1; i > 0; i--) {
+        const j = r(0, i);
+        [values[i], values[j]] = [values[j]!, values[i]!];
+      }
+      const target = fixed(rounded / 10 ** (3 - precision), precision);
+      const neighbor = (value: number) =>
+        fixed(value / 10 ** (3 - precision), precision);
+      const name = precision === 1 ? "tenth" : "hundredth";
+      return {
+        prompt: `Which decimal rounds to ${target} to the nearest ${name}? Round halfway values up.`,
+        hint: `Start with ${target}. Find the halfway points between it and the adjacent ${name}s, ${neighbor(rounded - unit)} and ${neighbor(rounded + unit)}. Then compare each choice with those points.`,
+        explanation: [
+          `The neighboring ${name}s are ${neighbor(rounded - unit)}, ${target}, and ${neighbor(rounded + unit)}.`,
+          `The halfway points beside ${target} are ${fixed(lower, 3)} and ${fixed(upper, 3)}. Halfway rounds up, so the lower point belongs to ${target}, but the upper point belongs to ${neighbor(rounded + unit)}.`,
+          `${fixed(good, 3)} lies from ${fixed(lower, 3)} up to, but not including, ${fixed(upper, 3)}. It rounds to ${target}.`,
+        ],
+        answer: fixed(good, 3),
+        label: "Choose one decimal",
+        choices: values.map((value) => ({
+          value: fixed(value, 3),
+          feedback:
+            value < lower
+              ? `${fixed(value, 3)} is below the lower halfway point ${fixed(lower, 3)}; it rounds to ${neighbor(rounded - unit)}.`
+              : value >= upper
+                ? `${fixed(value, 3)} is at or above the upper halfway point ${fixed(upper, 3)}; it rounds to ${neighbor(rounded + unit)}.`
+                : "",
+        })),
+      };
+    }
     case "multidigit-decimal-sum": {
       const pa = r(1, 3),
         pb = r(1, 3);
@@ -482,6 +534,13 @@ export function generateDecimalProblem(
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const d = draft(templateId, random(templateId, seed));
+  const choices = d.choices;
+  const choiceFeedback: Record<string, string> = {};
+  const options = choices?.map((choice, index) => {
+    const id = `option-${"abcd"[index]}`;
+    if (choice.value !== d.answer) choiceFeedback[id] = choice.feedback;
+    return { id, label: choice.value };
+  });
   return {
     public: {
       id: createHash("sha256")
@@ -492,11 +551,16 @@ export function generateDecimalProblem(
       seed,
       prompt: d.prompt,
       skillId: meta.skillId,
-      response: { kind: "number", label: d.label },
+      response: options
+        ? { kind: "choice", label: d.label, options }
+        : { kind: "number", label: d.label },
       ...(d.figure ? { figure: d.figure } : {}),
     },
-    answer: d.answer,
+    answer: choices
+      ? `option-${"abcd"[choices.findIndex((choice) => choice.value === d.answer)]}`
+      : d.answer,
     explanation: d.explanation,
     hint: d.hint,
+    ...(choices ? { choiceFeedback } : {}),
   };
 }

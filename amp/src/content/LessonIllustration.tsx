@@ -228,6 +228,7 @@ export function LessonIllustration({
     kind === "decimal-tenths-hundredths" ||
     kind === "decimal-compare-chart" ||
     kind === "decimal-rounding-line" ||
+    kind === "inverse-decimal-rounding-line" ||
     kind === "decimal-aligned-sum"
   )
     return <DecimalIllustration kind={kind} />;

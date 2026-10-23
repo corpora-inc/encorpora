@@ -1,6 +1,10 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID, randomBytes } from "node:crypto";
+import { mkdtemp, writeFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { spawnSync } from "node:child_process";
 import { Pool } from "pg";
 import Fastify from "fastify";
 import { migrate } from "../scripts/migrate.js";
@@ -88,6 +92,91 @@ async function active(pool: Pool, account = "parent") {
     client.release();
   }
 }
+test(
+  "unknown email-plus versions fail closed and retire their evidence without changing manual consent",
+  enabled,
+  async () =>
+    fixture(async (pool, r, mails) => {
+      await r.begin("parent", begin());
+      await deliverConsentMail(r, transport(mails));
+      await r.acknowledge("parent", ack(mails[0]!));
+      await advance(pool);
+      await deliverConsentMail(r, transport(mails));
+      await r.acknowledge("parent", ack(mails[1]!));
+      assert.equal(await active(pool), true);
+      await pool.query(
+        "UPDATE amp_parent_consents SET verification_method='internal-email-plus-v999' WHERE account_id='parent'",
+      );
+      await pool.query(
+        "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES('manual','v1','verified-video','fixture')",
+      );
+      assert.equal(await active(pool), false);
+      assert.equal(await active(pool, "manual"), true);
+      await pool.query(
+        "UPDATE amp_consent_requests SET purge_after=now()-interval '1 second' WHERE account_id='parent'",
+      );
+      assert.equal(await purgeConsentRecords(pool), 1);
+      const marker = (
+        await pool.query(
+          "SELECT verification_method,evidence_reference,withdrawn_at FROM amp_parent_consents WHERE account_id='parent'",
+        )
+      ).rows[0];
+      assert.equal(marker.verification_method, "parent-withdrawal");
+      assert.equal(marker.evidence_reference, "preference-only");
+      assert(marker.withdrawn_at);
+      assert.equal(await active(pool), false);
+      assert.equal(await active(pool, "manual"), true);
+    }),
+);
+test(
+  "staff importer rejects unrecognized self-service versions before writing consent",
+  enabled,
+  async () =>
+    fixture(async (pool) => {
+      const dir = await mkdtemp(join(tmpdir(), "amp-consent-import-"));
+      try {
+        const file = join(dir, "record.json");
+        await writeFile(
+          file,
+          JSON.stringify({
+            accountId: "imported-parent",
+            policyVersion: "v1",
+            verificationMethod: "internal-email-plus-v999",
+            evidenceReference: "synthetic-request",
+          }),
+        );
+        const result = spawnSync(
+          process.execPath,
+          ["--import", "tsx", "scripts/parent-consent.ts", file],
+          {
+            cwd: new URL("../", import.meta.url),
+            env: {
+              ...process.env,
+              AMP_DATABASE_URL: pool.options.connectionString,
+            },
+            encoding: "utf8",
+            timeout: 10_000,
+          },
+        );
+        assert.equal(result.error, undefined);
+        assert.notEqual(result.status, 0);
+        assert.match(
+          result.stderr,
+          /self-service method requires its own verified workflow/,
+        );
+        assert.equal(
+          (
+            await pool.query(
+              "SELECT count(*)::int n FROM amp_parent_consents WHERE account_id='imported-parent'",
+            )
+          ).rows[0].n,
+          0,
+        );
+      } finally {
+        await rm(dir, { recursive: true });
+      }
+    }),
+);
 test(
   "two explicit responses, exact replay and account binding; clock and delivery never grant access",
   enabled,
