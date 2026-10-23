@@ -395,6 +395,8 @@ export const methods: Record<string, ProblemMethod> = {
   },
   // Multiplication and division
   "small-array-total": {
+    intuition:
+      "Equal rows let you count a picture quickly. Count the squares in one row, then count that same amount for every row. Multiplication is a shorter way to combine those equal groups.",
     goal: "Given an array of squares, find how many there are.",
     terms: [["array", "Objects arranged in equal rows."]],
     method: [
@@ -405,6 +407,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Multiply rows by columns; adding them counts only the edge squares.",
   },
   "pairing-leftover": {
+    intuition:
+      "Give each counter a partner. Each pair uses two counters. When you finish, either every counter has a partner or one counter is left on its own.",
     goal: "Given a number of counters, find how many are left without a partner.",
     method: [
       "Each pair uses 2 counters, so pair them off two at a time.",
@@ -413,6 +417,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "A number is even when its ones digit is 0, 2, 4, 6 or 8.",
   },
   "equal-tray-total": {
+    intuition:
+      "Each tray holds the same number of items. To find the total, count that amount once for every tray. Multiplication combines the equal groups in one calculation.",
     goal: "Given a number of trays and how many are on each, find the total.",
     method: [
       "Multiply the number of trays by the number on each tray.",
@@ -421,6 +427,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Multiply, do not add: 4 trays of 6 is 24, not 10.",
   },
   "share-whole-items": {
+    intuition:
+      "Deal the items out so every tray gets the same number. You can give one to each tray and repeat. Dividing the total by the number of trays counts how many each tray receives.",
     goal: "Given a total and a number of trays, find how many go on each tray.",
     method: [
       "Divide the total by the number of trays.",
@@ -429,6 +437,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Check: trays × each = total.",
   },
   "measure-whole-pieces": {
+    intuition:
+      "Imagine laying equal-length pieces end to end along the full length. The question asks how many pieces fit. Dividing the full length by one piece’s length counts the pieces.",
     goal: "Given a length and the size of each piece, find how many pieces.",
     method: [
       "Divide the full length by the length of one piece.",
@@ -438,6 +448,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Divide by the piece length; the answer counts pieces, not centimeters.",
   },
   "unknown-group-size": {
+    intuition:
+      "You know the total and how many equal groups it fills. Share the total across those groups to find how much goes in each one. All the groups together must give back the total.",
     goal: "Given the number of groups and the total, find the size of each group.",
     method: [
       "Write groups × ? = total.",
@@ -448,6 +460,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Divide the total by the number of groups; multiplying them gives a bigger number than the total.",
   },
   "unknown-dividend": {
+    intuition:
+      "You know how an amount was shared and how much each group received. Put those equal shares back together to find the starting amount. Multiplication reverses the sharing.",
     goal: "Given ? ÷ $a$ = $b$, find the number being divided.",
     method: [
       "? ÷ $a$ = $b$ means ? splits into a groups of $b$.",
@@ -456,6 +470,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Multiply to undo division; dividing again gives a smaller number.",
   },
   "split-array-part": {
+    intuition:
+      "The picture is split into smaller regions. Look only at the region named in the question. Its equal rows tell you how many squares that part contains.",
     goal: "Given an array split into regions, find the squares in one region.",
     method: [
       "Count the rows in the named region.",
@@ -464,6 +480,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Count only the named region's rows, not the whole array.",
   },
   "nested-bag-total": {
+    intuition:
+      "Count groups inside groups one layer at a time. First find how many bags there are altogether. Then count the items in all those bags.",
     goal: "Given groups inside groups, find the total number of items.",
     method: [
       "Multiply the outer count by the middle count to get the number of bags.",
@@ -472,6 +490,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Multiply all three counts; adding any of them undercounts.",
   },
   "zero-one-groups": {
+    intuition:
+      "One group contains exactly the amount in that group. Zero groups give a total of zero; any number of empty groups also gives zero. That explains multiplying by one or zero.",
     goal: "Given a product with 0 or 1, find the total.",
     method: [
       "Any number × 0 is 0: no groups, or empty groups.",
@@ -480,6 +500,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "0 groups of 7 is 0, not 7; 1 group of 7 is 7, not 1.",
   },
   "neighbor-product-change": {
+    intuition:
+      "Adding one row to an array adds exactly the squares in that row. You can find the increase without counting the whole picture again. The number of squares in each row stays the same.",
     goal: "Given an array that gains one row, find how many squares were added.",
     method: [
       "Growing by one row adds one more group.",
@@ -488,6 +510,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "The change is one row, not the whole new array.",
   },
   "factor-partner": {
+    intuition:
+      "Multiplication combines equal groups into a total. If one of the two numbers is missing, divide the total by the known number. Multiplying the pair back together checks your answer.",
     goal: "Given a product and one factor, find the other factor.",
     method: [
       "Divide the product by the known factor.",
@@ -496,6 +520,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "The partner multiplies to the product; it does not add to it.",
   },
   "tens-contribution": {
+    intuition:
+      "A two-digit number has a tens part and a ones part. To find the tens contribution to a multiplication, use the value of all the tens. Nine tens means ninety, rather than nine.",
     goal: "Given a product split by place value, find the tens partial product.",
     terms: [["partial product", "The product of one part of a factor."]],
     method: [
@@ -505,6 +531,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Use 90, not 9.",
   },
   "comparison-amount": {
+    intuition:
+      "“Times as many” means copies of an amount. Three times as many means three equal copies put together. Multiply to count all the copies.",
     goal: "Given one amount and “$n$ times as many,” find the other amount.",
     method: [
       "“$n$ times as many” means $n$ copies of the amount.",
@@ -513,6 +541,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Do not add $n$. 4 times as many as 9 is 36, not 13.",
   },
   "comparison-factor": {
+    intuition:
+      "Ask how many copies of one amount would make the other. For a larger amount compared with a smaller positive amount, divide the larger by the smaller. The answer counts copies, rather than the extra items.",
     goal: "Given two amounts, find how many times as many one is as the other.",
     method: [
       "Ask how many copies of the smaller amount make the larger.",
@@ -521,6 +551,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Divide, do not subtract: 12 is 3 times 4, not 8 times.",
   },
   "full-kits": {
+    intuition:
+      "Each complete kit needs the same number of items. Keep making full kits until there are too few items for another. Any leftovers are useful items, but they do not count as a finished kit.",
     goal: "Given a supply and the amount each kit needs, find how many complete kits.",
     method: [
       "Divide the supply by the amount per kit.",
@@ -529,6 +561,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "A kit with too few beads is not a kit: never round up.",
   },
   "seats-needed": {
+    intuition:
+      "Every person needs a seat. Fill each van up to its seat limit, and check whether anyone is left waiting. Even one extra person needs another van.",
     goal: "Given a number of people and seats per van, find the fewest vans.",
     method: [
       "Divide people by seats per van.",
@@ -537,6 +571,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Everyone needs a seat, so round up.",
   },
   "kit-leftovers": {
+    intuition:
+      "Make as many full kits as the supply allows. The items you cannot put into another complete kit are the leftovers. Count those remaining items, rather than the kits you made.",
     goal: "Given a supply and the amount per kit, find how many are left after making full kits.",
     method: [
       "Find the most full kits: divide and keep the whole number.",
@@ -545,6 +581,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "The answer is the remainder, not the number of kits.",
   },
   "delivery-then-use": {
+    intuition:
+      "First count everything that arrived in the equal boxes. Then take away what was used. These are two separate steps: find the delivery total, then what remains.",
     goal: "Given a delivery of equal boxes and an amount used, find what remains.",
     method: [
       "Multiply boxes by items per box to get the delivery.",
@@ -554,6 +592,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Find the whole delivery before subtracting; do not subtract from one box.",
   },
   "purchase-change": {
+    intuition:
+      "Change is the money left from your payment after the purchase is paid for. Find the cost of all the items first, then subtract that cost from the money handed over.",
     goal: "Given a number of items, their price, and the payment, find the change.",
     method: [
       "Multiply to find the cost: items × price.",
@@ -780,6 +820,8 @@ export const methods: Record<string, ProblemMethod> = {
   },
   // Fractions
   "unit-piece-size": {
+    intuition:
+      "A fraction can name just one piece of a whole. If the whole is cut into equal pieces, the bottom number counts all the pieces and the top number counts the one piece you are naming.",
     goal: "Given a whole cut into equal pieces, find the fraction one piece is.",
     terms: [
       [
@@ -810,6 +852,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "The parts must be equal in size.",
   },
   "fraction-unit-count": {
+    intuition:
+      "Count the shaded pieces one at a time. When several equal-sized strips are cut in the same way, their pieces are the same size, so you can keep counting across strips without starting over.",
     goal: "Given strips cut into equal pieces, find how many pieces are shaded.",
     method: [
       "Each strip is one whole cut into the same number of pieces.",
@@ -818,6 +862,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Pieces past the first whole are the same size; keep counting.",
   },
   "fraction-line-position": {
+    intuition:
+      "A number line measures distance from zero. When each whole is split into equal steps, count the steps to the point. The fraction tells how many steps you took and how many steps make one whole.",
     goal: "Given a number line split into equal steps, find the number at a point.",
     method: [
       "Find the size of one step: 1 ÷ steps per whole.",
@@ -828,6 +874,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Count the steps (spaces), not the tick marks, and start counting at 0.",
   },
   "fraction-whole-as-parts": {
+    intuition:
+      "A whole can be counted in smaller equal pieces. If each whole contains four fourths, three wholes contain twelve fourths. The amount stays the same; you are just counting it with smaller pieces.",
     goal: "Given a number of wholes, write it as a fraction with a given denominator.",
     method: [
       "Each whole is cut into denominator-many equal pieces.",
@@ -838,6 +886,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Multiply the wholes by the denominator: 3 wholes are 12/4, not 3/4.",
   },
   "equivalent-numerator": {
+    intuition:
+      "Cutting every piece into smaller equal pieces does not change the amount you have. It changes how many pieces you count. Both numbers in the fraction grow by the same factor, so it keeps the same value.",
     goal: "Given a fraction and a new denominator, find the matching numerator.",
     terms: [["equivalent fractions", "Fractions that name the same amount."]],
     method: [
@@ -848,6 +898,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Multiply the numerator by the same number as the denominator; adding the same number changes the amount.",
   },
   "equivalent-denominator": {
+    intuition:
+      "You can rename a fraction by bundling equal pieces into larger ones. The amount stays the same when you group the selected pieces and all the pieces in the whole in exactly the same way. Both numbers divide by the same factor.",
     goal: "Given a fraction and a new numerator, find the matching denominator.",
     method: [
       "Find what the numerator was divided by.",
@@ -873,6 +925,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Larger denominator means smaller pieces: 1/8 < 1/5.",
   },
   "like-fraction-missing-part": {
+    intuition:
+      "Think of the missing fraction as the pieces needed to complete a total. If all the pieces are the same size, subtract the number you already have from the number you need. Their size stays unchanged.",
     goal: "Given a fraction plus a missing fraction equal to a total, find the missing fraction.",
     method: [
       "All pieces have the same denominator.",
@@ -883,6 +937,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Keep the denominator; the missing part counts the same size of piece.",
   },
   "like-fraction-difference": {
+    intuition:
+      "When two fractions have the same bottom number, they count the same-sized pieces. Take away the requested number of pieces and count what is left. You do not change the piece size.",
     goal: "Given two fractions with the same denominator, find their difference.",
     method: [
       "Both fractions count the same size of piece.",
@@ -892,6 +948,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Do not subtract the denominators: the piece size stays the same.",
   },
   "mixed-to-improper-numerator": {
+    intuition:
+      "A mixed number counts some whole units and some extra pieces. To write it as one fraction, turn each whole into pieces of that same size, then include the extra pieces. The total amount does not change.",
     goal: "Given a mixed number, find the numerator of the equal improper fraction.",
     terms: [
       ["mixed number", "A whole number and a fraction: 2 1/3."],
@@ -906,6 +964,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Multiply the whole by the denominator before adding: 2 3/5 is 13/5, not 5/5.",
   },
   "improper-whole-part": {
+    intuition:
+      "The bottom number of a fraction tells how many equal pieces make a whole. Gather the pieces into complete wholes and count those wholes. A few leftover pieces do not make another whole.",
     goal: "Given an improper fraction, find how many complete wholes it contains.",
     method: [
       "The denominator says how many pieces make one whole.",
@@ -915,6 +975,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Count only complete wholes: 22/8 holds 2 wholes, not 3.",
   },
   "improper-fractional-part": {
+    intuition:
+      "Make as many complete wholes as you can from the pieces. Whatever pieces are left form the fractional part. They keep their original size, so the bottom number of the fraction stays the same.",
     goal: "Given an improper fraction, find the fraction left after removing full wholes.",
     method: [
       "Divide the numerator by the denominator.",
@@ -925,6 +987,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Give only the leftover pieces as a fraction of one whole, not the whole-number part.",
   },
   "mixed-fraction-difference": {
+    intuition:
+      "You can subtract whole units and fractional pieces separately. If you need more pieces to take away, exchange one whole for smaller pieces first. That is like changing one dollar into coins: the amount stays the same.",
     goal: "Given two mixed numbers, find their difference.",
     method: [
       "If the first fraction part is smaller, rename one whole as a fraction: 3 1/3 = 2 4/3.",
@@ -958,6 +1022,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Keep the whole the same size. Add the counts of equal-sized pieces, not their denominators.",
   },
   "unlike-fraction-difference": {
+    intuition:
+      "To take one fraction away from another, first describe both using equal-sized pieces. Then subtract their piece counts. Renaming the fractions changes how you count the amounts, without changing the amounts themselves.",
     goal: "Given two fractions with different denominators, find their difference.",
     method: [
       "Rename both with a common denominator.",
@@ -967,6 +1033,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "Subtract only after the denominators match; 3/4 − 1/2 is not 2/2.",
   },
   "fraction-distance-gap": {
+    intuition:
+      "The distance between two points is the length of the gap between them. Express their positions in steps of the same size, then find how many steps lie between the smaller position and the larger one.",
     goal: "Given two points on a fraction number line, find the distance between them.",
     method: [
       "Write both positions with the same denominator.",
@@ -976,6 +1044,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Count the steps between the points, not from 0 to each point added together.",
   },
   "whole-times-fraction": {
+    intuition:
+      "Several copies of the same fraction add up like several groups of equal pieces. Count all the pieces across the groups. Their size stays the same, even if the total becomes more than one whole.",
     goal: "Given several groups of the same fraction, find the total.",
     method: [
       "$n$ groups of a/b are n × a pieces of size 1/b.",
@@ -994,6 +1064,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "No common denominator is needed to multiply.",
   },
   "fraction-of-quantity": {
+    intuition:
+      "A fraction of an amount tells you how to split that amount and how many shares to keep. The bottom number gives the number of equal shares. The top number gives how many of those shares you want.",
     goal: "Given a whole amount and a fraction of it, find that part.",
     method: [
       "Divide the amount by the denominator to get one share.",
@@ -1003,6 +1075,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Use the whole amount as the whole: 3/4 of 8 liters is 6 liters, not 3/4 liter.",
   },
   "whole-sharing-fraction": {
+    intuition:
+      "Sharing equally means everyone gets the same amount. You can cut whole units into equal pieces when a share is smaller than a whole. The total divided by the number of people tells you each share.",
     goal: "Given whole amounts shared equally, find each share.",
     method: [
       "Each share = total ÷ number of people.",
@@ -1012,6 +1086,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "2 shared by 6 is 2/6 = 1/3.",
   },
   "unit-fraction-share": {
+    intuition:
+      "You already have one equal piece of a whole, and you are sharing that piece again. Cutting it into equal smaller pieces makes each share smaller. Count how many of those little pieces would fill the original whole.",
     goal: "Given a unit fraction shared equally, find each share.",
     method: [
       "Cut the 1/a into $b$ equal parts.",
@@ -1021,6 +1097,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Sharing makes each part smaller: multiply the denominator by the number of people.",
   },
   "fraction-share-amount": {
+    intuition:
+      "Sharing a fractional amount works like sharing a whole amount: split it into equal shares. You can share its pieces among the people or cut the pieces smaller. Everyone’s shares together must make the original amount.",
     goal: "Given a fraction shared equally, find each share.",
     method: [
       "Dividing a/b among $n$ people gives each a/(b × n).",
@@ -1030,6 +1108,8 @@ export const methods: Record<string, ProblemMethod> = {
     watch: "5/6 ÷ 3 = 5/18.",
   },
   "whole-unit-groups": {
+    intuition:
+      "Small containers can fit several times into one whole unit. Work out how many fit in one whole, then count across all the wholes. The answer counts containers, rather than measuring the amount in one container.",
     goal: "Given a whole amount and a unit fraction, find how many units fit.",
     method: [
       "Each whole holds denominator-many units: one liter fills 4 containers of 1/4 liter.",
@@ -1039,6 +1119,8 @@ export const methods: Record<string, ProblemMethod> = {
       "Multiply by the denominator; dividing the wholes by it gives a fraction, not a count.",
   },
   "fraction-group-count": {
+    intuition:
+      "Ask how many container-sized amounts fit into the total. If the total and one container are both written as counts of equal-sized pieces, compare those counts. A leftover part can be described as part of a container.",
     goal: "Given a total and a container size, both fractions, find how many containers.",
     method: [
       "Write both with the same denominator.",
