@@ -443,7 +443,15 @@ export function MapView({
           This skill is not in the map. Browse the curriculum to find a skill.
         </p>
       )}
-      <div className="pathways-toolbar">
+      <div
+        className="pathways-toolbar"
+        onKeyDown={(event) => {
+          if (event.key === "Escape" && !event.nativeEvent.isComposing) {
+            event.preventDefault();
+            setBrowse(false);
+          }
+        }}
+      >
         <label className="pathways-search">
           {" "}
           <span className="sr-only">Find a skill</span>
@@ -451,6 +459,7 @@ export function MapView({
             type="search"
             aria-label="Find a skill"
             placeholder="Find a skill…"
+            maxLength={100}
             value={query}
             onFocus={() => setBrowse(true)}
             onChange={(e) => {
