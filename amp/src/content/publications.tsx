@@ -231,14 +231,23 @@ export function publicationHtml(
                                                               lesson.id,
                                                               edition,
                                                             ) ??
-                                                            Array.from(
-                                                              { length: 12 },
-                                                              (_, i) =>
-                                                                generateProblem(
+                                                            (id ===
+                                                            "linear-initial-value-meaning"
+                                                              ? distinctWorksheet(
                                                                   id,
-                                                                  `print:${lesson.id}:${edition}:${i}`,
-                                                                ),
-                                                            )),
+                                                                  lesson.id,
+                                                                  edition,
+                                                                )
+                                                              : Array.from(
+                                                                  {
+                                                                    length: 12,
+                                                                  },
+                                                                  (_, i) =>
+                                                                    generateProblem(
+                                                                      id,
+                                                                      `print:${lesson.id}:${edition}:${i}`,
+                                                                    ),
+                                                                ))),
   );
   const kindLabel =
     kind === "lesson"
