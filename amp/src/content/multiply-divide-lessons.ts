@@ -6,13 +6,20 @@ export const multiplyDivideLessons: Lesson[] = [
     id: "multiply-by-tens",
     title: "Multiply by a multiple of ten",
     summary:
-      "6 × 70 is 6 × 7 tens: use the fact 6 × 7 = 42, then name 42 tens, or 420.",
+      "Treat a multiple of ten as a number of tens, then count those groups.",
     templateIds: ["multiply-by-tens"],
     objectives: [
       "Multiply a one-digit number by a multiple of ten using a known fact.",
       "Explain the product as a number of tens.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Count groups of tens",
+        paragraphs: [
+          "Seventy is seven tens. Six groups of seventy are six groups of seven tens. The familiar six-times-seven fact gives 42 tens, which is 420.",
+        ],
+      },
       {
         title: "Count tens",
         paragraphs: [
@@ -26,6 +33,15 @@ export const multiplyDivideLessons: Lesson[] = [
         paragraphs: [
           "Find the fact first, then make it tens. For 5 × 40 the fact is 5 × 4 = 20, so the product is 20 tens, or 200.",
           "The fact's own zero stays: 200 has two zeros, one from 20 and one from the tens.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Multiplying tens",
+        paragraphs: [
+          "A group of $a$ tens has value $10a$. Multiplying it by a whole-number count $b$ gives $b\\times(10a)=10(ab)$: multiply the counts, then name the result in tens.",
         ],
       },
     ],
@@ -49,13 +65,20 @@ export const multiplyDivideLessons: Lesson[] = [
     id: "multiply-partial-products",
     title: "Multiply with partial products",
     summary:
-      "Split a factor by place value, multiply each part, and add the partial products.",
+      "Split a factor into place-value parts, multiply each part, then combine the results.",
     templateIds: ["multiply-by-one-digit", "area-model-product"],
     objectives: [
       "Multiply up to a four-digit number by a one-digit number.",
       "Use an area model to multiply two two-digit numbers.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Break a large group into easy parts",
+        paragraphs: [
+          "Forty-six is forty plus six. To take 23 groups of forty-six, you can count the forty parts and the six parts separately, then join the results. No part is lost or counted twice.",
+        ],
+      },
       {
         title: "Split by place value",
         paragraphs: [
@@ -69,6 +92,15 @@ export const multiplyDivideLessons: Lesson[] = [
         paragraphs: [
           "The regions fill the rectangle without gaps or overlaps, so their areas add to the whole: 800 + 120 + 120 + 18 = 1,058.",
           "With a one-digit factor there is one row of regions: 1,248 × 4 = 4,000 + 800 + 160 + 32 = 4,992.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The distributive property",
+        paragraphs: [
+          "Multiplying a sum gives the sum of the products: $a(b+c)=ab+ac$. Splitting a factor into place-value parts therefore lets each part be multiplied separately and the partial products added.",
         ],
       },
     ],
@@ -92,13 +124,20 @@ export const multiplyDivideLessons: Lesson[] = [
     id: "multiply-multidigit",
     title: "Multiply multidigit numbers",
     summary:
-      "Multiply by the ones digit, then by the tens, and add the two partial products.",
+      "A multidigit product is the sum of the products from each place-value part.",
     templateIds: ["multiply-multidigit"],
     objectives: [
       "Multiply a two- or three-digit number by a two-digit number with the standard algorithm.",
       "Check a product with an estimate.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "One factor can be split into its places",
+        paragraphs: [
+          "Twenty-seven groups can be seen as twenty groups and seven groups. Find the total for each kind of group, then add them. Written multiplication keeps these two totals in separate rows.",
+        ],
+      },
       {
         title: "One row for each digit",
         paragraphs: [
@@ -112,6 +151,15 @@ export const multiplyDivideLessons: Lesson[] = [
         paragraphs: [
           "Round each factor: 346 × 27 is about 350 × 30 = 10,500. An answer of 9,342 is close; 934 or 93,420 is not.",
           "A zero in a factor still holds a place: 305 × 42 = 12,810, because 305 means 3 hundreds and 5 ones.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Place-value partial products",
+        paragraphs: [
+          "For whole numbers, each digit of a factor represents a place-value amount. Multiply the other factor by each amount, then add those partial products. A tens digit multiplies by a multiple of 10, so its partial product is a multiple of 10.",
         ],
       },
     ],
@@ -135,13 +183,20 @@ export const multiplyDivideLessons: Lesson[] = [
     id: "divide-by-one-digit",
     title: "Divide by a one-digit number",
     summary:
-      "Take away as many groups of the divisor as fit at each place; the parts taken add to the quotient.",
+      "Divide a large number by sharing its biggest place-value groups first.",
     templateIds: ["divide-by-one-digit", "division-remainder"],
     objectives: [
       "Divide up to a four-digit number by a one-digit divisor.",
       "Find a remainder and check it is less than the divisor.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Give out big groups first",
+        paragraphs: [
+          "If 1,476 objects are shared among six groups, start by giving each group hundreds, then tens, then ones. The amount each group receives is the quotient. What you give out at each place becomes part of that answer; what is left moves to the next smaller place.",
+        ],
+      },
       {
         title: "Take away groups by place",
         paragraphs: [
@@ -155,6 +210,15 @@ export const multiplyDivideLessons: Lesson[] = [
         paragraphs: [
           "When groups no longer fit, what is left is the remainder. For 389 ÷ 4: 90 fours are 360, 7 fours are 28, and 1 is left. So 389 = 97 × 4 + 1.",
           "A remainder is always less than the divisor. If it is not, another group still fits.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Quotient and remainder",
+        paragraphs: [
+          "For a positive whole-number divisor $d$ and nonnegative whole-number dividend $n$, division gives whole numbers $q$ and $r$ with $n=dq+r$ and $0\\le r<d$. Taking quotient groups from larger places to smaller places preserves that total at every step.",
         ],
       },
     ],
@@ -178,13 +242,20 @@ export const multiplyDivideLessons: Lesson[] = [
     id: "divide-by-two-digit",
     title: "Divide by a two-digit number",
     summary:
-      "Estimate each quotient digit with a rounded divisor, subtract, and adjust if the estimate is too large or too small.",
+      "Estimate each quotient part, then check it with multiplication and the remainder.",
     templateIds: ["divide-by-two-digit"],
     objectives: [
       "Divide up to a four-digit number by a two-digit divisor.",
       "Use estimation and multiplication to check each step.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Use a nearby easy number to guess",
+        paragraphs: [
+          "To see how many groups of 24 fit into 1,512, twenty or twenty-five is easier to think with. Use that nearby number to make a first estimate, then multiply by 24 to check and adjust.",
+        ],
+      },
       {
         title: "Estimate each digit",
         paragraphs: [
@@ -198,6 +269,15 @@ export const multiplyDivideLessons: Lesson[] = [
         paragraphs: [
           "Division undoes multiplication: 63 × 24 = 1,512, so 1,512 ÷ 24 = 63.",
           "A zero in the quotient holds a place: 2,520 ÷ 24 = 105, because no 24 fits in the 12 tens left after 100 twenty-fours.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Check every quotient digit",
+        paragraphs: [
+          "For a positive two-digit divisor $d$, choose each quotient digit so its product with $d$ does not exceed the current amount, then subtract. The final remainder must be nonnegative and less than $d$; multiplication by $d$ checks the quotient.",
         ],
       },
     ],

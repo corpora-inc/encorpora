@@ -6,7 +6,7 @@ export const shapeLessons: Lesson[] = [
     id: "naming-shapes",
     title: "Naming flat and solid shapes",
     summary:
-      "A shape's name comes from its sides and corners, or its faces, never from its size or the way it is turned.",
+      "Name a shape from its sides, corners, and surfaces, even when it is turned.",
     templateIds: ["name-flat-shape", "find-named-shape", "name-solid-shape"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -14,6 +14,13 @@ export const shapeLessons: Lesson[] = [
       "Name cubes, cones, cylinders and spheres, and tell a flat shape from a solid one.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Turn it and keep its name",
+        paragraphs: [
+          "A square can stand flat or on one corner. It still has four equal straight sides and four square corners. Notice those features, rather than the direction the shape faces, when naming it.",
+        ],
+      },
       {
         title: "Flat shapes",
         paragraphs: [
@@ -29,6 +36,15 @@ export const shapeLessons: Lesson[] = [
           "A cube has 6 square faces. A cylinder has two circle faces joined by a curved surface. A cone has one circle face and a point. A sphere is round every way, like a ball.",
         ],
         illustration: "solid-shape-names",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Shape properties",
+        paragraphs: [
+          "A flat shape is classified by properties of its boundary, such as straight sides and corners. A solid is classified by its surfaces and edges. Rotating or resizing a shape without distortion preserves these defining properties.",
+        ],
       },
     ],
     workedExample: {
@@ -52,7 +68,7 @@ export const shapeLessons: Lesson[] = [
     id: "composing-shapes",
     title: "Putting shapes together",
     summary:
-      "Small shapes fitted edge to edge make a new, larger shape; name it by its outside edge.",
+      "Joined pieces make a new shape whose name comes from its outside boundary.",
     templateIds: ["compose-shape-name", "complete-the-shape"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -60,6 +76,13 @@ export const shapeLessons: Lesson[] = [
       "Choose the piece that completes a shape, turning it if needed.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Look at the new outside edge",
+        paragraphs: [
+          "Join two flat shapes along an edge. The shared edge is inside the new figure. Trace only the boundary that remains outside to see what larger shape you made.",
+        ],
+      },
       {
         title: "Trace the outside",
         paragraphs: [
@@ -73,6 +96,15 @@ export const shapeLessons: Lesson[] = [
         paragraphs: [
           "The piece that fills a gap has the same number of sides, the same side lengths and the same corners as the empty space.",
           "A piece can be turned to fit. A piece of the right kind but the wrong size does not fit.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The boundary of a composition",
+        paragraphs: [
+          "When pieces join without gaps or overlaps, their shared interior edges are not part of the new figure's boundary. The outside boundary determines the composed shape's sides and corners.",
         ],
       },
     ],
@@ -97,7 +129,7 @@ export const shapeLessons: Lesson[] = [
     id: "shape-attributes",
     title: "What makes a shape a triangle",
     summary:
-      "Sides and corners define a shape; size, direction and how stretched it is do not.",
+      "A triangle may change size or direction, but it keeps three straight sides and three corners.",
     templateIds: ["count-sides-corners", "defining-attribute"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -105,6 +137,13 @@ export const shapeLessons: Lesson[] = [
       "Tell defining attributes from attributes that can change.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Ask what has to stay the same",
+        paragraphs: [
+          "A triangle can be tall, wide, small, or turned over. It remains a triangle because it keeps three straight sides meeting at three corners. Those are the features that define it.",
+        ],
+      },
       {
         title: "Count once around",
         paragraphs: [
@@ -118,6 +157,15 @@ export const shapeLessons: Lesson[] = [
         paragraphs: [
           "Every triangle has exactly 3 straight sides and 3 corners. That is what makes it a triangle.",
           "A triangle can be big or small, point any way, and be tall or wide. Its sides do not have to be the same length. None of these change what it is.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Defining and changeable attributes",
+        paragraphs: [
+          "A triangle is a closed flat figure with exactly three straight sides meeting at three vertices. Size, orientation, and side lengths can change while those defining attributes stay the same.",
         ],
       },
     ],

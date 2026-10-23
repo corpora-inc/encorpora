@@ -40,6 +40,8 @@ Reference lessons mark sections as `intuition`, `method` or `formal`; the shared
 
 Independently review elementary, middle-school and high-school examples before extending a revised authoring pattern across the inventory. Keep diagrams and intermediate reasoning that teach the idea; remove repetition and intimidating openings rather than stripping explanations to slogans.
 
+Each lesson must stand on its own: a reader should understand the example's givens, local terms and notation, and explanations without completing another AMP lesson first. Repeat short, useful definitions across lessons when needed.
+
 Inspect mobile widths 320 and 390, larger widths 768 and 1280, both themes, reduced motion, and Letter/A4 pages. Check first-time comprehension, not just overflow. Practice and feedback belong in the active view.
 
 ## Weighting and difficulty acceptance

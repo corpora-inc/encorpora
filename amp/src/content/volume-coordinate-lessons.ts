@@ -6,7 +6,7 @@ export const volumeCoordinateLessons: Lesson[] = [
     id: "volume-unit-cubes",
     title: "Volume: count cubes by layers",
     summary:
-      "Volume is the number of unit cubes that fill a solid. Count one layer, then multiply by the number of layers.",
+      "A rectangular prism is a box. Count the unit cubes that fill it without gaps: cubes one unit long on each edge measure its volume in cubic units.",
     templateIds: ["unit-cube-volume", "cube-layer-count"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -14,6 +14,13 @@ export const volumeCoordinateLessons: Lesson[] = [
       "Find the volume of a cube-built prism by counting one layer and multiplying by the layers.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Fill the space with cubes",
+        paragraphs: [
+          "A solid box takes up space. A rectangular prism is a box with six rectangular faces. Imagine filling it with unit cubes, each one unit long, wide and high. Counting the cubes tells how much space the prism holds, which is its volume.",
+        ],
+      },
       {
         title: "What volume measures",
         paragraphs: [
@@ -27,6 +34,15 @@ export const volumeCoordinateLessons: Lesson[] = [
         paragraphs: [
           "A rectangular prism is a stack of identical flat layers. The top face shows one layer: its rows times the cubes in each row.",
           "Multiply the cubes in one layer by the number of layers. The prism above has 4 × 3 = 12 cubes in a layer and 2 layers, so its volume is 24 cubic units. Stacking the layers sideways or upright gives the same count.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Unit-cube volume",
+        paragraphs: [
+          "Volume counts how many nonoverlapping unit cubes fill a solid without gaps. If equal layers each contain $a$ cubes and there are $h$ layers, the volume is $a\\times h$ cubic units.",
         ],
       },
     ],
@@ -52,7 +68,7 @@ export const volumeCoordinateLessons: Lesson[] = [
     id: "rectangular-prism-volume",
     title: "Volume of a rectangular prism",
     summary:
-      "A rectangular prism's volume is length × width × height: the area of its base times its height.",
+      "A rectangular prism is a box. Its volume in cubic units is the count of unit cubes in one layer times the number of layers.",
     templateIds: [
       "prism-volume-edges",
       "prism-missing-edge",
@@ -64,6 +80,13 @@ export const volumeCoordinateLessons: Lesson[] = [
       "Find a missing edge from a volume, and add the volumes of joined prisms.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Count one layer, then all layers",
+        paragraphs: [
+          "If one flat layer has four rows of three cubes, it holds twelve cubes. If the box is five layers high, it holds five copies of that layer. Multiplication counts them without listing every cube.",
+        ],
+      },
       {
         title: "From cubes to a formula",
         paragraphs: [
@@ -78,6 +101,15 @@ export const volumeCoordinateLessons: Lesson[] = [
           "Volume adds. A solid made of two prisms that do not overlap has a volume equal to the sum of their volumes: split it, find each volume, then add.",
         ],
         illustration: "prism-composite",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Volume of a rectangular prism",
+        paragraphs: [
+          "A right rectangular prism with edge lengths $l,w,h$ in one length unit has a base of area $lw$ square units and volume $lwh$ cubic units. The product counts unit cubes across, along, and through the layers.",
+        ],
       },
     ],
     workedExample: {
@@ -102,7 +134,7 @@ export const volumeCoordinateLessons: Lesson[] = [
     id: "first-quadrant-coordinates",
     title: "Points on a coordinate grid",
     summary:
-      "An ordered pair $(x, y)$ locates a point: $x$ units across from 0, then $y$ units up.",
+      "An ordered pair tells how far across and how far up a point lies from zero.",
     templateIds: [
       "first-quadrant-locate",
       "first-quadrant-coordinates",
@@ -114,6 +146,13 @@ export const volumeCoordinateLessons: Lesson[] = [
       "Find the new coordinates after a move right and up.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Use two moves to locate a point",
+        paragraphs: [
+          "Start where two number lines cross at zero. Write a point as (across, up): the first number is its horizontal coordinate and the second its vertical coordinate. Together they locate one point in the upper-right part of the grid.",
+        ],
+      },
       {
         title: "Across first, then up",
         paragraphs: [
@@ -127,6 +166,15 @@ export const volumeCoordinateLessons: Lesson[] = [
         paragraphs: [
           "Moving right adds to the first coordinate; moving up adds to the second. A move right never changes the second coordinate, and a move up never changes the first.",
           "Count gridlines, not squares, starting from 0. A point on the $x$-axis has second coordinate 0; a point on the $y$-axis has first coordinate 0.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Ordered pairs locate points",
+        paragraphs: [
+          "In the first quadrant, an ordered pair $(x,y)$ gives a nonnegative horizontal distance $x$ from the vertical axis and a nonnegative vertical distance $y$ from the horizontal axis. Reversing the coordinates generally names a different point.",
         ],
       },
     ],

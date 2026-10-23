@@ -6,13 +6,20 @@ export const distributionLessons: Lesson[] = [
     id: "statistical-questions",
     title: "Statistical questions",
     summary:
-      "A statistical question expects many answers that vary; statistics describes that variation.",
+      "A statistical question asks about a group and expects answers that can vary.",
     templateIds: ["statistical-question-choice"],
     objectives: [
       "Distinguish a question with one answer from one that collects varying data.",
       "Name the group and the varying quantity a statistical question asks about.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Expect different answers",
+        paragraphs: [
+          "Ask how tall one sunflower is and you need one measurement. Ask how tall the sunflowers in a garden are and you will collect many measurements that may differ. That variation is what statistics helps describe.",
+        ],
+      },
       {
         title: "One answer, or many?",
         paragraphs: [
@@ -25,6 +32,15 @@ export const distributionLessons: Lesson[] = [
         paragraphs: [
           "“How many sunflowers are in our garden?” collects one number for the whole garden, so it is not statistical even though it involves many sunflowers.",
           "Test a question by imagining collecting the answer: if you would record many numbers that differ, the question is statistical.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Questions that produce varying data",
+        paragraphs: [
+          "A statistical question anticipates multiple observations with possible variation. Data from those observations form a distribution whose center, spread, and shape may answer the question.",
         ],
       },
     ],
@@ -48,13 +64,20 @@ export const distributionLessons: Lesson[] = [
     id: "mean-median",
     title: "The mean as a balance point",
     summary:
-      "The mean is the fair share and the balance point: total divided by count.",
+      "The mean shares a total equally; the median finds the middle position.",
     templateIds: ["dot-plot-mean", "mean-missing-value"],
     objectives: [
       "Find the exact mean of data shown in a dot plot.",
       "Use a mean and the count to recover the total and a missing value.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Share fairly or find the middle",
+        paragraphs: [
+          "Five game scores can be shared as if every game had the same score; that fair-share value is the mean. Or line up the scores and locate the one in the middle; that is the median. Both describe a center in different ways.",
+        ],
+      },
       {
         title: "Total divided by count",
         paragraphs: [
@@ -68,6 +91,15 @@ export const distributionLessons: Lesson[] = [
         paragraphs: [
           "The distances below 3 are 2, 1 and 1, a total of 4. The distance above 3 is 4. Equal totals on each side mean the dots would balance on a pivot at 3.",
           "Because mean × count = total, a known mean gives the total. If 5 scores average 80, they add to 400; subtracting the four known scores leaves the fifth.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Two measures of center",
+        paragraphs: [
+          "For $n>0$ numerical observations, the mean is their sum divided by $n$. The median is the middle ordered value, or the mean of the two middle values when $n$ is even. Extreme values affect the mean directly but need not move the median.",
         ],
       },
     ],
@@ -92,13 +124,20 @@ export const distributionLessons: Lesson[] = [
     id: "distribution-plots",
     title: "Histograms and box plots",
     summary:
-      "A histogram counts values in equal intervals; a box plot shows five summary numbers.",
+      "A histogram counts values in intervals. A box plot marks the median (middle value) and each half's median, called a quartile.",
     templateIds: ["histogram-read", "box-plot-read"],
     objectives: [
       "Count values in one or several intervals of a histogram.",
       "Read the median, range and interquartile range from a box plot, and the quarters of data it marks.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Choose what the picture should show",
+        paragraphs: [
+          "A histogram shows how many values fall into each number interval. A box plot marks the least value, greatest value, and median, the middle value in order. It also marks the median of the lower half (lower quartile) and of the upper half (upper quartile). The distance between those quartiles is the interquartile range.",
+        ],
+      },
       {
         title: "Histograms group values into intervals",
         paragraphs: [
@@ -114,6 +153,15 @@ export const distributionLessons: Lesson[] = [
           "These five numbers split the ordered data into four parts with about a quarter of the data each. So about 25% of the scores are above 85, and the box holds about the middle 50%.",
         ],
         illustration: "data-box-plot-scores",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Frequency and summaries",
+        paragraphs: [
+          "A histogram counts observations in disjoint numerical intervals, while a box plot marks the minimum, lower quartile, median, upper quartile, and maximum under its stated quartile convention. Both represent one dataset but retain different details.",
+        ],
       },
     ],
     workedExample: {
@@ -136,13 +184,20 @@ export const distributionLessons: Lesson[] = [
     id: "variability",
     title: "Measuring spread",
     summary:
-      "Spread is how far values typically lie from the center: MAD around the mean, IQR around the median.",
+      "Spread measures how far data values lie from one another or from a center; examples include average distance from the mean and the distance between quartiles.",
     templateIds: ["dot-plot-mad", "dot-plot-iqr", "typical-value-choice"],
     objectives: [
       "Find the mean absolute deviation and the interquartile range of dot-plot data.",
       "Choose the median over the mean when one value lies far from the rest.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A center does not tell the whole story",
+        paragraphs: [
+          "Two groups can have the same average but very different spreads. The mean is the total divided by the number of values. The mean absolute deviation averages each value's distance from that mean, ignoring whether it is above or below.",
+        ],
+      },
       {
         title: "Mean absolute deviation",
         paragraphs: [
@@ -158,6 +213,15 @@ export const distributionLessons: Lesson[] = [
           "Here one student read 12 books and the rest read 1 to 4. The mean, 30 ÷ 8 = 3.75, is greater than 7 of the 8 values. The median, 3, stays among the typical values, so it describes a typical student better.",
         ],
         illustration: "data-dot-plot-outlier",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Distances from the center",
+        paragraphs: [
+          "For a nonempty dataset, mean absolute deviation is the mean of the nonnegative distances from the mean. Interquartile range is upper quartile minus lower quartile under the chosen quartile convention. Both measure spread, but one uses every value and the other the middle half's boundaries.",
+        ],
       },
     ],
     workedExample: {
@@ -228,6 +292,8 @@ export const distributionMethods: Record<string, ProblemMethod> = {
   },
   "box-plot-read": {
     goal: "Read a summary or a share of the data from a box plot.",
+    intuition:
+      "A box plot marks the least value, greatest value, middle value (median), and the middles of the lower and upper halves (quartiles). Each of its four intervals holds about one quarter of the ordered data.",
     terms: [
       ["quartiles", "The ends of the box: Q1 on the left, Q3 on the right."],
       ["interquartile range", "Q3 − Q1, the length of the box."],
@@ -240,6 +306,8 @@ export const distributionMethods: Record<string, ProblemMethod> = {
   },
   "dot-plot-mad": {
     goal: "Find the mean absolute deviation of dot-plot data.",
+    intuition:
+      "The mean is the total of the values divided by their count. Mean absolute deviation is the average distance from that mean: find each distance without a plus or minus sign, then average them.",
     terms: [
       [
         "mean absolute deviation",
@@ -255,6 +323,8 @@ export const distributionMethods: Record<string, ProblemMethod> = {
   },
   "dot-plot-iqr": {
     goal: "Find the interquartile range of dot-plot data.",
+    intuition:
+      "Order the values, then find the middle of each half. Those middle values are the lower and upper quartiles. The interquartile range is the upper one minus the lower one.",
     method: [
       "Read the values in order, left to right.",
       "Split them into halves, leaving out the middle value when the count is odd.",

@@ -24,7 +24,7 @@ export const rationalLessons: Lesson[] = [
     id: "signed-fraction-sum",
     title: "Add and subtract signed fractions",
     summary:
-      "Rename both fractions in the same size of part, then combine signed counts.",
+      "Rename signed fractions as the same-sized parts before combining their counts.",
     templateIds: ["signed-fraction-sum"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -32,6 +32,13 @@ export const rationalLessons: Lesson[] = [
       "Add signed fractions with different denominators and reduce the result.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Count parts in opposite directions",
+        paragraphs: [
+          "One half to the right and one fourth to the left do not use equally sized steps. Rename the half as two fourths. The bottom number of a fraction, its denominator, names the step size; use a common denominator before adding the signed steps.",
+        ],
+      },
       ...foundations,
       {
         title: "Move along the number line",
@@ -46,6 +53,15 @@ export const rationalLessons: Lesson[] = [
         paragraphs: [
           "The opposite of a number is the number the same distance from 0 on the other side: the opposite of $-\\frac{1}{3}$ is $\\frac{1}{3}$. Subtracting a number undoes adding it, so subtracting $b$ is the same as adding its opposite: $a - b = a + (-b)$. Subtracting a negative fraction therefore moves right: $\\frac{1}{2} - (-\\frac{1}{3}) = \\frac{1}{2} + \\frac{1}{3} = \\frac{5}{6}$.",
           "The least common denominator is the smallest positive number that both denominators divide. Rename each fraction with it, add the signed numerators over that denominator, then reduce. Never add the denominators: $\\frac{1}{2} + \\frac{1}{2} = 1$, not $\\frac{2}{4}$. Check a sum by subtracting one addend from it to recover the other.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Combine equal-sized signed parts",
+        paragraphs: [
+          "For fractions with positive denominators, rename them with a common positive denominator and add their signed numerators. The denominator keeps the shared part size, while positive and negative numerators record opposite directions.",
         ],
       },
     ],
@@ -71,7 +87,7 @@ export const rationalLessons: Lesson[] = [
     id: "signed-fraction-product",
     title: "Multiply and divide signed fractions",
     summary:
-      "Decide the sign, multiply by a reciprocal when dividing, then reduce.",
+      "Multiply fraction sizes and use the signs to decide the direction of the result.",
     templateIds: ["signed-fraction-product"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -79,6 +95,13 @@ export const rationalLessons: Lesson[] = [
       "Divide by a fraction by multiplying by its reciprocal, and reduce the result.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Separate amount from direction",
+        paragraphs: [
+          "Multiplying one half by three fourths finds half of that amount. Dividing by a nonzero fraction means multiplying by its reciprocal, made by swapping its top and bottom numbers. Work out the size, then use the signs: two negative factors give a positive result.",
+        ],
+      },
       ...foundations,
       multiplication,
       {
@@ -86,6 +109,15 @@ export const rationalLessons: Lesson[] = [
         paragraphs: [
           "Multiplying by $-1$ reflects a number across 0 to its opposite. A product with one negative factor is reflected once and is negative. A product with two negative factors is reflected twice, back to the positive side. So same signs give a positive product and opposite signs give a negative product.",
           "Division follows the same sign rule, because dividing is multiplying by a reciprocal and a reciprocal has the same sign as its number. Settle the sign, then work with the sizes. Before multiplying, a factor of a numerator may cancel with the same factor of a denominator: this divides the product's numerator and denominator by the same number. Reduce the result to lowest terms.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Products and quotients of fractions",
+        paragraphs: [
+          "Multiply numerators and denominators to multiply fractions with nonzero denominators. To divide by a nonzero fraction, multiply by its reciprocal. For nonzero factors, an odd number of negative factors makes a negative product and an even number makes a positive one. A zero factor makes the product zero.",
         ],
       },
     ],
@@ -111,7 +143,7 @@ export const rationalLessons: Lesson[] = [
     id: "complex-fraction",
     title: "Simplify a complex fraction",
     summary:
-      "The main fraction bar divides the whole numerator by the whole denominator.",
+      "The main fraction bar divides the entire numerator by the entire denominator.",
     templateIds: ["complex-fraction"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -119,6 +151,13 @@ export const rationalLessons: Lesson[] = [
       "Simplify the numerator and denominator, then divide using a reciprocal.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Read the large fraction bar as a question",
+        paragraphs: [
+          "A fraction with smaller fractions on top or bottom is asking one amount divided by another. The entire top is its numerator; the entire bottom is its denominator. Find each first, then divide. Dividing by a nonzero fraction means multiplying by its reciprocal, made by swapping its top and bottom.",
+        ],
+      },
       ...foundations,
       multiplication,
       {
@@ -135,6 +174,15 @@ export const rationalLessons: Lesson[] = [
           "A fraction with denominator 1 equals its numerator, so $\\dfrac{\\frac{5}{12}}{\\frac{4}{3}} = \\frac{5}{16}$. This is the rule for dividing fractions. Multiplying both parts by the least common denominator of all the small fractions is another valid way to clear them.",
         ],
         illustration: "complex-fraction-scaling",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The main bar means division",
+        paragraphs: [
+          "A fraction whose numerator or denominator is itself a fraction means the entire numerator divided by the entire denominator. The denominator of the main fraction must be nonzero; simplifying inner parts must preserve their values.",
+        ],
       },
     ],
     workedExample: {
@@ -160,7 +208,7 @@ export const rationalLessons: Lesson[] = [
     id: "rational-power",
     title: "Evaluate a fractional power",
     summary:
-      "The exponent's denominator names a root and its numerator names a power.",
+      "A fractional exponent uses its bottom number for a root and its top number for a power; a negative exponent takes a reciprocal.",
     templateIds: ["rational-power"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -168,6 +216,13 @@ export const rationalLessons: Lesson[] = [
       "Evaluate fractional powers of positive fractions exactly.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A root undoes a power",
+        paragraphs: [
+          "The cube root of eight is two because two cubed is eight. A fractional exponent combines a root and a power: its bottom number names the root and its top number names the power. A negative exponent also takes a reciprocal, swapping the top and bottom of a fraction.",
+        ],
+      },
       ...foundations,
       {
         title: "Powers and roots of fractions",
@@ -183,6 +238,15 @@ export const rationalLessons: Lesson[] = [
           "Each step of $\\frac{1}{3}$ in the exponent of $\\frac{8}{27}$ multiplies the value by the cube root, $\\frac{2}{3}$. Going down one step divides by $\\frac{2}{3}$. At exponent 0 the value is 1, and below 0 the values are reciprocals of those above it.",
         ],
         illustration: "rational-power-ladder",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Fractional exponents",
+        paragraphs: [
+          "For a positive real base $a$ and integers $m$ and positive $n$, $a^{m/n}$ is the positive $n$th root of $a^m$, equivalently the $m$th power of the positive $n$th root of $a$. A negative exponent takes the reciprocal, so the base must also be nonzero.",
+        ],
       },
     ],
     workedExample: {
@@ -230,6 +294,8 @@ export const rationalMethods: Record<string, ProblemMethod> = {
   },
   "signed-fraction-product": {
     goal: "Find the exact product or quotient of two signed fractions.",
+    intuition:
+      "First multiply or divide the fraction sizes, then use their signs. For division, multiply by the nonzero divisor's reciprocal: swap its top and bottom numbers. Two negative factors make a positive result.",
     terms: [
       ...fractionTerms,
       ["Reciprocal", "The fraction flipped over; a number times it equals 1."],
@@ -244,6 +310,8 @@ export const rationalMethods: Record<string, ProblemMethod> = {
   },
   "complex-fraction": {
     goal: "Write the complex fraction as one exact fraction or integer.",
+    intuition:
+      "The long bar means divide the entire amount above it by the entire amount below it. Find each amount first. Then divide by multiplying by the bottom fraction's reciprocal, made by swapping its top and bottom numbers.",
     terms: [
       ...fractionTerms,
       [
@@ -261,6 +329,8 @@ export const rationalMethods: Record<string, ProblemMethod> = {
   },
   "rational-power": {
     goal: "Find the exact value of a positive fraction raised to a fractional exponent.",
+    intuition:
+      "A root undoes a power: the fourth root of 16 is 2 because 2 to the fourth power is 16. In a fractional exponent, the bottom number names the root and the top number names the power. A negative exponent takes the reciprocal, swapping the top and bottom of the result.",
     terms: [
       ...fractionTerms,
       ["nth root", "The positive number whose nth power is the given number."],
