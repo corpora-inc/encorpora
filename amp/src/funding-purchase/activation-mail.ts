@@ -1,3 +1,4 @@
+import { disclosesResend } from "../parent-consent/resend.js";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import type { Pool } from "pg";
@@ -35,10 +36,7 @@ export async function deliverFundedActivationMail(
   policy: ConsentPolicy,
 ): Promise<boolean> {
   const link = new URL(policy.notice.parentAccountUrl);
-  if (
-    !policy.review.paymentNotificationsReviewed ||
-    !policy.notice.processors.some((p) => p.name === "Resend")
-  )
+  if (!policy.review.paymentNotificationsReviewed || !disclosesResend(policy))
     throw new Error("Payment notification delivery must be reviewed");
   if (
     link.protocol !== "https:" ||
