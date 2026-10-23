@@ -369,6 +369,8 @@ export const principles: Record<string, string> = {
     "Slope-intercept form: the line through (0, $b$) with slope $m$ is y = mx + b.",
   "relation-function-choice":
     "Definition of a function: each input is assigned exactly one output.",
+  "relation-point-removal":
+    "A finite relation is a function exactly when each input is paired with one output. If the only conflict is two points at one input with different outputs, removing either one, and only one of those two, repairs the relation.",
   "distance-graph-meaning":
     "On a distance–time graph, slope is the rate of change of distance: positive means moving away, zero means constant distance, negative means approaching.",
   "shared-plan-input":

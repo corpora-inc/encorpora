@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { spawnSync } from "node:child_process";
 import { algebraDefinitions } from "../src/content/algebra-definitions.js";
 import {
   algebraRequirements,
@@ -16,8 +17,8 @@ import {
 } from "../src/math/engine.js";
 import { generatedProblemSchema } from "../src/math/contracts.js";
 import { lessons } from "../src/content/lessons.js";
-test("sixteen algebra families have exact teaching pages, bounded scope and reference instruction", () => {
-  assert.equal(algebraDefinitions.length, 16);
+test("algebra families have exact teaching pages, bounded scope and reference instruction", () => {
+  assert.equal(algebraDefinitions.length, 17);
   validateAlgebraCoverage();
   for (const d of algebraDefinitions) {
     assert.equal(templates.filter((t) => t.id === d.id).length, 1);
@@ -34,7 +35,7 @@ test("sixteen algebra families have exact teaching pages, bounded scope and refe
     );
   }
 });
-test("8192 algebra instances preserve exact fractions, deterministic choices and meaningful boundary cases", () => {
+test("algebra instances preserve exact fractions, deterministic choices and meaningful boundary cases", () => {
   const edges = new Set<string>();
   for (const t of algebraTemplates) {
     const positions = new Set<string>();
@@ -99,7 +100,11 @@ test("8192 algebra instances preserve exact fractions, deterministic choices and
       }
     }
     if (t.requiredResponseCapability)
-      assert.equal(positions.size, 3, `${t.id} answer position bias`);
+      assert.equal(
+        positions.size,
+        t.id === "relation-point-removal" ? 4 : 3,
+        `${t.id} answer position bias`,
+      );
   }
   for (const edge of [
     "grouped-linear-equation.fraction",
@@ -121,4 +126,31 @@ test("8192 algebra instances preserve exact fractions, deterministic choices and
   assert.throws(() =>
     generateAlgebraProblem("grouped-linear-equation", "x".repeat(129)),
   );
+});
+
+test("public plotted points independently determine every valid removal and the selected choice", () => {
+  const cases = Array.from({ length: 512 }, (_, i) =>
+    generateProblem("relation-point-removal", `removal-oracle-${i}`),
+  );
+  const result = spawnSync(
+    "python3",
+    [
+      "-c",
+      `import json,sys,runpy
+sys.path.insert(0,'scripts')
+from relation_repair_math_oracle import self_test,review_problem
+central=runpy.run_path('scripts/independent-math-review.py')
+print(self_test())
+for p in json.load(sys.stdin):
+    assert review_problem(p)==central['solve'](p['public'])==p['answer']
+print('512 exact point-removal cases passed')`,
+    ],
+    {
+      input: JSON.stringify(cases),
+      encoding: "utf8",
+      maxBuffer: 8 * 1024 * 1024,
+    },
+  );
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /512 exact point-removal cases passed/);
 });

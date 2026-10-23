@@ -93,9 +93,9 @@ export const assessmentSample: readonly AssessmentSampleItem[] = [
     sourceId: "mcas-2025-8",
     item: "2; printed p.6",
     requirement: "Remove a point to make a function",
-    templateIds: ["relation-function-choice"],
+    templateIds: ["relation-function-choice", "relation-point-removal"],
     limitations:
-      "Recognizing a function exists; repairing a plotted relation is a distinct missing task.",
+      "The plotted task selects one choice naming every valid single-point removal. Direct point removal, native multiselect, and constructed justification are unassessed.",
   },
   {
     sourceId: "mcas-2025-8",

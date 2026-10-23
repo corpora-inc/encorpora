@@ -1,11 +1,38 @@
 import {
   act,
   circleDiagram,
+  graph,
   numberLine,
   step,
   scene,
 } from "../math/scene/author";
 export const assessmentGapIllustrations = {
+  "assessment-function-repair": graph({
+    id: "repair",
+    x: [-5, 5],
+    y: [-5, 5],
+    grid: 1,
+  })
+    .point(-3, 2, "A")
+    .point(1, -2, "B")
+    .point(1, 3, "C")
+    .point(4, 0, "D")
+    .scene({
+      title:
+        "A at (-3, 2), B at (1, -2), C at (1, 3), and D at (4, 0). B and C have the same input and different outputs.",
+      steps: [
+        step(
+          "At $x=1$, point $B$ has output $-2$ and point $C$ has output $3$.",
+          act.highlight("repair.point.1"),
+          act.highlight("repair.point.2"),
+        ),
+        step(
+          "Removing either $B$ or $C$ leaves one output at $x=1$.",
+          act.highlight("repair.point.1"),
+          act.highlight("repair.point.2"),
+        ),
+      ],
+    }),
   "assessment-measurement-interval": numberLine({
     id: "bounds",
     min: 74,

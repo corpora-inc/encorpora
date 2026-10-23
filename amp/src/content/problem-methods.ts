@@ -1343,6 +1343,18 @@ export const methods: Record<string, ProblemMethod> = {
     ],
     watch: "Different inputs may share an output.",
   },
+  "relation-point-removal": {
+    goal: "Find all single-point removals that make a plotted relation a function.",
+    terms: [
+      ["function", "A relation that assigns exactly one output to each input."],
+    ],
+    method: [
+      "Find any two plotted points with the same $x$-coordinate and different $y$-coordinates.",
+      "Test removing each labeled point in turn; keep every removal that leaves at most one output for each remaining input.",
+    ],
+    watch:
+      "Test every candidate separately; either point in a lone conflicting pair can be removed.",
+  },
   "distance-graph-meaning": {
     goal: "Given a distance–time graph, describe how distance changes between two points.",
     method: [
