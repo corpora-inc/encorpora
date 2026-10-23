@@ -1580,7 +1580,7 @@ def review_figures(figures):
 
 
 def lesson_text(lesson, illustration=None):
-    return ' '.join(p for section in lesson['sections'] if illustration is None or section.get('illustration') == illustration
+    return ' '.join(p for section in [*lesson['sections'], *lesson.get('closingSections', [])] if illustration is None or section.get('illustration') == illustration
                     for p in section['paragraphs'])
 
 
@@ -1637,10 +1637,10 @@ def review_area_volume_content(data=None):
         require(worked.get('answerUnit') == unit, f'Worked example {template}: unit {worked.get("answerUnit")!r}, the prompt asks for {unit!r}')
         require(len(worked['steps']) >= 2 and expected in numbers_in(worked['steps'][-1]), f'Worked example {template}: last step does not reach the answer')
         texts = worked['steps'] + [lesson['summary'], lesson['parentGuide'], *lesson['objectives'], *lesson['pitfalls']]
-        texts += [p for section in lesson['sections'] for p in section['paragraphs']]
+        texts += [p for section in [*lesson['sections'], *lesson.get('closingSections', [])] for p in section['paragraphs']]
         chains += sum(prose_equalities(t) for t in texts)
     figures, figure_chains = review_figures(data['figures'])
-    used = {section.get('illustration') for lesson in lessons.values() for section in lesson['sections']} - {None}
+    used = {section.get('illustration') for lesson in lessons.values() for section in [*lesson['sections'], *lesson.get('closingSections', [])]} - {None}
     require(used == set(figures), f'Lessons and illustrations disagree: {used ^ set(figures)}')
     links = review_lesson_figure_links(data['lessons'], figures)
     return {'worksheets': len(data['worksheets']), 'checkedEqualities': chains + figure_chains, 'lessons': len(lessons),
@@ -1667,6 +1667,20 @@ def review_content_mutations(data=None):
         require(old in target[key], f'Mutation does not apply: {old}')
         target[key] = target[key].replace(old, new, 1)
 
+    def replace_lesson_paragraph(bad, lesson_id, replacements):
+        authored = lesson(bad, lesson_id)
+        sections = [*authored['sections'], *authored.get('closingSections', [])]
+        needle = replacements[0][0]
+        matches = [(section['paragraphs'], i)
+                   for section in sections
+                   for i, paragraph in enumerate(section['paragraphs'])
+                   if needle in paragraph]
+        require(len(matches) == 1,
+                f'Mutation needs one paragraph in {lesson_id}: {needle}')
+        paragraphs, index = matches[0]
+        for old, new in replacements:
+            swap(paragraphs, index, old, new)
+
     mutant(lambda b: lesson(b, 'triangle-area-base-height')['workedExample'].update(answer='85'))
     mutant(lambda b: lesson(b, 'cone-sphere-volume')['workedExample'].update(answer='216'))
     mutant(lambda b: lesson(b, 'composite-area')['workedExample'].update(prompt=lesson(b, 'composite-area')['workedExample']['prompt'].replace('top is 6', 'top is 7')))
@@ -1675,9 +1689,13 @@ def review_content_mutations(data=None):
     mutant(lambda b: b['worksheets'][3]['problems'].pop())
     mutant(lambda b: b['worksheets'][-1]['problems'][0].update(answer='999'))
     mutant(lambda b: b['worksheets'][10]['problems'][2]['explanation'].append('A false check: 4 × 3 = 13.'))
-    mutant(lambda b: swap(lesson(b, 'net-surface-area')['sections'][1]['paragraphs'], 0, '= 62', '= 64'))
-    mutant(lambda b: lesson(b, 'cylinder-volume')['sections'][1].__setitem__('paragraphs', [p.replace('141.3', '141.4') for p in lesson(b, 'cylinder-volume')['sections'][1]['paragraphs']]))
-    mutant(lambda b: lesson(b, 'composite-face-prism-surface-area')['sections'][1].__setitem__('paragraphs', [p.replace('perimeter 28', 'perimeter 30').replace('2 × 28 + 28 × 4 = 56 + 112', '2 × 28 + 30 × 4 = 56 + 120').replace('= 168', '= 176') for p in lesson(b, 'composite-face-prism-surface-area')['sections'][1]['paragraphs']]))
+    mutant(lambda b: replace_lesson_paragraph(b, 'net-surface-area', [('= 62', '= 64')]))
+    mutant(lambda b: replace_lesson_paragraph(b, 'cylinder-volume', [('141.3', '141.4')]))
+    mutant(lambda b: replace_lesson_paragraph(b, 'composite-face-prism-surface-area', [
+        ('perimeter 28', 'perimeter 30'),
+        ('2 × 28 + 28 × 4 = 56 + 112', '2 × 28 + 30 × 4 = 56 + 120'),
+        ('= 168', '= 176'),
+    ]))
     mutant(lambda b: lesson(b, 'cone-sphere-volume')['workedExample']['steps'].__setitem__(1, lesson(b, 'cone-sphere-volume')['workedExample']['steps'][1].replace('288', '289', 1)))
     for kind, old, new in [
         ('av-triangle-half', 'data-copy="350,40', 'data-copy="340,40'),

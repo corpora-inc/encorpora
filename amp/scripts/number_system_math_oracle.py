@@ -589,7 +589,7 @@ def review_number_system_content(data=None):
         require(solved in numbers_in(worked['steps'][-1]) or solved in numbers_in(worked['steps'][-2]), 'Worked example must state its answer: ' + lesson_id)
         for step in worked['steps']:
             checked += equalities(step, strict=False)
-        for section in lesson['sections']:
+        for section in [*lesson['sections'], *lesson.get('closingSections', [])]:
             for paragraph in section['paragraphs']:
                 checked += equalities(paragraph, strict=False)
         for pitfall in lesson['pitfalls']:
@@ -718,12 +718,22 @@ def review_figures(figures):
 
 def review_content_mutations():
     data = content()
+    review_number_system_content(data)
     mutants = []
     bad = copy.deepcopy(data); bad['lessons'][0]['workedExample']['answer'] = '12'; mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][0]['problems'][1] = bad['worksheets'][0]['problems'][0]; mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][0]['problems'][0]['explanation'].append('A false check: 4 × 3 = 13.'); mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][-1]['problems'][0]['answer'] = '999'; mutants.append(bad)
-    bad = copy.deepcopy(data); bad['lessons'][2]['sections'][1]['paragraphs'][0] = bad['lessons'][2]['sections'][1]['paragraphs'][0].replace('87 − 72 = 15', '87 − 72 = 25'); mutants.append(bad)
+    bad = copy.deepcopy(data)
+    division = next(lesson for lesson in bad['lessons'] if lesson['id'] == 'long-division')
+    matches = [(section['paragraphs'], i)
+               for section in [*division['sections'], *division.get('closingSections', [])]
+               for i, paragraph in enumerate(section['paragraphs'])
+               if '87 − 72 = 15' in paragraph]
+    require(len(matches) == 1, 'Long-division mutation needs one arithmetic paragraph')
+    paragraphs, index = matches[0]
+    paragraphs[index] = paragraphs[index].replace('87 − 72 = 15', '87 − 72 = 25', 1)
+    mutants.append(bad)
     replacements = {'prime-factor-venn': ('data-prime="3"', 'data-prime="5"'), 'gcf-area': ('data-part-area="8"', 'data-part-area="9"'),
                     'multiple-jumps': ('data-landing="8:24"', 'data-landing="8:25"'), 'long-division': ('data-value="144"', 'data-value="154"'),
                     'elevation-line': ('data-value="30"', 'data-value="20"'), 'opposite-line': ('data-opposite="6"', 'data-opposite="5"'),

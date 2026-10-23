@@ -1,7 +1,7 @@
 import { verifyLandscapeSmokeChecks } from "./verify-ui-viewports";
 import { absoluteValueTemplates } from "../src/math/absolute-value-practice.js";
 import { choose } from "./ui-controls";
-import { spokenMath } from "../src/web/MathText";
+import { segments, spokenMath } from "../src/web/MathText";
 import { startTopic } from "./ui-practice";
 import { algebraTemplates } from "../src/math/algebra-practice.js";
 import { linearSystemTemplates } from "../src/math/linear-system-practice.js";
@@ -145,6 +145,42 @@ try {
       await page.screenshot({
         path: new URL(`${template.id}-${size.width}.png`, directory).pathname,
       });
+      // Short answer-sheet scenes must relayout without shrinking their labels.
+      if (
+        problem.templateId === "relation-point-removal" &&
+        (await page.locator(".choice-entry-dialog").count())
+      ) {
+        const textSizes = await page
+          .locator(
+            ".choice-model .scene-figure text:not(:has(tspan)), .choice-model .scene-figure tspan",
+          )
+          .evaluateAll((labels) =>
+            labels.map((label) => {
+              const text = label as SVGTSpanElement;
+              const matrix = text.getScreenCTM()!;
+              return (
+                parseFloat(getComputedStyle(text).fontSize) *
+                Math.hypot(matrix.a, matrix.b)
+              );
+            }),
+          );
+        assert.ok(
+          textSizes.length > 0 && textSizes.every((size) => size >= 12),
+          `${template.id}: answer-sheet scene labels stay readable`,
+        );
+        if (template.id === "relation-point-removal") {
+          const labels = await page
+            .locator(".choice-model .scene-figure [data-label]")
+            .evaluateAll((nodes) =>
+              nodes.map((node) => node.getAttribute("data-label")),
+            );
+          for (const name of ["A", "B", "C", "D"])
+            assert.ok(
+              labels.includes(name),
+              `Point ${name} remains labeled in the compact graph`,
+            );
+        }
+      }
       // Phone landscape only has to stay usable; the others must fit.
       if (isPhoneLandscape(size))
         await assertPhoneLandscapeSmoke(page, template.id);
@@ -279,10 +315,17 @@ try {
         });
       // A formula carries its closing punctuation and a typographic minus, so
       // compare the sequence of tokens, not spacing or sentence punctuation.
+      // Explicit TeX delimiters belong to the source, not the displayed label.
       const tokens = (text: string) =>
         text.replace(/−/g, "-").replace(/[\s;.,:!?]/g, "");
       assert.ok(
-        tokens(panelText).includes(tokens(wrong.label)),
+        tokens(panelText).includes(
+          tokens(
+            segments(wrong.label)
+              .map((part) => part.plain ?? part.text)
+              .join(""),
+          ),
+        ),
         `${template.id}: the panel names the chosen ${wrong.label}`,
       );
       assert.ok(!panelText.includes("option-"));

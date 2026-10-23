@@ -858,6 +858,10 @@ nav button {
   height: 150px;
   margin-bottom: 6px;
 }
+.choice-entry-dialog .compact-choice-scene .scene-figure {
+  display: block;
+  margin: 0 auto 4px;
+}
 .choice-entry-dialog .answer-prompt-summary {
   line-height: 1.35;
   margin-bottom: 8px;
