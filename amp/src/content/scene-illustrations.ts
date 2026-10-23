@@ -1,3 +1,4 @@
+import { congruenceScenes } from "./congruence-lessons";
 import { assessmentGapIllustrations } from "./assessment-gap-illustrations";
 import {
   act,
@@ -142,6 +143,7 @@ export const sceneIllustrations = {
     }),
   ...lessonScenes,
   ...similarityTrigScenes,
+  ...congruenceScenes,
   ...coordinateCircleScenes,
   ...powerScenes,
   ...statisticsModelScenes,

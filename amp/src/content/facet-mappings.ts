@@ -1,3 +1,4 @@
+import { congruenceFacetMappings } from "./congruence-coverage";
 import { assessmentGapFacetMappings } from "./assessment-gap-coverage";
 import { areaVolumeFacetMappings } from "./area-volume-coverage";
 import { transformationFacetMappings } from "./transformation-coverage";
@@ -134,6 +135,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...exponentialFacetMappings,
   ...probabilityRulesFacetMappings,
   ...similarityTrigFacetMappings,
+  ...congruenceFacetMappings,
   ...coordinateCircleFacetMappings,
   ...algebraStatisticsFacetMappings,
   ...powerFacetMappings,
