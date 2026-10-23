@@ -1,4 +1,5 @@
 import { congruenceScenes } from "./congruence-lessons";
+import { studyDesignIllustrations } from "./study-design-content";
 import { assessmentGapIllustrations } from "./assessment-gap-illustrations";
 import {
   act,
@@ -25,6 +26,7 @@ import { statisticsModelScenes } from "./statistics-model-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  ...studyDesignIllustrations,
   ...assessmentGapIllustrations,
   "radical-equation-crossing": graph({
     id: "g",
