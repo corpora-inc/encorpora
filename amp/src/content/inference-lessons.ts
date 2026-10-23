@@ -1,7 +1,9 @@
+import { studyDesignLesson, studyDesignMethod } from "./study-design-content";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 export const inferenceLessons: Lesson[] = [
+  studyDesignLesson,
   {
     id: "sampling",
     title: "Learning about a population from a sample",
@@ -99,6 +101,7 @@ export const inferenceLessons: Lesson[] = [
 ];
 
 export const inferenceMethods: Record<string, ProblemMethod> = {
+  "scope-of-inference-choice": studyDesignMethod,
   "representative-sample-choice": {
     goal: "Choose the method most likely to give a representative sample.",
     terms: [
@@ -165,6 +168,8 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
   },
 };
 export const inferencePrinciples: Record<string, string> = {
+  "scope-of-inference-choice":
+    "Random sampling supports generalization to the sampled population; random treatment assignment supports a causal comparison. Judge these separately, allowing for uncertainty and study quality.",
   "representative-sample-choice":
     "A random sample gives every member of the population the same chance, so it tends to resemble the population.",
   "sample-proportion-estimate":
