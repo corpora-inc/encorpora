@@ -262,6 +262,17 @@ const pathways = createRoute({
     "PathwaysScreen",
   ),
 });
+const pathwaySkill = createRoute({
+  getParentRoute: () => root,
+  path: "/pathways/$skillId",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/pathways/PathwaysScreen"),
+    "PathwaysScreen",
+  ),
+});
 const funded = createRoute({
   getParentRoute: () => root,
   path: "/purchase/arkansas-efa",
@@ -338,6 +349,7 @@ export const router = createRouter({
     tryMap,
     tryPlans,
     pathways,
+    pathwaySkill,
     funded,
     fundedNewHampshire,
     fundedArizona,
