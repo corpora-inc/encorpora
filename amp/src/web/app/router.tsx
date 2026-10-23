@@ -39,7 +39,7 @@ const searchSchema = z
     program: z.enum(["ar-efa", "az-esa"]).optional().catch(undefined),
     token: z.string().max(2048).optional(),
     error: z.string().max(200).optional(),
-    topic: z.string().max(100).optional(),
+    topic: z.string().max(100).optional().catch(undefined),
     strand: z.string().max(100).optional(),
     filter: z.string().max(100).optional(),
     skill: z.string().max(100).optional(),

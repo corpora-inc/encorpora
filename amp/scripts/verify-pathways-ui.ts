@@ -285,11 +285,18 @@ async function noOverflow(page: Page) {
     );
   assert.deepEqual(bad, [], "44px controls");
   const learner = page.locator(".pathways-status select");
-  if (await learner.count())
+  if (await learner.count()) {
+    assert(
+      (await learner.evaluate((el) =>
+        parseFloat(getComputedStyle(el).fontSize),
+      )) >= 16,
+      "readable learner selector text",
+    );
     assert(
       (await learner.boundingBox())!.width >= 180,
       "readable learner selector",
     );
+  }
 }
 async function verifySettledLabels(page: Page, animated = false) {
   const overlay = page.locator(".pathways-map-labels");
@@ -617,7 +624,7 @@ async function verifySearchFilters() {
       reducedMotion: "reduce",
     });
     try {
-      await fixture(page, { signedIn: false });
+      await fixture(page, { signedIn: width !== 390 });
       await page.goto(`${origin}/pathways/${target.id}?topic=L&filter=K`);
       const input = page.getByRole("searchbox", {
         name: "Find a skill",
@@ -661,6 +668,31 @@ async function verifySearchFilters() {
         (url) => url.searchParams.get("topic") === "linear",
       );
       assert.equal(await input.inputValue(), "linear");
+      await input.press("Escape");
+      assert.equal(await page.locator("#pathways-browser").isVisible(), false);
+      assert.equal(
+        await input.inputValue(),
+        "linear",
+        "Escape dismisses results without deleting the query",
+      );
+      assert(await input.evaluate((el) => el === document.activeElement));
+      await input.press("Escape");
+      assert.equal(
+        await page.locator("#pathways-browser").isVisible(),
+        false,
+        "Repeated Escape does not reopen results",
+      );
+      assert.equal(await input.inputValue(), "linear");
+      await input.fill("L".repeat(101));
+      await page.waitForURL(
+        (url) => url.searchParams.get("topic")?.length === 100,
+      );
+      assert.equal(
+        (await input.inputValue()).length,
+        100,
+        "Long paste is bounded before navigation",
+      );
+      assert.equal(await page.locator("#pathways-browser").isVisible(), true);
       await input.fill("");
       await page.waitForURL((url) => !url.searchParams.has("topic"));
       assert.equal(
@@ -676,6 +708,49 @@ async function verifySearchFilters() {
         "",
         "The cleared search survives reload",
       );
+      await page.goto(
+        `${origin}/pathways/${target.id}?topic=${"L".repeat(101)}&filter=K`,
+      );
+      await input.waitFor();
+      assert.equal(
+        await input.inputValue(),
+        "",
+        "An overlong shared query is ignored without an error screen",
+      );
+      await input.focus();
+      assert.equal(
+        await grade.inputValue(),
+        "K",
+        "Other valid filters survive a malformed query",
+      );
+      await input.fill("linear");
+      await page.waitForURL(
+        (url) => url.searchParams.get("topic") === "linear",
+      );
+      await input.fill("Count To 20");
+      await page.waitForURL(
+        (url) => url.searchParams.get("topic") === "Count To 20",
+      );
+      await page.getByRole("link", { name: /Count To 20/ }).click();
+      await page.waitForURL((url) => url.pathname === "/pathways/count-to-20");
+      await page.goBack();
+      await input.waitFor();
+      assert.equal(
+        await input.inputValue(),
+        "Count To 20",
+        "Browser Back restores the search",
+      );
+      await page.goForward();
+      await input.waitFor();
+      assert.equal(
+        await input.inputValue(),
+        "Count To 20",
+        "Browser Forward restores the search",
+      );
+      await input.fill("");
+      await page.waitForURL((url) => !url.searchParams.has("topic"));
+      await grade.selectOption("");
+      await page.waitForURL((url) => !url.searchParams.has("filter"));
       await input.focus();
       await noOverflow(page);
       await page.screenshot({
@@ -687,7 +762,7 @@ async function verifySearchFilters() {
     }
   }
   console.log(
-    "Pathways search: last-character backspace, clearing, rapid typing, grade reset, URL preservation, and reload passed at four widths.",
+    "Pathways search: editing, clear/reset, Escape, long paste/link recovery, focus, reload and browser history passed at four widths.",
   );
 }
 
