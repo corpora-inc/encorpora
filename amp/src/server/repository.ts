@@ -105,6 +105,8 @@ export interface LearnerTransaction {
   startingPoint(): Promise<PracticeStartingPoint>;
   setStartingPoint(band: StartingBand): Promise<void>;
   setBirthYear(birthYear: number): Promise<void>;
+  satMathFocus(): Promise<boolean>;
+  setSatMathFocus(enabled: boolean): Promise<void>;
   /** Placement estimate replayed from the learner's whole attempt history. */
   frontier(now?: number): Promise<Frontier>;
   recentAttempts(): Promise<Outcome[]>;
@@ -194,6 +196,7 @@ export class PostgresRepository implements Repository {
         id: schema.learners.id,
         name: schema.learners.name,
         birthYear: schema.learners.birthYear,
+        satMathFocus: schema.learners.satMathFocus,
       })
       .from(schema.learners)
       .where(
@@ -399,6 +402,19 @@ export class PgTransaction implements LearnerTransaction {
     await this.db.query(
       "UPDATE amp_learners SET starting_band=$2,starting_policy=1,starting_excluded_strands=COALESCE(starting_excluded_strands,$3::text[]) WHERE id=$1",
       [this.learnerId, band, excluded],
+    );
+  }
+  async satMathFocus() {
+    const result = await this.db.query(
+      "SELECT sat_math_focus FROM amp_learners WHERE id=$1",
+      [this.learnerId],
+    );
+    return result.rows[0].sat_math_focus;
+  }
+  async setSatMathFocus(enabled: boolean) {
+    await this.db.query(
+      "UPDATE amp_learners SET sat_math_focus=$2 WHERE id=$1",
+      [this.learnerId, enabled],
     );
   }
   async setBirthYear(birthYear: number) {

@@ -40,6 +40,7 @@ test(
         "0008-skill-evidence.sql",
         "0010-starting-point.sql",
         "0014-birth-year.sql",
+        "0055-sat-math-focus.sql",
       ])
         await pool.query(
           await readFile(

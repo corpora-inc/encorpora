@@ -1,3 +1,4 @@
+import { SatMathFocus } from "./features/practice/SatMathFocus";
 import { PurchaseMeasurement } from "./features/privacy/PurchaseMeasurement";
 import { Toast } from "./ui/Toast";
 import { useLoggedError, requestMessage } from "./feedback";
@@ -592,6 +593,17 @@ export function FamilyCenter({
                           ? "Deleted learner · billing reference"
                           : learner.name}
                       </h3>
+                      {section === "learners" &&
+                        !learner.deletedAt &&
+                        !nativeRuntime && (
+                          <SatMathFocus
+                            key={`${identity}:${learner.id}`}
+                            learner={learner}
+                            token={token}
+                            identity={identity}
+                            onSaved={refresh}
+                          />
+                        )}
                       {learner.deletedAt ? (
                         <p>
                           Learning data was deleted. Billing records are

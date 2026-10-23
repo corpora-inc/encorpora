@@ -1,3 +1,5 @@
+import type { SemanticFigure } from "../math/contracts";
+import { satCompletionLessons } from "./sat-completion-lessons";
 import { congruenceLessons } from "./congruence-lessons";
 import { assessmentGapLessons } from "./assessment-gap-lessons";
 import { radicalEquationLessons } from "./radical-equation-lessons";
@@ -230,6 +232,8 @@ export interface Lesson {
   closingSections?: Lesson["sections"];
   workedExample: {
     prompt: string;
+    figure?: SemanticFigure;
+    choices?: string[];
     steps: string[];
     answer: string;
     answerUnit?: string;
@@ -659,6 +663,7 @@ export const baseLessons: Lesson[] = [
 
 export const lessons: readonly Lesson[] = [
   ...assessmentGapLessons,
+  ...satCompletionLessons,
   ...completingSquareLessons,
   ...factoringLessons,
   ...integerExponentLessons,

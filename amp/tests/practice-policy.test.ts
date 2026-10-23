@@ -185,6 +185,7 @@ test("service injects a trusted policy; request bodies cannot choose one", async
   });
   // This endpoint's transaction dependencies only; no database or real learner.
   const tx = {
+    satMathFocus: async () => false,
     trialRemaining: async () => null,
     recentAttempts: async () => [],
     skillEvidence: async () => [],

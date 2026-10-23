@@ -4,6 +4,8 @@ AMP (Adaptive Math Pathways) is a TypeScript/PostgreSQL adaptive mathematics stu
 
 This workspace is a development preview. It contains a complete numbered Common Core inventory and a planned skill graph, with selected working problem families and lessons. Inventory coverage does not establish complete instruction, assessment, or learning outcomes. Run the audits below for the current counts and gaps. The product is not approved by an ESA program and does not process live subscription payments.
 
+Learner settings include **SAT Math focus**, which filters topics beyond the SAT from adaptive practice while retaining foundations. See [SAT Math practice and coverage](docs/sat-math.md) for the source checklist and its limits.
+
 ## Run locally
 
 Prerequisites: Node 22 or newer, Python 3.10 or newer, Docker, and npm. Run these commands from `amp/`:

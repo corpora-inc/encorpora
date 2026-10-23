@@ -1,3 +1,4 @@
+import { satCompletionMethods } from "./sat-completion-lessons";
 import { congruenceMethods } from "./congruence-lessons";
 import { assessmentGapMethods } from "./assessment-gap-lessons";
 import { radicalEquationMethods } from "./radical-equation-lessons";
@@ -67,6 +68,7 @@ import type { ProblemMethod } from "./problem-lessons";
  * give steps that solve every instance of the template. */
 export const methods: Record<string, ProblemMethod> = {
   ...assessmentGapMethods,
+  ...satCompletionMethods,
   ...completingSquareMethods,
   ...factoringMethods,
   ...volumeCoordinateMethods,

@@ -804,3 +804,52 @@ test(
     }
   },
 );
+
+test(
+  "new offline packs respect SAT focus without rewriting an existing pack",
+  enabled,
+  async () => {
+    const f = await fixture();
+    try {
+      const learner = await f.learner();
+      await f.repo.transaction("parent-a", learner, async (tx) =>
+        tx.setSatMathFocus(true),
+      );
+      const path = `/api/v1/learners/${learner}/offline-packs`;
+      const payload = { requestId: randomUUID() };
+      const issued = await f.app.inject({ method: "POST", url: path, payload });
+      assert.equal(issued.statusCode, 200, "Offline pack issue succeeds");
+      const { satPracticeEligible } = await import("../src/curriculum/sat");
+      const { templates } = await import("../src/math/engine");
+      const { signedPack } = issued.json();
+      const verified = await verifyPack(
+        signedPack,
+        f.keys.publicKey,
+        "test-only",
+      );
+      assert(verified.items.length > 0);
+      for (const entry of verified.items)
+        assert(
+          satPracticeEligible(
+            templates.find((t) => t.id === entry.problem.templateId)!,
+          ),
+        );
+      await f.repo.transaction("parent-a", learner, async (tx) =>
+        tx.setSatMathFocus(false),
+      );
+      const repeated = await f.app.inject({
+        method: "POST",
+        url: path,
+        payload,
+      });
+      assert.equal(
+        repeated.statusCode,
+        200,
+        "An idempotent reissue returns the saved pack",
+      );
+      assert.equal(repeated.json().signedPack, signedPack);
+    } finally {
+      await f.close();
+    }
+  },
+);

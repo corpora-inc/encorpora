@@ -1,3 +1,7 @@
+import {
+  satCompletionTemplates,
+  generateSatCompletionProblem,
+} from "./sat-completion-practice";
 import { normalizeSelection } from "./selection-response";
 import {
   quadrilateralHierarchyMultiselectTemplate,
@@ -455,6 +459,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...distributionTemplates,
   ...inferenceTemplates,
   ...assessmentGapTemplates,
+  ...satCompletionTemplates,
   ...bivariateTemplates,
 ];
 
@@ -622,6 +627,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...distributionTemplates,
     ...inferenceTemplates,
     ...assessmentGapTemplates,
+    ...satCompletionTemplates,
     ...bivariateTemplates,
     ...partWholeTemplates,
     ...attributeTemplates,
@@ -700,6 +706,8 @@ function generateRawProblem(
     return generateAttributeProblem(templateId, seed);
   if (ratioRateTemplates.some((t) => t.id === templateId))
     return generateRatioRateProblem(templateId, seed);
+  if (satCompletionTemplates.some((t) => t.id === templateId))
+    return generateSatCompletionProblem(templateId, seed);
   if (assessmentGapTemplates.some((t) => t.id === templateId))
     return generateAssessmentGapProblem(templateId, seed);
   if (inferenceTemplates.some((t) => t.id === templateId))

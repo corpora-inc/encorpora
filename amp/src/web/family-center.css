@@ -595,3 +595,13 @@
     overflow: visible;
   }
 }
+
+.sat-focus-setting {
+  margin-block: 1rem;
+}
+.sat-focus-setting p {
+  margin-block: 0.5rem;
+}
+.sat-focus-feedback {
+  min-height: 3lh;
+}

@@ -72,7 +72,7 @@ export class FamilyRepository {
       ).rows[0];
       const learners = (
         await client.query(
-          "SELECT l.id,l.name,l.birth_year,l.deleted_at,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access FROM amp_learners l WHERE l.account_id=$1 ORDER BY l.created_at,l.id",
+          "SELECT l.id,l.name,l.birth_year,l.sat_math_focus,l.deleted_at,EXISTS(SELECT 1 FROM amp_grants g WHERE g.learner_id=l.id AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now()) AS has_access FROM amp_learners l WHERE l.account_id=$1 ORDER BY l.created_at,l.id",
           [accountId],
         )
       ).rows;
@@ -135,6 +135,7 @@ export class FamilyRepository {
           id: row.id,
           name: row.name,
           birthYear: row.birth_year ?? null,
+          satMathFocus: row.sat_math_focus,
           deletedAt: iso(row.deleted_at),
           stripeLinked: linked.includes(row.id),
           canPractice:
