@@ -684,6 +684,7 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
       <div className="pathways-camera">
         {document.fullscreenEnabled && (
           <button
+            aria-label={fullscreen ? "Exit full screen" : "Full screen"}
             onClick={() => {
               const action = document.fullscreenElement
                 ? document.exitFullscreen()
@@ -691,11 +692,27 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
               void action?.catch(() => setFailed(false));
             }}
           >
-            {fullscreen ? "Exit full screen" : "Full screen"}
+            <span className="camera-wide">
+              {fullscreen ? "Exit full screen" : "Full screen"}
+            </span>
+            <svg
+              className="camera-narrow"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+            >
+              <path d="M7 3H3v4M13 3h4v4M3 13v4h4M17 13v4h-4" />
+            </svg>
           </button>
         )}
-        <button disabled={failed} onClick={() => reset.current()}>
-          Whole map
+        <button
+          disabled={failed}
+          aria-label="Whole map"
+          onClick={() => reset.current()}
+        >
+          <span className="camera-wide">Whole map</span>
+          <span className="camera-narrow" aria-hidden="true">
+            All
+          </span>
         </button>
         <button
           disabled={failed}
@@ -713,17 +730,31 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
         </button>
         <button
           disabled={failed}
+          aria-label="3D orbit"
           aria-pressed={orbit}
           onClick={() => setOrbit((v) => !v)}
         >
-          3D orbit
+          <span className="camera-wide">3D orbit</span>
+          <span className="camera-narrow" aria-hidden="true">
+            3D
+          </span>
         </button>
         <button
           disabled={failed}
+          aria-label={motion ? "Pause motion" : "Enable motion"}
           aria-pressed={!motion}
           onClick={() => setMotion((v) => !v)}
         >
-          {motion ? "Pause motion" : "Enable motion"}
+          <span className="camera-wide">
+            {motion ? "Pause motion" : "Enable motion"}
+          </span>
+          <svg className="camera-narrow" viewBox="0 0 20 20" aria-hidden="true">
+            {motion ? (
+              <path d="M7 4v12M13 4v12" />
+            ) : (
+              <path d="M6 3l10 7-10 7z" />
+            )}
+          </svg>
         </button>
       </div>
       <p className="pathways-gesture">

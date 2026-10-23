@@ -337,6 +337,20 @@ try {
       await page.getByText("Algebra frontier:", { exact: false }).waitFor();
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await noOverflow(page);
+      const workspace = (await page
+        .locator(".pathways-workspace")
+        .boundingBox())!;
+      const inspector = (await page.locator(".pathways-detail").boundingBox())!;
+      assert(
+        inspector.y + inspector.height <= workspace.y + workspace.height + 1,
+        "inspector is not clipped by the map workspace",
+      );
+      if (width <= 390)
+        assert(
+          (await page.locator(".pathways-viewport").boundingBox())!.height >=
+            190,
+          "selected skill keeps room for the map",
+        );
       await page.screenshot({
         path: `${output}/${width}-${theme}-selected.png`,
         fullPage: true,
