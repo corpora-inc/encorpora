@@ -289,7 +289,7 @@ export function PlanStep({
           )}
         </>
       )}
-      <SupportHelp context="plans" />
+      <SupportHelp context="plans" contact={false} />
       <CheckoutPrivacy
         key={session.accountId}
         session={session}
