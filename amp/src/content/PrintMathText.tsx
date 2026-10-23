@@ -8,7 +8,7 @@ import { segmentPrintText } from "./math-typesetting";
 // Neither the source text nor MathML includes these layout-only break points.
 export const printMathStyles = `
 .print-math{display:inline-block;break-inside:avoid}
-p>.print-math:has(.mfrac,.sqrt),p>.print-math-punctuation:has(.mfrac,.sqrt){padding:.2em 0}
+:is(p,li)>.print-math:has(.mfrac,.sqrt),:is(p,li)>.print-math-punctuation:has(.mfrac,.sqrt){padding:.2em 0}
 .print-math .katex{font-size:1.08em}
 .print-math-punctuation{display:inline-block;break-inside:avoid;white-space:nowrap}
 .print-math-punctuation>.print-math{display:inline;white-space:nowrap}
