@@ -1770,6 +1770,10 @@ function LegacyScreen() {
         <footer>
           <span>
             {brand.name} · {brand.expansion} · {brand.company}
+            {" · "}
+            <a href="mailto:support@corpora.inc" style={{ display: "inline-flex", alignItems: "center", minHeight: "var(--target-size)" }}>
+              support@corpora.inc
+            </a>
           </span>
           <span>
             {catalog?.mode === "development"

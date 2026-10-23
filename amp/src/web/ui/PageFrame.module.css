@@ -1,6 +1,6 @@
 .frame {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
   width: 100%;
   min-height: 100dvh;
   background: var(--color-surface);
@@ -70,7 +70,7 @@
  * collapse to the padding when the card is taller than the screen, so it is
  * never clipped. */
 .centered {
-  grid-template-rows: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
 }
 .centered .main {
   padding: max(var(--frame-inset, var(--space-5)), env(safe-area-inset-top))

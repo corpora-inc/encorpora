@@ -1,3 +1,4 @@
+import { SupportHelp } from "./features/support/SupportHelp";
 import { useFundingRefresh } from "./features/funding/useFundingRefresh";
 import { refreshMe } from "./lib/query";
 import {
@@ -681,6 +682,14 @@ export function FundingPurchaseCenter({
           </>
         )}
       </div>
+      <SupportHelp
+        context="purchase"
+        program={
+          program?.id === "ar-efa" || program?.id === "az-esa"
+            ? program.id
+            : undefined
+        }
+      />
       {(request || offer) && (
         <footer className="funding-footer">
           {request ? (

@@ -1,3 +1,4 @@
+import { ParentFeedbackForm } from "../support/SupportHelp";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
@@ -214,7 +215,16 @@ function PlansView({
         </div>
       </section>
       <Dialog open={asking} onOpenChange={setAsking} title="Give feedback">
-        <p className={styles.ask}>One tap helps us improve. What’s missing?</p>
+        <ParentFeedbackForm
+          context="plans"
+          program={
+            programId === "ar-efa" || programId === "az-esa"
+              ? programId
+              : undefined
+          }
+          onClose={() => setAsking(false)}
+        />
+        <p className={styles.ask}>Or choose a quick reason:</p>
         <div className={styles.reasons}>
           {reasons.map(([value, label]) => (
             <Button

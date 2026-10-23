@@ -735,6 +735,8 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
           </p>
         </Intro>
         <div className="prose">
+          <h2>Tell us about your experience</h2>
+          <p>What’s working well? What would make AMP better for your family? Share your thoughts with <Contact config={config} />. We use your feedback to improve the lessons, practice and purchase experience.</p>
           <h2>Help us find the issue</h2>
           <p>
             Include the page or feature, what happened, and what you expected.
@@ -890,6 +892,7 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
             <a href="/parents/">Parents FAQ</a>
             <a href="/schools/">Schools & districts</a>
             <a href="/support/">Support</a>
+            {config.supportEmail && <a href={`mailto:${config.supportEmail}`}>{config.supportEmail}</a>}
             {Object.entries(legalTitles).map(([slug, label]) => (
               <a key={slug} href={`/legal/${slug}/`}>
                 {label}

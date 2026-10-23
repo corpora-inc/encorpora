@@ -219,7 +219,7 @@ export function FundingPage({
               <li><a href="/samples/">View printable practice →</a></li>
               <li><a href="/amp/#coverage">See current curriculum coverage →</a></li>
             </ul>
-            {supportEmail && <p>Need help choosing or paying? <a href={`mailto:${supportEmail}`}>Email Corpora support</a>.</p>}
+            {supportEmail && <p>Need help choosing or paying? <a href={`mailto:${supportEmail}`}>{supportEmail}</a>.</p>}
           </div>
           <div className="hero-demo">
             <Sample heading="h3" />
