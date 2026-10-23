@@ -7,12 +7,9 @@
   margin: 12px 0;
   min-width: 0;
   box-sizing: border-box;
-  min-height: 460px;
+  min-height: 408px;
   display: grid;
-  grid-template-rows: minmax(20px, auto) 200px minmax(min-content, 1fr) minmax(
-      44px,
-      auto
-    );
+  grid-template-rows: minmax(20px, auto) 200px minmax(min-content, 1fr);
   gap: 8px;
 }
 .animation-heading {
@@ -20,10 +17,6 @@
   justify-content: space-between;
   gap: 8px;
   font-size: 0.8125rem;
-}
-.animation-heading span {
-  font-variant-numeric: tabular-nums;
-  color: var(--color-muted-text);
 }
 .animation-stage {
   display: block;
@@ -111,44 +104,24 @@
   min-height: 48px;
   font-size: 1.25rem;
 }
-.animation-controls {
+.lesson-animation[data-reduced="true"] .animation-copy {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0;
+  flex-direction: column;
+  gap: 12px;
 }
-.animation-controls button {
-  flex: 1 1 4.5em;
-  min-width: 0;
-  min-height: 44px;
-  padding: 6px;
-  border-radius: 8px;
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
-  border: 1px solid var(--color-border-strong);
-  font:
-    600 0.875rem system-ui,
-    sans-serif;
-  cursor: pointer;
+.lesson-animation[data-reduced="true"] .animation-frame {
+  grid-area: auto;
 }
-.animation-controls button:first-child {
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-}
-.animation-controls button[aria-disabled="true"] {
-  opacity: 0.45;
-  cursor: default;
-}
-.animation-controls button:focus-visible {
-  outline: 3px solid var(--color-danger-accent);
-  outline-offset: 3px;
-}
-.animation-static {
-  min-height: 44px;
-  margin: 0;
-  font-size: 0.8125rem;
-  display: flex;
-  align-items: center;
+.animation-transcript {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 .animation-stage .animation-small {
   font-size: 13px;

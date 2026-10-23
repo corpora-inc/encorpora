@@ -43,6 +43,12 @@ const families = (medium: Medium): Record<RunFont, string> => ({
   sansBold: medium === "print" ? "Arial, Helvetica, sans-serif" : sans,
 });
 const dashes = { dash: "7 5", dot: "1.5 4.5" } as const;
+const blend = (from: string, to: string, strength: number) =>
+  strength <= 0
+    ? from
+    : strength >= 1
+      ? to
+      : `color-mix(in srgb, ${from} ${(1 - strength) * 100}%, ${to} ${strength * 100}%)`;
 const dataAttrs = (d: Drawn) =>
   Object.fromEntries(
     Object.entries(d.data ?? {}).map(([k, v]) => [`data-${k}`, v]),
@@ -60,9 +66,20 @@ function Item({
   state?: ItemState;
 }) {
   const common = { "data-id": d.id, ...dataAttrs(d) };
+  const emphasis = state?.emphasis ?? (state?.highlight ? 1 : 0);
   const strokeOf = (r?: InkRole) =>
-    state?.stroke ? ink[state.stroke] : r ? ink[r] : undefined;
+    state?.stroke
+      ? ink[state.stroke]
+      : r
+        ? blend(ink[r], ink.accent, emphasis)
+        : emphasis > 0
+          ? ink.accent
+          : undefined;
   const fillOf = (r: FillRole) => fill[state?.fill ?? r];
+  const focusedFill = (r: FillRole) =>
+    r === "paper" || r === "empty"
+      ? blend(fillOf(r), fill["accent-strong"], emphasis)
+      : fillOf(r);
   const trace =
     state?.drawn !== undefined
       ? {
@@ -81,7 +98,7 @@ function Item({
           x2={d.x2}
           y2={d.y2}
           stroke={strokeOf(d.stroke)}
-          strokeWidth={state?.highlight ? d.w + 2 : d.w}
+          strokeWidth={d.w + 2 * emphasis}
           strokeDasharray={d.dash ? dashes[d.dash] : undefined}
           strokeLinecap={d.cap ?? "butt"}
           {...trace}
@@ -93,7 +110,7 @@ function Item({
           {...common}
           d={state?.d ?? d.d}
           stroke={strokeOf(d.stroke) ?? "none"}
-          strokeWidth={d.w ? (state?.highlight ? d.w + 2 : d.w) : undefined}
+          strokeWidth={d.w ? d.w + 2 * emphasis : undefined}
           fill={fillOf(d.fill)}
           fillOpacity={d.opacity}
           strokeDasharray={d.dash ? dashes[d.dash] : undefined}
@@ -108,7 +125,7 @@ function Item({
           {...common}
           cx={d.cx}
           cy={d.cy}
-          r={state?.highlight ? d.r * 1.25 : d.r}
+          r={d.r * (1 + 0.25 * emphasis)}
           stroke={strokeOf(d.stroke) ?? "none"}
           strokeWidth={d.w}
           fill={fillOf(d.fill)}
@@ -125,11 +142,15 @@ function Item({
           <path
             {...common}
             d={`M${d.x} ${b}V${d.y + r}A${r} ${r} 0 0 1 ${d.x + r} ${d.y}H${d.x + d.w - r}A${r} ${r} 0 0 1 ${d.x + d.w} ${d.y + r}V${b}Z`}
-            stroke={
-              strokeOf(d.stroke) ?? (state?.highlight ? ink.warm : "none")
+            stroke={strokeOf(d.stroke) ?? "none"}
+            strokeWidth={
+              d.sw
+                ? d.sw + 2.5 * emphasis
+                : emphasis > 0
+                  ? 2.5 * emphasis
+                  : undefined
             }
-            strokeWidth={state?.highlight ? (d.sw ?? 0) + 2.5 : d.sw}
-            fill={fillOf(d.fill)}
+            fill={focusedFill(d.fill)}
             fillOpacity={d.opacity}
           />
         );
@@ -142,9 +163,15 @@ function Item({
           width={d.w}
           height={d.h}
           rx={d.rx}
-          stroke={strokeOf(d.stroke) ?? (state?.highlight ? ink.warm : "none")}
-          strokeWidth={state?.highlight ? (d.sw ?? 0) + 2.5 : d.sw}
-          fill={fillOf(d.fill)}
+          stroke={strokeOf(d.stroke) ?? "none"}
+          strokeWidth={
+            d.sw
+              ? d.sw + 2.5 * emphasis
+              : emphasis > 0
+                ? 2.5 * emphasis
+                : undefined
+          }
+          fill={focusedFill(d.fill)}
           fillOpacity={d.opacity}
           strokeDasharray={d.dash ? dashes[d.dash] : undefined}
         />
@@ -166,7 +193,12 @@ function Label({
   common: Record<string, unknown>;
 }) {
   const fam = families(medium);
-  const color = strokeOrInk(state?.stroke ?? d.color);
+  // A focused label sits on a tinted fill. Keep its ink contrast in both themes.
+  const color = state?.stroke
+    ? strokeOrInk(state.stroke)
+    : state?.highlight
+      ? ink.ink
+      : strokeOrInk(d.color);
   const halo = d.halo
     ? {
         paintOrder: "stroke" as const,

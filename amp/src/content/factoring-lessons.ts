@@ -51,7 +51,7 @@ export const factoringLessons: Lesson[] = [
     id: "greatest-monomial-factor",
     title: "Extract a common monomial factor",
     summary:
-      "Find the factor shared by every term and reconstruct the polynomial as a product.",
+      "A sum can be written as a product when every part of the sum contains the same number or variable piece. Put that shared piece outside parentheses, then multiply back to check the original sum.",
     templateIds: ["greatest-monomial-factor"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -111,7 +111,7 @@ export const factoringLessons: Lesson[] = [
     id: "monic-quadratic-factorization",
     title: "Factor a monic quadratic",
     summary:
-      "Use the constant product and middle-coefficient sum to identify two integer factors.",
+      "An expression with a squared variable can sometimes be written as two simpler expressions multiplied together. Look for two numbers whose sum is the number multiplying the variable in the middle term and whose product is the last number.",
     templateIds: ["monic-quadratic-factorization"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -170,7 +170,7 @@ export const factoringLessons: Lesson[] = [
     id: "nonmonic-quadratic-factorization",
     title: "Factor a nonmonic quadratic",
     summary:
-      "Extract numerical content, split the middle term, and factor the resulting groups.",
+      "When every term shares a number, take it out first. Then split the middle amount so two groups share the same expression; collecting that shared expression turns the sum into a product.",
     templateIds: ["nonmonic-quadratic-factorization"],
     includeGeneratedRepresentation: false,
     objectives: [

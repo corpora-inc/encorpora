@@ -34,8 +34,10 @@ function motion() {
 }
 
 /**
- * Short scenes play and loop with their prose highlighted in place. Longer
- * walkthroughs have manual stepping. The stage and captions reserve their
+ * Two- to six-step scenes loop with their prose highlighted in place. One-step scenes
+ * with visible motion play once and hold; highlight-only scenes show their
+ * final focus without running a timeline. Longer walkthroughs have manual
+ * stepping. The stage and captions reserve their
  * space so playback never moves the page. Reduced motion shows the final
  * frame and every caption without autoplay.
  *
@@ -77,28 +79,34 @@ export function ScenePlayer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
   const last = steps.length - 1;
-  const short = steps.length > 0 && steps.length <= 2;
+  const automatic = steps.length > 0 && steps.length <= 6;
+  const loop = steps.length >= 2 && steps.length <= 6;
+  const staticFocus =
+    steps.length === 1 && steps[0]!.actions.every((a) => a.do === "highlight");
   const [reduced, setReduced] = useState(
     () => window.matchMedia(reducedQuery).matches,
   );
   const [step, setStep] = useState(0);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(staticFocus ? 1 : 0);
   const [playing, setPlaying] = useState(false);
   const [cycle, setCycle] = useState(0);
   const [inView, setInView] = useState(false);
   const panel = useRef<HTMLElement>(null);
   const raf = useRef(0);
   useEffect(() => {
+    if (staticFocus) return;
     const media = window.matchMedia(reducedQuery);
+    setReduced(media.matches);
     const change = () => {
       setReduced(media.matches);
       if (media.matches) setPlaying(false);
     };
     media.addEventListener("change", change);
     return () => media.removeEventListener("change", change);
-  }, []);
+  }, [staticFocus]);
   // Do not animate diagrams outside the visible lesson or hint.
   useEffect(() => {
+    if (staticFocus) return;
     const element = panel.current;
     if (!element) return;
     const observer = new IntersectionObserver(([entry]) => {
@@ -106,17 +114,17 @@ export function ScenePlayer({
     });
     observer.observe(element);
     return () => observer.disconnect();
-  }, [key]);
+  }, [key, staticFocus]);
   // A new scene or cue starts over.
   useEffect(() => {
     setStep(0);
-    setProgress(0);
+    setProgress(staticFocus ? 1 : 0);
     setCycle(0);
-    setPlaying(short && !reduced);
-  }, [key, short, reduced]);
-  // Run each step and hold its result; short scenes pause briefly then repeat.
+    setPlaying(automatic && !staticFocus && !reduced);
+  }, [key, automatic, staticFocus, reduced]);
+  // Run each step and hold its result; concise scenes repeat after a pause.
   useEffect(() => {
-    if (!playing || reduced || !inView) return;
+    if (staticFocus || !playing || reduced || !inView) return;
     const m = motion();
     const traced = steps[step]?.actions.some((a) => a.do === "trace");
     const duration = Math.max(1, traced ? m.trace : m.step);
@@ -126,7 +134,7 @@ export function ScenePlayer({
       const t = Math.min(1, (now - start) / duration);
       setProgress(t);
       if (t < 1) raf.current = requestAnimationFrame(tick);
-      else if (step >= last && !short) setPlaying(false);
+      else if (step >= last && !loop) setPlaying(false);
       else {
         holdUntil ||= now + m.hold * (steps[step]?.hold ?? 1);
         if (now >= holdUntil) {
@@ -140,7 +148,7 @@ export function ScenePlayer({
     return () => cancelAnimationFrame(raf.current);
     // Progress is read once at the start of each run.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [playing, reduced, inView, step, key, cycle]);
+  }, [playing, reduced, inView, step, key, cycle, staticFocus]);
   const shown = reduced ? last : step;
   const description = useMemo(() => {
     const settled = frameAt(layout, steps, shown, 1, entrances);
@@ -148,11 +156,13 @@ export function ScenePlayer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, shown]);
   if (!steps.length) return null;
-  const done = step === last && progress >= 1;
-  const eased = playing ? motion().ease(progress) : progress;
-  const states = reduced
-    ? frameAt(layout, steps, last, 1, entrances)
-    : frameAt(layout, steps, step, eased, entrances);
+  const done = staticFocus || (step === last && progress >= 1);
+  // Pausing must preserve the eased painted frame, not jump back to linear time.
+  const eased = staticFocus ? 1 : motion().ease(progress);
+  const states =
+    reduced || staticFocus
+      ? frameAt(layout, steps, last, 1, entrances)
+      : frameAt(layout, steps, step, eased, entrances);
   const go = (next: number, p: number) => {
     setPlaying(false);
     setStep(Math.max(0, Math.min(last, next)));
@@ -165,14 +175,16 @@ export function ScenePlayer({
       className="scene-player"
       aria-label={label}
       data-mode={mode}
-      data-playback={short ? "loop" : "manual"}
+      data-playback={
+        staticFocus ? "static" : loop ? "loop" : automatic ? "once" : "manual"
+      }
       data-step-count={steps.length}
       data-cycle={cycle}
       data-step={shown}
       data-done={reduced || done ? "true" : "false"}
     >
       <SceneSvg layout={layout} label={description} states={states} />
-      {reduced ? (
+      {reduced && !staticFocus ? (
         <ol className="scene-player-all">
           {steps.map((s, i) => (
             <li key={i}>
@@ -180,7 +192,7 @@ export function ScenePlayer({
             </li>
           ))}
         </ol>
-      ) : short ? (
+      ) : automatic ? (
         <div className="scene-player-story">
           <ol className="scene-player-prose">
             {steps.map((s, i) => (
@@ -189,42 +201,6 @@ export function ScenePlayer({
               </li>
             ))}
           </ol>
-          <button
-            type="button"
-            className="scene-player-toggle"
-            aria-label={playing ? "Pause animation" : "Replay animation"}
-            title={playing ? "Pause animation" : "Replay animation"}
-            onClick={() => {
-              if (playing) setPlaying(false);
-              else {
-                setStep(0);
-                setProgress(0);
-                setCycle((value) => value + 1);
-                setPlaying(true);
-              }
-            }}
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              {playing ? (
-                <path d="M9 5v14M15 5v14" />
-              ) : (
-                <>
-                  <path d="M3 10a9 9 0 1 1 2.7 8.4" />
-                  <path d="M3 4v6h6" />
-                </>
-              )}
-            </svg>
-          </button>
         </div>
       ) : (
         <>

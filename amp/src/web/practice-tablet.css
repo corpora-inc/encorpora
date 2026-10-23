@@ -59,6 +59,9 @@
   .practice-surface > .answer-dock .choice-options {
     grid-template-columns: minmax(0, 1fr);
   }
+  .practice-surface > .answer-dock .choice-option {
+    flex-basis: 100%;
+  }
   /* Absolutely placed in the answer column's grid area: the sheet covers the
      column it replaces, whatever the answer form's height. Both lines are
      explicit; an auto end line would mean the card's padding edge. */

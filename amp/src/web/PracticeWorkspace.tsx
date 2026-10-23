@@ -237,11 +237,10 @@ export function PracticeWorkspace(props: Props) {
     props.next();
   }
   const [lessonError, setLessonError] = useState("");
-  // Six statements should not squeeze a diagram into a sliver on tall phones.
+  // Diagram questions need room above a six-statement answer sheet. Below the
+  // side-by-side workspace width, keep that sheet behind a clear answer action.
   const answerLayoutQuery =
-    multiResponse && problem.figure
-      ? "(max-width: 650px)"
-      : compactAnswerQuery;
+    multiResponse && problem.figure ? "(max-width: 899px)" : compactAnswerQuery;
   const [compact, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
@@ -436,7 +435,7 @@ export function PracticeWorkspace(props: Props) {
                 <span className="choice-letter" aria-hidden="true">
                   {"ABCDEFGH"[index]}
                 </span>
-                <span>
+                <span className="choice-content">
                   <MathText text={option.label} />
                 </span>
               </label>
@@ -511,7 +510,7 @@ export function PracticeWorkspace(props: Props) {
                   <span className="choice-letter" aria-hidden="true">
                     {"ABCD"[index]}
                   </span>
-                  <span>
+                  <span className="choice-content">
                     <MathText text={option.label} />
                   </span>
                 </label>

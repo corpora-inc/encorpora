@@ -68,11 +68,13 @@ const names = [
   "three-addend-story",
 ];
 assert.equal(lessons.length, names.length);
+const limit = Number(process.env.AMP_ANIMATION_LIMIT ?? lessons.length);
+assert(Number.isInteger(limit) && limit > 0 && limit <= lessons.length);
 const entry = `
 import React from 'react';
 import {createRoot} from 'react-dom/client';
 import {ProblemLesson} from '/src/web/ProblemLesson.tsx';
-import '/src/web/style.css';import '/src/web/theme.css';import '/node_modules/katex/dist/katex.min.css';
+import '/src/web/app/styles.ts';
 const lessons=${JSON.stringify(lessons)};
 function App(){const [index,setIndex]=React.useState(-1);return React.createElement('main',{style:{maxWidth:660,margin:'auto',padding:12}},React.createElement('button',{onClick:()=>setIndex((index+1)%lessons.length)},'Open next lesson'),index>=0&&React.createElement(ProblemLesson,{key:index,lesson:lessons[index]}));}createRoot(document.getElementById('root')).render(React.createElement(App));
 `;
@@ -112,14 +114,15 @@ const browserName =
   process.env.AMP_ANIMATION_BROWSER === "webkit" ? "webkit" : "chromium";
 const browser = await (browserName === "webkit" ? webkit : chromium).launch();
 const output = new URL(
-  `../artifacts/lesson-animation${browserName === "webkit" ? "-webkit" : ""}/`,
-  import.meta.url,
+  `${process.env.AMP_ANIMATION_OUTPUT ?? "/tmp/amp-lesson-animation"}-${browserName}/`,
+  "file://",
 );
 await mkdir(output, { recursive: true });
 const metrics: unknown[] = [];
 try {
   for (const width of [320, 390, 1280]) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
+    await page.clock.install();
     const errors: string[] = [],
       requests: string[] = [];
     page.on("pageerror", (error) => {
@@ -136,7 +139,7 @@ try {
       !requests.some((url) => url.includes("/LessonAnimation.tsx")),
       "Animation loaded before lesson opened",
     );
-    for (let i = 0; i < lessons.length; i++) {
+    for (let i = 0; i < limit; i++) {
       await page.getByRole("button", { name: "Open next lesson" }).click();
       const panel = page.getByRole("region", { name: "Explore the example" });
       await panel.waitFor();
@@ -144,35 +147,27 @@ try {
       const initial = await panel.boundingBox();
       assert(initial);
       assert.equal(await panel.getAttribute("data-step"), "0");
-      await panel.getByRole("button", { name: "Step", exact: true }).focus();
-      await panel
-        .getByRole("button", { name: "Step", exact: true })
-        .press("Enter");
-      await page.waitForTimeout(750);
+      assert.equal(await panel.getByRole("button").count(), 0);
+      assert.equal(await panel.locator(".animation-transcript li").count(), 3);
+      await page.clock.runFor(100);
+      assert.equal(await panel.getAttribute("data-visible"), "true");
+      await page.clock.runFor(2400);
+      assert.equal(await panel.getAttribute("data-step"), "1");
+      await page.clock.runFor(900);
+      await page.waitForTimeout(850);
       await panel.screenshot({
         path: new URL(`${names[i]}-${width}-step.png`, output).pathname,
       });
-      await panel.getByRole("button", { name: "Step", exact: true }).focus();
-      await panel
-        .getByRole("button", { name: "Step", exact: true })
-        .press("Enter");
-      await page.waitForTimeout(750);
+      await page.clock.runFor(1500);
       assert.equal(await panel.getAttribute("data-step"), "2");
-      assert(
-        await panel
-          .getByRole("button", { name: "Step", exact: true })
-          .evaluate((el) => el === document.activeElement),
-        "Step lost keyboard focus",
-      );
-      assert(
-        await panel
-          .getByRole("button", { name: "Step", exact: true })
-          .isDisabled(),
-      );
+      await page.waitForTimeout(850);
       const final = await panel.boundingBox();
       assert(final);
       assert.equal(initial.height, final.height);
       assert.equal(initial.y, final.y);
+      await panel.screenshot({
+        path: new URL(`${names[i]}-${width}-final.png`, output).pathname,
+      });
       const figure = lessons[i].example.figure!;
       if (figure.kind === "fraction") {
         const pieces = panel.locator("[data-piece]");
@@ -374,51 +369,42 @@ try {
       await panel.screenshot({
         path: new URL(`${names[i]}-${width}-final.png`, output).pathname,
       });
-      await panel.getByRole("button", { name: "Replay", exact: true }).click();
-      assert.equal(await panel.getAttribute("data-step"), "0");
-      await panel.getByRole("button", { name: "Play", exact: true }).click();
-      await panel.getByRole("button", { name: "Pause", exact: true }).click();
-      await page.waitForTimeout(1900);
-      assert.equal(
-        await panel.getAttribute("data-step"),
-        "0",
-        "Pause advanced the step",
-      );
       if (i === 0) {
-        // Desktop browser scheduling evidence, not a claim about phone GPU performance.
-        await panel.getByRole("button", { name: "Play", exact: true }).click();
-        await page.waitForTimeout(1700);
-        const frameIntervals: number[] = await page.evaluate(`(async () => {
-          const times = [];
-          let previous = performance.now();
-          return new Promise((resolve) => {
-            function frame(now) {
-              times.push(now - previous);
-              previous = now;
-              if (times.length < 90) requestAnimationFrame(frame);
-              else resolve(times.slice(1));
-            }
-            requestAnimationFrame(frame);
-          });
-        })()`);
-        metrics.push({
-          width,
-          maxFrameIntervalMs: Math.max(...frameIntervals),
-          averageFrameIntervalMs:
-            frameIntervals.reduce((a, b) => a + b, 0) / frameIntervals.length,
+        await page.clock.runFor(2300);
+        assert.equal(
+          await panel.getAttribute("data-step"),
+          "0",
+          "Loop did not restart",
+        );
+        await panel.evaluate((el) => {
+          (el as HTMLElement).style.display = "none";
         });
-        await page.waitForFunction(
-          () =>
-            document
-              .querySelector(".lesson-animation")
-              ?.getAttribute("data-step") === "2",
+        await page.clock.runFor(100);
+        await page.waitForTimeout(100);
+        assert.equal(
+          await page.locator(".lesson-animation").getAttribute("data-visible"),
+          "false",
         );
-        await page.waitForTimeout(1900);
-        assert(
-          await panel
-            .getByRole("button", { name: "Play", exact: true })
-            .isVisible(),
+        await page.clock.runFor(5000);
+        assert.equal(
+          await page.locator(".lesson-animation").getAttribute("data-step"),
+          "0",
+          "Hidden animation kept cycling",
         );
+        await page.locator(".lesson-animation").evaluate((el) => {
+          (el as HTMLElement).style.display = "";
+        });
+        await panel.scrollIntoViewIfNeeded();
+        await page.clock.runFor(100);
+        await page.waitForTimeout(100);
+        assert.equal(await panel.getAttribute("data-visible"), "true");
+        await page.clock.runFor(2400);
+        assert.equal(
+          await panel.getAttribute("data-step"),
+          "1",
+          "Visible animation did not resume",
+        );
+        metrics.push({ width, looped: true, pausedWhileHidden: true });
       }
       if (width === 320) {
         await page.evaluate(() => {
@@ -429,14 +415,6 @@ try {
             .locator(".animation-copy")
             .evaluate((el) => el.scrollHeight <= el.clientHeight + 1),
           "Enlarged text exceeds copy row",
-        );
-        const copy = await panel.locator(".animation-copy").boundingBox();
-        const controls = await panel
-          .locator(".animation-controls")
-          .boundingBox();
-        assert(
-          copy && controls && copy.y + copy.height <= controls.y,
-          "Enlarged text overlaps controls",
         );
         assert(
           await page.evaluate(
@@ -454,10 +432,18 @@ try {
           document
             .querySelector(".lesson-animation")
             ?.getAttribute("data-step") === "2" &&
-          !document.querySelector(".animation-controls"),
+          document
+            .querySelector(".lesson-animation")
+            ?.getAttribute("data-reduced") === "true",
       );
       assert.equal(await panel.getAttribute("data-step"), "2");
       assert.equal(await panel.getByRole("button").count(), 0);
+      assert.equal(await panel.locator(".animation-frame:visible").count(), 3);
+      assert.equal(await panel.locator(".animation-transcript").count(), 0);
+      if (i === 0 && width === 320)
+        await panel.screenshot({
+          path: new URL(`${names[i]}-${width}-reduced.png`, output).pathname,
+        });
       assert.equal(
         await panel
           .locator(".animation-move, .animation-fade, .animation-step")
@@ -466,22 +452,32 @@ try {
         "0s",
       );
       await page.emulateMedia({ reducedMotion: "no-preference" });
-      await panel
-        .getByRole("button", { name: "Replay", exact: true })
-        .waitFor();
+      await page.waitForFunction(
+        () =>
+          document
+            .querySelector(".lesson-animation")
+            ?.getAttribute("data-reduced") === "false",
+      );
     }
     assert.deepEqual(errors, []);
     await page.close();
   }
   const remountPage = await browser.newPage();
+  await remountPage.clock.install();
   await remountPage.goto(`http://127.0.0.1:${address.port}/animation-review`);
   await remountPage.getByRole("button", { name: "Open next lesson" }).click();
-  await remountPage.getByRole("button", { name: "Play", exact: true }).click();
+  await remountPage.locator(".lesson-animation").scrollIntoViewIfNeeded();
+  await remountPage.clock.runFor(100);
+  await remountPage.clock.runFor(2400);
+  assert.equal(
+    await remountPage.locator(".lesson-animation").getAttribute("data-step"),
+    "1",
+  );
   await remountPage.getByRole("button", { name: "Open next lesson" }).click();
   await remountPage
     .locator('.lesson-animation[data-animation="array"]')
     .waitFor();
-  await remountPage.waitForTimeout(1900);
+  await remountPage.clock.runFor(1000);
   assert.equal(
     await remountPage.locator(".lesson-animation").getAttribute("data-step"),
     "0",
@@ -496,6 +492,10 @@ try {
   await reducedPage.getByRole("button", { name: "Open next lesson" }).click();
   await reducedPage.locator('.lesson-animation[data-step="2"]').waitFor();
   assert.equal(await reducedPage.locator(".animation-controls").count(), 0);
+  assert.equal(
+    await reducedPage.locator(".animation-frame:visible").count(),
+    3,
+  );
   await reducedPage.close();
   const failedPage = await browser.newPage();
   await failedPage.route("**/LessonAnimation.tsx", (route) => route.abort());
@@ -515,7 +515,7 @@ try {
     JSON.stringify(metrics, null, 2),
   );
   console.log(
-    "Lesson animations: controls, lazy loading, KaTeX, stable geometry, overflow, reduced motion and 24 screenshots passed.",
+    `Lesson animations: ${limit} examples across 3 widths; control-free visible loop, hidden pause, lazy loading, geometry, overflow, reduced-motion captions, and ${limit * 6} motion screenshots passed.`,
   );
   console.log(JSON.stringify(metrics));
 } finally {

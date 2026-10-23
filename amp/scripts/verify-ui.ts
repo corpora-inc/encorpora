@@ -26,6 +26,7 @@ import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { migrate } from "./migrate";
+import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { templates } from "../src/math/engine";
 /** Problem types allowed to need a scroll at one tablet size: a very tall
  * figure past its legible floor. The sweep prints the list it measured. */
@@ -33,6 +34,7 @@ const TABLET_SCROLL_BUDGET = 0;
 const url = process.env.AMP_TEST_DATABASE_URL;
 if (!url)
   throw new Error("AMP_TEST_DATABASE_URL is required for browser verification");
+assertTestDatabaseTarget(url);
 await migrate(url);
 const repository = new PostgresRepository(url, { development: true });
 const account = "development-household";
@@ -229,7 +231,10 @@ try {
   // answered problem stays mounted until the next one arrives, so wait for its
   // feedback to leave before accepting either answer form.
   await page.locator(".solution-panel").waitFor({ state: "detached" });
-  await page.locator("#answer, .choice-form").first().waitFor();
+  await page
+    .locator("#answer, .choice-form, .compact-answer-action")
+    .first()
+    .waitFor();
   const opened = await page.locator(".problem-stage").evaluate((stage) => {
     const top = stage.scrollTop;
     stage.style.paddingBottom = "";
@@ -478,7 +483,10 @@ try {
       );
       throw failure;
     });
-    await page.locator("#answer, .choice-form").first().waitFor();
+    await page
+      .locator("#answer, .choice-form, .compact-answer-action")
+      .first()
+      .waitFor();
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -496,12 +504,14 @@ try {
     ]) {
       await page.setViewportSize(size);
       // Let the media-query subscription commit the appropriate answer surface.
-      await page.waitForFunction(() => {
-        const compact = matchMedia(
-          "(max-width: 650px) and (max-height: 640px)",
-        ).matches;
+      await page.waitForFunction((multiSelect) => {
+        const compact =
+          matchMedia("(max-width: 650px) and (max-height: 640px)").matches ||
+          (multiSelect &&
+            !!document.querySelector(".problem-content svg") &&
+            matchMedia("(max-width: 899px)").matches);
         return !!document.querySelector(".compact-answer-action") === compact;
-      });
+      }, template.requiredResponseCapability === "multi-select-v1");
       if (isPhoneLandscape(size)) {
         await assertPhoneLandscapeSmoke(page, template.id);
         continue;
