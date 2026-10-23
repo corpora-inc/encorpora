@@ -142,24 +142,34 @@ def report(client, cid, since, until):
         raise ValueError("Report requires a valid account time zone") from None
     query = (
         "SELECT campaign.id,campaign.name,campaign.status,ad_group.id,ad_group.name,ad_group.status,"
+        "ad_group_ad.ad.id,ad_group_ad.status,ad_group_ad.ad.final_urls,ad_group_ad.ad.final_url_suffix,"
         "segments.date,metrics.impressions,metrics.clicks,metrics.cost_micros,"
-        "metrics.conversions,metrics.conversions_value FROM ad_group "
+        "metrics.conversions,metrics.conversions_value FROM ad_group_ad "
         f"WHERE segments.date BETWEEN '{since}' AND '{until}' "
-        "AND campaign.name LIKE 'AMP | AR | %' "
+        "AND campaign.name REGEXP_MATCH '^AMP [|] (AR|AZ) [|] .*' "
         "AND campaign.status IN ('ENABLED','PAUSED','REMOVED') "
         "AND ad_group.status IN ('ENABLED','PAUSED','REMOVED') "
-        "ORDER BY segments.date,campaign.id,ad_group.id"
+        "AND ad_group_ad.status IN ('ENABLED','PAUSED','REMOVED') "
+        "ORDER BY segments.date,campaign.id,ad_group.id,ad_group_ad.ad.id"
     )
     found = rows(client, cid, query)
     for row in found:
-        if not row.campaign.name.startswith("AMP | AR | ") or not since <= row.segments.date <= until:
+        if not row.campaign.name.startswith(("AMP | AR | ", "AMP | AZ | ")) or not since <= row.segments.date <= until:
             raise ValueError("Report row is outside the requested campaign/date scope")
+        if row.ad_group_ad.ad.id <= 0:
+            raise ValueError("Report row is missing its ad identity")
     return {
         "api_version": "v26", "customer_id": cid, "currency": "USD", "timezone": timezone,
+        "granularity": "day_ad", "campaign_prefixes": ["AMP | AR | ", "AMP | AZ | "],
         "date_range": window, "query": query,
         "rows": [{
             "campaign": {"id": str(row.campaign.id), "name": row.campaign.name, "status": row.campaign.status.name},
             "ad_group": {"id": str(row.ad_group.id), "name": row.ad_group.name, "status": row.ad_group.status.name},
+            "ad": {
+                "id": str(row.ad_group_ad.ad.id), "status": row.ad_group_ad.status.name,
+                "final_urls": list(row.ad_group_ad.ad.final_urls),
+                "final_url_suffix": row.ad_group_ad.ad.final_url_suffix,
+            },
             "segments": {"date": row.segments.date},
             "metrics": {
                 "impressions": str(row.metrics.impressions), "clicks": str(row.metrics.clicks),
@@ -168,12 +178,13 @@ def report(client, cid, since, until):
             },
         } for row in found],
         "interpretation": (
-            "Daily ad-group metrics for campaigns named AMP | AR | ..., in the advertiser time zone. "
+            "Daily ad metrics for campaigns named AMP | AR | ... or AMP | AZ | ..., in the advertiser time zone. "
             "Cost is integer micros of USD (1,000,000 per dollar). Conversions/value are platform-attributed "
-            "using configured action windows and interaction dates, not verified EFA settlement or net cash. "
+            "using configured action windows and interaction dates, not verified EFA/ESA settlement or net cash. "
             "Recent attribution can change. Empty rows do not prove working tracking. "
             "AMP cash evidence uses UTC dates; align time boundaries before comparing periods. "
-            "Campaign/ad-group names are configuration labels, not verified ad-click attribution."
+            "Campaign/ad-group names and current destinations are configuration labels, not verified ad-click attribution. "
+            "Ad rows do not identify individual responsive-search headline combinations."
         ),
     }
 
