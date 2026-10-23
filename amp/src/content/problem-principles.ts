@@ -306,6 +306,8 @@ export const principles: Record<string, string> = {
     "Multiplying fractions: (a/b) × (c/d) = (a × c)/(b × d).",
   "fraction-of-quantity": "A fraction of a quantity: (a/b) of n = (a × n)/b.",
   "whole-sharing-fraction": "A fraction as division: a ÷ b = a/b.",
+  "fraction-division-expression":
+    "For whole numbers $a \\ge 0$ and $b > 0$, $\\frac{a}{b}=a \\div b$. In a sharing model, $b$ people receive equal shares of $a$ wholes, so $b$ copies of the share total $a$ wholes.",
   "unit-fraction-share":
     "Dividing a unit fraction by a whole number: (1/a) ÷ b = 1/(a × b).",
   "fraction-share-amount":

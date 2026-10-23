@@ -55,6 +55,20 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "whole-sharing-fraction",
+    facetId: "fraction-as-division.core",
+    extent: "partial",
+    rationale:
+      "Find the numeric share when 1–3 whole liters are shared among 2–6 people. This does not assess recognizing a written fraction as an expression, constructing a model, or estimating the quotient.",
+  },
+  {
+    templateId: "fraction-division-expression",
+    facetId: "fraction-as-division.core",
+    extent: "partial",
+    rationale:
+      "Choose the matching whole-number division expression for bounded unit, proper, and improper fractions. This does not assess constructing a quotient expression, solving a story, or explaining a sharing model.",
+  },
+  {
     templateId: "complex-multiplication",
     facetId: "complex-numbers.core",
     extent: "partial",

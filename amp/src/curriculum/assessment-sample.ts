@@ -68,10 +68,10 @@ export const assessmentSample: readonly AssessmentSampleItem[] = [
   {
     sourceId: "mcas-2025-5",
     item: "9; printed p.11",
-    requirement: "Interpret division as a fraction",
-    templateIds: ["whole-sharing-fraction"],
+    requirement: "Recognize a fraction as a division expression",
+    templateIds: ["whole-sharing-fraction", "fraction-division-expression"],
     limitations:
-      "Related numeric sharing; verify expression-interpretation choices separately.",
+      "Numeric sharing and one-choice fraction-to-division recognition are assessed. Constructing an expression, explaining a model, and broader sharing contexts remain unassessed.",
   },
   {
     sourceId: "mcas-2025-5",

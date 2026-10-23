@@ -52,9 +52,9 @@ export const fractionBookAlignments: readonly BookAlignment[] = [
     relation: "taught",
     pageIds: ["sharing", "first-expedition"],
     taskIds: ["sharing-amount", "sharing-check", "expedition-share"],
-    templateIds: [],
+    templateIds: ["whole-sharing-fraction", "fraction-division-expression"],
     scope:
-      "Equal sharing of whole-number quantities among a whole-number recipient count.",
+      "Equal sharing of whole-number quantities and reading the resulting fraction as total divided by share count.",
   },
   {
     id: "equivalence-model",

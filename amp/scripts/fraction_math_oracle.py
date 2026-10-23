@@ -1,9 +1,11 @@
 """Exact fraction-practice oracle derived only from the public question and diagram."""
+import copy
 import re
 from oracle_wording import tolerant
 from fractions import Fraction
 
-FRACTION_PRACTICE = frozenset({
+FRACTION_CHOICE = frozenset({'fraction-division-expression'})
+FRACTION_PRACTICE = FRACTION_CHOICE | frozenset({
     'unit-piece-size', 'fraction-unit-count', 'fraction-line-position',
     'fraction-whole-as-parts', 'equivalent-numerator', 'equivalent-denominator',
     'like-fraction-missing-part', 'like-fraction-difference',
@@ -22,9 +24,81 @@ def match(pattern, prompt):
     require(found is not None, 'Unrecognized fraction prompt: ' + prompt)
     return tuple(map(int, found.groups()))
 
+def expression_value(label):
+    """Evaluate the displayed operations, independently of generator metadata."""
+    m = re.fullmatch(r'\$\s*(\d+)\s*(\\div|\\times)\s*(\d+)\s*\$', label)
+    require(m is not None, 'Unreadable fraction expression: ' + label)
+    left, right = int(m[1]), int(m[3])
+    if m[2] == r'\div':
+        require(right != 0, 'Division by zero in a fraction choice')
+        return Fraction(left, right)
+    return Fraction(left * right)
+
+def solve_fraction_expression(public):
+    m = re.fullmatch(r'Which expression has the same value as \$\\frac\{(\d+)\}\{(\d+)\}\$\?', public['prompt'])
+    require(m is not None, 'Unrecognized fraction expression prompt')
+    numerator, denominator = map(int, m.groups())
+    require(denominator > 0, 'The stated fraction needs a positive denominator')
+    target = Fraction(numerator, denominator)
+    response = public['response']
+    options = response.get('options', [])
+    require(response.get('kind') == 'choice' and len(options) == 4, 'Expected four expression choices')
+    ids = [option['id'] for option in options]
+    require(all(isinstance(value, str) and value for value in ids) and len(set(ids)) == 4,
+            'Fraction choices need distinct nonempty identifiers')
+    values = [expression_value(option['label']) for option in options]
+    require(len(set(values)) == 4, 'Fraction choices have duplicate mathematical values')
+    matches = [option['id'] for option, value in zip(options, values) if value == target]
+    require(len(matches) == 1, 'Exactly one expression must equal the fraction')
+    return matches[0]
+
+def review_fraction_expression_fixtures():
+    # Literal public questions cover unit, proper, improper, reducible, and an
+    # equivalent quotient with different operands. No generator is imported.
+    fixtures = [
+        (2, 7, [r'$7 \div 2$', r'$2 \times 7$', r'$2 \div 7$', r'$2 \div 8$'], 2),
+        (1, 8, [r'$8 \div 1$', r'$1 \div 8$', r'$1 \div 9$', r'$2 \div 8$'], 1),
+        (12, 9, [r'$9 \div 12$', r'$12 \div 10$', r'$12 \div 9$', r'$12 \times 9$'], 2),
+        (2, 4, [r'$4 \div 2$', r'$2 \times 4$', r'$2 \div 4$', r'$2 \div 5$'], 2),
+        (6, 8, [r'$3 \div 4$', r'$8 \div 6$', r'$6 \times 8$', r'$6 \div 9$'], 0),
+    ]
+    def check(record):
+        require(solve_fraction_expression(record['public']) == record['answer'], 'Wrong fraction-expression key')
+
+    mutants = 0
+    for numerator, denominator, labels, correct in fixtures:
+        source = {'public': {
+            'templateId': 'fraction-division-expression',
+            'prompt': f'Which expression has the same value as $\\frac{{{numerator}}}{{{denominator}}}$?',
+            'response': {'kind': 'choice', 'options': [
+                {'id': f'option-{i}', 'label': label} for i, label in enumerate(labels)
+            ]},
+        }, 'answer': f'option-{correct}'}
+        check(source)
+        wrong_key = copy.deepcopy(source)
+        wrong_key['answer'] = f'option-{(correct + 1) % 4}'
+        missing_answer = copy.deepcopy(source)
+        missing_answer['public']['response']['options'][correct]['label'] = r'$999 \div 1$'
+        duplicate = copy.deepcopy(source)
+        value = expression_value(labels[0])
+        duplicate['public']['response']['options'][3]['label'] = f'${2 * value.numerator} \\div {2 * value.denominator}$'
+        zero_denominator = copy.deepcopy(source)
+        zero_denominator['public']['prompt'] = f'Which expression has the same value as $\\frac{{{numerator}}}{{0}}$?'
+        for bad in [wrong_key, missing_answer, duplicate, zero_denominator]:
+            require(bad != source, 'Fraction-expression corruption did not apply')
+            try:
+                check(bad)
+            except ValueError:
+                mutants += 1
+            else:
+                raise ValueError('A malformed fraction-expression case was accepted')
+    return {'fixtures': len(fixtures), 'mutants': mutants}
+
 def solve_fraction_practice(public):
     name, prompt = public['templateId'], public['prompt']
     require(name in FRACTION_PRACTICE, 'Unknown fraction family')
+    if name in FRACTION_CHOICE:
+        return solve_fraction_expression(public)
     diagram = public.get('figure')
     if diagram:
         if diagram['kind'] == 'rational-line':
