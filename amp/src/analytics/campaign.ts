@@ -115,6 +115,10 @@ export const CAMPAIGN_CREATIVES = [
   "ar-funded-pmax-planning-v1",
   "az-funded-pmax-child-v1",
   "az-funded-pmax-planning-v1",
+  "ar-awareness-whats-next-facebook-v1",
+  "ar-awareness-whats-next-instagram-v1",
+  "az-awareness-better-math-facebook-v1",
+  "az-awareness-better-math-instagram-v1",
 ] as const;
 export const campaignEventSchema = z
   .strictObject({

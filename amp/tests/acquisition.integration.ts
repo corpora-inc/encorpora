@@ -32,7 +32,7 @@ const payload = {
   },
 };
 
-for (const [campaign, creative] of [
+for (const [campaign, creative, source = "google"] of [
   ["ar-efa-launch", "efa-math"],
   ["az-esa-launch", "efa-math"],
   ["ar-efa-launch", "ar-premium-efa-v1"],
@@ -81,6 +81,10 @@ for (const [campaign, creative] of [
   ["ar-efa-launch", "ar-funded-pmax-planning-v1"],
   ["az-esa-launch", "az-funded-pmax-child-v1"],
   ["az-esa-launch", "az-funded-pmax-planning-v1"],
+  ["ar-efa-launch", "ar-awareness-whats-next-facebook-v1", "facebook"],
+  ["ar-efa-launch", "ar-awareness-whats-next-instagram-v1", "instagram"],
+  ["az-esa-launch", "az-awareness-better-math-facebook-v1", "facebook"],
+  ["az-esa-launch", "az-awareness-better-math-instagram-v1", "instagram"],
 ] as const)
   test(
     `landing capture ${campaign}/${creative} returns a secure cookie and binds through the funding route`,
@@ -94,7 +98,13 @@ for (const [campaign, creative] of [
         const capturePayload = {
           ...payload,
           sourcePath,
-          labels: { ...payload.labels, campaign, creative },
+          labels: {
+            ...payload.labels,
+            campaign,
+            creative,
+            source,
+            medium: source === "google" ? "cpc" : "paid-social",
+          },
         };
         const app = Fastify();
         try {
