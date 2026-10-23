@@ -128,6 +128,67 @@ def report_dates(since, until):
     return {"since": since, "until": until, "inclusive": True}
 
 
+def delivery_metrics(row):
+    return {
+        "impressions": str(row.metrics.impressions), "clicks": str(row.metrics.clicks),
+        "cost_micros": str(row.metrics.cost_micros), "conversions": row.metrics.conversions,
+        "conversions_value": row.metrics.conversions_value,
+    }
+
+
+def delivery_breakdowns(client, cid, since, until):
+    """Campaign totals include PMax; asset groups are a separate drill-down."""
+    result = {}
+    for resource, key in [("campaign", "campaign_totals"), ("asset_group", "performance_max_asset_groups")]:
+        is_group = resource == "asset_group"
+        fields = "asset_group.id,asset_group.name,asset_group.status,asset_group.final_urls," if is_group else ""
+        filters = (
+            "AND campaign.advertising_channel_type = 'PERFORMANCE_MAX' "
+            "AND asset_group.status IN ('ENABLED','PAUSED','REMOVED') "
+        ) if is_group else ""
+        query = (
+            "SELECT campaign.id,campaign.name,campaign.status,campaign.advertising_channel_type,"
+            f"{fields}segments.date,metrics.impressions,metrics.clicks,metrics.cost_micros,"
+            f"metrics.conversions,metrics.conversions_value FROM {resource} "
+            f"WHERE segments.date BETWEEN '{since}' AND '{until}' "
+            "AND campaign.name REGEXP_MATCH '^AMP [|] (AR|AZ) [|] .*' "
+            "AND campaign.status IN ('ENABLED','PAUSED','REMOVED') "
+            f"{filters}ORDER BY segments.date,campaign.id" + (",asset_group.id" if is_group else "")
+        )
+        output = []
+        seen = set()
+        for row in rows(client, cid, query):
+            day = row.segments.date
+            if (not row.campaign.name.startswith(("AMP | AR | ", "AMP | AZ | "))
+                    or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", day)
+                    or not since <= day <= until):
+                raise ValueError("Delivery row is outside the requested campaign/date scope")
+            date.fromisoformat(day)
+            if row.campaign.id <= 0 or (is_group and row.asset_group.id <= 0):
+                raise ValueError("Delivery row is missing its resource identity")
+            if is_group and row.campaign.advertising_channel_type.name != "PERFORMANCE_MAX":
+                raise ValueError("Asset-group delivery row is not Performance Max")
+            identity = (day, row.campaign.id, row.asset_group.id if is_group else None)
+            if identity in seen:
+                raise ValueError("Duplicate daily delivery row")
+            seen.add(identity)
+            item = {
+                "campaign": {"id": str(row.campaign.id), "name": row.campaign.name,
+                             "status": row.campaign.status.name,
+                             "channel": row.campaign.advertising_channel_type.name},
+                "segments": {"date": day}, "metrics": delivery_metrics(row),
+            }
+            if is_group:
+                item["asset_group"] = {
+                    "id": str(row.asset_group.id), "name": row.asset_group.name,
+                    "status": row.asset_group.status.name, "final_urls": list(row.asset_group.final_urls),
+                }
+            output.append(item)
+        result[key] = {"granularity": "day_asset_group" if is_group else "day_campaign",
+                       "query": query, "rows": output}
+    return result
+
+
 def report(client, cid, since, until):
     window = report_dates(since, until)
     account = rows(client, cid, "SELECT customer.id,customer.currency_code,customer.time_zone FROM customer")
@@ -158,6 +219,7 @@ def report(client, cid, since, until):
             raise ValueError("Report row is outside the requested campaign/date scope")
         if row.ad_group_ad.ad.id <= 0:
             raise ValueError("Report row is missing its ad identity")
+    breakdowns = delivery_breakdowns(client, cid, since, until)
     return {
         "api_version": "v26", "customer_id": cid, "currency": "USD", "timezone": timezone,
         "granularity": "day_ad", "campaign_prefixes": ["AMP | AR | ", "AMP | AZ | "],
@@ -171,12 +233,9 @@ def report(client, cid, since, until):
                 "final_url_suffix": row.ad_group_ad.ad.final_url_suffix,
             },
             "segments": {"date": row.segments.date},
-            "metrics": {
-                "impressions": str(row.metrics.impressions), "clicks": str(row.metrics.clicks),
-                "cost_micros": str(row.metrics.cost_micros), "conversions": row.metrics.conversions,
-                "conversions_value": row.metrics.conversions_value,
-            },
+            "metrics": delivery_metrics(row),
         } for row in found],
+        **breakdowns,
         "interpretation": (
             "Daily ad metrics for campaigns named AMP | AR | ... or AMP | AZ | ..., in the advertiser time zone. "
             "Cost is integer micros of USD (1,000,000 per dollar). Conversions/value are platform-attributed "
@@ -184,7 +243,11 @@ def report(client, cid, since, until):
             "Recent attribution can change. Empty rows do not prove working tracking. "
             "AMP cash evidence uses UTC dates; align time boundaries before comparing periods. "
             "Campaign/ad-group names and current destinations are configuration labels, not verified ad-click attribution. "
-            "Ad rows do not identify individual responsive-search headline combinations."
+            "Ad rows do not identify individual responsive-search headline combinations or include Performance Max. "
+            "Use campaign_totals for overall delivery; performance_max_asset_groups is a separate drill-down. "
+            "Do not add campaign totals, ad rows and asset-group rows together: they overlap. "
+            "Asset-group rows describe the group, not individual image/video combinations. "
+            "All sections share the account, currency, time zone and date range in this envelope."
         ),
     }
 
