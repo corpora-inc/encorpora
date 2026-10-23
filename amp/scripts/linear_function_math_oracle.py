@@ -15,7 +15,20 @@ import subprocess
 from fractions import Fraction
 from pathlib import Path
 
-from algebra_one_expr import untex, evaluate, holds, number, parse, require, solve_linear, variables
+from algebra_one_expr import (
+    evaluate,
+    holds,
+    number,
+    parse,
+    require,
+    solve_linear,
+    untex,
+    variables,
+)
+from linear_initial_value_math_oracle import SUPPORTED as LINEAR_INITIAL_VALUE
+from linear_initial_value_math_oracle import (
+    review_problem as review_linear_initial_value_problem,
+)
 
 LINEAR_FUNCTION_NUMBER = frozenset({
     'average-rate-formula', 'average-rate-display', 'linear-model-value', 'formula-value', 'solution-coordinate',
@@ -589,28 +602,53 @@ def review_scene_illustrations(figures):
 
 def review_linear_function_content(data=None):
     data = content(data)
+    lessons = {lesson['id']: lesson for lesson in data['lessons']}
+    require(len(lessons) == len(data['lessons']), 'Repeated linear-function lesson')
+    bound = [(lesson['id'], template) for lesson in lessons.values() for template in lesson['templateIds']]
+    expected = LINEAR_FUNCTION | LINEAR_INITIAL_VALUE
+    require(sorted(template for _, template in bound) == sorted(expected), 'Every bound template needs one independently reviewed worksheet')
+    owner = {template: lesson_id for lesson_id, template in bound}
+    sheets = data['worksheets']
+    require(sorted((sheet['templateId'], sheet['edition']) for sheet in sheets) ==
+            sorted((template, str(edition)) for template in expected for edition in range(1, 9)),
+            'Missing or repeated linear-function worksheet edition')
     checked = 0
-    for sheet in data['worksheets']:
+    for sheet in sheets:
+        template = sheet['templateId']
+        require(sheet['lessonId'] == owner[template], 'Worksheet bound to wrong lesson')
         problems = sheet['problems']
         require(len(problems) == 12, 'Worksheet length')
         keys = {json.dumps([p['public']['prompt'], p['public'].get('figure'), sorted(o['label'] for o in p['public']['response'].get('options', []))]) for p in problems}
         require(len(keys) == 12, 'Repeated worksheet problem')
-        for p in problems:
-            solved = solve_linear_function(p['public'])
-            require((p['answer'] == solved) if isinstance(solved, str) else Fraction(p['answer']) == solved, 'Worksheet answer mismatch')
-            checked += review_problem(p)
-    lessons = {lesson['id']: lesson for lesson in data['lessons']}
-    require(sorted(t for l in lessons.values() for t in l['templateIds']) == sorted(LINEAR_FUNCTION), 'Every template has one standalone lesson')
+        previous_seed_index = -1
+        for index, p in enumerate(problems):
+            require(p['public']['templateId'] == template, 'Worksheet contains a different template')
+            if template in LINEAR_INITIAL_VALUE:
+                seed = p['public']['seed']
+                prefix = f"print:{sheet['lessonId']}:{sheet['edition']}:"
+                require(seed.startswith(prefix) and seed[len(prefix):].isdigit(),
+                        'Initial-value worksheet must use publication print seeds')
+                seed_index = int(seed[len(prefix):])
+                require((index == 0 and seed_index == 0) or (index > 0 and seed_index > previous_seed_index),
+                        'Initial-value worksheet seeds must follow distinct selection order')
+                previous_seed_index = seed_index
+                review_linear_initial_value_problem(p)
+                checked += 1
+            else:
+                solved = solve_linear_function(p['public'])
+                require((p['answer'] == solved) if isinstance(solved, str) else Fraction(p['answer']) == solved, 'Worksheet answer mismatch')
+                checked += review_problem(p)
     for lesson in lessons.values():
         require(worked_answer(lesson) == lesson['workedExample']['answer'], 'Worked example answer: ' + lesson['id'])
         for text in lesson['workedExample']['steps'] + [p for s in lesson['sections'] for p in s['paragraphs']]:
             checked += arithmetic_claims(text)
     figures = review_scene_illustrations(data['figures'])
-    return {'worksheets': len(data['worksheets']), 'checkedClaims': checked, 'lessons': len(lessons), 'figures': figures}
+    return {'worksheets': len(sheets), 'checkedClaims': checked, 'lessons': len(lessons), 'figures': figures}
 
 
 def review_content_mutations():
     data = content()
+    review_linear_function_content(data)
     mutants = []
     bad = copy.deepcopy(data); bad['lessons'][0]['workedExample']['answer'] = '0 ≤ t ≤ 300'; mutants.append(bad)
     bad = copy.deepcopy(data); bad['lessons'][2]['workedExample']['answer'] = '12'; mutants.append(bad)
@@ -618,10 +656,12 @@ def review_content_mutations():
     bad = copy.deepcopy(data); bad['worksheets'][4]['problems'][0]['explanation'].append('A false check: 4 × 3 = 13.'); mutants.append(bad)
     bad = copy.deepcopy(data); bad['lessons'][1]['sections'][0]['paragraphs'][1] += ' So 9 ÷ 3 = 4.'; mutants.append(bad)
     bad = copy.deepcopy(data); bad['figures'][0]['scene']['elements'][0]['curves'][0]['domain'] = [-2, 4]; mutants.append(bad)
+    bad = copy.deepcopy(data); bad['worksheets'] = [s for s in bad['worksheets'] if s['templateId'] != 'linear-initial-value-meaning']; mutants.append(bad)
+    bad = copy.deepcopy(data); next(s for s in bad['worksheets'] if s['templateId'] == 'linear-initial-value-meaning')['problems'][0]['answer'] = 'wrong-choice'; mutants.append(bad)
     for mutant in mutants:
         try:
             review_linear_function_content(mutant)
-        except (ValueError, KeyError, TypeError, IndexError):
+        except (ValueError, KeyError, TypeError, IndexError, AssertionError):
             continue
         raise ValueError('Content mutant accepted')
     return len(mutants)
