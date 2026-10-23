@@ -23,7 +23,7 @@ ARG VITE_AMP_CLIENT_ID=""
 ARG VITE_AMP_SCOPES=""
 ARG VITE_AMP_RESOURCE=""
 # Type checking is CI's job; the image only bundles.
-RUN npx vite build
+RUN npx vite build && npm run build:public-pathways
 # The release this image is: the full source commit and the UTC build time,
 # passed by the deploy pipeline (public; see src/server/build-info.ts).
 # Declared after the bundle, so a new commit reuses every layer above. The web
@@ -55,4 +55,5 @@ CMD ["node_modules/.bin/tsx", "src/server/main.ts"]
 
 FROM nginxinc/nginx-unprivileged:1.27.5-alpine AS web
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/artifacts/pathways-nginx-map.conf /etc/nginx/conf.d/00-pathways-map.conf
 COPY --from=build /app/dist /usr/share/nginx/html

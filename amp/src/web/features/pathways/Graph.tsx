@@ -14,6 +14,8 @@ import {
   type Evidence,
 } from "./model";
 
+import { overviewCamera, overviewCallouts } from "./overview";
+
 type Props = {
   skills: MapSkill[];
   evidence: Evidence[];
@@ -28,6 +30,8 @@ type Label = {
   x: number;
   y: number;
   area?: boolean;
+  anchorX?: number;
+  anchorY?: number;
 };
 /** GPU-rendered atlas. Geometry is stable; continuous motion stops when hidden or reduced. */
 export function Graph({
@@ -39,6 +43,7 @@ export function Graph({
   rangeStrand,
 }: Props) {
   const host = useRef<HTMLDivElement>(null);
+  const labelHost = useRef<HTMLDivElement>(null);
   const selection = useRef(onSelect);
   selection.current = onSelect;
   const focus = useRef<(id: string, move?: boolean) => void>(() => {});
@@ -148,7 +153,12 @@ export function Graph({
       const earned = crystal(stats.get(p.skill.id));
       const color = colors[Math.max(0, neighborhood(p.skill))]!;
       const material = new THREE.MeshStandardMaterial({
-        color: earned.stage ? color : color.clone().multiplyScalar(0.42),
+        color: earned.stage
+          ? color
+          : color
+              .clone()
+              .lerp(new THREE.Color(paintRole("--atlas-light")), 0.22)
+              .multiplyScalar(0.8),
         emissive: color,
         emissiveIntensity: earned.intensity,
         metalness: 0.5,
@@ -166,6 +176,9 @@ export function Graph({
       earnedMemory.current.set(p.skill.id, earned.score);
       mesh.rotation.set(0.4, 0.5, 0.2);
       mesh.userData.id = p.skill.id;
+      mesh.userData.radius = [0.48, 0.72, 0.92, 1.12][earned.stage];
+      mesh.userData.score = earned.score;
+      mesh.userData.renderScale = motion ? fromScale : targetScale;
       scene.add(mesh);
       meshes.push(mesh);
       const sprite = new THREE.Sprite(
@@ -183,6 +196,7 @@ export function Graph({
       scene.add(sprite);
       glows.push(sprite);
     }
+    const areaCenters: THREE.Vector3[] = [];
     neighborhoods.forEach((_, i) => {
       const group = points.filter((p) => neighborhood(p.skill) === i);
       const center = group
@@ -191,6 +205,7 @@ export function Graph({
           new THREE.Vector3(),
         )
         .divideScalar(Math.max(1, group.length));
+      areaCenters.push(center.clone());
       const cloud = new THREE.Sprite(
         new THREE.SpriteMaterial({
           map: glowTexture,
@@ -363,33 +378,83 @@ export function Graph({
         visible: p.z > -1 && p.z < 1,
       };
     };
+    // Choose callouts in the fitted view once, then keep them in world space.
+    // Only six DOM positions follow the same camera as the canvas.
+    let areaPositions: THREE.Vector3[] = [];
+    const placeAreas = () => {
+      const fitted = overviewCamera(
+        points.map((p) => p.position),
+        width,
+        height,
+      );
+      const reference = camera.clone();
+      reference.position.set(...fitted.position);
+      reference.up.set(0, 1, 0);
+      reference.lookAt(new THREE.Vector3(...fitted.target));
+      reference.updateMatrixWorld();
+      const anchors = areaCenters.map((center, i) => {
+        const p = center.clone().project(reference);
+        return {
+          i,
+          x: ((p.x + 1) * width) / 2,
+          y: ((1 - p.y) * height) / 2,
+          z: p.z,
+        };
+      });
+      areaPositions = [];
+      for (const p of overviewCallouts(anchors, width, height))
+        areaPositions[p.i] = new THREE.Vector3(
+          (p.x / width) * 2 - 1,
+          1 - (p.y / height) * 2,
+          p.z,
+        ).unproject(reference);
+    };
+    const moveAreas = () => {
+      if (!labelHost.current) return;
+      camera.updateMatrixWorld();
+      areaPositions.forEach((position, i) => {
+        const label = labelHost.current!.querySelector<HTMLElement>(
+          `[data-area="${i}"]`,
+        );
+        const leader = labelHost.current!.querySelector<SVGLineElement>(
+          `[data-leader="${i}"]`,
+        );
+        if (!label || !leader) return;
+        const p = project(position),
+          anchor = project(areaCenters[i]!);
+        label.style.left = `${p.x}px`;
+        label.style.top = `${p.y}px`;
+        label.style.visibility = p.visible ? "visible" : "hidden";
+        leader.style.visibility =
+          p.visible && anchor.visible ? "visible" : "hidden";
+        leader.setAttribute("x1", String(anchor.x));
+        leader.setAttribute("y1", String(anchor.y));
+        leader.setAttribute("x2", String(p.x));
+        leader.setAttribute("y2", String(p.y));
+      });
+    };
+    let areaLabelsShown = false;
     const updateLabels = () => {
       // Projection must use this camera pose, not the preceding rendered frame.
       camera.updateMatrixWorld();
       const close = camera.position.distanceTo(controls.target) < 105;
       const result: Label[] = [];
-      if (!close && !current)
+      areaLabelsShown = !close || fitView;
+      if (!close || fitView) {
         neighborhoods.forEach((area, i) => {
-          const angle = (i * Math.PI) / 3;
-          const p = project(
-            new THREE.Vector3(Math.cos(angle) * 100, Math.sin(angle) * 85, 0),
-          );
-          if (
-            p.visible &&
-            p.x > 65 &&
-            p.x < width - 65 &&
-            p.y > 80 &&
-            p.y < height - 60
-          )
-            result.push({
-              id: `area-${i}`,
-              title: area.title,
-              x: p.x,
-              y: p.y,
-              area: true,
-            });
+          const p = project(areaPositions[i]!);
+          const anchor = project(areaCenters[i]!);
+          result.push({
+            id: `area-${i}`,
+            title: area.title,
+            ...p,
+            area: true,
+            anchorX: anchor.x,
+            anchorY: anchor.y,
+          });
         });
-      if (close || current) {
+      }
+      if (close && !fitView) {
         const candidates = [...points].sort(
           (a, b) =>
             Number(b.skill.id === current) - Number(a.skill.id === current),
@@ -437,11 +502,32 @@ export function Graph({
         updateLabels();
         labelsHidden = false;
         setLabelsMoving(false);
-      }, 140);
+      }, 70);
     };
     const paint = () => {
+      // Keep the smallest nodes legible in CSS pixels; earned size/glow remains separate.
+      const unitsPerPixel =
+        (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2))) / height;
+      for (const mesh of meshes) {
+        const pixels = mesh.userData.score
+          ? 2 + mesh.userData.score * 0.06
+          : 1.5;
+        const minimum =
+          (camera.position.distanceTo(mesh.position) * unitsPerPixel * pixels) /
+          mesh.userData.radius;
+        mesh.scale.setScalar(Math.max(mesh.userData.renderScale, minimum));
+      }
+      (lines.material as THREE.LineBasicMaterial).opacity = fitView
+        ? 0.38
+        : 0.65;
       ring.quaternion.copy(camera.quaternion);
       renderer.render(scene, camera);
+      if (
+        !areaLabelsShown &&
+        (fitView || camera.position.distanceTo(controls.target) >= 105)
+      )
+        updateLabels();
+      moveAreas();
     };
     const recolor = (id: string) => {
       current = id;
@@ -540,10 +626,15 @@ export function Graph({
     };
     reset.current = () => {
       fitView = true;
-      const z = Math.max(285, 285 / camera.aspect);
+      const overview = overviewCamera(
+        points.map((p) => p.position),
+        width,
+        height,
+      );
+      camera.up.set(0, 1, 0);
       tween = {
-        position: new THREE.Vector3(0, 0, z),
-        target: new THREE.Vector3(0, 0, 0),
+        position: new THREE.Vector3(...overview.position),
+        target: new THREE.Vector3(...overview.target),
       };
       if (!motion) {
         camera.position.copy(tween.position);
@@ -594,12 +685,24 @@ export function Graph({
       width = box.width;
       height = box.height;
       camera.aspect = width / height;
+      const fitted = overviewCamera(
+        points.map((p) => p.position),
+        width,
+        height,
+      );
+      controls.maxDistance = fitted.maxDistance;
+      camera.far = fitted.far;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
+      placeAreas();
       if (fitView) {
-        const z = Math.max(285, 285 / camera.aspect);
-        camera.position.set(0, 0, z);
-        controls.target.set(0, 0, 0);
+        const overview = overviewCamera(
+          points.map((p) => p.position),
+          width,
+          height,
+        );
+        camera.position.set(...overview.position);
+        controls.target.set(...overview.target);
         tween = null;
         controls.update();
       }
@@ -711,14 +814,19 @@ export function Graph({
             1 - THREE.MathUtils.clamp((time - growthStarted) / 700, 0, 1),
             3,
           );
-        growth.forEach(({ mesh, from, to }) =>
-          mesh.scale.setScalar(THREE.MathUtils.lerp(from, to, growthPhase)),
+        growth.forEach(
+          ({ mesh, from, to }) =>
+            (mesh.userData.renderScale = THREE.MathUtils.lerp(
+              from,
+              to,
+              growthPhase,
+            )),
         );
         if (tween) {
-          camera.position.lerp(tween.position, 0.12);
-          controls.target.lerp(tween.target, 0.12);
+          camera.position.lerp(tween.position, 0.22);
+          controls.target.lerp(tween.target, 0.22);
           controls.update();
-          if (camera.position.distanceTo(tween.position) < 0.025) {
+          if (camera.position.distanceTo(tween.position) < 0.1) {
             camera.position.copy(tween.position);
             controls.target.copy(tween.target);
             tween = null;
@@ -807,13 +915,33 @@ export function Graph({
     >
       <div ref={host} className="pathways-canvas" />
       <div
+        ref={labelHost}
         className="pathways-map-labels"
         data-moving={labelsMoving}
         aria-hidden="true"
       >
+        <svg className="pathways-label-leaders" aria-hidden="true">
+          {labels
+            .filter((l) => l.area)
+            .map((l) => (
+              <line
+                key={l.id}
+                data-leader={l.id.slice(5)}
+                x1={l.anchorX}
+                y1={l.anchorY}
+                x2={l.x}
+                y2={l.y}
+              />
+            ))}
+        </svg>
         {labels.map((l) =>
           l.area ? (
-            <span key={l.id} style={{ left: l.x, top: l.y }}>
+            <span
+              className="area-label"
+              data-area={l.id.slice(5)}
+              key={l.id}
+              style={{ left: l.x, top: l.y }}
+            >
               {l.title}
             </span>
           ) : (

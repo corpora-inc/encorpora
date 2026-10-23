@@ -291,11 +291,57 @@ test(
     }),
 );
 
-for (const [campaign, programId, jurisdiction, creative] of [
-  ["ar-efa-launch", "ar-efa", "AR", "shared-hook-ampd-portrait-v1"],
-  ["az-esa-launch", "az-esa", "AZ", "shared-hook-ampd-portrait-v1"],
-  ["ar-efa-launch", "ar-efa", "AR", "ar-premium-feed-v1"],
-  ["az-esa-launch", "az-esa", "AZ", "az-map-marin-vertical-v2"],
+for (const [campaign, programId, jurisdiction, creative, source, medium] of [
+  [
+    "ar-efa-launch",
+    "ar-efa",
+    "AR",
+    "shared-hook-ampd-portrait-v1",
+    "facebook",
+    "paid-social",
+  ],
+  [
+    "az-esa-launch",
+    "az-esa",
+    "AZ",
+    "shared-hook-ampd-portrait-v1",
+    "facebook",
+    "paid-social",
+  ],
+  [
+    "ar-efa-launch",
+    "ar-efa",
+    "AR",
+    "ar-premium-feed-v1",
+    "facebook",
+    "paid-social",
+  ],
+  [
+    "az-esa-launch",
+    "az-esa",
+    "AZ",
+    "az-map-marin-vertical-v2",
+    "facebook",
+    "paid-social",
+  ],
+  ["ar-efa-launch", "ar-efa", "AR", "ar-premium-efa-v1", "google", "cpc"],
+  [
+    "ar-efa-launch",
+    "ar-efa",
+    "AR",
+    "ar-premium-homeschool-v1",
+    "google",
+    "cpc",
+  ],
+  ["az-esa-launch", "az-esa", "AZ", "az-premium-esa-v1", "google", "cpc"],
+  [
+    "az-esa-launch",
+    "az-esa",
+    "AZ",
+    "az-premium-homeschool-v1",
+    "google",
+    "cpc",
+  ],
 ] as const)
   test(
     `funded campaign ${campaign}/${creative} counts settlement/refund once after credit activation`,
@@ -304,8 +350,8 @@ for (const [campaign, programId, jurisdiction, creative] of [
       fixture(async (pool) => {
         const campaignAttribution = {
           campaign,
-          source: "facebook",
-          medium: "paid-social",
+          source,
+          medium,
           creative,
         } as const;
         const campaignOffer = { ...offer, programId, jurisdiction };

@@ -43,11 +43,17 @@ in either state campaign; campaign and program labels must match the destination
 | `shared-premium-feed-v1` | General premium-price feed image |
 | `ar-premium-feed-v1` | Arkansas premium-price feed image |
 | `az-premium-feed-v1` | Arizona premium-price feed image |
+| `ar-premium-efa-v1` | Arkansas funded-intent premium Search ad |
+| `ar-premium-homeschool-v1` | Arkansas homeschool premium Search ad |
+| `az-premium-esa-v1` | Arizona funded-intent premium Search ad |
+| `az-premium-homeschool-v1` | Arizona homeschool premium Search ad |
 
-Migration `0047-live-map-creative-labels.sql` extends the database constraint
-without removing historical labels. Deploy that migration and compatible API
-and browser builds, including the marketing-site clients, before forwarding
-these labels or installing their ads.
+Migrations `0047-live-map-creative-labels.sql` and
+`0048-premium-search-creative-labels.sql` extend the database constraint without
+removing historical labels. Deploy the migrations and compatible API and browser
+builds, including the marketing-site clients, before forwarding these labels
+from live entry points or activating their ads. Paused ads can be installed for
+review before deployment; installation does not authorize traffic.
 An older strict API rejects an unknown creative; an older browser can discard it.
 Registering a label does not enable an offer, publish an ad or export a conversion.
 Keep exact asset hashes and platform IDs in the private campaign registry, and

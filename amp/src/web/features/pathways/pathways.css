@@ -120,6 +120,20 @@
   line-height: 1.6;
   margin: 0;
 }
+.pathways-guest-intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  font-size: 12px;
+  color: var(--atlas-muted);
+}
+.pathways-guest-intro p {
+  margin: 8px 0 0;
+}
+.pathways-guest-intro a {
+  margin-top: 8px;
+}
 .pathways-status {
   display: flex;
   justify-content: space-between;
@@ -198,15 +212,17 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 1;
-  transition: opacity 140ms ease;
 }
-.pathways-map-labels[data-moving="true"] {
+.pathways-map-labels .skill-label {
+  opacity: 1;
+  transition: opacity 80ms ease;
+}
+.pathways-map-labels[data-moving="true"] .skill-label {
   opacity: 0;
-  transition-duration: 60ms;
+  transition-duration: 40ms;
 }
 @media (prefers-reduced-motion: reduce) {
-  .pathways-map-labels {
+  .pathways-map-labels .skill-label {
     transition: none;
   }
 }
@@ -226,7 +242,7 @@
   text-transform: none;
   font-size: 11px;
   line-height: 1.35;
-  background: var(--atlas-surface);
+  background: transparent;
   padding: 4px 6px;
   border-radius: 6px;
   transform: translate(-50%, 12px);
@@ -321,20 +337,37 @@
   padding: 0;
   margin: 8px 0;
 }
-.pathways li button {
+.pathways li button,
+.pathways li a {
+  display: block;
   width: 100%;
   text-align: left;
   margin-bottom: 6px;
   line-height: 1.45;
   font-size: 12px;
+  min-height: 44px;
+  border: 1px solid var(--atlas-border);
+  border-radius: 10px;
+  background: var(--atlas-panel);
+  color: var(--atlas-on-panel);
+  padding: 10px 14px;
+  text-decoration: none;
 }
-.pathways li button small {
+.pathways li a:hover {
+  border-color: var(--atlas-muted);
+}
+.pathways li a[aria-current="page"] {
+  border-color: var(--atlas-accent);
+}
+.pathways li button small,
+.pathways li a small {
   display: block;
   font-size: 10px;
   color: var(--atlas-muted);
   margin-top: 4px;
 }
-.pathways-skill-list button {
+.pathways-skill-list button,
+.pathways-skill-list a {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -796,9 +829,6 @@
   .pathways-status label select {
     font-size: 12px;
   }
-  .pathways-map-labels span:not(.skill-label) {
-    display: none;
-  }
 }
 :root:fullscreen .pathways {
   width: 100vw;
@@ -978,6 +1008,37 @@
   }
 }
 
+/* On a phone, the selected skill is read by scrolling the page, not a card. */
+@media (max-width: 650px) {
+  .pathways.has-selection {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+  .pathways.has-selection .pathways-workspace {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    flex: none;
+  }
+  .pathways.has-selection .pathways-viewport {
+    height: 320px;
+    min-height: 0;
+    flex: none;
+  }
+  .pathways.has-selection .pathways-detail {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+    flex: none;
+  }
+  :root:fullscreen .pathways.has-selection {
+    height: 100dvh;
+    overflow: auto;
+  }
+}
+
 .pathways-earned > strong {
   white-space: nowrap;
   flex-shrink: 0;
@@ -1002,4 +1063,33 @@
     height: 100%;
     min-height: 0;
   }
+}
+
+.pathways-label-leaders {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.pathways-label-leaders line {
+  stroke: var(--atlas-muted);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+.pathways-map-labels .area-label {
+  width: 108px;
+  padding: 5px 4px;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--atlas-on-surface);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.pathways-map-labels span {
+  paint-order: stroke fill;
+  -webkit-text-stroke: 3px var(--atlas-surface);
+  text-shadow: 0 1px 4px var(--atlas-surface);
 }

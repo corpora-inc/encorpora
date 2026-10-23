@@ -55,6 +55,13 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "complex-multiplication",
+    facetId: "complex-numbers.core",
+    extent: "partial",
+    rationale:
+      "Select the exact product of two small integer-coefficient complex numbers in simplified standard form using distributivity and i² = −1, including signed, zero-real-part and cancellation cases. Does not assess addition, subtraction, nonreal quadratic roots, conjugates, division or geometric representation.",
+  },
+  {
     templateId: "quadratic-irrational-solutions",
     facetId: "quadratic-formula.core",
     extent: "partial",
