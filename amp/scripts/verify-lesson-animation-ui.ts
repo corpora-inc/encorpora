@@ -154,6 +154,11 @@ try {
       const panel = page.getByRole("region", { name: "Explore the example" });
       await panel.waitFor();
       await panel.scrollIntoViewIfNeeded();
+      if (i === start) {
+        // Let the lazy chunk load, then freeze JS time before its first 2,300ms phase ends.
+        const now = await page.evaluate(() => Date.now());
+        await page.clock.pauseAt(now + 500);
+      }
       const initial = await panel.boundingBox();
       assert(initial);
       assert.equal(await panel.getAttribute("data-step"), "0");
@@ -405,11 +410,28 @@ try {
         path: new URL(`${names[i]}-${width}-final.png`, output).pathname,
       });
       if (i === 0) {
-        await page.clock.runFor(2300);
+        await panel.scrollIntoViewIfNeeded();
+        await page.clock.runFor(100);
+        await page.waitForTimeout(100);
+        assert.equal(
+          await panel.getAttribute("data-visible"),
+          "true",
+          "Loop check requires a visible animation",
+        );
+        // The completed frame has a 3,200ms hold; CSS screenshot waits do not
+        // advance the paused JS clock. Cross the full hold, then prove the
+        // following frame advances on its own 2,300ms interval.
+        await page.clock.runFor(3300);
         assert.equal(
           await panel.getAttribute("data-step"),
           "0",
           "Loop did not restart",
+        );
+        await page.clock.runFor(2400);
+        assert.equal(
+          await panel.getAttribute("data-step"),
+          "1",
+          "Restarted loop did not advance",
         );
         await panel.evaluate((el) => {
           (el as HTMLElement).style.display = "none";
@@ -423,7 +445,7 @@ try {
         await page.clock.runFor(5000);
         assert.equal(
           await page.locator(".lesson-animation").getAttribute("data-step"),
-          "0",
+          "1",
           "Hidden animation kept cycling",
         );
         await page.locator(".lesson-animation").evaluate((el) => {
@@ -436,7 +458,7 @@ try {
         await page.clock.runFor(2400);
         assert.equal(
           await panel.getAttribute("data-step"),
-          "1",
+          "2",
           "Visible animation did not resume",
         );
         metrics.push({ width, looped: true, pausedWhileHidden: true });
