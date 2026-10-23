@@ -134,7 +134,7 @@ export const linearFunctionLessons: Lesson[] = [
     id: "linear-models",
     title: "Build linear models",
     summary:
-      "In a linear model, an input $x$ determines an output $y$. In $y=mx+b$, $b$ is the output when $x=0$, and $m$ is how much the output changes for each increase of 1 in the input. The model can also be solved for a stated total or limit.",
+      "A linear model starts with an amount and adds or subtracts the same change for each step. The starting amount and change per step let you predict later amounts or work backward from a total.",
     templateIds: [
       "linear-model-value",
       "linear-model-equation",
@@ -186,7 +186,7 @@ export const linearFunctionLessons: Lesson[] = [
     pitfalls: [
       "Do not multiply the one-time amount by the variable: the fee is paid once, the rate is paid for each unit.",
       "Do not add the fee and the rate into one rate: 3 dollars plus 2 dollars per mile is not 5 dollars per mile.",
-      "For “at most”, round down to a whole number that still fits; check it and the next one.",
+      "With a spending limit and a positive cost per item, round the item count down; check that one more would exceed the limit.",
     ],
     parentGuide:
       "Find a real price with a fixed part and a per-unit part (a phone plan, a delivery fee) and ask your learner to write the cost for $n$ units, then to find $n$ for a given bill. Ask what the graph would look like and where it would start.",
