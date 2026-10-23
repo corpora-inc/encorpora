@@ -1,7 +1,12 @@
+import {
+  quadraticIrrationalTemplate,
+  quadraticIrrationalCase,
+} from "./quadratic-irrational-practice";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 
 export const quadraticTemplates: readonly TemplateMetadata[] = [
+  quadraticIrrationalTemplate,
   {
     id: "quadratic-factored-solutions",
     title: "Solve a factored quadratic",
@@ -104,6 +109,8 @@ export function generateQuadraticProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (templateId === quadraticIrrationalTemplate.id)
+    return quadraticIrrationalCase(seed).problem;
   const meta = quadraticTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown quadratic template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
