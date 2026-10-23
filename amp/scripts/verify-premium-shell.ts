@@ -164,11 +164,11 @@ try {
       });
       await page.goto(`${origin}/sign-up`);
       await page
-        .getByRole("heading", { name: "Create your parent account" })
+        .getByRole("heading", { name: "Create your account" })
         .waitFor();
       await page.reload();
       await page
-        .getByRole("heading", { name: "Create your parent account" })
+        .getByRole("heading", { name: "Create your account" })
         .waitFor();
       assert.ok(page.url().endsWith("/sign-up"));
       await fits(page);

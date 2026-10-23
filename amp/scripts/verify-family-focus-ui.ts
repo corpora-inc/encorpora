@@ -169,9 +169,9 @@ try {
       });
     });
     await page.goto("http://127.0.0.1:4384");
-    await page.getByRole("button", { name: "Family menu" }).click();
+    await page.getByRole("button", { name: "Account menu" }).click();
     await page
-      .getByRole("menuitem", { name: "Manage family", exact: true })
+      .getByRole("menuitem", { name: "Manage account", exact: true })
       .click();
     await page.getByLabel("Family learner", { exact: true }).waitFor();
     assert.equal(await page.locator(".family-learner").count(), 1);

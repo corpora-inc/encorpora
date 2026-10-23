@@ -1,3 +1,4 @@
+import { AccountMenu } from "../account/AccountMenu";
 import { useQuery } from "@tanstack/react-query";
 import type { Step } from "../../../math/scene/timeline";
 import { Navigate, useNavigate, useSearch } from "@tanstack/react-router";
@@ -238,6 +239,7 @@ function Practice({ session }: { session: TrialSession }) {
         />
       )}
       <PracticeWorkspace
+        account={nativeRuntime ? undefined : <AccountMenu />}
         key={problem.id}
         problem={problem}
         meta={catalog.data?.templates.find((t) => t.id === problem.templateId)}
