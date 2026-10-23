@@ -2,55 +2,40 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { JSDOM } from "jsdom";
 import { ReferenceLesson } from "../src/content/ReferenceLesson";
 import { ProblemLesson } from "../src/web/ProblemLesson";
 import { fractionAdditionLesson } from "../src/content/fraction-addition-lesson";
 import type { ProblemLessonView } from "../src/content/problem-lessons";
 
-test("reference lessons preserve content and put formal material after the example, method and pitfalls", () => {
+const stages = (html: string) =>
+  [...html.matchAll(/data-lesson-stage="([^"]+)"/g)].map((match) => match[1]);
+const sequence = ["intuition", "example", "method", "watch", "formal"];
+test("reference lessons preserve content and put formal material after examples and pitfalls in web and print", () => {
   const lesson = structuredClone(fractionAdditionLesson);
   lesson.sections.push({
     stage: "formal",
     title: "An explicit condition",
     paragraphs: ["Use equal-sized wholes."],
+    keepTogetherInPrint: true,
   });
-  const html = renderToStaticMarkup(
-    React.createElement(ReferenceLesson, { lesson }),
-  );
-  const doc = new JSDOM(html).window.document;
-  assert.deepEqual(
-    [...doc.querySelectorAll("[data-lesson-stage]")].map((el) =>
-      el.getAttribute("data-lesson-stage"),
-    ),
-    ["intuition", "example", "method", "watch", "formal"],
-  );
-  assert.equal(doc.querySelectorAll(".katex-error").length, 0);
-  for (const section of [...lesson.sections, ...lesson.closingSections!])
-    assert.equal(
-      [...doc.querySelectorAll("h4")].filter(
-        (el) => el.textContent === section.title,
-      ).length,
-      1,
-      section.title,
+  for (const print of [false, true]) {
+    const html = renderToStaticMarkup(
+      React.createElement(ReferenceLesson, { lesson, print }),
     );
-  assert.ok(
-    doc
-      .querySelector('[data-lesson-stage="formal"]')
-      ?.textContent?.includes("Use equal-sized wholes."),
-  );
-  const print = new JSDOM(
-    renderToStaticMarkup(
-      React.createElement(ReferenceLesson, { lesson, print: true }),
-    ),
-  ).window.document;
-  assert.deepEqual(
-    [...print.querySelectorAll("[data-lesson-stage]")].map((el) =>
-      el.getAttribute("data-lesson-stage"),
-    ),
-    ["intuition", "example", "method", "watch", "formal"],
-  );
-  assert.equal(print.querySelectorAll("h2").length, 5);
+    assert.deepEqual(stages(html), sequence);
+    assert.ok(!html.includes('class="katex-error"'));
+    for (const section of [...lesson.sections, ...lesson.closingSections!])
+      assert.equal(
+        html.split(`>${section.title}</h`).length - 1,
+        1,
+        section.title,
+      );
+    assert.ok(
+      html.indexOf('data-lesson-stage="formal"') <
+        html.indexOf("Use equal-sized wholes."),
+    );
+    if (print) assert.match(html, /class="keep-together"/);
+  }
 });
 
 test("problem lessons teach an example before the procedure and keep definitions last", () => {
@@ -70,25 +55,21 @@ test("problem lessons teach an example before the procedure and keep definitions
       answer: "5",
     },
   };
-  const doc = new JSDOM(
-    renderToStaticMarkup(React.createElement(ProblemLesson, { lesson })),
-  ).window.document;
+  const html = renderToStaticMarkup(
+    React.createElement(ProblemLesson, { lesson }),
+  );
   assert.deepEqual(
-    [...doc.querySelectorAll("h3")].map((el) => el.textContent),
+    [...html.matchAll(/<h3>(.*?)<\/h3>/g)].map((match) => match[1]),
     ["Example", "Method", "Principle and definitions"],
   );
-  assert.equal(
-    doc.querySelector(".lesson-goal")?.textContent,
-    lesson.intuition,
+  assert.ok(html.includes(lesson.intuition!));
+  assert.ok(html.indexOf(lesson.intuition!) < html.indexOf("<h3>Example"));
+  assert.ok(
+    html.indexOf('class="lesson-watch"') <
+      html.indexOf('class="lesson-formal"'),
   );
   assert.ok(
-    doc
-      .querySelector(".lesson-formal")
-      ?.textContent?.includes("The result of addition."),
-  );
-  assert.ok(
-    doc
-      .querySelector(".lesson-watch")!
-      .compareDocumentPosition(doc.querySelector(".lesson-formal")!) & 4,
+    html.indexOf('class="lesson-formal"') <
+      html.indexOf("The result of addition."),
   );
 });

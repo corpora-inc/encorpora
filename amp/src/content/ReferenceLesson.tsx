@@ -29,7 +29,12 @@ export function ReferenceLesson({
     sections
       .filter((section) => section.stage === stage)
       .map((section, index) => (
-        <section key={`${section.title}:${index}`} className={print && section.keepTogetherInPrint ? "keep-together" : undefined}>
+        <section
+          key={`${section.title}:${index}`}
+          className={
+            print && section.keepTogetherInPrint ? "keep-together" : undefined
+          }
+        >
           <Subheading>{section.title}</Subheading>
           {section.paragraphs.map((paragraph, i) => (
             <p key={i}>
@@ -51,7 +56,7 @@ export function ReferenceLesson({
         {layer("intuition")}
       </div>
       <section className="example worked-example" data-lesson-stage="example">
-        <Heading>Example</Heading>
+        <Heading>A worked example</Heading>
         <p>
           <PrintMathText text={lesson.workedExample.prompt} />
         </p>

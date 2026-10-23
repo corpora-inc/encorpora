@@ -935,12 +935,27 @@ export const methods: Record<string, ProblemMethod> = {
   },
   "add-fractions": {
     goal: "Given two fractions, find their sum.",
-    method: [
-      "Rename both with a common denominator.",
-      "Add the numerators. Keep the denominator.",
-      "Simplify.",
+    intuition:
+      "To add fractions, first make their pieces the same size. The bottom number, called the denominator, tells how many equal pieces make one whole. The top number, called the numerator, counts the pieces you have. Once both fractions use the same-sized pieces, add their counts.",
+    terms: [
+      [
+        "denominator",
+        "The number of equal parts per whole; it determines the part size.",
+      ],
+      ["numerator", "The number of those parts being counted."],
+      [
+        "common denominator",
+        "One denominator used to express both fractions without changing either value.",
+      ],
     ],
-    watch: "Never add the denominators.",
+    method: [
+      "Choose a common multiple of the denominators. Multiplying them always gives one; a smaller common multiple can reduce the work.",
+      "Rename each fraction with that denominator, multiplying its top and bottom numbers by the same factor so its value stays unchanged.",
+      "Add the numerators and keep the shared denominator.",
+      "Simplify by dividing both numbers by a common whole-number factor greater than one, until none remains.",
+    ],
+    watch:
+      "Keep the whole the same size. Add the counts of equal-sized pieces, not their denominators.",
   },
   "unlike-fraction-difference": {
     goal: "Given two fractions with different denominators, find their difference.",
