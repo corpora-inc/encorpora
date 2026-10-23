@@ -172,3 +172,15 @@ Funded-pitch labels identify the state, authored concept, aspect ratio and media
 | AR | funded choice | `ar-funded-funded-choice-{format}-v3` |
 
 Arkansas routes use `ar-efa-launch` and `/esa/arkansas-efa/`; Arizona routes use `az-esa-launch` and `/esa/arizona-esa/`. The labels contain no learner or account information. Deploy the database migration, API contract and both site clients before using these URLs in ads.
+
+## Invoice-to-use cohorts
+
+`report:campaign` includes `arkansasCohort` and `arizonaCohort`. Each counts retained invoices created from the UTC start of the selected window through its reported `asOf` snapshot. Guest invoices and account-bound requests share one denominator; claiming an invoice does not count it twice. Unattributed invoices are included. These are counts of invoices and licenses, not unique parents or an ordered visitor funnel.
+
+The report separates unclaimed invoices, parent-reported submission, linked orders, program approval, bank settlement, issued grants, current usable access and observed use. A verified provider record waiting for an invoice claim is reported separately; it does not imply a settled order or an active learner. Approval may authorize access before settlement under the offer's delivery policy. Only verified settled money supports a paid conversion.
+
+Current usable access requires the exact learner's current projected grant, an undeleted learner and the same consent decision used by the product. Observed use means at least one retained server-recorded online answer for that learner after the activation evidence and import, within the grant term and before revocation. Pre-access trial work and sibling activity do not qualify. The settled-with-use count can include authorized practice before settlement and can overlap refunded orders; it is not net sales or another conversion. Overlapping grants may share observed activity, so counts do not establish which license caused practice.
+
+Activation mail counts distinguish provider acceptance, pending work, stopped work and issued grants with no mail record. Acceptance does not establish inbox delivery or an open. Waiting ages identify the oldest unclaimed invoice, approved order awaiting settlement and currently usable grant with no retained observed use. Ages are whole hours from the relevant retained creation/approval/activation evidence; null means no qualifying timing evidence.
+
+Expired unconverted invoices and erased learning history are absent. The report cannot reconstruct historical lead totals, offline use or educational outcomes. Its output contains only program/window metadata, aggregate counts and waiting ages. It emits no learner identifiers, answers, progress records or usage events to Google or Meta. Run it with the deployment's authorized database connection; no additional schema migration or platform credential is needed.

@@ -1,3 +1,4 @@
+import { fundedCohortSummary } from "../src/analytics/funded-cohort.js";
 import {
   arkansasOrderSummary,
   arkansasCashSummary,
@@ -34,6 +35,8 @@ try {
     GROUP BY v.utm_campaign,v.utm_source,v.utm_medium,e.event ORDER BY 1,2,3,4`,
     [days - 1],
   );
+  const arkansasCohort = await fundedCohortSummary(pool, days, "ar-efa-launch");
+  const arizonaCohort = await fundedCohortSummary(pool, days, "az-esa-launch");
   const arkansasOrders = await arkansasOrderSummary(pool, days);
   const arkansasCash = await arkansasCashSummary(pool, days);
   const arizonaOrders = await fundedOrderSummary(pool, days, "az-esa-launch");
@@ -54,6 +57,8 @@ try {
     JSON.stringify(
       {
         definitions: {
+          fundedCohorts:
+            "Retained invoice-created UTC cohorts through the report snapshot, including unattributed and unclaimed invoices. A claimed guest invoice counts once. Counts overlap and represent invoices/licenses, not unique parents. Provider evidence awaiting claim is not assumed to be settled money. Current usable access requires a current grant, an undeleted learner and the product's current consent decision. Observed use requires a retained server-recorded answer for the exact learner during the grant term, after activation was both evidenced and imported, and before revocation. Settled-with-use may include authorized practice before bank settlement; it is not a new conversion. No answers, learner identities, learning metrics or usage events are exported to ad platforms. Mail acceptance is provider acceptance, not inbox delivery. Waiting ages are whole hours, null when no retained timing evidence qualifies.",
           arkansasCash:
             "Verified ESA settlements and completed refunds linked to retained Arkansas funding requests, grouped by UTC evidence date, currency and optional fixed campaign labels. Amounts are exact integer strings in the currency minor unit. Null labels mean unattributed; null creative does not infer an ad. Net cash is gross minus completed refunds, not profit or recognized revenue. Never sum different currencies. No ad-platform export.",
           arizonaCash:
@@ -61,7 +66,7 @@ try {
           activity:
             "Daily page loads and link clicks, not unique people. Reloads and bots can count.",
           invoice_click:
-            "Opening an email link, not an invoice request, approved order, or sale.",
+            "Opening the invoice entry action (the form on current state pages; an email link on older pages), not proof of an invoice, submission, approval or sale.",
           funnel:
             "Existing AMP first-touch campaign events. Purchase means a server-verified Stripe purchase, not an ESA/ClassWallet order. No cross-domain visitor join; campaign totals only. Existing visitors may retain an earlier campaign.",
           fundedCampaign:
@@ -72,10 +77,13 @@ try {
         limitations: [
           "Cash reporting follows settlement/refund evidence dates, regardless of request creation or import date. Refunds for older payments can make a period negative. Pending refunds, approvals and license activation are excluded. Processor fees, ad spend and unlinked payments are excluded; this is not an account reconciliation or return-on-ad-spend calculation.",
           "State order totals are current states for retained funding requests created in the report window, not purchases attributed to an ad. Expired unconverted requests are deleted, so request counts are not historical lead totals.",
+          "Cohort observation is limited to retained invoices and online practice records. Expired unconverted invoices and erased learning history are not reconstructible. It does not prove learning outcomes, unique parent conversion, causal attribution, offline use or an ordered visitor funnel. A state-page visitor is not a verified scholarship participant.",
           "Retained offers establish state classification: ar-efa/AR for Arkansas and az-esa/AZ for Arizona. Unlinked commerce imports and email-only invoices are excluded.",
           "Prepared request records include submitted and cancelled records. Approved, settled, issued and refunded totals overlap; they are not additive sales.",
           "Funded campaign counts include only requests created with attribution. Existing requests are not backfilled. Count of settled orders is gross; refund_completed is distinct, not revenue or net sales. Requests and payments may occur in different report windows.",
         ],
+        arizonaCohort,
+        arkansasCohort,
         arizonaOrders,
         arizonaCash,
         arkansasOrders,
