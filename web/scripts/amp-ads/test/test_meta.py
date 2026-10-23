@@ -17,7 +17,7 @@ def specification():
         "publisher": "facebook", "placement": "feed", "daily_budget_cents": 100,
         "url": "https://corpora.inc/esa/arkansas-efa/",
         "primary_text": "Explore adaptive math. One license covers one learner.",
-        "headline": "Find their next step in math", "description": "Try up to 100 problems free.",
+        "headline": "Find your next step in math", "description": "Try up to 100 problems free.",
         "image": "image.png",
     }
 
