@@ -1,0 +1,95 @@
+.offer {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  text-align: left;
+}
+.visual {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  color: var(--atlas-on-surface);
+  background:
+    radial-gradient(ellipse at 75% 35%, var(--atlas-vignette), transparent 75%),
+    var(--atlas-surface);
+}
+.map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+}
+.caption {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  width: 150px;
+  display: grid;
+  gap: 3px;
+  padding-bottom: 12px;
+  background: linear-gradient(90deg, var(--atlas-surface), transparent);
+}
+.kicker {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--atlas-accent);
+}
+.caption strong {
+  font-size: 20px;
+  line-height: 1.15;
+  font-weight: 550;
+}
+.caption > span:last-child {
+  color: var(--atlas-muted);
+  font-size: 12px;
+}
+.footer {
+  min-height: 84px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+}
+.footer p {
+  margin: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  color: var(--color-muted-text);
+}
+.footer a,
+.footer button {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 4px;
+  border: 0;
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.footer a:focus-visible,
+.footer button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+@container (max-width: 360px) {
+  .visual {
+    height: 170px;
+  }
+  .footer {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .footer a,
+  .footer button {
+    margin-left: auto;
+  }
+}
