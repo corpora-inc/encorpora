@@ -1,3 +1,4 @@
+import { congruenceMethods } from "./congruence-lessons";
 import { assessmentGapMethods } from "./assessment-gap-lessons";
 import { radicalEquationMethods } from "./radical-equation-lessons";
 import { rationalEquationMethods } from "./rational-equation-lessons";
@@ -72,6 +73,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...exponentialMethods,
   ...probabilityRulesMethods,
   ...similarityTrigMethods,
+  ...congruenceMethods,
   ...coordinateCircleMethods,
   ...algebraStatisticsMethods,
   ...powerMethods,

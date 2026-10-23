@@ -1,3 +1,4 @@
+import { congruenceScenes } from "./congruence-lessons";
 import { quadraticIrrationalIllustrations } from "./quadratic-irrational-content";
 import { studyDesignIllustrations } from "./study-design-content";
 import { assessmentGapIllustrations } from "./assessment-gap-illustrations";
@@ -146,6 +147,7 @@ export const sceneIllustrations = {
     }),
   ...lessonScenes,
   ...similarityTrigScenes,
+  ...congruenceScenes,
   ...coordinateCircleScenes,
   ...powerScenes,
   ...statisticsModelScenes,
