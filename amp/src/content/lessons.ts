@@ -65,6 +65,7 @@ import { rightTriangleLessons } from "./right-triangle-lessons";
 import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
+import { complexLessons } from "./complex-lessons";
 import { absoluteValueLessons } from "./absolute-value-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
 import { algebraLessons } from "./algebra-lessons.js";
@@ -662,6 +663,7 @@ export const lessons: readonly Lesson[] = [
   ...descriptiveStatisticsLessons,
   ...rightTriangleLessons,
   ...quadraticLessons,
+  ...complexLessons,
   ...absoluteValueLessons,
   ...polynomialLessons,
   ...earlyDataLessons,

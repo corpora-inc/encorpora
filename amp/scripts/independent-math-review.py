@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
+from complex_math_oracle import SUPPORTED as COMPLEX, solve as solve_complex, review_problem as review_complex_problem, self_test as review_complex_fixtures
 from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_CHOICE, solve_rational_equation, review_rational_equation_fixtures, review_rational_equation_problem
 from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, review_geometry_proof_fixtures, review_geometry_proof_problem
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
@@ -100,6 +101,7 @@ SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIP
 SUPPORTED |= TRIANGLE_CONGRUENCE
 SUPPORTED |= QUADRATIC_IRRATIONAL
 SUPPORTED |= RELATION_REPAIR
+SUPPORTED |= COMPLEX
 SUPPORTED |= INVERSE_ROUNDING
 SUPPORTED |= STUDY_DESIGN
 SUPPORTED |= ASSESSMENT_GAP
@@ -195,6 +197,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if public["templateId"] in COMPLEX:
+        return solve_complex(public)
     if public["templateId"] in INVERSE_ROUNDING:
         return solve_inverse_rounding(public)
     if public["templateId"] in RELATION_REPAIR:
@@ -590,6 +594,8 @@ def review(stream):
             review_quadratic_irrational_problem(problem)
         if template in RELATION_REPAIR:
             review_relation_repair_problem(problem)
+        if template in COMPLEX:
+            review_complex_problem(problem)
         if template in INVERSE_ROUNDING:
             review_inverse_rounding_problem(problem)
         if template in STUDY_DESIGN:
@@ -655,7 +661,7 @@ def review(stream):
             review_rational_problem(problem)
             if record:
                 rational_corpus.record(public, solved)
-        if template in INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in COMPLEX | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -714,6 +720,7 @@ def review(stream):
     review_triangle_congruence_fixtures()
     review_quadratic_irrational_fixtures()
     review_relation_repair_fixtures()
+    review_complex_fixtures()
     review_inverse_rounding_fixtures()
     review_study_design_fixtures()
     review_assessment_gap_fixtures()
