@@ -227,6 +227,59 @@ export const algebraLessons: Lesson[] = [
       "Ask the learner to invent two routes that could make the same level distance-from-home graph. Then ask for a relation with repeated outputs that is a function and one with conflicting outputs that is not.",
   },
   {
+    id: "repair-a-plotted-function",
+    title: "Repair a relation on a graph",
+    summary:
+      "Find every single plotted point whose removal leaves one output for each input.",
+    templateIds: ["relation-point-removal"],
+    includeGeneratedRepresentation: false,
+    objectives: [
+      "Read the input and output of a labeled point on a coordinate grid.",
+      "Identify every one-point removal that makes a finite relation a function.",
+    ],
+    sections: [
+      {
+        title: "One output for each input",
+        paragraphs: [
+          "A relation is a collection of input–output pairs. On a coordinate grid, a point’s horizontal coordinate $x$ is its input and its vertical coordinate $y$ is its output. A function is a relation that gives each listed input exactly one output. Different inputs may share an output.",
+          "Two distinct points above the same $x$ have different outputs for that input, so the plotted relation is not a function. Removing a point repairs the relation only when the remaining points give no input two different outputs.",
+        ],
+      },
+    ],
+    workedExample: {
+      prompt:
+        "The plotted points are $A(-3,2)$, $B(1,-2)$, $C(1,3)$ and $D(4,0)$. Which single points could be removed to make the remaining relation a function?",
+      steps: [
+        "$B$ and $C$ both have input 1, but their outputs are $-2$ and 3. That is the only conflicting input.",
+        "Removing $B$ leaves $C$ as the only point with input 1. Removing $C$ leaves $B$ as the only point with input 1.",
+        "Removing $A$ or $D$ leaves both $B$ and $C$, so the conflict remains.",
+      ],
+      answer: "$B$ or $C$",
+    },
+    closingSections: [
+      {
+        title: "See the conflict on the grid",
+        paragraphs: [
+          "The figure plots the four points from the example. Follow the vertical grid line at $x=1$: it reaches both $B$ and $C$. Removing either point leaves one output at that input; the other two inputs already have one output each.",
+        ],
+        keepTogetherInPrint: true,
+        illustration: "assessment-function-repair",
+      },
+      {
+        title: "The exact condition",
+        paragraphs: [
+          "A finite relation is a function if and only if every input appearing in it has one output. If the only conflict is two points with one shared input and different outputs, removing either point repairs the relation. If several inputs have conflicts, removing one point may not repair them all. Check the entire remaining graph after each proposed removal.",
+        ],
+      },
+    ],
+    pitfalls: [
+      "Check every single-point removal: either member of one conflicting pair works.",
+      "Sharing an output is allowed; only one input with different outputs creates a conflict.",
+    ],
+    parentGuide:
+      "Plot two points with the same input and different outputs, plus two points at other inputs. Ask which single points could be removed and check each remaining graph together.",
+  },
+  {
     id: "plans-ties-and-thresholds",
     title: "A tie is not a better deal",
     summary:
