@@ -43,6 +43,10 @@ for (const [campaign, creative] of [
   ["az-esa-launch", "az-map-marin-vertical-v5"],
   ["ar-efa-launch", "shared-practice-marin-vertical-v1"],
   ["az-esa-launch", "az-practice-marin-vertical-v1"],
+  ["ar-efa-launch", "shared-map-zoom-modus-vertical-v1"],
+  ["az-esa-launch", "shared-map-zoom-modus-vertical-v1"],
+  ["ar-efa-launch", "ar-map-zoom-modus-vertical-v1"],
+  ["az-esa-launch", "az-map-zoom-modus-vertical-v1"],
 ] as const)
   test(
     `landing capture ${campaign}/${creative} returns a secure cookie and binds through the funding route`,

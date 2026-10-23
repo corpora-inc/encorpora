@@ -56,9 +56,13 @@ in either state campaign; campaign and program labels must match the destination
 | `shared-practice-marin-vertical-v1` | Shared AMP practice/hint/lesson walkthrough, Marin narration, portrait |
 | `ar-practice-marin-vertical-v1` | Arkansas EFA practice/hint/lesson walkthrough, Marin narration, portrait |
 | `az-practice-marin-vertical-v1` | Arizona ESA practice/hint/lesson walkthrough, Marin narration, portrait |
+| `shared-map-zoom-modus-vertical-v1` | Shared AMP map zoom/orbit teaser, music without narration, portrait |
+| `ar-map-zoom-modus-vertical-v1` | Arkansas EFA map zoom/orbit teaser, music without narration, portrait |
+| `az-map-zoom-modus-vertical-v1` | Arizona ESA map zoom/orbit teaser, music without narration, portrait |
 
 Migrations `0047-live-map-creative-labels.sql`,
-`0048-premium-search-creative-labels.sql` and `0050-video-creative-labels.sql`
+`0048-premium-search-creative-labels.sql`, `0050-video-creative-labels.sql`
+and `0051-map-teaser-creative-labels.sql`
 extend the database constraint without
 removing historical labels. Deploy the migrations and compatible API and browser
 builds, including the marketing-site clients, before forwarding these labels
@@ -148,4 +152,4 @@ but never journey credentials or raw advertising click identifiers.
 
 Use a distinct `utm_content` value for each authored cut. Keep `utm_campaign` tied to the target state, including when shared artwork is used in both states. The map and practice labels above identify different demonstrations; portrait and widescreen map cuts have separate labels. A change to narration, visuals or the offer requires a separately registered edition so performance does not mix with an older cut. Retain historical labels for existing purchase and refund records.
 
-Deploy the API and migration 0050 before publishing marketing clients or activating ads with these video labels. The browser clients discard unknown creative values; an older API rejects them. Registration does not upload media, select an ad, prove a paid conversion or activate spending. Ad identifiers and paid-delivery reports must be mapped to the authored label in the operator’s campaign records.
+Deploy the API and migrations through `0051-map-teaser-creative-labels.sql` before publishing marketing clients or activating ads with these video labels. The browser clients discard unknown creative values; an older API rejects them. Registration does not upload media, select an ad, prove a paid conversion or activate spending. Ad identifiers and paid-delivery reports must be mapped to the authored label in the operator’s campaign records.

@@ -78,6 +78,9 @@ export const CAMPAIGN_CREATIVES = [
   "shared-practice-marin-vertical-v1",
   "ar-practice-marin-vertical-v1",
   "az-practice-marin-vertical-v1",
+  "shared-map-zoom-modus-vertical-v1",
+  "ar-map-zoom-modus-vertical-v1",
+  "az-map-zoom-modus-vertical-v1",
 ] as const;
 export const campaignEventSchema = z
   .strictObject({
