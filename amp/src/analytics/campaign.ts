@@ -111,6 +111,10 @@ export const CAMPAIGN_CREATIVES = [
   "ar-funded-funded-choice-portrait-v3",
   "ar-funded-funded-choice-feed-v3",
   "ar-funded-funded-choice-wide-v3",
+  "ar-funded-pmax-child-v1",
+  "ar-funded-pmax-planning-v1",
+  "az-funded-pmax-child-v1",
+  "az-funded-pmax-planning-v1",
 ] as const;
 export const campaignEventSchema = z
   .strictObject({
