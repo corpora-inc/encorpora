@@ -46,7 +46,8 @@ in either state campaign; campaign and program labels must match the destination
 
 Migration `0047-live-map-creative-labels.sql` extends the database constraint
 without removing historical labels. Deploy that migration and compatible API
-and browser builds before forwarding these labels or installing their ads.
+and browser builds, including the marketing-site clients, before forwarding
+these labels or installing their ads.
 An older strict API rejects an unknown creative; an older browser can discard it.
 Registering a label does not enable an offer, publish an ad or export a conversion.
 Keep exact asset hashes and platform IDs in the private campaign registry, and
