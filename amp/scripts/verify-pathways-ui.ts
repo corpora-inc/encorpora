@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
@@ -380,6 +382,32 @@ async function verifySettledLabels(page: Page, animated = false) {
   }
 }
 async function verifyLessonRecovery() {
+  // Exercise the shared fallback for future per-skill URLs without adding a production route.
+  const { RouteError } = await vite.ssrLoadModule(
+    "/src/web/ui/LoadingScreen.tsx",
+  );
+  const previousWindow = Object.getOwnPropertyDescriptor(globalThis, "window");
+  try {
+    Object.defineProperty(globalThis, "window", {
+      configurable: true,
+      value: {
+        location: new URL(`${origin}/pathways/some-skill?context=trial`),
+      },
+    });
+    const html = renderToStaticMarkup(
+      createElement(RouteError, {
+        error: new Error("synthetic"),
+        reset: () => {},
+      }),
+    );
+    assert.match(html, /href="\/pathways\?context=trial"/);
+    assert.match(html, /Reload page/);
+    assert.doesNotMatch(html, /Try again/);
+  } finally {
+    if (previousWindow)
+      Object.defineProperty(globalThis, "window", previousWindow);
+    else Reflect.deleteProperty(globalThis, "window");
+  }
   for (const failure of ["chunk", "render", "api", "route"] as const) {
     const page = await browser.newPage({
       viewport: { width: 390, height: 844 },

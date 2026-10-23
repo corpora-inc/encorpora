@@ -46,7 +46,9 @@ export function RouteError({
   error: unknown;
   reset: () => void;
 }) {
-  const pathways = window.location.pathname === "/pathways";
+  const pathways =
+    window.location.pathname === "/pathways" ||
+    window.location.pathname.startsWith("/pathways/");
   const mapHref =
     new URLSearchParams(window.location.search).get("context") === "trial"
       ? "/pathways?context=trial"
