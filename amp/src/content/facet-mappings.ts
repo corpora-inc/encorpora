@@ -53,6 +53,13 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  {
+    templateId: "quadratic-irrational-solutions",
+    facetId: "quadratic-formula.core",
+    extent: "partial",
+    rationale:
+      "Recognize both distinct irrational real roots of bounded integer-coefficient quadratics in simplified radical form, including signed nonmonic coefficients. Does not assess constructing symbolic responses, formula derivation, rational coefficients, repeated roots or complex solutions.",
+  },
   ...assessmentGapFacetMappings,
   {
     templateId: "radical-equation-isolated",
