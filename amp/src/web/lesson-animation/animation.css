@@ -104,6 +104,14 @@
   min-height: 48px;
   font-size: 1.25rem;
 }
+.animation-pair-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.3em;
+}
+.animation-pair {
+  white-space: nowrap;
+}
 .lesson-animation[data-reduced="true"] .animation-copy {
   display: flex;
   flex-direction: column;

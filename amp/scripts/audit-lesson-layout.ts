@@ -232,6 +232,10 @@ try {
           if (card.querySelector(".katex-error"))
             found.push("KaTeX parse error");
           const visible = (element: Element) => {
+            // Screen-reader transcripts are clipped to a 1px region. Their
+            // mathematical descendants have large DOM rects but no pixels in
+            // the lesson card.
+            if (element.closest(".animation-transcript")) return false;
             const rect = element.getBoundingClientRect();
             for (
               let node: Element | null = element;

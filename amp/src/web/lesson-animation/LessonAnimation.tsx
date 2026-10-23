@@ -114,6 +114,31 @@ function Stage({ model, step }: { model: AnimationModel; step: number }) {
   }
 }
 
+/** Keep each ordered pair together, but let a list wrap between pairs. */
+function CaptionMath({ math }: { math: string }) {
+  const text = /^\$\\text\{([^{}]+)\}\$$/.exec(math);
+  if (text) return <>{text[1]}</>;
+  const normalized = math.replace(/\\ /g, " ");
+  if (normalized.startsWith("$") && normalized.endsWith("$")) {
+    const inner = normalized.slice(1, -1);
+    const pairs = inner.match(
+      /\([+−-]?\d+(?:\.\d+)?,\s*[+−-]?\d+(?:\.\d+)?\)/g,
+    );
+    if (pairs && pairs.length > 1 && pairs.join(", ") === inner)
+      return (
+        <span className="animation-pair-list">
+          {pairs.map((pair, index) => (
+            <span key={`${pair}-${index}`} className="animation-pair">
+              <MathText text={`$${pair}$`} />
+              {index < pairs.length - 1 ? "," : ""}
+            </span>
+          ))}
+        </span>
+      );
+  }
+  return <MathText text={math} />;
+}
+
 export default function LessonAnimation({ model }: { model: AnimationModel }) {
   const panelRef = useRef<HTMLElement>(null);
   const [reduced, setReduced] = useState(
@@ -196,7 +221,7 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
             <h4>{frame.title}</h4>
             <p>{frame.text}</p>
             <p className="animation-equation">
-              <MathText text={frame.math} />
+              <CaptionMath math={frame.math} />
             </p>
           </div>
         ))}
@@ -206,7 +231,7 @@ export default function LessonAnimation({ model }: { model: AnimationModel }) {
           {frames.map((frame, index) => (
             <li key={index}>
               <strong>{frame.title}.</strong> {frame.text}{" "}
-              <MathText text={frame.math} />
+              <CaptionMath math={frame.math} />
             </li>
           ))}
         </ol>

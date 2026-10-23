@@ -48,6 +48,9 @@ for (const id of [
   "balanced-addition",
   "unknown-addend-story",
   "three-addend-story",
+  "parallel-lines-angle",
+  "related-patterns-relationship",
+  "dependent-variable-equation",
 ])
   lessons.push(problemLesson(id, "animation-review"));
 const names = [
@@ -66,10 +69,15 @@ const names = [
   "balanced-addition",
   "unknown-addend-story",
   "three-addend-story",
+  "parallel-lines-angle",
+  "related-patterns-relationship",
+  "dependent-variable-equation",
 ];
 assert.equal(lessons.length, names.length);
 const limit = Number(process.env.AMP_ANIMATION_LIMIT ?? lessons.length);
 assert(Number.isInteger(limit) && limit > 0 && limit <= lessons.length);
+const start = Number(process.env.AMP_ANIMATION_START ?? 0);
+assert(Number.isInteger(start) && start >= 0 && start < limit);
 const entry = `
 import React from 'react';
 import {createRoot} from 'react-dom/client';
@@ -139,7 +147,9 @@ try {
       !requests.some((url) => url.includes("/LessonAnimation.tsx")),
       "Animation loaded before lesson opened",
     );
-    for (let i = 0; i < limit; i++) {
+    for (let skipped = 0; skipped < start; skipped++)
+      await page.getByRole("button", { name: "Open next lesson" }).click();
+    for (let i = start; i < limit; i++) {
       await page.getByRole("button", { name: "Open next lesson" }).click();
       const panel = page.getByRole("region", { name: "Explore the example" });
       await panel.waitFor();
@@ -149,10 +159,35 @@ try {
       assert.equal(await panel.getAttribute("data-step"), "0");
       assert.equal(await panel.getByRole("button").count(), 0);
       assert.equal(await panel.locator(".animation-transcript li").count(), 3);
+      if (
+        names[i] === "related-patterns-relationship" ||
+        names[i] === "dependent-variable-equation"
+      ) {
+        assert.equal(
+          await panel.locator(".animation-copy .animation-pair").count(),
+          names[i] === "related-patterns-relationship" ? 5 : 4,
+        );
+        assert(
+          await panel
+            .locator(".animation-frame:visible .animation-equation")
+            .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
+          "Ordered-pair caption requires horizontal scrolling",
+        );
+        await panel.screenshot({
+          path: new URL(`${names[i]}-${width}-initial.png`, output).pathname,
+        });
+      }
       await page.clock.runFor(100);
       assert.equal(await panel.getAttribute("data-visible"), "true");
       await page.clock.runFor(2400);
       assert.equal(await panel.getAttribute("data-step"), "1");
+      if (names[i] === "parallel-lines-angle")
+        assert(
+          await panel
+            .locator(".animation-frame:visible .animation-equation")
+            .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
+          "Plain-language caption requires horizontal scrolling",
+        );
       await page.clock.runFor(900);
       await page.waitForTimeout(850);
       await panel.screenshot({
@@ -515,7 +550,7 @@ try {
     JSON.stringify(metrics, null, 2),
   );
   console.log(
-    `Lesson animations: ${limit} examples across 3 widths; control-free visible loop, hidden pause, lazy loading, geometry, overflow, reduced-motion captions, and ${limit * 6} motion screenshots passed.`,
+    `Lesson animations: ${limit - start} examples across 3 widths; control-free visible loop, hidden pause, lazy loading, geometry, overflow, reduced-motion captions, and ${(limit - start) * 6} motion screenshots passed.`,
   );
   console.log(JSON.stringify(metrics));
 } finally {

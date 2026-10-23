@@ -46,7 +46,11 @@ function CaseView({ value }: { value: Case }) {
   window.layoutReady = problem.public.id;
   window.layoutFeedback = (correct, skipped = false) => {
     const format = problem.public.response;
-    let wrong = problem.answer === "0" ? "1" : "0";
+    // Zero may be written as a decimal or a fraction in a generated answer.
+    const zero = /^[+-]?0+(?:\.0+)?(?:\s*\/\s*[+-]?\d+)?$/.test(
+      problem.answer.trim().replaceAll("−", "-"),
+    );
+    let wrong = zero ? "1" : "0";
     if (format.kind === "choice")
       wrong = format.options.find((o) => o.id !== problem.answer)!.id;
     if (format.kind === "multi-select") {
