@@ -53,9 +53,9 @@ export const assessmentSample: readonly AssessmentSampleItem[] = [
     sourceId: "mcas-2025-5",
     item: "4; printed p.7",
     requirement: "Find an input producing a rounded decimal",
-    templateIds: ["round-decimal"],
+    templateIds: ["round-decimal", "inverse-round-decimal"],
     limitations:
-      "Forward rounding exists; inverse rounding and interval endpoints need dedicated practice.",
+      "One-choice inverse rounding to a tenth or hundredth is assessed with half-up boundaries. General inverse intervals and multi-select responses are unassessed.",
   },
   {
     sourceId: "mcas-2025-5",
@@ -221,9 +221,13 @@ export const assessmentSample: readonly AssessmentSampleItem[] = [
     sourceId: "sat-framework-2026",
     item: "Appendix B, Table A37; PDF p.201",
     requirement: "Distinguish sampling and random assignment",
-    templateIds: ["representative-sample-choice", "study-design-choice"],
+    templateIds: [
+      "representative-sample-choice",
+      "study-design-choice",
+      "scope-of-inference-choice",
+    ],
     limitations:
-      "Reuses existing families; joint population-generalization and causal conclusions require further explicit cases.",
+      "One-choice cases distinguish sampling from assignment and their joint population-generalization and causal conclusions. Written study design, nonresponse and compliance effects, and statistical-significance calculations require separate practice.",
   },
 ];
 export function buildAssessmentSampleAudit(templateIds: readonly string[]) {

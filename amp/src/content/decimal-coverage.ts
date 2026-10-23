@@ -24,9 +24,10 @@ export const decimalFacetMappings: readonly FacetMapping[] = [
       "expanded-decimal",
       "compare-decimals-thousandths",
       "round-decimal",
+      "inverse-round-decimal",
     ],
     "decimal-place-value.thousandths-read-compare-round",
-    "Numeric responses assess digit value, expanded form, comparison and rounding to thousandths. Reading decimal number names and powers-of-ten patterns require separate assessment.",
+    "Numeric responses assess digit value, expanded form, comparison and forward rounding to thousandths. One-choice responses assess which positive decimal rounds to a given tenth or hundredth. General inverse intervals, decimal number names and powers-of-ten patterns require separate assessment.",
   ),
   ...scope(
     [
