@@ -6,7 +6,7 @@ export const factsLessons: Lesson[] = [
     id: "facts-to-five",
     title: "Facts to five",
     summary:
-      "Every pair of parts that makes a number up to five gives one addition fact and one subtraction fact.",
+      "A small group can be split into two parts and joined again to make the same whole.",
     templateIds: ["facts-to-five"],
     objectives: [
       "Add and subtract within five without counting from one.",
@@ -61,7 +61,7 @@ export const factsLessons: Lesson[] = [
     id: "counting-arithmetic",
     title: "Counting on adds; counting back subtracts",
     summary:
-      "Each number said after the start is one step, so counting on 3 adds 3 and counting back 3 subtracts 3.",
+      "Each new number you say after the start is one more step forward or backward.",
     templateIds: ["count-on-back", "counted-steps"],
     objectives: [
       "Add or subtract a small number by counting on or back from the start.",
@@ -116,7 +116,7 @@ export const factsLessons: Lesson[] = [
     id: "make-ten-facts",
     title: "Make ten to add and subtract within twenty",
     summary:
-      "Ten is a stopping place: fill a ten first, then add or take away the rest.",
+      "A full ten makes an easy stopping point for adding or taking away.",
     templateIds: ["make-ten-fact", "related-subtraction"],
     objectives: [
       "Add two one-digit numbers by completing a ten.",

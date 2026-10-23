@@ -3,7 +3,8 @@ export const graphicalLessons: Lesson[] = [
   {
     id: "coordinate-reading",
     title: "Read a point on a coordinate grid",
-    summary: "Use the horizontal and vertical scales to describe a location.",
+    summary:
+      "Read how far a point lies across from zero and how far it lies up or down.",
     templateIds: ["coordinate-point-reading"],
     objectives: [
       "Identify horizontal and vertical coordinates.",
@@ -118,7 +119,8 @@ export const graphicalLessons: Lesson[] = [
   {
     id: "bar-chart-totals",
     title: "Combine counts from a chart",
-    summary: "Read category values before finding a total.",
+    summary:
+      "Each bar shows one category's count; add the requested categories to find a total.",
     templateIds: ["bar-chart-total"],
     objectives: [
       "Read category labels and value scales.",
@@ -172,7 +174,8 @@ export const graphicalLessons: Lesson[] = [
   {
     id: "bar-chart-comparison",
     title: "Compare two chart categories",
-    summary: "A difference tells how much one count exceeds another.",
+    summary:
+      "The difference between two bars tells how many more one category has.",
     templateIds: ["bar-chart-difference"],
     objectives: [
       "Select the two categories named in a question.",
@@ -226,7 +229,8 @@ export const graphicalLessons: Lesson[] = [
   {
     id: "clock-duration",
     title: "Count elapsed minutes",
-    summary: "Measure how much time passes between a start and an end.",
+    summary:
+      "Count forward from the starting clock time to the ending time to find how long passed.",
     templateIds: ["clock-elapsed-minutes"],
     objectives: [
       "Read an analog starting time.",
@@ -284,7 +288,8 @@ export const graphicalLessons: Lesson[] = [
   {
     id: "number-line-separation",
     title: "Distance between signed numbers",
-    summary: "Count intervals between two locations on a number line.",
+    summary:
+      "The spaces between two points show how far apart the numbers are.",
     templateIds: ["number-line-distance"],
     objectives: [
       "Locate signed integers.",

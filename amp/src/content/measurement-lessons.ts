@@ -5,7 +5,7 @@ export const measurementLessons: Lesson[] = [
     id: "length-between-two-positions",
     title: "Measure the spaces between the ends",
     summary:
-      "Read whole and fractional ruler intervals, even when the object starts away from zero.",
+      "A ruler shows where an object's ends are; the spaces between them give its length.",
     templateIds: ["shifted-ruler-length", "fractional-ruler-length"],
     objectives: [
       "Distinguish a position from a length.",
@@ -74,7 +74,7 @@ export const measurementLessons: Lesson[] = [
     id: "border-and-cover-are-different",
     title: "Walk the border, cover the inside",
     summary:
-      "Connect rectangle side lengths, perimeter and area without confusing their units or comparisons.",
+      "The distance around a shape and the space inside it answer different questions.",
     templateIds: [
       "rectangle-border-length",
       "rectangle-missing-border-side",
@@ -152,7 +152,7 @@ export const measurementLessons: Lesson[] = [
     id: "same-length-different-unit",
     title: "Rename the length before combining it",
     summary:
-      "Use metric relationships in either direction, then combine measurements expressed in a common unit.",
+      "A length stays fixed when you rename it in smaller or larger units.",
     templateIds: [
       "metric-length-rename",
       "metric-length-reverse",
@@ -228,7 +228,7 @@ export const measurementLessons: Lesson[] = [
     id: "rectangles-with-two-conditions",
     title: "Find every candidate, then test the conditions",
     summary:
-      "Use a complete list of positive whole-number factor pairs to justify rectangle choices and impossibility claims.",
+      "Several pairs of side lengths can cover the same area; check each pair against the other requirement.",
     templateIds: [
       "rectangle-two-constraints-choice",
       "rectangle-existence-choice",
@@ -301,7 +301,7 @@ export const measurementLessons: Lesson[] = [
     id: "buy-enough-compare-the-bills",
     title: "Compare the bill for enough material",
     summary:
-      "Distinguish whole-pack purchases from divisible lengths and account for the cost of unused material.",
+      "When material comes only in whole packs, buy enough packs and count the cost of all of them.",
     templateIds: ["whole-pack-ribbon-choice"],
     objectives: [
       "Find the smallest whole pack count supplying enough length.",

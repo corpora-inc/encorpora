@@ -4,7 +4,8 @@ export const elementaryLessons: Lesson[] = [
   {
     id: "small-group-changes",
     title: "Join a group and take some away",
-    summary: "Use objects to show what addition and subtraction do.",
+    summary:
+      "Putting objects together makes a larger group; taking some away leaves a smaller one.",
     templateIds: ["join-within-10", "take-away-within-10"],
     objectives: [
       "Show two parts joining into one group.",
@@ -61,7 +62,8 @@ export const elementaryLessons: Lesson[] = [
   {
     id: "parts-and-ten",
     title: "Find the missing part",
-    summary: "A whole can be split into parts, and ten is a useful whole.",
+    summary:
+      "Moving objects into two groups does not change how many there are altogether.",
     templateIds: ["number-bond-missing", "ten-frame-complement"],
     objectives: [
       "Find a missing part when the whole and one part are known.",
@@ -120,7 +122,7 @@ export const elementaryLessons: Lesson[] = [
   {
     id: "tens-and-extra-ones",
     title: "One ten and extra ones",
-    summary: "Make bundles of ten and keep track of the ones left over.",
+    summary: "A full group of ten and some loose ones make a teen number.",
     templateIds: ["teen-frame-compose", "tens-ones-model"],
     objectives: [
       "Compose teen numbers from ten and extra ones.",
@@ -177,7 +179,8 @@ export const elementaryLessons: Lesson[] = [
   {
     id: "unknown-story-parts",
     title: "What happened in the story?",
-    summary: "Find a missing change or a missing starting amount.",
+    summary:
+      "The start, the change, and the end of a story fit together; two known amounts can reveal the missing one.",
     templateIds: ["unknown-addend-story", "missing-start-story"],
     objectives: [
       "Recover how many were added.",
@@ -237,7 +240,7 @@ export const elementaryLessons: Lesson[] = [
   {
     id: "equal-both-sides",
     title: "Both sides have the same value",
-    summary: "The equal sign says that two amounts match.",
+    summary: "The equal sign connects two ways of naming the same amount.",
     templateIds: ["balanced-addition"],
     objectives: [
       "Interpret equality as a relationship.",
@@ -296,7 +299,8 @@ export const elementaryLessons: Lesson[] = [
   {
     id: "several-addends",
     title: "Combine several groups",
-    summary: "Choose helpful groups while keeping every addend.",
+    summary:
+      "Join the easiest pair of groups first, then include every group that is left.",
     templateIds: ["three-addend-story", "add-several-two-digit"],
     objectives: [
       "Add three small quantities.",
@@ -355,7 +359,7 @@ export const elementaryLessons: Lesson[] = [
     id: "crossing-ten",
     title: "Stop at ten",
     summary:
-      "Split a change into a part that reaches ten and a part that continues.",
+      "When a count crosses ten, reach ten first and then continue with what remains.",
     templateIds: ["make-ten-remainder", "subtract-through-ten"],
     objectives: [
       "Decompose an addend to make ten.",
@@ -414,7 +418,7 @@ export const elementaryLessons: Lesson[] = [
     id: "change-tens-and-ones",
     title: "Change tens and ones",
     summary:
-      "Use bundles of ten to add and subtract without recounting everything.",
+      "Adding or subtracting a whole ten changes the number of tens while the loose ones stay the same.",
     templateIds: [
       "ten-more-or-less",
       "add-ones-regroup",
@@ -477,7 +481,7 @@ export const elementaryLessons: Lesson[] = [
     id: "hundreds-and-exchanges",
     title: "Hundreds, tens, and ones",
     summary:
-      "Read larger quantities and exchange equal amounts between places.",
+      "Ten tens and one hundred are the same amount in different bundles.",
     templateIds: [
       "hundreds-model",
       "expanded-form-missing",
@@ -540,7 +544,8 @@ export const elementaryLessons: Lesson[] = [
   {
     id: "three-digit-regrouping",
     title: "Exchange to add and subtract",
-    summary: "Use the same value in a more helpful grouping.",
+    summary:
+      "Trade ten smaller place-value pieces for one larger piece without changing the amount.",
     templateIds: ["add-with-regrouping", "subtract-with-regrouping"],
     objectives: [
       "Exchange groups of ten while adding.",
@@ -597,7 +602,8 @@ export const elementaryLessons: Lesson[] = [
   {
     id: "counting-steps",
     title: "Keep a steady counting step",
-    summary: "Continue a sequence by adding the same amount.",
+    summary:
+      "A repeating step takes you from each number in a pattern to the next.",
     templateIds: ["continue-count-to-120", "skip-count-missing"],
     objectives: [
       "Count on by ones through 120.",
@@ -654,7 +660,8 @@ export const elementaryLessons: Lesson[] = [
   {
     id: "two-changes",
     title: "Follow two changes in order",
-    summary: "Find an amount after one change, then use it for the next.",
+    summary:
+      "After the first change in a story, use that new amount as the start of the second change.",
     templateIds: ["two-step-change"],
     objectives: [
       "Represent a two-step joining and separating story with two calculations.",

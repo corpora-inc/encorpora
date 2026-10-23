@@ -13,8 +13,7 @@ export const partWholeLessons: Lesson[] = [
   {
     id: "halves-and-quarters",
     title: "Halves and quarters",
-    summary:
-      "Equal parts of one whole get a name from how many there are: 2 halves, 4 quarters.",
+    summary: "Cut one whole into equal pieces to make halves or quarters.",
     templateIds: ["find-equal-shares", "name-equal-share", "larger-share"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -76,8 +75,7 @@ export const partWholeLessons: Lesson[] = [
   {
     id: "halves-thirds-and-quarters",
     title: "Halves, thirds and quarters",
-    summary:
-      "Equal shares of the same whole can look different and still be the same amount.",
+    summary: "Different cuts can show the same share of one whole.",
     templateIds: [
       "find-equal-thirds",
       "name-share",
@@ -144,7 +142,7 @@ export const partWholeLessons: Lesson[] = [
     id: "equal-area-parts",
     title: "Equal area, equal fraction",
     summary:
-      "When a shape is split into parts with equal area, each part is the same unit fraction of the whole.",
+      "Pieces can have different outlines but each cover the same amount of a whole shape.",
     templateIds: ["equal-area-fraction", "equal-area-part-size"],
     includeGeneratedRepresentation: false,
     objectives: [

@@ -5,7 +5,7 @@ export const extendedLessons: Lesson[] = [
     id: "digit-value",
     title: "A digit gets its value from its place",
     summary:
-      "Base-ten place value groups ones into tens and tens into hundreds.",
+      "Ten ones make a ten, and ten tens make a hundred; each place holds a different-sized bundle.",
     templateIds: ["place-value-digit"],
     objectives: [
       "Identify ones, tens and hundreds.",
@@ -16,7 +16,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Build larger bundles",
         paragraphs: [
-          "Ten ones make one ten, and ten tens make one hundred. In 352, the three counts hundreds, the five counts tens, and the two counts ones. Each digit gets its value from its place.",
+          "Ten ones make one ten, and ten tens make one hundred.",
+          "In 352, the three counts hundreds, the five counts tens, and the two counts ones. Each digit gets its value from its place.",
         ],
       },
       {
@@ -59,7 +60,7 @@ export const extendedLessons: Lesson[] = [
     id: "adding-decimals",
     title: "Add matching decimal places",
     summary:
-      "Decimal addition combines quantities expressed in the same place-value units.",
+      "Add tenths to tenths and hundredths to hundredths, just as you add ones to ones.",
     templateIds: ["decimal-addition"],
     objectives: [
       "Align decimal places.",
@@ -70,7 +71,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Join matching parts",
         paragraphs: [
-          "One and two tenths plus three tenths is one and five tenths. Adding tenths to tenths works just like adding ones to ones. Keep the decimal places lined up so the parts you join are the same size.",
+          "One and two tenths plus three tenths is one and five tenths.",
+          "Adding tenths to tenths works just like adding ones to ones. Keep the decimal places lined up so the parts you join are the same size.",
         ],
       },
       {
@@ -117,7 +119,7 @@ export const extendedLessons: Lesson[] = [
     id: "comparing-fractions",
     title: "Compare pieces with the same unit",
     summary:
-      "Equivalent fractions let you compare amounts using equal-sized pieces.",
+      "Rename fractions as equal-sized pieces to see which amount is larger.",
     templateIds: ["compare-fractions"],
     objectives: [
       "Find a common denominator.",
@@ -128,7 +130,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Use pieces of one size",
         paragraphs: [
-          "One half and three fourths can be compared by cutting the half into fourths. Then two fourths are beside three fourths, and the larger amount is clear. The whole must be the same size for both.",
+          "One half and three fourths can be compared by cutting the half into fourths.",
+          "Then two fourths are beside three fourths, and the larger amount is clear. The whole must be the same size for both.",
         ],
       },
       {
@@ -170,7 +173,7 @@ export const extendedLessons: Lesson[] = [
   {
     id: "multiplying-fractions",
     title: "A fraction of a fraction",
-    summary: "Multiplication can find a part of another amount.",
+    summary: "Multiplying by a fraction can find part of another amount.",
     templateIds: ["multiply-fractions"],
     objectives: [
       "Interpret a fraction product with an area model.",
@@ -181,7 +184,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Take a part of a part",
         paragraphs: [
-          "To find one half of three fourths, divide those three fourths into two equal shares and take one share. A picture of a whole rectangle cut both ways shows three of eight small parts selected.",
+          "To find one half of three fourths, divide those three fourths into two equal shares and take one share.",
+          "A picture of a whole rectangle cut both ways shows three of eight small parts selected.",
         ],
       },
       {
@@ -228,7 +232,7 @@ export const extendedLessons: Lesson[] = [
     id: "dividing-fractions",
     title: "How many fractional groups fit?",
     summary:
-      "Dividing by a fraction asks how many groups of that size fit in an amount.",
+      "Dividing by a fraction asks how many groups of that size fit in the starting amount.",
     templateIds: ["divide-fractions"],
     objectives: [
       "Interpret division by a fraction.",
@@ -239,7 +243,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Count how many small groups fit",
         paragraphs: [
-          "Three fourths contains six eighths. That means six groups of one eighth fit into three fourths. The answer can be larger than the amount you began with because the groups are smaller than one whole.",
+          "Three fourths contains six eighths.",
+          "That means six groups of one eighth fit into three fourths. The answer can be larger than the amount you began with because the groups are smaller than one whole.",
         ],
       },
       {
@@ -286,7 +291,7 @@ export const extendedLessons: Lesson[] = [
     id: "equivalent-ratios",
     title: "Scale both parts of a ratio",
     summary:
-      "Equivalent ratios preserve a relationship while changing the overall amount.",
+      "A bigger batch can keep the same mix when both amounts grow together.",
     templateIds: ["ratio-missing"],
     objectives: [
       "Identify a ratio’s two quantities.",
@@ -297,7 +302,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Keep the mix the same",
         paragraphs: [
-          "A mix with two cups of blue paint for every three cups of white paint keeps the same color if you double both amounts. Four to six is a bigger batch with the same relationship.",
+          "A mix with two cups of blue paint for every three cups of white paint keeps the same color if you double both amounts.",
+          "Four to six is a bigger batch with the same relationship.",
         ],
       },
       {
@@ -344,7 +350,7 @@ export const extendedLessons: Lesson[] = [
     id: "percent-quantity",
     title: "Percent means per hundred",
     summary:
-      "A percentage describes a fraction whose denominator is one hundred.",
+      "A percent counts parts out of one hundred equal parts of a chosen whole.",
     templateIds: ["percent-of"],
     objectives: [
       "Convert a percent to a fraction.",
@@ -355,7 +361,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Find the whole behind the percent",
         paragraphs: [
-          "Twenty-five percent means twenty-five parts out of one hundred equal parts of a whole. One fourth of a small cake and one fourth of a large cake are different amounts, so name the whole before finding a percent of it.",
+          "Twenty-five percent means twenty-five parts out of one hundred equal parts of a whole.",
+          "One fourth of a small cake and one fourth of a large cake are different amounts, so name the whole before finding a percent of it.",
         ],
       },
       {
@@ -397,7 +404,8 @@ export const extendedLessons: Lesson[] = [
   {
     id: "signed-addition",
     title: "Combine positive and negative changes",
-    summary: "Signed addition combines quantities with direction.",
+    summary:
+      "Positive and negative changes move in opposite directions and combine into one net change.",
     templateIds: ["integer-addition"],
     objectives: [
       "Model signed addition on a number line.",
@@ -408,7 +416,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Changes can point in opposite directions",
         paragraphs: [
-          "On a number line, adding three moves right three spaces and adding negative two moves left two spaces. The moves partly cancel, leaving a net move of one space right.",
+          "On a number line, adding three moves right three spaces and adding negative two moves left two spaces.",
+          "The moves partly cancel, leaving a net move of one space right.",
         ],
       },
       {
@@ -465,7 +474,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Compare two changes on the same line",
         paragraphs: [
-          "Choose two points on a line. See how much higher or lower the second is and how far right or left it lies. Comparing those two changes gives the line's rise for each horizontal unit.",
+          "Choose two points on a line.",
+          "See how much higher or lower the second is and how far right or left it lies. Comparing those two changes gives the line's rise for each horizontal unit.",
         ],
       },
       {
@@ -522,7 +532,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Both statements must hold at once",
         paragraphs: [
-          "Two equations about the same unknowns may describe two conditions on one pair of numbers. Add or subtract the equations to remove one unknown, solve for the other, then check the pair in both original statements.",
+          "Two equations about the same unknowns may describe two conditions on one pair of numbers.",
+          "Add or subtract the equations to remove one unknown, solve for the other, then check the pair in both original statements.",
         ],
       },
       {
@@ -580,7 +591,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Count the ways a result can happen",
         paragraphs: [
-          "If a bag holds three red and five blue counters and each counter is equally likely to be picked, three of the eight possible picks are red. The chance of red is three out of eight.",
+          "If a bag holds three red and five blue counters and each counter is equally likely to be picked, three of the eight possible picks are red.",
+          "The chance of red is three out of eight.",
         ],
       },
       {
@@ -638,7 +650,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Repeat the same change",
         paragraphs: [
-          "The numbers 4, 7, 10, 13 rise by three each time. Four is the first term; reaching the fourth term takes three jumps of three. Counting jumps carefully finds later terms.",
+          "The numbers 4, 7, 10, 13 rise by three each time.",
+          "Four is the first term; reaching the fourth term takes three jumps of three. Counting jumps carefully finds later terms.",
         ],
       },
       {
@@ -694,7 +707,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Put a number into a rule",
         paragraphs: [
-          "A function rule takes an allowed input and gives one output. If the rule doubles a number and adds one, input three gives seven. Use the given input in every place the rule asks for it.",
+          "A function rule takes an allowed input and gives one output.",
+          "If the rule doubles a number and adds one, input three gives seven. Use the given input in every place the rule asks for it.",
         ],
       },
       {
@@ -751,7 +765,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Find the cost of one",
         paragraphs: [
-          "Four identical notebooks cost twelve dollars in all. Sharing the cost equally gives three dollars for one notebook. That one-item cost can then predict the cost of another number of notebooks.",
+          "Four identical notebooks cost twelve dollars in all.",
+          "Sharing the cost equally gives three dollars for one notebook. That one-item cost can then predict the cost of another number of notebooks.",
         ],
       },
       {
@@ -806,7 +821,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Watch the size of the pieces",
         paragraphs: [
-          "Twelve tenths times three tenths makes thirty-six hundredths. The whole-number fact 12 times 3 gives the count, but the pieces in the product are hundredths, not ones.",
+          "Twelve tenths times three tenths makes thirty-six hundredths.",
+          "The whole-number fact 12 times 3 gives the count, but the pieces in the product are hundredths, not ones.",
         ],
       },
       {
@@ -864,7 +880,8 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Finish the inside group first",
         paragraphs: [
-          "In a calculation with parentheses, the expression inside them names one amount. Find that amount before using it in the rest of the calculation, then follow the agreed order for the remaining operations.",
+          "In a calculation with parentheses, the expression inside them names one amount.",
+          "Find that amount before using it in the rest of the calculation, then follow the agreed order for the remaining operations.",
         ],
       },
       {

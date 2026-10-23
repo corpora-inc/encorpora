@@ -136,7 +136,7 @@ export const angleLessons: Lesson[] = [
     id: "lines-of-symmetry",
     title: "Lines of symmetry",
     summary:
-      "A line of symmetry folds a shape into two halves that match exactly.",
+      "A fold line shows symmetry when both halves land exactly on each other.",
     templateIds: ["symmetry-line-count", "symmetry-line-check"],
     includeGeneratedRepresentation: false,
     objectives: [

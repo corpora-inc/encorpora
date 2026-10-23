@@ -14,7 +14,7 @@ export const timeMoneyLessons: Lesson[] = [
     id: "hours-and-half-hours",
     title: "Hours and half hours",
     summary:
-      "On the hour the long hand points at 12; at half past it points at 6, and the short hand sits halfway to the next hour.",
+      "The long clock hand makes a half turn in half an hour while the short hand moves halfway to the next hour.",
     templateIds: [
       "read-clock-hour-half",
       "clock-hour-read",
@@ -73,8 +73,7 @@ export const timeMoneyLessons: Lesson[] = [
   {
     id: "time-to-five-minutes",
     title: "Time to five minutes",
-    summary:
-      "Each numeral the long hand reaches is 5 more minutes; count by fives from 12.",
+    summary: "Each numbered step of the long clock hand takes five minutes.",
     templateIds: [
       "read-clock-five-minutes",
       "minutes-past-hour",
@@ -142,7 +141,7 @@ export const timeMoneyLessons: Lesson[] = [
     id: "coins-and-bills",
     title: "Coins and bills",
     summary:
-      "Count money from the largest value down, counting on by each coin's value.",
+      "A coin's value, not its physical size, tells how much money it adds to a total.",
     templateIds: [
       "coin-total",
       "money-total-dollars",

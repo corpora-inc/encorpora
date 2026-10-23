@@ -209,7 +209,7 @@ export const decimalLessons: Lesson[] = [
     id: "inverse-decimal-rounding",
     title: "Which decimal rounds to this value?",
     summary:
-      "Locate the two halfway points around a rounded decimal, then check which choice lies between them.",
+      "Many nearby decimals can round to the same value. Find the two halfway boundaries to see which ones do.",
     templateIds: ["inverse-round-decimal"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -217,6 +217,13 @@ export const decimalLessons: Lesson[] = [
       "Use the rule that a halfway value rounds up to decide which boundary is included.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A rounded value covers nearby numbers",
+        paragraphs: [
+          "A value written as 4.68 to the nearest hundredth may have come from a number a little below or above 4.68. The two halfway points around 4.68 mark where rounding changes to the neighboring hundredths. Find those boundaries before checking a choice.",
+        ],
+      },
       {
         title: "Work backward from the rounded value",
         paragraphs: [
@@ -237,6 +244,7 @@ export const decimalLessons: Lesson[] = [
     },
     closingSections: [
       {
+        stage: "method",
         title: "See the rounding region",
         keepTogetherInPrint: true,
         paragraphs: [
@@ -245,6 +253,7 @@ export const decimalLessons: Lesson[] = [
         illustration: "inverse-decimal-rounding-line",
       },
       {
+        stage: "formal",
         title: "Precise rule",
         paragraphs: [
           "For positive decimals written with a last digit and rounded to the nearest tenth or hundredth, find the two adjacent rounded values and the halfway point on each side of the target. With halfway rounding up, the lower halfway point is included and the upper halfway point is excluded. A choice is correct exactly when it is at least the lower point and less than the upper point.",

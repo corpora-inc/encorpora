@@ -6,7 +6,7 @@ export const linePlotLessons: Lesson[] = [
     id: "line-plots",
     title: "Line plots of measurements",
     summary:
-      "One mark per measurement, placed above its length on a number line.",
+      "Put one mark above a number line for each measured object, even when lengths repeat.",
     templateIds: ["line-plot-whole"],
     objectives: [
       "Read how many objects have a given length, or are longer than it.",
@@ -64,7 +64,8 @@ export const linePlotLessons: Lesson[] = [
   {
     id: "fraction-line-plots",
     title: "Line plots with halves and fourths",
-    summary: "Read fractional lengths from equal spaces between whole numbers.",
+    summary:
+      "Equal spaces between whole numbers show equal fractional parts of a unit.",
     templateIds: ["fraction-line-plot"],
     objectives: [
       "Locate halves and fourths of a unit on a line plot.",
@@ -123,7 +124,7 @@ export const linePlotLessons: Lesson[] = [
     id: "fraction-plot-arithmetic",
     title: "Add and subtract lengths from a line plot",
     summary:
-      "Read two lengths in the same fractional unit, then add or subtract the numerators.",
+      "Read two lengths in the same-sized pieces before adding or subtracting them.",
     templateIds: ["fraction-plot-difference"],
     objectives: [
       "Find the difference between the longest and shortest measurements.",

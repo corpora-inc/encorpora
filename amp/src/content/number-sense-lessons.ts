@@ -6,7 +6,7 @@ export const numberSenseLessons: Lesson[] = [
     id: "count-to-100",
     title: "Count to 100 by ones and tens",
     summary:
-      "Each count by ones adds 1; each count by tens adds 1 ten. On the hundred chart, right is +1 and down is +10.",
+      "Each count moves one number forward; ten more makes a larger jump of one full ten.",
     templateIds: ["count-sequence-missing", "hundred-chart-missing"],
     objectives: [
       "Continue counts by ones and by tens within 100, including across a ten.",
@@ -61,7 +61,7 @@ export const numberSenseLessons: Lesson[] = [
     id: "write-numerals",
     title: "Write the number for a quantity",
     summary:
-      "Count the counters and write the numeral; a full ten-frame is 10, and teen numbers are 1 ten and some ones.",
+      "A written teen number records one full ten and the loose ones beside it.",
     templateIds: ["numeral-for-quantity"],
     objectives: [
       "Write numerals from 0 to 20 for quantities shown in ten-frames.",
@@ -117,7 +117,7 @@ export const numberSenseLessons: Lesson[] = [
     id: "number-line-moves",
     title: "Add and subtract with hops",
     summary:
-      "Adding is a hop right and subtracting is a hop left; split a two-digit hop into tens and ones.",
+      "Adding moves right on a number line, and subtracting moves left by the amount named.",
     templateIds: ["number-line-hops", "number-line-missing-hop"],
     objectives: [
       "Add or subtract within 100 by hopping tens, then ones, on a number line.",
