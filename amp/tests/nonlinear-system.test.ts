@@ -114,11 +114,14 @@ test("independent prompt-based oracle verifies all three families and corrupt ev
 test("new lesson builds from meaning and example to a matching visual and formal statement in print", () => {
   const html = publicationHtml(nonlinearSystemLessons[0]!, "lesson");
   const headings = [
-    "A worked example",
     "Two rules, the same point",
+    "A worked example",
     "See the same solutions",
+    "Watch for",
     "The general rule",
   ];
+  for (const heading of headings)
+    assert.ok(html.includes(heading), `Missing ${heading}`);
   for (let i = 1; i < headings.length; i++)
     assert.ok(html.indexOf(headings[i - 1]!) < html.indexOf(headings[i]!));
   assert.ok(html.includes("svg"));

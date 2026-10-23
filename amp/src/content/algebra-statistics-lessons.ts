@@ -8,7 +8,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     id: "statistical-summary-comparison",
     title: "Center, spread and outliers",
     summary:
-      "The mean and standard deviation use every value, so outliers and long tails pull them; the median and IQR depend only on the middle of the data.",
+      "One unusually large value can pull an average away from most of the data. Compare the middle and the spread as well as the average when describing two groups.",
     templateIds: ["outlier-center-shift", "skewed-box-compare"],
     objectives: [
       "Predict how an outlier moves the mean and the median.",
@@ -17,9 +17,10 @@ export const algebraStatisticsLessons: Lesson[] = [
     ],
     sections: [
       {
-        title: "An outlier pulls the mean, not the median",
+        stage: "intuition",
+        title: "How one unusual value changes the center",
         paragraphs: [
-          "The mean is the total divided by the count: it is the balance point of the data, and every value pulls on it. The median is the middle value when the data are in order: it depends only on the order.",
+          "The mean is the total divided by the count: every value contributes to it. The median is the middle value when the data are in order, or the average of the two middle values. An outlier is a value unusually far from most of the data. Changing one outlier changes the mean; the median may change less, stay fixed, or change more depending on where the ordered middle falls.",
           "Eight students read 2, 3, 4, 4, 5, 5, 5 and 20 books. The total is 48, so the mean is $48 \\div 8 = 6$; the median is halfway between 4 and 5, 4.5. Remove the outlier, 20: the mean drops to $28 \\div 7 = 4$, but the median only to 4.",
         ],
         illustration: "scene-outlier-mean-median",
@@ -29,7 +30,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         paragraphs: [
           "In a box plot the box holds the middle half of the data, from the lower quartile Q1 to the upper quartile Q3, with the median inside. The whiskers reach the minimum and maximum.",
           "A distribution is skewed right when the right whisker and the right part of the box are much longer: a tail toward higher values. It is skewed left when the long side is on the left, and roughly symmetric when the two sides match.",
-          "A long tail pulls the mean toward it and inflates the standard deviation, which measures the typical distance from the mean. So compare skewed data, or data with outliers, by the median and the interquartile range, $\\text{IQR} = Q_3 - Q_1$. For symmetric data without outliers, the mean and standard deviation work too.",
+          "A long tail often pulls the mean toward it. Standard deviation measures spread around the mean and can also be affected by extreme values. The interquartile range, $\\text{IQR}=Q_3-Q_1$, measures the width of the middle half. For skewed data or data with outliers, compare medians and IQRs; for roughly symmetric data without outliers, means and standard deviations also describe center and spread.",
           "The range, maximum − minimum, uses only the two most extreme values. One long tail can give a group the larger range even when its middle half is narrower.",
         ],
         illustration: "scene-skewed-box-plots",
@@ -45,10 +46,20 @@ export const algebraStatisticsLessons: Lesson[] = [
       ],
       answer: "The mean decreases by 2, and the median does not change.",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For $n>0$ values, the mean is their sum divided by $n$. The median is the middle ordered value when $n$ is odd, or the average of the two middle values when $n$ is even. Replacing one value changes the mean by the replacement difference divided by $n$; its effect on the median depends on the new ordering.",
+          "The range is maximum minus minimum. The IQR is $Q_3-Q_1$, the width of the middle half between the lower and upper quartiles. Extreme values can change the range and standard deviation substantially; these effects depend on the data.",
+        ],
+      },
+    ],
     pitfalls: [
-      "An outlier moves the mean much more than the median.",
+      "Recompute the middle positions before claiming how a changed outlier affects the median.",
       "The range depends on the two most extreme values; the IQR describes the middle half.",
-      "Skewed data are compared by medians and IQRs, not means and standard deviations.",
+      "For skewed data, use median and IQR to describe a typical center and middle spread; give mean and standard deviation only with attention to the tail.",
     ],
     parentGuide:
       "Time how long each family member takes to get ready in the morning for a week. Find the mean and the median, then add one very slow day and see which one moves.",
@@ -57,7 +68,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     id: "categorical-association",
     title: "Joint, marginal and conditional percents",
     summary:
-      "A percent from a two-way table depends on its whole: everyone (joint or marginal) or one row or column (conditional). Comparing conditional percents reveals association.",
+      "A percentage changes when the group counted as the whole changes. Compare percentages within the same kind of group to see whether two categories are related.",
     templateIds: ["relative-frequency-percent", "conditional-frequency-choice"],
     objectives: [
       "Find joint, marginal and conditional relative frequencies as percents.",
@@ -66,9 +77,10 @@ export const algebraStatisticsLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Every percent has a whole",
         paragraphs: [
-          "A two-way table counts two categorical variables at once: here, a student's grade and how the student gets to school. Each row and column adds to its total, and the corner holds everyone surveyed, 100.",
+          "A categorical variable sorts observations into named groups. A two-way table counts two such variables at once: here, a student's grade and how the student gets to school. Each row and column adds to its total, and the corner holds everyone surveyed, 100.",
           "A joint percent divides one cell by everyone: 30 of 100 are ninth graders who ride the bus, 30%. A marginal percent divides a total in the margin by everyone: 40 of 100 ride the bus, 40%.",
           "A conditional percent divides by one row or one column only. Of the 50 ninth graders, 30 ride the bus: 60%. Of the 40 bus riders, 30 are ninth graders: 75%. The words after “of” name the whole.",
         ],
@@ -93,6 +105,16 @@ export const algebraStatisticsLessons: Lesson[] = [
       ],
       answer: "75%",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A percent from a two-way table is a part divided by a nonzero whole; the question's “of” names that whole. A conditional percent uses one row or column as its whole.",
+          "Compare the same outcome's conditional percents across groups with nonzero totals. Different percents show an association in the observed data; their size and sampling uncertainty matter before claiming a population difference.",
+        ],
+      },
+    ],
     pitfalls: [
       "“Percent of ninth graders who ride the bus” and “percent of bus riders who are ninth graders” have different wholes.",
       "Judge association by conditional percents, not counts or joint percents.",
@@ -104,7 +126,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     id: "regression-interpretation",
     title: "Slope and intercept of a fitted line",
     summary:
-      "A least-squares line predicts $y$ from $x$; its slope is the predicted change in $y$ for each 1 more of $x$, and its intercept is the prediction at $x = 0$.",
+      "A fitted line predicts one quantity from another. Its slope tells how much the prediction changes for one more unit of input.",
     templateIds: ["regression-coefficient-meaning", "regression-line-predict"],
     objectives: [
       "Interpret the slope of a fitted line as a rate, with units.",
@@ -113,6 +135,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "The slope is a rate",
         paragraphs: [
           "The least-squares line is the line that makes the sum of the squared vertical gaps from the points smallest. Software reports it as $\\hat{y} = mx + b$; the hat on $\\hat{y}$ says it is a predicted value, not an observed one.",
@@ -141,6 +164,16 @@ export const algebraStatisticsLessons: Lesson[] = [
       ],
       answer: "10",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A fitted slope is a predicted rate of change in context, and the intercept is the prediction at $x = 0$.",
+          "A least-squares line predicts $y$ by substituting $x$; predictions change by the slope for each 1 more of $x$.",
+        ],
+      },
+    ],
     pitfalls: [
       "The slope is a rate; the intercept is a single prediction at $x = 0$.",
       "Do not swap the variables: the slope is change in $y$ for each 1 more of $x$.",
@@ -153,7 +186,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     id: "residuals-correlation",
     title: "Residuals and correlation",
     summary:
-      "A residual is observed minus predicted; a residual plot shows what a line missed, and the correlation coefficient $r$ measures how tightly points follow a line.",
+      "A residual is the gap between a measured value and a line’s prediction. A plot of those gaps shows where the line misses.",
     templateIds: ["residual-value", "correlation-choice"],
     objectives: [
       "Find a residual, and an observed value from its residual.",
@@ -162,6 +195,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Residuals: observed − predicted",
         paragraphs: [
           "Each point has a residual: its observed $y$ minus the line's predicted $\\hat{y}$. On the graph it is the vertical stick from the point to the line, positive above the line and negative below.",
@@ -203,6 +237,16 @@ export const algebraStatisticsLessons: Lesson[] = [
       ],
       answer: "49",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A signed residual is observed $y$ minus predicted $\\hat y$; positive values lie above the fitted line and negative values below it.",
+          "For paired numerical data with variation in both variables, Pearson's correlation $r$ lies from $-1$ to $1$. Its sign gives the direction of a linear trend, and $|r|$ measures linear strength. A curved residual pattern can reveal structure that $r$ misses; $r$ near zero does not rule out a nonlinear relationship.",
+        ],
+      },
+    ],
     pitfalls: [
       "Residual = observed − predicted, not the other way around.",
       "Strength is the distance of $r$ from 0; the sign is only the direction.",
@@ -215,7 +259,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     id: "causal-claims",
     title: "Association is not causation",
     summary:
-      "Observed data can show that two variables are associated, but only a randomized experiment can show that one causes the other.",
+      "A pattern between two quantities does not by itself show that one causes the other. Random assignment can support a causal comparison when the study is well run.",
     templateIds: ["causal-claim-choice", "study-design-choice"],
     objectives: [
       "Explain an association by a lurking variable or by reverse causation.",
@@ -224,6 +268,7 @@ export const algebraStatisticsLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Other explanations for an association",
         paragraphs: [
           "In a beach town, days with more ice cream sold also have more sunburns. Ice cream does not cause sunburn: hot, sunny days bring people to the beach, where they both buy ice cream and get sunburned. The weather is a lurking variable, a third variable that affects both.",
@@ -236,7 +281,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         title: "Experiments: assign the treatment at random",
         paragraphs: [
           "In an experiment, the researcher decides who gets the treatment. Random assignment, by a coin flip or a random list, makes the groups alike on average in everything else: age, effort, health and anything no one thought to measure.",
-          "Then a large difference in outcomes is evidence that the treatment caused it. Compare percents, since the groups may have different sizes: 90% of the app group passed, against 20% of the others.",
+          "A difference in outcomes can then support a causal conclusion, after considering chance variation and whether the groups were treated comparably apart from the assigned treatment. Compare percents when group sizes differ: 90% of the app group passed, against 20% of the others.",
           "Without random assignment, people who chose the treatment may differ in other ways, so the same difference shows association only.",
         ],
         illustration: "scene-experiment-bars",
@@ -248,15 +293,25 @@ export const algebraStatisticsLessons: Lesson[] = [
       steps: [
         "Comparing students who already use the app with those who do not is observational: the users may study more in general.",
         "Giving everyone the app and comparing before and after has no comparison group.",
-        "Randomly assign students to use the app or study as usual, then compare their scores: the groups differ only in the app.",
+        "Randomly assign students to use the app or study as usual, then compare their scores. Randomization helps balance other influences on average, though chance differences can remain.",
       ],
       answer:
         "Randomly assign students to use the app or to study as usual, then compare their quiz scores.",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "An association in observed data can come from a lurking variable or reverse causation, so it does not show a cause.",
+          "A well-conducted experiment with random treatment assignment and a comparison group can support a causal inference about its participants. Random assignment balances other influences on average, but chance differences remain possible; a difference alone does not establish a cause without considering uncertainty and study conduct.",
+        ],
+      },
+    ],
     pitfalls: [
       "An association in observed data does not show which variable causes which, or whether either does.",
       "“Correlation is not causation” does not mean the variables are unrelated.",
-      "Only random assignment of the treatment supports a causal conclusion.",
+      "Look for random assignment, a comparison group, and an assessment of chance variation before making a causal claim from an experiment.",
     ],
     parentGuide:
       "Find a headline that claims one thing causes another. Ask whether the study assigned the cause at random, and think of a lurking variable that could explain the result instead.",
@@ -416,23 +471,23 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
 
 export const algebraStatisticsPrinciples: Record<string, string> = {
   "outlier-center-shift":
-    "The mean is pulled by every value, so an outlier moves it far; the median depends only on the order, so it barely moves.",
+    "Replacing one of $n$ values changes the mean by the replacement difference divided by $n$; the median's change depends on the new ordering.",
   "skewed-box-compare":
-    "A long tail pulls the mean, standard deviation and range, so skewed data are compared by the median and IQR.",
+    "For skewed data, the median describes the ordered center and the IQR the middle half; extreme values can affect the mean, standard deviation, and range.",
   "relative-frequency-percent":
     "A percent from a two-way table is a part over a whole, and the question's “of” names the whole.",
   "conditional-frequency-choice":
-    "Two categorical variables are associated when the percents within the groups differ substantially.",
+    "Compare the same outcome's conditional proportions across groups with nonzero totals; different proportions show association in the observed data.",
   "regression-coefficient-meaning":
     "A fitted slope is a predicted rate of change in context, and the intercept is the prediction at $x = 0$.",
   "regression-line-predict":
     "A least-squares line predicts $y$ by substituting $x$; predictions change by the slope for each 1 more of $x$.",
   "residual-value":
-    "A residual is how far an observed value lies above or below the line's prediction.",
+    "A signed residual is observed $y$ minus predicted $\\hat y$, positive above the fitted line and negative below it.",
   "correlation-choice":
-    "Correlation measures how tightly points follow a straight line; residual plots reveal patterns a line misses.",
+    "For paired numerical data varying in both coordinates, correlation $r$ lies in $[-1,1]$ and measures linear direction and strength; a residual plot can reveal a missed curve.",
   "causal-claim-choice":
     "An association in observed data can come from a lurking variable or reverse causation, so it does not show a cause.",
   "study-design-choice":
-    "Only random assignment of a treatment, with a comparison group, lets a difference in outcomes show a cause.",
+    "A well-conducted randomized comparison can support a causal inference about its participants; chance differences and study conduct still matter.",
 };

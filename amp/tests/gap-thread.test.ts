@@ -126,19 +126,38 @@ test("the new thread has graduated prerequisites and bounded coverage", () => {
       );
   }
 });
-test("both new lessons move from explanation through example and visual to precise statements", () => {
-  for (const lesson of [...geometryProofLessons, ...rationalEquationLessons]) {
+test("proof and rational-equation lessons lead with meaning, then example, method, caution, and rule", () => {
+  const expected = [
+    {
+      lesson: geometryProofLessons[0]!,
+      headings: [
+        "What makes a reason fit?",
+        "A worked example",
+        "Why the triangle sum is a straight angle",
+        "Watch for",
+        "The precise statements",
+      ],
+    },
+    {
+      lesson: rationalEquationLessons[0]!,
+      headings: [
+        "Which numbers can solve it?",
+        "A worked example",
+        "See the solution as a crossing",
+        "When clearing gives a misleading candidate",
+        "Watch for",
+        "The precise rule",
+      ],
+    },
+  ];
+  for (const { lesson, headings } of expected) {
     const html = publicationHtml(lesson, "lesson");
-    const titles = [
-      lesson.summary,
-      "A worked example",
-      lesson.sections[0]!.title,
-      ...lesson.closingSections!.map((s) => s.title),
-    ];
-    for (let i = 1; i < titles.length; i++)
-      assert(
-        html.indexOf(titles[i - 1]!) < html.indexOf(titles[i]!),
-        titles.join(" → "),
-      );
+    const positions = headings.map((heading) => {
+      const position = html.indexOf(heading);
+      assert(position >= 0, `Missing ${heading} in ${lesson.id}`);
+      return position;
+    });
+    for (let i = 1; i < positions.length; i++)
+      assert(positions[i - 1]! < positions[i]!, headings.join(" → "));
   }
 });

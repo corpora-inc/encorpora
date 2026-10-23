@@ -4,6 +4,8 @@ import type { ProblemMethod } from "./problem-lessons";
 export const geometryProofMethods: Record<string, ProblemMethod> = {
   "geometry-proof-step": {
     goal: "Match a proof statement to a theorem whose conditions follow from the givens.",
+    intuition:
+      "A proof explains why a conclusion follows from given facts. Each step states a claim and gives a reason. A theorem is a proved rule you may use when its conditions hold. For angles, equal measures mean congruent angles; measures adding to $180^\\circ$ mean supplementary angles.",
     terms: [
       [
         "proof",
@@ -39,6 +41,7 @@ export const geometryProofLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "What makes a reason fit?",
         paragraphs: [
           "An angle is the opening between two rays with the same endpoint, called its vertex. Its measure describes the size of that opening. The notation $m\\angle ABC$ means the measure of the angle with vertex $B$ and rays toward $A$ and $C$. You need to recognize straight lines, rays and triangles and add angle measures.",
@@ -59,6 +62,7 @@ export const geometryProofLessons: Lesson[] = [
     },
     closingSections: [
       {
+        stage: "method",
         title: "Why the triangle sum is a straight angle",
         paragraphs: [
           "The picture illustrates the same theorem with $50^\\circ$, $60^\\circ$ and $70^\\circ$. A line through $C$ parallel to $AB$ lets us copy the angles at $A$ and $B$ beside the angle at $C$, using equal angles made by a transversal of parallel lines. Together they fill a straight angle: $50^\\circ + 70^\\circ + 60^\\circ = 180^\\circ$. The proof works for every triangle, not just these example measures.",
