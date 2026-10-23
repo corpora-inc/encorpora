@@ -147,7 +147,10 @@ try {
       assert.equal(calls, 2);
       await trigger.click();
       await page.getByLabel("Your feedback").fill("Do not send");
-      await page.getByRole("button", { name: "Close", exact: true }).click();
+      await dialog
+        .locator("form")
+        .getByRole("button", { name: "Close", exact: true })
+        .click();
       assert.equal(calls, 2);
       await trigger.click();
       await page.keyboard.press("Escape");
