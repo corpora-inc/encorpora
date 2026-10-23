@@ -18,7 +18,7 @@ export const volumeCoordinateLessons: Lesson[] = [
         stage: "intuition",
         title: "Fill the space with cubes",
         paragraphs: [
-          "A solid box takes up space. Imagine filling it with small cubes that touch without gaps or overlaps. Counting the cubes tells how much space the box holds, which is its volume.",
+          "A solid box takes up space. A rectangular prism is a box with six rectangular faces. Imagine filling it with unit cubes, each one unit long, wide and high. Counting the cubes tells how much space the prism holds, which is its volume.",
         ],
       },
       {
@@ -150,7 +150,7 @@ export const volumeCoordinateLessons: Lesson[] = [
         stage: "intuition",
         title: "Use two moves to locate a point",
         paragraphs: [
-          "Start where two number lines cross at zero. The first number tells how far to move across, and the second how far to move up. Together they locate one point in the upper-right part of the grid.",
+          "Start where two number lines cross at zero. Write a point as (across, up): the first number is its horizontal coordinate and the second its vertical coordinate. Together they locate one point in the upper-right part of the grid.",
         ],
       },
       {

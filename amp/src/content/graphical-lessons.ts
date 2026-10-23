@@ -15,7 +15,7 @@ export const graphicalLessons: Lesson[] = [
         stage: "intuition",
         title: "Two scales locate one point",
         paragraphs: [
-          "A point on a grid is found by reading across from zero and then up or down from zero. The two numbers have different jobs, so read the horizontal and vertical scales separately.",
+          "The origin is where the two number lines cross at zero. A point's $x$-coordinate tells how far it is left or right of that origin; its $y$-coordinate tells how far it is up or down. Read the two scales separately.",
         ],
       },
       {
@@ -73,7 +73,7 @@ export const graphicalLessons: Lesson[] = [
         stage: "intuition",
         title: "Count up compared with across",
         paragraphs: [
-          "A line may rise three units while moving two units right. That is three units of vertical change for two units of horizontal change. The ratio describes the line's steepness.",
+          "A line may rise three units while moving two units right. Its slope is the vertical change divided by the horizontal change, here three divided by two. A point written (−2, 1) lies two units left and one unit up from zero.",
         ],
       },
       {

@@ -145,7 +145,7 @@ export const choiceLessons: Lesson[] = [
         stage: "intuition",
         title: "A line has a start and a steady change",
         paragraphs: [
-          "A line can cross the vertical axis at five and rise two for each step right. The crossing tells its output when the input is zero; the rise tells how its output changes afterward. Together they describe the whole line.",
+          "A line can cross the vertical axis at five and rise two for each step right. The crossing tells its output when the input is zero; the rise tells how its output changes afterward. In a point $(x,y)$, $x$ is the horizontal input and $y$ the vertical output. Together the crossing and rise describe the line.",
         ],
       },
       {

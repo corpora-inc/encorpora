@@ -186,6 +186,7 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "To find one half of three fourths, divide those three fourths into two equal shares and take one share.",
           "A picture of a whole rectangle cut both ways shows three of eight small parts selected.",
+          "In a fraction, the top number counts the parts (numerator) and the bottom number names their size (denominator).",
         ],
       },
       {
@@ -592,7 +593,7 @@ export const extendedLessons: Lesson[] = [
         title: "Count the ways a result can happen",
         paragraphs: [
           "If a bag holds three red and five blue counters and each counter is equally likely to be picked, three of the eight possible picks are red.",
-          "The chance of red is three out of eight.",
+          "The probability, or chance, of red is three out of eight.",
         ],
       },
       {
@@ -708,7 +709,7 @@ export const extendedLessons: Lesson[] = [
         title: "Put a number into a rule",
         paragraphs: [
           "A function rule takes an allowed input and gives one output.",
-          "If the rule doubles a number and adds one, input three gives seven. Use the given input in every place the rule asks for it.",
+          "If the rule doubles a number and adds one, input three gives seven. Write $f(x)$ for the output when the input is $x$; $f(-2)$ asks for the output at input −2. Use that input in every place the rule asks for it.",
         ],
       },
       {

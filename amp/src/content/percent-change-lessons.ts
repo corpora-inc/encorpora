@@ -109,7 +109,7 @@ export const percentChangeLessons: Lesson[] = [
         stage: "intuition",
         title: "Compare the change with where you started",
         paragraphs: [
-          "A rise of ten dollars is large for a twenty-dollar price but small for a thousand-dollar price. Divide the change by the original amount to see what fraction of the starting amount changed.",
+          "A rise of ten dollars is large for a twenty-dollar price but small for a thousand-dollar price. Divide the change by the original amount to see what fraction changed. A percent is that fraction counted per hundred: 0.5 is 50 percent.",
         ],
       },
       foundations,

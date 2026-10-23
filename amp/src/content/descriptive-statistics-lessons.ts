@@ -166,7 +166,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
     id: "interquartile-range-data",
     title: "Find the interquartile range",
     summary:
-      "Find the middle of each half of the data, then measure the distance between them.",
+      "Each half's middle value is a quartile. The interquartile range is the upper quartile minus the lower quartile.",
     templateIds: ["interquartile-range-data"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -178,7 +178,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
         stage: "intuition",
         title: "Look at the middle part of the data",
         paragraphs: [
-          "Order the values and split them into a lower and an upper half. Find the middle of each half. The distance between those two middle values describes the spread of the central part of the data.",
+          "Order the values and split them into a lower and an upper half. The median is a set's middle value; for an even count, average its two middle values. Each half's median is a quartile. Subtract the lower quartile from the upper to measure the spread of the central part of the data.",
         ],
       },
       ...foundations,

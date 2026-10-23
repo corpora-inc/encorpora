@@ -94,7 +94,7 @@ export const measurementLessons: Lesson[] = [
         stage: "intuition",
         title: "Walk around or cover inside",
         paragraphs: [
-          "String around a picture frame measures its border. Paper covering the picture measures its inside. The first is a length and the second is an area, so they answer different questions.",
+          "String around a picture frame measures its border length, called perimeter. Paper covering the picture measures its inside, called area. For a rectangle, add all four side lengths for perimeter and multiply adjacent side lengths for area.",
         ],
       },
       {
@@ -170,7 +170,7 @@ export const measurementLessons: Lesson[] = [
         stage: "intuition",
         title: "The object does not change",
         paragraphs: [
-          "A meter stick is one meter long and also one hundred centimeters long. The smaller centimeter unit fits more times along the same stick. A conversion changes the count and unit, not the stick.",
+          "A meter stick is one meter long and also one hundred centimeters long. The smaller centimeter unit fits more times along the same stick. A conversion changes the count and unit, not the stick. A rectangle's perimeter is the distance around all four sides.",
         ],
       },
       {
@@ -243,7 +243,7 @@ export const measurementLessons: Lesson[] = [
         stage: "intuition",
         title: "Try every side pair",
         paragraphs: [
-          "A rectangle with area 24 square units might have sides 4 and 6, or 3 and 8, or another pair whose product is 24. Listing the possible pairs lets you check a second requirement without guessing.",
+          "A rectangle's area is one side length times its adjacent side length. For area 24 square units, possible whole-number side pairs include 4 and 6 or 3 and 8. List such factor pairs, then check the perimeter, the sum of all four sides.",
         ],
       },
       {

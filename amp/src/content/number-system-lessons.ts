@@ -6,7 +6,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "greatest-common-factor",
     title: "Greatest common factor",
     summary:
-      "The greatest common factor is the largest group count that divides two amounts evenly.",
+      "A factor divides a whole number with none left over. The greatest common factor is the largest factor two counts share.",
     templateIds: ["greatest-common-factor", "gcf-factor-sum"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -19,7 +19,7 @@ export const numberSystemLessons: Lesson[] = [
         stage: "intuition",
         title: "Make the most identical groups",
         paragraphs: [
-          "If 48 balls and 72 cones must be split into identical sets with none left, the number of sets must divide both counts. Try shared divisors and find the largest one that works.",
+          "If 48 balls and 72 cones must be split into identical sets with none left, the number of sets must divide both counts. A factor divides a number evenly; a prime factor is a factor with only 1 and itself as factors. Find the factors shared by both counts, then choose the largest.",
         ],
       },
       {
@@ -86,7 +86,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "least-common-multiple",
     title: "Least common multiple",
     summary:
-      "The least common multiple is the first positive count reached by both repeating patterns.",
+      "A multiple is reached by equal-count steps, such as 6, 12, 18. The least common multiple is the first positive count two patterns both reach.",
     templateIds: ["least-common-multiple"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -98,7 +98,7 @@ export const numberSystemLessons: Lesson[] = [
         stage: "intuition",
         title: "Find when two counts meet",
         paragraphs: [
-          "One light flashes every six seconds and another every eight. Their flash times first meet at a time that is in both counting lists. The earliest positive meeting time is their least common multiple.",
+          "One light flashes every six seconds and another every eight. The multiples of 6 are 6, 12, 18, 24 and so on: they count its flash times. The first positive number in both lights' lists is their least common multiple.",
         ],
       },
       {
@@ -156,7 +156,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "long-division",
     title: "Long division and remainders",
     summary:
-      "Long division shares place-value parts and keeps track of what is left.",
+      "Long division finds how many groups fit, called the quotient, and how much is left, called the remainder.",
     templateIds: ["long-division-quotient", "division-remainder-story"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -169,7 +169,7 @@ export const numberSystemLessons: Lesson[] = [
         stage: "intuition",
         title: "Share the largest pieces first",
         paragraphs: [
-          "To divide a large number, start with the largest place-value pieces that can be shared. Record what fits, then carry any amount left to the next smaller place. At the end, any amount too small to make another full group is the remainder.",
+          "To divide a large number, start with the largest place-value pieces that can be shared. The answer is the quotient. Record what fits, then carry any amount left to the next smaller place. At the end, any amount too small to make another full group is the remainder.",
         ],
       },
       {

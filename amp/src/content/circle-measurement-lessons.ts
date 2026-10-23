@@ -49,6 +49,7 @@ export const circleMeasurementLessons: Lesson[] = [
         title: "Measure around and across",
         paragraphs: [
           "The circumference is the distance around a circle. The diameter is a straight distance across its center. For every circle, the distance around is a little more than three times the distance across.",
+          "That fixed ratio is $\\pi$ (pi), so circumference is $\\pi$ times the diameter. A radius goes from the center to the circle and is half a diameter. In an answer written $a\\pi$, the letter $a$ asks for the number multiplying $\\pi$.",
         ],
       },
       ...foundations,
@@ -105,6 +106,7 @@ export const circleMeasurementLessons: Lesson[] = [
         title: "Cover the space inside",
         paragraphs: [
           "A circle's area measures the flat region it covers. A wider circle grows in two directions, so doubling its radius makes more than twice as much space inside. The radius sets the scale for the area.",
+          "A radius runs from the center to the circle; it is half the diameter across the center. Area is $\\pi$ (pi) times radius times radius. In $a\\pi$, $a$ is the number multiplying $\\pi$.",
         ],
       },
       ...foundations,
@@ -170,6 +172,7 @@ export const circleMeasurementLessons: Lesson[] = [
         title: "Take part of the rim",
         paragraphs: [
           "An arc is a piece of a circle's boundary. A turn of one quarter around the center reaches one quarter of the rim. Find the full distance around first, then take the matching fraction.",
+          "The central angle measures the turn at the center; a full turn is 360 degrees. The distance around the full circle, its circumference, is $\\pi$ (pi) times its diameter. In $a\\pi$, $a$ is the number multiplying $\\pi$.",
         ],
       },
       ...foundations,
@@ -229,6 +232,7 @@ export const circleMeasurementLessons: Lesson[] = [
         title: "Take a slice of the circle",
         paragraphs: [
           "A sector is the pie-slice-shaped region between two radii and the arc joining them. A quarter turn at the center cuts out one quarter of the circle's area. Find the full area, then take the matching fraction.",
+          "A radius runs from the center to the circle. The central angle measures the turn between the two radii; a full turn is 360 degrees. The circle's full area is $\\pi$ (pi) times radius times radius. In $a\\pi$, $a$ is the number multiplying $\\pi$.",
         ],
       },
       ...foundations,

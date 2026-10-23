@@ -162,7 +162,7 @@ export const ratioRateLessons: Lesson[] = [
         stage: "intuition",
         title: "Keep both amounts moving together",
         paragraphs: [
-          "If a drink uses two cups of juice for every three cups of water, a double batch uses four cups and six cups. Doubling only one amount would change the drink. A ratio table keeps matching amounts together as a batch grows or shrinks.",
+          "A ratio compares two amounts in a fixed order: two cups of juice for every three cups of water is a 2-to-3 ratio. A double batch uses four cups and six cups. A ratio table keeps matching amounts together as a batch grows or shrinks.",
         ],
       },
       ratios,
@@ -280,7 +280,7 @@ export const ratioRateLessons: Lesson[] = [
         stage: "intuition",
         title: "A part of a unit can reveal a full unit",
         paragraphs: [
-          "If three-fourths of a batch needs six cups of flour, one-fourth needs two cups. Four such parts make a whole batch, so the whole needs eight cups. Sharing into smaller parts is one way to find an amount for one full unit.",
+          "If three-fourths of a batch needs six cups of flour, one-fourth needs two cups. Four such parts make a whole batch, so the whole needs eight cups. To find the amount for one unit, divide one amount by the other. Dividing by a nonzero fraction means multiplying by its reciprocal: swap its top and bottom numbers.",
         ],
       },
       {
@@ -342,7 +342,7 @@ export const ratioRateLessons: Lesson[] = [
         stage: "intuition",
         title: "Find which equal-group amount is missing",
         paragraphs: [
-          "Every equal-groups story has a group count, a size for each group, and a total. If you know both group count and size, join the groups. If you know the total and one of those two, split it to find the other.",
+          "Every equal-groups story has a group count, a size for each group, and a total. If you know both group count and size, multiply to find the total. If you know the total and one of those two, divide to find the other. An equation writes that relationship with numbers and a symbol for the unknown.",
         ],
       },
       equalGroups,

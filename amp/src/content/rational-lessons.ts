@@ -36,7 +36,7 @@ export const rationalLessons: Lesson[] = [
         stage: "intuition",
         title: "Count parts in opposite directions",
         paragraphs: [
-          "One half to the right and one fourth to the left do not use equally sized steps. Rename the half as two fourths. Then two steps right and one step left leave one fourth to the right.",
+          "One half to the right and one fourth to the left do not use equally sized steps. Rename the half as two fourths. The bottom number of a fraction, its denominator, names the step size; use a common denominator before adding the signed steps.",
         ],
       },
       ...foundations,
@@ -99,7 +99,7 @@ export const rationalLessons: Lesson[] = [
         stage: "intuition",
         title: "Separate amount from direction",
         paragraphs: [
-          "Multiplying one half by three fourths finds half of that amount. A negative sign reverses its direction. Work out the size using the fractions, then decide whether the result is positive or negative.",
+          "Multiplying one half by three fourths finds half of that amount. Dividing by a nonzero fraction means multiplying by its reciprocal, made by swapping its top and bottom numbers. Work out the size, then use the signs: two negative factors give a positive result.",
         ],
       },
       ...foundations,
@@ -155,7 +155,7 @@ export const rationalLessons: Lesson[] = [
         stage: "intuition",
         title: "Read the large fraction bar as a question",
         paragraphs: [
-          "A fraction with smaller fractions on top or bottom is asking one amount divided by another. Read the entire top as one number and the entire bottom as one number before doing any arithmetic.",
+          "A fraction with smaller fractions on top or bottom is asking one amount divided by another. The entire top is its numerator; the entire bottom is its denominator. Find each first, then divide. Dividing by a nonzero fraction means multiplying by its reciprocal, made by swapping its top and bottom.",
         ],
       },
       ...foundations,
@@ -207,7 +207,8 @@ export const rationalLessons: Lesson[] = [
   {
     id: "rational-power",
     title: "Evaluate a fractional power",
-    summary: "A fractional exponent combines a root with a whole-number power.",
+    summary:
+      "A fractional exponent uses its bottom number for a root and its top number for a power; a negative exponent takes a reciprocal.",
     templateIds: ["rational-power"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -219,7 +220,7 @@ export const rationalLessons: Lesson[] = [
         stage: "intuition",
         title: "A root undoes a power",
         paragraphs: [
-          "The cube root of eight is two because two cubed is eight. A fractional exponent combines that root question with a power. Read the bottom number of the exponent as the root to take.",
+          "The cube root of eight is two because two cubed is eight. A fractional exponent combines a root and a power: its bottom number names the root and its top number names the power. A negative exponent also takes a reciprocal, swapping the top and bottom of a fraction.",
         ],
       },
       ...foundations,

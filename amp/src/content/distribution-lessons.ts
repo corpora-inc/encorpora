@@ -124,7 +124,7 @@ export const distributionLessons: Lesson[] = [
     id: "distribution-plots",
     title: "Histograms and box plots",
     summary:
-      "A histogram shows counts by interval; a box plot shows positions of key summaries.",
+      "A histogram counts values in intervals. A box plot marks the median (middle value) and each half's median, called a quartile.",
     templateIds: ["histogram-read", "box-plot-read"],
     objectives: [
       "Count values in one or several intervals of a histogram.",
@@ -135,7 +135,7 @@ export const distributionLessons: Lesson[] = [
         stage: "intuition",
         title: "Choose what the picture should show",
         paragraphs: [
-          "A histogram shows how many values fall into each number interval. A box plot shows where the middle and endpoints of the data lie. Each picture tells a useful part of the story, so read what it actually displays.",
+          "A histogram shows how many values fall into each number interval. A box plot marks the least value, greatest value, and median, the middle value in order. It also marks the median of the lower half (lower quartile) and of the upper half (upper quartile). The distance between those quartiles is the interquartile range.",
         ],
       },
       {
@@ -184,7 +184,7 @@ export const distributionLessons: Lesson[] = [
     id: "variability",
     title: "Measuring spread",
     summary:
-      "Spread tells how far data values lie from one another or from a center.",
+      "Spread measures how far data values lie from one another or from a center; examples include average distance from the mean and the distance between quartiles.",
     templateIds: ["dot-plot-mad", "dot-plot-iqr", "typical-value-choice"],
     objectives: [
       "Find the mean absolute deviation and the interquartile range of dot-plot data.",
@@ -195,7 +195,7 @@ export const distributionLessons: Lesson[] = [
         stage: "intuition",
         title: "A center does not tell the whole story",
         paragraphs: [
-          "Two groups can have the same average but very different spreads. One may cluster close to its center while the other reaches far away. Measure those distances to describe how variable the data are.",
+          "Two groups can have the same average but very different spreads. The mean is the total divided by the number of values. The mean absolute deviation averages each value's distance from that mean, ignoring whether it is above or below.",
         ],
       },
       {

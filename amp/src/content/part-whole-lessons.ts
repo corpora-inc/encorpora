@@ -155,7 +155,7 @@ export const partWholeLessons: Lesson[] = [
         stage: "intuition",
         title: "Equal area can look different",
         paragraphs: [
-          "Two pieces of a shape may have different outlines but cover the same number of small squares. They then take up the same amount of the whole shape. Area, not appearance, decides whether the shares are equal.",
+          "Two pieces of a shape may have different outlines but cover the same number of small squares. They then have equal area, the amount of flat space they cover. A fraction such as one sixth means one of six equal-area parts of the same whole.",
         ],
       },
       {
@@ -220,7 +220,7 @@ export const partWholeLessons: Lesson[] = [
         stage: "intuition",
         title: "Keep the whole fixed",
         paragraphs: [
-          "If two strips are the same length, one half of either strip is larger than one fourth. If you cut both into fourths, two fourths show the half. Equal-sized parts make comparisons easier to see.",
+          "If two strips are the same length, one half of either strip is larger than one fourth. If you cut both into fourths, two fourths show the half. To compare other fractions, rename them with the same bottom number, called a denominator, so their parts have equal size.",
         ],
       },
       {

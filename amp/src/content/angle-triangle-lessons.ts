@@ -26,7 +26,7 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "intuition",
         title: "Make a larger turn from smaller turns",
         paragraphs: [
-          "Two angles placed side by side can fill a straight turn or another known angle. When no space is missing or counted twice, their measures add. That gives a way to find an unknown angle.",
+          "Two angles placed side by side can fill a straight turn of 180 degrees. Such a pair is called a linear pair. A ray starts at a point and extends in one direction; two rays make an angle at their shared endpoint. Their measures add when no space is missing or counted twice. A letter such as $x$ can stand for an unknown measure.",
         ],
       },
       angleWords,
@@ -102,7 +102,7 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "intuition",
         title: "The three corners fit a half turn",
         paragraphs: [
-          "Cut the three corners from a triangle and place them side by side. They fill a straight line, a half turn. That picture explains why knowing two corner angles lets you find the third.",
+          "Cut the three corners from a triangle and place them side by side. They fill a straight line, a half turn of 180 degrees. If one side is extended, the angle outside the triangle is an exterior angle; it equals the two triangle angles away from it added together. In $\\angle CBD$, the middle letter $B$ names the corner.",
         ],
       },
       {
@@ -250,7 +250,7 @@ export const angleTriangleLessons: Lesson[] = [
         stage: "intuition",
         title: "See the shape inside a cut",
         paragraphs: [
-          "Slice a box with a flat plane. The new flat face where the knife passed is a cross-section. Turning the cutting plane can change that face from a rectangle to another polygon.",
+          "A rectangular prism is a box with six rectangular faces. Slice it with a flat plane: the new flat face where the cut passed is a cross-section. A plane perpendicular to the base stands straight up from it; a parallel plane runs in the same direction without meeting it.",
         ],
       },
       {

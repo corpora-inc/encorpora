@@ -194,7 +194,7 @@ export const multiplyDivideLessons: Lesson[] = [
         stage: "intuition",
         title: "Give out big groups first",
         paragraphs: [
-          "If 1,476 objects are shared among six groups, start by giving each group hundreds, then tens, then ones. What you give out at each place becomes part of the answer; what is left moves to the next smaller place.",
+          "If 1,476 objects are shared among six groups, start by giving each group hundreds, then tens, then ones. The amount each group receives is the quotient. What you give out at each place becomes part of that answer; what is left moves to the next smaller place.",
         ],
       },
       {

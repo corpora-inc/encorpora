@@ -47,7 +47,7 @@ export const areaVolumeLessons: Lesson[] = [
         stage: "intuition",
         title: "Two matching triangles make a larger shape",
         paragraphs: [
-          "Make a copy of a triangle and fit the two together into a parallelogram. The copy has the same area as the original, so each triangle covers half the parallelogram. Its base and straight-up height give the larger area's size.",
+          "Make a copy of a triangle and fit the two together into a parallelogram, a four-sided shape with opposite sides parallel. Each triangle covers half of it. Choose a side as the base; the triangle's height is the perpendicular distance from that side's line to the opposite corner.",
         ],
       },
       areaMeaning,
@@ -105,7 +105,7 @@ export const areaVolumeLessons: Lesson[] = [
         stage: "intuition",
         title: "Cut a hard shape into familiar pieces",
         paragraphs: [
-          "A slanted or many-sided shape may be hard to cover with squares directly. Cut it into rectangles and triangles whose areas you can find. The pieces together cover exactly the original region.",
+          "A slanted or many-sided shape may be hard to cover with squares directly. A trapezoid has one pair of parallel sides. Cut such a shape into rectangles or triangles whose areas you can find; each triangle's area is half its base times its perpendicular height. The pieces together cover exactly the original region.",
         ],
       },
       areaMeaning,
@@ -168,7 +168,7 @@ export const areaVolumeLessons: Lesson[] = [
         stage: "intuition",
         title: "Unfold every outside face",
         paragraphs: [
-          "Imagine opening a cardboard box along its edges until the faces lie flat. The flat pattern is a net. The outside area is the area of all those faces together, with each counted once.",
+          "Imagine opening a solid along its edges until its flat faces lie side by side. That pattern is a net. The surface area is the area of all its outside faces, counted once. A square pyramid has one square base and four triangular faces, each half its base times its perpendicular height.",
         ],
       },
       {
@@ -231,7 +231,7 @@ export const areaVolumeLessons: Lesson[] = [
         stage: "intuition",
         title: "Fill a box with tiny equal cubes",
         paragraphs: [
-          "A cube whose edge is one half of a unit is much smaller than a full unit cube. It takes two along each direction, or eight in all, to fill one unit cube. Counting those small cubes measures a box's volume in smaller units.",
+          "A rectangular prism is a box. A cube whose edge is one half of a foot is much smaller than a one-foot cube. It takes two along each direction, or eight in all, to fill one cubic foot. Counting small cubes measures the prism's volume, the space it holds.",
         ],
       },
       volumeMeaning,
@@ -296,7 +296,7 @@ export const areaVolumeLessons: Lesson[] = [
         stage: "intuition",
         title: "The layers can be fractional",
         paragraphs: [
-          "A box that is one half unit wide can still be filled with smaller cubes. Count the cubes across, along, and upward in a shared small unit; multiplying the three edge lengths gives the same volume.",
+          "A box that is one half unit wide can still be filled with smaller cubes. Count the cubes across, along, and upward in a shared small unit; multiplying the three edge lengths gives its volume, the space it holds. A mixed number such as $2\\tfrac{1}{2}$ is two wholes and one half.",
         ],
       },
       volumeMeaning,
@@ -488,7 +488,7 @@ export const areaVolumeLessons: Lesson[] = [
         stage: "intuition",
         title: "Count the outside, not the inside",
         paragraphs: [
-          "A prism has a front face, a matching back face, and side faces joining their edges. Unroll the side faces into one strip; its width follows the front face's boundary and its height is the prism's depth.",
+          "A right prism has a front face, a matching back face, and side faces joining their edges straight across. Its surface area is all outside faces added together. Unroll the side faces into a strip: its width follows the front face's perimeter, the distance around its boundary, and its height is the prism's depth.",
         ],
       },
       {
@@ -551,7 +551,7 @@ export const areaVolumeLessons: Lesson[] = [
         stage: "intuition",
         title: "Stack matching circles",
         paragraphs: [
-          "A can has the same circular cross-section from bottom to top. Imagine stacking very thin copies of its circular base. The base area tells how much space is in a layer and the height tells how many layers fill the can.",
+          "A cylinder, like a can, has the same circular cross-section from bottom to top. Imagine stacking very thin copies of its circular base. The base area tells how much space is in a layer and the height tells how many layers fill the can. A circle's radius is half its diameter; its area is $\\pi$ (pi) times radius times radius. In $a\\pi$, $a$ asks for the number multiplying $\\pi$.",
         ],
       },
       circleFacts,
@@ -614,7 +614,7 @@ export const areaVolumeLessons: Lesson[] = [
         stage: "intuition",
         title: "Compare solids that fit together",
         paragraphs: [
-          "A cone with the same circular base and height as a cylinder fills one third of that cylinder. A sphere fits inside a cylinder twice its radius high. Comparing the volumes gives a way to measure these curved solids.",
+          "A cone with the same circular base and height as a cylinder fills one third of that cylinder. A sphere is a round solid whose radius runs from its center to its surface. Its volume is four thirds of $\\pi$ (pi) times radius cubed, meaning radius multiplied by itself three times. In $a\\pi$, $a$ asks for the number multiplying $\\pi$.",
         ],
       },
       circleFacts,

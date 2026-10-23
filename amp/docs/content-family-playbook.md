@@ -38,6 +38,8 @@ Use this sequence for new or substantially revised lessons:
 
 Rigor develops through the example and explanation; the closing statement collects it. Do not postpone definitions or mathematical conditions needed earlier. Review one elementary, one middle-school and one high-school pilot before applying a revised presentation broadly. Existing lessons need not be rewritten solely for ordering.
 
+Each lesson must stand on its own: a reader should understand the example's givens, local terms and notation, and explanations without completing another AMP lesson first. Repeat short, useful definitions across lessons when needed.
+
 Inspect mobile widths 320 and 390, larger widths 768 and 1280, both themes, reduced motion, and Letter/A4 pages. Check first-time comprehension, not just overflow. Practice and feedback belong in the active view.
 
 ## Weighting and difficulty acceptance

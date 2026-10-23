@@ -145,7 +145,7 @@ export const polygonLessons: Lesson[] = [
         stage: "intuition",
         title: "A square can have several names",
         paragraphs: [
-          "A square has equal sides and square corners. Those features also make it a rectangle and a rhombus. One shape can belong to a broad group and to several more specific groups at once.",
+          "A square has equal sides and square corners. Those features make it both a rectangle, with four right angles, and a rhombus, with four equal sides. A parallelogram has two pairs of opposite sides parallel; every rhombus has that feature too.",
         ],
       },
       {

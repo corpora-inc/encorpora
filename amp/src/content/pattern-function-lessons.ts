@@ -396,7 +396,7 @@ export const patternFunctionLessons: Lesson[] = [
         stage: "intuition",
         title: "Look for a steady climb",
         paragraphs: [
-          "If every extra unit of input changes the output by the same amount, a graph of the relationship makes a straight line. A starting output shifts that line up or down without changing its steady climb.",
+          "A function gives one output for each allowed input. If every extra unit of input changes its output by the same amount, its graph is a straight line: a linear function. In a rule such as $y=3x+1$, $x$ is the input and $y$ is the output.",
         ],
       },
       functionWords,

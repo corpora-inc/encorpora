@@ -160,7 +160,7 @@ export const timeMoneyLessons: Lesson[] = [
         stage: "intuition",
         title: "Read value, not size",
         paragraphs: [
-          "A dime is smaller than a nickel but buys more. Look at each coin's value, then count those values together. Starting with the largest values can make the counting easier.",
+          "Coin size does not always show its value. A quarter is 25 cents, a dime is 10 cents, a nickel is 5 cents, and a penny is 1 cent. Count those values together, starting with the largest when that helps.",
         ],
       },
       {

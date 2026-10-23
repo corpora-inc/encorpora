@@ -198,7 +198,7 @@ export const addSubtractLessons: Lesson[] = [
         stage: "intuition",
         title: "The columns keep track of size",
         paragraphs: [
-          "In a large number, a 4 might mean four ones, four thousands, or four ten thousands. Lining up the ones places puts every digit above the same place-value unit in the other number. Then each column can be added or subtracted using the trades you already know.",
+          "In a large number, a 4 might mean four ones, four thousands, or four ten thousands. Line up the ones places so each column holds the same-sized units. When needed, trade ten units in one place for one unit in the next place left, or reverse that trade to subtract.",
         ],
       },
       {
