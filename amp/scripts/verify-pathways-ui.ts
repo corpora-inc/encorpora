@@ -37,7 +37,7 @@ const browser = await (
       ? firefox
       : chromium
 ).launch();
-const output = "artifacts/pathways";
+const output = process.env.AMP_MAP_OUTPUT ?? "artifacts/pathways";
 await mkdir(output, { recursive: true });
 const target = skills.find((s) => s.id === "nonlinear-systems")!;
 const other = skills.find((s) => s.id === "nonlinear-intersection-count")!;
@@ -604,7 +604,95 @@ async function verifyLessonRecovery() {
     await page.close();
   }
 }
+async function verifySearchFilters() {
+  for (const [width, colorScheme] of [
+    [320, "light"],
+    [390, "dark"],
+    [768, "light"],
+    [1280, "dark"],
+  ] as const) {
+    const page = await browser.newPage({
+      viewport: { width, height: 844 },
+      colorScheme,
+      reducedMotion: "reduce",
+    });
+    try {
+      await fixture(page, { signedIn: false });
+      await page.goto(`${origin}/pathways/${target.id}?topic=L&filter=K`);
+      const input = page.getByRole("searchbox", {
+        name: "Find a skill",
+        exact: true,
+      });
+      await input.waitFor();
+      assert.equal(await input.inputValue(), "L");
+      assert(
+        (await input.evaluate((el) =>
+          parseFloat(getComputedStyle(el).fontSize),
+        )) >= 16,
+        "Search text is readable on phones",
+      );
+      await input.focus();
+      await input.press("Backspace");
+      await page.waitForURL((url) => !url.searchParams.has("topic"));
+      assert.equal(
+        await input.inputValue(),
+        "",
+        "Backspace removes the last character",
+      );
+      assert(
+        await input.evaluate((el) => el === document.activeElement),
+        "Deleting keeps the keyboard focused on search",
+      );
+      assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
+      const grade = page.getByRole("combobox", { name: "Grade or course" });
+      await grade.selectOption("");
+      await page.waitForURL((url) => !url.searchParams.has("filter"));
+      assert.equal(
+        await grade.inputValue(),
+        "",
+        "All grades clears the grade filter",
+      );
+      assert.equal(
+        await page.locator(".pathways-skill-list a").count(),
+        skills.length,
+      );
+      await input.pressSequentially("linear", { delay: 10 });
+      await page.waitForURL(
+        (url) => url.searchParams.get("topic") === "linear",
+      );
+      assert.equal(await input.inputValue(), "linear");
+      await input.fill("");
+      await page.waitForURL((url) => !url.searchParams.has("topic"));
+      assert.equal(
+        await input.inputValue(),
+        "",
+        "Clearing the search removes the URL filter",
+      );
+      assert.equal(new URL(page.url()).pathname, `/pathways/${target.id}`);
+      await page.reload();
+      await input.waitFor();
+      assert.equal(
+        await input.inputValue(),
+        "",
+        "The cleared search survives reload",
+      );
+      await input.focus();
+      await noOverflow(page);
+      await page.screenshot({
+        path: `${output}/search-cleared-${width}-${colorScheme}.png`,
+        fullPage: true,
+      });
+    } finally {
+      await page.close();
+    }
+  }
+  console.log(
+    "Pathways search: last-character backspace, clearing, rapid typing, grade reset, URL preservation, and reload passed at four widths.",
+  );
+}
+
 try {
+  await verifySearchFilters();
   if (!process.env.AMP_MAP_FOCUS) await verifyLessonRecovery();
   for (const width of process.env.AMP_MAP_FOCUS ? [] : [320, 390, 768, 1280])
     for (const theme of ["light", "dark"] as const) {
