@@ -5,13 +5,20 @@ export const choiceLessons: Lesson[] = [
     id: "fraction-renaming",
     title: "Cut the pieces, keep the amount",
     summary:
-      "A fraction names an amount using a chosen unit. Smaller pieces change both counts, without changing what is shaded.",
+      "The same shaded amount can have different fraction names when every part is cut equally.",
     templateIds: ["fraction-equivalence-choice"],
     objectives: [
       "Recognize equivalent fractions by scaling both counts.",
       "Explain why adding to both counts does not preserve an amount.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Cut each piece without changing the shade",
+        paragraphs: [
+          "Shade two thirds of one rectangle. If every third is cut into two equal pieces, the same shaded region now has four pieces and the whole has six. Only the pieces' names and counts changed.",
+        ],
+      },
       {
         title: "One picture, two names",
         paragraphs: [
@@ -31,6 +38,15 @@ export const choiceLessons: Lesson[] = [
         paragraphs: [
           "For each proposed fraction, ask what happened to the piece size and the shaded count. Look for a common scale factor. You can also sketch equal-length bars; keep the whole the same size in each sketch.",
           "Once you choose, explain the change in units aloud. Recognizing a printed fraction is useful practice; drawing a new representation and explaining why it works are separate skills to practice too.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Equivalent fraction names",
+        paragraphs: [
+          "Multiplying a fraction's numerator and positive denominator by the same nonzero whole number subdivides every part equally, so the fraction's value is unchanged. Conversely, dividing both by a common positive factor groups equal small parts into larger ones.",
         ],
       },
     ],
@@ -54,13 +70,20 @@ export const choiceLessons: Lesson[] = [
     id: "equation-solution-sets",
     title: "When the variable terms disappear",
     summary:
-      "An equation can pick out one number, reject every number, or be true for every real number. Simplification reveals which story it tells.",
+      "A letter such as $x$ stands for an unknown number; $5x$ means five copies of it. A linear equation in $x$ may work for one number, none, or every number.",
     templateIds: ["equation-solution-count"],
     objectives: [
       "Distinguish one solution, no solution, and infinitely many solutions.",
       "Interpret a true or false equality after the variable terms cancel.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Ask which numbers make both sides match",
+        paragraphs: [
+          "Here the unknown appears only as copies of $x$ added to numbers. An equation of this kind is linear. Some linear equations balance for one number, others never balance, and some balance for every number. Simplifying both sides reveals which kind you have.",
+        ],
+      },
       {
         title: "What counts as a solution?",
         paragraphs: [
@@ -83,6 +106,15 @@ export const choiceLessons: Lesson[] = [
         ],
       },
     ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Possible numbers of solutions",
+        paragraphs: [
+          "For real numbers $a,b,c,d$, a linear equation $ax+b=cx+d$ becomes $(a-c)x=d-b$ after subtracting equal amounts from both sides. If $a-c$ is nonzero, exactly one real $x$ works. If $a-c=0$ and $d-b$ is nonzero, none works. If both are zero, every real $x$ works.",
+        ],
+      },
+    ],
     workedExample: {
       prompt: "How many real-number solutions does 5x + 2 = 5x + 9 have?",
       steps: [
@@ -102,13 +134,20 @@ export const choiceLessons: Lesson[] = [
     id: "graph-to-equation",
     title: "A starting height and a steady climb",
     summary:
-      "An intercept locates a line and a slope describes its change. Together they determine the rule y = mx + b.",
+      "In $(x,y)$, $x$ is the horizontal input and $y$ the vertical output. A line's rule uses its output at $x=0$ and its rise for each step right.",
     templateIds: ["graph-equation-choice"],
     objectives: [
       "Read a $y$-intercept and a rate of change from two labeled points.",
       "Check a proposed linear equation against the graph.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A line has a start and a steady change",
+        paragraphs: [
+          "A line can cross the vertical axis at five and rise two for each step right. The crossing tells its output when the input is zero; the rise tells how its output changes afterward. In a point $(x,y)$, $x$ is the horizontal input and $y$ the vertical output. Together the crossing and rise describe the line.",
+        ],
+      },
       {
         title: "Start where the input is zero",
         paragraphs: [
@@ -128,6 +167,15 @@ export const choiceLessons: Lesson[] = [
         paragraphs: [
           "A slope of 2 and intercept of 5 give y = 2x + 5. At x = 2, this predicts 9, matching the second point. Testing a second point catches a rule with the correct starting height but the wrong slope.",
           "Swapping the numbers gives y = 5x + 2, which starts at the wrong height. Dropping the constant gives y = 2x, which passes through the origin. A negative coefficient would make $y$ fall as $x$ increases. Each choice makes a different claim you can check.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Slope and intercept determine a line",
+        paragraphs: [
+          "A nonvertical line with constant slope $m$ crossing the vertical axis at $(0,b)$ has equation $y=mx+b$. A vertical line has equation $x=c$ and cannot be written in this slope-intercept form.",
         ],
       },
     ],

@@ -6,7 +6,7 @@ export const attributeLessons: Lesson[] = [
     id: "longer-heavier-holds-more",
     title: "Longer, heavier, holds more",
     summary:
-      "Compare one attribute at a time: line up ends for length, use a balance for weight, pour for capacity.",
+      "To compare two objects, choose one question: Which is longer, heavier, or holds more?",
     templateIds: ["compare-lengths", "compare-weights", "compare-capacity"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -15,6 +15,13 @@ export const attributeLessons: Lesson[] = [
       "Compare what two containers hold by pouring one into the other.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Ask which kind of amount you mean",
+        paragraphs: [
+          "A long strip may be light, and a short cup may hold a lot. Length tells how far an object reaches; mass tells how heavy it is; capacity tells how much a container holds. Choose one of these questions before comparing two things.",
+        ],
+      },
       {
         title: "Length: line up one end",
         paragraphs: [
@@ -30,6 +37,15 @@ export const attributeLessons: Lesson[] = [
           "To compare what two jars hold, fill one and pour it into the other. If the water leaves room, the second jar holds more; if it spills, the first holds more; if it fills exactly, they hold the same.",
         ],
         illustration: "balance-heavier",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Compare one measurable property",
+        paragraphs: [
+          "Length, mass, and capacity are different attributes. A comparison is valid when both objects are measured or tested for the same attribute under the same conditions: common starting line for length, balanced scale for mass, and equal measuring vessel for capacity.",
+        ],
       },
     ],
     workedExample: {
@@ -53,7 +69,7 @@ export const attributeLessons: Lesson[] = [
     id: "measure-with-equal-units",
     title: "Measure with equal units",
     summary:
-      "A length is the number of equal units laid end to end from one end to the other, with no gaps or overlaps.",
+      "Measure a length by covering it from end to end with equal units and counting them.",
     templateIds: [
       "measure-with-units",
       "correct-unit-measure",
@@ -66,6 +82,13 @@ export const attributeLessons: Lesson[] = [
       "Order three lengths from two comparisons.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Count equal steps along the object",
+        paragraphs: [
+          "A row of identical cubes can show how long a pencil is. Each cube covers one equal piece of its length. If the cubes touch from one end to the other, their count tells the pencil's length in cubes.",
+        ],
+      },
       {
         title: "Start at the end, no gaps, no overlaps",
         paragraphs: [
@@ -81,6 +104,15 @@ export const attributeLessons: Lesson[] = [
           "If one ribbon is longer than a second, and the second is longer than a third, then the first is longer than the third too.",
         ],
         illustration: "ruler-units",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Equal units make a measurement",
+        paragraphs: [
+          "A length measurement counts congruent units placed end to end, starting at one endpoint and ending at the other, without gaps or overlaps. Changing unit size changes the count but not the length being measured.",
+        ],
       },
     ],
     workedExample: {
@@ -105,7 +137,7 @@ export const attributeLessons: Lesson[] = [
     id: "mass-and-liquid-volume",
     title: "Mass and liquid volume",
     summary:
-      "Read grams from a level balance and liters from a scale, then add, subtract, multiply or divide measurements like any other quantities.",
+      "Read the number and its unit together: grams measure mass, and liters measure liquid volume.",
     templateIds: ["read-liquid-volume", "balance-mass", "mass-volume-story"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -114,6 +146,13 @@ export const attributeLessons: Lesson[] = [
       "Solve one-step stories with grams, kilograms and liters.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A number needs a measuring unit",
+        paragraphs: [
+          "A reading of 5 does not tell you much by itself. Five grams describes mass, while five liters describes how much liquid fills a container. Read the number and its unit together before comparing or calculating.",
+        ],
+      },
       {
         title: "Grams on a balance",
         paragraphs: [
@@ -129,6 +168,15 @@ export const attributeLessons: Lesson[] = [
           "On a scale labeled 0, 10, 20, 30 with 5 spaces between labels, each tick is 10 ÷ 5 = 2 liters. Water 3 ticks above 20 is 20 + 3 × 2 = 26 liters.",
         ],
         illustration: "liquid-scale-ticks",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Keep the unit with the amount",
+        paragraphs: [
+          "A level balance shows equal mass on its two pans. A marked container measures liquid volume by its scale. Combine or compare measurements only in the same unit, converting first when necessary; the answer retains the measured unit.",
+        ],
       },
     ],
     workedExample: {

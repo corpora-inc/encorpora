@@ -5,7 +5,7 @@ export const measurementLessons: Lesson[] = [
     id: "length-between-two-positions",
     title: "Measure the spaces between the ends",
     summary:
-      "Read whole and fractional ruler intervals, even when the object starts away from zero.",
+      "A ruler shows where an object's ends are; the spaces between them give its length.",
     templateIds: ["shifted-ruler-length", "fractional-ruler-length"],
     objectives: [
       "Distinguish a position from a length.",
@@ -13,6 +13,13 @@ export const measurementLessons: Lesson[] = [
       "Subtract endpoints measured in the same unit.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Count the spaces, not the labels",
+        paragraphs: [
+          "A strip laid from the 3-centimeter mark to the 9-centimeter mark is not nine centimeters long. It covers the six one-centimeter spaces between those marks. A ruler shows positions; their difference gives length.",
+        ],
+      },
       {
         title: "Marks name positions",
         paragraphs: [
@@ -32,6 +39,15 @@ export const measurementLessons: Lesson[] = [
         paragraphs: [
           "A strip a little longer than two centimeters cannot be nine centimeters long just because it crosses nine quarter-centimeter spaces. Estimate first, then use the unit and subdivisions printed on the ruler.",
           "Check an endpoint subtraction by adding the measured length to the starting position. You should reach the ending position.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Distance between marks",
+        paragraphs: [
+          "A ruler mark names a position, not a length by itself. When both ends are on the same scale, length equals ending position minus starting position, even if the object begins away from zero.",
         ],
       },
     ],
@@ -58,7 +74,7 @@ export const measurementLessons: Lesson[] = [
     id: "border-and-cover-are-different",
     title: "Walk the border, cover the inside",
     summary:
-      "Connect rectangle side lengths, perimeter and area without confusing their units or comparisons.",
+      "Perimeter is the distance around a shape; area is the space inside. Add a rectangle's four sides for perimeter and multiply adjacent sides for area.",
     templateIds: [
       "rectangle-border-length",
       "rectangle-missing-border-side",
@@ -74,6 +90,13 @@ export const measurementLessons: Lesson[] = [
       "Compare rectangles using the quantity asked for.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Walk around or cover inside",
+        paragraphs: [
+          "String around a picture frame measures its border length, called perimeter. Paper covering the picture measures its inside, called area. For a rectangle, add all four side lengths for perimeter and multiply adjacent side lengths for area.",
+        ],
+      },
       {
         title: "Two different jobs",
         paragraphs: [
@@ -93,6 +116,15 @@ export const measurementLessons: Lesson[] = [
         paragraphs: [
           "Rectangles 2 cm by 12 cm and 4 cm by 6 cm both cover 24 square cm. Their perimeters are 28 cm and 20 cm. Equal coverage does not guarantee equal ribbon length.",
           "Rectangles 2 cm by 8 cm and 4 cm by 6 cm both have perimeter 20 cm. Their areas are 16 and 24 square cm. Calculate the requested quantity rather than relying on a drawing's apparent size.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Perimeter and area",
+        paragraphs: [
+          "Perimeter counts length around a boundary and uses linear units. Area counts equal square units covering a region. For a rectangle with positive side lengths $l$ and $w$, perimeter is $2l+2w$ and area is $lw$; neither quantity determines the other alone.",
         ],
       },
     ],
@@ -120,7 +152,7 @@ export const measurementLessons: Lesson[] = [
     id: "same-length-different-unit",
     title: "Rename the length before combining it",
     summary:
-      "Use metric relationships in either direction, then combine measurements expressed in a common unit.",
+      "A length stays fixed when you rename its units: 1 meter is 100 centimeters. For a rectangle's perimeter, add the lengths of all four sides in one unit.",
     templateIds: [
       "metric-length-rename",
       "metric-length-reverse",
@@ -134,6 +166,13 @@ export const measurementLessons: Lesson[] = [
       "Convert side lengths before calculating a mixed-unit perimeter.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "The object does not change",
+        paragraphs: [
+          "A meter stick is one meter long and also one hundred centimeters long. The smaller centimeter unit fits more times along the same stick. A conversion changes the count and unit, not the stick. A rectangle's perimeter is the distance around all four sides.",
+        ],
+      },
       {
         title: "The length stays fixed",
         paragraphs: [
@@ -153,6 +192,15 @@ export const measurementLessons: Lesson[] = [
         paragraphs: [
           "A 2 m strip and a 35 cm strip total 200 cm + 35 cm = 235 cm. Adding the bare numbers two and thirty-five would treat unequal units as equal.",
           "For a rectangle, express both adjacent sides in the requested unit, then include each side twice. Converting units does not change the rectangle or eliminate any part of its boundary.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Converting a fixed length",
+        paragraphs: [
+          "A conversion changes the numerical count and unit while preserving the same measured length. If a large unit contains $k$ smaller units, multiply its count by $k$ to express the length in small units and divide by $k$ to go back.",
         ],
       },
     ],
@@ -180,7 +228,7 @@ export const measurementLessons: Lesson[] = [
     id: "rectangles-with-two-conditions",
     title: "Find every candidate, then test the conditions",
     summary:
-      "Use a complete list of positive whole-number factor pairs to justify rectangle choices and impossibility claims.",
+      "A rectangle's area is adjacent sides multiplied; its perimeter is all four sides added. Check every whole-number side pair against both conditions.",
     templateIds: [
       "rectangle-two-constraints-choice",
       "rectangle-existence-choice",
@@ -191,6 +239,13 @@ export const measurementLessons: Lesson[] = [
       "Use a complete candidate list to justify that no rectangle works.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Try every side pair",
+        paragraphs: [
+          "A rectangle's area is one side length times its adjacent side length. For area 24 square units, possible whole-number side pairs include 4 and 6 or 3 and 8. List such factor pairs, then check the perimeter, the sum of all four sides.",
+        ],
+      },
       {
         title: "Area organizes the search",
         paragraphs: [
@@ -210,6 +265,15 @@ export const measurementLessons: Lesson[] = [
         paragraphs: [
           "To claim no rectangle exists, check every permitted factor pair, not just the displayed choices. Area 24 square cm and perimeter exactly 24 cm have no solution with positive whole-number sides: none of the four possible perimeters is 24.",
           "The whole-number restriction matters. This argument does not rule out rectangles with fractional or other real side lengths. Keep impossibility claims inside the stated domain.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Area and whole-number sides",
+        paragraphs: [
+          "For a rectangle with positive whole-number side lengths, area equals the product of the two lengths. Listing every factor pair of a specified area gives every possible such rectangle up to rotation; test any second condition against that complete list.",
         ],
       },
     ],
@@ -237,7 +301,7 @@ export const measurementLessons: Lesson[] = [
     id: "buy-enough-compare-the-bills",
     title: "Compare the bill for enough material",
     summary:
-      "Distinguish whole-pack purchases from divisible lengths and account for the cost of unused material.",
+      "When material comes only in whole packs, buy enough packs and count the cost of all of them.",
     templateIds: ["whole-pack-ribbon-choice"],
     objectives: [
       "Find the smallest whole pack count supplying enough length.",
@@ -245,6 +309,13 @@ export const measurementLessons: Lesson[] = [
       "Check unused length and recognize ties.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Buy what the store sells",
+        paragraphs: [
+          "If ribbon comes in whole six-meter packs and you need seven meters, one pack is short and two packs cover the job. Pay for both full packs even though some ribbon is left over.",
+        ],
+      },
       {
         title: "What can actually be bought?",
         paragraphs: [
@@ -264,6 +335,15 @@ export const measurementLessons: Lesson[] = [
         paragraphs: [
           "When pieces join without loss, their lengths add directly. Requiring one continuous unjoined piece would be a different problem. Do not invent cutting waste, tax, discounts or joining loss.",
           "An exact pack multiple needs no extra pack. If both bills agree, neither supplier costs less under the stated rules.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Whole packs and total cost",
+        paragraphs: [
+          "When a pack cannot be split, the number purchased is the least whole number of packs whose combined quantity meets or exceeds the need. Total cost is pack count times price per pack; unused material does not reduce the bill.",
         ],
       },
     ],

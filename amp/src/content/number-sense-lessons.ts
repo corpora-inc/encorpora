@@ -6,13 +6,20 @@ export const numberSenseLessons: Lesson[] = [
     id: "count-to-100",
     title: "Count to 100 by ones and tens",
     summary:
-      "Each count by ones adds 1; each count by tens adds 1 ten. On the hundred chart, right is +1 and down is +10.",
+      "Each count moves one number forward; ten more makes a larger jump of one full ten.",
     templateIds: ["count-sequence-missing", "hundred-chart-missing"],
     objectives: [
       "Continue counts by ones and by tens within 100, including across a ten.",
       "Use the rows and columns of the hundred chart to find a missing number.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Keep counting through a new ten",
+        paragraphs: [
+          "After 68 comes 69, then 70. Nine loose ones become a full ten when one more arrives, so the tens count grows and the ones count starts again at zero.",
+        ],
+      },
       {
         title: "Ones, then a new ten",
         paragraphs: [
@@ -26,6 +33,15 @@ export const numberSenseLessons: Lesson[] = [
         paragraphs: [
           "Each row of the hundred chart holds ten numbers. Moving one square right adds 1; moving one row down adds 10.",
           "A missing square can be found from the square before it or the square above it. Both ways give the same number.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Counting and place value",
+        paragraphs: [
+          "Counting by ones increases a whole number by 1 each step. Counting by tens increases it by 10 each step. Ten ones regroup as one ten, so the tens digit changes when the ones pass 9.",
         ],
       },
     ],
@@ -45,13 +61,20 @@ export const numberSenseLessons: Lesson[] = [
     id: "write-numerals",
     title: "Write the number for a quantity",
     summary:
-      "Count the counters and write the numeral; a full ten-frame is 10, and teen numbers are 1 ten and some ones.",
+      "A written teen number records one full ten and the loose ones beside it.",
     templateIds: ["numeral-for-quantity"],
     objectives: [
       "Write numerals from 0 to 20 for quantities shown in ten-frames.",
       "Use a full frame as 10 and count on for the rest.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A picture can show tens and ones",
+        paragraphs: [
+          "A full ten-frame holds ten counters. If it is full and a second frame has six counters, you have one ten and six more ones. The written number 16 records those two parts.",
+        ],
+      },
       {
         title: "Use the frame",
         paragraphs: [
@@ -65,6 +88,15 @@ export const numberSenseLessons: Lesson[] = [
         paragraphs: [
           "An empty frame shows no counters: the number is 0.",
           "Two full frames are 2 tens: the number is 20.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Digits record grouped counts",
+        paragraphs: [
+          "A numeral's digits record counts of place-value groups. For a teen number, the first digit records one ten and the second records the remaining ones; its value is ten plus that ones count.",
         ],
       },
     ],
@@ -85,13 +117,20 @@ export const numberSenseLessons: Lesson[] = [
     id: "number-line-moves",
     title: "Add and subtract with hops",
     summary:
-      "Adding is a hop right and subtracting is a hop left; split a two-digit hop into tens and ones.",
+      "Adding moves right on a number line, and subtracting moves left by the amount named.",
     templateIds: ["number-line-hops", "number-line-missing-hop"],
     objectives: [
       "Add or subtract within 100 by hopping tens, then ones, on a number line.",
       "Find the difference of two numbers as the length of the hop between them.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A move has direction and length",
+        paragraphs: [
+          "A number line places numbers in order with equal spaces. A move right reaches a larger number and a move left reaches a smaller one. A long move can be made as two shorter moves.",
+        ],
+      },
       {
         title: "Hop the tens, then the ones",
         paragraphs: [
@@ -105,6 +144,15 @@ export const numberSenseLessons: Lesson[] = [
         paragraphs: [
           "The hop from 38 to 65 has the same length as 65 − 38. Count up from 38: 2 to 40, 20 to 60, 5 to 65.",
           "The pieces add to the hop: 2 + 20 + 5 = 27.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Number-line distance and direction",
+        paragraphs: [
+          "On a number line with equal unit intervals, adding a positive amount moves right by that distance and subtracting it moves left. A move of tens and ones may be split into consecutive moves whose distances add to the original distance.",
         ],
       },
     ],
@@ -124,13 +172,20 @@ export const numberSenseLessons: Lesson[] = [
     id: "rounding",
     title: "Round to the nearest ten, hundred or thousand",
     summary:
-      "A number rounds to the nearer of the two multiples around it; exactly halfway rounds up.",
+      "Rounding replaces a number with the nearest multiple of a chosen place value.",
     templateIds: ["round-to-ten", "round-to-hundred", "round-large"],
     objectives: [
       "Round whole numbers to the nearest ten or hundred.",
       "Round larger numbers to the nearest hundred, thousand or ten thousand.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Choose the nearer landmark",
+        paragraphs: [
+          "To round 347 to the nearest ten, look at its neighboring tens, 340 and 350. It is three away from 350 and seven away from 340, so 350 is the nearer landmark.",
+        ],
+      },
       {
         title: "Between two multiples",
         paragraphs: [
@@ -144,6 +199,15 @@ export const numberSenseLessons: Lesson[] = [
         paragraphs: [
           "Rounding up can change more than one digit: 396 rounds to 400 and 49,700 rounds to 50,000 to the nearest thousand.",
           "Do not round in steps. 449 is less than halfway between 400 and 500, so it rounds to 400, even though 449 rounds to 450 to the nearest ten.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Nearest multiple",
+        paragraphs: [
+          "To round a number to a chosen place, compare its distance from the two neighboring multiples of that place value. Choose the nearer multiple; under the usual whole-number convention, choose the greater one when exactly halfway.",
         ],
       },
     ],
@@ -166,7 +230,7 @@ export const numberSenseLessons: Lesson[] = [
     id: "powers-of-ten",
     title: "Multiply and divide by powers of ten",
     summary:
-      "Each place is worth 10 times the place to its right, so multiplying by 10 moves every digit one place left.",
+      "Each place to the left is worth ten times as much as the place beside it.",
     templateIds: [
       "multiply-power-of-ten",
       "divide-power-of-ten",
@@ -177,6 +241,13 @@ export const numberSenseLessons: Lesson[] = [
       "Explain how the same digit's value changes from one place to another.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Make every place ten times larger",
+        paragraphs: [
+          "The 7 in 47 counts seven ones. In 470 it counts seven tens, a value ten times larger. Multiplying by ten moves every digit into the place worth ten times as much.",
+        ],
+      },
       {
         title: "Digits move, the point stays",
         paragraphs: [
@@ -190,6 +261,15 @@ export const numberSenseLessons: Lesson[] = [
         paragraphs: [
           "In 7,370 the first 7 is worth 7,000 and the second is worth 70. They are two places apart, so the first is 10 × 10 = 100 times as much.",
           "Moving one place left multiplies a digit's value by 10; moving one place right divides it by 10.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Each place is ten times larger",
+        paragraphs: [
+          "Moving a digit one place left multiplies its value by 10; moving it one place right divides its value by 10. Multiplying an entire whole number by a power of ten applies that change to every digit, with zero placeholders where needed.",
         ],
       },
     ],

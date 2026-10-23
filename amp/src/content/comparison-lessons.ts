@@ -6,13 +6,20 @@ export const comparisonLessons: Lesson[] = [
     id: "compare-groups",
     title: "Pair to compare two groups",
     summary:
-      "Pair each object with one from the other group; the group with objects left over has more.",
+      "Pair objects from the two groups. The group with leftovers has more; no leftovers means equal groups.",
     templateIds: ["compare-groups"],
     objectives: [
       "Decide which of two groups has more, fewer or the same number by pairing.",
       "Explain why spreading objects out does not change how many there are.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Make a partner for each object",
+        paragraphs: [
+          "Put one circle beside one square and keep pairing them. If every object gets a partner, the groups have the same number. If one group has leftovers, that group has more.",
+        ],
+      },
       {
         title: "Make pairs",
         paragraphs: [
@@ -26,6 +33,15 @@ export const comparisonLessons: Lesson[] = [
         paragraphs: [
           "A row can be longer because its objects are farther apart. Spacing changes how much room a row takes, not how many objects it has.",
           "Counting gives the same answer: 5 circles and 4 squares, and 5 comes after 4 in the count.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "One-to-one comparison",
+        paragraphs: [
+          "Pairing one object from each group until one group runs out compares their counts without recounting. If one group has objects left over, it has more; if neither does, the counts are equal.",
         ],
       },
     ],
@@ -49,14 +65,20 @@ export const comparisonLessons: Lesson[] = [
   {
     id: "compare-numerals",
     title: "Greater and less to ten",
-    summary:
-      "Of two numbers, the one said later when counting is greater; the one said first is less.",
+    summary: "A counting number reached later names a larger amount.",
     templateIds: ["greater-numeral"],
     objectives: [
       "Choose the greater or lesser of two written numbers from 0 to 10.",
       "Read and write comparisons with > and <.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Walk forward through the count",
+        paragraphs: [
+          "One comes before two, and two comes before three. Each step forward names one more object. To compare two counting numbers, notice which one you reach later.",
+        ],
+      },
       {
         title: "Later in the count means greater",
         paragraphs: [
@@ -70,6 +92,15 @@ export const comparisonLessons: Lesson[] = [
         paragraphs: [
           "Every comparison has two true sentences: 7 is greater than 4, and 4 is less than 7.",
           "The symbols point the same way: 7 > 4 and 4 < 7. The wide, open side faces the greater number.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Order of whole numbers",
+        paragraphs: [
+          "Counting increases by one at each step. For two whole numbers, the number reached later in the count is greater; the number reached earlier is less. Equal numerals name equal counts.",
         ],
       },
     ],
@@ -92,7 +123,7 @@ export const comparisonLessons: Lesson[] = [
     id: "compare-by-place",
     title: "Compare numbers place by place",
     summary:
-      "Compare the greatest place first; the first place where the digits differ decides.",
+      "Compare the largest place first. If those digits tie, move right until one place differs.",
     templateIds: [
       "compare-two-digit",
       "two-digit-symbol",
@@ -104,6 +135,13 @@ export const comparisonLessons: Lesson[] = [
       "Record a comparison with >, = or <.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Begin with the biggest pieces",
+        paragraphs: [
+          "If one number has 5 hundreds and another has 4 hundreds, the first is larger even before you inspect their tens and ones. If the hundreds match, look at the tens; if those match too, look at the ones.",
+        ],
+      },
       {
         title: "The greatest place decides first",
         paragraphs: [
@@ -117,6 +155,15 @@ export const comparisonLessons: Lesson[] = [
         paragraphs: [
           "Read > as is greater than, < as is less than, and = as is equal to. The open side of < and > faces the greater number.",
           "If every place matches, the numbers are equal. Otherwise exactly one of < and > is true.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "First unequal place",
+        paragraphs: [
+          "For whole numbers with the same number of digits, compare digits from the greatest place to the least. The first unequal pair decides the order because one unit of that place exceeds every possible difference in all lower places combined.",
         ],
       },
     ],
@@ -140,13 +187,20 @@ export const comparisonLessons: Lesson[] = [
     id: "large-place-value",
     title: "Place value to hundred thousands",
     summary:
-      "Each place is worth ten times the place to its right, so a digit's value depends on its place.",
+      "A digit's place tells whether it counts ones, tens, hundreds, or larger groups.",
     templateIds: ["multidigit-digit-value", "compare-multidigit"],
     objectives: [
       "Name the value of any digit in a number up to 999,999.",
       "Compare multidigit numbers by digit count, then place by place.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "The same digit can name different amounts",
+        paragraphs: [
+          "The 3 in 300 is three hundreds, while the 3 in 30 is three tens. Moving one place left makes a digit worth ten times as much. This lets you read and compare numbers well beyond 100.",
+        ],
+      },
       {
         title: "A digit's value comes from its place",
         paragraphs: [
@@ -160,6 +214,15 @@ export const comparisonLessons: Lesson[] = [
         paragraphs: [
           "First count the digits. A whole number with more digits is greater: every five-digit number is less than 100,000.",
           "With the same number of digits, compare from the left. The first place that differs decides, as with smaller numbers.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Value of a digit",
+        paragraphs: [
+          "A digit's value is its digit count times the value of its place. Each place to the left is worth ten times the place to its right. Comparing from the greatest place finds the first value that can decide which whole number is larger.",
         ],
       },
     ],

@@ -5,13 +5,21 @@ export const earlyDataLessons: Lesson[] = [
   {
     id: "sort-and-count",
     title: "Sort, then count",
-    summary: "Put things that match into groups, then count each group.",
+    summary:
+      "Put each object into one group, then count how many are in each group.",
     templateIds: ["sort-shapes-count", "sort-shapes-most"],
     objectives: [
       "Sort objects into groups by one attribute, such as shape.",
       "Count each group and compare the counts to find the most and the fewest.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Give each object one home",
+        paragraphs: [
+          "If a pile contains red and blue buttons, move each button into the matching color group. Then you can count the red group and the blue group without losing track of a button or counting one twice.",
+        ],
+      },
       {
         title: "Sorting makes counting easy",
         paragraphs: [
@@ -25,6 +33,15 @@ export const earlyDataLessons: Lesson[] = [
         paragraphs: [
           "After counting, the group with the greatest count has the most. The group with the least count has the fewest.",
           "Compare counts, not how much space a group takes up: a few large shapes can cover more of the page than many small ones.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "A complete sort",
+        paragraphs: [
+          "A useful set of categories assigns each object to exactly one group. The count in each group is its frequency; adding all group frequencies gives the total number of objects sorted.",
         ],
       },
     ],
@@ -48,13 +65,20 @@ export const earlyDataLessons: Lesson[] = [
     id: "picture-graphs-one-to-one",
     title: "Read a picture graph",
     summary:
-      "Each symbol is one answer; match rows symbol by symbol to compare.",
+      "When each picture stands for one response, count the pictures in a row to find its total.",
     templateIds: ["picture-graph-questions"],
     objectives: [
       "Find the number in each category and the total of all categories.",
       "Find how many more or how many fewer one category has than another.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A picture can stand for one answer",
+        paragraphs: [
+          "If each child chooses one fruit, draw one small picture beside that fruit for each child. A row with more pictures means more children chose it. Count the pictures to find the exact number.",
+        ],
+      },
       {
         title: "One symbol, one student",
         paragraphs: [
@@ -68,6 +92,15 @@ export const earlyDataLessons: Lesson[] = [
         paragraphs: [
           "Line up the apple row with the pear row. The first 4 apple symbols each have a pear partner; 3 apple symbols have none. So 3 more students chose apple than pear.",
           "“How many fewer chose pear than apple?” asks the same thing from the other side. The answer is also 3: 7 − 4 = 3.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "One mark, one response",
+        paragraphs: [
+          "In a one-to-one picture graph, each symbol represents exactly one response. A category's frequency is its number of symbols, and the difference between two frequencies is found by subtracting their counts.",
         ],
       },
     ],
@@ -91,13 +124,20 @@ export const earlyDataLessons: Lesson[] = [
     id: "scaled-graphs",
     title: "Graphs with a scale",
     summary:
-      "When a symbol or grid step stands for more than 1, multiply by the key or count by the scale.",
+      "Read the key first: each mark or grid step may stand for more than one response.",
     templateIds: ["scaled-picture-graph", "scaled-bar-graph"],
     objectives: [
       "Read a picture graph whose symbol stands for 2, 5 or 10, including half symbols.",
       "Read bars on a scale that counts by 2, 5 or 10, including bars that end halfway between lines, and solve one- and two-step comparisons.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "One mark can stand for a whole group",
+        paragraphs: [
+          "A graph with many answers can use one symbol for 10 people. Four such symbols show 40 people, not 4. The key tells you how many answers each mark represents.",
+        ],
+      },
       {
         title: "Read the key first",
         paragraphs: [
@@ -113,6 +153,15 @@ export const earlyDataLessons: Lesson[] = [
           "A two-step question needs two operations. Compare Monday and Wednesday together with Thursday: first add, 30 + 15 = 45; then subtract, 50 − 45 = 5. Thursday alone collected 5 more cans than those two days together.",
         ],
         illustration: "data-scaled-bars",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Read the scale before counting",
+        paragraphs: [
+          "In a scaled graph, a mark or equal interval represents a fixed number of responses. Multiply the number of marks or intervals by that scale to find a category's count; a half mark represents half of the full mark's value when the key allows it.",
+        ],
       },
     ],
     workedExample: {

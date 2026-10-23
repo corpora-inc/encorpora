@@ -40,7 +40,8 @@ export const descriptiveStatisticsLessons: Lesson[] = [
   {
     id: "median-data",
     title: "Find the median",
-    summary: "Order every observation, then locate the center by position.",
+    summary:
+      "Line up every value from least to greatest. The value at the center, or halfway between the two center values, is the median.",
     templateIds: ["median-data"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -48,6 +49,14 @@ export const descriptiveStatisticsLessons: Lesson[] = [
       "Preserve repeated values and calculate an exact mean of two middle values.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Find the middle of a line of values",
+        paragraphs: [
+          "A data value is one recorded number. Put all the values in order and keep repeats. Then move inward from both ends, one value at a time. The value left in the middle is the median, a way to describe the center of the data.",
+          "If two values are left, find the number halfway between them. For 1 and 3, that number is 2, even if 2 was not recorded. The median depends on positions in the ordered list, not on how large the numbers at the ends are.",
+        ],
+      },
       ...foundations,
       medianDefinition,
       halves,
@@ -58,6 +67,16 @@ export const descriptiveStatisticsLessons: Lesson[] = [
           "The six dots represent −2, −1, 1, 3, 3, 8. The third and fourth values are 1 and 3. Their midpoint is 2, marked below the line. There is no dot at 2: an even-count median can lie between observations.",
         ],
         illustration: "descriptive-median",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Median of ordered data",
+        paragraphs: [
+          "Let $n$ be the positive number of observations, written in nondecreasing order. If $n$ is odd, the median is at position $(n+1)/2$. If $n$ is even, the median is the arithmetic mean of the observations at positions $n/2$ and $n/2+1$. Positions start at 1, and repeated values each occupy a position.",
+          "The arithmetic mean of two numbers $a$ and $b$ is $(a+b)/2$. This midpoint can fall between observed values; no rounding is needed.",
+        ],
       },
     ],
     workedExample: {
@@ -72,7 +91,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
       answer: "2",
     },
     pitfalls: [
-      "Do not use the middle position in the unsorted list.",
+      "Sort the values before finding the middle position.",
       "Keep every repetition; removing one changes the count and possibly the median.",
       "For an even count, average the two middle values, not the two endpoints.",
     ],
@@ -83,7 +102,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
     id: "range-data",
     title: "Find the range",
     summary:
-      "Measure the distance from the smallest observation to the largest.",
+      "Measure the distance from the smallest data value to the largest.",
     templateIds: ["range-data"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -91,6 +110,13 @@ export const descriptiveStatisticsLessons: Lesson[] = [
       "Subtract minimum from maximum and interpret the nonnegative result as spread.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Measure the full span",
+        paragraphs: [
+          "Put the observations on a number line. The range is the distance from the leftmost value to the rightmost one. Values in between, and how often they occur, do not change those endpoints.",
+        ],
+      },
       ...foundations,
       spread,
       {
@@ -106,6 +132,15 @@ export const descriptiveStatisticsLessons: Lesson[] = [
         paragraphs: [
           "The range uses only the two endpoints. Moving an interior observation without changing the minimum or maximum leaves the range unchanged. Moving an endpoint farther outward increases the range.",
           "An outlier is an observation unusually far from the rest of a dataset. A distant observation can make the range large even if most other values are close together. Range alone does not describe the center, the pattern between the endpoints, or how often values occur. If values are measured in centimeters, their range is also in centimeters.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Distance between endpoints",
+        paragraphs: [
+          "For a nonempty numerical dataset, its minimum is its least observed value and its maximum its greatest. The range is maximum minus minimum, a nonnegative distance in the same unit as the data.",
         ],
       },
     ],
@@ -131,7 +166,7 @@ export const descriptiveStatisticsLessons: Lesson[] = [
     id: "interquartile-range-data",
     title: "Find the interquartile range",
     summary:
-      "Find the centers of the lower and upper halves, then measure the distance between them.",
+      "Each half's middle value is a quartile. The interquartile range is the upper quartile minus the lower quartile.",
     templateIds: ["interquartile-range-data"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -139,6 +174,13 @@ export const descriptiveStatisticsLessons: Lesson[] = [
       "Find exact quartiles and subtract the lower quartile from the upper.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Look at the middle part of the data",
+        paragraphs: [
+          "Order the values and split them into a lower and an upper half. The median is a set's middle value; for an even count, average its two middle values. Each half's median is a quartile. Subtract the lower quartile from the upper to measure the spread of the central part of the data.",
+        ],
+      },
       ...foundations,
       medianDefinition,
       halves,
@@ -168,6 +210,15 @@ export const descriptiveStatisticsLessons: Lesson[] = [
         ],
       },
     ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Middle-half span",
+        paragraphs: [
+          "For at least two observations under the stated median-of-halves convention, $Q_1$ is the median of the lower half and $Q_3$ the median of the upper half. Exclude the single overall median when the count is odd, then compute $\\mathrm{IQR}=Q_3-Q_1$. Other quartile conventions can give different answers.",
+        ],
+      },
+    ],
     workedExample: {
       prompt:
         "Find the interquartile range of these data: 6, −2, 1, 8, −4, 4, 0, −2, 3. Exclude the overall median from both halves.",
@@ -194,6 +245,8 @@ export const descriptiveStatisticsLessons: Lesson[] = [
 export const descriptiveStatisticsMethods: Record<string, ProblemMethod> = {
   "median-data": {
     goal: "Find the middle of a numerical dataset by position.",
+    intuition:
+      "The median is the middle value after sorting all recorded values, keeping repeats. If two values share the middle, average them.",
     terms: [
       [
         "median",

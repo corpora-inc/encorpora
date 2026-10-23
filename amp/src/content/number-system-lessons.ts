@@ -6,7 +6,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "greatest-common-factor",
     title: "Greatest common factor",
     summary:
-      "The greatest common factor is the largest number that divides both numbers; it is the product of their shared prime factors.",
+      "A factor divides a whole number with none left over. The greatest common factor is the largest factor two counts share.",
     templateIds: ["greatest-common-factor", "gcf-factor-sum"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -15,6 +15,13 @@ export const numberSystemLessons: Lesson[] = [
       "Use the distributive property to factor the greatest common factor out of a sum.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Make the most identical groups",
+        paragraphs: [
+          "If 48 balls and 72 cones must be split into identical sets with none left, the number of sets must divide both counts. A factor divides a number evenly; a prime factor is a factor with only 1 and itself as factors. Find the factors shared by both counts, then choose the largest.",
+        ],
+      },
       {
         title: "Factors and common factors",
         paragraphs: [
@@ -47,6 +54,15 @@ export const numberSystemLessons: Lesson[] = [
         illustration: "gcf-area",
       },
     ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Largest shared divisor",
+        paragraphs: [
+          "For positive whole numbers $a$ and $b$, the greatest common factor is the largest positive whole number dividing both without remainder. It is the product of every prime factor the two numbers share, counted with the smaller multiplicity.",
+        ],
+      },
+    ],
     workedExample: {
       prompt:
         "A coach has 48 balls and 72 cones to split into identical sets with none left over. What is the greatest number of sets that can be made?",
@@ -70,7 +86,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "least-common-multiple",
     title: "Least common multiple",
     summary:
-      "The least common multiple is the smallest positive number that both numbers divide; list multiples of the larger number to find it.",
+      "A multiple is reached by equal-count steps, such as 6, 12, 18. The least common multiple is the first positive count two patterns both reach.",
     templateIds: ["least-common-multiple"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -78,6 +94,13 @@ export const numberSystemLessons: Lesson[] = [
       "Recognize when a story about repeating counts or packages asks for the least common multiple.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Find when two counts meet",
+        paragraphs: [
+          "One light flashes every six seconds and another every eight. The multiples of 6 are 6, 12, 18, 24 and so on: they count its flash times. The first positive number in both lights' lists is their least common multiple.",
+        ],
+      },
       {
         title: "Multiples and common multiples",
         paragraphs: [
@@ -98,6 +121,15 @@ export const numberSystemLessons: Lesson[] = [
         paragraphs: [
           "Two lights that flash every 6 and every 8 seconds flash together at times that are multiples of both numbers, so they next flash together after 24 seconds. Hot dogs in packs of 10 and buns in packs of 8 first come out even at 40: 4 packs of hot dogs and 5 packs of buns.",
           "Look for the LCM when two repeating counts must line up, and for the GCF when two amounts are split into equal groups. Lining up gives an answer at least as large as both numbers; splitting gives an answer no larger than either.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "First shared positive multiple",
+        paragraphs: [
+          "For positive whole numbers $a$ and $b$, the least common multiple is the smallest positive whole number divisible by both. Every positive common multiple is a positive whole-number multiple of it.",
         ],
       },
     ],
@@ -124,7 +156,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "long-division",
     title: "Long division and remainders",
     summary:
-      "Divide one place at a time from the left, and decide what a remainder means before answering a story.",
+      "Long division finds how many groups fit, called the quotient, and how much is left, called the remainder.",
     templateIds: ["long-division-quotient", "division-remainder-story"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -133,6 +165,13 @@ export const numberSystemLessons: Lesson[] = [
       "Decide whether a story needs the quotient, the quotient plus 1, or the remainder.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Share the largest pieces first",
+        paragraphs: [
+          "To divide a large number, start with the largest place-value pieces that can be shared. The answer is the quotient. Record what fits, then carry any amount left to the next smaller place. At the end, any amount too small to make another full group is the remainder.",
+        ],
+      },
       {
         title: "Dividend, divisor, quotient and remainder",
         paragraphs: [
@@ -154,6 +193,15 @@ export const numberSystemLessons: Lesson[] = [
         paragraphs: [
           "In a story, the remainder needs a decision. Taking 437 students on buses that hold 52: 8 buses carry 416 students and 21 are left, so 9 buses are needed. The quotient is rounded up because every student needs a seat.",
           "Packing 437 bolts in boxes of 52 fills only 8 boxes completely: the 21 extra bolts do not fill a box, so the remainder is dropped. Asked how many bolts are left over, the answer is the remainder itself, 21. Read the question to decide which of the three it asks for.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Division with a remainder",
+        paragraphs: [
+          "For a nonnegative whole-number dividend $n$ and positive whole-number divisor $d$, there are unique whole numbers $q$ and $r$ such that $n=dq+r$ with $0\\le r<d$. A story determines whether to report the quotient, the remainder, or one additional group.",
         ],
       },
     ],
@@ -179,7 +227,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "signed-numbers",
     title: "Signed numbers and opposites",
     summary:
-      "Positive and negative numbers name opposite directions from 0; opposites are the same distance from 0 on either side.",
+      "Signed numbers show positions and directions on either side of zero.",
     templateIds: ["signed-quantity", "opposite-on-line"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -188,6 +236,13 @@ export const numberSystemLessons: Lesson[] = [
       "Explain why the opposite of the opposite of a number is the number itself.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Zero separates opposite directions",
+        paragraphs: [
+          "A temperature can be above or below zero. On a number line, positive numbers lie to the right and negative numbers to the left. The farther right number is greater, even when both numbers are negative.",
+        ],
+      },
       {
         title: "Positive, negative and zero",
         paragraphs: [
@@ -209,6 +264,15 @@ export const numberSystemLessons: Lesson[] = [
         paragraphs: [
           "A number line has evenly spaced ticks, and numbers increase to the right. Find what one space is worth from two labeled ticks: if 0 and 5 are 5 spaces apart, each space is 1 unit.",
           "To read a point, count spaces from 0 or from the nearest labeled tick. A point 2 ticks to the left of −5 is at −7, and its opposite is 2 ticks to the right of 5, at 7.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Position and opposite",
+        paragraphs: [
+          "Every signed number has a position relative to zero on a number line. Its opposite lies the same distance from zero on the other side; its absolute value is that nonnegative distance. For distinct numbers, the one farther right is greater.",
         ],
       },
     ],
@@ -234,7 +298,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "signed-stories",
     title: "Stories with signed numbers",
     summary:
-      "Give every change a sign, multiply repeated changes, and add them to the start; a change between two values is end minus start.",
+      "Give increases and decreases opposite signs, then add the changes to the starting amount.",
     templateIds: ["signed-story", "signed-jumps"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -243,6 +307,13 @@ export const numberSystemLessons: Lesson[] = [
       "Find the change from one signed value to another as end minus start.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Choose one positive direction",
+        paragraphs: [
+          "If going up is positive, going down is negative. Write each change with that sign, then combine the changes in order. To describe the change between two readings, compare the end with the start.",
+        ],
+      },
       {
         title: "Model each change with a sign",
         paragraphs: [
@@ -263,6 +334,15 @@ export const numberSystemLessons: Lesson[] = [
         paragraphs: [
           "The change from a starting value to an ending value is the end minus the start. From −7.5°C to 4.25°C the change is 4.25 − (−7.5) = 4.25 + 7.5 = 11.75 degrees. Subtracting a negative number adds its opposite: taking away a drop is the same as adding a rise.",
           "The vertical distance between a ledge at 26.5 meters and a diver at −16.5 meters is 26.5 − (−16.5) = 43 meters, the 26.5 meters above sea level plus the 16.5 meters below it.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Signed changes combine",
+        paragraphs: [
+          "After signed changes $c_1,c_2,\\ldots,c_n$, an initial value $s$ becomes $s+c_1+c_2+\\cdots+c_n$. A change from value $a$ to value $b$ is $b-a$; positive and negative results describe opposite directions under the chosen convention.",
         ],
       },
     ],
@@ -318,6 +398,8 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
   },
   "gcf-factor-sum": {
     goal: "Rewrite a sum of two whole numbers as their greatest common factor times a sum.",
+    intuition:
+      "A factor divides a whole number evenly. If both numbers in a sum share a factor, move it outside parentheses: 12 + 18 = 6(2 + 3), meaning six times the sum 2 + 3. This uses the distributive property, and 6 is the greatest factor 12 and 18 share.",
     terms: [
       ["distributive property", "a × b + a × c = a(b + c)."],
       ["factor out", "Write a sum as a common factor times the remaining sum."],
