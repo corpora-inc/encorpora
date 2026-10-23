@@ -475,6 +475,15 @@ def point(tex):
 
 def solve_transform_point(public):
     p = public['prompt']
+    # The standalone lesson asks directly for the moved input. A horizontal
+    # shift keeps the old function input: new_x + shift = old_x.
+    moved = re.fullmatch(
+        r'The point \$\((-?\d+),\s*(-?\d+)\)\$ is on the graph of \$y\s*=\s*f\(x\)\$\. '
+        r'Where does this point move on the graph of \$y\s*=\s*f\(x\s*([+-])\s*(\d+)\)\$\? '
+        r'Give its new (?:\$x\$|x)-coordinate\.', p)
+    if moved:
+        shift = int(moved[4]) * (1 if moved[3] == '+' else -1)
+        return Fraction(int(moved[1]) - shift)
     m = re.fullmatch(r'The graph shows \$y = f\(x\)\$\. Let \$g\(x\) = (-?\d*)f\(x\)(?: ([+-]) (\d+))?\$\. What is \$g\((-?\d+)\)\$\?', p)
     if m:
         A = -1 if m[1] == '-' else int(m[1]) if m[1] else 1
@@ -842,6 +851,8 @@ def review_function_toolkit_fixtures():
         (case('transform-point', 'The point $(4, 6)$ is on the graph of $y = f(x)$. The graph of $y = f(3x)$ passes through $\\left(p, 6\\right)$. What is $p$?'), Fraction(4, 3)),
         (case('transform-point', 'The point $(3, -2)$ is on the graph of $y = f(x)$. The graph of $y = -f(x)$ passes through $\\left(3, q\\right)$. What is $q$?'), 2),
         (case('transform-point', '$f$ is an odd function and $f(3) = 7$. What is $f(-3)$?'), -7),
+        (case('transform-point', 'The point $(2,5)$ is on the graph of $y=f(x)$. Where does this point move on the graph of $y=f(x+3)$? Give its new $x$-coordinate.'), -1),
+        (case('transform-point', 'The point $(-2,7)$ is on the graph of $y = f(x)$. Where does this point move on the graph of $y = f(x - 4)$? Give its new x-coordinate.'), 2),
         (case('composition-value', 'Let $f(x) = 2x - 3$ and $g(x) = x^2 + 1$. What is $f(g(3))$?'), 17),
         (case('composition-value', 'Let $f(x) = 2x - 3$ and $g(x) = x^2 + 1$. What is $(g \\circ f)(3)$?'), 10),
         (case('composition-value', 'Let $f(x) = \\frac{1}{x - 5}$ and $g(x) = 2x - 1$. Which value of $x$ is not in the domain of $f(g(x))$?'), 3),
@@ -878,6 +889,9 @@ def review_function_toolkit_fixtures():
                     'lines': [{'line': {'m': 0, 'b': 3}}]})),
         # Asked at an input that is not the opposite.
         case('transform-point', '$f$ is an even function and $f(3) = 7$. What is $f(-4)$?'),
+        # The horizontal-shift question does not cover nonlinear inputs or ask for y.
+        case('transform-point', 'The point $(2,5)$ is on the graph of $y=f(x)$. Where does this point move on the graph of $y=f(x^2+3)$? Give its new $x$-coordinate.'),
+        case('transform-point', 'The point $(2,5)$ is on the graph of $y=f(x)$. Where does this point move on the graph of $y=f(x+3)$? Give its new $y$-coordinate.'),
         # The inner output is not in the table.
         case('composition-value', 'The table gives values of $f$ and $g$. What is $f(g(1))$?', figure=scene({'type': 'lineTable', 'rows': [['x', '0', '1', '2'], ['f(x)', '3', '4', '5'], ['g(x)', '1', '7', '0']]})),
         # A table that is not one-to-one.
@@ -976,7 +990,7 @@ def review_function_toolkit_content(data=None):
     require(sorted(t for l in lessons.values() for t in l['templateIds']) == sorted(FUNCTION_TOOLKIT), 'Every template has one standalone lesson')
     for lesson in lessons.values():
         require(worked_answer(lesson) == lesson['workedExample']['answer'], 'Worked example answer: ' + lesson['id'])
-        for text in lesson['workedExample']['steps'] + [p for s in lesson['sections'] for p in s['paragraphs']]:
+        for text in lesson['workedExample']['steps'] + [p for s in [*lesson['sections'], *lesson.get('closingSections', [])] for p in s['paragraphs']]:
             checked += arithmetic_claims(display(text))
     figures = review_illustrations(data['figures'])
     return {'worksheets': len(data['worksheets']), 'checkedClaims': checked, 'lessons': len(lessons), 'figures': figures}
@@ -984,6 +998,7 @@ def review_function_toolkit_content(data=None):
 
 def review_content_mutations():
     data = content()
+    review_function_toolkit_content(data)
     mutants = []
     bad = copy.deepcopy(data); bad['lessons'][0]['workedExample']['answer'] = '7'; mutants.append(bad)
     bad = copy.deepcopy(data); bad['lessons'][2]['workedExample']['answer'] = '10'; mutants.append(bad)

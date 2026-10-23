@@ -6,7 +6,7 @@ export const congruenceMethods: Record<string, ProblemMethod> = {
   "triangle-congruence-criteria": {
     goal: "Decide whether the corresponding givens determine congruent triangles, or complete a specified criterion.",
     intuition:
-      "Congruent triangles have the same side lengths and angle measures. Corresponding parts are sides or angles paired by the stated vertex matching. S means a side pair and A an angle pair: SSS matches three sides; SAS uses two sides and the angle between them; ASA uses two angles and the side between them; AAS uses two angles and another side.",
+      "Congruent triangles have the same side lengths and angle measures. Corresponding parts are sides or angles paired by the stated vertex matching. $S$ means a side pair and $A$ an angle pair: SSS matches three sides; SAS uses two sides and the angle between them; ASA uses two angles and the side between them; AAS uses two angles and another side.",
     terms: [
       [
         "congruent triangles",

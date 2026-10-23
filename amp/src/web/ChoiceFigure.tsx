@@ -1,8 +1,21 @@
 import type { SemanticFigure } from "../math/contracts.js";
 import { Figure } from "./Figure.js";
+import { SceneFigure } from "./scene/SceneFigure";
 import { FigureTextCap } from "./FigureTextCap.js";
 /** Compact graph labels retain readable size; coordinates are givens, not answers. */
-export function ChoiceFigure({ figure }: { figure: SemanticFigure }) {
+export function ChoiceFigure({
+  figure,
+  maxHeight,
+}: {
+  figure: SemanticFigure;
+  maxHeight?: number;
+}) {
+  if (figure.kind === "scene" && maxHeight !== undefined)
+    return (
+      <div className="compact-choice-scene">
+        <SceneFigure scene={figure.scene} maxHeight={maxHeight} />
+      </div>
+    );
   if (figure.kind !== "coordinate-plane") return <Figure figure={figure} />;
   const left = 30,
     right = 270,

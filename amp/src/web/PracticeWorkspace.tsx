@@ -874,7 +874,14 @@ export function PracticeWorkspace(props: Props) {
           </p>
           {choice && problem.figure && (
             <div className="choice-model">
-              <ChoiceFigure figure={problem.figure} />
+              <ChoiceFigure
+                figure={problem.figure}
+                maxHeight={
+                  problem.templateId === "relation-point-removal"
+                    ? 160
+                    : undefined
+                }
+              />
             </div>
           )}
           <div className="answer-dock compact-entry">{answerControls()}</div>

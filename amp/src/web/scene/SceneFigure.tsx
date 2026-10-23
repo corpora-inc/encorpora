@@ -12,6 +12,7 @@ export function SceneFigure({
   kind,
   medium = "screen",
   frame = "start",
+  maxHeight,
 }: {
   scene: Scene;
   reveal?: boolean;
@@ -19,13 +20,19 @@ export function SceneFigure({
   medium?: Medium;
   /** With steps: the start frame (a problem's givens) or the final frame. */
   frame?: "start" | "end";
+  /** Relayout within a short answer sheet while retaining readable label sizes. */
+  maxHeight?: number;
 }) {
   // Callers often rebuild an equal scene each render (legacy adapters, typed
   // answers re-rendering the workspace): key the layout on content.
   const compact = useCompact() && medium === "screen";
-  const fitted = compact
-    ? { ...scene, width: Math.min(scene.width ?? 360, COMPACT_WIDTH) }
-    : scene;
+  const fitted = {
+    ...scene,
+    ...(compact && { width: Math.min(scene.width ?? 360, COMPACT_WIDTH) }),
+    ...(maxHeight !== undefined && {
+      maxHeight: Math.min(scene.maxHeight ?? 320, maxHeight),
+    }),
+  };
   const key = JSON.stringify(fitted);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const layout = useMemo(() => layoutScene(fitted, { reveal }), [key, reveal]);
