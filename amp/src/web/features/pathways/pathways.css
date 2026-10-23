@@ -198,6 +198,17 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  opacity: 1;
+  transition: opacity 140ms ease;
+}
+.pathways-map-labels[data-moving="true"] {
+  opacity: 0;
+  transition-duration: 60ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pathways-map-labels {
+    transition: none;
+  }
 }
 .pathways-map-labels span {
   position: absolute;

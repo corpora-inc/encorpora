@@ -247,6 +247,138 @@ async function noOverflow(page: Page) {
       "readable learner selector",
     );
 }
+async function verifySettledLabels(page: Page, animated = false) {
+  const overlay = page.locator(".pathways-map-labels");
+  const settled = () =>
+    page.waitForFunction(
+      () => {
+        const el = document.querySelector(".pathways-map-labels")!;
+        return getComputedStyle(el).opacity === "1" && !!el.childElementCount;
+      },
+      undefined,
+      { timeout: 8000 },
+    );
+  await settled();
+  const box = (await page.locator(".pathways-canvas canvas").boundingBox())!;
+  const x = box.x + box.width / 2,
+    y = box.y + box.height / 2;
+  for (const orbit of [false, true]) {
+    if (orbit)
+      await page.getByRole("button", { name: "3D orbit", exact: true }).click();
+    await page.mouse.move(x, y);
+    await page.mouse.down();
+    await page.mouse.move(x + 24, y + 12, { steps: 5 });
+    await page.waitForTimeout(350);
+    assert.equal(
+      await overlay.evaluate((el) => getComputedStyle(el).opacity),
+      "0",
+      "labels stay hidden during a held drag, including pointer pauses",
+    );
+    await page.mouse.up();
+    await settled();
+  }
+  const positions = () =>
+    overlay.locator("span").evaluateAll((els) =>
+      els.map((el) => ({
+        text: el.textContent,
+        style: el.getAttribute("style"),
+      })),
+    );
+  const first = await positions();
+  await page.waitForTimeout(500);
+  assert.deepEqual(
+    await positions(),
+    first,
+    "settled labels do not jump on an idle timer",
+  );
+  await page.mouse.wheel(0, -80);
+  await page.waitForFunction(
+    () =>
+      Number(
+        getComputedStyle(document.querySelector(".pathways-map-labels")!)
+          .opacity,
+      ) < 0.5,
+    undefined,
+    { timeout: 1500 },
+  );
+  await settled();
+  await page.getByRole("button", { name: "3D orbit", exact: true }).click();
+  await settled();
+  if (!animated) {
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page
+      .getByRole("button", { name: "Pause motion", exact: true })
+      .waitFor();
+    await verifySettledLabels(page, true);
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await settled();
+    return;
+  }
+  // A programmatic camera flight stays hidden until its final pose.
+  await page.getByRole("button", { name: "Whole map", exact: true }).click();
+  await page.waitForFunction(
+    () =>
+      Number(
+        getComputedStyle(document.querySelector(".pathways-map-labels")!)
+          .opacity,
+      ) < 0.5,
+    undefined,
+    { timeout: 1500 },
+  );
+  await settled();
+  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await settled();
+  await page.getByRole("button", { name: "Whole map", exact: true }).click();
+  await page.mouse.move(x, y);
+  await page.mouse.down();
+  await page.mouse.move(x + 12, y + 8, { steps: 3 });
+  await page.waitForTimeout(350);
+  assert.equal(
+    await overlay.evaluate((el) => getComputedStyle(el).opacity),
+    "0",
+    "interrupting a flight does not reveal labels during a held gesture",
+  );
+  await page.mouse.up();
+  await settled();
+  await page.getByRole("button", { name: "Pause motion", exact: true }).click();
+  await settled();
+  await page.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await settled();
+  // Real touch cancellation must release OrbitControls' held-gesture state.
+  if (
+    !process.env.AMP_MAP_BROWSER ||
+    process.env.AMP_MAP_BROWSER === "chromium"
+  ) {
+    const cdp = await page.context().newCDPSession(page);
+    const points = [
+      { x: x - 20, y, id: 1 },
+      { x: x + 20, y, id: 2 },
+    ];
+    await cdp.send("Input.dispatchTouchEvent", {
+      type: "touchStart",
+      touchPoints: points,
+    });
+    await cdp.send("Input.dispatchTouchEvent", {
+      type: "touchMove",
+      touchPoints: [
+        { x: x - 35, y, id: 1 },
+        { x: x + 35, y, id: 2 },
+      ],
+    });
+    await page.waitForTimeout(350);
+    assert.equal(
+      await overlay.evaluate((el) => getComputedStyle(el).opacity),
+      "0",
+      "pinch keeps labels hidden",
+    );
+    await cdp.send("Input.dispatchTouchEvent", {
+      type: "touchCancel",
+      touchPoints: [],
+    });
+    await settled();
+    await cdp.detach();
+  }
+}
 try {
   for (const width of [320, 390, 768, 1280])
     for (const theme of ["light", "dark"] as const) {
@@ -376,10 +508,20 @@ try {
             190,
           "selected skill keeps room for the map",
         );
+      await page.waitForFunction(
+        () =>
+          document
+            .querySelector(".pathways-map-labels")
+            ?.getAttribute("data-moving") === "false",
+        undefined,
+        { timeout: 8000 },
+      );
       await page.screenshot({
         path: `${output}/${width}-${theme}-selected.png`,
         fullPage: true,
       });
+      if (theme === "light" && [390, 1280].includes(width))
+        await verifySettledLabels(page);
       await page
         .getByRole("button", { name: "Whole map", exact: true })
         .click();
@@ -610,8 +752,28 @@ try {
   await failed.getByRole("button", { name: "Retry", exact: true }).waitFor();
   await noOverflow(failed);
   await failed.close();
+  const lost = await browser.newPage({ viewport: { width: 390, height: 900 } });
+  await fixture(lost);
+  await lost.goto(`${origin}/pathways?skill=${target.id}`);
+  await lost.locator(".pathways-canvas canvas").waitFor();
+  await lost.getByRole("button", { name: "Zoom in", exact: true }).click();
+  await lost
+    .locator("canvas")
+    .evaluate((el) =>
+      el.dispatchEvent(new Event("webglcontextlost", { cancelable: true })),
+    );
+  await lost
+    .getByText("3D is unavailable on this device.", { exact: false })
+    .waitFor();
+  await lost.waitForTimeout(350);
+  assert.equal(
+    await lost.locator(".pathways-map-labels span").count(),
+    0,
+    "pending label timer cannot resurrect labels after context loss",
+  );
+  await lost.close();
   console.log(
-    "Pathways: 8 viewport/theme cases, durable crystals, URL restoration, learner/account isolation, WebGL fallback, and progress-error recovery passed.",
+    "Pathways: camera gesture/settle checks, 8 viewport/theme cases, durable crystals, URL restoration, learner/account isolation, WebGL fallback, and progress-error recovery passed.",
   );
 } finally {
   await browser.close();
