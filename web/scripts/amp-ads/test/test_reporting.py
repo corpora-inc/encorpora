@@ -36,9 +36,9 @@ class ReportTests(unittest.TestCase):
         self.row.metrics.clicks = 3
 
     def test_daily_scoped_report_preserves_large_integer_spend_and_context(self):
-        with patch.object(campaigns, "rows", side_effect=[[self.account], [self.row]]) as read:
+        with patch.object(campaigns, "rows", side_effect=[[self.account], [self.row], [], []]) as read:
             result = campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
-        query = read.call_args.args[2]
+        query = read.call_args_list[1].args[2]
         self.assertIn("FROM ad_group_ad ", query)
         self.assertIn("campaign.name REGEXP_MATCH '^AMP [|] (AR|AZ) [|] .*'", query)
         self.assertIn("segments.date BETWEEN '2026-10-01' AND '2026-10-21'", query)
@@ -76,7 +76,7 @@ class ReportTests(unittest.TestCase):
         arizona.ad_group_ad.ad.id = 32
         arizona.ad_group_ad.ad.final_urls[:] = ["https://corpora.inc/esa/arizona-esa/?utm_content=az-example"]
         arizona.metrics.cost_micros = 300
-        with patch.object(campaigns, "rows", side_effect=[[self.account], [self.row, variant, arizona]]):
+        with patch.object(campaigns, "rows", side_effect=[[self.account], [self.row, variant, arizona], [], []]):
             result = campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
         self.assertEqual([row["ad"]["id"] for row in result["rows"]], ["30", "31", "32"])
         self.assertEqual([row["ad_group"]["id"] for row in result["rows"]], ["20", "20", "21"])
@@ -84,7 +84,7 @@ class ReportTests(unittest.TestCase):
 
     def test_missing_ad_identity_is_not_exported_as_aggregate_data(self):
         self.row.ad_group_ad.ad.id = 0
-        with patch.object(campaigns, "rows", side_effect=[[self.account], [self.row]]):
+        with patch.object(campaigns, "rows", side_effect=[[self.account], [self.row], [], []]):
             with self.assertRaisesRegex(ValueError, "ad identity"):
                 campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
 
@@ -112,7 +112,7 @@ class ReportTests(unittest.TestCase):
                 self.assertEqual(read.call_count, 1)
 
     def test_empty_report_retains_boundaries_and_unexpected_rows_fail(self):
-        with patch.object(campaigns, "rows", side_effect=[[self.account], []]):
+        with patch.object(campaigns, "rows", side_effect=[[self.account], [], [], []]):
             result = campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
         self.assertEqual(result["rows"], [])
         self.assertIn("Empty rows do not prove", result["interpretation"])
@@ -135,5 +135,81 @@ class ReportTests(unittest.TestCase):
             campaigns.main()
         report.assert_called_once_with(self.client, CID, "2026-10-01", "2026-10-21")
         self.assertEqual(json.loads(output.getvalue()), result)
+
+    def test_performance_max_delivery_exists_without_standard_ad_rows(self):
+        pmax = self.client.get_type("GoogleAdsRow")
+        pmax.campaign.id = 40
+        pmax.campaign.name = "AMP | AZ | funded-math"
+        pmax.campaign.status = "REMOVED"
+        pmax.campaign.advertising_channel_type = "PERFORMANCE_MAX"
+        pmax.asset_group.id = 50
+        pmax.asset_group.name = "Your child"
+        pmax.asset_group.status = "REMOVED"
+        pmax.asset_group.final_urls.append("https://corpora.inc/esa/arizona-esa/?utm_content=example")
+        pmax.segments.date = "2026-10-01"
+        pmax.metrics.cost_micros = 9007199254740993
+        pmax.metrics.conversions = 1.5
+        with patch.object(campaigns, "rows", side_effect=[[self.account], [], [pmax], [pmax]]) as read:
+            result = campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
+        self.assertEqual(result["rows"], [])
+        totals = result["campaign_totals"]
+        groups = result["performance_max_asset_groups"]
+        self.assertEqual(totals["granularity"], "day_campaign")
+        self.assertEqual(groups["granularity"], "day_asset_group")
+        self.assertEqual(totals["rows"][0]["campaign"]["channel"], "PERFORMANCE_MAX")
+        self.assertEqual(groups["rows"][0]["asset_group"]["id"], "50")
+        self.assertEqual(groups["rows"][0]["asset_group"]["status"], "REMOVED")
+        self.assertEqual(groups["rows"][0]["asset_group"]["final_urls"], list(pmax.asset_group.final_urls))
+        for section in (totals, groups):
+            self.assertEqual(section["rows"][0]["metrics"]["cost_micros"], "9007199254740993")
+            self.assertEqual(section["rows"][0]["metrics"]["conversions"], 1.5)
+            self.assertIn("segments.date BETWEEN '2026-10-01' AND '2026-10-21'", section["query"])
+            self.assertIn("campaign.status IN ('ENABLED','PAUSED','REMOVED')", section["query"])
+        self.assertEqual(read.call_count, 4)
+        self.assertIn("Do not add", result["interpretation"])
+
+    def test_delivery_breakdowns_reject_wrong_scope_or_missing_identity(self):
+        row = self.client.get_type("GoogleAdsRow")
+        row.campaign.id = 40
+        row.campaign.name = "AMP | AR | funded-math"
+        row.campaign.advertising_channel_type = "PERFORMANCE_MAX"
+        row.asset_group.id = 50
+        row.segments.date = "2026-10-01"
+        cases = [("campaign", "name", "Other campaign"), ("campaign", "id", 0),
+                 ("segments", "date", "2026-09-30"), ("segments", "date", "2026-10-01junk")]
+        for section in ("campaign_totals", "performance_max_asset_groups"):
+            for owner, field, value in cases:
+                bad = type(row)(row)
+                setattr(getattr(bad, owner), field, value)
+                responses = [[self.account], [], [bad], []] if section == "campaign_totals" else [[self.account], [], [], [bad]]
+                with self.subTest(section=section, field=field), patch.object(campaigns, "rows", side_effect=responses):
+                    with self.assertRaises(ValueError):
+                        campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
+        for owner, field, value in [("asset_group", "id", 0), ("campaign", "advertising_channel_type", "SEARCH")]:
+            bad = type(row)(row)
+            setattr(getattr(bad, owner), field, value)
+            with patch.object(campaigns, "rows", side_effect=[[self.account], [], [], [bad]]):
+                with self.assertRaises(ValueError):
+                    campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
+
+    def test_search_and_pmax_totals_are_separate_from_their_drilldowns(self):
+        search = type(self.row)(self.row)
+        search.campaign.advertising_channel_type = "SEARCH"
+        search.metrics.cost_micros = 2000000
+        pmax = type(search)(search)
+        pmax.campaign.id = 11
+        pmax.campaign.name = "AMP | AZ | complete-math"
+        pmax.campaign.advertising_channel_type = "PERFORMANCE_MAX"
+        pmax.asset_group.id = 40
+        pmax.metrics.cost_micros = 3000000
+        with patch.object(campaigns, "rows", side_effect=[[self.account], [search], [search, pmax], [pmax]]):
+            result = campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
+        self.assertEqual(sum(int(x["metrics"]["cost_micros"]) for x in result["campaign_totals"]["rows"]), 5000000)
+        self.assertEqual(len(result["rows"]), 1)
+        self.assertEqual(len(result["performance_max_asset_groups"]["rows"]), 1)
+        for responses in ([[self.account], [], [pmax, pmax]], [[self.account], [], [pmax], [pmax, pmax]]):
+            with patch.object(campaigns, "rows", side_effect=responses):
+                with self.assertRaisesRegex(ValueError, "Duplicate"):
+                    campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
 
 if __name__ == "__main__": unittest.main()
