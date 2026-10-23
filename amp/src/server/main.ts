@@ -1,3 +1,4 @@
+import { registerParentFeedbackRoutes } from "../feedback/parent-routes.js";
 import { registerMetaPurchaseContextRoutes } from "../advertising/meta-context.js";
 import { registerAcquisitionRoutes } from "../advertising/acquisition.js";
 import { withAdvertisingPrivacySignals } from "../advertising/permission.js";
@@ -170,6 +171,7 @@ await registerOfflineRoutes(app, {
   signer: await offlineSigningConfiguration(process.env),
 });
 await registerAnalyticsRoutes(app, { pool: repository.pool });
+await registerParentFeedbackRoutes(app, { pool: repository.pool });
 await registerCampaignRoutes(app, {
   pool: repository.pool,
   origin: campaignOrigin(process.env.AMP_CAMPAIGN_SITE_ORIGIN),

@@ -28,6 +28,8 @@ export const RETENTION = {
   /** "Report a problem" reports, from when they were sent. Deleting a
    * learner's learning data unlinks their reports and erases the notes. */
   problemFlagDays: 365,
+  /** Voluntary parent product feedback, from submission. */
+  parentFeedbackDays: 90,
   /** Adult purchase measurement preferences after expiry or withdrawal. */
   advertisingPermissionDays: 90,
   /** Meta browser confirmation context: at most seven days after payment. */

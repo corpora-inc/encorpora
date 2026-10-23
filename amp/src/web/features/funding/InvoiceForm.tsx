@@ -1,3 +1,4 @@
+import { SupportHelp } from "../support/SupportHelp";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "@tanstack/react-router";
 import {
@@ -131,6 +132,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
     return (
       <main className={styles.panel}>
         <h1>Choose a funding program</h1>
+        <SupportHelp context="invoice" />
       </main>
     );
   return (
@@ -299,6 +301,14 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
           </p>
         </>
       )}
+      <SupportHelp
+        context="invoice"
+        program={
+          program?.id === "ar-efa" || program?.id === "az-esa"
+            ? program.id
+            : undefined
+        }
+      />
     </main>
   );
 }
