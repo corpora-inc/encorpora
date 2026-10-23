@@ -154,6 +154,8 @@ async function fixture(
       return route.fulfill({
         json: { mode: "accounts", passwords: true, providers: [] },
       });
+    if (pathname.endsWith("/events"))
+      return route.fulfill({ status: 204, body: "" });
     if (pathname.endsWith("/me"))
       return route.fulfill({
         json: me(

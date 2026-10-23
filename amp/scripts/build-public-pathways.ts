@@ -114,6 +114,12 @@ function cardSvg(skill?: (typeof skills)[number]) {
     ? bandLabel(skill.gradeBand).toUpperCase()
     : "KINDERGARTEN THROUGH PRECALCULUS";
   const titleY = lines.length > 1 ? 260 : 290;
+  if (
+    lines.length > 3 ||
+    lines.some((line) => line.length > 20) ||
+    titleY + (lines.length - 1) * 63 + 52 > 460
+  )
+    throw new Error(`Social card title exceeds its text area: ${title}`);
   const selected = skill ? project(skill.id) : null;
   const closeConnections = skill
     ? [
