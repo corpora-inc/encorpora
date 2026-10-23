@@ -197,7 +197,7 @@ export async function startTrial(birthYear: number): Promise<TrialSession> {
   return session;
 }
 /** The next adaptive problem, or "complete" when the allowance is used. */
-export async function nextProblem(session: TrialSession) {
+export async function nextProblem(session: TrialSession, templateId?: string) {
   try {
     return await request(
       `/learners/${encodeURIComponent(session.learnerId)}/batches`,
@@ -206,6 +206,7 @@ export async function nextProblem(session: TrialSession) {
         trial: session.token,
         body: {
           count: 1,
+          ...(templateId ? { templateId } : {}),
           responseCapabilities: ["single-choice-v1"],
           figureCapabilities: [...figureCapabilities],
         },

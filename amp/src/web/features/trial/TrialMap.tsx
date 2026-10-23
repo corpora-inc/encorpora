@@ -93,6 +93,13 @@ function MapView({ session }: { session: TrialSession }) {
           <FreeMeter answered={p.totals.answered} free={p.free} />
         </div>
         <FrontierMap name="the learner" frontier={frontier} strands={strands} />
+        <Link
+          to="/pathways"
+          search={{ context: "trial" }}
+          className={buttonClass("secondary")}
+        >
+          Explore your illuminated pathways →
+        </Link>
         <div className={styles.actions}>
           {left > 0 ? (
             <>

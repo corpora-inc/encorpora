@@ -1,236 +1,844 @@
 .pathways {
-  max-width: 1440px;
-  margin: auto;
-  padding: clamp(12px, 3vw, 32px);
-  color: var(--color-on-surface);
-  background: var(--color-surface);
+  --color-surface: var(--atlas-surface);
+  color-scheme: dark;
+  min-height: 100dvh;
+  background: var(--atlas-surface);
+  color: var(--atlas-on-surface);
+  padding: 0 clamp(16px, 3vw, 40px);
+  font-family: inherit;
 }
 .pathways * {
   box-sizing: border-box;
 }
-.pathways button,
-.pathways select,
-.pathways input,
-.pathways-go {
-  min-height: 44px;
-  font: inherit;
+.pathways a {
+  color: var(--atlas-accent);
 }
 .pathways button,
-.pathways select,
-.pathways input {
-  color: var(--color-on-surface-raised);
-  background: var(--color-surface-raised);
-  border: 1px solid var(--color-border-strong);
-  border-radius: 8px;
-  padding: 8px 12px;
+.pathways input,
+.pathways select {
+  font: inherit;
+  min-height: 44px;
+  border: 1px solid var(--atlas-border);
+  border-radius: 10px;
+  background: var(--atlas-panel);
+  color: var(--atlas-on-panel);
+  padding: 10px 14px;
 }
 .pathways button {
   cursor: pointer;
 }
+.pathways button:hover {
+  border-color: var(--atlas-muted);
+}
+.pathways button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
 .pathways :focus-visible {
-  outline: 3px solid var(--color-focus-ring);
+  outline: 2px solid var(--atlas-accent);
   outline-offset: 3px;
 }
-.pathways a {
-  color: var(--color-primary);
+.pathways .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
 }
 .pathways-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  flex-wrap: wrap;
+  min-height: 80px;
+  border-bottom: 1px solid var(--atlas-border);
 }
-.pathways h1 {
-  margin: 8px 0;
-  font-size: clamp(26px, 4vw, 40px);
+.pathways-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.2;
+  color: var(--atlas-on-surface) !important;
+}
+.pathways-brand strong {
+  display: block;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 11px;
+  margin-top: 5px;
+}
+.pathways-brand svg {
+  width: 44px;
+  height: 28px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--atlas-accent);
+  stroke-width: 1.5;
 }
 .pathways .pathways-go {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
   padding: 12px 20px;
-  border-radius: 99px;
+  border-radius: 10px;
+  background: var(--atlas-accent);
+  color: var(--atlas-on-accent);
+  font-weight: 650;
   text-decoration: none;
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  font-weight: 700;
+  white-space: nowrap;
+  font-size: 14px;
+}
+.pathways-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 24px;
+}
+.pathways-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--atlas-muted);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.pathways h1 {
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+  margin: 0;
+  font-weight: 500;
+}
+.pathways-summary {
+  color: var(--atlas-muted);
+  max-width: 360px;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
 }
 .pathways-status {
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  min-height: 80px;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--atlas-muted);
+  min-height: 48px;
 }
 .pathways-status p {
-  flex: 1 1 300px;
+  margin: 8px 0;
+  max-width: 660px;
+  line-height: 1.5;
 }
-.pathways .pathways-status label {
-  flex: 0 1 230px;
-  min-width: 180px;
+.pathways-status label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.pathways-summary,
-.pathways-note {
-  color: var(--color-muted-text);
+.pathways-status select {
+  width: 180px;
+}
+.pathways-status button {
+  min-height: 44px;
+}
+.pathways-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 4px 0 12px;
+}
+.pathways-toolbar button {
+  font-size: 12px;
+}
+.pathways-search {
+  width: 260px;
+}
+.pathways-search input {
+  width: 100%;
+  font-size: 13px;
+}
+.pathways input::placeholder {
+  color: var(--atlas-muted);
+}
+.pathways-workspace {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  min-height: 360px;
+  height: clamp(420px, calc(100dvh - 350px), 900px);
 }
 .pathways-viewport {
-  height: clamp(320px, 52vh, 620px);
   position: relative;
-  background: var(--color-surface-sunken);
-  border: 1px solid var(--color-border-strong);
-  border-radius: 20px;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 1px solid var(--atlas-border);
+  border-radius: 18px;
   overflow: hidden;
+  background: radial-gradient(
+    ellipse at 50% 48%,
+    var(--atlas-vignette),
+    var(--atlas-surface) 70%
+  );
 }
-.pathways-canvas {
+.pathways-canvas,
+.pathways-canvas canvas {
   width: 100%;
   height: 100%;
+  display: block;
 }
 .pathways-canvas canvas {
-  display: block;
   touch-action: none;
+}
+.pathways-map-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.pathways-map-labels span {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--atlas-muted);
+  width: 150px;
+  line-height: 1.6;
+}
+.pathways-map-labels .skill-label {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 11px;
+  line-height: 1.35;
+  background: var(--atlas-surface);
+  padding: 4px 6px;
+  border-radius: 6px;
+  transform: translate(-50%, 12px);
+  width: max-content;
+  max-width: 165px;
+  color: var(--atlas-on-surface);
 }
 .pathways-camera {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  left: 14px;
+  top: 14px;
   display: flex;
-  gap: 8px;
+  gap: 6px;
+  flex-wrap: wrap;
+  right: 14px;
+  pointer-events: none;
 }
 .pathways-camera button {
+  pointer-events: auto;
   min-width: 44px;
+  font-size: 11px;
+  padding: 8px 12px;
+  background: var(--atlas-surface);
+}
+.pathways button[aria-pressed="true"] {
+  border-color: var(--atlas-accent);
+  color: var(--atlas-accent);
 }
 .pathways-gesture {
   position: absolute;
-  bottom: 8px;
-  left: 12px;
-  right: 12px;
+  bottom: 12px;
+  left: 14px;
+  right: 14px;
   margin: 0;
-  padding: 8px;
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
-  border-radius: 8px;
-  font-size: 12px;
+  color: var(--atlas-muted);
+  font-size: 10px;
   pointer-events: none;
+  text-align: center;
+}
+.pathways-hover {
+  position: absolute;
+  left: 50%;
+  bottom: 38px;
+  transform: translateX(-50%);
+  max-width: 90%;
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--atlas-panel);
+  color: var(--atlas-on-panel);
+  border: 1px solid var(--atlas-border);
+  border-radius: 10px;
+  font-size: 13px;
+  pointer-events: none;
+  text-align: center;
+}
+.pathways-hover small {
+  display: block;
+  margin-top: 4px;
+  color: var(--atlas-muted);
+  font-size: 11px;
 }
 .pathways-fallback {
   position: absolute;
-  inset: 70px 20px auto;
+  inset: 120px 20px auto;
+  color: var(--atlas-on-surface);
+  line-height: 1.6;
 }
-.pathways-panels {
+.pathways-browser {
+  width: 260px;
+  flex-shrink: 0;
+  overflow: auto;
+  border: 1px solid var(--atlas-border);
+  background: var(--atlas-panel);
+  border-radius: 16px;
+  padding: 14px;
+}
+.pathways-browser[hidden] {
+  display: none;
+}
+.pathways-browser label {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 24px;
-  margin-top: 24px;
+  gap: 8px;
+  font-size: 12px;
 }
-.pathways-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.pathways label {
-  display: grid;
-  gap: 6px;
-  flex: 1;
-  min-width: 0;
-}
-.pathways input,
-.pathways select {
+.pathways-browser select {
   width: 100%;
+  min-width: 0;
+  font-size: 12px;
 }
 .pathways ul {
   list-style: none;
   padding: 0;
-}
-.pathways-skill-list {
-  max-height: 390px;
-  overflow: auto;
-  padding: 4px !important;
+  margin: 8px 0;
 }
 .pathways li button {
   width: 100%;
   text-align: left;
   margin-bottom: 6px;
+  line-height: 1.45;
+  font-size: 12px;
+}
+.pathways li button small {
+  display: block;
+  font-size: 10px;
+  color: var(--atlas-muted);
+  margin-top: 4px;
 }
 .pathways-skill-list button {
   display: flex;
-  gap: 12px;
   align-items: center;
-}
-.pathways button[aria-pressed="true"] {
-  background: var(--color-selected);
-  color: var(--color-on-selected);
-}
-.pathways small {
-  display: block;
-  margin-top: 4px;
-  font-size: 12px;
+  gap: 12px;
 }
 .pathways-gem {
-  font-size: 16px;
+  opacity: 0.35;
+  flex-shrink: 0;
 }
 .pathways-gem.stage-1 {
-  font-size: 22px;
+  font-size: 18px;
+  opacity: 0.7;
 }
 .pathways-gem.stage-2 {
-  font-size: 28px;
+  font-size: 21px;
+  opacity: 0.9;
 }
 .pathways-gem.stage-3 {
-  font-size: 34px;
+  font-size: 25px;
+  opacity: 1;
 }
 .pathways-detail {
-  padding: 20px;
+  width: 300px;
+  flex-shrink: 0;
+  overflow: auto;
+  border: 1px solid var(--atlas-border);
+  background: var(--atlas-panel);
   border-radius: 16px;
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
-  overflow-wrap: anywhere;
+  padding: 20px;
+  line-height: 1.6;
+  font-size: 13px;
+}
+.pathways-detail-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.pathways-detail-top button {
+  font-size: 22px;
+  line-height: 1;
+  padding: 8px;
+  min-width: 44px;
+}
+.pathways-detail-top .pathways-eyebrow {
+  margin: 0;
 }
 .pathways-detail h2 {
-  margin-top: 0;
-}
-.pathways-note {
-  font-size: 13px;
-  margin-top: 24px;
-  line-height: 1.6;
-}
-@media (max-width: 650px) {
-  .pathways-panels {
-    grid-template-columns: 1fr;
-  }
-  .pathways-detail {
-    grid-row: 1;
-  }
-  .pathways-status {
-    gap: 8px;
-  }
-  .pathways-filters {
-    flex-direction: column;
-  }
-}
-
-.pathways h1,
-.pathways h2 {
+  font-size: 23px;
+  font-weight: 500;
   letter-spacing: -0.025em;
   line-height: 1.2;
+  margin: 12px 0;
+  overflow-wrap: anywhere;
 }
-.pathways-selection {
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  top: 60px;
-  margin: 0;
-  padding: 8px;
-  border-radius: 8px;
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
-  font-size: 13px;
-  pointer-events: none;
+.pathways-detail h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 20px 0 8px;
+  color: var(--atlas-muted);
 }
-.pathways-estimates {
-  margin-top: 16px;
+.pathways-earned {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 18px 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--atlas-border);
 }
-.pathways-estimates summary {
+.pathways-earned strong {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1;
+}
+.pathways-earned span {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.pathways-earned small {
+  display: block;
+  font-size: 10px;
+  color: var(--atlas-muted);
+}
+.pathways-detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pathways-detail-actions a,
+.pathways-detail-actions button {
+  flex: 1;
+  font-size: 12px;
+}
+.pathways-types {
+  margin-top: 12px;
+  font-size: 12px;
+}
+.pathways summary {
   cursor: pointer;
   min-height: 44px;
   padding: 12px 0;
+}
+.pathways-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--atlas-muted);
+}
+.pathways-dot.prerequisites {
+  background: var(--atlas-prerequisite);
+}
+.pathways-dot.dependents {
+  background: var(--atlas-dependent);
+}
+.pathways-muted,
+.pathways-range {
+  color: var(--atlas-muted);
+  font-size: 11px;
+}
+.pathways-range {
+  border-top: 1px solid var(--atlas-border);
+  padding-top: 12px;
+}
+.pathways-footer {
+  position: relative;
+  padding: 14px 0 12px;
+  color: var(--atlas-muted);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.pathways-legend {
+  display: flex;
+  gap: 8px 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pathways-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pathways-footer > p {
+  text-align: center;
+  margin: 12px 0 0;
+}
+.pathways-note {
+  max-width: 660px;
+  margin: 0 auto;
+}
+.pathways-note summary {
+  text-align: center;
+  padding: 8px;
+}
+.pathways-demo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--atlas-accent);
+  border-radius: 10px;
+  color: var(--atlas-accent);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.pathways-demo button {
+  font-size: 11px;
+}
+@media (min-width: 1500px) {
+  .pathways {
+    padding-left: max(40px, calc((100vw - 1700px) / 2));
+    padding-right: max(40px, calc((100vw - 1700px) / 2));
+  }
+}
+@media (max-width: 1000px) {
+  .pathways-detail {
+    width: 270px;
+    padding: 16px;
+  }
+  .pathways-browser {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 270px;
+    box-shadow: 0 12px 40px var(--atlas-surface);
+  }
+  .pathways-summary {
+    max-width: 260px;
+  }
+}
+@media (max-width: 650px) {
+  .pathways {
+    padding: 0 12px;
+  }
+  .pathways-header {
+    min-height: 68px;
+    gap: 12px;
+  }
+  .pathways-brand {
+    font-size: 12px;
+    gap: 8px;
+  }
+  .pathways-brand svg {
+    width: 32px;
+  }
+  .pathways-brand strong {
+    font-size: 9px;
+  }
+  .pathways .pathways-go {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+  .pathways-heading {
+    padding-top: 18px;
+    display: block;
+  }
+  .pathways h1 {
+    font-size: 28px;
+  }
+  .pathways-eyebrow {
+    font-size: 9px;
+  }
+  .pathways-summary {
+    max-width: none;
+    font-size: 10px;
+    margin-top: 8px;
+  }
+  .pathways-status {
+    display: block;
+    min-height: 36px;
+    font-size: 10px;
+  }
+  .pathways-status label {
+    margin: 8px 0;
+    justify-content: space-between;
+  }
+  .pathways-status select {
+    width: 180px;
+  }
+  .pathways-toolbar {
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .pathways-search {
+    width: 100%;
+  }
+  .pathways-toolbar button {
+    flex: 1;
+    padding: 8px;
+    font-size: 11px;
+  }
+  .pathways-workspace {
+    height: max(370px, calc(100dvh - 350px));
+    min-height: 0;
+  }
+  .pathways.has-selection .pathways-workspace {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .pathways.has-selection .pathways-viewport {
+    height: 340px;
+  }
+  .pathways-detail {
+    width: 100%;
+    max-height: 430px;
+    padding: 16px;
+  }
+  .pathways-camera {
+    left: 8px;
+    top: 8px;
+    right: 8px;
+    gap: 4px;
+  }
+  .pathways-camera button {
+    font-size: 10px;
+    padding: 8px;
+  }
+  .pathways-camera button:last-child {
+    margin-left: auto;
+  }
+  .pathways-gesture {
+    font-size: 9px;
+  }
+  .pathways-legend {
+    gap: 6px 12px;
+    justify-content: flex-start;
+    font-size: 9px;
+  }
+  .pathways-demo {
+    font-size: 10px;
+  }
+  .pathways-demo button {
+    font-size: 10px;
+    padding: 8px;
+  }
+  .pathways-browser {
+    width: min(290px, 100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pathways * {
+    scroll-behavior: auto;
+  }
+}
+
+/* Keep the atlas itself in view; the inspector and browser scroll internally. */
+.pathways {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.pathways-header {
+  min-height: 68px;
+  flex-shrink: 0;
+}
+.pathways-heading {
+  padding-top: 16px;
+  flex-shrink: 0;
+}
+.pathways-status,
+.pathways-toolbar,
+.pathways-demo,
+.pathways-footer {
+  flex-shrink: 0;
+}
+.pathways-status {
+  min-height: 44px;
+}
+.pathways-workspace {
+  flex: 1;
+  min-height: 230px;
+  height: auto;
+}
+.pathways-footer {
+  padding: 12px 0 0;
+}
+.pathways-footer > p {
+  margin-top: 8px;
+}
+.pathways-note[open] {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  width: min(660px, 100%);
+  padding: 16px;
+  border: 1px solid var(--atlas-border);
+  border-radius: 12px;
+  background: var(--atlas-panel);
+  color: var(--atlas-on-panel);
+  max-height: 60dvh;
+  overflow: auto;
+}
+.pathways-status > p {
+  color: var(--atlas-muted);
+}
+@media (max-width: 650px) {
+  .pathways-header {
+    min-height: 60px;
+  }
+  .pathways-heading {
+    padding-top: 12px;
+  }
+  .pathways h1 {
+    font-size: 25px;
+  }
+  .pathways-status {
+    min-height: 30px;
+  }
+  .pathways-status label {
+    display: flex;
+  }
+  .pathways.has-selection .pathways-workspace {
+    display: flex;
+    flex-direction: column;
+    min-height: 230px;
+    overflow: hidden;
+  }
+  .pathways.has-selection .pathways-viewport {
+    height: auto;
+    min-height: 140px;
+    flex: 1;
+  }
+  .pathways-detail {
+    height: 38dvh;
+    min-height: 180px;
+    max-height: 360px;
+    flex-shrink: 0;
+  }
+  .pathways-footer {
+    padding-top: 8px;
+  }
+  .pathways-footer > p {
+    display: none;
+  }
+  .pathways-legend {
+    gap: 3px 10px;
+  }
+  .pathways-demo {
+    padding: 6px 10px;
+    margin-bottom: 8px;
+  }
+}
+@media (max-height: 700px) {
+  .pathways {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+  .pathways-workspace {
+    height: 360px;
+    flex: none;
+  }
+  .pathways.has-selection .pathways-workspace {
+    height: auto;
+  }
+  .pathways.has-selection .pathways-viewport {
+    height: 300px;
+    flex: none;
+  }
+  .pathways-note[open] {
+    position: static;
+    transform: none;
+  }
+}
+/* Isolate the immersive screen from the landing page's element styles. */
+.pathways-header {
+  height: 68px;
+}
+.pathways h1,
+.pathways h2 {
+  font-family: inherit;
+}
+.pathways p {
+  color: inherit;
+}
+.pathways .pathways-summary,
+.pathways .pathways-muted,
+.pathways .pathways-range,
+.pathways .pathways-eyebrow,
+.pathways .pathways-gesture {
+  color: var(--atlas-muted);
+}
+.pathways input,
+.pathways select {
+  margin-top: 0;
+}
+.pathways-status label {
+  flex-shrink: 0;
+}
+.pathways-status select {
+  min-width: 180px;
+  flex-shrink: 0;
+}
+.pathways-footer {
+  display: block;
+  margin: 0;
+  border: 0;
+  letter-spacing: 0;
+}
+.pathways-footer > p {
+  color: var(--atlas-muted);
+}
+.pathways-detail p {
+  color: var(--atlas-muted);
+}
+@media (max-width: 650px) {
+  .pathways-header {
+    height: 60px;
+  }
+  .pathways-status label {
+    font-size: 11px;
+  }
+  .pathways-status label select {
+    font-size: 12px;
+  }
+  .pathways-map-labels span:not(.skill-label) {
+    display: none;
+  }
+}
+:root:fullscreen .pathways {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  padding: 0 20px 16px;
+}
+:root:fullscreen .pathways .pathways-heading,
+:root:fullscreen .pathways .pathways-status,
+:root:fullscreen .pathways .pathways-footer {
+  display: none;
+}
+:root:fullscreen .pathways .pathways-toolbar {
+  margin-top: 12px;
+}
+.pathways-lesson-practice {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  text-decoration: none;
+  margin-bottom: 16px;
 }

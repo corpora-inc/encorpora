@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
-import { chromium, type Page } from "playwright";
+import { chromium, firefox, type Page } from "playwright";
+import { problemLesson } from "../src/content/problem-lessons";
 import { skills } from "../src/curriculum/catalog";
 import { generateProblem, templates } from "../src/math/engine";
 import { retentionNotice } from "../src/family/contracts";
@@ -27,7 +28,9 @@ await vite.listen();
 const address = vite.httpServer!.address();
 assert(address && typeof address !== "string");
 const origin = `http://127.0.0.1:${address.port}`;
-const browser = await chromium.launch();
+const browser = await (
+  process.env.AMP_MAP_BROWSER === "firefox" ? firefox : chromium
+).launch();
 const output = "artifacts/pathways";
 await mkdir(output, { recursive: true });
 const target = skills.find((s) => s.id === "nonlinear-systems")!;
@@ -68,21 +71,46 @@ function me(account: string) {
 }
 async function fixture(
   page: Page,
-  { signedIn = true, failProgress = false } = {},
+  { signedIn = true, failProgress = false, trial = false } = {},
 ) {
   const batches: { templateId?: string }[] = [];
   await page.addInitScript(
-    ({ signedIn }) => {
+    ({ signedIn, trial }) => {
+      if (trial)
+        localStorage.setItem("amp.trial", "atlas-synthetic-trial-token-1413");
       (window as any).pathwaysAccount = signedIn ? "parent-one" : null;
       localStorage.setItem(
         "amp.learner",
         JSON.stringify({ state: { learnerId: "parent-one-a" }, version: 1 }),
       );
     },
-    { signedIn },
+    { signedIn, trial },
   );
   await page.route("**/api/v1/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
+    if (pathname.endsWith("/learners"))
+      return route.fulfill({
+        json: { learners: [{ id: "parent-one-a", birthYear: 2016 }] },
+      });
+    if (pathname.endsWith("/trial-progress"))
+      return route.fulfill({
+        json: {
+          phase: "practice",
+          free: 100,
+          placement: 20,
+          remaining: 70,
+          totals: { answered: 30, correct: 24, assisted: 0 },
+          mastered: [],
+          frontier: {
+            placement: null,
+            current: {
+              expected: 4,
+              overall: { level: 7, sd: 0.7, answered: 30, independent: 24 },
+              strands: {},
+            },
+          },
+        },
+      });
     if (pathname.endsWith("/catalog"))
       return route.fulfill({
         json: { skills, templates, lessons: [], mode: "hosted" },
@@ -98,6 +126,12 @@ async function fixture(
             "parent-one",
         ),
       });
+    if (pathname.includes("/problem-lessons/"))
+      return route.fulfill({
+        json: {
+          lesson: problemLesson(pathname.split("/").pop()!, "atlas-proof"),
+        },
+      });
     if (pathname.endsWith("/books"))
       return route.fulfill({ json: { books: [] } });
     if (pathname.endsWith("/batches")) {
@@ -111,7 +145,6 @@ async function fixture(
                 body.templateId ?? "nonlinear-system-read",
                 "pathways-ui",
               ).public,
-              id: "pathways-ui-problem",
             },
           ],
           lesson: null,
@@ -216,6 +249,22 @@ try {
         fullPage: true,
       });
       await page
+        .getByRole("button", { name: "Preview illumination", exact: true })
+        .click();
+      await page.getByText("ILLUMINATION PREVIEW", { exact: false }).waitFor();
+      assert.match(
+        await page.locator(".pathways-summary").innerText(),
+        /^2 skills/,
+      );
+      await page
+        .getByRole("button", { name: "Show my progress", exact: true })
+        .first()
+        .click();
+      assert.equal(
+        await page.getByText("ILLUMINATION PREVIEW", { exact: false }).count(),
+        0,
+      );
+      await page
         .getByRole("searchbox", { name: "Find a skill", exact: true })
         .fill(target.title);
       const button = page
@@ -237,6 +286,54 @@ try {
         1,
         "durable crystal survives zero resettable retrievals",
       );
+      const opener = page.getByRole("button", {
+        name: "View lesson",
+        exact: true,
+      });
+      await opener.click();
+      await page
+        .getByRole("dialog")
+        .getByText("Example", { exact: true })
+        .waitFor();
+      await page
+        .getByRole("dialog")
+        .getByRole("button", { name: "Close", exact: true })
+        .click();
+      await page.waitForFunction(
+        () => document.activeElement?.textContent === "View lesson",
+      );
+      assert.equal(
+        await opener.evaluate((el) => el === document.activeElement),
+        true,
+        "lesson restores keyboard focus",
+      );
+      if (
+        width === 1280 &&
+        theme === "light" &&
+        (await page.evaluate(() => document.fullscreenEnabled))
+      ) {
+        await page
+          .getByRole("button", { name: "Full screen", exact: true })
+          .click();
+        await page.waitForFunction(() => !!document.fullscreenElement);
+        await opener.click();
+        await page
+          .getByRole("dialog")
+          .getByText("Example", { exact: true })
+          .waitFor();
+        assert(
+          await page.getByRole("dialog").isVisible(),
+          "lesson remains visible in fullscreen subtree",
+        );
+        await page
+          .getByRole("dialog")
+          .getByRole("button", { name: "Close", exact: true })
+          .click();
+        await page
+          .getByRole("button", { name: "Exit full screen", exact: true })
+          .click();
+        await page.waitForFunction(() => !document.fullscreenElement);
+      }
       await page.getByText("Algebra frontier:", { exact: false }).waitFor();
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await noOverflow(page);
@@ -274,6 +371,47 @@ try {
   );
   await drill.waitForURL(`${origin}/practice`);
   await drill.close();
+  const exactType = templates.filter((t) => t.skillId === target.id).at(-1)!;
+  const typed = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+  });
+  const typedBatches = await fixture(typed);
+  await typed.goto(
+    `${origin}/practice?skill=${target.id}&template=${exactType.id}`,
+  );
+  await typed.locator("#problem-prompt").waitFor();
+  assert.equal(typedBatches[0]?.templateId, exactType.id);
+  await typed.close();
+  // A signed-in parent can explore the anonymous assessment's own progress.
+  const trialPage = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce",
+  });
+  const trialBatches = await fixture(trialPage, { trial: true });
+  await trialPage.goto(`${origin}/pathways?context=trial&skill=${target.id}`);
+  await trialPage
+    .getByText("Your free assessment and practice are lighting up this map.", {
+      exact: true,
+    })
+    .waitFor();
+  assert.equal(
+    await trialPage.getByRole("combobox", { name: /^Learner/ }).count(),
+    0,
+  );
+  await trialPage
+    .getByRole("button", { name: "View lesson", exact: true })
+    .click();
+  await trialPage
+    .getByRole("dialog")
+    .getByRole("link", { name: "Try this problem type →", exact: true })
+    .click();
+  await trialPage.locator("#problem-prompt").waitFor();
+  assert.equal(
+    trialBatches[0]?.templateId,
+    templates.find((t) => t.skillId === target.id)?.id,
+  );
+  await trialPage.waitForURL(`${origin}/try/practice`);
+  await trialPage.close();
   // The account-scoped store must not carry earned crystals into another learner or account.
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await fixture(page);

@@ -5,6 +5,8 @@ import {
   crystal,
   layout,
   frontierRange,
+  connections,
+  previewEvidence,
 } from "../src/web/features/pathways/model";
 
 test("crystal growth survives a miss and a retrieval streak reset", () => {
@@ -58,4 +60,16 @@ test("frontier ranges use independent area estimates and omit unmeasured areas",
     frontierRange({ ...frontier, overall: { ...overall, answered: 0 } }),
     null,
   );
+});
+
+test("highlighted paths cross neighborhoods and do not invent prerequisite credit", () => {
+  const target = skills.find((s) => s.id === "nonlinear-systems")!;
+  const paths = connections(skills, target.id);
+  for (const id of target.prerequisites) assert(paths.prerequisites.has(id));
+  assert(!paths.prerequisites.has(target.id));
+  assert(!paths.dependents.has(target.id));
+  const evidence = previewEvidence(skills);
+  assert(evidence.length > 0 && evidence.length < skills.length);
+  assert(evidence.every((e) => e.independentCorrect > 0));
+  assert.deepEqual(evidence, previewEvidence(skills));
 });

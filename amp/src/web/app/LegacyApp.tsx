@@ -683,8 +683,15 @@ function LegacyScreen() {
     )
       void action(() => {
         const skillId = new URLSearchParams(route.location.search).get("skill");
+        const requestedType = new URLSearchParams(route.location.search).get(
+          "template",
+        );
         const template = skillId
-          ? catalog?.templates.find((t) => t.skillId === skillId)
+          ? catalog?.templates.find(
+              (t) =>
+                t.skillId === skillId &&
+                (!requestedType || t.id === requestedType),
+            )
           : undefined;
         return loadBatch(template?.id ?? "");
       });

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Step } from "../../../math/scene/timeline";
-import { Navigate, useNavigate } from "@tanstack/react-router";
+import { Navigate, useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import type { GradeBand } from "../../../curriculum/types";
 import { gradeNumber } from "../../../learning/frontier";
@@ -67,9 +67,13 @@ let open: {
 
 function Practice({ session }: { session: TrialSession }) {
   const navigate = useNavigate();
+  const search = useSearch({ strict: false });
+  const focusSkill = typeof search.skill === "string" ? search.skill : "";
+  const focused = useRef(false);
   const progress = useQuery(progressOptions(session));
   const catalog = useQuery(catalogOptions);
-  const kept = open?.learnerId === session.learnerId ? open : null;
+  const kept =
+    !focusSkill && open?.learnerId === session.learnerId ? open : null;
   const [problem, setProblem] = useState<HintedProblem | null>(
     kept?.problem ?? null,
   );
@@ -185,11 +189,26 @@ function Practice({ session }: { session: TrialSession }) {
   }
   // The first problem: from the planner, or the paywall if none are left.
   // Only once the count is known, so an exhausted trial navigates once.
-  const first = () => void run(async () => show(await nextProblem(session)));
+  const first = () =>
+    void run(async () => {
+      const template =
+        !focused.current && focusSkill
+          ? catalog.data?.templates.find(
+              (t) =>
+                t.skillId === focusSkill &&
+                (typeof search.template !== "string" ||
+                  t.id === search.template),
+            )
+          : undefined;
+      const next = await nextProblem(session, template?.id);
+      focused.current = true;
+      show(next);
+      if (focusSkill) void navigate({ to: "/try/practice", replace: true });
+    });
   const counted = answered !== null;
   useEffect(() => {
-    if (limits && counted && !problem && !done) first();
-  }, [counted]);
+    if (limits && catalog.data && counted && !problem && !done) first();
+  }, [counted, !!catalog.data]);
   useEffect(() => {
     if (progress.error) ended(progress.error);
   }, [progress.error]);
