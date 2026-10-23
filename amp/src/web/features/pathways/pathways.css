@@ -482,22 +482,6 @@
   text-align: center;
   padding: 8px;
 }
-.pathways-demo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 0 0 12px;
-  padding: 8px 12px;
-  border: 1px solid var(--atlas-accent);
-  border-radius: 10px;
-  color: var(--atlas-accent);
-  font-size: 11px;
-  line-height: 1.5;
-}
-.pathways-demo button {
-  font-size: 11px;
-}
 @media (min-width: 1500px) {
   .pathways {
     padding-left: max(40px, calc((100vw - 1700px) / 2));
@@ -623,13 +607,6 @@
     justify-content: flex-start;
     font-size: 9px;
   }
-  .pathways-demo {
-    font-size: 10px;
-  }
-  .pathways-demo button {
-    font-size: 10px;
-    padding: 8px;
-  }
   .pathways-browser {
     width: min(290px, 100%);
   }
@@ -657,7 +634,6 @@
 }
 .pathways-status,
 .pathways-toolbar,
-.pathways-demo,
 .pathways-footer {
   flex-shrink: 0;
 }
@@ -734,10 +710,6 @@
   }
   .pathways-legend {
     gap: 3px 10px;
-  }
-  .pathways-demo {
-    padding: 6px 10px;
-    margin-bottom: 8px;
   }
 }
 @media (max-height: 700px) {
@@ -885,7 +857,7 @@
 @media (max-width: 650px) {
   .pathways.has-selection .pathways-toolbar {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 72px 76px;
+    grid-template-columns: minmax(0, 1fr) 88px;
   }
   .pathways.has-selection .pathways-search {
     width: auto;
@@ -909,4 +881,88 @@
 
 .pathways-detail h2:focus {
   outline: none;
+}
+
+@media (max-width: 650px) {
+  .pathways-camera {
+    gap: 2px;
+  }
+}
+@media (max-height: 700px) {
+  :root:fullscreen .pathways {
+    height: 100dvh;
+    overflow: hidden;
+  }
+  :root:fullscreen .pathways-workspace {
+    height: auto;
+    flex: 1;
+    min-height: 150px;
+  }
+  :root:fullscreen .pathways.has-selection .pathways-viewport {
+    height: auto;
+    flex: 1;
+    min-height: 140px;
+  }
+}
+
+.pathways-illumination-meter {
+  height: 4px;
+  border-radius: 99px;
+  overflow: hidden;
+  background: var(--atlas-border);
+  margin: -6px 0 20px;
+}
+.pathways-illumination-meter i {
+  display: block;
+  height: 100%;
+  background: var(--atlas-accent);
+  border-radius: inherit;
+  transition: width 0.7s ease;
+}
+.pathways-earned > strong > small {
+  display: inline;
+  font-size: 12px;
+  color: var(--atlas-muted);
+  margin-left: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pathways-illumination-meter i {
+    transition: none;
+  }
+}
+
+.pathways-dot.related {
+  background: transparent;
+  border: 1px dashed var(--atlas-muted);
+  width: 8px;
+  height: 8px;
+}
+
+.pathways-brand,
+.pathways-status > a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.pathways-status select {
+  height: 44px;
+  min-height: 44px;
+  appearance: none;
+  padding-right: 28px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--atlas-muted) 50%),
+    linear-gradient(135deg, var(--atlas-muted) 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) 20px,
+    calc(100% - 12px) 20px;
+  background-size: 4px 4px;
+  background-repeat: no-repeat;
+}
+
+@media (max-height: 700px) and (min-width: 651px) {
+  .pathways.has-selection .pathways-viewport {
+    flex: 1;
+    min-width: 0;
+  }
 }

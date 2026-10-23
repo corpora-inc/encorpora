@@ -6,7 +6,8 @@ import {
   layout,
   frontierRange,
   connections,
-  previewEvidence,
+  illumination,
+  relatedSkills,
 } from "../src/web/features/pathways/model";
 
 test("crystal growth survives a miss and a retrieval streak reset", () => {
@@ -68,8 +69,81 @@ test("highlighted paths cross neighborhoods and do not invent prerequisite credi
   for (const id of target.prerequisites) assert(paths.prerequisites.has(id));
   assert(!paths.prerequisites.has(target.id));
   assert(!paths.dependents.has(target.id));
-  const evidence = previewEvidence(skills);
-  assert(evidence.length > 0 && evidence.length < skills.length);
-  assert(evidence.every((e) => e.independentCorrect > 0));
-  assert.deepEqual(evidence, previewEvidence(skills));
+});
+
+test("catalog additions preserve the surrounding map rather than reindexing a neighborhood", () => {
+  const before = layout(skills);
+  const addition = {
+    ...skills.find((s) => s.id === "nonlinear-systems")!,
+    id: "new-algebra-skill",
+    title: "New algebra skill",
+  };
+  const after = new Map(
+    layout([...skills, addition]).map((p) => [p.skill.id, p.position]),
+  );
+  const moves = before.map((p) =>
+    Math.hypot(...p.position.map((v, i) => v - after.get(p.skill.id)![i]!)),
+  );
+  assert(Math.max(...moves) < 8, "only local collision spacing should adjust");
+  assert(
+    moves.filter((d) => d > 0.1).length < skills.length / 4,
+    "unrelated neighborhoods stay in place",
+  );
+});
+
+test("illumination accumulates separately from changing strength and does not invent mastery", () => {
+  const evidence = {
+    skillId: "example",
+    attempts: 10,
+    independentCorrect: 10,
+    independentOccasions: 2,
+    status: "review-ready" as const,
+    reviewDueAt: null,
+  };
+  assert.equal(illumination(), 0);
+  assert.equal(illumination(evidence), 5);
+  const miss = {
+    ...evidence,
+    attempts: 11,
+    independentOccasions: 0,
+    status: "practicing" as const,
+  };
+  assert.equal(illumination(miss), 5);
+  assert(!crystal(miss).strong);
+  assert.equal(illumination({ ...miss, independentCorrect: 11 }), 5.5);
+  assert.equal(illumination({ ...miss, independentCorrect: 100 }), 10);
+});
+
+test("related pathways share foundations without becoming prerequisite edges", () => {
+  const base = skills[0]!;
+  const graph = [
+    { ...base, id: "foundation", prerequisites: [] },
+    { ...base, id: "selected", prerequisites: ["foundation"] },
+    { ...base, id: "peer", prerequisites: ["foundation"] },
+    { ...base, id: "dependent", prerequisites: ["selected", "foundation"] },
+    { ...base, id: "unrelated", prerequisites: [] },
+  ];
+  assert.deepEqual(
+    relatedSkills(graph, "selected").map((s) => s.id),
+    ["peer"],
+  );
+  assert(!connections(graph, "selected").prerequisites.has("peer"));
+  assert(!connections(graph, "selected").dependents.has("peer"));
+});
+
+test("early pathways sit closer and lower than advanced pathways", () => {
+  const nodes = layout(skills);
+  const early = nodes.filter((p) => p.skill.gradeBand === "K");
+  const advanced = nodes.filter((p) => p.skill.gradeBand === "precalculus");
+  assert(
+    early.length && advanced.length,
+    "compare actual curriculum endpoints",
+  );
+  const mean = (group: typeof nodes, axis: number) =>
+    group.reduce((sum, p) => sum + p.position[axis]!, 0) / group.length;
+  assert(
+    mean(early, 2) > mean(advanced, 2),
+    "early skills are closer to the starting camera",
+  );
+  assert(mean(early, 1) < mean(advanced, 1), "advanced skills tend upward");
 });

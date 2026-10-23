@@ -62,12 +62,33 @@ export function bandLabel(band: string) {
     )[band] ?? `Grade ${band}`
   );
 }
+export const illuminationPolicy = {
+  version: "illumination-v1",
+  stageSuccesses: [1, 5, 15],
+  maximum: 10,
+  independentSuccessesForFull: 20,
+} as const;
+export function illumination(evidence?: Evidence) {
+  return Math.min(
+    illuminationPolicy.maximum,
+    ((evidence?.independentCorrect ?? 0) /
+      illuminationPolicy.independentSuccessesForFull) *
+      illuminationPolicy.maximum,
+  );
+}
 /** Earned successes persist; recent strength changes independently. No mastery percentage. */
 export function crystal(evidence?: Evidence) {
   const successes = evidence?.independentCorrect ?? 0;
+  const score = illumination(evidence),
+    strong = evidence?.status === "review-ready";
   return {
-    stage: successes === 0 ? 0 : successes < 5 ? 1 : successes < 15 ? 2 : 3,
-    strong: evidence?.status === "review-ready",
+    intensity: successes ? 0.25 + score * 0.04 + (strong ? 0.45 : 0) : 0.07,
+    glow: successes ? 0.25 + score * 0.035 + (strong ? 0.2 : 0) : 0.12,
+    stage: illuminationPolicy.stageSuccesses.filter(
+      (threshold) => successes >= threshold,
+    ).length,
+    strong,
+    score,
   };
 }
 /** Spatial neighborhoods are visual only; the prerequisite graph owns the connections. */
@@ -109,24 +130,33 @@ export function neighborhood(skill: MapSkill) {
     neighborhoods.findIndex((n) => n.strands.includes(skill.strand)),
   );
 }
+/** Stable per-ID anchors prevent catalog additions from reindexing whole neighborhoods. */
+function stableFraction(id: string) {
+  let hash = 2166136261;
+  for (const character of id)
+    hash = Math.imul(hash ^ character.charCodeAt(0), 16777619);
+  hash ^= hash >>> 16;
+  hash = Math.imul(hash, 0x7feb352d);
+  hash ^= hash >>> 15;
+  hash = Math.imul(hash, 0x846ca68b);
+  hash ^= hash >>> 16;
+  return (hash >>> 0) / 4294967296;
+}
 export function layout(skills: MapSkill[]) {
   const ordered = [...skills].sort((a, b) => a.id.localeCompare(b.id));
   const points = ordered.map((skill) => {
     const area = Math.max(0, neighborhood(skill));
     const grade = Math.max(0, bands.indexOf(skill.gradeBand));
-    const group = ordered.filter(
-      (s) => neighborhood(s) === area && s.gradeBand === skill.gradeBand,
-    );
-    const slot = group.findIndex((s) => s.id === skill.id);
     const angle =
-      (area * Math.PI) / 3 + ((slot + 0.5) / group.length - 0.5) * 0.84;
-    const radius = 14 + grade * 5.4 + Math.sin(slot * 2.4) * 2;
+      (area * Math.PI) / 3 + (stableFraction(`${skill.id}:angle`) - 0.5) * 0.84;
+    const radius =
+      14 + grade * 5.4 + (stableFraction(`${skill.id}:radius`) - 0.5) * 4;
     return {
       skill,
       position: [
         Math.cos(angle) * radius * 1.18,
-        Math.sin(angle) * radius,
-        Math.sin(angle * 3 + grade * 0.6) * 5,
+        Math.sin(angle) * radius * 0.7 + (grade - 6) * 4.4,
+        28 - grade * 4.8 + Math.sin(angle * 3 + grade * 0.6) * 8,
       ] as [number, number, number],
     };
   });
@@ -151,24 +181,6 @@ export function layout(skills: MapSkill[]) {
   const byId = new Map(points.map((p) => [p.skill.id, p]));
   return skills.map((s) => byId.get(s.id)!);
 }
-/** An explicitly labeled, deterministic preview. Never persisted as learner evidence. */
-export function previewEvidence(skills: MapSkill[]): Evidence[] {
-  return skills.flatMap((skill, i) => {
-    const grade = bands.indexOf(skill.gradeBand);
-    if (grade > 7 || (i % 7 === 0 && grade > 3)) return [];
-    const successes = Math.max(1, 22 - grade * 3 + (i % 4));
-    return [
-      {
-        skillId: skill.id,
-        attempts: successes + 2,
-        independentCorrect: successes,
-        independentOccasions: 3,
-        status: grade < 5 ? ("review-ready" as const) : ("practicing" as const),
-        reviewDueAt: null,
-      },
-    ];
-  });
-}
 /** Cycle-safe transitive paths. Edges retain prerequisite → dependent direction. */
 export function connections(skills: MapSkill[], id: string) {
   const byId = new Map(skills.map((s) => [s.id, s]));
@@ -191,6 +203,32 @@ export function connections(skills: MapSkill[], id: string) {
     return found;
   };
   return { prerequisites: walk(false), dependents: walk(true) };
+}
+
+/** Lateral navigation through shared foundations; never input to prerequisite scheduling. */
+export function relatedSkills(skills: MapSkill[], id: string, limit = 5) {
+  const selected = skills.find((s) => s.id === id);
+  if (!selected) return [];
+  const paths = connections(skills, id);
+  const grade = bands.indexOf(selected.gradeBand);
+  return skills
+    .filter(
+      (s) =>
+        s.id !== id &&
+        !paths.prerequisites.has(s.id) &&
+        !paths.dependents.has(s.id) &&
+        Math.abs(bands.indexOf(s.gradeBand) - grade) <= 2,
+    )
+    .map((skill) => ({
+      skill,
+      shared: skill.prerequisites.filter((id) =>
+        selected.prerequisites.includes(id),
+      ).length,
+    }))
+    .filter((s) => s.shared > 0)
+    .sort((a, b) => b.shared - a.shared || a.skill.id.localeCompare(b.skill.id))
+    .slice(0, limit)
+    .map((s) => s.skill);
 }
 
 const estimateSchema = z.object({

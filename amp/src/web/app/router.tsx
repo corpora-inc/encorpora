@@ -45,7 +45,6 @@ const searchSchema = z
     skill: z.string().max(100).optional(),
     template: z.string().max(100).optional(),
     context: z.enum(["trial"]).optional().catch(undefined),
-    preview: z.enum(["illumination"]).optional().catch(undefined),
     page: z.coerce.number().int().nonnegative().optional(),
     state: z.string().max(200).optional(),
     purchase: z.string().max(200).optional(),

@@ -459,3 +459,22 @@
     padding: var(--space-3);
   }
 }
+.mapShareCard {
+  margin: 24px 0 0;
+}
+.mapShareCard img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-panel);
+  border: 1px solid var(--color-border);
+}
+.mapShareCard figcaption {
+  margin-top: 8px;
+  font-size: var(--text-label);
+}
+.mapShareCard a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}

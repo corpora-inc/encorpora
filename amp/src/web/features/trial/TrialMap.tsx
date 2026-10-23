@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, Navigate } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { strandNames } from "../../BirthYearPrompt";
 import { FrontierMap, gradeName } from "../../Home";
 import { buttonClass } from "../../ui/Button";
@@ -13,6 +13,7 @@ import {
 } from "./api";
 import { track, trackSessionStart } from "./analytics";
 import { FreeMeter } from "./FreeMeter";
+import { trialEvidenceOptions } from "../pathways/queries";
 import { ShareAssessment } from "./ShareAssessment";
 import { isEnded, TrialEnded, TrialFailure, TrialSkeleton } from "./TrialFrame";
 import styles from "./Trial.module.css";
@@ -37,6 +38,22 @@ export function TrialMap() {
 function MapView({ session }: { session: TrialSession }) {
   const progress = useQuery(progressOptions(session));
   const catalog = useQuery(catalogOptions);
+  const evidence = useQuery(trialEvidenceOptions(session));
+  const shareMap = useMemo(
+    () =>
+      catalog.data && evidence.data
+        ? {
+            skills: catalog.data.skills.map((s) => ({
+              ...s,
+              title: s.title ?? s.id,
+              description: s.description ?? "",
+              prerequisites: s.prerequisites ?? [],
+            })),
+            evidence: evidence.data.skills,
+          }
+        : undefined,
+    [catalog.data, evidence.data],
+  );
   useEffect(() => {
     trackSessionStart();
     track("map_view");
@@ -98,7 +115,7 @@ function MapView({ session }: { session: TrialSession }) {
           search={{ context: "trial" }}
           className={buttonClass("secondary")}
         >
-          Explore your illuminated pathways →
+          See your illuminated pathways →
         </Link>
         <div className={styles.actions}>
           {left > 0 ? (
@@ -127,7 +144,10 @@ function MapView({ session }: { session: TrialSession }) {
           )}
         </div>
         {p.phase !== "placement" && (
-          <ShareAssessment level={gradeName(frontier.overall.level)} />
+          <ShareAssessment
+            level={gradeName(frontier.overall.level)}
+            map={shareMap}
+          />
         )}
       </section>
     </PageFrame>

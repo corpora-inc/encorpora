@@ -9,6 +9,7 @@ import {
   layout,
   neighborhood,
   neighborhoods,
+  relatedSkills,
   type MapSkill,
   type Evidence,
 } from "./model";
@@ -19,6 +20,7 @@ type Props = {
   selected: string;
   onSelect: (id: string) => void;
   range: { lo: number; hi: number; level: number } | null;
+  rangeStrand?: string;
 };
 type Label = {
   id: string;
@@ -28,7 +30,14 @@ type Label = {
   area?: boolean;
 };
 /** GPU-rendered atlas. Geometry is stable; continuous motion stops when hidden or reduced. */
-export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
+export function Graph({
+  skills,
+  evidence,
+  selected,
+  onSelect,
+  range,
+  rangeStrand,
+}: Props) {
   const host = useRef<HTMLDivElement>(null);
   const selection = useRef(onSelect);
   selection.current = onSelect;
@@ -36,6 +45,13 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
   const reset = useRef<() => void>(() => {});
   const zoom = useRef<(factor: number) => void>(() => {});
   const rotate = useRef<(value: boolean) => void>(() => {});
+  const cameraMemory = useRef<{
+    position: [number, number, number];
+    target: [number, number, number];
+    fit: boolean;
+  } | null>(null);
+  const lastFocused = useRef("");
+  const earnedMemory = useRef(new Map<string, number>());
   const [failed, setFailed] = useState(false);
   const [orbit, setOrbit] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
@@ -65,6 +81,8 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
         powerPreference: "low-power",
       });
     } catch {
+      setLabels([]);
+      setHover("");
       setFailed(true);
       return;
     }
@@ -76,6 +94,13 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 1200);
     const controls = new OrbitControls(camera, renderer.domElement);
+    const saved = cameraMemory.current;
+    let fitView = saved?.fit ?? true;
+    if (saved) {
+      camera.position.fromArray(saved.position);
+      controls.target.fromArray(saved.target);
+      controls.update();
+    }
     controls.enableDamping = false;
     controls.screenSpacePanning = true;
     controls.enableRotate = false;
@@ -114,6 +139,8 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
     const light = new THREE.DirectionalLight(paintRole("--atlas-area-0"), 4);
     light.position.set(-30, 50, 80);
     scene.add(light);
+    const growth: { mesh: THREE.Mesh; from: number; to: number }[] = [];
+    const growthStarted = performance.now();
     const meshes: THREE.Mesh[] = [],
       glows: THREE.Sprite[] = [];
     for (const p of points) {
@@ -122,12 +149,20 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
       const material = new THREE.MeshStandardMaterial({
         color: earned.stage ? color : color.clone().multiplyScalar(0.42),
         emissive: color,
-        emissiveIntensity: earned.strong ? 1.1 : earned.stage ? 0.45 : 0.07,
+        emissiveIntensity: earned.intensity,
         metalness: 0.5,
         roughness: 0.25,
       });
       const mesh = new THREE.Mesh(geometries[earned.stage], material);
       mesh.position.set(...p.position);
+      const targetScale = 1 + earned.score / 20;
+      const previous = earnedMemory.current.get(p.skill.id);
+      const fromScale =
+        previous === undefined ? targetScale : 1 + previous / 20;
+      mesh.scale.setScalar(motion ? fromScale : targetScale);
+      if (fromScale < targetScale)
+        growth.push({ mesh, from: fromScale, to: targetScale });
+      earnedMemory.current.set(p.skill.id, earned.score);
       mesh.rotation.set(0.4, 0.5, 0.2);
       mesh.userData.id = p.skill.id;
       scene.add(mesh);
@@ -137,7 +172,7 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
           map: glowTexture,
           color,
           transparent: true,
-          opacity: earned.strong ? 0.85 : earned.stage ? 0.4 : 0.12,
+          opacity: earned.glow,
           blending: THREE.AdditiveBlending,
           depthWrite: false,
         }),
@@ -260,24 +295,56 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
     );
     ring.visible = false;
     scene.add(ring);
-    // Frontier is an uncertainty annulus, not a claim about every skill within it.
+    // Outline mapped skills in the estimated grade range; earned light remains separate.
     if (range) {
-      const lo = 14 + Math.max(0, Math.min(12, range.lo)) * 5.4,
-        hi = 14 + Math.max(0, Math.min(12, range.hi)) * 5.4;
-      const annulus = new THREE.Mesh(
-        new THREE.RingGeometry(lo, Math.max(lo + 0.4, hi), 120),
-        new THREE.MeshBasicMaterial({
-          color: paintRole("--atlas-area-0"),
-          transparent: true,
-          opacity: 0.035,
-          side: THREE.DoubleSide,
-          depthWrite: false,
-        }),
+      const inRange = points.filter((p) => {
+        const grade = bands.indexOf(p.skill.gradeBand);
+        return (
+          (!rangeStrand || p.skill.strand === rangeStrand) &&
+          grade >= range.lo &&
+          grade <= range.hi
+        );
+      });
+      const outlineCanvas = document.createElement("canvas");
+      outlineCanvas.width = outlineCanvas.height = 128;
+      const context = outlineCanvas.getContext("2d")!;
+      context.strokeStyle = paintRole("--atlas-light");
+      context.lineWidth = 5;
+      context.beginPath();
+      context.arc(64, 64, 48, 0, Math.PI * 2);
+      context.stroke();
+      const texture = new THREE.CanvasTexture(outlineCanvas);
+      textures.push(texture);
+      const geometry = new THREE.BufferGeometry().setFromPoints(
+        inRange.map((p) => new THREE.Vector3(...p.position)),
       );
-      annulus.scale.x = 1.18;
-      annulus.position.z = -7;
-      scene.add(annulus);
+      scene.add(
+        new THREE.Points(
+          geometry,
+          new THREE.PointsMaterial({
+            map: texture,
+            color: paintRole("--atlas-area-0"),
+            size: 4.2,
+            transparent: true,
+            opacity: 0.3,
+            depthWrite: false,
+          }),
+        ),
+      );
     }
+    const lateralGeometry = new THREE.BufferGeometry().setFromPoints([]);
+    const lateralLines = new THREE.LineSegments(
+      lateralGeometry,
+      new THREE.LineDashedMaterial({
+        color: paintRole("--atlas-muted"),
+        dashSize: 0.45,
+        gapSize: 0.7,
+        transparent: true,
+        opacity: 0.45,
+        depthWrite: false,
+      }),
+    );
+    scene.add(lateralLines);
     let width = 1,
       height = 1,
       current = "",
@@ -356,6 +423,33 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
     const recolor = (id: string) => {
       current = id;
       const paths = connections(skills, id);
+      const related = relatedSkills(skills, id),
+        relatedIds = new Set(related.map((s) => s.id));
+      const lateralPoints: THREE.Vector3[] = [];
+      const origin = byId.get(id);
+      if (origin)
+        for (const skill of related) {
+          const target = byId.get(skill.id)!;
+          const from = new THREE.Vector3(...origin.position),
+            to = new THREE.Vector3(...target.position),
+            delta = to.clone().sub(from);
+          const bend = new THREE.Vector3(-delta.y, delta.x, 0).multiplyScalar(
+            0.1,
+          );
+          const curve = new THREE.CubicBezierCurve3(
+            from,
+            from.clone().addScaledVector(delta, 0.33).add(bend),
+            from.clone().addScaledVector(delta, 0.67).add(bend),
+            to,
+          );
+          for (let j = 0; j < 20; j++)
+            lateralPoints.push(
+              curve.getPoint(j / 20),
+              curve.getPoint((j + 1) / 20),
+            );
+        }
+      lateralGeometry.setFromPoints(lateralPoints);
+      lateralLines.computeLineDistances();
       edges.forEach((edge, i) => {
         const ancestor =
           (edge.to === id || paths.prerequisites.has(edge.to)) &&
@@ -387,22 +481,13 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
           !id ||
           idHere === id ||
           paths.prerequisites.has(idHere) ||
-          paths.dependents.has(idHere);
+          paths.dependents.has(idHere) ||
+          relatedIds.has(idHere);
         const earned = crystal(stats.get(idHere));
         (mesh.material as THREE.MeshStandardMaterial).emissiveIntensity = active
-          ? earned.strong
-            ? 1.1
-            : earned.stage
-              ? 0.45
-              : 0.2
+          ? earned.intensity
           : 0.015;
-        glows[i]!.material.opacity = active
-          ? earned.strong
-            ? 0.85
-            : earned.stage
-              ? 0.4
-              : 0.18
-          : 0.025;
+        glows[i]!.material.opacity = active ? earned.glow : 0.025;
       });
     };
     focus.current = (id, move = true) => {
@@ -412,6 +497,7 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
       if (p) {
         const target = new THREE.Vector3(...p.position);
         ring.position.copy(target);
+        if (move) fitView = false;
         if (move)
           tween = {
             target,
@@ -430,6 +516,7 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
       paint();
     };
     reset.current = () => {
+      fitView = true;
       const z = Math.max(285, 285 / camera.aspect);
       tween = {
         position: new THREE.Vector3(0, 0, z),
@@ -447,6 +534,7 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
       paint();
     };
     zoom.current = (factor) => {
+      fitView = false;
       tween = null;
       const distance = THREE.MathUtils.clamp(
         camera.position.distanceTo(controls.target) * factor,
@@ -485,7 +573,7 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
-      if (!current) {
+      if (fitView) {
         const z = Math.max(285, 285 / camera.aspect);
         camera.position.set(0, 0, z);
         controls.target.set(0, 0, 0);
@@ -549,6 +637,8 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
       cancelAnimationFrame(frame);
       disposed = true;
       controls.enabled = false;
+      setLabels([]);
+      setHover("");
       setFailed(true);
     };
     const changed = () => {
@@ -556,6 +646,7 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
       paint();
     };
     const start = () => {
+      fitView = false;
       tween = null;
     };
     const cancel = (e: PointerEvent) => {
@@ -572,13 +663,22 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
     const observer = new ResizeObserver(resize);
     observer.observe(el);
     resize();
-    reset.current();
+    if (!saved) reset.current();
     const vector = new THREE.Vector3();
     let lastFrame = 0;
     const animate = (time: number) => {
       if (disposed) return;
       if (!document.hidden && time - lastFrame >= 1000 / 30) {
         lastFrame = time;
+        const growthPhase =
+          1 -
+          Math.pow(
+            1 - THREE.MathUtils.clamp((time - growthStarted) / 700, 0, 1),
+            3,
+          );
+        growth.forEach(({ mesh, from, to }) =>
+          mesh.scale.setScalar(THREE.MathUtils.lerp(from, to, growthPhase)),
+        );
         if (tween) {
           camera.position.lerp(tween.position, 0.12);
           controls.target.lerp(tween.target, 0.12);
@@ -606,6 +706,11 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
     else pulses.visible = false;
     recolor("");
     return () => {
+      cameraMemory.current = {
+        position: camera.position.toArray() as [number, number, number],
+        target: controls.target.toArray() as [number, number, number],
+        fit: fitView,
+      };
       disposed = true;
       cancelAnimationFrame(frame);
       observer.disconnect();
@@ -639,11 +744,21 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
       zoom.current = () => {};
       rotate.current = () => {};
     };
-  }, [skills, evidence, motion, range?.lo, range?.hi]);
+  }, [skills, evidence, motion, range?.lo, range?.hi, rangeStrand]);
   useEffect(() => {
-    focus.current(selected);
+    focus.current(selected, selected !== lastFocused.current);
+    lastFocused.current = selected;
     rotate.current(orbit);
-  }, [selected, skills, evidence, motion, range?.lo, range?.hi, orbit]);
+  }, [
+    selected,
+    skills,
+    evidence,
+    motion,
+    range?.lo,
+    range?.hi,
+    rangeStrand,
+    orbit,
+  ]);
   return (
     <section
       className="pathways-viewport"

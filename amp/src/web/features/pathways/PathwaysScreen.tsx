@@ -22,8 +22,8 @@ import {
   catalogSchema,
   crystal,
   neighborhoods,
+  relatedSkills,
   neighborhood,
-  previewEvidence,
   progressSchema,
   frontierSchema,
   frontierRange,
@@ -38,6 +38,7 @@ import {
 } from "../trial/api";
 import { Dialog } from "../../ui/Dialog";
 const SkillLesson = lazy(() => import("./SkillLesson"));
+import { trialEvidenceOptions } from "./queries";
 import "./pathways.css";
 const emptyEvidence: Evidence[] = [];
 export function PathwaysScreen() {
@@ -74,14 +75,7 @@ function GuestMap() {
   );
 }
 function TrialAtlas({ session }: { session: TrialSession }) {
-  const progress = useQuery({
-    queryKey: ["trial", session.learnerId, "atlas"],
-    queryFn: ({ signal }) =>
-      request(`/learners/${session.learnerId}/progress`, progressSchema, {
-        trial: session.token,
-        signal,
-      }),
-  });
+  const progress = useQuery(trialEvidenceOptions(session));
   const trial = useQuery(trialProgressOptions(session));
   return (
     <MapView
@@ -117,6 +111,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const progress = useQuery({
     queryKey: ["account", session.accountId, "pathways", learner?.id],
     enabled: !!learner,
+    refetchInterval: 30_000,
     queryFn: ({ signal }) =>
       request(`/learners/${learner!.id}/progress`, progressSchema, {
         token: session.token,
@@ -126,6 +121,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const frontier = useQuery({
     queryKey: ["account", session.accountId, "pathways-frontier", learner?.id],
     enabled: !!learner,
+    refetchInterval: 30_000,
     queryFn: ({ signal }) =>
       request(`/learners/${learner!.id}/frontier`, frontierSchema, {
         token: session.token,
@@ -221,7 +217,8 @@ export function MapView({
   const catalog = useQuery({
     queryKey: ["pathways-catalog"],
     queryFn: ({ signal }) => request("/catalog", catalogSchema, { signal }),
-    staleTime: 300000,
+    staleTime: 60_000,
+    refetchInterval: 300_000,
   });
   const search = useSearch({ strict: false });
   const selectedId = typeof search.skill === "string" ? search.skill : "";
@@ -231,9 +228,9 @@ export function MapView({
       ? search.filter
       : "";
   const navigate = useNavigate();
-  const preview = search.preview === "illumination";
   const [browse, setBrowse] = useState(false);
   const [lesson, setLesson] = useState<string | null>(null);
+  useEffect(() => setLesson(null), [selectedId]);
   const lessonTrigger = useRef<HTMLElement | null>(null);
   const openLesson = (id: string, trigger: HTMLElement) => {
     lessonTrigger.current = trigger;
@@ -249,17 +246,12 @@ export function MapView({
     () => new Map(evidence.map((s) => [s.skillId, s])),
     [evidence],
   );
-  const displayEvidence = useMemo(
-    () => (preview && skills ? previewEvidence(skills) : evidence),
-    [preview, skills, evidence],
-  );
   const earned = evidence.filter((s) => s.independentCorrect > 0).length;
   const update = (
     values: {
       skill?: string;
       topic?: string;
       filter?: string;
-      preview?: "illumination";
     },
     replace = false,
   ) =>
@@ -270,13 +262,10 @@ export function MapView({
         topic: query || undefined,
         filter: band || undefined,
         context: trialMode ? "trial" : undefined,
-        preview: preview ? "illumination" : undefined,
         ...values,
       },
       replace,
     });
-  const setPreview = (value: boolean) =>
-    update({ preview: value ? "illumination" : undefined }, true);
   const select = (id: string) => {
     setBrowse(false);
     update({ skill: id || undefined });
@@ -338,8 +327,8 @@ export function MapView({
           <h1>Your pathways</h1>
         </div>
         <p className="pathways-summary">
-          {earned} skills with independent successes · {skills?.length ?? "…"}{" "}
-          mapped skills from kindergarten through precalculus
+          {earned} skills illuminated · {skills?.length ?? "…"} mapped skills
+          from kindergarten through precalculus
         </p>
       </div>
       <div className="pathways-status">
@@ -377,24 +366,7 @@ export function MapView({
             {browse ? "Close" : "Browse"}
           </span>
         </button>
-        <button
-          aria-label={preview ? "Show my progress" : "Preview illumination"}
-          aria-pressed={preview}
-          onClick={() => setPreview(!preview)}
-        >
-          <span className="toolbar-wide">
-            {preview ? "Show my progress" : "Preview illumination"}
-          </span>
-          <span className="toolbar-narrow" aria-hidden="true">
-            {preview ? "My map" : "Preview"}
-          </span>
-        </button>
       </div>
-      {preview && (
-        <p className="pathways-demo" role="status">
-          ILLUMINATION PREVIEW · Sample progress, not your results.{" "}
-        </p>
-      )}
       {catalog.isError ? (
         <div role="alert">
           The skill map could not be loaded.{" "}
@@ -464,10 +436,11 @@ export function MapView({
             </section>
             <Graph
               skills={skills}
-              evidence={displayEvidence}
+              evidence={evidence}
               selected={selectedId}
               onSelect={select}
-              range={preview ? null : range}
+              range={range}
+              rangeStrand={selected?.strand}
             />
             {selected && (
               <section
@@ -488,18 +461,36 @@ export function MapView({
                 </h2>
                 <p>{selected.description}</p>
                 <div className="pathways-earned">
-                  <strong>{selectedEvidence?.independentCorrect ?? 0}</strong>
+                  <strong>
+                    {crystal(selectedEvidence).score.toFixed(1)}
+                    <small>/ 10</small>
+                  </strong>
                   <span>
-                    independent successes
+                    Earned illumination
                     <small>
+                      {selectedEvidence?.independentCorrect ?? 0} independent
+                      successes ·{" "}
                       {selectedEvidence?.status === "review-ready"
                         ? "Strong recorded practice"
                         : selectedEvidence?.attempts
                           ? "Building strength"
-                          : "Not practiced yet"}{" "}
-                      · {selectedEvidence?.attempts ?? 0} attempts
+                          : "Not practiced yet"}
                     </small>
                   </span>
+                </div>
+                <div
+                  className="pathways-illumination-meter"
+                  role="meter"
+                  aria-label="Earned illumination"
+                  aria-valuemin={0}
+                  aria-valuemax={10}
+                  aria-valuenow={crystal(selectedEvidence).score}
+                >
+                  <i
+                    style={{
+                      width: `${crystal(selectedEvidence).score * 10}%`,
+                    }}
+                  />
                 </div>
                 {families.length ? (
                   <>
@@ -567,6 +558,14 @@ export function MapView({
                     .filter((s) => s.prerequisites.includes(selected.id))
                     .map((s) => s.id),
                 )}
+                <h3>
+                  <i className="pathways-dot related" />
+                  Related skills
+                </h3>
+                <p className="pathways-muted">
+                  Other skills with shared foundations.
+                </p>
+                {links(relatedSkills(skills, selected.id).map((s) => s.id))}
                 {range && (
                   <p className="pathways-range">
                     {strandNames[selected.strand] ?? selected.strand} frontier:{" "}
@@ -591,23 +590,23 @@ export function MapView({
             </div>
             <p>
               {selected
-                ? "Cyan: prerequisites · Violet: skills this leads to"
+                ? "Cyan: prerequisites · Violet: next skills · Dotted: related skills"
                 : "Each point is a skill. Each connection leads from a prerequisite to a skill that uses it."}
             </p>
             <details className="pathways-note">
               <summary>About illumination & coverage</summary>
               <p>
-                Independent successes grow your crystals. Earned growth stays
-                when a skill needs review. Brightness is recorded practice, not
-                certification of a whole grade. Prerequisites do not earn credit
-                automatically. The map includes skills whose practice is being
-                developed.
+                Each independent correct answer adds 0.5 illumination, up to 10
+                per skill. Earned growth stays when a skill needs review.
+                Illumination records practice, not certification of a whole
+                grade. Prerequisites do not earn credit automatically. The map
+                includes skills whose practice is being developed.
               </p>
               {range && !selected && (
                 <p>
                   Overall frontier: {gradeName(range.lo)} to{" "}
-                  {gradeName(range.hi)} · estimated 90% range shown as a faint
-                  band.
+                  {gradeName(range.hi)} · estimated 90% range shown by faint
+                  outlines.
                 </p>
               )}
               {frontier && learnerName && (

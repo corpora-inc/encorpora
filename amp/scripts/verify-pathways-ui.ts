@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
-import { chromium, firefox, type Page } from "playwright";
+import { chromium, firefox, webkit, type Page } from "playwright";
 import { problemLesson } from "../src/content/problem-lessons";
 import { skills } from "../src/curriculum/catalog";
 import { generateProblem, templates } from "../src/math/engine";
@@ -29,7 +29,11 @@ const address = vite.httpServer!.address();
 assert(address && typeof address !== "string");
 const origin = `http://127.0.0.1:${address.port}`;
 const browser = await (
-  process.env.AMP_MAP_BROWSER === "firefox" ? firefox : chromium
+  process.env.AMP_MAP_BROWSER === "webkit"
+    ? webkit
+    : process.env.AMP_MAP_BROWSER === "firefox"
+      ? firefox
+      : chromium
 ).launch();
 const output = "artifacts/pathways";
 await mkdir(output, { recursive: true });
@@ -71,7 +75,12 @@ function me(account: string) {
 }
 async function fixture(
   page: Page,
-  { signedIn = true, failProgress = false, trial = false } = {},
+  {
+    signedIn = true,
+    failProgress = false,
+    trial = false,
+    catalogSkills = skills,
+  } = {},
 ) {
   const batches: { templateId?: string }[] = [];
   await page.addInitScript(
@@ -113,7 +122,7 @@ async function fixture(
       });
     if (pathname.endsWith("/catalog"))
       return route.fulfill({
-        json: { skills, templates, lessons: [], mode: "hosted" },
+        json: { skills: catalogSkills, templates, lessons: [], mode: "hosted" },
       });
     if (pathname.endsWith("/auth-config"))
       return route.fulfill({
@@ -205,7 +214,20 @@ async function noOverflow(page: Page) {
       () => document.documentElement.scrollWidth > innerWidth + 1,
     ),
     false,
-    "horizontal overflow",
+    `horizontal overflow: ${JSON.stringify(
+      await page.evaluate(() => ({
+        viewport: innerWidth,
+        offenders: [...document.querySelectorAll(".pathways *")]
+          .filter((el) => el.getBoundingClientRect().right > innerWidth + 1)
+          .map((el) => ({
+            tag: el.tagName,
+            cls: el.className,
+            text: el.textContent?.slice(0, 90),
+            right: el.getBoundingClientRect().right,
+          }))
+          .slice(0, 12),
+      })),
+    )}`,
   );
   const bad = await page
     .locator(".pathways button,.pathways select,.pathways input,.pathways-go")
@@ -239,7 +261,7 @@ try {
       await page.goto(`${origin}/pathways`);
       await page.locator(".pathways-canvas canvas").waitFor();
       await page
-        .getByText("2 skills with independent successes", { exact: false })
+        .getByText("2 skills illuminated", { exact: false })
         .waitFor({ state: "attached" });
       const go = page.getByRole("link", { name: "Start learning →" });
       assert.equal(await go.getAttribute("href"), "/practice");
@@ -248,21 +270,14 @@ try {
         path: `${output}/${width}-${theme}-map.png`,
         fullPage: true,
       });
-      await page
-        .getByRole("button", { name: "Preview illumination", exact: true })
-        .click();
-      await page.getByText("ILLUMINATION PREVIEW", { exact: false }).waitFor();
-      assert.match(
-        await page.locator(".pathways-summary").innerText(),
-        /^2 skills/,
-      );
-      await page
-        .getByRole("button", { name: "Show my progress", exact: true })
-        .first()
-        .click();
       assert.equal(
-        await page.getByText("ILLUMINATION PREVIEW", { exact: false }).count(),
+        await page
+          .getByRole("button", {
+            name: /preview illumination|show my progress/i,
+          })
+          .count(),
         0,
+        "no simulated learner progress in the product",
       );
       await page
         .getByRole("searchbox", { name: "Find a skill", exact: true })
@@ -285,13 +300,6 @@ try {
         await page.locator(".pathways-skill-list .stage-3").count(),
         1,
         "durable crystal survives zero resettable retrievals",
-      );
-      assert.equal(
-        await page
-          .getByRole("button", { name: "Preview illumination", exact: true })
-          .count(),
-        1,
-        "selected map retains a named preview control",
       );
       const opener = page.getByRole("button", {
         name: "View lesson",
@@ -341,6 +349,16 @@ try {
           .click();
         await page.waitForFunction(() => !document.fullscreenElement);
       }
+      if (width === 1280 && theme === "light") {
+        await opener.click();
+        await page.getByRole("dialog").waitFor();
+        await page.goBack();
+        await page.getByRole("dialog").waitFor({ state: "hidden" });
+        await page.goForward();
+        await page
+          .getByRole("heading", { name: target.title, exact: true })
+          .waitFor();
+      }
       await page.getByText("Algebra frontier:", { exact: false }).waitFor();
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await noOverflow(page);
@@ -378,6 +396,48 @@ try {
       assert.deepEqual(errors, []);
       await page.close();
     }
+  for (const viewport of [
+    { width: 320, height: 568 },
+    { width: 844, height: 390 },
+    { width: 1024, height: 768 },
+  ]) {
+    const page = await browser.newPage({ viewport, reducedMotion: "reduce" });
+    await fixture(page, { signedIn: false });
+    await page.goto(`${origin}/pathways`);
+    await page.locator(".pathways-canvas canvas").waitFor();
+    await noOverflow(page);
+    await page
+      .getByRole("searchbox", { name: "Find a skill", exact: true })
+      .fill(target.title);
+    await page
+      .locator(".pathways-skill-list button")
+      .filter({ hasText: target.title })
+      .click();
+    await page
+      .getByRole("heading", { name: target.title, exact: true })
+      .waitFor();
+    await noOverflow(page);
+    if (await page.evaluate(() => document.fullscreenEnabled)) {
+      await page
+        .getByRole("button", { name: "Full screen", exact: true })
+        .click();
+      await page.waitForFunction(() => !!document.fullscreenElement);
+      assert(
+        await page.evaluate(
+          () => document.documentElement.scrollHeight <= innerHeight + 1,
+        ),
+        "short fullscreen has no page scroll",
+      );
+      await page
+        .getByRole("button", { name: "Exit full screen", exact: true })
+        .click();
+    }
+    await page.screenshot({
+      path: `${output}/${viewport.width}-${viewport.height}-compact.png`,
+      fullPage: true,
+    });
+    await page.close();
+  }
   const drill = await browser.newPage({
     viewport: { width: 390, height: 844 },
   });
@@ -438,13 +498,13 @@ try {
   await fixture(page);
   await page.goto(`${origin}/pathways?skill=${target.id}`);
   await page
-    .getByText("2 skills with independent successes", { exact: false })
+    .getByText("2 skills illuminated", { exact: false })
     .waitFor({ state: "attached" });
   await page
     .getByRole("combobox", { name: /^Learner/ })
     .selectOption("parent-one-b");
   await page
-    .getByText("0 skills with independent successes", { exact: false })
+    .getByText("0 skills illuminated", { exact: false })
     .waitFor({ state: "attached" });
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),
@@ -454,7 +514,7 @@ try {
     .getByRole("combobox", { name: /^Learner/ })
     .selectOption("parent-one-a");
   await page
-    .getByText("2 skills with independent successes", { exact: false })
+    .getByText("2 skills illuminated", { exact: false })
     .waitFor({ state: "attached" });
   await page.evaluate(() => {
     (window as any).pathwaysAccount = "parent-two";
@@ -465,13 +525,49 @@ try {
     .waitFor();
   assert.equal(
     await page.locator(".pathways-summary").textContent(),
-    `0 skills with independent successes · ${skills.length} mapped skills from kindergarten through precalculus`,
+    `0 skills illuminated · ${skills.length} mapped skills from kindergarten through precalculus`,
   );
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),
     0,
   );
   await page.close();
+  // A live catalog expansion preserves the selected skill, earned evidence and camera.
+  const evolving = await browser.newPage({
+    viewport: { width: 1280, height: 900 },
+    reducedMotion: "reduce",
+  });
+  const growingCatalog = [...skills];
+  await evolving.clock.install();
+  await fixture(evolving, { catalogSkills: growingCatalog });
+  await evolving.goto(`${origin}/pathways?skill=${target.id}`);
+  const label = evolving
+    .locator(".skill-label")
+    .filter({ hasText: target.title });
+  await label.waitFor();
+  await evolving.getByRole("button", { name: "Zoom in", exact: true }).click();
+  const before = (await label.boundingBox())!;
+  growingCatalog.push({
+    ...target,
+    id: "new-catalog-skill",
+    title: "New catalog skill",
+  });
+  await evolving.clock.fastForward(300_100);
+  await evolving
+    .getByText(`${skills.length + 1} mapped skills`, { exact: false })
+    .waitFor({ state: "attached" });
+  await label.waitFor();
+  const after = (await label.boundingBox())!;
+  assert(
+    Math.hypot(before.x - after.x, before.y - after.y) < 15,
+    "catalog refresh preserves the explored camera",
+  );
+  assert.equal(
+    await evolving.getByRole("meter").getAttribute("aria-valuenow"),
+    "10",
+  );
+  assert(new URL(evolving.url()).searchParams.get("skill") === target.id);
+  await evolving.close();
   // The accessible list stays functional without WebGL and on an unauthenticated visit.
   const fallback = await browser.newPage({
     viewport: { width: 320, height: 844 },
