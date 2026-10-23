@@ -1,6 +1,6 @@
 # Meta purchase measurement
 
-AMP can prepare and deliver one optional Meta `Purchase` event for a verified live initial enrollment payment with an observed confirmation page, or a linked and verified Arkansas EFA settlement. Both require current adult Meta permission. `src/advertising/meta-delivery.ts` provides a durable queue and bounded operator commands around the Conversions API transport. No route invokes external delivery and no schedule is installed. Configuration defaults to disabled; collecting browser context does not enable uploads.
+AMP can prepare and deliver one optional Meta `Purchase` event for a verified live initial enrollment payment with an observed confirmation page, or a linked and verified Arkansas EFA or Arizona ESA settlement. Both require current adult Meta permission. `src/advertising/meta-delivery.ts` provides a durable queue and bounded operator commands around the Conversions API transport. No route invokes external delivery and no schedule is installed. Configuration defaults to disabled; collecting browser context does not enable uploads.
 
 ## Payload and permission
 
@@ -20,8 +20,8 @@ Learner names, ages, grades, answers, lessons, progress, assessment results, acc
 
 ## Verified funded settlements
 
-An Arkansas EFA event requires a funding request owned by the same parent,
-a retained offer naming Arkansas EFA and the configured financial namespace,
+An Arkansas EFA or Arizona ESA event requires a funding request owned by the same parent,
+a retained offer naming the matching state program and configured financial namespace,
 and a verified settlement in the commerce ledger. An invoice, approval or
 license activation is insufficient. Its actual settlement time and USD value
 are re-read before delivery. Pending refunds block delivery and fully refunded
@@ -72,15 +72,21 @@ Zero or negative purchases are rejected. There is no refund or restatement metho
 
 ## Private operator commands
 
-Set `AMP_META_MEASUREMENT_CONFIG` to a private regular JSON file with mode `0600`. The example uses synthetic identifiers; replace them with independently verified destination and Stripe account values. Configure either or both financial sources. Existing-learner Stripe purchases without a supported confirmation-context collector remain ineligible.
+Set `AMP_META_MEASUREMENT_CONFIG` to a private regular JSON file with mode `0600`. The example uses synthetic identifiers; replace them with independently verified destination and Stripe account values. Configure the available financial sources. Existing-learner Stripe purchases without a supported confirmation-context collector remain ineligible.
 
 ```json
 {
   "enabled": false,
   "destination": { "datasetId": "1234567890" },
-  "sources": { "stripeNamespace": "acct_example:live", "efaChannelReference": "example-program-namespace" }
+  "sources": {
+    "stripeNamespace": "acct_example:live",
+    "efaChannelReference": "example-arkansas-namespace",
+    "azEsaChannelReference": "example-arizona-namespace"
+  }
 }
 ```
+
+`efaChannelReference` selects Arkansas EFA; `azEsaChannelReference` selects Arizona ESA. Each payment must match its configured channel, retained offer, program and jurisdiction. Deploy migration 0043 before using the Arizona worker. Existing Arkansas queue identities are preserved.
 
 `AMP_DATABASE_URL` identifies the migrated application database. For delivery, `AMP_META_MEASUREMENT_CREDENTIALS` identifies a separate private `0600` JSON file containing only `access_token`. Never put the token in command arguments, logs or the repository. The loader rejects symlinks, non-regular files, oversized files and group/world-readable permissions, and re-reads credentials to support rotation. The dispatcher bounds credential acquisition and external response time.
 
@@ -92,7 +98,7 @@ Collection and delivery stop before database or credential access when disabled.
 
 ## Verification required before activation
 
-The worker supports verified live initial enrollment confirmations only. Arkansas funded settlements and existing-learner checkout require truthful channel evidence before they can enter Meta delivery. Google's broader payment selection does not authorize a Meta payload.
+The worker supports verified live initial enrollment confirmations and verified Arkansas EFA or Arizona ESA administrative settlements. Existing-learner card checkout requires its own truthful confirmation context before it can enter Meta delivery. Google's broader payment selection does not authorize a Meta payload.
 
 Verify the actual authorized app/token/dataset, disclosure and platform terms, event permissions and diagnostic results before activation. A test code does not replace those prerequisites. No campaign-spending authorization follows from an export configuration.
 

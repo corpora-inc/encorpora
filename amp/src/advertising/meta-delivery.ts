@@ -153,11 +153,14 @@ export async function queueMetaPayment(
       ? { kind: "stripe", id: paymentId }
       : paymentId,
   );
+  const channel =
+    reference.kind === "arizona-esa"
+      ? config.sources.azEsaChannelReference
+      : config.sources.efaChannelReference;
   const namespace =
     reference.kind === "stripe"
       ? config.sources.stripeNamespace
-      : config.sources.efaChannelReference &&
-        `esa:${config.sources.efaChannelReference}`;
+      : channel && `esa:${channel}`;
   if (!namespace) return { outcome: "ineligible" as const };
   if (!config.enabled) return { outcome: "disabled" as const };
   const client = await pool.connect();
@@ -167,9 +170,7 @@ export async function queueMetaPayment(
         reference.kind === "stripe"
           ? "SELECT account_id FROM amp_meta_purchase_contexts WHERE payment_id=$1"
           : "SELECT account_id FROM amp_commerce_orders WHERE id=$1 AND channel='esa' AND channel_reference=$2",
-        reference.kind === "stripe"
-          ? [reference.id]
-          : [reference.id, config.sources.efaChannelReference],
+        reference.kind === "stripe" ? [reference.id] : [reference.id, channel],
       )
     ).rows[0]?.account_id;
     if (!owner) return { outcome: "ineligible" as const };
@@ -196,8 +197,8 @@ export async function queueMetaPayment(
     }
     const eventId = `amp_meta_${randomBytes(32).toString("hex")}`;
     await client.query(
-      `INSERT INTO amp_meta_purchase_queue(event_id,payment_id,account_id,namespace,dataset_id,occurred_at,original_minor,permission_revision,permission_notice,efa_order_id)
-       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
+      `INSERT INTO amp_meta_purchase_queue(event_id,payment_id,account_id,namespace,dataset_id,occurred_at,original_minor,permission_revision,permission_notice,efa_order_id,funded_program)
+       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
       [
         eventId,
         reference.kind === "stripe" ? reference.id : null,
@@ -208,7 +209,8 @@ export async function queueMetaPayment(
         ready.originalMinor,
         ready.revision,
         ready.notice,
-        reference.kind === "arkansas-efa" ? reference.id : null,
+        reference.kind !== "stripe" ? reference.id : null,
+        reference.kind === "arizona-esa" ? "az-esa" : "ar-efa",
       ],
     );
     await client.query("COMMIT");
@@ -237,7 +239,7 @@ async function candidate(
     row.dataset_id !== config.destination.datasetId ||
     row.namespace !==
       (row.efa_order_id
-        ? `esa:${config.sources.efaChannelReference}`
+        ? `esa:${row.funded_program === "az-esa" ? config.sources.azEsaChannelReference : config.sources.efaChannelReference}`
         : config.sources.stripeNamespace)
   )
     return null;
@@ -245,7 +247,11 @@ async function candidate(
     client,
     config,
     row.efa_order_id
-      ? { kind: "arkansas-efa", id: row.efa_order_id }
+      ? {
+          kind:
+            row.funded_program === "az-esa" ? "arizona-esa" : "arkansas-efa",
+          id: row.efa_order_id,
+        }
       : { kind: "stripe", id: row.payment_id },
     row.account_id,
   );
@@ -433,26 +439,39 @@ export async function metaMeasurementBatch(
            SELECT 'arkansas-efa:'||o.id AS id FROM amp_commerce_orders o
              JOIN amp_funding_requests r ON r.order_id=o.id AND r.account_id=o.account_id
              WHERE o.channel='esa' AND o.channel_reference=$4
+               AND r.offer_snapshot->>'programId'='ar-efa' AND r.offer_snapshot->>'jurisdiction'='AR'
+               AND o.order_state->>'settlement'='settled'
+           UNION ALL
+           SELECT 'arizona-esa:'||o.id AS id FROM amp_commerce_orders o
+             JOIN amp_funding_requests r ON r.order_id=o.id AND r.account_id=o.account_id
+             WHERE o.channel='esa' AND o.channel_reference=$5
+               AND r.offer_snapshot->>'programId'='az-esa' AND r.offer_snapshot->>'jurisdiction'='AZ'
                AND o.order_state->>'settlement'='settled'
            ) candidates WHERE ($2::text IS NULL OR id>$2) ORDER BY id LIMIT $3`
-        : "SELECT event_id AS id FROM amp_meta_purchase_queue WHERE namespace=ANY($1::text[]) AND ($2::text IS NULL OR event_id>$2) AND dataset_id=$4 ORDER BY event_id LIMIT $3",
+        : `SELECT event_id AS id FROM amp_meta_purchase_queue
+           WHERE ((payment_id IS NOT NULL AND namespace=$1)
+             OR (efa_order_id IS NOT NULL AND ((funded_program='ar-efa' AND namespace=$5)
+               OR (funded_program='az-esa' AND namespace=$6))))
+           AND ($2::text IS NULL OR event_id>$2) AND dataset_id=$4 ORDER BY event_id LIMIT $3`,
       operation === "collect"
         ? [
             config.sources.stripeNamespace ?? null,
             cursor.after_id,
             limit + 1,
             config.sources.efaChannelReference ?? null,
+            config.sources.azEsaChannelReference ?? null,
           ]
         : [
-            [
-              config.sources.stripeNamespace,
-              config.sources.efaChannelReference
-                ? `esa:${config.sources.efaChannelReference}`
-                : null,
-            ].filter(Boolean),
+            config.sources.stripeNamespace ?? null,
             cursor.after_id,
             limit + 1,
             config.destination.datasetId,
+            config.sources.efaChannelReference
+              ? `esa:${config.sources.efaChannelReference}`
+              : null,
+            config.sources.azEsaChannelReference
+              ? `esa:${config.sources.azEsaChannelReference}`
+              : null,
           ],
     )
   ).rows;
@@ -466,7 +485,9 @@ export async function metaMeasurementBatch(
               config,
               row.id.startsWith("stripe:")
                 ? { kind: "stripe", id: row.id.slice(7) }
-                : { kind: "arkansas-efa", id: row.id.slice(13) },
+                : row.id.startsWith("arizona-esa:")
+                  ? { kind: "arizona-esa", id: row.id.slice(12) }
+                  : { kind: "arkansas-efa", id: row.id.slice(13) },
             )
           ).outcome
         : await deliverMetaPayment(pool, config, row.id, runtime!);
@@ -510,22 +531,30 @@ export async function metaMeasurementReport(
   rawConfig: MetaDeliveryConfig,
 ) {
   const config = metaDeliveryConfigSchema.parse(rawConfig);
-  const namespaces = [
-    config.sources.stripeNamespace,
+  const sourceParameters = [
+    config.destination.datasetId,
+    config.sources.stripeNamespace ?? null,
     config.sources.efaChannelReference
       ? `esa:${config.sources.efaChannelReference}`
       : null,
-  ].filter(Boolean);
+    config.sources.azEsaChannelReference
+      ? `esa:${config.sources.azEsaChannelReference}`
+      : null,
+  ];
+  const sourcePredicate = `q.dataset_id=$1 AND
+    ((q.payment_id IS NOT NULL AND q.namespace=$2)
+    OR (q.efa_order_id IS NOT NULL AND ((q.funded_program='ar-efa' AND q.namespace=$3)
+      OR (q.funded_program='az-esa' AND q.namespace=$4))))`;
   const preparations = await pool.query(
-    "SELECT state,count(*)::int AS count FROM amp_meta_purchase_queue WHERE dataset_id=$1 AND namespace=ANY($2::text[]) GROUP BY state ORDER BY state",
-    [config.destination.datasetId, namespaces],
+    `SELECT q.state,count(*)::int AS count FROM amp_meta_purchase_queue q WHERE ${sourcePredicate} GROUP BY q.state ORDER BY q.state`,
+    sourceParameters,
   );
   const attempts = await pool.query(
     `SELECT a.state,count(*)::int AS count,
  count(*) FILTER (WHERE (a.receipt->>'messageCount')::int>0)::int AS receipts_with_messages
  FROM amp_meta_delivery_attempts a JOIN amp_meta_purchase_queue q USING(event_id)
- WHERE q.dataset_id=$1 AND q.namespace=ANY($2::text[]) GROUP BY a.state ORDER BY a.state`,
-    [config.destination.datasetId, namespaces],
+ WHERE ${sourcePredicate} GROUP BY a.state ORDER BY a.state`,
+    sourceParameters,
   );
   return { preparations: preparations.rows, attempts: attempts.rows };
 }

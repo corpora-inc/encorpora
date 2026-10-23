@@ -62,3 +62,42 @@ These rows partition the included cash movements; the creative rows are not extr
 The capture endpoint accepts an optional `sourcePath` from exactly `/amp/`, `/esa/arkansas-efa/` and `/esa/arizona-esa/`. It stores only the corresponding canonical Corpora URL, never query strings or arbitrary destinations. Requests from an older client without this field retain the legacy Arkansas source URL; historical rows are not rewritten or treated as proof of a different landing page.
 
 Deploy the API and migration before publishing a client that sends `sourcePath` or Arizona labels. The older strict API rejects these fields. Accepting Arizona labels does not establish an enabled Arizona offer, a complete browser purchase route or Google/Meta delivery support. Those integrations need their own deployment and verified-payment checks before Arizona ads can run.
+
+## Invoice before account setup
+
+The public billing forms `/invoice/arkansas-efa`, `/invoice/arizona-esa` and
+`/invoice/new-hampshire-efa` collect the parent email and the student's billing
+name. They return a downloadable unpaid PDF and the reviewed program payment
+instructions. No AMP account, learning profile, card payment or learning consent
+is needed to prepare the invoice. An enabled named-student offer is required.
+
+The invoice number is a random UUID. No public lookup by invoice number or email
+exists. Retries require the original random idempotency key and identical billing
+fields. The form keeps its draft in memory, including after a failed request; it
+does not put names, emails or retrieval credentials in URLs or browser storage.
+
+A parent signs in with the same verified email to recover invoices. Linking an
+invoice to a learner requires active learning consent and server-verified learner
+ownership. Linking preserves the original invoice number and offer snapshot. It
+does not confirm payment or grant access. Only trusted program payment evidence
+can provision the purchase. Payment received before learner setup must be retained
+by the reconciliation adapter until the invoice is claimed. An expired invoice
+requires billing review rather than silently changing its issued terms.
+
+Unpaid unclaimed billing drafts expire within 30 days and are removed by the
+privacy retention worker. Verified payment records follow the financial retention
+period. Claimed paid invoices follow their commerce order's retention. Verified
+parents can export matching billing drafts and remove unpaid drafts through family
+data deletion. Learning deletion preserves required payment records.
+
+Guest invoices retain an internal reference to the original unexpired advertising
+journey and matching program campaign labels. Claiming the invoice binds eligible
+click evidence to its funded request; a later browser visit cannot replace that
+history. Invoice creation and claiming do not count as purchases. Only verified
+payment evidence can qualify for purchase delivery to an advertising provider.
+
+Browser opt-outs suppress attribution. Claiming applies recorded provider
+withdrawals in the same transaction as journey ownership. Expired or differently
+owned journeys cannot be attached. Tracking failures do not prevent billing;
+failed claim attribution is discarded. Family exports include campaign labels,
+but never journey credentials or raw advertising click identifiers.

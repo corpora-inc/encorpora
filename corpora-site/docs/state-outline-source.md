@@ -1,6 +1,6 @@
-# Arkansas outline source
+# State outline sources
 
-Arkansas (FIPS 05) was extracted from [U.S. Atlas 3.0.1 states-albers-10m.json](https://cdn.jsdelivr.net/npm/us-atlas@3.0.1/states-albers-10m.json), which redistributes the U.S. Census Bureau’s 2017 cartographic state boundaries. [Source documentation](https://github.com/topojson/us-atlas).
+Arkansas (FIPS 05) and Arizona (FIPS 04) were extracted from [U.S. Atlas 3.0.1 states-albers-10m.json](https://cdn.jsdelivr.net/npm/us-atlas@3.0.1/states-albers-10m.json), which redistributes the U.S. Census Bureau’s 2017 cartographic state boundaries. [Source documentation](https://github.com/topojson/us-atlas).
 
 The SVG path decodes the TopoJSON delta arcs, preserves their existing Albers projection, translates to a local bounding box with three units of padding, and rounds coordinates to two decimal places. No state border was drawn by hand. This is decorative geographic artwork, not an official program mark or approval seal.
 
