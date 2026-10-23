@@ -1,5 +1,5 @@
 import { useFundingRefresh } from "./features/funding/useFundingRefresh";
-import { invalidateAccount } from "./lib/query";
+import { refreshMe } from "./lib/query";
 import {
   forgetFundedPurchase,
   fundedAttribution,
@@ -199,8 +199,9 @@ export function FundingPurchaseCenter({
         ]),
     );
     if (nextVerifiedStatus !== verifiedStatus.current) {
+      await refreshMe({ accountId: identity, token: tokenRef.current });
+      if (!current(active) || sequence !== refreshSequence.current) return;
       verifiedStatus.current = nextVerifiedStatus;
-      void invalidateAccount(identity).catch(() => {});
     }
     setOffers(matching);
     setRequests(
