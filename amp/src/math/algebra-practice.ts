@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { algebraDefinitions } from "../content/algebra-definitions.js";
+import { graph } from "./scene/author.js";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -15,6 +16,9 @@ export const algebraTemplates: readonly TemplateMetadata[] =
     gradeBand: "6–8",
     ...(d.mode === "choice"
       ? { requiredResponseCapability: "single-choice-v1" as const }
+      : {}),
+    ...(d.id === "relation-point-removal"
+      ? { requiredFigureCapability: "scenes-v1" as const }
       : {}),
   }));
 function random(id: string, seed: string) {
@@ -333,6 +337,71 @@ export function generateAlgebraProblem(
           ? "The repeated identical pair records the same assignment twice. It does not introduce a second output."
           : "The different inputs share one output, which is allowed.",
         "Every input in the selected list has exactly one output. The other lists assign conflicting outputs to a repeated input.",
+      ];
+      break;
+    }
+    case "relation-point-removal": {
+      const sharedX = r(-1, 1);
+      const points = [
+        { x: r(-4, -2), y: r(-3, 3), shared: false },
+        { x: sharedX, y: r(-4, -2), shared: true },
+        { x: sharedX, y: r(2, 4), shared: true },
+        { x: r(2, 4), y: r(-3, 3), shared: false },
+      ];
+      // Vary the letters attached to the conflicting pair. Coordinates, graph,
+      // feedback and grading all use this one point model.
+      for (let i = points.length - 1; i > 0; i--) {
+        const j = r(0, i);
+        [points[i], points[j]] = [points[j]!, points[i]!];
+      }
+      const labeled = points.map((point, i) => ({
+        ...point,
+        label: "ABCD"[i]!,
+      }));
+      const conflicting = labeled.filter((point) => point.shared);
+      const others = labeled.filter((point) => !point.shared);
+      const pair = (a: string, b: string) =>
+        [a, b]
+          .sort()
+          .map((name) => `$${name}$`)
+          .join(" or ");
+      const correct = pair(conflicting[0]!.label, conflicting[1]!.label);
+      choices = [
+        { label: correct, correct: true },
+        {
+          label: pair(others[0]!.label, others[1]!.label),
+          feedback: `Both points at input ${sharedX} remain, so that input still has two outputs.`,
+        },
+        {
+          label: pair(conflicting[0]!.label, others[0]!.label),
+          feedback: `Removing $${others[0]!.label}$ leaves both points at input ${sharedX}. Check every proposed removal separately.`,
+        },
+        {
+          label: pair(conflicting[1]!.label, others[1]!.label),
+          feedback: `Removing $${others[1]!.label}$ leaves both points at input ${sharedX}. Check every proposed removal separately.`,
+        },
+      ];
+      figure = {
+        kind: "scene",
+        scene: labeled
+          .reduce(
+            (builder, point) => builder.point(point.x, point.y, point.label),
+            graph({ id: "relation", x: [-5, 5], y: [-5, 5], grid: 1 }),
+          )
+          .scene({
+            title: labeled
+              .map(
+                (point) =>
+                  `Point ${point.label} is at (${point.x}, ${point.y})`,
+              )
+              .join("; "),
+          }),
+      };
+      prompt = `The graph shows four points, including two at $x = ${sharedX}$. Which choice lists every point that could be removed, one at a time, so the remaining relation is a function?`;
+      hint = `At $x = ${sharedX}$, compare the outputs of the two plotted points. For each possible removal, ask whether that input would have just one output afterward.`;
+      explanation = [
+        `At $x = ${sharedX}$, $${conflicting[0]!.label}$ and $${conflicting[1]!.label}$ have different outputs. This is the only input with a conflict.`,
+        `Removing either $${conflicting[0]!.label}$ or $${conflicting[1]!.label}$ leaves one output for $x = ${sharedX}$. Removing either other point leaves both conflicting points in place. The complete answer is ${correct}.`,
       ];
       break;
     }

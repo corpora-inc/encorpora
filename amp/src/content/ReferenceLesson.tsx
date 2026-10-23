@@ -29,7 +29,7 @@ export function ReferenceLesson({
     sections
       .filter((section) => section.stage === stage)
       .map((section, index) => (
-        <section key={`${section.title}:${index}`}>
+        <section key={`${section.title}:${index}`} className={print && section.keepTogetherInPrint ? "keep-together" : undefined}>
           <Subheading>{section.title}</Subheading>
           {section.paragraphs.map((paragraph, i) => (
             <p key={i}>

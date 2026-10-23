@@ -86,6 +86,8 @@ export interface Lesson {
     stage?: "intuition" | "method" | "formal";
     title: string;
     paragraphs: string[];
+    /** Keep a diagram with its explanation when exporting a printed lesson. */
+    keepTogetherInPrint?: boolean;
     illustration?:
       | "av-triangle-half"
       | "av-polygon-split"
