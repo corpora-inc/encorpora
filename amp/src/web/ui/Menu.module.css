@@ -124,3 +124,18 @@
   color: var(--color-on-disabled);
   cursor: default;
 }
+
+.label {
+  padding: var(--space-2) var(--space-3);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-on-menu);
+  overflow-wrap: anywhere;
+}
+.label strong {
+  display: block;
+  max-width: min(260px, calc(100vw - 80px));
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}

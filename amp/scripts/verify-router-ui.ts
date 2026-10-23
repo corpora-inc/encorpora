@@ -46,7 +46,7 @@ try {
   assert.equal(new URL(page.url()).pathname, "/sign-in/forgot");
   await page.goto("http://127.0.0.1:4394/sign-up");
   await page
-    .getByRole("heading", { name: "Create your parent account" })
+    .getByRole("heading", { name: "Create your account" })
     .waitFor();
   await page.goBack();
   await page
@@ -55,7 +55,7 @@ try {
   await page.goForward();
   await page.reload();
   await page
-    .getByRole("heading", { name: "Create your parent account" })
+    .getByRole("heading", { name: "Create your account" })
     .waitFor();
   await page.addInitScript(() => {
     (window as any).routeSession = true;

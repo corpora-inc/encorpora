@@ -908,7 +908,7 @@
 @media (max-width: 650px) {
   .pathways.has-selection .pathways-toolbar {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 88px;
+    grid-template-columns: minmax(0, 1fr) 76px 44px;
   }
   .pathways.has-selection .pathways-search {
     width: auto;
@@ -1130,7 +1130,7 @@
   }
   .pathways .pathways-toolbar {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 88px;
+    grid-template-columns: minmax(0, 1fr) 76px 44px;
   }
   .pathways .pathways-search {
     width: auto;

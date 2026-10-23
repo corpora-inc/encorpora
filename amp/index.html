@@ -54,7 +54,8 @@
         /^\/(sign-in|sign-up|reset-password|start|invoice)(\/|$)/.test(
           location.pathname,
         ) ||
-        /^\/try(?:\/(map|plans))?\/?$/.test(location.pathname)
+        /^\/try(?:\/(map|plans))?\/?$/.test(location.pathname) ||
+        location.pathname === "/account/ready"
       )
         document.documentElement.dataset.frame = "card";
     </script>

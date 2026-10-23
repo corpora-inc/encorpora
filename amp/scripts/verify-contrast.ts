@@ -367,8 +367,8 @@ async function sweep(browser: Browser, theme: "light" | "dark", width: number) {
   });
   await page.keyboard.press("Escape");
   await step("family-menu-open", async () => {
-    await page.getByRole("button", { name: "Family menu" }).click();
-    await page.getByRole("menu", { name: "Family menu" }).waitFor();
+    await page.getByRole("button", { name: "Account menu" }).click();
+    await page.getByRole("menu", { name: "Account menu" }).waitFor();
   });
   await page.keyboard.press("Escape");
   for (const route of ["/lessons", "/progress"])

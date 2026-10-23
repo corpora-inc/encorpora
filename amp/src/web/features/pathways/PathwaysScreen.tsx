@@ -1,3 +1,4 @@
+import { AccountMenu } from "../account/AccountMenu";
 import {
   useMemo,
   useRef,
@@ -446,7 +447,11 @@ export function MapView({
       <div
         className="pathways-toolbar"
         onKeyDown={(event) => {
-          if (event.key === "Escape" && !event.nativeEvent.isComposing) {
+          if (
+            event.key === "Escape" &&
+            !event.nativeEvent.isComposing &&
+            event.currentTarget.contains(event.target as Node)
+          ) {
             event.preventDefault();
             setBrowse(false);
           }
@@ -481,6 +486,7 @@ export function MapView({
             {browse ? "Close" : "Browse"}
           </span>
         </button>
+        <AccountMenu />
       </div>
       {catalog.isError ? (
         <div role="alert">

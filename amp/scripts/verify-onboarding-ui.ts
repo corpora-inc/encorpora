@@ -408,7 +408,7 @@ try {
       // the viewport (or top-aligned with padding when taller than it).
       await page.goto(`${origin}/sign-up`);
       await page
-        .getByRole("heading", { name: "Create your parent account" })
+        .getByRole("heading", { name: "Create your account" })
         .waitFor();
       await page.getByRole("link", { name: "AMP home" }).waitFor();
       const signUp = await box(page.locator("main section").first());

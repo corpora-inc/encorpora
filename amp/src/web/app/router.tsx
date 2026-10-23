@@ -191,6 +191,23 @@ const signUp = createRoute({
   loader: loadAuthConfig,
   component: auth,
 });
+const accountReady = createRoute({
+  getParentRoute: () => root,
+  path: "/account/ready",
+  loader: async () => {
+    const session = await queryClient.ensureQueryData(sessionOptions);
+    // Leave a failed lookup to the screen's inline retry instead of replacing
+    // the successful-registration page with a route error.
+    if (session)
+      await queryClient
+        .ensureQueryData(meOptions(session))
+        .catch(() => undefined);
+  },
+  component: lazyRouteComponent(
+    () => import("../features/account/AccountReady"),
+    "AccountReady",
+  ),
+});
 const signInStep = createRoute({
   getParentRoute: () => root,
   path: "/sign-in/$step",
@@ -335,6 +352,7 @@ export const router = createRouter({
     home,
     signIn,
     signUp,
+    accountReady,
     signInStep,
     reset,
     startIndex,
