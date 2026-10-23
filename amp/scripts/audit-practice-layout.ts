@@ -1,5 +1,5 @@
 /** Synthetic-only production component audit. AMP_LAYOUT_SERVE=1 starts preview;
- * AMP_LAYOUT_LIMIT/FILTER bound runs. No database or account data is used. */
+ * AMP_LAYOUT_LIMIT/FILTER (comma-separated ID substrings) bound runs. No database or account data is used. */
 import { createServer } from "vite";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
@@ -174,7 +174,9 @@ const catalog = templates
   .filter(
     (t) =>
       !process.env.AMP_LAYOUT_FILTER ||
-      t.id.includes(process.env.AMP_LAYOUT_FILTER),
+      process.env.AMP_LAYOUT_FILTER.split(",").some((id) =>
+        t.id.includes(id.trim()),
+      ),
   )
   .slice(0, Number(process.env.AMP_LAYOUT_LIMIT ?? templates.length));
 const cases = catalog.flatMap((meta) => {
