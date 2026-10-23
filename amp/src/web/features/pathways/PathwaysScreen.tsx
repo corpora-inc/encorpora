@@ -331,8 +331,8 @@ export function MapView({
   ) => {
     const skillId = values.skill === undefined ? selectedId : values.skill;
     const nextSearch = {
-      topic: values.topic === undefined ? query || undefined : values.topic,
-      filter: values.filter === undefined ? band || undefined : values.filter,
+      topic: (values.topic === undefined ? query : values.topic) || undefined,
+      filter: (values.filter === undefined ? band : values.filter) || undefined,
       context: assessmentContext ? ("trial" as const) : undefined,
     };
     if (skillId)
@@ -455,7 +455,7 @@ export function MapView({
             onFocus={() => setBrowse(true)}
             onChange={(e) => {
               setBrowse(true);
-              update({ topic: e.target.value || undefined }, true);
+              update({ topic: e.target.value }, true);
             }}
           />
         </label>
@@ -493,9 +493,7 @@ export function MapView({
                 Grade or course
                 <select
                   value={band}
-                  onChange={(e) =>
-                    update({ filter: e.target.value || undefined }, true)
-                  }
+                  onChange={(e) => update({ filter: e.target.value }, true)}
                 >
                   <option value="">All grades & courses</option>
                   {bands.map((b) => (

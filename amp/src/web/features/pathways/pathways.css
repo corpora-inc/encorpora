@@ -173,7 +173,7 @@
 }
 .pathways-search input {
   width: 100%;
-  font-size: 13px;
+  font-size: 16px;
 }
 .pathways input::placeholder {
   color: var(--atlas-muted);
@@ -330,7 +330,9 @@
 .pathways-browser select {
   width: 100%;
   min-width: 0;
-  font-size: 12px;
+  font-size: 16px;
+  /* Native WebKit selects shrink below min-height without an explicit height. */
+  height: 2.75em;
 }
 .pathways ul {
   list-style: none;
