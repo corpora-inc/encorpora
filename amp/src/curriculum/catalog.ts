@@ -1418,6 +1418,16 @@ skills
     status: "implemented",
   });
 
+// Interpret an initial amount in a stated linear context (8.F.B.4).
+skills
+  .find((s) => s.id === "linear-models")!
+  .facets.push({
+    id: "linear-models.initial-value-in-context",
+    description:
+      "Choose the meaning and output units of the amount at a meaningful zero input in a stated contextual linear equation.",
+    status: "implemented",
+  });
+
 // Algebra 1 statistics (S-ID): summaries, two-way tables, regression,
 // residuals and correlation, association versus causation.
 for (const [skillId, suffix, description] of [

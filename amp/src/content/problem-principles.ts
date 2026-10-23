@@ -369,6 +369,8 @@ export const principles: Record<string, string> = {
     "A linear function has a constant rate of change: (y₂ − y₁)/(x₂ − x₁) is the same for every pair of points.",
   "recover-linear-intercept":
     "Slope-intercept form y = mx + b: $b$ is the value of $y$ when x = 0.",
+  "linear-initial-value-meaning":
+    "For a linear model $y=mx+b$, $x$ is the input, $y$ is the output, $m$ is the number multiplying $x$, and $b$ is the remaining number. Setting $x=0$ gives $y=b$. If zero is an allowed input, $b$ is the output amount there, with output units, and the graph passes through $(0,b)$. The rate $m$ has output units per input unit and describes a change. If zero is outside the allowed inputs, $b$ need not describe an observed starting amount.",
   "predict-linear-output":
     "Linear functions change by equal amounts over equal intervals: y = y₁ + m(x − x₁).",
   "graph-equation-choice":

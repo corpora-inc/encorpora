@@ -242,6 +242,10 @@ import {
   fractionDivisionExpressionTemplate,
   fractionDivisionExpressionCase,
 } from "./fraction-division-expression";
+import {
+  linearInitialValueMeaningTemplate,
+  linearInitialValueMeaningCase,
+} from "./linear-initial-value-meaning";
 import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
@@ -426,6 +430,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
   fractionDivisionExpressionTemplate,
+  linearInitialValueMeaningTemplate,
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
@@ -787,6 +792,8 @@ function generateRawProblem(
     return generateFractionPracticeProblem(templateId, seed);
   if (templateId === fractionDivisionExpressionTemplate.id)
     return fractionDivisionExpressionCase(seed).problem;
+  if (templateId === linearInitialValueMeaningTemplate.id)
+    return linearInitialValueMeaningCase(seed).problem;
   if (elementaryTemplates.some((t) => t.id === templateId))
     return generateElementaryProblem(templateId, seed);
   if (graphicalTemplates.some((t) => t.id === templateId))

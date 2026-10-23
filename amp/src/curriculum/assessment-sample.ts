@@ -100,10 +100,10 @@ export const assessmentSample: readonly AssessmentSampleItem[] = [
   {
     sourceId: "mcas-2025-8",
     item: "10; printed p.13",
-    requirement: "Interpret a model intercept in context",
-    templateIds: ["recover-linear-intercept"],
+    requirement: "Interpret a model intercept in context (8.SP.A.3)",
+    templateIds: ["recover-linear-intercept", "linear-initial-value-meaning"],
     limitations:
-      "Related intercept calculation exists; verbal interpretation of the parameter and units needs direct verification.",
+      "Intercept calculation and one-choice interpretation of an explicitly stated linear model are assessed. Fitting a model from data, graph-only inference, and constructed explanations remain unassessed by these families.",
   },
   {
     sourceId: "mcas-2025-8",
