@@ -259,9 +259,20 @@ try {
     .getByRole("heading", { name: "Sign in", exact: true })
     .waitFor();
   await sibling.close();
+  await page.setViewportSize({ width: 320, height: 844 });
   await page.goto(`${origin}/pathways?topic=linear`);
   await page.getByRole("searchbox", { name: "Find a skill" }).waitFor();
   const search = page.getByRole("searchbox", { name: "Find a skill" });
+  const searchBox = (await search.boundingBox())!;
+  const accountBox = (await page
+    .getByRole("button", { name: "Account menu" })
+    .boundingBox())!;
+  assert(
+    Math.abs(
+      searchBox.y + searchBox.height / 2 - accountBox.y - accountBox.height / 2,
+    ) < 2,
+    "phone search and account share one toolbar row",
+  );
   await search.focus();
   await page.getByRole("button", { name: "Account menu" }).click();
   await page.getByRole("menuitem", { name: "Sign in", exact: true }).waitFor();
