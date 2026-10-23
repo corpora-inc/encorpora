@@ -58,6 +58,7 @@ export const rationalExpressionLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Which inputs are allowed?",
         paragraphs: [
           "You need to solve simple linear equations and factor quadratics. A variable stands for a number. A polynomial is an expression such as $x^2 - 5x + 6$, built from sums of constant multiples of whole-number powers of a variable. A rational expression is a quotient of two polynomials: a fraction with these expressions above and below its bar.",
@@ -80,6 +81,7 @@ export const rationalExpressionLessons: Lesson[] = [
     },
     closingSections: [
       {
+        stage: "method",
         title: "See the missing input",
         paragraphs: [
           "The curve follows the simplified rule $y = (x - 3)/(x - 4)$. The open circle at $\\left(2, \\frac{1}{2}\\right)$ removes the value that the original expression cannot take. The dashed marker at $x = 4$ marks the other excluded input; there is no point of the curve at that input.",

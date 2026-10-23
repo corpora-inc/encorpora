@@ -8,7 +8,7 @@ export const quadraticStructureLessons: Lesson[] = [
     id: "parabola-features",
     title: "Parabolas: vertex, axis and translations",
     summary:
-      "The graph of a quadratic is a parabola. Its vertex is its turning point, and it is symmetric about the vertical line through the vertex. $y = a(x - h)^2 + k$ is $y = ax^2$ moved $h$ across and $k$ up.",
+      "A quadratic graph bends around a turning point. Its vertex form shows where that point is and whether the curve opens up or down.",
     templateIds: ["parabola-vertex", "parabola-axis", "parabola-shift"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -18,13 +18,21 @@ export const quadraticStructureLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Vertex and axis of symmetry",
         paragraphs: [
-          "In y = a(x − h)² + k the square (x − h)² is 0 at x = h and positive everywhere else. When a > 0, $y$ is least at x = h, where it equals $k$; when a < 0, $y$ is greatest there. The point $(h, k)$ is the vertex.",
+          "A parabola is the U-shaped graph of a quadratic rule. Its lowest point, or highest point when it opens down, is the vertex. A vertical line through the vertex is its axis of symmetry: points equally far left and right of that line have the same height.",
+          "In $y=a(x-h)^2+k$ with $a\\ne0$, the square is zero at $x=h$ and positive elsewhere. For $a>0$, $y$ is least at $x=h$; for $a<0$, it is greatest there. The vertex is $(h,k)$, and the axis is $x=h$.",
           "Points the same distance left and right of x = h give the same square, so they have the same height: the parabola is symmetric about the line x = h, its axis of symmetry. Two points at the same height, such as the two $x$-intercepts, lie the same distance either side of it, so the axis is halfway between them.",
-          "Expanding a(x − h)² + k gives ax² − 2ahx + ah² + $k$. Matching with ax² + bx + c gives b = −2ah, so h = −b/(2a). For y = x² − 2x − 3, the axis is x = −(−2)/(2 × 1) = 1 and the vertex is (1, 1 − 2 − 3) = (1, −4). The zeros −1 and 3 are 2 units either side of x = 1.",
         ],
         illustration: "parabola-features",
+      },
+      {
+        title: "Find the axis from standard form",
+        paragraphs: [
+          "In $y=ax^2+bx+c$ with $a\\ne0$, $a$, $b$, and $c$ are fixed coefficients. Expanding $a(x-h)^2+k$ gives $ax^2-2ahx+ah^2+k$. Matching the $x$ coefficients gives $b=-2ah$, so the axis is $x=h=-b/(2a)$. Substitute this input into the original rule to find the vertex's height.",
+          "For $y=x^2-2x-3$, the axis is $x=-(-2)/(2\\cdot1)=1$ and the vertex is $(1,-4)$. The zeros $-1$ and $3$ are equally far from the axis.",
+        ],
       },
       {
         title: "Translating a parabola",
@@ -44,6 +52,17 @@ export const quadraticStructureLessons: Lesson[] = [
       ],
       answer: "(3, −5)",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For real $a,h,k$ with $a\\ne0$, $y=a(x-h)^2+k$ has vertex $(h,k)$: a minimum if $a>0$, a maximum if $a<0$.",
+          "The outputs at $h-d$ and $h+d$ agree for every real $d$, so the axis is $x=h$. In standard form $y=ax^2+bx+c$, the same axis is $x=-b/(2a)$.",
+          "Replacing $x$ with x − h moves a graph $h$ to the right, and adding $k$ to the output moves it $k$ up.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not read $h$ with the sign shown: y = (x + 2)² − 1 has its vertex at (−2, −1).",
       "Do not take the $y$-intercept $c$ as the vertex's $y$-coordinate; substitute the vertex's $x$.",
@@ -70,17 +89,18 @@ export const quadraticStructureLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "A product is an area",
         paragraphs: [
-          "A rectangle with sides x + 3 and x + 2 splits into four regions: $x$ by $x$, 3 by $x$, $x$ by 2 and 3 by 2. Their areas are x², 3x, 2x and 6, so (x + 3)(x + 2) = x² + 5x + 6. Each term of one factor multiplies each term of the other.",
-          "With a negative term the regions still multiply: (x − 2)(x + 4) has regions x², 4x, −2x and −8, so it is x² + 2x − 8.",
+          "A term is one part of a sum, such as $x$ or 3 in $x+3$. A binomial has two terms. A factor is one part of a product, such as $x+3$ in $(x+3)(x+2)$. A coefficient is the number multiplying a variable term. When $x\\ge0$, a rectangle with sides $x+3$ and $x+2$ splits into four regions; their areas add to the whole area: $x^2+3x+2x+6=(x+3)(x+2)$.",
+          "The same distributive law works for signed expressions, but negative products are algebraic terms, not physical areas. For example, $(x-2)(x+4)=x^2+4x-2x-8=x^2+2x-8$.",
         ],
         illustration: "area-tiles-product",
       },
       {
         title: "What each part means",
         paragraphs: [
-          "In a formula, set the input to 0 to find the starting value: in h = −16t² + 48t + 5, h = 5 at t = 0, the height at release. The coefficient of $t$ is how fast the output changes at first: 48 feet per second upward.",
+          "In a formula, set the input to 0 to find its output then. In $h=-16t^2+48t+5$, $h=5$ at $t=0$, the height at release. The coefficient 48 contributes to the initial rate, but the quadratic term changes the rate over time; it is not a constant rate.",
           "In C = 40 + 15h, 40 is paid whatever $h$ is (a fixed fee) and each extra hour adds 15. In P = 2400(1.05)^t, 2400 is the population at t = 0, and each year multiplies it by 1.05, a 5% increase.",
         ],
       },
@@ -101,9 +121,20 @@ export const quadraticStructureLessons: Lesson[] = [
       ],
       answer: "(x − 6)(x + 4)",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "The distributive property: each term of one factor multiplies each term of the other, as the regions of a rectangle add to its area.",
+          "For a function defined at input 0, its value there is the starting output. In a linear rule $y=mx+b$, $b$ is that output and $m$ is the constant change in $y$ per unit of $x$; a coefficient in a nonlinear rule need not be a constant rate.",
+          "A² − B² = (A − B)(A + B) and A² + 2AB + B² = (A + B)² hold for any expressions $A$ and $B$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Multiply every term by every term: (x + 3)(x + 2) has four products, not two.",
-      "A coefficient is a rate, not a total: in C = 40 + 15h, one hour costs 55, not 15.",
+      "In a linear cost rule such as $C=40+15h$, the coefficient 15 is the extra cost per hour, while 40 is a fixed fee; one hour costs 55, not 15.",
       "In a difference of squares, $B$ is the square root of the constant: 25 = 5².",
     ],
     parentGuide:
@@ -113,7 +144,7 @@ export const quadraticStructureLessons: Lesson[] = [
     id: "polynomial-zeros",
     title: "Zeros of polynomials",
     summary:
-      "A polynomial is 0 exactly where one of its factors is 0: the factor x − r gives the zero x = r. A squared factor makes the graph touch the $x$-axis instead of crossing it.",
+      "When an expression is a product, any input that makes one factor zero makes the whole product zero. Such an input is a zero of the expression.",
     templateIds: ["zeros-from-factors", "zero-multiplicity"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -123,6 +154,7 @@ export const quadraticStructureLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Each factor gives a zero",
         paragraphs: [
           "A product is 0 exactly when one of its factors is 0. So y = (x + 2)(x − 1)(x − 4) is 0 at x = −2, x = 1 and x = 4, and its graph crosses the $x$-axis there. The factor x − r is 0 at x = r, the number with the opposite sign of the one written.",
@@ -148,6 +180,16 @@ export const quadraticStructureLessons: Lesson[] = [
       ],
       answer: "y = x(x + 3)(x − 2)",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A product of real numbers is 0 exactly when one of its factors is 0, so the zeros of a factored polynomial are the zeros of its factors.",
+          "If $p(x)=(x-r)^m q(x)$ for a positive integer $m$ and a polynomial $q$ with $q(r)\\ne0$, then $p$ changes sign at $r$ when $m$ is odd and keeps its sign there when $m$ is even. Its graph crosses the $x$-axis at odd multiplicity and touches it at even multiplicity.",
+        ],
+      },
+    ],
     pitfalls: [
       "(x + 4) is 0 at x = −4, not 4.",
       "A squared factor touches the axis; it does not cross.",
@@ -160,15 +202,22 @@ export const quadraticStructureLessons: Lesson[] = [
     id: "polynomial-division",
     title: "Dividing by a linear factor",
     summary:
-      "Dividing $p(x)$ by x − a gives a quotient $q(x)$ and a remainder $R$ with p(x) = (x − a)q(x) + R. Synthetic division finds both; the remainder is $p(a)$.",
+      "When a sum of powers is divided by $x-a$, the leftover constant is its remainder. Substituting $x=a$ into the original expression finds it.",
     templateIds: ["remainder-theorem", "polynomial-quotient"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Find the remainder of p(x) ÷ (x − a) as $p(a)$.",
-      "Find a coefficient that makes $x - a a$ factor.",
+      "Find a coefficient that makes $x-a$ a factor.",
       "Divide a cubic by x − a with the synthetic-division layout.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "The remainder is a value of the polynomial",
+        paragraphs: [
+          "A polynomial is a sum of powers of a variable with number coefficients; $p(x)$ names its value at input $x$. Dividing by $x-a$ means finding a quotient polynomial plus a constant remainder. At $x=a$, the factor $x-a$ becomes zero, so only the remainder is left. This is why substituting $a$ into $p$ finds the remainder.",
+        ],
+      },
       {
         title: "Synthetic division",
         paragraphs: [
@@ -194,6 +243,16 @@ export const quadraticStructureLessons: Lesson[] = [
       ],
       answer: "−34",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "p(x) = (x − a)q(x) + R, so p(a) = R: the remainder is the value at $a$, and x − a is a factor exactly when p(a) = 0.",
+          "Division by x − a writes p(x) = (x − a)q(x) + R with $q$ one degree lower; synthetic division computes $q$ and $R$ by repeated multiplying and adding.",
+        ],
+      },
+    ],
     pitfalls: [
       "Divide by x + 2 using −2, the zero of the divisor.",
       "Write 0 for a missing power before dividing.",

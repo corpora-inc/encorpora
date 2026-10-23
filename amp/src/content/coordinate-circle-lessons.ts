@@ -6,7 +6,7 @@ export const coordinateCircleLessons: Lesson[] = [
     id: "coordinate-geometry",
     title: "Coordinate geometry: circles, lengths, partitions and slopes",
     summary:
-      "On the coordinate plane, the distance formula gives lengths and circles, a fraction of the run and rise locates a partition point, and slopes decide parallel and perpendicular.",
+      "A circle contains points the same distance from its center. Coordinates also let you locate points along a segment and compare the directions of lines.",
     templateIds: [
       "circle-equation",
       "coordinate-polygon",
@@ -20,12 +20,19 @@ export const coordinateCircleLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "A circle is a distance",
         paragraphs: [
-          "A circle with center $(h, k)$ and radius $r$ is every point $(x, y)$ at distance $r$ from the center. The distance formula, squared, gives its equation: (x − h)² + (y − k)² = r².",
-          "Read the center from the signs: (x + 3) is x − (−3), so h = −3. The right side is r², not $r$. In the form x² + y² + Dx + Ey + F = 0, complete the square in $x$ and in $y$ to find the center and radius.",
+          "A circle is all points one fixed distance from a center. That distance is its radius. On a coordinate grid, going sideways and upward from the center makes a right triangle; the sideways and upward distances determine the straight-line radius.",
         ],
         illustration: "circle-equation-distance",
+      },
+      {
+        title: "Read and rearrange the circle equation",
+        paragraphs: [
+          "For center $(h,k)$ and positive radius $r$, a point $(x,y)$ is on the circle exactly when $(x-h)^2+(y-k)^2=r^2$. The right side is the radius squared. Read the center from the signs: $(x+3)$ means $x-(-3)$, so the center's first coordinate is $-3$.",
+          "When the squared terms are expanded, group the $x$ terms and the $y$ terms and complete a square in each to recover the center and radius.",
+        ],
       },
       {
         title: "Lengths and areas from coordinates",
@@ -61,6 +68,18 @@ export const coordinateCircleLessons: Lesson[] = [
       ],
       answer: "5",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A circle with center $(h, k)$ and radius $r$ is the set of points with (x − h)² + (y − k)² = r², the distance formula squared.",
+          "Lengths on the plane come from the distance formula, and areas from an enclosing rectangle or the shoelace sum.",
+          "The point dividing $AB$ in the ratio $m$ : $n$ is $A$ plus m/(m + n) of the change from $A$ to $B$, in each coordinate.",
+          "Nonvertical parallel lines have equal slopes. Perpendicular nonvertical lines have slopes whose product is −1; a vertical line is perpendicular to a horizontal line, and its slope is undefined.",
+        ],
+      },
+    ],
     pitfalls: [
       "The right side of the standard form is r²: take its square root for the radius.",
       "The center's coordinates have the opposite signs of the numbers inside the parentheses.",
@@ -73,7 +92,7 @@ export const coordinateCircleLessons: Lesson[] = [
     id: "angles-in-circles",
     title: "Angles in circles",
     summary:
-      "An inscribed angle is half the central angle on the same arc, an angle in a semicircle is right, and a tangent is perpendicular to the radius at the point of contact.",
+      "An angle at a circle’s edge and one at its center can look at the same arc. Their sizes are linked by a factor of two.",
     templateIds: ["circle-angles"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -82,6 +101,7 @@ export const coordinateCircleLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Inscribed angles are half the central angle",
         paragraphs: [
           "A central angle has its vertex at the center; an inscribed angle has its vertex on the circle. On the same arc, the inscribed angle is half the central angle: 70° at the center gives 35° at $C$.",
@@ -107,6 +127,15 @@ export const coordinateCircleLessons: Lesson[] = [
       ],
       answer: "55",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "An inscribed angle is half the central angle on the same arc; a diameter subtends a right angle; a tangent is perpendicular to the radius at its point of contact.",
+        ],
+      },
+    ],
     pitfalls: [
       "Halve the central angle for the inscribed angle; do not double it.",
       "The right angle in a semicircle is at the point on the circle, not at the ends of the diameter.",

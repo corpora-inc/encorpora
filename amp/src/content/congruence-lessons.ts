@@ -97,6 +97,7 @@ export const congruenceLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "What must match?",
         paragraphs: [
           "A triangle has three straight sides and three vertices, the points where the sides meet. An angle is the opening between two sides at a vertex. You need to recognize sides and angles and know that a triangle's interior angles sum to $180^\\circ$.",
@@ -118,6 +119,7 @@ export const congruenceLessons: Lesson[] = [
     },
     closingSections: [
       {
+        stage: "method",
         title: "Read the matching marks",
         paragraphs: [
           "The picture uses the example's lengths. Matching tick counts identify the three side pairs; the labels give lengths in centimeters. Follow each pair before comparing the whole triangles. A drawing that merely looks the same would not prove congruence.",
@@ -125,6 +127,7 @@ export const congruenceLessons: Lesson[] = [
         illustration: "congruence-three-sides",
       },
       {
+        stage: "method",
         title: "Why the other criteria work",
         paragraphs: [
           "SAS means two corresponding sides and their included angles match. For $AB$, $AC$ and $\\angle A$, first match the angle's two rays, then mark the specified length on each ray. Both remaining vertices are fixed. An angle at $B$ would not be between $AB$ and $AC$, so that information would be SSA instead.",

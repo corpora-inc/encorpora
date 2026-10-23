@@ -2,6 +2,7 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const plane: Lesson["sections"][number] = {
+  stage: "intuition",
   title: "Points on the coordinate plane",
   paragraphs: [
     "The coordinate plane has a horizontal number line, the $x$-axis, and a vertical number line, the $y$-axis. They cross at 0 on each, a point called the origin. The ordered pair ($x$, $y$) names a point: $x$ tells how far right (positive) or left (negative) of the $y$-axis it is, and $y$ tells how far above (positive) or below (negative) the $x$-axis it is. The point (−4, 3) is 4 units left of the $y$-axis and 3 units above the $x$-axis.",
@@ -57,6 +58,16 @@ export const transformationLessons: Lesson[] = [
       answer: "28",
       answerUnit: "units",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Points with the same $y$-coordinate lie on one horizontal line, and points with the same $x$-coordinate on one vertical line; the distance between them is the larger changing coordinate minus the smaller.",
+          "A rectangle's perimeter is 2 × (width + height) and its area is width × height.",
+        ],
+      },
+    ],
     pitfalls: [
       "For a side that crosses an axis, do not subtract the distances from 0: from −4 to 5 is 4 + 5 = 9, not 5 − 4 = 1.",
       "Use the coordinate that changes along the side: the $x$-coordinates for a horizontal side, the $y$-coordinates for a vertical one.",
@@ -69,7 +80,7 @@ export const transformationLessons: Lesson[] = [
     id: "coordinate-distance",
     title: "Distance between two points",
     summary:
-      "The segment between two points is the hypotenuse of a right triangle whose legs are the changes in $x$ and $y$.",
+      "A slanted segment between two grid points completes a right triangle. Its straight-line length comes from the horizontal and vertical changes.",
     templateIds: ["coordinate-distance", "coordinate-distance-exact"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -79,6 +90,7 @@ export const transformationLessons: Lesson[] = [
     sections: [
       plane,
       {
+        stage: "intuition",
         title: "A right triangle under every segment",
         paragraphs: [
           "A right triangle has one right angle, a square corner. The two sides that form the right angle are the legs, and the longest side, opposite the right angle, is the hypotenuse. The Pythagorean theorem says that for every right triangle, leg² + leg² = hypotenuse².",
@@ -104,6 +116,16 @@ export const transformationLessons: Lesson[] = [
       answer: "10",
       answerUnit: "units",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "The distance between (x₁, y₁) and (x₂, y₂) is the hypotenuse of a right triangle with legs |x₂ − x₁| and |y₂ − y₁|: d² = (x₂ − x₁)² + (y₂ − y₁)².",
+          "d = √((x₂ − x₁)² + (y₂ − y₁)²), and √(a²b) = a√b for whole numbers $a$ and $b$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not add the legs: 8 + 6 = 14 is the path along the grid, not the straight distance.",
       "Subtracting a negative coordinate adds: the change from −3 to 5 is 5 − (−3) = 8.",
@@ -153,6 +175,16 @@ export const transformationLessons: Lesson[] = [
       ],
       answer: "(−1, 4)",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Translation $(x, y)$ → ($x$ + $a$, $y$ + $b$); reflection over the $x$-axis ($x$, $y$) → (x, −y), over the $y$-axis (−x, y); rotation about the origin by 90° counterclockwise (−y, x), 180° (−x, −y), 90° clockwise (y, −x).",
+          "A rigid motion is determined by where it sends three vertices of a triangle, so the motion that maps a triangle onto its image is the one rule that fits every vertex.",
+        ],
+      },
+    ],
     pitfalls: [
       "A reflection over the $x$-axis changes the sign of $y$, not $x$: the axis named is the one the points cross.",
       "For a quarter turn, swap the coordinates and change one sign; changing signs without swapping gives a reflection or a half turn.",
@@ -207,6 +239,17 @@ export const transformationLessons: Lesson[] = [
       answer: "9",
       answerUnit: "cm",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For a positive scale factor $k$, a dilation centered at the origin sends $(x,y)$ to $(kx,ky)$.",
+          "Such a dilation multiplies every distance by $k$ and preserves every angle; $k>1$ enlarges and $0<k<1$ reduces the figure.",
+          "In similar triangles, every side of one is the same multiple, the scale factor, of its corresponding side in the other.",
+        ],
+      },
+    ],
     pitfalls: [
       "A dilation multiplies coordinates by the scale factor; adding the scale factor slides the figure instead.",
       "Match sides by vertex order, not by position on the page: $BC$ corresponds to $EF$ when $B$ ↔ $E$ and $C$ ↔ $F$.",
@@ -228,6 +271,7 @@ export const transformationLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "What a scale says",
         paragraphs: [
           "This lesson uses multiplication and division with whole numbers, decimals and fractions. A scale drawing, such as a map or a floor plan, has the same shape as the real object with every length shrunk by the same amount. Its scale states how lengths match: “1 cm represents 2 m” means each centimeter on the drawing stands for 2 meters in reality.",
@@ -254,6 +298,15 @@ export const transformationLessons: Lesson[] = [
       answer: "54",
       answerUnit: "square meters",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "If a scale multiplies lengths by $k$, it multiplies areas by k².",
+        ],
+      },
+    ],
     pitfalls: [
       "Multiply an area by the square of the scale: 12 square centimeters at 1 cm to 2 m is 48 square meters, not 24.",
       "Going from an actual length back to the drawing, divide by the scale instead of multiplying.",

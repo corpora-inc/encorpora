@@ -6,7 +6,7 @@ export const bivariateLessons: Lesson[] = [
     id: "scatterplots",
     title: "Scatter plots and trend lines",
     summary:
-      "A scatter plot shows how two quantities vary together; a trend line models a linear pattern, and its slope is the rate.",
+      "A scatter plot gives one point to each pair of measurements. A trend line follows a roughly straight pattern; its slope gives the change in predicted output per input unit.",
     templateIds: [
       "scatter-association-choice",
       "trend-line-predict",
@@ -18,6 +18,7 @@ export const bivariateLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Read the pattern",
         paragraphs: [
           "Each point is one student: across for hours studied, up for test score. Read left to right: as hours increase, scores tend to increase, and the points hug a straight line. That is a positive linear association.",
@@ -52,6 +53,17 @@ export const bivariateLessons: Lesson[] = [
       ],
       answer: "75",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "An association is a trend in how two quantities vary together: up or down, along a line or a curve, or no trend at all.",
+          "A trend line predicts $y$ by starting from a point on it and adding slope × the change in $x$.",
+          "A trend line’s slope is the change in $y$ for each 1 more of $x$, a rate in the units of the context.",
+        ],
+      },
+    ],
     pitfalls: [
       "The slope is a rate, change in $y$ for each 1 more of $x$; the intercept is a single value at x = 0.",
       "An association does not show that one quantity causes the other.",
@@ -75,9 +87,10 @@ export const bivariateLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Totals fill the blanks",
         paragraphs: [
-          "Every row adds across to its total, and every column adds down to its total. The Grade 8 row has two blanks, so its total alone cannot help.",
+          "A two-way table sorts the same people by two questions. Each inside cell counts one combination, such as a grade and a curfew answer. Every row adds across to its total, and every column adds down to its total. The Grade 8 row has two blanks, so its total alone cannot fill either one.",
           "The “Yes” column can: 42 students have a curfew, and 18 are seventh graders, so 42 − 18 = 24 eighth graders do. Then 60 − 24 = 36 do not.",
         ],
         illustration: "scene-two-way-blank",
@@ -101,6 +114,17 @@ export const bivariateLessons: Lesson[] = [
       ],
       answer: "No association",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Every row and column of a two-way table adds to its total, so a line with one blank determines it.",
+          "A percent within a row compares a count to the row total, describing that group alone.",
+          "Two categorical variables are associated when the percents within the rows differ substantially.",
+        ],
+      },
+    ],
     pitfalls: [
       "Divide by the row total for a percent within a row, not by the table total.",
       "Groups of different sizes make raw counts misleading.",

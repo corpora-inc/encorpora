@@ -15,10 +15,11 @@ export const realNumberLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Rational numbers",
         paragraphs: [
-          "This lesson uses fractions, decimals and long division. An integer is a whole number or the opposite of one: …, −2, −1, 0, 1, 2, …. A rational number is a number that can be written as a quotient $\\frac{a}{b}$ of two integers with $b \\neq 0$. Every integer is rational, because $5 = \\frac{5}{1}$ and $-8 = \\frac{-8}{1}$. A terminating decimal is rational too: $0.25 = \\frac{25}{100}$.",
-          "Dividing a by $b$ by long division gives the decimal of $\\frac{a}{b}$. Each remainder is a whole number less than $b$. If a remainder is 0, the decimal ends. Otherwise there are fewer than $b$ possible remainders, so one of them comes back, and from then on the same digits come back in the same order. So the decimal of a rational number either ends or repeats one block of digits forever.",
+          "A half, three quarters, and the whole number 5 can all be written as fractions. Such numbers are rational. This lesson uses fractions, decimals, and long division. An integer is a whole number or the opposite of one: …, −2, −1, 0, 1, 2, …. Precisely, a rational number is a quotient $\\frac{a}{b}$ of integers $a$ and $b$ with $b\\ne0$. Every integer is rational, because $5=\\frac{5}{1}$ and $-8=\\frac{-8}{1}$. A terminating decimal is rational too: $0.25=\\frac{25}{100}$.",
+          "Choose a positive denominator, moving any minus sign outside the fraction. Long division then gives the decimal of $a/b$. Each remainder is a whole number less than the positive denominator $b$. If a remainder is 0, the decimal ends. Otherwise there are only finitely many possible remainders, so one repeats and the same block of digits follows forever. Thus a rational decimal either ends or repeats.",
           "A bar over digits marks the block that repeats: $\\frac{7}{9} = 0.777\\ldots = 0.\\overline{7}$ and $\\frac{3}{11} = 0.272727\\ldots = 0.\\overline{27}$.",
         ],
       },
@@ -50,6 +51,16 @@ export const realNumberLessons: Lesson[] = [
       ],
       answer: "4/11",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A number is rational exactly when it is a quotient of integers; its decimal then ends or repeats. The square or cube root of a whole number that is not a perfect square or cube is irrational, and so is $\\pi$.",
+          "Multiplying by a power of 10 shifts digits without changing them, so two copies of a repeating decimal with the same tail differ by a whole number.",
+        ],
+      },
+    ],
     pitfalls: [
       "A root sign does not make a number irrational: $\\sqrt{49} = 7$.",
       "A decimal that goes on forever is irrational only if it never repeats: $0.\\overline{3} = \\frac{1}{3}$ is rational.",
@@ -63,7 +74,7 @@ export const realNumberLessons: Lesson[] = [
     id: "approximate-roots",
     title: "Approximate square and cube roots",
     summary:
-      "Squares grow as numbers grow, so catching $n$ between two squares catches √n between their roots; repeat with tenths.",
+      "Use nearby perfect squares or cubes to bracket a root, then refine the bracket to tenths.",
     templateIds: [
       "root-between-integers",
       "root-nearest-tenth",
@@ -76,6 +87,7 @@ export const realNumberLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Squares, cubes and their roots",
         paragraphs: [
           "This lesson uses multiplication of decimals. The square of a number is the number times itself: $4^2 = 4 \\times 4 = 16$. The square root $\\sqrt{n}$ of a nonnegative number $n$ is the nonnegative number whose square is $n$, so $\\sqrt{16} = 4$. The cube of a number uses it as a factor three times: $4^3 = 64$. The cube root $\\sqrt[3]{n}$ is the number whose cube is $n$, so $\\sqrt[3]{64} = 4$.",
@@ -108,6 +120,17 @@ export const realNumberLessons: Lesson[] = [
       ],
       answer: "4.5",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Squares and cubes keep order: if $a^2 < n < b^2$ for nonnegative $a$ and $b$, then $a < \\sqrt{n} < b$.",
+          "Because squaring keeps order for nonnegative numbers, comparing $n$ with the square of a halfway point shows which side of it $\\sqrt{n}$ lies on.",
+          "Numbers that lie in different intervals of a number line are ordered by those intervals.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not halve the number: $\\sqrt{20}$ is between 4 and 5, not 10.",
       "Compare the number under the root with squares of candidates, not with the candidates themselves.",
@@ -129,6 +152,7 @@ export const realNumberLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Square roots come in pairs",
         paragraphs: [
           "This lesson uses multiplication of signed numbers. A solution of an equation is a value of $x$ that makes it true. For $x^2 = 49$ we need numbers whose square is 49. $7^2 = 49$, and $(-7)^2 = (-7)(-7) = 49$ because the product of two negative numbers is positive. So $x^2 = 49$ has two solutions: $x = 7$ or $x = -7$, also written $x = \\pm 7$.",
@@ -154,6 +178,15 @@ export const realNumberLessons: Lesson[] = [
       ],
       answer: "$x = \\frac{3}{5}$ or $x = -\\frac{3}{5}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A positive number has exactly two real square roots, $\\sqrt{p}$ and $-\\sqrt{p}$; every real number has exactly one real cube root.",
+        ],
+      },
+    ],
     pitfalls: [
       "$x^2$ means $x \\times x$, not $2x$: $x^2 = 49$ is not solved by $\\frac{49}{2}$.",
       "Do not drop the negative square root of a positive number.",
@@ -166,7 +199,7 @@ export const realNumberLessons: Lesson[] = [
     id: "scientific-notation",
     title: "Scientific notation",
     summary:
-      "Write a number as a × 10ⁿ with 1 ≤ a < 10: the digits stay fixed and the exponent says how far the decimal point moves.",
+      "Powers of 10 record how far a decimal point moves, so very large or very small numbers fit a short form.",
     templateIds: [
       "scientific-to-standard",
       "standard-to-scientific",
@@ -179,6 +212,7 @@ export const realNumberLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Powers of 10 and place value",
         paragraphs: [
           "This lesson uses place value and exponents. A power of 10 is 10 used as a factor some number of times: $10^{3} = 10 \\times 10 \\times 10 = 1000$, and $10^{0} = 1$. A negative exponent means dividing: $10^{-3} = \\frac{1}{10^{3}} = 0.001$. Each place in a number is worth 10 times the place to its right: thousands, hundreds, tens, ones, tenths, hundredths, thousandths.",
@@ -211,6 +245,17 @@ export const realNumberLessons: Lesson[] = [
       ],
       answer: "0.000307",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Multiplying by $10^{n}$ moves every digit $n$ places to a larger place value when $n$ is positive and to a smaller one when $n$ is negative.",
+          "Every positive number can be written in exactly one way as $a \\times 10^{n}$ with $1 \\le a < 10$ and $n$ an integer.",
+          "$\\frac{a \\times 10^{m}}{b \\times 10^{n}} = \\frac{a}{b} \\times 10^{m - n}$.",
+        ],
+      },
+    ],
     pitfalls: [
       "The exponent is the number of places the point moves, not the number of zeros to write.",
       "A coefficient of 10 or more, as in $30.7 \\times 10^{4}$, is not scientific notation.",
@@ -223,7 +268,7 @@ export const realNumberLessons: Lesson[] = [
     id: "scientific-operations",
     title: "Calculate with scientific notation",
     summary:
-      "Multiply or divide coefficients and combine exponents; add or subtract only with matching powers of 10; then restore a coefficient from 1 up to 10.",
+      "Work with the short-number parts and the powers of 10 separately. Match the powers before adding or subtracting.",
     templateIds: ["scientific-operations"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -232,6 +277,7 @@ export const realNumberLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Multiply and divide",
         paragraphs: [
           "This lesson uses decimal arithmetic and scientific notation: $a \\times 10^{n}$ with a at least 1 and less than 10 and $n$ an integer. Factors can be multiplied in any order and grouping, so $(3 \\times 10^{4}) \\times (4 \\times 10^{6}) = (3 \\times 4) \\times (10^{4} \\times 10^{6})$. Multiplying powers of 10 adds exponents: $10^{4} \\times 10^{6}$ has $4 + 6 = 10$ factors of 10. The product is $12 \\times 10^{10}$.",
@@ -257,6 +303,15 @@ export const realNumberLessons: Lesson[] = [
       ],
       answer: "$1.2 \\times 10^{11}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "$10^{m} \\times 10^{n} = 10^{m + n}$ and $10^{m} \\div 10^{n} = 10^{m - n}$; addition combines coefficients only of equal powers of 10.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not add exponents when adding numbers; match the powers of 10 first.",
       "After rewriting 12 as 1.2, raise the exponent by 1 so the value stays the same.",

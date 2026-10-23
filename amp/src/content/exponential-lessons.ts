@@ -21,7 +21,7 @@ export const exponentialLessons: Lesson[] = [
     id: "exponential-models",
     title: "Growth by a constant factor",
     summary:
-      "An exponential model multiplies by the same factor over each equal step: $y = a·b$ˣ starts at $a$ and multiplies by $b$.",
+      "If each equal input step multiplies the output by the same factor, the quantity follows an exponential pattern. Its starting value and factor determine later values.",
     templateIds: ["exponential-model-value", "exponential-model-rule"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -31,6 +31,7 @@ export const exponentialLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Adding against multiplying",
         paragraphs: [
           "Over equal steps in $x$, a linear function adds the same amount and an exponential function multiplies by the same factor. In the table, $3x + 2$ adds 3 each step; $2(3^x)$ multiplies by 3.",
@@ -58,6 +59,16 @@ export const exponentialLessons: Lesson[] = [
       answer: "2662",
       answerUnit: "people",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Exponential model: $y = a \\cdot b^t$ multiplies the starting value $a$ by the factor $b$ once per unit of $t$.",
+          "In $y = a \\cdot b^x$, $a$ is the value at $x = 0$ and $b$ is the ratio between values one step apart.",
+        ],
+      },
+    ],
     pitfalls: [
       "Adding 10% of the starting amount every year is linear growth; exponential growth takes 10% of the current amount.",
       "A loss of 20% is a factor of 0.8, not 0.2.",
@@ -69,7 +80,7 @@ export const exponentialLessons: Lesson[] = [
     id: "growth-comparison",
     title: "Exponential growth overtakes linear growth",
     summary:
-      "Equal differences mean linear; equal ratios mean exponential. An increasing exponential eventually passes any linear function.",
+      "Equal differences mean linear; equal ratios mean exponential. With a positive start and a multiplying factor greater than 1, exponential growth eventually passes any linear function.",
     templateIds: ["linear-or-exponential", "exponential-overtakes"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -78,6 +89,7 @@ export const exponentialLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Differences or ratios",
         paragraphs: [
           "For equal steps in $x$, find the differences between consecutive $y$-values. If they are equal, the function is linear. If not, find the ratios; equal ratios mean exponential. If neither is constant, it is neither.",
@@ -87,7 +99,7 @@ export const exponentialLessons: Lesson[] = [
       {
         title: "The crossing",
         paragraphs: [
-          "$y = 10x + 10$ starts far ahead of $y = 2^x$, but the line adds 10 each step while the curve doubles. At $x = 6$ the line is still ahead, $70 > 64$; at $x = 7$ the curve passes it, $128 > 80$, and stays ahead from then on.",
+          "$y=10x+10$ starts ahead of $y=2^x$. The line adds 10 each step while the exponential doubles. At $x=6$, the line is still ahead ($70>64$); at $x=7$, the exponential passes it ($128>80$). For later whole inputs, each exponential increase is at least 128 while the line adds only 10, so the lead grows.",
           "To find the first whole $x$ where the exponential is greater, compare the two values one step at a time.",
         ],
         illustration: "overtake-graph",
@@ -97,12 +109,23 @@ export const exponentialLessons: Lesson[] = [
       prompt:
         "For $f(x) = 10x + 10$ and $g(x) = 2^x$, what is the least whole number $x$ with $g(x) > f(x)$?",
       steps: [
+        "For $x=0,1,2,3,4$, the pairs $(f(x),g(x))$ are $(10,1)$, $(20,2)$, $(30,4)$, $(40,8)$, and $(50,16)$; $g$ is smaller each time.",
         "$x = 5$: $f = 60$, $g = 32$.",
         "$x = 6$: $f = 70$, $g = 64$; $f$ is still greater.",
         "$x = 7$: $f = 80$, $g = 128$; $g$ is greater for the first time.",
       ],
       answer: "7",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Over equal steps, linear functions have equal differences and exponential functions have equal ratios.",
+          "For $a>0$ and $b>1$, the function $ab^x$ eventually exceeds every linear function $mx+c$ as $x$ increases.",
+        ],
+      },
+    ],
     pitfalls: [
       "A larger start or a steeper early slope does not decide who wins in the long run.",
       "Check that the steps in $x$ are equal before comparing differences.",
@@ -114,7 +137,7 @@ export const exponentialLessons: Lesson[] = [
     id: "exponential-equations",
     title: "Solving for an exponent",
     summary:
-      "To solve for an exponent, write both sides as powers of one base and match exponents; when that is not possible, use a logarithm. Every logarithm must stay defined.",
+      "An unknown exponent tells how many equal multiplication steps reach a target. Match powers of one base when possible; otherwise use a logarithm.",
     templateIds: [
       "same-base-equation",
       "exponential-log-solution",
@@ -128,6 +151,7 @@ export const exponentialLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Match the exponents",
         paragraphs: [
           "$4^x = 32$ has no whole-number solution, but $4 = 2^2$ and $32 = 2^5$. So $2^{2x} = 2^5$, and equal powers of the same base have equal exponents: $2x = 5$, $x = \\frac{5}{2}$.",
@@ -152,18 +176,29 @@ export const exponentialLessons: Lesson[] = [
       ],
       answer: "3",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "If $b > 0$ and $b \\neq 1$, then $b^m = b^n$ exactly when $m = n$.",
+          "$b^x = k$ exactly when $x = \\log_b k$, for $b > 0$, $b \\neq 1$ and $k > 0$.",
+          "$\\log_b A = n$ means $A = b^n$, and only positive arguments have logarithms.",
+        ],
+      },
+    ],
     pitfalls: [
       "Divide by the coefficient before taking a logarithm: in $3 \\cdot 2^x = 24$, first $2^x = 8$.",
       "A solution that makes any logarithm's argument zero or negative is not a solution.",
     ],
     parentGuide:
-      "Ask how many times 2 must be doubled to pass 1,000. Guess first, then count: the answer is a logarithm, about 10.",
+      "Start with 1 and ask how many doublings pass 1,000. Count powers of 2: after 10 doublings the amount is 1,024. Connect that step count to a logarithm.",
   },
   {
     id: "sequence-sums",
     title: "Adding a geometric sequence",
     summary:
-      "The sum of $n$ terms of a geometric sequence with first term a₁ and ratio r ≠ 1 is Sₙ = a₁(rⁿ − 1)/(r − 1).",
+      "To add many terms that multiply by the same ratio, compare the sum with one copy shifted by a step. Most terms cancel.",
     templateIds: ["geometric-series-sum"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -172,12 +207,19 @@ export const exponentialLessons: Lesson[] = [
     ],
     sections: [
       {
-        title: "Why the formula works",
+        stage: "intuition",
+        title: "A growing total",
         paragraphs: [
-          "Running totals of $1 + 2 + 4 + 8 + 16$ are 1, 3, 7, 15, 31: each total is one less than the next term. In general, multiply $S = a + ar + \\cdots + ar^{n-1}$ by $r$ and subtract: every middle term cancels, leaving $rS - S = ar^n - a$.",
-          "So $S_n = \\frac{a_1(r^n - 1)}{r - 1}$. For $0 < r < 1$ the same formula is easier to read as $\\frac{a_1(1 - r^n)}{1 - r}$.",
+          "In $1+2+4+8+16$, each term doubles the one before it. The running totals are 1, 3, 7, 15, and 31, each one less than the next doubled term. A sequence made by repeatedly multiplying by one number is geometric. Its first term is $a_1$, its common multiplier is the ratio $r$, and $n$ counts its terms.",
         ],
         illustration: "series-running-total",
+      },
+      {
+        title: "Why the sum formula works",
+        paragraphs: [
+          "For $n$ terms, write $S_n=a_1+a_1r+\\cdots+a_1r^{n-1}$. Multiply by $r$ and subtract the original sum; all middle terms cancel: $rS_n-S_n=a_1r^n-a_1$.",
+          "For $r\\ne1$, divide by $r-1$ to get $S_n=a_1(r^n-1)/(r-1)$. If $0<r<1$, the equivalent form $a_1(1-r^n)/(1-r)$ may be easier to read.",
+        ],
       },
       {
         title: "Count the terms",
@@ -196,6 +238,15 @@ export const exponentialLessons: Lesson[] = [
       ],
       answer: "189",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For first term $a_1$, ratio $r\\ne1$, and positive whole-number term count $n$, the finite geometric sum is $S_n=a_1(r^n-1)/(r-1)$. If $r=1$, every term is $a_1$ and $S_n=na_1$.",
+        ],
+      },
+    ],
     pitfalls: [
       "$n$ counts terms, not the exponent of the last term: $2^5$ is the sixth term of $1, 2, 4, \\dots$",
       "Use $r^n$, not $r^{n-1}$, in the sum formula.",
@@ -207,7 +258,7 @@ export const exponentialLessons: Lesson[] = [
     id: "logarithm-properties",
     title: "Logarithm rules",
     summary:
-      "Logarithms turn multiplication into addition: $\\log(mn) = \\log m + \\log n$, $\\log(\\tfrac{m}{n}) = \\log m - \\log n, \\log m^{p} = p\\cdot \\log m$, and $\\log_{b} N = \\log N / \\log b$.",
+      "A logarithm asks which exponent produces a number. Products, quotients, and powers turn into operations on those exponents.",
     templateIds: ["log-rules-evaluate", "log-expand", "change-of-base"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -216,17 +267,25 @@ export const exponentialLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Multiplying outputs adds inputs",
         paragraphs: [
-          "In a table of powers of 2, $4 \\times 8 = 32$ sits beside $2 + 3 = 5$: multiplying powers adds their exponents. Since logarithms are exponents, $\\log_b(mn) = \\log_b m + \\log_b n$ and $\\log_b \\frac{m}{n} = \\log_b m - \\log_b n$.",
-          "Repeated multiplication is repeated addition of logs: $\\log_b m^p = p\\log_b m$. So $\\log_6 4 + \\log_6 9 = \\log_6 36 = 2$, although neither term is a whole number.",
+          "A logarithm names an exponent: $\\log_2 8=3$ means $2^3=8$. The number 2 is the base, 8 is the positive number produced, and 3 is the exponent. A real logarithm uses a positive base other than 1 and a positive input.",
+          "Multiplying powers of one base adds their exponents: $4\\times8=32$ corresponds to $2+3=5$. Therefore the exponent for a product comes from adding the exponents for its factors.",
         ],
         illustration: "powers-product-table",
       },
       {
+        title: "Product, quotient, and power",
+        paragraphs: [
+          "For positive $m,n$ and valid base $b$, $\\log_b(mn)=\\log_b m+\\log_b n$ and $\\log_b(m/n)=\\log_b m-\\log_b n$. The power rule gives $\\log_b(m^p)=p\\log_b m$ for real $p$.",
+          "For example, $\\log_6 4+\\log_6 9=\\log_6 36=2$, although neither term is a whole number.",
+        ],
+      },
+      {
         title: "Change of base",
         paragraphs: [
-          "$\\log_b N = \\frac{\\log_c N}{\\log_c b}$ for any base $c$. With $c = 2$: $\\log_8 32 = \\frac{\\log_2 32}{\\log_2 8} = \\frac{5}{3}$. Check: $8^{5/3} = 2^5 = 32$.",
+          "For $N>0$ and bases $b,c>0$ with neither base equal to 1, $\\log_b N=\\frac{\\log_c N}{\\log_c b}$. With $c=2$: $\\log_8 32=\\frac{\\log_2 32}{\\log_2 8}=\\frac{5}{3}$. Check: $8^{5/3}=2^5=32$.",
           "Read backward, a quotient of logs in one base is a single logarithm: $\\frac{\\log 81}{\\log 3} = \\log_3 81 = 4$.",
         ],
       },
@@ -240,6 +299,17 @@ export const exponentialLessons: Lesson[] = [
       ],
       answer: "2",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For $b>0$, $b\\ne1$, and $m,n>0$, $\\log_b(mn)=\\log_b m+\\log_b n$ and $\\log_b(m/n)=\\log_b m-\\log_b n$. For real $p$, also $\\log_b(m^p)=p\\log_b m$.",
+          "Logarithms turn products into sums, quotients into differences and powers into multiples.",
+          "For $N>0$ and bases $b,c>0$ with $b,c\\ne1$, change of base gives $\\log_b N=\\frac{\\log_c N}{\\log_c b}$.",
+        ],
+      },
+    ],
     pitfalls: [
       "$\\log(m + n)$ is not $\\log m + \\log n$; the rules turn products into sums, not sums into sums.",
       "$\\frac{\\log m}{\\log n}$ is a change of base, not $\\log \\frac{m}{n}$.",
@@ -251,7 +321,7 @@ export const exponentialLessons: Lesson[] = [
     id: "geometric-sequences",
     title: "Repeated multiplication",
     summary:
-      "A geometric sequence multiplies by a fixed ratio between consecutive terms: aₙ = a₁·rⁿ⁻¹.",
+      "A sequence is geometric when each term comes from multiplying the previous term by the same number.",
     templateIds: ["geometric-sequence", "geometric-sequence-rule"],
     objectives: [
       "Build terms by repeated multiplication.",
@@ -260,6 +330,7 @@ export const exponentialLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Use the same ratio each step",
         paragraphs: [
           "Starting with three and multiplying by two produces 3, 6, 12, 24, 48. The common ratio is two because each term is twice the one before.",
@@ -284,6 +355,15 @@ export const exponentialLessons: Lesson[] = [
       ],
       answer: "48",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For positive whole-number positions $n$, a geometric sequence satisfies $a_n=a_1r^{n-1}$. If $r\\ne0$ and $a_k\\ne0$, then $a_m/a_k=r^{m-k}$ for positive positions $m,k$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Using exponent $n$ instead of n − 1 advances one term too far.",
       "Adding the common ratio does not generate a geometric sequence.",
@@ -295,7 +375,7 @@ export const exponentialLessons: Lesson[] = [
     id: "logarithms",
     title: "Ask for the exponent",
     summary:
-      "A logarithm reverses exponentiation: log_b N is the power of $b$ that gives $N$.",
+      "A logarithm tells which power of a base produces a target number.",
     templateIds: [
       "logarithm-integer",
       "logarithm-value",
@@ -308,6 +388,7 @@ export const exponentialLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Three parts of a power",
         paragraphs: [
           "In 3⁴ = 81, three is the base, four is the exponent, and eighty-one is the result. A logarithm asks for the exponent when the base and result are known.",
@@ -332,6 +413,16 @@ export const exponentialLessons: Lesson[] = [
       ],
       answer: "4",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "$\\log_b b^k = k$ for every real $k$, including negative and fractional exponents.",
+          "$\\log_b N = p$ and $b^p = N$ are the same statement.",
+        ],
+      },
+    ],
     pitfalls: [
       "A logarithm asks for an exponent, not a quotient.",
       "Count the number of factors of the base, not just the multiplication symbols.",
@@ -379,7 +470,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     method: [
       "Write both functions (or continue both patterns) at x = 0, 1, 2, ….",
       "Compare their values one step at a time.",
-      "The first $x$ where the exponential is greater is the answer; after that it stays ahead.",
+      "Check whole inputs from the allowed start until the exponential first exceeds the linear value; an early exceedance alone does not prove it stays ahead at every later input.",
     ],
     watch:
       "The function that starts larger does not stay larger; keep comparing until the order changes.",

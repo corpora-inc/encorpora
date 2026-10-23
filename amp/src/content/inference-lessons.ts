@@ -8,7 +8,7 @@ export const inferenceLessons: Lesson[] = [
     id: "sampling",
     title: "Learning about a population from a sample",
     summary:
-      "A random sample resembles its population, so its fractions estimate the population’s; many samples estimate better than one.",
+      "Selecting people by chance gives a sample that can estimate its population. The estimate can change from one sample to another.",
     templateIds: [
       "representative-sample-choice",
       "sample-proportion-estimate",
@@ -21,9 +21,10 @@ export const inferenceLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Random means everyone has the same chance",
         paragraphs: [
-          "To learn how all 900 students feel about a longer lunch, surveying every student is slow. A sample of 60 can answer the question, but only if those 60 resemble the whole school.",
+          "To learn how all 900 students feel about a longer lunch, surveying every student is slow. A sample of 60 can estimate the school's view if the selection method gives the whole school a fair chance; the estimate has uncertainty.",
           "Choosing 60 names at random from the full list gives every student the same chance. Asking the student council, or whoever answers an email, favors students who differ from the rest: the sample is biased.",
         ],
       },
@@ -40,12 +41,23 @@ export const inferenceLessons: Lesson[] = [
       prompt:
         "In a random sample of 50 of the 1,500 voters in a town, 18 support a new park. About how many of the 1,500 voters support it?",
       steps: [
-        "The sample is random, so it should resemble the town.",
+        "The sample was selected at random from the town's voters, so its fraction can estimate the town's fraction, with uncertainty.",
         "Fraction in the sample: 18/50.",
         "Same fraction of the town: 18/50 × 1,500 = 540.",
       ],
       answer: "About 540 voters",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "In a simple random sample of a fixed size, every possible group of that size has the same selection chance. This supports estimation of the population sampled, but no single sample is guaranteed to match it.",
+          "If $k$ of $n$ sampled members have a trait in a population of size $N$, estimate the total with $N(k/n)$. The result has sampling uncertainty.",
+          "Independent repeated samples vary. Their average estimate usually has less random variation than one estimate, but averaging does not correct biased selection.",
+        ],
+      },
+    ],
     pitfalls: [
       "A large sample chosen in a biased way is still biased; random choice matters more than size.",
       "An estimate from a sample is not exact: a different random sample would give a slightly different answer.",
@@ -57,7 +69,7 @@ export const inferenceLessons: Lesson[] = [
     id: "compare-distributions",
     title: "Comparing two groups",
     summary:
-      "Compare two groups by their centers, and judge the gap between centers against the spread.",
+      "Look at where each group’s values cluster, then compare that gap with how widely the values spread.",
     templateIds: [
       "means-in-mads",
       "double-box-compare",
@@ -69,10 +81,11 @@ export const inferenceLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Measure the gap in MADs",
         paragraphs: [
-          "The morning class’s push-ups have mean 30 ÷ 6 = 5; the afternoon class’s have mean 48 ÷ 6 = 8. Both have a MAD of 1 push-up.",
-          "The means are 8 − 5 = 3 push-ups apart, which is 3 ÷ 1 = 3 MADs. A gap of several MADs means the groups overlap little; a gap smaller than one MAD means they overlap a lot, and the difference may be chance.",
+          "The mean is the total divided by the number of values. Suppose six morning students do 30 push-ups in total and six afternoon students do 48. Their means are $30\\div6=5$ and $48\\div6=8$ push-ups. The mean absolute deviation (MAD) is the average distance of the values from their mean. Suppose each class has a MAD of 1 push-up.",
+          "The means are 8 − 5 = 3 push-ups apart, which is 3 ÷ 1 = 3 MADs. This compares the gap in centers with the typical distance from each mean. It does not by itself prove how much the groups overlap or why they differ.",
         ],
         illustration: "data-double-dot-mads",
       },
@@ -91,6 +104,17 @@ export const inferenceLessons: Lesson[] = [
       steps: ["Difference of the means: 16 − 11 = 5.", "In MADs: 5 ÷ 2 = 2.5."],
       answer: "2.5 MADs",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "When both groups have the same positive MAD, divide the absolute gap between their means by that MAD to compare the center difference with their typical spread. This ratio does not by itself establish a cause or statistical significance.",
+          "Medians compare the centers of two box plots; box lengths compare their spreads.",
+          "Center and spread are separate comparisons: either group can lead in each.",
+        ],
+      },
+    ],
     pitfalls: [
       "A larger median does not mean a larger spread; compare center and spread separately.",
       "The box length is the IQR. The position of the box shows the center, not the spread.",

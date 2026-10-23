@@ -3,6 +3,7 @@ import type { ProblemMethod } from "./problem-lessons";
 
 const foundations: Lesson["sections"] = [
   {
+    stage: "intuition",
     title: "Read a square root",
     paragraphs: [
       "Squaring a number means multiplying it by itself. The square root of a nonnegative number is the nonnegative number whose square equals it. Nonnegative means positive or zero. The radical sign is $\\sqrt{\\phantom{9}}$; the number under it is the radicand. Thus $\\sqrt{9} = 3$ because $3 \\times 3 = 9$, and $\\sqrt{0} = 0$.",
@@ -70,6 +71,15 @@ export const radicalLessons: Lesson[] = [
       ],
       answer: "$6\\sqrt{2}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For $s,t \\ge 0$, $\\sqrt{s^2t}=s\\sqrt{t}$. The outside factor is nonnegative because $\\sqrt{s^2}=s$ only when $s \\ge 0$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Extract square factors until the remaining radicand is square-free.",
       "Keep the principal square root nonnegative.",
@@ -117,6 +127,15 @@ export const radicalLessons: Lesson[] = [
       ],
       answer: "$3\\sqrt{3}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For real coefficients $a,b$ and $r \\ge 0$, $a\\sqrt{r}+b\\sqrt{r}=(a+b)\\sqrt{r}$. Simplify each radical before deciding whether the radical parts match.",
+        ],
+      },
+    ],
     pitfalls: [
       "Simplify both roots before deciding whether their radical parts match.",
       "Add or subtract coefficients, not radicands.",
@@ -164,6 +183,15 @@ export const radicalLessons: Lesson[] = [
       ],
       answer: "$-18\\sqrt{2}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For $a,b \\ge 0$, $\\sqrt{a}\\sqrt{b}=\\sqrt{ab}$. Any coefficients outside the roots multiply separately, including their signs.",
+        ],
+      },
+    ],
     pitfalls: [
       "Multiply signed coefficients as well as radicands.",
       "Extract square factors from the new radicand even when both original roots were simplified.",
@@ -212,6 +240,15 @@ export const radicalLessons: Lesson[] = [
       ],
       answer: "$\\frac{1}{2}\\sqrt{3}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For real $a$ and $r>0$, $\\frac{a}{\\sqrt{r}}=\\frac{a\\sqrt{r}}{r}$ because $\\sqrt{r}/\\sqrt{r}=1$. The positive-radicand condition keeps the original denominator nonzero.",
+        ],
+      },
+    ],
     pitfalls: [
       "Multiply numerator and denominator by the same nonzero root.",
       "Simplify the denominator's root before choosing the multiplying factor.",

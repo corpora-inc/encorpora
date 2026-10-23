@@ -60,6 +60,7 @@ export const absoluteValuePrinciples: Record<string, string> = {
     "Adding the same number and dividing by the same nonzero number preserve an equation's solutions. Isolate the absolute value before splitting into sign branches; a constant equality is true for all real $x$ or for none.",
 };
 const foundations: Lesson["sections"][number] = {
+  stage: "intuition",
   title: "Absolute value measures distance",
   paragraphs: [
     "This lesson uses addition, subtraction, multiplication, and division of positive and negative numbers. A real number is a number represented by a point on the number line, including whole numbers, negative numbers, fractions, and decimals. Equal distances on the line represent equal changes in value. Numbers increase to the right; negative numbers lie to the left of zero.",
@@ -130,6 +131,15 @@ export const absoluteValueLessons: Lesson[] = [
       ],
       answer: "x = −3 or x = 3",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Absolute value is distance from zero. For a positive $c$, |x| = c exactly when x = c or x = −c; |x| = 0 exactly when x = 0; a negative $c$ is impossible.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not discard the negative solution: a negative number can have a positive distance from zero.",
       "For a zero target, list zero once. For a negative target, report no real solutions.",
@@ -181,6 +191,15 @@ export const absoluteValueLessons: Lesson[] = [
       ],
       answer: "x = 1/4 or x = 11/4",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For positive $c$, |ax + b| = c is equivalent to ax + b = c or ax + b = −c. Solving both equations with reversible operations gives every real solution.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not write |2x − 3| as |2x| − |3|. For x = 1, the first is 1 but the second is −1.",
       "Solve both sign branches and substitute the resulting $x$ values, not the target distances, into the original equation.",
@@ -236,6 +255,15 @@ export const absoluteValueLessons: Lesson[] = [
       ],
       answer: "x = −4/3 or x = 2",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Adding the same number and dividing by the same nonzero number preserve an equation's solutions. Isolate the absolute value before splitting into sign branches; a constant equality is true for all real $x$ or for none.",
+        ],
+      },
+    ],
     pitfalls: [
       "Isolate the absolute value before inspecting the target's sign. Outside multiplication can make the whole left side negative.",
       "Do not divide by zero. Evaluate constant equations and decide whether they are true or false.",

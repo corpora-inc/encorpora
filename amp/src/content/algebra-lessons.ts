@@ -17,6 +17,7 @@ export const algebraLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "A place for the whole value",
         paragraphs: [
           "In 3x + 2, the $x$ is a place for one complete value. At x = −1/2, write 3 × (−1/2) + 2. Parentheses keep the negative sign attached to the input.",
@@ -48,6 +49,15 @@ export const algebraLessons: Lesson[] = [
       ],
       answer: "7",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The precise rule",
+        paragraphs: [
+          "Substitution replaces every occurrence of a variable by the same input. The distributive property gives $a(b+c)=ab+ac$ for all real $a$, $b$ and $c$. Like terms have the same variable part and combine by adding their coefficients. Each rewrite preserves the expression's value for every input.",
+        ],
+      },
+    ],
     pitfalls: [
       "Distributing to only the first term changes the expression.",
       "Adding a constant to an $x$ coefficient mixes unlike quantities.",
@@ -75,6 +85,7 @@ export const algebraLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Equality is a relationship",
         paragraphs: [
           "The equals sign says the two expressions have the same value. Adding or subtracting the same quantity on both sides preserves that relationship. Multiplying or dividing both sides by the same nonzero number also preserves it.",
@@ -105,6 +116,15 @@ export const algebraLessons: Lesson[] = [
       ],
       answer: "−5",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The precise rule",
+        paragraphs: [
+          "Adding or subtracting the same quantity on both sides preserves an equation's solutions. Multiplying or dividing both sides by the same nonzero quantity also preserves them. Check the resulting value in the original equation; division by zero is never valid.",
+        ],
+      },
+    ],
     pitfalls: [
       "Moving a term is shorthand for doing the same operation to both sides; unexplained sign changes can hide mistakes.",
       "Dividing by zero is not a reversible operation.",
@@ -130,6 +150,7 @@ export const algebraLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Count the input steps too",
         paragraphs: [
           "Suppose a linear rule includes (1, 5), (3, 8) and (7, 14). The output changes are three and six, but the input changes are two and four. Both rates are 3/2 per input unit.",
@@ -162,6 +183,15 @@ export const algebraLessons: Lesson[] = [
       ],
       answer: "−2",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The precise rule",
+        paragraphs: [
+          "For a stated linear rule through two points with distinct inputs $(x_1,y_1)$ and $(x_2,y_2)$, the constant rate is $m=(y_2-y_1)/(x_2-x_1)$. Its output at input $x$ is $y=mx+b$, where $b$ is the output at zero. Two observed points alone do not establish that an unstated relationship is linear.",
+        ],
+      },
+    ],
     pitfalls: [
       "Unequal input steps do not imply unequal rates.",
       "The first observed output need not be the output at zero.",
@@ -187,6 +217,7 @@ export const algebraLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "One assignment per input",
         paragraphs: [
           "The pairs (1, 4), (2, 4) and (3, 4) define a function: each input has one output. Different inputs are allowed to share an output.",
@@ -218,6 +249,15 @@ export const algebraLessons: Lesson[] = [
       ],
       answer: "Yes",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The precise rule",
+        paragraphs: [
+          "A relation is a function exactly when each input has one output; different inputs may share an output. A proportional numerical rule has the form $y=kx$ on its stated domain, so its graph includes the origin when zero is allowed. A distance-from-home graph records distance from one point, not a complete route or total distance traveled.",
+        ],
+      },
+    ],
     pitfalls: [
       "A repeated output is not a function violation.",
       "A line need not represent a proportional relationship.",
@@ -239,6 +279,7 @@ export const algebraLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "One output for each input",
         paragraphs: [
           "A relation is a collection of input–output pairs. On a coordinate grid, a point’s horizontal coordinate $x$ is its input and its vertical coordinate $y$ is its output. A function is a relation that gives each listed input exactly one output. Different inputs may share an output.",
@@ -258,6 +299,7 @@ export const algebraLessons: Lesson[] = [
     },
     closingSections: [
       {
+        stage: "method",
         title: "See the conflict on the grid",
         paragraphs: [
           "The figure plots the four points from the example. Follow the vertical grid line at $x=1$: it reaches both $B$ and $C$. Removing either point leaves one output at that input; the other two inputs already have one output each.",
@@ -266,6 +308,7 @@ export const algebraLessons: Lesson[] = [
         illustration: "assessment-function-repair",
       },
       {
+        stage: "formal",
         title: "The exact condition",
         paragraphs: [
           "A finite relation is a function if and only if every input appearing in it has one output. If the only conflict is two points with one shared input and different outputs, removing either point repairs the relation. If several inputs have conflicts, removing one point may not repair them all. Check the entire remaining graph after each proposed removal.",
@@ -292,6 +335,7 @@ export const algebraLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Balance the fixed fee against savings",
         paragraphs: [
           "Plan A costs 10 + 2x dollars and Plan B costs 4x dollars. Plan A starts ten dollars higher but adds two dollars less per input unit.",
@@ -324,6 +368,15 @@ export const algebraLessons: Lesson[] = [
       ],
       answer: "3",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The precise rule",
+        paragraphs: [
+          "For allowed inputs $x$, compare the two costs at the same $x$. A tie satisfies $A(x)=B(x)$; 'A strictly cheaper' requires $A(x)<B(x)$. If inputs must be whole numbers, choose the least allowed whole number satisfying the strict inequality and check that the preceding allowed whole number does not.",
+        ],
+      },
+    ],
     pitfalls: [
       "A tie does not satisfy strictly cheaper.",
       "The fixed fee must be compared with the difference in rates, not one rate alone.",

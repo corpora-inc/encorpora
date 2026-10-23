@@ -2,10 +2,16 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 const foundations: Lesson["sections"] = [
   {
+    stage: "intuition",
     title: "Read a quadratic expression",
     paragraphs: [
       "A variable is a letter standing for a number. An expression describes a calculation; it does not by itself ask you to solve an equation. In $x^2 + 6x + 5$, the exponent 2 means multiply $x$ by itself, and 6x means 6 times $x$. The three terms are $x^2$, 6x, and 5. A term's coefficient is its numerical multiplier. The constant term, 5, does not depend on $x$.",
-      "A quadratic expression has a nonzero $x^2$ term and no higher power of $x$. Its general form is $ax^2 + bx + c$, where $a$, $b$, and $c$ are fixed numbers and $a$ is not zero. The leading coefficient a multiplies the highest power. When $a$ is 1, the quadratic is called monic. A missing $x$ term or constant has coefficient zero.",
+      "A quadratic expression has a nonzero $x^2$ term and no higher power of $x$. Its general form is $ax^2 + bx + c$, where $a$, $b$, and $c$ are fixed numbers and $a$ is not zero. The leading coefficient $a$ multiplies the highest power. When $a$ is 1, the quadratic is called monic. A missing $x$ term or constant has coefficient zero. A binomial has two terms; a squared binomial multiplies the entire two-term expression by itself, as in $(x+3)^2$.",
+    ],
+  },
+  {
+    title: "Fraction and signed arithmetic",
+    paragraphs: [
       "You will use addition, subtraction, multiplication, and division with positive and negative numbers and fractions. A fraction means division: its numerator is divided by its nonzero denominator. For positive fractions, the denominator counts equal parts in a whole and the numerator counts those parts. For example, 3/2 is three halves. Multiplying a fraction by itself squares both numerator and denominator: $\\left(\\frac{3}{2}\\right)^2 = \\frac{9}{4}$.",
       "To multiply a fraction by a whole number, multiply its numerator: $2 \\times \\frac{3}{4} = \\frac{6}{4} = \\frac{3}{2}$. To divide a fraction by a nonzero whole number, multiply its denominator: $\\frac{3}{2} \\div 2 = \\frac{3}{4}$. For subtraction, first express both quantities in equal-sized parts: $1 - \\frac{9}{4} = \\frac{4}{4} - \\frac{9}{4} = -\\frac{5}{4}$. A product of two negative numbers is positive; a product with exactly one negative factor is negative.",
     ],
@@ -34,7 +40,7 @@ export const completingSquareLessons: Lesson[] = [
     id: "complete-square-term",
     title: "Find the term that completes a square",
     summary:
-      "Half the middle coefficient determines the number inside the squared binomial.",
+      "A squared sum makes two matching middle pieces. Halve the middle coefficient to find the number inside the square, then square that number to fill the missing corner.",
     templateIds: ["complete-square-term"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -63,6 +69,15 @@ export const completingSquareLessons: Lesson[] = [
       ],
       answer: "$\\frac{25}{4}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For all real $x$ and $h$, $(x+h)^2=x^2+2hx+h^2$. To make $x^2+bx+c$ a squared binomial, set $h=b/2$ and $c=h^2=b^2/4$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Halve the coefficient of $x$ before squaring.",
       "Square both parts of a fraction, including its sign.",
@@ -75,7 +90,7 @@ export const completingSquareLessons: Lesson[] = [
     id: "complete-square-monic",
     title: "Complete the square with leading coefficient one",
     summary:
-      "Group a squared binomial, then retain the constant needed to preserve the original expression.",
+      "Make a squared binomial by adding the missing corner, then subtract that same amount so the expression keeps its value.",
     templateIds: ["complete-square-monic"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -104,6 +119,15 @@ export const completingSquareLessons: Lesson[] = [
       ],
       answer: "$\\left(x + \\frac{3}{2}\\right)^2 - \\frac{29}{4}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For all real $x$, $b$ and $c$, $x^2+bx+c=(x+b/2)^2+(c-b^2/4)$. The added and subtracted square cancel, so both forms have the same value for every input.",
+        ],
+      },
+    ],
     pitfalls: [
       "Adding a square term alone changes the expression; subtract the same amount.",
       "Keep the original constant in the calculation.",
@@ -116,7 +140,7 @@ export const completingSquareLessons: Lesson[] = [
     id: "complete-square-nonmonic",
     title: "Complete the square with any leading coefficient",
     summary:
-      "Factor the leading coefficient first, and include its effect when balancing the added square.",
+      "When a number multiplies the entire square, it also multiplies the corner you add. Account for that extra amount outside the square.",
     templateIds: ["complete-square-nonmonic"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -147,6 +171,15 @@ export const completingSquareLessons: Lesson[] = [
       ],
       answer: "$-2\\left(x - \\frac{3}{2}\\right)^2 + \\frac{11}{2}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For real $a$, $b$, $c$ with $a\\ne0$, $ax^2+bx+c=a(x+b/(2a))^2+(c-b^2/(4a))$ for every real $x$. The outside factor $a$ multiplies the added square, so its compensation is $b^2/(4a)$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Halve b/a after factoring a out of both variable terms.",
       "Adding h² inside parentheses changes the whole expression by ah².",

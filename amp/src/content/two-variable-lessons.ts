@@ -16,10 +16,11 @@ export const twoVariableLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "One equation per fact",
         paragraphs: [
-          "A theater sold 40 tickets for 380 dollars; adult tickets cost 12 dollars and child tickets 7 dollars. Let a be the adult tickets and $c$ the child tickets. Counting gives a + c = 40, and the money gives 12a + 7c = 380.",
-          "Substitute c = 40 − a: 12a + 7(40 − a) = 380, so 5a + 280 = 380, 5a = 100 and a = 20. Then c = 40 − 20 = 20. Check: 12 × 20 + 7 × 20 = 380.",
+          "When two amounts are unknown, give each its own letter. One fact may tell their combined count; another may tell the combined cost. A pair solves the situation only if it makes both statements true at once.",
+          "For tickets, let $a$ count adults and $c$ count children. A total of 40 tickets gives $a+c=40$. If adult tickets cost 12 dollars and child tickets cost 7 dollars, a total of 380 dollars also gives $12a+7c=380$. The same values of $a$ and $c$ must satisfy both equations.",
         ],
       },
       {
@@ -41,6 +42,16 @@ export const twoVariableLessons: Lesson[] = [
       ],
       answer: "20",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Two nonparallel linear equations in $x$ and $y$ have exactly one shared ordered pair; parallel distinct lines have none, and identical lines have infinitely many. Substitution replaces one unknown using an equal expression from the other equation without changing the shared solutions.",
+          "A combination is feasible exactly when it satisfies every inequality of the system, so the feasible set is the intersection of their half-planes.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not use one variable for both amounts: name each unknown.",
       "A combination must meet every constraint, not just one.",
@@ -62,6 +73,7 @@ export const twoVariableLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Boundary, then side",
         paragraphs: [
           "For y < 2x − 1, first draw the boundary y = 2x − 1. Points on it make $y$ equal to 2x − 1, not less, so they are not solutions: draw the line dashed. For y ≤ 2x − 1 the line is included and drawn solid.",
@@ -85,6 +97,16 @@ export const twoVariableLessons: Lesson[] = [
       ],
       answer: "Yes",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A line divides the plane into two half-planes; every point of one side satisfies the strict inequality and every point of the other its reverse.",
+          "A point satisfies an inequality exactly when substituting its coordinates makes it true; boundary points satisfy only ≤ and ≥.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not shade by the look of the sign alone; test a point.",
       "A point on a dashed boundary is not a solution; on a solid boundary it is.",
@@ -97,7 +119,7 @@ export const twoVariableLessons: Lesson[] = [
     id: "literal-equations",
     title: "Equations with letters as coefficients",
     summary:
-      "Solve with a letter exactly as with a number, but every division needs that letter to be nonzero, and dividing an inequality by a negative letter reverses it.",
+      "Treat the other letters as fixed numbers while solving for one letter. Every division needs a nonzero divisor.",
     templateIds: ["literal-equation-solve", "parameter-solution-count"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -106,6 +128,7 @@ export const twoVariableLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Treat the letter as a fixed number",
         paragraphs: [
           "To solve kx + 7 = 19 for $x$, subtract 7: kx = 12. Dividing by $k$ is allowed only when k ≠ 0, so x = 12/k for every k ≠ 0. When k = 0 the left side is 7 for every $x$, never 19, so there is no solution.",
@@ -129,6 +152,16 @@ export const twoVariableLessons: Lesson[] = [
       ],
       answer: "3",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Properties of equality hold for every value of a letter coefficient, except that division requires it to be nonzero and dividing an inequality by a negative reverses it.",
+          "A linear equation ax = b has no solution when a = 0 and b ≠ 0, and every $x$ is a solution when a = 0 and b = 0.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not divide by a letter without saying it is nonzero.",
       "Dividing an inequality by a negative letter reverses it.",
@@ -141,7 +174,7 @@ export const twoVariableLessons: Lesson[] = [
     id: "equation-reasoning",
     title: "Why each step works",
     summary:
-      "Each step of solving an equation does the same thing to both sides, or rewrites one side as an equal expression, so every line has the same solutions as the one before.",
+      "To keep an equation's solutions, use reversible moves on both sides or rewrite an expression as an equal one. Multiplying by zero or dividing by zero does not preserve the solution set.",
     templateIds: ["equation-step-property"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -150,6 +183,7 @@ export const twoVariableLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Reasons for the steps",
         paragraphs: [
           "Solving 3(x − 4) = 18: the distributive property rewrites the left side, 3x − 12 = 18. The addition property of equality adds 12 to both sides, 3x = 30. The division property of equality divides both sides by 3, x = 10.",
@@ -174,6 +208,15 @@ export const twoVariableLessons: Lesson[] = [
       ],
       answer: "Addition property of equality",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Adding or subtracting the same expression on both sides preserves an equation's solutions. Multiplying or dividing both sides by the same nonzero quantity is reversible; multiplying by zero can add solutions, and dividing by zero is undefined. Replacing an expression with an equal expression also preserves its value.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not apply an operation to one side only.",
       "Distribute to every term inside the parentheses.",
@@ -195,6 +238,7 @@ export const twoVariableLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Stack and add",
         paragraphs: [
           "Write x + 2y = 7 above 3x − 2y = 5. The $y$-terms are opposites, so adding the left sides and the right sides gives 4x + 0y = 12, that is 4x = 12, and x = 3. Then x + 2y = 7 gives 2y = 4 and y = 2.",
@@ -219,6 +263,15 @@ export const twoVariableLessons: Lesson[] = [
       ],
       answer: "3",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Replacing one equation by its sum with a multiple of the other is reversible, so it keeps the solution set of the system.",
+        ],
+      },
+    ],
     pitfalls: [
       "Multiply every term of an equation, its right side too.",
       "Keep one original equation beside the sum; the sum alone has infinitely many solutions.",
@@ -311,7 +364,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
 
 export const twoVariablePrinciples: Record<string, string> = {
   "system-model-value":
-    "Two independent linear facts about two unknowns determine them: substitution reduces the system to one equation in one unknown.",
+    "Two nonparallel linear equations in two unknowns have one shared ordered pair; substitution preserves their shared solutions while reducing to one unknown.",
   "constraint-feasible":
     "A combination is feasible exactly when it satisfies every inequality of the system, so the feasible set is the intersection of their half-planes.",
   "half-plane-inequality":
@@ -323,7 +376,7 @@ export const twoVariablePrinciples: Record<string, string> = {
   "parameter-solution-count":
     "A linear equation ax = b has no solution when a = 0 and b ≠ 0, and every $x$ is a solution when a = 0 and b = 0.",
   "equation-step-property":
-    "Applying the same operation to both sides, or rewriting one side as an equal expression, produces an equation with exactly the same solutions.",
+    "Adding or subtracting the same expression preserves solutions. Multiplying or dividing by a quantity known nonzero throughout the domain is reversible; division by zero is undefined.",
   "elimination-equivalent":
     "Replacing one equation by its sum with a multiple of the other is reversible, so it keeps the solution set of the system.",
 };

@@ -6,7 +6,7 @@ export const probabilityRulesLessons: Lesson[] = [
     id: "events-and-addition-rule",
     title: "Events as sets and the addition rule",
     summary:
-      "An event is a set of outcomes. “Or” joins sets, “and” keeps their overlap, and $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$.",
+      "An event is a set of possible outcomes. For “$A$ or $B$,” add each event's chance, then subtract the chance of both because their overlap was counted twice.",
     templateIds: ["event-set-count", "addition-rule-probability"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -15,6 +15,7 @@ export const probabilityRulesLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Events are sets of outcomes",
         paragraphs: [
           "The sample space is the set of all outcomes. An event is a set of some of them: the students who take art, the numbers from 1 to 20 that are even. With equally likely outcomes, an event's probability is its count divided by the sample space's count.",
@@ -41,7 +42,7 @@ export const probabilityRulesLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "A card is drawn at random from a standard deck of 52 cards. What is the probability that it is a heart or a face card (jack, queen or king)?",
+        "One card is drawn with every card equally likely from a deck of 52: four suits of 13 cards each. Hearts are one suit; each suit has one jack, one queen, and one king. What is the probability of a heart or a face card?",
       steps: [
         "There are 13 hearts and 12 face cards.",
         "The jack, queen and king of hearts are in both groups, so 13 + 12 counts them twice: 13 + 12 − 3 = 22 cards.",
@@ -49,6 +50,16 @@ export const probabilityRulesLessons: Lesson[] = [
       ],
       answer: "11/26",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "An event is a set of outcomes: a union holds the outcomes in either event, an intersection those in both, and a complement those not in the event.",
+          "$P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$, because outcomes in both events are counted in $P(A)$ and in $P(B)$.",
+        ],
+      },
+    ],
     pitfalls: [
       "“Or” includes the outcomes in both events; do not leave the overlap out.",
       "Adding $P(A)$ and $P(B)$ counts the overlap twice; subtract $P(A \\text{ and } B)$ once.",
@@ -61,7 +72,7 @@ export const probabilityRulesLessons: Lesson[] = [
     id: "conditional-and-multiplication-rule",
     title: "Conditional probability and the multiplication rule",
     summary:
-      "“Given $B$” shrinks the sample space to $B$: $P(A \\mid B) = P(A \\text{ and } B) \\div P(B)$. Turned around, $P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$.",
+      "Knowing that one event happened shrinks the possible outcomes. Find the second event’s chance within that smaller group, then combine the chances.",
     templateIds: [
       "conditional-probability-value",
       "multiplication-rule-probability",
@@ -73,9 +84,10 @@ export const probabilityRulesLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "“Given” shrinks the sample space",
         paragraphs: [
-          "$P(A \\mid B)$, read “the probability of $A$ given $B$”, is the probability of $A$ when $B$ is known to have happened. Only outcomes in $B$ are still possible, so $B$ becomes the sample space.",
+          "An event is a group of possible outcomes. $P(A\\mid B)$, read “the probability of $A$ given $B$”, is the probability of $A$ when event $B$ is known to have happened. Only outcomes in $B$ remain possible, so $B$ becomes the sample space. This requires $P(B)>0$.",
           "In the table, given that a student is in grade 10, only that row of 40 students remains. 14 of them prefer online classes, so $P(\\text{online | grade 10}) = \\frac{14}{40} = \\frac{7}{20}$. As probabilities: $P(A \\mid B) = P(A \\text{ and } B) \\div P(B) = (\\frac{14}{70}) \\div (\\frac{40}{70}) = \\frac{14}{40}$.",
         ],
         illustration: "probability-table-given",
@@ -107,6 +119,16 @@ export const probabilityRulesLessons: Lesson[] = [
       ],
       answer: "0.19",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "When $P(B)>0$, $P(A\\mid B)=P(A\\text{ and }B)/P(B)$: knowing $B$ occurred makes $B$ the sample space.",
+          "When $P(A)>0$, $P(A\\text{ and }B)=P(A)P(B\\mid A)$. Multiply conditional probabilities along each possible path and add disjoint paths that make up the event.",
+        ],
+      },
+    ],
     pitfalls: [
       "The denominator of $P(A \\mid B)$ is the count or probability of $B$, not of the whole sample space.",
       "Without replacement, the second draw comes from one fewer item, and the first draw changes what remains.",
@@ -179,7 +201,7 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
       "Multiply along the path; for an event made of several paths, add the path products.",
     ],
     watch:
-      "After a draw without replacement, both the count and the total go down for the second draw.",
+      "After a draw without replacement, the total goes down by one; the count of a color goes down only if that color was drawn.",
   },
 };
 export const probabilityRulesPrinciples: Record<string, string> = {
@@ -188,7 +210,7 @@ export const probabilityRulesPrinciples: Record<string, string> = {
   "addition-rule-probability":
     "$P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$, because outcomes in both events are counted in $P(A)$ and in $P(B)$.",
   "conditional-probability-value":
-    "$P(A \\mid B) = P(A \\text{ and } B) \\div P(B)$: knowing that $B$ happened makes $B$ the sample space.",
+    "When $P(B)>0$, $P(A\\mid B)=P(A\\text{ and }B)/P(B)$: knowing $B$ occurred makes $B$ the sample space.",
   "multiplication-rule-probability":
-    "$P(A \\text{ and } B) = P(A) \\times P(B \\mid A)$; the paths of a tree multiply along their branches and add across paths.",
+    "When $P(A)>0$, $P(A\\text{ and }B)=P(A)P(B\\mid A)$; multiply along each path and add disjoint paths.",
 };

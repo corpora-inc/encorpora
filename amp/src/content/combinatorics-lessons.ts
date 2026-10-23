@@ -2,6 +2,7 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const stages: Lesson["sections"][number] = {
+  stage: "intuition",
   title: "Stages, options and outcomes",
   paragraphs: [
     "This lesson uses whole-number multiplication. A counting problem describes a process made of stages. At each stage you make one choice from a list of options. An outcome is one complete result of the whole process: one choice at every stage. Two outcomes are different when at least one stage has a different choice.",
@@ -9,6 +10,7 @@ const stages: Lesson["sections"][number] = {
   ],
 };
 const probability: Lesson["sections"][number] = {
+  stage: "intuition",
   title: "Probability from equally likely outcomes",
   paragraphs: [
     "An experiment is a process with an uncertain result, such as rolling a number cube. Its outcomes are the possible results. Outcomes are equally likely when none is favored: each face of a fair cube has the same chance. An event is a set of outcomes, such as “an even number”, which contains 2, 4 and 6.",
@@ -66,6 +68,15 @@ export const combinatoricsLessons: Lesson[] = [
       ],
       answer: "24",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Multiplication principle: if one choice is made at each stage and the number of options at a stage does not depend on earlier choices, the number of outcomes is the product of the numbers of options.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not add the numbers of options when one choice is made at every stage: 4 + 3 + 2 counts menu items, not complete specials.",
       "Use one factor for every stage, including a stage with only 2 options.",
@@ -87,6 +98,7 @@ export const combinatoricsLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "When order matters",
         paragraphs: [
           "This lesson uses whole-number multiplication. An arrangement is a selection in which each chosen item fills a different position, such as first, second and third place, or the offices of president and secretary. Order matters: if Ana is president and Ben is secretary, swapping them gives a different arrangement.",
@@ -120,6 +132,15 @@ export const combinatoricsLessons: Lesson[] = [
       ],
       answer: "504",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Arranging $r$ of $n$ different items without repetition gives $n \\times (n - 1) \\times \\cdots \\times (n - r + 1) = n! \\div (n - r)!$ arrangements.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not use 9 × 9 × 9: a member already chosen cannot hold a second office.",
       "Do not divide by the orders of the group when positions differ; dividing counts unordered groups instead.",
@@ -141,6 +162,7 @@ export const combinatoricsLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Groups and arrangements",
         paragraphs: [
           "This lesson uses multiplication and division of whole numbers. A combination is a group chosen from a collection when the chosen items have the same role. A committee of 2 whose members have equal roles is the same committee whichever member is named first.",
@@ -174,6 +196,15 @@ export const combinatoricsLessons: Lesson[] = [
       ],
       answer: "210",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Each group of $k$ items appears in $k$! arrangements, so the number of groups is the number of arrangements divided by $k$!.",
+        ],
+      },
+    ],
     pitfalls: [
       "If members have equal roles, do not stop at 10 × 9 × 8 × 7; that counts each committee 24 times.",
       "Divide by the orders of one group, $k \\times (k - 1) \\times \\cdots \\times 1$, not by the number of people available.",
@@ -216,6 +247,15 @@ export const combinatoricsLessons: Lesson[] = [
       ],
       answer: "10/21",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "When every group is equally likely, the probability of an event is the number of favorable groups divided by the number of all groups.",
+        ],
+      },
+    ],
     pitfalls: [
       "Count groups in both the numerator and the denominator; do not count arrangements in one and groups in the other.",
       "“Exactly 2 red” needs the other marble to be blue, so multiply by the number of ways to choose it.",
@@ -266,6 +306,15 @@ export const combinatoricsLessons: Lesson[] = [
       ],
       answer: "7/10",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For independent events, $P(A \\text{ and } B) = P(A) \\times P(B)$. The complements are independent too, and $P(\\text{at least one}) = 1 - P(\\text{neither})$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not add the probabilities for “at least one”; the pairs where both happen would be counted twice.",
       "Multiply only for independent results; a draw without replacement changes the second probability.",
@@ -287,6 +336,7 @@ export const combinatoricsLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "A weighted average of payoffs",
         paragraphs: [
           "This lesson uses fraction multiplication and addition. A payoff is the number of points or tokens a result is worth. When the results are equally likely, a payoff's probability is the number of results that give it divided by the number of all results.",
@@ -320,6 +370,15 @@ export const combinatoricsLessons: Lesson[] = [
       ],
       answer: "−5/2",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "The expected value is the probability-weighted sum of the payoffs; subtracting a fixed cost subtracts it from the expected value.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not average the distinct payoffs; weight each payoff by how many sections show it.",
       "Subtract the cost once from the expected payout, not once for every section.",

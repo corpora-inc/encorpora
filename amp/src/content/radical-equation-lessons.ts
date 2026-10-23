@@ -66,6 +66,7 @@ export const radicalEquationLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Undo the root without losing its sign",
         paragraphs: [
           "You need to solve linear equations; the harder examples also use factoring of quadratics. The principal square root is the nonnegative number whose square is the number under the root symbol: $\\sqrt{9} = 3$, even though both 3 and −3 have square 9. The expression under the symbol is the radicand. For real numbers, it must be nonnegative.",
@@ -87,6 +88,7 @@ export const radicalEquationLessons: Lesson[] = [
     },
     closingSections: [
       {
+        stage: "method",
         title: "See where the two sides meet",
         paragraphs: [
           "The curve shows $y = \\sqrt{x + 2}$; it starts at $(-2, 0)$ and never goes below the horizontal axis. The line shows $y = x$. They meet at $(2, 2)$. At $x = -1$, the curve's height is 1 and the line's height is −1. Squaring would make those heights equal, but the original heights are different.",
@@ -94,6 +96,7 @@ export const radicalEquationLessons: Lesson[] = [
         illustration: "radical-equation-crossing",
       },
       {
+        stage: "method",
         title: "Zero or two solutions can also occur",
         paragraphs: [
           "The equation $\\sqrt{x + 2} = -3$ has no real solution: its left side is nonnegative and its right side is negative. Squaring gives a candidate, but no candidate can fix that sign mismatch.",

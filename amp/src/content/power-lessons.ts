@@ -18,6 +18,7 @@ export const powerLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Factors, not repeated addition",
         paragraphs: [
           "In $3^4$ the base 3 is the repeated factor and the exponent 4 counts the factors: $3^4 = 3 \\cdot 3 \\cdot 3 \\cdot 3 = 81$. It is not $3 \\cdot 4 = 12$, which adds four 3s.",
@@ -42,6 +43,16 @@ export const powerLessons: Lesson[] = [
       ],
       answer: "243",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A product of $n$ equal factors $b$ is the power $b^n$: the base is the factor, the exponent the count.",
+          "For $b>1$ and a positive whole number $n$, the equation $b^n=v$ means dividing $v$ by $b$ exactly $n$ times reaches 1. This division check does not apply when the base is 0 or 1.",
+        ],
+      },
+    ],
     pitfalls: [
       "$3^4$ is not $3 \\cdot 4$, and $4^3$ is a different number.",
       "A nonzero base to the power 0 is 1, not 0.",
@@ -61,6 +72,7 @@ export const powerLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Swapping changes the value",
         paragraphs: [
           "$2^5$ is five factors of 2, which is 32; $5^2$ is two factors of 5, which is 25. To compare two powers, evaluate both.",
@@ -92,6 +104,17 @@ export const powerLessons: Lesson[] = [
       ],
       answer: "$2^6$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Powers are compared by value; exchanging base and exponent generally changes the value.",
+          "Exponents are evaluated before multiplication and addition, and apply only to the base or parenthesized group they follow.",
+          "A quantity that starts at 1 and is multiplied by $b$ at each step equals $b^n$ after $n$ steps.",
+        ],
+      },
+    ],
     pitfalls: [
       "$a^b$ and $b^a$ are usually different numbers.",
       "In $2 \\cdot 3^2$ square only the 3; in $(2 \\cdot 3)^2$ square the product.",

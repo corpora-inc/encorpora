@@ -80,6 +80,7 @@ export const nonlinearSystemLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Two rules, the same point",
         paragraphs: [
           "You need to substitute numbers into expressions and factor simple quadratics. A variable stands for a number. An ordered pair $(x, y)$ gives a horizontal coordinate first and a vertical coordinate second.",
@@ -100,6 +101,7 @@ export const nonlinearSystemLessons: Lesson[] = [
     },
     closingSections: [
       {
+        stage: "method",
         title: "See the same solutions",
         paragraphs: [
           "Trace the parabola and the straight line. At $\\left(-1, 1\\right)$ and $\\left(2, 4\\right)$ they occupy the same point. An intersection is a whole ordered pair, not just the horizontal value found by factoring.",

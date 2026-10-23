@@ -65,6 +65,7 @@ export const inequalityPrinciples: Record<string, string> = {
 };
 
 const foundations: Lesson["sections"][number] = {
+  stage: "intuition",
   title: "What the comparison means",
   paragraphs: [
     "This lesson uses arithmetic with positive and negative numbers and fractions. A real number is a number represented by a point on the number line. This includes whole numbers, negative numbers, fractions, and decimals. Numbers increase to the right. A variable, such as $x$, stands for a number whose value can vary.",
@@ -123,6 +124,15 @@ export const inequalityLessons: Lesson[] = [
       ],
       answer: "x ≥ −5/3",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Adding the same number preserves order. Multiplication or division by a positive number preserves order; by a negative number it reverses order. These reversible steps preserve the solution set.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not reverse the sign when adding or subtracting, even when the added number is negative.",
       "The boundary alone is not the solution set. Include its direction and whether equality is allowed.",
@@ -173,6 +183,15 @@ export const inequalityLessons: Lesson[] = [
       ],
       answer: "x < 1/2",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Distribution rewrites the same quantity. Adding or subtracting matching terms on both sides preserves the comparison for each $x$; division by a negative number reverses its direction.",
+        ],
+      },
+    ],
     pitfalls: [
       "An outside negative factor multiplies every term, including a negative constant.",
       "A successful check of one value does not prove the whole solution set. Reversible algebra establishes the set; substitution checks the calculation and direction.",
@@ -192,6 +211,7 @@ export const inequalityLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "What counts as a solution",
         paragraphs: [
           "This lesson uses arithmetic with positive and negative numbers. A real number is a number represented by a point on the number line, including whole numbers, negative numbers, fractions, and decimals. A variable, such as $x$, stands for a number whose value can vary.",
@@ -232,6 +252,15 @@ export const inequalityLessons: Lesson[] = [
       ],
       answer: "All real numbers",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "When the variable terms cancel, the remaining comparison does not depend on $x$. A true comparison holds for every real $x$; a false one holds for none.",
+        ],
+      },
+    ],
     pitfalls: [
       "No variable remaining does not mean no solutions. The truth of the remaining comparison decides.",
       "Do not report x = 0 after cancellation. Zero is either one of infinitely many solutions or is not a solution at all.",

@@ -91,6 +91,7 @@ export const quadraticLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Why either factor can be zero",
         paragraphs: [
           "A factor is an expression in a product. A root is a value that makes a polynomial zero. If AB = 0, then A = 0 or B = 0: when $A$ is nonzero, division by $A$ gives B = 0.",
@@ -114,6 +115,15 @@ export const quadraticLessons: Lesson[] = [
       ],
       answer: "x = −2/3 or x = 5",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Zero-product property: a product of real numbers is zero if and only if at least one factor is zero.",
+        ],
+      },
+    ],
     pitfalls: [
       "The zero-product property requires the product to equal zero.",
       "The factors do not have to be zero at the same value of $x$.",
@@ -133,6 +143,7 @@ export const quadraticLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Find and check the factors",
         paragraphs: [
           "A quadratic polynomial has highest power x². In ax² + bx + c, the numbers $a$, $b$, and $c$ are coefficients, with a ≠ 0. The term bx is the linear term; $c$ is the constant term. Factoring rewrites the polynomial as a product without changing its value.",
@@ -157,6 +168,15 @@ export const quadraticLessons: Lesson[] = [
       ],
       answer: "x = −2/3 or x = 1/2",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Factoring uses the distributive property in reverse: the factored form equals the original polynomial. The zero-product property then gives its roots.",
+        ],
+      },
+    ],
     pitfalls: [
       "When $a$ is not 1, the numbers used to split bx must multiply to ac, not merely to $c$.",
       "Keep a zero root when factoring out $x$.",
@@ -168,7 +188,7 @@ export const quadraticLessons: Lesson[] = [
     id: "quadratic-real-solution-count",
     title: "Count distinct real solutions",
     summary:
-      "The sign of the discriminant determines the number of real quadratic solutions.",
+      "The number under the quadratic formula’s square root tells whether the equation has two, one, or no real solutions.",
     templateIds: ["quadratic-real-solution-count"],
     objectives: [
       "Identify signed coefficients, including missing zero terms.",
@@ -176,9 +196,10 @@ export const quadraticLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Read the square root in the formula",
         paragraphs: [
-          "For ax² + bx + c = 0 with a ≠ 0, the quadratic formula is x = (−b ± √(b² − 4ac))/(2a). The discriminant is the quantity b² − 4ac under the square root.",
+          "A quadratic equation has a squared variable but no higher power. In $ax^2+bx+c=0$, the numbers $a$, $b$, and $c$ are coefficients and $a\\ne0$. The quadratic formula gives solutions $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$; $\\pm$ means both a plus and a minus choice. The discriminant is the number $D=b^2-4ac$ under the square root.",
           "If the discriminant is positive, adding and subtracting its positive square root give two distinct real values. If it is zero, the two branches agree: one repeated root. If it is negative, its square root is not real: no real solutions.",
         ],
       },
@@ -199,6 +220,15 @@ export const quadraticLessons: Lesson[] = [
       ],
       answer: "0",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For real coefficients $a$, $b$, and $c$ with $a \\ne 0$, let $D=b^2-4ac$. The equation $ax^2+bx+c=0$ has two distinct real solutions when $D>0$, one when $D=0$, and none when $D<0$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Square the signed coefficient: (−4)² = 16.",
       "Zero discriminant means one distinct real solution, not zero solutions.",
