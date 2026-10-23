@@ -56,9 +56,13 @@ in either state campaign; campaign and program labels must match the destination
 | `shared-practice-marin-vertical-v1` | Shared AMP practice/hint/lesson walkthrough, Marin narration, portrait |
 | `ar-practice-marin-vertical-v1` | Arkansas EFA practice/hint/lesson walkthrough, Marin narration, portrait |
 | `az-practice-marin-vertical-v1` | Arizona ESA practice/hint/lesson walkthrough, Marin narration, portrait |
+| `shared-map-zoom-modus-vertical-v1` | Shared AMP map zoom/orbit teaser, music without narration, portrait |
+| `ar-map-zoom-modus-vertical-v1` | Arkansas EFA map zoom/orbit teaser, music without narration, portrait |
+| `az-map-zoom-modus-vertical-v1` | Arizona ESA map zoom/orbit teaser, music without narration, portrait |
 
 Migrations `0047-live-map-creative-labels.sql`,
-`0048-premium-search-creative-labels.sql` and `0050-video-creative-labels.sql`
+`0048-premium-search-creative-labels.sql`, `0050-video-creative-labels.sql`
+and `0051-map-teaser-creative-labels.sql`
 extend the database constraint without
 removing historical labels. Deploy the migrations and compatible API and browser
 builds, including the marketing-site clients, before forwarding these labels
