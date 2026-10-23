@@ -97,7 +97,7 @@ export const percentChangeLessons: Lesson[] = [
     id: "percent-change-rate",
     title: "Find the percent change",
     summary:
-      "Measure an increase or decrease relative to the original quantity.",
+      "A percent change measures a difference against the original amount.",
     templateIds: ["percent-change-rate"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -105,6 +105,13 @@ export const percentChangeLessons: Lesson[] = [
       "Calculate an exact relative increase or decrease and distinguish it from a percentage-point difference.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Compare the change with where you started",
+        paragraphs: [
+          "A rise of ten dollars is large for a twenty-dollar price but small for a thousand-dollar price. Divide the change by the original amount to see what fraction of the starting amount changed.",
+        ],
+      },
       foundations,
       {
         title: "Calculate the comparison exactly",
@@ -124,6 +131,15 @@ export const percentChangeLessons: Lesson[] = [
       },
       points,
       boundaries,
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Change relative to the original",
+        paragraphs: [
+          "For a positive original quantity $O$ and new quantity $N$, the signed percent change is $100(N-O)/O$ percent. A positive result is an increase and a negative result is a decrease.",
+        ],
+      },
     ],
     workedExample: {
       prompt:
@@ -149,8 +165,7 @@ export const percentChangeLessons: Lesson[] = [
   {
     id: "percent-change-final",
     title: "Apply a percent change",
-    summary:
-      "Find the amount added or removed, then calculate the final quantity.",
+    summary: "Add or remove a percent of the original to find the new amount.",
     templateIds: ["percent-change-final"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -158,6 +173,13 @@ export const percentChangeLessons: Lesson[] = [
       "Connect the amount of change with the multiplier for the final quantity.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Find the changed part first",
+        paragraphs: [
+          "A price that increases by 20 percent keeps its original amount and adds 20 parts per hundred of that original. A decrease removes those parts instead. The final amount is what remains after the change.",
+        ],
+      },
       foundations,
       fractionWork,
       {
@@ -177,6 +199,15 @@ export const percentChangeLessons: Lesson[] = [
         ],
       },
       boundaries,
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Apply a change multiplier",
+        paragraphs: [
+          "For a nonnegative original amount $O$ and percent rate $p\\ge0$, an increase gives final amount $O(1+p/100)$. For $0\\le p\\le100$, a decrease gives $O(1-p/100)$. The percent is measured against the original, not the final amount.",
+        ],
+      },
     ],
     workedExample: {
       prompt:
@@ -202,7 +233,7 @@ export const percentChangeLessons: Lesson[] = [
     id: "percent-change-original",
     title: "Recover the original quantity",
     summary:
-      "Undo the change multiplier to find the quantity that defined 100%.",
+      "Undo the percent multiplier to find the original amount that counted as 100 percent.",
     templateIds: ["percent-change-original"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -210,6 +241,13 @@ export const percentChangeLessons: Lesson[] = [
       "Explain why applying the opposite percentage to the final quantity generally fails.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Work backward from the new amount",
+        paragraphs: [
+          "After a 20 percent increase, the new price is 120 percent of the old price. The new amount is not the whole used to measure the percent change. Divide it by the 120-percent multiplier to recover the old amount.",
+        ],
+      },
       foundations,
       fractionWork,
       {
@@ -233,6 +271,15 @@ export const percentChangeLessons: Lesson[] = [
         paragraphs: [
           "A 0% change has multiplier 1, so the original and final quantities are equal. A 100% decrease has multiplier 0. Every positive original becomes zero, so a final zero after a 100% decrease does not identify one original. Dividing zero by zero cannot recover it.",
           "An original zero also cannot define a relative percent change, because the change ratio would divide by zero. The recoverable cases here use positive originals and nonzero multipliers. All given values are exact; keep fractions rather than introducing rounding.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Undo a percent change",
+        paragraphs: [
+          "If a positive original amount $O$ changes by rate $p$ to final amount $F=O(1+p/100)$, then $O=F/(1+p/100)$ when the multiplier is nonzero. For a decrease by $0\\le p<100$, use $1-p/100$ instead; a 100 percent decrease gives zero for every original amount and cannot be reversed from the final amount alone.",
         ],
       },
     ],

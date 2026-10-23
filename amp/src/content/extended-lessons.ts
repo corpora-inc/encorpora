@@ -13,6 +13,13 @@ export const extendedLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Build larger bundles",
+        paragraphs: [
+          "Ten ones make one ten, and ten tens make one hundred. In 352, the three counts hundreds, the five counts tens, and the two counts ones. Each digit gets its value from its place.",
+        ],
+      },
+      {
         title: "Groups of ten",
         paragraphs: [
           "Ten ones form one ten. Ten tens form one hundred. In 352, the digits name three hundreds, five tens and two ones.",
@@ -24,6 +31,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "Write 352 as 300 + 50 + 2. Expanded form makes each digit’s contribution visible.",
           "When asked for the value of the tens digit, answer fifty, not five. Five names the digit; fifty names its value in this number.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Base-ten expansion",
+        paragraphs: [
+          "A whole number is the sum of each digit times its place value. Every place is ten times the place to its right, so regrouping ten lower units as one higher unit preserves the number.",
         ],
       },
     ],
@@ -51,6 +67,13 @@ export const extendedLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Join matching parts",
+        paragraphs: [
+          "One and two tenths plus three tenths is one and five tenths. Adding tenths to tenths works just like adding ones to ones. Keep the decimal places lined up so the parts you join are the same size.",
+        ],
+      },
+      {
         title: "Name the units",
         paragraphs: [
           "A hundredth is one of one hundred equal parts of a whole. The number 1.25 is 125 hundredths. The number 0.60 is sixty hundredths.",
@@ -62,6 +85,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "Add hundredths to hundredths and tenths to tenths. Ten hundredths regroup into one tenth, just as ten ones regroup into one ten.",
           "Estimate before calculating. Adding 1.25 and 0.60 should give a result between one and two.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Like decimal units",
+        paragraphs: [
+          "Adding or subtracting decimals combines counts of the same place-value units. Align decimal points to align ones, tenths, hundredths, and so on; zeros may be appended to the right of a decimal's final fractional digit without changing its value.",
         ],
       },
     ],
@@ -93,6 +125,13 @@ export const extendedLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Use pieces of one size",
+        paragraphs: [
+          "One half and three fourths can be compared by cutting the half into fourths. Then two fourths are beside three fourths, and the larger amount is clear. The whole must be the same size for both.",
+        ],
+      },
+      {
         title: "Use the same whole",
         paragraphs: [
           "Fractions can be compared as numbers using one shared unit whole. For pictures, make sure the wholes have equal size.",
@@ -104,6 +143,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "Rewrite 2/3 and 3/4 in twelfths. They become 8/12 and 9/12. Nine equal pieces are more than eight equal pieces.",
           "For positive denominators, cross products compare the same common-denominator numerators. This is a shortcut for a meaningful renaming step.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Compare a common whole",
+        paragraphs: [
+          "For fractions of the same-sized whole with positive denominators, equivalent fractions can rename both amounts with a common denominator. Then the larger numerator names the larger amount because the pieces have equal size.",
         ],
       },
     ],
@@ -130,6 +178,13 @@ export const extendedLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Take a part of a part",
+        paragraphs: [
+          "To find one half of three fourths, divide those three fourths into two equal shares and take one share. A picture of a whole rectangle cut both ways shows three of eight small parts selected.",
+        ],
+      },
+      {
         title: "Take part of an amount",
         paragraphs: [
           "One half of three fourths means split three fourths into two equal portions and take one. The result is three eighths.",
@@ -141,6 +196,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "Multiply numerators to count selected overlapping regions. Multiply denominators to count all equal regions in the whole.",
           "Multiplying positive proper fractions makes a smaller positive amount than either factor. That is sensible because you are taking only part of an amount.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "A fraction of a fraction",
+        paragraphs: [
+          "For fractions with nonzero denominators, taking $a/b$ of $c/d$ gives $ac/bd$. The product counts selected small parts after each of the original $d$ parts is split into $b$ equal parts.",
         ],
       },
     ],
@@ -172,6 +236,13 @@ export const extendedLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Count how many small groups fit",
+        paragraphs: [
+          "Three fourths contains six eighths. That means six groups of one eighth fit into three fourths. The answer can be larger than the amount you began with because the groups are smaller than one whole.",
+        ],
+      },
+      {
         title: "Measure in smaller groups",
         paragraphs: [
           "Three fourths divided by one eighth asks how many eighth-sized pieces fit in three fourths. Since three fourths is six eighths, the answer is six.",
@@ -183,6 +254,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "Multiplying by the reciprocal of the divisor changes that divisor to one. This measures the dividend in units of the divisor.",
           "For a/b divided by c/d, multiply a/b by d/c. The divisor must be nonzero, so $c$ cannot be zero.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Count groups of a fractional size",
+        paragraphs: [
+          "For a fraction $a/b$ and a nonzero fraction $c/d$ with nonzero denominators, $(a/b)\\div(c/d)=(a/b)(d/c)$. Multiplying by the reciprocal counts how many groups of size $c/d$ fit into $a/b$.",
         ],
       },
     ],
@@ -214,6 +294,13 @@ export const extendedLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Keep the mix the same",
+        paragraphs: [
+          "A mix with two cups of blue paint for every three cups of white paint keeps the same color if you double both amounts. Four to six is a bigger batch with the same relationship.",
+        ],
+      },
+      {
         title: "Keep the relationship",
         paragraphs: [
           "A mix with two cups of blue for every three cups of white has blue-to-white ratio 2:3. Doubling both amounts makes 4:6, with the same color proportions.",
@@ -225,6 +312,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "If the white amount increases from three to twelve, it is multiplied by four. Multiply the blue amount by four as well.",
           "Adding the same number to both quantities usually changes the ratio. Scaling multiplies both quantities by the same positive factor.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Scale both quantities",
+        paragraphs: [
+          "Multiplying both entries of a ratio by the same positive factor preserves the comparison. For nonzero second entries, the quotient of the first entry by the second stays constant across equivalent ratios.",
         ],
       },
     ],
@@ -256,6 +352,13 @@ export const extendedLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Find the whole behind the percent",
+        paragraphs: [
+          "Twenty-five percent means twenty-five parts out of one hundred equal parts of a whole. One fourth of a small cake and one fourth of a large cake are different amounts, so name the whole before finding a percent of it.",
+        ],
+      },
+      {
         title: "Identify the whole",
         paragraphs: [
           "Twenty-five percent means twenty-five out of each hundred, or 25/100 = 1/4. A percent needs a whole to determine an actual quantity.",
@@ -267,6 +370,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "To find $p$ percent of a quantity, multiply the quantity by p/100. Simplifying first can make the calculation easier.",
           "For a positive whole and a percentage between zero and one hundred, the result lies between zero and the whole. Use that as a reasonableness check.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Percent means per hundred",
+        paragraphs: [
+          "A percent $p$ of a whole $W$ is $(p/100)W$. The numerical part changes when the whole changes, even if the percent stays the same; identify the whole before calculating.",
         ],
       },
     ],
@@ -293,6 +405,13 @@ export const extendedLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Changes can point in opposite directions",
+        paragraphs: [
+          "On a number line, adding three moves right three spaces and adding negative two moves left two spaces. The moves partly cancel, leaving a net move of one space right.",
+        ],
+      },
+      {
         title: "Direction matters",
         paragraphs: [
           "Positive numbers lie to the right of zero and negative numbers to the left. Adding a positive change moves right; adding a negative change moves left.",
@@ -304,6 +423,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "A positive unit and a negative unit sum to zero. Pairing opposites leaves whichever sign has extra units.",
           "When both addends have the same sign, combine their magnitudes and keep that sign. With different signs, compare magnitudes to determine what remains.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Opposite changes",
+        paragraphs: [
+          "Adding a positive number moves right on a number line; adding a negative number moves left. Opposite changes of equal size cancel, and the final signed sum records the position reached from the starting value.",
         ],
       },
     ],
@@ -325,13 +453,21 @@ export const extendedLessons: Lesson[] = [
   {
     id: "slope-two-points",
     title: "Slope measures change per step",
-    summary: "Slope compares vertical change with horizontal change on a line.",
+    summary:
+      "Slope is the vertical change for each unit of horizontal change along a line.",
     templateIds: ["line-slope"],
     objectives: [
       "Compute corresponding coordinate changes.",
       "Interpret positive, negative and zero slope.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Compare two changes on the same line",
+        paragraphs: [
+          "Choose two points on a line. See how much higher or lower the second is and how far right or left it lies. Comparing those two changes gives the line's rise for each horizontal unit.",
+        ],
+      },
       {
         title: "Use a consistent direction",
         paragraphs: [
@@ -344,6 +480,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "A horizontal line has zero change in $y$ and therefore slope zero. A vertical line has zero change in $x$, so its slope is undefined.",
           "The practice uses distinct $x$-coordinates, which guarantees a numeric slope. Fractions are valid and need not be rounded.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Slope from two points",
+        paragraphs: [
+          "For distinct points $(x_1,y_1)$ and $(x_2,y_2)$ with $x_1\\ne x_2$, the slope is $(y_2-y_1)/(x_2-x_1)$. Reversing the point order changes both differences' signs and leaves the ratio unchanged.",
         ],
       },
     ],
@@ -366,13 +511,20 @@ export const extendedLessons: Lesson[] = [
   {
     id: "systems-elimination",
     title: "Make two equations work together",
-    summary: "A solution of a system must satisfy both equations at once.",
+    summary: "Find a pair of values that makes both equations true.",
     templateIds: ["linear-system-x"],
     objectives: [
       "Eliminate one variable with equivalent equations.",
       "Check a solution in both original equations.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Both statements must hold at once",
+        paragraphs: [
+          "Two equations about the same unknowns may describe two conditions on one pair of numbers. Add or subtract the equations to remove one unknown, solve for the other, then check the pair in both original statements.",
+        ],
+      },
       {
         title: "One shared solution",
         paragraphs: [
@@ -385,6 +537,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "When the $y$ coefficients agree, subtract one whole equation from the other. The $y$ terms cancel, leaving an equation in $x$.",
           "After finding $x$, substitute it into an original equation to find $y$, then check both. Some systems have no solution or infinitely many; this practice uses systems with one solution.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "A shared solution",
+        paragraphs: [
+          "A solution of two equations must satisfy both original equations. Replacing one equation with its sum or difference with a multiple of the other preserves their shared solutions and can eliminate a variable; substitute back to check the resulting pair.",
         ],
       },
     ],
@@ -408,13 +569,20 @@ export const extendedLessons: Lesson[] = [
     id: "equally-likely-probability",
     title: "Count favorable outcomes",
     summary:
-      "For equally likely outcomes, probability is the favorable count divided by the total count.",
+      "For equally likely possibilities, compare favorable outcomes with all possible outcomes.",
     templateIds: ["simple-probability"],
     objectives: [
       "Identify the event and the sample space.",
       "Express a probability as an exact fraction.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Count the ways a result can happen",
+        paragraphs: [
+          "If a bag holds three red and five blue counters and each counter is equally likely to be picked, three of the eight possible picks are red. The chance of red is three out of eight.",
+        ],
+      },
       {
         title: "Count all possible objects",
         paragraphs: [
@@ -427,6 +595,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "A probability lies between zero and one. Zero describes an impossible event and one describes a certain event.",
           "A probability of 3/8 does not promise exactly three red results in every eight draws. It describes the chance on each draw under the stated conditions.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Count favorable outcomes",
+        paragraphs: [
+          "For a finite set of equally likely outcomes, probability is favorable outcome count divided by total outcome count. The result lies between 0 and 1 inclusive; if outcomes are not equally likely, simple counting alone does not give probability.",
         ],
       },
     ],
@@ -450,13 +627,20 @@ export const extendedLessons: Lesson[] = [
     id: "arithmetic-sequence-terms",
     title: "Repeated addition in a sequence",
     summary:
-      "An arithmetic sequence adds the same difference between consecutive terms.",
+      "An arithmetic sequence adds the same amount between each pair of neighboring terms.",
     templateIds: ["arithmetic-term"],
     objectives: [
       "Generate terms with a common difference.",
       "Use the correct number of steps from term one.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Repeat the same change",
+        paragraphs: [
+          "The numbers 4, 7, 10, 13 rise by three each time. Four is the first term; reaching the fourth term takes three jumps of three. Counting jumps carefully finds later terms.",
+        ],
+      },
       {
         title: "Find the fixed change",
         paragraphs: [
@@ -469,6 +653,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "Term $n$ is a₁ + (n − 1)d when the first term is numbered one. There is one fewer jump than the term number.",
           "For the fifth term, begin at the first value and make four jumps. This also explains why multiplying the first term by the term number is generally wrong.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Fixed differences",
+        paragraphs: [
+          "An arithmetic sequence has a fixed difference $d$ between successive terms. If its first term is $a_1$, then its term at positive whole position $n$ is $a_n=a_1+(n-1)d$.",
         ],
       },
     ],
@@ -490,13 +683,20 @@ export const extendedLessons: Lesson[] = [
   {
     id: "function-input-output",
     title: "Substitute an input into a function",
-    summary: "A function rule assigns an output to each allowed input.",
+    summary: "A function assigns one output to each allowed input.",
     templateIds: ["function-evaluation"],
     objectives: [
       "Interpret function notation.",
       "Substitute consistently and follow operation order.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Put a number into a rule",
+        paragraphs: [
+          "A function rule takes an allowed input and gives one output. If the rule doubles a number and adds one, input three gives seven. Use the given input in every place the rule asks for it.",
+        ],
+      },
       {
         title: "The input belongs everywhere",
         paragraphs: [
@@ -509,6 +709,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "Calculate powers before multiplication, then combine terms. For a quadratic, the squared input and the linear input can contribute terms with different signs.",
           "Function notation does not mean $f$ multiplied by the input. It names a rule and supplies that rule’s input.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "One output per allowed input",
+        paragraphs: [
+          "A function assigns exactly one output to each input in its domain. Evaluating a rule at an input means replacing every occurrence of the input variable by that value, with grouping preserved.",
         ],
       },
     ],
@@ -531,14 +740,20 @@ export const extendedLessons: Lesson[] = [
   {
     id: "unit-cost",
     title: "Find one, then scale",
-    summary:
-      "A constant unit rate connects quantities in a proportional relationship.",
+    summary: "Divide a total cost by the item count to find cost per item.",
     templateIds: ["unit-price"],
     objectives: [
       "Calculate a price per item.",
       "Scale a unit price to a new quantity.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Find the cost of one",
+        paragraphs: [
+          "Four identical notebooks cost twelve dollars in all. Sharing the cost equally gives three dollars for one notebook. That one-item cost can then predict the cost of another number of notebooks.",
+        ],
+      },
       {
         title: "Divide to find the unit",
         paragraphs: [
@@ -551,6 +766,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "At three dollars per notebook, seven notebooks cost seven times three dollars. The unit rate connects any allowed number of notebooks to its total price.",
           "Keep units visible: dollars per notebook multiplied by notebooks gives dollars. This helps distinguish division from multiplication.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Constant cost per item",
+        paragraphs: [
+          "In a proportional price relationship with positive item count, unit cost is total cost divided by item count. If the unit cost stays fixed, total cost equals unit cost times item count and the graph passes through the origin.",
         ],
       },
     ],
@@ -571,13 +795,20 @@ export const extendedLessons: Lesson[] = [
     id: "multiplying-decimals",
     title: "Multiply decimal-sized parts",
     summary:
-      "Decimal multiplication combines whole-number products with place-value units.",
+      "Multiply the counts, then name the smaller place-value unit of the product.",
     templateIds: ["decimal-multiplication"],
     objectives: [
       "Interpret tenths times tenths as hundredths.",
       "Estimate the size of a decimal product.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Watch the size of the pieces",
+        paragraphs: [
+          "Twelve tenths times three tenths makes thirty-six hundredths. The whole-number fact 12 times 3 gives the count, but the pieces in the product are hundredths, not ones.",
+        ],
+      },
       {
         title: "Use fractions to see the units",
         paragraphs: [
@@ -590,6 +821,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "Three tenths of 1.2 is less than 1.2 and close to three tenths. This estimate supports a product of 0.36.",
           "A factor between zero and one reduces a positive amount. Multiplication need not increase it.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Place units multiply",
+        paragraphs: [
+          "A decimal with $p$ digits after its point counts units of size $10^{-p}$. Multiplying it by a decimal with $q$ such digits makes units of size $10^{-(p+q)}$; multiply their whole-number counts and locate the product's decimal point accordingly.",
         ],
       },
     ],
@@ -613,13 +853,20 @@ export const extendedLessons: Lesson[] = [
     id: "expression-order",
     title: "Read the structure of an expression",
     summary:
-      "Grouping and operation order determine which calculations happen first.",
+      "Grouping tells which calculations to finish before combining their results.",
     templateIds: ["operation-order"],
     objectives: [
       "Evaluate grouped quantities first.",
       "Complete multiplication before addition outside the group.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Finish the inside group first",
+        paragraphs: [
+          "In a calculation with parentheses, the expression inside them names one amount. Find that amount before using it in the rest of the calculation, then follow the agreed order for the remaining operations.",
+        ],
+      },
       {
         title: "Parentheses name one quantity",
         paragraphs: [
@@ -632,6 +879,15 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "Multiplication takes precedence over addition, so calculate 5 × 4 = 20 and then add the initial five.",
           "Operations of equal precedence are evaluated left to right. These examples focus on parentheses, multiplication and addition.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "An agreed order gives one value",
+        paragraphs: [
+          "An expression is evaluated by completing grouped operations first, then powers, then multiplication and division from left to right, then addition and subtraction from left to right. Equivalent regrouping may change the order only when the operations' properties justify it.",
         ],
       },
     ],

@@ -12,6 +12,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "See what changes",
+        paragraphs: [
+          "Start with a small group of counters. Putting more counters beside it makes a larger group; taking some away leaves a smaller group. Count the objects that are there to see what each change did.",
+        ],
+      },
+      {
         title: "Put the parts together",
         paragraphs: [
           "Put three counters on a table. Put two more beside them. Touch every counter once as you count the whole group. Three and two make five. We can write 3 + 2 = 5.",
@@ -23,6 +30,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "Start with five counters and move two aside. Count the three that stay. We write 5 − 2 = 3. The picture in a take-away problem shows the group before the removal.",
           "Put the two counters back. Three and two make five again. Addition can help you check subtraction.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Parts and totals",
+        paragraphs: [
+          "Addition gives the count of two disjoint groups together. Subtraction removes one part of a known total or finds the missing part: if the parts are joined again, their counts must equal the starting total.",
         ],
       },
     ],
@@ -53,6 +69,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "One group can have two parts",
+        paragraphs: [
+          "Slide some counters away from a group without removing them. The group is now in two parts, but together the parts still hold every counter. Ten is especially useful because it can be split in many easy-to-see ways.",
+        ],
+      },
+      {
         title: "Keep the whole",
         paragraphs: [
           "Make a group of eight counters. Slide three to one side. Five stay on the other side. The whole is still eight: 8 = 3 + 5.",
@@ -66,6 +89,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "A ten-frame always has ten places. If six places hold counters, four places are empty. Four more counters will fill it.",
           "Count the empty places or count on from six to ten. Say one new number for each counter you add.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "A whole is the sum of its parts",
+        paragraphs: [
+          "Splitting a collection into nonoverlapping parts does not change its total. If a whole has 10 objects and one part has a known count, the other part is 10 minus that count.",
         ],
       },
     ],
@@ -96,6 +128,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Bundle ten first",
+        paragraphs: [
+          "When there are more than nine counters, fill one ten-frame or make one bundle of ten. Count that bundle as ten, then count the loose counters. A teen number is one ten with some ones beside it.",
+        ],
+      },
+      {
         title: "See a teen number",
         paragraphs: [
           "A full ten-frame holds ten counters. Put six counters in a second frame. There are ten and six: sixteen. We write 16 = 10 + 6.",
@@ -107,6 +146,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "A long rod is made of ten little squares. Four rods show four tens, or forty. Three extra squares make forty-three: 43 = 40 + 3.",
           "The tens digit tells how many tens. The ones digit tells how many extra ones. In 40 there are four tens and zero extra ones; zero keeps that place.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Ten and some ones",
+        paragraphs: [
+          "Any whole number from 10 through 19 can be written as one ten and 0 through 9 additional ones. A full group of ten has the same value as 10 single ones.",
         ],
       },
     ],
@@ -137,6 +185,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Use what the story tells you",
+        paragraphs: [
+          "A story may tell you the start and the end but leave the change unknown. Or it may tell you the change and the end but hide the start. Treat the missing amount as one part of the whole change story.",
+        ],
+      },
+      {
         title: "Find an unknown change",
         paragraphs: [
           "There were five blocks. More arrived, and then there were nine. The start is five and the whole after joining is nine. The missing part is the number that arrived.",
@@ -150,6 +205,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "Some blocks were in a box. Four were removed and six stayed. The starting amount must include both the four removed and the six remaining.",
           "Write □ − 4 = 6. Put the parts together: 4 + 6 = 10. Check by starting with ten and taking four away.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The parts must fit the whole",
+        paragraphs: [
+          "For an addition story, starting amount plus change equals ending amount. A missing positive change is ending amount minus starting amount; a missing start is ending amount minus the added change.",
         ],
       },
     ],
@@ -181,6 +245,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Two ways to show the same amount",
+        paragraphs: [
+          "Three and four counters make seven counters. You can put the seven on either side of an equal sign because both sides name the same amount. A missing number must keep that match true.",
+        ],
+      },
+      {
         title: "Read the equal sign",
         paragraphs: [
           "The sign = means “has the same value as.” It does not just mean “write an answer next.” Both 3 + 4 = 7 and 7 = 3 + 4 say that the amounts match.",
@@ -194,6 +265,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "For 6 + 3 = □ + 4, first find the left side: nine. The right side must also equal nine.",
           "Four and five make nine, so the box is five. Replace the box with five and check each side separately.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "What the equal sign means",
+        paragraphs: [
+          "An equation states that the expressions on its left and right have the same value. The statement remains true if both sides are changed by the same amount; a missing number must make the two evaluated sides equal.",
         ],
       },
     ],
@@ -224,6 +304,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Choose an easy pair",
+        paragraphs: [
+          "When three or more groups are joined, you may put together any two groups first. If two of them make ten, use that pair. Then bring in the groups you have not used yet.",
+        ],
+      },
+      {
         title: "Three small groups",
         paragraphs: [
           "Suppose there are two red blocks, six blue blocks, and four green blocks. You can join two and six first, then add four. You can also join six and four to make ten, then add two.",
@@ -236,6 +323,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "For larger numbers, collect the tens and the ones. In 24 + 31 + 12, the tens contribute 20 + 30 + 10 = 60. The ones contribute 4 + 1 + 2 = 7. The total is 67.",
           "If the ones make ten or more, exchange ten ones for a ten. Include every original addend exactly once.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Regroup a sum",
+        paragraphs: [
+          "The order and grouping of whole-number addends do not change their sum. This allows convenient pairs, such as numbers that make 10, while every addend is counted exactly once.",
         ],
       },
     ],
@@ -267,6 +363,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Make a friendly stop at ten",
+        paragraphs: [
+          "Eight is two away from ten. If you are adding five, use two of the five to reach ten, then add the three still left. You have added all five, just in an easier order.",
+        ],
+      },
+      {
         title: "Make a ten when adding",
         paragraphs: [
           "To add eight and five, eight needs two to reach ten. Split five into two and three. Use the two first: eight and two make ten. Three more make thirteen.",
@@ -278,6 +381,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "To subtract six from fourteen, remove four to reach ten. You have removed only four of the six, so two more must be removed. Ten minus two is eight.",
           "The practice questions ask for the part left to add or remove. Read carefully: that part is different from the final answer to the original calculation.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Split a change at ten",
+        paragraphs: [
+          "A whole-number addend can be split into two parts without changing its value. If one part completes the next ten, adding that part first and then the remainder gives the original sum.",
         ],
       },
     ],
@@ -315,6 +427,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Move whole tens at once",
+        paragraphs: [
+          "Thirty-four is three tens and four ones. Adding one whole ten gives four tens and the same four ones. You can make a ten-sized move without recounting all the ones.",
+        ],
+      },
+      {
         title: "Keep the ones",
         paragraphs: [
           "Thirty-four has three tens and four ones. Ten more gives four tens and four ones: forty-four. Ten less gives two tens and four ones: twenty-four.",
@@ -326,6 +445,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "For twenty-seven plus five, combine seven ones and five ones. Twelve ones can be regrouped into one ten and two ones.",
           "Add the new ten to the original two tens. Three tens and two ones make thirty-two. The exchange keeps the value unchanged.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Place-value changes",
+        paragraphs: [
+          "A two-digit number is its number of tens times 10 plus its number of ones. Adding or subtracting a multiple of 10 changes the tens while preserving the ones, provided any needed regrouping is carried out.",
         ],
       },
     ],
@@ -362,6 +490,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Make bigger bundles",
+        paragraphs: [
+          "Ten bundles of ten can be traded for one bundle of a hundred. This is the same trade used to make a ten from ten ones. The pieces look different, but the amount they stand for is equal.",
+        ],
+      },
+      {
         title: "Read each place",
         paragraphs: [
           "A hundred flat has ten rows of ten units. It equals ten ten-rods, or one hundred ones. A model with four flats, no rods, and six ones shows 406.",
@@ -373,6 +508,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "Three tens and fourteen ones can be exchanged for four tens and four ones. Trade ten of the ones for a rod; leave four ones.",
           "Likewise, two hundreds and twelve tens can become three hundreds and two tens. Ten tens have the same value as one hundred. These are different groupings of the same quantity.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Equal-value bundles",
+        paragraphs: [
+          "Ten ones equal one ten, and ten tens equal one hundred. Exchanging between these place-value units changes how a number is shown but not its value.",
         ],
       },
     ],
@@ -404,6 +548,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Trade to make a place useful",
+        paragraphs: [
+          "Suppose a column has fifteen ones. Trade ten for one ten and keep five ones. When subtracting, reverse the trade if you need more ones. In both directions the number keeps its value.",
+        ],
+      },
+      {
         title: "Add from the ones",
         paragraphs: [
           "For 268 + 157, eight ones and seven ones make fifteen ones. Keep five ones and exchange ten ones for a ten.",
@@ -415,6 +566,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "For 402 − 167, there are only two ones and no tens to exchange. First trade one hundred for ten tens. Then trade one of those tens for ten ones. The regrouped amount is three hundreds, nine tens, and twelve ones.",
           "Subtract seven ones, six tens, and one hundred. Five ones, three tens, and two hundreds remain: 235. Check by adding 235 and 167.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Regrouping preserves value",
+        paragraphs: [
+          "In base ten, 10 ones equal one ten and 10 tens equal one hundred. Trading equal values lets matching places be added or subtracted without changing either original number.",
         ],
       },
     ],
@@ -445,6 +605,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Keep the same-sized hop",
+        paragraphs: [
+          "A pattern might go 4, 7, 10, 13. Each hop adds three. To continue it, make another hop of three; to reach a later position, count how many hops are needed.",
+        ],
+      },
+      {
         title: "One more each time",
         paragraphs: [
           "Begin at any number and say the next numbers. After ninety-eight come ninety-nine, one hundred, one hundred one, and one hundred two. Each step still adds just one.",
@@ -456,6 +623,15 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "Counting by five adds five each time: 35, 40, 45, 50. Counting by ten changes the value by ten: 120, 130, 140, 150.",
           "Counting by one hundred uses whole hundreds: 400, 500, 600, 700. Read the stated step before filling the box.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "A constant step",
+        paragraphs: [
+          "In a counting sequence with a fixed step, each new term equals the preceding term plus that step. After a starting number, reaching the term in position $n$ takes $n-1$ steps when the first term is position 1.",
         ],
       },
     ],
@@ -486,6 +662,13 @@ export const elementaryLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Pause between changes",
+        paragraphs: [
+          "If books are added to a shelf and then some are removed, the second change starts with the new number of books, not the old one. Find the amount after the first event before doing the second.",
+        ],
+      },
+      {
         title: "Pause after the first change",
         paragraphs: [
           "There are twenty-three books. Fifteen more arrive, so there are thirty-eight. Nine are then taken away. Start the subtraction from thirty-eight, not from the original twenty-three.",
@@ -499,6 +682,15 @@ export const elementaryLessons: Lesson[] = [
           "The final question asks how many remain after both changes. An intermediate total answers only part of the story.",
           "Check by reversing the changes: add back the amount removed, then remove the amount that arrived. You should return to the original count.",
           "Reversing also finds a missing start. If 13 marbles were put in a bag, 23 were taken out and 11 are left, put the 23 back (34) and take the 13 out (21): the bag held 21 at first.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Changes happen in order",
+        paragraphs: [
+          "For two successive changes, the amount after the first change becomes the starting amount for the second. Addition models an increase and subtraction models a decrease; checking the intermediate amount prevents applying both changes to the wrong starting value.",
         ],
       },
     ],

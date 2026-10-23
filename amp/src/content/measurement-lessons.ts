@@ -14,6 +14,13 @@ export const measurementLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Count the spaces, not the labels",
+        paragraphs: [
+          "A strip laid from the 3-centimeter mark to the 9-centimeter mark is not nine centimeters long. It covers the six one-centimeter spaces between those marks. A ruler shows positions; their difference gives length.",
+        ],
+      },
+      {
         title: "Marks name positions",
         paragraphs: [
           "A strip starting at 3 cm and ending at 9 cm is six centimeters long. The labels tell where its ends lie. The spaces from three to nine measure how far apart those ends are.",
@@ -32,6 +39,15 @@ export const measurementLessons: Lesson[] = [
         paragraphs: [
           "A strip a little longer than two centimeters cannot be nine centimeters long just because it crosses nine quarter-centimeter spaces. Estimate first, then use the unit and subdivisions printed on the ruler.",
           "Check an endpoint subtraction by adding the measured length to the starting position. You should reach the ending position.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Distance between marks",
+        paragraphs: [
+          "A ruler mark names a position, not a length by itself. When both ends are on the same scale, length equals ending position minus starting position, even if the object begins away from zero.",
         ],
       },
     ],
@@ -75,6 +91,13 @@ export const measurementLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Walk around or cover inside",
+        paragraphs: [
+          "String around a picture frame measures its border. Paper covering the picture measures its inside. The first is a length and the second is an area, so they answer different questions.",
+        ],
+      },
+      {
         title: "Two different jobs",
         paragraphs: [
           "Ribbon follows a boundary. Measure its length in centimeters or meters. Paper covers a flat region. Measure area with square units: a square centimeter is the area of a square whose sides are each one centimeter.",
@@ -93,6 +116,15 @@ export const measurementLessons: Lesson[] = [
         paragraphs: [
           "Rectangles 2 cm by 12 cm and 4 cm by 6 cm both cover 24 square cm. Their perimeters are 28 cm and 20 cm. Equal coverage does not guarantee equal ribbon length.",
           "Rectangles 2 cm by 8 cm and 4 cm by 6 cm both have perimeter 20 cm. Their areas are 16 and 24 square cm. Calculate the requested quantity rather than relying on a drawing's apparent size.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Perimeter and area",
+        paragraphs: [
+          "Perimeter counts length around a boundary and uses linear units. Area counts equal square units covering a region. For a rectangle with positive side lengths $l$ and $w$, perimeter is $2l+2w$ and area is $lw$; neither quantity determines the other alone.",
         ],
       },
     ],
@@ -135,6 +167,13 @@ export const measurementLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "The object does not change",
+        paragraphs: [
+          "A meter stick is one meter long and also one hundred centimeters long. The smaller centimeter unit fits more times along the same stick. A conversion changes the count and unit, not the stick.",
+        ],
+      },
+      {
         title: "The length stays fixed",
         paragraphs: [
           "One meter and one hundred centimeters name the same length. Centimeters are smaller units, so more of them fit along that length. Three meters equals three groups of one hundred centimeters: 300 cm.",
@@ -153,6 +192,15 @@ export const measurementLessons: Lesson[] = [
         paragraphs: [
           "A 2 m strip and a 35 cm strip total 200 cm + 35 cm = 235 cm. Adding the bare numbers two and thirty-five would treat unequal units as equal.",
           "For a rectangle, express both adjacent sides in the requested unit, then include each side twice. Converting units does not change the rectangle or eliminate any part of its boundary.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Converting a fixed length",
+        paragraphs: [
+          "A conversion changes the numerical count and unit while preserving the same measured length. If a large unit contains $k$ smaller units, multiply its count by $k$ to express the length in small units and divide by $k$ to go back.",
         ],
       },
     ],
@@ -192,6 +240,13 @@ export const measurementLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Try every side pair",
+        paragraphs: [
+          "A rectangle with area 24 square units might have sides 4 and 6, or 3 and 8, or another pair whose product is 24. Listing the possible pairs lets you check a second requirement without guessing.",
+        ],
+      },
+      {
         title: "Area organizes the search",
         paragraphs: [
           "For area 24 square cm and positive whole-number sides, list 1 × 24, 2 × 12, 3 × 8 and 4 × 6. A rotated rectangle reverses its dimensions but is not a new size for this question.",
@@ -210,6 +265,15 @@ export const measurementLessons: Lesson[] = [
         paragraphs: [
           "To claim no rectangle exists, check every permitted factor pair, not just the displayed choices. Area 24 square cm and perimeter exactly 24 cm have no solution with positive whole-number sides: none of the four possible perimeters is 24.",
           "The whole-number restriction matters. This argument does not rule out rectangles with fractional or other real side lengths. Keep impossibility claims inside the stated domain.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Area and whole-number sides",
+        paragraphs: [
+          "For a rectangle with positive whole-number side lengths, area equals the product of the two lengths. Listing every factor pair of a specified area gives every possible such rectangle up to rotation; test any second condition against that complete list.",
         ],
       },
     ],
@@ -246,6 +310,13 @@ export const measurementLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Buy what the store sells",
+        paragraphs: [
+          "If ribbon comes in whole six-meter packs and you need seven meters, one pack is short and two packs cover the job. Pay for both full packs even though some ribbon is left over.",
+        ],
+      },
+      {
         title: "What can actually be bought?",
         paragraphs: [
           "A shop selling only whole six-meter packs cannot sell 7/6 of a pack when you need seven meters. One pack is short, so buy two and pay for both. You receive twelve meters although you need only seven.",
@@ -264,6 +335,15 @@ export const measurementLessons: Lesson[] = [
         paragraphs: [
           "When pieces join without loss, their lengths add directly. Requiring one continuous unjoined piece would be a different problem. Do not invent cutting waste, tax, discounts or joining loss.",
           "An exact pack multiple needs no extra pack. If both bills agree, neither supplier costs less under the stated rules.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Whole packs and total cost",
+        paragraphs: [
+          "When a pack cannot be split, the number purchased is the least whole number of packs whose combined quantity meets or exceeds the need. Total cost is pack count times price per pack; unused material does not reduce the bill.",
         ],
       },
     ],

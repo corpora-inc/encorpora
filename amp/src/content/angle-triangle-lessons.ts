@@ -14,7 +14,7 @@ export const angleTriangleLessons: Lesson[] = [
     id: "angle-relationships",
     title: "Angle relationships",
     summary:
-      "Angles that fill a known whole add to that whole; vertical angles are equal. Each fact gives an equation.",
+      "Smaller turns that fit together without overlap add to the whole angle.",
     templateIds: ["angle-pair-measure", "angle-equation"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -22,6 +22,13 @@ export const angleTriangleLessons: Lesson[] = [
       "Write and solve an equation for an unknown angle, including angles given as expressions in $x$.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Make a larger turn from smaller turns",
+        paragraphs: [
+          "Two angles placed side by side can fill a straight turn or another known angle. When no space is missing or counted twice, their measures add. That gives a way to find an unknown angle.",
+        ],
+      },
       angleWords,
       {
         title: "Parts add to the whole",
@@ -43,6 +50,15 @@ export const angleTriangleLessons: Lesson[] = [
         paragraphs: [
           "When angles are given as expressions such as (3x + 12)°, write the relationship as an equation in $x$: parts of a straight angle add to 180, parts of a right angle add to 90, and vertical angles are equal. Solve the equation, then substitute $x$ back into each expression to find the angles and to check that they fit the relationship.",
           "For vertical angles marked (4x − 6)° and (2x + 30)°, write 4x − 6 = 2x + 30. Subtract 2x from both sides: 2x − 6 = 30. Add 6: 2x = 36, so x = 18. Each angle measures 4(18) − 6 = 66°, and 2(18) + 30 = 66° checks.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Angles in a shared whole",
+        paragraphs: [
+          "Adjacent angles whose interiors do not overlap add to the angle formed by their outer rays. Angles on a straight line sum to 180 degrees, angles around a point sum to 360 degrees, and opposite angles formed by two intersecting lines are equal.",
         ],
       },
     ],
@@ -69,7 +85,7 @@ export const angleTriangleLessons: Lesson[] = [
     id: "triangle-angle-theorems",
     title: "Triangle angles and parallel lines",
     summary:
-      "A triangle's angles add to 180°, an exterior angle equals the two remote interior angles, and parallel lines copy angles along a transversal.",
+      "A triangle's three inside angles fit together to make a straight angle.",
     templateIds: [
       "triangle-angle-sum",
       "triangle-exterior-angle",
@@ -82,6 +98,13 @@ export const angleTriangleLessons: Lesson[] = [
       "Use the exterior angle of a triangle to find unknown angles.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "The three corners fit a half turn",
+        paragraphs: [
+          "Cut the three corners from a triangle and place them side by side. They fill a straight line, a half turn. That picture explains why knowing two corner angles lets you find the third.",
+        ],
+      },
       {
         title: "Parallel lines cut by a transversal",
         paragraphs: [
@@ -108,6 +131,15 @@ export const angleTriangleLessons: Lesson[] = [
         illustration: "exterior-angle",
       },
     ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Triangle and exterior angles",
+        paragraphs: [
+          "The three interior angles of a Euclidean triangle sum to 180 degrees. An exterior angle formed by extending one side equals the sum of the two remote interior angles. With parallel lines, corresponding and alternate interior angles formed by a transversal are equal.",
+        ],
+      },
+    ],
     workedExample: {
       prompt:
         "In triangle $ABC$, side $AB$ is extended past $B$ to point $D$. $\\angle A$ measures 48° and $\\angle CBD$ measures 113°. What is the measure of $\\angle C$, in degrees?",
@@ -132,7 +164,7 @@ export const angleTriangleLessons: Lesson[] = [
     id: "triangle-construction",
     title: "Which triangles exist",
     summary:
-      "Three lengths make a triangle only when the two shorter add to more than the longest; some conditions fix one triangle, some many, some none.",
+      "Three side lengths form a triangle only if the two shorter together exceed the longest.",
     templateIds: [
       "triangle-side-test",
       "triangle-third-side",
@@ -145,6 +177,13 @@ export const angleTriangleLessons: Lesson[] = [
       "Decide whether given conditions determine exactly one triangle, more than one, or none.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "The ends must meet",
+        paragraphs: [
+          "Imagine laying down the longest stick as a base. The other two sticks reach from its ends. If together they cannot reach farther than the base's length, their tips cannot meet above it to close a triangle.",
+        ],
+      },
       {
         title: "The triangle inequality",
         paragraphs: [
@@ -165,6 +204,15 @@ export const angleTriangleLessons: Lesson[] = [
         paragraphs: [
           "Two triangles count as the same when they have the same size and shape, so one can be moved on top of the other. Conditions determine a unique triangle when every triangle meeting them is the same.",
           "Three sides that pass the triangle inequality determine exactly one triangle. Two sides and the angle between them determine exactly one, and so do two angles and the side between them, when the angles add to less than 180°. Three angles that add to 180° fix only the shape: an enlarged copy has the same angles, so infinitely many triangles fit. Two angles that add to 180° or more, three angles whose sum is not 180°, or three sides that fail the triangle inequality give no triangle.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "When three lengths close",
+        paragraphs: [
+          "Three positive lengths form a nondegenerate triangle exactly when the sum of any two exceeds the third; checking the two shorter against the longest is sufficient. Fixed three side lengths determine one triangle up to rigid motion, while less restrictive data may allow many or none.",
         ],
       },
     ],
@@ -190,7 +238,7 @@ export const angleTriangleLessons: Lesson[] = [
     id: "solid-cross-sections",
     title: "Slicing prisms and pyramids",
     summary:
-      "A plane cuts a solid in a flat shape; each face it crosses gives one side, and a slice parallel to a face copies that face.",
+      "A flat slice through a solid creates a cross-section whose shape depends on the cut.",
     templateIds: ["cross-section-shape", "cross-section-area"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -198,6 +246,13 @@ export const angleTriangleLessons: Lesson[] = [
       "Find a cross-section's area from the solid's dimensions.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "See the shape inside a cut",
+        paragraphs: [
+          "Slice a box with a flat plane. The new flat face where the knife passed is a cross-section. Turning the cutting plane can change that face from a rectangle to another polygon.",
+        ],
+      },
       {
         title: "Solids and their faces",
         paragraphs: [
@@ -212,6 +267,15 @@ export const angleTriangleLessons: Lesson[] = [
           "A vertical slice of a pyramid through the apex crosses the base and two slanted faces: a triangle whose height is the pyramid's height. A vertical slice that misses the apex crosses the base, two slanted faces and the top of a third: a trapezoid. A slice parallel to the base of a pyramid gives a smaller rectangle; halfway up, each side is half the base edge below it. Cutting off one corner of a prism crosses three faces: a triangle.",
         ],
         illustration: "solid-slices",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "A plane's intersection with a solid",
+        paragraphs: [
+          "A cross-section is the flat region where a plane cuts a solid. Its boundary comes from the solid's faces that the plane crosses. For a right prism, a slice parallel to a base has the same shape and size as that base when it lies inside the prism.",
+        ],
       },
     ],
     workedExample: {

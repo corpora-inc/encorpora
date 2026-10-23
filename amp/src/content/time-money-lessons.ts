@@ -27,6 +27,13 @@ export const timeMoneyLessons: Lesson[] = [
       "Name the hour when the short hand is between two numerals.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Watch both clock hands",
+        paragraphs: [
+          "The long hand counts minutes as it travels around the clock. The short hand shows the hour but also moves gradually toward the next one. At half past, the long hand is halfway around and the short hand is halfway to the next hour.",
+        ],
+      },
       twoHands,
       {
         title: "On the hour and half past",
@@ -35,6 +42,15 @@ export const timeMoneyLessons: Lesson[] = [
           "At 3:30 the long hand has gone halfway around, to 6. The short hand has gone halfway from 3 to 4. It has passed 3 but not reached 4, so the hour is still 3: half past three.",
         ],
         illustration: "clock-hour-half",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Two hands, one time",
+        paragraphs: [
+          "An analog clock's long hand completes one full turn in 60 minutes while the short hand moves from one hour mark to the next. Half a turn of the long hand is 30 minutes, when the short hand is halfway between hour marks.",
+        ],
       },
     ],
     workedExample: {
@@ -72,6 +88,13 @@ export const timeMoneyLessons: Lesson[] = [
       "Choose a.m. or p.m. from the time of day.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Count five minutes at a time",
+        paragraphs: [
+          "The long hand needs five minutes to move from one numbered mark to the next. Starting at 12, count five, ten, fifteen as it moves to 1, 2, 3. The short hand keeps track of the hour.",
+        ],
+      },
       twoHands,
       {
         title: "Count by fives",
@@ -86,6 +109,15 @@ export const timeMoneyLessons: Lesson[] = [
         paragraphs: [
           "A clock shows each time twice a day. Times from midnight to noon are a.m.; times from noon to midnight are p.m.",
           "Breakfast at 7:15 is 7:15 a.m. Dinner at 6:15 is 6:15 p.m.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Five minutes per numeral",
+        paragraphs: [
+          "The 12 numbered gaps around a clock divide 60 minutes into groups of 5. Starting at 12, each clockwise numeral reached by the minute hand adds 5 minutes to the hour.",
         ],
       },
     ],
@@ -126,6 +158,13 @@ export const timeMoneyLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
+        title: "Read value, not size",
+        paragraphs: [
+          "A dime is smaller than a nickel but buys more. Look at each coin's value, then count those values together. Starting with the largest values can make the counting easier.",
+        ],
+      },
+      {
         title: "What each piece is worth",
         paragraphs: [
           "A penny is 1¢, a nickel 5¢, a dime 10¢ and a quarter 25¢. A dime is smaller than a nickel but worth more, so read the value, not the size.",
@@ -140,6 +179,15 @@ export const timeMoneyLessons: Lesson[] = [
           "With bills, count the dollars first and the coins after: 2 one-dollar bills and 35¢ is 2 dollars and 35 cents, written $2.35.",
         ],
         illustration: "coin-count-on",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Money values add",
+        paragraphs: [
+          "The value of a collection of coins and bills is the sum of the value of each piece, independent of its physical size or counting order. One dollar equals 100 cents, so dollar and cent amounts can be combined after conversion.",
+        ],
       },
     ],
     workedExample: {

@@ -5,7 +5,8 @@ export const addSubtractLessons: Lesson[] = [
   {
     id: "add-within-100",
     title: "Add within 100 by place",
-    summary: "Add ones to ones and tens to tens; ten ones make one more ten.",
+    summary:
+      "Put ones with ones and tens with tens. If the ones make a new ten, trade it before adding the tens.",
     templateIds: ["add-two-digit-regroup", "make-hundred"],
     objectives: [
       "Add two two-digit numbers, regrouping ten ones as a ten.",
@@ -13,18 +14,38 @@ export const addSubtractLessons: Lesson[] = [
     ],
     sections: [
       {
-        title: "Ten ones make a ten",
+        stage: "intuition",
+        title: "The amount stays the same when you trade",
         paragraphs: [
-          "Add the ones first. If they make 10 or more, trade 10 of them for 1 ten and write the ones that are left.",
-          "Then add the tens, including the traded ten. In 47 + 38 the ones make 15: write 5 and carry 1 ten, so the tens are 4 + 3 + 1 = 8.",
+          "A two-digit number has tens and ones. In 47, there are 4 tens and 7 ones. Put the ones from both numbers together. When you have 10 ones, you can trade them for 1 ten without changing the total.",
+          "That trade lets every place hold fewer than 10 pieces. In 47 + 38, the 7 ones and 8 ones make 15 ones: 1 new ten and 5 ones. Add that new ten to the 4 tens and 3 tens to get 8 tens, so the sum is 85.",
+        ],
+      },
+      {
+        stage: "method",
+        title: "Add each place",
+        paragraphs: [
+          "Start at the ones. Add them, write the ones left after any trade, and carry the new ten. Then add the tens, including the ten you carried.",
+          "You can check by counting on from one addend by the tens and then the ones of the other. For 47 + 38, count 47, 77, 85.",
         ],
         illustration: "column-addition",
       },
       {
+        stage: "method",
         title: "Make one hundred",
         paragraphs: [
           "To find what joins 36 to make 100, first complete the ten: 36 + 4 = 40. Then count tens: 40 + 60 = 100.",
           "The missing number is both jumps together: 4 + 60 = 64. Check by adding: 36 + 64 = 100.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Place value and regrouping",
+        paragraphs: [
+          "In base ten, each ten has the same value as 10 ones. Replacing 10 ones with 1 ten preserves the sum. Add digits in the same place and carry a complete group of ten into the next place.",
+          "To complete a number to 100, split the missing amount into the jump to the next ten and the jump from there to 100; adding those jumps gives the full difference.",
         ],
       },
     ],
@@ -38,8 +59,8 @@ export const addSubtractLessons: Lesson[] = [
       answer: "84",
     },
     pitfalls: [
-      "Writing 14 in the ones place instead of carrying the ten: 58 + 26 is not 714.",
-      "Forgetting to add the carried ten to the tens.",
+      "When the ones make 10 or more, write only the ones left and carry the new ten.",
+      "Include the carried ten when you add the tens.",
     ],
     parentGuide:
       "Use dimes and pennies. Add two amounts, and trade ten pennies for a dime whenever you can. Say what the trade does to the total (nothing).",
@@ -48,13 +69,20 @@ export const addSubtractLessons: Lesson[] = [
     id: "subtract-within-100",
     title: "Subtract within 100 by regrouping a ten",
     summary:
-      "When there are too few ones, regroup 1 ten as 10 ones; the number keeps its value.",
+      "When the ones are too few to subtract, break one ten into ten ones. The starting amount stays the same.",
     templateIds: ["subtract-two-digit-regroup"],
     objectives: [
       "Subtract a two-digit number from a number up to 100.",
       "Explain why trading 1 ten for 10 ones does not change a number.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Trade without changing the amount",
+        paragraphs: [
+          "Suppose you have 82 and need to take away 47. You can take away 4 tens, but 2 ones are not enough to take away 7 ones. Break one of the 8 tens into 10 ones. You still have 82, now arranged as 7 tens and 12 ones, so each place has enough to subtract.",
+        ],
+      },
       {
         title: "Trade before you take",
         paragraphs: [
@@ -68,6 +96,15 @@ export const addSubtractLessons: Lesson[] = [
         paragraphs: [
           "Subtraction finds a missing part. Adding the part you took away back to the answer must give the starting number: 35 + 47 = 82.",
           "When the starting number is 100, it has no tens to trade. Trade 1 hundred for 10 tens first, then 1 ten for 10 ones: 100 is 9 tens and 10 ones.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Trading a ten",
+        paragraphs: [
+          "One ten has the same value as 10 ones. Trading one ten for 10 ones leaves the starting number unchanged, so the ones and tens can then be subtracted in matching places. Addition checks the difference: difference plus amount removed equals the starting number.",
         ],
       },
     ],
@@ -91,13 +128,20 @@ export const addSubtractLessons: Lesson[] = [
     id: "add-subtract-thousands",
     title: "Add and subtract within 1000",
     summary:
-      "Work place by place from the ones; regroup 10 of a place as 1 of the next, or 1 of a place as 10 of the one before.",
+      "Big numbers use the same trades as smaller ones: ten of one place equal one of the next.",
     templateIds: ["add-three-digit", "subtract-three-digit"],
     objectives: [
       "Add three-digit numbers with regrouping in any place.",
       "Subtract three-digit numbers, regrouping across a zero.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A zero means a place has no pieces to trade",
+        paragraphs: [
+          "To take 268 from 503, you need more ones than the 3 you can see. There are no tens to break apart, but one hundred can become 10 tens. Then one of those tens can become 10 ones. The amount is still 503; only the grouping has changed.",
+        ],
+      },
       {
         title: "Regroup across a zero",
         paragraphs: [
@@ -111,6 +155,15 @@ export const addSubtractLessons: Lesson[] = [
         paragraphs: [
           "When a column sums to 10 or more, keep the ones digit of that sum and carry 1 to the next place: 10 tens make 1 hundred.",
           "A sum can carry in more than one place: 368 + 457 carries from the ones and from the tens, giving 825.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Trading across places",
+        paragraphs: [
+          "In base ten, 10 of one place equal 1 of the next. Addition trades upward when a place reaches 10; subtraction trades downward when a place has too few. These trades preserve the number, including across a zero.",
         ],
       },
     ],
@@ -134,13 +187,20 @@ export const addSubtractLessons: Lesson[] = [
     id: "whole-add-subtract",
     title: "The standard algorithm for large numbers",
     summary:
-      "Line up places and repeat the same column step; every place is worth ten of the place to its right.",
+      "Line up matching places so each column combines the same-sized units, even in a long number.",
     templateIds: ["add-multidigit", "subtract-multidigit"],
     objectives: [
       "Add whole numbers up to 999,999 with the standard algorithm.",
       "Subtract whole numbers up to 999,999, regrouping across several zeros.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "The columns keep track of size",
+        paragraphs: [
+          "In a large number, a 4 might mean four ones, four thousands, or four ten thousands. Lining up the ones places puts every digit above the same place-value unit in the other number. Then each column can be added or subtracted using the trades you already know.",
+        ],
+      },
       {
         title: "One step, any number of places",
         paragraphs: [
@@ -154,6 +214,15 @@ export const addSubtractLessons: Lesson[] = [
         paragraphs: [
           "In 40,003 − 12,456 the ones need a ten, and the tens, hundreds and thousands are all 0. Take 1 ten thousand; each zero it passes becomes 9, and the ones get 10.",
           "40,003 becomes 3 ten thousands, 9 thousands, 9 hundreds, 9 tens and 13 ones. Then subtract each place and check by adding.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The place-value algorithm",
+        paragraphs: [
+          "Whole numbers can be written as sums of their place values. Adding or subtracting matching places and regrouping equal values preserves the result. Align the ones places so every column represents one common unit.",
         ],
       },
     ],
@@ -181,6 +250,8 @@ const terms: [string, string][] = [
 export const addSubtractMethods: Record<string, ProblemMethod> = {
   "add-two-digit-regroup": {
     goal: "Given two two-digit numbers, find their sum.",
+    intuition:
+      "Put together the ones and the tens separately. Every 10 ones can be traded for 1 ten without changing the total.",
     terms,
     method: [
       "Add the ones. If there are 10 or more, write the ones left and carry 1 ten.",

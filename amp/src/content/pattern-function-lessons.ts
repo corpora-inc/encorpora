@@ -28,7 +28,7 @@ export const patternFunctionLessons: Lesson[] = [
     id: "rule-pattern-term",
     title: "Extend a pattern from its rule",
     summary:
-      "Apply the rule to each term to get the next one; the term asked for is reached after one fewer step than its position.",
+      "Start with the first term, then use the rule once for each move to the next term.",
     templateIds: ["rule-pattern-term"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -36,6 +36,13 @@ export const patternFunctionLessons: Lesson[] = [
       "Find a later term and check it by counting how many times the rule is applied.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Start with the first number",
+        paragraphs: [
+          "If a pattern starts at five and says add six, five is already the first term. One use of the rule gives the second term, and another gives the third. Count the steps needed to reach the requested position.",
+        ],
+      },
       patternWords,
       {
         title: "Count the steps, not the terms",
@@ -44,6 +51,15 @@ export const patternFunctionLessons: Lesson[] = [
           "Multiplication rules work the same way. The pattern that starts at 2 with the rule “multiply by 3” is 2, 6, 18, 54, … Its 4th term is reached after 3 steps: 2 × 3 × 3 × 3 = 54. Write the terms in order and count them, so that no step is skipped or added.",
         ],
         illustration: "pattern-rule-steps",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Term position and steps",
+        paragraphs: [
+          "For a starting term $a_1$ and a rule $f$ that gives each next term, $a_{n+1}=f(a_n)$ for positive whole $n$. Reaching term $n$ applies the rule exactly $n-1$ times. For an add-$d$ rule, $a_n=a_1+(n-1)d$; for a multiply-by-$r$ rule, $a_n=a_1r^{n-1}$.",
+        ],
       },
     ],
     workedExample: {
@@ -67,8 +83,7 @@ export const patternFunctionLessons: Lesson[] = [
   {
     id: "rule-pattern-feature",
     title: "What a pattern rule guarantees",
-    summary:
-      "A rule can force a feature that it never states, such as every term being odd; the start and the step together decide it.",
+    summary: "Look for a feature the starting number has and every step keeps.",
     templateIds: ["rule-pattern-feature"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -76,6 +91,13 @@ export const patternFunctionLessons: Lesson[] = [
       "Explain why the feature continues, using what the rule does to odd and even numbers or to multiples.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Notice what never changes",
+        paragraphs: [
+          "A pattern that starts at an odd number and adds four keeps making odd numbers. Each step adds two more pairs and leaves one unpaired. The starting number and the rule together explain the pattern.",
+        ],
+      },
       patternWords,
       {
         title: "Why every term is odd",
@@ -90,6 +112,15 @@ export const patternFunctionLessons: Lesson[] = [
         paragraphs: [
           "If the start and the step are both multiples of the same number, every term is too. The pattern 6, 15, 24, 33 starts at 6 = 3 × 2 and adds 9 = 3 × 3, so every term is a multiple of 3. The terms are not multiples of 9: the start, 6, is not, and adding 9 keeps the same remainder after dividing by 9.",
           "Adding a multiple of 10 changes only the tens and higher places. The pattern 37, 77, 117, 157 adds 40, so every term ends in 7, the last digit of the start. The step ending in 0 does not make the terms end in 0.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Properties of repeated steps",
+        paragraphs: [
+          "A feature holds for every term of a pattern when it is true at the start and one application of the rule preserves it. For example, adding an even number preserves whether a whole number is odd or even.",
         ],
       },
     ],
@@ -115,7 +146,7 @@ export const patternFunctionLessons: Lesson[] = [
     id: "related-patterns-relationship",
     title: "Relate two patterns",
     summary:
-      "Pair the terms of two patterns; when B's step is $k$ times A's step and both start at 0, every B-term is $k$ times its A-term.",
+      "Pair terms in the same positions to compare how two patterns grow.",
     templateIds: ["related-patterns-relationship"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -123,6 +154,13 @@ export const patternFunctionLessons: Lesson[] = [
       "State and explain the relationship between matching terms, such as each B-term being 3 times its A-term.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Match the same positions",
+        paragraphs: [
+          "One pattern starts at zero and adds two; another starts at zero and adds six. At each matching position, the second has grown three times as much. Pair the first terms, the second terms, and so on to see the relationship.",
+        ],
+      },
       {
         title: "Matching terms form ordered pairs",
         paragraphs: [
@@ -137,6 +175,15 @@ export const patternFunctionLessons: Lesson[] = [
           "On the graph, each point is 3 times as high as it is far across, so the points lie on one straight line through (0, 0). The table shows the same fact row by row: 6 = 3 × 2, 12 = 3 × 4, 18 = 3 × 6. To find the B-term paired with any A-term, multiply by 3.",
         ],
         illustration: "related-patterns-graph",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Paired terms",
+        paragraphs: [
+          "If two patterns both start at zero and their constant steps are $a$ and $b$, their terms at the same positive position are $(n-1)a$ and $(n-1)b$. When $b=ka$, the second term is $k$ times the first at every position.",
+        ],
       },
     ],
     workedExample: {
@@ -161,7 +208,7 @@ export const patternFunctionLessons: Lesson[] = [
     id: "dependent-variable-equation",
     title: "Write the equation from a table and graph",
     summary:
-      "Decide which variable depends on the other, then find the fixed multiplier or fixed difference that holds in every row.",
+      "Use the steady change and any starting amount to write a rule from a table.",
     templateIds: ["dependent-variable-equation"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -169,6 +216,13 @@ export const patternFunctionLessons: Lesson[] = [
       "Write an equation such as d = 65t or m = b + 4 that matches every row of a table and every point of a graph.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Find what stays the same",
+        paragraphs: [
+          "A table may show how the cost of notebooks changes with the number bought. Each new notebook may add the same cost. Look for that steady change, then see whether there was already a starting amount before any notebooks were bought.",
+        ],
+      },
       variableWords,
       {
         title: "Find what is constant",
@@ -177,6 +231,15 @@ export const patternFunctionLessons: Lesson[] = [
           "Some relationships add instead of multiply. If Mia is always 4 years older than her brother, then her age $m$ is her brother's age $b$ plus 4 in every row: m = b + 4. Test a rule on every row before choosing it. For the car, d = t + 65 gives 1 + 65 = 66 in the first row, not 65, so it is not the rule.",
         ],
         illustration: "dependent-variable-graph",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "A rule between quantities",
+        paragraphs: [
+          "An equation for two quantities names how one depends on the other. In a proportional relationship, output divided by nonzero input is constant and the rule has form $y=kx$. A fixed added amount instead gives a rule of form $y=kx+b$.",
+        ],
       },
     ],
     workedExample: {
@@ -201,7 +264,7 @@ export const patternFunctionLessons: Lesson[] = [
     id: "dependent-variable-value",
     title: "Use an equation between two variables",
     summary:
-      "Substitute the known value; to find the other variable, undo the multiplication or addition.",
+      "Substitute a known value into the rule, or undo the rule to find a missing value.",
     templateIds: ["dependent-variable-value"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -209,12 +272,28 @@ export const patternFunctionLessons: Lesson[] = [
       "Find the dependent or the independent variable and check the result in the equation.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Follow the rule or work backward",
+        paragraphs: [
+          "A rule takes an input, changes it, and gives an output. If you know the input, follow its steps. If you know the output, undo the steps in reverse order to recover the input.",
+        ],
+      },
       variableWords,
       {
         title: "Substitute, then undo",
         paragraphs: [
           "To use an equation, replace the variable you know with its value. If you know $t$ in d = 55t, multiply: when t = 4, d = 55 × 4 = 220. The equation then gives the dependent value directly.",
           "If you know $d$ instead, the equation becomes a question about $t$: 330 = 55t asks what number times 55 is 330. Division undoes multiplication, so t = 330 ÷ 55 = 6. For an addition rule such as m = b + 3, subtraction undoes addition: when m = 12, b = 12 − 3 = 9. Check by putting the answer back into the equation: 55 × 6 = 330.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Use or undo a rule",
+        paragraphs: [
+          "An equation remains true when its input and matching output are substituted together. For $y=kx+b$ with nonzero $k$, a known input gives $y$ by multiplication and addition; a known output gives $x=(y-b)/k$ by undoing those operations.",
         ],
       },
     ],
@@ -241,7 +320,7 @@ export const patternFunctionLessons: Lesson[] = [
     id: "compare-function-rates",
     title: "Compare two functions",
     summary:
-      "Find each function's rate of change and initial value from its own representation, then compare the numbers, not the pictures.",
+      "Read each function's change per input step before comparing them.",
     templateIds: ["compare-function-rates"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -249,6 +328,13 @@ export const patternFunctionLessons: Lesson[] = [
       "Compare two functions given in different representations.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Compare the same kind of change",
+        paragraphs: [
+          "A table, a graph, and an equation can each show how an output changes when its input grows. Find the change for one input step in each. Then compare those rates using the same units.",
+        ],
+      },
       functionWords,
       {
         title: "One question, four representations",
@@ -263,6 +349,15 @@ export const patternFunctionLessons: Lesson[] = [
         paragraphs: [
           "A negative rate of change means $y$ decreases as $x$ increases. Any negative rate is less than any positive rate, even when its line looks steeper: −3 < 1/2. Compare the signed numbers, not the steepness of the lines.",
           "Compare each feature separately. One function can have the greater rate of change while the other has the greater initial value, and a function that starts higher can be overtaken by one that grows faster.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Compare like features",
+        paragraphs: [
+          "For a linear function $y=mx+b$, the rate of change $m$ is the change in output divided by a nonzero change in input, and $b$ is the output when input is zero. A table, graph, or equation can show the same two features; compare their numbers in matching units.",
         ],
       },
     ],
@@ -289,7 +384,7 @@ export const patternFunctionLessons: Lesson[] = [
     id: "linear-function-choice",
     title: "Linear or not linear",
     summary:
-      "A function is linear exactly when its rule can be rewritten as $y = mx + b$; then its graph is a straight line.",
+      "A linear rule has a constant change in output for each equal change in input.",
     templateIds: ["linear-function-choice"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -297,6 +392,13 @@ export const patternFunctionLessons: Lesson[] = [
       "Show that a function is not linear by finding unequal changes in $y$ over equal steps in $x$.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Look for a steady climb",
+        paragraphs: [
+          "If every extra unit of input changes the output by the same amount, a graph of the relationship makes a straight line. A starting output shifts that line up or down without changing its steady climb.",
+        ],
+      },
       functionWords,
       {
         title: "Equal input steps, equal output changes",
@@ -311,6 +413,15 @@ export const patternFunctionLessons: Lesson[] = [
         paragraphs: [
           "Multiply out parentheses: y = 3(x − 2) is y = 3x − 6. Reorder terms: y = 5 − 2x is y = −2x + 5. Dividing $x$ by a number multiplies it by a fraction: y = x/2 − 4 has rate of change 1/2. All three are linear.",
           "A constant rule such as y = 7 is also linear: it is y = 0x + 7, with rate of change 0, and its graph is a horizontal line. Being linear depends on the rate of change being constant, not on the letter $x$ appearing.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "What makes a function linear",
+        paragraphs: [
+          "A function with numerical input $x$ and output $y$ is linear when one fixed rate $m$ and one fixed starting value $b$ give $y=mx+b$ throughout its domain. Equal nonzero input changes then produce equal output changes; its graph lies on a straight line.",
         ],
       },
     ],
