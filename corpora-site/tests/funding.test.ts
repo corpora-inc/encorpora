@@ -200,15 +200,15 @@ test("guided DirectPay shows configured fixed-term prices and an invoice email",
   }
 });
 
-test("Arkansas free practice keeps the funded purchase preference without tracking", async () => {
+for (const [slug, program] of [["arkansas-efa", "ar-efa"], ["arizona-esa", "az-esa"]]) test(`${slug} free practice keeps the funded purchase preference without tracking`, async () => {
   const dir = await mkdtemp(join(tmpdir(), "corpora-arkansas-entry-"));
   try {
     await buildSite(configSchema.parse({
       appUrl: "https://app.example.invalid",
-      funding: [{ ...guidedFundingFixture, page: { ...guidedFundingFixture.page, slug: "arkansas-efa" } }],
+      funding: [{ ...guidedFundingFixture, page: { ...guidedFundingFixture.page, slug } }],
     }), dir);
-    const html = await readFile(join(dir, "esa/arkansas-efa/index.html"), "utf8");
-    assert.ok(html.includes('href="https://app.example.invalid/try?program=ar-efa"'));
+    const html = await readFile(join(dir, `esa/${slug}/index.html`), "utf8");
+    assert.ok(html.includes(`href="https://app.example.invalid/try?program=${program}"`));
     assert.ok(!html.includes("utm_campaign="));
   } finally { await rm(dir, { recursive: true, force: true }); }
 });
