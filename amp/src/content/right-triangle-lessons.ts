@@ -108,7 +108,7 @@ export const pythagoreanLesson: Lesson = {
   id: "pythagorean-theorem",
   title: "Find the hypotenuse of a right triangle",
   summary:
-    "Use equal areas to understand why the two leg squares determine the longest side.",
+    "A right triangle has one square corner. Its two sides meeting there are the legs; the opposite, longest side is the hypotenuse. Squares built on the legs together cover the same area as a square built on the hypotenuse.",
   templateIds: ["right-triangle"],
   includeGeneratedRepresentation: false,
   objectives: [
@@ -174,7 +174,7 @@ export const missingLegLesson: Lesson = {
   id: "right-triangle-missing-leg",
   title: "Find a missing leg of a right triangle",
   summary:
-    "Subtract the known leg's square from the hypotenuse's square, then recover the missing length.",
+    "In a right triangle, two sides meet at its square corner; these are the legs. The opposite, longest side is the hypotenuse. Its square matches the two leg squares together. Subtract the known leg's square to find the missing leg's square, then take the positive length whose square is that result.",
   templateIds: ["right-triangle-missing-leg"],
   objectives: [
     "Distinguish a known hypotenuse from a known leg.",

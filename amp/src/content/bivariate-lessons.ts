@@ -75,7 +75,7 @@ export const bivariateLessons: Lesson[] = [
     id: "two-way-tables",
     title: "Two-way tables",
     summary:
-      "A two-way table counts two yes-or-no questions at once; comparing percents within rows reveals association.",
+      "A two-way table counts people by two answers, such as owning a dog and walking daily. A percent means 'out of 100': divide a group's matching count by its total, then multiply the result by 100. For example, 12 out of 20 gives 12 ÷ 20 = 0.6; 0.6 × 100 = 60, so 60%.",
     templateIds: [
       "two-way-missing",
       "two-way-row-percent",
@@ -88,6 +88,13 @@ export const bivariateLessons: Lesson[] = [
     sections: [
       {
         stage: "intuition",
+        title: "What each row means",
+        paragraphs: [
+          "Each row is one group, such as dog owners. Its total counts everyone in that group. An inside cell counts those who also give a particular answer, such as walking daily. A percent tells how many out of 100: divide the cell count by the row total, then multiply by 100. If 12 of 20 dog owners walk daily, 12 ÷ 20 = 0.6 and 0.6 × 100 = 60, so 60% walk daily. Compare this with the same percent among people without dogs. If the percents differ, one answer is more common in one recorded group.",
+        ],
+      },
+      {
+        stage: "method",
         title: "Totals fill the blanks",
         paragraphs: [
           "A two-way table sorts the same people by two questions. Each inside cell counts one combination, such as a grade and a curfew answer. Every row adds across to its total, and every column adds down to its total. The Grade 8 row has two blanks, so its total alone cannot fill either one.",
@@ -99,20 +106,20 @@ export const bivariateLessons: Lesson[] = [
         title: "Compare percents, not counts",
         paragraphs: [
           "More eighth graders than seventh graders have a curfew, 24 against 18. But the groups differ in size: 20 seventh graders and 60 eighth graders.",
-          "Within each row: 18 ÷ 20 = 90% of seventh graders, but 24 ÷ 60 = 40% of eighth graders. The percents differ a lot, so grade and having a curfew are associated: in this table, seventh graders are far more likely to have one.",
+          "Within each row, divide the count by its total, then multiply by 100: 18 ÷ 20 = 0.9, so 90% of seventh graders; 24 ÷ 60 = 0.4, so 40% of eighth graders. The percents differ a lot, so grade and having a curfew are associated in this table: a curfew is more common among seventh graders.",
         ],
         illustration: "scene-two-way-bars",
       },
     ],
     workedExample: {
       prompt:
-        "In a table, 45 of 60 athletes and 30 of 40 non-athletes eat breakfast daily. Is there an association?",
+        "A table shows that 12 of 20 dog owners and 12 of 40 people without dogs walk daily. In these recorded groups, are dog ownership and walking daily associated?",
       steps: [
-        "Athletes: 45 ÷ 60 = 75%.",
-        "Non-athletes: 30 ÷ 40 = 75%.",
-        "The row percents are equal, so there is no association, even though the counts differ.",
+        "Among dog owners, $12 \\div 20 = 60\\%$ walk daily.",
+        "Among people without dogs, $12 \\div 40 = 30\\%$ walk daily.",
+        "Both groups have 12 daily walkers, but the groups differ in size. Walking daily is more common among dog owners in this table, so the two answers have an observed association.",
       ],
-      answer: "No association",
+      answer: "Yes, an observed association in this table",
     },
     closingSections: [
       {
@@ -172,6 +179,8 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
   },
   "two-way-missing": {
     goal: "Find a missing count in a two-way table.",
+    intuition:
+      "A two-way table sorts the same people by two answers. Each inside cell counts one combination, and the cells across a row add to that group's total. A column works the same way. If one count is missing, use a row or column whose other counts you know.",
     method: [
       "Find a row or column with only one unknown.",
       "Subtract the known counts from that row’s or column’s total.",
@@ -181,15 +190,19 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
   },
   "two-way-row-percent": {
     goal: "Find a percent within one row of a two-way table.",
+    intuition:
+      "A row represents one group. Its total counts everyone in that group; one inside cell counts those who gave a particular answer. A percent means out of 100. Divide the cell count by the row total, then multiply the result by 100 to find that group's percent.",
     method: [
       "Find the row for the group the question names.",
       "Divide that row’s count by the row total.",
-      "Write the fraction as a percent.",
+      "Multiply the result by 100 and write the percent sign.",
     ],
     watch: "Divide by the row total, not the table total.",
   },
   "two-way-association-choice": {
     goal: "Decide whether two categorical variables are associated.",
+    intuition:
+      "Compare the same answer within two groups. For each group, divide the count giving that answer by the group's total, then multiply by 100 to find its percent (how many out of 100). If 60% of dog owners and 30% of people without dogs walk daily, walking is more common among owners. That difference is an observed association in the table; it does not show what caused it.",
     method: [
       "Find the “Yes” percent within each row.",
       "Compare the percents: a large gap shows association; nearly equal percents show none.",

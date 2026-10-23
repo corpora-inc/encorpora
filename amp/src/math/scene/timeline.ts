@@ -84,6 +84,8 @@ export type ItemState = {
   fill?: FillRole;
   stroke?: InkRole;
   highlight?: boolean;
+  /** Current-step focus strength, eased from 0 to 1. */
+  emphasis?: number;
   /** A reshaped polygon's path, in figure pixels. */
   d?: string;
 };
@@ -174,7 +176,10 @@ export function frameAt(
             else st.opacity = clamp((q - 0.6) / 0.4);
             break;
           case "highlight":
-            if (current && p > 0) st.highlight = true;
+            if (current && p > 0) {
+              st.highlight = true;
+              st.emphasis = p;
+            }
             break;
           case "fill":
             if (p > 0) {

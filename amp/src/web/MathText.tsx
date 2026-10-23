@@ -74,6 +74,35 @@ const escape = (s: string) =>
 type Segment = { text: string; math: boolean; plain?: string };
 const MATHY = /^[\d.,()[\]+−×÷=<>≤≥≠/^_²³ⁿᵖ⁰¹⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉|√·□a-zA-Z-]+$/;
 const OPERATION = /[=+−×÷<>≤≥≠/^_²³ⁿᵖ₀-₉√]|\b[a-z]\(|\d-|-\d|\b\d+[a-z]\b/;
+const COORDINATE_PAIR =
+  /^\(\s*[+−-]?\d+(?:\.\d+)?\s*,\s*[+−-]?\d+(?:\.\d+)?\s*\)$/;
+
+/** A comma between ordered pairs is a wrapping opportunity; the comma inside
+ * a pair (or another grouped expression) is not. */
+function formulaClauses(formula: string): string[] {
+  const parts: string[] = [];
+  let start = 0;
+  const groups: string[] = [];
+  for (let i = 0; i < formula.length; i++) {
+    const char = formula[i]!;
+    if ("([{".includes(char)) groups.push(char);
+    else if (")]}".includes(char)) groups.pop();
+    else if (
+      !groups.length &&
+      /[,;:]/.test(char) &&
+      /\s/.test(formula[i + 1] ?? "")
+    ) {
+      parts.push(formula.slice(start, i));
+      let end = i + 1;
+      while (/\s/.test(formula[end] ?? "")) end++;
+      parts.push(formula.slice(i, end));
+      start = end;
+      i = end - 1;
+    }
+  }
+  parts.push(formula.slice(start));
+  return parts;
+}
 
 function mathyWord(word: string) {
   if (!MATHY.test(word)) return false;
@@ -106,6 +135,26 @@ export function segments(text: string): Segment[] {
       push("?", false);
       part = part.slice(1);
     }
+    // A relation written as a set keeps each complete ordered pair together.
+    // Braces remain visible punctuation rather than becoming TeX grouping.
+    const set = /^(\s*\{\s*)(.*?)(\s*\}\s*)$/.exec(part);
+    if (set) {
+      const pairs = formulaClauses(set[2]!);
+      if (
+        pairs.every((pair, i) =>
+          i % 2 ? /^,\s+$/.test(pair) : COORDINATE_PAIR.test(pair),
+        )
+      ) {
+        push(set[1]!, false);
+        for (const pair of pairs) {
+          if (COORDINATE_PAIR.test(pair))
+            out.push({ text: toTex(pair), math: true, plain: pair });
+          else push(pair, false);
+        }
+        push(set[3]!, false);
+        return;
+      }
+    }
     const words = part.split(/(\s+)/);
     let run: string[] = [];
     const flush = () => {
@@ -123,15 +172,25 @@ export function segments(text: string): Segment[] {
       }
       const formula = run.join("").trim();
       const lead = run.join("").match(/^\s*/)![0];
-      if (formula && OPERATION.test(formula)) {
+      const parts = formulaClauses(formula);
+      if (
+        formula &&
+        (OPERATION.test(formula) ||
+          parts.some((part) => COORDINATE_PAIR.test(part)))
+      ) {
         push(lead, false);
         // Commas, colons and semicolons outside parentheses separate
         // formulas, so each clause typesets (and wraps) on its own.
-        const parts = formula.includes("(")
-          ? [formula]
-          : formula.split(/([,:;]\s+)/);
-        for (const part of parts)
-          if (/^[,:;]\s+$/.test(part) || !OPERATION.test(part))
+        for (const [index, part] of parts.entries())
+          if (
+            /^[,:;]\s+$/.test(part) ||
+            (!OPERATION.test(part) &&
+              !COORDINATE_PAIR.test(part) &&
+              !(
+                /^[a-zA-Z]$/.test(part) &&
+                /^[,:;]\s+$/.test(parts[index + 1] ?? "")
+              ))
+          )
             push(part, false);
           else out.push({ text: toTex(part), math: true, plain: part });
       } else push(run.join(""), false);
