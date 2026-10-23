@@ -68,6 +68,8 @@ Account advisory locks serialize initial/final responses, request replacement, w
 
 Effective learning authorization joins email-plus evidence to a completed request and the exact enabled, unexpired policy and its installation generation. Re-enabling an earlier policy does not revive requests invalidated by an intervening change. Policy disablement or replacement blocks learning and new annual/funded purchases through this method, including servers with stale configuration. Existing separately verified manual-consent records retain their own path. Annual billing also requires `AMP_STRIPE_CONSENT_POLICY_VERSION` to match the accepted notice version; a mismatch rejects a new purchase. The staff consent importer cannot fabricate the reserved self-service method.
 
+The entire `internal-email-plus` method family is reserved for self-service evidence. A server rejects versions it does not recognize instead of treating them as manual verification. The staff importer also rejects that family. Deploy readers with this boundary before issuing a new method version; enable new workflows only after every authorizing server and mail worker supports their request and message semantics. Retention retires evidence pointers across the family without changing independently verified manual records.
+
 Withdrawal and account-wide learning deletion cancel pending enrollment within the same account transaction. Parents retain account access to export, review, withdraw and request deletion without granting fresh learning consent. Export omits challenge material, encrypted recipient, address hash and private deployment-review references. [16 CFR 312.6](https://www.ecfr.gov/current/title-16/chapter-I/subchapter-C/part-312/section-312.6)
 
 ## Retention
