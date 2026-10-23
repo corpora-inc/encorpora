@@ -60,6 +60,7 @@ import { integerExponentLessons } from "./integer-exponent-lessons";
 import { descriptiveStatisticsLessons } from "./descriptive-statistics-lessons";
 import { percentChangeLessons } from "./percent-change-lessons";
 import { successivePercentChangeLesson } from "./successive-percent-change-lesson";
+import { slopeTriangleStatementsLesson } from "./slope-triangle-statements-lesson";
 import { inequalityLessons } from "./inequality-lessons";
 import { linearSystemLessons } from "./linear-system-lessons";
 import { rightTriangleLessons } from "./right-triangle-lessons";
@@ -711,6 +712,7 @@ export const lessons: readonly Lesson[] = [
   ...powerLessons,
   ...percentChangeLessons,
   successivePercentChangeLesson,
+  slopeTriangleStatementsLesson,
   ...inequalityLessons,
   ...linearSystemLessons,
   ...rationalExpressionLessons,

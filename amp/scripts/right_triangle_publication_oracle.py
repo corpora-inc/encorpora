@@ -53,7 +53,8 @@ def text(element):
 def parse_publication(document):
     template = 'right-triangle' if document['lessonId'] == 'pythagorean-theorem' else document['lessonId']
     tree = HtmlTree(document['html']).root
-    exercises = tree.findall(".//section[@class='exercise']")
+    exercises = [section for section in tree.iter('section')
+                 if 'exercise' in section.get('class', '').split()]
     require(len(exercises) == 12, 'Each triangle sheet must have twelve exercises')
     result = []
     for index, exercise in enumerate(exercises, 1):
@@ -115,7 +116,9 @@ def review_right_triangle_publications(documents):
     for change in ('duplicate-question', 'wrong-answer', 'missing-question', 'mismatched-pair'):
         broken = copy.deepcopy(documents)
         document = next(doc for doc in broken if doc['lessonId'] == CONVERSE and doc['kind'] == 'solutions')
-        chunks = re.findall(r'<section class="exercise">[\s\S]*?</section>', document['html'])
+        chunks = re.findall(
+            r'<section class="(?:[^"]*\s)?exercise(?:\s[^"]*)?">[\s\S]*?</section>',
+            document['html'])
         require(len(chunks) == 12, 'Cannot construct publication mutation')
         replacement = chunks[0]
         if change == 'duplicate-question':

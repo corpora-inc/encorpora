@@ -1,7 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { createRequire } from "node:module";
 import { publicationHtml } from "../src/content/publications";
 import { lessons } from "../src/content/lessons";
+import { generateProblem } from "../src/math/engine";
+const { JSDOM } = createRequire(import.meta.url)("jsdom") as {
+  JSDOM: new (html: string) => { window: { document: Document } };
+};
 test("workbooks and solutions reproduce the same twelve exercises without answer leakage", () => {
   for (const lesson of lessons) {
     const workbook = publicationHtml(lesson, "workbook"),
@@ -20,4 +25,46 @@ test("publication content escapes source text rather than executing markup", () 
   const html = publicationHtml(lesson, "lesson");
   assert.ok(!html.includes("<script>"));
   assert.ok(html.includes("&lt;script&gt;"));
+});
+test("multi-select solutions review each printed statement once and retain its letter", () => {
+  const plain = (element: Element) => {
+    const copy = element.cloneNode(true) as Element;
+    copy.querySelectorAll<HTMLElement>(".print-math[data-plain]").forEach((math) =>
+      math.replaceWith(math.dataset.plain ?? ""),
+    );
+    return copy.textContent?.replace(/\s+/g, " ").trim() ?? "";
+  };
+  for (const [lessonId, familyId] of [
+    ["quadrilateral-hierarchy", "quadrilateral-hierarchy-multiselect"],
+    ["slope-triangle-statements", "slope-triangle-statements"],
+  ]) {
+    const bound = lessons.find((lesson) => lesson.id === lessonId);
+    assert.ok(bound);
+    const lesson = { ...bound, templateIds: [familyId] };
+    const workbook = new JSDOM(publicationHtml(lesson, "workbook")).window.document;
+    const solutions = new JSDOM(publicationHtml(lesson, "solutions")).window.document;
+    const workItems = [...workbook.querySelectorAll(".exercise")];
+    const solvedItems = [...solutions.querySelectorAll(".exercise")];
+    assert.equal(workItems.length, 12);
+    assert.equal(solvedItems.length, 12);
+    for (let index = 0; index < 12; index++) {
+      const problem = generateProblem(familyId, `print:${lessonId}:1:${index}`);
+      assert.equal(problem.public.response.kind, "multi-select");
+      if (problem.public.response.kind !== "multi-select") continue;
+      const labels = problem.public.response.options.map((option) => option.label);
+      assert.deepEqual(
+        [...workItems[index]!.querySelectorAll(".print-choices > li")].map(plain),
+        labels,
+      );
+      assert.equal(solvedItems[index]!.querySelector(".print-choices"), null);
+      assert.ok(solvedItems[index]!.classList.contains("exercise--solutions"));
+      const explanations = [
+        ...solvedItems[index]!.querySelectorAll(":scope > ol[type='A'] > li"),
+      ].map(plain);
+      assert.equal(explanations.length, labels.length);
+      for (let choice = 0; choice < labels.length; choice++)
+        assert.ok(explanations[choice]!.startsWith(`“${labels[choice]}” `));
+      assert.ok(plain(solvedItems[index]!).includes("Answer:"));
+    }
+  }
 });

@@ -9,6 +9,14 @@ export const curriculumConnections: (Omit<
   to: string;
 })[] = [
   {
+    from: "dilations-similarity",
+    to: "slope",
+    kind: "application",
+    explanation:
+      "Scaling a right triangle's horizontal and vertical changes by the same factor preserves their ratio. This explains why triangles along one straight line give the same slope.",
+    templateIds: ["slope-triangle-statements"],
+  },
+  {
     from: "odd-and-even",
     to: "rule-patterns",
     kind: "extension",

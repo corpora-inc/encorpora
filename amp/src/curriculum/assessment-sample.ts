@@ -134,11 +134,11 @@ export const assessmentSample: readonly AssessmentSampleItem[] = [
   },
   {
     sourceId: "mcas-2025-8",
-    item: "19; printed p.23",
+    item: "19; printed p.23; PDF p.25; standard map printed p.25",
     requirement: "Relate similar triangles to equal slopes",
-    templateIds: [],
+    templateIds: ["slope-triangle-statements"],
     limitations:
-      "Combines similarity, slope reasoning and multiple statements; isolated numeric slopes do not close it.",
+      "Original three-of-six statement selections compare right triangles on one nonvertical line, including matching angles, similarity versus congruence, lengths and equal signed slopes. Separated triangles with horizontal and vertical legs are used; constructed proofs, arbitrary orientations and full 8.EE.B.6 coverage are not established. This occurrence does not estimate frequency.",
   },
   {
     sourceId: "mcas-2025-10",

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { mkdir } from "node:fs/promises";
 import { chromium, webkit, type Page } from "playwright";
 import { createServer } from "vite";
@@ -21,6 +22,7 @@ const database = process.env.AMP_TEST_DATABASE_URL;
 if (!database) throw new Error("AMP_TEST_DATABASE_URL is required");
 assertTestDatabaseTarget(database);
 const templateId = "quadrilateral-hierarchy-multiselect";
+const graphTemplateId = "slope-triangle-statements";
 const origin = "http://127.0.0.1:4420";
 await migrate(database);
 const repository = new PostgresRepository(database, {
@@ -445,6 +447,142 @@ try {
       assert.deepEqual(errors, [], `${width}px ${theme} page errors`);
       await context.close();
     }
+
+  // A graph and six claims must remain usable in the phone answer dialog.
+  for (const [graphWidth, graphHeight] of [
+    [320, 568],
+    [390, 844],
+  ]) {
+    const generatedGraph = generateProblem(graphTemplateId, "independent-0");
+    const graphProblem = {
+      ...generatedGraph,
+      public: {
+        ...generatedGraph.public,
+        id: createHash("sha256")
+          .update(`${graphTemplateId}:${learner.id}:phone:${graphWidth}`)
+          .digest("hex"),
+      },
+    };
+    assert.equal(graphProblem.public.response.kind, "multi-select");
+    assert.equal(graphProblem.public.response.options.length, 6);
+    assert.equal(graphProblem.public.figure?.kind, "scene");
+    await repository.transaction("development-household", learner.id, (tx) =>
+      tx.saveProblem(graphProblem),
+    );
+    const graphContext = await browser.newContext({
+      viewport: { width: graphWidth, height: graphHeight },
+      colorScheme: "light",
+      hasTouch: true,
+    });
+    const graphPage = await graphContext.newPage();
+    graphPage.setDefaultTimeout(20_000);
+    graphPage.on("pageerror", (error) => errors.push(error.message));
+    await graphPage.goto(origin);
+    await choose(
+      graphPage.getByRole("button", { name: "Learner", exact: true }),
+      learner.id,
+    );
+    await graphPage.route(
+      `**/api/v1/learners/${learner.id}/batches`,
+      (route) => {
+        const request = route.request();
+        if (
+          request.method() !== "POST" ||
+          request.postDataJSON()?.templateId !== graphTemplateId
+        )
+          return route.continue();
+        return route.fulfill({
+          json: {
+            problems: [graphProblem.public],
+            hints: {
+              [graphProblem.public.id]: { hint: graphProblem.hint },
+            },
+            selection: [
+              {
+                problemId: graphProblem.public.id,
+                reason: "focus",
+                strand: "geometry",
+              },
+            ],
+            lesson: null,
+          },
+        });
+      },
+    );
+    const graphBatch = graphPage.waitForResponse(
+      (response) =>
+        response.url().endsWith("/batches") &&
+        response.request().method() === "POST" &&
+        response.request().postDataJSON()?.templateId === graphTemplateId,
+    );
+    await startTopic(graphPage, graphTemplateId);
+    const graphIssued = await graphBatch;
+    assert.equal(graphIssued.status(), 200);
+    assert.equal(
+      (await graphIssued.json()).problems[0]?.id,
+      graphProblem.public.id,
+    );
+    const graphForm = await openAnswers(graphPage, 3);
+    assert.equal(await graphForm.getByRole("checkbox").count(), 6);
+    await graphForm.getByRole("checkbox").first().check();
+    const answerDialog = graphPage.locator(".choice-entry-dialog[open]");
+    const details = answerDialog.locator(".multi-select-question");
+    const summary = details.locator("summary");
+    assert.ok(
+      !(await details.evaluate((node) => (node as HTMLDetailsElement).open)),
+    );
+    await summary.click();
+    assert.ok(
+      await details.evaluate((node) => (node as HTMLDetailsElement).open),
+    );
+    await details.locator(".scene-figure").waitFor({ state: "visible" });
+    assert.ok(
+      await graphForm.isVisible(),
+      "Expanding the diagram keeps answers open",
+    );
+    const lastGraphOption = graphForm.getByRole("checkbox").last();
+    await lastGraphOption.scrollIntoViewIfNeeded();
+    const optionBox = await lastGraphOption.boundingBox();
+    assert.ok(
+      optionBox &&
+        optionBox.y >= 0 &&
+        optionBox.y + optionBox.height <= graphHeight,
+      "The sixth choice remains reachable with the diagram expanded",
+    );
+    for (const selector of [".choice-submit", ".dialog-close"]) {
+      const box = await answerDialog.locator(selector).boundingBox();
+      assert.ok(
+        box && box.y >= 0 && box.y + box.height <= graphHeight + 1,
+        `${selector} stays visible with the diagram expanded`,
+      );
+    }
+    await summary.click();
+    assert.ok(
+      !(await details.evaluate((node) => (node as HTMLDetailsElement).open)),
+    );
+    assert.ok(
+      await graphForm.getByRole("checkbox").first().isChecked(),
+      "Collapsing the diagram preserves the selection",
+    );
+    const graphAnswer = parseSelection(graphProblem.answer);
+    assert.ok(graphAnswer && graphAnswer.length === 3);
+    for (const option of graphProblem.public.response.options) {
+      const checkbox = graphForm.locator(
+        `input[type="checkbox"][value="${option.id}"]`,
+      );
+      if (graphAnswer.includes(option.id)) await checkbox.check();
+      else await checkbox.uncheck();
+    }
+    const graphAttempt = graphPage.waitForResponse(
+      (response) =>
+        response.url().endsWith("/attempts") &&
+        response.request().method() === "POST",
+    );
+    await graphForm.getByRole("button", { name: "Check" }).click();
+    assert.equal((await graphAttempt).status(), 200);
+    await graphPage.locator(".feedback.correct").waitFor();
+    await graphContext.close();
+  }
 
   // A trial keeps an incomplete selection when the learner checks the map.
   const trial = await app.inject({
