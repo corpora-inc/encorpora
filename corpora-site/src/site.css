@@ -1149,6 +1149,11 @@ footer > .fine {
   overflow-wrap: anywhere;
 }
 .funding-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 24px; margin: 28px 0 20px; }
+.funding-product-proof { align-items: start; gap: clamp(24px, 4vw, 56px); }
+.funding-product-proof > * { min-width: 0; }
+.funding-product-proof .hero-demo { transform: none; }
+.funding-proof-links { list-style: none; padding: 0; }
+.funding-proof-links a { display: inline-block; padding-block: 10px; }
 .funding-explore { display: inline-flex; align-items: center; min-height: 44px; font-weight: 650; }
 .funding-guided .funding-steps { list-style: none; counter-reset: purchase-step; padding: 0; display: grid; gap: 14px; }
 .funding-guided .funding-steps li {
