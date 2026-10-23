@@ -425,14 +425,38 @@ try {
         await dialog.waitFor();
         assert.match((await dialog.textContent()) ?? "", /30 answered/);
         const shown = await prompt.textContent();
+        const progress = await app.inject({
+          method: "GET",
+          url: `/api/v1/learners/${trial.learnerId}/progress`,
+          headers: { authorization: `Trial ${trial.token}` },
+        });
+        assert.equal(progress.statusCode, 200, progress.body);
+        const earned = progress
+          .json()
+          .skills.filter(
+            (skill: { independentCorrect: number }) =>
+              skill.independentCorrect > 0,
+          ).length;
+        assert.ok(earned > 0, `${tag}: the assessment earned visible skills`);
         await dialog.getByRole("link", { name: "See your full map" }).click();
         await page.waitForURL("**/pathways?context=trial");
         await page.locator(".pathways-canvas canvas").waitFor();
+        // Compact maps omit explanatory status copy, but keep progress and resume visible.
+        const resume = page.getByRole("link", {
+          name: "Resume free assessment →",
+          exact: true,
+        });
+        await resume.waitFor();
+        assert.equal(await resume.getAttribute("href"), "/try/practice");
         await page
-          .getByText(
-            "Your free assessment and practice are lighting up this map.",
-          )
+          .locator(".pathways-summary")
+          .filter({ hasText: new RegExp(`^${earned} skills illuminated`) })
           .waitFor();
+        assert.equal(
+          await page.getByRole("combobox", { name: /^Learner/ }).count(),
+          0,
+        );
+        await fits(page, `${tag}: earned pathways`);
         assert.equal(
           await used(trial.learnerId, trial.token),
           30,
