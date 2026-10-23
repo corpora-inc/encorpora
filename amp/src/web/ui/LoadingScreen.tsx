@@ -1,3 +1,5 @@
+import { useEffect, type ReactNode } from "react";
+import { buttonClass } from "./Button";
 import { AppError } from "../lib/AppError";
 import { brand } from "../../brand";
 
@@ -11,10 +13,12 @@ export function LoadingScreen({
   error = "",
   retry,
   busy = false,
+  recovery,
 }: {
   error?: string;
   retry?: () => void;
   busy?: boolean;
+  recovery?: ReactNode;
 }) {
   return (
     <div className="app-loading" aria-busy={!error}>
@@ -28,6 +32,7 @@ export function LoadingScreen({
                 Try again
               </button>
             )}
+            {recovery}
           </>
         )}
       </main>
@@ -41,14 +46,41 @@ export function RouteError({
   error: unknown;
   reset: () => void;
 }) {
+  const pathways =
+    window.location.pathname === "/pathways" ||
+    window.location.pathname.startsWith("/pathways/");
+  const mapHref =
+    new URLSearchParams(window.location.search).get("context") === "trial"
+      ? "/pathways?context=trial"
+      : "/pathways";
+  useEffect(() => {
+    console.error("Application route failed to load or render.");
+  }, [error]);
   return (
     <LoadingScreen
       error={
         error instanceof AppError
           ? error.message
-          : "This screen could not be loaded. Try again."
+          : "This screen could not be loaded."
       }
-      retry={reset}
+      retry={pathways ? undefined : reset}
+      recovery={
+        pathways && (
+          <div
+            style={{ display: "flex", flexWrap: "wrap", gap: "var(--space-2)" }}
+          >
+            <a className={buttonClass("primary")} href={mapHref}>
+              Back to map
+            </a>
+            <button
+              className={buttonClass("secondary")}
+              onClick={() => window.location.reload()}
+            >
+              Reload page
+            </button>
+          </div>
+        )
+      }
     />
   );
 }

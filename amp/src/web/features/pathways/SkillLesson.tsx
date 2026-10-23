@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { LessonFailure } from "./LessonRecovery";
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 import type { ProblemLessonView } from "../../../content/problem-lessons";
@@ -6,7 +8,13 @@ import { ProblemLesson } from "../../ProblemLesson";
 import "../../practice.css";
 import "../../scene/scene-player.css";
 import "katex/dist/katex.min.css";
-export default function SkillLesson({ templateId }: { templateId: string }) {
+export default function SkillLesson({
+  templateId,
+  onBack,
+}: {
+  templateId: string;
+  onBack: () => void;
+}) {
   const lesson = useQuery({
     queryKey: ["pathways-lesson", templateId],
     queryFn: ({ signal }) =>
@@ -25,12 +33,12 @@ export default function SkillLesson({ templateId }: { templateId: string }) {
       ),
     staleTime: 300000,
   });
+  useEffect(() => {
+    if (lesson.isError) console.error("Pathways lesson request failed.");
+  }, [lesson.isError]);
   if (lesson.isError)
     return (
-      <p role="alert">
-        The lesson could not be loaded.{" "}
-        <button onClick={() => void lesson.refetch()}>Retry lesson</button>
-      </p>
+      <LessonFailure onBack={onBack} retry={() => void lesson.refetch()} />
     );
   if (!lesson.data) return <p role="status">Loading lesson…</p>;
   return (

@@ -37,6 +37,7 @@ import {
   progressOptions as trialProgressOptions,
 } from "../trial/api";
 import { Dialog } from "../../ui/Dialog";
+import { LessonBoundary } from "./LessonRecovery";
 const SkillLesson = lazy(() => import("./SkillLesson"));
 import { trialEvidenceOptions } from "./queries";
 import "./pathways.css";
@@ -641,9 +642,13 @@ export function MapView({
             Try this problem type →
           </Link>
         )}
-        <Suspense fallback={<p role="status">Loading lesson…</p>}>
-          {lesson && <SkillLesson key={lesson} templateId={lesson} />}
-        </Suspense>
+        {lesson && (
+          <LessonBoundary key={lesson} onBack={() => setLesson(null)}>
+            <Suspense fallback={<p role="status">Loading lesson…</p>}>
+              <SkillLesson templateId={lesson} onBack={() => setLesson(null)} />
+            </Suspense>
+          </LessonBoundary>
+        )}
       </Dialog>
     </main>
   );
