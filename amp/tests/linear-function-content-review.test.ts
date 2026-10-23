@@ -60,10 +60,25 @@ sys.path.insert(0, 'scripts')
 spec = importlib.util.spec_from_file_location('central_math_review', 'scripts/independent-math-review.py')
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
-from linear_function_math_oracle import review_linear_function_content, review_content_mutations
-summary = review_linear_function_content()
+import copy
+from linear_function_math_oracle import content, review_linear_function_content
+data = content()
+first = next(sheet for sheet in data['worksheets'] if sheet['templateId'] == 'linear-initial-value-meaning')
+data['worksheets'].remove(first)
+data['worksheets'].insert(0, first)
+summary = review_linear_function_content(data)
 assert summary['worksheets'] == 96, summary
-assert review_content_mutations() >= 8
+missing = copy.deepcopy(data)
+missing['worksheets'] = [sheet for sheet in missing['worksheets'] if sheet['templateId'] != 'linear-initial-value-meaning']
+wrong = copy.deepcopy(data)
+wrong['worksheets'][0]['problems'][0]['answer'] = 'wrong-choice'
+for mutant in (missing, wrong):
+    try:
+        review_linear_function_content(mutant)
+    except (ValueError, AssertionError):
+        pass
+    else:
+        raise AssertionError('Content mutant accepted')
 print(summary['worksheets'])`,
       ],
       {
