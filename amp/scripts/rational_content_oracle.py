@@ -147,13 +147,13 @@ def check_lesson(record):
     require(evaluate(worked['answer'].strip('$')) == answer, 'Incorrect rational lesson worked answer')
     chains = [chain for step in worked['steps'] for chain in equalities(step)]
     require(any(chain[-1] == answer for chain in chains), 'Rational lesson lacks an exact derivation of its answer')
-    prose = ' '.join(p for section in lesson['sections'] for p in section['paragraphs'])
+    prose = ' '.join(p for section in [*lesson['sections'], *lesson.get('closingSections', [])] for p in section['paragraphs'])
     for word in VOCABULARY + {'signed-fraction-sum': ['opposite', 'common denominator'],
                               'signed-fraction-product': ['reciprocal', 'sign'],
                               'complex-fraction': ['main fraction bar', 'reciprocal'],
                               'rational-power': ['root', 'exponent', 'reciprocal', 'positive']}[template]:
         require(word in prose.lower(), f'Missing standalone rational vocabulary: {word}')
-    for paragraph in [p for section in lesson['sections'] for p in section['paragraphs']]:
+    for paragraph in [p for section in [*lesson['sections'], *lesson.get('closingSections', [])] for p in section['paragraphs']]:
         for math in re.findall(r'\$([^$]+)\$', paragraph):
             if '=' in math and not re.search('[A-Za-z]', re.sub(r'\\[A-Za-z]+', '', math)):
                 equalities('$' + math + '$')
@@ -223,7 +223,11 @@ def review_content_mutations(records):
     probes = []
 
     def probe(source, checker, change):
-        value = copy.deepcopy(source); change(value); probes.append((checker, value))
+        checker(source)
+        value = copy.deepcopy(source)
+        change(value)
+        require(value != source, 'Rational mutation did not change its target')
+        probes.append((checker, value))
 
     def unreduced(problem):
         value = Fraction(problem['answer'])
@@ -239,7 +243,17 @@ def review_content_mutations(records):
     probe(sheet, check_worksheet, lambda r: r.__setitem__('workbookHtml', r['solutionsHtml']))
     probe(sheet, check_worksheet, lambda r: r.__setitem__('workbookHtml', r['workbookHtml'].replace('class="writing"', 'class="writing" data-answer="1"', 1)))
     probe(lessons['complex-fraction'], check_lesson, lambda r: r['lesson']['workedExample'].__setitem__('answer', '$\\frac{3}{2}$'))
-    probe(lessons['signed-fraction-sum'], check_lesson, lambda r: r['lesson']['sections'][0]['paragraphs'].__setitem__(0, 'A fraction.'))
+    def remove_equal_parts(record):
+        lesson = record['lesson']
+        sections = [*lesson['sections'], *lesson.get('closingSections', [])]
+        require(any('equal parts' in p for section in sections for p in section['paragraphs']),
+                'Missing vocabulary mutation target')
+        for section in sections:
+            section['paragraphs'] = [p.replace('equal parts', 'pieces') for p in section['paragraphs']]
+
+    probe(lessons['signed-fraction-sum'], check_lesson, remove_equal_parts)
+    probe(lessons['signed-fraction-sum'], check_lesson,
+          lambda r: r['lesson']['closingSections'][0]['paragraphs'].append('A false check: $1 + 1 = 3$.'))
     line = lessons['signed-fraction-sum']['figures'][0]
     probe(line, check_figure, lambda r: r.__setitem__('svg', r['svg'].replace('data-end="1"', 'data-end="2"', 1)))
     probe(line, check_figure, lambda r: r.__setitem__('svg', re.sub(r'(data-point="end" cx=")([0-9.]+)', lambda m: m[1] + str(float(m[2]) + 20), r['svg'], count=1)))
