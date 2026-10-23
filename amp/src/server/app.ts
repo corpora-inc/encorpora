@@ -41,6 +41,11 @@ import { buildInfo } from "./build-info";
 import { brand } from "../brand";
 import { FLAG_RATE_LIMIT, problemFlagSchema } from "../feedback/problem-flags";
 import { recordProblemFlag } from "../feedback/record";
+import {
+  publicJson,
+  sendPublicJson,
+  type PublicJson,
+} from "./public-content-cache";
 const idSchema = z.string().uuid();
 const paramsSchema = z.object({ learnerId: idSchema });
 const birthYearSchema = z.number().int().min(1900).max(2100);
@@ -108,9 +113,42 @@ export function buildApp(options: AppOptions) {
         }
       : false,
     bodyLimit: 32 * 1024,
+    // Router errors occur before hooks; mark them private too.
+    frameworkErrors: (error, _request, reply) => {
+      const status = error.statusCode ?? 500;
+      const body = JSON.stringify({
+        error: status < 500 ? "Bad Request" : "Internal Server Error",
+        code: error.code,
+        message:
+          status < 500 ? error.message : "Unable to complete the request",
+        statusCode: status,
+      });
+      reply.raw.writeHead(status, {
+        "Content-Type": "application/json",
+        "Content-Length": Buffer.byteLength(body),
+        "Cache-Control": "no-store",
+        "X-Content-Type-Options": "nosniff",
+      });
+      reply.raw.end(body);
+    },
     trustProxy: options.trustedProxies?.length
       ? [...options.trustedProxies]
       : false,
+  });
+  // Apply this before the rate limiter so even an early 429 cannot be cached.
+  // Only the two successful public-content routes override it.
+  app.addHook("onRequest", async (_request, reply) => {
+    reply.header("Cache-Control", "no-store");
+    reply.header("X-Content-Type-Options", "nosniff");
+  });
+  app.addHook("onSend", async (_request, reply, payload) => {
+    if (reply.statusCode >= 400) {
+      reply.header("Cache-Control", "no-store");
+      reply.removeHeader("ETag");
+      reply.removeHeader("Content-Encoding");
+      reply.removeHeader("Vary");
+    }
+    return payload;
   });
   // Signed-in requests are limited per credential, so a household or co-op
   // behind one address is not throttled as one client; anonymous requests
@@ -132,11 +170,6 @@ export function buildApp(options: AppOptions) {
 }
 
 function routes(app: FastifyInstance, options: AppOptions) {
-  app.addHook("onRequest", async (request, reply) => {
-    if (request.url !== "/api/v1/catalog" && request.url !== "/api/v1/health")
-      reply.header("Cache-Control", "no-store");
-    reply.header("X-Content-Type-Options", "nosniff");
-  });
   // Fastify's default 404 logs the raw URL; this one logs it redacted.
   app.setNotFoundHandler((request, reply) => {
     request.log.info(
@@ -200,23 +233,33 @@ function routes(app: FastifyInstance, options: AppOptions) {
   app.get("/api/v1/session", async (request) => ({
     accountId: await options.authenticate(request),
   }));
-  app.get("/api/v1/problem-lessons/:templateId", async (request) => {
+  const lessonCache = new Map<string, PublicJson>();
+  app.get("/api/v1/problem-lessons/:templateId", async (request, reply) => {
     const { templateId } = z
       .object({ templateId: z.string().max(100) })
       .parse(request.params);
     if (!hasProblemLesson(templateId))
       throw new ApiError(404, "Lesson not found");
-    return { lesson: problemLesson(templateId, "library") };
+    let cached = lessonCache.get(templateId);
+    if (!cached) {
+      cached = publicJson({ lesson: problemLesson(templateId, "library") });
+      lessonCache.set(templateId, cached);
+    }
+    return sendPublicJson(request, reply, cached);
   });
-  app.get("/api/v1/catalog", async () => ({
-    templates,
-    lessons,
-    skills,
-    coverage: auditCurriculum(),
-    mode: options.development ? "development" : "hosted",
-    // The free practice a visitor gets before the paywall.
-    trial: options.repository.limits ?? trialLimits(),
-  }));
+  let catalogCache: PublicJson | undefined;
+  app.get("/api/v1/catalog", async (request, reply) => {
+    catalogCache ??= publicJson({
+      templates,
+      lessons,
+      skills,
+      coverage: auditCurriculum(),
+      mode: options.development ? "development" : "hosted",
+      // The free practice a visitor gets before the paywall.
+      trial: options.repository.limits ?? trialLimits(),
+    });
+    return sendPublicJson(request, reply, catalogCache);
+  });
   app.get("/api/v1/learners", async (request) => ({
     learners: await options.repository.list(await parent(request)),
   }));
