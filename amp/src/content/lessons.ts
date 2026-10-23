@@ -82,6 +82,8 @@ export interface Lesson {
   /** Omit a generic practice figure when authored illustrations teach the same representation. */
   includeGeneratedRepresentation?: boolean;
   sections: {
+    /** Teaching layer; untagged sections explain the method. */
+    stage?: "intuition" | "method" | "formal";
     title: string;
     paragraphs: string[];
     illustration?:
@@ -218,7 +220,7 @@ export interface Lesson {
       | "absolute-value-shifted"
       | "pythagorean-rearrangement";
   }[];
-  /** Optional sections following the example: visual meaning, then formal statement. */
+  /** Closing material defaults to formal; tag explanatory visuals as method. */
   closingSections?: Lesson["sections"];
   workedExample: {
     prompt: string;
@@ -242,6 +244,7 @@ export const baseLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "method",
         title: "Keep track",
         paragraphs: [
           "Put a finger beside the first object. Say one. Move to a new object and say two. Keep going until every object has a number word.",
@@ -249,10 +252,21 @@ export const baseLessons: Lesson[] = [
         ],
       },
       {
+        stage: "method",
         title: "The last word tells how many",
         paragraphs: [
           "When you finish counting, the last number names the size of the whole group. You do not need to begin counting again when someone asks how many.",
           "Spread the same objects apart and count them again. The group takes more space, but it has the same number of objects.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Counting a finite collection",
+        paragraphs: [
+          "A finite collection has a number of objects that counting can finish. Match each object to exactly one number word in order, beginning with one. The last number gives the collection’s cardinality, meaning its number of objects. A collection with no objects has cardinality zero.",
+          "Changing the order or position of the objects does not change the cardinality, provided no objects are added or removed.",
         ],
       },
     ],

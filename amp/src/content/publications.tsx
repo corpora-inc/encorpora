@@ -58,7 +58,7 @@ import { inequalityTemplates } from "../math/inequality-practice";
 import { rightTriangleWorksheetProblems } from "./right-triangle-worksheets";
 import { absoluteValueWorksheet } from "./absolute-value-worksheets";
 import { absoluteValueTemplates } from "../math/absolute-value-practice";
-import { LessonIllustration } from "./LessonIllustration";
+import { ReferenceLesson } from "./ReferenceLesson";
 import { brand } from "../brand";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -255,52 +255,15 @@ export function publicationHtml(
       </header>
       <h1>{lesson.title}</h1>
       <p className="publication-kind">{kindLabel}</p>
-      <p className="summary">
-        <PrintMathText text={lesson.summary} />
-      </p>
       {kind === "lesson" ? (
-        <>
-          {lesson.sections.map((section) => (
-            <section key={section.title}>
-              <h2>{section.title}</h2>
-              {section.paragraphs.map((p) => (
-                <p key={p}>
-                  <PrintMathText text={p} />
-                </p>
-              ))}
-              {section.illustration && (
-                <LessonIllustration kind={section.illustration} print />
-              )}
-            </section>
-          ))}
-          <section className="example">
-            <h2>A worked example</h2>
-            <p>
-              <PrintMathText text={lesson.workedExample.prompt} />
-            </p>
-            <ol>
-              {lesson.workedExample.steps.map((s) => (
-                <li key={s}>
-                  <PrintMathText text={s} />
-                </li>
-              ))}
-            </ol>
-            <p className="worked-answer">
-              <strong>Answer:</strong>{" "}
-              <PrintMathText
-                text={[
-                  lesson.workedExample.answer,
-                  lesson.workedExample.answerUnit,
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-              />
-            </p>
-          </section>
-          {lesson.includeGeneratedRepresentation !== false &&
-            problems[0]?.public.figure && (
+        <ReferenceLesson
+          lesson={lesson}
+          print
+          representation={
+            lesson.includeGeneratedRepresentation !== false &&
+            problems[0]?.public.figure ? (
               <section className="representation">
-                <h2>Explore the representation</h2>
+                <h3>Explore the representation</h3>
                 <p>
                   <PrintMathText text={problems[0].public.prompt} />
                 </p>
@@ -309,35 +272,14 @@ export function publicationHtml(
                   <PrintMathText text={problems[0].explanation.join(" ")} />
                 </p>
               </section>
-            )}
-          {lesson.closingSections?.map((section) => (
-            <section key={section.title}>
-              <h2>{section.title}</h2>
-              {section.paragraphs.map((p) => (
-                <p key={p}>
-                  <PrintMathText text={p} />
-                </p>
-              ))}
-              {section.illustration && (
-                <LessonIllustration kind={section.illustration} print />
-              )}
-            </section>
-          ))}
-          <h2>Common stumbling blocks</h2>
-          <ul>
-            {lesson.pitfalls.map((p) => (
-              <li key={p}>
-                <PrintMathText text={p} />
-              </li>
-            ))}
-          </ul>
-          <h2>For a parent or learning partner</h2>
-          <p>
-            <PrintMathText text={lesson.parentGuide} />
-          </p>
-        </>
+            ) : undefined
+          }
+        />
       ) : (
         <>
+          <p className="summary">
+            <PrintMathText text={lesson.summary} />
+          </p>
           <p>
             {kind === "workbook"
               ? "Write your answer and show your thinking. Use the matching worked solutions to review."
