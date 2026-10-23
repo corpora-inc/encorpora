@@ -37,6 +37,11 @@ test("real mail opt-in requires explicit production, sender, tracking and disclo
     retention: "Reviewed provider retention",
   });
   assert.deepEqual(resendConfiguration(env, policy), config);
+  policy.notice.processors.at(-1)!.name = "Resend (Plus Five Five, Inc.)";
+  assert.deepEqual(resendConfiguration(env, policy), config);
+  policy.notice.processors.at(-1)!.name = "Resend unrelated processor";
+  assert.throws(() => resendConfiguration(env, policy), /processor/);
+  policy.notice.processors.at(-1)!.name = "Resend";
   for (const change of [
     { NODE_ENV: "development" },
     { AMP_CONSENT_DELIVERY: "other" },
