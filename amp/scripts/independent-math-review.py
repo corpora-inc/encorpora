@@ -34,6 +34,7 @@ from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, rev
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
 from factoring_math_oracle import FACTORING, solve_factoring, review_factoring_fixtures, review_explanation as review_factoring_explanation, FactoringReview, review_factoring_content
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
+from successive_percent_math_oracle import SUPPORTED as SUCCESSIVE_PERCENT, solve as solve_successive_percent, review_problem as review_successive_percent_problem, self_test as review_successive_percent_fixtures
 from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, review_percent_change_fixtures, check_explanation as review_percent_explanation, review_percent_change_content
 from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review_linear_system_fixtures, LinearSystemReview, review_linear_system_explanation, review_linear_system_content
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
@@ -105,7 +106,7 @@ SUPPORTED |= QUADRATIC_IRRATIONAL
 SUPPORTED |= RELATION_REPAIR
 SUPPORTED |= COMPLEX
 SUPPORTED |= INVERSE_ROUNDING
-SUPPORTED |= STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT
+SUPPORTED |= SUCCESSIVE_PERCENT | STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT
 SUPPORTED |= ASSESSMENT_GAP
 SUPPORTED |= RADICAL_EQUATION | RATIONAL_EQUATION | GEOMETRY_PROOF
 SUPPORTED |= RATIONAL_EXPRESSION
@@ -199,6 +200,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if public["templateId"] in SUCCESSIVE_PERCENT:
+        return solve_successive_percent(public)
     if public["templateId"] in HIERARCHY_MULTISELECT:
         return solve_hierarchy_multiselect(public)
     if public["templateId"] in COMPLEX:
@@ -575,6 +578,8 @@ def review(stream):
             if record:
                 factoring_review.record(public, solved)
             review_factoring_explanation(problem)
+        if template in SUCCESSIVE_PERCENT:
+            review_successive_percent_problem(problem)
         if template in PERCENT_CHANGE:
             review_percent_explanation(public, problem['explanation'])
         if template in INEQUALITY:
@@ -808,6 +813,7 @@ def review(stream):
     review_factoring_fixtures()
     review_inequality_fixtures()
     review_percent_change_fixtures()
+    review_successive_percent_fixtures()
     review_linear_system_fixtures()
     review_right_triangle_fixtures()
     print('Independent area/volume review: ' + json.dumps({**area_volume_fixtures, 'checkedEqualities': area_volume_equalities}), file=sys.stderr)

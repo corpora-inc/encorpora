@@ -13,6 +13,7 @@ import {
 } from "../src/math/selection-response";
 import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
+import { assertOpaqueFeedback } from "./feedback-opacity-proof";
 import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
 
@@ -75,13 +76,15 @@ const errors: string[] = [];
 let trialLearner: string | null = null;
 
 async function openAnswers(page: Page, count: number) {
+  const form = page.locator(".multi-select-form:visible");
+  if (await form.isVisible()) return form;
   const opener = page.getByRole("button", {
     name: new RegExp(
       `Select ${count} statements|Review \\d of ${count} selected`,
     ),
   });
-  if (await opener.isVisible()) await opener.click();
-  const form = page.locator(".multi-select-form:visible");
+  await opener.waitFor({ state: "visible" });
+  await opener.click();
   await form.waitFor();
   return form;
 }
@@ -328,6 +331,12 @@ try {
       const payload = (await sent).postDataJSON();
       assert.equal(payload.response, serializeSelection(wrong));
       await page.locator(".feedback.incorrect").waitFor();
+      if (width === 320)
+        await assertOpaqueFeedback(
+          page,
+          "incorrect",
+          `${process.env.AMP_BROWSER === "webkit" ? "webkit" : "chromium"}-${width}-${theme}-multiselect-incorrect`,
+        );
       const panel = (await page.locator(".solution-panel").textContent()) ?? "";
       assert.match(panel, /You selected/);
       assert.ok(!panel.includes("option-") && !panel.includes('["'));
@@ -338,6 +347,100 @@ try {
       for (const id of answer) {
         const label = options.find((option) => option.id === id)!.label;
         assert.ok(answerCopy.includes(label), `Feedback names ${id}`);
+      }
+      if (width === 320) {
+        const correctProblem = generateProblem(
+          templateId,
+          `${learner.id}:${theme}:feedback-correct`,
+        );
+        const skippedProblem = generateProblem(
+          templateId,
+          `${learner.id}:${theme}:feedback-skipped`,
+        );
+        assert.equal(correctProblem.public.response.kind, "multi-select");
+        await repository.transaction(
+          "development-household",
+          learner.id,
+          async (tx) => {
+            await tx.saveProblem(correctProblem);
+            await tx.saveProblem(skippedProblem);
+          },
+        );
+        let nextProblem = correctProblem;
+        await page.route(
+          `**/api/v1/learners/${learner.id}/batches`,
+          (route) => {
+            const request = route.request();
+            if (
+              request.method() !== "POST" ||
+              request.postDataJSON()?.templateId !== templateId
+            )
+              return route.continue();
+            return route.fulfill({
+              json: {
+                problems: [nextProblem.public],
+                hints: {
+                  [nextProblem.public.id]: { hint: nextProblem.hint },
+                },
+                selection: [
+                  {
+                    problemId: nextProblem.public.id,
+                    reason: "focus",
+                    strand: "geometry",
+                  },
+                ],
+                lesson: null,
+              },
+            });
+          },
+        );
+        const correctBatch = page.waitForResponse(
+          (response) =>
+            response.url().endsWith("/batches") &&
+            response.request().postDataJSON()?.templateId === templateId,
+        );
+        await startTopic(page, templateId);
+        const correctIssued = await correctBatch;
+        assert.equal(
+          (await correctIssued.json()).problems[0]?.id,
+          correctProblem.public.id,
+        );
+        form = await openAnswers(
+          page,
+          correctProblem.public.response.selectionCount,
+        );
+        const correctIds = parseSelection(correctProblem.answer);
+        assert.ok(correctIds);
+        for (const id of correctIds)
+          await form.locator(`input[type="checkbox"][value="${id}"]`).check();
+        await form.getByRole("button", { name: "Check" }).click();
+        await page.locator(".feedback.correct").waitFor();
+        await assertOpaqueFeedback(
+          page,
+          "correct",
+          `${process.env.AMP_BROWSER === "webkit" ? "webkit" : "chromium"}-${width}-${theme}-multiselect-correct`,
+        );
+
+        nextProblem = skippedProblem;
+        const skippedBatch = page.waitForResponse(
+          (response) =>
+            response.url().endsWith("/batches") &&
+            response.request().postDataJSON()?.templateId === templateId,
+        );
+        await startTopic(page, templateId);
+        assert.equal(
+          (await (await skippedBatch).json()).problems[0]?.id,
+          skippedProblem.public.id,
+        );
+        await page
+          .getByRole("button", { name: "Skip this problem and see its answer" })
+          .click();
+        await page.locator(".feedback.skipped").waitFor();
+        await assertOpaqueFeedback(
+          page,
+          "skipped",
+          `${process.env.AMP_BROWSER === "webkit" ? "webkit" : "chromium"}-${width}-${theme}-multiselect-skipped`,
+        );
       }
       assert.deepEqual(errors, [], `${width}px ${theme} page errors`);
       await context.close();

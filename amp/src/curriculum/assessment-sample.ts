@@ -2,6 +2,12 @@
  * Descriptions are original summaries; source questions and artwork are not copied. */
 export const assessmentSources = [
   {
+    id: "ny-2026-7",
+    url: "https://www.nysedregents.org/ei/math/2026/2026-released-items-math-g7.pdf",
+    version: "Spring 2026, grade 7 released mathematics questions",
+    reviewedAt: "2026-10-23",
+  },
+  {
     id: "sat-framework-2026",
     url: "https://satsuite.collegeboard.org/media/pdf/assessment-framework-for-digital-sat-suite.pdf",
     version: "Version 4, September 2026",
@@ -41,6 +47,15 @@ export interface AssessmentSampleItem {
   limitations: string;
 }
 export const assessmentSample: readonly AssessmentSampleItem[] = [
+  {
+    sourceId: "ny-2026-7",
+    item: "17; printed p.10; PDF p.12; standard map PDF p.38",
+    requirement:
+      "Apply a discount, then tax to the discounted price, and round the final amount to cents (NY-7.RP.3)",
+    templateIds: ["successive-percent-change"],
+    limitations:
+      "Original numeric-response problems assess two stated changes with a changing base and final-only half-up cent rounding, including decimal rates. Selecting among the released item's distractors, inverse recovery, stepwise rounding and constructed justification are not assessed. This occurrence does not establish frequency or complete standards coverage.",
+  },
   {
     sourceId: "mcas-2025-5",
     item: "1; printed p.5",

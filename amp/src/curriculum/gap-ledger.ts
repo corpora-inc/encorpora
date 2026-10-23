@@ -95,7 +95,7 @@ export const initialGapTasks: readonly GapTask[] = [
     sourceIds: ["7.RP.A.3"],
     objective: "Apply successive percentage changes with changing bases.",
     existingSupport:
-      "The in-the-same-proportion book teaches discount then tax and equal opposite changes; adaptive families apply one change.",
+      "successive-percent-change applies two stated changes in all direction orders, including equal opposite rates, discount then tax and final-only half-up cent rounding. Inverse recovery and rounding after each step require additional practice.",
     acceptance: [
       "Include increase/increase, decrease/decrease and both mixed orders.",
       "Assess equal opposite changes and reverse recovery with nonzero multipliers.",

@@ -357,10 +357,8 @@ header {
   padding: 16px;
   border: 1px solid var(--color-border);
   border-radius: 18px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 -8px 40px var(--color-shadow);
-  animation: feedback-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: feedback-sheet-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .feedback .practice-tools {
   margin-top: -4px;
@@ -368,7 +366,7 @@ header {
 /* Feedback surfaces come from the status tokens, so both themes keep AA text
    contrast: ink on the soft fill, the accent only on the mark and border. */
 .feedback.correct {
-  background: color-mix(in srgb, var(--color-success) 94%, transparent);
+  background: var(--color-success);
   border-color: color-mix(
     in srgb,
     var(--color-success-accent) 35%,
@@ -416,7 +414,7 @@ header {
   }
 }
 .feedback.incorrect {
-  background: color-mix(in srgb, var(--color-danger) 94%, transparent);
+  background: var(--color-danger);
   border-color: color-mix(
     in srgb,
     var(--color-danger-accent) 35%,
@@ -427,7 +425,7 @@ header {
 /* A skip is neutral: the answer on a plain surface, no red and no mark of
    a miss. */
 .feedback.skipped {
-  background: color-mix(in srgb, var(--color-surface-raised) 94%, transparent);
+  background: var(--color-surface-raised);
   border-color: var(--color-border-strong);
   color: var(--color-on-surface);
 }
@@ -539,6 +537,11 @@ header {
 @keyframes feedback-in {
   from {
     opacity: 0;
+    transform: translateY(24px);
+  }
+}
+@keyframes feedback-sheet-in {
+  from {
     transform: translateY(24px);
   }
 }
