@@ -55,15 +55,17 @@ try {
     let heldResolve!: () => void, releaseResolve!: () => void;
     let held = Promise.resolve(),
       release = Promise.resolve();
+    let identity = "parent-a";
+    let consentActive = true;
     await page.route("**/api/v1/me", (route) =>
       route.fulfill({
         json: fixtureMe(
           {
             consent: {
-              status: "active",
+              status: consentActive ? "active" : "withdrawn",
               policyVersion: "fixture",
               recordedAt: "2026-01-01T00:00:00.000Z",
-              withdrawnAt: null,
+              withdrawnAt: consentActive ? null : "2026-01-02T00:00:00.000Z",
             },
             learners: [
               {
@@ -76,7 +78,7 @@ try {
             ],
             retained: retentionNotice,
           },
-          "parent-a",
+          identity,
         ),
       }),
     );
@@ -244,6 +246,8 @@ try {
       path: new URL(`error-${viewport.width}.png`, directory).pathname,
     });
     record = undefined;
+    identity = "parent-b";
+    consentActive = false;
     await page.evaluate(() =>
       (window as any).fundingRender("parent-b", "token-b", false),
     );
@@ -254,6 +258,8 @@ try {
         .isDisabled(),
     );
     // A prior account's delayed mutation must not select its request in the new account.
+    identity = "parent-a";
+    consentActive = true;
     await page.evaluate(() =>
       (window as any).fundingRender("parent-a", "token-a", true),
     );
@@ -268,6 +274,8 @@ try {
     await page.getByRole("button", { name: "Prepare unpaid quote" }).click();
     await held;
     record = undefined;
+    identity = "parent-c";
+    consentActive = true;
     await page.evaluate(() =>
       (window as any).fundingRender("parent-c", "token-c", true),
     );

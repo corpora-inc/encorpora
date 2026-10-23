@@ -50,6 +50,7 @@ try {
       let apiEnabled = false;
       let checkoutFail = true;
       let unsafeCheckout = true;
+      let identity = "synthetic-parent";
       await page.route("**/api/v1/me", (route) =>
         route.fulfill({
           json: fixtureMe(
@@ -78,7 +79,7 @@ try {
               ],
               retained: retentionNotice,
             },
-            "synthetic-parent",
+            identity,
           ),
         }),
       );
@@ -237,6 +238,7 @@ try {
       assert.ok(!storage.includes("García"));
       assert.ok(!messages.join("\n").includes("García"));
       record = undefined;
+      identity = "different-parent";
       await page.evaluate(() =>
         (window as any).renderInvoice("different-parent"),
       );
