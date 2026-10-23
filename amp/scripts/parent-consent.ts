@@ -1,5 +1,6 @@
 import { revokeAdvertisingPermission } from "../src/advertising/permission.js";
 import { cancelPendingConsent } from "../src/parent-consent/lifecycle.js";
+import { isEmailPlusMethod } from "../src/parent-consent/contracts.js";
 import { readFile } from "node:fs/promises";
 import { createDatabasePool } from "../src/server/database.js";
 import { z } from "zod";
@@ -20,9 +21,8 @@ const record = schema.parse(
   JSON.parse(await readFile(process.argv[2], "utf8")),
 );
 if (
-  ["internal-email-plus-v1", "monetary-transaction"].includes(
-    record.verificationMethod,
-  )
+  isEmailPlusMethod(record.verificationMethod) ||
+  record.verificationMethod === "monetary-transaction"
 )
   throw new Error("The self-service method requires its own verified workflow");
 const pool = createDatabasePool({
