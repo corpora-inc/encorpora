@@ -6,7 +6,7 @@ The first sample examines 20 selected released questions from Massachusetts grad
 
 Three problem families address explicit error bounds, symmetric margins of error and radians as arc length divided by radius. Each includes an instance-specific hint, worked answer, standalone lesson, visualization and an independent public-givens mathematics oracle. Their coverage records describe the assessed subset. Unit-circle coordinates, other inference demands and measurement-precision conventions require further families.
 
-The sample identifies useful follow-up work: inverse decimal rounding, repairing a plotted relation to make a function, congruence correspondence, multi-step geometric reasoning, large percent increases, quadratic parameter constraints and bounds on means from grouped data. Related arithmetic, function, scale-drawing and study-design families should be reused before authoring additional generators. Multi-select questions, linked multipart scoring and written reasoning need response-format and rubric work as well as content.
+The sample identifies useful follow-up work: general inverse decimal intervals, repairing a plotted relation to make a function, congruence correspondence, multi-step geometric reasoning, large percent increases, quadratic parameter constraints and bounds on means from grouped data. A one-choice inverse rounding family covers positive decimals rounded to tenths and hundredths under the halfway-up convention. Related arithmetic, function, scale-drawing and study-design families should be reused before authoring additional generators. Multi-select questions, linked multipart scoring and written reasoning need response-format and rubric work as well as content.
 
 ## Selection weights
 
