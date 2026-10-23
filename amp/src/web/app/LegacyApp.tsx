@@ -21,7 +21,7 @@ import { Navigate } from "@tanstack/react-router";
 import { useAppRoute } from "../app-routes";
 import { Select } from "../PremiumControls";
 import { PrintMathText, printMathStyles } from "../../content/PrintMathText";
-import { LessonIllustration } from "../../content/LessonIllustration";
+import { ReferenceLesson } from "../../content/ReferenceLesson";
 import { nativeRuntime } from "../native-runtime";
 import { ALREADY_REPORTED, noteAllowed } from "../../feedback/problem-flags";
 import { NativeFamily } from "../NativeGate";
@@ -1705,63 +1705,7 @@ function LegacyScreen() {
                   </div>
                 </section>
               )}
-              {readingLesson.sections.map((s) => (
-                <section key={s.title}>
-                  <h3>{s.title}</h3>
-                  {s.paragraphs.map((p) => (
-                    <p key={p}>
-                      <PrintMathText text={p} />
-                    </p>
-                  ))}
-                  {s.illustration && (
-                    <LessonIllustration kind={s.illustration} />
-                  )}
-                </section>
-              ))}
-              <section className="worked-example">
-                <h3>A worked example</h3>
-                <p>
-                  <PrintMathText text={readingLesson.workedExample.prompt} />
-                </p>
-                <ol>
-                  {readingLesson.workedExample.steps.map((s) => (
-                    <li key={s}>
-                      <PrintMathText text={s} />
-                    </li>
-                  ))}
-                </ol>
-                <strong>
-                  <PrintMathText text={readingLesson.workedExample.answer} />
-                  {readingLesson.workedExample.answerUnit
-                    ? ` ${readingLesson.workedExample.answerUnit}`
-                    : ""}
-                </strong>
-              </section>
-              {readingLesson.closingSections?.map((s) => (
-                <section key={s.title}>
-                  <h3>{s.title}</h3>
-                  {s.paragraphs.map((p) => (
-                    <p key={p}>
-                      <PrintMathText text={p} />
-                    </p>
-                  ))}
-                  {s.illustration && (
-                    <LessonIllustration kind={s.illustration} />
-                  )}
-                </section>
-              ))}
-              <h3>Things to watch for</h3>
-              <ul>
-                {readingLesson.pitfalls.map((p) => (
-                  <li key={p}>
-                    <PrintMathText text={p} />
-                  </li>
-                ))}
-              </ul>
-              <h3>For the grown-up nearby</h3>
-              <p>
-                <PrintMathText text={readingLesson.parentGuide} />
-              </p>
+              <ReferenceLesson lesson={readingLesson} />
             </article>
           )}
         </main>

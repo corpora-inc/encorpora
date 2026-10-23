@@ -36,6 +36,7 @@ test("a lesson's worked example is another instance, never the learner's problem
       problem.public.prompt,
     );
     assert.equal(lesson.templateId, template.id);
+    assert.ok(lesson.intuition?.trim(), `${template.id} has a plain opening`);
     assert.ok(lesson.example.steps.length > 0);
     assert.ok(!/^option-/.test(lesson.example.answer), template.id);
     assert.deepEqual(

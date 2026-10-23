@@ -604,7 +604,8 @@ header {
 .lesson-goal {
   margin: 0;
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 400;
+  line-height: 1.6;
 }
 .lesson-terms {
   display: grid;

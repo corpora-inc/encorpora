@@ -13,6 +13,14 @@ export const fractionAdditionLesson: Lesson = {
   ],
   sections: [
     {
+      stage: "intuition",
+      title: "Count pieces of one size",
+      paragraphs: [
+        "One third and one fourth are different-sized pieces of the same whole. To add them, cut both into smaller pieces of one size, then count how many you have. Cutting adds no length; it only changes how you count it.",
+        "In a fraction such as 1/3, the bottom number says how many equal pieces make a whole; the top number counts the pieces you have. Here the whole is one meter.",
+      ],
+    },
+    {
       title: "A fraction counts equal parts of a whole",
       paragraphs: [
         "This lesson uses counting, addition, multiplication, and division of whole numbers. Whole numbers are 0, 1, 2, 3, and so on. For example, 3 × 4 counts 3 equal groups of 4, and 12 ÷ 3 splits 12 into 3 equal groups of 4.",
@@ -61,6 +69,17 @@ export const fractionAdditionLesson: Lesson = {
         "A common factor is a positive whole number that divides both the numerator and denominator without a remainder. Divide both by the same common factor to preserve the value. A fraction is in simplest form when no common factor greater than 1 remains. For small numbers, check the whole numbers from 2 through the smaller of the numerator and denominator. If one divides both exactly, divide both by it and repeat with the smaller numbers. Stop when none divides both.",
         "For example, in 21/30, 2 does not divide 21 exactly, but 3 divides both numbers: 21 ÷ 3 = 7 and 30 ÷ 3 = 10. Thus 21/30 = 7/10. The only positive whole numbers that divide 7 exactly are 1 and 7; 7 does not divide 10 exactly, so 7/10 is in simplest form. The same check shows that 7/12 is in simplest form: 7 does not divide 12 exactly either.",
         "A sum can exceed one whole. For example, 3/4 + 2/3 = 9/12 + 8/12 = 17/12. Twelve of the twelfths make one whole, leaving five twelfths: 17/12 = 1 + 5/12. Both expressions name the same amount.",
+      ],
+    },
+  ],
+  closingSections: [
+    {
+      stage: "formal",
+      title: "Equivalent fractions and addition",
+      paragraphs: [
+        "The numerator counts the selected equal parts; the positive denominator gives the number of those parts per whole. Equivalent fractions represent the same number. Multiplying numerator and denominator by the same nonzero number preserves the value.",
+        "For integers $a,c$ and positive integers $b,d$, addition is $\\frac{a}{b}+\\frac{c}{d}=\\frac{ad+bc}{bd}$. More generally, any positive common multiple $m$ of $b$ and $d$ gives $\\frac{a(m/b)+c(m/d)}{m}$. The denominator describes the shared part size, so only the counts are added.",
+        "A fraction is in simplest form when numerator and denominator have no common positive integer factor greater than one. For measured quantities, both fractions must refer to the same-sized whole before this addition rule can be used.",
       ],
     },
   ],

@@ -3,7 +3,7 @@ export interface CoverageTarget {
   id: string;
   name: string;
   kind: "state" | "assessment";
-  sourceInventory: "pending";
+  sourceInventory: "pending" | "partial";
 }
 const states = `AL|Alabama
 AK|Alaska

@@ -16,6 +16,8 @@ export type ProblemLessonView = {
   templateId: string;
   title: string;
   goal: string;
+  /** Plain-language meaning before the example; no unexplained notation. */
+  intuition?: string;
   /** The named property or definition the method rests on. */
   principle: string | null;
   terms: { term: string; meaning: string }[];
@@ -33,6 +35,8 @@ export type ProblemLessonView = {
 export type ProblemMethod = {
   /** What the problem gives and what it asks for, in one sentence. */
   goal: string;
+  /** Plain-language meaning before the example; no unexplained notation. */
+  intuition?: string;
   /** Terms the method uses, defined before use. */
   terms?: [string, string][];
   /** The steps that solve every instance of this problem type. */
@@ -89,6 +93,11 @@ export function problemLesson(
     templateId,
     title: template.title,
     goal: authored?.goal ?? `${template.description}`,
+    intuition:
+      authored?.intuition ??
+      reference?.summary ??
+      authored?.goal ??
+      template.description,
     principle: principles[templateId] ?? null,
     terms: (authored?.terms ?? []).map(([term, meaning]) => ({
       term,

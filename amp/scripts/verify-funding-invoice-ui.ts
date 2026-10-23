@@ -1,3 +1,5 @@
+import { fixtureMe } from "./me-fixture";
+import { retentionNotice } from "../src/family/contracts.js";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { chromium } from "playwright";
@@ -48,6 +50,39 @@ try {
       let apiEnabled = false;
       let checkoutFail = true;
       let unsafeCheckout = true;
+      let identity = "synthetic-parent";
+      await page.route("**/api/v1/me", (route) =>
+        route.fulfill({
+          json: fixtureMe(
+            {
+              consent: {
+                status: "active",
+                policyVersion: "fixture",
+                recordedAt: "2026-01-01T00:00:00.000Z",
+                withdrawnAt: null,
+              },
+              learners: [
+                {
+                  id: "synthetic-learner",
+                  name: "Sample learner",
+                  deletedAt: null,
+                  access: [],
+                  stripeLinked: false,
+                },
+                {
+                  id: "synthetic-learner-two",
+                  name: "Second learner",
+                  deletedAt: null,
+                  access: [],
+                  stripeLinked: false,
+                },
+              ],
+              retained: retentionNotice,
+            },
+            identity,
+          ),
+        }),
+      );
       await page.route("**/api/v1/funding/**", async (route) => {
         const request = route.request(),
           path = new URL(request.url()).pathname;
@@ -203,6 +238,7 @@ try {
       assert.ok(!storage.includes("García"));
       assert.ok(!messages.join("\n").includes("García"));
       record = undefined;
+      identity = "different-parent";
       await page.evaluate(() =>
         (window as any).renderInvoice("different-parent"),
       );
@@ -230,6 +266,7 @@ try {
       // A configured integration transfers the prepared order, without requiring a PDF upload.
       apiEnabled = true;
       record = undefined;
+      identity = "synthetic-parent";
       await page.reload();
       await page.evaluate((theme) => {
         document.documentElement.dataset.theme = theme;
