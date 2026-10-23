@@ -56,6 +56,7 @@ import { linearSystemMethods } from "./linear-system-lessons";
 import { rightTriangleMethods } from "./right-triangle-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
+import { complexMethods } from "./complex-lessons";
 import { absoluteValueMethods } from "./absolute-value-lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -80,6 +81,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...integerExponentMethods,
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
+  ...complexMethods,
   ...absoluteValueMethods,
   ...polynomialMethods,
   ...earlyDataMethods,

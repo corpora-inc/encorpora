@@ -56,6 +56,7 @@ import { linearSystemPrinciples } from "./linear-system-lessons";
 import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
+import { complexPrinciples } from "./complex-lessons";
 import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
@@ -76,6 +77,7 @@ export const principles: Record<string, string> = {
   ...integerExponentPrinciples,
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
+  ...complexPrinciples,
   ...absoluteValuePrinciples,
   ...polynomialPrinciples,
   ...earlyDataPrinciples,
