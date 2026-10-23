@@ -1,6 +1,7 @@
 import { StateIdentity, stateNames } from "./state-identity.js";
 import React from "./react.js";
 import { formatPrice, type SiteConfig } from "./config.js";
+import { Sample } from "./product.js";
 
 export type FundingRoute = SiteConfig["funding"][number];
 export const fundingLabels: Record<FundingRoute["kind"], string> = {
@@ -77,6 +78,10 @@ export function FundingPage({
   if (!page) throw new Error("Funding page content is missing");
   const presentation = page.presentation;
   const directPay = !!presentation && funding.kind === "classwallet-direct-pay";
+  const showProduct = directPay && ["arkansas-efa", "arizona-esa"].includes(page.slug);
+  const trialHref = appUrl
+    ? new URL(page.slug === "arkansas-efa" ? "/try?program=ar-efa" : page.slug === "arizona-esa" ? "/try?program=az-esa" : "/try", appUrl).href
+    : "/amp/";
   // Funded purchase requests support twelve-month licenses. Personal monthly
   // pricing does not establish a monthly offer through the funding program.
   const fundedPlans = plans.filter((plan) => plan.interval === "year");
@@ -144,6 +149,9 @@ export function FundingPage({
             </p>
           )}
           <h1>{presentation?.headline ?? funding.program}</h1>
+          {showProduct && (
+            <p className="lead">Math that finds your level and chooses what to practice next, so you don’t have to plan every lesson.</p>
+          )}
           {!directPay && <p className="lead">{page.summary}</p>}
           {directPay && fundedPlans.length > 0 && (
             <div className="funding-plan-summary" aria-label="License prices">
@@ -170,9 +178,9 @@ export function FundingPage({
               <a
                 className="funding-explore"
                 data-campaign-action={appUrl ? "try" : undefined}
-                href={appUrl ? new URL(page.slug === "arkansas-efa" ? "/try?program=ar-efa" : page.slug === "arizona-esa" ? "/try?program=az-esa" : "/try", appUrl).href : "/amp/"}
+                href={trialHref}
               >
-                {appUrl ? "Try AMP Math" : "Explore AMP Math"}{" "}
+                {appUrl ? "Start your free math assessment" : "Explore AMP Math"}{" "}
                 <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -192,6 +200,33 @@ export function FundingPage({
           </p>
         </div>
       </div>
+      {showProduct && (
+        <section className="section split funding-product-proof" aria-labelledby="funding-product-proof">
+          <div className="section-heading">
+            <p className="eyebrow">Try the math before you buy</p>
+            <h2 id="funding-product-proof">See what your child gets.</h2>
+            <p>Start with up to 100 free problems. AMP estimates a starting level, then adjusts practice as you answer. Your path shows what to work on next.</p>
+            <p>Open the reasoning on this real AMP problem. Explore a lesson or printable sample, then try the assessment with your child.</p>
+            <div className="funding-actions">
+              <a className="button" href={trialHref} data-campaign-action={appUrl ? "try" : undefined}>
+                {appUrl ? "Start your free assessment" : "Explore AMP Math"} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+            {appUrl && <p className="fine">No account or card required. Ready to buy? You can create your invoice without taking the assessment.</p>}
+            <ul className="funding-proof-links">
+              {appUrl && <li><a href={new URL("/pathways", appUrl).href}>Explore the live curriculum map ↗</a></li>}
+              <li><a href="/#sample-lesson">Read a lesson excerpt →</a></li>
+              <li><a href="/samples/">View printable practice →</a></li>
+              <li><a href="/amp/#coverage">See current curriculum coverage →</a></li>
+            </ul>
+            {supportEmail && <p>Need help choosing or paying? <a href={`mailto:${supportEmail}`}>Email Corpora support</a>.</p>}
+          </div>
+          <div className="hero-demo">
+            <Sample heading="h3" />
+            <p className="demo-caption">An actual AMP problem and explanation. This sample is not an assessment result.</p>
+          </div>
+        </section>
+      )}
       <div className="funding-layout">
         <aside className="funding-status" aria-labelledby="amp-program-status">
           <p className="eyebrow">Before you buy</p>

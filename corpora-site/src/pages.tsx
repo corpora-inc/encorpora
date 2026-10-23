@@ -312,7 +312,7 @@ function Home({ config }: { config: SiteConfig }) {
             Open printable sample <span aria-hidden="true">↗</span>
           </a>
         </div>
-        <div className="lesson-excerpt">
+        <div className="lesson-excerpt" id="sample-lesson">
           <p className="eyebrow">Lesson excerpt · {sampleLesson.title}</p>
           <h3>{sampleLesson.sections[0]!.title}</h3>
           {sampleLesson.sections[0]!.paragraphs.map((p) => (

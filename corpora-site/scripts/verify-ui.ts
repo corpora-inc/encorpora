@@ -156,7 +156,7 @@ try {
   for (const width of [320, 390, 1280]) {
     await fixturePage.setViewportSize({ width, height: 900 });
     await fixturePage.goto(production.url + "/esa/synthetic-program/");
-    const action = fixturePage.locator(".funding-actions .button");
+    const action = fixturePage.locator(".funding-intro .funding-actions .button");
     const href = new URL((await action.getAttribute("href"))!);
     assert.equal(href.protocol, "mailto:");
     assert.equal(
@@ -184,7 +184,17 @@ try {
   for (const slug of ["arkansas-efa", "arizona-esa"]) for (const width of [320, 390, 768, 1280]) {
     await fixturePage.setViewportSize({ width, height: 900 });
     await fixturePage.goto(production.url + `/esa/${slug}/`);
-    const action = fixturePage.locator(".funding-actions .button");
+    const proof = fixturePage.locator(".funding-product-proof");
+    await proof.getByText("See what your child gets.", { exact: true }).waitFor();
+    const assessment = new URL((await proof.getByRole("link", { name: "Start your free assessment" }).getAttribute("href"))!);
+    assert.equal(assessment.pathname, "/try");
+    assert.equal(assessment.searchParams.get("program"), slug === "arkansas-efa" ? "ar-efa" : "az-esa");
+    await proof.locator(".solution summary").focus();
+    await fixturePage.keyboard.press("Enter");
+    assert.equal(await proof.locator(".solution[open]").count(), 1);
+    assert.equal((await new AxeBuilder({ page: fixturePage }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze()).violations.length, 0);
+    await proof.screenshot({ path: `artifacts/funding-proof-${slug}-${width}.png` });
+    const action = fixturePage.locator(".funding-intro .funding-actions .button");
     assert.ok((await action.textContent())?.includes("Create your invoice"));
     const destination = new URL((await action.getAttribute("href"))!);
     assert.equal(destination.pathname, `/invoice/${slug}`);
