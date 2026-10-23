@@ -1,3 +1,8 @@
+import { normalizeSelection } from "./selection-response";
+import {
+  quadrilateralHierarchyMultiselectTemplate,
+  generateQuadrilateralHierarchyMultiselect,
+} from "./quadrilateral-hierarchy-multiselect";
 import {
   congruenceTemplates,
   generateCongruenceProblem,
@@ -431,6 +436,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...fractionPracticeTemplates,
   fractionDivisionExpressionTemplate,
   linearInitialValueMeaningTemplate,
+  quadrilateralHierarchyMultiselectTemplate,
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
@@ -481,6 +487,8 @@ export function isValidResponse(
   problem: PublicProblem,
   response: string,
 ): boolean {
+  if (problem.response.kind === "multi-select")
+    return normalizeSelection(problem.response, response) !== null;
   return problem.response.kind === "choice"
     ? problem.response.options.some((option) => option.id === response)
     : normalizeAnswer(response) !== null;
@@ -489,6 +497,13 @@ export function gradeAnswer(
   problem: GeneratedProblem,
   response: string,
 ): boolean {
+  if (problem.public.response.kind === "multi-select") {
+    const answer = normalizeSelection(problem.public.response, response);
+    return (
+      answer !== null &&
+      answer === normalizeSelection(problem.public.response, problem.answer)
+    );
+  }
   if (problem.public.response.kind === "choice")
     return (
       isValidResponse(problem.public, response) && response === problem.answer
@@ -584,6 +599,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...factoringTemplates,
     ...shapeTemplates,
     ...polygonTemplates,
+    quadrilateralHierarchyMultiselectTemplate,
     ...exponentialTemplates,
     ...angleTemplates,
     ...patternFunctionTemplates,
@@ -794,6 +810,8 @@ function generateRawProblem(
     return fractionDivisionExpressionCase(seed).problem;
   if (templateId === linearInitialValueMeaningTemplate.id)
     return linearInitialValueMeaningCase(seed).problem;
+  if (templateId === quadrilateralHierarchyMultiselectTemplate.id)
+    return generateQuadrilateralHierarchyMultiselect(seed);
   if (elementaryTemplates.some((t) => t.id === templateId))
     return generateElementaryProblem(templateId, seed);
   if (graphicalTemplates.some((t) => t.id === templateId))

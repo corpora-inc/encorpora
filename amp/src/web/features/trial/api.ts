@@ -8,6 +8,7 @@ import {
 import { annualOfferSchema } from "../../../billing/stripe/enrollment-contracts";
 import { request } from "../../lib/api";
 import { AppError } from "../../lib/AppError";
+import { batchWithCapabilityFallback } from "../../lib/batch-capability-fallback";
 import { queryClient } from "../../lib/query";
 import {
   clearStoredTrial,
@@ -199,18 +200,23 @@ export async function startTrial(birthYear: number): Promise<TrialSession> {
 /** The next adaptive problem, or "complete" when the allowance is used. */
 export async function nextProblem(session: TrialSession, templateId?: string) {
   try {
-    return await request(
-      `/learners/${encodeURIComponent(session.learnerId)}/batches`,
-      batchSchema,
+    const storedToken = storedTrial();
+    return await batchWithCapabilityFallback(
       {
-        trial: session.token,
-        body: {
-          count: 1,
-          ...(templateId ? { templateId } : {}),
-          responseCapabilities: ["single-choice-v1"],
-          figureCapabilities: [...figureCapabilities],
-        },
+        count: 1,
+        ...(templateId ? { templateId } : {}),
+        responseCapabilities: ["single-choice-v1", "multi-select-v1"],
+        figureCapabilities: [...figureCapabilities],
       },
+      (body) =>
+        request(
+          `/learners/${encodeURIComponent(session.learnerId)}/batches`,
+          batchSchema,
+          { trial: session.token, body },
+        ),
+      () =>
+        (storedToken === null || storedToken === session.token) &&
+        storedTrial() === storedToken,
     );
   } catch (error) {
     if (error instanceof AppError && error.code === "trial-complete")

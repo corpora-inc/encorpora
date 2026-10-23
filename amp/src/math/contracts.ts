@@ -1,5 +1,10 @@
 import { z } from "zod";
 import {
+  MAX_SELECTION_OPTIONS,
+  normalizeSelection,
+  selectionIdPattern,
+} from "./selection-response";
+import {
   measurementFigureSchemas,
   type MeasurementFigure,
 } from "./measurement-models.js";
@@ -246,7 +251,7 @@ export interface TemplateMetadata {
   difficultyOffset?: number;
   requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */
-  requiredResponseCapability?: "single-choice-v1";
+  requiredResponseCapability?: "single-choice-v1" | "multi-select-v1";
   id: string;
   version: 1;
   title: string;
@@ -254,9 +259,16 @@ export interface TemplateMetadata {
   gradeBand: "K–2" | "3–5" | "6–8" | "9–12";
   description: string;
 }
+export type MultiSelectResponse = {
+  kind: "multi-select";
+  label: string;
+  options: { id: string; label: string }[];
+  selectionCount: number;
+};
 export type ProblemResponse =
   | { kind: "number" | "fraction"; label: string }
-  | { kind: "choice"; label: string; options: { id: string; label: string }[] };
+  | { kind: "choice"; label: string; options: { id: string; label: string }[] }
+  | MultiSelectResponse;
 /** Safe teaching content delivered beside a problem; never grading data. */
 export interface ProblemHint {
   hint: string;
@@ -836,6 +848,37 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
           value.options.length,
       "Choices need unique identifiers and labels",
     ),
+  z
+    .object({
+      kind: z.literal("multi-select"),
+      label: z.string().trim().min(1).max(200),
+      options: z
+        .array(
+          z
+            .object({
+              id: z.string().regex(selectionIdPattern),
+              label: z.string().trim().min(1).max(120),
+            })
+            .strict(),
+        )
+        .min(3)
+        .max(MAX_SELECTION_OPTIONS),
+      selectionCount: z
+        .number()
+        .int()
+        .min(2)
+        .max(MAX_SELECTION_OPTIONS - 1),
+    })
+    .strict()
+    .refine(
+      (value) =>
+        value.selectionCount < value.options.length &&
+        new Set(value.options.map((option) => option.id)).size ===
+          value.options.length &&
+        new Set(value.options.map((option) => option.label)).size ===
+          value.options.length,
+      "Select fewer than all options, using unique identifiers and labels",
+    ),
 ]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
@@ -864,6 +907,11 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
   .strict()
   .refine((problem) => {
     const response = problem.public.response;
+    if (response.kind === "multi-select")
+      return (
+        !problem.choiceFeedback &&
+        normalizeSelection(response, problem.answer) === problem.answer
+      );
     if (response.kind !== "choice") return !problem.choiceFeedback;
     const ids = response.options.map((option) => option.id);
     return (

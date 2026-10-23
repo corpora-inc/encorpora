@@ -26,6 +26,10 @@ import { nativeRuntime } from "../native-runtime";
 import { ALREADY_REPORTED, noteAllowed } from "../../feedback/problem-flags";
 import { NativeFamily } from "../NativeGate";
 import { learningRequest, learningCatalog } from "../learning-transport";
+import {
+  batchWithCapabilityFallback,
+  validationPaths,
+} from "../lib/batch-capability-fallback";
 import { ParentConsentCenter } from "../ParentConsentCenter";
 import { takeConsentChallenge, type ConsentChallenge } from "../consent-link";
 import { ProgressWorkspace, type ProgressView } from "../ProgressWorkspace";
@@ -89,8 +93,13 @@ class HttpError extends Error {
   constructor(
     public status: number,
     message: string,
+    public validationPaths:
+      readonly (readonly (string | number)[])[] | null = null,
   ) {
     super(message);
+  }
+  get code() {
+    return this.message;
   }
 }
 type Catalog = {
@@ -433,7 +442,13 @@ function LegacyScreen() {
     if (epoch !== authEpoch.current)
       throw new Error("Your account session changed.");
     if (!result.ok)
-      throw new HttpError(result.status, data.error ?? "Request failed");
+      throw new HttpError(
+        result.status,
+        data?.error ?? "Request failed",
+        data?.error === "Invalid request"
+          ? validationPaths(data.details)
+          : null,
+      );
     return data;
   }
   async function action(run: () => Promise<void>) {
@@ -820,12 +835,18 @@ function LegacyScreen() {
     hints?: Record<string, ProblemHint>;
   };
   function requestBatch(templateId = family) {
-    return api<Batch>(`/learners/${learner!.id}/batches`, {
-      ...(templateId ? { templateId } : {}),
-      count: 1,
-      responseCapabilities: ["single-choice-v1"],
-      figureCapabilities: [...figureCapabilities],
-    }).then(withProblemHints);
+    const learnerId = learner!.id;
+    const epoch = authEpoch.current;
+    return batchWithCapabilityFallback(
+      {
+        ...(templateId ? { templateId } : {}),
+        count: 1,
+        responseCapabilities: ["single-choice-v1", "multi-select-v1"],
+        figureCapabilities: [...figureCapabilities],
+      },
+      (body) => api<Batch>(`/learners/${learnerId}/batches`, body),
+      () => authEpoch.current === epoch && learnerRef.current === learnerId,
+    ).then(withProblemHints);
   }
   // The next problem is planned as soon as an answer is recorded, so it adapts
   // to that answer and is already on hand when the learner continues.

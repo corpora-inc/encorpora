@@ -64,6 +64,7 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Figure } from "../web/Figure";
 import { generateProblem } from "../math/engine";
+import { answerText } from "../math/selection-response";
 import type { Lesson } from "./lessons";
 import { PrintMathText, printMathStyles } from "./PrintMathText";
 import { printMathCss } from "./print-fonts";
@@ -300,7 +301,8 @@ export function publicationHtml(
                 {i + 1}. <PrintMathText text={p.public.prompt} />
               </h2>
               {p.public.figure && <Figure figure={p.public.figure} />}
-              {p.public.response.kind === "choice" && (
+              {(p.public.response.kind === "choice" ||
+                p.public.response.kind === "multi-select") && (
                 <ol type="A" className="print-choices">
                   {p.public.response.options.map((option) => (
                     <li key={option.id}>
@@ -322,13 +324,7 @@ export function publicationHtml(
                     <strong>
                       Answer:{" "}
                       <PrintMathText
-                        text={
-                          p.public.response.kind === "choice"
-                            ? p.public.response.options.find(
-                                (option) => option.id === p.answer,
-                              )!.label
-                            : p.answer
-                        }
+                        text={answerText(p.public.response, p.answer)}
                       />
                     </strong>
                   </p>
