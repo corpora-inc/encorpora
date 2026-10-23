@@ -26,8 +26,11 @@ export function FreeMeter({
       </span>
       <span className={styles.meterText} aria-hidden="true">
         <strong>{used}</strong>
-        <span className={styles.meterLong}> of {free} free</span>
-        <span className={styles.meterShort}>/{free}</span>
+        {variant === "pill" ? (
+          <span>/{free}</span>
+        ) : (
+          <span> of {free} free</span>
+        )}
       </span>
     </span>
   );

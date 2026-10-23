@@ -413,17 +413,26 @@ try {
       await page.getByRole("link", { name: "AMP home" }).waitFor();
       const signUp = await box(page.locator("main section").first());
       const viewport = page.viewportSize()!;
-      const authInset = await page
-        .locator("main")
-        .evaluate((node) => parseFloat(getComputedStyle(node).paddingTop));
-      if (signUp.height + 2 * authInset <= viewport.height)
+      const content = await box(page.locator("main"));
+      const padding = await page.locator("main").evaluate((node) => ({
+        top: parseFloat(getComputedStyle(node).paddingTop),
+        bottom: parseFloat(getComputedStyle(node).paddingBottom),
+      }));
+      // The support footer has its own row; center inside the usable main area.
+      if (signUp.height + padding.top + padding.bottom <= content.height)
         assert.ok(
-          Math.abs(signUp.y + signUp.height / 2 - viewport.height / 2) <= 1,
-          `${tag}: sign-up card is centered`,
+          Math.abs(
+            signUp.y +
+              signUp.height / 2 -
+              (content.y +
+                padding.top +
+                (content.height - padding.top - padding.bottom) / 2),
+          ) <= 1,
+          `${tag}: sign-up card is centered above the support footer`,
         );
       else
         assert.ok(
-          signUp.y >= authInset,
+          signUp.y >= content.y + padding.top,
           `${tag}: tall sign-up card keeps padding`,
         );
       await fits(page, `${tag} sign-up`);

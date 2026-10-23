@@ -49,6 +49,7 @@ export function Menu({
   triggerRef,
   triggerClassName,
   align = "end",
+  showChevron = true,
 }: {
   /** The trigger's visible text. */
   label: ReactNode;
@@ -60,6 +61,8 @@ export function Menu({
   triggerRef?: Ref<HTMLButtonElement>;
   triggerClassName?: string;
   align?: "start" | "center" | "end";
+  /** Icon-only controls already identify their menu without a second glyph. */
+  showChevron?: boolean;
 }) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
   const [padding, setPadding] = useState<Insets>(() =>
@@ -96,14 +99,16 @@ export function Menu({
           className={`${styles.trigger} ${triggerClassName ?? ""}`}
         >
           {label}
-          <svg
-            className={styles.chevron}
-            viewBox="0 0 12 12"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path d="M2.5 4.5 6 8l3.5-3.5" />
-          </svg>
+          {showChevron && (
+            <svg
+              className={styles.chevron}
+              viewBox="0 0 12 12"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M2.5 4.5 6 8l3.5-3.5" />
+            </svg>
+          )}
         </button>
       </DropdownMenu.Trigger>
       {shielded &&
