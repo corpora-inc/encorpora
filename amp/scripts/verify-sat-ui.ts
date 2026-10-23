@@ -70,9 +70,9 @@ async function noOverflow(page: Page) {
 }
 async function family(page: Page) {
   await exitPractice(page);
-  await page.getByRole("button", { name: "Family menu", exact: true }).click();
+  await page.getByRole("button", { name: "Account menu", exact: true }).click();
   await page
-    .getByRole("menuitem", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage account", exact: true })
     .click();
   await page.getByRole("checkbox", { name: "SAT Math focus" }).waitFor();
 }
