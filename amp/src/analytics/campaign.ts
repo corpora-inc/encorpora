@@ -69,6 +69,15 @@ export const CAMPAIGN_CREATIVES = [
   "ar-premium-homeschool-v1",
   "az-premium-esa-v1",
   "az-premium-homeschool-v1",
+  "shared-map-marin-vertical-v5",
+  "shared-map-marin-wide-v5",
+  "ar-map-cedar-vertical-v5",
+  "ar-map-cedar-wide-v5",
+  "az-map-marin-vertical-v5",
+  "az-map-marin-wide-v5",
+  "shared-practice-marin-vertical-v1",
+  "ar-practice-marin-vertical-v1",
+  "az-practice-marin-vertical-v1",
 ] as const;
 export const campaignEventSchema = z
   .strictObject({

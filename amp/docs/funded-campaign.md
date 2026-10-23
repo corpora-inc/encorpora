@@ -21,13 +21,13 @@ Daily aggregate rows contain only date, campaign, source, medium, action and cou
 
 `amp_campaign_creative_daily` provides an optional creative breakdown of the landing activity and funded-purchase counters. Its rows contain only date, campaign, source, medium, creative, action and count. These are subsets of the existing coarse totals, not extra conversions. The same financial transaction and deduplication marker protect both counts. An absent or unknown creative is omitted rather than inferred; existing records are not backfilled. First-party labels do not establish a causal effect or independently verify the originating ad.
 
-The Arkansas landing script and parent purchase routes preserve only allowlisted `utm_content` values. Invalid content is discarded while valid campaign/source/medium labels can continue. GPC/DNT suppress forwarding and collection; the campaign endpoint also honors those request headers. Creative labels are not added to learner profiles, anonymous assessment records or learning events. `report:campaign` emits this breakdown separately from coarse totals and platform-attributed reporting.
+The Arkansas and Arizona landing scripts and parent purchase routes preserve only allowlisted `utm_content` values. Invalid content is discarded while valid campaign/source/medium labels can continue. GPC/DNT suppress forwarding and collection; the campaign endpoint also honors those request headers. Creative labels are not added to learner profiles, anonymous assessment records or learning events. `report:campaign` emits this breakdown separately from coarse totals and platform-attributed reporting.
 
 Apply migration `0028-creative-campaign.sql` before serving the supporting API. Deploy compatible API instances before forwarding creative labels from the public site or creating attributed funded requests: older strict schemas reject the additional field. Enable live offers and campaign traffic only after deployment and an end-to-end check. The additive table preserves the existing coarse counter tables and their keys.
 
 Verification uses the dedicated database funding-purchase integration suite: concurrent creation/imports, delayed settlement, refund replay, unchanged attribution on retry, expiry, program mismatch, invalid labels and privacy headers. No test contacts a payment or ad platform.
 
-## Live-map and premium-price creative labels
+## Video and premium-price creative labels
 
 Each authored variant has a fixed `utm_content` label. Shared creative can be used
 in either state campaign; campaign and program labels must match the destination.
@@ -47,9 +47,19 @@ in either state campaign; campaign and program labels must match the destination
 | `ar-premium-homeschool-v1` | Arkansas homeschool premium Search ad |
 | `az-premium-esa-v1` | Arizona funded-intent premium Search ad |
 | `az-premium-homeschool-v1` | Arizona homeschool premium Search ad |
+| `shared-map-marin-vertical-v5` | Shared AMP map, Marin narration, portrait, edition 5 |
+| `shared-map-marin-wide-v5` | Shared AMP map, Marin narration, widescreen, edition 5 |
+| `ar-map-cedar-vertical-v5` | Arkansas EFA map, Cedar narration, portrait, edition 5 |
+| `ar-map-cedar-wide-v5` | Arkansas EFA map, Cedar narration, widescreen, edition 5 |
+| `az-map-marin-vertical-v5` | Arizona ESA map, Marin narration, portrait, edition 5 |
+| `az-map-marin-wide-v5` | Arizona ESA map, Marin narration, widescreen, edition 5 |
+| `shared-practice-marin-vertical-v1` | Shared AMP practice/hint/lesson walkthrough, Marin narration, portrait |
+| `ar-practice-marin-vertical-v1` | Arkansas EFA practice/hint/lesson walkthrough, Marin narration, portrait |
+| `az-practice-marin-vertical-v1` | Arizona ESA practice/hint/lesson walkthrough, Marin narration, portrait |
 
-Migrations `0047-live-map-creative-labels.sql` and
-`0048-premium-search-creative-labels.sql` extend the database constraint without
+Migrations `0047-live-map-creative-labels.sql`,
+`0048-premium-search-creative-labels.sql` and `0050-video-creative-labels.sql`
+extend the database constraint without
 removing historical labels. Deploy the migrations and compatible API and browser
 builds, including the marketing-site clients, before forwarding these labels
 from live entry points or activating their ads. Paused ads can be installed for
@@ -133,3 +143,9 @@ withdrawals in the same transaction as journey ownership. Expired or differently
 owned journeys cannot be attached. Tracking failures do not prevent billing;
 failed claim attribution is discarded. Family exports include campaign labels,
 but never journey credentials or raw advertising click identifiers.
+
+## Replacing a video creative
+
+Use a distinct `utm_content` value for each authored cut. Keep `utm_campaign` tied to the target state, including when shared artwork is used in both states. The map and practice labels above identify different demonstrations; portrait and widescreen map cuts have separate labels. A change to narration, visuals or the offer requires a separately registered edition so performance does not mix with an older cut. Retain historical labels for existing purchase and refund records.
+
+Deploy the API and migration 0050 before publishing marketing clients or activating ads with these video labels. The browser clients discard unknown creative values; an older API rejects them. Registration does not upload media, select an ad, prove a paid conversion or activate spending. Ad identifiers and paid-delivery reports must be mapped to the authored label in the operator’s campaign records.
