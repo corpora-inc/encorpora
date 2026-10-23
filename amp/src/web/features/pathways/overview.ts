@@ -42,6 +42,8 @@ export function overviewCamera(
     center[2]!,
   ];
   return {
+    maxDistance: Math.max(650, distance * 1.5),
+    far: Math.max(1200, distance * 1.5 + 300),
     target,
     position: [target[0], target[1], target[2] + distance] as [
       number,

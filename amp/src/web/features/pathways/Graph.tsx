@@ -685,6 +685,13 @@ export function Graph({
       width = box.width;
       height = box.height;
       camera.aspect = width / height;
+      const fitted = overviewCamera(
+        points.map((p) => p.position),
+        width,
+        height,
+      );
+      controls.maxDistance = fitted.maxDistance;
+      camera.far = fitted.far;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
       placeAreas();

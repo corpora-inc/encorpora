@@ -152,6 +152,8 @@ test("whole-map camera fits every skill below controls on phone and desktop", as
   const { overviewCamera, overviewCallouts } =
     await import("../src/web/features/pathways/overview");
   const { PerspectiveCamera, Vector3 } = await import("three");
+  const { OrbitControls } =
+    await import("three/addons/controls/OrbitControls.js");
   const positions = layout(skills).map((p) => p.position);
   for (const [width, height] of [
     [294, 320],
@@ -159,12 +161,26 @@ test("whole-map camera fits every skill below controls on phone and desktop", as
     [700, 560],
     [980, 760],
     [650, 250],
+    [294, 650],
+    [390, 844],
+    [320, 1100],
   ] as [number, number][]) {
     const fitted = overviewCamera(positions, width, height);
-    const camera = new PerspectiveCamera(40, width / height, 0.1, 1200);
+    const camera = new PerspectiveCamera(40, width / height, 0.1, fitted.far);
     camera.position.set(...fitted.position);
     camera.lookAt(new Vector3(...fitted.target));
+    const controls = new OrbitControls(camera);
+    controls.maxDistance = fitted.maxDistance;
+    controls.target.set(...fitted.target);
+    controls.update();
     camera.updateMatrixWorld();
+    assert(
+      Math.abs(
+        camera.position.distanceTo(controls.target) -
+          (fitted.position[2] - fitted.target[2]),
+      ) < 0.001,
+      "controls do not clamp a fitted portrait camera",
+    );
     const projected = positions.map((p) => {
       const v = new Vector3(...p).project(camera);
       return { x: ((v.x + 1) * width) / 2, y: ((1 - v.y) * height) / 2 };
