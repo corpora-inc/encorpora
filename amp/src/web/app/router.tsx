@@ -36,7 +36,7 @@ const searchSchema = z
       .enum(["security", "arkansas-efa", "new-hampshire-efa", "arizona-esa"])
       .optional()
       .catch(undefined),
-    program: z.literal("ar-efa").optional().catch(undefined),
+    program: z.enum(["ar-efa", "az-esa"]).optional().catch(undefined),
     token: z.string().max(2048).optional(),
     error: z.string().max(200).optional(),
     topic: z.string().max(100).optional(),
@@ -93,7 +93,9 @@ const root = createRootRoute({
           utm_content: undefined,
           ...campaignSearch(result),
           program:
-            result.program === "ar-efa" ? ("ar-efa" as const) : undefined,
+            result.program === "ar-efa" || result.program === "az-esa"
+              ? result.program
+              : undefined,
         };
       },
     ],

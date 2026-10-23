@@ -1,3 +1,5 @@
+import { useFundingRefresh } from "./features/funding/useFundingRefresh";
+import { refreshMe } from "./lib/query";
 import {
   forgetFundedPurchase,
   fundedAttribution,
@@ -85,6 +87,8 @@ export function FundingPurchaseCenter({
   program,
   campaignSearch = {},
 }: Props) {
+  const verifiedStatus = useRef<string | null>(null);
+  const refreshSequence = useRef(0);
   const [offers, setOffers] = useState<PublicFundingOffer[]>([]),
     [requests, setRequests] = useState<PublicFundingRequest[]>([]);
   const [offerId, setOfferId] = useState(""),
@@ -117,6 +121,7 @@ export function FundingPurchaseCenter({
     mounted.current = true;
     epoch.current++;
     controller.current = new AbortController();
+    verifiedStatus.current = null;
     setOffers([]);
     setClassWalletOffers([]);
     setRequests([]);
@@ -172,6 +177,7 @@ export function FundingPurchaseCenter({
   }
   async function refresh() {
     const active = epoch.current;
+    const sequence = ++refreshSequence.current;
     const [a, b, capabilities] = await Promise.all([
       json<{ offers: PublicFundingOffer[] }>("/offers"),
       json<{ requests: PublicFundingRequest[] }>("/requests"),
@@ -179,13 +185,29 @@ export function FundingPurchaseCenter({
         () => null,
       ),
     ]);
-    if (!current(active)) return;
+    if (!current(active) || sequence !== refreshSequence.current) return;
     const matching = a.offers.filter(
       (offer) =>
         !program ||
         (offer.programId === program.id &&
           offer.jurisdiction === program.jurisdiction),
     );
+    const nextVerifiedStatus = JSON.stringify(
+      b.requests
+        .filter((r) => r.orderId)
+        .map((r) => [
+          r.id,
+          r.orderId,
+          r.accessStatus,
+          r.paymentStatus,
+          r.commerce?.refund,
+        ]),
+    );
+    if (nextVerifiedStatus !== verifiedStatus.current) {
+      await refreshMe({ accountId: identity, token: tokenRef.current });
+      if (!current(active) || sequence !== refreshSequence.current) return;
+      verifiedStatus.current = nextVerifiedStatus;
+    }
     setClassWalletOffers(
       Array.isArray(capabilities?.offerIds)
         ? capabilities.offerIds.filter((id) => typeof id === "string")
@@ -335,6 +357,12 @@ export function FundingPurchaseCenter({
     });
     if (current(active)) await refresh();
   }
+  useFundingRefresh(
+    identity,
+    requests.some((r) => !r.orderId && !r.expired && r.status !== "cancelled"),
+    refresh,
+    () => busyRef.current || loading,
+  );
   const usable =
     request &&
     request.offerAvailable &&

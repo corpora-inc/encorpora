@@ -8,6 +8,16 @@ import type {
   DeliveryResult,
 } from "./contracts.js";
 
+/** Accepted notice names for the same transactional mail provider. */
+export function disclosesResend(policy: ConsentPolicy | null): boolean {
+  return (
+    policy?.notice.processors.some(
+      ({ name }) =>
+        name === "Resend" || name === "Resend (Plus Five Five, Inc.)",
+    ) ?? false
+  );
+}
+
 const senderSchema = z
   .email()
   .max(254)
@@ -38,7 +48,7 @@ export function resendConfiguration(
   const sender = senderSchema.safeParse(env.AMP_CONSENT_SENDER);
   if (!sender.success)
     throw new Error("Consent delivery sender is missing or invalid");
-  if (!policy?.notice.processors.some((p) => p.name === "Resend"))
+  if (!disclosesResend(policy))
     throw new Error(
       "Consent notice must disclose the configured mail processor",
     );
