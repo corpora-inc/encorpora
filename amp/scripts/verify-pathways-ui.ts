@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
@@ -421,7 +423,147 @@ async function verifySettledLabels(page: Page, animated = false) {
   }
   await page.getByRole("button", { name: "3D orbit", exact: true }).click();
 }
+async function verifyLessonRecovery() {
+  // Exercise the shared fallback for future per-skill URLs without adding a production route.
+  const { RouteError } = await vite.ssrLoadModule(
+    "/src/web/ui/LoadingScreen.tsx",
+  );
+  const previousWindow = Object.getOwnPropertyDescriptor(globalThis, "window");
+  try {
+    Object.defineProperty(globalThis, "window", {
+      configurable: true,
+      value: {
+        location: new URL(`${origin}/pathways/some-skill?context=trial`),
+      },
+    });
+    const html = renderToStaticMarkup(
+      createElement(RouteError, {
+        error: new Error("synthetic"),
+        reset: () => {},
+      }),
+    );
+    assert.match(html, /href="\/pathways\?context=trial"/);
+    assert.match(html, /Reload page/);
+    assert.doesNotMatch(html, /Try again/);
+  } finally {
+    if (previousWindow)
+      Object.defineProperty(globalThis, "window", previousWindow);
+    else Reflect.deleteProperty(globalThis, "window");
+  }
+  for (const failure of ["chunk", "render", "api", "route"] as const) {
+    const page = await browser.newPage({
+      viewport: { width: 390, height: 844 },
+      reducedMotion: "reduce",
+    });
+    await fixture(page, { trial: true, signedIn: false });
+    const modulePattern =
+      failure === "route" ? "**/PathwaysScreen.tsx*" : "**/SkillLesson.tsx*";
+    if (failure === "chunk")
+      await page.route(modulePattern, (route) => route.abort("failed"));
+    if (failure === "render" || failure === "route")
+      await page.route(modulePattern, (route) =>
+        route.fulfill({
+          contentType: "application/javascript",
+          body:
+            failure === "route"
+              ? 'export function PathwaysScreen(){throw new Error("synthetic route failure")}'
+              : 'export default function SkillLesson(){throw new Error("synthetic lesson failure")}',
+        }),
+      );
+    if (failure === "api")
+      await page.route("**/api/v1/problem-lessons/**", (route) =>
+        route.fulfill({
+          status: 503,
+          json: { error: "synthetic unavailable" },
+        }),
+      );
+    await page.goto(`${origin}/pathways?context=trial&skill=${target.id}`);
+    if (failure === "route") {
+      await page
+        .getByRole("button", { name: "Reload page", exact: true })
+        .waitFor();
+      assert.equal(
+        await page
+          .getByRole("button", { name: "Try again", exact: true })
+          .count(),
+        0,
+      );
+      const back = page.getByRole("link", { name: "Back to map", exact: true });
+      assert.equal(await back.getAttribute("href"), "/pathways?context=trial");
+      await page.unroute(modulePattern);
+      await back.click();
+      await page.locator(".pathways-canvas canvas").waitFor();
+      await page.close();
+      continue;
+    }
+    const opener = page.getByRole("button", {
+      name: "View lesson",
+      exact: true,
+    });
+    await opener.waitFor();
+    const fullscreen = await page.evaluate(() => document.fullscreenEnabled);
+    if (fullscreen) {
+      await page
+        .getByRole("button", { name: "Full screen", exact: true })
+        .click();
+      await page.waitForFunction(() => !!document.fullscreenElement);
+    }
+    await opener.click();
+    const dialog = page.getByRole("dialog");
+    await dialog
+      .getByRole("button", { name: "Back to map", exact: true })
+      .waitFor();
+    const close = dialog.getByRole("button", { name: "Close", exact: true });
+    assert((await close.boundingBox())!.height >= 44);
+    assert.equal(
+      await dialog
+        .getByRole("button", { name: "Try again", exact: true })
+        .count(),
+      0,
+    );
+    if (fullscreen)
+      assert(await page.evaluate(() => !!document.fullscreenElement));
+    await page.screenshot({
+      path: `${output}/lesson-${failure}-recovery.png`,
+      fullPage: true,
+    });
+    await close.click();
+    await page.waitForFunction(
+      () => document.activeElement?.textContent === "View lesson",
+    );
+    await opener.click();
+    await dialog
+      .getByRole("button", { name: "Back to map", exact: true })
+      .click();
+    await page.waitForFunction(
+      () => document.activeElement?.textContent === "View lesson",
+    );
+    await opener.click();
+    if (failure === "api") {
+      await page.unroute("**/api/v1/problem-lessons/**");
+      await dialog
+        .getByRole("button", { name: "Retry lesson", exact: true })
+        .click();
+      await dialog.getByText("Example", { exact: true }).waitFor();
+    } else {
+      await page.unroute(modulePattern);
+      await dialog
+        .getByRole("button", { name: "Reload page", exact: true })
+        .click();
+      await page
+        .getByRole("button", { name: "View lesson", exact: true })
+        .click();
+      await page
+        .getByRole("dialog")
+        .getByText("Example", { exact: true })
+        .waitFor();
+      assert.equal(new URL(page.url()).searchParams.get("context"), "trial");
+    }
+    await page.close();
+  }
+}
 try {
+  await verifyLessonRecovery();
   for (const width of [320, 390, 768, 1280])
     for (const theme of ["light", "dark"] as const) {
       const page = await browser.newPage({
