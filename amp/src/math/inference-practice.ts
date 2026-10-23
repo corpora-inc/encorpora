@@ -1,3 +1,7 @@
+import {
+  studyDesignTemplate,
+  studyDesignCase,
+} from "./study-design-practice.js";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -19,6 +23,7 @@ import {
 const charts = { requiredFigureCapability: "data-displays-v1" } as const;
 const choice = { requiredResponseCapability: "single-choice-v1" } as const;
 export const inferenceTemplates: readonly TemplateMetadata[] = [
+  studyDesignTemplate,
   {
     id: "representative-sample-choice",
     version: 1,
@@ -593,6 +598,8 @@ export function generateInferenceProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (templateId === studyDesignTemplate.id)
+    return studyDesignCase(seed).problem;
   const meta = inferenceTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown statistics template ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
