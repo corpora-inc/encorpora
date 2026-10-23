@@ -46,7 +46,7 @@ export function LevelCheck({
   age?: number;
   open: boolean;
   onContinue: () => void;
-  /** Called as "See your full map" navigates to /try/map. */
+  /** Called as "See your full map" opens the assessment’s earned pathways. */
   onMap?: () => void;
   /** Further actions after the two defaults (sharing). */
   actions?: ReactNode;
@@ -155,7 +155,8 @@ export function LevelCheck({
               {copy.continue}
             </Button>
             <Link
-              to="/try/map"
+              to="/pathways"
+              search={{ context: "trial" }}
               className={buttonClass("secondary")}
               onClick={onMap}
             >

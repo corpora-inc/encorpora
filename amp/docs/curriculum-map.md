@@ -23,7 +23,7 @@ outlines represent the learner's estimated level range, not proof about every
 skill within it.
 
 Signed-in progress is scoped to the account and selected learner. The assessment
-summary links to `/pathways?context=trial` to show that device's trial progress,
+checkpoints and summary link to `/pathways?context=trial` to show that device's trial progress,
 even when a parent is signed in. Trial enrollment uses the existing saved
 evidence; illumination does not need a separate transfer or backfill.
 Practice authorization and the free allowance are enforced by server endpoints.
