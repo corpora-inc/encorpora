@@ -440,6 +440,26 @@ try {
       const go = page.getByRole("link", { name: "Start learning →" });
       assert.equal(await go.getAttribute("href"), "/practice");
       await noOverflow(page);
+      if (width <= 390) {
+        const mapBox = (await page.locator(".pathways-canvas").boundingBox())!;
+        assert(
+          mapBox.y < 250,
+          "phone overview is visible without scrolling through a hero",
+        );
+        await page.locator(".area-label").first().waitFor();
+        assert.equal(await page.locator(".area-label").count(), 6);
+        assert(
+          await page
+            .locator(".area-label")
+            .evaluateAll((els) =>
+              els.every(
+                (el) =>
+                  getComputedStyle(el).backgroundColor === "rgba(0, 0, 0, 0)",
+              ),
+            ),
+          "labels outline words without opaque cards",
+        );
+      }
       await page.screenshot({
         path: `${output}/${width}-${theme}-map.png`,
         fullPage: true,
