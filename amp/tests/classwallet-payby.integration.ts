@@ -269,6 +269,93 @@ test(
         (await pool.query("SELECT count(*)::int n FROM amp_grants")).rows[0].n,
         2,
       );
+      // Recovery reads the approved bundle; a conflicting callback wins before
+      // it can acquire the account lock to provision. Never grant stale approval.
+      await pool.query(
+        "INSERT INTO amp_learners(id,account_id,name) VALUES('race-child','owner','Fixture')",
+      );
+      const race = await create("owner", "race-child");
+      await app.inject({
+        method: "POST",
+        url: `/api/v1/funding/requests/${race.id}/classwallet-checkout`,
+        headers: { authorization: "Bearer owner" },
+        payload: {},
+      });
+      const racePath = `/api/v1/classwallet/orders/${race.id}`;
+      await app.inject({ url: racePath, headers: auth });
+      await pool.query(
+        "UPDATE amp_parent_consents SET withdrawn_at=now() WHERE account_id='owner'",
+      );
+      assert.equal(
+        (
+          await app.inject({
+            method: "PUT",
+            url: racePath,
+            headers: auth,
+            payload: { PurchaseOrderId: 105, status: "complete" },
+          })
+        ).statusCode,
+        403,
+      );
+      await pool.query(
+        "UPDATE amp_parent_consents SET withdrawn_at=NULL WHERE account_id='owner'",
+      );
+      let release!: () => void, selected!: () => void;
+      const selection = new Promise<void>((resolve) => {
+        selected = resolve;
+      });
+      const barrier = new Promise<void>((resolve) => {
+        release = resolve;
+      });
+      const racingPool = new Proxy(pool, {
+        get(target, property) {
+          if (property === "query")
+            return async (...args: any[]) => {
+              const result = await (target.query as any)(...args);
+              if (
+                typeof args[0] === "string" &&
+                args[0].startsWith("SELECT c.request_id,c.provisioning_payload")
+              ) {
+                selected();
+                await barrier;
+              }
+              return result;
+            };
+          const value = Reflect.get(target, property);
+          return typeof value === "function" ? value.bind(target) : value;
+        },
+      });
+      const recovering = reconcileClassWalletApprovals(racingPool, offers);
+      await selection;
+      try {
+        assert.equal(
+          (
+            await app.inject({
+              method: "PUT",
+              url: racePath,
+              headers: auth,
+              payload: { PurchaseOrderId: 105, status: "cancelled" },
+            })
+          ).statusCode,
+          409,
+        );
+      } finally {
+        release();
+      }
+      assert.equal((await recovering).provisioned, 0);
+      assert.equal((await repo.read("owner", race.id)).orderId, null);
+      const stopped = (
+        await pool.query(
+          "SELECT stopped_at,exception_code FROM amp_classwallet_checkouts WHERE request_id=$1",
+          [race.id],
+        )
+      ).rows[0];
+      assert.ok(stopped.stopped_at);
+      assert.equal(stopped.exception_code, "callback-conflict");
+      assert.equal(
+        (await pool.query("SELECT count(*)::int n FROM amp_grants")).rows[0].n,
+        2,
+      );
       const start = await app.inject({
         method: "POST",
         url: "/api/v1/classwallet/start",

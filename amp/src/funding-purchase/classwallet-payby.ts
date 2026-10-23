@@ -154,7 +154,7 @@ export async function reconcileClassWalletApprovals(
       await pool.query(
         `UPDATE amp_classwallet_checkouts SET retry_attempts=retry_attempts+1,
         retry_at=now()+interval '5 minutes', stopped_at=CASE WHEN retry_attempts>=7 THEN now() ELSE NULL END
-        WHERE request_id=$1`,
+        WHERE request_id=$1 AND stopped_at IS NULL AND exception_code IS NULL`,
         [row.request_id],
       );
     }
