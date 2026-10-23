@@ -40,6 +40,10 @@ import { startingBands } from "../learning/starting-point";
 import { buildInfo } from "./build-info";
 import { brand } from "../brand";
 import { FLAG_RATE_LIMIT, problemFlagSchema } from "../feedback/problem-flags";
+import {
+  canonicalSelection,
+  normalizeSelection,
+} from "../math/selection-response";
 import { recordProblemFlag } from "../feedback/record";
 import {
   publicJson,
@@ -389,8 +393,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
         templateId: z.string().max(100).optional(),
         count: z.number().int().min(1).max(5).default(3),
         responseCapabilities: z
-          .array(z.literal("single-choice-v1"))
-          .max(1)
+          .array(z.enum(["single-choice-v1", "multi-select-v1"]))
+          .max(2)
           .default([]),
         figureCapabilities: z
           .array(z.enum(figureCapabilities))
@@ -611,6 +615,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
           problem.public.templateId,
           problem.public.seed,
           problem.public.prompt,
+          problem.public.response,
         ),
       };
     });
@@ -622,10 +627,14 @@ function routes(app: FastifyInstance, options: AppOptions) {
     return options.repository.transaction(account, learnerId, async (tx) => {
       const duplicate = await tx.attemptByRequest(input.requestId);
       if (duplicate) {
-        if (
-          duplicate.problemId !== input.problemId ||
-          duplicate.response !== input.response
-        )
+        // A complete stored selection has already passed validation. Compare
+        // sets on retries without depending on instance retention or option order.
+        const selected = canonicalSelection(duplicate.response);
+        const sameResponse =
+          duplicate.response === input.response ||
+          (selected !== null &&
+            canonicalSelection(input.response) === selected);
+        if (duplicate.problemId !== input.problemId || !sameResponse)
           throw new ApiError(
             409,
             "This submission identifier was already used",
@@ -649,8 +658,14 @@ function routes(app: FastifyInstance, options: AppOptions) {
           400,
           problem.public.response.kind === "choice"
             ? "Choose one of the displayed answers"
-            : "Enter a number, decimal, or fraction such as 3/4",
+            : problem.public.response.kind === "multi-select"
+              ? `Choose ${problem.public.response.selectionCount} of the displayed answers`
+              : "Enter a number, decimal, or fraction such as 3/4",
         );
+      const response =
+        problem.public.response.kind === "multi-select"
+          ? normalizeSelection(problem.public.response, input.response)!
+          : input.response;
       const answered = await tx.attemptByProblem(input.problemId);
       if (answered)
         throw new ApiError(409, "This problem has already been answered");
@@ -672,11 +687,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
         requestId: input.requestId,
         skillId: problem.public.skillId,
         templateId: problem.public.templateId,
-        response: input.response,
-        correct: gradeAnswer(problem, input.response),
+        response,
+        correct: gradeAnswer(problem, response),
         assisted: !!problem.hintViewed || !!problem.lessonViewed,
-        explanation: problem.choiceFeedback?.[input.response]
-          ? [problem.choiceFeedback[input.response]!, ...problem.explanation]
+        explanation: problem.choiceFeedback?.[response]
+          ? [problem.choiceFeedback[response]!, ...problem.explanation]
           : problem.explanation,
         answer: problem.answer,
         createdAt: new Date().toISOString(),

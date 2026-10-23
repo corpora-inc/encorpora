@@ -10,6 +10,12 @@ import {
 } from "./lib/keypadEdit";
 import { acceptedAnswer } from "../math/answer-format";
 import { displayAnswer } from "../math/polish";
+import {
+  joinAnswerLabels,
+  parseSelection,
+  responseAnswerLabels,
+  serializeSelection,
+} from "../math/selection-response";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
 import {
@@ -188,7 +194,16 @@ export function PracticeWorkspace(props: Props) {
       alive.current = false;
     };
   }, []);
-  const choice = problem.response.kind === "choice";
+  const choice =
+    problem.response.kind === "choice" ||
+    problem.response.kind === "multi-select";
+  const multiResponse =
+    problem.response.kind === "multi-select" ? problem.response : null;
+  const selectedIds = multiResponse
+    ? (parseSelection(response) ?? []).filter((id) =>
+        multiResponse.options.some((option) => option.id === id),
+      )
+    : [];
   // The learner's own scene, when its walkthrough (or a hint cue) can play.
   const hintScene =
     problem.figure?.kind === "scene" &&
@@ -196,13 +211,18 @@ export function PracticeWorkspace(props: Props) {
       visibleSteps(problem.figure.scene.steps ?? [], "hint").length)
       ? problem.figure.scene
       : null;
-  const displayResponse = (value: string) =>
-    problem.response.kind === "choice"
-      ? (problem.response.options.find((option) => option.id === value)
-          ?.label ?? "Unavailable answer")
-      : props.strand === "fractions"
-        ? value
-        : displayAnswer(value);
+  const displayResponse = (value: string) => {
+    if (problem.response.kind === "multi-select") {
+      const labels = responseAnswerLabels(problem.response, value);
+      return labels ? joinAnswerLabels(labels) : "Unavailable selection";
+    }
+    if (problem.response.kind === "choice")
+      return (
+        problem.response.options.find((option) => option.id === value)?.label ??
+        "Unavailable answer"
+      );
+    return props.strand === "fractions" ? value : displayAnswer(value);
+  };
   const input = useRef<HTMLInputElement>(null);
   const prompt = useRef<HTMLHeadingElement>(null);
   const continueButton = useRef<HTMLButtonElement>(null);
@@ -356,6 +376,69 @@ export function PracticeWorkspace(props: Props) {
     } as FocusOptions);
   }
   function answerControls() {
+    if (problem.response.kind === "multi-select") {
+      const selected = selectedIds;
+      const complete = selected.length === problem.response.selectionCount;
+      return (
+        <form
+          className="choice-form multi-select-form"
+          data-choice-count={problem.response.options.length}
+          onSubmit={(event) => {
+            event.preventDefault();
+            if (busy || (!outcome && !complete)) return;
+            outcome ? advance() : props.submit();
+          }}
+        >
+          <fieldset disabled={locked}>
+            <legend>
+              <MathText text={problem.response.label} />
+            </legend>
+            <div className="choice-options">
+              {problem.response.options.map((option, index) => (
+                <label
+                  key={option.id}
+                  className={`choice-option ${selected.includes(option.id) ? "selected" : ""}`}
+                >
+                  <input
+                    type="checkbox"
+                    name={`answer-${problem.id}`}
+                    value={option.id}
+                    aria-label={spokenMath(option.label)}
+                    checked={selected.includes(option.id)}
+                    onChange={() =>
+                      setResponse(
+                        serializeSelection(
+                          selected.includes(option.id)
+                            ? selected.filter((id) => id !== option.id)
+                            : [...selected, option.id],
+                        ),
+                      )
+                    }
+                  />
+                  <span className="choice-letter" aria-hidden="true">
+                    {"ABCDEFGH"[index]}
+                  </span>
+                  <span>
+                    <MathText text={option.label} />
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+          <p className="selection-count" role="status" aria-live="polite">
+            {selected.length} of {problem.response.selectionCount} selected
+          </p>
+          <button
+            className="choice-submit"
+            type="submit"
+            disabled={busy || (!outcome && !complete)}
+            aria-busy={busy}
+          >
+            Check
+          </button>
+        </form>
+      );
+    }
     if (problem.response.kind === "choice")
       return (
         <form
@@ -612,6 +695,18 @@ export function PracticeWorkspace(props: Props) {
           ? "with the lesson"
           : "with a hint or lesson";
   const skipped = !!outcome?.skipped;
+  const compactAnswerLabel =
+    problem.response.kind === "multi-select"
+      ? selectedIds.length
+        ? `Review ${selectedIds.length} of ${problem.response.selectionCount} selected`
+        : `Select ${problem.response.selectionCount} statements`
+      : response
+        ? choice
+          ? "Review your choice"
+          : `Your answer: ${response} · Edit`
+        : choice
+          ? "Choose an answer"
+          : "Enter your answer";
   return (
     <main className="practice-workspace" aria-label="Math practice">
       <section className="practice-surface" ref={surface}>
@@ -731,13 +826,7 @@ export function PracticeWorkspace(props: Props) {
                 disabled={busy}
                 onClick={() => setEntering(true)}
               >
-                {response
-                  ? choice
-                    ? "Review your choice"
-                    : `Your answer: ${response} · Edit`
-                  : choice
-                    ? "Choose an answer"
-                    : "Enter your answer"}
+                {compactAnswerLabel}
               </button>
             ) : (
               answerControls()
@@ -812,7 +901,9 @@ export function PracticeWorkspace(props: Props) {
                       </strong>
                     </span>
                     <small>
-                      You entered{" "}
+                      {problem.response.kind === "multi-select"
+                        ? "You selected "
+                        : "You entered "}
                       <MathText text={displayResponse(outcome.response)} />
                       {support && `, ${support}`}
                     </small>
@@ -865,7 +956,13 @@ export function PracticeWorkspace(props: Props) {
       )}
       {compact && entering && !panel && (
         <FocusDialog
-          className={choice ? "choice-entry-dialog" : ""}
+          className={
+            multiResponse
+              ? "choice-entry-dialog multi-select-entry-dialog"
+              : choice
+                ? "choice-entry-dialog"
+                : ""
+          }
           title="Your answer"
           close={() => setEntering(false)}
         >

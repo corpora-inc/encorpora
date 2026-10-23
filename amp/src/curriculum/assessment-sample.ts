@@ -59,11 +59,15 @@ export const assessmentSample: readonly AssessmentSampleItem[] = [
   },
   {
     sourceId: "mcas-2025-5",
-    item: "8; printed p.11",
-    requirement: "Select every true quadrilateral classification",
-    templateIds: ["classify-quadrilateral"],
+    item: "8; printed p.11; PDF p.13",
+    requirement:
+      "Select three true quadrilateral hierarchy statements (5.G.B.4)",
+    templateIds: [
+      "classify-quadrilateral",
+      "quadrilateral-hierarchy-multiselect",
+    ],
     limitations:
-      "Related classification exists; selecting all valid statements is not the same response as one choice.",
+      "Original items select three true statements from five or six choices, including the released item's three-of-six format. Inclusive categories, inherited properties, and defining conditions are assessed; drawing a hierarchy, creating counterexamples, and written justification are unassessed. This sample does not establish full standard coverage.",
   },
   {
     sourceId: "mcas-2025-5",

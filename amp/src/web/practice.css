@@ -719,6 +719,13 @@ nav button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
+.multi-select-form .choice-options {
+  /* Full statements read in one column, including in the narrow tablet dock. */
+  grid-template-columns: minmax(0, 1fr);
+  /* The scrollport may shrink, but its text rows must keep their content height. */
+  grid-auto-rows: max-content;
+  align-content: start;
+}
 .answer-dock .choice-option {
   position: relative;
   display: flex;
@@ -741,6 +748,14 @@ nav button {
   width: 1px;
   height: 1px;
   margin: 0;
+}
+.multi-select-form .choice-option input {
+  position: static;
+  opacity: 1;
+  width: 22px;
+  height: 22px;
+  flex: none;
+  accent-color: var(--color-primary);
 }
 .choice-option:has(input:focus-visible) {
   outline: 3px solid var(--color-focus-ring);
@@ -768,6 +783,17 @@ nav button {
 }
 .choice-form fieldset:disabled .choice-option {
   cursor: default;
+}
+.selection-count {
+  flex: none;
+  margin: 8px 0 0;
+  color: var(--color-muted-text);
+  font-size: 14px;
+  line-height: 1.3;
+}
+.multi-select-form .choice-submit {
+  /* The count gate changes fill and text together, without a low-contrast fade. */
+  transition: none;
 }
 .choice-submit {
   width: 100%;
@@ -865,6 +891,43 @@ nav button {
 .choice-entry-dialog .answer-prompt-summary {
   line-height: 1.35;
   margin-bottom: 8px;
+}
+.multi-select-entry-dialog .dialog-content,
+.multi-select-entry-dialog .compact-entry,
+.multi-select-entry-dialog .multi-select-form,
+.multi-select-entry-dialog .multi-select-form fieldset {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.multi-select-entry-dialog .dialog-content,
+.multi-select-entry-dialog .compact-entry,
+.multi-select-entry-dialog .multi-select-form {
+  flex: 1 1 auto;
+}
+.multi-select-entry-dialog .dialog-content {
+  overflow: hidden;
+}
+.multi-select-entry-dialog .answer-prompt-summary {
+  flex: none;
+}
+.multi-select-entry-dialog .compact-entry {
+  max-height: none;
+}
+.multi-select-entry-dialog .multi-select-form fieldset,
+.multi-select-entry-dialog .multi-select-form .choice-options {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.multi-select-entry-dialog .multi-select-form .choice-options {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 3px;
+  margin: -3px;
+}
+.multi-select-entry-dialog .multi-select-form .selection-count,
+.multi-select-entry-dialog .multi-select-form .choice-submit {
+  flex: none;
 }
 
 /* Keep coordinate annotations readable when the prompt shares a short viewport. */

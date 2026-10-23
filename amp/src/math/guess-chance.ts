@@ -1,4 +1,4 @@
-import type { TemplateMetadata } from "./contracts";
+import type { ProblemResponse, TemplateMetadata } from "./contracts";
 import { generateProblem, templates } from "./engine";
 
 /** Instances sampled to read a choice family's option count from its answer
@@ -11,25 +11,36 @@ const UNKNOWN_CHOICE_GUESS = 1 / 2;
 const byId = new Map(templates.map((template) => [template.id, template]));
 const cache = new Map<string, number>();
 
-/** Chance that a blind guess is graded correct on this family: 0 for a typed
- * answer, 1/k for a single choice among k options. When instances differ in
- * option count the smallest count wins, so the chance is never understated. */
+/** Uniform guessing among all permitted answers; multiple selections are sets. */
+export function responseGuessChance(response: ProblemResponse): number {
+  if (response.kind === "choice") return 1 / response.options.length;
+  if (response.kind !== "multi-select") return 0;
+  const n = response.options.length,
+    k = response.selectionCount;
+  if (!Number.isInteger(k) || k < 2 || k >= n) return UNKNOWN_CHOICE_GUESS;
+  let combinations = 1;
+  for (let i = 1; i <= Math.min(k, n - k); i++)
+    combinations = (combinations * (n - i + 1)) / i;
+  return 1 / combinations;
+}
+
+/** Use the greatest sampled guessing chance when a family's answer forms vary.
+ * Typed answers have chance 0, single choices 1/n, and k-of-n selections 1/C(n,k). */
 export function guessChance(
   template: Pick<TemplateMetadata, "id" | "requiredResponseCapability">,
 ): number {
-  if (template.requiredResponseCapability !== "single-choice-v1") return 0;
+  if (!template.requiredResponseCapability) return 0;
   const known = cache.get(template.id);
   if (known !== undefined) return known;
   let chance = UNKNOWN_CHOICE_GUESS;
   if (byId.has(template.id)) {
-    let fewest = Infinity;
+    let greatest = 0;
     for (let i = 0; i < SAMPLE_SEEDS; i++) {
       const response = generateProblem(template.id, `guess-chance:${i}`).public
         .response;
-      if (response.kind === "choice")
-        fewest = Math.min(fewest, response.options.length);
+      greatest = Math.max(greatest, responseGuessChance(response));
     }
-    if (Number.isFinite(fewest) && fewest >= 2) chance = 1 / fewest;
+    if (greatest > 0) chance = greatest;
   }
   cache.set(template.id, chance);
   return chance;
