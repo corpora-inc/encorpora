@@ -153,3 +153,22 @@ but never journey credentials or raw advertising click identifiers.
 Use a distinct `utm_content` value for each authored cut. Keep `utm_campaign` tied to the target state, including when shared artwork is used in both states. The map and practice labels above identify different demonstrations; portrait and widescreen map cuts have separate labels. A change to narration, visuals or the offer requires a separately registered edition so performance does not mix with an older cut. Retain historical labels for existing purchase and refund records.
 
 Deploy the API and migrations through `0051-map-teaser-creative-labels.sql` before publishing marketing clients or activating ads with these video labels. The browser clients discard unknown creative values; an older API rejects them. Registration does not upload media, select an ad, prove a paid conversion or activate spending. Ad identifiers and paid-delivery reports must be mapped to the authored label in the operator’s campaign records.
+
+### Funded-pitch videos
+
+Funded-pitch labels identify the state, authored concept, aspect ratio and media revision. Each concept has `portrait` (9:16), `feed` (4:5) and `wide` (16:9) variants. Use the exact registered label as `utm_content`; it follows the visit through invoice preparation, settlement and refunds.
+
+| State | Concept | Label pattern |
+| --- | --- | --- |
+| AZ | better math | `az-funded-better-math-{format}-v3` |
+| AR | whats next | `ar-funded-whats-next-{format}-v3` |
+| AZ | catch up | `az-funded-catch-up-{format}-v3` |
+| AR | get ahead | `ar-funded-get-ahead-{format}-v3` |
+| AZ | less planning | `az-funded-less-planning-{format}-v3` |
+| AR | your childs math | `ar-funded-your-childs-math-{format}-v3` |
+| AZ | right fit | `az-funded-right-fit-{format}-v3` |
+| AR | screen paper | `ar-funded-screen-paper-{format}-v3` |
+| AZ | parent relief | `az-funded-parent-relief-{format}-v3` |
+| AR | funded choice | `ar-funded-funded-choice-{format}-v3` |
+
+Arkansas routes use `ar-efa-launch` and `/esa/arkansas-efa/`; Arizona routes use `az-esa-launch` and `/esa/arizona-esa/`. The labels contain no learner or account information. Deploy the database migration, API contract and both site clients before using these URLs in ads.
