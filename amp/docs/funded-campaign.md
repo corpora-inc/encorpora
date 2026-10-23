@@ -89,3 +89,15 @@ privacy retention worker. Verified payment records follow the financial retentio
 period. Claimed paid invoices follow their commerce order's retention. Verified
 parents can export matching billing drafts and remove unpaid drafts through family
 data deletion. Learning deletion preserves required payment records.
+
+Guest invoices retain an internal reference to the original unexpired advertising
+journey and matching program campaign labels. Claiming the invoice binds eligible
+click evidence to its funded request; a later browser visit cannot replace that
+history. Invoice creation and claiming do not count as purchases. Only verified
+payment evidence can qualify for purchase delivery to an advertising provider.
+
+Browser opt-outs suppress attribution. Claiming applies recorded provider
+withdrawals in the same transaction as journey ownership. Expired or differently
+owned journeys cannot be attached. Tracking failures do not prevent billing;
+failed claim attribution is discarded. Family exports include campaign labels,
+but never journey credentials or raw advertising click identifiers.

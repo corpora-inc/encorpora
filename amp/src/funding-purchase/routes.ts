@@ -5,6 +5,7 @@ import {
 import type { FastifyInstance } from "fastify";
 import type { Pool } from "pg";
 import { z } from "zod";
+import { advertisingOptOut } from "../advertising/permission-contracts.js";
 import type { Authenticator } from "../server/auth.js";
 import {
   availableOffers,
@@ -83,7 +84,11 @@ export async function registerFundingPurchaseRoutes(
         },
       },
       async (request) => {
-        const intent = await invoices.create(request.body);
+        const intent = await invoices.create(
+          request.body,
+          new Date(),
+          acquisitionToken(request.headers),
+        );
         return {
           invoiceId: intent.id,
           totalMinor: intent.offer.subtotalMinor + intent.offer.taxMinor,
@@ -119,14 +124,22 @@ export async function registerFundingPurchaseRoutes(
       const { learnerId } = z
         .strictObject({ learnerId: z.string().min(1).max(500) })
         .parse(request.body);
-      return repository.present(
+      const invoiceId = params.parse(request.params).id;
+      const claimed = await invoices.claim(
         account,
-        await invoices.claim(
-          account,
-          params.parse(request.params).id,
-          learnerId,
-        ),
+        invoiceId,
+        learnerId,
+        new Date(),
+        !advertisingOptOut(request.headers),
       );
+      if (!advertisingOptOut(request.headers))
+        await linkPurchaseAcquisition(
+          options.pool,
+          account,
+          { invoiceId },
+          { kind: "funding-request", id: claimed.id },
+        );
+      return repository.present(account, claimed);
     });
     scope.get("/api/v1/funding/invoices/:id/pdf", async (request, reply) => {
       const id = params.parse(request.params).id;

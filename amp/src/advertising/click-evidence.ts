@@ -4,6 +4,7 @@ import { z } from "zod";
 import {
   fundedCampaignSchema,
   type FundedCampaign,
+  campaignMatchesOffer,
 } from "../analytics/funded-campaign.js";
 import {
   clickEvidenceSchema,
@@ -152,6 +153,39 @@ export async function retainAdClick(
   };
 }
 
+/** Capture the original marketing journey once, when a guest invoice is
+ * prepared. The reference is not a bearer token and never goes to the client. */
+export async function invoiceAcquisitionSnapshot(
+  client: PoolClient,
+  token: string | undefined,
+  offer: { programId: string; jurisdiction: string },
+  createdAt: Date,
+) {
+  if (!token || !tokenSchema.safeParse(token).success) return null;
+  const journey = (
+    await client.query(
+      "SELECT id FROM amp_ad_click_journeys WHERE token_digest=$1 AND expires_at>clock_timestamp() FOR KEY SHARE",
+      [digest(token)],
+    )
+  ).rows[0];
+  if (!journey) return null;
+  const clicks = (
+    await client.query(
+      "SELECT campaign_labels FROM amp_ad_click_evidence WHERE journey_id=$1 AND observed_at<=$2 ORDER BY first_observed_at DESC,sequence DESC",
+      [journey.id, createdAt],
+    )
+  ).rows;
+  const labels = clicks
+    .map((row) => fundedCampaignSchema.safeParse(row.campaign_labels))
+    .find(
+      (parsed) => parsed.success && campaignMatchesOffer(parsed.data, offer),
+    );
+  return {
+    journeyId: journey.id as string,
+    labels: labels?.success ? labels.data : null,
+  };
+}
+
 /** Bind each provider's last observed click before the exact owned order was
  * created. Retrying cannot overwrite that order's attribution, even with a new
  * browser/click. Caller holds the account privacy lock and owns the transaction.
@@ -159,12 +193,17 @@ export async function retainAdClick(
 export async function bindAdClicksToOrder(
   client: PoolClient,
   account: string,
-  token: string,
+  source: string | { retainedJourneyId: string },
   rawTarget: AttributionTarget,
   providers: readonly ("google" | "meta")[] = ["google", "meta"],
 ) {
   const parsed = targetSchema.safeParse(rawTarget);
-  if (!parsed.success || !tokenSchema.safeParse(token).success)
+  const validSource =
+    typeof source === "string"
+      ? tokenSchema.safeParse(source).success
+      : z.strictObject({ retainedJourneyId: z.uuid() }).safeParse(source)
+          .success;
+  if (!parsed.success || !validSource)
     throw new Error("invalid_attribution_target");
   const target = parsed.data;
   const funding = target.kind === "funding-request";
@@ -178,8 +217,8 @@ export async function bindAdClicksToOrder(
   if (!owned) throw new Error("attribution_target_unavailable");
   const journey = (
     await client.query(
-      "SELECT id,account_id FROM amp_ad_click_journeys WHERE token_digest=$1 AND expires_at>clock_timestamp() FOR UPDATE",
-      [digest(token)],
+      `SELECT id,account_id FROM amp_ad_click_journeys WHERE ${typeof source === "string" ? "token_digest" : "id"}=$1 AND expires_at>clock_timestamp() FOR UPDATE`,
+      [typeof source === "string" ? digest(source) : source.retainedJourneyId],
     )
   ).rows[0];
   if (!journey || (journey.account_id && journey.account_id !== account))

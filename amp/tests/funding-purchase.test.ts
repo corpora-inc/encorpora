@@ -167,6 +167,42 @@ test("named invoices use an explicit parent-supplied name and never imply paymen
     );
 });
 
+test("standard state invoices fit one Letter page, including a long student name", async () => {
+  const { renderFundingQuotePdf } =
+    await import("../src/funding-purchase/quote-pdf.js");
+  const { PDFDocument } = await import("pdf-lib");
+  for (const programName of [
+    "Arkansas Education Freedom Account",
+    "Arizona Empowerment Scholarship Account (ESA)",
+  ]) {
+    const bytes = await renderFundingQuotePdf({
+      ...request,
+      id: "12345678-1234-4123-8123-123456789012",
+      studentBillingName: "Alexandra ".repeat(18).trim(),
+      offer: {
+        ...offer,
+        documentPolicy: "named-student-invoice",
+        programName,
+        productTitle: "AMP Mathematics - annual learner license",
+        productDescription:
+          "Adaptive Math Pathways: adaptive math practice, lessons and downloadable worksheets with solutions. One learner, one year.",
+        merchant: {
+          ...offer.merchant,
+          postalAddress:
+            "123 Example Street, Example City, GA 30000, United States",
+        },
+        instructions:
+          "In ClassWallet, choose Pay Vendor, select the merchant, enter the invoice total, upload the invoice and submit for program review. Your program decides whether to approve this purchase. Do not also pay by card.",
+      },
+    });
+    assert.equal(
+      (await PDFDocument.load(bytes)).getPageCount(),
+      1,
+      programName,
+    );
+  }
+});
+
 test("funded notifications preserve the account sender display name and reject malformed headers", () => {
   assert.equal(
     fundedNotificationSender("sender@example.test"),
