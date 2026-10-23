@@ -291,12 +291,14 @@ test(
     }),
 );
 
-for (const [campaign, programId, jurisdiction] of [
-  ["ar-efa-launch", "ar-efa", "AR"],
-  ["az-esa-launch", "az-esa", "AZ"],
+for (const [campaign, programId, jurisdiction, creative] of [
+  ["ar-efa-launch", "ar-efa", "AR", "shared-hook-ampd-portrait-v1"],
+  ["az-esa-launch", "az-esa", "AZ", "shared-hook-ampd-portrait-v1"],
+  ["ar-efa-launch", "ar-efa", "AR", "ar-premium-feed-v1"],
+  ["az-esa-launch", "az-esa", "AZ", "az-map-marin-vertical-v2"],
 ] as const)
   test(
-    `funded campaign ${campaign} counts settlement/refund once after credit activation`,
+    `funded campaign ${campaign}/${creative} counts settlement/refund once after credit activation`,
     enabled,
     () =>
       fixture(async (pool) => {
@@ -304,7 +306,7 @@ for (const [campaign, programId, jurisdiction] of [
           campaign,
           source: "facebook",
           medium: "paid-social",
-          creative: "shared-hook-ampd-portrait-v1",
+          creative,
         } as const;
         const campaignOffer = { ...offer, programId, jurisdiction };
         const repo = new FundingPurchaseRepository(pool, [campaignOffer]);
@@ -443,7 +445,8 @@ for (const [campaign, programId, jurisdiction] of [
         assert.deepEqual(
           (
             await pool.query(
-              "SELECT action,count::int FROM amp_campaign_creative_daily WHERE creative='shared-hook-ampd-portrait-v1' ORDER BY action",
+              "SELECT action,count::int FROM amp_campaign_creative_daily WHERE creative=$1 ORDER BY action",
+              [creative],
             )
           ).rows,
           await campaignCounts(pool),

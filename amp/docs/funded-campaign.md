@@ -6,7 +6,7 @@ Labels are supplied by the caller, not independently verified by an ad platform.
 
 The original request keeps its labels across retries. Retrying an unattributed request cannot attach a later campaign. The HTTP endpoint ignores new attribution when the request carries `Sec-GPC: 1` or `DNT: 1`; purchasing continues normally. Privacy preferences must also suppress forwarding in any calling interface.
 
-`npm run report:campaign -- 30` includes `fundedCampaign` alongside the distinct operational `arkansasOrders` and `arizonaOrders` and public page/link activity. Apply all migrations through `0040-state-campaigns.sql` before running this code.
+`npm run report:campaign -- 30` includes `fundedCampaign` alongside the distinct operational `arkansasOrders` and `arizonaOrders` and public page/link activity. Apply the migrations shipped with the API using `npm run db:migrate` before serving requests.
 
 | Action | Evidence | Date |
 | --- | --- | --- |
@@ -26,6 +26,31 @@ The Arkansas landing script and parent purchase routes preserve only allowlisted
 Apply migration `0028-creative-campaign.sql` before serving the supporting API. Deploy compatible API instances before forwarding creative labels from the public site or creating attributed funded requests: older strict schemas reject the additional field. Enable live offers and campaign traffic only after deployment and an end-to-end check. The additive table preserves the existing coarse counter tables and their keys.
 
 Verification uses the dedicated database funding-purchase integration suite: concurrent creation/imports, delayed settlement, refund replay, unchanged attribution on retry, expiry, program mismatch, invalid labels and privacy headers. No test contacts a payment or ad platform.
+
+## Live-map and premium-price creative labels
+
+Each authored variant has a fixed `utm_content` label. Shared creative can be used
+in either state campaign; campaign and program labels must match the destination.
+
+| Creative label | Edition |
+| --- | --- |
+| `shared-map-cedar-wide-v2` | General live-map video, Cedar voice, widescreen |
+| `shared-map-marin-vertical-v2` | General live-map video, Marin voice, vertical |
+| `ar-map-cedar-vertical-v2` | Arkansas live-map video, Cedar voice, vertical |
+| `ar-map-cedar-wide-v2` | Arkansas live-map video, Cedar voice, widescreen |
+| `az-map-marin-vertical-v2` | Arizona live-map video, Marin voice, vertical |
+| `az-map-marin-wide-v2` | Arizona live-map video, Marin voice, widescreen |
+| `shared-premium-feed-v1` | General premium-price feed image |
+| `ar-premium-feed-v1` | Arkansas premium-price feed image |
+| `az-premium-feed-v1` | Arizona premium-price feed image |
+
+Migration `0047-live-map-creative-labels.sql` extends the database constraint
+without removing historical labels. Deploy that migration and compatible API
+and browser builds before forwarding these labels or installing their ads.
+An older strict API rejects an unknown creative; an older browser can discard it.
+Registering a label does not enable an offer, publish an ad or export a conversion.
+Keep exact asset hashes and platform IDs in the private campaign registry, and
+assign a new creative label when a materially different asset replaces a variant.
 
 ## Parent entry and consent continuation
 
