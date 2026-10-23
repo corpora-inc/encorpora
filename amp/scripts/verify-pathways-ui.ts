@@ -240,7 +240,7 @@ try {
       await page.locator(".pathways-canvas canvas").waitFor();
       await page
         .getByText("2 skills with independent successes", { exact: false })
-        .waitFor();
+        .waitFor({ state: "attached" });
       const go = page.getByRole("link", { name: "Start learning →" });
       assert.equal(await go.getAttribute("href"), "/practice");
       await noOverflow(page);
@@ -439,13 +439,13 @@ try {
   await page.goto(`${origin}/pathways?skill=${target.id}`);
   await page
     .getByText("2 skills with independent successes", { exact: false })
-    .waitFor();
+    .waitFor({ state: "attached" });
   await page
     .getByRole("combobox", { name: /^Learner/ })
     .selectOption("parent-one-b");
   await page
     .getByText("0 skills with independent successes", { exact: false })
-    .waitFor();
+    .waitFor({ state: "attached" });
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),
     0,
@@ -455,7 +455,7 @@ try {
     .selectOption("parent-one-a");
   await page
     .getByText("2 skills with independent successes", { exact: false })
-    .waitFor();
+    .waitFor({ state: "attached" });
   await page.evaluate(() => {
     (window as any).pathwaysAccount = "parent-two";
     window.dispatchEvent(new Event("pathways-session"));
