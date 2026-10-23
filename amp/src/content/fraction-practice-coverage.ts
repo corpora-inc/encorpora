@@ -2,6 +2,7 @@ import { fractionPracticeDefinitions } from "../math/fraction-practice.js";
 import { fractionFieldGuide } from "../../books/fraction-field-guide/book.js";
 import { skills } from "../curriculum/catalog.js";
 import { fractionPracticeTemplates } from "../math/fraction-practice.js";
+import { fractionDivisionExpressionTemplate } from "../math/fraction-division-expression.js";
 
 export interface FractionRequirement {
   sourceId: string;
@@ -40,7 +41,7 @@ const rows = `
 4.NF.C.7|Compare decimals through hundredths||Decimal comparisons with same-whole reasoning are outside this practice slice.
 5.NF.A.1|Unlike-unit fraction operations|unlike-fraction-difference,fraction-distance-gap|Mixed unlike-denominator operations, general addition, full denominator domain, and method explanation.
 5.NF.A.2|Contextual operations and reasonableness|fraction-distance-gap|Uncued operation selection, mental estimates, error judgments, and broader stories.
-5.NF.B.3|Fraction as whole-number sharing|whole-sharing-fraction|Learner-generated sharing models, larger quantities, and estimates between whole numbers.
+5.NF.B.3|Fraction as whole-number sharing and division notation|whole-sharing-fraction,fraction-division-expression|Learner-generated sharing models, expression construction without choices, larger quantities, and estimates between whole numbers.
 5.NF.B.4|Fraction multiplication|fraction-of-quantity|Fraction-by-fraction area and length models, mixed values, and learner-created stories.
 5.NF.B.4.a|A fraction of a quantity|fraction-of-quantity|General fractional quantities, independent modeling and creation of matching contexts.
 5.NF.B.4.b|Fractional rectangle area||Fractional side-length tiling, square-unit reasoning, and area representations.
@@ -78,25 +79,38 @@ export interface FractionPracticeBinding {
   skillId: string;
   instructionalGrade: "3" | "4" | "5" | "6";
   componentIds: string[];
-  assessedResponse: "numeric-result-only";
+  assessedResponse: "numeric-result-only" | "single-choice-selection";
   unassessedRequirements: string[];
 }
-export const fractionPracticeBindings: readonly FractionPracticeBinding[] =
-  fractionPracticeDefinitions.map((definition) => ({
+export const fractionPracticeBindings: readonly FractionPracticeBinding[] = [
+  ...fractionPracticeDefinitions.map((definition) => ({
     templateId: definition.id,
-    bookId: "fraction-field-guide",
+    bookId: "fraction-field-guide" as const,
     pageIds: [definition.pageId],
     skillId: definition.skillId,
     instructionalGrade: definition.grade,
     componentIds: fractionRequirements
       .filter((requirement) => requirement.templateIds.includes(definition.id))
       .map((requirement) => requirement.sourceId),
-    assessedResponse: "numeric-result-only",
+    assessedResponse: "numeric-result-only" as const,
     unassessedRequirements: [
       "Independent explanation, construction, and representation choice.",
       "Delayed retention, fluent recall, and transfer beyond this bounded family.",
     ],
-  }));
+  })),
+  {
+    templateId: fractionDivisionExpressionTemplate.id,
+    bookId: "fraction-field-guide" as const,
+    pageIds: ["sharing"],
+    skillId: "fraction-as-division",
+    instructionalGrade: "5",
+    componentIds: ["5.NF.B.3"],
+    assessedResponse: "single-choice-selection",
+    unassessedRequirements: [
+      "Constructing the expression without choices, creating a sharing model, and estimating a quotient between whole numbers.",
+    ],
+  },
+];
 export function validateFractionPracticeCoverage(
   bindings: readonly FractionPracticeBinding[] = fractionPracticeBindings,
   requirements: readonly FractionRequirement[] = fractionRequirements,
@@ -104,7 +118,9 @@ export function validateFractionPracticeCoverage(
   const pageIds = new Set(fractionFieldGuide.pages.map((page) => page.id));
   const skillIds = new Set(skills.map((skill) => skill.id));
   const templates = new Map(
-    fractionPracticeTemplates.map((template) => [template.id, template]),
+    [...fractionPracticeTemplates, fractionDivisionExpressionTemplate].map(
+      (template) => [template.id, template],
+    ),
   );
   const sources = new Map(
     requirements.map((requirement) => [requirement.sourceId, requirement]),
@@ -141,8 +157,12 @@ export function validateFractionPracticeCoverage(
       throw new Error(
         `Unknown/unlinked source component: ${binding.templateId}`,
       );
+    const expectedResponse =
+      binding.templateId === fractionDivisionExpressionTemplate.id
+        ? "single-choice-selection"
+        : "numeric-result-only";
     if (
-      binding.assessedResponse !== "numeric-result-only" ||
+      binding.assessedResponse !== expectedResponse ||
       !binding.unassessedRequirements.length
     )
       throw new Error("Unsupported coverage claim");

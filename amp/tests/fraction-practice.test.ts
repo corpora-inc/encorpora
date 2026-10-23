@@ -28,9 +28,9 @@ function value(answer: string) {
   return Number(n) / Number(d);
 }
 
-test("21 fraction families have stable public engine and book/skill/component bindings", () => {
+test("fraction practice families have stable public engine and book/skill/component bindings", () => {
   assert.equal(fractionPracticeTemplates.length, 21);
-  assert.equal(fractionPracticeBindings.length, 21);
+  assert.equal(fractionPracticeBindings.length, 22);
   assert.equal(fractionRequirements.length, 38);
   validateFractionPracticeCoverage();
   for (const template of fractionPracticeTemplates) {

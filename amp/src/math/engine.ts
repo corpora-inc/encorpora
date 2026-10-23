@@ -238,6 +238,10 @@ import {
   fractionPracticeTemplates,
   generateFractionPracticeProblem,
 } from "./fraction-practice";
+import {
+  fractionDivisionExpressionTemplate,
+  fractionDivisionExpressionCase,
+} from "./fraction-division-expression";
 import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
@@ -421,6 +425,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...graphicalTemplates,
   ...elementaryTemplates,
   ...fractionPracticeTemplates,
+  fractionDivisionExpressionTemplate,
   ...algebraTemplates,
   ...choiceTemplates,
   ...equalGroupsTemplates,
@@ -780,6 +785,8 @@ function generateRawProblem(
     return generateEqualGroupsProblem(templateId, seed);
   if (fractionPracticeTemplates.some((t) => t.id === templateId))
     return generateFractionPracticeProblem(templateId, seed);
+  if (templateId === fractionDivisionExpressionTemplate.id)
+    return fractionDivisionExpressionCase(seed).problem;
   if (elementaryTemplates.some((t) => t.id === templateId))
     return generateElementaryProblem(templateId, seed);
   if (graphicalTemplates.some((t) => t.id === templateId))

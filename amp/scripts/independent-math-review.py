@@ -23,7 +23,7 @@ from rational_expression_math_oracle import RATIONAL_EXPRESSION, solve_rational_
 from nonlinear_system_math_oracle import NONLINEAR_SYSTEM, solve_nonlinear_system, review_nonlinear_system_fixtures, review_nonlinear_system_problem
 from elementary_math_oracle import ELEMENTARY, solve_elementary
 from equal_groups_math_oracle import EQUAL_GROUPS, solve_equal_groups
-from fraction_math_oracle import FRACTION_PRACTICE, solve_fraction_practice
+from fraction_math_oracle import FRACTION_PRACTICE, FRACTION_CHOICE, solve_fraction_practice, review_fraction_expression_fixtures
 from choice_math_oracle import CHOICE, solve_choice
 from measurement_math_oracle import SUPPORTED as MEASUREMENT, solve as solve_measurement, self_test as review_measurement_fixtures
 from algebra_math_oracle import ALGEBRA, ALGEBRA_CHOICE, solve_algebra, review_algebra_fixtures
@@ -661,7 +661,7 @@ def review(stream):
             review_rational_problem(problem)
             if record:
                 rational_corpus.record(public, solved)
-        if template in COMPLEX | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in FRACTION_CHOICE | COMPLEX | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -721,6 +721,7 @@ def review(stream):
     review_quadratic_irrational_fixtures()
     review_relation_repair_fixtures()
     review_complex_fixtures()
+    review_fraction_expression_fixtures()
     review_inverse_rounding_fixtures()
     review_study_design_fixtures()
     review_assessment_gap_fixtures()

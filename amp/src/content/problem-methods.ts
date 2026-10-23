@@ -1087,6 +1087,29 @@ export const methods: Record<string, ProblemMethod> = {
     ],
     watch: "2 shared by 6 is 2/6 = 1/3.",
   },
+  "fraction-division-expression": {
+    intuition:
+      "A whole is one complete unit. To share whole units equally, cut each whole into equal pieces, one per person. Each person gets one piece from each whole. The fraction's top number (numerator) counts that person's pieces; its bottom number (denominator) says how many equal pieces make one whole.",
+    goal: "Given a written fraction, choose an expression with the same value.",
+    terms: [
+      ["whole", "One complete unit, such as one sandwich."],
+      [
+        "numerator",
+        "The top number: how many equal parts are counted. In this sharing model, it also counts the wholes shared.",
+      ],
+      [
+        "denominator",
+        "The bottom number: how many equal parts make one whole. In this sharing model, it also counts the people.",
+      ],
+    ],
+    method: [
+      "Read the numerator as the total number of whole units being shared.",
+      "Read the denominator as the number of equal shares.",
+      "Choose the expression that divides the total by the share count.",
+    ],
+    watch:
+      "Keep the order: divide the total by the share count. Reversing the numbers describes a different sharing problem.",
+  },
   "unit-fraction-share": {
     intuition:
       "You already have one equal piece of a whole, and you are sharing that piece again. Cutting it into equal smaller pieces makes each share smaller. Count how many of those little pieces would fill the original whole.",
