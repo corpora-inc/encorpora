@@ -214,6 +214,10 @@ import {
   generateQuadraticProblem,
 } from "./quadratic-practice";
 import {
+  complexMultiplicationTemplate,
+  complexMultiplicationCase,
+} from "./complex-practice";
+import {
   absoluteValueTemplates,
   generateAbsoluteValueProblem,
 } from "./absolute-value-practice";
@@ -370,6 +374,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...baseTemplates,
   ...extendedTemplates,
   ...quadraticTemplates,
+  complexMultiplicationTemplate,
   ...polynomialTemplates,
   ...radicalTemplates,
   ...addSubtractTemplates,
@@ -761,6 +766,8 @@ function generateRawProblem(
     return generatePolynomialProblem(templateId, seed);
   if (quadraticTemplates.some((t) => t.id === templateId))
     return generateQuadraticProblem(templateId, seed);
+  if (templateId === complexMultiplicationTemplate.id)
+    return complexMultiplicationCase(seed).problem;
   if (absoluteValueTemplates.some((t) => t.id === templateId))
     return generateAbsoluteValueProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))
