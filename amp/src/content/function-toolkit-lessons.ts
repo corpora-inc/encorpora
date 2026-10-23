@@ -87,7 +87,7 @@ export const functionToolkitLessons: Lesson[] = [
         title: "Inside changes inputs, outside changes outputs",
         paragraphs: [
           "A function assigns one output to each allowed input. On its graph, changing the output changes the point's height. Adding $k$ outside, $f(x)+k$, adds $k$ to every height. Multiplying outside, $af(x)$, multiplies each height by $a$: $|a|>1$ stretches away from the $x$-axis, $0<|a|<1$ compresses toward it, a negative $a$ also reflects across it, and $a=0$ flattens the graph to $y=0$.",
-          "Changing the input works backwards. $f(x - 3)$ reaches the value $f$ had at 0 only when $x - 3 = 0$, at $x = 3$: the graph moves 3 to the right. $f(2x)$ reaches the value $f$ had at 4 when $2x = 4$, at $x = 2$: every $x$-coordinate is divided by 2.",
+          "Changing the input works backwards. The point with old input 0 moves to input 3 under $f(x-3)$, because $x-3=0$ there: the graph moves 3 to the right. Under $f(2x)$, the point with old input 4 moves to input 2, because $2x=4$ there: every $x$-coordinate is divided by 2.",
           "Do the steps in this order: shift across, stretch or reflect, then shift up. $y = x^2$ moved 1 right, stretched by $-2$ and moved 3 up is $y = -2(x - 1)^2 + 3$, with vertex $(1, 3)$.",
         ],
         illustration: "transform-parent",
@@ -235,7 +235,7 @@ export const functionToolkitLessons: Lesson[] = [
     pitfalls: [
       "$f^{-1}(x)$ is not $\\frac{1}{f(x)}$.",
       "Undo the steps of $f$ in reverse order: for $3x - 7$, add 7 first, then divide by 3.",
-      "A quadratic has an inverse only on one side of its vertex.",
+      "Restricting a quadratic to either half of its parabola is a convenient way to make it one-to-one before finding an inverse function.",
     ],
     parentGuide:
       "Make a two-row table of a function, then swap the rows. Ask whether the swapped table is still a function: it is only if no output appeared twice.",
@@ -257,7 +257,7 @@ export const functionToolkitLessons: Lesson[] = [
         stage: "intuition",
         title: "The same feature, read two ways",
         paragraphs: [
-          "From a formula, compute: $f(x) = -(x - 1)^2 + 5$ has its highest point at the vertex $(1, 5)$, so its maximum is 5. In standard form, the vertex is at $x = -\\frac{b}{2a}$.",
+          "From a formula, compute: $f(x) = -(x - 1)^2 + 5$ has its highest point at the vertex $(1, 5)$, so its maximum is 5. A quadratic in standard form is $ax^2+bx+c$, where $a$, $b$ and $c$ are fixed numbers and $a\\ne0$; its vertex is at $x=-\\frac{b}{2a}$.",
           "From a table of a quadratic, use symmetry: in the table $g(-3) = -1$, $g(-2) = 2$, $g(-1) = 3$, $g(0) = 2$, $g(1) = -1$, the values match in pairs around $x = -1$, so the vertex is $(-1, 3)$ and the maximum is 3. So $f$ has the greater maximum.",
         ],
         illustration: "compare-formula-table",

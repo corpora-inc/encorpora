@@ -128,8 +128,8 @@ export const similarityTrigLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "A 45°-45°-90° triangle has sides $s$, $s$, $s\\sqrt 2$; a 30°-60°-90° triangle has sides $s$, $s\\sqrt 3$, $2s$, with $s$ opposite 30°.",
-          "In a right triangle, sin = opposite ÷ hypotenuse, cos = adjacent ÷ hypotenuse and tan = opposite ÷ adjacent, all read from the chosen acute angle.",
+          "For $s>0$, a 45°-45°-90° triangle has sides $s$, $s$, $s\\sqrt2$; a 30°-60°-90° triangle has sides $s$, $s\\sqrt3$, $2s$, with $s$ opposite 30°.",
+          "For a chosen acute angle $A$ in a right triangle, $\\sin A$ is opposite ÷ hypotenuse, $\\cos A$ is adjacent ÷ hypotenuse, and $\\tan A$ is opposite ÷ adjacent.",
           "The acute angles of a right triangle are complementary, and the side opposite one is adjacent to the other, so $\\sin A = \\cos(90° - A)$.",
         ],
       },
@@ -228,9 +228,9 @@ export const similarityTrigPrinciples: Record<string, string> = {
   "similar-triangle-side":
     "Matching sides of similar triangles share one ratio, the scale factor; perimeters scale by it and areas by its square.",
   "special-right-triangle":
-    "A 45°-45°-90° triangle has sides $s$, $s$, $s\\sqrt 2$; a 30°-60°-90° triangle has sides $s$, $s\\sqrt 3$, $2s$, with $s$ opposite 30°.",
+    "For $s>0$, a 45°-45°-90° triangle has sides $s$, $s$, $s\\sqrt2$; a 30°-60°-90° triangle has sides $s$, $s\\sqrt3$, $2s$, with $s$ opposite 30°.",
   "trig-ratio":
-    "In a right triangle, sin = opposite ÷ hypotenuse, cos = adjacent ÷ hypotenuse and tan = opposite ÷ adjacent, all read from the chosen acute angle.",
+    "For a chosen acute angle $A$ in a right triangle, $\\sin A$ is opposite ÷ hypotenuse, $\\cos A$ is adjacent ÷ hypotenuse, and $\\tan A$ is opposite ÷ adjacent.",
   "complementary-trig":
     "The acute angles of a right triangle are complementary, and the side opposite one is adjacent to the other, so $\\sin A = \\cos(90° - A)$.",
 };

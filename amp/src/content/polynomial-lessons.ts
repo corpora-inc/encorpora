@@ -54,7 +54,7 @@ export const polynomialPrinciples: Record<string, string> = {
   "polynomial-subtraction":
     "Subtracting a sum means adding its opposite: P − (A + B) = P + (−A) + (−B). Then combine like terms.",
   "polynomial-multiplication":
-    "The distributive property multiplies every term of one factor by every term of the other. Products of powers satisfy x^m × x^n = x^(m+n) for nonnegative integer exponents.",
+    "The distributive property multiplies every term of one factor by every term of the other. For nonnegative integers $m,n$, powers satisfy $x^m\\cdot x^n=x^{m+n}$.",
 };
 
 export const polynomialLessons: Lesson[] = [
@@ -125,7 +125,7 @@ export const polynomialLessons: Lesson[] = [
         stage: "intuition",
         title: "Subtract the whole expression",
         paragraphs: [
-          "A polynomial is a sum of terms with nonnegative integer powers of a variable. Subtracting a polynomial means adding its opposite. Multiplication by −1 changes the sign of every term, including the constant.",
+          "A polynomial is a sum of terms with nonnegative integer powers of a variable. Like terms have the same power of that variable. Subtracting a polynomial means adding its opposite. Multiplication by −1 changes the sign of every term, including the constant.",
           "For example, −(2x² − 3x + 4) = −2x² + 3x − 4. The −3x becomes +3x because (−1)(−3) = 3. The parentheses determine which terms the minus sign affects.",
         ],
       },
@@ -203,7 +203,7 @@ export const polynomialLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "The distributive property multiplies every term of one factor by every term of the other. Products of powers satisfy x^m × x^n = x^(m+n) for nonnegative integer exponents.",
+          "The distributive property multiplies every term of one factor by every term of the other. For nonnegative integers $m,n$, powers satisfy $x^m\\cdot x^n=x^{m+n}$.",
         ],
       },
     ],

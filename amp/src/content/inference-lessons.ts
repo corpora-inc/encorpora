@@ -8,7 +8,7 @@ export const inferenceLessons: Lesson[] = [
     id: "sampling",
     title: "Learning about a population from a sample",
     summary:
-      "Selecting people by chance gives a sample that can estimate its population. The estimate can change from one sample to another.",
+      "A population is the whole group; a sample is the part observed. Selecting sample members by chance can support an estimate for the population, with uncertainty because another sample may differ.",
     templateIds: [
       "representative-sample-choice",
       "sample-proportion-estimate",
@@ -22,7 +22,7 @@ export const inferenceLessons: Lesson[] = [
     sections: [
       {
         stage: "intuition",
-        title: "Random means everyone has the same chance",
+        title: "A simple random sample",
         paragraphs: [
           "To learn how all 900 students feel about a longer lunch, surveying every student is slow. A sample of 60 can estimate the school's view if the selection method gives the whole school a fair chance; the estimate has uncertainty.",
           "Choosing 60 names at random from the full list gives every student the same chance. Asking the student council, or whoever answers an email, favors students who differ from the rest: the sample is biased.",
@@ -69,7 +69,7 @@ export const inferenceLessons: Lesson[] = [
     id: "compare-distributions",
     title: "Comparing two groups",
     summary:
-      "Look at where each group’s values cluster, then compare that gap with how widely the values spread.",
+      "The mean is a group's average. MAD is the average distance from that mean. Compare the gap between two means with their MADs; on box plots, compare middle values and box widths separately.",
     templateIds: [
       "means-in-mads",
       "double-box-compare",
@@ -88,6 +88,13 @@ export const inferenceLessons: Lesson[] = [
           "The means are 8 − 5 = 3 push-ups apart, which is 3 ÷ 1 = 3 MADs. This compares the gap in centers with the typical distance from each mean. It does not by itself prove how much the groups overlap or why they differ.",
         ],
         illustration: "data-double-dot-mads",
+      },
+      {
+        stage: "intuition",
+        title: "Read the middle half of a box plot",
+        paragraphs: [
+          "A box plot shows ordered data. Its median is the middle value, and the box runs from the lower quartile $Q_1$ to the upper quartile $Q_3$. The interquartile range (IQR) is $Q_3-Q_1$, the width of the middle half. A higher median means a higher center; a wider box means a more spread-out middle half.",
+        ],
       },
       {
         title: "Compare box plots on one scale",
@@ -175,6 +182,8 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
   },
   "double-box-compare": {
     goal: "Compare two box plots drawn on one scale.",
+    intuition:
+      "A box plot's median is its middle value. Its box spans the middle half of the data; the box width is the interquartile range (IQR). Compare medians for center and box widths for spread.",
     method: [
       "Read the median line and the box ends of each plot.",
       "Subtract medians to compare centers; subtract box lengths to compare IQRs.",
@@ -183,6 +192,8 @@ export const inferenceMethods: Record<string, ProblemMethod> = {
   },
   "compare-distributions-choice": {
     goal: "Choose the true comparison of two box plots.",
+    intuition:
+      "A box plot's median is its middle value. The box width is the interquartile range (IQR), the spread of its middle half. One group can have a higher median and a narrower box.",
     method: [
       "Compare the median lines: which is farther right?",
       "Compare the box lengths: which is longer?",
@@ -199,9 +210,9 @@ export const inferencePrinciples: Record<string, string> = {
   "sample-proportion-estimate":
     "A random sample’s fraction estimates the population’s fraction: estimate = (count ÷ sample size) × population.",
   "sample-estimates-plot":
-    "Random samples vary; the mean of many samples is a steadier estimate than any one.",
+    "Independent samples drawn in the same way vary; averaging their estimates usually reduces random variation, but does not repair biased selection.",
   "means-in-mads":
-    "The gap between two means, divided by the shared MAD, measures how far apart the groups are compared with their spread.",
+    "When the groups share a positive MAD, their absolute mean gap divided by that MAD compares their centers with their typical spread.",
   "double-box-compare":
     "Medians compare the centers of two box plots; box lengths compare their spreads.",
   "compare-distributions-choice":

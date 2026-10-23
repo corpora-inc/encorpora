@@ -64,7 +64,7 @@ export const powerLessons: Lesson[] = [
     id: "comparing-powers",
     title: "Comparing powers and growth by doubling",
     summary:
-      "Swapping a base and its exponent changes the value, an exponent applies only to what it touches, and repeated doubling is a power of 2.",
+      "In $2^5$, five factors of the base 2 are multiplied; the exponent 5 counts them. Swapping base and exponent can change the value; repeated doubling is a power of 2.",
     templateIds: ["power-compare", "power-order-trap", "power-doubling-story"],
     objectives: [
       "Compare powers such as $2^5$ and $5^2$ by evaluating both.",
@@ -73,7 +73,7 @@ export const powerLessons: Lesson[] = [
     sections: [
       {
         stage: "intuition",
-        title: "Swapping changes the value",
+        title: "Compare the values, not the order",
         paragraphs: [
           "$2^5$ is five factors of 2, which is 32; $5^2$ is two factors of 5, which is 25. To compare two powers, evaluate both.",
           "Doubling ties squaring at $n = 2$ and $n = 4$, where $2^4 = 4^2 = 16$, and then pulls ahead for good: each step doubles $2^n$, while $n^2$ grows by a smaller and smaller factor.",
@@ -167,7 +167,7 @@ export const powerMethods: Record<string, ProblemMethod> = {
   "power-doubling-story": {
     goal: "Given a quantity that doubles or triples at each step, find its value at a later step.",
     method: [
-      "Each step multiplies by the same factor, so step $n$ is that factor to the power $n$.",
+      "Identify the amount at step 0. After $n$ steps, multiply that starting amount by the step factor to the power $n$; when it starts at 1, the result is just the factor to the power $n$.",
       "Build the power from the last bar shown: $2^7 = 2^3 \\cdot 2^4 = 8 \\cdot 16$.",
     ],
     watch:
@@ -177,7 +177,7 @@ export const powerMethods: Record<string, ProblemMethod> = {
 
 export const powerPrinciples: Record<string, string> = {
   "power-missing-exponent":
-    "If $b^n = v$, then $n$ is the number of times $v$ can be divided by $b$ to reach 1.",
+    "For $b>1$ and positive whole-number $n$, $b^n=v$ means dividing $v$ by $b$ exactly $n$ times reaches 1.",
   "power-repeated-product":
     "A product of $n$ equal factors $b$ is the power $b^n$: the base is the factor, the exponent the count.",
   "power-compare":

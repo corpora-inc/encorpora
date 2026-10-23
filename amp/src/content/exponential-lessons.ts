@@ -64,8 +64,8 @@ export const exponentialLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "Exponential model: $y = a \\cdot b^t$ multiplies the starting value $a$ by the factor $b$ once per unit of $t$.",
-          "In $y = a \\cdot b^x$, $a$ is the value at $x = 0$ and $b$ is the ratio between values one step apart.",
+          "For a real starting value $a$ and positive factor $b$, the exponential model $y=a\\cdot b^t$ multiplies $a$ by $b$ once per unit of $t$.",
+          "In $y=a\\cdot b^x$ with $b>0$, $a$ is the value at $x=0$. When $a\\ne0$, $b$ is the ratio between values one step apart.",
         ],
       },
     ],
@@ -544,7 +544,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     goal: "Given a logarithm in an awkward base, or a product or quotient of logs, find its value.",
     terms: [terms.logarithm],
     method: [
-      "log_b N = log_c N ÷ log_c b for any base $c$.",
+      "For positive $N$ and bases $b,c>0$ other than 1, use $\\log_b N=\\log_c N/\\log_c b$.",
       "Choose $c$ so both logs are easy: often the prime that $b$ and $N$ are powers of.",
       "Divide, or cancel the common logs.",
     ],
@@ -585,13 +585,13 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
 
 export const exponentialPrinciples: Record<string, string> = {
   "exponential-model-value":
-    "Exponential model: $y = a \\cdot b^t$ multiplies the starting value $a$ by the factor $b$ once per unit of $t$.",
+    "For a real starting value $a$ and positive factor $b$, the exponential model $y=a\\cdot b^t$ multiplies $a$ by $b$ once per unit of $t$.",
   "exponential-model-rule":
-    "In $y = a \\cdot b^x$, $a$ is the value at $x = 0$ and $b$ is the ratio between values one step apart.",
+    "In $y=a\\cdot b^x$ with $b>0$, $a$ is the value at $x=0$. When $a\\ne0$, $b$ is the ratio between values one step apart.",
   "linear-or-exponential":
     "Over equal steps, linear functions have equal differences and exponential functions have equal ratios.",
   "exponential-overtakes":
-    "An increasing exponential function eventually exceeds every linear function.",
+    "For $a>0$ and $b>1$, $ab^x$ eventually exceeds every linear function of $x$ as $x$ increases.",
   "same-base-equation":
     "If $b > 0$ and $b \\neq 1$, then $b^m = b^n$ exactly when $m = n$.",
   "exponential-log-solution":
@@ -601,15 +601,15 @@ export const exponentialPrinciples: Record<string, string> = {
   "geometric-series-sum":
     "Finite geometric sum: $S_n = \\frac{a_1(r^n - 1)}{r - 1}$ for $r \\neq 1$.",
   "log-rules-evaluate":
-    "$\\log_b(mn) = \\log_b m + \\log_b n$, $\\log_b \\frac{m}{n} = \\log_b m - \\log_b n$, and $\\log_b m^p = p\\log_b m$.",
+    "For $b>0$, $b\\ne1$, and $m,n>0$, $\\log_b(mn)=\\log_b m+\\log_b n$ and $\\log_b(m/n)=\\log_b m-\\log_b n$. For real $p$, $\\log_b(m^p)=p\\log_b m$.",
   "log-expand":
-    "Logarithms turn products into sums, quotients into differences and powers into multiples.",
+    "For positive arguments and a positive base other than 1, logarithms turn products into sums, quotients into differences and powers into multiples.",
   "change-of-base":
-    "Change of base: $\\log_b N = \\frac{\\log_c N}{\\log_c b}$ for any base $c$.",
+    "For $N>0$ and bases $b,c>0$ with $b,c\\ne1$, change of base gives $\\log_b N=\\frac{\\log_c N}{\\log_c b}$.",
   "logarithm-value":
     "$\\log_b b^k = k$ for every real $k$, including negative and fractional exponents.",
   "log-exponential-form":
     "$\\log_b N = p$ and $b^p = N$ are the same statement.",
   "geometric-sequence-rule":
-    "In a geometric sequence, $a_n = a_1 r^{n-1}$ and $\\frac{a_m}{a_k} = r^{m-k}$.",
+    "For positive whole-number positions $n$, a geometric sequence satisfies $a_n=a_1r^{n-1}$. If $r\\ne0$ and $a_k\\ne0$, then $a_m/a_k=r^{m-k}$ for positive positions $m,k$.",
 };

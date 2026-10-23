@@ -42,7 +42,7 @@ export const probabilityRulesLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "One card is drawn with every card equally likely from a deck of 52: four suits of 13 cards each. Hearts are one suit; each suit has one jack, one queen, and one king. What is the probability of a heart or a face card?",
+        "One card is drawn with every card equally likely from a deck of 52: four suits of 13 cards each. Hearts are one suit; each suit has one jack, one queen, and one king. These jacks, queens, and kings are the face cards. What is the probability of a heart or a face card?",
       steps: [
         "There are 13 hearts and 12 face cards.",
         "The jack, queen and king of hearts are in both groups, so 13 + 12 counts them twice: 13 + 12 − 3 = 22 cards.",

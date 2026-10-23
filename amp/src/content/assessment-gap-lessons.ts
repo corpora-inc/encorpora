@@ -62,7 +62,7 @@ export const assessmentGapLessons: Lesson[] = [
     id: "measurement-error-bound",
     title: "Measurements leave a range",
     summary:
-      "Turn an error limit into the smallest and greatest allowed measurements.",
+      "A reported measurement is an instrument's reading. An error limit says how far the actual value may be from it; subtract and add that limit to find the allowed range.",
     templateIds: ["measurement-error-bound"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -123,7 +123,7 @@ export const assessmentGapLessons: Lesson[] = [
     id: "margin-of-error-interval",
     title: "An estimate with room on each side",
     summary:
-      "Read an estimate and its margin of error as a range for a population quantity.",
+      "A population is the whole group; a sample observes part of it. A margin of error gives a distance on either side of the sample estimate for the population quantity.",
     templateIds: ["margin-of-error-interval"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -135,7 +135,7 @@ export const assessmentGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Why an estimate comes with a range",
         paragraphs: [
-          "You need addition, subtraction and percentages. A population is the whole group you want to study. A sample is the part you observe. Different random samples can give different estimates, so a sample estimate is not an exact population value. A margin of error is the distance from an estimate to each endpoint of its reported interval.",
+          "You need addition, subtraction and percentages. A population is the whole group you want to study. A sample is the part you observe. Different random samples can give different estimates, so a sample estimate is not an exact population value. A margin of error is the distance from an estimate to each endpoint of its reported interval. A percentage point measures a difference between percentages: from 60% to 64% is 4 percentage points, not 4% of 60%.",
         ],
       },
     ],
@@ -185,7 +185,7 @@ export const assessmentGapLessons: Lesson[] = [
     id: "radian-arc-ratio",
     title: "Measure an angle by its arc",
     summary:
-      "A radian compares the arc swept out by an angle with the circle’s radius.",
+      "A radius reaches from a circle's center to its edge; an arc follows part of that edge. One radian is the angle that sweeps an arc as long as the radius.",
     templateIds: ["radian-arc-ratio"],
     includeGeneratedRepresentation: false,
     objectives: [

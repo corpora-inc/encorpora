@@ -39,6 +39,8 @@ export const nonlinearSystemMethods: Record<string, ProblemMethod> = {
   },
   "nonlinear-system-count": {
     goal: "Count distinct real intersections without finding every coordinate.",
+    intuition:
+      "A system asks where two equations are true for the same point. Set the line and parabola outputs equal to get a quadratic equation. For $Ax^2+Bx+C=0$ with $A\\ne0$, its discriminant $B^2-4AC$ tells whether there are two, one, or no real shared points.",
     terms: [
       ...terms,
       [
@@ -93,7 +95,7 @@ export const nonlinearSystemLessons: Lesson[] = [
       prompt: "Find every shared point of $y = x^2$ and $y = x + 2$.",
       steps: [
         "At a shared point both expressions equal $y$, so $x^2 = x + 2$.",
-        "Subtract $x + 2$ from both sides: $x^2 - x - 2 = 0$. Factor: $(x - 2)(x + 1) = 0$.",
+        "Subtract $x + 2$ from both sides: $x^2 - x - 2 = 0$. Rewrite this as an equal product of two expressions, called factors: $(x - 2)(x + 1) = 0$.",
         "A product is zero only if a factor is zero. Thus $x = 2$ or $x = -1$.",
         "Use $y = x + 2$: the two points are $\\left(2, 4\\right)$ and $\\left(-1, 1\\right)$. Check: $2^2 = 4 = 2 + 2$ and $(-1)^2 = 1 = -1 + 2$.",
       ],

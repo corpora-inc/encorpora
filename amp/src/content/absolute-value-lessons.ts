@@ -125,7 +125,7 @@ export const absoluteValueLessons: Lesson[] = [
       prompt: "Solve |x| = 3. Give the complete set of real solutions.",
       steps: [
         "The target distance 3 is positive. The two points three units from zero are 3 and −3.",
-        "The two branches are x = 3 or x = −3.",
+        "These are two alternative equations, called branches: $x=3$ or $x=-3$.",
         "Check x = 3: |3| = 3. Check x = −3: |−3| = 3. Both equal the right side.",
         "No other point is exactly three units from zero. The complete solution set is x = −3 or x = 3.",
       ],

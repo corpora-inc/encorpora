@@ -43,6 +43,8 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
   },
   "quadratic-real-solution-count": {
     goal: "Given a quadratic equation, determine how many distinct real solutions it has.",
+    intuition:
+      "A quadratic has the form $ax^2+bx+c=0$ with $a\\ne0$; $a$, $b$, and $c$ are its signed number coefficients. Its discriminant is $D=b^2-4ac$. The sign of $D$ tells how many different real-number solutions the equation has: two if positive, one if zero, none if negative.",
     terms: [
       [
         "discriminant",

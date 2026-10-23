@@ -40,7 +40,7 @@ export const completingSquareLessons: Lesson[] = [
     id: "complete-square-term",
     title: "Find the term that completes a square",
     summary:
-      "A squared sum makes two matching middle pieces. Halve the middle coefficient to find the number inside the square, then square that number to fill the missing corner.",
+      "We want to rewrite a calculation as one two-term expression multiplied by itself. In $x^2+bx+c$, the coefficient $b$ multiplies $x$; a square $(x+h)^2$ has middle term $2hx$, so halve $b$ to find $h$, then square $h$ to find $c$.",
     templateIds: ["complete-square-term"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -62,7 +62,7 @@ export const completingSquareLessons: Lesson[] = [
     workedExample: {
       prompt: "Find $c$ so that $x^2 - 5x + c$ is a squared binomial.",
       steps: [
-        "Match the middle coefficient: $2h = -5$, so $h = -\\frac{5}{2}$.",
+        "Write the desired square as $(x+h)^2$, where $h$ is the number inside the parentheses. Its middle term is $2hx$, so $2h=-5$ and $h=-\\frac{5}{2}$.",
         "Square the entire fraction: $c = \\left(-\\frac{5}{2}\\right)^2 = \\frac{(-5)(-5)}{2 \\times 2} = \\frac{25}{4}$.",
         "Write the identity: $x^2 - 5x + \\frac{25}{4} = \\left(x - \\frac{5}{2}\\right)^2$.",
         "Expand to check: the two cross-products add to $-\\frac{5}{2}x - \\frac{5}{2}x = -5x$, and the constant is $\\frac{25}{4}$.",
@@ -90,7 +90,7 @@ export const completingSquareLessons: Lesson[] = [
     id: "complete-square-monic",
     title: "Complete the square with leading coefficient one",
     summary:
-      "Make a squared binomial by adding the missing corner, then subtract that same amount so the expression keeps its value.",
+      "A squared binomial is a two-term expression multiplied by itself, such as $(x+h)^2$. Add the square needed to form it, then subtract the same amount to keep the original value.",
     templateIds: ["complete-square-monic"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -140,7 +140,7 @@ export const completingSquareLessons: Lesson[] = [
     id: "complete-square-nonmonic",
     title: "Complete the square with any leading coefficient",
     summary:
-      "When a number multiplies the entire square, it also multiplies the corner you add. Account for that extra amount outside the square.",
+      "When $a$ multiplies an entire squared expression, an amount added inside is multiplied by $a$ too. Subtract that scaled amount outside to keep the expression's value.",
     templateIds: ["complete-square-nonmonic"],
     includeGeneratedRepresentation: false,
     objectives: [

@@ -6,7 +6,7 @@ export const realNumberLessons: Lesson[] = [
     id: "rational-irrational-numbers",
     title: "Rational and irrational numbers",
     summary:
-      "A rational number is a quotient of integers, so its decimal ends or repeats; a repeating decimal becomes a fraction by subtracting a shifted copy.",
+      "A rational number is a quotient of integers with a nonzero denominator, so its decimal ends or repeats; a repeating decimal becomes a fraction by subtracting shifted copies with matching decimal tails.",
     templateIds: ["classify-real-number", "repeating-decimal-to-fraction"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -56,8 +56,8 @@ export const realNumberLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "A number is rational exactly when it is a quotient of integers; its decimal then ends or repeats. The square or cube root of a whole number that is not a perfect square or cube is irrational, and so is $\\pi$.",
-          "Multiplying by a power of 10 shifts digits without changing them, so two copies of a repeating decimal with the same tail differ by a whole number.",
+          "A number is rational exactly when it is a quotient of integers with a nonzero denominator; its decimal then ends or repeats. The square or cube root of a whole number that is not a perfect square or cube is irrational, and so is $\\pi$.",
+          "Multiplying by a suitable power of 10 aligns the repeating tails after the decimal point. Subtracting the two aligned copies cancels that tail and leaves a whole number.",
         ],
       },
     ],
@@ -250,9 +250,9 @@ export const realNumberLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "Multiplying by $10^{n}$ moves every digit $n$ places to a larger place value when $n$ is positive and to a smaller one when $n$ is negative.",
+          "For integer $n$, multiplying by $10^n$ moves every digit $|n|$ places to a larger place value when $n$ is positive and to a smaller one when $n$ is negative.",
           "Every positive number can be written in exactly one way as $a \\times 10^{n}$ with $1 \\le a < 10$ and $n$ an integer.",
-          "$\\frac{a \\times 10^{m}}{b \\times 10^{n}} = \\frac{a}{b} \\times 10^{m - n}$.",
+          "For $b\\ne0$ and integer exponents $m,n$, $\\frac{a\\times10^m}{b\\times10^n}=\\frac{a}{b}\\times10^{m-n}$.",
         ],
       },
     ],
@@ -338,7 +338,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     method: [
       "Under a root sign, check for a perfect square or cube: if so, the root is a whole number.",
       "Fractions, integers and decimals that end or repeat are rational.",
-      "Roots of non-perfect squares or cubes, nonzero multiples of $\\pi$ and never-repeating decimals are irrational.",
+      "Roots of non-perfect squares or cubes, nonzero rational multiples of $\\pi$ and never-repeating decimals are irrational.",
     ],
     watch:
       "A root sign or an endless decimal alone does not make a number irrational.",
@@ -449,9 +449,9 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
 
 export const realNumberPrinciples: Record<string, string> = {
   "classify-real-number":
-    "A number is rational exactly when it is a quotient of integers; its decimal then ends or repeats. The square or cube root of a whole number that is not a perfect square or cube is irrational, and so is $\\pi$.",
+    "A number is rational exactly when it is a quotient of integers with a nonzero denominator; its decimal then ends or repeats. The square or cube root of a whole number that is not a perfect square or cube is irrational, and so is $\\pi$.",
   "repeating-decimal-to-fraction":
-    "Multiplying by a power of 10 shifts digits without changing them, so two copies of a repeating decimal with the same tail differ by a whole number.",
+    "Multiplying by suitable powers of 10 aligns the repeating tails after the decimal point. Subtracting the aligned copies cancels that tail and leaves a whole number.",
   "root-between-integers":
     "Squares and cubes keep order: if $a^2 < n < b^2$ for nonnegative $a$ and $b$, then $a < \\sqrt{n} < b$.",
   "root-nearest-tenth":
@@ -461,11 +461,11 @@ export const realNumberPrinciples: Record<string, string> = {
   "solve-square-cube-equation":
     "A positive number has exactly two real square roots, $\\sqrt{p}$ and $-\\sqrt{p}$; every real number has exactly one real cube root.",
   "scientific-to-standard":
-    "Multiplying by $10^{n}$ moves every digit $n$ places to a larger place value when $n$ is positive and to a smaller one when $n$ is negative.",
+    "For integer $n$, multiplying by $10^n$ moves every digit $|n|$ places to a larger place value when $n$ is positive and to a smaller one when $n$ is negative.",
   "standard-to-scientific":
     "Every positive number can be written in exactly one way as $a \\times 10^{n}$ with $1 \\le a < 10$ and $n$ an integer.",
   "scientific-times-larger":
-    "$\\frac{a \\times 10^{m}}{b \\times 10^{n}} = \\frac{a}{b} \\times 10^{m - n}$.",
+    "For $b\\ne0$ and integer exponents $m,n$, $\\frac{a\\times10^m}{b\\times10^n}=\\frac{a}{b}\\times10^{m-n}$.",
   "scientific-operations":
     "$10^{m} \\times 10^{n} = 10^{m + n}$ and $10^{m} \\div 10^{n} = 10^{m - n}$; addition combines coefficients only of equal powers of 10.",
 };

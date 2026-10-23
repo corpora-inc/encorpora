@@ -18,6 +18,8 @@ const terms: [string, string][] = [
 export const rationalExpressionMethods: Record<string, ProblemMethod> = {
   "rational-expression-domain": {
     goal: "Find every input that makes the original denominator zero.",
+    intuition:
+      "A rational expression is a fraction of expressions. Its numerator is above the bar and its denominator is below. Its domain is the inputs where that bottom expression is not zero. A factor is one part of a product; a denominator becomes zero when any of its factors is zero.",
     terms,
     method: [
       "Set each factor of the original denominator equal to 0 and solve the resulting equations.",
@@ -28,6 +30,8 @@ export const rationalExpressionMethods: Record<string, ProblemMethod> = {
   },
   "rational-expression-simplify": {
     goal: "Simplify the fraction and keep the original excluded inputs.",
+    intuition:
+      "The numerator is above a fraction bar and the denominator is below it. A factor is one part of a product. You may divide both parts by a shared nonzero factor, but the original denominator still excludes every input that made it zero; those allowed inputs are the expression’s domain.",
     terms,
     method: [
       "Factor the original numerator and denominator. Find every input that makes the original denominator zero and record those exclusions.",

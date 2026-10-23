@@ -58,7 +58,7 @@ export const bivariateLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "An association is a trend in how two quantities vary together: up or down, along a line or a curve, or no trend at all.",
+          "A scatter plot shows how paired quantities vary. An association is a visible pattern in those pairs, such as an upward or downward trend, which may follow a line or a curve. A cloud with no discernible pattern shows no clear association.",
           "A trend line predicts $y$ by starting from a point on it and adding slope × the change in $x$.",
           "A trend line’s slope is the change in $y$ for each 1 more of $x$, a rate in the units of the context.",
         ],
@@ -121,7 +121,7 @@ export const bivariateLessons: Lesson[] = [
         paragraphs: [
           "Every row and column of a two-way table adds to its total, so a line with one blank determines it.",
           "A percent within a row compares a count to the row total, describing that group alone.",
-          "Two categorical variables are associated when the percents within the rows differ substantially.",
+          "For rows with nonzero totals, compare the proportion in the same category within each row. Different conditional proportions show an observed association in this table; equal proportions show none. A sample alone does not establish a population difference without considering sampling uncertainty.",
         ],
       },
     ],
@@ -199,7 +199,7 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
 };
 export const bivariatePrinciples: Record<string, string> = {
   "scatter-association-choice":
-    "An association is a trend in how two quantities vary together: up or down, along a line or a curve, or no trend at all.",
+    "A scatter plot shows how paired quantities vary. An association is a visible pattern in those pairs, such as an upward or downward trend, which may follow a line or a curve. A cloud with no discernible pattern shows no clear association.",
   "trend-line-predict":
     "A trend line predicts $y$ by starting from a point on it and adding slope × the change in $x$.",
   "trend-slope-meaning":
@@ -209,5 +209,5 @@ export const bivariatePrinciples: Record<string, string> = {
   "two-way-row-percent":
     "A percent within a row compares a count to the row total, describing that group alone.",
   "two-way-association-choice":
-    "Two categorical variables are associated when the percents within the rows differ substantially.",
+    "For rows with nonzero totals, different proportions in the same category within each row show an observed association in the table; equal proportions show none. Population claims require consideration of sampling uncertainty.",
 };

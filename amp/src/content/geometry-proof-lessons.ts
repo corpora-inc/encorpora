@@ -4,6 +4,8 @@ import type { ProblemMethod } from "./problem-lessons";
 export const geometryProofMethods: Record<string, ProblemMethod> = {
   "geometry-proof-step": {
     goal: "Match a proof statement to a theorem whose conditions follow from the givens.",
+    intuition:
+      "A proof explains why a conclusion follows from given facts. Each step states a claim and gives a reason. A theorem is a proved rule you may use when its conditions hold. For angles, equal measures mean congruent angles; measures adding to $180^\\circ$ mean supplementary angles.",
     terms: [
       [
         "proof",

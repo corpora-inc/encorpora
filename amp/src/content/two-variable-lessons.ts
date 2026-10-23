@@ -213,7 +213,7 @@ export const twoVariableLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "Adding or subtracting the same expression on both sides preserves an equation's solutions. Multiplying or dividing both sides by the same nonzero quantity is reversible; multiplying by zero can add solutions, and dividing by zero is undefined. Replacing an expression with an equal expression also preserves its value.",
+          "Adding or subtracting the same expression, defined throughout the original domain, on both sides preserves an equation's solutions. Multiplying or dividing both sides by the same quantity known nonzero throughout that domain is reversible; multiplying by zero can add solutions, and dividing by zero is undefined. Replacing an expression with an equal expression also preserves its value.",
         ],
       },
     ],
@@ -376,7 +376,7 @@ export const twoVariablePrinciples: Record<string, string> = {
   "parameter-solution-count":
     "A linear equation ax = b has no solution when a = 0 and b ≠ 0, and every $x$ is a solution when a = 0 and b = 0.",
   "equation-step-property":
-    "Adding or subtracting the same expression preserves solutions. Multiplying or dividing by a quantity known nonzero throughout the domain is reversible; division by zero is undefined.",
+    "Adding or subtracting the same expression, defined throughout the original domain, preserves solutions. Multiplying or dividing by a quantity known nonzero throughout that domain is reversible; division by zero is undefined.",
   "elimination-equivalent":
     "Replacing one equation by its sum with a multiple of the other is reversible, so it keeps the solution set of the system.",
 };

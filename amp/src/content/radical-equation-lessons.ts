@@ -21,6 +21,8 @@ const terms: [string, string][] = [
 ];
 const basic: ProblemMethod = {
   goal: "Isolate a square root, then find and check the input.",
+  intuition:
+    "The square-root symbol means the nonnegative, or principal, root: $\\sqrt9=3$. Its radicand is the number or expression inside the symbol, which must be nonnegative for a real answer. Squaring can produce a candidate that fails the original equation, so check each possible answer there.",
   terms,
   method: [
     "Undo any addition or subtraction outside the square root by applying the same operation to both sides.",

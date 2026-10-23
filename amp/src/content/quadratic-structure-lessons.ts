@@ -31,7 +31,7 @@ export const quadraticStructureLessons: Lesson[] = [
         title: "Find the axis from standard form",
         paragraphs: [
           "In $y=ax^2+bx+c$ with $a\\ne0$, $a$, $b$, and $c$ are fixed coefficients. Expanding $a(x-h)^2+k$ gives $ax^2-2ahx+ah^2+k$. Matching the $x$ coefficients gives $b=-2ah$, so the axis is $x=h=-b/(2a)$. Substitute this input into the original rule to find the vertex's height.",
-          "For $y=x^2-2x-3$, the axis is $x=-(-2)/(2\\cdot1)=1$ and the vertex is $(1,-4)$. The zeros $-1$ and $3$ are equally far from the axis.",
+          "For $y=x^2-2x-3$, the axis is $x=-(-2)/(2\\cdot1)=1$ and the vertex is $\\left(1,-4\\right)$. The zeros −1 and 3 are equally far from the axis.",
         ],
       },
       {
@@ -46,7 +46,7 @@ export const quadraticStructureLessons: Lesson[] = [
     workedExample: {
       prompt: "What is the vertex of the graph of y = 2x² − 12x + 13?",
       steps: [
-        "The vertex lies on x = −b/(2a) = −(−12)/(2 × 2) = 3.",
+        "In $ax^2+bx+c$, here $a=2$, $b=-12$, and $c=13$. The vertex lies on $x=-b/(2a)=-(-12)/(2\\times2)=3$.",
         "Substitute: y = 2 × 3² − 12 × 3 + 13 = 18 − 36 + 13 = −5.",
         "Check: 2(x − 3)² − 5 = 2x² − 12x + 18 − 5 = 2x² − 12x + 13.",
       ],
@@ -215,7 +215,7 @@ export const quadraticStructureLessons: Lesson[] = [
         stage: "intuition",
         title: "The remainder is a value of the polynomial",
         paragraphs: [
-          "A polynomial is a sum of powers of a variable with number coefficients; $p(x)$ names its value at input $x$. Dividing by $x-a$ means finding a quotient polynomial plus a constant remainder. At $x=a$, the factor $x-a$ becomes zero, so only the remainder is left. This is why substituting $a$ into $p$ finds the remainder.",
+          "A polynomial is a sum of nonnegative whole-number powers of a variable with number coefficients; $p(x)$ names its value at input $x$. Dividing by $x-a$ means finding a quotient polynomial plus a constant remainder. At $x=a$, the factor $x-a$ becomes zero, so only the remainder is left. This is why substituting $a$ into $p$ finds the remainder.",
         ],
       },
       {
@@ -249,7 +249,7 @@ export const quadraticStructureLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "p(x) = (x − a)q(x) + R, so p(a) = R: the remainder is the value at $a$, and x − a is a factor exactly when p(a) = 0.",
-          "Division by x − a writes p(x) = (x − a)q(x) + R with $q$ one degree lower; synthetic division computes $q$ and $R$ by repeated multiplying and adding.",
+          "For a nonconstant polynomial $p$, division by $x-a$ writes $p(x)=(x-a)q(x)+R$ with $q$ one degree lower; synthetic division computes $q$ and $R$ by repeated multiplying and adding.",
         ],
       },
     ],
@@ -412,5 +412,5 @@ export const quadraticStructurePrinciples: Record<string, string> = {
   "remainder-theorem":
     "p(x) = (x − a)q(x) + R, so p(a) = R: the remainder is the value at $a$, and x − a is a factor exactly when p(a) = 0.",
   "polynomial-quotient":
-    "Division by x − a writes p(x) = (x − a)q(x) + R with $q$ one degree lower; synthetic division computes $q$ and $R$ by repeated multiplying and adding.",
+    "For a nonconstant polynomial $p$, division by $x-a$ writes $p(x)=(x-a)q(x)+R$ with $q$ one degree lower; synthetic division computes $q$ and $R$ by repeated multiplying and adding.",
 };

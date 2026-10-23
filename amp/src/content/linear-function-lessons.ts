@@ -90,7 +90,7 @@ export const linearFunctionLessons: Lesson[] = [
         stage: "intuition",
         title: "Change in output over change in input",
         paragraphs: [
-          "A line changes at one constant rate, its slope. A curve does not, so we measure its average rate over an interval: the change in $f$ divided by the change in x, (f(b) − f(a)) ÷ (b − a). Only the two ends of the interval enter; what $f$ does in between does not.",
+          "A function $f$ assigns an output $f(x)$ to each allowed input $x$. A line changes at one constant rate, its slope. A curve may change rate, so compare its outputs at two distinct inputs $a$ and $b$: $f(a)$ is the first output and $f(b)$ the second. The average rate is $\\frac{f(b)-f(a)}{b-a}$. Only these two ends enter; what happens between them does not.",
           "For example, if an output rises 9 while its input rises 3, the average rate is $9\\div3=3$ output units per input unit. This depends on the two endpoints, even when the graph curves between them.",
         ],
       },
@@ -203,8 +203,8 @@ export const linearFunctionLessons: Lesson[] = [
         stage: "intuition",
         title: "Undo in reverse order",
         paragraphs: [
-          "In $A = bh/2$, $h$ is multiplied by $b$ and divided by 2. Undo both on both sides, the last first: multiply by 2 to get 2A = bh, then divide by $b$ to get h = 2A/b. Each step keeps the two sides equal, so the new formula is true whenever the old one is.",
-          "When a term is added, undo it first. In $v = u + at$, $a$ is multiplied by $t$ and then $u$ is added. So subtract $u$, then divide by $t$: $a = (v - u)/t$. The parentheses matter: all of $v - u$ is divided by $t$.",
+          "For a triangle, $A=bh/2$ gives its area $A$ from positive base $b$ and height $h$. To find $h$, multiply both sides by 2 to get $2A=bh$, then divide by the nonzero base: $h=2A/b$. Each reversible step keeps the same solutions.",
+          "In $v=u+at$, $u$ is starting speed, $v$ is final speed, $a$ is the change in speed per time unit, and $t$ is elapsed time. To find $a$ when $t\\ne0$, subtract $u$, then divide by $t$: $a=(v-u)/t$. The parentheses keep the whole difference above the denominator.",
         ],
         illustration: "formula-isolate-steps",
       },
@@ -287,7 +287,7 @@ export const linearFunctionLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "The graph of an equation is the set of all points whose coordinates make the equation true.",
-          "A point lies on a graph exactly when its coordinates satisfy the equation, so one known coordinate determines the other.",
+          "A point lies on a graph exactly when its coordinates satisfy the equation. For a line $ax+by=c$ with both $a$ and $b$ nonzero, either one known coordinate determines the other uniquely; this does not hold for every graph.",
         ],
       },
     ],
@@ -442,7 +442,7 @@ export const linearFunctionPrinciples: Record<string, string> = {
   "function-relation-test":
     "A relation is a function exactly when no input is paired with two different outputs.",
   "average-rate-formula":
-    "The average rate of change of $f$ on [$a$, $b$] is (f(b) − f(a)) ÷ (b − a), the slope of the line through $(a, f(a))$ and $(b, f(b))$.",
+    "For defined outputs $f(a)$ and $f(b)$ at distinct inputs $a\\ne b$, the average rate is $[f(b)-f(a)]/(b-a)$, the slope through those two graph points.",
   "average-rate-display":
     "An average rate of change depends only on the function's values at the two ends of the interval.",
   "linear-model-value":
@@ -450,11 +450,11 @@ export const linearFunctionPrinciples: Record<string, string> = {
   "linear-model-equation":
     "In y = mx + b, $b$ is the value when x = 0 and $m$ is the change in $y$ for each increase of 1 in $x$, in every representation.",
   "formula-isolate":
-    "Applying the same inverse operation to both sides keeps a formula true, so undoing the operations on one variable in reverse order isolates it.",
+    "Applying the same reversible operation to both sides preserves a formula's solutions; divide only by quantities known nonzero on its domain.",
   "formula-value":
     "Substituting known values leaves one unknown, which inverse operations isolate.",
   "solution-point-choice":
     "The graph of an equation is the set of all points whose coordinates make the equation true.",
   "solution-coordinate":
-    "A point lies on a graph exactly when its coordinates satisfy the equation, so one known coordinate determines the other.",
+    "A point lies on a graph exactly when its coordinates satisfy the equation. For $ax+by=c$ with nonzero $a$ and $b$, either known coordinate determines the other uniquely.",
 };

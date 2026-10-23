@@ -7,7 +7,7 @@ const foundations: Lesson["sections"] = [
     title: "Read terms and products",
     paragraphs: [
       "A polynomial is a sum of terms such as $6x^2+9x$. A term includes its sign; its coefficient is the number multiplying the variable part. Here the coefficients are 6 and 9. A single term is a monomial, and $x^2$ means $x\\times x$.",
-      "A factor is one part of a product. Factoring rewrites a sum as an equal product: $6x^2+9x=3x(2x+3)$. The greatest common monomial factor is the largest one-term expression dividing every term; here it is $3x$. Multiplying the product back out must recover every original term, for every value of $x$.",
+      "A factor is one part of a product. Factoring rewrites a sum as an equal product: $6x^2+9x=3x(2x+3)$. The greatest common factor (GCF) of number coefficients is the largest positive integer dividing all their magnitudes, or distances from zero. The leading coefficient multiplies the highest power. A binomial has two terms. The greatest common monomial factor divides every term; here it is $3x$. Multiplying the product back out must recover every original term, for every value of $x$.",
     ],
   },
   {

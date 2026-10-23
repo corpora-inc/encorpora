@@ -109,12 +109,20 @@ test("excluded inputs connect existing foundations to rational expressions witho
 test("the worked example preserves its hole in the visual and ends with the precise domain rule", () => {
   const lesson = rationalExpressionLessons[0]!;
   const html = publicationHtml(lesson, "lesson");
-  for (const [before, after] of [
-    ["A worked example", "Which inputs are allowed?"],
-    ["A worked example", "See the missing input"],
-    ["See the missing input", "The precise rule"],
-  ])
-    assert(html.indexOf(before!) < html.indexOf(after!));
+  const headings = [
+    "Which inputs are allowed?",
+    "A worked example",
+    "See the missing input",
+    "Watch for",
+    "The precise rule",
+  ];
+  const positions = headings.map((heading) => {
+    const position = html.indexOf(heading);
+    assert(position >= 0, `Missing ${heading}`);
+    return position;
+  });
+  for (let i = 1; i < positions.length; i++)
+    assert(positions[i - 1]! < positions[i]!, headings.join(" → "));
   const model = sceneIllustrations["rational-expression-hole"].elements[0]!;
   assert.equal(model.type, "graph");
   if (model.type === "graph")
