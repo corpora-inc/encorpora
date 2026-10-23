@@ -359,3 +359,29 @@
     --motion-hold: 0ms;
   }
 }
+
+/* The curriculum atlas is an immersive dark scene in either application theme.
+   Text/surface roles stay paired; subject hues encode neighborhoods, not results. */
+:root {
+  --atlas-surface: #071019;
+  --atlas-on-surface: #edf4fa;
+  --atlas-panel: #101d2b;
+  --atlas-on-panel: #edf4fa;
+  --atlas-muted: #a4b6c9;
+  --atlas-border: #2a3d50;
+  --atlas-accent: #a4efdd;
+  --atlas-on-accent: #08231e;
+  --atlas-area-0: #62a9ff;
+  --atlas-area-1: #ac8bfa;
+  --atlas-area-2: #55e3ed;
+  --atlas-area-3: #f1c779;
+  --atlas-area-4: #73ddba;
+  --atlas-area-5: #ee94bb;
+  --atlas-light: #ffffff;
+  --atlas-transparent: #ffffff00;
+  --atlas-halo-core: #ffffffd9;
+  --atlas-halo-edge: #ffffff38;
+  --atlas-vignette: #123747;
+  --atlas-prerequisite: #5bd7ed;
+  --atlas-dependent: #d0a5ff;
+}

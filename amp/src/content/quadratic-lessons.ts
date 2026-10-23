@@ -1,7 +1,12 @@
+import {
+  quadraticIrrationalLesson,
+  quadraticIrrationalMethod,
+} from "./quadratic-irrational-content";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 export const quadraticMethods: Record<string, ProblemMethod> = {
+  "quadratic-irrational-solutions": quadraticIrrationalMethod,
   "quadratic-factored-solutions": {
     goal: "Given a quadratic equation as a product equal to zero, find every real solution.",
     terms: [
@@ -62,6 +67,8 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
   },
 };
 export const quadraticPrinciples: Record<string, string> = {
+  "quadratic-irrational-solutions":
+    "Completing the square gives $(2ax + b)^2 = b^2 - 4ac$; both square-root branches yield $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$ when $a \\ne 0$ and the discriminant is nonnegative.",
   "quadratic-factored-solutions":
     "Zero-product property: a product of real numbers is zero if and only if at least one factor is zero.",
   "quadratic-expanded-solutions":
@@ -71,6 +78,7 @@ export const quadraticPrinciples: Record<string, string> = {
 };
 
 export const quadraticLessons: Lesson[] = [
+  quadraticIrrationalLesson,
   {
     id: "quadratic-factored-solutions",
     title: "Solve a factored quadratic",

@@ -413,7 +413,7 @@ try {
         `${tag}: the meter still reads 25`,
       );
 
-      // "See your full map" opens /try/map; back returns to the problem.
+      // The checkpoint opens earned pathways; back returns to the waiting problem.
       if (width === 390 || width === 1280) {
         for (let i = 0; i < 4; i++) {
           await answerOne(page, true);
@@ -426,8 +426,18 @@ try {
         assert.match((await dialog.textContent()) ?? "", /30 answered/);
         const shown = await prompt.textContent();
         await dialog.getByRole("link", { name: "See your full map" }).click();
-        await page.waitForURL("**/try/map");
-        await page.locator(".frontier-map").waitFor();
+        await page.waitForURL("**/pathways?context=trial");
+        await page.locator(".pathways-canvas canvas").waitFor();
+        await page
+          .getByText(
+            "Your free assessment and practice are lighting up this map.",
+          )
+          .waitFor();
+        assert.equal(
+          await used(trial.learnerId, trial.token),
+          30,
+          "exploring pathways does not consume an answer",
+        );
         await page.goBack();
         await page.waitForURL("**/try/practice");
         await prompt.waitFor();
@@ -446,7 +456,7 @@ try {
       await context.close();
     }
   console.log(
-    `Level check: every ${5} problems between problems (never over feedback), Escape / tap outside / Continue close it, no answer sent, count unchanged, the problem never moves, focus returns; "See your full map" → /try/map and back.`,
+    `Level check: every ${5} problems between problems (never over feedback), Escape / tap outside / Continue close it, no answer sent, count unchanged, the problem never moves, focus returns; "See your full map" → earned /pathways and back.`,
   );
   console.log(
     `Level check: "Your level" in the practice toolbar → /try/map (back, forward and refresh restore it) at ${viewports.map(([w, h]) => `${w}x${h}`).join(", ")} × light/dark; 44px target, labelled at 384px and up, no overflow, no toolbar overlap.`,

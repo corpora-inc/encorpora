@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { createServer } from "vite";
-import { chromium, type Page } from "playwright";
+import { chromium, firefox, webkit, type Page } from "playwright";
+import { problemLesson } from "../src/content/problem-lessons";
 import { skills } from "../src/curriculum/catalog";
 import { generateProblem, templates } from "../src/math/engine";
 import { retentionNotice } from "../src/family/contracts";
@@ -27,7 +28,13 @@ await vite.listen();
 const address = vite.httpServer!.address();
 assert(address && typeof address !== "string");
 const origin = `http://127.0.0.1:${address.port}`;
-const browser = await chromium.launch();
+const browser = await (
+  process.env.AMP_MAP_BROWSER === "webkit"
+    ? webkit
+    : process.env.AMP_MAP_BROWSER === "firefox"
+      ? firefox
+      : chromium
+).launch();
 const output = "artifacts/pathways";
 await mkdir(output, { recursive: true });
 const target = skills.find((s) => s.id === "nonlinear-systems")!;
@@ -68,24 +75,54 @@ function me(account: string) {
 }
 async function fixture(
   page: Page,
-  { signedIn = true, failProgress = false } = {},
+  {
+    signedIn = true,
+    failProgress = false,
+    trial = false,
+    catalogSkills = skills,
+  } = {},
 ) {
   const batches: { templateId?: string }[] = [];
   await page.addInitScript(
-    ({ signedIn }) => {
+    ({ signedIn, trial }) => {
+      if (trial)
+        localStorage.setItem("amp.trial", "atlas-synthetic-trial-token-1413");
       (window as any).pathwaysAccount = signedIn ? "parent-one" : null;
       localStorage.setItem(
         "amp.learner",
         JSON.stringify({ state: { learnerId: "parent-one-a" }, version: 1 }),
       );
     },
-    { signedIn },
+    { signedIn, trial },
   );
   await page.route("**/api/v1/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
+    if (pathname.endsWith("/learners"))
+      return route.fulfill({
+        json: { learners: [{ id: "parent-one-a", birthYear: 2016 }] },
+      });
+    if (pathname.endsWith("/trial-progress"))
+      return route.fulfill({
+        json: {
+          phase: "practice",
+          free: 100,
+          placement: 20,
+          remaining: 70,
+          totals: { answered: 30, correct: 24, assisted: 0 },
+          mastered: [],
+          frontier: {
+            placement: null,
+            current: {
+              expected: 4,
+              overall: { level: 7, sd: 0.7, answered: 30, independent: 24 },
+              strands: {},
+            },
+          },
+        },
+      });
     if (pathname.endsWith("/catalog"))
       return route.fulfill({
-        json: { skills, templates, lessons: [], mode: "hosted" },
+        json: { skills: catalogSkills, templates, lessons: [], mode: "hosted" },
       });
     if (pathname.endsWith("/auth-config"))
       return route.fulfill({
@@ -97,6 +134,12 @@ async function fixture(
           route.request().headers().authorization?.replace("Bearer ", "") ??
             "parent-one",
         ),
+      });
+    if (pathname.includes("/problem-lessons/"))
+      return route.fulfill({
+        json: {
+          lesson: problemLesson(pathname.split("/").pop()!, "atlas-proof"),
+        },
       });
     if (pathname.endsWith("/books"))
       return route.fulfill({ json: { books: [] } });
@@ -111,7 +154,6 @@ async function fixture(
                 body.templateId ?? "nonlinear-system-read",
                 "pathways-ui",
               ).public,
-              id: "pathways-ui-problem",
             },
           ],
           lesson: null,
@@ -172,7 +214,20 @@ async function noOverflow(page: Page) {
       () => document.documentElement.scrollWidth > innerWidth + 1,
     ),
     false,
-    "horizontal overflow",
+    `horizontal overflow: ${JSON.stringify(
+      await page.evaluate(() => ({
+        viewport: innerWidth,
+        offenders: [...document.querySelectorAll(".pathways *")]
+          .filter((el) => el.getBoundingClientRect().right > innerWidth + 1)
+          .map((el) => ({
+            tag: el.tagName,
+            cls: el.className,
+            text: el.textContent?.slice(0, 90),
+            right: el.getBoundingClientRect().right,
+          }))
+          .slice(0, 12),
+      })),
+    )}`,
   );
   const bad = await page
     .locator(".pathways button,.pathways select,.pathways input,.pathways-go")
@@ -206,8 +261,8 @@ try {
       await page.goto(`${origin}/pathways`);
       await page.locator(".pathways-canvas canvas").waitFor();
       await page
-        .getByText("2 skills with independent successes", { exact: false })
-        .waitFor();
+        .getByText("2 skills illuminated", { exact: false })
+        .waitFor({ state: "attached" });
       const go = page.getByRole("link", { name: "Start learning →" });
       assert.equal(await go.getAttribute("href"), "/practice");
       await noOverflow(page);
@@ -215,6 +270,15 @@ try {
         path: `${output}/${width}-${theme}-map.png`,
         fullPage: true,
       });
+      assert.equal(
+        await page
+          .getByRole("button", {
+            name: /preview illumination|show my progress/i,
+          })
+          .count(),
+        0,
+        "no simulated learner progress in the product",
+      );
       await page
         .getByRole("searchbox", { name: "Find a skill", exact: true })
         .fill(target.title);
@@ -237,9 +301,81 @@ try {
         1,
         "durable crystal survives zero resettable retrievals",
       );
+      const opener = page.getByRole("button", {
+        name: "View lesson",
+        exact: true,
+      });
+      await opener.click();
+      await page
+        .getByRole("dialog")
+        .getByText("Example", { exact: true })
+        .waitFor();
+      await page
+        .getByRole("dialog")
+        .getByRole("button", { name: "Close", exact: true })
+        .click();
+      await page.waitForFunction(
+        () => document.activeElement?.textContent === "View lesson",
+      );
+      assert.equal(
+        await opener.evaluate((el) => el === document.activeElement),
+        true,
+        "lesson restores keyboard focus",
+      );
+      if (
+        width === 1280 &&
+        theme === "light" &&
+        (await page.evaluate(() => document.fullscreenEnabled))
+      ) {
+        await page
+          .getByRole("button", { name: "Full screen", exact: true })
+          .click();
+        await page.waitForFunction(() => !!document.fullscreenElement);
+        await opener.click();
+        await page
+          .getByRole("dialog")
+          .getByText("Example", { exact: true })
+          .waitFor();
+        assert(
+          await page.getByRole("dialog").isVisible(),
+          "lesson remains visible in fullscreen subtree",
+        );
+        await page
+          .getByRole("dialog")
+          .getByRole("button", { name: "Close", exact: true })
+          .click();
+        await page
+          .getByRole("button", { name: "Exit full screen", exact: true })
+          .click();
+        await page.waitForFunction(() => !document.fullscreenElement);
+      }
+      if (width === 1280 && theme === "light") {
+        await opener.click();
+        await page.getByRole("dialog").waitFor();
+        await page.goBack();
+        await page.getByRole("dialog").waitFor({ state: "hidden" });
+        await page.goForward();
+        await page
+          .getByRole("heading", { name: target.title, exact: true })
+          .waitFor();
+      }
       await page.getByText("Algebra frontier:", { exact: false }).waitFor();
       await page.getByRole("button", { name: "Zoom in", exact: true }).click();
       await noOverflow(page);
+      const workspace = (await page
+        .locator(".pathways-workspace")
+        .boundingBox())!;
+      const inspector = (await page.locator(".pathways-detail").boundingBox())!;
+      assert(
+        inspector.y + inspector.height <= workspace.y + workspace.height + 1,
+        "inspector is not clipped by the map workspace",
+      );
+      if (width <= 390)
+        assert(
+          (await page.locator(".pathways-viewport").boundingBox())!.height >=
+            190,
+          "selected skill keeps room for the map",
+        );
       await page.screenshot({
         path: `${output}/${width}-${theme}-selected.png`,
         fullPage: true,
@@ -260,6 +396,48 @@ try {
       assert.deepEqual(errors, []);
       await page.close();
     }
+  for (const viewport of [
+    { width: 320, height: 568 },
+    { width: 844, height: 390 },
+    { width: 1024, height: 768 },
+  ]) {
+    const page = await browser.newPage({ viewport, reducedMotion: "reduce" });
+    await fixture(page, { signedIn: false });
+    await page.goto(`${origin}/pathways`);
+    await page.locator(".pathways-canvas canvas").waitFor();
+    await noOverflow(page);
+    await page
+      .getByRole("searchbox", { name: "Find a skill", exact: true })
+      .fill(target.title);
+    await page
+      .locator(".pathways-skill-list button")
+      .filter({ hasText: target.title })
+      .click();
+    await page
+      .getByRole("heading", { name: target.title, exact: true })
+      .waitFor();
+    await noOverflow(page);
+    if (await page.evaluate(() => document.fullscreenEnabled)) {
+      await page
+        .getByRole("button", { name: "Full screen", exact: true })
+        .click();
+      await page.waitForFunction(() => !!document.fullscreenElement);
+      assert(
+        await page.evaluate(
+          () => document.documentElement.scrollHeight <= innerHeight + 1,
+        ),
+        "short fullscreen has no page scroll",
+      );
+      await page
+        .getByRole("button", { name: "Exit full screen", exact: true })
+        .click();
+    }
+    await page.screenshot({
+      path: `${output}/${viewport.width}-${viewport.height}-compact.png`,
+      fullPage: true,
+    });
+    await page.close();
+  }
   const drill = await browser.newPage({
     viewport: { width: 390, height: 844 },
   });
@@ -274,19 +452,60 @@ try {
   );
   await drill.waitForURL(`${origin}/practice`);
   await drill.close();
+  const exactType = templates.filter((t) => t.skillId === target.id).at(-1)!;
+  const typed = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+  });
+  const typedBatches = await fixture(typed);
+  await typed.goto(
+    `${origin}/practice?skill=${target.id}&template=${exactType.id}`,
+  );
+  await typed.locator("#problem-prompt").waitFor();
+  assert.equal(typedBatches[0]?.templateId, exactType.id);
+  await typed.close();
+  // A signed-in parent can explore the anonymous assessment's own progress.
+  const trialPage = await browser.newPage({
+    viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce",
+  });
+  const trialBatches = await fixture(trialPage, { trial: true });
+  await trialPage.goto(`${origin}/pathways?context=trial&skill=${target.id}`);
+  await trialPage
+    .getByText("Your free assessment and practice are lighting up this map.", {
+      exact: true,
+    })
+    .waitFor({ state: "attached" });
+  assert.equal(
+    await trialPage.getByRole("combobox", { name: /^Learner/ }).count(),
+    0,
+  );
+  await trialPage
+    .getByRole("button", { name: "View lesson", exact: true })
+    .click();
+  await trialPage
+    .getByRole("dialog")
+    .getByRole("link", { name: "Try this problem type →", exact: true })
+    .click();
+  await trialPage.locator("#problem-prompt").waitFor();
+  assert.equal(
+    trialBatches[0]?.templateId,
+    templates.find((t) => t.skillId === target.id)?.id,
+  );
+  await trialPage.waitForURL(`${origin}/try/practice`);
+  await trialPage.close();
   // The account-scoped store must not carry earned crystals into another learner or account.
   const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   await fixture(page);
   await page.goto(`${origin}/pathways?skill=${target.id}`);
   await page
-    .getByText("2 skills with independent successes", { exact: false })
-    .waitFor();
+    .getByText("2 skills illuminated", { exact: false })
+    .waitFor({ state: "attached" });
   await page
     .getByRole("combobox", { name: /^Learner/ })
     .selectOption("parent-one-b");
   await page
-    .getByText("0 skills with independent successes", { exact: false })
-    .waitFor();
+    .getByText("0 skills illuminated", { exact: false })
+    .waitFor({ state: "attached" });
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),
     0,
@@ -295,8 +514,8 @@ try {
     .getByRole("combobox", { name: /^Learner/ })
     .selectOption("parent-one-a");
   await page
-    .getByText("2 skills with independent successes", { exact: false })
-    .waitFor();
+    .getByText("2 skills illuminated", { exact: false })
+    .waitFor({ state: "attached" });
   await page.evaluate(() => {
     (window as any).pathwaysAccount = "parent-two";
     window.dispatchEvent(new Event("pathways-session"));
@@ -306,13 +525,49 @@ try {
     .waitFor();
   assert.equal(
     await page.locator(".pathways-summary").textContent(),
-    `0 skills with independent successes · ${skills.length} mapped skills from kindergarten through precalculus`,
+    `0 skills illuminated · ${skills.length} mapped skills from kindergarten through precalculus`,
   );
   assert.equal(
     await page.getByRole("link", { name: "Try a problem" }).count(),
     0,
   );
   await page.close();
+  // A live catalog expansion preserves the selected skill, earned evidence and camera.
+  const evolving = await browser.newPage({
+    viewport: { width: 1280, height: 900 },
+    reducedMotion: "reduce",
+  });
+  const growingCatalog = [...skills];
+  await evolving.clock.install();
+  await fixture(evolving, { catalogSkills: growingCatalog });
+  await evolving.goto(`${origin}/pathways?skill=${target.id}`);
+  const label = evolving
+    .locator(".skill-label")
+    .filter({ hasText: target.title });
+  await label.waitFor();
+  await evolving.getByRole("button", { name: "Zoom in", exact: true }).click();
+  const before = (await label.boundingBox())!;
+  growingCatalog.push({
+    ...target,
+    id: "new-catalog-skill",
+    title: "New catalog skill",
+  });
+  await evolving.clock.fastForward(300_100);
+  await evolving
+    .getByText(`${skills.length + 1} mapped skills`, { exact: false })
+    .waitFor({ state: "attached" });
+  await label.waitFor();
+  const after = (await label.boundingBox())!;
+  assert(
+    Math.hypot(before.x - after.x, before.y - after.y) < 15,
+    "catalog refresh preserves the explored camera",
+  );
+  assert.equal(
+    await evolving.getByRole("meter").getAttribute("aria-valuenow"),
+    "10",
+  );
+  assert(new URL(evolving.url()).searchParams.get("skill") === target.id);
+  await evolving.close();
   // The accessible list stays functional without WebGL and on an unauthenticated visit.
   const fallback = await browser.newPage({
     viewport: { width: 320, height: 844 },

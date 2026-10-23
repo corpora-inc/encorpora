@@ -1,3 +1,4 @@
+import { quadraticIrrationalIllustrations } from "./quadratic-irrational-content";
 import { studyDesignIllustrations } from "./study-design-content";
 import { assessmentGapIllustrations } from "./assessment-gap-illustrations";
 import {
@@ -25,6 +26,7 @@ import { statisticsModelScenes } from "./statistics-model-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  ...quadraticIrrationalIllustrations,
   ...studyDesignIllustrations,
   ...assessmentGapIllustrations,
   "radical-equation-crossing": graph({

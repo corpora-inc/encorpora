@@ -6,6 +6,8 @@ export type TrialCatalog = {
   skills: {
     id: string;
     title?: string;
+    description?: string;
+    prerequisites?: string[];
     gradeBand: string;
     strand: string;
   }[];

@@ -80,6 +80,25 @@ export async function provisionFundingRequest(
         throw new FundingPurchaseError(404, "request_not_found");
       const row = result.rows[0],
         request = fundingRequestRow(row);
+      // Provider callbacks and provisioning share the account/request lock.
+      // A payload read before a cancellation or conflict is no longer authority.
+      const checkout = (
+        await client.query(
+          "SELECT callback_status,stopped_at,exception_code,provisioning_payload FROM amp_classwallet_checkouts WHERE request_id=$1 FOR UPDATE",
+          [request.id],
+        )
+      ).rows[0];
+      if (
+        checkout &&
+        (checkout.callback_status !== "complete" ||
+          checkout.stopped_at ||
+          checkout.exception_code ||
+          (request.offer.activationPolicy === "after-approval"
+            ? canonicalCommercePayload(checkout.provisioning_payload) !==
+              canonicalCommercePayload(data)
+            : !data.events.some((event) => event.type === "order.settled")))
+      )
+        throw new FundingPurchaseError(409, "classwallet_approval_unavailable");
       if (request.orderId) {
         if (
           canonicalCommercePayload(row.conversion_payload) !==
