@@ -75,6 +75,8 @@ it("refreshes canonical access when only the disabled legacy Family observer is 
   const fetcher = vi.fn(async (input: RequestInfo | URL) => {
     const path = String(input);
     if (path === "/api/v1/me") return Response.json(me);
+    if (path.endsWith("/classwallet/capabilities"))
+      return Response.json({ offerIds: [] });
     if (path.endsWith("/offers")) return Response.json({ offers: [] });
     if (path.endsWith("/requests")) return Response.json({ requests });
     throw new Error(`Unexpected request ${path}`);

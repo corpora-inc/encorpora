@@ -45,9 +45,46 @@ try {
       let record: FundingRequest | undefined;
       const payloads: Record<string, any>[] = [];
       let fail = true;
+      let apiEnabled = false;
+      let checkoutFail = true;
+      let unsafeCheckout = true;
       await page.route("**/api/v1/funding/**", async (route) => {
         const request = route.request(),
           path = new URL(request.url()).pathname;
+        if (path.endsWith("/classwallet/capabilities"))
+          return route.fulfill({
+            json: { offerIds: apiEnabled ? [offer.id] : [] },
+          });
+        if (path.endsWith("/classwallet-checkout")) {
+          assert.equal(request.method(), "POST");
+          assert.deepEqual(request.postDataJSON(), {});
+          assert.equal(
+            request.headers().authorization,
+            "Bearer synthetic-token",
+          );
+          assert.ok(path.includes(record!.id));
+          if (checkoutFail) {
+            checkoutFail = false;
+            return route.fulfill({
+              status: 503,
+              json: { error: "checkout_unavailable" },
+            });
+          }
+          if (unsafeCheckout) {
+            unsafeCheckout = false;
+            return route.fulfill({
+              json: {
+                checkoutUrl: "https://untrusted.example/payby-checkout/",
+              },
+            });
+          }
+          return route.fulfill({
+            json: {
+              checkoutUrl:
+                "https://app.classwallet.com/payby-checkout/?callback=https%3A%2F%2Fmerchant.example%2Forder%2Ftest&vendorId=synthetic",
+            },
+          });
+        }
         if (path.endsWith("/offers"))
           return route.fulfill({ json: { offers: [presentOffer(offer)] } });
         if (path.endsWith("/invoice"))
@@ -190,11 +227,55 @@ try {
           true,
         );
       }
+      // A configured integration transfers the prepared order, without requiring a PDF upload.
+      apiEnabled = true;
+      record = undefined;
+      await page.reload();
+      await page.evaluate((theme) => {
+        document.documentElement.dataset.theme = theme;
+      }, theme);
+      await name.fill("Sample Student");
+      await prepare.click();
+      const pay = page.getByRole("button", {
+        name: "Pay with ClassWallet",
+        exact: true,
+      });
+      await pay.waitFor();
+      assert.equal(
+        await page
+          .getByRole("link", { name: "Open program purchase page" })
+          .count(),
+        0,
+      );
+      await page.screenshot({
+        path: new URL(`checkout-${width}-${theme}.png`, directory).pathname,
+      });
+      await pay.click();
+      await page.getByRole("alert").waitFor();
+      assert.equal(record!.orderId, null);
+      await page.getByRole("button", { name: "Dismiss message" }).click();
+      await pay.click();
+      await page.getByRole("alert").waitFor();
+      assert.equal(new URL(page.url()).hostname, "127.0.0.1");
+      await page.getByRole("button", { name: "Dismiss message" }).click();
+      await page.route(
+        "https://app.classwallet.com/payby-checkout/**",
+        (route) =>
+          route.fulfill({
+            contentType: "text/html",
+            body: "<h1>Provider confirmation fixture</h1>",
+          }),
+      );
+      await pay.click();
+      await page
+        .getByRole("heading", { name: "Provider confirmation fixture" })
+        .waitFor();
+      assert.equal(new URL(page.url()).origin, "https://app.classwallet.com");
       assert.deepEqual(errors, []);
       await page.close();
     }
   console.log(
-    "PASS: invoice entry/download at 320/390/768/1280 light/dark; no footer/field movement on loading or errors; retry identity, name privacy and account reset.",
+    "PASS: invoice entry/download at 320/390/768/1280 light/dark; no footer/field movement on loading or errors; retry identity, name privacy, account reset and integrated ClassWallet redirect/retry without PDF upload.",
   );
 } finally {
   await browser.close();

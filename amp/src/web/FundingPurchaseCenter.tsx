@@ -95,6 +95,7 @@ export function FundingPurchaseCenter({
     [learnerId, setLearnerId] = useState(""),
     [selected, setSelected] = useState<string | null>(null);
   const [studentBillingName, setStudentBillingName] = useState("");
+  const [classWalletOffers, setClassWalletOffers] = useState<string[]>([]);
   const [programOpened, setProgramOpened] = useState<string | null>(null);
   const [busy, setBusy] = useState(false),
     [loading, setLoading] = useState(true),
@@ -122,6 +123,7 @@ export function FundingPurchaseCenter({
     controller.current = new AbortController();
     verifiedStatus.current = null;
     setOffers([]);
+    setClassWalletOffers([]);
     setRequests([]);
     setSelected(null);
     setProgramOpened(null);
@@ -176,9 +178,12 @@ export function FundingPurchaseCenter({
   async function refresh() {
     const active = epoch.current;
     const sequence = ++refreshSequence.current;
-    const [a, b] = await Promise.all([
+    const [a, b, capabilities] = await Promise.all([
       json<{ offers: PublicFundingOffer[] }>("/offers"),
       json<{ requests: PublicFundingRequest[] }>("/requests"),
+      json<{ offerIds: string[] }>("/classwallet/capabilities").catch(
+        () => null,
+      ),
     ]);
     if (!current(active) || sequence !== refreshSequence.current) return;
     const matching = a.offers.filter(
@@ -203,6 +208,11 @@ export function FundingPurchaseCenter({
       if (!current(active) || sequence !== refreshSequence.current) return;
       verifiedStatus.current = nextVerifiedStatus;
     }
+    setClassWalletOffers(
+      Array.isArray(capabilities?.offerIds)
+        ? capabilities.offerIds.filter((id) => typeof id === "string")
+        : [],
+    );
     setOffers(matching);
     setRequests(
       b.requests.filter(
@@ -318,6 +328,25 @@ export function FundingPurchaseCenter({
     link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
+  async function classWalletCheckout(record: PublicFundingRequest) {
+    const active = epoch.current;
+    if (!consentActive) throw new Error(errors.verified_consent_required);
+    const result = await json<{ checkoutUrl: string }>(
+      `/requests/${encodeURIComponent(record.id)}/classwallet-checkout`,
+      {},
+    );
+    if (!current(active)) return;
+    const destination = new URL(result.checkoutUrl);
+    if (
+      destination.origin !== "https://app.classwallet.com" ||
+      destination.pathname !== "/payby-checkout/" ||
+      destination.username ||
+      destination.password ||
+      destination.hash
+    )
+      throw new Error("ClassWallet checkout is unavailable. Please try again.");
+    window.location.assign(destination.href);
+  }
   async function update(
     record: PublicFundingRequest,
     next: "parent-reported-submitted" | "cancelled",
@@ -340,6 +369,8 @@ export function FundingPurchaseCenter({
     !request.orderId &&
     !request.expired &&
     request.status !== "cancelled";
+  const integratedCheckout =
+    !!request && classWalletOffers.includes(request.offer.id);
   const documentName =
     request?.offer.documentPolicy === "named-student-invoice"
       ? "invoice"
@@ -421,6 +452,12 @@ export function FundingPurchaseCenter({
                 <p className="funding-short-note">
                   Unpaid {documentName} · no learning access yet.
                 </p>
+                {integratedCheckout && usable && (
+                  <p>
+                    You’ll review and authorize this purchase in ClassWallet. No
+                    PDF upload is needed.
+                  </p>
+                )}
                 {!request.offerAvailable && (
                   <p className="funding-notice">
                     This offer changed or was withdrawn. Do not submit this
@@ -434,6 +471,15 @@ export function FundingPurchaseCenter({
                     and instructions
                   </summary>
                   <p>{request.offer.instructions}</p>
+                  {integratedCheckout && usable && (
+                    <button
+                      className="funding-text-action"
+                      disabled={busy}
+                      onClick={() => void action(() => quote(request))}
+                    >
+                      Download unpaid PDF {documentName}
+                    </button>
+                  )}
                   <p>
                     Valid until{" "}
                     {new Date(request.expiresAt).toLocaleDateString()}.
@@ -474,6 +520,7 @@ export function FundingPurchaseCenter({
                   )}
                 </details>
                 {usable &&
+                  !integratedCheckout &&
                   request.status !== "parent-reported-submitted" &&
                   (programOpened === request.id ? (
                     <button
@@ -640,21 +687,34 @@ export function FundingPurchaseCenter({
             <>
               {usable && request.status !== "parent-reported-submitted" ? (
                 <>
-                  <button
-                    disabled={busy}
-                    onClick={() => void action(() => quote(request))}
-                  >
-                    Download unpaid PDF {documentName}
-                  </button>
-                  <a
-                    className="funding-primary funding-program-link"
-                    href={request.offer.destinationUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setProgramOpened(request.id)}
-                  >
-                    Open program purchase page ↗
-                  </a>
+                  {!integratedCheckout && (
+                    <button
+                      disabled={busy}
+                      onClick={() => void action(() => quote(request))}
+                    >
+                      Download unpaid PDF {documentName}
+                    </button>
+                  )}
+                  {integratedCheckout ? (
+                    <button
+                      disabled={busy || !consentActive}
+                      onClick={() =>
+                        void action(() => classWalletCheckout(request))
+                      }
+                    >
+                      Pay with ClassWallet
+                    </button>
+                  ) : (
+                    <a
+                      className="funding-primary funding-program-link"
+                      href={request.offer.destinationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setProgramOpened(request.id)}
+                    >
+                      Open program purchase page ↗
+                    </a>
+                  )}
                 </>
               ) : (
                 <>
