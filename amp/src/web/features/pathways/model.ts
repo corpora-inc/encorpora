@@ -10,6 +10,17 @@ export const catalogSchema = z.object({
       gradeBand: z.string(),
       strand: z.string(),
       prerequisites: z.array(z.string()),
+      connections: z
+        .array(
+          z.object({
+            skillId: z.string(),
+            kind: z.enum(["extension", "application", "related"]),
+            direction: z.enum(["forward", "backward"]),
+            explanation: z.string(),
+            templateIds: z.array(z.string()),
+          }),
+        )
+        .optional(),
     }),
   ),
   templates: z.array(
@@ -34,6 +45,16 @@ export const progressSchema = z.object({
   ),
 });
 export type MapSkill = z.infer<typeof catalogSchema>["skills"][number];
+export function connectionLabel(
+  connection: NonNullable<MapSkill["connections"]>[number],
+) {
+  if (connection.kind === "related") return "Related idea";
+  if (connection.kind === "extension")
+    return connection.direction === "forward"
+      ? "Extend the idea"
+      : "Earlier idea";
+  return connection.direction === "forward" ? "See it applied" : "Useful idea";
+}
 export type Evidence = z.infer<typeof progressSchema>["skills"][number];
 export const bands = [
   "K",
@@ -206,16 +227,24 @@ export function connections(skills: MapSkill[], id: string) {
   return { prerequisites: walk(false), dependents: walk(true) };
 }
 
-/** Lateral navigation through shared foundations; never input to prerequisite scheduling. */
-export function relatedSkills(skills: MapSkill[], id: string, limit = 5) {
+/** Authored connections come first; shared foundations fill the remaining suggestions. */
+export function relatedConnections(skills: MapSkill[], id: string, limit = 5) {
   const selected = skills.find((s) => s.id === id);
   if (!selected) return [];
   const paths = connections(skills, id);
   const grade = bands.indexOf(selected.gradeBand);
-  return skills
+  const byId = new Map(skills.map((s) => [s.id, s]));
+  const seen = new Set([id]);
+  const authored = (selected.connections ?? []).flatMap((connection) => {
+    const skill = byId.get(connection.skillId);
+    if (!skill || seen.has(skill.id)) return [];
+    seen.add(skill.id);
+    return [{ skill, connection }];
+  });
+  const inferred = skills
     .filter(
       (s) =>
-        s.id !== id &&
+        !seen.has(s.id) &&
         !paths.prerequisites.has(s.id) &&
         !paths.dependents.has(s.id) &&
         Math.abs(bands.indexOf(s.gradeBand) - grade) <= 2,
@@ -228,8 +257,14 @@ export function relatedSkills(skills: MapSkill[], id: string, limit = 5) {
     }))
     .filter((s) => s.shared > 0)
     .sort((a, b) => b.shared - a.shared || a.skill.id.localeCompare(b.skill.id))
-    .slice(0, limit)
-    .map((s) => s.skill);
+    .slice(0, Math.max(0, limit - authored.length))
+    .map((s) => ({ skill: s.skill, connection: undefined }));
+  return [...authored, ...inferred];
+}
+
+/** Navigation only; prerequisite traversal and scheduling never consume these edges. */
+export function relatedSkills(skills: MapSkill[], id: string, limit = 5) {
+  return relatedConnections(skills, id, limit).map((item) => item.skill);
 }
 
 const estimateSchema = z.object({

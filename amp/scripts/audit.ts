@@ -15,13 +15,21 @@ import { validateEqualGroupsPracticeBindings } from "../books/equal-groups-works
 import { buildCoverageManifest } from "../src/content/coverage.js";
 import { validateFractionPracticeCoverage } from "../src/content/fraction-practice-coverage.js";
 import { auditCurriculum } from "../src/curriculum/audit";
+import {
+  auditConnectionEvidence,
+  curriculumConnections,
+} from "../src/curriculum/connections";
 import { skills, standards } from "../src/curriculum/catalog";
 import { templates } from "../src/math/engine";
 import { lessons } from "../src/content/lessons";
 // The funding research registry and its audit are kept privately.
 const curriculum = auditCurriculum();
 const coverage = buildCoverageManifest();
-const errors = [...curriculum.errors, ...coverage.errors];
+const errors = [
+  ...curriculum.errors,
+  ...coverage.errors,
+  ...auditConnectionEvidence(skills, templates),
+];
 const bookTemplateIds = new Set<string>();
 try {
   validateRatioAlignments(skills, templates, standards);
@@ -61,6 +69,7 @@ console.log(
   JSON.stringify(
     {
       curriculum,
+      navigationConnections: curriculumConnections,
       contentCoverage: {
         valid: coverage.valid,
         summary: coverage.summary,

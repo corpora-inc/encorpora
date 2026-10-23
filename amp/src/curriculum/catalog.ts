@@ -1,4 +1,5 @@
 import type { GradeBand, Skill, Standard } from "./types.js";
+import { connectionsFor } from "./connections.js";
 
 // Original K–8 summaries from the Corpora catalog; identifiers reviewed 2026-09-27.
 const rows: [string, string, string][] = [
@@ -639,6 +640,7 @@ export const skills: Skill[] = outline
       strand,
       prerequisites: dependencies ? dependencies.split(",") : [],
       prerequisiteBasis: "editorial",
+      connections: connectionsFor(id),
       status: "planned",
       lessonId: `lesson.${id}`,
       alignments: references
