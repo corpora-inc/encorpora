@@ -1093,3 +1093,54 @@
   -webkit-text-stroke: 3px var(--atlas-surface);
   text-shadow: 0 1px 4px var(--atlas-surface);
 }
+
+/* Give the map the first screen on a phone, with progress and controls nearby. */
+@media (max-width: 650px) {
+  .pathways-heading {
+    display: block;
+    padding: 8px 0 0;
+  }
+  .pathways-heading > div {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .pathways .pathways-summary {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .pathways-status {
+    min-height: 0;
+  }
+  .pathways-status > p:not([data-priority="true"]) {
+    display: none;
+  }
+  .pathways .pathways-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 88px;
+  }
+  .pathways .pathways-search {
+    width: auto;
+    min-width: 0;
+  }
+  .pathways .pathways-toolbar .toolbar-wide {
+    display: none;
+  }
+  .pathways .pathways-toolbar .toolbar-narrow {
+    display: inline;
+  }
+  .pathways .pathways-toolbar button {
+    min-width: 0;
+    padding: 8px 4px;
+  }
+  .pathways:not(.has-selection) .pathways-workspace {
+    height: max(320px, calc(100dvh - 240px));
+    flex: none;
+  }
+  :root:fullscreen .pathways:not(.has-selection) .pathways-workspace {
+    height: calc(100dvh - 130px);
+  }
+}
