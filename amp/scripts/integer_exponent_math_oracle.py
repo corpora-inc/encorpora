@@ -301,10 +301,18 @@ def check_lesson(record):
     public = fixture(template,prompt); answer = solve_integer_exponent(public)
     require(Fraction(worked['answer'].replace('−','-')) == answer, 'Incorrect lesson worked answer')
     require(sum(equalities(step,answer) for step in worked['steps']) >= 2, 'Missing checked lesson equality chains')
-    prose = ' '.join(p for section in lesson['sections'] for p in section['paragraphs'])
-    for term in ['base', 'exponent', 'factor', 'integer', 'nonzero', 'division by zero', 'numerator', 'denominator', 'reciprocal']:
+    sections = [*lesson['sections'], *lesson.get('closingSections', [])]
+    prose = ' '.join(p for section in sections for p in section['paragraphs'])
+    for term in ['base', 'exponent', 'factor', 'integer', 'nonzero', 'numerator', 'denominator', 'reciprocal']:
         require(term in prose.lower(), 'Missing standalone exponent definition: ' + term)
-    require('signed numbers' in prose and 'x^0 = 1' in prose, 'Missing assumed arithmetic or zero-power explanation')
+    require(re.search(r'(?:division by zero|1\s*/\s*0)\$?\s+is (?:undefined|not defined)', prose.lower()),
+            'Missing explanation that division by zero is undefined')
+    zero_power_values = re.findall(
+        r'x\s*\^\s*(?:0|\{0\})\s*=\s*([+-]?\d+(?:\.\d+)?(?:\s*/\s*\d+)?)', prose)
+    require('signed numbers' in prose and zero_power_values,
+            'Missing assumed arithmetic or zero-power explanation')
+    require(all(Fraction(re.sub(r'\s+', '', value)) == 1 for value in zero_power_values),
+            'Incorrect zero-power equality in exponent lesson')
 
 
 def check_runtime(record):
@@ -342,7 +350,11 @@ def review_content_mutations(records):
     lesson = next(r for r in records if r['kind'] == 'integer-exponent-lesson')
     probes = []
     def probe(source, checker, change):
-        value = copy.deepcopy(source); change(value); probes.append((checker,value))
+        checker(source)
+        value = copy.deepcopy(source)
+        change(value)
+        require(value != source, 'Exponent mutation did not change its target')
+        probes.append((checker, value))
     probe(runtime,check_runtime,lambda r:r['problem'].__setitem__('answer','999'))
     probe(runtime,check_runtime,lambda r:r['problem']['explanation'].__setitem__(2,'The answer is 1.'))
     probe(runtime,check_runtime,lambda r:r['problem']['public'].__setitem__('answer','1'))
@@ -352,6 +364,23 @@ def review_content_mutations(records):
     probe(sheet,check_worksheet,lambda r:r.__setitem__('workbookHtml',r['workbookHtml'].replace('class="writing"','class="writing" data-answer="1"',1)))
     probe(sheet,check_worksheet,lambda r:r.__setitem__('workbookHtml',r['workbookHtml'].replace('</h2>','</h3>',1)))
     probe(lesson,check_lesson,lambda r:r['lesson']['workedExample'].__setitem__('answer','999'))
+    def replace_lesson_text(record, pattern, replacement):
+        sections = [*record['lesson']['sections'], *record['lesson'].get('closingSections', [])]
+        changed = 0
+        for section in sections:
+            for index, paragraph in enumerate(section['paragraphs']):
+                section['paragraphs'][index], count = re.subn(pattern, replacement, paragraph, flags=re.IGNORECASE)
+                changed += count
+        require(changed > 0, 'Missing exponent lesson mutation target')
+
+    probe(lesson, check_lesson, lambda r: replace_lesson_text(
+        r, r'(?:division by zero|1\s*/\s*0)\$?\s+is (?:undefined|not defined)',
+        'division is allowed'))
+    probe(lesson, check_lesson, lambda r: replace_lesson_text(
+        r, r'x\s*\^\s*(?:0|\{0\})\s*=\s*1(?!\d|/|\.\d)', 'x^0 = 2'))
+
+    probe(lesson, check_lesson, lambda r: r['lesson']['closingSections'][0]['paragraphs'].append(
+        'A false zero-power rule: $x^0 = 2$.'))
     probe(records[0],check_manifest,lambda r:r['mappings'][0].__setitem__('extent','complete'))
     probe(records[0],check_manifest,lambda r:r.__setitem__('illustration',r['illustration'].replace('data-value="8"','data-value="9"')))
     probe(records[0],check_manifest,lambda r:r.__setitem__('illustration',r['illustration'].replace('>8</text>','>9</text>')))
