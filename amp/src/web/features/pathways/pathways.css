@@ -878,3 +878,35 @@
     margin-left: 0;
   }
 }
+
+.pathways-toolbar .toolbar-narrow {
+  display: none;
+}
+@media (max-width: 650px) {
+  .pathways.has-selection .pathways-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 72px 76px;
+  }
+  .pathways.has-selection .pathways-search {
+    width: auto;
+    min-width: 0;
+  }
+  .pathways.has-selection .pathways-toolbar .toolbar-wide {
+    display: none;
+  }
+  .pathways.has-selection .pathways-toolbar .toolbar-narrow {
+    display: inline;
+  }
+  .pathways.has-selection .pathways-toolbar button {
+    min-width: 0;
+    padding: 8px 4px;
+  }
+  .pathways.has-selection .pathways-detail {
+    height: 32dvh;
+    max-height: 280px;
+  }
+}
+
+.pathways-detail h2:focus {
+  outline: none;
+}

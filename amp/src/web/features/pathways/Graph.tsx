@@ -307,7 +307,7 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
             p.x > 65 &&
             p.x < width - 65 &&
             p.y > 80 &&
-            p.y < height - 30
+            p.y < height - 60
           )
             result.push({
               id: `area-${i}`,
@@ -329,7 +329,7 @@ export function Graph({ skills, evidence, selected, onSelect, range }: Props) {
             p.x < 85 ||
             p.x > width - 85 ||
             p.y < 80 ||
-            p.y > height - 45
+            p.y > height - 85
           )
             continue;
           if (

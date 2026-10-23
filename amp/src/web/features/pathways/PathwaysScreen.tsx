@@ -347,14 +347,25 @@ export function MapView({
           />
         </label>
         <button
+          aria-label={browse ? "Close browser" : "Browse skills"}
           aria-expanded={browse}
           aria-controls="pathways-browser"
           onClick={() => setBrowse((v) => !v)}
         >
-          {browse ? "Close browser" : "Browse skills"}
+          <span className="toolbar-wide">
+            {browse ? "Close browser" : "Browse skills"}
+          </span>
+          <span className="toolbar-narrow" aria-hidden="true">
+            {browse ? "Close" : "Browse"}
+          </span>
         </button>
         <button aria-pressed={preview} onClick={() => setPreview(!preview)}>
-          {preview ? "Show my progress" : "Preview illumination"}
+          <span className="toolbar-wide">
+            {preview ? "Show my progress" : "Preview illumination"}
+          </span>
+          <span className="toolbar-narrow" aria-hidden="true">
+            {preview ? "My map" : "Preview"}
+          </span>
         </button>
       </div>
       {preview && (
