@@ -83,6 +83,8 @@ export interface Lesson {
   sections: {
     title: string;
     paragraphs: string[];
+    /** Keep this section's explanation with its illustration in print. */
+    keepTogether?: boolean;
     illustration?:
       | "av-triangle-half"
       | "av-polygon-split"
@@ -164,6 +166,7 @@ export interface Lesson {
       | "decimal-tenths-hundredths"
       | "decimal-compare-chart"
       | "decimal-rounding-line"
+      | "inverse-decimal-rounding-line"
       | "decimal-aligned-sum"
       | "column-addition"
       | "base-ten-trade"

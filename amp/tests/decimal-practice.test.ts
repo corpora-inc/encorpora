@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
 import { decimalTemplates } from "../src/math/decimal-practice";
 import { decimal, fixed } from "../src/math/decimal-models";
@@ -126,12 +127,80 @@ test("rounding, digit value and operations agree with exact integer arithmetic",
   assert.equal(decimal(340, 2), "3.4");
 });
 
+test("inverse rounding choices have one exact half-up answer across boundaries", () => {
+  let lowerIncluded = 0;
+  let upperExcluded = 0;
+  let carry = 0;
+  let largerHundredths = 0;
+  for (let i = 0; i < 600; i++) {
+    const p = generateProblem("inverse-round-decimal", `inverse-${i}`);
+    const match =
+      /^Which decimal rounds to (\d+\.\d+) to the nearest (tenth|hundredth)\?/.exec(
+        p.public.prompt,
+      );
+    assert.ok(match, p.public.prompt);
+    assert.equal(p.public.response.kind, "choice");
+    if (p.public.response.kind !== "choice") continue;
+    const target = exact(match[1]!);
+    const unit = match[2] === "tenth" ? 100000n : 10000n;
+    if (unit === 10000n && target >= 20_000_000n) largerHundredths++;
+    const options = p.public.response.options;
+    assert.equal(options.length, 4);
+    assert.equal(new Set(options.map((option) => option.label)).size, 4);
+    const correct = options.filter((option) => {
+      const value = exact(option.label);
+      const independentlyRounded = ((value + unit / 2n) / unit) * unit;
+      const expected = independentlyRounded === target;
+      assert.equal(gradeAnswer(p, option.id), expected, p.public.prompt);
+      if (expected && value === target - unit / 2n) lowerIncluded++;
+      if (!expected && value === target + unit / 2n) upperExcluded++;
+      if (expected && target % 1000000n === 0n && value < target) carry++;
+      return expected;
+    });
+    assert.equal(correct.length, 1, p.public.prompt);
+    assert.equal(correct[0]!.id, p.answer);
+  }
+  assert.ok(lowerIncluded > 0, "lower halfway included");
+  assert.ok(upperExcluded > 0, "upper halfway excluded");
+  assert.ok(carry > 0, "rounding carries into a whole number");
+  assert.ok(largerHundredths > 0, "hundredths include larger whole parts");
+});
+
+test("independent public-choice oracle verifies inverse rounding cases and fixtures", () => {
+  const cases = Array.from({ length: 512 }, (_, i) =>
+    generateProblem("inverse-round-decimal", `public-oracle-${i}`),
+  );
+  const review = spawnSync(
+    "python3",
+    [
+      "-c",
+      `import json,runpy,sys
+sys.path.insert(0, 'scripts')
+from inverse_rounding_math_oracle import self_test, review_problem
+central = runpy.run_path('scripts/independent-math-review.py')
+assert self_test()['rejectedMutations'] == 20
+for problem in json.load(sys.stdin):
+    assert review_problem(problem) == central['solve'](problem['public']) == problem['answer']
+print('512 independent inverse-rounding cases passed')`,
+    ],
+    {
+      input: JSON.stringify(cases),
+      encoding: "utf8",
+      maxBuffer: 4 * 1024 * 1024,
+    },
+  );
+  assert.equal(review.status, 0, review.stderr || String(review.error));
+  assert.match(review.stdout, /512 independent inverse-rounding cases passed/);
+});
+
 test("decimal lessons, illustrations and worksheets cover every family", () => {
   for (const id of ids) {
     const lesson = lessons.find((l) => l.templateIds.includes(id));
     assert.ok(lesson, id);
     assert.ok(
-      lesson.sections.some((s) => s.illustration),
+      [...lesson.sections, ...(lesson.closingSections ?? [])].some(
+        (s) => s.illustration,
+      ),
       lesson.id,
     );
   }

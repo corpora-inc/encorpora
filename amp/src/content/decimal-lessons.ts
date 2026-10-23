@@ -158,6 +158,59 @@ export const decimalLessons: Lesson[] = [
       "Read a price such as 3.608 aloud by places: 3 ones, 6 tenths, 0 hundredths, 8 thousandths. Ask what changes if the 0 is dropped.",
   },
   {
+    id: "inverse-decimal-rounding",
+    title: "Which decimal rounds to this value?",
+    summary:
+      "Locate the two halfway points around a rounded decimal, then check which choice lies between them.",
+    templateIds: ["inverse-round-decimal"],
+    includeGeneratedRepresentation: false,
+    objectives: [
+      "Choose one positive decimal that rounds to a given tenth or hundredth.",
+      "Use the rule that a halfway value rounds up to decide which boundary is included.",
+    ],
+    sections: [
+      {
+        title: "Work backward from the rounded value",
+        paragraphs: [
+          "Rounding to the nearest hundredth replaces a decimal with the nearer number having two digits after the decimal point. A hundredth is 0.01; the decimals beside 4.68 are 4.67 and 4.69. A tenth is 0.1, so rounding to the nearest tenth keeps one digit after the point. A halfway value is equally far from two neighboring rounded values. Here, halfway values round up.",
+          "To find an original decimal that rounds to 4.68, find the halfway points between 4.67 and 4.68, and between 4.68 and 4.69. Check the choices against both points; matching the first two decimal digits alone is insufficient.",
+        ],
+      },
+    ],
+    workedExample: {
+      prompt:
+        "Which decimal rounds to 4.68 to the nearest hundredth: 4.674, 4.675, 4.685, or 4.686? Round halfway values up.",
+      steps: [
+        "The hundredths beside 4.68 are 4.67 and 4.69.",
+        "The halfway points are 4.675 and 4.685. The first rounds up to 4.68; the second rounds up to 4.69.",
+        "4.674 is below the lower point. 4.685 and 4.686 are at or above the upper point. Only 4.675 lies in the range that rounds to 4.68.",
+      ],
+      answer: "4.675",
+    },
+    closingSections: [
+      {
+        title: "See the rounding region",
+        keepTogether: true,
+        paragraphs: [
+          "The shaded part of the number line starts at 4.675 with a filled point and stops before 4.685 with an open point. Every decimal in that part rounds to 4.68.",
+        ],
+        illustration: "inverse-decimal-rounding-line",
+      },
+      {
+        title: "Precise rule",
+        paragraphs: [
+          "For positive decimals written with a last digit and rounded to the nearest tenth or hundredth, find the two adjacent rounded values and the halfway point on each side of the target. With halfway rounding up, the lower halfway point is included and the upper halfway point is excluded. A choice is correct exactly when it is at least the lower point and less than the upper point.",
+        ],
+      },
+    ],
+    pitfalls: [
+      "Check both halfway points; a decimal can match the target through the hundredths place and still round up to the next hundredth.",
+      "Include the lower halfway point and exclude the upper one when halfway values round up.",
+    ],
+    parentGuide:
+      "Write a rounded hundredth and the two hundredths beside it. Ask your learner to place the halfway points and check each choice.",
+  },
+  {
     id: "multidigit-decimal-operations",
     title: "Multidigit decimal operations",
     summary:
@@ -304,6 +357,26 @@ export const decimalMethods: Record<string, ProblemMethod> = {
     ],
     watch: "Keep only the target places: to the nearest tenth, 2.37 is 2.4.",
   },
+  "inverse-round-decimal": {
+    goal: "Choose one original decimal that rounds to a given tenth or hundredth.",
+    terms: [
+      [
+        "Halfway point",
+        "A number equally far from two neighboring rounded values.",
+      ],
+      [
+        "Round up",
+        "Choose the greater rounded value when a number is exactly halfway.",
+      ],
+    ],
+    method: [
+      "Find the rounded values immediately below and above the target.",
+      "Find the halfway point on each side of the target.",
+      "Choose the original decimal at or above the lower halfway point and below the upper halfway point.",
+    ],
+    watch:
+      "Include the lower halfway point, but exclude the upper halfway point: halfway rounds up.",
+  },
   "multidigit-decimal-sum": {
     goal: "Add or subtract decimals with different numbers of places.",
     terms: [["Regroup", "Trade 10 of one place for 1 of the next place left."]],
@@ -354,6 +427,8 @@ export const decimalPrinciples: Record<string, string> = {
     "Zeros on the right change nothing, so line up the places and let the first differing place decide.",
   "round-decimal":
     "Rounding chooses the nearer of the two neighbors with the target number of places.",
+  "inverse-round-decimal":
+    "With halfway values rounding up, a decimal rounds to the target exactly when it is at least the lower halfway point and less than the upper halfway point.",
   "multidigit-decimal-sum":
     "Only like places combine, so lining up the decimal points lines up tenths with tenths and hundredths with hundredths.",
   "multidigit-decimal-product":
