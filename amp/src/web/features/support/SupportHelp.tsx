@@ -106,17 +106,25 @@ export function SupportHelp({
   context = "general",
   program,
   feedback = true,
+  contact = true,
 }: {
   context?: Context;
   program?: Program;
   feedback?: boolean;
+  /** Omit when the surrounding frame already provides the support contact. */
+  contact?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <aside aria-label="Help and feedback" className={styles.help}>
-      <p>
-        Need a hand? <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
-      </p>
+    <aside
+      aria-label={contact ? "Help and feedback" : "Parent feedback"}
+      className={styles.help}
+    >
+      {contact && (
+        <p>
+          Need a hand? <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>
+        </p>
+      )}
       {feedback && (
         <>
           <Button type="button" variant="quiet" onClick={() => setOpen(true)}>
