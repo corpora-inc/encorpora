@@ -28,6 +28,7 @@ AMP is an independent TypeScript/PostgreSQL mathematics product. Follow the repo
 - Errors explain the failed action and recovery, are logged without private request data, and appear inline in reserved space or as fixed overlays. Async loading and feedback must not move existing controls.
 - Use shared, accessible controls with visible focus, readable labels and touch targets of at least 44 px.
 - Audit interactions alongside geometry: typing, long paste, deletion to empty, clear/reset, Escape, focus, browser Back/Forward and reload. User-entered filters must stay within route limits, and malformed shared search values must recover without replacing the screen with an error.
+- Review complete composed screens in guest, signed-in and paid states. Inspect visual hierarchy, typography, alignment and control weight in screenshots; overflow and touch-target assertions alone do not establish visual quality. Keep skill titles readable rather than truncating them to make room for secondary controls.
 - Verify real browser behavior and attach synthetic screenshots at 320, 390, 768 and 1280 px in light and dark themes. Measure overflow and bounding boxes during loading, validation and failed requests; verify learner state across navigation.
 
 ### Web application boundaries

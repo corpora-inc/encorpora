@@ -244,13 +244,12 @@ header {
   font-weight: 600;
   color: var(--color-muted-text);
 }
-/* The skill title stays on one line; a long one ends in an ellipsis and keeps
-   its full text as the tooltip. */
+/* The skill name remains readable, including long titles and text zoom. */
 .workspace-topic > span {
   min-width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
 }
 .workspace-topic::before {
   content: "";
@@ -2047,7 +2046,33 @@ html[data-input="pointer"] :focus-visible {
     padding: 4px 16px env(safe-area-inset-bottom, 0px);
   }
   .shell.immersive .workspace-toolbar {
-    gap: 8px;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto 44px;
+    grid-template-areas: "level . status calculator" "topic topic topic topic";
+    column-gap: 6px;
+    row-gap: 6px;
+    padding-bottom: 6px;
+  }
+  .shell.immersive .workspace-toolbar:has([data-account-control]) {
+    grid-template-columns: auto minmax(0, 1fr) auto 44px 44px;
+    grid-template-areas: "level . status calculator account" "topic topic topic topic topic";
+  }
+  .workspace-toolbar > .workspace-level {
+    grid-area: level;
+  }
+  .workspace-toolbar > .workspace-status {
+    grid-area: status;
+  }
+  .workspace-toolbar > .calculator-toggle,
+  .workspace-toolbar > .no-calculator {
+    grid-area: calculator;
+  }
+  .workspace-toolbar > [data-account-control] {
+    grid-area: account;
+  }
+  .shell.immersive .workspace-topic {
+    grid-area: topic;
+    margin: 0;
   }
   .shell.immersive .workspace-topic {
     font-size: 14px;

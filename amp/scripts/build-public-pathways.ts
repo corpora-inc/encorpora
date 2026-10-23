@@ -14,7 +14,12 @@ import {
 
 const origin = "https://amp.corpora.inc";
 const destination = new URL("../dist/", import.meta.url);
-const shell = await readFile(new URL("index.html", destination), "utf8");
+const shell = (
+  await readFile(new URL("index.html", destination), "utf8")
+).replace(
+  /\n<!--amp-assessment-social-start-->[\s\S]*?<!--amp-assessment-social-end-->\n/g,
+  "",
+);
 const byId = new Map(skills.map((skill) => [skill.id, skill]));
 const dependents = new Map(
   skills.map((skill) => [
@@ -308,6 +313,28 @@ await writeFile(
     "/pathways",
     `<main class="pathways-static"><h1>Your pathways</h1><p>Explore connected math skills from kindergarten through precalculus. Each link opens a skill with its problem types and connections.</p>${listing}<p><a href="/try">Start free assessment</a></p></main>`,
     cardUrls.get("map")!,
+  ),
+);
+// The SPA fallback also serves /try. Give assessment invitations a cached
+// curriculum image; skill documents above retain their own specific metadata.
+const assessmentImage = origin + cardUrls.get("map")!;
+await writeFile(
+  new URL("index.html", destination),
+  shell.replace(
+    "</head>",
+    `
+<!--amp-assessment-social-start-->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Think you’re good at math? | Adaptive Math Pathways" />
+  <meta property="og:description" content="Take a free math assessment, find your level, and explore connected math pathways from kindergarten through precalculus." />
+  <meta property="og:url" content="${origin}/try" />
+  <meta property="og:image" content="${assessmentImage}" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="${assessmentImage}" />
+<!--amp-assessment-social-end-->
+</head>`,
   ),
 );
 const urls = ["/pathways", ...skills.map((skill) => skillUrl(skill.id))];

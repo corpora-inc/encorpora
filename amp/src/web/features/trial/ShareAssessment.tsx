@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { buttonClass } from "../../ui/Button";
 import { Dialog } from "../../ui/Dialog";
 import { mapShareImage, type ShareMap } from "../pathways/share-image";
-import styles from "./Trial.module.css";
+import styles from "./ShareAssessment.module.css";
 
 export function assessmentShare(level: string) {
   return {
@@ -12,7 +12,65 @@ export function assessmentShare(level: string) {
   };
 }
 
-/** Share the estimate and optional earned map, never learner identity. */
+export function assessmentShareLinks(level: string) {
+  const { title, text, url } = assessmentShare(level);
+  return {
+    facebook: `https://www.facebook.com/sharer/sharer.php?${new URLSearchParams({ u: url })}`,
+    whatsapp: `https://wa.me/?${new URLSearchParams({ text: `${text}\n${url}` })}`,
+    x: `https://x.com/intent/tweet?${new URLSearchParams({ text, url })}`,
+    email: `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`${text}\n${url}`)}`,
+  };
+}
+
+type IconName =
+  | "facebook"
+  | "whatsapp"
+  | "x"
+  | "email"
+  | "link"
+  | "copy"
+  | "download"
+  | "share";
+function ShareIcon({ name }: { name: IconName }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.icon}>
+      {name === "facebook" ? (
+        <path
+          fill="currentColor"
+          stroke="none"
+          d="M14.5 21v-8h2.8l.5-3.3h-3.3V7.6c0-1 .4-1.7 1.8-1.7H18V3a22 22 0 0 0-2.5-.2c-2.5 0-4.3 1.6-4.3 4.5v2.4H8.5V13h2.7v8z"
+        />
+      ) : name === "x" ? (
+        <path d="m5 4 14 16M19 4 5 20M3.5 4H8l12.5 16H16z" />
+      ) : name === "whatsapp" ? (
+        <>
+          <path d="M20 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5Z" />
+          <path d="M8 7.5c0 4 3 7 7 7l1-2-2-1-1 1c-1.5-.5-2.5-1.5-3-3l1-1-1-2z" />
+        </>
+      ) : name === "email" ? (
+        <>
+          <rect x="3" y="5" width="18" height="14" rx="3" />
+          <path d="m4 7 8 6 8-6" />
+        </>
+      ) : name === "link" ? (
+        <>
+          <path d="m10 7 2-2a5 5 0 0 1 7 7l-2 2M14 17l-2 2a5 5 0 0 1-7-7l2-2m1 6 8-8" />
+        </>
+      ) : name === "copy" ? (
+        <>
+          <rect x="8" y="8" width="12" height="13" rx="2" />
+          <path d="M15 4H6a2 2 0 0 0-2 2v10" />
+        </>
+      ) : name === "download" ? (
+        <path d="M12 3v12m-4-4 4 4 4-4M4 16v4h16v-4" />
+      ) : (
+        <path d="M12 16V3m-5 5 5-5 5 5M5 13v7h14v-7" />
+      )}
+    </svg>
+  );
+}
+
+/** Explicit sharing destinations; images stay on this device until downloaded. */
 export function ShareAssessment({
   level,
   map,
@@ -25,13 +83,9 @@ export function ShareAssessment({
     [level, map?.skills, map?.evidence],
   );
   const [imageFailure, setImageFailure] = useState("");
-  const [image, setImage] = useState<{
-    key: string;
-    file: File;
-    url: string;
-  } | null>(null);
+  const [image, setImage] = useState<{ key: string; url: string } | null>(null);
   const card = image?.key === imageKey ? image : null;
-  const generating = !!map && !card && imageFailure !== imageKey;
+  const failed = !!imageKey && imageFailure === imageKey;
   useEffect(() => {
     if (!map) return;
     let active = true,
@@ -40,17 +94,10 @@ export function ShareAssessment({
       .then((blob) => {
         if (!active) return;
         url = URL.createObjectURL(blob);
-        setImage({
-          key: imageKey,
-          file: new File([blob], "amp-pathways.png", { type: "image/png" }),
-          url,
-        });
+        setImage({ key: imageKey, url });
       })
       .catch(() => {
-        if (active) {
-          setImage(null);
-          setImageFailure(imageKey);
-        }
+        if (active) setImageFailure(imageKey);
       });
     return () => {
       active = false;
@@ -58,113 +105,158 @@ export function ShareAssessment({
     };
   }, [imageKey]);
   const trigger = useRef<HTMLButtonElement>(null);
-  const [copied, setCopied] = useState(false);
-  const [manual, setManual] = useState(false);
-  const [busy, setBusy] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState<"link" | "result" | null>(null);
+  const [manual, setManual] = useState<"link" | "result" | null>(null);
+  const [copying, setCopying] = useState(false);
   const payload = assessmentShare(level);
   const text = `${payload.text}\n${payload.url}`;
-  async function share() {
-    setBusy(true);
+  const links = assessmentShareLinks(level);
+  async function copy(kind: "link" | "result") {
+    setCopying(true);
+    setCopied(null);
+    setManual(null);
     try {
-      let shared: ShareData = payload;
-      let nativeSupported = !!navigator.share;
-      try {
-        if (card && navigator.canShare?.({ files: [card.file] }))
-          shared = { ...payload, files: [card.file] };
-        if (navigator.canShare && !navigator.canShare(shared))
-          nativeSupported = false;
-      } catch {
-        nativeSupported = false;
-      }
-      if (nativeSupported && navigator.share) {
-        try {
-          await navigator.share(shared);
-          return;
-        } catch (error) {
-          if (error instanceof DOMException && error.name === "AbortError")
-            return;
-        }
-      }
-      try {
-        await navigator.clipboard.writeText(text);
-        setCopied(true);
-      } catch {
-        setManual(true);
-      }
+      await navigator.clipboard.writeText(kind === "link" ? payload.url : text);
+      setCopied(kind);
+    } catch {
+      setManual(kind);
     } finally {
-      setBusy(false);
+      setCopying(false);
     }
   }
+  const preview = (
+    <div className={styles.preview}>
+      {card ? (
+        <img
+          src={card.url}
+          alt={`Your AMP curriculum map with your ${level} estimate and earned skill illumination`}
+          width="1200"
+          height="630"
+        />
+      ) : (
+        <span role="status">
+          {failed
+            ? "Map image unavailable. Your sharing links are ready."
+            : "Preparing your map…"}
+        </span>
+      )}
+    </div>
+  );
+  const download = card && (
+    <a
+      className={buttonClass("quiet", styles.download)}
+      href={card.url}
+      download="amp-pathways.png"
+      aria-label="Save map image"
+    >
+      <ShareIcon name="download" />
+      Save image
+    </a>
+  );
   return (
     <>
-      {card && (
-        <figure className={styles.mapShareCard}>
-          <img
-            src={card.url}
-            alt={`Your AMP curriculum map with your ${level} estimate and earned skill illumination`}
-            width="1200"
-            height="630"
-          />
-          <figcaption>
-            <a href={card.url} download="amp-pathways.png">
-              Save map image
-            </a>
-          </figcaption>
+      {map && (
+        <figure className={styles.card}>
+          {preview}
+          <figcaption>{download}</figcaption>
         </figure>
       )}
-      <div className={styles.share}>
-        <button
-          ref={trigger}
-          className={buttonClass("quiet")}
-          disabled={busy || generating}
-          onClick={() => void share()}
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            aria-hidden="true"
-          >
-            <path
-              d="M12 16V3m-5 5 5-5 5 5M5 13v7h14v-7"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          {generating ? "Preparing share image…" : "Share your assessment"}
-        </button>
-        <span role="status">
-          {copied
-            ? "Copied. Ready to paste."
-            : imageFailure && imageFailure === imageKey
-              ? "The map image could not be created. You can share your estimate."
-              : ""}
-        </span>
-      </div>
+      <button
+        ref={trigger}
+        className={buttonClass("secondary")}
+        onClick={() => setOpen(true)}
+      >
+        <ShareIcon name="share" />
+        Share your assessment
+      </button>
       <Dialog
-        open={manual}
-        onOpenChange={setManual}
+        open={open}
+        onOpenChange={(next) => {
+          setOpen(next);
+          if (!next) {
+            setCopied(null);
+            setManual(null);
+          }
+        }}
         title="Share your assessment"
         onCloseAutoFocus={(event) => {
           event.preventDefault();
           trigger.current?.focus();
         }}
       >
-        <p>
-          Copy this text to share your estimate and invite someone to try AMP.
-        </p>
-        <label className={styles.shareText}>
-          Assessment text
-          <textarea
-            readOnly
-            value={text}
-            rows={5}
-            onFocus={(event) => event.currentTarget.select()}
-          />
-        </label>
+        <div className={styles.panel}>
+          {map ? (
+            preview
+          ) : (
+            <p className={styles.estimate}>
+              My current estimate <strong>{level}</strong>
+            </p>
+          )}
+          <div className={styles.destinations}>
+            <a
+              href={links.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Share on Facebook"
+            >
+              <ShareIcon name="facebook" />
+              Facebook
+            </a>
+            <a
+              href={links.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Share on WhatsApp"
+            >
+              <ShareIcon name="whatsapp" />
+              WhatsApp
+            </a>
+            <a
+              href={links.x}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Share on X"
+            >
+              <ShareIcon name="x" />
+              Post on X
+            </a>
+            <a href={links.email} aria-label="Share by email">
+              <ShareIcon name="email" />
+              Email
+            </a>
+            <button disabled={copying} onClick={() => void copy("link")}>
+              <ShareIcon name="link" />
+              {copied === "link" ? "Link copied" : "Copy link"}
+            </button>
+            <button disabled={copying} onClick={() => void copy("result")}>
+              <ShareIcon name="copy" />
+              {copied === "result" ? "Result copied" : "Copy result"}
+            </button>
+          </div>
+          <p className={styles.note}>
+            Facebook shares the assessment link. Save your map image to add it
+            to your post.
+          </p>
+          {card && <div className={styles.save}>{download}</div>}
+          <div className={styles.status} role="status">
+            {copied
+              ? `${copied === "link" ? "Link" : "Result and link"} copied.`
+              : ""}
+          </div>
+          {manual && (
+            <label className={styles.manual}>
+              Copy this {manual === "link" ? "link" : "result"}
+              <textarea
+                autoFocus
+                readOnly
+                rows={manual === "link" ? 2 : 5}
+                value={manual === "link" ? payload.url : text}
+                onFocus={(event) => event.currentTarget.select()}
+              />
+            </label>
+          )}
+        </div>
       </Dialog>
     </>
   );

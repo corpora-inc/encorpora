@@ -9,7 +9,9 @@
   height: 44px;
   min-height: 44px;
   padding: 0;
-  gap: 2px;
+  gap: 0;
+  border: 0;
+  border-radius: 50%;
   background: transparent;
   color: inherit;
 }
@@ -24,11 +26,11 @@
 .initial {
   display: grid;
   place-items: center;
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: var(--color-primary);
-  color: var(--color-on-primary);
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
   font-size: 13px;
   font-weight: 700;
 }

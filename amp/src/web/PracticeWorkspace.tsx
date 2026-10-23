@@ -790,8 +790,9 @@ export function PracticeWorkspace(props: Props) {
               {meta?.title ?? "Practice"}
             </span>
           </span>
-          {props.status}
-          {props.account}
+          {props.status && (
+            <span className="workspace-status">{props.status}</span>
+          )}
           {props.calculator ? (
             <button
               ref={calculatorToggle}
@@ -823,6 +824,7 @@ export function PracticeWorkspace(props: Props) {
               </svg>
             </span>
           )}
+          {props.account}
         </div>
         <div
           className="problem-stage"

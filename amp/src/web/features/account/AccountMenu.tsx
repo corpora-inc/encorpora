@@ -50,6 +50,7 @@ export function AccountMenu() {
         }
         aria-label={busy ? "Signing out" : "Account menu"}
         triggerClassName={styles.trigger}
+        showChevron={false}
       >
         {checking ? (
           <MenuLabel>Checking sign-in…</MenuLabel>

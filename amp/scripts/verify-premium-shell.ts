@@ -185,6 +185,10 @@ try {
       await page
         .getByRole("button", { name: "Create account", exact: true })
         .click();
+      await page
+        .getByRole("heading", { name: "Your account is ready" })
+        .waitFor();
+      await page.getByRole("link", { name: "Continue setup" }).click();
       await page.getByLabel("Learner name").waitFor();
       assert.ok(page.url().endsWith("/start/name"));
       await page.screenshot({
@@ -281,6 +285,10 @@ try {
         path: `${shots}/year-picker-${width}-${theme}.png`,
       });
       await page.getByRole("option", { name: "2018", exact: true }).click();
+      // Scroll before measuring so viewport movement is not mistaken for layout shift.
+      await page
+        .getByRole("button", { name: "Add learner", exact: true })
+        .scrollIntoViewIfNeeded();
       const form = page.locator(".family-add-learner"),
         formBox = await form.boundingBox();
       await page.route("**/api/v1/learners", (r) =>
