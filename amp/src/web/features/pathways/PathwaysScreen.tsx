@@ -57,7 +57,19 @@ function GuestMap() {
     <MapView
       evidence={emptyEvidence}
       start="/try"
-      notice="Explore the curriculum. Sign in to see a learner’s earned skills."
+      notice={
+        trial.isError
+          ? "Your assessment could not be loaded. Retry to see your progress."
+          : trial.isPending
+            ? "Loading your assessment…"
+            : "Explore the curriculum. Start learning to illuminate your skills."
+      }
+      noticeImportant={trial.isError}
+      controls={
+        trial.isError ? (
+          <button onClick={() => void trial.refetch()}>Retry</button>
+        ) : undefined
+      }
     />
   );
 }
