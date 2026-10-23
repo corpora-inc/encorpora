@@ -5,14 +5,20 @@ export const factArrayLessons: Lesson[] = [
   {
     id: "multiplication",
     title: "Multiplication facts from arrays",
-    summary:
-      "A product counts equal rows: 4 × 6 is 4 rows of 6. Any fact can be built from a nearby fact you already know.",
+    summary: "Count equal groups without counting every object one by one.",
     templateIds: ["multiply-facts"],
     objectives: [
       "Read a product as equal rows in an array.",
       "Use turning and splitting an array to find facts from known ones.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Count equal rows",
+        paragraphs: [
+          "If four rows each hold six dots, you could count every dot. Or count six four times. Multiplication is a short way to count groups that all have the same size.",
+        ],
+      },
       {
         title: "Rows and columns",
         paragraphs: [
@@ -38,6 +44,15 @@ export const factArrayLessons: Lesson[] = [
         illustration: "split-array",
       },
     ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Equal groups and products",
+        paragraphs: [
+          "Multiplication counts equal groups: number of groups times size of each group gives the total. Rearranging a rectangular array exchanges the factors without changing the total; splitting a factor into parts splits the product into corresponding partial products.",
+        ],
+      },
+    ],
     workedExample: {
       prompt: "What is 7 × 8?",
       steps: [
@@ -58,13 +73,20 @@ export const factArrayLessons: Lesson[] = [
     id: "division",
     title: "Division facts: think multiplication",
     summary:
-      "n ÷ d asks which number times $d$ makes $n$, so every division fact is a multiplication fact read backwards.",
+      "Division finds a missing group count or group size from a known total.",
     templateIds: ["divide-facts"],
     objectives: [
       "Find a quotient from the related multiplication fact.",
       "Read one array as two multiplication and two division facts.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Ask what makes the total",
+        paragraphs: [
+          "If 28 dots are split into rows of four, how many rows are there? Find the number of fours that make 28. A multiplication fact gives that missing number.",
+        ],
+      },
       {
         title: "Division asks for a missing factor",
         paragraphs: [
@@ -79,6 +101,15 @@ export const factArrayLessons: Lesson[] = [
           "So knowing one multiplication fact means knowing a family of four. Division by 1 leaves a number unchanged, and dividing a number by itself gives 1.",
         ],
         illustration: "fact-family-array",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Division undoes multiplication",
+        paragraphs: [
+          "For a nonzero divisor, a quotient is the number that multiplies the divisor to make the dividend. Thus $n\\div d=q$ exactly when $d\\times q=n$; this connects every exact division fact to a multiplication fact.",
+        ],
       },
     ],
     workedExample: {
@@ -100,14 +131,20 @@ export const factArrayLessons: Lesson[] = [
   {
     id: "missing-factor",
     title: "Find the missing factor",
-    summary:
-      "A box in a multiplication or division equation stands for the one number that makes it true, and every such box is found from a multiplication fact.",
+    summary: "Find the number that makes an equal-groups equation true.",
     templateIds: ["missing-factor-fact"],
     objectives: [
       "Find an unknown factor in $a \\times  \\boxed{\\phantom{0}} = n$ or $\\boxed{\\phantom{0}} \\times  b = n$.",
       "Find an unknown divisor by rewriting $n \\div  \\boxed{\\phantom{0}} = q$ as $\\boxed{\\phantom{0}} \\times  q = n$.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "The blank has a job",
+        paragraphs: [
+          "In six rows with 42 dots altogether, every row must hold the same number. The blank in six times blank equals 42 names that row size. Find the number that makes the whole statement true.",
+        ],
+      },
       {
         title: "The box is a factor",
         paragraphs: [
@@ -121,6 +158,15 @@ export const factArrayLessons: Lesson[] = [
         paragraphs: [
           "42 ÷ □ = 6 says that splitting 42 into □ equal groups puts 6 in each. That is the same as □ × 6 = 42.",
           "Skip-count by 6 to 42: seven groups. So □ = 7. Check by dividing: 42 ÷ 7 = 6.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "An unknown factor",
+        paragraphs: [
+          "In a multiplication equation, the missing factor is the number that makes the stated product. When a nonzero factor and the product are known, divide the product by that factor to find the missing one.",
         ],
       },
     ],
@@ -144,13 +190,20 @@ export const factArrayLessons: Lesson[] = [
     id: "share-or-group",
     title: "Two meanings of division",
     summary:
-      "Division answers two questions: how many in each group when the number of groups is known, and how many groups when the size of each group is known.",
+      "Division can find either the number of equal groups or the size of each group.",
     templateIds: ["share-or-group"],
     objectives: [
       "Find the size of each share when objects are shared equally.",
       "Find the number of groups when objects are put into groups of a given size.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A total can be split two ways",
+        paragraphs: [
+          "Twelve counters could be shared equally among three plates, or placed in groups of three. Both questions use the same total and the same number three, but one answer counts counters per plate and the other counts groups.",
+        ],
+      },
       {
         title: "Sharing: the number of groups is known",
         paragraphs: [
@@ -164,6 +217,15 @@ export const factArrayLessons: Lesson[] = [
         paragraphs: [
           "Put 12 counters into groups of 3. Fill one group of 3, then another, until none are left. Four groups are filled.",
           "The question is the number of groups: 12 ÷ 3 = 4 again. Both meanings use the same fact, 3 × 4 = 12; they differ only in which factor is unknown.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Two meanings of division",
+        paragraphs: [
+          "A quotient can give the size of each equal group when the number of groups is known, or the number of groups when their size is known. Both interpretations satisfy total equals number of groups times size of each group.",
         ],
       },
     ],
@@ -188,13 +250,20 @@ export const factArrayLessons: Lesson[] = [
     id: "times-table-patterns",
     title: "Patterns in the multiplication table",
     summary:
-      "The multiplication table follows from what multiplication means: each row grows by its own factor, doubling a factor doubles its row, and two rows add to the row of their sum.",
+      "Each multiplication-table row grows by one more equal group at a time.",
     templateIds: ["times-table-pattern"],
     objectives: [
       "Find a product from its neighbor in the same row.",
       "Use doubled rows and added rows to find products.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Look for nearby facts",
+        paragraphs: [
+          "If you know three groups of seven, one more group of seven gives four groups of seven. Rows of a multiplication table grow in this steady way, so one known fact can help with the next.",
+        ],
+      },
       {
         title: "Each row steps by its factor",
         paragraphs: [
@@ -208,6 +277,15 @@ export const factArrayLessons: Lesson[] = [
         paragraphs: [
           "Six groups are two sets of three groups, so every product in the row for 6 is double the one in the row for 3: 6 × 7 = 21 + 21 = 42.",
           "Five groups are two groups and three more groups, so the row for 5 is the row for 2 plus the row for 3: 5 × 7 = 14 + 21 = 35.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Patterns from equal groups",
+        paragraphs: [
+          "Each step across a multiplication row adds one more group of the row's size. Doubling a factor doubles the product; splitting a factor into two parts splits its product into the sum of two products.",
         ],
       },
     ],

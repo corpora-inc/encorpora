@@ -6,13 +6,20 @@ export const factsLessons: Lesson[] = [
     id: "facts-to-five",
     title: "Facts to five",
     summary:
-      "Every pair of parts that makes a number up to five gives one addition fact and one subtraction fact.",
+      "A small group can be split into two parts and joined again to make the same whole.",
     templateIds: ["facts-to-five"],
     objectives: [
       "Add and subtract within five without counting from one.",
       "Connect each subtraction to the addition with the same parts.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Split a tiny group",
+        paragraphs: [
+          "Five counters can be separated into two and three, or one and four. Putting the parts back together always gives five. Those same parts tell you what is left if one part is taken away.",
+        ],
+      },
       {
         title: "Parts that make five",
         paragraphs: [
@@ -26,6 +33,15 @@ export const factsLessons: Lesson[] = [
         paragraphs: [
           "If 3 and 2 make 5, then taking 2 from 5 leaves 3, and taking 3 from 5 leaves 2.",
           "Taking away 0 leaves the number unchanged; taking away all of it leaves 0.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Addition and subtraction facts",
+        paragraphs: [
+          "A whole is the sum of its two nonoverlapping parts. If one part is removed, the other remains, so each pair of parts supports related addition and subtraction facts.",
         ],
       },
     ],
@@ -45,13 +61,20 @@ export const factsLessons: Lesson[] = [
     id: "counting-arithmetic",
     title: "Counting on adds; counting back subtracts",
     summary:
-      "Each number said after the start is one step, so counting on 3 adds 3 and counting back 3 subtracts 3.",
+      "Each new number you say after the start is one more step forward or backward.",
     templateIds: ["count-on-back", "counted-steps"],
     objectives: [
       "Add or subtract a small number by counting on or back from the start.",
       "Name the number added or subtracted by counting the steps said.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Begin at the number you already have",
+        paragraphs: [
+          "To add three to eight, start at eight and move three counts forward: nine, ten, eleven. The number you started with tells where to begin; it is not one of the new steps.",
+        ],
+      },
       {
         title: "Start, then step",
         paragraphs: [
@@ -65,6 +88,15 @@ export const factsLessons: Lesson[] = [
         paragraphs: [
           "Counting on from 9 by saying 10, 11, 12, 13 says four numbers, so 4 was added: 9 + 4 = 13.",
           "Saying the starting number again adds a step that never happened, which gives an answer one too many.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "One step per count",
+        paragraphs: [
+          "Counting on $k$ steps from a whole number $n$ reaches $n+k$; counting back $k$ steps reaches $n-k$ when $n\\ge k$. The starting number is not counted as one of the steps.",
         ],
       },
     ],
@@ -84,13 +116,20 @@ export const factsLessons: Lesson[] = [
     id: "make-ten-facts",
     title: "Make ten to add and subtract within twenty",
     summary:
-      "Ten is a stopping place: fill a ten first, then add or take away the rest.",
+      "A full ten makes an easy stopping point for adding or taking away.",
     templateIds: ["make-ten-fact", "related-subtraction"],
     objectives: [
       "Add two one-digit numbers by completing a ten.",
       "Subtract within twenty by finding the missing part of the related addition.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Fill the ten before counting on",
+        paragraphs: [
+          "A full ten-frame is easy to recognize. If eight spots are filled, two more fill it. When adding five, use two to make ten and then count the three left over.",
+        ],
+      },
       {
         title: "Fill the frame",
         paragraphs: [
@@ -104,6 +143,15 @@ export const factsLessons: Lesson[] = [
         paragraphs: [
           "15 − 8 asks what joins 8 to make 15. From 8, 2 more makes 10; from 10, 5 more makes 15. That is 7 in all, so 15 − 8 = 7.",
           "Every subtraction fact has a partner addition: 8 + 7 = 15 and 15 − 8 = 7 use the same three numbers.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Completing a ten",
+        paragraphs: [
+          "Splitting an addend into two parts preserves its value. Use one part to complete 10, then combine the remaining part with that ten. The same split can help subtract through 10.",
         ],
       },
     ],
@@ -127,13 +175,20 @@ export const factsLessons: Lesson[] = [
     id: "mental-ten-hundred",
     title: "Ten or one hundred more or less",
     summary:
-      "Adding or subtracting 10 changes the tens digit; 100 changes the hundreds digit; the other digits stay.",
+      "Adding or subtracting a full ten or hundred changes that place, with a trade if it passes 9 or goes below 0.",
     templateIds: ["mental-ten-hundred"],
     objectives: [
       "Add or subtract 10 or 100 mentally for numbers from 100 to 900.",
       "Regroup when the tens pass a hundred: 396 + 10 = 406.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Change a bundle",
+        paragraphs: [
+          "Adding ten to 47 puts one more group of ten beside its four tens; its seven ones stay seven ones. Adding a hundred changes a larger bundle in the same way.",
+        ],
+      },
       {
         title: "Change one place",
         paragraphs: [
@@ -147,6 +202,15 @@ export const factsLessons: Lesson[] = [
         paragraphs: [
           "396 has 9 tens. One more ten makes 10 tens, which is 1 hundred: 4 hundreds, 0 tens, 6 ones = 406.",
           "503 has 0 tens. To take a ten, trade 1 hundred for 10 tens and take 1: 4 hundreds, 9 tens, 3 ones = 493.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Value of a place",
+        paragraphs: [
+          "Ten ones equal one ten, and ten tens equal one hundred. Adding a complete ten or hundred changes the total by that amount. If a place passes 9, regrouping represents the new total with equal-value bundles.",
         ],
       },
     ],

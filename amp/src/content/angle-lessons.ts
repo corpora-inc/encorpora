@@ -6,7 +6,7 @@ export const angleLessons: Lesson[] = [
     id: "measuring-angles",
     title: "Measuring angles in degrees",
     summary:
-      "An angle measures a turn: a full turn is 360°, and a protractor counts degrees from 0 on one ray.",
+      "Measure how far one ray turns toward another, rather than how long the rays are.",
     templateIds: ["protractor-reading", "adjacent-angles", "turn-degrees"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -14,6 +14,13 @@ export const angleLessons: Lesson[] = [
       "Measure with a protractor, and add or subtract angles that do not overlap.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "An angle is a turn",
+        paragraphs: [
+          "Two rays meeting at a point can show a turn from one direction to another. A bigger turn makes a bigger angle, even when the drawn rays are short. A protractor measures that turn in degrees.",
+        ],
+      },
       {
         title: "Degrees are pieces of a turn",
         paragraphs: [
@@ -29,6 +36,15 @@ export const angleLessons: Lesson[] = [
           "Angles that share a ray and do not overlap add: the whole angle is the sum of its parts, and a missing part is the whole minus the known part.",
         ],
         illustration: "protractor-scales",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Degrees of turn",
+        paragraphs: [
+          "An angle's measure is the amount of rotation from one ray to the other around their shared endpoint. A full turn is 360 degrees; align the protractor's center and zero ray before reading the scale.",
+        ],
       },
     ],
     workedExample: {
@@ -53,7 +69,7 @@ export const angleLessons: Lesson[] = [
     id: "lines-and-angles",
     title: "Lines, rays and kinds of angles",
     summary:
-      "Lines go on both ways, rays one way and segments stop; angles are acute, right, obtuse or straight, and lines can be parallel or perpendicular.",
+      "Lines, rays, and segments differ by where they stop; intersecting directions make angles.",
     templateIds: [
       "angle-classify",
       "line-ray-segment",
@@ -66,6 +82,13 @@ export const angleLessons: Lesson[] = [
       "Tell parallel lines from perpendicular lines and from other crossing lines.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Follow where a path can go",
+        paragraphs: [
+          "A segment stops at both ends, a ray starts at one end and keeps going, and a line keeps going both ways. When such paths meet, they may make different-sized turns called angles.",
+        ],
+      },
       {
         title: "Lines, rays and segments",
         paragraphs: [
@@ -81,6 +104,15 @@ export const angleLessons: Lesson[] = [
           "Parallel lines go the same direction and never meet. Perpendicular lines cross at a right angle. On a dot grid, perpendicular lines take steps turned a quarter turn: 2 across and 1 up becomes 1 across and 2 down.",
         ],
         illustration: "angle-kinds",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Line and angle relationships",
+        paragraphs: [
+          "Lines extend without endpoints, rays have one endpoint, and segments have two. Perpendicular lines meet in a right angle, while parallel lines in a plane do not meet. An angle's classification depends on its turn from one ray to the other.",
+        ],
       },
     ],
     workedExample: {
@@ -104,7 +136,7 @@ export const angleLessons: Lesson[] = [
     id: "lines-of-symmetry",
     title: "Lines of symmetry",
     summary:
-      "A line of symmetry folds a shape into two halves that match exactly.",
+      "A fold line shows symmetry when both halves land exactly on each other.",
     templateIds: ["symmetry-line-count", "symmetry-line-check"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -112,6 +144,13 @@ export const angleLessons: Lesson[] = [
       "Count every line of symmetry of a shape.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Fold and match",
+        paragraphs: [
+          "Imagine folding a paper shape along a line. If every edge and corner on one side lands exactly on the other side, the fold divides it into matching halves. That fold is a line of symmetry.",
+        ],
+      },
       {
         title: "Fold to test",
         paragraphs: [
@@ -125,6 +164,15 @@ export const angleLessons: Lesson[] = [
         paragraphs: [
           "Try folds through opposite corners and through the middles of opposite sides. A regular shape with $n$ equal sides has $n$ lines of symmetry.",
           "Some shapes have none: a slanted parallelogram and a triangle with three different sides cannot be folded into matching halves.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Reflection symmetry",
+        paragraphs: [
+          "A line is a line of symmetry of a figure when reflecting the figure across it maps every point of the figure onto another point of the same figure. A paper fold models this reflection when the halves coincide exactly.",
         ],
       },
     ],

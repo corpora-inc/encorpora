@@ -13,8 +13,7 @@ export const partWholeLessons: Lesson[] = [
   {
     id: "halves-and-quarters",
     title: "Halves and quarters",
-    summary:
-      "Equal parts of one whole get a name from how many there are: 2 halves, 4 quarters.",
+    summary: "Cut one whole into equal pieces to make halves or quarters.",
     templateIds: ["find-equal-shares", "name-equal-share", "larger-share"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -23,6 +22,13 @@ export const partWholeLessons: Lesson[] = [
       "Explain why one quarter of a whole is smaller than one half of the same whole.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Share one whole equally",
+        paragraphs: [
+          "Cut one sandwich into two equal pieces and each piece is a half. Cut each half in two again and you have four equal quarters. The pieces changed size, but together they still make the same sandwich.",
+        ],
+      },
       wholeAndParts,
       {
         title: "Check equal, then count",
@@ -37,6 +43,15 @@ export const partWholeLessons: Lesson[] = [
         paragraphs: [
           "Cut two same-size sandwiches: one into 2 equal parts and one into 4. The second sandwich has more pieces, but each piece is smaller, because the same whole is shared among more pieces.",
           "Two quarters fit exactly inside one half. So one half is larger than one quarter, and two quarters are the same amount as one half.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Equal parts of one whole",
+        paragraphs: [
+          "A unit fraction is one of a positive number of equal parts of a fixed whole. Two halves or four quarters reconstruct that whole; changing the whole's size changes the size of its parts.",
         ],
       },
     ],
@@ -60,8 +75,7 @@ export const partWholeLessons: Lesson[] = [
   {
     id: "halves-thirds-and-quarters",
     title: "Halves, thirds and quarters",
-    summary:
-      "Equal shares of the same whole can look different and still be the same amount.",
+    summary: "Different cuts can show the same share of one whole.",
     templateIds: [
       "find-equal-thirds",
       "name-share",
@@ -74,6 +88,13 @@ export const partWholeLessons: Lesson[] = [
       "Explain why equal shares of the same whole need not have the same shape.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Compare pieces of the same whole",
+        paragraphs: [
+          "A half and two quarters cover the same amount of one whole. The parts have different names because the whole was cut differently. Keep the whole fixed while comparing the shaded amounts.",
+        ],
+      },
       wholeAndParts,
       {
         title: "Name a share",
@@ -89,6 +110,15 @@ export const partWholeLessons: Lesson[] = [
           "So compare shares by their names, not their shapes. One half of a square is the same amount as any other half of the same square, and it is more than one third or one quarter of it.",
         ],
         illustration: "same-share-shapes",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Names for equal shares",
+        paragraphs: [
+          "A fraction names the number of equal parts selected from one whole. Fractions with different names can represent the same amount if the original whole is the same size; subdividing every part equally preserves the selected amount.",
+        ],
       },
     ],
     workedExample: {
@@ -112,7 +142,7 @@ export const partWholeLessons: Lesson[] = [
     id: "equal-area-parts",
     title: "Equal area, equal fraction",
     summary:
-      "When a shape is split into parts with equal area, each part is the same unit fraction of the whole.",
+      "Pieces can have different outlines but each cover the same amount of a whole shape.",
     templateIds: ["equal-area-fraction", "equal-area-part-size"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -121,6 +151,13 @@ export const partWholeLessons: Lesson[] = [
       "Find the area of one part by dividing the whole area by the number of parts.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Equal area can look different",
+        paragraphs: [
+          "Two pieces of a shape may have different outlines but cover the same number of small squares. They then have equal area, the amount of flat space they cover. A fraction such as one sixth means one of six equal-area parts of the same whole.",
+        ],
+      },
       {
         title: "Area and unit fractions",
         paragraphs: [
@@ -135,6 +172,15 @@ export const partWholeLessons: Lesson[] = [
           "Check by counting: 4 parts × 3 squares = 12 squares, the whole rectangle. If the area is known, divide it by the number of equal parts to find one part's area: 12 ÷ 4 = 3 square units.",
         ],
         illustration: "equal-area-regions",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Fractions of area",
+        paragraphs: [
+          "If a flat region is partitioned into $d$ parts of equal area for positive whole $d$, each part has $1/d$ of the region's area. Equal area does not require the pieces to have the same shape.",
+        ],
       },
     ],
     workedExample: {
@@ -157,8 +203,7 @@ export const partWholeLessons: Lesson[] = [
   {
     id: "fractions-of-one-whole",
     title: "Compare fractions of one whole",
-    summary:
-      "Same-size pieces: compare counts. Same counts: compare piece size. Otherwise, make the pieces the same size.",
+    summary: "Compare fractions as parts of the same-sized whole.",
     templateIds: [
       "compare-like-denominators",
       "compare-like-numerators",
@@ -171,6 +216,13 @@ export const partWholeLessons: Lesson[] = [
       "Compare unlike fractions with a common denominator or a benchmark such as 1/2.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Keep the whole fixed",
+        paragraphs: [
+          "If two strips are the same length, one half of either strip is larger than one fourth. If you cut both into fourths, two fourths show the half. To compare other fractions, rename them with the same bottom number, called a denominator, so their parts have equal size.",
+        ],
+      },
       {
         title: "Numerator and denominator",
         paragraphs: [
@@ -191,6 +243,15 @@ export const partWholeLessons: Lesson[] = [
         paragraphs: [
           "When both parts differ, rename the fractions so their pieces are the same size. Multiplying numerator and denominator by the same number cuts every piece into equal smaller pieces without changing the amount: 3/4 = 9/12 and 2/3 = 8/12. Now 9 twelfths > 8 twelfths, so 3/4 > 2/3.",
           "Two shortcuts often decide faster. A benchmark: 3/8 is less than one half and 4/6 is more, so 4/6 > 3/8. Missing pieces: 3/4 and 2/3 are each one piece short of a whole, and the missing quarter is smaller than the missing third, so 3/4 is closer to 1.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Comparing fractions",
+        paragraphs: [
+          "Fractions can be compared by renaming them with a common denominator: equal-sized parts then compare by their numerators. With the same positive numerator, the larger positive denominator names smaller parts, provided the whole is fixed.",
         ],
       },
     ],

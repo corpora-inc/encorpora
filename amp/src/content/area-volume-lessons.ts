@@ -35,7 +35,7 @@ export const areaVolumeLessons: Lesson[] = [
     id: "triangle-area-base-height",
     title: "Area of a triangle",
     summary:
-      "Two copies of a triangle make a parallelogram with the same base and height, so the triangle's area is half of base × height.",
+      "A triangle covers half of a parallelogram with the same base and height.",
     templateIds: ["triangle-area-base-height"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -43,6 +43,13 @@ export const areaVolumeLessons: Lesson[] = [
       "Pick the height that is perpendicular to the base, ignoring slanted sides, including when the height falls outside the triangle.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Two matching triangles make a larger shape",
+        paragraphs: [
+          "Make a copy of a triangle and fit the two together into a parallelogram, a four-sided shape with opposite sides parallel. Each triangle covers half of it. Choose a side as the base; the triangle's height is the perpendicular distance from that side's line to the opposite corner.",
+        ],
+      },
       areaMeaning,
       baseAndHeight,
       {
@@ -52,6 +59,15 @@ export const areaVolumeLessons: Lesson[] = [
           "Turn a copy of a triangle halfway around and place it against the original along one side, as in the figure. The two copies fill a parallelogram with the triangle's base and height, without gaps or overlaps. Each triangle is half of it: area = 1/2 × base × height. For base 8 cm and height 5 cm, the parallelogram is 8 × 5 = 40 square centimeters and the triangle is 40 ÷ 2 = 20 square centimeters.",
         ],
         illustration: "av-triangle-half",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Half of a parallelogram",
+        paragraphs: [
+          "Two congruent copies of a triangle can form a parallelogram with the same base and perpendicular height. Its area is base times height, so the triangle's area is half that product, regardless of where the height meets the base line.",
+        ],
       },
     ],
     workedExample: {
@@ -67,7 +83,7 @@ export const areaVolumeLessons: Lesson[] = [
     },
     pitfalls: [
       "Do not multiply a slanted side by the base; the height is the perpendicular distance.",
-      "Remember the 1/2: base × height alone is the area of the whole parallelogram.",
+      "Halve base × height: that product is the area of the whole parallelogram.",
       "In an obtuse triangle, the height may land outside the triangle; it is still the distance to the line of the base.",
     ],
     parentGuide:
@@ -77,7 +93,7 @@ export const areaVolumeLessons: Lesson[] = [
     id: "polygon-area-decompose",
     title: "Area by splitting into rectangles and triangles",
     summary:
-      "Split a parallelogram, trapezoid or pentagon into rectangles and triangles, find each area and add.",
+      "Find a polygon's area by adding the areas of pieces that cover it without gaps.",
     templateIds: ["polygon-area-decompose"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -85,6 +101,13 @@ export const areaVolumeLessons: Lesson[] = [
       "Find the area of a trapezoid or pentagon by splitting it into triangles and rectangles.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Cut a hard shape into familiar pieces",
+        paragraphs: [
+          "A slanted or many-sided shape may be hard to cover with squares directly. A trapezoid has one pair of parallel sides. Cut such a shape into rectangles or triangles whose areas you can find; each triangle's area is half its base times its perpendicular height. The pieces together cover exactly the original region.",
+        ],
+      },
       areaMeaning,
       {
         title: "Parallelograms and trapezoids",
@@ -99,6 +122,15 @@ export const areaVolumeLessons: Lesson[] = [
         paragraphs: [
           "Many polygons, shapes with straight sides, can be split along a line you draw into a rectangle and a triangle. A pentagon shaped like a house is a rectangle with a triangle on top. A rectangle 8 m wide and 5 m tall has area 8 × 5 = 40; a roof triangle with base 8 m and height 3 m has area 1/2 × 8 × 3 = 12; the pentagon's area is 40 + 12 = 52 square meters.",
           "When a figure gives the total height instead of the triangle's height, subtract: total height 8 m minus wall height 5 m leaves a triangle height of 8 − 5 = 3 m. Check that the pieces together cover the shape exactly once.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Area adds across pieces",
+        paragraphs: [
+          "If a region is partitioned into finitely many pieces without gaps or overlaps, its area is the sum of their areas. Rearranging those pieces without stretching them preserves the total area.",
         ],
       },
     ],
@@ -124,8 +156,7 @@ export const areaVolumeLessons: Lesson[] = [
   {
     id: "net-surface-area",
     title: "Surface area from a net",
-    summary:
-      "A net unfolds a solid's surface into flat faces; the surface area is the total area of those faces.",
+    summary: "A solid's surface area is the total area of its outside faces.",
     templateIds: ["net-surface-area"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -133,6 +164,13 @@ export const areaVolumeLessons: Lesson[] = [
       "Find surface area by adding the areas of all the faces.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Unfold every outside face",
+        paragraphs: [
+          "Imagine opening a solid along its edges until its flat faces lie side by side. That pattern is a net. The surface area is the area of all its outside faces, counted once. A square pyramid has one square base and four triangular faces, each half its base times its perpendicular height.",
+        ],
+      },
       {
         title: "Faces and nets",
         paragraphs: [
@@ -146,6 +184,15 @@ export const areaVolumeLessons: Lesson[] = [
         paragraphs: [
           "A rectangular prism has six rectangular faces in three matching pairs: top and bottom, front and back, and the two ends. For a box 5 cm long, 3 cm wide and 2 cm tall, the pairs are 5 × 3 = 15, 5 × 2 = 10 and 3 × 2 = 6, so the surface area is 2 × 15 + 2 × 10 + 2 × 6 = 30 + 20 + 12 = 62 square centimeters.",
           "A triangular prism has two triangular ends and three rectangles; each rectangle is as long as the prism and as wide as one side of the triangle. A square pyramid has a square base and four matching triangles that meet at the top. The height of each triangle, measured on the face from the middle of a base edge to the top, is called the slant height.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Every face contributes once",
+        paragraphs: [
+          "A net unfolds a solid's surface without changing the area of any face. Its total area is the sum of the areas of all distinct faces; shared edges contribute no area.",
         ],
       },
     ],
@@ -172,7 +219,7 @@ export const areaVolumeLessons: Lesson[] = [
     id: "unit-fraction-cube-packing",
     title: "Packing a prism with fraction cubes",
     summary:
-      "Fill a prism with cubes of edge 1/2 (or 1/3, 1/4): the number of cubes times one cube's volume is the prism's volume, the same as length × width × height.",
+      "Count equal small cubes to measure volume when box edges are fractions of a unit.",
     templateIds: ["unit-fraction-cube-packing"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -180,6 +227,13 @@ export const areaVolumeLessons: Lesson[] = [
       "Show that the cube count times one cube's volume equals length × width × height.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Fill a box with tiny equal cubes",
+        paragraphs: [
+          "A rectangular prism is a box. A cube whose edge is one half of a foot is much smaller than a one-foot cube. It takes two along each direction, or eight in all, to fill one cubic foot. Counting small cubes measures the prism's volume, the space it holds.",
+        ],
+      },
       volumeMeaning,
       {
         title: "Small cubes with fraction edges",
@@ -194,6 +248,15 @@ export const areaVolumeLessons: Lesson[] = [
         paragraphs: [
           "Multiplying the edges directly gives the same result: 5/2 × 3/2 × 1 = 15/4. The cube count multiplies the numerators, 5 × 3 × 2, and each small cube contributes 1/8 = 1/(2 × 2 × 2), which divides by the denominators. So the formula volume = length × width × height holds for fraction edges as well as whole ones.",
           "Edges of thirds or quarters work the same way: a cube with edge 1/3 has volume 1/3 × 1/3 × 1/3 = 1/27, and 27 of them fill a unit cube.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Small cubes measure volume",
+        paragraphs: [
+          "For positive whole $n$, a cube of edge $1/n$ unit has volume $1/n^3$ cubic unit, and $n^3$ such cubes fill a unit cube. Counting equal small cubes therefore agrees with multiplying a prism's three edge lengths.",
         ],
       },
     ],
@@ -221,7 +284,7 @@ export const areaVolumeLessons: Lesson[] = [
     id: "fraction-edge-volume",
     title: "Volume with fraction edges",
     summary:
-      "Volume = length × width × height for any edge lengths; a missing edge is the volume divided by the product of the other two.",
+      "Multiplying a box's three edge lengths gives its volume even when the lengths are fractions.",
     templateIds: ["fraction-edge-volume"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -229,6 +292,13 @@ export const areaVolumeLessons: Lesson[] = [
       "Find a missing edge from the volume and the other two edges.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "The layers can be fractional",
+        paragraphs: [
+          "A box that is one half unit wide can still be filled with smaller cubes. Count the cubes across, along, and upward in a shared small unit; multiplying the three edge lengths gives its volume, the space it holds. A mixed number such as $2\\tfrac{1}{2}$ is two wholes and one half.",
+        ],
+      },
       volumeMeaning,
       {
         title: "Multiplying fraction edges",
@@ -243,6 +313,15 @@ export const areaVolumeLessons: Lesson[] = [
         paragraphs: [
           "If the volume and two edges are known, the third edge is the volume divided by the product of the other two, because volume = (length × width) × height. Dividing by a fraction is multiplying by its reciprocal, the fraction turned upside down: ÷ 3/2 is × 2/3.",
           "A box with volume 6 cubic meters, length 2 m and width 3/2 m has height 6 ÷ (2 × 3/2) = 6 ÷ 3 = 2 m. Check by multiplying back: 2 × 3/2 × 2 = 6.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Volume with fractional edges",
+        paragraphs: [
+          "For a right rectangular prism with positive edge lengths $l,w,h$ in the same unit, volume is $lwh$ cubic units. If volume and two edge lengths are known, the third equals volume divided by the product of the two known lengths.",
         ],
       },
     ],
@@ -269,7 +348,7 @@ export const areaVolumeLessons: Lesson[] = [
     id: "composite-area",
     title: "Area of composite figures",
     summary:
-      "Find unlabeled sides from opposite sides, split the figure into rectangles and triangles (or subtract a missing piece), and add.",
+      "Split a figure into simple pieces or subtract a missing piece from a larger whole.",
     templateIds: ["composite-area"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -277,6 +356,13 @@ export const areaVolumeLessons: Lesson[] = [
       "Find the area of a composite figure by adding parts or subtracting a missing piece.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Make a complicated outline manageable",
+        paragraphs: [
+          "An L-shaped floor can be covered by two rectangles. Find each rectangle's area and add them, or surround the floor with a larger rectangle and subtract the missing corner. Both ways count the same covered space.",
+        ],
+      },
       areaMeaning,
       {
         title: "Missing sides",
@@ -292,6 +378,15 @@ export const areaVolumeLessons: Lesson[] = [
           "A rectangle with a corner cut off by a straight line is the rectangle minus a right triangle. The triangle's legs, the two sides that meet at its right angle, are the differences between opposite sides; its area is 1/2 × leg × leg.",
         ],
         illustration: "av-composite-split",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Add or subtract regions",
+        paragraphs: [
+          "A flat region's area is the sum of nonoverlapping pieces that cover it completely. Equivalently, subtract the area of a removed piece from the area of a containing whole, provided neither count includes gaps or overlaps.",
+        ],
       },
     ],
     workedExample: {
@@ -317,7 +412,7 @@ export const areaVolumeLessons: Lesson[] = [
     id: "composite-face-prism-volume",
     title: "Volume of a composite prism",
     summary:
-      "A right prism's volume is the area of its front face times its depth, whatever the shape of that face.",
+      "A right prism's volume is the area of its front face times its depth.",
     templateIds: ["composite-face-prism-volume"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -325,6 +420,13 @@ export const areaVolumeLessons: Lesson[] = [
       "Find the volume of a right prism as face area × depth.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Repeat the same face through the depth",
+        paragraphs: [
+          "Imagine a solid made by pushing a flat L-shaped face straight backward. Every slice parallel to that face has the same area. The depth tells how many layers of that face fill the solid.",
+        ],
+      },
       volumeMeaning,
       {
         title: "Layers of the front face",
@@ -339,6 +441,15 @@ export const areaVolumeLessons: Lesson[] = [
         paragraphs: [
           "An L-shaped prism is also two rectangular prisms joined together. Splitting the front face into rectangles 8 × 2 and 3 × 4 splits the solid into boxes 8 × 2 × 4 = 64 and 3 × 4 × 4 = 48, total 64 + 48 = 112. Finding the face area first, 16 + 12 = 28, then 28 × 4 = 112, gives the same result.",
           "First find any unlabeled edges of the face from the opposite edges, as for any figure whose corners are right angles.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Prism layers",
+        paragraphs: [
+          "A right prism has congruent parallel bases. Its volume is the area of one base times the perpendicular distance between the bases; the base may be a composite polygon.",
         ],
       },
     ],
@@ -365,7 +476,7 @@ export const areaVolumeLessons: Lesson[] = [
     id: "composite-face-prism-surface-area",
     title: "Surface area of a composite prism",
     summary:
-      "Add the front and back faces to the side faces; the side faces unroll into one strip as long as the perimeter of the front face.",
+      "A right prism's surface area includes both ends and every side face.",
     templateIds: ["composite-face-prism-surface-area"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -373,6 +484,13 @@ export const areaVolumeLessons: Lesson[] = [
       "Find a right prism's surface area as 2 × face area + perimeter × depth.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Count the outside, not the inside",
+        paragraphs: [
+          "A right prism has a front face, a matching back face, and side faces joining their edges straight across. Its surface area is all outside faces added together. Unroll the side faces into a strip: its width follows the front face's perimeter, the distance around its boundary, and its height is the prism's depth.",
+        ],
+      },
       {
         title: "The faces of a right prism",
         paragraphs: [
@@ -387,6 +505,15 @@ export const areaVolumeLessons: Lesson[] = [
           "For the L-shaped face in the figure, with area 28, perimeter 28 and depth 4: 2 × 28 + 28 × 4 = 56 + 112 = 168 square units. Find every edge of the face first, including unlabeled ones, or the perimeter will be short.",
         ],
         illustration: "av-prism-unrolled",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Prism faces and the side strip",
+        paragraphs: [
+          "For a right prism with base area $B$, base perimeter $P$, and positive depth $h$, the two bases contribute $2B$ and the side faces together contribute $Ph$. Thus surface area is $2B+Ph$, counting each exposed face once.",
+        ],
       },
     ],
     workedExample: {
@@ -412,8 +539,7 @@ export const areaVolumeLessons: Lesson[] = [
   {
     id: "cylinder-volume",
     title: "Volume of a cylinder",
-    summary:
-      "A cylinder is a stack of circles: $V = \\text{base area} \\times \\text{height} = \\pi r^2 h$.",
+    summary: "A cylinder's volume is its circular base area times its height.",
     templateIds: ["cylinder-volume"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -421,6 +547,13 @@ export const areaVolumeLessons: Lesson[] = [
       "Find a cylinder's volume exactly in terms of $\\pi$ or with 3.14, and find a missing height from the volume.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Stack matching circles",
+        paragraphs: [
+          "A cylinder, like a can, has the same circular cross-section from bottom to top. Imagine stacking very thin copies of its circular base. The base area tells how much space is in a layer and the height tells how many layers fill the can. A circle's radius is half its diameter; its area is $\\pi$ (pi) times radius times radius. In $a\\pi$, $a$ asks for the number multiplying $\\pi$.",
+        ],
+      },
       circleFacts,
       {
         title: "A stack of circles",
@@ -435,6 +568,15 @@ export const areaVolumeLessons: Lesson[] = [
         paragraphs: [
           "If a problem gives the diameter, halve it first: a diameter of 8 m means $r = 4$ m and base area $\\pi \\times 4^2 = 16\\pi$. Using 8 instead of 4 makes the base area four times too large.",
           "To find a missing height, divide the volume by the base area: a cylinder with volume $80\\pi$ and radius 4 has height $80\\pi \\div 16\\pi = 5$. The $\\pi$ cancels because both numbers are multiples of $\\pi$.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Circular layers",
+        paragraphs: [
+          "For a right circular cylinder with radius $r>0$ and height $h>0$, each cross-section parallel to its base has area $\\pi r^2$. Stacking those equal layers gives volume $\\pi r^2h$ cubic units.",
         ],
       },
     ],
@@ -460,7 +602,7 @@ export const areaVolumeLessons: Lesson[] = [
     id: "cone-sphere-volume",
     title: "Volume of cones and spheres",
     summary:
-      "A cone holds 1/3 of the cylinder with the same base and height; a sphere holds 2/3 of the cylinder that just contains it, which is $\\tfrac{4}{3}\\pi r^3$.",
+      "A cone and a sphere can be measured by comparing them with matching cylinders.",
     templateIds: ["cone-sphere-volume"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -468,6 +610,13 @@ export const areaVolumeLessons: Lesson[] = [
       "Find the volume of a sphere or hemisphere from its radius, exactly or with 3.14 for $\\pi$.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Compare solids that fit together",
+        paragraphs: [
+          "A cone with the same circular base and height as a cylinder fills one third of that cylinder. A sphere is a round solid whose radius runs from its center to its surface. Its volume is four thirds of $\\pi$ (pi) times radius cubed, meaning radius multiplied by itself three times. In $a\\pi$, $a$ asks for the number multiplying $\\pi$.",
+        ],
+      },
       circleFacts,
       {
         title: "Cones",
@@ -482,6 +631,15 @@ export const areaVolumeLessons: Lesson[] = [
         paragraphs: [
           "A sphere is the set of points at distance $r$ from a center, like a ball. The smallest cylinder that contains it has radius $r$ and height $2r$, so it holds $\\pi r^2 \\times 2r = 2\\pi r^3$. The sphere fills 2/3 of that cylinder, so $V = \\tfrac{2}{3} \\times 2\\pi r^3 = \\tfrac{4}{3}\\pi r^3$. Archimedes proved this more than two thousand years ago.",
           "A hemisphere is half a sphere: $V = \\tfrac{1}{2} \\times \\tfrac{4}{3}\\pi r^3 = \\tfrac{2}{3}\\pi r^3$. For $r = 3$: the sphere is $\\tfrac{4}{3} \\times 27\\pi = 36\\pi$ and the hemisphere is $18\\pi$. Cube the radius, $r^3 = r \\times r \\times r$, before multiplying by 4/3.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Cone and sphere volumes",
+        paragraphs: [
+          "A cone has one third the volume of a cylinder with the same base area and perpendicular height: $V=\\frac13\\pi r^2h$. A sphere of radius $r$ has volume $\\frac43\\pi r^3$; both formulas require a positive radius, and cone height is perpendicular to its base.",
         ],
       },
     ],
@@ -508,6 +666,8 @@ export const areaVolumeLessons: Lesson[] = [
 export const areaVolumeMethods: Record<string, ProblemMethod> = {
   "triangle-area-base-height": {
     goal: "Find a triangle's area from a base and the height to that base.",
+    intuition:
+      "Choose one side as the base. Its height is the perpendicular distance to the opposite corner, not a slanted side. Two matching triangles make a parallelogram, so one triangle covers half of base times height.",
     terms: [
       [
         "height",
@@ -524,6 +684,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "polygon-area-decompose": {
     goal: "Find the area of a parallelogram, trapezoid or pentagon by splitting it.",
+    intuition:
+      "Area measures how much flat space a shape covers. Split a many-sided shape into rectangles and triangles without gaps or overlaps; add their areas. A triangle covers half of its base times its perpendicular height.",
     terms: [
       [
         "trapezoid",
@@ -540,6 +702,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "net-surface-area": {
     goal: "Find a solid's surface area by adding the areas of the faces in its net.",
+    intuition:
+      "A net is a solid's outside faces laid flat without overlap. Surface area is the space all those faces cover together, so find and add each face's area once.",
     terms: [
       ["net", "A flat pattern of faces that folds into the solid."],
       ["surface area", "The total area of all the faces."],
@@ -553,6 +717,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "unit-fraction-cube-packing": {
     goal: "Count fraction-edge cubes that fill a prism and find its volume.",
+    intuition:
+      "A rectangular prism is a box. Its volume is the space it holds. Count how many identical small cubes fit along its length, width, and height, then multiply those counts.",
     terms: [
       ["unit fraction", "A fraction with numerator 1, such as 1/2."],
       ["volume", "The space a solid fills, in cubic units."],
@@ -566,6 +732,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "fraction-edge-volume": {
     goal: "Find a prism's volume or a missing edge when edges are fractions.",
+    intuition:
+      "A rectangular prism is a box. Multiply its length, width, and height to get its volume, the space it holds. A mixed number such as $2\\tfrac{1}{2}$ is two wholes and one half.",
     terms: [
       ["mixed number", "A whole number plus a fraction, such as 2 1/2 = 5/2."],
       [
@@ -608,6 +776,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "composite-face-prism-surface-area": {
     goal: "Find the surface area of a right prism with an L- or T-shaped face.",
+    intuition:
+      "A right prism has matching front and back faces joined straight across. Surface area adds all outside faces. The side faces together make a strip as wide as the front face's perimeter, its distance around, and as tall as the prism's depth.",
     terms: [["perimeter", "The total length of a shape's edges."]],
     method: [
       "Find every edge of the face, including unlabeled ones.",
@@ -618,6 +788,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "cylinder-volume": {
     goal: "Find a cylinder's volume, or its height, from its radius or diameter.",
+    intuition:
+      "A cylinder is a solid like a can. Its volume is its circular base area times its height. The radius goes from the circle's center to its edge; the diameter crosses the center and is twice as long. The number $\\pi$ (pi), about 3.14159, is every circle's circumference divided by its diameter. Base area is $\\pi$ times radius times radius; in $a\\pi$, $a$ asks for the number multiplying $\\pi$.",
     terms: [
       ["radius", "Center to circle; half the diameter."],
       ["base area", "The area of a circle of radius $r$: $\\pi r^2$."],
@@ -631,6 +803,8 @@ export const areaVolumeMethods: Record<string, ProblemMethod> = {
   },
   "cone-sphere-volume": {
     goal: "Find the volume of a cone, sphere or hemisphere.",
+    intuition:
+      "A radius goes from a circle's or sphere's center to its edge; a diameter passes through the center and is twice as long. The number $\\pi$ (pi), about 3.14159, is a circle's circumference divided by its diameter. A cylinder's volume is $\\pi$ times radius squared times height; a matching cone holds one third as much. A sphere holds four thirds of $\\pi$ times radius cubed, and a hemisphere is half a sphere. In $a\\pi$, $a$ asks for the number multiplying $\\pi$.",
     terms: [
       ["cone", "1/3 of the cylinder with the same base and height."],
       [

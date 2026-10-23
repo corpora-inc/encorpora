@@ -35,7 +35,8 @@ export const circleMeasurementLessons: Lesson[] = [
   {
     id: "circle-circumference-coefficient",
     title: "Measure a circle's circumference",
-    summary: "The distance around a circle is $\\pi$ times its diameter.",
+    summary:
+      "Every circle has the same ratio of distance around to distance across.",
     templateIds: ["circle-circumference-coefficient"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -43,6 +44,14 @@ export const circleMeasurementLessons: Lesson[] = [
       "Calculate an exact circumference and identify its coefficient of $\\pi$.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Measure around and across",
+        paragraphs: [
+          "The circumference is the distance around a circle. The diameter is a straight distance across its center. For every circle, the distance around is a little more than three times the distance across.",
+          "That fixed ratio is $\\pi$ (pi), so circumference is $\\pi$ times the diameter. A radius goes from the center to the circle and is half a diameter. In an answer written $a\\pi$, the letter $a$ asks for the number multiplying $\\pi$.",
+        ],
+      },
       ...foundations,
       {
         title: "Use the circumference-to-diameter ratio",
@@ -51,6 +60,15 @@ export const circleMeasurementLessons: Lesson[] = [
           "The diameter is a straight distance through the center; circumference follows the curved boundary. The number $\\pi$ is greater than 3 and less than 4, so a circumference is greater than three diameters and less than four. This gives a size check without replacing the exact answer by a decimal.",
         ],
         illustration: "circle-circumference",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The circle ratio",
+        paragraphs: [
+          "For every circle with positive diameter $d$, the ratio of its circumference $C$ to $d$ is the same number, $\\pi$. Therefore $C=\\pi d=2\\pi r$ for radius $r=d/2$.",
+        ],
       },
     ],
     workedExample: {
@@ -75,7 +93,7 @@ export const circleMeasurementLessons: Lesson[] = [
   {
     id: "circle-area-coefficient",
     title: "Measure the area inside a circle",
-    summary: "A circle's area is $\\pi$ times the square of its radius.",
+    summary: "The area inside a circle grows with the square of its radius.",
     templateIds: ["circle-area-coefficient"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -83,6 +101,14 @@ export const circleMeasurementLessons: Lesson[] = [
       "Calculate exact circle area from a radius or diameter.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Cover the space inside",
+        paragraphs: [
+          "A circle's area measures the flat region it covers. A wider circle grows in two directions, so doubling its radius makes more than twice as much space inside. The radius sets the scale for the area.",
+          "A radius runs from the center to the circle; it is half the diameter across the center. Area is $\\pi$ (pi) times radius times radius. In $a\\pi$, $a$ is the number multiplying $\\pi$.",
+        ],
+      },
       ...foundations,
       {
         title: "Why the radius is squared",
@@ -98,6 +124,15 @@ export const circleMeasurementLessons: Lesson[] = [
         paragraphs: [
           "A diameter is twice a radius. Using its square directly would give four times the correct area: $d^2 = (2r)^2 = 4r^2$. First find $r = d/2$, then multiply the radius by itself.",
           "For a fractional radius, square the whole fraction. If $r = \\frac{3}{2}$ cm, then $r^2 = \\frac{3}{2} \\times \\frac{3}{2} = \\frac{9}{4}$ square centimeters, so $A = \\frac{9}{4}\\pi$ square centimeters. The coefficient $a$ is $\\frac{9}{4}$.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Circle area",
+        paragraphs: [
+          "For a circle of positive radius $r$, its area is $A=\\pi r^2$ square units. Doubling the radius makes the area four times as large because the squared radius, not the radius alone, sets the scale.",
         ],
       },
     ],
@@ -124,7 +159,7 @@ export const circleMeasurementLessons: Lesson[] = [
     id: "arc-length-coefficient",
     title: "Measure an arc of a circle",
     summary:
-      "An arc takes the same fraction of the circumference as its central angle takes of a full turn.",
+      "An arc is the same fraction of the circumference as its center angle is of a full turn.",
     templateIds: ["arc-length-coefficient"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -132,6 +167,14 @@ export const circleMeasurementLessons: Lesson[] = [
       "Calculate exact arc lengths, including arcs greater than a semicircle.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Take part of the rim",
+        paragraphs: [
+          "An arc is a piece of a circle's boundary. A turn of one quarter around the center reaches one quarter of the rim. Find the full distance around first, then take the matching fraction.",
+          "The central angle measures the turn at the center; a full turn is 360 degrees. The distance around the full circle, its circumference, is $\\pi$ (pi) times its diameter. In $a\\pi$, $a$ is the number multiplying $\\pi$.",
+        ],
+      },
       ...foundations,
       ...angles,
       {
@@ -142,6 +185,15 @@ export const circleMeasurementLessons: Lesson[] = [
           "Arc length follows the curved boundary. It is different from a chord, which is the straight segment joining the arc's endpoints. A radius joins the center to an endpoint; it also is not the arc length.",
         ],
         illustration: "circle-arc",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "A part of the circumference",
+        paragraphs: [
+          "For a central angle $\\theta$ between 0 and 360 degrees in a circle of radius $r$, the intercepted arc has length $L=(\\theta/360)2\\pi r$. This uses the same fraction of the full circumference as the angle uses of a full turn.",
+        ],
       },
     ],
     workedExample: {
@@ -167,7 +219,7 @@ export const circleMeasurementLessons: Lesson[] = [
     id: "sector-area-coefficient",
     title: "Measure a sector of a circle",
     summary:
-      "A sector takes the same fraction of the circle's area as its central angle takes of a full turn.",
+      "A sector is the same fraction of the circle's area as its center angle is of a full turn.",
     templateIds: ["sector-area-coefficient"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -175,6 +227,14 @@ export const circleMeasurementLessons: Lesson[] = [
       "Calculate exact sector areas, including sectors greater than half a circle.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Take a slice of the circle",
+        paragraphs: [
+          "A sector is the pie-slice-shaped region between two radii and the arc joining them. A quarter turn at the center cuts out one quarter of the circle's area. Find the full area, then take the matching fraction.",
+          "A radius runs from the center to the circle. The central angle measures the turn between the two radii; a full turn is 360 degrees. The circle's full area is $\\pi$ (pi) times radius times radius. In $a\\pi$, $a$ is the number multiplying $\\pi$.",
+        ],
+      },
       ...foundations,
       ...angles,
       {
@@ -185,6 +245,15 @@ export const circleMeasurementLessons: Lesson[] = [
           "Find the radius, square it, and multiply by the angle's fraction of a full turn. Keep $\\pi$ in the complete area. A sector's area uses square centimeters; its curved boundary has a length measured in centimeters.",
         ],
         illustration: "circle-sector",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "A part of the circle's area",
+        paragraphs: [
+          "For a central angle $\\theta$ between 0 and 360 degrees in a circle of radius $r$, the sector has area $A=(\\theta/360)\\pi r^2$. It occupies the same fraction of the full circle as the angle occupies of a full turn.",
+        ],
       },
     ],
     workedExample: {
@@ -225,6 +294,10 @@ export const circleMeasurementMethods: Record<string, ProblemMethod> =
       lesson.id,
       {
         goal: lesson.objectives[1]!,
+        intuition:
+          lesson.sections
+            .find((section) => section.stage === "intuition")
+            ?.paragraphs.join(" ") ?? lesson.summary,
         terms: [
           ["radius", "The distance from the center to the circle."],
           [

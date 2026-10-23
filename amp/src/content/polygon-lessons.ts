@@ -6,7 +6,7 @@ export const polygonLessons: Lesson[] = [
     id: "polygons-and-solids",
     title: "Polygons, faces, edges and vertices",
     summary:
-      "A polygon is named by its number of sides; a solid is described by its faces, edges and vertices.",
+      "A polygon is a closed flat shape with straight sides. A prism has two matching ends; a pyramid has one base and sides meeting at a tip. Their flat faces meet along edges and their corners are vertices.",
     templateIds: ["name-polygon", "polygon-with-angles", "solid-parts"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -14,6 +14,13 @@ export const polygonLessons: Lesson[] = [
       "Count the faces, edges and vertices of prisms and pyramids, hidden ones included.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Flat outline or solid object",
+        paragraphs: [
+          "A triangle drawn on paper is flat: its straight sides close around a region. A box can be held and turned; its flat faces meet along edges. Describe the flat outline and the solid's faces separately.",
+        ],
+      },
       {
         title: "Polygons",
         paragraphs: [
@@ -29,6 +36,15 @@ export const polygonLessons: Lesson[] = [
           "A drawing shows only the front. Dashed lines show hidden edges, so count those too. A prism has two matching ends joined by flat sides; a pyramid has one base and triangles that meet at a point.",
         ],
         illustration: "solid-parts",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Flat and solid figures",
+        paragraphs: [
+          "A polygon is a closed flat figure made of straight segments, with one vertex where each neighboring pair meets. A polyhedron is a solid bounded by flat polygonal faces; its faces meet along edges and its edges at vertices. A drawing of a solid is a picture of it, not the solid itself.",
+        ],
       },
     ],
     workedExample: {
@@ -52,7 +68,7 @@ export const polygonLessons: Lesson[] = [
     id: "quadrilaterals",
     title: "Squares, rectangles and rhombuses",
     summary:
-      "A rectangle has 4 right angles, a rhombus has 4 equal sides, and a square has both.",
+      "Use side lengths and corner angles to tell four-sided shapes apart.",
     templateIds: ["classify-quadrilateral", "find-quadrilateral"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -60,6 +76,13 @@ export const polygonLessons: Lesson[] = [
       "Name squares, rectangles and rhombuses, and recognize quadrilaterals that are none of them.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Four sides, different special features",
+        paragraphs: [
+          "Many flat shapes have four sides. Some have four square corners, some have four equal sides, and a square has both. Look at what is marked on the figure instead of relying on how it is tilted.",
+        ],
+      },
       {
         title: "Reading the marks",
         paragraphs: [
@@ -73,6 +96,15 @@ export const polygonLessons: Lesson[] = [
         paragraphs: [
           "Check right angles first, then sides. 4 right angles and 4 equal sides: square. Only the right angles: rectangle. Only the equal sides: rhombus.",
           "A quadrilateral with neither, such as a slanted shape with two long and two short sides, is none of the three. It is still a quadrilateral.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Properties of four-sided figures",
+        paragraphs: [
+          "A quadrilateral is a polygon with four sides. A rectangle has four right angles; a rhombus has four equal side lengths. A square satisfies both definitions, regardless of how it is turned.",
         ],
       },
     ],
@@ -97,7 +129,7 @@ export const polygonLessons: Lesson[] = [
     id: "quadrilateral-hierarchy",
     title: "The quadrilateral family tree",
     summary:
-      "Each category inside another has every property of the larger category: every square is a rectangle, a rhombus and a parallelogram.",
+      "A parallelogram has two pairs of opposite sides parallel. A rectangle adds four right angles; a rhombus has four equal sides. A square has both features, so several names fit it.",
     templateIds: [
       "quadrilateral-names",
       "hierarchy-statement",
@@ -109,6 +141,13 @@ export const polygonLessons: Lesson[] = [
       "Use that a subcategory has every property of its category.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A square can have several names",
+        paragraphs: [
+          "A square has equal sides and square corners. Those features make it both a rectangle, with four right angles, and a rhombus, with four equal sides. A parallelogram has two pairs of opposite sides parallel; every rhombus has that feature too.",
+        ],
+      },
       {
         title: "Categories inside categories",
         paragraphs: [
@@ -122,6 +161,15 @@ export const polygonLessons: Lesson[] = [
         paragraphs: [
           '"Every $X$ is a $Y$" is false if you can draw one $X$ that is not a $Y$. A long, thin rectangle is a rectangle but not a square, so "every rectangle is a square" is false.',
           "If no such drawing exists, the statement is true: every square has 4 right angles, so every square is a rectangle.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Every special case belongs above it",
+        paragraphs: [
+          "If a figure satisfies the defining properties of a narrower class, it also belongs to every broader class whose properties it satisfies. Thus every square is both a rectangle and a rhombus, and each is a parallelogram.",
         ],
       },
     ],

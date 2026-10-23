@@ -2,10 +2,11 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const rates: Lesson["sections"][number] = {
-  title: "Rates and unit rates",
+  stage: "intuition",
+  title: "Shrink a group to one unit",
   paragraphs: [
-    "A rate compares two quantities measured in different units, such as 132 pages printed in 6 minutes. A unit rate gives the amount of one quantity for exactly 1 unit of the other: the pages printed in 1 minute. The word per means for each 1, so pages per minute means pages for each 1 minute.",
-    "A rate can be read in two directions. 132 pages in 6 minutes gives 132 ÷ 6 = 22 pages per minute, and also 6 ÷ 132 = 1/22 minute per page. The question decides which quantity is at 1: divide the other quantity by it.",
+    "Suppose a printer makes 132 pages in 6 minutes at a steady speed. Split both the pages and the time into 6 equal groups. One group is 1 minute and 22 pages. That tells you how many pages the printer makes in each minute.",
+    "The amount for one unit is called a unit rate. The word per means for each one: 22 pages per minute means 22 pages for each 1 minute. The question can put either quantity at one. Minutes per page asks how much of a minute goes with 1 page instead.",
   ],
 };
 const ratios: Lesson["sections"][number] = {
@@ -36,7 +37,7 @@ export const ratioRateLessons: Lesson[] = [
     id: "unit-rate",
     title: "Unit rates: the amount for 1",
     summary:
-      "Divide one quantity by the other to find the amount for exactly 1 unit.",
+      "If several equal units go with one amount, share that amount equally to find what goes with one unit.",
     templateIds: ["unit-rate"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -46,12 +47,23 @@ export const ratioRateLessons: Lesson[] = [
     sections: [
       rates,
       {
-        title: "Why dividing gives the amount for 1",
+        stage: "method",
+        title: "Divide in the direction the question asks",
         paragraphs: [
-          "This lesson uses division of whole numbers and decimals. On the double number line in the figure, the top line counts pages and the bottom line counts minutes. A mark on one line and the mark directly below it are a matching pair: the pages printed by that time.",
-          "The 6 minutes split into 6 equal 1-minute parts, and the 132 pages split into 6 equal parts with them. One part is 132 ÷ 6 = 22 pages: the pages for 1 minute. Once the unit rate is known, any other pair follows by multiplying: in 4 minutes, 4 × 22 = 88 pages.",
+          "First say which unit should be one. For pages per minute, divide pages by minutes. For minutes per page, divide minutes by pages. This lesson uses division of whole numbers and decimals.",
+          "On the double number line, each pair of marks shows the pages printed by a matching time. Split 6 minutes and 132 pages into 6 equal parts: 132 ÷ 6 = 22 pages for 1 minute. At that speed, 4 minutes gives 4 × 22 = 88 pages. In the other direction, 6 ÷ 132 = 1/22 minute for 1 page.",
         ],
         illustration: "rate-double-line",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Rate and unit rate",
+        paragraphs: [
+          "A rate compares quantities with different units. If $a$ units of one quantity correspond to $b$ units of another at a constant rate and $b$ is nonzero, then the first quantity per unit of the second is $a/b$. Reversing the direction gives $b/a$ when $a$ is also nonzero.",
+          "Keep the units in the quotient. For 132 pages in 6 minutes, $132/6 = 22$ pages per minute; $6/132 = 1/22$ minute per page. These are different questions about the same relationship.",
+        ],
       },
     ],
     workedExample: {
@@ -63,11 +75,12 @@ export const ratioRateLessons: Lesson[] = [
         "The runner takes 8.5 minutes for each mile.",
       ],
       answer: "8.5",
+      answerUnit: "minutes per mile",
     },
     pitfalls: [
-      "Divide in the order the question asks: minutes per mile is minutes ÷ miles, not miles ÷ minutes.",
-      "Keep the units with the number: 22 pages per minute, not just 22.",
-      "A unit rate need not be a whole number; 9 cups of flour for 4 loaves is 9/4 cups per loaf.",
+      "For minutes per mile, divide minutes by miles; read the units before dividing.",
+      "Keep the units with the number: write 22 pages per minute, not just 22.",
+      "Allow a fractional unit rate: 9 cups of flour for 4 loaves is 9/4 cups per loaf.",
     ],
     parentGuide:
       "Time how many sit-ups or jumping jacks are done in 3 minutes. Divide to find the number per minute, then predict the number for 5 minutes and test it.",
@@ -76,7 +89,7 @@ export const ratioRateLessons: Lesson[] = [
     id: "better-buy",
     title: "Find the better buy",
     summary:
-      "Compare the price of 1 item, not the total prices of different-sized packs.",
+      "Compare the cost of one item in each package to decide which gives more for the money.",
     templateIds: ["better-buy"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -84,6 +97,13 @@ export const ratioRateLessons: Lesson[] = [
       "Choose the lower unit price, or recognize equal unit prices.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Make the packages the same size in your mind",
+        paragraphs: [
+          "A box of eight bars may cost more than a box of six bars but less for each bar. Find what one bar costs in each box. Then you can compare equal amounts of the same item.",
+        ],
+      },
       {
         title: "Unit price",
         paragraphs: [
@@ -98,6 +118,15 @@ export const ratioRateLessons: Lesson[] = [
           "The 8-pack's bar is longer, but its parts are shorter: each granola bar costs less. When the unit prices are equal, neither pack is a better buy per item; the larger pack costs more in all only because it holds more.",
         ],
         illustration: "unit-price-tapes",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Compare equal quantities",
+        paragraphs: [
+          "For a positive number of items, unit price equals total price divided by item count. When packages contain the same kind and quality of item, the lower unit price is the lower cost for any common quantity.",
+        ],
       },
     ],
     workedExample: {
@@ -122,7 +151,7 @@ export const ratioRateLessons: Lesson[] = [
     id: "ratio-table-missing",
     title: "Complete a ratio table",
     summary:
-      "Every column of a ratio table is the simplest ratio multiplied by one number.",
+      "In a ratio table, both quantities grow or shrink by the same factor.",
     templateIds: ["ratio-table-missing"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -130,6 +159,13 @@ export const ratioRateLessons: Lesson[] = [
       "Find a missing value by multiplying both parts of the simplest ratio by the same number.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Keep both amounts moving together",
+        paragraphs: [
+          "A ratio compares two amounts in a fixed order: two cups of juice for every three cups of water is a 2-to-3 ratio. A double batch uses four cups and six cups. A ratio table keeps matching amounts together as a batch grows or shrinks.",
+        ],
+      },
       ratios,
       {
         title: "Every column is a multiple of the simplest ratio",
@@ -138,6 +174,15 @@ export const ratioRateLessons: Lesson[] = [
           "To fill a missing cell, find the multiplier from the known entry in its column and apply it to the other row. If flour is 14 = 7 × 2, then sugar is 7 × 3 = 21. Adding the same number to both rows does not keep the ratio: 2 + 12 = 14 and 3 + 12 = 15 give 14 : 15, a different mixture.",
         ],
         illustration: "ratio-table-scaling",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Equivalent ratio columns",
+        paragraphs: [
+          "A pair of positive quantities in a ratio table can be multiplied or divided by the same nonzero scale factor to make an equivalent pair. The quotient of corresponding quantities stays constant across all columns.",
+        ],
       },
     ],
     workedExample: {
@@ -162,7 +207,7 @@ export const ratioRateLessons: Lesson[] = [
     id: "double-number-line-missing",
     title: "Read a double number line",
     summary:
-      "Shrink a known pair to 1 unit, then stretch it to the amount asked for.",
+      "Aligned marks on a double number line show matching amounts that scale together.",
     templateIds: ["double-number-line-missing"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -170,6 +215,13 @@ export const ratioRateLessons: Lesson[] = [
       "Find a missing value by going through the amount for 1 unit.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Two scales tell one story",
+        paragraphs: [
+          "Put minutes on one line and pages printed on a line above it. Marks aligned vertically describe the same moment. If the printer works steadily, doubling the time doubles the pages, and halving the time halves the pages.",
+        ],
+      },
       {
         title: "Two lines, one scale",
         paragraphs: [
@@ -184,6 +236,15 @@ export const ratioRateLessons: Lesson[] = [
           "When the number of hours is the unknown, divide by the unit rate instead: 105 miles at 15 miles per hour takes 105 ÷ 15 = 7 hours. Check by multiplying: 7 × 15 = 105.",
         ],
         illustration: "rate-through-one",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Aligned pairs scale together",
+        paragraphs: [
+          "At a constant ratio, an aligned pair on a double number line represents corresponding quantities. Multiplying or dividing both values by the same positive number gives another aligned pair; their quotient remains the unit rate.",
+        ],
       },
     ],
     workedExample: {
@@ -208,7 +269,7 @@ export const ratioRateLessons: Lesson[] = [
     id: "fraction-unit-rate",
     title: "Unit rates with fractions",
     summary:
-      "Divide the amount by a fractional number of units by multiplying by its reciprocal.",
+      "Use a known fractional amount to find what goes with one whole unit.",
     templateIds: ["fraction-unit-rate"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -216,6 +277,13 @@ export const ratioRateLessons: Lesson[] = [
       "Explain dividing by a fraction as counting copies of a part to reach 1 whole unit.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "A part of a unit can reveal a full unit",
+        paragraphs: [
+          "If three-fourths of a batch needs six cups of flour, one-fourth needs two cups. Four such parts make a whole batch, so the whole needs eight cups. To find the amount for one unit, divide one amount by the other. Dividing by a nonzero fraction means multiplying by its reciprocal: swap its top and bottom numbers.",
+        ],
+      },
       {
         title: "A unit rate from fractions",
         paragraphs: [
@@ -230,6 +298,15 @@ export const ratioRateLessons: Lesson[] = [
           "When the time is not a single part, such as 2/3 hour, first find the amount for 1/3 hour by dividing by 2, then multiply by 3 to fill the hour. Together those steps multiply by 3/2, the reciprocal of 2/3: 3/4 mile in 2/3 hour gives 3/4 × 3/2 = 9/8 miles per hour.",
         ],
         illustration: "fraction-rate-copies",
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "A rate for one whole unit",
+        paragraphs: [
+          "For a nonzero fractional number of units $b$, the amount $a$ per one unit is $a\\div b$. Dividing by $c/d$, where $c$ and $d$ are nonzero, is equivalent to multiplying by $d/c$.",
+        ],
       },
     ],
     workedExample: {
@@ -254,14 +331,33 @@ export const ratioRateLessons: Lesson[] = [
     id: "story-operation-choice",
     title: "Multiply or divide?",
     summary:
-      "Find which of the three numbers an equal-groups story leaves out: an unknown total means multiply, a known total means divide.",
+      "Use multiplication for an unknown total and division for an unknown group count or size.",
     templateIds: ["story-operation-choice"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Identify the number of groups, the group size and the total in a story.",
       "Choose multiplication or division to model the story.",
     ],
-    sections: [equalGroups, tapes],
+    sections: [
+      {
+        stage: "intuition",
+        title: "Find which equal-group amount is missing",
+        paragraphs: [
+          "Every equal-groups story has a group count, a size for each group, and a total. If you know both group count and size, multiply to find the total. If you know the total and one of those two, divide to find the other. An equation writes that relationship with numbers and a symbol for the unknown.",
+        ],
+      },
+      equalGroups,
+      tapes,
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Three equal-group quantities",
+        paragraphs: [
+          "For equal groups, total equals number of groups times size of each group. Multiplication finds an unknown total; division by a known nonzero factor finds the other factor.",
+        ],
+      },
+    ],
     workedExample: {
       prompt:
         "Omar sets up 42 chairs in rows of 7 chairs. Which equation can be used to find the number of rows?",
@@ -284,7 +380,7 @@ export const ratioRateLessons: Lesson[] = [
     id: "multiplication-division-story",
     title: "Solve equal-groups stories",
     summary:
-      "Choose multiplication or division from what the story gives, solve, and check with the opposite operation.",
+      "Name the number of groups, the size of each, and the total before calculating.",
     templateIds: ["multiplication-division-story"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -292,6 +388,13 @@ export const ratioRateLessons: Lesson[] = [
       "Solve the story and check the answer with the opposite operation.",
     ],
     sections: [
+      {
+        stage: "intuition",
+        title: "Name the groups before choosing",
+        paragraphs: [
+          "A story about six bags with eight apples each gives a number of bags and a number in each bag. It asks for the total. A story with 48 apples and six bags asks how many go in each bag. The same three amounts make both stories.",
+        ],
+      },
       equalGroups,
       tapes,
       {
@@ -299,6 +402,15 @@ export const ratioRateLessons: Lesson[] = [
         paragraphs: [
           "After choosing the operation, compute and check with the opposite operation. If 48 ÷ 6 = 8, then 6 × 8 = 48 confirms that 6 groups of 8 rebuild the total.",
           "Give the answer with its unit, because the unit says which number was found: 8 apples in each bag, 6 bags, or 8 centimeters for each piece.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Check the group relationship",
+        paragraphs: [
+          "The same equation connects all equal-group stories: total equals group count times group size. A quotient is correct when multiplying it by the known factor reconstructs the total.",
         ],
       },
     ],
@@ -325,6 +437,8 @@ export const ratioRateLessons: Lesson[] = [
 export const ratioRateMethods: Record<string, ProblemMethod> = {
   "unit-rate": {
     goal: "Find the amount of one quantity for exactly 1 unit of the other.",
+    intuition:
+      "Share both quantities into equal groups until the unit named after ‘per’ is one. The other group's amount is the unit rate.",
     terms: [
       ["rate", "A comparison of two quantities in different units."],
       ["unit rate", "The amount for exactly 1 unit; per means for each 1."],
@@ -380,6 +494,8 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
   },
   "fraction-unit-rate": {
     goal: "Find a unit rate when the quantities are fractions.",
+    intuition:
+      "A unit rate tells what goes with one unit. Divide the given amount by its fraction of a unit; dividing by a nonzero fraction means multiplying by its reciprocal, made by swapping its top and bottom numbers.",
     terms: [
       ["unit rate", "The amount for exactly 1 unit."],
       ["reciprocal", "The fraction with numerator and denominator swapped."],
