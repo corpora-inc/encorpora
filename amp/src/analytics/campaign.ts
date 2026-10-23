@@ -56,6 +56,15 @@ export const CAMPAIGN_CREATIVES = [
   "hook-ampd-up-assessment-v2",
   "hook-plug-efa-v2",
   "hook-plug-assessment-v2",
+  "shared-map-cedar-wide-v2",
+  "shared-map-marin-vertical-v2",
+  "ar-map-cedar-vertical-v2",
+  "ar-map-cedar-wide-v2",
+  "az-map-marin-vertical-v2",
+  "az-map-marin-wide-v2",
+  "shared-premium-feed-v1",
+  "ar-premium-feed-v1",
+  "az-premium-feed-v1",
 ] as const;
 export const campaignEventSchema = z
   .strictObject({
