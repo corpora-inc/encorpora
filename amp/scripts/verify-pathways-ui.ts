@@ -433,8 +433,6 @@ try {
         1,
         "durable crystal survives zero resettable retrievals",
       );
-      if (theme === "light" && [390, 1280].includes(width))
-        await verifySettledLabels(page);
       const opener = page.getByRole("button", {
         name: "View lesson",
         exact: true,
@@ -510,10 +508,20 @@ try {
             190,
           "selected skill keeps room for the map",
         );
+      await page.waitForFunction(
+        () =>
+          document
+            .querySelector(".pathways-map-labels")
+            ?.getAttribute("data-moving") === "false",
+        undefined,
+        { timeout: 8000 },
+      );
       await page.screenshot({
         path: `${output}/${width}-${theme}-selected.png`,
         fullPage: true,
       });
+      if (theme === "light" && [390, 1280].includes(width))
+        await verifySettledLabels(page);
       await page
         .getByRole("button", { name: "Whole map", exact: true })
         .click();
