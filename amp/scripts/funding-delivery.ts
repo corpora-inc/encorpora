@@ -1,9 +1,10 @@
-import { loadFundingOffers } from "../src/funding-purchase/config.js";
 import { reconcileClassWalletPayments } from "../src/funding-purchase/classwallet-staging.js";
 import type { Pool } from "pg";
 import { z } from "zod";
 import { createDatabasePool } from "../src/server/database.js";
 import { loadConsentPolicy } from "../src/parent-consent/policy.js";
+import { loadFundingOffers } from "../src/funding-purchase/config.js";
+import { reconcileClassWalletApprovals } from "../src/funding-purchase/classwallet-payby.js";
 import { ResendConsentTransport } from "../src/parent-consent/resend.js";
 import {
   deliverFundedActivationMail,
@@ -32,10 +33,9 @@ try {
     connectionTimeoutMillis: 5000,
     statement_timeout: 15000,
   });
-  const payments = await reconcileClassWalletPayments(
-    pool,
-    await loadFundingOffers(process.env.AMP_FUNDING_OFFERS_FILE),
-  );
+  const offers = await loadFundingOffers(process.env.AMP_FUNDING_OFFERS_FILE);
+  const approvals = await reconcileClassWalletApprovals(pool, offers);
+  const payments = await reconcileClassWalletPayments(pool, offers);
   let processed = 0;
   while (
     processed < 8 &&
@@ -53,6 +53,7 @@ try {
       processed,
       payments,
       exceptions,
+      approvals,
     }),
   );
 } catch {
