@@ -253,7 +253,10 @@ async function verifySettledLabels(page: Page, animated = false) {
     page.waitForFunction(
       () => {
         const el = document.querySelector(".pathways-map-labels")!;
-        return getComputedStyle(el).opacity === "1" && !!el.childElementCount;
+        return (
+          el.getAttribute("data-moving") === "false" &&
+          !!el.querySelector("span")
+        );
       },
       undefined,
       { timeout: 8000 },
@@ -270,8 +273,8 @@ async function verifySettledLabels(page: Page, animated = false) {
     await page.mouse.move(x + 24, y + 12, { steps: 5 });
     await page.waitForTimeout(350);
     assert.equal(
-      await overlay.evaluate((el) => getComputedStyle(el).opacity),
-      "0",
+      await overlay.getAttribute("data-moving"),
+      "true",
       "labels stay hidden during a held drag, including pointer pauses",
     );
     await page.mouse.up();
@@ -294,10 +297,9 @@ async function verifySettledLabels(page: Page, animated = false) {
   await page.mouse.wheel(0, -80);
   await page.waitForFunction(
     () =>
-      Number(
-        getComputedStyle(document.querySelector(".pathways-map-labels")!)
-          .opacity,
-      ) < 0.5,
+      document
+        .querySelector(".pathways-map-labels")
+        ?.getAttribute("data-moving") === "true",
     undefined,
     { timeout: 1500 },
   );
@@ -318,10 +320,9 @@ async function verifySettledLabels(page: Page, animated = false) {
   await page.getByRole("button", { name: "Whole map", exact: true }).click();
   await page.waitForFunction(
     () =>
-      Number(
-        getComputedStyle(document.querySelector(".pathways-map-labels")!)
-          .opacity,
-      ) < 0.5,
+      document
+        .querySelector(".pathways-map-labels")
+        ?.getAttribute("data-moving") === "true",
     undefined,
     { timeout: 1500 },
   );
@@ -334,8 +335,8 @@ async function verifySettledLabels(page: Page, animated = false) {
   await page.mouse.move(x + 12, y + 8, { steps: 3 });
   await page.waitForTimeout(350);
   assert.equal(
-    await overlay.evaluate((el) => getComputedStyle(el).opacity),
-    "0",
+    await overlay.getAttribute("data-moving"),
+    "true",
     "interrupting a flight does not reveal labels during a held gesture",
   );
   await page.mouse.up();
@@ -367,8 +368,8 @@ async function verifySettledLabels(page: Page, animated = false) {
     });
     await page.waitForTimeout(350);
     assert.equal(
-      await overlay.evaluate((el) => getComputedStyle(el).opacity),
-      "0",
+      await overlay.getAttribute("data-moving"),
+      "true",
       "pinch keeps labels hidden",
     );
     await cdp.send("Input.dispatchTouchEvent", {
@@ -378,6 +379,47 @@ async function verifySettledLabels(page: Page, animated = false) {
     await settled();
     await cdp.detach();
   }
+  // Area names remain attached to world positions, including during a held drag.
+  await page.getByRole("button", { name: "Whole map", exact: true }).click();
+  await settled();
+  const areas = page.locator(".area-label");
+  assert.equal(await areas.count(), 6);
+  const snapshot = () =>
+    areas.evaluateAll((els) =>
+      els.map((el) => {
+        const b = el.getBoundingClientRect();
+        return { x: b.x, y: b.y, opacity: getComputedStyle(el).opacity };
+      }),
+    );
+  for (const orbit of [false, true]) {
+    if (orbit)
+      await page.getByRole("button", { name: "3D orbit", exact: true }).click();
+    const before = await snapshot();
+    await page.mouse.move(x, y);
+    await page.mouse.down();
+    await page.mouse.move(x + 28, y + 16, { steps: 8 });
+    const during = await snapshot();
+    assert(
+      during.every((p) => p.opacity === "1"),
+      "area labels remain visible while moving",
+    );
+    assert(
+      during.some(
+        (p, i) => Math.hypot(p.x - before[i]!.x, p.y - before[i]!.y) > 3,
+      ),
+      "area labels follow the graph before release",
+    );
+    await page.mouse.up();
+    await settled();
+    const after = await snapshot();
+    assert(
+      after.every(
+        (p, i) => Math.hypot(p.x - during[i]!.x, p.y - during[i]!.y) < 0.1,
+      ),
+      "area labels never reflow or snap on release",
+    );
+  }
+  await page.getByRole("button", { name: "3D orbit", exact: true }).click();
 }
 try {
   for (const width of [320, 390, 768, 1280])

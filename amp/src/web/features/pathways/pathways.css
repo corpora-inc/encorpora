@@ -198,15 +198,17 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 1;
-  transition: opacity 140ms ease;
 }
-.pathways-map-labels[data-moving="true"] {
+.pathways-map-labels .skill-label {
+  opacity: 1;
+  transition: opacity 80ms ease;
+}
+.pathways-map-labels[data-moving="true"] .skill-label {
   opacity: 0;
-  transition-duration: 60ms;
+  transition-duration: 40ms;
 }
 @media (prefers-reduced-motion: reduce) {
-  .pathways-map-labels {
+  .pathways-map-labels .skill-label {
     transition: none;
   }
 }
@@ -226,7 +228,7 @@
   text-transform: none;
   font-size: 11px;
   line-height: 1.35;
-  background: var(--atlas-surface);
+  background: transparent;
   padding: 4px 6px;
   border-radius: 6px;
   transform: translate(-50%, 12px);
@@ -796,9 +798,6 @@
   .pathways-status label select {
     font-size: 12px;
   }
-  .pathways-map-labels span:not(.skill-label) {
-    display: none;
-  }
 }
 :root:fullscreen .pathways {
   width: 100vw;
@@ -1002,4 +1001,33 @@
     height: 100%;
     min-height: 0;
   }
+}
+
+.pathways-label-leaders {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.pathways-label-leaders line {
+  stroke: var(--atlas-muted);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+.pathways-map-labels .area-label {
+  width: 108px;
+  padding: 5px 4px;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--atlas-on-surface);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.pathways-map-labels span {
+  paint-order: stroke fill;
+  -webkit-text-stroke: 3px var(--atlas-surface);
+  text-shadow: 0 1px 4px var(--atlas-surface);
 }

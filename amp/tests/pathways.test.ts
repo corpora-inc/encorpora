@@ -147,3 +147,52 @@ test("early pathways sit closer and lower than advanced pathways", () => {
   );
   assert(mean(early, 1) < mean(advanced, 1), "advanced skills tend upward");
 });
+
+test("whole-map camera fits every skill below controls on phone and desktop", async () => {
+  const { overviewCamera, overviewCallouts } =
+    await import("../src/web/features/pathways/overview");
+  const { PerspectiveCamera, Vector3 } = await import("three");
+  const positions = layout(skills).map((p) => p.position);
+  for (const [width, height] of [
+    [294, 320],
+    [364, 320],
+    [700, 560],
+    [980, 760],
+    [650, 250],
+  ] as [number, number][]) {
+    const fitted = overviewCamera(positions, width, height);
+    const camera = new PerspectiveCamera(40, width / height, 0.1, 1200);
+    camera.position.set(...fitted.position);
+    camera.lookAt(new Vector3(...fitted.target));
+    camera.updateMatrixWorld();
+    const projected = positions.map((p) => {
+      const v = new Vector3(...p).project(camera);
+      return { x: ((v.x + 1) * width) / 2, y: ((1 - v.y) * height) / 2 };
+    });
+    assert(
+      projected.every(
+        (p) =>
+          p.x >= 24 &&
+          p.x <= width - 24 &&
+          p.y >= Math.min(76, height * 0.25) &&
+          p.y <= height - Math.min(38, height * 0.15),
+      ),
+      `${width}×${height}: no skill clipped by controls or hint`,
+    );
+    const labels = overviewCallouts(projected.slice(0, 6), width, height);
+    assert(
+      labels.every(
+        (p) =>
+          p.x >= 54 && p.x <= width - 54 && p.y >= 70 && p.y <= height - 38,
+      ),
+      "callouts fit the viewport",
+    );
+    for (let i = 0; i < labels.length; i++)
+      for (let j = i + 1; j < labels.length; j++)
+        assert(
+          Math.abs(labels[i]!.x - labels[j]!.x) >= 108 ||
+            Math.abs(labels[i]!.y - labels[j]!.y) >= 40,
+          "area names do not overlap in the fitted view",
+        );
+  }
+});
