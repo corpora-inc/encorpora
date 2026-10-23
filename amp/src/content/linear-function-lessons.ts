@@ -134,8 +134,12 @@ export const linearFunctionLessons: Lesson[] = [
     id: "linear-models",
     title: "Build linear models",
     summary:
-      "A quantity that starts at $b$ and changes by $m$ for each unit of $x$ is modeled by y = mx + b; set it equal to a known total, or compare it with a limit, and solve.",
-    templateIds: ["linear-model-value", "linear-model-equation"],
+      "In a linear model, an input $x$ determines an output $y$. In $y=mx+b$, $b$ is the output when $x=0$, and $m$ is how much the output changes for each increase of 1 in the input. The model can also be solved for a stated total or limit.",
+    templateIds: [
+      "linear-model-value",
+      "linear-model-equation",
+      "linear-initial-value-meaning",
+    ],
     includeGeneratedRepresentation: false,
     objectives: [
       "Write a linear equation or inequality for a situation, naming what the variable counts.",
@@ -146,8 +150,8 @@ export const linearFunctionLessons: Lesson[] = [
         stage: "intuition",
         title: "Starting amount and rate",
         paragraphs: [
-          "A taxi charges 3 dollars plus 2 dollars per mile. The 3 dollars is paid once, whatever the distance: it is the starting amount, the fare when d = 0. The 2 dollars is paid once for each mile: it is the rate, and it multiplies $d$. So F = 2d + 3.",
-          "On the graph, the starting amount is where the line meets the $F$-axis, (0, 3), and the rate is the rise for each step of 1 to the right: 2. In a table, the rate is the change from one column to the next when $d$ goes up by 1, and the starting amount is found by working back to d = 0.",
+          "A taxi charges 3 dollars plus 2 dollars per mile. Let $d$ be miles traveled and $F$ be the fare in dollars. The 3 dollars is paid once, whatever the distance: it is the starting amount, the fare when $d=0$. The 2 dollars is paid once for each mile: it is the rate, and it multiplies $d$. So $F=2d+3$.",
+          "On the graph, the starting amount is where the line meets the vertical $F$-axis, $\\left(0,3\\right)$, and the rate is the rise for each step of 1 to the right: 2 dollars per mile. In a table, the rate is the change from one column to the next when $d$ goes up by 1, and the starting amount is found by working back to $d=0$.",
         ],
         illustration: "linear-model-graph",
       },
@@ -174,8 +178,8 @@ export const linearFunctionLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "A quantity that starts at $b$ and changes by $m$ per unit is mx + b, and a stated total or limit turns it into an equation or inequality to solve.",
-          "In y = mx + b, $b$ is the value when x = 0 and $m$ is the change in $y$ for each increase of 1 in $x$, in every representation.",
+          "A quantity that starts at $b$ and changes by $m$ per input unit has output $y=mx+b$ after $x$ input units. A stated total or limit turns this rule into an equation or inequality to solve.",
+          "In a linear model $y=mx+b$, $x$ is the input and $y$ is the output. The number $b$ is the output when $x=0$, if zero is allowed by the situation. The number $m$ is the output change for each increase of 1 in $x$, measured in output units per input unit. On a graph, the line meets the vertical axis at $(0,b)$.",
         ],
       },
     ],

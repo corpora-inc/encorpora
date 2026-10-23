@@ -36,6 +36,11 @@ export const linearFunctionFacetMappings: readonly FacetMapping[] = [
     "Choose y = mx + b (or b − mx) for a taxi, plant or candle given in words, on a first-quadrant graph or in a table that omits the starting value, against swapped, sign and combined-rate distractors. Does not assess writing the equation freely.",
   ],
   [
+    "linear-initial-value-meaning",
+    "linear-models.initial-value-in-context",
+    "Choose the contextual meaning and output units of the constant at zero from a stated increasing or decreasing linear equation, with an actual zero-input graph point. Does not assess fitting a line to data, finding the intercept from a table or graph alone, or writing an explanation without choices.",
+  ],
+  [
     "formula-isolate",
     "formula-rearrangement.isolate-variable",
     "Choose the formula solved for a named variable from eleven geometry, science, finance and line formulas, against inverse-operation, order and division-direction errors. Does not assess formulas with squares or roots.",
