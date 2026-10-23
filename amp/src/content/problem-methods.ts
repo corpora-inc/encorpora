@@ -52,6 +52,7 @@ import { integerExponentMethods } from "./integer-exponent-lessons";
 import { descriptiveStatisticsMethods } from "./descriptive-statistics-lessons";
 import { percentChangeMethods } from "./percent-change-lessons";
 import { successivePercentChangeMethod } from "./successive-percent-change-lesson";
+import { slopeTriangleStatementsMethod } from "./slope-triangle-statements-lesson";
 import { inequalityMethods } from "./inequality-lessons";
 import { linearSystemMethods } from "./linear-system-lessons";
 import { rightTriangleMethods } from "./right-triangle-lessons";
@@ -118,6 +119,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...circleMeasurementMethods,
   ...percentChangeMethods,
   "successive-percent-change": successivePercentChangeMethod,
+  "slope-triangle-statements": slopeTriangleStatementsMethod,
   ...inequalityMethods,
   ...linearSystemMethods,
   ...rationalExpressionMethods,

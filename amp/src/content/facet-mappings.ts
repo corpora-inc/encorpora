@@ -55,6 +55,13 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "slope-triangle-statements",
+    facetId: "slope.similar-triangle-reasoning",
+    extent: "partial",
+    rationale:
+      "Select true statements about corresponding angles, similarity, congruence, lengths and equal slopes for two right triangles on one nonvertical line. Includes positive and negative slopes and congruent translated or scaled noncongruent pairs. Constructed proofs, arbitrary triangle orientations, horizontal or vertical degeneracies and general line-equation derivation are not assessed.",
+  },
+  {
     templateId: "whole-sharing-fraction",
     facetId: "fraction-as-division.core",
     extent: "partial",

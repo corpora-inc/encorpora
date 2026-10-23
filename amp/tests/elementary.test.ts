@@ -218,7 +218,11 @@ test("each lesson renders matching workbook and solutions with registered diagra
       assert.ok(!html.includes("NaN") && !html.includes("undefined"));
       const count = lesson.templateIds.length * 12;
       if (kind !== "lesson")
-        assert.equal((html.match(/class="exercise"/g) ?? []).length, count);
+        assert.equal(
+          (html.match(/class="(?:[^"]*\s)?exercise(?:\s[^"]*)?"/g) ?? [])
+            .length,
+          count,
+        );
       if (kind === "workbook") assert.ok(!html.includes("Answer:"));
       if (kind === "solutions")
         assert.equal((html.match(/Answer:/g) ?? []).length, count);

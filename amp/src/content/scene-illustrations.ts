@@ -1,4 +1,5 @@
 import { congruenceScenes } from "./congruence-lessons";
+import { slopeTriangleStatementsScene } from "./slope-triangle-statements-lesson";
 import { quadraticIrrationalIllustrations } from "./quadratic-irrational-content";
 import { studyDesignIllustrations } from "./study-design-content";
 import { assessmentGapIllustrations } from "./assessment-gap-illustrations";
@@ -27,6 +28,7 @@ import { statisticsModelScenes } from "./statistics-model-scenes";
 
 /** Lesson models built with the scene framework, drawn revealed. */
 export const sceneIllustrations = {
+  "slope-triangle-statements-example": slopeTriangleStatementsScene,
   ...quadraticIrrationalIllustrations,
   ...studyDesignIllustrations,
   ...assessmentGapIllustrations,

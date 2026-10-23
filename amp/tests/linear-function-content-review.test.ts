@@ -12,7 +12,9 @@ const templateId = "linear-initial-value-meaning";
 
 function exercises(html: string) {
   return [
-    ...html.matchAll(/<section class="exercise">([\s\S]*?)<\/section>/g),
+    ...html.matchAll(
+      /<section class="(?:[^"]*\s)?exercise(?:\s[^"]*)?">([\s\S]*?)<\/section>/g,
+    ),
   ].map((match) => match[1]!);
 }
 

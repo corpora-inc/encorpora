@@ -237,15 +237,21 @@ export function PracticeWorkspace(props: Props) {
     props.next();
   }
   const [lessonError, setLessonError] = useState("");
+  // Six statements should not squeeze a diagram into a sliver on tall phones.
+  const answerLayoutQuery =
+    multiResponse && problem.figure
+      ? "(max-width: 650px)"
+      : compactAnswerQuery;
   const [compact, setCompact] = useState(
-    () => matchMedia(compactAnswerQuery).matches,
+    () => matchMedia(answerLayoutQuery).matches,
   );
   useEffect(() => {
-    const media = matchMedia(compactAnswerQuery);
+    const media = matchMedia(answerLayoutQuery);
     const changed = () => setCompact(media.matches);
+    changed();
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
-  }, []);
+  }, [answerLayoutQuery]);
   const [problemLessonView, setProblemLessonView] =
     useState<ProblemLessonView | null>(null);
   const [small, setSmall] = useState(
@@ -375,10 +381,69 @@ export function PracticeWorkspace(props: Props) {
       focusVisible: via === "keyboard",
     } as FocusOptions);
   }
-  function answerControls() {
+  function answerContext() {
+    return (
+      <>
+        <p className="answer-prompt-summary">
+          <MathText text={problem.prompt} />
+        </p>
+        {choice && problem.figure && (
+          <div className="choice-model">
+            <ChoiceFigure
+              figure={problem.figure}
+              maxHeight={
+                problem.templateId === "relation-point-removal"
+                  ? 160
+                  : undefined
+              }
+            />
+          </div>
+        )}
+      </>
+    );
+  }
+  function answerControls(includeContext = false) {
     if (problem.response.kind === "multi-select") {
       const selected = selectedIds;
       const complete = selected.length === problem.response.selectionCount;
+      const optionFields = (
+        <fieldset disabled={locked}>
+          <legend>
+            <MathText text={problem.response.label} />
+          </legend>
+          <div className="choice-options">
+            {problem.response.options.map((option, index) => (
+              <label
+                key={option.id}
+                className={`choice-option ${selected.includes(option.id) ? "selected" : ""}`}
+              >
+                <input
+                  type="checkbox"
+                  name={`answer-${problem.id}`}
+                  value={option.id}
+                  aria-label={spokenMath(option.label)}
+                  checked={selected.includes(option.id)}
+                  onChange={() =>
+                    setResponse(
+                      serializeSelection(
+                        selected.includes(option.id)
+                          ? selected.filter((id) => id !== option.id)
+                          : [...selected, option.id],
+                      ),
+                    )
+                  }
+                />
+                <span className="choice-letter" aria-hidden="true">
+                  {"ABCDEFGH"[index]}
+                </span>
+                <span>
+                  <MathText text={option.label} />
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      );
       return (
         <form
           className="choice-form multi-select-form"
@@ -389,42 +454,17 @@ export function PracticeWorkspace(props: Props) {
             outcome ? advance() : props.submit();
           }}
         >
-          <fieldset disabled={locked}>
-            <legend>
-              <MathText text={problem.response.label} />
-            </legend>
-            <div className="choice-options">
-              {problem.response.options.map((option, index) => (
-                <label
-                  key={option.id}
-                  className={`choice-option ${selected.includes(option.id) ? "selected" : ""}`}
-                >
-                  <input
-                    type="checkbox"
-                    name={`answer-${problem.id}`}
-                    value={option.id}
-                    aria-label={spokenMath(option.label)}
-                    checked={selected.includes(option.id)}
-                    onChange={() =>
-                      setResponse(
-                        serializeSelection(
-                          selected.includes(option.id)
-                            ? selected.filter((id) => id !== option.id)
-                            : [...selected, option.id],
-                        ),
-                      )
-                    }
-                  />
-                  <span className="choice-letter" aria-hidden="true">
-                    {"ABCDEFGH"[index]}
-                  </span>
-                  <span>
-                    <MathText text={option.label} />
-                  </span>
-                </label>
-              ))}
+          {includeContext ? (
+            <div className="multi-select-context-scroll">
+              <details className="multi-select-question">
+                <summary>Problem and diagram</summary>
+                {answerContext()}
+              </details>
+              {optionFields}
             </div>
-          </fieldset>
+          ) : (
+            optionFields
+          )}
           <p className="selection-count" role="status" aria-live="polite">
             {selected.length} of {problem.response.selectionCount} selected
           </p>
@@ -966,22 +1006,10 @@ export function PracticeWorkspace(props: Props) {
           title="Your answer"
           close={() => setEntering(false)}
         >
-          <p className="answer-prompt-summary">
-            <MathText text={problem.prompt} />
-          </p>
-          {choice && problem.figure && (
-            <div className="choice-model">
-              <ChoiceFigure
-                figure={problem.figure}
-                maxHeight={
-                  problem.templateId === "relation-point-removal"
-                    ? 160
-                    : undefined
-                }
-              />
-            </div>
-          )}
-          <div className="answer-dock compact-entry">{answerControls()}</div>
+          {!(multiResponse && problem.figure) && answerContext()}
+          <div className="answer-dock compact-entry">
+            {answerControls(!!(multiResponse && problem.figure))}
+          </div>
         </FocusDialog>
       )}
       {reportOpen && reportSheet && outcome && props.reportProblem && (

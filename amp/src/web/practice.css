@@ -930,6 +930,47 @@ nav button {
   flex: none;
 }
 
+/* A diagram and its givens can be taller than the phone. Keep them available
+   beside the choices in one scroll area, with selection count and Check fixed. */
+.multi-select-entry-dialog .multi-select-context-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 3px;
+  margin: -3px;
+}
+.multi-select-entry-dialog .multi-select-context-scroll fieldset,
+.multi-select-entry-dialog .multi-select-context-scroll .choice-options {
+  flex: none;
+  overflow: visible;
+}
+.multi-select-entry-dialog .multi-select-context-scroll .choice-options {
+  padding: 0;
+  margin: 0;
+}
+.multi-select-question {
+  margin-bottom: 8px;
+}
+.multi-select-question > summary {
+  min-height: 44px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  list-style-position: inside;
+  color: var(--color-on-surface);
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.multi-select-question > summary:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: -3px;
+  border-radius: 6px;
+}
+.multi-select-question .choice-model {
+  margin-bottom: 12px;
+}
+
 /* Keep coordinate annotations readable when the prompt shares a short viewport. */
 .problem-content .choice-coordinate {
   min-height: 150px;
