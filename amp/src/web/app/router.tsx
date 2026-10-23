@@ -43,6 +43,8 @@ const searchSchema = z
     strand: z.string().max(100).optional(),
     filter: z.string().max(100).optional(),
     skill: z.string().max(100).optional(),
+    template: z.string().max(100).optional(),
+    context: z.enum(["trial"]).optional().catch(undefined),
     page: z.coerce.number().int().nonnegative().optional(),
     state: z.string().max(200).optional(),
     purchase: z.string().max(200).optional(),
