@@ -33,7 +33,7 @@ Store campaign manifests, product captures, narration, music, and exports outsid
   "detail": "Up to 100 problems · amp.corpora.inc",
   "scenes": [
     {
-      "heading": "Their next step\nin math.",
+      "heading": "Your next step\nin math.",
       "body": "Find where to begin. Practice what comes next.",
       "image": "product-example.png",
       "seconds": 5
@@ -191,3 +191,22 @@ Before accepting Google's customer-data declaration or enabling enhanced-convers
 Add `--measurement` when running `auth-google.py` to request the Data Manager scope alongside Google Ads. The default continues to request Ads only. The helper refuses to overwrite a token file; preserve existing credentials and use a new approved destination when adding scopes. Neither authorization nor a validation-only API request establishes parent permission to share data.
 
 New offline-conversion integrations use Google's [Data Manager API](https://developers.google.com/data-manager/api/devguides/events/google-ads/offline). AMP's [transport contract and outstanding integration requirements](../../../amp/docs/google-purchase-measurement.md) describe the separate adult-permission, verified-payment, delivery and refund responsibilities. Campaign creation does not install this integration.
+
+## AMP copy voice
+
+Address the reader directly with “you” and “your”: “Math that adapts as you learn,”
+“Find your next step in math,” and “Every answer shapes your path.” Use “your child”
+when the distinction matters. Avoid third-person “they” and “their” in audience-facing
+headlines and benefit statements. Arkansas regional variants may test natural
+“y’all” wording, such as “Y’all ready for the next step?” Keep those variants
+separate from Arizona and national copy. A shared closing line is
+“Get ready to take the next step. Get AMP’d!”
+
+Keep shared product creative separate from Arkansas Education Freedom Account and
+Arizona Empowerment Scholarship Account editions. Spell out program names in
+longer copy, and use EFA or ESA where space is limited. State-specific ads must
+link to their matching program page and retain campaign attribution. Describe
+vendor approval accurately without promising approval of every individual purchase.
+Development-interface footage must be identified as a preview until the feature
+is available. Retain historical creative and measurements unchanged; new copy and
+media receive versioned source files and change records.

@@ -1,4 +1,8 @@
 import {
+  congruenceTemplates,
+  generateCongruenceProblem,
+} from "./congruence-practice";
+import {
   assessmentGapTemplates,
   generateAssessmentGapProblem,
 } from "./assessment-gap-practice";
@@ -383,6 +387,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...numberSystemTemplates,
   ...probabilityRulesTemplates,
   ...similarityTrigTemplates,
+  ...congruenceTemplates,
   ...coordinateCircleTemplates,
   ...algebraStatisticsTemplates,
   ...powerTemplates,
@@ -589,6 +594,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...numberSystemTemplates,
     ...probabilityRulesTemplates,
     ...similarityTrigTemplates,
+    ...congruenceTemplates,
     ...coordinateCircleTemplates,
     ...algebraStatisticsTemplates,
     ...powerTemplates,
@@ -699,6 +705,8 @@ function generateRawProblem(
     return generateRealNumberProblem(templateId, seed);
   if (probabilityRulesTemplates.some((t) => t.id === templateId))
     return generateProbabilityRulesProblem(templateId, seed);
+  if (congruenceTemplates.some((t) => t.id === templateId))
+    return generateCongruenceProblem(templateId, seed);
   if (similarityTrigTemplates.some((t) => t.id === templateId))
     return generateSimilarityTrigProblem(templateId, seed);
   if (algebraStatisticsTemplates.some((t) => t.id === templateId))

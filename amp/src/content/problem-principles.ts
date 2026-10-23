@@ -1,3 +1,4 @@
+import { congruencePrinciples } from "./congruence-lessons";
 import { assessmentGapPrinciples } from "./assessment-gap-lessons";
 import { radicalEquationPrinciples } from "./radical-equation-lessons";
 import { rationalEquationPrinciples } from "./rational-equation-lessons";
@@ -68,6 +69,7 @@ export const principles: Record<string, string> = {
   ...exponentialPrinciples,
   ...probabilityRulesPrinciples,
   ...similarityTrigPrinciples,
+  ...congruencePrinciples,
   ...coordinateCirclePrinciples,
   ...algebraStatisticsPrinciples,
   ...powerPrinciples,
