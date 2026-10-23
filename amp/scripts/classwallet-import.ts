@@ -3,17 +3,17 @@ import { createHash } from "node:crypto";
 import { z } from "zod";
 import { createDatabasePool } from "../src/server/database.js";
 import { loadFundingOffers } from "../src/funding-purchase/config.js";
-import { fundingRequestRow } from "../src/funding-purchase/repository.js";
-import { provisionFundingRequest } from "../src/funding-purchase/provision.js";
 import { FundingPurchaseError } from "../src/funding-purchase/contracts.js";
-import { canonicalCommercePayload } from "../src/commerce/ledger.js";
 import {
   ClassWalletError,
   classWalletConfigSchema,
-  classWalletOrderId,
   parseClassWalletReport,
-  prepareClassWalletProvision,
 } from "../src/funding-purchase/classwallet.js";
+
+import {
+  stageClassWalletPayment,
+  reconcileClassWalletPayments,
+} from "../src/funding-purchase/classwallet-staging.js";
 
 async function boundedFile(path: string, maximum: number) {
   const info = await stat(path);
@@ -59,36 +59,23 @@ async function main() {
           throw new ClassWalletError("duplicate_report_transaction");
         if (!z.string().uuid().safeParse(row["Invoice/Quote"]).success)
           throw new ClassWalletError("invoice_mismatch");
-        const result = await pool.query(
-          "SELECT * FROM amp_funding_requests WHERE id=$1",
-          [row["Invoice/Quote"]],
-        );
-        if (result.rowCount !== 1)
-          throw new ClassWalletError("unknown_invoice");
-        const stored = result.rows[0],
-          request = fundingRequestRow(stored);
-        const payload = prepareClassWalletProvision(
+        const result = await stageClassWalletPayment(
+          pool,
           row,
-          request,
           config,
-          new Date().toISOString(),
-          stored.conversion_payload ?? undefined,
+          reportSha256,
+          mode === "--apply",
         );
-        if (
-          request.orderId &&
-          (request.orderId !== classWalletOrderId(row["Transaction ID"]) ||
-            canonicalCommercePayload(payload) !==
-              canonicalCommercePayload(stored.conversion_payload))
-        )
-          throw new ClassWalletError("previous_payment_mismatch");
-        if (mode === "--apply")
-          await provisionFundingRequest(pool, payload, offers);
         console.log(
           JSON.stringify({
             row: index + 2,
             result:
-              mode === "--apply" ? "provisioned" : "matched-not-provisioned",
-            replay: !!request.orderId,
+              mode === "--apply"
+                ? result.claimed
+                  ? "staged-for-activation"
+                  : "awaiting-verified-claim"
+                : "matched-not-provisioned",
+            replay: result.replay,
           }),
         );
       } catch (error) {
@@ -105,8 +92,18 @@ async function main() {
         );
       }
     }
+    const delivery =
+      mode === "--apply"
+        ? await reconcileClassWalletPayments(pool, offers)
+        : undefined;
     console.log(
-      JSON.stringify({ mode, reportSha256, rows: rows.length, quarantined }),
+      JSON.stringify({
+        mode,
+        reportSha256,
+        rows: rows.length,
+        quarantined,
+        delivery,
+      }),
     );
     if (quarantined) process.exitCode = 2;
   } finally {

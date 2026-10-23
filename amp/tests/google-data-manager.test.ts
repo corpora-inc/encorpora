@@ -493,3 +493,51 @@ test("saved Google click identifiers retain exact bytes and reject unrelated fie
     fail("invalid_purchase"),
   );
 });
+
+test("click-only payload excludes customer data and requires a saved identifier", () => {
+  const { adultEmailSha256, ...base } = purchase;
+  for (const adIdentifiers of [
+    { gclid: "Synthetic_Google_Click" },
+    { gbraid: "Synthetic_Google_Braid" },
+    { wbraid: "Synthetic_Web_Braid" },
+  ]) {
+    const input: GooglePurchase = {
+      ...base,
+      matchingMode: "click_only",
+      adIdentifiers,
+    };
+    const payload = googlePurchaseRequest(config, input, "ingest", now);
+    assert.deepEqual(payload.events[0].adIdentifiers, adIdentifiers);
+    assert.equal(Object.hasOwn(payload.events[0], "userData"), false);
+    assert.equal(JSON.stringify(payload).includes(adultEmailSha256!), false);
+    assert.equal(
+      googleRestatementRequest(
+        config,
+        { ...input, amountMinor: 0 },
+        "ingest",
+        now,
+      ).events[0].transactionId,
+      purchase.transactionId,
+    );
+    assert.throws(
+      () =>
+        googlePurchaseRequest(
+          config,
+          { ...input, adultEmailSha256 },
+          "ingest",
+          now,
+        ),
+      fail("invalid_matching_identifiers", "not_sent"),
+    );
+  }
+  assert.throws(
+    () =>
+      googlePurchaseRequest(
+        config,
+        { ...base, matchingMode: "click_only" },
+        "ingest",
+        now,
+      ),
+    fail("invalid_matching_identifiers", "not_sent"),
+  );
+});

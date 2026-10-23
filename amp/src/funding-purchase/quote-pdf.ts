@@ -66,7 +66,17 @@ export async function validateInvoiceStudentName(value: string): Promise<void> {
 }
 
 export async function renderFundingQuotePdf(
-  request: FundingRequest,
+  request:
+    | FundingRequest
+    | Pick<
+        FundingRequest,
+        | "id"
+        | "offer"
+        | "createdAt"
+        | "expiresAt"
+        | "studentBillingName"
+        | "learnerId"
+      >,
 ): Promise<Uint8Array> {
   const o = request.offer;
   const invoice = o.documentPolicy === "named-student-invoice";
@@ -108,20 +118,25 @@ export async function renderFundingQuotePdf(
     y = 712;
   };
   newPage();
-  function wrap(text: string, font: PDFFont, size: number): string[] {
+  function wrap(
+    text: string,
+    font: PDFFont,
+    size: number,
+    lineWidth = width,
+  ): string[] {
     const lines: string[] = [];
     for (const paragraph of text.split(/\r?\n/)) {
       let line = "";
       for (const word of paragraph.split(/\s+/).filter(Boolean)) {
         const candidate = line ? `${line} ${word}` : word;
-        if (font.widthOfTextAtSize(candidate, size) <= width) {
+        if (font.widthOfTextAtSize(candidate, size) <= lineWidth) {
           line = candidate;
           continue;
         }
         if (line) lines.push(line);
         line = "";
         for (const character of word) {
-          if (font.widthOfTextAtSize(line + character, size) > width) {
+          if (font.widthOfTextAtSize(line + character, size) > lineWidth) {
             lines.push(line);
             line = "";
           }
@@ -152,6 +167,27 @@ export async function renderFundingQuotePdf(
     y -= options.gap ?? 8;
   }
   function field(label: string, value: string) {
+    if (invoice) {
+      const indent = 112,
+        size = 11,
+        leading = 14;
+      const lines = wrap(value, regular, size, width - indent);
+      if (y < 92) newPage();
+      page.drawText(label, { x: margin, y, size: 10, font: bold, color: ink });
+      for (const line of lines) {
+        if (y - size < 64) newPage();
+        page.drawText(line, {
+          x: margin + indent,
+          y,
+          size,
+          font: regular,
+          color: muted,
+        });
+        y -= leading;
+      }
+      y -= 10;
+      return;
+    }
     // Keep a label with at least the first line of its value.
     if (y < 112) newPage();
     text(label, { strong: true, gap: 2 });
@@ -168,7 +204,7 @@ export async function renderFundingQuotePdf(
   });
   text(
     invoice
-      ? "This invoice is not a receipt or confirmation of payment, program approval or learning access. Check the transaction status before submitting a payment request."
+      ? "Unpaid invoice for program review. Access begins after payment is confirmed."
       : "For purchase consideration only. This is not an invoice, receipt, funding approval or promise of reimbursement.",
   );
   field(invoice ? "Invoice number" : "Quote reference", request.id);
@@ -208,7 +244,7 @@ export async function renderFundingQuotePdf(
   field("Next step", o.instructions);
   text(
     invoice
-      ? "Submit this invoice through the program's approved payment route only once. Do not also pay by card. Reporting submission in AMP does not verify approval or payment."
+      ? "Submit once through the program's approved payment route. Do not also pay by card."
       : "Complete the program's required process. Reporting submission here does not verify approval or payment. Do not send payment using this quote.",
   );
   const pages = document.getPages();

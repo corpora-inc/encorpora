@@ -1,3 +1,4 @@
+import { InvoiceClaim } from "./InvoiceClaim";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import {
   Link,
@@ -121,21 +122,28 @@ function SignedInEntry({
   )
     return <Navigate to="/start" search={search} replace />;
   return (
-    <FundingPurchaseCenter
-      key={session.accountId}
-      token={session.token}
-      identity={session.accountId}
-      learners={me.data.learners}
-      consentActive={me.data.consent.status === "active"}
-      preferredLearnerId={selectedLearner ?? undefined}
+    <InvoiceClaim
+      session={session}
       program={program}
-      campaignSearch={search}
-      onClose={() =>
-        void navigate({
-          to: "/try/plans",
-          search: { ...search, return: undefined },
-        })
-      }
-    />
+      learners={me.data.learners}
+      preferredLearnerId={selectedLearner ?? undefined}
+    >
+      <FundingPurchaseCenter
+        key={session.accountId}
+        token={session.token}
+        identity={session.accountId}
+        learners={me.data.learners}
+        consentActive={me.data.consent.status === "active"}
+        preferredLearnerId={selectedLearner ?? undefined}
+        program={program}
+        campaignSearch={search}
+        onClose={() =>
+          void navigate({
+            to: "/try/plans",
+            search: { ...search, return: undefined },
+          })
+        }
+      />
+    </InvoiceClaim>
   );
 }

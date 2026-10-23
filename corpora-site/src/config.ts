@@ -37,6 +37,7 @@ const route = z.strictObject({
           statusLabel: text.max(100),
           actionLabel: text.max(80),
           actionSubject: text.max(160),
+          invoiceForm: z.enum(["arkansas-efa", "new-hampshire-efa", "arizona-esa"]).optional(),
         })
         .optional(),
       eligibility: text,
@@ -106,6 +107,12 @@ export const configSchema = z
           path: ["funding", i],
           message: "Funding review date is after expiry",
         });
+    for (const [i, r] of value.funding.entries()) {
+      const form = r.page?.presentation?.invoiceForm;
+      if (form && (!value.appUrl || r.page?.slug !== form ||
+          r.state !== ({ "arkansas-efa": "AR", "new-hampshire-efa": "NH", "arizona-esa": "AZ" } as const)[form]))
+        ctx.addIssue({ code: "custom", path: ["funding", i], message: "Invoice form requires an app URL and matching state/program page" });
+    }
     if (new Set(value.plans.map((p) => p.interval)).size !== value.plans.length)
       ctx.addIssue({ code: "custom", message: "Duplicate plan interval" });
     if (

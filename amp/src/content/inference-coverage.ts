@@ -3,6 +3,12 @@ import type { FacetMapping } from "./coverage";
 /** Bounded, partial coverage: what each grade 7 statistics family assesses. */
 export const inferenceFacetMappings: readonly FacetMapping[] = [
   [
+    "scope-of-inference-choice",
+    "study-design.core",
+    "Distinguish simple random sampling, volunteer and convenience selection from random or self-selected treatment allocation; choose supported population generalization and causal inference in three question frames.",
+    "Writing sampling plans, blocking, blinding and statistical significance calculations require separate assessment.",
+  ],
+  [
     "representative-sample-choice",
     "sampling.representative-samples",
     "Choose the one method that samples at random from the whole population among three convenience, volunteer or subgroup samples.",

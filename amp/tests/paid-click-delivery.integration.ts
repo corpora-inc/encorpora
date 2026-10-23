@@ -1,4 +1,6 @@
 import test from "node:test";
+import { randomUUID } from "node:crypto";
+import { applyCommerceEvent } from "../src/commerce/postgres.js";
 import assert from "node:assert/strict";
 import {
   fixture,
@@ -75,59 +77,254 @@ async function metaGrant(pool: any) {
     "UPDATE amp_meta_advertising_permissions SET granted_at=clock_timestamp()-interval '2 days'",
   );
 }
+for (const program of ["ar-efa", "az-esa"] as const) {
+  const kind = program === "ar-efa" ? "arkansas-efa" : "arizona-esa";
+  const stateSources =
+    program === "ar-efa"
+      ? { efaChannelReference: sources.efaChannelReference }
+      : { azEsaChannelReference: sources.azEsaChannelReference };
+  test(
+    `${program}: verified DirectPay reaches both providers with original click IDs and one purchase identity`,
+    enabled,
+    () =>
+      fixture(async (pool) => {
+        await metaGrant(pool);
+        const p = await esa(pool, { kind });
+        await clicks(pool, p.reference.id);
+        const google = await queueGooglePayment(
+          pool,
+          destination,
+          stateSources,
+          p.reference,
+        );
+        assert.ok("transactionId" in google);
+        const googleBodies: any[] = [];
+        const googleRuntime = {
+          accessToken: async () => "synthetic-token",
+          fetcher: (async (_url: any, init: any) => {
+            googleBodies.push(JSON.parse(init.body));
+            return new Response(
+              JSON.stringify({ requestId: "synthetic-receipt" }),
+            );
+          }) as typeof fetch,
+        };
+        assert.equal(
+          await deliverGooglePayment(
+            pool,
+            { enabled: true, destination, sources: stateSources },
+            google.transactionId,
+            googleRuntime,
+          ),
+          "accepted",
+        );
+        assert.deepEqual(googleBodies[0].events[0].adIdentifiers, {
+          gclid: "Synthetic_ExactCase",
+        });
+        assert.equal(googleBodies[0].events[0].eventSource, "OTHER");
+        assert.equal(googleBodies[0].events[0].conversionValue, 499);
+        assert.equal(
+          googleBodies[0].events[0].eventTimestamp,
+          p.base.occurredAt,
+        );
+        const config = {
+          enabled: true,
+          destination: { datasetId: "1234567890" },
+          sources: stateSources,
+        };
+        const queued = await queueMetaPayment(pool, config, p.reference);
+        assert.equal(queued.outcome, "queued");
+        assert.ok("eventId" in queued);
+        const metaBodies: any[] = [];
+        const rt = {
+          accessToken: async () => "synthetic-token",
+          fetcher: (async (_url: any, init: any) => {
+            metaBodies.push(JSON.parse(init.body));
+            return new Response(
+              JSON.stringify({
+                events_received: 1,
+                messages: [],
+                fbtrace_id: "synthetic",
+              }),
+            );
+          }) as typeof fetch,
+        };
+        assert.equal(
+          await deliverMetaPayment(pool, config, queued.eventId!, rt),
+          "accepted",
+        );
+        await deliverMetaPayment(pool, config, queued.eventId!, rt);
+        assert.equal(metaBodies.length, 1);
+        const event = metaBodies[0].data[0];
+        assert.equal(event.action_source, "other");
+        assert.equal(event.event_source_url, undefined);
+        assert.equal(event.user_data.client_user_agent, undefined);
+        assert.match(
+          event.user_data.fbc,
+          /^fb\.1\.\d{13}\.Synthetic_MetaExact$/,
+        );
+        assert.equal(event.user_data.fbp, undefined);
+        assert.equal(event.custom_data.value, 499);
+        assert.equal(
+          event.event_time,
+          Math.floor(Date.parse(p.base.occurredAt) / 1000),
+        );
+        const report = await metaMeasurementReport(pool, {
+          ...config,
+          enabled: false,
+          sources: stateSources,
+        });
+        assert.deepEqual(report.attempts, [
+          { state: "accepted", count: 1, receipts_with_messages: 0 },
+        ]);
+        const next = await esa(pool, { kind });
+        const nextQueued = await queueMetaPayment(pool, config, next.reference);
+        assert.ok("eventId" in nextQueued);
+        const uncertain = {
+          accessToken: async () => "synthetic-token",
+          fetcher: (async () => {
+            throw new Error("connection lost");
+          }) as typeof fetch,
+        };
+        assert.equal(
+          await deliverMetaPayment(
+            pool,
+            config,
+            nextQueued.eventId!,
+            uncertain,
+          ),
+          "unknown",
+        );
+        assert.deepEqual((await metaMeasurementReport(pool, config)).attempts, [
+          { state: "accepted", count: 1, receipts_with_messages: 0 },
+          { state: "unknown", count: 1, receipts_with_messages: 0 },
+        ]);
+        const replay = await queueMetaPayment(pool, config, p.reference);
+        assert.equal(replay.eventId, queued.eventId);
+      }),
+  );
+  test(
+    `${program}: Meta batch includes settled funded orders and excludes invoices and withdrawn permission`,
+    enabled,
+    () =>
+      fixture(async (pool) => {
+        await metaGrant(pool);
+        const unsettled = await esa(pool, { kind, settled: false });
+        const paid = await esa(pool, { kind });
+        const otherState = await esa(pool, {
+          kind: kind === "arkansas-efa" ? "arizona-esa" : "arkansas-efa",
+        });
+        const config = {
+          enabled: true,
+          destination: { datasetId: "1234567890" },
+          sources: stateSources,
+        };
+        assert.equal(
+          (await queueMetaPayment(pool, config, unsettled.reference)).outcome,
+          "ineligible",
+        );
+        assert.equal(
+          (await queueMetaPayment(pool, config, otherState.reference)).outcome,
+          "ineligible",
+        );
+        assert.deepEqual(await metaMeasurementBatch(pool, config, "collect"), {
+          queued: 1,
+        });
+        assert.equal(
+          (await pool.query("SELECT efa_order_id FROM amp_meta_purchase_queue"))
+            .rows[0].efa_order_id,
+          paid.reference.id,
+        );
+        const retained = (
+          await pool.query(
+            "SELECT event_id,funded_program FROM amp_meta_purchase_queue",
+          )
+        ).rows[0];
+        assert.equal(retained.funded_program, program);
+        await assert.rejects(
+          pool.query(
+            "UPDATE amp_meta_purchase_queue SET funded_program=$1 WHERE event_id=$2",
+            [program === "ar-efa" ? "az-esa" : "ar-efa", retained.event_id],
+          ),
+          /immutable/,
+        );
+        await applyCommerceEvent(pool, {
+          ...paid.base,
+          id: randomUUID(),
+          type: "refund.completed",
+          occurredAt: new Date().toISOString(),
+          amountMinor: 49900,
+          currency: "USD",
+          evidence: "synthetic completed refund",
+        });
+        let sends = 0;
+        assert.equal(
+          await deliverMetaPayment(pool, config, retained.event_id, {
+            accessToken: async () => "synthetic-token",
+            fetcher: (async () => {
+              sends++;
+              throw new Error("must not send refunded purchase");
+            }) as typeof fetch,
+          }),
+          "ineligible",
+        );
+        assert.equal(sends, 0);
+        await changeAdvertisingPermission(
+          pool,
+          "amp|parent",
+          { action: "withdraw" },
+          false,
+          "meta",
+        );
+        const another = await esa(pool, { kind });
+        assert.equal(
+          (await queueMetaPayment(pool, config, another.reference)).outcome,
+          "ineligible",
+        );
+      }),
+  );
+}
+
 test(
-  "verified DirectPay reaches both providers with original click IDs and one purchase identity",
+  "Meta isolates state reports and delivery when both programs share a payment account",
   enabled,
   () =>
     fixture(async (pool) => {
       await metaGrant(pool);
-      const p = await esa(pool);
-      await clicks(pool, p.reference.id);
-      const google = await queueGooglePayment(
-        pool,
-        destination,
-        sources,
-        p.reference,
-      );
-      assert.ok("transactionId" in google);
-      const googleBodies: any[] = [];
-      const googleRuntime = {
-        accessToken: async () => "synthetic-token",
-        fetcher: (async (_url: any, init: any) => {
-          googleBodies.push(JSON.parse(init.body));
-          return new Response(
-            JSON.stringify({ requestId: "synthetic-receipt" }),
-          );
-        }) as typeof fetch,
-      };
-      assert.equal(
-        await deliverGooglePayment(
-          pool,
-          { enabled: true, destination, sources },
-          google.transactionId,
-          googleRuntime,
-        ),
-        "accepted",
-      );
-      assert.deepEqual(googleBodies[0].events[0].adIdentifiers, {
-        gclid: "Synthetic_ExactCase",
+      const sharedChannel = "synthetic-shared-program-account";
+      const ar = await esa(pool, {
+        kind: "arkansas-efa",
+        channelReference: sharedChannel,
       });
-      assert.equal(googleBodies[0].events[0].eventSource, "OTHER");
-      assert.equal(googleBodies[0].events[0].conversionValue, 499);
-      assert.equal(googleBodies[0].events[0].eventTimestamp, p.base.occurredAt);
-      const config = {
+      const az = await esa(pool, {
+        kind: "arizona-esa",
+        channelReference: sharedChannel,
+      });
+      const all = {
         enabled: true,
         destination: { datasetId: "1234567890" },
-        sources,
+        sources: {
+          efaChannelReference: sharedChannel,
+          azEsaChannelReference: sharedChannel,
+        },
       };
-      const queued = await queueMetaPayment(pool, config, p.reference);
-      assert.equal(queued.outcome, "queued");
-      assert.ok("eventId" in queued);
-      const metaBodies: any[] = [];
-      const rt = {
+      assert.deepEqual(await metaMeasurementBatch(pool, all, "collect"), {
+        queued: 2,
+      });
+      const arOnly = {
+        ...all,
+        sources: { efaChannelReference: sharedChannel },
+      };
+      const azOnly = {
+        ...all,
+        sources: { azEsaChannelReference: sharedChannel },
+      };
+      const azQueued = await queueMetaPayment(pool, azOnly, az.reference);
+      assert.ok("eventId" in azQueued);
+      const bodies: any[] = [];
+      const runtime = {
         accessToken: async () => "synthetic-token",
         fetcher: (async (_url: any, init: any) => {
-          metaBodies.push(JSON.parse(init.body));
+          bodies.push(JSON.parse(init.body));
           return new Response(
             JSON.stringify({
               events_received: 1,
@@ -137,88 +334,152 @@ test(
           );
         }) as typeof fetch,
       };
-      assert.equal(
-        await deliverMetaPayment(pool, config, queued.eventId!, rt),
-        "accepted",
+      assert.deepEqual(
+        await metaMeasurementBatch(pool, azOnly, "deliver", 20, runtime),
+        { accepted: 1 },
       );
-      await deliverMetaPayment(pool, config, queued.eventId!, rt);
-      assert.equal(metaBodies.length, 1);
-      const event = metaBodies[0].data[0];
-      assert.equal(event.action_source, "other");
-      assert.equal(event.event_source_url, undefined);
-      assert.equal(event.user_data.client_user_agent, undefined);
-      assert.match(event.user_data.fbc, /^fb\.1\.\d{13}\.Synthetic_MetaExact$/);
-      assert.equal(event.user_data.fbp, undefined);
-      assert.equal(event.custom_data.value, 499);
-      assert.equal(
-        event.event_time,
-        Math.floor(Date.parse(p.base.occurredAt) / 1000),
-      );
-      const report = await metaMeasurementReport(pool, {
-        ...config,
-        enabled: false,
-        sources: { efaChannelReference: sources.efaChannelReference },
-      });
-      assert.deepEqual(report.attempts, [
+      assert.equal(bodies.length, 1);
+      assert.equal(bodies[0].data[0].event_id, azQueued.eventId);
+      const arReport = await metaMeasurementReport(pool, arOnly);
+      const azReport = await metaMeasurementReport(pool, azOnly);
+      assert.deepEqual(arReport.preparations, [{ state: "ready", count: 1 }]);
+      assert.deepEqual(azReport.preparations, [{ state: "ready", count: 1 }]);
+      assert.deepEqual(arReport.attempts, []);
+      assert.deepEqual(azReport.attempts, [
         { state: "accepted", count: 1, receipts_with_messages: 0 },
       ]);
-      const next = await esa(pool);
-      const nextQueued = await queueMetaPayment(pool, config, next.reference);
-      assert.ok("eventId" in nextQueued);
-      const uncertain = {
-        accessToken: async () => "synthetic-token",
-        fetcher: (async () => {
-          throw new Error("connection lost");
-        }) as typeof fetch,
-      };
-      assert.equal(
-        await deliverMetaPayment(pool, config, nextQueued.eventId!, uncertain),
-        "unknown",
-      );
-      assert.deepEqual((await metaMeasurementReport(pool, config)).attempts, [
-        { state: "accepted", count: 1, receipts_with_messages: 0 },
-        { state: "unknown", count: 1, receipts_with_messages: 0 },
+      assert.deepEqual((await metaMeasurementReport(pool, all)).preparations, [
+        { state: "ready", count: 2 },
       ]);
-      const replay = await queueMetaPayment(pool, config, p.reference);
-      assert.equal(replay.eventId, queued.eventId);
+      const arQueued = await queueMetaPayment(pool, arOnly, ar.reference);
+      assert.ok("eventId" in arQueued);
+      assert.equal(
+        await deliverMetaPayment(pool, azOnly, arQueued.eventId!, runtime),
+        "ineligible",
+      );
+      assert.equal(bodies.length, 1);
     }),
 );
+
+for (const kind of ["arkansas-efa", "arizona-esa"] as const)
+  test(
+    `${kind}: click-only delivery omits email and retains transaction identity`,
+    enabled,
+    () =>
+      fixture(async (pool) => {
+        const p = await esa(pool, { kind });
+        await clicks(pool, p.reference.id);
+        const q = await queueGooglePayment(
+          pool,
+          destination,
+          sources,
+          p.reference,
+        );
+        assert.ok("transactionId" in q);
+        const bodies: any[] = [];
+        const runtime = {
+          accessToken: async () => "synthetic-token",
+          fetcher: (async (_url: any, init: any) => {
+            bodies.push(JSON.parse(init.body));
+            return new Response(
+              JSON.stringify({ requestId: "synthetic-click-only-receipt" }),
+            );
+          }) as typeof fetch,
+        };
+        const config = {
+          enabled: true,
+          destination,
+          sources,
+          matchingMode: "click_only" as const,
+        };
+        assert.equal(
+          await deliverGooglePayment(pool, config, q.transactionId, runtime),
+          "accepted",
+        );
+        assert.deepEqual(bodies[0].events[0].adIdentifiers, {
+          gclid: "Synthetic_ExactCase",
+        });
+        assert.equal(Object.hasOwn(bodies[0].events[0], "userData"), false);
+        await pool.query(
+          "UPDATE amp_google_delivery_attempts SET processing='success',next_poll_at=NULL WHERE transaction_id=$1",
+          [q.transactionId],
+        );
+        assert.equal(
+          await deliverGooglePayment(
+            pool,
+            { ...config, matchingMode: "enhanced_email" },
+            q.transactionId,
+            runtime,
+          ),
+          "unchanged",
+        );
+        assert.equal(bodies.length, 1);
+        const retry = await queueGooglePayment(
+          pool,
+          destination,
+          sources,
+          p.reference,
+        );
+        assert.ok("transactionId" in retry);
+        assert.equal(retry.transactionId, q.transactionId);
+        await applyCommerceEvent(pool, {
+          ...p.base,
+          id: randomUUID(),
+          type: "refund.completed",
+          occurredAt: new Date().toISOString(),
+          amountMinor: 49900,
+          currency: "USD",
+          evidence: "synthetic completed refund",
+        });
+        assert.equal(
+          await deliverGooglePayment(pool, config, q.transactionId, runtime),
+          "accepted",
+        );
+        assert.equal(bodies.length, 2);
+        assert.equal(
+          bodies[1].events[0].transactionId,
+          bodies[0].events[0].transactionId,
+        );
+        assert.equal(bodies[1].events[0].conversionValue, 0);
+        assert.equal(Object.hasOwn(bodies[1].events[0], "userData"), false);
+      }),
+  );
+
 test(
-  "Meta batch includes settled funded orders and excludes invoices and withdrawn permission",
+  "click-only missing evidence never falls back to email or sends a request",
   enabled,
   () =>
     fixture(async (pool) => {
-      await metaGrant(pool);
-      const unsettled = await esa(pool, { settled: false });
-      const paid = await esa(pool);
-      const config = {
-        enabled: true,
-        destination: { datasetId: "1234567890" },
-        sources,
-      };
-      assert.equal(
-        (await queueMetaPayment(pool, config, unsettled.reference)).outcome,
-        "ineligible",
-      );
-      assert.deepEqual(await metaMeasurementBatch(pool, config, "collect"), {
-        queued: 1,
-      });
-      assert.equal(
-        (await pool.query("SELECT efa_order_id FROM amp_meta_purchase_queue"))
-          .rows[0].efa_order_id,
-        paid.reference.id,
-      );
-      await changeAdvertisingPermission(
+      const p = await esa(pool);
+      const q = await queueGooglePayment(
         pool,
-        "amp|parent",
-        { action: "withdraw" },
-        false,
-        "meta",
+        destination,
+        sources,
+        p.reference,
       );
-      const another = await esa(pool);
+      assert.ok("transactionId" in q);
+      let calls = 0;
+      const outcome = await deliverGooglePayment(
+        pool,
+        { enabled: true, destination, sources, matchingMode: "click_only" },
+        q.transactionId,
+        {
+          accessToken: async () => "synthetic-token",
+          fetcher: (async () => {
+            calls++;
+            throw new Error("unexpected HTTP");
+          }) as typeof fetch,
+        },
+      );
+      assert.equal(outcome, "missing_click");
+      assert.equal(calls, 0);
       assert.equal(
-        (await queueMetaPayment(pool, config, another.reference)).outcome,
-        "ineligible",
+        (
+          await pool.query(
+            "SELECT count(*)::int AS count FROM amp_google_delivery_attempts",
+          )
+        ).rows[0].count,
+        0,
       );
     }),
 );

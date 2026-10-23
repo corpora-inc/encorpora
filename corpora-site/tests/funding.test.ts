@@ -212,3 +212,25 @@ test("Arkansas free practice keeps the funded purchase preference without tracki
     assert.ok(!html.includes("utm_campaign="));
   } finally { await rm(dir, { recursive: true, force: true }); }
 });
+
+
+test("enabled invoice forms link to the correct program without an email request", async () => {
+  for (const [slug, state] of [["arkansas-efa", "AR"], ["new-hampshire-efa", "NH"], ["arizona-esa", "AZ"]]) {
+    const route = { ...guidedFundingFixture, state, kind: "classwallet-direct-pay",
+      page: { ...guidedFundingFixture.page, slug,
+        presentation: { ...guidedFundingFixture.page.presentation, invoiceForm: slug } } };
+    const input = { appUrl: "https://amp.example.invalid", supportEmail: "help@example.invalid", funding: [route] };
+    assert.equal(configSchema.safeParse({ ...input, appUrl: undefined }).success, false);
+    assert.equal(configSchema.safeParse({ ...input, funding: [{ ...route, state: "XX" }] }).success, false);
+    const dir = await mkdtemp(join(tmpdir(), "corpora-invoice-form-"));
+    try {
+      await buildSite(configSchema.parse(input), dir);
+      const html = await readFile(join(dir, `esa/${slug}/index.html`), "utf8");
+      const actions = [...html.matchAll(/<a[^>]+href="([^"]+)"[^>]+data-campaign-action="invoice"/g)];
+      assert.equal(actions.length, 2);
+      for (const action of actions) assert.equal(action[1], `https://amp.example.invalid/invoice/${slug}`);
+      assert.ok(html.includes("Create your invoice"));
+      assert.ok(!html.includes("No AMP account required"));
+    } finally { await rm(dir, { recursive: true, force: true }); }
+  }
+});
