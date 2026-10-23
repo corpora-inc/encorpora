@@ -44,7 +44,7 @@ test("opens explicit sharing destinations without invoking the operating-system 
   for (const name of [
     "Share on Facebook",
     "Share on WhatsApp",
-    "Share on X",
+    "Post on X",
     "Share by email",
   ])
     expect(screen.getByRole("link", { name })).toBeTruthy();

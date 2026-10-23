@@ -216,7 +216,7 @@ export function ShareAssessment({
               href={links.x}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Share on X"
+              aria-label="Post on X"
             >
               <ShareIcon name="x" />
               Post on X
