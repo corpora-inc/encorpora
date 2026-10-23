@@ -12,10 +12,12 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 ENV NODE_OPTIONS=--use-openssl-ca
 
-FROM node-base AS build
+FROM node-base AS dependencies
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts
+
+FROM dependencies AS build
 COPY . .
 # Public browser OIDC settings (never a client secret), baked per environment.
 ARG VITE_AMP_AUTHORITY=""
@@ -34,6 +36,19 @@ RUN node -e 'const [commit, builtAt] = process.argv.slice(1).map((v) => v || nul
   require("fs").writeFileSync("dist/version.json", JSON.stringify({ commit, builtAt }) + "\n")' \
   "$SOURCE_COMMIT" "$BUILT_AT"
 
+# PDF tooling is build-only. The browser and Poppler never enter the API image.
+FROM dependencies AS pdf-build
+ENV PLAYWRIGHT_BROWSERS_PATH=/opt/amp-playwright
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends poppler-utils \
+    && npx playwright install --with-deps --only-shell chromium \
+    && rm -rf /var/lib/apt/lists/*
+COPY . .
+# Cached PDFs are reused only with matching renderer inputs and verified bytes.
+# The release directory is outside the cache mount and contains delivery files only.
+RUN --mount=type=cache,id=amp-pdf-build-v1,target=/app/artifacts,sharing=locked \
+    node_modules/.bin/tsx scripts/build-pdf-release.ts /app/pdf-release
+
 FROM node-base AS api
 ENV NODE_ENV=production AMP_HOST=0.0.0.0 AMP_PORT=8080
 WORKDIR /app
@@ -45,11 +60,14 @@ COPY --from=build /app/scripts ./scripts
 COPY --from=build /app/infra ./infra
 COPY --from=build /app/migrations ./migrations
 COPY --from=build /app/books ./books
+COPY --from=pdf-build /app/pdf-release ./artifacts
 COPY --from=build /app/tsconfig.json ./
 ARG SOURCE_COMMIT=""
 ARG BUILT_AT=""
 ENV AMP_BUILD_COMMIT=${SOURCE_COMMIT} AMP_BUILD_TIME=${BUILT_AT}
 USER 65532:65532
+# Verify default delivery paths and access guards as the actual runtime user.
+RUN --network=none node_modules/.bin/tsx scripts/verify-pdf-delivery.ts
 EXPOSE 8080
 CMD ["node_modules/.bin/tsx", "src/server/main.ts"]
 
