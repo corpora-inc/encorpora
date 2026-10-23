@@ -266,6 +266,7 @@ try {
       // A configured integration transfers the prepared order, without requiring a PDF upload.
       apiEnabled = true;
       record = undefined;
+      identity = "synthetic-parent";
       await page.reload();
       await page.evaluate((theme) => {
         document.documentElement.dataset.theme = theme;
