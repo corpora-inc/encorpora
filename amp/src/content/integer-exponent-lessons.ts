@@ -15,7 +15,7 @@ const foundations: Lesson["sections"] = [
     title: "Zero powers and reciprocals",
     paragraphs: [
       "For a fixed base of 2, lowering the exponent by 1 divides the value by 2: $2^3=8$, $2^2=4$, $2^1=2$, $2^0=1$, and $2^{-1}=1/2$. An integer exponent can be positive, zero, or negative; the dividing pattern continues through zero.",
-      "A fraction $a/b$ means $a$ divided by $b$; $a$ is its numerator and $b$ its nonzero denominator. A reciprocal multiplies a nonzero number to make 1: the reciprocal of 2 is $1/2$, and the reciprocal of $-2/3$ is $-3/2$. A negative exponent calls for a reciprocal, not a negative answer.",
+      "A fraction $a/b$ means $a$ divided by $b$; $a$ is its numerator and $b$ its nonzero denominator. A reciprocal multiplies a nonzero number to make 1: the reciprocal of 2 is $1/2$, and the reciprocal of $-2/3$ is $-3/2$. A negative exponent calls for a reciprocal, not a negative answer. Zero has no reciprocal because zero times any number is zero, never 1. Division by zero is undefined.",
     ],
   },
 ];
