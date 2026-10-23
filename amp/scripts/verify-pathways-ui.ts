@@ -833,7 +833,9 @@ try {
     }
     if (viewport.width === 320)
       assert(
-        await page.evaluate(() => document.documentElement.scrollHeight > innerHeight),
+        await page.evaluate(
+          () => document.documentElement.scrollHeight > innerHeight,
+        ),
         "selected skill uses page scroll after leaving fullscreen",
       );
     await page.screenshot({
@@ -1074,6 +1076,46 @@ try {
   );
   await assessmentLoading.close();
 
+  // Compact phone headers keep pending assessment and progress notices visible.
+  const pendingPhone = await browser.newPage({
+    viewport: { width: 320, height: 568 },
+  });
+  await fixture(pendingPhone, { signedIn: false, trial: true });
+  let releaseLookup!: () => void;
+  let releaseProgress!: () => void;
+  const lookupGate = new Promise<void>((resolve) => {
+    releaseLookup = resolve;
+  });
+  const progressGate = new Promise<void>((resolve) => {
+    releaseProgress = resolve;
+  });
+  await pendingPhone.route("**/api/v1/learners", async (route) => {
+    await lookupGate;
+    await route.fallback();
+  });
+  await pendingPhone.route("**/api/v1/learners/*/progress", async (route) => {
+    await progressGate;
+    await route.fallback();
+  });
+  try {
+    await pendingPhone.goto(`${origin}/pathways?context=trial`);
+    await pendingPhone
+      .getByText("Loading your assessment…", { exact: true })
+      .waitFor();
+    releaseLookup();
+    await pendingPhone
+      .getByText("Loading earned skills…", { exact: true })
+      .waitFor();
+    releaseProgress();
+    await pendingPhone
+      .getByText("1 skills illuminated", { exact: false })
+      .waitFor();
+  } finally {
+    releaseLookup();
+    releaseProgress();
+    await pendingPhone.close();
+  }
+
   // Invalid direct and legacy skill URLs do not advertise an indexable skill.
   for (const path of [
     "/pathways/not-a-catalog-skill",
@@ -1124,7 +1166,9 @@ try {
     );
     assert.equal(card.overflow, "visible");
     assert(
-      await phone.evaluate(() => document.documentElement.scrollHeight > innerHeight),
+      await phone.evaluate(
+        () => document.documentElement.scrollHeight > innerHeight,
+      ),
       "long skill card grows the phone document",
     );
     await phone

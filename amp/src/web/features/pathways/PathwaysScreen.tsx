@@ -74,7 +74,7 @@ function GuestMap() {
             ? "Loading your assessment…"
             : "Explore the curriculum. Start a free assessment to illuminate your skills."
       }
-      noticeImportant={trial.isError}
+      noticeImportant={trial.isError || trial.isPending}
       controls={
         trial.isError ? (
           <button onClick={() => void trial.refetch()}>Retry</button>
@@ -96,7 +96,10 @@ function TrialAtlas({ session }: { session: TrialSession }) {
       canPractice={!!trial.data?.remaining}
       trialMode
       noticeImportant={
-        progress.isError || trial.isError || trial.data?.remaining === 0
+        progress.isError ||
+        progress.isPending ||
+        trial.isError ||
+        trial.data?.remaining === 0
       }
       frontier={trial.data?.frontier.current}
       notice={
@@ -190,7 +193,9 @@ function LearnerMap({ session }: { session: AuthSession }) {
       key={learner?.id ?? "none"}
       canPractice={canPractice}
       notice={notice}
-      noticeImportant={!learner || me.isError || progress.isError}
+      noticeImportant={
+        !learner || me.isError || progress.isError || progress.isPending
+      }
       frontier={frontier.data}
       learnerName={learner?.name}
       controls={
