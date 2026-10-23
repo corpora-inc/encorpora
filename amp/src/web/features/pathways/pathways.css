@@ -979,6 +979,9 @@
   .pathways.has-selection .pathways-status > p:not([data-priority="true"]) {
     display: none;
   }
+  .pathways.has-selection .pathways-status {
+    min-height: 0;
+  }
   .pathways.has-selection .pathways-workspace {
     height: max(230px, calc(100dvh - 210px));
     flex: none;
