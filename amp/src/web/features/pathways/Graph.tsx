@@ -61,6 +61,7 @@ export function Graph({
     return () => document.removeEventListener("fullscreenchange", changed);
   }, []);
   const [labels, setLabels] = useState<Label[]>([]);
+  const [labelsMoving, setLabelsMoving] = useState(false);
   const [hover, setHover] = useState("");
   const [motion, setMotion] = useState(
     () => !matchMedia("(prefers-reduced-motion: reduce)").matches,
@@ -350,8 +351,10 @@ export function Graph({
       current = "",
       tween: { position: THREE.Vector3; target: THREE.Vector3 } | null = null;
     let frame = 0,
-      disposed = false,
-      lastLabels = 0;
+      disposed = false;
+    let labelTimer: ReturnType<typeof setTimeout> | undefined;
+    let interacting = false,
+      labelsHidden = false;
     const project = (position: THREE.Vector3) => {
       const p = position.clone().project(camera);
       return {
@@ -361,6 +364,8 @@ export function Graph({
       };
     };
     const updateLabels = () => {
+      // Projection must use this camera pose, not the preceding rendered frame.
+      camera.updateMatrixWorld();
       const close = camera.position.distanceTo(controls.target) < 105;
       const result: Label[] = [];
       if (!close && !current)
@@ -415,6 +420,24 @@ export function Graph({
         }
       }
       setLabels(result);
+    };
+    const hideLabels = () => {
+      clearTimeout(labelTimer);
+      if (!labelsHidden) {
+        labelsHidden = true;
+        setLabelsMoving(true);
+        setHover("");
+      }
+    };
+    const settleLabels = () => {
+      hideLabels();
+      if (disposed || interacting || pointers.size || tween) return;
+      labelTimer = setTimeout(() => {
+        if (disposed || interacting || pointers.size || tween) return;
+        updateLabels();
+        labelsHidden = false;
+        setLabelsMoving(false);
+      }, 140);
     };
     const paint = () => {
       ring.quaternion.copy(camera.quaternion);
@@ -512,7 +535,7 @@ export function Graph({
         tween = null;
         controls.update();
       }
-      updateLabels();
+      settleLabels();
       paint();
     };
     reset.current = () => {
@@ -530,7 +553,7 @@ export function Graph({
       }
       recolor(current);
       ring.visible = !!byId.get(current);
-      updateLabels();
+      settleLabels();
       paint();
     };
     zoom.current = (factor) => {
@@ -546,7 +569,7 @@ export function Graph({
         .setLength(distance)
         .add(controls.target);
       controls.update();
-      updateLabels();
+      settleLabels();
       paint();
     };
     rotate.current = (value) => {
@@ -561,7 +584,7 @@ export function Graph({
         );
         camera.up.set(0, 1, 0);
         controls.update();
-        updateLabels();
+        settleLabels();
         paint();
       }
     };
@@ -580,7 +603,7 @@ export function Graph({
         tween = null;
         controls.update();
       }
-      updateLabels();
+      settleLabels();
       paint();
     };
     let down = { x: 0, y: 0 },
@@ -593,8 +616,10 @@ export function Graph({
     };
     const pointerUp = (e: PointerEvent) => {
       pointers.delete(e.pointerId);
+      settleLabels();
       if (multiple || Math.hypot(e.clientX - down.x, e.clientY - down.y) > 6)
         return;
+      camera.updateMatrixWorld();
       const box = el.getBoundingClientRect();
       const x = e.clientX - box.left,
         y = e.clientY - box.top;
@@ -614,7 +639,8 @@ export function Graph({
       }
     };
     const pointerMove = (e: PointerEvent) => {
-      if (pointers.size) return;
+      if (pointers.size || labelsHidden) return;
+      camera.updateMatrixWorld();
       const box = el.getBoundingClientRect();
       let nearest = "",
         distance = 14;
@@ -636,22 +662,30 @@ export function Graph({
       e.preventDefault();
       cancelAnimationFrame(frame);
       disposed = true;
+      clearTimeout(labelTimer);
       controls.enabled = false;
       setLabels([]);
       setHover("");
       setFailed(true);
     };
     const changed = () => {
-      updateLabels();
+      settleLabels();
       paint();
     };
     const start = () => {
+      interacting = true;
+      hideLabels();
       fitView = false;
       tween = null;
+    };
+    const end = () => {
+      interacting = false;
+      settleLabels();
     };
     const cancel = (e: PointerEvent) => {
       pointers.delete(e.pointerId);
       multiple = true;
+      settleLabels();
     };
     renderer.domElement.addEventListener("pointerdown", pointerDown);
     renderer.domElement.addEventListener("pointerup", pointerUp);
@@ -660,6 +694,7 @@ export function Graph({
     renderer.domElement.addEventListener("webglcontextlost", lost);
     controls.addEventListener("change", changed);
     controls.addEventListener("start", start);
+    controls.addEventListener("end", end);
     const observer = new ResizeObserver(resize);
     observer.observe(el);
     resize();
@@ -683,7 +718,13 @@ export function Graph({
           camera.position.lerp(tween.position, 0.12);
           controls.target.lerp(tween.target, 0.12);
           controls.update();
-          if (camera.position.distanceTo(tween.position) < 0.025) tween = null;
+          if (camera.position.distanceTo(tween.position) < 0.025) {
+            camera.position.copy(tween.position);
+            controls.target.copy(tween.target);
+            tween = null;
+            controls.update();
+            settleLabels();
+          }
         }
         edges.forEach((edge, i) => {
           edge.curve.getPoint((time * 0.00013 + i * 0.137) % 1, vector);
@@ -694,10 +735,6 @@ export function Graph({
           if (stats.get(points[i]!.skill.id)?.independentCorrect)
             sprite.material.rotation = Math.sin(time * 0.0003 + i) * 0.08;
         });
-        if (time - lastLabels > 220) {
-          updateLabels();
-          lastLabels = time;
-        }
         paint();
       }
       frame = requestAnimationFrame(animate);
@@ -712,8 +749,12 @@ export function Graph({
         fit: fitView,
       };
       disposed = true;
+      clearTimeout(labelTimer);
       cancelAnimationFrame(frame);
       observer.disconnect();
+      controls.removeEventListener("change", changed);
+      controls.removeEventListener("start", start);
+      controls.removeEventListener("end", end);
       controls.dispose();
       renderer.domElement.removeEventListener("pointerdown", pointerDown);
       renderer.domElement.removeEventListener("pointerup", pointerUp);
@@ -765,7 +806,11 @@ export function Graph({
       aria-label="Interactive curriculum map"
     >
       <div ref={host} className="pathways-canvas" />
-      <div className="pathways-map-labels" aria-hidden="true">
+      <div
+        className="pathways-map-labels"
+        data-moving={labelsMoving}
+        aria-hidden="true"
+      >
         {labels.map((l) =>
           l.area ? (
             <span key={l.id} style={{ left: l.x, top: l.y }}>
