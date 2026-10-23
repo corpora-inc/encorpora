@@ -87,6 +87,12 @@
   .problem-content .question {
     font-size: clamp(22px, 2.6vw, 30px);
   }
+  /* Study descriptions include sampling, assignment and inference conditions.
+     Keep the complete passage visible in the narrower landscape column. */
+  .problem-content[data-template="scope-of-inference-choice"] .question {
+    font-size: 22px;
+    text-align: left;
+  }
   /* The problem has the card's height to itself, so a figure may draw larger.
      It still yields height down to its legible floor before the stage
      scrolls. */

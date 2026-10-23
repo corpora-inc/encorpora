@@ -129,11 +129,14 @@ test("radical lesson builds from plain explanation through example and visualiza
   const lesson = radicalEquationLessons[0]!;
   const html = publicationHtml(lesson, "lesson");
   const titles = [
-    lesson.summary,
+    "Undo the root without losing its sign",
     "A worked example",
-    lesson.sections[0]!.title,
-    ...lesson.closingSections!.map((s) => s.title),
+    "See where the two sides meet",
+    "Zero or two solutions can also occur",
+    "Watch for",
+    "The precise rule",
   ];
+  for (const title of titles) assert(html.includes(title), `Missing ${title}`);
   for (let i = 1; i < titles.length; i++)
     assert(html.indexOf(titles[i - 1]!) < html.indexOf(titles[i]!));
 });

@@ -105,10 +105,11 @@ export const linearSystemPairLesson: Lesson = {
   ],
   sections: [
     {
+      stage: "intuition",
       title: "What you will use",
       paragraphs: [
-        "You will add, subtract, multiply, and divide signed numbers, and solve equations with one unknown. Multiplying numbers with unlike signs gives a negative product; multiplying two negative numbers gives a positive product. For example, 3 × (−1) = −3 and (−2) × (−1) = 2.",
-        "A fraction a/b means a divided by a nonzero $b$. The numerator $a$ is above the fraction bar; the denominator $b$ is below it. When $b$ is a positive whole number, divide one unit into $b$ equal parts. A nonnegative whole-number numerator counts those parts. Dividing one unit into two equal parts makes halves, so 3/2 counts three halves. A minus sign gives the negative number: −3/2 means negative three halves. To add or subtract fractions, express them with the same denominator: 9/2 − 2 = 9/2 − 4/2 = 5/2.",
+        "One linear equation in two variables accepts many pairs of numbers. A system asks for one ordered pair $(x,y)$ that makes both equations true at once: $x$ is the first number and $y$ the second. Check the same pair in both originals.",
+        "You will solve one-variable equations and calculate with signed numbers and fractions. A fraction $a/b$ means $a$ divided by a nonzero $b$; keep its value exact while solving.",
       ],
     },
     fractionCalculations,
@@ -158,6 +159,13 @@ export const linearSystemPairLesson: Lesson = {
     ],
     answer: "(3/2, −1)",
   },
+  closingSections: [
+    {
+      stage: "formal",
+      title: "The precise rule",
+      paragraphs: [linearSystemPrinciples["linear-system-pair"]!],
+    },
+  ],
   pitfalls: [
     "Check both equations with the same pair; do not use a different pair for each equation.",
     "Multiply an entire equation, including its constant side. When subtracting, subtract every term of the second row.",
@@ -180,10 +188,11 @@ export const linearSystemCountLesson: Lesson = {
   ],
   sections: [
     {
+      stage: "intuition",
       title: "What you will use",
       paragraphs: [
-        "You will substitute numbers into expressions, multiply signed numbers, and solve one-variable equations. Multiplication by a negative number changes every term's sign: −2(x + y) = −2x − 2y. A negative times a negative is positive: (−2)(−3) = 6.",
-        "A fraction a/b means a divided by a nonzero $b$. The numerator $a$ is above the fraction bar; the denominator $b$ is below it. When $b$ is a positive whole number, divide one unit into $b$ equal parts. A nonnegative whole-number numerator counts those parts. Dividing one unit into two equal parts makes halves, so 3/2 counts three halves. A minus sign gives the negative number: −3/2 means negative three halves.",
+        "Each equation in a system describes pairs of numbers. A solution must make both equations true. Two straight lines can cross once, never meet, or lie on top of each other; those pictures correspond to one, no, or infinitely many shared ordered pairs.",
+        "An ordered pair $(x,y)$ names $x$ first and $y$ second. You will use signed-number arithmetic, fractions, and one-variable equations to compare the lines. A fraction $a/b$ divides $a$ by nonzero $b$.",
       ],
     },
     fractionCalculations,
@@ -241,6 +250,13 @@ export const linearSystemCountLesson: Lesson = {
     ],
     answer: "Infinitely many ordered pairs",
   },
+  closingSections: [
+    {
+      stage: "formal",
+      title: "The precise rule",
+      paragraphs: [linearSystemPrinciples["linear-system-solution-count"]!],
+    },
+  ],
   pitfalls: [
     "Compare constants as well as variable coefficients; matching variable terms with unequal constants give no solution.",
     "Retain an original line's condition even when elimination gives 0 = 0. Negative scaling preserves that line; zero scaling erases it.",

@@ -2,6 +2,7 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const equationTerms: Lesson["sections"][number] = {
+  stage: "intuition",
   title: "Equations, variables and solutions",
   paragraphs: [
     "This lesson uses addition, subtraction, multiplication and division of whole numbers, decimals and fractions. An equation is a statement that two expressions have the same value; the equals sign = separates them. A variable is a letter, such as $x$ or $n$, that stands for a number we do not yet know. A number written next to a letter multiplies it: 4x means 4 × x.",
@@ -9,6 +10,7 @@ const equationTerms: Lesson["sections"][number] = {
   ],
 };
 const balanceTerms: Lesson["sections"][number] = {
+  stage: "intuition",
   title: "A level balance is an equation",
   paragraphs: [
     "This lesson uses whole-number addition, subtraction, multiplication and division. A balance compares weights: when its two pans are level, they hold equal weight. In these puzzles every block labeled $x$ has the same unknown weight, and every small cube weighs 1 gram. A letter that stands for an unknown number is called a variable, and 3x means 3 × x.",
@@ -16,6 +18,7 @@ const balanceTerms: Lesson["sections"][number] = {
   ],
 };
 const inequalityTerms: Lesson["sections"][number] = {
+  stage: "intuition",
   title: "Inequalities and their solutions",
   paragraphs: [
     "This lesson uses comparing positive and negative numbers on a number line, where numbers increase to the right. An inequality compares two values: x > 2 means $x$ is greater than 2, and x < 2 means $x$ is less than 2. x ≥ 2 means $x$ is greater than or equal to 2, and x ≤ 2 means $x$ is less than or equal to 2. The number 2 here is the boundary.",
@@ -72,6 +75,15 @@ export const equationLessons: Lesson[] = [
       ],
       answer: "1.85",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Doing the same operation to both sides of an equation keeps the sides equal, so the inverse of the operation on the variable isolates it without changing the solution.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do the inverse operation, not the same operation: for x + 6 = 15, subtract 6 to get 9; adding 6 gives 21, which is not a solution.",
       "Apply every step to both sides. Changing one side only breaks the equality.",
@@ -92,6 +104,7 @@ export const equationLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "From words to an equation",
         paragraphs: [
           "This lesson uses the four operations with whole numbers. A variable is a letter that stands for an unknown number. Define it by saying exactly what it counts, such as “let $s$ be the number of stickers at first”. An equation states that two expressions are equal, and 9t means 9 × t.",
@@ -118,6 +131,15 @@ export const equationLessons: Lesson[] = [
       ],
       answer: "9t = 117; t = 13",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "An equation models a story when its operation on the unknown is the story's action and its other side is the reported result.",
+        ],
+      },
+    ],
     pitfalls: [
       "Match the action, not a single word: in “sold 18 and had 27 left”, 18 is taken away, so m − 18 = 27.",
       "Undo the operation on the unknown: for n ÷ 6 = 8, multiply to get n = 48; do not divide 8 by 6.",
@@ -167,6 +189,15 @@ export const equationLessons: Lesson[] = [
       answer: "7",
       answerUnit: "grams",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Removing equal weights from both pans, or splitting both pans into the same number of equal groups, keeps a balance level.",
+        ],
+      },
+    ],
     pitfalls: [
       "Remove the same number of cubes from both pans, never from one pan only.",
       "With several blocks, split both pans into that many equal groups; one block matches one group.",
@@ -187,6 +218,7 @@ export const equationLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Reverse the order of operations",
         paragraphs: [
           "This lesson uses arithmetic with positive and negative numbers. In an equation, a variable such as $x$ stands for an unknown number, and 3x means 3 × x. A solution is a value of $x$ that makes both sides equal. Doing the same operation to both sides keeps them equal, so each step gives an equation with the same solution.",
@@ -218,6 +250,15 @@ export const equationLessons: Lesson[] = [
       ],
       answer: "−10",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Operations applied to $x$ are undone in reverse order, and each step done to both sides keeps the equation's solution unchanged.",
+        ],
+      },
+    ],
     pitfalls: [
       "Undo addition or subtraction before multiplication: for 3x + 5 = 20, do not divide 20 by 3 first.",
       "Keep the sign with the coefficient: in 7 − 2x = 1 the coefficient of $x$ is −2, so −2x = 1 − 7 = −6 and x = 3.",
@@ -230,7 +271,7 @@ export const equationLessons: Lesson[] = [
     id: "two-step-word-problem",
     title: "Solve two-step stories with an equation",
     summary:
-      "Name the unknown, write $px + q = r$ or p(x + q) = r, and solve by undoing operations in reverse order.",
+      "Name the unknown amount, show what happens to it in the story, and undo those steps in reverse order.",
     templateIds: ["two-step-word-problem"],
     objectives: [
       "Write $px + q = r$ for a story with a repeated amount and a one-time amount, and p(x + q) = r for equal groups that each contain the unknown.",
@@ -238,6 +279,7 @@ export const equationLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Two shapes of story",
         paragraphs: [
           "This lesson uses arithmetic with whole numbers and decimals. A variable is a letter for the unknown quantity; define it by saying what it counts and in what unit. An equation states that two expressions are equal, and 12m means 12 × m.",
@@ -266,6 +308,15 @@ export const equationLessons: Lesson[] = [
       answer: "8",
       answerUnit: "months",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A repeated amount multiplies the unknown and a one-time amount is added once: $px + q = r$. Equal groups that each contain the unknown give p(x + q) = r.",
+        ],
+      },
+    ],
     pitfalls: [
       "Multiply the unknown by the amount that repeats: 14m + 30, not 30m + 14.",
       "If every group contains the extra amount, use parentheses: 4(c + 3), not 4c + 3.",
@@ -286,6 +337,7 @@ export const equationLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Which amount repeats?",
         paragraphs: [
           "This lesson uses whole numbers and decimals. A variable such as $d$ stands for the unknown quantity the story asks about, and 2.25d means 2.25 × d. An equation represents a story when its two sides are equal for the story's true quantity and every part of the story appears in it exactly once.",
@@ -312,6 +364,15 @@ export const equationLessons: Lesson[] = [
       ],
       answer: "5(c + 8) = 95",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "An equation represents a story when each quantity appears with the role it has in the story: repeated amounts multiply, one-time amounts add or subtract once.",
+        ],
+      },
+    ],
     pitfalls: [
       "5c + 8 = 95 counts only one snack; every friend buys one.",
       "Multiply the unknown by the amount that repeats, and add the one-time amount once.",
@@ -333,6 +394,7 @@ export const equationLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Read the balance",
         paragraphs: [
           "This lesson uses whole-number arithmetic. A balance whose pans are level holds equal weight on both pans. Every block labeled $x$ has the same unknown weight, and every small cube weighs 1 gram. A letter that stands for an unknown number is a variable, and 3x means 3 × x.",
@@ -367,6 +429,15 @@ export const equationLessons: Lesson[] = [
       answer: "5",
       answerUnit: "grams",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A balance stays level when both pans change the same way; removing the loose cubes and splitting into equal groups isolates one block.",
+        ],
+      },
+    ],
     pitfalls: [
       "When the blocks are not in bags, remove the loose cubes before splitting.",
       "Split into as many groups as there are blocks or bags.",
@@ -407,6 +478,15 @@ export const equationLessons: Lesson[] = [
       ],
       answer: "w ≤ 10",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Greater-than conditions use > or ≥ and less-than conditions use < or ≤; the boundary is included exactly when the condition allows the boundary value.",
+        ],
+      },
+    ],
     pitfalls: [
       "“At least” means greater than or equal to, even though it contains the word “least”.",
       "Test the boundary: “more than 35” excludes 35; “35 or more” includes it.",
@@ -446,6 +526,15 @@ export const equationLessons: Lesson[] = [
       ],
       answer: "x ≤ −2",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A graph's circle shows whether the boundary is a solution, and its ray shows the direction in which all other solutions lie.",
+        ],
+      },
+    ],
     pitfalls: [
       "An open circle excludes the boundary; a filled circle includes it.",
       "The direction of the ray decides greater or less, not where the circle sits on the page.",
@@ -485,6 +574,15 @@ export const equationLessons: Lesson[] = [
       ],
       answer: "A filled circle at −1 and a ray pointing right",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "The graph of x > c, x < c, x ≥ c or x ≤ c is a ray from $c$, toward greater or lesser numbers, with a filled circle exactly when $c$ is a solution.",
+        ],
+      },
+    ],
     pitfalls: [
       "Use a filled circle only for ≥ and ≤.",
       "Greater numbers are to the right, also for negative boundaries: x > −4 points right, toward −3, 0 and 5.",
@@ -530,6 +628,15 @@ export const equationLessons: Lesson[] = [
       ],
       answer: "2.9 and −10",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Every number on the correct side of the boundary satisfies a simple inequality, and between any two such numbers lies another, so there are infinitely many solutions.",
+        ],
+      },
+    ],
     pitfalls: [
       "Numbers that are not whole are solutions too: 2.5 is a solution of x > 2.",
       "The boundary of > or < is not a solution; the boundary of ≥ or ≤ is.",

@@ -62,7 +62,7 @@ export const assessmentGapLessons: Lesson[] = [
     id: "measurement-error-bound",
     title: "Measurements leave a range",
     summary:
-      "Turn an error limit into the smallest and greatest allowed measurements.",
+      "A reported measurement is an instrument's reading. An error limit says how far the actual value may be from it; subtract and add that limit to find the allowed range.",
     templateIds: ["measurement-error-bound"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -71,6 +71,7 @@ export const assessmentGapLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "A reading and its error limit",
         paragraphs: [
           "You need addition, subtraction and percentages. A reported value is the number an instrument displays. The actual value may differ from it. An absolute error limit is the greatest allowed difference, in the measurement’s units. An error of at most 2 g means the actual mass may be 2 g below or above the reading, or anywhere between.",
@@ -79,6 +80,7 @@ export const assessmentGapLessons: Lesson[] = [
     ],
     closingSections: [
       {
+        stage: "method",
         title: "Work outward from the reading",
         paragraphs: [
           "An instrument reports 80 g with error at most 2 g. Subtract to get the smallest allowed mass: 80 − 2 = 78 g. Add to get the greatest: 80 + 2 = 82 g. Both endpoints are allowed because the error may equal 2 g.",
@@ -86,6 +88,7 @@ export const assessmentGapLessons: Lesson[] = [
         illustration: "assessment-measurement-interval",
       },
       {
+        stage: "method",
         title: "When the error is a percentage",
         paragraphs: [
           "If the error limit is 2.5% of the reported 80 g, first convert it to grams: 80 × 2.5/100 = 2 g. Then use the same range, from 78 g to 82 g. A percentage needs a base: if the question specifies the actual value as the base instead, these bounds do not follow from the same calculation.",
@@ -120,7 +123,7 @@ export const assessmentGapLessons: Lesson[] = [
     id: "margin-of-error-interval",
     title: "An estimate with room on each side",
     summary:
-      "Read an estimate and its margin of error as a range for a population quantity.",
+      "A population is the whole group; a sample observes part of it. A margin of error gives a distance on either side of the sample estimate for the population quantity.",
     templateIds: ["margin-of-error-interval"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -129,14 +132,16 @@ export const assessmentGapLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Why an estimate comes with a range",
         paragraphs: [
-          "You need addition, subtraction and percentages. A population is the whole group you want to study. A sample is the part you observe. Different random samples can give different estimates, so a sample estimate is not an exact population value. A margin of error is the distance from an estimate to each endpoint of its reported interval.",
+          "You need addition, subtraction and percentages. A population is the whole group you want to study. A sample is the part you observe. Different random samples can give different estimates, so a sample estimate is not an exact population value. A margin of error is the distance from an estimate to each endpoint of its reported interval. A percentage point measures a difference between percentages: from 60% to 64% is 4 percentage points, not 4% of 60%.",
         ],
       },
     ],
     closingSections: [
       {
+        stage: "method",
         title: "Build the interval",
         paragraphs: [
           "A random survey estimates that 60% of a town’s residents support a park. Its margin of error is 4 percentage points. A percentage point is a unit for differences between percentages. Subtract 4 from 60 to get 56%; add 4 to get 64%. The interval is from 56% to 64%. Its full width is 8 percentage points, twice the margin.",
@@ -144,6 +149,7 @@ export const assessmentGapLessons: Lesson[] = [
         illustration: "assessment-sampling-interval",
       },
       {
+        stage: "method",
         title: "What confidence means",
         paragraphs: [
           "A 95% confidence level describes the method: if its assumptions hold and we repeatedly draw random samples and build intervals in the same way, about 95% of those intervals cover the population value. One particular interval can miss. It does not mean that 95% of residents have an individual value in this range, or that the population percentage is exactly 60%.",
@@ -179,7 +185,7 @@ export const assessmentGapLessons: Lesson[] = [
     id: "radian-arc-ratio",
     title: "Measure an angle by its arc",
     summary:
-      "A radian compares the arc swept out by an angle with the circle’s radius.",
+      "A radius reaches from a circle's center to its edge; an arc follows part of that edge. One radian is the angle that sweeps an arc as long as the radius.",
     templateIds: ["radian-arc-ratio"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -188,6 +194,7 @@ export const assessmentGapLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Use the radius as a measuring stick",
         paragraphs: [
           "You need division and exact fractions. A radius is the distance from the center of a circle to its boundary. An arc is a connected part of that boundary. As a radius turns, its endpoint sweeps an arc. One radian is the angle that sweeps an arc whose length equals the radius. An arc twice as long as the radius sweeps two radians.",
@@ -196,6 +203,7 @@ export const assessmentGapLessons: Lesson[] = [
     ],
     closingSections: [
       {
+        stage: "method",
         title: "Compare the two lengths",
         paragraphs: [
           "A circle has radius 4 cm. A counterclockwise arc has length 6 cm. The arc contains 6 ÷ 4 = 3/2 radius-lengths, so the swept angle is 3/2 radians. Check: 4 × 3/2 = 6 cm. The centimeters cancel in the ratio; radians measure an angle rather than a length.",
@@ -203,6 +211,7 @@ export const assessmentGapLessons: Lesson[] = [
         illustration: "assessment-radian-arc",
       },
       {
+        stage: "method",
         title: "Full turns and larger arcs",
         paragraphs: [
           "A full circle has circumference $2\\pi r$, where $r$ is its radius and $\\pi$ is the constant ratio of circumference to diameter. Divide by the radius: one full turn measures $2\\pi$ radians. Half a turn is $\\pi$ radians, equal to 180 degrees.",

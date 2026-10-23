@@ -29,7 +29,7 @@ export const quadraticIrrationalLesson: Lesson = {
   id: "quadratic-irrational-solutions",
   title: "Find exact roots with the quadratic formula",
   summary:
-    "The quadratic formula gives both roots even when they cannot be written as fractions of integers.",
+    "A quadratic can have roots that no fraction names exactly. A square-root expression keeps those solutions exact instead of rounding them.",
   templateIds: ["quadratic-irrational-solutions"],
   includeGeneratedRepresentation: false,
   objectives: [
@@ -39,12 +39,19 @@ export const quadraticIrrationalLesson: Lesson = {
   ],
   sections: [
     {
+      stage: "intuition",
       title: "Two values can make a quadratic zero",
       paragraphs: [
         "You need to solve linear equations, square signed numbers, and simplify fractions and square roots. A variable is a symbol for a number. A quadratic equation has the form $ax^2 + bx + c = 0$, where the coefficients $a$, $b$ and $c$ are numbers and $a \\ne 0$. A root, or solution, is a value of $x$ that makes the equation true.",
         "Some quadratics have roots that are irrational: they cannot be written as a fraction of two integers. A square-root expression keeps such a value exact. For example, $\\sqrt{10}$ is the nonnegative number whose square is 10; a rounded decimal changes its value.",
+        "The discriminant $D=b^2-4ac$ is the number under the square root in the quadratic formula. The symbol $\\pm$ asks for both the plus case and the minus case.",
+      ],
+    },
+    {
+      stage: "method",
+      title: "Use the quadratic formula",
+      paragraphs: [
         "The quadratic formula is $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The symbol $\\pm$ means take both the plus and minus cases. The discriminant is $D = b^2 - 4ac$. When $D$ is positive and not a perfect square, an integer-coefficient quadratic has two distinct irrational real roots.",
-        "The formula works because completing the square rewrites the original equation as $(2ax + b)^2 = b^2 - 4ac$. Taking both square-root branches and solving the resulting linear equations gives the two roots. Every step preserves the solutions because $a$ is nonzero.",
       ],
     },
   ],
@@ -61,6 +68,7 @@ export const quadraticIrrationalLesson: Lesson = {
   },
   closingSections: [
     {
+      stage: "method",
       title: "See the two roots",
       paragraphs: [
         "The graph of $y = 2x^2 + 4x - 3$ is a parabola, a curve symmetric about a vertical line. Its horizontal-axis crossings have $y = 0$, so their horizontal coordinates solve the example. The two roots lie the same distance $\\sqrt{10}/2$ to either side of $x = -1$. The left crossing $L$ has horizontal coordinate $\\frac{-2-\\sqrt{10}}{2}$; the right crossing $R$ has horizontal coordinate $\\frac{-2+\\sqrt{10}}{2}$. The plotted positions are approximate; these coordinate formulas are exact.",
@@ -68,6 +76,7 @@ export const quadraticIrrationalLesson: Lesson = {
       illustration: "quadratic-irrational-crossings",
     },
     {
+      stage: "formal",
       title: "Why the formula preserves every root",
       paragraphs: [
         "For $a \\ne 0$, multiply $ax^2 + bx + c = 0$ by $4a$ and rearrange: $4a^2x^2 + 4abx = -4ac$. Add $b^2$ to both sides: $(2ax + b)^2 = b^2 - 4ac$. These operations are reversible.",

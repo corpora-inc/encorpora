@@ -3,19 +3,19 @@ import type { ProblemMethod } from "./problem-lessons";
 
 const foundations: Lesson["sections"] = [
   {
+    stage: "intuition",
     title: "Read a power",
     paragraphs: [
-      "A power records repeated multiplication. In 2^3, the base is 2 and the exponent is 3: multiply three factors equal to 2. Thus 2^3 = 2 × 2 × 2 = 8. A factor is a number being multiplied. An exponent of 1 leaves the base unchanged.",
-      "An integer is a whole number, its negative, or zero. Positive exponents count factors. Zero and negative exponents extend this notation while keeping the multiplication rules consistent. This lesson uses nonzero bases; division by zero is undefined.",
-      "A letter can represent a number. Here $x$ can be any nonzero real number, meaning any point on the number line except zero. An equation stated for every such $x$ must hold for all those choices, not just for one convenient value. You need addition, subtraction, multiplication, and division of signed numbers.",
+      "A positive integer power repeats multiplication: $2^3=2\\times2\\times2=8$. The base is the number being multiplied, and its positive exponent counts its factors. Here the base is 2 and the exponent is 3.",
+      "A letter such as $x$ can represent a number. These lessons use nonzero real bases: any points on the number line except zero. You need multiplication and division of signed numbers to work with them.",
     ],
   },
   {
+    stage: "intuition",
     title: "Zero powers and reciprocals",
     paragraphs: [
-      "Compare 2^3 = 8, 2^2 = 4, and 2^1 = 2. Each decrease of 1 in the exponent divides the value by 2. Continuing gives 2^0 = 1, then 2^(−1) = 1/2 and 2^(−2) = 1/4. For any nonzero base $x$, x^0 = 1.",
-      "A fraction a/b means a divided by $b$. Its numerator $a$ is above the fraction bar; its denominator $b$ is below. When $b$ is positive and $a$ is a whole number, it also names a parts of size 1/b. Negative fractions name values below zero. The denominator cannot be zero.",
-      "A reciprocal is a number that multiplies a given nonzero number to make 1. The reciprocal of 2 is 1/2; the reciprocal of −2/3 is −3/2. For a positive integer $n$, $x^{-n} = 1 / x^{n.} A$ negative exponent asks for a reciprocal, not a negative answer.",
+      "For a fixed base of 2, lowering the exponent by 1 divides the value by 2: $2^3=8$, $2^2=4$, $2^1=2$, $2^0=1$, and $2^{-1}=1/2$. An integer exponent can be positive, zero, or negative; the dividing pattern continues through zero.",
+      "A fraction $a/b$ means $a$ divided by $b$; $a$ is its numerator and $b$ its nonzero denominator. A reciprocal multiplies a nonzero number to make 1: the reciprocal of 2 is $1/2$, and the reciprocal of $-2/3$ is $-3/2$. A negative exponent calls for a reciprocal, not a negative answer.",
     ],
   },
 ];
@@ -25,7 +25,7 @@ export const integerExponentLessons: Lesson[] = [
     id: "negative-integer-power",
     title: "Understand and evaluate negative powers",
     summary:
-      "A negative integer exponent takes the reciprocal of a positive integer power.",
+      "Each step down in a power divides by the base. Continue past an exponent of zero to make a negative power: $2^0=1$, then $2^{-1}=1/2$.",
     templateIds: ["negative-integer-power"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -35,6 +35,7 @@ export const integerExponentLessons: Lesson[] = [
     sections: [
       ...foundations,
       {
+        stage: "method",
         title: "Follow the pattern through zero",
         paragraphs: [
           "In the table, the base stays 2. Moving down one row decreases the exponent by 1 and divides the value by 2.",
@@ -43,6 +44,7 @@ export const integerExponentLessons: Lesson[] = [
         illustration: "integer-exponent-ladder",
       },
       {
+        stage: "method",
         title: "A fractional or negative base",
         paragraphs: [
           "For a nonzero fraction, exchange the numerator and denominator to take its reciprocal. Raising that reciprocal to a positive power gives the original fraction raised to the corresponding negative power: (2 / 3)^(−2) = (3 / 2)^2 = 9/4.",
@@ -62,6 +64,16 @@ export const integerExponentLessons: Lesson[] = [
       ],
       answer: "−27/8",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The precise rule",
+        paragraphs: [
+          "For a nonzero real base $x$ and a positive integer $n$, $x^{-n}=1/x^n$. Also $x^0=1$. The base cannot be zero because $1/0$ is undefined.",
+          "If the base is a fraction $a/b$ with nonzero $a$ and $b$, then $(a/b)^{-n}=(b/a)^n$. Parentheses make the whole signed fraction the base.",
+        ],
+      },
+    ],
     pitfalls: [
       "A negative exponent does not mean change the sign of the base.",
       "Take the reciprocal of the whole fraction, then apply the positive exponent.",
@@ -73,7 +85,8 @@ export const integerExponentLessons: Lesson[] = [
   {
     id: "product-of-powers-exponent",
     title: "Multiply powers with the same base",
-    summary: "Multiplying powers with a shared base adds their exponents.",
+    summary:
+      "Two powers with the same base contribute groups of the same factor. Multiplying them joins those groups.",
     templateIds: ["product-of-powers-exponent"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -106,6 +119,15 @@ export const integerExponentLessons: Lesson[] = [
       ],
       answer: "2",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For nonzero $x$ and integer exponents $m$ and $n$, $x^{m} \\times  x^{n} = x^{m + n}$: combine factors and cancel reciprocal pairs.",
+        ],
+      },
+    ],
     pitfalls: [
       "Multiply the powers but add their exponents. Multiplying the exponents is a different rule.",
       "Keep each exponent's sign when adding.",
@@ -118,7 +140,7 @@ export const integerExponentLessons: Lesson[] = [
     id: "quotient-of-powers-exponent",
     title: "Divide powers with the same base",
     summary:
-      "Dividing powers with a shared nonzero base subtracts the denominator's exponent from the numerator's exponent.",
+      "Dividing powers of the same nonzero base cancels matching factors, leaving the difference between their exponents.",
     templateIds: ["quotient-of-powers-exponent"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -151,6 +173,15 @@ export const integerExponentLessons: Lesson[] = [
       ],
       answer: "3",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For nonzero $x$ and integer exponents $m$ and $n$, $x^{m} \\div  x^{n} = x^{m - n}$: division multiplies by the reciprocal.",
+        ],
+      },
+    ],
     pitfalls: [
       "Subtract exponents; do not divide them.",
       "Reversing the subtraction reverses the exponent's sign.",
@@ -162,7 +193,8 @@ export const integerExponentLessons: Lesson[] = [
   {
     id: "power-of-power-exponent",
     title: "Raise a power to another power",
-    summary: "A power raised to an integer power multiplies the two exponents.",
+    summary:
+      "Raising a power to another power repeats whole groups of factors. Count the groups and the factors in each group.",
     templateIds: ["power-of-power-exponent"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -195,6 +227,15 @@ export const integerExponentLessons: Lesson[] = [
       ],
       answer: "6",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For nonzero $x$ and integer exponents $m$ and $n$, $(x^{m})^{n} = x^{m \\times  n}$: repeat groups of factors, using reciprocals for negative powers.",
+        ],
+      },
+    ],
     pitfalls: [
       "Add exponents for a product of powers; multiply exponents for a power of a power.",
       "A negative outer exponent takes a reciprocal, not an opposite.",

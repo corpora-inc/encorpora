@@ -18,6 +18,8 @@ const terms: [string, string][] = [
 ];
 const method: ProblemMethod = {
   goal: "Solve the equation while preserving its original domain.",
+  intuition:
+    "A fraction with a variable in its denominator is undefined when that denominator is zero. Find those inputs first, then check each answer in the original equation.",
   terms,
   method: [
     "Record every input that makes an original denominator zero.",
@@ -43,7 +45,7 @@ export const rationalEquationLessons: Lesson[] = [
     id: "rational-equations-and-original-domain",
     title: "Clear the denominator, check the input",
     summary:
-      "Turn a variable fraction into a linear equation without admitting forbidden inputs.",
+      "A fraction with a variable in its denominator can be undefined for one input. Find that input before solving, then check the answer in the original equation.",
     templateIds: Object.keys(rationalEquationMethods),
     includeGeneratedRepresentation: false,
     objectives: [
@@ -52,11 +54,11 @@ export const rationalEquationLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Which numbers can solve it?",
         paragraphs: [
-          "You need to solve linear equations and calculate with fractions. A polynomial is a sum of constant multiples of nonnegative whole-number powers of a variable, such as $2x + 1$. A rational equation contains a quotient of polynomials: a fraction whose numerator is above the bar and whose denominator is below it.",
-          "A solution makes the original equation true. First find its domain: the inputs for which every expression is defined. Division by zero is undefined, so any input making a denominator zero is excluded.",
-          "For allowed inputs, a denominator is nonzero. Multiplying both sides by it preserves equality and removes the fraction. The resulting equation is easier to solve, but its answers must still obey the original restriction.",
+          "A denominator is the expression below a fraction bar. In $1/(x-2)$, choosing $x=2$ would divide by zero, so that choice is forbidden before any solving begins. A solution must make the original equation defined and true.",
+          "A rational equation contains a quotient of polynomials. A polynomial is a sum of constant multiples of nonnegative whole-number powers of a variable, such as $2x+1$. You need fraction arithmetic and linear-equation solving for this lesson.",
         ],
       },
     ],
@@ -72,6 +74,7 @@ export const rationalEquationLessons: Lesson[] = [
     },
     closingSections: [
       {
+        stage: "method",
         title: "See the solution as a crossing",
         paragraphs: [
           "The curve gives $y = (x + 1)/(x - 2)$, and the horizontal line gives $y = 3$. Their crossing at $(7/2, 3)$ identifies the input that makes both sides equal. The dashed vertical marker at $x = 2$ is excluded: the curve has no point there.",
@@ -79,6 +82,7 @@ export const rationalEquationLessons: Lesson[] = [
         illustration: "rational-equation-crossing",
       },
       {
+        stage: "method",
         title: "When clearing gives a misleading candidate",
         paragraphs: [
           "For $\\dfrac{2x - 6}{x - 3} = 5$, first exclude $x = 3$. Clearing gives $2x - 6 = 5x - 15$, then $9 = 3x$ and $x = 3$. That input is forbidden: substituting it gives $0/0$, which is undefined. The equation has no real solution.",
@@ -86,6 +90,7 @@ export const rationalEquationLessons: Lesson[] = [
         ],
       },
       {
+        stage: "formal",
         title: "The precise rule",
         paragraphs: [
           "Let $N(x)$ and $D(x)$ be real polynomials, and let $c$ be a real constant. For every input with $D(x) \\ne 0$, the equality $N(x)/D(x) = c$ holds if and only if $N(x) = cD(x)$.",
