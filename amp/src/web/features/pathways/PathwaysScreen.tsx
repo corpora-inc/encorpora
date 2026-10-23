@@ -8,7 +8,12 @@ import {
   type ReactNode,
 } from "react";
 import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { Link, useNavigate, useSearch } from "@tanstack/react-router";
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearch,
+} from "@tanstack/react-router";
 import { meOptions, sessionOptions } from "../../lib/query";
 import { request } from "../../lib/api";
 import { useLearnerStore } from "../../learner-store";
@@ -39,6 +44,7 @@ import {
 import { Dialog } from "../../ui/Dialog";
 const SkillLesson = lazy(() => import("./SkillLesson"));
 import { trialEvidenceOptions } from "./queries";
+import { usePathwaysMetadata } from "./usePathwaysMetadata";
 import "./pathways.css";
 const emptyEvidence: Evidence[] = [];
 export function PathwaysScreen() {
@@ -58,12 +64,14 @@ function GuestMap() {
     <MapView
       evidence={emptyEvidence}
       start="/try"
+      actionLabel="Start free assessment"
+      guestMode
       notice={
         trial.isError
           ? "Your assessment could not be loaded. Retry to see your progress."
           : trial.isPending
             ? "Loading your assessment…"
-            : "Explore the curriculum. Start learning to illuminate your skills."
+            : "Explore the curriculum. Start a free assessment to illuminate your skills."
       }
       noticeImportant={trial.isError}
       controls={
@@ -80,21 +88,36 @@ function TrialAtlas({ session }: { session: TrialSession }) {
   return (
     <MapView
       evidence={progress.data?.skills ?? emptyEvidence}
-      start="/try/practice"
+      start={trial.data?.remaining === 0 ? "/try/plans" : "/try/practice"}
+      actionLabel={
+        trial.data?.remaining === 0 ? "See plans" : "Resume free assessment"
+      }
       canPractice={!!trial.data?.remaining}
       trialMode
-      noticeImportant={progress.isError}
+      noticeImportant={
+        progress.isError || trial.isError || trial.data?.remaining === 0
+      }
       frontier={trial.data?.frontier.current}
       notice={
         progress.isError
           ? "Progress could not be loaded. Retry to see your illumination."
-          : progress.isPending
-            ? "Loading earned skills…"
-            : "Your free assessment and practice are lighting up this map."
+          : trial.isError
+            ? "Your assessment status could not be loaded. Retry to continue."
+            : progress.isPending
+              ? "Loading earned skills…"
+              : trial.data?.remaining === 0
+                ? "Your free practice lit up this map. Explore your skills and lessons, or choose a plan for more adaptive practice."
+                : "Your free assessment and practice are lighting up this map."
       }
       controls={
-        progress.isError ? (
-          <button onClick={() => void progress.refetch()}>Retry</button>
+        progress.isError || trial.isError ? (
+          <button
+            onClick={() =>
+              void Promise.all([progress.refetch(), trial.refetch()])
+            }
+          >
+            Retry
+          </button>
         ) : (
           <Link to="/try/map">Assessment summary →</Link>
         )
@@ -107,6 +130,10 @@ function LearnerMap({ session }: { session: AuthSession }) {
   const me = useQuery(meOptions(session));
   const { learnerId, select } = useLearnerStore();
   const learners = me.data?.signedIn ? me.data.learners : [];
+  const savedTrial = useQuery({
+    ...trialSessionOptions,
+    enabled: !!me.data?.signedIn && learners.length === 0,
+  });
   const learner = learners.find((l) => l.id === learnerId);
   const progress = useQuery({
     queryKey: ["account", session.accountId, "pathways", learner?.id],
@@ -139,13 +166,22 @@ function LearnerMap({ session }: { session: AuthSession }) {
     ? "Loading learners…"
     : me.isError
       ? "Learners could not be loaded. Retry to view progress."
-      : !learner
-        ? "Choose a learner to see earned skills."
-        : progress.isPending
-          ? "Loading earned skills…"
-          : progress.isError
-            ? "Progress could not be loaded. The map shows the curriculum without earned skills."
-            : `${learner.name} · Crystals grow with independent successes. Bright crystals show strong recorded practice.`;
+      : savedTrial.isError && me.data?.signedIn && learners.length === 0
+        ? "Your assessment could not be loaded. Retry to see your progress."
+        : savedTrial.isPending && me.data?.signedIn && learners.length === 0
+          ? "Loading your assessment…"
+          : me.data?.signedIn && learners.length === 0
+            ? "Add a learner to see earned skills."
+            : !learner
+              ? "Choose a learner to see earned skills."
+              : progress.isPending
+                ? "Loading earned skills…"
+                : progress.isError
+                  ? "Progress could not be loaded. The map shows the curriculum without earned skills."
+                  : `${learner.name} · Crystals grow with independent successes. Bright crystals show strong recorded practice.`;
+  if (me.data && !me.data.signedIn) return <GuestMap />;
+  if (savedTrial.data && me.data?.signedIn && learners.length === 0)
+    return <TrialAtlas session={savedTrial.data} />;
   return (
     <MapView
       evidence={progress.data?.skills ?? emptyEvidence}
@@ -158,31 +194,44 @@ function LearnerMap({ session }: { session: AuthSession }) {
       learnerName={learner?.name}
       controls={
         <>
-          <label>
-            Learner{" "}
-            <select
-              value={learner?.id ?? ""}
-              onChange={(e) => select(e.target.value || null)}
-            >
-              <option value="">Choose learner</option>
-              {learners.map((l) => (
-                <option key={l.id} value={l.id}>
-                  {l.name}
-                </option>
-              ))}
-            </select>
-          </label>
+          {learners.length > 0 && (
+            <label>
+              Learner{" "}
+              <select
+                value={learner?.id ?? ""}
+                onChange={(e) => select(e.target.value || null)}
+              >
+                <option value="">Choose learner</option>
+                {learners.map((l) => (
+                  <option key={l.id} value={l.id}>
+                    {l.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+          {me.data?.signedIn &&
+            learners.length === 0 &&
+            !me.isPending &&
+            !me.isError &&
+            !savedTrial.isError &&
+            !savedTrial.isPending && <Link to="/start">Add a learner →</Link>}
           {frontier.isError && (
             <p role="status" data-priority="true">
               The frontier estimate could not be loaded. Retry to refresh it.
             </p>
           )}
-          {(me.isError || progress.isError || frontier.isError) && (
+          {(me.isError ||
+            savedTrial.isError ||
+            progress.isError ||
+            frontier.isError) && (
             <button
               onClick={() =>
                 void (me.isError
                   ? me.refetch()
-                  : Promise.all([progress.refetch(), frontier.refetch()]))
+                  : savedTrial.isError
+                    ? savedTrial.refetch()
+                    : Promise.all([progress.refetch(), frontier.refetch()]))
               }
             >
               Retry
@@ -202,16 +251,20 @@ export function MapView({
   frontier,
   learnerName,
   trialMode = false,
+  guestMode = false,
+  actionLabel = "Start learning",
   noticeImportant = false,
 }: {
   evidence: Evidence[];
-  start: "/try" | "/practice" | "/start" | "/try/practice";
+  start: "/try" | "/practice" | "/start" | "/try/practice" | "/try/plans";
   notice: string;
   canPractice?: boolean;
   controls?: ReactNode;
   frontier?: Frontier;
   learnerName?: string;
   trialMode?: boolean;
+  guestMode?: boolean;
+  actionLabel?: string;
   noticeImportant?: boolean;
 }) {
   const catalog = useQuery({
@@ -221,8 +274,12 @@ export function MapView({
     refetchInterval: 300_000,
   });
   const search = useSearch({ strict: false });
-  const selectedId = typeof search.skill === "string" ? search.skill : "";
+  const params = useParams({ strict: false });
+  const routeSkillId = typeof params.skillId === "string" ? params.skillId : "";
+  const selectedId =
+    routeSkillId || (typeof search.skill === "string" ? search.skill : "");
   const query = typeof search.topic === "string" ? search.topic : "";
+  const assessmentContext = trialMode || search.context === "trial";
   const band =
     typeof search.filter === "string" && bands.includes(search.filter)
       ? search.filter
@@ -238,6 +295,16 @@ export function MapView({
   };
   const skills = catalog.data?.skills;
   const selected = skills?.find((s) => s.id === selectedId);
+  const unknownSkill = !!skills && !!selectedId && !selected;
+  usePathwaysMetadata(
+    selected,
+    !!selectedId && (unknownSkill || catalog.isError),
+  );
+  const linkSearch = () => ({
+    topic: query || undefined,
+    filter: band || undefined,
+    context: assessmentContext ? ("trial" as const) : undefined,
+  });
   const detailHeading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
     if (selected) detailHeading.current?.focus({ preventScroll: true });
@@ -254,21 +321,25 @@ export function MapView({
       filter?: string;
     },
     replace = false,
-  ) =>
-    void navigate({
-      to: "/pathways",
-      search: {
-        skill: selectedId || undefined,
-        topic: query || undefined,
-        filter: band || undefined,
-        context: trialMode ? "trial" : undefined,
-        ...values,
-      },
-      replace,
-    });
+  ) => {
+    const skillId = values.skill === undefined ? selectedId : values.skill;
+    const nextSearch = {
+      topic: values.topic === undefined ? query || undefined : values.topic,
+      filter: values.filter === undefined ? band || undefined : values.filter,
+      context: assessmentContext ? ("trial" as const) : undefined,
+    };
+    if (skillId)
+      void navigate({
+        to: "/pathways/$skillId",
+        params: { skillId },
+        search: nextSearch,
+        replace,
+      });
+    else void navigate({ to: "/pathways", search: nextSearch, replace });
+  };
   const select = (id: string) => {
     setBrowse(false);
-    update({ skill: id || undefined });
+    update({ skill: id });
   };
   const filtered =
     skills?.filter(
@@ -289,10 +360,15 @@ export function MapView({
           const s = skills?.find((s) => s.id === id);
           return s ? (
             <li key={id}>
-              <button onClick={() => select(id)}>
+              <Link
+                to="/pathways/$skillId"
+                params={{ skillId: id }}
+                search={linkSearch()}
+                onClick={() => setBrowse(false)}
+              >
                 {s.title}
                 <small>{bandLabel(s.gradeBand)}</small>
-              </button>
+              </Link>
             </li>
           ) : null;
         })}
@@ -318,7 +394,7 @@ export function MapView({
           to="/$"
           params={{ _splat: start.slice(1) }}
         >
-          Start learning →
+          {actionLabel} →
         </Link>
       </header>
       <div className="pathways-heading">
@@ -331,12 +407,34 @@ export function MapView({
           from kindergarten through precalculus
         </p>
       </div>
+      {guestMode && (
+        <div className="pathways-guest-intro">
+          <p>
+            No account needed
+            {catalog.data?.trial?.free
+              ? ` · ${catalog.data.trial.free} free problems`
+              : ""}
+          </p>
+          <a
+            href="https://www.facebook.com/reel/2346490016085488"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            See the map light up ↗
+          </a>
+        </div>
+      )}
       <div className="pathways-status">
         <p role="status" data-priority={noticeImportant}>
           {notice}
         </p>
         {controls}
       </div>
+      {unknownSkill && (
+        <p role="alert" className="pathways-unknown">
+          This skill is not in the map. Browse the curriculum to find a skill.
+        </p>
+      )}
       <div className="pathways-toolbar">
         <label className="pathways-search">
           {" "}
@@ -405,9 +503,12 @@ export function MapView({
               <ul className="pathways-skill-list">
                 {filtered.map((s) => (
                   <li key={s.id}>
-                    <button
-                      aria-pressed={selectedId === s.id}
-                      onClick={() => select(s.id)}
+                    <Link
+                      to="/pathways/$skillId"
+                      params={{ skillId: s.id }}
+                      search={linkSearch()}
+                      aria-current={selectedId === s.id ? "page" : undefined}
+                      onClick={() => setBrowse(false)}
                     >
                       <span
                         className={`pathways-gem stage-${crystal(stats.get(s.id)).stage}`}
@@ -426,7 +527,7 @@ export function MapView({
                           successes
                         </small>
                       </span>
-                    </button>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -512,7 +613,7 @@ export function MapView({
                           to="/$"
                           params={{ _splat: start.slice(1) }}
                         >
-                          Start learning
+                          {actionLabel}
                         </Link>
                       )}
                       <button

@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const catalogSchema = z.object({
+  trial: z.object({ free: z.number().int().positive() }).optional(),
   skills: z.array(
     z.object({
       id: z.string(),
