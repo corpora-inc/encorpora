@@ -8,7 +8,7 @@ const notificationPolicy = {
     processors: [
       ...consentFixture.notice.processors,
       {
-        name: "Resend",
+        name: "Resend (Plus Five Five, Inc.)",
         service: "Transactional email",
         data: "Parent email",
         purpose: "Payment notifications",
