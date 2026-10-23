@@ -6,6 +6,7 @@ from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOI
 from assessment_gap_math_oracle import SUPPORTED as ASSESSMENT_GAP, CHOICE as ASSESSMENT_GAP_CHOICE, solve as solve_assessment_gap, self_test as review_assessment_gap_fixtures, review_problem as review_assessment_gap_problem
 from triangle_congruence_math_oracle import SUPPORTED as TRIANGLE_CONGRUENCE, solve as solve_triangle_congruence, review_problem as review_triangle_congruence_problem, self_test as review_triangle_congruence_fixtures
 from study_design_math_oracle import SUPPORTED as STUDY_DESIGN, solve as solve_study_design, review_problem as review_study_design_problem, self_test as review_study_design_fixtures
+from quadratic_irrational_math_oracle import SUPPORTED as QUADRATIC_IRRATIONAL, solve as solve_quadratic_irrational, review_problem as review_quadratic_irrational_problem, self_test as review_quadratic_irrational_fixtures
 import json
 import math
 import os
@@ -95,6 +96,7 @@ SUPPORTED = frozenset({
 })
 SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE | POWER | ALGEBRA_STATISTICS
 SUPPORTED |= TRIANGLE_CONGRUENCE
+SUPPORTED |= QUADRATIC_IRRATIONAL
 SUPPORTED |= STUDY_DESIGN
 SUPPORTED |= ASSESSMENT_GAP
 SUPPORTED |= RADICAL_EQUATION | RATIONAL_EQUATION | GEOMETRY_PROOF
@@ -191,6 +193,8 @@ def solve(public):
 def solve_family(public):
     if public["templateId"] in TRIANGLE_CONGRUENCE:
         return solve_triangle_congruence(public)
+    if public["templateId"] in QUADRATIC_IRRATIONAL:
+        return solve_quadratic_irrational(public)
     if public["templateId"] in STUDY_DESIGN:
         return solve_study_design(public)
     if public["templateId"] in ASSESSMENT_GAP:
@@ -574,6 +578,8 @@ def review(stream):
             review_linear_function_problem(problem)
         if template in TRIANGLE_CONGRUENCE:
             review_triangle_congruence_problem(problem)
+        if template in QUADRATIC_IRRATIONAL:
+            review_quadratic_irrational_problem(problem)
         if template in STUDY_DESIGN:
             review_study_design_problem(problem)
         if template in ASSESSMENT_GAP:
@@ -637,7 +643,7 @@ def review(stream):
             review_rational_problem(problem)
             if record:
                 rational_corpus.record(public, solved)
-        if template in TRIANGLE_CONGRUENCE | STUDY_DESIGN | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        if template in TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -694,6 +700,7 @@ def review(stream):
     # Reject invalid input before the expensive authored-content fixtures. Every
     # successful review still runs the full fixture and mutation inventory.
     review_triangle_congruence_fixtures()
+    review_quadratic_irrational_fixtures()
     review_study_design_fixtures()
     review_assessment_gap_fixtures()
     review_radical_equation_fixtures()
