@@ -27,6 +27,10 @@ class ReportTests(unittest.TestCase):
         self.row.ad_group.id = 20
         self.row.ad_group.name = "efa-math"
         self.row.ad_group.status = "REMOVED"
+        self.row.ad_group_ad.ad.id = 30
+        self.row.ad_group_ad.status = "REMOVED"
+        self.row.ad_group_ad.ad.final_urls.append("https://corpora.inc/esa/arkansas-efa/?utm_content=example")
+        self.row.ad_group_ad.ad.final_url_suffix = "utm_source=google"
         self.row.segments.date = "2026-10-01"
         self.row.metrics.cost_micros = 9007199254740993
         self.row.metrics.clicks = 3
@@ -35,11 +39,19 @@ class ReportTests(unittest.TestCase):
         with patch.object(campaigns, "rows", side_effect=[[self.account], [self.row]]) as read:
             result = campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
         query = read.call_args.args[2]
-        self.assertIn("FROM ad_group", query)
-        self.assertIn("campaign.name LIKE 'AMP | AR | %'", query)
+        self.assertIn("FROM ad_group_ad ", query)
+        self.assertIn("campaign.name REGEXP_MATCH '^AMP [|] (AR|AZ) [|] .*'", query)
         self.assertIn("segments.date BETWEEN '2026-10-01' AND '2026-10-21'", query)
         self.assertIn("campaign.status IN ('ENABLED','PAUSED','REMOVED')", query)
         self.assertIn("ad_group.status IN ('ENABLED','PAUSED','REMOVED')", query)
+        self.assertIn("ad_group_ad.status IN ('ENABLED','PAUSED','REMOVED')", query)
+        self.assertEqual(result["granularity"], "day_ad")
+        self.assertEqual(result["campaign_prefixes"], ["AMP | AR | ", "AMP | AZ | "])
+        self.assertEqual(result["rows"][0]["ad"], {
+            "id": "30", "status": "REMOVED",
+            "final_urls": ["https://corpora.inc/esa/arkansas-efa/?utm_content=example"],
+            "final_url_suffix": "utm_source=google",
+        })
         self.assertEqual(result["rows"][0]["metrics"]["cost_micros"], "9007199254740993")
         self.assertEqual(set(result["rows"][0]["metrics"]), {"impressions", "clicks", "cost_micros", "conversions", "conversions_value"})
         self.assertEqual(result["rows"][0]["metrics"]["impressions"], "0")
@@ -49,8 +61,32 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(result["currency"], "USD")
         self.assertEqual(result["customer_id"], CID)
         self.assertEqual(result["date_range"], {"since":"2026-10-01", "until":"2026-10-21", "inclusive":True})
-        self.assertIn("not verified EFA settlement", result["interpretation"])
+        self.assertIn("not verified EFA/ESA settlement", result["interpretation"])
         self.assertIn("UTC", result["interpretation"])
+
+    def test_both_states_and_two_ads_in_one_group_remain_distinct(self):
+        variant = type(self.row)(self.row)
+        variant.ad_group_ad.ad.id = 31
+        variant.ad_group_ad.status = "PAUSED"
+        variant.metrics.cost_micros = 200
+        arizona = type(variant)(variant)
+        arizona.campaign.id = 11
+        arizona.campaign.name = "AMP | AZ | example | def"
+        arizona.ad_group.id = 21
+        arizona.ad_group_ad.ad.id = 32
+        arizona.ad_group_ad.ad.final_urls[:] = ["https://corpora.inc/esa/arizona-esa/?utm_content=az-example"]
+        arizona.metrics.cost_micros = 300
+        with patch.object(campaigns, "rows", side_effect=[[self.account], [self.row, variant, arizona]]):
+            result = campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
+        self.assertEqual([row["ad"]["id"] for row in result["rows"]], ["30", "31", "32"])
+        self.assertEqual([row["ad_group"]["id"] for row in result["rows"]], ["20", "20", "21"])
+        self.assertEqual([row["metrics"]["cost_micros"] for row in result["rows"]], ["9007199254740993", "200", "300"])
+
+    def test_missing_ad_identity_is_not_exported_as_aggregate_data(self):
+        self.row.ad_group_ad.ad.id = 0
+        with patch.object(campaigns, "rows", side_effect=[[self.account], [self.row]]):
+            with self.assertRaisesRegex(ValueError, "ad identity"):
+                campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
 
     def test_invalid_ranges_reject_before_any_platform_call(self):
         cases = [(None, None), ("2026-01-01", None), ("2026-02-30", "2026-03-01"),
@@ -80,7 +116,7 @@ class ReportTests(unittest.TestCase):
             result = campaigns.report(self.client, CID, "2026-10-01", "2026-10-21")
         self.assertEqual(result["rows"], [])
         self.assertIn("Empty rows do not prove", result["interpretation"])
-        for field, value in [("name", "Unrelated campaign"), ("date", "2026-09-30"), ("date", "2026-10-22")]:
+        for field, value in [("name", "Unrelated campaign"), ("name", "AMP | CA | example"), ("name", "AMP | AZextra | example"), ("date", "2026-09-30"), ("date", "2026-10-22")]:
             row = type(self.row)(self.row)
             setattr(row.campaign if field == "name" else row.segments, field, value)
             with patch.object(campaigns, "rows", side_effect=[[self.account], [row]]):
