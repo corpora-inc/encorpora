@@ -1350,6 +1350,54 @@ try {
     "pending label timer cannot resurrect labels after context loss",
   );
   await lost.close();
+  // Authored navigation works across grade bands without creating prerequisite links.
+  for (const width of [320, 390, 768, 1280]) {
+    for (const colorScheme of ["light", "dark"] as const) {
+      const parity = await browser.newPage({
+        viewport: { width, height: 900 },
+        colorScheme,
+        reducedMotion: "reduce",
+      });
+      await fixture(parity, { signedIn: false });
+      await parity.goto(`${origin}/pathways/odd-and-even`);
+      const related = parity.locator(".pathways-connections");
+      await related
+        .getByText("When each kit holds two items", { exact: false })
+        .waitFor();
+      assert.equal(await related.locator("p").count(), 4);
+      const application = related.getByRole("link", { name: /Event Sets/ });
+      assert.equal(
+        await application.getAttribute("href"),
+        "/pathways/event-sets",
+      );
+      await related.scrollIntoViewIfNeeded();
+      await noOverflow(parity);
+      if (width <= 390)
+        assert(
+          await parity
+            .locator(".pathways-detail")
+            .evaluate((el) => el.scrollHeight <= el.clientHeight + 2),
+          "related explanations expand the phone card",
+        );
+      await parity.screenshot({
+        path: `${output}/connections-${width}-${colorScheme}.png`,
+      });
+      await application.click();
+      await parity.waitForURL("**/pathways/event-sets");
+      await parity
+        .getByRole("heading", { name: "Event Sets", exact: true })
+        .waitFor();
+      await parity
+        .locator(".pathways-connections")
+        .getByRole("link", { name: /Odd And Even/ })
+        .click();
+      await parity.waitForURL("**/pathways/odd-and-even");
+      await parity
+        .getByRole("heading", { name: "Odd And Even", exact: true })
+        .waitFor();
+      await parity.close();
+    }
+  }
   console.log(
     process.env.AMP_MAP_FOCUS
       ? "Pathways focused cases: guest/trial entry, canonical links, learner states, and phone card scrolling passed."

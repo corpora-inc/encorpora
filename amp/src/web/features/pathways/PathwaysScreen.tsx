@@ -27,7 +27,8 @@ import {
   catalogSchema,
   crystal,
   neighborhoods,
-  relatedSkills,
+  relatedConnections,
+  connectionLabel,
   neighborhood,
   progressSchema,
   frontierSchema,
@@ -359,6 +360,7 @@ export function MapView({
   const selectedEvidence = selected ? stats.get(selected.id) : undefined;
   const families =
     catalog.data?.templates.filter((t) => t.skillId === selected?.id) ?? [];
+  const related = selected ? relatedConnections(skills ?? [], selected.id) : [];
   const links = (ids: string[]) =>
     ids.length ? (
       <ul>
@@ -669,10 +671,31 @@ export function MapView({
                   <i className="pathways-dot related" />
                   Related skills
                 </h3>
-                <p className="pathways-muted">
-                  Other skills with shared foundations.
-                </p>
-                {links(relatedSkills(skills, selected.id).map((s) => s.id))}
+                {related.length ? (
+                  <ul className="pathways-connections">
+                    {related.map(({ skill, connection }) => (
+                      <li key={skill.id}>
+                        <Link
+                          to="/pathways/$skillId"
+                          params={{ skillId: skill.id }}
+                          search={linkSearch()}
+                          onClick={() => setBrowse(false)}
+                        >
+                          {skill.title}
+                          <small>
+                            {bandLabel(skill.gradeBand)}
+                            {connection
+                              ? ` · ${connectionLabel(connection)}`
+                              : " · Shared foundations"}
+                          </small>
+                        </Link>
+                        {connection && <p>{connection.explanation}</p>}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="pathways-muted">None listed.</p>
+                )}
                 {range && (
                   <p className="pathways-range">
                     {strandNames[selected.strand] ?? selected.strand} frontier:{" "}

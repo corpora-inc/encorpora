@@ -8,6 +8,8 @@ import {
   connections,
   illumination,
   relatedSkills,
+  relatedConnections,
+  catalogSchema,
 } from "../src/web/features/pathways/model";
 
 test("crystal growth survives a miss and a retrieval streak reset", () => {
@@ -129,6 +131,49 @@ test("related pathways share foundations without becoming prerequisite edges", (
   );
   assert(!connections(graph, "selected").prerequisites.has("peer"));
   assert(!connections(graph, "selected").dependents.has("peer"));
+});
+
+test("authored parity connections cross grade bands in both directions without creating prerequisite paths", () => {
+  const related = relatedConnections(skills, "odd-and-even");
+  assert.deepEqual(
+    related.filter((r) => r.connection).map((r) => r.skill.id),
+    [
+      "rule-patterns",
+      "factors-multiples",
+      "multistep-whole-stories",
+      "event-sets",
+    ],
+  );
+  assert(
+    related
+      .find((r) => r.skill.id === "event-sets")!
+      .connection!.explanation.includes("probabilities"),
+  );
+  const inverse = relatedConnections(skills, "event-sets").find(
+    (r) => r.skill.id === "odd-and-even",
+  );
+  assert.equal(inverse?.connection?.direction, "backward");
+  assert.equal(inverse?.connection?.kind, "application");
+  assert.equal(connections(skills, "odd-and-even").dependents.size, 0);
+  assert(!connections(skills, "event-sets").prerequisites.has("odd-and-even"));
+  const withoutNavigation = skills.map(
+    ({ connections: _connections, ...skill }) => skill,
+  );
+  for (const skill of skills)
+    assert.deepEqual(
+      connections(skills, skill.id),
+      connections(withoutNavigation, skill.id),
+    );
+});
+
+test("older catalogs remain readable and missing navigation targets are not shown", () => {
+  const catalog = catalogSchema.parse({
+    skills: skills.map(({ connections: _connections, ...s }) => s),
+    templates: [],
+  });
+  assert.equal(catalog.skills.length, skills.length);
+  const parity = skills.find((s) => s.id === "odd-and-even")!;
+  assert.deepEqual(relatedSkills([parity], parity.id), []);
 });
 
 test("early pathways sit closer and lower than advanced pathways", () => {

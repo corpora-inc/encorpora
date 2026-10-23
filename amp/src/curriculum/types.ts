@@ -24,6 +24,14 @@ export interface Standard {
   /** Official (+) designation for additional high-school mathematics. */
   advanced?: boolean;
 }
+/** Navigation only. These links never establish readiness or award prerequisite credit. */
+export interface SkillConnection {
+  skillId: string;
+  kind: "extension" | "application" | "related";
+  direction: "forward" | "backward";
+  explanation: string;
+  templateIds: string[];
+}
 export interface Skill {
   id: string;
   title: string;
@@ -32,6 +40,7 @@ export interface Skill {
   strand: string;
   prerequisites: string[];
   prerequisiteBasis: "editorial";
+  connections?: SkillConnection[];
   alignments: { standardId: string; facet: string; basis: "editorial" }[];
   facets: { id: string; description: string; status: CoverageStatus }[];
   status: CoverageStatus;
