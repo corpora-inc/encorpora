@@ -848,7 +848,7 @@
 }
 @media (max-width: 650px) {
   .pathways.has-selection .pathways-heading,
-  .pathways.has-selection .pathways-status > p {
+  .pathways.has-selection .pathways-status > p:not([data-priority="true"]) {
     display: none;
   }
   .pathways.has-selection .pathways-status {

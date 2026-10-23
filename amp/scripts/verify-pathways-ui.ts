@@ -286,6 +286,13 @@ try {
         1,
         "durable crystal survives zero resettable retrievals",
       );
+      assert.equal(
+        await page
+          .getByRole("button", { name: "Preview illumination", exact: true })
+          .count(),
+        1,
+        "selected map retains a named preview control",
+      );
       const opener = page.getByRole("button", {
         name: "View lesson",
         exact: true,
@@ -407,7 +414,7 @@ try {
     .getByText("Your free assessment and practice are lighting up this map.", {
       exact: true,
     })
-    .waitFor();
+    .waitFor({ state: "attached" });
   assert.equal(
     await trialPage.getByRole("combobox", { name: /^Learner/ }).count(),
     0,

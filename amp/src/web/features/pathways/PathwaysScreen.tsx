@@ -77,6 +77,7 @@ function TrialAtlas({ session }: { session: TrialSession }) {
       start="/try/practice"
       canPractice={!!trial.data?.remaining}
       trialMode
+      noticeImportant={progress.isError}
       frontier={trial.data?.frontier.current}
       notice={
         progress.isError
@@ -144,6 +145,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
       key={learner?.id ?? "none"}
       canPractice={canPractice}
       notice={notice}
+      noticeImportant={!learner || me.isError || progress.isError}
       frontier={frontier.data}
       learnerName={learner?.name}
       controls={
@@ -163,7 +165,7 @@ function LearnerMap({ session }: { session: AuthSession }) {
             </select>
           </label>
           {frontier.isError && (
-            <p role="status">
+            <p role="status" data-priority="true">
               The frontier estimate could not be loaded. Retry to refresh it.
             </p>
           )}
@@ -192,6 +194,7 @@ export function MapView({
   frontier,
   learnerName,
   trialMode = false,
+  noticeImportant = false,
 }: {
   evidence: Evidence[];
   start: "/try" | "/practice" | "/start" | "/try/practice";
@@ -201,6 +204,7 @@ export function MapView({
   frontier?: Frontier;
   learnerName?: string;
   trialMode?: boolean;
+  noticeImportant?: boolean;
 }) {
   const catalog = useQuery({
     queryKey: ["pathways-catalog"],
@@ -327,7 +331,9 @@ export function MapView({
         </p>
       </div>
       <div className="pathways-status">
-        <p role="status">{notice}</p>
+        <p role="status" data-priority={noticeImportant}>
+          {notice}
+        </p>
         {controls}
       </div>
       <div className="pathways-toolbar">
@@ -359,7 +365,11 @@ export function MapView({
             {browse ? "Close" : "Browse"}
           </span>
         </button>
-        <button aria-pressed={preview} onClick={() => setPreview(!preview)}>
+        <button
+          aria-label={preview ? "Show my progress" : "Preview illumination"}
+          aria-pressed={preview}
+          onClick={() => setPreview(!preview)}
+        >
           <span className="toolbar-wide">
             {preview ? "Show my progress" : "Preview illumination"}
           </span>
