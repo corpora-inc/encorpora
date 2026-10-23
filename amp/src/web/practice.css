@@ -169,6 +169,13 @@ nav button {
 .problem-content .question:focus {
   outline: none;
 }
+/* Cases and matrices cannot wrap between their columns. Keep their prompts
+   readable inside the narrow phone stage, including its scrollbar gutters. */
+@media (max-width: 380px) {
+  .problem-content .question:has(.mtable) {
+    font-size: 18px;
+  }
+}
 .problem-content .figure {
   flex: 0 1 auto;
   min-height: min(110px, var(--figure-cap-height, 110px));
