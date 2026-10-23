@@ -342,6 +342,38 @@ for (const [campaign, programId, jurisdiction, creative, source, medium] of [
     "google",
     "cpc",
   ],
+  [
+    "ar-efa-launch",
+    "ar-efa",
+    "AR",
+    "ar-map-cedar-vertical-v5",
+    "facebook",
+    "paid-social",
+  ],
+  [
+    "az-esa-launch",
+    "az-esa",
+    "AZ",
+    "az-map-marin-vertical-v5",
+    "instagram",
+    "paid-social",
+  ],
+  [
+    "ar-efa-launch",
+    "ar-efa",
+    "AR",
+    "shared-practice-marin-vertical-v1",
+    "facebook",
+    "paid-social",
+  ],
+  [
+    "az-esa-launch",
+    "az-esa",
+    "AZ",
+    "az-practice-marin-vertical-v1",
+    "instagram",
+    "paid-social",
+  ],
 ] as const)
   test(
     `funded campaign ${campaign}/${creative} counts settlement/refund once after credit activation`,
