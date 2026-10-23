@@ -160,6 +160,8 @@ type Props = {
   strand?: string;
   /** A calm status in the toolbar, such as the free-practice meter. */
   status?: ReactNode;
+  /** Compact account actions supplied by browser routes. */
+  account?: ReactNode;
   /** A skill this answer just mastered, shown once with the feedback. */
   mastered?: string | null;
   /** Sends "Report a problem" once this problem resolves. Absent: no flag. */
@@ -787,6 +789,7 @@ export function PracticeWorkspace(props: Props) {
             </span>
           </span>
           {props.status}
+          {props.account}
           {props.calculator ? (
             <button
               ref={calculatorToggle}

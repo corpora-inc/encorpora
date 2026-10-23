@@ -1,3 +1,4 @@
+import { AccountMenu } from "../features/account/AccountMenu";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
 import type { ProblemHint } from "../../math/contracts";
 import {
@@ -1149,14 +1150,14 @@ function LegacyScreen() {
           )}
           {token && !familyOpen && (
             <Menu
-              label="Family"
-              aria-label="Family menu"
+              label="Account"
+              aria-label="Account menu"
               open={familyMenuOpen}
               onOpenChange={setFamilyMenuOpen}
               triggerRef={familyMenuTrigger}
               triggerClassName="account-menu-trigger"
             >
-              <MenuItem onSelect={openFamily}>Manage family</MenuItem>
+              <MenuItem onSelect={openFamily}>Manage account</MenuItem>
               {learner && learner.birthYear != null && (
                 <MenuItem
                   disabled={busy}
@@ -1379,7 +1380,7 @@ function LegacyScreen() {
             <button onClick={() => void action(loadFamily)}>Try again</button>
           )}
           <button className="secondary" onClick={openFamily}>
-            Manage family
+            Manage account
           </button>
         </section>
       ) : !learningAllowed ? (
@@ -1403,7 +1404,7 @@ function LegacyScreen() {
             Continue setup
           </button>
           <button className="secondary" onClick={openFamily}>
-            Manage family
+            Manage account
           </button>
         </section>
       ) : !learner && nativeRuntime ? (
@@ -1454,6 +1455,7 @@ function LegacyScreen() {
       ) : tab === "practice" ? (
         problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
+            account={nativeRuntime ? undefined : <AccountMenu />}
             exit={() => setExploring(true)}
             exitHref="/"
             key={problem.id}

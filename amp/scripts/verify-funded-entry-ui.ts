@@ -280,7 +280,7 @@ try {
           `${origin}/purchase/${entry.slug}?${entryCampaign}&email=must-not-forward`,
         );
         await page
-          .getByRole("heading", { name: "Create your parent account" })
+          .getByRole("heading", { name: "Create your account" })
           .waitFor()
           .catch(async (e) => {
             console.log(

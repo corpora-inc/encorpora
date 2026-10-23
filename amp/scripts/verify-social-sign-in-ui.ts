@@ -16,7 +16,7 @@ import { migrate } from "./migrate";
 import { fill, socialCopyFor } from "../src/web/features/auth/social-copy";
 
 /** Provider sign-in in the browser: the brand button stack on sign-in and
- * "Create your parent account" at phone, small-phone and desktop sizes in
+ * "Create your account" at phone, small-phone and desktop sizes in
  * both themes, a cancelled provider screen, and a new parent who signs up
  * with a provider and lands in the guided first run. Provider screens and
  * endpoints are answered by this script; nothing leaves the machine. */
@@ -203,7 +203,7 @@ async function checkScreen(
   const label = `${path} ${theme} ${size.width}x${size.height} ${lang}`;
   await page
     .getByRole("heading", {
-      name: path === "/sign-up" ? "Create your parent account" : "Sign in",
+      name: path === "/sign-up" ? "Create your account" : "Sign in",
     })
     .waitFor();
   const boxes = await measureStack(page, label);
@@ -326,8 +326,10 @@ try {
   await alert.waitFor({ state: "detached" });
   assert.equal(await shift(page), 0, "no layout shift when dismissed");
 
-  // A new parent signs up with Google and goes straight into the first run.
+  // A new account sees explicit success before continuing learner setup.
   await page.getByRole("button", { name: "Continue with Google" }).click();
+  await page.getByRole("heading", { name: "Your account is ready" }).waitFor();
+  await page.getByRole("link", { name: "Continue setup" }).click();
   await page.getByLabel("Learner name").waitFor();
   assert.match(new URL(page.url()).pathname, /^\/start/);
   const me = await page.evaluate(async () => {

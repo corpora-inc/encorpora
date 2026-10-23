@@ -34,14 +34,14 @@ type Step =
   "sign-in" | "create" | "forgot" | "reset" | "check-email" | "two-factor";
 const titles: Record<Step, string> = {
   "sign-in": "Sign in",
-  create: "Create your parent account",
+  create: "Create your account",
   forgot: "Reset your password",
   reset: "Choose a new password",
   "check-email": "Check your email",
   "two-factor": "Enter your code",
 };
 
-/** Parent sign-in with URL-backed steps and account-scoped session refresh. */
+/** Account sign-in with URL-backed steps and account-scoped session refresh. */
 export function SignInScreen() {
   const routeLocation = useLocation(),
     navigate = useNavigate();
@@ -166,7 +166,7 @@ export function SignInScreen() {
   }
   const carry = continuationSearch(routeLocation.search);
   const returnTo = continuationUrl(carry, "/");
-  const newUserReturn = continuationUrl(carry);
+  const newUserReturn = continuationUrl(carry, "/account/ready");
   const done = async () => {
     notifyAccountSessionChanged();
     await queryClient.fetchQuery({ ...sessionOptions, staleTime: 0 });
@@ -181,7 +181,7 @@ export function SignInScreen() {
         to: isFundedReturn(carry.return)
           ? fundedPrograms[carry.return].path
           : step === "create"
-            ? "/start"
+            ? "/account/ready"
             : "/",
         search: carry,
         replace: true,
@@ -260,7 +260,7 @@ export function SignInScreen() {
     });
   }
   // The account, its passkey and the session are created together, then the
-  // parent goes straight into the guided first run.
+  // account owner sees confirmation and a clear next step.
   function createWithPasskey(event: FormEvent) {
     event.preventDefault();
     void run(async () => {
@@ -276,7 +276,7 @@ export function SignInScreen() {
     });
   }
   // The provider returns here on failure (with its code), to the guided first
-  // run for a new parent, or to where this sign-in was headed.
+  // run for a new account, or to where this sign-in was headed.
   const social = (provider: Provider) => {
     setPending(provider);
     setError("");

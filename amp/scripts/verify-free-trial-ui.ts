@@ -796,7 +796,7 @@ try {
       await page.getByRole("button", { name: "Continue", exact: true }).click();
       await page.waitForURL("**/sign-up");
       await page
-        .getByRole("heading", { name: "Create your parent account" })
+        .getByRole("heading", { name: "Create your account" })
         .waitFor();
       // The verification link returns to /start once the account exists.
       await page.evaluate(() => localStorage.setItem("fixture.parent", "1"));

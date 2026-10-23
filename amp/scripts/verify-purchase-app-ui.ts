@@ -208,9 +208,9 @@ async function setup(
   };
 }
 async function openAccess(page: Page) {
-  await page.getByRole("button", { name: "Family menu" }).click();
+  await page.getByRole("button", { name: "Account menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Manage family", exact: true })
+    .getByRole("menuitem", { name: "Manage account", exact: true })
     .click();
   await page.getByRole("button", { name: "Access", exact: true }).click();
   await page
@@ -470,7 +470,7 @@ try {
       ),
     purchaseId,
   );
-  await returned.page.getByRole("button", { name: "Family menu" }).click();
+  await returned.page.getByRole("button", { name: "Account menu" }).click();
   await returned.page
     .getByRole("menuitem", { name: "Sign out", exact: true })
     .click();

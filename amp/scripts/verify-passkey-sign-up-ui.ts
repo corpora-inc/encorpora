@@ -122,7 +122,7 @@ try {
       await page.addInitScript(recordShifts);
       await page.goto(`${origin}/sign-up`);
       await page
-        .getByRole("heading", { name: "Create your parent account" })
+        .getByRole("heading", { name: "Create your account" })
         .waitFor();
       const primary = page.getByRole("button", {
         name: "Create account with a passkey",
@@ -203,7 +203,9 @@ try {
   await page
     .getByRole("button", { name: "Create account with a passkey" })
     .click();
-  // Straight into the guided first run: the free trial.
+  // Confirm successful registration before continuing the free assessment.
+  await page.getByRole("heading", { name: "Your account is ready" }).waitFor();
+  await page.getByRole("link", { name: "Continue free assessment" }).click();
   await page.waitForURL(`${origin}/try`);
   await page
     .getByRole("heading", { name: "Your math pathways start here" })
