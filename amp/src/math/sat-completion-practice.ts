@@ -727,7 +727,7 @@ function draft(id: string, r: ReturnType<typeof random>): Draft {
       maxHeight: 260,
     });
     return {
-      prompt: `Four observations are plotted: $${xs.map((x, i) => `(${x},${ys[i]})`).join(", ")}$. Each pair gives time in days and measured amount. Which model has the smallest sum of squared residuals for these observations? A residual is observed output minus predicted output.`,
+      prompt: `Observed (day, amount) pairs: $${xs.map((x, i) => `(${x},${ys[i]})`).join(", ")}$. A residual is observed minus predicted amount. Which model gives the smallest sum of squared residuals?`,
       figure: { kind: "scene", scene: visual },
       answer: "",
       hint: `At time 3, the observed amount is ${ys[3]}. For each model, subtract its predicted amount from the observed amount, square the difference, and add over all 4 observations.`,
