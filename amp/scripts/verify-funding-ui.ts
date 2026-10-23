@@ -1,3 +1,5 @@
+import { fixtureMe } from "./me-fixture";
+import { retentionNotice } from "../src/family/contracts.js";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { chromium, webkit } from "playwright";
@@ -53,6 +55,31 @@ try {
     let heldResolve!: () => void, releaseResolve!: () => void;
     let held = Promise.resolve(),
       release = Promise.resolve();
+    await page.route("**/api/v1/me", (route) =>
+      route.fulfill({
+        json: fixtureMe(
+          {
+            consent: {
+              status: "active",
+              policyVersion: "fixture",
+              recordedAt: "2026-01-01T00:00:00.000Z",
+              withdrawnAt: null,
+            },
+            learners: [
+              {
+                id: "10720fef-40bf-4e75-8982-208b5e05f84a",
+                name: "Sample learner",
+                deletedAt: null,
+                access: [],
+                stripeLinked: false,
+              },
+            ],
+            retained: retentionNotice,
+          },
+          "parent-a",
+        ),
+      }),
+    );
     await page.route("**/api/v1/funding/**", async (route) => {
       const request = route.request(),
         path = new URL(request.url()).pathname;
