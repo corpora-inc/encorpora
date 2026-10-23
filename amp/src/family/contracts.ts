@@ -4,6 +4,7 @@ export interface FamilyLearner {
   id: string;
   name: string;
   birthYear?: number | null;
+  satMathFocus?: boolean;
   deletedAt: string | null;
   access: {
     channel: string;

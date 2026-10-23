@@ -158,6 +158,7 @@ type Props = {
   exitHref: string;
   requestLesson: () => Promise<ProblemLessonView>;
   strand?: string;
+  satMathFocus?: boolean;
   /** A calm status in the toolbar, such as the free-practice meter. */
   status?: ReactNode;
   /** Compact account actions supplied by browser routes. */
@@ -785,6 +786,7 @@ export function PracticeWorkspace(props: Props) {
             title={meta?.title ?? "Practice"}
           >
             <span className="workspace-topic-text">
+              {props.satMathFocus ? "SAT Math · " : ""}
               {meta?.title ?? "Practice"}
             </span>
           </span>

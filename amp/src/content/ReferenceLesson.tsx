@@ -1,3 +1,4 @@
+import { Figure } from "../web/Figure";
 import type { ReactNode } from "react";
 import type { Lesson } from "./lessons";
 import { LessonIllustration } from "./LessonIllustration";
@@ -60,6 +61,18 @@ export function ReferenceLesson({
         <p>
           <PrintMathText text={lesson.workedExample.prompt} />
         </p>
+        {lesson.workedExample.figure && (
+          <Figure figure={lesson.workedExample.figure} />
+        )}
+        {lesson.workedExample.choices && (
+          <ul className="worked-example-choices">
+            {lesson.workedExample.choices.map((choice, i) => (
+              <li key={i}>
+                <PrintMathText text={choice} />
+              </li>
+            ))}
+          </ul>
+        )}
         <ol>
           {lesson.workedExample.steps.map((step, i) => (
             <li key={i}>

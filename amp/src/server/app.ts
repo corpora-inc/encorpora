@@ -1,3 +1,4 @@
+import { satPracticeEligible } from "../curriculum/sat.js";
 import {
   assertPracticePolicy,
   type PracticePolicy,
@@ -298,6 +299,18 @@ function routes(app: FastifyInstance, options: AppOptions) {
       return tx.frontier();
     });
   });
+  app.post("/api/v1/learners/:learnerId/practice-settings", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    const { satMathFocus } = z
+      .object({ satMathFocus: z.boolean() })
+      .strict()
+      .parse(request.body);
+    return options.repository.transaction(account, learnerId, async (tx) => {
+      await tx.setSatMathFocus(satMathFocus);
+      return { satMathFocus };
+    });
+  });
   app.get("/api/v1/learners/:learnerId/starting-point", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
@@ -430,6 +443,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
         trialRemaining === null
           ? input.count
           : Math.min(input.count, trialRemaining);
+      const satMathFocus = await tx.satMathFocus();
       const selected = focused
         ? Array.from({ length: count }, () => ({
             template: focused,
@@ -440,7 +454,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
           }))
         : planMixedPractice({
             policy: options.practicePolicy,
-            templates: supported,
+            templates: satMathFocus
+              ? supported.filter(satPracticeEligible)
+              : supported,
             skills,
             attempts: await tx.recentAttempts(),
             evidence: await tx.skillEvidence(),

@@ -1,3 +1,4 @@
+import { satCompletionPrinciples } from "./sat-completion-lessons";
 import { congruencePrinciples } from "./congruence-lessons";
 import { assessmentGapPrinciples } from "./assessment-gap-lessons";
 import { radicalEquationPrinciples } from "./radical-equation-lessons";
@@ -64,6 +65,7 @@ import { absoluteValuePrinciples } from "./absolute-value-lessons";
  * general form. Shown in every lesson so learners meet the real vocabulary. */
 export const principles: Record<string, string> = {
   ...assessmentGapPrinciples,
+  ...satCompletionPrinciples,
   ...factoringPrinciples,
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,

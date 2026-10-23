@@ -14,7 +14,7 @@
     "test": "node scripts/test-suite.mjs all",
     "test:placement-sim": "tsx --test tests/*.sim.ts",
     "test:db": "tsx scripts/test-database-preflight.ts && tsx --test tests/*.integration.ts",
-    "test:ui": "tsx scripts/verify-ui.ts && npm run test:calculator-ui && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && tsx scripts/verify-unit-region-reader.ts && tsx scripts/verify-ratio-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:multiselect-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui && npm run test:measurement-ui && npm run test:lesson-animation-ui",
+    "test:ui": "tsx scripts/verify-ui.ts && npm run test:calculator-ui && tsx scripts/verify-book-ui.ts && tsx scripts/verify-book-models.ts && tsx scripts/verify-algebra-reader.ts && tsx scripts/verify-early-number-reader.ts && tsx scripts/verify-unit-region-reader.ts && tsx scripts/verify-ratio-reader.ts && npm run test:funding-ui && npm run test:choice-ui && npm run test:multiselect-ui && npm run test:consent-ui && npm run test:progress-ui && npm run test:graphical-ui && npm run test:measurement-ui && npm run test:lesson-animation-ui && npm run test:sat-ui",
     "tsc": "tsc --noEmit",
     "lint:colors": "tsx scripts/check-color-literals.ts --strict",
     "test:contrast": "tsx scripts/verify-contrast.ts --strict",
@@ -74,7 +74,9 @@
     "advertising:google": "tsx scripts/google-measurement.ts",
     "advertising:meta": "tsx scripts/meta-measurement.ts",
     "test:instant-hints-ui": "tsx scripts/verify-instant-hints-ui.ts",
-    "test:multiselect-ui": "tsx scripts/verify-multiselect-ui.ts"
+    "test:multiselect-ui": "tsx scripts/verify-multiselect-ui.ts",
+    "coverage:sat": "tsx scripts/sat-coverage.ts",
+    "test:sat-ui": "tsx scripts/verify-sat-ui.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",

@@ -854,6 +854,11 @@ function LegacyScreen() {
   const upcoming = useRef<{ learnerId: string; batch: Promise<Batch> } | null>(
     null,
   );
+  useLayoutEffect(() => {
+    upcoming.current = null;
+    setQueue([]);
+    navigationEpoch.current++;
+  }, [learner?.id, !!learner?.satMathFocus]);
   function applyBatch(data: Batch) {
     if (route.location.pathname !== "/practice") navigate("/practice");
     if (new URLSearchParams(route.location.search).has("skill"))
@@ -1461,6 +1466,7 @@ function LegacyScreen() {
             key={problem.id}
             problem={problem}
             meta={meta}
+            satMathFocus={!!learner?.satMathFocus}
             strand={
               catalog?.skills.find((skill) => skill.id === problem.skillId)
                 ?.strand
