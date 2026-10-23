@@ -110,7 +110,7 @@ test("the worked example preserves its hole in the visual and ends with the prec
   const lesson = rationalExpressionLessons[0]!;
   const html = publicationHtml(lesson, "lesson");
   for (const [before, after] of [
-    ["Which inputs are allowed?", "A worked example"],
+    ["A worked example", "Which inputs are allowed?"],
     ["A worked example", "See the missing input"],
     ["See the missing input", "The precise rule"],
   ])

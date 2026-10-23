@@ -114,8 +114,8 @@ test("independent prompt-based oracle verifies all three families and corrupt ev
 test("new lesson builds from meaning and example to a matching visual and formal statement in print", () => {
   const html = publicationHtml(nonlinearSystemLessons[0]!, "lesson");
   const headings = [
-    "Two rules, the same point",
     "A worked example",
+    "Two rules, the same point",
     "See the same solutions",
     "The general rule",
   ];

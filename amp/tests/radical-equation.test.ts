@@ -129,8 +129,9 @@ test("radical lesson builds from plain explanation through example and visualiza
   const lesson = radicalEquationLessons[0]!;
   const html = publicationHtml(lesson, "lesson");
   const titles = [
-    lesson.sections[0]!.title,
+    lesson.summary,
     "A worked example",
+    lesson.sections[0]!.title,
     ...lesson.closingSections!.map((s) => s.title),
   ];
   for (let i = 1; i < titles.length; i++)

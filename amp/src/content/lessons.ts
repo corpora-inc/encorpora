@@ -82,6 +82,8 @@ export interface Lesson {
   /** Omit a generic practice figure when authored illustrations teach the same representation. */
   includeGeneratedRepresentation?: boolean;
   sections: {
+    /** Teaching layer; untagged sections explain the method. */
+    stage?: "intuition" | "method" | "formal";
     title: string;
     paragraphs: string[];
     /** Keep a diagram with its explanation when exporting a printed lesson. */
@@ -221,7 +223,7 @@ export interface Lesson {
       | "absolute-value-shifted"
       | "pythagorean-rearrangement";
   }[];
-  /** Optional sections following the example: visual meaning, then formal statement. */
+  /** Closing material defaults to formal; tag explanatory visuals as method. */
   closingSections?: Lesson["sections"];
   workedExample: {
     prompt: string;
@@ -245,6 +247,7 @@ export const baseLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "method",
         title: "Keep track",
         paragraphs: [
           "Put a finger beside the first object. Say one. Move to a new object and say two. Keep going until every object has a number word.",
@@ -252,10 +255,21 @@ export const baseLessons: Lesson[] = [
         ],
       },
       {
+        stage: "method",
         title: "The last word tells how many",
         paragraphs: [
           "When you finish counting, the last number names the size of the whole group. You do not need to begin counting again when someone asks how many.",
           "Spread the same objects apart and count them again. The group takes more space, but it has the same number of objects.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Counting a finite collection",
+        paragraphs: [
+          "A finite collection has a number of objects that counting can finish. Match each object to exactly one number word in order, beginning with one. The last number gives the collection’s cardinality, meaning its number of objects. A collection with no objects has cardinality zero.",
+          "Changing the order or position of the objects does not change the cardinality, provided no objects are added or removed.",
         ],
       },
     ],
@@ -277,7 +291,8 @@ export const baseLessons: Lesson[] = [
   {
     id: "addition",
     title: "Join groups and count on",
-    summary: "Addition describes the total when groups are joined.",
+    summary:
+      "Addition puts amounts together. If you have some objects and get a few more, adding tells you how many you have altogether. You can start with one group and count on, or make a group of ten to make counting easier.",
     templateIds: ["add-within-20"],
     objectives: [
       "Model addition by joining two groups.",
@@ -299,6 +314,16 @@ export const baseLessons: Lesson[] = [
         ],
       },
     ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Addition and regrouping",
+        paragraphs: [
+          "For nonnegative whole numbers $a$ and $b$, their sum $a+b$ is the number of objects in two separate collections of sizes $a$ and $b$ taken together. The result of addition is called the sum.",
+          "Addition is commutative: $a+b=b+a$. It is associative: $(a+b)+c=a+(b+c)$. Adding zero leaves a number unchanged: $a+0=a$. These properties justify changing the order and grouping when making ten.",
+        ],
+      },
+    ],
     workedExample: {
       prompt: "What is 8 + 5?",
       steps: ["Split 5 into 2 + 3.", "8 + 2 = 10.", "10 + 3 = 13."],
@@ -315,7 +340,7 @@ export const baseLessons: Lesson[] = [
     id: "subtraction",
     title: "Take away and find the difference",
     summary:
-      "Subtraction can describe removing objects or comparing two amounts.",
+      "Subtraction tells you what is left when you take some away. It can also tell you how far apart two amounts are. You can remove objects, count backward, or count up from the smaller amount to the larger one.",
     templateIds: ["subtract-within-20"],
     objectives: [
       "Model subtraction with objects.",
@@ -334,6 +359,16 @@ export const baseLessons: Lesson[] = [
         paragraphs: [
           "Think of 14 − 6 as the question: six plus what equals fourteen? Count up from six to fourteen, keeping track of the steps.",
           "Addition checks the result: the amount removed plus the amount remaining must equal the starting amount.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Subtraction and its addition check",
+        paragraphs: [
+          "For whole numbers $a$ and $b$ with $a \\ge b$, the difference $a-b$ is the whole number $c$ satisfying $b+c=a$. This is why adding the removed part to the remaining part checks a subtraction.",
+          "Subtracting zero preserves the number: $a-0=a$. Subtracting a number from itself gives zero: $a-a=0$. Subtraction is not commutative: exchanging its inputs generally changes its value.",
         ],
       },
     ],
@@ -357,7 +392,7 @@ export const baseLessons: Lesson[] = [
     id: "fractions",
     title: "Equal parts of one whole",
     summary:
-      "A fraction describes a number of equal parts relative to a named whole.",
+      "A fraction tells you how many equal pieces of a whole you have. Cut a rectangle into eight equal pieces and shade four: four out of eight pieces are shaded. That is also half the rectangle; both names describe the same amount.",
     templateIds: ["fraction-model"],
     objectives: [
       "Identify numerator and denominator in a fraction model.",
@@ -379,13 +414,23 @@ export const baseLessons: Lesson[] = [
         ],
       },
     ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Fractions and equivalent names",
+        paragraphs: [
+          "For a positive integer $b$, divide a chosen whole into $b$ equal parts. Each part has size $1/b$ of that whole. For a nonnegative integer $a$, the fraction $a/b$ counts $a$ of those parts. The numerator $a$ is the count; the denominator $b$ determines the part size.",
+          "Fractions are equivalent when they represent the same number. Multiplying both numerator and denominator by the same nonzero number preserves the value. To simplify an integer fraction, divide both by a common positive integer factor. Fraction models being compared must use the same-sized whole.",
+        ],
+      },
+    ],
     workedExample: {
       prompt:
         "A rectangle has eight equal parts. Four are shaded. What fraction is shaded?",
       steps: [
         "There are 8 equal parts in the whole and 4 shaded parts.",
         "Write 4/8.",
-        "Divide both numerator and denominator by 4: 4/8 = 1/2.",
+        "Divide both numbers in the fraction by 4: 4/8 = 1/2.",
       ],
       answer: "1/2",
     },
@@ -400,7 +445,8 @@ export const baseLessons: Lesson[] = [
   {
     id: "area",
     title: "Cover a rectangle with unit squares",
-    summary: "Area measures how much flat surface a shape covers.",
+    summary:
+      "Area tells you how much space a flat shape covers. Imagine covering a rectangle with equal little squares, with no gaps or overlaps. Instead of counting every square one at a time, count how many are in a row and how many rows there are.",
     templateIds: ["rectangle-area"],
     objectives: [
       "Explain the rectangle area formula using rows of squares.",
@@ -419,6 +465,16 @@ export const baseLessons: Lesson[] = [
         paragraphs: [
           "Centimeters measure length. Square centimeters measure area: one square centimeter is the area of a square with sides one centimeter long.",
           "Perimeter measures the distance around the boundary. It is not the same as the number of squares covering the inside.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Area of a rectangle",
+        paragraphs: [
+          "One square unit is the area of a square whose side length is one unit. A rectangle with perpendicular side lengths $w$ and $h$, measured in the same length unit, has area $A=wh$ in the corresponding square units.",
+          "For positive whole-number side lengths, this product counts unit squares in rows. The same formula applies to positive real side lengths. Perimeter measures boundary length; area measures the covered surface.",
         ],
       },
     ],
@@ -442,7 +498,8 @@ export const baseLessons: Lesson[] = [
   {
     id: "linear-equations",
     title: "Keep an equation balanced",
-    summary: "Undo operations on both sides to isolate the unknown.",
+    summary:
+      "An equation says two amounts are equal, like a balanced scale. To find a missing number, undo what was done to it. Make the same change on both sides so they stay equal.",
     templateIds: ["linear-equation"],
     objectives: [
       "Solve a two-step linear equation.",
@@ -461,6 +518,16 @@ export const baseLessons: Lesson[] = [
         paragraphs: [
           "Replace $x$ with your proposed solution. Compute the left side and compare it with the right side.",
           "Negative solutions are possible. Follow the signs carefully when the right side minus the constant is negative.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Equivalent equations",
+        paragraphs: [
+          "An equation states equality between two expressions. A solution is a value for the unknown that makes the original equality true. Adding or subtracting the same quantity on both sides preserves equality; multiplying or dividing both sides by the same nonzero quantity preserves equality as well.",
+          "For real constants $a,b,c$ with $a \\ne 0$, the equation $ax+b=c$ has the unique solution $x=(c-b)/a$. Here $a$ is the coefficient, the number multiplying the unknown $x$. Substitution checks the solution in the original equation.",
         ],
       },
     ],
@@ -484,7 +551,7 @@ export const baseLessons: Lesson[] = [
     id: "statistics-mean",
     title: "Mean as a fair share",
     summary:
-      "The mean distributes a dataset’s total equally among its observations.",
+      "The mean is what each group would have if you shared the total equally. Imagine several bags holding different amounts. Add everything together, then split that total into as many equal shares as there are bags.",
     templateIds: ["mean-data"],
     objectives: [
       "Compute an arithmetic mean.",
@@ -503,6 +570,16 @@ export const baseLessons: Lesson[] = [
         paragraphs: [
           "A mean can be a fraction or decimal even when all observations are whole numbers. It need not appear anywhere in the original dataset.",
           "One unusually large observation pulls the mean upward. The median, which uses the middle position in sorted data, describes a different feature.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "The arithmetic mean",
+        paragraphs: [
+          "For a nonempty finite list of real numbers, the arithmetic mean is the sum of all entries divided by the number of entries. Every occurrence counts, including repeated values. The mean has the same units as the entries.",
+          "The mean lies between the smallest and largest entries. It need not be one of the listed values or a whole number. The median is the middle value of the sorted list, or the mean of its two middle values when the list has an even number of entries.",
         ],
       },
     ],
@@ -525,7 +602,8 @@ export const baseLessons: Lesson[] = [
   {
     id: "quadratics",
     title: "Read a quadratic minimum",
-    summary: "Vertex form makes the extreme value of a quadratic visible.",
+    summary:
+      "Multiplying a real number by itself cannot give a negative result. The smallest square is zero. If a rule takes a square, doubles it, and adds five, the result can never fall below five. We can use that idea to find the lowest value without trying lots of numbers.",
     templateIds: ["quadratic-vertex"],
     objectives: [
       "Interpret a positive multiple of a square.",
@@ -544,6 +622,16 @@ export const baseLessons: Lesson[] = [
         paragraphs: [
           "The input $h$ tells where the minimum occurs. The output $k$ tells the minimum value. Read the question carefully to decide which is requested.",
           "A negative coefficient opens the parabola downward and gives a maximum instead. This lesson’s practice uses positive coefficients and a real-number domain.",
+        ],
+      },
+    ],
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Vertex form and extreme values",
+        paragraphs: [
+          "For real constants $a,h,k$ with $a \\ne 0$, the quadratic function $f(x)=a(x-h)^2+k$ is in vertex form. Its graph is a parabola with vertex $(h,k)$ and real-number domain.",
+          "Because $(x-h)^2 \\ge 0$ for every real $x$, with equality exactly at $x=h$, a positive $a$ gives a minimum output $k$ at input $h$. A negative $a$ gives a maximum output $k$ at the same input. The input where the extreme occurs and the extreme output are different quantities.",
         ],
       },
     ],

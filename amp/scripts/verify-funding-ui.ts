@@ -1,3 +1,5 @@
+import { fixtureMe } from "./me-fixture";
+import { retentionNotice } from "../src/family/contracts.js";
 import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 import { chromium, webkit } from "playwright";
@@ -53,6 +55,33 @@ try {
     let heldResolve!: () => void, releaseResolve!: () => void;
     let held = Promise.resolve(),
       release = Promise.resolve();
+    let identity = "parent-a";
+    let consentActive = true;
+    await page.route("**/api/v1/me", (route) =>
+      route.fulfill({
+        json: fixtureMe(
+          {
+            consent: {
+              status: consentActive ? "active" : "withdrawn",
+              policyVersion: "fixture",
+              recordedAt: "2026-01-01T00:00:00.000Z",
+              withdrawnAt: consentActive ? null : "2026-01-02T00:00:00.000Z",
+            },
+            learners: [
+              {
+                id: "10720fef-40bf-4e75-8982-208b5e05f84a",
+                name: "Sample learner",
+                deletedAt: null,
+                access: [],
+                stripeLinked: false,
+              },
+            ],
+            retained: retentionNotice,
+          },
+          identity,
+        ),
+      }),
+    );
     await page.route("**/api/v1/funding/**", async (route) => {
       const request = route.request(),
         path = new URL(request.url()).pathname;
@@ -217,6 +246,8 @@ try {
       path: new URL(`error-${viewport.width}.png`, directory).pathname,
     });
     record = undefined;
+    identity = "parent-b";
+    consentActive = false;
     await page.evaluate(() =>
       (window as any).fundingRender("parent-b", "token-b", false),
     );
@@ -227,6 +258,8 @@ try {
         .isDisabled(),
     );
     // A prior account's delayed mutation must not select its request in the new account.
+    identity = "parent-a";
+    consentActive = true;
     await page.evaluate(() =>
       (window as any).fundingRender("parent-a", "token-a", true),
     );
@@ -241,6 +274,8 @@ try {
     await page.getByRole("button", { name: "Prepare unpaid quote" }).click();
     await held;
     record = undefined;
+    identity = "parent-c";
+    consentActive = true;
     await page.evaluate(() =>
       (window as any).fundingRender("parent-c", "token-c", true),
     );

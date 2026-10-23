@@ -253,6 +253,7 @@ export function learnerTexts(): LearnerText[] {
     const m = methods[t.id];
     if (m) {
       add(t.id, "method goal", m.goal);
+      add(t.id, "method intuition", m.intuition);
       (m.terms ?? []).forEach(([term, meaning]) => {
         add(t.id, "method term", term);
         add(t.id, "method term", meaning);

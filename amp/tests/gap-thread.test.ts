@@ -130,8 +130,9 @@ test("both new lessons move from explanation through example and visual to preci
   for (const lesson of [...geometryProofLessons, ...rationalEquationLessons]) {
     const html = publicationHtml(lesson, "lesson");
     const titles = [
-      lesson.sections[0]!.title,
+      lesson.summary,
       "A worked example",
+      lesson.sections[0]!.title,
       ...lesson.closingSections!.map((s) => s.title),
     ];
     for (let i = 1; i < titles.length; i++)
