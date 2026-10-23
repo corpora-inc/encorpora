@@ -3,10 +3,16 @@ import type { ProblemMethod } from "./problem-lessons";
 
 const foundations: Lesson["sections"] = [
   {
+    stage: "intuition",
     title: "Read terms and products",
     paragraphs: [
-      "This lesson uses addition and multiplication of signed integers. Integers are whole numbers, zero, and their negative opposites. A number’s magnitude is its distance from zero, also called its absolute value. A variable, such as $x$, represents a number. An expression combines numbers and variables using operations. An exponent counts repeated factors: x² means x × x, and x³ means x × x × x. Multiplying powers combines their repeated factors: x² × x = x³.",
-      "A term is one part of a sum, including its sign. In 6x² − 5x + 3, the terms are 6x², −5x, and 3. The coefficient is the numerical multiplier of a variable term; the coefficients here are 6 and −5. A constant term has no variable. When finding a coefficient GCF, include the constant itself among the coefficients. Writing $x$ means 1x, and writing −x means −1x.",
+      "A polynomial is a sum of terms such as $6x^2+9x$. A term includes its sign; its coefficient is the number multiplying the variable part. Here the coefficients are 6 and 9. A single term is a monomial, and $x^2$ means $x\\times x$.",
+      "A factor is one part of a product. Factoring rewrites a sum as an equal product: $6x^2+9x=3x(2x+3)$. The greatest common factor (GCF) of number coefficients is the largest positive integer dividing all their magnitudes, or distances from zero. The leading coefficient multiplies the highest power. A binomial has two terms. The greatest common monomial factor divides every term; here it is $3x$. Multiplying the product back out must recover every original term, for every value of $x$.",
+    ],
+  },
+  {
+    title: "Vocabulary and checks",
+    paragraphs: [
       "A monomial is one term with a whole-number variable exponent, such as 3x² or 7. A polynomial is a sum of these terms. A binomial is a polynomial with exactly two nonzero terms. Its degree is the greatest exponent with a nonzero coefficient. A quadratic has degree 2. The leading coefficient belongs to the term with the greatest exponent. Like terms have the same variable power: 3x + 2x = 5x, but x² and $x$ are not like terms.",
       "Factors are quantities multiplied together. To factor an expression is to rewrite it as an equal product. The distributive property connects products and sums: a(b + c) = ab + ac. Expanding uses this property to form a sum; factoring uses it to identify the factors of a sum. An identity is an equality true for every permitted value of the variable. Check a proposed factorization by expanding and comparing every coefficient.",
       "For signed multiplication, equal signs give a positive product and opposite signs give a negative product. Thus (−2)(−3) = 6 and (−2)(3) = −6. In addition, two negatives add their distances from zero and keep the negative sign: −2 + (−3) = −5. With opposite signs, subtract the smaller distance from the larger and keep the sign of the number farther from zero: −3 + 2 = −1.",
@@ -84,6 +90,15 @@ export const factoringLessons: Lesson[] = [
       ],
       answer: "3x(2x + 3)",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "The distributive property reverses a sum into a product. The positive common monomial uses the coefficient GCF and the smallest variable exponent present.",
+        ],
+      },
+    ],
     pitfalls: [
       "Use every nonzero term when finding the common factor.",
       "A nonzero constant prevents extracting $x$.",
@@ -134,6 +149,15 @@ export const factoringLessons: Lesson[] = [
       ],
       answer: "(x − 3)(x + 2)",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Expanding (x + p)(x + q) gives x² + (p + q)x + pq. The integer factors must satisfy both the middle-coefficient sum and constant product.",
+        ],
+      },
+    ],
     pitfalls: [
       "A pair must give both the required product and the required sum.",
       "The coefficient of −x is −1; a missing $x$ term has coefficient 0.",
@@ -203,6 +227,15 @@ export const factoringLessons: Lesson[] = [
       ],
       answer: "−2(3x + 1)(2x + 3)",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "In (rx + s)(tx + u), the cross-term coefficients ru and st sum to the middle coefficient and multiply to the leading-coefficient–constant product. Distribution in reverse factors the grouped terms.",
+        ],
+      },
+    ],
     pitfalls: [
       "Retain the outside numerical factor, including its sign.",
       "For Ax² + Bx + C, use product AC and sum $B$ when splitting the middle term.",

@@ -6,7 +6,7 @@ export const similarityTrigLessons: Lesson[] = [
     id: "dilations-and-similar-triangles",
     title: "Dilations and similar triangles",
     summary:
-      "A dilation multiplies every length by its scale factor and keeps every angle. Triangles with two pairs of equal angles are similar, and their matching sides share one ratio.",
+      "A dilation resizes a figure by one positive scale factor, multiplying every length by it while keeping angles. Triangles with two pairs of equal angles are similar: matching sides share one ratio.",
     templateIds: ["dilation-measure", "similar-triangle-side"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -15,6 +15,7 @@ export const similarityTrigLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "A dilation scales every length",
         paragraphs: [
           "A dilation with center $O$ and scale factor $k$ moves each point $P$ along the ray from $O$ through $P$, to the point $k$ times as far from $O$. With k > 1 the figure grows; with 0 < k < 1 it shrinks.",
@@ -48,6 +49,16 @@ export const similarityTrigLessons: Lesson[] = [
       ],
       answer: "9",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For $k>0$, a dilation multiplies every distance by $k$ and keeps every angle; a line that misses the center maps to a parallel line.",
+          "Matching sides of similar triangles share one ratio, the scale factor; perimeters scale by it and areas by its square.",
+        ],
+      },
+    ],
     pitfalls: [
       "Match sides by the order of the vertex names, not by where they appear on the page.",
       "In a triangle cut by a parallel segment, the small side $AD$ matches the whole side $AB$, not the piece $DB$.",
@@ -60,7 +71,7 @@ export const similarityTrigLessons: Lesson[] = [
     id: "right-triangle-trigonometry",
     title: "Right-triangle trigonometry",
     summary:
-      "In right triangles with the same acute angle, each side ratio is the same: sin, cos and tan name those ratios. Special triangles give exact values, and complementary angles swap sine and cosine.",
+      "Right triangles with the same acute angle share the same ratios of side lengths. Those ratios can find a missing side without a scale drawing.",
     templateIds: ["special-right-triangle", "trig-ratio", "complementary-trig"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -69,9 +80,10 @@ export const similarityTrigLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "The angle fixes the ratio",
         paragraphs: [
-          "Right triangles with the same acute angle $A$ are similar: each is a dilation of the others. So the ratio opposite ÷ hypotenuse is the same in all of them: 3/5, 6/10 and 9/15 are one number.",
+          "A right triangle has one square corner and two smaller, acute angles. Right triangles with the same acute angle $A$ are similar: a dilation together with a rigid motion can map one onto the other. The ratio of the side opposite $A$ to the hypotenuse (the side opposite the square corner) is the same in all of them: $3/5$, $6/10$, and $9/15$ are one number.",
           "That shared ratio depends only on the angle, so it can be named after the angle. It is the sine of $A$.",
         ],
         illustration: "trig-similar-scaling",
@@ -111,6 +123,17 @@ export const similarityTrigLessons: Lesson[] = [
       ],
       answer: "7",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For $s>0$, a 45°-45°-90° triangle has sides $s$, $s$, $s\\sqrt2$; a 30°-60°-90° triangle has sides $s$, $s\\sqrt3$, $2s$, with $s$ opposite 30°.",
+          "For a chosen acute angle $A$ in a right triangle, $\\sin A$ is opposite ÷ hypotenuse, $\\cos A$ is adjacent ÷ hypotenuse, and $\\tan A$ is opposite ÷ adjacent.",
+          "The acute angles of a right triangle are complementary, and the side opposite one is adjacent to the other, so $\\sin A = \\cos(90° - A)$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Name opposite and adjacent from the angle asked about; they swap for the other acute angle.",
       "The hypotenuse is always across from the right angle and is the longest side.",
@@ -205,9 +228,9 @@ export const similarityTrigPrinciples: Record<string, string> = {
   "similar-triangle-side":
     "Matching sides of similar triangles share one ratio, the scale factor; perimeters scale by it and areas by its square.",
   "special-right-triangle":
-    "A 45°-45°-90° triangle has sides $s$, $s$, $s\\sqrt 2$; a 30°-60°-90° triangle has sides $s$, $s\\sqrt 3$, $2s$, with $s$ opposite 30°.",
+    "For $s>0$, a 45°-45°-90° triangle has sides $s$, $s$, $s\\sqrt2$; a 30°-60°-90° triangle has sides $s$, $s\\sqrt3$, $2s$, with $s$ opposite 30°.",
   "trig-ratio":
-    "In a right triangle, sin = opposite ÷ hypotenuse, cos = adjacent ÷ hypotenuse and tan = opposite ÷ adjacent, all read from the chosen acute angle.",
+    "For a chosen acute angle $A$ in a right triangle, $\\sin A$ is opposite ÷ hypotenuse, $\\cos A$ is adjacent ÷ hypotenuse, and $\\tan A$ is opposite ÷ adjacent.",
   "complementary-trig":
     "The acute angles of a right triangle are complementary, and the side opposite one is adjacent to the other, so $\\sin A = \\cos(90° - A)$.",
 };

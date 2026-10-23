@@ -118,10 +118,11 @@ export const pythagoreanLesson: Lesson = {
   ],
   sections: [
     {
+      stage: "intuition",
       title: "Before calculating",
       paragraphs: [
-        "You will add and multiply whole numbers and measure lengths in one unit.",
-        "For example, 6 × 8 means six groups of eight, totaling 48.",
+        "A right triangle has a square corner. Its two sides meeting at that corner are the legs; the opposite, longest side is the hypotenuse. A square built on a side has area equal to that side's length multiplied by itself.",
+        "The two leg squares together have the same area as the hypotenuse square. Use lengths in one unit, then take a positive square root to recover the hypotenuse's length from its square.",
       ],
     },
     { ...triangleDefinitions, illustration: "right-triangle-orientation" },
@@ -153,6 +154,13 @@ export const pythagoreanLesson: Lesson = {
     answer: "10",
     answerUnit: "centimeters",
   },
+  closingSections: [
+    {
+      stage: "formal",
+      title: "The precise rule",
+      paragraphs: [rightTrianglePrinciples["right-triangle"]!],
+    },
+  ],
   pitfalls: [
     "The Pythagorean equation a² + b² = c² applies only to right triangles, with \\($c$\\) opposite the right angle. Two given side lengths alone do not establish a right angle.",
     "Square each leg separately. (6 + 8)² = 196, whereas 6² + 8² = 100.",
@@ -174,10 +182,11 @@ export const missingLegLesson: Lesson = {
   ],
   sections: [
     {
+      stage: "intuition",
       title: "What you will use",
       paragraphs: [
-        "You will add, subtract, and multiply whole numbers. Use the same unit for all lengths.",
-        "For example, 1 meter and 30 centimeters must be converted to 100 centimeters and 30 centimeters before their numerical lengths are squared.",
+        "In a right triangle, the two legs meet at the square corner and the hypotenuse lies opposite it. The hypotenuse is longest. Its square is the total area of the two leg squares, so subtract the known leg's square to find the missing leg's square.",
+        "Keep all lengths in the same unit. A side length is positive, so take the positive square root of the area you find.",
       ],
     },
     {
@@ -226,6 +235,13 @@ export const missingLegLesson: Lesson = {
     answer: "12",
     answerUnit: "centimeters",
   },
+  closingSections: [
+    {
+      stage: "formal",
+      title: "The precise rule",
+      paragraphs: [rightTrianglePrinciples["right-triangle-missing-leg"]!],
+    },
+  ],
   pitfalls: [
     "Identify the hypotenuse before choosing addition or subtraction.",
     "Subtract squared lengths, then take the square root of the difference.",
@@ -248,10 +264,11 @@ export const converseLesson: Lesson = {
   ],
   sections: [
     {
+      stage: "intuition",
       title: "Begin with a triangle",
       paragraphs: [
-        "You will compare, add, and multiply positive numbers. The question gives side lengths of an existing triangle in the same unit.",
-        "If instead you are given three proposed lengths, first check that the two shorter lengths add to more than the longest. For example, 2 cm, 3 cm, and 5 cm cannot enclose a triangle: the two shorter segments only reach the endpoints of the longest when laid straight.",
+        "A right triangle has a square corner. The side opposite it is the longest. To tell whether a triangle is right from its side lengths, compare the square of the longest length with the sum of the other two squares.",
+        "The question gives a triangle with all lengths in one unit. For proposed lengths, first check that the shorter two add to more than the longest; otherwise they cannot enclose a triangle.",
       ],
     },
     { ...triangleDefinitions, illustration: "right-triangle-orientation" },
@@ -290,6 +307,13 @@ export const converseLesson: Lesson = {
     ],
     answer: "Right triangle",
   },
+  closingSections: [
+    {
+      stage: "formal",
+      title: "The precise rule",
+      paragraphs: [rightTrianglePrinciples["pythagorean-converse"]!],
+    },
+  ],
   pitfalls: [
     "Use the longest length for the square on its own, regardless of listing order.",
     "Compare exact values. Nearly equal squares do not prove an exactly right angle.",

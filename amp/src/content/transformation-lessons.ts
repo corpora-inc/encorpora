@@ -2,6 +2,7 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const plane: Lesson["sections"][number] = {
+  stage: "intuition",
   title: "Points on the coordinate plane",
   paragraphs: [
     "The coordinate plane has a horizontal number line, the $x$-axis, and a vertical number line, the $y$-axis. They cross at 0 on each, a point called the origin. The ordered pair ($x$, $y$) names a point: $x$ tells how far right (positive) or left (negative) of the $y$-axis it is, and $y$ tells how far above (positive) or below (negative) the $x$-axis it is. The point (−4, 3) is 4 units left of the $y$-axis and 3 units above the $x$-axis.",
@@ -9,10 +10,11 @@ const plane: Lesson["sections"][number] = {
   ],
 };
 const motionTerms: Lesson["sections"][number] = {
+  stage: "intuition",
   title: "Transformations and images",
   paragraphs: [
     "A transformation moves every point of the plane to a new point. The figure before the move is the pre-image; the figure after it is the image. The image of a point $A$ is named $A'$, read “A prime”, so the image of triangle $ABC$ is triangle $A'B'C'$, and $A'$ is the image of $A$.",
-    "A rigid motion moves a figure without stretching or bending it: every length and every angle stays the same, so the image is congruent to the pre-image, an exact copy in a new position. Translations, reflections and rotations are rigid motions.",
+    "A rigid motion moves a figure without stretching or bending it: every length and every angle stays the same, so the image is congruent to the pre-image, an exact copy in a new position. A translation slides, a reflection flips across a line, and a rotation turns around a fixed point. Each is a rigid motion.",
   ],
 };
 
@@ -30,6 +32,13 @@ export const transformationLessons: Lesson[] = [
     ],
     sections: [
       plane,
+      {
+        stage: "intuition",
+        title: "Distance around a rectangle",
+        paragraphs: [
+          "A rectangle has four straight sides and four square corners. Its perimeter is the total distance around all four sides. Opposite sides have equal lengths, so its perimeter is twice its width plus twice its height.",
+        ],
+      },
       {
         title: "Horizontal and vertical sides",
         paragraphs: [
@@ -57,6 +66,16 @@ export const transformationLessons: Lesson[] = [
       answer: "28",
       answerUnit: "units",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Points with the same $y$-coordinate lie on one horizontal line, and points with the same $x$-coordinate on one vertical line; the distance between them is the larger changing coordinate minus the smaller.",
+          "A rectangle's perimeter is 2 × (width + height) and its area is width × height.",
+        ],
+      },
+    ],
     pitfalls: [
       "For a side that crosses an axis, do not subtract the distances from 0: from −4 to 5 is 4 + 5 = 9, not 5 − 4 = 1.",
       "Use the coordinate that changes along the side: the $x$-coordinates for a horizontal side, the $y$-coordinates for a vertical one.",
@@ -69,7 +88,7 @@ export const transformationLessons: Lesson[] = [
     id: "coordinate-distance",
     title: "Distance between two points",
     summary:
-      "The segment between two points is the hypotenuse of a right triangle whose legs are the changes in $x$ and $y$.",
+      "A slanted segment between two grid points completes a right triangle. Its straight-line length comes from the horizontal and vertical changes.",
     templateIds: ["coordinate-distance", "coordinate-distance-exact"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -79,6 +98,7 @@ export const transformationLessons: Lesson[] = [
     sections: [
       plane,
       {
+        stage: "intuition",
         title: "A right triangle under every segment",
         paragraphs: [
           "A right triangle has one right angle, a square corner. The two sides that form the right angle are the legs, and the longest side, opposite the right angle, is the hypotenuse. The Pythagorean theorem says that for every right triangle, leg² + leg² = hypotenuse².",
@@ -104,6 +124,16 @@ export const transformationLessons: Lesson[] = [
       answer: "10",
       answerUnit: "units",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For any two points $(x_1,y_1)$ and $(x_2,y_2)$, their distance $d$ satisfies $d^2=(x_2-x_1)^2+(y_2-y_1)^2$. When both coordinate changes are nonzero, the segment is the hypotenuse of a right triangle; if a change is zero, the same formula gives the horizontal or vertical distance.",
+          "d = √((x₂ − x₁)² + (y₂ − y₁)²), and √(a²b) = a√b for whole numbers $a$ and $b$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Do not add the legs: 8 + 6 = 14 is the path along the grid, not the straight distance.",
       "Subtracting a negative coordinate adds: the change from −3 to 5 is 5 − (−3) = 8.",
@@ -116,7 +146,7 @@ export const transformationLessons: Lesson[] = [
     id: "rigid-motions",
     title: "Translations, reflections and rotations",
     summary:
-      "A rigid motion moves every point by the same rule; on coordinates, each motion is a simple change to $x$ and $y$.",
+      "A rigid motion moves a figure while keeping every length and angle unchanged. A slide, flip, or turn sends each point to a new point by one coordinate rule.",
     templateIds: ["transformation-image", "identify-rigid-motion"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -153,6 +183,16 @@ export const transformationLessons: Lesson[] = [
       ],
       answer: "(−1, 4)",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "Translation $(x, y)$ → ($x$ + $a$, $y$ + $b$); reflection over the $x$-axis ($x$, $y$) → (x, −y), over the $y$-axis (−x, y); rotation about the origin by 90° counterclockwise (−y, x), 180° (−x, −y), 90° clockwise (y, −x).",
+          "A rigid motion is determined by where it sends three vertices of a triangle, so the motion that maps a triangle onto its image is the one rule that fits every vertex.",
+        ],
+      },
+    ],
     pitfalls: [
       "A reflection over the $x$-axis changes the sign of $y$, not $x$: the axis named is the one the points cross.",
       "For a quarter turn, swap the coordinates and change one sign; changing signs without swapping gives a reflection or a half turn.",
@@ -165,7 +205,7 @@ export const transformationLessons: Lesson[] = [
     id: "dilations-similarity",
     title: "Dilations and similar triangles",
     summary:
-      "A dilation multiplies every distance from its center by the scale factor; similar figures have corresponding sides in one ratio.",
+      "A dilation resizes a figure from a center by one positive scale factor, keeping angles. Similar figures have the same shape: matched sides share that scale ratio.",
     templateIds: [
       "dilation-image",
       "dilation-scale-factor",
@@ -179,11 +219,18 @@ export const transformationLessons: Lesson[] = [
     sections: [
       plane,
       {
+        stage: "intuition",
+        title: "One scale for every matched side",
+        paragraphs: [
+          "A dilation uses a positive multiplier $k$ to move each point farther from or closer to its center. If $k=2$, every side becomes twice as long while the angles stay equal. Figures related by a dilation and a rigid motion are similar. Their corresponding sides match the same corners, and each image side is $k$ times its matching original side.",
+        ],
+      },
+      {
         title: "Dilations change size, not shape",
         paragraphs: [
           "A dilation with center $O$ and scale factor $k$ moves every point $P$ along the ray from $O$ through $P$, to the point $P'$ whose distance from $O$ is $k$ times the distance $OP$. With the center at the origin, both coordinates are multiplied by $k$: ($x$, $y$) → (kx, ky).",
           "In the figure, triangle $ABC$ with $A(2, 1)$, $B(4, 1)$ and $C(2, 3)$ is dilated by 2. The images are $A'(4, 2)$, $B'(8, 2)$ and $C'(4, 6)$, each on the ray from the origin through its point. Every side of the image is 2 times as long, and every angle is unchanged. A scale factor greater than 1 enlarges; one between 0 and 1 reduces.",
-          "To find the scale factor, divide a coordinate of an image point by the matching coordinate of its point. For $A(2, 1)$ and $A'(4, 2)$, k = 4 ÷ 2 = 2.",
+          "To find the scale factor from coordinates, divide one image coordinate by its matching original coordinate only when that original coordinate is nonzero. For $A(2,1)$ and $A'(4,2)$, $k=4\\div2=2$.",
         ],
         illustration: "dilation-rays",
       },
@@ -207,6 +254,17 @@ export const transformationLessons: Lesson[] = [
       answer: "9",
       answerUnit: "cm",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For a positive scale factor $k$, a dilation centered at the origin sends $(x,y)$ to $(kx,ky)$.",
+          "Such a dilation multiplies every distance by $k$ and preserves every angle; $k>1$ enlarges and $0<k<1$ reduces the figure.",
+          "In similar triangles, every side of one is the same multiple, the scale factor, of its corresponding side in the other.",
+        ],
+      },
+    ],
     pitfalls: [
       "A dilation multiplies coordinates by the scale factor; adding the scale factor slides the figure instead.",
       "Match sides by vertex order, not by position on the page: $BC$ corresponds to $EF$ when $B$ ↔ $E$ and $C$ ↔ $F$.",
@@ -228,9 +286,10 @@ export const transformationLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "What a scale says",
         paragraphs: [
-          "This lesson uses multiplication and division with whole numbers, decimals and fractions. A scale drawing, such as a map or a floor plan, has the same shape as the real object with every length shrunk by the same amount. Its scale states how lengths match: “1 cm represents 2 m” means each centimeter on the drawing stands for 2 meters in reality.",
+          "This lesson uses multiplication and division with whole numbers, decimals and fractions. A scale drawing, such as a map or floor plan, has the same shape as the real object: every drawing length corresponds to the same positive multiple of actual length. Drawings can be smaller or larger than the object. Its scale states how lengths match: “1 cm represents 2 m” means each centimeter on the drawing stands for 2 meters in reality.",
           "So an actual length is the drawing length times 2, with the unit changed: a wall 4.5 cm long on the plan is 4.5 × 2 = 9 m long. Going back, divide by 2: a wall 7 m long is 7 ÷ 2 = 3.5 cm on the plan. When a scale is “2 cm represents 5 m”, each centimeter stands for 5 ÷ 2 = 5/2 m.",
         ],
       },
@@ -254,6 +313,15 @@ export const transformationLessons: Lesson[] = [
       answer: "54",
       answerUnit: "square meters",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For a positive scale factor $k$ applied to lengths measured in consistent units, corresponding areas are multiplied by $k^2$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Multiply an area by the square of the scale: 12 square centimeters at 1 cm to 2 m is 48 square meters, not 24.",
       "Going from an actual length back to the drawing, divide by the scale instead of multiplying.",
@@ -395,7 +463,7 @@ export const transformationPrinciples: Record<string, string> = {
   "coordinate-rectangle-measure":
     "A rectangle's perimeter is 2 × (width + height) and its area is width × height.",
   "coordinate-distance":
-    "The distance between (x₁, y₁) and (x₂, y₂) is the hypotenuse of a right triangle with legs |x₂ − x₁| and |y₂ − y₁|: d² = (x₂ − x₁)² + (y₂ − y₁)².",
+    "For any two points $(x_1,y_1)$ and $(x_2,y_2)$, $d^2=(x_2-x_1)^2+(y_2-y_1)^2$; when both coordinate changes are nonzero, their segment is a right triangle's hypotenuse.",
   "coordinate-distance-exact":
     "d = √((x₂ − x₁)² + (y₂ − y₁)²), and √(a²b) = a√b for whole numbers $a$ and $b$.",
   "transformation-image":
@@ -403,11 +471,11 @@ export const transformationPrinciples: Record<string, string> = {
   "identify-rigid-motion":
     "A rigid motion is determined by where it sends three vertices of a triangle, so the motion that maps a triangle onto its image is the one rule that fits every vertex.",
   "dilation-image":
-    "A dilation centered at the origin with scale factor $k$ sends ($x$, $y$) to (kx, ky).",
+    "For $k>0$, a dilation centered at the origin sends $(x,y)$ to $(kx,ky)$.",
   "dilation-scale-factor":
-    "A dilation centered at the origin multiplies every coordinate, and every length, by the scale factor $k$.",
+    "For $k>0$, a dilation centered at the origin multiplies coordinates by $k$ and every length by $k$.",
   "similar-triangles-side":
     "In similar triangles, every side of one is the same multiple, the scale factor, of its corresponding side in the other.",
   "scale-drawing":
-    "If a scale multiplies lengths by $k$, it multiplies areas by k².",
+    "For a positive scale factor $k$ applied to lengths in consistent units, corresponding areas are multiplied by $k^2$.",
 };

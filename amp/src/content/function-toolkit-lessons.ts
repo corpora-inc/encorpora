@@ -9,7 +9,7 @@ export const functionToolkitLessons: Lesson[] = [
     id: "piecewise-functions",
     title: "Functions defined in pieces",
     summary:
-      "A piecewise function uses a different rule on each part of its domain. To evaluate it, find the one condition the input satisfies and use only that rule.",
+      "A piecewise function uses different rules for different allowed inputs. Find the condition your input satisfies, then use that rule alone.",
     templateIds: ["piecewise-evaluate", "piecewise-reading"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -19,10 +19,17 @@ export const functionToolkitLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "One input, one rule",
         paragraphs: [
-          "In $f(x) = \\begin{cases} 2x + 1 & x < 2 \\\\ -x + 6 & x \\ge 2 \\end{cases}$ the conditions split the number line at 2 without overlap, so every input satisfies exactly one of them. For $x = 1$, $1 < 2$, so $f(1) = 2 \\cdot 1 + 1 = 3$.",
-          "At the boundary the inequality signs decide: $2 \\ge 2$ is true and $2 < 2$ is false, so $f(2) = -2 + 6 = 4$. On the graph the left piece ends in an open circle at $(2, 5)$ and the right piece starts with a filled dot at $(2, 4)$: the graph jumps, and only the filled dot is a point of the graph.",
+          "A function gives each allowed input one output. A piecewise function uses one rule for some inputs and another for the rest. The condition beside each rule tells which inputs use it. At a boundary, $<$ excludes the boundary while $\\ge$ includes it. Choose the rule first, then substitute the input.",
+        ],
+      },
+      {
+        title: "Read a two-rule function",
+        paragraphs: [
+          "In $f(x)=\\begin{cases}2x+1&x<2\\\\-x+6&x\\ge2\\end{cases}$, the cases split the number line at 2 without overlap. For $x=1$, use the first rule to get $f(1)=3$. At $x=2$, use the second rule to get $f(2)=4$.",
+          "On the graph, the left piece ends in an open circle at $(2,5)$ and the right piece starts with a filled dot at $(2,4)$. Only the filled dot is included.",
         ],
         illustration: "piecewise-pieces",
       },
@@ -44,6 +51,16 @@ export const functionToolkitLessons: Lesson[] = [
       ],
       answer: "4",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A function gives each input one output; a piecewise function does it with conditions that do not overlap, so exactly one rule applies to each input.",
+          "$|u|$ equals $u$ where $u \\ge 0$ and $-u$ where $u < 0$, and the solutions of $f(x) = c$ are the points where the graph meets the line $y = c$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Use one rule only: the condition that the input satisfies picks it.",
       "At a boundary, read the inequality signs: $\\le$ and $\\ge$ include the boundary, $<$ and $>$ do not.",
@@ -56,7 +73,7 @@ export const functionToolkitLessons: Lesson[] = [
     id: "function-transformations",
     title: "Moving and stretching graphs",
     summary:
-      "$y = af(x - h) + k$ is the graph of $y = f(x)$ moved $h$ across, stretched by $a$ about the $x$-axis (reflected when $a < 0$), and moved $k$ up.",
+      "Moving, stretching, or reflecting a graph changes where its points appear. A change inside the input acts horizontally; a change outside acts on outputs.",
     templateIds: ["transform-equation", "transform-point"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -66,10 +83,11 @@ export const functionToolkitLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Inside changes inputs, outside changes outputs",
         paragraphs: [
-          "Adding $k$ outside, $f(x) + k$, adds $k$ to every height: the graph moves $k$ up. Multiplying outside, $af(x)$, multiplies every height by $a$: the graph stretches away from the $x$-axis, and flips across it when $a$ is negative.",
-          "Changing the input works backwards. $f(x - 3)$ reaches the value $f$ had at 0 only when $x - 3 = 0$, at $x = 3$: the graph moves 3 to the right. $f(2x)$ reaches the value $f$ had at 4 when $2x = 4$, at $x = 2$: every $x$-coordinate is divided by 2.",
+          "A function assigns one output to each allowed input. On its graph, changing the output changes the point's height. Adding $k$ outside, $f(x)+k$, adds $k$ to every height. Multiplying outside, $af(x)$, multiplies each height by $a$: $|a|>1$ stretches away from the $x$-axis, $0<|a|<1$ compresses toward it, a negative $a$ also reflects across it, and $a=0$ flattens the graph to $y=0$.",
+          "Changing the input works backwards. The point with old input 0 moves to input 3 under $f(x-3)$, because $x-3=0$ there: the graph moves 3 to the right. Under $f(2x)$, the point with old input 4 moves to input 2, because $2x=4$ there: every $x$-coordinate is divided by 2.",
           "Do the steps in this order: shift across, stretch or reflect, then shift up. $y = x^2$ moved 1 right, stretched by $-2$ and moved 3 up is $y = -2(x - 1)^2 + 3$, with vertex $(1, 3)$.",
         ],
         illustration: "transform-parent",
@@ -84,13 +102,23 @@ export const functionToolkitLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "The point $(2, 5)$ is on the graph of $y = f(x)$. The graph of $y = f(x + 3)$ passes through $\\left(p, 5\\right)$. What is $p$?",
+        "The point $(2,5)$ is on the graph of $y=f(x)$. Where does this point move on the graph of $y=f(x+3)$? Give its new $x$-coordinate.",
       steps: [
         "$y = f(x + 3)$ has height 5 where its input $x + 3$ is 2, because $f(2) = 5$.",
         "$x + 3 = 2$ gives $x = 2 - 3 = -1$.",
       ],
       answer: "−1",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "$y = af(x - h) + k$ moves every point $\\left(x, y\\right)$ of $y = f(x)$ to $\\left(x + h, ay + k\\right)$.",
+          "Outside changes act on outputs directly; inside changes act on inputs in reverse, because the new graph must reach the old input.",
+        ],
+      },
+    ],
     pitfalls: [
       "$f(x + 3)$ moves the graph 3 to the left, not right: solve $x + 3 = 0$.",
       "A shift up after a stretch is not stretched: $y = 2f(x) + 3$, not $2(f(x) + 3)$.",
@@ -103,7 +131,7 @@ export const functionToolkitLessons: Lesson[] = [
     id: "function-composition",
     title: "Composing functions",
     summary:
-      "$f(g(x))$ feeds the output of $g$ into $f$. Work from the inside out, and keep the whole inner expression together when you substitute.",
+      "A function gives each allowed input one output. In $f(g(x))$, first use $g$ on the input, then give its output to $f$; both steps must accept their inputs.",
     templateIds: ["composition-value", "composition-expression"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -113,9 +141,10 @@ export const functionToolkitLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Inside first",
         paragraphs: [
-          "$(f \\circ g)(x)$ means $f(g(x))$: $g$ acts first and $f$ acts on its output. With $g(x) = x^2 + 1$ and $f(x) = 2x - 3$, the input 3 becomes $g(3) = 10$, and then $f(10) = 17$.",
+          "A function gives each allowed input one output; its domain is the set of allowed inputs. Composition feeds one function's output into another. In $(f\\circ g)(x)=f(g(x))$, $g$ acts first and $f$ acts on its output. With $g(x)=x^2+1$ and $f(x)=2x-3$, the input 3 becomes $g(3)=10$, and then $f(10)=17$.",
           "The order matters: $g(f(3)) = g(3) = 10$, not 17. From a table or a graph, read the inner value first, then look up the outer function at that value.",
         ],
         illustration: "composition-machine",
@@ -136,6 +165,16 @@ export const functionToolkitLessons: Lesson[] = [
       ],
       answer: "17",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "The composition $f(g(x))$ is defined exactly for inputs $x$ in the domain of $g$ whose output $g(x)$ lies in the domain of $f$.",
+          "Substituting the inner expression for every $x$ in the outer function gives the composite as a single expression.",
+        ],
+      },
+    ],
     pitfalls: [
       "$f(g(x))$ is not the product $f(x)g(x)$.",
       "Work from the inside out: in $f(g(2))$, find $g(2)$ first.",
@@ -148,7 +187,7 @@ export const functionToolkitLessons: Lesson[] = [
     id: "inverse-functions",
     title: "Inverse functions",
     summary:
-      "The inverse $f^{-1}$ undoes $f$: if $f(a) = b$ then $f^{-1}(b) = a$. Its graph is the graph of $f$ reflected in the line $y = x$, and it exists only where $f$ is one-to-one.",
+      "An inverse function reverses input and output: it returns the input that produced a given output. Each output must come from only one allowed input.",
     templateIds: ["inverse-value", "inverse-expression"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -158,6 +197,7 @@ export const functionToolkitLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "Undoing a function",
         paragraphs: [
           "$f^{-1}(8)$ asks which input $f$ sends to 8. For $f(x) = 3x - 7$, solve $3x - 7 = 8$: $3x = 15$, so $f^{-1}(8) = 5$. In a table, find 8 among the outputs and read its input; on a graph, go across from 8 on the $y$-axis to the curve and down to the $x$-axis.",
@@ -168,8 +208,8 @@ export const functionToolkitLessons: Lesson[] = [
       {
         title: "Restricting the domain",
         paragraphs: [
-          "$f(x) = x^2$ sends both 2 and $-2$ to 4, so nothing can undo it: it is not one-to-one. On $x \\ge 0$ each output comes from one input, and the inverse is $\\sqrt{x}$; on $x \\le 0$ the inverse is $-\\sqrt{x}$.",
-          "For $f(x) = (x - h)^2 + k$, split at the vertex. On $x \\ge h$, $f^{-1}(x) = \\sqrt{x - k} + h$; on $x \\le h$, $f^{-1}(x) = -\\sqrt{x - k} + h$. The sign of the root matches the side of the vertex, because the outputs of $f^{-1}$ are the inputs of $f$.",
+          "$f(x)=x^2$ sends both 2 and $-2$ to 4, so it has no inverse function on all real inputs: it is not one-to-one. Restricting its inputs to $x\\ge0$ gives the inverse $\\sqrt{x}$; restricting to $x\\le0$ gives $-\\sqrt{x}$.",
+          "For $f(x)=(x-h)^2+k$, a convenient restriction is either full half of the parabola. On $x\\ge h$, $f^{-1}(x)=h+\\sqrt{x-k}$; on $x\\le h$, $f^{-1}(x)=h-\\sqrt{x-k}$. Both inverse formulas require $x\\ge k$. Other one-to-one subsets are possible; these halves keep the full range of the parabola.",
         ],
         illustration: "inverse-restricted",
       },
@@ -182,10 +222,20 @@ export const functionToolkitLessons: Lesson[] = [
       ],
       answer: "5",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "An inverse reverses each input-output pair: $f(a) = b$ exactly when $f^{-1}(b) = a$.",
+          "Swapping the coordinates of every point reflects a graph in $y = x$; the result is a function only when $f$ is one-to-one.",
+        ],
+      },
+    ],
     pitfalls: [
       "$f^{-1}(x)$ is not $\\frac{1}{f(x)}$.",
       "Undo the steps of $f$ in reverse order: for $3x - 7$, add 7 first, then divide by 3.",
-      "A quadratic has an inverse only on one side of its vertex.",
+      "Restricting a quadratic to either half of its parabola is a convenient way to make it one-to-one before finding an inverse function.",
     ],
     parentGuide:
       "Make a two-row table of a function, then swap the rows. Ask whether the swapped table is still a function: it is only if no output appeared twice.",
@@ -204,9 +254,10 @@ export const functionToolkitLessons: Lesson[] = [
     ],
     sections: [
       {
+        stage: "intuition",
         title: "The same feature, read two ways",
         paragraphs: [
-          "From a formula, compute: $f(x) = -(x - 1)^2 + 5$ has its highest point at the vertex $(1, 5)$, so its maximum is 5. In standard form, the vertex is at $x = -\\frac{b}{2a}$.",
+          "From a formula, compute: $f(x) = -(x - 1)^2 + 5$ has its highest point at the vertex $(1, 5)$, so its maximum is 5. A quadratic in standard form is $ax^2+bx+c$, where $a$, $b$ and $c$ are fixed numbers and $a\\ne0$; its vertex is at $x=-\\frac{b}{2a}$.",
           "From a table of a quadratic, use symmetry: in the table $g(-3) = -1$, $g(-2) = 2$, $g(-1) = 3$, $g(0) = 2$, $g(1) = -1$, the values match in pairs around $x = -1$, so the vertex is $(-1, 3)$ and the maximum is 3. So $f$ has the greater maximum.",
         ],
         illustration: "compare-formula-table",
@@ -228,6 +279,15 @@ export const functionToolkitLessons: Lesson[] = [
       ],
       answer: "$f$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "A formula, a graph and a table describe the same kind of object, so the same feature can be found in each and compared as numbers.",
+        ],
+      },
+    ],
     pitfalls: [
       "Compare the same feature: a maximum with a maximum, a rate with a rate.",
       "In a table, the largest entry is the maximum only if the table includes the vertex; use the symmetry of the values to find it.",

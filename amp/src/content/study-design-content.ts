@@ -6,7 +6,7 @@ export const studyDesignLesson: Lesson = {
   id: "study-design",
   title: "Two kinds of randomness in a study",
   summary:
-    "Random sampling supports population generalization. Random assignment supports a causal comparison. Check each separately.",
+    "Choosing participants by chance helps describe the group they came from. Assigning treatments by chance helps compare causes. Check these two choices separately.",
   templateIds: ["scope-of-inference-choice"],
   includeGeneratedRepresentation: false,
   objectives: [
@@ -16,6 +16,7 @@ export const studyDesignLesson: Lesson = {
   ],
   sections: [
     {
+      stage: "intuition",
       title: "Who enters, and who gets which treatment?",
       paragraphs: [
         "A population is the whole group a study is about. A sample is the smaller group observed. Generalizing means using the sample to draw conclusions about the population. You need no calculation for this lesson; follow how people enter the study and how they receive instructions.",
@@ -38,6 +39,7 @@ export const studyDesignLesson: Lesson = {
   },
   closingSections: [
     {
+      stage: "method",
       title: "Read the two decisions separately",
       paragraphs: [
         "In the table, “Sample?” asks whether participants were randomly sampled; “Assign?” asks whether treatments were randomly assigned. “Population” means population generalization. Each row assumes reliable measurements, complete participation, and a well-run comparison. A causal conclusion also requires convincing evidence of an outcome difference. Removing either kind of randomization removes its corresponding justification.",
@@ -45,6 +47,7 @@ export const studyDesignLesson: Lesson = {
       illustration: "study-design-scope",
     },
     {
+      stage: "formal",
       title: "Precise limits",
       paragraphs: [
         "Random sampling supports generalization to the population actually sampled, not automatically to other schools, cities, ages, or settings. It does not guarantee that a sample exactly matches that population. Nonresponse and unreliable measurement can weaken an otherwise random design.",

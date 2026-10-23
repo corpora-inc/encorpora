@@ -3,10 +3,11 @@ import type { ProblemMethod } from "./problem-lessons";
 
 const foundations: Lesson["sections"] = [
   {
+    stage: "intuition",
     title: "Read a square root",
     paragraphs: [
       "Squaring a number means multiplying it by itself. The square root of a nonnegative number is the nonnegative number whose square equals it. Nonnegative means positive or zero. The radical sign is $\\sqrt{\\phantom{9}}$; the number under it is the radicand. Thus $\\sqrt{9} = 3$ because $3 \\times 3 = 9$, and $\\sqrt{0} = 0$.",
-      "The square-root symbol selects one value: the principal, nonnegative root. Although $(-3)(-3) = 9$, the expression $\\sqrt{9}$ means 3. A minus sign outside the radical changes that value: $-\\sqrt{9} = -3$. These lessons use only nonnegative radicands, so every square root is a real number.",
+      "The square-root symbol selects one value: the principal, nonnegative root. Although $(-3)(-3) = 9$, the expression $\\sqrt{9}$ means 3. A minus sign outside the radical changes that value: $-\\sqrt{9} = -3$. Here every radicand is nonnegative, so every square root is a real number.",
       "A perfect square is the square of a whole number: 0, 1, 4, 9, 16 and 25 are examples. Integers are zero, positive whole numbers and their negatives. The square root of a nonnegative integer that is not a perfect square is irrational: it cannot be written as a fraction of two integers. An expression such as $\\sqrt{2}$ names its exact value. A shortened decimal gives only an approximation.",
     ],
   },
@@ -35,7 +36,8 @@ export const radicalLessons: Lesson[] = [
   {
     id: "simplify-square-root",
     title: "Simplify a square root exactly",
-    summary: "A square factor becomes a coefficient outside the radical.",
+    summary:
+      "The number inside a square root is its radicand. A square factor contributes its square root as an outside multiplier, or coefficient: $\\sqrt{72}=6\\sqrt2$.",
     templateIds: ["simplify-square-root"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -70,6 +72,15 @@ export const radicalLessons: Lesson[] = [
       ],
       answer: "$6\\sqrt{2}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For $s,t \\ge 0$, $\\sqrt{s^2t}=s\\sqrt{t}$. The outside factor is nonnegative because $\\sqrt{s^2}=s$ only when $s \\ge 0$.",
+        ],
+      },
+    ],
     pitfalls: [
       "Extract square factors until the remaining radicand is square-free.",
       "Keep the principal square root nonnegative.",
@@ -81,7 +92,8 @@ export const radicalLessons: Lesson[] = [
   {
     id: "combine-square-roots",
     title: "Add and subtract square-root terms",
-    summary: "Combine coefficients only after the radical parts match.",
+    summary:
+      "A coefficient is the multiplier outside a square root; its radicand is the number inside. Simplify roots, then add coefficients only when their radicands match: $2\\sqrt3+4\\sqrt3=6\\sqrt3$.",
     templateIds: ["combine-square-roots"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -117,6 +129,15 @@ export const radicalLessons: Lesson[] = [
       ],
       answer: "$3\\sqrt{3}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For real coefficients $a,b$ and $r \\ge 0$, $a\\sqrt{r}+b\\sqrt{r}=(a+b)\\sqrt{r}$. Simplify each radical before deciding whether the radical parts match.",
+        ],
+      },
+    ],
     pitfalls: [
       "Simplify both roots before deciding whether their radical parts match.",
       "Add or subtract coefficients, not radicands.",
@@ -129,7 +150,7 @@ export const radicalLessons: Lesson[] = [
     id: "multiply-square-roots",
     title: "Multiply square-root expressions",
     summary:
-      "Multiply coefficients and radicands, then extract square factors.",
+      "A coefficient multiplies a square root from outside; the radicand is its nonnegative inside number. Multiply coefficients and radicands separately, then take the root of any square factor outside.",
     templateIds: ["multiply-square-roots"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -164,6 +185,15 @@ export const radicalLessons: Lesson[] = [
       ],
       answer: "$-18\\sqrt{2}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For $a,b \\ge 0$, $\\sqrt{a}\\sqrt{b}=\\sqrt{ab}$. Any coefficients outside the roots multiply separately, including their signs.",
+        ],
+      },
+    ],
     pitfalls: [
       "Multiply signed coefficients as well as radicands.",
       "Extract square factors from the new radicand even when both original roots were simplified.",
@@ -175,7 +205,8 @@ export const radicalLessons: Lesson[] = [
   {
     id: "rationalize-radical-denominator",
     title: "Remove a square root from a denominator",
-    summary: "An equivalent fraction can have a rational denominator.",
+    summary:
+      "The numerator is a fraction's top and the denominator its nonzero bottom. If the bottom contains a square root, multiply both parts by that root to remove it without changing the value.",
     templateIds: ["rationalize-radical-denominator"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -184,6 +215,13 @@ export const radicalLessons: Lesson[] = [
     ],
     sections: [
       ...foundations,
+      {
+        stage: "intuition",
+        title: "The two parts of a fraction",
+        paragraphs: [
+          "The numerator is the expression above a fraction bar; the denominator is below it and cannot be zero. Multiplying both by the same nonzero value multiplies the fraction by 1, so its value stays the same. Rationalizing a denominator means removing a square root from the bottom of a fraction; the number itself can remain irrational.",
+        ],
+      },
       ...fractions,
       {
         title: "Choose a factor that removes the denominator's root",
@@ -212,6 +250,15 @@ export const radicalLessons: Lesson[] = [
       ],
       answer: "$\\frac{1}{2}\\sqrt{3}$",
     },
+    closingSections: [
+      {
+        stage: "formal",
+        title: "Precise rule",
+        paragraphs: [
+          "For real $a$ and $r>0$, $\\frac{a}{\\sqrt{r}}=\\frac{a\\sqrt{r}}{r}$ because $\\sqrt{r}/\\sqrt{r}=1$. The positive-radicand condition keeps the original denominator nonzero.",
+        ],
+      },
+    ],
     pitfalls: [
       "Multiply numerator and denominator by the same nonzero root.",
       "Simplify the denominator's root before choosing the multiplying factor.",
