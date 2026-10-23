@@ -84,8 +84,8 @@ export interface Lesson {
   sections: {
     title: string;
     paragraphs: string[];
-    /** Keep this section's explanation with its illustration in print. */
-    keepTogether?: boolean;
+    /** Keep a diagram with its explanation when exporting a printed lesson. */
+    keepTogetherInPrint?: boolean;
     illustration?:
       | "av-triangle-half"
       | "av-polygon-split"

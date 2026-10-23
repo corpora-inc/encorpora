@@ -251,6 +251,7 @@ const originalAlignments: readonly AlgebraAlignment[] = [
     [
       "Formal function notation and a complete function-family survey are outside this selected treatment.",
     ],
+    ["relation-function-choice", "relation-point-removal"],
   ),
   row(
     "function-comparisons",

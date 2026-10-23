@@ -190,7 +190,7 @@ export const decimalLessons: Lesson[] = [
     closingSections: [
       {
         title: "See the rounding region",
-        keepTogether: true,
+        keepTogetherInPrint: true,
         paragraphs: [
           "The shaded part of the number line starts at 4.675 with a filled point and stops before 4.685 with an open point. Every decimal in that part rounds to 4.68.",
         ],
