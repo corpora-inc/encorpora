@@ -170,7 +170,7 @@ export function FundingPage({
               <a
                 className="funding-explore"
                 data-campaign-action={appUrl ? "try" : undefined}
-                href={appUrl ? new URL(page.slug === "arkansas-efa" ? "/try?program=ar-efa" : "/try", appUrl).href : "/amp/"}
+                href={appUrl ? new URL(page.slug === "arkansas-efa" ? "/try?program=ar-efa" : page.slug === "arizona-esa" ? "/try?program=az-esa" : "/try", appUrl).href : "/amp/"}
               >
                 {appUrl ? "Try AMP Math" : "Explore AMP Math"}{" "}
                 <span aria-hidden="true">→</span>
