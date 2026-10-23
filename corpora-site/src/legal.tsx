@@ -285,6 +285,38 @@ export function Legal({
             Random identifiers and event histories are included in the privacy
             review even when they do not contain a learner’s name.
           </p>
+          <h2>First-party practice and purchase measurement</h2>
+          <p>
+            AMP also measures practice and purchase steps using a random browser
+            visitor identifier, fixed event types and counts, campaign source,
+            referrer and device categories, grade band and coarse age band.
+            Event dates are whole UTC days. Events contain no account, learner,
+            trial, email, checkout or invoice identifiers or free-text answers.
+            These records stay in AMP; they are not advertising-platform events.
+            A purchase date can still identify a buyer when compared with billing
+            records on a day with few purchases.
+          </p>
+          <p>
+            Events are deleted after {RETENTION.funnelEventDays} days; visitor
+            records expire {RETENTION.funnelEventDays} days after their last
+            event. The checkout link to a visitor is erased when the purchase is
+            recorded or after {RETENTION.funnelEventDays} days. Converted visits
+            leave monthly aggregate counts without visitor identifiers.
+          </p>
+          <h2>Problem reports</h2>
+          <p>
+            “Report a problem” records selected reasons, the learner reference,
+            the problem and recorded answer and outcome, software version,
+            device type and viewport size so we can correct errors. Anonymous
+            learners and children under 13 choose fixed reasons only. A learner
+            aged 13 or older in a consented family account may add a note of up
+            to 280 characters. Reports stay in AMP and appear in parent exports.
+          </p>
+          <p>
+            Notes are erased after {RETENTION.problemFlagNoteDays} days and
+            reports are deleted after {RETENTION.problemFlagDays} days. Deleting
+            learning data removes the learner link and erases notes sooner.
+          </p>
           <h2>Parent accounts and learning records</h2>
           <p>
             The account service processes a parent’s email, sign-in information,
