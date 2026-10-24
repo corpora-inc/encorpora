@@ -6,6 +6,7 @@ import { radicalEquationMethods } from "./radical-equation-lessons";
 import { rationalEquationMethods } from "./rational-equation-lessons";
 import { geometryProofMethods } from "./geometry-proof-lessons";
 import { geometryProofFamilyMethods } from "./geometry-proof-family-lessons";
+import { k8RepresentationMethods } from "./k8-representations-lessons";
 import { rationalExpressionMethods } from "./rational-expression-lessons";
 import { nonlinearSystemMethods } from "./nonlinear-system-lessons";
 import { areaVolumeMethods } from "./area-volume-lessons";
@@ -63,6 +64,7 @@ import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import { complexMethods } from "./complex-lessons";
 import { numberMeasurementGapMethods } from "./number-measurement-gaps-lessons";
+import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
 import { vectorMatrixMethods } from "./vectors-matrices-lessons";
 import { statisticsProbabilityMethods } from "./statistics-probability-lessons";
@@ -98,6 +100,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...quadraticMethods,
   ...complexMethods,
   ...numberMeasurementGapMethods,
+  ...satAlgebraStructureMethods,
   ...remainingGapMethods,
   ...vectorMatrixMethods,
   ...statisticsProbabilityMethods,
@@ -148,6 +151,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...rationalEquationMethods,
   ...geometryProofMethods,
   ...geometryProofFamilyMethods,
+  ...k8RepresentationMethods,
   ...nonlinearSystemMethods,
   // Counting and early operations
   "count-objects": {

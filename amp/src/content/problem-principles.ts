@@ -6,6 +6,7 @@ import { radicalEquationPrinciples } from "./radical-equation-lessons";
 import { rationalEquationPrinciples } from "./rational-equation-lessons";
 import { geometryProofPrinciples } from "./geometry-proof-lessons";
 import { geometryProofFamilyPrinciples } from "./geometry-proof-family-lessons";
+import { k8RepresentationPrinciples } from "./k8-representations-lessons";
 import { rationalExpressionPrinciples } from "./rational-expression-lessons";
 import { nonlinearSystemPrinciples } from "./nonlinear-system-lessons";
 import { areaVolumePrinciples } from "./area-volume-lessons";
@@ -63,6 +64,7 @@ import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
 import { numberMeasurementGapPrinciples } from "./number-measurement-gaps-lessons";
+import { satAlgebraStructurePrinciples } from "./sat-algebra-structure-lessons";
 import { remainingGapPrinciples } from "./remaining-gap-lessons";
 import { vectorMatrixPrinciples } from "./vectors-matrices-lessons";
 import { statisticsProbabilityPrinciples } from "./statistics-probability-lessons";
@@ -94,6 +96,7 @@ export const principles: Record<string, string> = {
   ...quadraticPrinciples,
   ...complexPrinciples,
   ...numberMeasurementGapPrinciples,
+  ...satAlgebraStructurePrinciples,
   ...remainingGapPrinciples,
   ...vectorMatrixPrinciples,
   ...statisticsProbabilityPrinciples,
@@ -145,6 +148,7 @@ export const principles: Record<string, string> = {
   ...rationalEquationPrinciples,
   ...geometryProofPrinciples,
   ...geometryProofFamilyPrinciples,
+  ...k8RepresentationPrinciples,
   ...nonlinearSystemPrinciples,
   // Counting, place value, early operations
   "count-objects":

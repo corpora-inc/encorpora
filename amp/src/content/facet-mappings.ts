@@ -106,6 +106,97 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Enter the number of objects in a proper fraction of a set (denominator up to 6, set up to 48), the remainder, or a multiple of a stated unit-fraction part. Does not assess fractions of non-multiples, mixed numbers, expressing the result as a product of a fraction and a whole number, or fraction word problems with a drawing to complete.",
   },
   {
+    templateId: "quadratic-root-relations",
+    facetId: "quadratic-equations.core",
+    extent: "partial",
+    rationale:
+      "Select the sum, product, sum of squares, sum of reciprocals, a missing coefficient or the second solution of a quadratic with real solutions, from its coefficients and at most one given solution. Does not assess solving by the formula or factoring, complex solutions, or deriving the relations.",
+  },
+  {
+    templateId: "system-expression-value",
+    facetId: "linear-systems.core",
+    extent: "partial",
+    rationale:
+      "Select the exact value of a requested linear expression in x and y by scaling and adding one or two given equations, including symmetric systems and dependent or single equations whose variables are not fixed. Does not assess solving for both variables, graphing, or nonlinear systems.",
+  },
+  {
+    templateId: "variation-constant",
+    facetId: "proportional-relationships.core",
+    extent: "partial",
+    rationale:
+      "Find the constant, predict a value, choose the equation for a table or statement, and find the change factor for direct and inverse variation with positive integer data. Does not assess graphing, joint or combined variation, or constructing a table.",
+  },
+  {
+    templateId: "rate-combination-model",
+    facetId: "linear-equation-modeling.core",
+    extent: "partial",
+    rationale:
+      "Choose the exact result of shared work, work against a drain, a two-solution mixture or the amount to add, round-trip average speed, and a two-phase constant rate. Does not assess writing the equation as free response, non-constant rates, or rounding.",
+  },
+  {
+    templateId: "absolute-compound-inequality",
+    facetId: "linear-inequalities.core",
+    extent: "partial",
+    rationale:
+      "Choose the solution set of |ax+b| compared with a number (including negative right sides and zero), a three-part chain, an or-pair of linear inequalities, or the absolute-value inequality for a described segment or pair of rays. Does not assess graphing the set, interval notation or absolute values on both sides.",
+  },
+  {
+    templateId: "quadratic-from-data",
+    facetId: "quadratic-graphs.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation fixed by two zeros and a point, a vertex and a point, an equally spaced three-row table, or three points with integer coefficients. Does not assess deriving the equation from a graph, non-integer coefficients, or more than three data points.",
+  },
+  {
+    templateId: "proportional-graph",
+    facetId: "proportional-relationships.core",
+    extent: "partial",
+    rationale:
+      "Read a graph of a proportional or non-proportional relationship in context: the unit rate from a labeled point with whole-number rate 2 to 5, the meaning of a point, of (0, 0) and of a nonzero starting value, the equation y = rx, and whether a graph is a straight line through the origin. Does not assess drawing graphs, tables, fractional or decimal rates, or comparing two relationships.",
+  },
+  {
+    templateId: "story-graph-match",
+    facetId: "qualitative-graphs.core",
+    extent: "partial",
+    rationale:
+      "Match a story to a graph with no scale, or describe the graph, using increasing, constant and decreasing pieces in order (three pieces), find the single piece of four that is increasing, decreasing or constant, and the piece that changes fastest or slowest over equal times. Does not assess sketching graphs, curved graphs, linear versus nonlinear classification, or values read from a scale.",
+  },
+  {
+    templateId: "coordinate-context-points",
+    facetId: "coordinate-first-quadrant.ordered-pairs",
+    extent: "partial",
+    rationale:
+      "Interpret a whole-number first-quadrant point in a plant, savings, map or game context, choose the labeled point or ordered pair that matches a situation, and find the vertical gap between two points with the same first coordinate. Does not assess plotting points, scale other than 1, signed coordinates or distances along other lines.",
+  },
+  {
+    templateId: "pattern-pair-relationship",
+    facetId: "related-patterns.paired-terms",
+    extent: "partial",
+    rationale:
+      "Build matching terms from two add-rules with starts 0 to 4, write the nth ordered pair, and use a constant-difference or constant-multiple relationship (including a later term). Does not assess generating the patterns as a table by hand, plotting the pairs, or rules that multiply.",
+  },
+  {
+    templateId: "triangle-uniqueness",
+    facetId: "triangle-construction.determining-conditions",
+    extent: "partial",
+    rationale:
+      "Decide whether two sides and a non-included angle (30 degrees, or a right or obtuse angle) give no triangle, one or two, and choose the one set of measures among SAS, ASA, SSS, AAA, SSA and impossible sets that fixes exactly one triangle. Does not assess drawing or constructing the triangle, trigonometry, or SSA with other acute angles.",
+  },
+  {
+    templateId: "percent-applications",
+    facetId: "percent-change.core",
+    extent: "partial",
+    rationale:
+      "Exact one-step applications with whole-dollar or whole-number data: sales tax, tip, commission with base pay, markup, markdown price and rate, simple interest amount, balance and rate, and percent error. Does not assess rounding, compound interest, multi-step discounts, successive changes or constructed explanations.",
+  },
+  {
+    templateId: "compound-event-simulation",
+    facetId: "compound-probability.core",
+    extent: "partial",
+    rationale:
+      "Probability of a compound event by listing a sample space of 8 to 16 equally likely outcomes (two dice, coin and die, three flips, two spinners), an estimate from 20 given random-digit trials, and comparison of experimental with theoretical probability. Does not assess drawing a tree or table, running a simulation, probabilities of unequal outcomes or dependent events.",
+  },
+  {
     templateId: "triangle-law-reasoning",
     facetId: "triangle-law-proofs.core",
     extent: "partial",

@@ -31,7 +31,9 @@ system.context|Model simultaneous constraints in context|system-model-value,shar
 system.classify|Classify linear systems and their intersections|linear-system-solution-count,elimination-equivalent
 inequality.solve|Solve and interpret a one-variable inequality|affine-linear-inequality,grouped-linear-inequality,cancelled-linear-inequality
 inequality.context|Apply a constraint or whole-input boundary in context|first-cheaper-whole-input,constraint-feasible
-inequality.graph|Connect an inequality and a half-plane or solution point|half-plane-inequality,inequality-solution-point`,
+inequality.graph|Connect an inequality and a half-plane or solution point|half-plane-inequality,inequality-solution-point
+inequality.absolute|Solve absolute-value and compound inequalities, or choose one from a number-line description|absolute-compound-inequality
+system.expression|Find the value of an expression in the variables by combining equations|system-expression-value`,
   "advanced-math": `
 expression.factor|Factor common factors, quadratic trinomials, and differences of squares|greatest-monomial-factor,nonmonic-quadratic-factorization,structure-rewrite
 expression.polynomial|Add, subtract, and multiply polynomials|polynomial-addition,polynomial-subtraction,polynomial-multiplication
@@ -43,6 +45,8 @@ nonlinear.rational-radical|Solve rational and radical equations and reject exclu
 nonlinear.polynomial-zeros|Find real zeros from a factored polynomial|zeros-from-factors,zero-multiplicity
 nonlinear.system|Solve and interpret line/nonlinear intersections|nonlinear-system-read,nonlinear-system-solve,nonlinear-system-count
 nonlinear.root-count|Classify real roots and solve a repeated-root parameter condition|quadratic-real-solution-count,quadratic-parameter-root
+nonlinear.root-relations|Use coefficients to find sums, products and missing values for quadratic solutions|quadratic-root-relations
+nonlinear.quadratic-from-data|Write a quadratic from zeros, a vertex or points|quadratic-from-data
 nonlinear.literal|Isolate an unknown in a nonlinear formula with stated domain|nonlinear-formula-isolate
 quadratic.context|Choose a quadratic model and interpret maximum, zero, or initial value|quadratic-context-model
 exponential.context|Build and use a growth, decay, or half-life model|exponential-model-rule,exponential-model-value
@@ -53,8 +57,9 @@ nonlinear.representations|Connect polynomial, quadratic, and exponential tables,
 nonlinear.rational-representations|Connect a rational rule with a table or graph|rational-function-representation
 nonlinear.input-output|Evaluate nonlinear functions or recover allowed inputs|function-evaluation,same-base-equation,rational-function-representation,radical-equation-isolated`,
   data: `
-ratio.proportion|Scale ratios and proportional quantities in context|ratio-missing,unit-price,proportional-rule-choice
 ratio.units|Convert length, compound rates, area, volume, density, and product units|metric-length-rename,compound-unit-conversion,unit-chain-conversion
+ratio.proportion|Scale ratios and proportional quantities in context|ratio-missing,unit-price,proportional-rule-choice,variation-constant
+ratio.rates|Combine work, mixture, average-speed and two-phase rates exactly|rate-combination-model
 percent.change|Calculate percentages, original values, and successive growth factors|percent-of,percent-change-original,successive-percent-change
 univariate.displays|Read frequency data in dot plots, histograms, and box plots|dot-plot-mean,histogram-read,box-plot-read
 univariate.center|Calculate or compare means, medians, and ranges|mean-data,median-data,range-data,mean-missing-value,frequency-table-center
