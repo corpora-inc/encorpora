@@ -46,8 +46,9 @@ def num(text):
 
 
 def frac_in(text):
-    """Fractions like \\frac{3}{4} found anywhere in a prompt."""
-    return [Fraction(int(a), int(b)) for a, b in re.findall(r'\\frac\{(\d+)\}\{(\d+)\}', text)]
+    """Fractions like \\frac{3}{4} (or 3/4, the plain reading) found anywhere in a prompt."""
+    return [Fraction(int(a or c), int(b or d)) for a, b, c, d in
+            re.findall(r'\\frac\{(\d+)\}\{(\d+)\}|(?<![\d/])(\d+)/(\d+)(?![\d/])', text)]
 
 
 def options_of(public):
@@ -369,7 +370,9 @@ def solve_simulation(public):
     sets, trials = int(m[1]), int(m[2])
     require(sum(vals) == sets, 'Chart total does not match the stated number of simulated sets')
     require(all(0 <= c <= trials for c in cats), 'Chart categories outside the possible counts')
-    p = frac_in(prompt)[0]
+    fractions = frac_in(prompt)
+    require(fractions, 'Model probability missing from the simulation prompt')
+    p = fractions[0]
     observed = int(re.search(r'(?:landed on blue|landed heads|made|she made) (\d+) (?:times|shots)', prompt)[1])
     cutoff = re.search(r'Fewer than (\d+(?:\.\d+)?)% that extreme means not consistent with the model', prompt)
     require(cutoff is not None, 'Decision rule must be stated with its boundary')
