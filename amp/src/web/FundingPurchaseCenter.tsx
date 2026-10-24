@@ -681,15 +681,15 @@ export function FundingPurchaseCenter({
             )}
           </>
         )}
+        <SupportHelp
+          context="purchase"
+          program={
+            program?.id === "ar-efa" || program?.id === "az-esa"
+              ? program.id
+              : undefined
+          }
+        />
       </div>
-      <SupportHelp
-        context="purchase"
-        program={
-          program?.id === "ar-efa" || program?.id === "az-esa"
-            ? program.id
-            : undefined
-        }
-      />
       {(request || offer) && (
         <footer className="funding-footer">
           {request ? (
