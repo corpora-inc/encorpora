@@ -247,7 +247,7 @@ const specs: Spec[] = [
     ],
     watch:
       "A familiar picture is not a definition. If a statement fits a shape you did not intend, it is missing a condition.",
-    principle: t`A circle is the set of all points in a plane that are a given distance from a given point. Parallel lines are lines in a plane that do not intersect. Perpendicular lines intersect to form a right angle. An angle is formed by two rays with a common endpoint. A ray and a segment are parts of a line as described above.`,
+    principle: t`A circle is the set of all points in a plane that are a given distance from a given point. Parallel lines are lines in a plane that do not intersect. Perpendicular lines intersect to form a right angle. An angle is formed by two rays with a common endpoint. A ray is the part of a line that starts at one point and extends without end in one direction. A segment is the part of a line consisting of two endpoints and every point between them.`,
     example: {
       prompt: "Which is the precise definition of parallel lines?",
       steps: [

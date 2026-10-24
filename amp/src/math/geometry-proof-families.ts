@@ -1521,6 +1521,8 @@ const inscribedFamily: Family = {
           "Draw a diameter, construct the perpendicular diameter, and join its four endpoints in order.",
         ],
       } as const;
+      const article = (name: string) =>
+        `${/^[aeiou]/.test(name) ? "an" : "a"} ${name}`;
       const shape = pick(r, ["hexagon", "triangle", "square"] as const);
       const others = (["hexagon", "triangle", "square"] as const).filter(
         (s) => s !== shape,
@@ -1536,14 +1538,14 @@ const inscribedFamily: Family = {
       return {
         tag: `method-${shape}`,
         label: "Construction method",
-        prompt: `Which method inscribes a ${methods[shape][0]} in a circle with compass and straightedge?`,
+        prompt: `Which method inscribes ${article(methods[shape][0])} in a circle with compass and straightedge?`,
         correct: methods[shape][1],
         wrong: [
           ...others.map(
             (o) =>
               [
                 methods[o][1],
-                `That inscribes a ${methods[o][0]}, not a ${methods[shape][0]}.`,
+                `That inscribes ${article(methods[o][0])}, not ${article(methods[shape][0])}.`,
               ] as Wrong,
           ),
           [
@@ -1551,7 +1553,7 @@ const inscribedFamily: Family = {
             "Arbitrary points do not give equal sides, so the figure is not regular.",
           ],
         ],
-        hint: `Think about the central angle between neighboring vertices of a ${methods[shape][0]}, then ask which compass or straightedge step produces points that far apart.`,
+        hint: `Think about the central angle between neighboring vertices of ${article(methods[shape][0])}, then ask which compass or straightedge step produces points that far apart.`,
         explanation: [why[shape], methods[shape][1]],
       };
     },
