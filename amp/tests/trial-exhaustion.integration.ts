@@ -7,8 +7,9 @@ import { migrate } from "../scripts/migrate";
 import { PostgresRepository } from "../src/server/repository";
 import { buildApp } from "../src/server/app";
 import { generateProblem, templates } from "../src/math/engine";
+import { clientCanDraw } from "../src/math/contracts";
 import { skills } from "../src/curriculum/catalog";
-import { templateGrade } from "../src/server/mixed-practice";
+import { planMixedPractice, templateGrade } from "../src/server/mixed-practice";
 
 // Captured from a real anonymous adaptive run: answer 20 returned 409 and
 // rolled back because the posterior fell below the earliest catalog grade.
@@ -22,7 +23,10 @@ const fixture: [string, string][] = JSON.parse(
 test(
   "below-catalog placement persists and adaptive practice continues with introductory material",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
-  async () => {
+  async (t) => {
+    // Fix the age prior, evidence times and review windows as well as the
+    // selection seeds. The fixture must not change with the school year.
+    t.mock.timers.enable({ apis: ["Date"], now: Date.UTC(2026, 9, 24, 12) });
     const url = process.env.AMP_TEST_DATABASE_URL!;
     const schema = `amp_exhaustion_${randomUUID().replaceAll("-", "")}`;
     const admin = new Pool({ connectionString: url, max: 1 });
@@ -62,8 +66,7 @@ test(
         };
         for (const [index, [templateId, seed]] of fixture.entries()) {
           const problem = generateProblem(templateId, seed);
-          // Replay the same mathematical fixture in two independent learners;
-          // persisted instance ids are globally unique across learner accounts.
+          // Persisted instance ids are globally unique across learner accounts.
           problem.public.id = `${problem.public.id}:${trial.learnerId}`;
           await repository.transaction(account, trial.learnerId, (tx) =>
             tx.saveProblem(problem),
@@ -129,40 +132,83 @@ test(
           fractions.level - frontier.overall.level < 1.4,
           `fractions ${fractions.level}, overall ${frontier.overall.level}`,
         );
+        assert.ok(frontier.adaptive!.level < earliest);
+        const capabilities = {
+          responseCapabilities: ["single-choice-v1" as const],
+          figureCapabilities: ["measurement-models-v1" as const],
+        };
+        const supported = templates.filter((template) =>
+          clientCanDraw(template, capabilities),
+        );
+        const strandOf = (template: (typeof templates)[number]) =>
+          nodes.get(template.skillId)?.strand ?? template.skillId;
+        const assertIntroductory = (selected: (typeof templates)[number]) => {
+          const grade = templateGrade(selected, nodes);
+          const strandFloor = Math.min(
+            ...supported
+              .filter((template) => strandOf(template) === strandOf(selected))
+              .map((template) => templateGrade(template, nodes)),
+          );
+          // A nearby introductory item can win the weighted draw: K comparison
+          // and grade-1 ordering/clock items share the measurement strand.
+          // Bound the selected item itself, not just the strand's minimum.
+          assert.ok(
+            grade <= strandFloor + 1,
+            `${selected.id}: grade ${grade} exceeds introductory material in its strand (${strandFloor})`,
+          );
+          assert.ok(
+            grade <= earliest + 1,
+            `${selected.id}: grade ${grade} exceeds a grade above the catalog start (${earliest})`,
+          );
+        };
+        const state = await repository.transaction(
+          account,
+          trial.learnerId,
+          async (tx) => ({
+            attempts: await tx.recentAttempts(),
+            evidence: await tx.skillEvidence(),
+            skips: await tx.recentSkips(),
+          }),
+        );
+        const seen = new Set<string>();
+        // Use the route's persisted inputs and client-compatible pool. Fixed
+        // seeds exercise the reported failures instead of hoping a UUID draw
+        // happens to visit them. Check both one item and the default batch.
+        for (const count of [1, 3]) {
+          for (let seed = 0; seed < 256; seed++) {
+            const choices = planMixedPractice({
+              templates: supported,
+              skills,
+              ...state,
+              frontier,
+              count,
+              seed: `introductory:${seed}`,
+              now: Date.now(),
+              learnerKey: trial.learnerId,
+            });
+            assert.equal(choices.length, count);
+            for (const choice of choices) {
+              assertIntroductory(choice.template);
+              seen.add(choice.template.id);
+            }
+          }
+        }
+        for (const id of ["order-lengths", "match-clock-half-hour"])
+          assert.ok(seen.has(id), `the seed sweep must exercise ${id}`);
         const batch = await app.inject({
           method: "POST",
           url: `${base}/batches`,
           headers,
           payload: {
             count: 1,
-            responseCapabilities: ["single-choice-v1"],
-            figureCapabilities: ["measurement-models-v1"],
+            ...capabilities,
           },
         });
         assert.equal(batch.statusCode, 200, batch.body);
         const selected = templates.find(
           (t) => t.id === batch.json().problems[0].templateId,
         )!;
-        // Each strand aims at its own estimate, so a strand with a (guessed,
-        // discounted) success may still sit above the overall level. Whatever strand is chosen,
-        // the learner gets that strand's easiest material, never an advanced
-        // fallback, and never more than a grade above the catalog's start.
-        const strandOf = (t: (typeof templates)[number]) =>
-          nodes.get(t.skillId)?.strand ?? t.skillId;
-        const strandFloor = Math.min(
-          ...templates
-            .filter((t) => strandOf(t) === strandOf(selected))
-            .map((t) => templateGrade(t, nodes)),
-        );
-        assert.equal(
-          templateGrade(selected, nodes),
-          strandFloor,
-          `a below-catalog learner gets introductory material, not an advanced fallback (${selected.id})`,
-        );
-        assert.ok(
-          strandFloor <= earliest + 1,
-          `${selected.id} is within a grade of the catalog's earliest material`,
-        );
+        assertIntroductory(selected);
         const saved = await app.inject({
           method: "POST",
           url: "/api/v1/trials/adopt",
