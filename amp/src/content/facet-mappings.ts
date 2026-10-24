@@ -394,6 +394,104 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Recognize a justified angle statement in four configurations; constructed and multistep proofs require separate assessment.",
   },
   {
+    templateId: "line-angle-proof-reasons",
+    facetId: "line-angle-proofs.core",
+    extent: "partial",
+    rationale:
+      "Select the reason for a vertical-angle, alternate-interior-angle or perpendicular-bisector step (including the converse direction), or the equation a vertical-angle step gives with a linear unknown. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "triangle-theorem-consequences",
+    facetId: "triangle-proofs.core",
+    extent: "partial",
+    rationale:
+      "Apply isosceles base angles, the midsegment theorem and the 2:1 median ratio to find a measure with a numeric or linear unknown, and select the reason that completes an angle-sum proof step. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "parallelogram-property-consequences",
+    facetId: "parallelogram-proofs.core",
+    extent: "partial",
+    rationale:
+      "Select the reason for an opposite-side, opposite-angle, bisecting-diagonal or rectangle-diagonal step, and solve linear-unknown diagonal and consecutive-angle consequences. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "precise-geometric-definitions",
+    facetId: "geometric-definitions.core",
+    extent: "partial",
+    rationale:
+      "Choose the precise definition of a circle, parallel lines or an angle and identify the one flawed definition among four (missing plane, interior included, ray versus segment). Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "transformation-invariant-claims",
+    facetId: "transformation-invariants.core",
+    extent: "partial",
+    rationale:
+      "Identify which transformations preserve distance and angle, decide from triangle image coordinates whether a map is rigid, a dilation or neither, and apply dilation and rotation definitions. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "polygon-symmetry-counts",
+    facetId: "polygon-symmetries.core",
+    extent: "partial",
+    rationale:
+      "Find the smallest rotation, the number of rotations, the lines of reflection and the rotation angles that carry regular polygons, non-square rectangles, parallelograms and isosceles trapezoids onto themselves. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "transformation-sequence-mapping",
+    facetId: "transformation-constructions.core",
+    extent: "partial",
+    rationale:
+      "From coordinates of a triangle and its image, choose the single transformation or ordered reflection, rotation, translation or dilation sequence that maps one onto the other. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "compass-straightedge-reasoning",
+    facetId: "geometric-constructions.core",
+    extent: "partial",
+    rationale:
+      "Choose the next step, the order of steps or the justification for a perpendicular bisector, angle bisector, perpendicular and parallel-line construction. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "inscribed-polygon-reasoning",
+    facetId: "inscribed-polygons.core",
+    extent: "partial",
+    rationale:
+      "Choose why a hexagon side equals the radius, the hexagon perimeter, the central angle of an inscribed regular polygon and the construction method for an inscribed triangle, square or hexagon. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "triangle-circle-centers",
+    facetId: "triangle-circles.core",
+    extent: "partial",
+    rationale:
+      "Choose the construction for a circumcenter or incenter and compute opposite angles of an inscribed quadrilateral (with a linear unknown) and the circumradius of a right triangle. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "tangent-circle-computation",
+    facetId: "tangent-construction.core",
+    extent: "partial",
+    rationale:
+      "Use the right angle between tangent and radius and equal tangent segments to find tangent lengths, radii, angles and linear unknowns. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "circle-dilation-scaling",
+    facetId: "circle-similarity.core",
+    extent: "partial",
+    rationale:
+      "Find the scale factor between two circles, the area and circumference factors, and choose the translation and dilation that map one circle onto another. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "coordinate-quadrilateral-claims",
+    facetId: "coordinate-proofs.core",
+    extent: "partial",
+    rationale:
+      "From vertex coordinates, use slopes, distances and dot products to choose the most specific quadrilateral classification proved (square, rectangle, rhombus, parallelogram, trapezoid). Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "measurement-formula-justifications",
+    facetId: "measurement-formula-proofs.core",
+    extent: "partial",
+    rationale:
+      "Compute from a sector-rearrangement, cube-into-pyramids or cone-cylinder comparison and choose the justification of the circumference and sector-limit arguments. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
     templateId: "rational-equation-one-denominator",
     facetId: "rational-equation-one-denominator.constant-numerator",
     extent: "partial",
