@@ -12,6 +12,8 @@ import json
 import math
 import re
 import subprocess
+import sys
+import time
 import xml.etree.ElementTree as ET
 
 
@@ -68,6 +70,41 @@ def self_test():
     return len(mutations)
 
 
+# Each HTML embeds its print fonts. Bound the child process's retained HTML and
+# browser lifetime independently of the number of lessons in the corpus.
+LAYOUT_BATCH_SIZE = 120
+LAYOUT_BATCH_TIMEOUT = 180
+
+
+def review_print_html(documents, root):
+    require(documents, 'Missing print HTML inventory')
+    completed = 0
+    batches = 0
+    rejected = None
+    for start in range(0, len(documents), LAYOUT_BATCH_SIZE):
+        batch = documents[start:start + LAYOUT_BATCH_SIZE]
+        label = f'Print HTML batch {batches + 1} (documents {start + 1}-{start + len(batch)})'
+        began = time.monotonic()
+        try:
+            layout = subprocess.run(
+                ['node', '--import', 'tsx', str(root / 'scripts/print-layout-oracle.ts')],
+                cwd=root, input=json.dumps(batch), capture_output=True, text=True,
+                timeout=LAYOUT_BATCH_TIMEOUT)
+        except subprocess.TimeoutExpired as error:
+            raise ValueError(f'{label} exceeded {LAYOUT_BATCH_TIMEOUT}s; '
+                             f'first file: {batch[0]["file"]}') from error
+        require(layout.returncode == 0, f'{label} failed: {layout.stderr[:2000]}')
+        report = json.loads(layout.stdout)
+        require(report['documents'] == len(batch), f'{label}: incomplete layout review')
+        require(report['rejectedMutations'] == 14, f'{label}: incomplete mutation checks')
+        rejected = report['rejectedMutations']
+        completed += report['documents']
+        batches += 1
+        print(f'{label} passed in {time.monotonic() - began:.1f}s '
+              f'({completed}/{len(documents)} complete)', file=sys.stderr, flush=True)
+    require(completed == len(documents), 'Incomplete print HTML layout review')
+    return {'documents': completed, 'rejectedMutations': rejected, 'batches': batches}
+
 def review_print_pdfs(directory):
     rejected = self_test()
     directory = Path(directory)
@@ -84,11 +121,7 @@ def review_print_pdfs(directory):
     root = Path(__file__).resolve().parent.parent
     documents = [{'file': str((directory / re.sub(r'-(Letter|A4)\.pdf$', '.html', name)).resolve()),
                   'format': 'Letter' if name.endswith('-Letter.pdf') else 'A4'} for name in names]
-    layout = subprocess.run(['node', '--import', 'tsx', str(root / 'scripts/print-layout-oracle.ts')],
-                            cwd=root, input=json.dumps(documents), capture_output=True, text=True, timeout=180)
-    require(layout.returncode == 0, f'Print HTML layout review failed: {layout.stderr[:2000]}')
-    layout_report = json.loads(layout.stdout)
-    require(layout_report['documents'] == len(entries), 'Incomplete print HTML layout review')
+    layout_report = review_print_html(documents, root)
     pages = 0
     for entry in entries:
         filename = entry['filename']
