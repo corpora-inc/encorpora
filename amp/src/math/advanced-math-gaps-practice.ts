@@ -638,7 +638,12 @@ function factoringPatterns(r: Random): Built {
   if (variant === "cubes" || variant === "gcf-cubes") {
     const k = variant === "gcf-cubes" ? [2, 3, 4, 5][r(0, 3)]! : 1;
     const a = variant === "cubes" ? r(1, 3) : 1;
-    const b = r(1, 4);
+    // A common factor of a and b would be a cube that must be pulled out first,
+    // so keep a and b coprime: then the factors below are the complete factorization.
+    const bChoices = [1, 2, 3, 4].filter((v) =>
+      [2, 3].every((f) => a % f !== 0 || v % f !== 0),
+    );
+    const b = bChoices[r(0, bChoices.length - 1)]!;
     const s = r(0, 1) ? 1 : -1;
     const expr = poly([k * a ** 3, 0, 0, s * k * b ** 3]);
     const kk = k === 1 ? "" : String(k);
@@ -977,9 +982,9 @@ function residualFunctionFit(r: Random): Built {
       },
       {
         label:
-          "Switch to a curved model, because some residuals are positive and some are negative.",
+          "Replace the line with a different line, because some residuals are positive and some are negative.",
         feedback:
-          "Every least-squares line has residuals of both signs. Look for a pattern, not for the signs themselves.",
+          "Every least-squares line has residuals of both signs. Look for a pattern in the residuals, not for the signs themselves.",
       },
     ];
     const first = res[0]!,
