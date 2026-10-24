@@ -105,3 +105,15 @@ test('Arizona and overview clicks retain Arizona identity and respect opt-out',(
   assert.deepEqual(JSON.parse(run(search,{globalPrivacyControl:true},path).sent[0].options.body),{optOut:true});
  }
 });
+
+ test('all fifty funded v5 labels survive their state landing capture without private query fields',()=>{
+ const labels: string[]=JSON.parse(readFileSync(new URL('../../amp/docs/funded-v5-creative-labels.json',import.meta.url),'utf8'));
+ assert.equal(labels.length,50); assert.equal(new Set(labels).size,50);
+ for(const label of labels){
+ const ar=label.startsWith('ar-'), campaign=ar?'ar-efa-launch':'az-esa-launch',path=ar?'/esa/arkansas-efa/':'/esa/arizona-esa/';
+ const query=`?gclid=Synthetic_v5&utm_campaign=${campaign}&utm_source=google&utm_medium=cpc&utm_content=${label}&email=private@example.test`;
+ const result=run(query,{},path),body=JSON.parse(result.sent[0].options.body);
+ assert.equal(body.labels.creative,label);assert.equal(body.labels.campaign,campaign);assert.ok(!JSON.stringify(body).includes('private@'));
+ assert.deepEqual(JSON.parse(run(query,{globalPrivacyControl:true},path).sent[0].options.body),{optOut:true});
+ }
+ });

@@ -96,7 +96,7 @@ await fixture(async (pool) => {
         r.request().method() === "POST",
     );
     await page.goto(
-      "https://corpora.inc/esa/arkansas-efa/?gclid=Browser_Google&fbclid=Browser_Meta&utm_campaign=ar-efa-launch&utm_source=google&utm_medium=cpc",
+      "https://corpora.inc/esa/arkansas-efa/?gclid=Browser_Google&fbclid=Browser_Meta&utm_campaign=ar-efa-launch&utm_source=google&utm_medium=cpc&utm_content=ar-funded-whats-next-responsive-v5",
     );
     assert.equal((await captured).status(), 204);
     assert.ok(!page.url().includes("gclid") && !page.url().includes("fbclid"));
@@ -126,6 +126,14 @@ await fixture(async (pool) => {
       },
     );
     assert.equal(status, 200);
+    assert.equal(
+      (
+        await pool.query(
+          "SELECT DISTINCT e.campaign_labels FROM amp_ad_order_attribution a JOIN amp_ad_click_evidence e ON e.id=a.click_id JOIN amp_funding_requests r ON r.id=a.funding_request_id",
+        )
+      ).rows[0].campaign_labels.creative,
+      "ar-funded-whats-next-responsive-v5",
+    );
     assert.ok(
       apiRequests.some(
         (r) => r.path === "/api/v1/funding/requests" && r.cookie,
