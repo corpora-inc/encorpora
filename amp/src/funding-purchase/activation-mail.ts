@@ -87,9 +87,10 @@ export async function deliverFundedActivationMail(
         text: [
           "Your funded AMP Mathematics purchase is confirmed and your learner's access is active.",
           `Invoice: ${row.request_id}`,
-          "Sign in to the parent account used to create this invoice, then select your learner to start learning.",
+          "Sign in to your AMP parent account, then select your learner to start learning.",
           `Open AMP: ${link.href}`,
           "You do not need to make another payment.",
+          "Need help getting started? Email support@corpora.inc and include the invoice number above.",
         ].join("\n\n"),
       };
       const binding = digest({ transport: transport.binding, mail });
