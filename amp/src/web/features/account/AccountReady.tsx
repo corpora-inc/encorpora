@@ -5,7 +5,6 @@ import { continuationSearch } from "../../lib/funded-entry";
 import { chosenPlan } from "../../lib/pending-trial";
 import { PageFrame, FrameBrand, frameCard } from "../../ui/PageFrame";
 import { Button, buttonClass } from "../../ui/Button";
-import { AccountMenu } from "./AccountMenu";
 import styles from "./Account.module.css";
 
 /** A successful account creation has an explicit, useful landing screen. */
@@ -35,7 +34,6 @@ export function AccountReady() {
       >
         <div className={styles.readyHeader}>
           <FrameBrand expanded />
-          <AccountMenu />
         </div>
         <h1>Your account is ready</h1>
         {account?.account.email && (

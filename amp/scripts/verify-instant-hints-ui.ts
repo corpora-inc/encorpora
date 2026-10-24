@@ -143,6 +143,7 @@ try {
         const hintText = await dialog.locator(".hint").textContent();
         await page.keyboard.press("Escape");
         if (mode !== "account") {
+          await page.getByRole("button", { name: "Open AMP menu" }).click();
           await page.getByRole("link", { name: "Your level" }).click();
           await page.waitForURL("**/try/map");
           await page.goBack();

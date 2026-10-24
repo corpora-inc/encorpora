@@ -86,16 +86,19 @@ async function setup(
     if (path.endsWith("/me")) {
       familyReads++;
       return route.fulfill({
-        json: fixtureMe({
-          consent: {
-            status: "active",
-            policyVersion: "fixture",
-            recordedAt: "2026-01-01T00:00:00Z",
-            withdrawnAt: null,
+        json: fixtureMe(
+          {
+            consent: {
+              status: "active",
+              policyVersion: "fixture",
+              recordedAt: "2026-01-01T00:00:00Z",
+              withdrawnAt: null,
+            },
+            learners: [child(1), child(2)],
+            retained: retentionNotice,
           },
-          learners: [child(1), child(2)],
-          retained: retentionNotice,
-        }),
+          `parent-${parent}`,
+        ),
       });
     }
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
@@ -108,7 +111,9 @@ async function setup(
         },
       });
     if (path.endsWith("/progress"))
-      return route.fulfill({ json: { skills: [] } });
+      return route.fulfill({
+        json: { asOf: "2026-01-01T00:00:00Z", skills: [] },
+      });
     if (path.endsWith("/billing/offer"))
       return route.fulfill({
         json: options.disabled
@@ -208,9 +213,9 @@ async function setup(
   };
 }
 async function openAccess(page: Page) {
-  await page.getByRole("button", { name: "Account menu" }).click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Manage account", exact: true })
+    .getByRole("link", { name: "Manage learners", exact: true })
     .click();
   await page.getByRole("button", { name: "Access", exact: true }).click();
   await page
@@ -470,9 +475,9 @@ try {
       ),
     purchaseId,
   );
-  await returned.page.getByRole("button", { name: "Account menu" }).click();
+  await returned.page.getByRole("button", { name: "Open AMP menu" }).click();
   await returned.page
-    .getByRole("menuitem", { name: "Sign out", exact: true })
+    .getByRole("button", { name: "Sign out", exact: true })
     .click();
   await returned.page
     .getByRole("button", { name: "Parent sign in", exact: true })

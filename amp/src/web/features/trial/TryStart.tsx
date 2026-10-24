@@ -62,7 +62,7 @@ function BirthYear() {
     track("try_click");
   }, []);
   return (
-    <PageFrame centered>
+    <PageFrame centered className={styles.introFrame}>
       <Toast message={error} onDismiss={() => setError("")} />
       <BirthYearPrompt
         embedded={{
@@ -77,7 +77,7 @@ function BirthYear() {
         }}
         name="the learner"
         title="Your math pathways start here"
-        description="Choose your birth year, and we’ll find your starting point—then adapt as you learn."
+        description="Choose your birth year to start. We’ll adapt as you learn."
         birthYear={null}
         busy={busy}
         saveBirthYear={(year) => {

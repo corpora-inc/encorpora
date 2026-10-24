@@ -1,6 +1,6 @@
 import { nativeRuntime } from "./native-runtime";
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { strandNames } from "./BirthYearPrompt";
 
 type Estimate = {
@@ -28,6 +28,7 @@ export function gradeName(level: number) {
 const range = (e: Estimate) => [e.level - 1.64 * e.sd, e.level + 1.64 * e.sd];
 
 type Props = {
+  navigation?: ReactNode;
   name: string;
   resuming: boolean;
   frontier: FrontierMap | null;
@@ -43,6 +44,7 @@ export function Home(props: Props) {
   const f = props.frontier;
   return (
     <main className="home">
+      {props.navigation}
       <section className="home-hero">
         <div>
           <h1>{props.name}</h1>

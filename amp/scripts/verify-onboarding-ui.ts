@@ -489,10 +489,15 @@ try {
       await plan.waitFor();
       const planCard = await box(page.locator("main section").first());
       assert.ok(planCard.y >= 24, `${tag}: plan card keeps safe top padding`);
-      if (planCard.height + 48 <= viewport.height)
+      const planContent = await box(page.locator("main"));
+      if (planCard.height + 48 <= planContent.height)
         assert.ok(
-          Math.abs(planCard.y + planCard.height / 2 - viewport.height / 2) <= 1,
-          `${tag}: short setup cards are centered`,
+          Math.abs(
+            planCard.y +
+              planCard.height / 2 -
+              (planContent.y + planContent.height / 2),
+          ) <= 1,
+          `${tag}: short setup cards are centered above the support footer`,
         );
       assert.equal(planCard.x, verify.x, `${tag}: plan card keeps its column`);
       assert.equal(

@@ -35,13 +35,14 @@ async function fits(page: Page, selector: string) {
   if (isPhoneLandscape(page.viewportSize()!))
     return assertPhoneLandscapeSmoke(page, selector);
   const box = await page.locator(selector).boundingBox();
+  await page.screenshot({ path: "artifacts/family-focus/latest.png" });
   assert.ok(
     box &&
       box.y >= 0 &&
       box.x >= 0 &&
       box.y + box.height <= page.viewportSize()!.height + 1 &&
       box.x + box.width <= page.viewportSize()!.width + 1,
-    `${selector} visible at ${JSON.stringify(page.viewportSize())}`,
+    `${selector} visible at ${JSON.stringify(page.viewportSize())}: ${JSON.stringify(box)}`,
   );
 }
 try {
@@ -123,7 +124,7 @@ try {
           json: { templates: [], lessons: [], skills: [], mode: "fixture" },
         });
       if (path.endsWith("/me"))
-        return route.fulfill({ json: fixtureMe(family) });
+        return route.fulfill({ json: fixtureMe(family, "parent") });
       if (path.endsWith("/books"))
         return route.fulfill({ json: { books: [] } });
       if (path.endsWith("/frontier"))
@@ -135,7 +136,9 @@ try {
           },
         });
       if (path.endsWith("/progress"))
-        return route.fulfill({ json: { skills: [] } });
+        return route.fulfill({
+          json: { asOf: "2026-01-01T00:00:00Z", skills: [] },
+        });
       if (path.endsWith("/rename")) {
         const id = path.split("/").at(-2)!;
         renamed.push(id);
@@ -169,9 +172,9 @@ try {
       });
     });
     await page.goto("http://127.0.0.1:4384");
-    await page.getByRole("button", { name: "Account menu" }).click();
+    await page.getByRole("button", { name: "Open AMP menu" }).click();
     await page
-      .getByRole("menuitem", { name: "Manage account", exact: true })
+      .getByRole("link", { name: "Manage learners", exact: true })
       .click();
     await page.getByLabel("Family learner", { exact: true }).waitFor();
     assert.equal(await page.locator(".family-learner").count(), 1);

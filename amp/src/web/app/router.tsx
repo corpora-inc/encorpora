@@ -268,6 +268,17 @@ const startVerify = createRoute({
   beforeLoad: beforeStart,
   component: start,
 });
+const inventory = createRoute({
+  getParentRoute: () => root,
+  path: "/inventory",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/inventory/InventoryScreen"),
+    "InventoryScreen",
+  ),
+});
 const pathways = createRoute({
   getParentRoute: () => root,
   path: "/pathways",
@@ -366,6 +377,7 @@ export const router = createRouter({
     tryPractice,
     tryMap,
     tryPlans,
+    inventory,
     pathways,
     pathwaySkill,
     funded,

@@ -908,7 +908,7 @@
 @media (max-width: 650px) {
   .pathways.has-selection .pathways-toolbar {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 76px 44px;
+    grid-template-columns: minmax(0, 1fr) 76px;
   }
   .pathways.has-selection .pathways-search {
     width: auto;
@@ -1130,7 +1130,7 @@
   }
   .pathways .pathways-toolbar {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 76px 44px;
+    grid-template-columns: minmax(0, 1fr) 76px;
   }
   .pathways .pathways-search {
     width: auto;
@@ -1152,5 +1152,45 @@
   }
   :root:fullscreen .pathways:not(.has-selection) .pathways-workspace {
     height: calc(100dvh - 130px);
+  }
+}
+
+/* The same navigation and progress views, using the atlas color roles. */
+.pathways [data-navigation-trigger] {
+  flex: none;
+  width: var(--target-size);
+  padding: var(--space-2);
+  color: var(--atlas-accent);
+}
+.pathways-header .pathways-brand {
+  margin-right: auto;
+}
+.pathways [data-progress-views] {
+  --color-surface-sunken: var(--atlas-surface);
+  --color-on-surface-sunken: var(--atlas-muted);
+  --color-surface-raised: var(--atlas-panel);
+  --color-on-surface-raised: var(--atlas-on-panel);
+  --color-border: var(--atlas-border);
+  flex: none;
+  margin-top: 12px;
+}
+.pathways [data-progress-views] a {
+  color: inherit;
+}
+:root:fullscreen .pathways [data-progress-views] {
+  display: none;
+}
+@media (max-width: 390px) {
+  .pathways-header {
+    gap: 8px;
+  }
+  .pathways-header .pathways-brand {
+    font-size: 10px;
+  }
+  .pathways-header .pathways-go {
+    max-width: 130px;
+    padding-inline: 8px;
+    white-space: normal;
+    text-align: center;
   }
 }

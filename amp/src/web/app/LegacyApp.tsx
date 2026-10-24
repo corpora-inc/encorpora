@@ -1,4 +1,5 @@
-import { AccountMenu } from "../features/account/AccountMenu";
+import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
+import { ProgressViews } from "../features/navigation/ProgressViews";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
 import type { ProblemHint } from "../../math/contracts";
 import {
@@ -927,6 +928,7 @@ function LegacyScreen() {
         problemId: problem.id,
         ...attempt,
       });
+      if (learnerRef.current !== learner.id) return;
       setOutcome(result);
       setPending(null);
       upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
@@ -935,6 +937,7 @@ function LegacyScreen() {
         console.error("Progress refresh failed", error),
       );
     } catch (e) {
+      if (learnerRef.current !== learner.id) return;
       if (e instanceof HttpError && e.status >= 400 && e.status < 500)
         setPending(null);
       throw e;
@@ -946,6 +949,7 @@ function LegacyScreen() {
     const result = await api<Outcome>(`/learners/${learner.id}/skips`, {
       problemId: problem.id,
     });
+    if (learnerRef.current !== learner.id) return;
     setOutcome(result);
     upcoming.current = { learnerId: learner.id, batch: requestBatch("") };
     upcoming.current.batch.catch(() => undefined);
@@ -1122,6 +1126,7 @@ function LegacyScreen() {
       className={`shell ${starting ? "start-shell" : ""} ${learner || familyOpen || signedOut ? "app-shell" : ""} ${familyOpen ? "family-shell" : ""} ${purchaseView || consentOpen ? "purchase-shell" : ""} ${immersive ? "practice-shell immersive" : ""} ${flowPage ? "flow" : ""} ${readingBook ? "reading-shell" : ""}`}
     >
       <header>
+        {!nativeRuntime && <NavigationDrawer triggerRef={familyMenuTrigger} />}
         <a
           onClick={(event) => {
             event.preventDefault();
@@ -1131,9 +1136,11 @@ function LegacyScreen() {
           href="/"
           aria-label={`${brand.name} home`}
         >
-          <svg viewBox="0 0 64 32" aria-hidden="true">
-            <path d="M0 16 C8 16 8 1 16 1 S24 31 32 31 S40 1 48 1 S56 16 64 16" />
-          </svg>
+          {nativeRuntime && (
+            <svg viewBox="0 0 64 32" aria-hidden="true">
+              <path d="M0 16 C8 16 8 1 16 1 S24 31 32 31 S40 1 48 1 S56 16 64 16" />
+            </svg>
+          )}
           {brand.name}
           <span>MATHEMATICS</span>
         </a>
@@ -1153,7 +1160,7 @@ function LegacyScreen() {
               ))}
             </Select>
           )}
-          {token && !familyOpen && (
+          {nativeRuntime && token && !familyOpen && (
             <Menu
               label="Account"
               aria-label="Account menu"
@@ -1460,7 +1467,7 @@ function LegacyScreen() {
       ) : tab === "practice" ? (
         problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
-            account={nativeRuntime ? undefined : <AccountMenu />}
+            navigation={nativeRuntime ? undefined : <NavigationDrawer />}
             exit={() => setExploring(true)}
             exitHref="/"
             key={problem.id}
@@ -1551,6 +1558,7 @@ function LegacyScreen() {
           />
         ) : (learner.birthYear != null || problem) && !changingBirthYear ? (
           <Home
+            navigation={!nativeRuntime && <ProgressViews active="level" />}
             name={learner.name}
             resuming={!!problem}
             frontier={frontierMap}
@@ -1771,7 +1779,14 @@ function LegacyScreen() {
           <span>
             {brand.name} · {brand.expansion} · {brand.company}
             {" · "}
-            <a href="mailto:support@corpora.inc" style={{ display: "inline-flex", alignItems: "center", minHeight: "var(--target-size)" }}>
+            <a
+              href="mailto:support@corpora.inc"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                minHeight: "var(--target-size)",
+              }}
+            >
               support@corpora.inc
             </a>
           </span>

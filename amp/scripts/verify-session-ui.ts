@@ -80,11 +80,20 @@ async function fixturePage(family: (token: string) => FamilySummary) {
     if (path === "/api/v1/me") {
       const token = route.request().headers().authorization ?? "";
       familyTokens.push(token);
-      return route.fulfill({ json: fixtureMe(family(token)) });
+      return route.fulfill({
+        json: fixtureMe(
+          family(token),
+          token === "Bearer current-token"
+            ? "current-parent"
+            : "obsolete-parent",
+        ),
+      });
     }
     if (path.endsWith("/books")) return route.fulfill({ json: { books: [] } });
     if (path.endsWith("/progress"))
-      return route.fulfill({ json: { skills: [] } });
+      return route.fulfill({
+        json: { asOf: "2026-01-01T00:00:00Z", skills: [] },
+      });
     if (path.endsWith("/frontier"))
       return route.fulfill({
         json: {
@@ -231,7 +240,7 @@ try {
             return;
           }
         }
-        await route.fulfill({ json: fixtureMe(snapshot) });
+        await route.fulfill({ json: fixtureMe(snapshot, "current-parent") });
       } finally {
         if (isHeld) finishHandler();
       }
@@ -262,9 +271,9 @@ try {
       await page
         .getByRole("button", { name: "Learner", exact: true })
         .waitFor();
-      await page.getByRole("button", { name: "Account menu" }).click();
+      await page.getByRole("button", { name: "Open AMP menu" }).click();
       await page
-        .getByRole("menuitem", { name: "Manage account", exact: true })
+        .getByRole("link", { name: "Manage learners", exact: true })
         .click();
       await held;
       await page
