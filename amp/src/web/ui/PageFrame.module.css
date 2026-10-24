@@ -114,3 +114,24 @@
     flex-basis: 100%;
   }
 }
+
+.cardBrandRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  width: 100%;
+}
+.cardBrandRow .cardBrand {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  width: auto;
+  font-size: 20px;
+}
+.cardBrandRow .brandExpansion {
+  font-size: 11px;
+}
+.header {
+  gap: var(--space-3);
+}

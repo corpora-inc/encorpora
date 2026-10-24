@@ -638,104 +638,49 @@ try {
   await exitPractice(page);
   await page.getByRole("button", { name: "Progress", exact: true }).click();
   await page.locator(".progress-skill-card").first().waitFor();
-  // The Account menu: a tap outside, Escape and the trigger each close it;
-  // nothing in the header moves, the panel fits a phone inside its safe gutter,
-  // and focus comes back to the trigger.
-  // While open the menu is modal, so the page behind it, trigger included,
-  // leaves the accessibility tree.
+  // The navigation drawer leaves the page in place and returns keyboard focus.
   const familyMenu = page.getByRole("button", {
-    name: "Account menu",
+    name: "Open AMP menu",
     includeHidden: true,
   });
-  const familyList = page.getByRole("menu", { name: "Account menu" });
-  const headerBoxes = () =>
-    page.evaluate(() =>
-      [
-        ...document.querySelectorAll(
-          ".app-shell > header a, .app-shell > header button",
-        ),
-      ]
-        .map((element) => {
-          const box = element.getBoundingClientRect();
-          return [box.x, box.y, box.width, box.height].join(",");
-        })
-        .join(" "),
-    );
+  const familyList = page.getByRole("dialog", {
+    name: "Adaptive Math Pathways",
+  });
   for (const size of [
     { width: 384, height: 800 },
     { width: 320, height: 568 },
     { width: 1280, height: 800 },
   ]) {
     await page.setViewportSize(size);
-    await page.waitForTimeout(100);
-    const closed = await headerBoxes();
-    await familyMenu.tap();
+    await familyMenu.click();
     await familyList.waitFor();
-    assert.equal(await familyMenu.getAttribute("aria-expanded"), "true");
-    assert.equal(
-      await headerBoxes(),
-      closed,
-      `Opening the Account menu moves nothing at ${size.width}px`,
+    await familyList.evaluate(async (el) => {
+      await Promise.all(el.getAnimations().map((a) => a.finished));
+    });
+    const box = (await familyList.boundingBox())!;
+    assert(
+      box.x >= 0 &&
+        box.y >= 0 &&
+        box.x + box.width <= size.width &&
+        box.y + box.height <= size.height,
+      "drawer fits the viewport",
     );
-    const panel = (await familyList.boundingBox())!;
-    assert.ok(
-      panel.x >= 16 &&
-        panel.x + panel.width <= size.width - 16 &&
-        panel.y + panel.height <= size.height - 16,
-      `Account menu fits ${size.width}px: ${JSON.stringify(panel)}`,
-    );
-    for (const item of await page.getByRole("menuitem").all())
-      assert.ok((await item.boundingBox())!.height >= 44);
-    await page.touchscreen.tap(
-      panel.x + panel.width / 2,
-      Math.min(size.height - 8, panel.y + panel.height + 40),
-    );
+    for (const item of await familyList.getByRole("link").all())
+      assert((await item.boundingBox())!.height >= 44);
+    await page.touchscreen.tap(size.width - 2, size.height / 2);
     await familyList.waitFor({ state: "hidden" });
-    // The tap only closed the menu; it pressed nothing beneath it.
-    await page.waitForTimeout(800);
-    assert.equal(await page.getByRole("dialog").count(), 0);
-    assert.equal(await familyMenu.getAttribute("aria-expanded"), "false");
-    assert.equal(await headerBoxes(), closed);
-    // The trigger toggles it closed too.
-    await familyMenu.tap();
+    await familyMenu.focus();
+    await page.keyboard.press("Enter");
     await familyList.waitFor();
-    const trigger = (await familyMenu.boundingBox())!;
-    await page.touchscreen.tap(
-      trigger.x + trigger.width / 2,
-      trigger.y + trigger.height / 2,
+    await page.keyboard.press("Escape");
+    await page.waitForFunction(
+      () =>
+        document.activeElement?.getAttribute("aria-label") === "Open AMP menu",
     );
-    await familyList.waitFor({ state: "hidden" });
   }
   await page.setViewportSize({ width: 390, height: 844 });
-  await familyMenu.focus();
-  await page.keyboard.press("Enter");
-  await familyList.waitFor();
-  assert.equal(
-    await page.evaluate(() => document.activeElement?.textContent),
-    "Manage account",
-  );
-  await page.keyboard.press("End");
-  await page.keyboard.press("Home");
-  await page.keyboard.press("Escape");
-  await familyList.waitFor({ state: "hidden" });
-  // Radix restores focus in a timer after removing its portal. A hidden menu
-  // alone does not mean that restoration has completed.
-  await page.waitForFunction(
-    () => {
-      const active = document.activeElement as HTMLElement | null;
-      return (
-        active?.getAttribute("aria-label") === "Account menu" &&
-        active.matches(":focus-visible") &&
-        getComputedStyle(active).outlineStyle !== "none"
-      );
-    },
-    undefined,
-    { timeout: 5_000 },
-  );
-  await page.getByRole("button", { name: "Account menu" }).click();
-  await page
-    .getByRole("menuitem", { name: "Add learner", exact: true })
-    .click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("link", { name: "Add learner", exact: true }).click();
   await page
     .getByLabel("Learner name", { exact: true })
     .fill("LongNickname".repeat(5));
@@ -760,9 +705,9 @@ try {
   );
   // Family opens on the current learner, and choosing one there makes them
   // the current learner on every screen.
-  await page.getByRole("button", { name: "Account menu" }).click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Manage account", exact: true })
+    .getByRole("link", { name: "Manage learners", exact: true })
     .click();
   assert.equal(
     await page.getByLabel("Family learner").getAttribute("data-value"),
@@ -781,9 +726,9 @@ try {
     learnerIds.at(-1)!,
   );
   await page.getByRole("button", { name: "Practice", exact: true }).click();
-  await page.getByRole("button", { name: "Account menu" }).click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Change birth year", exact: true })
+    .getByRole("link", { name: "Change birth year", exact: true })
     .click();
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   assert.ok(
@@ -793,9 +738,9 @@ try {
     "A maximum-length learner nickname must fit a phone viewport",
   );
   // The real application mounts parent controls independently of learning consent.
-  await page.getByRole("button", { name: "Account menu" }).click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Manage account", exact: true })
+    .getByRole("link", { name: "Manage learners", exact: true })
     .click();
   await page.locator(".family-center").waitFor();
   for (const size of [
@@ -842,13 +787,14 @@ try {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "Back", exact: true }).click();
   await page.waitForFunction(
-    () => document.activeElement?.getAttribute("aria-label") === "Account menu",
+    () =>
+      document.activeElement?.getAttribute("aria-label") === "Open AMP menu",
   );
   // Family exits to the workspace; open the profile route before editing again.
   assert.equal(new URL(page.url()).pathname, "/");
-  await page.getByRole("button", { name: "Account menu" }).click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Change birth year", exact: true })
+    .getByRole("link", { name: "Change birth year", exact: true })
     .click();
   await page.getByRole("heading", { name: /^What year was/ }).waitFor();
   let releaseFamilyBatch!: () => void, familyBatchHeld!: () => void;
@@ -867,9 +813,9 @@ try {
   await page.getByRole("button", { name: "2016", exact: true }).click();
   await page.getByRole("button", { name: "Go", exact: true }).click();
   await familyBatchWaiting;
-  await page.getByRole("button", { name: "Account menu" }).click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Manage account", exact: true })
+    .getByRole("link", { name: "Manage learners", exact: true })
     .click();
   await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
   await page
@@ -918,9 +864,9 @@ try {
     await page.getByRole("navigation", { name: "Learning sections" }).count(),
     0,
   );
-  await page.getByRole("button", { name: "Account menu" }).click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page
-    .getByRole("menuitem", { name: "Manage account", exact: true })
+    .getByRole("link", { name: "Manage learners", exact: true })
     .click();
   await page.getByRole("heading", { name: "Family", exact: true }).waitFor();
   assert.deepEqual(errors, []);

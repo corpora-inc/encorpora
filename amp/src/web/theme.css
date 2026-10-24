@@ -2053,9 +2053,15 @@ html[data-input="pointer"] :focus-visible {
     row-gap: 6px;
     padding-bottom: 6px;
   }
-  .shell.immersive .workspace-toolbar:has([data-account-control]) {
-    grid-template-columns: auto minmax(0, 1fr) auto 44px 44px;
-    grid-template-areas: "level . status calculator account" "topic topic topic topic topic";
+  .shell.immersive .workspace-toolbar:has([data-navigation-trigger]) {
+    grid-template-columns: var(--target-size) minmax(0, 1fr) 44px;
+    grid-template-areas: "navigation topic calculator";
+    align-items: center;
+    column-gap: 10px;
+    padding-block: 4px;
+  }
+  .workspace-toolbar > [data-navigation-trigger] {
+    grid-area: navigation;
   }
   .workspace-toolbar > .workspace-level {
     grid-area: level;
@@ -2066,9 +2072,6 @@ html[data-input="pointer"] :focus-visible {
   .workspace-toolbar > .calculator-toggle,
   .workspace-toolbar > .no-calculator {
     grid-area: calculator;
-  }
-  .workspace-toolbar > [data-account-control] {
-    grid-area: account;
   }
   .shell.immersive .workspace-topic {
     grid-area: topic;

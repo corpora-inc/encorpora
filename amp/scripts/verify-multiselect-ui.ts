@@ -632,6 +632,7 @@ try {
     new RegExp(`1 of ${trialCount} selected`),
   );
   const prompt = await page.locator("#problem-prompt").textContent();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("link", { name: "Your level" }).click();
   await page.waitForURL("**/try/map");
   await page.goBack();

@@ -569,16 +569,21 @@ try {
       if (audit) await axe(page, "start");
       await shoot(page, "start", tag);
 
-      // Placement in the full-screen workspace, with the calm free meter.
+      // Placement keeps the budget in the shared navigation drawer.
       await years.getByRole("button", { name: "2016", exact: true }).click();
       await page.waitForURL("**/try/practice");
-      const meter = page
-        .locator(".workspace-toolbar")
-        .getByText("free problems used");
+      await page.getByRole("button", { name: "Open AMP menu" }).click();
+      const meter = page.getByRole("progressbar", {
+        name: "Free assessment problems used",
+      });
       await meter.waitFor();
-      assert.equal(
-        await meter.textContent(),
-        `0 of ${FREE} free problems used`,
+      assert.equal(await meter.getAttribute("value"), "0");
+      assert.equal(await meter.getAttribute("max"), String(FREE));
+      await page.keyboard.press("Escape");
+      await page.waitForFunction(
+        () =>
+          document.activeElement?.getAttribute("aria-label") ===
+          "Open AMP menu",
       );
       await fits(page, `${tag} practice`);
       if (audit) await axe(page, "practice");

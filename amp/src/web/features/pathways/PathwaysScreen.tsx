@@ -1,4 +1,5 @@
-import { AccountMenu } from "../account/AccountMenu";
+import { NavigationDrawer } from "../navigation/NavigationDrawer";
+import { ProgressViews } from "../navigation/ProgressViews";
 import {
   useMemo,
   useRef,
@@ -390,10 +391,8 @@ export function MapView({
       className={`pathways ${selected ? "has-selection" : ""} ${browse ? "is-browsing" : ""}`}
     >
       <header className="pathways-header">
+        <NavigationDrawer />
         <Link to="/" className="pathways-brand">
-          <svg viewBox="0 0 44 28" aria-hidden="true">
-            <path d="M1 14C5 0 9 0 13 14S21 28 25 14S33 0 37 14S41 28 43 14" />
-          </svg>
           <span>
             Adaptive Math <strong>Pathways</strong>
           </span>
@@ -416,6 +415,7 @@ export function MapView({
           from kindergarten through precalculus
         </p>
       </div>
+      <ProgressViews active="pathways" trial={assessmentContext || guestMode} />
       {guestMode && (
         <div className="pathways-guest-intro">
           <p>
@@ -486,7 +486,6 @@ export function MapView({
             {browse ? "Close" : "Browse"}
           </span>
         </button>
-        <AccountMenu />
       </div>
       {catalog.isError ? (
         <div role="alert">

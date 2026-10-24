@@ -161,8 +161,8 @@ type Props = {
   satMathFocus?: boolean;
   /** A calm status in the toolbar, such as the free-practice meter. */
   status?: ReactNode;
-  /** Compact account actions supplied by browser routes. */
-  account?: ReactNode;
+  /** Global navigation supplied by browser routes; native keeps its home link. */
+  navigation?: ReactNode;
   /** A skill this answer just mastered, shown once with the feedback. */
   mastered?: string | null;
   /** Sends "Report a problem" once this problem resolves. Absent: no flag. */
@@ -753,33 +753,35 @@ export function PracticeWorkspace(props: Props) {
     <main className="practice-workspace" aria-label="Math practice">
       <section className="practice-surface" ref={surface}>
         <div className="workspace-toolbar">
-          <a
-            className="workspace-level"
-            href={props.exitHref}
-            aria-label="Your level"
-            title="Your level"
-            onClick={(event) => {
-              // A modified click opens the view in a new tab as usual.
-              if (
-                event.button !== 0 ||
-                event.metaKey ||
-                event.ctrlKey ||
-                event.shiftKey ||
-                event.altKey
-              )
-                return;
-              event.preventDefault();
-              props.exit();
-            }}
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 19.5h14" />
-              <path d="M7.5 16v-3M12 16V9.5M16.5 16V5.5" />
-            </svg>
-            <span className="workspace-level-label" aria-hidden="true">
-              Your level
-            </span>
-          </a>
+          {props.navigation ?? (
+            <a
+              className="workspace-level"
+              href={props.exitHref}
+              aria-label="Your level"
+              title="Your level"
+              onClick={(event) => {
+                // A modified click opens the view in a new tab as usual.
+                if (
+                  event.button !== 0 ||
+                  event.metaKey ||
+                  event.ctrlKey ||
+                  event.shiftKey ||
+                  event.altKey
+                )
+                  return;
+                event.preventDefault();
+                props.exit();
+              }}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 19.5h14" />
+                <path d="M7.5 16v-3M12 16V9.5M16.5 16V5.5" />
+              </svg>
+              <span className="workspace-level-label" aria-hidden="true">
+                Your level
+              </span>
+            </a>
+          )}
           <span
             className="workspace-topic"
             data-strand={props.strand}
@@ -824,7 +826,6 @@ export function PracticeWorkspace(props: Props) {
               </svg>
             </span>
           )}
-          {props.account}
         </div>
         <div
           className="problem-stage"

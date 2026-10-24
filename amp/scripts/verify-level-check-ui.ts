@@ -13,7 +13,7 @@ import { migrate } from "./migrate";
 
 /**
  * The free assessment's level check, against the real learning API: the
- * practice toolbar's "Your level" control opens /try/map with a real route
+ * practice drawer's "Your level" link opens /try/map with a real route
  * (back returns to the same problem). Runs at 320x568, 384x700, 390x844,
  * 768x1024, 1024x768, 1180x820 and 1280x800, light and dark, and asserts no
  * horizontal overflow and nothing overlapping in the toolbar.
@@ -254,17 +254,13 @@ try {
       contexts.push(context);
       await page.goto(`${origin}/try/practice`);
       await page.locator(".problem-stage .question").waitFor();
-      const level = page.getByRole("link", { name: "Your level" });
+      const level = page.getByRole("button", { name: "Open AMP menu" });
       await level.waitFor();
       const target = await level.boundingBox();
       assert.ok(
         target && target.width >= 44 && target.height >= 44,
         `${tag}: the level control is a 44px target`,
       );
-      // The label shows wherever the toolbar has room for it.
-      const label = page.locator(".workspace-level-label");
-      if (width >= 384)
-        assert.ok(await label.isVisible(), `${tag}: "Your level" is labelled`);
       await fits(page, `${tag} practice`);
       await toolbarClean(page, tag);
       await shoot(page, "nav-practice", tag);
@@ -274,7 +270,8 @@ try {
 
       // A real route: the map opens, back returns to the same problem.
       await level.click();
-      await page.waitForURL("**/try/map");
+      await page.getByRole("link", { name: "Your level", exact: true }).click();
+      await page.waitForURL("**/try/map*");
       await page.locator(".frontier-map").waitFor();
       await fits(page, `${tag} map`);
       await page.goBack();
@@ -286,7 +283,7 @@ try {
         `${tag}: back returns to the same problem`,
       );
       await page.goForward();
-      await page.waitForURL("**/try/map");
+      await page.waitForURL("**/try/map*");
       await page.locator(".frontier-map").waitFor();
       // The map keeps its own way out of the trial.
       await page.getByRole("link", { name: "AMP home" }).waitFor();
@@ -407,10 +404,22 @@ try {
       // It is not a problem: nothing was answered or used.
       assert.equal(attempts, 0, `${tag}: no answer was sent`);
       assert.equal(await used(trial.learnerId, trial.token), 25);
+      await page.getByRole("button", { name: "Open AMP menu" }).click();
+      await page
+        .getByRole("progressbar", { name: "Free assessment problems used" })
+        .waitFor();
       assert.equal(
-        (await page.locator(".workspace-toolbar").getByText("25").count()) > 0,
-        true,
-        `${tag}: the meter still reads 25`,
+        await page
+          .getByRole("progressbar", { name: "Free assessment problems used" })
+          .getAttribute("value"),
+        "25",
+        `${tag}: the budget remains 25`,
+      );
+      await page.keyboard.press("Escape");
+      await page.waitForFunction(
+        () =>
+          document.activeElement?.getAttribute("aria-label") ===
+          "Open AMP menu",
       );
 
       // The checkpoint opens earned pathways; back returns to the waiting problem.
@@ -483,7 +492,7 @@ try {
     `Level check: every ${5} problems between problems (never over feedback), Escape / tap outside / Continue close it, no answer sent, count unchanged, the problem never moves, focus returns; "See your full map" → earned /pathways and back.`,
   );
   console.log(
-    `Level check: "Your level" in the practice toolbar → /try/map (back, forward and refresh restore it) at ${viewports.map(([w, h]) => `${w}x${h}`).join(", ")} × light/dark; 44px target, labelled at 384px and up, no overflow, no toolbar overlap.`,
+    `Level check: AMP menu → Your level → /try/map (back, forward and refresh restore it) at ${viewports.map(([w, h]) => `${w}x${h}`).join(", ")} × light/dark; 44px navigation target, no overflow, no toolbar overlap.`,
   );
 } finally {
   for (const context of contexts) await context.close().catch(() => {});

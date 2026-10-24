@@ -283,7 +283,7 @@ try {
       await page.locator(".feedback.incorrect").waitFor();
       if (isPhoneLandscape(size)) {
         const exit = await page
-          .getByRole("link", { name: "Your level", exact: true })
+          .getByRole("button", { name: "Open AMP menu", exact: true })
           .boundingBox();
         const feedback = await page
           .locator(".feedback.incorrect")

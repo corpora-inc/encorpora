@@ -5,6 +5,10 @@ import { choose } from "./ui-controls";
 export async function exitPractice(page: Page) {
   const exit = page.getByRole("link", { name: "Your level", exact: true });
   if (await exit.count()) await exit.click();
+  else if (await page.locator(".practice-workspace").isVisible()) {
+    await page.getByRole("button", { name: "Open AMP menu" }).click();
+    await page.getByRole("link", { name: "Your level", exact: true }).click();
+  }
 }
 
 /** Start practice from the home screen. */

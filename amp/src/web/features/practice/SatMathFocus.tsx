@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { z } from "zod";
 import type { FamilyLearner } from "../../../family/contracts";
 import { request } from "../../lib/api";
+import { Toast } from "../../ui/Toast";
 import { Checkbox } from "../../ui/Checkbox";
 import { useLoggedError } from "../../feedback";
 
@@ -62,9 +63,14 @@ export function SatMathFocus({
       <p>
         Practice SAT Math and its foundations. Excludes topics beyond the SAT.
       </p>
-      <p role={error ? "alert" : "status"} className="sat-focus-feedback">
-        {error || notice || (busy ? "Saving…" : "")}
-      </p>
+      <Toast
+        tone={error ? "alert" : "status"}
+        message={error || notice || (busy ? "Saving…" : "")}
+        onDismiss={() => {
+          setError("");
+          setNotice("");
+        }}
+      />
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import { AccountMenu } from "../account/AccountMenu";
+import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import { useQuery } from "@tanstack/react-query";
 import type { Step } from "../../../math/scene/timeline";
 import { Navigate, useNavigate, useSearch } from "@tanstack/react-router";
@@ -30,7 +30,6 @@ import {
   type TrialSession,
 } from "./api";
 import { track, trackSessionStart } from "./analytics";
-import { FreeMeter } from "./FreeMeter";
 import { gradeBand } from "./grade-band";
 import { failureMessage, TrialFailure } from "./TrialFrame";
 import { nativeRuntime } from "../../native-runtime";
@@ -239,7 +238,7 @@ function Practice({ session }: { session: TrialSession }) {
         />
       )}
       <PracticeWorkspace
-        account={nativeRuntime ? undefined : <AccountMenu />}
+        navigation={nativeRuntime ? undefined : <NavigationDrawer />}
         key={problem.id}
         problem={problem}
         meta={catalog.data?.templates.find((t) => t.id === problem.templateId)}
@@ -259,9 +258,6 @@ function Practice({ session }: { session: TrialSession }) {
         pending={pending}
         error={error}
         clearError={() => setError("")}
-        status={
-          <FreeMeter answered={answered} free={limits.free} variant="pill" />
-        }
         mastered={outcome?.mastered?.title ?? null}
         reportProblem={
           nativeRuntime ? undefined : (body) => reportProblem(session, body)

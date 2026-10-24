@@ -3,6 +3,10 @@ import { mkdir } from "node:fs/promises";
 import { chromium, firefox, webkit, type Page } from "playwright";
 import { createServer } from "vite";
 import { fixtureMe } from "./me-fixture";
+import {
+  assertProblemReachable,
+  assertPhoneLandscapeSmoke,
+} from "./ui-viewports";
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
@@ -20,6 +24,13 @@ const browser = await (
 ).launch();
 const output = `artifacts/account-controls-${engine}`;
 await mkdir(output, { recursive: true });
+const denseCausal = Array.from({ length: 64 }, (_, index) =>
+  generateProblem("causal-claim-choice", `answer-dock-1536-${index}`),
+).sort(
+  (a, b) =>
+    JSON.stringify(b.public.response).length -
+    JSON.stringify(a.public.response).length,
+)[0]!;
 const identity = "amp|account-controls-fixture";
 const email = "a.learner.with.a.long.email.address.for.layout@example.test";
 const summary = fixtureMe(
@@ -47,11 +58,16 @@ let notifications = 0,
   purchases = 0;
 const errors: string[] = [];
 async function fits(page: Page, label: string) {
+  const drawer = page.getByRole("dialog", { name: "Adaptive Math Pathways" });
+  if (await drawer.count())
+    await drawer.evaluate(async (el) => {
+      await Promise.all(el.getAnimations().map((a) => a.finished));
+    });
   const geometry = await page.evaluate(() => ({
     overflow: document.documentElement.scrollWidth - innerWidth,
     controls: [
       ...document.querySelectorAll<HTMLElement>(
-        "[data-account-control] button, [role=menuitem], [data-account-ready] a",
+        "[data-navigation-trigger], [role=dialog] a, [role=dialog] button, [data-account-ready] a",
       ),
     ]
       .filter((el) => el.getClientRects().length)
@@ -188,7 +204,10 @@ try {
       return route.fulfill({
         json: {
           problems: [
-            generateProblem(practiceTemplate, "practice-account-1529").public,
+            practiceTemplate === "causal-claim-choice"
+              ? denseCausal.public
+              : generateProblem(practiceTemplate, "practice-account-1529")
+                  .public,
           ],
           trialRemaining: 85,
         },
@@ -223,11 +242,15 @@ try {
   for (const authenticated of [true, false]) {
     signedIn = authenticated;
     for (const theme of ["light", "dark"] as const) {
-      for (const width of [1280, 390, 320, 768, 560, 844]) {
+      for (const width of [1280, 390, 320, 375, 768, 560, 844]) {
         practiceTemplate =
-          width === 390 || width === 320
-            ? "absolute-value-affine-equation"
-            : "two-step-equation";
+          width === 375
+            ? "causal-claim-choice"
+            : width === 844
+              ? "constraint-feasible"
+              : width === 390 || width === 320
+                ? "absolute-value-affine-equation"
+                : "two-step-equation";
         const practice = await context.newPage();
         await practice.emulateMedia({ colorScheme: theme });
         await practice.setViewportSize({
@@ -235,11 +258,13 @@ try {
           height:
             width === 1280
               ? 900
-              : width === 320
-                ? 568
-                : width === 844
-                  ? 390
-                  : 844,
+              : width === 375
+                ? 667
+                : width === 320
+                  ? 568
+                  : width === 844
+                    ? 390
+                    : 844,
         });
         await practice.goto(`${origin}/sign-in`);
         await practice
@@ -249,35 +274,38 @@ try {
           localStorage.setItem("amp.trial", "synthetic-practice-layout"),
         );
         await practice.goto(`${origin}/try/practice`);
-        await practice.locator(".problem-stage").waitFor();
+        await practice.locator(".problem-stage .question").waitFor();
         await practice
-          .getByRole("button", { name: "Account menu", exact: true })
+          .getByRole("button", { name: "Open AMP menu", exact: true })
           .waitFor();
         await fits(practice, `practice ${authenticated} ${theme} ${width}`);
+        if (width === 844)
+          await assertPhoneLandscapeSmoke(
+            practice,
+            `constraint-feasible-${authenticated}-${theme}-844x390`,
+          );
+        if (width === 375)
+          await assertProblemReachable(
+            practice,
+            `causal-claim-account-${authenticated}-${theme}-375x667`,
+          );
         const treatment = await practice
           .locator(".workspace-toolbar")
           .evaluate((toolbar) => {
-            const account = toolbar.querySelector<HTMLElement>(
-              "[data-account-control] button",
+            const trigger = toolbar.querySelector<HTMLElement>(
+              "[data-navigation-trigger]",
             )!;
             const title = toolbar.querySelector<HTMLElement>(
               ".workspace-topic-text",
             )!;
-            const meter =
-              toolbar.querySelector<HTMLElement>(".workspace-status")!;
-            const rect = account.getBoundingClientRect();
+            const rect = trigger.getBoundingClientRect();
             const titleBox = title.getBoundingClientRect();
             const range = document.createRange();
             range.selectNodeContents(title);
             return {
-              border: getComputedStyle(account).borderTopWidth,
               width: rect.width,
               height: rect.height,
-              last: toolbar.lastElementChild?.hasAttribute(
-                "data-account-control",
-              ),
-              count: meter.lastElementChild?.lastElementChild?.textContent,
-              meterWidth: meter.getBoundingClientRect().width,
+              first: toolbar.firstElementChild === trigger,
               titleWrap: getComputedStyle(title).whiteSpace,
               titleVisible: [...range.getClientRects()].every(
                 (r) =>
@@ -288,16 +316,12 @@ try {
               ),
             };
           });
+        assert(treatment.width >= 44 && treatment.height >= 44);
         assert.equal(
-          treatment.border,
-          "0px",
-          "account has no nested button outline",
+          treatment.first,
+          true,
+          "one navigation control at the left",
         );
-        assert.equal(treatment.width, 44);
-        assert.equal(treatment.height, 44);
-        assert.equal(treatment.last, true, "account is at the far right");
-        assert.equal(treatment.count, "15/100");
-        assert(treatment.meterWidth <= 80, "budget stays compact");
         assert.notEqual(treatment.titleWrap, "nowrap");
         assert(treatment.titleVisible, "full skill title is readable");
         await practice.screenshot({
@@ -306,10 +330,10 @@ try {
           fullPage: true,
         });
         await practice
-          .getByRole("button", { name: "Account menu", exact: true })
+          .getByRole("button", { name: "Open AMP menu", exact: true })
           .click();
         await practice
-          .getByRole("menuitem", {
+          .getByRole(authenticated ? "button" : "link", {
             name: authenticated ? "Sign out" : "Sign in",
             exact: true,
           })
@@ -341,11 +365,14 @@ try {
       await next.waitFor();
       assert.equal(await next.getAttribute("href"), "/try");
       await fits(page, `ready ${theme} ${width}`);
-      await page.getByRole("button", { name: "Account menu" }).click();
+      await page.getByRole("button", { name: "Open AMP menu" }).click();
       await page
-        .getByRole("menuitem", { name: "Sign out", exact: true })
+        .getByRole("button", { name: "Sign out", exact: true })
         .waitFor();
-      await page.getByText(email, { exact: true }).waitFor();
+      await page
+        .getByRole("dialog")
+        .getByText(email, { exact: true })
+        .waitFor();
       await fits(page, `menu ${theme} ${width}`);
       await page.screenshot({
         path: `${output}/ready-menu-${theme}-${width}.png`,
@@ -355,7 +382,8 @@ try {
       await page.keyboard.press("Escape");
       await page.waitForFunction(
         () =>
-          document.activeElement?.getAttribute("aria-label") === "Account menu",
+          document.activeElement?.getAttribute("aria-label") ===
+          "Open AMP menu",
       );
     }
   }
@@ -397,10 +425,10 @@ try {
   holdSignOut = new Promise((resolve) => {
     releaseSignOut = resolve;
   });
-  await page.getByRole("button", { name: "Account menu" }).click();
-  await page.getByRole("menuitem", { name: "Sign out", exact: true }).click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("button", { name: "Sign out", exact: true }).click();
   await page
-    .getByRole("button", { name: "Signing out", exact: true })
+    .getByRole("button", { name: "Signing out…", exact: true })
     .waitFor();
   assert.equal(notifications, 0);
   releaseSignOut();
@@ -410,11 +438,11 @@ try {
     .filter({ hasText: "Sign out did not finish" })
     .waitFor();
   assert.equal(signedIn, true);
-  await page.getByRole("button", { name: "Dismiss message" }).click();
+  await page.keyboard.press("Escape");
   // Real successful logout publishes the session change before navigating away.
   failSignOut = false;
-  await page.getByRole("button", { name: "Account menu" }).click();
-  await page.getByRole("menuitem", { name: "Sign out", exact: true }).click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("button", { name: "Sign out", exact: true }).click();
   await page.waitForURL(`${origin}/`, { waitUntil: "load" });
   await page
     .getByRole("button", {
@@ -437,19 +465,16 @@ try {
       exact: true,
     })
     .waitFor({ state: "attached" });
-  const searchBox = (await search.boundingBox())!;
   const accountBox = (await page
-    .getByRole("button", { name: "Account menu" })
+    .getByRole("button", { name: "Open AMP menu" })
     .boundingBox())!;
   assert(
-    Math.abs(
-      searchBox.y + searchBox.height / 2 - accountBox.y - accountBox.height / 2,
-    ) < 2,
-    "phone search and account share one toolbar row",
+    accountBox.width >= 44 && accountBox.height >= 44,
+    "map navigation has a full touch target",
   );
   await search.focus();
-  await page.getByRole("button", { name: "Account menu" }).click();
-  await page.getByRole("menuitem", { name: "Sign in", exact: true }).waitFor();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("link", { name: "Sign in", exact: true }).waitFor();
   await fits(page, "guest map menu");
   await page.keyboard.press("Escape");
   assert.equal(await search.inputValue(), "linear");
@@ -458,8 +483,8 @@ try {
     1,
     "menu Escape preserves open skill results",
   );
-  await page.getByRole("button", { name: "Account menu" }).click();
-  await page.getByRole("menuitem", { name: "Create account" }).click();
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page.getByRole("link", { name: "Create account" }).click();
   await page.getByRole("heading", { name: "Create your account" }).waitFor();
   assert.equal(new URL(page.url()).pathname, "/sign-up");
   await page.addInitScript(

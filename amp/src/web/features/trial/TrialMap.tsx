@@ -1,3 +1,4 @@
+import { ProgressViews } from "../navigation/ProgressViews";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Navigate } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
@@ -93,6 +94,7 @@ function MapView({ session }: { session: TrialSession }) {
     <PageFrame centered>
       <section className={`${frameCard} ${styles.panel}`}>
         <FrameBrand expanded />
+        <ProgressViews active="level" trial />
         <p className={styles.eyebrow}>
           {p.phase === "placement" ? "Placement in progress" : "Free practice"}
         </p>

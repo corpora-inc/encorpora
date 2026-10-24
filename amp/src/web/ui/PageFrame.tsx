@@ -1,3 +1,4 @@
+import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
 import { SupportHelp } from "../features/support/SupportHelp";
 import { Link } from "@tanstack/react-router";
 import { useLayoutEffect, type ReactNode } from "react";
@@ -42,6 +43,7 @@ export function PageFrame({
   return (
     <div className={`${styles.frame} ${className}`}>
       <header className={styles.header}>
+        <NavigationDrawer />
         <Link to="/" className={styles.brand} aria-label={`${brand.name} home`}>
           {brand.name}
         </Link>
@@ -54,20 +56,23 @@ export function PageFrame({
 /** The wordmark at the top of a centered card; it links home. */
 export function FrameBrand({ expanded = false }: { expanded?: boolean }) {
   return (
-    <Link
-      to="/"
-      className={`${styles.brand} ${styles.cardBrand}`}
-      aria-label={`${brand.name} home`}
-    >
-      <span className={styles.wordmark}>{brand.name}</span>
-      {expanded && (
-        <>
-          <span className={styles.brandDivider} aria-hidden="true">
-            ·
-          </span>
-          <span className={styles.brandExpansion}>{brand.expansion}</span>
-        </>
-      )}
-    </Link>
+    <div className={styles.cardBrandRow}>
+      <NavigationDrawer />
+      <Link
+        to="/"
+        className={`${styles.brand} ${styles.cardBrand}`}
+        aria-label={`${brand.name} home`}
+      >
+        <span className={styles.wordmark}>{brand.name}</span>
+        {expanded && (
+          <>
+            <span className={styles.brandDivider} aria-hidden="true">
+              ·
+            </span>
+            <span className={styles.brandExpansion}>{brand.expansion}</span>
+          </>
+        )}
+      </Link>
+    </div>
   );
 }
