@@ -286,6 +286,7 @@ try {
       });
     }
   for (const [width, height] of [
+    [320, 568],
     [390, 844],
     [1280, 900],
   ]) {
@@ -307,6 +308,12 @@ try {
       .click();
     await page.locator(".pathways-viewport").waitFor();
     await fits(`pathways ${width}`);
+    assert(
+      await page
+        .locator(".pathways-header .pathways-go")
+        .evaluate((el) => el.scrollWidth <= el.clientWidth + 1),
+      "map action text stays inside its button",
+    );
     await page.screenshot({
       path: `${output}/pathways-${width}.png`,
       fullPage: true,

@@ -1190,5 +1190,7 @@
   .pathways-header .pathways-go {
     max-width: 130px;
     padding-inline: 8px;
+    white-space: normal;
+    text-align: center;
   }
 }
