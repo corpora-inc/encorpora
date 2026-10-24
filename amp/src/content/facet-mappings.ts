@@ -1,3 +1,4 @@
+import { legacyFacetMappings } from "./legacy-facet-mappings";
 import { satCompletionFacetMappings } from "./sat-completion-coverage";
 import { satGeometryDataFacetMappings } from "./sat-geometry-data-coverage";
 import { congruenceFacetMappings } from "./congruence-coverage";
@@ -841,6 +842,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Recognize both distinct irrational real roots of bounded integer-coefficient quadratics in simplified radical form, including signed nonmonic coefficients. Does not assess constructing symbolic responses, formula derivation, rational coefficients, repeated roots or complex solutions.",
   },
   ...assessmentGapFacetMappings,
+  ...legacyFacetMappings,
   ...satCompletionFacetMappings,
   ...satGeometryDataFacetMappings,
   {
