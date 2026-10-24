@@ -358,3 +358,16 @@ test("registration: templates, lessons, methods, principles and SAT rows", () =>
   }
   assert.equal(buildSatCoverage().valid, true);
 });
+
+test("expected-count surveys state whole numbers of people", () => {
+  for (let i = 0; i < 600; i++) {
+    const prompt = generateProblem("independence-test", `whole-count-${i}`)
+      .public.prompt;
+    const match = prompt.match(
+      /A survey asked (\S+) people two questions\. (\S+) people answered Yes to question 1 and (\S+) answered Yes/,
+    );
+    if (match)
+      for (const count of match.slice(1))
+        assert.ok(Number.isInteger(Number(count)), prompt);
+  }
+});
