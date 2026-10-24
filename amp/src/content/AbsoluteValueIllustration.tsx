@@ -1,7 +1,7 @@
 import React from "react";
 const ink = "#173d39",
   accent = "#146b60";
-const textStyle = { font: "24px system-ui, sans-serif", fill: ink };
+const textStyle = { font: "24px Arial, sans-serif", fill: ink };
 /** Exact equal-unit number lines; only filled circles identify solutions. */
 export function AbsoluteValueIllustration({
   shifted = false,
