@@ -25,6 +25,8 @@ import {
 } from "./rational-equation-practice";
 import {
   geometryProofTemplates,
+  proofConstructionTemplates,
+  generateProofConstructionProblem,
   generateGeometryProofProblem,
 } from "./geometry-proof-practice";
 import {
@@ -458,6 +460,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...radicalEquationTemplates,
   ...rationalEquationTemplates,
   ...geometryProofTemplates,
+  ...proofConstructionTemplates,
   ...nonlinearSystemTemplates,
   ...absoluteValueTemplates,
   ...graphicalTemplates,
@@ -675,6 +678,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...radicalEquationTemplates,
     ...rationalEquationTemplates,
     ...geometryProofTemplates,
+    ...proofConstructionTemplates,
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -817,6 +821,8 @@ function generateRawProblem(
     return generateRationalEquationProblem(templateId, seed);
   if (geometryProofTemplates.some((t) => t.id === templateId))
     return generateGeometryProofProblem(templateId, seed);
+  if (proofConstructionTemplates.some((t) => t.id === templateId))
+    return generateProofConstructionProblem(templateId, seed);
   if (rationalExpressionTemplates.some((t) => t.id === templateId))
     return generateRationalExpressionProblem(templateId, seed);
   if (nonlinearSystemTemplates.some((t) => t.id === templateId))

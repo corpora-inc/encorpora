@@ -4,6 +4,7 @@ import { assessmentGapPrinciples } from "./assessment-gap-lessons";
 import { radicalEquationPrinciples } from "./radical-equation-lessons";
 import { rationalEquationPrinciples } from "./rational-equation-lessons";
 import { geometryProofPrinciples } from "./geometry-proof-lessons";
+import { geometryProofFamilyPrinciples } from "./geometry-proof-family-lessons";
 import { rationalExpressionPrinciples } from "./rational-expression-lessons";
 import { nonlinearSystemPrinciples } from "./nonlinear-system-lessons";
 import { areaVolumePrinciples } from "./area-volume-lessons";
@@ -131,6 +132,7 @@ export const principles: Record<string, string> = {
   ...radicalEquationPrinciples,
   ...rationalEquationPrinciples,
   ...geometryProofPrinciples,
+  ...geometryProofFamilyPrinciples,
   ...nonlinearSystemPrinciples,
   // Counting, place value, early operations
   "count-objects":

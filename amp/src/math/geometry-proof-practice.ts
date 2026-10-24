@@ -1,5 +1,6 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, seeded, pick } from "./algebra-one-kit";
+import { proofConstructionCase } from "./geometry-proof-families";
 
 export const geometryProofTemplates: readonly TemplateMetadata[] = [
   {
@@ -89,9 +90,21 @@ export function geometryProofCase(id: string, seed: string) {
     "Reason for the proof step",
   );
 }
+export function generateProofConstructionProblem(
+  id: string,
+  seed: string,
+): GeneratedProblem {
+  return proofConstructionCase(id, seed).problem;
+}
 export function generateGeometryProofProblem(
   id: string,
   seed: string,
 ): GeneratedProblem {
   return geometryProofCase(id, seed).problem;
 }
+
+/** Proof, definition and construction choice families (see geometry-proof-families.ts). */
+export {
+  proofConstructionTemplates,
+  proofConstructionCase,
+} from "./geometry-proof-families";
