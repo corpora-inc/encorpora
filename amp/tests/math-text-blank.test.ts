@@ -104,3 +104,19 @@ test("a variable introducing a grouped formula stays typeset", () => {
     "Factor out : .",
   );
 });
+
+
+test("explicit numeric coordinate lists wrap between pairs without changing TeX formulas", () => {
+  for (const pairs of [
+    ["(0,5)", "(1,11)", "(2,37)", "(3,107)"],
+    ["(-0.5, 2)", "(3, -4.5)"],
+  ]) {
+    const formula = pairs.join(", ");
+    const result = segments(`Observed: $${formula}$.`);
+    assert.deepEqual(result.filter((s) => s.math).map((s) => s.text), pairs);
+    assert.equal(result.map((s) => s.plain ?? s.text).join(""), `Observed: ${formula}.`);
+  }
+  for (const formula of ["(x, y), (a, b)", "(1,2), x+3", "1,000", "f(x,y)=x+y", "(1,2); (3,4)"]) {
+    assert.deepEqual(segments(`$${formula}$`), [{ text: formula, math: true, plain: formula }]);
+  }
+});

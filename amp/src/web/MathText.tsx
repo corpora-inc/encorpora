@@ -122,11 +122,20 @@ export function segments(text: string): Segment[] {
   // Explicit TeX first.
   text.split(/(\$[^$]+\$)/).forEach((part) => {
     if (part.startsWith("$") && part.endsWith("$") && part.length > 2) {
-      out.push({
-        text: part.slice(1, -1),
-        math: true,
-        plain: part.slice(1, -1),
-      });
+      const formula = part.slice(1, -1);
+      const pairs = formulaClauses(formula);
+      // A numeric coordinate list can wrap between pairs even when its author
+      // supplied TeX. Keep arbitrary TeX and each complete pair intact.
+      if (
+        pairs.length > 1 &&
+        pairs.every((pair, i) =>
+          i % 2 ? /^,\s+$/.test(pair) : COORDINATE_PAIR.test(pair),
+        )
+      ) {
+        for (const [i, pair] of pairs.entries())
+          if (i % 2) push(pair, false);
+          else out.push({ text: pair, math: true, plain: pair });
+      } else out.push({ text: formula, math: true, plain: formula });
       return;
     }
     // A question mark right after explicit TeX ends the sentence; it is
