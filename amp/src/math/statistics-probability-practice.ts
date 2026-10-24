@@ -1868,6 +1868,13 @@ function reportCase(r: Random): Built {
     );
   }
   const has = (flaw: Flaw) => present.includes(flaw);
+  // A self-selected web poll is also arguably a convenience sample, and vice
+  // versa, so never offer the other sampling flaw beside the one present.
+  const sibling: Flaw | undefined = has("voluntary")
+    ? "convenience"
+    : has("convenience")
+      ? "voluntary"
+      : undefined;
   const n = has("small") ? r(12, 25) : r(8, 24) * 100;
   const closeRace = has("missing");
   const pA = closeRace ? r(51, 52) : r(58, 66);
@@ -1916,7 +1923,7 @@ function reportCase(r: Random): Built {
           r,
           correct,
           all
-            .filter((x) => x !== flaw)
+            .filter((x) => x !== flaw && x !== sibling)
             .map((x) => ({ label: flawLabels[x], feedback: falseNote[x] })),
         ),
       },
@@ -1935,6 +1942,7 @@ function reportCase(r: Random): Built {
     for (let j = i + 1; j < 5; j++) {
       const pair = [all[i]!, all[j]!];
       if (pair.includes("voluntary") && pair.includes("convenience")) continue;
+      if (sibling && pair.includes(sibling)) continue;
       pairs.push(pair);
     }
   const trueCount = (pair: Flaw[]) => pair.filter(has).length;
