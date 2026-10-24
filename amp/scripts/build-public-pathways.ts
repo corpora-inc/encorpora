@@ -17,7 +17,7 @@ const destination = new URL("../dist/", import.meta.url);
 const shell = (
   await readFile(new URL("index.html", destination), "utf8")
 ).replace(
-  /\n<!--amp-assessment-social-start-->[\s\S]*?<!--amp-assessment-social-end-->\n/g,
+  /\n<!--amp-(?:assessment|product)-social-start-->[\s\S]*?<!--amp-(?:assessment|product)-social-end-->\n/g,
   "",
 );
 const byId = new Map(skills.map((skill) => [skill.id, skill]));
@@ -114,12 +114,16 @@ function titleLines(title: string) {
   return lines;
 }
 
-function cardSvg(skill?: (typeof skills)[number]) {
-  const title = skill?.title ?? "Explore math skills";
-  const lines = titleLines(title);
-  const grade = skill
-    ? bandLabel(skill.gradeBand).toUpperCase()
-    : "KINDERGARTEN THROUGH PRECALCULUS";
+function cardSvg(skill?: (typeof skills)[number], product = false) {
+  const title = product
+    ? "Math that adapts to you"
+    : (skill?.title ?? "Explore math skills");
+  const lines = product ? ["Math that adapts", "to you"] : titleLines(title);
+  const grade = product
+    ? "ADAPTIVE MATH PATHWAYS"
+    : skill
+      ? bandLabel(skill.gradeBand).toUpperCase()
+      : "KINDERGARTEN THROUGH PRECALCULUS";
   const titleY = lines.length > 1 ? 260 : 290;
   if (
     lines.length > 3 ||
@@ -152,11 +156,11 @@ function cardSvg(skill?: (typeof skills)[number]) {
     <rect width="1200" height="630" fill="url(#surface)"/>
     <circle cx="900" cy="315" r="350" fill="url(#glow)"/>
     <path d="M60 74c12-40 24-40 36 0s24 40 36 0 24-40 36 0" fill="none" stroke="#a1f0e4" stroke-width="3"/>
-    <text x="190" y="80" fill="#c8eee7" font-family="KaTeX_SansSerif" font-size="24">AMP PATHWAYS</text>
+    <text x="190" y="80" fill="#c8eee7" font-family="KaTeX_SansSerif" font-size="24">${product ? "AMP" : "AMP PATHWAYS"}</text>
     <text x="64" y="180" fill="#8ce8df" font-family="KaTeX_SansSerif" font-size="22">${escapeHtml(grade)}</text>
     ${lines.map((line, index) => `<text x="64" y="${titleY + index * 63}" fill="#f0f8f6" font-family="KaTeX_SansSerif" font-size="52">${escapeHtml(line)}</text>`).join("")}
-    <text x="64" y="492" fill="#bfd7d5" font-family="KaTeX_SansSerif" font-size="25">Explore the skill map</text>
-    <text x="64" y="550" fill="#8ce8df" font-family="KaTeX_SansSerif" font-size="22">amp.corpora.inc/pathways</text>
+    <text x="64" y="492" fill="#bfd7d5" font-family="KaTeX_SansSerif" font-size="25">${product ? "Practice, lessons &amp; worksheets" : "Explore the skill map"}</text>
+    <text x="64" y="550" fill="#8ce8df" font-family="KaTeX_SansSerif" font-size="22">amp.corpora.inc${product ? "" : "/pathways"}</text>
     <g clip-path="url(#map)">${mapEdges}${closeConnections}${mapNodes}
       ${selected ? `<circle cx="${selected.x.toFixed(1)}" cy="${selected.y.toFixed(1)}" r="21" fill="none" stroke="#c5fff2" stroke-opacity=".65" stroke-width="2"/><circle cx="${selected.x.toFixed(1)}" cy="${selected.y.toFixed(1)}" r="9" fill="#a1f0e4"/>` : ""}
     </g>
@@ -166,8 +170,12 @@ function cardSvg(skill?: (typeof skills)[number]) {
 const imageDirectory = new URL("assets/pathway-cards/", destination);
 await mkdir(imageDirectory, { recursive: true });
 const cardUrls = new Map<string, string>();
-async function writeCard(id: string, skill?: (typeof skills)[number]) {
-  const png = new Resvg(cardSvg(skill), {
+async function writeCard(
+  id: string,
+  skill?: (typeof skills)[number],
+  product = false,
+) {
+  const png = new Resvg(cardSvg(skill, product), {
     font: {
       fontFiles,
       loadSystemFonts: false,
@@ -182,6 +190,7 @@ async function writeCard(id: string, skill?: (typeof skills)[number]) {
   cardUrls.set(id, `/assets/pathway-cards/${filename}`);
 }
 await writeCard("map");
+await writeCard("product", undefined, true);
 for (const skill of skills) await writeCard(skill.id, skill);
 
 function skillLinks(ids: string[]) {
@@ -315,25 +324,34 @@ await writeFile(
     cardUrls.get("map")!,
   ),
 );
-// The SPA fallback also serves /try. Give assessment invitations a cached
-// curriculum image; skill documents above retain their own specific metadata.
-const assessmentImage = origin + cardUrls.get("map")!;
+// The homepage and SPA fallback describe the product. Campaign-specific hooks
+// belong in explicitly targeted content, not the default social preview.
+const productImage = origin + cardUrls.get("product")!;
+const productTitle = "Adaptive Math Pathways — Math that adapts to you";
+const productDescription =
+  "Explore math at your own pace with adaptive practice, clear lessons, and printable worksheets. Start with a free assessment.";
+const productImageAlt =
+  "Adaptive Math Pathways: Math that adapts to you. Practice, lessons and worksheets, with a connected map of math skills.";
 await writeFile(
   new URL("index.html", destination),
   shell.replace(
     "</head>",
     `
-<!--amp-assessment-social-start-->
+<!--amp-product-social-start-->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Think you’re good at math? | Adaptive Math Pathways" />
-  <meta property="og:description" content="Take a free math assessment, find your level, and explore connected math pathways from kindergarten through precalculus." />
-  <meta property="og:url" content="${origin}/try" />
-  <meta property="og:image" content="${assessmentImage}" />
+  <meta property="og:title" content="${escapeHtml(productTitle)}" />
+  <meta property="og:description" content="${escapeHtml(productDescription)}" />
+  <meta property="og:url" content="${origin}/" />
+  <meta property="og:image" content="${productImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="${escapeHtml(productImageAlt)}" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="${assessmentImage}" />
-<!--amp-assessment-social-end-->
+  <meta name="twitter:title" content="${escapeHtml(productTitle)}" />
+  <meta name="twitter:description" content="${escapeHtml(productDescription)}" />
+  <meta name="twitter:image" content="${productImage}" />
+  <meta name="twitter:image:alt" content="${escapeHtml(productImageAlt)}" />
+<!--amp-product-social-end-->
 </head>`,
   ),
 );
