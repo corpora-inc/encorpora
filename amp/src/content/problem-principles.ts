@@ -1,4 +1,5 @@
 import { satCompletionPrinciples } from "./sat-completion-lessons";
+import { satGeometryDataPrinciples } from "./sat-geometry-data-lessons";
 import { congruencePrinciples } from "./congruence-lessons";
 import { assessmentGapPrinciples } from "./assessment-gap-lessons";
 import { radicalEquationPrinciples } from "./radical-equation-lessons";
@@ -74,6 +75,7 @@ import { absoluteValuePrinciples } from "./absolute-value-lessons";
 export const principles: Record<string, string> = {
   ...assessmentGapPrinciples,
   ...satCompletionPrinciples,
+  ...satGeometryDataPrinciples,
   ...factoringPrinciples,
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
