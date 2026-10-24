@@ -231,6 +231,10 @@ import {
   generateQuadraticProblem,
 } from "./quadratic-practice";
 import {
+  geometryModelingTemplates,
+  generateGeometryModelingProblem,
+} from "./geometry-modeling-practice";
+import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
 } from "./complex-practice";
@@ -400,6 +404,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   complexMultiplicationTemplate,
+  ...geometryModelingTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
   ...addSubtractTemplates,
@@ -818,6 +823,8 @@ function generateRawProblem(
     return generateQuadraticProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (geometryModelingTemplates.some((t) => t.id === templateId))
+    return generateGeometryModelingProblem(templateId, seed);
   if (absoluteValueTemplates.some((t) => t.id === templateId))
     return generateAbsoluteValueProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))

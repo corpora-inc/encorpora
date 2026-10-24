@@ -1,10 +1,7 @@
 import type { SkillConnection } from "./types";
 
 /** Editorial connections supported by existing content, not assessment dependencies. */
-const authoredConnections: (Omit<
-  SkillConnection,
-  "skillId" | "direction"
-> & {
+const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
   from: string;
   to: string;
 })[] = [
@@ -133,6 +130,12 @@ categorical-association|conditional-probability|extension|A conditional relative
 statistical-summary-comparison|randomization-tests|application|The difference in centers between two groups is the statistic that a randomization test compares with chance.|outlier-center-shift
 nonlinear-equation-modeling|model-validation|application|After solving a quadratic or exponential model, check its solution against the context and the data.|quadratic-context-model
 fraction-plot-computation|fraction-division|application|Sharing a measured total equally is a fraction division.|fraction-share-amount
+solid-volume-models|density-modeling|application|Mass is density times volume, so a solid's volume formula gives the mass of a rod or block of known density.|density-context
+density-modeling|model-validation|application|A density result is checked against its context: the units must match and the size must be plausible, as when validating any model.|density-context
+geometric-design|nonlinear-equation-modeling|extension|The area of a three-sided fenced garden, width times (fence minus two widths), is a quadratic constraint model with a greatest value.|geometric-design-constraint
+cavalieri-principle|solid-volume-models|application|Equal cross-sections show that an oblique solid has the volume of the right solid with the same base and perpendicular height.|cavalieri-volume-reasoning
+sections-and-revolutions|solid-volume-models|application|A rotated rectangle, right triangle or semicircle sweeps out a cylinder, cone or sphere, whose volume formula gives the volume.|section-revolution-solid
+similarity-theorems|pythagorean-theorem|related|The two leg relations of a right triangle with its altitude add to give the Pythagorean theorem.|similarity-theorem-length
 `;
 
 export const curriculumConnections: typeof authoredConnections = [
