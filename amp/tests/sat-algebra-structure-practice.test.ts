@@ -683,3 +683,18 @@ test("new families bind to existing skills, lessons, methods and principles", ()
     assert.ok(lesson.example.steps.length >= 2);
   }
 });
+
+test("variation table choices never repeat the same function under different labels", () => {
+  for (let i = 0; i < 300; i++) {
+    const problem = generateProblem("variation-constant", `rev-${i}`);
+    if (!problem.public.prompt.includes("Which equation fits every row"))
+      continue;
+    const response = problem.public.response;
+    assert.equal(response.kind, "choice");
+    const labels = response.options.map((o: { label: string }) => o.label);
+    assert.ok(
+      !(labels.includes("$y=x$") && labels.includes("$y=x+0$")),
+      `${problem.public.seed}: y=x and y=x+0 are the same function`,
+    );
+  }
+});
