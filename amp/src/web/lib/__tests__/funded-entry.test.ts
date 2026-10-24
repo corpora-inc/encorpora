@@ -151,3 +151,14 @@ test("funded attribution cannot label a different program's purchase", () => {
     )?.campaign,
   ).toBe("az-esa-launch");
 });
+
+test("gift invitations survive sign-in without sharing a recipient address or token", () => {
+  expect(
+    continuationSearch({
+      return: "access",
+      email: "private@example.test",
+      token: "private",
+    }),
+  ).toEqual({ return: "access" });
+  expect(continuationUrl({ return: "access" })).toBe("/access");
+});

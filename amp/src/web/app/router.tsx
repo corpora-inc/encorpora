@@ -33,7 +33,13 @@ import { chosenPlan } from "../lib/pending-trial";
 const searchSchema = z
   .object({
     return: z
-      .enum(["security", "arkansas-efa", "new-hampshire-efa", "arizona-esa"])
+      .enum([
+        "security",
+        "access",
+        "arkansas-efa",
+        "new-hampshire-efa",
+        "arizona-esa",
+      ])
       .optional()
       .catch(undefined),
     program: z.enum(["ar-efa", "az-esa"]).optional().catch(undefined),
@@ -165,7 +171,7 @@ const home = createRoute({
   getParentRoute: () => root,
   path: "/",
   component: legacy,
-  beforeLoad: ({ search: rawSearch }) => {
+  beforeLoad: async ({ search: rawSearch }) => {
     const search = searchSchema.parse(rawSearch);
     if ("sign-in" in search)
       throw redirect({
@@ -177,6 +183,20 @@ const home = createRoute({
         to: "/reset-password",
         search: { token: search.token, error: search.error },
       });
+    if (!nativeRuntime) {
+      const session = await queryClient.ensureQueryData(sessionOptions);
+      if (session) {
+        const me = await queryClient
+          .fetchQuery(meOptions(session))
+          .catch(() => undefined);
+        if (
+          me?.signedIn &&
+          me.next === "accept-gift" &&
+          !me.learners.some((learner) => learner.entitlement.active)
+        )
+          throw redirect({ to: "/access" });
+      }
+    }
   },
 });
 const signIn = createRoute({
@@ -190,6 +210,14 @@ const signUp = createRoute({
   path: "/sign-up",
   loader: loadAuthConfig,
   component: auth,
+});
+const accessGift = createRoute({
+  getParentRoute: () => root,
+  path: "/access",
+  component: lazyRouteComponent(
+    () => import("../features/access/AccessScreen"),
+    "AccessScreen",
+  ),
 });
 const accountReady = createRoute({
   getParentRoute: () => root,
@@ -364,6 +392,7 @@ export const router = createRouter({
     signIn,
     signUp,
     accountReady,
+    accessGift,
     signInStep,
     reset,
     startIndex,

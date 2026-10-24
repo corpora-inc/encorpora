@@ -126,6 +126,104 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Choose the sine or cosine model from a maximum, minimum, period and starting position, find one parameter, or evaluate the model at a time. Does not assess fitting models to data or constructing graphs.",
   },
   {
+    templateId: "solid-volume-context",
+    facetId: "solid-volume-models.core",
+    extent: "partial",
+    rationale:
+      "Select the volume, in terms of π or rounded as stated, of a cylinder, cone, pyramid, sphere or cylinder-and-hemisphere silo in a story: a tank capacity in liters, the number of cones that fill a cylinder, a missing cone height, a pyramid and a rounded paint-can volume. Does not assess surface-area contexts, derivations of the formulas, frustums, or open-response work.",
+  },
+  {
+    templateId: "solid-volume-context",
+    facetId: "solid-volume-models.HSG.GMD.A.3",
+    extent: "partial",
+    rationale:
+      "Select the volume, in terms of π or rounded as stated, of a cylinder, cone, pyramid, sphere or cylinder-and-hemisphere silo in a story: a tank capacity in liters, the number of cones that fill a cylinder, a missing cone height, a pyramid and a rounded paint-can volume. Does not assess surface-area contexts, derivations of the formulas, frustums, or open-response work.",
+  },
+  {
+    templateId: "density-context",
+    facetId: "density-modeling.core",
+    extent: "partial",
+    rationale:
+      "Select a population density, a mass or a volume from a density with consistent units, a density found from a rectangle's area, a cylinder's mass in terms of π, and the denser of two blocks. Does not assess density of non-uniform objects, derived units beyond g/cm³ and people/km², or written modeling.",
+  },
+  {
+    templateId: "density-context",
+    facetId: "density-modeling.HSG.MG.A.2",
+    extent: "partial",
+    rationale:
+      "Select a population density, a mass or a volume from a density with consistent units, a density found from a rectangle's area, a cylinder's mass in terms of π, and the denser of two blocks. Does not assess density of non-uniform objects, derived units beyond g/cm³ and people/km², or written modeling.",
+  },
+  {
+    templateId: "geometric-model-choice",
+    facetId: "geometric-modeling.core",
+    extent: "partial",
+    rationale:
+      "Select the solid that models an object, the measure (area, perimeter, surface area or volume) a task needs, a cylinder's label area, a triangular-prism tent volume and a sphere's surface area. Does not assess building or justifying a model from an unlabeled object, or open-ended modeling choices.",
+  },
+  {
+    templateId: "geometric-model-choice",
+    facetId: "geometric-modeling.HSG.MG.A.1",
+    extent: "partial",
+    rationale:
+      "Select the solid that models an object, the measure (area, perimeter, surface area or volume) a task needs, a cylinder's label area, a triangular-prism tent volume and a sphere's surface area. Does not assess building or justifying a model from an unlabeled object, or open-ended modeling choices.",
+  },
+  {
+    templateId: "geometric-design-constraint",
+    facetId: "geometric-design.core",
+    extent: "partial",
+    rationale:
+      "Select the greatest-area rectangle for a fixed perimeter, the least-material box for a fixed volume, the best three-sided garden among given widths, and a paint cost from areas and a rate. Does not assess searching an unrestricted design space, calculus or quadratic optimization by algebra, or drawing a design.",
+  },
+  {
+    templateId: "geometric-design-constraint",
+    facetId: "geometric-design.HSG.MG.A.3",
+    extent: "partial",
+    rationale:
+      "Select the greatest-area rectangle for a fixed perimeter, the least-material box for a fixed volume, the best three-sided garden among given widths, and a paint cost from areas and a rate. Does not assess searching an unrestricted design space, calculus or quadratic optimization by algebra, or drawing a design.",
+  },
+  {
+    templateId: "cavalieri-volume-reasoning",
+    facetId: "cavalieri-principle.core",
+    extent: "partial",
+    rationale:
+      "Select the volume of an oblique cylinder or leaning stack from the perpendicular height, the pair of solids Cavalieri's principle guarantees equal, and a volume scaled by a ratio of cross-sectional areas. Does not assess written arguments or derivation of the sphere's volume formula.",
+  },
+  {
+    templateId: "cavalieri-volume-reasoning",
+    facetId: "cavalieri-principle.HSG.GMD.A.2",
+    extent: "partial",
+    rationale:
+      "Select the volume of an oblique cylinder or leaning stack from the perpendicular height, the pair of solids Cavalieri's principle guarantees equal, and a volume scaled by a ratio of cross-sectional areas. Does not assess written arguments or derivation of the sphere's volume formula.",
+  },
+  {
+    templateId: "section-revolution-solid",
+    facetId: "sections-and-revolutions.core",
+    extent: "partial",
+    rationale:
+      "Select the cross-section of a cylinder, cone or sphere cut by a plane, the solid from rotating a rectangle or right triangle about a side, its volume, and the volume of a sphere from a rotated semicircle. Does not assess sections of other solids (see solid cross-sections), rotation about lines not containing a side, or sketching the solid.",
+  },
+  {
+    templateId: "section-revolution-solid",
+    facetId: "sections-and-revolutions.HSG.GMD.B.4",
+    extent: "partial",
+    rationale:
+      "Select the cross-section of a cylinder, cone or sphere cut by a plane, the solid from rotating a rectangle or right triangle about a side, its volume, and the volume of a sphere from a rotated semicircle. Does not assess sections of other solids (see solid cross-sections), rotation about lines not containing a side, or sketching the solid.",
+  },
+  {
+    templateId: "similarity-theorem-length",
+    facetId: "similarity-theorems.core",
+    extent: "partial",
+    rationale:
+      "Select a length using the side-splitter theorem or the geometric-mean relations for the altitude to the hypotenuse of a right triangle with integer data. Does not assess written proofs of the theorems, the converse of the side-splitter theorem, or the Pythagorean theorem proof.",
+  },
+  {
+    templateId: "similarity-theorem-length",
+    facetId: "similarity-theorems.HSG.SRT.B.4",
+    extent: "partial",
+    rationale:
+      "Select a length using the side-splitter theorem or the geometric-mean relations for the altitude to the hypotenuse of a right triangle with integer data. Does not assess written proofs of the theorems, the converse of the side-splitter theorem, or the Pythagorean theorem proof.",
+  },
+  {
     templateId: "slope-triangle-statements",
     facetId: "slope.similar-triangle-reasoning",
     extent: "partial",

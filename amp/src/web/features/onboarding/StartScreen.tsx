@@ -80,7 +80,14 @@ function SignedInStart({ session }: { session: AuthSession }) {
                     search.return === "arkansas-efa" ? "ar-efa" : undefined,
                 },
               });
-            } else void navigate({ to: "/start/plan", search });
+            } else
+              void navigate({
+                to:
+                  me.availableAccessGrant || search.return === "access"
+                    ? "/access"
+                    : "/start/plan",
+                search,
+              });
           }}
         />
       </div>

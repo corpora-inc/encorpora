@@ -260,3 +260,38 @@ test("funded learner setup returns to its selected state without a card purchase
     ).toBe("/start/consent");
   }
 });
+
+test("an email gift routes around checkout but never around verification or consent", () => {
+  const gift = me({
+    next: "accept-gift",
+    availableAccessGrant: {
+      id: "b24d441b-38d5-42ec-ae99-dbe186b1ffba",
+      months: 12,
+      claimBy: null,
+    },
+  });
+  for (const path of [
+    "/start",
+    "/start/plan",
+    "/start/purchase",
+    "/start/name",
+    "/start/birth-year",
+  ]) {
+    expect(startDestination(gift, path)).toBe("/access");
+  }
+  expect(startDestination(gift, "/start/consent")).toBeNull();
+  const ready = {
+    ...gift,
+    consent: { status: "active" as const, method: "fixture" },
+  };
+  expect(startDestination(ready, "/start/name")).toBeNull();
+  expect(startDestination(ready, "/start/birth-year")).toBeNull();
+  expect(startDestination(ready, "/start/consent")).toBe("/start/name");
+  expect(startDestination(ready, "/start/purchase", true)).toBe("/access");
+  expect(
+    startDestination(
+      { ...gift, account: { ...gift.account, confirmationRequired: true } },
+      "/start/name",
+    ),
+  ).toBe("/start/verify-email");
+});

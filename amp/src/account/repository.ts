@@ -1,3 +1,4 @@
+import { availableGift } from "../access-grants/repository.js";
 import type { Pool } from "pg";
 import { meSchema, type SignedInMe } from "./contracts.js";
 import type { FamilyRepository } from "../family/repository.js";
@@ -76,6 +77,7 @@ export async function accountSummary(
         },
       };
     });
+  const gift = await availableGift(pool, accountId);
   const value = {
     signedIn: true as const,
     account: {
@@ -94,6 +96,7 @@ export async function accountSummary(
     },
     learners,
     family,
+    ...(gift ? { availableAccessGrant: gift } : {}),
     ...(unassigned
       ? {
           unassignedPurchase: {
@@ -107,15 +110,18 @@ export async function accountSummary(
     // before any learner profile; a paid, unassigned purchase resumes there.
     // An unconfirmed address does not block the trial; the consent steps ask
     // for it (`confirmationRequired`), and the server refuses them without it.
-    next: !active
-      ? family.consent.status === "withdrawn"
-        ? "choose-plan"
-        : "try"
-      : learners.some((l) => l.entitlement.active)
-        ? "practice"
-        : unassigned || !learners.length
-          ? "add-learner"
-          : "choose-plan",
+    next:
+      gift && !unassigned
+        ? "accept-gift"
+        : !active
+          ? family.consent.status === "withdrawn"
+            ? "choose-plan"
+            : "try"
+          : learners.some((l) => l.entitlement.active)
+            ? "practice"
+            : unassigned || !learners.length
+              ? "add-learner"
+              : "choose-plan",
   };
   return meSchema.parse(value) as SignedInMe;
 }
