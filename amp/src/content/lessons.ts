@@ -1,5 +1,6 @@
 import type { SemanticFigure } from "../math/contracts";
 import { satCompletionLessons } from "./sat-completion-lessons";
+import { satGeometryDataLessons } from "./sat-geometry-data-lessons";
 import { congruenceLessons } from "./congruence-lessons";
 import { assessmentGapLessons } from "./assessment-gap-lessons";
 import { radicalEquationLessons } from "./radical-equation-lessons";
@@ -673,6 +674,7 @@ export const baseLessons: Lesson[] = [
 export const lessons: readonly Lesson[] = [
   ...assessmentGapLessons,
   ...satCompletionLessons,
+  ...satGeometryDataLessons,
   ...completingSquareLessons,
   ...factoringLessons,
   ...integerExponentLessons,

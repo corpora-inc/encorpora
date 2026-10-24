@@ -57,7 +57,7 @@ ratio.proportion|Scale ratios and proportional quantities in context|ratio-missi
 ratio.units|Convert length, compound rates, area, volume, density, and product units|metric-length-rename,compound-unit-conversion,unit-chain-conversion
 percent.change|Calculate percentages, original values, and successive growth factors|percent-of,percent-change-original,successive-percent-change
 univariate.displays|Read frequency data in dot plots, histograms, and box plots|dot-plot-mean,histogram-read,box-plot-read
-univariate.center|Calculate or compare means, medians, and ranges|mean-data,median-data,range-data,mean-missing-value
+univariate.center|Calculate or compare means, medians, and ranges|mean-data,median-data,range-data,mean-missing-value,frequency-table-center
 univariate.spread|Compare standard deviations with equal or different means|standard-deviation-compare
 univariate.outliers|Interpret the effects of an outlier on mean and median|outlier-center-shift,typical-value-choice
 bivariate.scatter|Interpret association and read scatterplots|scatter-association-choice,correlation-choice
@@ -66,7 +66,7 @@ bivariate.nonlinear-fit|Fit quadratic and exponential candidates to observed dat
 bivariate.interpret|Interpret a fitted coefficient or contextual graph|regression-coefficient-meaning,trend-slope-meaning
 bivariate.growth|Compare linear and exponential change|linear-or-exponential,exponential-overtakes
 probability.direct|Compute probabilities from equally likely outcomes|simple-probability,event-set-count
-probability.conditional|Compute probabilities and conditional frequencies from two-way data|conditional-probability-value,relative-frequency-percent,conditional-frequency-choice
+probability.conditional|Compute probabilities and conditional frequencies from two-way data|conditional-probability-value,relative-frequency-percent,conditional-frequency-choice,independence-test
 probability.inverse|Recover a missing event count from a probability|probability-missing-count
 inference.estimate|Use sample means and proportions to estimate a population quantity|sample-mean-estimate,sample-proportion-estimate
 inference.margin|Interpret an error interval and sample-size effects|margin-of-error-interval,sample-size-margin
@@ -78,14 +78,14 @@ measure.surface|Compute surface area from faces or nets|net-surface-area,composi
 measure.scale|Connect similarity scale factors to lengths, areas, and volumes|dilation-measure,similar-triangle-side,similar-solid-volume
 triangle.relationships|Use congruence and similarity, including sufficient conditions|triangle-congruence-criteria,similar-triangle-side,geometry-proof-step
 angle.relationships|Apply triangle sums and parallel/transversal angle relationships|triangle-angle-sum,geometry-proof-step
-triangle.pythagorean|Solve right triangles and recognize the converse|right-triangle,right-triangle-missing-leg,pythagorean-converse
-triangle.special|Apply special triangles and acute trigonometric ratios|special-right-triangle,trig-ratio
+triangle.pythagorean|Solve right triangles and recognize the converse|right-triangle,right-triangle-missing-leg,pythagorean-converse,space-diagonal
+triangle.special|Apply special triangles and acute trigonometric ratios|special-right-triangle,trig-ratio,trig-context-triangle
 triangle.complement|Use sine/cosine relationships of complementary angles|complementary-trig
-circle.parts|Use radius, diameter, tangent, central, and inscribed angle relationships|circle-angles,circle-circumference-coefficient,circle-area-coefficient
+circle.parts|Use radius, diameter, tangent, central, and inscribed angle relationships, plus chord, secant, and tangent segment lengths|circle-angles,circle-segment-lengths,circle-circumference-coefficient,circle-area-coefficient
 circle.arc-sector|Find arc lengths, sector areas, and angles in radians|arc-length-coefficient,sector-area-coefficient,radian-arc-ratio
 circle.unit-trig|Use special-angle unit-circle coordinates and signs|unit-circle-coordinate
 circle.angle-units|Convert degrees and radians in both directions|degree-radian-conversion
-circle.coordinate|Read or create a circle equation, complete the square, and use distance|circle-equation`,
+circle.coordinate|Read or create a circle equation, complete the square, and use distance or midpoint|circle-equation,midpoint-endpoint`,
 };
 export const satTasks = Object.entries(rows).flatMap(([domain, text]) =>
   text
