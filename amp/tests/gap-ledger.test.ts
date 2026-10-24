@@ -23,7 +23,12 @@ test("target membership includes every jurisdiction and separately blocks unrevi
     skills.length,
   );
   assert.ok(report.skills.some((s) => s.instruction.bookPageBindings.length));
-  assert.ok(report.skills.some((s) => s.practice === "missing"));
+  // Every catalog skill has at least one practice family; presence is not full coverage.
+  assert.deepEqual(
+    report.skills.filter((s) => s.practice === "missing").map((s) => s.id),
+    [],
+  );
+  assert.equal(report.targetComplete, false);
   assert.ok(report.templatesWithoutFacetMapping.length);
   for (const task of initialGapTasks) {
     assert.ok(

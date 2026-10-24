@@ -1,10 +1,12 @@
 import { satCompletionPrinciples } from "./sat-completion-lessons";
+import { satGeometryDataPrinciples } from "./sat-geometry-data-lessons";
 import { congruencePrinciples } from "./congruence-lessons";
 import { assessmentGapPrinciples } from "./assessment-gap-lessons";
 import { radicalEquationPrinciples } from "./radical-equation-lessons";
 import { rationalEquationPrinciples } from "./rational-equation-lessons";
 import { geometryProofPrinciples } from "./geometry-proof-lessons";
 import { geometryProofFamilyPrinciples } from "./geometry-proof-family-lessons";
+import { k8RepresentationPrinciples } from "./k8-representations-lessons";
 import { rationalExpressionPrinciples } from "./rational-expression-lessons";
 import { nonlinearSystemPrinciples } from "./nonlinear-system-lessons";
 import { areaVolumePrinciples } from "./area-volume-lessons";
@@ -62,6 +64,7 @@ import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
 import { satAlgebraStructurePrinciples } from "./sat-algebra-structure-lessons";
+import { remainingGapPrinciples } from "./remaining-gap-lessons";
 import { vectorMatrixPrinciples } from "./vectors-matrices-lessons";
 import { statisticsProbabilityPrinciples } from "./statistics-probability-lessons";
 import { complexConicsPrinciples } from "./complex-conics-lessons";
@@ -74,6 +77,7 @@ import { absoluteValuePrinciples } from "./absolute-value-lessons";
 export const principles: Record<string, string> = {
   ...assessmentGapPrinciples,
   ...satCompletionPrinciples,
+  ...satGeometryDataPrinciples,
   ...factoringPrinciples,
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
@@ -91,6 +95,7 @@ export const principles: Record<string, string> = {
   ...quadraticPrinciples,
   ...complexPrinciples,
   ...satAlgebraStructurePrinciples,
+  ...remainingGapPrinciples,
   ...vectorMatrixPrinciples,
   ...statisticsProbabilityPrinciples,
   ...complexConicsPrinciples,
@@ -141,6 +146,7 @@ export const principles: Record<string, string> = {
   ...rationalEquationPrinciples,
   ...geometryProofPrinciples,
   ...geometryProofFamilyPrinciples,
+  ...k8RepresentationPrinciples,
   ...nonlinearSystemPrinciples,
   // Counting, place value, early operations
   "count-objects":

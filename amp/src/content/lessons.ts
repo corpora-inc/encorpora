@@ -1,11 +1,13 @@
 import type { SemanticFigure } from "../math/contracts";
 import { satCompletionLessons } from "./sat-completion-lessons";
+import { satGeometryDataLessons } from "./sat-geometry-data-lessons";
 import { congruenceLessons } from "./congruence-lessons";
 import { assessmentGapLessons } from "./assessment-gap-lessons";
 import { radicalEquationLessons } from "./radical-equation-lessons";
 import { rationalEquationLessons } from "./rational-equation-lessons";
 import { geometryProofLessons } from "./geometry-proof-lessons";
 import { geometryProofFamilyLessons } from "./geometry-proof-family-lessons";
+import { k8RepresentationLessons } from "./k8-representations-lessons";
 import { rationalExpressionLessons } from "./rational-expression-lessons";
 import { nonlinearSystemLessons } from "./nonlinear-system-lessons";
 import { areaVolumeLessons } from "./area-volume-lessons";
@@ -72,6 +74,7 @@ import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
+import { remainingGapLessons } from "./remaining-gap-lessons";
 import { vectorMatrixLessons } from "./vectors-matrices-lessons";
 import { statisticsProbabilityLessons } from "./statistics-probability-lessons";
 import { complexConicsLessons } from "./complex-conics-lessons";
@@ -672,6 +675,7 @@ export const baseLessons: Lesson[] = [
 export const lessons: readonly Lesson[] = [
   ...assessmentGapLessons,
   ...satCompletionLessons,
+  ...satGeometryDataLessons,
   ...completingSquareLessons,
   ...factoringLessons,
   ...integerExponentLessons,
@@ -680,6 +684,7 @@ export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...complexLessons,
   ...satAlgebraStructureLessons,
+  ...remainingGapLessons,
   ...vectorMatrixLessons,
   ...statisticsProbabilityLessons,
   ...complexConicsLessons,
@@ -740,6 +745,7 @@ export const lessons: readonly Lesson[] = [
   ...rationalEquationLessons,
   ...geometryProofLessons,
   ...geometryProofFamilyLessons,
+  ...k8RepresentationLessons,
   ...nonlinearSystemLessons,
   ...baseLessons,
   ...extendedLessons,
