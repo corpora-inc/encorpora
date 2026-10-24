@@ -564,7 +564,7 @@ function slopeCase(r: Random): Case {
     const s = parallel ? m : perp;
     const b = q(P[1] * s.d - s.n * P[0], s.d);
     return {
-      prompt: `Line $ℓ$ passes through $A${pt(A)}$ and $B${pt(B)}$. The line through $P${pt(P)}$ ${parallel ? "parallel" : "perpendicular"} to $ℓ$ has equation y = mx + b. What is $b$?`,
+      prompt: `Line $ℓ$ passes through $A${pt(A)}$ and $B${pt(B)}$. A line through $P${pt(P)}$ ${parallel ? "parallel" : "perpendicular"} to $ℓ$ has equation $y = mx + b$. What is $b$?`,
       answer: b,
       explanation: [
         `Slope of $ℓ$: ${frac(m)}. The new line's slope is ${parallel ? `the same, ${frac(s)}` : `its negative reciprocal, ${frac(s)}`}.`,
@@ -839,13 +839,15 @@ export function coordinateCircleCase(
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const c = builders[id]!(random(id, seed));
+  // Keep persisted problems immutable when this family's wording changes.
+  // The response protocol stays at v1; other families retain their IDs.
+  const identity = [id, metadata.version, seed];
+  if (id === "perpendicular-slopes") identity.push(c.prompt);
   const problem: GeneratedProblem = {
     public: {
-      id: createHash("sha256")
-        .update(JSON.stringify([id, 1, seed]))
-        .digest("hex"),
+      id: createHash("sha256").update(JSON.stringify(identity)).digest("hex"),
       templateId: id,
-      templateVersion: 1,
+      templateVersion: metadata.version,
       seed,
       skillId: metadata.skillId,
       prompt: c.prompt,

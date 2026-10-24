@@ -21,13 +21,35 @@ import type { SemanticFigure } from "../math/contracts";
 import { isPorted, legacyScene, type PortedKind } from "../math/scene/legacy";
 import { FigureTextCap } from "./FigureTextCap";
 import { SceneFigure } from "./scene/SceneFigure";
+import { useCompact } from "./scene/useCompact";
 import type { Scene } from "../math/scene/spec";
-export function Figure({ figure }: { figure: SemanticFigure }) {
+export function Figure({
+  figure,
+  compactMaxHeight,
+}: {
+  figure: SemanticFigure;
+  /** Opt in only diagrams verified to retain their labels in a shorter box. */
+  compactMaxHeight?: number;
+}) {
+  const compact = useCompact();
+  const maxHeight = compact ? compactMaxHeight : undefined;
   // Kinds ported to the scene framework draw through it (docs/figures-rfc.md).
   if (isPorted(figure))
-    return <SceneFigure scene={legacyScene(figure)} kind={figure.kind} />;
+    return (
+      <SceneFigure
+        scene={legacyScene(figure)}
+        kind={figure.kind}
+        maxHeight={maxHeight}
+      />
+    );
   if (figure.kind === "scene")
-    return <SceneFigure scene={figure.scene} kind={sceneKind(figure.scene)} />;
+    return (
+      <SceneFigure
+        scene={figure.scene}
+        kind={sceneKind(figure.scene)}
+        maxHeight={maxHeight}
+      />
+    );
   return (
     <FigureTextCap>
       <LegacyFigure figure={figure} />
