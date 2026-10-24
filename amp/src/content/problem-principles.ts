@@ -62,6 +62,9 @@ import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
 import { remainingGapPrinciples } from "./remaining-gap-lessons";
+import { vectorMatrixPrinciples } from "./vectors-matrices-lessons";
+import { statisticsProbabilityPrinciples } from "./statistics-probability-lessons";
+import { complexConicsPrinciples } from "./complex-conics-lessons";
 import { trigonometryPrinciples } from "./trigonometry-lessons";
 import { geometryModelingPrinciples } from "./geometry-modeling-lessons";
 import { functionBehaviorPrinciples } from "./function-behavior-lessons";
@@ -88,6 +91,9 @@ export const principles: Record<string, string> = {
   ...quadraticPrinciples,
   ...complexPrinciples,
   ...remainingGapPrinciples,
+  ...vectorMatrixPrinciples,
+  ...statisticsProbabilityPrinciples,
+  ...complexConicsPrinciples,
   ...trigonometryPrinciples,
   ...geometryModelingPrinciples,
   ...functionBehaviorPrinciples,

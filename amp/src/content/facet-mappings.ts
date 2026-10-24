@@ -105,6 +105,356 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Select net pay from gross pay and listed deductions, net pay from hours and an hourly rate, gross pay from net pay, a missing deduction, and the take-home amount on a pay stub, using dollars and cents. Does not assess defining the terms in words, percent-based taxes, tax forms or other payroll topics.",
   },
   {
+    templateId: "vector-components",
+    facetId: "vectors.core",
+    extent: "partial",
+    rationale:
+      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+  },
+  {
+    templateId: "vector-components",
+    facetId: "vectors.HSN.VM.A.1",
+    extent: "partial",
+    rationale:
+      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+  },
+  {
+    templateId: "vector-components",
+    facetId: "vectors.HSN.VM.A.2",
+    extent: "partial",
+    rationale:
+      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+  },
+  {
+    templateId: "vector-components",
+    facetId: "vectors.HSN.VM.B.4",
+    extent: "partial",
+    rationale:
+      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+  },
+  {
+    templateId: "vector-components",
+    facetId: "vectors.HSN.VM.B.5",
+    extent: "partial",
+    rationale:
+      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+  },
+  {
+    templateId: "vector-resultant",
+    facetId: "vector-modeling.core",
+    extent: "partial",
+    rationale:
+      "Select the magnitude, direction angle by arctangent (stated rounding) or a missing leg for the resultant of two perpendicular velocities or forces. Does not assess non-perpendicular vectors, component resolution at an arbitrary angle, bearings, or constructing a model from an open-ended situation.",
+  },
+  {
+    templateId: "vector-resultant",
+    facetId: "vector-modeling.HSN.VM.A.3",
+    extent: "partial",
+    rationale:
+      "Select the magnitude, direction angle by arctangent (stated rounding) or a missing leg for the resultant of two perpendicular velocities or forces. Does not assess non-perpendicular vectors, component resolution at an arbitrary angle, bearings, or constructing a model from an open-ended situation.",
+  },
+  {
+    templateId: "matrix-data-reading",
+    facetId: "matrix-data.core",
+    extent: "partial",
+    rationale:
+      "Read an entry, row total or column total of a small data matrix, name its dimensions, and interpret an entry in context. Does not assess constructing a matrix from a situation, or matrices as models of networks or payoffs.",
+  },
+  {
+    templateId: "matrix-data-reading",
+    facetId: "matrix-data.HSN.VM.C.6",
+    extent: "partial",
+    rationale:
+      "Read an entry, row total or column total of a small data matrix, name its dimensions, and interpret an entry in context. Does not assess constructing a matrix from a situation, or matrices as models of networks or payoffs.",
+  },
+  {
+    templateId: "matrix-operations",
+    facetId: "matrices.core",
+    extent: "partial",
+    rationale:
+      "Select the exact sum, scalar multiple, linear combination or product of small integer matrices (including 2x3 times 3x2), and decide from dimensions whether a product is defined. Does not assess matrices larger than 3x3 in products, matrix equations with unknown matrices, or the zero matrix and identity as a standalone skill.",
+  },
+  {
+    templateId: "matrix-operations",
+    facetId: "matrices.HSN.VM.C.7",
+    extent: "partial",
+    rationale:
+      "Select the exact sum, scalar multiple, linear combination or product of small integer matrices (including 2x3 times 3x2), and decide from dimensions whether a product is defined. Does not assess matrices larger than 3x3 in products, matrix equations with unknown matrices, or the zero matrix and identity as a standalone skill.",
+  },
+  {
+    templateId: "matrix-operations",
+    facetId: "matrices.HSN.VM.C.8",
+    extent: "partial",
+    rationale:
+      "Select the exact sum, scalar multiple, linear combination or product of small integer matrices (including 2x3 times 3x2), and decide from dimensions whether a product is defined. Does not assess matrices larger than 3x3 in products, matrix equations with unknown matrices, or the zero matrix and identity as a standalone skill.",
+  },
+  {
+    templateId: "matrix-laws",
+    facetId: "matrix-properties.core",
+    extent: "partial",
+    rationale:
+      "Compute products in both orders, identify the identity matrix, and choose which laws always hold or fail for 2x2 matrices. Does not assess written proofs or counterexample construction, nor determinants of products.",
+  },
+  {
+    templateId: "matrix-laws",
+    facetId: "matrix-properties.HSN.VM.C.9",
+    extent: "partial",
+    rationale:
+      "Compute products in both orders, identify the identity matrix, and choose which laws always hold or fail for 2x2 matrices. Does not assess written proofs or counterexample construction, nor determinants of products.",
+  },
+  {
+    templateId: "matrix-inverse-determinant",
+    facetId: "matrix-inverses.core",
+    extent: "partial",
+    rationale:
+      "Find a 2x2 determinant, decide invertibility, compute an inverse with integer or fraction entries, and find the parameter that makes a 2x2 matrix singular. Does not assess inverses of larger matrices, row reduction, or proofs that the determinant formula works.",
+  },
+  {
+    templateId: "matrix-inverse-determinant",
+    facetId: "matrix-inverses.HSN.VM.C.10",
+    extent: "partial",
+    rationale:
+      "Find a 2x2 determinant, decide invertibility, compute an inverse with integer or fraction entries, and find the parameter that makes a 2x2 matrix singular. Does not assess inverses of larger matrices, row reduction, or proofs that the determinant formula works.",
+  },
+  {
+    templateId: "matrix-transformation",
+    facetId: "matrix-transformations.core",
+    extent: "partial",
+    rationale:
+      "Apply a 2x2 matrix to a point, match rotation, reflection and dilation matrices with their descriptions, and use the absolute determinant as the area scale factor, including a determinant of 0. Does not assess rotations other than multiples of 90 degrees, composition of transformations, or deriving the area claim.",
+  },
+  {
+    templateId: "matrix-transformation",
+    facetId: "matrix-transformations.HSN.VM.C.11",
+    extent: "partial",
+    rationale:
+      "Apply a 2x2 matrix to a point, match rotation, reflection and dilation matrices with their descriptions, and use the absolute determinant as the area scale factor, including a determinant of 0. Does not assess rotations other than multiples of 90 degrees, composition of transformations, or deriving the area claim.",
+  },
+  {
+    templateId: "matrix-transformation",
+    facetId: "matrix-transformations.HSN.VM.C.12",
+    extent: "partial",
+    rationale:
+      "Apply a 2x2 matrix to a point, match rotation, reflection and dilation matrices with their descriptions, and use the absolute determinant as the area scale factor, including a determinant of 0. Does not assess rotations other than multiples of 90 degrees, composition of transformations, or deriving the area claim.",
+  },
+  {
+    templateId: "matrix-linear-system",
+    facetId: "matrix-systems.core",
+    extent: "partial",
+    rationale:
+      "Identify the coefficient or constant matrix of a 2x2 system, solve AX = B with the inverse (exact fractions), and recognize that a zero determinant leaves no unique solution. Does not assess systems with three or more variables, technology-based inverses of larger matrices, or classifying no-solution versus infinitely many solutions.",
+  },
+  {
+    templateId: "matrix-linear-system",
+    facetId: "matrix-systems.HSA.REI.C.8",
+    extent: "partial",
+    rationale:
+      "Identify the coefficient or constant matrix of a 2x2 system, solve AX = B with the inverse (exact fractions), and recognize that a zero determinant leaves no unique solution. Does not assess systems with three or more variables, technology-based inverses of larger matrices, or classifying no-solution versus infinitely many solutions.",
+  },
+  {
+    templateId: "matrix-linear-system",
+    facetId: "matrix-systems.HSA.REI.C.9",
+    extent: "partial",
+    rationale:
+      "Identify the coefficient or constant matrix of a 2x2 system, solve AX = B with the inverse (exact fractions), and recognize that a zero determinant leaves no unique solution. Does not assess systems with three or more variables, technology-based inverses of larger matrices, or classifying no-solution versus infinitely many solutions.",
+  },
+  {
+    templateId: "normal-model-rule",
+    facetId: "normal-distributions.core",
+    extent: "partial",
+    rationale:
+      "Select the percent between, above or below mean ± k standard deviations by the 68–95–99.7 rule, the interval for a stated percent, the larger z-score across two data sets, and the data set a normal model suits. Does not assess table or calculator normal probabilities, non-integer z-scores, checking fit with normal probability plots or sampling distributions.",
+  },
+  {
+    templateId: "normal-model-rule",
+    facetId: "normal-distributions.HSS.ID.A.4",
+    extent: "partial",
+    rationale:
+      "Select the percent between, above or below mean ± k standard deviations by the 68–95–99.7 rule, the interval for a stated percent, the larger z-score across two data sets, and the data set a normal model suits. Does not assess table or calculator normal probabilities, non-integer z-scores, checking fit with normal probability plots or sampling distributions.",
+  },
+  {
+    templateId: "random-variable-distribution",
+    facetId: "random-variables.core",
+    extent: "partial",
+    rationale:
+      "Define a numerical random variable, find P(X = k) and tail probabilities from counted outcomes or a bar chart, and complete a distribution whose probabilities sum to 1. Does not assess drawing the bar chart, continuous random variables or variance.",
+  },
+  {
+    templateId: "random-variable-distribution",
+    facetId: "random-variables.HSS.MD.A.1",
+    extent: "partial",
+    rationale:
+      "Define a numerical random variable, find P(X = k) and tail probabilities from counted outcomes or a bar chart, and complete a distribution whose probabilities sum to 1. Does not assess drawing the bar chart, continuous random variables or variance.",
+  },
+  {
+    templateId: "theoretical-distribution-expectation",
+    facetId: "theoretical-distributions.core",
+    extent: "partial",
+    rationale:
+      "Build a distribution from two fair dice or three independent trials and compute probabilities and an exact expected value for a payoff game. Does not assess binomial distributions beyond three trials, variance or continuous models.",
+  },
+  {
+    templateId: "theoretical-distribution-expectation",
+    facetId: "theoretical-distributions.HSS.MD.A.3",
+    extent: "partial",
+    rationale:
+      "Build a distribution from two fair dice or three independent trials and compute probabilities and an exact expected value for a payoff game. Does not assess binomial distributions beyond three trials, variance or continuous models.",
+  },
+  {
+    templateId: "empirical-distribution-expectation",
+    facetId: "empirical-distributions.core",
+    extent: "partial",
+    rationale:
+      "From an observed frequency bar chart, find a relative frequency, the expected value per trial and the expected total for a larger group. Does not assess comparing the empirical distribution with a theoretical model or its sampling variability.",
+  },
+  {
+    templateId: "empirical-distribution-expectation",
+    facetId: "empirical-distributions.HSS.MD.A.4",
+    extent: "partial",
+    rationale:
+      "From an observed frequency bar chart, find a relative frequency, the expected value per trial and the expected total for a larger group. Does not assess comparing the empirical distribution with a theoretical model or its sampling variability.",
+  },
+  {
+    templateId: "strategy-expected-value",
+    facetId: "decision-strategies.core",
+    extent: "partial",
+    rationale:
+      "Select the strategy with the greatest expected net gain or least expected cost among games, a warranty, or a sure amount and a gamble, with exact arithmetic. Does not assess risk preference, decision trees with several stages or evaluating estimated probabilities.",
+  },
+  {
+    templateId: "strategy-expected-value",
+    facetId: "decision-strategies.HSS.MD.B.7",
+    extent: "partial",
+    rationale:
+      "Select the strategy with the greatest expected net gain or least expected cost among games, a warranty, or a sure amount and a gamble, with exact arithmetic. Does not assess risk preference, decision trees with several stages or evaluating estimated probabilities.",
+  },
+  {
+    templateId: "fair-selection-procedure",
+    facetId: "fair-random-decisions.core",
+    extent: "partial",
+    rationale:
+      "Select a random procedure that gives each of several people equal chance and compute a person's probability under two-dice, remainder and re-roll procedures. Does not assess designing a new procedure or carrying out a random selection.",
+  },
+  {
+    templateId: "fair-selection-procedure",
+    facetId: "fair-random-decisions.HSS.MD.B.6",
+    extent: "partial",
+    rationale:
+      "Select a random procedure that gives each of several people equal chance and compute a person's probability under two-dice, remainder and re-roll procedures. Does not assess designing a new procedure or carrying out a random selection.",
+  },
+  {
+    templateId: "simulation-consistency-check",
+    facetId: "simulation-model-checks.core",
+    extent: "partial",
+    rationale:
+      "From a bar chart of 100 simulated results, find the number at least as extreme as an observed result (one or two-sided) and decide consistency at a stated cutoff. Does not assess running a simulation or designing one for a model.",
+  },
+  {
+    templateId: "simulation-consistency-check",
+    facetId: "simulation-model-checks.HSS.IC.A.2",
+    extent: "partial",
+    rationale:
+      "From a bar chart of 100 simulated results, find the number at least as extreme as an observed result (one or two-sided) and decide consistency at a stated cutoff. Does not assess running a simulation or designing one for a model.",
+  },
+  {
+    templateId: "randomization-test-decision",
+    facetId: "randomization-tests.core",
+    extent: "partial",
+    rationale:
+      "From a chart of 200 re-randomized differences, find the proportion as or more extreme than an observed treatment difference and decide significance at a stated cutoff. Does not assess carrying out the reshuffles or writing the conclusion in context.",
+  },
+  {
+    templateId: "randomization-test-decision",
+    facetId: "randomization-tests.HSS.IC.B.5",
+    extent: "partial",
+    rationale:
+      "From a chart of 200 re-randomized differences, find the proportion as or more extreme than an observed treatment difference and decide significance at a stated cutoff. Does not assess carrying out the reshuffles or writing the conclusion in context.",
+  },
+  {
+    templateId: "report-flaw-critique",
+    facetId: "statistical-report-critique.core",
+    extent: "partial",
+    rationale:
+      "Identify voluntary response, a convenience sample, a too-small sample, a missing margin of error or a truncated axis, including reports with two flaws. Does not assess causal claims from observational studies (assessed by the causal-claim family), or free-response critique.",
+  },
+  {
+    templateId: "report-flaw-critique",
+    facetId: "statistical-report-critique.HSS.IC.B.6",
+    extent: "partial",
+    rationale:
+      "Identify voluntary response, a convenience sample, a too-small sample, a missing margin of error or a truncated axis, including reports with two flaws. Does not assess causal claims from observational studies (assessed by the causal-claim family), or free-response critique.",
+  },
+  {
+    templateId: "model-residual-conclusion",
+    facetId: "model-validation.core",
+    extent: "partial",
+    rationale:
+      "Choose the conclusion supported by a residual table: curved pattern, no pattern, extrapolation, or which of two models has the smaller sum of squared residuals. Does not assess computing a regression line, graphing residual plots or writing the limitation in words.",
+  },
+  {
+    templateId: "complex-plane-forms",
+    facetId: "complex-plane.core",
+    extent: "partial",
+    rationale:
+      "Read a complex number from a plotted point, find an exact modulus, add two plotted numbers, and convert between a+bi and r(cos θ + i sin θ) at special angles with exact values, by selecting among written forms. Does not assess plotting points, geometric multiplication or powers of complex numbers, or angles beyond the multiples of π/6 and π/4.",
+  },
+  {
+    templateId: "complex-conjugate-division",
+    facetId: "complex-conjugates.core",
+    extent: "partial",
+    rationale:
+      "Find a conjugate, evaluate z·z̄, and divide two integer-coefficient complex numbers into exact standard form with fractional parts, by selecting among written results. Does not assess moduli of quotients, conjugate properties of sums and products, or proofs.",
+  },
+  {
+    templateId: "complex-distance-midpoint",
+    facetId: "complex-distance.core",
+    extent: "partial",
+    rationale:
+      "Find the exact distance |z − w|, the midpoint, a missing endpoint of a segment, and the center and radius of |z − w| = r, with integer-coefficient numbers and selected answers. Does not assess perpendicular bisectors, loci other than circles, or written justification.",
+  },
+  {
+    templateId: "complex-quadratic-factors",
+    facetId: "complex-factorization.core",
+    extent: "partial",
+    rationale:
+      "Factor x² + k² into complex linear factors, solve monic quadratics with negative discriminant in exact a ± bi form (including radicals and halves), and select the quadratic with given conjugate roots. Does not assess factoring higher-degree polynomials or non-monic quadratics.",
+  },
+  {
+    templateId: "polynomial-root-count",
+    facetId: "fundamental-theorem-algebra.core",
+    extent: "partial",
+    rationale:
+      "Count complex roots with multiplicity from a degree or factored form, name the conjugate root forced by real coefficients, and bound or classify the number of real roots of a real polynomial. Does not assess finding roots, the theorem's proof, or polynomials with nonreal coefficients.",
+  },
+  {
+    templateId: "polar-cartesian-conversion",
+    facetId: "polar-coordinates.core",
+    extent: "partial",
+    rationale:
+      "Convert polar to Cartesian and Cartesian to polar at special angles, including negative r and axis angles, and select equivalent polar names. Does not assess graphing polar curves, polar equations or converting equations.",
+  },
+  {
+    templateId: "parametric-linear-motion",
+    facetId: "parametric-models.core",
+    extent: "partial",
+    rationale:
+      "Evaluate position, eliminate the parameter, find speed, solve for a time and read direction for linear parametric motion. Does not assess nonlinear or projectile motion, graphing a parametric curve or deriving a model from a context.",
+  },
+  {
+    templateId: "conic-standard-form",
+    facetId: "conic-sections.core",
+    extent: "partial",
+    rationale:
+      "Identify a circle, ellipse, parabola or hyperbola from an equation, read an ellipse's center and longer-axis ends, and complete the square for a circle or an ellipse in general form. Does not assess graphing, hyperbola vertices and asymptotes, eccentricity or rotated conics.",
+  },
+  {
+    templateId: "parabola-focus-directrix",
+    facetId: "parabola-locus.core",
+    extent: "partial",
+    rationale:
+      "Find the vertex, equation, focus and directrix of a parabola from a focus and directrix or from an equation, in vertical and horizontal orientations. Does not assess deriving the equation from the distance condition or graphing.",
+  },
+  {
     templateId: "special-angle-exact-value",
     facetId: "special-angle-values.HSF.TF.A.3",
     extent: "partial",

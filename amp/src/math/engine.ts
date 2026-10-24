@@ -233,6 +233,14 @@ import {
   generateQuadraticProblem,
 } from "./quadratic-practice";
 import {
+  statisticsProbabilityTemplates,
+  generateStatisticsProbabilityProblem,
+} from "./statistics-probability-practice";
+import {
+  complexConicsTemplates,
+  generateComplexConicsProblem,
+} from "./complex-conics-practice";
+import {
   geometryModelingTemplates,
   generateGeometryModelingProblem,
 } from "./geometry-modeling-practice";
@@ -248,6 +256,10 @@ import {
   remainingGapTemplates,
   generateRemainingGapProblem,
 } from "./remaining-gap-practice";
+import {
+  vectorMatrixTemplates,
+  generateVectorMatrixProblem,
+} from "./vectors-matrices-practice";
 import {
   trigonometryTemplates,
   generateTrigonometryProblem,
@@ -418,6 +430,9 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   complexMultiplicationTemplate,
+  ...vectorMatrixTemplates,
+  ...statisticsProbabilityTemplates,
+  ...complexConicsTemplates,
   ...trigonometryTemplates,
   ...geometryModelingTemplates,
   ...functionBehaviorTemplates,
@@ -842,12 +857,18 @@ function generateRawProblem(
     return generatePolynomialProblem(templateId, seed);
   if (quadraticTemplates.some((t) => t.id === templateId))
     return generateQuadraticProblem(templateId, seed);
+  if (statisticsProbabilityTemplates.some((t) => t.id === templateId))
+    return generateStatisticsProbabilityProblem(templateId, seed);
+  if (complexConicsTemplates.some((t) => t.id === templateId))
+    return generateComplexConicsProblem(templateId, seed);
   if (functionBehaviorTemplates.some((t) => t.id === templateId))
     return generateFunctionBehaviorProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
   if (remainingGapTemplates.some((t) => t.id === templateId))
     return generateRemainingGapProblem(templateId, seed);
+  if (vectorMatrixTemplates.some((t) => t.id === templateId))
+    return generateVectorMatrixProblem(templateId, seed);
   if (trigonometryTemplates.some((t) => t.id === templateId))
     return generateTrigonometryProblem(templateId, seed);
   if (geometryModelingTemplates.some((t) => t.id === templateId))

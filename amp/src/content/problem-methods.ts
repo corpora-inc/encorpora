@@ -62,6 +62,9 @@ import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import { complexMethods } from "./complex-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
+import { vectorMatrixMethods } from "./vectors-matrices-lessons";
+import { statisticsProbabilityMethods } from "./statistics-probability-lessons";
+import { complexConicsMethods } from "./complex-conics-lessons";
 import { trigonometryMethods } from "./trigonometry-lessons";
 import { geometryModelingMethods } from "./geometry-modeling-lessons";
 import { functionBehaviorMethods } from "./function-behavior-lessons";
@@ -92,6 +95,9 @@ export const methods: Record<string, ProblemMethod> = {
   ...quadraticMethods,
   ...complexMethods,
   ...remainingGapMethods,
+  ...vectorMatrixMethods,
+  ...statisticsProbabilityMethods,
+  ...complexConicsMethods,
   ...trigonometryMethods,
   ...geometryModelingMethods,
   ...functionBehaviorMethods,
