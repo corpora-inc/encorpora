@@ -29,7 +29,7 @@ test("target membership includes every jurisdiction and separately blocks unrevi
     [],
   );
   assert.equal(report.targetComplete, false);
-  assert.ok(report.templatesWithoutFacetMapping.length);
+  assert.deepEqual(report.templatesWithoutFacetMapping, []);
   for (const task of initialGapTasks) {
     assert.ok(
       skills.some((s) => s.id === task.skillId),
