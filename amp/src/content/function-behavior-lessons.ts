@@ -36,7 +36,7 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
       "Find all zeros of the denominator. These are the inputs left out of the domain.",
       "Cancel common factors. A zero whose factor cancels is a hole; a zero whose factor remains is a vertical asymptote.",
       "For the horizontal asymptote, compare the numerator's degree with the denominator's. If the numerator's is smaller the asymptote is $y=0$; if they are equal it is the ratio of leading coefficients; if the numerator's is larger there is none.",
-      "The $x$-intercepts are zeros of the numerator that do not cancel. The $y$-intercept is $f(0)$.",
+      "The $x$-intercepts are zeros of the numerator that do not cancel. The $y$-intercept is $f(0)$ when $0$ is in the domain; if $x=0$ is a hole or an asymptote, there is no $y$-intercept.",
     ],
     watch:
       "A common factor gives a hole, not an asymptote, but the hole's input is still excluded from the domain and is never an intercept.",
@@ -224,7 +224,7 @@ export const functionBehaviorLessons: Lesson[] = [
         keepTogetherInPrint: true,
         title: "Intercepts and the horizontal asymptote",
         paragraphs: [
-          "An $x$-intercept is where the graph meets the $x$-axis, so the function equals 0: use zeros of the numerator that remain after canceling. The $y$-intercept is the point on the $y$-axis, $f(0)$, found by substituting $x=0$ into every factor.",
+          "An $x$-intercept is where the graph meets the $x$-axis, so the function equals 0: use zeros of the numerator that remain after canceling. The $y$-intercept is the point on the $y$-axis, $f(0)$, found by substituting $x=0$ into every factor. It exists only when $0$ is in the domain: no $y$-intercept if $x=0$ is a hole or a vertical asymptote.",
           "For the horizontal asymptote, compare the degrees. A smaller numerator degree gives $y=0$. Equal degrees give $y=\\dfrac{\\text{numerator leading coefficient}}{\\text{denominator leading coefficient}}$. A larger numerator degree gives no horizontal asymptote.",
         ],
       },
