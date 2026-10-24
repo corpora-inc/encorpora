@@ -10,6 +10,7 @@ APPLICATION_AREAS = (
     'amp/src/privacy/', 'amp/src/account/', 'amp/src/analytics/',
     'amp/src/commerce/', 'amp/src/feedback/', 'amp/src/funding/',
     'amp/src/funding-purchase/', 'amp/src/server/',
+    'amp/src/web/app/', 'amp/src/web/features/',
 )
 
 
@@ -24,7 +25,7 @@ def requires_inventory(paths):
             continue
         if path == 'amp/tests/independent-review.test.ts' or path in CONTENT_TESTS:
             return True
-        if (path.startswith('amp/tests/') and path.endswith('.test.ts')) or path.startswith('amp/docs/') or path in ('amp/README.md', 'amp/AGENTS.md'):
+        if (path.startswith('amp/tests/') and path.endswith(('.test.ts', '.integration.ts'))) or path.startswith('amp/docs/') or path in ('amp/README.md', 'amp/AGENTS.md'):
             continue
         if path.startswith(APPLICATION_AREAS):
             continue

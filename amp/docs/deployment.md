@@ -73,8 +73,23 @@ The preview catalog exposes its reference lessons for exploration. A commercial 
 A merge to `main` that touches `amp/` becomes deployable after its focused CI checks pass. The automatic deploy poll is scheduled every five minutes; GitHub may delay scheduled runs. An authorized operator can dispatch deployment immediately after CI succeeds. The routine merge-to-live target is under eight minutes, including queue and scheduler delays. Scheduled polling alone cannot guarantee that target; measure a real release and report any remaining delay.
 
 1. **Merge.** CI runs on the `main` commit.
-2. **Green.** Some run of the `CI` workflow on that commit concluded `amp` and `ci-gate` successful, at their latest attempt. A failed, cancelled, skipped or missing check is not green. A run cancelled because a newer push superseded it is not green either. Routine checks cover unit tests, typechecking, build and database behavior. Exhaustive browser and inventory checks run separately in `AMP deep checks`, selected by changed paths and also nightly or manually. Failures open a follow-up issue; they do not hold the release.
+2. **Green.** Some run of the `CI` workflow on that commit concluded `amp` and `ci-gate` successful, at their latest attempt. A failed, cancelled, skipped or missing check is not green. A run cancelled because a newer push superseded it is not green either. PRs and queue candidates run fast checks; broad affected regression checks run asynchronously on main, with failures fixed forward. Selected unit, database and build jobs run in parallel behind `amp`. Browser and inventory checks run separately in `AMP deep checks`; scheduled and manual deep runs cover the complete suites. Deep-check failures open a follow-up issue and do not hold the routine release.
 3. **Deploy.** Every five minutes the hosting repository's deploy workflow (`deploy-corpora-amp`, outside this repository) deploys the newest green `main` commit touching `amp/` wherever it is not already live. When the newest commit is red or still running, it deploys the newest earlier green one, and its log says so: `newest X is red (amp failure); deploying last green Y`. The poll only moves forward: it never replaces a live release with an older commit, so a CI re-run cannot bring back a replaced release. A poll with nothing new succeeds quietly. Stage and production deploy in parallel. Each must pass smoke checks, including that `/api/v1/health` reports the commit just deployed, or it rolls back automatically.
+
+The validation plan is produced by `.github/scripts/amp_ci_plan.py` and recorded in the AMP job summary. The same path classification drives routine and deep checks:
+
+| Change | PR and merge queue | Main |
+| --- | --- | --- |
+| Isolated unit/database test | Changed entrypoints and typecheck | Same entrypoints; no unrelated build or deep sweep |
+| Browser verification entrypoint | Typecheck | That browser script in the deep workflow |
+| Application screens (`src/web/app`, `src/web/features`) | Build and contract smoke tests | Full core tests, build and browser checks; no database or print inventory |
+| Shared runtime/server code | Build, contract smoke tests, changed tests; focused database checks for API and protected paths | Full core/database checks; affected browser/content suites |
+| Helpers, fixtures, migrations, dependencies, unknown inputs | Build and smoke tests; focused database checks for migrations | Broad validation, with fresh content checks |
+| Documentation | No expensive validation jobs | No expensive validation jobs |
+
+A deleted test falls back to broad main validation. Test catalogs are discovered from the filesystem, so new tests join their suite automatically. A selected job must succeed; only jobs the planner deliberately omitted may be skipped. Existing required statuses remain `ci-gate`, `adversarial-review` and `hygiene`.
+
+For launch acceptance, dispatch both `CI` and `AMP deep checks` on the candidate commit. These full runs bypass narrow selection; manual deep checks also bypass content-result reuse. Routine main CI must pass before automatic deployment, even though broad tests do not block feature merges.
 
 **What is live.** `amp/scripts/release-status.sh` prints `main`'s head and its CI verdict, the newest green commit, the commit stage and production run, and how far production is behind `main` and behind green. It uses only the public GitHub API and the health endpoints. Directly:
 

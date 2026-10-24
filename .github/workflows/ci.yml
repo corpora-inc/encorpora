@@ -32,6 +32,10 @@ jobs:
     outputs:
       corpora_site: ${{ steps.filter.outputs.corpora_site }}
       amp: ${{ steps.filter.outputs.amp }}
+      amp_plan: ${{ steps.filter.outputs.amp_plan }}
+      amp_core: ${{ steps.filter.outputs.amp_core }}
+      amp_database: ${{ steps.filter.outputs.amp_database }}
+      amp_build: ${{ steps.filter.outputs.amp_build }}
       amp_native: ${{ steps.filter.outputs.amp_native }}
       aha_app: ${{ steps.filter.outputs.aha_app }}
       ci_scripts: ${{ steps.filter.outputs.ci_scripts }}
@@ -89,15 +93,17 @@ jobs:
         run: |
           set -euo pipefail
 
+          amp_full=false
           base="${BASE_SHA}"
           head="${HEAD_SHA}"
           if [ -z "${base}" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            amp_full=true
             base="$(git rev-parse "${head}^" 2>/dev/null || true)"
           fi
 
           changed="$(mktemp)"
           if [ -n "${base}" ]; then
-            git diff --name-only "${base}" "${head}" > "${changed}"
+            git diff --no-renames --name-only "${base}" "${head}" > "${changed}"
           else
             git diff-tree --no-commit-id --name-only -r "${head}" > "${changed}"
           fi
@@ -127,7 +133,6 @@ jobs:
           set_output amp_native '^(amp/mobile/|amp/src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|amp/src/server/(app|auth)\.|amp/scripts/verify-native-session\.|\.github/workflows/ci\.yml$)'
           # The static site imports AMP figures, content, audit and theme at build time.
           set_output corpora_site '^(corpora-site/|amp/(books/|src/(math|content|curriculum|books|publishing)/|src/web/([^/]*Figure|MathText)\.tsx$|src/web/ui/tokens\.css$|src/server/trials\.ts$|package(-lock)?\.json$|tsconfig\.json$)|\.github/workflows/ci\.yml$)'
-          set_output amp '^(amp/|web/io/data/apps\.json$|\.github/scripts/(amp_inventory_paths|test_amp_inventory_paths)\.py$|\.github/workflows/ci\.yml$)'
           set_output aha_app '^(aha/|homeschool-offline/app/src-tauri/plugins/tauri-plugin-ios-share/|\.github/workflows/ci\.yml$)'
           set_output ci_scripts '^(\.github/scripts/|\.github/workflows/[^/]+\.ya?ml$)'
           # `corpan/packs/shared/` and `corpan/packs/sdk/` are in here because the
@@ -240,6 +245,17 @@ jobs:
           # that drives a job. A workflow edit that breaks the native gate has
           # to be caught by the native gate.
           set_output native '^(native/|.*/src-tauri/|corpan/plugins/|\.github/workflows/ci\.yml$|\.github/scripts/(patch_integrity|clippy_report)\.py$)'
+
+          # One tested planner serves routine and deep checks. Missing history
+          # forces full validation rather than an incomplete diff.
+          plan_args=(--github)
+          case "$EVENT_NAME" in
+            pull_request|merge_group) plan_args+=(--quick) ;;
+          esac
+          if [ "$EVENT_NAME" = workflow_dispatch ] || [ "$amp_full" = true ]; then
+            plan_args+=(--full)
+          fi
+          python3 .github/scripts/amp_ci_plan.py "${plan_args[@]}" < "$changed" >> "$GITHUB_OUTPUT"
 
       # Coverage warning. WARN-ONLY, and permanently scoped to `pull_request`.
       #
@@ -1751,17 +1767,64 @@ jobs:
   # mark as a required check on `main` — it always runs (if: always()) and always
   # reports, so path-skipped sub-jobs never deadlock the branch protection / queue.
   # Skipped needs are fine; any failure or cancellation fails the gate.
-  # Routine AMP releases gate on focused unit, build and database checks.
+  # PR/queue checks are fast; broad affected suites run asynchronously on main.
+  # The amp aggregate preserves deployment eligibility and required ci-gate.
   # Exhaustive browser/content checks run independently in amp-deep-checks.yml.
-  amp:
-    name: amp
+  amp-core:
+    name: amp-core
     needs: changes
-    if: needs.changes.outputs.amp == 'true'
+    if: needs.changes.outputs.amp_core == 'true'
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: amp
     env:
+      AMP_CI_PLAN: ${{ needs.changes.outputs.amp_plan }}
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: amp/package-lock.json
+      - run: npm ci
+      - name: Install PDF inspection tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+      - name: Selected application and math tests
+        run: node scripts/run-ci-tests.mjs core
+  amp-database:
+    name: amp-database
+    needs: changes
+    if: needs.changes.outputs.amp_database == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: amp
+    env:
+      AMP_CI_PLAN: ${{ needs.changes.outputs.amp_plan }}
       AMP_TEST_DATABASE_URL: postgres://amp:amp@127.0.0.1:5432/amp_test
     steps:
       - name: Initialize verified client trust
@@ -1814,16 +1877,10 @@ jobs:
           node-version: 22
           cache: npm
           cache-dependency-path: amp/package-lock.json
-      # Receipt and supplier-packet unit tests read PDFs with poppler.
-      - name: Install PDF inspection tools
-        run: sudo apt-get update && sudo apt-get install -y poppler-utils
       - run: npm ci
-      - name: Application and focused math tests
-        run: npm run test:core
-      # No color literal outside src/web/ui/tokens.css.
-      - run: npm run lint:colors
-      - run: npm run build
-      - run: npm run test:db
+      - run: npx tsx scripts/test-database-preflight.ts
+      - name: Selected database tests
+        run: node scripts/run-ci-tests.mjs database
       - name: Remove this job's PostgreSQL container
         if: ${{ always() && steps.ci-postgres.outputs.container_id != '' }}
         shell: bash
@@ -1834,6 +1891,108 @@ jobs:
           set -euo pipefail
           [[ "$CI_POSTGRES_CONTAINER_ID" =~ ^[0-9a-f]{64}$ ]]
           docker rm --force --volumes "$CI_POSTGRES_CONTAINER_ID"
+  amp-build:
+    name: amp-build
+    needs: changes
+    if: needs.changes.outputs.amp_build == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: amp
+    env:
+      AMP_CI_PLAN: ${{ needs.changes.outputs.amp_plan }}
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: amp/package-lock.json
+      - run: npm ci
+      - if: fromJSON(needs.changes.outputs.amp_plan).colors
+        run: npm run lint:colors
+      - if: fromJSON(needs.changes.outputs.amp_plan).build
+        run: npm run build
+      - if: ${{ !fromJSON(needs.changes.outputs.amp_plan).build }}
+        run: npm run tsc
+  amp:
+    name: amp
+    needs:
+    - changes
+    - amp-core
+    - amp-database
+    - amp-build
+    if: ${{ always() && needs.changes.outputs.amp == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Initialize verified client trust
+        id: ci-trust
+        shell: bash
+        working-directory: ${{ runner.temp }}
+        run: |
+          python3 -I - <<'PY'
+          import hashlib, os, pathlib, subprocess, sys, tempfile, urllib.request
+          url = 'https://raw.githubusercontent.com/corpora-inc/encorpora/4aa31ea9b905faf587df857265b2160cd380c7fb/.github/scripts/ci_trust.py'
+          opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+          with opener.open(url, timeout=30) as response:
+              if response.url != url:
+                  raise SystemExit('Unexpected CI trust helper redirect')
+              source = response.read(50001)
+          if hashlib.sha256(source).hexdigest() != '16923779dfbad6c110c5f78b668935df5976c89bbdc08a664be09c3dbee6a2ee':
+              raise SystemExit('CI trust helper checksum mismatch')
+          descriptor, name = tempfile.mkstemp(prefix='corpora-ci-bootstrap-', suffix='.py', dir=os.environ['RUNNER_TEMP'])
+          try:
+              with os.fdopen(descriptor, 'wb') as output:
+                  output.write(source)
+              subprocess.run([sys.executable, '-I', name, '--source-commit', '4aa31ea9b905faf587df857265b2160cd380c7fb'], check=True)
+          finally:
+              pathlib.Path(name).unlink()
+          PY
+      - name: Require selected AMP checks
+        env:
+          AMP_NEEDS: ${{ toJSON(needs) }}
+        run: |
+          python3 - <<'PY_GATE'
+          import json, os
+          needs = json.loads(os.environ['AMP_NEEDS'])
+          if needs['changes']['result'] != 'success':
+              raise SystemExit('AMP change planning failed')
+          plan = json.loads(needs['changes']['outputs']['amp_plan'])
+          required = {
+              'amp-core': bool(plan['core']),
+              'amp-database': bool(plan['database']),
+              'amp-build': plan['build'] or plan['typecheck'],
+          }
+          for job, selected in required.items():
+              expected = 'success' if selected else 'skipped'
+              if needs[job]['result'] != expected:
+                  raise SystemExit(f'{job}: expected {expected}, got {needs[job]["result"]}')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('AMP validation plan\n\n```json\n' + json.dumps(plan, indent=2) + '\n```\n')
+          PY_GATE
 
   amp-native:
     name: amp-native
