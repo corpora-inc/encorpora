@@ -58,6 +58,41 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "series-recursion",
+    facetId: "arithmetic-sequences.core",
+    extent: "partial",
+    rationale:
+      "Choose the sum of a finite arithmetic series given as a list, sigma notation or a story; convert between a recursive and an explicit rule; find a term from two table entries; and compute a term of a simple affine recursion. Does not assess deriving the sum formula, writing a rule from a context in words, infinite series or sequences defined by non-affine recursions.",
+  },
+  {
+    templateId: "compound-growth",
+    facetId: "exponential-models.core",
+    extent: "partial",
+    rationale:
+      "Choose a compound-interest balance for periodic or continuous compounding rounded as stated, the per-period form of an annual growth factor, the annual percent change from a periodic rate, and the rate and frequency in a compound-interest formula. Does not assess solving for time or rate, annuities or loan payments, or graphing the balance.",
+  },
+  {
+    templateId: "polynomial-factoring-patterns",
+    facetId: "factor-quadratics.core",
+    extent: "partial",
+    rationale:
+      "Choose the complete integer factorization of a sum or difference of cubes (with or without a common factor), a four-term polynomial factored by grouping, and a quadratic-in-form quartic or x^4 - k^4. Does not assess typing a factorization, factoring with a non-integer root, higher-degree factoring beyond these patterns or the binomial theorem.",
+  },
+  {
+    templateId: "residual-function-fit",
+    facetId: "regression-interpretation.core",
+    extent: "partial",
+    rationale:
+      "Choose whether to keep a line or switch to a curved model from a residual plot, classify equally spaced exact data as linear, quadratic, exponential or none from differences and ratios, and compute or interpret a residual from a quadratic or exponential model. Does not assess fitting a curve by technology, residual standard error, outlier influence or constructing a residual plot.",
+  },
+  {
+    templateId: "function-graph-features",
+    facetId: "logarithms.core",
+    extent: "partial",
+    rationale:
+      "Choose the asymptote, range, intercept, direction or end behavior of an exponential function from its equation or graph, and the domain, vertical asymptote or x-intercept of a logarithmic function from its equation or graph. Does not assess sketching graphs by hand, transformations written as stretches and shifts, inverses of these functions or graphs with bases other than 2, 3 and 1/2.",
+  },
+  {
     templateId: "signed-context-order",
     facetId: "absolute-value.core",
     extent: "partial",
