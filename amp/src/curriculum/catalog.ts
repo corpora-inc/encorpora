@@ -431,7 +431,7 @@ statistical-questions|6|data|Identify statistical questions and sources of varia
 statistics-mean|6|data|Calculate the arithmetic mean of a finite dataset|decimal-arithmetic|6.SP.B.5
 mean-median|6|data|Calculate and interpret mean median and range|decimal-arithmetic|6.SP.A.3,6.SP.B.5
 distribution-plots|6|data|Interpret dot plots histograms and box plots|line-plots,mean-median|6.SP.B.4
-variability|6|data|Describe spread shape outliers and appropriate summaries|distribution-plots|6.SP.B.5
+variability|6|data|Describe spread shape outliers and appropriate summaries|distribution-plots,absolute-value|6.SP.B.5
 rational-unit-rates|7|ratio|Calculate unit rates involving fractional quantities|unit-rates,fraction-division|7.RP.A.1
 proportional-relationships|7|ratio|Identify and represent proportional relationships|ratio-tables,dependent-variables|7.RP.A.2
 percent-change|7|ratio|Solve percent increase decrease markup and interest problems|percentages,fraction-division,decimal-arithmetic|7.RP.A.3
@@ -472,7 +472,7 @@ pythagorean-theorem|8|geometry|Explain and apply the Pythagorean relationship|ap
 coordinate-distance|8|geometry|Find distance between two coordinate points|pythagorean-theorem,coordinate-four-quadrants|8.G.B.8
 curved-solid-volume|8|geometry|Find volumes of cylinders cones and spheres|circle-measurement,prism-volume|8.G.C.9
 scatterplots|8|data|Interpret associations and fit an informal trend line|coordinate-four-quadrants,linear-models|8.SP.A.1,8.SP.A.2,8.SP.A.3
-two-way-tables|8|data|Use relative frequencies to investigate association|probability|8.SP.A.4
+two-way-tables|8|data|Use relative frequencies to investigate association|probability,percentages|8.SP.A.4
 units-and-precision|algebra-1|modeling|Choose units and justify precision in quantitative models|unit-conversion,scientific-notation|HSN,HSM,SAT.data
 expression-structure|algebra-1|algebra|Interpret terms factors and equivalent forms in context|linear-expressions|HSA,SAT.advanced-math
 formula-rearrangement|algebra-1|algebra|Rearrange formulas to isolate a chosen variable|linear-equations|HSA,SAT.algebra
@@ -570,7 +570,7 @@ elimination-proof|algebra-1|reasoning|Prove that elimination preserves a linear 
 matrix-systems|precalculus|algebra|Represent systems as matrix equations and solve using inverses where possible|matrix-inverses,linear-systems|
 graph-solution-sets|algebra-1|algebra|Interpret equation graphs as all ordered pairs satisfying the equation|coordinate-four-quadrants,linear-equations|
 graphical-equation-solving|algebra-2|algebra|Approximate intersections using graphs tables and successive refinement|graph-solution-sets,quadratic-graphs|
-inequality-regions|algebra-1|algebra|Graph intersecting half-planes with correct boundary inclusion|linear-inequalities,slope|
+inequality-regions|algebra-1|algebra|Graph intersecting half-planes with correct boundary inclusion|linear-inequalities,slope,graph-solution-sets|
 average-rate-change|algebra-1|functions|Calculate and interpret interval-average rates from graphs tables and formulas|slope,function-evaluation|
 cross-representation-comparison|algebra-2|functions|Compare nonlinear functions given by different representations|compare-functions,quadratic-graphs|
 growth-comparison|algebra-2|functions|Justify linear versus exponential growth and compare eventual polynomial growth|exponential-models,polynomial-zeros|
@@ -604,7 +604,7 @@ trigonometric-area|precalculus|trigonometry|Derive and apply the two-sides-and-i
 triangle-law-proofs|precalculus|reasoning|Derive sine and cosine laws and justify their applicability|trigonometric-area,pythagorean-theorem|
 event-sets|geometry|probability|Represent unions intersections and complements within a sample space|compound-probability|
 probability-addition|geometry|probability|Calculate unions using addition with an overlap correction|event-sets|
-probability-multiplication|precalculus|probability|Apply conditional product rules and interpret joint-event probabilities|conditional-probability|
+probability-multiplication|precalculus|probability|Apply conditional product rules and interpret joint-event probabilities|conditional-probability,fraction-multiplication|
 permutations-combinations|precalculus|probability|Count ordered and unordered selections to compute compound probabilities|compound-probability|
 simulation-model-checks|algebra-2|data|Simulate a proposed random process and assess consistency with observations|probability,sampling|
 sampling-margin-error|algebra-2|data|Estimate population means or proportions and simulate sampling margins of error|statistical-inference,simulation-model-checks|

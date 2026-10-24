@@ -35,3 +35,35 @@ test("connection audit rejects missing/self endpoints, duplicate edges and unrel
   ])
     assert(auditConnectionEvidence(skills, templates, mutation).length > 0);
 });
+
+test("every practiced skill leads to a later skill by prerequisite or connection", () => {
+  const practiced = new Set(templates.map((t) => t.skillId));
+  const leadsTo = new Set<string>();
+  for (const skill of skills)
+    for (const id of skill.prerequisites) leadsTo.add(id);
+  for (const { from } of curriculumConnections) leadsTo.add(from);
+  // Deliberately terminal skills (none today); list each with its reason.
+  const terminal = new Set<string>();
+  const dead = [...practiced].filter(
+    (id) => !leadsTo.has(id) && !terminal.has(id),
+  );
+  assert.deepEqual(dead, []);
+});
+
+test("editorial connections never contradict the prerequisite order", () => {
+  const byId = new Map(skills.map((s) => [s.id, s]));
+  const reaches = (from: string, target: string, seen = new Set<string>()) => {
+    for (const p of byId.get(from)!.prerequisites) {
+      if (p === target) return true;
+      if (!seen.has(p) && (seen.add(p), reaches(p, target, seen))) return true;
+    }
+    return false;
+  };
+  for (const { from, to } of curriculumConnections) {
+    assert(!reaches(from, to), `${from} already builds on ${to}`);
+    assert(
+      !byId.get(to)!.prerequisites.includes(from),
+      `${from} → ${to} duplicates a prerequisite`,
+    );
+  }
+});
