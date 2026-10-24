@@ -312,7 +312,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         title: "Split, multiply, add",
         paragraphs: [
           "Both parts have the same row length, 7, so the number of rows is split: $5=2+3$ and $5\\times7=2\\times7+3\\times7$. This is the distributive property for whole numbers: $a\\times(b+c)=a\\times b+a\\times c$.",
-          "For an L-shaped figure, use the dashed line to split it into two rectangles that do not overlap. Find each rectangle's sides from the labels, multiply, and add. Adding the long sides around the figure gives its perimeter, not its area.",
+          "For an L-shaped figure, use the dashed line to split it into two rectangles that do not overlap. Find each rectangle's sides from the labels, multiply, and add. Adding all the side lengths around the figure gives its perimeter, not its area.",
         ],
       },
       {

@@ -264,7 +264,7 @@ function signedContextOrder(r: Random): Built {
       answer: "",
       hint: `Put the negative numbers to the left of 0 on a number line. Of two negative numbers, the one with the larger absolute value is farther left, so it is the lesser number. Write every number as a decimal to compare them.`,
       explanation: [
-        `As decimals: ${vals.map((v) => hundredths(v, false)).join(", ")} (all written to the hundredths).`,
+        `As decimals: ${vals.map((v) => hundredths(v, false)).join(", ")} (each written as a decimal).`,
         `Negative numbers are less than positive numbers. Among negatives, more distance below 0 means lesser.`,
         `From ${asc ? "least to greatest" : "greatest to least"}: ${sorted.map((v) => hundredths(v, false)).join(", ")}.`,
       ],
