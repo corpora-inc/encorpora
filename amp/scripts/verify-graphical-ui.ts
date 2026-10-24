@@ -5,7 +5,7 @@ import { chromium, webkit } from "playwright";
 import { createServer } from "vite";
 import { mkdir, writeFile } from "node:fs/promises";
 import assert from "node:assert/strict";
-import { buildApp } from "../src/server/app";
+import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { developmentAuth } from "../src/server/auth";
 import { migrate } from "./migrate";
@@ -158,6 +158,26 @@ async function labelSizes(page: import("playwright").Page) {
     }),
   );
 }
+// Every browser context uses the same synthetic credential and server limit.
+// Reserve request slots before waiting so concurrent pages cannot share a slot.
+let nextApiAt = 0;
+const requestSpacing = Math.ceil(60000 / (GLOBAL_RATE_LIMIT * 0.8));
+async function waitForApiSlot() {
+  const now = Date.now();
+  const wait = Math.max(0, nextApiAt - now);
+  nextApiAt = Math.max(now, nextApiAt) + requestSpacing;
+  if (wait) await new Promise((resolve) => setTimeout(resolve, wait));
+}
+async function paceApi(page: import("playwright").Page) {
+  await page.context().route("**/api/**", async (route) => {
+    await waitForApiSlot();
+    if (new URL(route.request().url()).pathname.startsWith("/api/v1/problem-lessons/")) {
+      const response = await route.fetch();
+      assert.ok(response.ok(), `Lesson fetch failed: ${response.status()}`);
+      await route.fulfill({ response });
+    } else await route.continue();
+  });
+}
 const rows: unknown[] = [];
 try {
   // Data figures on a phone-emulated page (mobile viewport, touch, 3x).
@@ -168,6 +188,7 @@ try {
       deviceScaleFactor: 3,
       ...(browserName === "chromium" ? { isMobile: true } : {}),
     });
+    await paceApi(phone);
     await phone.goto("http://127.0.0.1:4434");
     await choose(
       phone.getByRole("button", { name: "Learner", exact: true }),
@@ -175,8 +196,11 @@ try {
     );
     let shown: PublicProblem | undefined;
     await phone.route("**/batches", async (route) => {
-      const response = await route.fetch(),
-        body = await response.json();
+      // Page fixture routes take precedence over the context pacing route.
+      await waitForApiSlot();
+      const response = await route.fetch();
+      assert.ok(response.ok(), `Batch fetch failed: ${response.status()}`);
+      const body = await response.json();
       // Fixture substitution changes only the displayed problem. No attempts are made.
       body.problems = [shown];
       body.selection = [
@@ -253,6 +277,7 @@ try {
   // below the prompt, instead of growing with the box.
   {
     const wide = await browser.newPage({ hasTouch: true });
+    await paceApi(wide);
     await wide.goto("http://127.0.0.1:4434");
     await choose(
       wide.getByRole("button", { name: "Learner", exact: true }),
@@ -260,8 +285,11 @@ try {
     );
     let shown: PublicProblem | undefined;
     await wide.route("**/batches", async (route) => {
-      const response = await route.fetch(),
-        body = await response.json();
+      // Page fixture routes take precedence over the context pacing route.
+      await waitForApiSlot();
+      const response = await route.fetch();
+      assert.ok(response.ok(), `Batch fetch failed: ${response.status()}`);
+      const body = await response.json();
       // Fixture substitution changes only the displayed problem. No attempts are made.
       body.problems = [shown];
       body.selection = [
@@ -285,6 +313,7 @@ try {
     await wide.close();
   }
   const page = await browser.newPage({ hasTouch: true });
+  await paceApi(page);
   await page.goto("http://127.0.0.1:4434");
   await choose(
     page.getByRole("button", { name: "Learner", exact: true }),
@@ -377,8 +406,11 @@ try {
   );
   let fixture = fixtures[0]!;
   await page.route("**/batches", async (route) => {
-    const response = await route.fetch(),
-      body = await response.json();
+    // route.fetch bypasses context routing, so reserve its own request slot.
+    await waitForApiSlot();
+    const response = await route.fetch();
+    assert.ok(response.ok(), `Batch fetch failed: ${response.status()}`);
+    const body = await response.json();
     // Fixture substitution changes only the displayed problem. No attempts are made.
     body.problems = [fixture.problem];
     body.selection = [
@@ -504,6 +536,7 @@ try {
   // route independently of the compact choice renderer in the app.
   let printedFigures = 0;
   const printPage = await browser.newPage();
+  await paceApi(printPage);
   for (const lesson of lessons) {
     if (
       !lesson.templateIds.some((id) =>
