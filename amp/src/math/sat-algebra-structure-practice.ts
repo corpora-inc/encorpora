@@ -921,8 +921,19 @@ function variationConstant(r: Random): Built {
     const unique = new Set(winners.map((model) => model.label));
     if (unique.size !== 1 || !unique.has(correct))
       throw new Error("Table model is not unique");
+    // Distinct labels can still be the same function (for example y=x and
+    // y=x+0 when the first row has y=x); offer each function once.
+    const seenFunctions = new Set<string>();
     const wrong: Cand[] = models
       .filter((model) => !fits(model))
+      .filter((model) => {
+        const signature = [1, 2, 3, 5, 7, 11]
+          .map((x) => tex(model.at(x)))
+          .join("|");
+        if (seenFunctions.has(signature)) return false;
+        seenFunctions.add(signature);
+        return true;
+      })
       .map((model) => {
         const [x, y] = rows.find(([x, y]) => !eq(model.at(x), whole(y)))!;
         return {
