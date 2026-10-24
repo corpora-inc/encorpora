@@ -1,3 +1,4 @@
+import { availableGiftSchema } from "../access-grants/contracts.js";
 import { purchaseMeasurementSchema } from "../advertising/permission-contracts.js";
 import { z } from "zod";
 export const familySummarySchema = z.object({
@@ -65,6 +66,7 @@ export const meSchema = z.discriminatedUnion("signedIn", [
       }),
     ),
     family: familySummarySchema,
+    availableAccessGrant: availableGiftSchema.optional(),
     unassignedPurchase: z
       .object({
         id: z.string(),
@@ -74,7 +76,13 @@ export const meSchema = z.discriminatedUnion("signedIn", [
       .optional(),
     /** `try`: no purchase or consent yet, so the parent gets the anonymous
      * free trial; the plan opens when they choose to buy or reach the limit. */
-    next: z.enum(["try", "add-learner", "choose-plan", "practice"]),
+    next: z.enum([
+      "try",
+      "add-learner",
+      "choose-plan",
+      "practice",
+      "accept-gift",
+    ]),
   }),
 ]);
 export type Me = z.infer<typeof meSchema>;

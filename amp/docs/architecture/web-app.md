@@ -78,6 +78,8 @@ Add `GET /api/v1/me`. Every guard and every first-run decision reads it:
 
 One guard (`features/onboarding/guard.ts`) maps `me.next` to the allowed steps for both route `beforeLoad` and the mounted screen. A paid, unassigned purchase makes `next` = `add-learner` until it is claimed.
 
+[Complimentary access](../complimentary-access.md) uses `/access` and `next = accept-gift`. A verified email reservation takes the recipient through consent and learner setup without checkout. The first new or adopted learner receives the gift atomically; existing learners can claim it explicitly. Paid enrollments awaiting assignment take precedence and leave the gift reserved.
+
 **Rules:**
 - One task per screen, with progress shown, Back working at every step, and everything resumable by URL.
 - No settings detours, and no 403 ever reaches the screen.

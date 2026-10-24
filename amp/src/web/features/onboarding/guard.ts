@@ -17,7 +17,13 @@ export const startSteps = [
 export type StartStep = (typeof startSteps)[number];
 
 export type StartTarget =
-  StartStep | "/sign-in" | "/purchase" | FundedPath | "/practice" | "/try";
+  | StartStep
+  | "/access"
+  | "/sign-in"
+  | "/purchase"
+  | FundedPath
+  | "/practice"
+  | "/try";
 const learnerSteps: readonly string[] = ["/start/name", "/start/birth-year"];
 
 /** Steps that record consent or take payment; they need a confirmed address. */
@@ -77,6 +83,15 @@ function route(
   const stay = (allowed: readonly string[], fallback: StartTarget) =>
     allowed.includes(pathname) ? null : fallback;
   switch (me.next) {
+    case "accept-gift":
+      if (me.account.confirmationRequired)
+        return pathname === "/start/verify-email"
+          ? null
+          : "/start/verify-email";
+      if (me.consent.status !== "active")
+        return pathname === "/start/consent" ? null : "/access";
+      if (pathname === "/start/consent") return "/start/name";
+      return stay(learnerSteps, "/access");
     case "try":
       // The plan opens when the parent chooses to buy; otherwise practice free.
       return stay(
