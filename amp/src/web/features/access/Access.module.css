@@ -1,0 +1,33 @@
+.card {
+  gap: var(--space-4);
+}
+.card .eyebrow {
+  color: var(--color-primary);
+  font-size: var(--text-label);
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+.offer {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+}
+.offer strong {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: 28px;
+  font-weight: 550;
+}
+.offer strong span {
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-muted-text);
+}
+.offer p {
+  font-size: var(--text-small);
+}

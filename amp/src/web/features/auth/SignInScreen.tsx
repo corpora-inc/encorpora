@@ -178,11 +178,14 @@ export function SignInScreen() {
       });
     else
       await navigate({
-        to: isFundedReturn(carry.return)
-          ? fundedPrograms[carry.return].path
-          : step === "create"
-            ? "/account/ready"
-            : "/",
+        to:
+          carry.return === "access"
+            ? "/access"
+            : isFundedReturn(carry.return)
+              ? fundedPrograms[carry.return].path
+              : step === "create"
+                ? "/account/ready"
+                : "/",
         search: carry,
         replace: true,
       });
