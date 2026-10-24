@@ -84,8 +84,25 @@ async function fits(page: Page, label: string, focus?: string) {
     });
   }
 }
-const signedIn = (page: Page) =>
-  page.getByRole("button", { name: "Open AMP menu" }).waitFor();
+async function signedIn(page: Page, email: string) {
+  // The menu also exists on the sign-in screen. Wait for its replacement route
+  // and the authenticated identity before the next flow opens the drawer.
+  await page.waitForURL(
+    (url) =>
+      url.origin === origin &&
+      url.pathname === "/" &&
+      !url.searchParams.has("sign-in"),
+  );
+  await page.getByRole("button", { name: "Open AMP menu" }).click();
+  await page
+    .getByRole("region", { name: "Current account" })
+    .getByText(email, { exact: true })
+    .waitFor();
+  const signOut = page.getByRole("button", { name: "Sign out", exact: true });
+  await signOut.waitFor();
+  await page.getByRole("button", { name: "Close AMP menu" }).click();
+  await signOut.waitFor({ state: "hidden" });
+}
 
 try {
   const context = await browser.newContext({
@@ -124,7 +141,7 @@ try {
   await page.getByRole("button", { name: "2016", exact: true }).click();
   await page.locator(".problem-stage").waitFor();
   await exitPractice(page);
-  await signedIn(page);
+  await signedIn(page, email);
 
   // Sign out, then back in; a wrong password is reported in place.
   await page.getByRole("button", { name: "Open AMP menu" }).click();
@@ -138,7 +155,7 @@ try {
   await fits(page, "sign-in-error");
   await page.getByLabel("Password").fill(password);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
-  await signedIn(page);
+  await signedIn(page, email);
 
   // Forgotten password: the emailed link sets a new one.
   await page.getByRole("button", { name: "Open AMP menu" }).click();
@@ -162,7 +179,7 @@ try {
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Password").fill(changed);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
-  await signedIn(page);
+  await signedIn(page, email);
   // Reset only this isolated harness's rate window between independent flows.
   await app.close();
   app = await startAccountsServer();
@@ -246,7 +263,7 @@ try {
     .waitFor();
   const sibling = await page.context().newPage();
   await sibling.goto(origin);
-  await signedIn(sibling);
+  await signedIn(sibling, email);
   const siblingRefresh = sibling.waitForResponse((r) =>
     r.url().includes("/api/auth/get-session"),
   );
@@ -294,7 +311,7 @@ try {
   await page.getByRole("button", { name: "Try free" }).waitFor();
   await page.goto(`${origin}/?sign-in`);
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
-  await signedIn(page);
+  await signedIn(page, email);
   await openSecurity();
   await repository.pool.query(
     `UPDATE amp_auth_sessions SET "createdAt"=now()-interval '6 minutes' WHERE "userId"=(SELECT id FROM amp_auth_users WHERE email=$1)`,
