@@ -383,7 +383,19 @@ function planeCase(r: Random): Spec {
       b = nonzero(r, 4);
       c = nonzero(r, 4);
       d = nonzero(r, 4);
-    } while (a + c === 0 || b + d === 0);
+    } while (
+      a + c === 0 ||
+      b + d === 0 ||
+      new Set(
+        [
+          cxInt(a - c, b - d),
+          cxInt(a + d, b + c),
+          cxInt(a * c, b * d),
+          cxInt(a + c, 0),
+          cxInt(b + d, a + c),
+        ].filter((label) => label !== cxInt(a + c, b + d)),
+      ).size < 3
+    );
     return {
       variant,
       prompt: `The points $P$ and $Q$ represent the complex numbers $z$ and $w$. The horizontal axis shows real parts and the vertical axis shows imaginary parts. Adding complex numbers adds their arrows from 0. Choose $z+w$.`,
@@ -1188,7 +1200,7 @@ function rootCountCase(r: Random): Spec {
             (b) =>
               [
                 num(b),
-                `That leaves ${n - b} nonreal roots, an odd number, which cannot be made of conjugate pairs.`,
+                `That leaves ${n - b} nonreal root${n - b === 1 ? "" : "s"}, an odd number, which cannot be made of conjugate pairs.`,
               ] as Wrong,
           ),
         [
@@ -1712,7 +1724,7 @@ function conicCase(r: Random): Spec {
       explanation: [
         `Check which variables are squared and how the squared terms are combined.`,
         reason,
-        `The graph is a ${NAMES[kind].toLowerCase()}.`,
+        `The graph is ${kind === "ellipse" ? "an" : "a"} ${NAMES[kind].toLowerCase()}.`,
       ],
       correct: NAMES[kind],
       wrong: (Object.keys(NAMES) as Conic[])
