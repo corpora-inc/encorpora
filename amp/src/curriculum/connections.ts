@@ -1,10 +1,7 @@
 import type { SkillConnection } from "./types";
 
 /** Editorial connections supported by existing content, not assessment dependencies. */
-const authoredConnections: (Omit<
-  SkillConnection,
-  "skillId" | "direction"
-> & {
+const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
   from: string;
   to: string;
 })[] = [
@@ -47,6 +44,78 @@ const authoredConnections: (Omit<
     explanation:
       "Even and odd outcomes form sets. Listing their members helps count outcomes when finding probabilities.",
     templateIds: ["event-set-count"],
+  },
+  {
+    from: "polynomial-behavior",
+    to: "rational-function-behavior",
+    kind: "related",
+    explanation:
+      "A polynomial's degree and leading coefficient set its end behavior. A rational function compares the degrees and leading coefficients of its numerator and denominator to find its horizontal asymptote.",
+    templateIds: ["rational-function-features"],
+  },
+  {
+    from: "rational-function-behavior",
+    to: "rational-equations",
+    kind: "related",
+    explanation:
+      "The inputs that make a denominator zero are the holes and vertical asymptotes of the graph. They are also the excluded values that must be checked when solving a rational equation.",
+    templateIds: ["rational-equation-check"],
+  },
+  {
+    from: "nonlinear-intersection-reading",
+    to: "graphical-equation-solving",
+    kind: "extension",
+    explanation:
+      "Reading shared points of a line and a parabola extends to any equation f(x) = g(x): the solutions are the inputs where the two outputs match. A table of values locates them.",
+    templateIds: ["graphical-solution-table"],
+  },
+  {
+    from: "graphical-equation-solving",
+    to: "nonlinear-systems",
+    kind: "related",
+    explanation:
+      "Substitution gives exact intersections when the equation can be solved by factoring. A table of values approximates intersections that algebra cannot give simply.",
+    templateIds: ["nonlinear-system-solve"],
+  },
+  {
+    from: "factor-quadratics",
+    to: "polynomial-identities",
+    kind: "extension",
+    explanation:
+      "Factoring a difference of squares or a perfect-square trinomial uses identities such as a² − b² = (a + b)(a − b). Read from either side, the same identity also computes products and squares quickly.",
+    templateIds: ["monic-quadratic-factorization"],
+  },
+  {
+    from: "polynomial-identities",
+    to: "binomial-theorem",
+    kind: "extension",
+    explanation:
+      "The identities for (a + b)² and (a + b)³ are the cases n = 2 and n = 3 of the binomial expansion. The binomial theorem gives the coefficients for every n.",
+    templateIds: ["binomial-coefficient"],
+  },
+  {
+    from: "permutations-combinations",
+    to: "binomial-theorem",
+    kind: "application",
+    explanation:
+      "The coefficient of the term with k factors of a in (a + b)ⁿ counts the ways to choose which k of the n factors give a. That count is the combination C(n, k).",
+    templateIds: ["combination-count"],
+  },
+  {
+    from: "binomial-theorem",
+    to: "theoretical-distributions",
+    kind: "application",
+    explanation:
+      "The probability of k successes in n independent trials with success chance p is C(n, k)·pᵏ·(1 − p)ⁿ⁻ᵏ. These are the terms of the expansion of (p + (1 − p))ⁿ, which sum to 1.",
+    templateIds: ["binomial-coefficient"],
+  },
+  {
+    from: "number-system-closure",
+    to: "quadratic-formula",
+    kind: "application",
+    explanation:
+      "A root such as (−b + √d) / 2a is a rational number plus a nonzero rational multiple of √d. When √d is irrational, the closure rules make the whole root irrational.",
+    templateIds: ["quadratic-irrational-solutions"],
   },
 ];
 
@@ -138,6 +207,12 @@ matrix-data|matrices|extension|The stock at two stores adds as matrices, and a p
 matrix-properties|matrix-inverses|extension|Since order matters in a product, an inverse must satisfy both AA^-1 = I and A^-1A = I, and the identity matrix is the matrix that leaves a product unchanged.|matrix-laws
 matrix-systems|matrix-transformations|application|Solving AX = B asks which point the matrix A sends to B, so the inverse undoes the transformation.|matrix-linear-system
 matrix-transformations|transformation-constructions|related|Multiplying matrices composes transformations: the product AB applies B first and then A. This is the matrix form of carrying one figure to another by a sequence of moves.|matrix-transformation
+solid-volume-models|density-modeling|application|Mass is density times volume, so a solid's volume formula gives the mass of a rod or block of known density.|density-context
+density-modeling|geometric-design|related|Mass is density times volume, and the cost of painting a wall is a price per square meter times the painted area. Both multiply a rate per unit by a measured amount, which is how a design is priced.|geometric-design-constraint
+geometric-design|nonlinear-equation-modeling|extension|The area of a three-sided fenced garden, width times (fence minus two widths), is a quadratic constraint model with a greatest value.|geometric-design-constraint
+cavalieri-principle|solid-volume-models|application|Equal cross-sections show that an oblique solid has the volume of the right solid with the same base and perpendicular height.|cavalieri-volume-reasoning
+sections-and-revolutions|solid-volume-models|application|A rotated rectangle, right triangle or semicircle sweeps out a cylinder, cone or sphere, whose volume formula gives the volume.|section-revolution-solid
+similarity-theorems|pythagorean-theorem|related|The two leg relations of a right triangle with its altitude add to give the Pythagorean theorem.|similarity-theorem-length
 `;
 
 export const curriculumConnections: typeof authoredConnections = [

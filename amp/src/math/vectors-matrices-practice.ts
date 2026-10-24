@@ -379,8 +379,15 @@ function vectorComponentsOnce(seed: string, attempt: number) {
   }
   const W = 8;
   if (variant === 3) {
-    let [px, py, dx, dy] = [r(-4, 4), r(-4, 4), nz(r, 6), r(-6, 6)];
+    let [dx, dy] = [nz(r, 6), r(-6, 6)];
     if (r(0, 1)) [dx, dy] = [dy || 3, dx];
+    // Keep both P and Q strictly inside the plotted axes so the arrow is fully visible.
+    const inside = (d: number) =>
+      [Math.max(-4, -(W - 1) - Math.min(0, d)), Math.min(4, W - 1 - Math.max(0, d))] as const;
+    const [xlo, xhi] = inside(dx);
+    const [ylo, yhi] = inside(dy);
+    const px = r(xlo, xhi);
+    const py = r(ylo, yhi);
     const [qx, qy] = [px + dx, py + dy];
     const figure = graph({ x: [-W, W], y: [-W, W], tick: 1 })
       .id("g")
@@ -543,7 +550,7 @@ const modes: Mode[] = [
     angleOther:
       "The boat's actual path makes an angle $\\theta$ with the downstream direction. Find $\\theta$.",
     reverse: (R, c) =>
-      `A boat heads straight across a river. The current flows downstream at ${c} mph, perpendicular to the heading, and the boat's speed relative to the shore is ${R} mph.`,
+      `A boat heads straight across a river. The current flows downstream at ${c} mph, perpendicular to the boat's heading, and the boat's speed relative to the shore is ${R} mph.`,
     reverseAsk: "What is the boat's speed relative to the water?",
   },
   {
@@ -556,7 +563,7 @@ const modes: Mode[] = [
     angleOther:
       "The plane's ground path points $\\theta$ degrees north of east. Find $\\theta$.",
     reverse: (R, c) =>
-      `A plane flies due north. A wind blows due east at ${c} mph, and the plane's ground speed is ${R} mph.`,
+      `A plane heads due north through the air. A wind blows due east at ${c} mph, perpendicular to the plane's heading, and the plane's ground speed is ${R} mph.`,
     reverseAsk: "What is the plane's air speed?",
   },
   {
@@ -716,7 +723,7 @@ function vectorResultantOnce(seed: string, attempt: number) {
     });
   }
   return finishV({
-    prompt: `${mode.reverse(R, c)} The two quantities are perpendicular. ${mode.reverseAsk}`,
+    prompt: `${mode.reverse(R, c)} ${mode.reverseAsk}`,
     hint: `The resultant ${R} is the hypotenuse and ${c} is one leg. Rearrange $a^2+b^2=h^2$ to find the other leg.`,
     explanation: [
       `The resultant is the hypotenuse, so $${c}^2+x^2=${R}^2$.`,
@@ -1228,11 +1235,17 @@ function matrixOperationOnce(seed: string, attempt: number) {
         label: `$${name}$ is not defined: $${L}$ has ${ly} columns but $${Rt}$ has ${rx} rows`,
         feedback: `The columns of $${L}$ (${ly}) must equal the rows of $${Rt}$ (${rx}); here they do.`,
       },
-      {
-        label: `$${name}$ is not defined: $${L}$ has ${lx} rows but $${Rt}$ has ${ry} columns`,
-        feedback:
-          "The inner dimensions, columns of the left and rows of the right, decide whether a product exists.",
-      },
+      // When the product is undefined, rows-versus-columns facts are true but
+      // irrelevant, which would make this a second defensible answer.
+      ...(defined
+        ? [
+            {
+              label: `$${name}$ is not defined: $${L}$ has ${lx} rows but $${Rt}$ has ${ry} columns`,
+              feedback:
+                "The inner dimensions, columns of the left and rows of the right, decide whether a product exists.",
+            },
+          ]
+        : []),
     ],
   });
 }

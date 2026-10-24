@@ -416,6 +416,27 @@ export class FamilyRepository {
       if (
         (
           await client.query(
+            "SELECT to_regclass('amp_access_gifts') AS relation",
+          )
+        ).rows[0]?.relation
+      ) {
+        const authPresent = (
+          await client.query("SELECT to_regclass('amp_auth_users') AS relation")
+        ).rows[0]?.relation;
+        const pending = authPresent
+          ? ` OR (account_id IS NULL AND $1 LIKE 'amp|%' AND recipient_email IN
+          (SELECT lower(btrim(email)) FROM amp_auth_users WHERE id=substring($1 from 5) AND "emailVerified"=true))`
+          : "";
+        datasets.push([
+          "complimentary-access",
+          "SELECT jsonb_build_object('id',id,'months',months,'issuedAt',issued_at,'claimBy',claim_by,'activatedAt',activated_at,'endsAt',ends_at,'learnerId',learner_id,'revokedAt',revoked_at) AS value FROM amp_access_gifts WHERE account_id=$1" +
+            pending +
+            " ORDER BY issued_at,id",
+        ]);
+      }
+      if (
+        (
+          await client.query(
             "SELECT to_regclass('amp_ad_collection_withdrawals') AS relation",
           )
         ).rows[0]?.relation
