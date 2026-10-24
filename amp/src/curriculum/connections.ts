@@ -48,6 +48,95 @@ export const curriculumConnections: (Omit<
       "Even and odd outcomes form sets. Listing their members helps count outcomes when finding probabilities.",
     templateIds: ["event-set-count"],
   },
+  // Trigonometry cluster.
+  {
+    from: "right-triangle-trigonometry",
+    to: "special-angle-values",
+    kind: "extension",
+    explanation:
+      "Right-triangle ratios of 30°, 45° and 60° become the unit-circle coordinates, and the quadrant sign extends them to every angle.",
+    templateIds: ["special-angle-exact-value"],
+  },
+  {
+    from: "right-triangle-trigonometry",
+    to: "oblique-triangles",
+    kind: "extension",
+    explanation:
+      "Sine and cosine ratios find sides of right triangles. The laws of sines and cosines extend them to triangles with no right angle.",
+    templateIds: ["oblique-triangle-solve"],
+  },
+  {
+    from: "special-angle-values",
+    to: "trigonometric-symmetry",
+    kind: "extension",
+    explanation:
+      "Once the values at special angles are known, reflecting or rotating the angle changes only the sign or the function, so other angles need no new values.",
+    templateIds: ["trig-symmetry-value"],
+  },
+  {
+    from: "special-angle-values",
+    to: "trigonometric-identities",
+    kind: "application",
+    explanation:
+      "Angle-sum formulas combine the exact values at 30°, 45° and 60° to give exact values at angles such as 15° and 75°.",
+    templateIds: ["trig-identity-value"],
+  },
+  {
+    from: "trigonometric-symmetry",
+    to: "trigonometric-graphs",
+    kind: "related",
+    explanation:
+      "Odd, even and periodic symmetry of sine and cosine appear on the graph as point symmetry, mirror symmetry and repetition every period.",
+    templateIds: ["sinusoid-parameters"],
+  },
+  {
+    from: "trigonometric-graphs",
+    to: "inverse-trigonometry",
+    kind: "extension",
+    explanation:
+      "Restricting sine, cosine or tangent to one interval where its graph is one-to-one makes an inverse function possible.",
+    templateIds: ["inverse-trig-value"],
+  },
+  {
+    from: "inverse-trigonometry",
+    to: "trigonometric-equations",
+    kind: "application",
+    explanation:
+      "The inverse function gives one solution of a trigonometric equation. Symmetry then supplies the other solutions in the interval.",
+    templateIds: ["trig-equation-solutions"],
+  },
+  {
+    from: "trigonometric-identities",
+    to: "trigonometric-equations",
+    kind: "application",
+    explanation:
+      "Rewriting an expression with an identity can turn a trigonometric equation into one that is solved from a single function value.",
+    templateIds: ["trig-equation-solutions"],
+  },
+  {
+    from: "trigonometric-equations",
+    to: "periodic-modeling",
+    kind: "application",
+    explanation:
+      "Setting a sinusoidal model equal to a value and solving gives the times at which the modeled quantity reaches that value.",
+    templateIds: ["sinusoid-model"],
+  },
+  {
+    from: "periodic-modeling",
+    to: "trigonometric-graphs",
+    kind: "related",
+    explanation:
+      "The amplitude, midline and period of a model are the same features read from a sinusoid graph. A context supplies them as a maximum, minimum and cycle length.",
+    templateIds: ["sinusoid-parameters", "sinusoid-model"],
+  },
+  {
+    from: "oblique-triangles",
+    to: "trigonometric-area",
+    kind: "related",
+    explanation:
+      "The height used to count triangles in the ambiguous case is b sin A, the same product that appears in the area formula one half ab sin C.",
+    templateIds: ["trig-triangle-area"],
+  },
 ];
 
 export function connectionsFor(skillId: string): SkillConnection[] {
