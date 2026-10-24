@@ -1,4 +1,9 @@
 import type { GradeBand } from "../curriculum/types";
+import {
+  assertFrontierPolicy,
+  DEFAULT_FRONTIER_POLICY,
+  type FrontierPolicy,
+} from "./frontier-policy";
 
 /** Grade position on one axis: K = 0 … 8, then the high-school courses. */
 export const gradeNumber: Record<GradeBand, number> = {
@@ -25,7 +30,8 @@ export type FrontierObservation = {
   /** ISO time of the answer; drives how much the estimate may have moved. */
   createdAt?: string;
 };
-/** A grade-level estimate: posterior mean, standard deviation, evidence. */
+/** Curriculum coordinate, uncertainty width, and evidence counts. Overall sd
+ * includes a bounded surprise reserve; it is not calibrated confidence. */
 export type Estimate = {
   level: number;
   sd: number;
@@ -35,9 +41,14 @@ export type Estimate = {
 export type Frontier = {
   /** The grade a learner of this age is typically working in. */
   expected: number;
-  /** Pooled over every strand; seeds strands the learner has not practiced. */
+  /** Steadier working-grade summary for the learner-facing readout. */
   overall: Estimate;
   strands: Record<string, Estimate>;
+  /** Responsive pooled prior for local selection, separate from the displayed
+   * working grade. Optional for older clients and stored snapshots. */
+  adaptive?: Estimate;
+  /** Preserve the injected prior when looking up an untouched strand. */
+  strandPriorSd?: number;
 };
 
 /** Grades a learner born in `birthYear` should have completed by `now`.
@@ -68,26 +79,27 @@ export function initialLevel(options: {
 // A grid posterior over grade level. Grade -1 lets "below kindergarten" be
 // expressed; 13 is college-level.
 const GRID = Array.from({ length: 141 }, (_, i) => -1 + i / 10);
-const PRIOR_SD = 2.5;
-const STRAND_SD = 1.75;
-/** P(independent success) for a learner at `theta` on a grade-`grade` problem:
- * about 70% when the problem is at the learner's level, with a small floor
- * and ceiling for lucky guesses and slips on a typed answer.
- *
- * A choice item adds the 3PL guessing term: a learner who cannot solve it
- * still picks the key with chance `guess` (1/k for k options), so
- * P = guess + (1 − guess)·P_typed. A correct choice is weaker evidence than a
- * correct typed answer. A wrong choice is not: 1 − P = (1 − guess)(1 − P_typed)
- * is the typed likelihood times a constant, so it moves the estimate exactly
- * as a typed miss does. */
-function success(theta: number, grade: number, guess: number) {
-  const p = 1 / (1 + Math.exp(-1.7 * (theta - grade + 0.5)));
-  return guess + (1 - guess) * (0.04 + 0.92 * p);
+/** Choice success includes chance guessing. Wrong-choice likelihood is the
+ * typed-miss likelihood times a constant, so both carry the same evidence. */
+function responseModel(response: FrontierPolicy["response"]) {
+  const { typedGuess, slip, discrimination, atLevelSuccess } = response;
+  const offset =
+    Math.log((atLevelSuccess - typedGuess) / (1 - slip - atLevelSuccess)) /
+    discrimination;
+  return (theta: number, grade: number, guess: number) => {
+    const p = 1 / (1 + Math.exp(-discrimination * (theta - grade + offset)));
+    return guess + (1 - guess) * (typedGuess + (1 - typedGuess - slip) * p);
+  };
 }
 function prior(mean: number, sd: number) {
   return GRID.map((theta) => -(((theta - mean) / sd) ** 2) / 2);
 }
-function summarize(log: number[], answered: number, independent: number) {
+function summarize(
+  log: number[],
+  answered: number,
+  independent: number,
+  extraVariance = 0,
+) {
   const top = Math.max(...log);
   const weights = log.map((value) => Math.exp(value - top));
   const total = weights.reduce((sum, w) => sum + w, 0);
@@ -96,20 +108,14 @@ function summarize(log: number[], answered: number, independent: number) {
     weights.reduce((sum, w, i) => sum + w * (GRID[i]! - level) ** 2, 0) / total;
   return {
     level: Math.round(level * 100) / 100,
-    sd: Math.round(Math.sqrt(variance) * 100) / 100,
+    sd: Math.round(Math.sqrt(variance + extraVariance) * 100) / 100,
     answered,
     independent,
   };
 }
 
-// Ability changes: before each answer the estimate is allowed to drift. A
-// little drift per answer makes older evidence fade; more with time away
-// because learning happens between sessions; and an answer the estimate
-// found very unlikely re-widens it, so a learner who has moved is followed
-// quickly rather than anchored by old results.
-const DRIFT_PER_ANSWER = 0.03; // grade² of variance
-const DRIFT_PER_DAY = 0.02;
-const SURPRISE_DRIFT = 0.3;
+// Convolve the posterior with a small time/evidence-dependent drift kernel.
+// Overall and strand recency are configured separately in frontier-policy.ts.
 const DAY = 86400000;
 function blur(log: number[], variance: number) {
   if (variance <= 0) return log;
@@ -136,25 +142,44 @@ type Evidence = {
   guess: number;
   strand: string;
   success: boolean;
+  assisted: boolean;
   at: number;
 };
 function fold(
   start: number[],
   items: readonly Evidence[],
   now: number,
+  policy: FrontierPolicy,
+  drift: FrontierPolicy["overall"],
+  success: ReturnType<typeof responseModel>,
+  reportSurprises = false,
 ): Estimate {
   let log = start;
   let previous: number | null = null;
   let surprise = 0;
+  let uncertainty = 0;
   for (const item of items) {
+    const correct =
+      item.assisted && policy.assisted.treatAsFailure ? false : item.success;
+    const weight = item.assisted
+      ? correct
+        ? policy.assisted.correctWeight
+        : policy.assisted.incorrectWeight
+      : 1;
+    // Assisted success provides partial evidence, never independent mastery.
+    // An assisted miss can be neutral without losing the recorded attempt.
+    if (weight === 0) continue;
     const days =
       previous === null
         ? 0
-        : Math.min(30, Math.max(0, (item.at - previous) / DAY));
+        : Math.min(
+            policy.maxDriftDays,
+            Math.max(0, (item.at - previous) / DAY),
+          );
     log = blur(
       log,
-      (previous === null ? 0 : DRIFT_PER_ANSWER) +
-        DRIFT_PER_DAY * days +
+      (previous === null ? 0 : drift.perAnswer * weight) +
+        drift.perDay * days +
         surprise,
     );
     previous = item.at;
@@ -166,22 +191,41 @@ function fold(
         (sum, w, i) => sum + w * success(GRID[i]!, item.grade, item.guess),
         0,
       ) / total;
+    // This is reporting uncertainty, not extra likelihood weight for the
+    // next answer. A rare miss calls the summary into question without
+    // erasing the learner's established history.
+    if (reportSurprises) {
+      const u = policy.overallUncertainty;
+      uncertainty *= u.retentionPerAnswer ** weight;
+      const withoutChoiceGuess = (expected - item.guess) / (1 - item.guess);
+      if (!correct && withoutChoiceGuess > u.rareMissThreshold)
+        uncertainty = Math.min(
+          u.maxVariance,
+          uncertainty + u.rareMissVariance * weight,
+        );
+    }
     surprise =
-      (item.success ? 1 - expected : expected) > 0.75 ? SURPRISE_DRIFT : 0;
+      (correct ? 1 - expected : expected) > policy.surpriseThreshold
+        ? correct
+          ? drift.surpriseCorrect * weight
+          : drift.surpriseIncorrect * weight
+        : 0;
     for (let i = 0; i < GRID.length; i++) {
       const p = success(GRID[i]!, item.grade, item.guess);
-      log[i] = log[i]! + Math.log(item.success ? p : 1 - p);
+      log[i] = log[i]! + weight * Math.log(correct ? p : 1 - p);
     }
   }
   if (previous !== null)
     log = blur(
       log,
-      DRIFT_PER_DAY * Math.min(30, Math.max(0, (now - previous) / DAY)),
+      drift.perDay *
+        Math.min(policy.maxDriftDays, Math.max(0, (now - previous) / DAY)),
     );
   return summarize(
     log,
     items.length,
-    items.filter((item) => item.success).length,
+    items.filter((item) => item.success && !item.assisted).length,
+    uncertainty,
   );
 }
 
@@ -198,7 +242,13 @@ export function estimateFrontier(options: {
    * pick as a typed answer. */
   guessOf: (templateId: string) => number;
   now?: number;
+  /** Validated, immutable parameters for reproducible estimator comparisons. */
+  policy?: FrontierPolicy;
 }): Frontier {
+  const policy = options.policy ?? DEFAULT_FRONTIER_POLICY;
+  assertFrontierPolicy(policy);
+  const success = responseModel(policy.response);
+  const strandSuccess = responseModel(policy.strandResponse);
   const evidence: Evidence[] = [];
   options.observations.forEach((observation, index) => {
     const grade = options.gradeOf(observation.templateId);
@@ -210,34 +260,69 @@ export function estimateFrontier(options: {
         Math.max(0, options.guessOf(observation.templateId)),
       ),
       strand: options.strandOf(observation.templateId),
-      success: observation.correct && !observation.assisted,
+      success: observation.correct,
+      assisted: observation.assisted,
       at: observation.createdAt
         ? Date.parse(observation.createdAt)
         : index * 60000,
     });
   });
   const now = options.now ?? evidence.at(-1)?.at ?? 0;
-  const overall = fold(prior(options.start, PRIOR_SD), evidence, now);
+  const overall = fold(
+    prior(options.start, policy.prior.overallSd),
+    evidence,
+    now,
+    policy,
+    policy.overall,
+    success,
+    true,
+  );
+  // Local selection retains its responsive evidence model. A steadier overall
+  // readout must not hide a weak area or slow progress in a stronger one.
+  const adaptive = fold(
+    prior(options.start, policy.prior.overallSd),
+    evidence,
+    now,
+    policy,
+    policy.strand,
+    strandSuccess,
+  );
   const strands: Record<string, Estimate> = {};
   for (const strand of new Set(evidence.map((item) => item.strand)))
     strands[strand] = fold(
-      prior(overall.level, Math.max(STRAND_SD, overall.sd)),
+      prior(adaptive.level, Math.max(policy.prior.strandSd, adaptive.sd)),
       evidence.filter((item) => item.strand === strand),
       now,
+      policy,
+      policy.strand,
+      strandSuccess,
     );
-  return { expected: options.start, overall, strands };
+  return {
+    expected: options.start,
+    overall,
+    adaptive,
+    strands,
+    strandPriorSd: policy.prior.strandSd,
+  };
 }
 
 /** A strand's estimate; untouched strands inherit the overall level with the
  * wider uncertainty of a strand that has no evidence of its own. */
 export function strandEstimate(frontier: Frontier, strand: string): Estimate {
-  return (
-    frontier.strands[strand] ?? {
-      level: frontier.overall.level,
-      sd: Math.max(STRAND_SD, frontier.overall.sd),
-      answered: 0,
-      independent: 0,
-    }
+  if (frontier.strands[strand]) return frontier.strands[strand]!;
+  const pooled = frontier.adaptive ?? frontier.overall;
+  // Match fold's bounded prior exactly. Otherwise merely recording a neutral
+  // assisted attempt could move a previously untouched area's estimate.
+  return summarize(
+    prior(
+      pooled.level,
+      Math.max(
+        frontier.strandPriorSd ?? DEFAULT_FRONTIER_POLICY.prior.strandSd,
+        pooled.sd,
+      ),
+    ),
+    0,
+    0,
   );
 }
 export function strandLevel(frontier: Frontier, strand: string): number {

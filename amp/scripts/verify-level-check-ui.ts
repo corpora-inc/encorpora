@@ -1,13 +1,23 @@
 import assert from "node:assert/strict";
 import { realpathSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
-import { chromium, type BrowserContext, type Page } from "playwright";
+import {
+  chromium,
+  firefox,
+  webkit,
+  type BrowserContext,
+  type Page,
+} from "playwright";
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
 import { PostgresRepository } from "../src/server/repository";
 import { figureCapabilities } from "../src/math/contracts";
-import { generateProblem } from "../src/math/engine";
+import { generateProblem, gradeAnswer } from "../src/math/engine";
+import {
+  parseSelection,
+  serializeSelection,
+} from "../src/math/selection-response";
 import { trialLimits } from "../src/server/trials";
 import { migrate } from "./migrate";
 
@@ -55,10 +65,13 @@ const vite = await createServer({
   },
 });
 await vite.listen();
-const browser = await chromium.launch();
+const engineName = process.env.LEVEL_BROWSER ?? "chromium";
+const engine = { chromium, firefox, webkit }[engineName];
+if (!engine) throw new Error(`Unknown LEVEL_BROWSER: ${engineName}`);
+const browser = await engine.launch();
 const shots =
   process.env.LEVEL_SCREENS ??
-  new URL("../artifacts/level-check/", import.meta.url).pathname;
+  new URL(`../artifacts/level-check/${engineName}/`, import.meta.url).pathname;
 await mkdir(shots, { recursive: true });
 
 /** A trial with `answers` problems answered through the API. */
@@ -113,6 +126,10 @@ async function trialWith(answers: number) {
   return { token, learnerId };
 }
 
+const servedProblems = new WeakMap<
+  Page,
+  Map<string, { id: string; templateId: string; seed: string }>
+>();
 async function open(
   theme: "light" | "dark",
   width: number,
@@ -133,13 +150,42 @@ async function open(
     const body = route.request().postDataJSON() as {
       events: { event: string; props?: unknown }[];
     };
-    events.push(...body.events);
+    if (body) events.push(...body.events);
     await route.fulfill({ status: 204 });
   });
   const page = await context.newPage();
+  if (engineName === "webkit") {
+    // Playwright's WebKit inspector cannot reliably read Blob beacon bodies
+    // across Back/Forward. Exercise AMP's fetch fallback for the UI journey;
+    // Chromium/Firefox assert analytics payloads using native beacons.
+    await page.addInitScript(() => {
+      navigator.sendBeacon = () => false;
+    });
+  }
   page.setDefaultTimeout(15000);
+  const served = new Map<
+    string,
+    { id: string; templateId: string; seed: string }
+  >();
+  servedProblems.set(page, served);
+  page.on("response", async (response) => {
+    if (!response.url().endsWith("/batches") || !response.ok()) return;
+    const batch = await response.json();
+    for (const problem of batch.problems ?? []) served.set(problem.id, problem);
+  });
   const faults: string[] = [];
-  page.on("pageerror", (error) => faults.push(error.message));
+  page.on("pageerror", (error) => {
+    faults.push(error.message);
+    if (process.env.LEVEL_DEBUG) console.error("PAGE ERROR", error.stack);
+  });
+  if (process.env.LEVEL_DEBUG) {
+    page.on("requestfailed", (r) =>
+      console.error("FAILED REQUEST", r.url(), r.failure()),
+    );
+    page.on("console", (m) => {
+      if (m.type() === "error") console.error("CONSOLE", m.text());
+    });
+  }
   return { context, page, events, faults };
 }
 async function frames(page: Page) {
@@ -198,20 +244,66 @@ async function shoot(page: Page, name: string, tag: string, full = false) {
 
 /** Answers the current problem through the visible controls. */
 async function answerOne(page: Page, correct: boolean) {
+  // Next can still be awaiting its prefetched problem after the click returns.
+  await page.locator(".next-action").waitFor({ state: "hidden" });
   await page.locator(".problem-stage .question").waitFor();
   const compact = page.locator(".compact-answer-action");
   if (await compact.isVisible()) await compact.click();
+  const template = await page
+    .locator(".problem-content")
+    .getAttribute("data-template");
+  const served = servedProblems.get(page)!;
+  const problem = [...served.values()].find((p) => p.templateId === template);
+  assert.ok(problem, `missing served problem for ${template}`);
+  const solution = generateProblem(problem.templateId, problem.seed);
+  const schema = solution.public.response;
+  let response = solution.answer;
+  if (!correct) {
+    if (schema.kind === "choice")
+      response = schema.options.find((o) => o.id !== solution.answer)!.id;
+    else if (schema.kind === "multi-select") {
+      const ids = parseSelection(solution.answer)!;
+      const replacement = schema.options.find((o) => !ids.includes(o.id))!.id;
+      response = serializeSelection([...ids.slice(1), replacement]);
+    } else {
+      // Preserve the family's response syntax (e.g. ordered pairs). A generic
+      // "999999" can fail input validation and never submit an attempt.
+      for (let i = 0; i < 20; i++) {
+        const candidate = generateProblem(
+          problem.templateId,
+          `${problem.seed}:miss:${i}`,
+        ).answer;
+        if (!gradeAnswer(solution, candidate)) {
+          response = candidate;
+          break;
+        }
+      }
+      assert.ok(
+        !gradeAnswer(solution, response),
+        `no valid wrong response for ${template}`,
+      );
+    }
+  }
   const attempt = page.waitForResponse((r) => r.url().endsWith("/attempts"));
-  const choice = page.locator(".choice-option:visible");
-  if (await choice.count()) {
-    await choice.nth(correct ? 0 : 1).click();
+  if (schema.kind === "multi-select") {
+    for (const id of parseSelection(response)!)
+      await page
+        .locator(`.multi-select-form:visible input[value="${id}"]`)
+        .check();
+    await page.locator(".choice-submit:visible").click();
+  } else if (schema.kind === "choice") {
+    await page
+      .locator(".choice-option:visible")
+      .nth(schema.options.findIndex((o) => o.id === response))
+      .click();
     await page.locator(".choice-submit:visible").click();
   } else {
     const input = page.locator("#answer:visible");
-    await input.fill(correct ? "1" : "999999");
+    await input.fill(response);
     await input.press("Enter");
   }
   assert.equal((await attempt).status(), 200);
+  served.delete(problem.id);
   await page.locator(".next-action").waitFor();
 }
 async function used(learnerId: string, token: string) {
@@ -229,15 +321,31 @@ async function eventually(check: () => boolean, label: string) {
 }
 const checkTitle = "Here’s where we think you are";
 
-const viewports = [
-  [320, 568],
-  [384, 700],
-  [390, 844],
-  [768, 1024],
-  [1024, 768],
-  [1180, 820],
-  [1280, 800],
-] as const;
+const viewports = (
+  [
+    [320, 568],
+    [384, 700],
+    [390, 844],
+    [768, 1024],
+    [1024, 768],
+    [1180, 820],
+    [1280, 800],
+  ] as const
+).filter(
+  ([width]) =>
+    !process.env.LEVEL_WIDTHS ||
+    process.env.LEVEL_WIDTHS.split(",").includes(String(width)),
+);
+assert.ok(
+  viewports.length > 0,
+  "LEVEL_WIDTHS must select at least one supported viewport",
+);
+if (process.env.LEVEL_WIDTHS !== undefined)
+  for (const width of process.env.LEVEL_WIDTHS.split(","))
+    assert.ok(
+      viewports.some(([w]) => String(w) === width),
+      `Unsupported LEVEL_WIDTHS value: ${width}`,
+    );
 const contexts: BrowserContext[] = [];
 try {
   // Placement is over: practice opens on a problem, the map has a picture.
@@ -274,6 +382,11 @@ try {
       await page.waitForURL("**/try/map*");
       await page.locator(".frontier-map").waitFor();
       await fits(page, `${tag} map`);
+      assert.match(
+        await page.getByTestId("level-readout").innerText(),
+        /Working level[\s\S]*-?\d+\.\d{2}[\s\S]*Estimated range/,
+      );
+      await shoot(page, "level-map", tag);
       await page.goBack();
       await page.waitForURL("**/try/practice");
       await page.locator(".problem-stage .question").waitFor();
@@ -321,6 +434,10 @@ try {
       assert.ok(page.url().endsWith("/try/practice"), `${tag}: same route`);
       const text = (await dialog.textContent()) ?? "";
       assert.match(text, /Level check · 25 answered/);
+      assert.match(
+        await dialog.getByTestId("level-readout").innerText(),
+        /Working level[\s\S]*-?\d+\.\d{2}[\s\S]*Estimated range/,
+      );
       assert.match(text, /You’re about 10 and have answered 25 problems/);
       assert.match(text, /Our current best guess is /);
       assert.match(text, /Keep answering and we’ll sharpen this\./);
@@ -334,15 +451,17 @@ try {
         (await dialog.locator("li[data-strand]").count()) > 0,
         `${tag}: practiced areas are shown`,
       );
-      await eventually(
-        () =>
-          events.some(
-            (e) =>
-              e.event === "level_check_view" &&
-              (e.props as { index: number }).index === 25,
-          ),
-        `${tag}: level_check_view is recorded with its count`,
-      );
+      if (engineName !== "webkit") {
+        await eventually(
+          () =>
+            events.some(
+              (e) =>
+                e.event === "level_check_view" &&
+                (e.props as { index: number }).index === 25,
+            ),
+          `${tag}: level_check_view is recorded with its count`,
+        );
+      }
       // Measure the resting sheet, not its entrance translation. Visibility
       // and the analytics beacon can both arrive before the animation ends.
       await dialog.evaluate(async (element) => {

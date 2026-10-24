@@ -22,14 +22,14 @@ export function levelCheckDue(
   );
 }
 
-/** A 90% credible range for a grade estimate: ± 1.64 standard deviations,
- * kept between kindergarten (0) and college (13). */
-export const CREDIBLE_Z = 1.64;
+/** Display envelope around a provisional estimate, not a norm-referenced
+ * confidence interval. Surprise reserves can widen the overall uncertainty. */
+export const RANGE_SD_MULTIPLIER = 1.64;
 export function levelRange(estimate: Pick<Estimate, "level" | "sd">) {
   const clamp = (value: number) => Math.min(13, Math.max(0, value));
   return [
-    clamp(estimate.level - CREDIBLE_Z * estimate.sd),
-    clamp(estimate.level + CREDIBLE_Z * estimate.sd),
+    clamp(estimate.level - RANGE_SD_MULTIPLIER * estimate.sd),
+    clamp(estimate.level + RANGE_SD_MULTIPLIER * estimate.sd),
   ] as const;
 }
 
@@ -44,4 +44,26 @@ export function trendCounts(answers: number, step = LEVEL_CHECK_EVERY) {
   for (let n = 0; n <= answers; n += step) counts.push(n);
   if (counts.at(-1) !== answers) counts.push(answers);
   return counts;
+}
+
+/** Rounded curriculum labels for chart ticks and compact navigation. */
+export function gradeName(level: number) {
+  const g = Math.round(level);
+  if (g <= 0) return "K";
+  if (g <= 8) return `Grade ${g}`;
+  return (
+    ["Algebra 1", "Geometry", "Algebra 2", "Precalculus"][g - 9] ?? "College"
+  );
+}
+
+/** Preserve hundredths in the readout. The estimator grid extends to -1;
+ * numeric bounds must include that region rather than exclude its point. */
+export function levelDetails(estimate: Pick<Estimate, "level" | "sd">) {
+  const from = Math.max(-1, estimate.level - RANGE_SD_MULTIPLIER * estimate.sd);
+  const to = Math.min(13, estimate.level + RANGE_SD_MULTIPLIER * estimate.sd);
+  return {
+    point: estimate.level.toFixed(2),
+    from: from.toFixed(2),
+    to: to.toFixed(2),
+  };
 }

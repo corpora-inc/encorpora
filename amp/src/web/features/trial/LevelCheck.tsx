@@ -1,6 +1,6 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
 import type { ReactNode } from "react";
-import { levelRange } from "../../../learning/level-check";
+import { levelRange, levelDetails } from "../../../learning/level-check";
 import { strandNames } from "../../BirthYearPrompt";
 import { gradeName } from "../../Home";
 import { Link } from "@tanstack/react-router";
@@ -11,6 +11,7 @@ import {
   LevelTrend,
   levelScale,
 } from "../../ui/LevelChart";
+import { LevelReadout } from "../../ui/LevelReadout";
 import type { TrialProgress } from "./api";
 import { levelCopy as copy } from "./level-copy";
 import styles from "./LevelCheck.module.css";
@@ -94,10 +95,7 @@ export function LevelCheck({
               {copy.title}
             </RadixDialog.Title>
             <div className={styles.overall}>
-              <p className={styles.guess}>
-                <span className={styles.guessLabel}>{copy.bestGuessLabel}</span>
-                <strong>{words.level}</strong>
-              </p>
+              <LevelReadout estimate={frontier.overall} />
               <LevelTrack
                 estimate={frontier.overall}
                 scale={scale}
@@ -129,6 +127,7 @@ export function LevelCheck({
                   {measured.map((strand) => {
                     const estimate = frontier.strands[strand]!;
                     const area = levelWords(estimate);
+                    const detail = levelDetails(estimate);
                     return (
                       <li
                         key={strand}
@@ -140,6 +139,9 @@ export function LevelCheck({
                       >
                         <span className={styles.areaName} aria-hidden="true">
                           {strandNames[strand] ?? strand}
+                          <small>
+                            {detail.point} · {detail.from}–{detail.to}
+                          </small>
                         </span>
                         <LevelTrack estimate={estimate} scale={scale} />
                       </li>

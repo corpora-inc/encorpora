@@ -123,7 +123,7 @@ export function LevelAxis({
 }
 
 /** How the overall estimate moved over the run: the best guess as a line
- * and its likely range as a band that narrows with each answer. */
+ * and its estimated range as a band that can widen or narrow. */
 export function LevelTrend({
   points,
   label,

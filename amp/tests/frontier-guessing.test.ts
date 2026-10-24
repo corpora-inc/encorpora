@@ -119,8 +119,10 @@ test("the recorded below-catalog trial no longer lifts fractions two grades on o
     strandLevel(frontier, "fractions") - frontier.overall.level;
   assert.ok(lift(before) > 1.8, `before ${lift(before)}`);
   assert.ok(lift(after) < 1.4, `after ${lift(after)}`);
-  // Only the fractions strand held a correct choice answer.
-  assert.equal(after.overall.level, before.overall.level);
+  // Correct choice evidence must not lift the pooled estimate above treating
+  // the answer as typed. The steadier summary retains more early history.
+  assert.ok(after.overall.level <= before.overall.level);
+  assert.equal(after.adaptive!.level, before.adaptive!.level);
 });
 
 test("guess chance comes from each family's answer schema and is never understated", () => {

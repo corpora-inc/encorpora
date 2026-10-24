@@ -277,6 +277,8 @@ export const frontierSchema = z.object({
   expected: z.number().finite(),
   overall: estimateSchema,
   strands: z.record(z.string(), estimateSchema),
+  adaptive: estimateSchema.optional(),
+  strandPriorSd: z.number().finite().positive().optional(),
 });
 export type Frontier = z.infer<typeof frontierSchema>;
 export function frontierRange(frontier: Frontier, strand?: string) {

@@ -36,6 +36,8 @@ const frontierSchema = z.object({
   expected: z.number(),
   overall: estimate,
   strands: z.record(z.string(), estimate),
+  adaptive: estimate.optional(),
+  strandPriorSd: z.number().finite().positive().optional(),
 });
 export type TrialFrontier = z.infer<typeof frontierSchema>;
 export const progressSchema = z.object({

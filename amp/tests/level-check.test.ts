@@ -4,6 +4,7 @@ import {
   LEVEL_CHECK_EVERY,
   levelCheckDue,
   levelRange,
+  levelDetails,
   trendCounts,
 } from "../src/learning/level-check";
 import { trialLimits } from "../src/server/trials";
@@ -38,7 +39,7 @@ test("the trend samples the start, every step and the latest answer", () => {
   assert.deepEqual(trendCounts(20), [0, 5, 10, 15, 20]);
 });
 
-test("the likely range is the 90% interval, kept between K and college", () => {
+test("the chart envelope is kept within the curriculum axis", () => {
   const [from, to] = levelRange({ level: 4, sd: 1 });
   assert.ok(Math.abs(from - 2.36) < 1e-9 && Math.abs(to - 5.64) < 1e-9);
   assert.deepEqual(levelRange({ level: 0.5, sd: 2.5 }), [0, 0.5 + 1.64 * 2.5]);
@@ -56,7 +57,7 @@ test("the level check states a best guess, a range and age only when known", () 
   );
   assert.equal(
     levelCopy.range({ answered: 60, from: "Grade 4", to: "Grade 4" }),
-    "After 60 problems, we’re fairly sure you’re at Grade 4.",
+    "After 60 problems, our current estimate is near Grade 4.",
   );
   assert.equal(
     levelCopy.bestGuess("Grade 4"),
@@ -83,4 +84,22 @@ test("the level check states a best guess, a range and age only when known", () 
     .toLowerCase();
   for (const banned of ["!", "amazing", "genius", "behind", "below", "ahead"])
     assert.ok(!words.includes(banned), `no "${banned}" in the level check`);
+});
+
+test("numeric readouts preserve hundredths and include estimates below the chart floor", () => {
+  assert.deepEqual(levelDetails({ level: 7.49, sd: 0.5 }), {
+    point: "7.49",
+    from: "6.67",
+    to: "8.31",
+  });
+  assert.deepEqual(levelDetails({ level: -0.67, sd: 0.4 }), {
+    point: "-0.67",
+    from: "-1.00",
+    to: "-0.01",
+  });
+  assert.deepEqual(levelDetails({ level: 12.9, sd: 1 }), {
+    point: "12.90",
+    from: "11.26",
+    to: "13.00",
+  });
 });

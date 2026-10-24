@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import frozenFrontiers from "./fixtures/selection-frontiers-v1.json";
 import { templates } from "../src/math/engine.js";
 import { skills } from "../src/curriculum/catalog.js";
 import { projectSkillEvidence } from "../src/server/evidence.js";
@@ -6,7 +7,9 @@ import { planMixedPractice } from "../src/server/mixed-practice.js";
 import type { Outcome } from "../src/server/repository.js";
 
 /** Fixed histories cover placement, support, prior success and due retrieval.
- * The digest is captured before extracting selection parameters from 356e9d465. */
+ * The digest is captured before extracting selection parameters from 356e9d465.
+ * Freeze the v1 learner estimates, including untouched areas, so estimator
+ * revisions do not silently turn this into a test of different selection input. */
 export function defaultSelectionDigest(planner = planMixedPractice) {
   const now = Date.parse("2026-10-21T12:00:00Z");
   const familyIds = [
@@ -56,6 +59,7 @@ export function defaultSelectionDigest(planner = planMixedPractice) {
         templates: fixedTemplates,
         skills,
         attempts,
+        frontier: frozenFrontiers[scenario]!,
         evidence: projectSkillEvidence(attempts),
         count: 3,
         seed: String(seed),
