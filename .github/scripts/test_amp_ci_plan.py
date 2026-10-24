@@ -154,6 +154,10 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     assert set(ci['amp']['needs']) == {'changes', 'amp-core', 'amp-database', 'amp-build'}
     assert 'always()' in ci['amp']['if'] and 'always()' in ci['ci-gate']['if']
     assert 'amp' in ci['ci-gate']['needs']
+    assert ci['amp']['name'] == "${{ (github.event_name == 'pull_request' || github.event_name == 'merge_group') && 'amp-quick' || 'amp' }}"
+    # The deployment selector requires the main/manual name, never amp-quick.
+    release = (ROOT / 'amp/scripts/release-status.sh').read_text()
+    assert 'required=\'["amp", "ci-gate"]\'' in release
     for lane in ('amp-core', 'amp-database', 'amp-build'):
         assert ci[lane]['needs'] == 'changes'
     assert not any(step.get('id') == 'ci-postgres' for step in ci['amp-core']['steps'])
@@ -168,6 +172,18 @@ def test_workflow_wiring_keeps_parallel_lanes_behind_existing_required_statuses(
     for step in deep['amp-browser']['steps']:
         if step.get('run') in ('npm run test:ui', 'npm run test:family-ui', 'npm run test:contrast'):
             assert 'amp_plan).browser' in step['if']
+
+
+def test_pending_main_runtime_validation_cannot_be_displaced_by_a_later_doc_commit():
+    ci = yaml.safe_load((ROOT / '.github/workflows/ci.yml').read_text())
+    # GitHub replaces pending runs sharing a group even with cancellation off.
+    # Distinct main SHAs must have distinct groups; PR refs keep their group.
+    assert ci['concurrency']['group'] == "ci-${{ github.ref }}${{ github.ref == 'refs/heads/main' && format('-{0}', github.sha) || '' }}"
+    assert ci['concurrency']['cancel-in-progress'] == "${{ github.ref != 'refs/heads/main' }}"
+    runtime = plan(['amp/src/learning/frontier.ts'])
+    later_doc = plan(['amp/docs/deployment.md'])
+    assert runtime['core'] and runtime['database']
+    assert not later_doc['core'] and not later_doc['database']
 
 
 @pytest.mark.parametrize('selected,outcome,passes', [

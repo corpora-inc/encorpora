@@ -87,7 +87,9 @@ The validation plan is produced by `.github/scripts/amp_ci_plan.py` and recorded
 | Helpers, fixtures, migrations, dependencies, unknown inputs | Build and smoke tests; focused database checks for migrations | Broad validation, with fresh content checks |
 | Documentation | No expensive validation jobs | No expensive validation jobs |
 
-A deleted test falls back to broad main validation. Test catalogs are discovered from the filesystem, so new tests join their suite automatically. A selected job must succeed; only jobs the planner deliberately omitted may be skipped. Existing required statuses remain `ci-gate`, `adversarial-review` and `hygiene`.
+A deleted test falls back to broad main validation. Test catalogs are discovered from the filesystem, so new tests join their suite automatically. A selected job must succeed; only jobs the planner deliberately omitted may be skipped. Existing required statuses remain `ci-gate`, `adversarial-review` and `hygiene`. The AMP summary is named `amp-quick` on PRs and queue candidates; only main/manual runs report `amp`, so a quick queue success cannot authorize deployment before main validation.
+
+Routine main runs use a separate concurrency group per commit, so a later documentation edit cannot displace a pending runtime regression run. PR runs still cancel superseded revisions. Deep checks retain their shared queue and can coalesce pending pushes; nightly and full manual runs provide exhaustive coverage.
 
 For launch acceptance, dispatch both `CI` and `AMP deep checks` on the candidate commit. These full runs bypass narrow selection; manual deep checks also bypass content-result reuse. Routine main CI must pass before automatic deployment, even though broad tests do not block feature merges.
 
