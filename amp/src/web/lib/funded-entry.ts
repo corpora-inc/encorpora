@@ -56,7 +56,7 @@ const labels = z.object({
 });
 export type CampaignSearch = Partial<z.infer<typeof labels>>;
 export type FundedSearch = CampaignSearch & {
-  return?: "security" | FundedProgramSlug;
+  return?: "security" | "access" | FundedProgramSlug;
 };
 
 export function measurementOptOut() {
@@ -82,7 +82,9 @@ export function continuationSearch(
 ): FundedSearch {
   return {
     ...campaignSearch(search),
-    ...(search.return === "security" || isFundedReturn(search.return)
+    ...(search.return === "security" ||
+    search.return === "access" ||
+    isFundedReturn(search.return)
       ? { return: search.return }
       : {}),
   };
@@ -94,11 +96,13 @@ export function continuationUrl(
 ) {
   const safe = continuationSearch(search);
   const path =
-    safe.return === "security"
-      ? "/family/security"
-      : isFundedReturn(safe.return)
-        ? fundedPrograms[safe.return].path
-        : fallback;
+    safe.return === "access"
+      ? "/access"
+      : safe.return === "security"
+        ? "/family/security"
+        : isFundedReturn(safe.return)
+          ? fundedPrograms[safe.return].path
+          : fallback;
   const params = new URLSearchParams(
     campaignSearch(safe) as Record<string, string>,
   );

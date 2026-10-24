@@ -16,9 +16,11 @@ import styles from "./Start.module.css";
 export function VerifyEmailStep({
   session,
   me,
+  invitation = false,
 }: {
   session: AuthSession;
   me: SignedInMe;
+  invitation?: boolean;
 }) {
   const email = me.account.email ?? "";
   const location = useLocation();
@@ -26,7 +28,9 @@ export function VerifyEmailStep({
     mutationFn: async () => {
       const result = await accountClient.sendVerificationEmail({
         email,
-        callbackURL: continuationUrl(location.search, "/start/plan"),
+        callbackURL: invitation
+          ? "/access"
+          : continuationUrl(location.search, "/start/plan"),
       });
       if (result.error) {
         const error = new AppError(
@@ -67,7 +71,7 @@ export function VerifyEmailStep({
       />
       <h1>Confirm your email</h1>
       <p>
-        Before you choose a plan, confirm your address. We sent a link to{" "}
+        Confirm your address to continue. We sent a link to{" "}
         <span className={styles.address}>{email || "your email address"}</span>.
       </p>
       <div className={styles.actions}>

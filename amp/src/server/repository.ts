@@ -1,3 +1,4 @@
+import { activateGiftInTransaction } from "../access-grants/repository.js";
 import {
   isLiveTrial,
   masteredSkills,
@@ -227,6 +228,12 @@ export class PostgresRepository implements Repository {
         "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,$3,$4)",
         [learner.id, accountId, learner.name, learner.birthYear],
       );
+      await activateGiftInTransaction(
+        client,
+        accountId,
+        learner.id,
+        this.options,
+      );
       await client.query("COMMIT");
       return learner;
     } catch (error) {
@@ -364,6 +371,12 @@ export class PostgresRepository implements Repository {
       await client.query(
         "UPDATE amp_trials SET adopted_at=now(),adopted_by=$2 WHERE id=$1",
         [id, accountId],
+      );
+      await activateGiftInTransaction(
+        client,
+        accountId,
+        learnerId,
+        this.options,
       );
       await client.query("COMMIT");
       return { id: learnerId, name, birthYear: moved.rows[0].birth_year };

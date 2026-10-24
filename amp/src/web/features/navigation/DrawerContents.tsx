@@ -244,6 +244,13 @@ export default function DrawerContents({ close }: { close: () => void }) {
         </div>
         <div className={styles.group}>
           <h2>Account & access</h2>
+          {account?.availableAccessGrant &&
+            nav(
+              "/access",
+              "Your gift of AMP",
+              "plans",
+              `${account.availableAccessGrant.months === 12 ? "A year" : "A month"} of access is ready`,
+            )}
           {view.session.data &&
             nav("/family/security", "Account settings", "settings")}
           {view.session.data &&

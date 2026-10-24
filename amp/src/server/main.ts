@@ -1,3 +1,4 @@
+import { registerAccessGiftRoutes } from "../access-grants/routes.js";
 import { registerParentFeedbackRoutes } from "../feedback/parent-routes.js";
 import { registerMetaPurchaseContextRoutes } from "../advertising/meta-context.js";
 import { registerAcquisitionRoutes } from "../advertising/acquisition.js";
@@ -115,6 +116,11 @@ await registerMetaPurchaseContextRoutes(app, {
   pool: repository.pool,
   authenticate,
   stripeNamespace: billingConfig ? stripeNamespace(billingConfig) : null,
+});
+await registerAccessGiftRoutes(app, {
+  pool: repository.pool,
+  authenticate,
+  development,
 });
 await registerFamilyRoutes(app, {
   pool: repository.pool,

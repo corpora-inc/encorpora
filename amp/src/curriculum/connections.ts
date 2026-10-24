@@ -1,10 +1,7 @@
 import type { SkillConnection } from "./types";
 
 /** Editorial connections supported by existing content, not assessment dependencies. */
-const authoredConnections: (Omit<
-  SkillConnection,
-  "skillId" | "direction"
-> & {
+const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
   from: string;
   to: string;
 })[] = [
@@ -215,6 +212,12 @@ inscribed-polygons|triangle-circles|extension|The circle through the vertices of
 triangle-circles|tangent-construction|related|The incircle of a triangle is tangent to all three sides, and each radius to a point of tangency is perpendicular to that side.|tangent-circle-computation
 tangent-construction|circle-equations|application|The tangent at a point of a circle is perpendicular to the radius to that point, so its slope is the negative reciprocal of the radius slope.|tangent-circle-computation
 circle-similarity|arc-sector-measure|extension|Because circles are similar, arc length and sector area are fixed fractions of circumference and area, scaling with the radius.|circle-dilation-scaling
+solid-volume-models|density-modeling|application|Mass is density times volume, so a solid's volume formula gives the mass of a rod or block of known density.|density-context
+density-modeling|geometric-design|related|Mass is density times volume, and the cost of painting a wall is a price per square meter times the painted area. Both multiply a rate per unit by a measured amount, which is how a design is priced.|geometric-design-constraint
+geometric-design|nonlinear-equation-modeling|extension|The area of a three-sided fenced garden, width times (fence minus two widths), is a quadratic constraint model with a greatest value.|geometric-design-constraint
+cavalieri-principle|solid-volume-models|application|Equal cross-sections show that an oblique solid has the volume of the right solid with the same base and perpendicular height.|cavalieri-volume-reasoning
+sections-and-revolutions|solid-volume-models|application|A rotated rectangle, right triangle or semicircle sweeps out a cylinder, cone or sphere, whose volume formula gives the volume.|section-revolution-solid
+similarity-theorems|pythagorean-theorem|related|The two leg relations of a right triangle with its altitude add to give the Pythagorean theorem.|similarity-theorem-length
 `;
 
 export const curriculumConnections: typeof authoredConnections = [
