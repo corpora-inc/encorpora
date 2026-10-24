@@ -61,6 +61,7 @@ import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
 import { complexConicsPrinciples } from "./complex-conics-lessons";
+import { trigonometryPrinciples } from "./trigonometry-lessons";
 import { geometryModelingPrinciples } from "./geometry-modeling-lessons";
 import { functionBehaviorPrinciples } from "./function-behavior-lessons";
 import { absoluteValuePrinciples } from "./absolute-value-lessons";
@@ -86,6 +87,7 @@ export const principles: Record<string, string> = {
   ...quadraticPrinciples,
   ...complexPrinciples,
   ...complexConicsPrinciples,
+  ...trigonometryPrinciples,
   ...geometryModelingPrinciples,
   ...functionBehaviorPrinciples,
   ...absoluteValuePrinciples,

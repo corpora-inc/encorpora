@@ -247,6 +247,10 @@ import {
   complexMultiplicationCase,
 } from "./complex-practice";
 import {
+  trigonometryTemplates,
+  generateTrigonometryProblem,
+} from "./trigonometry-practice";
+import {
   absoluteValueTemplates,
   generateAbsoluteValueProblem,
 } from "./absolute-value-practice";
@@ -413,6 +417,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   complexMultiplicationTemplate,
   ...complexConicsTemplates,
+  ...trigonometryTemplates,
   ...geometryModelingTemplates,
   ...functionBehaviorTemplates,
   ...polynomialTemplates,
@@ -837,6 +842,8 @@ function generateRawProblem(
     return generateFunctionBehaviorProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (trigonometryTemplates.some((t) => t.id === templateId))
+    return generateTrigonometryProblem(templateId, seed);
   if (geometryModelingTemplates.some((t) => t.id === templateId))
     return generateGeometryModelingProblem(templateId, seed);
   if (absoluteValueTemplates.some((t) => t.id === templateId))
