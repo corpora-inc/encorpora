@@ -261,6 +261,10 @@ import {
   generateAdvancedMathGapProblem,
 } from "./advanced-math-gaps-practice";
 import {
+  satAlgebraStructureTemplates,
+  generateSatAlgebraStructureProblem,
+} from "./sat-algebra-structure-practice";
+import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
 } from "./complex-practice";
@@ -443,6 +447,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   complexMultiplicationTemplate,
   ...advancedMathGapTemplates,
+  ...satAlgebraStructureTemplates,
   ...vectorMatrixTemplates,
   ...statisticsProbabilityTemplates,
   ...complexConicsTemplates,
@@ -888,6 +893,8 @@ function generateRawProblem(
     return generateAdvancedMathGapProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (satAlgebraStructureTemplates.some((t) => t.id === templateId))
+    return generateSatAlgebraStructureProblem(templateId, seed);
   if (remainingGapTemplates.some((t) => t.id === templateId))
     return generateRemainingGapProblem(templateId, seed);
   if (vectorMatrixTemplates.some((t) => t.id === templateId))
