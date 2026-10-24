@@ -285,6 +285,43 @@ try {
         animations: "disabled",
       });
     }
+  for (const [width, height] of [
+    [390, 844],
+    [1280, 900],
+  ]) {
+    await page.setViewportSize({ width, height });
+    await page.goto(`${origin}/inventory?context=trial`);
+    await page
+      .getByRole("navigation", { name: "Progress views" })
+      .getByRole("link", { name: "Level", exact: true })
+      .click();
+    await page.locator(".frontier-map").waitFor();
+    await fits(`level view ${width}`);
+    await page.screenshot({
+      path: `${output}/level-${width}.png`,
+      fullPage: true,
+    });
+    await page
+      .getByRole("navigation", { name: "Progress views" })
+      .getByRole("link", { name: "Pathways", exact: true })
+      .click();
+    await page.locator(".pathways-viewport").waitFor();
+    await fits(`pathways ${width}`);
+    await page.screenshot({
+      path: `${output}/pathways-${width}.png`,
+      fullPage: true,
+    });
+    await page
+      .getByRole("navigation", { name: "Progress views" })
+      .getByRole("link", { name: "Inventory", exact: true })
+      .click();
+    await page.locator('[data-strength="Strong"]').first().waitFor();
+    assert.equal(
+      new URL(page.url()).searchParams.get("context"),
+      "trial",
+      "all three progress views retain assessment context",
+    );
+  }
   failMe = true;
   await page.goto(`${origin}/inventory?context=trial`);
   await page.locator('[data-strength="Strong"]').first().waitFor();
@@ -350,6 +387,29 @@ try {
   await drawer.getByRole("link", { name: "Sign in", exact: true }).waitFor();
   await fits("guest drawer");
   await page.screenshot({ path: `${output}/drawer-guest.png` });
+  const failedMenu = await context.newPage();
+  await failedMenu.route("**/DrawerContents.tsx*", (route) => route.abort());
+  await failedMenu.goto(`${origin}/try/practice`);
+  await failedMenu.locator(".problem-stage .question").waitFor();
+  const originalQuestion = await failedMenu
+    .locator(".problem-stage .question")
+    .textContent();
+  await failedMenu.getByRole("button", { name: "Open AMP menu" }).click();
+  await failedMenu
+    .getByRole("alert")
+    .filter({ hasText: "Your menu could not be loaded" })
+    .waitFor();
+  await failedMenu.getByRole("button", { name: "Close AMP menu" }).click();
+  await failedMenu.waitForFunction(
+    () =>
+      document.activeElement?.getAttribute("aria-label") === "Open AMP menu",
+  );
+  assert.equal(
+    await failedMenu.locator(".problem-stage .question").textContent(),
+    originalQuestion,
+    "failed menu load preserves the problem and escape",
+  );
+  await failedMenu.close();
   assert.equal(errors.length, 0, errors.join("\n"));
   assert(
     !requests.some((p) => /purchase|checkout/.test(p)),
