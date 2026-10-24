@@ -2,13 +2,14 @@ import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { readdirSync } from "node:fs";
 import test from "node:test";
-const runner = new URL("../scripts/test-suite.mjs", import.meta.url);
+import { fileURLToPath } from "node:url";
+const runner = fileURLToPath(
+  new URL("../scripts/test-suite.mjs", import.meta.url),
+);
 function list(suite: string): string[] {
-  const result = spawnSync(
-    process.execPath,
-    [runner.pathname, suite, "--list"],
-    { encoding: "utf8" },
-  );
+  const result = spawnSync(process.execPath, [runner, suite, "--list"], {
+    encoding: "utf8",
+  });
   assert.equal(result.status, 0, result.stderr);
   return JSON.parse(result.stdout);
 }
@@ -38,8 +39,12 @@ test("core, content and inventory partition every unit test exactly once", () =>
   );
 });
 test("unknown suites fail instead of skipping tests", () => {
-  const result = spawnSync(process.execPath, [runner.pathname, "typo"], {
+  const result = spawnSync(process.execPath, [runner, "typo"], {
     encoding: "utf8",
   });
   assert.notEqual(result.status, 0);
+  assert.match(
+    result.stderr,
+    /Expected test suite: core, content, inventory, or all/,
+  );
 });

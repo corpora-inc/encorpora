@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { mkdir } from "node:fs/promises";
 import { chromium, webkit, type Page } from "playwright";
 import { createServer } from "vite";
@@ -596,6 +596,36 @@ try {
     learnerId: string;
   };
   trialLearner = learnerId;
+  // The level map needs one graded answer; an untouched trial returns to practice.
+  const headers = { authorization: `Trial ${token}` };
+  const initialBatch = await app.inject({
+    method: "POST",
+    url: `/api/v1/learners/${learnerId}/batches`,
+    headers,
+    payload: { count: 1 },
+  });
+  assert.equal(initialBatch.statusCode, 200, initialBatch.body);
+  const initialProblem = initialBatch.json().problems[0];
+  const initialAttempt = await app.inject({
+    method: "POST",
+    url: `/api/v1/learners/${learnerId}/attempts`,
+    headers,
+    payload: {
+      problemId: initialProblem.id,
+      requestId: randomUUID(),
+      response: generateProblem(initialProblem.templateId, initialProblem.seed)
+        .answer,
+    },
+  });
+  assert.equal(initialAttempt.statusCode, 200, initialAttempt.body);
+  assert.equal(initialAttempt.json().correct, true);
+  const initialProgress = await app.inject({
+    method: "GET",
+    url: `/api/v1/learners/${learnerId}/trial-progress`,
+    headers,
+  });
+  assert.equal(initialProgress.statusCode, 200, initialProgress.body);
+  assert.equal(initialProgress.json().totals.answered, 1);
   const context = await browser.newContext({
     viewport: { width: 390, height: 844 },
   });
@@ -623,6 +653,7 @@ try {
   );
   const trialProblem = (await trialBatch.json()).problems[0];
   assert.equal(trialProblem.templateId, templateId);
+  assert.notEqual(trialProblem.id, initialProblem.id);
   await page.locator(`[data-template="${templateId}"]`).waitFor();
   const trialCount = trialProblem.response.selectionCount as number;
   let form = await openAnswers(page, trialCount);
@@ -634,16 +665,25 @@ try {
   const prompt = await page.locator("#problem-prompt").textContent();
   await page.getByRole("button", { name: "Open AMP menu" }).click();
   await page.getByRole("link", { name: "Your level" }).click();
-  await page.waitForURL("**/try/map");
-  await page.goBack();
-  await page.waitForURL(/\/try\/practice(?:\?|$)/);
-  assert.equal(await page.locator("#problem-prompt").textContent(), prompt);
-  form = await openAnswers(page, trialCount);
-  assert.ok(await form.getByRole("checkbox").first().isChecked());
-  assert.match(
-    (await form.textContent()) ?? "",
-    new RegExp(`1 of ${trialCount} selected`),
-  );
+  for (let visit = 0; visit < 2; visit++) {
+    if (visit > 0) await page.goForward();
+    await page.waitForURL(/\/try\/map(?:\?|$)/);
+    await page.getByRole("heading", { name: "Your estimated level" }).waitFor();
+    await page.goBack();
+    await page.waitForURL(/\/try\/practice(?:\?|$)/);
+    assert.equal(await page.locator("#problem-prompt").textContent(), prompt);
+    form = await openAnswers(page, trialCount);
+    assert.ok(await form.getByRole("checkbox").first().isChecked());
+    assert.match(
+      (await form.textContent()) ?? "",
+      new RegExp(`1 of ${trialCount} selected`),
+    );
+    assert.ok(
+      await form
+        .getByRole("button", { name: "Check", exact: true })
+        .isDisabled(),
+    );
+  }
   await page
     .getByRole("button", { name: "Skip this problem and see its answer" })
     .click();

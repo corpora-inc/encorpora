@@ -1,10 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { RETENTION } from "../src/privacy/retention-periods";
 import Fastify from "fastify";
 import type { Pool } from "pg";
-import { campaignEventSchema } from "../src/analytics/campaign";
+import {
+  CAMPAIGN_CREATIVES,
+  campaignEventSchema,
+} from "../src/analytics/campaign";
 import {
   campaignOrigin,
   registerCampaignRoutes,
@@ -163,4 +167,78 @@ test("campaign state, program and name must match", () => {
       creative: undefined,
     }).success,
   );
+});
+
+test("funded v5 vocabulary is exactly fifty fixed labels and preserves previous storage values", () => {
+  const labels: string[] = JSON.parse(
+    readFileSync(
+      new URL("../docs/funded-v5-creative-labels.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  assert.equal(labels.length, 50);
+  assert.equal(new Set(labels).size, 50);
+  const expected = Object.entries({
+    az: [
+      "better-math",
+      "catch-up",
+      "less-planning",
+      "right-fit",
+      "parent-relief",
+    ],
+    ar: [
+      "whats-next",
+      "get-ahead",
+      "your-childs-math",
+      "screen-paper",
+      "funded-choice",
+    ],
+  }).flatMap(([state, concepts]) =>
+    concepts.flatMap((concept) =>
+      ["portrait", "feed", "square", "wide", "responsive"].map(
+        (format) => `${state}-funded-${concept}-${format}-v5`,
+      ),
+    ),
+  );
+  assert.deepEqual(labels, expected);
+  const sql = readFileSync(
+    new URL(
+      "../migrations/0057-funded-v5-creative-labels.sql",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  const old = readFileSync(
+    new URL(
+      "../migrations/0054-funded-awareness-creative-labels.sql",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  const values = (text: string) =>
+    [...text.matchAll(/'([a-z0-9-]+)'/g)].map((match) => match[1]);
+  assert.deepEqual(values(sql), [...values(old), ...labels]);
+  assert.deepEqual(values(sql), [...CAMPAIGN_CREATIVES]);
+  for (const creative of labels) {
+    const ar = creative.startsWith("ar-");
+    assert.ok(
+      campaignEventSchema.safeParse({
+        ...payload,
+        state: ar ? "AR" : "AZ",
+        program: ar ? "arkansas-efa" : "arizona-esa",
+        campaign: ar ? "ar-efa-launch" : "az-esa-launch",
+        creative,
+      }).success,
+    );
+  }
+  for (const creative of [
+    "ar-funded-whats-next-custom-v5",
+    "az-funded-better-math-feed-v6",
+    "parent@example.test",
+  ]) {
+    assert.equal(
+      campaignEventSchema.safeParse({ ...payload, creative }).success,
+      false,
+    );
+  }
 });

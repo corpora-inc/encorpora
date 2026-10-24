@@ -184,3 +184,7 @@ Current usable access requires the exact learner's current projected grant, an u
 Activation mail counts distinguish provider acceptance, pending work, stopped work and issued grants with no mail record. Acceptance does not establish inbox delivery or an open. Waiting ages identify the oldest unclaimed invoice, approved order awaiting settlement and currently usable grant with no retained observed use. Ages are whole hours from the relevant retained creation/approval/activation evidence; null means no qualifying timing evidence.
 
 Expired unconverted invoices and erased learning history are absent. The report cannot reconstruct historical lead totals, offline use or educational outcomes. Its output contains only program/window metadata, aggregate counts and waiting ages. It emits no learner identifiers, answers, progress records or usage events to Google or Meta. Run it with the deployment's authorized database connection; no additional schema migration or platform credential is needed.
+
+### Funded v5 creative identity
+
+The [fixed v5 labels](funded-v5-creative-labels.json) identify ten authored concepts in portrait, feed, square, wide and responsive variants. A responsive label identifies one ad containing multiple aspect-ratio assets; it does not identify the format delivered on an impression. Historical creative labels remain valid for retained attribution. Deploy the AMP migration and both public landing clients before using these labels in ad URLs. Collection, permission and retention rules are unchanged.

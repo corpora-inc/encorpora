@@ -272,7 +272,12 @@ test(
     }),
 );
 
-async function marketingClick(pool: Pool, value: string) {
+async function marketingClick(
+  pool: Pool,
+  value: string,
+  creative?:
+    "az-funded-better-math-square-v5" | "az-funded-better-math-responsive-v5",
+) {
   const c = await pool.connect();
   try {
     await c.query("BEGIN");
@@ -280,7 +285,12 @@ async function marketingClick(pool: Pool, value: string) {
       c,
       { provider: "google", identifiers: { gclid: value } },
       undefined,
-      { campaign: "az-esa-launch", source: "google", medium: "cpc" },
+      {
+        campaign: "az-esa-launch",
+        source: "google",
+        medium: "cpc",
+        ...(creative ? { creative } : {}),
+      },
       undefined,
       "https://corpora.inc/esa/arizona-esa/",
     );
@@ -311,81 +321,91 @@ async function retainedClick(pool: Pool, id: string) {
     c.release();
   }
 }
-test(
-  "guest invoice retains its original ad click and labels through retries and later account claim",
-  enabled,
-  () =>
-    fixture(async (pool) => {
-      const original = await marketingClick(pool, "Original_Guest_Click");
-      const app = Fastify();
-      await registerFundingPurchaseRoutes(app, {
-        pool,
-        offers: [offer],
-        authenticate: async () => "amp|owner",
-      });
-      try {
-        const payload = input();
-        const create = await app.inject({
-          method: "POST",
-          url: "/api/v1/funding/invoices",
-          payload,
-          headers: { cookie: `${ACQUISITION_COOKIE}=${original}` },
+for (const creative of [
+  undefined,
+  "az-funded-better-math-square-v5",
+  "az-funded-better-math-responsive-v5",
+] as const)
+  test(
+    `guest invoice retains its original ad click and labels through retries and later account claim (${creative ?? "legacy"})`,
+    enabled,
+    () =>
+      fixture(async (pool) => {
+        const original = await marketingClick(
+          pool,
+          "Original_Guest_Click",
+          creative,
+        );
+        const app = Fastify();
+        await registerFundingPurchaseRoutes(app, {
+          pool,
+          offers: [offer],
+          authenticate: async () => "amp|owner",
         });
-        assert.equal(create.statusCode, 200);
-        const id = create.json().invoiceId;
-        assert.equal(create.body.includes(original), false);
-        assert.equal(create.body.includes("Original_Guest_Click"), false);
-        assert.equal(create.body.includes("acquisition_journey_id"), false);
-        const replacement = await marketingClick(pool, "Later_Browser_Click");
-        const retry = await app.inject({
-          method: "POST",
-          url: "/api/v1/funding/invoices",
-          payload,
-          headers: { cookie: `${ACQUISITION_COOKIE}=${replacement}` },
-        });
-        assert.equal(retry.json().invoiceId, id);
-        await eligibleParent(pool);
-        for (let n = 0; n < 2; n++) {
-          const claim = await app.inject({
+        try {
+          const payload = input();
+          const create = await app.inject({
             method: "POST",
-            url: `/api/v1/funding/invoices/${id}/claim`,
-            payload: { learnerId: "child" },
+            url: "/api/v1/funding/invoices",
+            payload,
+            headers: { cookie: `${ACQUISITION_COOKIE}=${original}` },
+          });
+          assert.equal(create.statusCode, 200);
+          const id = create.json().invoiceId;
+          assert.equal(create.body.includes(original), false);
+          assert.equal(create.body.includes("Original_Guest_Click"), false);
+          assert.equal(create.body.includes("acquisition_journey_id"), false);
+          const replacement = await marketingClick(pool, "Later_Browser_Click");
+          const retry = await app.inject({
+            method: "POST",
+            url: "/api/v1/funding/invoices",
+            payload,
             headers: { cookie: `${ACQUISITION_COOKIE}=${replacement}` },
           });
-          assert.equal(claim.statusCode, 200);
-        }
-        assert.deepEqual((await retainedClick(pool, id))?.identifiers, {
-          gclid: "Original_Guest_Click",
-        });
-        const row = (
-          await pool.query(
-            "SELECT campaign_attribution FROM amp_funding_requests WHERE id=$1",
-            [id],
-          )
-        ).rows[0];
-        assert.deepEqual(row.campaign_attribution, {
-          campaign: "az-esa-launch",
-          source: "google",
-          medium: "cpc",
-        });
-        assert.equal(
-          (
+          assert.equal(retry.json().invoiceId, id);
+          await eligibleParent(pool);
+          for (let n = 0; n < 2; n++) {
+            const claim = await app.inject({
+              method: "POST",
+              url: `/api/v1/funding/invoices/${id}/claim`,
+              payload: { learnerId: "child" },
+              headers: { cookie: `${ACQUISITION_COOKIE}=${replacement}` },
+            });
+            assert.equal(claim.statusCode, 200);
+          }
+          assert.deepEqual((await retainedClick(pool, id))?.identifiers, {
+            gclid: "Original_Guest_Click",
+          });
+          const row = (
             await pool.query(
-              "SELECT count::int AS count FROM amp_funded_campaign_daily WHERE action='request_prepared'",
+              "SELECT campaign_attribution FROM amp_funding_requests WHERE id=$1",
+              [id],
             )
-          ).rows[0].count,
-          1,
-        );
-        assert.equal(
-          (await pool.query("SELECT count(*) FROM amp_commerce_orders")).rows[0]
-            .count,
-          "0",
-        );
-      } finally {
-        await app.close();
-      }
-    }),
-);
+          ).rows[0];
+          assert.deepEqual(row.campaign_attribution, {
+            campaign: "az-esa-launch",
+            source: "google",
+            medium: "cpc",
+            ...(creative ? { creative } : {}),
+          });
+          assert.equal(
+            (
+              await pool.query(
+                "SELECT count::int AS count FROM amp_funded_campaign_daily WHERE action='request_prepared'",
+              )
+            ).rows[0].count,
+            1,
+          );
+          assert.equal(
+            (await pool.query("SELECT count(*) FROM amp_commerce_orders"))
+              .rows[0].count,
+            "0",
+          );
+        } finally {
+          await app.close();
+        }
+      }),
+  );
 
 for (const mode of [
   "create-opt-out",

@@ -68,3 +68,13 @@ test("Arizona activity uses its own labels and rejects Arkansas substitution", (
  assert.equal(JSON.parse(wrong.sent[0].options.body).creative,undefined);
  assert.equal(run({},"?utm_campaign=az-esa-launch","unknown").sent.length,0);
 });
+
+ test('funded v5 labels reach both state aggregates and destination links',()=>{
+ const labels: string[]=JSON.parse(readFileSync(new URL('../../amp/docs/funded-v5-creative-labels.json',import.meta.url),'utf8'));
+ for(const label of labels){
+ const ar=label.startsWith('ar-'), campaign=ar?'ar-efa-launch':'az-esa-launch',program=ar?'arkansas-efa':'arizona-esa';
+ const result=run({},`?utm_campaign=${campaign}&utm_source=facebook&utm_medium=paid-social&utm_content=${label}`,program);
+ assert.equal(JSON.parse(result.sent[0].options.body).creative,label);
+ assert.equal(new URL(result.anchor.href).searchParams.get('utm_content'),label);
+ }
+ });
