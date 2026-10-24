@@ -851,6 +851,11 @@ nav button {
   margin: 0 0 12px;
 }
 @media (max-width: 650px) {
+  /* The phone title has its own row. Let options yield to that row and the
+     question's minimum while the Check button and tools keep their size. */
+  .answer-dock:has(.choice-form) {
+    flex: 0 1 auto;
+  }
   .answer-dock .choice-option {
     gap: 6px;
     padding: 8px;
