@@ -105,6 +105,14 @@ const authoredConnections: (Omit<
     templateIds: ["combination-count"],
   },
   {
+    from: "binomial-theorem",
+    to: "theoretical-distributions",
+    kind: "application",
+    explanation:
+      "The probability of k successes in n independent trials with success chance p is C(n, k)·pᵏ·(1 − p)ⁿ⁻ᵏ. These are the terms of the expansion of (p + (1 − p))ⁿ, which sum to 1.",
+    templateIds: ["binomial-coefficient"],
+  },
+  {
     from: "number-system-closure",
     to: "quadratic-formula",
     kind: "application",
