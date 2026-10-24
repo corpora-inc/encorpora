@@ -57,6 +57,209 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "triangle-law-reasoning",
+    facetId: "triangle-law-proofs.core",
+    extent: "partial",
+    rationale:
+      "Select the altitude relations that derive the law of sines, the altitude and Pythagorean steps that derive the law of cosines, the law that starts a triangle given SAS, SSS, ASA or AAS measurements, and the number of triangles in an acute-angle side-side-angle case. Does not assess writing a proof, the obtuse-foot case, or computing side and angle values.",
+  },
+  {
+    templateId: "triangle-law-reasoning",
+    facetId: "triangle-law-proofs.HSG.SRT.D.10",
+    extent: "partial",
+    rationale:
+      "Select the altitude relations that derive the law of sines, the altitude and Pythagorean steps that derive the law of cosines, the law that starts a triangle given SAS, SSS, ASA or AAS measurements, and the number of triangles in an acute-angle side-side-angle case. Does not assess writing a proof, the obtuse-foot case, or computing side and angle values.",
+  },
+  {
+    templateId: "model-quantity-roles",
+    facetId: "model-quantities.core",
+    extent: "partial",
+    rationale:
+      "Select variable definitions with units for the independent and dependent quantities, the rate with its units, a unit that matches the rate after conversion, and which quantities vary in a linear situation. Does not assess writing the model equation, graphing, nonlinear relationships or open-ended justification of a modeling choice.",
+  },
+  {
+    templateId: "model-quantity-roles",
+    facetId: "model-quantities.HSN.Q.A.2",
+    extent: "partial",
+    rationale:
+      "Select variable definitions with units for the independent and dependent quantities, the rate with its units, a unit that matches the rate after conversion, and which quantities vary in a linear situation. Does not assess writing the model equation, graphing, nonlinear relationships or open-ended justification of a modeling choice.",
+  },
+  {
+    templateId: "stem-leaf-read",
+    facetId: "mean-median.core",
+    extent: "partial",
+    rationale:
+      "Read a whole-number or one-decimal stem-and-leaf plot through its key to find a value, least, greatest, range, median, mode, a count of values above a given value, and the difference of the greatest and second least values, by selecting from choices. Does not assess constructing a plot, keys with hundredths or fractions, plots with split stems or back-to-back plots, or the mean.",
+  },
+  {
+    templateId: "budget-category-balance",
+    facetId: "decimal-arithmetic.core",
+    extent: "partial",
+    rationale:
+      "Select a missing expense category, a surplus or deficit with its name, and the change that balances a budget, using dollars and cents with one to five categories. Does not assess building a budget, percent allocation, saving goals, written explanation of a deficit or other personal-finance topics.",
+  },
+  {
+    templateId: "gross-net-pay",
+    facetId: "decimal-arithmetic.core",
+    extent: "partial",
+    rationale:
+      "Select net pay from gross pay and listed deductions, net pay from hours and an hourly rate, gross pay from net pay, a missing deduction, and the take-home amount on a pay stub, using dollars and cents. Does not assess defining the terms in words, percent-based taxes, tax forms or other payroll topics.",
+  },
+  {
+    templateId: "vector-components",
+    facetId: "vectors.core",
+    extent: "partial",
+    rationale:
+      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+  },
+  {
+    templateId: "vector-components",
+    facetId: "vectors.HSN.VM.A.1",
+    extent: "partial",
+    rationale:
+      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+  },
+  {
+    templateId: "vector-components",
+    facetId: "vectors.HSN.VM.A.2",
+    extent: "partial",
+    rationale:
+      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+  },
+  {
+    templateId: "vector-components",
+    facetId: "vectors.HSN.VM.B.4",
+    extent: "partial",
+    rationale:
+      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+  },
+  {
+    templateId: "vector-components",
+    facetId: "vectors.HSN.VM.B.5",
+    extent: "partial",
+    rationale:
+      "Select components from initial and terminal points or a drawn arrow, a magnitude, and a sum, difference or scalar multiple of two-dimensional vectors with small integer components, including tip-to-tail sums read from a grid. Does not assess drawing vectors, three-dimensional vectors, unit vectors, direction angles of general vectors or proofs.",
+  },
+  {
+    templateId: "vector-resultant",
+    facetId: "vector-modeling.core",
+    extent: "partial",
+    rationale:
+      "Select the magnitude, direction angle by arctangent (stated rounding) or a missing leg for the resultant of two perpendicular velocities or forces. Does not assess non-perpendicular vectors, component resolution at an arbitrary angle, bearings, or constructing a model from an open-ended situation.",
+  },
+  {
+    templateId: "vector-resultant",
+    facetId: "vector-modeling.HSN.VM.A.3",
+    extent: "partial",
+    rationale:
+      "Select the magnitude, direction angle by arctangent (stated rounding) or a missing leg for the resultant of two perpendicular velocities or forces. Does not assess non-perpendicular vectors, component resolution at an arbitrary angle, bearings, or constructing a model from an open-ended situation.",
+  },
+  {
+    templateId: "matrix-data-reading",
+    facetId: "matrix-data.core",
+    extent: "partial",
+    rationale:
+      "Read an entry, row total or column total of a small data matrix, name its dimensions, and interpret an entry in context. Does not assess constructing a matrix from a situation, or matrices as models of networks or payoffs.",
+  },
+  {
+    templateId: "matrix-data-reading",
+    facetId: "matrix-data.HSN.VM.C.6",
+    extent: "partial",
+    rationale:
+      "Read an entry, row total or column total of a small data matrix, name its dimensions, and interpret an entry in context. Does not assess constructing a matrix from a situation, or matrices as models of networks or payoffs.",
+  },
+  {
+    templateId: "matrix-operations",
+    facetId: "matrices.core",
+    extent: "partial",
+    rationale:
+      "Select the exact sum, scalar multiple, linear combination or product of small integer matrices (including 2x3 times 3x2), and decide from dimensions whether a product is defined. Does not assess matrices larger than 3x3 in products, matrix equations with unknown matrices, or the zero matrix and identity as a standalone skill.",
+  },
+  {
+    templateId: "matrix-operations",
+    facetId: "matrices.HSN.VM.C.7",
+    extent: "partial",
+    rationale:
+      "Select the exact sum, scalar multiple, linear combination or product of small integer matrices (including 2x3 times 3x2), and decide from dimensions whether a product is defined. Does not assess matrices larger than 3x3 in products, matrix equations with unknown matrices, or the zero matrix and identity as a standalone skill.",
+  },
+  {
+    templateId: "matrix-operations",
+    facetId: "matrices.HSN.VM.C.8",
+    extent: "partial",
+    rationale:
+      "Select the exact sum, scalar multiple, linear combination or product of small integer matrices (including 2x3 times 3x2), and decide from dimensions whether a product is defined. Does not assess matrices larger than 3x3 in products, matrix equations with unknown matrices, or the zero matrix and identity as a standalone skill.",
+  },
+  {
+    templateId: "matrix-laws",
+    facetId: "matrix-properties.core",
+    extent: "partial",
+    rationale:
+      "Compute products in both orders, identify the identity matrix, and choose which laws always hold or fail for 2x2 matrices. Does not assess written proofs or counterexample construction, nor determinants of products.",
+  },
+  {
+    templateId: "matrix-laws",
+    facetId: "matrix-properties.HSN.VM.C.9",
+    extent: "partial",
+    rationale:
+      "Compute products in both orders, identify the identity matrix, and choose which laws always hold or fail for 2x2 matrices. Does not assess written proofs or counterexample construction, nor determinants of products.",
+  },
+  {
+    templateId: "matrix-inverse-determinant",
+    facetId: "matrix-inverses.core",
+    extent: "partial",
+    rationale:
+      "Find a 2x2 determinant, decide invertibility, compute an inverse with integer or fraction entries, and find the parameter that makes a 2x2 matrix singular. Does not assess inverses of larger matrices, row reduction, or proofs that the determinant formula works.",
+  },
+  {
+    templateId: "matrix-inverse-determinant",
+    facetId: "matrix-inverses.HSN.VM.C.10",
+    extent: "partial",
+    rationale:
+      "Find a 2x2 determinant, decide invertibility, compute an inverse with integer or fraction entries, and find the parameter that makes a 2x2 matrix singular. Does not assess inverses of larger matrices, row reduction, or proofs that the determinant formula works.",
+  },
+  {
+    templateId: "matrix-transformation",
+    facetId: "matrix-transformations.core",
+    extent: "partial",
+    rationale:
+      "Apply a 2x2 matrix to a point, match rotation, reflection and dilation matrices with their descriptions, and use the absolute determinant as the area scale factor, including a determinant of 0. Does not assess rotations other than multiples of 90 degrees, composition of transformations, or deriving the area claim.",
+  },
+  {
+    templateId: "matrix-transformation",
+    facetId: "matrix-transformations.HSN.VM.C.11",
+    extent: "partial",
+    rationale:
+      "Apply a 2x2 matrix to a point, match rotation, reflection and dilation matrices with their descriptions, and use the absolute determinant as the area scale factor, including a determinant of 0. Does not assess rotations other than multiples of 90 degrees, composition of transformations, or deriving the area claim.",
+  },
+  {
+    templateId: "matrix-transformation",
+    facetId: "matrix-transformations.HSN.VM.C.12",
+    extent: "partial",
+    rationale:
+      "Apply a 2x2 matrix to a point, match rotation, reflection and dilation matrices with their descriptions, and use the absolute determinant as the area scale factor, including a determinant of 0. Does not assess rotations other than multiples of 90 degrees, composition of transformations, or deriving the area claim.",
+  },
+  {
+    templateId: "matrix-linear-system",
+    facetId: "matrix-systems.core",
+    extent: "partial",
+    rationale:
+      "Identify the coefficient or constant matrix of a 2x2 system, solve AX = B with the inverse (exact fractions), and recognize that a zero determinant leaves no unique solution. Does not assess systems with three or more variables, technology-based inverses of larger matrices, or classifying no-solution versus infinitely many solutions.",
+  },
+  {
+    templateId: "matrix-linear-system",
+    facetId: "matrix-systems.HSA.REI.C.8",
+    extent: "partial",
+    rationale:
+      "Identify the coefficient or constant matrix of a 2x2 system, solve AX = B with the inverse (exact fractions), and recognize that a zero determinant leaves no unique solution. Does not assess systems with three or more variables, technology-based inverses of larger matrices, or classifying no-solution versus infinitely many solutions.",
+  },
+  {
+    templateId: "matrix-linear-system",
+    facetId: "matrix-systems.HSA.REI.C.9",
+    extent: "partial",
+    rationale:
+      "Identify the coefficient or constant matrix of a 2x2 system, solve AX = B with the inverse (exact fractions), and recognize that a zero determinant leaves no unique solution. Does not assess systems with three or more variables, technology-based inverses of larger matrices, or classifying no-solution versus infinitely many solutions.",
+  },
+  {
     templateId: "normal-model-rule",
     facetId: "normal-distributions.core",
     extent: "partial",

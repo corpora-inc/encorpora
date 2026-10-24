@@ -6,6 +6,22 @@ const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
   to: string;
 })[] = [
   {
+    from: "triangle-law-proofs",
+    to: "oblique-triangles",
+    kind: "application",
+    explanation:
+      "The altitude derivation of the laws of sines and cosines shows which measurements each law needs. Solving an oblique triangle applies the matching law to those measurements.",
+    templateIds: ["triangle-law-reasoning"],
+  },
+  {
+    from: "model-quantities",
+    to: "linear-equation-modeling",
+    kind: "application",
+    explanation:
+      "A linear equation for a situation needs defined quantities first: a variable with units for each changing quantity, and a rate in dependent unit per independent unit.",
+    templateIds: ["model-quantity-roles", "linear-model-equation"],
+  },
+  {
     from: "dilations-similarity",
     to: "slope",
     kind: "application",
@@ -259,6 +275,11 @@ categorical-association|conditional-probability|extension|A conditional relative
 statistical-summary-comparison|randomization-tests|application|The difference in centers between two groups is the statistic that a randomization test compares with chance.|outlier-center-shift
 nonlinear-equation-modeling|model-validation|application|After solving a quadratic or exponential model, check its solution against the context and the data.|quadratic-context-model
 fraction-plot-computation|fraction-division|application|Sharing a measured total equally is a fraction division.|fraction-share-amount
+vector-modeling|oblique-triangles|application|Two forces or velocities that are not perpendicular form a triangle with their resultant, so the law of cosines gives the resultant's magnitude and the law of sines its direction.|oblique-triangle-solve
+matrix-data|matrices|extension|The stock at two stores adds as matrices, and a price list multiplies a quantity matrix to give totals. Operations on data tables are the matrix operations.|matrix-data-reading
+matrix-properties|matrix-inverses|extension|Since order matters in a product, an inverse must satisfy both AA^-1 = I and A^-1A = I, and the identity matrix is the matrix that leaves a product unchanged.|matrix-laws
+matrix-systems|matrix-transformations|application|Solving AX = B asks which point the matrix A sends to B, so the inverse undoes the transformation.|matrix-linear-system
+matrix-transformations|transformation-constructions|related|Multiplying matrices composes transformations: the product AB applies B first and then A. This is the matrix form of carrying one figure to another by a sequence of moves.|matrix-transformation
 normal-distributions|statistical-inference|extension|Means of repeated samples vary in a roughly normal pattern, so the same rule that gives percents within standard deviations gives the margin of error.|normal-model-rule
 theoretical-distributions|decision-strategies|application|Expected values computed from a theoretical distribution are the averages used to compare uncertain choices.|theoretical-distribution-expectation
 empirical-distributions|simulation-model-checks|related|Simulated results form an empirical distribution, and its relative frequencies estimate how often a result as extreme as the observed one arises.|empirical-distribution-expectation
