@@ -133,6 +133,14 @@ categorical-association|conditional-probability|extension|A conditional relative
 statistical-summary-comparison|randomization-tests|application|The difference in centers between two groups is the statistic that a randomization test compares with chance.|outlier-center-shift
 nonlinear-equation-modeling|model-validation|application|After solving a quadratic or exponential model, check its solution against the context and the data.|quadratic-context-model
 fraction-plot-computation|fraction-division|application|Sharing a measured total equally is a fraction division.|fraction-share-amount
+normal-distributions|statistical-inference|extension|Means of repeated samples vary in a roughly normal pattern, so the same rule that gives percents within standard deviations gives the margin of error.|normal-model-rule
+theoretical-distributions|decision-strategies|application|Expected values computed from a theoretical distribution are the averages used to compare uncertain choices.|theoretical-distribution-expectation
+empirical-distributions|simulation-model-checks|related|Simulated results form an empirical distribution, and its relative frequencies estimate how often a result as extreme as the observed one arises.|empirical-distribution-expectation
+fair-random-decisions|simulation-model-checks|extension|A fair procedure gives each outcome the same probability, which is the model that simulated results are compared against.|fair-selection-procedure
+randomization-tests|statistical-report-critique|application|A significant randomization test from random assignment supports a causal claim, which is what a critique of a report asks whether the design justifies.|randomization-test-decision
+statistical-report-critique|model-validation|related|Asking whether a report's evidence supports its claim is the same question as checking whether a model's predictions agree with the data.|report-flaw-critique
+decision-strategies|model-validation|related|A decision made by expected value is only as good as the probabilities in the model, which is why a model is checked against data.|strategy-expected-value
+model-validation|periodic-modeling|application|Residual patterns apply to any model, including a sine or cosine model whose midline, amplitude and period are checked against measurements.|model-residual-conclusion
 `;
 
 export const curriculumConnections: typeof authoredConnections = [
