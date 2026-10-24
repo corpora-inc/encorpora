@@ -847,7 +847,14 @@ export function PracticeWorkspace(props: Props) {
               (choice ? (
                 <ChoiceFigure figure={problem.figure} />
               ) : (
-                <Figure figure={problem.figure} />
+                <Figure
+                  figure={problem.figure}
+                  compactMaxHeight={
+                    problem.templateId === "perpendicular-slopes"
+                      ? 260
+                      : undefined
+                  }
+                />
               ))}
           </div>
           {celebrate && (

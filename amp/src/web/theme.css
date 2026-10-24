@@ -906,8 +906,19 @@ header {
     width: auto;
     padding: 12px;
   }
+  .problem-content .question {
+    font-size: clamp(19px, 5vw, 21px);
+  }
+  .workspace-answer-row input,
+  .answer-action {
+    height: 48px;
+  }
+  .math-keypad {
+    gap: 4px;
+  }
   .math-keypad button {
-    height: 46px;
+    height: 44px;
+    font-size: 19px;
   }
 }
 .dialog-content,
