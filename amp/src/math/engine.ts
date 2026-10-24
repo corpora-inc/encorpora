@@ -241,6 +241,10 @@ import {
   generateFunctionBehaviorProblem,
 } from "./function-behavior-practice";
 import {
+  satAlgebraStructureTemplates,
+  generateSatAlgebraStructureProblem,
+} from "./sat-algebra-structure-practice";
+import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
 } from "./complex-practice";
@@ -414,6 +418,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   complexMultiplicationTemplate,
+  ...satAlgebraStructureTemplates,
   ...trigonometryTemplates,
   ...geometryModelingTemplates,
   ...functionBehaviorTemplates,
@@ -841,6 +846,8 @@ function generateRawProblem(
     return generateFunctionBehaviorProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (satAlgebraStructureTemplates.some((t) => t.id === templateId))
+    return generateSatAlgebraStructureProblem(templateId, seed);
   if (trigonometryTemplates.some((t) => t.id === templateId))
     return generateTrigonometryProblem(templateId, seed);
   if (geometryModelingTemplates.some((t) => t.id === templateId))

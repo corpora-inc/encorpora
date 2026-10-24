@@ -56,6 +56,48 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "quadratic-root-relations",
+    facetId: "quadratic-equations.core",
+    extent: "partial",
+    rationale:
+      "Select the sum, product, sum of squares, sum of reciprocals, a missing coefficient or the second solution of a quadratic with real solutions, from its coefficients and at most one given solution. Does not assess solving by the formula or factoring, complex solutions, or deriving the relations.",
+  },
+  {
+    templateId: "system-expression-value",
+    facetId: "linear-systems.core",
+    extent: "partial",
+    rationale:
+      "Select the exact value of a requested linear expression in x and y by scaling and adding one or two given equations, including symmetric systems and dependent or single equations whose variables are not fixed. Does not assess solving for both variables, graphing, or nonlinear systems.",
+  },
+  {
+    templateId: "variation-constant",
+    facetId: "proportional-relationships.core",
+    extent: "partial",
+    rationale:
+      "Find the constant, predict a value, choose the equation for a table or statement, and find the change factor for direct and inverse variation with positive integer data. Does not assess graphing, joint or combined variation, or constructing a table.",
+  },
+  {
+    templateId: "rate-combination-model",
+    facetId: "linear-equation-modeling.core",
+    extent: "partial",
+    rationale:
+      "Choose the exact result of shared work, work against a drain, a two-solution mixture or the amount to add, round-trip average speed, and a two-phase constant rate. Does not assess writing the equation as free response, non-constant rates, or rounding.",
+  },
+  {
+    templateId: "absolute-compound-inequality",
+    facetId: "linear-inequalities.core",
+    extent: "partial",
+    rationale:
+      "Choose the solution set of |ax+b| compared with a number (including negative right sides and zero), a three-part chain, an or-pair of linear inequalities, or the absolute-value inequality for a described segment or pair of rays. Does not assess graphing the set, interval notation or absolute values on both sides.",
+  },
+  {
+    templateId: "quadratic-from-data",
+    facetId: "quadratic-graphs.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation fixed by two zeros and a point, a vertex and a point, an equally spaced three-row table, or three points with integer coefficients. Does not assess deriving the equation from a graph, non-integer coefficients, or more than three data points.",
+  },
+  {
     templateId: "special-angle-exact-value",
     facetId: "special-angle-values.HSF.TF.A.3",
     extent: "partial",
