@@ -57,9 +57,9 @@ nonlinear.representations|Connect polynomial, quadratic, and exponential tables,
 nonlinear.rational-representations|Connect a rational rule with a table or graph|rational-function-representation
 nonlinear.input-output|Evaluate nonlinear functions or recover allowed inputs|function-evaluation,same-base-equation,rational-function-representation,radical-equation-isolated`,
   data: `
+ratio.units|Convert length, compound rates, area, volume, density, and product units|metric-length-rename,compound-unit-conversion,unit-chain-conversion
 ratio.proportion|Scale ratios and proportional quantities in context|ratio-missing,unit-price,proportional-rule-choice,variation-constant
 ratio.rates|Combine work, mixture, average-speed and two-phase rates exactly|rate-combination-model
-ratio.units|Convert length, compound rates, area, volume, density, and product units|metric-length-rename,compound-unit-conversion
 percent.change|Calculate percentages, original values, and successive growth factors|percent-of,percent-change-original,successive-percent-change
 univariate.displays|Read frequency data in dot plots, histograms, and box plots|dot-plot-mean,histogram-read,box-plot-read
 univariate.center|Calculate or compare means, medians, and ranges|mean-data,median-data,range-data,mean-missing-value,frequency-table-center

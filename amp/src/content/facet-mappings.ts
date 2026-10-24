@@ -1,3 +1,4 @@
+import { legacyFacetMappings } from "./legacy-facet-mappings";
 import { satCompletionFacetMappings } from "./sat-completion-coverage";
 import { satGeometryDataFacetMappings } from "./sat-geometry-data-coverage";
 import { congruenceFacetMappings } from "./congruence-coverage";
@@ -90,6 +91,55 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     extent: "partial",
     rationale:
       "Choose the asymptote, range, intercept, direction or end behavior of an exponential function from its equation or graph, and the domain, vertical asymptote or x-intercept of a logarithmic function from its equation or graph. Does not assess sketching graphs by hand, transformations written as stretches and shifts, inverses of these functions or graphs with bases other than 2, 3 and 1/2.",
+  },
+  {
+    templateId: "signed-context-order",
+    facetId: "absolute-value.core",
+    extent: "partial",
+    rationale:
+      "Select the correct statement about debts, elevations and temperatures given as signed decimals (greater debt, farther from sea level, colder), and the list that orders four signed fractions and decimals in a stated direction. Does not assess graphing on a number line, writing inequalities from a situation, or absolute value of expressions.",
+  },
+  {
+    templateId: "equivalent-expressions-check",
+    facetId: "expression-properties.core",
+    extent: "partial",
+    rationale:
+      "Choose the expression that is not equivalent to a linear expression with a distributed multiplier, decide equivalence after one matching substitution, combine like terms after distributing two multipliers, and select the factored form of a linear expression. Does not assess exponents, multi-variable expressions, writing a proof of equivalence or generating equivalent expressions without choices.",
+  },
+  {
+    templateId: "area-tiling-distributive",
+    facetId: "rectangle-area.core",
+    extent: "partial",
+    rationale:
+      "Choose the number sentence or area for a unit-square rectangle or area model split into two parts, find which sentence does not match the area, and find the area of an L-shaped figure by splitting it into two rectangles with all sides labeled. Does not assess tiling with non-unit squares, fractional side lengths, drawing a split, or figures with more than two rectangles.",
+  },
+  {
+    templateId: "estimate-reasonableness",
+    facetId: "multistep-whole-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the best estimate of a product, a two-step total or a quotient from rounding as stated, and decide whether a calculated product is reasonable. Does not assess decimals, choosing the rounding place, over- or under-estimates, or exact multistep solutions.",
+  },
+  {
+    templateId: "unit-chain-conversion",
+    facetId: "units-and-precision.core",
+    extent: "partial",
+    rationale:
+      "Enter the exact value from a chain of two to four stated conversion facts: dose per kilogram per day, density with mass or volume, speed with minutes, flow with hours, tile counts from square meters and centimeters, and cubic meters to liters. Does not assess recalling conversion facts, significant figures, uncertainty or non-integer results.",
+  },
+  {
+    templateId: "unit-chain-conversion",
+    facetId: "units-and-precision.HSN.Q.A.1",
+    extent: "partial",
+    rationale:
+      "Enter the exact value from a chain of two to four stated conversion facts, with squared and cubed length factors. Does not assess choosing units for a graph or model, scales and origins, or significant figures.",
+  },
+  {
+    templateId: "fraction-of-set",
+    facetId: "fraction-times-whole.core",
+    extent: "partial",
+    rationale:
+      "Enter the number of objects in a proper fraction of a set (denominator up to 6, set up to 48), the remainder, or a multiple of a stated unit-fraction part. Does not assess fractions of non-multiples, mixed numbers, expressing the result as a product of a fraction and a whole number, or fraction word problems with a drawing to complete.",
   },
   {
     templateId: "quadratic-root-relations",
@@ -827,6 +877,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Recognize both distinct irrational real roots of bounded integer-coefficient quadratics in simplified radical form, including signed nonmonic coefficients. Does not assess constructing symbolic responses, formula derivation, rational coefficients, repeated roots or complex solutions.",
   },
   ...assessmentGapFacetMappings,
+  ...legacyFacetMappings,
   ...satCompletionFacetMappings,
   ...satGeometryDataFacetMappings,
   {
