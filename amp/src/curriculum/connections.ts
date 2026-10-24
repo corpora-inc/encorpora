@@ -205,6 +205,16 @@ categorical-association|conditional-probability|extension|A conditional relative
 statistical-summary-comparison|randomization-tests|application|The difference in centers between two groups is the statistic that a randomization test compares with chance.|outlier-center-shift
 nonlinear-equation-modeling|model-validation|application|After solving a quadratic or exponential model, check its solution against the context and the data.|quadratic-context-model
 fraction-plot-computation|fraction-division|application|Sharing a measured total equally is a fraction division.|fraction-share-amount
+line-angle-proofs|triangle-proofs|extension|Equal alternate interior angles from a line parallel to one side are the key step in the proof that a triangle's angles total 180 degrees.|line-angle-proof-reasons
+line-angle-proofs|geometric-constructions|application|Points equidistant from two endpoints lie on the perpendicular bisector. That fact is why arcs of equal radius from both endpoints construct it.|line-angle-proof-reasons
+triangle-proofs|coordinate-proofs|application|The midsegment and median facts can be checked with coordinates: a midsegment has half the vector of the side it is parallel to.|triangle-theorem-consequences
+parallelogram-proofs|coordinate-proofs|application|Bisecting diagonals and congruent rectangle diagonals become coordinate tests: compare midpoints of diagonals and diagonal lengths.|parallelogram-property-consequences
+polygon-symmetries|transformation-constructions|extension|A symmetry is a rotation or reflection that maps a figure onto itself. Mapping a figure onto a different position uses compositions of the same transformations.|polygon-symmetry-counts
+transformation-constructions|circle-similarity|application|Mapping one circle onto another uses a translation followed by a dilation, which is a composition chosen like any other figure-to-image sequence.|circle-dilation-scaling
+inscribed-polygons|triangle-circles|extension|The circle through the vertices of a regular inscribed polygon is its circumscribed circle, the circle whose center is where the perpendicular bisectors of the sides meet.|inscribed-polygon-reasoning
+triangle-circles|tangent-construction|related|The incircle of a triangle is tangent to all three sides, and each radius to a point of tangency is perpendicular to that side.|tangent-circle-computation
+tangent-construction|circle-equations|application|The tangent at a point of a circle is perpendicular to the radius to that point, so its slope is the negative reciprocal of the radius slope.|tangent-circle-computation
+circle-similarity|arc-sector-measure|extension|Because circles are similar, arc length and sector area are fixed fractions of circumference and area, scaling with the radius.|circle-dilation-scaling
 `;
 
 export const curriculumConnections: typeof authoredConnections = [
