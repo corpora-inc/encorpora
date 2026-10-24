@@ -699,11 +699,11 @@ export const statisticsProbabilityLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "A website asks visitors to vote for their favorite sandwich. 2,000 visitors vote; 53% choose the Garden Melt and 47% choose the other. The headline says 'Most customers prefer the Garden Melt.' The report gives no margin of error. Which flaws weaken the headline?",
+        "A website asks visitors to vote for their favorite sandwich. 2,000 visitors vote; 51% choose the Garden Melt and 49% choose the other. The headline says 'Most customers prefer the Garden Melt.' The report gives no margin of error. Which flaws weaken the headline?",
       steps: [
         "Who was counted: visitors chose to vote, so this is voluntary response; they may not represent all customers.",
         "How many: 2,000 is large, so the sample size is not the problem.",
-        "How precise: no margin of error is given, and the 6-point gap is close enough that sampling variability could matter.",
+        "How precise: no margin of error is given, and each percent is uncertain by about 2 points with 2,000 votes, so a 2-point lead could be an accident of sampling.",
         "The flaws are voluntary response and no margin of error. A larger sample of the same kind would not repair the bias.",
       ],
       answer: "Voluntary response and no margin of error",
@@ -712,7 +712,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
       title: "A four-part check",
       keepTogetherInPrint: true,
       paragraphs: [
-        "Who: random sample from the whole group (good), or volunteers or convenient people (bad). How many: a very small sample gives an unstable estimate. How precise: a margin of error should accompany a percent, and the gap between choices should be larger than it. How shown: a bar chart's axis should start at zero.",
+        "Who: random sample from the whole group (good), or volunteers or convenient people (bad). How many: a very small sample gives an unstable estimate. How precise: a margin of error should accompany a percent, and the lead of one choice over the other should be larger than about twice it. How shown: a bar chart's axis should start at zero.",
         "Name only the checks that fail, with the evidence from the report.",
       ],
     },

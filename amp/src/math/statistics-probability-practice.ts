@@ -1870,7 +1870,7 @@ function reportCase(r: Random): Built {
   const has = (flaw: Flaw) => present.includes(flaw);
   const n = has("small") ? r(12, 25) : r(8, 24) * 100;
   const closeRace = has("missing");
-  const pA = closeRace ? r(51, 53) : r(58, 66);
+  const pA = closeRace ? r(51, 52) : r(58, 66);
   const pB = 100 - pA;
   const m = Math.max(1, Math.round(100 / Math.sqrt(n)));
   const askedHow = has("voluntary")
