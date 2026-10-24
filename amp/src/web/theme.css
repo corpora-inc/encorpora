@@ -1292,7 +1292,7 @@ html[data-input="pointer"] :focus-visible {
   font-size: 15px;
 }
 
-/* Where you are: age-centred grade-level estimates with 90% ranges. */
+/* Where you are: age-centred grade-level estimates with estimated uncertainty ranges. */
 .home-level {
   margin: 6px 0 0;
   font-size: 15px;

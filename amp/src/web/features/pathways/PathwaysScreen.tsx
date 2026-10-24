@@ -712,7 +712,7 @@ export function MapView({
                   <p className="pathways-range">
                     {strandNames[selected.strand] ?? selected.strand} frontier:{" "}
                     {gradeName(range.lo)} to {gradeName(range.hi)} · estimated
-                    90% range.
+                    range.
                   </p>
                 )}
               </section>
@@ -747,7 +747,7 @@ export function MapView({
               {range && !selected && (
                 <p>
                   Overall frontier: {gradeName(range.lo)} to{" "}
-                  {gradeName(range.hi)} · estimated 90% range shown by faint
+                  {gradeName(range.hi)} · estimated range shown by faint
                   outlines.
                 </p>
               )}

@@ -3,29 +3,16 @@ import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { strandNames } from "./BirthYearPrompt";
 
-type Estimate = {
-  level: number;
-  sd: number;
-  answered: number;
-  independent: number;
-};
-export type FrontierMap = {
-  expected: number;
-  overall: Estimate;
-  strands: Record<string, Estimate>;
-};
-
+import {
+  strandEstimate,
+  type Frontier,
+  type Estimate,
+} from "../learning/frontier";
+import { gradeName, levelDetails, levelRange } from "../learning/level-check";
+import { LevelReadout } from "./ui/LevelReadout";
+export { gradeName } from "../learning/level-check";
+export type FrontierMap = Frontier;
 const COLLEGE = 13;
-export function gradeName(level: number) {
-  const g = Math.round(level);
-  if (g <= 0) return "K";
-  if (g <= 8) return `Grade ${g}`;
-  return (
-    ["Algebra 1", "Geometry", "Algebra 2", "Precalculus"][g - 9] ?? "College"
-  );
-}
-/** A 90% range: the estimate ± 1.64 standard deviations. */
-const range = (e: Estimate) => [e.level - 1.64 * e.sd, e.level + 1.64 * e.sd];
 
 type Props = {
   navigation?: ReactNode;
@@ -49,9 +36,9 @@ export function Home(props: Props) {
         <div>
           <h1>{props.name}</h1>
           {f && f.overall.answered > 0 && (
-            <p className="home-level">
-              Estimated level: {gradeName(f.overall.level)}
-            </p>
+            <div className="home-level">
+              <LevelReadout estimate={f.overall} />
+            </div>
           )}
         </div>
         <button className="go-button" disabled={props.busy} onClick={props.go}>
@@ -78,7 +65,7 @@ export function Home(props: Props) {
   );
 }
 
-/** Each strand's estimated grade level and its 90% range, on a scale centred
+/** Each strand's estimated grade level and its uncertainty range, on a scale centred
  * on the grade typical for the learner's age. Rows open to show the data. */
 export function FrontierMap(props: {
   name: string;
@@ -98,19 +85,22 @@ export function FrontierMap(props: {
         <h2>Where you are</h2>
         <p>
           Estimated grade level in each area. The centre line is typical for{" "}
-          {props.name}’s age; bars narrow with each answer.
+          {props.name}’s age. Wider bars mean more uncertainty.
         </p>
       </div>
       <ul>
         {props.strands.map((strand) => {
           const measured = f?.strands[strand];
-          const estimate: Estimate = measured ?? {
-            level: f?.overall.level ?? center,
-            sd: Math.max(1.75, f?.overall.sd ?? 2.5),
-            answered: 0,
-            independent: 0,
-          };
-          const [from, to] = range(estimate) as [number, number];
+          const estimate: Estimate = f
+            ? strandEstimate(f, strand)
+            : {
+                level: center,
+                sd: 2.5,
+                answered: 0,
+                independent: 0,
+              };
+          const [from, to] = levelRange(estimate);
+          const detail = levelDetails(estimate);
           const expanded = open === strand;
           return (
             <li key={strand} data-strand={strand}>
@@ -141,8 +131,8 @@ export function FrontierMap(props: {
               {expanded && (
                 <p className="frontier-detail">
                   {measured
-                    ? `${gradeName(estimate.level)}, likely ${gradeName(from)} to ${gradeName(to)}. ${measured.answered} answered, ${measured.independent} correct without help.`
-                    : `Not practiced yet. Estimated from other areas: ${gradeName(estimate.level)}, likely ${gradeName(from)} to ${gradeName(to)}.`}
+                    ? `Level ${detail.point} (${gradeName(estimate.level)}). Estimated range ${detail.from} to ${detail.to}. ${measured.answered} answered, ${measured.independent} correct without help.`
+                    : `Not practiced yet. Estimated from other areas: level ${detail.point} (${gradeName(estimate.level)}), range ${detail.from} to ${detail.to}.`}
                 </p>
               )}
             </li>

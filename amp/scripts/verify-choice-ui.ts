@@ -9,7 +9,7 @@ import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium, webkit } from "playwright";
 import { createServer } from "vite";
-import { buildApp } from "../src/server/app.js";
+import { buildApp, GLOBAL_RATE_LIMIT } from "../src/server/app.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { developmentAuth } from "../src/server/auth.js";
 import { registerFamilyRoutes } from "../src/family/routes.js";
@@ -60,6 +60,17 @@ try {
   await verifyLandscapeSmokeChecks(browser);
   const page = await browser.newPage({ hasTouch: true });
   page.setDefaultTimeout(30_000);
+  // This catalog sweep sends hundreds of requests from one credential. Keep
+  // the real limiter enabled and pace the fixture below its one-minute cap.
+  let nextApiAt = 0;
+  const requestSpacing = Math.ceil(60000 / (GLOBAL_RATE_LIMIT * 0.8));
+  await page.context().route("**/api/**", async (route) => {
+    const now = Date.now();
+    const wait = Math.max(0, nextApiAt - now);
+    nextApiAt = Math.max(now, nextApiAt) + requestSpacing;
+    if (wait) await new Promise((resolve) => setTimeout(resolve, wait));
+    await route.continue();
+  });
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("http://127.0.0.1:4390");
@@ -107,6 +118,7 @@ try {
         });
         throw error;
       });
+      assert.equal(batchResponse.status(), 200, await batchResponse.text());
       const batch = await batchResponse.json();
       const problem: PublicProblem = batch.problems[0];
       assert.equal(problem.templateId, template.id);

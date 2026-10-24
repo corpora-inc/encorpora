@@ -186,7 +186,10 @@ export function planMixedPractice(options: {
     const floor = strandFloor.get(strand)!;
     const ceiling = strandCeiling.get(strand)!;
     if (level > ceiling) return ceiling;
-    return level < floor && frontier.overall.level >= floor ? floor : level;
+    return level < floor &&
+      (frontier.adaptive ?? frontier.overall).level >= floor
+      ? floor
+      : level;
   };
   // Placement asks whole skill items only; method-step scaffolds return once
   // the learner is placed. The first answers follow the scripted openers.

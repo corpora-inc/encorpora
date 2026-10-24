@@ -12,15 +12,15 @@ export const levelCopy = {
   range: (p: { answered: number; from: string; to: string; age?: number }) =>
     p.from === p.to
       ? p.age === undefined
-        ? `After ${p.answered} problems, we’re fairly sure you’re at ${p.from}.`
-        : `You’re about ${p.age} and have answered ${p.answered} problems, so we’re fairly sure you’re at ${p.from}.`
+        ? `After ${p.answered} problems, our current estimate is near ${p.from}.`
+        : `You’re about ${p.age} and have answered ${p.answered} problems, so our current estimate is near ${p.from}.`
       : p.age === undefined
         ? `After ${p.answered} problems, we think you’re somewhere between ${p.from} and ${p.to}.`
         : `You’re about ${p.age} and have answered ${p.answered} problems, so we think you’re somewhere between ${p.from} and ${p.to}.`,
   sharpen: "Keep answering and we’ll sharpen this.",
   trendTitle: "Your level so far",
   trendLabel: (p: { answered: number; from: string; to: string }) =>
-    `Best guess over ${p.answered} problems: from ${p.from} to ${p.to}. The likely range narrows with each answer.`,
+    `Best guess over ${p.answered} problems: from ${p.from} to ${p.to}. The range shows uncertainty and can widen as well as narrow.`,
   areas: "By area",
   areaLabel: (p: { area: string; level: string; from: string; to: string }) =>
     `${p.area}: ${p.level}, likely ${p.from} to ${p.to}`,

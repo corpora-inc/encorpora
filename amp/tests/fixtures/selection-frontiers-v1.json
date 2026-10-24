@@ -1,0 +1,142 @@
+[
+  {
+    "expected": 2,
+    "overall": {
+      "level": 2.53,
+      "sd": 2.08,
+      "answered": 0,
+      "independent": 0
+    },
+    "strands": {
+      "algebra": {
+        "level": 2.53,
+        "sd": 2.08,
+        "answered": 0,
+        "independent": 0
+      },
+      "number": {
+        "level": 2.53,
+        "sd": 2.08,
+        "answered": 0,
+        "independent": 0
+      },
+      "operations": {
+        "level": 2.53,
+        "sd": 2.08,
+        "answered": 0,
+        "independent": 0
+      },
+      "ratio": {
+        "level": 2.53,
+        "sd": 2.08,
+        "answered": 0,
+        "independent": 0
+      }
+    }
+  },
+  {
+    "expected": 2,
+    "overall": {
+      "level": 0.75,
+      "sd": 1.04,
+      "answered": 12,
+      "independent": 0
+    },
+    "strands": {
+      "algebra": {
+        "level": 1.11,
+        "sd": 1.29,
+        "answered": 8,
+        "independent": 0
+      },
+      "ratio": {
+        "level": 1.17,
+        "sd": 1.33,
+        "answered": 2,
+        "independent": 0
+      },
+      "operations": {
+        "level": 0.58,
+        "sd": 0.95,
+        "answered": 2,
+        "independent": 0
+      },
+      "number": {
+        "level": 0.75,
+        "sd": 1.75,
+        "answered": 0,
+        "independent": 0
+      }
+    }
+  },
+  {
+    "expected": 2,
+    "overall": {
+      "level": 6.91,
+      "sd": 0.93,
+      "answered": 12,
+      "independent": 8
+    },
+    "strands": {
+      "algebra": {
+        "level": 7.35,
+        "sd": 0.95,
+        "answered": 8,
+        "independent": 6
+      },
+      "ratio": {
+        "level": 6.21,
+        "sd": 1.34,
+        "answered": 2,
+        "independent": 1
+      },
+      "operations": {
+        "level": 6.27,
+        "sd": 2.08,
+        "answered": 2,
+        "independent": 1
+      },
+      "number": {
+        "level": 6.91,
+        "sd": 1.75,
+        "answered": 0,
+        "independent": 0
+      }
+    }
+  },
+  {
+    "expected": 2,
+    "overall": {
+      "level": 8.6,
+      "sd": 1.16,
+      "answered": 12,
+      "independent": 12
+    },
+    "strands": {
+      "algebra": {
+        "level": 9.62,
+        "sd": 1.32,
+        "answered": 8,
+        "independent": 8
+      },
+      "ratio": {
+        "level": 8.86,
+        "sd": 1.54,
+        "answered": 2,
+        "independent": 2
+      },
+      "operations": {
+        "level": 8.58,
+        "sd": 1.72,
+        "answered": 2,
+        "independent": 2
+      },
+      "number": {
+        "level": 8.6,
+        "sd": 1.75,
+        "answered": 0,
+        "independent": 0
+      }
+    }
+  }
+]

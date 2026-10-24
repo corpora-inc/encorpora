@@ -4,6 +4,7 @@ import { Link, Navigate } from "@tanstack/react-router";
 import { useEffect, useMemo } from "react";
 import { strandNames } from "../../BirthYearPrompt";
 import { FrontierMap, gradeName } from "../../Home";
+import { LevelReadout } from "../../ui/LevelReadout";
 import { buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import {
@@ -98,9 +99,8 @@ function MapView({ session }: { session: TrialSession }) {
         <p className={styles.eyebrow}>
           {p.phase === "placement" ? "Placement in progress" : "Free practice"}
         </p>
-        <h1 className={styles.title}>
-          Estimated level: {gradeName(frontier.overall.level)}
-        </h1>
+        <h1 className={styles.title}>Your estimated level</h1>
+        <LevelReadout estimate={frontier.overall} />
         <p className={styles.lede}>
           {p.phase === "placement"
             ? `${p.placement - p.totals.answered} placement problems to go. The map sharpens with each answer.`
