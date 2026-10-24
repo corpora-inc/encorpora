@@ -3,7 +3,10 @@ import { mkdir } from "node:fs/promises";
 import { chromium, firefox, webkit, type Page } from "playwright";
 import { createServer } from "vite";
 import { fixtureMe } from "./me-fixture";
-import { assertProblemReachable } from "./ui-viewports";
+import {
+  assertProblemReachable,
+  assertPhoneLandscapeSmoke,
+} from "./ui-viewports";
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
@@ -238,9 +241,11 @@ try {
         practiceTemplate =
           width === 375
             ? "causal-claim-choice"
-            : width === 390 || width === 320
-              ? "absolute-value-affine-equation"
-              : "two-step-equation";
+            : width === 844
+              ? "constraint-feasible"
+              : width === 390 || width === 320
+                ? "absolute-value-affine-equation"
+                : "two-step-equation";
         const practice = await context.newPage();
         await practice.emulateMedia({ colorScheme: theme });
         await practice.setViewportSize({
@@ -269,6 +274,11 @@ try {
           .getByRole("button", { name: "Account menu", exact: true })
           .waitFor();
         await fits(practice, `practice ${authenticated} ${theme} ${width}`);
+        if (width === 844)
+          await assertPhoneLandscapeSmoke(
+            practice,
+            `constraint-feasible-${authenticated}-${theme}-844x390`,
+          );
         if (width === 375)
           await assertProblemReachable(
             practice,

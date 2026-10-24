@@ -819,8 +819,6 @@ nav button {
 .answer-dock:has(.choice-form) {
   display: flex;
   flex-direction: column;
-  /* Yield to the toolbar and the question's minimum before options scroll. */
-  flex: 0 1 auto;
   max-height: 62%;
   min-height: 0;
 }
@@ -853,6 +851,11 @@ nav button {
   margin: 0 0 12px;
 }
 @media (max-width: 650px) {
+  /* The phone title has its own row. Let options yield to that row and the
+     question's minimum while the Check button and tools keep their size. */
+  .answer-dock:has(.choice-form) {
+    flex: 0 1 auto;
+  }
   .answer-dock .choice-option {
     gap: 6px;
     padding: 8px;
