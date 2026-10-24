@@ -819,6 +819,8 @@ nav button {
 .answer-dock:has(.choice-form) {
   display: flex;
   flex-direction: column;
+  /* Yield to the toolbar and the question's minimum before options scroll. */
+  flex: 0 1 auto;
   max-height: 62%;
   min-height: 0;
 }

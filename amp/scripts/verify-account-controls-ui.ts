@@ -3,6 +3,7 @@ import { mkdir } from "node:fs/promises";
 import { chromium, firefox, webkit, type Page } from "playwright";
 import { createServer } from "vite";
 import { fixtureMe } from "./me-fixture";
+import { assertProblemReachable } from "./ui-viewports";
 import { retentionNotice } from "../src/family/contracts";
 import { skills } from "../src/curriculum/catalog";
 import { templates, generateProblem } from "../src/math/engine";
@@ -20,6 +21,13 @@ const browser = await (
 ).launch();
 const output = `artifacts/account-controls-${engine}`;
 await mkdir(output, { recursive: true });
+const denseCausal = Array.from({ length: 64 }, (_, index) =>
+  generateProblem("causal-claim-choice", `answer-dock-1536-${index}`),
+).sort(
+  (a, b) =>
+    JSON.stringify(b.public.response).length -
+    JSON.stringify(a.public.response).length,
+)[0]!;
 const identity = "amp|account-controls-fixture";
 const email = "a.learner.with.a.long.email.address.for.layout@example.test";
 const summary = fixtureMe(
@@ -188,7 +196,10 @@ try {
       return route.fulfill({
         json: {
           problems: [
-            generateProblem(practiceTemplate, "practice-account-1529").public,
+            practiceTemplate === "causal-claim-choice"
+              ? denseCausal.public
+              : generateProblem(practiceTemplate, "practice-account-1529")
+                  .public,
           ],
           trialRemaining: 85,
         },
@@ -223,11 +234,13 @@ try {
   for (const authenticated of [true, false]) {
     signedIn = authenticated;
     for (const theme of ["light", "dark"] as const) {
-      for (const width of [1280, 390, 320, 768, 560, 844]) {
+      for (const width of [1280, 390, 320, 375, 768, 560, 844]) {
         practiceTemplate =
-          width === 390 || width === 320
-            ? "absolute-value-affine-equation"
-            : "two-step-equation";
+          width === 375
+            ? "causal-claim-choice"
+            : width === 390 || width === 320
+              ? "absolute-value-affine-equation"
+              : "two-step-equation";
         const practice = await context.newPage();
         await practice.emulateMedia({ colorScheme: theme });
         await practice.setViewportSize({
@@ -235,11 +248,13 @@ try {
           height:
             width === 1280
               ? 900
-              : width === 320
-                ? 568
-                : width === 844
-                  ? 390
-                  : 844,
+              : width === 375
+                ? 667
+                : width === 320
+                  ? 568
+                  : width === 844
+                    ? 390
+                    : 844,
         });
         await practice.goto(`${origin}/sign-in`);
         await practice
@@ -249,11 +264,16 @@ try {
           localStorage.setItem("amp.trial", "synthetic-practice-layout"),
         );
         await practice.goto(`${origin}/try/practice`);
-        await practice.locator(".problem-stage").waitFor();
+        await practice.locator(".problem-stage .question").waitFor();
         await practice
           .getByRole("button", { name: "Account menu", exact: true })
           .waitFor();
         await fits(practice, `practice ${authenticated} ${theme} ${width}`);
+        if (width === 375)
+          await assertProblemReachable(
+            practice,
+            `causal-claim-account-${authenticated}-${theme}-375x667`,
+          );
         const treatment = await practice
           .locator(".workspace-toolbar")
           .evaluate((toolbar) => {
