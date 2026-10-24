@@ -233,6 +233,10 @@ import {
   generateQuadraticProblem,
 } from "./quadratic-practice";
 import {
+  complexConicsTemplates,
+  generateComplexConicsProblem,
+} from "./complex-conics-practice";
+import {
   geometryModelingTemplates,
   generateGeometryModelingProblem,
 } from "./geometry-modeling-practice";
@@ -414,6 +418,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   complexMultiplicationTemplate,
+  ...complexConicsTemplates,
   ...trigonometryTemplates,
   ...geometryModelingTemplates,
   ...functionBehaviorTemplates,
@@ -837,6 +842,8 @@ function generateRawProblem(
     return generatePolynomialProblem(templateId, seed);
   if (quadraticTemplates.some((t) => t.id === templateId))
     return generateQuadraticProblem(templateId, seed);
+  if (complexConicsTemplates.some((t) => t.id === templateId))
+    return generateComplexConicsProblem(templateId, seed);
   if (functionBehaviorTemplates.some((t) => t.id === templateId))
     return generateFunctionBehaviorProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
