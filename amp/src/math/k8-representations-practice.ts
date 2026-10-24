@@ -258,8 +258,10 @@ function proportionalGraph(r: Random): Built {
   ] as const);
   if (variant === "start-value") {
     const ctx = pick(r, startContexts);
-    const m = r(2, 4),
-      b = r(2, 6);
+    const m = r(2, 4);
+    // The fee must differ from the price per unit, or "each unit costs b" would also be true.
+    let b = r(2, 5);
+    if (b >= m) b += 1;
     const scene = lineScene(ctx, m, b, [[0, b]]);
     const correct = ctx.meaning(b);
     return {
@@ -294,7 +296,7 @@ function proportionalGraph(r: Random): Built {
       offset:
         "No. It is a straight line, but it does not pass through $(0, 0)$.",
       curve: "No. It passes through $(0, 0)$, but it is not a straight line.",
-      rising: "Yes. The values go up as the horizontal values go up.",
+      rising: "Yes. Any graph that goes up is proportional.",
     };
     const truth =
       kind === "through" ? "line" : kind === "offset" ? "offset" : "curve";
@@ -344,8 +346,10 @@ function proportionalGraph(r: Random): Built {
     };
   }
   const ctx = pick(r, propContexts);
-  const rate = r(2, 5),
-    k = r(2, 5);
+  const rate = r(2, 5);
+  // The labeled point's x-value must differ from the rate, or "every unit adds k" would be a true statement.
+  let k = r(2, 4);
+  if (k >= rate) k += 1;
   const y = k * rate;
   const scene = lineScene(
     ctx,
