@@ -234,6 +234,7 @@ import {
   statisticsProbabilityTemplates,
   generateStatisticsProbabilityProblem,
 } from "./statistics-probability-practice";
+import {
   functionBehaviorTemplates,
   generateFunctionBehaviorProblem,
 } from "./function-behavior-practice";
