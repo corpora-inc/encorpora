@@ -72,6 +72,7 @@ import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
+import { vectorMatrixLessons } from "./vectors-matrices-lessons";
 import { statisticsProbabilityLessons } from "./statistics-probability-lessons";
 import { complexConicsLessons } from "./complex-conics-lessons";
 import { trigonometryLessons } from "./trigonometry-lessons";
@@ -679,6 +680,7 @@ export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...complexLessons,
   ...satAlgebraStructureLessons,
+  ...vectorMatrixLessons,
   ...statisticsProbabilityLessons,
   ...complexConicsLessons,
   ...trigonometryLessons,
