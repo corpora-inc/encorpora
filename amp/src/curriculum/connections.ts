@@ -6,6 +6,22 @@ const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
   to: string;
 })[] = [
   {
+    from: "triangle-law-proofs",
+    to: "oblique-triangles",
+    kind: "application",
+    explanation:
+      "The altitude derivation of the laws of sines and cosines shows which measurements each law needs. Solving an oblique triangle applies the matching law to those measurements.",
+    templateIds: ["triangle-law-reasoning"],
+  },
+  {
+    from: "model-quantities",
+    to: "linear-equation-modeling",
+    kind: "application",
+    explanation:
+      "A linear equation for a situation needs defined quantities first: a variable with units for each changing quantity, and a rate in dependent unit per independent unit.",
+    templateIds: ["model-quantity-roles", "linear-model-equation"],
+  },
+  {
     from: "dilations-similarity",
     to: "slope",
     kind: "application",
