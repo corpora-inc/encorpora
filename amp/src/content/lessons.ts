@@ -71,6 +71,7 @@ import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
 import { remainingGapLessons } from "./remaining-gap-lessons";
+import { trigonometryLessons } from "./trigonometry-lessons";
 import { geometryModelingLessons } from "./geometry-modeling-lessons";
 import { functionBehaviorLessons } from "./function-behavior-lessons";
 import { absoluteValueLessons } from "./absolute-value-lessons";
@@ -675,6 +676,7 @@ export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...complexLessons,
   ...remainingGapLessons,
+  ...trigonometryLessons,
   ...geometryModelingLessons,
   ...functionBehaviorLessons,
   ...absoluteValueLessons,

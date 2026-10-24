@@ -61,6 +61,63 @@ const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
       "Even and odd outcomes form sets. Listing their members helps count outcomes when finding probabilities.",
     templateIds: ["event-set-count"],
   },
+  // Trigonometry cluster.
+  {
+    from: "right-triangle-trigonometry",
+    to: "special-angle-values",
+    kind: "extension",
+    explanation:
+      "Right-triangle ratios of 30°, 45° and 60° become the unit-circle coordinates, and the quadrant sign extends them to every angle.",
+    templateIds: ["special-angle-exact-value"],
+  },
+  {
+    from: "special-angle-values",
+    to: "trigonometric-symmetry",
+    kind: "extension",
+    explanation:
+      "Once the values at special angles are known, reflecting or rotating the angle changes only the sign or the function, so other angles need no new values.",
+    templateIds: ["trig-symmetry-value"],
+  },
+  {
+    from: "special-angle-values",
+    to: "trigonometric-identities",
+    kind: "application",
+    explanation:
+      "Angle-sum formulas combine the exact values at 30°, 45° and 60° to give exact values at angles such as 15° and 75°.",
+    templateIds: ["trig-identity-value"],
+  },
+  {
+    from: "trigonometric-symmetry",
+    to: "trigonometric-graphs",
+    kind: "related",
+    explanation:
+      "Odd, even and periodic symmetry of sine and cosine appear on the graph as point symmetry, mirror symmetry and repetition every period.",
+    templateIds: ["sinusoid-parameters"],
+  },
+  {
+    from: "trigonometric-equations",
+    to: "periodic-modeling",
+    kind: "application",
+    explanation:
+      "Setting a sinusoidal model equal to a value and solving gives the times at which the modeled quantity reaches that value.",
+    templateIds: ["sinusoid-model"],
+  },
+  {
+    from: "periodic-modeling",
+    to: "parametric-models",
+    kind: "extension",
+    explanation:
+      "A rider on a wheel has a height that is a sinusoid of time. Pairing it with a second sinusoid for horizontal position describes the whole circular path as a function of one parameter.",
+    templateIds: ["sinusoid-model"],
+  },
+  {
+    from: "oblique-triangles",
+    to: "trigonometric-area",
+    kind: "related",
+    explanation:
+      "The height used to count triangles in the ambiguous case is b sin A, the same product that appears in the area formula one half ab sin C.",
+    templateIds: ["trig-triangle-area"],
+  },
   {
     from: "polynomial-behavior",
     to: "rational-function-behavior",

@@ -246,6 +246,9 @@ import {
   remainingGapTemplates,
   generateRemainingGapProblem,
 } from "./remaining-gap-practice";
+  trigonometryTemplates,
+  generateTrigonometryProblem,
+} from "./trigonometry-practice";
 import {
   absoluteValueTemplates,
   generateAbsoluteValueProblem,
@@ -412,6 +415,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   complexMultiplicationTemplate,
+  ...trigonometryTemplates,
   ...geometryModelingTemplates,
   ...functionBehaviorTemplates,
   ...remainingGapTemplates,
@@ -837,6 +841,8 @@ function generateRawProblem(
     return complexMultiplicationCase(seed).problem;
   if (remainingGapTemplates.some((t) => t.id === templateId))
     return generateRemainingGapProblem(templateId, seed);
+  if (trigonometryTemplates.some((t) => t.id === templateId))
+    return generateTrigonometryProblem(templateId, seed);
   if (geometryModelingTemplates.some((t) => t.id === templateId))
     return generateGeometryModelingProblem(templateId, seed);
   if (absoluteValueTemplates.some((t) => t.id === templateId))
