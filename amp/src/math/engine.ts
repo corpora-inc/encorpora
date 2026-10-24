@@ -2,6 +2,10 @@ import {
   satCompletionTemplates,
   generateSatCompletionProblem,
 } from "./sat-completion-practice";
+import {
+  satGeometryDataTemplates,
+  generateSatGeometryDataProblem,
+} from "./sat-geometry-data-practice";
 import { normalizeSelection } from "./selection-response";
 import {
   quadrilateralHierarchyMultiselectTemplate,
@@ -23,6 +27,10 @@ import {
   rationalEquationTemplates,
   generateRationalEquationProblem,
 } from "./rational-equation-practice";
+import {
+  k8RepresentationTemplates,
+  generateK8RepresentationProblem,
+} from "./k8-representations-practice";
 import {
   geometryProofTemplates,
   proofConstructionTemplates,
@@ -486,6 +494,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...rationalEquationTemplates,
   ...geometryProofTemplates,
   ...proofConstructionTemplates,
+  ...k8RepresentationTemplates,
   ...nonlinearSystemTemplates,
   ...absoluteValueTemplates,
   ...graphicalTemplates,
@@ -503,6 +512,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...inferenceTemplates,
   ...assessmentGapTemplates,
   ...satCompletionTemplates,
+  ...satGeometryDataTemplates,
   ...bivariateTemplates,
 ];
 
@@ -671,6 +681,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...inferenceTemplates,
     ...assessmentGapTemplates,
     ...satCompletionTemplates,
+    ...satGeometryDataTemplates,
     ...bivariateTemplates,
     ...partWholeTemplates,
     ...attributeTemplates,
@@ -704,6 +715,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...rationalEquationTemplates,
     ...geometryProofTemplates,
     ...proofConstructionTemplates,
+    ...k8RepresentationTemplates,
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -752,6 +764,8 @@ function generateRawProblem(
     return generateRatioRateProblem(templateId, seed);
   if (satCompletionTemplates.some((t) => t.id === templateId))
     return generateSatCompletionProblem(templateId, seed);
+  if (satGeometryDataTemplates.some((t) => t.id === templateId))
+    return generateSatGeometryDataProblem(templateId, seed);
   if (assessmentGapTemplates.some((t) => t.id === templateId))
     return generateAssessmentGapProblem(templateId, seed);
   if (inferenceTemplates.some((t) => t.id === templateId))
@@ -846,6 +860,8 @@ function generateRawProblem(
     return generateRationalEquationProblem(templateId, seed);
   if (geometryProofTemplates.some((t) => t.id === templateId))
     return generateGeometryProofProblem(templateId, seed);
+  if (k8RepresentationTemplates.some((t) => t.id === templateId))
+    return generateK8RepresentationProblem(templateId, seed);
   if (proofConstructionTemplates.some((t) => t.id === templateId))
     return generateProofConstructionProblem(templateId, seed);
   if (rationalExpressionTemplates.some((t) => t.id === templateId))
