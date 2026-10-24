@@ -407,7 +407,7 @@ export const geometryModelingLessons: Lesson[] = [
         keepTogetherInPrint: true,
         title: "Fixed perimeter, fixed volume, and cost",
         paragraphs: [
-          "With 40 m of fence around a pen, length plus width is 20 m. The pen 10 m by 10 m has area 100 square meters, more than 12 m by 8 m, which has 96 square meters. For boxes that must hold 48 cm³, compute $2(lw+lh+wh)$ for each; the box closest to a cube uses the least material.",
+          "With 40 m of fence around a pen, length plus width is 20 m. The pen 10 m by 10 m has area 100 square meters, more than 12 m by 8 m, which has 96 square meters. For boxes that must hold 48 cm³, compute $2(lw+lh+wh)$ for each and compare. Boxes closer to a cube tend to use less material, but only the computed surface areas decide.",
           "To price a job, find the area to cover, subtract any part not covered, and multiply by the price per square meter.",
         ],
       },
