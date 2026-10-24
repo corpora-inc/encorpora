@@ -127,7 +127,6 @@ export function InventoryScreen() {
               : "Your learning record"}
         </p>
         <h1>Your inventory</h1>
-        <p>Every skill you try. Every bit of strength you build.</p>
         {view.frontier?.overall.answered ? (
           <p className={styles.level}>
             Estimated level{" "}

@@ -285,6 +285,35 @@ try {
       await page.locator('[data-strength="Strong"]').first().waitFor();
       assert.equal(new URL(page.url()).searchParams.get("context"), "trial");
       await fits(`inventory ${theme} ${width}`);
+      const searchBox = await page
+        .getByRole("searchbox", { name: "Search your skills" })
+        .evaluate((el) => {
+          const box = el.closest("label")!.getBoundingClientRect();
+          return { y: box.y, height: box.height };
+        });
+      const areaBox = (await page
+        .getByLabel("Math area", { exact: true })
+        .boundingBox())!;
+      if (width >= 380 && width !== 375) {
+        assert(
+          Math.abs(searchBox.y - areaBox.y) < 1,
+          "inventory filters align",
+        );
+        assert(
+          Math.abs(searchBox.height - areaBox.height) < 1,
+          "inventory filters have equal height",
+        );
+      }
+      if (width === 390) {
+        const firstSkill = (await page
+          .locator("[data-strength]")
+          .first()
+          .boundingBox())!;
+        assert(
+          firstSkill.y + firstSkill.height < height,
+          "the first inventory skill is fully visible on a phone",
+        );
+      }
       await page.screenshot({
         path: `${output}/inventory-${theme}-${width}.png`,
         fullPage: width > 400,
