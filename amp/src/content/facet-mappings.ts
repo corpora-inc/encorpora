@@ -189,6 +189,139 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Choose the conclusion supported by a residual table: curved pattern, no pattern, extrapolation, or which of two models has the smaller sum of squared residuals. Does not assess computing a regression line, graphing residual plots or writing the limitation in words.",
   },
   {
+    templateId: "complex-plane-forms",
+    facetId: "complex-plane.core",
+    extent: "partial",
+    rationale:
+      "Read a complex number from a plotted point, find an exact modulus, add two plotted numbers, and convert between a+bi and r(cos θ + i sin θ) at special angles with exact values, by selecting among written forms. Does not assess plotting points, geometric multiplication or powers of complex numbers, or angles beyond the multiples of π/6 and π/4.",
+  },
+  {
+    templateId: "complex-conjugate-division",
+    facetId: "complex-conjugates.core",
+    extent: "partial",
+    rationale:
+      "Find a conjugate, evaluate z·z̄, and divide two integer-coefficient complex numbers into exact standard form with fractional parts, by selecting among written results. Does not assess moduli of quotients, conjugate properties of sums and products, or proofs.",
+  },
+  {
+    templateId: "complex-distance-midpoint",
+    facetId: "complex-distance.core",
+    extent: "partial",
+    rationale:
+      "Find the exact distance |z − w|, the midpoint, a missing endpoint of a segment, and the center and radius of |z − w| = r, with integer-coefficient numbers and selected answers. Does not assess perpendicular bisectors, loci other than circles, or written justification.",
+  },
+  {
+    templateId: "complex-quadratic-factors",
+    facetId: "complex-factorization.core",
+    extent: "partial",
+    rationale:
+      "Factor x² + k² into complex linear factors, solve monic quadratics with negative discriminant in exact a ± bi form (including radicals and halves), and select the quadratic with given conjugate roots. Does not assess factoring higher-degree polynomials or non-monic quadratics.",
+  },
+  {
+    templateId: "polynomial-root-count",
+    facetId: "fundamental-theorem-algebra.core",
+    extent: "partial",
+    rationale:
+      "Count complex roots with multiplicity from a degree or factored form, name the conjugate root forced by real coefficients, and bound or classify the number of real roots of a real polynomial. Does not assess finding roots, the theorem's proof, or polynomials with nonreal coefficients.",
+  },
+  {
+    templateId: "polar-cartesian-conversion",
+    facetId: "polar-coordinates.core",
+    extent: "partial",
+    rationale:
+      "Convert polar to Cartesian and Cartesian to polar at special angles, including negative r and axis angles, and select equivalent polar names. Does not assess graphing polar curves, polar equations or converting equations.",
+  },
+  {
+    templateId: "parametric-linear-motion",
+    facetId: "parametric-models.core",
+    extent: "partial",
+    rationale:
+      "Evaluate position, eliminate the parameter, find speed, solve for a time and read direction for linear parametric motion. Does not assess nonlinear or projectile motion, graphing a parametric curve or deriving a model from a context.",
+  },
+  {
+    templateId: "conic-standard-form",
+    facetId: "conic-sections.core",
+    extent: "partial",
+    rationale:
+      "Identify a circle, ellipse, parabola or hyperbola from an equation, read an ellipse's center and longer-axis ends, and complete the square for a circle or an ellipse in general form. Does not assess graphing, hyperbola vertices and asymptotes, eccentricity or rotated conics.",
+  },
+  {
+    templateId: "parabola-focus-directrix",
+    facetId: "parabola-locus.core",
+    extent: "partial",
+    rationale:
+      "Find the vertex, equation, focus and directrix of a parabola from a focus and directrix or from an equation, in vertical and horizontal orientations. Does not assess deriving the equation from the distance condition or graphing.",
+  },
+  {
+    templateId: "special-angle-exact-value",
+    facetId: "special-angle-values.HSF.TF.A.3",
+    extent: "partial",
+    rationale:
+      "Choose the exact sine, cosine, tangent or unit-circle point of a special angle in any quadrant, in degrees or radians, including coterminal angles and axis angles where tangent is undefined. Does not assess deriving the values from triangles or constructing the unit circle.",
+  },
+  {
+    templateId: "trig-symmetry-value",
+    facetId: "trigonometric-symmetry.HSF.TF.A.4",
+    extent: "partial",
+    rationale:
+      "Choose a value of sine, cosine or tangent at -θ, π±θ or θ plus whole turns from one given value, with the other coordinate found by the Pythagorean identity for acute θ. Does not assess written explanations of symmetry or periodicity.",
+  },
+  {
+    templateId: "sinusoid-parameters",
+    facetId: "trigonometric-graphs.HSF.IF.C.7",
+    extent: "partial",
+    rationale:
+      "Read amplitude, period, midline, extreme values and horizontal shift from y = A sin(B(x − h)) + k, and choose the sine equation of a plotted graph with no horizontal shift. Does not assess sketching graphs by hand, cosine or tangent graphs, or graphs with phase shift.",
+  },
+  {
+    templateId: "inverse-trig-value",
+    facetId: "inverse-trigonometry.HSF.TF.B.6",
+    extent: "partial",
+    rationale:
+      "Evaluate arcsin, arccos and arctan at special values with their restricted ranges, arcsin(sin x) type compositions outside the range, and sine, cosine or tangent of an inverse value. Does not assess justifying the restrictions or graphing inverse functions.",
+  },
+  {
+    templateId: "trig-equation-solutions",
+    facetId: "trigonometric-equations.HSF.TF.B.7",
+    extent: "partial",
+    rationale:
+      "List or count the solutions of simple sine, cosine and tangent equations on one turn in degrees or radians, including double-angle counts and endpoint cases. Does not assess equations needing identities, quadratic forms, general solutions or contextual modeling.",
+  },
+  {
+    templateId: "trig-identity-value",
+    facetId: "trigonometric-identities.HSF.TF.C.8",
+    extent: "partial",
+    rationale:
+      "Use sin²θ + cos²θ = 1 with a quadrant to choose a missing sine, cosine or tangent value. Does not assess proving the identity.",
+  },
+  {
+    templateId: "trig-identity-value",
+    facetId: "trigonometric-identities.HSF.TF.C.9",
+    extent: "partial",
+    rationale:
+      "Choose exact values at 15°, 75° and 105° with angle-sum and difference formulas, and apply the cofunction relation in radians. Does not assess deriving or proving the formulas or simplifying symbolic expressions.",
+  },
+  {
+    templateId: "oblique-triangle-solve",
+    facetId: "oblique-triangles.HSG.SRT.D.11",
+    extent: "partial",
+    rationale:
+      "Choose a side or angle found by the law of sines or cosines, rounded as stated, and the number of triangles in the ambiguous SSA case. Does not assess multi-step triangle solving, applications with bearings or proving the laws.",
+  },
+  {
+    templateId: "trig-triangle-area",
+    facetId: "trigonometric-area.HSG.SRT.D.9",
+    extent: "partial",
+    rationale:
+      "Find exact or rounded area from two sides and the included angle, a missing side from the area, and compare areas of supplementary included angles. Does not assess deriving the formula.",
+  },
+  {
+    templateId: "sinusoid-model",
+    facetId: "periodic-modeling.HSF.TF.B.5",
+    extent: "partial",
+    rationale:
+      "Choose the sine or cosine model from a maximum, minimum, period and starting position, find one parameter, or evaluate the model at a time. Does not assess fitting models to data or constructing graphs.",
+  },
+  {
     templateId: "solid-volume-context",
     facetId: "solid-volume-models.core",
     extent: "partial",
@@ -392,6 +525,104 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     extent: "partial",
     rationale:
       "Recognize a justified angle statement in four configurations; constructed and multistep proofs require separate assessment.",
+  },
+  {
+    templateId: "line-angle-proof-reasons",
+    facetId: "line-angle-proofs.core",
+    extent: "partial",
+    rationale:
+      "Select the reason for a vertical-angle, alternate-interior-angle or perpendicular-bisector step (including the converse direction), or the equation a vertical-angle step gives with a linear unknown. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "triangle-theorem-consequences",
+    facetId: "triangle-proofs.core",
+    extent: "partial",
+    rationale:
+      "Apply isosceles base angles, the midsegment theorem and the 2:1 median ratio to find a measure with a numeric or linear unknown, and select the reason that completes an angle-sum proof step. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "parallelogram-property-consequences",
+    facetId: "parallelogram-proofs.core",
+    extent: "partial",
+    rationale:
+      "Select the reason for an opposite-side, opposite-angle, bisecting-diagonal or rectangle-diagonal step, and solve linear-unknown diagonal and consecutive-angle consequences. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "precise-geometric-definitions",
+    facetId: "geometric-definitions.core",
+    extent: "partial",
+    rationale:
+      "Choose the precise definition of a circle, parallel lines or an angle and identify the one flawed definition among four (missing plane, interior included, ray versus segment). Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "transformation-invariant-claims",
+    facetId: "transformation-invariants.core",
+    extent: "partial",
+    rationale:
+      "Identify which transformations preserve distance and angle, decide from triangle image coordinates whether a map is rigid, a dilation or neither, and apply dilation and rotation definitions. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "polygon-symmetry-counts",
+    facetId: "polygon-symmetries.core",
+    extent: "partial",
+    rationale:
+      "Find the smallest rotation, the number of rotations, the lines of reflection and the rotation angles that carry regular polygons, non-square rectangles, parallelograms and isosceles trapezoids onto themselves. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "transformation-sequence-mapping",
+    facetId: "transformation-constructions.core",
+    extent: "partial",
+    rationale:
+      "From coordinates of a triangle and its image, choose the single transformation or ordered reflection, rotation, translation or dilation sequence that maps one onto the other. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "compass-straightedge-reasoning",
+    facetId: "geometric-constructions.core",
+    extent: "partial",
+    rationale:
+      "Choose the next step, the order of steps or the justification for a perpendicular bisector, angle bisector, perpendicular and parallel-line construction. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "inscribed-polygon-reasoning",
+    facetId: "inscribed-polygons.core",
+    extent: "partial",
+    rationale:
+      "Choose why a hexagon side equals the radius, the hexagon perimeter, the central angle of an inscribed regular polygon and the construction method for an inscribed triangle, square or hexagon. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "triangle-circle-centers",
+    facetId: "triangle-circles.core",
+    extent: "partial",
+    rationale:
+      "Choose the construction for a circumcenter or incenter and compute opposite angles of an inscribed quadrilateral (with a linear unknown) and the circumradius of a right triangle. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "tangent-circle-computation",
+    facetId: "tangent-construction.core",
+    extent: "partial",
+    rationale:
+      "Use the right angle between tangent and radius and equal tangent segments to find tangent lengths, radii, angles and linear unknowns. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "circle-dilation-scaling",
+    facetId: "circle-similarity.core",
+    extent: "partial",
+    rationale:
+      "Find the scale factor between two circles, the area and circumference factors, and choose the translation and dilation that map one circle onto another. Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "coordinate-quadrilateral-claims",
+    facetId: "coordinate-proofs.core",
+    extent: "partial",
+    rationale:
+      "From vertex coordinates, use slopes, distances and dot products to choose the most specific quadrilateral classification proved (square, rectangle, rhombus, parallelogram, trapezoid). Written proofs and physical or drawn constructions remain unassessed.",
+  },
+  {
+    templateId: "measurement-formula-justifications",
+    facetId: "measurement-formula-proofs.core",
+    extent: "partial",
+    rationale:
+      "Compute from a sector-rearrangement, cube-into-pyramids or cone-cylinder comparison and choose the justification of the circumference and sector-limit arguments. Written proofs and physical or drawn constructions remain unassessed.",
   },
   {
     templateId: "rational-equation-one-denominator",

@@ -25,6 +25,8 @@ import {
 } from "./rational-equation-practice";
 import {
   geometryProofTemplates,
+  proofConstructionTemplates,
+  generateProofConstructionProblem,
   generateGeometryProofProblem,
 } from "./geometry-proof-practice";
 import {
@@ -235,6 +237,10 @@ import {
   generateStatisticsProbabilityProblem,
 } from "./statistics-probability-practice";
 import {
+  complexConicsTemplates,
+  generateComplexConicsProblem,
+} from "./complex-conics-practice";
+import {
   geometryModelingTemplates,
   generateGeometryModelingProblem,
 } from "./geometry-modeling-practice";
@@ -246,6 +252,10 @@ import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
 } from "./complex-practice";
+import {
+  trigonometryTemplates,
+  generateTrigonometryProblem,
+} from "./trigonometry-practice";
 import {
   absoluteValueTemplates,
   generateAbsoluteValueProblem,
@@ -413,6 +423,8 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   complexMultiplicationTemplate,
   ...statisticsProbabilityTemplates,
+  ...complexConicsTemplates,
+  ...trigonometryTemplates,
   ...geometryModelingTemplates,
   ...functionBehaviorTemplates,
   ...polynomialTemplates,
@@ -458,6 +470,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...radicalEquationTemplates,
   ...rationalEquationTemplates,
   ...geometryProofTemplates,
+  ...proofConstructionTemplates,
   ...nonlinearSystemTemplates,
   ...absoluteValueTemplates,
   ...graphicalTemplates,
@@ -675,6 +688,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...radicalEquationTemplates,
     ...rationalEquationTemplates,
     ...geometryProofTemplates,
+    ...proofConstructionTemplates,
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -817,6 +831,8 @@ function generateRawProblem(
     return generateRationalEquationProblem(templateId, seed);
   if (geometryProofTemplates.some((t) => t.id === templateId))
     return generateGeometryProofProblem(templateId, seed);
+  if (proofConstructionTemplates.some((t) => t.id === templateId))
+    return generateProofConstructionProblem(templateId, seed);
   if (rationalExpressionTemplates.some((t) => t.id === templateId))
     return generateRationalExpressionProblem(templateId, seed);
   if (nonlinearSystemTemplates.some((t) => t.id === templateId))
@@ -833,10 +849,14 @@ function generateRawProblem(
     return generateQuadraticProblem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))
     return generateStatisticsProbabilityProblem(templateId, seed);
+  if (complexConicsTemplates.some((t) => t.id === templateId))
+    return generateComplexConicsProblem(templateId, seed);
   if (functionBehaviorTemplates.some((t) => t.id === templateId))
     return generateFunctionBehaviorProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (trigonometryTemplates.some((t) => t.id === templateId))
+    return generateTrigonometryProblem(templateId, seed);
   if (geometryModelingTemplates.some((t) => t.id === templateId))
     return generateGeometryModelingProblem(templateId, seed);
   if (absoluteValueTemplates.some((t) => t.id === templateId))

@@ -5,6 +5,7 @@ import { assessmentGapLessons } from "./assessment-gap-lessons";
 import { radicalEquationLessons } from "./radical-equation-lessons";
 import { rationalEquationLessons } from "./rational-equation-lessons";
 import { geometryProofLessons } from "./geometry-proof-lessons";
+import { geometryProofFamilyLessons } from "./geometry-proof-family-lessons";
 import { rationalExpressionLessons } from "./rational-expression-lessons";
 import { nonlinearSystemLessons } from "./nonlinear-system-lessons";
 import { areaVolumeLessons } from "./area-volume-lessons";
@@ -71,6 +72,8 @@ import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
 import { statisticsProbabilityLessons } from "./statistics-probability-lessons";
+import { complexConicsLessons } from "./complex-conics-lessons";
+import { trigonometryLessons } from "./trigonometry-lessons";
 import { geometryModelingLessons } from "./geometry-modeling-lessons";
 import { functionBehaviorLessons } from "./function-behavior-lessons";
 import { absoluteValueLessons } from "./absolute-value-lessons";
@@ -675,6 +678,8 @@ export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...complexLessons,
   ...statisticsProbabilityLessons,
+  ...complexConicsLessons,
+  ...trigonometryLessons,
   ...geometryModelingLessons,
   ...functionBehaviorLessons,
   ...absoluteValueLessons,
@@ -730,6 +735,7 @@ export const lessons: readonly Lesson[] = [
   ...radicalEquationLessons,
   ...rationalEquationLessons,
   ...geometryProofLessons,
+  ...geometryProofFamilyLessons,
   ...nonlinearSystemLessons,
   ...baseLessons,
   ...extendedLessons,
