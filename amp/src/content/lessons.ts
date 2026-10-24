@@ -73,6 +73,7 @@ import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
+import { numberMeasurementGapLessons } from "./number-measurement-gaps-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
 import { remainingGapLessons } from "./remaining-gap-lessons";
 import { vectorMatrixLessons } from "./vectors-matrices-lessons";
@@ -683,6 +684,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...complexLessons,
+  ...numberMeasurementGapLessons,
   ...satAlgebraStructureLessons,
   ...remainingGapLessons,
   ...vectorMatrixLessons,

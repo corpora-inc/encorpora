@@ -63,6 +63,7 @@ import { rightTriangleMethods } from "./right-triangle-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import { complexMethods } from "./complex-lessons";
+import { numberMeasurementGapMethods } from "./number-measurement-gaps-lessons";
 import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
 import { vectorMatrixMethods } from "./vectors-matrices-lessons";
@@ -98,6 +99,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...complexMethods,
+  ...numberMeasurementGapMethods,
   ...satAlgebraStructureMethods,
   ...remainingGapMethods,
   ...vectorMatrixMethods,
