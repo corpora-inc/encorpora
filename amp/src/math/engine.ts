@@ -234,6 +234,7 @@ import {
   complexConicsTemplates,
   generateComplexConicsProblem,
 } from "./complex-conics-practice";
+import {
   geometryModelingTemplates,
   generateGeometryModelingProblem,
 } from "./geometry-modeling-practice";
