@@ -635,6 +635,16 @@ export function sinusoidCase(seed: string) {
         feedback:
           "The amplitude is exactly $|A|$, the coefficient of the sine.",
       },
+      {
+        label: math(`${amp + 2}`),
+        feedback:
+          "The amplitude is exactly $|A|$, the coefficient of the sine.",
+      },
+      {
+        label: math(`${amp - 1}`),
+        feedback:
+          "The amplitude is exactly $|A|$, the coefficient of the sine.",
+      },
     ];
     prompt = `What is the amplitude of $${simple}$?`;
     hint = `Amplitude is how far the curve rises above, or falls below, its midline. Find the number that multiplies $\\sin$.`;
@@ -1290,7 +1300,14 @@ export function trigEquationCase(seed: string) {
       );
     });
     solutions = found;
-    const count = found.length;
+    // tan(2x) = ±1 has roots at odd multiples of π/8, between the π/12 steps.
+    const count = Array.from({ length: 48 }, (_, i) => i).filter((i) => {
+      const v = g((i * Math.PI) / 24);
+      return (
+        Number.isFinite(v) && Math.abs(v) < 1e8 && Math.abs(v - target) < 1e-9
+      );
+    }).length;
+    const offGrid = count !== found.length;
     const labels = ["0", "1", "2", "4"];
     correct = `${count}`;
     if (!labels.includes(correct)) throw new Error(`Unexpected count ${count}`);
@@ -1327,7 +1344,9 @@ export function trigEquationCase(seed: string) {
       doubled
         ? `Let $u=2x$; then $u$ runs over $[0,4\\pi)$, two turns.`
         : `Look at one turn of the unit circle, $[0,2\\pi)$.`,
-      `The equation is satisfied at $x\\in\\{${setTex(found, true)}\\}$ in $[0,2\\pi)$.`,
+      offGrid
+        ? `Tangent has period $\\pi$, so $u=2x$ takes the value $${pickT.tex}$ once in each half turn of $u$ (for example $u=${target > 0 ? "\\frac{\\pi}{4}" : "\\frac{3\\pi}{4}"}+n\\pi$).`
+        : `The equation is satisfied at $x\\in\\{${setTex(found, true)}\\}$ in $[0,2\\pi)$.`,
       `That is ${count} solution${count === 1 ? "" : "s"}.`,
     ];
     if (count === 0)

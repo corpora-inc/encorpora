@@ -1,10 +1,7 @@
 import type { SkillConnection } from "./types";
 
 /** Editorial connections supported by existing content, not assessment dependencies. */
-const authoredConnections: (Omit<
-  SkillConnection,
-  "skillId" | "direction"
-> & {
+const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
   from: string;
   to: string;
 })[] = [
@@ -58,14 +55,6 @@ const authoredConnections: (Omit<
     templateIds: ["special-angle-exact-value"],
   },
   {
-    from: "right-triangle-trigonometry",
-    to: "oblique-triangles",
-    kind: "extension",
-    explanation:
-      "Sine and cosine ratios find sides of right triangles. The laws of sines and cosines extend them to triangles with no right angle.",
-    templateIds: ["oblique-triangle-solve"],
-  },
-  {
     from: "special-angle-values",
     to: "trigonometric-symmetry",
     kind: "extension",
@@ -90,30 +79,6 @@ const authoredConnections: (Omit<
     templateIds: ["sinusoid-parameters"],
   },
   {
-    from: "trigonometric-graphs",
-    to: "inverse-trigonometry",
-    kind: "extension",
-    explanation:
-      "Restricting sine, cosine or tangent to one interval where its graph is one-to-one makes an inverse function possible.",
-    templateIds: ["inverse-trig-value"],
-  },
-  {
-    from: "inverse-trigonometry",
-    to: "trigonometric-equations",
-    kind: "application",
-    explanation:
-      "The inverse function gives one solution of a trigonometric equation. Symmetry then supplies the other solutions in the interval.",
-    templateIds: ["trig-equation-solutions"],
-  },
-  {
-    from: "trigonometric-identities",
-    to: "trigonometric-equations",
-    kind: "application",
-    explanation:
-      "Rewriting an expression with an identity can turn a trigonometric equation into one that is solved from a single function value.",
-    templateIds: ["trig-equation-solutions"],
-  },
-  {
     from: "trigonometric-equations",
     to: "periodic-modeling",
     kind: "application",
@@ -123,11 +88,11 @@ const authoredConnections: (Omit<
   },
   {
     from: "periodic-modeling",
-    to: "trigonometric-graphs",
-    kind: "related",
+    to: "parametric-models",
+    kind: "extension",
     explanation:
-      "The amplitude, midline and period of a model are the same features read from a sinusoid graph. A context supplies them as a maximum, minimum and cycle length.",
-    templateIds: ["sinusoid-parameters", "sinusoid-model"],
+      "A rider on a wheel has a height that is a sinusoid of time. Pairing it with a second sinusoid for horizontal position describes the whole circular path as a function of one parameter.",
+    templateIds: ["sinusoid-model"],
   },
   {
     from: "oblique-triangles",
