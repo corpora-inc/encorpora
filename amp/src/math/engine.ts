@@ -253,6 +253,10 @@ import {
   complexMultiplicationCase,
 } from "./complex-practice";
 import {
+  remainingGapTemplates,
+  generateRemainingGapProblem,
+} from "./remaining-gap-practice";
+import {
   vectorMatrixTemplates,
   generateVectorMatrixProblem,
 } from "./vectors-matrices-practice";
@@ -432,6 +436,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...trigonometryTemplates,
   ...geometryModelingTemplates,
   ...functionBehaviorTemplates,
+  ...remainingGapTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
   ...addSubtractTemplates,
@@ -860,6 +865,8 @@ function generateRawProblem(
     return generateFunctionBehaviorProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (remainingGapTemplates.some((t) => t.id === templateId))
+    return generateRemainingGapProblem(templateId, seed);
   if (vectorMatrixTemplates.some((t) => t.id === templateId))
     return generateVectorMatrixProblem(templateId, seed);
   if (trigonometryTemplates.some((t) => t.id === templateId))

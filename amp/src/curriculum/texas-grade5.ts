@@ -390,11 +390,11 @@ export const texasGrade5Inventory: SourceInventory = {
       description:
         "Decode a stem-and-leaf key and solve ordered-value questions",
       requirementIds: [id("9.A"), id("9.C")],
-      skillIds: [],
-      templateIds: [],
-      disposition: "missing-family",
+      skillIds: ["mean-median"],
+      templateIds: ["stem-leaf-read"],
+      disposition: "related-practice",
       limitations:
-        "No registered stem-and-leaf task found in the reconciled catalog. Other graph families do not establish this representation. Construction and fractional/decimal keys need separate scope.",
+        "Choice-response reading of whole-number and one-decimal stem-and-leaf plots: key decoding, least, greatest, range, median, mode, a count above a value and a difference of ordered values. Learner construction, keys with hundredths or fractions, back-to-back or split-stem plots and occurrence-versus-frequency interpretation are not assessed. The attached skill is a Grade 6 statistics skill, so Grade 5 availability is not certified.",
       evidence: [
         {
           sourceId: release,
@@ -408,11 +408,11 @@ export const texasGrade5Inventory: SourceInventory = {
       id: "budget-category-balance",
       description: "Find an allocation from income and an expense table",
       requirementIds: [id("10.F")],
-      skillIds: [],
-      templateIds: [],
-      disposition: "missing-family",
+      skillIds: ["decimal-arithmetic"],
+      templateIds: ["budget-category-balance"],
+      disposition: "related-practice",
       limitations:
-        "General arithmetic and linear-model-value's maximum-purchase budget scenario exist, but do not assess reconciling multiple expense categories with income. Deficit explanations and other financial components are not reconciled.",
+        "Choice-response practice with one to five expense categories in dollars and cents: a missing category, a surplus or deficit with its name, and the change that balances a budget. Learner-built budgets, percent allocation, written deficit explanations and other financial components are not assessed or reconciled.",
       evidence: [
         {
           sourceId: release,
@@ -426,11 +426,11 @@ export const texasGrade5Inventory: SourceInventory = {
       id: "gross-net-income",
       description: "Explain gross versus net income",
       requirementIds: [id("10.B")],
-      skillIds: [],
-      templateIds: [],
-      disposition: "missing-family",
+      skillIds: ["decimal-arithmetic"],
+      templateIds: ["gross-net-pay"],
+      disposition: "related-practice",
       limitations:
-        "Arithmetic does not establish the conceptual distinction. No matching registered family found; standards evidence only, not a sampled released item.",
+        "Choice-response practice in dollars and cents: net pay from gross pay and deductions, gross pay from net pay, a missing deduction and identifying take-home pay on a stub. This exercises the distinction through arithmetic; it does not assess an explanation in words, percent-based taxes or other payroll content. Standards evidence only, not a sampled released item.",
       evidence: [],
     },
   ],

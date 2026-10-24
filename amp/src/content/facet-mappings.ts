@@ -56,6 +56,55 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "triangle-law-reasoning",
+    facetId: "triangle-law-proofs.core",
+    extent: "partial",
+    rationale:
+      "Select the altitude relations that derive the law of sines, the altitude and Pythagorean steps that derive the law of cosines, the law that starts a triangle given SAS, SSS, ASA or AAS measurements, and the number of triangles in an acute-angle side-side-angle case. Does not assess writing a proof, the obtuse-foot case, or computing side and angle values.",
+  },
+  {
+    templateId: "triangle-law-reasoning",
+    facetId: "triangle-law-proofs.HSG.SRT.D.10",
+    extent: "partial",
+    rationale:
+      "Select the altitude relations that derive the law of sines, the altitude and Pythagorean steps that derive the law of cosines, the law that starts a triangle given SAS, SSS, ASA or AAS measurements, and the number of triangles in an acute-angle side-side-angle case. Does not assess writing a proof, the obtuse-foot case, or computing side and angle values.",
+  },
+  {
+    templateId: "model-quantity-roles",
+    facetId: "model-quantities.core",
+    extent: "partial",
+    rationale:
+      "Select variable definitions with units for the independent and dependent quantities, the rate with its units, a unit that matches the rate after conversion, and which quantities vary in a linear situation. Does not assess writing the model equation, graphing, nonlinear relationships or open-ended justification of a modeling choice.",
+  },
+  {
+    templateId: "model-quantity-roles",
+    facetId: "model-quantities.HSN.Q.A.2",
+    extent: "partial",
+    rationale:
+      "Select variable definitions with units for the independent and dependent quantities, the rate with its units, a unit that matches the rate after conversion, and which quantities vary in a linear situation. Does not assess writing the model equation, graphing, nonlinear relationships or open-ended justification of a modeling choice.",
+  },
+  {
+    templateId: "stem-leaf-read",
+    facetId: "mean-median.core",
+    extent: "partial",
+    rationale:
+      "Read a whole-number or one-decimal stem-and-leaf plot through its key to find a value, least, greatest, range, median, mode, a count of values above a given value, and the difference of the greatest and second least values, by selecting from choices. Does not assess constructing a plot, keys with hundredths or fractions, plots with split stems or back-to-back plots, or the mean.",
+  },
+  {
+    templateId: "budget-category-balance",
+    facetId: "decimal-arithmetic.core",
+    extent: "partial",
+    rationale:
+      "Select a missing expense category, a surplus or deficit with its name, and the change that balances a budget, using dollars and cents with one to five categories. Does not assess building a budget, percent allocation, saving goals, written explanation of a deficit or other personal-finance topics.",
+  },
+  {
+    templateId: "gross-net-pay",
+    facetId: "decimal-arithmetic.core",
+    extent: "partial",
+    rationale:
+      "Select net pay from gross pay and listed deductions, net pay from hours and an hourly rate, gross pay from net pay, a missing deduction, and the take-home amount on a pay stub, using dollars and cents. Does not assess defining the terms in words, percent-based taxes, tax forms or other payroll topics.",
+  },
+  {
     templateId: "vector-components",
     facetId: "vectors.core",
     extent: "partial",

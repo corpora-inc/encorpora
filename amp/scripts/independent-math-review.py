@@ -4,6 +4,7 @@ from sat_completion_math_oracle import SUPPORTED as SAT_COMPLETION, CHOICE as SA
 from trigonometry_math_oracle import SUPPORTED as TRIGONOMETRY, solve as solve_trigonometry, review_problem as review_trigonometry_problem, self_test as review_trigonometry_fixtures
 from slope_triangle_math_oracle import SUPPORTED as SLOPE_TRIANGLE, solve as solve_slope_triangle, review_problem as review_slope_triangle_problem, self_test as review_slope_triangle_fixtures
 from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MULTISELECT, solve as solve_hierarchy_multiselect, review_problem as review_hierarchy_multiselect_problem, self_test as review_hierarchy_multiselect_fixtures
+from remaining_gap_math_oracle import SUPPORTED as REMAINING_GAP, solve as solve_remaining_gap, review_problem as review_remaining_gap_problem, self_test as review_remaining_gap_fixtures
 from geometry_modeling_math_oracle import SUPPORTED as GEOMETRY_MODELING, solve as solve_geometry_modeling, review_problem as review_geometry_modeling_problem, self_test as review_geometry_modeling_fixtures
 from vectors_matrices_math_oracle import SUPPORTED as VECTORS_MATRICES, solve as solve_vectors_matrices, review_problem as review_vectors_matrices_problem, self_test as review_vectors_matrices_fixtures
 from function_behavior_math_oracle import SUPPORTED as FUNCTION_BEHAVIOR, solve as solve_function_behavior, review_problem as review_function_behavior_problem, self_test as review_function_behavior_fixtures
@@ -117,6 +118,7 @@ SUPPORTED |= COMPLEX
 SUPPORTED |= COMPLEX_CONICS
 SUPPORTED |= GEOMETRY_FAMILIES
 SUPPORTED |= GEOMETRY_MODELING
+SUPPORTED |= REMAINING_GAP
 SUPPORTED |= FUNCTION_BEHAVIOR
 SUPPORTED |= VECTORS_MATRICES
 SUPPORTED |= STAT_PROB
@@ -218,6 +220,8 @@ def solve(public):
 def solve_family(public):
     if public["templateId"] in TRIGONOMETRY:
         return solve_trigonometry(public)
+    if public["templateId"] in REMAINING_GAP:
+        return solve_remaining_gap(public)
     if public["templateId"] in GEOMETRY_MODELING:
         return solve_geometry_modeling(public)
     if public["templateId"] in SLOPE_TRIANGLE:
@@ -643,6 +647,8 @@ def review(stream):
             review_geometry_family_problem(problem)
         if template in COMPLEX:
             review_complex_problem(problem)
+        if template in REMAINING_GAP:
+            review_remaining_gap_problem(problem)
         if template in COMPLEX_CONICS:
             review_complex_conics_problem(problem)
         if template in GEOMETRY_MODELING:
@@ -731,7 +737,7 @@ def review(stream):
         elif template in HIERARCHY_MULTISELECT:
             expected = review_hierarchy_multiselect_problem(problem)
             actual = problem["answer"]
-        elif template in LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        elif template in LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -791,6 +797,7 @@ def review(stream):
     review_quadratic_irrational_fixtures()
     review_relation_repair_fixtures()
     review_complex_fixtures()
+    review_remaining_gap_fixtures()
     review_complex_conics_fixtures()
     review_geometry_family_fixtures()
     review_geometry_modeling_fixtures()
