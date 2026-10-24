@@ -386,6 +386,10 @@ try {
       .getAttribute("aria-pressed"),
     "true",
   );
+  // Finish restoring the saved filter before deliberately reloading into an
+  // error. WebKit reports a cancelled in-flight fetch as an access-control
+  // error if the second reload interrupts the first page's account lookup.
+  await page.locator('[data-strength="Strong"]').first().waitFor();
   failProgress = true;
   await page.reload();
   await page
