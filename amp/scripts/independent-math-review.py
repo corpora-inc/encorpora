@@ -1,6 +1,7 @@
 from sat_completion_math_oracle import SUPPORTED as SAT_COMPLETION, CHOICE as SAT_COMPLETION_CHOICE, solve as solve_sat_completion, self_test as review_sat_completion_fixtures, review_problem as review_sat_completion_problem
 #!/usr/bin/env python3
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
+from trigonometry_math_oracle import SUPPORTED as TRIGONOMETRY, solve as solve_trigonometry, review_problem as review_trigonometry_problem, self_test as review_trigonometry_fixtures
 from slope_triangle_math_oracle import SUPPORTED as SLOPE_TRIANGLE, solve as solve_slope_triangle, review_problem as review_slope_triangle_problem, self_test as review_slope_triangle_fixtures
 from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MULTISELECT, solve as solve_hierarchy_multiselect, review_problem as review_hierarchy_multiselect_problem, self_test as review_hierarchy_multiselect_fixtures
 from geometry_modeling_math_oracle import SUPPORTED as GEOMETRY_MODELING, solve as solve_geometry_modeling, review_problem as review_geometry_modeling_problem, self_test as review_geometry_modeling_fixtures
@@ -112,7 +113,7 @@ SUPPORTED |= COMPLEX
 SUPPORTED |= GEOMETRY_MODELING
 SUPPORTED |= FUNCTION_BEHAVIOR
 SUPPORTED |= INVERSE_ROUNDING
-SUPPORTED |= SLOPE_TRIANGLE | SUCCESSIVE_PERCENT | STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT
+SUPPORTED |= TRIGONOMETRY | SLOPE_TRIANGLE | SUCCESSIVE_PERCENT | STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT
 SUPPORTED |= SAT_COMPLETION
 SUPPORTED |= ASSESSMENT_GAP
 SUPPORTED |= RADICAL_EQUATION | RATIONAL_EQUATION | GEOMETRY_PROOF
@@ -207,6 +208,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if public["templateId"] in TRIGONOMETRY:
+        return solve_trigonometry(public)
     if public["templateId"] in GEOMETRY_MODELING:
         return solve_geometry_modeling(public)
     if public["templateId"] in SLOPE_TRIANGLE:
@@ -695,7 +698,10 @@ def review(stream):
             review_rational_problem(problem)
             if record:
                 rational_corpus.record(public, solved)
-        if template in SLOPE_TRIANGLE:
+        if template in TRIGONOMETRY:
+            expected = review_trigonometry_problem(problem)
+            actual = problem["answer"]
+        elif template in SLOPE_TRIANGLE:
             expected = review_slope_triangle_problem(problem)
             actual = problem["answer"]
         elif template in HIERARCHY_MULTISELECT:
@@ -768,6 +774,7 @@ def review(stream):
     review_linear_initial_value_fixtures()
     review_hierarchy_multiselect_fixtures()
     review_slope_triangle_fixtures()
+    review_trigonometry_fixtures()
     review_study_design_fixtures()
     review_sat_completion_fixtures()
     review_assessment_gap_fixtures()

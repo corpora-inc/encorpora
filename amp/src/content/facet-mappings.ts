@@ -56,6 +56,76 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "special-angle-exact-value",
+    facetId: "special-angle-values.HSF.TF.A.3",
+    extent: "partial",
+    rationale:
+      "Choose the exact sine, cosine, tangent or unit-circle point of a special angle in any quadrant, in degrees or radians, including coterminal angles and axis angles where tangent is undefined. Does not assess deriving the values from triangles or constructing the unit circle.",
+  },
+  {
+    templateId: "trig-symmetry-value",
+    facetId: "trigonometric-symmetry.HSF.TF.A.4",
+    extent: "partial",
+    rationale:
+      "Choose a value of sine, cosine or tangent at -θ, π±θ or θ plus whole turns from one given value, with the other coordinate found by the Pythagorean identity for acute θ. Does not assess written explanations of symmetry or periodicity.",
+  },
+  {
+    templateId: "sinusoid-parameters",
+    facetId: "trigonometric-graphs.HSF.IF.C.7",
+    extent: "partial",
+    rationale:
+      "Read amplitude, period, midline, extreme values and horizontal shift from y = A sin(B(x − h)) + k, and choose the sine equation of a plotted graph with no horizontal shift. Does not assess sketching graphs by hand, cosine or tangent graphs, or graphs with phase shift.",
+  },
+  {
+    templateId: "inverse-trig-value",
+    facetId: "inverse-trigonometry.HSF.TF.B.6",
+    extent: "partial",
+    rationale:
+      "Evaluate arcsin, arccos and arctan at special values with their restricted ranges, arcsin(sin x) type compositions outside the range, and sine, cosine or tangent of an inverse value. Does not assess justifying the restrictions or graphing inverse functions.",
+  },
+  {
+    templateId: "trig-equation-solutions",
+    facetId: "trigonometric-equations.HSF.TF.B.7",
+    extent: "partial",
+    rationale:
+      "List or count the solutions of simple sine, cosine and tangent equations on one turn in degrees or radians, including double-angle counts and endpoint cases. Does not assess equations needing identities, quadratic forms, general solutions or contextual modeling.",
+  },
+  {
+    templateId: "trig-identity-value",
+    facetId: "trigonometric-identities.HSF.TF.C.8",
+    extent: "partial",
+    rationale:
+      "Use sin²θ + cos²θ = 1 with a quadrant to choose a missing sine, cosine or tangent value. Does not assess proving the identity.",
+  },
+  {
+    templateId: "trig-identity-value",
+    facetId: "trigonometric-identities.HSF.TF.C.9",
+    extent: "partial",
+    rationale:
+      "Choose exact values at 15°, 75° and 105° with angle-sum and difference formulas, and apply the cofunction relation in radians. Does not assess deriving or proving the formulas or simplifying symbolic expressions.",
+  },
+  {
+    templateId: "oblique-triangle-solve",
+    facetId: "oblique-triangles.HSG.SRT.D.11",
+    extent: "partial",
+    rationale:
+      "Choose a side or angle found by the law of sines or cosines, rounded as stated, and the number of triangles in the ambiguous SSA case. Does not assess multi-step triangle solving, applications with bearings or proving the laws.",
+  },
+  {
+    templateId: "trig-triangle-area",
+    facetId: "trigonometric-area.HSG.SRT.D.9",
+    extent: "partial",
+    rationale:
+      "Find exact or rounded area from two sides and the included angle, a missing side from the area, and compare areas of supplementary included angles. Does not assess deriving the formula.",
+  },
+  {
+    templateId: "sinusoid-model",
+    facetId: "periodic-modeling.HSF.TF.B.5",
+    extent: "partial",
+    rationale:
+      "Choose the sine or cosine model from a maximum, minimum, period and starting position, find one parameter, or evaluate the model at a time. Does not assess fitting models to data or constructing graphs.",
+  },
+  {
     templateId: "solid-volume-context",
     facetId: "solid-volume-models.core",
     extent: "partial",
