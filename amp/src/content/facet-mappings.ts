@@ -105,6 +105,202 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Probability of a compound event by listing a sample space of 8 to 16 equally likely outcomes (two dice, coin and die, three flips, two spinners), an estimate from 20 given random-digit trials, and comparison of experimental with theoretical probability. Does not assess drawing a tree or table, running a simulation, probabilities of unequal outcomes or dependent events.",
   },
   {
+    templateId: "normal-model-rule",
+    facetId: "normal-distributions.core",
+    extent: "partial",
+    rationale:
+      "Select the percent between, above or below mean ± k standard deviations by the 68–95–99.7 rule, the interval for a stated percent, the larger z-score across two data sets, and the data set a normal model suits. Does not assess table or calculator normal probabilities, non-integer z-scores, checking fit with normal probability plots or sampling distributions.",
+  },
+  {
+    templateId: "normal-model-rule",
+    facetId: "normal-distributions.HSS.ID.A.4",
+    extent: "partial",
+    rationale:
+      "Select the percent between, above or below mean ± k standard deviations by the 68–95–99.7 rule, the interval for a stated percent, the larger z-score across two data sets, and the data set a normal model suits. Does not assess table or calculator normal probabilities, non-integer z-scores, checking fit with normal probability plots or sampling distributions.",
+  },
+  {
+    templateId: "random-variable-distribution",
+    facetId: "random-variables.core",
+    extent: "partial",
+    rationale:
+      "Define a numerical random variable, find P(X = k) and tail probabilities from counted outcomes or a bar chart, and complete a distribution whose probabilities sum to 1. Does not assess drawing the bar chart, continuous random variables or variance.",
+  },
+  {
+    templateId: "random-variable-distribution",
+    facetId: "random-variables.HSS.MD.A.1",
+    extent: "partial",
+    rationale:
+      "Define a numerical random variable, find P(X = k) and tail probabilities from counted outcomes or a bar chart, and complete a distribution whose probabilities sum to 1. Does not assess drawing the bar chart, continuous random variables or variance.",
+  },
+  {
+    templateId: "theoretical-distribution-expectation",
+    facetId: "theoretical-distributions.core",
+    extent: "partial",
+    rationale:
+      "Build a distribution from two fair dice or three independent trials and compute probabilities and an exact expected value for a payoff game. Does not assess binomial distributions beyond three trials, variance or continuous models.",
+  },
+  {
+    templateId: "theoretical-distribution-expectation",
+    facetId: "theoretical-distributions.HSS.MD.A.3",
+    extent: "partial",
+    rationale:
+      "Build a distribution from two fair dice or three independent trials and compute probabilities and an exact expected value for a payoff game. Does not assess binomial distributions beyond three trials, variance or continuous models.",
+  },
+  {
+    templateId: "empirical-distribution-expectation",
+    facetId: "empirical-distributions.core",
+    extent: "partial",
+    rationale:
+      "From an observed frequency bar chart, find a relative frequency, the expected value per trial and the expected total for a larger group. Does not assess comparing the empirical distribution with a theoretical model or its sampling variability.",
+  },
+  {
+    templateId: "empirical-distribution-expectation",
+    facetId: "empirical-distributions.HSS.MD.A.4",
+    extent: "partial",
+    rationale:
+      "From an observed frequency bar chart, find a relative frequency, the expected value per trial and the expected total for a larger group. Does not assess comparing the empirical distribution with a theoretical model or its sampling variability.",
+  },
+  {
+    templateId: "strategy-expected-value",
+    facetId: "decision-strategies.core",
+    extent: "partial",
+    rationale:
+      "Select the strategy with the greatest expected net gain or least expected cost among games, a warranty, or a sure amount and a gamble, with exact arithmetic. Does not assess risk preference, decision trees with several stages or evaluating estimated probabilities.",
+  },
+  {
+    templateId: "strategy-expected-value",
+    facetId: "decision-strategies.HSS.MD.B.7",
+    extent: "partial",
+    rationale:
+      "Select the strategy with the greatest expected net gain or least expected cost among games, a warranty, or a sure amount and a gamble, with exact arithmetic. Does not assess risk preference, decision trees with several stages or evaluating estimated probabilities.",
+  },
+  {
+    templateId: "fair-selection-procedure",
+    facetId: "fair-random-decisions.core",
+    extent: "partial",
+    rationale:
+      "Select a random procedure that gives each of several people equal chance and compute a person's probability under two-dice, remainder and re-roll procedures. Does not assess designing a new procedure or carrying out a random selection.",
+  },
+  {
+    templateId: "fair-selection-procedure",
+    facetId: "fair-random-decisions.HSS.MD.B.6",
+    extent: "partial",
+    rationale:
+      "Select a random procedure that gives each of several people equal chance and compute a person's probability under two-dice, remainder and re-roll procedures. Does not assess designing a new procedure or carrying out a random selection.",
+  },
+  {
+    templateId: "simulation-consistency-check",
+    facetId: "simulation-model-checks.core",
+    extent: "partial",
+    rationale:
+      "From a bar chart of 100 simulated results, find the number at least as extreme as an observed result (one or two-sided) and decide consistency at a stated cutoff. Does not assess running a simulation or designing one for a model.",
+  },
+  {
+    templateId: "simulation-consistency-check",
+    facetId: "simulation-model-checks.HSS.IC.A.2",
+    extent: "partial",
+    rationale:
+      "From a bar chart of 100 simulated results, find the number at least as extreme as an observed result (one or two-sided) and decide consistency at a stated cutoff. Does not assess running a simulation or designing one for a model.",
+  },
+  {
+    templateId: "randomization-test-decision",
+    facetId: "randomization-tests.core",
+    extent: "partial",
+    rationale:
+      "From a chart of 200 re-randomized differences, find the proportion as or more extreme than an observed treatment difference and decide significance at a stated cutoff. Does not assess carrying out the reshuffles or writing the conclusion in context.",
+  },
+  {
+    templateId: "randomization-test-decision",
+    facetId: "randomization-tests.HSS.IC.B.5",
+    extent: "partial",
+    rationale:
+      "From a chart of 200 re-randomized differences, find the proportion as or more extreme than an observed treatment difference and decide significance at a stated cutoff. Does not assess carrying out the reshuffles or writing the conclusion in context.",
+  },
+  {
+    templateId: "report-flaw-critique",
+    facetId: "statistical-report-critique.core",
+    extent: "partial",
+    rationale:
+      "Identify voluntary response, a convenience sample, a too-small sample, a missing margin of error or a truncated axis, including reports with two flaws. Does not assess causal claims from observational studies (assessed by the causal-claim family), or free-response critique.",
+  },
+  {
+    templateId: "report-flaw-critique",
+    facetId: "statistical-report-critique.HSS.IC.B.6",
+    extent: "partial",
+    rationale:
+      "Identify voluntary response, a convenience sample, a too-small sample, a missing margin of error or a truncated axis, including reports with two flaws. Does not assess causal claims from observational studies (assessed by the causal-claim family), or free-response critique.",
+  },
+  {
+    templateId: "model-residual-conclusion",
+    facetId: "model-validation.core",
+    extent: "partial",
+    rationale:
+      "Choose the conclusion supported by a residual table: curved pattern, no pattern, extrapolation, or which of two models has the smaller sum of squared residuals. Does not assess computing a regression line, graphing residual plots or writing the limitation in words.",
+  },
+  {
+    templateId: "complex-plane-forms",
+    facetId: "complex-plane.core",
+    extent: "partial",
+    rationale:
+      "Read a complex number from a plotted point, find an exact modulus, add two plotted numbers, and convert between a+bi and r(cos θ + i sin θ) at special angles with exact values, by selecting among written forms. Does not assess plotting points, geometric multiplication or powers of complex numbers, or angles beyond the multiples of π/6 and π/4.",
+  },
+  {
+    templateId: "complex-conjugate-division",
+    facetId: "complex-conjugates.core",
+    extent: "partial",
+    rationale:
+      "Find a conjugate, evaluate z·z̄, and divide two integer-coefficient complex numbers into exact standard form with fractional parts, by selecting among written results. Does not assess moduli of quotients, conjugate properties of sums and products, or proofs.",
+  },
+  {
+    templateId: "complex-distance-midpoint",
+    facetId: "complex-distance.core",
+    extent: "partial",
+    rationale:
+      "Find the exact distance |z − w|, the midpoint, a missing endpoint of a segment, and the center and radius of |z − w| = r, with integer-coefficient numbers and selected answers. Does not assess perpendicular bisectors, loci other than circles, or written justification.",
+  },
+  {
+    templateId: "complex-quadratic-factors",
+    facetId: "complex-factorization.core",
+    extent: "partial",
+    rationale:
+      "Factor x² + k² into complex linear factors, solve monic quadratics with negative discriminant in exact a ± bi form (including radicals and halves), and select the quadratic with given conjugate roots. Does not assess factoring higher-degree polynomials or non-monic quadratics.",
+  },
+  {
+    templateId: "polynomial-root-count",
+    facetId: "fundamental-theorem-algebra.core",
+    extent: "partial",
+    rationale:
+      "Count complex roots with multiplicity from a degree or factored form, name the conjugate root forced by real coefficients, and bound or classify the number of real roots of a real polynomial. Does not assess finding roots, the theorem's proof, or polynomials with nonreal coefficients.",
+  },
+  {
+    templateId: "polar-cartesian-conversion",
+    facetId: "polar-coordinates.core",
+    extent: "partial",
+    rationale:
+      "Convert polar to Cartesian and Cartesian to polar at special angles, including negative r and axis angles, and select equivalent polar names. Does not assess graphing polar curves, polar equations or converting equations.",
+  },
+  {
+    templateId: "parametric-linear-motion",
+    facetId: "parametric-models.core",
+    extent: "partial",
+    rationale:
+      "Evaluate position, eliminate the parameter, find speed, solve for a time and read direction for linear parametric motion. Does not assess nonlinear or projectile motion, graphing a parametric curve or deriving a model from a context.",
+  },
+  {
+    templateId: "conic-standard-form",
+    facetId: "conic-sections.core",
+    extent: "partial",
+    rationale:
+      "Identify a circle, ellipse, parabola or hyperbola from an equation, read an ellipse's center and longer-axis ends, and complete the square for a circle or an ellipse in general form. Does not assess graphing, hyperbola vertices and asymptotes, eccentricity or rotated conics.",
+  },
+  {
+    templateId: "parabola-focus-directrix",
+    facetId: "parabola-locus.core",
+    extent: "partial",
+    rationale:
+      "Find the vertex, equation, focus and directrix of a parabola from a focus and directrix or from an equation, in vertical and horizontal orientations. Does not assess deriving the equation from the distance condition or graphing.",
+  },
+  {
     templateId: "special-angle-exact-value",
     facetId: "special-angle-values.HSF.TF.A.3",
     extent: "partial",

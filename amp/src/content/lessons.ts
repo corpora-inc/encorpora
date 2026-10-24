@@ -72,6 +72,8 @@ import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
+import { statisticsProbabilityLessons } from "./statistics-probability-lessons";
+import { complexConicsLessons } from "./complex-conics-lessons";
 import { trigonometryLessons } from "./trigonometry-lessons";
 import { geometryModelingLessons } from "./geometry-modeling-lessons";
 import { functionBehaviorLessons } from "./function-behavior-lessons";
@@ -676,6 +678,8 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...complexLessons,
+  ...statisticsProbabilityLessons,
+  ...complexConicsLessons,
   ...trigonometryLessons,
   ...geometryModelingLessons,
   ...functionBehaviorLessons,
