@@ -257,6 +257,10 @@ import {
   complexMultiplicationCase,
 } from "./complex-practice";
 import {
+  vectorMatrixTemplates,
+  generateVectorMatrixProblem,
+} from "./vectors-matrices-practice";
+import {
   trigonometryTemplates,
   generateTrigonometryProblem,
 } from "./trigonometry-practice";
@@ -426,6 +430,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   complexMultiplicationTemplate,
+  ...vectorMatrixTemplates,
   ...statisticsProbabilityTemplates,
   ...complexConicsTemplates,
   ...trigonometryTemplates,
@@ -863,6 +868,8 @@ function generateRawProblem(
     return generateFunctionBehaviorProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (vectorMatrixTemplates.some((t) => t.id === templateId))
+    return generateVectorMatrixProblem(templateId, seed);
   if (trigonometryTemplates.some((t) => t.id === templateId))
     return generateTrigonometryProblem(templateId, seed);
   if (geometryModelingTemplates.some((t) => t.id === templateId))
