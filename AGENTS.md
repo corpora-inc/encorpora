@@ -34,6 +34,20 @@ artifacts are public. Treat every published surface accordingly.
 - A later deletion does not erase Git history. Report an exposure privately and
   handle rotation or history changes with the appropriate authorization.
 
+## Mandatory cleanup after merge
+
+**A merged PR is not the end of the task. The owning agent must clean up its
+worktree before reporting completion.** Do not leave merged worktrees or their
+`target/`, `node_modules/`, app bundles, or other regenerable output on disk.
+
+Stop processes using the worktree, verify that its exact current HEAD was merged,
+and inspect tracked, untracked, ignored, unpushed, and divergent work. Preserve
+local configuration and useful work. Remove verified regenerable output, then
+run the deletion preflight in
+[the trunk PR procedure](.claude/skills/trunk-pr/SKILL.md#11-prove-the-work-is-safe-then-clean-up-immediately).
+Never force-remove a worktree. If cleanup is blocked, report the path, reason,
+and next action explicitly; do not silently leave it behind or call the task done.
+
 ## The board: Inbox → Doing → Done
 
 One Project board. Three columns. It is a fast-draining queue, **not an archive**.

@@ -217,6 +217,11 @@ git -C "$WT" push
 
 ## 11. Prove the work is safe, then clean up immediately
 
+**Required before reporting completion:** the owning agent removes its merged
+worktree and verified regenerable output using this preflight. A merge alone does
+not finish the task. If cleanup is blocked, report the worktree path, blocker, and
+next action explicitly. Never silently leave a merged worktree behind.
+
 After GitHub confirms the PR was squash-merged, verify the worktree before
 deleting anything. Only the worktree's owning agent may run this, after every
 build, dev server, emulator, and other process using it has exited. Run the
