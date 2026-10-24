@@ -60,6 +60,7 @@ import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
+import { geometryModelingPrinciples } from "./geometry-modeling-lessons";
 import { functionBehaviorPrinciples } from "./function-behavior-lessons";
 import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
@@ -83,6 +84,7 @@ export const principles: Record<string, string> = {
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...complexPrinciples,
+  ...geometryModelingPrinciples,
   ...functionBehaviorPrinciples,
   ...absoluteValuePrinciples,
   ...polynomialPrinciples,
