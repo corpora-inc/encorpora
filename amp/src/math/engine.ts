@@ -24,6 +24,10 @@ import {
   generateRationalEquationProblem,
 } from "./rational-equation-practice";
 import {
+  k8RepresentationTemplates,
+  generateK8RepresentationProblem,
+} from "./k8-representations-practice";
+import {
   geometryProofTemplates,
   proofConstructionTemplates,
   generateProofConstructionProblem,
@@ -461,6 +465,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...rationalEquationTemplates,
   ...geometryProofTemplates,
   ...proofConstructionTemplates,
+  ...k8RepresentationTemplates,
   ...nonlinearSystemTemplates,
   ...absoluteValueTemplates,
   ...graphicalTemplates,
@@ -679,6 +684,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...rationalEquationTemplates,
     ...geometryProofTemplates,
     ...proofConstructionTemplates,
+    ...k8RepresentationTemplates,
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -821,6 +827,8 @@ function generateRawProblem(
     return generateRationalEquationProblem(templateId, seed);
   if (geometryProofTemplates.some((t) => t.id === templateId))
     return generateGeometryProofProblem(templateId, seed);
+  if (k8RepresentationTemplates.some((t) => t.id === templateId))
+    return generateK8RepresentationProblem(templateId, seed);
   if (proofConstructionTemplates.some((t) => t.id === templateId))
     return generateProofConstructionProblem(templateId, seed);
   if (rationalExpressionTemplates.some((t) => t.id === templateId))
