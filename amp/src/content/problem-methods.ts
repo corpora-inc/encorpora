@@ -61,6 +61,7 @@ import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import { complexMethods } from "./complex-lessons";
 import { statisticsProbabilityMethods } from "./statistics-probability-lessons";
+import { geometryModelingMethods } from "./geometry-modeling-lessons";
 import { functionBehaviorMethods } from "./function-behavior-lessons";
 import { absoluteValueMethods } from "./absolute-value-lessons";
 import type { ProblemMethod } from "./problem-lessons";
@@ -89,6 +90,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...quadraticMethods,
   ...complexMethods,
   ...statisticsProbabilityMethods,
+  ...geometryModelingMethods,
   ...functionBehaviorMethods,
   ...absoluteValueMethods,
   ...polynomialMethods,

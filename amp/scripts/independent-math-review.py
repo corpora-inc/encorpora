@@ -3,6 +3,7 @@ from sat_completion_math_oracle import SUPPORTED as SAT_COMPLETION, CHOICE as SA
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
 from slope_triangle_math_oracle import SUPPORTED as SLOPE_TRIANGLE, solve as solve_slope_triangle, review_problem as review_slope_triangle_problem, self_test as review_slope_triangle_fixtures
 from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MULTISELECT, solve as solve_hierarchy_multiselect, review_problem as review_hierarchy_multiselect_problem, self_test as review_hierarchy_multiselect_fixtures
+from geometry_modeling_math_oracle import SUPPORTED as GEOMETRY_MODELING, solve as solve_geometry_modeling, review_problem as review_geometry_modeling_problem, self_test as review_geometry_modeling_fixtures
 from function_behavior_math_oracle import SUPPORTED as FUNCTION_BEHAVIOR, solve as solve_function_behavior, review_problem as review_function_behavior_problem, self_test as review_function_behavior_fixtures
 from statistics_probability_math_oracle import SUPPORTED as STAT_PROB, solve as solve_stat_prob, review_problem as review_stat_prob_problem, self_test as review_stat_prob_fixtures
 from complex_math_oracle import SUPPORTED as COMPLEX, solve as solve_complex, review_problem as review_complex_problem, self_test as review_complex_fixtures
@@ -109,6 +110,7 @@ SUPPORTED |= TRIANGLE_CONGRUENCE
 SUPPORTED |= QUADRATIC_IRRATIONAL
 SUPPORTED |= RELATION_REPAIR
 SUPPORTED |= COMPLEX
+SUPPORTED |= GEOMETRY_MODELING
 SUPPORTED |= FUNCTION_BEHAVIOR
 SUPPORTED |= STAT_PROB
 SUPPORTED |= INVERSE_ROUNDING
@@ -207,6 +209,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if public["templateId"] in GEOMETRY_MODELING:
+        return solve_geometry_modeling(public)
     if public["templateId"] in SLOPE_TRIANGLE:
         return solve_slope_triangle(public)
     if public["templateId"] in SUCCESSIVE_PERCENT:
@@ -622,6 +626,8 @@ def review(stream):
             review_relation_repair_problem(problem)
         if template in COMPLEX:
             review_complex_problem(problem)
+        if template in GEOMETRY_MODELING:
+            review_geometry_modeling_problem(problem)
         if template in FUNCTION_BEHAVIOR:
             review_function_behavior_problem(problem)
         if template in STAT_PROB:
@@ -761,6 +767,7 @@ def review(stream):
     review_quadratic_irrational_fixtures()
     review_relation_repair_fixtures()
     review_complex_fixtures()
+    review_geometry_modeling_fixtures()
     review_function_behavior_fixtures()
     review_stat_prob_fixtures()
     review_fraction_expression_fixtures()

@@ -1,10 +1,7 @@
 import type { SkillConnection } from "./types";
 
 /** Editorial connections supported by existing content, not assessment dependencies. */
-const authoredConnections: (Omit<
-  SkillConnection,
-  "skillId" | "direction"
-> & {
+const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
   from: string;
   to: string;
 })[] = [
@@ -213,6 +210,12 @@ randomization-tests|statistical-report-critique|application|A significant random
 statistical-report-critique|model-validation|related|Asking whether a report's evidence supports its claim is the same question as checking whether a model's predictions agree with the data.|report-flaw-critique
 decision-strategies|model-validation|related|A decision made by expected value is only as good as the probabilities in the model, which is why a model is checked against data.|strategy-expected-value
 model-validation|periodic-modeling|application|Residual patterns apply to any model, including a sine or cosine model whose midline, amplitude and period are checked against measurements.|model-residual-conclusion
+solid-volume-models|density-modeling|application|Mass is density times volume, so a solid's volume formula gives the mass of a rod or block of known density.|density-context
+density-modeling|geometric-design|related|Mass is density times volume, and the cost of painting a wall is a price per square meter times the painted area. Both multiply a rate per unit by a measured amount, which is how a design is priced.|geometric-design-constraint
+geometric-design|nonlinear-equation-modeling|extension|The area of a three-sided fenced garden, width times (fence minus two widths), is a quadratic constraint model with a greatest value.|geometric-design-constraint
+cavalieri-principle|solid-volume-models|application|Equal cross-sections show that an oblique solid has the volume of the right solid with the same base and perpendicular height.|cavalieri-volume-reasoning
+sections-and-revolutions|solid-volume-models|application|A rotated rectangle, right triangle or semicircle sweeps out a cylinder, cone or sphere, whose volume formula gives the volume.|section-revolution-solid
+similarity-theorems|pythagorean-theorem|related|The two leg relations of a right triangle with its altitude add to give the Pythagorean theorem.|similarity-theorem-length
 `;
 
 export const curriculumConnections: typeof authoredConnections = [
