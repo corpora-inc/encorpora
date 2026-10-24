@@ -45,6 +45,63 @@ const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
       "Even and odd outcomes form sets. Listing their members helps count outcomes when finding probabilities.",
     templateIds: ["event-set-count"],
   },
+  // Trigonometry cluster.
+  {
+    from: "right-triangle-trigonometry",
+    to: "special-angle-values",
+    kind: "extension",
+    explanation:
+      "Right-triangle ratios of 30°, 45° and 60° become the unit-circle coordinates, and the quadrant sign extends them to every angle.",
+    templateIds: ["special-angle-exact-value"],
+  },
+  {
+    from: "special-angle-values",
+    to: "trigonometric-symmetry",
+    kind: "extension",
+    explanation:
+      "Once the values at special angles are known, reflecting or rotating the angle changes only the sign or the function, so other angles need no new values.",
+    templateIds: ["trig-symmetry-value"],
+  },
+  {
+    from: "special-angle-values",
+    to: "trigonometric-identities",
+    kind: "application",
+    explanation:
+      "Angle-sum formulas combine the exact values at 30°, 45° and 60° to give exact values at angles such as 15° and 75°.",
+    templateIds: ["trig-identity-value"],
+  },
+  {
+    from: "trigonometric-symmetry",
+    to: "trigonometric-graphs",
+    kind: "related",
+    explanation:
+      "Odd, even and periodic symmetry of sine and cosine appear on the graph as point symmetry, mirror symmetry and repetition every period.",
+    templateIds: ["sinusoid-parameters"],
+  },
+  {
+    from: "trigonometric-equations",
+    to: "periodic-modeling",
+    kind: "application",
+    explanation:
+      "Setting a sinusoidal model equal to a value and solving gives the times at which the modeled quantity reaches that value.",
+    templateIds: ["sinusoid-model"],
+  },
+  {
+    from: "periodic-modeling",
+    to: "parametric-models",
+    kind: "extension",
+    explanation:
+      "A rider on a wheel has a height that is a sinusoid of time. Pairing it with a second sinusoid for horizontal position describes the whole circular path as a function of one parameter.",
+    templateIds: ["sinusoid-model"],
+  },
+  {
+    from: "oblique-triangles",
+    to: "trigonometric-area",
+    kind: "related",
+    explanation:
+      "The height used to count triangles in the ambiguous case is b sin A, the same product that appears in the area formula one half ab sin C.",
+    templateIds: ["trig-triangle-area"],
+  },
   {
     from: "polynomial-behavior",
     to: "rational-function-behavior",
@@ -202,11 +259,37 @@ categorical-association|conditional-probability|extension|A conditional relative
 statistical-summary-comparison|randomization-tests|application|The difference in centers between two groups is the statistic that a randomization test compares with chance.|outlier-center-shift
 nonlinear-equation-modeling|model-validation|application|After solving a quadratic or exponential model, check its solution against the context and the data.|quadratic-context-model
 fraction-plot-computation|fraction-division|application|Sharing a measured total equally is a fraction division.|fraction-share-amount
-vector-modeling|parametric-models|application|A moving object's position is its starting point plus its velocity vector times the elapsed time, which is the pair of functions of time that a parametric model uses.|vector-resultant
+vector-modeling|oblique-triangles|application|Two forces or velocities that are not perpendicular form a triangle with their resultant, so the law of cosines gives the resultant's magnitude and the law of sines its direction.|oblique-triangle-solve
 matrix-data|matrices|extension|The stock at two stores adds as matrices, and a price list multiplies a quantity matrix to give totals. Operations on data tables are the matrix operations.|matrix-data-reading
 matrix-properties|matrix-inverses|extension|Since order matters in a product, an inverse must satisfy both AA^-1 = I and A^-1A = I, and the identity matrix is the matrix that leaves a product unchanged.|matrix-laws
 matrix-systems|matrix-transformations|application|Solving AX = B asks which point the matrix A sends to B, so the inverse undoes the transformation.|matrix-linear-system
 matrix-transformations|transformation-constructions|related|Multiplying matrices composes transformations: the product AB applies B first and then A. This is the matrix form of carrying one figure to another by a sequence of moves.|matrix-transformation
+normal-distributions|statistical-inference|extension|Means of repeated samples vary in a roughly normal pattern, so the same rule that gives percents within standard deviations gives the margin of error.|normal-model-rule
+theoretical-distributions|decision-strategies|application|Expected values computed from a theoretical distribution are the averages used to compare uncertain choices.|theoretical-distribution-expectation
+empirical-distributions|simulation-model-checks|related|Simulated results form an empirical distribution, and its relative frequencies estimate how often a result as extreme as the observed one arises.|empirical-distribution-expectation
+fair-random-decisions|simulation-model-checks|extension|A fair procedure gives each outcome the same probability, which is the model that simulated results are compared against.|fair-selection-procedure
+randomization-tests|statistical-report-critique|application|A significant randomization test from random assignment supports a causal claim, which is what a critique of a report asks whether the design justifies.|randomization-test-decision
+statistical-report-critique|model-validation|related|Asking whether a report's evidence supports its claim is the same question as checking whether a model's predictions agree with the data.|report-flaw-critique
+decision-strategies|model-validation|related|A decision made by expected value is only as good as the probabilities in the model, which is why a model is checked against data.|strategy-expected-value
+model-validation|periodic-modeling|application|Residual patterns apply to any model, including a sine or cosine model whose midline, amplitude and period are checked against measurements.|model-residual-conclusion
+complex-conjugates|complex-distance|extension|The squared modulus of a complex number is the number times its conjugate. The distance between z and w is the modulus of z − w, so its square is (z − w) times that difference's conjugate.|complex-distance-midpoint
+complex-plane|polar-coordinates|related|The polar form r(cos θ + i sin θ) of a complex number uses the same distance r and angle θ as the polar coordinates of the point (a, b).|polar-cartesian-conversion
+complex-distance|conic-sections|application|The points z whose distance from w is a fixed number r form a circle, the first conic section.|conic-standard-form
+fundamental-theorem-algebra|polynomial-behavior|application|A degree-n polynomial has n complex zeros counting multiplicity, so its graph crosses or touches the x-axis at most n times, and its nonreal zeros come in conjugate pairs that never appear as x-intercepts.|polynomial-root-count
+polar-coordinates|parametric-models|extension|A polar curve r = f(θ) is a parametric curve x = f(θ)cos θ, y = f(θ)sin θ with θ as the parameter, so polar points are positions given by a parameter.|polar-cartesian-conversion
+parametric-models|vector-modeling|application|A position (x(t), y(t)) is a vector that changes at a constant velocity vector (a, b), whose length is the speed.|parametric-linear-motion
+parabola-locus|conic-sections|extension|A parabola is the points equally far from a focus and a directrix. Ellipses and hyperbolas extend the idea: constant sum or difference of distances to two foci.|parabola-focus-directrix
+conic-sections|parametric-models|related|A circle or ellipse can be traced by x = h + a cos t, y = k + b sin t, which satisfies the conic's standard equation because cos² t + sin² t = 1.|conic-standard-form
+line-angle-proofs|triangle-proofs|extension|Equal alternate interior angles from a line parallel to one side are the key step in the proof that a triangle's angles total 180 degrees.|line-angle-proof-reasons
+line-angle-proofs|geometric-constructions|application|Points equidistant from two endpoints lie on the perpendicular bisector. That fact is why arcs of equal radius from both endpoints construct it.|line-angle-proof-reasons
+triangle-proofs|coordinate-proofs|application|The midsegment and median facts can be checked with coordinates: a midsegment has half the vector of the side it is parallel to.|triangle-theorem-consequences
+parallelogram-proofs|coordinate-proofs|application|Bisecting diagonals and congruent rectangle diagonals become coordinate tests: compare midpoints of diagonals and diagonal lengths.|parallelogram-property-consequences
+polygon-symmetries|transformation-constructions|extension|A symmetry is a rotation or reflection that maps a figure onto itself. Mapping a figure onto a different position uses compositions of the same transformations.|polygon-symmetry-counts
+transformation-constructions|circle-similarity|application|Mapping one circle onto another uses a translation followed by a dilation, which is a composition chosen like any other figure-to-image sequence.|circle-dilation-scaling
+inscribed-polygons|triangle-circles|extension|The circle through the vertices of a regular inscribed polygon is its circumscribed circle, the circle whose center is where the perpendicular bisectors of the sides meet.|inscribed-polygon-reasoning
+triangle-circles|tangent-construction|related|The incircle of a triangle is tangent to all three sides, and each radius to a point of tangency is perpendicular to that side.|tangent-circle-computation
+tangent-construction|circle-equations|application|The tangent at a point of a circle is perpendicular to the radius to that point, so its slope is the negative reciprocal of the radius slope.|tangent-circle-computation
+circle-similarity|arc-sector-measure|extension|Because circles are similar, arc length and sector area are fixed fractions of circumference and area, scaling with the radius.|circle-dilation-scaling
 solid-volume-models|density-modeling|application|Mass is density times volume, so a solid's volume formula gives the mass of a rod or block of known density.|density-context
 density-modeling|geometric-design|related|Mass is density times volume, and the cost of painting a wall is a price per square meter times the painted area. Both multiply a rate per unit by a measured amount, which is how a design is priced.|geometric-design-constraint
 geometric-design|nonlinear-equation-modeling|extension|The area of a three-sided fenced garden, width times (fence minus two widths), is a quadratic constraint model with a greatest value.|geometric-design-constraint

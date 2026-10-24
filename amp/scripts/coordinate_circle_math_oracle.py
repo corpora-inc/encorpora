@@ -194,7 +194,7 @@ def solve_slopes(prompt):
         e = (d[0], d[1]) if m[1] == 'parallel' else (-d[1], d[0])
         require(e[0] != 0, 'Not vertical')
         return Fraction(e[1], e[0])
-    m = re.fullmatch(rf'The line through P\({N}, {N}\) (parallel|perpendicular) to ℓ has equation y = mx \+ b\. What is b\?', rest)
+    m = re.fullmatch(rf'(?:The|A) line through P\({N}, {N}\) (parallel|perpendicular) to ℓ has equation y = mx \+ b\. What is b\?', rest)
     if m:
         px, py = i(m[1]), i(m[2])
         e = (d[0], d[1]) if m[3] == 'parallel' else (-d[1], d[0])

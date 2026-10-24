@@ -4,6 +4,7 @@ import { assessmentGapPrinciples } from "./assessment-gap-lessons";
 import { radicalEquationPrinciples } from "./radical-equation-lessons";
 import { rationalEquationPrinciples } from "./rational-equation-lessons";
 import { geometryProofPrinciples } from "./geometry-proof-lessons";
+import { geometryProofFamilyPrinciples } from "./geometry-proof-family-lessons";
 import { rationalExpressionPrinciples } from "./rational-expression-lessons";
 import { nonlinearSystemPrinciples } from "./nonlinear-system-lessons";
 import { areaVolumePrinciples } from "./area-volume-lessons";
@@ -61,6 +62,9 @@ import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
 import { vectorMatrixPrinciples } from "./vectors-matrices-lessons";
+import { statisticsProbabilityPrinciples } from "./statistics-probability-lessons";
+import { complexConicsPrinciples } from "./complex-conics-lessons";
+import { trigonometryPrinciples } from "./trigonometry-lessons";
 import { geometryModelingPrinciples } from "./geometry-modeling-lessons";
 import { functionBehaviorPrinciples } from "./function-behavior-lessons";
 import { absoluteValuePrinciples } from "./absolute-value-lessons";
@@ -86,6 +90,9 @@ export const principles: Record<string, string> = {
   ...quadraticPrinciples,
   ...complexPrinciples,
   ...vectorMatrixPrinciples,
+  ...statisticsProbabilityPrinciples,
+  ...complexConicsPrinciples,
+  ...trigonometryPrinciples,
   ...geometryModelingPrinciples,
   ...functionBehaviorPrinciples,
   ...absoluteValuePrinciples,
@@ -131,6 +138,7 @@ export const principles: Record<string, string> = {
   ...radicalEquationPrinciples,
   ...rationalEquationPrinciples,
   ...geometryProofPrinciples,
+  ...geometryProofFamilyPrinciples,
   ...nonlinearSystemPrinciples,
   // Counting, place value, early operations
   "count-objects":
