@@ -54,7 +54,7 @@ nonlinear.rational-representations|Connect a rational rule with a table or graph
 nonlinear.input-output|Evaluate nonlinear functions or recover allowed inputs|function-evaluation,same-base-equation,rational-function-representation,radical-equation-isolated`,
   data: `
 ratio.proportion|Scale ratios and proportional quantities in context|ratio-missing,unit-price,proportional-rule-choice
-ratio.units|Convert length, compound rates, area, volume, density, and product units|metric-length-rename,compound-unit-conversion
+ratio.units|Convert length, compound rates, area, volume, density, and product units|metric-length-rename,compound-unit-conversion,unit-chain-conversion
 percent.change|Calculate percentages, original values, and successive growth factors|percent-of,percent-change-original,successive-percent-change
 univariate.displays|Read frequency data in dot plots, histograms, and box plots|dot-plot-mean,histogram-read,box-plot-read
 univariate.center|Calculate or compare means, medians, and ranges|mean-data,median-data,range-data,mean-missing-value
