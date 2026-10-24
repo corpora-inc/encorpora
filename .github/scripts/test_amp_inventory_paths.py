@@ -90,9 +90,11 @@ def test_deep_checks_are_separate_from_release_gate():
     assert 'amp' in ci['jobs']['ci-gate']['needs']
     assert 'amp-browser' not in ci['jobs']
     assert 'amp-content' not in ci['jobs']
-    commands = [s.get('run', '') for s in ci['jobs']['amp']['steps']]
-    for command in ('npm run test:core', 'npm run build', 'npm run test:db'):
-        assert command in commands
+    assert set(ci['jobs']['amp']['needs']) == {'changes', 'amp-core', 'amp-database', 'amp-build'}
+    for lane, command in (('amp-core', 'node scripts/run-ci-tests.mjs core'),
+                          ('amp-database', 'node scripts/run-ci-tests.mjs database'),
+                          ('amp-build', 'npm run build')):
+        assert command in [s.get('run', '') for s in ci['jobs'][lane]['steps']]
     assert set(deep['jobs']['report']['needs']) == {'changes', 'amp-browser', 'amp-content'}
     content = str(deep['jobs']['amp-content']['steps'])
     for command in ('npm run audit', 'npm run review:math', 'npm run test:inventory',
@@ -101,7 +103,7 @@ def test_deep_checks_are_separate_from_release_gate():
     # Scheduled/manual runs must not silently reuse an old successful result.
     restore = next(s for s in deep['jobs']['amp-content']['steps']
                    if s.get('uses') == 'actions/cache/restore@v4')
-    assert restore['if'] == "github.event_name == 'push'"
+    assert restore['if'] == "github.event_name == 'push' && needs.changes.outputs.content_force != 'true'"
 
 
 def test_every_background_content_test_triggers_content_workflow():

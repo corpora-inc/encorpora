@@ -132,7 +132,7 @@ class WorkflowTrust(unittest.TestCase):
             self.assertFalse(list(Path(temporary).iterdir()))
 
     def test_postgres_runs_after_bootstrap_with_owned_cleanup_and_original_database(self):
-        for name, identifier in (('ci.yml', 'amp'), ('amp-deep-checks.yml', 'amp-browser')):
+        for name, identifier in (('ci.yml', 'amp-database'), ('amp-deep-checks.yml', 'amp-browser')):
             job = yaml.safe_load((ROOT / '.github/workflows' / name).read_text())['jobs'][identifier]
             self.assertNotIn('services', job)
             start, stop = job['steps'][1], job['steps'][-1]

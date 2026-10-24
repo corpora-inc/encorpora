@@ -8,6 +8,8 @@ on:
       - 'amp/**'
       - '.github/workflows/amp-deep-checks.yml'
       - '.github/scripts/amp_inventory_paths.py'
+      - '.github/scripts/amp_ci_plan.py'
+      - '.github/scripts/test_amp_ci_plan.py'
   schedule:
     - cron: '23 6 * * *'
   workflow_dispatch: {}
@@ -28,6 +30,8 @@ jobs:
       browser: ${{ steps.paths.outputs.browser }}
       content: ${{ steps.paths.outputs.content }}
       native: ${{ steps.paths.outputs.native }}
+      amp_plan: ${{ steps.paths.outputs.amp_plan }}
+      content_force: ${{ steps.paths.outputs.content_force }}
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -62,16 +66,11 @@ jobs:
         run: |
           set -euo pipefail
           if [ "$EVENT" != push ] || ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
-            printf 'browser=true\ncontent=true\nnative=true\n' >> "$GITHUB_OUTPUT"
-            exit 0
+            python3 .github/scripts/amp_ci_plan.py --full --github </dev/null >> "$GITHUB_OUTPUT"
+          else
+            git diff --no-renames --name-only "$BASE" "$GITHUB_SHA" > "$RUNNER_TEMP/amp-paths"
+            python3 .github/scripts/amp_ci_plan.py --github < "$RUNNER_TEMP/amp-paths" >> "$GITHUB_OUTPUT"
           fi
-          git diff --name-only "$BASE" "$GITHUB_SHA" > "$RUNNER_TEMP/amp-paths"
-          content=$(python3 .github/scripts/amp_inventory_paths.py < "$RUNNER_TEMP/amp-paths")
-          browser=false
-          native=false
-          if grep -Eq '^(amp/(src/|scripts/|tests/|package(-lock)?\.json$|[^/]*config[^/]*$)|\.github/workflows/amp-deep-checks\.yml$)' "$RUNNER_TEMP/amp-paths"; then browser=true; fi
-          if grep -Eq '^(amp/(mobile/|src/web/(auth|native-session|native-runtime|NativeGate|NativePreview|learning-transport|BookReader|main)\.|src/server/(app|auth)\.|scripts/verify-native-session\.)|\.github/workflows/amp-deep-checks\.yml$)' "$RUNNER_TEMP/amp-paths"; then native=true; browser=true; fi
-          printf 'browser=%s\ncontent=%s\nnative=%s\n' "$browser" "$content" "$native" >> "$GITHUB_OUTPUT"
 
   amp-browser:
     name: amp-browser
@@ -88,6 +87,7 @@ jobs:
       # see amp/scripts/ci-fonts.conf. verify-ui asserts the prompt uses it.
       FONTCONFIG_FILE: ${{ github.workspace }}/amp/scripts/ci-fonts.conf
       AMP_EXPECT_UI_FONT: Roboto
+      AMP_CI_PLAN: ${{ needs.changes.outputs.amp_plan }}
     steps:
       - name: Initialize verified client trust
         id: ci-trust
@@ -144,10 +144,16 @@ jobs:
       # test:payment-ui and the print suites inspect PDFs with pdfinfo.
       - name: Install PDF inspection tools and the Android UI font
         run: sudo apt-get install -y poppler-utils fonts-roboto && fc-match system-ui && fc-match sans-serif
-      - run: npm run test:ui
-      - run: npm run test:family-ui
+      - name: Selected browser entrypoints
+        if: ${{ !fromJSON(needs.changes.outputs.amp_plan).browser }}
+        run: node scripts/run-ci-tests.mjs browser
+      - if: fromJSON(needs.changes.outputs.amp_plan).browser
+        run: npm run test:ui
+      - if: fromJSON(needs.changes.outputs.amp_plan).browser
+        run: npm run test:family-ui
       # Zero contrast violations: every route and state, light and dark, 390 and 1280.
-      - run: npm run test:contrast
+      - if: fromJSON(needs.changes.outputs.amp_plan).browser
+        run: npm run test:contrast
       - name: Preserve the contrast sweep report
         if: always()
         uses: actions/upload-artifact@v4
@@ -221,7 +227,7 @@ jobs:
           echo "key=amp-content-success-v1-${inputs}-${environment}" >> "$GITHUB_OUTPUT"
       - uses: actions/cache/restore@v4
         id: content-cache
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && needs.changes.outputs.content_force != 'true'
         with:
           path: amp/artifacts/content-check-success.txt
           key: ${{ steps.content-key.outputs.key }}
