@@ -154,6 +154,48 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Select the exact product of two small integer-coefficient complex numbers in simplified standard form using distributivity and i² = −1, including signed, zero-real-part and cancellation cases. Does not assess addition, subtraction, nonreal quadratic roots, conjugates, division or geometric representation.",
   },
   {
+    templateId: "polynomial-behavior-description",
+    facetId: "polynomial-behavior.core",
+    extent: "partial",
+    rationale:
+      "Choose the end behavior, the cross-or-touch description at every zero, or the greatest number of turning points from a factored polynomial or a list of terms, with degrees up to 7. Does not assess sketching or reading a graph, factoring an expanded polynomial, finding zeros of an unfactored polynomial, or inequalities.",
+  },
+  {
+    templateId: "rational-function-features",
+    facetId: "rational-function-behavior.core",
+    extent: "partial",
+    rationale:
+      "Choose vertical asymptotes, a hole, the horizontal asymptote, intercepts or the domain of a rational function with small linear factors, including a canceled common factor. Does not assess slant asymptotes, sketching, factoring quadratics in the function, or solving rational equations.",
+  },
+  {
+    templateId: "graphical-solution-table",
+    facetId: "graphical-equation-solving.core",
+    extent: "partial",
+    rationale:
+      "Read an exact solution, bracket a solution between consecutive integers, or choose the nearest tenth from a table for a quadratic or exponential against a linear function. Does not assess reading a graph, producing a table or graph, or functions other than these.",
+  },
+  {
+    templateId: "polynomial-identity-use",
+    facetId: "polynomial-identities.core",
+    extent: "partial",
+    rationale:
+      "Use (a+b)², (a−b)², a²−b² and (x²+y²)² = (x²−y²)² + (2xy)² to compute, build a Pythagorean triple or choose the true equation among near-miss equations. Does not assess written proof of an identity or polynomial identities of higher degree.",
+  },
+  {
+    templateId: "binomial-coefficient",
+    facetId: "binomial-theorem.core",
+    extent: "partial",
+    rationale:
+      "Choose a coefficient, the constant term or the leading term of (ax+b)ⁿ with n up to 7 and possibly negative b, or the row of Pascal's triangle. Does not assess writing the full expansion, the summation notation, or general terms with symbolic n.",
+  },
+  {
+    templateId: "number-system-closure-classify",
+    facetId: "number-system-closure.core",
+    extent: "partial",
+    rationale:
+      "Classify sums and products of rational and irrational numbers, including the zero exception and irrational pairs with a rational result, and choose a counterexample. Does not assess constructing a written proof or proving a particular number irrational.",
+  },
+  {
     templateId: "quadratic-irrational-solutions",
     facetId: "quadratic-formula.core",
     extent: "partial",
