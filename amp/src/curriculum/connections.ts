@@ -133,6 +133,11 @@ categorical-association|conditional-probability|extension|A conditional relative
 statistical-summary-comparison|randomization-tests|application|The difference in centers between two groups is the statistic that a randomization test compares with chance.|outlier-center-shift
 nonlinear-equation-modeling|model-validation|application|After solving a quadratic or exponential model, check its solution against the context and the data.|quadratic-context-model
 fraction-plot-computation|fraction-division|application|Sharing a measured total equally is a fraction division.|fraction-share-amount
+vector-modeling|parametric-models|application|A moving object's position is its starting point plus its velocity vector times the elapsed time, which is the pair of functions of time that a parametric model uses.|vector-resultant
+matrix-data|matrices|extension|The stock at two stores adds as matrices, and a price list multiplies a quantity matrix to give totals. Operations on data tables are the matrix operations.|matrix-data-reading
+matrix-properties|matrix-inverses|extension|Since order matters in a product, an inverse must satisfy both AA^-1 = I and A^-1A = I, and the identity matrix is the matrix that leaves a product unchanged.|matrix-laws
+matrix-systems|matrix-transformations|application|Solving AX = B asks which point the matrix A sends to B, so the inverse undoes the transformation.|matrix-linear-system
+matrix-transformations|transformation-constructions|related|Multiplying matrices composes transformations: the product AB applies B first and then A. This is the matrix form of carrying one figure to another by a sequence of moves.|matrix-transformation
 `;
 
 export const curriculumConnections: typeof authoredConnections = [
