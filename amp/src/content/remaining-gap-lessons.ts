@@ -120,7 +120,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
 
 export const remainingGapPrinciples: Record<string, string> = {
   "triangle-law-reasoning":
-    "In a triangle with sides $a,b,c$ opposite angles $A,B,C$, an altitude $h$ from $C$ gives $h=b\\sin A=a\\sin B$, so $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}$. An altitude from $A$ with foot $D$ on $BC$ and $x=CD=b\\cos C$ gives $c^2=a^2+b^2-2ab\\cos C$. For angle $A$ with sides $a$ opposite and $b$ adjacent: if $A$ is acute, $a<b\\sin A$ gives no triangle, $a=b\\sin A$ one, $b\\sin A<a<b$ two and $a\\ge b$ one.",
+    "In a triangle with sides $a,b,c$ opposite angles $A,B,C$, an altitude $h$ from $C$ gives $h=b\\sin A=a\\sin B$, so $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}$. An altitude from $A$ with foot $D$ between $B$ and $C$ and $x=CD=b\\cos C$ gives $c^2=a^2+b^2-2ab\\cos C$. For angle $A$ with sides $a$ opposite and $b$ adjacent: if $A$ is acute, $a<b\\sin A$ gives no triangle, $a=b\\sin A$ one, $b\\sin A<a<b$ two and $a\\ge b$ one.",
   "model-quantity-roles":
     "A quantitative model names each quantity, its unit and its role. For a linear model $y=mx+b$, $x$ is the independent quantity in unit $X$, $y$ the dependent quantity in unit $Y$, the rate $m$ has unit $Y$ per $X$, and $b$ is the value of $y$ when $x=0$ in unit $Y$.",
   "stem-leaf-read":
@@ -291,7 +291,7 @@ export const remainingGapLessons: Lesson[] = [
         stage: "method",
         title: "Which summary to read",
         paragraphs: [
-          "The least value is the first leaf of the top row and the greatest is the last leaf of the bottom row. The mode is a value whose stem and leaf both repeat. To count values greater than a given value, count the leaves to its right in its row and all leaves in later rows. A leaf equal to the given value is not greater.",
+          "The least value is the first leaf of the top row and the greatest is the last leaf of the bottom row. The mode is a value whose stem and leaf both repeat. To count values greater than a given value, count the leaves in its row that are larger than its leaf and all leaves in later rows. A repeat of the given value is not greater.",
         ],
       },
       {

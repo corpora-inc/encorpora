@@ -246,6 +246,7 @@ import {
   remainingGapTemplates,
   generateRemainingGapProblem,
 } from "./remaining-gap-practice";
+import {
   trigonometryTemplates,
   generateTrigonometryProblem,
 } from "./trigonometry-practice";

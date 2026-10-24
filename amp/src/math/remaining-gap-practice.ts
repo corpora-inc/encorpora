@@ -151,27 +151,27 @@ export function triangleLawCase(seed: string) {
       ]),
     };
   } else if (variant === 1) {
-    const ok = `$x=${b}\\cos ${C}$`;
+    const ok = `$u=${b}\\cos ${C}$`;
     draft = {
-      prompt: `In triangle $${A}${B}${C}$, ${sides}. The altitude from $${A}$ meets side $${B}${C}$ at $D$, between $${B}$ and $${C}$. Let $x=${C}D$, so $${B}D=${a}-x$. Which expression gives $x$ from right triangle $${A}D${C}$?`,
+      prompt: `In triangle $${A}${B}${C}$, ${sides}. The altitude from $${A}$ meets side $${B}${C}$ at $D$, between $${B}$ and $${C}$. Let $u=${C}D$, so $${B}D=${a}-u$. Which expression gives $u$ from right triangle $${A}D${C}$?`,
       answer: "",
-      hint: `In right triangle $${A}D${C}$ the hypotenuse is $${A}${C}=${b}$ and $x$ is the leg that touches angle $${C}$. Ask which ratio of sides uses the adjacent leg and the hypotenuse.`,
+      hint: `In right triangle $${A}D${C}$ the hypotenuse is $${A}${C}=${b}$ and $u$ is the leg that touches angle $${C}$. Ask which ratio of sides uses the adjacent leg and the hypotenuse.`,
       explanation: [
-        `In right triangle $${A}D${C}$, the hypotenuse is $${A}${C}=${b}$ and $x=${C}D$ is the leg adjacent to angle $${C}$.`,
-        `Cosine is adjacent over hypotenuse, so $\\cos ${C}=\\frac{x}{${b}}$.`,
+        `In right triangle $${A}D${C}$, the hypotenuse is $${A}${C}=${b}$ and $u=${C}D$ is the leg adjacent to angle $${C}$.`,
+        `Cosine is adjacent over hypotenuse, so $\\cos ${C}=\\frac{u}{${b}}$.`,
         `Therefore ${ok}.`,
       ],
       choices: options(ok, [
         {
-          label: `$x=${b}\\sin ${C}$`,
-          feedback: `$${b}\\sin ${C}$ is the opposite leg $${A}D$. The leg $x$ touches angle $${C}$, so it is adjacent.`,
+          label: `$u=${b}\\sin ${C}$`,
+          feedback: `$${b}\\sin ${C}$ is the opposite leg $${A}D$. The leg $u$ touches angle $${C}$, so it is adjacent.`,
         },
         {
-          label: `$x=\\frac{${b}}{\\cos ${C}}$`,
-          feedback: `Cosine equals $x$ divided by $${b}$. Multiply both sides by $${b}$ rather than dividing.`,
+          label: `$u=\\frac{${b}}{\\cos ${C}}$`,
+          feedback: `Cosine equals $u$ divided by $${b}$. Multiply both sides by $${b}$ rather than dividing.`,
         },
         {
-          label: `$x=${a}\\cos ${C}$`,
+          label: `$u=${a}\\cos ${C}$`,
           feedback: `The hypotenuse of $${A}D${C}$ is $${b}$. Side $${a}$ is the whole base $${B}${C}$, not a hypotenuse of this right triangle.`,
         },
       ]),
@@ -181,29 +181,29 @@ export function triangleLawCase(seed: string) {
       `$${c}^2=${a}^2+${b}^2-2${a}${b}\\cos ${angle}$`;
     const ok = law(C);
     draft = {
-      prompt: `For the altitude $h$ from $${A}$ to side $${B}${C}$ with $x=${C}D$, triangle $${A}D${C}$ gives $h^2=${b}^2-x^2$ and triangle $${A}D${B}$ gives $h^2=${c}^2-(${a}-x)^2$. Also $x=${b}\\cos ${C}$. Which equation follows from setting the two expressions for $h^2$ equal and simplifying?`,
+      prompt: `For the altitude $h$ from $${A}$ to side $${B}${C}$ with $u=${C}D$, triangle $${A}D${C}$ gives $h^2=${b}^2-u^2$ and triangle $${A}D${B}$ gives $h^2=${c}^2-(${a}-u)^2$. Also $u=${b}\\cos ${C}$. Which equation follows from setting the two expressions for $h^2$ equal and simplifying?`,
       answer: "",
-      hint: `Expand $(${a}-x)^2$ in $${b}^2-x^2=${c}^2-(${a}-x)^2$. The $x^2$ terms cancel, leaving $${c}^2$ in terms of $${a}$, $${b}$ and $x$. Then replace $x$.`,
+      hint: `Expand $(${a}-u)^2$ in $${b}^2-u^2=${c}^2-(${a}-u)^2$. The $u^2$ terms cancel, leaving $${c}^2$ in terms of $${a}$, $${b}$ and $u$. Then replace $u$.`,
       explanation: [
-        `Set the expressions equal: $${b}^2-x^2=${c}^2-(${a}-x)^2$.`,
-        `Expand: $(${a}-x)^2=${a}^2-2${a}x+x^2$, so $${b}^2-x^2=${c}^2-${a}^2+2${a}x-x^2$.`,
-        `The $x^2$ terms cancel, so $${c}^2=${a}^2+${b}^2-2${a}x$.`,
-        `Replace $x$ by $${b}\\cos ${C}$: ${ok}.`,
+        `Set the expressions equal: $${b}^2-u^2=${c}^2-(${a}-u)^2$.`,
+        `Expand: $(${a}-u)^2=${a}^2-2${a}u+u^2$, so $${b}^2-u^2=${c}^2-${a}^2+2${a}u-u^2$.`,
+        `The $u^2$ terms cancel, so $${c}^2=${a}^2+${b}^2-2${a}u$.`,
+        `Replace $u$ by $${b}\\cos ${C}$: ${ok}.`,
       ],
       choices: options(
         ok,
         shuffle(r, [
           {
             label: `$${c}^2=${a}^2+${b}^2+2${a}${b}\\cos ${C}$`,
-            feedback: `Expanding $-(${a}-x)^2$ gives $+2${a}x$ on the right of $${b}^2-x^2=\\dots$, which moves to $-2${a}x$ when isolating $${c}^2$. The cosine term is subtracted.`,
+            feedback: `Expanding $-(${a}-u)^2$ gives $+2${a}u$ on the right of $${b}^2-u^2=\\dots$, which moves to $-2${a}u$ when isolating $${c}^2$. The cosine term is subtracted.`,
           },
           {
             label: `$${c}^2=${a}^2+${b}^2-${a}${b}\\cos ${C}$`,
-            feedback: `The cross term of $(${a}-x)^2$ is $-2${a}x$, so the factor is $2${a}x=2${a}${b}\\cos ${C}$, not $${a}${b}\\cos ${C}$.`,
+            feedback: `The cross term of $(${a}-u)^2$ is $-2${a}u$, so the factor is $2${a}u=2${a}${b}\\cos ${C}$, not $${a}${b}\\cos ${C}$.`,
           },
           {
             label: law(A),
-            feedback: `The projection $x$ lies along $${C}$, between $${C}$ and the foot $D$, so the angle in the formula is $${C}$, the angle opposite $${c}$.`,
+            feedback: `The projection $u$ lies along $${C}$, between $${C}$ and the foot $D$, so the angle in the formula is $${C}$, the angle opposite $${c}$.`,
           },
           {
             label: `$${c}^2=${a}^2+${b}^2$`,
@@ -907,11 +907,11 @@ export function stemLeafCase(seed: string) {
     ).length;
     question = `How many values are greater than ${show(threshold)}?`;
     answer = String(above);
-    hint = `Find ${show(threshold)} in the plot: stem ${stemOf(threshold)}, leaf ${leafOf(threshold)}. Count the leaves to its right in that row and every leaf in the rows below it.`;
+    hint = `Find ${show(threshold)} in the plot: stem ${stemOf(threshold)}, leaf ${leafOf(threshold)}. Count the leaves in that row that are larger than leaf ${leafOf(threshold)} (a repeat of ${show(threshold)} is not greater) and every leaf in the rows below it.`;
     explanation = [
       scaleNote,
       `${show(threshold)} is stem ${stemOf(threshold)}, leaf ${leafOf(threshold)}.`,
-      `Count leaves greater than it: those to its right in the same row, and all leaves in later rows. That is ${above} values.`,
+      `Count leaves greater than it: the larger leaves in the same row (repeats of ${show(threshold)} do not count), and all leaves in later rows. That is ${above} values.`,
     ];
     wrong = [
       {
@@ -924,13 +924,13 @@ export function stemLeafCase(seed: string) {
       },
       {
         label: String(laterRows),
-        feedback: `This counts only the rows after stem ${stemOf(threshold)}. Leaves to the right of ${show(threshold)} in its own row also count.`,
+        feedback: `This counts only the rows after stem ${stemOf(threshold)}. Larger leaves in its own row also count.`,
       },
       ...[above + 1, above - 1, above + 2]
         .filter((x) => x >= 0)
         .map((x) => ({
           label: String(x),
-          feedback: `Count each qualifying leaf once. Recount the leaves right of ${show(threshold)} and in the later rows.`,
+          feedback: `Count each qualifying leaf once. Recount the larger leaves in its own row and the leaves in later rows.`,
         })),
     ];
     notKey = (v) => v !== threshold && String(v) !== answer;

@@ -305,3 +305,16 @@ test("each family binds its skill, a lesson, a method and a principle", () => {
     assert.ok(lesson.example.steps.length >= 3);
   }
 });
+
+test("the altitude foot variable never shares a name with a side, and count hints treat repeats as not greater", () => {
+  for (let s = 0; s < 300; s++) {
+    const t = generateProblem("triangle-law-reasoning", `foot:${s}`);
+    if (/Let \$u=|with \$u=/.test(t.public.prompt))
+      assert.ok(!/\$x=|x-x|\(x-x/.test(t.public.prompt), t.public.prompt);
+    const c = generateProblem("stem-leaf-read", `count:${s}`);
+    if (/greater than/.test(c.public.prompt)) {
+      assert.ok(!/to its right/.test(c.hint), c.hint);
+      assert.ok(!c.explanation.some((e) => /to its right/.test(e)));
+    }
+  }
+});
