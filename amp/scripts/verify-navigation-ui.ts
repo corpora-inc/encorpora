@@ -11,15 +11,21 @@ import {
   assertPhoneLandscapeSmoke,
 } from "./ui-viewports";
 const engine = process.env.AMP_ACCOUNT_BROWSER ?? "chromium";
-const vite = await createServer({ server: { host: "127.0.0.1", port: 0 } });
-await vite.listen();
-const address = vite.httpServer!.address();
-assert(address && typeof address !== "string");
-const origin = `http://127.0.0.1:${address.port}`;
+// A deployed build can use the same synthetic API fixtures; no learner records
+// or account mutations reach its server.
+const remoteOrigin = process.env.AMP_NAVIGATION_ORIGIN;
+const vite = remoteOrigin
+  ? undefined
+  : await createServer({ server: { host: "127.0.0.1", port: 0 } });
+await vite?.listen();
+const address = vite?.httpServer!.address();
+assert(remoteOrigin || (address && typeof address !== "string"));
+const origin =
+  remoteOrigin ?? `http://127.0.0.1:${(address as { port: number }).port}`;
 const browser = await (
   { chromium, firefox, webkit }[engine] ?? chromium
 ).launch();
-const output = `artifacts/navigation-${engine}`;
+const output = `artifacts/navigation-${remoteOrigin ? "deployed-" : ""}${engine}`;
 await mkdir(output, { recursive: true });
 const account = fixtureMe(
   {
@@ -339,6 +345,14 @@ try {
     0,
     "an account outage cannot hide a working anonymous assessment",
   );
+  await trigger.click();
+  await page
+    .getByRole("link", { name: "Account settings", exact: true })
+    .waitFor();
+  await page
+    .getByRole("link", { name: "Manage learners", exact: true })
+    .waitFor();
+  await page.keyboard.press("Escape");
   failMe = false;
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${origin}/inventory`);
@@ -395,7 +409,10 @@ try {
   await fits("guest drawer");
   await page.screenshot({ path: `${output}/drawer-guest.png` });
   const failedMenu = await context.newPage();
-  await failedMenu.route("**/DrawerContents.tsx*", (route) => route.abort());
+  await failedMenu.route(
+    /\/DrawerContents(?:\.tsx|-[^/]+\.js)(?:\?.*)?$/,
+    (route) => route.abort(),
+  );
   await failedMenu.goto(`${origin}/try/practice`);
   await failedMenu.locator(".problem-stage .question").waitFor();
   const originalQuestion = await failedMenu
@@ -427,5 +444,5 @@ try {
   );
 } finally {
   await browser.close();
-  await vite.close();
+  await vite?.close();
 }

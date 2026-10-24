@@ -244,8 +244,10 @@ export default function DrawerContents({ close }: { close: () => void }) {
         </div>
         <div className={styles.group}>
           <h2>Account & access</h2>
-          {account && nav("/family/security", "Account settings", "settings")}
-          {account && nav("/family/learners", "Manage learners", "settings")}
+          {view.session.data &&
+            nav("/family/security", "Account settings", "settings")}
+          {view.session.data &&
+            nav("/family/learners", "Manage learners", "settings")}
           {learner?.birthYear != null &&
             nav("/profile/birth-year", "Change birth year", "settings")}
           {account &&

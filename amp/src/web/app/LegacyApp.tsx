@@ -1557,20 +1557,18 @@ function LegacyScreen() {
             }}
           />
         ) : (learner.birthYear != null || problem) && !changingBirthYear ? (
-          <>
-            {!nativeRuntime && <ProgressViews active="level" />}
-            <Home
-              name={learner.name}
-              resuming={!!problem}
-              frontier={frontierMap}
-              strands={homeStrands}
-              busy={busy}
-              go={() =>
-                problem ? setExploring(false) : void action(() => loadBatch(""))
-              }
-              changeBirthYear={() => setChangingBirthYear(true)}
-            />
-          </>
+          <Home
+            navigation={!nativeRuntime && <ProgressViews active="level" />}
+            name={learner.name}
+            resuming={!!problem}
+            frontier={frontierMap}
+            strands={homeStrands}
+            busy={busy}
+            go={() =>
+              problem ? setExploring(false) : void action(() => loadBatch(""))
+            }
+            changeBirthYear={() => setChangingBirthYear(true)}
+          />
         ) : (
           <BirthYearPrompt
             key={learner.id}

@@ -527,6 +527,10 @@ try {
             viewport: innerHeight,
             height: document.documentElement.scrollHeight,
             center: rect.top + rect.height / 2,
+            availableCenter: (() => {
+              const main = card.closest("main")!.getBoundingClientRect();
+              return main.top + main.height / 2;
+            })(),
             buttonsFit: controls.every(
               (r) => r.width >= 44 && r.height >= 44 && r.bottom <= innerHeight,
             ),
@@ -534,6 +538,7 @@ try {
             wordmarkLines: wordmarkRange.getClientRects().length,
           };
         });
+      await shoot(page, "start", tag, true);
       assert.ok(startGeometry.hasBrand, `${tag}: brand inside card`);
       assert.equal(
         startGeometry.wordmarkLines,
@@ -542,10 +547,10 @@ try {
       );
       assert.ok(
         startGeometry.height <= startGeometry.viewport + 1,
-        `${tag}: entire entry fits without vertical scroll`,
+        `${tag}: entire entry fits without vertical scroll: ${JSON.stringify(startGeometry)}`,
       );
       assert.ok(
-        Math.abs(startGeometry.center - startGeometry.viewport / 2) < 2,
+        Math.abs(startGeometry.center - startGeometry.availableCenter) < 2,
         `${tag}: card centered`,
       );
       assert.ok(
@@ -556,6 +561,7 @@ try {
       if (width === 320) {
         await page.setViewportSize({ width: 568, height: 320 });
         await frames(page);
+        await shoot(page, "start-landscape", tag, true);
         assert.ok(
           await page.evaluate(
             () => document.documentElement.scrollHeight <= innerHeight + 1,

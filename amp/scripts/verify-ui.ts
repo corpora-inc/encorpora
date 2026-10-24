@@ -616,7 +616,7 @@ try {
           ` | gap ${Math.round(
             document
               .querySelector(
-                ".home-hero, .lesson-index, .lesson-sheet, .progress-surface, .start-card",
+                "[data-progress-views], .home-hero, .lesson-index, .lesson-sheet, .progress-surface, .start-card",
               )!
               .getBoundingClientRect().top -
               document.querySelector(".shell > nav")!.getBoundingClientRect()

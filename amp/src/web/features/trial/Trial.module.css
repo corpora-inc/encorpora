@@ -402,6 +402,12 @@
   text-align: center;
 }
 @media (max-height: 620px) {
+  .introFrame {
+    --frame-inset: 8px;
+  }
+  .introFrame > aside {
+    padding-block: var(--space-1);
+  }
   .start.intro {
     gap: var(--space-2);
   }
@@ -433,7 +439,16 @@
 }
 
 @media (min-width: 520px) and (max-height: 360px) {
+  .introFrame {
+    --frame-inset: 4px;
+  }
+  .introFrame > aside {
+    padding-block: 0;
+  }
   .introContainer .intro {
-    padding: var(--space-3);
+    padding: var(--space-2);
+  }
+  .intro :global(.year-grid) {
+    gap: var(--space-1);
   }
 }
