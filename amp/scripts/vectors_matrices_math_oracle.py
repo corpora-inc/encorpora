@@ -761,6 +761,12 @@ def leak_text(label):
     return re.sub(r'\\text\{[^}]*\}', '', plain(label)).strip()
 
 
+def slashed(text):
+    """Read \\frac{a}{b} and a/b alike: the review harness retries a failing check with the
+    plain reading of the problem, which turns a typeset fraction into a/b."""
+    return re.sub(r'\\t?frac\{(\d+)\}\{(\d+)\}', r'\1/\2', text)
+
+
 def review_leakage(problem, answer):
     """The prompt, hint and feedback of other choices must not hand over the correct label."""
     public = problem['public']
@@ -773,10 +779,11 @@ def review_leakage(problem, answer):
     require(answer not in feedback, 'Correct choice must not carry distractor feedback')
     require(set(feedback) <= {o['id'] for o in public['response']['options']}, 'Feedback for unknown choice')
     pool += [plain(v) for v in feedback.values()]
+    label, text_label, pool = slashed(label), slashed(text_label), [slashed(t) for t in pool]
     for candidate in (label, text_label):
         if public['templateId'] in MATRIX_INVERSE and candidate in plain(public['prompt']):
             continue  # an involutory matrix is displayed in the prompt and is its own inverse
-        if len(candidate) >= 5:
+        if len(candidate) >= 5 or re.fullmatch(r'-?\d+/\d+', candidate):
             for text in pool:
                 require(candidate not in text, f'Correct answer {candidate!r} leaks into support text')
     # A hint must not state the finished result as an equation ("... = answer", "\approx answer").
