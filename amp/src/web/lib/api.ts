@@ -2,6 +2,14 @@ import type { z } from "zod";
 import { AppError } from "./AppError";
 import { validationPaths } from "./batch-capability-fallback";
 const messages: Record<string, string> = {
+  gift_unavailable:
+    "This invitation is no longer available. Return to your access page to check your options.",
+  gift_already_assigned:
+    "This gift is already attached to a learner. Open practice to continue.",
+  gift_learner_unavailable: "Choose a learner from this account and try again.",
+  invalid_gift_request: "Choose a learner and try again.",
+  gift_service_unavailable:
+    "Your access could not be activated. Please try again; your gift will not be used twice.",
   confirmed_parent_email_required:
     "Sign in and confirm the parent email used on your invoice.",
   invoice_cannot_discard:

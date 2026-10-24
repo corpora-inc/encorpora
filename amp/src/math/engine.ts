@@ -234,6 +234,13 @@ import {
   complexConicsTemplates,
   generateComplexConicsProblem,
 } from "./complex-conics-practice";
+  geometryModelingTemplates,
+  generateGeometryModelingProblem,
+} from "./geometry-modeling-practice";
+import {
+  functionBehaviorTemplates,
+  generateFunctionBehaviorProblem,
+} from "./function-behavior-practice";
 import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
@@ -405,6 +412,8 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   complexMultiplicationTemplate,
   ...complexConicsTemplates,
+  ...geometryModelingTemplates,
+  ...functionBehaviorTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
   ...addSubtractTemplates,
@@ -823,8 +832,12 @@ function generateRawProblem(
     return generateQuadraticProblem(templateId, seed);
   if (complexConicsTemplates.some((t) => t.id === templateId))
     return generateComplexConicsProblem(templateId, seed);
+  if (functionBehaviorTemplates.some((t) => t.id === templateId))
+    return generateFunctionBehaviorProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (geometryModelingTemplates.some((t) => t.id === templateId))
+    return generateGeometryModelingProblem(templateId, seed);
   if (absoluteValueTemplates.some((t) => t.id === templateId))
     return generateAbsoluteValueProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))

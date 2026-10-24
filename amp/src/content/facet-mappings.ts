@@ -119,6 +119,104 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Find the vertex, equation, focus and directrix of a parabola from a focus and directrix or from an equation, in vertical and horizontal orientations. Does not assess deriving the equation from the distance condition or graphing.",
   },
   {
+    templateId: "solid-volume-context",
+    facetId: "solid-volume-models.core",
+    extent: "partial",
+    rationale:
+      "Select the volume, in terms of π or rounded as stated, of a cylinder, cone, pyramid, sphere or cylinder-and-hemisphere silo in a story: a tank capacity in liters, the number of cones that fill a cylinder, a missing cone height, a pyramid and a rounded paint-can volume. Does not assess surface-area contexts, derivations of the formulas, frustums, or open-response work.",
+  },
+  {
+    templateId: "solid-volume-context",
+    facetId: "solid-volume-models.HSG.GMD.A.3",
+    extent: "partial",
+    rationale:
+      "Select the volume, in terms of π or rounded as stated, of a cylinder, cone, pyramid, sphere or cylinder-and-hemisphere silo in a story: a tank capacity in liters, the number of cones that fill a cylinder, a missing cone height, a pyramid and a rounded paint-can volume. Does not assess surface-area contexts, derivations of the formulas, frustums, or open-response work.",
+  },
+  {
+    templateId: "density-context",
+    facetId: "density-modeling.core",
+    extent: "partial",
+    rationale:
+      "Select a population density, a mass or a volume from a density with consistent units, a density found from a rectangle's area, a cylinder's mass in terms of π, and the denser of two blocks. Does not assess density of non-uniform objects, derived units beyond g/cm³ and people/km², or written modeling.",
+  },
+  {
+    templateId: "density-context",
+    facetId: "density-modeling.HSG.MG.A.2",
+    extent: "partial",
+    rationale:
+      "Select a population density, a mass or a volume from a density with consistent units, a density found from a rectangle's area, a cylinder's mass in terms of π, and the denser of two blocks. Does not assess density of non-uniform objects, derived units beyond g/cm³ and people/km², or written modeling.",
+  },
+  {
+    templateId: "geometric-model-choice",
+    facetId: "geometric-modeling.core",
+    extent: "partial",
+    rationale:
+      "Select the solid that models an object, the measure (area, perimeter, surface area or volume) a task needs, a cylinder's label area, a triangular-prism tent volume and a sphere's surface area. Does not assess building or justifying a model from an unlabeled object, or open-ended modeling choices.",
+  },
+  {
+    templateId: "geometric-model-choice",
+    facetId: "geometric-modeling.HSG.MG.A.1",
+    extent: "partial",
+    rationale:
+      "Select the solid that models an object, the measure (area, perimeter, surface area or volume) a task needs, a cylinder's label area, a triangular-prism tent volume and a sphere's surface area. Does not assess building or justifying a model from an unlabeled object, or open-ended modeling choices.",
+  },
+  {
+    templateId: "geometric-design-constraint",
+    facetId: "geometric-design.core",
+    extent: "partial",
+    rationale:
+      "Select the greatest-area rectangle for a fixed perimeter, the least-material box for a fixed volume, the best three-sided garden among given widths, and a paint cost from areas and a rate. Does not assess searching an unrestricted design space, calculus or quadratic optimization by algebra, or drawing a design.",
+  },
+  {
+    templateId: "geometric-design-constraint",
+    facetId: "geometric-design.HSG.MG.A.3",
+    extent: "partial",
+    rationale:
+      "Select the greatest-area rectangle for a fixed perimeter, the least-material box for a fixed volume, the best three-sided garden among given widths, and a paint cost from areas and a rate. Does not assess searching an unrestricted design space, calculus or quadratic optimization by algebra, or drawing a design.",
+  },
+  {
+    templateId: "cavalieri-volume-reasoning",
+    facetId: "cavalieri-principle.core",
+    extent: "partial",
+    rationale:
+      "Select the volume of an oblique cylinder or leaning stack from the perpendicular height, the pair of solids Cavalieri's principle guarantees equal, and a volume scaled by a ratio of cross-sectional areas. Does not assess written arguments or derivation of the sphere's volume formula.",
+  },
+  {
+    templateId: "cavalieri-volume-reasoning",
+    facetId: "cavalieri-principle.HSG.GMD.A.2",
+    extent: "partial",
+    rationale:
+      "Select the volume of an oblique cylinder or leaning stack from the perpendicular height, the pair of solids Cavalieri's principle guarantees equal, and a volume scaled by a ratio of cross-sectional areas. Does not assess written arguments or derivation of the sphere's volume formula.",
+  },
+  {
+    templateId: "section-revolution-solid",
+    facetId: "sections-and-revolutions.core",
+    extent: "partial",
+    rationale:
+      "Select the cross-section of a cylinder, cone or sphere cut by a plane, the solid from rotating a rectangle or right triangle about a side, its volume, and the volume of a sphere from a rotated semicircle. Does not assess sections of other solids (see solid cross-sections), rotation about lines not containing a side, or sketching the solid.",
+  },
+  {
+    templateId: "section-revolution-solid",
+    facetId: "sections-and-revolutions.HSG.GMD.B.4",
+    extent: "partial",
+    rationale:
+      "Select the cross-section of a cylinder, cone or sphere cut by a plane, the solid from rotating a rectangle or right triangle about a side, its volume, and the volume of a sphere from a rotated semicircle. Does not assess sections of other solids (see solid cross-sections), rotation about lines not containing a side, or sketching the solid.",
+  },
+  {
+    templateId: "similarity-theorem-length",
+    facetId: "similarity-theorems.core",
+    extent: "partial",
+    rationale:
+      "Select a length using the side-splitter theorem or the geometric-mean relations for the altitude to the hypotenuse of a right triangle with integer data. Does not assess written proofs of the theorems, the converse of the side-splitter theorem, or the Pythagorean theorem proof.",
+  },
+  {
+    templateId: "similarity-theorem-length",
+    facetId: "similarity-theorems.HSG.SRT.B.4",
+    extent: "partial",
+    rationale:
+      "Select a length using the side-splitter theorem or the geometric-mean relations for the altitude to the hypotenuse of a right triangle with integer data. Does not assess written proofs of the theorems, the converse of the side-splitter theorem, or the Pythagorean theorem proof.",
+  },
+  {
     templateId: "slope-triangle-statements",
     facetId: "slope.similar-triangle-reasoning",
     extent: "partial",
@@ -145,6 +243,48 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     extent: "partial",
     rationale:
       "Select the exact product of two small integer-coefficient complex numbers in simplified standard form using distributivity and i² = −1, including signed, zero-real-part and cancellation cases. Does not assess addition, subtraction, nonreal quadratic roots, conjugates, division or geometric representation.",
+  },
+  {
+    templateId: "polynomial-behavior-description",
+    facetId: "polynomial-behavior.core",
+    extent: "partial",
+    rationale:
+      "Choose the end behavior, the cross-or-touch description at every zero, or the greatest number of turning points from a factored polynomial or a list of terms, with degrees up to 7. Does not assess sketching or reading a graph, factoring an expanded polynomial, finding zeros of an unfactored polynomial, or inequalities.",
+  },
+  {
+    templateId: "rational-function-features",
+    facetId: "rational-function-behavior.core",
+    extent: "partial",
+    rationale:
+      "Choose vertical asymptotes, a hole, the horizontal asymptote, intercepts or the domain of a rational function with small linear factors, including a canceled common factor. Does not assess slant asymptotes, sketching, factoring quadratics in the function, or solving rational equations.",
+  },
+  {
+    templateId: "graphical-solution-table",
+    facetId: "graphical-equation-solving.core",
+    extent: "partial",
+    rationale:
+      "Read an exact solution, bracket a solution between consecutive integers, or choose the nearest tenth from a table for a quadratic or exponential against a linear function. Does not assess reading a graph, producing a table or graph, or functions other than these.",
+  },
+  {
+    templateId: "polynomial-identity-use",
+    facetId: "polynomial-identities.core",
+    extent: "partial",
+    rationale:
+      "Use (a+b)², (a−b)², a²−b² and (x²+y²)² = (x²−y²)² + (2xy)² to compute, build a Pythagorean triple or choose the true equation among near-miss equations. Does not assess written proof of an identity or polynomial identities of higher degree.",
+  },
+  {
+    templateId: "binomial-coefficient",
+    facetId: "binomial-theorem.core",
+    extent: "partial",
+    rationale:
+      "Choose a coefficient, the constant term or the leading term of (ax+b)ⁿ with n up to 7 and possibly negative b, or the row of Pascal's triangle. Does not assess writing the full expansion, the summation notation, or general terms with symbolic n.",
+  },
+  {
+    templateId: "number-system-closure-classify",
+    facetId: "number-system-closure.core",
+    extent: "partial",
+    rationale:
+      "Classify sums and products of rational and irrational numbers, including the zero exception and irrational pairs with a rational result, and choose a counterexample. Does not assess constructing a written proof or proving a particular number irrational.",
   },
   {
     templateId: "quadratic-irrational-solutions",
