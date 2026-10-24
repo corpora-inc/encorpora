@@ -270,6 +270,8 @@ permutations-combinations|theoretical-distributions|application|Counting arrange
 percentages|probability|related|A probability is a part-to-whole ratio, and a percentage is the same ratio per one hundred.|simple-probability
 sampling-margin-error|statistical-report-critique|application|Checking whether a reported margin of error fits the sample size is part of critiquing a statistical report.|sample-size-margin
 regression-interpretation|causal-claims|extension|A strong fitted relationship describes association. Whether it shows cause depends on how the data were collected.|causal-claim-choice
+arithmetic-sequences|sequence-sums|related|An arithmetic series adds terms that change by a fixed amount, so pairing first and last terms gives its sum. A geometric series adds terms that change by a fixed ratio and uses a different sum rule.|geometric-series-sum
+regression-interpretation|exponential-models|application|Equal ratios in a table, or a curved residual plot that a line cannot remove, show data that follow an exponential model. Building that model means finding its starting value and growth factor.|exponential-model-rule
 causal-claims|statistical-report-critique|application|Judging whether a report's causal claim is justified depends on its study design.|causal-claim-choice
 categorical-association|conditional-probability|extension|A conditional relative frequency in a table is a conditional probability.|conditional-probability-value
 statistical-summary-comparison|randomization-tests|application|The difference in centers between two groups is the statistic that a randomization test compares with chance.|outlier-center-shift

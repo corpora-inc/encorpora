@@ -33,7 +33,7 @@ inequality.solve|Solve and interpret a one-variable inequality|affine-linear-ine
 inequality.context|Apply a constraint or whole-input boundary in context|first-cheaper-whole-input,constraint-feasible
 inequality.graph|Connect an inequality and a half-plane or solution point|half-plane-inequality,inequality-solution-point`,
   "advanced-math": `
-expression.factor|Factor common factors, quadratic trinomials, and differences of squares|greatest-monomial-factor,nonmonic-quadratic-factorization,structure-rewrite
+expression.factor|Factor common factors, quadratic trinomials, and differences of squares|greatest-monomial-factor,nonmonic-quadratic-factorization,structure-rewrite,polynomial-factoring-patterns
 expression.polynomial|Add, subtract, and multiply polynomials|polynomial-addition,polynomial-subtraction,polynomial-multiplication
 expression.rational|Simplify and combine rational expressions on their original domain|rational-expression-simplify,rational-expression-operation
 expression.radical|Connect symbolic roots and fractional exponents|symbolic-rational-exponent,rational-power
@@ -46,7 +46,7 @@ nonlinear.root-count|Classify real roots and solve a repeated-root parameter con
 nonlinear.literal|Isolate an unknown in a nonlinear formula with stated domain|nonlinear-formula-isolate
 quadratic.context|Choose a quadratic model and interpret maximum, zero, or initial value|quadratic-context-model
 exponential.context|Build and use a growth, decay, or half-life model|exponential-model-rule,exponential-model-value
-exponential.form|Recognize equivalent time-scale forms and interpret factors|exponential-time-scale
+exponential.form|Recognize equivalent time-scale forms and interpret factors|exponential-time-scale,compound-growth
 nonlinear.features|Read vertex, symmetry, intercepts, and equivalent structural forms|parabola-vertex,parabola-axis,structure-meaning
 nonlinear.transform|Relate transformations to graphs, equations, and points|parabola-shift,transform-equation,transform-point
 nonlinear.representations|Connect polynomial, quadratic, and exponential tables, graphs, and formulas|zeros-from-factors,exponential-model-rule,compare-representations
@@ -62,7 +62,7 @@ univariate.spread|Compare standard deviations with equal or different means|stan
 univariate.outliers|Interpret the effects of an outlier on mean and median|outlier-center-shift,typical-value-choice
 bivariate.scatter|Interpret association and read scatterplots|scatter-association-choice,correlation-choice
 bivariate.linear-fit|Fit a linear candidate and use a trend line for prediction|nonlinear-data-model,trend-line-predict,regression-line-predict
-bivariate.nonlinear-fit|Fit quadratic and exponential candidates to observed data|nonlinear-data-model
+bivariate.nonlinear-fit|Fit quadratic and exponential candidates to observed data|nonlinear-data-model,residual-function-fit
 bivariate.interpret|Interpret a fitted coefficient or contextual graph|regression-coefficient-meaning,trend-slope-meaning
 bivariate.growth|Compare linear and exponential change|linear-or-exponential,exponential-overtakes
 probability.direct|Compute probabilities from equally likely outcomes|simple-probability,event-set-count

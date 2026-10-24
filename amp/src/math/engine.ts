@@ -249,6 +249,10 @@ import {
   generateFunctionBehaviorProblem,
 } from "./function-behavior-practice";
 import {
+  advancedMathGapTemplates,
+  generateAdvancedMathGapProblem,
+} from "./advanced-math-gaps-practice";
+import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
 } from "./complex-practice";
@@ -430,6 +434,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   complexMultiplicationTemplate,
+  ...advancedMathGapTemplates,
   ...vectorMatrixTemplates,
   ...statisticsProbabilityTemplates,
   ...complexConicsTemplates,
@@ -863,6 +868,8 @@ function generateRawProblem(
     return generateComplexConicsProblem(templateId, seed);
   if (functionBehaviorTemplates.some((t) => t.id === templateId))
     return generateFunctionBehaviorProblem(templateId, seed);
+  if (advancedMathGapTemplates.some((t) => t.id === templateId))
+    return generateAdvancedMathGapProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
   if (remainingGapTemplates.some((t) => t.id === templateId))
