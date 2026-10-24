@@ -238,7 +238,6 @@ import {
   functionBehaviorTemplates,
   generateFunctionBehaviorProblem,
 } from "./function-behavior-practice";
->>>>>>> origin/main
 import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
