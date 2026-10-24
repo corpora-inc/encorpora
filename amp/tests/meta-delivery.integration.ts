@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import type { Pool } from "pg";
 import {
   fixture,
@@ -61,8 +61,8 @@ async function grant(pool: Pool, revision: string | null = null) {
   );
   return view;
 }
-async function captured(pool: Pool) {
-  const p = await stripe(pool);
+async function captured(pool: Pool, paidAt?: number) {
+  const p = await stripe(pool, { paidAt });
   const checkout = (
     await pool.query(
       "SELECT checkout_id FROM amp_payment_records WHERE id=$1",
@@ -142,7 +142,11 @@ test(
   () =>
     fixture(async (pool) => {
       await grant(pool);
-      const p = await captured(pool);
+      // Keep the event recent, but always include the fixture card digits in its
+      // Unix timestamp. Privacy checks must inspect the payload structure.
+      const paidAt =
+        Math.floor((Date.now() / 1000 - 4242) / 100000) * 100000 + 4242;
+      const p = await captured(pool, paidAt);
       const all = await Promise.all(
         Array.from({ length: 5 }, () =>
           queueMetaPayment(pool, config, p.reference.id),
@@ -160,22 +164,28 @@ test(
       );
       assert.equal(sent.filter((x) => x === "accepted").length, 1);
       assert.equal(rt.calls.length, 1);
-      const event = rt.calls[0].data[0];
-      assert.equal(event.event_id, id);
-      assert.equal(event.event_source_url, page);
-      assert.equal(event.custom_data.value, 499);
-      assert.equal(
-        event.event_time,
-        Math.floor(Date.parse(p.occurredAt) / 1000),
-      );
-      assert.deepEqual(Object.keys(event.user_data).sort(), [
-        "client_user_agent",
-        "em",
+      assert.deepEqual(rt.calls, [
+        {
+          data: [
+            {
+              event_name: "Purchase",
+              event_time: paidAt,
+              event_id: id,
+              action_source: "website",
+              event_source_url: page,
+              user_data: {
+                em: [
+                  createHash("sha256")
+                    .update("parent@example.invalid")
+                    .digest("hex"),
+                ],
+                client_user_agent: "Synthetic adult browser/1.0",
+              },
+              custom_data: { value: 499, currency: "USD" },
+            },
+          ],
+        },
       ]);
-      assert.doesNotMatch(
-        JSON.stringify(rt.calls),
-        /parent@example|Do not export|child|4242|amp\|parent|billing=|purchase=/,
-      );
       const rows = (
         await pool.query("SELECT * FROM amp_meta_delivery_attempts")
       ).rows;
