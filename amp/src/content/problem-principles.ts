@@ -6,6 +6,7 @@ import { radicalEquationPrinciples } from "./radical-equation-lessons";
 import { rationalEquationPrinciples } from "./rational-equation-lessons";
 import { geometryProofPrinciples } from "./geometry-proof-lessons";
 import { geometryProofFamilyPrinciples } from "./geometry-proof-family-lessons";
+import { k8RepresentationPrinciples } from "./k8-representations-lessons";
 import { rationalExpressionPrinciples } from "./rational-expression-lessons";
 import { nonlinearSystemPrinciples } from "./nonlinear-system-lessons";
 import { areaVolumePrinciples } from "./area-volume-lessons";
@@ -143,6 +144,7 @@ export const principles: Record<string, string> = {
   ...rationalEquationPrinciples,
   ...geometryProofPrinciples,
   ...geometryProofFamilyPrinciples,
+  ...k8RepresentationPrinciples,
   ...nonlinearSystemPrinciples,
   // Counting, place value, early operations
   "count-objects":

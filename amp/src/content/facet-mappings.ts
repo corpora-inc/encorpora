@@ -57,6 +57,55 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "proportional-graph",
+    facetId: "proportional-relationships.core",
+    extent: "partial",
+    rationale:
+      "Read a graph of a proportional or non-proportional relationship in context: the unit rate from a labeled point with whole-number rate 2 to 5, the meaning of a point, of (0, 0) and of a nonzero starting value, the equation y = rx, and whether a graph is a straight line through the origin. Does not assess drawing graphs, tables, fractional or decimal rates, or comparing two relationships.",
+  },
+  {
+    templateId: "story-graph-match",
+    facetId: "qualitative-graphs.core",
+    extent: "partial",
+    rationale:
+      "Match a story to a graph with no scale, or describe the graph, using increasing, constant and decreasing pieces in order (three pieces), find the single piece of four that is increasing, decreasing or constant, and the piece that changes fastest or slowest over equal times. Does not assess sketching graphs, curved graphs, linear versus nonlinear classification, or values read from a scale.",
+  },
+  {
+    templateId: "coordinate-context-points",
+    facetId: "coordinate-first-quadrant.ordered-pairs",
+    extent: "partial",
+    rationale:
+      "Interpret a whole-number first-quadrant point in a plant, savings, map or game context, choose the labeled point or ordered pair that matches a situation, and find the vertical gap between two points with the same first coordinate. Does not assess plotting points, scale other than 1, signed coordinates or distances along other lines.",
+  },
+  {
+    templateId: "pattern-pair-relationship",
+    facetId: "related-patterns.paired-terms",
+    extent: "partial",
+    rationale:
+      "Build matching terms from two add-rules with starts 0 to 4, write the nth ordered pair, and use a constant-difference or constant-multiple relationship (including a later term). Does not assess generating the patterns as a table by hand, plotting the pairs, or rules that multiply.",
+  },
+  {
+    templateId: "triangle-uniqueness",
+    facetId: "triangle-construction.determining-conditions",
+    extent: "partial",
+    rationale:
+      "Decide whether two sides and a non-included angle (30 degrees, or a right or obtuse angle) give no triangle, one or two, and choose the one set of measures among SAS, ASA, SSS, AAA, SSA and impossible sets that fixes exactly one triangle. Does not assess drawing or constructing the triangle, trigonometry, or SSA with other acute angles.",
+  },
+  {
+    templateId: "percent-applications",
+    facetId: "percent-change.core",
+    extent: "partial",
+    rationale:
+      "Exact one-step applications with whole-dollar or whole-number data: sales tax, tip, commission with base pay, markup, markdown price and rate, simple interest amount, balance and rate, and percent error. Does not assess rounding, compound interest, multi-step discounts, successive changes or constructed explanations.",
+  },
+  {
+    templateId: "compound-event-simulation",
+    facetId: "compound-probability.core",
+    extent: "partial",
+    rationale:
+      "Probability of a compound event by listing a sample space of 8 to 16 equally likely outcomes (two dice, coin and die, three flips, two spinners), an estimate from 20 given random-digit trials, and comparison of experimental with theoretical probability. Does not assess drawing a tree or table, running a simulation, probabilities of unequal outcomes or dependent events.",
+  },
+  {
     templateId: "triangle-law-reasoning",
     facetId: "triangle-law-proofs.core",
     extent: "partial",

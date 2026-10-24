@@ -6,6 +6,7 @@ import { radicalEquationMethods } from "./radical-equation-lessons";
 import { rationalEquationMethods } from "./rational-equation-lessons";
 import { geometryProofMethods } from "./geometry-proof-lessons";
 import { geometryProofFamilyMethods } from "./geometry-proof-family-lessons";
+import { k8RepresentationMethods } from "./k8-representations-lessons";
 import { rationalExpressionMethods } from "./rational-expression-lessons";
 import { nonlinearSystemMethods } from "./nonlinear-system-lessons";
 import { areaVolumeMethods } from "./area-volume-lessons";
@@ -146,6 +147,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...rationalEquationMethods,
   ...geometryProofMethods,
   ...geometryProofFamilyMethods,
+  ...k8RepresentationMethods,
   ...nonlinearSystemMethods,
   // Counting and early operations
   "count-objects": {
