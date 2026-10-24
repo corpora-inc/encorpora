@@ -1,3 +1,4 @@
+from sat_algebra_structure_math_oracle import SUPPORTED as SAT_ALGEBRA_STRUCTURE, solve as solve_sat_algebra_structure, self_test as review_sat_algebra_structure_fixtures, review_problem as review_sat_algebra_structure_problem
 from sat_completion_math_oracle import SUPPORTED as SAT_COMPLETION, CHOICE as SAT_COMPLETION_CHOICE, solve as solve_sat_completion, self_test as review_sat_completion_fixtures, review_problem as review_sat_completion_problem
 #!/usr/bin/env python3
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
@@ -129,6 +130,7 @@ SUPPORTED |= STAT_PROB
 SUPPORTED |= INVERSE_ROUNDING
 SUPPORTED |= TRIGONOMETRY | SLOPE_TRIANGLE | SUCCESSIVE_PERCENT | STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT
 SUPPORTED |= SAT_COMPLETION
+SUPPORTED |= SAT_ALGEBRA_STRUCTURE
 SUPPORTED |= ASSESSMENT_GAP
 SUPPORTED |= RADICAL_EQUATION | RATIONAL_EQUATION | GEOMETRY_PROOF
 SUPPORTED |= RATIONAL_EXPRESSION
@@ -262,6 +264,8 @@ def solve_family(public):
         return solve_linear_initial_value(public)
     if public["templateId"] in STUDY_DESIGN:
         return solve_study_design(public)
+    if public["templateId"] in SAT_ALGEBRA_STRUCTURE:
+        return solve_sat_algebra_structure(public)
     if public["templateId"] in SAT_COMPLETION:
         return solve_sat_completion(public)
     if public["templateId"] in ASSESSMENT_GAP:
@@ -677,6 +681,8 @@ def review(stream):
             review_linear_initial_value_problem(problem)
         if template in STUDY_DESIGN:
             review_study_design_problem(problem)
+        if template in SAT_ALGEBRA_STRUCTURE:
+            review_sat_algebra_structure_problem(problem)
         if template in SAT_COMPLETION:
             review_sat_completion_problem(problem)
         if template in ASSESSMENT_GAP:
@@ -749,7 +755,7 @@ def review(stream):
         elif template in HIERARCHY_MULTISELECT:
             expected = review_hierarchy_multiselect_problem(problem)
             actual = problem["answer"]
-        elif template in LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        elif template in LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS | SAT_ALGEBRA_STRUCTURE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -826,6 +832,7 @@ def review(stream):
     review_trigonometry_fixtures()
     review_study_design_fixtures()
     review_sat_completion_fixtures()
+    review_sat_algebra_structure_fixtures()
     review_assessment_gap_fixtures()
     review_radical_equation_fixtures()
     review_rational_equation_fixtures()
