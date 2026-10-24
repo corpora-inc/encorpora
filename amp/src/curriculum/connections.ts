@@ -1,7 +1,10 @@
 import type { SkillConnection } from "./types";
 
 /** Editorial connections supported by existing content, not assessment dependencies. */
-const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
+const authoredConnections: (Omit<
+  SkillConnection,
+  "skillId" | "direction"
+> & {
   from: string;
   to: string;
 })[] = [
