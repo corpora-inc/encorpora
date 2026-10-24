@@ -1739,7 +1739,14 @@ function independenceCase(r: Random): SatGeometryDataCase {
         const N = pick(r, [100, 120, 150, 200, 250, 300, 400]);
         const nA = r(2, 9) * (N / 20),
           nB = r(2, 9) * (N / 20);
-        if (nA >= N || nB >= N || (nA * nB) % N !== 0) continue;
+        if (
+          !Number.isInteger(nA) ||
+          !Number.isInteger(nB) ||
+          nA >= N ||
+          nB >= N ||
+          (nA * nB) % N !== 0
+        )
+          continue;
         const both = (nA * nB) / N;
         const choices = choose(String(both), [
           [

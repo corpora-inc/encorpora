@@ -81,7 +81,7 @@ angle.relationships|Apply triangle sums and parallel/transversal angle relations
 triangle.pythagorean|Solve right triangles and recognize the converse|right-triangle,right-triangle-missing-leg,pythagorean-converse,space-diagonal
 triangle.special|Apply special triangles and acute trigonometric ratios|special-right-triangle,trig-ratio,trig-context-triangle
 triangle.complement|Use sine/cosine relationships of complementary angles|complementary-trig
-circle.parts|Use radius, diameter, tangent, central, and inscribed angle relationships|circle-angles,circle-segment-lengths,circle-circumference-coefficient,circle-area-coefficient
+circle.parts|Use radius, diameter, tangent, central, and inscribed angle relationships, plus chord, secant, and tangent segment lengths|circle-angles,circle-segment-lengths,circle-circumference-coefficient,circle-area-coefficient
 circle.arc-sector|Find arc lengths, sector areas, and angles in radians|arc-length-coefficient,sector-area-coefficient,radian-arc-ratio
 circle.unit-trig|Use special-angle unit-circle coordinates and signs|unit-circle-coordinate
 circle.angle-units|Convert degrees and radians in both directions|degree-radian-conversion

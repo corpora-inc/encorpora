@@ -1,6 +1,7 @@
 from sat_completion_math_oracle import SUPPORTED as SAT_COMPLETION, CHOICE as SAT_COMPLETION_CHOICE, solve as solve_sat_completion, self_test as review_sat_completion_fixtures, review_problem as review_sat_completion_problem
 #!/usr/bin/env python3
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
+from sat_geometry_data_math_oracle import SUPPORTED as SAT_GEOMETRY_DATA, solve as solve_sat_geometry_data, review_problem as review_sat_geometry_data_problem, self_test as review_sat_geometry_data_fixtures
 from trigonometry_math_oracle import SUPPORTED as TRIGONOMETRY, solve as solve_trigonometry, review_problem as review_trigonometry_problem, self_test as review_trigonometry_fixtures
 from slope_triangle_math_oracle import SUPPORTED as SLOPE_TRIANGLE, solve as solve_slope_triangle, review_problem as review_slope_triangle_problem, self_test as review_slope_triangle_fixtures
 from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MULTISELECT, solve as solve_hierarchy_multiselect, review_problem as review_hierarchy_multiselect_problem, self_test as review_hierarchy_multiselect_fixtures
@@ -111,6 +112,7 @@ SUPPORTED |= TRIANGLE_CONGRUENCE
 SUPPORTED |= QUADRATIC_IRRATIONAL
 SUPPORTED |= RELATION_REPAIR
 SUPPORTED |= COMPLEX
+SUPPORTED |= SAT_GEOMETRY_DATA
 SUPPORTED |= GEOMETRY_FAMILIES
 SUPPORTED |= GEOMETRY_MODELING
 SUPPORTED |= FUNCTION_BEHAVIOR
@@ -210,6 +212,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if public["templateId"] in SAT_GEOMETRY_DATA:
+        return solve_sat_geometry_data(public)
     if public["templateId"] in TRIGONOMETRY:
         return solve_trigonometry(public)
     if public["templateId"] in GEOMETRY_MODELING:
@@ -631,6 +635,8 @@ def review(stream):
             review_geometry_family_problem(problem)
         if template in COMPLEX:
             review_complex_problem(problem)
+        if template in SAT_GEOMETRY_DATA:
+            review_sat_geometry_data_problem(problem)
         if template in GEOMETRY_MODELING:
             review_geometry_modeling_problem(problem)
         if template in FUNCTION_BEHAVIOR:
@@ -713,7 +719,7 @@ def review(stream):
         elif template in HIERARCHY_MULTISELECT:
             expected = review_hierarchy_multiselect_problem(problem)
             actual = problem["answer"]
-        elif template in LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | COMPLEX | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        elif template in SAT_GEOMETRY_DATA | LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | COMPLEX | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -773,6 +779,7 @@ def review(stream):
     review_quadratic_irrational_fixtures()
     review_relation_repair_fixtures()
     review_complex_fixtures()
+    review_sat_geometry_data_fixtures()
     review_geometry_family_fixtures()
     review_geometry_modeling_fixtures()
     review_function_behavior_fixtures()
