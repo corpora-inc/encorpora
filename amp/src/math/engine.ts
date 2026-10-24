@@ -243,6 +243,10 @@ import {
   complexMultiplicationCase,
 } from "./complex-practice";
 import {
+  remainingGapTemplates,
+  generateRemainingGapProblem,
+} from "./remaining-gap-practice";
+import {
   absoluteValueTemplates,
   generateAbsoluteValueProblem,
 } from "./absolute-value-practice";
@@ -410,6 +414,7 @@ export const templates: readonly TemplateMetadata[] = [
   complexMultiplicationTemplate,
   ...geometryModelingTemplates,
   ...functionBehaviorTemplates,
+  ...remainingGapTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
   ...addSubtractTemplates,
@@ -830,6 +835,8 @@ function generateRawProblem(
     return generateFunctionBehaviorProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (remainingGapTemplates.some((t) => t.id === templateId))
+    return generateRemainingGapProblem(templateId, seed);
   if (geometryModelingTemplates.some((t) => t.id === templateId))
     return generateGeometryModelingProblem(templateId, seed);
   if (absoluteValueTemplates.some((t) => t.id === templateId))

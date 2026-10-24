@@ -70,6 +70,7 @@ import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
+import { remainingGapLessons } from "./remaining-gap-lessons";
 import { geometryModelingLessons } from "./geometry-modeling-lessons";
 import { functionBehaviorLessons } from "./function-behavior-lessons";
 import { absoluteValueLessons } from "./absolute-value-lessons";
@@ -673,6 +674,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...complexLessons,
+  ...remainingGapLessons,
   ...geometryModelingLessons,
   ...functionBehaviorLessons,
   ...absoluteValueLessons,
