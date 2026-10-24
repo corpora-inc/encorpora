@@ -151,6 +151,10 @@
 .yearContainer {
   width: min(100%, var(--width-form));
 }
+.yearContainer :global(.text-button) {
+  min-height: var(--target-size);
+  padding-inline: var(--space-3);
+}
 
 .purchasePrivacy {
   border-top: 1px solid var(--color-border);

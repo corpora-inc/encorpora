@@ -21,6 +21,7 @@ NATIVE = ('amp/mobile/', 'amp/src/web/native-', 'amp/src/web/Native',
           'amp/scripts/verify-native-session.')
 SMOKE_CORE = ('tests/contracts.test.ts', 'tests/brand.test.ts', 'tests/test-suite.test.ts')
 PROTECTED_DATABASE = {
+    'amp/src/access-grants/': ('access-grants',),
     'amp/src/billing/': ('stripe', 'purchase-consent'),
     'amp/src/parent-consent/': ('parent-consent', 'purchase-consent'),
     'amp/src/privacy/': ('retention', 'advertising-permission'),

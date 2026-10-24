@@ -1,3 +1,4 @@
+import { useActivateGift } from "../access/api";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import type { SignedInMe } from "../../../account/contracts";
@@ -43,6 +44,7 @@ export function LearnerSteps({
   const name = mine ? draft.name : "";
   const create = useCreateLearner(session);
   const claim = useClaimEnrollment(session);
+  const giftClaim = useActivateGift(session);
   const correct = useSetBirthYear(session);
   const adopt = useAdoptTrial(session);
   const [trial, setTrial] = useState(storedTrial);
@@ -55,7 +57,14 @@ export function LearnerSteps({
   const firstRun = me.next !== "practice";
   const funded = isFundedReturn(search.return);
   const purchase = me.unassignedPurchase;
-  const waiting = me.learners.filter((learner) => !learner.entitlement.active);
+  const gift = !purchase && !funded ? me.availableAccessGrant : undefined;
+  const waiting = me.learners.filter(
+    (learner) =>
+      !learner.entitlement.active &&
+      (!gift ||
+        !me.family.learners.find((item) => item.id === learner.id)
+          ?.stripeLinked),
+  );
   useEffect(() => {
     if (!mine) draft.set(session.accountId, "");
   }, [session.accountId]);
@@ -64,7 +73,11 @@ export function LearnerSteps({
       void navigate({ to: "/start/name", search, replace: true });
   }, [location.pathname, name]);
   const busy =
-    create.isPending || claim.isPending || correct.isPending || adopt.isPending;
+    create.isPending ||
+    claim.isPending ||
+    giftClaim.isPending ||
+    correct.isPending ||
+    adopt.isPending;
   const practice = (learnerId: string) => {
     useLearnerStore.getState().select(learnerId);
     draft.clear();
@@ -75,17 +88,23 @@ export function LearnerSteps({
     );
   };
   const assign = (learnerId: string) =>
-    purchase && !isFundedReturn(search.return)
-      ? claim.mutate(
-          { purchaseId: purchase.id, learnerId },
+    gift
+      ? giftClaim.mutate(
+          { id: gift.id, learnerId },
           { onSuccess: () => practice(learnerId) },
         )
-      : practice(learnerId);
+      : purchase && !isFundedReturn(search.return)
+        ? claim.mutate(
+            { purchaseId: purchase.id, learnerId },
+            { onSuccess: () => practice(learnerId) },
+          )
+        : practice(learnerId);
   const toast = (
     <Toast
       message={
         create.error?.message ??
         claim.error?.message ??
+        giftClaim.error?.message ??
         correct.error?.message ??
         (ended || adopt.error?.message) ??
         ""
@@ -93,6 +112,7 @@ export function LearnerSteps({
       onDismiss={() => {
         create.reset();
         claim.reset();
+        giftClaim.reset();
         correct.reset();
         adopt.reset();
         setEnded("");
@@ -110,7 +130,7 @@ export function LearnerSteps({
             header: (
               <>
                 <FrameBrand expanded />
-                {funded ? (
+                {funded || gift ? (
                   <div className={styles.progress}>
                     <span>Starting point</span>
                     <span>Step 2 of 2</span>
@@ -127,6 +147,7 @@ export function LearnerSteps({
           cancel={() => void navigate({ to: "/start/name", search })}
           saveBirthYear={(year) => {
             claim.reset();
+            giftClaim.reset();
             create.reset();
             correct.reset();
             const saved = mine ? draft.learnerId : null;
@@ -180,7 +201,7 @@ export function LearnerSteps({
     <section className={`${frameCard} ${styles.step}`}>
       <FrameBrand expanded />
       {toast}
-      {firstRun && !funded ? (
+      {firstRun && !funded && !gift ? (
         <Progress step={3} />
       ) : (
         <div className={styles.progress}>
@@ -194,7 +215,7 @@ export function LearnerSteps({
           ? "Their free practice carries over: every answer, the map and the next problem."
           : "A first name or nickname helps you keep each learner’s practice separate."}
       </p>
-      {!trial && purchase && waiting.length > 0 && (
+      {!trial && (purchase || gift) && waiting.length > 0 && (
         <div className={styles.claim}>
           {waiting.map((learner) => (
             <Button
@@ -203,6 +224,7 @@ export function LearnerSteps({
               disabled={busy}
               onClick={() => {
                 claim.reset();
+                giftClaim.reset();
                 assign(learner.id);
               }}
             >
@@ -220,6 +242,7 @@ export function LearnerSteps({
           // Saved before a failed claim: claim again, never adopt twice.
           if (mine && draft.learnerId) return assign(draft.learnerId);
           claim.reset();
+          giftClaim.reset();
           // Adoption is idempotent for this account: a retry after a lost
           // response returns the learner already saved, never a second one.
           adopt.mutate(

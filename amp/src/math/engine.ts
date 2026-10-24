@@ -234,6 +234,9 @@ import {
   statisticsProbabilityTemplates,
   generateStatisticsProbabilityProblem,
 } from "./statistics-probability-practice";
+  functionBehaviorTemplates,
+  generateFunctionBehaviorProblem,
+} from "./function-behavior-practice";
 import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
@@ -405,6 +408,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   complexMultiplicationTemplate,
   ...statisticsProbabilityTemplates,
+  ...functionBehaviorTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
   ...addSubtractTemplates,
@@ -823,6 +827,8 @@ function generateRawProblem(
     return generateQuadraticProblem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))
     return generateStatisticsProbabilityProblem(templateId, seed);
+  if (functionBehaviorTemplates.some((t) => t.id === templateId))
+    return generateFunctionBehaviorProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
   if (absoluteValueTemplates.some((t) => t.id === templateId))

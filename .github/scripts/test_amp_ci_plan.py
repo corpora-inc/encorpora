@@ -205,3 +205,8 @@ def test_aggregate_rejects_failures_cancellations_and_accidentally_skipped_jobs(
                             env={**os.environ, 'AMP_NEEDS': json.dumps(needs),
                                  'GITHUB_STEP_SUMMARY': str(tmp_path / 'summary')})
     assert (result.returncode == 0) == passes, result.stderr
+
+
+def test_access_gifts_keep_database_authorization_checks_in_feature_prs():
+    result = plan(['amp/src/access-grants/repository.ts'], quick=True)
+    assert 'tests/access-grants.integration.ts' in result['database']

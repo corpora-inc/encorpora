@@ -21,6 +21,8 @@ export function AccountReady() {
     me.data?.signedIn && me.data.account.id === session.accountId
       ? me.data
       : null;
+  if (account?.availableAccessGrant || carry.return === "access")
+    return <Navigate to="/access" replace />;
   const active = account?.learners.some(
     (learner) => learner.entitlement.active,
   );
@@ -97,6 +99,11 @@ export function AccountReady() {
                   search={carry}
                 >
                   Continue free assessment →
+                </Link>
+              )}
+              {!active && (
+                <Link to="/access" className={buttonClass("quiet")}>
+                  Check an invitation
                 </Link>
               )}
               <Link
