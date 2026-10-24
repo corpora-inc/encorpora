@@ -3,6 +3,7 @@ from sat_completion_math_oracle import SUPPORTED as SAT_COMPLETION, CHOICE as SA
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
 from slope_triangle_math_oracle import SUPPORTED as SLOPE_TRIANGLE, solve as solve_slope_triangle, review_problem as review_slope_triangle_problem, self_test as review_slope_triangle_fixtures
 from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MULTISELECT, solve as solve_hierarchy_multiselect, review_problem as review_hierarchy_multiselect_problem, self_test as review_hierarchy_multiselect_fixtures
+from geometry_modeling_math_oracle import SUPPORTED as GEOMETRY_MODELING, solve as solve_geometry_modeling, review_problem as review_geometry_modeling_problem, self_test as review_geometry_modeling_fixtures
 from complex_math_oracle import SUPPORTED as COMPLEX, solve as solve_complex, review_problem as review_complex_problem, self_test as review_complex_fixtures
 from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_CHOICE, solve_rational_equation, review_rational_equation_fixtures, review_rational_equation_problem
 from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, review_geometry_proof_fixtures, review_geometry_proof_problem
@@ -107,6 +108,7 @@ SUPPORTED |= TRIANGLE_CONGRUENCE
 SUPPORTED |= QUADRATIC_IRRATIONAL
 SUPPORTED |= RELATION_REPAIR
 SUPPORTED |= COMPLEX
+SUPPORTED |= GEOMETRY_MODELING
 SUPPORTED |= INVERSE_ROUNDING
 SUPPORTED |= SLOPE_TRIANGLE | SUCCESSIVE_PERCENT | STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT
 SUPPORTED |= SAT_COMPLETION
@@ -203,6 +205,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if public["templateId"] in GEOMETRY_MODELING:
+        return solve_geometry_modeling(public)
     if public["templateId"] in SLOPE_TRIANGLE:
         return solve_slope_triangle(public)
     if public["templateId"] in SUCCESSIVE_PERCENT:
@@ -614,6 +618,8 @@ def review(stream):
             review_relation_repair_problem(problem)
         if template in COMPLEX:
             review_complex_problem(problem)
+        if template in GEOMETRY_MODELING:
+            review_geometry_modeling_problem(problem)
         if template in INVERSE_ROUNDING:
             review_inverse_rounding_problem(problem)
         if template in LINEAR_INITIAL_VALUE:
@@ -749,6 +755,7 @@ def review(stream):
     review_quadratic_irrational_fixtures()
     review_relation_repair_fixtures()
     review_complex_fixtures()
+    review_geometry_modeling_fixtures()
     review_fraction_expression_fixtures()
     review_inverse_rounding_fixtures()
     review_linear_initial_value_fixtures()

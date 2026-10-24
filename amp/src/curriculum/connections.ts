@@ -131,7 +131,7 @@ statistical-summary-comparison|randomization-tests|application|The difference in
 nonlinear-equation-modeling|model-validation|application|After solving a quadratic or exponential model, check its solution against the context and the data.|quadratic-context-model
 fraction-plot-computation|fraction-division|application|Sharing a measured total equally is a fraction division.|fraction-share-amount
 solid-volume-models|density-modeling|application|Mass is density times volume, so a solid's volume formula gives the mass of a rod or block of known density.|density-context
-density-modeling|model-validation|application|A density result is checked against its context: the units must match and the size must be plausible, as when validating any model.|density-context
+density-modeling|geometric-design|related|Mass is density times volume, and the cost of painting a wall is a price per square meter times the painted area. Both multiply a rate per unit by a measured amount, which is how a design is priced.|geometric-design-constraint
 geometric-design|nonlinear-equation-modeling|extension|The area of a three-sided fenced garden, width times (fence minus two widths), is a quadratic constraint model with a greatest value.|geometric-design-constraint
 cavalieri-principle|solid-volume-models|application|Equal cross-sections show that an oblique solid has the volume of the right solid with the same base and perpendicular height.|cavalieri-volume-reasoning
 sections-and-revolutions|solid-volume-models|application|A rotated rectangle, right triangle or semicircle sweeps out a cylinder, cone or sphere, whose volume formula gives the volume.|section-revolution-solid

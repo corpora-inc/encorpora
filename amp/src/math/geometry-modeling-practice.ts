@@ -332,7 +332,11 @@ function volumeCase(
   }
   if (variant === 2) {
     const rad = pick(r, [4, 5, 6]);
-    const h = pick(r, [6, 9, 12, 15]);
+    // The height never equals the radius, which the prompt already states.
+    const h = pick(
+      r,
+      [6, 9, 12, 15].filter((candidate) => candidate !== rad),
+    );
     const v = (rad * rad * h) / 3;
     return {
       variant,
@@ -1088,7 +1092,7 @@ function designCase(
     return {
       variant,
       built: {
-        prompt: `You have ${perimeter} m of fencing to enclose a rectangular pen, and you will use all of it. Which whole-number dimensions enclose the greatest area?`,
+        prompt: `You have ${perimeter} m of fencing to enclose a rectangular pen, and you will use all of it. Which of these whole-number dimensions encloses the greatest area?`,
         hint: `The fence is the perimeter, ${perimeter} m, so length plus width is ${half} m for every option. Find the area, length × width, of each option and compare.`,
         explanation: [
           `All of the fence is used, so length + width = ${perimeter} ÷ 2 = ${half} m for every option.`,
@@ -1377,7 +1381,8 @@ function cavalieriCase(
     [1, 3],
   ] as const);
   const [n, d] = ratio;
-  const base = 6 * r(8, 40);
+  // A multiple of 18 keeps every distractor, including the squared ratio 1/9, a clean number.
+  const base = d === 3 ? 18 * r(3, 14) : 6 * r(8, 40);
   const ratioText = d === 1 ? `${n} times` : n === 1 ? `1/${d}` : `${n}/${d}`;
   const answer = (base * n) / d;
   return {
