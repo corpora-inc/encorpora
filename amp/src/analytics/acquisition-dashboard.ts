@@ -81,9 +81,10 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
     ],
   ];
   const sources = table(
-    ["Source", "Campaign", "Creative", "Browsers", "Active minutes"],
+    ["Source", "Medium", "Campaign", "Creative", "Browsers", "Active minutes"],
     e.sources.map((r) => [
       r.source,
+      r.medium,
       r.campaign,
       r.creative,
       number(r.browsers),
@@ -117,6 +118,7 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
       "Screen",
       "Action",
       "Source",
+      "Medium",
       "Campaign",
       "Creative",
       "Actions",
@@ -126,6 +128,7 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
       r.screen,
       r.action,
       r.source,
+      r.medium,
       r.campaign,
       r.creative,
       number(r.actions),
@@ -135,7 +138,9 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
   const purchase = table(
     [
       "State",
+      "Attribution basis",
       "Source",
+      "Medium",
       "Campaign",
       "Creative",
       "Prepared",
@@ -148,7 +153,9 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
     ],
     f.sources.map((r) => [
       r.jurisdiction,
+      r.attribution_basis,
       r.source,
+      r.medium,
       r.campaign,
       r.creative,
       number(r.prepared),
@@ -188,7 +195,7 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
     ? totals
         .map(
           (t) =>
-            `<article class="cost"><h3>${esc(t.platform)} · ${esc(money(t.spendMicros, t.currency))}</h3><p class="note">${esc(t.from)} through ${esc(t.through)} · ${esc(t.timeZone)} · ${esc(t.clickMetric.replaceAll("_", " "))} · checked ${esc(t.observedAt)}</p>${t.note ? `<p class="warning">${esc(t.note)}</p>` : ""}${t.billing ? `<p class="note">${esc(t.billing.label)}: ${esc(money(t.billing.amountMicros, t.currency))}. Account-level billing evidence is separate from campaign costs.</p>` : ""}${table(
+            `<article class="cost"><h3>${esc(t.platform)} · ${esc(money(t.spendMicros, t.currency))}</h3><p class="note">${esc(t.from)} through ${esc(t.through)} · ${esc(t.timeZone)} · ${esc(t.clickMetric.replaceAll("_", " "))} · checked ${esc(t.observedAt)}</p><p class="note">${esc(number(t.impressions))} impressions · ${esc(number(t.clicks))} clicks · ${esc(t.costPerClickMicros === null ? "Cost per click unavailable" : `${money(t.costPerClickMicros, t.currency)} per click`)}</p>${t.note ? `<p class="warning">${esc(t.note)}</p>` : ""}${t.billing ? `<p class="note">${esc(t.billing.label)}: ${esc(money(t.billing.amountMicros, t.currency))}. Account-level billing evidence is separate from campaign costs.</p>` : ""}${table(
               [
                 "Campaign",
                 "Impressions",
@@ -197,19 +204,21 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
                 "Cost / click",
                 "UTM source / campaign",
               ],
-              t.rows.map((r) => [
-                r.label,
-                number(r.impressions),
-                number(r.clicks),
-                money(r.spendMicros, t.currency),
-                r.clicks && r.spendMicros !== null
-                  ? money(r.spendMicros / r.clicks, t.currency)
-                  : "—",
-                r.utmCampaign
-                  ? `${r.utmSource} / ${r.utmCampaign}`
-                  : "Unmapped",
-              ]),
-            )}</article>`,
+              t.rows
+                .filter((r) => r.impressions || r.clicks || r.spendMicros !== 0)
+                .map((r) => [
+                  r.label,
+                  number(r.impressions),
+                  number(r.clicks),
+                  money(r.spendMicros, t.currency),
+                  r.clicks && r.spendMicros !== null
+                    ? money(r.spendMicros / r.clicks, t.currency)
+                    : "—",
+                  r.utmCampaign
+                    ? `${r.utmSource} / ${r.utmCampaign}`
+                    : "Unmapped",
+                ]),
+            )}<p class="note">Campaign rows with zero impressions, clicks and spend are omitted from this table; the JSON snapshot retains all ${t.rows.length} campaign rows.</p></article>`,
         )
         .join("")
     : '<p class="empty">Ad costs have not been imported. This does not mean zero spend.</p>';
@@ -225,7 +234,7 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
     s.funnel.paywallDismissReasons.map((r) => [r.reason, number(r.count)]),
   );
   const problemReports = table(
-    ["Problem template", "Flags", "Answered", "Skipped", "Common reasons"],
+    ["Problem template", "Flags", "Answered", "Skip rate", "Common reasons"],
     s.learning.templates
       .filter((r) => r.flags > 0)
       .sort((a, b) => b.flags - a.flags)
@@ -234,7 +243,7 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
         r.title,
         number(r.flags),
         number(r.answered),
-        number(r.skipped),
+        r.skipped === null ? "—" : `${(r.skipped * 100).toFixed(1)}%`,
         r.topReasons
           .map((reason) => `${reason.reason}: ${reason.count}`)
           .join(", "),
@@ -265,7 +274,7 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
   ${section("traffic", "Where visits come from", "First-touch campaign and creative labels for browsers with recorded page activity. Existing visitors can retain an earlier campaign.", sources)}
   ${section("behavior", "What visitors do", "Active time stops after 60 seconds without input; hidden or unfocused pages do not accumulate visible time. Last observed screen does not prove abandonment.", screens + "<h3>Observed paths</h3>" + paths + "<h3>Marketing actions</h3>" + actions)}
   ${section("milestones", "Assessment and card-checkout milestones", "Counts show visitors who reached each milestone, not a compulsory sequence. Direct-entry visits can skip earlier screens. The visitor cohort starts in the selected UTC window.", progress)}
-  ${section("purchases", "Funded purchase progress", "Invoices prepared in the selected UTC window, followed through the report snapshot. ¹Submission is parent-reported. Paid requires verified settlement. Mail accepted means accepted by the mail provider, not read by the parent.", purchase + '<h3>Access and actual use</h3><p class="note">Operational state cohorts include all retained invoices, including testing and unattributed records. They are diagnostic counts, not campaign conversion totals.</p>' + delivery)}
+  ${section("purchases", "Funded purchase progress", "Invoices prepared in the selected UTC window, followed through the report snapshot. ¹Submission is parent-reported. Paid requires verified settlement. Mail accepted means accepted by the mail provider, not read by the parent.", purchase + '<h3>Access and actual use</h3><p class="note">Operational state cohorts include invoices created in the selected window, including testing and unattributed records. They are diagnostic counts, not campaign conversion totals.</p>' + delivery)}
   ${section("spend", "Advertising costs", "Provider-reported ad spend; credits and billing adjustments are not reconciled here. Each provider’s date window, timezone and click definition are shown. Cost per click uses that provider’s reported clicks, not website visitors. Missing or unmapped costs are not assigned to campaigns by guesswork.", spend + (missing.length ? `<p class="warning">Not imported: ${esc(missing.join(", "))}.</p>` : "") + '<p class="note">Compare these costs with the campaign and paid-payment tables above. No ROAS or customer-acquisition-cost claim is made when cost windows and purchase cohorts differ.</p>')}
   ${section("feedback", "Parent feedback and purchase hesitation", "Operational counts include testing. No individual messages, answers or learner identities appear here. Parent feedback is limited to the selected report window; problem and trial metrics follow their own report definitions.", feedback + "<h3>Reasons for dismissing purchase</h3>" + dismissal + "<h3>Reported problems</h3>" + problemReports + "<h3>How far trials get</h3>" + trialDepth)}
   <details><summary>Measurement definitions and coverage</summary>${[...e.definitions, ...f.definitions].map((d) => `<p>${esc(d)}</p>`).join("")}${table(
