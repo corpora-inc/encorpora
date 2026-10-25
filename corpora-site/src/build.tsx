@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile, cp, rm } from "node:fs/promises";
 import React, { renderToStaticMarkup } from "./react.js";
 import type { SiteConfig } from "./config.js";
 import { Page, routesFor } from "./pages.js";
+import { build as bundle } from "esbuild";
 import { product } from "./product.js";
 export async function buildSite(config: SiteConfig, output: string = "dist") {
   const routes = routesFor(config);
@@ -32,6 +33,7 @@ export async function buildSite(config: SiteConfig, output: string = "dist") {
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1f5f55"/><path d="M43 21a17 17 0 1 0 0 22" fill="none" stroke="#fffefa" stroke-width="7"/><circle cx="48" cy="48" r="4" fill="#fffefa"/></svg>',
   );
   await cp("src/invoice-client.js", `${output}/assets/invoice.js`);
+  await bundle({entryPoints:["src/engagement-client.ts"],bundle:true,format:"iife",platform:"browser",target:"es2022",minify:true,outfile:`${output}/assets/engagement.js`});
   await cp("src/campaign-client.js", `${output}/assets/campaign.js`);
   await cp("src/acquisition-client.js", `${output}/assets/acquisition.js`);
   for (const route of routes) {
