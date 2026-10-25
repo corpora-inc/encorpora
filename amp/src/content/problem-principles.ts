@@ -72,6 +72,7 @@ import { statisticsProbabilityPrinciples } from "./statistics-probability-lesson
 import { complexConicsPrinciples } from "./complex-conics-lessons";
 import { trigonometryPrinciples } from "./trigonometry-lessons";
 import { geometryModelingPrinciples } from "./geometry-modeling-lessons";
+import { geometryRequirementGapPrinciples } from "./geometry-requirement-gaps-lessons";
 import { functionBehaviorPrinciples } from "./function-behavior-lessons";
 import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
@@ -105,6 +106,7 @@ export const principles: Record<string, string> = {
   ...complexConicsPrinciples,
   ...trigonometryPrinciples,
   ...geometryModelingPrinciples,
+  ...geometryRequirementGapPrinciples,
   ...functionBehaviorPrinciples,
   ...absoluteValuePrinciples,
   ...polynomialPrinciples,
