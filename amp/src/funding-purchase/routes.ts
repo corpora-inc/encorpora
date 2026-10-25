@@ -1,3 +1,4 @@
+import { funnelVisitor } from "../analytics/visitor-header.js";
 import {
   FundingInvoiceRepository,
   invoiceDocument,
@@ -88,6 +89,9 @@ export async function registerFundingPurchaseRoutes(
           request.body,
           new Date(),
           acquisitionToken(request.headers),
+          advertisingOptOut(request.headers)
+            ? undefined
+            : funnelVisitor(request.headers),
         );
         return {
           invoiceId: intent.id,
@@ -180,7 +184,14 @@ export async function registerFundingPurchaseRoutes(
         body = purchase;
       }
       const input = createFundingRequestSchema.parse(body);
-      const fundingRequest = await repository.create(account, input);
+      const fundingRequest = await repository.create(
+        account,
+        input,
+        new Date(),
+        advertisingOptOut(request.headers)
+          ? undefined
+          : funnelVisitor(request.headers),
+      );
       await linkPurchaseAcquisition(
         options.pool,
         account,

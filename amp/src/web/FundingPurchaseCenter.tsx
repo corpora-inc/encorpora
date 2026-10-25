@@ -1,3 +1,4 @@
+import {analyticsAllowed,visitorId} from "./lib/analytics";
 import { SupportHelp } from "./features/support/SupportHelp";
 import { useFundingRefresh } from "./features/funding/useFundingRefresh";
 import { refreshMe } from "./lib/query";
@@ -152,6 +153,7 @@ export function FundingPurchaseCenter({
       method: body === undefined ? "GET" : "POST",
       headers: {
         authorization: `Bearer ${tokenRef.current}`,
+        ...(path==="/requests" && body!==undefined && analyticsAllowed() ? {"X-AMP-Visitor":visitorId()} : {}),
         "content-type": "application/json",
       },
       body: body === undefined ? undefined : JSON.stringify(body),

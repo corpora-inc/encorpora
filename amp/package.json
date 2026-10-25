@@ -83,7 +83,8 @@
     "coverage:sat": "tsx scripts/sat-coverage.ts",
     "test:sat-ui": "tsx scripts/verify-sat-ui.ts",
     "report:parent-feedback": "tsx scripts/parent-feedback-report.ts",
-    "test:parent-feedback-ui": "tsx scripts/verify-parent-feedback-ui.ts"
+    "test:parent-feedback-ui": "tsx scripts/verify-parent-feedback-ui.ts",
+    "report:funded-journeys": "tsx scripts/report-funded-journeys.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",

@@ -1,3 +1,7 @@
+import {
+  linkFundedVisitor,
+  recordFundedParentStatus,
+} from "../analytics/funded-journey.js";
 import { canonicalCommercePayload } from "../commerce/ledger.js";
 import { randomUUID } from "node:crypto";
 import {
@@ -72,6 +76,7 @@ export class FundingPurchaseRepository {
     account: string,
     input: unknown,
     at = new Date(),
+    visitor?: string,
   ): Promise<FundingRequest> {
     const data = createFundingRequestSchema.parse(input);
     return this.transaction(account, async (client) => {
@@ -101,6 +106,7 @@ export class FundingPurchaseRepository {
           request.studentBillingName !== data.studentBillingName
         )
           throw new FundingPurchaseError(409, "idempotency_payload_mismatch");
+        await linkFundedVisitor(client, request, "account_request", visitor);
         return request;
       }
       const offer = availableOffers(this.offers, at).find(
@@ -150,7 +156,9 @@ export class FundingPurchaseRepository {
           "request_prepared",
           at.toISOString(),
         );
-      return fundingRequestRow(result.rows[0]);
+      const request = fundingRequestRow(result.rows[0]);
+      await linkFundedVisitor(client, request, "account_request", visitor);
+      return request;
     });
   }
   async read(account: string, id: string): Promise<FundingRequest> {
@@ -219,6 +227,7 @@ export class FundingPurchaseRepository {
         "UPDATE amp_funding_requests SET status=$3 WHERE id=$1 AND account_id=$2",
         [id, account, status],
       );
+      await recordFundedParentStatus(client, id, status, at);
       return { ...request, status };
     });
   }

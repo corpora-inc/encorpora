@@ -25,6 +25,16 @@ export async function purgeFunnelEvents(
     expiredFunnelLinks = 0;
   for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
     const result = await pool.query(
+      `DELETE FROM amp_funded_visitor_links WHERE request_id IN (
+      SELECT request_id FROM amp_funded_visitor_links WHERE created_on<=${cutoff}
+      ORDER BY created_on LIMIT $3 FOR UPDATE SKIP LOCKED)`,
+      params,
+    );
+    expiredFunnelLinks += result.rowCount ?? 0;
+    if ((result.rowCount ?? 0) < RETENTION_BATCH.batchSize) break;
+  }
+  for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
+    const result = await pool.query(
       `DELETE FROM amp_engagement_pages WHERE (visitor_id,page_id) IN (
       SELECT visitor_id,page_id FROM amp_engagement_pages WHERE occurred_on<=${cutoff}
       ORDER BY occurred_on LIMIT $3 FOR UPDATE SKIP LOCKED)`,

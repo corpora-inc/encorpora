@@ -1,3 +1,4 @@
+import {analyticsAllowed,visitorId} from "../../lib/analytics";
 import { SupportHelp } from "../support/SupportHelp";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "@tanstack/react-router";
@@ -107,6 +108,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
     try {
       setResult(
         await request("/funding/invoices", responseSchema, {
+          headers: analyticsAllowed() ? {"X-AMP-Visitor":visitorId()} : {},
           body: { ...fields, idempotencyKey: retry.current.key },
         }),
       );

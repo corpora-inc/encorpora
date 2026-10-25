@@ -1,4 +1,8 @@
 import {
+  linkFundedVisitor,
+  recordFundedParentStatus,
+} from "../analytics/funded-journey.js";
+import {
   eraseAccountAdClicks,
   invoiceAcquisitionSnapshot,
 } from "../advertising/click-evidence.js";
@@ -86,6 +90,7 @@ export class FundingInvoiceRepository {
     input: unknown,
     at = new Date(),
     acquisition?: string,
+    visitor?: string,
   ): Promise<PrivateInvoiceIntent> {
     const data = createInvoiceIntentSchema.parse(input);
     await validateInvoiceStudentName(data.studentBillingName);
@@ -116,6 +121,7 @@ export class FundingInvoiceRepository {
             Date.parse(intent.expiresAt) <= at.getTime()
           )
             throw new FundingPurchaseError(409, "invoice_unavailable");
+          await linkFundedVisitor(client, intent, "guest_invoice", visitor);
           return intent;
         }
         const offer = this.offers(at).find(
@@ -156,7 +162,9 @@ export class FundingInvoiceRepository {
             attribution?.labels ? JSON.stringify(attribution.labels) : null,
           ],
         );
-        return rowIntent(result.rows[0]);
+        const intent = rowIntent(result.rows[0]);
+        await linkFundedVisitor(client, intent, "guest_invoice", visitor);
+        return intent;
       },
     );
   }
@@ -208,6 +216,7 @@ export class FundingInvoiceRepository {
       );
       if (!result.rowCount)
         throw new FundingPurchaseError(409, "invoice_cannot_discard");
+      await recordFundedParentStatus(client, id, "cancelled", new Date());
     });
   }
   async claim(
