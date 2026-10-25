@@ -651,3 +651,102 @@ test(
       );
     }),
 );
+
+test(
+  "card purchase campaign report counts verified sales, preserves first touch and excludes staff",
+  enabled,
+  async () =>
+    fixture(async ({ pool }) => {
+      const { engagementReport } =
+        await import("../src/analytics/engagement-report.js");
+      const buyer = randomUUID(),
+        staff = randomUUID(),
+        automated = randomUUID();
+      for (const [visitorId, traffic] of [
+        [buyer, "external"],
+        [staff, "internal"],
+        [automated, "automated"],
+      ] as const) {
+        await recordEventBatch(pool, {
+          visitorId,
+          traffic,
+          context: {
+            utmSource: "google",
+            utmMedium: "cpc",
+            utmCampaign: "az-math",
+            utmContent: "founder",
+            referrer: "search",
+            device: "phone",
+          },
+          events: [{ event: "try_click", props: {}, at: 1 }],
+        });
+      }
+      // Purchase-window reporting includes visitors who first arrived earlier.
+      await pool.query(
+        "UPDATE amp_funnel_visitors SET first_seen=CURRENT_DATE-30 WHERE visitor_id=$1",
+        [buyer],
+      );
+      // A later campaign must not overwrite the buyer's first-touch tuple.
+      await recordEventBatch(pool, {
+        visitorId: buyer,
+        context: {
+          utmSource: "facebook",
+          utmMedium: "social",
+          utmCampaign: "later-campaign",
+          utmContent: "demo",
+          referrer: "social",
+          device: "phone",
+        },
+        events: [
+          { event: "checkout_return", props: { outcome: "success" }, at: 1 },
+        ],
+      });
+      const paid = async (visitorId: string | null, when = new Date()) => {
+        const checkout = randomUUID();
+        await pool.query(
+          "INSERT INTO amp_stripe_checkouts(id,namespace,account_id,request_id) VALUES($1,'test',$2,$3)",
+          [checkout, randomUUID(), randomUUID()],
+        );
+        if (visitorId)
+          await pool.query(
+            "INSERT INTO amp_funnel_checkouts(checkout_id,visitor_id) VALUES($1,$2)",
+            [checkout, visitorId],
+          );
+        assert.equal(
+          await recordVerifiedPurchase(pool, checkout, "year", when),
+          true,
+        );
+        assert.equal(
+          await recordVerifiedPurchase(pool, checkout, "year", when),
+          false,
+        );
+      };
+      await paid(buyer);
+      await paid(buyer);
+      await paid(staff);
+      await paid(automated);
+      await paid(null);
+      await paid(buyer, new Date(Date.now() - 30 * DAY));
+      const report = await engagementReport(pool, 7);
+      assert.deepEqual(report.cardPurchases, [
+        {
+          source: "google",
+          medium: "cpc",
+          campaign: "az-math",
+          creative: "founder",
+          interval: "year",
+          purchases: 2,
+          browsers: 1,
+        },
+        {
+          source: "unattributed",
+          medium: "none",
+          campaign: "none",
+          creative: "none",
+          interval: "year",
+          purchases: 1,
+          browsers: 0,
+        },
+      ]);
+    }),
+);

@@ -64,6 +64,15 @@ export async function engagementReport(pool: Pool, days: number) {
       FROM amp_funnel_events e JOIN amp_funnel_visitors v USING(visitor_id)
       WHERE e.event='purchase_action' AND e.${range} AND ${audience}
       GROUP BY 1,2,3,4,5 ORDER BY clicks DESC,1,2,3,4,5`);
+    const cardPurchases = await q(`SELECT
+      CASE WHEN e.visitor_id IS NULL THEN 'unattributed' ELSE coalesce(v.utm_source,v.referrer,'unknown') END AS source,
+      coalesce(v.utm_medium,'none') AS medium,coalesce(v.utm_campaign,'none') AS campaign,
+      coalesce(v.utm_content,'none') AS creative,e.props->>'interval' AS interval,
+      count(*)::int AS purchases,count(DISTINCT e.visitor_id)::int AS browsers
+      FROM amp_funnel_events e LEFT JOIN amp_funnel_visitors v USING(visitor_id)
+      WHERE e.event='purchase' AND e.${range}
+        AND (e.visitor_id IS NULL OR ${audience})
+      GROUP BY 1,2,3,4,5 ORDER BY purchases DESC,1,2,3,4,5`);
     const journeys = await q(`WITH pages AS (
       SELECT p.visitor_id,p.screen,
         lead(p.screen) OVER(PARTITION BY p.visitor_id ORDER BY p.visit_order) AS next_screen
@@ -82,8 +91,10 @@ export async function engagementReport(pool: Pool, days: number) {
       actions,
       purchaseAttempts,
       purchaseActions,
+      cardPurchases,
       journeys,
       definitions: [
+        "Card purchases are server-verified purchase events in the selected UTC days, grouped by the browser's first-touch campaign and creative. Multiple purchases by one browser remain separate sales. Unattributed payments are shown separately; purchases do not imply net revenue or current active access. Refunds cannot be allocated to these campaign rows from the anonymous event records.",
         "Purchase attempts are client-observed requests grouped by stage and outcome. Repeated delivery of the same attempt/outcome counts once. A successful invoice, checkout or claim request does not prove payment. Missing terminal events may reflect navigation or failed delivery, not abandonment.",
         "Marketing actions are deduplicated by event ID; opening an invoice form is not invoice creation or payment. Marketing and AMP share an opaque first-party browser ID on HTTPS Corpora domains.",
         "Journeys cross document loads using the collector arrival order of first page snapshots. Concurrent tabs and delayed requests can change this observed order. Legacy pages without an arrival sequence are omitted from this view.",
