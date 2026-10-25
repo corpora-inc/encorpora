@@ -1,7 +1,7 @@
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
 import { SupportHelp } from "../features/support/SupportHelp";
 import { Link } from "@tanstack/react-router";
-import { useLayoutEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { brand } from "../../brand";
 import styles from "./PageFrame.module.css";
 /** The class every auth and first-run card uses, so cards share one position and size. */
@@ -24,15 +24,6 @@ export function PageFrame({
   centered?: boolean;
   className?: string;
 }) {
-  // index.html hides the first-paint bar on these screens; leaving them
-  // restores it before the next screen paints.
-  useLayoutEffect(() => {
-    if (!centered) return;
-    document.documentElement.dataset.frame = "card";
-    return () => {
-      delete document.documentElement.dataset.frame;
-    };
-  }, [centered]);
   if (centered)
     return (
       <div className={`${styles.frame} ${styles.centered} ${className}`}>

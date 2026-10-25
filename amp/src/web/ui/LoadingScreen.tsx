@@ -1,13 +1,11 @@
 import { useEffect, type ReactNode } from "react";
 import { buttonClass } from "./Button";
 import { AppError } from "../lib/AppError";
-import { brand } from "../../brand";
 
 /**
- * The first paint and every route-level wait: the brand bar in its final
- * place over an empty page, the same frame index.html paints before any
- * script runs. No loading text flashes; an error appears in the body with
- * its recovery action, and nothing moves when the screen arrives.
+ * Match the centered first paint in index.html while the destination resolves.
+ * The inline stylesheet owns both frames, including before scripts arrive.
+ * Keep the mark still: remounting during redirects must not restart an animation.
  */
 export function LoadingScreen({
   error = "",
@@ -21,21 +19,36 @@ export function LoadingScreen({
   recovery?: ReactNode;
 }) {
   return (
-    <div className="app-loading" aria-busy={!error}>
-      <div className="app-loading-bar">{brand.name}</div>
-      <main className="app-loading-body">
+    <div
+      className="app-loading"
+      role={error ? undefined : "status"}
+      aria-label={error ? undefined : "Loading AMP"}
+      aria-busy={!error}
+    >
+      <div className="app-loading-content">
+        <svg
+          className="app-loading-mark"
+          viewBox="0 0 44 28"
+          aria-hidden="true"
+        >
+          <path d="M1 14C5 0 9 0 13 14S21 28 25 14S33 0 37 14S41 28 43 14" />
+        </svg>
         {error && (
-          <>
+          <main className="app-loading-body">
             <p role="alert">{error}</p>
             {retry && (
-              <button className="loading-retry" disabled={busy} onClick={retry}>
+              <button
+                className={buttonClass("primary")}
+                disabled={busy}
+                onClick={retry}
+              >
                 Try again
               </button>
             )}
             {recovery}
-          </>
+          </main>
         )}
-      </main>
+      </div>
     </div>
   );
 }
