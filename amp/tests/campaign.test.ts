@@ -218,7 +218,12 @@ test("funded v5 vocabulary is exactly fifty fixed labels and preserves previous 
   const values = (text: string) =>
     [...text.matchAll(/'([a-z0-9-]+)'/g)].map((match) => match[1]);
   assert.deepEqual(values(sql), [...values(old), ...labels]);
-  assert.deepEqual(values(sql), [...CAMPAIGN_CREATIVES]);
+  assert.deepEqual(
+    values(sql),
+    CAMPAIGN_CREATIVES.filter(
+      (label) => !/^a[rz]-product-(adaptive|planning)-search-v1$/.test(label),
+    ),
+  );
   for (const creative of labels) {
     const ar = creative.startsWith("ar-");
     assert.ok(
@@ -241,4 +246,28 @@ test("funded v5 vocabulary is exactly fifty fixed labels and preserves previous 
       false,
     );
   }
+});
+
+// Every collector label must also satisfy the production database constraint.
+test("product-led creative labels preserve the existing database vocabulary", () => {
+  const values = (name: string) =>
+    [
+      ...readFileSync(
+        new URL(`../migrations/${name}`, import.meta.url),
+        "utf8",
+      ).matchAll(/'([a-z0-9-]+)'/g),
+    ].map((match) => match[1]);
+  const additions = [
+    "ar-product-adaptive-search-v1",
+    "ar-product-planning-search-v1",
+    "az-product-adaptive-search-v1",
+    "az-product-planning-search-v1",
+  ];
+  assert.deepEqual(values("0059-product-search-creative-labels.sql"), [
+    ...values("0057-funded-v5-creative-labels.sql"),
+    ...additions,
+  ]);
+  assert.deepEqual(values("0059-product-search-creative-labels.sql"), [
+    ...CAMPAIGN_CREATIVES,
+  ]);
 });

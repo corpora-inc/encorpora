@@ -395,6 +395,11 @@ export function FundingPurchaseCenter({
         </button>
       </header>
       <div ref={body} className="funding-body">
+        <p>
+          AMP (Adaptive Math Pathways) is a product of Corpora Inc, an
+          independent vendor. Corpora does not administer state
+          education-funding programs.
+        </p>
         <Toast message={error} onDismiss={() => setError("")} />
         {loading ? (
           <p role="status">Loading purchase options…</p>
