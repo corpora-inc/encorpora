@@ -597,6 +597,63 @@ try {
   await page.goto(`${origin}/`);
   await page.waitForURL(`${origin}/purchase/annual`);
   await page.unroute("**/api/v1/me");
+  await page
+    .getByRole("heading", { name: "Annual access", exact: true })
+    .waitFor();
+  await page.waitForFunction(
+    () => sessionStorage.getItem("amp.purchase-return.v1") === null,
+  );
+  // Keep this document alive while another tab changes the shared account.
+  // A consumed checkout must not be inherited by the newly mounted account.
+  await page.evaluate(async () => {
+    const modulePath = "/src/web/app/router.tsx";
+    const { router } = await import(modulePath);
+    await router.navigate({ to: "/" });
+  });
+  await page
+    .getByRole("heading", { name: "Test Learner", exact: true })
+    .waitFor();
+  await page.unroute(`**/api/v1/billing/purchase/${purchaseId}`);
+  let replayedPurchases = 0;
+  page.on("request", (request) => {
+    if (
+      new URL(request.url()).pathname ===
+      `/api/v1/billing/purchase/${purchaseId}`
+    )
+      replayedPurchases++;
+  });
+  const second = await page.request.post(`${origin}/api/auth/sign-up/email`, {
+    headers: { origin },
+    data: {
+      email: `second-${Date.now()}@example.com`,
+      password: "synthetic second account password",
+      name: "Second account",
+    },
+  });
+  assert.equal(second.status(), 200);
+  const secondUser = (await second.json()).user;
+  await repository.pool.query(
+    "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Second Learner',2009)",
+    [randomUUID(), `amp|${secondUser.id}`],
+  );
+  const otherTab = await context.newPage();
+  await otherTab.goto(`${origin}/sign-in`);
+  await otherTab.evaluate(() => {
+    const channel = new BroadcastChannel("amp-account-session");
+    channel.postMessage("changed");
+    channel.close();
+  });
+  await page
+    .getByRole("heading", { name: "Second Learner", exact: true })
+    .waitFor();
+  await page.waitForLoadState("networkidle");
+  assert.equal(
+    replayedPurchases,
+    0,
+    "a new account cannot inherit a consumed checkout return",
+  );
+  assert.equal(new URL(page.url()).pathname, "/");
+  await otherTab.close();
   assert.deepEqual(errors, []);
   await context.close();
   console.log("Social sign-in UI verified.");

@@ -145,7 +145,7 @@ addEventListener(
   },
   true,
 );
-const initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
+let initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) consumeInitialConsentChallenge();
 export function LegacyApp() {
   const session = useQuery(sessionOptions);
@@ -519,6 +519,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   }, [accountId, route.location.pathname]);
   useEffect(() => {
     if (!accountId || !token || !pendingPurchaseReturn.current) return;
+    // A return belongs to its first signed-in owner, not every account that
+    // subsequently mounts in this document after a cross-tab session change.
+    initialPurchaseReturn = null;
     const context = parsePurchaseReturn(pendingPurchaseReturn.current);
     pendingPurchaseReturn.current = null;
     if (!context) {
