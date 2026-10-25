@@ -1,6 +1,6 @@
 import "./consent-entry";
 import { createRoot } from "react-dom/client";
-import { RouterProvider } from "@tanstack/react-router";
+import { RouterView } from "./app/RouterView";
 import { Providers } from "./app/providers";
 import { router } from "./app/router";
 import "./app/styles";
@@ -16,6 +16,6 @@ trackGooglePage();
 trackSessionStart();
 createRoot(document.getElementById("root")!).render(
   <Providers>
-    <RouterProvider router={router} />
+    <RouterView />
   </Providers>,
 );
