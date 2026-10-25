@@ -20,16 +20,19 @@ export type TrafficKind = (typeof TRAFFIC_KINDS)[number];
 export function screenForPath(path: string): (typeof SCREENS)[number] {
   const p = path.split(/[?#]/)[0];
   if (p === "/") return "home";
-  if (/^\/pathways(?:\/|$)/.test(p)) return "pathways";
+  if (/^\/(?:pathways|try\/map)(?:\/|$)/.test(p)) return "pathways";
   if (/^\/invoice(?:\/|$)/.test(p)) return "invoice";
   if (/^\/purchase\/(arkansas|arizona|new-hampshire)/.test(p)) return "funding";
-  if (/^\/(?:sign-in|sign-up|reset|auth)(?:\/|$)/.test(p)) return "auth";
+  if (/^\/(?:sign-in|sign-up|reset-password|auth)(?:\/|$)/.test(p))
+    return "auth";
   if (/^\/(?:account|family)(?:\/|$)/.test(p)) return "account";
   if (/^\/(?:checkout|start\/purchase)(?:\/|$)/.test(p)) return "checkout";
-  if (/^\/(?:plans|start\/plan|purchase)(?:\/|$)/.test(p)) return "plans";
+  if (/^\/(?:plans|try\/plans|start\/plan|purchase)(?:\/|$)/.test(p))
+    return "plans";
   if (/^\/(?:try\/practice|practice)(?:\/|$)/.test(p)) return "practice";
-  if (/^\/(?:lesson|lessons|book)(?:\/|$)/.test(p)) return "lesson";
+  if (/^\/(?:lesson|lessons|book|books)(?:\/|$)/.test(p)) return "lesson";
   if (/^\/try(?:\/|$)/.test(p)) return "assessment";
+  if (/^\/(?:start|inventory|access)(?:\/|$)/.test(p)) return "account";
   return "other";
 }
 export const engagementSchema = z

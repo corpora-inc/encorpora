@@ -86,3 +86,17 @@ test("engagement stops increasing after idle and resumes with interaction", asyn
   pages = (await events()).filter((e) => e.event === "page_engagement");
   expect(pages.at(-1).props.activeMs).toBe(75000);
 });
+
+test("a hidden tab does not emit heartbeat traffic or create pages at midnight", async () => {
+  vi.setSystemTime(new Date("2026-10-24T23:59:55Z"));
+  const tracker = startEngagement();
+  vi.advanceTimersByTime(1000);
+  focused = visible = false;
+  document.dispatchEvent(new Event("visibilitychange"));
+  const count = (await events()).length;
+  vi.advanceTimersByTime(10 * 60 * 1000);
+  flush();
+  expect((await events()).length).toBe(count);
+  tracker.stop();
+  expect((await events()).length).toBe(count);
+});

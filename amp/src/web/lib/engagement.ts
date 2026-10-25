@@ -17,19 +17,26 @@ export function startEngagement() {
   let path = "";
   let day = "";
   let stopped = false;
+  let sentVisible = -1,
+    sentActive = -1;
   let clock: EngagementClock;
   const visible = () =>
     document.visibilityState === "visible" && document.hasFocus();
   function snapshot() {
     if (!pageId || stopped) return;
     clock.sample(performance.now(), visible());
+    const activeMs = Math.floor(clock.activeMs),
+      visibleMs = Math.floor(clock.visibleMs);
+    if (activeMs === sentActive && visibleMs === sentVisible) return;
+    sentActive = activeMs;
+    sentVisible = visibleMs;
     track("page_engagement", {
       sessionId,
       pageId,
       ordinal,
       screen: screenForPath(path),
-      activeMs: Math.floor(clock.activeMs),
-      visibleMs: Math.floor(clock.visibleMs),
+      activeMs,
+      visibleMs,
     });
   }
   function navigate(next: string) {
@@ -40,6 +47,7 @@ export function startEngagement() {
     path = clean;
     day = today;
     pageId = crypto.randomUUID();
+    sentVisible = sentActive = -1;
     ordinal++;
     clock = new EngagementClock(performance.now(), visible());
     snapshot();
@@ -50,8 +58,10 @@ export function startEngagement() {
     flush();
   };
   const timer = setInterval(() => {
-    navigate(location.pathname);
-    snapshot();
+    if (visible()) {
+      navigate(location.pathname);
+      snapshot();
+    }
   }, 15000);
   const interactions = [
     "pointerdown",

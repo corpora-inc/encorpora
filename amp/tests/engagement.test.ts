@@ -34,6 +34,10 @@ test("screen categories never expose query values, dynamic IDs or private routes
   assert.equal(screenForPath("/pathways/private-id"), "pathways");
   assert.equal(screenForPath("/unknown/private-name#token"), "other");
   assert.equal(screenForPath("/try/practice"), "practice");
+  assert.equal(screenForPath("/try/plans"), "plans");
+  assert.equal(screenForPath("/try/map"), "pathways");
+  assert.equal(screenForPath("/reset-password"), "auth");
+  assert.equal(screenForPath("/start/consent"), "account");
 });
 
 test("engagement rejects impossible durations and arbitrary fields", () => {
