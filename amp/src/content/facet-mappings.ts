@@ -6,6 +6,7 @@ import { assessmentGapFacetMappings } from "./assessment-gap-coverage";
 import { areaVolumeFacetMappings } from "./area-volume-coverage";
 import { transformationFacetMappings } from "./transformation-coverage";
 import { completingSquareFacetMappings } from "./completing-square-coverage";
+import { algebraRequirementGapFacetMappings } from "./algebra-requirement-gaps-coverage";
 import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
@@ -1094,6 +1095,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,
   ...completingSquareFacetMappings,
+  ...algebraRequirementGapFacetMappings,
   ...integerExponentFacetMappings,
   ...descriptiveStatisticsFacetMappings,
   ...percentChangeFacetMappings,
