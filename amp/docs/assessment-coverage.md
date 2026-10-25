@@ -14,11 +14,29 @@ Successive-percent practice applies two stated changes to a price, using the cha
 
 Slope-triangle practice connects geometry and algebra through three-of-six statements about right triangles on one line. Learners compare matching angles, similarity, congruence, lengths and signed slopes, including both same-size translated pairs and scaled pairs. [MCAS Spring 2025 Grade 8 item 19](https://www.doe.mass.edu/mcas/2025/release/g8-math.pdf#page=25) demonstrates this combined demand. The family shares the existing linear-models exposure budget; constructed proofs and full standard coverage require further assessment.
 
+## Skill-level practice coverage
+
+Every one of the 321 catalog skills has at least one adaptive practice family with a hint, worked explanation, standalone lesson and facet mapping. Previously 65 high-school skills had none, including 33 of 35 precalculus skills. The added families cover:
+
+- trigonometry: special angles, symmetry, graphs, inverse functions, equations, identities, oblique triangles, triangle area and periodic models;
+- polynomial and rational function behavior, graphical solving, identities, the binomial theorem and number-system closure;
+- geometric measurement and modeling, Cavalieri's principle, solids of revolution and similarity theorems;
+- probability distributions, expected value, fair decisions, simulation and randomization tests, report critique and model validation;
+- vectors, matrices and matrix transformations;
+- the complex plane, polar and parametric forms, and conic sections;
+- reasoning for proofs, definitions and constructions, chosen from options. Written proofs and drawn constructions are not assessed.
+
+A second round added task types inside existing skills, chosen by an audit of SAT question archetypes and Common Core standards. Examples are root relations, expression values from systems, rates, absolute inequalities, trigonometry in context, midpoints, circle segments, frequency-table centers, independence, proportional graphs, story graphs, triangle uniqueness, percent applications, compound events, series, compound growth, factoring patterns, residual fits, unit chains and estimation.
+
+Every template now maps to the facets it assesses, all with partial extent. Each family has an independent oracle in `scripts/independent-math-review.py` that derives answers from public problem text. Skill presence does not establish full standard coverage: the report still lists facets without mapped evidence, and state inventories remain pending.
+
+Editorial connections in `src/curriculum/connections.ts` link every practiced skill to a later skill, either through a prerequisite or an extension, application or related link. A test keeps it that way.
+
 ## Texas Grade 5 source reconciliation
 
 The coverage report includes the 46 lettered or unlettered requirements in §111.7(b) of Texas Grade 5 mathematics, adopted 2012. Source records identify the retrieved December 2014 chapter edition by URL, date and SHA-256. Original summaries preserve required representations and restrictions; the official source controls their meaning.
 
-Eight requirements have partial task reconciliation. Decimal practice is reused; dot-plot and scatterplot interpretation supply related support without certifying learner-created displays. Stem-and-leaf interpretation, budget-category balancing and gross-versus-net income are recorded as missing families. Spring 2025 STAAR rationale items 14 and 21 establish occurrence of the first two tasks, not their frequency. The other 38 requirements are explicitly unreviewed, including the remaining financial-literacy and process requirements.
+Eight requirements have partial task reconciliation. Decimal practice is reused; dot-plot and scatterplot interpretation supply related support without certifying learner-created displays. Stem-and-leaf interpretation, budget-category balancing and gross-versus-net income now have related practice families with partial scope. Stem-and-leaf practice belongs to a grade 6 skill, so grade 5 availability is not certified, and constructing plots or budgets is not assessed. Spring 2025 STAAR rationale items 14 and 21 establish occurrence of the first two tasks, not their frequency. The other 38 requirements are explicitly unreviewed, including the remaining financial-literacy and process requirements.
 
 `src/curriculum/texas-grade5.ts` holds the source inventory and reusable task crosswalk. The report validates source, requirement, skill and template-owner references; invalid links cannot establish reconciliation. Texas has a partial source inventory, while statewide coverage, component reconciliation and the complete STAAR assessment inventory remain incomplete. Custom catalog reports do not inherit production state mappings unless explicitly supplied.
 
