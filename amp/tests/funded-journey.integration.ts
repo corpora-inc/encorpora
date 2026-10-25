@@ -223,6 +223,31 @@ test(
         )
       ).rows[0];
       assert.equal(link.visitor_id, null);
+      // A later purchase campaign must not contaminate a direct first touch.
+      await pool.query(
+        "UPDATE amp_funnel_visitors SET traffic_kind='external',referrer='direct',utm_source=NULL,utm_medium=NULL,utm_campaign=NULL,utm_content=NULL WHERE visitor_id=$1",
+        [visitorId],
+      );
+      await pool.query(
+        "UPDATE amp_funding_invoice_intents SET campaign_attribution=$2 WHERE id=$1",
+        [
+          invoiceId,
+          {
+            source: "google",
+            medium: "cpc",
+            campaign: "later-click",
+            creative: "later-ad",
+          },
+        ],
+      );
+      const direct = (await fundedJourneyReport(pool, 7)).sources.find(
+        (row) => row.attribution_basis === "browser_first_touch",
+      );
+      assert.ok(direct);
+      assert.deepEqual(
+        [direct.source, direct.medium, direct.campaign, direct.creative],
+        ["direct", "none", "none", "none"],
+      );
       await purgeFunnelEvents(pool, new Date(Date.now() + 91 * 86400000));
       assert.equal(
         (

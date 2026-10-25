@@ -14,10 +14,10 @@ export async function fundedJourneyReport(pool: Pool, days: number) {
     await client.query("SET LOCAL statement_timeout='20s'");
     const cohort = `WITH purchases AS (
       SELECT f.*,coalesce(v.traffic_kind,'unattributed') AS traffic_kind,
-        coalesce(v.utm_source,v.referrer,i.campaign_attribution->>'source',r.campaign_attribution->>'source','unknown') AS source,
-        coalesce(v.utm_medium,i.campaign_attribution->>'medium',r.campaign_attribution->>'medium','none') AS medium,
-        coalesce(v.utm_campaign,i.campaign_attribution->>'campaign',r.campaign_attribution->>'campaign','none') AS campaign,
-        coalesce(v.utm_content,i.campaign_attribution->>'creative',r.campaign_attribution->>'creative','none') AS creative,
+        CASE WHEN v.referrer IS NOT NULL THEN coalesce(v.utm_source,v.referrer,'unknown') ELSE coalesce(coalesce(i.campaign_attribution,r.campaign_attribution)->>'source','unknown') END AS source,
+        CASE WHEN v.referrer IS NOT NULL THEN coalesce(v.utm_medium,'none') ELSE coalesce(coalesce(i.campaign_attribution,r.campaign_attribution)->>'medium','none') END AS medium,
+        CASE WHEN v.referrer IS NOT NULL THEN coalesce(v.utm_campaign,'none') ELSE coalesce(coalesce(i.campaign_attribution,r.campaign_attribution)->>'campaign','none') END AS campaign,
+        CASE WHEN v.referrer IS NOT NULL THEN coalesce(v.utm_content,'none') ELSE coalesce(coalesce(i.campaign_attribution,r.campaign_attribution)->>'creative','none') END AS creative,
         CASE WHEN v.referrer IS NOT NULL THEN 'browser_first_touch'
           WHEN i.campaign_attribution IS NOT NULL OR r.campaign_attribution IS NOT NULL THEN 'purchase_campaign_snapshot'
           ELSE 'unknown' END AS attribution_basis,
@@ -36,7 +36,7 @@ export async function fundedJourneyReport(pool: Pool, days: number) {
         (r.id IS NULL AND i.id IS NULL) AS purchase_record_expired
       FROM amp_funded_visitor_links f
       LEFT JOIN amp_funnel_visitors v ON v.visitor_id=f.visitor_id
-      LEFT JOIN amp_funding_invoice_intents i ON i.id=f.request_id
+      LEFT JOIN amp_funding_invoice_intents i ON i.id=f.request_id::text
       LEFT JOIN amp_funding_requests r ON r.id=f.request_id::text
       LEFT JOIN amp_classwallet_payments p ON p.invoice_id=f.request_id::text
       LEFT JOIN amp_commerce_orders o ON o.id=r.order_id

@@ -45,7 +45,7 @@ export async function linkFundedVisitor(
     if (visitorId)
       await client.query(
         `INSERT INTO amp_funnel_visitors(visitor_id,first_seen,last_seen)
-       VALUES($1,$2,$2) ON CONFLICT(visitor_id) DO NOTHING`,
+       VALUES($1,$2,$2) ON CONFLICT(visitor_id) DO UPDATE SET last_seen=greatest(amp_funnel_visitors.last_seen,EXCLUDED.last_seen)`,
         [visitorId, day],
       );
     await client.query(

@@ -20,7 +20,7 @@ CREATE INDEX amp_funded_visitor_links_visitor_idx ON amp_funded_visitor_links(vi
 -- attribution or a timestamp for a parent's earlier status change.
 INSERT INTO amp_funded_visitor_links
   (request_id,created_on,entry_kind,document_kind,program,jurisdiction,amount_minor,currency)
-SELECT id,(created_at AT TIME ZONE 'UTC')::date,'guest_invoice','invoice',
+SELECT id::uuid,(created_at AT TIME ZONE 'UTC')::date,'guest_invoice','invoice',
   offer_snapshot->>'programId',offer_snapshot->>'jurisdiction',
   (offer_snapshot->>'subtotalMinor')::bigint+(offer_snapshot->>'taxMinor')::bigint,
   offer_snapshot->>'currency'
