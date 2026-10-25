@@ -8,7 +8,7 @@ import {
   queryClient,
   sessionOptions,
 } from "../../lib/query";
-import { useLoggedError, requestMessage } from "../../feedback";
+import { useLoggedError } from "../../feedback";
 import { useEffect, useState, type FormEvent } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { accountClient } from "../../account-client";
@@ -196,20 +196,46 @@ export function SignInScreen() {
     try {
       await work();
     } catch (failure) {
-      console.error("Account request failed", failure);
-      setError(failure instanceof Error ? failure.message : "Try again.");
+      setPending(null);
+      setError(
+        failure instanceof TypeError
+          ? "We couldn’t connect. Check your connection and try again."
+          : failure instanceof Error
+            ? failure.message
+            : "That request didn’t finish. Try again.",
+      );
     } finally {
       setBusy(false);
     }
   }
-  const fail = (result: { error: { message?: string } | null }) => {
-    if (result.error) throw new Error(result.error.message ?? "Try again.");
+  const fail = (result: {
+    error: { message?: string; code?: string; status?: number } | null;
+  }) => {
+    if (!result.error) return;
+    const messages: Record<string, string> = {
+      INVALID_EMAIL_OR_PASSWORD:
+        "Check your email and AMP password, or choose the sign-in method you used before.",
+      INVALID_EMAIL:
+        "Enter a complete email address, such as name@example.com.",
+      USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL:
+        "If you already have an account, choose Sign in and use the method you used before.",
+    };
+    throw new Error(
+      result.error.status === 429
+        ? "Too many attempts. Wait a minute, then try again."
+        : (messages[result.error.code ?? ""] ??
+            result.error.message ??
+            "That request didn’t finish. Try again."),
+    );
   };
   function submit(event: FormEvent) {
     event.preventDefault();
     void run(async () => {
       if (step === "sign-in") {
-        const result = await accountClient.signIn.email({ email, password });
+        const result = await accountClient.signIn.email({
+          email: email.trim(),
+          password,
+        });
         if (result.error?.code === "EMAIL_NOT_VERIFIED")
           return go("check-email");
         fail(result);
@@ -223,7 +249,7 @@ export function SignInScreen() {
       } else if (step === "create") {
         const result = await accountClient.signUp.email({
           name: "",
-          email,
+          email: email.trim(),
           password,
           callbackURL: newUserReturn,
         });
@@ -234,7 +260,7 @@ export function SignInScreen() {
       } else if (step === "forgot") {
         fail(
           await accountClient.requestPasswordReset({
-            email,
+            email: email.trim(),
             redirectTo: `/reset-password?${new URLSearchParams(carry as Record<string, string>)}`,
           }),
         );
@@ -286,6 +312,7 @@ export function SignInScreen() {
     void run(async () => {
       const result = await accountClient.signIn.social({
         provider,
+        fetchOptions: { timeout: 15_000 },
         callbackURL: returnTo,
         newUserCallbackURL: newUserReturn,
         errorCallbackURL: `${step === "create" ? "/sign-up" : "/sign-in"}?${new URLSearchParams(
@@ -297,7 +324,6 @@ export function SignInScreen() {
       });
       if (result.error) {
         setPending(null);
-        console.error("Provider sign-in did not start", provider, result.error);
         throw new Error(socialErrorMessage(copy, "", providerNames[provider]));
       }
     });
@@ -310,13 +336,31 @@ export function SignInScreen() {
       >
         <FrameBrand />
         <h2>{titles[step]}</h2>
+        {step === "sign-in" && providers.length > 0 && (
+          <p className={styles.hint}>
+            Choose the sign-in method you used to create your account.
+          </p>
+        )}
+        {step === "create" && (
+          <p className={styles.hint}>
+            Already have an account?{" "}
+            <button className={styles.inlineLink} onClick={() => go("sign-in")}>
+              Sign in
+            </button>
+          </p>
+        )}
         {notice && (
           <p className="account-notice" role="status">
             {notice}
           </p>
         )}
-        {/* Fixed and dismissible: it never moves or blocks the form. */}
-        <Toast message={error} onDismiss={() => setError("")} />
+        <Toast
+          message={error}
+          title="Unable to continue"
+          placement="top"
+          takeFocus
+          onDismiss={() => setError("")}
+        />
         {showProviders && (
           <ProviderButtons
             providers={providers}
@@ -364,10 +408,16 @@ export function SignInScreen() {
             </small>
           </form>
         ) : step === "check-email" ? (
-          <p>
-            We sent a link to {email}. Open it to confirm the address and finish
-            creating the account.
-          </p>
+          <div className={styles.emailHelp}>
+            <p>
+              For a new account, check {email} for a confirmation link. Check
+              your spam folder too.
+            </p>
+            <p>
+              If you already have an account, sign in using the method you chose
+              before. Creating it again won’t change your password.
+            </p>
+          </div>
         ) : (
           (passwords || !showProviders) && (
             <form className="account-form" onSubmit={submit}>
@@ -387,7 +437,7 @@ export function SignInScreen() {
                 step === "create" ||
                 step === "reset") && (
                 <label>
-                  {step === "reset" ? "New password" : "Password"}
+                  {step === "reset" ? "New password" : "AMP password"}
                   <input
                     required
                     type="password"
@@ -453,9 +503,6 @@ export function SignInScreen() {
                     : "Use a passkey instead"}
                 </button>
               )}
-              <button className="text-button" onClick={() => go("sign-in")}>
-                I already have an account
-              </button>
             </>
           )}
           {step === "two-factor" && (

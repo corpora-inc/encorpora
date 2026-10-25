@@ -17,7 +17,7 @@ const rows: Record<SatDomain, string> = {
   algebra: `
 linear.solve|Solve signed, grouped, and fractional linear equations|grouped-linear-equation,rational-coefficient-equation,both-sides-linear-equation
 linear.context|Choose a linear equation and solve a contextual model|linear-model-equation,linear-model-value
-linear.meaning|Interpret a coefficient or initial value with units|structure-meaning,linear-initial-value-meaning
+linear.meaning|Interpret a coefficient or initial value with units|structure-meaning,linear-initial-value-meaning,interpret-linear-parameters
 linear.parameters|Find conditions for one, no, or infinitely many solutions|parameter-solution-count,equation-solution-count
 linear.structure|Use equality and structure to simplify solving|equation-step-property,literal-equation-solve
 function.rule|Recover a linear rule from observations or rate and point|linear-model-equation,unequal-step-rate,recover-linear-intercept,predict-linear-output
@@ -39,9 +39,9 @@ expression.factor|Factor common factors, quadratic trinomials, and differences o
 expression.polynomial|Add, subtract, and multiply polynomials|polynomial-addition,polynomial-subtraction,polynomial-multiplication
 expression.rational|Simplify and combine rational expressions on their original domain|rational-expression-simplify,rational-expression-operation
 expression.radical|Connect symbolic roots and fractional exponents|symbolic-rational-exponent,rational-power
-nonlinear.quadratic|Solve quadratics by factoring or the formula; rewrite by completing the square|quadratic-expanded-solutions,complete-square-nonmonic,quadratic-irrational-solutions,sat-entry-quadratic-solution
+nonlinear.quadratic|Solve quadratics by factoring or the formula; rewrite by completing the square|quadratic-expanded-solutions,complete-square-nonmonic,quadratic-irrational-solutions,sat-entry-quadratic-solution,solve-by-completing-square
 nonlinear.absolute|Solve absolute-value equations including degenerate cases|absolute-value-affine-equation,absolute-value-transformed-equation,sat-entry-absolute-equation
-nonlinear.rational-radical|Solve rational and radical equations and reject excluded candidates|rational-equation-check,radical-equation-check,sat-entry-radical-equation,sat-entry-rational-equation
+nonlinear.rational-radical|Solve rational and radical equations and reject excluded candidates|rational-equation-check,radical-equation-check,sat-entry-radical-equation,sat-entry-rational-equation,rational-extraneous-single,square-root-extraneous
 nonlinear.polynomial-zeros|Find real zeros from a factored polynomial|zeros-from-factors,zero-multiplicity,sat-entry-polynomial-zeros
 nonlinear.system|Solve and interpret line/nonlinear intersections|nonlinear-system-read,nonlinear-system-solve,nonlinear-system-count
 nonlinear.root-count|Classify real roots and solve a repeated-root parameter condition|quadratic-real-solution-count,quadratic-parameter-root
@@ -51,7 +51,7 @@ nonlinear.literal|Isolate an unknown in a nonlinear formula with stated domain|n
 quadratic.context|Choose a quadratic model and interpret maximum, zero, or initial value|quadratic-context-model,sat-entry-quadratic-context
 exponential.context|Build and use a growth, decay, or half-life model|exponential-model-rule,exponential-model-value
 exponential.form|Recognize equivalent time-scale forms and interpret factors|exponential-time-scale,compound-growth
-nonlinear.features|Read vertex, symmetry, intercepts, and equivalent structural forms|parabola-vertex,parabola-axis,structure-meaning
+nonlinear.features|Read vertex, symmetry, intercepts, and equivalent structural forms|parabola-vertex,parabola-axis,structure-meaning,quadratic-form-conversion
 nonlinear.transform|Relate transformations to graphs, equations, and points|parabola-shift,transform-equation,transform-point
 nonlinear.representations|Connect polynomial, quadratic, and exponential tables, graphs, and formulas|zeros-from-factors,exponential-model-rule,compare-representations
 nonlinear.rational-representations|Connect a rational rule with a table or graph|rational-function-representation

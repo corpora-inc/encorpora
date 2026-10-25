@@ -10,6 +10,15 @@ from radical_public_oracle import RADICAL_TYPES, public_target, solve_radical, r
 from inequality_math_oracle import PublicationParser, PublicationNode
 
 
+def own_pairs(rows, expected):
+    """A family's own (template, facet) pairs are all present; any extra mapping of its
+    templates may only name other facets of the same skill (partial extent is checked by the caller)."""
+    skill = {t: f.split('.')[0] for t, f in expected}
+    # Other families in the same skill keep their own mappings; judge only this family's templates.
+    pairs = {(m['templateId'], m['facetId']) for m in rows if m['templateId'] in skill}
+    return set(expected) <= pairs and all(f.split('.')[0] == skill[t] for t, f in pairs)
+
+
 def equalities(text):
     """Verify every explicit numeric equality in a generated worked step."""
     results = []
@@ -210,13 +219,11 @@ def check_manifest(record):
     require(set(skill['prerequisites']) == {'exponent-laws', 'approximate-roots', 'factors-multiples'},
             'Wrong radical prerequisites')
     expected = {(t, 'rational-exponents.' + suffix) for t, suffix in FACETS.items()}
-    require(record['coverageValid'] and len(record['mappings']) == 4 and
-            {(m['templateId'], m['facetId']) for m in record['mappings']} == expected,
+    require(record['coverageValid'] and own_pairs(record['mappings'], expected),
             'Missing radical facet mappings')
     require(all(m['extent'] == 'partial' and m['rationale'].strip() for m in record['mappings']),
             'Unsupported complete radical coverage claim')
-    require(len(record['bindings']) == 4 and
-            {(m['templateId'], m['facetId']) for m in record['bindings']} == expected and
+    require(own_pairs(record['bindings'], expected) and
             all(m['skillId'] == 'rational-exponents' and not m['independentlyReviewed'] for m in record['bindings']),
             'Incorrect default radical coverage bindings')
     require(len(record['calculator']) == 4 and {c['id'] for c in record['calculator']} == RADICAL_TYPES

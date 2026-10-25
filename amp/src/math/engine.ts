@@ -277,6 +277,10 @@ import {
   complexMultiplicationCase,
 } from "./complex-practice";
 import {
+  algebraRequirementGapTemplates,
+  generateAlgebraRequirementGapProblem,
+} from "./algebra-requirement-gaps-practice";
+import {
   remainingGapTemplates,
   generateRemainingGapProblem,
 } from "./remaining-gap-practice";
@@ -455,6 +459,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
   complexMultiplicationTemplate,
+  ...algebraRequirementGapTemplates,
   ...advancedMathGapTemplates,
   ...satAlgebraStructureTemplates,
   ...satNumericEntryTemplates,
@@ -733,6 +738,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...k8RepresentationTemplates,
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
+    ...algebraRequirementGapTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
@@ -907,6 +913,8 @@ function generateRawProblem(
     return generateSatNumericEntryProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (algebraRequirementGapTemplates.some((t) => t.id === templateId))
+    return generateAlgebraRequirementGapProblem(templateId, seed);
   if (satAlgebraStructureTemplates.some((t) => t.id === templateId))
     return generateSatAlgebraStructureProblem(templateId, seed);
   if (remainingGapTemplates.some((t) => t.id === templateId))

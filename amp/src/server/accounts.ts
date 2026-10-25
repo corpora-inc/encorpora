@@ -276,6 +276,8 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
     : undefined;
   const microsoftOptions = config.microsoft && {
     ...config.microsoft,
+    // Shared family devices must offer a choice rather than reuse the last login.
+    prompt: "select_account" as const,
     // The profile photo is not used; skip the extra Graph request.
     disableProfilePhoto: true,
     mapProfileToUser: (profile: Record<string, unknown>) => ({
@@ -406,6 +408,7 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       ...(config.google && {
         google: {
           ...config.google,
+          prompt: "select_account",
           getUserInfo: rememberVerifiedProvider(google(config.google)),
         },
       }),

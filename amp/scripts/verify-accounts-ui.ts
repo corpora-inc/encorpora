@@ -250,7 +250,7 @@ try {
   // Recent authentication must retain the return route through the TOTP step.
   await page.getByRole("link", { name: "Sign in again", exact: true }).click();
   await page.getByLabel("Email").fill(email);
-  await page.getByLabel("Password", { exact: true }).fill(changed);
+  await page.getByLabel("AMP password", { exact: true }).fill(changed);
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   await page.waitForURL("**/sign-in/two-factor?return=security");
   await page
