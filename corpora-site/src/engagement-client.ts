@@ -2,6 +2,7 @@ import { entryContext } from "../../amp/src/analytics/entry-context";
 import { browserIdentity } from "../../amp/src/analytics/browser-identity";
 import { marketingScreen } from "../../amp/src/analytics/site-actions";
 import { EngagementClock } from "../../amp/src/analytics/engagement";
+import { createGoogleAnalytics } from "../../amp/src/analytics/google-analytics";
 
 const script = document.querySelector<HTMLScriptElement>(
   "script[data-engagement-endpoint]",
@@ -12,6 +13,8 @@ if (
   !privacy.globalPrivacyControl &&
   navigator.doNotTrack !== "1"
 ) {
+  const google = createGoogleAnalytics();
+  google.navigate();
   const endpoint = script.dataset.engagementEndpoint;
   const identity = browserIdentity(),
     visitorId = identity.visitor();
@@ -113,12 +116,15 @@ if (
         action = "funding_provider_click";
       else if (u.origin === location.origin) action = "navigation_click";
     }
-    if (action)
+    if (action) {
+      google.event(action);
       send("site_action", { eventId: crypto.randomUUID(), action, screen });
+    }
   });
   document
     .querySelector("[data-invoice-dialog]")
     ?.addEventListener("close", () => {
+      google.event("invoice_close");
       send("site_action", {
         eventId: crypto.randomUUID(),
         action: "invoice_close",

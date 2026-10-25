@@ -35,7 +35,7 @@
     "report:insights": "tsx scripts/insights-report.ts",
     "billing:worker": "tsx scripts/stripe-worker.ts",
     "infra": "tsx scripts/external-config.ts",
-    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-free-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && npm run test:account-controls-ui && npm run test:navigation-ui && npm run test:social-ui && npm run test:passkey-ui && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:access-ui && npm run test:funded-entry-ui && npm run test:funnel-ui && npm run test:engagement-ui && npm run test:site-journeys-ui && npm run test:flag-ui && npm run test:skip-ui && npm run test:level-ui && npm run test:pathways-ui && npm run test:advertising-ui && npm run test:acquisition-ui && npm run test:instant-hints-ui && npm run test:parent-feedback-ui",
+    "test:family-ui": "npm run test:foundation && tsx scripts/verify-router-ui.ts && tsx scripts/verify-privacy-cache-ui.ts && tsx scripts/verify-family-ui.ts && tsx scripts/verify-free-trial-ui.ts && tsx scripts/verify-accounts-ui.ts && npm run test:account-controls-ui && npm run test:navigation-ui && npm run test:social-ui && npm run test:passkey-ui && tsx scripts/verify-session-ui.ts && npm run test:annual-ui && npm run test:purchase-app-ui && tsx scripts/verify-family-focus-ui.ts && tsx scripts/verify-consent-app-ui.ts && npm run test:native-ui && npm run test:payment-ui && npm run test:premium-ui && npm run test:onboarding-ui && npm run test:access-ui && npm run test:funded-entry-ui && npm run test:funnel-ui && npm run test:engagement-ui && npm run test:site-journeys-ui && npm run test:flag-ui && npm run test:skip-ui && npm run test:level-ui && npm run test:pathways-ui && npm run test:advertising-ui && npm run test:acquisition-ui && npm run test:instant-hints-ui && npm run test:parent-feedback-ui && npm run test:google-analytics-ui",
     "test:navigation-ui": "tsx scripts/verify-navigation-ui.ts",
     "test:account-controls-ui": "tsx scripts/verify-account-controls-ui.ts",
     "test:acquisition-ui": "tsx scripts/verify-acquisition-ui.ts",
@@ -86,7 +86,8 @@
     "test:parent-feedback-ui": "tsx scripts/verify-parent-feedback-ui.ts",
     "report:funded-journeys": "tsx scripts/report-funded-journeys.ts",
     "test:site-journeys-ui": "node --import tsx --test scripts/verify-site-journeys-ui.ts",
-    "report:acquisition": "tsx scripts/report-acquisition.ts"
+    "report:acquisition": "tsx scripts/report-acquisition.ts",
+    "test:google-analytics-ui": "node --import tsx --test scripts/verify-google-analytics-ui.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",
