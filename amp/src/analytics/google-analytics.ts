@@ -4,6 +4,7 @@ import { entryContext } from "./entry-context";
 // Public website tag, not an API credential. Shared across both production sites.
 export const GA_MEASUREMENT_ID = "G-TGEK0ZGHMD";
 const disabledKey = `ga-disable-${GA_MEASUREMENT_ID}`;
+const clickKeys = ["gclid", "gbraid", "wbraid"];
 const publicMarketingPaths = new Set([
   "/",
   "/amp",
@@ -62,12 +63,22 @@ export function googlePage(input: string): string | undefined {
     utm_content: context.utmContent,
   }))
     if (value) safe.searchParams.set(key, value);
-  for (const key of ["gclid", "gbraid", "wbraid"]) {
+  for (const key of clickKeys) {
     const value = url.searchParams.get(key);
     if (value && /^[A-Za-z0-9_-]{8,512}$/.test(value))
       safe.searchParams.set(key, value);
   }
   return safe.href;
+}
+
+/** Clearing captured click IDs from the address bar is not a new page visit. */
+export function sameGoogleVisit(previous: string, page: string): boolean {
+  if (!previous) return false;
+  const before = new URL(previous);
+  const after = new URL(page);
+  for (const key of clickKeys)
+    if (!after.searchParams.has(key)) before.searchParams.delete(key);
+  return before.href === after.href;
 }
 
 const actions = new Set([
@@ -121,7 +132,7 @@ export function createGoogleAnalytics() {
         previous = "";
         return;
       }
-      if (page === previous) return;
+      if (sameGoogleVisit(previous, page)) return;
       const referrer = previous || safeReferrer(document.referrer);
       const pageParams = {
         page_location: page,

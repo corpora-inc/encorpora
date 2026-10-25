@@ -65,9 +65,21 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
   }
   try {
     await page.goto(
-      "https://amp.corpora.inc/?utm_source=google&utm_medium=cpc&email=private@example.test#secret",
+      "https://amp.corpora.inc/?utm_source=google&utm_medium=cpc&gclid=Valid_Click_123&email=private@example.test#secret",
     );
     await awaitEvent("page_view", 1);
+    await page.evaluate(() => {
+      const url = new URL(location.href);
+      url.searchParams.delete("gclid");
+      history.replaceState({}, "", url);
+      (window as any).ga.event("invoice_open");
+    });
+    await awaitEvent("invoice_open", 1);
+    assert.equal(hits.filter((h) => h.get("en") === "page_view").length, 1);
+    assert.match(
+      hits.find((h) => h.get("en") === "invoice_open")!.get("dl")!,
+      /gclid=Valid_Click_123/,
+    );
     await page.evaluate(() => {
       const ga = (window as any).ga;
       history.pushState({}, "", "/purchase/arizona?token=private-invoice");
