@@ -96,6 +96,7 @@ type AnalyticsWindow = Window &
 export function createGoogleAnalytics() {
   const w = window as AnalyticsWindow;
   let loaded = false;
+  let retired = false;
   let previous = "";
   const identity = browserIdentity();
   const permitted = () =>
@@ -110,7 +111,12 @@ export function createGoogleAnalytics() {
   function navigate() {
     try {
       const page = permitted() ? googlePage(location.href) : undefined;
-      w[disabledKey] = !page;
+      // ga-disable stops hits but does not reset Google's engagement clock.
+      // Once learning starts, keep this document disabled so a later parent
+      // screen cannot export time spent learning. A fresh document can resume.
+      if (loaded && !page) retired = true;
+      w[disabledKey] = retired || !page;
+      if (retired) return;
       if (!page) {
         previous = "";
         return;
@@ -182,9 +188,14 @@ export function createGoogleAnalytics() {
         script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
         script.referrerPolicy = "origin";
         document.head.append(script);
+      } else {
+        // Destination config outranks global `set` for automatic SDK events.
+        command("config", GA_MEASUREMENT_ID, {
+          ...pageParams,
+          send_page_view: false,
+          update: true,
+        });
       }
-      // Also fixes the context of Google's automatic engagement events.
-      command("set", pageParams);
       command("event", "page_view", {
         ...pageParams,
         send_to: GA_MEASUREMENT_ID,

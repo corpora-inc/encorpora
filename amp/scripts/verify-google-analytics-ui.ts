@@ -83,6 +83,16 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
       hits.some((h) => h.get("en") === "purchase"),
       false,
     );
+    await page.waitForTimeout(1200);
+    await page.evaluate(`window.dispatchEvent(new Event('pagehide'));`);
+    await awaitEvent("user_engagement", 1);
+    assert.equal(
+      hits.find((h) => h.get("en") === "user_engagement")?.get("dl"),
+      "https://amp.corpora.inc/purchase/arizona",
+    );
+    await page.evaluate(
+      `Object.defineProperty(document, 'visibilityState', {configurable: true, get: () => 'visible'}); document.dispatchEvent(new Event('visibilitychange'));`,
+    );
     for (const hit of hits) {
       assert.equal(hit.get("dt"), "AMP by Corpora");
       assert.ok(!decodeURIComponent(hit.toString()).includes("private"));
@@ -97,6 +107,18 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
     });
     await page.waitForTimeout(1500);
     assert.equal(hits.length, count, "learning route must not send GA events");
+    await page.evaluate(() => {
+      history.pushState({}, "", "/purchase/arizona");
+      (window as any).ga.navigate();
+      (window as any).ga.event("checkout_start");
+    });
+    await page.evaluate(`window.dispatchEvent(new Event('pagehide'));`);
+    await page.waitForTimeout(1500);
+    assert.equal(
+      hits.length,
+      count,
+      "returning to purchase must not export the learning interval",
+    );
     // Fresh opt-out sessions must not even load Google's script.
     const optedOut = await context.newPage();
     await optedOut.addInitScript(
