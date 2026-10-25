@@ -91,6 +91,20 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
       number(r.active_seconds / 60),
     ]),
   );
+  const recordedSources = table(
+    [
+      "Source label",
+      "Browser IDs",
+      "Browsers clicking Try",
+      "Browsers with card purchase",
+    ],
+    s.funnel.breakdowns.source.map((r) => [
+      r.key,
+      number(r.visitors),
+      number(r.tried),
+      number(r.purchased),
+    ]),
+  );
   const screens = table(
     [
       "Screen",
@@ -170,6 +184,30 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
   const progress = table(
     ["Milestone", "Browsers reaching it"],
     s.funnel.steps.map((r) => [r.event, number(r.visitors)]),
+  );
+  const purchaseAttempts = table(
+    [
+      "Stage",
+      "Outcome",
+      "Failure",
+      "Source",
+      "Medium",
+      "Campaign",
+      "Creative",
+      "Attempts",
+      "Browsers",
+    ],
+    (e.purchaseAttempts ?? []).map((r) => [
+      r.stage,
+      r.outcome,
+      r.failure,
+      r.source,
+      r.medium,
+      r.campaign,
+      r.creative,
+      number(r.attempts),
+      number(r.browsers),
+    ]),
   );
   const delivery = table(
     [
@@ -271,9 +309,10 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
       "",
     )}</nav></header><div class="cards">${cards.map(([value, label, note]) => `<div class="card"><strong>${value}</strong><span>${label}</span><small>${note}</small></div>`).join("")}</div>
   <p class="warning">Browser IDs are not people. Unknown historical traffic may include testing. Invoice creation, parent submission and license activation are not proof of payment. The card and funded-payment totals measure different cohorts; they are not a single conversion rate.</p>
-  ${section("traffic", "Where visits come from", "First-touch campaign and creative labels for browsers with recorded page activity. Existing visitors can retain an earlier campaign.", sources)}
+  ${section("traffic", "Where visits come from", "First-touch campaign and creative labels for browsers with recorded page activity. Existing visitors can retain an earlier campaign.", sources + '<h3>Recorded source labels</h3><p class="note">Browser IDs first seen in the selected window, including older records without page-time tracking. Unclassified traffic may include staff and testing; these are not verified customer counts.</p>' + recordedSources)}
   ${section("behavior", "What visitors do", "Active time stops after 60 seconds without input; hidden or unfocused pages do not accumulate visible time. Last observed screen does not prove abandonment.", screens + "<h3>Observed paths</h3>" + paths + "<h3>Marketing actions</h3>" + actions)}
   ${section("milestones", "Assessment and card-checkout milestones", "Counts show visitors who reached each milestone, not a compulsory sequence. Direct-entry visits can skip earlier screens. The visitor cohort starts in the selected UTC window.", progress)}
+  ${section("purchase-attempts", "Purchase attempts and errors", "Client-observed invoice creation/claim, funded request creation/status, ClassWallet checkout, card checkout and paid-plan claim requests. Repeated delivery of the same attempt and outcome counts once. A successful request is not proof of payment; missing final events do not establish abandonment. Polling requests are excluded.", purchaseAttempts)}
   ${section("purchases", "Funded purchase progress", "Invoices prepared in the selected UTC window, followed through the report snapshot. ¹Submission is parent-reported. Paid requires verified settlement. Mail accepted means accepted by the mail provider, not read by the parent.", purchase + '<h3>Access and actual use</h3><p class="note">Operational state cohorts include invoices created in the selected window, including testing and unattributed records. They are diagnostic counts, not campaign conversion totals.</p>' + delivery)}
   ${section("spend", "Advertising costs", "Provider-reported ad spend; credits and billing adjustments are not reconciled here. Each provider’s date window, timezone and click definition are shown. Cost per click uses that provider’s reported clicks, not website visitors. Missing or unmapped costs are not assigned to campaigns by guesswork.", spend + (missing.length ? `<p class="warning">Not imported: ${esc(missing.join(", "))}.</p>` : "") + '<p class="note">Compare these costs with the campaign and paid-payment tables above. No ROAS or customer-acquisition-cost claim is made when cost windows and purchase cohorts differ.</p>')}
   ${section("feedback", "Parent feedback and purchase hesitation", "Operational counts include testing. No individual messages, answers or learner identities appear here. Parent feedback is limited to the selected report window; problem and trial metrics follow their own report definitions.", feedback + "<h3>Reasons for dismissing purchase</h3>" + dismissal + "<h3>Reported problems</h3>" + problemReports + "<h3>How far trials get</h3>" + trialDepth)}

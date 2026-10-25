@@ -1,3 +1,4 @@
+import { purchaseFetch } from "./lib/purchase-analytics";
 import { analyticsVisitorHeaders } from "./lib/analytics";
 import { SupportHelp } from "./features/support/SupportHelp";
 import { useFundingRefresh } from "./features/funding/useFundingRefresh";
@@ -149,7 +150,7 @@ export function FundingPurchaseCenter({
   }, [selected, identity]);
   async function response(path: string, body?: unknown) {
     const active = epoch.current;
-    const result = await fetch(`/api/v1/funding${path}`, {
+    const result = await purchaseFetch(`/api/v1/funding${path}`, {
       method: body === undefined ? "GET" : "POST",
       headers: {
         authorization: `Bearer ${tokenRef.current}`,

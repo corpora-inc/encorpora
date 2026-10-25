@@ -1,3 +1,4 @@
+import { purchaseFetch } from "./lib/purchase-analytics";
 import { useFamilyCache } from "./lib/family-cache";
 import { queryClient, meOptions } from "./lib/query";
 import { useLoggedError, requestMessage } from "./feedback";
@@ -97,7 +98,7 @@ function PurchasePanel({
   );
   async function api<T>(path: string, body?: unknown): Promise<T> {
     const epoch = generation.current;
-    const response = await fetch(`/api/v1${path}`, {
+    const response = await purchaseFetch(`/api/v1${path}`, {
       method: body === undefined ? "GET" : "POST",
       headers: {
         Authorization: `Bearer ${tokenRef.current}`,

@@ -565,3 +565,64 @@ test(
       );
     }),
 );
+
+test(
+  "purchase attempts retain campaign outcomes without counting retries or staff as customers",
+  enabled,
+  async () =>
+    fixture(async ({ pool, app }) => {
+      const props = {
+        attemptId: randomUUID(),
+        stage: "funded_invoice",
+        outcome: "failed",
+        failure: "network",
+      };
+      const body = {
+        visitorId: randomUUID(),
+        traffic: "external",
+        context: {
+          utmSource: "facebook",
+          utmMedium: "paid-social",
+          utmCampaign: "ar-efa-launch",
+          device: "phone",
+          referrer: "social",
+        },
+        events: [{ event: "purchase_attempt", props, at: 1 }],
+      };
+      assert.equal((await post(app, body)).statusCode, 202);
+      assert.equal((await post(app, body)).statusCode, 202);
+      assert.equal(
+        (
+          await post(app, {
+            ...body,
+            visitorId: randomUUID(),
+            traffic: "internal",
+          })
+        ).statusCode,
+        202,
+      );
+      const { engagementReport } =
+        await import("../src/analytics/engagement-report.js");
+      const report = await engagementReport(pool, 7);
+      assert.deepEqual(report.purchaseAttempts, [
+        {
+          stage: "funded_invoice",
+          outcome: "failed",
+          failure: "network",
+          source: "facebook",
+          medium: "paid-social",
+          campaign: "ar-efa-launch",
+          creative: "none",
+          attempts: 1,
+          browsers: 1,
+        },
+      ]);
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*)::int n FROM amp_funnel_events WHERE event='purchase'",
+        ),
+        0,
+      );
+    }),
+);

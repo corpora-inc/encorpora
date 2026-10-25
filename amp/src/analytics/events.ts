@@ -1,3 +1,4 @@
+import { purchaseAttemptSchema } from "./purchase-attempt.js";
 import { entryContextSchema } from "./entry-context.js";
 export { REFERRER_CATEGORIES, DEVICE_CLASSES } from "./entry-context.js";
 import { z } from "zod";
@@ -35,6 +36,7 @@ export const FUNNEL_EVENTS = [
   "refund_requested",
   "refund",
   "level_check_view",
+  "purchase_attempt",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -117,6 +119,7 @@ export const funnelPropsSchemas = {
   paywall_dismiss: z.strictObject({ reason: z.enum(PAYWALL_DISMISS_REASONS) }),
   plan_view: none,
   plan_select: z.strictObject({ interval: z.enum(PLAN_INTERVALS) }),
+  purchase_attempt: purchaseAttemptSchema,
   checkout_start: z.strictObject({ interval: z.enum(PLAN_INTERVALS) }),
   checkout_return: z.strictObject({ outcome: z.enum(["success", "cancel"]) }),
   purchase: z.strictObject({ interval: z.enum(PLAN_INTERVALS) }),
