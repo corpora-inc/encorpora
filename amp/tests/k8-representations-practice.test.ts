@@ -157,9 +157,11 @@ test("templates, lessons, methods, principles and facet mappings are registered"
     );
     assert.ok(view.example.steps.length >= 2);
     const mapping = actualFacetMappings.filter((m) => m.templateId === id);
-    assert.equal(mapping.length, 1, `${id} facet mapping`);
-    assert.equal(mapping[0]!.extent, "partial");
-    assert.match(mapping[0]!.rationale, /Does not assess/);
+    assert.ok(mapping.length >= 1, `${id} facet mapping`);
+    for (const m of mapping) {
+      assert.equal(m.extent, "partial", `${id} ${m.facetId} extent`);
+      assert.match(m.rationale, /Does not assess/, `${id} ${m.facetId}`);
+    }
   }
 });
 
