@@ -142,3 +142,33 @@ Keep Enhanced Measurement disabled in the GA4 web stream. The application explic
 Use GA4 Traffic acquisition, Pages and screens, and Realtime for standard visitor reports. Use AMP engagement and funded-journey reports to inspect learning progression and authoritative payment outcomes. A `begin_checkout` event or a checkout return is not a purchase. Do not import these actions as primary Google Ads purchase conversions or add a second primary conversion for purchases already exported by the server.
 
 `npm run test:google-analytics-ui` runs the real Google tag in Chromium and intercepts every collection request. It checks public SPA transitions, duplicate suppression, sanitized payloads, learning-route exclusion and GPC. No synthetic collection events are sent to Google by the test.
+
+
+### Purchase attempts and errors
+
+The first-party `purchase_attempt` event records a random attempt ID, fixed stage,
+outcome and optional error category. It covers public invoice creation and claim,
+signed-in funded request creation and status changes, ClassWallet checkout,
+card checkout in both purchase interfaces, and paid-plan claim. Status polling
+and learning requests are excluded. Events contain no form values, request URLs,
+account or learner identifiers, request bodies, raw errors or payment amounts.
+They are not sent to Google Analytics or advertising platforms.
+
+Started, succeeded, failed and cancelled are request outcomes. Succeeded means
+an accepted response, with contract validation where the caller uses a response
+schema; it does not mean the parent paid. Cancelled means the browser aborted
+the request, not that a subscription or funding order was cancelled. Network,
+validation, authentication, permission, service availability and response-contract
+failures are reported separately. The acquisition report groups these outcomes
+by first-touch source, medium, campaign and creative, excludes marked staff/test
+browsers and deduplicates each attempt/outcome. Missing terminal events can mean
+navigation or failed analytics delivery. Server-verified payment records remain
+the authority for paid conversions.
+
+
+Invoice download, funding-provider handoff, AMP setup and invoice-correction clicks
+use the separate `purchase_action` event. It contains only a random action ID and
+a fixed category. Repeated delivery counts once per browser/action ID. Download
+clicks do not prove the file was saved, and opening ClassWallet does not prove
+submission, approval or payment. Both public invoices and signed-in funded
+purchase screens record these actions. They stay in first-party reporting.

@@ -1,3 +1,4 @@
+import { purchaseFetch, recordPurchaseAction } from "./lib/purchase-analytics";
 import { analyticsVisitorHeaders } from "./lib/analytics";
 import { SupportHelp } from "./features/support/SupportHelp";
 import { useFundingRefresh } from "./features/funding/useFundingRefresh";
@@ -149,7 +150,7 @@ export function FundingPurchaseCenter({
   }, [selected, identity]);
   async function response(path: string, body?: unknown) {
     const active = epoch.current;
-    const result = await fetch(`/api/v1/funding${path}`, {
+    const result = await purchaseFetch(`/api/v1/funding${path}`, {
       method: body === undefined ? "GET" : "POST",
       headers: {
         authorization: `Bearer ${tokenRef.current}`,
@@ -330,6 +331,7 @@ export function FundingPurchaseCenter({
       link = document.createElement("a");
     link.href = url;
     link.download = `education-${record.offer.documentPolicy === "named-student-invoice" ? "invoice" : "quote"}-${record.id}.pdf`;
+    recordPurchaseAction("document_download");
     link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
@@ -350,6 +352,7 @@ export function FundingPurchaseCenter({
       destination.hash
     )
       throw new Error("ClassWallet checkout is unavailable. Please try again.");
+    recordPurchaseAction("funding_provider_open");
     window.location.assign(destination.href);
   }
   async function update(
@@ -728,7 +731,10 @@ export function FundingPurchaseCenter({
                       href={request.offer.destinationUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => setProgramOpened(request.id)}
+                      onClick={() => {
+                        recordPurchaseAction("funding_provider_open");
+                        setProgramOpened(request.id);
+                      }}
                     >
                       Open program purchase page ↗
                     </a>

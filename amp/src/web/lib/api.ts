@@ -1,3 +1,4 @@
+import { observePurchaseRequest } from "./purchase-analytics";
 import type { z } from "zod";
 import { AppError } from "./AppError";
 import { validationPaths } from "./batch-capability-fallback";
@@ -91,11 +92,20 @@ export async function request<T>(
     headers?: Record<string, string>;
   } = {},
 ): Promise<T> {
+  const method =
+    options.method ?? (options.body === undefined ? "GET" : "POST");
+  const observe = observePurchaseRequest(path, method);
+  const checkAborted = () => {
+    if (options.signal?.aborted) {
+      observe("cancelled");
+      options.signal.throwIfAborted();
+    }
+  };
   let response: Response;
   try {
     response = await fetch(`/api/v1${path}`, {
       signal: options.signal,
-      method: options.method ?? (options.body === undefined ? "GET" : "POST"),
+      method,
       headers: {
         ...options.headers,
         ...(options.trial
@@ -112,18 +122,22 @@ export async function request<T>(
         : { body: JSON.stringify(options.body) }),
     });
   } catch (cause) {
-    if (options.signal?.aborted) throw cause;
+    if (options.signal?.aborted) {
+      observe("cancelled");
+      throw cause;
+    }
     const error = new AppError(
       "network",
       "Check your connection and try again.",
       true,
     );
+    observe("failed", error.kind);
     error.log();
     throw error;
   }
   const requestId = response.headers.get("x-request-id");
   const data: unknown = await response.json().catch(() => null);
-  options.signal?.throwIfAborted();
+  checkAborted();
   if (!response.ok) {
     const code =
       data &&
@@ -157,6 +171,7 @@ export async function request<T>(
         ? validationPaths(data.details)
         : null,
     );
+    observe("failed", error.kind);
     error.log();
     throw error;
   }
@@ -168,9 +183,11 @@ export async function request<T>(
       true,
       requestId,
     );
+    observe("failed", error.kind);
     error.log();
     throw error;
   }
-  options.signal?.throwIfAborted();
+  checkAborted();
+  observe("succeeded");
   return parsed.data;
 }
