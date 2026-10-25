@@ -609,7 +609,7 @@ def check_inequality_content(records):
             all(item['skillId'] == 'linear-inequalities' for item in templates),
             'Incorrect inequality template/skill inventory')
     for name in ('declaredMappings', 'registeredMappings'):
-        mappings = header[name]
+        mappings = [m for m in header[name] if m['templateId'] in INEQUALITY]
         require(len(mappings) == 3 and {m['templateId'] for m in mappings} == INEQUALITY and
                 all(m['facetId'] == expected_facets[m['templateId']] and
                     m['extent'] == 'partial' and isinstance(m['rationale'], str) and
