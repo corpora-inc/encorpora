@@ -1,6 +1,36 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { googlePage } from "../src/analytics/google-analytics.js";
+import {
+  googlePage,
+  sameGoogleVisit,
+} from "../src/analytics/google-analytics.js";
+
+test("click-ID cleanup preserves the visit but navigation and new attribution do not", () => {
+  const page = "https://corpora.inc/esa/arkansas-efa?utm_source=google";
+  for (const key of ["gclid", "gbraid", "wbraid"]) {
+    const arrival = `${page}&${key}=Valid_Click_123`;
+    assert.equal(sameGoogleVisit(arrival, page), true);
+    assert.equal(sameGoogleVisit(arrival, arrival), true);
+    assert.equal(sameGoogleVisit(page, arrival), false);
+    assert.equal(
+      sameGoogleVisit(arrival, `${page}&${key}=Another_Click_123`),
+      false,
+    );
+    assert.equal(
+      sameGoogleVisit(arrival, page.replace("arkansas-efa", "arizona-esa")),
+      false,
+    );
+    assert.equal(
+      sameGoogleVisit(arrival, `${page}&utm_campaign=new-campaign`),
+      false,
+    );
+    assert.equal(
+      sameGoogleVisit(arrival, page.replace("google", "facebook")),
+      false,
+    );
+  }
+  assert.equal(sameGoogleVisit("", page), false);
+});
 
 test("GA pages retain campaign labels without private parameters or fragments", () => {
   assert.equal(
