@@ -17,10 +17,10 @@ const visitorId = "5b0a4c1e-8f43-4f0e-9a51-1c2d3e4f5a6b";
 const batch = (events: unknown[]) =>
   eventBatchSchema.safeParse({ visitorId, events });
 
-test("the vocabulary is exactly the issue's fixed list", () => {
+test("the transport contains the fixed milestones and the separate engagement snapshot", () => {
   assert.deepEqual(
     Object.keys(funnelPropsSchemas).sort(),
-    [...FUNNEL_EVENTS].sort(),
+    [...FUNNEL_EVENTS, "page_engagement"].sort(),
   );
   assert.equal(FUNNEL_EVENTS.length, 24);
 });

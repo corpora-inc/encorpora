@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { engagementSchema, TRAFFIC_KINDS } from "./engagement.js";
 
 /**
  * The AMP funnel vocabulary, shared by the server and the web app. It is
@@ -40,7 +41,7 @@ export const SERVER_ONLY_EVENTS = [
   "refund",
 ] as const satisfies readonly FunnelEvent[];
 export type ServerOnlyEvent = (typeof SERVER_ONLY_EVENTS)[number];
-export type ClientEvent = Exclude<FunnelEvent, ServerOnlyEvent>;
+export type ClientEvent = Exclude<FunnelEvent, ServerOnlyEvent> | "page_engagement";
 
 const utm = z
   .string()
@@ -101,6 +102,7 @@ const index = z.number().int().min(0).max(100_000);
 const none = z.strictObject({});
 
 export const funnelPropsSchemas = {
+  page_engagement: engagementSchema,
   landing_view: z.strictObject({
     utmSource: utm.optional(),
     utmMedium: utm.optional(),
@@ -144,9 +146,9 @@ export const funnelPropsSchemas = {
     upgrade: z.literal(true).optional(),
     reason: z.enum(REFUND_REASONS).optional(),
   }),
-} as const satisfies Record<FunnelEvent, z.ZodType>;
+} as const satisfies Record<FunnelEvent | "page_engagement", z.ZodType>;
 
-export type FunnelProps<E extends FunnelEvent> = z.input<
+export type FunnelProps<E extends FunnelEvent | "page_engagement"> = z.input<
   (typeof funnelPropsSchemas)[E]
 >;
 
@@ -156,7 +158,7 @@ export const visitorIdSchema = z.uuidv4();
 /** One event inside a batch; `at` is the client's epoch-milliseconds clock. */
 export const clientEventSchema = z
   .strictObject({
-    event: z.enum(FUNNEL_EVENTS),
+    event: z.enum([...FUNNEL_EVENTS, "page_engagement"]),
     props: z.unknown().optional(),
     at: z.number().int().positive(),
   })
@@ -180,6 +182,8 @@ export const MAX_BATCH_BYTES = 8192;
  * used only to link the visitor to its trial and never stored. */
 export const eventBatchSchema = z.strictObject({
   visitorId: visitorIdSchema,
+  context: funnelPropsSchemas.landing_view.optional(),
+  traffic: z.enum(TRAFFIC_KINDS).optional(),
   trial: z
     .string()
     .regex(/^[A-Za-z0-9_-]{16,128}$/)

@@ -111,6 +111,7 @@ test(
         "grade_band",
         "last_seen",
         "referrer",
+        "traffic_kind",
         "utm_campaign",
         "utm_medium",
         "utm_source",
@@ -460,5 +461,106 @@ test(
       const text = formatFunnelReport(report);
       assert.match(text, /purchase\s+1\s+/);
       assert.equal(text.includes(buyer), false, "aggregates only");
+    }),
+);
+
+test(
+  "engagement: deep-entry attribution, idempotent snapshots, customer filtering and expiry",
+  enabled,
+  async () =>
+    fixture(async ({ pool, app }) => {
+      const { engagementReport } =
+        await import("../src/analytics/engagement-report.js");
+      const external = randomUUID(),
+        internal = randomUUID();
+      const page = {
+        sessionId: randomUUID(),
+        pageId: randomUUID(),
+        ordinal: 0,
+        screen: "practice",
+        visibleMs: 10000,
+        activeMs: 9000,
+      };
+      const body = {
+        visitorId: external,
+        traffic: "external",
+        context: {
+          utmSource: "google",
+          utmCampaign: "deep-entry",
+          device: "phone",
+          referrer: "search",
+        },
+        events: [{ event: "page_engagement", at: 1, props: page }],
+      };
+      assert.equal((await post(app, body)).statusCode, 202);
+      assert.equal((await post(app, body)).statusCode, 202);
+      assert.equal(
+        (
+          await post(app, {
+            ...body,
+            events: [
+              {
+                event: "page_engagement",
+                at: 2,
+                props: { ...page, visibleMs: 5000, activeMs: 4000 },
+              },
+            ],
+          })
+        ).statusCode,
+        202,
+      );
+      const stored = (
+        await pool.query(
+          "SELECT visible_ms,active_ms FROM amp_engagement_pages",
+        )
+      ).rows;
+      assert.deepEqual(stored, [{ visible_ms: 10000, active_ms: 9000 }]);
+      const v = (
+        await pool.query(
+          "SELECT utm_source,utm_campaign,traffic_kind FROM amp_funnel_visitors",
+        )
+      ).rows[0];
+      assert.deepEqual(v, {
+        utm_source: "google",
+        utm_campaign: "deep-entry",
+        traffic_kind: "external",
+      });
+      await post(app, { ...body, visitorId: internal, traffic: "internal" });
+      // Marking a known internal browser external later must not leak its prior tests into customer totals.
+      await post(app, { ...body, visitorId: internal });
+      let report = await engagementReport(pool, 7);
+      assert.equal(report.screens.length, 1);
+      assert.equal(report.screens[0].browsers, 1);
+      assert.equal(report.screens[0].active_seconds, 9);
+      assert.equal(report.sources[0].source, "google");
+      assert.equal(
+        report.coverage.find((r) => r.traffic_kind === "internal")?.browsers,
+        1,
+      );
+      // First touch survives later direct navigation.
+      await post(app, {
+        ...body,
+        context: { device: "phone", referrer: "direct" },
+      });
+      assert.equal(
+        (await engagementReport(pool, 7)).sources[0].source,
+        "google",
+      );
+      const now = new Date(),
+        to = new Date(now.getTime() + DAY),
+        from = new Date(now.getTime() - DAY);
+      assert.equal((await funnelReport(pool, { from, to })).visitors, 1);
+      await purgeFunnelEvents(
+        pool,
+        new Date(now.getTime() + (RETENTION.funnelEventDays + 1) * DAY),
+      );
+      assert.equal(
+        await count(pool, "SELECT count(*)::int n FROM amp_engagement_pages"),
+        0,
+      );
+      assert.equal(
+        await count(pool, "SELECT count(*)::int n FROM amp_funnel_visitors"),
+        0,
+      );
     }),
 );
