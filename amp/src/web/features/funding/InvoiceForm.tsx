@@ -1,3 +1,4 @@
+import { analyticsVisitorHeaders } from "../../lib/analytics";
 import { SupportHelp } from "../support/SupportHelp";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "@tanstack/react-router";
@@ -107,6 +108,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
     try {
       setResult(
         await request("/funding/invoices", responseSchema, {
+          headers: analyticsVisitorHeaders(),
           body: { ...fields, idempotencyKey: retry.current.key },
         }),
       );

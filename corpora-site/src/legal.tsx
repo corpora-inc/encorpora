@@ -55,9 +55,9 @@ export function Legal({
             the materials publicly.
           </p>
           <p>
-            When your subscription expires, app access and new downloads end. You
-            may continue using and printing worksheets you downloaded during that
-            subscription for the licensed learner’s personal education. The
+            When your subscription expires, app access and new downloads end.
+            You may continue using and printing worksheets you downloaded during
+            that subscription for the licensed learner’s personal education. The
             restrictions on resale and public redistribution continue to apply.
           </p>
           <h2>Price, term, and renewal</h2>
@@ -125,44 +125,45 @@ export function Legal({
             The site does not load advertising pixels or send learning answers
             to advertising platforms. Our own server measures categorized page
             visits, estimated active time, and actions such as starting an
-            assessment, opening an invoice form, or selecting a support link.
-            A random browser identifier connects this activity with visits to
-            AMP. First-party cookies shared across corpora.inc and its
-            subdomains retain this identifier, bounded entry-campaign labels,
-            and an optional staff-testing marker for up to {RETENTION.funnelEventDays} days after use. Browser
-            storage also retains the identifier. These records contain no name,
-            email, learning answer, form contents, or full page URL. An
-            invoice-form click does not establish an invoice request or purchase.
-            We honor browser Global Privacy Control and Do Not Track signals
-            for this measurement. Campaign labels may accompany the assessment
-            link. Opening
-            a worked example does not submit an answer. The hosting service can
-            receive an IP address, requested URL, and browser information to
-            deliver pages and protect the service. Links to the AMP app and
-            external program websites take you to separate services.
+            assessment, opening an invoice form, or selecting a support link. A
+            random browser identifier connects this activity with visits to AMP.
+            First-party cookies shared across corpora.inc and its subdomains
+            retain this identifier, bounded entry-campaign labels, and an
+            optional staff-testing marker for up to {RETENTION.funnelEventDays}{" "}
+            days after use. Browser storage also retains the identifier. These
+            records contain no name, email, learning answer, form contents, or
+            full page URL. An invoice-form click does not establish an invoice
+            request or purchase. We honor browser Global Privacy Control and Do
+            Not Track signals for this measurement. Campaign labels may
+            accompany the assessment link. Opening a worked example does not
+            submit an answer. The hosting service can receive an IP address,
+            requested URL, and browser information to deliver pages and protect
+            the service. Links to the AMP app and external program websites take
+            you to separate services.
           </p>
           <h2>Ad clicks and purchases</h2>
           <p>
-            When you follow an ad to the AMP overview or an Arkansas or Arizona funding page, our server may
-            retain its Google or Meta click identifier, existing Meta browser
-            identifiers, the observation time and fixed campaign labels for up
-            to 90 days. A secure, host-only browser cookie contains a random
-            reference, not the ad identifiers. It lets AMP associate the visit
-            with the signed-in parent’s invoice or checkout without adding a
-            tracking step. These records are separate from learner profiles,
-            assessment answers and progress. Ad identifiers are removed from
-            the page’s address before links are shared.
+            When you follow an ad to the AMP overview or an Arkansas or Arizona
+            funding page, our server may retain its Google or Meta click
+            identifier, existing Meta browser identifiers, the observation time
+            and fixed campaign labels for up to 90 days. A secure, host-only
+            browser cookie contains a random reference, not the ad identifiers.
+            It lets AMP associate the visit with the signed-in parent’s invoice
+            or checkout without adding a tracking step. These records are
+            separate from learner profiles, assessment answers and progress. Ad
+            identifiers are removed from the page’s address before links are
+            shared.
           </p>
           <p>
-            Global Privacy Control and Do Not Track prevent this collection
-            and clear the browser reference. Identified purchase attribution
-            appears in the parent’s data export. Withdrawing a provider’s
-            purchase-sharing preference deletes that provider’s associated
-            click evidence; learning-consent withdrawal and learning-data
-            deletion remove both providers’ associated evidence. Unassociated
-            visits expire after at most 90 days. Collection does not itself
-            send a purchase or identifiers to Google or Meta; external sharing
-            requires the separate applicable permission described below.
+            Global Privacy Control and Do Not Track prevent this collection and
+            clear the browser reference. Identified purchase attribution appears
+            in the parent’s data export. Withdrawing a provider’s
+            purchase-sharing preference deletes that provider’s associated click
+            evidence; learning-consent withdrawal and learning-data deletion
+            remove both providers’ associated evidence. Unassociated visits
+            expire after at most 90 days. Collection does not itself send a
+            purchase or identifiers to Google or Meta; external sharing requires
+            the separate applicable permission described below.
           </p>
           <h2>Education-fund purchase documents</h2>
           <p>
@@ -177,9 +178,9 @@ export function Legal({
           </p>
           <h2>Education-fund purchase measurement</h2>
           <p>
-            When campaign labels accompany an Arkansas or Arizona funding purchase request,
-            we retain the fixed campaign, source, medium and, when supplied,
-            an allowlisted ad creative label with that request
+            When campaign labels accompany an Arkansas or Arizona funding
+            purchase request, we retain the fixed campaign, source, medium and,
+            when supplied, an allowlisted ad creative label with that request
             and count verified order, payment and refund transitions in daily
             totals. These totals contain no parent, learner or order identifier.
             Unconverted requests expire; linked request labels follow the
@@ -190,35 +191,36 @@ export function Legal({
           </p>
           <p>
             To resume an Arkansas purchase after parent-consent emails, AMP
-            saves a pending purchase in this browser with a seven-day expiration,
-            scoped to the signed-in parent account. It contains permitted
-            campaign labels and an expiration time, not consent tokens or
-            learner details. Preparing a quote or leaving that consent flow
+            saves a pending purchase in this browser with a seven-day
+            expiration, scoped to the signed-in parent account. It contains
+            permitted campaign labels and an expiration time, not consent tokens
+            or learner details. Preparing a quote or leaving that consent flow
             clears it. Privacy signals remove its campaign labels. This
-            continuation works across tabs on the same device; it is not sent
-            to an advertising platform.
+            continuation works across tabs on the same device; it is not sent to
+            an advertising platform.
           </p>
           <h2>Optional adult purchase sharing</h2>
           <p>
             In AMP’s Family privacy controls, an adult with a confirmed account
-            email can independently allow Google or Meta purchase sharing. For Google, with that
-            permission, AMP may share an encoded version of the adult’s email,
-            a random purchase reference, purchase date, amount and currency.
-            When available, this includes the saved Google ad click identifier.
-            Google can match the click identifier and encoded email with its records; it is not
-            anonymous. Learner names, ages, answers, lessons and progress are
-            excluded. AMP requests measurement without ad personalization.
+            email can independently allow Google or Meta purchase sharing. For
+            Google, with that permission, AMP may share an encoded version of
+            the adult’s email, a random purchase reference, purchase date,
+            amount and currency. When available, this includes the saved Google
+            ad click identifier. Google can match the click identifier and
+            encoded email with its records; it is not anonymous. Learner names,
+            ages, answers, lessons and progress are excluded. AMP requests
+            measurement without ad personalization.
           </p>
           <p>
             For Meta (Facebook and Instagram), the separate permission covers an
             encoded version of the adult’s email, a random purchase reference,
             purchase date, amount and currency. An eligible website purchase
-            also includes its purchase-page address and the browser’s user agent.
-            When available, this includes saved Meta ad click and browser identifiers.
-            Meta can match these identifiers and the email with its records and use this information for
-            ad measurement, ad delivery and audience creation. Encoding does not
-            make it anonymous. Learner names, ages, answers, lessons and progress
-            are excluded.
+            also includes its purchase-page address and the browser’s user
+            agent. When available, this includes saved Meta ad click and browser
+            identifiers. Meta can match these identifiers and the email with its
+            records and use this information for ad measurement, ad delivery and
+            audience creation. Encoding does not make it anonymous. Learner
+            names, ages, answers, lessons and progress are excluded.
           </p>
           <p>
             Each optional permission lasts one year and does not affect pricing,
@@ -227,9 +229,9 @@ export function Legal({
             already received by the provider. Learning-data deletion,
             learning-consent withdrawal, and Global Privacy Control or Do Not
             Track received on an authenticated AMP request withdraw both
-            preferences. AMP retains permission evidence for its duration and up to
-            90 days after withdrawal or expiry. A minimal opt-out setting stays
-            until you change it, so expiry of that evidence cannot resume
+            preferences. AMP retains permission evidence for its duration and up
+            to 90 days after withdrawal or expiry. A minimal opt-out setting
+            stays until you change it, so expiry of that evidence cannot resume
             collection. The family export includes these settings and
             preferences without their email binding digests. Local
             purchase-measurement records are retained for up to 90 days after
@@ -271,8 +273,8 @@ export function Legal({
             from starting practice to a purchase. Each record contains a random
             identifier, an event type, and a timestamp. The events are starting
             a trial, completing placement, opening the plan screen, and
-            purchasing access. These are individual
-            event records, not summarized totals.
+            purchasing access. These are individual event records, not
+            summarized totals.
           </p>
           <p>
             The trial record links that identifier to a learner while the record
@@ -293,24 +295,35 @@ export function Legal({
           <p>
             AMP also measures practice and purchase steps using a random browser
             visitor identifier, fixed event types and counts, campaign source,
-            referrer and device categories, grade band and coarse age band.
-            It also records screen categories, their observed order across the
-            marketing site and AMP, and cumulative visible and active time. Random page and
-            session identifiers distinguish visits; staff and automated browser
-            markers help exclude testing from customer reports. Raw URLs,
-            keystrokes and form contents are not collected by this measurement.
-            Event dates are whole UTC days. Events contain no account, learner,
-            trial, email, checkout or invoice identifiers or free-text answers.
-            These records stay in AMP; they are not advertising-platform events.
-            A purchase date can still identify a buyer when compared with billing
-            records on a day with few purchases.
+            referrer and device categories, grade band and coarse age band. It
+            also records screen categories, their observed order across the
+            marketing site and AMP, and cumulative visible and active time.
+            Random page and session identifiers distinguish visits; staff and
+            automated browser markers help exclude testing from customer
+            reports. Raw URLs, keystrokes and form contents are not collected by
+            this measurement. Event dates are whole UTC days. Events contain no
+            account, learner, trial, email, checkout or invoice identifiers or
+            free-text answers. These records stay in AMP; they are not
+            advertising-platform events. A purchase date can still identify a
+            buyer when compared with billing records on a day with few
+            purchases.
           </p>
           <p>
-            Events, marketing actions and page-engagement records are deleted after {RETENTION.funnelEventDays} days; visitor
-            records expire {RETENTION.funnelEventDays} days after their last
-            event. The checkout link to a visitor is erased when the purchase is
+            Events, marketing actions and page-engagement records are deleted
+            after {RETENTION.funnelEventDays} days; visitor records expire{" "}
+            {RETENTION.funnelEventDays} days after their last event. The
+            card-checkout link to a visitor is erased when the purchase is
             recorded or after {RETENTION.funnelEventDays} days. Converted visits
             leave monthly aggregate counts without visitor identifiers.
+          </p>
+          <p>
+            Funded invoices and purchase requests can retain a link to the
+            originating browser for up to {RETENTION.funnelEventDays} days after
+            creation. This connects browsing activity with invoice preparation,
+            parent-reported submission, verified payment and access
+            provisioning. The link is identifiable operational data, kept
+            separately from anonymous event rows. Financial records and coarse
+            purchase counts follow their separate retention policies.
           </p>
           <h2>Google Analytics</h2>
           <p>
@@ -432,17 +445,17 @@ export function Legal({
       {page === "refund" && (
         <>
           <p>
-            Pay directly with your own money and request a full refund within
-            30 days of payment for AMP access. You do not need to explain why.
+            Pay directly with your own money and request a full refund within 30
+            days of payment for AMP access. You do not need to explain why.
             Purchases paid through an education program or marketplace may have
             different rules, explained below.
           </p>
           <h2>How to request it</h2>
           <p>
-            Contact <Contact config={config} /> with the parent account email and
-            order or receipt reference. Do not include card numbers or a child’s
-            learning records. We will confirm the request and process
-            an eligible refund to the original payment method. Bank and
+            Contact <Contact config={config} /> with the parent account email
+            and order or receipt reference. Do not include card numbers or a
+            child’s learning records. We will confirm the request and process an
+            eligible refund to the original payment method. Bank and
             payment-provider processing times vary.
           </p>
           <h2>Access and renewal</h2>
@@ -468,8 +481,8 @@ export function Legal({
             required. The full amount returns through the program to the
             original EFA funding source, not to you personally. We follow
             ClassWallet and Arkansas refund instructions. Required program
-            refunds and applicable consumer rights continue to apply;
-            processing times vary.
+            refunds and applicable consumer rights continue to apply; processing
+            times vary.
           </p>
           <h2>Program and marketplace payments</h2>
           <p>
