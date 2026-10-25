@@ -1,4 +1,5 @@
 import { legacyFacetMappings } from "./legacy-facet-mappings";
+import { reconciledFacetMappings } from "./reconciled-facet-mappings";
 import { satCompletionFacetMappings } from "./sat-completion-coverage";
 import { satGeometryDataFacetMappings } from "./sat-geometry-data-coverage";
 import { congruenceFacetMappings } from "./congruence-coverage";
@@ -879,6 +880,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   },
   ...assessmentGapFacetMappings,
   ...legacyFacetMappings,
+  ...reconciledFacetMappings,
   ...satCompletionFacetMappings,
   ...satGeometryDataFacetMappings,
   {
