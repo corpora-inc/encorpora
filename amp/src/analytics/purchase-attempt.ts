@@ -47,3 +47,14 @@ export function purchaseStage(
     return "card_checkout";
   if (route === "/billing/enrollment/claim") return "card_claim";
 }
+
+export const purchaseActionSchema = z.strictObject({
+  actionId: z.uuidv4(),
+  action: z.enum([
+    "document_download",
+    "funding_provider_open",
+    "amp_setup_open",
+    "invoice_correct",
+  ]),
+});
+export type PurchaseAction = z.infer<typeof purchaseActionSchema>;

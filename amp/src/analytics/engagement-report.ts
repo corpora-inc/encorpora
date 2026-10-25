@@ -55,6 +55,15 @@ export async function engagementReport(pool: Pool, days: number) {
       FROM amp_funnel_events e JOIN amp_funnel_visitors v USING(visitor_id)
       WHERE e.event='purchase_attempt' AND e.${range} AND ${audience}
       GROUP BY 1,2,3,4,5,6,7 ORDER BY attempts DESC,1,2,3,4,5,6,7`);
+    const purchaseActions = await q(`SELECT e.props->>'action' AS action,
+      coalesce(v.utm_source,v.referrer,'unknown') AS source,
+      coalesce(v.utm_medium,'none') AS medium,coalesce(v.utm_campaign,'none') AS campaign,
+      coalesce(v.utm_content,'none') AS creative,
+      count(DISTINCT (e.visitor_id,e.props->>'actionId'))::int AS clicks,
+      count(DISTINCT e.visitor_id)::int AS browsers
+      FROM amp_funnel_events e JOIN amp_funnel_visitors v USING(visitor_id)
+      WHERE e.event='purchase_action' AND e.${range} AND ${audience}
+      GROUP BY 1,2,3,4,5 ORDER BY clicks DESC,1,2,3,4,5`);
     const journeys = await q(`WITH pages AS (
       SELECT p.visitor_id,p.screen,
         lead(p.screen) OVER(PARTITION BY p.visitor_id ORDER BY p.visit_order) AS next_screen
@@ -72,6 +81,7 @@ export async function engagementReport(pool: Pool, days: number) {
       paths,
       actions,
       purchaseAttempts,
+      purchaseActions,
       journeys,
       definitions: [
         "Purchase attempts are client-observed requests grouped by stage and outcome. Repeated delivery of the same attempt/outcome counts once. A successful invoice, checkout or claim request does not prove payment. Missing terminal events may reflect navigation or failed delivery, not abandonment.",

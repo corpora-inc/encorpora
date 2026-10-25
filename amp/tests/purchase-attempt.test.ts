@@ -4,6 +4,7 @@ import { randomUUID } from "node:crypto";
 import {
   purchaseStage,
   purchaseAttemptSchema,
+  purchaseActionSchema,
 } from "../src/analytics/purchase-attempt.js";
 import { eventBatchSchema } from "../src/analytics/events.js";
 test("purchase categories exclude status polling, learner requests and private values", () => {
@@ -59,4 +60,21 @@ test("purchase failures accept only closed categories and remain client events",
     { ...props, failure: undefined },
   ])
     assert.equal(purchaseAttemptSchema.safeParse(bad).success, false);
+});
+
+test("invoice handoff actions reject financial identifiers and arbitrary links", () => {
+  const props = { actionId: randomUUID(), action: "document_download" };
+  assert.equal(
+    eventBatchSchema.safeParse({
+      visitorId: randomUUID(),
+      events: [{ event: "purchase_action", props, at: 1 }],
+    }).success,
+    true,
+  );
+  for (const bad of [
+    { ...props, invoiceId: randomUUID() },
+    { ...props, url: "https://private.example" },
+    { ...props, action: "payment_complete" },
+  ])
+    assert.equal(purchaseActionSchema.safeParse(bad).success, false);
 });

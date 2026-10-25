@@ -1,3 +1,4 @@
+import { recordPurchaseAction } from "../../lib/purchase-analytics";
 import { analyticsVisitorHeaders } from "../../lib/analytics";
 import { SupportHelp } from "../support/SupportHelp";
 import { useQuery } from "@tanstack/react-query";
@@ -225,6 +226,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
           <Button
             variant="quiet"
             onClick={() => {
+              recordPurchaseAction("invoice_correct");
               setResult(null);
               setPdfUrl("");
               setError(
@@ -241,6 +243,9 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
                 className={buttonClass("primary")}
                 href={pdfUrl || undefined}
                 download={result.filename}
+                onClick={() => {
+                  if (pdfUrl) recordPurchaseAction("document_download");
+                }}
                 aria-disabled={!pdfUrl}
               >
                 Download invoice PDF
@@ -272,6 +277,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
               <a
                 className={buttonClass("primary")}
                 href={result.destinationUrl}
+                onClick={() => recordPurchaseAction("funding_provider_open")}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -287,6 +293,7 @@ function InvoiceScreen({ slug }: { slug: FundedProgramSlug }) {
               <a
                 className={buttonClass("secondary")}
                 href={program.path}
+                onClick={() => recordPurchaseAction("amp_setup_open")}
                 target="_blank"
                 rel="noopener noreferrer"
               >

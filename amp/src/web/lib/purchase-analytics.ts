@@ -1,6 +1,7 @@
 import {
   purchaseStage,
   type PurchaseAttempt,
+  type PurchaseAction,
 } from "../../analytics/purchase-attempt";
 import { analyticsAllowed, track } from "./analytics";
 
@@ -65,5 +66,14 @@ export async function purchaseFetch(
     if (options.signal?.aborted) observe("cancelled");
     else observe("failed", "network");
     throw error;
+  }
+}
+
+export function recordPurchaseAction(action: PurchaseAction["action"]) {
+  try {
+    if (analyticsAllowed())
+      track("purchase_action", { actionId: crypto.randomUUID(), action });
+  } catch {
+    /* A measurement failure must not interrupt a download or navigation. */
   }
 }

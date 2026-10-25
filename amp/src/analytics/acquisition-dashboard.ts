@@ -209,6 +209,26 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
       number(r.browsers),
     ]),
   );
+  const purchaseActions = table(
+    [
+      "Action",
+      "Source",
+      "Medium",
+      "Campaign",
+      "Creative",
+      "Clicks",
+      "Browsers",
+    ],
+    (e.purchaseActions ?? []).map((r) => [
+      r.action,
+      r.source,
+      r.medium,
+      r.campaign,
+      r.creative,
+      number(r.clicks),
+      number(r.browsers),
+    ]),
+  );
   const delivery = table(
     [
       "Program",
@@ -312,7 +332,7 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
   ${section("traffic", "Where visits come from", "First-touch campaign and creative labels for browsers with recorded page activity. Existing visitors can retain an earlier campaign.", sources + '<h3>Recorded source labels</h3><p class="note">Browser IDs first seen in the selected window, including older records without page-time tracking. Unclassified traffic may include staff and testing; these are not verified customer counts.</p>' + recordedSources)}
   ${section("behavior", "What visitors do", "Active time stops after 60 seconds without input; hidden or unfocused pages do not accumulate visible time. Last observed screen does not prove abandonment.", screens + "<h3>Observed paths</h3>" + paths + "<h3>Marketing actions</h3>" + actions)}
   ${section("milestones", "Assessment and card-checkout milestones", "Counts show visitors who reached each milestone, not a compulsory sequence. Direct-entry visits can skip earlier screens. The visitor cohort starts in the selected UTC window.", progress)}
-  ${section("purchase-attempts", "Purchase attempts and errors", "Client-observed invoice creation/claim, funded request creation/status, ClassWallet checkout, card checkout and paid-plan claim requests. Repeated delivery of the same attempt and outcome counts once. A successful request is not proof of payment; missing final events do not establish abandonment. Polling requests are excluded.", purchaseAttempts)}
+  ${section("purchase-attempts", "Purchase attempts and errors", "Client-observed invoice creation/claim, funded request creation/status, ClassWallet checkout, card checkout and paid-plan claim requests. Repeated delivery of the same attempt and outcome counts once. A successful request is not proof of payment; missing final events do not establish abandonment. Polling requests are excluded.", purchaseAttempts + '<h3>Invoice and payment handoff</h3><p class="note">These are clicks on downloads, the funding provider, AMP setup or invoice correction. They do not prove a file was saved or that a program payment request was submitted.</p>' + purchaseActions)}
   ${section("purchases", "Funded purchase progress", "Invoices prepared in the selected UTC window, followed through the report snapshot. ¹Submission is parent-reported. Paid requires verified settlement. Mail accepted means accepted by the mail provider, not read by the parent.", purchase + '<h3>Access and actual use</h3><p class="note">Operational state cohorts include invoices created in the selected window, including testing and unattributed records. They are diagnostic counts, not campaign conversion totals.</p>' + delivery)}
   ${section("spend", "Advertising costs", "Provider-reported ad spend; credits and billing adjustments are not reconciled here. Each provider’s date window, timezone and click definition are shown. Cost per click uses that provider’s reported clicks, not website visitors. Missing or unmapped costs are not assigned to campaigns by guesswork.", spend + (missing.length ? `<p class="warning">Not imported: ${esc(missing.join(", "))}.</p>` : "") + '<p class="note">Compare these costs with the campaign and paid-payment tables above. No ROAS or customer-acquisition-cost claim is made when cost windows and purchase cohorts differ.</p>')}
   ${section("feedback", "Parent feedback and purchase hesitation", "Operational counts include testing. No individual messages, answers or learner identities appear here. Parent feedback is limited to the selected report window; problem and trial metrics follow their own report definitions.", feedback + "<h3>Reasons for dismissing purchase</h3>" + dismissal + "<h3>Reported problems</h3>" + problemReports + "<h3>How far trials get</h3>" + trialDepth)}

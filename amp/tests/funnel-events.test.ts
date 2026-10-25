@@ -22,7 +22,7 @@ test("the transport contains the fixed milestones and separate engagement and ma
     Object.keys(funnelPropsSchemas).sort(),
     [...FUNNEL_EVENTS, "page_engagement", "site_action"].sort(),
   );
-  assert.equal(FUNNEL_EVENTS.length, 25);
+  assert.equal(FUNNEL_EVENTS.length, 26);
 });
 
 test("accepts known events with valid props", () => {

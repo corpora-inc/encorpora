@@ -164,3 +164,11 @@ by first-touch source, medium, campaign and creative, excludes marked staff/test
 browsers and deduplicates each attempt/outcome. Missing terminal events can mean
 navigation or failed analytics delivery. Server-verified payment records remain
 the authority for paid conversions.
+
+
+Invoice download, funding-provider handoff, AMP setup and invoice-correction clicks
+use the separate `purchase_action` event. It contains only a random action ID and
+a fixed category. Repeated delivery counts once per browser/action ID. Download
+clicks do not prove the file was saved, and opening ClassWallet does not prove
+submission, approval or payment. Both public invoices and signed-in funded
+purchase screens record these actions. They stay in first-party reporting.

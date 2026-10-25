@@ -603,7 +603,32 @@ test(
       );
       const { engagementReport } =
         await import("../src/analytics/engagement-report.js");
+      const actionBody = {
+        ...body,
+        events: [
+          {
+            event: "purchase_action",
+            at: 2,
+            props: { actionId: randomUUID(), action: "document_download" },
+          },
+        ],
+      };
+      assert.equal((await post(app, actionBody)).statusCode, 202);
+      assert.equal((await post(app, actionBody)).statusCode, 202);
+      assert.equal(
+        (
+          await post(app, {
+            ...actionBody,
+            visitorId: randomUUID(),
+            traffic: "internal",
+          })
+        ).statusCode,
+        202,
+      );
       const report = await engagementReport(pool, 7);
+      assert.equal(report.purchaseActions.length, 1);
+      assert.equal(report.purchaseActions[0].clicks, 1);
+      assert.equal(report.purchaseActions[0].browsers, 1);
       assert.deepEqual(report.purchaseAttempts, [
         {
           stage: "funded_invoice",
