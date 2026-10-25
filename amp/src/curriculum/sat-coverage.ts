@@ -26,29 +26,29 @@ function.input-output|Evaluate or recover an input in a linear context|linear-mo
 function.graph-context|Interpret a graph segment in context|distance-graph-meaning
 line.constraint|Represent and solve a two-variable constraint|constraint-feasible,solution-coordinate
 line.equation|Connect a line with slope, a point, or a parallel/perpendicular line|perpendicular-slopes,graphed-line-slope
-system.solve|Solve simultaneous linear equations with exact coordinates|linear-system-pair
+system.solve|Solve simultaneous linear equations with exact coordinates|linear-system-pair,sat-entry-system-solve
 system.context|Model simultaneous constraints in context|system-model-value,shared-plan-input
 system.classify|Classify linear systems and their intersections|linear-system-solution-count,elimination-equivalent
-inequality.solve|Solve and interpret a one-variable inequality|affine-linear-inequality,grouped-linear-inequality,cancelled-linear-inequality
+inequality.solve|Solve and interpret a one-variable inequality|affine-linear-inequality,grouped-linear-inequality,cancelled-linear-inequality,sat-entry-inequality-integer
 inequality.context|Apply a constraint or whole-input boundary in context|first-cheaper-whole-input,constraint-feasible
 inequality.graph|Connect an inequality and a half-plane or solution point|half-plane-inequality,inequality-solution-point
 inequality.absolute|Solve absolute-value and compound inequalities, or choose one from a number-line description|absolute-compound-inequality
-system.expression|Find the value of an expression in the variables by combining equations|system-expression-value`,
+system.expression|Find the value of an expression in the variables by combining equations|system-expression-value,sat-entry-system-expression`,
   "advanced-math": `
 expression.factor|Factor common factors, quadratic trinomials, and differences of squares|greatest-monomial-factor,nonmonic-quadratic-factorization,structure-rewrite,polynomial-factoring-patterns
 expression.polynomial|Add, subtract, and multiply polynomials|polynomial-addition,polynomial-subtraction,polynomial-multiplication
 expression.rational|Simplify and combine rational expressions on their original domain|rational-expression-simplify,rational-expression-operation
 expression.radical|Connect symbolic roots and fractional exponents|symbolic-rational-exponent,rational-power
-nonlinear.quadratic|Solve quadratics by factoring or the formula; rewrite by completing the square|quadratic-expanded-solutions,complete-square-nonmonic,quadratic-irrational-solutions
-nonlinear.absolute|Solve absolute-value equations including degenerate cases|absolute-value-affine-equation,absolute-value-transformed-equation
-nonlinear.rational-radical|Solve rational and radical equations and reject excluded candidates|rational-equation-check,radical-equation-check
-nonlinear.polynomial-zeros|Find real zeros from a factored polynomial|zeros-from-factors,zero-multiplicity
+nonlinear.quadratic|Solve quadratics by factoring or the formula; rewrite by completing the square|quadratic-expanded-solutions,complete-square-nonmonic,quadratic-irrational-solutions,sat-entry-quadratic-solution
+nonlinear.absolute|Solve absolute-value equations including degenerate cases|absolute-value-affine-equation,absolute-value-transformed-equation,sat-entry-absolute-equation
+nonlinear.rational-radical|Solve rational and radical equations and reject excluded candidates|rational-equation-check,radical-equation-check,sat-entry-radical-equation,sat-entry-rational-equation
+nonlinear.polynomial-zeros|Find real zeros from a factored polynomial|zeros-from-factors,zero-multiplicity,sat-entry-polynomial-zeros
 nonlinear.system|Solve and interpret line/nonlinear intersections|nonlinear-system-read,nonlinear-system-solve,nonlinear-system-count
 nonlinear.root-count|Classify real roots and solve a repeated-root parameter condition|quadratic-real-solution-count,quadratic-parameter-root
-nonlinear.root-relations|Use coefficients to find sums, products and missing values for quadratic solutions|quadratic-root-relations
+nonlinear.root-relations|Use coefficients to find sums, products and missing values for quadratic solutions|quadratic-root-relations,sat-entry-root-relations
 nonlinear.quadratic-from-data|Write a quadratic from zeros, a vertex or points|quadratic-from-data
 nonlinear.literal|Isolate an unknown in a nonlinear formula with stated domain|nonlinear-formula-isolate
-quadratic.context|Choose a quadratic model and interpret maximum, zero, or initial value|quadratic-context-model
+quadratic.context|Choose a quadratic model and interpret maximum, zero, or initial value|quadratic-context-model,sat-entry-quadratic-context
 exponential.context|Build and use a growth, decay, or half-life model|exponential-model-rule,exponential-model-value
 exponential.form|Recognize equivalent time-scale forms and interpret factors|exponential-time-scale,compound-growth
 nonlinear.features|Read vertex, symmetry, intercepts, and equivalent structural forms|parabola-vertex,parabola-axis,structure-meaning
@@ -59,7 +59,7 @@ nonlinear.input-output|Evaluate nonlinear functions or recover allowed inputs|fu
   data: `
 ratio.units|Convert length, compound rates, area, volume, density, and product units|metric-length-rename,compound-unit-conversion,unit-chain-conversion
 ratio.proportion|Scale ratios and proportional quantities in context|ratio-missing,unit-price,proportional-rule-choice,variation-constant
-ratio.rates|Combine work, mixture, average-speed and two-phase rates exactly|rate-combination-model
+ratio.rates|Combine work, mixture, average-speed and two-phase rates exactly|rate-combination-model,sat-entry-rate-numeric
 percent.change|Calculate percentages, original values, and successive growth factors|percent-of,percent-change-original,successive-percent-change
 univariate.displays|Read frequency data in dot plots, histograms, and box plots|dot-plot-mean,histogram-read,box-plot-read
 univariate.center|Calculate or compare means, medians, and ranges|mean-data,median-data,range-data,mean-missing-value,frequency-table-center
@@ -89,7 +89,7 @@ triangle.complement|Use sine/cosine relationships of complementary angles|comple
 circle.parts|Use radius, diameter, tangent, central, and inscribed angle relationships, plus chord, secant, and tangent segment lengths|circle-angles,circle-segment-lengths,circle-circumference-coefficient,circle-area-coefficient
 circle.arc-sector|Find arc lengths, sector areas, and angles in radians|arc-length-coefficient,sector-area-coefficient,radian-arc-ratio
 circle.unit-trig|Use special-angle unit-circle coordinates and signs|unit-circle-coordinate
-circle.angle-units|Convert degrees and radians in both directions|degree-radian-conversion
+circle.angle-units|Convert degrees and radians in both directions|degree-radian-conversion,sat-entry-radian-conversion
 circle.coordinate|Read or create a circle equation, complete the square, and use distance or midpoint|circle-equation,midpoint-endpoint`,
 };
 export const satTasks = Object.entries(rows).flatMap(([domain, text]) =>

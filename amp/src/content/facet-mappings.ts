@@ -58,6 +58,90 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "sat-entry-system-solve",
+    facetId: "linear-systems.core",
+    extent: "partial",
+    rationale:
+      "Enter the exact value of x or y from a two-variable linear system with integer coefficients, including signed, zero and fractional values, by typing an integer, fraction or decimal. Does not assess modelling a system from a context, systems with no or infinitely many solutions, or nonlinear systems.",
+  },
+  {
+    templateId: "sat-entry-system-expression",
+    facetId: "linear-systems.core",
+    extent: "partial",
+    rationale:
+      "Enter the numeric value of an expression such as 3x+2y from two linear equations by adding, subtracting or scaling them, including a half-sum with a fractional result. Does not assess solving for each variable, setting up the system or choosing among forms.",
+  },
+  {
+    templateId: "sat-entry-quadratic-solution",
+    facetId: "quadratic-equations.core",
+    extent: "partial",
+    rationale:
+      "Enter the greater, positive or only real solution of an integer-coefficient quadratic given in standard or rearranged form, including a nonmonic factorization and a perfect square with a negative or fractional solution. Does not assess the quadratic formula with irrational results, complex solutions or choosing among solution sets.",
+  },
+  {
+    templateId: "sat-entry-root-relations",
+    facetId: "quadratic-equations.core",
+    extent: "partial",
+    rationale:
+      "Enter the sum, product, reciprocal sum or sum of squares of the two real solutions of an integer-coefficient quadratic using its coefficients. Does not assess finding a missing coefficient from a given solution or deriving the relations.",
+  },
+  {
+    templateId: "sat-entry-absolute-equation",
+    facetId: "absolute-value-equations.affine-solution-set",
+    extent: "partial",
+    rationale:
+      "Enter a solution or sum of solutions of an absolute-value equation: a distance form, a sum for a scaled inside expression, equal absolute values, and one valid solution after rejecting an extraneous candidate. Does not assess inequalities, graphing or no-solution classification.",
+  },
+  {
+    templateId: "sat-entry-radical-equation",
+    facetId: "radical-equations.linear-right-side-check",
+    extent: "partial",
+    rationale:
+      "Enter the valid solution or the sum of the valid solutions of a square-root equation that squares to a factorable quadratic, including an extraneous candidate and a candidate where the right side is zero, plus an isolate-and-square case. Does not assess nested radicals, cube roots or equations with two radicals.",
+  },
+  {
+    templateId: "sat-entry-rational-equation",
+    facetId: "rational-equations.linear-domain-check",
+    extent: "partial",
+    rationale:
+      "Enter the solution of a rational equation after excluding values that make a denominator zero: a factorable numerator over a linear denominator, and a cross-multiplied proportion with a fractional result. Does not assess equations with several rational terms, rational inequalities or modelling.",
+  },
+  {
+    templateId: "sat-entry-polynomial-zeros",
+    facetId: "polynomial-zeros.factors-and-zeros",
+    extent: "partial",
+    rationale:
+      "Enter the least, positive or distinct-sum zero of a polynomial written in factored form, including a leading constant, a repeated factor, a zero at 0, a fractional zero and a factor with no real zero. Does not assess expanding, factoring from an expanded form or reading zeros from a graph.",
+  },
+  {
+    templateId: "sat-entry-quadratic-context",
+    facetId: "nonlinear-equation-modeling.HSF.BF.A.1",
+    extent: "partial",
+    rationale:
+      "Enter the time of greatest height, the greatest height or the landing time from a quadratic height model given in expanded form, including a start on the ground and fractional or decimal results. Does not assess writing the model from a description, interpreting a graph or choosing the correct meaning of a coefficient.",
+  },
+  {
+    templateId: "sat-entry-rate-numeric",
+    facetId: "linear-equation-modeling.core",
+    extent: "partial",
+    rationale:
+      "Enter an exact combined-work time, fill-and-drain time, two-phase time or mixture amount from stated constant rates or concentrations, with answers that are integers or terminating decimals. Does not assess writing the equation, average speed or rates with non-constant change.",
+  },
+  {
+    templateId: "sat-entry-radian-conversion",
+    facetId: "radians-unit-circle.HSF.TF.A.1",
+    extent: "partial",
+    rationale:
+      "Enter the coefficient k of an angle measure k times pi given in degrees, including negative angles and angles beyond a full turn, and convert a multiple of pi radians to degrees. Does not assess arc length, sector area or unit-circle coordinates.",
+  },
+  {
+    templateId: "sat-entry-inequality-integer",
+    facetId: "linear-inequalities.affine-solution-set",
+    extent: "partial",
+    rationale:
+      "Enter the greatest or least integer solution, or the count of positive integer solutions, of a one-variable linear inequality, including strict boundaries and a negative coefficient. Does not assess graphing, compound inequalities or contextual setup.",
+  },
+  {
     templateId: "series-recursion",
     facetId: "arithmetic-sequences.core",
     extent: "partial",
