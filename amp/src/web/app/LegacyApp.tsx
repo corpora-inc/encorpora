@@ -148,9 +148,25 @@ addEventListener(
 const initialPurchaseReturn = nativeRuntime ? null : capturePurchaseReturn();
 if (nativeRuntime) consumeInitialConsentChallenge();
 export function LegacyApp() {
-  return <LegacyScreen />;
+  const session = useQuery(sessionOptions);
+  if (session.isPending) return <LoadingScreen />;
+  if (session.error)
+    return (
+      <LoadingScreen
+        error="Sign-in could not be checked. Try again."
+        retry={() => void session.refetch()}
+      />
+    );
+  // Account changes reset all private screen state together. A resolved session
+  // is an input to the screen, not a second state machine that catches up later.
+  return (
+    <LegacyScreen
+      key={session.data?.accountId ?? "guest"}
+      session={session.data ?? null}
+    />
+  );
 }
-function LegacyScreen() {
+function LegacyScreen({ session }: { session: AuthSession | null }) {
   const route = useAppRoute();
   const { navigate } = route;
   const [familyMenuOpen, setFamilyMenuOpen] = useState(false);
@@ -183,10 +199,9 @@ function LegacyScreen() {
     );
   const exploring = route.exploring;
   const setExploring = (value: boolean) => navigate(value ? "/" : "/practice");
-  const [sessionReady, setSessionReady] = useState(false);
-  const [token, setToken] = useState<string | null>(null),
-    [accountId, setAccountId] = useState<string | null>(null),
-    [catalog, setCatalog] = useState<Catalog | null>(null);
+  const token = session?.token ?? null;
+  const accountId = session?.accountId ?? null;
+  const [catalog, setCatalog] = useState<Catalog | null>(null);
   const familySummary = useFamilyCache(accountId);
   const setFamilySummary = (summary: FamilySummary | null) =>
     setNativeFamilySnapshot(accountRef.current, summary);
@@ -203,7 +218,11 @@ function LegacyScreen() {
   // learner-store.ts); this component derives the learner object from it.
   const learnerId = useLearnerStore((state) => state.learnerId);
   const selectLearner = useLearnerStore((state) => state.select);
-  const learner = learners.find((entry) => entry.id === learnerId) ?? null;
+  // The account snapshot can arrive before this device has a saved selection.
+  // Resolve a learner from that snapshot immediately: redirecting to setup
+  // while loadFamily is selecting one can continually restart navigation.
+  const learner =
+    learners.find((entry) => entry.id === learnerId) ?? learners[0] ?? null;
   // Remember a tab's return URL, not a second copy of its screen/filter state.
   const progressReturn = useRef({ identity: "", href: "/progress" });
   useLayoutEffect(() => {
@@ -324,6 +343,20 @@ function LegacyScreen() {
     accountRef = useRef<string | null>(null);
   const learnerRef = useRef<string | undefined>(undefined);
   learnerRef.current = learner?.id;
+  useLayoutEffect(
+    () => () => {
+      // Account-keyed unmounts must also invalidate work outside React: an old
+      // response must not select a learner or navigate the new account's screen.
+      authEpoch.current++;
+      familyRequest.current++;
+      navigationEpoch.current++;
+      consentEpoch.current++;
+      accountRef.current = null;
+      tokenRef.current = null;
+      learnerRef.current = undefined;
+    },
+    [],
+  );
   const [response, setResponse] = useState(""),
     [outcome, setOutcome] = useState<Outcome | null>(null),
     [hint, setHint] = useState(""),
@@ -344,13 +377,11 @@ function LegacyScreen() {
     } | null>(null);
   useLoggedError(error);
   function updateAuth(session: AuthSession | null) {
-    setSessionReady(true);
     const next = session?.token ?? null,
       identity = session?.accountId ?? null;
     const previousIdentity = accountRef.current;
     if (tokenRef.current === next && accountRef.current === identity) return;
     tokenRef.current = next;
-    setToken(next);
     if (accountRef.current === identity) return;
     const openingConsent =
       accountRef.current === null ? (pendingConsent.current ?? null) : null;
@@ -376,7 +407,6 @@ function LegacyScreen() {
     setFamilyLearnerId("");
     setPurchaseFocus(undefined);
     accountRef.current = identity;
-    setAccountId(identity);
     authEpoch.current++;
     familyRequest.current++;
     navigationEpoch.current++;
@@ -407,7 +437,6 @@ function LegacyScreen() {
     setPending(null);
     setResponse("");
     setError("");
-    setToken(next);
   }
   function openConsent(challenge: ConsentChallenge | null = null) {
     consentEpoch.current++;
@@ -472,14 +501,7 @@ function LegacyScreen() {
       if (epoch === authEpoch.current) setBusy(false);
     }
   }
-  const sessionQuery = useQuery(sessionOptions);
-  useEffect(() => {
-    if (sessionQuery.isSuccess) updateAuth(sessionQuery.data);
-    else if (sessionQuery.error) {
-      setSessionReady(true);
-      setError("Sign-in could not be checked. Refresh to try again.");
-    }
-  }, [sessionQuery.data, sessionQuery.isSuccess, sessionQuery.error]);
+  useLayoutEffect(() => updateAuth(session), [session]);
   useEffect(() => {
     void learningCatalog()
       .then(setCatalog)
@@ -1107,7 +1129,6 @@ function LegacyScreen() {
   usePracticeViewport((!!learner || familyOpen) && !flowPage);
   const meta = catalog?.templates.find((t) => t.id === problem?.templateId);
   if (
-    !sessionReady ||
     firstRunHome ||
     leavingHome.current ||
     // The welcome states the configured free allowance: paint it once.

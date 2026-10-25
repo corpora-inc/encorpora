@@ -199,6 +199,12 @@ test(
         });
         assert.equal(start.statusCode, 200, start.body);
         const authorize = new URL(start.json().url);
+        if (provider === "microsoft" || provider === "google")
+          assert.equal(
+            authorize.searchParams.get("prompt"),
+            "select_account",
+            `${provider} offers account switching on shared devices`,
+          );
         const state = authorize.searchParams.get("state")!;
         const pkce = authorize.searchParams.get("code_challenge_method");
         if (provider !== "apple" && provider !== "github")
