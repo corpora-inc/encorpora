@@ -1,4 +1,5 @@
 import type { Pool, PoolClient } from "pg";
+import { engagementSchema } from "./engagement.js";
 import { trialTokenHash } from "../server/trials.js";
 import {
   AGE_BANDS,
@@ -56,16 +57,17 @@ export async function recordEventBatch(
           )
         ).rows[0]
       : undefined;
-    const landing = batch.events.find((e) => e.event === "landing_view")
-      ?.props as
-      | {
-          utmSource?: string;
-          utmMedium?: string;
-          utmCampaign?: string;
-          referrer: string;
-          device: string;
-        }
-      | undefined;
+    const landing =
+      batch.context ??
+      (batch.events.find((e) => e.event === "landing_view")?.props as
+        | {
+            utmSource?: string;
+            utmMedium?: string;
+            utmCampaign?: string;
+            referrer: string;
+            device: string;
+          }
+        | undefined);
     const placed = [...batch.events]
       .reverse()
       .find((e) => e.event === "placement_done")?.props as
@@ -81,10 +83,12 @@ export async function recordEventBatch(
     const day = funnelDay(now);
     await client.query(
       `INSERT INTO amp_funnel_visitors AS v(visitor_id,first_seen,last_seen,
-         utm_source,utm_medium,utm_campaign,referrer,device,grade_band,age_band)
-       VALUES($1,$2,$2,$3,$4,$5,$6,$7,$8,$9)
+         utm_source,utm_medium,utm_campaign,referrer,device,grade_band,age_band,traffic_kind)
+       VALUES($1,$2,$2,$3,$4,$5,$6,$7,$8,$9,$10)
        ON CONFLICT(visitor_id) DO UPDATE SET
          last_seen=greatest(v.last_seen,EXCLUDED.last_seen),
+         traffic_kind=CASE WHEN v.traffic_kind IN ('internal','automated') THEN v.traffic_kind
+           WHEN EXCLUDED.traffic_kind<>'unknown' THEN EXCLUDED.traffic_kind ELSE v.traffic_kind END,
          -- First touch wins: a later internal page view keeps the campaign.
          utm_source=CASE WHEN v.referrer IS NULL THEN EXCLUDED.utm_source ELSE v.utm_source END,
          utm_medium=CASE WHEN v.referrer IS NULL THEN EXCLUDED.utm_medium ELSE v.utm_medium END,
@@ -103,16 +107,43 @@ export async function recordEventBatch(
         landing?.device ?? null,
         placed?.gradeBand ?? null,
         ageBand,
+        batch.traffic ?? "unknown",
       ],
     );
+    for (const event of batch.events.filter(
+      (e) => e.event === "page_engagement",
+    )) {
+      const p = engagementSchema.parse(event.props);
+      await client.query(
+        `INSERT INTO amp_engagement_pages AS p
+        (visitor_id,page_id,session_id,ordinal,screen,occurred_on,visible_ms,active_ms)
+        VALUES($1,$2,$3,$4,$5,$6,$7,$8)
+        ON CONFLICT(visitor_id,page_id) DO UPDATE SET
+          visible_ms=greatest(p.visible_ms,EXCLUDED.visible_ms),
+          active_ms=greatest(p.active_ms,EXCLUDED.active_ms)
+        WHERE p.session_id=EXCLUDED.session_id AND p.ordinal=EXCLUDED.ordinal
+          AND p.screen=EXCLUDED.screen`,
+        [
+          batch.visitorId,
+          p.pageId,
+          p.sessionId,
+          p.ordinal,
+          p.screen,
+          day,
+          p.visibleMs,
+          p.activeMs,
+        ],
+      );
+    }
+    const ordinary = batch.events.filter((e) => e.event !== "page_engagement");
     await client.query(
       `INSERT INTO amp_funnel_events(visitor_id,event,props,occurred_on)
        SELECT $1,e,p,$4 FROM unnest($2::text[],$3::jsonb[]) WITH ORDINALITY AS x(e,p,n)
        ORDER BY n`,
       [
         batch.visitorId,
-        batch.events.map((e) => e.event),
-        batch.events.map((e) => JSON.stringify(e.props)),
+        ordinary.map((e) => e.event),
+        ordinary.map((e) => JSON.stringify(e.props)),
         day,
       ],
     );

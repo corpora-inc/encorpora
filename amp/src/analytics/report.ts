@@ -64,6 +64,8 @@ export type FunnelReport = {
   archived: { event: string; count: number }[];
 };
 
+const customerEvent = `(visitor_id IS NULL OR visitor_id IN (SELECT visitor_id FROM amp_funnel_visitors WHERE traffic_kind NOT IN ('internal','automated')))`;
+
 const ratio = (a: number, b: number) => (b > 0 ? a / b : null);
 
 /**
@@ -75,7 +77,7 @@ export async function funnelReport(
   window: { from: Date; to: Date },
 ): Promise<FunnelReport> {
   const range = [funnelDay(window.from), funnelDay(window.to)];
-  const cohort = `v.first_seen>=$1 AND v.first_seen<$2`;
+  const cohort = `v.first_seen>=$1 AND v.first_seen<$2 AND v.traffic_kind NOT IN ('internal','automated')`;
   const q = async <T extends Record<string, unknown>>(
     sql: string,
     args = range,
@@ -180,7 +182,7 @@ export async function funnelReport(
   const reasons = (event: string) =>
     q<{ reason: string; count: number }>(
       `SELECT e.props->>'reason' AS reason,count(*)::int AS count
-       FROM amp_funnel_events e WHERE e.event='${event}' AND e.occurred_on>=$1 AND e.occurred_on<$2
+       FROM amp_funnel_events e WHERE e.event='${event}' AND e.occurred_on>=$1 AND e.occurred_on<$2 AND ${customerEvent}
        GROUP BY 1 ORDER BY 2 DESC,1`,
     );
   const [billing] = await q<{
@@ -191,7 +193,7 @@ export async function funnelReport(
     `SELECT count(*) FILTER (WHERE event='purchase')::int AS purchases,
        count(*) FILTER (WHERE event='refund' AND props->>'upgrade' IS NULL)::int AS refunds,
        count(*) FILTER (WHERE event='refund' AND props->>'full'='true')::int AS full
-     FROM amp_funnel_events WHERE occurred_on>=$1 AND occurred_on<$2`,
+     FROM amp_funnel_events WHERE occurred_on>=$1 AND occurred_on<$2 AND ${customerEvent}`,
   );
   const archived = await q<{ event: string; count: number }>(
     `SELECT event,sum(count)::int AS count FROM amp_funnel_aggregates

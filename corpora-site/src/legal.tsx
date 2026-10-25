@@ -290,6 +290,11 @@ export function Legal({
             AMP also measures practice and purchase steps using a random browser
             visitor identifier, fixed event types and counts, campaign source,
             referrer and device categories, grade band and coarse age band.
+            It also records screen categories, their order within a page-load
+            session, and cumulative visible and active time. Random page and
+            session identifiers distinguish visits; staff and automated browser
+            markers help exclude testing from customer reports. Raw URLs,
+            keystrokes and form contents are not collected by this measurement.
             Event dates are whole UTC days. Events contain no account, learner,
             trial, email, checkout or invoice identifiers or free-text answers.
             These records stay in AMP; they are not advertising-platform events.
@@ -297,7 +302,7 @@ export function Legal({
             records on a day with few purchases.
           </p>
           <p>
-            Events are deleted after {RETENTION.funnelEventDays} days; visitor
+            Events and page-engagement records are deleted after {RETENTION.funnelEventDays} days; visitor
             records expire {RETENTION.funnelEventDays} days after their last
             event. The checkout link to a visitor is erased when the purchase is
             recorded or after {RETENTION.funnelEventDays} days. Converted visits

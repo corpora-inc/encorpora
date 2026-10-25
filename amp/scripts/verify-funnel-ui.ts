@@ -89,6 +89,10 @@ const checkoutVisitors: string[] = [];
 let phase: "ready" | "checkout-open" | "processing" | "paid" = "ready";
 
 async function serve(page: Page, faults: string[]) {
+  // This fixture exercises customer reports. Automated exclusion has its own browser test.
+  await page.addInitScript(() =>
+    Object.defineProperty(navigator, "webdriver", { value: false }),
+  );
   await page.route("https://checkout.stripe.com/**", (route) =>
     route.fulfill({
       contentType: "text/html",
@@ -297,7 +301,7 @@ try {
   const other = await leaver.newPage();
   other.on("pageerror", (error) => faults.push(error.message));
   await serve(other, faults);
-  // Unknown campaign labels are removed by routing; the coarse referrer survives.
+  // Safe first-touch UTM labels are captured before routing rewrites the URL.
   await other.goto(
     `${origin}/?utm_source=launch&utm_medium=email&utm_campaign=fall`,
     { referer: "https://www.google.com/" },
@@ -333,13 +337,24 @@ try {
         [visitor],
       )
     ).rows,
-    [{ utm_source: null, utm_campaign: null, referrer: "search" }],
-    "unrecognized campaign values cannot become report dimensions",
+    [{ utm_source: "launch", utm_campaign: "fall", referrer: "search" }],
+    "first-touch source survives routing even outside fixed state campaigns",
   );
   const report = await funnelReport(pool, {
     from: new Date(Date.now() - 86_400_000),
     to: new Date(Date.now() + 86_400_000),
   });
+  if (process.env.DEBUG_UI)
+    console.log(
+      "report",
+      JSON.stringify(report),
+      "traffic",
+      (
+        await pool.query(
+          "SELECT traffic_kind,count(*) FROM amp_funnel_visitors GROUP BY 1",
+        )
+      ).rows,
+    );
   for (const step of FUNNEL_STEPS)
     assert.ok(
       report.steps.find((s) => s.event === step)!.visitors >= 1,
@@ -354,7 +369,7 @@ try {
     report.breakdowns.source.map((r) => [r.key, r.purchased]),
     [
       ["facebook", 1],
-      ["search", 0],
+      ["launch", 0],
     ],
   );
   assert.deepEqual(report.paywallDismissReasons, [
