@@ -84,6 +84,7 @@
     "test:sat-ui": "tsx scripts/verify-sat-ui.ts",
     "report:parent-feedback": "tsx scripts/parent-feedback-report.ts",
     "test:parent-feedback-ui": "tsx scripts/verify-parent-feedback-ui.ts",
+    "report:funded-journeys": "tsx scripts/report-funded-journeys.ts",
     "test:site-journeys-ui": "node --import tsx --test scripts/verify-site-journeys-ui.ts"
   },
   "dependencies": {
