@@ -215,7 +215,7 @@ export function acquisitionDashboard(s: AcquisitionSnapshot): string {
                     ? money(r.spendMicros / r.clicks, t.currency)
                     : "—",
                   r.utmCampaign
-                    ? `${r.utmSource} / ${r.utmCampaign}`
+                    ? `${r.utmSources?.join(", ")} / ${r.utmCampaign}`
                     : "Unmapped",
                 ]),
             )}<p class="note">Campaign rows with zero impressions, clicks and spend are omitted from this table; the JSON snapshot retains all ${t.rows.length} campaign rows.</p></article>`,

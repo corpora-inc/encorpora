@@ -32,7 +32,12 @@ const source = z
         z.strictObject({
           id: label,
           label,
-          utmSource: campaign.optional(),
+          utmSources: z
+            .array(campaign)
+            .min(1)
+            .max(10)
+            .refine((values) => new Set(values).size === values.length)
+            .optional(),
           utmCampaign: campaign.optional(),
           impressions: count,
           clicks: count,
@@ -55,10 +60,10 @@ const source = z
         message: "Unresolved spend requires an explanation",
       });
     for (const row of value.rows)
-      if (Boolean(row.utmSource) !== Boolean(row.utmCampaign))
+      if (Boolean(row.utmSources) !== Boolean(row.utmCampaign))
         ctx.addIssue({
           code: "custom",
-          message: "Attribution mapping requires both UTM source and campaign",
+          message: "Attribution mapping requires UTM sources and campaign",
         });
     for (const key of ["impressions", "clicks", "spendMicros"] as const)
       if (

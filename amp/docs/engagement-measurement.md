@@ -119,7 +119,9 @@ Cost snapshots follow `adCostsSchema` in `src/analytics/ad-costs.ts`: one source
 per provider, with observation time, provider-local date window, timezone,
 currency, click definition and campaign rows. Each row has a native campaign ID,
 label, impressions, clicks and integer spend in millionths of the currency unit.
-UTM source and campaign mappings must be copied from configured ads together.
+UTM source lists and campaign mappings must be copied from configured ads together.
+A Meta campaign can map to both Facebook and Instagram without splitting its cost
+by guesswork.
 Unresolved spend is `null` with an explanatory source note; it does not become
 zero or a partial sum. Optional account-level billing evidence appears separately
 and is never allocated to campaigns automatically.

@@ -13,7 +13,7 @@ const source = {
     {
       id: "campaign-1",
       label: "Fixture campaign",
-      utmSource: "google",
+      utmSources: ["google"],
       utmCampaign: "ar-efa-launch",
       impressions: 100,
       clicks: 5,
@@ -66,6 +66,33 @@ test("unreconciled campaign cost never becomes zero or a partial total", () => {
   assert.equal(
     adCostsSchema.safeParse({ sources: [{ ...unresolved, note: undefined }] })
       .success,
+    false,
+  );
+});
+
+test("a campaign can map to both configured Meta publisher sources", () => {
+  const result = adCostsSchema.parse({
+    sources: [
+      {
+        ...source,
+        platform: "meta",
+        rows: [{ ...source.rows[0], utmSources: ["facebook", "instagram"] }],
+      },
+    ],
+  });
+  assert.deepEqual(result.sources[0].rows[0].utmSources, [
+    "facebook",
+    "instagram",
+  ]);
+  assert.equal(
+    adCostsSchema.safeParse({
+      sources: [
+        {
+          ...source,
+          rows: [{ ...source.rows[0], utmSources: ["facebook", "facebook"] }],
+        },
+      ],
+    }).success,
     false,
   );
 });
