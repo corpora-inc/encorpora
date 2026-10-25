@@ -1,7 +1,9 @@
 import { z } from "zod";
+import { MARKETING_SCREENS } from "./site-actions.js";
 
 /** Categories, never raw URLs, query strings, lesson titles or learner IDs. */
 export const SCREENS = [
+  ...MARKETING_SCREENS,
   "home",
   "pathways",
   "assessment",

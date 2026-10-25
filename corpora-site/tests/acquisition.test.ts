@@ -80,6 +80,8 @@ test('production overview includes capture while previews and sample pages do no
     const overview=await readFile(join(dir,'amp/index.html'),'utf8');
     assert.ok(overview.includes('data-acquisition-endpoint="https://app.example.invalid/api/v1/advertising/acquisition"'));
     assert.ok(!overview.includes('data-campaign-endpoint'));
+    assert.ok(overview.includes('data-engagement-endpoint="https://app.example.invalid/api/v1/site-events"'));
+    assert.ok((await readFile(join(dir,'assets/engagement.js'),'utf8')).length>0);
     for(const slug of ['arkansas-efa','arizona-esa']){
       const page=await readFile(join(dir,`esa/${slug}/index.html`),'utf8');
       assert.ok(page.includes('data-acquisition-endpoint="https://app.example.invalid/api/v1/advertising/acquisition"'));
@@ -90,6 +92,7 @@ test('production overview includes capture while previews and sample pages do no
     assert.ok(!samples.includes('data-acquisition-endpoint'));
     await buildSite(configSchema.parse({}),dir);
     assert.ok(!(await readFile(join(dir,'amp/index.html'),'utf8')).includes('data-acquisition-endpoint'));
+    assert.ok(!(await readFile(join(dir,'amp/index.html'),'utf8')).includes('data-engagement-endpoint'));
   }finally{await rm(dir,{recursive:true,force:true});}
 });
 

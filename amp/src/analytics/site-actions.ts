@@ -23,7 +23,9 @@ export const siteActionSchema = z.strictObject({
   screen: z.enum(MARKETING_SCREENS),
 });
 
-export function marketingScreen(path: string): typeof MARKETING_SCREENS[number] {
+export function marketingScreen(
+  path: string,
+): (typeof MARKETING_SCREENS)[number] {
   const normalized = path.replace(/\/$/, "");
   if (normalized === "") return "marketing_home";
   if (normalized === "/amp") return "marketing_amp";

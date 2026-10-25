@@ -17,10 +17,10 @@ const visitorId = "5b0a4c1e-8f43-4f0e-9a51-1c2d3e4f5a6b";
 const batch = (events: unknown[]) =>
   eventBatchSchema.safeParse({ visitorId, events });
 
-test("the transport contains the fixed milestones and the separate engagement snapshot", () => {
+test("the transport contains the fixed milestones and separate engagement and marketing actions", () => {
   assert.deepEqual(
     Object.keys(funnelPropsSchemas).sort(),
-    [...FUNNEL_EVENTS, "page_engagement"].sort(),
+    [...FUNNEL_EVENTS, "page_engagement", "site_action"].sort(),
   );
   assert.equal(FUNNEL_EVENTS.length, 24);
 });
