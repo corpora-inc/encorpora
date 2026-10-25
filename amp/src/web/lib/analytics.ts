@@ -16,6 +16,13 @@ import {
 import { storedTrial } from "./pending-trial";
 import type { TrafficKind } from "../../analytics/engagement";
 import { nativeRuntime } from "../native-runtime";
+import { createGoogleAnalytics } from "../../analytics/google-analytics";
+
+let google: ReturnType<typeof createGoogleAnalytics> | undefined;
+export function trackGooglePage(): void {
+  if (nativeRuntime || (!analyticsAllowed() && !google)) return;
+  (google ??= createGoogleAnalytics()).navigate();
+}
 
 /**
  * First-party funnel analytics. `track` only appends to an in-memory buffer;
@@ -84,6 +91,7 @@ export function track<E extends ClientEvent>(
     }
     if (buffer.length >= maxBuffered) buffer.shift();
     buffer.push({ event, props: parsed.data, at: Date.now() });
+    google?.event(event);
     listen();
     if (buffer.length >= MAX_EVENTS_PER_BATCH) flush();
     else timer ??= setTimeout(flush, flushDelayMs);
