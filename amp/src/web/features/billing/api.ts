@@ -11,7 +11,7 @@ import {
 } from "../../../billing/stripe/enrollment-contracts";
 import type { AnnualOffer } from "../../../billing/stripe/purchase-contracts";
 import { paymentUrl } from "./payment-url";
-import { flush, visitorId } from "../../lib/analytics";
+import { flush, analyticsVisitorHeaders } from "../../lib/analytics";
 
 const billingKey = (identity: string) =>
   ["account", identity, "billing"] as const;
@@ -100,7 +100,7 @@ export function useEnrollmentCheckout(session: AuthSession) {
         request("/billing/enrollment/checkout", z.object({ url: z.string() }), {
           token: session.token,
           // Attributes a verified purchase to this browser's funnel visit.
-          headers: { "X-AMP-Visitor": visitorId() },
+          headers: analyticsVisitorHeaders(),
           body: {
             requestId,
             offerId: input.offer.id,

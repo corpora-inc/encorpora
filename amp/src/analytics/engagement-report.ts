@@ -25,16 +25,31 @@ export async function engagementReport(pool: Pool, days: number) {
       WHERE p.${range} AND ${audience} GROUP BY 1 ORDER BY page_visits DESC,screen`);
     const sources =
       await q(`SELECT coalesce(v.utm_source,v.referrer,'unknown') AS source,
-      coalesce(v.utm_campaign,'none') AS campaign,count(DISTINCT p.visitor_id)::int AS browsers,
+      coalesce(v.utm_campaign,'none') AS campaign,
+      coalesce(v.utm_medium,'none') AS medium,coalesce(v.utm_content,'none') AS creative,count(DISTINCT p.visitor_id)::int AS browsers,
       count(DISTINCT (p.visitor_id,p.session_id))::int AS document_sessions,
       round(sum(p.active_ms)/1000.0,1)::float8 AS active_seconds
       FROM amp_engagement_pages p JOIN amp_funnel_visitors v USING(visitor_id)
-      WHERE p.${range} AND ${audience} GROUP BY 1,2 ORDER BY browsers DESC,source,campaign`);
+      WHERE p.${range} AND ${audience} GROUP BY 1,2,3,4 ORDER BY browsers DESC,source,campaign,medium,creative`);
     const paths = await q(`WITH pages AS (
       SELECT p.visitor_id,p.session_id,p.screen,
         lead(p.screen) OVER(PARTITION BY p.visitor_id,p.session_id ORDER BY p.ordinal,p.page_id) AS next_screen
       FROM amp_engagement_pages p JOIN amp_funnel_visitors v USING(visitor_id)
       WHERE p.${range} AND ${audience})
+      SELECT screen,coalesce(next_screen,'last_observed') AS next_screen,count(*)::int AS transitions
+      FROM pages GROUP BY 1,2 ORDER BY transitions DESC,screen,next_screen`);
+    const actions = await q(`SELECT a.screen,a.action,
+      coalesce(v.utm_source,v.referrer,'unknown') AS source,coalesce(v.utm_medium,'none') AS medium,
+      coalesce(v.utm_campaign,'none') AS campaign,coalesce(v.utm_content,'none') AS creative,
+      count(*)::int AS actions,
+      count(DISTINCT a.visitor_id)::int AS browsers
+      FROM amp_journey_actions a JOIN amp_funnel_visitors v USING(visitor_id)
+      WHERE a.${range} AND ${audience} GROUP BY 1,2,3,4,5,6 ORDER BY actions DESC,screen,action,source,medium,campaign,creative`);
+    const journeys = await q(`WITH pages AS (
+      SELECT p.visitor_id,p.screen,
+        lead(p.screen) OVER(PARTITION BY p.visitor_id ORDER BY p.visit_order) AS next_screen
+      FROM amp_engagement_pages p JOIN amp_funnel_visitors v USING(visitor_id)
+      WHERE p.${range} AND ${audience} AND p.visit_order IS NOT NULL)
       SELECT screen,coalesce(next_screen,'last_observed') AS next_screen,count(*)::int AS transitions
       FROM pages GROUP BY 1,2 ORDER BY transitions DESC,screen,next_screen`);
     await c.query("COMMIT");
@@ -45,7 +60,11 @@ export async function engagementReport(pool: Pool, days: number) {
       screens,
       sources,
       paths,
+      actions,
+      journeys,
       definitions: [
+        "Marketing actions are deduplicated by event ID; opening an invoice form is not invoice creation or payment. Marketing and AMP share an opaque first-party browser ID on HTTPS Corpora domains.",
+        "Journeys cross document loads using the collector arrival order of first page snapshots. Concurrent tabs and delayed requests can change this observed order. Legacy pages without an arrival sequence are omitted from this view.",
         "Distinct browser IDs are not unique people. External means not marked internal or automated; it is not verified human traffic.",
         "Customer totals exclude browsers marked internal or automated. Unknown legacy traffic remains separately visible in coverage and may include staff/testing.",
         "One document load is one session; SPA navigation produces ordered page visits. A refresh starts another session. Source/campaign are browser first-touch labels.",

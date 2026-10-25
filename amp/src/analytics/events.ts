@@ -1,4 +1,7 @@
+import { entryContextSchema } from "./entry-context.js";
+export { REFERRER_CATEGORIES, DEVICE_CLASSES } from "./entry-context.js";
 import { z } from "zod";
+import { siteActionSchema } from "./site-actions.js";
 import { engagementSchema, TRAFFIC_KINDS } from "./engagement.js";
 
 /**
@@ -41,22 +44,9 @@ export const SERVER_ONLY_EVENTS = [
   "refund",
 ] as const satisfies readonly FunnelEvent[];
 export type ServerOnlyEvent = (typeof SERVER_ONLY_EVENTS)[number];
-export type ClientEvent = Exclude<FunnelEvent, ServerOnlyEvent> | "page_engagement";
+export type ClientEvent =
+  Exclude<FunnelEvent, ServerOnlyEvent> | "page_engagement" | "site_action";
 
-const utm = z
-  .string()
-  .trim()
-  .toLowerCase()
-  .regex(/^[a-z0-9._~-]{1,64}$/);
-export const REFERRER_CATEGORIES = [
-  "direct",
-  "search",
-  "social",
-  "email",
-  "internal",
-  "other",
-] as const;
-export const DEVICE_CLASSES = ["phone", "tablet", "desktop"] as const;
 export const GRADE_BANDS = [
   "K",
   "1",
@@ -103,13 +93,8 @@ const none = z.strictObject({});
 
 export const funnelPropsSchemas = {
   page_engagement: engagementSchema,
-  landing_view: z.strictObject({
-    utmSource: utm.optional(),
-    utmMedium: utm.optional(),
-    utmCampaign: utm.optional(),
-    referrer: z.enum(REFERRER_CATEGORIES),
-    device: z.enum(DEVICE_CLASSES),
-  }),
+  site_action: siteActionSchema,
+  landing_view: entryContextSchema,
   try_click: none,
   placement_answer: z.strictObject({ index }),
   placement_done: z.strictObject({
@@ -146,11 +131,14 @@ export const funnelPropsSchemas = {
     upgrade: z.literal(true).optional(),
     reason: z.enum(REFUND_REASONS).optional(),
   }),
-} as const satisfies Record<FunnelEvent | "page_engagement", z.ZodType>;
-
-export type FunnelProps<E extends FunnelEvent | "page_engagement"> = z.input<
-  (typeof funnelPropsSchemas)[E]
+} as const satisfies Record<
+  FunnelEvent | "page_engagement" | "site_action",
+  z.ZodType
 >;
+
+export type FunnelProps<
+  E extends FunnelEvent | "page_engagement" | "site_action",
+> = z.input<(typeof funnelPropsSchemas)[E]>;
 
 /** `crypto.randomUUID()` output: a random version-4 UUID. */
 export const visitorIdSchema = z.uuidv4();
@@ -158,7 +146,7 @@ export const visitorIdSchema = z.uuidv4();
 /** One event inside a batch; `at` is the client's epoch-milliseconds clock. */
 export const clientEventSchema = z
   .strictObject({
-    event: z.enum([...FUNNEL_EVENTS, "page_engagement"]),
+    event: z.enum([...FUNNEL_EVENTS, "page_engagement", "site_action"]),
     props: z.unknown().optional(),
     at: z.number().int().positive(),
   })

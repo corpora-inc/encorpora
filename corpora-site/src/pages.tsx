@@ -837,6 +837,7 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
             }}
           />
         )}
+        {config.mode === "production" && config.appUrl && <script src="/assets/engagement.js" data-engagement-endpoint={new URL("/api/v1/site-events", config.appUrl).href} defer />}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="stylesheet" href="/assets/site.css" />
         <link rel="stylesheet" href="/assets/katex.min.css" />

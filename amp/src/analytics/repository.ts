@@ -1,4 +1,5 @@
 import type { Pool, PoolClient } from "pg";
+import { siteActionSchema } from "./site-actions.js";
 import { engagementSchema } from "./engagement.js";
 import { trialTokenHash } from "../server/trials.js";
 import {
@@ -64,6 +65,7 @@ export async function recordEventBatch(
             utmSource?: string;
             utmMedium?: string;
             utmCampaign?: string;
+            utmContent?: string;
             referrer: string;
             device: string;
           }
@@ -83,8 +85,8 @@ export async function recordEventBatch(
     const day = funnelDay(now);
     await client.query(
       `INSERT INTO amp_funnel_visitors AS v(visitor_id,first_seen,last_seen,
-         utm_source,utm_medium,utm_campaign,referrer,device,grade_band,age_band,traffic_kind)
-       VALUES($1,$2,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+         utm_source,utm_medium,utm_campaign,referrer,device,grade_band,age_band,traffic_kind,utm_content)
+       VALUES($1,$2,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
        ON CONFLICT(visitor_id) DO UPDATE SET
          last_seen=greatest(v.last_seen,EXCLUDED.last_seen),
          traffic_kind=CASE WHEN v.traffic_kind IN ('internal','automated') THEN v.traffic_kind
@@ -93,6 +95,7 @@ export async function recordEventBatch(
          utm_source=CASE WHEN v.referrer IS NULL THEN EXCLUDED.utm_source ELSE v.utm_source END,
          utm_medium=CASE WHEN v.referrer IS NULL THEN EXCLUDED.utm_medium ELSE v.utm_medium END,
          utm_campaign=CASE WHEN v.referrer IS NULL THEN EXCLUDED.utm_campaign ELSE v.utm_campaign END,
+         utm_content=CASE WHEN v.referrer IS NULL THEN EXCLUDED.utm_content ELSE v.utm_content END,
          referrer=COALESCE(v.referrer,EXCLUDED.referrer),
          device=COALESCE(v.device,EXCLUDED.device),
          grade_band=COALESCE(EXCLUDED.grade_band,v.grade_band),
@@ -108,6 +111,7 @@ export async function recordEventBatch(
         placed?.gradeBand ?? null,
         ageBand,
         batch.traffic ?? "unknown",
+        landing?.utmContent ?? null,
       ],
     );
     for (const event of batch.events.filter(
@@ -135,7 +139,17 @@ export async function recordEventBatch(
         ],
       );
     }
-    const ordinary = batch.events.filter((e) => e.event !== "page_engagement");
+    for (const event of batch.events.filter((e) => e.event === "site_action")) {
+      const p = siteActionSchema.parse(event.props);
+      await client.query(
+        `INSERT INTO amp_journey_actions(visitor_id,event_id,occurred_on,screen,action)
+        VALUES($1,$2,$3,$4,$5) ON CONFLICT(visitor_id,event_id) DO NOTHING`,
+        [batch.visitorId, p.eventId, day, p.screen, p.action],
+      );
+    }
+    const ordinary = batch.events.filter(
+      (e) => e.event !== "page_engagement" && e.event !== "site_action",
+    );
     await client.query(
       `INSERT INTO amp_funnel_events(visitor_id,event,props,occurred_on)
        SELECT $1,e,p,$4 FROM unnest($2::text[],$3::jsonb[]) WITH ORDINALITY AS x(e,p,n)
