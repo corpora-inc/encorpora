@@ -110,6 +110,8 @@ test("sequence evaluation and membership agree with an independent term-by-term 
     [geometricSequenceAsFunctionCase, "geometric-sequence-as-function"],
   ] as const) {
     let checked = 0;
+    let yesAnswers = 0;
+    let noAnswers = 0;
     for (let seed = 0; seed < SEEDS; seed++) {
       const c = make(`gap:${seed}`);
       const { first, step, kind } = c.seq;
@@ -131,9 +133,20 @@ test("sequence evaluation and membership agree with an independent term-by-term 
         const seq = list.map((_, i) =>
           ev(rule.replace(/n/g, String(i + 1)), 0),
         );
-        // The prompt's own rule reproduces its terms, and the value is not among them.
-        assert.ok(!seq.includes(value), `${id} ${seed}`);
-        assert.ok(correct.startsWith("No."));
+        // The prompt's own rule reproduces its terms; the answer is yes exactly
+        // when the value is one of them, and both answers occur.
+        const position = seq.indexOf(value) + 1;
+        if (position > 0) {
+          assert.equal(
+            correct,
+            `Yes. $a(${position})=${value}$.`,
+            `${id} ${seed}`,
+          );
+          yesAnswers++;
+        } else {
+          assert.ok(correct.startsWith("No."), `${id} ${seed}`);
+          noAnswers++;
+        }
         checked++;
       }
       if (c.variant === 2) {
@@ -143,6 +156,7 @@ test("sequence evaluation and membership agree with an independent term-by-term 
       }
     }
     assert.ok(checked > 100);
+    assert.ok(yesAnswers > 10 && noAnswers > 10, `${id} membership answers`);
   }
 });
 

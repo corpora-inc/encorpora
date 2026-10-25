@@ -123,10 +123,14 @@ function build(
   r: Random,
   spec: Spec,
 ): GeneratedProblem {
-  const seen = new Set([spec.correct]);
+  // Parentheses around a negative number do not change its value, so choices
+  // that differ only by them are the same answer.
+  const same = (label: string) => label.replace(/\((-\d+)\)(?!\^)/g, "$1");
+  const seen = new Set([same(spec.correct)]);
   const wrong = spec.wrong.filter(({ label }) => {
-    if (seen.has(label)) return false;
-    seen.add(label);
+    const key = same(label);
+    if (seen.has(key)) return false;
+    seen.add(key);
     return true;
   });
   if (wrong.length < 3)
@@ -384,32 +388,64 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
     const effRule = sequenceRule(eff);
     const lo = sequenceTerm(eff, k);
     const hi = sequenceTerm(eff, k + 1);
-    const target =
-      kind === "arithmetic" ? lo + seq.step / 2 : lo + (eff.first > 0 ? 1 : -1);
-    spec = {
-      prompt: `${kind === "arithmetic" ? "An" : "A"} ${word} sequence is defined by $a(n)=${effRule}$ for $n=1,2,3,\\ldots$. Is $${target}$ a term of this sequence?`,
-      hint: `Compute the terms around $${target}$: find $a(${k})$ and $a(${k + 1})$ and see where $${target}$ falls. Then ask whether a whole-number position could produce it.`,
-      explanation: [
-        `Compute neighboring terms: $a(${k})=${lo}$ and $a(${k + 1})=${hi}$.`,
-        `The target $${target}$ lies strictly between ${lo} and ${hi}, and the sequence moves in one direction, so no other term equals it.`,
-        `There is no whole-number position between ${k} and ${k + 1}, so no term equals $${target}$. The answer is no.`,
-      ],
-      correct: `No. ${tex(`${target}`)} lies between ${tex(`a(${k})=${lo}`)} and ${tex(`a(${k + 1})=${hi}`)}, and no position lies between ${k} and ${k + 1}.`,
-      wrong: [
-        {
-          label: `Yes. ${tex(`a(${k})=${target}`)}.`,
-          feedback: `$a(${k})=${lo}$, not $${target}$. Compute the term before comparing.`,
-        },
-        {
-          label: `Yes. ${tex(`a(${k + 1})=${target}`)}.`,
-          feedback: `$a(${k + 1})=${hi}$, not $${target}$. Compute the term before comparing.`,
-        },
-        {
-          label: `Yes. Some input between ${k} and ${k + 1} produces ${tex(`${target}`)}.`,
-          feedback: `Inputs between ${k} and ${k + 1} are not positions. The function $a$ is defined only at whole numbers, so such an input does not exist.`,
-        },
-      ],
-    };
+    const before = sequenceTerm(eff, k - 1);
+    // Half the time the value is a term, so "yes" is a live answer.
+    const isTerm = r(0, 1) === 1;
+    const target = isTerm
+      ? lo
+      : kind === "arithmetic"
+        ? lo + seq.step / 2
+        : lo + (eff.first > 0 ? 1 : -1);
+    const prompt = `${kind === "arithmetic" ? "An" : "A"} ${word} sequence is defined by $a(n)=${effRule}$ for $n=1,2,3,\\ldots$. Is $${target}$ a term of this sequence?`;
+    spec = isTerm
+      ? {
+          prompt,
+          hint: `Compute terms of the sequence and compare each with $${target}$. A value is a term only if some whole-number position gives exactly that value.`,
+          explanation: [
+            `Compute neighboring terms: $a(${k - 1})=${before}$, $a(${k})=${lo}$ and $a(${k + 1})=${hi}$.`,
+            `$a(${k})=${target}$, so position ${k} produces $${target}$.`,
+            `A value is a term when some position $n=1,2,3,\\ldots$ gives it. Here $n=${k}$, so the answer is yes.`,
+          ],
+          correct: `Yes. ${tex(`a(${k})=${target}`)}.`,
+          wrong: [
+            {
+              label: `Yes. ${tex(`a(${k + 1})=${target}`)}.`,
+              feedback: `$a(${k + 1})=${hi}$, not $${target}$. Compute the term before comparing.`,
+            },
+            {
+              label: `Yes. ${tex(`a(${k - 1})=${target}`)}.`,
+              feedback: `$a(${k - 1})=${before}$, not $${target}$. Compute the term before comparing.`,
+            },
+            {
+              label: `No. No position produces ${tex(`${target}`)}.`,
+              feedback: `Position ${k} does produce it: $a(${k})=${target}$. A value is a term when some whole-number position gives it.`,
+            },
+          ],
+        }
+      : {
+          prompt,
+          hint: `Compute the terms around $${target}$: find $a(${k})$ and $a(${k + 1})$ and see where $${target}$ falls. Then ask whether a whole-number position could produce it.`,
+          explanation: [
+            `Compute neighboring terms: $a(${k})=${lo}$ and $a(${k + 1})=${hi}$.`,
+            `The target $${target}$ lies strictly between ${lo} and ${hi}, and the sequence moves in one direction, so no other term equals it.`,
+            `There is no whole-number position between ${k} and ${k + 1}, so no term equals $${target}$. The answer is no.`,
+          ],
+          correct: `No. ${tex(`${target}`)} lies between ${tex(`a(${k})=${lo}`)} and ${tex(`a(${k + 1})=${hi}`)}, and no position lies between ${k} and ${k + 1}.`,
+          wrong: [
+            {
+              label: `Yes. ${tex(`a(${k})=${target}`)}.`,
+              feedback: `$a(${k})=${lo}$, not $${target}$. Compute the term before comparing.`,
+            },
+            {
+              label: `Yes. ${tex(`a(${k + 1})=${target}`)}.`,
+              feedback: `$a(${k + 1})=${hi}$, not $${target}$. Compute the term before comparing.`,
+            },
+            {
+              label: `Yes. Some input between ${k} and ${k + 1} produces ${tex(`${target}`)}.`,
+              feedback: `Inputs between ${k} and ${k + 1} are not positions. The function $a$ is defined only at whole numbers, so such an input does not exist.`,
+            },
+          ],
+        };
   }
   return { kind, seq, variant, problem: build(meta, seed, r, spec) };
 }
@@ -497,7 +533,7 @@ function geometricRuleFormsCase(seed: string) {
       hint: `The recursive rule multiplies by ${tex(ratioTex(R))} once to get from each term to the next. Count how many multiplications separate $a_1$ from $a_n$.`,
       explanation: [
         `The first term is $a_1=${first}$, and each next term is ${tex(ratioTex(R))} times the previous one.`,
-        `$a_2=a_1\\cdot ${base}$, $a_3=a_1\\cdot ${base}^2$, so $a_n$ has ${base} multiplied $n-1$ times.`,
+        `$a_2=a_1\\cdot ${base}$, $a_3=a_1\\cdot ${base}^2$, so $a_n$ has ${tex(base)} multiplied $n-1$ times.`,
         `The explicit rule is ${f.explicit}. Check: $n=1$ gives $a_1=${first}$.`,
       ],
       correct: f.explicit,
@@ -510,7 +546,7 @@ function geometricRuleFormsCase(seed: string) {
       hint: `Evaluate the explicit rule at $n=1$ to get the first term, then compare $a_2$ with $a_1$ to see the multiplier between consecutive terms.`,
       explanation: [
         `At $n=1$: $a_1=${first}\\cdot ${base}^0=${first}$.`,
-        `Each increase of $n$ by 1 multiplies by ${base}: $a_{n+1}=a_n\\cdot ${base}$.`,
+        `Each increase of $n$ by 1 multiplies by ${tex(base)}: $a_{n+1}=a_n\\cdot ${base}$.`,
         `The recursive rule is ${f.recursive}.`,
       ],
       correct: f.recursive,
@@ -545,19 +581,19 @@ function geometricRuleFormsCase(seed: string) {
     }[] = [
       {
         text: (A, rp) =>
-          `A culture has ${A} cells at hour 1. Each hour the count is ${rp} the count an hour earlier.`,
+          `A culture has ${A} ${A === 1 ? "cell" : "cells"} at hour 1. Each hour the count is ${rp} the count an hour earlier.`,
         ratios: ratios.filter((x) => x.q === 1 && x.p > 0),
         noun: "the cell count at hour $n$",
       },
       {
         text: (A, rp) =>
-          `A ball's first bounce is ${A} centimeters high. Each bounce is ${rp} as high as the previous bounce.`,
+          `A ball's first bounce is ${A} ${A === 1 ? "centimeter" : "centimeters"} high. Each bounce is ${rp} as high as the previous bounce.`,
         ratios: ratios.filter((x) => x.q > 1 && x.p < x.q),
         noun: "the height of bounce $n$",
       },
       {
         text: (A, rp) =>
-          `A fund holds ${A} dollars at the end of year 1. Each year its balance is ${rp} of the previous year's balance.`,
+          `A fund holds ${A} ${A === 1 ? "dollar" : "dollars"} at the end of year 1. Each year its balance is ${rp} of the previous year's balance.`,
         ratios: [{ p: 3, q: 2 }],
         noun: "the balance at the end of year $n$",
       },
@@ -688,7 +724,7 @@ function solveByCompletingSquareCase(seed: string) {
           ? []
           : [`Divide both sides by ${a}: ${tex(`${monic}=0`)}.`]),
         `Move the constant: $x^2${h === 0 ? "" : ` ${2 * h < 0 ? "-" : "+"} ${Math.abs(2 * h)}x`}=${-c}$.`,
-        `Half of ${2 * h} is ${h}, and ${h}^2=${h * h}. Add ${h * h} to both sides: $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2=${rhs}$.`,
+        `Half of ${2 * h} is ${h}, and $(${h})^2=${h * h}$. Add ${h * h} to both sides: $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2=${rhs}$.`,
         `Take both square roots: $x ${h < 0 ? "-" : "+"} ${Math.abs(h)}=\\pm ${k}$, so $x=${-h}\\pm ${k}$.`,
         `The solutions are $x=${-h + k}$ and $x=${-h - k}$.`,
       ],
@@ -729,7 +765,7 @@ function solveByCompletingSquareCase(seed: string) {
       hint: `Move the constant ${c} to the right side. Half of the coefficient ${2 * h} is ${h}; add ${h * h} to both sides to make the left side a perfect square.`,
       explanation: [
         `Move the constant: $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x=${-c}$.`,
-        `Add ${h}^2=${h * h} to both sides: $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2=${-c + h * h}$, which is ${m}.`,
+        `Add $(${h})^2=${h * h}$ to both sides: $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2=${m}$.`,
         `Take square roots: $x ${h < 0 ? "-" : "+"} ${Math.abs(h)}=\\pm ${sqrtM}$. ${m} is not a perfect square, so keep the radical.`,
         `Subtract the shift: $x=${-h}\\pm ${sqrtM}$.`,
       ],
@@ -775,10 +811,10 @@ function solveByCompletingSquareCase(seed: string) {
     model = { h, c, rhs };
     spec = {
       prompt: `To solve ${equation} by completing the square, you add the same number to both sides and factor the left side. Which equation results?`,
-      hint: `Half of the coefficient of $x$ is ${h}, so the number to add to both sides is ${h}^2. Add it to the right side too, after moving the constant ${c} across.`,
+      hint: `Half of the coefficient of $x$ is ${h}, so the number to add to both sides is $(${h})^2$. Add it to the right side too, after moving the constant ${c} across.`,
       explanation: [
         `Move the constant: $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x=${-c}$.`,
-        `Half of ${2 * h} is ${h}; ${h}^2=${h * h}. Adding ${h * h} to both sides gives $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h}=${-c}+${h * h}$.`,
+        `Half of ${2 * h} is ${h}; $(${h})^2=${h * h}$. Adding ${h * h} to both sides gives $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h}=${-c}+${h * h}$.`,
         `The left side factors as $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2$ and the right side is ${rhs}: ${tex(lhs(rhs, h))}.`,
       ],
       correct: tex(lhs(rhs, h)),
@@ -914,7 +950,7 @@ function complexQuadraticSolveCase(seed: string) {
       prompt: `Which quadratic equation with real coefficients has the solutions ${pm(-h, `${k === 1 ? "" : k}i`)}?`,
       hint: `Solutions $p\\pm qi$ come from $(x-p)^2=-q^2$. Move everything to one side and expand.`,
       explanation: [
-        `The solutions are $x=${-h}\\pm ${k === 1 ? "" : k}i$, so $x-(${-h})=\\pm ${k === 1 ? "" : k}i$, that is $(x${h < 0 ? "-" : "+"}${Math.abs(h)})^2=(${k === 1 ? "" : k}i)^2=${-m}$.`,
+        `The solutions are $x=${-h}\\pm ${k === 1 ? "" : k}i$, so $${h === 0 ? "x" : `x${h < 0 ? "-" : "+"}${Math.abs(h)}`}=\\pm ${k === 1 ? "" : k}i$, that is $(x${h < 0 ? "-" : "+"}${Math.abs(h)})^2=(${k === 1 ? "" : k}i)^2=${-m}$.`,
         `Expand and move ${-m} to the left: $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h}+${m}=0$.`,
         `The equation is ${tex(`${quad(1, 2 * h, q)}=0`)}.`,
       ],
@@ -1042,7 +1078,7 @@ function complexPartsCase(seed: string) {
       hint: `Compare $z=${z}$ with $a+bi$. The real part is the term without $i$ (0 if there is none); the imaginary part is the real coefficient of $i$ (0 if there is no $i$ term).`,
       explanation: [
         `A complex number $a+bi$ has real part $a$ and imaginary part $b$, the real number multiplying $i$.`,
-        `Write $z=${z}$ as $${a}+(${b})i$.`,
+        `Write $z=${z}$ as $${a}${b < 0 ? `+(${b})` : `+${b}`}i$.`,
         `The real part is ${a}; the imaginary part is ${b}.`,
       ],
       correct: pair(`${a}`, `${b}`),
@@ -1057,11 +1093,17 @@ function complexPartsCase(seed: string) {
           feedback:
             "Keep the sign of the coefficient of $i$ as written in $a+bi$.",
         },
-        {
-          label: `real part ${tex(`${a}`)}, imaginary part ${tex(`${b}i`)}`,
-          feedback:
-            "The imaginary part is the real number $b$. The term $bi$ is called the imaginary term.",
-        },
+        b === 0
+          ? {
+              label: pair(`${a}`, `${a}`),
+              feedback:
+                "There is no $i$ term, so the imaginary part is 0. The real number $a$ is the real part only.",
+            }
+          : {
+              label: `real part ${tex(`${a}`)}, imaginary part ${tex(`${b}i`)}`,
+              feedback:
+                "The imaginary part is the real number $b$. The term $bi$ is called the imaginary term.",
+            },
         {
           label: pair(`${-a}`, `${b}`),
           feedback: "Keep the sign of the real term as written.",
@@ -1083,7 +1125,7 @@ function complexPartsCase(seed: string) {
       hint: `Powers of $i$ repeat in a cycle of 4: $i^1=i$, $i^2=-1$, $i^3=-i$, $i^4=1$. Divide the exponent ${e} by 4 and look at the remainder.`,
       explanation: [
         `$i^1=i$, $i^2=-1$, $i^3=i^2\\cdot i=-i$ and $i^4=(i^2)^2=1$, then the pattern repeats.`,
-        `${e} divided by 4 leaves remainder ${rem}, because ${e}=4\\cdot${(e - rem) / 4}+${rem}.`,
+        `${e} divided by 4 leaves remainder ${rem}, because $${e}=4\\cdot ${(e - rem) / 4}+${rem}$.`,
         `So $i^{${e}}=(i^4)^{${(e - rem) / 4}}\\cdot i^{${rem}}=${POWER_I[rem]}$.`,
       ],
       correct: labelFor(rem),
@@ -1462,7 +1504,7 @@ function quadraticFormConversionCase(seed: string) {
       prompt: `Rewrite ${std} in vertex form $y=(x-h)^2+k$ by completing the square. Which equation is correct?`,
       hint: `Half of the coefficient of $x$ is ${-h}. Write $x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x$ as a perfect square minus ${h * h}, then combine with the constant ${c}.`,
       explanation: [
-        `Half of ${-2 * h} is ${-h}, and ${h}^2=${h * h}.`,
+        `Half of ${-2 * h} is ${-h}, and $(${-h})^2=${h * h}$.`,
         `Group the first two terms and add and subtract ${h * h}: $y=(x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h})+${c}-${h * h}$.`,
         `Factor and combine: ${tex(`y=${vertexForm(1, h, k)}`)}.`,
         `The vertex is $(${h},${k})$.`,
@@ -1495,13 +1537,16 @@ function quadraticFormConversionCase(seed: string) {
     const c = a * h * h + k;
     const std = tex(`y=${quad(a, -2 * a * h, c)}`);
     const word = a > 0 ? "minimum" : "maximum";
+    const lead = a === -1 ? "-" : `${a}`;
+    const plus = (n: number) => (n < 0 ? `-${-n}` : `+${n}`);
+    const minus = (n: number) => (n < 0 ? `+${-n}` : `-${n}`);
     model = { a, h, k, c };
     spec = {
       prompt: `By completing the square, find the ${word} value of ${std}.`,
       hint: `Factor ${a} out of the two $x$ terms of ${std}, complete the square inside the parentheses, then multiply the added number by ${a} before adjusting the constant.`,
       explanation: [
-        `Factor ${a} from the $x$ terms: $y=${a}(x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x)+${c}$.`,
-        `Add and subtract inside: $${a}(x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h})$ adds $${a}\\cdot ${h * h}=${a * h * h}$, so subtract ${a * h * h} outside: $y=${a}(x${h > 0 ? "-" : "+"}${Math.abs(h)})^2+${c}-${a * h * h}$.`,
+        `Factor ${a} from the $x$ terms: $y=${lead}(x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x)${plus(c)}$.`,
+        `Add and subtract inside: $${lead}(x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h})$ adds $${a}\\cdot ${h * h}=${a * h * h}$, so subtract $${a * h * h}$ outside: $y=${lead}(x${h > 0 ? "-" : "+"}${Math.abs(h)})^2${plus(c)}${minus(a * h * h)}$.`,
         `Vertex form: ${tex(`y=${vertexForm(a, h, k)}`)}.`,
         a > 0
           ? `The squared term is never negative, so the minimum is the constant ${k}, reached at $x=${h}$.`
@@ -1523,7 +1568,7 @@ function quadraticFormConversionCase(seed: string) {
         },
         {
           label: tex(`${-k}`),
-          feedback: `Check the sign of the constant after combining: $${c}-${a * h * h}=${k}$.`,
+          feedback: `Check the sign of the constant after combining: $${c}${minus(a * h * h)}=${k}$.`,
         },
         {
           label: tex(`${c + a * h * h}`),
@@ -1582,7 +1627,7 @@ function quadraticFormConversionCase(seed: string) {
       hint: `The zeros of the function are where each factor is 0. A parabola is symmetric about the vertical line through the point halfway between its two zeros.`,
       explanation: [
         `The zeros are $x=${p}$ and $x=${q}$.`,
-        `The axis of symmetry passes halfway between them: $\\frac{${p}+(${q})}{2}=${axis}$.`,
+        `The axis of symmetry passes halfway between them: $\\frac{${p}${q < 0 ? `+(${q})` : `+${q}`}}{2}=${axis}$.`,
         `The axis of symmetry is $x=${axis}$.`,
       ],
       correct: tex(`x=${axis}`),
@@ -1620,7 +1665,8 @@ function quadraticFormConversionCase(seed: string) {
   } else {
     let p = 0;
     let q = 0;
-    while (p === q || (p + q) % 2 !== 0) {
+    // p + q = 0 puts the vertex on the y-axis, where forms (A) and (C) coincide.
+    while (p === q || (p + q) % 2 !== 0 || p + q === 0) {
       p = r(-7, 7);
       q = r(-7, 7);
     }

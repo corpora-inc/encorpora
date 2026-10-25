@@ -733,6 +733,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...k8RepresentationTemplates,
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
+    ...algebraRequirementGapTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {

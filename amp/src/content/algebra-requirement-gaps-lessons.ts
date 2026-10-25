@@ -493,7 +493,7 @@ const interpretLinearParametersLesson: Lesson = {
       title: "When 0 is not the beginning of time",
       paragraphs: [
         "In $N=1200+85t$, where $N$ is the number of subscribers and $t$ is the number of years after 2018, the input 0 means 2018. So 1200 is the number of subscribers in 2018, not at the year 0 of the calendar, and 85 is the number of subscribers added per year.",
-        "A decreasing model has a negative slope. In $D=240-55t$ the distance remaining shrinks by 55 miles per hour, and 240 miles is the distance at the start of the trip.",
+        "A decreasing model has a negative slope. In $D=240-55t$, where $D$ is the distance remaining in miles and $t$ is the hours driven, the distance remaining shrinks by 55 miles per hour, and 240 miles is the distance at the start of the trip.",
       ],
     },
     {
