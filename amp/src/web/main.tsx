@@ -5,12 +5,14 @@ import { Providers } from "./app/providers";
 import { router } from "./app/router";
 import "./app/styles";
 import { startEngagement } from "./lib/engagement";
-import { trackSessionStart } from "./lib/analytics";
+import { trackSessionStart, trackGooglePage } from "./lib/analytics";
 // After consent-entry has removed any private fragment from the URL.
 const engagement = startEngagement();
-router.subscribe("onResolved", () =>
-  engagement.navigate(router.state.location.pathname),
-);
+router.subscribe("onResolved", () => {
+  engagement.navigate(router.state.location.pathname);
+  trackGooglePage();
+});
+trackGooglePage();
 trackSessionStart();
 createRoot(document.getElementById("root")!).render(
   <Providers>

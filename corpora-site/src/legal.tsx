@@ -325,6 +325,19 @@ export function Legal({
             separately from anonymous event rows. Financial records and coarse
             purchase counts follow their separate retention policies.
           </p>
+          <h2>Google Analytics</h2>
+          <p>
+            Our public marketing and purchase pages use Google Analytics to
+            measure visits, traffic sources, engagement and purchase-flow actions.
+            Google receives limited page and campaign information and uses
+            browser cookies that expire after 90 days. We do not send learner
+            answers, learning records, names, email addresses, invoice identifiers
+            or form contents to Google Analytics. Assessment, practice, lessons
+            and family-account pages use our first-party measurement instead.
+            Google advertising personalization is disabled for this measurement.
+            We honor browser Do Not Track and Global Privacy Control signals.
+            See <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from sites that use its services</a>.
+          </p>
           <h2>Problem reports</h2>
           <p>
             “Report a problem” records selected reasons, the learner reference,

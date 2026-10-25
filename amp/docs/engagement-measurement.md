@@ -98,3 +98,13 @@ engagement or learner activity is exported to an advertising platform.
 The browser check drives the actual application and collector against a temporary
 PostgreSQL schema, verifies SPA navigation, attribution and automated-traffic
 exclusion, and confirms that Do Not Track suppresses collection.
+
+## Google Analytics traffic reports
+
+The production marketing and parent purchase pages also send page views and a fixed set of purchase-flow actions to GA4. The shared Google tag is in `src/analytics/google-analytics.ts`; it contains a public measurement ID, not a credential. Preview domains, native apps, known staff browsers, WebDriver sessions, Do Not Track and Global Privacy Control are excluded. Google advertising personalization and Google signals are disabled. Analytics storage defaults to denied in the EEA, UK and Switzerland.
+
+Keep Enhanced Measurement disabled in the GA4 web stream. The application explicitly sends one page view per public route transition; enabling automatic history, form, search or click measurement would bypass that event selection and could duplicate page views. Only approved public paths, validated campaign labels and Google Ads click IDs are retained in page locations. Referrers are reduced to origins. No learner, account, invoice, form or answer data is exported. After a loaded tag encounters assessment, practice, lessons or account pages, it stays disabled for the rest of that document. A fresh public document can resume collection. This prevents Google’s automatic engagement timer from attributing time spent learning to a later purchase screen. First-party reports continue across that boundary.
+
+Use GA4 Traffic acquisition, Pages and screens, and Realtime for standard visitor reports. Use AMP engagement and funded-journey reports to inspect learning progression and authoritative payment outcomes. A `begin_checkout` event or a checkout return is not a purchase. Do not import these actions as primary Google Ads purchase conversions or add a second primary conversion for purchases already exported by the server.
+
+`npm run test:google-analytics-ui` runs the real Google tag in Chromium and intercepts every collection request. It checks public SPA transitions, duplicate suppression, sanitized payloads, learning-route exclusion and GPC. No synthetic collection events are sent to Google by the test.
