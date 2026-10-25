@@ -21,10 +21,11 @@
     "@types/node": "^22.18.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "chrome-launcher": "^1.2.1",
+    "esbuild": "^0.28.2",
     "lighthouse": "12.8.2",
     "playwright": "^1.55.0",
     "tsx": "^4.20.0",
-    "typescript": "^5.9.0",
-    "chrome-launcher": "^1.2.1"
+    "typescript": "^5.9.0"
   }
 }
