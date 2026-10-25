@@ -86,6 +86,7 @@
     "test:parent-feedback-ui": "tsx scripts/verify-parent-feedback-ui.ts",
     "report:funded-journeys": "tsx scripts/report-funded-journeys.ts",
     "test:site-journeys-ui": "node --import tsx --test scripts/verify-site-journeys-ui.ts",
+    "report:acquisition": "tsx scripts/report-acquisition.ts",
     "test:google-analytics-ui": "node --import tsx --test scripts/verify-google-analytics-ui.ts"
   },
   "dependencies": {

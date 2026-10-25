@@ -99,6 +99,40 @@ The browser check drives the actual application and collector against a temporar
 PostgreSQL schema, verifies SPA navigation, attribution and automated-traffic
 exclusion, and confirms that Do Not Track suppresses collection.
 
+## Acquisition report
+
+Generate a private, standalone HTML report and its JSON snapshot with a read-only
+production database connection:
+
+```sh
+npm run report:acquisition -- --days 7 --output /private/amp-report.html --costs /private/ad-costs.json
+```
+
+`AMP_DATABASE_URL` supplies the database connection. Omit `--costs` to report
+site activity without imported advertising costs. The report combines source and
+creative attribution, focused page time, observed paths, assessment and checkout
+milestones, funded payment status, fulfillment, and aggregate parent feedback.
+The companion JSON preserves the report inputs for comparison between snapshots.
+Keep both files private; neither file requires an external service to display.
+
+Cost snapshots follow `adCostsSchema` in `src/analytics/ad-costs.ts`: one source
+per provider, with observation time, provider-local date window, timezone,
+currency, click definition and campaign rows. Each row has a native campaign ID,
+label, impressions, clicks and integer spend in millionths of the currency unit.
+UTM source lists and campaign mappings must be copied from configured ads together.
+A Meta campaign can map to both Facebook and Instagram without splitting its cost
+by guesswork.
+Unresolved spend is `null` with an explanatory source note; it does not become
+zero or a partial sum. Optional account-level billing evidence appears separately
+and is never allocated to campaigns automatically.
+
+The report exposes differences in cohort and time-window definitions. Funded
+purchase cohorts follow invoices created in the window through settlement;
+card purchase counts follow verified payment events in the window. Operational
+fulfillment and problem reports can include testing. These counts must not be
+combined into an ad conversion rate or compared with unlike cost windows to
+claim return on ad spend. Missing campaign mappings and cost imports are visible.
+
 ## Google Analytics traffic reports
 
 The production marketing and parent purchase pages also send page views and a fixed set of purchase-flow actions to GA4. The shared Google tag is in `src/analytics/google-analytics.ts`; it contains a public measurement ID, not a credential. Preview domains, native apps, known staff browsers, WebDriver sessions, Do Not Track and Global Privacy Control are excluded. Google advertising personalization and Google signals are disabled. Analytics storage defaults to denied in the EEA, UK and Switzerland.
