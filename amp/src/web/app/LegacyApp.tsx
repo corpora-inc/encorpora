@@ -1218,6 +1218,9 @@ function LegacyScreen() {
       {!learner && !familyOpen && !nativeRuntime && !(signingIn && !token) && (
         <div className="intro">
           <div>
+            <p>
+              {brand.name} · {brand.expansion} by {brand.company} Inc
+            </p>
             <h1>Math at exactly the right level.</h1>
             <p>
               One problem at a time, from counting through precalculus. Every

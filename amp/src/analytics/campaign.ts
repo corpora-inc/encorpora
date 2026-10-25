@@ -169,6 +169,10 @@ export const CAMPAIGN_CREATIVES = [
   "ar-funded-funded-choice-square-v5",
   "ar-funded-funded-choice-wide-v5",
   "ar-funded-funded-choice-responsive-v5",
+  "ar-product-adaptive-search-v1",
+  "ar-product-planning-search-v1",
+  "az-product-adaptive-search-v1",
+  "az-product-planning-search-v1",
 ] as const;
 export const campaignEventSchema = z
   .strictObject({

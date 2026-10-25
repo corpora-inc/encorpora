@@ -150,6 +150,12 @@ export function FundingPage({
           )}
           <h1>{presentation?.headline ?? funding.program}</h1>
           {showProduct && (
+            <p className="fine">
+              AMP (Adaptive Math Pathways) is a product of Corpora Inc, an independent
+              vendor. Corpora does not administer {funding.program} and is not a government agency.
+            </p>
+          )}
+          {showProduct && (
             <p className="lead">Math that finds your level and chooses what to practice next, so you don’t have to plan every lesson.</p>
           )}
           {!directPay && <p className="lead">{page.summary}</p>}
