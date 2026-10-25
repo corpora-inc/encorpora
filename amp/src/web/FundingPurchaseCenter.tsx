@@ -551,10 +551,7 @@ export function FundingPurchaseCenter({
                     <button
                       className="funding-text-action"
                       disabled={busy}
-                      onClick={() => {
-                        recordPurchaseAction("funding_provider_open");
-                        setProgramOpened(request.id);
-                      }}
+                      onClick={() => setProgramOpened(request.id)}
                     >
                       Already submitted through your program?
                     </button>
