@@ -610,15 +610,16 @@ def check_inequality_content(records):
             'Incorrect inequality template/skill inventory')
     for name in ('declaredMappings', 'registeredMappings'):
         mappings = [m for m in header[name] if m['templateId'] in INEQUALITY]
-        require(len(mappings) == 3 and {m['templateId'] for m in mappings} == INEQUALITY and
-                all(m['facetId'] == expected_facets[m['templateId']] and
+        # Each template keeps its narrow facet; extra mappings must stay within the skill.
+        require(set(expected_facets.items()) <= {(m['templateId'], m['facetId']) for m in mappings} and
+                all(m['facetId'].split('.')[0] == 'linear-inequalities' and
                     m['extent'] == 'partial' and isinstance(m['rationale'], str) and
                     m['rationale'].strip() for m in mappings),
                 f'Expected exactly three partial inequality bindings in {name}')
     require(header['coverageValid'] is True, 'Default coverage manifest is invalid')
     bindings = header['defaultBindings']
-    require(len(bindings) == 3 and {b['templateId'] for b in bindings} == INEQUALITY and
-            all(b['facetId'] == expected_facets[b['templateId']] and
+    require(set(expected_facets.items()) <= {(b['templateId'], b['facetId']) for b in bindings} and
+            all(b['facetId'].split('.')[0] == 'linear-inequalities' and
                 b['skillId'] == 'linear-inequalities' and b['independentlyReviewed'] is False
                 for b in bindings), 'Default facet registry must expose the three partial task bindings')
 

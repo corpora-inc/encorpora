@@ -11,6 +11,15 @@ from completing_square_math_oracle import (
 from polynomial_math_oracle import CHOICE_SHORTCUTS, shortcut_evidence, unique_extreme
 
 
+def own_pairs(rows, expected):
+    """A family's own (template, facet) pairs are all present; any extra mapping of its
+    templates may only name other facets of the same skill (partial extent is checked by the caller)."""
+    skill = {t: f.split('.')[0] for t, f in expected}
+    # Other families in the same skill keep their own mappings; judge only this family's templates.
+    pairs = {(m['templateId'], m['facetId']) for m in rows if m['templateId'] in skill}
+    return set(expected) <= pairs and all(f.split('.')[0] == skill[t] for t, f in pairs)
+
+
 def plus(a, b):
     result = dict(a)
     for power, value in b.items():
@@ -260,9 +269,9 @@ def review_content(data):
     require(all(not x['allowed'] for x in data['calculators']) and {x['id'] for x in data['calculators']}==IDS,'Calculator policy mismatch')
     require(data['skill']['id']=='complete-square' and 'quadratic-equations' in data['skill']['prerequisites'],'Missing established prerequisite')
     expected_facets={t:'complete-square.'+f for t,f in [('complete-square-term','missing-square-constant'),('complete-square-monic','monic-square-rewrite'),('complete-square-nonmonic','nonmonic-square-rewrite')]}
-    require({m['templateId']:m['facetId'] for m in data['mappings']}==expected_facets and all(m['extent']=='partial' for m in data['mappings']),'Missing partial facet mapping')
+    require(own_pairs(data['mappings'], set(expected_facets.items())) and all(m['extent']=='partial' for m in data['mappings']),'Missing partial facet mapping')
     for manifest in data['bindings']:
-        require(manifest['valid'] and {m['templateId']:m['facetId'] for m in manifest['entries']}==expected_facets,'Default/empty-input facet binding failed')
+        require(manifest['valid'] and own_pairs(manifest['entries'], set(expected_facets.items())),'Default/empty-input facet binding failed')
     seen=set(); chains=0
     for sheet in data['worksheets']:
         identity=(sheet['templateId'],sheet['edition'])

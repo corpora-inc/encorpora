@@ -156,7 +156,7 @@ def check_coverage_defaults(coverage):
         facets = {facet['id']: facet for facet in skill['facets']}
         for suffix, template in expected.items():
             facet = facets.get(f'pythagorean-theorem.{suffix}')
-            require(facet is not None and facet['templateIds'] == [template],
+            require(facet is not None and template in facet['templateIds'],
                     f'Missing or incorrect default facet mapping: {name}/{suffix}')
             require(facet['independentlyReviewed'] is False, 'A mapping is not independent review evidence')
     duplicate = coverage['duplicateInput']

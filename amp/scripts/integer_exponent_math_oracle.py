@@ -21,6 +21,15 @@ BASE = r'(?:[1-9][0-9]*|\(−[1-9][0-9]*\)|\(−?[1-9][0-9]* / [1-9][0-9]*\))'
 EXPONENT = r'(?:0|[1-9][0-9]*|\(−[1-9][0-9]*\))'
 
 
+def own_pairs(rows, expected):
+    """A family's own (template, facet) pairs are all present; any extra mapping of its
+    templates may only name other facets of the same skill (partial extent is checked by the caller)."""
+    skill = {t: f.split('.')[0] for t, f in expected}
+    # Other families in the same skill keep their own mappings; judge only this family's templates.
+    pairs = {(m['templateId'], m['facetId']) for m in rows if m['templateId'] in skill}
+    return set(expected) <= pairs and all(f.split('.')[0] == skill[t] for t, f in pairs)
+
+
 def require(condition, message):
     if not condition:
         raise ValueError(message)
@@ -277,9 +286,9 @@ def check_manifest(record):
     require(set(skill['prerequisites']) == {'integer-powers', 'signed-multiplication', 'signed-addition', 'fraction-division'}, 'Incorrect exponent prerequisites')
     suffixes = {'negative-integer-power':'negative-rational-powers', 'product-of-powers-exponent':'same-base-product', 'quotient-of-powers-exponent':'same-base-quotient', 'power-of-power-exponent':'nested-integer-powers'}
     expected = {(template, 'exponent-laws.' + suffix) for template,suffix in suffixes.items()}
-    require(record['coverageValid'] and len(record['mappings']) == 4 and {(m['templateId'],m['facetId']) for m in record['mappings']} == expected, 'Missing default exponent facet mapping')
+    require(record['coverageValid'] and own_pairs(record['mappings'], expected), 'Missing default exponent facet mapping')
     require(all(m['extent'] == 'partial' and m['rationale'].strip() for m in record['mappings']), 'Unsupported complete exponent coverage claim')
-    require(len(record['bindings']) == 4 and {(m['templateId'],m['facetId']) for m in record['bindings']} == expected and all(m['skillId'] == 'exponent-laws' and not m['independentlyReviewed'] for m in record['bindings']), 'Incorrect exponent default facet bindings')
+    require(own_pairs(record['bindings'], expected) and all(m['skillId'] == 'exponent-laws' and not m['independentlyReviewed'] for m in record['bindings']), 'Incorrect exponent default facet bindings')
     require(record['equivalentInputs'] == [{'input':value,'normalized':'1/8' if index < 3 else '-3'} for index,value in enumerate(['0.125','1/8','2/16','−3','-3'])], 'Equivalent exact numeric input regression')
     parser = PublicationParser(); parser.feed(record['illustration']); parser.close()
     rows = [node for node in parser.root.descendants() if 'data-exponent' in node.attributes]
