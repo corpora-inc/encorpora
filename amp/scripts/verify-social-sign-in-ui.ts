@@ -1,9 +1,10 @@
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, type Browser, type Page } from "playwright";
+import { chromium, webkit, type Browser, type Page } from "playwright";
 import { createServer } from "vite";
 import { exportJWK, generateKeyPair, SignJWT, type JWK } from "jose";
 import { generateKeyPairSync } from "node:crypto";
+import { randomUUID } from "node:crypto";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import {
@@ -326,6 +327,87 @@ try {
   await alert.waitFor({ state: "detached" });
   assert.equal(await shift(page), 0, "no layout shift when dismissed");
 
+  // A network failure before leaving AMP must not strand every sign-in button.
+  await page.route("**/api/auth/sign-in/social", (route) =>
+    route.abort("failed"),
+  );
+  await page.getByRole("button", { name: "Continue with Microsoft" }).click();
+  await page.getByRole("alert").waitFor();
+  assert.equal(
+    await page.locator("button[data-provider]:disabled").count(),
+    0,
+    "provider buttons recover after a network failure",
+  );
+  await page.getByRole("button", { name: "Dismiss message" }).click();
+  await page.unroute("**/api/auth/sign-in/social");
+
+  // Registration points existing users to sign-in without discarding their email
+  // or entitlement continuation, and a bad password explains provider recovery.
+  await page.goto(`${origin}/sign-up?return=access&method=password`);
+  await page.getByLabel("Email", { exact: true }).fill("returning@example.com");
+  await page.getByRole("button", { name: "Sign in", exact: true }).click();
+  await page.waitForURL(`${origin}/sign-in?return=access`);
+  assert.equal(
+    await page.getByLabel("Email", { exact: true }).inputValue(),
+    "returning@example.com",
+  );
+  await page.route("**/api/auth/sign-in/email", (route) =>
+    route.fulfill({
+      status: 401,
+      contentType: "application/json",
+      body: JSON.stringify({
+        code: "INVALID_EMAIL_OR_PASSWORD",
+        message: "Invalid email or password",
+      }),
+    }),
+  );
+  for (const theme of ["light", "dark"] as const) {
+    await page.emulateMedia({ colorScheme: theme });
+    for (const size of sizes.filter((s) => s.width !== 384)) {
+      await page.setViewportSize(size);
+      await page
+        .getByLabel("AMP password", { exact: true })
+        .fill("not-an-AMP-password");
+      const positions = await measureStack(page, "before failed password");
+      await page.getByRole("button", { name: "Sign in", exact: true }).click();
+      const feedback = page.getByRole("alert");
+      await feedback.waitFor();
+      assert.match(
+        await feedback.innerText(),
+        /sign-in method you used before/,
+      );
+      assert.equal(
+        await feedback.evaluate((el) => el === document.activeElement),
+        true,
+        "error receives focus instead of hiding under the keyboard",
+      );
+      const box = await feedback.boundingBox();
+      assert.ok(
+        box && box.y >= 0 && box.y + box.height <= size.height,
+        "feedback is visible in the viewport",
+      );
+      assert.deepEqual(
+        (await measureStack(page, "after failed password")).map((b) => b.y + 0),
+        positions.map((b) => b.y),
+        "failed request does not reflow controls",
+      );
+      assert.equal(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth > innerWidth,
+        ),
+        false,
+      );
+      await page.screenshot({
+        path: new URL(`auth-error-${theme}-${size.width}.png`, shots).pathname,
+        fullPage: true,
+      });
+      await page.getByRole("button", { name: "Dismiss message" }).click();
+    }
+  }
+  await page.unroute("**/api/auth/sign-in/email");
+  await page.setViewportSize(sizes[2]);
+  await page.goto(`${origin}/sign-up`);
+
   // A new account sees explicit success before continuing learner setup.
   await page.getByRole("button", { name: "Continue with Google" }).click();
   await page.getByRole("heading", { name: "Your account is ready" }).waitFor();
@@ -341,6 +423,237 @@ try {
     path: new URL("social-sign-up-first-run-390x844.png", shots).pathname,
     fullPage: true,
   });
+  // A returning learner must reach the real app, not only the signup screen.
+  const user = (
+    await repository.pool.query(
+      "SELECT id FROM amp_auth_users WHERE email=$1",
+      [parentEmail],
+    )
+  ).rows[0];
+  const learnerId = randomUUID();
+  await repository.pool.query(
+    "INSERT INTO amp_parent_consents(account_id,policy_version,verification_method,evidence_reference) VALUES($1,'fixture','test-only','synthetic')",
+    [`amp|${user.id}`],
+  );
+  await repository.pool.query(
+    "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Test Learner',2008)",
+    [learnerId, `amp|${user.id}`],
+  );
+  await repository.pool.query(
+    "INSERT INTO amp_grants(id,learner_id,channel,external_order_id,status,starts_at,ends_at) VALUES($1,$2,'pilot',$1,'active',now()-interval '1 hour',now()+interval '1 year')",
+    [randomUUID(), learnerId],
+  );
+  await page.goto(`${origin}/`);
+  await page
+    .getByRole("heading", { name: "Test Learner", exact: true })
+    .waitFor();
+  await page.getByRole("button", { name: "Go", exact: true }).click();
+  await page.locator("#problem-prompt").waitFor();
+  // Simulate another person's saved learner selection on a shared device.
+  await page.evaluate(() =>
+    localStorage.setItem(
+      "amp.learner",
+      JSON.stringify({
+        state: { learnerId: "another-account-learner" },
+        version: 1,
+      }),
+    ),
+  );
+  await page.goto(`${origin}/`);
+  await page
+    .getByRole("heading", { name: "Test Learner", exact: true })
+    .waitFor();
+  await page.screenshot({
+    path: new URL("returning-learner-home-390.png", shots).pathname,
+    fullPage: true,
+  });
+  // Safari uses the same returning-account path on a new device (no local learner).
+  const safari = await webkit.launch({ headless: true });
+  try {
+    const fresh = await safari.newContext({
+      viewport: sizes[2],
+      colorScheme: "dark",
+    });
+    await fresh.addCookies(await context.cookies(origin));
+    const tab = await fresh.newPage();
+    await tab.goto(`${origin}/`);
+    await tab
+      .getByRole("heading", { name: "Test Learner", exact: true })
+      .waitFor();
+    await tab.getByRole("button", { name: "Go", exact: true }).click();
+    await tab.locator("#problem-prompt").waitFor();
+    await tab.screenshot({
+      path: new URL("returning-learner-webkit-390.png", shots).pathname,
+      fullPage: true,
+    });
+    await fresh.close();
+  } finally {
+    await safari.close();
+  }
+  // First-run decisions use /me before rendering home. A returning assessment
+  // goes straight to its problem, without painting home or learner setup.
+  const snapshot = await (await page.request.get(`${origin}/api/v1/me`)).json();
+  let entry = {
+    ...snapshot,
+    next: "try",
+    learners: [],
+    consent: { status: "none", method: null },
+    family: {
+      ...snapshot.family,
+      learners: [],
+      consent: { ...snapshot.family.consent, status: "not-recorded" },
+    },
+  };
+  await page.route("**/api/v1/me", (route) => route.fulfill({ json: entry }));
+  const trial = await (
+    await page.request.post(`${origin}/api/v1/trials`, {
+      data: { birthYear: 2012 },
+    })
+  ).json();
+  await page.evaluate(
+    (token) => localStorage.setItem("amp.trial", token),
+    trial.token,
+  );
+  await page.addInitScript(() => {
+    const destinations: string[] = [];
+    (window as unknown as { __destinations: string[] }).__destinations =
+      destinations;
+    for (const method of ["pushState", "replaceState"] as const) {
+      const original = history[method].bind(history);
+      history[method] = (data, unused, url) => {
+        if (url)
+          destinations.push(new URL(String(url), location.href).pathname);
+        return original(data, unused, url);
+      };
+    }
+  });
+  await page.goto(`${origin}/`);
+  await page.waitForURL(`${origin}/try/practice`);
+  await page.locator("#problem-prompt").waitFor();
+  const destinations = await page.evaluate(
+    () => (window as unknown as { __destinations: string[] }).__destinations,
+  );
+  assert.ok(
+    !destinations.some((path) => path === "/try" || path.startsWith("/start")),
+    "assessment entry has no intermediate onboarding navigation",
+  );
+
+  // Explicit consent and purchase handoffs must win over that default route.
+  await page.route("**/api/v1/consent", (route) =>
+    route.fulfill({
+      json: {
+        available: false,
+        consentActive: false,
+        notice: null,
+        noticeDigest: null,
+        request: null,
+        confirmationDelayHours: null,
+      },
+    }),
+  );
+  await page.goto(
+    `${origin}/#consent=${randomUUID()}&stage=initial&token=${"A".repeat(43)}&notice=${"a".repeat(64)}`,
+  );
+  await page.waitForURL(`${origin}/consent`);
+  await page
+    .getByRole("heading", { name: "Learning consent", exact: true })
+    .waitFor();
+  entry = {
+    ...snapshot,
+    next: "choose-plan",
+    learners: snapshot.learners.map((l: any) => ({
+      ...l,
+      entitlement: { ...l.entitlement, active: false },
+    })),
+  };
+  const purchaseId = randomUUID();
+  await page.route(`**/api/v1/billing/purchase/${purchaseId}`, (route) =>
+    route.fulfill({ json: { learnerId } }),
+  );
+  await page.route("**/api/v1/billing/offer", (route) =>
+    route.fulfill({ json: { available: false } }),
+  );
+  await page.goto(`${origin}/?billing=processing&purchase=${purchaseId}`);
+  await page.waitForURL(`${origin}/purchase/annual`);
+  await page
+    .getByRole("heading", { name: "Annual access", exact: true })
+    .waitFor();
+  await page.waitForFunction(
+    () => sessionStorage.getItem("amp.purchase-return.v1") === null,
+  );
+  assert.equal(new URL(page.url()).search, "");
+  await page.evaluate(
+    ({ purchaseId }) =>
+      sessionStorage.setItem(
+        "amp.purchase-return.v1",
+        JSON.stringify({
+          state: "processing",
+          purchaseId,
+          expiresAt: Date.now() + 60_000,
+        }),
+      ),
+    { purchaseId },
+  );
+  await page.goto(`${origin}/`);
+  await page.waitForURL(`${origin}/purchase/annual`);
+  await page.unroute("**/api/v1/me");
+  await page
+    .getByRole("heading", { name: "Annual access", exact: true })
+    .waitFor();
+  await page.waitForFunction(
+    () => sessionStorage.getItem("amp.purchase-return.v1") === null,
+  );
+  // Keep this document alive while another tab changes the shared account.
+  // A consumed checkout must not be inherited by the newly mounted account.
+  await page.evaluate(async () => {
+    const modulePath = "/src/web/app/router.tsx";
+    const { router } = await import(modulePath);
+    await router.navigate({ to: "/" });
+  });
+  await page
+    .getByRole("heading", { name: "Test Learner", exact: true })
+    .waitFor();
+  await page.unroute(`**/api/v1/billing/purchase/${purchaseId}`);
+  let replayedPurchases = 0;
+  page.on("request", (request) => {
+    if (
+      new URL(request.url()).pathname ===
+      `/api/v1/billing/purchase/${purchaseId}`
+    )
+      replayedPurchases++;
+  });
+  const second = await page.request.post(`${origin}/api/auth/sign-up/email`, {
+    headers: { origin },
+    data: {
+      email: `second-${Date.now()}@example.com`,
+      password: "synthetic second account password",
+      name: "Second account",
+    },
+  });
+  assert.equal(second.status(), 200);
+  const secondUser = (await second.json()).user;
+  await repository.pool.query(
+    "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Second Learner',2009)",
+    [randomUUID(), `amp|${secondUser.id}`],
+  );
+  const otherTab = await context.newPage();
+  await otherTab.goto(`${origin}/sign-in`);
+  await otherTab.evaluate(() => {
+    const channel = new BroadcastChannel("amp-account-session");
+    channel.postMessage("changed");
+    channel.close();
+  });
+  await page
+    .getByRole("heading", { name: "Second Learner", exact: true })
+    .waitFor();
+  await page.waitForLoadState("networkidle");
+  assert.equal(
+    replayedPurchases,
+    0,
+    "a new account cannot inherit a consumed checkout return",
+  );
+  assert.equal(new URL(page.url()).pathname, "/");
+  await otherTab.close();
   assert.deepEqual(errors, []);
   await context.close();
   console.log("Social sign-in UI verified.");

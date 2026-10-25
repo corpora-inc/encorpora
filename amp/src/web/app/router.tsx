@@ -30,6 +30,8 @@ import {
   type CampaignSearch,
 } from "../lib/funded-entry";
 import { chosenPlan } from "../lib/pending-trial";
+import { hasInitialConsentChallenge } from "../consent-entry";
+import { hasPurchaseReturn } from "../purchase-return";
 const searchSchema = z
   .object({
     return: z
@@ -171,7 +173,7 @@ const home = createRoute({
   getParentRoute: () => root,
   path: "/",
   component: legacy,
-  beforeLoad: async ({ search: rawSearch }) => {
+  beforeLoad: async ({ search: rawSearch, location }) => {
     const search = searchSchema.parse(rawSearch);
     if ("sign-in" in search)
       throw redirect({
@@ -189,12 +191,54 @@ const home = createRoute({
         const me = await queryClient
           .fetchQuery(meOptions(session))
           .catch(() => undefined);
+        // Explicit handoffs select their screen before mounting home. Merely
+        // skipping the default redirect would let home's setup effect race them.
+        if (hasInitialConsentChallenge())
+          throw redirect({
+            to: "/$",
+            params: { _splat: "consent" },
+            replace: true,
+          });
+        if (hasPurchaseReturn(location.searchStr))
+          throw redirect({
+            to: "/$",
+            params: { _splat: "purchase/annual" },
+            search,
+            replace: true,
+          });
+        if ("security" in search)
+          throw redirect({
+            to: "/$",
+            params: { _splat: "family/security" },
+            replace: true,
+          });
         if (
           me?.signedIn &&
           me.next === "accept-gift" &&
           !me.learners.some((learner) => learner.entitlement.active)
         )
           throw redirect({ to: "/access" });
+        // Resolve first-run routing before mounting the app shell. Otherwise
+        // returning trial users briefly see home and setup before practice.
+        if (
+          me?.signedIn &&
+          me.next !== "practice" &&
+          me.next !== "accept-gift"
+        ) {
+          const target = startDestination(me, "/", !!chosenPlan());
+          if (target === "/try") {
+            const { trialSessionOptions } =
+              await import("../features/trial/api");
+            const trial =
+              await queryClient.ensureQueryData(trialSessionOptions);
+            throw redirect({
+              to: trial ? "/try/practice" : "/try",
+              replace: true,
+            });
+          }
+          if (target)
+            throw redirect({ ...startNavigation(target), replace: true });
+        }
       }
     }
   },

@@ -545,7 +545,8 @@ def review_factoring_content(records=None):
             and all(row['extent'] == 'partial' for row in manifest['mappings']), 'Incorrect factoring assessment extent')
     facets = manifest['defaultCoverage']['facets']
     own = {row['id']:[t for t in row['templateIds'] if t in FACTORING] for row in facets}
-    require({facet:ids for facet,ids in own.items() if ids} == {facet:[template] for facet,template in bindings.items()}
+    # Each narrow facet keeps its factoring template; the same templates may also back other facets of the skill.
+    require(all(template in own.get(facet, []) for facet,template in bindings.items())
             and not any(row['independentlyReviewed'] for row in facets if own[row['id']])
             and not manifest['defaultCoverage'].get('fullyCovered'), 'Coverage must not overclaim whole-facet review')
     review = FactoringReview(); seen = set(); chains = 0

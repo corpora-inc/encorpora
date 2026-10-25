@@ -261,11 +261,12 @@ def check_manifest(record):
         circle = template['id'].startswith('circle-')
         require(template['version'] == 1 and template['skillId'] == ('circle-measurement' if circle else 'arc-sector-measure') and
                 template['gradeBand'] == ('6–8' if circle else '9–12'), 'Wrong circle template placement')
-    require(record['coverageValid'] and len(record['mappings']) == 4 and
+    # Each template may assess several facets; every circle template needs at least one partial mapping.
+    require(record['coverageValid'] and len(record['mappings']) >= 4 and
             {m['templateId'] for m in record['mappings']} == CIRCLE and
             all(m['extent'] == 'partial' for m in record['mappings']),
             'Missing circle facets or unsupported completeness claim')
-    require(len(record['bindings']) == 4 and {b['templateId'] for b in record['bindings']} == CIRCLE,
+    require(len(record['bindings']) >= 4 and {b['templateId'] for b in record['bindings']} == CIRCLE,
             'Circle templates are not bound to default curriculum facets')
     expected_facets = {
         'circle-circumference-coefficient': 'circle-measurement.exact-circumference',
@@ -273,8 +274,11 @@ def check_manifest(record):
         'arc-length-coefficient': 'arc-sector-measure.degree-arc-length',
         'sector-area-coefficient': 'arc-sector-measure.degree-sector-area',
     }
-    require(all(m['facetId'] == expected_facets[m['templateId']] for m in record['mappings']) and
-            all(b['facetId'] == expected_facets[b['templateId']] and
+    # Each template keeps its narrow facet; extra mappings may only name facets of the same skill.
+    allowed = lambda t, f: f.split('.')[0] == expected_facets[t].split('.')[0]
+    require(all((t, f) in {(m['templateId'], m['facetId']) for m in record['mappings']} for t, f in expected_facets.items()) and
+            all(allowed(m['templateId'], m['facetId']) for m in record['mappings']) and
+            all(allowed(b['templateId'], b['facetId']) and
                 b['skillId'] == b['facetId'].split('.')[0] and b['independentlyReviewed'] is False
                 for b in record['bindings']), 'Incorrect circle facet binding or verification claim')
     expected_inputs = [('0.125', '1/8'), ('1/8', '1/8'), ('2/16', '1/8'),

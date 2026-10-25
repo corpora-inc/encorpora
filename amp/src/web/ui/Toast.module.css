@@ -20,6 +20,19 @@
   color: var(--color-on-surface);
   box-shadow: var(--shadow-overlay);
 }
+.content {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.titled .content {
+  font-size: 15px;
+  line-height: 1.45;
+}
+.title {
+  margin-bottom: var(--space-1);
+  font-size: 16px;
+  font-weight: 750;
+}
 .toast button {
   flex: none;
   min-width: var(--target-size);
