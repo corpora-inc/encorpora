@@ -89,6 +89,8 @@ const checkoutVisitors: string[] = [];
 let phase: "ready" | "checkout-open" | "processing" | "paid" = "ready";
 
 async function serve(page: Page, faults: string[]) {
+  // This fixture exercises customer reports. Automated exclusion has its own browser test.
+  await page.addInitScript(() => Object.defineProperty(navigator, "webdriver", { get: () => false }));
   await page.route("https://checkout.stripe.com/**", (route) =>
     route.fulfill({
       contentType: "text/html",

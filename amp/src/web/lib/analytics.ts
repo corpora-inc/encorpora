@@ -8,6 +8,7 @@ import {
   funnelPropsSchemas,
 } from "../../analytics/events";
 import { storedTrial } from "./pending-trial";
+import type { TrafficKind } from "../../analytics/engagement";
 import { nativeRuntime } from "../native-runtime";
 
 /**
@@ -29,6 +30,27 @@ let buffer: Queued[] = [];
 let timer: ReturnType<typeof setTimeout> | null = null;
 let memoryVisitor: string | null = null;
 let listening = false;
+let entryContext: FunnelProps<"landing_view"> | undefined;
+export const trafficKey = "amp.analytics.traffic";
+export function analyticsTraffic(): TrafficKind {
+  try {
+    if (localStorage.getItem(trafficKey) === "internal") return "internal";
+  } catch {
+    /* Storage may be disabled. */
+  }
+  return navigator.webdriver ? "automated" : "external";
+}
+export function initializeAnalyticsContext(): void {
+  entryContext ??= landingProps();
+}
+export function analyticsAllowed(): boolean {
+  return (
+    !nativeRuntime &&
+    navigator.doNotTrack !== "1" &&
+    !(navigator as Navigator & { globalPrivacyControl?: boolean })
+      .globalPrivacyControl
+  );
+}
 
 function randomId(): string {
   return crypto.randomUUID();
@@ -60,7 +82,7 @@ export function track<E extends ClientEvent>(
 ): void {
   // The native shell talks to AMP only through its own session; the web
   // funnel is measured on the web.
-  if (nativeRuntime) return;
+  if (!analyticsAllowed()) return;
   try {
     const parsed = funnelPropsSchemas[event].safeParse(props ?? {});
     if (!parsed.success) {
@@ -109,6 +131,8 @@ function send(events: Queued[]): void {
     const trial = storedTrial();
     const body = JSON.stringify({
       visitorId: visitorId(),
+      ...(entryContext ? { context: entryContext } : {}),
+      traffic: analyticsTraffic(),
       ...(trial ? { trial } : {}),
       events,
     });
@@ -222,4 +246,5 @@ export function resetAnalyticsForTests(): void {
   timer = null;
   buffer = [];
   memoryVisitor = null;
+  entryContext = undefined;
 }

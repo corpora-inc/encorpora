@@ -24,6 +24,15 @@ export async function purgeFunnelEvents(
     expiredFunnelVisitors = 0,
     expiredFunnelLinks = 0;
   for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
+    const result = await pool.query(
+      `DELETE FROM amp_engagement_pages WHERE (visitor_id,page_id) IN (
+      SELECT visitor_id,page_id FROM amp_engagement_pages WHERE occurred_on<=${cutoff}
+      ORDER BY occurred_on LIMIT $3 FOR UPDATE SKIP LOCKED)`,
+      params,
+    );
+    if ((result.rowCount ?? 0) < RETENTION_BATCH.batchSize) break;
+  }
+  for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
     const result = await pool.query<{ n: number }>(
       `WITH doomed AS (
          SELECT id FROM amp_funnel_events WHERE occurred_on<=${cutoff}
@@ -37,7 +46,8 @@ export async function purgeFunnelEvents(
            COALESCE(v.utm_source,v.referrer,'unknown'),COALESCE(v.device,'unknown'),
            COALESCE(v.grade_band,'unknown'),count(*)
          FROM gone g LEFT JOIN amp_funnel_visitors v ON v.visitor_id=g.visitor_id
-         WHERE g.visitor_id IS NULL OR v.converted_on IS NOT NULL
+         WHERE (g.visitor_id IS NULL OR v.converted_on IS NOT NULL)
+           AND (v.traffic_kind IS NULL OR v.traffic_kind NOT IN ('internal','automated'))
          GROUP BY 1,2,3,4,5
          ON CONFLICT(month,event,source,device,grade_band) DO UPDATE SET count=a.count+EXCLUDED.count
          RETURNING 1
@@ -54,6 +64,7 @@ export async function purgeFunnelEvents(
          SELECT v.visitor_id FROM amp_funnel_visitors v WHERE v.last_seen<=${cutoff}
          -- Never cascade events that have not been counted yet.
          AND NOT EXISTS(SELECT 1 FROM amp_funnel_events e WHERE e.visitor_id=v.visitor_id)
+         AND NOT EXISTS(SELECT 1 FROM amp_engagement_pages p WHERE p.visitor_id=v.visitor_id)
          ORDER BY v.last_seen LIMIT $3 FOR UPDATE SKIP LOCKED)`,
       params,
     );
