@@ -15,7 +15,7 @@ const complexFigure = graph({ x: [-5, 5], y: [-5, 5], tick: 1 })
 
 export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
   "arc-sector-derivation": {
-    goal: "Use similar circles to relate arc length to radius, define radian measure as arc over radius, and find a sector's area as a fraction of the disk.",
+    goal: "Relate arc length to radius with similar circles, define radian measure as arc over radius, and find sector area as a fraction.",
     intuition:
       "Every circle is an enlargement of every other circle. When a circle is enlarged by a factor $k$, every length in it is multiplied by $k$, including the radius and the arc cut off by a fixed central angle. So for one angle, arc length divided by radius is the same number in every circle. That number measures the angle.",
     terms: [
@@ -117,7 +117,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "Position does not decide congruence, and neither does a mirror image: translations, rotations and reflections are all allowed. Equal angles alone do not make congruent triangles; the sizes must match too.",
   },
   "conic-foci": {
-    goal: "Find the foci of an ellipse or hyperbola from its equation, and find the equation from the foci and a constant sum or difference of distances.",
+    goal: "Find foci from an ellipse or hyperbola equation, and find the equation from the foci and a constant sum or difference.",
     intuition:
       "Two fixed points called foci define these curves. An ellipse is every point whose distances to the two foci add to a constant. A hyperbola is every point whose distances to the two foci differ by a constant. The foci lie on the axis that holds the vertices, at distance $c$ from the center.",
     terms: [
