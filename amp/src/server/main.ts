@@ -176,7 +176,10 @@ await registerOfflineRoutes(app, {
   authenticate,
   signer: await offlineSigningConfiguration(process.env),
 });
-await registerAnalyticsRoutes(app, { pool: repository.pool });
+await registerAnalyticsRoutes(app, {
+  pool: repository.pool,
+  origin: campaignOrigin(process.env.AMP_CAMPAIGN_SITE_ORIGIN),
+});
 await registerParentFeedbackRoutes(app, { pool: repository.pool });
 await registerCampaignRoutes(app, {
   pool: repository.pool,

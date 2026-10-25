@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 import {
   flush,
+  analyticsVisitorHeaders,
   landingProps,
   referrerCategory,
   resetAnalyticsForTests,
@@ -118,4 +119,19 @@ test("reduces the landing context to categories", () => {
     "internal",
   );
   expect(referrerCategory("https://t.co/abc", "amp.example")).toBe("social");
+});
+
+test("privacy opt-out suppresses session storage and payment attribution headers", () => {
+  Object.defineProperty(navigator, "doNotTrack", {
+    value: "1",
+    configurable: true,
+  });
+  trackSessionStart();
+  expect(analyticsVisitorHeaders()).toEqual({});
+  expect(localStorage.getItem(visitorKey)).toBeNull();
+  expect(beacon).not.toHaveBeenCalled();
+  Object.defineProperty(navigator, "doNotTrack", {
+    value: undefined,
+    configurable: true,
+  });
 });

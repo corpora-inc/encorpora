@@ -1,10 +1,16 @@
+import { entryContext as captureEntryContext } from "../../analytics/entry-context";
+export { referrerCategory, deviceClass } from "../../analytics/entry-context";
+import {
+  browserIdentity,
+  VISITOR_KEY,
+  FIRST_VISIT_KEY,
+  TRAFFIC_KEY,
+} from "../../analytics/browser-identity";
 import {
   type ClientEvent,
   type FunnelProps,
   MAX_BATCH_BYTES,
   MAX_EVENTS_PER_BATCH,
-  REFERRER_CATEGORIES,
-  DEVICE_CLASSES,
   funnelPropsSchemas,
 } from "../../analytics/events";
 import { storedTrial } from "./pending-trial";
@@ -18,8 +24,8 @@ import { nativeRuntime } from "../native-runtime";
  * delay a screen. The visitor ID is a random UUID in this browser's storage:
  * it is not derived from, or sent with, any account, learner or contact.
  */
-export const visitorKey = "amp.visitor";
-export const firstVisitKey = "amp.visitor.first";
+export const visitorKey = VISITOR_KEY;
+export const firstVisitKey = FIRST_VISIT_KEY;
 const sessionKey = "amp.visitor.session";
 const endpoint = "/api/v1/events";
 const flushDelayMs = 2000;
@@ -28,20 +34,18 @@ const maxBuffered = 200;
 type Queued = { event: ClientEvent; props: unknown; at: number };
 let buffer: Queued[] = [];
 let timer: ReturnType<typeof setTimeout> | null = null;
-let memoryVisitor: string | null = null;
+let identity: ReturnType<typeof browserIdentity> | undefined;
+const currentIdentity = () => (identity ??= browserIdentity());
 let listening = false;
 let entryContext: FunnelProps<"landing_view"> | undefined;
-export const trafficKey = "amp.analytics.traffic";
+export const trafficKey = TRAFFIC_KEY;
 export function analyticsTraffic(): TrafficKind {
-  try {
-    if (localStorage.getItem(trafficKey) === "internal") return "internal";
-  } catch {
-    /* Storage may be disabled. */
-  }
+  if (currentIdentity().internal()) return "internal";
   return navigator.webdriver ? "automated" : "external";
 }
 export function initializeAnalyticsContext(): void {
-  entryContext ??= landingProps();
+  if (analyticsAllowed())
+    entryContext ??= currentIdentity().context(landingProps());
 }
 export function analyticsAllowed(): boolean {
   return (
@@ -52,25 +56,14 @@ export function analyticsAllowed(): boolean {
   );
 }
 
-function randomId(): string {
-  return crypto.randomUUID();
+/** The same random analytics ID on the marketing site and AMP. */
+export function visitorId(): string {
+  return currentIdentity().visitor();
 }
 
-/** This browser's random visitor ID, created on first use. */
-export function visitorId(): string {
-  try {
-    const stored = localStorage.getItem(visitorKey);
-    if (stored && /^[0-9a-f-]{36}$/i.test(stored)) return stored;
-    const created = memoryVisitor ?? randomId();
-    localStorage.setItem(visitorKey, created);
-    localStorage.setItem(firstVisitKey, String(Date.now()));
-    memoryVisitor = created;
-    return created;
-  } catch {
-    // Storage is blocked: keep one ID for this page so a session still links.
-    memoryVisitor ??= randomId();
-    return memoryVisitor;
-  }
+/** Optional payment correlation respects the same browser privacy preference. */
+export function analyticsVisitorHeaders(): Record<string, string> {
+  return analyticsAllowed() ? { "X-AMP-Visitor": visitorId() } : {};
 }
 
 /** Record one funnel event. Invalid props are dropped and logged. */
@@ -127,6 +120,7 @@ export function flush(): void {
 }
 
 function send(events: Queued[]): void {
+  if (!analyticsAllowed()) return;
   try {
     const trial = storedTrial();
     const body = JSON.stringify({
@@ -178,6 +172,7 @@ export function daysSinceFirstVisit(now = Date.now()): number {
 
 /** Emit `session_start` once per browser tab session. */
 export function trackSessionStart(): void {
+  if (!analyticsAllowed()) return;
   try {
     if (sessionStorage.getItem(sessionKey)) return;
     sessionStorage.setItem(sessionKey, "1");
@@ -187,57 +182,20 @@ export function trackSessionStart(): void {
   track("session_start", { daysSinceFirstVisit: daysSinceFirstVisit() });
 }
 
-type Referrer = (typeof REFERRER_CATEGORIES)[number];
-const searchHosts =
-  /(^|\.)(google|bing|duckduckgo|yahoo|baidu|yandex|ecosia|brave)\./;
-const socialHosts =
-  /(^|\.)(facebook|instagram|t|x|twitter|linkedin|pinterest|reddit|youtube|tiktok|threads)\.(com|co|net)$/;
-const mailHosts = /(^|\.)(mail\.google|outlook\.live|mail\.yahoo)\./;
-
-/** A category for the referring site; the URL itself is never sent. */
-export function referrerCategory(referrer: string, ownHost: string): Referrer {
-  if (!referrer) return "direct";
-  let host: string;
-  try {
-    host = new URL(referrer).hostname.toLowerCase();
-  } catch {
-    return "other";
-  }
-  if (host === ownHost.toLowerCase()) return "internal";
-  if (mailHosts.test(host)) return "email";
-  if (searchHosts.test(host)) return "search";
-  if (socialHosts.test(host)) return "social";
-  return "other";
-}
-
-export function deviceClass(width: number, coarse: boolean) {
-  const device: (typeof DEVICE_CLASSES)[number] =
-    width < 600 ? "phone" : coarse && width < 1100 ? "tablet" : "desktop";
-  return device;
-}
-
 /** Props for `landing_view` from the current URL, referrer and screen. */
 export function landingProps(
   location: Pick<Location, "search" | "hostname"> = window.location,
   referrer = document.referrer,
 ): FunnelProps<"landing_view"> {
-  const query = new URLSearchParams(location.search);
-  const clean = (key: string) => {
-    const value = query.get(key)?.trim().toLowerCase();
-    return value && /^[a-z0-9._~-]{1,64}$/.test(value) ? value : undefined;
-  };
-  const utmSource = clean("utm_source");
-  const utmMedium = clean("utm_medium");
-  const utmCampaign = clean("utm_campaign");
-  const coarse =
-    typeof matchMedia === "function" && matchMedia("(pointer: coarse)").matches;
-  return {
-    ...(utmSource ? { utmSource } : {}),
-    ...(utmMedium ? { utmMedium } : {}),
-    ...(utmCampaign ? { utmCampaign } : {}),
-    referrer: referrerCategory(referrer, location.hostname),
-    device: deviceClass(window.innerWidth, coarse),
-  };
+  return captureEntryContext({
+    search: location.search,
+    hostname: location.hostname,
+    referrer,
+    width: window.innerWidth,
+    coarse:
+      typeof matchMedia === "function" &&
+      matchMedia("(pointer: coarse)").matches,
+  });
 }
 
 /** Test seam: forget buffered events and the in-memory visitor. */
@@ -245,6 +203,6 @@ export function resetAnalyticsForTests(): void {
   if (timer) clearTimeout(timer);
   timer = null;
   buffer = [];
-  memoryVisitor = null;
+  identity = undefined;
   entryContext = undefined;
 }

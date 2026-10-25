@@ -123,15 +123,19 @@ export function Legal({
           <h2>This website</h2>
           <p>
             The site does not load advertising pixels or send learning answers
-            to advertising platforms. On the
-            Arkansas and Arizona funding pages, our own server counts page views, trial-link
-            clicks and invoice-email-link clicks by day and fixed campaign
-            labels. These counts contain no visitor identifier, name, email,
-            learning answer, or full page URL. An invoice-link click does not
-            establish an invoice request or purchase. We honor browser Global
-            Privacy Control and Do Not Track signals for this measurement.
-            Campaign labels may accompany the trial link; the app's separate
-            trial measurement is described below. Opening
+            to advertising platforms. Our own server measures categorized page
+            visits, estimated active time, and actions such as starting an
+            assessment, opening an invoice form, or selecting a support link.
+            A random browser identifier connects this activity with visits to
+            AMP. First-party cookies shared across corpora.inc and its
+            subdomains retain this identifier, bounded entry-campaign labels,
+            and an optional staff-testing marker for up to {RETENTION.funnelEventDays} days after use. Browser
+            storage also retains the identifier. These records contain no name,
+            email, learning answer, form contents, or full page URL. An
+            invoice-form click does not establish an invoice request or purchase.
+            We honor browser Global Privacy Control and Do Not Track signals
+            for this measurement. Campaign labels may accompany the assessment
+            link. Opening
             a worked example does not submit an answer. The hosting service can
             receive an IP address, requested URL, and browser information to
             deliver pages and protect the service. Links to the AMP app and
@@ -290,8 +294,8 @@ export function Legal({
             AMP also measures practice and purchase steps using a random browser
             visitor identifier, fixed event types and counts, campaign source,
             referrer and device categories, grade band and coarse age band.
-            It also records screen categories, their order within a page-load
-            session, and cumulative visible and active time. Random page and
+            It also records screen categories, their observed order across the
+            marketing site and AMP, and cumulative visible and active time. Random page and
             session identifiers distinguish visits; staff and automated browser
             markers help exclude testing from customer reports. Raw URLs,
             keystrokes and form contents are not collected by this measurement.
@@ -302,7 +306,7 @@ export function Legal({
             records on a day with few purchases.
           </p>
           <p>
-            Events and page-engagement records are deleted after {RETENTION.funnelEventDays} days; visitor
+            Events, marketing actions and page-engagement records are deleted after {RETENTION.funnelEventDays} days; visitor
             records expire {RETENTION.funnelEventDays} days after their last
             event. The checkout link to a visitor is erased when the purchase is
             recorded or after {RETENTION.funnelEventDays} days. Converted visits
