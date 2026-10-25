@@ -8,6 +8,24 @@
   font-size: var(--text-small);
   line-height: 1.4;
 }
+.inlineLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 4px;
+  margin: -10px -4px;
+  border: 0;
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.emailHelp p {
+  margin: 0 0 var(--space-3);
+  overflow-wrap: anywhere;
+}
 /* Keep sign-in's action in reach on short phone viewports without shrinking
  * the 44px controls or suppressing the user's text size. */
 @media (max-height: 740px) {
