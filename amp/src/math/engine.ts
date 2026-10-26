@@ -7,6 +7,11 @@ import {
   generateSatGeometryDataProblem,
 } from "./sat-geometry-data-practice";
 import { normalizeSelection } from "./selection-response";
+import { gradePointPlot, normalizePointPlot } from "./point-plot";
+import {
+  pointPlotTemplates,
+  generatePointPlotProblem,
+} from "./point-plot-practice";
 import {
   quadrilateralHierarchyMultiselectTemplate,
   generateQuadrilateralHierarchyMultiselect,
@@ -474,6 +479,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...advancedMathGapTemplates,
   ...satAlgebraStructureTemplates,
   ...satNumericEntryTemplates,
+  ...pointPlotTemplates,
   ...vectorMatrixTemplates,
   ...statisticsProbabilityTemplates,
   ...complexConicsTemplates,
@@ -588,6 +594,8 @@ export function isValidResponse(
 ): boolean {
   if (problem.response.kind === "multi-select")
     return normalizeSelection(problem.response, response) !== null;
+  if (problem.response.kind === "point-plot")
+    return normalizePointPlot(problem.response, response) !== null;
   return problem.response.kind === "choice"
     ? problem.response.options.some((option) => option.id === response)
     : normalizeAnswer(response) !== null;
@@ -603,6 +611,16 @@ export function gradeAnswer(
       answer === normalizeSelection(problem.public.response, problem.answer)
     );
   }
+  if (problem.public.response.kind === "point-plot")
+    return (
+      !!problem.pointGrading &&
+      gradePointPlot(
+        problem.public.response,
+        problem.pointGrading,
+        problem.answer,
+        response,
+      )
+    );
   if (problem.public.response.kind === "choice")
     return (
       isValidResponse(problem.public, response) && response === problem.answer
@@ -755,6 +773,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
     ...algebraRequirementGapTemplates,
+    ...pointPlotTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
@@ -931,6 +950,8 @@ function generateRawProblem(
     return generateSatNumericEntryProblem(templateId, seed);
   if (hsStateGapTemplates.some((t) => t.id === templateId))
     return generateHsStateGapProblem(templateId, seed);
+  if (pointPlotTemplates.some((t) => t.id === templateId))
+    return generatePointPlotProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
   if (algebraRequirementGapTemplates.some((t) => t.id === templateId))

@@ -8,7 +8,7 @@ const oldApi = () =>
     JSON.stringify({
       error: "Invalid request",
       details: [
-        { path: ["responseCapabilities", 1], message: "Unsupported value" },
+        { path: ["responseCapabilities", 2], message: "Unsupported value" },
         { path: ["responseCapabilities"], message: "Too many values" },
       ],
     }),
@@ -22,7 +22,7 @@ afterEach(() => {
   localStorage.clear();
 });
 
-test("trial transport retries an old API once without losing auth, focus or figures", async () => {
+test("trial transport retries an older API without its newest format, keeping auth, focus and figures", async () => {
   localStorage.setItem(trialKey, session.token);
   vi.spyOn(console, "error").mockImplementation(() => {});
   const fetch = vi
@@ -48,12 +48,16 @@ test("trial transport retries an old API once without losing auth, focus or figu
   expect(first).toMatchObject({
     count: 1,
     templateId: "chosen-template",
-    responseCapabilities: ["single-choice-v1", "multi-select-v1"],
+    responseCapabilities: [
+      "single-choice-v1",
+      "multi-select-v1",
+      "point-plot-v1",
+    ],
   });
   expect(first.figureCapabilities.length).toBeGreaterThan(0);
   expect(retry).toEqual({
     ...first,
-    responseCapabilities: ["single-choice-v1"],
+    responseCapabilities: ["single-choice-v1", "multi-select-v1"],
   });
 });
 
