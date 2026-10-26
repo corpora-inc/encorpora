@@ -656,6 +656,15 @@ function routes(app: FastifyInstance, options: AppOptions) {
         // sets on retries without depending on instance retention or option order.
         const selected = canonicalSelection(duplicate.response);
         const plotted = canonicalPointSet(duplicate.response);
+        // An ordered answer that happens to be stored in sorted order is
+        // indistinguishable from a set, so ask the problem whether order counts.
+        const stored =
+          plotted !== null && plotted === duplicate.response
+            ? await tx.problem(duplicate.problemId)
+            : null;
+        const orderedPlot =
+          stored?.public.response.kind === "point-plot" &&
+          stored.public.response.ordered;
         const parts = canonicalMultiPart(duplicate.response);
         const sameResponse =
           duplicate.response === input.response ||
@@ -664,6 +673,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
           // Sets are stored sorted; an ordered answer keeps its slots, so a
           // reordered retry of labeled images is a different submission.
           (plotted !== null &&
+            !orderedPlot &&
             plotted === duplicate.response &&
             canonicalPointSet(input.response) === plotted) ||
           // Multi-part answers are keyed by blank, so key order is not a change.

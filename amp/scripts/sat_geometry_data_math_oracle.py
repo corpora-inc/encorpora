@@ -7,6 +7,7 @@ reads the generator's case or answer logic.
 import copy
 import math
 import re
+from figure_givens import check_figure_givens
 from decimal import Decimal, ROUND_HALF_UP
 from fractions import Fraction
 
@@ -443,6 +444,8 @@ SOLVERS = {TRIG: solve_trig, MIDPOINT: solve_midpoint, SPACE: solve_space, CIRCL
 
 def solve(public):
     require(public['templateId'] in SUPPORTED, 'Unexpected SAT geometry/data family')
+    if public['templateId'] == CIRCLE:
+        check_figure_givens(public, require)
     return SOLVERS[public['templateId']](public)
 
 

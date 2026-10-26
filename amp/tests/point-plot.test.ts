@@ -17,7 +17,9 @@ import {
   clipLineToGrid,
   draftSlots,
   gradePointPlot,
+  latticeOnCurve,
   latticeOnLine,
+  onCurve,
   lineThrough,
   moveDraftPoint,
   normalizePointPlot,
@@ -40,6 +42,10 @@ const families = [
   "plot-points",
   "graph-linear-equation",
   "place-transformed-image",
+  "graph-quadratic-points",
+  "graph-absolute-value-points",
+  "graph-exponential-points",
+  "graph-sqrt-points",
 ] as const;
 const grid = {
   xMin: -6,
@@ -434,6 +440,7 @@ test("every family is reachable, valid, self-consistent and leaks no grading dat
         "answer",
         "walkthrough",
         "on-line",
+        "on-curve",
         "exact",
       ])
         assert.equal(pub.includes(`"${secret}"`), false, `${id}: ${secret}`);
@@ -467,6 +474,45 @@ test("every family is reachable, valid, self-consistent and leaks no grading dat
             gradeAnswer(problem, serializePlot([all[1]!, off], false)),
             false,
           );
+      } else if (problem.pointGrading.mode === "on-curve") {
+        const { curve, required = [] } = problem.pointGrading;
+        const all = latticeOnCurve(response.grid, curve);
+        assert.ok(all.length >= 3, problem.public.prompt);
+        // Every accepted set grades correct; one off-curve point never does.
+        const feature = required.map((p) => serializePlot([p], false));
+        const others = all.filter(
+          (p) => !required.some((q) => q[0] === p[0] && q[1] === p[1]),
+        );
+        const accepted = [...required, ...others].slice(0, 3);
+        assert.equal(
+          gradeAnswer(problem, serializePlot(accepted, false)),
+          true,
+          problem.public.prompt,
+        );
+        const off: LatticePoint = [accepted[0]![0], accepted[0]![1] + 1];
+        if (
+          !onCurve(curve, off) &&
+          isValidResponse(
+            problem.public,
+            serializePlot([off, ...accepted.slice(1)], false),
+          )
+        )
+          assert.equal(
+            gradeAnswer(
+              problem,
+              serializePlot([off, ...accepted.slice(1)], false),
+            ),
+            false,
+          );
+        // A required feature point cannot be swapped for another curve point.
+        if (required.length && others.length >= 3) {
+          const without = others.slice(0, 3);
+          assert.equal(
+            gradeAnswer(problem, serializePlot(without, false)),
+            false,
+            `${problem.public.prompt}: ${feature}`,
+          );
+        }
       } else {
         // Moving any one point by one unit makes the answer wrong.
         const moved = points.map((p, j) =>
@@ -479,7 +525,17 @@ test("every family is reachable, valid, self-consistent and leaks no grading dat
       assert.equal(gradeAnswer(problem, "[]"), false);
     }
     // Lines are fewer: a 13-by-13 window holds a bounded set of graphable lines.
-    const least = id === "graph-linear-equation" ? 150 : 250;
+    const least =
+      id === "graph-exponential-points"
+        ? 10
+        : id === "graph-sqrt-points"
+          ? 100
+          : id === "graph-quadratic-points" ||
+              id === "graph-absolute-value-points"
+            ? 200
+            : id === "graph-linear-equation"
+              ? 150
+              : 250;
     assert.ok(prompts.size > least, `${id}: ${prompts.size} distinct prompts`);
   }
 });
@@ -531,7 +587,7 @@ test("clients without point-plot-v1 are never served these families, online or o
   const plotTemplates = templates.filter((t) =>
     families.includes(t.id as (typeof families)[number]),
   );
-  assert.equal(plotTemplates.length, 3);
+  assert.equal(plotTemplates.length, families.length);
   assert.deepEqual(
     [...responseCapabilities],
     [
@@ -643,7 +699,11 @@ test("blind placement has a tiny, never understated chance of being graded corre
 });
 
 test("hints teach the first move without placing an answer point", () => {
-  for (const id of ["graph-linear-equation", "place-transformed-image"]) {
+  for (const id of [
+    "graph-linear-equation",
+    "place-transformed-image",
+    ...families.slice(3),
+  ]) {
     for (let i = 0; i < 300; i++) {
       const problem = generateProblem(id, `hint-${i}`);
       const pair = ([x, y]: LatticePoint) => `(${x}, ${y})`;
@@ -692,4 +752,246 @@ test("a lesson never works an example whose answer also answers the learner's li
   }
   // The guard matters: equivalent forms of one line do occur.
   assert.ok(overlapsWithoutGuard > 0);
+});
+
+test("on-curve grading is exact for every curve kind, with required features and domain limits", () => {
+  const curveResponse = (
+    grid: PointPlotResponse["grid"],
+  ): PointPlotResponse => ({
+    kind: "point-plot",
+    label: "Place 3 points on the curve",
+    grid,
+    pointCount: 3,
+    ordered: false,
+    connect: "curve",
+  });
+  const r = curveResponse(grid);
+  const grade = (
+    grading: Parameters<typeof gradePointPlot>[1],
+    points: LatticePoint[],
+    response = r,
+  ) => gradePointPlot(response, grading, "[]", serializePlot(points, false));
+  // y = 2(x - 1)^2 - 3, vertex (1, -3)
+  const parabola = {
+    mode: "on-curve",
+    curve: { kind: "quadratic", a: [2, 1], h: [1, 1], k: [-3, 1] },
+    required: [[1, -3]],
+  } as const;
+  assert.equal(
+    grade(parabola, [
+      [0, -1],
+      [1, -3],
+      [2, -1],
+    ]),
+    true,
+  );
+  assert.equal(
+    grade(parabola, [
+      [1, -3],
+      [3, 5],
+      [-1, 5],
+    ]),
+    true,
+  );
+  // The right points without the required vertex, or one point off by one.
+  assert.equal(
+    grade(parabola, [
+      [0, -1],
+      [2, -1],
+      [3, 5],
+    ]),
+    false,
+  );
+  assert.equal(
+    grade(parabola, [
+      [0, -1],
+      [1, -3],
+      [2, 0],
+    ]),
+    false,
+  );
+  // Only the required point is checked: no required list accepts any curve points.
+  assert.equal(
+    grade({ ...parabola, required: undefined }, [
+      [0, -1],
+      [2, -1],
+      [3, 5],
+    ]),
+    true,
+  );
+  // Duplicates and off-grid points are invalid, not accepted.
+  assert.equal(
+    grade(parabola, [
+      [1, -3],
+      [1, -3],
+      [2, -1],
+    ]),
+    false,
+  );
+  assert.equal(
+    grade(parabola, [
+      [1, -3],
+      [2, -1],
+      [7, 69],
+    ]),
+    false,
+  );
+  // A fractional leading coefficient needs even offsets.
+  const half = {
+    mode: "on-curve",
+    curve: { kind: "quadratic", a: [1, 2], h: [0, 1], k: [0, 1] },
+  } as const;
+  assert.equal(
+    grade(half, [
+      [0, 0],
+      [2, 2],
+      [-2, 2],
+    ]),
+    true,
+  );
+  assert.equal(
+    grade(half, [
+      [0, 0],
+      [1, 1],
+      [2, 2],
+    ]),
+    false,
+  );
+  // Absolute value, both sides of the vertex.
+  const v = {
+    mode: "on-curve",
+    curve: { kind: "absolute", a: [-2, 1], h: [-1, 1], k: [3, 1] },
+  } as const;
+  assert.equal(
+    grade(v, [
+      [-1, 3],
+      [0, 1],
+      [-2, 1],
+    ]),
+    true,
+  );
+  assert.equal(
+    grade(v, [
+      [-1, 3],
+      [0, 1],
+      [-2, 5],
+    ]),
+    false,
+  );
+  // Square roots exist only from the starting point, and only perfect squares are whole.
+  const root = {
+    mode: "on-curve",
+    curve: { kind: "root", a: [2, 1], h: [-3, 1], k: [-1, 1] },
+    required: [[-3, -1]],
+  } as const;
+  assert.equal(
+    grade(root, [
+      [-3, -1],
+      [-2, 1],
+      [1, 3],
+    ]),
+    true,
+  );
+  assert.equal(
+    grade(root, [
+      [-3, -1],
+      [-2, 1],
+      [-1, 2],
+    ]),
+    false,
+  );
+  assert.equal(
+    grade(root, [
+      [-4, 1],
+      [-2, 1],
+      [1, 3],
+    ]),
+    false,
+  );
+  // Exponentials: negative inputs divide, and fractions are not lattice points.
+  const wide = { ...grid, xMin: -4, xMax: 4, yMin: -2, yMax: 12 };
+  const exp = {
+    mode: "on-curve",
+    curve: { kind: "exponential", a: [3, 1], b: [1, 2] },
+  } as const;
+  assert.equal(
+    grade(
+      exp,
+      [
+        [-2, 12],
+        [-1, 6],
+        [0, 3],
+      ],
+      curveResponse(wide),
+    ),
+    true,
+  );
+  assert.equal(
+    grade(
+      exp,
+      [
+        [0, 3],
+        [1, 2],
+        [-1, 6],
+      ],
+      curveResponse(wide),
+    ),
+    false,
+  );
+  assert.equal(
+    onCurve({ kind: "exponential", a: [1, 1], b: [2, 1] }, [-1, 0]),
+    false,
+  );
+  // The curve is the same as a line grading would never accept.
+  assert.equal(
+    grade(parabola, [
+      [0, 0],
+      [1, 1],
+      [2, 2],
+    ]),
+    false,
+  );
+});
+
+test("curve families keep their function private and state the required feature in the prompt", () => {
+  const seen = new Set<string>();
+  for (const id of families.slice(3)) {
+    for (let i = 0; i < 200; i++) {
+      const problem = generateProblem(id, `curve-${i}`);
+      const grading = problem.pointGrading;
+      assert.equal(grading?.mode, "on-curve");
+      if (grading?.mode !== "on-curve") continue;
+      const pub = JSON.stringify(problem.public);
+      assert.equal(
+        pub.includes('"curve"') && pub.includes('"kind":"quadratic"'),
+        false,
+      );
+      assert.equal(
+        problem.public.response.kind === "point-plot" &&
+          problem.public.response.connect,
+        "curve",
+      );
+      for (const [x, y] of grading.required ?? []) {
+        assert.ok(
+          /vertex|intercept|starting point/.test(problem.public.prompt),
+          problem.public.prompt,
+        );
+        assert.ok(
+          plotPoints(problem.answer).some((p) => p[0] === x && p[1] === y),
+        );
+        seen.add(`${id}:required`);
+      }
+      if (!grading.required) seen.add(`${id}:free`);
+      // The worked scene draws the curve; the public problem has no figure.
+      assert.ok(problem.walkthrough);
+      assert.equal(problem.public.figure, undefined);
+    }
+  }
+  for (const id of families.slice(3)) assert.ok(seen.has(`${id}:free`), id);
+  for (const id of [
+    "graph-quadratic-points",
+    "graph-absolute-value-points",
+    "graph-sqrt-points",
+  ])
+    assert.ok(seen.has(`${id}:required`), id);
 });

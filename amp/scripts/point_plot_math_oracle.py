@@ -5,17 +5,23 @@ axis-distance descriptions, a linear equation parsed exactly with Fractions,
 or a rigid motion applied to the listed vertices. The private answer and the
 on-line grading coefficients are only values under test. Grading is
 reimplemented here (exact set or sequence; any distinct lattice points of one
-line) and never imported from the generator.
+line or of one graphed curve, with required feature points) and never imported
+from the generator. Curve items are read from the prompt's equation by an
+exact Fraction evaluator; every worked substitution in the explanation is
+evaluated again and must equal the curve's value.
 """
 
 import copy
 import json
 import re
 from fractions import Fraction as F
-from math import gcd
+from itertools import combinations
+from math import gcd, isqrt
 
-SUPPORTED = frozenset({"plot-points", "graph-linear-equation", "place-transformed-image"})
+CURVES = frozenset({"graph-quadratic-points", "graph-absolute-value-points", "graph-exponential-points", "graph-sqrt-points"})
+SUPPORTED = frozenset({"plot-points", "graph-linear-equation", "place-transformed-image"}) | CURVES
 GRID = {"xMin": -6, "xMax": 6, "yMin": -6, "yMax": 6, "step": 1, "xLabel": "x", "yLabel": "y"}
+EXP_GRID = {"xMin": -4, "xMax": 4, "yMin": -2, "yMax": 12, "step": 1, "xLabel": "x", "yLabel": "y"}
 PRIME = "\u2032"
 NUM = r"-?\(?-?\d+(?:/\d+)?\)?"
 PAIR = re.compile(r"\((-?\d+), (-?\d+)\)")
@@ -54,12 +60,12 @@ def wire(points):
     return json.dumps([list(p) for p in points], separators=(",", ":"))
 
 
-def in_grid(point):
-    return GRID["xMin"] <= point[0] <= GRID["xMax"] and GRID["yMin"] <= point[1] <= GRID["yMax"]
+def in_grid(point, grid=GRID):
+    return grid["xMin"] <= point[0] <= grid["xMax"] and grid["yMin"] <= point[1] <= grid["yMax"]
 
 
-def lattice():
-    return [(x, y) for x in range(GRID["xMin"], GRID["xMax"] + 1) for y in range(GRID["yMin"], GRID["yMax"] + 1)]
+def lattice(grid=GRID):
+    return [(x, y) for x in range(grid["xMin"], grid["xMax"] + 1) for y in range(grid["yMin"], grid["yMax"] + 1)]
 
 
 # ---------------------------------------------------------------- linear forms
@@ -288,11 +294,302 @@ def read_transform(prompt):
     return shape, vertices, kind, rule, [rule(p) for p in coordinates]
 
 
+
+# ---------------------------------------------------------------- curves
+
+class Undefined(Exception):
+    """The function has no real value at this input."""
+
+
+class Irrational(Exception):
+    """The value exists but is not a rational number."""
+
+
+def curve_tokens(text):
+    text = (text.replace("\\left|", "|").replace("\\right|", "|").replace("\\left(", "(").replace("\\right)", ")")
+            .replace("\\cdot", "*").replace("\\sqrt", "S").replace(" ", ""))
+    tokens = re.findall(r"\d+|x|S|[-+*/^(){}|]", text)
+    require("".join(tokens) == text, f"Unreadable curve expression: {text}")
+    return tokens
+
+
+def curve_value_of(text, x):
+    """Exact value of an expression in x: + - * / ^ , abs bars, S{...} square roots."""
+    tokens, position, inside = curve_tokens(text), [0], [0]
+
+    def peek():
+        return tokens[position[0]] if position[0] < len(tokens) else None
+
+    def take():
+        position[0] += 1
+        return tokens[position[0] - 1]
+
+    def expect(token):
+        require(peek() == token, f"Expected {token} in {text}")
+        take()
+
+    def atom():
+        token = peek()
+        require(token is not None, f"Truncated expression: {text}")
+        if token == "(":
+            take()
+            value = expression()
+            expect(")")
+            return value
+        if token == "{":
+            take()
+            value = expression()
+            expect("}")
+            return value
+        if token == "|":
+            take()
+            inside[0] += 1
+            value = abs(expression())
+            expect("|")
+            inside[0] -= 1
+            return value
+        if token == "S":
+            take()
+            expect("{")
+            radicand = expression()
+            expect("}")
+            if radicand < 0:
+                raise Undefined()
+            n, d = isqrt(radicand.numerator), isqrt(radicand.denominator)
+            if n * n != radicand.numerator or d * d != radicand.denominator:
+                raise Irrational()
+            return F(n, d)
+        if token == "x":
+            take()
+            return F(x)
+        require(token.isdigit(), f"Unexpected {token} in {text}")
+        take()
+        return F(int(token))
+
+    def signed_atom():
+        if peek() == "-":
+            take()
+            return -signed_atom()
+        return atom()
+
+    def power():
+        base = atom()
+        if peek() == "^":
+            take()
+            exponent = signed_atom()
+            require(exponent.denominator == 1 and abs(exponent) <= 60, "Exponent must be a small integer")
+            require(base != 0 or exponent > 0, "Zero to a nonpositive power")
+            return base ** int(exponent)
+        return base
+
+    def term():
+        value = power()
+        while peek() is not None and peek() not in ("+", "-", ")", "}") and not (peek() == "|" and inside[0] > 0):
+            if peek() == "*":
+                take()
+                value = value * power()
+            elif peek() == "/":
+                take()
+                divisor = power()
+                require(divisor != 0, "Division by zero")
+                value = value / divisor
+            else:
+                value = value * power()
+        return value
+
+    def expression():
+        sign = 1
+        if peek() == "-":
+            take()
+            sign = -1
+        value = sign * term()
+        while peek() in ("+", "-"):
+            value = value + term() if take() == "+" else value - term()
+        return value
+
+    result = expression()
+    require(position[0] == len(tokens), f"Trailing input in {text}")
+    return result
+
+
+def curve_point_value(equation, x):
+    """f(x) for the text after 'y = ', or None where it is undefined or irrational."""
+    try:
+        return curve_value_of(normalized(equation), x)
+    except (Undefined, Irrational):
+        return None
+
+
+def accepted_points(equation, grid):
+    points = []
+    for x in range(grid["xMin"], grid["xMax"] + 1):
+        value = curve_point_value(equation, x)
+        if value is not None and value.denominator == 1 and grid["yMin"] <= value <= grid["yMax"]:
+            points.append((x, int(value)))
+    return points
+
+
+def spec_value(curve, x):
+    """The grading spec's own curve, evaluated exactly (not the generator's evaluator)."""
+    def q(pair):
+        require(isinstance(pair, list) and len(pair) == 2 and all(type(v) is int for v in pair) and pair[1] > 0
+                and gcd(pair[0], pair[1]) == 1, "Rational must be [n, d] in lowest terms")
+        return F(pair[0], pair[1])
+    kind = curve["kind"]
+    if kind == "exponential":
+        require(set(curve) == {"kind", "a", "b"}, "Exponential spec fields")
+        a, b = q(curve["a"]), q(curve["b"])
+        require(a > 0 and b > 0 and b != 1, "Exponential parameters")
+        return a * b ** x
+    require(set(curve) == {"kind", "a", "h", "k"} and kind in ("quadratic", "absolute", "root"), "Curve spec fields")
+    a, h, k = q(curve["a"]), q(curve["h"]), q(curve["k"])
+    require(a != 0, "A curve needs a nonzero scale")
+    t = x - h
+    if kind == "quadratic":
+        return a * t * t + k
+    if kind == "absolute":
+        return a * abs(t) + k
+    if t < 0:
+        return None
+    n, d = isqrt(t.numerator), isqrt(t.denominator)
+    return a * F(n, d) + k if n * n == t.numerator and d * d == t.denominator else None
+
+
+def spec_points(curve, grid):
+    out = []
+    for x in range(grid["xMin"], grid["xMax"] + 1):
+        value = spec_value(curve, x)
+        if value is not None and value.denominator == 1 and grid["yMin"] <= value <= grid["yMax"]:
+            out.append((x, int(value)))
+    return out
+
+
+CURVE_PROMPT = re.compile(
+    r"^Graph \$(y = [^$]+)\$ (by placing 3 points on its curve|by placing its vertex and 2 other points on the curve"
+    r"|by placing its \$y\$-intercept and 2 other points on the curve|by placing its starting point and 2 other points on the curve)\.$")
+CURVE_KIND = {"graph-quadratic-points": "quadratic", "graph-absolute-value-points": "absolute",
+              "graph-exponential-points": "exponential", "graph-sqrt-points": "root"}
+
+
+def read_curve(public):
+    template = public["templateId"]
+    found = CURVE_PROMPT.match(public["prompt"])
+    require(found is not None, "Curve prompt must state one equation and what to place")
+    equation = found[1][len("y = "):]
+    kind = CURVE_KIND[template]
+    # The equation's shape must match its family.
+    if kind == "quadratic":
+        require("^2" in equation and "|" not in equation and "\\sqrt" not in equation, "Not a quadratic")
+    elif kind == "absolute":
+        require("\\left|" in equation, "Not an absolute value")
+    elif kind == "root":
+        require("\\sqrt" in equation, "Not a square root")
+    else:
+        require("^x" in equation and "|" not in equation and "\\sqrt" not in equation, "Not exponential")
+    grid = EXP_GRID if kind == "exponential" else GRID
+    accepted = accepted_points(equation, grid)
+    feature = None
+    ask = found[2]
+    if "vertex" in ask:
+        require(kind in ("quadratic", "absolute"), "Only parabolas and V graphs have a vertex")
+        values = {x: curve_point_value(equation, x) for x in range(grid["xMin"], grid["xMax"] + 1)}
+        mid = (values[grid["xMin"]] + values[grid["xMax"]]) / 2
+        convex = mid > values[0]
+        pick = min if convex else max
+        xv = pick(values, key=lambda x: values[x])
+        require(values[xv].denominator == 1, "Vertex is not a lattice point")
+        feature = (xv, int(values[xv]))
+        # The vertex is a turning point: strictly beyond both neighbours.
+        for neighbour in (xv - 1, xv + 1):
+            if neighbour in values:
+                require(values[neighbour] > values[xv] if convex else values[neighbour] < values[xv], "Not a turning point")
+    elif "intercept" in ask:
+        require(kind == "quadratic", "Only the parabola asks for a y-intercept")
+        value = curve_point_value(equation, 0)
+        require(value is not None and value.denominator == 1, "Intercept is not a lattice point")
+        feature = (0, int(value))
+    elif "starting point" in ask:
+        require(kind == "root", "Only the square root has a starting point")
+        start = next(x for x in range(grid["xMin"], grid["xMax"] + 1) if curve_point_value_defined(equation, x))
+        feature = (start, int(curve_point_value(equation, start)))
+    if feature is not None:
+        require(feature in accepted, "The required feature is not on the grid")
+    return kind, equation, grid, accepted, feature
+
+
+def curve_point_value_defined(equation, x):
+    """True where the function has a real value (even an irrational one)."""
+    try:
+        curve_value_of(normalized(equation), x)
+        return True
+    except Irrational:
+        return True
+    except Undefined:
+        return False
+
+
+def grade_curve(response, grading, points, grid):
+    if len(points) != response["pointCount"] or len(set(points)) != len(points) or not all(in_grid(p, grid) for p in points):
+        return False
+    accepted = set(spec_points(grading["curve"], grid))
+    if not all(p in accepted for p in points):
+        return False
+    return all(tuple(r) in points for r in grading.get("required", []))
+
+
+def review_curve(problem):
+    public = problem["public"]
+    response = public["response"]
+    kind, equation, grid, accepted, feature = read_curve(public)
+    require(response["kind"] == "point-plot" and response["grid"] == grid, "Grid for the family")
+    require(response["pointCount"] == 3 and response["ordered"] is False and response["connect"] == "curve", "Curve response contract")
+    require("pointLabels" not in response and "given" not in response, "No labels or givens on a curve item")
+    require(response["label"] == "Place 3 points on the curve", "Label")
+    grading = problem["pointGrading"]
+    require(grading.get("mode") == "on-curve" and set(grading) <= {"mode", "curve", "required"}, "Curve items grade on-curve")
+    require(grading["curve"]["kind"] == kind, "Grading curve is another kind")
+    from_spec = spec_points(grading["curve"], grid)
+    require(from_spec == accepted, f"Grading accepts {from_spec}, the prompt's equation gives {accepted}")
+    least = {"quadratic": 5, "absolute": 5, "exponential": 3, "root": 4}[kind]
+    require(len(accepted) >= least, "Too few placeable lattice points")
+    required = [tuple(p) for p in grading.get("required", [])]
+    require(required == ([feature] if feature else []), f"Required points {required} disagree with the prompt ({feature})")
+    # Every 3-point set grades correct exactly when it holds the required point.
+    for chosen in combinations(accepted, 3):
+        require(grade_curve(response, grading, list(chosen), grid) == all(r in chosen for r in required),
+                f"Grading disagrees on {chosen}")
+    off = [p for p in lattice(grid) if p not in accepted]
+    require(not grade_curve(response, grading, [accepted[0], accepted[1], off[0]], grid), "An off-curve point is accepted")
+    require(not grade_curve(response, grading, [accepted[0], accepted[0], accepted[1]], grid), "A repeated point is accepted")
+    actual = answer_points(problem, False, grid)
+    require(len(actual) == 3 and all(p in accepted for p in actual), "Stored answer is not three curve points")
+    require(grade_curve(response, grading, actual, grid), "Stored answer fails grading")
+    text, hint = review_explanation_mentions(problem, actual)
+    for p in pairs_in(text):
+        require(p in accepted, f"Explanation names {p}, which is off the curve")
+    require(not (pairs_in(hint) - pairs_in(normalized(public["prompt"]))) & set(actual), "Hint places an answer point")
+    worked = 0
+    for x, steps, px, py in re.findall(r"x = (-?\d+): y = ([^$]+?), so \((-?\d+), (-?\d+)\) is on the curve", text):
+        value = curve_point_value(equation, int(x))
+        require(value is not None and value == int(py) and int(px) == int(x), f"Worked point ({px}, {py}) is off the curve")
+        for step in steps.split(" = "):
+            require(curve_value_of(step, int(x)) == value, f"Step '{step}' does not equal {value}")
+        worked += 1
+    require(worked == 3, "Each placed point needs a worked substitution")
+    walk = walkthrough_points(problem, "accent")
+    if walk is not None:
+        require(sorted((x, y) for x, y, _ in walk) == actual, "Solved grid shows other points")
+    return problem["answer"]
+
+
 # ---------------------------------------------------------------- solve
 
 def solve(public):
     template = public["templateId"]
     require(template in SUPPORTED, "Wrong family")
+    if template in CURVES:
+        _, _, _, accepted, feature = read_curve(public)
+        return "curve:" + wire(accepted) + ("|" + wire([feature]) if feature else "")
     prompt = normalized(public["prompt"])
     if template == "plot-points":
         _, _, points = read_plot_points(prompt)
@@ -317,14 +614,14 @@ def grade(response, grading, points):
     return None  # exact grading compares against the expected answer at the caller
 
 
-def answer_points(problem, ordered):
+def answer_points(problem, ordered, grid=GRID):
     value = json.loads(problem["answer"])
     require(isinstance(value, list) and all(
         isinstance(p, list) and len(p) == 2 and all(type(v) is int for v in p) for p in value), "Answer is not lattice points")
     require(problem["answer"] == wire(value), "Answer is not compact JSON")
     points = [tuple(p) for p in value]
     require(len(set(points)) == len(points), "Duplicate answer point")
-    require(all(in_grid(p) for p in points), "Answer point outside the grid")
+    require(all(in_grid(p, grid) for p in points), "Answer point outside the grid")
     if not ordered:
         require(points == sorted(points), "An unordered answer must be sorted by x then y")
     return points
@@ -537,6 +834,8 @@ def review_problem(problem):
     template = problem["public"]["templateId"]
     require(template in SUPPORTED, "Wrong family")
     expected = solve(problem["public"])
+    if template in CURVES:
+        return review_curve(problem)
     if template == "plot-points":
         reviewed = review_plot_points(problem)
     elif template == "graph-linear-equation":
@@ -669,6 +968,49 @@ def handwritten():
     cases["segment-reflect-y"] = transform("reflected over the $y$-axis", [(2, 5), (-5, 1)], "(x, y) \\to (-x, y)",
                                            "A reflection over the $y$-axis keeps the $y$-coordinate.",
                                            points=[("P", -2, 5), ("Q", 5, 1)], shape="Segment")
+    curve_response = response_for(3, connect="curve", label="Place 3 points on the curve")
+    exp_response = dict(curve_response, grid=dict(EXP_GRID))
+    cases["parabola"] = fixture(
+        "graph-quadratic-points", "Graph $y = 2(x - 1)^2 - 3$ by placing its vertex and 2 other points on the curve.",
+        curve_response, "[[0,-1],[1,-3],[2,-1]]",
+        {"mode": "on-curve", "curve": {"kind": "quadratic", "a": [2, 1], "h": [1, 1], "k": [-3, 1]}, "required": [[1, -3]]},
+        ["The vertex is the point $(h, k)$.",
+         "$x = 0$: $y = 2(0 - 1)^2 - 3 = 2 \\cdot 1 - 3 = -1$, so $(0, -1)$ is on the curve.",
+         "$x = 1$: $y = 2(1 - 1)^2 - 3 = 2 \\cdot 0 - 3 = -3$, so $(1, -3)$ is on the curve.",
+         "$x = 2$: $y = 2(2 - 1)^2 - 3 = 2 \\cdot 1 - 3 = -1$, so $(2, -1)$ is on the curve."],
+        "Find the vertex $(h, k)$ first.")
+    cases["parabola-standard"] = fixture(
+        "graph-quadratic-points", "Graph $y = x^2 - 4x + 1$ by placing its $y$-intercept and 2 other points on the curve.",
+        curve_response, "[[0,1],[1,-2],[2,-3]]",
+        {"mode": "on-curve", "curve": {"kind": "quadratic", "a": [1, 1], "h": [2, 1], "k": [-3, 1]}, "required": [[0, 1]]},
+        ["$x = 0$: $y = 0^2 - 4 \\cdot 0 + 1 = 0 + 0 + 1 = 1$, so $(0, 1)$ is on the curve.",
+         "$x = 1$: $y = 1^2 - 4 \\cdot 1 + 1 = 1 - 4 + 1 = -2$, so $(1, -2)$ is on the curve.",
+         "$x = 2$: $y = 2^2 - 4 \\cdot 2 + 1 = 4 - 8 + 1 = -3$, so $(2, -3)$ is on the curve."],
+        "Substitute $x = 0$ for the intercept.")
+    cases["absolute"] = fixture(
+        "graph-absolute-value-points", "Graph $y = 2\\left|x + 1\\right| - 4$ by placing 3 points on its curve.",
+        curve_response, "[[-2,-2],[-1,-4],[0,-2]],".rstrip(","),
+        {"mode": "on-curve", "curve": {"kind": "absolute", "a": [2, 1], "h": [-1, 1], "k": [-4, 1]}},
+        ["$x = -2$: $y = 2\\left|-2 + 1\\right| - 4 = 2 \\cdot 1 - 4 = -2$, so $(-2, -2)$ is on the curve.",
+         "$x = -1$: $y = 2\\left|-1 + 1\\right| - 4 = 2 \\cdot 0 - 4 = -4$, so $(-1, -4)$ is on the curve.",
+         "$x = 0$: $y = 2\\left|0 + 1\\right| - 4 = 2 \\cdot 1 - 4 = -2$, so $(0, -2)$ is on the curve."],
+        "Find where the inside is 0.")
+    cases["exponential"] = fixture(
+        "graph-exponential-points", "Graph $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^x$ by placing 3 points on its curve.",
+        exp_response, "[[-2,12],[-1,6],[0,3]]",
+        {"mode": "on-curve", "curve": {"kind": "exponential", "a": [3, 1], "b": [1, 2]}},
+        ["$x = -2$: $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^{-2} = 3 \\cdot 4 = 12$, so $(-2, 12)$ is on the curve.",
+         "$x = -1$: $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^{-1} = 3 \\cdot 2 = 6$, so $(-1, 6)$ is on the curve.",
+         "$x = 0$: $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^{0} = 3 \\cdot 1 = 3$, so $(0, 3)$ is on the curve."],
+        "Make a table starting at $x = 0$.")
+    cases["root"] = fixture(
+        "graph-sqrt-points", "Graph $y = 2\\sqrt{x + 3} - 1$ by placing its starting point and 2 other points on the curve.",
+        curve_response, "[[-3,-1],[-2,1],[1,3]]",
+        {"mode": "on-curve", "curve": {"kind": "root", "a": [2, 1], "h": [-3, 1], "k": [-1, 1]}, "required": [[-3, -1]]},
+        ["$x = -3$: $y = 2\\sqrt{-3 + 3} - 1 = 2 \\cdot \\sqrt{0} - 1 = 0 - 1 = -1$, so $(-3, -1)$ is on the curve.",
+         "$x = -2$: $y = 2\\sqrt{-2 + 3} - 1 = 2 \\cdot \\sqrt{1} - 1 = 2 \\cdot 1 - 1 = 1$, so $(-2, 1)$ is on the curve.",
+         "$x = 1$: $y = 2\\sqrt{1 + 3} - 1 = 2 \\cdot \\sqrt{4} - 1 = 2 \\cdot 2 - 1 = 3$, so $(1, 3)$ is on the curve."],
+        "Where is $x + 3$ equal to 0?")
     return cases
 
 
@@ -774,6 +1116,29 @@ def self_test():
         "1 unit up", "1 units up")), "unit grammar")
     mutate("translate", setter("hint", value="Add $-4$ to its $x$-coordinate and $-1$ to its $y$-coordinate. "
                                "Start with $A(1, 2)$."), "hint amounts")
+    mutate("parabola", setter("answer", value="[[-1,5],[0,-1],[2,-1]]"), "required vertex missing")
+    mutate("parabola", setter("pointGrading", "required", value=[[0, -1]]), "wrong required point")
+    mutate("parabola", setter("pointGrading", "curve", "a", value=[1, 1]), "grading curve differs from the prompt")
+    mutate("parabola", setter("pointGrading", "curve", "kind", value="absolute"), "grading curve of another kind")
+    mutate("parabola", setter("public", "response", "connect", value="line"), "curve connect")
+    mutate("parabola", setter("pointGrading", value={"mode": "exact"}), "exact grading of a curve")
+    mutate("parabola", setter("answer", value="[[0,-1],[1,-3],[2,0]]"), "off-curve answer")
+    mutate("parabola", setter("explanation", 1, value="$x = 0$: $y = 2(0 - 1)^2 - 3 = 2 \\cdot 1 - 3 = 1$, so $(0, -1)$ is on the curve."),
+           "false substitution")
+    mutate("parabola", setter("hint", value="Find the vertex, which is $(1, -3)$."), "hint places the vertex")
+    mutate("parabola", setter("public", "prompt", value="Graph $y = 2(x - 1)^2 - 3$ by placing 3 points on its curve."),
+           "prompt drops the required vertex")
+    mutate("parabola-standard", setter("pointGrading", "required", value=[[2, -3]]), "vertex required for an intercept ask")
+    mutate("absolute", setter("public", "prompt", value="Graph $y = 2\\left|x - 1\\right| - 4$ by placing 3 points on its curve."),
+           "sign inside the bars")
+    mutate("absolute", setter("answer", value="[[-3,0],[-1,-4],[0,-2]]"), "absolute value point off the V")
+    mutate("exponential", setter("public", "response", "grid", value=dict(GRID)), "exponential window")
+    mutate("exponential", setter("answer", value="[[-1,6],[0,3],[1,2]]"), "fractional output placed")
+    mutate("exponential", setter("pointGrading", "curve", "b", value=[2, 1]), "growth for decay")
+    mutate("root", setter("answer", value="[[-3,-1],[-2,1],[-1,2]]"), "irrational output placed")
+    mutate("root", setter("pointGrading", "required", value=[[-2, 1]]), "start is not the first point")
+    mutate("root", setter("public", "prompt", value="Graph $y = 2\\sqrt{x + 3} - 1$ by placing its vertex and 2 other points on the curve."),
+           "a root has no vertex")
     mutate("segment", setter("public", "response", "given", "closed", value=True), "closed segment")
     mutate("segment", setter("public", "response", "connect", value="line"), "segment connect")
     out = copy.deepcopy(cases["segment"])

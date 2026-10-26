@@ -139,10 +139,10 @@ export const satPractice7 = defineLedger(
       standards: ["sat.geo.lines-angles-triangles"],
       archetypeIds: ["triangle.congruence-correspondence"],
       demand: "Use a congruence correspondence to find a matching angle",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["corresponding-angle-transfer"],
       limitations:
-        "No template reads corresponding parts from a congruence statement; triangle-congruence-criteria covers sufficiency criteria only.",
+        "The congruent-direct variant reads corresponding parts from a permuted congruence statement and asks a matching angle. Congruence proofs and side correspondences are not assessed.",
     },
     {
       section: "Math module 1",
@@ -306,10 +306,10 @@ export const satPractice7 = defineLedger(
       archetypeIds: ["circle.parts"],
       demand:
         "Use equal radii as two sides of a triangle to find the third side from its perimeter",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["circle-radii-triangle"],
       limitations:
-        "No template uses the equality of radii to find a chord or triangle side; circle templates cover angles, tangents, arc and area.",
+        "Chord from a radius and perimeter, or radius from chord and perimeter, with numeric entry that also answers plain-number choices. The released figure is replaced by a written setup.",
     },
     {
       section: "Math module 1",
@@ -542,10 +542,10 @@ export const satPractice7 = defineLedger(
       archetypeIds: ["angle.relationships"],
       demand:
         "Chain a right-triangle angle sum and parallel-segment angles to find an obtuse angle",
-      status: "partial",
-      templateIds: ["triangle-angle-sum", "parallel-lines-angle"],
+      status: "covered",
+      templateIds: ["angle-chase-chain"],
       limitations:
-        "Each step is practiced separately; no template chains them inside a triangle cut by a parallel segment.",
+        "A triangle angle sum is chained with corresponding and straight angles for a segment parallel to a side, including the right-triangle form, with numeric entry. The released figure is replaced by a written description.",
     },
     {
       section: "Math module 2",

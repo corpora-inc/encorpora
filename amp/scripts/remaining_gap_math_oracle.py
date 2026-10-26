@@ -9,6 +9,7 @@ exact squared lengths (sin^2 of the special angles is rational).
 """
 import copy
 import re
+from figure_givens import check_figure_givens
 from fractions import Fraction
 
 TRIANGLE = 'triangle-law-reasoning'
@@ -410,6 +411,8 @@ SOLVERS = {TRIANGLE: solve_triangle, MODEL: solve_model, STEM: solve_stem, BUDGE
 
 def solve(public):
     require(public['templateId'] in SUPPORTED, 'Unexpected remaining-gap family')
+    if public['templateId'] == TRIANGLE:
+        check_figure_givens(public, require)
     return SOLVERS[public['templateId']](public)
 
 
