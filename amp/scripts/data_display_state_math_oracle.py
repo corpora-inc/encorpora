@@ -268,7 +268,7 @@ def solve_display(public):
     labels = [o['label'] for o in options]
     require(len(set(labels)) == 4 and set(labels) <= set(KINDS.values()), 'Unknown display choices')
     # Pairs that would both be defensible for the same scenario must never be offered together.
-    clash = {'circle': 'Bar graph', 'bar': 'Circle graph'}
+    clash = {'circle': 'Bar graph', 'bar': 'Circle graph', 'line': 'Scatterplot', 'scatter': 'Line graph'}
     require(clash.get(kind) not in labels, f'{clash.get(kind)} is also defensible for this scenario')
     require(KINDS[kind].split()[0].lower() not in prompt.lower().replace('line graph', '') or kind == 'dot', 'Prompt names the display')
     return only_correct(options, [label == KINDS[kind] for label in labels], 'display')
@@ -455,6 +455,9 @@ def self_test():
     bad = copy.deepcopy(cases[6][0])
     bad['response']['options'][1]['label'] = 'Scatterplot'
     bad['prompt'] = 'A store reports its yearly sales for 12 stores. Which display fits best?'
+    reject({'public': bad, 'answer': 'o0'})
+    bad = copy.deepcopy(cases[6][0])
+    bad['response']['options'][1]['label'] = 'Scatterplot'
     reject({'public': bad, 'answer': 'o0'})
     bad = copy.deepcopy(cases[7][0])
     bad['response']['options'][1]['label'] = 'Circle graph'
