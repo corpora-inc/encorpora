@@ -98,6 +98,10 @@ function.proportional-identify|Recognize a proportional relationship from a situ
 inequality.solution-set|Decide which values or inequalities hold for a stated inequality
 pattern.graph-relationship|Choose the graph of a rule or proportional relationship
 system.from-graph|Choose the system of equations that two graphed lines show`,
+sequence.arithmetic|Find a term, common difference or rule of an arithmetic sequence
+sequence.recursive|Compute terms from a recursive rule, including rules that are not geometric or arithmetic
+function.parity|Decide whether a function is odd or even from its rule or graph
+inequality.graph-region|Draw the solution region of a linear inequality or a system of inequalities`,
   "advanced-math": `
 expression.polynomial|Add, subtract or multiply polynomials and combine like terms
 expression.factor|Factor a polynomial or identify one of its factors
@@ -168,6 +172,9 @@ function.inverse|Find an inverse function's value or expression
 function.compare-representations|Compare features of functions given by a formula, a table or a graph
 exponential.graph|Graph an exponential function from its rule
 exponential.graph-features|Read the intercept, direction or asymptote of an exponential graph`,
+expression.polynomial-structure|Build or classify a polynomial by degree, number of terms, leading coefficient and constant term
+exponential.compare-linear|Find when an exponential function first exceeds a linear function
+graph.draw-nonlinear|Draw the graph of a nonlinear function from its rule, a stated domain or stated features`,
   data: `
 data.graph-read|Read values, extremes or changes from a bar graph, line graph or table
 ratio.units|Convert units of length, rate, area, volume or density
@@ -225,6 +232,9 @@ probability.prediction|Predict how often an outcome occurs from a probability or
 ratio.part-whole|Find a part of a total from a part-to-part ratio
 ratio.write-simplify|Write a ratio from quantities and simplify it
 univariate.shape|Describe the shape or symmetry of a distribution from a display`,
+univariate.quartiles|Find a quartile or the interquartile range of a listed data set
+bivariate.regression-compute|Compute a regression equation from a data table
+bivariate.correlation-coefficient|Interpret the sign and strength of a correlation coefficient`,
   geometry: `
 measure.area|Find perimeters, areas or missing lengths of polygons and composite figures
 measure.volume|Find volumes of solids or missing dimensions from a volume
@@ -302,6 +312,11 @@ shape.attribute-classify|Sort shapes by attributes such as right angles and para
 shape.parallel-perpendicular-sides|Count or identify parallel and perpendicular sides of polygons
 shape.solid-properties|Compare faces, edges or parallel and congruent faces of solids
 transform.rule|Match a transformation with its coordinate rule`,
+triangle.midsegment|Use the midsegment of a triangle
+triangle.side-splitter|Use a line parallel to a triangle side to find proportional segments
+triangle.altitude-hypotenuse|Use the altitude to the hypotenuse of a right triangle
+segment.perpendicular-bisector|Use the points of a perpendicular bisector
+proof.geometry-written|Write a formal geometric proof or coordinate proof from givens`,
   arithmetic: `
 number.estimate|Estimate sums, products or quotients by rounding or compatible numbers, or judge an answer by estimating
 number.whole-unit-stories|Count whole kits, vehicles or leftovers when only whole units count

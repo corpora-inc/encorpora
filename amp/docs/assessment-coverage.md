@@ -51,6 +51,23 @@ The largest gaps are order of operations with nested groups, negatives and expon
 The STAAR sources are not saturated: from Grade 3 to Algebra I they add 20, 20, 13, 13, 7, 8 and 8 archetypes not seen in any earlier source, and 20% to 76% of their items fall on archetypes already seen. Elementary tests introduce the most.
 
 A second labeler re-labeled a seeded random 10% sample (26 items across all seven tests) without seeing the first labels. Response format agreed on 26 (100%), status on 22 (84.6%), archetypes overlapped on 25 (96.2%) and templates on 22 (84.6%). The status disagreements were resolved by applying two rules to every test: a family counts as related practice only if it practices the item's core operation or reading, not merely its topic or representation (two sampled items and two others of the same kind became missing), and perimeter practice with whole-number sides does not cover decimal sides. A story context or label around a graph read does not change the task.
+### New York Regents mathematics exams
+
+All 106 questions of the June 2026 Regents Examinations in Algebra I (35), Geometry (35) and Algebra II (36), Next Generation Learning Standards, are labeled. Standards are the cluster codes in each rating guide's map to the learning standards. Every question allows a graphing calculator.
+
+| Exam | Covered | Partial | Missing |
+| --- | ---: | ---: | ---: |
+| Algebra I | 5 (14.3%) | 28 (80.0%) | 2 (5.7%) |
+| Geometry | 4 (11.4%) | 30 (85.7%) | 1 (2.9%) |
+| Algebra II | 2 (5.6%) | 34 (94.4%) | 0 (0.0%) |
+
+Part I multiple choice is 72 of 106 items and 10 of them are covered. The 34 constructed-response items are the main gap: 6 require a drawn graph (graph/drag) and 18 a written expression, construction, proof or explanation (constructed), and AMP has no protocol that can take either. The graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. The remaining 10 constructed-response items ask for one number and are numeric, but the rating guides also credit shown work, which AMP does not score, so only one is covered. Three items have no related family: building a polynomial from its degree and coefficients, graphing an absolute-value function and the perpendicular-bisector property.
+
+The largest gaps are parallelogram and rhombus properties and proofs, factoring beyond one-variable trinomials, unit and density chains in volume problems, drawing nonlinear graphs, rational exponents and exponent rules, zeros of nonmonic factors and growth rates read from exponential bases. Algebra I and Algebra II families usually stop short on one feature: decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations and fractional ratios in series.
+
+Each exam still added 12 to 15 archetypes that earlier sources had not used and only 40 to 56 percent of its questions fell on archetypes already seen, so the high-school task set is not saturated; the SAT and state samples saw few of these tasks. Fourteen archetypes were minted for tasks no existing archetype named.
+
+A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Status agreed on 11 (100%), archetypes overlapped on 10 (90.9%), templates on 11 (100%) and response format on 10 (90.9%). The disagreements were a proposed archetype for rationalizing denominators, resolved by widening `expression.radical-simplify`, and a multipart graphing item (Algebra II 36) that the first labeler recorded as graph/drag because a graph is the first required response.
 
 The earlier purposive samples (Massachusetts grades 5, 8 and 10, New York grade 7, and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
 
