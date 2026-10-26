@@ -251,3 +251,17 @@ test("signed envelope rejects tampering, foreign keys, unexpected profiles and u
     offlineSigningConfiguration({ AMP_OFFLINE_PACKS: "enabled" }),
   );
 });
+
+test("offline packs never include templates with an online entry policy", () => {
+  const legacy = issueSchema.parse({ requestId: randomUUID() });
+  const sat = templates.filter((t) => t.id.startsWith("sat-entry-"));
+  assert.ok(sat.length > 0);
+  const offline = supportedOfflineTemplates(legacy, templates);
+  assert.equal(
+    offline.filter((t) => generateProblem(t.id, "offline-policy").entryPolicy)
+      .length,
+    0,
+  );
+  assert.equal(supportedOfflineTemplates(legacy, sat).length, 0);
+  assert.ok(offline.length > 0);
+});
