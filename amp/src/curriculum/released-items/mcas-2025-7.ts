@@ -24,10 +24,10 @@ export const mcasGrade7 = defineLedger(
       archetypeIds: ["circle.parts"],
       demand:
         "Give the distance from a circle's center to a point on the circle from its radius",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["mcas-circle-radius-distance"],
       limitations:
-        "No family asks for a radius as the distance from the center to a point on a circle.",
+        "The distance from a circle's center to a point on it is chosen from the radius, the diameter or the circumference; chords and tangents are not assessed.",
     },
     {
       section: "Session 1",
@@ -150,10 +150,10 @@ export const mcasGrade7 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Select the three true rates in miles per hour from fractional distances and times on three days",
-      status: "partial",
-      templateIds: ["fraction-unit-rate"],
+      status: "covered",
+      templateIds: ["fraction-unit-rate", "mcas-fraction-rate-select"],
       limitations:
-        "fraction-unit-rate finds one unit rate by entry; judging six stated mixed-number rates by multiple selection is not practiced.",
+        "Three of six stated speeds from fractional distances and times over three days are selected by multiple selection; unit conversion is not assessed.",
     },
     {
       section: "Session 1",
@@ -164,10 +164,10 @@ export const mcasGrade7 = defineLedger(
       archetypeIds: ["rational.negative-fraction-forms"],
       demand:
         "Select the three expressions equal to a negative improper fraction among six placements of the sign",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["mcas-negative-fraction-forms"],
       limitations:
-        "No family compares placements of the negative sign in a fraction or rewrites a negative fraction as a product with negative one.",
+        "Three of six placements of negative signs equal to a stated negative improper fraction are selected by multiple selection; operations with signed fractions are not assessed.",
     },
     {
       section: "Session 2",
@@ -307,10 +307,10 @@ export const mcasGrade7 = defineLedger(
       archetypeIds: ["percent.change"],
       demand:
         "Select the two true selling prices when a price is forty percent more than cost",
-      status: "partial",
-      templateIds: ["percent-change-final"],
+      status: "covered",
+      templateIds: ["percent-change-final", "mcas-markup-price-select"],
       limitations:
-        "percent-change-final finds a changed value by entry; judging stated prices for two items by multiple selection is not practiced.",
+        "Two of five selling prices after a stated percent above or below cost are selected by multiple selection; finding the percent or the original cost is not assessed.",
     },
   ],
 );
