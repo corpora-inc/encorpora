@@ -15,7 +15,7 @@ import {
   polygonPrinciples,
 } from "../src/content/polygon-lessons.js";
 import { polygonFacetMappings } from "../src/content/polygon-coverage.js";
-import { assessmentSample } from "../src/curriculum/assessment-sample.js";
+import { releasedItems } from "../src/curriculum/released-items/index.js";
 
 const id = "quadrilateral-hierarchy-multiselect";
 
@@ -122,12 +122,13 @@ test("the family uses the existing skill, lesson, and narrow partial hierarchy f
   assert.equal(facet?.facetId, "shape-hierarchy.inclusion");
   assert.equal(facet?.extent, "partial");
   assert.match(facet.rationale, /Does not assess/);
-  const item = assessmentSample.find(
-    (row) => row.sourceId === "mcas-2025-5" && row.item.startsWith("8;"),
+  const item = releasedItems.find(
+    (row) => row.sourceId === "mcas-2025-5" && row.item.number === "8",
   );
   assert.ok(item);
   assert.ok(item.templateIds.includes(id));
-  assert.match(item.requirement, /5.G.B.4/);
+  assert.deepEqual(item.standards, ["5.G.B.4"]);
+  assert.equal(item.responseFormat, "multi-select");
   assert.match(item.limitations, /three-of-six/);
   assert.match(item.limitations, /written justification are unassessed/);
 });

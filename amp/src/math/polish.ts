@@ -14,8 +14,8 @@ const invariant = new Set([
   "leaves",
 ]);
 function singular(word: string) {
-  if (invariant.has(word)) return word;
   if (word === "buses") return "bus";
+  if (invariant.has(word) || word.endsWith("ss")) return word;
   if (/(ches|shes|xes|sses)$/.test(word)) return word.slice(0, -2);
   return word.endsWith("s") ? word.slice(0, -1) : word;
 }

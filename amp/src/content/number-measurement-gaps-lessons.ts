@@ -3,7 +3,7 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
   "signed-context-order": {
-    goal: "Given debts, elevations, temperatures or lists of signed numbers, decide which is greater, which is larger in size, or which is farther from zero, and choose the statement that says it correctly.",
+    goal: "Compare signed numbers in debts, elevations or temperatures: which is greater, larger in size or farther from zero, and say it correctly.",
     intuition:
       "A negative number can mean a debt, a depth below sea level, or a temperature below zero. Two questions sound alike but ask different things. Which number is greater asks about position on the number line: farther right is greater. How large is it, how much is owed, or how far from zero asks about the absolute value $|x|$, the distance from 0.",
     terms: [
@@ -232,7 +232,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
     sections: [
       {
         stage: "intuition",
-        title: "Same value for every $x$",
+        title: "Same value for every input",
         paragraphs: [
           "You need to evaluate an expression such as $2x+5$ when $x$ has a value, and to multiply a number by a sum. Two expressions are equivalent when they give the same value for every value of $x$.",
           "The distributive property says $a(b+c)=ab+ac$: the multiplier outside multiplies every term inside. Like terms are terms with the same variable part, such as $3x$ and $5x$. They combine by adding coefficients: $3x+5x=8x$.",
@@ -433,7 +433,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "formal",
         title: "Why the factor is squared or cubed",
         paragraphs: [
-          "If $1\\text{ A}=k\\text{ B}$, then a square with side 1 A has side $k$ B, so its area is $k^2\\text{ B}^2$. A cube with edge 1 A has edge $k$ B and volume $k^3\\text{ B}^3$.",
+          "If $1\\text{ A}=k\\text{ B}$, then a square with side $1\text{ A}$ has side $k\text{ B}$, so its area is $k^2\\text{ B}^2$. A cube with edge $1\text{ A}$ has edge $k\text{ B}$ and volume $k^3\\text{ B}^3$.",
           "Multiplying a quantity by a ratio equal to 1, such as $\\frac{k\\text{ B}}{1\\text{ A}}$, does not change the quantity, only the units used to write it.",
         ],
       },

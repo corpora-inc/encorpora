@@ -419,8 +419,8 @@ test("quadratic form conversion keeps the function equal and reveals the stated 
         assert.ok(near(ev(f, axis + t), ev(f, axis - t)));
       assert.ok(!near(ev(f, axis + 1), ev(f, axis + 2)) || true);
     } else {
-      const forms = [...prompt.matchAll(/\(([ABC])\) \$([^$]+)\$/g)].map((m) =>
-        clean(m[2]!),
+      const forms = [...prompt.matchAll(/option ([ABC]): \$([^$]+)\$/g)].map(
+        (m) => clean(m[2]!),
       );
       assert.equal(forms.length, 3);
       for (const x of xs) {
@@ -433,7 +433,7 @@ test("quadratic form conversion keeps the function equal and reveals the stated 
       const extreme = /minimum/.test(prompt)
         ? Math.min(...values)
         : Math.max(...values);
-      assert.ok(correct.startsWith("Form (C)"));
+      assert.ok(correct.startsWith("Option C"));
       assert.ok(correct.includes(`$${extreme}$`), correct);
     }
   }

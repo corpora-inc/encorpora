@@ -3,7 +3,7 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
   "normal-model-rule": {
-    goal: "Given a normal model with a mean and standard deviation, find a percent for a region, find the interval for a stated percent, compare values by z-score, or decide whether a normal model fits.",
+    goal: "Given a normal model, find a percent for a region or an interval for a percent, compare by $z$-score, or decide if the model fits.",
     intuition:
       "The standard deviation (SD) is a typical distance from the mean. For data that are symmetric with one peak, fixed shares lie within 1, 2 and 3 standard deviations of the mean: about 68%, 95% and 99.7%. This is the 68–95–99.7 rule.",
     terms: [
@@ -12,7 +12,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
         "A symmetric, single-peaked, bell-shaped distribution described by its mean and standard deviation.",
       ],
       [
-        "z-score",
+        "$z$-score",
         "The number of standard deviations a value is above (positive) or below (negative) the mean: $z=(x-\\text{mean})\\div\\text{SD}$.",
       ],
       [
@@ -24,13 +24,13 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
       "Convert each boundary to a number of standard deviations from the mean: subtract the mean and divide by the SD.",
       "Sketch the bell curve and shade the region. The curve is symmetric, so the shares on the two sides of the mean match.",
       "Use 34%, 13.5% and 2.35% for the strips between 0–1, 1–2 and 2–3 SDs on one side, or use the symmetric 68%, 95% and 99.7% and split the outside share between two tails.",
-      "To compare values from different data sets, compare their z-scores: the larger z-score is farther above its own mean.",
+      "To compare values from different data sets, compare their $z$-scores: the larger $z$-score is farther above its own mean.",
     ],
     watch:
       "Percent outside the interval is split between two tails, so one tail holds half of it. Also check the shape first: skewed data or data with two peaks should not be given a normal model.",
   },
   "random-variable-distribution": {
-    goal: "Define a numerical random variable on an experiment, find probabilities of its values, read its distribution from a chart and complete a distribution.",
+    goal: "Define a numerical random variable, find probabilities of its values, read its distribution from a chart and complete a distribution.",
     intuition:
       "A random variable gives each outcome of a chance experiment a number, such as the number of heads in three tosses. Its probability distribution lists every possible value with the probability of that value. The probabilities add to 1.",
     terms: [
@@ -57,7 +57,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
       "The values of $X$ are usually not equally likely, even when the underlying outcomes are. Count the outcomes behind each value.",
   },
   "theoretical-distribution-expectation": {
-    goal: "Build the distribution of a random variable from equally likely outcomes or independent trials, and find probabilities and the expected value exactly.",
+    goal: "Build a random variable's distribution from equally likely outcomes or independent trials, and find probabilities and the expected value.",
     intuition:
       "A theoretical distribution comes from counting equally likely outcomes or multiplying probabilities of independent trials. The expected value is the long-run average: each value times its probability, added together.",
     terms: [
@@ -146,7 +146,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
       "Adding two dice or counting heads gives values that are not equally likely. Dividing by a number that does not divide the outcomes evenly gives some people more outcomes.",
   },
   "simulation-consistency-check": {
-    goal: "Use a chart of simulated results to find the fraction at least as extreme as an observed result and decide whether the model is consistent with it.",
+    goal: "Use a chart of simulated results to find the fraction at least as extreme as an observed result and decide if the model is consistent.",
     intuition:
       "If a model is true, simulating it many times shows how much results vary by chance alone. An observed result that falls in the far tail of those simulated results would rarely happen under the model, which is evidence against the model.",
     terms: [
@@ -173,7 +173,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
       "Count the observed value and every value beyond it, not just the observed bar. A consistent result does not prove the model; it only fails to contradict it.",
   },
   "randomization-test-decision": {
-    goal: "Use re-randomized differences to find the proportion as or more extreme than the observed difference and decide significance at a stated cutoff.",
+    goal: "Find the proportion of re-randomized differences as or more extreme than the observed one and decide significance at a stated cutoff.",
     intuition:
       "In an experiment, people are assigned to groups at random. If the treatment did nothing, the group labels would not matter. Reshuffling the labels many times shows how big a difference random assignment alone can create.",
     terms: [
@@ -196,7 +196,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
       "Include both directions when the question asks whether the groups differ, and only the stated direction when it asks about one group being higher. Not significant does not prove there is no effect.",
   },
   "report-flaw-critique": {
-    goal: "Find the flaw or flaws that weaken a report's headline: voluntary response, a convenience sample, a too-small sample, a missing margin of error or a truncated axis.",
+    goal: "Find the flaws that weaken a report's headline: voluntary response, convenience or small sample, no margin of error or truncated axis.",
     intuition:
       "A statistic is only as good as how the data were gathered and shown. Ask who was counted and how, how many, how precise the result is, and how the graph is drawn.",
     terms: [
@@ -221,14 +221,13 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
       "Who was counted: a random sample from the whole group, or people who volunteered or were convenient?",
       "How many: is the sample large enough for a stable estimate?",
       "How precise: is a margin of error given, and is the reported difference larger than it?",
-      "How shown: does a bar chart's axis start at zero?",
-      "Name each check that fails. A report can fail more than one.",
+      "How shown: does a bar chart's axis start at zero? Name each check that fails; a report can fail more than one.",
     ],
     watch:
       "Name only flaws the report actually has. A large random sample is not fixed by anything else, and a stated margin of error does not repair a biased sample.",
   },
   "model-residual-conclusion": {
-    goal: "Read a residual table to choose the justified conclusion about a model: a curved pattern, no pattern, an extrapolation or which of two models fits better.",
+    goal: "Read residuals to choose the justified conclusion: a curved pattern, no pattern, an extrapolation or which of two models fits better.",
     intuition:
       "A residual is observed minus predicted. A model that suits the data leaves small residuals with no pattern. A shape in the residuals shows the model has the wrong form, and a prediction far outside the data is not supported by the fit.",
     terms: [
@@ -252,7 +251,7 @@ export const statisticsProbabilityMethods: Record<string, ProblemMethod> = {
 
 export const statisticsProbabilityPrinciples: Record<string, string> = {
   "normal-model-rule":
-    "For a normal distribution with mean $\\mu$ and standard deviation $\\sigma$, about 68%, 95% and 99.7% of values lie within $1\\sigma$, $2\\sigma$ and $3\\sigma$ of $\\mu$. The z-score $z=(x-\\mu)/\\sigma$ measures distance from the mean in standard deviations. The rule describes only symmetric, single-peaked distributions.",
+    "For a normal distribution with mean $\\mu$ and standard deviation $\\sigma$, about 68%, 95% and 99.7% of values lie within $1\\sigma$, $2\\sigma$ and $3\\sigma$ of $\\mu$. The $z$-score $z=(x-\\mu)/\\sigma$ measures distance from the mean in standard deviations. The rule describes only symmetric, single-peaked distributions.",
   "random-variable-distribution":
     "A random variable $X$ assigns a number to each outcome. Its distribution gives $P(X=x)$ for every value $x$, with $0\\le P(X=x)\\le1$ and $\\sum P(X=x)=1$. For equally likely outcomes, $P(X=x)$ is the number of outcomes with value $x$ divided by the total number of outcomes.",
   "theoretical-distribution-expectation":
@@ -302,15 +301,15 @@ export const statisticsProbabilityLessons: Lesson[] = [
     id: "normal-distributions",
     title: "Normal models and the 68–95–99.7 rule",
     summary:
-      "For symmetric, single-peaked data, about 68%, 95% and 99.7% of values lie within 1, 2 and 3 standard deviations of the mean. A z-score counts those standard deviations.",
+      "For symmetric, single-peaked data, about 68%, 95% and 99.7% of values lie within 1, 2 and 3 standard deviations of the mean. A $z$-score counts those standard deviations.",
     templateIds: ["normal-model-rule"],
     objectives: [
       "Find the percent of a normal model between, above or below boundaries stated as mean ± a number of standard deviations.",
-      "Compare values from different data sets with z-scores, and recognize when a normal model is not appropriate.",
+      "Compare values from different data sets with $z$-scores, and recognize when a normal model is not appropriate.",
     ],
     intuition: [
       "The standard deviation (SD) is a typical distance of values from the mean. Many measurements, such as heights or the fill weights of boxes from one machine, pile up symmetrically around the mean with one peak. Such data are described by a normal model, a bell-shaped curve.",
-      "A normal model has a fixed pattern: about 68% of values lie within 1 SD of the mean, 95% within 2 SDs and 99.7% within 3 SDs. A z-score tells how many SDs a value is from its mean, so values from different scales can be compared.",
+      "A normal model has a fixed pattern: about 68% of values lie within 1 SD of the mean, 95% within 2 SDs and 99.7% within 3 SDs. A $z$-score tells how many SDs a value is from its mean, so values from different scales can be compared.",
     ],
     workedExample: {
       prompt:
@@ -327,21 +326,21 @@ export const statisticsProbabilityLessons: Lesson[] = [
       title: "From a boundary to a percent",
       keepTogetherInPrint: true,
       paragraphs: [
-        "Compute the z-score of each boundary: subtract the mean and divide by the SD. A boundary at $z=1$, $2$ or $3$ is covered by the rule.",
+        "Compute the $z$-score of each boundary: subtract the mean and divide by the SD. A boundary at $z=1$, $2$ or $3$ is covered by the rule.",
         "Sketch the curve and shade the region. Within $\\pm1$ SD holds 68%, so each strip between the mean and 1 SD holds 34%. The strip from 1 to 2 SDs holds 13.5% on each side, and from 2 to 3 SDs holds 2.35%.",
-        "Add the shaded strips, or subtract from 100%. To compare two values from different data sets, the larger z-score is farther above its own mean, whatever the raw scores are.",
+        "Add the shaded strips, or subtract from 100%. To compare two values from different data sets, the larger $z$-score is farther above its own mean, whatever the raw scores are.",
       ],
     },
     formal: {
       title: "Conditions and notation",
       paragraphs: [
-        "For a normal distribution with mean $\\mu$ and standard deviation $\\sigma$, the z-score of $x$ is $z=(x-\\mu)/\\sigma$. About 68%, 95% and 99.7% of values have $|z|\\le1$, $|z|\\le2$ and $|z|\\le3$.",
+        "For a normal distribution with mean $\\mu$ and standard deviation $\\sigma$, the $z$-score of $x$ is $z=(x-\\mu)/\\sigma$. About 68%, 95% and 99.7% of values have $|z|\\le1$, $|z|\\le2$ and $|z|\\le3$.",
         "A normal model is appropriate only for data that are roughly symmetric with a single peak and a mean near the median. Skewed data, with a long tail on one side, and data with two peaks are not described by these percents.",
       ],
     },
     pitfalls: [
       "Split the percent outside an interval between two tails; one tail is half of it.",
-      "Do not compare raw scores from different tests; compare z-scores.",
+      "Do not compare raw scores from different tests; compare $z$-scores.",
       "Check the shape before applying the rule: a long tail or two peaks means the data are not normal.",
     ],
     parentGuide:
@@ -651,7 +650,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "Volunteers were randomly assigned to study guide A or B. The mean score for A minus B was 4 points. In 200 reshuffles, differences of 4 or more, or −4 or less, occurred 6 times. Is the difference significant at a 5% cutoff for a difference in either direction?",
+        "Volunteers were randomly assigned to study guide $A$ or $B$. The mean score for $A$ minus $B$ was 4 points. In 200 reshuffles, differences of 4 or more, or −4 or less, occurred 6 times. Is the difference significant at a 5% cutoff for a difference in either direction?",
       steps: [
         "Count the reshuffles with a difference of 4 or more, or −4 or less: 6.",
         "The proportion is $\\frac{6}{200}=0.03=3\\%$.",
@@ -762,7 +761,7 @@ export const statisticsProbabilityLessons: Lesson[] = [
       paragraphs: [
         "Compute residuals with their signs. Check the order of the signs and the size compared with the data. Random switching and small size are good; runs and curves are not.",
         "To compare two models on the same data, square each residual before adding. Positive and negative residuals then cannot cancel. The smaller sum of squares stays closer to the data.",
-        "Check the x-value you predict at. If it is outside the range of the data, the fit says nothing about it.",
+        "Check the $x$-value you predict at. If it is outside the range of the data, the fit says nothing about it.",
       ],
     },
     formal: {

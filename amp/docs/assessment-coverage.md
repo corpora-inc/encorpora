@@ -1,14 +1,53 @@
 # Assessment coverage and practice mix
 
-AMP tracks implemented problem families separately from full standards alignment. `npm run coverage:report -- json` includes a dated, item-level assessment sample, related generators and remaining demands. A related generator does not certify every representation, response format or reasoning requirement of a standard.
+AMP tracks implemented problem families separately from full standards alignment. A related generator does not certify every representation, response format or reasoning requirement of a standard.
 
-The sample examines 21 selected released questions from Massachusetts grades 5, 8 and 10, New York grade 7 and College Board SAT Practice Test 10, plus three requirements from the [September 2026 digital SAT framework](https://satsuite.collegeboard.org/media/pdf/assessment-framework-for-digital-sat-suite.pdf). These are deliberately selected probes for gaps, not a representative frequency sample. The source URLs, edition, item numbers and limitations are in `src/curriculum/assessment-sample.ts`; source questions and artwork are not reproduced.
+## Released-item ledger
+
+The ledger labels each question of a published, bounded question set once, so coverage of that set can be re-reported without relabeling. It describes those fixed questions, not future or unpublished ones.
+
+- `src/curriculum/archetypes.ts` lists task archetypes, the join key across tests, states and AMP families. One archetype is one mathematical task in one representation. The list is meant to become the union of task types across audited sources; add one only when no existing archetype names the task.
+- `src/curriculum/released-items/` holds one file per source: URL, edition, retrieval date and SHA-256 of the source and its answer explanations, and one row per item. A row records the section and number, page, response format, calculator rule, standards, archetypes, an original one-line demand, status, templates, limitations and the labeler. Question text, choices and artwork are never copied.
+- `src/curriculum/template-archetypes.ts` links templates to archetypes. Skills and facets reach archetypes through their templates. 199 of 664 templates are linked; the rest await backfill.
+
+**Status.** *Covered* means a family practices the same task, representation and difficulty range, in a protocol that can take the item's response. Numeric entry needs a numeric family; a numeric family may serve a choice item only when its choices are plain numbers. Point plotting (`point-plot-v1`) can serve graph and drag items; constructed responses have no protocol yet. *Partial* means related practice differs in representation, format, difficulty or covers only a sub-step; limitations say how. *Missing* means no family practices the core task. Validation rejects unknown sources, archetypes and templates, duplicate items, templates without an archetype link, missing items that cite templates, and covered items without a capable template linked to one of the item's archetypes.
+
+`npm run coverage:items -- [markdown|json]` reports counts per source and test, response-format gaps, ranked archetype gaps, archetype saturation and link backfill. `npm run coverage:report` includes the summary. The saturation table reads sources in ledger order and shows the new archetypes each one adds and the share of its items on archetypes already seen. Add sources until a new one stops adding archetypes.
+
+### SAT practice tests
+
+All 432 mathematics questions of the eight published nonadaptive digital SAT Practice Tests 4–11 are labeled (two modules of 27 questions each; College Board no longer publishes Tests 1–3). SAT skills are classified against the assessment framework; the answer explanations do not state them.
+
+| Status | Items |
+| --- | ---: |
+| Covered | 139 (32.2%) |
+| Partial | 285 (66.0%) |
+| Missing | 8 (1.9%) |
+
+Student-produced numeric responses are covered at 37.5% (42 of 112) and multiple-choice questions at 30.3% (97 of 320). Nine numeric-entry questions have related practice only in choice families. 85 uncovered choice questions are practiced only by numeric entry, usually because their choices are expressions, equations, graphs or statements. Other partials come from narrower difficulty ranges (percent increases above 200%, negative leading coefficients, radical side lengths, decimal data), linear rules never written in function notation, or single-step families for chained tasks. The largest gaps are linear input-output and rule-building in function notation, exponential models, related-expression values, two-variable linear constraints, angle relationships, intercepts from graphs and nonlinear evaluation and transformation.
+
+Practice Test 11 added no archetypes. Tests 7–10 each added at most three, and 94–100% of their questions fell on archetypes already seen, so the SAT task set is close to saturated at 83 archetypes.
+
+A second labeler re-labeled a seeded random 10% sample (44 questions) without seeing the first labels. Status agreed on 41 (93.2%), archetypes overlapped on 42 (95.5%) and templates on 43 (97.7%). The disagreements were resolved by applying one rule to every test: linear families never use function notation, so linear `f(x)` questions are partial.
+
+The earlier purposive samples (Massachusetts grades 5, 8 and 10, New York grade 7, and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
+
+### Adding a source
+
+1. Download the official question and answer PDFs into a scratch directory. Record the URL, edition, retrieval date and SHA-256, and read them with text extraction only.
+2. Create `src/curriculum/released-items/<source-id>.ts` with `defineLedger`. Label every mathematics item and set `complete: true` only when none is skipped. Write an original demand, the source's stated standards and response format, and the closest existing archetypes.
+3. Check candidate families by id, title and description, and generate two samples of each before citing it. Apply the status rules strictly. Link each cited template in `template-archetypes.ts`.
+4. Append the ledger to `releasedLedgers` in `index.ts`, run `npm run coverage:items`, and have a second labeler blind-relabel a random 10% sample. Record the agreement in the PR.
+
+### Limits
+
+Labels are editorial judgments checked by samples and a blind 10% relabel, not learner evidence. *Covered* means AMP practices the task, not that a learner masters it or that a whole standard is covered. Eight practice forms give occurrence counts, not operational frequencies. Item difficulty and calculator strategy are not modeled.
 
 Three problem families address explicit error bounds, symmetric margins of error and radians as arc length divided by radius. Each includes an instance-specific hint, worked answer, standalone lesson, visualization and an independent public-givens mathematics oracle. Their coverage records describe the assessed subset. Unit-circle coordinates, other inference demands and measurement-precision conventions require further families.
 
 Implemented families include one-choice inverse rounding to tenths or hundredths, identifying valid point removals that make a relation a function, and interpreting a linear model's initial value. A quadrilateral-hierarchy family asks learners to select three true statements from five or six choices. Its exact-set grading is independent of selection order, and its lesson distinguishes inclusive shape categories, inherited properties and defining conditions. It shares the existing shape-properties exposure budget. These families assess specific tasks, not every component of their linked standards.
 
-The sample identifies further work: general inverse decimal intervals, congruence correspondence, multi-step geometric reasoning, large percent increases, quadratic parameter constraints and bounds on means from grouped data. Related generators should be checked for reuse before authoring additional families. The multi-select protocol supports a stated number of selections; linked multipart scoring and written reasoning require additional response support and rubrics.
+The purposive samples identify further work: general inverse decimal intervals, congruence correspondence, multi-step geometric reasoning, large percent increases, quadratic parameter constraints and bounds on means from grouped data. Related generators should be checked for reuse before authoring additional families. The multi-select protocol supports a stated number of selections; linked multipart scoring and written reasoning require additional response support and rubrics.
 
 The point-plot protocol (`point-plot-v1`) lets learners place one to four lattice points on a coordinate grid. The server grades an exact set, an ordered list of labeled images, or any distinct points on a target line; the grading rule never reaches the client, and clients that do not declare the capability, including offline packs, are never served these items. Three families use it: plotting signed pairs, points described by distances from the axes and reflections across both axes; graphing a line from slope-intercept, standard or point-slope form, a horizontal line or a proportional relationship; and placing the ordered images of a segment or triangle under a translation, an axis reflection or a rotation of 90° or 180° about the origin. Printed workbooks show the empty grid and the solutions draw the answer. Shading inequality regions, drawing curves, dragging segments and graphing non-lattice points require further response support.
 

@@ -6,7 +6,7 @@ import { lessons } from "../src/content/lessons.js";
 import { methods } from "../src/content/problem-methods.js";
 import { principles } from "../src/content/problem-principles.js";
 import { linearFunctionFacetMappings } from "../src/content/linear-function-coverage.js";
-import { assessmentSample } from "../src/curriculum/assessment-sample.js";
+import { releasedItems } from "../src/curriculum/released-items/index.js";
 
 const id = "linear-initial-value-meaning";
 
@@ -144,8 +144,8 @@ test("the existing linear-models lesson and partial audit bind the narrow family
   );
   assert.equal(facet?.facetId, "linear-models.initial-value-in-context");
   assert.equal(facet?.extent, "partial");
-  const item = assessmentSample.find(
-    (row) => row.sourceId === "mcas-2025-8" && row.item.startsWith("10;"),
+  const item = releasedItems.find(
+    (row) => row.sourceId === "mcas-2025-8" && row.item.number === "10",
   );
   assert.ok(item);
   assert.ok(item.templateIds.includes(id));

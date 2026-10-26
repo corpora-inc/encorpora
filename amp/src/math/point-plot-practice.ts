@@ -224,7 +224,7 @@ function plotPoints(seed: string): GeneratedProblem {
       response,
       answer: [first, second],
       grading: { mode: "exact" },
-      hint: `The distance from the $y$-axis is the size of the $x$-coordinate, and the distance from the $x$-axis is the size of the $y$-coordinate. For $${names[0]}$, ${first[0] > 0 ? "right" : "left"} of the $y$-axis by ${Math.abs(first[0])} decides the sign and size of $x$.`,
+      hint: `The distance from the $y$-axis is the size of the $x$-coordinate, and the distance from the $x$-axis is the size of the $y$-coordinate. For $${names[0]}$, a distance of ${Math.abs(first[0])} to the ${first[0] > 0 ? "right" : "left"} of the $y$-axis gives the sign and size of $x$.`,
       explanation: [
         "A point's distance from the $y$-axis is the size of its $x$-coordinate; its distance from the $x$-axis is the size of its $y$-coordinate.",
         `$${names[0]}$: ${coordinate(first)}, so $${names[0]}$ is ${pointTex(first)}.`,
