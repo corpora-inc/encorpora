@@ -1,3 +1,5 @@
+import type { ResponseCapability } from "../../math/contracts";
+
 /** Released-item coverage ledger types. A ledger labels each item of a bounded,
  * published question set once. Demands are original summaries: never copy
  * question text, answer choices or artwork into a ledger. */
@@ -14,8 +16,7 @@ export const itemStatuses = ["covered", "partial", "missing"] as const;
 export type ItemStatus = (typeof itemStatuses)[number];
 /** AMP response protocols. Templates without a declared capability use the
  * original number/fraction entry protocol, reported here as "numeric". */
-export type TemplateResponse =
-  "numeric" | "single-choice-v1" | "multi-select-v1";
+export type TemplateResponse = "numeric" | ResponseCapability;
 /** Which AMP response protocols can practice an item's response format.
  * Producing a number subsumes choosing it, so numeric entry may serve a choice
  * item whose choices are plain numbers; labelers decide that case. A
@@ -27,7 +28,7 @@ export const acceptedResponses: Readonly<
   choice: ["single-choice-v1", "numeric"],
   numeric: ["numeric"],
   "multi-select": ["multi-select-v1"],
-  "graph/drag": [],
+  "graph/drag": ["point-plot-v1"],
   constructed: [],
   other: [],
 };
