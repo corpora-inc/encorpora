@@ -72,6 +72,7 @@ import { algebraRequirementGapMethods } from "./algebra-requirement-gaps-lessons
 import { advancedMathGapMethods } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapMethods } from "./number-measurement-gaps-lessons";
 import { floridaGapMethods } from "./florida-gaps-lessons";
+import { regentsGapMethods } from "./regents-gap-lessons";
 import { mcasGapMethods } from "./mcas-gap-lessons";
 import { staarGapMethods } from "./staar-gap-lessons";
 import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
@@ -119,6 +120,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...advancedMathGapMethods,
   ...numberMeasurementGapMethods,
   ...floridaGapMethods,
+  ...regentsGapMethods,
   ...mcasGapMethods,
   ...staarGapMethods,
   ...satAlgebraStructureMethods,

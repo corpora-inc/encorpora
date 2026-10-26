@@ -98,20 +98,17 @@ All 106 questions of the June 2026 Regents Examinations in Algebra I (35), Geome
 
 | Exam | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: |
-| Algebra I | 5 (14.3%) | 28 (80.0%) | 2 (5.7%) |
-| Geometry | 4 (11.4%) | 30 (85.7%) | 1 (2.9%) |
-| Algebra II | 2 (5.6%) | 34 (94.4%) | 0 (0.0%) |
+| Algebra I | 10 (28.6%) | 24 (68.6%) | 1 (2.9%) |
+| Geometry | 16 (45.7%) | 19 (54.3%) | 0 (0.0%) |
+| Algebra II | 6 (16.7%) | 30 (83.3%) | 0 (0.0%) |
 
-Part I multiple choice is 72 of 106 items and 10 of them are covered. The 34 constructed-response items are the main gap: 6 require a drawn graph (graph/drag) and 18 a written expression, construction, proof or explanation (constructed), and AMP has no protocol that can take either. The graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. The remaining 10 constructed-response items ask for one number and are numeric, but the rating guides also credit shown work, which AMP does not score, so only one is covered. Three items have no related family: building a polynomial from its degree and coefficients, graphing an absolute-value function and the perpendicular-bisector property.
+Part I multiple choice is 72 of 106 items and 27 of them are covered. The 34 constructed-response items are the main gap: 6 require a drawn graph (graph/drag) and 18 a written expression, construction, proof or explanation (constructed), and AMP has no protocol that can take either. The graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. The remaining 10 constructed-response items ask for one number and are numeric, but the rating guides also credit shown work, which AMP does not score, so five are covered. One item has no related family: graphing an absolute-value function.
 
-The largest gaps are parallelogram and rhombus properties and proofs, factoring beyond one-variable trinomials, unit and density chains in volume problems, drawing nonlinear graphs, rational exponents and exponent rules, zeros of nonmonic factors and growth rates read from exponential bases. Algebra I and Algebra II families usually stop short on one feature: decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations and fractional ratios in series.
+The largest remaining gaps among multiple-choice items are the Algebra I and Algebra II families that stop short on one feature: decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations, fractional ratios in series, a circle with a line, and graph-reading items that compare a plotted curve with a rule. Parallelogram and rhombus conditions, factoring with a common factor or a nonmonic square, density and volume chains, exponent rules, zeros of nonmonic factors, polynomials built from their structure and growth rates read from exponential bases are now practiced.
 
 Each exam still added 8 to 11 archetypes that earlier sources had not used and 58 to 77 percent of its questions fell on archetypes already seen, so the high-school task set is not saturated; the SAT, STAAR and MCAS sources saw few of these tasks. Fourteen archetypes were minted for tasks no existing archetype named.
 
 A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Status agreed on 11 (100%), archetypes overlapped on 10 (90.9%), templates on 11 (100%) and response format on 10 (90.9%). The disagreements were a proposed archetype for rationalizing denominators, resolved by widening `expression.radical-simplify`, and a multipart graphing item (Algebra II 36) that the first labeler recorded as graph/drag because a graph is the first required response.
-
-The earlier purposive samples (Massachusetts grades 5, 8 and 10, New York grade 7, and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
-
 ### Adding a source
 
 1. Download the official question and answer PDFs into a scratch directory. Record the URL, edition, retrieval date and SHA-256, and read them with text extraction only.

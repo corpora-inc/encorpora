@@ -46,10 +46,13 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["nonlinear.polynomial-zeros", "expression.factor"],
       demand:
         "Find a zero of a cubic given in expanded form by factoring by grouping",
-      status: "partial",
-      templateIds: ["zeros-from-factors", "polynomial-factoring-patterns"],
-      limitations:
-        "Zeros are practiced from factored forms and grouping from factoring choices; connecting the two for an expanded cubic is not practiced.",
+      status: "covered",
+      templateIds: [
+        "zeros-from-factors",
+        "polynomial-factoring-patterns",
+        "rg-polynomial-zeros-forms",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -110,9 +113,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       demand:
         "Rewrite a product of a cube root and a coefficient power with a rational exponent",
       status: "partial",
-      templateIds: ["symbolic-rational-exponent"],
+      templateIds: ["symbolic-rational-exponent", "rg-rational-exponent-forms"],
       limitations:
-        "The family matches single radicals to exponents; combining two terms with different rational exponents is not practiced.",
+        "The families multiply a coefficient by a power and add exponents; taking the cube root of a perfect-cube coefficient inside the radical, writing a radicand power as a fractional exponent, and adding it to an integer power of the same base is not practiced.",
     },
     {
       section: "Part I",
@@ -140,10 +143,13 @@ export const regentsAlgebra2June2026 = defineLedger(
       standards: ["F-LE.B"],
       archetypeIds: ["exponential.form"],
       demand: "Read the growth rate from an exponential model's base",
-      status: "partial",
-      templateIds: ["compound-growth", "structure-meaning"],
-      limitations:
-        "Families convert time scales and name a starting value; the percent change per period from a base such as 1.038 is not sampled.",
+      status: "covered",
+      templateIds: [
+        "compound-growth",
+        "structure-meaning",
+        "rg-exponential-base-rate",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -267,10 +273,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["expression.exponent-rules", "expression.radical"],
       demand:
         "Rewrite a power of a fraction with a negative exponent in radical form",
-      status: "partial",
-      templateIds: ["symbolic-rational-exponent"],
-      limitations:
-        "The family matches single radicals to rational exponents; a fraction raised to a power then to a rational exponent is not practiced.",
+      status: "covered",
+      templateIds: ["symbolic-rational-exponent", "rg-rational-exponent-forms"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -283,13 +288,13 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["expression.factor"],
       demand:
         "Factor a two-variable binomial completely using a common factor and a difference of squares",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "greatest-monomial-factor",
         "polynomial-factoring-patterns",
+        "rg-factor-completely",
       ],
-      limitations:
-        "Common factors and special patterns are practiced separately in one variable; the two-step factoring with two variables is not.",
+      limitations: "",
     },
     {
       section: "Part I",
@@ -413,9 +418,13 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["exponential.context", "exponential.form"],
       demand: "Choose the decay model from a half-life in hours",
       status: "partial",
-      templateIds: ["exponential-model-rule", "exponential-time-scale"],
+      templateIds: [
+        "exponential-model-rule",
+        "exponential-time-scale",
+        "rg-exponential-base-rate",
+      ],
       limitations:
-        "Families choose decay rules from stories and rewrite time scales; converting a half-life to a decimal factor per hour is not practiced.",
+        "The families keep the half-life in the exponent as 0.5^(t/h); converting a non-integer half-life to a single per-hour base with a calculator (for example 0.5^(1/12.4)) and choosing among decimal bases is not practiced.",
     },
     {
       section: "Part II",

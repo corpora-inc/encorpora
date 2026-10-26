@@ -81,10 +81,9 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["expression.factor"],
       demand:
         "Factor a difference of two squares whose first square has a coefficient greater than one",
-      status: "partial",
-      templateIds: ["polynomial-factoring-patterns"],
-      limitations:
-        "Factoring patterns cover cubes, grouping and quadratic-in-form; a nonmonic difference of squares written as (2x - 5)(2x + 5), against a 4(x + 5)(x - 5) distractor, is not sampled.",
+      status: "covered",
+      templateIds: ["polynomial-factoring-patterns", "rg-factor-completely"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -113,10 +112,13 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["expression.exponent-rules"],
       demand:
         "Simplify a product of variables with a coefficient raised to the third power",
-      status: "partial",
-      templateIds: ["power-of-power-exponent", "product-of-powers-exponent"],
-      limitations:
-        "Families find an exponent from integer powers of one base. A coefficient cubed with two variables, and a choice among expressions, is not practiced.",
+      status: "covered",
+      templateIds: [
+        "power-of-power-exponent",
+        "product-of-powers-exponent",
+        "rg-exponent-monomial-power",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -129,10 +131,9 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["expression.polynomial-structure"],
       demand:
         "Write a polynomial from its degree, number of terms, leading coefficient and constant term",
-      status: "missing",
-      templateIds: [],
-      limitations:
-        "No family asks learners to build or classify a polynomial by degree, term count, leading coefficient and constant term.",
+      status: "covered",
+      templateIds: ["rg-polynomial-build"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -206,10 +207,9 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["nonlinear.polynomial-zeros"],
       demand:
         "Find the zeros of a product of a variable and two linear factors, one with a coefficient and a fraction zero",
-      status: "partial",
-      templateIds: ["zeros-from-factors"],
-      limitations:
-        "Sampled factors are all monic with integer zeros and the choices are not sets of fractions. A factor such as 3x + 2 is not practiced.",
+      status: "covered",
+      templateIds: ["zeros-from-factors", "rg-polynomial-zeros-forms"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -345,10 +345,13 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["exponential.form"],
       demand:
         "Read the yearly percent increase from an exponential model's base",
-      status: "partial",
-      templateIds: ["compound-growth", "structure-meaning"],
-      limitations:
-        "Families convert time scales, compound rates and name a starting value; the percent change per period from a base such as 1.0448 is not sampled.",
+      status: "covered",
+      templateIds: [
+        "compound-growth",
+        "structure-meaning",
+        "rg-exponential-base-rate",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
