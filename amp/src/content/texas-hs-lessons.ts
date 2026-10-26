@@ -795,7 +795,10 @@ export const texasHsLessons: Lesson[] = [
     summary:
       "Raise both sides to the reciprocal power, and check which signs are possible.",
     templateIds: ["rational-exponent-equation"],
-    objectives: ["Solve $x^{p/q}=k$ and decide whether $x$ can be negative."],
+    objectives: [
+      "Solve $x^{p/q}=k$ and decide whether $x$ can be negative.",
+      "Check each candidate in the original equation.",
+    ],
     intuition: [
       "The exponent $\\frac{3}{2}$ means: take the square root, then cube. To undo it, take the cube root and then square, which is raising to the power $\\frac23$.",
       "An even power cannot tell $x$ from $-x$, so it can give two solutions. An even root is defined only for $x\\ge0$.",
@@ -835,6 +838,7 @@ export const texasHsLessons: Lesson[] = [
     templateIds: ["transformation-composition-image"],
     objectives: [
       "Find the image of a point under a rigid motion and a dilation with any center.",
+      "Apply the two motions in the stated order.",
     ],
     intuition: [
       "A rigid motion slides, flips or turns a figure and keeps its size. A dilation enlarges or shrinks it about a fixed center point.",
@@ -875,7 +879,10 @@ export const texasHsLessons: Lesson[] = [
     summary:
       "A counterexample makes the hypothesis true and the conclusion false.",
     templateIds: ["counterexample-choice"],
-    objectives: ["Pick the case that disproves a geometric conjecture."],
+    objectives: [
+      "Pick the case that disproves a geometric conjecture.",
+      "Explain why a case that fails the hypothesis does not refute the conjecture.",
+    ],
     intuition: [
       'A conjecture of the form "if $p$, then $q$" claims $q$ whenever $p$ is true. To show it is false, find one case where $p$ is true and $q$ is false.',
       "Cases where $p$ is false say nothing about the conjecture, and cases where both are true only agree with it.",
@@ -917,6 +924,7 @@ export const texasHsLessons: Lesson[] = [
     templateIds: ["spherical-geometry-compare"],
     objectives: [
       "Compare parallels, triangle angle sums, right angles and shortest paths in the plane and on a sphere.",
+      "State which plane facts about parallels and angle sums change on a sphere.",
     ],
     intuition: [
       "A great circle is a circle on a sphere whose center is the center of the sphere, like the equator or a line of longitude. These are the straightest paths on a sphere, so they play the role of lines.",
@@ -957,7 +965,10 @@ export const texasHsLessons: Lesson[] = [
     summary:
       "Split a regular polygon into triangles from its center: area is half the apothem times the perimeter.",
     templateIds: ["regular-polygon-area"],
-    objectives: ["Use $A=\\frac12ap$ and find a missing apothem or side."],
+    objectives: [
+      "Use $A=\\frac12ap$ and find a missing apothem or side.",
+      "Find the apothem of a regular polygon from its side length.",
+    ],
     intuition: [
       "A regular polygon has equal sides and equal angles. Joining its center to each vertex cuts it into identical triangles.",
       "Each triangle has a side of the polygon as its base and the apothem, the distance from the center to the midpoint of a side, as its height.",
@@ -999,6 +1010,7 @@ export const texasHsLessons: Lesson[] = [
     templateIds: ["curved-solid-surface-area"],
     objectives: [
       "Find the surface area of a cone and of solids joined to a cylinder.",
+      "Leave out the faces that are joined together.",
     ],
     intuition: [
       "Surface area is the total area of the faces you could touch from outside. Where two solids are joined, the faces that meet are hidden inside and do not count.",
@@ -1040,7 +1052,10 @@ export const texasHsLessons: Lesson[] = [
     summary:
       "For a random point in a region, probability is the fraction of the area that is the target.",
     templateIds: ["area-probability"],
-    objectives: ["Find geometric probabilities as ratios of areas."],
+    objectives: [
+      "Find geometric probabilities as ratios of areas.",
+      "Subtract an area for the outside of a region.",
+    ],
     intuition: [
       "If a dart is equally likely to land anywhere on a target, the chance of landing in a part is how much of the target's area that part covers.",
     ],
@@ -1123,6 +1138,7 @@ export const texasHsLessons: Lesson[] = [
     templateIds: ["parametric-rectangular-convert"],
     objectives: [
       "Eliminate $t$ from linear, parabolic and circular parametric equations.",
+      "Write a line in parametric form for a chosen $x(t)$.",
     ],
     intuition: [
       "When $x$ and $y$ both depend on a time-like variable $t$, a point traces a path. Removing $t$ leaves an equation connecting $x$ and $y$ for the same path.",
@@ -1209,10 +1225,12 @@ export const texasHsLessons: Lesson[] = [
     templateIds: ["bearing-trig-problem"],
     objectives: [
       "Resolve a bearing trip into components and find a bearing from components.",
+      "Convert between three-digit bearings and compass-quadrant bearings.",
     ],
     intuition: [
       "A bearing is a direction given as an angle clockwise from north, written with three digits: east is $090^\\circ$ and west is $270^\\circ$.",
       "A trip along a bearing together with its north-south and east-west parts forms a right triangle.",
+      "A compass bearing such as N $60^\\circ$ W means $60^\\circ$ from north toward west, which is the three-digit bearing $300^\\circ$. N $60^\\circ$ E is $060^\\circ$, S $60^\\circ$ E is $120^\\circ$ and S $60^\\circ$ W is $240^\\circ$.",
     ],
     example: {
       prompt:
@@ -1294,6 +1312,7 @@ export const texasHsLessons: Lesson[] = [
     templateIds: ["polynomial-inequality-solve", "rational-inequality-solve"],
     objectives: [
       "Solve polynomial and rational inequalities and write interval notation.",
+      "Exclude values where a rational expression is undefined.",
     ],
     intuition: [
       "An expression can change sign only at a zero, or at a value where it is undefined. Between two such values, its sign stays the same.",
