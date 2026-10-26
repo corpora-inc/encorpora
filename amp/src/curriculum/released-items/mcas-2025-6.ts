@@ -50,10 +50,10 @@ export const mcasGrade6 = defineLedger(
       archetypeIds: ["ratio.write-simplify"],
       demand:
         "Select the three true ratio statements among part-to-part, part-to-whole and whole-to-part comparisons of marbles",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["mcas-ratio-statements-select"],
       limitations:
-        "No family writes a ratio from quantities in a stated order; the part-to-part, part-to-whole and whole-to-part forms with three selections are not practiced.",
+        "Three of six part-to-part, part-to-whole and whole-to-part ratio statements, including equal forms, are selected by multiple selection; ratio tables and written reasons are not assessed.",
     },
     {
       section: "Session 1",
@@ -77,10 +77,14 @@ export const mcasGrade6 = defineLedger(
       archetypeIds: ["equation.truth", "whole.divide-one-digit"],
       demand:
         "Select the two true division equations among five with multidigit dividends",
-      status: "partial",
-      templateIds: ["fl-equation-truth-mult-div", "divide-by-one-digit"],
+      status: "covered",
+      templateIds: [
+        "fl-equation-truth-mult-div",
+        "divide-by-one-digit",
+        "mcas-true-quotient-equations",
+      ],
       limitations:
-        "Related families choose one true equation within 100 or divide by one digit by entry; judging five quotients with two-digit divisors by multiple selection is not practiced.",
+        "Two of five quotients with two-digit divisors and three- or four-digit dividends are judged true by multiple selection; division with remainders is not assessed.",
     },
     {
       section: "Session 1",
@@ -272,9 +276,13 @@ export const mcasGrade6 = defineLedger(
       demand:
         "Select the two true statements about the edges and volume of a prism built from cubes with a fractional edge",
       status: "partial",
-      templateIds: ["unit-fraction-cube-packing", "fraction-edge-volume"],
+      templateIds: [
+        "unit-fraction-cube-packing",
+        "fraction-edge-volume",
+        "mcas-cube-prism-statements",
+      ],
       limitations:
-        "Both families find a volume or count cubes by entry; judging statements about the cube, the dimensions and the volume by multiple selection is not practiced.",
+        "Statements about cubes, count and volume of a prism packed with unit-fraction cubes are selected from stated edge lengths; the released item draws the prism built from cubes and asks for its measured dimensions, so reading edge lengths from counted cubes is not practiced.",
     },
     {
       section: "Session 2",
@@ -285,10 +293,13 @@ export const mcasGrade6 = defineLedger(
       archetypeIds: ["study.statistical-question"],
       demand:
         "Select the three statistical questions among five about a theater",
-      status: "partial",
-      templateIds: ["statistical-question-choice"],
+      status: "covered",
+      templateIds: [
+        "statistical-question-choice",
+        "mcas-statistical-question-select",
+      ],
       limitations:
-        "statistical-question-choice chooses one statistical question; selecting every statistical question of a list by multiple selection is not practiced.",
+        "Three of five questions about one setting are selected as statistical by multiple selection; writing a statistical question is not assessed.",
     },
   ],
 );
