@@ -1430,6 +1430,10 @@ jobs:
           cargo fmt --version
           cargo clippy --version
       - name: System libraries (Tauri + llama.cpp)
+        # apt has hung here (not failed) until the job's 30-minute timeout,
+        # on #1618 and in a queue run of #1632, so `retry` never got a turn.
+        # Each attempt is bounded; three bounded attempts fit in this budget.
+        timeout-minutes: 16
         # Tauri v2 on Linux links webkit2gtk/soup; llama-cpp-sys-2's build
         # script drives cmake and bindgen (libclang). `cargo clippy` runs build
         # scripts, so these are needed for a check-only build too.
@@ -1455,8 +1459,9 @@ jobs:
             done
           }
 
-          retry sudo apt-get update
-          retry sudo apt-get install -y --no-install-recommends \
+          apt=(timeout 300 sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30)
+          retry "${apt[@]}" update
+          retry "${apt[@]}" install -y --no-install-recommends \
             libwebkit2gtk-4.1-dev \
             libjavascriptcoregtk-4.1-dev \
             libsoup-3.0-dev \
