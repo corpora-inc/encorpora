@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { graph, scene as sceneOf } from "./scene/author";
+import { f as fn, graph, scene as sceneOf } from "./scene/author";
 import type { Scene } from "./scene/spec";
 
 /** The point-plot response protocol (`point-plot-v1`).
@@ -32,18 +32,60 @@ export interface PointPlotResponse {
   ordered: boolean;
   pointLabels?: string[];
   /** Drawn between placed points: the line through two points, or the
-   * polygon through the labeled slots in order. Display only. */
-  connect: "none" | "line" | "polygon";
+   * polygon through the labeled slots in order. `curve` says the points lie
+   * on a graphed function; nothing is drawn and the function stays private.
+   * Display only. */
+  connect: "none" | "line" | "polygon" | "curve";
   /** A pre-image or reference shape drawn on the grid (never an answer). */
   given?: {
     vertices: { x: number; y: number; label: string }[];
     closed: boolean;
   };
 }
+/** An exact rational n/d with d > 0 in lowest terms. */
+export type Rat = readonly [number, number];
+/** A graphed function with exact rational parameters, private to the server:
+ * quadratic a(x − h)² + k, absolute value a|x − h| + k, exponential a·bˣ and
+ * square root a√(x − h) + k (defined for x ≥ h). */
+export type PlotCurve =
+  | { kind: "quadratic" | "absolute" | "root"; a: Rat; h: Rat; k: Rat }
+  | { kind: "exponential"; a: Rat; b: Rat };
 /** Server-side grading spec. On-line: any `pointCount` distinct lattice
- * points with a·x + b·y = c, the line's coefficients in lowest terms. */
+ * points with a·x + b·y = c, the line's coefficients in lowest terms.
+ * On-curve: any `pointCount` distinct lattice points with y = f(x) exactly,
+ * which must include every `required` feature point (a vertex or intercept). */
 export type PointPlotGrading =
-  { mode: "exact" } | { mode: "on-line"; a: number; b: number; c: number };
+  | { mode: "exact" }
+  | { mode: "on-line"; a: number; b: number; c: number }
+  | { mode: "on-curve"; curve: PlotCurve; required?: readonly LatticePoint[] };
+
+const rat = z
+  .tuple([
+    z.number().int().min(-1000).max(1000),
+    z.number().int().min(1).max(1000),
+  ])
+  .refine(([n, d]) => gcd(n, d) === 1, "A rational must be in lowest terms");
+const shifted = (kind: "quadratic" | "absolute" | "root") =>
+  z
+    .object({
+      kind: z.literal(kind),
+      a: rat.refine(([n]) => n !== 0, "A curve needs a nonzero scale"),
+      h: rat,
+      k: rat,
+    })
+    .strict();
+const plotCurveSchema: z.ZodType<PlotCurve> = z.discriminatedUnion("kind", [
+  shifted("quadratic"),
+  shifted("absolute"),
+  shifted("root"),
+  z
+    .object({
+      kind: z.literal("exponential"),
+      a: rat.refine(([n]) => n > 0, "A positive starting value"),
+      b: rat.refine(([n, d]) => n > 0 && n !== d, "A positive growth factor"),
+    })
+    .strict(),
+]);
 
 const gridInt = z.number().int().min(-20).max(20);
 const pointLabel = z.string().regex(/^[A-Z]′?$/);
@@ -65,7 +107,7 @@ export const pointPlotResponseSchema = z
     pointCount: z.number().int().min(1).max(MAX_PLOT_POINTS),
     ordered: z.boolean(),
     pointLabels: z.array(pointLabel).min(1).max(MAX_PLOT_POINTS).optional(),
-    connect: z.enum(["none", "line", "polygon"]),
+    connect: z.enum(["none", "line", "polygon", "curve"]),
     given: z
       .object({
         vertices: z
@@ -96,6 +138,7 @@ export const pointPlotResponseSchema = z
           new Set(r.pointLabels).size === r.pointCount
         : r.pointLabels === undefined) &&
       (r.connect !== "line" || (r.pointCount >= 2 && !r.ordered)) &&
+      (r.connect !== "curve" || (r.pointCount >= 3 && !r.ordered)) &&
       (r.connect !== "polygon" || (r.pointCount >= 2 && r.ordered)) &&
       (r.given?.vertices ?? []).every((p) => onGrid(g, [p.x, p.y]))
     );
@@ -112,6 +155,16 @@ export const pointPlotGradingSchema: z.ZodType<PointPlotGrading> =
       })
       .strict()
       .refine((l) => l.a !== 0 || l.b !== 0, "A line needs a direction"),
+    z
+      .object({
+        mode: z.literal("on-curve"),
+        curve: plotCurveSchema,
+        required: z
+          .array(z.tuple([z.number().int(), z.number().int()]))
+          .max(MAX_PLOT_POINTS)
+          .optional(),
+      })
+      .strict(),
   ]);
 
 export const onGrid = (g: PointPlotGrid, [x, y]: LatticePoint) =>
@@ -205,12 +258,95 @@ export function gradePointPlot(
   if (submitted === null) return false;
   if (grading.mode === "exact")
     return submitted === normalizePointPlot(response, answer);
+  if (grading.mode === "on-curve") {
+    const placed = plotPoints(submitted);
+    return (
+      placed.every((p) => onCurve(grading.curve, p)) &&
+      (grading.required ?? []).every((r) => placed.some((p) => samePoint(p, r)))
+    );
+  }
   return plotPoints(submitted).every(
     ([x, y]) => grading.a * x + grading.b * y === grading.c,
   );
 }
 
-const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : Math.abs(a));
+function gcd(a: number, b: number): number {
+  return b ? gcd(b, a % b) : Math.abs(a);
+}
+
+/* ---------- curves: exact rational evaluation ---------- */
+type Frac = { n: bigint; d: bigint };
+const big = ([n, d]: Rat): Frac => ({ n: BigInt(n), d: BigInt(d) });
+const bigGcd = (a: bigint, b: bigint): bigint =>
+  b === 0n ? (a < 0n ? -a : a) : bigGcd(b, a % b);
+const frac = (n: bigint, d: bigint): Frac => {
+  const g = bigGcd(n, d) || 1n;
+  return d < 0n ? { n: -n / g, d: -d / g } : { n: n / g, d: d / g };
+};
+const plus = (p: Frac, q: Frac) => frac(p.n * q.d + q.n * p.d, p.d * q.d);
+const times = (p: Frac, q: Frac) => frac(p.n * q.n, p.d * q.d);
+const exactRoot = (n: bigint): bigint | null => {
+  if (n < 0n) return null;
+  const r = BigInt(Math.round(Math.sqrt(Number(n))));
+  return r * r === n ? r : null;
+};
+/** f(x) as an exact fraction, or null where the function is undefined or its
+ * square root is irrational. Integer arguments only (the lattice). */
+export function curveValue(curve: PlotCurve, x: number): Frac | null {
+  const at = frac(BigInt(x), 1n);
+  if (curve.kind === "exponential") {
+    if (Math.abs(x) > 60) return null;
+    const b = big(curve.b);
+    const base = x >= 0 ? b : frac(b.d, b.n);
+    let power: Frac = { n: 1n, d: 1n };
+    for (let i = 0; i < Math.abs(x); i++) power = times(power, base);
+    return times(big(curve.a), power);
+  }
+  const t = plus(at, times(big(curve.h), { n: -1n, d: 1n }));
+  const a = big(curve.a),
+    k = big(curve.k);
+  switch (curve.kind) {
+    case "quadratic":
+      return plus(times(a, times(t, t)), k);
+    case "absolute":
+      return plus(times(a, t.n < 0n ? { n: -t.n, d: t.d } : t), k);
+    case "root": {
+      const n = exactRoot(t.n),
+        d = exactRoot(t.d);
+      return n === null || d === null ? null : plus(times(a, frac(n, d)), k);
+    }
+  }
+}
+/** True when the lattice point satisfies y = f(x) exactly. */
+export function onCurve(curve: PlotCurve, [x, y]: LatticePoint): boolean {
+  const v = curveValue(curve, x);
+  return v !== null && v.d === 1n && v.n === BigInt(y);
+}
+/** Lattice points of the grid on the curve, left to right. */
+export function latticeOnCurve(
+  g: PointPlotGrid,
+  curve: PlotCurve,
+): LatticePoint[] {
+  const out: LatticePoint[] = [];
+  for (let x = g.xMin; x <= g.xMax; x += g.step)
+    for (let y = g.yMin; y <= g.yMax; y += g.step)
+      if (onCurve(curve, [x, y])) out.push([x, y]);
+  return out;
+}
+const ratNumber = ([n, d]: Rat) => n / d;
+/** The curve as a scene function, to draw it (print keys and lessons). */
+export function curveFunction(curve: PlotCurve) {
+  const a = ratNumber(curve.a);
+  if (curve.kind === "exponential") return fn.exp(a, ratNumber(curve.b));
+  const h = ratNumber(curve.h),
+    k = ratNumber(curve.k);
+  return curve.kind === "quadratic"
+    ? fn.vertex(a, h, k)
+    : curve.kind === "absolute"
+      ? fn.abs(a, h, k)
+      : fn.sqrt(a, h, k);
+}
+
 /** a·x + b·y = c through two distinct lattice points, in lowest terms with a
  * positive leading coefficient. */
 export function lineThrough(
@@ -281,7 +417,9 @@ export function pointPlotGuessChance(response: PointPlotResponse): number {
     return value;
   };
   const accepted =
-    response.connect === "line" ? choose(Math.max(columns, rows), k) : 1;
+    response.connect === "line" || response.connect === "curve"
+      ? choose(Math.max(columns, rows), k)
+      : 1;
   const orders = response.ordered ? choose(n, k) * factorial(k) : choose(n, k);
   return Math.min(1 / 2, accepted / orders);
 }
@@ -295,6 +433,8 @@ export function pointPlotScene(
   response: PointPlotResponse,
   options: {
     answer?: readonly (LatticePoint | null)[];
+    /** The graphed function, drawn under the answer points. */
+    curve?: PlotCurve;
     width?: number;
     title?: string;
   } = {},
@@ -322,6 +462,7 @@ export function pointPlotScene(
       });
     for (const p of v) plot = plot.point(p.x, p.y, p.label, { color: "ink" });
   }
+  if (options.curve) plot = plot.curve(curveFunction(options.curve), {});
   const answer = options.answer ?? [];
   const placed = answer.filter((p): p is LatticePoint => p !== null);
   if (response.connect === "line" && placed.length >= 2)
