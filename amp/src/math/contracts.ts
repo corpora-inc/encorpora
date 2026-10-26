@@ -325,6 +325,11 @@ export interface GeneratedProblem {
   choiceFeedback?: Record<string, string>;
   /** Private grading rule of a point-plot response (point-plot.ts). */
   pointGrading?: PointPlotGrading;
+  /** Private answer-acceptance policy for numeric responses. Absent means exact
+   * rational comparison. `sat-spr` also accepts the College Board's truncated
+   * or rounded decimal for an answer that does not fit the entry space.
+   * Absent on problems saved before the policy existed, which keep exact grading. */
+  entryPolicy?: "sat-spr";
 }
 
 const displayInteger = z.number().int().min(-100000).max(100000);
@@ -925,6 +930,7 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
       .record(choiceIdSchema, z.string().trim().min(1).max(1000))
       .optional(),
     pointGrading: pointPlotGradingSchema.optional(),
+    entryPolicy: z.literal("sat-spr").optional(),
   })
   .strict()
   .refine((problem) => {
@@ -933,6 +939,7 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
     if (response.kind === "point-plot")
       return (
         !problem.choiceFeedback &&
+        !problem.entryPolicy &&
         !!problem.pointGrading &&
         normalizePointPlot(response, problem.answer) === problem.answer &&
         gradePointPlot(

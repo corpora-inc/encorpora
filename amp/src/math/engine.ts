@@ -277,6 +277,11 @@ import {
   satNumericEntryTemplates,
   generateSatNumericEntryProblem,
 } from "./sat-numeric-entry-practice";
+import { satSprDecimalAccepted } from "./sat-spr-entry";
+import {
+  k8StateNumberTemplates,
+  generateK8StateNumberProblem,
+} from "./k8-state-number-practice";
 import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
@@ -463,6 +468,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
+  ...k8StateNumberTemplates,
   complexMultiplicationTemplate,
   ...algebraRequirementGapTemplates,
   ...advancedMathGapTemplates,
@@ -615,7 +621,12 @@ export function gradeAnswer(
       isValidResponse(problem.public, response) && response === problem.answer
     );
   const answer = normalizeAnswer(response);
-  return answer !== null && answer === normalizeAnswer(problem.answer);
+  if (answer !== null && answer === normalizeAnswer(problem.answer))
+    return true;
+  return (
+    problem.entryPolicy === "sat-spr" &&
+    satSprDecimalAccepted(normalizeAnswer(problem.answer) ?? "", response)
+  );
 }
 
 /** SHA-256 counter stream gives stable values across Node versions, with unbiased bounded draws. */
@@ -920,6 +931,8 @@ function generateRawProblem(
     return generateQuadraticProblem(templateId, seed);
   if (numberMeasurementGapTemplates.some((t) => t.id === templateId))
     return generateNumberMeasurementGapProblem(templateId, seed);
+  if (k8StateNumberTemplates.some((t) => t.id === templateId))
+    return generateK8StateNumberProblem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))
     return generateStatisticsProbabilityProblem(templateId, seed);
   if (complexConicsTemplates.some((t) => t.id === templateId))
