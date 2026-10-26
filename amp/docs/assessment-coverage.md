@@ -32,13 +32,32 @@ Every template now maps to the facets it assesses, all with partial extent. Each
 
 Editorial connections in `src/curriculum/connections.ts` link every practiced skill to a later skill, either through a prerequisite or an extension, application or related link. A test keeps it that way.
 
-## Texas Grade 5 source reconciliation
+## Texas mathematics source reconciliation
 
-The coverage report includes the 46 lettered or unlettered requirements in §111.7(b) of Texas Grade 5 mathematics, adopted 2012. Source records identify the retrieved December 2014 chapter edition by URL, date and SHA-256. Original summaries preserve required representations and restrictions; the official source controls their meaning.
+The coverage report inventories every student expectation, lettered or unlettered, in the 19 TAC Chapter 111 mathematics standards for Kindergarten through Grade 8 (§111.2–§111.7, §111.26–§111.28) and for Algebra I, Geometry, Algebra II and Precalculus (§111.39–§111.42), all adopted 2012. Source records identify the retrieved TEA chapter PDFs (Subchapter A December 2014, B July 2025 and C October 2015 updates) by URL, retrieval date and SHA-256. Original summaries preserve required representations and restrictions; the official source controls their meaning.
 
-Eight requirements have partial task reconciliation. Decimal practice is reused; dot-plot and scatterplot interpretation supply related support without certifying learner-created displays. Stem-and-leaf interpretation, budget-category balancing and gross-versus-net income now have related practice families with partial scope. Stem-and-leaf practice belongs to a grade 6 skill, so grade 5 availability is not certified, and constructing plots or budgets is not assessed. Spring 2025 STAAR rationale items 14 and 21 establish occurrence of the first two tasks, not their frequency. The other 38 requirements are explicitly unreviewed, including the remaining financial-literacy and process requirements.
+Each inventory validates its requirement identifiers against an outline of the official document, and records the sources, a requirement per expectation, and reusable task links. Process standards (1)(A)–(G) are one cross-cutting group per course, recorded as unreviewed and not assessed by item practice. Grade 5, reconciled first, keeps its seven process rows.
 
-`src/curriculum/texas-grade5.ts` holds the source inventory and reusable task crosswalk. The report validates source, requirement, skill and template-owner references; invalid links cannot establish reconciliation. Texas has a partial source inventory, while statewide coverage, component reconciliation and the complete STAAR assessment inventory remain incomplete. Custom catalog reports do not inherit production state mappings unless explicitly supplied.
+| Course | Requirements | Related practice | Missing family only | Unreviewed (including process) | Open-ended among unreviewed |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| K | 30 | 17 | 8 | 5 | 4 |
+| 1 | 44 | 29 | 10 | 5 | 4 |
+| 2 | 44 | 30 | 11 | 3 | 2 |
+| 3 | 47 | 32 | 7 | 8 | 6 |
+| 4 | 47 | 34 | 6 | 7 | 5 |
+| 5 | 46 | 27 | 5 | 14 | 0 |
+| 6 | 53 | 31 | 14 | 8 | 7 |
+| 7 | 44 | 35 | 4 | 5 | 3 |
+| 8 | 46 | 36 | 4 | 6 | 5 |
+| Algebra I | 50 | 45 | 4 | 1 | 0 |
+| Algebra II | 49 | 41 | 6 | 2 | 1 |
+| Geometry | 43 | 34 | 6 | 3 | 2 |
+| Precalculus | 51 | 41 | 8 | 2 | 1 |
+| Total | 594 | 432 | 93 | 69 | 40 |
+
+Every related-practice link is partial. Its limitations say what the linked templates establish, such as a numeric response without a learner-built model, a range narrower than the standard, or a skill authored for another grade; one generated sample of each linked template was reviewed, and a test regenerates two problems from each. A missing-family record names a concrete absent demand and the closest skill; sixteen more requirements have related practice and also name a missing demand. Open-ended demands (explain, describe, create, draw, list) are unreviewed because tap-response items do not assess them. Spring 2025 STAAR rationale items 14 and 21 establish occurrence of two Grade 5 tasks, not their frequency.
+
+`src/curriculum/texas/` holds the band files (`k2.ts`, `35.ts`, `68.ts`, `hs.ts`), the shared builder and the aggregate; `src/curriculum/texas-grade5.ts` holds Grade 5. The report validates source, requirement, skill and template-owner references; invalid links cannot establish reconciliation. The 2025 advanced middle-school courses, the other high-school courses, the introduction rules for each course and the complete STAAR and end-of-course assessment inventories remain unreviewed. Texas has a partial source inventory, while statewide coverage and component reconciliation remain incomplete. Custom catalog reports do not inherit production state mappings unless explicitly supplied.
 
 ## Selection weights
 

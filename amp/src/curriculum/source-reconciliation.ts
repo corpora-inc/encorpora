@@ -155,6 +155,12 @@ export function reconcileSources(
           ? ("partial" as const)
           : ("unreviewed" as const),
         taskIds: links.map((t) => t.id),
+        /** Strongest linked disposition; every related practice remains partial. */
+        coverage: links.some((t) => t.disposition === "related-practice")
+          ? ("related-practice" as const)
+          : links.length
+            ? ("missing" as const)
+            : ("unreviewed" as const),
         coverageComplete: false as const,
       };
     });
@@ -178,6 +184,12 @@ export function reconcileSources(
           (r) => r.reconciliation === "unreviewed",
         ).length,
         missingFamilies: tasks.filter((t) => t.disposition === "missing-family")
+          .length,
+        relatedPractice: requirements.filter(
+          (r) => r.coverage === "related-practice",
+        ).length,
+        /** Requirements with a named missing family and no related practice. */
+        missingOnly: requirements.filter((r) => r.coverage === "missing")
           .length,
       },
     };
