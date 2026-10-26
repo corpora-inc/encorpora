@@ -15,6 +15,7 @@ import {
 export const AD_CLICK_SOURCE_URL = "https://corpora.inc/esa/arkansas-efa/";
 export const adClickSourceSchema = z.enum([
   AD_CLICK_SOURCE_URL,
+  "https://amp.corpora.inc/",
   "https://corpora.inc/amp/",
   "https://corpora.inc/esa/arizona-esa/",
 ]);
@@ -86,19 +87,21 @@ export async function retainAdClick(
   // Reloads preserve first observation. Each distinct captured click is retained.
   const identifiers = parsed.data.identifiers;
   const canonical =
-    parsed.data.provider === "google"
-      ? parsed.data.identifiers.gclid
-        ? ["gclid", parsed.data.identifiers.gclid]
-        : parsed.data.identifiers.gbraid
-          ? ["gbraid", parsed.data.identifiers.gbraid]
-          : ["wbraid", parsed.data.identifiers.wbraid]
-      : parsed.data.identifiers.fbclid || parsed.data.identifiers.fbc
-        ? [
-            "fbclid",
-            parsed.data.identifiers.fbclid ??
-              parsed.data.identifiers.fbc!.split(".").slice(3).join("."),
-          ]
-        : ["fbp", parsed.data.identifiers.fbp];
+    parsed.data.provider === "openai"
+      ? ["oppref", parsed.data.identifiers.oppref]
+      : parsed.data.provider === "google"
+        ? parsed.data.identifiers.gclid
+          ? ["gclid", parsed.data.identifiers.gclid]
+          : parsed.data.identifiers.gbraid
+            ? ["gbraid", parsed.data.identifiers.gbraid]
+            : ["wbraid", parsed.data.identifiers.wbraid]
+        : parsed.data.identifiers.fbclid || parsed.data.identifiers.fbc
+          ? [
+              "fbclid",
+              parsed.data.identifiers.fbclid ??
+                parsed.data.identifiers.fbc!.split(".").slice(3).join("."),
+            ]
+          : ["fbp", parsed.data.identifiers.fbp];
   const clickKey = digest(JSON.stringify(canonical));
   // Cookie enrichment is another observation of the same click, not a new
   // click. Keep both records but preserve the earliest server observation.
@@ -195,7 +198,11 @@ export async function bindAdClicksToOrder(
   account: string,
   source: string | { retainedJourneyId: string },
   rawTarget: AttributionTarget,
-  providers: readonly ("google" | "meta")[] = ["google", "meta"],
+  providers: readonly ("google" | "meta" | "openai")[] = [
+    "google",
+    "meta",
+    "openai",
+  ],
 ) {
   const parsed = targetSchema.safeParse(rawTarget);
   const validSource =
@@ -258,10 +265,10 @@ export async function orderClickEvidence(
   client: PoolClient,
   account: string,
   rawTarget: AttributionTarget,
-  provider: "google" | "meta",
+  provider: "google" | "meta" | "openai",
 ) {
   const target = targetSchema.parse(rawTarget);
-  if (!["google", "meta"].includes(provider))
+  if (!["google", "meta", "openai"].includes(provider))
     throw new Error("invalid_attribution_provider");
   const column =
     target.kind === "funding-request"
@@ -305,9 +312,12 @@ export async function purgeAdClickEvidence(client: PoolClient) {
 export async function eraseAccountAdClicks(
   client: PoolClient,
   account: string,
-  provider?: "google" | "meta",
+  provider?: "google" | "meta" | "openai",
 ) {
-  if (provider !== undefined && !["google", "meta"].includes(provider))
+  if (
+    provider !== undefined &&
+    !["google", "meta", "openai"].includes(provider)
+  )
     throw new Error("invalid_attribution_provider");
   const result = await client.query(
     `DELETE FROM amp_ad_click_evidence c USING amp_ad_click_journeys j

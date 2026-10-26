@@ -29,6 +29,13 @@ export const metaClickIdentifiersSchema = z
       .optional(),
   })
   .refine((v) => !!(v.fbclid || v.fbc || v.fbp));
+export const openaiClickIdentifiersSchema = z.strictObject({
+  oppref: z
+    .string()
+    .min(1)
+    .max(4096)
+    .regex(/^[^\u0000-\u0020\u007f]+$/),
+});
 export const clickEvidenceSchema = z.discriminatedUnion("provider", [
   z.strictObject({
     provider: z.literal("google"),
@@ -37,6 +44,10 @@ export const clickEvidenceSchema = z.discriminatedUnion("provider", [
   z.strictObject({
     provider: z.literal("meta"),
     identifiers: metaClickIdentifiersSchema,
+  }),
+  z.strictObject({
+    provider: z.literal("openai"),
+    identifiers: openaiClickIdentifiersSchema,
   }),
 ]);
 export type ClickEvidence = z.infer<typeof clickEvidenceSchema>;
@@ -57,7 +68,7 @@ export function providerClickIdentifiers(
     +capturedAt < +observedAt
   )
     throw new Error("invalid_click_evidence");
-  if (parsed.data.provider === "google") return parsed.data.identifiers;
+  if (parsed.data.provider !== "meta") return parsed.data.identifiers;
   const { fbclid, fbc, fbp } = parsed.data.identifiers;
   for (const cookie of [fbc, fbp]) {
     if (cookie && Number(cookie.split(".")[2]) > +capturedAt)

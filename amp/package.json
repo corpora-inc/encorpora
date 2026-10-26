@@ -91,7 +91,8 @@
     "report:funded-journeys": "tsx scripts/report-funded-journeys.ts",
     "test:site-journeys-ui": "node --import tsx --test scripts/verify-site-journeys-ui.ts",
     "report:acquisition": "tsx scripts/report-acquisition.ts",
-    "test:google-analytics-ui": "node --import tsx --test scripts/verify-google-analytics-ui.ts"
+    "test:google-analytics-ui": "node --import tsx --test scripts/verify-google-analytics-ui.ts",
+    "advertising:openai": "tsx scripts/openai-measurement.ts"
   },
   "dependencies": {
     "@better-auth/passkey": "1.7.10",

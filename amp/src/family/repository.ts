@@ -117,6 +117,11 @@ export class FamilyRepository {
           accountId,
           "meta",
         ),
+        openaiPurchaseMeasurement: await purchaseMeasurementView(
+          client,
+          accountId,
+          "openai",
+        ),
         consent: {
           status: consent
             ? consent.withdrawn_at
@@ -477,6 +482,28 @@ export class FamilyRepository {
         datasets.push([
           "meta-purchase-measurement-permission",
           "SELECT to_jsonb(p) - 'account_id' - 'email_digest' AS value FROM amp_meta_advertising_permissions p WHERE account_id=$1",
+        ]);
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_openai_advertising_permissions') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "openai-purchase-measurement-permission",
+          "SELECT to_jsonb(p) - 'account_id' - 'email_digest' AS value FROM amp_openai_advertising_permissions p WHERE account_id=$1",
+        ]);
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_openai_purchase_queue') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "openai-purchase-measurement-delivery",
+          "SELECT jsonb_build_object('provider','OpenAI','purchaseAt',occurred_at,'amountMinor',amount_minor,'currency','USD','state',state,'attempts',attempt_count,'lastHttpStatus',last_http_status,'updatedAt',updated_at) AS value FROM amp_openai_purchase_queue WHERE account_id=$1 ORDER BY occurred_at,event_id",
         ]);
       if (
         (
