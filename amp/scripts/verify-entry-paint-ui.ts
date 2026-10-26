@@ -100,7 +100,11 @@ try {
           const context = await browser.newContext({
             viewport: { width, height: 844 },
             colorScheme,
-            reducedMotion: "reduce",
+            reducedMotion: width === 320 ? "reduce" : "no-preference",
+            recordVideo:
+              width === 390 && colorScheme === "light"
+                ? { dir: shots, size: { width, height: 844 } }
+                : undefined,
           });
           const page = await context.newPage();
           page.setDefaultTimeout(15000);
@@ -120,10 +124,13 @@ try {
               if(window.entryStarted && !window.entryFinished) {
                 var mark = root.querySelector('.app-loading-mark');
                 var box = mark && mark.getBoundingClientRect();
+                var wave = root.querySelector(".app-loading-wave");
+                var animation = wave && wave.getAnimations()[0];
                 window.entryPaints.push({
                   blank: !root.children.length || (!mark && !root.innerText.trim()),
                   html: !mark && !root.innerText.trim() ? root.innerHTML.slice(0,400) : null,
                   loaders: root.querySelectorAll(".app-loading").length,
+                  waveStart: animation ? animation.startTime : null,
                   oldHeader: !!root.querySelector('.app-loading-bar'),
                   mark: box ? [box.x, box.y, box.width, box.height] : null
                 });
@@ -190,6 +197,7 @@ try {
             await page.goto(`${origin}/`, { waitUntil: "commit" });
             await page.locator(".app-loading-mark").waitFor();
             first = await paint(page);
+            await verifyWave(page, width !== 320);
             assert.equal(
               first.x + first.width / 2,
               width / 2,
@@ -212,6 +220,7 @@ try {
           await assertEventually(() => sessionStarted);
           await page.waitForTimeout(350);
           const pending = await paint(page);
+          await verifyWave(page, width !== 320);
           assert.deepEqual(
             pending,
             first,
@@ -234,6 +243,7 @@ try {
           account.release();
           if (scenario === "error") {
             await page.getByRole("alert").waitFor();
+            await verifyWave(page, false);
             await page.screenshot({
               path: `${shots}/${engine.name()}-${colorScheme}-${width}-error.png`,
             });
@@ -251,7 +261,12 @@ try {
             await page.locator(".app-loading").waitFor({ state: "detached" });
           }
           const frames = await page.evaluate<
-            { blank: boolean; oldHeader: boolean; loaders: number }[]
+            {
+              blank: boolean;
+              oldHeader: boolean;
+              loaders: number;
+              waveStart: number | null;
+            }[]
           >(
             `(() => {window.entryFinished = true; return window.entryPaints;})()`,
           );
@@ -259,6 +274,21 @@ try {
             `${shots}/${engine.name()}-${colorScheme}-${width}-frames.json`,
             JSON.stringify(frames),
           );
+          const starts = frames
+            .map((f) => f.waveStart)
+            .filter((value): value is number => value !== null);
+          if (width !== 320) {
+            assert.ok(starts.length > 5, "sampled the moving wave");
+            assert.ok(
+              Math.max(...starts) - Math.min(...starts) < 20,
+              "wave phase survives bootstrap and route remounts",
+            );
+          } else
+            assert.equal(
+              starts.length,
+              0,
+              "reduced motion stays still throughout entry",
+            );
           assert.ok(
             frames.length > 5,
             "sampled real painted frames during startup",
@@ -285,7 +315,12 @@ try {
             path: `${shots}/${engine.name()}-${colorScheme}-${width}-destination.png`,
             fullPage: true,
           });
+          const video = page.video();
           await context.close();
+          if (video) {
+            await video.saveAs(`${shots}/${engine.name()}-loading-wave.webm`);
+            await video.delete();
+          }
           console.log(
             `${engine.name()} ${colorScheme} ${width}: ${scenario} entry passed`,
           );
@@ -303,5 +338,31 @@ async function assertEventually(check: () => boolean) {
   while (!check()) {
     assert.ok(Date.now() - start < 15000, "expected account request started");
     await new Promise((resolve) => setTimeout(resolve, 25));
+  }
+}
+
+async function verifyWave(page: Page, moving: boolean) {
+  const read = () =>
+    page.locator(".app-loading-wave").evaluate((wave) => ({
+      transform: getComputedStyle(wave).transform,
+      animations: wave.getAnimations().length,
+    }));
+  const before = await read();
+  await page.waitForTimeout(240);
+  const after = await read();
+  if (moving) {
+    assert.equal(after.animations, 1, "one moving wave");
+    assert.notEqual(
+      before.transform,
+      after.transform,
+      "wave actually advances",
+    );
+  } else {
+    assert.equal(
+      after.animations,
+      0,
+      "reduced motion and errors do not animate",
+    );
+    assert.deepEqual(after, before);
   }
 }
