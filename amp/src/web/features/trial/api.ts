@@ -8,7 +8,10 @@ import {
 import { annualOfferSchema } from "../../../billing/stripe/enrollment-contracts";
 import { request } from "../../lib/api";
 import { AppError } from "../../lib/AppError";
-import { batchWithCapabilityFallback } from "../../lib/batch-capability-fallback";
+import {
+  batchWithCapabilityFallback,
+  clientResponseCapabilities,
+} from "../../lib/batch-capability-fallback";
 import { queryClient } from "../../lib/query";
 import {
   clearStoredTrial,
@@ -207,7 +210,7 @@ export async function nextProblem(session: TrialSession, templateId?: string) {
       {
         count: 1,
         ...(templateId ? { templateId } : {}),
-        responseCapabilities: ["single-choice-v1", "multi-select-v1"],
+        responseCapabilities: [...clientResponseCapabilities],
         figureCapabilities: [...figureCapabilities],
       },
       (body) =>

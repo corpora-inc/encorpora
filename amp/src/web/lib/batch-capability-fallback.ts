@@ -39,7 +39,15 @@ function rejectedOnlyNewCapability(error: unknown): boolean {
   );
 }
 
-/** A pre-multiselect API rejects the new enum value and array length. */
+/** The response formats this web client draws, oldest first. */
+export const clientResponseCapabilities = [
+  "single-choice-v1",
+  "multi-select-v1",
+  "point-plot-v1",
+];
+/** An API older than a response format rejects its enum value and the longer
+ * array. Retry without the newest format, one at a time, down to single
+ * choice; any other failure is final. Capabilities are listed oldest first. */
 export async function batchWithCapabilityFallback<
   Body extends { responseCapabilities: string[] },
   Result,
@@ -48,15 +56,22 @@ export async function batchWithCapabilityFallback<
   send: (body: Body) => Promise<Result>,
   canRetry: () => boolean = () => true,
 ): Promise<Result> {
-  try {
-    return await send(body);
-  } catch (error) {
-    if (
-      !body.responseCapabilities.includes("multi-select-v1") ||
-      !rejectedOnlyNewCapability(error) ||
-      !canRetry()
-    )
-      throw error;
+  let current = body;
+  for (;;) {
+    try {
+      return await send(current);
+    } catch (error) {
+      if (
+        current.responseCapabilities.length < 2 ||
+        current.responseCapabilities[0] !== "single-choice-v1" ||
+        !rejectedOnlyNewCapability(error) ||
+        !canRetry()
+      )
+        throw error;
+    }
+    current = {
+      ...current,
+      responseCapabilities: current.responseCapabilities.slice(0, -1),
+    };
   }
-  return send({ ...body, responseCapabilities: ["single-choice-v1"] });
 }
