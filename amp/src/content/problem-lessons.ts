@@ -93,7 +93,9 @@ export function problemLesson(
     }
   const response = example.public.response;
   const answer =
-    response.kind === "choice" || response.kind === "multi-select"
+    response.kind === "choice" ||
+    response.kind === "multi-select" ||
+    response.kind === "point-plot"
       ? answerText(response, example.answer)
       : skills.find((skill) => skill.id === template.skillId)?.strand ===
           "fractions"

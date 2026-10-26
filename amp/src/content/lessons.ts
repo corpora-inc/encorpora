@@ -74,6 +74,7 @@ import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
 import { satNumericEntryLessons } from "./sat-numeric-entry-lessons";
+import { pointPlotLessons } from "./point-plot-lessons";
 import { algebraRequirementGapLessons } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapLessons } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapLessons } from "./number-measurement-gaps-lessons";
@@ -688,6 +689,7 @@ export const lessons: readonly Lesson[] = [
   ...quadraticLessons,
   ...complexLessons,
   ...satNumericEntryLessons,
+  ...pointPlotLessons,
   ...algebraRequirementGapLessons,
   ...advancedMathGapLessons,
   ...numberMeasurementGapLessons,

@@ -64,6 +64,7 @@ import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import { complexMethods } from "./complex-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
+import { pointPlotMethods } from "./point-plot-lessons";
 import { algebraRequirementGapMethods } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapMethods } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapMethods } from "./number-measurement-gaps-lessons";
@@ -103,6 +104,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...quadraticMethods,
   ...complexMethods,
   ...satNumericEntryMethods,
+  ...pointPlotMethods,
   ...algebraRequirementGapMethods,
   ...advancedMathGapMethods,
   ...numberMeasurementGapMethods,

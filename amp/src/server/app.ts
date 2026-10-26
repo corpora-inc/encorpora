@@ -13,6 +13,7 @@ import { createHash, randomUUID } from "node:crypto";
 import {
   clientCanDraw,
   figureCapabilities,
+  responseCapabilities,
   generatedProblemSchema,
   type PublicProblem,
   type ProblemHint,
@@ -45,6 +46,7 @@ import {
   canonicalSelection,
   normalizeSelection,
 } from "../math/selection-response";
+import { canonicalPointSet, normalizePointPlot } from "../math/point-plot";
 import { recordProblemFlag } from "../feedback/record";
 import {
   publicJson,
@@ -406,8 +408,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
         templateId: z.string().max(100).optional(),
         count: z.number().int().min(1).max(5).default(3),
         responseCapabilities: z
-          .array(z.enum(["single-choice-v1", "multi-select-v1"]))
-          .max(2)
+          .array(z.enum(responseCapabilities))
+          .max(responseCapabilities.length)
           .default([]),
         figureCapabilities: z
           .array(z.enum(figureCapabilities))
@@ -646,10 +648,12 @@ function routes(app: FastifyInstance, options: AppOptions) {
         // A complete stored selection has already passed validation. Compare
         // sets on retries without depending on instance retention or option order.
         const selected = canonicalSelection(duplicate.response);
+        const plotted = canonicalPointSet(duplicate.response);
         const sameResponse =
           duplicate.response === input.response ||
           (selected !== null &&
-            canonicalSelection(input.response) === selected);
+            canonicalSelection(input.response) === selected) ||
+          (plotted !== null && canonicalPointSet(input.response) === plotted);
         if (duplicate.problemId !== input.problemId || !sameResponse)
           throw new ApiError(
             409,
@@ -676,12 +680,16 @@ function routes(app: FastifyInstance, options: AppOptions) {
             ? "Choose one of the displayed answers"
             : problem.public.response.kind === "multi-select"
               ? `Choose ${problem.public.response.selectionCount} of the displayed answers`
-              : "Enter a number, decimal, or fraction such as 3/4",
+              : problem.public.response.kind === "point-plot"
+                ? `Place ${problem.public.response.pointCount} different ${problem.public.response.pointCount === 1 ? "point" : "points"} on the grid`
+                : "Enter a number, decimal, or fraction such as 3/4",
         );
       const response =
         problem.public.response.kind === "multi-select"
           ? normalizeSelection(problem.public.response, input.response)!
-          : input.response;
+          : problem.public.response.kind === "point-plot"
+            ? normalizePointPlot(problem.public.response, input.response)!
+            : input.response;
       const answered = await tx.attemptByProblem(input.problemId);
       if (answered)
         throw new ApiError(409, "This problem has already been answered");

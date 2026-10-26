@@ -48,6 +48,14 @@ import {
   type GeometryFigure,
 } from "./geometry-figures.js";
 import { sceneSchema, type Scene } from "./scene/spec.js";
+import {
+  gradePointPlot,
+  normalizePointPlot,
+  pointPlotGradingSchema,
+  pointPlotResponseSchema,
+  type PointPlotGrading,
+  type PointPlotResponse,
+} from "./point-plot.js";
 import { stepsSchema, type Step } from "./scene/timeline.js";
 /** An input/output table, a first-quadrant graph, or both side by side.
  * A graph line is exact: y × run = rise × x + b × run. */
@@ -225,6 +233,14 @@ export const figureCapabilities = [
   "scenes-v1",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
+/** Answer formats beyond typed numbers. A client lists those it can show;
+ * a template that needs another is never sent to it. */
+export const responseCapabilities = [
+  "single-choice-v1",
+  "multi-select-v1",
+  "point-plot-v1",
+] as const;
+export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
 export interface ClientCapabilities {
   responseCapabilities: readonly string[];
@@ -251,7 +267,7 @@ export interface TemplateMetadata {
   difficultyOffset?: number;
   requiredFigureCapability?: FigureCapability;
   /** Absent for the original number/fraction protocol. */
-  requiredResponseCapability?: "single-choice-v1" | "multi-select-v1";
+  requiredResponseCapability?: ResponseCapability;
   id: string;
   version: 1;
   title: string;
@@ -265,10 +281,12 @@ export type MultiSelectResponse = {
   options: { id: string; label: string }[];
   selectionCount: number;
 };
+export type { PointPlotResponse, PointPlotGrading };
 export type ProblemResponse =
   | { kind: "number" | "fraction"; label: string }
   | { kind: "choice"; label: string; options: { id: string; label: string }[] }
-  | MultiSelectResponse;
+  | MultiSelectResponse
+  | PointPlotResponse;
 /** Safe teaching content delivered beside a problem; never grading data. */
 export interface ProblemHint {
   hint: string;
@@ -305,6 +323,8 @@ export interface GeneratedProblem {
   walkthrough?: Scene;
   /** Private, selected-distractor feedback; never included before submission. */
   choiceFeedback?: Record<string, string>;
+  /** Private grading rule of a point-plot response (point-plot.ts). */
+  pointGrading?: PointPlotGrading;
 }
 
 const displayInteger = z.number().int().min(-100000).max(100000);
@@ -879,6 +899,7 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
           value.options.length,
       "Select fewer than all options, using unique identifiers and labels",
     ),
+  pointPlotResponseSchema,
 ]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
@@ -903,10 +924,25 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
     choiceFeedback: z
       .record(choiceIdSchema, z.string().trim().min(1).max(1000))
       .optional(),
+    pointGrading: pointPlotGradingSchema.optional(),
   })
   .strict()
   .refine((problem) => {
     const response = problem.public.response;
+    // A plotted answer is canonical, complete, and accepted by its own rule.
+    if (response.kind === "point-plot")
+      return (
+        !problem.choiceFeedback &&
+        !!problem.pointGrading &&
+        normalizePointPlot(response, problem.answer) === problem.answer &&
+        gradePointPlot(
+          response,
+          problem.pointGrading,
+          problem.answer,
+          problem.answer,
+        )
+      );
+    if (problem.pointGrading) return false;
     if (response.kind === "multi-select")
       return (
         !problem.choiceFeedback &&
