@@ -658,7 +658,8 @@ export function lineRelationshipEquationsCase(seed: string): TexasHsCase {
     const target = parallel ? m : q(-1, mag);
     const x1 = parallel ? nonzeroIn(r, -5, 5) : mag * nonzeroIn(r, -2, 2);
     const y1 = nonzeroIn(r, -6, 6);
-    if (x1 === 0) return lineRelationshipEquationsCase(`${seed}~`);
+    if (x1 === 0 || (parallel && y1 === m.n * x1 + c))
+      return lineRelationshipEquationsCase(`${seed}~`);
     const b = interceptThrough(target, x1, y1);
     const right = si(target, b);
     const given = `$${slopeIntercept(m, q(c))}$`;
@@ -730,7 +731,10 @@ export function lineRelationshipEquationsCase(seed: string): TexasHsCase {
     const step = parallel ? bb : Math.abs(a);
     const x1 = step * nonzeroIn(r, -2, 2);
     const y1 = nonzeroIn(r, -6, 6);
-    const given = standardForm(a, bb, nonzeroIn(r, -6, 6));
+    const cc = nonzeroIn(r, -6, 6);
+    if (parallel && a * x1 + bb * y1 === cc)
+      return lineRelationshipEquationsCase(`${seed}~`);
+    const given = standardForm(a, bb, cc);
     const b = interceptThrough(target, x1, y1);
     const right = si(target, b);
     const alt = (s: Q) => si(s, interceptThrough(s, x1, y1));
@@ -998,9 +1002,9 @@ export function systemEquationChoiceCase(seed: string): TexasHsCase {
           feedback: `The total number of tickets is ${total} and the total money is ${money}; the two totals were exchanged.`,
         },
         {
-          label: tex(`${adult}x+${child}y=${total}\\text{ and }x+y=${money}`),
-          key: "swapped-eqs",
-          feedback: `The equation for tickets has coefficients 1 and totals ${total}; the equation for money uses the prices and totals ${money}.`,
+          label: tex(`x-y=${total}\\text{ and }${adult}x+${child}y=${money}`),
+          key: "difference-eq",
+          feedback: `The tickets sold add: the first equation must be $x+y=${total}$, not a difference.`,
         },
         {
           label: tex(`x+y=${total}\\text{ and }x+y=${money}`),
@@ -1586,8 +1590,8 @@ export function rationalEquationFormulateCase(seed: string): TexasHsCase {
           feedback: `The current changes the speed, which is the divisor. It is not added to the time.`,
         },
         {
-          ...lab(`\\frac{x+${cur}}{${dd}}=\\frac{x-${cur}}{${du}}`),
-          feedback: `Time is distance divided by speed, not speed divided by distance.`,
+          ...lab(`\\frac{${dd}}{x+${cur}}=\\frac{${du}}{x}`),
+          feedback: `The current slows the boat going upstream, so the upstream speed is $x-${cur}$, not $x$.`,
         },
         {
           ...lab(`${dd}(x+${cur})=${du}(x-${cur})`),
@@ -1598,7 +1602,8 @@ export function rationalEquationFormulateCase(seed: string): TexasHsCase {
   }
   const extra = pick(r, [10, 15, 20]);
   const d1 = r(2, 5) * 20;
-  const d2 = r(2, 5) * 20;
+  let d2 = r(2, 5) * 20;
+  while (d2 === d1) d2 = r(2, 5) * 20;
   const hours = pick(r, [3, 4, 5]);
   const right = lab(`\\frac{${d1}}{x}+\\frac{${d2}}{x+${extra}}=${hours}`);
   return finish(meta, seed, r, {
@@ -2090,8 +2095,8 @@ export function sphericalGeometryCase(seed: string): TexasHsCase {
           feedback: `A total of $${3 * small}^\\circ$ is less than $180^\\circ$. That happens on a saddle-shaped surface, not on a sphere.`,
         },
         {
-          label: `Angles of $${small}^\\circ$, $${small + 10}^\\circ$ and $${small + 20}^\\circ$`,
-          feedback: `These total $${3 * small + 30}^\\circ$, less than $180^\\circ$. On a sphere the total is greater than $180^\\circ$.`,
+          label: `Angles of $${small - 10}^\\circ$, $${small}^\\circ$ and $${small + 10}^\\circ$`,
+          feedback: `These total $${3 * small}^\\circ$, less than $180^\\circ$. On a sphere the total is greater than $180^\\circ$.`,
         },
       ],
     });
