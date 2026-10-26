@@ -7,6 +7,11 @@ import {
   generateSatGeometryDataProblem,
 } from "./sat-geometry-data-practice";
 import { normalizeSelection } from "./selection-response";
+import { gradePointPlot, normalizePointPlot } from "./point-plot";
+import {
+  pointPlotTemplates,
+  generatePointPlotProblem,
+} from "./point-plot-practice";
 import {
   quadrilateralHierarchyMultiselectTemplate,
   generateQuadrilateralHierarchyMultiselect,
@@ -274,6 +279,10 @@ import {
 } from "./sat-numeric-entry-practice";
 import { satSprDecimalAccepted } from "./sat-spr-entry";
 import {
+  k8StateNumberTemplates,
+  generateK8StateNumberProblem,
+} from "./k8-state-number-practice";
+import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
 } from "./complex-practice";
@@ -463,11 +472,13 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
+  ...k8StateNumberTemplates,
   complexMultiplicationTemplate,
   ...algebraRequirementGapTemplates,
   ...advancedMathGapTemplates,
   ...satAlgebraStructureTemplates,
   ...satNumericEntryTemplates,
+  ...pointPlotTemplates,
   ...vectorMatrixTemplates,
   ...statisticsProbabilityTemplates,
   ...complexConicsTemplates,
@@ -583,6 +594,8 @@ export function isValidResponse(
 ): boolean {
   if (problem.response.kind === "multi-select")
     return normalizeSelection(problem.response, response) !== null;
+  if (problem.response.kind === "point-plot")
+    return normalizePointPlot(problem.response, response) !== null;
   return problem.response.kind === "choice"
     ? problem.response.options.some((option) => option.id === response)
     : normalizeAnswer(response) !== null;
@@ -598,6 +611,16 @@ export function gradeAnswer(
       answer === normalizeSelection(problem.public.response, problem.answer)
     );
   }
+  if (problem.public.response.kind === "point-plot")
+    return (
+      !!problem.pointGrading &&
+      gradePointPlot(
+        problem.public.response,
+        problem.pointGrading,
+        problem.answer,
+        response,
+      )
+    );
   if (problem.public.response.kind === "choice")
     return (
       isValidResponse(problem.public, response) && response === problem.answer
@@ -750,6 +773,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
     ...algebraRequirementGapTemplates,
+    ...pointPlotTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
@@ -912,6 +936,8 @@ function generateRawProblem(
     return generateQuadraticProblem(templateId, seed);
   if (numberMeasurementGapTemplates.some((t) => t.id === templateId))
     return generateNumberMeasurementGapProblem(templateId, seed);
+  if (k8StateNumberTemplates.some((t) => t.id === templateId))
+    return generateK8StateNumberProblem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))
     return generateStatisticsProbabilityProblem(templateId, seed);
   if (complexConicsTemplates.some((t) => t.id === templateId))
@@ -922,6 +948,8 @@ function generateRawProblem(
     return generateAdvancedMathGapProblem(templateId, seed);
   if (satNumericEntryTemplates.some((t) => t.id === templateId))
     return generateSatNumericEntryProblem(templateId, seed);
+  if (pointPlotTemplates.some((t) => t.id === templateId))
+    return generatePointPlotProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
   if (algebraRequirementGapTemplates.some((t) => t.id === templateId))

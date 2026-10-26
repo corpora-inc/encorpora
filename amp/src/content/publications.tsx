@@ -66,6 +66,8 @@ import { Figure } from "../web/Figure";
 import { generateProblem } from "../math/engine";
 import type { GeneratedProblem } from "../math/contracts";
 import { answerText } from "../math/selection-response";
+import { plotPoints, pointPlotScene } from "../math/point-plot";
+import { SceneFigure } from "../web/scene/SceneFigure";
 import type { Lesson } from "./lessons";
 import { PrintMathText, printMathStyles } from "./PrintMathText";
 import { printMathCss } from "./print-fonts";
@@ -320,6 +322,18 @@ export function publicationHtml(
                 {i + 1}. <PrintMathText text={p.public.prompt} />
               </h2>
               {p.public.figure && <Figure figure={p.public.figure} />}
+              {p.public.response.kind === "point-plot" && (
+                // The workbook prints the empty grid to plot on by hand; the
+                // solutions print the same grid with the answer drawn.
+                <SceneFigure
+                  medium="print"
+                  reveal
+                  scene={pointPlotScene(p.public.response, {
+                    answer:
+                      kind === "solutions" ? plotPoints(p.answer) : undefined,
+                  })}
+                />
+              )}
               {(p.public.response.kind === "choice" ||
                 p.public.response.kind === "multi-select") &&
                 !(kind === "solutions" && explanationsQuoteEveryOption(p)) && (
