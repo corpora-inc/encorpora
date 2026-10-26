@@ -28,6 +28,12 @@ import { satPractice7 } from "./sat-practice-7";
 import { satPractice8 } from "./sat-practice-8";
 import { satPractice9 } from "./sat-practice-9";
 import { satPractice10 } from "./sat-practice-10";
+import { staar2024Grade3 } from "./staar-2024-3";
+import { staar2024Grade4 } from "./staar-2024-4";
+import { staar2024Grade5 } from "./staar-2024-5";
+import { staar2024Grade6 } from "./staar-2024-6";
+import { staar2024Grade7 } from "./staar-2024-7";
+import { staar2024Grade8 } from "./staar-2024-8";
 import { satPractice11 } from "./sat-practice-11";
 import { regentsAlgebra1June2026 } from "./regents-2026-06-algebra1";
 import { regentsGeometryJune2026 } from "./regents-2026-06-geometry";
@@ -60,6 +66,12 @@ export const releasedLedgers: readonly SourceLedger[] = [
   mcasGrade7,
   mcasGrade8,
   mcasGrade10,
+  staar2024Grade3,
+  staar2024Grade4,
+  staar2024Grade5,
+  staar2024Grade6,
+  staar2024Grade7,
+  staar2024Grade8,
   regentsAlgebra1June2026,
   regentsGeometryJune2026,
   regentsAlgebra2June2026,
