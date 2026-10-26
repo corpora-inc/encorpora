@@ -827,6 +827,20 @@ function storyEquation(r: Random): Built {
       label: tex(storyForms[k].eq(v, g, e, t)),
       feedback: `That equation says ${storyForms[k].says(g, e)}. Compare it with the order of the steps in the story.`,
     }));
+  // Solving a distractor must not give the story's own answer.
+  const rootOf: Record<StoryKind, number> = {
+    plus: (t - e) / g,
+    minus: (t + e) / g,
+    "gain-each": t / g - e,
+    "lose-each": t / g + e,
+    "share-plus": g * (t - e),
+  };
+  const solution = rootOf[kind];
+  if (
+    kinds.some((k) => k !== kind && rootOf[k] === solution) ||
+    t - g - e === solution
+  )
+    throw new Error("Need three distractors with different solutions");
   wrongs.push({
     label: tex(`${g} + ${v} + ${e} = ${t}`),
     feedback:
@@ -1252,7 +1266,7 @@ function vectorAngle(r: Random): Built {
     .filter((k) => k !== kind)
     .map((k) => ({
       label: labels[k],
-      feedback: `That does not fit: for these vectors the dot product is ${dot} and the cross-check $u_1v_2-u_2v_1$ is ${cross}. ${why[kind]}`,
+      feedback: `That does not fit: for these vectors the dot product is ${dot} and the cross-check $u_{1}v_{2}-u_{2}v_{1}$ is ${cross}. ${why[kind]}`,
     }));
   return {
     variant: `relationship-${kind}`,
@@ -1261,7 +1275,7 @@ function vectorAngle(r: Random): Built {
     hint: `Find the dot product of $${vec(u[0], u[1])}$ and $${vec(v[0], v[1])}$. A dot product of 0 means perpendicular. If it is not 0, check whether one vector is a multiple of the other.`,
     explanation: [
       `Dot product: $(${u[0]})(${v[0]})+(${u[1]})(${v[1]})=${dot}$.`,
-      `Check for a multiple: $u_1v_2-u_2v_1=(${u[0]})(${v[1]})-(${u[1]})(${v[0]})=${cross}$.`,
+      `Check for a multiple: $u_{1}v_{2}-u_{2}v_{1}=(${u[0]})(${v[1]})-(${u[1]})(${v[0]})=${cross}$.`,
       why[kind]!,
     ],
     choices: choicesFrom(r, labels[kind], wrongs),
@@ -1533,7 +1547,7 @@ function functionArithmetic(r: Random): Built {
           f[1]! * g[1]!,
         ]),
         feedback:
-          "Check the middle term: add the two cross products $f_0g_1$ and $f_1g_0$ exactly.",
+          "Check the middle term: add the two cross products $f_{0}g_{1}$ and $f_{1}g_{0}$ exactly.",
       },
       {
         label: label([
