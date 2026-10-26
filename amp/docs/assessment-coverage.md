@@ -30,6 +30,24 @@ Practice Test 11 added no archetypes. Tests 7–10 each added at most three, and
 
 A second labeler re-labeled a seeded random 10% sample (44 questions) without seeing the first labels. Status agreed on 41 (93.2%), archetypes overlapped on 42 (95.5%) and templates on 43 (97.7%). The disagreements were resolved by applying one rule to every test: linear families never use function notation, so linear `f(x)` questions are partial.
 
+### New York Regents mathematics exams
+
+All 106 questions of the June 2026 Regents Examinations in Algebra I (35), Geometry (35) and Algebra II (36), Next Generation Learning Standards, are labeled. Standards are the cluster codes in each rating guide's map to the learning standards. Every question allows a graphing calculator.
+
+| Exam | Covered | Partial | Missing |
+| --- | ---: | ---: | ---: |
+| Algebra I | 5 (14.3%) | 28 (80.0%) | 2 (5.7%) |
+| Geometry | 4 (11.4%) | 30 (85.7%) | 1 (2.9%) |
+| Algebra II | 2 (5.6%) | 34 (94.4%) | 0 (0.0%) |
+
+Part I multiple choice is 72 of 106 items and 10 of them are covered. The 34 constructed-response items are the main gap: 6 require a drawn graph (graph/drag) and 18 a written expression, construction, proof or explanation (constructed), and AMP has no protocol that can take either. The graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. The remaining 10 constructed-response items ask for one number and are numeric, but the rating guides also credit shown work, which AMP does not score, so only one is covered. Three items have no related family: building a polynomial from its degree and coefficients, graphing an absolute-value function and the perpendicular-bisector property.
+
+The largest gaps are parallelogram and rhombus properties and proofs, factoring beyond one-variable trinomials, unit and density chains in volume problems, drawing nonlinear graphs, rational exponents and exponent rules, zeros of nonmonic factors and growth rates read from exponential bases. Algebra I and Algebra II families usually stop short on one feature: decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations and fractional ratios in series.
+
+Each exam still added 12 to 15 archetypes that earlier sources had not used and only 40 to 56 percent of its questions fell on archetypes already seen, so the high-school task set is not saturated; the SAT and state samples saw few of these tasks. Fourteen archetypes were minted for tasks no existing archetype named.
+
+A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Status agreed on 11 (100%), archetypes overlapped on 10 (90.9%), templates on 11 (100%) and response format on 10 (90.9%). The disagreements were a proposed archetype for rationalizing denominators, resolved by widening `expression.radical-simplify`, and a multipart graphing item (Algebra II 36) that the first labeler recorded as graph/drag because a graph is the first required response.
+
 The earlier purposive samples (Massachusetts grades 5, 8 and 10, New York grade 7, and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
 
 ### Adding a source

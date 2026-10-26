@@ -69,7 +69,11 @@ pattern.paired|Pair terms of two patterns and state the relationship
 function.relation-equation|Identify the dependent variable and write its equation from a context
 function.linear-test|Decide which equation defines a linear or proportional function
 equation.solution-point|Choose the point on the graph of an equation by testing ordered pairs
-inequality.number-line|Match an inequality with its number-line graph`,
+inequality.number-line|Match an inequality with its number-line graph
+sequence.arithmetic|Find a term, common difference or rule of an arithmetic sequence
+sequence.recursive|Compute terms from a recursive rule, including rules that are not geometric or arithmetic
+function.parity|Decide whether a function is odd or even from its rule or graph
+inequality.graph-region|Draw the solution region of a linear inequality or a system of inequalities`,
   "advanced-math": `
 expression.polynomial|Add, subtract or multiply polynomials and combine like terms
 expression.factor|Factor a polynomial or identify one of its factors
@@ -137,7 +141,10 @@ expression.polynomial-division|Divide a polynomial by x minus a, or use the rema
 function.piecewise|Read or write a piecewise function from its graph or absolute value
 function.composition|Evaluate or write a composition of functions
 function.inverse|Find an inverse function's value or expression
-function.compare-representations|Compare features of functions given by a formula, a table or a graph`,
+function.compare-representations|Compare features of functions given by a formula, a table or a graph
+expression.polynomial-structure|Build or classify a polynomial by degree, number of terms, leading coefficient and constant term
+exponential.compare-linear|Find when an exponential function first exceeds a linear function
+graph.draw-nonlinear|Draw the graph of a nonlinear function from its rule, a stated domain or stated features`,
   data: `
 data.graph-read|Read values, extremes or changes from a bar graph, line graph or table
 ratio.units|Convert units of length, rate, area, volume or density
@@ -184,7 +191,10 @@ probability.addition-rule|Find P(A or B) with the addition rule
 probability.multiplication-rule|Find P(A and B) with the multiplication rule or a tree
 study.statistical-question|Choose the question that anticipates variability in its answers
 univariate.compare-distributions|Compare the centers and spreads of two distributions
-bivariate.categorical-association|Decide whether two categorical variables are associated from row percents`,
+bivariate.categorical-association|Decide whether two categorical variables are associated from row percents
+univariate.quartiles|Find a quartile or the interquartile range of a listed data set
+bivariate.regression-compute|Compute a regression equation from a data table
+bivariate.correlation-coefficient|Interpret the sign and strength of a correlation coefficient`,
   geometry: `
 measure.area|Find perimeters, areas or missing lengths of polygons and composite figures
 measure.volume|Find volumes of solids or missing dimensions from a volume
@@ -255,7 +265,12 @@ proof.measurement-formulas|Choose the step that justifies a circle, pyramid or c
 transformation.invariants|Decide which transformations preserve distance and angle
 construction.compass-straightedge|Choose or order the steps of a compass and straightedge construction
 circle.inscribed-centers|Choose the construction of a circumcenter or incenter or find angles of an inscribed quadrilateral
-coordinate.quadrilateral-claims|Use slopes and distances to name the most specific quadrilateral from vertex coordinates`,
+coordinate.quadrilateral-claims|Use slopes and distances to name the most specific quadrilateral from vertex coordinates
+triangle.midsegment|Use the midsegment of a triangle
+triangle.side-splitter|Use a line parallel to a triangle side to find proportional segments
+triangle.altitude-hypotenuse|Use the altitude to the hypotenuse of a right triangle
+segment.perpendicular-bisector|Use the points of a perpendicular bisector
+proof.geometry-written|Write a formal geometric proof or coordinate proof from givens`,
   arithmetic: `
 number.estimate|Estimate sums, products or quotients by rounding or compatible numbers, or judge an answer by estimating
 number.whole-unit-stories|Count whole kits, vehicles or leftovers when only whole units count
