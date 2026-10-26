@@ -271,9 +271,12 @@ jobs:
           # The rustfmt ratchet walks every tracked crate (amp/mobile too) and
           # patch_integrity reads every Cargo manifest and lock, so any Rust
           # source, Cargo file or toolchain/format config anywhere selects it.
+          # Two non-Rust inputs are compiled or read by it: Corpán embeds
+          # `corpan/dja/release.sqlite3` (`include_bytes!` in db.rs), and
+          # Dynawalla's `packs::` tests read every `dynawalla/games/*/pack.json`.
           # Nothing else does: TypeScript, content and docs cannot change a
           # Rust build.
-          set_output native '^(native/|.*/src-tauri/|corpan/plugins/|\.github/workflows/ci\.yml$|\.github/scripts/(patch_integrity|clippy_report)\.py$)|\.rs$|(^|/)(Cargo\.(toml|lock)|rust-toolchain(\.toml)?|\.?rustfmt\.toml|\.?clippy\.toml|\.cargo/config(\.toml)?)$'
+          set_output native '^(native/|.*/src-tauri/|corpan/plugins/|corpan/dja/release\.sqlite3$|dynawalla/games/[^/]+/pack\.json$|\.github/workflows/ci\.yml$|\.github/scripts/(patch_integrity|clippy_report)\.py$)|\.rs$|(^|/)(Cargo\.(toml|lock)|rust-toolchain(\.toml)?|\.?rustfmt\.toml|\.?clippy\.toml|\.cargo/config(\.toml)?)$'
 
           # One tested planner serves routine and deep checks. Missing history
           # forces full validation rather than an incomplete diff.

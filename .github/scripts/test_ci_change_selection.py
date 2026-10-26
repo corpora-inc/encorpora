@@ -109,6 +109,8 @@ def test_oracle_only_change_runs_its_consumer_tests_without_build_or_database(tm
     'amp/mobile/session-core/src/lib.rs',
     'aha/aha-app/rust-toolchain.toml',
     'native/README.md',
+    'corpan/dja/release.sqlite3',  # embedded by corpan-app's db.rs
+    'dynawalla/games/new-game/pack.json',  # read by the packs:: Rust tests
 ])
 @pytest.mark.parametrize('event', ['pull_request', 'merge_group'])
 def test_native_change_runs_the_native_job(tmp_path, repo, event, path):
@@ -116,7 +118,7 @@ def test_native_change_runs_the_native_job(tmp_path, repo, event, path):
     head = repo.commit([path])
     values = repo.select(tmp_path, event, base, head)
     assert values['native'] == 'true'
-    if not path.startswith('amp/'):
+    if not path.startswith(('amp/', 'corpan/dja/')):
         assert values['amp'] == values['amp_core'] == values['amp_database'] == 'false'
 
 
