@@ -83,6 +83,9 @@ export type Outcome = {
   explanation: string[];
   answer: string;
   createdAt: string;
+  /** Multi-part choice only: whether each blank, in blank order, was right.
+   * Credit (`correct`) still needs every blank. */
+  parts?: boolean[];
   /** Only on a skip's reveal, which is never stored as an attempt. */
   skipped?: true;
 };

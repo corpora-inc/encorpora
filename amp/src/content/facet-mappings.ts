@@ -10,6 +10,7 @@ import { transformationFacetMappings } from "./transformation-coverage";
 import { completingSquareFacetMappings } from "./completing-square-coverage";
 import { algebraRequirementGapFacetMappings } from "./algebra-requirement-gaps-coverage";
 import { pointPlotFacetMappings } from "./point-plot-coverage";
+import { multiPartChoiceFacetMappings } from "./multi-part-choice-coverage";
 import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
@@ -1542,6 +1543,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...circleMeasurementFacetMappings,
   ...completingSquareFacetMappings,
   ...pointPlotFacetMappings,
+  ...multiPartChoiceFacetMappings,
   ...algebraRequirementGapFacetMappings,
   ...integerExponentFacetMappings,
   ...descriptiveStatisticsFacetMappings,
