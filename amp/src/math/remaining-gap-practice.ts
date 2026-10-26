@@ -277,7 +277,7 @@ export function triangleLawCase(seed: string) {
     draft = {
       prompt: `A triangle $${A}${B}${C}$ has ${setup.given}. You want ${setup.target}. Which law starts the solution, and why?`,
       answer: "",
-      hint: `Sort the givens: ${setup.first}. The law of sines needs such a pair; the law of cosines needs three sides or two sides and the angle between them.`,
+      hint: `Sort the givens (${setup.given}): ${setup.first}. The law of sines needs such a pair; the law of cosines needs three sides or two sides and the angle between them.`,
       explanation: [
         `The givens are ${setup.given}.`,
         ...setup.steps,
@@ -500,6 +500,8 @@ export function modelQuantityCase(seed: string) {
   const rate = r(2, 9);
   const fixed = [3, 4, 5, 6, 7, 9, 10, 12][r(0, 7)]!;
   const scene = ctx.scene(rate, fixed);
+  // The tank scene prints its starting volume as ten times the base number.
+  const fixedShown = scene.includes("holding") ? fixed * 10 : fixed;
   const x = `$${ctx.xSym}$`;
   const y = `$${ctx.ySym}$`;
   let draft: Draft;
@@ -508,7 +510,7 @@ export function modelQuantityCase(seed: string) {
     draft = {
       prompt: `${scene}. You want a model that predicts ${ctx.yAsk} from ${ctx.xAsk}. Which definition of the variables is clearest?`,
       answer: "",
-      hint: `The model predicts ${ctx.yAsk}, so that quantity depends on the other one. Name what each letter measures and the unit it is measured in.`,
+      hint: `The model predicts ${ctx.yAsk}, so that quantity depends on the other one. The numbers ${rate} and ${fixedShown} are fixed by the situation, not variables. Name what each letter measures and the unit it is measured in.`,
       explanation: [
         `The quantity you choose or change is ${ctx.xAsk}. It is the independent quantity, measured in ${ctx.xUnit}.`,
         `The quantity that responds is ${ctx.yAsk}. It is the dependent quantity, measured in ${ctx.yUnit}.`,
@@ -534,7 +536,7 @@ export function modelQuantityCase(seed: string) {
     draft = {
       prompt: `${scene}. In a model of ${ctx.yAsk} against ${ctx.xAsk}, which quantity, with its units, is the constant rate of change?`,
       answer: "",
-      hint: `A rate compares how much ${ctx.yUnit} change for each one ${ctx.xUnit.replace(/s$/, "")}. Find the number in the situation that goes with "each" or "per".`,
+      hint: `A rate compares how much ${ctx.yUnit} change for each one ${ctx.xUnit.replace(/s$/, "")}. The situation gives ${rate} and ${fixedShown}; find the one that goes with "each" or "per".`,
       explanation: [
         `The rate is the amount ${ctx.yAsk} changes for each one-unit change in ${ctx.xAsk}.`,
         `That is ${ctx.yUnit} for each ${ctx.xUnit.replace(/s$/, "")}, written ${ctx.rate}.`,
@@ -563,7 +565,7 @@ export function modelQuantityCase(seed: string) {
     draft = {
       prompt: `${t.scene(rate, fixed)}. A question asks about ${given}. Which definition of $${t.xSym}$ keeps the model in the units of the rate?`,
       answer: "",
-      hint: `The rate is ${t.rate}, so the quantity multiplied by it must be counted in ${t.xUnit}. Convert ${given} before substituting.`,
+      hint: `The rate is ${t.rate}, so the quantity multiplied by ${rate} must be counted in ${t.xUnit}. Convert ${given} before substituting.`,
       explanation: [
         `The rate is ${t.rate}, so $${t.xSym}$ must be counted in ${t.xUnit}.`,
         `Convert the amount in the question: ${given} is ${inUnit}.`,
@@ -590,7 +592,7 @@ export function modelQuantityCase(seed: string) {
     draft = {
       prompt: `${scene}. When ${ctx.xAsk} changes, which two quantities change?`,
       answer: "",
-      hint: `A quantity stays constant if the situation gives it as one fixed number. Sort the four quantities: ${ctx.xAsk}, ${ctx.yAsk}, ${ctx.rate} and ${ctx.fixedName}.`,
+      hint: `A quantity stays constant if the situation gives it as one fixed number, like ${rate} and ${fixedShown} here. Sort the four quantities: ${ctx.xAsk}, ${ctx.yAsk}, ${ctx.rate} and ${ctx.fixedName}.`,
       explanation: [
         `${cap(ctx.rate)} and ${ctx.fixedName} are single fixed numbers in the situation.`,
         `${cap(ctx.xAsk)} is the quantity you vary, and ${ctx.yAsk} responds to it.`,
@@ -993,7 +995,7 @@ export function stemLeafCase(seed: string) {
     prompt: `The stem-and-leaf plot shows the ${contextText.replace("{n}", String(n))}. ${keyFor(keyValue)} ${question}`,
     answer: "",
     figure,
-    hint,
+    hint: `Use the key: stem ${stemOf(keyValue)} with leaf ${leafOf(keyValue)} is ${show(keyValue)}. ${hint}`,
     explanation,
     choices: options(answer, wrong),
   };
@@ -1252,7 +1254,7 @@ export function grossNetCase(seed: string) {
       prompt: `A worker's gross pay is ${money(grossPay)} and net pay is ${money(netPay)}. The table shows three of the four deductions. How much was taken out for ${missName}?`,
       figure: moneyFigure(others),
       answer: "",
-      hint: `Gross pay minus net pay is the total of all the deductions. Subtract the three known deductions from that total.`,
+      hint: `Gross pay minus net pay, ${money(grossPay)} minus ${money(netPay)}, is the total of all the deductions. Subtract the three known deductions from that total.`,
       explanation: [
         `Total deductions = gross pay − net pay = ${dollars(grossPay)} − ${dollars(netPay)} = ${dollars(totalDeductions)}.`,
         `The known deductions total ${dollars(othersTotal)}.`,
@@ -1283,7 +1285,7 @@ export function grossNetCase(seed: string) {
       prompt: `A pay stub shows gross pay of ${money(grossPay)} and the deductions in the table. The worker's paycheck is the take-home pay after all deductions. Which amount is the paycheck?`,
       figure: moneyFigure(deductions),
       answer: "",
-      hint: `Gross pay is the amount before deductions, and each deduction is one amount withheld. Take-home pay is gross pay minus all ${deductions.length} deductions.`,
+      hint: `Gross pay is the amount before deductions, and each deduction is one amount withheld. Take-home pay is gross pay, ${money(grossPay)}, minus all ${deductions.length} deductions.`,
       explanation: [
         `Gross pay is ${dollars(grossPay)}. The deductions total ${plus(deductions)} = ${dollars(totalDeductions)}.`,
         `Take-home (net) pay = ${dollars(grossPay)} − ${dollars(totalDeductions)} = ${dollars(netPay)}.`,

@@ -490,6 +490,8 @@ def check_segment_labels(public, pts, given, unknown):
 
 def solve_similarity(public):
     prompt = public['prompt']
+    if prompt.startswith('In right triangle $ABC$'):
+        prompt = prompt.replace('$', '')
     options = require_choice(public)
     pts = labelled_points(public)
     dist = lambda a, b: math.hypot(pts[a][0] - pts[b][0], pts[a][1] - pts[b][1])
@@ -524,6 +526,7 @@ def solve_similarity(public):
         require(abs(dist('A', 'D') - float(expected)) < 1e-6, 'Figure AD differs from solved value')
         check_segment_labels(public, pts, {'AC': int(ac), 'AB': int(ab_len)}, 'AD')
         return pick(options, (expected, ''), None, 'AD')
+    prompt = prompt.replace('$', '')
     m = re.fullmatch(r'In triangle ABC, D is on AB and E is on AC, and DE is parallel to BC, as shown\. (.*) What is the length of (DB|EC)\?', prompt)
     require(m is not None, f'Unknown similarity prompt: {prompt}')
     require(set(pts) == {'A', 'B', 'C', 'D', 'E'}, 'Parallel figure points')

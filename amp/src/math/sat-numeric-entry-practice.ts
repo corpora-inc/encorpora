@@ -242,7 +242,7 @@ function quadraticSolution(r: R): Case {
       variant: "rearranged-greater",
       prompt: `What is the greater solution of $${poly([1, -sum, 0])}=${-prod}$?`,
       answer,
-      hint: `The equation is not yet equal to 0. ${prod > 0 ? `Add ${prod}` : `Subtract ${-prod}`} on both sides, then factor the quadratic.`,
+      hint: `The equation $${poly([1, -sum, 0])}=${-prod}$ is not yet equal to 0. ${prod > 0 ? `Add ${prod}` : `Subtract ${-prod}`} on both sides, then factor the quadratic.`,
       explanation: [
         `${prod > 0 ? `Add ${prod}` : `Subtract ${-prod}`} on both sides: $${standard}=0$.`,
         `The numbers ${-r1} and ${-r2} multiply to ${prod} and add to ${-sum}, so $(x${r1 > 0 ? "-" : "+"}${Math.abs(r1)})(x${r2 > 0 ? "-" : "+"}${Math.abs(r2)})=0$.`,
@@ -319,7 +319,7 @@ function rootRelations(r: R): Case {
         variant: "sum",
         prompt: `${common} What is the value of $p+q$?`,
         answer: q(-b, a),
-        hint: `You do not need $p$ or $q$ themselves. Expand $${a}(x-p)(x-q)$ and compare its $x$ coefficient with ${b}.`,
+        hint: `You do not need $p$ or $q$ themselves. In $${e}=0$, expand $${a === 1 ? "" : a}(x-p)(x-q)$ and compare its $x$ coefficient with the one in the equation.`,
         explanation: [vieta, `So $p+q=${tex(q(-b, a))}$.`],
         data: { a, b, c, ask: "sum" },
       };
@@ -328,7 +328,7 @@ function rootRelations(r: R): Case {
         variant: "product",
         prompt: `${common} What is the value of $pq$?`,
         answer: q(c, a),
-        hint: `Expand $${a}(x-p)(x-q)$. Its constant term is $${a}pq$; compare it with ${c}.`,
+        hint: `In $${e}=0$, expand $${a === 1 ? "" : a}(x-p)(x-q)$. Its constant term is $${a === 1 ? "" : a}pq$; compare it with the constant term of the equation.`,
         explanation: [vieta, `So $pq=${tex(q(c, a))}$.`],
         data: { a, b, c, ask: "product" },
       };
@@ -337,10 +337,10 @@ function rootRelations(r: R): Case {
         variant: "reciprocal-sum",
         prompt: `${common} What is the value of $\\frac{1}{p}+\\frac{1}{q}$?`,
         answer: q(-b, c),
-        hint: `Combine $\\frac1p+\\frac1q$ over a common denominator, then rewrite the numerator and denominator using the sum and product of the solutions.`,
+        hint: `Combine $\\frac{1}{p}+\\frac{1}{q}$ over a common denominator, then rewrite the numerator and denominator using the sum and product of the solutions of $${e}=0$.`,
         explanation: [
           vieta,
-          `$\\frac1p+\\frac1q=\\frac{p+q}{pq}=\\frac{${tex(q(-b, a))}}{${tex(q(c, a))}}=${tex(q(-b, c))}$.`,
+          `$\\frac{1}{p}+\\frac{1}{q}=\\frac{p+q}{pq}=\\frac{${tex(q(-b, a))}}{${tex(q(c, a))}}=${tex(q(-b, c))}$.`,
         ],
         data: { a, b, c, ask: "reciprocal-sum" },
       };
@@ -349,7 +349,7 @@ function rootRelations(r: R): Case {
       variant: "sum-of-squares",
       prompt: `${common} What is the value of $p^2+q^2$?`,
       answer,
-      hint: `Write $p^2+q^2=(p+q)^2-2pq$, then find $p+q$ and $pq$ from the coefficients.`,
+      hint: `Write $p^2+q^2=(p+q)^2-2pq$, then find $p+q$ and $pq$ from the coefficients of $${e}=0$.`,
       explanation: [
         vieta,
         `$p^2+q^2=(p+q)^2-2pq=\\left(${tex(q(-b, a))}\\right)^2-2\\left(${tex(q(c, a))}\\right)=${tex(answer)}$.`,
@@ -450,7 +450,7 @@ function absoluteEquation(r: R): Case {
         hint: `Split into $${left}=${right}$ and $${lin([
           [-1, "x"],
           [h, ""],
-        ])}=${right}$ and solve each. Then substitute both answers: an absolute value is never negative, so the right side must be at least 0.`,
+        ])}=${right}$ and solve each. Then substitute both answers: an absolute value is never negative, so check the sign of the right side.`,
         explanation: [
           `Case 1: $${left}=${right}$ gives $x=${tex(x1)}$. Case 2: $${lin([
             [-1, "x"],
@@ -478,7 +478,7 @@ function absoluteEquation(r: R): Case {
       [-t, ""],
     ])}|$ has exactly one solution. What is it?`,
     answer,
-    hint: `Equal absolute values mean the two expressions are equal or opposite. One of the two resulting equations has no solution; solve the other.`,
+    hint: `Equal absolute values mean $${lin([[1, "x"], [-h, ""]])}=${lin([[1, "x"], [-t, ""]])}$ or $${lin([[1, "x"], [-h, ""]])}=-(${lin([[1, "x"], [-t, ""]])})$. One of those equations has no solution; solve the other.`,
     explanation: [
       `Equal expressions: $${lin([
         [1, "x"],
@@ -576,7 +576,7 @@ function radicalEquation(r: R): Case {
       variant: variant === 0 ? "reject-extraneous" : "zero-right-side",
       prompt: `What is the solution of $\\sqrt{${radicand}}=${right}$?`,
       answer: q(good),
-      hint: `Square both sides to get a quadratic and solve it. Then test each candidate in the original equation: a square root is never negative, so $${right}$ must be at least 0.`,
+      hint: `Square both sides to get a quadratic and solve it. Then test each candidate in the original equation: a square root is never negative, so check the sign of $${right}$.`,
       explanation: [
         ...common,
         `At $x=${bad}$ the right side is ${bad + c}, which is negative, so ${bad} is extraneous.`,
@@ -616,7 +616,7 @@ function rationalEquation(r: R): Case {
           [-t, ""],
         ])}}$?`,
         answer: x,
-        hint: `Neither denominator may be 0, so $x\\ne${s}$ and $x\\ne${t}$. Cross-multiply, expand both products, and notice that the $x^2$ terms cancel.`,
+        hint: `Neither denominator may be 0, so $x\\ne ${s}$ and $x\\ne ${t}$. Cross-multiply, expand both products, and notice that the $x^2$ terms cancel.`,
         explanation: [
           `Cross-multiply: $(${lin([
             [1, "x"],
@@ -705,7 +705,7 @@ function polynomialZeros(r: R): Case {
       variant: "least-zero",
       prompt: `What is the least zero of $f(x)=${fx(k, f)}$?`,
       answer: q(least),
-      hint: `A product is 0 only when one of its factors is 0. Set each factor of $f(x)$ equal to 0 and compare the three zeros.`,
+      hint: `A product is zero only when one of its factors is zero. Set each factor of $f(x)=${fx(k, f)}$ equal to zero and compare the three zeros.`,
       explanation: [
         `The factors ${z.map((v) => `$${rootFac(v)}$`).join(", ")} are 0 at ${z.join(", ")}. The constant ${k} never equals 0.`,
         `The least zero is ${least}.`,
@@ -720,7 +720,7 @@ function polynomialZeros(r: R): Case {
       variant: "sum-distinct-repeated",
       prompt: `What is the sum of the distinct real zeros of $f(x)=${fx(k, `${rootFac(a)}^2${rootFac(b)}${rootFac(c)}`)}$?`,
       answer: q(a + b + c),
-      hint: `Set each factor equal to 0. A repeated factor gives one zero, not two, so list each zero once before adding.`,
+      hint: `Set each factor of $f(x)=${fx(k, `${rootFac(a)}^2${rootFac(b)}${rootFac(c)}`)}$ equal to zero. A repeated factor gives one zero, not two, so list each zero once before adding.`,
       explanation: [
         `The zeros are ${a} (from the squared factor), ${b} and ${c}.`,
         `The distinct zeros are ${a}, ${b} and ${c}; adding gives ${a + b + c}.`,
@@ -765,7 +765,7 @@ function polynomialZeros(r: R): Case {
     variant: "no-real-zero-factor",
     prompt: `What is the sum of all real zeros of $f(x)=(x${a < 0 ? "+" : "-"}${Math.abs(a)})(x^2+${kk})(x${b < 0 ? "+" : "-"}${Math.abs(b)})$?`,
     answer: q(a + b),
-    hint: `Set each factor equal to 0. For $x^2+${kk}=0$, ask whether any real number squared can equal $-${kk}$.`,
+    hint: `Set each factor equal to zero. Ask whether any real number $x$ can make $x^2+${kk}$ zero when a real square is never negative.`,
     explanation: [
       `$x${a < 0 ? "+" : "-"}${Math.abs(a)}=0$ gives $x=${a}$ and $x${b < 0 ? "+" : "-"}${Math.abs(b)}=0$ gives $x=${b}$.`,
       `$x^2+${kk}=0$ would need $x^2=-${kk}$, but a real square is never negative, so this factor gives no real zero.`,
@@ -820,7 +820,7 @@ function quadraticContext(r: R): Case {
       variant: "maximum-height",
       prompt: `${setup} What is the greatest height, in meters, that the ball reaches?`,
       answer: hMax,
-      hint: `The greatest height is the value of $h$ at the axis of symmetry $t=\\frac{-b}{2a}$. Find that time first, then substitute it into $h(t)$.`,
+      hint: `The greatest height is the value of $h(t)=${h}$ at the axis of symmetry $t=\\frac{-b}{2a}$. Find that time first, then substitute it into $h(t)$.`,
       explanation: [
         `The axis of symmetry is $t=\\frac{-${b}}{2(-${a})}=${tex(tMax)}$.`,
         `Substitute: $h(${tex(tMax)})=${tex(hMax)}$.`,
@@ -832,7 +832,7 @@ function quadraticContext(r: R): Case {
     variant: "maximum-from-ground",
     prompt: `${setup} What is the greatest height, in meters, that the ball reaches?`,
     answer: hMax,
-    hint: `The ball starts at height 0. Its highest point is halfway between the two times when $h(t)=0$, so find those times first (factor out $t$).`,
+    hint: `The ball starts at height 0. Its highest point is halfway between the two times when $h(t)=${h}$ is zero, so find those times first (factor out $t$).`,
     explanation: [
       `Factor: $h(t)=t(${lin([
         [-a, "t"],
@@ -943,7 +943,7 @@ function radianConversion(r: R): Case {
         variant: "radians-to-degrees",
         prompt: `An angle measures $\\frac{${n === 1 ? "" : n}\\pi}{${d}}$ radians. What is its measure in degrees?`,
         answer: q(degrees),
-        hint: `A half turn is $\\pi$ radians, which is 180 degrees. Replace $\\pi$ by 180 and simplify.`,
+        hint: `A half turn is $\\pi$ radians, which is 180 degrees. Replace $\\pi$ by 180 in $\\frac{${n === 1 ? "" : n}\\pi}{${d}}$ and simplify.`,
         explanation: [
           `Since $\\pi$ radians $=180^\\circ$, multiply by $\\frac{180}{\\pi}$.`,
           `$\\frac{${n === 1 ? "" : n}\\pi}{${d}}\\cdot\\frac{180}{\\pi}=\\frac{${180 * n}}{${d}}=${degrees}$ degrees.`,
@@ -1013,7 +1013,7 @@ function inequalityInteger(r: R): Case {
         [b, ""],
       ])}< ${c}$?`,
       answer: q(bound - 1),
-      hint: `Solve for $x$ first. The inequality is strict, so check whether the boundary value itself is allowed.`,
+      hint: `Solve $${lin([[a, "x"], [b, ""]])}< ${c}$ for $x$ first. The inequality is strict, so check whether the boundary value itself is allowed.`,
       explanation: [
         `Subtract ${b}: $${a}x< ${c - b}$. Divide by ${a}: $x< ${bound}$.`,
         `The boundary ${bound} is not allowed because the inequality is strict, so the greatest integer is ${bound - 1}.`,
@@ -1055,7 +1055,7 @@ function inequalityInteger(r: R): Case {
       [b, ""],
     ])}\\le ${c}$?`,
     answer: q(count),
-    hint: `Solve for $x$ first, then list the positive integers up to the boundary. If the boundary is below 1, there are none.`,
+    hint: `Solve $${lin([[a, "x"], [b, ""]])}\\le ${c}$ for $x$ first, then list the positive integers up to the boundary. If the boundary is below 1, there are none.`,
     explanation: [
       `Subtract ${b}: $${a}x\\le ${c - b}$. Divide by ${a}: $x\\le ${tex(bound)}$.`,
       count === 0
@@ -1076,7 +1076,7 @@ const defs: { template: TemplateMetadata; make: (r: R) => Case }[] = [
       "Enter a variable from a 2×2 system",
       "linear-systems",
       0.5,
-      "Solve a two-variable linear system and enter the exact value of x or y as an integer, fraction or decimal.",
+      "Solve a two-variable linear system and enter the exact value of $x$ or $y$ as an integer, fraction or decimal.",
     ),
     make: systemSolve,
   },
@@ -1086,7 +1086,7 @@ const defs: { template: TemplateMetadata; make: (r: R) => Case }[] = [
       "Enter the value of an expression from a system",
       "linear-systems",
       0.55,
-      "Combine two linear equations to find the numeric value of an expression in x and y without solving for each variable.",
+      "Combine two linear equations to find the numeric value of an expression in $x$ and $y$ without solving for each variable.",
     ),
     make: systemExpression,
   },
@@ -1176,7 +1176,7 @@ const defs: { template: TemplateMetadata; make: (r: R) => Case }[] = [
       "Enter a degree-radian conversion",
       "radians-unit-circle",
       0.45,
-      "Convert between degrees and radians and enter the degree measure or the coefficient k in k·π.",
+      "Convert between degrees and radians and enter the degree measure or the coefficient $k$ in $k\\pi$.",
     ),
     make: radianConversion,
   },

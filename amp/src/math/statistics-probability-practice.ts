@@ -31,7 +31,7 @@ export const statisticsProbabilityTemplates: readonly TemplateMetadata[] = [
     skillId: "normal-distributions",
     difficultyOffset: 0.3,
     description:
-      "Use the empirical rule for percents between, above and below mean ± k standard deviations, find an interval for a stated percent, compare values by z-score, and judge when a normal model is not appropriate.",
+      "Use the empirical rule for percents between, above and below mean $\\pm k$ standard deviations, find an interval for a stated percent, compare values by $z$-score, and judge when a normal model is not appropriate.",
     ...base,
   },
   {
@@ -464,29 +464,29 @@ function normalCase(r: Random): Built {
     return {
       variant,
       draft: {
-        prompt: `Both exams have approximately normal scores. ${nameA} scored ${xA} on the ${subA} exam (mean ${mA}, standard deviation ${sA}). ${nameB} scored ${xB} on the ${subB} exam (mean ${mB}, standard deviation ${sB}). Who scored higher relative to the others who took the same exam? Compare z-scores, where z = (score − mean) ÷ standard deviation.`,
+        prompt: `Both exams have approximately normal scores. ${nameA} scored ${xA} on the ${subA} exam (mean ${mA}, standard deviation ${sA}). ${nameB} scored ${xB} on the ${subB} exam (mean ${mB}, standard deviation ${sB}). Who scored higher relative to the others who took the same exam? Compare $z$-scores, where $z=\\frac{\\text{score}-\\text{mean}}{\\text{standard deviation}}$.`,
         answer: correct,
         hint: `Raw scores ${xA} and ${xB} come from different exams. Convert each to the number of standard deviations from its own mean: subtract the mean, then divide by the standard deviation.`,
         explanation: [
-          `${nameA}: z = (${xA} − ${mA}) ÷ ${sA} = ${zs(zA)}.`,
-          `${nameB}: z = (${xB} − ${mB}) ÷ ${sB} = ${zs(zB)}.`,
-          `A larger z-score is farther above the mean in standard deviations, so ${nameA} did better relative to the ${subA} group, even though ${nameB} has the higher raw score.`,
+          `${nameA}: $z=(${xA}-${mA})\\div${sA}=${zs(zA)}$.`,
+          `${nameB}: $z=(${xB}-${mB})\\div${sB}=${zs(zB)}$.`,
+          `A larger $z$-score is farther above the mean in standard deviations, so ${nameA} did better relative to the ${subA} group, even though ${nameB} has the higher raw score.`,
         ],
         choices: options(r, correct, [
           {
             label: `${nameB}: higher raw score, ${xB} compared with ${xA}`,
             feedback:
-              "The exams have different means and spreads, so raw scores are not comparable. Standardize with z-scores.",
+              "The exams have different means and spreads, so raw scores are not comparable. Standardize with $z$-scores.",
           },
           {
             label: `${nameB}: z = ${zs(zB)}, compared with z = ${zs(zA)} for ${nameA}`,
             feedback:
-              "A larger z-score means farther above the mean, so the larger z-score is the better relative result. These two z-scores are in the wrong order.",
+              "A larger $z$-score means farther above the mean, so the larger $z$-score is the better relative result. These two $z$-scores are in the wrong order.",
           },
           {
             label: "Neither: scores from different exams cannot be compared",
             feedback:
-              "Standardizing to z-scores puts both scores on the same scale, number of standard deviations from the mean, so they can be compared.",
+              "Standardizing to $z$-scores puts both scores on the same scale, number of standard deviations from the mean, so they can be compared.",
           },
         ]),
       },
@@ -500,7 +500,7 @@ function normalCase(r: Random): Built {
       prompt:
         "A student plans to use a normal model with the 68–95–99.7 rule. For which data set is a normal model most appropriate?",
       answer: normalText,
-      hint: "A normal curve is symmetric with one peak, so its mean equals its median. Check each description for the shape and for the mean compared with the median.",
+      hint: "The 68–95–99.7 rule needs a normal curve, which is symmetric with one peak, so its mean equals its median. Check each description for the shape and for the mean compared with the median.",
       explanation: [
         "A normal model fits data that are symmetric and mound-shaped, with the mean close to the median.",
         `${normalText} matches that description.`,
@@ -818,9 +818,7 @@ function randomVariableCase(r: Random): Built {
         },
         {
           label: f(left, d + 1),
-          feedback: `The denominator is ${d},
-{ label: f(2 * left, d), feedback: "Find the missing probability once; do not double it." },
-{ label: f(left + 2, d), feedback: "Subtract exactly: 1 minus the sum of the given probabilities." }, as in the other probabilities.`,
+          feedback: `The denominator is ${d}, as in the other probabilities.`,
         },
         {
           label: f(left - 1 > 0 ? left - 1 : left + 2, d),
@@ -1247,10 +1245,10 @@ function strategyCase(r: Random): Built {
       const lines = games
         .map(
           (g, i) =>
-            `Game ${names[i]}: pay ${g.c} dollar${g.c === 1 ? "" : "s"} to play; win ${g.w} dollars with probability $${frac(g.k, g.d)}$, otherwise win nothing.`,
+            `Game $${names[i]}$: pay ${g.c} dollar${g.c === 1 ? "" : "s"} to play; win ${g.w} dollars with probability $${frac(g.k, g.d)}$, otherwise win nothing.`,
         )
         .join(" ");
-      const correct = `Game ${names[bestIndex]}`;
+      const correct = `Game $${names[bestIndex]}$`;
       const bestText = `$${frac(nets[bestIndex]!.n, nets[bestIndex]!.d)}$`;
       return {
         variant,
@@ -1261,17 +1259,17 @@ function strategyCase(r: Random): Built {
           explanation: games
             .map(
               (g, i) =>
-                `Game ${names[i]}: $${g.w}\\cdot${frac(g.k, g.d)}-${g.c}=${frac(nets[i]!.n, nets[i]!.d)}$ dollars.`,
+                `Game $${names[i]}$: $${g.w}\\cdot${frac(g.k, g.d)}-${g.c}=${frac(nets[i]!.n, nets[i]!.d)}$ dollars.`,
             )
             .concat([
               `The greatest expected net gain is ${bestText} dollars, so the answer is ${correct}.`,
             ]),
           choices: names.map((name, i) =>
             i === bestIndex
-              ? { label: `Game ${name}`, correct: true as const }
+              ? { label: `Game $${name}$`, correct: true as const }
               : {
-                  label: `Game ${name}`,
-                  feedback: `Game ${name} has expected net gain $${frac(nets[i]!.n, nets[i]!.d)}$ dollars, which is less than the best game's ${bestText} dollars.`,
+                  label: `Game $${name}$`,
+                  feedback: `Game $${name}$ has expected net gain $${frac(nets[i]!.n, nets[i]!.d)}$ dollars, which is less than the best game's ${bestText} dollars.`,
                 },
           ),
         },
@@ -1712,7 +1710,7 @@ const trialContexts = [
     measure: "mean quiz score",
     unit: "points",
   },
-  { a: "plant food A", b: "plant food B", measure: "mean growth", unit: "cm" },
+  { a: "plant food $A$", b: "plant food $B$", measure: "mean growth", unit: "cm" },
   {
     a: "the warm-up routine",
     b: "no warm-up",
@@ -1840,7 +1838,7 @@ const reportContexts = [
     people: "riders",
     popl: "all riders on its bus system",
     q: "which of two proposed schedules they prefer",
-    A: "Schedule X",
+    A: "Schedule $X$",
     place: "downtown bus stop",
   },
   {
@@ -2054,7 +2052,7 @@ function modelCase(r: Random): Built {
       [2, -1, -2, 1, 1, -1, 0],
     ]).map((v) => v * sign);
     const correct =
-      "The residuals are small and show no pattern, so the line is a reasonable model for these values of x.";
+      "The residuals are small and show no pattern, so the line is a reasonable model for these values of $x$.";
     return {
       variant,
       draft: {
@@ -2064,7 +2062,7 @@ function modelCase(r: Random): Built {
         explanation: [
           `The residuals are ${resid.map(signed).join(", ")}.`,
           "Their signs switch back and forth with no shape, and each is small compared with the observed values.",
-          "That scatter is what a suitable model leaves behind, so a line is reasonable for these values of x.",
+          "That scatter is what a suitable model leaves behind, so a line is reasonable for these values of $x$.",
         ],
         choices: options(r, correct, [
           {
@@ -2079,9 +2077,9 @@ function modelCase(r: Random): Built {
               "Both signs are expected for a good fit. They only signal trouble when they appear in a run or shape.",
           },
           {
-            label: `The line will predict accurately at any x, including x = 100.`,
+            label: `The line will predict accurately at any $x$, including $x=100$.`,
             feedback:
-              "A good fit within these x values does not show the line holds far outside them.",
+              "A good fit within these $x$ values does not show the line holds far outside them.",
           },
         ]),
       },
@@ -2096,9 +2094,9 @@ function modelCase(r: Random): Built {
       draft: {
         prompt: `${intro} The data: ${table(resid)}. The residuals are small and show no pattern. A report uses the model to predict the ${ctx.y} when $x=${X}$. Which statement is justified?`,
         answer: correct,
-        hint: `Compare ${X} with the x-values in the table, 1 to 7. Ask what the small residuals tell you about x-values the data never reached.`,
+        hint: `Compare ${X} with the $x$-values in the table, 1 to 7. Ask what the small residuals tell you about $x$-values the data never reached.`,
         explanation: [
-          "The small, patternless residuals show the line fits for x from 1 to 7.",
+          "The small, patternless residuals show the line fits for $x$ from 1 to 7.",
           `The prediction at x = ${X} is $\\hat y=${slope}(${X})+${intercept}=${slope * X + intercept}$, far outside that range.`,
           "The data say nothing about whether the same trend continues out there, so the prediction is an unsupported extrapolation.",
         ],
@@ -2150,7 +2148,7 @@ function modelCase(r: Random): Built {
     draft: {
       prompt: `Two models predict the same 6 data values. A residual is observed minus predicted. Model A residuals: ${listA.map(signed).join(", ")}. Model B residuals: ${listB.map(signed).join(", ")}. Which statement is justified? (Compare the sum of the squared residuals, since squaring removes the sign.)`,
       answer: correct,
-      hint: `Add each model's residuals and also square each residual before adding. Notice what happens to positive and negative residuals when you only add.`,
+      hint: `For the first list, ${listA.map(signed).join(", ")}, add the residuals and also square each residual before adding. Notice what happens to positive and negative residuals when you only add.`,
       explanation: [
         `Model ${nameZero}: residuals add to ${signed(sum(zero))}, but the sum of squares is ${zero.map((e) => `${e * e}`).join(" + ")} = ${sq(zero)}.`,
         `Model ${nameSmall}: residuals add to ${signed(sum(small))}, and the sum of squares is ${small.map((e) => `${e * e}`).join(" + ")} = ${sq(small)}.`,

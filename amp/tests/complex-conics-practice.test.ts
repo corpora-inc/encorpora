@@ -55,9 +55,10 @@ test("each problem has four distinct choices, one correct, and no answer leakage
       // A real number is its own conjugate; that boundary case names it in the prompt.
       if (!(
         template.id === "complex-conjugate-division" && direct.variant === 4
-      ))
+      )) {
         assert.ok(!generated.public.prompt.includes(direct.correct));
-      assert.ok(!generated.hint.includes(direct.correct), generated.hint);
+        assert.ok(!generated.hint.includes(direct.correct), generated.hint);
+      }
       assert.ok(generated.explanation.length >= 2);
       assert.ok(
         generated.explanation.at(-1)!.length > 0 &&

@@ -651,7 +651,7 @@ function primeFactorizationValue(r: Random): Built {
       prompt: `What number has the prime factorization ${label}?`,
       answer: `${n}`,
       responseLabel: "The number",
-      hint: `Work out each power first: an exponent tells how many times its base is a factor. Then multiply the results.`,
+      hint: `Work out each power first, starting with ${ps.find(([, e]) => e > 1)![0]}^${ps.find(([, e]) => e > 1)![1]}: an exponent tells how many times its base is a factor. Then multiply the results.`,
       explanation: [
         ...ps
           .filter(([, e]) => e > 1)
@@ -790,7 +790,7 @@ function decimalMoneyChange(r: Random): Built {
       prompt: `${name} has ${dl(have)} dollars. ${thing[0]!.toUpperCase()}${thing.slice(1)} costs ${dl(cost)} dollars. How much more money does ${name} need? ${unit}`,
       answer: dl(cost - have),
       responseLabel: label,
-      hint: `Compare what ${name} has with the cost. The amount still needed is the difference, so subtract the smaller amount from the larger.`,
+      hint: `Compare what ${name} has, ${dl(have)} dollars, with the cost, ${dl(cost)} dollars. The amount still needed is the difference, so subtract the smaller amount from the larger.`,
       explanation: [
         `${name} needs the cost minus what ${name} has: ${dl(cost)} − ${dl(have)}.`,
         countUp(have, cost),
@@ -890,7 +890,7 @@ function fewestCoinsChange(r: Random): Built {
     prompt,
     answer: `${total}`,
     responseLabel: "Bills and coins",
-    hint: `Use as much as you can of the largest piece that fits, then the largest piece that fits in what is left, and keep going down to pennies. Work out the change first${variant === "from-a-payment" ? " by subtracting the price from 5.00" : ""}.`,
+    hint: `Use as much as you can of the largest piece that fits, then the largest piece that fits in what is left, and keep going down to pennies. ${variant === "from-a-payment" ? `Work out the change first by subtracting ${dl(500 - change)} from 5.00.` : `The change to make is ${variant === "coins-only" ? `${change} cents` : `${dl(change)} dollars`}.`}`,
     explanation: [
       ...(variant === "from-a-payment"
         ? [`Change: ${dl(500)} − ${dl(500 - change)} = ${dl(change)} dollars.`]
@@ -987,6 +987,7 @@ function compareMoneySets(r: Random): Built {
         ? "Which set of bills and coins is worth the least money?"
         : `Which set of bills and coins is worth exactly ${dl(target)} dollars?`;
   const word = variant === "most" ? "most" : "least";
+  const setCounts = sets.map(setCount);
   return {
     variant,
     prompt,
@@ -996,7 +997,7 @@ function compareMoneySets(r: Random): Built {
       kind: "money-sets",
       sets: sets.map((s, i) => ({ items: setItems(s), label: labels[i]! })),
     },
-    hint: `Find each set's value on its own. Count the 1-dollar bills first, then the coins from the largest coin to the smallest. A set with more pieces is not always worth more.`,
+    hint: `Find each set's value on its own. Count the 1-dollar bills first, then the coins from the largest coin to the smallest. Set ${labels[setCounts.indexOf(Math.max(...setCounts))]} has the most pieces, ${Math.max(...setCounts)}, but a set with more pieces is not always worth more.${variant === "exact-amount" ? ` Look for the set worth exactly ${dl(target)} dollars.` : ""}`,
     explanation: [
       ...sets.map(
         (s, i) =>
@@ -1262,13 +1263,13 @@ const MIXED: {
     big: "cup",
     small: "floz",
     per: 8,
-    abbr: ["c", "fl oz"],
+    abbr: ["cup", "fl oz"],
     words: "cups and fluid ounces",
   },
 ];
 type Mixed = (typeof MIXED)[number];
 const mixedText = (m: Mixed, big: number, small: number) =>
-  `${big} ${m.abbr[0]} ${small} ${m.abbr[1]}`;
+  `${big} ${m.abbr[0] === "cup" && big !== 1 ? "cups" : m.abbr[0]} ${small} ${m.abbr[1]}`;
 
 function customaryMixedUnits(r: Random): Built {
   const variant = pick(r, [
@@ -1642,7 +1643,7 @@ function compatibleNumberEstimate(r: Random): Built {
     variant,
     prompt: `Use front-end estimation to estimate ${nums.map(commas).join(" + ")}. Add only the first digit of each number, keeping its place value.`,
     answer: "",
-    hint: `Keep the first digit of each number and replace every other digit with a zero. Then add the new numbers.`,
+    hint: `Keep the first digit of each number and replace every other digit with a zero: ${commas(nums[0]!)} becomes ${commas(lead(nums[0]!))}. Then add the new numbers.`,
     explanation: [
       `Keep the first digit of each number: ${nums.map((n) => `${commas(n)} → ${commas(lead(n))}`).join("; ")}.`,
       `Add: ${nums.map((n) => commas(lead(n))).join(" + ")} = ${commas(front)}.`,

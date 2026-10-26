@@ -256,7 +256,7 @@ function seriesRecursion(r: Random): Built {
     return {
       variant,
       prompt: `A sequence is defined by $a_n=${lin(P, Q, "n")}$ for $n\\ge1$. Which recursive definition gives the same sequence?`,
-      hint: `Evaluate the formula at $n=1$ for the first term, then compare $a_2$ with $a_1$ to find what each step adds.`,
+      hint: `Evaluate $${lin(P, Q, "n")}$ at $n=1$ for the first term, then compare $a_2$ with $a_1$ to find what each step adds.`,
       explanation: [
         `At $n=1$: $a_1=${P}(1)${sgn(Q)}${Math.abs(Q)}=${a1}$.`,
         `Increasing $n$ by 1 changes $${lin(P, Q, "n")}$ by ${P}, so $a_{n+1}=${add(P)}$.`,
@@ -305,7 +305,7 @@ function seriesRecursion(r: Random): Built {
       variant,
       scene,
       prompt: `The table shows two terms of an arithmetic sequence. What is $a_{${N}}$?`,
-      hint: `Terms ${i} and ${j} are ${j - i} steps apart. The change from $a_{${i}}$ to $a_{${j}}$ is spread evenly over those steps.`,
+      hint: `Terms ${i} and ${j} are ${j - i} steps apart. The change from $a_{${i}}$ to $a_{${j}}$ is spread evenly over those steps. Then take ${N - j} more steps to reach $a_{${N}}$.`,
       explanation: [
         `From term ${i} to term ${j} there are ${j - i} steps, and the value changes by ${aj} − ${ai} = ${aj - ai}.`,
         `The common difference is ${aj - ai} ÷ ${j - i} = ${d}.`,
@@ -346,7 +346,7 @@ function seriesRecursion(r: Random): Built {
   return {
     variant,
     prompt: `A sequence has $a_1=${A}$ and $${rule}$ for $n\\ge1$. What is $a_5$?`,
-    hint: `Apply the rule to $a_1$ to get $a_2$, then to $a_2$ to get $a_3$, and keep going. Each term needs the one before it.`,
+    hint: `Start from $a_1=${A}$. Apply the rule to $a_1$ to get $a_2$, then to $a_2$ to get $a_3$, and keep going to $a_5$. Each term needs the one before it.`,
     explanation: [
       `$a_2=${m}(${seq[0]})${sgn(c)}${Math.abs(c)}=${seq[1]}$.`,
       `$a_3=${m}(${seq[1]})${sgn(c)}${Math.abs(c)}=${seq[2]}$.`,
@@ -499,7 +499,7 @@ function compoundGrowth(r: Random): Built {
     return {
       variant,
       prompt: `A value ${verb} ${g}% each year, so $V(t)=${V}(${year})^{t}$ with $t$ in years. Which model gives the same values using $m$, the number of ${unit}s since the start?`,
-      hint: `One ${unit} is $1/${per}$ of a year. How should the exponent change so that $m$ ${unit}s equals $m/${per}$ years?`,
+      hint: `One ${unit} is $1/${per}$ of a year. In $V(t)=${V}(${year})^{t}$, how should the exponent change so that $m$ ${unit}s equals $m/${per}$ years?`,
       explanation: [
         `$m$ ${unit}s is $m/${per}$ years, so replace $t$ by $m/${per}$.`,
         `$V=${V}(${year})^{m/${per}}$. The yearly factor ${year} is spread over ${per} ${unit}s by the exponent $1/${per}$.`,
@@ -545,7 +545,7 @@ function compoundGrowth(r: Random): Built {
       return {
         variant,
         prompt: `A quantity ${growth ? "increases" : "decreases"} by ${p}% each ${unit}, with each change applied to the previous ${unit}'s value. By what percent does it ${growth ? "increase" : "decrease"} over one year? Round to the nearest tenth of a percent.`,
-        hint: `One year contains ${per} ${unit}s. Write the factor for one ${unit}, repeat it ${per} times, then convert the yearly factor to a percent change.`,
+        hint: `One year contains ${per} ${unit}s. Write the factor for a ${p}% ${growth ? "increase" : "decrease"} in one ${unit}, repeat it ${per} times, then convert the yearly factor to a percent change.`,
         explanation: [
           `The factor for one ${unit} is ${(1 + (s * p) / 100).toFixed(4).replace(/0+$/, "")}.`,
           `Over a year, it is applied ${per} times: $(${(1 + (s * p) / 100).toFixed(4).replace(/0+$/, "")})^{${per}}\\approx${factor.toFixed(4)}$.`,
@@ -702,7 +702,7 @@ function factoringPatterns(r: Random): Built {
       return {
         variant,
         prompt: ask(expr),
-        hint: `Group the first two terms and the last two terms, and factor each pair. Look for the same binomial in both groups.`,
+        hint: `Group the first two terms and the last two terms of $${expr}$, and factor each pair. Look for the same binomial in both groups.`,
         explanation: [
           `Group: $(${poly([1, p, 0, 0])})+(${poly([q, p * q])})$.`,
           `Factor each group: $x^2(x${sgn(p)}${Math.abs(p)})+${q}(x${sgn(p)}${Math.abs(p)})$.`,
@@ -744,7 +744,7 @@ function factoringPatterns(r: Random): Built {
     return {
       variant,
       prompt: ask(expr),
-      hint: `Factor by grouping first. After that, check whether either factor can be factored again.`,
+      hint: `Factor $${expr}$ by grouping first. After that, check whether either factor can be factored again.`,
       explanation: [
         `Group: $(${poly([1, pp, 0, 0])})+(${poly([-s * s, -pp * s * s])})$.`,
         `Factor each group: $x^2${lf(pp)}-${s * s}${lf(pp)}$.`,
@@ -859,7 +859,7 @@ function factoringPatterns(r: Random): Built {
   return {
     variant,
     prompt: ask(expr),
-    hint: `Write the polynomial as a difference of two squares with $x^4=(x^2)^2$. Then check each factor for another difference of squares.`,
+    hint: `Write $x^4-${k ** 4}$ as a difference of two squares with $x^4=(x^2)^2$ and $${k ** 4}=(${k * k})^2$. Then check each factor for another difference of squares.`,
     explanation: [
       `$x^4-${k ** 4}=(x^2)^2-(${k * k})^2=(x^2-${k * k})(x^2+${k * k})$.`,
       `$x^2-${k * k}$ is again a difference of squares: $(x-${k})(x+${k})$.`,
@@ -1026,7 +1026,7 @@ function residualFunctionFit(r: Random): Built {
       ys = xs.map((x) => a * x + b);
       nameCorrect = "Linear";
       why = [
-        `The differences of consecutive y-values are all ${a}: ${ys
+        `The differences of consecutive $y$-values are all ${a}: ${ys
           .slice(1)
           .map((v, i) => v - ys[i]!)
           .join(", ")}.`,
@@ -1056,7 +1056,7 @@ function residualFunctionFit(r: Random): Built {
           .slice(1)
           .map((v, i) => v - ys[i]!)
           .join(", ")}.`,
-        `The ratios of consecutive y-values are all ${b}: ${ys
+        `The ratios of consecutive $y$-values are all ${b}: ${ys
           .slice(1)
           .map((v, i) => +(v / ys[i]!).toFixed(3))
           .join(", ")}.`,
@@ -1092,7 +1092,7 @@ function residualFunctionFit(r: Random): Built {
       {
         label: names.Linear!,
         feedback:
-          "A linear model needs equal differences between consecutive y-values. Compare them.",
+          "A linear model needs equal differences between consecutive $y$-values. Compare them.",
       },
       {
         label: names.Quadratic!,
@@ -1102,7 +1102,7 @@ function residualFunctionFit(r: Random): Built {
       {
         label: names.Exponential!,
         feedback:
-          "An exponential model needs equal ratios between consecutive y-values. Divide to check.",
+          "An exponential model needs equal ratios between consecutive $y$-values. Divide to check.",
       },
       {
         label: names.None!,
@@ -1115,7 +1115,7 @@ function residualFunctionFit(r: Random): Built {
       scene,
       prompt:
         "The table gives exact measurements at equally spaced values of $x$. Which type of model fits the data exactly?",
-      hint: "Find the differences between consecutive y-values. If they are not equal, find the differences of those differences, and also the ratios of consecutive y-values.",
+      hint: "Find the differences between consecutive $y$-values. If they are not equal, find the differences of those differences, and also the ratios of consecutive $y$-values.",
       explanation: [...why, `The type is: ${nameCorrect}.`],
       correct: nameCorrect,
       wrong: all.filter((w) => w.label !== nameCorrect),
@@ -1138,14 +1138,14 @@ function residualFunctionFit(r: Random): Built {
       model = `\\hat y=${poly([a, b, c])}`;
       predicted = a * x * x + b * x + c;
       slip = (a * x) ** 2 + b * x + c;
-      slipText = "squared the coefficient along with x";
+      slipText = "squared the coefficient along with $x$";
     } else {
       const a = r(1, 4),
         b = r(2, 3);
       model = `\\hat y=${a}\\cdot${b}^{x}`;
       predicted = a * b ** x;
       slip = a * b * x;
-      slipText = "multiplied instead of using x as an exponent";
+      slipText = "multiplied instead of using $x$ as an exponent";
     }
   } while (predicted < 2); // a nonzero prediction keeps every choice distinct
   let e = (r(0, 1) ? 1 : -1) * r(2, 9);
@@ -1325,7 +1325,7 @@ function graphFeatures(r: Random): Built {
             },
             {
               label: lbl(0, above),
-              feedback: `Adding ${k} shifts the asymptote from the x-axis to $y=${k}$.`,
+              feedback: `Adding ${k} shifts the asymptote from the $x$-axis to $y=${k}$.`,
             },
             {
               label: lbl(-k, above),
@@ -1348,38 +1348,38 @@ function graphFeatures(r: Random): Built {
           variant,
           scene: scene!,
           prompt:
-            "The graph shows an exponential function. At which point does the graph cross the y-axis?",
-          hint: "The y-axis is the line $x=0$. Find where the curve meets it and read the height from the grid.",
+            "The graph shows an exponential function. At which point does the graph cross the $y$-axis?",
+          hint: "The $y$-axis is the line $x=0$. Find where the curve meets it and read the height from the grid.",
           explanation: [
-            "The graph crosses the y-axis where $x=0$.",
+            "The graph crosses the $y$-axis where $x=0$.",
             `Reading the grid at $x=0$ gives $y=${yint}$.`,
-            `The y-intercept is ${correct}.`,
+            `The $y$-intercept is ${correct}.`,
           ],
           correct,
           wrong: pickWrong(r, correct, [
             {
               label: P(0, k),
-              feedback: `Height ${k} is where the curve levels off (the asymptote), not where it meets the y-axis.`,
+              feedback: `Height ${k} is where the curve levels off (the asymptote), not where it meets the $y$-axis.`,
             },
             {
               label: P(yint, 0),
               feedback:
-                "The y-coordinate comes second. A y-intercept has $x=0$.",
+                "The $y$-coordinate comes second. A $y$-intercept has $x=0$.",
             },
             {
               label: P(0, -yint),
               feedback:
-                "Check whether the curve is above or below the x-axis at $x=0$; the sign of the height is reversed.",
+                "Check whether the curve is above or below the $x$-axis at $x=0$; the sign of the height is reversed.",
             },
             {
               label: P(0, a),
               feedback:
-                "Read the height where the curve itself meets the y-axis, using the grid lines.",
+                "Read the height where the curve itself meets the $y$-axis, using the grid lines.",
             },
             {
               label: P(0, yint + (yint > 0 ? 1 : -1)),
               feedback:
-                "Count the grid lines carefully from the x-axis to the point where the curve meets the y-axis.",
+                "Count the grid lines carefully from the $x$-axis to the point where the curve meets the $y$-axis.",
             },
           ]),
         };
@@ -1408,7 +1408,7 @@ function graphFeatures(r: Random): Built {
             },
             {
               label: st(`$y=${yint}$`, inc),
-              feedback: `Height ${yint} is where the curve crosses the y-axis. The curve keeps moving toward ${k}.`,
+              feedback: `Height ${yint} is where the curve crosses the $y$-axis. The curve keeps moving toward ${k}.`,
             },
             {
               label: st("$x=0$", inc),
@@ -1418,7 +1418,7 @@ function graphFeatures(r: Random): Built {
             {
               label: st("$y=0$", !inc),
               feedback:
-                "The curve levels off at the height of its shift, not at the x-axis, unless the graph is unshifted.",
+                "The curve levels off at the height of its shift, not at the $x$-axis, unless the graph is unshifted.",
             },
           ]),
         };
@@ -1436,9 +1436,9 @@ function graphFeatures(r: Random): Built {
       return {
         variant,
         prompt: `Which describes the end behavior of $${eq}$?`,
-        hint: `Decide what $${b === 0.5 ? "\\left(\\tfrac12\\right)" : b}^x$ does as $x$ grows large and as $x$ becomes very negative. Then apply the coefficient and the shift.`,
+        hint: `Decide what $${b === 0.5 ? "\\left(\\tfrac12\\right)" : b}^x$ does as $x$ grows large and as $x$ becomes very negative. Then apply the coefficient ${a} and the shift ${k}.`,
         explanation: [
-          `For base ${b === 0.5 ? "1/2" : b}, the power ${b > 1 ? "grows without bound as x increases and approaches 0 as x decreases" : "approaches 0 as x increases and grows without bound as x decreases"}.`,
+          `For base ${b === 0.5 ? "1/2" : b}, the power ${b > 1 ? "grows without bound as $x$ increases and approaches 0 as $x$ decreases" : "approaches 0 as $x$ increases and grows without bound as $x$ decreases"}.`,
           `Multiplying by ${a} ${a > 0 ? "keeps it growing upward" : "turns the growth downward"}, and adding ${k} moves the leveling-off height to ${k}.`,
           `As $x\\to\\infty$, $f(x)\\to${rightEnd}$; as $x\\to-\\infty$, $f(x)\\to${leftEnd}$.`,
         ],
@@ -1536,11 +1536,11 @@ function graphFeatures(r: Random): Built {
       wrong: pickWrong(r, correct, [
         {
           label: dom(h + 1),
-          feedback: `$x=${h + 1}$ is where the curve crosses the x-axis, not where it begins.`,
+          feedback: `$x=${h + 1}$ is where the curve crosses the $x$-axis, not where it begins.`,
         },
         {
           label: dom(0),
-          feedback: "The graph's vertical asymptote is not at the y-axis here.",
+          feedback: "The graph's vertical asymptote is not at the $y$-axis here.",
         },
         {
           label: math(`x<${h}`),
@@ -1562,12 +1562,12 @@ function graphFeatures(r: Random): Built {
     variant,
     scene,
     prompt:
-      "The graph shows a logarithmic function. At which point does it cross the x-axis?",
-    hint: "The x-axis is the line $y=0$. Find where the curve meets it and read the x-coordinate from the grid.",
+      "The graph shows a logarithmic function. At which point does it cross the $x$-axis?",
+    hint: "The $x$-axis is the line $y=0$. Find where the curve meets it and read the $x$-coordinate from the grid.",
     explanation: [
-      "The graph crosses the x-axis where $y=0$.",
+      "The graph crosses the $x$-axis where $y=0$.",
       `Reading the grid there gives $x=${h + 1}$.`,
-      `The x-intercept is ${correct}.`,
+      `The $x$-intercept is ${correct}.`,
     ],
     correct,
     wrong: pickWrong(r, correct, [
@@ -1577,11 +1577,11 @@ function graphFeatures(r: Random): Built {
       },
       {
         label: P(0, h + 1),
-        feedback: "The x-coordinate comes first. An x-intercept has $y=0$.",
+        feedback: "The $x$-coordinate comes first. An $x$-intercept has $y=0$.",
       },
       {
         label: P(h + base, 1),
-        feedback: "That point is not on the x-axis. The x-intercept has $y=0$.",
+        feedback: "That point is not on the $x$-axis. The $x$-intercept has $y=0$.",
       },
       {
         label: P(h + 2, 0),

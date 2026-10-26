@@ -273,7 +273,7 @@ function proportionalGraph(r: Random): Built {
         `The second number is ${b} ${ctx.yAxis}. So at 0 ${ctx.xAxis}, the cost is already ${b} ${ctx.yAxis}.`,
         correct,
       ],
-      hint: `Read the labeled point as (${ctx.xAxis}, ${ctx.yAxis}). Say in words how many ${ctx.xAxis} it is, then what the graph says is already paid.`,
+      hint: `Read the labeled point $(0, ${b})$ as (${ctx.xAxis}, ${ctx.yAxis}). Say in words how many ${ctx.xAxis} it is, then what the graph says is already paid.`,
       hintCue: hintPoint("The labeled point is on the vertical axis."),
       tags: [variant],
       model: { m, b },
@@ -380,7 +380,7 @@ function proportionalGraph(r: Random): Built {
         `Read the point as (${ctx.xAxis}, ${ctx.yAxis}): 0 ${ctx.xAxis} and 0 ${ctx.yAxis}.`,
         `${correct} Every proportional graph includes this point.`,
       ],
-      hint: `Say what each number of the point means: the first is ${ctx.xAxis}, the second is ${ctx.yAxis}. Then ask what that says about the start.`,
+      hint: `Say what each number of the point $(0, 0)$ means: the first is ${ctx.xAxis}, the second is ${ctx.yAxis}. Then ask what that says about the start.`,
       hintCue: hintPoint("This point is where the two axes meet."),
       tags: [variant],
       model: { rate },
@@ -419,7 +419,7 @@ function proportionalGraph(r: Random): Built {
         `The unit rate is ${y} ÷ ${k} = ${rate}. The graph passes through ${M(`(1, ${rate})`)}.`,
         `The unit rate is ${correct}.`,
       ],
-      hint: `The labeled point ${M(label)} shows how many ${ctx.yAxis} go with ${k} ${ctx.xAxis}. Share that amount equally among the ${k}.`,
+      hint: `The labeled point ${M(label)} shows how many ${ctx.yAxis} go with ${k} ${ctx.xAxis}. Share that amount equally among the ${k} to find the amount for 1 ${ctx.xAxis.replace(/s$/, "")}.`,
       hintCue: hintPoint(`Use the labeled point ${label}.`),
       tags: [variant],
       model: { rate, k, y },
@@ -450,7 +450,7 @@ function proportionalGraph(r: Random): Built {
         `The first number is ${k} ${ctx.xAxis}; the second is ${y} ${ctx.yAxis}.`,
         correct,
       ],
-      hint: `The horizontal axis is ${ctx.xAxis} and the vertical axis is ${ctx.yAxis}. Say the first number with its unit, then the second.`,
+      hint: `The horizontal axis is ${ctx.xAxis} and the vertical axis is ${ctx.yAxis}. Read the labeled point ${M(label)}: say the first number with its unit, then the second.`,
       hintCue: hintPoint(`Read the labeled point ${label}.`),
       tags: [variant],
       model: { rate, k, y },
@@ -653,9 +653,9 @@ function storyGraphMatch(r: Random): Built {
   const answerIndex = rate
     ? deltas.findIndex((d) => Math.abs(d) === target)
     : deltas.findIndex((d) => dirOf(d) === kind);
-  const name = (i: number) => `From ${nodeNames[i]} to ${nodeNames[i + 1]}`;
+  const name = (i: number) => `From $${nodeNames[i]}$ to $${nodeNames[i + 1]}$`;
   const partName = (i: number) =>
-    `the part from ${nodeNames[i]} to ${nodeNames[i + 1]}`;
+    `the part from $${nodeNames[i]}$ to $${nodeNames[i + 1]}$`;
   const prompt = rate
     ? `The graph shows the ${ctx.quantity} over time. On which part is it changing ${slow ? "most slowly, but still changing" : "most quickly"}? Each part covers the same amount of time.`
     : `The graph shows the ${ctx.quantity} over time. On which part is it ${dirWord[kind]}?`;
@@ -791,7 +791,7 @@ function coordinateContextPoints(r: Random): Built {
       ]),
       scene: planeScene(ctx, [{ x: a, y: b }]),
       explanation: [
-        `From the origin, the point is ${a} across (${ctx.xAxis}) and ${b} up (${ctx.yAxis}), so it is the ordered pair (${a}, ${b}).`,
+        `From the origin, the point is at ${a} on the horizontal axis and ${b} on the vertical axis, so it is the ordered pair (${a}, ${b}).`,
         correct,
       ],
       hint: `Start at the origin. Count across to the point, then up. The first number belongs to ${ctx.xAxis} and the second to ${ctx.yAxis}.`,
@@ -818,7 +818,7 @@ function coordinateContextPoints(r: Random): Built {
         `The vertical axis shows ${ctx.yAxis}, so the second number is ${b}.`,
         `The ordered pair is ${correct}.`,
       ],
-      hint: `An ordered pair lists the horizontal value first, then the vertical value. Find which number in the sentence goes with ${ctx.xAxis}.`,
+      hint: `An ordered pair lists the horizontal value first, then the vertical value. Find which number in the sentence goes with ${ctx.xAxis}: ${a} or ${b}.`,
       tags: [variant],
       model: { a, b },
     };
@@ -835,7 +835,7 @@ function coordinateContextPoints(r: Random): Built {
     ]);
     const letters = ["A", "B", "C", "D"];
     const labeled = kinds.map((k, i) => ({ ...k, letter: letters[i]! }));
-    const text = (k: (typeof labeled)[number]) => `Point ${k.letter}`;
+    const text = (k: (typeof labeled)[number]) => `Point $${k.letter}$`;
     const right = labeled.find((k) => k.key === "right")!;
     const why: Record<string, string> = {
       swap: "The numbers are swapped here: the horizontal and vertical values are reversed.",
@@ -856,9 +856,9 @@ function coordinateContextPoints(r: Random): Built {
       ),
       explanation: [
         `The situation is the ordered pair (${a}, ${b}): ${a} on the ${ctx.xAxis} axis and ${b} on the ${ctx.yAxis} axis.`,
-        `Point ${right.letter} is ${a} across and ${b} up.`,
+        `Point $${right.letter}$ is ${a} across and ${b} up.`,
       ],
-      hint: `Find ${a} on the horizontal axis (${ctx.xAxis}). Then look up to the height ${b} on the vertical axis (${ctx.yAxis}).`,
+      hint: `Find ${a} on the horizontal axis, which shows ${ctx.xAxis}. Then look up to the height ${b} on the vertical axis, which shows ${ctx.yAxis}.`,
       tags: [variant],
       model: { a, b, points: labeled },
     };
@@ -902,7 +902,7 @@ function coordinateContextPoints(r: Random): Built {
       `Point A is at ${y1} and point B is at ${y2}. The difference is ${y2} − ${y1} = ${d}.`,
       label(d),
     ],
-    hint: `The two points are straight above one another, so only the vertical values differ. Read the vertical value of A and of B, then find the gap.`,
+    hint: `The two points are straight above one another, so only the vertical values differ. Read the vertical values of A and of B above ${a} on the horizontal axis, then find the gap.`,
     hintCue: [step("Read the height of A.", act.highlight("g.point.0"))],
     tags: [variant],
     model: { x: a, y1, y2, d },
@@ -1211,8 +1211,8 @@ function triangleUniqueness(r: Random): Built {
   const reason: string[] =
     angleA === 30
       ? [
-          `Draw ${M(`\\angle ${P}`)} of 30° and mark ${R} on one ray so that ${M(`${P}${R} = ${b}`)} cm. Side ${M(`${Q}${R}`)} must reach from ${R} to the other ray.`,
-          `The shortest way from ${R} to the other ray is straight across at a right angle. In a right triangle with a 30° angle, the side opposite 30° is half the hypotenuse (the longest side), so that shortest distance is ${b} ÷ 2 = ${b / 2} cm.`,
+          `Draw ${M(`\\angle ${P}`)} of 30° and mark ${M(R)} on one ray so that ${M(`${P}${R} = ${b}`)} cm. Side ${M(`${Q}${R}`)} must reach from ${M(R)} to the other ray.`,
+          `The shortest way from ${M(R)} to the other ray is straight across at a right angle. In a right triangle with a 30° angle, the side opposite 30° is half the hypotenuse (the longest side), so that shortest distance is ${b} ÷ 2 = ${b / 2} cm.`,
           count === 0
             ? `${a} cm is shorter than ${b / 2} cm, so the side cannot reach the ray: no triangle.`
             : count === 1 && a === b / 2
@@ -1247,7 +1247,7 @@ function triangleUniqueness(r: Random): Built {
         .filter((w): w is Wrong => w !== null),
     ),
     explanation: [...reason, `Answer: ${answer.toLowerCase()}.`],
-    hint: `The angle ${M(P)} is not between the two given sides, so the measures can leave a choice. Draw ${M(`\\angle ${P}`)}, mark ${M(`${P}${R}`)} on one ray, and ask where a side of length ${a} cm from ${R} can land on the other ray.`,
+    hint: `The angle ${M(P)} is not between the two given sides, so the measures can leave a choice. Draw ${M(`\\angle ${P}`)}, mark ${M(`${P}${R}`)} on one ray, and ask where a side of length ${a} cm from ${M(R)} can land on the other ray.`,
     tags: [variant],
     model: { angleA, a, b, count },
   };
@@ -1374,7 +1374,7 @@ function percentApplications(r: Random): Built {
           `Commission = ${rate}% of ${sales} = ${sales} × ${rate}/100 = ${usd(comm)}.`,
           `Total pay = ${word(base)} + ${usd(comm)} = ${usd(total)}.`,
         ],
-        hint: `The commission is a percent of the sales, not of the base pay. Find it, then add the base pay.`,
+        hint: `The commission is ${rate}% of the sales of ${word(sales)}, not of the base pay of ${word(base)}. Find it, then add the base pay.`,
         tags: [variant],
         model: { cents: total },
       };
@@ -1583,10 +1583,10 @@ function percentApplications(r: Random): Built {
         prompt: `A scale shows ${measured} ${g} for an object whose true amount is ${actual} ${g}. What is the percent error, the size of the error as a percent of the true amount?`,
         choices: options(pct(e, 1), wrong),
         explanation: [
-          `Error = |${measured} − ${actual}| = ${d} ${g}.`,
+          `Error = |${measured} − ${actual}| = ${d} ${d === 1 ? g.slice(0, -1) : g}.`,
           `Percent error = ${d} ÷ ${actual} = ${d / actual}, which is ${pct(e, 1)}.`,
         ],
-        hint: `Find the size of the difference between the measured and true amounts. Then divide by the amount that is the standard: the true one.`,
+        hint: `Find the size of the difference between the measured ${measured} ${g} and the true ${actual} ${g}. Then divide by the amount that is the standard: the true one.`,
         tags: [variant],
         model: { measured, actual, e },
       };
@@ -1670,18 +1670,18 @@ const experiments: Experiment[] = [
     outcomes: product(["red", "blue", "green"], range(4)),
     events: [
       {
-        text: "spinner 1 lands on red and spinner 2 lands on an even number",
+        text: "the first spinner lands on red and the second spinner lands on an even number",
         test: (o) => o[0] === "red" && +o[1]! % 2 === 0,
       },
       {
-        text: "spinner 1 does not land on red and spinner 2 lands on a number greater than 2",
+        text: "the first spinner does not land on red and the second spinner lands on a number greater than 2",
         test: (o) => o[0] !== "red" && +o[1]! > 2,
       },
     ],
   },
 ];
 const outcomeText = (o: string[]) =>
-  o.length === 1 ? o[0]! : `(${o.join(", ")})`;
+  o.length === 1 ? o[0]! : `$(${o.join(", ")})$`;
 const sampleLines = (e: Experiment) =>
   e.id === "coins"
     ? e.outcomes.map((o) => o.join("")).join(", ")
@@ -1788,7 +1788,7 @@ function compoundEventSimulation(r: Random): Built {
         choices: options(correct, candidates),
         explanation: [
           `Go through each of the ${N} trials and count the ${ctx.unitWord}.`,
-          `The trials where ${event.text} are ${hitTrials.join(", ")}: ${hits} trials.`,
+          `Trials where ${event.text}: ${hitTrials.join(", ")}. That is ${hits} of the ${N} trials.`,
           `The estimate is ${hits} out of ${N}, which is ${correct}.`,
         ],
         hint: `Treat each group of ${ctx.digits} digits as one trial. For each trial, count the ${ctx.markWord}, and decide if the event happened. Then compare the number of trials where it did with all ${N} trials.`,
@@ -1868,7 +1868,7 @@ function compoundEventSimulation(r: Random): Built {
         `Outcomes where ${event.text}: ${fav.map((o) => (exp.id === "coins" ? o.join("") : outcomeText(o))).join(", ")}. That is ${fav.length}.`,
         `Probability = ${fav.length}/${total} = ${correct}.`,
       ],
-      hint: `Make an organized list or table of every outcome of the experiment (there are ${total} in all). Then mark the ones where ${event.text}.`,
+      hint: `Make an organized list or table of every outcome of the experiment (there are ${exp.stages.join(" × ")} = ${total} in all). Then mark the ones where ${event.text}.`,
       tags: [variant, exp.id],
       model: { total, favorable: fav.length },
     };

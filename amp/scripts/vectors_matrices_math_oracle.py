@@ -256,7 +256,7 @@ def solve_vector_components(public):
 
 # --------------------------------------------------------------- resultants
 def plain_quantity(label):
-    t = plain(label).replace('\\text{ mph}', '').replace('\\text{ N}', '').replace('^\\circ', '')
+    t = plain(label).replace('\\text{ mph}', '').replace('\\text{ N}', '').replace('\\text{ newtons}', '').replace('^\\circ', '')
     require(re.fullmatch(r'\d+(\.\d+)?', t) is not None, f'Not a plain quantity: {label}')
     return Fraction(t)
 
@@ -288,13 +288,13 @@ def solve_vector_resultant(public):
     patterns = [
         ('boat-mag', rf"A boat heads straight across a river at {n} mph relative to the water\. The current flows downstream at {n} mph, perpendicular to the boat's heading\. What is the boat's speed relative to the shore\?"),
         ('plane-mag', rf"A plane flies due north at {n} mph relative to the air\. A wind blows due east at {n} mph\. What is the plane's speed relative to the ground\?"),
-        ('force-mag', rf"Two forces pull on a ring at right angles: {n} N due east and {n} N due north\. What is the magnitude of the resultant force\?"),
+        ('force-mag', rf"Two forces pull on a ring at right angles: {n} newtons due east and {n} newtons due north\. What is the magnitude of the resultant force\?"),
         ('boat-theta-down', rf"A boat heads straight across a river at {n} mph relative to the water\. The current flows downstream at {n} mph, perpendicular to the boat's heading\. The boat's actual path makes an angle \\theta with the downstream direction\. Find \\theta\."),
         ('boat-theta-head', rf"A boat heads straight across a river at {n} mph relative to the water\. The current flows downstream at {n} mph, perpendicular to the boat's heading\. The boat's actual path makes an angle \\theta with its heading \(straight across\)\. Find \\theta\."),
         ('plane-en', rf"A plane flies due north at {n} mph relative to the air\. A wind blows due east at {n} mph\. The plane's ground path points \\theta degrees east of north\. Find \\theta\."),
         ('plane-ne', rf"A plane flies due north at {n} mph relative to the air\. A wind blows due east at {n} mph\. The plane's ground path points \\theta degrees north of east\. Find \\theta\."),
-        ('force-ne', rf"Two forces pull on a ring at right angles: {n} N due east and {n} N due north\. The resultant points \\theta degrees north of east\. Find \\theta\."),
-        ('force-en', rf"Two forces pull on a ring at right angles: {n} N due east and {n} N due north\. The resultant points \\theta degrees east of north\. Find \\theta\."),
+        ('force-ne', rf"Two forces pull on a ring at right angles: {n} newtons due east and {n} newtons due north\. The resultant points \\theta degrees north of east\. Find \\theta\."),
+        ('force-en', rf"Two forces pull on a ring at right angles: {n} newtons due east and {n} newtons due north\. The resultant points \\theta degrees east of north\. Find \\theta\."),
     ]
     for name, pattern in patterns:
         match = re.fullmatch(pattern, prompt)
@@ -319,7 +319,7 @@ def solve_vector_resultant(public):
     reverse = [
         rf"A boat heads straight across a river\. The current flows downstream at {n} mph, perpendicular to the boat's heading, and the boat's speed relative to the shore is {n} mph\. What is the boat's speed relative to the water\?",
         rf"A plane heads due north through the air\. A wind blows due east at {n} mph, perpendicular to the plane's heading, and the plane's ground speed is {n} mph\. What is the plane's air speed\?",
-        rf"Two forces act on a ring at right angles\. One force is {n} N and the magnitude of the resultant is {n} N\. What is the magnitude of the other force\?",
+        rf"Two forces act on a ring at right angles\. One force is {n} newtons and the magnitude of the resultant is {n} newtons\. What is the magnitude of the other force\?",
     ]
     stripped = prompt
     for pattern in reverse:
@@ -856,11 +856,11 @@ def self_test_cases():
         "What is the plane's speed relative to the ground? Round to the nearest tenth.",
         ['145370\\text{ mph}', '381.3\\text{ mph}', '538\\text{ mph}', '36\\text{ mph}'], 1))
     cases.append(fixture('vector-resultant',
-        "Two forces pull on a ring at right angles: 75 N due east and 50 N due north. "
+        "Two forces pull on a ring at right angles: 75 newtons due east and 50 newtons due north. "
         "The resultant points $\\theta$ degrees east of north. Find $\\theta$. Round to the nearest degree.",
         ['56^\\circ', '40^\\circ', '34^\\circ', '29^\\circ'], 0))
     cases.append(fixture('vector-resultant',
-        "Two forces act on a ring at right angles. One force is 16 N and the magnitude of the resultant is 34 N. "
+        "Two forces act on a ring at right angles. One force is 16 newtons and the magnitude of the resultant is 34 newtons. "
         "What is the magnitude of the other force?",
         ['900\\text{ N}', '18\\text{ N}', '37.6\\text{ N}', '30\\text{ N}'], 3))
     cases.append(fixture('matrix-data-reading',

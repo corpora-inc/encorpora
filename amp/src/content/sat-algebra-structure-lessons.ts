@@ -3,7 +3,7 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
   "quadratic-root-relations": {
-    goal: "Given a quadratic equation with real solutions, find a quantity built from its solutions (their sum, product, sum of squares, sum of reciprocals), a missing coefficient, or the second solution, without solving for both.",
+    goal: "Given a quadratic with real solutions, find a sum, product or reciprocal sum of them, a coefficient or a solution, without solving both.",
     intuition:
       "A quadratic equation $ax^2+bx+c=0$ has solutions $p$ and $q$ exactly when it can be written $a(x-p)(x-q)=0$. Multiplying that out shows how the coefficients $b$ and $c$ are built from $p$ and $q$, so the coefficients tell you the sum and product of the solutions directly.",
     terms: [
@@ -26,7 +26,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "The sum is $-b/a$, not $b/a$, and both relations divide by $a$. When $a\\ne1$, the sum is not $-b$ and the product is not $c$.",
   },
   "system-expression-value": {
-    goal: "Given linear equations in $x$ and $y$, find the value of a requested expression in $x$ and $y$ by combining the equations, without solving for each variable.",
+    goal: "Given linear equations in $x$ and $y$, find the value of a requested expression by combining the equations, not solving for each variable.",
     intuition:
       "If two equations are true, then multiplying each by a number and adding the results gives another true equation. When the left side of that new equation is the expression you want, its right side is the answer. You never need $x$ or $y$ alone.",
     terms: [
@@ -49,7 +49,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "Multiply the right side by the same number as the left, and apply each multiplier to its own equation only. Adding the right sides without the multipliers answers a different question.",
   },
   "variation-constant": {
-    goal: "Given two related quantities that vary directly or inversely, find the constant of variation, predict a value, choose the equation or table that fits, or find how one quantity changes when the other does.",
+    goal: "For direct or inverse variation, find the constant, predict a value, choose the fitting equation or table, or find how one quantity changes.",
     intuition:
       "Two quantities vary directly when one is always the same multiple of the other: doubling one doubles the other. They vary inversely when their product stays the same: doubling one halves the other. In either case one number, the constant of variation, describes the whole relationship.",
     terms: [
@@ -73,7 +73,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "Do not add the same amount to both quantities and do not mix the two kinds. A relationship such as $y=3x+2$ is neither: its ratio and its product both change.",
   },
   "rate-combination-model": {
-    goal: "Combine constant rates in a word problem: shared work, filling with a drain, mixing solutions, average speed over equal distances, or a rate that changes partway.",
+    goal: "Combine constant rates: shared work, filling with a drain, mixing solutions, average speed over equal distances, or a rate that changes.",
     intuition:
       "A rate says how much happens per unit of time, such as $\\frac15$ of a job per hour. Rates working together add, and a rate working against another subtracts. Times and speeds do not add or average that way, so convert to rates or to totals first.",
     terms: [
@@ -97,7 +97,7 @@ export const satAlgebraStructureMethods: Record<string, ProblemMethod> = {
       "Do not average times, concentrations or speeds directly. Weight by volume for a mixture, and divide total distance by total time for speed.",
   },
   "absolute-compound-inequality": {
-    goal: "Choose the solution set of an absolute-value inequality or a compound inequality, or choose the absolute-value inequality that describes a set shown on a number line.",
+    goal: "Choose the solution set of an absolute-value or compound inequality, or the inequality that describes a set on a number line.",
     intuition:
       'The absolute value $|E|$ is the distance of $E$ from 0. So $|E|<c$ means $E$ is closer than $c$ to 0, between $-c$ and $c$. And $|E|>c$ means $E$ is farther than $c$, either below $-c$ or above $c$. A compound inequality joins two conditions with "and" (both true) or "or" (at least one true).',
     terms: [
@@ -254,7 +254,7 @@ export const satAlgebraStructureLessons: Lesson[] = [
     closingSections: [
       {
         stage: "method",
-        title: "When x and y cannot be found separately",
+        title: "When the variables cannot be found separately",
         keepTogetherInPrint: true,
         paragraphs: [
           "Suppose only $6x+9y=12$ is given, and you want $2x+3y$. The target's coefficients are one third of the equation's, so its value is one third of 12, which is 4. Many pairs $(x,y)$ satisfy the equation, but every one of them gives the same value of $2x+3y$.",
