@@ -2144,6 +2144,53 @@ html[data-input="pointer"] :focus-visible {
   margin-top: 0;
 }
 
+/* The result shares the answer surface with its skill and optional connections. */
+.feedback.correct:has([data-answer-feedback]) .feedback-head {
+  flex-direction: row;
+  text-align: left;
+  gap: var(--space-3);
+  margin-block: 0;
+  flex: none;
+}
+.feedback.correct:has([data-answer-feedback]) .result-mark {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  font-size: 18px;
+}
+.feedback.correct:has([data-answer-feedback]) .feedback-title {
+  align-items: flex-start;
+  font-size: 20px;
+}
+.feedback:has([data-answer-feedback]) .next-action {
+  margin-top: auto;
+}
+.feedback-navigation-error {
+  position: fixed;
+  z-index: 30;
+  top: calc(env(safe-area-inset-top, 0px) + 64px);
+  left: var(--space-4);
+  right: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 620px;
+  margin-inline: auto;
+  padding: var(--space-3);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  border: 1px solid var(--color-danger-accent);
+  border-radius: var(--radius-control);
+  box-shadow: 0 4px 16px var(--color-shadow);
+}
+.feedback-navigation-error button {
+  flex: none;
+  min-width: var(--target-size);
+  min-height: var(--target-size);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+
 /* Phones up to small tablets: practice panels (lesson, see why) take the
    whole screen, with no inset card, gutters or radius. Safe areas keep
    content clear of the notch and gesture bar. */

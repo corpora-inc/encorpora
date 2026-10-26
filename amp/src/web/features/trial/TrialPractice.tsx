@@ -1,3 +1,5 @@
+import { AnswerFeedback } from "../practice/AnswerFeedback";
+import { answerProgress } from "./api";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
 import { useQuery } from "@tanstack/react-query";
 import type { Step } from "../../../math/scene/timeline";
@@ -252,6 +254,30 @@ function Practice({ session }: { session: TrialSession }) {
         response={response}
         setResponse={setResponse}
         outcome={outcome}
+        answerFeedback={
+          outcome &&
+          catalog.data && (
+            <AnswerFeedback
+              key={outcome.id}
+              outcome={outcome}
+              skills={catalog.data.skills}
+              templates={catalog.data.templates}
+              identity={["trial", session.learnerId]}
+              loadProgress={() => answerProgress(session, outcome.skillId)}
+              busy={busy}
+              choose={
+                answered < limits.free
+                  ? (templateId) =>
+                      void run(async () => {
+                        const next = await nextProblem(session, templateId);
+                        upcoming.current = null;
+                        show(next);
+                      })
+                  : undefined
+              }
+            />
+          )
+        }
         hint={hintText}
         hintCue={hintCue}
         busy={busy}

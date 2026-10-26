@@ -19,6 +19,7 @@ import {
   trialKey,
 } from "../../lib/pending-trial";
 import { learningCatalog } from "../../learning-transport";
+import { answerProgressSchema } from "../practice/answer-progress";
 import type { ProblemLessonView } from "../../../content/problem-lessons";
 import type { TrialCatalog } from "./types";
 import {
@@ -94,6 +95,14 @@ export const outcomeSchema = z.object({
   skipped: z.literal(true).optional(),
 });
 export type TrialOutcome = z.infer<typeof outcomeSchema>;
+
+export function answerProgress(session: TrialSession, skillId: string) {
+  return request(
+    `/learners/${encodeURIComponent(session.learnerId)}/progress?skill=${encodeURIComponent(skillId)}`,
+    answerProgressSchema,
+    { trial: session.token },
+  );
+}
 
 /** The device's trial: its token and nameless learner, or null. The birth
  * year stays in memory, for the level check's "about 10". */

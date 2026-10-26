@@ -36,6 +36,10 @@ import { visibleSteps, type Step } from "../math/scene/timeline";
 import type { ProblemFlagInput } from "../feedback/problem-flags";
 import { problemFlagBody } from "./problem-flag";
 import { ReportProblemButton, type ReportResult } from "./ProblemFlag";
+import {
+  prepareFeedbackSound,
+  playCorrectFeedback,
+} from "./features/practice/feedback-preferences";
 type ReportSheet = typeof import("./ReportProblemSheet");
 /** The report sheet uses the UI kit's stylesheets, so it loads in the
  * browser on demand (this module also loads under Node). */
@@ -167,6 +171,8 @@ type Props = {
   navigation?: ReactNode;
   /** A skill this answer just mastered, shown once with the feedback. */
   mastered?: string | null;
+  /** Progress and optional one-problem branches; Next remains adaptive. */
+  answerFeedback?: ReactNode;
   /** Sends "Report a problem" once this problem resolves. Absent: no flag. */
   reportProblem?: (body: ProblemFlagInput) => Promise<ReportResult>;
   /** The report offers its optional note (see `noteAllowed`). */
@@ -349,6 +355,8 @@ export function PracticeWorkspace(props: Props) {
     input.current?.blur();
     setEntering(false);
     focusNext.current = true;
+    if (outcome.correct && !outcome.skipped)
+      playCorrectFeedback(!!props.mastered);
     const focus = window.setTimeout(() => {
       if (outcome.correct) setCelebrate(true);
     }, 0);
@@ -433,6 +441,10 @@ export function PracticeWorkspace(props: Props) {
       </>
     );
   }
+  function submitAnswer() {
+    prepareFeedbackSound();
+    props.submit();
+  }
   function answerControls(includeContext = false) {
     if (problem.response.kind === "point-plot")
       return (
@@ -443,7 +455,7 @@ export function PracticeWorkspace(props: Props) {
           locked={locked}
           busy={busy}
           resolved={!!outcome}
-          submit={props.submit}
+          submit={submitAnswer}
         />
       );
     if (problem.response.kind === "multi-select") {
@@ -494,7 +506,7 @@ export function PracticeWorkspace(props: Props) {
           onSubmit={(event) => {
             event.preventDefault();
             if (busy || (!outcome && !complete)) return;
-            outcome ? advance() : props.submit();
+            outcome ? advance() : submitAnswer();
           }}
         >
           {includeContext ? (
@@ -530,7 +542,7 @@ export function PracticeWorkspace(props: Props) {
           onSubmit={(event) => {
             event.preventDefault();
             if (!busy && (outcome || response))
-              outcome ? advance() : props.submit();
+              outcome ? advance() : submitAnswer();
           }}
         >
           <fieldset disabled={locked}>
@@ -585,7 +597,7 @@ export function PracticeWorkspace(props: Props) {
               return setAnswerError(
                 "Enter a number, decimal, or fraction such as 3/4.",
               );
-            props.submit();
+            submitAnswer();
           }}
         >
           <label htmlFor="answer">
@@ -983,9 +995,8 @@ export function PracticeWorkspace(props: Props) {
         {outcome && (
           <div
             className={`feedback solution-panel ${outcome.correct ? "correct" : skipped ? "skipped" : "incorrect"}`}
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
+            role="region"
+            aria-label="Answer feedback"
           >
             {outcome.correct && (
               <svg
@@ -1000,7 +1011,12 @@ export function PracticeWorkspace(props: Props) {
                 />
               </svg>
             )}
-            <div className="feedback-head">
+            <div
+              className="feedback-head"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            >
               <span className="result-mark" aria-hidden="true">
                 {outcome.correct ? "✓" : skipped ? "→" : "✕"}
               </span>
@@ -1042,6 +1058,7 @@ export function PracticeWorkspace(props: Props) {
                 )}
               </span>
             </div>
+            {props.answerFeedback}
             {props.mastered && (
               <p className="mastery-moment">
                 <span className="mastery-mark" aria-hidden="true">
@@ -1080,6 +1097,14 @@ export function PracticeWorkspace(props: Props) {
           </div>
         )}
       </section>
+      {outcome && props.error && (
+        <div className="feedback-navigation-error" role="alert">
+          <span>{props.error}</span>
+          <button onClick={props.clearError} aria-label="Dismiss error">
+            ×
+          </button>
+        </div>
+      )}
       {lessonError && (
         <p className="workspace-error" role="alert">
           {lessonError}
