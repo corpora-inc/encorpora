@@ -707,8 +707,8 @@ function comparisonEquations(r: Random): Built {
     prompt: `A group has ${a} ${small}. ${story} Let $n$ be the number of ${big}. Which 3 equations can be used to find $n$?`,
     hint:
       variant === "times"
-        ? `“${m} times as many” means the ${big} come in ${m} groups the size of the ${small}. Write the multiplication, then think of the division equations that say the same thing.`
-        : `“${m} more” means the ${big} are the ${small} plus ${m} extra. Write the addition, then think of the subtraction equations that say the same thing.`,
+        ? `“${m} times as many” means the ${big} come in ${m} groups, each the size of the ${a} ${small}. Write the multiplication, then think of the division equations that say the same thing.`
+        : `“${m} more” means the ${big} are the ${a} ${small} plus ${m} extra. Write the addition, then think of the subtraction equations that say the same thing.`,
     pool,
     total: 6,
     k: 3,
@@ -800,7 +800,7 @@ function prismRangeSelect(r: Random): Built {
         variant === "range"
           ? `Five rectangular prisms have the edge lengths shown, in centimeters. Choose the 2 prisms whose volumes added together are greater than ${lo} and less than ${hi} cubic centimeters.`
           : `Five rectangular prisms have the edge lengths shown, in centimeters. Choose the 2 prisms whose volumes added together equal ${lo} cubic centimeters.`,
-      hint: "Find the volume of each prism first: length times width times height. Then add pairs of volumes, keeping only the pair whose total meets the condition.",
+      hint: `Find the volume of each prism first: length times width times height. Then add pairs of volumes, keeping only the pair whose total ${variant === "range" ? `is more than ${lo} and less than ${hi}` : `is exactly ${lo}`}.`,
       pool,
       total: 5,
       k: 2,
@@ -884,7 +884,7 @@ function ratioStatements(r: Random): Built {
   return {
     variant,
     prompt: `${c.intro} ${listing}. A ratio is written in the order its words are stated. Choose the ${k} true statements.`,
-    hint: `Write each count and the total. Then read each statement in the order its words give: “${groups[0]!.name} to ${groups[1]!.name}” puts the count of ${groups[0]!.name} first. Dividing or multiplying both numbers by the same amount gives an equal ratio.`,
+    hint: `Write each count (${listing}) and the total. Then read each statement in the order its words give: “${groups[0]!.name} to ${groups[1]!.name}” puts the count of ${groups[0]!.name} first. Dividing or multiplying both numbers by the same amount gives an equal ratio.`,
     pool: options,
     total: options.length,
     k,
@@ -1025,7 +1025,7 @@ function statisticalQuestions(r: Random): Built {
   return {
     variant: `${k}-of-5`,
     prompt: `A manager at ${c.setting} wants to learn about its customers and daily operation. A statistical question is one that you expect to have different answers for different people, items or times, so you must collect data to answer it. Which ${k} of these questions are statistical?`,
-    hint: "Ask of each question: would I get the same answer every time and from everyone, or would the answers vary? Only a question whose answers vary needs a collection of data.",
+    hint: `Ask of each question about ${c.setting}: would I get the same answer every time and from everyone, or would the answers vary? Exactly ${k} of the five need a collection of data.`,
     pool,
     total,
     k,
@@ -1523,8 +1523,8 @@ function quadraticZeros(r: Random): Built {
     prompt: `Which 2 values of $x$ make the expression $${expr}$ equal to 0?`,
     hint:
       variant === "factored"
-        ? "A product is 0 only when one of its factors is 0. Set each factor equal to 0 and solve, or substitute each value and check."
-        : "Substitute each value for $x$ and check whether the expression equals 0, or factor the expression and set each factor equal to 0.",
+        ? `A product is 0 only when one of its factors is 0. For $${expr}$, set each factor equal to 0 and solve, or substitute each value and check.`
+        : `Substitute each value for $x$ into $${expr}$ and check whether it equals 0, or factor the expression and set each factor equal to 0.`,
     pool,
     total: 5,
     k: 2,
@@ -1543,7 +1543,7 @@ function cubePrismStatements(r: Random): Built {
   let a = 0;
   let b = 0;
   let c = 0;
-  while (a === b || b === c || a === c) {
+  while (a === b || b === c || a === c || [a, b, c].includes(n)) {
     a = r(2, 6);
     b = r(2, 6);
     c = r(2, 6);
@@ -1643,7 +1643,7 @@ function cubePrismStatements(r: Random): Built {
   return {
     variant: `edge-1-over-${n}`,
     prompt: `A rectangular prism is $${mixed(edge(a))}$ units long, $${mixed(edge(b))}$ units wide and $${mixed(edge(c))}$ units tall. It is packed with no gaps or overlaps with small cubes whose edges are $${ftex(unit)}$ unit long. Choose the 2 true statements.`,
-    hint: `Divide each edge length of the prism by the cube edge $${ftex(unit)}$ to count the cubes along that edge. A cube's volume is its edge multiplied by itself three times, and the prism's volume is the number of cubes times one cube's volume.`,
+    hint: `Divide each edge length of the prism ($${mixed(edge(a))}$, $${mixed(edge(b))}$ and $${mixed(edge(c))}$ units) by the cube edge $${ftex(unit)}$ to count the cubes along that edge. A cube's volume is its edge multiplied by itself three times, and the prism's volume is the number of cubes times one cube's volume.`,
     pool: options,
     total: 5,
     k: 2,
@@ -1698,7 +1698,7 @@ function congruenceSelect(r: Random): Built {
   return {
     variant,
     prompt: `The triangles satisfy ${statement}. Choose the 3 statements about corresponding parts that must be true.`,
-    hint: `The letters of a congruence statement are listed in matching order: the first letter of the first triangle matches the first letter of the second, and so on. Write the three matching pairs of vertices, then read each statement as a pair of vertices or two pairs.`,
+    hint: `The letters of ${statement} are listed in matching order: ${first[0]} is matched with ${second[0]}, the second letters match, and so on. Write the three matching pairs of vertices, then read each statement as a pair of vertices or two pairs.`,
     pool,
     total: 6,
     k: 3,
@@ -1788,7 +1788,7 @@ function circleEquationSelect(r: Random): Built {
   return {
     variant: "circle-center-radius",
     prompt: `A circle in the coordinate plane has the equation $${eq}$. Choose the 2 true statements.`,
-    hint: "Compare the equation with $(x-h)^{2}+(y-k)^{2}=r^{2}$, where $(h,k)$ is the center and $r$ is the radius. Read $h$ and $k$ with the opposite sign of what is printed, and take the square root of the number on the right for $r$.",
+    hint: `Compare $${eq}$ with $(x-h)^{2}+(y-k)^{2}=r^{2}$, where $(h,k)$ is the center and $r$ is the radius. Read $h$ and $k$ with the opposite sign of what is printed, and take the square root of the number on the right for $r$.`,
     pool: fromCategories(r, cats, 2),
     total: 5,
     k: 2,
@@ -1885,7 +1885,7 @@ function negativeFractionForms(r: Random): Built {
   return {
     variant,
     prompt: `Which 3 expressions are equal to $${variant === "negative" ? "-" : ""}\\frac{${a}}{${b}}$?`,
-    hint: "Count the negative signs in each expression, in the numerator, the denominator and the front. An odd number of negative signs gives a negative value and an even number gives a positive one. Then check that the fraction is not turned upside down.",
+    hint: `Count the negative signs in each expression, in the numerator, the denominator and the front. An odd number of negative signs gives a negative value and an even number gives a positive one. Then check that the numerator is still ${a} and the denominator ${b}, not turned upside down.`,
     pool,
     total: 6,
     k: 3,
@@ -1909,7 +1909,7 @@ function circleRadiusDistance(r: Random): Single {
     return {
       variant,
       prompt: `Point $O$ is the center of a circle with radius ${rad} cm, and point $P$ is on the circle. What is the distance from $O$ to $P$?`,
-      hint: "Every point on a circle is the same distance from its center. That distance has a name: the radius.",
+      hint: `Every point on a circle is the same distance from its center. For this circle, with radius ${rad} cm, that distance has a name: the radius.`,
       explanation: [
         `A circle is the set of points at one fixed distance, the radius, from its center.`,
         `$P$ is on the circle, so $OP$ equals the radius, ${rad} cm.`,
@@ -1936,7 +1936,7 @@ function circleRadiusDistance(r: Random): Single {
     return {
       variant,
       prompt: `A circle has center $O$ and a diameter of ${d} cm. Point $P$ is on the circle. What is the distance from $O$ to $P$?`,
-      hint: "The diameter goes all the way across the circle through the center. The distance from the center to the circle is only part of that way.",
+      hint: `The diameter, ${d} cm, goes all the way across the circle through the center. The distance from the center to the circle is only part of that way.`,
       explanation: [
         `The diameter is twice the radius, so the radius is ${d} ÷ 2 = ${d / 2} cm.`,
         `Every point on the circle is one radius from the center, so $OP=${d / 2}$ cm.`,
@@ -1962,7 +1962,7 @@ function circleRadiusDistance(r: Random): Single {
   return {
     variant,
     prompt: `A circle with center $O$ has a circumference of $${2 * rad}\\pi$ cm. Point $P$ is on the circle. What is the distance from $O$ to $P$?`,
-    hint: "The circumference of a circle is $2\\pi r$. Use it to find the radius, then think about how far every point on the circle is from the center.",
+    hint: `The circumference of a circle is $2\\pi r$, so $2\\pi r=${2 * rad}\\pi$ here. Use it to find the radius, then think about how far every point on the circle is from the center.`,
     explanation: [
       `The circumference is $2\\pi r=${2 * rad}\\pi$, so $r=${rad}$ cm.`,
       `Every point on the circle is one radius from the center, so $OP=${rad}$ cm.`,
@@ -2092,7 +2092,7 @@ function slopeSignDescription(r: Random): Single {
   return {
     variant,
     prompt: `${c.y.charAt(0).toUpperCase() + c.y.slice(1)} is a linear function of ${c.x}. ${text[variant]} What is the sign of the slope of this function?`,
-    hint: "The slope is the change in the output divided by the change in the input. Decide the sign of each change, then the sign of their quotient: same signs give a positive quotient and different signs give a negative one.",
+    hint: `For this function the slope is the change in ${c.y} divided by the change in ${c.x}. Decide the sign of each change, then the sign of their quotient: same signs give a positive quotient and different signs give a negative one.`,
     explanation: [
       text[variant],
       reason[answer]!,
@@ -2276,7 +2276,7 @@ function productFactorSize(r: Random): Single {
   return {
     variant,
     prompt: `Without multiplying, which product is ${want} $${fx}$?`,
-    hint: `Compare the other factor with 1 instead of multiplying. Multiplying by a number greater than 1 makes a number larger, multiplying by 1 leaves it the same, and multiplying by a number between 0 and 1 makes it smaller.`,
+    hint: `Every product here has $${fx}$ as one factor, so compare the other factor with 1 instead of multiplying. Multiplying by a number greater than 1 makes a number larger, multiplying by 1 leaves it the same, and multiplying by a number between 0 and 1 makes it smaller.`,
     explanation: [
       `The product of $${fx}$ and a number is ${want} $${fx}$ when that number is ${variant === "greater" ? "greater than 1" : variant === "less" ? "between 0 and 1" : "equal to 1"}.`,
       `Only ${rightLabel} has a ${variant === "greater" ? "factor greater than 1" : variant === "less" ? "factor less than 1" : "factor equal to 1"}.`,
