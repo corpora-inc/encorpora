@@ -498,11 +498,18 @@ try {
       const state = fresh();
       await serve(page, state, faults);
 
-      // Visitor: the welcome offers the free problems; no loading text flashes.
+      // Visitor: invite one problem and disclose the free allowance.
       await page.goto(`${origin}/`);
       const tryFree = page.getByRole("button", { name: "Try free" });
       await tryFree.waitFor();
-      await page.getByText(`Start with ${FREE} free problems.`).waitFor();
+      await page
+        .getByRole("heading", { name: "Try one math problem." })
+        .waitFor();
+      await page
+        .getByText(`Your free trial includes up to ${FREE} problems`, {
+          exact: false,
+        })
+        .waitFor();
       await fits(page, `${tag} welcome`);
       if (audit) await axe(page, "welcome");
       await shoot(page, "welcome", tag);

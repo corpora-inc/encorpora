@@ -1389,14 +1389,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         <section className="card welcome">
           {!nativeRuntime && <LandingView />}
           <h2>
-            {nativeRuntime
-              ? "Sign in to continue."
-              : `Start with ${catalog?.trial?.free ?? 100} free problems.`}
+            {nativeRuntime ? "Sign in to continue." : "Try one math problem."}
           </h2>
           <p>
             {nativeRuntime
               ? "Sign in as a parent to choose a learner."
-              : `No account needed. The first ${catalog?.trial?.placement ?? 20} find the level in every area; the rest practice right at it, with a lesson and a hint on every problem.`}
+              : `No account needed. AMP adjusts as you answer. Your free trial includes up to ${catalog?.trial?.free ?? 100} problems, with hints and lessons along the way.`}
           </p>
           {hasPendingConsent && (
             <p>
