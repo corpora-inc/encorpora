@@ -64,6 +64,7 @@ import { rightTriangleMethods } from "./right-triangle-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import { complexMethods } from "./complex-lessons";
+import { financeCreditMethods } from "./finance-credit-lessons";
 import { k8StateNumberMethods } from "./k8-state-number-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
 import { pointPlotMethods } from "./point-plot-lessons";
@@ -112,6 +113,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...complexMethods,
+  ...financeCreditMethods,
   ...k8StateNumberMethods,
   ...satNumericEntryMethods,
   ...pointPlotMethods,
