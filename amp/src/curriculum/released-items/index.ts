@@ -38,6 +38,9 @@ import { satPractice11 } from "./sat-practice-11";
 import { regentsAlgebra1June2026 } from "./regents-2026-06-algebra1";
 import { regentsGeometryJune2026 } from "./regents-2026-06-geometry";
 import { regentsAlgebra2June2026 } from "./regents-2026-06-algebra2";
+import { regentsAlgebra1January2026 } from "./regents-2026-01-algebra1";
+import { regentsGeometryJanuary2026 } from "./regents-2026-01-geometry";
+import { regentsAlgebra2January2026 } from "./regents-2026-01-algebra2";
 
 /** Ledger order is the saturation order: complete SAT practice forms in
  * publication order, then the framework and purposive state samples, then complete state forms. Append new sources at the end. */
@@ -75,6 +78,9 @@ export const releasedLedgers: readonly SourceLedger[] = [
   regentsAlgebra1June2026,
   regentsGeometryJune2026,
   regentsAlgebra2June2026,
+  regentsAlgebra1January2026,
+  regentsGeometryJanuary2026,
+  regentsAlgebra2January2026,
 ];
 export const releasedItems = releasedLedgers.flatMap((l) => l.items);
 /** Production ledger. Pass `ledgers` (and matching `templates`) to report a
