@@ -243,6 +243,14 @@ try {
           path: `${output}/${mode}-${width}-${theme}-correct.png`,
         });
         await page
+          .getByRole("button", { name: "See why", exact: true })
+          .click();
+        const explainedNext = await next.boundingBox();
+        assert(
+          explainedNext && box && Math.abs(explainedNext.y - box.y) <= 2,
+          `${mode} ${width}: See why must not move Next`,
+        );
+        await page
           .getByRole("button", { name: "Leads to", exact: false })
           .click();
         const dialog = page.getByRole("dialog", {
@@ -290,6 +298,11 @@ try {
         await page.screenshot({
           path: `${output}/${mode}-${width}-${theme}-incorrect.png`,
         });
+        const incorrectNext = await next.boundingBox();
+        assert(
+          incorrectNext && box && Math.abs(incorrectNext.y - box.y) <= 2,
+          `${mode} ${width}: correct and incorrect Next must share a position`,
+        );
         const beforeNext = batches.length;
         await next.click();
         await page.waitForFunction(

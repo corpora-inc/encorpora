@@ -2162,7 +2162,8 @@ html[data-input="pointer"] :focus-visible {
   align-items: flex-start;
   font-size: 20px;
 }
-.feedback:has([data-answer-feedback]) .next-action {
+.feedback:has([data-answer-feedback]) .next-action,
+.feedback.correct:has([data-answer-feedback]) .next-action {
   margin-top: auto;
 }
 .feedback-navigation-error {
