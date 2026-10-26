@@ -276,6 +276,7 @@ import {
   satNumericEntryTemplates,
   generateSatNumericEntryProblem,
 } from "./sat-numeric-entry-practice";
+import { satSprDecimalAccepted } from "./sat-spr-entry";
 import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
@@ -602,7 +603,12 @@ export function gradeAnswer(
       isValidResponse(problem.public, response) && response === problem.answer
     );
   const answer = normalizeAnswer(response);
-  return answer !== null && answer === normalizeAnswer(problem.answer);
+  if (answer !== null && answer === normalizeAnswer(problem.answer))
+    return true;
+  return (
+    problem.entryPolicy === "sat-spr" &&
+    satSprDecimalAccepted(normalizeAnswer(problem.answer) ?? "", response)
+  );
 }
 
 /** SHA-256 counter stream gives stable values across Node versions, with unbiased bounded draws. */
