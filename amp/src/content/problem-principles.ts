@@ -66,6 +66,7 @@ import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
 import { financeCreditPrinciples } from "./finance-credit-lessons";
 import { hsStateGapPrinciples } from "./hs-state-gaps-lessons";
+import { financeIncomePrinciples } from "./finance-income-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
 import { pointPlotPrinciples } from "./point-plot-lessons";
@@ -112,6 +113,7 @@ export const principles: Record<string, string> = {
   ...complexPrinciples,
   ...financeCreditPrinciples,
   ...hsStateGapPrinciples,
+  ...financeIncomePrinciples,
   ...k8StateNumberPrinciples,
   ...satNumericEntryPrinciples,
   ...pointPlotPrinciples,

@@ -27,6 +27,7 @@ from sat_geometry_advanced_math_oracle import SUPPORTED as SAT_GEOMETRY_ADVANCED
 from complex_math_oracle import SUPPORTED as COMPLEX, solve as solve_complex, review_problem as review_complex_problem, self_test as review_complex_fixtures
 from sat_numeric_entry_math_oracle import SUPPORTED as SAT_NUMERIC_ENTRY, solve as solve_sat_numeric_entry, review_problem as review_sat_numeric_entry_problem, self_test as review_sat_numeric_entry_fixtures
 from hs_state_gaps_math_oracle import SUPPORTED as HS_STATE_GAPS, solve as solve_hs_state_gaps, review_problem as review_hs_state_gaps_problem, self_test as review_hs_state_gaps_fixtures
+from finance_income_math_oracle import SUPPORTED as FINANCE_INCOME, solve as solve_finance_income, review_problem as review_finance_income_problem, self_test as review_finance_income_fixtures
 from complex_conics_math_oracle import SUPPORTED as COMPLEX_CONICS, solve as solve_complex_conics, review_problem as review_complex_conics_problem, self_test as review_complex_conics_fixtures
 from algebra_requirement_gaps_math_oracle import SUPPORTED as ALGEBRA_REQUIREMENT_GAPS, solve as solve_algebra_requirement_gaps, review_problem as review_algebra_requirement_gaps_problem, self_test as review_algebra_requirement_gaps_fixtures
 from geometry_requirement_gaps_math_oracle import SUPPORTED as GEOMETRY_REQUIREMENT_GAPS, solve as solve_geometry_requirement_gaps, review_problem as review_geometry_requirement_gaps_problem, self_test as review_geometry_requirement_gaps_fixtures
@@ -144,6 +145,7 @@ SUPPORTED |= ADVANCED_MATH_GAPS
 SUPPORTED |= STAAR_GAPS
 SUPPORTED |= COMPLEX_CONICS
 SUPPORTED |= HS_STATE_GAPS
+SUPPORTED |= FINANCE_INCOME
 SUPPORTED |= SAT_NUMERIC_ENTRY
 SUPPORTED |= POINT_PLOT
 SUPPORTED |= MULTI_PART_CHOICE
@@ -299,6 +301,8 @@ def solve_family(public):
         return solve_complex_conics(public)
     if public["templateId"] in HS_STATE_GAPS:
         return solve_hs_state_gaps(public)
+    if public["templateId"] in FINANCE_INCOME:
+        return solve_finance_income(public)
     if public["templateId"] in SAT_NUMERIC_ENTRY:
         return solve_sat_numeric_entry(public)
     if public["templateId"] in GEOMETRY_REQUIREMENT_GAPS:
@@ -744,6 +748,8 @@ def review(stream):
             review_complex_conics_problem(problem)
         if template in HS_STATE_GAPS:
             review_hs_state_gaps_problem(problem)
+        if template in FINANCE_INCOME:
+            review_finance_income_problem(problem)
         if template in SAT_NUMERIC_ENTRY:
             review_sat_numeric_entry_problem(problem)
         if template in GEOMETRY_REQUIREMENT_GAPS:
@@ -847,7 +853,7 @@ def review(stream):
         elif template in MULTI_PART_CHOICE:
             expected = review_multi_part_choice_problem(problem)
             actual = problem["answer"]
-        elif template in (K8_STATE_NUMBER if public['response']['kind'] == 'choice' else frozenset()) or template in HS_STATE_GAPS | FINANCE_CREDIT | SAT_GEOMETRY_ADVANCED_CHOICE | FL_CHOICE | STAAR_GAP_CHOICE | GEOMETRY_REQUIREMENT_GAPS | REGENTS_GAPS_CHOICE | LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | ALGEBRA_REQUIREMENT_GAPS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS | SAT_ALGEBRA_STRUCTURE | NUMBER_MEASUREMENT_CHOICE | ADVANCED_MATH_GAPS or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        elif template in (K8_STATE_NUMBER if public['response']['kind'] == 'choice' else frozenset()) or template in HS_STATE_GAPS | FINANCE_CREDIT | SAT_GEOMETRY_ADVANCED_CHOICE | FL_CHOICE | STAAR_GAP_CHOICE | GEOMETRY_REQUIREMENT_GAPS | REGENTS_GAPS_CHOICE | FINANCE_INCOME | LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | ALGEBRA_REQUIREMENT_GAPS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS | SAT_ALGEBRA_STRUCTURE | NUMBER_MEASUREMENT_CHOICE | ADVANCED_MATH_GAPS or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -919,6 +925,7 @@ def review(stream):
     review_number_measurement_fixtures()
     review_complex_conics_fixtures()
     review_hs_state_gaps_fixtures()
+    review_finance_income_fixtures()
     review_sat_numeric_entry_fixtures()
     review_finance_credit_fixtures()
     review_algebra_requirement_gaps_fixtures()

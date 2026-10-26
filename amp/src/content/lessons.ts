@@ -76,6 +76,7 @@ import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
 import { financeCreditLessons } from "./finance-credit-lessons";
 import { hsStateGapLessons } from "./hs-state-gaps-lessons";
+import { financeIncomeLessons } from "./finance-income-lessons";
 import { k8StateNumberLessons } from "./k8-state-number-lessons";
 import { satNumericEntryLessons } from "./sat-numeric-entry-lessons";
 import { pointPlotLessons } from "./point-plot-lessons";
@@ -701,6 +702,7 @@ export const lessons: readonly Lesson[] = [
   ...complexLessons,
   ...financeCreditLessons,
   ...hsStateGapLessons,
+  ...financeIncomeLessons,
   ...k8StateNumberLessons,
   ...satNumericEntryLessons,
   ...pointPlotLessons,

@@ -154,6 +154,55 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Name the circle, ellipse, parabola, hyperbola or degenerate section produced by a plane cutting a double cone from the plane's angle with the axis or its position relative to a side line. Does not assess equations of conics, foci or deriving the sections.",
   },
   {
+    templateId: "profit-cost-breakeven",
+    facetId: "financial-literacy-elementary.core",
+    extent: "partial",
+    rationale:
+      "Select profit or loss, total cost, the break-even number, sales still needed and the variable cost for small whole-dollar prices and costs. Does not assess graphing cost and revenue, constructing equations, nonintegral break-even points or business planning.",
+  },
+  {
+    templateId: "tax-kinds-defined",
+    facetId: "financial-literacy-elementary.core",
+    extent: "partial",
+    rationale:
+      "Match a description or short example to income, payroll, sales or property tax by choice. Does not assess written definitions, tax forms, or tax rules of a particular jurisdiction.",
+  },
+  {
+    templateId: "tax-bracket-owed",
+    facetId: "financial-literacy-middle.core",
+    extent: "partial",
+    rationale:
+      "Select the tax owed from a three-row bracket table with whole-dollar incomes and whole-percent rates, including boundary incomes, a deduction first, the part of income in the middle row, and the added tax on a raise. Does not assess tax forms, credits, filing status or real tax tables.",
+  },
+  {
+    templateId: "payroll-property-tax",
+    facetId: "financial-literacy-middle.core",
+    extent: "partial",
+    rationale:
+      "Select a payroll tax as a percent of pay, net pay after two percent withholdings, a sales-tax total with one exempt item and a property tax from a rate per 100 dollars with or without an exemption. Rates are practice values, not a state's actual rates. Does not assess other taxes or filing.",
+  },
+  {
+    templateId: "budget-percent-share",
+    facetId: "financial-literacy-middle.core",
+    extent: "partial",
+    rationale:
+      "Select a category's percent of a budget total, a dollar amount from a percent, the fixed-expense share, a missing savings percent and expenses as a percent of income. Does not assess building a budget, circle graphs or written responses to a deficit.",
+  },
+  {
+    templateId: "net-worth-statement",
+    facetId: "financial-literacy-middle.core",
+    extent: "partial",
+    rationale:
+      "Select an asset or liability, net worth including negative values, a missing liability total and the effect of a simple transaction on net worth. Does not assess building a full financial record or valuing assets.",
+  },
+  {
+    templateId: "incentive-compare",
+    facetId: "financial-literacy-middle.core",
+    extent: "partial",
+    rationale:
+      "Select the lowest final cost among a coupon, a percent discount and a rebate, the final cost with a percent and a coupon in a stated order, and the cheaper of two stores. Does not assess markup, rebates with conditions or sales-tax interaction.",
+  },
+  {
     templateId: "divisibility-rule-check",
     facetId: "factors-multiples.core",
     extent: "partial",
