@@ -71,13 +71,16 @@ test("the engine reaches every template under its skill", () => {
 });
 
 function parsePlot(label: string) {
-  return label.split("; ").map((row) => {
-    const [stem, leaves = ""] = row.split(" |");
-    return {
-      stem: Number(stem),
-      leaves: leaves.trim() ? leaves.trim().split(" ").map(Number) : [],
-    };
-  });
+  return label
+    .replaceAll("\u00a0", " ")
+    .split("; ")
+    .map((row) => {
+      const [stem, leaves = ""] = row.split(" |");
+      return {
+        stem: Number(stem),
+        leaves: leaves.trim() ? leaves.trim().split(" ").map(Number) : [],
+      };
+    });
 }
 
 test("stem-and-leaf plot: exactly one choice is the ordered, complete plot of the data", () => {

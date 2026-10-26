@@ -17,6 +17,7 @@ from geometry_proof_families_math_oracle import SUPPORTED as GEOMETRY_FAMILIES, 
 from k8_representations_math_oracle import SUPPORTED as K8_REPRESENTATIONS, solve as solve_k8_representations, review_problem as review_k8_representations_problem, self_test as review_k8_representations_fixtures
 from complex_math_oracle import SUPPORTED as COMPLEX, solve as solve_complex, review_problem as review_complex_problem, self_test as review_complex_fixtures
 from sat_numeric_entry_math_oracle import SUPPORTED as SAT_NUMERIC_ENTRY, solve as solve_sat_numeric_entry, review_problem as review_sat_numeric_entry_problem, self_test as review_sat_numeric_entry_fixtures
+from data_display_state_math_oracle import SUPPORTED as DATA_DISPLAY_STATE, solve as solve_data_display_state, review_problem as review_data_display_state_problem, self_test as review_data_display_state_fixtures
 from complex_conics_math_oracle import SUPPORTED as COMPLEX_CONICS, solve as solve_complex_conics, review_problem as review_complex_conics_problem, self_test as review_complex_conics_fixtures
 from algebra_requirement_gaps_math_oracle import SUPPORTED as ALGEBRA_REQUIREMENT_GAPS, solve as solve_algebra_requirement_gaps, review_problem as review_algebra_requirement_gaps_problem, self_test as review_algebra_requirement_gaps_fixtures
 from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_CHOICE, solve_rational_equation, review_rational_equation_fixtures, review_rational_equation_problem
@@ -126,6 +127,7 @@ SUPPORTED |= K8_REPRESENTATIONS
 SUPPORTED |= SAT_GEOMETRY_DATA
 SUPPORTED |= ADVANCED_MATH_GAPS
 SUPPORTED |= COMPLEX_CONICS
+SUPPORTED |= DATA_DISPLAY_STATE
 SUPPORTED |= SAT_NUMERIC_ENTRY
 SUPPORTED |= ALGEBRA_REQUIREMENT_GAPS
 SUPPORTED |= GEOMETRY_FAMILIES
@@ -258,6 +260,8 @@ def solve_family(public):
         return solve_complex(public)
     if public["templateId"] in COMPLEX_CONICS:
         return solve_complex_conics(public)
+    if public["templateId"] in DATA_DISPLAY_STATE:
+        return solve_data_display_state(public)
     if public["templateId"] in SAT_NUMERIC_ENTRY:
         return solve_sat_numeric_entry(public)
     if public["templateId"] in ALGEBRA_REQUIREMENT_GAPS:
@@ -687,6 +691,8 @@ def review(stream):
             review_remaining_gap_problem(problem)
         if template in COMPLEX_CONICS:
             review_complex_conics_problem(problem)
+        if template in DATA_DISPLAY_STATE:
+            review_data_display_state_problem(problem)
         if template in SAT_NUMERIC_ENTRY:
             review_sat_numeric_entry_problem(problem)
         if template in ALGEBRA_REQUIREMENT_GAPS:
@@ -779,7 +785,7 @@ def review(stream):
         elif template in HIERARCHY_MULTISELECT:
             expected = review_hierarchy_multiselect_problem(problem)
             actual = problem["answer"]
-        elif template in LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | ALGEBRA_REQUIREMENT_GAPS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS | SAT_ALGEBRA_STRUCTURE | NUMBER_MEASUREMENT_CHOICE | ADVANCED_MATH_GAPS or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        elif template in LINEAR_INITIAL_VALUE | DATA_DISPLAY_STATE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | ALGEBRA_REQUIREMENT_GAPS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS | SAT_ALGEBRA_STRUCTURE | NUMBER_MEASUREMENT_CHOICE | ADVANCED_MATH_GAPS or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -845,6 +851,7 @@ def review(stream):
     review_remaining_gap_fixtures()
     review_number_measurement_fixtures()
     review_complex_conics_fixtures()
+    review_data_display_state_fixtures()
     review_sat_numeric_entry_fixtures()
     review_algebra_requirement_gaps_fixtures()
     review_geometry_family_fixtures()

@@ -117,6 +117,9 @@ type Row = { stem: number; leaves: number[] };
 const stemOf = (v: number) => Math.floor(v / 10);
 const leafOf = (v: number) => v % 10;
 /** Every stem from the least to the greatest, an empty row where no value falls. */
+const keyLeaf = (row: Row) =>
+  row.stem > 0 ? row.leaves.find((l) => l !== 0 && l !== row.stem) : undefined;
+
 function rowsOf(values: number[]): Row[] {
   const sorted = [...values].sort((a, b) => a - b);
   const rows: Row[] = [];
@@ -127,12 +130,13 @@ function rowsOf(values: number[]): Row[] {
     });
   return rows;
 }
+// Non-breaking spaces keep each row whole, so a choice wraps only between rows.
 const plotText = (rows: Row[]) =>
   rows
     .map((row) =>
       row.leaves.length
-        ? `${row.stem} | ${row.leaves.join(" ")}`
-        : `${row.stem} |`,
+        ? `${row.stem}\u00a0|\u00a0${row.leaves.join("\u00a0")}`
+        : `${row.stem}\u00a0|`,
     )
     .join("; ");
 const tenths = (v: number) => `${stemOf(v)}.${leafOf(v)}`;
@@ -187,6 +191,7 @@ export function stemLeafConstructCase(seed: string) {
       stems.has(first) &&
       new Set(values).size >= 6 &&
       (variant !== 3 || repeats) &&
+      (variant !== 5 || rowsOf(values).some((x) => keyLeaf(x) !== undefined)) &&
       (variant !== 5 ||
         [...stems].every(
           (st) => values.filter((v) => stemOf(v) === st).length <= 7,
@@ -215,10 +220,13 @@ export function stemLeafConstructCase(seed: string) {
 
   if (variant === 5) {
     // Choose the key for a finished plot.
-    const row = rows.find((x) => x.leaves.length > 0)!;
-    const sample = row.stem * 10 + row.leaves[0]!;
+    // The key's stem and leaf must differ from each other and the leaf must not be 0,
+    // or the sum and swap distractors would equal the correct meaning.
+    const row = rows.find((x) => keyLeaf(x) !== undefined)!;
+    const leaf = keyLeaf(row)!;
+    const sample = row.stem * 10 + leaf;
     const keyLabel = (meaning: string) =>
-      `$${row.stem}\\mid ${row.leaves[0]}$ means $${meaning}$ ${unit}`;
+      `$${row.stem}\\mid ${leaf}$ means $${meaning}$ ${unit}`;
     const correct = keyLabel(show(sample));
     const swapped = leafOf(sample) * 10 + stemOf(sample);
     const wrong: Wrong[] = decimal
@@ -234,7 +242,7 @@ export function stemLeafConstructCase(seed: string) {
               "The stem keeps its place. The leaf is the tenths digit after the point, so the stem is the whole-number part.",
           },
           {
-            label: keyLabel(String(row.stem + row.leaves[0]!)),
+            label: keyLabel(String(row.stem + leaf)),
             feedback:
               "A stem and a leaf are digits of one number. Write them together; do not add them.",
           },
@@ -251,7 +259,7 @@ export function stemLeafConstructCase(seed: string) {
               "These data are whole numbers, so there is no decimal point. The stem is the leading digits and the leaf is the last digit.",
           },
           {
-            label: keyLabel(String(row.stem + row.leaves[0]!)),
+            label: keyLabel(String(row.stem + leaf)),
             feedback:
               "A stem and a leaf are digits of one number. Write them together; do not add them.",
           },
@@ -283,11 +291,11 @@ export function stemLeafConstructCase(seed: string) {
           }).scene(),
         ),
         answer: "",
-        hint: `Pick one row, such as stem ${row.stem}. Find the value in the list that starts with those digits and has ${row.leaves[0]} as its last digit. Then decide where the decimal point is, if any.`,
+        hint: `Pick one row, such as stem ${row.stem}. Find the value in the list that starts with those digits and has ${leaf} as its last digit. Then decide where the decimal point is, if any.`,
         explanation: [
-          `The first leaf in the row with stem ${row.stem} is ${row.leaves[0]}.`,
-          `The list contains ${show(sample)}, which is stem ${row.stem} followed by leaf ${row.leaves[0]}${decimal ? ", with the decimal point between them" : ""}.`,
-          `So the key is: ${row.stem} | ${row.leaves[0]} means ${show(sample)} ${unit}.`,
+          `The row with stem ${row.stem} has the leaf ${leaf}.`,
+          `The list contains ${show(sample)}, which is stem ${row.stem} followed by leaf ${leaf}${decimal ? ", with the decimal point between them" : ""}.`,
+          `So the key is: ${row.stem} | ${leaf} means ${show(sample)} ${unit}.`,
         ],
         choices: options(correct, wrong),
       }),
@@ -687,7 +695,7 @@ export function frequencyTableCase(seed: string) {
     ? `These are data about the ${intro}, for ${n} ${noun}: ${listed}. Which frequency table groups them into intervals? Each interval includes both of its end values. ${definition}`
     : variant === 2
       ? `The dot plot shows the ${intro}, for ${n} ${noun}. Which frequency table matches it? ${definition}`
-      : `These are data about the ${intro}, for ${n} ${noun}: ${listed}. Which frequency table matches the data? ${definition}`;
+      : `These are data about the ${intro}, for ${n} ${noun}: ${listed}. Which frequency table matches the data? The table has one row for each whole number from ${lo} to ${hi}. ${definition}`;
   return {
     values,
     variant,
@@ -1256,6 +1264,7 @@ export function returnClaimCase(seed: string) {
     prompt = `${text(0)} ${text(1)} Use simple rates: total gain ÷ starting amount ÷ years. Which investment earned the higher yearly rate of return?`;
     correct = `${names[win]}: ${yearly[win]}% per year, higher than ${yearly[lose]}% per year`;
     const totalWinner = total[0]! > total[1]! ? 0 : 1;
+    const larger = p[0]! > p[1]! ? 0 : 1;
     wrong = [
       {
         label: `${names[dollar]}: gained ${money(gain[dollar]!)}, more than ${money(gain[1 - dollar]!)}`,
@@ -1264,7 +1273,7 @@ export function returnClaimCase(seed: string) {
       },
       variant === 0
         ? {
-            label: `${names[0]}: started with ${money(p[0]!)}, more than ${money(p[1]!)}`,
+            label: `${names[larger]}: started with ${money(p[larger]!)}, more than ${money(p[1 - larger]!)}`,
             feedback:
               "A larger starting amount does not make a higher rate. Divide each gain by its own starting amount.",
           }
