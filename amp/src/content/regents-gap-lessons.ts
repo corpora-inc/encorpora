@@ -837,6 +837,7 @@ export const regentsGapLessons: Lesson[] = [
     ],
     pitfalls: [
       "A length equal to the sum or the difference does not make a triangle.",
+      "Checking only that the third side is less than the sum is not enough; it must also be greater than the difference of the other two sides.",
     ],
     parentGuide:
       "Ask whether sticks of length 2, 3 and 6 can make a triangle, and why not.",

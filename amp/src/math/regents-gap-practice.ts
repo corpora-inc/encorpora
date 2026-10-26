@@ -1566,7 +1566,7 @@ function segmentProperty(r: Random): Built {
       answer: "",
       hint: `The midsegment is half as long as the third side, so ${B}${C} is twice ${D}${E}. Write that as an equation, solve for x, and then find ${B}${C}.`,
       explanation: [
-        `${D}${E} is a midsegment, so ${B}${C} = 2 × ${D}${E}: ${tex(`${co(c)}x${sg(dd)}=2(${co(a)}x${sg(b)})`)}.`,
+        `${D}${E} is a midsegment, so ${tex(`${B}${C}=2\\cdot ${D}${E}`)}. Substituting gives ${tex(`${co(c)}x${sg(dd)}=2(${co(a)}x${sg(b)})`)}.`,
         `Solve: ${tex(`${co(c)}x${sg(dd)}=${2 * a}x${sg(2 * b)}`)}, so ${tex(`x=${x}`)}.`,
         `${tex(`${B}${C}=${mul(c, x)}${sg(dd)}=${bc}`)}.`,
       ],
