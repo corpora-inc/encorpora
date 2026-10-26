@@ -5,9 +5,13 @@ import { archetypes } from "../archetypes";
 import { templateArchetypes } from "../template-archetypes";
 import { buildReleasedItemReport, type ReleasedItemInput } from "./ledger";
 import type { SourceLedger } from "./types";
-import { mcas2025Grade5 } from "./mcas-2025-5";
-import { mcas2025Grade8 } from "./mcas-2025-8";
-import { mcas2025Grade10 } from "./mcas-2025-10";
+import { mcasGrade3 } from "./mcas-2025-3";
+import { mcasGrade4 } from "./mcas-2025-4";
+import { mcasGrade5 } from "./mcas-2025-5";
+import { mcasGrade6 } from "./mcas-2025-6";
+import { mcasGrade7 } from "./mcas-2025-7";
+import { mcasGrade8 } from "./mcas-2025-8";
+import { mcasGrade10 } from "./mcas-2025-10";
 import { ny2026Grade7 } from "./ny-2026-7";
 import { staarGrade3 } from "./staar-2025-3";
 import { staarGrade4 } from "./staar-2025-4";
@@ -27,7 +31,7 @@ import { satPractice10 } from "./sat-practice-10";
 import { satPractice11 } from "./sat-practice-11";
 
 /** Ledger order is the saturation order: complete SAT practice forms in
- * publication order, then the framework and purposive state samples. Append new sources at the end. */
+ * publication order, then the framework and purposive state samples, then complete state forms. Append new sources at the end. */
 export const releasedLedgers: readonly SourceLedger[] = [
   satPractice4,
   satPractice5,
@@ -38,9 +42,6 @@ export const releasedLedgers: readonly SourceLedger[] = [
   satPractice10,
   satPractice11,
   satFramework2026,
-  mcas2025Grade5,
-  mcas2025Grade8,
-  mcas2025Grade10,
   ny2026Grade7,
   staarGrade3,
   staarGrade4,
@@ -49,6 +50,13 @@ export const releasedLedgers: readonly SourceLedger[] = [
   staarGrade7,
   staarGrade8,
   staarAlgebra1,
+  mcasGrade3,
+  mcasGrade4,
+  mcasGrade5,
+  mcasGrade6,
+  mcasGrade7,
+  mcasGrade8,
+  mcasGrade10,
 ];
 export const releasedItems = releasedLedgers.flatMap((l) => l.items);
 /** Production ledger. Pass `ledgers` (and matching `templates`) to report a
