@@ -124,7 +124,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       ["foci", "The two fixed points used to define an ellipse or hyperbola."],
       [
         "a, b and c",
-        "In $\\frac{x^2}{a^2}\\pm\\frac{y^2}{b^2}=1$, the number $a$ is the distance from the center to a vertex on the axis, and $c$ is the distance from the center to a focus.",
+        "For an ellipse or hyperbola centered at the origin, $a$ is the distance from the center to a vertex on the axis through the foci, $c$ is the distance from the center to a focus, and the other denominator is $b^2$.",
       ],
     ],
     method: [

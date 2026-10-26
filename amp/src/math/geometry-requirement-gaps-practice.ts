@@ -974,7 +974,7 @@ function conditionalEveryday(r: Random): Built {
       nA = r(2, 9) * (total / 10);
       nB = r(2, 9) * (total / 10);
       both = r(1, 5) * (total / 20);
-    } while (nA === nB || both >= Math.min(nA, nB));
+    } while (nA === nB || both >= Math.min(nA, nB) || nA + nB - both > total);
     const aGivenB = frac(both, nB);
     const bGivenA = frac(both, nA);
     const joint = frac(both, total);
@@ -1106,7 +1106,7 @@ function conditionalEveryday(r: Random): Built {
   ];
   return {
     variant,
-    prompt: `Overall, ${pct(p)} of ${s.group} ${s.aWho}. Among ${s.group} ${s.rel} ${s.bWho}, ${pct(q)} ${s.aWho}. Are the events "${s.a}" and "${s.b}" independent, and if not, how does the second change the chance of the first?`,
+    prompt: `Overall, ${pct(p)} of ${s.group} ${s.aWho}. Among ${s.group} ${s.rel} ${s.bWho}, ${pct(q)} ${s.aWho}. Let $A$ be the event "${s.a}" and $B$ the event "${s.b}". Are $A$ and $B$ independent, and if not, how does $B$ change the chance of $A$?`,
     hint: `Compare the overall rate ${pct(p)} with the rate ${pct(q)} among those ${s.rel} ${s.bWho}. Independence means these are equal; if they differ, the direction of the difference tells how the condition shifts the chance.`,
     explanation: [
       `Independence means $P(A\\mid B)=P(A)$. Here $P(A)=${dec(p)}$ and $P(A\\mid B)=${dec(q)}$.`,
@@ -1229,11 +1229,18 @@ function failingSequences(
   feedback: (ops: Op[]) => string,
 ): Wrong[] {
   const seen = new Set([sequenceText(correct)]);
+  // Different wordings can be the same transformation (a half-turn commutes with
+  // a translation reversed), so distractors must also differ in effect.
+  const effects = new Set<string>();
+  const effect = (ops: Op[]) =>
+    from.map((p) => ptText(run(ops, p))).join(";");
   const out: Wrong[] = [];
   for (const ops of pool) {
     const label = sequenceText(ops);
-    if (seen.has(label) || maps(ops, from, to)) continue;
+    if (seen.has(label) || maps(ops, from, to) || effects.has(effect(ops)))
+      continue;
     seen.add(label);
+    effects.add(effect(ops));
     out.push({ label, feedback: feedback(ops) });
   }
   return out;

@@ -107,7 +107,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
       "Residuals of both signs are normal. The shape of the pattern, not the signs, tells whether the model type is wrong. Always subtract in the order observed minus predicted.",
   },
   "function-graph-features": {
-    goal: "Read the intercept, asymptote, domain, range, direction or end behavior of an exponential or logarithmic function from its equation or graph.",
+    goal: "Read the intercept, asymptote, domain, range, direction or end behavior of an exponential or logarithmic function from an equation or graph.",
     intuition:
       "An exponential function $a\\cdot b^x+k$ levels off at the height $k$ in one direction and grows or falls without bound in the other. A logarithmic function $a\\log_b(x-h)+k$ is built from the inverse of an exponential function: it lives to the right of a vertical line $x=h$ and climbs or falls slowly.",
     terms: [
