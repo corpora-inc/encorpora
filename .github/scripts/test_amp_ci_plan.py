@@ -145,7 +145,7 @@ def test_github_output_is_complete_and_uses_encoded_data_not_shell_commands():
         input='amp/tests/trial-exhaustion.integration.ts\n', text=True)
     values = dict(line.split('=', 1) for line in output.splitlines())
     assert values['amp'] == values['amp_database'] == values['amp_build'] == 'true'
-    assert values['amp_core'] == values['browser'] == values['content'] == 'false'
+    assert values['amp_core'] == values['amp_browser'] == values['amp_content'] == 'false'
     assert json.loads(values['amp_plan'])['database'] == ['tests/trial-exhaustion.integration.ts']
 
 
@@ -210,3 +210,44 @@ def test_aggregate_rejects_failures_cancellations_and_accidentally_skipped_jobs(
 def test_access_gifts_keep_database_authorization_checks_in_feature_prs():
     result = plan(['amp/src/access-grants/repository.ts'], quick=True)
     assert 'tests/access-grants.integration.ts' in result['database']
+
+
+@pytest.mark.parametrize('quick', [True, False])
+def test_math_oracle_runs_the_tests_that_use_it_without_database_build_or_mobile(quick):
+    result = plan(['amp/scripts/point_plot_math_oracle.py'], quick=quick)
+    assert 'tests/sat.test.ts' in result['core']  # runs independent-math-review.py
+    assert len(result['core']) < len(catalog(ROOT)['core'])
+    assert result['content'] and not result['content_force']
+    assert not any(result[key] for key in ('database', 'build', 'typecheck', 'browser', 'native'))
+
+
+def test_oracle_consumers_are_followed_through_python_imports(tmp_path):
+    (tmp_path / 'amp/tests').mkdir(parents=True)
+    (tmp_path / 'amp/scripts').mkdir()
+    (tmp_path / 'amp/src').mkdir()
+    (tmp_path / 'amp/package.json').write_text('{"scripts":{}}')
+    (tmp_path / 'amp/tests/account.integration.ts').write_text('')
+    (tmp_path / 'amp/scripts/base_math_oracle.py').write_text('')
+    (tmp_path / 'amp/scripts/independent-math-review.py').write_text('from base_math_oracle import x\n')
+    (tmp_path / 'amp/tests/review.test.ts').write_text("run('scripts/independent-math-review.py')")
+    (tmp_path / 'amp/tests/other.test.ts').write_text('')
+    result = plan(['amp/scripts/base_math_oracle.py'], root=tmp_path, quick=True)
+    assert result['core'] == ['tests/review.test.ts'] and not result['database']
+    # An oracle that runtime code depends on is no longer an isolated input.
+    (tmp_path / 'amp/src/server.ts').write_text("spawn('scripts/base_math_oracle.py')")
+    result = plan(['amp/scripts/base_math_oracle.py'], root=tmp_path, quick=True)
+    assert result['content_force'] and result['native']
+
+
+def test_content_pr_quick_checks_skip_database_and_mobile():
+    result = plan(['amp/src/content/lessons.ts', 'amp/src/math/engine.ts',
+                   'amp/scripts/independent-math-review.py', 'amp/tests/sat.test.ts'], quick=True)
+    assert result['build'] and 'tests/sat.test.ts' in result['core']
+    assert not result['database'] and not result['native']
+
+
+def test_policy_change_runs_full_validation_even_for_pull_requests():
+    result = plan(['.github/workflows/ci.yml'], quick=True)
+    assert result['mode'] == 'full'
+    assert result['database'] == catalog(ROOT)['database']
+    assert result['core'] == catalog(ROOT)['core']
