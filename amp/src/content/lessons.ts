@@ -79,6 +79,7 @@ import { advancedMathGapLessons } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapLessons } from "./number-measurement-gaps-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
 import { remainingGapLessons } from "./remaining-gap-lessons";
+import { dataDisplayStateLessons } from "./data-display-state-lessons";
 import { vectorMatrixLessons } from "./vectors-matrices-lessons";
 import { statisticsProbabilityLessons } from "./statistics-probability-lessons";
 import { complexConicsLessons } from "./complex-conics-lessons";
@@ -693,6 +694,7 @@ export const lessons: readonly Lesson[] = [
   ...numberMeasurementGapLessons,
   ...satAlgebraStructureLessons,
   ...remainingGapLessons,
+  ...dataDisplayStateLessons,
   ...vectorMatrixLessons,
   ...statisticsProbabilityLessons,
   ...complexConicsLessons,

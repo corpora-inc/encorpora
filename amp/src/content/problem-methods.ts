@@ -69,6 +69,7 @@ import { advancedMathGapMethods } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapMethods } from "./number-measurement-gaps-lessons";
 import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
+import { dataDisplayStateMethods } from "./data-display-state-lessons";
 import { vectorMatrixMethods } from "./vectors-matrices-lessons";
 import { statisticsProbabilityMethods } from "./statistics-probability-lessons";
 import { complexConicsMethods } from "./complex-conics-lessons";
@@ -108,6 +109,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...numberMeasurementGapMethods,
   ...satAlgebraStructureMethods,
   ...remainingGapMethods,
+  ...dataDisplayStateMethods,
   ...vectorMatrixMethods,
   ...statisticsProbabilityMethods,
   ...complexConicsMethods,
