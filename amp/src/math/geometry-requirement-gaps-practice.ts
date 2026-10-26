@@ -1186,7 +1186,10 @@ function scalene(r: Random, span: number, step = 1): Pt[] {
       () => [r(-span, span) * step, r(-span, span) * step] as Pt,
     );
     const s = sides2(t);
+    // Reject thin triangles: the altitude to the longest side stays readable.
+    const thin = cross(t) ** 2 < 2 * step * step * Math.max(...s);
     if (
+      !thin &&
       cross(t) !== 0 &&
       new Set(s).size === 3 &&
       new Set(t.map(key)).size === 3
@@ -2225,7 +2228,8 @@ function conicFoci(r: Random): Built {
 // ------------------------------------------------------------------ choose-the-plot
 const sortedAsc = (values: readonly number[]) =>
   [...values].sort((a, b) => a - b);
-const listLabel = (values: readonly number[]) => M(values.join(",\\ "));
+/** Plain text, so long lists wrap between numbers. */
+const listLabel = (values: readonly number[]) => values.join(", ");
 const fmt = (v: number) => (Number.isInteger(v) ? `${v}` : v.toFixed(1));
 const median = (sorted: readonly number[]) => {
   const n = sorted.length;
@@ -2554,7 +2558,7 @@ function choosePlot(r: Random): Built {
   // data-to-five-numbers
   const n = pick(r, [7, 11] as const);
   const s = pick(r, boxSettings);
-  const stat = (summary: readonly number[]) => M(summary.map(fmt).join(",\\ "));
+  const stat = (summary: readonly number[]) => summary.map(fmt).join(", ");
   let values: number[];
   let summary: ReturnType<typeof fiveNumber>;
   let sorted: number[];
@@ -2639,7 +2643,14 @@ export function geometryRequirementGapCase(
   const build = builders[id];
   if (!template || !build) throw new Error(`Unknown template ${id}`);
   const r = random(id, seed);
-  const built = build(r);
+  // A plain-text list can coincide with numbers quoted in the prompt; draw again.
+  let built = build(r);
+  for (
+    let attempt = 0;
+    attempt < 20 && (built.prompt + built.hint).includes(built.correct);
+    attempt++
+  )
+    built = build(r);
   const wrong = pickWrong(r, built.correct, built.wrong);
   return {
     variant: built.variant,

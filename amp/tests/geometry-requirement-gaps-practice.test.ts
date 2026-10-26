@@ -635,8 +635,7 @@ test("choose-the-plot answers agree with the drawn plot and the stated conventio
       s[n - 1]!,
     ];
   };
-  const list = (label: string) =>
-    label.replace(/\$/g, "").split(",\\ ").map(Number);
+  const list = (label: string) => label.split(", ").map(Number);
   for (const c of cases("choose-the-plot", 800, "p")) {
     const figure = c.problem.public.figure;
     const p = c.problem.public.prompt;
