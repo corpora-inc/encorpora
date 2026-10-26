@@ -90,3 +90,51 @@ test("does not retry a single-choice-only request", async () => {
   ).rejects.toBe(oldApiError);
   expect(send).toHaveBeenCalledTimes(1);
 });
+
+test("a current client steps down one format at a time for each older API", async () => {
+  const current = {
+    ...full,
+    responseCapabilities: [
+      "single-choice-v1",
+      "multi-select-v1",
+      "point-plot-v1",
+    ],
+  };
+  // An API that knows multiple selections but not plotted points.
+  const send = vi
+    .fn()
+    .mockRejectedValueOnce({
+      ...oldApiError,
+      validationPaths: [["responseCapabilities", 2], ["responseCapabilities"]],
+    })
+    .mockResolvedValueOnce("batch");
+  await expect(batchWithCapabilityFallback(current, send)).resolves.toBe(
+    "batch",
+  );
+  expect(send.mock.calls.map((call) => call[0].responseCapabilities)).toEqual([
+    ["single-choice-v1", "multi-select-v1", "point-plot-v1"],
+    ["single-choice-v1", "multi-select-v1"],
+  ]);
+  // The oldest API accepts single choice only.
+  const oldest = vi
+    .fn()
+    .mockRejectedValueOnce(oldApiError)
+    .mockRejectedValueOnce(oldApiError)
+    .mockResolvedValueOnce("batch");
+  await expect(batchWithCapabilityFallback(current, oldest)).resolves.toBe(
+    "batch",
+  );
+  expect(oldest.mock.calls.map((call) => call[0].responseCapabilities)).toEqual(
+    [
+      ["single-choice-v1", "multi-select-v1", "point-plot-v1"],
+      ["single-choice-v1", "multi-select-v1"],
+      ["single-choice-v1"],
+    ],
+  );
+  // A single-choice request that still fails is final, never sent empty.
+  const failing = vi.fn().mockRejectedValue(oldApiError);
+  await expect(batchWithCapabilityFallback(current, failing)).rejects.toBe(
+    oldApiError,
+  );
+  expect(failing).toHaveBeenCalledTimes(3);
+});
