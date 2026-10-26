@@ -262,6 +262,10 @@ import {
   generateGeometryModelingProblem,
 } from "./geometry-modeling-practice";
 import {
+  geometryRequirementGapTemplates,
+  generateGeometryRequirementGapProblem,
+} from "./geometry-requirement-gaps-practice";
+import {
   functionBehaviorTemplates,
   generateFunctionBehaviorProblem,
 } from "./function-behavior-practice";
@@ -499,6 +503,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...complexConicsTemplates,
   ...trigonometryTemplates,
   ...geometryModelingTemplates,
+  ...geometryRequirementGapTemplates,
   ...functionBehaviorTemplates,
   ...remainingGapTemplates,
   ...polynomialTemplates,
@@ -988,6 +993,8 @@ function generateRawProblem(
     return generateTrigonometryProblem(templateId, seed);
   if (geometryModelingTemplates.some((t) => t.id === templateId))
     return generateGeometryModelingProblem(templateId, seed);
+  if (geometryRequirementGapTemplates.some((t) => t.id === templateId))
+    return generateGeometryRequirementGapProblem(templateId, seed);
   if (absoluteValueTemplates.some((t) => t.id === templateId))
     return generateAbsoluteValueProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))
