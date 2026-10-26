@@ -78,6 +78,7 @@ import { satNumericEntryLessons } from "./sat-numeric-entry-lessons";
 import { algebraRequirementGapLessons } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapLessons } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapLessons } from "./number-measurement-gaps-lessons";
+import { texasK2Lessons } from "./texas-k2-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
 import { remainingGapLessons } from "./remaining-gap-lessons";
 import { vectorMatrixLessons } from "./vectors-matrices-lessons";
@@ -693,6 +694,7 @@ export const lessons: readonly Lesson[] = [
   ...algebraRequirementGapLessons,
   ...advancedMathGapLessons,
   ...numberMeasurementGapLessons,
+  ...texasK2Lessons,
   ...satAlgebraStructureLessons,
   ...remainingGapLessons,
   ...vectorMatrixLessons,

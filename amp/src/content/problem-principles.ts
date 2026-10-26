@@ -68,6 +68,7 @@ import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
 import { algebraRequirementGapPrinciples } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapPrinciples } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapPrinciples } from "./number-measurement-gaps-lessons";
+import { texasK2Principles } from "./texas-k2-lessons";
 import { satAlgebraStructurePrinciples } from "./sat-algebra-structure-lessons";
 import { remainingGapPrinciples } from "./remaining-gap-lessons";
 import { vectorMatrixPrinciples } from "./vectors-matrices-lessons";
@@ -104,6 +105,7 @@ export const principles: Record<string, string> = {
   ...algebraRequirementGapPrinciples,
   ...advancedMathGapPrinciples,
   ...numberMeasurementGapPrinciples,
+  ...texasK2Principles,
   ...satAlgebraStructurePrinciples,
   ...remainingGapPrinciples,
   ...vectorMatrixPrinciples,

@@ -60,6 +60,111 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "coin-name-and-cent-value",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Name a penny, nickel, dime or quarter from a picture whose coin shows its value in cents, choose the picture of a named coin, and choose the correct way to write a coin's value with the cent symbol. The pictured coins print their values, so identification by appearance alone (size, color, design) is not assessed. Does not assess dollar bills, totals of several coins or writing the symbol freehand.",
+  },
+  {
+    templateId: "solid-bottom-face-shape",
+    facetId: "polygon-properties.core",
+    extent: "partial",
+    rationale:
+      "Name the circle, triangle, square or rectangle that is the flat face of a pictured cube, box, triangular prism, pyramid, cylinder or cone standing on a table. Does not assess side faces, counting faces, edges or vertices, nets or naming the solid.",
+  },
+  {
+    templateId: "measurable-attribute-choice",
+    facetId: "compare-attributes.core",
+    extent: "partial",
+    rationale:
+      "Name length, capacity or weight as the attribute a question or goal asks about, and pick the question that asks about a named attribute, with color as a non-measurable distractor. Does not assess measuring, comparing two objects, units or listing attributes of a pictured object without choices.",
+  },
+  {
+    templateId: "dot-group-compared-to-number",
+    facetId: "compare-small-groups.core",
+    extent: "partial",
+    rationale:
+      "Choose the group of dots (counts up to 20) with more than, fewer than or the same number as a given number or a shown group. Does not assess building or drawing a set, comparing numbers as symbols, or counts above 20.",
+  },
+  {
+    templateId: "story-sentence-match-20",
+    facetId: "addition-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the number sentence for a joining, separating, comparing, missing-part or missing-start story within 20, and the story for a number sentence with the unknown shown as a box. Does not assess writing a sentence or story freehand, or solving the sentence.",
+  },
+  {
+    templateId: "story-sentence-match-1000",
+    facetId: "two-step-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the number sentence for a one-step joining, separating, comparing, missing-part or missing-start story within 1,000, and the story for a sentence with a box unknown. Does not assess two-step stories, writing a sentence or story freehand, or solving the sentence.",
+  },
+  {
+    templateId: "open-number-line-to-120",
+    facetId: "compare-two-digit.core",
+    extent: "partial",
+    rationale:
+      "Read the whole number at a marked point, or choose the lettered point at a given number, on a number line up to 120 that labels only its ends and one middle tick. Does not assess ordering three numbers, placing a point by drawing, or estimating between ticks.",
+  },
+  {
+    templateId: "open-number-line-to-1000",
+    facetId: "hundreds-place-value.core",
+    extent: "partial",
+    rationale:
+      "Read the whole number at a marked point, or choose the lettered point at a given number, on a number line up to 1,000 that labels only its ends and one middle tick. Does not assess placing a point by drawing, ordering numbers or estimating between ticks.",
+  },
+  {
+    templateId: "eighths-and-parts-beyond-one",
+    facetId: "thirds-and-partitions.core",
+    extent: "partial",
+    rationale:
+      "Name the shaded eighths (or fourths) of a bar, give how many equal parts make one whole (halves, thirds, fourths, eighths), count shaded parts across two bars and describe them as one whole and some parts. Does not assess fraction notation, partitioning a shape, equivalent fractions or sixths.",
+  },
+  {
+    templateId: "decompose-flat-shape",
+    facetId: "compose-shapes.core",
+    extent: "partial",
+    rationale:
+      "Give the number and name (triangles, rectangles or squares) of the parts when a square or rectangle is cut by a diagonal, both diagonals, equal strips or a grid. Does not assess composing shapes, cutting a shape by hand, shapes other than squares and rectangles or unequal parts.",
+  },
+  {
+    templateId: "unit-size-and-count",
+    facetId: "measure-equal-units.core",
+    extent: "partial",
+    rationale:
+      "Choose which of two units needs fewer copies for the same length with the reason, find the count of a longer unit from the count of a shorter one, and explain why a shorter unit needs more copies. Does not assess measuring with a ruler, unequal or overlapping units or length in standard units.",
+  },
+  {
+    templateId: "benchmark-length-estimate",
+    facetId: "ruler-measurement.core",
+    extent: "partial",
+    rationale:
+      "Estimate a length by repeating a given benchmark length (inches or centimeters), and choose the reasonable estimate with unit for a pencil, door, bed, bus or paper clip. Does not assess measuring with a ruler, choosing a benchmark, converting units or estimating area.",
+  },
+  {
+    templateId: "clock-minute-match",
+    facetId: "clock-five-minutes.core",
+    extent: "partial",
+    rationale:
+      "Read an analog clock to the minute and choose the matching digital time, choose the analog clock for a digital time, and give the minutes after the hour. Does not assess elapsed time, a.m. and p.m., setting a clock by hand or time to the half minute.",
+  },
+  {
+    templateId: "tally-and-t-chart",
+    facetId: "categorical-data.core",
+    extent: "partial",
+    rationale:
+      "Read a tally chart (up to 14 per category) for a count, difference or total, and choose the T-chart that records a list of answers in three categories. Does not assess drawing tally marks or a T-chart, graphs of the data or sorting objects.",
+  },
+  {
+    templateId: "early-money-decisions",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Choose income versus a gift, spending versus saving, a deposit versus a withdrawal and the producer and consumer in a sale, and find savings over weeks, a balance after a deposit and a withdrawal, and the cost to make a one-item recipe from priced parts. Wants versus needs, borrowing and lending are not assessed. Does not assess budgeting, interest or opinion-based judgments.",
+  },
+  {
     templateId: "divisibility-rule-check",
     facetId: "factors-multiples.core",
     extent: "partial",
