@@ -1246,8 +1246,7 @@ function unitRows(
       font: "sans",
       at: [length / 2, 2.85],
       text: "Ribbon",
-      size: "md",
-      bold: true,
+      size: "sm",
       align: [0, 0],
     },
   ];
