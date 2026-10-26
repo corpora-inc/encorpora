@@ -64,6 +64,7 @@ import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import { complexMethods } from "./complex-lessons";
 import { hsStateGapMethods } from "./hs-state-gaps-lessons";
+import { k8StateNumberMethods } from "./k8-state-number-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
 import { algebraRequirementGapMethods } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapMethods } from "./advanced-math-gaps-lessons";
@@ -104,6 +105,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...quadraticMethods,
   ...complexMethods,
   ...hsStateGapMethods,
+  ...k8StateNumberMethods,
   ...satNumericEntryMethods,
   ...algebraRequirementGapMethods,
   ...advancedMathGapMethods,
