@@ -19,6 +19,10 @@ POLICY = {
 APP_UI = ('amp/src/web/app/', 'amp/src/web/features/')
 NATIVE = ('amp/mobile/', 'amp/src/web/native-', 'amp/src/web/Native',
           'amp/scripts/verify-native-session.')
+# Independent exact math oracles. They are Python, so no runtime, build or
+# database code imports them: their consumers are the tests and review scripts
+# that name them, found by reference rather than by a hand-kept list.
+ORACLE = re.compile(r'amp/scripts/(independent-math-review|[a-z0-9_]+_oracle)\.py')
 SMOKE_CORE = ('tests/contracts.test.ts', 'tests/brand.test.ts', 'tests/test-suite.test.ts')
 PROTECTED_DATABASE = {
     'amp/src/access-grants/': ('access-grants',),
@@ -64,14 +68,53 @@ def referenced_entry(path, root):
     return False
 
 
+def _sources(root):
+    for folder in ('amp/tests', 'amp/scripts', 'amp/src'):
+        for path in sorted((root / folder).rglob('*')):
+            if path.is_file() and 'node_modules' not in path.parts:
+                yield path.relative_to(root).as_posix(), path
+    if (root / 'amp/package.json').is_file():
+        yield 'amp/package.json', root / 'amp/package.json'
+
+
+def oracle_consumers(path, root):
+    """Every file that names the oracle, directly or through scripts that use it."""
+    texts = {}
+    for name, file in _sources(root):
+        try:
+            texts[name] = file.read_text()
+        except UnicodeDecodeError:
+            continue
+    def names(stem):
+        return re.compile(r'(?<![\w-])' + re.escape(stem) + r'(?![\w-])')
+    users = {path}
+    pending = [Path(path).stem]
+    while pending:
+        pattern = names(pending.pop())
+        for name, text in texts.items():
+            if (name not in users and name.startswith('amp/scripts/') and name.endswith('.py')
+                    and pattern.search(text)):
+                users.add(name)
+                pending.append(Path(name).stem)
+    patterns = [names(Path(user).stem) for user in users]
+    return sorted(name for name, text in texts.items() if name not in users
+                  and any(pattern.search(text) for pattern in patterns))
+
+
 def plan(paths, root=ROOT, full=False, quick=False):
     paths = sorted(set(paths))
+    # A change to the selection policy or its workflows is validated by the
+    # complete selection it produces, on pull requests and the queue as well.
+    if any(path in POLICY for path in paths):
+        full = True
     catalog = test_catalog(root)
     if not catalog['core'] or not catalog['database']:
         raise ValueError('Cannot plan validation without both test catalogs')
     result = dict(core=[], database=[], build=False, typecheck=False, colors=False,
                   browser=False, browser_scripts=[], content=False, content_force=False, native=False)
     reasons = []
+    # Tests selected because a changed input feeds them, kept by quick checks.
+    targeted = dict(core=[], database=[])
 
     def broad(reason):
         result.update(core=catalog['core'][:], database=catalog['database'][:],
@@ -102,6 +145,30 @@ def plan(paths, root=ROOT, full=False, quick=False):
             continue
         if path.startswith(NATIVE):
             broad('Native or shared native integration changed')
+            continue
+        if ORACLE.fullmatch(path) and (root / path).is_file():
+            unknown, users = [], dict(core=[], database=[])
+            for consumer in oracle_consumers(path, root):
+                relative = consumer.removeprefix('amp/')
+                lane = next((name for name, files in catalog.items() if relative in files), None)
+                if lane:
+                    users[lane].append(relative)
+                elif consumer in CONTENT_TESTS or consumer == 'amp/tests/independent-review.test.ts':
+                    result['content'] = True
+                elif consumer.endswith('.md'):
+                    pass
+                elif consumer == 'amp/package.json' or consumer.startswith('amp/scripts/'):
+                    result['content'] = True
+                else:
+                    unknown.append(consumer)
+            if unknown:
+                broad('Math oracle used outside tests and review scripts: ' + ', '.join(unknown))
+                continue
+            for lane in ('core', 'database'):
+                result[lane].extend(users[lane])
+                targeted[lane].extend(users[lane])
+            result['content'] = True
+            reasons.append('Math oracle; run the tests that use it')
             continue
         relative = path.removeprefix('amp/')
         lane = next((name for name, files in catalog.items() if relative in files), None)
@@ -139,7 +206,7 @@ def plan(paths, root=ROOT, full=False, quick=False):
     # account/money/consent areas retain focused database checks before merge.
     if quick and not full:
         changed = {name: [p.removeprefix('amp/') for p in paths
-                          if p.removeprefix('amp/') in files]
+                          if p.removeprefix('amp/') in files] + targeted[name]
                    for name, files in catalog.items()}
         if result['build']:
             changed['core'].extend(p for p in SMOKE_CORE if p in catalog['core'])
@@ -164,6 +231,24 @@ def plan(paths, root=ROOT, full=False, quick=False):
     return result
 
 
+def github_outputs(result):
+    """Step outputs. Every name is `amp`-prefixed and unique: ci.yml appends
+    these to the same $GITHUB_OUTPUT as its area filters, where a repeated name
+    silently replaces the earlier value (an unprefixed `native` once switched
+    the Rust job on for content PRs and off for Rust PRs)."""
+    return {
+        'amp_plan': json.dumps(result, separators=(',', ':')),
+        **{name: str(enabled).lower() for name, enabled in {
+            'amp': result['affected'],
+            'amp_core': bool(result['core']), 'amp_database': bool(result['database']),
+            'amp_build': result['build'] or result['typecheck'],
+            'amp_browser': result['browser'] or bool(result['browser_scripts']),
+            'amp_content': result['content'], 'amp_content_force': result['content_force'],
+            'amp_mobile': result['native'],
+        }.items()},
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--full', action='store_true')
@@ -174,15 +259,8 @@ def main():
     if not args.github:
         print(json.dumps(result, indent=2))
         return
-    print('amp_plan=' + json.dumps(result, separators=(',', ':')))
-    for name, enabled in {
-        'amp': result['affected'],
-        'amp_core': bool(result['core']), 'amp_database': bool(result['database']),
-        'amp_build': result['build'] or result['typecheck'],
-        'browser': result['browser'] or bool(result['browser_scripts']),
-        'content': result['content'], 'content_force': result['content_force'], 'native': result['native'],
-    }.items():
-        print(f'{name}={str(enabled).lower()}')
+    for name, value in github_outputs(result).items():
+        print(f'{name}={value}')
 
 
 if __name__ == '__main__':
