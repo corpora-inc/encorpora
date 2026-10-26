@@ -7,6 +7,7 @@ LaTeX into numbers, so exact radical and pi forms compare by value.
 import copy
 import math
 import re
+from figure_givens import check_figure_givens
 
 SUPPORTED = frozenset({
     'special-angle-exact-value', 'trig-symmetry-value', 'sinusoid-parameters',
@@ -600,8 +601,11 @@ SOLVERS = {
 def solve(public):
     template = public['templateId']
     require(template in SUPPORTED, 'Unexpected trigonometry family')
-    require((public.get('figure') is not None) == (public['prompt'].startswith('Which equation matches the graph')),
-            'Diagram present only for graph-reading prompts')
+    if template == 'oblique-triangle-solve':
+        check_figure_givens(public, require)
+    else:
+        require((public.get('figure') is not None) == (public['prompt'].startswith('Which equation matches the graph')),
+                'Diagram present only for graph-reading prompts')
     return SOLVERS[template](public)
 
 

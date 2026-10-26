@@ -142,10 +142,10 @@ export const satPractice4 = defineLedger(
       archetypeIds: ["triangle.relationships", "angle.relationships"],
       demand:
         "Use corresponding angles of similar right triangles and the angle sum to find an angle",
-      status: "partial",
-      templateIds: ["triangle-angle-sum"],
+      status: "covered",
+      templateIds: ["corresponding-angle-transfer"],
       limitations:
-        "triangle-angle-sum covers only the angle-sum step; no template maps corresponding angles of similar triangles from a stated correspondence.",
+        "Similar right triangles and the third-angle variants transfer an acute angle or the 90-degree complement through a stated correspondence. The released item's figure is replaced by a written statement.",
     },
     {
       section: "Math module 1",
@@ -579,10 +579,10 @@ export const satPractice4 = defineLedger(
       archetypeIds: ["angle.relationships"],
       demand:
         "Equate vertical-angle expressions to find a parameter, then use same-side interior angles of parallel lines",
-      status: "partial",
-      templateIds: ["angle-equation", "parallel-lines-angle"],
+      status: "covered",
+      templateIds: ["angle-chase-chain"],
       limitations:
-        "angle-equation solves vertical/linear-pair expression equations; parallel-lines-angle finds transversal angles. Each step is practiced separately; no template chains them to a third angle.",
+        "Vertical-angle expressions give the variable, then a same-side interior angle at the second parallel line, entered numerically. The released figure is replaced by a written description.",
     },
     {
       section: "Math module 2",

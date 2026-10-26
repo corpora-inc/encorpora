@@ -216,8 +216,23 @@ test(
       assert.equal(miss.json().correct, false);
 
       // Ordered images: the right points under the wrong labels are wrong.
-      const image = await serve("place-transformed-image");
-      const imageSecret = generateProblem(image.templateId, image.seed);
+      // Pick an instance whose swapped answer is already in sorted order: the
+      // stored response then looks like a set, and the retry check must still
+      // treat a reordering as a conflict. Deterministic, not left to the seed.
+      const byXY = (a: readonly number[], b: readonly number[]) =>
+        a[0]! - b[0]! || a[1]! - b[1]!;
+      let image = await serve("place-transformed-image");
+      let imageSecret = generateProblem(image.templateId, image.seed);
+      for (let tries = 0; tries < 300; tries++) {
+        const pts = plotPoints(imageSecret.answer);
+        const swappedPts = [pts[1]!, pts[0]!, ...pts.slice(2)];
+        if (
+          swappedPts.every((p, i) => i === 0 || byXY(swappedPts[i - 1]!, p) < 0)
+        )
+          break;
+        image = await serve("place-transformed-image");
+        imageSecret = generateProblem(image.templateId, image.seed);
+      }
       const correctImages = plotPoints(imageSecret.answer);
       const swapped = [
         correctImages[1],
@@ -232,6 +247,11 @@ test(
       const swappedReply = await send(imageInput);
       assert.equal(swappedReply.statusCode, 200, swappedReply.body);
       assert.equal(swappedReply.json().correct, false);
+      assert.equal(
+        swappedReply.json().response,
+        JSON.stringify([...swapped].sort(byXY)),
+        "the swapped answer is stored already sorted",
+      );
       assert.equal(swappedReply.json().response, JSON.stringify(swapped));
       // Reusing the request id with the labels reordered is a conflict.
       assert.equal(

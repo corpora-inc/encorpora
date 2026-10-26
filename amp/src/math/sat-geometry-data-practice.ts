@@ -8,6 +8,12 @@ import {
   type Random,
 } from "./distribution-practice";
 import { table } from "./scene/author";
+import {
+  chordsFigure,
+  secantsFigure,
+  sceneFigure,
+  tangentSecantFigure,
+} from "./geometry-teaching-figures";
 
 /** A number in parentheses only when negative. */
 const par = (v: number) => (v < 0 ? `(${v})` : `${v}`);
@@ -53,6 +59,7 @@ export const satGeometryDataTemplates: readonly TemplateMetadata[] = (
       description:
         "Use products of segments of intersecting chords, two secants, or a tangent and a secant, and use the perpendicular radius to find the slope of a tangent line.",
       difficultyOffset: 0.4,
+      requiredFigureCapability: "scenes-v1" as const,
     },
     {
       id: "frequency-table-center",
@@ -902,6 +909,14 @@ function circleSegmentCase(r: Random): SatGeometryDataCase {
       return {
         tag,
         draft: {
+          figure: sceneFigure(
+            chordsFigure({
+              AE: String(a),
+              EB: String(b),
+              CE: String(c),
+              ...(whole ? {} : { ED: null }),
+            }),
+          ),
           prompt: `Chords $\\overline{AB}$ and $\\overline{CD}$ of a circle intersect at point $E$ inside the circle. $AE=${a}$, $EB=${b}$ and $CE=${c}$. ${whole ? "What is the length of $\\overline{CD}$?" : "What is the length of $\\overline{ED}$?"}`,
           answer: "",
           hint: `For two chords meeting inside a circle, the two parts of one chord multiply to the same number as the two parts of the other. Start with $AE\\cdot EB$ using ${a} and ${b}.`,
@@ -955,6 +970,15 @@ function circleSegmentCase(r: Random): SatGeometryDataCase {
       return {
         tag,
         draft: {
+          figure: sceneFigure(
+            secantsFigure({
+              upper: { outside: String(e1), whole: String(w1) },
+              lower: internal
+                ? { outside: String(e2) }
+                : { outside: String(e2), whole: null },
+              ...(internal ? { chord: null } : {}),
+            }),
+          ),
           prompt: `Two secants from an external point $P$ meet a circle. The first secant meets it at $A$ and then $B$, with $PA=${e1}$ and $PB=${w1}$. The second meets it at $C$ and then $D$, with $PC=${e2}$. ${internal ? "What is the length of chord $\\overline{CD}$?" : "What is the length of $\\overline{PD}$?"}`,
           answer: "",
           hint: `For two secants from one outside point, the outside part times the whole secant is the same for both. Use $PA\\cdot PB$ with ${e1} and ${w1} to get that common product.`,
@@ -1039,6 +1063,15 @@ function circleSegmentCase(r: Random): SatGeometryDataCase {
       return {
         tag,
         draft: {
+          figure: sceneFigure(
+            tangentSecantFigure(
+              kind === "whole"
+                ? { tangent: String(t), outside: String(e), whole: null }
+                : kind === "tangent"
+                  ? { tangent: null, outside: String(e), whole: String(w) }
+                  : { tangent: String(t), outside: String(e), chord: null },
+            ),
+          ),
           prompt: `From an external point $P$, $\\overline{PT}$ is tangent to a circle at $T$, and a secant from $P$ meets the circle at $A$ and then $B$. ${given}. ${kind === "whole" ? "What is the length of $\\overline{PB}$?" : kind === "tangent" ? "What is the length of $\\overline{PT}$?" : "What is the length of chord $\\overline{AB}$?"}`,
           answer: "",
           hint:
