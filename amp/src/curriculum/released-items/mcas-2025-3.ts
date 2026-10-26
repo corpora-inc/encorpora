@@ -224,10 +224,10 @@ export const mcasGrade3 = defineLedger(
       archetypeIds: ["equation.truth"],
       demand:
         "Select the three true multiplication and division equations among six",
-      status: "covered",
+      status: "partial",
       templateIds: ["fl-equation-truth-mult-div", "mcas-true-fact-equations"],
       limitations:
-        "Three of six multiplication and division facts, with quotients on the left and facts of tens, are selected by multiple selection; explaining why an equation is false is not assessed.",
+        "Three of six multiplication and division facts are selected as true, but every equation has the operation on the left; equations written with the result first, such as 64 = 8 times 8 and 7 = 63 divided by 8, are not practiced.",
     },
     {
       section: "Session 2",

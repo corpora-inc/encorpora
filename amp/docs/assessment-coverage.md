@@ -60,15 +60,15 @@ All 162 mathematics items that the Massachusetts Department of Elementary and Se
 
 | Test | Items | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: | ---: |
-| Grade 3 | 20 | 6 (30%) | 14 (70%) | 0 (0%) |
-| Grade 4 | 20 | 8 (40%) | 12 (60%) | 0 (0%) |
-| Grade 5 | 20 | 12 (60%) | 8 (40%) | 0 (0%) |
-| Grade 6 | 20 | 8 (40%) | 12 (60%) | 0 (0%) |
+| Grade 3 | 20 | 5 (25%) | 15 (75%) | 0 (0%) |
+| Grade 4 | 20 | 6 (30%) | 14 (70%) | 0 (0%) |
+| Grade 5 | 20 | 11 (55%) | 9 (45%) | 0 (0%) |
+| Grade 6 | 20 | 7 (35%) | 13 (65%) | 0 (0%) |
 | Grade 7 | 20 | 8 (40%) | 12 (60%) | 0 (0%) |
 | Grade 8 | 20 | 8 (40%) | 11 (55%) | 1 (5%) |
-| Grade 10 | 42 | 9 (21.4%) | 32 (76.2%) | 1 (2.4%) |
+| Grade 10 | 42 | 8 (19%) | 33 (78.6%) | 1 (2.4%) |
 
-Of the 162 items, 103 are single-answer choice, 31 multiselect, 16 constructed response and 12 short-answer numeric. Twenty-four multiselect items are covered: the quadrilateral hierarchy, the slope triangles and 22 items practiced by families that grade an exact set of true statements, equations, numbers, tables or expressions. The other 7 multiselect items need a drawn shape, a protractor, a symmetry figure or a number line, or pair word forms with numerals, and have related practice only in single-choice or numeric families. The 16 constructed responses (multipart, with shown work or explanations) have no protocol.
+Of the 162 items, 103 are single-answer choice, 31 multiselect, 16 constructed response and 12 short-answer numeric. Eighteen multiselect items are covered: the quadrilateral hierarchy, the slope triangles and 16 items practiced by families that grade an exact set of true statements, equations, numbers, tables or expressions. The other 13 multiselect items need a drawn shape, cube arrangement, protractor, symmetry figure or number line, pair true and false statements of one equation, give the larger quantity of a comparison, write equations with the result first, use powers of pi or radicals, or pair word forms with numerals, and have related practice only in single-choice or numeric families. The 16 constructed responses (multipart, with shown work or explanations) have no protocol.
 
 MCAS adds no single dominant gap. Partial items concentrate on volume and area chains, rates with fractional quantities, percent of a quantity, coordinate distance, scale, systems given in slope-intercept form, scatter plots and true-or-false equation judgment. Two items have no related practice: a graph described as linear or nonlinear and increasing, and naming the parts of an expression.
 

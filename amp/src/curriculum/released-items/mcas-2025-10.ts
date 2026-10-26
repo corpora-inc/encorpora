@@ -235,14 +235,14 @@ export const mcasGrade10 = defineLedger(
       archetypeIds: ["number.rational-irrational"],
       demand:
         "Select the two expressions with rational values among sums and products with pi and roots",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "number-system-closure-classify",
         "classify-real-number",
         "mcas-rational-irrational-select",
       ],
       limitations:
-        "Two of five sums and products of roots and pi with rational values are selected by multiple selection; proofs of irrationality are not assessed.",
+        "Two rational values among sums, products and quotients of roots and pi are selected; the released item's powers of pi and of radicals (a square of pi, a radical raised to a power) are not practiced.",
     },
     {
       section: "Session 1",

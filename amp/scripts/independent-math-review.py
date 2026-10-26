@@ -8,6 +8,7 @@ from sat_geometry_data_math_oracle import SUPPORTED as SAT_GEOMETRY_DATA, solve 
 from trigonometry_math_oracle import SUPPORTED as TRIGONOMETRY, solve as solve_trigonometry, review_problem as review_trigonometry_problem, self_test as review_trigonometry_fixtures
 from slope_triangle_math_oracle import SUPPORTED as SLOPE_TRIANGLE, solve as solve_slope_triangle, review_problem as review_slope_triangle_problem, self_test as review_slope_triangle_fixtures
 from point_plot_math_oracle import SUPPORTED as POINT_PLOT, solve as solve_point_plot, review_problem as review_point_plot_problem, self_test as review_point_plot_fixtures
+from mcas_gap_math_oracle import SUPPORTED as MCAS_GAP, solve as solve_mcas_gap, review_problem as review_mcas_gap_problem, self_test as review_mcas_gap_fixtures
 from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MULTISELECT, solve as solve_hierarchy_multiselect, review_problem as review_hierarchy_multiselect_problem, self_test as review_hierarchy_multiselect_fixtures
 from number_measurement_gaps_math_oracle import SUPPORTED as NUMBER_MEASUREMENT, CHOICE_TEMPLATES as NUMBER_MEASUREMENT_CHOICE, solve as solve_number_measurement, review_problem as review_number_measurement_problem, self_test as review_number_measurement_fixtures
 from remaining_gap_math_oracle import SUPPORTED as REMAINING_GAP, solve as solve_remaining_gap, review_problem as review_remaining_gap_problem, self_test as review_remaining_gap_fixtures
@@ -146,7 +147,7 @@ SUPPORTED |= FUNCTION_BEHAVIOR
 SUPPORTED |= VECTORS_MATRICES
 SUPPORTED |= STAT_PROB
 SUPPORTED |= INVERSE_ROUNDING
-SUPPORTED |= TRIGONOMETRY | SLOPE_TRIANGLE | SUCCESSIVE_PERCENT | STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT
+SUPPORTED |= TRIGONOMETRY | SLOPE_TRIANGLE | SUCCESSIVE_PERCENT | STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT | MCAS_GAP
 SUPPORTED |= SAT_COMPLETION
 SUPPORTED |= SAT_ALGEBRA_STRUCTURE
 SUPPORTED |= ASSESSMENT_GAP
@@ -268,6 +269,8 @@ def solve_family(public):
         return solve_successive_percent(public)
     if public["templateId"] in HIERARCHY_MULTISELECT:
         return solve_hierarchy_multiselect(public)
+    if public["templateId"] in MCAS_GAP:
+        return solve_mcas_gap(public)
     if public["templateId"] in POINT_PLOT:
         return solve_point_plot(public)
     if public["templateId"] in GEOMETRY_FAMILIES:
@@ -807,6 +810,9 @@ def review(stream):
         elif template in HIERARCHY_MULTISELECT:
             expected = review_hierarchy_multiselect_problem(problem)
             actual = problem["answer"]
+        elif template in MCAS_GAP:
+            expected = review_mcas_gap_problem(problem)
+            actual = problem["answer"]
         elif template in POINT_PLOT:
             expected = review_point_plot_problem(problem)
             actual = problem["answer"]
@@ -891,6 +897,7 @@ def review(stream):
     review_inverse_rounding_fixtures()
     review_linear_initial_value_fixtures()
     review_hierarchy_multiselect_fixtures()
+    review_mcas_gap_fixtures()
     review_slope_triangle_fixtures()
     review_point_plot_fixtures()
     review_trigonometry_fixtures()

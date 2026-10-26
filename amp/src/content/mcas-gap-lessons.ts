@@ -375,7 +375,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     method: [
       "Read $h$ and $k$ with the opposite sign of the numbers in the parentheses, and take the square root of the right side for $r$.",
       "A point is on the circle if substituting it makes the left side equal the right side.",
-      "The origin is inside if its distance from the center is less than $r$ and outside if it is greater.",
+      "The origin is inside if its distance from the center is less than $r$, outside if it is greater, and on the circle if it equals $r$.",
       selectStep,
     ],
     watch: "The right side is $r^{2}$, not $r$: for $=36$ the radius is 6.",

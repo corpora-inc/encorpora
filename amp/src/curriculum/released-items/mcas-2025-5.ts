@@ -220,14 +220,14 @@ export const mcasGrade5 = defineLedger(
       archetypeIds: ["measure.volume"],
       demand:
         "Select the two prisms whose combined volume falls in a stated range",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "composite-prism-volume",
         "prism-volume-edges",
         "mcas-prism-range-select",
       ],
       limitations:
-        "Two of five prisms are selected by their combined volume in a range or at a total, with a unique pair; composite solids and unit conversion are not assessed.",
+        "Two of five prisms are selected by combined volume, but the edge lengths are given as numbers; the released item draws each prism as unit cubes, so reading volume from a drawn cube arrangement is not practiced.",
     },
     {
       section: "Session 2",
