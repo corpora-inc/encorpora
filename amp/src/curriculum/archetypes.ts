@@ -53,7 +53,9 @@ number.place-value-units|Write a number from counts of place-value units such as
 number.rational-operations|Compute with signed rational numbers in fraction and decimal forms
 number.real-order|Order real numbers written as roots, fractions, decimals and percents
 number.remainder-interpret|Interpret a division remainder in context
-number.strip-diagram|Choose a strip diagram that models a story`,
+number.strip-diagram|Choose a strip diagram that models a story
+number.inverse-round-whole|Choose the whole numbers that round to a stated ten or hundred
+rational.negative-fraction-forms|Choose the expressions that equal a negative fraction`,
   algebra: `
 expression.verbal|Translate a verbal description into an algebraic expression or equation
 linear.solve|Solve a one-variable linear equation, including grouped and fractional coefficients
@@ -93,11 +95,20 @@ function.relation-equation|Identify the dependent variable and write its equatio
 function.linear-test|Decide which equation defines a linear or proportional function
 equation.solution-point|Choose the point on the graph of an equation by testing ordered pairs
 inequality.number-line|Match an inequality with its number-line graph
+sequence.arithmetic|Find a term, common difference or rule of an arithmetic sequence
+sequence.recursive|Compute terms from a recursive rule, including rules that are not geometric or arithmetic
+function.parity|Decide whether a function is odd or even from its rule or graph
+inequality.graph-region|Draw the solution region of a linear inequality or a system of inequalities
 expression.multistep-equations|Choose the linked equations that model a two-step story
 function.proportional-identify|Recognize a proportional relationship from a situation, table, graph or rule
 inequality.solution-set|Decide which values or inequalities hold for a stated inequality
 pattern.graph-relationship|Choose the graph of a rule or proportional relationship
-system.from-graph|Choose the system of equations that two graphed lines show`,
+system.from-graph|Choose the system of equations that two graphed lines show
+expression.description-match|Match a numerical expression with its verbal description, or the reverse
+function.graph-shape|Describe a graph as linear or nonlinear and increasing or decreasing
+expression.parts-names|Name the coefficient, constant, exponent and variable of a term
+line.slope-sign|Decide whether a slope is positive, negative, zero or undefined from how outputs change
+expression.numerical-structure|Describe a numerical expression with parentheses as a multiple of a quantity without evaluating it`,
   "advanced-math": `
 expression.polynomial|Add, subtract or multiply polynomials and combine like terms
 expression.factor|Factor a polynomial or identify one of its factors
@@ -121,6 +132,9 @@ function.value-meaning|Interpret a statement f(a) = b about a context model as a
 nonlinear.features|Read vertex, axis, intercepts or extreme values from a quadratic or polynomial rule or graph
 nonlinear.transform|Relate translations and reflections of graphs to function rules and points
 nonlinear.representations|Match a nonlinear rule with its table or graph
+nonlinear.graph-quadratic|Graph a quadratic function from its vertex or standard form by plotting its points
+nonlinear.graph-absolute|Graph an absolute value function from its rule by plotting its points
+nonlinear.graph-root|Graph a square root function from its rule by plotting its points
 nonlinear.rational-representations|Connect a rational function rule with its table or graph
 quadratic.context|Choose or use a quadratic model and interpret its maximum, zeros or initial value
 exponential.context|Build, evaluate or find a parameter of an exponential growth or decay model
@@ -166,6 +180,9 @@ function.piecewise|Read or write a piecewise function from its graph or absolute
 function.composition|Evaluate or write a composition of functions
 function.inverse|Find an inverse function's value or expression
 function.compare-representations|Compare features of functions given by a formula, a table or a graph
+expression.polynomial-structure|Build or classify a polynomial by degree, number of terms, leading coefficient and constant term
+exponential.compare-linear|Find when an exponential function first exceeds a linear function
+graph.draw-nonlinear|Draw the graph of a nonlinear function from its rule, a stated domain or stated features
 exponential.graph|Graph an exponential function from its rule
 exponential.graph-features|Read the intercept, direction or asymptote of an exponential graph`,
   data: `
@@ -215,6 +232,9 @@ probability.multiplication-rule|Find P(A and B) with the multiplication rule or 
 study.statistical-question|Choose the question that anticipates variability in its answers
 univariate.compare-distributions|Compare the centers and spreads of two distributions
 bivariate.categorical-association|Decide whether two categorical variables are associated from row percents
+univariate.quartiles|Find a quartile or the interquartile range of a listed data set
+bivariate.regression-compute|Compute a regression equation from a data table
+bivariate.correlation-coefficient|Interpret the sign and strength of a correlation coefficient
 bivariate.correlation|Interpret the sign and strength of a correlation coefficient
 data.frequency-table-read|Read counts from a tally or frequency table and compare them
 data.graph-error|Find the mismatch between a described data set and its graph
@@ -296,12 +316,19 @@ transformation.invariants|Decide which transformations preserve distance and ang
 construction.compass-straightedge|Choose or order the steps of a compass and straightedge construction
 circle.inscribed-centers|Choose the construction of a circumcenter or incenter or find angles of an inscribed quadrilateral
 coordinate.quadrilateral-claims|Use slopes and distances to name the most specific quadrilateral from vertex coordinates
+triangle.midsegment|Use the midsegment of a triangle
+triangle.side-splitter|Use a line parallel to a triangle side to find proportional segments
+triangle.altitude-hypotenuse|Use the altitude to the hypotenuse of a right triangle
+segment.perpendicular-bisector|Use the points of a perpendicular bisector
+proof.geometry-written|Write a formal geometric proof or coordinate proof from givens
 coordinate.plane-point|Name, locate or describe a point on the coordinate plane
 measure.circle|Find a circle's circumference, area or diameter, or estimate pi
 shape.attribute-classify|Sort shapes by attributes such as right angles and parallel sides
 shape.parallel-perpendicular-sides|Count or identify parallel and perpendicular sides of polygons
 shape.solid-properties|Compare faces, edges or parallel and congruent faces of solids
-transform.rule|Match a transformation with its coordinate rule`,
+transform.rule|Match a transformation with its coordinate rule
+measure.metric-mass-capacity|Convert between metric units of mass and capacity
+shape.rotational-symmetry|Decide which figure has rotational symmetry`,
   arithmetic: `
 number.estimate|Estimate sums, products or quotients by rounding or compatible numbers, or judge an answer by estimating
 number.whole-unit-stories|Count whole kits, vehicles or leftovers when only whole units count
@@ -378,7 +405,14 @@ early.array-total|Count the squares in a small array
 early.odd-even|Tell whether a number of objects pairs up evenly
 whole.distributive-parts|Find a partial product or total from parts of an array or nested groups
 whole.multiplicative-comparison|Find a quantity or the factor in a multiplicative comparison
-whole.multi-step-stories|Solve a two-step story of equal groups and a known use or payment`,
+whole.multi-step-stories|Solve a two-step story of equal groups and a known use or payment
+whole.expression-story|Choose the word problem that a multiplication or division expression represents
+whole.related-equation|Choose the multiplication equation related to a division equation, or the reverse
+fractions.choose-model|Choose the drawn model that shows a stated fraction
+equation.truth|Decide which equations with a value on each side are true
+time.rename-units|Rename hours and minutes as minutes or minutes as hours
+number.factors-identify|Choose the numbers that are factors of a given whole number
+fractions.multiply-scaling|Decide whether a product exceeds, equals or falls below a factor from the size of the other factor`,
 };
 export const archetypes: readonly Archetype[] = Object.entries(rows).flatMap(
   ([domain, text]) =>

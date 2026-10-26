@@ -7,7 +7,11 @@ import { migrate } from "../scripts/migrate";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { generateProblem } from "../src/math/engine";
-import { latticeOnLine, plotPoints } from "../src/math/point-plot";
+import {
+  latticeOnCurve,
+  latticeOnLine,
+  plotPoints,
+} from "../src/math/point-plot";
 import type { PublicProblem } from "../src/math/contracts";
 
 const url = process.env.AMP_TEST_DATABASE_URL;
@@ -16,6 +20,10 @@ const families = [
   "plot-points",
   "graph-linear-equation",
   "place-transformed-image",
+  "graph-quadratic-points",
+  "graph-absolute-value-points",
+  "graph-exponential-points",
+  "graph-sqrt-points",
 ];
 
 test(
@@ -327,6 +335,91 @@ test(
       ).rows[0];
       assert.equal(flag.response_kind, "point-plot");
       assert.equal(flag.response, first.json().response);
+
+      // A graphed curve: any distinct lattice points of the function, with a
+      // required vertex or intercept among them; the function never leaves the server.
+      const curveProblem = await serve("graph-quadratic-points");
+      const curveSecret = generateProblem(
+        curveProblem.templateId,
+        curveProblem.seed,
+      );
+      if (
+        curveProblem.response.kind !== "point-plot" ||
+        curveSecret.pointGrading?.mode !== "on-curve"
+      )
+        throw new Error("Expected a graphed curve");
+      assert.equal(curveProblem.response.connect, "curve");
+      assert.equal(JSON.stringify(curveProblem).includes("on-curve"), false);
+      const required = curveSecret.pointGrading.required ?? [];
+      const onCurve = latticeOnCurve(
+        curveProblem.response.grid,
+        curveSecret.pointGrading.curve,
+      );
+      const others = onCurve.filter(
+        (p) => !required.some((q) => q[0] === p[0] && q[1] === p[1]),
+      );
+      const curveAnswer = [
+        ...required,
+        ...others.slice(-(3 - required.length)),
+      ];
+      const wrongSet = others.slice(0, 3);
+      if (required.length) {
+        // The right curve without the required feature point is wrong.
+        const without = await send({
+          problemId: curveProblem.id,
+          requestId: randomUUID(),
+          response: JSON.stringify(wrongSet),
+        });
+        assert.equal(without.statusCode, 200, without.body);
+        assert.equal(without.json().correct, false);
+        assert.equal(await attempts(), 5);
+      }
+      const curveInput = {
+        problemId: curveProblem.id,
+        requestId: randomUUID(),
+        response: JSON.stringify(
+          required.length ? curveAnswer : others.slice(-3),
+        ),
+      };
+      if (required.length) {
+        // One attempt per problem: serve another for the accepted answer.
+        assert.equal((await send(curveInput)).statusCode, 409);
+      } else {
+        const accepted = await send(curveInput);
+        assert.equal(accepted.statusCode, 200, accepted.body);
+        assert.equal(accepted.json().correct, true);
+        assert.equal(accepted.json().answer, curveSecret.answer);
+      }
+      const secondCurve = await serve("graph-quadratic-points");
+      const secondSecret = generateProblem(
+        secondCurve.templateId,
+        secondCurve.seed,
+      );
+      if (
+        secondCurve.response.kind !== "point-plot" ||
+        secondSecret.pointGrading?.mode !== "on-curve"
+      )
+        throw new Error("Expected a graphed curve");
+      const secondPoints = latticeOnCurve(
+        secondCurve.response.grid,
+        secondSecret.pointGrading.curve,
+      );
+      const secondRequired = secondSecret.pointGrading.required ?? [];
+      const secondRest = secondPoints.filter(
+        (p) => !secondRequired.some((q) => q[0] === p[0] && q[1] === p[1]),
+      );
+      const secondAnswer = [
+        ...secondRequired,
+        ...secondRest.slice(0, 3 - secondRequired.length),
+      ];
+      const good = await send({
+        problemId: secondCurve.id,
+        requestId: randomUUID(),
+        response: JSON.stringify([...secondAnswer].reverse()),
+      });
+      assert.equal(good.statusCode, 200, good.body);
+      assert.equal(good.json().correct, true);
+      assert.equal(good.json().answer, secondSecret.answer);
 
       // Mixed practice for an older client never issues a plotted problem.
       for (let i = 0; i < 6; i++) {

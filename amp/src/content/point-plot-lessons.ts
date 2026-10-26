@@ -3,6 +3,7 @@ import type { ProblemMethod } from "./problem-lessons";
 import {
   pointPlotScene,
   type LatticePoint,
+  type PlotCurve,
   type PointPlotResponse,
 } from "../math/point-plot";
 
@@ -25,6 +26,27 @@ const solved = (
   scene: pointPlotScene(
     { kind: "point-plot", label: "Example", grid, ...response },
     { answer, title },
+  ),
+});
+
+/** A solved curve example: the function drawn with its lattice points. */
+const solvedCurve = (
+  curve: PlotCurve,
+  answer: LatticePoint[],
+  title: string,
+  window: Partial<typeof grid> = {},
+) => ({
+  kind: "scene" as const,
+  scene: pointPlotScene(
+    {
+      kind: "point-plot",
+      label: "Example",
+      grid: { ...grid, ...window },
+      pointCount: answer.length,
+      ordered: false,
+      connect: "curve",
+    },
+    { answer, curve, title },
   ),
 });
 
@@ -250,6 +272,257 @@ const entries: Entry[] = [
     ],
     parentGuide:
       "Ask your learner to say the rule, then check that each side of the image has the same length as the original.",
+  },
+
+  {
+    id: "graph-quadratic-points",
+    title: "Graph a parabola by placing points",
+    summary:
+      "A parabola is symmetric about its vertex. Find the vertex, then substitute nearby whole numbers for $x$ to find more points.",
+    objectives: [
+      "Read the vertex from vertex form, and find it from standard form with $x = -\\frac{b}{2a}$.",
+      "Find lattice points of a parabola by substituting whole-number values of $x$ and using symmetry.",
+    ],
+    intuition:
+      "A quadratic function $y = ax^2 + bx + c$ graphs as a parabola, a curve with a turning point called the vertex. The two sides mirror each other across the vertical line through the vertex, so $x$-values the same distance on either side of it give the same $y$. Unlike a line, a parabola has no constant slope: a few points do not fix it until you know the vertex and the direction it opens.",
+    terms: [
+      [
+        "vertex",
+        "The turning point of a parabola: its lowest point if $a > 0$ and its highest if $a < 0$.",
+      ],
+      [
+        "axis of symmetry",
+        "The vertical line through the vertex that maps the parabola onto itself.",
+      ],
+    ],
+    method: [
+      "Find the vertex. In $y = a(x - h)^2 + k$ it is $(h, k)$. In $y = ax^2 + bx + c$ it has $x = -\\frac{b}{2a}$; substitute that $x$ to get $y$.",
+      "Substitute whole-number $x$-values next to the vertex's $x$ and compute $y$. By symmetry, $x = h + 1$ and $x = h - 1$ give the same $y$.",
+      "Place the required points. Any points that satisfy the equation are correct, so the vertex plus two points on either side is a good set. The $y$-intercept is $(0, c)$.",
+    ],
+    watch:
+      "In $y = a(x - h)^2 + k$ the $x$-coordinate of the vertex is $h$, the opposite of the sign inside the parentheses: $y = (x + 3)^2$ has its vertex at $x = -3$.",
+    principle:
+      "The graph of $y = a(x - h)^2 + k$ is the parabola $y = ax^2$ shifted $h$ units right and $k$ units up. It is symmetric about $x = h$, and a point $(x, y)$ is on the graph exactly when its coordinates satisfy the equation.",
+    example: {
+      prompt:
+        "Graph $y = 2(x - 1)^2 - 3$ by placing its vertex and 2 other points on the curve.",
+      figure: solvedCurve(
+        { kind: "quadratic", a: [2, 1], h: [1, 1], k: [-3, 1] },
+        [
+          [0, -1],
+          [1, -3],
+          [2, -1],
+        ],
+        "The parabola through (0, -1), (1, -3) and (2, -1)",
+      ),
+      steps: [
+        "The vertex is $(h, k) = (1, -3)$, and the parabola opens upward because $a = 2$ is positive.",
+        "Substitute $x = 2$: $y = 2(2 - 1)^2 - 3 = 2 \\cdot 1 - 3 = -1$, so $(2, -1)$ is on the curve.",
+        "By symmetry about $x = 1$, the point at $x = 0$ has the same $y$: check $y = 2(0 - 1)^2 - 3 = -1$.",
+      ],
+      answer: "$(0, -1)$, $(1, -3)$ and $(2, -1)$",
+    },
+    methodTitle: "Vertex first, then symmetry",
+    methodText: [
+      "Standard form hides the vertex. For $y = x^2 - 4x + 1$, $x = -\\frac{-4}{2 \\cdot 1} = 2$ and $y = 2^2 - 4 \\cdot 2 + 1 = -3$, so the vertex is $(2, -3)$.",
+      "A fraction in front, such as $a = \\frac{1}{2}$, makes $y$ whole only when $(x - h)^2$ is even, so test $x$-values two units apart.",
+    ],
+    formal:
+      "Completing the square rewrites $ax^2 + bx + c$ as $a\\left(x + \\frac{b}{2a}\\right)^2 + c - \\frac{b^2}{4a}$, so the vertex is at $x = -\\frac{b}{2a}$. Since $(x - h)^2$ takes equal values at $h + d$ and $h - d$, the graph is symmetric about $x = h$.",
+    pitfalls: [
+      "Read $h$ with the opposite sign from the one inside the parentheses.",
+      "Square the whole difference: $(3 - 1)^2 = 4$, not $3 - 1^2$.",
+    ],
+    parentGuide:
+      "Ask your learner to find the vertex first and say which direction the parabola opens, then check one other point by substituting.",
+  },
+  {
+    id: "graph-absolute-value-points",
+    title: "Graph an absolute value function by placing points",
+    summary:
+      "The graph of $y = a|x - h| + k$ is a V with its vertex at $(h, k)$. Both sides are straight, with slopes $a$ and $-a$.",
+    objectives: [
+      "Find the vertex of $y = a|x - h| + k$ and the direction the V opens.",
+      "Find lattice points on both sides of the vertex by substituting.",
+    ],
+    intuition:
+      "The absolute value $|x - h|$ is the distance from $x$ to $h$, so it is 0 at $x = h$ and grows by 1 for each unit moved in either direction. Multiplying by $a$ and adding $k$ stretches the distance and lifts it: the graph is two rays that meet at the vertex $(h, k)$.",
+    terms: [
+      [
+        "absolute value",
+        "The distance of a number from 0, written $|x|$, never negative.",
+      ],
+      [
+        "vertex",
+        "The point where the two rays of the V meet: the lowest point if $a > 0$ and the highest if $a < 0$.",
+      ],
+    ],
+    method: [
+      "Find the $x$ that makes the inside of the absolute value 0: that is $h$. Then $y = k$ there, so the vertex is $(h, k)$.",
+      "Substitute $x$-values on each side: $|x - h|$ is the distance from $h$, so $x = h + d$ and $x = h - d$ give the same $y = ad + k$.",
+      "Place the vertex and points on the sides as the question asks. Any points that satisfy the equation are correct.",
+    ],
+    watch:
+      "The absolute value is never negative, so for $a > 0$ the graph never goes below $y = k$. Do not continue the left ray with a negative inside value.",
+    principle:
+      "The function $y = a|x - h| + k$ equals $a(x - h) + k$ for $x \\ge h$ and $-a(x - h) + k$ for $x < h$: two linear pieces that meet at $(h, k)$ and are mirror images across $x = h$.",
+    example: {
+      prompt:
+        "Graph $y = 2\\left|x + 1\\right| - 4$ by placing its vertex and 2 other points on the curve.",
+      figure: solvedCurve(
+        { kind: "absolute", a: [2, 1], h: [-1, 1], k: [-4, 1] },
+        [
+          [-2, -2],
+          [-1, -4],
+          [0, -2],
+        ],
+        "The V through (-2, -2), (-1, -4) and (0, -2)",
+      ),
+      steps: [
+        "The inside $x + 1$ is 0 at $x = -1$, and $y = 2 \\cdot 0 - 4 = -4$, so the vertex is $(-1, -4)$.",
+        "Substitute $x = 0$: $y = 2|0 + 1| - 4 = 2 \\cdot 1 - 4 = -2$, so $(0, -2)$ is on the curve.",
+        "Substitute $x = -2$: $y = 2|-2 + 1| - 4 = 2 \\cdot 1 - 4 = -2$, so $(-2, -2)$ is on the curve.",
+      ],
+      answer: "$(-2, -2)$, $(-1, -4)$ and $(0, -2)$",
+    },
+    methodTitle: "Distance from the vertex",
+    methodText: [
+      "Think of $|x - h|$ as the number of units between $x$ and $h$. Each unit adds $a$ to $y$ on both sides of the vertex.",
+      "With $a = \\frac{1}{2}$, $y$ is a whole number only when the distance is even, so look two units from the vertex.",
+    ],
+    formal:
+      "For $x \\ge h$, $|x - h| = x - h$ and the graph is the ray of slope $a$ from $(h, k)$; for $x < h$, $|x - h| = h - x$ and the ray has slope $-a$. The two rays are reflections of each other across the vertical line $x = h$.",
+    pitfalls: [
+      "Read $h$ with the opposite sign from the one inside the bars: $|x + 1|$ has its vertex at $x = -1$.",
+      "Evaluate the inside first, then take the absolute value, then multiply by $a$.",
+    ],
+    parentGuide:
+      "Ask your learner where the V turns and how far each placed point is from that turning point.",
+  },
+  {
+    id: "graph-exponential-points",
+    title: "Graph an exponential function by placing points",
+    summary:
+      "In $y = a \\cdot b^x$, each step right multiplies $y$ by $b$. Negative inputs divide, and the graph never reaches $y = 0$.",
+    objectives: [
+      "Build a table of $y = a \\cdot b^x$ for whole-number $x$, including negative values.",
+      "Keep the points whose outputs are whole numbers on the grid.",
+    ],
+    intuition:
+      "An exponential function multiplies by the same factor $b$ for every step of 1 in $x$. Starting from $y = a$ at $x = 0$, moving right multiplies by $b$ and moving left divides by $b$. The graph bends because equal steps in $x$ multiply $y$, rather than adding to it, and it approaches the $x$-axis but never touches it.",
+    terms: [
+      [
+        "growth factor",
+        "The number $b$ that $y$ is multiplied by when $x$ increases by 1.",
+      ],
+      [
+        "asymptote",
+        "A line the graph gets closer to without touching: here the $x$-axis, $y = 0$.",
+      ],
+    ],
+    method: [
+      "Start at $x = 0$: $y = a \\cdot b^0 = a$.",
+      "Move right by multiplying by $b$, and left by dividing by $b$ (equivalent to $b^{-1} = \\frac{1}{b}$). Make a table.",
+      "Keep the pairs whose $y$ is a whole number that fits on the grid, and place the points the question asks for.",
+    ],
+    watch:
+      "A negative exponent does not make $y$ negative: $2^{-1} = \\frac{1}{2}$. For $b = \\frac{1}{2}$, going left doubles $y$.",
+    principle:
+      "For $a > 0$ and $b > 0$, $b \\ne 1$, the function $y = a \\cdot b^x$ is positive for every $x$, increasing if $b > 1$ and decreasing if $b < 1$, and $b^{x + 1} = b \\cdot b^x$, so equal steps in $x$ multiply $y$ by equal factors.",
+    example: {
+      prompt:
+        "Graph $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^x$ by placing 3 points on its curve.",
+      figure: solvedCurve(
+        { kind: "exponential", a: [3, 1], b: [1, 2] },
+        [
+          [-2, 12],
+          [-1, 6],
+          [0, 3],
+        ],
+        "The curve through (-2, 12), (-1, 6) and (0, 3)",
+        { xMin: -4, xMax: 4, yMin: -2, yMax: 12 },
+      ),
+      steps: [
+        "At $x = 0$: $y = 3 \\cdot 1 = 3$, so $(0, 3)$ is on the curve.",
+        "Going left divides by $\\frac{1}{2}$, which doubles $y$: $x = -1$ gives $y = 6$ and $x = -2$ gives $y = 12$.",
+        "Going right halves $y$: $x = 1$ gives $\\frac{3}{2}$, which is not a whole number, so it is not a lattice point.",
+      ],
+      answer: "$(-2, 12)$, $(-1, 6)$ and $(0, 3)$",
+    },
+    methodTitle: "Multiply to move right, divide to move left",
+    methodText: [
+      "A table of $x$ and $y$ shows the pattern: each row multiplies $y$ by $b$. Only the rows with whole-number $y$ become points.",
+      "For $b = 2$ the useful points are to the right of 0; for $b = \\frac{1}{2}$ they are to the left.",
+    ],
+    formal:
+      "Since $b^{x + 1} = b \\cdot b^x$, the ratio of $y$-values one unit apart is the constant $b$. For $x = -n$ with $n > 0$, $b^{-n} = \\frac{1}{b^n}$, so $y = \\frac{a}{b^n}$; for $b = \\frac{p}{q}$ this equals $a\\left(\\frac{q}{p}\\right)^n$.",
+    pitfalls: [
+      "Do not treat $2^x$ like $2x$: $2^3 = 8$, not 6.",
+      "Skip a point when $y$ is a fraction; only whole-number pairs sit on grid points.",
+    ],
+    parentGuide:
+      "Ask your learner to fill a table one row at a time, saying whether each step multiplies or divides.",
+  },
+  {
+    id: "graph-sqrt-points",
+    title: "Graph a square root function by placing points",
+    summary:
+      "The graph of $y = a\\sqrt{x - h} + k$ starts at $(h, k)$ and exists only for $x \\ge h$. Whole-number points need perfect-square radicands.",
+    objectives: [
+      "Find the starting point and the domain of $y = a\\sqrt{x - h} + k$.",
+      "Choose $x$-values that make the radicand a perfect square, and find the points.",
+    ],
+    intuition:
+      "A square root is defined only when what is under it is 0 or positive, so the graph of $y = a\\sqrt{x - h} + k$ begins at $x = h$ and goes right. It rises or falls steeply at first and then flattens. To land on grid points, make $x - h$ equal 0, 1, 4 or 9, whose square roots are the whole numbers 0, 1, 2 and 3.",
+    terms: [
+      ["radicand", "The expression under the square root sign, here $x - h$."],
+      [
+        "domain",
+        "The $x$-values for which the function is defined: here $x \\ge h$.",
+      ],
+    ],
+    method: [
+      "Set the radicand to 0: $x = h$. Then $y = k$, so the graph starts at $(h, k)$ and no point lies to its left.",
+      "Choose $x = h + 1$, $h + 4$ and $h + 9$ so the root is 1, 2 and 3. Compute $y = a \\cdot \\text{root} + k$.",
+      "Place the points the question asks for. Any points that satisfy the equation are correct.",
+    ],
+    watch:
+      "$x - h$ must be a perfect square for $y$ to be a whole number: $\\sqrt{3}$ is not whole, so $x = h + 3$ is not a lattice point.",
+    principle:
+      "The function $y = \\sqrt{x}$ is defined for $x \\ge 0$ and increasing. The graph of $y = a\\sqrt{x - h} + k$ is that curve stretched by $|a|$ (and reflected over the $x$-axis if $a < 0$), then moved $h$ right and $k$ up.",
+    example: {
+      prompt:
+        "Graph $y = 2\\sqrt{x + 3} - 1$ by placing its starting point and 2 other points on the curve.",
+      figure: solvedCurve(
+        { kind: "root", a: [2, 1], h: [-3, 1], k: [-1, 1] },
+        [
+          [-3, -1],
+          [-2, 1],
+          [1, 3],
+        ],
+        "The curve through (-3, -1), (-2, 1) and (1, 3)",
+      ),
+      steps: [
+        "$x + 3 = 0$ at $x = -3$, where $y = 2 \\cdot 0 - 1 = -1$: the graph starts at $(-3, -1)$.",
+        "$x = -2$ makes the radicand 1: $y = 2 \\cdot 1 - 1 = 1$, so $(-2, 1)$ is on the curve.",
+        "$x = 1$ makes the radicand 4: $y = 2 \\cdot 2 - 1 = 3$, so $(1, 3)$ is on the curve.",
+      ],
+      answer: "$(-3, -1)$, $(-2, 1)$ and $(1, 3)$",
+    },
+    methodTitle: "Perfect squares under the root",
+    methodText: [
+      "List the radicands 0, 1, 4 and 9 and add $h$ to each to get the $x$-values. The $y$-values rise (or fall, if $a < 0$) by $a$ times the roots 0, 1, 2, 3.",
+      "The grid is limited, so some of these $x$-values may fall outside it.",
+    ],
+    formal:
+      "$\\sqrt{t}$ is a real number only for $t \\ge 0$, so the domain of $a\\sqrt{x - h} + k$ is $x \\ge h$. For $a \\ne 0$ the value is rational exactly when $x - h$ is the square of a rational number, and a whole number when $x - h$ is a perfect square.",
+    pitfalls: [
+      "Read $h$ with the opposite sign: $\\sqrt{x + 3}$ starts at $x = -3$.",
+      "Do not place points left of the starting point; the function is not defined there.",
+    ],
+    parentGuide:
+      "Ask your learner where the graph starts and which $x$-values make the number under the root a perfect square.",
   },
 ];
 

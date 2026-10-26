@@ -941,6 +941,8 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
         !problem.choiceFeedback &&
         !problem.entryPolicy &&
         !!problem.pointGrading &&
+        (problem.pointGrading.mode === "on-curve") ===
+          (response.connect === "curve") &&
         normalizePointPlot(response, problem.answer) === problem.answer &&
         gradePointPlot(
           response,

@@ -323,7 +323,12 @@ export function PointPlotInput({
   const R = 7;
   const answer = review?.answer ?? [];
   const showAnswer =
-    review && !(review.correct && response.connect === "line") && answer.length;
+    review &&
+    !(
+      review.correct &&
+      (response.connect === "line" || response.connect === "curve")
+    ) &&
+    answer.length;
   return (
     <div
       className="point-plot"
