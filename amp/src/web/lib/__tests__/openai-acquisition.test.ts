@@ -46,18 +46,30 @@ test.each([
     expect(send).not.toHaveBeenCalled();
   },
 );
-test.each([
-  { doNotTrack: "1" },
-  { globalPrivacyControl: true },
-  { webdriver: true },
-])("honors privacy and automation: %j", (flags) => {
-  vi.stubGlobal("navigator", { ...navigator, ...flags });
-  captureOpenAIEntry();
-  expect(send).not.toHaveBeenCalled();
-  expect(replace).toHaveBeenCalled();
-});
+test.each([{ doNotTrack: "1" }, { globalPrivacyControl: true }])(
+  "honors privacy and automation: %j",
+  (flags) => {
+    vi.stubGlobal("navigator", { ...navigator, ...flags });
+    captureOpenAIEntry();
+    expect(JSON.parse(send.mock.calls[0][1].body)).toEqual({ optOut: true });
+    expect(send.mock.calls[0][1].credentials).toBe("same-origin");
+    expect(replace).toHaveBeenCalled();
+  },
+);
 test("a failed request cannot break application startup", async () => {
   send.mockRejectedValueOnce(new Error("offline"));
   expect(() => captureOpenAIEntry()).not.toThrow();
   await Promise.resolve();
+});
+
+test("opt-out clears the browser reference even without a new click", () => {
+  at("https://amp.corpora.inc/");
+  vi.stubGlobal("navigator", { ...navigator, globalPrivacyControl: true });
+  captureOpenAIEntry();
+  expect(JSON.parse(send.mock.calls[0][1].body)).toEqual({ optOut: true });
+});
+test("automation never collects", () => {
+  vi.stubGlobal("navigator", { ...navigator, webdriver: true });
+  captureOpenAIEntry();
+  expect(send).not.toHaveBeenCalled();
 });

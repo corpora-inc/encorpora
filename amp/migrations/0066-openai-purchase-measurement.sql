@@ -27,3 +27,11 @@ CREATE TABLE amp_openai_purchase_queue (
 );
 CREATE INDEX amp_openai_queue_due ON amp_openai_purchase_queue(destination_key,next_attempt_at) WHERE state IN ('ready','retry');
 CREATE INDEX amp_openai_queue_retention ON amp_openai_purchase_queue(occurred_at);
+
+-- A fair bounded sweep revisits unsettled orders without starving older purchases.
+CREATE TABLE amp_openai_purchase_scan (
+ payment_kind text NOT NULL CHECK(payment_kind IN ('stripe','arkansas-efa','arizona-esa')),
+ payment_ref text NOT NULL,
+ checked_at timestamptz NOT NULL DEFAULT clock_timestamp(),
+ PRIMARY KEY(payment_kind,payment_ref)
+);

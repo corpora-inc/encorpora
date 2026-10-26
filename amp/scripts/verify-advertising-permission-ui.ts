@@ -231,10 +231,20 @@ try {
           JSON.stringify(geometry),
         );
         assert.ok(geometry.controls.every((b) => b.height >= 44));
+        // The privacy pane scrolls independently of the document. Fit the
+        // whole card for review, after measuring controls at the normal height.
+        const cardHeight = await card.evaluate(
+          (el) => el.getBoundingClientRect().height,
+        );
+        await page.setViewportSize({
+          width,
+          height: Math.ceil(cardHeight) + 300,
+        });
         await card.screenshot({
           path: new URL(`active-${provider}-${width}-${theme}.png`, directory)
             .pathname,
         });
+        await page.setViewportSize({ width, height: 900 });
         await other.getByRole("checkbox").click();
         await other
           .getByRole("button", {

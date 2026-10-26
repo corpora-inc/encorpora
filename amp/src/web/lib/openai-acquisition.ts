@@ -11,19 +11,30 @@ export function captureOpenAIEntry(): void {
       return;
     const url = new URL(location.href);
     const values = url.searchParams.getAll("oppref");
-    if (!values.length) return;
-    // Remove the opaque identifier from the address bar before navigation.
-    url.searchParams.delete("oppref");
-    history.replaceState(
-      history.state,
-      "",
-      url.pathname + url.search + url.hash,
-    );
+    if (values.length) {
+      // Remove the opaque identifier from the address bar before navigation.
+      url.searchParams.delete("oppref");
+      history.replaceState(
+        history.state,
+        "",
+        url.pathname + url.search + url.hash,
+      );
+    }
     const optedOut =
       navigator.doNotTrack === "1" ||
       (navigator as Navigator & { globalPrivacyControl?: boolean })
         .globalPrivacyControl;
-    if (optedOut || navigator.webdriver || values.length !== 1) return;
+    if (optedOut) {
+      void fetch("/api/v1/advertising/acquisition", {
+        method: "POST",
+        credentials: "same-origin",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ optOut: true }),
+      }).catch(() => {});
+      return;
+    }
+    if (navigator.webdriver || values.length !== 1) return;
     const parsed = openaiClickIdentifiersSchema.safeParse({
       oppref: values[0],
     });

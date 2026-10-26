@@ -337,3 +337,74 @@ test(
       }
     }),
 );
+
+test(
+  "OpenAI bounded collector advances past ineligible orders and revisits them",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      await grant(pool);
+      for (let i = 0; i < 4; i++) {
+        const unpaid = await esa(pool, { settled: false });
+        await bind(pool, unpaid.reference);
+      }
+      const paid = await stripe(pool);
+      await bind(pool, paid.reference);
+      // Bind helper backdates all evidence; normalize to one valid pre-purchase click.
+      await pool.query(
+        "UPDATE amp_ad_click_evidence SET observed_at=clock_timestamp()-interval '36 hours',first_observed_at=clock_timestamp()-interval '36 hours'",
+      );
+      const outcomes = [];
+      for (let i = 0; i < 3; i++)
+        outcomes.push(await openaiMeasurementBatch(pool, config, "collect", 2));
+      assert.equal(
+        outcomes.reduce((n, r) => n + (r.queued ?? 0), 0),
+        1,
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int AS n FROM amp_openai_purchase_scan",
+          )
+        ).rows[0].n,
+        5,
+      );
+      // Unsettled orders stay eligible for future checks, rather than being dropped forever.
+      assert.equal(
+        (await openaiMeasurementBatch(pool, config, "collect", 2)).ineligible,
+        2,
+      );
+    }),
+);
+
+test(
+  "OpenAI holds a pending refund and sends after the refund fails",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      await grant(pool);
+      const paid = await stripe(pool);
+      await bind(pool, paid.reference);
+      const q = await queueOpenAIPayment(pool, config, paid.reference);
+      assert.ok("eventId" in q);
+      const pending = refund(paid.chargeId, 1000, "pending");
+      await observation(pool, paid.reference.id, [pending]);
+      const bodies: any[] = [];
+      assert.equal(
+        await deliverOpenAIPayment(pool, config, q.eventId!, accepted(bodies)),
+        "held",
+      );
+      assert.equal(bodies.length, 0);
+      await observation(pool, paid.reference.id, [
+        { ...pending, status: "failed" },
+      ]);
+      await pool.query(
+        "UPDATE amp_openai_purchase_queue SET next_attempt_at=clock_timestamp()-interval '1 second'",
+      );
+      assert.equal(
+        await deliverOpenAIPayment(pool, config, q.eventId!, accepted(bodies)),
+        "accepted",
+      );
+      assert.equal(bodies.length, 1);
+    }),
+);

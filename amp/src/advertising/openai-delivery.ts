@@ -65,12 +65,7 @@ async function evidence(
   )
     return null;
   const payment = await verifiedAdvertisingPayment(c, config.sources, ref, now);
-  if (
-    !payment ||
-    payment.accountId !== account ||
-    payment.refundPending ||
-    payment.netMinor <= 0
-  )
+  if (!payment || payment.accountId !== account || payment.netMinor <= 0)
     return null;
   const time = Date.parse(payment.occurredAt);
   if (
@@ -142,7 +137,7 @@ export async function queueOpenAIPayment(
       };
     }
     const facts = await evidence(c, config, ref, owner);
-    if (!facts) {
+    if (!facts || facts.payment.refundPending) {
       await c.query("COMMIT");
       return { outcome: "ineligible" as const };
     }
@@ -200,6 +195,7 @@ async function payloadFor(
     { kind: row.payment_kind, id: row.payment_ref },
     row.account_id,
   );
+  if (facts?.payment.refundPending) return "held" as const;
   if (
     !facts ||
     facts.revision !== row.permission_revision ||
@@ -255,6 +251,14 @@ export async function deliverOpenAIPayment(
       return "unchanged";
     }
     let payload = await payloadFor(c, config, row);
+    if (payload === "held") {
+      await c.query(
+        "UPDATE amp_openai_purchase_queue SET state='retry',next_attempt_at=clock_timestamp()+interval '5 minutes',updated_at=clock_timestamp() WHERE event_id=$1",
+        [id],
+      );
+      await c.query("COMMIT");
+      return "held";
+    }
     if (!payload) {
       await c.query(
         "UPDATE amp_openai_purchase_queue SET state=CASE WHEN occurred_at<clock_timestamp()-interval '7 days' THEN 'expired' ELSE 'cancelled' END,updated_at=clock_timestamp() WHERE event_id=$1",
@@ -278,6 +282,10 @@ export async function deliverOpenAIPayment(
       return "unchanged";
     }
     payload = await payloadFor(c, config, row);
+    if (payload === "held") {
+      await c.query("COMMIT");
+      return "held";
+    }
     if (!payload || broken) {
       await c.query(
         "UPDATE amp_openai_purchase_queue SET state='cancelled',updated_at=clock_timestamp() WHERE event_id=$1",
@@ -347,7 +355,7 @@ export async function openaiMeasurementBatch(
     // trusted payment projection below independently rejects unpaid/test/renewal rows.
     const rows = (
       await pool.query(
-        `SELECT kind,id FROM (
+        `SELECT p.kind,p.id FROM (
       SELECT 'stripe' AS kind,p.id::text AS id,p.created_at FROM amp_payment_records p
       JOIN amp_ad_order_attribution a ON a.stripe_checkout_id=p.checkout_id AND a.account_id=p.account_id AND a.provider='openai' AND a.click_id IS NOT NULL
       WHERE p.namespace=$1
@@ -356,8 +364,9 @@ export async function openaiMeasurementBatch(
       FROM amp_commerce_orders o JOIN amp_funding_requests r ON r.order_id=o.id AND r.account_id=o.account_id
       JOIN amp_ad_order_attribution a ON a.funding_request_id=r.id AND a.account_id=o.account_id AND a.provider='openai' AND a.click_id IS NOT NULL
       WHERE o.channel='esa' AND o.channel_reference IN ($2,$3)
-    ) p WHERE NOT EXISTS(SELECT 1 FROM amp_openai_purchase_queue q WHERE q.payment_kind=p.kind AND q.payment_ref=p.id)
-    ORDER BY created_at DESC LIMIT $4`,
+    ) p LEFT JOIN amp_openai_purchase_scan s ON s.payment_kind=p.kind AND s.payment_ref=p.id
+    WHERE NOT EXISTS(SELECT 1 FROM amp_openai_purchase_queue q WHERE q.payment_kind=p.kind AND q.payment_ref=p.id)
+    ORDER BY s.checked_at ASC NULLS FIRST,p.created_at,p.kind,p.id LIMIT $4`,
         [
           config.sources.stripeNamespace ?? null,
           config.sources.efaChannelReference ?? null,
@@ -371,6 +380,11 @@ export async function openaiMeasurementBatch(
         pool,
         config,
         paymentReferenceSchema.parse(row),
+      );
+      await pool.query(
+        `INSERT INTO amp_openai_purchase_scan(payment_kind,payment_ref) VALUES($1,$2)
+         ON CONFLICT(payment_kind,payment_ref) DO UPDATE SET checked_at=clock_timestamp()`,
+        [row.kind, row.id],
       );
       counts[result.outcome] = (counts[result.outcome] ?? 0) + 1;
     }
@@ -395,6 +409,9 @@ export async function openaiMeasurementBatch(
   return counts;
 }
 export async function purgeOpenAIPurchases(pool: Pool) {
+  await pool.query(
+    "DELETE FROM amp_openai_purchase_scan WHERE checked_at<clock_timestamp()-interval '90 days'",
+  );
   return (
     (
       await pool.query(
