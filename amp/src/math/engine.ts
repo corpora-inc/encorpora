@@ -308,6 +308,10 @@ import {
 } from "./sat-numeric-entry-practice";
 import { satSprDecimalAccepted } from "./sat-spr-entry";
 import {
+  hsStateGapTemplates,
+  generateHsStateGapProblem,
+} from "./hs-state-gaps-practice";
+import {
   k8StateNumberTemplates,
   generateK8StateNumberProblem,
 } from "./k8-state-number-practice";
@@ -509,6 +513,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...k8StateNumberTemplates,
   complexMultiplicationTemplate,
   ...financeCreditTemplates,
+  ...hsStateGapTemplates,
   ...algebraRequirementGapTemplates,
   ...advancedMathGapTemplates,
   ...satAlgebraStructureTemplates,
@@ -1001,6 +1006,8 @@ function generateRawProblem(
     return generateAdvancedMathGapProblem(templateId, seed);
   if (satNumericEntryTemplates.some((t) => t.id === templateId))
     return generateSatNumericEntryProblem(templateId, seed);
+  if (hsStateGapTemplates.some((t) => t.id === templateId))
+    return generateHsStateGapProblem(templateId, seed);
   if (pointPlotTemplates.some((t) => t.id === templateId))
     return generatePointPlotProblem(templateId, seed);
   if (multiPartChoiceTemplates.some((t) => t.id === templateId))
