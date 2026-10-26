@@ -16,6 +16,7 @@ from statistics_probability_math_oracle import SUPPORTED as STAT_PROB, solve as 
 from geometry_proof_families_math_oracle import SUPPORTED as GEOMETRY_FAMILIES, solve as solve_geometry_families, review_problem as review_geometry_family_problem, self_test as review_geometry_family_fixtures
 from k8_representations_math_oracle import SUPPORTED as K8_REPRESENTATIONS, solve as solve_k8_representations, review_problem as review_k8_representations_problem, self_test as review_k8_representations_fixtures
 from complex_math_oracle import SUPPORTED as COMPLEX, solve as solve_complex, review_problem as review_complex_problem, self_test as review_complex_fixtures
+from sat_numeric_entry_math_oracle import SUPPORTED as SAT_NUMERIC_ENTRY, solve as solve_sat_numeric_entry, review_problem as review_sat_numeric_entry_problem, self_test as review_sat_numeric_entry_fixtures
 from complex_conics_math_oracle import SUPPORTED as COMPLEX_CONICS, solve as solve_complex_conics, review_problem as review_complex_conics_problem, self_test as review_complex_conics_fixtures
 from algebra_requirement_gaps_math_oracle import SUPPORTED as ALGEBRA_REQUIREMENT_GAPS, solve as solve_algebra_requirement_gaps, review_problem as review_algebra_requirement_gaps_problem, self_test as review_algebra_requirement_gaps_fixtures
 from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_CHOICE, solve_rational_equation, review_rational_equation_fixtures, review_rational_equation_problem
@@ -125,6 +126,7 @@ SUPPORTED |= K8_REPRESENTATIONS
 SUPPORTED |= SAT_GEOMETRY_DATA
 SUPPORTED |= ADVANCED_MATH_GAPS
 SUPPORTED |= COMPLEX_CONICS
+SUPPORTED |= SAT_NUMERIC_ENTRY
 SUPPORTED |= ALGEBRA_REQUIREMENT_GAPS
 SUPPORTED |= GEOMETRY_FAMILIES
 SUPPORTED |= GEOMETRY_MODELING
@@ -256,6 +258,8 @@ def solve_family(public):
         return solve_complex(public)
     if public["templateId"] in COMPLEX_CONICS:
         return solve_complex_conics(public)
+    if public["templateId"] in SAT_NUMERIC_ENTRY:
+        return solve_sat_numeric_entry(public)
     if public["templateId"] in ALGEBRA_REQUIREMENT_GAPS:
         return solve_algebra_requirement_gaps(public)
     if public["templateId"] in FUNCTION_BEHAVIOR:
@@ -683,6 +687,8 @@ def review(stream):
             review_remaining_gap_problem(problem)
         if template in COMPLEX_CONICS:
             review_complex_conics_problem(problem)
+        if template in SAT_NUMERIC_ENTRY:
+            review_sat_numeric_entry_problem(problem)
         if template in ALGEBRA_REQUIREMENT_GAPS:
             review_algebra_requirement_gaps_problem(problem)
         if template in GEOMETRY_MODELING:
@@ -839,6 +845,7 @@ def review(stream):
     review_remaining_gap_fixtures()
     review_number_measurement_fixtures()
     review_complex_conics_fixtures()
+    review_sat_numeric_entry_fixtures()
     review_algebra_requirement_gaps_fixtures()
     review_geometry_family_fixtures()
     review_geometry_modeling_fixtures()
