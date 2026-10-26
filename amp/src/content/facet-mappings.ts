@@ -8,6 +8,7 @@ import { areaVolumeFacetMappings } from "./area-volume-coverage";
 import { transformationFacetMappings } from "./transformation-coverage";
 import { completingSquareFacetMappings } from "./completing-square-coverage";
 import { algebraRequirementGapFacetMappings } from "./algebra-requirement-gaps-coverage";
+import { pointPlotFacetMappings } from "./point-plot-coverage";
 import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
@@ -59,6 +60,97 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  {
+    templateId: "divisibility-rule-check",
+    facetId: "factors-multiples.core",
+    extent: "partial",
+    rationale:
+      "Choose which 3- or 4-digit number is divisible by 2, 3, 4, 5, 6, 9 or 10, and choose the single digit that completes a 3- or 4-digit number so it is divisible by 3, 6 or 9, including near-miss numbers that satisfy only part of the rule. Does not assess divisibility by 7, 8 or 11, explaining why a rule works, or listing all factors.",
+  },
+  {
+    templateId: "prime-composite-sort",
+    facetId: "factors-multiples.core",
+    extent: "partial",
+    rationale:
+      "Choose the prime number, the composite number, or the number that is neither among four whole numbers to 144, including odd composites such as 91 and 119. Does not assess listing primes, the sieve of Eratosthenes or composites beyond 144.",
+  },
+  {
+    templateId: "prime-factorization-exponents",
+    facetId: "factors-multiples.core",
+    extent: "partial",
+    rationale:
+      "Choose the complete prime factorization, written with exponents, of a composite number to 144, directly or from the first split of a factor tree. Does not assess drawing a factor tree, numbers above 144 or using factorizations for GCF and LCM.",
+  },
+  {
+    templateId: "prime-factorization-value",
+    facetId: "factors-multiples.core",
+    extent: "partial",
+    rationale:
+      "Enter the value of a prime factorization with exponents, the greatest prime factor of a number to 100, or the count of prime factors with repeats. Does not assess writing a factorization or numbers above 100.",
+  },
+  {
+    templateId: "decimal-money-change",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Enter change, total cost, amount still needed or unknown cost with decimal dollar amounts to 20 dollars, including a multi-item purchase with equal items. Does not assess sales tax, rounding amounts, counting a drawn set of coins or making change with specific coins.",
+  },
+  {
+    templateId: "fewest-coins-change",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Enter the fewest bills and coins for change up to 5 dollars using 1-dollar bills, quarters, dimes, nickels and pennies. Does not assess naming which coins to use, other denominations or non-US currency.",
+  },
+  {
+    templateId: "compare-money-sets",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Choose which of three drawn sets of 1-dollar bills and coins worth up to 5 dollars is worth the most, the least or an exact amount. Does not assess five-dollar bills, adding two sets or making change.",
+  },
+  {
+    templateId: "customary-unit-rename",
+    facetId: "unit-conversion.core",
+    extent: "partial",
+    rationale:
+      "Enter a length, weight or capacity renamed from a larger to a smaller customary unit (inches to miles, ounces to tons, fluid ounces to gallons), in a statement, a story and a comparison, with the conversion fact stated. Does not assess recalling the facts unaided, metric units or fractional amounts.",
+  },
+  {
+    templateId: "customary-unit-reverse",
+    facetId: "measurement-conversions.core",
+    extent: "partial",
+    rationale:
+      "Enter a customary measure renamed as a larger unit, the whole larger units in a smaller measure, or a two-step conversion, with the conversion facts stated. Does not assess recalling the facts unaided, remainders as fractions or metric units.",
+  },
+  {
+    templateId: "customary-mixed-units",
+    facetId: "measurement-conversions.core",
+    extent: "partial",
+    rationale:
+      "Choose a mixed customary measure renamed as one unit or as two units, and the sum or difference of two mixed measures with regrouping, in feet and inches, yards and feet, pounds and ounces, gallons and quarts, and cups and fluid ounces. Does not assess entering a two-unit answer or three-unit measures.",
+  },
+  {
+    templateId: "customary-unit-choice",
+    facetId: "unit-conversion.core",
+    extent: "partial",
+    rationale:
+      "Choose the customary unit that makes a measure reasonable for an everyday length, weight or capacity, where the other units are too large, too small or measure another attribute. Does not assess estimating an unfamiliar object or converting units.",
+  },
+  {
+    templateId: "compatible-number-estimate",
+    facetId: "multistep-whole-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the estimate of a quotient or a product after changing a number to the stated compatible number, and the front-end estimate of a sum of two or three 3- or 4-digit numbers. Does not assess choosing the compatible number unaided, estimating with decimals or judging over- or under-estimates.",
+  },
+  {
+    templateId: "benchmark-percent-estimate",
+    facetId: "percentages.core",
+    extent: "partial",
+    rationale:
+      "Choose the estimate of a tip, sales tax, discount or sale price after rounding a price as stated and using 5%, 10%, 15%, 20%, 25% or 50% benchmarks. Does not assess exact percent calculation, other percents or choosing the rounding.",
+  },
   {
     templateId: "sat-entry-system-solve",
     facetId: "linear-systems.core",
@@ -1188,6 +1280,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,
   ...completingSquareFacetMappings,
+  ...pointPlotFacetMappings,
   ...algebraRequirementGapFacetMappings,
   ...integerExponentFacetMappings,
   ...descriptiveStatisticsFacetMappings,

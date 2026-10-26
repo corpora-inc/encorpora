@@ -1,0 +1,231 @@
+/* Point-plot responses: a coordinate grid the learner places points on.
+   The grid scene is static; placed points, the cursor and feedback draw in
+   a layer over it, and the dock below reserves its full size, so placing,
+   checking and feedback never move anything on the page. */
+.point-plot {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: var(--space-4) auto 0;
+}
+.point-plot-canvas {
+  position: relative;
+  width: 100%;
+}
+.problem-content .point-plot-canvas > .figure {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  margin: 0;
+}
+.point-plot-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  cursor: crosshair;
+  touch-action: none;
+  border-radius: var(--radius-control);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.point-plot-layer:focus {
+  outline: none;
+}
+.point-plot-layer:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.point-plot-layer[aria-disabled="true"] {
+  cursor: default;
+}
+.point-plot-dot {
+  fill: var(--color-figure-accent);
+  stroke: var(--color-figure-paper);
+  stroke-width: 2;
+}
+.point-plot-ghost {
+  fill: var(--color-figure-accent-fill);
+  stroke: var(--color-figure-accent);
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+.point-plot-blocked {
+  fill: none;
+  stroke: var(--color-figure-warm);
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+.point-plot-line {
+  stroke: var(--color-figure-accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.point-plot-answer-line {
+  stroke: var(--color-figure-warm);
+  stroke-width: 2.5;
+  stroke-dasharray: 8 6;
+  stroke-linecap: round;
+}
+.point-plot-ring {
+  fill: none;
+  stroke: var(--color-figure-warm);
+  stroke-width: 2.5;
+}
+.point-plot-cursor {
+  fill: none;
+  stroke: var(--color-focus-ring);
+  stroke-width: 2.5;
+}
+.point-plot-tag {
+  font: 600 15px/1 var(--scene-sans, system-ui, sans-serif);
+  font-variant-numeric: tabular-nums;
+  fill: var(--color-figure-ink);
+  stroke: var(--color-figure-paper);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+/* Point names match the grid's own labels: bold math italic. */
+.point-plot-label,
+.point-plot-answer-tag {
+  font:
+    italic 700 18px/1 KaTeX_Math,
+    "Times New Roman",
+    serif;
+}
+.point-plot-label {
+  fill: var(--color-figure-accent);
+}
+.point-plot-answer-tag {
+  fill: var(--color-figure-warm);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .point-plot-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: point-plot-place var(--motion-fast) var(--ease-standard);
+  }
+}
+@keyframes point-plot-place {
+  from {
+    transform: scale(0.4);
+  }
+}
+/* One reserved line: instructions while editing, the key after checking. */
+.point-plot-legend {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 20px;
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-small);
+  line-height: 20px;
+  color: var(--color-muted-text);
+  white-space: nowrap;
+}
+.point-plot-key {
+  display: inline-block;
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.point-plot-key-dot {
+  background: var(--color-figure-accent);
+}
+.point-plot-key-ring {
+  margin-left: var(--space-3);
+  border: 2px solid var(--color-figure-warm);
+}
+
+/* The dock: one chip per point, then the count, Clear and Check. */
+.point-plot-form {
+  display: grid;
+  gap: var(--space-2);
+}
+.point-plot-chips {
+  display: grid;
+  grid-template-columns: repeat(var(--plot-points, 3), minmax(0, 1fr));
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.point-plot-chips li {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-1);
+  min-height: 36px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-subtle-text);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+@media (min-width: 420px) {
+  .point-plot-chips {
+    gap: var(--space-2);
+  }
+  .point-plot-chips li {
+    font-size: var(--text-label);
+  }
+}
+.point-plot-chips li.filled {
+  border-color: var(--color-figure-accent);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+}
+/* The value fills its chip and starts at a fixed edge, so a placed
+   coordinate replaces the dash without moving any text. */
+.point-plot-chip-value {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: start;
+}
+.point-plot-chip-label {
+  font-weight: 700;
+  color: var(--color-figure-accent);
+}
+.point-plot-actions {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-2);
+}
+.point-plot-count {
+  margin: 0;
+  min-height: 20px;
+  font-size: var(--text-small);
+  line-height: 20px;
+  color: var(--color-muted-text);
+  text-align: center;
+  white-space: nowrap;
+}
+.point-plot-clear {
+  min-width: 84px;
+  min-height: var(--target-size);
+  font-size: var(--text-label);
+}
+.point-plot-check {
+  min-height: 52px;
+}
+.point-plot-actions .point-plot-check {
+  width: auto;
+  margin-top: 0;
+  /* Completing the answer changes fill and text together, never a fade. */
+  transition: none;
+}
+/* The grid above shows a plotted answer; its feedback title stays one line. */
+.feedback-title .solution-answer.plot-answer {
+  font-size: inherit;
+}
