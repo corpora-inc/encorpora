@@ -469,7 +469,7 @@ test("estimates match independent checks", () => {
     }
     p = generateProblem("benchmark-percent-estimate", `s${seed}`);
     prompt = p.public.prompt;
-    const got = Number(/about ([\d.]+) dollars/.exec(correctLabel(p))![1]);
+    const got = Number(/about ([\d.]+) dollars?/.exec(correctLabel(p))![1]);
     const price = Number(/(\d+\.\d\d) dollars/.exec(prompt)![1]);
     const step = /nearest (\d+) dollars/.exec(prompt)![1]!;
     const base = Math.round(price / Number(step)) * Number(step);

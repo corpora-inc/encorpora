@@ -1040,6 +1040,7 @@ const U = {
   gal: { one: "gallon", many: "gallons" },
 } satisfies Record<string, Unit>;
 type UnitKey = keyof typeof U;
+const article = (w: string) => (/^[aeiou]/i.test(w) ? "An" : "A");
 const nameOf = (u: UnitKey, n: number) => `${n === 1 ? U[u].one : U[u].many}`;
 const withUnit = (n: number, u: UnitKey) => `${commas(n)} ${nameOf(u, n)}`;
 
@@ -1290,20 +1291,20 @@ function customaryMixedUnits(r: Random): Built {
       variant,
       prompt: `Write ${text} as ${unitName(m.small)} only. ${fact[0]!.toUpperCase()}${fact.slice(1)}.`,
       answer: "",
-      hint: `Rename the ${unitName(m.big)} part as ${unitName(m.small)}: multiply ${b} by ${per}. Then add the ${s} ${unitName(m.small)} that are already there.`,
+      hint: `Rename the ${unitName(m.big)} part as ${unitName(m.small)}: multiply ${b} by ${per}. Then add the ${s} ${nameOf(m.small, s)} that are already there.`,
       explanation: [
-        `${fact}, so ${b} ${unitName(m.big)} = ${b} × ${per} = ${b * per} ${unitName(m.small)}.`,
+        `${fact}, so ${b} ${nameOf(m.big, b)} = ${b} × ${per} = ${b * per} ${nameOf(m.small, b * per)}.`,
         `${b * per} + ${s} = ${total}.`,
         `${text} = ${single(total)}.`,
       ],
       choices: choicesFrom(single(total), [
         {
           label: single(b + s),
-          feedback: `This adds ${b} and ${s} as if both were ${unitName(m.small)}. Each ${U[m.big].one} is ${per} ${unitName(m.small)}, so rename the ${unitName(m.big)} first.`,
+          feedback: `This adds ${b} and ${s} as if both were ${unitName(m.small)}. Each ${U[m.big].one} is ${per} ${nameOf(m.small, per)}, so rename the ${unitName(m.big)} first.`,
         },
         {
           label: single(b * per),
-          feedback: `This renames the ${unitName(m.big)} but leaves out the ${s} ${unitName(m.small)} that were already there.`,
+          feedback: `This renames the ${unitName(m.big)} but leaves out the ${s} ${nameOf(m.small, s)} that were already there.`,
         },
         {
           label: single(Number(`${b}${s}`)),
@@ -1311,7 +1312,7 @@ function customaryMixedUnits(r: Random): Built {
         },
         {
           label: single(b * per - s),
-          feedback: `The ${s} ${unitName(m.small)} are added to the renamed part, not taken away.`,
+          feedback: `The ${s} ${nameOf(m.small, s)} are added to the renamed part, not taken away.`,
         },
       ]),
     };
@@ -1323,13 +1324,13 @@ function customaryMixedUnits(r: Random): Built {
     const cand = (x: number, y: number) => mixedText(m, x, y);
     return {
       variant,
-      prompt: `Write ${commas(total)} ${unitName(m.small)} as ${m.words}, with fewer than ${per} ${unitName(m.small)} left over. ${fact[0]!.toUpperCase()}${fact.slice(1)}.`,
+      prompt: `Write ${commas(total)} ${unitName(m.small)} as ${m.words}, with fewer than ${per} ${nameOf(m.small, per)} left over. ${fact[0]!.toUpperCase()}${fact.slice(1)}.`,
       answer: "",
-      hint: `Find how many full ${unitName(m.big)} fit in ${total} ${unitName(m.small)} by dividing by ${per}. The remainder is the ${unitName(m.small)} left over.`,
+      hint: `Find how many full ${unitName(m.big)} fit in ${total} ${nameOf(m.small, total)} by dividing by ${per}. The remainder is the ${unitName(m.small)} left over.`,
       explanation: [
         `${fact}. Divide: ${total} ÷ ${per} = ${b} with ${s} left over.`,
         `${b} × ${per} = ${b * per}, and ${total} − ${b * per} = ${s}.`,
-        `${total} ${unitName(m.small)} = ${cand(b, s)}.`,
+        `${total} ${nameOf(m.small, total)} = ${cand(b, s)}.`,
       ],
       choices: choicesFrom(cand(b, s), [
         {
@@ -1338,11 +1339,11 @@ function customaryMixedUnits(r: Random): Built {
         },
         {
           label: cand(Math.floor(total / 10), total % 10),
-          feedback: `This divides by 10. One ${U[m.big].one} is ${per} ${unitName(m.small)}, so divide by ${per}.`,
+          feedback: `This divides by 10. One ${U[m.big].one} is ${per} ${nameOf(m.small, per)}, so divide by ${per}.`,
         },
         {
           label: cand(b - 1, s),
-          feedback: `${b} full ${unitName(m.big)} fit in ${total} ${unitName(m.small)}, not ${b - 1}.`,
+          feedback: `${b} full ${unitName(m.big)} fit in ${total} ${nameOf(m.small, total)}, not ${b - 1}.`,
         },
         {
           label: cand(b, per - s),
@@ -1364,22 +1365,22 @@ function customaryMixedUnits(r: Random): Built {
     const cand = (x: number, y: number) => mixedText(m, x, y);
     return {
       variant,
-      prompt: `Add ${mixedText(m, b1, s1)} and ${mixedText(m, b2, s2)}. Write the sum with fewer than ${per} ${unitName(m.small)}. ${fact[0]!.toUpperCase()}${fact.slice(1)}.`,
+      prompt: `Add ${mixedText(m, b1, s1)} and ${mixedText(m, b2, s2)}. Write the sum with fewer than ${per} ${nameOf(m.small, per)}. ${fact[0]!.toUpperCase()}${fact.slice(1)}.`,
       answer: "",
       hint: `Add the ${unitName(m.small)} first, then the ${unitName(m.big)}. If the ${unitName(m.small)} total is ${per} or more, rename ${per} of them as 1 ${U[m.big].one} and add it to the ${unitName(m.big)}.`,
       explanation: [
-        `${unitName(m.small)}: ${s1} + ${s2} = ${t}. ${fact}, so ${t} ${unitName(m.small)} = ${carry} ${carry === 1 ? U[m.big].one : unitName(m.big)} ${rest} ${unitName(m.small)}.`,
+        `${unitName(m.small)}: ${s1} + ${s2} = ${t}. ${fact}, so ${t} ${nameOf(m.small, t)} = ${carry} ${carry === 1 ? U[m.big].one : unitName(m.big)} ${rest} ${nameOf(m.small, rest)}.`,
         `${unitName(m.big)}: ${b1} + ${b2} + ${carry} = ${bigT}.`,
         `The sum is ${cand(bigT, rest)}.`,
       ],
       choices: choicesFrom(cand(bigT, rest), [
         {
           label: cand(b1 + b2, rest),
-          feedback: `The ${t} ${unitName(m.small)} include ${carry} full ${carry === 1 ? U[m.big].one : unitName(m.big)}. Add that to the ${unitName(m.big)}.`,
+          feedback: `The ${t} ${nameOf(m.small, t)} include ${carry} full ${carry === 1 ? U[m.big].one : unitName(m.big)}. Add that to the ${unitName(m.big)}.`,
         },
         {
           label: cand(bigT, t % 10),
-          feedback: `Regroup ${per} ${unitName(m.small)} as 1 ${U[m.big].one}, not 10.`,
+          feedback: `Regroup ${per} ${nameOf(m.small, per)} as 1 ${U[m.big].one}, not 10.`,
         },
         {
           label: cand(bigT + carry, rest),
@@ -1387,7 +1388,7 @@ function customaryMixedUnits(r: Random): Built {
         },
         {
           label: cand(b1 + b2, t),
-          feedback: `${t} ${unitName(m.small)} is ${per} or more, so rename ${per} of them as ${U[m.big].one}. The sum should have fewer than ${per} ${unitName(m.small)}.`,
+          feedback: `${t} ${nameOf(m.small, t)} is ${per} or more, so rename ${per} of them as ${U[m.big].one}. The sum should have fewer than ${per} ${nameOf(m.small, per)}.`,
         },
       ]),
     };
@@ -1404,18 +1405,18 @@ function customaryMixedUnits(r: Random): Built {
   const cand = (x: number, y: number) => mixedText(m, x, y);
   return {
     variant,
-    prompt: `Subtract ${mixedText(m, b2, s2)} from ${mixedText(m, b1, s1)}. Write the difference with fewer than ${per} ${unitName(m.small)}. ${fact[0]!.toUpperCase()}${fact.slice(1)}.`,
+    prompt: `Subtract ${mixedText(m, b2, s2)} from ${mixedText(m, b1, s1)}. Write the difference with fewer than ${per} ${nameOf(m.small, per)}. ${fact[0]!.toUpperCase()}${fact.slice(1)}.`,
     answer: "",
-    hint: `${s1} ${unitName(m.small)} is less than ${s2}, so you cannot subtract the ${unitName(m.small)} yet. Rename 1 ${U[m.big].one} from the larger measure as ${per} ${unitName(m.small)}, then subtract.`,
+    hint: `${s1} ${nameOf(m.small, s1)} is less than ${s2}, so you cannot subtract the ${unitName(m.small)} yet. Rename 1 ${U[m.big].one} from the larger measure as ${per} ${nameOf(m.small, per)}, then subtract.`,
     explanation: [
-      `${s1} < ${s2}, so regroup: ${b1} ${unitName(m.big)} ${s1} ${unitName(m.small)} = ${b1 - 1} ${unitName(m.big)} ${s1 + per} ${unitName(m.small)}.`,
+      `${s1} < ${s2}, so regroup: ${b1} ${nameOf(m.big, b1)} ${s1} ${nameOf(m.small, s1)} = ${b1 - 1} ${nameOf(m.big, b1 - 1)} ${s1 + per} ${nameOf(m.small, s1 + per)}.`,
       `${unitName(m.small)}: ${s1 + per} − ${s2} = ${s1 + per - s2}. ${unitName(m.big)}: ${b1 - 1} − ${b2} = ${b1 - 1 - b2}.`,
       `The difference is ${cand(eb, es)}.`,
     ],
     choices: choicesFrom(cand(eb, es), [
       {
         label: cand(b1 - b2, s2 - s1),
-        feedback: `Always subtract the smaller ${unitName(m.small)} amount from the larger. Here ${s1} is less than ${s2}, so regroup 1 ${U[m.big].one} as ${per} ${unitName(m.small)}.`,
+        feedback: `Always subtract the smaller ${unitName(m.small)} amount from the larger. Here ${s1} is less than ${s2}, so regroup 1 ${U[m.big].one} as ${per} ${nameOf(m.small, per)}.`,
       },
       {
         label: cand(b1 - b2, s1 + per - s2),
@@ -1423,7 +1424,7 @@ function customaryMixedUnits(r: Random): Built {
       },
       {
         label: cand(eb, Math.max(0, s1 + 10 - s2)),
-        feedback: `Regroup 1 ${U[m.big].one} as ${per} ${unitName(m.small)}, not 10.`,
+        feedback: `Regroup 1 ${U[m.big].one} as ${per} ${nameOf(m.small, per)}, not 10.`,
       },
       {
         label: cand(eb + 1, es),
@@ -1513,7 +1514,7 @@ function customaryUnitChoice(r: Random): Built {
       const tooBig = units.indexOf(u) > order;
       return {
         label: withUnit(o.n, u),
-        feedback: `${withUnit(o.n, u)} is far too ${tooBig ? "large" : "small"} for ${o.text}.${tooBig ? ` A ${U[u].one} is much bigger than a ${U[o.unit].one}.` : ` A ${U[u].one} is much smaller than a ${U[o.unit].one}.`}`,
+        feedback: `${withUnit(o.n, u)} is far too ${tooBig ? "large" : "small"} for ${o.text}.${tooBig ? ` ${article(U[u].one)} ${U[u].one} is much bigger than ${article(U[o.unit].one).toLowerCase()} ${U[o.unit].one}.` : ` ${article(U[u].one)} ${U[u].one} is much smaller than ${article(U[o.unit].one).toLowerCase()} ${U[o.unit].one}.`}`,
       };
     });
   const foreign = FOREIGN[o.family];
@@ -1669,6 +1670,7 @@ function compatibleNumberEstimate(r: Random): Built {
 }
 
 const money = (x: number) => (Number.isInteger(x) ? `${x}` : x.toFixed(2));
+const dollarWord = (x: number) => (x === 1 ? "dollar" : "dollars");
 function benchmarkPercentEstimate(r: Random): Built {
   const variant = pick(r, ["tip", "sales-tax", "discount", "sale-price"]);
   const name = pick(r, NAMES);
@@ -1683,12 +1685,12 @@ function benchmarkPercentEstimate(r: Random): Built {
     const what = variant === "tip" ? "tip" : "sales tax";
     const wrong = [
       {
-        label: `about ${money(est * 10)} dollars`,
-        feedback: `Check the decimal point: ${pct}% of ${base} dollars is much less than ${money(est * 10)} dollars.`,
+        label: `about ${money(est * 10)} ${dollarWord(est * 10)}`,
+        feedback: `Check the decimal point: ${pct}% of ${base} dollars is much less than ${money(est * 10)} ${dollarWord(est * 10)}.`,
       },
       {
-        label: `about ${money(est / 10)} dollars`,
-        feedback: `Check the decimal point: ${pct}% of ${base} dollars is more than ${money(est / 10)} dollars. 10% of ${base} is ${money(ten)}.`,
+        label: `about ${money(est / 10)} ${dollarWord(est / 10)}`,
+        feedback: `Check the decimal point: ${pct}% of ${base} dollars is more than ${money(est / 10)} ${dollarWord(est / 10)}. 10% of ${base} is ${money(ten)}.`,
       },
       {
         label: `about ${pct} dollars`,
@@ -1696,21 +1698,21 @@ function benchmarkPercentEstimate(r: Random): Built {
       },
       pct === 15
         ? {
-            label: `about ${money(ten)} dollars`,
+            label: `about ${money(ten)} ${dollarWord(ten)}`,
             feedback: `That is only 10%. 15% is 10% plus 5%, and 5% is half of 10%.`,
           }
         : pct === 20
           ? {
-              label: `about ${money(ten)} dollars`,
+              label: `about ${money(ten)} ${dollarWord(ten)}`,
               feedback: `That is only 10%. 20% is twice 10%.`,
             }
           : pct === 10
             ? {
-                label: `about ${money(ten / 2)} dollars`,
+                label: `about ${money(ten / 2)} ${dollarWord(ten / 2)}`,
                 feedback: `That is 5%. 10% of ${base} dollars is ${money(ten)}.`,
               }
             : {
-                label: `about ${money(ten)} dollars`,
+                label: `about ${money(ten)} ${dollarWord(ten)}`,
                 feedback: `That is 10%. 5% is half of 10%.`,
               },
     ];
@@ -1723,21 +1725,23 @@ function benchmarkPercentEstimate(r: Random): Built {
         `${dl(Math.round(price * 100))} dollars rounds to ${base} dollars.`,
         `10% of ${base} is ${base} ÷ 10 = ${money(ten)}.`,
         pct === 10
-          ? `So the ${what} is about ${money(est)} dollars.`
+          ? `So the ${what} is about ${money(est)} ${dollarWord(est)}.`
           : pct === 15
             ? `5% is half of 10%: ${money(ten)} ÷ 2 = ${money(ten / 2)}. 15% is ${money(ten)} + ${money(ten / 2)} = ${money(est)}.`
             : pct === 20
               ? `20% is twice 10%: 2 × ${money(ten)} = ${money(est)}.`
               : `5% is half of 10%: ${money(ten)} ÷ 2 = ${money(est)}.`,
-        `The ${what} is about ${money(est)} dollars.`,
+        `The ${what} is about ${money(est)} ${dollarWord(est)}.`,
       ],
-      choices: choicesFrom(`about ${money(est)} dollars`, wrong),
+      choices: choicesFrom(`about ${money(est)} ${dollarWord(est)}`, wrong),
     };
   }
   const pct = pick(r, [10, 25, 50]);
   const step = pct === 25 ? 20 : 10;
   const price =
-    r(1, 9) * step + pick(r, [-4, -3, -2, -1, 1, 2, 3, 4]) + r(0, 99) / 100;
+    r(Math.floor(pct / step) + 1, 9) * step +
+    pick(r, [-4, -3, -2, -1, 1, 2, 3, 4]) +
+    r(0, 99) / 100;
   const base = roundTo(price, step);
   const discount = (base * pct) / 100;
   const sale = base - discount;
@@ -1753,15 +1757,15 @@ function benchmarkPercentEstimate(r: Random): Built {
       explanation: [
         `${shown} dollars rounds to ${base} dollars.`,
         `${pct}% is ${benchmark}: ${base} ÷ ${100 / pct} = ${money(discount)}.`,
-        `The discount is about ${money(discount)} dollars.`,
+        `The discount is about ${money(discount)} ${dollarWord(discount)}.`,
       ],
-      choices: choicesFrom(`about ${money(discount)} dollars`, [
+      choices: choicesFrom(`about ${money(discount)} ${dollarWord(discount)}`, [
         {
-          label: `about ${money(sale)} dollars`,
+          label: `about ${money(sale)} ${dollarWord(sale)}`,
           feedback: `That is the sale price, the amount left to pay. The question asks for the discount.`,
         },
         {
-          label: `about ${money(discount * 10)} dollars`,
+          label: `about ${money(discount * 10)} ${dollarWord(discount * 10)}`,
           feedback: `Check the decimal point: ${pct}% of ${base} dollars is less than ${base} dollars.`,
         },
         {
@@ -1769,7 +1773,7 @@ function benchmarkPercentEstimate(r: Random): Built {
           feedback: `${pct}% means ${pct} out of every 100, not ${pct} dollars.`,
         },
         {
-          label: `about ${money(base - pct)} dollars`,
+          label: `about ${money(base - pct)} ${dollarWord(base - pct)}`,
           feedback: `The discount is a percent of the cost, not ${pct} dollars taken off.`,
         },
       ]),
@@ -1783,23 +1787,23 @@ function benchmarkPercentEstimate(r: Random): Built {
     explanation: [
       `${shown} dollars rounds to ${base} dollars.`,
       `${pct}% is ${benchmark}: the discount is ${base} ÷ ${100 / pct} = ${money(discount)}.`,
-      `Sale price: ${base} − ${money(discount)} = ${money(sale)}. The sale price is about ${money(sale)} dollars.`,
+      `Sale price: ${base} − ${money(discount)} = ${money(sale)}. The sale price is about ${money(sale)} ${dollarWord(sale)}.`,
     ],
-    choices: choicesFrom(`about ${money(sale)} dollars`, [
+    choices: choicesFrom(`about ${money(sale)} ${dollarWord(sale)}`, [
       {
-        label: `about ${money(discount)} dollars`,
+        label: `about ${money(discount)} ${dollarWord(discount)}`,
         feedback: `That is the discount. The sale price is what is left after taking it off the cost.`,
       },
       {
-        label: `about ${money(base + discount)} dollars`,
+        label: `about ${money(base + discount)} ${dollarWord(base + discount)}`,
         feedback: `A discount lowers the price. Subtract it from the cost; do not add.`,
       },
       {
-        label: `about ${money(base - pct)} dollars`,
+        label: `about ${money(base - pct)} ${dollarWord(base - pct)}`,
         feedback: `${pct}% off takes off ${pct} out of every 100 parts, not ${pct} dollars.`,
       },
       {
-        label: `about ${money(base * (1 - pct / 100) * 10)} dollars`,
+        label: `about ${money(base * (1 - pct / 100) * 10)} ${dollarWord(base * (1 - pct / 100) * 10)}`,
         feedback: `Check the decimal point: the sale price is less than the rounded cost of ${base} dollars.`,
       },
     ]),
