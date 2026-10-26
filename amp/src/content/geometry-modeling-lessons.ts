@@ -3,7 +3,7 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const geometryModelingMethods: Record<string, ProblemMethod> = {
   "solid-volume-context": {
-    goal: "Use the volume formula of a cylinder, cone, pyramid, sphere or a combination to answer a question about capacity, a count of copies, a missing dimension or a rounded value.",
+    goal: "Use the volume formula of a cylinder, cone, pyramid, sphere or a combination to find a capacity, a count, a dimension or a rounded value.",
     intuition:
       "Volume is the amount of space inside a solid. A cylinder or prism is a stack of identical layers, so its volume is the area of one layer times the height. A cone or pyramid holds one third of the cylinder or prism with the same base and height. A sphere of radius $r$ holds $\\tfrac43\\pi r^3$. In a story, first name the solid, then decide what the question asks for: the volume, a different unit, a number of copies or a missing length.",
     terms: [
@@ -22,8 +22,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Name the solid or solids and write the volume formula for each.",
-      "Find the radius: halve a diameter before using it.",
-      "Substitute, keeping $\\pi$ as a symbol unless the problem tells you to use 3.14.",
+      "Find the radius by halving a diameter. Substitute, keeping $\\pi$ as a symbol unless the problem tells you to use 3.14.",
       "Convert units only at the end, and round only at the end.",
       "For a missing dimension, write the formula with the known volume and solve for the unknown length.",
     ],
@@ -31,7 +30,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "Check the radius, the factor $\\tfrac13$ for cones and pyramids, and the unit. Capacity answers need cm³ converted to liters; a count of cones needs the ratio of volumes, not the ratio of sizes.",
   },
   "density-context": {
-    goal: "Use density as a rate: people per area, or mass per volume. Find the density, the mass or the volume, and compare densities, with consistent units.",
+    goal: "Use density as a rate, people per area or mass per volume: find the density, mass or volume, and compare densities in consistent units.",
     intuition:
       "Density tells how much of something is packed into each unit of space. Population density is people per square kilometer. The density of a material is mass per cubic centimeter. Because density is a rate, you can read it as a conversion: each unit of space comes with that many people or grams.",
     terms: [
@@ -128,7 +127,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "Equal heights or equal bases alone are not enough: the slices must match at every height. A pyramid's slices shrink, so it does not match a prism with the same base and height.",
   },
   "section-revolution-solid": {
-    goal: "Name the shape of a plane section of a curved solid, and the solid made by rotating a rectangle, right triangle or semicircle about a line, and find its volume.",
+    goal: "Name a plane section of a curved solid and the solid made by rotating a rectangle, right triangle or semicircle, and find its volume.",
     intuition:
       "Cutting a solid with a plane leaves a flat shape, the cross-section. Spinning a flat figure around a line makes a solid. A rectangle spun about one of its sides makes a cylinder, a right triangle spun about a leg makes a cone, and a semicircle spun about its diameter makes a sphere. The side on the line is the axis.",
     terms: [
@@ -465,7 +464,7 @@ export const geometryModelingLessons: Lesson[] = [
         title: "Which solids match?",
         paragraphs: [
           "A prism and a cylinder with the same height and the same base area have equal slices at every height, so they have equal volume. A pyramid with the same base and height does not: its slices shrink toward the top, so it holds one third as much as the prism.",
-          "If every slice of solid X has twice the area of the matching slice of solid Y at the same height, solid X has twice the volume of solid Y.",
+          "If every slice of solid $X$ has twice the area of the matching slice of solid $Y$ at the same height, solid $X$ has twice the volume of solid $Y$.",
         ],
       },
       {

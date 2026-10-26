@@ -272,7 +272,7 @@ test("story graphs: the right description follows the drawn segments", () => {
       const letters = ["O", "A", "B", "C", "D"];
       assert.equal(
         correct,
-        `From ${letters[matches[0]!]} to ${letters[matches[0]! + 1]}`,
+        `From $${letters[matches[0]!]}$ to $${letters[matches[0]! + 1]}$`,
       );
     }
     if (tag.startsWith("fastest-slowest/")) {
@@ -285,7 +285,7 @@ test("story graphs: the right description follows the drawn segments", () => {
       const letters = ["O", "A", "B", "C", "D"];
       assert.equal(
         correct,
-        `From ${letters[matches[0]!]} to ${letters[matches[0]! + 1]}`,
+        `From $${letters[matches[0]!]}$ to $${letters[matches[0]! + 1]}$`,
       );
     }
   }
@@ -306,7 +306,7 @@ test("coordinate points agree with the plotted points", () => {
     }
     if (tag === "find-the-point") {
       const g = graphOf(generated);
-      const letter = correct.replace("Point ", "");
+      const letter = correct.replace("Point ", "").replaceAll("$", "");
       const p = g.points!.find((q) => q.label === letter)!;
       const asked = nums(generated.public.prompt.split("situation:")[1]!);
       assert.deepEqual([p.x, p.y], asked);
@@ -525,9 +525,9 @@ test("compound-event answers agree with direct counting and comparison", () => {
     "at least 1 flip shows tails": (o) => o.includes("T"),
     "all 3 flips show the same side": (o) => o.every((v) => v === o[0]),
     "the first and last flips are different": (o) => o[0] !== o[2],
-    "spinner 1 lands on red and spinner 2 lands on an even number": (o) =>
-      o[0] === "red" && +o[1]! % 2 === 0,
-    "spinner 1 does not land on red and spinner 2 lands on a number greater than 2":
+    "the first spinner lands on red and the second spinner lands on an even number":
+      (o) => o[0] === "red" && +o[1]! % 2 === 0,
+    "the first spinner does not land on red and the second spinner lands on a number greater than 2":
       (o) => o[0] !== "red" && +o[1]! > 2,
   };
   const spaces: Record<string, string[][]> = {};

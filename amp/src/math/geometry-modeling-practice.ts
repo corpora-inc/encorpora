@@ -704,7 +704,7 @@ function densityCase(
       variant,
       built: {
         prompt: `${statements} Which block is denser, and what is its density?`,
-        hint: `Density is mass per unit volume. Divide each block's mass by its own volume, then compare the two quotients, not the two masses.`,
+        hint: `Density is mass per unit volume. Divide each block's mass by its own volume (for Block ${y}, ${m(dY, vY)} g by ${vY} cm³), then compare the two quotients, not the two masses.`,
         explanation: [
           `Block ${x}: ${m(dX, vX)} ÷ ${vX} = ${dX} g/cm³.`,
           `Block ${y}: ${m(dY, vY)} ÷ ${vY} = ${dY} g/cm³.`,
@@ -932,7 +932,7 @@ function modelCase(
       variant,
       built: {
         prompt: `${task} Which measure of the object do you need to find?`,
-        hint: `Decide what the job covers or fills: a flat region, a path around the edge, the outside faces of a solid, or the space inside. Then match it to a measure.`,
+        hint: `Decide what the job covers or fills: a flat region, a path around the edge, the outside faces of a solid, or the space inside. Then match it to a measure of an object that is ${(task.match(/\d+(?:\.\d+)? (?:cm|m)\b/g) ?? []).join(" by ")}.`,
         explanation: [
           task,
           `This job needs ${MEASURES[measure]}.`,
@@ -1156,7 +1156,7 @@ function designCase(
       variant,
       built: {
         prompt: `A wall is ${wallW} m wide and ${wallH} m tall. A window ${winW} m wide and ${winH} m tall is not painted. Paint costs ${rate} dollars per square meter. How much does it cost to paint the rest of the wall?`,
-        hint: `Cost = area to paint × price per square meter. The area to paint is the wall's area minus the window's area; find both rectangle areas first.`,
+        hint: `Cost = area to paint × price per square meter, ${rate} dollars here. The area to paint is the area of the ${wallW} m by ${wallH} m wall minus the area of the ${winW} m by ${winH} m window; find both rectangle areas first.`,
         explanation: [
           `Wall area: ${wallW} × ${wallH} = ${wallW * wallH} square meters. Window area: ${winW} × ${winH} = ${winW * winH} square meters.`,
           `Painted area: ${wallW * wallH} − ${winW * winH} = ${painted} square meters.`,
@@ -1388,12 +1388,12 @@ function cavalieriCase(
   return {
     variant: 3,
     built: {
-      prompt: `Solids X and Y are both 10 cm tall. At every height, the horizontal slice of X has area ${ratioText} the area of the slice of Y at that height. Solid Y has a volume of ${base} cm³. What is the volume of solid X?`,
-      hint: `Think of each solid as a stack of thin slices of the same thickness. If every slice of X has ${ratioText} the area of the matching slice of Y, compare the two totals.`,
+      prompt: `Solids $X$ and $Y$ are both 10 cm tall. At every height, the horizontal slice of $X$ has area ${ratioText} the area of the slice of $Y$ at that height. Solid $Y$ has a volume of ${base} cm³. What is the volume of solid $X$?`,
+      hint: `Think of each solid as a stack of thin slices of the same thickness. If every slice of $X$ has ${ratioText} the area of the matching slice of $Y$, compare the two totals.`,
       explanation: [
         `Both solids are cut into slices of the same thickness at the same heights.`,
-        `Each slice of X has ${ratioText} the area of the matching slice of Y, so each slice has ${ratioText} the volume, and the total is ${ratioText} as well.`,
-        `Volume of X = ${base} × ${n}${d === 1 ? "" : `/${d}`} = ${answer} cm³.`,
+        `Each slice of $X$ has ${ratioText} the area of the matching slice of $Y$, so each slice has ${ratioText} the volume, and the total is ${ratioText} as well.`,
+        `Volume of $X$ = ${base} × ${n}${d === 1 ? "" : `/${d}`} = ${answer} cm³.`,
       ],
       correct: `${answer} cm³`,
       wrong: [
@@ -1575,7 +1575,7 @@ function revolutionCase(
       variant,
       built: {
         prompt: `A rectangle ${w} cm wide and ${h} cm tall is rotated one full turn about the dashed line shown. Which solid does it sweep out?`,
-        hint: `Picture the side along the dashed line staying in place while the opposite side sweeps a circle around it. The length of the side on the line becomes one dimension of the solid; the side perpendicular to the line becomes the other.`,
+        hint: `The rectangle's sides are ${cm(w)} and ${cm(h)}. Picture the side along the dashed line staying in place while the opposite side sweeps a circle around it. The length of the side on the line becomes one dimension of the solid; the side perpendicular to the line becomes the other.`,
         explanation: [
           `The dashed line contains a side of length ${cm(ht)}. That side stays fixed and becomes the height.`,
           `The perpendicular side of ${cm(rad)} sweeps out a circle, so it becomes the radius.`,
@@ -1613,7 +1613,7 @@ function revolutionCase(
         variant,
         built: {
           prompt: `A right triangle has legs of ${cm(a)} and ${cm(b)}. It is rotated one full turn about the dashed line, which contains one leg. Which solid does it sweep out?`,
-          hint: `The leg on the dashed line stays fixed. The other leg is perpendicular to it and sweeps out a circle; the hypotenuse sweeps out the slanted side.`,
+          hint: `The legs are ${cm(a)} and ${cm(b)}. The leg on the dashed line stays fixed. The other leg is perpendicular to it and sweeps out a circle; the hypotenuse sweeps out the slanted side.`,
           explanation: [
             `The dashed line contains the leg of ${cm(axisLeg)}, which stays fixed and becomes the height.`,
             `The other leg, ${cm(radius)}, is perpendicular to it and sweeps out the circular base, so it is the radius.`,
@@ -1645,7 +1645,7 @@ function revolutionCase(
       variant,
       built: {
         prompt: `A right triangle has legs of ${cm(a)} and ${cm(b)}. It is rotated one full turn about the dashed line, which contains one leg. What is the volume of the solid, in cubic centimeters? Give the volume in terms of $\\pi$.`,
-        hint: `The solid is a cone. The leg on the dashed line is its height and the other leg is its radius; use $V=\\tfrac13\\pi r^2h$.`,
+        hint: `The solid is a cone from legs of ${cm(a)} and ${cm(b)}. The leg on the dashed line is its height and the other leg is its radius; use $V=\\tfrac13\\pi r^2h$.`,
         explanation: [
           `The leg on the dashed line, ${cm(axisLeg)}, is the height. The other leg, ${cm(radius)}, is the radius of the cone.`,
           `$V=\\tfrac13\\pi r^2h=\\tfrac13\\pi(${radius})^2(${axisLeg})=${piTex(v)}$ cm³.`,
@@ -1717,7 +1717,7 @@ function revolutionCase(
       variant,
       built: {
         prompt: `A rectangle ${w} cm wide and ${h} cm tall is rotated one full turn about the dashed line. What is the volume of the solid, in cubic centimeters? Give the volume in terms of $\\pi$.`,
-        hint: `The rotation makes a cylinder. The side on the dashed line is its height and the perpendicular side is its radius; use $V=\\pi r^2h$.`,
+        hint: `The ${w} cm by ${h} cm rectangle makes a cylinder. The side on the dashed line is its height and the perpendicular side is its radius; use $V=\\pi r^2h$.`,
         explanation: [
           `The side on the dashed line, ${cm(ht)}, becomes the height; the perpendicular side, ${cm(rad)}, becomes the radius.`,
           `$V=\\pi r^2h=\\pi(${rad})^2(${ht})=${piTex(rad * rad * ht)}$ cm³.`,
@@ -1909,10 +1909,10 @@ function similarityCase(
     return {
       variant,
       built: {
-        prompt: `In right triangle ABC, the right angle is at C and CD is the altitude to the hypotenuse AB. AD = ${p} and DB = ${q}. What is the length of CD?`,
-        hint: `The altitude splits the triangle into two triangles similar to each other. In them, CD is the long leg of one triangle and the short leg of the other: use the proportion AD : CD = CD : DB.`,
+        prompt: `In right triangle $ABC$, the right angle is at $C$ and $CD$ is the altitude to the hypotenuse $AB$. $AD = ${p}$ and $DB = ${q}$. What is the length of $CD$?`,
+        hint: `The altitude splits the triangle into two triangles similar to each other. In them, $CD$ is the long leg of one triangle and the short leg of the other: use the proportion $AD : CD = CD : DB$ with $AD = ${p}$ and $DB = ${q}$.`,
         explanation: [
-          "Triangles ADC and CDB are similar: each has a right angle at D and shares an acute angle with triangle ABC.",
+          "Triangles $ADC$ and $CDB$ are similar: each has a right angle at $D$ and shares an acute angle with triangle $ABC$.",
           `Matching sides give $\\frac{AD}{CD}=\\frac{CD}{DB}$, so $CD^2=AD\\cdot DB=${p}\\cdot${q}=${p * q}$.`,
           `$CD=\\sqrt{${p * q}}=${h}$.`,
         ],
@@ -1952,10 +1952,10 @@ function similarityCase(
     return {
       variant,
       built: {
-        prompt: `In right triangle ABC, the right angle is at C and CD is the altitude to the hypotenuse AB. AD = ${p} and DB = ${q}. What is the length of leg AC?`,
-        hint: `Triangle ACD is similar to the whole triangle ABC: they share angle A and each has a right angle. Match AC with AB and AD with AC to set up a proportion.`,
+        prompt: `In right triangle $ABC$, the right angle is at $C$ and $CD$ is the altitude to the hypotenuse $AB$. $AD = ${p}$ and $DB = ${q}$. What is the length of leg $AC$?`,
+        hint: `Triangle $ACD$ is similar to the whole triangle $ABC$: they share angle $A$ and each has a right angle. Match $AC$ with $AB$ and $AD$ with $AC$ to set up a proportion, with $AD = ${p}$ and $DB = ${q}$.`,
         explanation: [
-          "Triangles ACD and ABC are similar: they share angle A and each has a right angle (at D and at C).",
+          "Triangles $ACD$ and $ABC$ are similar: they share angle $A$ and each has a right angle (at $D$ and at $C$).",
           `Matching sides give $\\frac{AC}{AB}=\\frac{AD}{AC}$, so $AC^2=AD\\cdot AB$.`,
           `$AB=${p}+${q}=${p + q}$, so $AC^2=${p}\\cdot${p + q}=${p * (p + q)}$ and $AC=${leg}$.`,
         ],
@@ -2003,10 +2003,10 @@ function similarityCase(
     return {
       variant,
       built: {
-        prompt: `In triangle ABC, D is on AB and E is on AC, and DE is parallel to BC, as shown. ${askEC ? `AD = ${a}, DB = ${b} and AE = ${c}.` : `AD = ${a}, AE = ${c} and EC = ${e}.`} What is the length of ${unknown}?`,
-        hint: `A line parallel to one side of a triangle cuts the other two sides in the same ratio. Write AD : DB = AE : EC with the three lengths you know and solve for ${unknown}.`,
+        prompt: `In triangle $ABC$, $D$ is on $AB$ and $E$ is on $AC$, and $DE$ is parallel to $BC$, as shown. ${askEC ? `$AD = ${a}$, $DB = ${b}$ and $AE = ${c}$.` : `$AD = ${a}$, $AE = ${c}$ and $EC = ${e}$.`} What is the length of $${unknown}$?`,
+        hint: `A line parallel to one side of a triangle cuts the other two sides in the same ratio. Write $AD : DB = AE : EC$ with the three lengths you know (${askEC ? `${a}, ${b} and ${c}` : `${a}, ${c} and ${e}`}) and solve for $${unknown}$.`,
         explanation: [
-          "Because DE ∥ BC, triangle ADE is similar to triangle ABC, and DE divides sides AB and AC proportionally.",
+          "Because $DE$ ∥ $BC$, triangle $ADE$ is similar to triangle $ABC$, and $DE$ divides sides $AB$ and $AC$ proportionally.",
           `$\\frac{AD}{DB}=\\frac{AE}{EC}$, so $\\frac{${a}}{${askEC ? b : "DB"}}=\\frac{${c}}{${askEC ? "EC" : e}}$.`,
           askEC
             ? `Cross-multiply: $${a}\\cdot EC=${b}\\cdot${c}$, so $EC=\\frac{${b * c}}{${a}}=${e}$.`
@@ -2018,12 +2018,12 @@ function similarityCase(
               {
                 label: fq(a * c, b),
                 feedback:
-                  "The ratio is inverted. AD matches AE and DB matches EC.",
+                  "The ratio is inverted. $AD$ matches $AE$ and $DB$ matches $EC$.",
               },
               {
                 label: `${((a + b) * c) / a}`,
                 feedback:
-                  "That is the whole side AC. The question asks for the part EC.",
+                  "That is the whole side $AC$. The question asks for the part $EC$.",
               },
               {
                 label: `${b + c - a}`,
@@ -2032,29 +2032,29 @@ function similarityCase(
               },
               {
                 label: fq(a * b, c),
-                feedback: "Set up AD : DB = AE : EC and solve for EC.",
+                feedback: "Set up $AD : DB = AE : EC$ and solve for $EC$.",
               },
               {
                 label: `${c}`,
                 feedback:
-                  "The ratios AD : DB and AE : EC are equal, but the lengths AE and EC need not be.",
+                  "The ratios $AD : DB$ and $AE : EC$ are equal, but the lengths $AE$ and $EC$ need not be.",
               },
               {
                 label: `${b * c}`,
                 feedback:
-                  "Cross-multiplying gives $a\\cdot EC=b\\cdot c$. Divide by AD as well.",
+                  "Cross-multiplying gives $a\\cdot EC=b\\cdot c$. Divide by $AD$ as well.",
               },
             ]
           : [
               {
                 label: fq(c * e, a),
                 feedback:
-                  "The ratio is inverted. AD matches AE and DB matches EC.",
+                  "The ratio is inverted. $AD$ matches $AE$ and $DB$ matches $EC$.",
               },
               {
                 label: `${((c + e) * a) / c}`,
                 feedback:
-                  "That is the whole side AB. The question asks for the part DB.",
+                  "That is the whole side $AB$. The question asks for the part $DB$.",
               },
               {
                 label: `${a + e - c}`,
@@ -2063,17 +2063,17 @@ function similarityCase(
               },
               {
                 label: fq(a * c, e),
-                feedback: "Set up AD : DB = AE : EC and solve for DB.",
+                feedback: "Set up $AD : DB = AE : EC$ and solve for $DB$.",
               },
               {
                 label: `${a}`,
                 feedback:
-                  "The ratios AD : DB and AE : EC are equal, but the lengths AD and DB need not be.",
+                  "The ratios $AD : DB$ and $AE : EC$ are equal, but the lengths $AD$ and $DB$ need not be.",
               },
               {
                 label: `${a * e}`,
                 feedback:
-                  "Cross-multiplying gives $AE\\cdot DB=AD\\cdot EC$. Divide by AE as well.",
+                  "Cross-multiplying gives $AE\\cdot DB=AD\\cdot EC$. Divide by $AE$ as well.",
               },
             ],
         figure: { kind: "scene", scene: splitterScene(a, b, c, e, unknown) },
@@ -2085,10 +2085,10 @@ function similarityCase(
   return {
     variant: 3,
     built: {
-      prompt: `In right triangle ABC, the right angle is at C and CD is the altitude to the hypotenuse AB. AC = ${leg} and AB = ${p + q}. What is the length of AD?`,
-      hint: `Triangle ACD is similar to triangle ABC (they share angle A and each has a right angle). The leg AC is the geometric mean of AD and AB.`,
+      prompt: `In right triangle $ABC$, the right angle is at $C$ and $CD$ is the altitude to the hypotenuse $AB$. $AC = ${leg}$ and $AB = ${p + q}$. What is the length of $AD$?`,
+      hint: `Triangle $ACD$ is similar to triangle $ABC$ (they share angle $A$ and each has a right angle). The leg $AC = ${leg}$ is the geometric mean of $AD$ and $AB = ${p + q}$.`,
       explanation: [
-        "Triangles ACD and ABC are similar, so $\\frac{AC}{AB}=\\frac{AD}{AC}$ and $AC^2=AD\\cdot AB$.",
+        "Triangles $ACD$ and $ABC$ are similar, so $\\frac{AC}{AB}=\\frac{AD}{AC}$ and $AC^2=AD\\cdot AB$.",
         `$${leg}^2=AD\\cdot${p + q}$, so $AD=${leg * leg}\\div${p + q}=${p}$.`,
       ],
       correct: `${p}`,
