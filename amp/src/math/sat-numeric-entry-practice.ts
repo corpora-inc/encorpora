@@ -18,7 +18,8 @@ type Case = {
   data: Record<string, number | string>;
 };
 
-export const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : Math.abs(a));
+export const gcd = (a: number, b: number): number =>
+  b ? gcd(b, a % b) : Math.abs(a);
 export const q = (n: number, d = 1): Q => {
   if (!d) throw new Error("Zero denominator");
   if (d < 0) {
