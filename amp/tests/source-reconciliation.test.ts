@@ -65,10 +65,10 @@ test("Florida B.E.S.T. inventory counts benchmarks honestly and never claims cov
   // Independent counts from the July 2025 PDF: K-2 75, 3-5 109, 6-8 114,
   // Algebra 1 / Geometry / Algebra 2 / Precalculus 181, MTR 7.
   const expected = [
-    [75, 64, 11, 0, 0],
-    [109, 97, 12, 0, 0],
-    [114, 94, 20, 0, 0],
-    [181, 158, 23, 0, 0],
+    [75, 66, 9, 0, 0],
+    [109, 104, 5, 0, 0],
+    [114, 96, 18, 0, 0],
+    [181, 162, 19, 0, 0],
     [7, 0, 0, 0, 7],
   ];
   slices.forEach((slice, i) => {
@@ -86,13 +86,13 @@ test("Florida B.E.S.T. inventory counts benchmarks honestly and never claims cov
   const all = slices.flatMap((s) => s.requirements);
   assert.equal(all.length, 486);
   assert.equal(new Set(all.map((r) => r.id)).size, 486);
-  assert.equal(all.filter((r) => r.reconciliation === "partial").length, 413);
-  assert.equal(all.filter((r) => r.reconciliation === "missing").length, 66);
+  assert.equal(all.filter((r) => r.reconciliation === "partial").length, 428);
+  assert.equal(all.filter((r) => r.reconciliation === "missing").length, 51);
   // Every missing benchmark is a concrete, template-free demand with an owner skill.
   const missing = slices.flatMap((s) =>
     s.tasks.filter((t) => t.disposition === "missing-family"),
   );
-  assert.equal(missing.length, 66);
+  assert.equal(missing.length, 51);
   assert.ok(
     missing.every((t) => !t.templateIds.length && t.skillIds.length === 1),
   );

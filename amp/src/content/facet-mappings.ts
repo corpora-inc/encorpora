@@ -1252,6 +1252,118 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...timeMoneyFacetMappings,
   ...attributeFacetMappings,
   ...comparisonFacetMappings,
+  {
+    templateId: "fl-equation-truth-20",
+    facetId: "equality.core",
+    extent: "partial",
+    rationale:
+      "Select the true or false addition or subtraction equation within 20, including an operation on both sides and the result on the left. Does not assess writing an equation or explaining in words why an equation is true.",
+  },
+  {
+    templateId: "fl-equation-truth-100",
+    facetId: "equality.core",
+    extent: "partial",
+    rationale:
+      "Select the true or false addition or subtraction equation within 100, including sums with different addends and the same value. Does not assess writing an equation or a written explanation of why it is true.",
+  },
+  {
+    templateId: "fl-equation-truth-mult-div",
+    facetId: "missing-factor.core",
+    extent: "partial",
+    rationale:
+      "Select the true or false multiplication or division equation with facts within 12 and the result on either side. Does not assess finding a missing number or explaining the choice in words.",
+  },
+  {
+    templateId: "fl-equation-truth-whole",
+    facetId: "missing-factor.core",
+    extent: "partial",
+    rationale:
+      "Select the true or false whole-number equation using any of the four operations, with multiplication facts within 12 and repeated-subtraction forms. Does not assess decimals, parentheses or written explanation.",
+  },
+  {
+    templateId: "fl-equation-truth-grouped",
+    facetId: "numerical-expressions.core",
+    extent: "partial",
+    rationale:
+      "Select the true or false equation with parentheses, decimals to tenths and any of the four operations. Does not assess writing equations, fractions or a written explanation.",
+  },
+  {
+    templateId: "fl-decimal-tenth-hundredth-step",
+    facetId: "decimal-fractions.core",
+    extent: "partial",
+    rationale:
+      "Enter the decimal that is 0.1 or 0.01 more or less than a decimal with up to two places, including regrouping across places and whole-number bases. Does not assess other amounts, comparing decimals or fraction forms.",
+  },
+  {
+    templateId: "fl-decimal-by-tenth-hundredth",
+    facetId: "powers-of-ten.core",
+    extent: "partial",
+    rationale:
+      "Enter the product or quotient when a decimal to tenths is multiplied or divided by 0.1 or 0.01, and the missing factor in a product with 0.1 or 0.01. Does not assess other powers of ten, exponent notation or written explanations of the shift.",
+  },
+  {
+    templateId: "fl-expression-description-match",
+    facetId: "numerical-expressions.core",
+    extent: "partial",
+    rationale:
+      "Choose the numerical expression (parentheses, whole numbers and tenths) that matches a verbal description, or the description that matches an expression. Does not assess writing an expression, fractions or evaluating it.",
+  },
+  {
+    templateId: "fl-two-step-story-equation",
+    facetId: "multi-operation-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation with a variable and two operations that models a whole-number story with equal groups, an extra step, or an extra step in every group. Does not assess solving the equation, stories with more than two operations or writing the equation.",
+  },
+  {
+    templateId: "fl-metric-customary-conversion",
+    facetId: "units-and-precision.core",
+    extent: "partial",
+    rationale:
+      "Convert a length, mass, volume or area between customary and metric units, or money at a stated rate, using a factor given in the problem. Does not assess remembering factors, multi-step conversions, rates or precision.",
+  },
+  {
+    templateId: "fl-integer-multiply-divide",
+    facetId: "signed-multiplication.core",
+    extent: "partial",
+    rationale:
+      "Multiply or divide two integers with positive, negative and zero values, including a divisor of -1. Does not assess rational numbers, three or more factors, contexts or the properties of operations.",
+  },
+  {
+    templateId: "fl-vector-dot-product",
+    facetId: "vectors.core",
+    extent: "partial",
+    rationale:
+      "Find the dot product of two plane vectors, the component that makes two vectors perpendicular, and the scalar projection onto a vector with integer length. Does not assess three dimensions, vector projection as a vector or proofs.",
+  },
+  {
+    templateId: "fl-vector-angle",
+    facetId: "vectors.core",
+    extent: "partial",
+    rationale:
+      "Choose the angle between two plane vectors that make a multiple of 45 degrees, or the relationship (perpendicular, parallel same or opposite direction, neither) from the dot product. Does not assess angles needing an inverse cosine value, three dimensions or proofs.",
+  },
+  {
+    templateId: "fl-even-odd-classify",
+    facetId: "function-transformations.core",
+    extent: "partial",
+    rationale:
+      "Classify a polynomial function given by an equation as even, odd or neither using f(-x), and choose the polynomial with a stated symmetry. Does not assess classifying from a graph or table, nonpolynomial functions or proof.",
+  },
+  {
+    templateId: "fl-function-arithmetic",
+    facetId: "function-composition.core",
+    extent: "partial",
+    rationale:
+      "Choose the formula for (f+g)(x), (f-g)(x) or (fg)(x) for linear and quadratic functions, the domain of (f/g)(x) when g is linear or quadratic with integer zeros, and the value of (f/g)(a). Does not assess other function families, domain of products or contextual models.",
+  },
+  {
+    templateId: "fl-trapezoid-consequences",
+    facetId: "parallelogram-proofs.core",
+    extent: "partial",
+    rationale:
+      "Find a length or angle using the trapezoid midsegment theorem, the base angles and supplementary leg angles of an isosceles trapezoid, and its congruent diagonals, with numeric or linear expressions. Does not assess written proofs, constructions or drawn figures.",
+  },
   ...numberSenseFacetMappings,
   ...multiplyDivideFacetMappings,
   ...addSubtractFacetMappings,
