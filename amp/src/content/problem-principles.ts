@@ -67,6 +67,7 @@ import { complexPrinciples } from "./complex-lessons";
 import { financeCreditPrinciples } from "./finance-credit-lessons";
 import { hsStateGapPrinciples } from "./hs-state-gaps-lessons";
 import { financeIncomePrinciples } from "./finance-income-lessons";
+import { texasHsPrinciples } from "./texas-hs-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
 import { texas38Principles } from "./texas-38-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
@@ -117,6 +118,7 @@ export const principles: Record<string, string> = {
   ...financeCreditPrinciples,
   ...hsStateGapPrinciples,
   ...financeIncomePrinciples,
+  ...texasHsPrinciples,
   ...k8StateNumberPrinciples,
   ...texas38Principles,
   ...satNumericEntryPrinciples,

@@ -67,6 +67,7 @@ import { complexMethods } from "./complex-lessons";
 import { financeCreditMethods } from "./finance-credit-lessons";
 import { hsStateGapMethods } from "./hs-state-gaps-lessons";
 import { financeIncomeMethods } from "./finance-income-lessons";
+import { texasHsMethods } from "./texas-hs-lessons";
 import { k8StateNumberMethods } from "./k8-state-number-lessons";
 import { texas38Methods } from "./texas-38-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
@@ -121,6 +122,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...financeCreditMethods,
   ...hsStateGapMethods,
   ...financeIncomeMethods,
+  ...texasHsMethods,
   ...k8StateNumberMethods,
   ...texas38Methods,
   ...satNumericEntryMethods,

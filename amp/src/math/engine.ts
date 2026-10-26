@@ -330,6 +330,10 @@ import {
   generateFinanceCreditProblem,
 } from "./finance-credit-practice";
 import {
+  texasHsTemplates,
+  generateTexasHsProblem,
+} from "./texas-hs-practice";
+import {
   algebraRequirementGapTemplates,
   generateAlgebraRequirementGapProblem,
 } from "./algebra-requirement-gaps-practice";
@@ -530,6 +534,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...financeCreditTemplates,
   ...hsStateGapTemplates,
   ...algebraRequirementGapTemplates,
+  ...texasHsTemplates,
   ...advancedMathGapTemplates,
   ...satAlgebraStructureTemplates,
   ...satNumericEntryTemplates,
@@ -837,6 +842,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
     ...algebraRequirementGapTemplates,
+    ...texasHsTemplates,
     ...pointPlotTemplates,
     ...multiPartChoiceTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -1037,6 +1043,8 @@ function generateRawProblem(
     return complexMultiplicationCase(seed).problem;
   if (financeCreditTemplateIds.has(templateId))
     return generateFinanceCreditProblem(templateId, seed);
+  if (texasHsTemplates.some((t) => t.id === templateId))
+    return generateTexasHsProblem(templateId, seed);
   if (algebraRequirementGapTemplates.some((t) => t.id === templateId))
     return generateAlgebraRequirementGapProblem(templateId, seed);
   if (satAlgebraStructureTemplates.some((t) => t.id === templateId))
