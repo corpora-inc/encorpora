@@ -93,3 +93,23 @@ test("Missing, mixed-provider, oversized and unrelated data is rejected", () => 
     /invalid_click_evidence/,
   );
 });
+test("OpenAI attribution stays opaque, exact and isolated from other fields", () => {
+  const identifiers = { oppref: "Original_+/=Case.~" };
+  assert.deepEqual(
+    providerClickIdentifiers({ provider: "openai", identifiers }, observed),
+    identifiers,
+  );
+  for (const invalid of [
+    { oppref: "" },
+    { oppref: "a\nb" },
+    { oppref: "x".repeat(4097) },
+    { oppref: "ok", email: "no@example.invalid" },
+  ])
+    assert.equal(
+      clickEvidenceSchema.safeParse({
+        provider: "openai",
+        identifiers: invalid,
+      }).success,
+      false,
+    );
+});

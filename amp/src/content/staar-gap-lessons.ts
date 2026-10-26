@@ -20,7 +20,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "Find the innermost groups and work them out first.",
       "Replace each finished group with its value, then work out the next group outward.",
       "Do multiplication and division, then addition and subtraction, from left to right.",
-      "For a verbal expression, turn “the sum of a and b” or “the difference of a and b” into a group, then multiply.",
+      "For a verbal expression, turn “the sum of $a$ and $b$” or “the difference of $a$ and $b$” into a group, then multiply.",
     ],
     watch:
       "Do not multiply by the first number in a group before the whole group is finished: in the product of 5 and the sum of 2 and 3, the sum 5 comes first.",

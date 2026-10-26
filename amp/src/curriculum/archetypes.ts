@@ -188,6 +188,7 @@ function.compare-representations|Compare features of functions given by a formul
 expression.polynomial-structure|Build or classify a polynomial by degree, number of terms, leading coefficient and constant term
 exponential.compare-linear|Find when an exponential function first exceeds a linear function
 graph.draw-nonlinear|Draw the graph of a nonlinear function from its rule, a stated domain or stated features
+logarithm.graph|Match a logarithmic function with its graph, including bases between zero and one
 exponential.graph|Graph an exponential function from its rule
 exponential.graph-features|Read the intercept, direction or asymptote of an exponential graph`,
   data: `
@@ -327,6 +328,7 @@ triangle.side-splitter|Use a line parallel to a triangle side to find proportion
 triangle.altitude-hypotenuse|Use the altitude to the hypotenuse of a right triangle
 segment.perpendicular-bisector|Use the points of a perpendicular bisector
 proof.geometry-written|Write a formal geometric proof or coordinate proof from givens
+triangle.centroid|Use the centroid of a triangle and the 2 to 1 split of each median
 coordinate.plane-point|Name, locate or describe a point on the coordinate plane
 measure.circle|Find a circle's circumference, area or diameter, or estimate pi
 shape.attribute-classify|Sort shapes by attributes such as right angles and parallel sides

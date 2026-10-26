@@ -16,7 +16,7 @@ export const PURCHASE_MEASUREMENT_NOTICE = {
   attestation:
     "I am at least 18, this is my own email address, and I allow the purchase sharing described above.",
 } as const;
-export type AdvertisingProvider = "google" | "meta";
+export type AdvertisingProvider = "google" | "meta" | "openai";
 export const META_PURCHASE_MEASUREMENT_NOTICE = {
   version: "meta-adult-purchase-v2",
   title: "Meta purchase measurement and ad delivery",
@@ -33,12 +33,29 @@ export const META_PURCHASE_MEASUREMENT_NOTICE = {
   attestation:
     "I am at least 18, this is my own email address, and I allow the purchase sharing described above.",
 } as const;
+export const OPENAI_PURCHASE_MEASUREMENT_NOTICE = {
+  version: "openai-adult-purchase-v1",
+  title: "OpenAI purchase measurement",
+  purpose: "Help AMP understand which ChatGPT ads lead to purchases.",
+  disclosure:
+    "If you allow this, AMP may send OpenAI your saved ad click reference, a random purchase reference, the purchase date, amount and currency. OpenAI can match the click reference with its advertising records.",
+  boundary:
+    "This permission covers your adult purchase only. No email, learner names, ages, answers, lessons or progress are sent. AMP requests measurement without future user-level personalization.",
+  choice:
+    "This is optional and lasts one year. You can withdraw it here at any time. Your choice does not affect pricing, purchasing or learning access. Withdrawal stops future sharing; it does not recall information already received by OpenAI.",
+  retention:
+    "AMP retains local purchase-measurement records for up to 90 days after purchase, and permission evidence for its duration and up to 90 days after withdrawal or expiry. A minimal opt-out setting prevents collection from resuming when evidence expires. OpenAI handles received information under its own privacy policy.",
+  attestation:
+    "I am at least 18 and allow the purchase sharing described above.",
+} as const;
 export function measurementNotice(provider: AdvertisingProvider) {
   switch (provider) {
     case "google":
       return PURCHASE_MEASUREMENT_NOTICE;
     case "meta":
       return META_PURCHASE_MEASUREMENT_NOTICE;
+    case "openai":
+      return OPENAI_PURCHASE_MEASUREMENT_NOTICE;
     default:
       throw new Error("Unsupported advertising provider");
   }
@@ -74,9 +91,13 @@ export const permissionChangeSchema = changeSchema(
 export const metaPermissionChangeSchema = changeSchema(
   META_PURCHASE_MEASUREMENT_NOTICE.version,
 );
+export const openaiPermissionChangeSchema = changeSchema(
+  OPENAI_PURCHASE_MEASUREMENT_NOTICE.version,
+);
 export type PermissionChange =
   | z.infer<typeof permissionChangeSchema>
-  | z.infer<typeof metaPermissionChangeSchema>;
+  | z.infer<typeof metaPermissionChangeSchema>
+  | z.infer<typeof openaiPermissionChangeSchema>;
 export class AdvertisingPermissionError extends Error {
   constructor(
     readonly statusCode: number,
