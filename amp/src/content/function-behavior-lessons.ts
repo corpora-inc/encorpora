@@ -23,7 +23,7 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
       "The degree counts every exponent, not only the number of different zeros. Terms of a polynomial may be written out of order, so look for the highest exponent rather than the first term.",
   },
   "polynomial-graph-match": {
-    goal: "Given the graph of a polynomial with integer zeros, write its factored form: the factor for each zero, the exponent that makes the graph cross or touch there, and the sign of the leading coefficient.",
+    goal: "Write the factored form of a polynomial from its graph: a factor and exponent for each zero, and the sign of the leading coefficient.",
     intuition:
       "A zero of the polynomial is a point where the graph meets the $x$-axis, and each zero comes from a factor $(x-r)$. A graph that passes straight through the axis comes from a factor used an odd number of times; a graph that touches the axis and turns back comes from a factor used an even number of times. The far right of the graph tells the sign of the leading coefficient.",
     terms: [

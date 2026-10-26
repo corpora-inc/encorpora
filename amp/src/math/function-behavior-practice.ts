@@ -1452,7 +1452,7 @@ export function polynomialGraphMatchCase(seed: string) {
     problem: finish(meta, seed, r, {
       prompt:
         "The graph of a polynomial $P$ is shown. Its zeros are integers, and its leading coefficient is $1$ or $-1$. Which factored form gives this graph?",
-      hint: `Find where the graph meets the $x$-axis and whether it crosses or touches there: a crossing needs an odd exponent and a touch needs an even one. Then check which way the right end goes.`,
+      hint: `The graph meets the $x$-axis at ${roots.length} points. Find where, and whether it crosses or touches there: a crossing needs an odd exponent and a touch needs an even one. Then check which way the right end goes.`,
       explanation: [
         `The graph meets the $x$-axis at ${andList(roots.map((z) => `$x=${z}$`))}, so the factors are ${andList(roots.map((z) => `$${factor(z)}$`))}.`,
         `It crosses at ${andList(cross.map((z) => `$x=${z}$`))} (exponent 1) and touches and turns back at ${andList(touch.map((z) => `$x=${z}$`))} (exponent 2), so the degree is $${degree}$.`,
