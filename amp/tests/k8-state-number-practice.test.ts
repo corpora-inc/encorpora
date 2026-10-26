@@ -380,15 +380,15 @@ test("customary conversions match independent checks", () => {
 
 test("mixed measures are checked in the smaller unit", () => {
   const pair = (s: string) => {
-    const m = /(\d+) (ft|yd|lb|gal|c) (\d+) (in|ft|oz|qt|fl oz)/.exec(s)!;
+    const m = /(\d+) (ft|yd|lb|gal|cups?) (\d+) (in|ft|oz|qt|fl oz)/.exec(s)!;
     return { big: Number(m[1]), small: Number(m[3]), bigUnit: m[2]! };
   };
-  const per: Record<string, number> = { ft: 12, yd: 3, lb: 16, gal: 4, c: 8 };
+  const per: Record<string, number> = { ft: 12, yd: 3, lb: 16, gal: 4, cup: 8, cups: 8 };
   for (let seed = 0; seed < 400; seed++) {
     const p = generateProblem("customary-mixed-units", `s${seed}`);
     const prompt = p.public.prompt;
     const mixed = [
-      ...prompt.matchAll(/(\d+ (?:ft|yd|lb|gal|c) \d+ (?:in|ft|oz|qt|fl oz))/g),
+      ...prompt.matchAll(/(\d+ (?:ft|yd|lb|gal|cups?) \d+ (?:in|ft|oz|qt|fl oz))/g),
     ].map((x) => pair(x[1]!));
     const k = per[mixed[0]?.bigUnit ?? ""] ?? 0;
     const choices = labels(p);
