@@ -1,5 +1,6 @@
 import { satCompletionMethods } from "./sat-completion-lessons";
 import { satGeometryDataMethods } from "./sat-geometry-data-lessons";
+import { satGeometryAdvancedMethods } from "./sat-geometry-advanced-lessons";
 import { congruenceMethods } from "./congruence-lessons";
 import { assessmentGapMethods } from "./assessment-gap-lessons";
 import { radicalEquationMethods } from "./radical-equation-lessons";
@@ -87,6 +88,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...assessmentGapMethods,
   ...satCompletionMethods,
   ...satGeometryDataMethods,
+  ...satGeometryAdvancedMethods,
   ...completingSquareMethods,
   ...factoringMethods,
   ...volumeCoordinateMethods,
