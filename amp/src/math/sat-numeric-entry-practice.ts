@@ -1210,6 +1210,8 @@ export function satNumericEntryCase(id: string, seed: string) {
     hint: made.hint,
     explanation: made.explanation,
   });
+  // Grading metadata only: the public problem and its id are unchanged.
+  problem.entryPolicy = "sat-spr";
   return { ...made, problem };
 }
 
@@ -1219,3 +1221,7 @@ export function generateSatNumericEntryProblem(
 ): GeneratedProblem {
   return satNumericEntryCase(id, seed).problem;
 }
+
+/** True when a template's problems carry a non-exact entry policy. */
+export const hasEntryPolicy = (templateId: string): boolean =>
+  defs.some((d) => d.template.id === templateId);
