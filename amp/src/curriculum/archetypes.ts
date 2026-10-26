@@ -30,7 +30,30 @@ number.rational-irrational|Decide whether a sum or product of rational and irrat
 number.repeating-decimal|Write a repeating decimal as a fraction
 number.approximate-roots|Bound, approximate or order square and cube roots
 number.scientific-notation|Convert between scientific notation and standard form
-number.scientific-operations|Compare or compute with numbers in scientific notation`,
+number.scientific-operations|Compare or compute with numbers in scientific notation
+finance.budget-percent|Find budget amounts as percents of income
+finance.check-register|Complete or reconcile a check register
+finance.credit-concept|Recognize credit, borrowing and related financial terms
+finance.fixed-variable-expense|Tell fixed from variable expenses in a budget
+finance.income-compare|Compare earnings over several years
+finance.simple-interest|Find simple interest or compare interest earned or paid
+number.add-subtract-story|Solve an addition and subtraction story within 1000 that takes more than one step
+number.decimal-fraction-equivalent|Write or match a decimal with a fraction or mixed number
+number.decimal-model-operation|Match a decimal grid model with a multiplication or division equation
+number.expanded-form-whole|Write or recognize a whole number as a sum of place-value amounts
+number.fraction-benchmark-estimate|Estimate fraction sums or differences with benchmark fractions
+number.fraction-equal-share|Name the fraction of a whole that each equal share receives
+number.fraction-sum-expression|Write a sum of like fractions for a shaded or grouped amount
+number.number-classification|Classify numbers as whole, integer or rational
+number.number-line-equation|Match a number-line diagram with an addition or subtraction story
+number.number-word-form|Write or read a number in word form
+number.percent-fraction-decimal|Rename a percent as a decimal or fraction, or a fraction as a percent
+number.place-value-ratio|Compare a digit's value in two places of a whole number or decimal
+number.place-value-units|Write a number from counts of place-value units such as seventy hundreds
+number.rational-operations|Compute with signed rational numbers in fraction and decimal forms
+number.real-order|Order real numbers written as roots, fractions, decimals and percents
+number.remainder-interpret|Interpret a division remainder in context
+number.strip-diagram|Choose a strip diagram that models a story`,
   algebra: `
 expression.verbal|Translate a verbal description into an algebraic expression or equation
 linear.solve|Solve a one-variable linear equation, including grouped and fractional coefficients
@@ -69,7 +92,12 @@ pattern.paired|Pair terms of two patterns and state the relationship
 function.relation-equation|Identify the dependent variable and write its equation from a context
 function.linear-test|Decide which equation defines a linear or proportional function
 equation.solution-point|Choose the point on the graph of an equation by testing ordered pairs
-inequality.number-line|Match an inequality with its number-line graph`,
+inequality.number-line|Match an inequality with its number-line graph
+expression.multistep-equations|Choose the linked equations that model a two-step story
+function.proportional-identify|Recognize a proportional relationship from a situation, table, graph or rule
+inequality.solution-set|Decide which values or inequalities hold for a stated inequality
+pattern.graph-relationship|Choose the graph of a rule or proportional relationship
+system.from-graph|Choose the system of equations that two graphed lines show`,
   "advanced-math": `
 expression.polynomial|Add, subtract or multiply polynomials and combine like terms
 expression.factor|Factor a polynomial or identify one of its factors
@@ -137,7 +165,9 @@ expression.polynomial-division|Divide a polynomial by x minus a, or use the rema
 function.piecewise|Read or write a piecewise function from its graph or absolute value
 function.composition|Evaluate or write a composition of functions
 function.inverse|Find an inverse function's value or expression
-function.compare-representations|Compare features of functions given by a formula, a table or a graph`,
+function.compare-representations|Compare features of functions given by a formula, a table or a graph
+exponential.graph|Graph an exponential function from its rule
+exponential.graph-features|Read the intercept, direction or asymptote of an exponential graph`,
   data: `
 data.graph-read|Read values, extremes or changes from a bar graph, line graph or table
 ratio.units|Convert units of length, rate, area, volume or density
@@ -184,7 +214,17 @@ probability.addition-rule|Find P(A or B) with the addition rule
 probability.multiplication-rule|Find P(A and B) with the multiplication rule or a tree
 study.statistical-question|Choose the question that anticipates variability in its answers
 univariate.compare-distributions|Compare the centers and spreads of two distributions
-bivariate.categorical-association|Decide whether two categorical variables are associated from row percents`,
+bivariate.categorical-association|Decide whether two categorical variables are associated from row percents
+bivariate.correlation|Interpret the sign and strength of a correlation coefficient
+data.frequency-table-read|Read counts from a tally or frequency table and compare them
+data.graph-error|Find the mismatch between a described data set and its graph
+data.percent-bar-graph|Read a percentage bar graph
+data.stem-leaf-read|Read values or sums from a stem-and-leaf plot
+data.table-to-graph|Match a table of paired values with its plotted points
+probability.prediction|Predict how often an outcome occurs from a probability or a sample
+ratio.part-whole|Find a part of a total from a part-to-part ratio
+ratio.write-simplify|Write a ratio from quantities and simplify it
+univariate.shape|Describe the shape or symmetry of a distribution from a display`,
   geometry: `
 measure.area|Find perimeters, areas or missing lengths of polygons and composite figures
 measure.volume|Find volumes of solids or missing dimensions from a volume
@@ -255,7 +295,13 @@ proof.measurement-formulas|Choose the step that justifies a circle, pyramid or c
 transformation.invariants|Decide which transformations preserve distance and angle
 construction.compass-straightedge|Choose or order the steps of a compass and straightedge construction
 circle.inscribed-centers|Choose the construction of a circumcenter or incenter or find angles of an inscribed quadrilateral
-coordinate.quadrilateral-claims|Use slopes and distances to name the most specific quadrilateral from vertex coordinates`,
+coordinate.quadrilateral-claims|Use slopes and distances to name the most specific quadrilateral from vertex coordinates
+coordinate.plane-point|Name, locate or describe a point on the coordinate plane
+measure.circle|Find a circle's circumference, area or diameter, or estimate pi
+shape.attribute-classify|Sort shapes by attributes such as right angles and parallel sides
+shape.parallel-perpendicular-sides|Count or identify parallel and perpendicular sides of polygons
+shape.solid-properties|Compare faces, edges or parallel and congruent faces of solids
+transform.rule|Match a transformation with its coordinate rule`,
   arithmetic: `
 number.estimate|Estimate sums, products or quotients by rounding or compatible numbers, or judge an answer by estimating
 number.whole-unit-stories|Count whole kits, vehicles or leftovers when only whole units count

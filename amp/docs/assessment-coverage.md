@@ -30,6 +30,28 @@ Practice Test 11 added no archetypes. Tests 7–10 each added at most three, and
 
 A second labeler re-labeled a seeded random 10% sample (44 questions) without seeing the first labels. Status agreed on 41 (93.2%), archetypes overlapped on 42 (95.5%) and templates on 43 (97.7%). The disagreements were resolved by applying one rule to every test: linear families never use function notation, so linear `f(x)` questions are partial.
 
+### STAAR mathematics
+
+All 260 mathematics items of the Spring 2025 STAAR released tests for grades 3 through 8 (30, 32, 34, 36, 38 and 40 items) and Algebra I (50) are labeled. TEA publishes these forms only as online practice tests, so each item is labeled from its published rationale and from the answer key, which states the TEKS code, interaction type and points. The code is recorded as printed (grade.strand.expectation.letter), and every row's limitations begin with the exact interaction.
+
+| Test | Items | Covered | Partial | Missing |
+| --- | ---: | ---: | ---: | ---: |
+| Grade 3 | 30 | 3 (10%) | 24 (80%) | 3 (10%) |
+| Grade 4 | 32 | 3 (9.4%) | 25 (78.1%) | 4 (12.5%) |
+| Grade 5 | 34 | 2 (5.9%) | 31 (91.2%) | 1 (2.9%) |
+| Grade 6 | 36 | 2 (5.6%) | 28 (77.8%) | 6 (16.7%) |
+| Grade 7 | 38 | 5 (13.2%) | 32 (84.2%) | 1 (2.6%) |
+| Grade 8 | 40 | 7 (17.5%) | 33 (82.5%) | 0 (0%) |
+| Algebra I | 50 | 13 (26%) | 37 (74%) | 0 (0%) |
+
+Of the 260 items, 179 are multiple choice, 29 drag and drop, 19 inline choice, 12 multiselect, 10 equation editor, 6 hot spot, 3 graphing, 1 number line and 1 match table grid. Hot spot, drag and drop, graphing and number line are `graph/drag`; inline choice and match table grid are `other`; an equation editor is `numeric` when the answer is a number (8) and `constructed` when the learner types an expression or inequality (2). Only the point-plot protocol takes `graph/drag`, so 38 of the 39 such items are partial: only the graphing item that places two points of a proportional line is covered, while the dashed boundary and shading of an inequality, an exponential curve, number-line endpoints and arrows, hot-spot selection and drag-and-drop assembly have no protocol. The 12 multiselect items have only two families that take a multi-select response (quadrilateral categories and slope triangles), and the 20 inline-choice and match items (dropdown blanks, mostly with two parts) have none.
+
+The largest gaps are order of operations with nested groups, negatives and exponents, choosing or assembling the equation for a story, relationships between paired terms and tables, dot-plot, histogram and stem-and-leaf reading beyond a single count, area and perimeter chains and decimal sides, slope and intercept from points, the coordinate rule of a transformation and area, volume and surface-area chains. Fifteen items have no related practice: number words, percent-fraction-decimal renaming, credit and expense vocabulary, classification of number sets, benchmark fraction estimates, percentage bar graphs, strip diagrams for multistep stories, ratio writing, number-line diagrams of stories and properties of solid faces.
+
+The STAAR sources are not saturated: from Grade 3 to Algebra I they add 20, 20, 13, 13, 7, 8 and 8 archetypes not seen in any earlier source, and 20% to 76% of their items fall on archetypes already seen. Elementary tests introduce the most.
+
+A second labeler re-labeled a seeded random 10% sample (26 items across all seven tests) without seeing the first labels. Response format agreed on 26 (100%), status on 22 (84.6%), archetypes overlapped on 25 (96.2%) and templates on 22 (84.6%). The status disagreements were resolved by applying two rules to every test: a family counts as related practice only if it practices the item's core operation or reading, not merely its topic or representation (two sampled items and two others of the same kind became missing), and perimeter practice with whole-number sides does not cover decimal sides. A story context or label around a graph read does not change the task.
+
 The earlier purposive samples (Massachusetts grades 5, 8 and 10, New York grade 7, and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
 
 ### Adding a source
