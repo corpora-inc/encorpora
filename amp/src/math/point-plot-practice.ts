@@ -16,6 +16,10 @@ import {
   type PointPlotGrid,
   type PointPlotResponse,
 } from "./point-plot";
+import {
+  generateCurveParts,
+  pointPlotCurveTemplates,
+} from "./point-plot-curves";
 
 /** Families answered by placing points on a coordinate grid (point-plot-v1). */
 const plot = { requiredResponseCapability: "point-plot-v1" as const };
@@ -50,6 +54,7 @@ export const pointPlotTemplates: readonly TemplateMetadata[] = [
     description:
       "Place the images of two or three vertices, in order, under a translation, a reflection over an axis, or a rotation of 90° or 180° about the origin.",
   },
+  ...pointPlotCurveTemplates,
 ];
 
 const GRID: PointPlotGrid = {
@@ -103,6 +108,9 @@ function problemOf(
     // A lesson's example shows the solved grid; a problem never does.
     walkthrough: pointPlotScene(parts.response, {
       answer: parts.answer,
+      ...(parts.grading.mode === "on-curve"
+        ? { curve: parts.grading.curve }
+        : {}),
       title: "The solved grid",
     }),
   };
@@ -710,5 +718,8 @@ export function generatePointPlotProblem(
     case "place-transformed-image":
       return placeTransformedImage(seed);
   }
+  const curve = generateCurveParts(templateId, seed);
+  const meta = pointPlotCurveTemplates.find((t) => t.id === templateId);
+  if (curve && meta) return problemOf(meta, seed, curve);
   throw new Error(`Unknown point-plot family ${templateId}`);
 }

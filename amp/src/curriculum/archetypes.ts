@@ -20,6 +20,10 @@ export interface Archetype {
 }
 const rows: Record<ArchetypeDomain, string> = {
   number: `
+finance.net-worth|Find an unknown asset or the net worth from assets and liabilities
+finance.fee-compare|Compare total bank fees from monthly and per-use charges
+number.number-line-position|Pick or place a whole number from its position on a number line between hundreds
+finance.supply-price|Tell how scarce or plentiful supply changes a price and why
 number.multidigit-multiply-context|Multiply multidigit whole numbers in a one-step context
 number.round-decimal|Round a decimal to a given place
 number.inverse-rounding|Choose or find a number that rounds to a given decimal value
@@ -53,9 +57,12 @@ number.place-value-units|Write a number from counts of place-value units such as
 number.rational-operations|Compute with signed rational numbers in fraction and decimal forms
 number.real-order|Order real numbers written as roots, fractions, decimals and percents
 number.remainder-interpret|Interpret a division remainder in context
-number.strip-diagram|Choose a strip diagram that models a story`,
+number.strip-diagram|Choose a strip diagram that models a story
+number.inverse-round-whole|Choose the whole numbers that round to a stated ten or hundred
+rational.negative-fraction-forms|Choose the expressions that equal a negative fraction`,
   algebra: `
 expression.verbal|Translate a verbal description into an algebraic expression or equation
+expression.parts|Name the terms, coefficients, exponents, constant term and factors of an expression
 linear.solve|Solve a one-variable linear equation, including grouped and fractional coefficients
 linear.structure|Find the value of a related linear expression from an equation by scaling or rearranging without isolating the variable
 linear.step-justification|Name the property that justifies a step in solving an equation
@@ -101,7 +108,12 @@ expression.multistep-equations|Choose the linked equations that model a two-step
 function.proportional-identify|Recognize a proportional relationship from a situation, table, graph or rule
 inequality.solution-set|Decide which values or inequalities hold for a stated inequality
 pattern.graph-relationship|Choose the graph of a rule or proportional relationship
-system.from-graph|Choose the system of equations that two graphed lines show`,
+system.from-graph|Choose the system of equations that two graphed lines show
+expression.description-match|Match a numerical expression with its verbal description, or the reverse
+function.graph-shape|Describe a graph as linear or nonlinear and increasing or decreasing
+expression.parts-names|Name the coefficient, constant, exponent and variable of a term
+line.slope-sign|Decide whether a slope is positive, negative, zero or undefined from how outputs change
+expression.numerical-structure|Describe a numerical expression with parentheses as a multiple of a quantity without evaluating it`,
   "advanced-math": `
 expression.polynomial|Add, subtract or multiply polynomials and combine like terms
 expression.factor|Factor a polynomial or identify one of its factors
@@ -125,6 +137,9 @@ function.value-meaning|Interpret a statement f(a) = b about a context model as a
 nonlinear.features|Read vertex, axis, intercepts or extreme values from a quadratic or polynomial rule or graph
 nonlinear.transform|Relate translations and reflections of graphs to function rules and points
 nonlinear.representations|Match a nonlinear rule with its table or graph
+nonlinear.graph-quadratic|Graph a quadratic function from its vertex or standard form by plotting its points
+nonlinear.graph-absolute|Graph an absolute value function from its rule by plotting its points
+nonlinear.graph-root|Graph a square root function from its rule by plotting its points
 nonlinear.rational-representations|Connect a rational function rule with its table or graph
 quadratic.context|Choose or use a quadratic model and interpret its maximum, zeros or initial value
 exponential.context|Build, evaluate or find a parameter of an exponential growth or decay model
@@ -236,6 +251,7 @@ ratio.part-whole|Find a part of a total from a part-to-part ratio
 ratio.write-simplify|Write a ratio from quantities and simplify it
 univariate.shape|Describe the shape or symmetry of a distribution from a display`,
   geometry: `
+shape.congruent-equal-parts|Pick the congruent figures whose equal-area parts show the same unit fraction
 measure.area|Find perimeters, areas or missing lengths of polygons and composite figures
 measure.volume|Find volumes of solids or missing dimensions from a volume
 measure.surface|Find surface areas of solids
@@ -316,7 +332,9 @@ measure.circle|Find a circle's circumference, area or diameter, or estimate pi
 shape.attribute-classify|Sort shapes by attributes such as right angles and parallel sides
 shape.parallel-perpendicular-sides|Count or identify parallel and perpendicular sides of polygons
 shape.solid-properties|Compare faces, edges or parallel and congruent faces of solids
-transform.rule|Match a transformation with its coordinate rule`,
+transform.rule|Match a transformation with its coordinate rule
+measure.metric-mass-capacity|Convert between metric units of mass and capacity
+shape.rotational-symmetry|Decide which figure has rotational symmetry`,
   arithmetic: `
 number.estimate|Estimate sums, products or quotients by rounding or compatible numbers, or judge an answer by estimating
 number.whole-unit-stories|Count whole kits, vehicles or leftovers when only whole units count
@@ -393,7 +411,14 @@ early.array-total|Count the squares in a small array
 early.odd-even|Tell whether a number of objects pairs up evenly
 whole.distributive-parts|Find a partial product or total from parts of an array or nested groups
 whole.multiplicative-comparison|Find a quantity or the factor in a multiplicative comparison
-whole.multi-step-stories|Solve a two-step story of equal groups and a known use or payment`,
+whole.multi-step-stories|Solve a two-step story of equal groups and a known use or payment
+whole.expression-story|Choose the word problem that a multiplication or division expression represents
+whole.related-equation|Choose the multiplication equation related to a division equation, or the reverse
+fractions.choose-model|Choose the drawn model that shows a stated fraction
+equation.truth|Decide which equations with a value on each side are true
+time.rename-units|Rename hours and minutes as minutes or minutes as hours
+number.factors-identify|Choose the numbers that are factors of a given whole number
+fractions.multiply-scaling|Decide whether a product exceeds, equals or falls below a factor from the size of the other factor`,
 };
 export const archetypes: readonly Archetype[] = Object.entries(rows).flatMap(
   ([domain, text]) =>

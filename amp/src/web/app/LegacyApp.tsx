@@ -62,6 +62,7 @@ import {
 import type { Learner, Outcome } from "../../server/repository";
 import type { ProgressSnapshot } from "../../server/progress";
 import type { Lesson } from "../../content/lessons";
+import { AnswerFeedback } from "../features/practice/AnswerFeedback";
 import { PracticeWorkspace, usePracticeViewport } from "../PracticeWorkspace";
 import {
   signIn,
@@ -108,7 +109,14 @@ class HttpError extends Error {
 type Catalog = {
   templates: TemplateMetadata[];
   lessons: Lesson[];
-  skills: { id: string; title: string; gradeBand: string; strand: string }[];
+  skills: {
+    id: string;
+    title: string;
+    gradeBand: string;
+    strand: string;
+    prerequisites?: string[];
+    description?: string;
+  }[];
   mode: string;
   /** The free practice before the paywall (`AMP_FREE_PROBLEMS`). */
   trial?: { free: number; placement: number };
@@ -930,7 +938,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const ready = upcoming.current;
     upcoming.current = null;
     if (!learner || !ready || ready.learnerId !== learner.id)
-      return loadBatch();
+      return loadBatch("");
     const navigation = ++navigationEpoch.current;
     const data = await ready.batch.catch(() => null);
     if (
@@ -939,7 +947,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     )
       return;
     if (data) applyBatch(data);
-    else await loadBatch();
+    else await loadBatch("");
   }
   async function submit() {
     if (!learner || !problem) return;
@@ -1548,6 +1556,28 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             response={response}
             setResponse={setResponse}
             outcome={outcome}
+            answerFeedback={
+              outcome &&
+              catalog &&
+              learner && (
+                <AnswerFeedback
+                  key={outcome.id}
+                  outcome={outcome}
+                  skills={catalog.skills}
+                  templates={catalog.templates}
+                  identity={["account", accountId ?? "", learner.id]}
+                  loadProgress={() =>
+                    api<ProgressSnapshot>(
+                      `/learners/${learner.id}/progress?skill=${encodeURIComponent(outcome.skillId)}`,
+                    )
+                  }
+                  busy={busy}
+                  choose={(templateId) =>
+                    void action(() => loadBatch(templateId))
+                  }
+                />
+              )
+            }
             hint={hint}
             hintCue={hintCue}
             busy={busy}
