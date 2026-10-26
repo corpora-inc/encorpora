@@ -57,8 +57,10 @@ export function formatShape(
     case "true-false-pair": {
       // As many equations as the select-all form keys, so the count a
       // learner reads is the same in both formats.
+      // Any number of them may be true, all or none included, so the last
+      // verdict never follows from the others.
       const total = Math.min(4, Math.max(2, legacy.k));
-      return { total, k: r(1, total - 1) };
+      return { total, k: r(0, total) };
     }
     case "single-true":
       return { total: 4, k: 1 };

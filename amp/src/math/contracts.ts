@@ -340,7 +340,8 @@ export interface GeneratedProblem {
   /** Private realized surface: the family's variant label and the value of
    * each variation axis (src/math/variation). Saved with the instance and
    * copied to its attempt evidence so calibration and review can reason per
-   * axis; never part of the public payload. Absent on older instances. */
+   * axis. Never in the public problem; it returns with the graded attempt,
+   * beside the answer. Absent on older instances. */
   variant?: ProblemVariant;
 }
 export interface ProblemVariant {

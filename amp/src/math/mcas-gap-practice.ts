@@ -2606,6 +2606,8 @@ export function mcasGapCase(
   const template = mcasGapTemplates.find((t) => t.id === templateId);
   if (!template) throw new Error(`Unknown template ${templateId}`);
   const varied = variedFamilies[templateId];
+  if (!varied && Object.keys(force).length)
+    throw new Error(`${templateId} has no variation axes`);
   if (varied) {
     const c = generateVaried(varied, seed, force);
     return {
