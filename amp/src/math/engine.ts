@@ -6,6 +6,10 @@ import {
   satGeometryDataTemplates,
   generateSatGeometryDataProblem,
 } from "./sat-geometry-data-practice";
+import {
+  satGeometryAdvancedTemplates,
+  generateSatGeometryAdvancedProblem,
+} from "./sat-geometry-advanced-practice";
 import { normalizeSelection } from "./selection-response";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
 import {
@@ -258,6 +262,10 @@ import {
   generateGeometryModelingProblem,
 } from "./geometry-modeling-practice";
 import {
+  geometryRequirementGapTemplates,
+  generateGeometryRequirementGapProblem,
+} from "./geometry-requirement-gaps-practice";
+import {
   functionBehaviorTemplates,
   generateFunctionBehaviorProblem,
 } from "./function-behavior-practice";
@@ -273,6 +281,10 @@ import {
   floridaGapTemplates,
   generateFloridaGapProblem,
 } from "./florida-gaps-practice";
+import {
+  generateStaarGapProblem,
+  staarGapTemplates,
+} from "./staar-gap-practice";
 import {
   satAlgebraStructureTemplates,
   generateSatAlgebraStructureProblem,
@@ -473,6 +485,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
   ...floridaGapTemplates,
+  ...staarGapTemplates,
   ...k8StateNumberTemplates,
   complexMultiplicationTemplate,
   ...algebraRequirementGapTemplates,
@@ -485,6 +498,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...complexConicsTemplates,
   ...trigonometryTemplates,
   ...geometryModelingTemplates,
+  ...geometryRequirementGapTemplates,
   ...functionBehaviorTemplates,
   ...remainingGapTemplates,
   ...polynomialTemplates,
@@ -550,6 +564,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...assessmentGapTemplates,
   ...satCompletionTemplates,
   ...satGeometryDataTemplates,
+  ...satGeometryAdvancedTemplates,
   ...bivariateTemplates,
 ];
 
@@ -736,6 +751,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...assessmentGapTemplates,
     ...satCompletionTemplates,
     ...satGeometryDataTemplates,
+    ...satGeometryAdvancedTemplates,
     ...bivariateTemplates,
     ...partWholeTemplates,
     ...attributeTemplates,
@@ -822,6 +838,8 @@ function generateRawProblem(
     return generateSatCompletionProblem(templateId, seed);
   if (satGeometryDataTemplates.some((t) => t.id === templateId))
     return generateSatGeometryDataProblem(templateId, seed);
+  if (satGeometryAdvancedTemplates.some((t) => t.id === templateId))
+    return generateSatGeometryAdvancedProblem(templateId, seed);
   if (assessmentGapTemplates.some((t) => t.id === templateId))
     return generateAssessmentGapProblem(templateId, seed);
   if (inferenceTemplates.some((t) => t.id === templateId))
@@ -938,6 +956,8 @@ function generateRawProblem(
     return generateNumberMeasurementGapProblem(templateId, seed);
   if (floridaGapTemplates.some((t) => t.id === templateId))
     return generateFloridaGapProblem(templateId, seed);
+  if (staarGapTemplates.some((t) => t.id === templateId))
+    return generateStaarGapProblem(templateId, seed);
   if (k8StateNumberTemplates.some((t) => t.id === templateId))
     return generateK8StateNumberProblem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))
@@ -966,6 +986,8 @@ function generateRawProblem(
     return generateTrigonometryProblem(templateId, seed);
   if (geometryModelingTemplates.some((t) => t.id === templateId))
     return generateGeometryModelingProblem(templateId, seed);
+  if (geometryRequirementGapTemplates.some((t) => t.id === templateId))
+    return generateGeometryRequirementGapProblem(templateId, seed);
   if (absoluteValueTemplates.some((t) => t.id === templateId))
     return generateAbsoluteValueProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))

@@ -30,6 +30,14 @@ const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
     templateIds: ["slope-triangle-statements"],
   },
   {
+    from: "slope",
+    to: "quadratic-graphs",
+    kind: "extension",
+    explanation:
+      "A line is graphed from two points because its slope is constant. A parabola has no constant slope, so it is graphed from its vertex and symmetric points found by substituting.",
+    templateIds: ["graph-quadratic-points"],
+  },
+  {
     from: "odd-and-even",
     to: "rule-patterns",
     kind: "extension",

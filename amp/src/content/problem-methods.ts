@@ -1,5 +1,6 @@
 import { satCompletionMethods } from "./sat-completion-lessons";
 import { satGeometryDataMethods } from "./sat-geometry-data-lessons";
+import { satGeometryAdvancedMethods } from "./sat-geometry-advanced-lessons";
 import { congruenceMethods } from "./congruence-lessons";
 import { assessmentGapMethods } from "./assessment-gap-lessons";
 import { radicalEquationMethods } from "./radical-equation-lessons";
@@ -70,6 +71,7 @@ import { algebraRequirementGapMethods } from "./algebra-requirement-gaps-lessons
 import { advancedMathGapMethods } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapMethods } from "./number-measurement-gaps-lessons";
 import { floridaGapMethods } from "./florida-gaps-lessons";
+import { staarGapMethods } from "./staar-gap-lessons";
 import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
 import { vectorMatrixMethods } from "./vectors-matrices-lessons";
@@ -77,6 +79,7 @@ import { statisticsProbabilityMethods } from "./statistics-probability-lessons";
 import { complexConicsMethods } from "./complex-conics-lessons";
 import { trigonometryMethods } from "./trigonometry-lessons";
 import { geometryModelingMethods } from "./geometry-modeling-lessons";
+import { geometryRequirementGapMethods } from "./geometry-requirement-gaps-lessons";
 import { functionBehaviorMethods } from "./function-behavior-lessons";
 import { absoluteValueMethods } from "./absolute-value-lessons";
 import type { ProblemMethod } from "./problem-lessons";
@@ -88,6 +91,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...assessmentGapMethods,
   ...satCompletionMethods,
   ...satGeometryDataMethods,
+  ...satGeometryAdvancedMethods,
   ...completingSquareMethods,
   ...factoringMethods,
   ...volumeCoordinateMethods,
@@ -112,6 +116,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...advancedMathGapMethods,
   ...numberMeasurementGapMethods,
   ...floridaGapMethods,
+  ...staarGapMethods,
   ...satAlgebraStructureMethods,
   ...remainingGapMethods,
   ...vectorMatrixMethods,
@@ -119,6 +124,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...complexConicsMethods,
   ...trigonometryMethods,
   ...geometryModelingMethods,
+  ...geometryRequirementGapMethods,
   ...functionBehaviorMethods,
   ...absoluteValueMethods,
   ...polynomialMethods,

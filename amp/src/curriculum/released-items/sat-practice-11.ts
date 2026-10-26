@@ -335,10 +335,10 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["angle.relationships"],
       demand:
         "Decide which expression cannot be the sum of two angles formed by intersecting lines given one angle as an expression",
-      status: "partial",
-      templateIds: ["angle-equation", "angle-pair-measure"],
+      status: "covered",
+      templateIds: ["angle-claim-reasoning"],
       limitations:
-        "Numeric angles from vertical and supplementary pairs; no expression-valued sums or 'could not be' reasoning.",
+        "The expression-sum variant gives one angle as a linear expression and asks which candidate cannot be the sum of two of the four angles, using the three possible sums and one impossible expression.",
     },
     {
       section: "Math module 1",
@@ -535,10 +535,10 @@ export const satPractice11 = defineLedger(
       standards: ["sat.geo.lines-angles-triangles"],
       archetypeIds: ["triangle.special"],
       demand: "Find an acute angle of a right triangle with equal legs",
-      status: "partial",
-      templateIds: ["triangle-angle-sum", "special-right-triangle"],
+      status: "covered",
+      templateIds: ["special-triangle-in-figure"],
       limitations:
-        "Angle sums use two given angles and special triangles give sides; no recognizing equal legs as 45-degree angles.",
+        "The acute-angle variant gives equal legs and asks the acute angle; related variants use 1:sqrt3 legs or a leg half the hypotenuse. Figure reading is replaced by written side lengths.",
     },
     {
       section: "Math module 2",
@@ -663,10 +663,10 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["triangle.relationships"],
       demand:
         "Use similar triangles formed by intersecting segments to find a side",
-      status: "partial",
-      templateIds: ["similar-triangle-side"],
+      status: "covered",
+      templateIds: ["crossing-segment-similarity"],
       limitations:
-        "Correspondence given, parallel segments or shadows; no crossing-segments configuration using vertical angles.",
+        "Two crossing segments with a parallel pair or a stated equal angle form similar triangles; numeric entry finds a missing side by equal ratios. The released figure is replaced by a written setup.",
     },
     {
       section: "Math module 2",

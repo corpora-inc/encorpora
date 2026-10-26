@@ -7,6 +7,7 @@ from fractions import Fraction
 SUPPORTED = frozenset({
     'polynomial-behavior-description', 'rational-function-features', 'graphical-solution-table',
     'polynomial-identity-use', 'binomial-coefficient', 'number-system-closure-classify',
+    'polynomial-graph-match',
 })
 CHOICE = SUPPORTED
 
@@ -128,6 +129,49 @@ def solve_polynomial(public):
         require(bool(crossed) == bool(crosses) and bool(touched) == bool(touches), 'Option omits or invents a zero class')
         return ENDS[head], got_cross, got_touch
     return finish(public, (ends, crosses, touches), parse)
+
+
+def expand(lead, zeros):
+    """Ascending coefficients of lead * prod (x - r)^m, by direct multiplication."""
+    poly = [Fraction(lead)]
+    for root, power in zeros.items():
+        for _ in range(power):
+            shifted = [Fraction(0)] + poly
+            scaled = [Fraction(-root) * c for c in poly] + [Fraction(0)]
+            poly = [a + b for a, b in zip(shifted, scaled)]
+    return tuple(poly)
+
+
+def solve_graph_match(public):
+    prompt = plain(public['prompt'])
+    require(prompt.startswith('The graph of a polynomial P is shown.'), 'Unknown graph-match question')
+    figure = public.get('figure')
+    require(figure is not None and figure['kind'] == 'scene', 'Graph match needs its graph')
+    graphs = [e for e in figure['scene']['elements'] if e['type'] == 'graph']
+    require(len(graphs) == 1 and len(graphs[0]['curves']) == 1, 'One plotted curve required')
+    graph = graphs[0]
+    fn = graph['curves'][0]['fn']
+    require(fn['f'] == 'poly', 'Plotted curve must be a polynomial')
+    coefficients = tuple(Fraction(c) for c in fn['c'])
+    while coefficients and coefficients[-1] == 0:
+        coefficients = coefficients[:-1]
+    require(abs(coefficients[-1]) == 1, 'Leading coefficient must be 1 or -1')
+
+    def value(x):
+        return sum(c * Fraction(x) ** i for i, c in enumerate(coefficients))
+    # The marked points are exactly the integer zeros inside the window.
+    lo, hi = graph['x']
+    zeros = {x for x in range(math.ceil(lo), math.floor(hi) + 1) if value(x) == 0}
+    marked = {Fraction(p['x']) for p in graph.get('points', [])}
+    require(all(p['y'] == 0 for p in graph.get('points', [])), 'Marked points must lie on the axis')
+    require(marked == zeros and len(marked) >= 2, 'Marked points must be the zeros of the curve')
+
+    def parse(label):
+        text = plain(label)
+        require(text.startswith('P(x)='), f'Unreadable choice: {label}')
+        lead, roots = factored(text[5:])
+        return expand(lead, roots)
+    return finish(public, coefficients, parse)
 
 
 def solve_expanded_ends(public, polynomial, question):
@@ -561,8 +605,9 @@ def solve(public):
         'polynomial-identity-use': solve_identity,
         'binomial-coefficient': solve_binomial,
         'number-system-closure-classify': solve_closure,
+        'polynomial-graph-match': solve_graph_match,
     }[template]
-    if template != 'graphical-solution-table':
+    if template not in ('graphical-solution-table', 'polynomial-graph-match'):
         require(public.get('figure') is None, 'Unexpected figure')
     return handler(public)
 
@@ -663,6 +708,17 @@ def self_test():
          'Rational: adding the rational number $5$ gives a rational result',
          'Irrational: if the sum were rational, subtracting $5$ would make $\\sqrt{6}$ rational'], 3))
 
+    def curve_figure(coefficients, points):
+        return {'kind': 'scene', 'scene': {'v': 1, 'elements': [{
+            'id': 'g', 'type': 'graph', 'x': [-4, 4], 'y': [-20, 20],
+            'points': [{'x': x, 'y': 0, 'label': str(x)} for x in points],
+            'curves': [{'fn': {'f': 'poly', 'c': coefficients}}]}]}}
+    # -(x+1)(x-2)^2 = -x^3 + 3x^2 - 4  (ascending: -4, 0, 3, -1)
+    cases.append(fixture('polynomial-graph-match',
+        'The graph of a polynomial $P$ is shown. Its zeros are integers, and its leading coefficient is $1$ or $-1$. Which factored form gives this graph?',
+        ['$P(x)=(x+1)(x-2)^{2}$', '$P(x)=-(x+1)(x-2)^{2}$', '$P(x)=-(x-1)(x+2)^{2}$', '$P(x)=-(x+1)^{2}(x-2)$'], 1,
+        curve_figure([-4, 0, 3, -1], [-1, 2])))
+
     rejected = 0
 
     def reject(problem, why):
@@ -713,6 +769,12 @@ def self_test():
     shifted = copy.deepcopy(cases[14])
     shifted['public']['prompt'] = shifted['public']['prompt'].replace('\\sqrt{11}\\cdot\\sqrt{44}', '\\sqrt{11}\\cdot\\sqrt{45}')
     reject(shifted, 'product changed')
+    shifted = copy.deepcopy(cases[-1])
+    shifted['public']['figure']['scene']['elements'][0]['curves'][0]['fn']['c'] = [4, 0, -3, 1]
+    reject(shifted, 'plotted curve changed')
+    shifted = copy.deepcopy(cases[-1])
+    shifted['public']['figure']['scene']['elements'][0]['points'].pop()
+    reject(shifted, 'zero left unmarked')
     return {'fixtures': len(cases), 'rejectedMutations': rejected}
 
 

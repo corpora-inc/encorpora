@@ -126,10 +126,10 @@ export const satPractice5 = defineLedger(
       archetypeIds: ["angle.relationships"],
       demand:
         "Use vertical angles to decide how an unknown angle compares with a given angle",
-      status: "partial",
-      templateIds: ["angle-pair-measure", "parallel-lines-angle"],
+      status: "covered",
+      templateIds: ["angle-claim-reasoning"],
       limitations:
-        "Both compute an angle numerically; item's choices are comparison statements including 'cannot be determined'.",
+        "Single-choice items compare vertical angles (equal) and adjacent angles on a line, with a cannot-be-determined distractor. The released figure is replaced by a written description.",
     },
     {
       section: "Math module 1",
@@ -579,10 +579,10 @@ export const satPractice5 = defineLedger(
       archetypeIds: ["angle.relationships"],
       demand:
         "Use the triangle angle sum to decide which measure is possible for a second angle",
-      status: "partial",
-      templateIds: ["triangle-angle-sum"],
+      status: "covered",
+      templateIds: ["angle-claim-reasoning"],
       limitations:
-        "triangle-angle-sum computes the third angle from two; item asks which value is possible from one angle (bound reasoning).",
+        "Single-choice triangle-bound items decide which second-angle measure is possible or impossible from one obtuse angle, with the exact remaining sum as a distractor.",
     },
     {
       section: "Math module 2",

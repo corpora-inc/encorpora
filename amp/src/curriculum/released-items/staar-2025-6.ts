@@ -39,9 +39,10 @@ export const staarGrade6 = defineLedger(
       standards: ["TEKS.6.1.4.E"],
       archetypeIds: ["number.percent-fraction-decimal"],
       demand: "Write a percent as a decimal",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family renames percents as decimals or fractions.",
+      status: "covered",
+      templateIds: ["staar-rename-percent-fraction-decimal"],
+      limitations:
+        "staar-rename-percent-fraction-decimal chooses the decimal for a percent, including percents above 100 and tenths of a percent.",
     },
     {
       item: {
@@ -68,10 +69,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Choose the unit rate of students per classroom, with the right unit order",
-      status: "partial",
-      templateIds: ["unit-rate"],
+      status: "covered",
+      templateIds: ["staar-ratio-statements", "unit-rate"],
       limitations:
-        "unit-rate finds the amount for one unit by numeric entry in either direction; choosing a worded rate whose reversed unit is a distractor is not practiced.",
+        "staar-ratio-statements chooses a unit rate in which the units are in the right order and the reversed order is a distractor.",
     },
     {
       item: {
@@ -113,10 +114,14 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["ratio.part-whole"],
       demand:
         "Use a part-to-part tile ratio and a total to find how many tiles are one color",
-      status: "partial",
-      templateIds: ["ratio-missing", "ratio-table-missing"],
+      status: "covered",
+      templateIds: [
+        "staar-ratio-statements",
+        "ratio-missing",
+        "ratio-table-missing",
+      ],
       limitations:
-        "Related families scale one ratio to a missing quantity; converting part-to-part to part-to-whole against a stated total is not practiced.",
+        "staar-ratio-statements finds how many tiles are one color from a part-to-part ratio and a stated total, by choice.",
     },
     {
       item: {
@@ -128,10 +133,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["number.number-classification"],
       demand:
         "Choose the value outside a Venn region of integers within rational numbers",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["staar-number-sets"],
       limitations:
-        "classify-real-number sorts rational from irrational numbers; no family classifies numbers as whole, integer or non-integer rational against nested sets.",
+        "staar-number-sets places numbers among nested sets described in words by choice; the item's drawn Venn diagram is not shown.",
     },
     {
       item: {
@@ -203,10 +208,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["decimal.multiply"],
       demand:
         "Multiply a whole number of coins by a value in hundredths of a dollar",
-      status: "partial",
-      templateIds: ["multidigit-decimal-product"],
+      status: "covered",
+      templateIds: ["staar-decimal-operations", "multidigit-decimal-product"],
       limitations:
-        "multidigit-decimal-product multiplies two decimals with one or two places each; a whole-number factor with a money context is not practiced.",
+        "staar-decimal-operations multiplies a whole number by a value in hundredths of a dollar in a money story, by entry.",
     },
     {
       item: {
@@ -233,10 +238,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["percent.of"],
       demand:
         "Find a three percent raise of a salary of tens of thousands of dollars",
-      status: "partial",
-      templateIds: ["percent-of"],
+      status: "covered",
+      templateIds: ["staar-salary-percent", "percent-of"],
       limitations:
-        "percent-of finds a percent of a whole-number quantity; checked samples use quantities of about 200 or less, not a salary of 36,000, and the story is not separately practiced.",
+        "staar-salary-percent finds a percent raise (2 to 8 percent) of a salary of tens of thousands of dollars, by entry.",
     },
     {
       item: {
@@ -263,10 +268,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["expression.verbal"],
       demand:
         "Choose the expression that does not model sharing a total into equal baskets",
-      status: "partial",
-      templateIds: ["story-operation-choice"],
+      status: "covered",
+      templateIds: ["staar-story-model-choice", "story-operation-choice"],
       limitations:
-        "story-operation-choice picks the valid equation; finding the invalid expression is not practiced.",
+        "staar-story-model-choice finds the expression that does not give the number in each of several equal groups.",
     },
     {
       item: {
@@ -379,10 +384,14 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["expression.order-of-operations"],
       demand:
         "Evaluate an expression with a negative factor times a parenthesized difference plus another product",
-      status: "partial",
-      templateIds: ["operation-order", "integer-addition"],
+      status: "covered",
+      templateIds: [
+        "staar-signed-exponent-order",
+        "operation-order",
+        "integer-addition",
+      ],
       limitations:
-        "operation-order uses positive numbers and one parenthesis; negative factors and a negative difference are not practiced.",
+        "staar-signed-exponent-order evaluates a negative factor times a parenthesized negative difference plus a product, by entry.",
     },
     {
       item: {
@@ -409,10 +418,14 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["finance.income-compare"],
       demand:
         "Find the five-year earnings difference of two careers from their yearly salaries",
-      status: "partial",
-      templateIds: ["subtract-multidigit", "multiply-by-one-digit"],
+      status: "covered",
+      templateIds: [
+        "staar-salary-percent",
+        "subtract-multidigit",
+        "multiply-by-one-digit",
+      ],
       limitations:
-        "Related families do the subtraction and the multiplication separately; the chained comparison from a salary table is not practiced.",
+        "staar-salary-percent finds the earnings difference of two careers over several years from a table of yearly salaries, by entry.",
     },
     {
       item: {
@@ -439,10 +452,14 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["expression.order-of-operations"],
       demand:
         "Evaluate an expression with a subtraction of a product with a squared number and an addition",
-      status: "partial",
-      templateIds: ["power-order-trap", "operation-order"],
+      status: "covered",
+      templateIds: [
+        "staar-signed-exponent-order",
+        "power-order-trap",
+        "operation-order",
+      ],
       limitations:
-        "power-order-trap evaluates a product or sum with one power; combining a squared factor, a product and two signs is not practiced.",
+        "staar-signed-exponent-order evaluates a subtraction of a product with a squared number and an addition, by entry.",
     },
     {
       item: {
@@ -512,10 +529,14 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["rational.order-absolute"],
       demand:
         "Choose the list of signed fractions and decimals ordered from least to greatest",
-      status: "partial",
-      templateIds: ["signed-context-order", "compare-decimals-thousandths"],
+      status: "covered",
+      templateIds: [
+        "staar-order-mixed-forms",
+        "signed-context-order",
+        "compare-decimals-thousandths",
+      ],
       limitations:
-        "Related families compare two signed values or two decimals; ordering five mixed fractions and decimals is not practiced.",
+        "staar-order-mixed-forms orders five signed fractions and decimals from least to greatest by choice.",
     },
     {
       item: {
@@ -541,9 +562,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["number.percent-fraction-decimal"],
       demand:
         "Choose the decimal or percent equivalent to an improper fraction",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family renames fractions as percents or decimals.",
+      status: "covered",
+      templateIds: ["staar-rename-percent-fraction-decimal"],
+      limitations:
+        "staar-rename-percent-fraction-decimal chooses the decimal or the percent equal to a fraction greater than 1.",
     },
     {
       item: {
@@ -554,9 +576,10 @@ export const staarGrade6 = defineLedger(
       standards: ["TEKS.6.2.5.A"],
       archetypeIds: ["ratio.write-simplify"],
       demand: "Write the ratio of two stated counts in simplest form",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family writes a ratio from counts or simplifies it.",
+      status: "covered",
+      templateIds: ["staar-ratio-statements"],
+      limitations:
+        "staar-ratio-statements chooses the ratio of two counts in simplest form, in the order the question names.",
     },
   ],
 );
