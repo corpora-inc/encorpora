@@ -590,7 +590,12 @@ test("clients without point-plot-v1 are never served these families, online or o
   assert.equal(plotTemplates.length, families.length);
   assert.deepEqual(
     [...responseCapabilities],
-    ["single-choice-v1", "multi-select-v1", "point-plot-v1"],
+    [
+      "single-choice-v1",
+      "multi-select-v1",
+      "point-plot-v1",
+      "multi-part-choice-v1",
+    ],
   );
   for (const client of [
     { responseCapabilities: [], figureCapabilities: [] },

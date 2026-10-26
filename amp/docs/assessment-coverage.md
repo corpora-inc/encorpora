@@ -52,6 +52,23 @@ The STAAR sources are not saturated: from Grade 3 to Algebra I they add 21, 20, 
 
 A second labeler re-labeled a seeded random 10% sample (26 items across all seven tests) without seeing the first labels. Response format agreed on 26 (100%), status on 22 (84.6%), archetypes overlapped on 25 (96.2%) and templates on 22 (84.6%). The status disagreements were resolved by applying two rules to every test: a family counts as related practice only if it practices the item's core operation or reading, not merely its topic or representation (two sampled items and two others of the same kind became missing), and perimeter practice with whole-number sides does not cover decimal sides. A story context or label around a graph read does not change the task.
 
+#### Spring 2024 STAAR (second year)
+
+All 210 mathematics items of the Spring 2024 STAAR released tests for grades 3 through 8 (30, 32, 34, 36, 38 and 40 items) are labeled from TEA's rationale and answer-key PDFs, as for 2025. Algebra I was not labeled.
+
+| Test | Items | Covered | Partial | Missing | New archetypes | Items on archetypes already seen |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Grade 3 | 30 | 5 (16.7%) | 22 (73.3%) | 3 (10%) | 7 | 76.7% |
+| Grade 4 | 32 | 9 (28.1%) | 22 (68.8%) | 1 (3.1%) | 0 | 100% |
+| Grade 5 | 34 | 10 (29.4%) | 24 (70.6%) | 0 (0%) | 1 | 97.1% |
+| Grade 6 | 36 | 9 (25%) | 24 (66.7%) | 3 (8.3%) | 2 | 94.4% |
+| Grade 7 | 38 | 12 (31.6%) | 25 (65.8%) | 1 (2.6%) | 2 | 92.1% |
+| Grade 8 | 40 | 9 (22.5%) | 31 (77.5%) | 0 (0%) | 1 | 97.5% |
+
+The second year is close to saturated for grades 4 through 8: 92% to 100% of their items fall on archetypes seen in an earlier source, and only six archetypes were not seen. Grade 3 still adds seven, of which five were minted for it (supply and price, a whole number on a number line, congruent figures with equal-area parts) or for later grades (bank fee comparison, net worth); the others were listed but unused. Items on drag, hot spot, multiselect and inline-choice interactions stay partial except where an inline slope-and-intercept family exists. The largest gaps are choosing the graph of a rule or rate among drawn graphs, coordinate rules of dilations, rotations and translations, volumes with decimal approximations and equations, and tally, percentage bar graph, financial aid and net worth items, which have no related practice.
+
+A second labeler re-labeled a seeded random 10% sample (21 of 210 items) without seeing the first labels. Response format agreed on 21 (100%), status on 15 (71.4%), archetypes overlapped on 19 (90.5%) and templates on 20 (95.2%). Of the six status disagreements, one was changed (a pair of equivalent expressions with a fractional coefficient became partial); the others kept the rule already applied to STAAR 2025: four choices compared with a given fraction are partial, a percentage bar graph with counts is missing, and a numeric family covers choices written as multiples of pi.
+
 The earlier purposive samples (New York grade 7 and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
 
 ### MCAS mathematics
@@ -81,20 +98,17 @@ All 106 questions of the June 2026 Regents Examinations in Algebra I (35), Geome
 
 | Exam | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: |
-| Algebra I | 5 (14.3%) | 28 (80.0%) | 2 (5.7%) |
-| Geometry | 4 (11.4%) | 30 (85.7%) | 1 (2.9%) |
-| Algebra II | 2 (5.6%) | 34 (94.4%) | 0 (0.0%) |
+| Algebra I | 10 (28.6%) | 24 (68.6%) | 1 (2.9%) |
+| Geometry | 16 (45.7%) | 19 (54.3%) | 0 (0.0%) |
+| Algebra II | 6 (16.7%) | 30 (83.3%) | 0 (0.0%) |
 
-Part I multiple choice is 72 of 106 items and 10 of them are covered. The 34 constructed-response items are the main gap: 6 require a drawn graph (graph/drag) and 18 a written expression, construction, proof or explanation (constructed), and AMP has no protocol that can take either. The graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. The remaining 10 constructed-response items ask for one number and are numeric, but the rating guides also credit shown work, which AMP does not score, so only one is covered. Three items have no related family: building a polynomial from its degree and coefficients, graphing an absolute-value function and the perpendicular-bisector property.
+Part I multiple choice is 72 of 106 items and 27 of them are covered. The 34 constructed-response items are the main gap: 6 require a drawn graph (graph/drag) and 18 a written expression, construction, proof or explanation (constructed), and AMP has no protocol that can take either. The graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. The remaining 10 constructed-response items ask for one number and are numeric, but the rating guides also credit shown work, which AMP does not score, so five are covered. One item has no related family: graphing an absolute-value function.
 
-The largest gaps are parallelogram and rhombus properties and proofs, factoring beyond one-variable trinomials, unit and density chains in volume problems, drawing nonlinear graphs, rational exponents and exponent rules, zeros of nonmonic factors and growth rates read from exponential bases. Algebra I and Algebra II families usually stop short on one feature: decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations and fractional ratios in series.
+The largest remaining gaps among multiple-choice items are the Algebra I and Algebra II families that stop short on one feature: decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations, fractional ratios in series, a circle with a line, and graph-reading items that compare a plotted curve with a rule. Parallelogram and rhombus conditions, factoring with a common factor or a nonmonic square, density and volume chains, exponent rules, zeros of nonmonic factors, polynomials built from their structure and growth rates read from exponential bases are now practiced.
 
 Each exam still added 8 to 11 archetypes that earlier sources had not used and 58 to 77 percent of its questions fell on archetypes already seen, so the high-school task set is not saturated; the SAT, STAAR and MCAS sources saw few of these tasks. Fourteen archetypes were minted for tasks no existing archetype named.
 
 A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Status agreed on 11 (100%), archetypes overlapped on 10 (90.9%), templates on 11 (100%) and response format on 10 (90.9%). The disagreements were a proposed archetype for rationalizing denominators, resolved by widening `expression.radical-simplify`, and a multipart graphing item (Algebra II 36) that the first labeler recorded as graph/drag because a graph is the first required response.
-
-The earlier purposive samples (Massachusetts grades 5, 8 and 10, New York grade 7, and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
-
 ### Adding a source
 
 1. Download the official question and answer PDFs into a scratch directory. Record the URL, edition, retrieval date and SHA-256, and read them with text extraction only.
@@ -113,6 +127,8 @@ Implemented families include one-choice inverse rounding to tenths or hundredths
 The purposive samples identify further work: general inverse decimal intervals, congruence correspondence, multi-step geometric reasoning, large percent increases, quadratic parameter constraints and bounds on means from grouped data. Related generators should be checked for reuse before authoring additional families. The multi-select protocol supports a stated number of selections; linked multipart scoring and written reasoning require additional response support and rubrics.
 
 The point-plot protocol (`point-plot-v1`) lets learners place one to four lattice points on a coordinate grid. The server grades an exact set, an ordered list of labeled images, or any distinct points on a target line; the grading rule never reaches the client, and clients that do not declare the capability, including offline packs, are never served these items. Three families use it: plotting signed pairs, points described by distances from the axes and reflections across both axes; graphing a line from slope-intercept, standard or point-slope form, a horizontal line or a proportional relationship; and placing the ordered images of a segment or triangle under a translation, an axis reflection or a rotation of 90° or 180° about the origin. Printed workbooks show the empty grid and the solutions draw the answer. Shading inequality regions, drawing curves, dragging segments and graphing non-lattice points require further response support.
+
+The multi-part choice protocol (`multi-part-choice-v1`) answers state-test inline-choice, match-table-grid and drag-into-slots items. A problem has two to six blanks, each with two to six options, laid out as blanks in a sentence, rows of a table that share their column options, or labeled slots; drag-and-drop tiles are offered as one picker per slot, so no dragging is needed. Credit requires every blank to be correct. The attempt records which blanks were right, its first feedback line names the parts to recheck, and the problem marks each part. The answer key stays on the server, and clients that do not declare the capability, including offline packs, are never served these items. Three families use it: completing a line's slope, y-intercept and direction, or the m and b of y = mx + b, from a graph, two points or a table; marking equations and sets of pairs as proportional or not; and labeling the coefficients, terms, exponent, constant and factors of an expression. Printed workbooks show a box for each option, and the solutions tick the correct boxes. Hot spots, selecting objects in a drawing and composing an expression from shared tiles require further response support.
 
 Successive-percent practice applies two stated changes to a price, using the changed price as the second base. It includes decimal percentage rates, equal opposite changes, discount followed by tax and final-only cent rounding. [New York's Spring 2026 Grade 7 item 17](https://www.nysedregents.org/ei/math/2026/2026-released-items-math-g7.pdf#page=12), mapped to NY-7.RP.3, demonstrates the discount-then-tax demand. The family uses numeric answers and shares the existing ratios-percent exposure budget. Inverse recovery, rounding after each change and written justifications require separate assessment.
 

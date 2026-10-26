@@ -485,7 +485,7 @@ try {
     });
     await page
       .locator(
-        "#answer, .choice-form, .point-plot-form, .compact-answer-action",
+        "#answer, .choice-form, .point-plot-form, .multi-part-form, .compact-answer-action",
       )
       .first()
       .waitFor();
@@ -506,7 +506,8 @@ try {
     ]) {
       await page.setViewportSize(size);
       // Let the media-query subscription commit the appropriate answer surface.
-      // A point plot answers on its grid and never uses the answer dialog.
+      // Point plots and multi-part choices answer in the problem and never
+      // use the answer dialog.
       await page.waitForFunction(
         ([multiSelect, plot]) => {
           const compact =
@@ -519,7 +520,8 @@ try {
         },
         [
           template.requiredResponseCapability === "multi-select-v1",
-          template.requiredResponseCapability === "point-plot-v1",
+          template.requiredResponseCapability === "point-plot-v1" ||
+            template.requiredResponseCapability === "multi-part-choice-v1",
         ],
       );
       if (isPhoneLandscape(size)) {

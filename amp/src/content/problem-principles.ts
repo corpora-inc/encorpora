@@ -67,10 +67,12 @@ import { complexPrinciples } from "./complex-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
 import { pointPlotPrinciples } from "./point-plot-lessons";
+import { multiPartChoicePrinciples } from "./multi-part-choice-lessons";
 import { algebraRequirementGapPrinciples } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapPrinciples } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapPrinciples } from "./number-measurement-gaps-lessons";
 import { floridaGapPrinciples } from "./florida-gaps-lessons";
+import { regentsGapPrinciples } from "./regents-gap-lessons";
 import { mcasGapPrinciples } from "./mcas-gap-lessons";
 import { staarGapPrinciples } from "./staar-gap-lessons";
 import { satAlgebraStructurePrinciples } from "./sat-algebra-structure-lessons";
@@ -111,10 +113,12 @@ const legacyPrinciples: Record<string, string> = {
   ...k8StateNumberPrinciples,
   ...satNumericEntryPrinciples,
   ...pointPlotPrinciples,
+  ...multiPartChoicePrinciples,
   ...algebraRequirementGapPrinciples,
   ...advancedMathGapPrinciples,
   ...numberMeasurementGapPrinciples,
   ...floridaGapPrinciples,
+  ...regentsGapPrinciples,
   ...mcasGapPrinciples,
   ...staarGapPrinciples,
   ...satAlgebraStructurePrinciples,

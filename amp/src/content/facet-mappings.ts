@@ -10,6 +10,7 @@ import { transformationFacetMappings } from "./transformation-coverage";
 import { completingSquareFacetMappings } from "./completing-square-coverage";
 import { algebraRequirementGapFacetMappings } from "./algebra-requirement-gaps-coverage";
 import { pointPlotFacetMappings } from "./point-plot-coverage";
+import { multiPartChoiceFacetMappings } from "./multi-part-choice-coverage";
 import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
@@ -1375,6 +1376,104 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Find a length or angle using the trapezoid midsegment theorem, the base angles and supplementary leg angles of an isosceles trapezoid, and its congruent diagonals, with numeric or linear expressions. Does not assess written proofs, constructions or drawn figures.",
   },
   {
+    templateId: "rg-exponential-base-rate",
+    facetId: "exponential-models.core",
+    extent: "partial",
+    rationale:
+      "Choose the percent increase or decrease per period read from an exponential model's base (including bases with the exponent t divided by a period) or the model for a stated half-life. Does not assess writing a model from a table, solving for time or continuous growth.",
+  },
+  {
+    templateId: "rg-factor-completely",
+    facetId: "factor-quadratics.core",
+    extent: "partial",
+    rationale:
+      "Choose the complete factorization of a difference of squares with a coefficient, of a binomial with a common factor first, and of a two-variable binomial with a common factor and a difference of squares. Does not assess typing a factorization, sums or differences of cubes, grouping or trinomials.",
+  },
+  {
+    templateId: "rg-polynomial-zeros-forms",
+    facetId: "polynomial-zeros.core",
+    extent: "partial",
+    rationale:
+      "Choose the zeros of a product of a variable and two linear factors with one nonmonic factor, and a zero of an expanded cubic that factors by grouping into integer zeros. Does not assess multiplicity, irrational or complex zeros, or sketching the graph.",
+  },
+  {
+    templateId: "rg-exponent-monomial-power",
+    facetId: "exponent-laws.core",
+    extent: "partial",
+    rationale:
+      "Choose the simplified monomial with a coefficient and two variables raised to a power 2 to 4, alone or multiplied by a second monomial. Does not assess negative exponents, quotients or typing the simplified expression.",
+  },
+  {
+    templateId: "rg-rational-exponent-forms",
+    facetId: "rational-exponents.core",
+    extent: "partial",
+    rationale:
+      "Choose the single power equal to a coefficient radical times a rational power, the radical form of a fraction with a negative rational exponent, and the value of a perfect-power fraction with a negative rational exponent. Does not assess rationalizing denominators, nested radicals or typing a radical expression.",
+  },
+  {
+    templateId: "rg-polynomial-build",
+    facetId: "polynomial-arithmetic.core",
+    extent: "partial",
+    rationale:
+      "Choose a polynomial with a stated degree, number of terms, leading coefficient and constant term, or the statement of those properties for a polynomial written out of order. Does not assess writing a polynomial from stated zeros, classifying by graph or typing a polynomial.",
+  },
+  {
+    templateId: "rg-solid-density",
+    facetId: "solid-volume-models.core",
+    extent: "partial",
+    rationale:
+      "Enter a weight from a cylinder's diameter in inches, height in feet and density, a whole-number count of pyramids from a mass of clay and its density, and the liters of water in a partly filled rectangular tank. Does not assess drawing a figure, other solids or the written work the rating guides credit.",
+  },
+  {
+    templateId: "rg-quadrilateral-choice",
+    facetId: "parallelogram-proofs.core",
+    extent: "partial",
+    rationale:
+      "Choose the fact that makes a parallelogram a rhombus or a rectangle, and find an angle of a trapezoid from linear expressions for the two angles on a leg. Does not assess written proofs, isosceles trapezoid reasons or constructions.",
+  },
+  {
+    templateId: "rg-parallelogram-perpendicular",
+    facetId: "parallelogram-proofs.core",
+    extent: "partial",
+    rationale:
+      "Enter an angle formed by a side of a parallelogram and a perpendicular from a vertex, with the foot on the side or on its extension, described in words. Does not assess written proofs, drawn figures or perpendiculars to a diagonal.",
+  },
+  {
+    templateId: "rg-segment-property-choice",
+    facetId: "triangle-proofs.core",
+    extent: "partial",
+    rationale:
+      "Choose the statement that must be true for a point on a perpendicular bisector or a triangle's midsegment, and use each property to find a length from linear expressions. Does not assess written proofs, constructions or the converse in a proof.",
+  },
+  {
+    templateId: "rg-isosceles-right-decimal",
+    facetId: "special-right-triangles.core",
+    extent: "partial",
+    rationale:
+      "Enter a leg, a hypotenuse, or a square's side from its diagonal as a decimal rounded to the nearest tenth. Does not assess exact radical answers, 30-60-90 triangles or written justification.",
+  },
+  {
+    templateId: "rg-triangle-area-sas",
+    facetId: "trigonometric-area.core",
+    extent: "partial",
+    rationale:
+      "Enter the area of a triangle from two sides and an acute or obtuse included angle, in a figure or a land story, rounded to the nearest tenth. Does not assess finding a missing angle or side, Heron's formula or written work.",
+  },
+  {
+    templateId: "rg-triangle-third-side-test",
+    facetId: "triangle-construction.core",
+    extent: "partial",
+    rationale:
+      "Choose the length that could, or could not, be the third side of a triangle with two stated sides. Does not assess explaining the triangle inequality or the largest-angle opposite largest-side rule.",
+  },
+  {
+    templateId: "rg-altitude-segment",
+    facetId: "similarity-theorems.core",
+    extent: "partial",
+    rationale:
+      "Enter the other segment of the hypotenuse, rounded to the nearest tenth, from a leg and the adjacent segment cut by the altitude to the hypotenuse. Does not assess proving the similar triangles, the altitude length or the other leg.",
+  },
+  {
     templateId: "staar-nested-grouping",
     facetId: "numerical-expressions.core",
     extent: "partial",
@@ -1718,6 +1817,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...circleMeasurementFacetMappings,
   ...completingSquareFacetMappings,
   ...pointPlotFacetMappings,
+  ...multiPartChoiceFacetMappings,
   ...algebraRequirementGapFacetMappings,
   ...integerExponentFacetMappings,
   ...descriptiveStatisticsFacetMappings,
