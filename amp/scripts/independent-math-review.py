@@ -1,8 +1,10 @@
+from sat_function_forms_math_oracle import SUPPORTED as SAT_FUNCTION_FORMS, CHOICE as SAT_FUNCTION_FORMS_CHOICE, solve as solve_sat_function_forms, self_test as review_sat_function_forms_fixtures, review_problem as review_sat_function_forms_problem
 from sat_algebra_structure_math_oracle import SUPPORTED as SAT_ALGEBRA_STRUCTURE, solve as solve_sat_algebra_structure, self_test as review_sat_algebra_structure_fixtures, review_problem as review_sat_algebra_structure_problem
 from sat_completion_math_oracle import SUPPORTED as SAT_COMPLETION, CHOICE as SAT_COMPLETION_CHOICE, solve as solve_sat_completion, self_test as review_sat_completion_fixtures, review_problem as review_sat_completion_problem
 #!/usr/bin/env python3
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
 from staar_gap_math_oracle import SUPPORTED as STAAR_GAPS, CHOICE as STAAR_GAP_CHOICE, solve as solve_staar_gaps, review_problem as review_staar_gaps_problem, self_test as review_staar_gaps_fixtures
+from texas_hs_math_oracle import SUPPORTED as TEXAS_HS, solve as solve_texas_hs, review_problem as review_texas_hs_problem, self_test as review_texas_hs_fixtures
 from advanced_math_gaps_math_oracle import SUPPORTED as ADVANCED_MATH_GAPS, solve as solve_advanced_math_gaps, review_problem as review_advanced_math_gaps_problem, self_test as review_advanced_math_gaps_fixtures
 from sat_geometry_data_math_oracle import SUPPORTED as SAT_GEOMETRY_DATA, solve as solve_sat_geometry_data, review_problem as review_sat_geometry_data_problem, self_test as review_sat_geometry_data_fixtures
 from trigonometry_math_oracle import SUPPORTED as TRIGONOMETRY, solve as solve_trigonometry, review_problem as review_trigonometry_problem, self_test as review_trigonometry_fixtures
@@ -19,12 +21,18 @@ from function_behavior_math_oracle import SUPPORTED as FUNCTION_BEHAVIOR, solve 
 from statistics_probability_math_oracle import SUPPORTED as STAT_PROB, solve as solve_stat_prob, review_problem as review_stat_prob_problem, self_test as review_stat_prob_fixtures
 from geometry_proof_families_math_oracle import SUPPORTED as GEOMETRY_FAMILIES, solve as solve_geometry_families, review_problem as review_geometry_family_problem, self_test as review_geometry_family_fixtures
 from k8_representations_math_oracle import SUPPORTED as K8_REPRESENTATIONS, solve as solve_k8_representations, review_problem as review_k8_representations_problem, self_test as review_k8_representations_fixtures
+from finance_credit_math_oracle import SUPPORTED as FINANCE_CREDIT, solve as solve_finance_credit, review_problem as review_finance_credit_problem, self_test as review_finance_credit_fixtures
 from k8_state_number_math_oracle import SUPPORTED as K8_STATE_NUMBER, solve as solve_k8_state_number, review_problem as review_k8_state_number_problem, self_test as review_k8_state_number_fixtures
 from florida_gaps_math_oracle import SUPPORTED as FLORIDA_GAPS, FL_CHOICE, solve as solve_florida_gaps, review_problem as review_florida_gaps_problem, self_test as review_florida_gaps_fixtures
 from regents_gap_math_oracle import SUPPORTED as REGENTS_GAPS, CHOICE as REGENTS_GAPS_CHOICE, solve as solve_regents_gaps, review_problem as review_regents_gaps_problem, self_test as review_regents_gaps_fixtures
 from sat_geometry_advanced_math_oracle import SUPPORTED as SAT_GEOMETRY_ADVANCED, CHOICE as SAT_GEOMETRY_ADVANCED_CHOICE, solve as solve_sat_geometry_advanced, review_problem as review_sat_geometry_advanced_problem, self_test as review_sat_geometry_advanced_fixtures
+from texas_k2_math_oracle import SUPPORTED as TEXAS_K2, solve as solve_texas_k2, review_problem as review_texas_k2_problem, self_test as review_texas_k2_fixtures
+from texas_38_math_oracle import SUPPORTED as TEXAS_38, solve as solve_texas_38, review_problem as review_texas_38_problem, self_test as review_texas_38_fixtures
 from complex_math_oracle import SUPPORTED as COMPLEX, solve as solve_complex, review_problem as review_complex_problem, self_test as review_complex_fixtures
 from sat_numeric_entry_math_oracle import SUPPORTED as SAT_NUMERIC_ENTRY, solve as solve_sat_numeric_entry, review_problem as review_sat_numeric_entry_problem, self_test as review_sat_numeric_entry_fixtures
+from hs_state_gaps_math_oracle import SUPPORTED as HS_STATE_GAPS, solve as solve_hs_state_gaps, review_problem as review_hs_state_gaps_problem, self_test as review_hs_state_gaps_fixtures
+from finance_income_math_oracle import SUPPORTED as FINANCE_INCOME, solve as solve_finance_income, review_problem as review_finance_income_problem, self_test as review_finance_income_fixtures
+from data_display_state_math_oracle import SUPPORTED as DATA_DISPLAY_STATE, solve as solve_data_display_state, review_problem as review_data_display_state_problem, self_test as review_data_display_state_fixtures
 from complex_conics_math_oracle import SUPPORTED as COMPLEX_CONICS, solve as solve_complex_conics, review_problem as review_complex_conics_problem, self_test as review_complex_conics_fixtures
 from algebra_requirement_gaps_math_oracle import SUPPORTED as ALGEBRA_REQUIREMENT_GAPS, solve as solve_algebra_requirement_gaps, review_problem as review_algebra_requirement_gaps_problem, self_test as review_algebra_requirement_gaps_fixtures
 from geometry_requirement_gaps_math_oracle import SUPPORTED as GEOMETRY_REQUIREMENT_GAPS, solve as solve_geometry_requirement_gaps, review_problem as review_geometry_requirement_gaps_problem, self_test as review_geometry_requirement_gaps_fixtures
@@ -134,12 +142,19 @@ SUPPORTED |= COMPLEX
 SUPPORTED |= REGENTS_GAPS
 SUPPORTED |= SAT_GEOMETRY_ADVANCED
 SUPPORTED |= FLORIDA_GAPS
+SUPPORTED |= FINANCE_CREDIT
+SUPPORTED |= TEXAS_K2
+SUPPORTED |= TEXAS_38
 SUPPORTED |= K8_REPRESENTATIONS
 SUPPORTED |= K8_STATE_NUMBER
 SUPPORTED |= SAT_GEOMETRY_DATA
 SUPPORTED |= ADVANCED_MATH_GAPS
 SUPPORTED |= STAAR_GAPS
+SUPPORTED |= TEXAS_HS
 SUPPORTED |= COMPLEX_CONICS
+SUPPORTED |= HS_STATE_GAPS
+SUPPORTED |= FINANCE_INCOME
+SUPPORTED |= DATA_DISPLAY_STATE
 SUPPORTED |= SAT_NUMERIC_ENTRY
 SUPPORTED |= POINT_PLOT
 SUPPORTED |= MULTI_PART_CHOICE
@@ -155,6 +170,7 @@ SUPPORTED |= STAT_PROB
 SUPPORTED |= INVERSE_ROUNDING
 SUPPORTED |= TRIGONOMETRY | SLOPE_TRIANGLE | SUCCESSIVE_PERCENT | STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT | MCAS_GAP
 SUPPORTED |= SAT_COMPLETION
+SUPPORTED |= SAT_FUNCTION_FORMS
 SUPPORTED |= SAT_ALGEBRA_STRUCTURE
 SUPPORTED |= ASSESSMENT_GAP
 SUPPORTED |= RADICAL_EQUATION | RATIONAL_EQUATION | GEOMETRY_PROOF
@@ -251,6 +267,8 @@ def solve(public):
 def solve_family(public):
     if public["templateId"] in FLORIDA_GAPS:
         return solve_florida_gaps(public)
+    if public["templateId"] in TEXAS_38:
+        return solve_texas_38(public)
     if public["templateId"] in K8_STATE_NUMBER:
         return solve_k8_state_number(public)
     if public["templateId"] in K8_REPRESENTATIONS:
@@ -261,6 +279,8 @@ def solve_family(public):
         return solve_advanced_math_gaps(public)
     if public["templateId"] in STAAR_GAPS:
         return solve_staar_gaps(public)
+    if public["templateId"] in TEXAS_HS:
+        return solve_texas_hs(public)
     if public["templateId"] in TRIGONOMETRY:
         return solve_trigonometry(public)
     if public["templateId"] in NUMBER_MEASUREMENT:
@@ -287,10 +307,20 @@ def solve_family(public):
         return solve_regents_gaps(public)
     if public["templateId"] in SAT_GEOMETRY_ADVANCED:
         return solve_sat_geometry_advanced(public)
+    if public["templateId"] in FINANCE_CREDIT:
+        return solve_finance_credit(public)
+    if public["templateId"] in TEXAS_K2:
+        return solve_texas_k2(public)
     if public["templateId"] in COMPLEX:
         return solve_complex(public)
     if public["templateId"] in COMPLEX_CONICS:
         return solve_complex_conics(public)
+    if public["templateId"] in HS_STATE_GAPS:
+        return solve_hs_state_gaps(public)
+    if public["templateId"] in FINANCE_INCOME:
+        return solve_finance_income(public)
+    if public["templateId"] in DATA_DISPLAY_STATE:
+        return solve_data_display_state(public)
     if public["templateId"] in SAT_NUMERIC_ENTRY:
         return solve_sat_numeric_entry(public)
     if public["templateId"] in GEOMETRY_REQUIREMENT_GAPS:
@@ -319,6 +349,8 @@ def solve_family(public):
         return solve_sat_algebra_structure(public)
     if public["templateId"] in SAT_COMPLETION:
         return solve_sat_completion(public)
+    if public["templateId"] in SAT_FUNCTION_FORMS:
+        return solve_sat_function_forms(public)
     if public["templateId"] in ASSESSMENT_GAP:
         return solve_assessment_gap(public)
     if public["templateId"] in RADICAL_EQUATION:
@@ -712,10 +744,16 @@ def review(stream):
             review_regents_gaps_problem(problem)
         if template in SAT_GEOMETRY_ADVANCED:
             review_sat_geometry_advanced_problem(problem)
+        if template in FINANCE_CREDIT:
+            review_finance_credit_problem(problem)
+        if template in TEXAS_K2:
+            review_texas_k2_problem(problem)
         if template in COMPLEX:
             review_complex_problem(problem)
         if template in FLORIDA_GAPS:
             review_florida_gaps_problem(problem)
+        if template in TEXAS_38:
+            review_texas_38_problem(problem)
         if template in NUMBER_MEASUREMENT:
             review_number_measurement_problem(problem)
         if template in K8_REPRESENTATIONS:
@@ -728,10 +766,18 @@ def review(stream):
             review_advanced_math_gaps_problem(problem)
         if template in STAAR_GAPS:
             review_staar_gaps_problem(problem)
+        if template in TEXAS_HS:
+            review_texas_hs_problem(problem)
         if template in REMAINING_GAP:
             review_remaining_gap_problem(problem)
         if template in COMPLEX_CONICS:
             review_complex_conics_problem(problem)
+        if template in HS_STATE_GAPS:
+            review_hs_state_gaps_problem(problem)
+        if template in FINANCE_INCOME:
+            review_finance_income_problem(problem)
+        if template in DATA_DISPLAY_STATE:
+            review_data_display_state_problem(problem)
         if template in SAT_NUMERIC_ENTRY:
             review_sat_numeric_entry_problem(problem)
         if template in GEOMETRY_REQUIREMENT_GAPS:
@@ -754,6 +800,8 @@ def review(stream):
             review_study_design_problem(problem)
         if template in SAT_ALGEBRA_STRUCTURE:
             review_sat_algebra_structure_problem(problem)
+        if template in SAT_FUNCTION_FORMS:
+            review_sat_function_forms_problem(problem)
         if template in SAT_COMPLETION:
             review_sat_completion_problem(problem)
         if template in ASSESSMENT_GAP:
@@ -835,7 +883,11 @@ def review(stream):
         elif template in MULTI_PART_CHOICE:
             expected = review_multi_part_choice_problem(problem)
             actual = problem["answer"]
-        elif template in (K8_STATE_NUMBER if public['response']['kind'] == 'choice' else frozenset()) or template in SAT_GEOMETRY_ADVANCED_CHOICE | FL_CHOICE | STAAR_GAP_CHOICE | GEOMETRY_REQUIREMENT_GAPS | REGENTS_GAPS_CHOICE | LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | ALGEBRA_REQUIREMENT_GAPS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS | SAT_ALGEBRA_STRUCTURE | NUMBER_MEASUREMENT_CHOICE | ADVANCED_MATH_GAPS or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        elif template in TEXAS_38 and public['response']['kind'] == 'choice':
+            expected = solved
+            actual = problem['answer']
+            require(isinstance(actual, str), 'Choice answer must be an option ID')
+        elif template in (K8_STATE_NUMBER if public['response']['kind'] == 'choice' else frozenset()) or template in SAT_FUNCTION_FORMS_CHOICE | TEXAS_HS | TEXAS_K2 | DATA_DISPLAY_STATE | HS_STATE_GAPS | FINANCE_CREDIT | SAT_GEOMETRY_ADVANCED_CHOICE | FL_CHOICE | STAAR_GAP_CHOICE | GEOMETRY_REQUIREMENT_GAPS | REGENTS_GAPS_CHOICE | FINANCE_INCOME | LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | ALGEBRA_REQUIREMENT_GAPS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS | SAT_ALGEBRA_STRUCTURE | NUMBER_MEASUREMENT_CHOICE | ADVANCED_MATH_GAPS or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -898,15 +950,23 @@ def review(stream):
     review_regents_gaps_fixtures()
     review_sat_geometry_advanced_fixtures()
     review_florida_gaps_fixtures()
+    review_texas_k2_fixtures()
+    review_texas_38_fixtures()
     review_k8_representations_fixtures()
     review_k8_state_number_fixtures()
     review_sat_geometry_data_fixtures()
     review_advanced_math_gaps_fixtures()
     review_staar_gaps_fixtures()
+    review_texas_hs_fixtures()
     review_remaining_gap_fixtures()
     review_number_measurement_fixtures()
     review_complex_conics_fixtures()
+    review_hs_state_gaps_fixtures()
+    review_finance_income_fixtures()
+    review_data_display_state_fixtures()
     review_sat_numeric_entry_fixtures()
+    review_finance_credit_fixtures()
+    review_sat_function_forms_fixtures()
     review_algebra_requirement_gaps_fixtures()
     review_geometry_requirement_gaps_fixtures()
     review_geometry_family_fixtures()

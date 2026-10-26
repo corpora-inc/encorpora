@@ -19,13 +19,13 @@ linear.solve|Solve signed, grouped, and fractional linear equations|grouped-line
 linear.context|Choose a linear equation and solve a contextual model|linear-model-equation,linear-model-value
 linear.meaning|Interpret a coefficient or initial value with units|structure-meaning,linear-initial-value-meaning,interpret-linear-parameters
 linear.parameters|Find conditions for one, no, or infinitely many solutions|parameter-solution-count,equation-solution-count
-linear.structure|Use equality and structure to simplify solving|equation-step-property,literal-equation-solve
-function.rule|Recover a linear rule from observations or rate and point|linear-model-equation,unequal-step-rate,recover-linear-intercept,predict-linear-output
+linear.structure|Use equality and structure to simplify solving|equation-step-property,literal-equation-solve,sat-entry-fn-related-value
+function.rule|Recover a linear rule from observations or rate and point|linear-model-equation,unequal-step-rate,recover-linear-intercept,predict-linear-output,sat-entry-fn-linear-notation
 function.representations|Connect linear rules, tables, and graphs|compare-representations,average-rate-display
-function.input-output|Evaluate or recover an input in a linear context|linear-model-value,formula-value
+function.input-output|Evaluate or recover an input in a linear context|linear-model-value,formula-value,sat-entry-fn-linear-notation
 function.graph-context|Interpret a graph segment in context|distance-graph-meaning
-line.constraint|Represent and solve a two-variable constraint|constraint-feasible,solution-coordinate
-line.equation|Connect a line with slope, a point, or a parallel/perpendicular line|perpendicular-slopes,graphed-line-slope
+line.constraint|Represent and solve a two-variable constraint|constraint-feasible,solution-coordinate,sat-fn-constraint-choice
+line.equation|Connect a line with slope, a point, or a parallel/perpendicular line|perpendicular-slopes,graphed-line-slope,sat-fn-line-equation-choice
 system.solve|Solve simultaneous linear equations with exact coordinates|linear-system-pair,sat-entry-system-solve
 system.context|Model simultaneous constraints in context|system-model-value,shared-plan-input
 system.classify|Classify linear systems and their intersections|linear-system-solution-count,elimination-equivalent
@@ -49,7 +49,7 @@ nonlinear.root-relations|Use coefficients to find sums, products and missing val
 nonlinear.quadratic-from-data|Write a quadratic from zeros, a vertex or points|quadratic-from-data
 nonlinear.literal|Isolate an unknown in a nonlinear formula with stated domain|nonlinear-formula-isolate
 quadratic.context|Choose a quadratic model and interpret maximum, zero, or initial value|quadratic-context-model,sat-entry-quadratic-context
-exponential.context|Build and use a growth, decay, or half-life model|exponential-model-rule,exponential-model-value
+exponential.context|Build and use a growth, decay, or half-life model|exponential-model-rule,exponential-model-value,sat-fn-exponential-choice,sat-entry-fn-exponential
 exponential.form|Recognize equivalent time-scale forms and interpret factors|exponential-time-scale,compound-growth
 nonlinear.features|Read vertex, symmetry, intercepts, and equivalent structural forms|parabola-vertex,parabola-axis,structure-meaning,quadratic-form-conversion
 nonlinear.transform|Relate transformations to graphs, equations, and points|parabola-shift,transform-equation,transform-point,shifted-polynomial-features
