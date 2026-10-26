@@ -78,6 +78,15 @@ export function problemLesson(
       gradeAnswer(learnerProblem, p.answer)
     )
       return true;
+    // A figure choice is answered by one figure: an example whose correct
+    // figure is the learner's (one line asked another way) shows the answer.
+    if (
+      learnerProblem?.public.response.kind === "figure-choice" &&
+      p.public.response.kind === "figure-choice" &&
+      answerText(p.public.response, p.answer) ===
+        answerText(learnerProblem.public.response, learnerProblem.answer)
+    )
+      return true;
     if (p.public.prompt !== avoidPrompt) return false;
     if (avoidResponse?.kind !== "multi-select") return true;
     return (
@@ -108,7 +117,8 @@ export function problemLesson(
   const answer =
     response.kind === "choice" ||
     response.kind === "multi-select" ||
-    response.kind === "point-plot"
+    response.kind === "point-plot" ||
+    response.kind === "figure-choice"
       ? answerText(response, example.answer)
       : skills.find((skill) => skill.id === template.skillId)?.strand ===
           "fractions"
@@ -149,7 +159,14 @@ export function problemLesson(
           ? { figure: example.public.figure }
           : {}),
       ...(givens ? { givens } : {}),
-      steps: example.explanation,
+      // A lesson draws only the correct figure, so a step naming its card
+      // ("Graph B is …") has nothing to point at; the answer line describes it.
+      steps:
+        response.kind === "figure-choice"
+          ? example.explanation.filter(
+              (step) => !step.startsWith(`${response.noun} `),
+            )
+          : example.explanation,
       answer,
     },
   };

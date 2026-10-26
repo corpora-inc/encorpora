@@ -91,6 +91,32 @@ test("does not retry a single-choice-only request", async () => {
   expect(send).toHaveBeenCalledTimes(1);
 });
 
+test("a client steps down from figure choices to an API that knows point plots", async () => {
+  const current = {
+    ...full,
+    responseCapabilities: [
+      "single-choice-v1",
+      "multi-select-v1",
+      "point-plot-v1",
+      "figure-choice-v1",
+    ],
+  };
+  const send = vi
+    .fn()
+    .mockRejectedValueOnce({
+      ...oldApiError,
+      validationPaths: [["responseCapabilities", 3], ["responseCapabilities"]],
+    })
+    .mockResolvedValueOnce("batch");
+  await expect(batchWithCapabilityFallback(current, send)).resolves.toBe(
+    "batch",
+  );
+  expect(send.mock.calls.map((call) => call[0].responseCapabilities)).toEqual([
+    current.responseCapabilities,
+    ["single-choice-v1", "multi-select-v1", "point-plot-v1"],
+  ]);
+});
+
 test("a current client steps down one format at a time for each older API", async () => {
   const current = {
     ...full,

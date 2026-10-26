@@ -21,4 +21,5 @@ import "../premium-controls.css";
 import "../app-shell.css";
 import "../problem-flag.css";
 import "../point-plot.css";
+import "../figure-choice.css";
 import "../practice-tablet.css";

@@ -84,7 +84,13 @@ export type ProblemFlag = {
   skillId: string;
   prompt: string;
   figureKind: string | null;
-  responseKind: "number" | "fraction" | "choice" | "multi-select" | "point-plot";
+  responseKind:
+    | "number"
+    | "fraction"
+    | "choice"
+    | "multi-select"
+    | "point-plot"
+    | "figure-choice";
   response: string | null;
   outcome: FlagOutcome;
   assisted: boolean;

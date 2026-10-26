@@ -164,9 +164,9 @@ export const mcasGrade8 = defineLedger(
       demand:
         "Choose the graph of a constant typing rate of forty words per minute",
       status: "partial",
-      templateIds: ["proportional-graph"],
+      templateIds: ["graph-of-proportional-rate", "proportional-graph"],
       limitations:
-        "proportional-graph reads what a labeled point of a proportional graph means; choosing the graph for a stated unit rate among four drawn graphs is not practiced.",
+        "graph-of-proportional-rate chooses among four drawn graphs for a stated unit rate from 2 to 4 on unit-scaled axes; a rate of 40 read on a y-axis scaled by forties is not practiced.",
     },
     {
       section: "Session 2",

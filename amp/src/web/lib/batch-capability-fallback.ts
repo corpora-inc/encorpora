@@ -44,6 +44,7 @@ export const clientResponseCapabilities = [
   "single-choice-v1",
   "multi-select-v1",
   "point-plot-v1",
+  "figure-choice-v1",
 ];
 /** An API older than a response format rejects its enum value and the longer
  * array. Retry without the newest format, one at a time, down to single

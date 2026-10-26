@@ -8,7 +8,7 @@ const oldApi = () =>
     JSON.stringify({
       error: "Invalid request",
       details: [
-        { path: ["responseCapabilities", 2], message: "Unsupported value" },
+        { path: ["responseCapabilities", 3], message: "Unsupported value" },
         { path: ["responseCapabilities"], message: "Too many values" },
       ],
     }),
@@ -52,12 +52,17 @@ test("trial transport retries an older API without its newest format, keeping au
       "single-choice-v1",
       "multi-select-v1",
       "point-plot-v1",
+      "figure-choice-v1",
     ],
   });
   expect(first.figureCapabilities.length).toBeGreaterThan(0);
   expect(retry).toEqual({
     ...first,
-    responseCapabilities: ["single-choice-v1", "multi-select-v1"],
+    responseCapabilities: [
+      "single-choice-v1",
+      "multi-select-v1",
+      "point-plot-v1",
+    ],
   });
 });
 

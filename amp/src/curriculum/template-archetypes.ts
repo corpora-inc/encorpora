@@ -274,6 +274,26 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "graph-domain-range": ["function.domain-range"],
   "graph-equation-choice": ["line.slope-equation"],
   "graph-linear-equation": ["line.graph-equation"],
+  "graph-of-inequality-number-line": [
+    "inequality.number-line",
+    "inequality.solve",
+  ],
+  "graph-of-linear-rule": [
+    "function.representations",
+    "pattern.graph-relationship",
+    "line.slope-equation",
+  ],
+  "graph-of-proportional-rate": [
+    "pattern.graph-relationship",
+    "function.proportional-identify",
+    "function.representations",
+  ],
+  "graph-of-quadratic-or-exponential": [
+    "nonlinear.representations",
+    "nonlinear.transform",
+    "nonlinear.features",
+    "exponential.graph-features",
+  ],
   "graph-absolute-value-points": ["nonlinear.graph-absolute"],
   "graph-exponential-points": ["exponential.graph"],
   "graph-quadratic-points": ["nonlinear.graph-quadratic"],

@@ -17,7 +17,9 @@ function givens(p: GeneratedProblem) {
   return [
     p.public.prompt,
     JSON.stringify(p.public.figure ?? null),
-    r.kind === "choice" ? r.options.map((o) => o.label).join("\n") : "",
+    r.kind === "choice" || r.kind === "figure-choice"
+      ? r.options.map((o) => o.label).join("\n")
+      : "",
   ].join("\n");
 }
 const tokens = (text: string) =>
