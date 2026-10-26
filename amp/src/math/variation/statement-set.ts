@@ -54,8 +54,12 @@ export function formatShape(
   switch (format) {
     case "select-all":
       return legacy;
-    case "true-false-pair":
-      return { total: 3, k: r(1, 2) };
+    case "true-false-pair": {
+      // As many equations as the select-all form keys, so the count a
+      // learner reads is the same in both formats.
+      const total = Math.min(4, Math.max(2, legacy.k));
+      return { total, k: r(1, total - 1) };
+    }
     case "single-true":
       return { total: 4, k: 1 };
     case "single-false":
@@ -178,7 +182,7 @@ export function renderStatementSet(
     return {
       prompt: join(
         copy.lead,
-        `Decide whether each ${copy.one} is true or false. Choose the ${n} correct statements, one for each ${copy.one}.`,
+        `Decide whether each of the ${n} ${copy.one}s is true or false, and choose the correct statement for each ${copy.one}.`,
       ),
       response: {
         kind: "multi-select",
@@ -210,7 +214,12 @@ export function renderStatementSet(
       statements.flatMap((s, i) =>
         options[i]!.id === answer
           ? []
-          : [[options[i]!.id, `${s.label} is ${s.holds ? "true" : "false"}: ${s.why}`]],
+          : [
+              [
+                options[i]!.id,
+                `${s.label} is ${s.holds ? "true" : "false"}: ${s.why}`,
+              ],
+            ],
       ),
     ),
   };

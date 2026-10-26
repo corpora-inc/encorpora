@@ -87,28 +87,28 @@ export function factEquations(
   letter = "n",
 ): FactEquation[] {
   const value = (slot: Slot): Fr => [relation[slot], 1];
-  const name = (slot: Slot) => (slot === unknown ? letter : `${relation[slot]}`);
+  const name = (slot: Slot) =>
+    slot === unknown ? letter : `${relation[slot]}`;
   const side = (term: Term): { tex: string; v: Fr } =>
     typeof term === "string"
       ? { tex: name(term), v: value(term) }
       : {
-          tex: `${name(term[0])}${term[1]}${name(term[2])}`,
+          // A TeX command needs a space before a letter: "8\\div n", not "8\\divn".
+          tex: `${name(term[0])}${term[1]}${/^\\/.test(term[1]) && /^[a-z]/.test(name(term[2])) ? " " : ""}${name(term[2])}`,
           v: ops[term[1]]!(value(term[0]), value(term[2])),
         };
   const known = relation[unknown];
-  return (relation.op === "product" ? productForms : sumForms).map(
-    ([l, r]) => {
-      const left = side(l),
-        right = side(r);
-      const lv = left.v[0] / left.v[1],
-        rv = right.v[0] / right.v[1];
-      return {
-        label: `$${left.tex}=${right.tex}$`,
-        holds: left.v[0] === right.v[0] && left.v[1] === right.v[1],
-        why: `With $${letter}=${known}$ the left side is ${Number(lv.toFixed(3))} and the right side is ${Number(rv.toFixed(3))}.`,
-        left: lv,
-        right: rv,
-      };
-    },
-  );
+  return (relation.op === "product" ? productForms : sumForms).map(([l, r]) => {
+    const left = side(l),
+      right = side(r);
+    const lv = left.v[0] / left.v[1],
+      rv = right.v[0] / right.v[1];
+    return {
+      label: `$${left.tex}=${right.tex}$`,
+      holds: left.v[0] === right.v[0] && left.v[1] === right.v[1],
+      why: `With $${letter}=${known}$ the left side is ${Number(lv.toFixed(3))} and the right side is ${Number(rv.toFixed(3))}.`,
+      left: lv,
+      right: rv,
+    };
+  });
 }

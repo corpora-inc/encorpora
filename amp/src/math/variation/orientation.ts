@@ -20,9 +20,7 @@ export interface EquationSides {
 }
 
 export const writeEquation = (eq: EquationSides, resultFirst: boolean) =>
-  resultFirst
-    ? `${eq.result}=${eq.operation}`
-    : `${eq.operation}=${eq.result}`;
+  resultFirst ? `${eq.result}=${eq.operation}` : `${eq.operation}=${eq.result}`;
 
 /** Which of `n` equations are written result-first. A mixed set always shows
  * both orientations when it has two or more equations. */

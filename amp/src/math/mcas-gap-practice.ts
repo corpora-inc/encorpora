@@ -8,6 +8,29 @@ import {
   type Random,
 } from "./distribution-practice";
 import { serializeSelection } from "./selection-response";
+import { restrictAxis, type AxisSet, type AxisValues } from "./variation/axes";
+import {
+  defineVariedFamily,
+  generateVaried,
+  statementSurface,
+  type StatementSurface,
+  type VariedFamily,
+} from "./variation/compose";
+import {
+  ex,
+  isRational,
+  numberDomainAxis,
+  tex as exprTex,
+  texValue,
+  valueOf,
+  type Expr,
+} from "./variation/number-domain";
+import { orientationAxis, type EquationSides } from "./variation/orientation";
+import {
+  answerFormatAxis,
+  type StatementSetCopy,
+} from "./variation/statement-set";
+import { factEquations, targetAxis } from "./variation/target";
 
 /**
  * Round-2 problem types for the Massachusetts MCAS 2025 released items whose
@@ -47,7 +70,7 @@ export const mcasGapTemplates: readonly TemplateMetadata[] = [
     "missing-factor",
     "3–5",
     0.3,
-    "Select every true equation among six multiplication and division facts, with quotients on the left and facts of tens.",
+    "Judge multiplication and division facts, including facts of tens, written with the result on either side, as a select-all list or as true-or-false pairs.",
     multi,
   ),
   meta(
@@ -74,7 +97,7 @@ export const mcasGapTemplates: readonly TemplateMetadata[] = [
     "multiplicative-comparison",
     "3–5",
     0.3,
-    "Select every equation that finds an unknown amount when a quantity is a number of times as many as another or a number more than another.",
+    "Select every equation that finds an unknown amount when a quantity is a number of times as many as another or a number more than another, with either the larger or the smaller amount unknown.",
     multi,
   ),
   meta(
@@ -83,7 +106,7 @@ export const mcasGapTemplates: readonly TemplateMetadata[] = [
     "whole-multiplication",
     "3–5",
     0.35,
-    "Select the equations whose stated product of a three-digit number and a one-digit number is correct, with errors from missed regrouping and place value.",
+    "Judge stated products of a three-digit number and a one-digit number, with errors from missed regrouping and place value, as a select-all list or as true-or-false pairs.",
     multi,
   ),
   meta(
@@ -110,7 +133,7 @@ export const mcasGapTemplates: readonly TemplateMetadata[] = [
     "whole-division",
     "6–8",
     0.3,
-    "Select the true division equations among five whose dividends have three or four digits and whose divisors have two digits.",
+    "Judge division equations whose dividends have three or four digits and whose divisors have two digits, as a select-all list or as true-or-false pairs.",
     multi,
   ),
   meta(
@@ -160,11 +183,11 @@ export const mcasGapTemplates: readonly TemplateMetadata[] = [
   ),
   meta(
     "mcas-rational-irrational-select",
-    "Select the rational numbers among radicals and sums with pi",
+    "Select the rational numbers among roots and powers",
     "irrational-numbers",
     "6–8",
     0.4,
-    "Select the rational numbers among five radical expressions, or the expressions with a rational value among sums and products of pi and roots.",
+    "Select the rational numbers among five radical expressions, or the expressions with a rational value among sums, products and powers of $\\pi$ and roots.",
     multi,
   ),
   meta(
@@ -278,6 +301,10 @@ type Option = {
   why: string;
   /** Numeric expression for tests that re-evaluate a claim independently. */
   js?: string;
+  /** An equation's sides, so the orientation axis can rewrite it. */
+  equation?: EquationSides;
+  /** x op y = z as stated, for hints written from the shown equations. */
+  parts?: { op: "mul" | "div"; x: number; y: number; z: number };
 };
 type Built = {
   variant: string;
@@ -295,6 +322,10 @@ type Built = {
   /** Keep the pool's own order instead of shuffling the options. */
   ordered?: boolean;
   model?: unknown;
+  /** Copy for formats other than select-all (variation axes). */
+  copy?: (shape: { total: number; k: number }) => StatementSetCopy;
+  /** Hint from the shown statements, for formats that show part of the pool. */
+  hintFor?: (shown: readonly Option[]) => string;
 };
 
 const pick = <T>(r: Random, items: readonly T[]): T =>
@@ -445,10 +476,14 @@ function equation(op: "mul" | "div", x: number, y: number, z: number): Option {
   const sym = op === "mul" ? times : "\\div";
   const holds = op === "mul" ? x * y === z : x === y * z;
   const label = `$${tc(x)}${sym}${tc(y)}=${tc(z)}$`;
+  const sides = { operation: `${tc(x)}${sym}${tc(y)}`, result: tc(z) };
+  const parts = { op, x, y, z };
   if (op === "mul")
     return {
       label,
       holds,
+      equation: sides,
+      parts,
       js: `${x}*${y}===${z}`,
       why: holds
         ? `$${tc(x)}${times}${tc(y)}=${tc(z)}$.`
@@ -457,12 +492,30 @@ function equation(op: "mul" | "div", x: number, y: number, z: number): Option {
   return {
     label,
     holds,
+    equation: sides,
+    parts,
     js: `${x}===${y}*${z}`,
     why: holds
       ? `Check by multiplying: $${tc(y)}${times}${tc(z)}=${tc(x)}$.`
       : `Check by multiplying: $${tc(y)}${times}${tc(z)}=${tc(y * z)}$, not $${tc(x)}$.`,
   };
 }
+
+/** Statement-set copy for equation families: select-all keeps the family's
+ * own wording; other formats use the lead and the generic instruction. */
+const equationCopy =
+  (
+    lead: string,
+    noun: string,
+    select: (k: number) => string = (k) =>
+      `Choose the ${k} equations that are true.`,
+  ) =>
+  ({ k }: { total: number; k: number }): StatementSetCopy => ({
+    selectPrompt: select(k),
+    selectLabel: `Choose ${k} ${noun}`,
+    lead,
+    one: "equation",
+  });
 
 function trueFactEquations(r: Random): Built {
   const variant = pick(r, ["facts", "tens"] as const);
@@ -514,6 +567,14 @@ function trueFactEquations(r: Random): Built {
   return {
     variant,
     prompt: "Choose the 3 equations that are true.",
+    copy: equationCopy("", "true equations"),
+    hintFor: (shown) => {
+      const d = shown.find((o) => o.parts?.op === "div")?.parts;
+      const m = shown.find((o) => o.parts?.op === "mul")?.parts;
+      return d
+        ? `Test one equation at a time. For a division such as $${tc(d.x)}\\div${tc(d.y)}$, ask what number times ${tc(d.y)} makes ${tc(d.x)}. For a multiplication, work out the product and compare.`
+        : `Test one equation at a time. Work out $${tc(m!.x)}${times}${tc(m!.y)}$ yourself and compare it with the number on the other side.`;
+    },
     hint: `Test one equation at a time. For a division such as $${tc(s.p)}\\div${tc(s.a)}=\\square$, ask what number times ${tc(s.a)} makes ${tc(s.p)}. For a multiplication, work out the product and compare.`,
     pool,
     total: 6,
@@ -644,8 +705,17 @@ function primeFactorSelect(r: Random): Built {
   };
 }
 
-type EqCandidate = { text: string; left: number; right: number };
-function comparisonEquations(r: Random): Built {
+/** Which quantity of a comparison story is unknown: the larger amount
+ * (n = 4 × 9) or the smaller one (36 = 4 × n). One model, two surfaces. */
+const comparisonTarget = targetAxis(
+  { larger: "whole", smaller: "second" } as const,
+  "larger",
+);
+type ComparisonTarget = (typeof comparisonTarget.axis.values)[number];
+function comparisonEquations(
+  r: Random,
+  target: ComparisonTarget = "larger",
+): Built {
   const variant = pick(r, ["times", "more"] as const);
   const m = r(3, 9);
   const a = r(6, 15);
@@ -656,69 +726,52 @@ function comparisonEquations(r: Random): Built {
     ["pages", "pictures"],
   ] as const);
   const N = variant === "times" ? m * a : a + m;
-  const t = (
-    left: string,
-    right: string,
-    l: number,
-    rr: number,
-  ): EqCandidate => ({
-    text: `$${left}=${right}$`,
-    left: l,
-    right: rr,
-  });
-  const cands: EqCandidate[] =
-    variant === "times"
-      ? [
-          t("n", `${m}${times}${a}`, N, m * a),
-          t("n", `${a}${times}${m}`, N, a * m),
-          t(`${a}${times}${m}`, "n", a * m, N),
-          t(`n\\div${m}`, `${a}`, N / m, a),
-          t(`n\\div${a}`, `${m}`, N / a, m),
-          t("n", `${a}+${m}`, N, a + m),
-          t("n", `${a}\\div${m}`, N, a / m),
-          t(`n${times}${m}`, `${a}`, N * m, a),
-          t(`${a}\\div n`, `${m}`, a / N, m),
-          t(`n-${m}`, `${a}`, N - m, a),
-        ]
-      : [
-          t("n", `${a}+${m}`, N, a + m),
-          t(`${a}+${m}`, "n", a + m, N),
-          t(`n-${a}`, `${m}`, N - a, m),
-          t(`n-${m}`, `${a}`, N - m, a),
-          t(`${m}+${a}`, "n", m + a, N),
-          t("n", `${a}${times}${m}`, N, a * m),
-          t("n", `${a}-${m}`, N, a - m),
-          t(`n+${a}`, `${m}`, N + a, m),
-          t(`n\\div${a}`, `${m}`, N / a, m),
-          t(`${m}-${a}`, "n", m - a, N),
-        ];
-  const pool = cands.map((c) => ({
-    label: c.text,
-    holds: near(c.left, c.right),
+  // One relation: N = m × a or N = a + m. The target picks the unknown.
+  const pool = factEquations(
+    {
+      op: variant === "times" ? "product" : "sum",
+      whole: N,
+      first: m,
+      second: a,
+    },
+    comparisonTarget.slot(target),
+  ).map((c) => ({
+    label: c.label,
+    holds: c.holds,
     js: `${c.left}===${c.right}`,
-    why: `With $n=${N}$ the left side is ${Number(c.left.toFixed(3))} and the right side is ${Number(c.right.toFixed(3))}.`,
+    why: c.why,
   }));
   const story =
     variant === "times"
       ? `There are ${m} times as many ${big} as ${small}.`
       : `There are ${m} more ${big} than ${small}.`;
+  const larger = target === "larger";
   return {
     variant,
-    prompt: `A group has ${a} ${small}. ${story} Let $n$ be the number of ${big}. Which 3 equations can be used to find $n$?`,
-    hint:
-      variant === "times"
+    prompt: larger
+      ? `A group has ${a} ${small}. ${story} Let $n$ be the number of ${big}. Which 3 equations can be used to find $n$?`
+      : `A group has ${N} ${big}. ${story} Let $n$ be the number of ${small}. Which 3 equations can be used to find $n$?`,
+    hint: larger
+      ? variant === "times"
         ? `“${m} times as many” means the ${big} come in ${m} groups, each the size of the ${a} ${small}. Write the multiplication, then think of the division equations that say the same thing.`
-        : `“${m} more” means the ${big} are the ${a} ${small} plus ${m} extra. Write the addition, then think of the subtraction equations that say the same thing.`,
+        : `“${m} more” means the ${big} are the ${a} ${small} plus ${m} extra. Write the addition, then think of the subtraction equations that say the same thing.`
+      : variant === "times"
+        ? `“${m} times as many” means the ${N} ${big} make ${m} groups, each the size of the unknown number of ${small}. Write the multiplication with $n$ in it, then think of the division equations that say the same thing.`
+        : `“${m} more” means the ${N} ${big} are the unknown number of ${small} plus ${m} extra. Write the addition with $n$ in it, then think of the subtraction equations that say the same thing.`,
     pool,
     total: 6,
     k: 3,
     noun: "equations",
     lead: [
-      variant === "times"
-        ? `There are $${m}${times}${a}=${N}$ ${big}, so a correct equation must be true when $n=${N}$.`
-        : `There are $${a}+${m}=${N}$ ${big}, so a correct equation must be true when $n=${N}$.`,
+      larger
+        ? variant === "times"
+          ? `There are $${m}${times}${a}=${N}$ ${big}, so a correct equation must be true when $n=${N}$.`
+          : `There are $${a}+${m}=${N}$ ${big}, so a correct equation must be true when $n=${N}$.`
+        : variant === "times"
+          ? `There are $${N}\\div${m}=${a}$ ${small}, so a correct equation must be true when $n=${a}$.`
+          : `There are $${N}-${m}=${a}$ ${small}, so a correct equation must be true when $n=${a}$.`,
     ],
-    model: { m, a, N },
+    model: { m, a, N, target },
   };
 }
 
@@ -748,6 +801,8 @@ function trueProductEquations(r: Random): Built {
     return {
       label: `$${a}${times}${b}=${tc(shown)}$`,
       holds: a * b === shown,
+      equation: { operation: `${a}${times}${b}`, result: tc(shown) },
+      parts: { op: "mul" as const, x: a, y: b, z: shown },
       js: `${a}*${b}===${shown}`,
       why: `$${a}${times}${b}=${h * 100}${times}${b}+${t * 10}${times}${b}+${o}${times}${b}=${tc(h * 100 * b)}+${tc(t * 10 * b)}+${tc(o * b)}=${tc(p)}$${a * b === shown ? "." : `, not $${tc(shown)}$.`}`,
     };
@@ -757,6 +812,16 @@ function trueProductEquations(r: Random): Built {
     variant,
     prompt:
       "Each equation states the product of a three-digit number and a one-digit number. Choose the 3 equations whose product is correct.",
+    copy: equationCopy(
+      "Each equation states the product of a three-digit number and a one-digit number.",
+      "correct equations",
+      (k) =>
+        `Each equation states the product of a three-digit number and a one-digit number. Choose the ${k} equations whose product is correct.`,
+    ),
+    hintFor: (shown) => {
+      const p = shown[0]!.parts!;
+      return `Check each product yourself instead of trusting the answer shown. Multiply place by place: for ${p.x}, multiply the hundreds, the tens and the ones by ${p.y}, then add the three parts.`;
+    },
     hint: `Check each product yourself instead of trusting the answer shown. Multiply place by place: for ${s.a}, multiply the hundreds, the tens and the ones by ${s.b}, then add the three parts.`,
     pool,
     total: 6,
@@ -926,6 +991,11 @@ function trueQuotientEquations(r: Random): Built {
   return {
     variant,
     prompt: "Choose the 2 equations that are true.",
+    copy: equationCopy("", "true equations"),
+    hintFor: (shown) => {
+      const d = shown[0]!.parts!;
+      return `Test each quotient by multiplying: for $${tc(d.x)}\\div${d.y}$, the quotient times ${d.y} must give back the dividend. Estimate with friendly numbers first to find a wrong place value.`;
+    },
     hint: `Test each quotient by multiplying: for $${tc(s.d * s.q)}\\div${s.d}=\\square$, the quotient times ${s.d} must give back the dividend. Estimate with friendly numbers first to find a wrong place value.`,
     pool,
     total: 5,
@@ -1240,8 +1310,119 @@ const squareRoot = (n: number) => Math.round(Math.sqrt(n));
 const isSquare = (n: number) => squareRoot(n) ** 2 === n;
 const cubeRoot = (n: number) => Math.round(Math.cbrt(n));
 const isCube = (n: number) => cubeRoot(n) ** 3 === n;
-function rationalIrrationalSelect(r: Random): Built {
+/** The number domain of the rational/irrational family: roots and pi as
+ * before, or with powers of pi and of radicals (a square of pi, a radical
+ * raised to a power). */
+const rationalDomainAxis = restrictAxis(
+  numberDomainAxis,
+  ["roots-and-pi", "with-powers"],
+  "roots-and-pi",
+);
+type RationalDomain = (typeof rationalDomainAxis.values)[number];
+
+/** A statement about an expression whose rationality the exact model decides. */
+function exprOption(e: Expr): Option {
+  const value = valueOf(e);
+  const holds = isRational(value);
+  const label = `$${exprTex(e)}$`;
+  const exact = texValue(value);
+  const simplified =
+    exact === exprTex(e) ? `$${exact}$` : `$${exprTex(e)}=${exact}$`;
+  return {
+    label,
+    holds,
+    why: holds
+      ? `${simplified}, a ratio of integers, so it is rational.`
+      : value.some((t) => t.pi !== 0)
+        ? `${simplified} keeps a power of $\\pi$, which is irrational, so the value is irrational.`
+        : `${simplified} keeps a root of a number that is not a perfect power, so the value is irrational.`,
+  };
+}
+
+/** Pools with powers: two rational and three irrational expressions, at least
+ * one power among each, computed by the exact real-number model. */
+function rationalPowersSelect(
+  r: Random,
+  variant: "radicals" | "with-pi",
+): Built {
+  const nonSquare = [2, 3, 5, 6, 7, 10, 11, 13, 14, 15];
+  const nonCube = [2, 3, 4, 5, 6, 7, 9, 10];
+  const s = pick(r, nonSquare);
+  const t = pick(
+    r,
+    nonSquare.filter((v) => v !== s),
+  );
+  const c = pick(r, nonCube);
+  const k = r(2, 5);
+  const root = ex.root;
+  const ratPowers: Expr[] = [
+    ex.pow(root(s), 2),
+    ex.pow(root(s), 4),
+    ex.pow(root(c, 3), 3),
+    ex.pow(ex.mul(ex.num(k), root(s)), 2),
+  ];
+  const irrPowers: Expr[] =
+    variant === "with-pi"
+      ? [
+          ex.pow(ex.pi, 2),
+          ex.mul(ex.pow(root(s), 2), ex.pi),
+          ex.add(ex.pow(ex.pi, 2), ex.num(k)),
+          ex.pow(root(t), 3),
+          ex.frac(ex.pow(ex.pi, 3), ex.pi),
+        ]
+      : [
+          ex.pow(root(s), 3),
+          ex.pow(root(c, 3), 2),
+          ex.pow(root(t), 5),
+          ex.add(ex.pow(root(s), 2), root(t)),
+        ];
+  const ratPlain: Expr[] =
+    variant === "with-pi"
+      ? [
+          ex.frac(ex.mul(ex.num(k), ex.pow(ex.pi, 2)), ex.pow(ex.pi, 2)),
+          ex.mul(root(s), root(s * k * k)),
+          ex.add(ex.pow(root(s), 2), ex.pow(root(t), 2)),
+        ]
+      : [
+          ex.mul(root(s), root(s * k * k)),
+          ex.frac(ex.pow(root(t), 2), ex.num(k)),
+          ex.sub(ex.pow(root(s), 2), ex.pow(root(t), 2)),
+        ];
+  const irrPlain: Expr[] =
+    variant === "with-pi"
+      ? [ex.mul(ex.num(k), ex.pi), ex.add(ex.pi, ex.pow(root(s), 2))]
+      : [ex.mul(root(s), root(t)), ex.mul(ex.num(k), root(s))];
+  const pool: Option[] = [
+    exprOption(pick(r, ratPowers)),
+    exprOption(pick(r, ratPlain)),
+    ...shuffle(r, [...irrPowers])
+      .slice(0, 2)
+      .map(exprOption),
+    exprOption(pick(r, irrPlain)),
+  ];
+  return {
+    variant,
+    prompt:
+      variant === "with-pi"
+        ? "A rational number can be written as a ratio of two integers. Which 2 of these expressions have a rational value?"
+        : "A rational number can be written as a ratio of two integers. Which 2 of these numbers are rational?",
+    hint:
+      variant === "with-pi"
+        ? "Simplify each power first: squaring a square root gives back the number under it, while a power of $\\pi$ is still irrational. Then a product, quotient or sum is rational only when no factor of $\\pi$ and no root of a non-perfect power is left."
+        : "Simplify each power first: squaring a square root gives back the number under it, and cubing a cube root gives back the number under it, while an odd power of a square root keeps a root. Then decide whether a root of a non-perfect power is left.",
+    pool,
+    total: 5,
+    k: 2,
+    noun: variant === "with-pi" ? "expressions" : "rational numbers",
+  };
+}
+
+function rationalIrrationalSelect(
+  r: Random,
+  domain: RationalDomain = "roots-and-pi",
+): Built {
   const variant = pick(r, ["radicals", "with-pi"] as const);
+  if (domain === "with-powers") return rationalPowersSelect(r, variant);
   if (variant === "radicals") {
     const perfect = [4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144];
     const cubes = [8, 27, 64, 125, 216];
@@ -2322,8 +2503,92 @@ export const mcasGapTemplateIds = [
   ...Object.keys(singleBuilders),
 ];
 
+/* ------------------------------------------------- variation-axis families */
+
+const equationAxes = {
+  orientation: orientationAxis,
+  "answer-format": restrictAxis(answerFormatAxis, [
+    "select-all",
+    "true-false-pair",
+  ]),
+};
+const templateById = (id: string) => mcasGapTemplates.find((t) => t.id === id)!;
+/** A statement-set family on the variation layer: the builder is the model,
+ * `statementSurface` draws, orients and formats it. */
+function statementFamily<A extends AxisSet>(
+  id: string,
+  axes: A,
+  model: (r: Random, axes: AxisValues<A>) => Built,
+): VariedFamily<A, Built> {
+  return defineVariedFamily({
+    template: templateById(id),
+    axes,
+    model,
+    variant: (built) => built.variant,
+    render: (built, values, r, surface) =>
+      statementSurface(
+        {
+          ...built,
+          hint:
+            values["answer-format"] === "true-false-pair" && built.hintFor
+              ? built.hintFor
+              : built.hint,
+          copy:
+            built.copy ??
+            (({ k }) => ({
+              selectPrompt: built.prompt,
+              selectLabel: `Choose ${k} ${built.noun}`,
+              lead: "",
+              one: "statement",
+            })),
+        },
+        values as never,
+        r,
+        surface,
+      ),
+  });
+}
+// Each family keeps its own axis types; the table erases them for dispatch.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const variedFamilies: Record<string, VariedFamily<any, Built>> = {
+  "mcas-true-fact-equations": statementFamily(
+    "mcas-true-fact-equations",
+    equationAxes,
+    (r) => trueFactEquations(r),
+  ),
+  "mcas-true-product-equations": statementFamily(
+    "mcas-true-product-equations",
+    equationAxes,
+    (r) => trueProductEquations(r),
+  ),
+  "mcas-true-quotient-equations": statementFamily(
+    "mcas-true-quotient-equations",
+    equationAxes,
+    (r) => trueQuotientEquations(r),
+  ),
+  "mcas-comparison-equations-select": statementFamily(
+    "mcas-comparison-equations-select",
+    { unknown: comparisonTarget.axis },
+    (r, axes) => comparisonEquations(r, axes.unknown),
+  ),
+  "mcas-rational-irrational-select": statementFamily(
+    "mcas-rational-irrational-select",
+    { "number-domain": rationalDomainAxis },
+    (r, axes) => rationalIrrationalSelect(r, axes["number-domain"]),
+  ),
+};
+/** The surface axes each migrated family supports (tests and docs). */
+export const mcasVariedAxes = Object.fromEntries(
+  Object.entries(variedFamilies).map(([id, f]) => [id, f.axes]),
+) as Record<
+  string,
+  Record<string, { values: readonly string[]; legacy: string }>
+>;
+
 export type McasGapCase = {
   variant: string;
+  /** Variation-axis values, for families on the variation layer. */
+  axes?: Record<string, string>;
   model: unknown;
   /** Multi-select candidates in display order, with their computed truth. */
   options?: Option[];
@@ -2331,11 +2596,26 @@ export type McasGapCase = {
 };
 
 /** Private model: the variant and truths are for tests; only the public problem is served. */
-export function mcasGapCase(templateId: string, seed: string): McasGapCase {
+export function mcasGapCase(
+  templateId: string,
+  seed: string,
+  force: Record<string, string> = {},
+): McasGapCase {
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const template = mcasGapTemplates.find((t) => t.id === templateId);
   if (!template) throw new Error(`Unknown template ${templateId}`);
+  const varied = variedFamilies[templateId];
+  if (varied) {
+    const c = generateVaried(varied, seed, force);
+    return {
+      variant: c.problem.variant!.id,
+      axes: c.problem.variant!.axes,
+      model: c.model.model,
+      options: (c.surface as StatementSurface).statements,
+      problem: c.problem,
+    };
+  }
   const r = random(template.id, seed);
   const multiBuild = multiBuilders[templateId];
   for (let attempt = 0; attempt < 80; attempt++) {

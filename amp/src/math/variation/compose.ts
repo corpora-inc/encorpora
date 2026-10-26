@@ -150,7 +150,9 @@ export interface StatementModel {
   k: number;
   ordered?: boolean;
   copy: (shape: { total: number; k: number }) => StatementSetCopy;
-  hint: string;
+  /** A fixed hint, or one written from the statements actually shown (it
+   * must name the instance's own numbers). */
+  hint: string | ((shown: readonly Statement[]) => string);
   lead?: string[];
   tail?: string[];
   figure?: SemanticFigure;
@@ -186,13 +188,14 @@ export function statementSurface(
     ),
   );
   const rendered = renderStatementSet(format, statements, m.copy(shape));
-  if (quotesTrueStatement(`${rendered.prompt}\n${m.hint}`, statements))
+  const hint = typeof m.hint === "string" ? m.hint : m.hint(statements);
+  if (quotesTrueStatement(`${rendered.prompt}\n${hint}`, statements))
     return null;
   return {
     prompt: rendered.prompt,
     response: rendered.response,
     answer: rendered.answer,
-    hint: m.hint,
+    hint,
     explanation: [...(m.lead ?? []), ...rendered.verdicts, ...(m.tail ?? [])],
     ...(m.figure ? { figure: m.figure } : {}),
     ...(rendered.choiceFeedback

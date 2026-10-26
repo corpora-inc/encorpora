@@ -26,6 +26,19 @@ Generator integration normally touches the runtime engine registry, template-to-
 
 A template can assess only part of a broad skill. Record its actual scope and exclusions. Selecting an equation, explanation or graph does not certify constructing one. Written explanations awaiting rubric review cannot produce automatic mastery credit.
 
+## Variation axes: one model, many surfaces
+
+Released items often differ from practice only in surface: an equation written result-first (7 = 63 ÷ 9), the other quantity asked for, true-or-false statement pairs instead of select-all, a single choice, or π, radicals and powers in the numbers. Do not add a template or a `variant === N` branch for these. Put the family on the variation layer in `src/math/variation/`:
+
+- The family writes one exact model: givens, the relation or statements with computed truth, and the misconception transforms that make distractors. `defineVariedFamily` declares the axes it supports; `generateVaried` draws each axis from its own hash stream, then renders prompt, response, answer, hint, explanation and figure from that model.
+- Reusable axes: `orientationAxis` (operation-first, mixed, result-first), `answerFormatAxis` with `statementSurface` (select-all, true-false-pair, single-true, single-false), `targetAxis` with `factEquations` (which quantity of `whole = first ∘ second` is unknown), and `numberDomainAxis` with the exact real model (`ex`, `valueOf`, `isRational`) and rational display styles. A family may restrict an axis or define its own with `defineAxis`.
+- Formats reuse existing response protocols, and every format of a family must need its template's one declared capability. Axes add no templates, so exposure budgets stay per objective, skill and family.
+- Legacy axis values reproduce the pre-axis output byte for byte. Freeze a digest fixture before migrating a family and assert it, as `tests/variation-axes.test.ts` does. Saved instances keep their stored JSON and grading.
+- The chosen values are saved as `variant.axes` on the private problem and copied to its attempt, so calibration and review can compare axis values.
+- The independent oracle judges each displayed statement once; `scripts/variation_axes_oracle.py` decodes the answer format, splits either equation orientation and decides rationality exactly.
+
+Add an axis when the task, its answer and its misconceptions are unchanged and only the way they are shown or asked differs. Add a family when the mathematics differs: another relation, another reasoning step, other misconceptions or another required skill. Record what each axis value practices in the ledger row it closes.
+
 ## Lesson structure
 
 Every lesson builds through these layers:

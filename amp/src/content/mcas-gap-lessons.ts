@@ -3,10 +3,13 @@ import type { ProblemMethod } from "./problem-lessons";
 
 const selectStep =
   "Decide each statement on its own, then choose exactly the number of true statements the question asks for.";
+/** Equation sets come as a list to choose from or as true-or-false pairs. */
+const judgeStep =
+  "Decide each equation on its own. In a list, choose exactly the number of true equations asked for; in true-or-false pairs, choose the one correct claim for each equation.";
 
 export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-true-fact-equations": {
-    goal: "Choose the true multiplication and division equations from a list of six.",
+    goal: "Decide which multiplication and division equations are true, with the result written on either side.",
     intuition:
       "An equation is true when both sides name the same number. A multiplication fact and its division facts say the same thing: if $6\\times8=48$ then $48\\div6=8$ and $48\\div8=6$. So you can test any division by multiplying the answer back.",
     terms: [
@@ -17,10 +20,10 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Work out the left side of each equation.",
+      "Find the side with the operation. It can be on either side: $7=63\\div9$ says the same as $63\\div9=7$.",
       "For a division, multiply the quotient by the divisor. The result must be the dividend.",
-      "Compare with the number on the right and keep the equation only if they match.",
-      selectStep,
+      "Compare with the number on the other side. The equation is true only if they match.",
+      judgeStep,
     ],
     watch:
       "Do not accept an equation because the numbers look familiar. $7\\times8=54$ uses the right numbers and is false.",
@@ -65,7 +68,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       "Odd numbers are not all prime: 51 is $3\\times17$ and 91 is $7\\times13$.",
   },
   "mcas-comparison-equations-select": {
-    goal: "Choose every equation that finds an unknown amount in a times-as-many or more-than story.",
+    goal: "Choose the equations that find the unknown in a times-as-many or more-than story, with the larger or the smaller amount unknown.",
     intuition:
       "A story about “times as many” has the multiplication and the two related divisions. A story about “more than” has the addition and the two related subtractions. Each true equation is one of these, and an equation that mixes the operations is not.",
     terms: [
@@ -76,8 +79,8 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       ["more than", "A comparison by addition: 4 more than 12 is $12+4$."],
     ],
     method: [
-      "Decide whether the story compares by multiplication or by addition.",
-      "Write the amount for the unknown and find its value.",
+      "Decide whether the story compares by multiplication or by addition, and which amount the letter stands for.",
+      "Find the letter's value. When the larger amount is given, divide or subtract to find the smaller one.",
       "Substitute that value for the letter in each equation and see whether both sides match.",
       selectStep,
     ],
@@ -85,7 +88,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       "“4 more than” is not “4 times as many”: the first adds 4, the second multiplies by 4.",
   },
   "mcas-true-product-equations": {
-    goal: "Choose the equations whose product of a three-digit and a one-digit number is correct.",
+    goal: "Decide which stated products of a three-digit and a one-digit number are correct.",
     intuition:
       "Multiplying place by place splits a number into hundreds, tens and ones, multiplies each part, then adds. Mistakes come from forgetting to add a regrouped ten or hundred, or from putting a part in the wrong place.",
     terms: [
@@ -97,8 +100,8 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     method: [
       "Split the three-digit number into hundreds, tens and ones.",
       "Multiply each part by the one-digit number: for $453\\times6$ that is $2{,}400+300+18$.",
-      "Add the three products and compare with the product in the equation.",
-      selectStep,
+      "Add the three products and compare with the product in the equation, on whichever side it is written.",
+      judgeStep,
     ],
     watch:
       "Check the tens and hundreds of the product, not only the ones digit. A wrong answer can have the right last digit.",
@@ -162,7 +165,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       "Estimate: round the divisor and dividend to friendly numbers and divide to see the size of the quotient.",
       "Multiply the stated quotient by the divisor, place by place.",
       "The equation is true only if the product equals the dividend.",
-      selectStep,
+      judgeStep,
     ],
     watch:
       "A zero in the quotient is easy to lose: $4{,}305\\div21=205$, not 25. The estimate shows the quotient must be in the hundreds.",
@@ -257,7 +260,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       "The percent of the cost is not the price. Add it to or subtract it from the cost.",
   },
   "mcas-rational-irrational-select": {
-    goal: "Choose the rational numbers among radicals, or among sums and products of roots and pi.",
+    goal: "Choose the rational numbers among radicals, or among sums, products and powers of roots and $\\pi$.",
     intuition:
       "A rational number is a ratio of two integers, and an irrational number is not. The square root of a perfect square is a whole number, so it is rational. A rational number plus an irrational number is irrational, but two irrational numbers can combine to a rational one: $\\sqrt{2}\\cdot\\sqrt{8}=4$.",
     terms: [
@@ -272,7 +275,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Simplify each expression. Evaluate roots of perfect squares and perfect cubes.",
-      "For a product of roots, multiply under one root and check for a perfect square.",
+      "For a product of roots, multiply under one root and check for a perfect square. Simplify powers: $\\left(\\sqrt{a}\\right)^{2}=a$ and $\\left(\\sqrt[3]{a}\\right)^{3}=a$, but $\\left(\\sqrt{a}\\right)^{3}=a\\sqrt{a}$ keeps the root and $\\pi^{2}$ is irrational.",
       "A nonzero rational times an irrational number, and a rational plus an irrational number, are irrational.",
       selectStep,
     ],
@@ -494,7 +497,7 @@ export const mcasGapPrinciples: Record<string, string> = {
   "mcas-prime-factor-select":
     "A whole number $p>1$ is prime if its only positive divisors are 1 and $p$. If $n$ has no divisor from 2 to $\\sqrt{n}$, it is prime. $d$ is a factor of $n$ if $n=d\\cdot q$ for a whole number $q$.",
   "mcas-comparison-equations-select":
-    "If $n$ is $m$ times as many as $a$, then $n=ma$, which gives $n\\div m=a$ and $n\\div a=m$. If $n$ is $m$ more than $a$, then $n=a+m$, which gives $n-a=m$ and $n-m=a$.",
+    "If $N$ is $m$ times as many as $a$, then $N=ma$, which gives $N\\div m=a$ and $N\\div a=m$. If $N$ is $m$ more than $a$, then $N=a+m$, which gives $N-a=m$ and $N-m=a$. The letter can stand for $N$ or for $a$; the true equations are the ones that hold for its value.",
   "mcas-true-product-equations":
     "By the distributive property, $\\overline{hto}\\times b=100h\\cdot b+10t\\cdot b+o\\cdot b$ for a three-digit number with digits $h$, $t$, $o$.",
   "mcas-prism-range-select":
@@ -514,7 +517,7 @@ export const mcasGapPrinciples: Record<string, string> = {
   "mcas-markup-price-select":
     "A price $p$ percent above cost $c$ is $c\\left(1+\\frac{p}{100}\\right)$, and $p$ percent below is $c\\left(1-\\frac{p}{100}\\right)$.",
   "mcas-rational-irrational-select":
-    "A rational number equals $\\frac{p}{q}$ for integers $p$ and $q\\neq0$. $\\sqrt{n}$ is rational exactly when $n$ is a perfect square of a rational number. The sum of a rational and an irrational number is irrational, and so is the product of a nonzero rational and an irrational.",
+    "A rational number equals $\\frac{p}{q}$ for integers $p$ and $q\\neq0$. $\\sqrt{n}$ is rational exactly when $n$ is a perfect square of a rational number. The sum of a rational and an irrational number is irrational, and so is the product of a nonzero rational and an irrational. For $a>0$, $\\left(\\sqrt{a}\\right)^{2k}=a^{k}$ is rational, and $\\pi^{k}$ is irrational for every integer $k\\neq0$.",
   "mcas-sci-notation-select":
     "Multiplying by $10^{k}$ moves the decimal point $k$ places right when $k>0$ and $|k|$ places left when $k<0$, so $c\\times10^{-k}=\\frac{c}{10^{k}}$ is positive when $c>0$.",
   "mcas-table-intercept-select":

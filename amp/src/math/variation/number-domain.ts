@@ -39,11 +39,7 @@ const qinv = (a: Rational) => q(a[1], a[0]);
 /* ----------------------------------------------- rational display domains */
 
 export type RationalStyle =
-  | "integer"
-  | "fraction"
-  | "mixed"
-  | "decimal"
-  | "signed";
+  "integer" | "fraction" | "mixed" | "decimal" | "signed";
 /** The styles that can show a value exactly (decimal only if it terminates). */
 export function rationalStyles(v: Rational): RationalStyle[] {
   const [n, d] = q(v[0], v[1]);
@@ -116,7 +112,8 @@ function extract(n: number, k: 2 | 3): { outside: number; inside: number } {
     }
   return { outside, inside };
 }
-const key = (t: Term) => `${t.pi}|${t.radicand === 1 ? 1 : t.index}|${t.radicand}`;
+const key = (t: Term) =>
+  `${t.pi}|${t.radicand === 1 ? 1 : t.index}|${t.radicand}`;
 function normalize(terms: readonly Term[]): Real {
   const sums = new Map<string, Term>();
   for (const raw of terms) {
@@ -155,9 +152,18 @@ export function div(a: Real, b: Real): Real {
   const t = b[0]!;
   // 1/ᵏ√r = ᵏ√(r^(k-1)) / r
   const radical =
-    t.radicand === 1 ? rational(1) : rootReal(t.radicand ** (t.index - 1), t.index);
+    t.radicand === 1
+      ? rational(1)
+      : rootReal(t.radicand ** (t.index - 1), t.index);
   const inverse = mul(
-    [{ c: qmul(qinv(t.c), q(1, t.radicand)), pi: -t.pi, index: 2, radicand: 1 }],
+    [
+      {
+        c: qmul(qinv(t.c), q(1, t.radicand)),
+        pi: -t.pi,
+        index: 2,
+        radicand: 1,
+      },
+    ],
     radical,
   );
   return mul(a, inverse);
@@ -170,15 +176,13 @@ export function pow(a: Real, k: number): Real {
 }
 /** Rational exactly when the normalized value is 0 or one plain rational term. */
 export const isRational = (a: Real): boolean =>
-  a.length === 0 ||
-  (a.length === 1 && a[0]!.pi === 0 && a[0]!.radicand === 1);
+  a.length === 0 || (a.length === 1 && a[0]!.pi === 0 && a[0]!.radicand === 1);
 export const rationalValue = (a: Real): Rational | null =>
   !isRational(a) ? null : a.length ? a[0]!.c : q(0);
 export const approximate = (a: Real): number =>
   a.reduce(
     (s, t) =>
-      s +
-      (t.c[0] / t.c[1]) * Math.PI ** t.pi * t.radicand ** (1 / t.index),
+      s + (t.c[0] / t.c[1]) * Math.PI ** t.pi * t.radicand ** (1 / t.index),
     0,
   );
 
@@ -258,7 +262,10 @@ export function texValue(a: Real): string {
   return a
     .map((t, i) => {
       const [n, d] = t.c;
-      const coefAbs = Math.abs(n) === 1 && d === 1 ? "" : writeRational(q(Math.abs(n), d), "fraction");
+      const coefAbs =
+        Math.abs(n) === 1 && d === 1
+          ? ""
+          : writeRational(q(Math.abs(n), d), "fraction");
       const piPart = t.pi === 0 ? "" : t.pi === 1 ? "\\pi" : `\\pi^{${t.pi}}`;
       const rad =
         t.radicand === 1

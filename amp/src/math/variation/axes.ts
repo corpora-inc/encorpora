@@ -73,7 +73,9 @@ export function restrictAxis<V extends string, W extends V>(
     if (!axis.values.includes(value))
       throw new Error(`Axis ${axis.id} has no value ${value}`);
   return defineAxis(axis.id, values, {
-    legacy: legacy ?? (values.includes(axis.legacy as W) ? (axis.legacy as W) : values[0]!),
+    legacy:
+      legacy ??
+      (values.includes(axis.legacy as W) ? (axis.legacy as W) : values[0]!),
   });
 }
 
@@ -150,7 +152,9 @@ export const isLegacy = <A extends AxisSet>(
 export function enumerateAxes<A extends AxisSet>(axes: A): AxisValues<A>[] {
   let combos: Record<string, string>[] = [{}];
   for (const [key, axis] of Object.entries(axes))
-    combos = combos.flatMap((c) => axis.values.map((v) => ({ ...c, [key]: v })));
+    combos = combos.flatMap((c) =>
+      axis.values.map((v) => ({ ...c, [key]: v })),
+    );
   return combos as AxisValues<A>[];
 }
 
