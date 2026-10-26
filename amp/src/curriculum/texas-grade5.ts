@@ -412,7 +412,7 @@ export const texasGrade5Inventory: SourceInventory = {
       templateIds: ["budget-category-balance", "budget-percent-share"],
       disposition: "related-practice",
       limitations:
-        "Choice-response practice with one to five expense categories in dollars and cents: a missing category, a surplus or deficit with its name, and the change that balances a budget. Learner-built budgets, written deficit explanations; the related percent-share practice assesses category percents but not learner-built budgets and other financial components are not assessed or reconciled.",
+        "Choice-response practice with one to five expense categories in dollars and cents: a missing category, a surplus or deficit with its name, and the change that balances a budget. Learner-built budgets, written deficit explanations and other financial components are not assessed or reconciled. The related percent-share practice reads category percents and amounts from a given budget; it does not assess balancing a budget.",
       evidence: [
         {
           sourceId: release,
