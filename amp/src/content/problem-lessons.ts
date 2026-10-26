@@ -79,21 +79,24 @@ export function problemLesson(
     )
       return true;
     if (p.public.prompt !== avoidPrompt) return false;
-    // Multi-part items share their wording; their givens are in the blanks
-    // and the figure.
-    // and the figure; option order is shuffled, so it is not compared.
-    if (avoidResponse?.kind === "multi-part-choice")
+    // Multi-part items share their wording; their givens are the blank
+    // labels and the figure. Rows and options are shuffled, so neither order
+    // is compared.
+    if (avoidResponse?.kind === "multi-part-choice") {
+      const givens = (labels: string[], figure: unknown) =>
+        JSON.stringify([[...labels].sort(), figure ?? null]);
       return (
         p.public.response.kind === "multi-part-choice" &&
-        JSON.stringify([
+        givens(
           p.public.response.blanks.map((blank) => blank.label),
-          p.public.figure ?? null,
-        ]) ===
-          JSON.stringify([
+          p.public.figure,
+        ) ===
+          givens(
             avoidResponse.blanks.map((blank) => blank.label),
-            learnerProblem?.public.figure ?? null,
-          ])
+            learnerProblem?.public.figure,
+          )
       );
+    }
     if (avoidResponse?.kind !== "multi-select") return true;
     return (
       p.public.response.kind === "multi-select" &&

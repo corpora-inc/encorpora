@@ -52,25 +52,25 @@ const entries: Entry[] = [
       "Any two points of a nonvertical line give the same ratio $\\frac{y_2 - y_1}{x_2 - x_1}$, because the slope triangles between them are similar. The line is then $y = mx + b$, where $b$ is the output at $x = 0$.",
     example: {
       prompt:
-        "A line passes through $(2, 1)$ and $(6, 3)$. Complete: the slope is ___, the $y$-intercept is ___, and as $x$ increases, $y$ ___.",
+        "A line passes through (2, 1) and (6, 3). Complete: the slope is ___, the $y$-intercept is ___, and as $x$ increases, $y$ ___.",
       steps: [
         "Slope: $m = \\frac{3 - 1}{6 - 2} = \\frac{2}{4} = \\frac{1}{2}$.",
         "Intercept: $1 = \\frac{1}{2} \\cdot 2 + b$, so $b = 1 - 1 = 0$. The line passes through the origin.",
         "The slope is positive, so $y$ increases as $x$ increases.",
       ],
       answer:
-        "The slope is $\\frac{1}{2}$, the $y$-intercept is $0$, and $y$ increases.",
+        "The slope is $\\frac{1}{2}$, the $y$-intercept is 0, and $y$ increases.",
     },
     methodTitle: "Check with the other point",
     methodText: [
-      "After finding $m$ and $b$, substitute the second point. With $y = \\frac{1}{2}x$ and $(6, 3)$: $\\frac{1}{2} \\cdot 6 = 3$. A mismatch means a sign or order slip.",
+      "After finding $m$ and $b$, substitute the second point. With $y = \\frac{1}{2}x$ and (6, 3): $\\frac{1}{2} \\cdot 6 = 3$. A mismatch means a sign or order slip.",
       "In a table, the slope is the change in $y$ divided by the change in $x$ between any two rows. Step back to $x = 0$ to read $b$.",
     ],
     formal:
       "For points $(x_1, y_1)$ and $(x_2, y_2)$ on $y = mx + b$, subtracting $y_1 = mx_1 + b$ from $y_2 = mx_2 + b$ gives $y_2 - y_1 = m(x_2 - x_1)$, so $m = \\frac{y_2 - y_1}{x_2 - x_1}$ and $b = y_1 - mx_1$.",
     pitfalls: [
       "Subtract the coordinates in the same order on the top and the bottom.",
-      "The first $y$-value in a table is the intercept only when its $x$ is $0$.",
+      "The first $y$-value in a table is the intercept only when its $x$ is 0.",
     ],
     parentGuide:
       "Ask your learner to check their slope and intercept by substituting the other point into $y = mx + b$.",
@@ -104,10 +104,10 @@ const entries: Entry[] = [
     watch:
       "A straight line is not enough. $y = 2x + 1$ is linear, but at $x = 0$ it gives $y = 1$, so it is not proportional.",
     principle:
-      "$y$ is proportional to $x$ exactly when $y = kx$ for a constant $k$. Then $\\frac{y}{x} = k$ for every $x \\ne 0$, the point $(0, 0)$ satisfies the relationship, and the graph is a line through the origin with slope $k$.",
+      "$y$ is proportional to $x$ exactly when $y = kx$ for a constant $k$. Then $\\frac{y}{x} = k$ for every $x \\ne 0$, the point (0, 0) satisfies the relationship, and the graph is a line through the origin with slope $k$.",
     example: {
       prompt:
-        "Proportional or not: $y = 5x$, $y = 5x + 2$, $y = 4(x + 1) - 4$, and the pairs $(1, 3), (2, 5), (3, 7)$?",
+        "Proportional or not: $y = 5x$, $y = 5x + 2$, $y = 4(x + 1) - 4$, and the pairs (1, 3), (2, 5), (3, 7)?",
       steps: [
         "$y = 5x$ is proportional with $k = 5$.",
         "$y = 5x + 2$ gives $y = 2$ at $x = 0$: not proportional.",
@@ -123,7 +123,7 @@ const entries: Entry[] = [
       "The ratio test: $\\frac{y}{x}$ must be the same number every time. Both tests must pass; $y = x^2$ passes through the origin but its ratio changes.",
     ],
     formal:
-      "If $y = kx$, then $\\frac{y}{x} = k$ for all $x \\ne 0$. Conversely, if $\\frac{y}{x} = k$ for every pair with $x \\ne 0$ and $(0, 0)$ is included, then $y = kx$. A relationship $y = kx + c$ with $c \\ne 0$ has $\\frac{y}{x} = k + \\frac{c}{x}$, which changes with $x$.",
+      "If $y = kx$, then $\\frac{y}{x} = k$ for all $x \\ne 0$. Conversely, if $\\frac{y}{x} = k$ for every pair with $x \\ne 0$ and (0, 0) is included, then $y = kx$. A relationship $y = kx + c$ with $c \\ne 0$ has $\\frac{y}{x} = k + \\frac{c}{x}$, which changes with $x$.",
     pitfalls: [
       "Simplify before deciding: parentheses can hide or cancel a constant.",
       "A line that does not pass through the origin is linear but not proportional.",
@@ -135,7 +135,7 @@ const entries: Entry[] = [
     id: "label-expression-parts",
     title: "Name the parts of an expression",
     summary:
-      "Terms are joined by $+$ or $-$. A term has a coefficient, a variable and maybe an exponent; a term with no variable is a constant.",
+      "Terms are joined by $+$ or −. A term has a coefficient, a variable and maybe an exponent; a term with no variable is a constant.",
     objectives: [
       "Identify the terms, coefficients and constant term of an expression.",
       "Describe an expression as a sum or a product, and name its factors.",
@@ -145,40 +145,40 @@ const entries: Entry[] = [
     terms: [
       [
         "term",
-        "A part of an expression joined to the rest by $+$ or $-$: $4x$, $9y$ and $2$ in $4x + 9y + 2$.",
+        "A part of an expression joined to the rest by $+$ or −: $4x$, $9y$ and 2 in $4x + 9y + 2$.",
       ],
       [
         "coefficient",
-        "The number that multiplies a variable: $4$ in $4x$, and $5$ in $5x^2$.",
+        "The number that multiplies a variable: 4 in $4x$, and 5 in $5x^2$.",
       ],
       ["constant term", "A term with no variable; its value never changes."],
       [
         "factor",
-        "One of the quantities multiplied in a product: $3$ and $(x + 6)$ in $3(x + 6)$.",
+        "One of the quantities multiplied in a product: 3 and $(x + 6)$ in $3(x + 6)$.",
       ],
     ],
     method: [
-      "Split the expression at each $+$ or $-$ outside parentheses to list its terms.",
+      "Split the expression at each $+$ or − outside parentheses to list its terms.",
       "In each term, the number in front is the coefficient and any exponent counts the factors of the variable.",
       "Find the last operation: if it is multiplication, the expression is a product of factors; if it is addition, a sum of terms.",
     ],
     watch:
-      "The coefficient is only the number. In $9y$ the coefficient is $9$, while the term is all of $9y$.",
+      "The coefficient is only the number. In $9y$ the coefficient is 9, while the term is all of $9y$.",
     principle:
       "Expressions are built by operations, and the last operation names the whole: a sum of terms or a product of factors. Within a term $ax^n$, $a$ is the coefficient and $n$ is the exponent, so $ax^n$ multiplies $a$ by $n$ factors of $x$.",
     example: {
       prompt:
         "In $6x^2 + 5x + 8$, name the coefficient of $x^2$, the exponent of $x$ in the first term, and the constant term.",
       steps: [
-        "The terms are $6x^2$, $5x$ and $8$.",
-        "In $6x^2 = 6 \\cdot x \\cdot x$, the coefficient is $6$ and the exponent is $2$.",
-        "The constant term has no variable: $8$.",
+        "The terms are $6x^2$, $5x$ and 8.",
+        "In $6x^2 = 6 \\cdot x \\cdot x$, the coefficient is 6 and the exponent is 2.",
+        "The constant term has no variable: 8.",
       ],
-      answer: "Coefficient $6$, exponent $2$, constant term $8$.",
+      answer: "Coefficient 6, exponent 2, constant term 8.",
     },
     methodTitle: "Sums and products",
     methodText: [
-      "$3(x + 6)$ multiplies $3$ by $(x + 6)$, so it is a product with two factors. One factor, $x + 6$, is itself a sum of two terms.",
+      "$3(x + 6)$ multiplies 3 by $(x + 6)$, so it is a product with two factors. One factor, $x + 6$, is itself a sum of two terms.",
       "$3x + 6$ adds two terms, so it is a sum, even though its first term is a product.",
     ],
     formal:

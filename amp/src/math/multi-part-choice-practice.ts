@@ -127,10 +127,15 @@ const texOf = (v: Q) =>
   v.d === 1
     ? `${v.n}`
     : `${v.n < 0 ? "-" : ""}\\frac{${Math.abs(v.n)}}{${v.d}}`;
-const math = (v: Q) => `$${texOf(v)}$`;
+/** A value as learners read it: a whole number in plain text with a true
+ * minus sign (print and screen both typeset it), a fraction in TeX. */
+const signed = (n: number) => (n < 0 ? `−${-n}` : `${n}`);
+const math = (v: Q) => (v.d === 1 ? signed(v.n) : `$${texOf(v)}$`);
 /** A signed integer inside a formula: parentheses around negatives. */
 const paren = (n: number) => (n < 0 ? `(${n})` : `${n}`);
 const pair = (x: number, y: number) => `(${x}, ${y})`;
+/** A point in prose, outside TeX: "(−3, 4)". */
+const point = (x: number, y: number) => `(${signed(x)}, ${signed(y)})`;
 const parenQ = (v: Q) => (v.n < 0 ? `(${texOf(v)})` : texOf(v));
 
 /* ---------- complete a line's features (grade 8) ---------- */
@@ -216,7 +221,7 @@ function inlineLinearFeatures(seed: string): GeneratedProblem {
       figure = { kind: "scene", scene: lineScene(points[0]!, points[1]!) };
       given = `The graph shows a line through $A${pair(...points[0]!)}$ and $B${pair(...points[1]!)}$.`;
     } else
-      given = `A line passes through the points $${pair(...points[0]!)}$ and $${pair(...points[1]!)}$.`;
+      given = `A line passes through the points ${point(...points[0]!)} and ${point(...points[1]!)}.`;
   }
   const [p1, p2] = [points[0]!, points.at(-1)!];
   const onAxis = points.find(([x]) => x === 0);
@@ -285,10 +290,10 @@ function inlineLinearFeatures(seed: string): GeneratedProblem {
   const dy = p2[1] - p1[1],
     dx = p2[0] - p1[0];
   const steps = [
-    `The slope is the change in $y$ divided by the change in $x$. From $${pair(...p1)}$ to $${pair(...p2)}$: $m = \\frac{${p2[1]} - ${paren(p1[1])}}{${p2[0]} - ${paren(p1[0])}} = ${dx === 1 ? dy : `\\frac{${dy}}{${dx}}`}${dx === 1 || (dx === m.d && dy === m.n && dy > 0) ? "" : ` = ${texOf(m)}`}$.`,
+    `The slope is the change in $y$ divided by the change in $x$. From ${point(...p1)} to ${point(...p2)}: $m = \\frac{${p2[1]} - ${paren(p1[1])}}{${p2[0]} - ${paren(p1[0])}} = ${dx === 1 ? dy : `\\frac{${dy}}{${dx}}`}${dx === 1 || (dx === m.d && dy === m.n && dy > 0) ? "" : ` = ${texOf(m)}`}$.`,
     onAxis
-      ? `The point $${pair(...onAxis)}$ is on the $y$-axis, so the $y$-intercept is $b = ${b}$.`
-      : `Substitute $${pair(...p1)}$ into $y = mx + b$: $${p1[1]} = ${texOf(m)} \\cdot ${paren(p1[0])} + b$, so $b = ${p1[1]} - ${parenQ(mul(m, q(p1[0])))} = ${b}$.`,
+      ? `The point ${point(...onAxis)} is on the $y$-axis, so the $y$-intercept is $b = ${b}$.`
+      : `Substitute ${point(...p1)} into $y = mx + b$: $${p1[1]} = ${texOf(m)} \\cdot ${paren(p1[0])} + b$, so $b = ${p1[1]} - ${parenQ(mul(m, q(p1[0])))} = ${b}$.`,
     form === "features"
       ? `The slope is ${m.n > 0 ? "positive" : "negative"}, so $y$ ${direction} as $x$ increases.`
       : `The equation is $y = ${texOf(m) === "1" ? "" : texOf(m) === "-1" ? "-" : texOf(m)}x ${b < 0 ? "-" : "+"} ${Math.abs(b)}$.`,
@@ -298,7 +303,7 @@ function inlineLinearFeatures(seed: string): GeneratedProblem {
       ? `Read where the line crosses the $y$-axis for the $y$-intercept. For the slope, count the rise and the run from $A${pair(...p1)}$ to $B${pair(...p2)}$.`
       : source === "table"
         ? `Take the rows for $x = ${p1[0]}$ and $x = ${p2[0]}$: the slope is the change in $y$ divided by the change in $x$. Then work back to $x = 0$ to find the $y$-intercept.`
-        : `Divide the change in $y$ by the change in $x$ from $${pair(...p1)}$ to $${pair(...p2)}$ for the slope. Then put one point and the slope into $y = mx + b$ to find $b$.`;
+        : `Divide the change in $y$ by the change in $x$ from ${point(...p1)} to ${point(...p2)} for the slope. Then put one point and the slope into $y = mx + b$ to find $b$.`;
   return problemOf(meta, seed, {
     prompt: `${given} Complete the sentence about the line.`,
     response: {
@@ -376,7 +381,7 @@ const proportionalRows: ((r: Random) => Row)[] = [
         .slice(0, 3)
         .sort((a, b) => a - b);
     return {
-      label: xs.map((x) => `$${pair(x, k * x)}$`).join(", "),
+      label: xs.map((x) => point(x, k * x)).join(", "),
       proportional: true,
       why: `Every pair has $\\frac{y}{x} = ${k}$.`,
     };
@@ -431,7 +436,7 @@ const otherRows: ((r: Random) => Row)[] = [
       c = r(1, 5),
       xs = [1, 2, 3];
     return {
-      label: xs.map((x) => `$${pair(x, k * x + c)}$`).join(", "),
+      label: xs.map((x) => point(x, k * x + c)).join(", "),
       proportional: false,
       why: `$\\frac{${k + c}}{1} \\ne \\frac{${2 * k + c}}{2}$, so the ratio $\\frac{y}{x}$ is not constant.`,
     };
@@ -516,9 +521,9 @@ function labelExpressionParts(seed: string): GeneratedProblem {
     const expression = `${a}${u} + ${b}${v} + ${c}`;
     // One shared pool of tiles, as a drag-into-slots item has.
     const pool = shuffle(r, [
-      `$${a}$`,
-      `$${b}$`,
-      `$${c}$`,
+      `${a}`,
+      `${b}`,
+      `${c}`,
       `$${u}$`,
       `$${a}${u}$`,
       `$${b}${v}$`,
@@ -533,16 +538,16 @@ function labelExpressionParts(seed: string): GeneratedProblem {
           slot("coef", `the coefficient of $${u}$`, pool),
           slot("term", `the term containing $${v}$`, pool),
           slot("const", "the constant term", pool),
-          slot("count", "the number of terms", ["$2$", "$3$", "$4$"]),
+          slot("count", "the number of terms", ["2", "3", "4"]),
         ],
       },
-      correct: [`$${a}$`, `$${b}${v}$`, `$${c}$`, "$3$"],
+      correct: [`${a}`, `$${b}${v}$`, `${c}`, "3"],
       hint: `The terms of $${expression}$ are the parts joined by $+$. A coefficient is the number that multiplies a variable, and the constant term has no variable.`,
       explanation: [
-        `The terms are the parts joined by $+$: $${a}${u}$, $${b}${v}$ and $${c}$, so there are 3 terms.`,
-        `The coefficient of $${u}$ is the number multiplying it: $${a}$.`,
-        `The term containing $${v}$ is the whole term $${b}${v}$; its coefficient is $${b}$.`,
-        `The constant term has no variable: $${c}$.`,
+        `The terms are the parts joined by $+$: $${a}${u}$, $${b}${v}$ and ${c}, so there are 3 terms.`,
+        `The coefficient of $${u}$ is the number multiplying it: ${a}.`,
+        `The term containing $${v}$ is the whole term $${b}${v}$; its coefficient is ${b}.`,
+        `The constant term has no variable: ${c}.`,
       ],
     });
   }
@@ -550,14 +555,7 @@ function labelExpressionParts(seed: string): GeneratedProblem {
     // ax² + bx + c: the exponent is not a coefficient.
     const [a, b, c] = distinct(r, 3, 3, 9) as [number, number, number];
     const expression = `${a}x^2 + ${b}x + ${c}`;
-    const pool = shuffle(r, [
-      `$${a}$`,
-      `$${b}$`,
-      `$${c}$`,
-      "$2$",
-      "$x^2$",
-      `$${b}x$`,
-    ]);
+    const pool = shuffle(r, [`${a}`, `${b}`, `${c}`, "2", "$x^2$", `$${b}x$`]);
     return problemOf(meta, seed, {
       prompt: `Label the parts of the expression $${expression}$.`,
       response: {
@@ -571,13 +569,13 @@ function labelExpressionParts(seed: string): GeneratedProblem {
           slot("const", "the constant term", pool),
         ],
       },
-      correct: [`$${a}$`, "$2$", `$${b}$`, `$${c}$`],
+      correct: [`${a}`, "2", `${b}`, `${c}`],
       hint: `In the term $${a}x^2$, the coefficient multiplies the power and the exponent says how many factors of $x$ there are. The constant term of $${expression}$ has no variable.`,
       explanation: [
-        `The terms are $${a}x^2$, $${b}x$ and $${c}$.`,
-        `In $${a}x^2$, the coefficient is $${a}$ and the exponent is $2$: $${a}x^2 = ${a} \\cdot x \\cdot x$.`,
-        `The coefficient of $x$ is $${b}$, from the term $${b}x$.`,
-        `The constant term has no variable: $${c}$.`,
+        `The terms are $${a}x^2$, $${b}x$ and ${c}.`,
+        `In $${a}x^2$, the coefficient is ${a} and the exponent is 2: $${a}x^2 = ${a} \\cdot x \\cdot x$.`,
+        `The coefficient of $x$ is ${b}, from the term $${b}x$.`,
+        `The constant term has no variable: ${c}.`,
       ],
     });
   }
@@ -600,17 +598,17 @@ function labelExpressionParts(seed: string): GeneratedProblem {
         slot(
           "sum",
           "the factor that is a sum",
-          shuffle(r, [`$${a}$`, `$${v} + ${c}$`, `$${v}$`, `$${c}$`]),
+          shuffle(r, [`${a}`, `$${v} + ${c}$`, `$${v}$`, `${c}`]),
         ),
-        slot("count", "the number of terms in the sum", ["$1$", "$2$", "$3$"]),
+        slot("count", "the number of terms in the sum", ["1", "2", "3"]),
       ],
     },
-    correct: ["product", `$${v} + ${c}$`, "$2$"],
+    correct: ["product", `$${v} + ${c}$`, "2"],
     hint: `In $${expression}$, the number ${a} written next to the parentheses multiplies them. Decide what the last operation is, then look inside the parentheses.`,
     explanation: [
-      `$${expression}$ means $${a} \\cdot (${v} + ${c})$: the last operation is multiplication, so it is a product of two factors, $${a}$ and $(${v} + ${c})$.`,
+      `$${expression}$ means $${a} \\cdot (${v} + ${c})$: the last operation is multiplication, so it is a product of two factors, ${a} and $(${v} + ${c})$.`,
       `The factor $(${v} + ${c})$ is a sum.`,
-      `That sum has 2 terms, $${v}$ and $${c}$.`,
+      `That sum has 2 terms, $${v}$ and ${c}.`,
     ],
   });
 }

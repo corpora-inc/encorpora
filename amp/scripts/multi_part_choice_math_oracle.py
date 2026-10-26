@@ -19,6 +19,9 @@ OPTION_IDS = "abcdef"
 BLANK_ID = re.compile(r"[a-z][a-z0-9]{0,7}")
 MATH = re.compile(r"\$([^$]+)\$")
 PAIR = re.compile(r"\((-?\d+), (-?\d+)\)")
+# Prose numbers (outside $...$) are plain text with a true minus sign, U+2212.
+INT = "\u2212?(?:0|[1-9]\\d*)"
+PLAIN_PAIR = re.compile(r"\((" + INT + r"), (" + INT + r")\)")
 SAMPLES = [F(v) for v in (1, 2, 3, 5, 7, -1, -2, -3, -5, 11)] + [F(1, 2), F(-7, 3)]
 
 
@@ -157,6 +160,29 @@ def evaluate(node, env):
     return a ** int(b)
 
 
+def plain_int(text):
+    """A whole number written as prose: digits with a true minus sign, never "−0" or a hyphen."""
+    require(re.fullmatch(INT, text) is not None and text != "\u22120", f"Not a plain whole number: {text!r}")
+    return int(text.replace("\u2212", "-"))
+
+
+def plain(n):
+    return str(n).replace("-", "\u2212")
+
+
+def plain_pairs(text):
+    return [(plain_int(x), plain_int(y)) for x, y in PLAIN_PAIR.findall(text)]
+
+
+def number_option(label):
+    """A slope or intercept option: a plain whole number ("2", "−3") or a TeX fraction ("$-\\frac{2}{3}$")."""
+    if not label.startswith("$"):
+        return F(plain_int(label))
+    value = tex_number(label)
+    require(value.denominator > 1, f"A whole number must be plain text: {label}")
+    return value
+
+
 def tex_number(label):
     """A displayed number option: $n$, $-n$, $\\frac{p}{q}$ or $-\\frac{p}{q}$, canonical."""
     match = re.fullmatch(r"\$(-?)(?:(\d+)|\\frac\{(\d+)\}\{(\d+)\})\$", label)
@@ -257,7 +283,8 @@ def line_hint(variant, points):
     if variant == "table":
         return (f"Take the rows for $x = {x1}$ and $x = {x2}$: the slope is the change in $y$ divided by the change "
                 "in $x$. Then work back to $x = 0$ to find the $y$-intercept.")
-    return (f"Divide the change in $y$ by the change in $x$ from $({x1}, {y1})$ to $({x2}, {y2})$ for the slope. "
+    return (f"Divide the change in $y$ by the change in $x$ from ({plain(x1)}, {plain(y1)}) to ({plain(x2)}, "
+            f"{plain(y2)}) for the slope. "
             "Then put one point and the slope into $y = mx + b$ to find $b$.")
 
 
@@ -274,11 +301,12 @@ def scene_element(figure, kind):
 def read_line_source(public):
     """(variant, given points, slope, intercept) from the prompt and figure only."""
     prompt, figure = public["prompt"], public.get("figure")
-    match = re.fullmatch(r"A line passes through the points \$\((-?\d+), (-?\d+)\)\$ and \$\((-?\d+), (-?\d+)\)\$\. "
+    match = re.fullmatch(r"A line passes through the points (\(.+?\)) and (\(.+?\))\. "
                          r"Complete the sentence about the line\.", prompt)
     if match:
         require(figure is None, "Point prompt with a figure")
-        points = [(int(match[1]), int(match[2])), (int(match[3]), int(match[4]))]
+        points = plain_pairs(match[1]) + plain_pairs(match[2])
+        require(len(points) == 2 and all(PLAIN_PAIR.fullmatch(g) for g in match.groups()), "Two plain points")
         variant = "points"
     elif prompt.startswith("The graph shows"):
         match = re.fullmatch(r"The graph shows a line through \$A\((-?\d+), (-?\d+)\)\$ and \$B\((-?\d+), (-?\d+)\)\$\. "
@@ -327,18 +355,22 @@ def review_line_explanation(problem, variant, points, m, b, ids):
     require(hint == line_hint(variant, points), "Hint must name this problem's givens and no answer")
     stated = set()
     for line in explanation:
-        for x, y in PAIR.findall(line):
-            require(m * int(x) + b == int(y), f"Explanation point ({x}, {y}) is not on the line")
+        require(re.search(r"\(-\d|, -\d", re.sub(r"\$[^$]*\$", "", line)) is None,
+                "A prose point uses a hyphen for a minus sign")
+        for x, y in plain_pairs(line):
+            require(m * x + b == y, f"Explanation point ({x}, {y}) is not on the line")
         if line.startswith("The slope is the change in $y$ divided by the change in $x$."):
-            match = re.search(r"From \$\((-?\d+), (-?\d+)\)\$ to \$\((-?\d+), (-?\d+)\)\$", line)
+            match = re.search(r"From (\([^)]+\)) to (\([^)]+\)): \$m = ", line)
             require(match is not None, "Slope line names its points")
-            used = [(int(match[1]), int(match[2])), (int(match[3]), int(match[4]))]
+            used = plain_pairs(match[1]) + plain_pairs(match[2])
+            require(len(used) == 2, "Slope line names two plain points")
             require(all(p in points for p in used) and used[0] != used[1], "Slope from points that were not given")
             stated.add("m")
         elif line.startswith("Substitute"):
+            require(re.match(r"Substitute \(" + INT + ", " + INT + r"\) into \$y = mx \+ b\$: ", line), "Substitution wording")
             stated.add("b")
         elif line.startswith("The point"):
-            require(re.fullmatch(r"The point \$\(0, (-?\d+)\)\$ is on the \$y\$-axis, so the \$y\$-intercept is "
+            require(re.fullmatch(r"The point \(0, " + INT + r"\) is on the \$y\$-axis, so the \$y\$-intercept is "
                                  r"\$b = (-?\d+)\$\.", line) is not None, "Intercept-point wording")
             stated.add("b")
         elif line.startswith("The equation is"):
@@ -384,9 +416,9 @@ def solve_line(public):
     key = {}
     for blank in blanks:
         if blank["id"] in ("slope", "m"):
-            key[blank["id"]] = pick(blank, m, tex_number)
+            key[blank["id"]] = pick(blank, m, number_option)
         elif blank["id"] in ("int", "b"):
-            key[blank["id"]] = pick(blank, b, tex_number)
+            key[blank["id"]] = pick(blank, b, number_option)
         else:
             require({o["label"] for o in blank["options"]} <= DIRECTIONS, "Direction options")
             way = "increases" if m > 0 else "decreases" if m < 0 else "stays the same"
@@ -403,18 +435,16 @@ PROPORTIONAL_LEAD = ("Proportional means $y = kx$ for one constant $k$: the rati
 
 def relation_of(label):
     """('pairs', [(x, y)]) or ('function', y(x)) read from a row label."""
-    # A pair list is one math run "$(1, 4), (3, 12)$" or separate runs joined by
-    # prose commas "$(1, 4)$, $(3, 12)$"; both read the same.
-    if re.fullmatch(r"\$\(-?\d+, -?\d+\)\$(?:, \$\(-?\d+, -?\d+\)\$)+", label):
-        label = "$" + label[1:-1].replace("$, $", ", ") + "$"
+    # A pair list is prose: "(1, 4), (3, 12), (4, 16)" with true minus signs.
+    if label.startswith("("):
+        require(re.fullmatch(PLAIN_PAIR.pattern + r"(?:, " + PLAIN_PAIR.pattern + r")+", label) is not None,
+                f"Pair list: {label}")
+        pairs = [(F(x), F(y)) for x, y in plain_pairs(label)]
+        require(len(set(p[0] for p in pairs)) == len(pairs), "A pair list repeats an x: not a function")
+        return "pairs", pairs
     match = re.fullmatch(r"\$([^$]+)\$", label)
     require(match is not None, f"Row label is not math: {label}")
     body = match[1]
-    if body.startswith("("):
-        require(re.fullmatch(r"\(-?\d+, -?\d+\)(?:, \(-?\d+, -?\d+\))+", body) is not None, f"Pair list: {body}")
-        pairs = [(F(int(x)), F(int(y))) for x, y in PAIR.findall(body)]
-        require(len(set(p[0] for p in pairs)) == len(pairs), "A pair list repeats an x: not a function")
-        return "pairs", pairs
     sides = body.split("=")
     require(len(sides) == 2, f"Not one equation: {body}")
     left, right = tex_tree(sides[0]), tex_tree(sides[1])
@@ -556,6 +586,11 @@ def sum_of(text):
     return terms
 
 
+def shown(term):
+    """A part as prose shows it: a number as plain text, a variable term in TeX."""
+    return plain(term[1]) if term[0] == "num" else f"${tex_term(term)}$"
+
+
 def tex_term(term):
     if term[0] == "num":
         return str(term[1])
@@ -588,12 +623,16 @@ def option_value(label):
     """What a slot option names: a number, a monomial, a sum, or an operation word."""
     match = re.fullmatch(r"\$(.+)\$", label)
     if match is None:
+        if re.fullmatch(INT, label):
+            return ("num", F(plain_int(label)))
         require(label in {"sum", "difference", "product", "quotient"}, f"Unknown word option: {label}")
         return ("word", label)
     body = match[1]
     if re.search(r" [+-] ", body):
         return ("sum", frozenset(sum_of(body)))
-    return term_of(body)
+    part = term_of(body)
+    require(part[0] == "term", f"A number option must be plain text: {label}")
+    return part
 
 
 def slot_part(expression, label):
@@ -650,10 +689,10 @@ def review_parts_explanation(problem, expression):
     if expression["kind"] == "product":
         factor, inner = tex_term(expression["factor"]), " + ".join(tex_term(t) for t in expression["inner"])
         inner = re.sub(r"\+ -", "- ", inner)
-        require(f"the last operation is multiplication, so it is a product of two factors, ${factor}$ and ${'(' + inner + ')'}$"
-                in text, "Explanation must name the product's factors")
+        require(f"the last operation is multiplication, so it is a product of two factors, {shown(expression['factor'])} "
+                f"and $({inner})$" in text, "Explanation must name the product's factors")
         require(f"The factor $({inner})$ is a sum." in text, "Explanation must name the sum")
-        listed = [f"${tex_term(t)}$" for t in expression["inner"]]
+        listed = [shown(t) for t in expression["inner"]]
         require(f"That sum has {len(listed)} terms, {', '.join(listed[:-1])} and {listed[-1]}." in text,
                 "Explanation must count the sum's terms")
         require(hint == f"In ${expression['text']}$, the number {factor} written next to the parentheses multiplies "
@@ -669,22 +708,22 @@ def review_parts_explanation(problem, expression):
         expected_hint = (f"The terms of ${expression['text']}$ are the parts joined by $+$. A coefficient is the "
                          "number that multiplies a variable, and the constant term has no variable.")
     require(len(squares) <= 1 and hint == expected_hint, "Hint must name this problem's expression and no answer")
-    listed = [f"${tex_term(t)}$" for t in terms]
+    listed = [shown(t) for t in terms]
     require(f"{', '.join(listed[:-1])} and {listed[-1]}" in text, "Explanation must list the terms")
     for count in re.findall(r"there are (\d+) terms", text):
         require(int(count) == len(terms), "False term count")
-    for variable, value in re.findall(r"The coefficient of \$([a-z])\$ is (?:the number multiplying it: )?\$(-?\d+)\$", text):
-        require(slot_part(expression, f"the coefficient of ${variable}$") == ("num", F(int(value))), "False coefficient")
+    for variable, value in re.findall(r"The coefficient of \$([a-z])\$ is (?:the number multiplying it: )?(" + INT + ")[.,]", text):
+        require(slot_part(expression, f"the coefficient of ${variable}$") == ("num", F(plain_int(value))), "False coefficient")
     for variable, term, value in re.findall(
-            r"The term containing \$([a-z])\$ is the whole term \$([^$]+)\$; its coefficient is \$(-?\d+)\$", text):
+            r"The term containing \$([a-z])\$ is the whole term \$([^$]+)\$; its coefficient is (" + INT + r")\.", text):
         part = slot_part(expression, f"the term containing ${variable}$")
-        require(part == term_of(term) and part[1] == int(value), "False term")
+        require(part == term_of(term) and part[1] == plain_int(value), "False term")
     for term, coefficient, exponent in re.findall(
-            r"In \$([^$]+)\$, the coefficient is \$(-?\d+)\$ and the exponent is \$(\d+)\$", text):
+            r"In \$([^$]+)\$, the coefficient is (" + INT + r") and the exponent is (\d+):", text):
         parsed = term_of(term)
-        require(parsed in terms and parsed[1] == int(coefficient) and parsed[3] == int(exponent), "False power term")
-    for value in re.findall(r"The constant term has no variable: \$(-?\d+)\$", text):
-        require(slot_part(expression, "the constant term") == ("num", F(int(value))), "False constant")
+        require(parsed in terms and parsed[1] == plain_int(coefficient) and parsed[3] == int(exponent), "False power term")
+    for value in re.findall(r"The constant term has no variable: (" + INT + r")\.", text):
+        require(slot_part(expression, "the constant term") == ("num", F(plain_int(value))), "False constant")
     labels = [b["label"] for b in problem["public"]["response"]["blanks"]]
     for label in labels:
         if label == "the constant term":
@@ -695,7 +734,7 @@ def review_parts_explanation(problem, expression):
         elif label.startswith("the term containing"):
             require(("The " + label[4:]) in text, f"Explanation must state {label}")
         elif label.startswith("the exponent in") or label.startswith("the coefficient of $") and "^" in label:
-            require(re.search(r"In \$[^$]+\$, the coefficient is \$-?\d+\$ and the exponent is \$\d+\$", text),
+            require(re.search(r"In \$[^$]+\$, the coefficient is " + INT + r" and the exponent is \d+:", text),
                     f"Explanation must state {label}")
         elif label == "the number of terms":
             require(re.search(r"there are \d+ terms", text), "Explanation must count the terms")
@@ -763,11 +802,11 @@ def handwritten():
         "sentence": copy.deepcopy(SENTENCES[("m", "b")])}
     cases["table"] = fixture(
         "inline-linear-features", "The table shows four points on a line. Complete the sentence about the line.",
-        features(["$5$", "$\\frac{2}{3}$", "$\\frac{3}{2}$", "$-\\frac{3}{2}$"], ["$11$", "$-\\frac{10}{3}$", "$5$", "$-5$"]),
+        features(["5", "$\\frac{2}{3}$", "$\\frac{3}{2}$", "$-\\frac{3}{2}$"], ["11", "$-\\frac{10}{3}$", "5", "−5"]),
         '{"slope":"c","int":"c","dir":"a"}',
-        ["The slope is the change in $y$ divided by the change in $x$. From $(4, 11)$ to $(10, 20)$: "
+        ["The slope is the change in $y$ divided by the change in $x$. From (4, 11) to (10, 20): "
          "$m = \\frac{20 - 11}{10 - 4} = \\frac{9}{6} = \\frac{3}{2}$.",
-         "Substitute $(4, 11)$ into $y = mx + b$: $11 = \\frac{3}{2} \\cdot 4 + b$, so $b = 11 - 6 = 5$.",
+         "Substitute (4, 11) into $y = mx + b$: $11 = \\frac{3}{2} \\cdot 4 + b$, so $b = 11 - 6 = 5$.",
          "The slope is positive, so $y$ increases as $x$ increases."],
         "Take the rows for $x = 4$ and $x = 10$: the slope is the change in $y$ divided by the change in $x$. Then "
         "work back to $x = 0$ to find the $y$-intercept.",
@@ -778,11 +817,11 @@ def handwritten():
     cases["graph"] = fixture(
         "inline-linear-features",
         "The graph shows a line through $A(-3, -3)$ and $B(3, -5)$. Complete the sentence about the line.",
-        equation(["$-\\frac{1}{3}$", "$\\frac{1}{3}$", "$-4$", "$-3$"], ["$-4$", "$-12$", "$-3$", "$4$"]),
+        equation(["$-\\frac{1}{3}$", "$\\frac{1}{3}$", "−4", "−3"], ["−4", "−12", "−3", "4"]),
         '{"m":"a","b":"a"}',
-        ["The slope is the change in $y$ divided by the change in $x$. From $(-3, -3)$ to $(3, -5)$: "
+        ["The slope is the change in $y$ divided by the change in $x$. From (−3, −3) to (3, −5): "
          "$m = \\frac{-5 - (-3)}{3 - (-3)} = \\frac{-2}{6} = -\\frac{1}{3}$.",
-         "Substitute $(-3, -3)$ into $y = mx + b$: $-3 = -\\frac{1}{3} \\cdot (-3) + b$, so $b = -3 - 1 = -4$.",
+         "Substitute (−3, −3) into $y = mx + b$: $-3 = -\\frac{1}{3} \\cdot (-3) + b$, so $b = -3 - 1 = -4$.",
          "The equation is $y = -\\frac{1}{3}x - 4$."],
         "Read where the line crosses the $y$-axis for the $y$-intercept. For the slope, count the rise and the run "
         "from $A(-3, -3)$ to $B(3, -5)$.",
@@ -794,16 +833,16 @@ def handwritten():
             "lines": [{"line": {"through": [[-3, -3], [3, -5]]}, "color": "accent"}]}]}})
     cases["points"] = fixture(
         "inline-linear-features",
-        "A line passes through the points $(0, -3)$ and $(4, 3)$. Complete the sentence about the line.",
-        features(["$-\\frac{3}{2}$", "$\\frac{3}{2}$", "$-3$", "$\\frac{2}{3}$"], ["$\\frac{3}{2}$", "$2$", "$-3$", "$3$"]),
+        "A line passes through the points (0, −3) and (4, 3). Complete the sentence about the line.",
+        features(["$-\\frac{3}{2}$", "$\\frac{3}{2}$", "−3", "$\\frac{2}{3}$"], ["$\\frac{3}{2}$", "2", "−3", "3"]),
         '{"slope":"b","int":"c","dir":"a"}',
-        ["The slope is the change in $y$ divided by the change in $x$. From $(0, -3)$ to $(4, 3)$: "
+        ["The slope is the change in $y$ divided by the change in $x$. From (0, −3) to (4, 3): "
          "$m = \\frac{3 - (-3)}{4 - 0} = \\frac{6}{4} = \\frac{3}{2}$.",
-         "The point $(0, -3)$ is on the $y$-axis, so the $y$-intercept is $b = -3$.",
+         "The point (0, −3) is on the $y$-axis, so the $y$-intercept is $b = -3$.",
          "The slope is positive, so $y$ increases as $x$ increases."],
-        "Divide the change in $y$ by the change in $x$ from $(0, -3)$ to $(4, 3)$ for the slope. Then put one point "
+        "Divide the change in $y$ by the change in $x$ from (0, −3) to (4, 3) for the slope. Then put one point "
         "and the slope into $y = mx + b$ to find $b$.")
-    rows = ["$y = \\frac{x}{6}$", "$(1, 5), (2, 8), (3, 11)$", "$y = 4(x + 4)$", "$y = x^2$",
+    rows = ["$y = \\frac{x}{6}$", "(1, 5), (2, 8), (3, 11)", "$y = 4(x + 4)$", "$y = x^2$",
             "$3y = 12x$", "$y = 2(x + 3) - 6$"]
     cases["proportional"] = fixture(
         "proportional-match-table", "Decide whether each relationship between $x$ and $y$ is proportional.",
@@ -813,7 +852,7 @@ def handwritten():
         '{"r1":"a","r2":"b","r3":"b","r4":"b","r5":"a","r6":"a"}',
         [PROPORTIONAL_LEAD,
          "$y = \\frac{x}{6}$: proportional. Dividing by 6 is multiplying by $\\frac{1}{6}$, so $y = \\frac{1}{6}x$.",
-         "$(1, 5), (2, 8), (3, 11)$: not proportional. $\\frac{5}{1} \\ne \\frac{8}{2}$, so the ratio "
+         "(1, 5), (2, 8), (3, 11): not proportional. $\\frac{5}{1} \\ne \\frac{8}{2}$, so the ratio "
          "$\\frac{y}{x}$ is not constant.",
          "$y = 4(x + 4)$: not proportional. It simplifies to $y = 4x + 16$; when $x = 0$, $y = 16$.",
          "$y = x^2$: not proportional. $\\frac{y}{x} = x$ changes with $x$: $x = 1$ gives $y = 1$ and $x = 2$ "
@@ -823,7 +862,7 @@ def handwritten():
         "A proportional relationship can be written as $y = kx$: every pair has the same ratio $\\frac{y}{x}$, "
         "and $x = 0$ gives $y = 0$. Start with $y = \\frac{x}{6}$: simplify it, or compare its ratios, before you "
         "decide.")
-    rows2 = ["$y = \\frac{12}{x}$", "$(2, 6)$, $(4, 12)$, $(5, 15)$", "$y = 3x - 2$", "$y = \\frac{2}{5}x$"]
+    rows2 = ["$y = \\frac{12}{x}$", "(2, 6), (4, 12), (5, 15)", "$y = 3x - 2$", "$y = \\frac{2}{5}x$"]
     cases["proportional-pairs"] = fixture(
         "proportional-match-table", "Decide whether each relationship between $x$ and $y$ is proportional.",
         {"kind": "multi-part-choice", "label": "Choose one column in each row", "layout": "table",
@@ -832,13 +871,13 @@ def handwritten():
         '{"r1":"b","r2":"a","r3":"b","r4":"a"}',
         [PROPORTIONAL_LEAD,
          "$y = \\frac{12}{x}$: not proportional. As $x$ doubles, $y$ halves, so $\\frac{y}{x}$ is not constant.",
-         "$(2, 6)$, $(4, 12)$, $(5, 15)$: proportional. Every pair has $\\frac{y}{x} = 3$.",
+         "(2, 6), (4, 12), (5, 15): proportional. Every pair has $\\frac{y}{x} = 3$.",
          "$y = 3x - 2$: not proportional. When $x = 0$, $y = -2$, not 0, so the line misses the origin.",
          "$y = \\frac{2}{5}x$: proportional. It has the form $y = kx$ with $k = \\frac{2}{5}$."],
         "A proportional relationship can be written as $y = kx$: every pair has the same ratio $\\frac{y}{x}$, "
         "and $x = 0$ gives $y = 0$. Start with $y = \\frac{12}{x}$: simplify it, or compare its ratios, before you "
         "decide.")
-    quad = options("$x^2$", "$8$", "$3$", "$6$", "$2$", "$6x$")
+    quad = options("$x^2$", "8", "3", "6", "2", "$6x$")
     cases["quadratic"] = fixture(
         "label-expression-parts", "Label the parts of the expression $8x^2 + 6x + 3$.",
         {"kind": "multi-part-choice", "label": "Choose the part that matches each label", "layout": "slots",
@@ -847,24 +886,24 @@ def handwritten():
                     {"id": "coef", "label": "the coefficient of $x$", "options": copy.deepcopy(quad)},
                     {"id": "const", "label": "the constant term", "options": copy.deepcopy(quad)}]},
         '{"coefsq":"b","power":"e","coef":"d","const":"c"}',
-        ["The terms are $8x^2$, $6x$ and $3$.",
-         "In $8x^2$, the coefficient is $8$ and the exponent is $2$: $8x^2 = 8 \\cdot x \\cdot x$.",
-         "The coefficient of $x$ is $6$, from the term $6x$.", "The constant term has no variable: $3$."],
+        ["The terms are $8x^2$, $6x$ and 3.",
+         "In $8x^2$, the coefficient is 8 and the exponent is 2: $8x^2 = 8 \\cdot x \\cdot x$.",
+         "The coefficient of $x$ is 6, from the term $6x$.", "The constant term has no variable: 3."],
         "In the term $8x^2$, the coefficient multiplies the power and the exponent says how many factors of $x$ "
         "there are. The constant term of $8x^2 + 6x + 3$ has no variable.")
-    linear = options("$p$", "$8$", "$3$", "$8q$", "$3p$", "$6$")
+    linear = options("$p$", "8", "3", "$8q$", "$3p$", "6")
     cases["linear"] = fixture(
         "label-expression-parts", "Label the parts of the expression $3p + 8q + 6$.",
         {"kind": "multi-part-choice", "label": "Choose the part that matches each label", "layout": "slots",
          "blanks": [{"id": "coef", "label": "the coefficient of $p$", "options": copy.deepcopy(linear)},
                     {"id": "term", "label": "the term containing $q$", "options": copy.deepcopy(linear)},
                     {"id": "const", "label": "the constant term", "options": copy.deepcopy(linear)},
-                    {"id": "count", "label": "the number of terms", "options": options("$2$", "$3$", "$4$")}]},
+                    {"id": "count", "label": "the number of terms", "options": options("2", "3", "4")}]},
         '{"coef":"c","term":"d","const":"f","count":"b"}',
-        ["The terms are the parts joined by $+$: $3p$, $8q$ and $6$, so there are 3 terms.",
-         "The coefficient of $p$ is the number multiplying it: $3$.",
-         "The term containing $q$ is the whole term $8q$; its coefficient is $8$.",
-         "The constant term has no variable: $6$."],
+        ["The terms are the parts joined by $+$: $3p$, $8q$ and 6, so there are 3 terms.",
+         "The coefficient of $p$ is the number multiplying it: 3.",
+         "The term containing $q$ is the whole term $8q$; its coefficient is 8.",
+         "The constant term has no variable: 6."],
         "The terms of $3p + 8q + 6$ are the parts joined by $+$. A coefficient is the number that multiplies a "
         "variable, and the constant term has no variable.")
     cases["product"] = fixture(
@@ -872,11 +911,11 @@ def handwritten():
         {"kind": "multi-part-choice", "label": "Choose the part that matches each label", "layout": "slots",
          "blanks": [{"id": "whole", "label": "the kind of expression",
                      "options": options("quotient", "sum", "difference", "product")},
-                    {"id": "sum", "label": "the factor that is a sum", "options": options("$n + 8$", "$n$", "$2$", "$8$")},
-                    {"id": "count", "label": "the number of terms in the sum", "options": options("$1$", "$2$", "$3$")}]},
+                    {"id": "sum", "label": "the factor that is a sum", "options": options("$n + 8$", "$n$", "2", "8")},
+                    {"id": "count", "label": "the number of terms in the sum", "options": options("1", "2", "3")}]},
         '{"whole":"d","sum":"a","count":"b"}',
         ["$2(n + 8)$ means $2 \\cdot (n + 8)$: the last operation is multiplication, so it is a product of two "
-         "factors, $2$ and $(n + 8)$.", "The factor $(n + 8)$ is a sum.", "That sum has 2 terms, $n$ and $8$."],
+         "factors, 2 and $(n + 8)$.", "The factor $(n + 8)$ is a sum.", "That sum has 2 terms, $n$ and 8."],
         "In $2(n + 8)$, the number 2 written next to the parentheses multiplies them. Decide what the last operation "
         "is, then look inside the parentheses.")
     return cases
@@ -894,13 +933,14 @@ def self_test():
     cases = handwritten()
     for case in cases.values():
         review_problem(case)
-    require(tex_number("$-\\frac{10}{3}$") == F(-10, 3) and tex_number("$0$") == 0, "Number options")
+    require(number_option("$-\\frac{10}{3}$") == F(-10, 3) and number_option("0") == 0 and number_option("−3") == -3,
+            "Number options")
     require(evaluate(tex_tree("\\frac{-5 - (-3)}{3 - (-3)}"), {}) == F(-1, 3), "Fraction arithmetic")
     require(proportional(relation_of("$y = 3(x + 2) - 6$")) and not proportional(relation_of("$y = 2x^2$")),
             "Proportionality")
     require(proportional(relation_of("$2y = 8x$")) and not proportional(relation_of("$y = \\frac{12}{x}$")),
             "Equation forms")
-    require(not proportional(relation_of("$(0, 2), (1, 3), (2, 6)$")), "Pairs off the origin")
+    require(not proportional(relation_of("(0, 2), (1, 3), (2, 6)")), "Pairs off the origin")
     mutations = 0
 
     def mutate(name, change, what):
@@ -928,8 +968,19 @@ def self_test():
     # Options: a second correct option, a non-canonical value, a missing correct option.
     mutate("table", setter("public", "response", "blanks", 0, "options", 0, "label", value="$\\frac{6}{4}$"),
            "unreduced duplicate of the slope")
-    mutate("table", setter("public", "response", "blanks", 1, "options", 0, "label", value="$5.0$"), "decimal label")
-    mutate("table", setter("public", "response", "blanks", 1, "options", 2, "label", value="$6$"), "no correct intercept")
+    mutate("table", setter("public", "response", "blanks", 1, "options", 0, "label", value="5.0"), "decimal label")
+    mutate("table", setter("public", "response", "blanks", 1, "options", 2, "label", value="6"), "no correct intercept")
+    mutate("table", setter("public", "response", "blanks", 1, "options", 2, "label", value="$5$"), "whole number in TeX")
+    mutate("graph", setter("public", "response", "blanks", 1, "options", 0, "label", value="-4"), "hyphen minus option")
+    mutate("graph", setter("public", "response", "blanks", 0, "options", 3, "label", value="\u22120"), "negative zero")
+    mutate("points", setter("public", "prompt", value="A line passes through the points $(0, -3)$ and $(4, 3)$. "
+                            "Complete the sentence about the line."), "points prompt in TeX")
+    mutate("points", setter("explanation", 1, value="The point (0, -3) is on the $y$-axis, so the $y$-intercept is "
+                            "$b = -3$."), "hyphen minus in a prose point")
+    mutate("proportional-pairs", setter("public", "response", "blanks", 1, "label", value="$(2, 6), (4, 12), (5, 15)$"),
+           "pair row in TeX")
+    mutate("quadratic", setter("public", "response", "blanks", 0, "options", 1, "label", value="$8$"), "part option in TeX")
+    mutate("quadratic", setter("explanation", 3, value="The constant term has no variable: 2."), "false constant")
     mutate("table", setter("public", "response", "blanks", 0, "options", 3, "id", value="e"), "option id gap")
     mutate("table", setter("public", "response", "blanks", 2, "options", 0, "label", value="rises"), "unknown direction")
     # Figure and wording.
@@ -951,19 +1002,19 @@ def self_test():
     mutate("graph", setter(*plot, "type", value="table"), "graph prompt with a table scene")
     mutate("graph", setter("public", "prompt", value="The graph shows a line through $A(-3, -3)$ and $B(3, -1)$. "
                            "Complete the sentence about the line."), "prompt point moved")
-    mutate("points", setter("public", "prompt", value="A line passes through the points $(0, -3)$ and $(0, 3)$. "
+    mutate("points", setter("public", "prompt", value="A line passes through the points (0, −3) and (0, 3). "
                             "Complete the sentence about the line."), "vertical line")
     # Explanation claims.
     mutate("table", setter("explanation", 0, value="The slope is the change in $y$ divided by the change in $x$. "
-                           "From $(4, 11)$ to $(10, 20)$: $m = \\frac{20 - 11}{10 - 4} = \\frac{9}{6} = \\frac{2}{3}$."),
+                           "From (4, 11) to (10, 20): $m = \\frac{20 - 11}{10 - 4} = \\frac{9}{6} = \\frac{2}{3}$."),
            "explanation states a wrong slope")
-    mutate("table", setter("explanation", 1, value="Substitute $(4, 11)$ into $y = mx + b$: "
+    mutate("table", setter("explanation", 1, value="Substitute (4, 11) into $y = mx + b$: "
                            "$11 = \\frac{3}{2} \\cdot 4 + b$, so $b = 11 - 6 = 4$."), "explanation states a wrong b")
     mutate("table", setter("explanation", 2, value="The slope is negative, so $y$ decreases as $x$ increases."),
            "explanation direction")
     mutate("table", lambda p: p["explanation"].pop(1), "explanation omits the intercept")
     mutate("graph", setter("explanation", 2, value="The equation is $y = -\\frac{1}{3}x + 4$."), "wrong equation")
-    mutate("points", setter("explanation", 1, value="The point $(0, 3)$ is on the $y$-axis, so the $y$-intercept "
+    mutate("points", setter("explanation", 1, value="The point (0, 3) is on the $y$-axis, so the $y$-intercept "
                             "is $b = 3$."), "wrong intercept point")
     mutate("points", setter("hint", value=""), "empty hint")
     mutate("points", setter("hint", value=cases["graph"]["hint"]), "hint for another representation")
@@ -996,11 +1047,11 @@ def self_test():
     mutate("proportional", setter("explanation", 5, value="$3y = 12x$: proportional. Dividing both sides by 3 gives "
                                   "$y = 3x$."), "false division")
     mutate("proportional", lambda p: p["explanation"].pop(), "explanation omits a row")
-    mutate("proportional-pairs", setter("explanation", 2, value="$(2, 6)$, $(4, 12)$, $(5, 15)$: proportional. Every "
+    mutate("proportional-pairs", setter("explanation", 2, value="(2, 6), (4, 12), (5, 15): proportional. Every "
                                         "pair has $\\frac{y}{x} = 2$."), "false ratio")
     mutate("proportional-pairs", setter("explanation", 4, value="$y = \\frac{2}{5}x$: proportional. It has the form "
                                         "$y = kx$ with $k = \\frac{5}{2}$."), "false k")
-    mutate("proportional-pairs", setter("public", "response", "blanks", 1, "label", value="$(2, 6)$, $(4, 12)$, $(5, 16)$"),
+    mutate("proportional-pairs", setter("public", "response", "blanks", 1, "label", value="(2, 6), (4, 12), (5, 16)"),
            "pair breaks the ratio")
     # Expression parts.
     mutate("quadratic", setter("answer", value='{"coefsq":"e","power":"b","coef":"d","const":"c"}'),
@@ -1011,22 +1062,22 @@ def self_test():
            "prompt changed under a fixed key and explanation")
     mutate("quadratic", setter("public", "response", "blanks", 1, "label", value="the exponent in $6x^2$"),
            "exponent of a term that is not there")
-    mutate("quadratic", setter("explanation", 2, value="The coefficient of $x$ is $8$, from the term $6x$."),
+    mutate("quadratic", setter("explanation", 2, value="The coefficient of $x$ is 8, from the term $6x$."),
            "false coefficient")
     mutate("quadratic", setter("explanation", 0, value="The terms are $8x^2$ and $6x$."), "terms not listed")
-    mutate("linear", setter("public", "response", "blanks", 0, "options", 0, "label", value="$3$"), "repeated option")
+    mutate("linear", setter("public", "response", "blanks", 0, "options", 0, "label", value="3"), "repeated option")
     mutate("linear", setter("public", "response", "blanks", 3, "label", value="the number of factors"), "unknown slot")
-    mutate("linear", setter("explanation", 0, value="The terms are the parts joined by $+$: $3p$, $8q$ and $6$, so "
+    mutate("linear", setter("explanation", 0, value="The terms are the parts joined by $+$: $3p$, $8q$ and 6, so "
                             "there are 2 terms."), "false count")
     mutate("linear", setter("explanation", 2, value="The term containing $q$ is the whole term $3p$; its coefficient "
-                            "is $3$."), "false term")
+                            "is 3."), "false term")
     mutate("linear", setter("public", "response", "sentence", value=[{"text": "x"}, {"blank": "coef"}]),
            "slots with a sentence")
     mutate("product", setter("answer", value='{"whole":"b","sum":"a","count":"b"}'), "product called a sum")
     mutate("product", setter("public", "response", "blanks", 1, "options", 1, "label", value="$8 + n$"),
            "commuted sum: two correct options")
     mutate("product", setter("answer", value='{"whole":"d","sum":"a","count":"c"}'), "term count")
-    mutate("product", setter("explanation", 2, value="That sum has 3 terms, $n$ and $8$."), "false sum count")
+    mutate("product", setter("explanation", 2, value="That sum has 3 terms, $n$ and 8."), "false sum count")
     return {"handwritten_cases": len(cases), "mutations": mutations}
 
 
