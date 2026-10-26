@@ -93,6 +93,7 @@ export const outcomeSchema = z.object({
   createdAt: z.string(),
   mastered: z.object({ skillId: z.string(), title: z.string() }).optional(),
   skipped: z.literal(true).optional(),
+  parts: z.array(z.boolean()).max(6).optional(),
 });
 export type TrialOutcome = z.infer<typeof outcomeSchema>;
 
