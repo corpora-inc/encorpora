@@ -61,10 +61,12 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["triangle.midsegment"],
       demand:
         "Choose the always-true relation between a triangle's midsegment and its third side",
-      status: "partial",
-      templateIds: ["triangle-theorem-consequences"],
-      limitations:
-        "The family lists the midsegment in its description, but samples cover medians, base angles and the angle-sum proof; the midsegment relation chosen as a statement is not seen.",
+      status: "covered",
+      templateIds: [
+        "triangle-theorem-consequences",
+        "rg-segment-property-choice",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -92,10 +94,13 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["measure.volume", "ratio.units"],
       demand:
         "Find the liters in a rectangular tank filled to a height below its top",
-      status: "partial",
-      templateIds: ["solid-volume-context", "unit-chain-conversion"],
-      limitations:
-        "Volume families use cylinders, cones, pyramids and spheres; a partly filled rectangular prism needs a derived height and a cubic-centimeter-to-liter conversion.",
+      status: "covered",
+      templateIds: [
+        "solid-volume-context",
+        "unit-chain-conversion",
+        "rg-solid-density",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -155,10 +160,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["segment.perpendicular-bisector"],
       demand:
         "Choose the statement that must be true when a segment is the perpendicular bisector of a triangle side",
-      status: "missing",
-      templateIds: [],
-      limitations:
-        "No family practices the equidistance property of a perpendicular bisector.",
+      status: "covered",
+      templateIds: ["rg-segment-property-choice"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -250,10 +254,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["triangle.altitude-hypotenuse"],
       demand:
         "Find a hypotenuse segment, to the nearest tenth, from a leg and the adjacent segment",
-      status: "partial",
-      templateIds: ["similarity-theorem-length"],
-      limitations:
-        "The family gives exact lengths from two other lengths; finding the full hypotenuse from the leg and a segment, with decimal rounding, is not practiced.",
+      status: "covered",
+      templateIds: ["similarity-theorem-length", "rg-altitude-segment"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -266,14 +269,14 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["angle.relationships", "proof.parallelogram"],
       demand:
         "Find an angle of a trapezoid from two angle expressions between parallel sides",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "angle-equation",
         "parallel-lines-angle",
         "fl-trapezoid-consequences",
+        "rg-quadrilateral-choice",
       ],
-      limitations:
-        "Angle equations and the trapezoid family are practiced separately: expression angles in a trapezoid appear only for equal base angles of an isosceles trapezoid, and supplementary angles along a leg only as numbers.",
+      limitations: "",
     },
     {
       section: "Part I",
@@ -286,10 +289,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["triangle.special"],
       demand:
         "Find a leg of an isosceles right triangle from its hypotenuse, rounded to a tenth",
-      status: "partial",
-      templateIds: ["special-right-triangle"],
-      limitations:
-        "The family gives exact coefficients; a decimal approximation of a radical leg is not practiced.",
+      status: "covered",
+      templateIds: ["special-right-triangle", "rg-isosceles-right-decimal"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -315,10 +317,12 @@ export const regentsGeometryJune2026 = defineLedger(
       standards: ["G-CO.C"],
       archetypeIds: ["proof.parallelogram"],
       demand: "Choose the condition that makes a parallelogram a rhombus",
-      status: "partial",
-      templateIds: ["parallelogram-property-consequences"],
-      limitations:
-        "The family covers parallelogram and rectangle reasons; sufficient conditions for a rhombus are not sampled.",
+      status: "covered",
+      templateIds: [
+        "parallelogram-property-consequences",
+        "rg-quadrilateral-choice",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -376,10 +380,13 @@ export const regentsGeometryJune2026 = defineLedger(
       standards: ["G-CO.C"],
       archetypeIds: ["triangle.inequality"],
       demand: "Choose a possible third side of a triangle given two sides",
-      status: "partial",
-      templateIds: ["triangle-third-side", "triangle-side-test"],
-      limitations:
-        "Families count or bound third sides by entry, or choose a set of three lengths; testing one candidate from a list is not practiced.",
+      status: "covered",
+      templateIds: [
+        "triangle-third-side",
+        "triangle-side-test",
+        "rg-triangle-third-side-test",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -439,13 +446,13 @@ export const regentsGeometryJune2026 = defineLedger(
       standards: ["G-CO.C"],
       archetypeIds: ["angle.relationships", "proof.parallelogram"],
       demand: "Find an angle in a parallelogram with a perpendicular segment",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "angle-pair-measure",
         "parallelogram-property-consequences",
+        "rg-parallelogram-perpendicular",
       ],
-      limitations:
-        "Angle chains inside a figure with a perpendicular from a vertex are not practiced. The rating guide credits shown work, which AMP does not score.",
+      limitations: "",
     },
     {
       section: "Part II",
@@ -458,10 +465,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["measure.volume", "ratio.units"],
       demand:
         "Find the weight of a cylindrical log from its diameter, height and density",
-      status: "partial",
-      templateIds: ["cylinder-volume", "density-context"],
-      limitations:
-        "Volume and density are practiced separately; a diameter converted to a radius, followed by multiplying by density, rounded to a pound, is not. The rating guide credits shown work, which AMP does not score.",
+      status: "covered",
+      templateIds: ["cylinder-volume", "density-context", "rg-solid-density"],
+      limitations: "",
     },
     {
       section: "Part II",
@@ -490,10 +496,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["trig.triangle-area"],
       demand:
         "Find a triangle's area from two sides and the included angle, to the nearest tenth",
-      status: "partial",
-      templateIds: ["trig-triangle-area"],
-      limitations:
-        "The family is choice-only and cannot take a numeric response. The rating guide credits shown work, which AMP does not score.",
+      status: "covered",
+      templateIds: ["trig-triangle-area", "rg-triangle-area-sas"],
+      limitations: "",
     },
     {
       section: "Part II",
@@ -554,10 +559,13 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["measure.volume", "ratio.units"],
       demand:
         "Find how many pyramids can be made from a mass of clay with a stated density",
-      status: "partial",
-      templateIds: ["solid-volume-context", "density-context"],
-      limitations:
-        "Pyramid volume and density are practiced separately in choice families; converting kilograms and rounding the count down are not. The rating guide credits shown work, which AMP does not score.",
+      status: "covered",
+      templateIds: [
+        "solid-volume-context",
+        "density-context",
+        "rg-solid-density",
+      ],
+      limitations: "",
     },
     {
       section: "Part III",
