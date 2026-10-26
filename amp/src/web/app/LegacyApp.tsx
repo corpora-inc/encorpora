@@ -30,6 +30,7 @@ import { NativeFamily } from "../NativeGate";
 import { learningRequest, learningCatalog } from "../learning-transport";
 import {
   batchWithCapabilityFallback,
+  clientResponseCapabilities,
   validationPaths,
 } from "../lib/batch-capability-fallback";
 import { ParentConsentCenter } from "../ParentConsentCenter";
@@ -868,7 +869,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       {
         ...(templateId ? { templateId } : {}),
         count: 1,
-        responseCapabilities: ["single-choice-v1", "multi-select-v1"],
+        responseCapabilities: [...clientResponseCapabilities],
         figureCapabilities: [...figureCapabilities],
       },
       (body) => api<Batch>(`/learners/${learnerId}/batches`, body),

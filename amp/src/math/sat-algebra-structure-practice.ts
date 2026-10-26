@@ -158,7 +158,7 @@ function quadraticRootRelations(r: Random): Built {
       draft: {
         prompt: `One solution of $${equation}=0$ is $x=${root}$. What is the value of $k$?`,
         answer: "",
-        hint: `Because $x=${root}$ is a solution, replacing $x$ by ${root} must make $${equation}=0$ true. Do that and solve the resulting one-variable equation for $k$.`,
+        hint: `Because $x=${root}$ is a solution, replacing $x$ by $${root}$ must make $${equation}=0$ true. Do that and solve the resulting one-variable equation for $k$.`,
         explanation: [
           `Substitute $x=${root}$: $${a}(${root})^2+k(${root})${c < 0 ? "-" : "+"}${Math.abs(c)}=0$, which is $${a * root * root + c}${root < 0 ? "-" : "+"}${Math.abs(root)}k=0$.`,
           `Solve for $k$: $k=${k}$.`,
@@ -1118,8 +1118,8 @@ function rateCombinationModel(r: Random): Built {
     }
     const names = pick(r, [
       ["Ana", "Ben", "paint a fence"],
-      ["Printer A", "Printer B", "complete a print run"],
-      ["Pump A", "Pump B", "fill a reservoir"],
+      ["the first printer", "the second printer", "complete a print run"],
+      ["the first pump", "the second pump", "fill a reservoir"],
     ] as const);
     const time = q(a * b, a + b);
     const unit = (x: Q) => unitLabel(x, "hour", "hours");

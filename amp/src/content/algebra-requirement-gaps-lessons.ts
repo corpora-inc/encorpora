@@ -10,7 +10,7 @@ const sequenceFunctionMethod: ProblemMethod = {
       "domain",
       "The set of inputs a function accepts. For a sequence starting at position 1 it is the positive integers $1,2,3,\\ldots$.",
     ],
-    ["$a(n)$", "The term in position $n$, read “a of n”."],
+    ["$a(n)$", "The term in position $n$, read “$a$ of $n$”."],
     [
       "discrete graph",
       "A graph made of separate points, with nothing between them.",
@@ -153,7 +153,7 @@ const geometricRuleFormsLesson: Lesson = {
   closingSections: [
     {
       stage: "method",
-      title: "Why the exponent is $n-1$",
+      title: "Why the exponent is one less than the position",
       paragraphs: [
         "Going from $a_1$ to $a_2$ multiplies once; to $a_3$, twice; to $a_n$, $n-1$ times. So $a_n=a_1r^{n-1}$. The same reading works backward: in $a_n=5\\cdot 2^{n-1}$ the first term is 5 (put $n=1$) and the ratio is 2.",
         "The ratio can be negative or a fraction: $a_n=8\\left(\\frac12\\right)^{n-1}$ halves each term, and $a_n=3(-2)^{n-1}$ alternates signs.",
@@ -373,7 +373,7 @@ const complexPartsPrinciple =
 
 const complexPartsLesson: Lesson = {
   id: "complex-parts",
-  title: "Parts of a complex number and powers of i",
+  title: "Parts of a complex number and its powers",
   summary:
     "A complex number $a+bi$ has real part $a$ and imaginary part $b$. Powers of $i$ repeat every four steps.",
   templateIds: ["complex-parts"],
@@ -598,7 +598,7 @@ const quadraticFormConversionLesson: Lesson = {
 };
 
 const rationalExtraneousSingleMethod: ProblemMethod = {
-  goal: "Solve a rational equation with one variable denominator, decide whether the candidate is allowed, and explain why a disallowed candidate appears.",
+  goal: "Solve a rational equation with one variable denominator, check whether the candidate is allowed, and explain a disallowed one.",
   intuition:
     "To clear a fraction you multiply both sides by its denominator. That step assumes the denominator is not zero. A candidate that makes the original denominator zero is not a solution; it only appears because the multiplication ignored that condition.",
   terms: [
@@ -674,7 +674,7 @@ const rationalExtraneousSingleLesson: Lesson = {
   pitfalls: [
     "Write the excluded value before solving, not after.",
     "A candidate is extraneous only if it makes a denominator zero. Otherwise it is a solution.",
-    "If the only candidate is rejected, the answer is no solution, not “x equals the candidate.”",
+    "If the only candidate is rejected, the answer is no solution, not “$x$ equals the candidate.”",
   ],
   parentGuide:
     "Ask what happens to $\\frac3{x-2}$ at $x=2$ and why a candidate of 2 cannot be an answer.",

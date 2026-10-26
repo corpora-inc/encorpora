@@ -63,10 +63,13 @@ import { rightTriangleMethods } from "./right-triangle-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import { complexMethods } from "./complex-lessons";
+import { k8StateNumberMethods } from "./k8-state-number-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
+import { pointPlotMethods } from "./point-plot-lessons";
 import { algebraRequirementGapMethods } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapMethods } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapMethods } from "./number-measurement-gaps-lessons";
+import { floridaGapMethods } from "./florida-gaps-lessons";
 import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
 import { vectorMatrixMethods } from "./vectors-matrices-lessons";
@@ -103,10 +106,13 @@ export const methods: Record<string, ProblemMethod> = {
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...complexMethods,
+  ...k8StateNumberMethods,
   ...satNumericEntryMethods,
+  ...pointPlotMethods,
   ...algebraRequirementGapMethods,
   ...advancedMathGapMethods,
   ...numberMeasurementGapMethods,
+  ...floridaGapMethods,
   ...satAlgebraStructureMethods,
   ...remainingGapMethods,
   ...vectorMatrixMethods,

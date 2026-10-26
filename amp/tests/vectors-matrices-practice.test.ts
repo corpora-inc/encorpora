@@ -178,7 +178,9 @@ test("vector component and resultant answers match an independent calculation", 
       assert.equal(value, n);
     }
     const p = generateProblem("vector-resultant", key);
-    const nums = /(\d+) (?:mph|N)[^.]*?(\d+) (?:mph|N)/.exec(p.public.prompt);
+    const nums = /(\d+) (?:mph|N|newtons)[^.]*?(\d+) (?:mph|N|newtons)/.exec(
+      p.public.prompt,
+    );
     if (
       nums &&
       /(relative to the shore|relative to the ground|magnitude of the resultant force)\?( Round to the nearest tenth\.)?$/.test(

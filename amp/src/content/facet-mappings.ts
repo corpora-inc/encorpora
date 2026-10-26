@@ -8,6 +8,7 @@ import { areaVolumeFacetMappings } from "./area-volume-coverage";
 import { transformationFacetMappings } from "./transformation-coverage";
 import { completingSquareFacetMappings } from "./completing-square-coverage";
 import { algebraRequirementGapFacetMappings } from "./algebra-requirement-gaps-coverage";
+import { pointPlotFacetMappings } from "./point-plot-coverage";
 import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
 import { patternFunctionFacetMappings } from "./pattern-function-coverage";
@@ -59,6 +60,97 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  {
+    templateId: "divisibility-rule-check",
+    facetId: "factors-multiples.core",
+    extent: "partial",
+    rationale:
+      "Choose which 3- or 4-digit number is divisible by 2, 3, 4, 5, 6, 9 or 10, and choose the single digit that completes a 3- or 4-digit number so it is divisible by 3, 6 or 9, including near-miss numbers that satisfy only part of the rule. Does not assess divisibility by 7, 8 or 11, explaining why a rule works, or listing all factors.",
+  },
+  {
+    templateId: "prime-composite-sort",
+    facetId: "factors-multiples.core",
+    extent: "partial",
+    rationale:
+      "Choose the prime number, the composite number, or the number that is neither among four whole numbers to 144, including odd composites such as 91 and 119. Does not assess listing primes, the sieve of Eratosthenes or composites beyond 144.",
+  },
+  {
+    templateId: "prime-factorization-exponents",
+    facetId: "factors-multiples.core",
+    extent: "partial",
+    rationale:
+      "Choose the complete prime factorization, written with exponents, of a composite number to 144, directly or from the first split of a factor tree. Does not assess drawing a factor tree, numbers above 144 or using factorizations for GCF and LCM.",
+  },
+  {
+    templateId: "prime-factorization-value",
+    facetId: "factors-multiples.core",
+    extent: "partial",
+    rationale:
+      "Enter the value of a prime factorization with exponents, the greatest prime factor of a number to 100, or the count of prime factors with repeats. Does not assess writing a factorization or numbers above 100.",
+  },
+  {
+    templateId: "decimal-money-change",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Enter change, total cost, amount still needed or unknown cost with decimal dollar amounts to 20 dollars, including a multi-item purchase with equal items. Does not assess sales tax, rounding amounts, counting a drawn set of coins or making change with specific coins.",
+  },
+  {
+    templateId: "fewest-coins-change",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Enter the fewest bills and coins for change up to 5 dollars using 1-dollar bills, quarters, dimes, nickels and pennies. Does not assess naming which coins to use, other denominations or non-US currency.",
+  },
+  {
+    templateId: "compare-money-sets",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Choose which of three drawn sets of 1-dollar bills and coins worth up to 5 dollars is worth the most, the least or an exact amount. Does not assess five-dollar bills, adding two sets or making change.",
+  },
+  {
+    templateId: "customary-unit-rename",
+    facetId: "unit-conversion.core",
+    extent: "partial",
+    rationale:
+      "Enter a length, weight or capacity renamed from a larger to a smaller customary unit (inches to miles, ounces to tons, fluid ounces to gallons), in a statement, a story and a comparison, with the conversion fact stated. Does not assess recalling the facts unaided, metric units or fractional amounts.",
+  },
+  {
+    templateId: "customary-unit-reverse",
+    facetId: "measurement-conversions.core",
+    extent: "partial",
+    rationale:
+      "Enter a customary measure renamed as a larger unit, the whole larger units in a smaller measure, or a two-step conversion, with the conversion facts stated. Does not assess recalling the facts unaided, remainders as fractions or metric units.",
+  },
+  {
+    templateId: "customary-mixed-units",
+    facetId: "measurement-conversions.core",
+    extent: "partial",
+    rationale:
+      "Choose a mixed customary measure renamed as one unit or as two units, and the sum or difference of two mixed measures with regrouping, in feet and inches, yards and feet, pounds and ounces, gallons and quarts, and cups and fluid ounces. Does not assess entering a two-unit answer or three-unit measures.",
+  },
+  {
+    templateId: "customary-unit-choice",
+    facetId: "unit-conversion.core",
+    extent: "partial",
+    rationale:
+      "Choose the customary unit that makes a measure reasonable for an everyday length, weight or capacity, where the other units are too large, too small or measure another attribute. Does not assess estimating an unfamiliar object or converting units.",
+  },
+  {
+    templateId: "compatible-number-estimate",
+    facetId: "multistep-whole-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the estimate of a quotient or a product after changing a number to the stated compatible number, and the front-end estimate of a sum of two or three 3- or 4-digit numbers. Does not assess choosing the compatible number unaided, estimating with decimals or judging over- or under-estimates.",
+  },
+  {
+    templateId: "benchmark-percent-estimate",
+    facetId: "percentages.core",
+    extent: "partial",
+    rationale:
+      "Choose the estimate of a tip, sales tax, discount or sale price after rounding a price as stated and using 5%, 10%, 15%, 20%, 25% or 50% benchmarks. Does not assess exact percent calculation, other percents or choosing the rounding.",
+  },
   {
     templateId: "sat-entry-system-solve",
     facetId: "linear-systems.core",
@@ -1160,6 +1252,118 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...timeMoneyFacetMappings,
   ...attributeFacetMappings,
   ...comparisonFacetMappings,
+  {
+    templateId: "fl-equation-truth-20",
+    facetId: "equality.core",
+    extent: "partial",
+    rationale:
+      "Select the true or false addition or subtraction equation within 20, including an operation on both sides and the result on the left. Does not assess writing an equation or explaining in words why an equation is true.",
+  },
+  {
+    templateId: "fl-equation-truth-100",
+    facetId: "equality.core",
+    extent: "partial",
+    rationale:
+      "Select the true or false addition or subtraction equation within 100, including sums with different addends and the same value. Does not assess writing an equation or a written explanation of why it is true.",
+  },
+  {
+    templateId: "fl-equation-truth-mult-div",
+    facetId: "missing-factor.core",
+    extent: "partial",
+    rationale:
+      "Select the true or false multiplication or division equation with facts within 12 and the result on either side. Does not assess finding a missing number or explaining the choice in words.",
+  },
+  {
+    templateId: "fl-equation-truth-whole",
+    facetId: "missing-factor.core",
+    extent: "partial",
+    rationale:
+      "Select the true or false whole-number equation using any of the four operations, with multiplication facts within 12 and repeated-subtraction forms. Does not assess decimals, parentheses or written explanation.",
+  },
+  {
+    templateId: "fl-equation-truth-grouped",
+    facetId: "numerical-expressions.core",
+    extent: "partial",
+    rationale:
+      "Select the true or false equation with parentheses, decimals to tenths and any of the four operations. Does not assess writing equations, fractions or a written explanation.",
+  },
+  {
+    templateId: "fl-decimal-tenth-hundredth-step",
+    facetId: "decimal-fractions.core",
+    extent: "partial",
+    rationale:
+      "Enter the decimal that is 0.1 or 0.01 more or less than a decimal with up to two places, including regrouping across places and whole-number bases. Does not assess other amounts, comparing decimals or fraction forms.",
+  },
+  {
+    templateId: "fl-decimal-by-tenth-hundredth",
+    facetId: "powers-of-ten.core",
+    extent: "partial",
+    rationale:
+      "Enter the product or quotient when a decimal to tenths is multiplied or divided by 0.1 or 0.01, and the missing factor in a product with 0.1 or 0.01. Does not assess other powers of ten, exponent notation or written explanations of the shift.",
+  },
+  {
+    templateId: "fl-expression-description-match",
+    facetId: "numerical-expressions.core",
+    extent: "partial",
+    rationale:
+      "Choose the numerical expression (parentheses, whole numbers and tenths) that matches a verbal description, or the description that matches an expression. Does not assess writing an expression, fractions or evaluating it.",
+  },
+  {
+    templateId: "fl-two-step-story-equation",
+    facetId: "multi-operation-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation with a variable and two operations that models a whole-number story with equal groups, an extra step, or an extra step in every group. Does not assess solving the equation, stories with more than two operations or writing the equation.",
+  },
+  {
+    templateId: "fl-metric-customary-conversion",
+    facetId: "units-and-precision.core",
+    extent: "partial",
+    rationale:
+      "Convert a length, mass, volume or area between customary and metric units, or money at a stated rate, using a factor given in the problem. Does not assess remembering factors, multi-step conversions, rates or precision.",
+  },
+  {
+    templateId: "fl-integer-multiply-divide",
+    facetId: "signed-multiplication.core",
+    extent: "partial",
+    rationale:
+      "Multiply or divide two integers with positive, negative and zero values, including a divisor of -1. Does not assess rational numbers, three or more factors, contexts or the properties of operations.",
+  },
+  {
+    templateId: "fl-vector-dot-product",
+    facetId: "vectors.core",
+    extent: "partial",
+    rationale:
+      "Find the dot product of two plane vectors, the component that makes two vectors perpendicular, and the scalar projection onto a vector with integer length. Does not assess three dimensions, vector projection as a vector or proofs.",
+  },
+  {
+    templateId: "fl-vector-angle",
+    facetId: "vectors.core",
+    extent: "partial",
+    rationale:
+      "Choose the angle between two plane vectors that make a multiple of 45 degrees, or the relationship (perpendicular, parallel same or opposite direction, neither) from the dot product. Does not assess angles needing an inverse cosine value, three dimensions or proofs.",
+  },
+  {
+    templateId: "fl-even-odd-classify",
+    facetId: "function-transformations.core",
+    extent: "partial",
+    rationale:
+      "Classify a polynomial function given by an equation as even, odd or neither using f(-x), and choose the polynomial with a stated symmetry. Does not assess classifying from a graph or table, nonpolynomial functions or proof.",
+  },
+  {
+    templateId: "fl-function-arithmetic",
+    facetId: "function-composition.core",
+    extent: "partial",
+    rationale:
+      "Choose the formula for (f+g)(x), (f-g)(x) or (fg)(x) for linear and quadratic functions, the domain of (f/g)(x) when g is linear or quadratic with integer zeros, and the value of (f/g)(a). Does not assess other function families, domain of products or contextual models.",
+  },
+  {
+    templateId: "fl-trapezoid-consequences",
+    facetId: "parallelogram-proofs.core",
+    extent: "partial",
+    rationale:
+      "Find a length or angle using the trapezoid midsegment theorem, the base angles and supplementary leg angles of an isosceles trapezoid, and its congruent diagonals, with numeric or linear expressions. Does not assess written proofs, constructions or drawn figures.",
+  },
   ...numberSenseFacetMappings,
   ...multiplyDivideFacetMappings,
   ...addSubtractFacetMappings,
@@ -1181,6 +1385,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...rationalFacetMappings,
   ...circleMeasurementFacetMappings,
   ...completingSquareFacetMappings,
+  ...pointPlotFacetMappings,
   ...algebraRequirementGapFacetMappings,
   ...integerExponentFacetMappings,
   ...descriptiveStatisticsFacetMappings,

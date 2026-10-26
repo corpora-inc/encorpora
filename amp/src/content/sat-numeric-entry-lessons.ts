@@ -27,7 +27,7 @@ const entries: Entry[] = [
     id: "sat-entry-system-solve",
     title: "Enter a variable from a 2×2 system",
     summary:
-      "Eliminate one variable by making its coefficients opposite, solve the single equation that remains, and type the value even when it is a fraction.",
+      "Cancel one variable by making its coefficients opposite, solve what remains, and type the value, even a fraction.",
     objectives: [
       "Eliminate one variable from two linear equations by multiplying and adding.",
       "Enter the exact value of $x$ or $y$, including a negative or fractional value.",
@@ -79,7 +79,7 @@ const entries: Entry[] = [
     id: "sat-entry-system-expression",
     title: "Enter the value of an expression from a system",
     summary:
-      "Sometimes the question asks for $4x+6y$, not for $x$ and $y$. Add, subtract or scale the two equations so the left side becomes that expression.",
+      "The question may ask for $4x+6y$, not $x$ and $y$. Add, subtract or scale the equations so the left side becomes that expression.",
     objectives: [
       "Find a combination of two equations whose left side is a requested expression.",
       "Apply the same combination to the right sides, including a half or negative multiple.",
@@ -130,7 +130,7 @@ const entries: Entry[] = [
     id: "sat-entry-quadratic-solution",
     title: "Enter a quadratic solution",
     summary:
-      "Factor the quadratic, set each factor to 0, then choose the solution the question describes: the greater one, the positive one, or the only one.",
+      "Factor the quadratic, set each factor to 0, then choose the solution described: the greater, the positive or the only one.",
     objectives: [
       "Solve a quadratic by factoring, including a leading coefficient other than 1 and a perfect square.",
       "Select and enter the requested solution as an integer or fraction.",
@@ -379,7 +379,7 @@ const entries: Entry[] = [
     id: "sat-entry-polynomial-zeros",
     title: "Enter a zero of a factored polynomial",
     summary:
-      "Each factor that equals 0 gives a zero. List them once each, ignore constant multipliers, and note that a factor like $x^2+4$ has no real zero.",
+      "Each factor equal to 0 gives a zero. List each once, ignore constant multipliers; a factor like $x^2+4$ has no real zero.",
     objectives: [
       "Read zeros from a polynomial written as a product of factors.",
       "Enter the least, positive or distinct-sum value, including a fractional zero.",
@@ -432,7 +432,7 @@ const entries: Entry[] = [
     id: "sat-entry-quadratic-context",
     title: "Enter a quadratic-model value",
     summary:
-      "For a height $h(t)=-at^2+bt+c$, the highest point is at $t=\\frac{b}{2a}$. Substitute to get the greatest height, or factor to find when the height is 0.",
+      "For $h(t)=-at^2+bt+c$, the peak is at $t=\\frac{b}{2a}$. Substitute for the greatest height, or factor to find when it is 0.",
     objectives: [
       "Find the time and value of the greatest height from an expanded quadratic.",
       "Find the landing time from a zero of the height function.",
@@ -531,7 +531,7 @@ const entries: Entry[] = [
     id: "sat-entry-radian-conversion",
     title: "Enter a degree-radian conversion",
     summary:
-      "A half turn is 180 degrees and $\\pi$ radians. Convert by multiplying by $\\frac{\\pi}{180}$ or by $\\frac{180}{\\pi}$, then enter the number.",
+      "A half turn is 180 degrees and $\\pi$ radians. Multiply by $\\frac{\\pi}{180}$ or $\\frac{180}{\\pi}$, then enter the number.",
     objectives: [
       "Write a degree measure as $k\\pi$ radians and enter $k$.",
       "Convert a radian measure to degrees, including negative angles and angles beyond a full turn.",
