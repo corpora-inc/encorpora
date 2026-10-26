@@ -1221,3 +1221,7 @@ export function generateSatNumericEntryProblem(
 ): GeneratedProblem {
   return satNumericEntryCase(id, seed).problem;
 }
+
+/** True when a template's problems carry a non-exact entry policy. */
+export const hasEntryPolicy = (templateId: string): boolean =>
+  defs.some((d) => d.template.id === templateId);
