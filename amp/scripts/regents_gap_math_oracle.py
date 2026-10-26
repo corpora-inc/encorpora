@@ -505,7 +505,7 @@ def numeric_answer(public, problem=None):
             kg, dens, s, h = int(m[1]), Fraction(m[2]), int(m[3]), int(m[4])
             volume = Fraction(kg * 1000) / dens  # cm^3 of clay
             return Fraction(math.floor(volume / Fraction(s * s * h, 3)))
-        m = re.fullmatch(r'A log is shaped like a cylinder with a diameter of (\d+) inches and a height of (\d+) feet\. The wood weighs (\d+) pounds per cubic foot\. Use a calculator and the π key\. To the nearest pound, how much does the log weigh\?', prompt)
+        m = re.fullmatch(r'A log is shaped like a cylinder with a diameter of (\d+) inches and a height of (\d+) feet\. The wood weighs (\d+) pounds per cubic foot\. Use a calculator and the \\pi key\. To the nearest pound, how much does the log weigh\?', prompt)
         require(m is not None, 'Unrecognized density prompt')
         d, h, w = map(int, m.groups())
         value = math.pi * (d / 24) ** 2 * h * w
@@ -629,7 +629,7 @@ def self_test():
         mk('rg-triangle-third-side-test', 'Two sides of a triangle have lengths 7 and 16. Which length could not be the third side?', ['20', '22', '23', '18'], 'option-c'),
         mk('rg-solid-density', 'A rectangular tank is 50 centimeters long, 50 centimeters wide and 45 centimeters high. Water fills the tank to a level 6 centimeters below the top. How many liters of water are in the tank?', None, 97.5),
         mk('rg-solid-density', 'A sculptor has 40 kilograms of clay. The clay has a density of 1.8 grams per cubic centimeter. Each pyramid has a square base with side 6 centimeters and a height of 9 centimeters. How many whole pyramids can be made?', None, 205),
-        mk('rg-solid-density', 'A log is shaped like a cylinder with a diameter of 26 inches and a height of 6 feet. The wood weighs 49 pounds per cubic foot. Use a calculator and the π key. To the nearest pound, how much does the log weigh?', None, 1084),
+        mk('rg-solid-density', 'A log is shaped like a cylinder with a diameter of 26 inches and a height of 6 feet. The wood weighs 49 pounds per cubic foot. Use a calculator and the $\\pi$ key. To the nearest pound, how much does the log weigh?', None, 1084),
         mk('rg-parallelogram-perpendicular', 'In parallelogram ABCD, $m\\angle ABC=62^\\circ$. Point E is on side BC with $\\overline{AE}\\perp\\overline{BC}$. What is $m\\angle BAE$ in degrees?', None, 28),
         mk('rg-parallelogram-perpendicular', 'In parallelogram ABCD, $m\\angle ABC=107^\\circ$. Point E is on line BC so that B is between E and C, and $\\overline{AE}\\perp\\overline{BC}$. What is $m\\angle BAE$ in degrees?', None, 17),
         mk('rg-isosceles-right-decimal', 'Each leg of an isosceles right triangle is 9 centimeters long. To the nearest tenth of a centimeter, how long is the hypotenuse?', None, 12.7),

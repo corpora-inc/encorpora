@@ -21,7 +21,7 @@ export const regentsGapTemplates: readonly TemplateMetadata[] = [
     difficultyOffset: 0.35,
     requiredResponseCapability: "single-choice-v1",
     description:
-      "Choose the percent increase or decrease per period shown by the base of an exponential model, including a base whose exponent is t divided by a period, or the model for a stated half-life.",
+      "Choose the percent increase or decrease per period shown by the base of an exponential model, including an exponent that divides the time by a period, or the model for a stated half-life.",
   },
   {
     id: "rg-factor-completely",
@@ -330,7 +330,7 @@ function exponentialBase(r: Random): Built {
     const choices = choicesFrom(r, correct, [
       {
         label: `It ${dir} by ${p}% each ${unit[0]}.`,
-        feedback: `The exponent is t divided by ${k}, so the multiplier is applied once per ${k} ${unit[1]}, not once per ${unit[0]}.`,
+        feedback: `The exponent is ${tex("t")} divided by ${k}, so the multiplier is applied once per ${k} ${unit[1]}, not once per ${unit[0]}.`,
       },
       {
         label: `It ${dir} by ${p * k}% ${period(k)}.`,
@@ -354,7 +354,7 @@ function exponentialBase(r: Random): Built {
       variant,
       prompt: `A quantity is modeled by ${tex(`Q(t)=${P0}(${base})^{t/${k}}`)}, where ${tex("t")} is time in ${unit[1]}. Which statement is true?`,
       answer: "",
-      hint: `Read the percent from the base ${base}. Then use the exponent: t divided by ${k} counts how many groups of ${k} ${unit[1]} have passed, and the multiplier is applied once per group.`,
+      hint: `Read the percent from the base ${base}. Then use the exponent: ${tex(`t/${k}`)} counts how many groups of ${k} ${unit[1]} have passed, and the multiplier is applied once per group.`,
       explanation: [
         `The base ${base} is ${growth ? "1 + " : "1 − "}${p / 100}, so each time it is applied the quantity changes by ${p}%.`,
         `The exponent ${tex(`t/${k}`)} increases by 1 every ${k} ${unit[1]}, so the multiplier is applied once ${period(k)}.`,
@@ -371,7 +371,7 @@ function exponentialBase(r: Random): Built {
   const choices = choicesFrom(r, correct, [
     {
       label: tex(model(`${h}t`)),
-      feedback: `That halves the amount ${h} times every hour. The amount should halve once every ${h} hours, so t is divided by ${h}.`,
+      feedback: `That halves the amount ${h} times every hour. The amount should halve once every ${h} hours, so ${tex("t")} is divided by ${h}.`,
     },
     {
       label: tex(model("t")),
@@ -385,14 +385,14 @@ function exponentialBase(r: Random): Built {
     {
       label: tex(model(`t-${h}`)),
       feedback:
-        "Subtracting from the exponent shifts the curve. The number of half-lives is t divided by the half-life.",
+        `Subtracting from the exponent shifts the curve. The number of half-lives is ${tex("t")} divided by the half-life of ${h} hours.`,
     },
   ]);
   return {
     variant,
     prompt: `A medicine has a half-life of ${h} hours: the amount in the body is cut in half every ${h} hours. A patient takes ${D} mg. Which function models the amount ${tex("A(t)")} in mg remaining ${tex("t")} hours after the dose?`,
     answer: "",
-    hint: `Over one half-life the amount is multiplied by 0.5 once. Ask how many half-lives of ${h} hours have passed after t hours.`,
+    hint: `Over one half-life the amount is multiplied by 0.5 once. With a half-life of ${h} hours, ask how many half-lives have passed after ${tex("t")} hours.`,
     explanation: [
       `In ${h} hours the amount is multiplied by 0.5 once.`,
       `After ${tex("t")} hours, ${tex(`t/${h}`)} half-lives have passed, so the factor 0.5 is applied ${tex(`t/${h}`)} times.`,
@@ -421,7 +421,7 @@ function factorCompletely(r: Random): Built {
       variant,
       prompt: `Which expression is ${tex(expr)} written in factored form?`,
       answer: "",
-      hint: `Both terms are perfect squares. Ask what ${tex(`${m * m}x^{2}`)} is the square of and what the number is the square of, then use ${tex("a^{2}-b^{2}=(a-b)(a+b)")}.`,
+      hint: `In ${tex(expr)} both terms are perfect squares. Ask what ${tex(`${m * m}x^{2}`)} is the square of and what the number is the square of, then use ${tex("a^{2}-b^{2}=(a-b)(a+b)")}.`,
       explanation: [
         `${tex(`${m * m}x^{2}=(${m}x)^{2}`)} and ${tex(`${n * n}=${n}^{2}`)}, so the expression is a difference of squares.`,
         `Apply ${tex("a^{2}-b^{2}=(a-b)(a+b)")} with ${tex("a")} = ${tex(`${m}x`)} and ${tex("b")} = ${n}.`,
@@ -458,7 +458,7 @@ function factorCompletely(r: Random): Built {
       variant,
       prompt: `Which expression is ${tex(expr)} factored completely?`,
       answer: "",
-      hint: `Look for a factor common to both terms and pull it out. Then check whether what remains can be factored again.`,
+      hint: `In ${tex(expr)}, look for a factor common to both terms and pull it out. Then check whether what remains can be factored again.`,
       explanation: [
         `Both terms have the common factor ${k}: ${tex(expr)} = ${tex(`${k}(x^{2}-${n * n})`)}.`,
         `${tex(`x^{2}-${n * n}`)} is a difference of squares: ${tex(`(x-${n})(x+${n})`)}.`,
@@ -498,7 +498,7 @@ function factorCompletely(r: Random): Built {
     variant,
     prompt: `Which expression is ${tex(expr)} factored completely?`,
     answer: "",
-    hint: `Find the greatest common factor of both terms, including the variables, and pull it out first. Then see whether the binomial that remains is a difference of squares.`,
+    hint: `In ${tex(expr)}, find the greatest common factor of both terms, including the variables, and pull it out first. Then see whether the binomial that remains is a difference of squares.`,
     explanation: [
       `The greatest common factor is ${tex(`${k}x`)}: ${tex(expr)} = ${tex(`${k}x(${co(m * m)}x^{2}-${co(n * n)}y^{2})`)}.`,
       `${tex(`${co(m * m)}x^{2}-${co(n * n)}y^{2}`)} = ${tex(`(${mx})^{2}-(${ny})^{2}`)}, a difference of squares, so it is ${tex(`(${mx}-${ny})(${mx}+${ny})`)}.`,
@@ -586,7 +586,7 @@ function polynomialZeros(r: Random): Built {
           [-q, 1],
         ]),
         feedback:
-          "The factor x by itself is also set equal to 0, which gives the zero 0.",
+          `The factor ${tex("x")} by itself is also set equal to 0, which gives the zero 0.`,
       },
       {
         label: zeroSet([
@@ -602,7 +602,7 @@ function polynomialZeros(r: Random): Built {
           [-a, p],
           [-q, 1],
         ]),
-        feedback: `Solving ${tex(`${a}x${sg(p)}=0`)} gives x = ${tex(ratTex([-p, a]))}: the constant goes over the coefficient, not the coefficient over the constant.`,
+        feedback: `Solving ${tex(`${a}x${sg(p)}=0`)} gives ${tex(`x=${ratTex([-p, a])}`)}: the constant goes over the coefficient, not the coefficient over the constant.`,
       },
     ]);
     const fx = factors.join("");
@@ -645,7 +645,7 @@ function polynomialZeros(r: Random): Built {
   );
   const reason = (c: number) =>
     c === a
-      ? "The factor x + a equals 0 at the opposite of a, not at a."
+      ? `The factor ${tex(`x${sg(a)}`)} equals 0 at ${tex(String(-a))}, the opposite of ${a}, not at ${a}.`
       : "Substitute the value: the cubic does not equal 0 there.";
   const choices = choicesFrom(
     r,
@@ -662,7 +662,7 @@ function polynomialZeros(r: Random): Built {
     variant,
     prompt: `Which value is a zero of ${tex(`f(x)=${poly}`)}?`,
     answer: "",
-    hint: `Group the first two terms and the last two terms, and factor each pair. The two pairs should leave the same binomial factor.`,
+    hint: `In ${tex(`f(x)=${poly}`)}, group the first two terms ${tex(`x^{3}${sg(a)}x^{2}`.replace('+1x','+x'))} and the last two terms ${tex(polyTex([{ c: -n * n, e: 1 }, { c: -a * n * n, e: 0 }]))}, and factor each pair. The two pairs should leave the same binomial factor.`,
     explanation: [
       `Group: ${tex(`x^{2}(x${sg(a)})-${n * n}(x${sg(a)})`)}.`,
       `Factor out the common binomial: ${tex(`(x${sg(a)})(x^{2}-${n * n})`)} = ${tex(`(x${sg(a)})(x-${n})(x+${n})`)}.`,
@@ -729,7 +729,7 @@ function exponentMonomialPower(r: Random): Built {
       hint: `The outer power ${n} applies to every factor inside the parentheses: the coefficient ${c} and each variable. Raise the coefficient to the power and multiply each exponent by ${n}.`,
       explanation: [
         `The power ${n} applies to every factor: the coefficient ${c} is multiplied by itself ${n} times, and each exponent is multiplied by ${n}.`,
-        `The coefficient becomes ${c ** n}, the exponent of x becomes ${a} × ${n} = ${a * n}, and the exponent of y becomes ${b} × ${n} = ${b * n}.`,
+        `The coefficient becomes ${c ** n}, the exponent of ${tex("x")} becomes ${a} × ${n} = ${a * n}, and the exponent of ${tex("y")} becomes ${b} × ${n} = ${b * n}.`,
         `${tex(base)} = ${monoTex(correct)}.`,
       ],
       choices,
@@ -751,7 +751,7 @@ function exponentMonomialPower(r: Random): Built {
     },
     {
       label: monoTex({ c: c ** n * d, a: (a + b) * n, b: e }),
-      feedback: `Only the first factor is raised to the power ${n}. The exponent of x in the second factor is not multiplied.`,
+      feedback: `Only the first factor is raised to the power ${n}. The exponent of ${tex("x")} in the second factor is not multiplied.`,
     },
     {
       label: monoTex({ c: c ** n * d, a: a * n * b, b: e }),
@@ -767,10 +767,10 @@ function exponentMonomialPower(r: Random): Built {
     variant,
     prompt: `Which expression is equivalent to ${tex(`${first}(${second})`)}?`,
     answer: "",
-    hint: `Simplify the power first, raising the coefficient and multiplying the exponent. Then multiply the two monomials: multiply the coefficients and add the exponents of x.`,
+    hint: `In ${tex(`${first}(${second})`)}, simplify the power ${tex(first)} first, raising the coefficient and multiplying the exponent. Then multiply the two monomials: multiply the coefficients and add the exponents of ${tex("x")}.`,
     explanation: [
       `${tex(first)} = ${monoTex({ c: c ** n, a: a * n, b: 0 })}.`,
-      `Multiply by ${tex(second)}: the coefficients give ${c ** n * d}, the exponents of x add to ${a * n + b}, and y keeps the exponent ${e}.`,
+      `Multiply by ${tex(second)}: the coefficients give ${c ** n * d}, the exponents of ${tex("x")} add to ${a * n + b}, and ${tex("y")} keeps the exponent ${e}.`,
       `The product is ${monoTex(correct)}.`,
     ],
     choices,
@@ -837,7 +837,7 @@ function rationalExponentForms(r: Random): Built {
       variant,
       prompt,
       answer: "",
-      hint: `Write the radical as a power with a fractional exponent. Then multiply the coefficients and add the exponents of x, using a common denominator.`,
+      hint: `Write the radical ${tex(radical)} as a power with a fractional exponent. Then multiply the coefficients ${c1} and ${c2} and add the exponents of ${tex("x")}, using a common denominator.`,
       explanation: [
         `${tex(radical)} = ${tex(`x^{${fracTex(a1, b1)}}`)}, so the product is ${tex(`${c1 * c2}x^{${fracTex(a1, b1)}}\\cdot x^{${fracTex(a2, b2)}}`)}.`,
         `Multiply the coefficients: ${c1} times ${c2} is ${c1 * c2}. Add the exponents: ${tex(`${fracTex(a1, b1)}+${fracTex(a2, b2)}=${fracTex(sumN, sumD)}`)}.`,
@@ -882,7 +882,7 @@ function rationalExponentForms(r: Random): Built {
       variant,
       prompt: `Which expression is ${given}, for ${tex("x>0")} and ${tex("y>0")}, written in radical form?`,
       answer: "",
-      hint: `A negative exponent means the reciprocal of the base. In a fractional exponent the denominator is the index of the root and the numerator is the power.`,
+      hint: `A negative exponent means the reciprocal of the base. In the fractional exponent ${tex(`\\frac{${p}}{${q}}`)} the denominator ${q} is the index of the root and the numerator ${p} is the power.`,
       explanation: [
         `A negative exponent takes the reciprocal: ${tex(`\\left(\\frac{x}{y}\\right)^{-\\frac{${p}}{${q}}}=\\left(\\frac{y}{x}\\right)^{\\frac{${p}}{${q}}}`)}.`,
         `In ${tex(`z^{\\frac{${p}}{${q}}}`)} the denominator ${q} is the index of the root and the numerator ${p} is the power.`,
@@ -1038,7 +1038,7 @@ function polynomialBuild(r: Random): Built {
       variant,
       prompt: `Which polynomial is a ${termWords[t]} of degree ${d} with a leading coefficient of ${tex(String(lead))} and a constant term of ${tex(String(konst))}?`,
       answer: "",
-      hint: `Check one property at a time. The degree is the highest exponent, the leading coefficient multiplies that term, the constant term has no variable, and the number of terms is how many pieces are added.`,
+      hint: `Check one property at a time. Degree ${d} means the highest exponent is ${d}, the leading coefficient ${lead} multiplies that term, the constant term ${konst} has no variable, and a ${termWords[t]} has ${t} terms added.`,
       explanation: [
         `Degree ${d} means the highest exponent is ${d}, and the leading coefficient ${lead} multiplies ${tex(`x^{${d}}`)}.`,
         `The constant term is ${konst}. A ${termWords[t]} has ${t} terms, so ${t - 2} more ${t - 2 === 1 ? "term sits" : "terms sit"} between them${t === 2 ? "" : ", each with an exponent below " + d}.`,
@@ -1065,7 +1065,7 @@ function polynomialBuild(r: Random): Built {
     variant,
     prompt: `The polynomial ${tex(`P(x)=${written}`)} is written out of order. Which statement is true?`,
     answer: "",
-    hint: `Rearrange the terms from the highest exponent to the lowest. The first term then shows the degree and leading coefficient, and the term without a variable is the constant term.`,
+    hint: `Rewrite ${tex(`P(x)=${written}`)} with the terms from the highest exponent to the lowest. The first term then shows the degree and leading coefficient, and the term without a variable is the constant term.`,
     explanation: [
       `In standard form the terms run from the highest exponent down: ${tex(`P(x)=${polyTex(poly)}`)}.`,
       `The highest exponent is ${d}, so the degree is ${d} and the leading coefficient is ${lead}.`,
@@ -1126,9 +1126,9 @@ function solidDensity(r: Random): Built {
       const radiusText = fracTex(d, 24);
       return {
         variant,
-        prompt: `A log is shaped like a cylinder with a diameter of ${d} inches and a height of ${h} feet. The wood weighs ${rho} pounds per cubic foot. Use a calculator and the π key. To the nearest pound, how much does the log weigh?`,
+        prompt: `A log is shaped like a cylinder with a diameter of ${d} inches and a height of ${h} feet. The wood weighs ${rho} pounds per cubic foot. Use a calculator and the ${tex("\\pi")} key. To the nearest pound, how much does the log weigh?`,
         answer,
-        hint: `The density is per cubic foot, so find the volume in cubic feet. Halve the diameter to get the radius, and change inches to feet before using ${tex("V=\\pi r^{2}h")}.`,
+        hint: `The density of ${rho} pounds is per cubic foot, so find the volume in cubic feet. Halve the ${d}-inch diameter to get the radius, and change inches to feet before using ${tex("V=\\pi r^{2}h")}.`,
         explanation: [
           `The radius is ${d} ÷ 2 = ${d / 2} inches, which is ${tex(radiusText)} foot.`,
           `The volume is ${tex(`V=\\pi r^{2}h`)} = ${tex(`\\pi\\left(${radiusText}\\right)^{2}(${h})`)} ≈ ${trimNum(volume)} cubic feet.`,
@@ -1153,7 +1153,7 @@ function solidDensity(r: Random): Built {
         variant,
         prompt: `A sculptor has ${mass} kilograms of clay. The clay has a density of ${rho} grams per cubic centimeter. Each pyramid has a square base with side ${s} centimeters and a height of ${h} centimeters. How many whole pyramids can be made?`,
         answer,
-        hint: `Find the mass of one pyramid in grams: volume times density. Change the kilograms of clay to grams, then ask how many pyramid masses fit, and decide what to do with a leftover part.`,
+        hint: `Find the mass of one pyramid in grams: its volume, with base side ${s} centimeters and height ${h} centimeters, times the density of ${rho} grams per cubic centimeter. Change the ${mass} kilograms of clay to grams, then ask how many pyramid masses fit, and decide what to do with a leftover part.`,
         explanation: [
           `One pyramid has volume ${tex(`\\frac{1}{3}(${s})^{2}(${h})`)} = ${volume} cubic centimeters and mass ${volume} × ${rho} = ${trimNum(volume * rho)} grams.`,
           `The clay is ${mass} kilograms = ${mass * 1000} grams, and ${mass * 1000} ÷ ${trimNum(volume * rho)} ≈ ${trimNum(exact)}.`,
@@ -1173,7 +1173,7 @@ function solidDensity(r: Random): Built {
     variant,
     prompt: `A rectangular tank is ${len} centimeters long, ${wid} centimeters wide and ${high} centimeters high. Water fills the tank to a level ${gap} centimeters below the top. How many liters of water are in the tank?`,
     answer,
-    hint: `The water forms a rectangular prism with the length and width of the tank, so first find the depth of the water. One liter is 1000 cubic centimeters.`,
+    hint: `The water forms a rectangular prism with the ${len} by ${wid} centimeter base of the tank, so first find the depth of the water below the ${high}-centimeter top edge. One liter is 1000 cubic centimeters.`,
     explanation: [
       `The water is ${high} − ${gap} = ${depth} centimeters deep.`,
       `Its volume is ${len} × ${wid} × ${depth} = ${cm3} cubic centimeters.`,
@@ -1246,11 +1246,11 @@ function quadrilateralChoice(r: Random): Built {
     const shape = rhombus ? "rhombus" : "rectangle";
     return {
       variant,
-      prompt: `Quadrilateral ${name} is a parallelogram. Which additional fact is enough to prove that ${name} is a ${shape}?`,
+      prompt: `Quadrilateral ${tex(name)} is a parallelogram. Which additional fact is enough to prove that ${tex(name)} is a ${shape}?`,
       answer: "",
       hint: rhombus
-        ? "A rhombus is a parallelogram with all four sides equal. Test each fact: does it make the sides equal, or is it already true of every parallelogram?"
-        : "A rectangle is a parallelogram with four right angles. Test each fact: does it force a right angle, or is it already true of every parallelogram?",
+        ? `Parallelogram ${tex(name)} is a rhombus when all four sides are equal. Test each fact: does it make the sides equal, or is it already true of every parallelogram?`
+        : `Parallelogram ${tex(name)} is a rectangle when it has four right angles. Test each fact: does it force a right angle, or is it already true of every parallelogram?`,
       explanation: [
         rhombus
           ? "Opposite sides, opposite angles and the bisecting diagonals belong to every parallelogram, so they cannot prove a rhombus."
@@ -1281,12 +1281,12 @@ function quadrilateralChoice(r: Random): Built {
       {
         label: mk(askA ? D : A),
         feedback:
-          "That is the other angle. Solve for x, then substitute into the angle that was asked for.",
+          `That is the other angle. Solve for ${tex("x")}, then substitute into the angle that was asked for.`,
       },
       {
         label: mk(x),
         feedback:
-          "That is the value of x. The question asks for the angle measure.",
+          `That is the value of ${tex("x")}. The question asks for the angle measure.`,
       },
     ];
     if (Number.isInteger(equalX) && equalX > 0)
@@ -1318,13 +1318,13 @@ function quadrilateralChoice(r: Random): Built {
     const exprD = `${co(c)}x${sg(dd)}`;
     return {
       variant,
-      prompt: `In trapezoid ABCD, ${tex("\\overline{AB}\\parallel\\overline{DC}")}. The angles ${tex("\\angle A")} and ${tex("\\angle D")} lie on leg ${tex("\\overline{AD}")}, with ${tex(`m\\angle A=(${exprA})^\\circ`)} and ${tex(`m\\angle D=(${exprD})^\\circ`)}. What is ${tex(`m\\angle ${askA ? "A" : "D"}`)}?`,
+      prompt: `In trapezoid ${tex("ABCD")}, ${tex("\\overline{AB}\\parallel\\overline{DC}")}. The angles ${tex("\\angle A")} and ${tex("\\angle D")} lie on leg ${tex("\\overline{AD}")}, with ${tex(`m\\angle A=(${exprA})^\\circ`)} and ${tex(`m\\angle D=(${exprD})^\\circ`)}. What is ${tex(`m\\angle ${askA ? "A" : "D"}`)}?`,
       answer: "",
-      hint: `${tex("\\overline{AB}")} and ${tex("\\overline{DC}")} are parallel and ${tex("\\overline{AD}")} crosses both, so the angles ${tex("\\angle A")} and ${tex("\\angle D")} are on the same side of that transversal. Write an equation from how such angles are related, solve for x, then evaluate.`,
+      hint: `${tex("\\overline{AB}")} and ${tex("\\overline{DC}")} are parallel and ${tex("\\overline{AD}")} crosses both, so the angles ${tex(`(${exprA})^\\circ`)} and ${tex(`(${exprD})^\\circ`)} are on the same side of that transversal. Write an equation from how such angles are related, solve for ${tex("x")}, then evaluate.`,
       explanation: [
         `Angles on the same side of a transversal between parallel lines are supplementary: ${tex(`(${exprA})+(${exprD})=180`)}.`,
         `Combine: ${tex(`${co(a + c)}x${sg(b + dd)}=180`)}, so ${tex(`${co(a + c)}x=${180 - b - dd}`)} and ${tex(`x=${x}`)}.`,
-        `${tex(`m\\angle ${askA ? "A" : "D"}=${askA ? exprA : exprD}`)} with x = ${x} is ${correct}.`,
+        `${tex(`m\\angle ${askA ? "A" : "D"}=${askA ? exprA : exprD}`)} with ${tex(`x=${x}`)} is ${correct}.`,
       ],
       choices,
     };
@@ -1341,12 +1341,12 @@ function parallelogramPerpendicular(r: Random): Built {
     const ans = 90 - adjacent;
     return {
       variant,
-      prompt: `In parallelogram ABCD, ${tex(`m\\angle ABC=${B}^\\circ`)}. Point E is on line BC so that B is between E and C, and ${tex("\\overline{AE}\\perp\\overline{BC}")}. What is ${tex("m\\angle BAE")} in degrees?`,
+      prompt: `In parallelogram ${tex("ABCD")}, ${tex(`m\\angle ABC=${B}^\\circ`)}. Point ${tex("E")} is on line ${tex("BC")} so that ${tex("B")} is between ${tex("E")} and ${tex("C")}, and ${tex("\\overline{AE}\\perp\\overline{BC}")}. What is ${tex("m\\angle BAE")} in degrees?`,
       answer: String(ans),
-      hint: `Angles ${tex("\\angle ABC")} and ${tex("\\angle ABE")} are on a straight line E, B, C. Find ${tex("\\angle ABE")}, then use the right angle at E in triangle ABE.`,
+      hint: `With ${tex(`m\\angle ABC=${B}^\\circ`)}, the angles ${tex("\\angle ABC")} and ${tex("\\angle ABE")} are on the straight line ${tex("EBC")}. Find ${tex("\\angle ABE")}, then use the right angle at ${tex("E")} in triangle ${tex("ABE")}.`,
       explanation: [
-        `E, B and C are on one line, so ${tex("\\angle ABE")} and ${tex("\\angle ABC")} are supplementary: ${tex(`m\\angle ABE=180-${B}=${adjacent}`)}.`,
-        `Triangle ABE has a right angle at E, so its other two angles add to 90.`,
+        `${tex("E")}, ${tex("B")} and ${tex("C")} are on one line, so ${tex("\\angle ABE")} and ${tex("\\angle ABC")} are supplementary: ${tex(`m\\angle ABE=180-${B}=${adjacent}`)}.`,
+        `Triangle ${tex("ABE")} has a right angle at ${tex("E")}, so its other two angles add to 90.`,
         `${tex(`m\\angle BAE=90-${adjacent}=${ans}`)}.`,
       ],
     };
@@ -1356,12 +1356,12 @@ function parallelogramPerpendicular(r: Random): Built {
     const ans = 90 - B;
     return {
       variant,
-      prompt: `In parallelogram ABCD, ${tex(`m\\angle ABC=${B}^\\circ`)}. Point E is on side BC with ${tex("\\overline{AE}\\perp\\overline{BC}")}. What is ${tex("m\\angle BAE")} in degrees?`,
+      prompt: `In parallelogram ${tex("ABCD")}, ${tex(`m\\angle ABC=${B}^\\circ`)}. Point ${tex("E")} is on side ${tex("BC")} with ${tex("\\overline{AE}\\perp\\overline{BC}")}. What is ${tex("m\\angle BAE")} in degrees?`,
       answer: String(ans),
-      hint: `Look at triangle ABE. It has a right angle at E and an angle at B. Remember that the angles of a triangle add to 180.`,
+      hint: `With ${tex(`m\\angle ABC=${B}^\\circ`)}, look at triangle ${tex("ABE")}. It has a right angle at ${tex("E")} and an angle at ${tex("B")}. Remember that the angles of a triangle add to 180.`,
       explanation: [
-        `E is on side BC, so ${tex("\\angle ABE")} is the same angle as ${tex("\\angle ABC")}: ${B} degrees.`,
-        `Triangle ABE has a right angle at E, so its other two angles add to 90.`,
+        `${tex("E")} is on side ${tex("BC")}, so ${tex("\\angle ABE")} is the same angle as ${tex("\\angle ABC")}: ${B} degrees.`,
+        `Triangle ${tex("ABE")} has a right angle at ${tex("E")}, so its other two angles add to 90.`,
         `${tex(`m\\angle BAE=90-${B}=${ans}`)}.`,
       ],
     };
@@ -1371,12 +1371,12 @@ function parallelogramPerpendicular(r: Random): Built {
   const ans = 90 - adjacent;
   return {
     variant,
-    prompt: `In parallelogram ABCD, ${tex(`m\\angle ADC=${D}^\\circ`)}. Point E is on line DC so that D is between E and C, and ${tex("\\overline{AE}\\perp\\overline{DC}")}. What is ${tex("m\\angle DAE")} in degrees?`,
+    prompt: `In parallelogram ${tex("ABCD")}, ${tex(`m\\angle ADC=${D}^\\circ`)}. Point ${tex("E")} is on line ${tex("DC")} so that ${tex("D")} is between ${tex("E")} and ${tex("C")}, and ${tex("\\overline{AE}\\perp\\overline{DC}")}. What is ${tex("m\\angle DAE")} in degrees?`,
     answer: String(ans),
-    hint: `Angles ${tex("\\angle ADC")} and ${tex("\\angle ADE")} are on a straight line E, D, C. Find ${tex("\\angle ADE")}, then use the right angle at E in triangle ADE.`,
+    hint: `With ${tex(`m\\angle ADC=${D}^\\circ`)}, the angles ${tex("\\angle ADC")} and ${tex("\\angle ADE")} are on the straight line ${tex("EDC")}. Find ${tex("\\angle ADE")}, then use the right angle at ${tex("E")} in triangle ${tex("ADE")}.`,
     explanation: [
-      `E, D and C are on one line, so ${tex("\\angle ADE")} and ${tex("\\angle ADC")} are supplementary: ${tex(`m\\angle ADE=180-${D}=${adjacent}`)}.`,
-      `Triangle ADE has a right angle at E, so its other two angles add to 90.`,
+      `${tex("E")}, ${tex("D")} and ${tex("C")} are on one line, so ${tex("\\angle ADE")} and ${tex("\\angle ADC")} are supplementary: ${tex(`m\\angle ADE=180-${D}=${adjacent}`)}.`,
+      `Triangle ${tex("ADE")} has a right angle at ${tex("E")}, so its other two angles add to 90.`,
       `${tex(`m\\angle DAE=90-${adjacent}=${ans}`)}.`,
     ],
   };
@@ -1399,39 +1399,39 @@ function segmentProperty(r: Random): Built {
     const correct = tex("PA=PB");
     return {
       variant,
-      prompt: `In triangle ABC, line ${tex("\\ell")} is the perpendicular bisector of ${tex("\\overline{AB}")}. Line ${tex("\\ell")} meets ${tex("\\overline{AC}")} at point P. Which statement must be true?`,
+      prompt: `In triangle ${tex("ABC")}, line ${tex("\\ell")} is the perpendicular bisector of ${tex("\\overline{AB}")}. Line ${tex("\\ell")} meets ${tex("\\overline{AC}")} at point ${tex("P")}. Which statement must be true?`,
       answer: "",
       hint: `A perpendicular bisector cuts a segment into two equal parts at a right angle. Think about how far any point on it is from the two endpoints of that segment.`,
       explanation: [
         `Every point on the perpendicular bisector of a segment is the same distance from the two endpoints of the segment.`,
-        `P is on the perpendicular bisector of ${tex("\\overline{AB}")}, so it is equally far from A and from B.`,
+        `${tex("P")} is on the perpendicular bisector of ${tex("\\overline{AB}")}, so it is equally far from ${tex("A")} and from ${tex("B")}.`,
         `${correct}.`,
       ],
       choices: choicesFrom(r, correct, [
         {
           label: tex("PA=PC"),
           feedback:
-            "C is not an endpoint of the segment that was bisected. Compare the distances to A and B.",
+            `${tex("C")} is not an endpoint of the segment that was bisected. Compare the distances to ${tex("A")} and ${tex("B")}.`,
         },
         {
           label: tex("PB=PC"),
           feedback:
-            "Nothing makes P equally far from B and C. The bisected segment is AB.",
+            `Nothing makes ${tex("P")} equally far from ${tex("B")} and ${tex("C")}. The bisected segment is ${tex("\\overline{AB}")}.`,
         },
         {
           label: tex("\\angle APB=90^\\circ"),
           feedback:
-            "The right angle is where the bisector meets AB, not the angle at P.",
+            `The right angle is where the bisector meets ${tex("\\overline{AB}")}, not the angle at ${tex("P")}.`,
         },
         {
           label: tex("AB=2PA"),
           feedback:
-            "P is not on AB, so PA is not half of AB. Only the midpoint of AB is half of AB from A.",
+            `${tex("P")} is not on ${tex("\\overline{AB}")}, so ${tex("PA")} is not half of ${tex("AB")}. Only the midpoint of ${tex("\\overline{AB}")} is half of ${tex("AB")} from ${tex("A")}.`,
         },
         {
           label: tex("P\\text{ is the midpoint of }\\overline{AC}"),
           feedback:
-            "P is where the bisector of AB meets AC. That point need not be the midpoint of AC.",
+            `${tex("P")} is where the bisector of ${tex("\\overline{AB}")} meets ${tex("\\overline{AC}")}. That point need not be the midpoint of ${tex("\\overline{AC}")}.`,
         },
       ]),
     };
@@ -1450,17 +1450,17 @@ function segmentProperty(r: Random): Built {
         {
           label: String(x),
           feedback:
-            "That is the value of x. The question asks for the length PA.",
+            `That is the value of ${tex("x")}. The question asks for the length ${tex("PA")}.`,
         },
         {
           label: String(2 * pa),
           feedback:
-            "PA and PB are equal; their sum is the whole of both, not PA.",
+            `${tex("PA")} and ${tex("PB")} are equal; their sum is both lengths together, not ${tex("PA")}.`,
         },
         {
           label: String(pa + x),
           feedback:
-            "Substitute x into the expression for PA; do not add x to the answer.",
+            `Substitute ${tex("x")} into the expression for ${tex("PA")}; do not add ${tex("x")} to the answer.`,
         },
         {
           label: String(pa - b),
@@ -1469,11 +1469,11 @@ function segmentProperty(r: Random): Built {
       ]);
       return {
         variant,
-        prompt: `Point P is on the perpendicular bisector of ${tex("\\overline{AB}")}. ${tex(`PA=${a}x${sg(b)}`)} and ${tex(`PB=${co(c)}x${sg(d)}`)}. What is the length PA?`,
+        prompt: `Point ${tex("P")} is on the perpendicular bisector of ${tex("\\overline{AB}")}. ${tex(`PA=${a}x${sg(b)}`)} and ${tex(`PB=${co(c)}x${sg(d)}`)}. What is the length ${tex("PA")}?`,
         answer: "",
-        hint: `A point on the perpendicular bisector is the same distance from both endpoints. Write an equation that says PA and PB are equal, solve for x, then find PA.`,
+        hint: `A point on the perpendicular bisector is the same distance from both endpoints. Write an equation that says ${tex(`${a}x${sg(b)}`)} and ${tex(`${co(c)}x${sg(d)}`)} are equal, solve for ${tex("x")}, then find ${tex("PA")}.`,
         explanation: [
-          `P is on the perpendicular bisector of ${tex("\\overline{AB}")}, so PA = PB: ${tex(`${a}x${sg(b)}=${co(c)}x${sg(d)}`)}.`,
+          `${tex("P")} is on the perpendicular bisector of ${tex("\\overline{AB}")}, so ${tex("PA=PB")}: ${tex(`${a}x${sg(b)}=${co(c)}x${sg(d)}`)}.`,
           `Subtract ${tex(`${co(c)}x`)} and the constant: ${tex(`${co(a - c)}x=${d - b}`)}, so ${tex(`x=${x}`)}.`,
           `${tex(`PA=${mul(a, x)}${sg(b)}=${pa}`)}.`,
         ],
@@ -1493,7 +1493,7 @@ function segmentProperty(r: Random): Built {
     );
     return {
       variant,
-      prompt: `In triangle ${A}${B}${C}, ${D} is the midpoint of ${tex(`\\overline{${A}${B}}`)} and ${E} is the midpoint of ${tex(`\\overline{${A}${C}}`)}. Which statement must be true?`,
+      prompt: `In triangle ${tex(`${A}${B}${C}`)}, ${tex(D)} is the midpoint of ${tex(`\\overline{${A}${B}}`)} and ${tex(E)} is the midpoint of ${tex(`\\overline{${A}${C}}`)}. Which statement must be true?`,
       answer: "",
       hint: `${tex(`\\overline{${D}${E}}`)} joins the midpoints of two sides of the triangle. Compare its direction and its length with the third side, ${tex(`\\overline{${B}${C}}`)}.`,
       explanation: [
@@ -1527,7 +1527,7 @@ function segmentProperty(r: Random): Built {
           label: tex(
             `\\overline{${D}${E}}\\parallel\\overline{${A}${B}}\\text{ and }${D}${E}=\\frac{1}{2}${A}${B}`,
           ),
-          feedback: `${D}${E} meets ${A}${B} at ${D}, so it cannot be parallel to it. The midsegment is parallel to the side it does not touch.`,
+          feedback: `${tex(`${D}${E}`)} meets ${tex(`${A}${B}`)} at ${tex(D)}, so it cannot be parallel to it. The midsegment is parallel to the side it does not touch.`,
         },
       ]),
     };
@@ -1545,28 +1545,28 @@ function segmentProperty(r: Random): Built {
     const choices = choicesFrom(r, String(bc), [
       {
         label: String(de),
-        feedback: `That is the length of the midsegment ${D}${E}. The question asks for ${B}${C}, which is twice as long.`,
+        feedback: `That is the length of the midsegment ${tex(`${D}${E}`)}. The question asks for ${tex(`${B}${C}`)}, which is twice as long.`,
       },
       {
         label: String(x),
-        feedback: "That is the value of x. The question asks for a length.",
+        feedback: `That is the value of ${tex("x")}. The question asks for a length.`,
       },
       {
         label: String(bc + de),
-        feedback: `${B}${C} is twice ${D}${E}, so it is ${de} + ${de}.`,
+        feedback: `${tex(`${B}${C}`)} is twice ${tex(`${D}${E}`)}, so it is ${de} + ${de}.`,
       },
       {
         label: String(2 * bc),
-        feedback: `${B}${C} is twice ${D}${E}, not four times.`,
+        feedback: `${tex(`${B}${C}`)} is twice ${tex(`${D}${E}`)}, not four times.`,
       },
     ]);
     return {
       variant,
-      prompt: `In triangle ${A}${B}${C}, ${D} and ${E} are the midpoints of ${tex(`\\overline{${A}${B}}`)} and ${tex(`\\overline{${A}${C}}`)}. ${tex(`${D}${E}=${co(a)}x${sg(b)}`)} and ${tex(`${B}${C}=${co(c)}x${sg(dd)}`)}. What is the length ${B}${C}?`,
+      prompt: `In triangle ${tex(`${A}${B}${C}`)}, ${tex(D)} and ${tex(E)} are the midpoints of ${tex(`\\overline{${A}${B}}`)} and ${tex(`\\overline{${A}${C}}`)}. ${tex(`${D}${E}=${co(a)}x${sg(b)}`)} and ${tex(`${B}${C}=${co(c)}x${sg(dd)}`)}. What is the length ${tex(`${B}${C}`)}?`,
       answer: "",
-      hint: `The midsegment is half as long as the third side, so ${B}${C} is twice ${D}${E}. Write that as an equation, solve for x, and then find ${B}${C}.`,
+      hint: `The midsegment is half as long as the third side, so ${tex(`${B}${C}`)} is twice ${tex(`${D}${E}`)}. Write an equation that says ${tex(`${co(c)}x${sg(dd)}`)} is twice ${tex(`${co(a)}x${sg(b)}`)}, solve for ${tex("x")}, and then find ${tex(`${B}${C}`)}.`,
       explanation: [
-        `${D}${E} is a midsegment, so ${tex(`${B}${C}=2\\cdot ${D}${E}`)}. Substituting gives ${tex(`${co(c)}x${sg(dd)}=2(${co(a)}x${sg(b)})`)}.`,
+        `${tex(`${D}${E}`)} is a midsegment, so ${tex(`${B}${C}=2\\cdot ${D}${E}`)}. Substituting gives ${tex(`${co(c)}x${sg(dd)}=2(${co(a)}x${sg(b)})`)}.`,
         `Solve: ${tex(`${co(c)}x${sg(dd)}=${2 * a}x${sg(2 * b)}`)}, so ${tex(`x=${x}`)}.`,
         `${tex(`${B}${C}=${mul(c, x)}${sg(dd)}=${bc}`)}.`,
       ],
@@ -1608,9 +1608,9 @@ function isoscelesRight(r: Random): Built {
         variant,
         prompt: `The hypotenuse of an isosceles right triangle is ${h} inches long. To the nearest tenth of an inch, how long is each leg?`,
         answer: oneDecimal(v),
-        hint: `The two legs are equal. Call each leg x and use the Pythagorean theorem to get an equation, or divide the hypotenuse by the fixed ratio of hypotenuse to leg.`,
+        hint: `The two legs are equal. Call each leg ${tex("x")} and use the Pythagorean theorem with the hypotenuse ${h} to get an equation, or divide ${h} by the fixed ratio of hypotenuse to leg.`,
         explanation: [
-          `Let each leg be x. Then ${tex(`x^{2}+x^{2}=${h}^{2}`)}, so ${tex(`2x^{2}=${h * h}`)}.`,
+          `Let each leg be ${tex("x")}. Then ${tex(`x^{2}+x^{2}=${h}^{2}`)}, so ${tex(`2x^{2}=${h * h}`)}.`,
           `${tex(`x=\\frac{${h}}{\\sqrt{2}}`)} ≈ ${h} ÷ 1.4142 ≈ ${trimNum(v)}.`,
           `To the nearest tenth each leg is ${oneDecimal(v)} inches.`,
         ],
@@ -1619,9 +1619,9 @@ function isoscelesRight(r: Random): Built {
       variant,
       prompt: `A square has a diagonal of ${h} feet. To the nearest tenth of a foot, how long is each side?`,
       answer: oneDecimal(v),
-      hint: `A diagonal cuts the square into two isosceles right triangles whose hypotenuse is the diagonal. The side of the square is a leg of that triangle.`,
+      hint: `A diagonal of ${h} feet cuts the square into two isosceles right triangles whose hypotenuse is the diagonal. The side of the square is a leg of that triangle.`,
       explanation: [
-        `The diagonal and two sides form a right triangle with equal legs s: ${tex(`s^{2}+s^{2}=${h}^{2}`)}.`,
+        `The diagonal and two sides form a right triangle with equal legs ${tex("s")}: ${tex(`s^{2}+s^{2}=${h}^{2}`)}.`,
         `${tex(`s=\\frac{${h}}{\\sqrt{2}}`)} ≈ ${h} ÷ 1.4142 ≈ ${trimNum(v)}.`,
         `To the nearest tenth each side is ${oneDecimal(v)} feet.`,
       ],
@@ -1654,9 +1654,9 @@ function triangleAreaSas(r: Random): Built {
       };
     return {
       variant,
-      prompt: `In triangle ABC, ${tex(`AB=${a}`)}, ${tex(`BC=${b}`)} and ${tex(`m\\angle B=${angle}^\\circ`)}. Use a calculator in degree mode. To the nearest tenth, what is the area of the triangle?`,
+      prompt: `In triangle ${tex("ABC")}, ${tex(`AB=${a}`)}, ${tex(`BC=${b}`)} and ${tex(`m\\angle B=${angle}^\\circ`)}. Use a calculator in degree mode. To the nearest tenth, what is the area of the triangle?`,
       answer,
-      hint: `The area of a triangle is half the product of two sides times the sine of the angle between them. Which two sides meet at angle B?`,
+      hint: `The area of a triangle is half the product of two sides times the sine of the angle between them. Which two of ${tex(`AB=${a}`)} and ${tex(`BC=${b}`)} meet at ${tex("\\angle B")}?`,
       explanation,
     };
   }
@@ -1701,7 +1701,7 @@ function thirdSideTest(r: Random): Built {
       variant,
       prompt: `Two sides of a triangle have lengths ${sidesText}. Which length could be the third side?`,
       answer: "",
-      hint: `The third side must be shorter than the sum of the other two and longer than their difference. Check each choice against both limits.`,
+      hint: `With sides ${a} and ${b}, the third side must be shorter than their sum and longer than their difference. Check each choice against both limits.`,
       explanation: [
         `The third side must be greater than ${b} − ${a} = ${lo} and less than ${a} + ${b} = ${hi}.`,
         `Only ${right} lies strictly between ${lo} and ${hi}.`,
@@ -1716,7 +1716,7 @@ function thirdSideTest(r: Random): Built {
     variant,
     prompt: `Two sides of a triangle have lengths ${sidesText}. Which length could not be the third side?`,
     answer: "",
-    hint: `The third side must be shorter than the sum of the other two and longer than their difference. Find the choice that breaks one of those limits.`,
+    hint: `With sides ${a} and ${b}, the third side must be shorter than their sum and longer than their difference. Find the choice that breaks one of those limits.`,
     explanation: [
       `The third side must be greater than ${b} − ${a} = ${lo} and less than ${a} + ${b} = ${hi}.`,
       `${wrongInside.join(", ")} are strictly between ${lo} and ${hi}, but ${bad.label} is not.`,
@@ -1742,11 +1742,11 @@ function altitudeSegment(r: Random): Built {
     if (!safeRound(db, 1)) continue;
     return {
       variant: "leg-and-adjacent-segment",
-      prompt: `In right triangle ABC, the right angle is at C. Altitude ${tex("\\overline{CD}")} meets the hypotenuse ${tex("\\overline{AB}")} at D. ${tex(`AC=${leg}`)} and ${tex(`AD=${m}`)}. To the nearest tenth, what is the length DB?`,
+      prompt: `In right triangle ${tex("ABC")}, the right angle is at ${tex("C")}. Altitude ${tex("\\overline{CD}")} meets the hypotenuse ${tex("\\overline{AB}")} at ${tex("D")}. ${tex(`AC=${leg}`)} and ${tex(`AD=${m}`)}. To the nearest tenth, what is the length ${tex("DB")}?`,
       answer: oneDecimal(db),
-      hint: `The altitude to the hypotenuse makes a leg the mean proportional between the whole hypotenuse and the segment next to that leg: AC is the mean proportional between AB and AD. Find AB first, then subtract AD.`,
+      hint: `The altitude to the hypotenuse makes the leg ${tex("AC")} the mean proportional between the whole hypotenuse ${tex("AB")} and the segment ${tex("AD")} next to that leg. Use ${tex(`AC=${leg}`)} and ${tex(`AD=${m}`)} to find ${tex("AB")} first, then subtract ${tex("AD")}.`,
       explanation: [
-        `Triangles ACD and ABC are similar, so ${tex("\\frac{AC}{AB}=\\frac{AD}{AC}")}, which gives ${tex("AC^{2}=AB\\cdot AD")}.`,
+        `Triangles ${tex("ACD")} and ${tex("ABC")} are similar, so ${tex("\\frac{AC}{AB}=\\frac{AD}{AC}")}, which gives ${tex("AC^{2}=AB\\cdot AD")}.`,
         `${tex(`${leg}^{2}=AB\\cdot ${m}`)}, so ${tex(`AB=\\frac{${leg * leg}}{${m}}`)} ≈ ${trimNum(hyp)}.`,
         `${tex(`DB=AB-AD`)} ≈ ${trimNum(hyp)} − ${m} ≈ ${trimNum(db)}, which is ${oneDecimal(db)} to the nearest tenth.`,
       ],
