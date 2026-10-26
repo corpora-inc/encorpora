@@ -14,6 +14,7 @@ import { registerFamilyRoutes } from "../src/family/routes";
 import { generateProblem, type GeneratedProblem } from "../src/math/engine";
 import {
   latticeOnLine,
+  onCurve,
   plotPoints,
   pointLabelText,
   type LatticePoint,
@@ -68,8 +69,19 @@ const engine = process.env.AMP_BROWSER === "webkit" ? "webkit" : "chromium";
 const browser = await (engine === "webkit" ? webkit : chromium).launch();
 const errors: string[] = [];
 
+const curveFamilies = [
+  "graph-quadratic-points",
+  "graph-absolute-value-points",
+  "graph-exponential-points",
+  "graph-sqrt-points",
+] as const;
 type Family =
-  "plot-points" | "graph-linear-equation" | "place-transformed-image";
+  | "plot-points"
+  | "graph-linear-equation"
+  | "place-transformed-image"
+  | (typeof curveFamilies)[number];
+/** Narrow a run with AMP_UI_FAMILIES, AMP_UI_WIDTHS and AMP_UI_THEMES (comma lists). */
+const only = (name: string) => process.env[name]?.split(",").filter(Boolean);
 /** A representative instance: four plotted points (the widest readout), a
  * fractional-slope line, and an ordered triangle image. */
 function instance(family: Family, key: string): GeneratedProblem {
@@ -86,6 +98,16 @@ function instance(family: Family, key: string): GeneratedProblem {
     )
       return p;
     if (family === "place-transformed-image" && r.pointCount === 3) return p;
+  }
+  if ((curveFamilies as readonly string[]).includes(family)) {
+    // The longest equation and prompt is the widest the family draws.
+    let widest: GeneratedProblem | null = null;
+    for (let i = 0; i < 80; i++) {
+      const p = generateProblem(family, `${learner.id}:${key}:${i}`);
+      if (!widest || p.public.prompt.length > widest.public.prompt.length)
+        widest = p;
+    }
+    return widest!;
   }
   throw new Error(`No representative ${family} instance`);
 }
@@ -198,13 +220,20 @@ async function shifts(page: Page) {
 
 let checked = 0;
 try {
-  for (const theme of ["light", "dark"] as const)
-    for (const [width, height] of [
-      [320, 568],
-      [390, 844],
-      [768, 1024],
-      [1280, 800],
-    ] as const) {
+  for (const theme of (only("AMP_UI_THEMES") ?? ["light", "dark"]) as (
+    "light" | "dark"
+  )[])
+    for (const [width, height] of (
+      [
+        [320, 568],
+        [390, 844],
+        [768, 1024],
+        [1280, 800],
+      ] as const
+    ).filter(
+      ([w]) =>
+        !only("AMP_UI_WIDTHS") || only("AMP_UI_WIDTHS")!.includes(String(w)),
+    )) {
       const touch = width <= 390;
       const context = await browser.newContext({
         viewport: { width, height },
@@ -222,11 +251,12 @@ try {
         page.getByRole("button", { name: "Learner", exact: true }),
         learner.id,
       );
-      for (const family of [
+      for (const family of (only("AMP_UI_FAMILIES") ?? [
         "plot-points",
         "graph-linear-equation",
         "place-transformed-image",
-      ] as const) {
+        ...curveFamilies,
+      ]) as Family[]) {
         const tag = `${engine === "webkit" ? "webkit-" : ""}${family}-${width}-${theme}`;
         const problem = instance(family, `${theme}:${width}`);
         await repository.transaction(
@@ -283,15 +313,19 @@ try {
             : answer;
         // A point no answer uses and off any graphed line.
         const stray = ((): LatticePoint => {
-          for (let x = -5; x <= 5; x++)
-            for (let y = -5; y <= 5; y++) {
+          const g = response.grid;
+          for (let x = g.xMin + 1; x < g.xMax; x++)
+            for (let y = g.yMin + 1; y < g.yMax; y++) {
               const p: LatticePoint = [x, y];
               const used = answer.some((q) => q[0] === x && q[1] === y);
               const onLine =
                 problem.pointGrading?.mode === "on-line" &&
                 problem.pointGrading.a * x + problem.pointGrading.b * y ===
                   problem.pointGrading.c;
-              if (!used && !onLine) return p;
+              const onGraph =
+                problem.pointGrading?.mode === "on-curve" &&
+                onCurve(problem.pointGrading.curve, p);
+              if (!used && !onLine && !onGraph) return p;
             }
           throw new Error("No stray point");
         })();
@@ -428,6 +462,24 @@ try {
           for (const p of [placed[1]!, placed[0]!, ...placed.slice(2)])
             await tap(page, p, touch);
         }
+        if (family === "graph-quadratic-points") {
+          // The parabola with one point a unit off the curve is wrong, and
+          // the correct points are then drawn over it.
+          expectCorrect = false;
+          const grading = problem.pointGrading;
+          const last = placed.at(-1)!;
+          const off = [0, 1, -1]
+            .map((d): LatticePoint => [last[0], last[1] + d])
+            .find(
+              (q) =>
+                !(grading?.mode === "on-curve" && onCurve(grading.curve, q)) &&
+                q[1] > response.grid.yMin &&
+                q[1] < response.grid.yMax &&
+                !placed.some((o) => o[0] === q[0] && o[1] === q[1]),
+            )!;
+          await tap(page, last, touch);
+          await tap(page, off, touch);
+        }
         if (family === "plot-points") {
           expectCorrect = false;
           const last = placed.at(-1)!;
@@ -551,7 +603,7 @@ try {
         }
         checked++;
       }
-      if (width < 900) {
+      if (width < 900 && !only("AMP_UI_FAMILIES")) {
         // A skip shows the answer and a second line; the sheet still fits.
         const problem = instance(
           "place-transformed-image",

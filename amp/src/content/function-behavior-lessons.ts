@@ -22,6 +22,25 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
     watch:
       "The degree counts every exponent, not only the number of different zeros. Terms of a polynomial may be written out of order, so look for the highest exponent rather than the first term.",
   },
+  "polynomial-graph-match": {
+    goal: "Write a polynomial's factored form from its graph: a factor for each zero, its exponent from cross or touch, and the leading sign.",
+    intuition:
+      "A zero of the polynomial is a point where the graph meets the $x$-axis, and each zero comes from a factor $(x-r)$. A graph that passes straight through the axis comes from a factor used an odd number of times; a graph that touches the axis and turns back comes from a factor used an even number of times. The far right of the graph tells the sign of the leading coefficient.",
+    terms: [
+      ["zero", "An input $x$ at which the polynomial equals 0; the graph meets the $x$-axis there."],
+      ["factor", "A zero $r$ gives the factor $(x-r)$; the zero $x=-2$ gives $(x+2)$."],
+      ["multiplicity", "The exponent of a factor: 1 crosses the axis, 2 touches it and turns back."],
+      ["leading coefficient", "The coefficient of the highest power of $x$; here $1$ or $-1$."],
+    ],
+    method: [
+      "Read every $x$-value where the graph meets the axis and write one factor $(x-r)$ for each. Mind the sign: the zero at $x=-2$ gives $(x+2)$.",
+      "At each zero decide whether the graph crosses (exponent 1) or touches and turns back (exponent 2).",
+      "Look at the right end. If the graph rises there, the leading coefficient is $1$; if it falls, it is $-1$.",
+      "Compare with each choice: it must have the same zeros, the same exponents and the same sign.",
+    ],
+    watch:
+      "A factor $(x+c)$ has its zero at $x=-c$. Check each choice's zeros against the graph, not just the numbers that appear in it.",
+  },
   "rational-function-features": {
     goal: "Given a rational function with small linear factors, find its vertical asymptotes, hole, horizontal asymptote, intercepts, or domain.",
     intuition:
@@ -112,6 +131,8 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
 export const functionBehaviorPrinciples: Record<string, string> = {
   "polynomial-behavior-description":
     "For a polynomial of degree $n$ with leading coefficient $c\\ne0$, the ends of the graph are governed by $cx^n$. A zero $r$ of multiplicity $m$ has factor $(x-r)^m$ and the sign of the polynomial changes there exactly when $m$ is odd. A polynomial of degree $n$ has at most $n-1$ turning points and at most $n$ real zeros counted with multiplicity.",
+  "polynomial-graph-match":
+    "If $P(x)=c(x-r_1)^{m_1}\\cdots(x-r_k)^{m_k}$, the graph meets the $x$-axis exactly at $r_1,\\dots,r_k$. It crosses the axis at $r_i$ when $m_i$ is odd and touches it and turns back when $m_i$ is even. For large $|x|$ the graph follows $cx^n$ with $n=\\sum m_i$, so the sign of $c$ and the parity of $n$ fix the ends.",
   "rational-function-features":
     "For $f=p/q$ with polynomials $p$ and $q$ and $q\\ne0$ as a polynomial, the domain excludes the zeros of $q$. After removing all common factors, a zero of the denominator gives a vertical asymptote and a canceled factor gives a hole. If $\\deg p<\\deg q$ the horizontal asymptote is $y=0$; if the degrees are equal it is the ratio of leading coefficients; if $\\deg p>\\deg q$ there is none.",
   "graphical-solution-table":
@@ -184,6 +205,63 @@ export const functionBehaviorLessons: Lesson[] = [
     ],
     parentGuide:
       "Ask the learner what the degree of $(x-1)^2(x+2)$ is, and whether the graph crosses or touches the axis at 1.",
+  },
+  {
+    id: "polynomial-graph-match",
+    title: "From a polynomial graph to its factors",
+    summary:
+      "Read the zeros, the crossing or touching at each one, and the right end of a graph, and write the factored polynomial.",
+    templateIds: ["polynomial-graph-match"],
+    objectives: [
+      "Write a factor for each zero shown on a graph.",
+      "Choose an exponent from whether the graph crosses or touches the axis.",
+      "Choose the sign of the leading coefficient from the right end.",
+    ],
+    sections: [
+      {
+        stage: "intuition",
+        title: "Reading factors from a picture",
+        paragraphs: [
+          "A zero is an input where the polynomial equals 0, so the graph meets the $x$-axis there. If $r$ is a zero, then $(x-r)$ is a factor: the zero $x=3$ gives $(x-3)$, and the zero $x=-2$ gives $(x+2)$.",
+          "A factor used once changes the sign of the polynomial, so the graph crosses the axis. A factor used twice changes it twice, so the graph touches the axis and turns back.",
+        ],
+      },
+    ],
+    workedExample: {
+      prompt:
+        "A graph has zeros at $x=-2$ and $x=1$. It crosses the axis at $x=-2$, touches it at $x=1$, and its right end rises. Write the factored form.",
+      steps: [
+        "The zeros $x=-2$ and $x=1$ give the factors $(x+2)$ and $(x-1)$.",
+        "The graph crosses at $x=-2$, so $(x+2)$ has exponent 1. It touches at $x=1$, so $(x-1)$ has exponent 2.",
+        "The degree is $1+2=3$, which is odd, and the right end rises, so the leading coefficient is $1$.",
+        "Put the factors together with that coefficient.",
+      ],
+      answer: "$P(x)=(x+2)(x-1)^{2}$",
+    },
+    closingSections: [
+      {
+        stage: "method",
+        keepTogetherInPrint: true,
+        title: "Check a choice against the graph",
+        paragraphs: [
+          "For each answer choice, list its zeros, then its exponents, then the sign of the leading coefficient. A choice that fails any one of these three checks is not the graph.",
+        ],
+      },
+      {
+        stage: "formal",
+        title: "Why the right end gives the sign",
+        paragraphs: [
+          "For large $x$, the polynomial is close to its leading term $cx^n$, which has the sign of $c$ when $x$ is positive. So the right end rises when $c>0$ and falls when $c<0$, whatever the degree.",
+        ],
+      },
+    ],
+    pitfalls: [
+      "The zero $x=-2$ gives the factor $(x+2)$, not $(x-2)$.",
+      "A touch needs an even exponent; a crossing needs an odd one.",
+      "Read the sign from the right end, not the left: the left end also depends on the degree.",
+    ],
+    parentGuide:
+      "Ask the learner which factor gives a zero at $x=-3$, and whether a graph that touches the axis there needs an odd or even exponent.",
   },
   {
     id: "rational-function-features",

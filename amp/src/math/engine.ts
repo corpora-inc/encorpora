@@ -6,6 +6,10 @@ import {
   satGeometryDataTemplates,
   generateSatGeometryDataProblem,
 } from "./sat-geometry-data-practice";
+import {
+  satGeometryAdvancedTemplates,
+  generateSatGeometryAdvancedProblem,
+} from "./sat-geometry-advanced-practice";
 import { normalizeSelection } from "./selection-response";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
 import {
@@ -550,6 +554,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...assessmentGapTemplates,
   ...satCompletionTemplates,
   ...satGeometryDataTemplates,
+  ...satGeometryAdvancedTemplates,
   ...bivariateTemplates,
 ];
 
@@ -736,6 +741,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...assessmentGapTemplates,
     ...satCompletionTemplates,
     ...satGeometryDataTemplates,
+    ...satGeometryAdvancedTemplates,
     ...bivariateTemplates,
     ...partWholeTemplates,
     ...attributeTemplates,
@@ -822,6 +828,8 @@ function generateRawProblem(
     return generateSatCompletionProblem(templateId, seed);
   if (satGeometryDataTemplates.some((t) => t.id === templateId))
     return generateSatGeometryDataProblem(templateId, seed);
+  if (satGeometryAdvancedTemplates.some((t) => t.id === templateId))
+    return generateSatGeometryAdvancedProblem(templateId, seed);
   if (assessmentGapTemplates.some((t) => t.id === templateId))
     return generateAssessmentGapProblem(templateId, seed);
   if (inferenceTemplates.some((t) => t.id === templateId))

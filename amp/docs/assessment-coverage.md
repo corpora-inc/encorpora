@@ -30,6 +30,51 @@ Practice Test 11 added no archetypes. Tests 7–10 each added at most three, and
 
 A second labeler re-labeled a seeded random 10% sample (44 questions) without seeing the first labels. Status agreed on 41 (93.2%), archetypes overlapped on 42 (95.5%) and templates on 43 (97.7%). The disagreements were resolved by applying one rule to every test: linear families never use function notation, so linear `f(x)` questions are partial.
 
+### STAAR mathematics
+
+All 260 mathematics items of the Spring 2025 STAAR released tests for grades 3 through 8 (30, 32, 34, 36, 38 and 40 items) and Algebra I (50) are labeled. TEA publishes these forms only as online practice tests, so each item is labeled from its published rationale and from the answer key, which states the TEKS code, interaction type and points. The code is recorded as printed (grade.strand.expectation.letter), and every row's limitations begin with the exact interaction.
+
+| Test | Items | Covered | Partial | Missing |
+| --- | ---: | ---: | ---: | ---: |
+| Grade 3 | 30 | 3 (10%) | 24 (80%) | 3 (10%) |
+| Grade 4 | 32 | 3 (9.4%) | 25 (78.1%) | 4 (12.5%) |
+| Grade 5 | 34 | 2 (5.9%) | 31 (91.2%) | 1 (2.9%) |
+| Grade 6 | 36 | 2 (5.6%) | 28 (77.8%) | 6 (16.7%) |
+| Grade 7 | 38 | 5 (13.2%) | 32 (84.2%) | 1 (2.6%) |
+| Grade 8 | 40 | 7 (17.5%) | 33 (82.5%) | 0 (0%) |
+| Algebra I | 50 | 13 (26%) | 37 (74%) | 0 (0%) |
+
+Of the 260 items, 179 are multiple choice, 29 drag and drop, 19 inline choice, 12 multiselect, 10 equation editor, 6 hot spot, 3 graphing, 1 number line and 1 match table grid. Hot spot, drag and drop, graphing and number line are `graph/drag`; inline choice and match table grid are `other`; an equation editor is `numeric` when the answer is a number (8) and `constructed` when the learner types an expression or inequality (2). Only the point-plot protocol takes `graph/drag`, so 38 of the 39 such items are partial: only the graphing item that places two points of a proportional line is covered, while the dashed boundary and shading of an inequality, an exponential curve, number-line endpoints and arrows, hot-spot selection and drag-and-drop assembly have no protocol. The 12 multiselect items have only two families that take a multi-select response (quadrilateral categories and slope triangles), and the 20 inline-choice and match items (dropdown blanks, mostly with two parts) have none.
+
+The largest gaps are order of operations with nested groups, negatives and exponents, choosing or assembling the equation for a story, relationships between paired terms and tables, dot-plot, histogram and stem-and-leaf reading beyond a single count, area and perimeter chains and decimal sides, slope and intercept from points, the coordinate rule of a transformation and area, volume and surface-area chains. Fifteen items have no related practice: number words, percent-fraction-decimal renaming, credit and expense vocabulary, classification of number sets, benchmark fraction estimates, percentage bar graphs, strip diagrams for multistep stories, ratio writing, number-line diagrams of stories and properties of solid faces.
+
+The STAAR sources are not saturated: from Grade 3 to Algebra I they add 21, 20, 15, 13, 7, 9 and 8 archetypes not seen in any earlier source, and 17% to 76% of their items fall on archetypes already seen. Elementary tests introduce the most.
+
+A second labeler re-labeled a seeded random 10% sample (26 items across all seven tests) without seeing the first labels. Response format agreed on 26 (100%), status on 22 (84.6%), archetypes overlapped on 25 (96.2%) and templates on 22 (84.6%). The status disagreements were resolved by applying two rules to every test: a family counts as related practice only if it practices the item's core operation or reading, not merely its topic or representation (two sampled items and two others of the same kind became missing), and perimeter practice with whole-number sides does not cover decimal sides. A story context or label around a graph read does not change the task.
+
+The earlier purposive samples (New York grade 7 and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
+
+### MCAS mathematics
+
+All 162 mathematics items that the Massachusetts Department of Elementary and Secondary Education released from the Spring 2025 paper-based MCAS tests are labeled: 20 operational items each for grades 3 through 8 (of 40 per form) and all 42 for grade 10. The other 20 items of each grade 3 through 8 form are listed as unreleased and are not labeled; computer-based technology-enhanced items are released separately and are not in these forms. The released-item table of each PDF states the standard, item type and answer, so every row records the standard as printed. The earlier five-item purposive samples of grades 5, 8 and 10 are folded into the same source records.
+
+| Test | Items | Covered | Partial | Missing |
+| --- | ---: | ---: | ---: | ---: |
+| Grade 3 | 20 | 4 (20%) | 16 (80%) | 0 (0%) |
+| Grade 4 | 20 | 4 (20%) | 16 (80%) | 0 (0%) |
+| Grade 5 | 20 | 10 (50%) | 8 (40%) | 2 (10%) |
+| Grade 6 | 20 | 4 (20%) | 15 (75%) | 1 (5%) |
+| Grade 7 | 20 | 4 (20%) | 14 (70%) | 2 (10%) |
+| Grade 8 | 20 | 5 (25%) | 14 (70%) | 1 (5%) |
+| Grade 10 | 42 | 3 (7.1%) | 35 (83.3%) | 4 (9.5%) |
+
+Of the 162 items, 103 are single-answer choice, 31 multiselect, 16 constructed response and 12 short-answer numeric. Only two multiselect items are covered (the quadrilateral hierarchy and the slope triangles, the two families with a multi-select protocol); the other 29 multiselect items have related practice only in single-choice or numeric families, or none, and the 16 constructed responses (multipart, with shown work or explanations) have no protocol.
+
+MCAS adds no single dominant gap. Partial items concentrate on volume and area chains, rates with fractional quantities, percent of a quantity, coordinate distance, scale, systems given in slope-intercept form, scatter plots and true-or-false equation judgment. Ten items have no related practice: ratio writing in part-to-part, part-to-whole and whole-to-part form, a radius as a center-to-point distance, reasoning about whether a product exceeds a factor, placements of a negative sign in a fraction, a times-as-large statement about a parenthesized expression, a graph described as linear or nonlinear, congruence correspondence, naming the parts of an expression, rotational symmetry and the sign of a slope.
+
+MCAS is not saturated even though it follows the Common Core. In ledger order, after the SAT and STAAR sources, grades 3 through 10 add 19, 13, 9, 6, 4, 9 and 12 archetypes not seen in any earlier source, and 30%, 50%, 50%, 65%, 85%, 60% and 71% of their items fall on archetypes already seen. Elementary forms introduce the most, as in STAAR. Sixteen archetypes were minted for the MCAS items; the other new ones were already listed from earlier sources but unused by an earlier ledger.
+
+A second labeler re-labeled a seeded random 10% sample (16 of 162 items, across all seven forms) without seeing the first labels. Response format agreed on 16 (100%), status on 12 (75%), archetypes overlapped on 14 (87.5%) and templates on 14 (87.5%). The four status disagreements were resolved by applying three rules to every form: matching an expression with words does not cover choosing a times-as-large statement about its value (Grade 5 item 10 became missing, with a new archetype); changing a dot plot to a listed data set, or adding an outlier to removing it, does not change the task; and a model statement for an exponential written with a per-period growth factor is the same task as one written with an exponent in years (Grade 10 items 19 and 29 became covered). Grade 8 item 4 stays covered because the family chooses exactly the equation for a starting amount plus a per-unit rate, as it does for STAAR Grade 8 item 40.
 ### New York Regents mathematics exams
 
 All 106 questions of the June 2026 Regents Examinations in Algebra I (35), Geometry (35) and Algebra II (36), Next Generation Learning Standards, are labeled. Standards are the cluster codes in each rating guide's map to the learning standards. Every question allows a graphing calculator.
@@ -44,7 +89,7 @@ Part I multiple choice is 72 of 106 items and 10 of them are covered. The 34 con
 
 The largest gaps are parallelogram and rhombus properties and proofs, factoring beyond one-variable trinomials, unit and density chains in volume problems, drawing nonlinear graphs, rational exponents and exponent rules, zeros of nonmonic factors and growth rates read from exponential bases. Algebra I and Algebra II families usually stop short on one feature: decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations and fractional ratios in series.
 
-Each exam still added 12 to 15 archetypes that earlier sources had not used and only 40 to 56 percent of its questions fell on archetypes already seen, so the high-school task set is not saturated; the SAT and state samples saw few of these tasks. Fourteen archetypes were minted for tasks no existing archetype named.
+Each exam still added 8 to 11 archetypes that earlier sources had not used and 58 to 77 percent of its questions fell on archetypes already seen, so the high-school task set is not saturated; the SAT, STAAR and MCAS sources saw few of these tasks. Fourteen archetypes were minted for tasks no existing archetype named.
 
 A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Status agreed on 11 (100%), archetypes overlapped on 10 (90.9%), templates on 11 (100%) and response format on 10 (90.9%). The disagreements were a proposed archetype for rationalizing denominators, resolved by widening `expression.radical-simplify`, and a multipart graphing item (Algebra II 36) that the first labeler recorded as graph/drag because a graph is the first required response.
 
@@ -91,13 +136,32 @@ Every template now maps to the facets it assesses, all with partial extent. Each
 
 Editorial connections in `src/curriculum/connections.ts` link every practiced skill to a later skill, either through a prerequisite or an extension, application or related link. A test keeps it that way.
 
-## Texas Grade 5 source reconciliation
+## Texas mathematics source reconciliation
 
-The coverage report includes the 46 lettered or unlettered requirements in §111.7(b) of Texas Grade 5 mathematics, adopted 2012. Source records identify the retrieved December 2014 chapter edition by URL, date and SHA-256. Original summaries preserve required representations and restrictions; the official source controls their meaning.
+The coverage report inventories every student expectation, lettered or unlettered, in the 19 TAC Chapter 111 mathematics standards for Kindergarten through Grade 8 (§111.2–§111.7, §111.26–§111.28) and for Algebra I, Geometry, Algebra II and Precalculus (§111.39–§111.42), all adopted 2012. Source records identify the retrieved TEA chapter PDFs (Subchapter A December 2014, B July 2025 and C October 2015 updates) by URL, retrieval date and SHA-256. Original summaries preserve required representations and restrictions; the official source controls their meaning.
 
-Eight requirements have partial task reconciliation. Decimal practice is reused; dot-plot and scatterplot interpretation supply related support without certifying learner-created displays. Stem-and-leaf interpretation, budget-category balancing and gross-versus-net income now have related practice families with partial scope. Stem-and-leaf practice belongs to a grade 6 skill, so grade 5 availability is not certified, and constructing plots or budgets is not assessed. Spring 2025 STAAR rationale items 14 and 21 establish occurrence of the first two tasks, not their frequency. The other 38 requirements are explicitly unreviewed, including the remaining financial-literacy and process requirements.
+Each inventory validates its requirement identifiers against an outline of the official document, and records the sources, a requirement per expectation, and reusable task links. Process standards (1)(A)–(G) are one cross-cutting group per course, recorded as unreviewed and not assessed by item practice. Grade 5, reconciled first, keeps its seven process rows.
 
-`src/curriculum/texas-grade5.ts` holds the source inventory and reusable task crosswalk. The report validates source, requirement, skill and template-owner references; invalid links cannot establish reconciliation. Texas has a partial source inventory, while statewide coverage, component reconciliation and the complete STAAR assessment inventory remain incomplete. Custom catalog reports do not inherit production state mappings unless explicitly supplied.
+| Course | Requirements | Related practice | Missing family only | Unreviewed (including process) | Open-ended among unreviewed |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| K | 30 | 17 | 8 | 5 | 4 |
+| 1 | 44 | 29 | 10 | 5 | 4 |
+| 2 | 44 | 30 | 11 | 3 | 2 |
+| 3 | 47 | 32 | 7 | 8 | 6 |
+| 4 | 47 | 34 | 6 | 7 | 5 |
+| 5 | 46 | 27 | 5 | 14 | 0 |
+| 6 | 53 | 31 | 14 | 8 | 7 |
+| 7 | 44 | 35 | 4 | 5 | 3 |
+| 8 | 46 | 36 | 4 | 6 | 5 |
+| Algebra I | 50 | 45 | 4 | 1 | 0 |
+| Algebra II | 49 | 41 | 6 | 2 | 1 |
+| Geometry | 43 | 34 | 6 | 3 | 2 |
+| Precalculus | 51 | 41 | 8 | 2 | 1 |
+| Total | 594 | 432 | 93 | 69 | 40 |
+
+Every related-practice link is partial. Its limitations say what the linked templates establish, such as a numeric response without a learner-built model, a range narrower than the standard, or a skill authored for another grade; one generated sample of each linked template was reviewed, and a test regenerates two problems from each. A missing-family record names a concrete absent demand and the closest skill; sixteen more requirements have related practice and also name a missing demand. Open-ended demands (explain, describe, create, draw, list) are unreviewed because tap-response items do not assess them. Spring 2025 STAAR rationale items 14 and 21 establish occurrence of two Grade 5 tasks, not their frequency.
+
+`src/curriculum/texas/` holds the band files (`k2.ts`, `35.ts`, `68.ts`, `hs.ts`), the shared builder and the aggregate; `src/curriculum/texas-grade5.ts` holds Grade 5. The report validates source, requirement, skill and template-owner references; invalid links cannot establish reconciliation. The 2025 advanced middle-school courses, the other high-school courses, the introduction rules for each course and the complete STAAR and end-of-course assessment inventories remain unreviewed. Texas has a partial source inventory, while statewide coverage and component reconciliation remain incomplete. Custom catalog reports do not inherit production state mappings unless explicitly supplied.
 
 ## Florida B.E.S.T. source reconciliation
 
