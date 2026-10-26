@@ -285,6 +285,10 @@ import {
   generateRemainingGapProblem,
 } from "./remaining-gap-practice";
 import {
+  financeIncomeTemplates,
+  generateFinanceIncomeProblem,
+} from "./finance-income-practice";
+import {
   vectorMatrixTemplates,
   generateVectorMatrixProblem,
 } from "./vectors-matrices-practice";
@@ -470,6 +474,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...geometryModelingTemplates,
   ...functionBehaviorTemplates,
   ...remainingGapTemplates,
+  ...financeIncomeTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
   ...addSubtractTemplates,
@@ -919,6 +924,8 @@ function generateRawProblem(
     return generateSatAlgebraStructureProblem(templateId, seed);
   if (remainingGapTemplates.some((t) => t.id === templateId))
     return generateRemainingGapProblem(templateId, seed);
+  if (financeIncomeTemplates.some((t) => t.id === templateId))
+    return generateFinanceIncomeProblem(templateId, seed);
   if (vectorMatrixTemplates.some((t) => t.id === templateId))
     return generateVectorMatrixProblem(templateId, seed);
   if (trigonometryTemplates.some((t) => t.id === templateId))

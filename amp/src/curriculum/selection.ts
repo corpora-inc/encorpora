@@ -17,7 +17,7 @@ counting|6|6|count-to-20,count-to-100,write-numerals,compare-small-groups,compar
 place-value|6|6|teen-place-value,tens-and-ones,compare-two-digit,hundreds-place-value,compare-three-digit,ten-more-less,large-place-value,powers-of-ten,round-whole-numbers
 addition-subtraction|6|6|addition-within-10,subtraction-within-10,number-bonds,make-ten,facts-within-5,addition-within-20,subtraction-within-20,three-addends,add-two-digit,addition-within-100,subtraction-within-100,regroup-hundreds,multiple-addends,addition-facts,number-line-arithmetic,add-subtract-thousands,whole-add-subtract,counting-arithmetic,mental-tens-hundreds
 multiplication-division|6|6|arrays,multiplication-meaning,multiplication-facts,division-meaning,division-facts,operation-properties,multiply-tens,whole-multiplication,whole-division,multidigit-products,multidigit-quotients,integer-division
-arithmetic-modeling|5|5|addition-stories,two-step-stories,multiplicative-stories,multi-operation-stories,multiplicative-comparison,multistep-whole-stories,rational-stories
+arithmetic-modeling|5|5|addition-stories,two-step-stories,multiplicative-stories,multi-operation-stories,multiplicative-comparison,multistep-whole-stories,rational-stories,financial-literacy-elementary
 fraction-meaning|6|6|halves-and-quarters,thirds-and-partitions,unit-fractions,fraction-model,fractions-number-line,equivalent-fractions,compare-fractions,partition-area,fraction-equivalence,fraction-comparison,mixed-numbers,fraction-as-division
 fraction-operations|6|6|like-fraction-addition,fraction-times-whole,fraction-addition,fraction-multiplication,unit-fraction-division,fraction-division,complex-fractions
 decimals|6|6|decimal-fractions,compare-decimals,decimal-place-value,decimal-arithmetic,decimal-algorithms
@@ -35,7 +35,7 @@ geometry-proof|3|2|geometric-proof,coordinate-proofs,circle-similarity,line-angl
 geometry-modeling|3|3|geometric-modeling,density-modeling,geometric-design
 circles-conics|3|3|circle-theorems,arc-sector-measure,circle-equations,conic-sections,parabola-locus
 right-triangles|5|5|pythagorean-theorem,right-triangle-trigonometry,special-right-triangles,complementary-trigonometry
-ratios-percent|6|6|ratios,unit-rates,ratio-tables,percentages,rational-unit-rates,proportional-relationships,percent-change
+ratios-percent|6|6|ratios,unit-rates,ratio-tables,percentages,rational-unit-rates,proportional-relationships,percent-change,financial-literacy-middle
 expressions|5|5|numerical-expressions,variable-expressions,expression-properties,linear-expressions,expression-structure
 patterns|3|3|arithmetic-patterns,rule-patterns,related-patterns,dependent-variables
 linear-equations|6|6|equality,missing-addend,missing-factor,one-step-equations,two-step-equations,linear-equations,formula-rearrangement,symbolic-linear-constraints,equation-reasoning

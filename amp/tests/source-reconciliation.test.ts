@@ -27,8 +27,8 @@ test("Texas identifier inventory preserves unreviewed components and reuses exis
   assert.equal(slice.componentReconciliationComplete, false);
   assert.equal(slice.statewideComplete, false);
   assert.equal(slice.frequencyEstimate, false);
-  assert.equal(slice.summary.partiallyReconciled, 8);
-  assert.equal(slice.summary.unreviewed, 38);
+  assert.equal(slice.summary.partiallyReconciled, 9);
+  assert.equal(slice.summary.unreviewed, 37);
   assert.equal(slice.summary.missingFamilies, 0);
   assert.equal(
     slice.requirements.find((r) => r.id === "TX.5.10.C")!.reconciliation,

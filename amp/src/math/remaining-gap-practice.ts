@@ -76,9 +76,9 @@ export const remainingGapTemplates: readonly TemplateMetadata[] = [
   },
 ];
 
-type Wrong = { label: string; feedback: string };
+export type Wrong = { label: string; feedback: string };
 /** Correct choice plus three distinct wrong ones; fewer distinct wrong choices is a content bug. */
-function options(
+export function options(
   correct: string,
   wrong: Wrong[],
 ): NonNullable<Draft["choices"]> {
@@ -97,7 +97,7 @@ function options(
     ...kept.slice(0, 3).map(({ label, feedback }) => ({ label, feedback })),
   ];
 }
-function checkSeed(seed: string) {
+export function checkSeed(seed: string) {
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
 }
@@ -1004,7 +1004,7 @@ export function stemLeafCase(seed: string) {
 /* Budgets and pay                                                     */
 /* ------------------------------------------------------------------ */
 
-const dollars = (cents: number) =>
+export const dollars = (cents: number) =>
   `${Math.floor(cents / 100)}.${String(cents % 100).padStart(2, "0")}`;
 const money = (cents: number) => `${dollars(cents)} dollars`;
 /** Cents: whole dollars in [lo, hi] plus a small set of cent parts, never 0 cents for every row. */

@@ -63,6 +63,7 @@ import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
+import { financeIncomePrinciples } from "./finance-income-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
 import { algebraRequirementGapPrinciples } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapPrinciples } from "./advanced-math-gaps-lessons";
@@ -98,6 +99,7 @@ export const principles: Record<string, string> = {
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...complexPrinciples,
+  ...financeIncomePrinciples,
   ...satNumericEntryPrinciples,
   ...algebraRequirementGapPrinciples,
   ...advancedMathGapPrinciples,

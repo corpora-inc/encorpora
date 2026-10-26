@@ -435,6 +435,8 @@ variability|6|data|Describe spread shape outliers and appropriate summaries|dist
 rational-unit-rates|7|ratio|Calculate unit rates involving fractional quantities|unit-rates,fraction-division|7.RP.A.1
 proportional-relationships|7|ratio|Identify and represent proportional relationships|ratio-tables,dependent-variables|7.RP.A.2
 percent-change|7|ratio|Solve percent increase decrease markup and interest problems|percentages,fraction-division,decimal-arithmetic|7.RP.A.3
+financial-literacy-elementary|5|modeling|Work out profit, cost and break-even from fixed and variable costs and tell the kinds of taxes apart|decimal-arithmetic|5.NBT.B.7
+financial-literacy-middle|7|modeling|Compute bracket income tax, payroll and property tax, budget percents, net worth and the lowest final cost among discounts|percent-change,financial-literacy-elementary,signed-addition|7.RP.A.3,7.NS.A.3
 signed-addition|7|number|Add and subtract signed rational numbers|signed-numbers,fraction-addition|7.NS.A.1
 signed-multiplication|7|number|Multiply and divide signed rational numbers|signed-addition,fraction-division|7.NS.A.2
 rational-stories|7|modeling|Solve contextual problems using signed rational arithmetic|signed-multiplication|7.NS.A.3,7.EE.B.3
