@@ -282,6 +282,7 @@ import {
   numberMeasurementGapTemplates,
   generateNumberMeasurementGapProblem,
 } from "./number-measurement-gaps-practice";
+import { texasK2Templates, generateTexasK2Problem } from "./texas-k2-practice";
 import {
   floridaGapTemplates,
   generateFloridaGapProblem,
@@ -518,6 +519,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...regentsGapTemplates,
   ...mcasGapTemplates,
   ...staarGapTemplates,
+  ...texasK2Templates,
   ...k8StateNumberTemplates,
   complexMultiplicationTemplate,
   ...financeCreditTemplates,
@@ -1004,6 +1006,8 @@ function generateRawProblem(
     return generateMcasGapProblem(templateId, seed);
   if (staarGapTemplates.some((t) => t.id === templateId))
     return generateStaarGapProblem(templateId, seed);
+  if (texasK2Templates.some((t) => t.id === templateId))
+    return generateTexasK2Problem(templateId, seed);
   if (k8StateNumberTemplates.some((t) => t.id === templateId))
     return generateK8StateNumberProblem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))

@@ -88,6 +88,7 @@ import { floridaGapLessons } from "./florida-gaps-lessons";
 import { regentsGapLessons } from "./regents-gap-lessons";
 import { mcasGapLessons } from "./mcas-gap-lessons";
 import { staarGapLessons } from "./staar-gap-lessons";
+import { texasK2Lessons } from "./texas-k2-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
 import { remainingGapLessons } from "./remaining-gap-lessons";
 import { dataDisplayStateLessons } from "./data-display-state-lessons";
@@ -715,6 +716,7 @@ export const lessons: readonly Lesson[] = [
   ...regentsGapLessons,
   ...mcasGapLessons,
   ...staarGapLessons,
+  ...texasK2Lessons,
   ...satAlgebraStructureLessons,
   ...remainingGapLessons,
   ...dataDisplayStateLessons,

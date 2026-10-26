@@ -78,6 +78,7 @@ import { floridaGapMethods } from "./florida-gaps-lessons";
 import { regentsGapMethods } from "./regents-gap-lessons";
 import { mcasGapMethods } from "./mcas-gap-lessons";
 import { staarGapMethods } from "./staar-gap-lessons";
+import { texasK2Methods } from "./texas-k2-lessons";
 import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
 import { dataDisplayStateMethods } from "./data-display-state-lessons";
@@ -130,6 +131,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...regentsGapMethods,
   ...mcasGapMethods,
   ...staarGapMethods,
+  ...texasK2Methods,
   ...satAlgebraStructureMethods,
   ...remainingGapMethods,
   ...dataDisplayStateMethods,

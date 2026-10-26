@@ -78,6 +78,7 @@ import { floridaGapPrinciples } from "./florida-gaps-lessons";
 import { regentsGapPrinciples } from "./regents-gap-lessons";
 import { mcasGapPrinciples } from "./mcas-gap-lessons";
 import { staarGapPrinciples } from "./staar-gap-lessons";
+import { texasK2Principles } from "./texas-k2-lessons";
 import { satAlgebraStructurePrinciples } from "./sat-algebra-structure-lessons";
 import { remainingGapPrinciples } from "./remaining-gap-lessons";
 import { dataDisplayStatePrinciples } from "./data-display-state-lessons";
@@ -126,6 +127,7 @@ export const principles: Record<string, string> = {
   ...regentsGapPrinciples,
   ...mcasGapPrinciples,
   ...staarGapPrinciples,
+  ...texasK2Principles,
   ...satAlgebraStructurePrinciples,
   ...remainingGapPrinciples,
   ...dataDisplayStatePrinciples,
