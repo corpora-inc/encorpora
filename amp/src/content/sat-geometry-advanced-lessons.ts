@@ -110,13 +110,13 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
       "The equal angles are at the chord's endpoints, not at the center. The perimeter counts the radius twice.",
   },
   "shifted-polynomial-features": {
-    goal: "Find an extreme point, the x-intercepts or a value of a polynomial whose graph is shifted.",
+    goal: "Find an extreme point, the $x$-intercepts or a value of a polynomial whose graph is shifted.",
     intuition:
       "In $g(x)=f(x+c)$ the input is changed first, so the graph moves the opposite way from the sign: $f(x+3)$ moves 3 units left. In $g(x)=f(x)+k$ the output is changed, so the graph moves $k$ units up.",
     terms: [
       [
-        "x-intercept",
-        "A point where the graph meets the x-axis; its x-value makes the function equal 0.",
+        "$x$-intercept",
+        "A point where the graph meets the $x$-axis; its $x$-value makes the function equal 0.",
       ],
       [
         "vertex",
@@ -124,8 +124,8 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Find the feature of the original function $f$: its vertex x-value, its intercepts, or $f$ at a given input.",
-      "For $f(x+c)$ subtract $c$ from every x-value of the feature. For $f(x-c)$ add $c$. For $f(x)+k$ add $k$ to every output.",
+      "Find the feature of the original function $f$: its vertex $x$-value, its intercepts, or $f$ at a given input.",
+      "For $f(x+c)$ subtract $c$ from every $x$-value of the feature. For $f(x-c)$ add $c$. For $f(x)+k$ add $k$ to every output.",
       "Sum, evaluate or report as asked.",
     ],
     watch:
@@ -373,11 +373,11 @@ export const satGeometryAdvancedLessons: Lesson[] = [
     id: "sat-shifted-polynomials",
     title: "Features of shifted polynomials",
     summary:
-      "A horizontal shift moves every feature along the x-axis; a vertical shift adds the same amount to every output.",
+      "A horizontal shift moves every feature along the $x$-axis; a vertical shift adds the same amount to every output.",
     templateIds: ["shifted-polynomial-features"],
     objectives: [
       "Find the extreme point of a shifted quadratic from the original's vertex.",
-      "Find the sum of x-intercepts of a shifted factored cubic and a value after a vertical shift.",
+      "Find the sum of $x$-intercepts of a shifted factored cubic and a value after a vertical shift.",
     ],
     sections: [
       {
@@ -390,9 +390,9 @@ export const satGeometryAdvancedLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "$f(x)=(x-1)(x+2)(x-4)$ and $g(x)=f(x-3)$. What is the sum of the x-intercepts of $g$?",
+        "$f(x)=(x-1)(x+2)(x-4)$ and $g(x)=f(x-3)$. What is the sum of the $x$-intercepts of $g$?",
       steps: [
-        "The x-intercepts of $f$ are 1, $-2$ and 4, because each makes one factor zero.",
+        "The $x$-intercepts of $f$ are 1, $-2$ and 4, because each makes one factor zero.",
         "$g(x)=0$ when $x-3$ is one of those, so each intercept of $g$ is 3 greater: 4, 1 and 7.",
         "The sum is $4+1+7=12$. Check: the sum for $f$ is 3, plus 3 intercepts times 3 gives 12.",
       ],

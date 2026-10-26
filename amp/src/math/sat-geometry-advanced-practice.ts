@@ -74,7 +74,7 @@ export const satGeometryAdvancedTemplates: readonly TemplateMetadata[] = [
     title: "Features of a shifted polynomial",
     skillId: "function-transformations",
     description:
-      "Find where a horizontally shifted quadratic reaches its extreme value, the sum of the x-intercepts of a shifted factored cubic, or a value of a vertically shifted factored cubic.",
+      "Find where a horizontally shifted quadratic reaches its extreme value, the sum of the $x$-intercepts of a shifted factored cubic, or a value of a vertically shifted factored cubic.",
     difficultyOffset: 0.4,
   }),
   numberMeta({
@@ -162,20 +162,22 @@ function correspondingCase(r: Random): SatGeometryAdvancedCase {
     const sym = similar ? "\\sim" : "\\cong";
     const statement = `$\\triangle ${first.join("")} ${sym} \\triangle ${second.join("")}$`;
     const word = similar ? "similar" : "congruent";
-    const match = (i: number) => `${first[i]} corresponds to ${second[i]}`;
+    const match = (i: number) => `$${first[i]}$ corresponds to $${second[i]}$`;
     const angles: number[] = [];
     let ask = 0;
     let setup = "";
     let correct = 0;
     let wrong: Option[] = [];
     let steps: string[] = [];
+    let known = "";
     if (tag === "similar-scale") {
       const t = r(22, 59);
       const k = r(2, 3);
       const i = r(0, 2);
       ask = i;
       correct = t;
-      setup = `Triangle ${first.join("")} is similar to triangle ${second.join("")} under the statement ${statement}, and every side of triangle ${second.join("")} is ${k} times as long as the corresponding side of triangle ${first.join("")}. The measure of ${angle(first[i]!)} is ${deg(t)}.`;
+      known = `${angle(first[i]!)} measures ${deg(t)}`;
+      setup = `Triangle $${first.join("")}$ is similar to triangle $${second.join("")}$ under the statement ${statement}, and every side of triangle $${second.join("")}$ is ${k} times as long as the corresponding side of triangle $${first.join("")}$. The measure of ${angle(first[i]!)} is ${deg(t)}.`;
       wrong = wrongAngles(correct, [
         [
           t * k,
@@ -212,12 +214,13 @@ function correspondingCase(r: Random): SatGeometryAdvancedCase {
       const i = direct ? r(0, 1) : 2;
       ask = i;
       correct = angles[i]!;
-      setup = `Triangle ${first.join("")} is ${word} to triangle ${second.join("")} under the statement ${statement}. In triangle ${first.join("")}, ${angle(first[0]!)} measures ${deg(a)} and ${angle(first[1]!)} measures ${deg(b)}.`;
+      known = `${angle(first[0]!)} measures ${deg(a)} and ${angle(first[1]!)} measures ${deg(b)}`;
+      setup = `Triangle $${first.join("")}$ is ${word} to triangle $${second.join("")}$ under the statement ${statement}. In triangle $${first.join("")}$, ${angle(first[0]!)} measures ${deg(a)} and ${angle(first[1]!)} measures ${deg(b)}.`;
       const other = direct ? 1 - i : 0;
       wrong = wrongAngles(correct, [
         [
           angles[other]!,
-          `That is the measure at ${first[other]}. ${first[other]} corresponds to ${second[other]}, not to ${second[i]}.`,
+          `That is the measure at $${first[other]}$. $${first[other]}$ corresponds to $${second[other]}$, not to $${second[i]}$.`,
         ],
         [
           direct ? c : a + b,
@@ -239,7 +242,7 @@ function correspondingCase(r: Random): SatGeometryAdvancedCase {
           ]
         : [
             `In ${statement}, the letters match in order: ${match(2)}.`,
-            `The angles of triangle ${first.join("")} add to 180°, so ${angle(first[2]!)} measures $180-${a}-${b}=${c}$ degrees.`,
+            `The angles of triangle $${first.join("")}$ add to 180°, so ${angle(first[2]!)} measures $180-${a}-${b}=${c}$ degrees.`,
             `Corresponding angles are equal, so ${angle(second[2]!)} measures ${deg(correct)}.`,
           ];
     } else {
@@ -250,11 +253,12 @@ function correspondingCase(r: Random): SatGeometryAdvancedCase {
       const askAt = rest.find((v) => v !== givenAt)!;
       ask = askAt;
       correct = 90 - a;
-      setup = `Triangle ${first.join("")} is ${word} to triangle ${second.join("")} under the statement ${statement}. In triangle ${first.join("")}, ${angle(first[rightAt]!)} is a right angle and ${angle(first[givenAt]!)} measures ${deg(a)}.`;
+      known = `${angle(first[rightAt]!)} is a right angle and ${angle(first[givenAt]!)} measures ${deg(a)}`;
+      setup = `Triangle $${first.join("")}$ is ${word} to triangle $${second.join("")}$ under the statement ${statement}. In triangle $${first.join("")}$, ${angle(first[rightAt]!)} is a right angle and ${angle(first[givenAt]!)} measures ${deg(a)}.`;
       wrong = wrongAngles(correct, [
         [
           a,
-          `That is the measure at ${first[givenAt]}, which corresponds to ${second[givenAt]}.`,
+          `That is the measure at $${first[givenAt]}$, which corresponds to $${second[givenAt]}$.`,
         ],
         [
           90 + a,
@@ -268,7 +272,7 @@ function correspondingCase(r: Random): SatGeometryAdvancedCase {
       ]);
       steps = [
         `In ${statement}, the letters match in order, so ${angle(second[askAt]!)} corresponds to ${angle(first[askAt]!)}.`,
-        `Triangle ${first.join("")} has a right angle, so its two acute angles add to 90°. ${angle(first[askAt]!)} measures $90-${a}=${correct}$ degrees.`,
+        `Triangle $${first.join("")}$ has a right angle, so its two acute angles add to 90°. ${angle(first[askAt]!)} measures $90-${a}=${correct}$ degrees.`,
         `Corresponding angles are equal, so ${angle(second[askAt]!)} measures ${deg(correct)}.`,
       ];
     }
@@ -285,7 +289,7 @@ function correspondingCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt: `${setup} What is the measure of ${angle(askVertex)}?`,
         answer: "",
-        hint: `${hintLead} Find the vertex of triangle ${first.join("")} that sits in the same position as ${askVertex} in ${statement}, then decide which angle of that triangle is known or can be found.`,
+        hint: `${hintLead} Find the vertex of triangle $${first.join("")}$ that sits in the same position as $${askVertex}$ in ${statement}, then use what is known about that triangle (${known}) to find that angle.`,
         explanation: steps,
         choices,
       },
@@ -352,7 +356,7 @@ function crossingCase(r: Random): SatGeometryAdvancedCase {
     draft: {
       prompt: `${head} Given ${given}. What is the length of segment ${ask}? Enter the length as a number.`,
       answer: String(answer),
-      hint: `Look for triangles $AEC$ and $BED$. The angles at $E$ are vertical angles, so they are equal, and the premise supplies a second equal pair. Match the vertices in order, $A$ with $B$, $E$ with $E$, $C$ with $D$; ${hintAsk}.`,
+      hint: `Look for triangles $AEC$ and $BED$. The angles at $E$ are vertical angles, so they are equal, and the premise supplies a second equal pair. Match the vertices in order, $A$ with $B$, $E$ with $E$, $C$ with $D$; ${hintAsk}. Put ${given} into the ratio of matching sides.`,
       explanation: [
         `The angles $\\angle AEC$ and $\\angle BED$ are vertical angles, so they are equal. ${reason}. Two equal angle pairs make triangle $AEC$ similar to triangle $BED$, with $A\\leftrightarrow B$, $E\\leftrightarrow E$ and $C\\leftrightarrow D$.`,
         `Corresponding sides of similar triangles are in equal ratios: ${ratioLine}`,
@@ -412,7 +416,7 @@ function chainCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt: `In triangle $ABC$, $\\angle A$ measures ${deg(a)} and ${givenB}. Point $D$ lies on $\\overline{AB}$ and point $E$ lies on $\\overline{BC}$, and $\\overline{DE}$ is parallel to $\\overline{AC}$. What is the measure, in degrees, of the obtuse angle $\\angle DEC$?`,
         answer: String(answer),
-        hint: `Find $\\angle C$ from the triangle angle sum. Because $\\overline{DE}\\parallel\\overline{AC}$, the angle at $E$ inside triangle $DBE$ matches $\\angle C$. Then $\\angle DEC$ and that angle form a straight line.`,
+        hint: `Find $\\angle C$ from the triangle angle sum, using ${deg(a)} and ${right ? "the right angle" : deg(b)}. Because $\\overline{DE}\\parallel\\overline{AC}$, the angle at $E$ inside triangle $DBE$ matches $\\angle C$. Then $\\angle DEC$ and that angle form a straight line.`,
         explanation: [
           `The angles of triangle $ABC$ add to 180°, so $\\angle C=180-${a}-${b}=${c}$ degrees.`,
           `$\\overline{DE}\\parallel\\overline{AC}$ with transversal $\\overline{BC}$, so $\\angle DEB$ and $\\angle ACB$ are corresponding angles and are equal: $\\angle DEB=${c}$ degrees.`,
@@ -516,8 +520,8 @@ function claimCase(r: Random): SatGeometryAdvancedCase {
             : `Two lines intersect, forming $\\angle X$ and $\\angle Y$ as adjacent angles that together make a straight line. $\\angle Y$ measures ${deg(d)}. Which statement is true?`,
           answer: "",
           hint: vertical
-            ? "Think about which angles are across the intersection from each other and what is always true about them."
-            : `Adjacent angles on a straight line add to 180°. Find $\\angle X$ and compare it with $\\angle Y$.`,
+            ? `Think about which angles are across the intersection from each other and what is always true about them, then compare $\\angle X$ with the ${deg(d)} angle $\\angle Y$.`
+            : `Adjacent angles on a straight line add to 180°. Find $\\angle X$ from the ${deg(d)} angle $\\angle Y$ and compare the two.`,
           explanation: vertical
             ? [
                 "Vertical angles are opposite each other where two lines cross.",
@@ -607,7 +611,7 @@ function radiiCase(r: Random): SatGeometryAdvancedCase {
         draft: {
           prompt: `Points $A$ and $B$ lie on a circle with center $O$, and $\\overline{AB}$ is a chord. $\\angle OAB$ measures ${deg(base)}. What is the measure, in degrees, of $\\angle AOB$?`,
           answer: String(theta),
-          hint: `$\\overline{OA}$ and $\\overline{OB}$ are both radii. What does that say about the angles opposite them in triangle $OAB$? Then use the angle sum.`,
+          hint: `$\\overline{OA}$ and $\\overline{OB}$ are both radii. What does that say about the angles opposite them in triangle $OAB$? Then use the angle sum with the ${deg(base)} base angle.`,
           explanation: [
             `$OA$ and $OB$ are radii of the same circle, so they are equal and triangle $OAB$ is isosceles.`,
             `The angles opposite equal sides are equal: $\\angle OBA=\\angle OAB=${base}$ degrees.`,
@@ -624,8 +628,8 @@ function radiiCase(r: Random): SatGeometryAdvancedCase {
           : `Points $A$ and $B$ lie on a circle with center $O$, and $\\overline{AB}$ is a chord. $\\angle AOB$ measures ${deg(theta)}. What is the measure, in degrees, of $\\angle OAB$?`,
         answer: String(base),
         hint: arc
-          ? `A minor arc has the same measure as its central angle. Then notice that $\\overline{OA}$ and $\\overline{OB}$ are both radii, which makes triangle $OAB$ isosceles.`
-          : `$\\overline{OA}$ and $\\overline{OB}$ are both radii, which makes triangle $OAB$ isosceles. Use the angle sum with the two equal base angles.`,
+          ? `A minor arc has the same measure as its central angle, here ${deg(theta)}. Then notice that $\\overline{OA}$ and $\\overline{OB}$ are both radii, which makes triangle $OAB$ isosceles.`
+          : `$\\overline{OA}$ and $\\overline{OB}$ are both radii, which makes triangle $OAB$ isosceles. Use the angle sum with the ${deg(theta)} central angle and the two equal base angles.`,
         explanation: [
           ...(arc
             ? [
@@ -648,7 +652,7 @@ function radiiCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt: `Points $A$ and $B$ lie on a circle with center $O$ and radius ${rad}. The perimeter of triangle $OAB$ is ${per}. What is the length of chord $\\overline{AB}$?`,
         answer: String(chord),
-        hint: `Two sides of triangle $OAB$ are radii of the circle. Subtract their lengths from the perimeter.`,
+        hint: `Two sides of triangle $OAB$ are radii of the circle. Subtract their lengths (${rad} each) from the perimeter ${per}.`,
         explanation: [
           `$OA$ and $OB$ are radii, so each has length ${rad}.`,
           `The perimeter is $OA+OB+AB=${per}$, so $AB=${per}-${rad}-${rad}$.`,
@@ -661,7 +665,7 @@ function radiiCase(r: Random): SatGeometryAdvancedCase {
     draft: {
       prompt: `Points $A$ and $B$ lie on a circle with center $O$, and chord $\\overline{AB}$ has length ${chord}. The perimeter of triangle $OAB$ is ${per}. What is the radius of the circle?`,
       answer: String(rad),
-      hint: `$OA$ and $OB$ are radii, so they have the same length. Write the perimeter using one unknown for that length.`,
+      hint: `$OA$ and $OB$ are radii, so they have the same length. Write the perimeter ${per} using one unknown for that length and the chord ${chord}.`,
       explanation: [
         `Let the radius be $r$. Then $OA=OB=r$ and the perimeter is $r+r+${chord}=${per}$.`,
         `So $2r=${per}-${chord}=${per - chord}$.`,
@@ -789,7 +793,7 @@ function radicalCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt: `In a right triangle, the hypotenuse is ${cm(hyp)} and one leg is ${cm(la)}. What is the length of the other leg, in centimeters?`,
         answer: f(lb),
-        hint: `Use $a^2+b^2=c^2$ with $c$ the hypotenuse. Square the two given lengths as decimals, subtract, and take the square root. Check that the result is positive.`,
+        hint: `The hypotenuse squared is the sum of the two leg squares. Square the hypotenuse ${f(hyp)} and the leg ${f(la)}, subtract the smaller square from the larger, and take the square root. Check that the result is positive.`,
         explanation: [
           `The hypotenuse $c=${f(hyp)}$ and a leg $a=${f(la)}$, so the other leg $b$ satisfies $b^2=c^2-a^2$.`,
           `$b^2=${f(hyp)}^2-${f(la)}^2=${Number((hyp * hyp * scale * scale).toFixed(4))}-${Number((la * la * scale * scale).toFixed(4))}=${Number((lb * lb * scale * scale).toFixed(4))}$.`,
@@ -810,7 +814,7 @@ function radicalCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt: `In right triangle $ABC$, the legs have lengths ${a} and ${b}. The length of the hypotenuse can be written in simplest radical form as $m\\sqrt{n}$, where $m$ and $n$ are positive integers and $n$ has no perfect-square factor other than 1. What is the value of $${coefficient ? "m" : "n"}$?`,
         answer: String(coefficient ? m : n),
-        hint: `Find the square of the hypotenuse with $a^2+b^2$. Then pull out the largest perfect square factor to write the square root as $m\\sqrt{n}$.`,
+        hint: `Add the squares of the legs ${a} and ${b} to find the square of the hypotenuse. Then pull out the largest perfect square factor to write the square root as $m\\sqrt{n}$.`,
         explanation: [
           `By the Pythagorean theorem, $c^2=${a}^2+${b}^2=${a * a}+${b * b}=${sumSq}$.`,
           `$${sumSq}=${m * m}\\cdot ${n}$, where ${m * m} is the largest perfect square factor.`,
@@ -889,7 +893,7 @@ function specialCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt: `An equilateral triangle has a perimeter of ${per}. The altitude from one vertex to the opposite side has length $c\\sqrt{3}$. What is the value of $c$?`,
         answer: String(k),
-        hint: `Find one side from the perimeter. The altitude splits the triangle into two 30-60-90 right triangles, and the altitude is the longer leg.`,
+        hint: `Find one side from the perimeter ${per}. The altitude splits the triangle into two 30-60-90 right triangles, and the altitude is the longer leg.`,
         explanation: [
           `The three sides are equal, so each side is $${per}\\div 3=${2 * k}$.`,
           `The altitude bisects the base into two segments of length ${k}, forming a 30-60-90 triangle with hypotenuse ${2 * k} and short leg ${k}.`,
@@ -908,7 +912,7 @@ function specialCase(r: Random): SatGeometryAdvancedCase {
           ? `A square is inscribed in a circle, so all four vertices lie on the circle. The circle has diameter $${2 * k}\\sqrt{2}$ units. What is the side length of the square, in units?`
           : `A square is inscribed in a circle, so all four vertices lie on the circle. The circle has radius $${k}\\sqrt{2}$ units. What is the side length of the square, in units?`,
         answer: String(2 * k),
-        hint: `A diagonal of the square passes through the center, so it is a diameter. A diagonal splits the square into two 45-45-90 triangles whose legs are the sides.`,
+        hint: `A diagonal of the square passes through the center, so it is a diameter: ${byDiameter ? `here $${2 * k}\\sqrt{2}$` : `twice the radius $${k}\\sqrt{2}$`}. A diagonal splits the square into two 45-45-90 triangles whose legs are the sides.`,
         explanation: [
           `A diagonal of an inscribed square is a diameter of the circle, so the diagonal is ${byDiameter ? `$${2 * k}\\sqrt{2}$` : `$2\\cdot ${k}\\sqrt{2}=${2 * k}\\sqrt{2}$`}.`,
           `The diagonal is the hypotenuse of a 45-45-90 triangle whose legs are sides of the square, so the diagonal is the side times $\\sqrt{2}$.`,
@@ -923,7 +927,7 @@ function specialCase(r: Random): SatGeometryAdvancedCase {
     draft: {
       prompt: `An equilateral triangle with perimeter ${9 * k} is inscribed in a circle, so all three vertices lie on the circle. The radius of the circle is $c\\sqrt{3}$. What is the value of $c$?`,
       answer: String(k),
-      hint: `Find a side from the perimeter. The center of the circle is also the center of the triangle, and joining it to each vertex and dropping a perpendicular to a side makes 30-60-90 triangles.`,
+      hint: `Find a side from the perimeter ${9 * k}. The center of the circle is also the center of the triangle, and joining it to each vertex and dropping a perpendicular to a side makes 30-60-90 triangles.`,
       explanation: [
         `Each side is $${9 * k}\\div 3=${3 * k}$. The radius runs from the center to a vertex.`,
         `Join the center to a vertex and drop a perpendicular from the center to a side. The perpendicular bisects the side, and the radius to the vertex bisects the 60° vertex angle, giving a 30-60-90 triangle. Its longer leg is half a side, ${(3 * k) / 2}.`,

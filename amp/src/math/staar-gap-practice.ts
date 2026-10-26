@@ -155,7 +155,7 @@ export const staarGapTemplates: readonly TemplateMetadata[] = [
     "slope",
     "6–8",
     0.35,
-    "Choose the slope and y-intercept of the line through two points, the equation from a fractional slope and a point, or the rate of change from standard form.",
+    "Choose the slope and $y$-intercept of the line through two points, the equation from a fractional slope and a point, or the rate of change from standard form.",
     choice,
   ),
   meta(
@@ -566,7 +566,7 @@ function numberWordForm(r: Random): Built {
       variant,
       prompt: `Which shows the number $${terms.join("+")}$ written in words?`,
       answer: "",
-      hint: `Say each term's size aloud. The terms are in order from the largest place, so read them left to right and say “thousand” after the part in the thousands.`,
+      hint: `Say the size of each term in $${terms.join("+")}$ aloud. The terms are in order from the largest place, so read them left to right and say “thousand” after the part in the thousands.`,
       explanation: [
         `Add the terms to get the number: $${terms.join("+")}=${groupTex(value)}$.`,
         `Say the part before the comma as a number of thousands, then the rest.`,
@@ -622,7 +622,7 @@ function numberWordForm(r: Random): Built {
       variant,
       prompt: `Which shows $${terms}$ written in words?`,
       answer: "",
-      hint: `Add the terms to write the decimal. The last digit sits in the thousandths place, so say the whole part, then “and”, then the decimal part with its place name.`,
+      hint: `Add the terms in $${terms}$ to write the decimal. The last digit sits in the thousandths place, so say the whole part, then “and”, then the decimal part with its place name.`,
       explanation: [
         `Add the terms: $${terms}=${w}.${t}${h}${k}$.`,
         `The whole part is ${below100(w)}. The decimal part $0.${t}${h}${k}$ is ${milli} thousandths, said as ${below1000(milli)} thousandths.`,
@@ -977,7 +977,7 @@ function ratioStatements(r: Random): Built {
     variant,
     prompt: `${story.replace("{a}", String(a)).replace("{b}", String(b))} Which is the unit rate in ${unitA} per ${one}?`,
     answer: "",
-    hint: `“${unitA} per ${one}” puts the ${unitA} on top. Divide the ${unitA} by the ${unitB}, so the answer is for one ${one}.`,
+    hint: `“${unitA} per ${one}” puts the ${unitA} on top. Divide the ${a} ${unitA} by the ${b} ${unitB}, so the answer is for one ${one}.`,
     explanation: [
       `“Per ${one}” means for one ${one}, so divide the ${unitA} by the ${unitB}.`,
       `$${a}\\div${b}=${rate}$.`,
@@ -1091,7 +1091,7 @@ function storyModelChoice(r: Random): Built {
       variant,
       prompt: `Sam buys ${x} for ${m2(a)} dollars and ${y} for ${m2(b)} dollars. He also buys ${z}. He spends ${m2(t)} dollars in all. Let $f$ be the price of ${z} in dollars. Which equation matches the story?`,
       answer: "",
-      hint: `The prices of the three things add up to what Sam spends. Write the two known prices and $f$ on one side, and the total on the other.`,
+      hint: `The prices of the three things add up to what Sam spends. Write the two known prices, ${m2(a)} and ${m2(b)}, and $f$ on one side, and the total ${m2(t)} on the other.`,
       explanation: [
         `The three prices are added to get the total: ${m2(a)}, ${m2(b)} and $f$.`,
         `The total is ${m2(t)}, so $${m2(a)}+${m2(b)}+f=${m2(t)}$.`,
@@ -1203,7 +1203,7 @@ function rateEquationChoice(r: Random): Built {
       },
       {
         label: label(`${x}+${rate}`),
-        feedback: `A steady rate means the amount grows by ${rate} each ${unit.replace(/s$/, "")}, so ${x} is multiplied by the rate, not added to it.`,
+        feedback: `A steady rate means the amount grows by ${rate} each ${unit.replace(/s$/, "")}, so $${x}$ is multiplied by the rate, not added to it.`,
       },
     ]),
   };
@@ -1313,7 +1313,7 @@ function orderDecimals(r: Random): Built {
     selects: true,
     prompt: `Four measurements are ${items.map((d) => `${text(d)}`).join(", ")} ${unit}. When they are ordered from least to greatest, which is ${word}?`,
     answer: "",
-    hint: `Write each measurement with three decimal places, such as 0.5 as 0.500, then compare tenths first. Put them in order from least to greatest and count to the ${word}.`,
+    hint: `Write each measurement with three decimal places, such as ${text(items[0]!)} as ${fixed(items[0]!.v, 3)}, then compare tenths first. Put them in order from least to greatest and count to the ${word}.`,
     explanation: [
       `With three decimal places: ${items.map((d) => fixed(d.v, 3)).join(", ")}.`,
       `Least to greatest: ${sorted.map((d) => fixed(d.v, 3)).join(", ")}.`,
@@ -1423,7 +1423,7 @@ function orderMixedForms(r: Random): Built {
       variant,
       prompt: `Which list shows the numbers ${items.map((x) => tex(x.tex)).join(", ")} in order from least to greatest?`,
       answer: "",
-      hint: `Write every number as a decimal${items.find((x) => x.tex.includes("frac")) ? `, such as ${tex(items.find((x) => x.tex.includes("frac"))!.tex)} as ${asDec(items.find((x) => x.tex.includes("frac"))!)}` : ""}. Negative numbers are less than positive numbers, and the negative number farther from 0 is the least.`,
+      hint: `Write every number as a decimal, such as ${tex((items.find((x) => x.tex.includes("frac")) ?? items[0]!).tex)} as ${asDec(items.find((x) => x.tex.includes("frac")) ?? items[0]!)}. Negative numbers are less than positive numbers, and the negative number farther from 0 is the least.`,
       explanation: [
         `As decimals: ${items.map((x) => `${asDec(x)}`).join(", ")}.`,
         `On a number line the least number is farthest to the left. Order: ${sorted.map(asDec).join(", ")}.`,
@@ -2120,7 +2120,7 @@ function stemLeafCombine(r: Random): Built {
       prompt: `The stem-and-leaf plot shows the ${what} for ${n} students. ${keyText} What is the sum of the two greatest values?`,
       figure,
       answer: String(top + second),
-      hint: `The greatest values are in the bottom row, stem ${lastStem}, at the right end. Read the last two leaves with the key, then add the two values.`,
+      hint: `The greatest values are in the bottom row, stem ${lastStem}, at the right end. Read the last two leaves with the key $${stemOf(key)}\\mid ${key % 10}$, then add the two values.`,
       explanation: [
         `The two greatest values are at the end of the last row: ${second} and ${top}.`,
         `Add them: $${second}+${top}=${top + second}$.`,
@@ -2132,7 +2132,7 @@ function stemLeafCombine(r: Random): Built {
     prompt: `The stem-and-leaf plot shows the ${what} for ${n} students. ${keyText} What is the difference between the greatest value and the second-least value?`,
     figure,
     answer: String(top - low2),
-    hint: `The greatest value is the last leaf of the bottom row, stem ${lastStem}. The least value is the first leaf of the top row, stem ${firstStem}; the second-least is the next leaf in reading order.`,
+    hint: `The greatest value is the last leaf of the bottom row, stem ${lastStem}. The least value is the first leaf of the top row, stem ${firstStem}; the second-least is the next leaf in reading order. Read each leaf with the key $${stemOf(key)}\\mid ${key % 10}$.`,
     explanation: [
       `The greatest value is ${top}. The values in order from the top row begin ${values.slice(0, 2).join(", ")}, so the second-least is ${low2}.`,
       `Subtract: $${top}-${low2}=${top - low2}$.`,
