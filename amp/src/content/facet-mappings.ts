@@ -308,6 +308,167 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Choose income versus a gift, spending versus saving, a deposit versus a withdrawal and the producer and consumer in a sale, and find savings over weeks, a balance after a deposit and a withdrawal, and the cost to make a one-item recipe from priced parts. Wants versus needs, borrowing and lending are not assessed. Does not assess budgeting, interest or opinion-based judgments.",
   },
   {
+    templateId: "times-as-many-comparison",
+    facetId: "multiplicative-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the times-as-many sentence for a product such as 3 \u00d7 24, the expression for a times-as-many sentence, and the correct sentence comparing two counts, each with a plausible additive or reversed alternative. Does not assess writing the sentence, fractional comparisons or division word problems.",
+  },
+  {
+    templateId: "situation-pair-table",
+    facetId: "arithmetic-patterns.core",
+    extent: "partial",
+    rationale:
+      "Enter one missing entry in a two-column table of number pairs built from equal groups (price, seats, items per package) or a fixed age gap, going forward, backward or finding the per-one rate. Does not assess building the whole table, graphing the pairs or writing the rule as an equation.",
+  },
+  {
+    templateId: "story-equation-choice",
+    facetId: "addition-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation with a letter for the unknown that matches a joining, separating, unknown-start, unknown-change or two-step addition and subtraction story within 1,000. Does not assess drawing the number line or picture, solving the equation or multiplication stories.",
+  },
+  {
+    templateId: "strip-diagram-equation",
+    facetId: "multistep-whole-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation with a letter that matches a strip diagram of a multistep story: equal groups plus extra, total minus equal groups, an unknown in equal groups, and a part removed before sharing. Does not assess drawing the strip diagram, solving for the letter or stories with remainders.",
+  },
+  {
+    templateId: "division-area-model",
+    facetId: "whole-division.core",
+    extent: "partial",
+    rationale:
+      "Choose the partial-quotient equation, the area equation with an unknown side, or the quotient from the partial areas of an area model for a division by a single digit. Does not assess drawing the model, remainders or divisors with two digits.",
+  },
+  {
+    templateId: "fraction-benchmark-reasonable",
+    facetId: "like-fraction-addition.core",
+    extent: "partial",
+    rationale:
+      "Choose the benchmark nearest a fraction among 0, 1/4, 1/2, 3/4 and 1, the benchmark estimate of a like-denominator sum or difference, and the benchmark statement that shows an added-denominator answer is unreasonable. Does not assess unlike denominators, mixed numbers or exact computation.",
+  },
+  {
+    templateId: "unit-relative-size",
+    facetId: "unit-conversion.core",
+    extent: "partial",
+    rationale:
+      "Choose the true statement about which customary, metric or cross-system unit is larger, which of two measurements of one amount has the greater number, and the order of three units of one kind. Does not assess converting values, recalling exact conversion factors or approximate cross-system equivalents.",
+  },
+  {
+    templateId: "decimal-area-model",
+    facetId: "decimal-arithmetic.core",
+    extent: "partial",
+    rationale:
+      "Read a tenths-by-tenths product from a shaded rectangle on a hundredths square, choose the sentence the model shows, and divide a decimal in tenths or hundredths by a whole number as the missing side of an area model. Does not assess drawing the model, decimal divisors or products with more than two decimal places.",
+  },
+  {
+    templateId: "number-set-venn",
+    facetId: "signed-numbers.core",
+    extent: "partial",
+    rationale:
+      "Place a number in a region of a nested diagram of natural, whole, integer and rational numbers, name the smallest set that contains it, and choose the true subset statement, including numbers written as fractions that simplify to integers. Does not assess irrational numbers, drawing the diagram or set notation.",
+  },
+  {
+    templateId: "reciprocal-division-choice",
+    facetId: "fraction-division.core",
+    extent: "partial",
+    rationale:
+      "Choose the multiplication by the reciprocal that equals a division of a whole number or fraction by a fraction or whole number, and the expression for how many fractional groups fit in a quantity. Does not assess computing the quotient, mixed numbers or explaining why the reciprocal works.",
+  },
+  {
+    templateId: "scaling-direction-choice",
+    facetId: "fraction-multiplication.core",
+    extent: "partial",
+    rationale:
+      "Choose the product greater or less than the starting number, or the true comparison with reasoning, from the multiplier compared with 1, including improper fractions and a multiplier equal to 1. Does not assess computing the product or explaining why the product changes.",
+  },
+  {
+    templateId: "percent-grid-model",
+    facetId: "percentages.core",
+    extent: "partial",
+    rationale:
+      "Name the percent, simplest fraction or decimal for a shaded part of a 10 by 10 grid. Does not assess strip diagrams, number lines, ratio models or shading a grid.",
+  },
+  {
+    templateId: "percent-forms-and-parts",
+    facetId: "percentages.core",
+    extent: "partial",
+    rationale:
+      "Enter a fraction or decimal written as a percent, choose a percent written as a simplest fraction, and enter the whole from a part and a percent or the percent that a part is of a whole, with benchmark and non-benchmark percents. Does not assess percents above 100 for parts, percent of change or percent equations written symbolically.",
+  },
+  {
+    templateId: "independent-dependent-roles",
+    facetId: "dependent-variables.core",
+    extent: "partial",
+    rationale:
+      "Choose the independent quantity, the dependent quantity or the horizontal-axis quantity from a table of two related real-world quantities, and the true statement about their roles. Does not assess identifying the roles from a graph or equation, or relationships with no clear determination.",
+  },
+  {
+    templateId: "expression-or-equation",
+    facetId: "variable-expressions.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation among expressions or the expression among equations in algebraic, numeric and verbal forms, including a false equation. Does not assess inequalities, writing an expression or equation or evaluating either.",
+  },
+  {
+    templateId: "rational-area-volume-equation",
+    facetId: "triangle-area.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation with a letter for the unknown height, base or width that relates the area of a triangle or rectangle, or the volume of a rectangular prism, to fractional or mixed-number measures. Does not assess solving the equation, circles or composite figures.",
+  },
+  {
+    templateId: "categorical-summary",
+    facetId: "categorical-data.core",
+    extent: "partial",
+    rationale:
+      "Choose the mode of a four-category frequency table, enter a category's relative frequency as a percent, and enter a category count from a percent bar of a stated total. Does not assess drawing a percent bar graph, bar graphs or datasets with ties for the mode.",
+  },
+  {
+    templateId: "check-register-balance",
+    facetId: "signed-numbers.core",
+    extent: "partial",
+    rationale:
+      "Enter the running balance after deposits, checks, a transfer and a fee in a check register with dollars and cents, or a missing deposit or payment from the balances around it. Does not assess overdrafts, negative balances or reconciling a statement.",
+  },
+  {
+    templateId: "lifetime-income-salary",
+    facetId: "decimal-algorithms.core",
+    extent: "partial",
+    rationale:
+      "Enter total earnings from a yearly or monthly pay and a career length (given as years or ages), or the difference in career earnings between two salaries. Does not assess raises over time, taxes, inflation or present value.",
+  },
+  {
+    templateId: "pi-as-ratio",
+    facetId: "circle-measurement.core",
+    extent: "partial",
+    rationale:
+      "Choose the ratio that defines pi, compute circumference divided by diameter to the nearest hundredth from a measured diameter or radius, and say what happens to the ratio when the circle is scaled. Does not assess carrying out the measurement or deriving the circumference formula.",
+  },
+  {
+    templateId: "experimental-probability-predict",
+    facetId: "probability.core",
+    extent: "partial",
+    rationale:
+      "Enter an experimental probability as a decimal from collected trials, predict a count for a multiple of the observed number of trials, find the excess of an observed count over the theoretical expectation, and choose which of two experiments to trust. Does not assess running the experiment, probabilities as fractions or compound events.",
+  },
+  {
+    templateId: "cylinder-prism-surface-area",
+    facetId: "surface-area.core",
+    extent: "partial",
+    rationale:
+      "Enter the coefficient of pi in the lateral or total surface area of a cylinder, the height from a total surface area in terms of pi, or the total surface area of a right triangular prism with a Pythagorean-triple base. Does not assess nets drawn by the learner, cones, spheres or rounding with a decimal pi.",
+  },
+  {
+    templateId: "both-sides-situation-equation",
+    facetId: "linear-equations.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation or inequality that compares two situations with a starting amount and a rate each, including a decreasing quantity and the less-than comparison. Does not assess solving it, graphing it or writing it in words.",
+  },
+  {
     templateId: "divisibility-rule-check",
     facetId: "factors-multiples.core",
     extent: "partial",

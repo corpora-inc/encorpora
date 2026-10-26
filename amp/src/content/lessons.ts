@@ -78,6 +78,7 @@ import { financeCreditLessons } from "./finance-credit-lessons";
 import { hsStateGapLessons } from "./hs-state-gaps-lessons";
 import { financeIncomeLessons } from "./finance-income-lessons";
 import { k8StateNumberLessons } from "./k8-state-number-lessons";
+import { texas38Lessons } from "./texas-38-lessons";
 import { satNumericEntryLessons } from "./sat-numeric-entry-lessons";
 import { pointPlotLessons } from "./point-plot-lessons";
 import { multiPartChoiceLessons } from "./multi-part-choice-lessons";
@@ -706,6 +707,7 @@ export const lessons: readonly Lesson[] = [
   ...hsStateGapLessons,
   ...financeIncomeLessons,
   ...k8StateNumberLessons,
+  ...texas38Lessons,
   ...satNumericEntryLessons,
   ...pointPlotLessons,
   ...multiPartChoiceLessons,

@@ -68,6 +68,7 @@ import { financeCreditPrinciples } from "./finance-credit-lessons";
 import { hsStateGapPrinciples } from "./hs-state-gaps-lessons";
 import { financeIncomePrinciples } from "./finance-income-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
+import { texas38Principles } from "./texas-38-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
 import { pointPlotPrinciples } from "./point-plot-lessons";
 import { multiPartChoicePrinciples } from "./multi-part-choice-lessons";
@@ -117,6 +118,7 @@ export const principles: Record<string, string> = {
   ...hsStateGapPrinciples,
   ...financeIncomePrinciples,
   ...k8StateNumberPrinciples,
+  ...texas38Principles,
   ...satNumericEntryPrinciples,
   ...pointPlotPrinciples,
   ...multiPartChoicePrinciples,
