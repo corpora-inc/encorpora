@@ -274,6 +274,10 @@ import {
 } from "./sat-numeric-entry-practice";
 import { satSprDecimalAccepted } from "./sat-spr-entry";
 import {
+  k8StateNumberTemplates,
+  generateK8StateNumberProblem,
+} from "./k8-state-number-practice";
+import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
 } from "./complex-practice";
@@ -459,6 +463,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
+  ...k8StateNumberTemplates,
   complexMultiplicationTemplate,
   ...algebraRequirementGapTemplates,
   ...advancedMathGapTemplates,
@@ -907,6 +912,8 @@ function generateRawProblem(
     return generateQuadraticProblem(templateId, seed);
   if (numberMeasurementGapTemplates.some((t) => t.id === templateId))
     return generateNumberMeasurementGapProblem(templateId, seed);
+  if (k8StateNumberTemplates.some((t) => t.id === templateId))
+    return generateK8StateNumberProblem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))
     return generateStatisticsProbabilityProblem(templateId, seed);
   if (complexConicsTemplates.some((t) => t.id === templateId))
