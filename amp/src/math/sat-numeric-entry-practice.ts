@@ -1210,6 +1210,8 @@ export function satNumericEntryCase(id: string, seed: string) {
     hint: made.hint,
     explanation: made.explanation,
   });
+  // Grading metadata only: the public problem and its id are unchanged.
+  problem.entryPolicy = "sat-spr";
   return { ...made, problem };
 }
 

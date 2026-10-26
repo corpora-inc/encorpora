@@ -391,3 +391,115 @@ test("numeric entry covers negative, fractional and zero answers", () => {
     }
   assert.deepEqual([...kinds].sort(), ["fraction", "negative", "zero"]);
 });
+
+import { satSprDecimalAccepted } from "../src/math/sat-spr-entry";
+import type { GeneratedProblem } from "../src/math/contracts";
+
+const withAnswer = (
+  id: string,
+  answer: string,
+  policy = true,
+): GeneratedProblem => {
+  const base = generateProblem(id, "spr-seed");
+  const { entryPolicy: _drop, ...rest } = base;
+  return { ...rest, answer, ...(policy ? { entryPolicy: "sat-spr" } : {}) };
+};
+const sat = "sat-entry-system-solve";
+
+test("SAT SPR accepts the College Board's truncated and rounded decimals", () => {
+  const p = withAnswer(sat, "2/3");
+  for (const ok of [".6666", ".6667", "0.666", "0.667", "2/3", "4/6"])
+    assert.equal(gradeAnswer(p, ok), true, ok);
+  for (const bad of [
+    ".66",
+    "0.66",
+    ".67",
+    "0.67",
+    ".667",
+    "0.6666",
+    ".6668",
+    ".6665",
+    "+.667",
+    "0 2/3",
+  ])
+    assert.equal(gradeAnswer(p, bad), false, bad);
+  const f = withAnswer(sat, "5/6");
+  for (const ok of [".8333", "0.833"])
+    assert.equal(gradeAnswer(f, ok), true, ok);
+  for (const bad of [
+    ".83",
+    "0.83",
+    ".8334",
+    "0.834",
+    ".8332",
+    "0.8333",
+    "00.83",
+  ])
+    assert.equal(gradeAnswer(f, bad), false, bad);
+});
+
+test("SAT SPR negative answers fill 6 characters", () => {
+  const p = withAnswer(sat, "-1/3");
+  for (const ok of ["-.3333", "-0.333", "−.3333", "-1/3"])
+    assert.equal(gradeAnswer(p, ok), true, ok);
+  for (const bad of [
+    "-.33",
+    "-0.33",
+    "-.333",
+    ".3333",
+    "-0.3333",
+    "-.3334",
+    "-0.334",
+  ])
+    assert.equal(gradeAnswer(p, bad), false, bad);
+  assert.equal(gradeAnswer(withAnswer(sat, "-2/3"), "-.6667"), true);
+  assert.equal(gradeAnswer(withAnswer(sat, "-2/3"), "-.6666"), true);
+});
+
+test("SAT SPR keeps terminating answers exact and rejects mixed numbers", () => {
+  const p = withAnswer(sat, "7/2");
+  for (const ok of ["3.5", "3.50", "7/2", "14/4"])
+    assert.equal(gradeAnswer(p, ok), true, ok);
+  for (const bad of ["3.4", "3.6", "3 1/2", "31/2", "3.51"])
+    assert.equal(gradeAnswer(p, bad), false, bad);
+  // An answer that fits as a decimal never accepts an approximation.
+  assert.equal(satSprDecimalAccepted("1/8", ".125"), false);
+  assert.equal(satSprDecimalAccepted("1/8", ".12"), false);
+  // A terminating decimal too long to enter may be truncated or rounded.
+  assert.equal(gradeAnswer(withAnswer(sat, "1/64"), ".0156"), true);
+  assert.equal(gradeAnswer(withAnswer(sat, "1/64"), ".0157"), false);
+  assert.equal(gradeAnswer(withAnswer(sat, "1/64"), ".0155"), false);
+  assert.equal(gradeAnswer(withAnswer(sat, "10/3"), "3.333"), true);
+  assert.equal(gradeAnswer(withAnswer(sat, "10/3"), "3.33"), false);
+});
+
+test("the SAT SPR policy is opt-in and scoped to sat-entry templates", () => {
+  assert.equal(gradeAnswer(withAnswer(sat, "5/6", false), ".8333"), false);
+  const outside = templates.filter((t) => !t.id.startsWith("sat-entry-"));
+  for (const t of outside.slice(0, 400))
+    assert.equal(generateProblem(t.id, "scope").entryPolicy, undefined, t.id);
+  for (const t of satNumericEntryTemplates) {
+    const g = generateProblem(t.id, "scope");
+    assert.equal(g.entryPolicy, "sat-spr", t.id);
+    assert.equal(JSON.stringify(g.public).includes("sat-spr"), false);
+    assert.equal(
+      gradeAnswer(g, g.answer),
+      true,
+      `${t.id} exact answer still correct`,
+    );
+  }
+});
+
+test("the policy does not change any generated public problem", () => {
+  for (const t of satNumericEntryTemplates)
+    for (const seed of ["a", "b", "c"]) {
+      const g = generateProblem(t.id, seed);
+      const { entryPolicy: _p, ...rest } = g;
+      assert.deepEqual(generateProblem(t.id, seed), g);
+      assert.equal(
+        g.public.id,
+        satNumericEntryCase(t.id, seed).problem.public.id,
+      );
+      assert.equal(rest.public.response.kind, "fraction");
+    }
+});

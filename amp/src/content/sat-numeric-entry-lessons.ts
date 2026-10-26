@@ -2,7 +2,7 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const entry =
-  "Type the exact value: a whole number, a negative number, a fraction such as 7/2, or the equal decimal 3.5. Equivalent forms are accepted. A rounded decimal is not exact, so type 5/7 rather than 0.714.";
+  "Type a whole number, a negative number, a fraction such as 7/2, or a decimal such as 3.5; equivalent exact forms are accepted. The SAT field holds 5 characters, or 6 for a negative answer. A fraction such as 2/3 is correct as typed. If you use a decimal for an answer that does not end, fill the space by truncating or rounding: 2/3 is .6666, .6667, 0.666 or 0.667, but not .67 or 0.66. Never type a mixed number such as 3 1/2; type 7/2 or 3.5.";
 
 type Entry = {
   id: string;
