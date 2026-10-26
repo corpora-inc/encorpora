@@ -3,7 +3,7 @@ import {
   reconcileSources,
   type SourceInventory,
 } from "./source-reconciliation";
-import { texasGrade5Inventory } from "./texas-grade5";
+import { texasInventories } from "./texas";
 import { floridaInventories } from "./florida";
 import { buildReleasedItemLedger } from "./released-items";
 import type { SourceLedger } from "./released-items/types";
@@ -178,7 +178,7 @@ export function buildGapLedger(input: GapLedgerInput = {}) {
     input.sourceInventories ??
       (input.skills || input.templates || input.standards
         ? []
-        : [texasGrade5Inventory, ...floridaInventories]),
+        : [...texasInventories, ...floridaInventories]),
     nodes,
     input.templates ?? registeredTemplates,
     coverageTargets.map((target) => target.id),
@@ -357,7 +357,7 @@ export function renderGapLedger(
     ...report.sourceReconciliation.slices.flatMap((slice) => [
       `### ${slice.targetId} grade ${slice.grade}`,
       "",
-      `Identifier inventory complete: ${slice.identifierInventoryComplete}. Partially reconciled: ${slice.summary.partiallyReconciled}/${slice.summary.requirements}; missing ${slice.summary.missing}; cross-cutting ${slice.summary.crossCutting}. Statewide complete: ${slice.statewideComplete}.`,
+      `Identifier inventory complete: ${slice.identifierInventoryComplete}. Partially reconciled: ${slice.summary.partiallyReconciled}/${slice.summary.requirements}; missing ${slice.summary.missing ?? 0}; cross-cutting ${slice.summary.crossCutting ?? 0} (related practice ${slice.summary.relatedPractice}, missing family only ${slice.summary.missingOnly}, unreviewed ${slice.summary.unreviewed}). Statewide complete: ${slice.statewideComplete}.`,
       "",
       ...slice.sources.map(
         (source) =>
