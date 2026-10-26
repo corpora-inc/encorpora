@@ -305,6 +305,11 @@ export interface GeneratedProblem {
   walkthrough?: Scene;
   /** Private, selected-distractor feedback; never included before submission. */
   choiceFeedback?: Record<string, string>;
+  /** Private answer-acceptance policy for numeric responses. Absent means exact
+   * rational comparison. `sat-spr` also accepts the College Board's truncated
+   * or rounded decimal for an answer that does not fit the entry space.
+   * Absent on problems saved before the policy existed, which keep exact grading. */
+  entryPolicy?: "sat-spr";
 }
 
 const displayInteger = z.number().int().min(-100000).max(100000);
@@ -903,6 +908,7 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
     choiceFeedback: z
       .record(choiceIdSchema, z.string().trim().min(1).max(1000))
       .optional(),
+    entryPolicy: z.literal("sat-spr").optional(),
   })
   .strict()
   .refine((problem) => {

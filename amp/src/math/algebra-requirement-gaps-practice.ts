@@ -322,7 +322,7 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
         `The domain of $a$ is the positive integers, because the terms sit in positions $1,2,3,\\ldots$.`,
         ...ints.map(
           (n) =>
-            `$a(${n})$ is defined: position ${n} exists and $a(${n})=${t(n)}$.`,
+            `$a(${n})$ is defined: the sequence has a term in position $${n}$, and $a(${n})=${t(n)}$.`,
         ),
         `$a(${bad})$ is undefined: ${bad} is not a positive integer, so there is no term in position ${bad}.`,
       ],
@@ -1573,6 +1573,15 @@ function quadraticFormConversionCase(seed: string) {
         {
           label: tex(`${c + a * h * h}`),
           feedback: `The number added inside the square must be subtracted outside, not added again.`,
+        },
+        // Fallbacks, used only when the mistakes above coincide (they come last).
+        {
+          label: tex(`${3 * a * h * h + c}`),
+          feedback: `That is the value at $x=${-h}$. The vertex of ${tex(`y=${vertexForm(a, h, k)}`)} is at $x=${h}$.`,
+        },
+        {
+          label: tex(`${k + a}`),
+          feedback: `That is the value one unit from the vertex. The ${word} is the value at the vertex itself, $x=${h}$.`,
         },
       ],
     };
