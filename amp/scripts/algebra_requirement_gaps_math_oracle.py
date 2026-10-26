@@ -742,7 +742,7 @@ def solve_quadratic_conversion(public):
         a, b, c = poly_coeffs(m[1])
         axis = -b / (2 * a)
         return only_true(options, lambda o: ev(sides(inner(o['label'])[0])[1]).real() == axis and inner(o['label'])[0].startswith('x='), 'axis')
-    m = re.fullmatch(r'The function \$f\$ is written three equivalent ways: \(A\) \$f\(x\)=([^$]+)\$, \(B\) \$f\(x\)=([^$]+)\$, \(C\) \$f\(x\)=([^$]+)\$\. Which form shows the (minimum|maximum) value of \$f\$ directly, and what is that value\?', prompt)
+    m = re.fullmatch(r'The function \$f\$ is written three equivalent ways: option A: \$f\(x\)=([^$]+)\$, option B: \$f\(x\)=([^$]+)\$, option C: \$f\(x\)=([^$]+)\$\. Which option shows the (minimum|maximum) value of \$f\$ directly, and what is that value\?', prompt)
     require(m is not None, f'Unknown quadratic conversion question {prompt!r}')
     forms = {'A': m[1], 'B': m[2], 'C': m[3]}
     coeffs = {k: poly_coeffs(v) for k, v in forms.items()}
@@ -759,7 +759,7 @@ def solve_quadratic_conversion(public):
         return False
 
     def truth(o):
-        t = re.fullmatch(r'Form \(([ABC])\); the (minimum|maximum) value is \$([^$]+)\$(?: or \$([^$]+)\$)?\.', o['label'])
+        t = re.fullmatch(r'Option ([ABC]); the (minimum|maximum) value is \$([^$]+)\$(?: or \$([^$]+)\$)?\.', o['label'])
         require(t is not None, 'Form choice wording')
         require(t[2] == m[4], 'Choice must name the extreme asked')
         if t[4]:

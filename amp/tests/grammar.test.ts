@@ -5,7 +5,7 @@ import { templates, generateProblem } from "../src/math/engine";
 /** Generated text must read correctly for every count, including 1. */
 const rules: [RegExp, string][] = [
   [
-    /(?<![\d./−-])\b1 (?!is\b|was\b|has\b|plus\b|minus\b|times\b|and\b|more\b|less\b|of\b|or\b)[a-z]+s\b/,
+    /(?<![\d./−-])\b1 (?!is\b|was\b|has\b|plus\b|minus\b|times\b|and\b|more\b|less\b|of\b|or\b)[a-z]+(?<!s)s\b/,
     "plural noun after 1",
   ],
   [/\b[Tt]here (are|were) 1\b/, "plural verb before 1"],
@@ -40,4 +40,11 @@ test("generated problems use correct singular and plural forms", () => {
     [...issues].map(([key, text]) => `${key} — ${text}`),
     [],
   );
+});
+
+test("a word ending in ss is not a plural noun", () => {
+  const plural = rules[0]![0];
+  assert.equal(plural.test("1 across and 5 up"), false);
+  assert.equal(plural.test("1 miss and 2 makes"), false);
+  assert.equal(plural.test("1 liters"), true);
 });

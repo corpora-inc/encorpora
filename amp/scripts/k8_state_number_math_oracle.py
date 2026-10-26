@@ -336,7 +336,12 @@ def solve_unit_choice(public):
     return pick(options, truth, 'reasonable unit')
 
 
-MIXED_RE = re.compile(r'(\d+) (yd|ft|in|lb|oz|gal|qt|c|fl oz)\b')
+MIXED_RE = re.compile(r'(\d+) (yd|ft|in|lb|oz|gal|qt|cups?|c|fl oz)\b')
+
+
+def mixed_findall(text):
+    return [(q, 'c' if u in ('cup', 'cups') else u) for q, u in MIXED_RE.findall(text)]
+
 MIXED_PAIR = {'yd': ('ft', 3), 'ft': ('in', 12), 'lb': ('oz', 16), 'gal': ('qt', 4), 'c': ('fl oz', 8)}
 SMALL_OF = {big: small for big, (small, _) in MIXED_PAIR.items()}
 
@@ -345,7 +350,7 @@ def mixed_total(text, big):
     """Total in the small unit of 'a big b small'; `big` fixes the pair."""
     small, ratio = MIXED_PAIR[big]
     total = 0
-    for q, u in MIXED_RE.findall(text):
+    for q, u in mixed_findall(text):
         require(u in (big, small), f'Unit {u} outside {big}/{small}')
         total += int(q) * (ratio if u == big else 1)
     return total
@@ -359,7 +364,7 @@ def solve_mixed(public):
     t = public['prompt']
     rel = relations(t)
     first = t.split('. ')[0]
-    quantities = MIXED_RE.findall(first)
+    quantities = mixed_findall(first)
     if first.startswith('Write') and first.endswith('only'):
         require(len(quantities) == 2, 'One mixed amount expected')
         big = quantities[0][1]
@@ -398,7 +403,7 @@ def _normal_form_pick(options, total, big, ratio):
     small = MIXED_PAIR[big][0]
     truth = []
     for o in options:
-        lm = re.fullmatch(r'(\d+) ' + big + r' (\d+) ' + re.escape(small), o['label'])
+        lm = re.fullmatch(r'(\d+) ' + ('cups?' if big == 'c' else big) + r' (\d+) ' + re.escape(small), o['label'])
         require(lm is not None, f'Bad mixed label {o["label"]}')
         b, s = int(lm[1]), int(lm[2])
         truth.append(b * ratio + s == total and s < ratio)

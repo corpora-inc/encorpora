@@ -293,7 +293,7 @@ function signedContextOrder(r: Random): Built {
   }
   // temperature
   const places = pick(r, [
-    ["Town A", "Town B"],
+    ["the east town", "the west town"],
     ["the lake", "the hilltop"],
     ["Monday", "Tuesday"],
     ["the north gauge", "the south gauge"],
@@ -361,7 +361,7 @@ function equivalentExpressions(r: Random): Built {
     const equal: Wrong[] = [
       {
         label: lin(m, k),
-        feedback: `This is equivalent: distributing gives ${a * b}x ${sgn(k)} ${Math.abs(k)} and ${d < 0 ? "-" : "+"}${Math.abs(d)}x combines with ${a * b}x.`,
+        feedback: `This is equivalent: distributing gives ${tex(`${a * b}x ${sgn(k)} ${Math.abs(k)}`)} and ${tex(`${d < 0 ? "-" : "+"}${Math.abs(d)}x`)} combines with ${tex(`${a * b}x`)}.`,
       },
       {
         label: `${k} ${sgn(m)} ${term(Math.abs(m))}`,
@@ -371,7 +371,7 @@ function equivalentExpressions(r: Random): Built {
       {
         label: `${term(a * b)} ${sgn(d)} ${term(Math.abs(d))} ${sgn(k)} ${Math.abs(k)}`,
         feedback:
-          "This is equivalent: it is the original expression after distributing, before the x terms are combined.",
+          "This is equivalent: it is the original expression after distributing, before the $x$ terms are combined.",
       },
       {
         label: `${k} + ${term(a * b)} ${sgn(d)} ${term(Math.abs(d))}`,
@@ -383,27 +383,27 @@ function equivalentExpressions(r: Random): Built {
       {
         m,
         k: c,
-        feedback: `Check by substituting x = 1: the original gives ${a * (b + c) + d} and this expression gives ${m + c}. The ${a} must multiply ${c} too.`,
+        feedback: `Check by substituting $x=1$: the original gives ${a * (b + c) + d} and this expression gives ${m + c}. The ${a} must multiply ${c} too.`,
       },
       {
         m: a + b + d,
         k,
-        feedback: `Check by substituting x = 1: the original gives ${a * (b + c) + d} and this expression gives ${a + b + d + k}. ${a}(${term(b)}) is ${a * b}x, not ${a + b}x.`,
+        feedback: `Check by substituting $x=1$: the original gives ${a * (b + c) + d} and this expression gives ${a + b + d + k}. ${tex(`${a}(${term(b)})`)} is ${tex(`${a * b}x`)}, not ${tex(`${a + b}x`)}.`,
       },
       {
         m: a * b - d,
         k,
-        feedback: `Check by substituting x = 1: the original gives ${a * (b + c) + d} and this expression gives ${a * b - d + k}. The ${d < 0 ? "negative" : "positive"} x term must keep its sign.`,
+        feedback: `Check by substituting $x=1$: the original gives ${a * (b + c) + d} and this expression gives ${a * b - d + k}. The ${d < 0 ? "negative" : "positive"} $x$ term must keep its sign.`,
       },
       {
         m: a * b,
         k,
-        feedback: `Check by substituting x = 1: the original gives ${a * (b + c) + d} and this expression gives ${a * b + k}. The ${term(d)} term is missing.`,
+        feedback: `Check by substituting $x=1$: the original gives ${a * (b + c) + d} and this expression gives ${a * b + k}. The ${term(d)} term is missing.`,
       },
       {
         m: b + d,
         k,
-        feedback: `Check by substituting x = 1: the original gives ${a * (b + c) + d} and this expression gives ${b + d + k}. The ${a} must multiply ${term(b)} too.`,
+        feedback: `Check by substituting $x=1$: the original gives ${a * (b + c) + d} and this expression gives ${b + d + k}. The ${a} must multiply ${term(b)} too.`,
       },
     ].filter((e) => e.m !== m || e.k !== k);
     const wrong = pick(r, bad);
@@ -416,10 +416,10 @@ function equivalentExpressions(r: Random): Built {
       variant,
       prompt: `Which expression is NOT equivalent to ${tex(original)}?`,
       answer: "",
-      hint: `Expand ${a}(${term(b)} ${sgn(c)} ${Math.abs(c)}) first, then combine the x terms. An equivalent expression has the same value for every x. Check each choice at x = 1 if you want a quick test.`,
+      hint: `Expand ${a}(${term(b)} ${sgn(c)} ${Math.abs(c)}) first, then combine the $x$ terms. An equivalent expression has the same value for every $x$. Check each choice at $x=1$ if you want a quick test.`,
       explanation: [
         `Distribute: ${tex(`${a}(${term(b)} ${sgn(c)} ${Math.abs(c)})=${term(a * b)} ${sgn(c * a)} ${Math.abs(c * a)}`)}.`,
-        `Add ${tex(`${d < 0 ? "-" : "+"} ${term(Math.abs(d))}`)} and combine the x terms: ${tex(lin(m, k))}.`,
+        `Add ${tex(`${d < 0 ? "-" : "+"} ${term(Math.abs(d))}`)} and combine the $x$ terms: ${tex(lin(m, k))}.`,
         `At x = 1 the original is ${a * (b + c) + d}. ${tex(label)} gives ${wrong.m + wrong.k}, so it is the one that is not equivalent.`,
       ],
       choices: choicesFrom(
@@ -436,11 +436,11 @@ function equivalentExpressions(r: Random): Built {
       variant,
       prompt: `Sam checks whether ${tex(`${a}(x + ${b})`)} and ${tex(`x + ${a * b}`)} are equivalent by substituting x = 0. Both expressions give ${a * b}. Which conclusion is correct?`,
       answer: "",
-      hint: `Equivalent expressions match for every value of x. One matching value does not show that. Try a different value, such as x = 1, in both expressions.`,
+      hint: `Equivalent expressions match for every value of $x$. Matching at $x=0$, where both give ${a * b}, does not show that. Try $x=1$ in ${tex(`${a}(x + ${b})`)} and ${tex(`x + ${a * b}`)}.`,
       explanation: [
         `At x = 1 the first expression is ${tex(`${a}(1 + ${b})=${a + a * b}`)}.`,
         `At x = 1 the second expression is ${tex(`1 + ${a * b}=${1 + a * b}`)}.`,
-        `The values differ, so the expressions are not equivalent. Distributing gives ${tex(`${a}(x + ${b})=${a}x + ${a * b}`)}, which has ${a}x, not x.`,
+        `The values differ, so the expressions are not equivalent. Distributing gives ${tex(`${a}(x + ${b})=${a}x + ${a * b}`)}, which has ${tex(`${a}x`)}, not $x$.`,
       ],
       choices: choicesFrom(
         r,
@@ -460,7 +460,7 @@ function equivalentExpressions(r: Random): Built {
             label:
               "Not equivalent, because one expression has parentheses and the other does not.",
             feedback:
-              "Expressions written differently can be equivalent. The test is whether the values match for every x.",
+              "Expressions written differently can be equivalent. The test is whether the values match for every $x$.",
           },
         ],
       ),
@@ -482,7 +482,7 @@ function equivalentExpressions(r: Random): Built {
       },
       {
         label: lin(a + c, k),
-        feedback: `The minus sign applies to ${c}x as well, so the x terms are ${a}x - ${c}x.`,
+        feedback: `The minus sign applies to ${tex(`${c}x`)} as well, so the $x$ terms are ${tex(`${a}x - ${c}x`)}.`,
       },
       {
         label: lin(m, b + c * d),
@@ -490,18 +490,18 @@ function equivalentExpressions(r: Random): Built {
       },
       {
         label: lin(a + c, a * b - c * d),
-        feedback: `Two slips: the minus sign applies to ${c}x as well, and ${c} multiplies -${d} to give +${c * d}.`,
+        feedback: `Two slips: the minus sign applies to ${tex(`${c}x`)} as well, and ${c} multiplies ${tex(`-${d}`)} to give ${tex(`+${c * d}`)}.`,
       },
     ];
     return {
       variant,
       prompt: `Which expression is equivalent to ${tex(original)}?`,
       answer: "",
-      hint: `Distribute ${a} across the first parentheses and -${c} across the second, keeping the sign of each product. Then combine the x terms and the numbers separately.`,
+      hint: `Distribute ${a} across the first parentheses and ${tex(`-${c}`)} across the second, keeping the sign of each product. Then combine the $x$ terms and the numbers separately.`,
       explanation: [
         `${tex(`${a}(x ${sgn(b)} ${Math.abs(b)})=${a}x ${sgn(a * b)} ${Math.abs(a * b)}`)}.`,
         `${tex(`-${c}(x - ${d})=-${c}x + ${c * d}`)}.`,
-        `Combine: x terms ${tex(`${a}x - ${c}x=${term(m)}`)}; numbers ${tex(`${a * b}${c * d >= 0 ? " + " : " - "}${c * d}=${k}`)}. The result is ${tex(lin(m, k))}.`,
+        `Combine: $x$ terms ${tex(`${a}x - ${c}x=${term(m)}`)}; numbers ${tex(`${a * b}${c * d >= 0 ? " + " : " - "}${c * d}=${k}`)}. The result is ${tex(lin(m, k))}.`,
       ],
       choices: choicesFrom(
         r,
@@ -544,7 +544,7 @@ function equivalentExpressions(r: Random): Built {
       },
       {
         label: tex(`${g}(${term(g)} ${sgn(q)} ${Math.abs(q)})`),
-        feedback: `${g}(${term(g)}) is ${g * g}x, but the x term is ${term(m)}. Divide ${m} by ${g}.`,
+        feedback: `${tex(`${g}(${term(g)})`)} is ${tex(`${g * g}x`)}, but the $x$ term is ${tex(term(m))}. Divide ${m} by ${g}.`,
       },
       {
         label: tex(`${p === 1 ? "" : p}(${term(g)} ${sgn(q)} ${Math.abs(q)})`),
@@ -629,7 +629,7 @@ function areaTiling(r: Random): Built {
       figure,
       prompt: `A rectangle is tiled with unit squares: ${rows} rows of ${columns} squares. The heavy line splits it into region A and region B. Which number sentence uses the two regions to find the total number of squares?`,
       answer: "",
-      hint: `Region A is the top ${upper} ${upper === 1 ? "row" : "rows"} and region B is the bottom rows. Count the squares in each region as rows times squares in a row, then add the two regions.`,
+      hint: `Region A is the top ${upper} ${upper === 1 ? "row" : "rows"} and region B is the rest of the ${rows} rows. Each row has ${columns} squares, so count each region as rows times ${columns}, then add the two regions.`,
       explanation: [
         `Region A has ${upper} ${upper === 1 ? "row" : "rows"} of ${columns} squares: ${upper} × ${columns} = ${upper * columns}.`,
         `Region B has ${lower} ${lower === 1 ? "row" : "rows"} of ${columns} squares: ${lower} × ${columns} = ${lower * columns}.`,
@@ -822,7 +822,7 @@ function areaTiling(r: Random): Built {
     figure,
     prompt: `The rectangle is ${a} units tall and ${t + u2} units wide. It is split into parts ${t} and ${u2} units wide. Which number sentence does NOT give the area of the rectangle?`,
     answer: "",
-    hint: `The area is height times width. Work out the value of each choice. Three of them equal the area of the rectangle, and one does not.`,
+    hint: `The area is height ${a} times width ${t + u2}. Work out the value of each choice. Three of them equal the area of the rectangle, and one does not.`,
     explanation: [
       `The area of the rectangle is ${a} × ${t + u2} = ${total} square units, and splitting it gives ${a} × ${t} + ${a} × ${u2} = ${a * t} + ${a * u2} = ${total}.`,
       `${badLabel} = ${badValue}, which is not ${total}.`,
@@ -950,7 +950,7 @@ function estimateReasonableness(r: Random): Built {
       variant,
       prompt: `A bakery fills ${t1} trays with ${n1} rolls each in the morning and ${t2} trays with ${n2} rolls each in the afternoon. Round the number on each tray to the nearest ten. Which is the best estimate of the total number of rolls?`,
       answer: "",
-      hint: `Estimate the morning rolls and the afternoon rolls separately, using the rounded number on each tray, and then combine the two estimates.`,
+      hint: `Estimate the ${t1} morning trays and the ${t2} afternoon trays separately: round ${n1} and ${n2} to the nearest ten, multiply by the trays, then combine the two estimates.`,
       explanation: [
         `Morning: ${t1} × ${round10(n1)} = ${commas(e1)}.`,
         `Afternoon: ${t2} × ${round10(n2)} = ${commas(e2)}.`,
@@ -1121,7 +1121,7 @@ function unitChain(r: Random): Built {
     return numeric(
       `A cyclist rides at a steady ${s} kilometers per hour for ${m} minutes. Given 1 kilometer = 1000 meters and 1 hour = 60 minutes, how many meters does the cyclist ride?`,
       meters,
-      `Speed is in kilometers per hour but time is in minutes. Change the minutes to hours (or the speed to meters per minute), then multiply and change kilometers to meters.`,
+      `Speed is ${s} kilometers per hour but time is ${m} minutes. Change the minutes to hours (or the speed to meters per minute), then multiply and change kilometers to meters.`,
       [
         `${m} minutes = ${m}/60 hour.`,
         `Distance in kilometers: ${s} × ${m}/60 = ${(s * m) / 60} km.`,

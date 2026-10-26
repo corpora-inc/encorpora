@@ -107,7 +107,7 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
       "Residuals of both signs are normal. The shape of the pattern, not the signs, tells whether the model type is wrong. Always subtract in the order observed minus predicted.",
   },
   "function-graph-features": {
-    goal: "Read the intercept, asymptote, domain, range, direction or end behavior of an exponential or logarithmic function from its equation or graph.",
+    goal: "Read the intercept, asymptote, domain, range or end behavior of an exponential or logarithmic function from its equation or graph.",
     intuition:
       "An exponential function $a\\cdot b^x+k$ levels off at the height $k$ in one direction and grows or falls without bound in the other. A logarithmic function $a\\log_b(x-h)+k$ is built from the inverse of an exponential function: it lives to the right of a vertical line $x=h$ and climbs or falls slowly.",
     terms: [
@@ -125,12 +125,12 @@ export const advancedMathGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "For $a\\cdot b^x+k$: the horizontal asymptote is $y=k$; the y-intercept is $a+k$; the range is above $k$ when $a>0$ and below $k$ when $a<0$. It is increasing when $a>0,b>1$ or $a<0,b<1$.",
-      "For $a\\log_b(x-h)+k$: the input must be positive, so the domain is $x>h$ and the vertical asymptote is $x=h$. When $k=0$ the x-intercept is $(h+1,0)$.",
+      "For $a\\cdot b^x+k$: the horizontal asymptote is $y=k$; the $y$-intercept is $a+k$; the range is above $k$ when $a>0$ and below $k$ when $a<0$. It is increasing when $a>0,b>1$ or $a<0,b<1$.",
+      "For $a\\log_b(x-h)+k$: the input must be positive, so the domain is $x>h$ and the vertical asymptote is $x=h$. When $k=0$ the $x$-intercept is $(h+1,0)$.",
       "For end behavior, decide which direction makes $b^x$ grow and which makes it approach 0. Apply the sign of $a$ and the shift $k$. On a graph, read each feature from the grid.",
     ],
     watch:
-      "The asymptote is set by the added constant, not by the y-intercept. In $\\log_b(x+3)$ the shift moves the asymptote to $x=-3$, the opposite sign of the number written.",
+      "The asymptote is set by the added constant, not by the $y$-intercept. In $\\log_b(x+3)$ the shift moves the asymptote to $x=-3$, the opposite sign of the number written.",
   },
 };
 
@@ -248,7 +248,7 @@ export const advancedMathGapLessons: Lesson[] = [
       },
       {
         stage: "formal",
-        title: "Why continuous compounding uses e",
+        title: "Why continuous compounding uses Euler's number",
         paragraphs: [
           "With $n$ periods per year, the yearly factor is $(1+r/n)^n$. As $n$ grows without bound this approaches $e^{r}$, because $(1+x/n)^n\\to e^x$. Over $t$ years the factor is $e^{rt}$, so $A=Pe^{rt}$.",
         ],
@@ -355,7 +355,7 @@ export const advancedMathGapLessons: Lesson[] = [
         stage: "method",
         title: "Choosing the type from a table",
         paragraphs: [
-          "For y-values at equally spaced x-values: if the differences are equal, the type is linear. If they are not but the second differences are equal, the type is quadratic. If the ratios of consecutive y-values are equal, the type is exponential. For the y-values 2, 6, 18, 54 the differences are 4, 12, 36 and the ratios are all 3, so the data are exponential.",
+          "For $y$-values at equally spaced $x$-values: if the differences are equal, the type is linear. If they are not but the second differences are equal, the type is quadratic. If the ratios of consecutive $y$-values are equal, the type is exponential. For the $y$-values 2, 6, 18, 54 the differences are 4, 12, 36 and the ratios are all 3, so the data are exponential.",
           "A cubic such as $x^3+c$ has constant third differences only; it matches none of the three types.",
         ],
       },
@@ -398,11 +398,11 @@ export const advancedMathGapLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "For $f(x)=2\\cdot3^x-4$, find the horizontal asymptote, the range, the y-intercept and the end behavior.",
+        "For $f(x)=2\\cdot3^x-4$, find the horizontal asymptote, the range, the $y$-intercept and the end behavior.",
       steps: [
         "The power $3^x$ approaches 0 as $x\\to-\\infty$, so $f$ approaches $-4$. The horizontal asymptote is $y=-4$.",
         "The coefficient 2 is positive, so $f$ stays above $-4$. The range is $y>-4$.",
-        "At $x=0$: $f(0)=2\\cdot1-4=-2$. The y-intercept is $(0,-2)$.",
+        "At $x=0$: $f(0)=2\\cdot1-4=-2$. The $y$-intercept is $(0,-2)$.",
         "Since $b=3>1$ and $a>0$, $f\\to\\infty$ as $x\\to\\infty$ and $f\\to-4$ as $x\\to-\\infty$. The function is increasing.",
       ],
       answer: "$y=-4$; range $y>-4$; $(0,-2)$; increasing",
@@ -412,8 +412,8 @@ export const advancedMathGapLessons: Lesson[] = [
         stage: "method",
         title: "Read each feature",
         paragraphs: [
-          "Exponential $a\\cdot b^x+k$: asymptote $y=k$; y-intercept $a+k$; range above $k$ if $a>0$, below if $a<0$; increasing if $a>0$ with $b>1$, or $a<0$ with $0<b<1$.",
-          "Logarithmic $a\\log_b(x-h)+k$: domain $x>h$; vertical asymptote $x=h$. With $k=0$ the graph crosses the x-axis at $(h+1,0)$, because $\\log_b(1)=0$. For $\\log_2(x+3)$, $h=-3$: the domain is $x>-3$.",
+          "Exponential $a\\cdot b^x+k$: asymptote $y=k$; $y$-intercept $a+k$; range above $k$ if $a>0$, below if $a<0$; increasing if $a>0$ with $b>1$, or $a<0$ with $0<b<1$.",
+          "Logarithmic $a\\log_b(x-h)+k$: domain $x>h$; vertical asymptote $x=h$. With $k=0$ the graph crosses the $x$-axis at $(h+1,0)$, because $\\log_b(1)=0$. For $\\log_2(x+3)$, $h=-3$: the domain is $x>-3$.",
         ],
       },
       {
@@ -425,11 +425,11 @@ export const advancedMathGapLessons: Lesson[] = [
       },
     ],
     pitfalls: [
-      "The asymptote is the added constant $k$, not the y-intercept.",
+      "The asymptote is the added constant $k$, not the $y$-intercept.",
       "In $\\log_b(x+3)$ the asymptote is $x=-3$, the opposite sign of the 3 written.",
       "A shift outside the logarithm moves the graph up or down and does not change the domain.",
     ],
     parentGuide:
-      "Sketch $y=2^x$ and $y=2^x-3$ side by side on the same grid and ask where each flattens out and where each crosses the y-axis.",
+      "Sketch $y=2^x$ and $y=2^x-3$ side by side on the same grid and ask where each flattens out and where each crosses the $y$-axis.",
   },
 ];

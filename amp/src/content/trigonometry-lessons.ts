@@ -3,17 +3,17 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const trigonometryMethods: Record<string, ProblemMethod> = {
   "special-angle-exact-value": {
-    goal: "Given a special angle in degrees or radians, find the exact sine, cosine or tangent, or the point where its terminal side meets the unit circle.",
+    goal: "For a special angle in degrees or radians, find the exact sine, cosine or tangent, or where its terminal side meets the unit circle.",
     intuition:
-      "The unit circle has radius 1. An angle $\\theta$ starts on the positive x-axis and turns counterclockwise (or clockwise if negative). Where it stops, the point on the circle is $(\\cos\\theta,\\sin\\theta)$. The size of each coordinate depends only on the acute angle between the terminal side and the x-axis; the quadrant decides the signs.",
+      "The unit circle has radius 1. An angle $\\theta$ starts on the positive $x$-axis and turns counterclockwise (or clockwise if negative). Where it stops, the point on the circle is $(\\cos\\theta,\\sin\\theta)$. The size of each coordinate depends only on the acute angle between the terminal side and the $x$-axis; the quadrant decides the signs.",
     terms: [
       [
         "terminal side",
-        "The ray where the angle stops after turning from the positive x-axis.",
+        "The ray where the angle stops after turning from the positive $x$-axis.",
       ],
       [
         "reference angle",
-        "The acute angle between the terminal side and the x-axis.",
+        "The acute angle between the terminal side and the $x$-axis.",
       ],
       [
         "coterminal angles",
@@ -27,12 +27,12 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
       "Give the value the sign of that function in the quadrant. Tangent is undefined where $x=0$.",
     ],
     watch:
-      "Measure the reference angle from the x-axis, never from the y-axis. On the y-axis the x-coordinate is 0, so tangent is undefined there, not 0.",
+      "Measure the reference angle from the $x$-axis, never from the $y$-axis. On the $y$-axis the $x$-coordinate is 0, so tangent is undefined there, not 0.",
   },
   "trig-symmetry-value": {
     goal: "Given one value of $\\sin\\theta$ or $\\cos\\theta$, find the value of the function at $-\\theta$, $\\pi\\pm\\theta$ or $\\theta$ plus whole turns.",
     intuition:
-      "On the unit circle the angle $\\theta$ marks a point $(\\cos\\theta,\\sin\\theta)$. Turning the angle to $-\\theta$ reflects the point across the x-axis. Adding $\\pi$ moves it to the opposite side of the circle. Adding $2\\pi$ returns to the same point. Each move changes the coordinates in a simple, predictable way.",
+      "On the unit circle the angle $\\theta$ marks a point $(\\cos\\theta,\\sin\\theta)$. Turning the angle to $-\\theta$ reflects the point across the $x$-axis. Adding $\\pi$ moves it to the opposite side of the circle. Adding $2\\pi$ returns to the same point. Each move changes the coordinates in a simple, predictable way.",
     terms: [
       [
         "odd function",
@@ -50,7 +50,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
       "If the question asks for the other function, find it from $\\sin^2\\theta+\\cos^2\\theta=1$ and the stated quadrant before applying the rule.",
     ],
     watch:
-      "Sine and cosine do not both change sign under reflection. Test the rule on a point: if $\\theta$ is in quadrant I, the reflected point is in quadrant IV, where the y-coordinate is negative but the x-coordinate is the same.",
+      "Sine and cosine do not both change sign under reflection. Test the rule on a point: if $\\theta$ is in quadrant I, the reflected point is in quadrant IV, where the $y$-coordinate is negative but the $x$-coordinate is the same.",
   },
   "sinusoid-parameters": {
     goal: "Read amplitude, period, midline, extreme values or horizontal shift from $y=A\\sin(B(x-h))+k$, or choose the equation of a graph.",
@@ -207,7 +207,7 @@ export const trigonometryPrinciples: Record<string, string> = {
   "special-angle-exact-value":
     "For an angle $\\theta$ in standard position, the terminal side meets the unit circle at $(\\cos\\theta,\\sin\\theta)$ and $\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}$ when $\\cos\\theta\\ne0$. The values for reference angles $30^\\circ$, $45^\\circ$ and $60^\\circ$ come from the $30$-$60$-$90$ and $45$-$45$-$90$ triangles, and the signs from the quadrant.",
   "trig-symmetry-value":
-    "Reflection across the x-axis gives $\\sin(-\\theta)=-\\sin\\theta$ and $\\cos(-\\theta)=\\cos\\theta$. A half turn gives $\\sin(\\theta+\\pi)=-\\sin\\theta$ and $\\cos(\\theta+\\pi)=-\\cos\\theta$. Also $\\sin(\\pi-\\theta)=\\sin\\theta$, $\\cos(\\pi-\\theta)=-\\cos\\theta$, and sine and cosine have period $2\\pi$.",
+    "Reflection across the $x$-axis gives $\\sin(-\\theta)=-\\sin\\theta$ and $\\cos(-\\theta)=\\cos\\theta$. A half turn gives $\\sin(\\theta+\\pi)=-\\sin\\theta$ and $\\cos(\\theta+\\pi)=-\\cos\\theta$. Also $\\sin(\\pi-\\theta)=\\sin\\theta$, $\\cos(\\pi-\\theta)=-\\cos\\theta$, and sine and cosine have period $2\\pi$.",
   "sinusoid-parameters":
     "For $y=A\\sin(B(x-h))+k$ with $B>0$: amplitude $|A|$, period $\\frac{2\\pi}{B}$, midline $y=k$, horizontal shift $h$, maximum $k+|A|$ and minimum $k-|A|$. A negative $A$ reflects the graph across its midline.",
   "inverse-trig-value":
@@ -272,8 +272,8 @@ export const trigonometryLessons: Lesson[] = [
     ],
     "The unit circle gives every angle a point",
     [
-      "You need to recall the sides of a $30^\\circ$-$60^\\circ$-$90^\\circ$ triangle and a $45^\\circ$-$45^\\circ$-$90^\\circ$ triangle. The unit circle has radius 1. An angle $\\theta$ turns counterclockwise from the positive x-axis, and the point where it stops on the circle is $(\\cos\\theta,\\sin\\theta)$. Radians measure the turn by arc length: $\\pi$ radians is a half turn.",
-      "Inside the first quadrant, the triangle made by the point, the x-axis and the origin has hypotenuse 1, so its legs are the cosine and sine. Other quadrants reuse the same triangle, reflected, so only the signs change.",
+      "You need to recall the sides of a $30^\\circ$-$60^\\circ$-$90^\\circ$ triangle and a $45^\\circ$-$45^\\circ$-$90^\\circ$ triangle. The unit circle has radius 1. An angle $\\theta$ turns counterclockwise from the positive $x$-axis, and the point where it stops on the circle is $(\\cos\\theta,\\sin\\theta)$. Radians measure the turn by arc length: $\\pi$ radians is a half turn.",
+      "Inside the first quadrant, the triangle made by the point, the $x$-axis and the origin has hypotenuse 1, so its legs are the cosine and sine. Other quadrants reuse the same triangle, reflected, so only the signs change.",
     ],
     {
       prompt: "Find the exact value of $\\sin\\left(\\frac{5\\pi}{6}\\right)$.",
@@ -281,21 +281,21 @@ export const trigonometryLessons: Lesson[] = [
         "$\\frac{5\\pi}{6}=150^\\circ$, between $90^\\circ$ and $180^\\circ$, so the terminal side is in quadrant II.",
         "The reference angle is $\\pi-\\frac{5\\pi}{6}=\\frac{\\pi}{6}$, that is $30^\\circ$.",
         "At the reference angle, $\\sin\\frac{\\pi}{6}=\\frac12$.",
-        "In quadrant II the y-coordinate is positive, so sine is positive. Check: the point is $\\left(-\\frac{\\sqrt3}{2},\\frac12\\right)$, and $\\left(-\\frac{\\sqrt3}{2}\\right)^2+\\left(\\frac12\\right)^2=1$.",
+        "In quadrant II the $y$-coordinate is positive, so sine is positive. Check: the point is $\\left(-\\frac{\\sqrt3}{2},\\frac12\\right)$, and $\\left(-\\frac{\\sqrt3}{2}\\right)^2+\\left(\\frac12\\right)^2=1$.",
       ],
       answer: "$\\frac12$",
     },
     "From angle to exact value",
     [
       "Reduce the angle by whole turns, name the quadrant and take the reference angle. The sizes are $\\frac12,\\frac{\\sqrt2}{2},\\frac{\\sqrt3}{2}$ for $30^\\circ,45^\\circ,60^\\circ$ in sine (reversed for cosine), and $\\frac{\\sqrt3}{3},1,\\sqrt3$ in tangent.",
-      "Signs: sine is positive in quadrants I and II, cosine in I and IV, tangent in I and III. On an axis the point is $(\\pm1,0)$ or $(0,\\pm1)$; tangent is undefined where the x-coordinate is 0.",
+      "Signs: sine is positive in quadrants I and II, cosine in I and IV, tangent in I and III. On an axis the point is $(\\pm1,0)$ or $(0,\\pm1)$; tangent is undefined where the $x$-coordinate is 0.",
     ],
     "Why the signs and sizes work",
     [
       "A reflection across an axis keeps distances, so the reference angle gives the same lengths of coordinates. The sign of each coordinate is the sign of the position on its axis. Since $\\tan\\theta=\\frac{y}{x}$, it is undefined exactly when $x=0$, at $\\frac{\\pi}{2}+n\\pi$.",
     ],
     [
-      "Measure the reference angle from the x-axis, not the y-axis.",
+      "Measure the reference angle from the $x$-axis, not the $y$-axis.",
       "Reduce angles larger than a full turn before choosing the quadrant.",
       "Tangent at $90^\\circ$ and $270^\\circ$ is undefined, not 0.",
     ],
@@ -311,14 +311,14 @@ export const trigonometryLessons: Lesson[] = [
     ],
     "Moving the angle moves the point",
     [
-      "You need the unit circle: angle $\\theta$ marks the point $(\\cos\\theta,\\sin\\theta)$. Replacing $\\theta$ by $-\\theta$ reflects that point across the x-axis, keeping the x-coordinate and reversing the y-coordinate. Adding $\\pi$ turns the point halfway around the circle, reversing both coordinates. Adding $2\\pi$ returns to the same point.",
+      "You need the unit circle: angle $\\theta$ marks the point $(\\cos\\theta,\\sin\\theta)$. Replacing $\\theta$ by $-\\theta$ reflects that point across the $x$-axis, keeping the $x$-coordinate and reversing the $y$-coordinate. Adding $\\pi$ turns the point halfway around the circle, reversing both coordinates. Adding $2\\pi$ returns to the same point.",
     ],
     {
       prompt:
         "Given $\\sin\\theta=0.6$ and $\\theta$ acute, find $\\cos(\\pi-\\theta)$.",
       steps: [
         "Because $\\theta$ is acute, $\\cos\\theta>0$ and $\\cos^2\\theta=1-0.36=0.64$, so $\\cos\\theta=0.8$.",
-        "The angle $\\pi-\\theta$ reflects the point across the y-axis: the x-coordinate changes sign and the y-coordinate stays.",
+        "The angle $\\pi-\\theta$ reflects the point across the $y$-axis: the $x$-coordinate changes sign and the $y$-coordinate stays.",
         "So $\\cos(\\pi-\\theta)=-\\cos\\theta=-0.8$.",
         "Check: $\\pi-\\theta$ is in quadrant II, where cosine is negative.",
       ],
@@ -333,7 +333,7 @@ export const trigonometryLessons: Lesson[] = [
       "A function is odd if $f(-x)=-f(x)$ and even if $f(-x)=f(x)$. Sine is odd and cosine is even. Sine and cosine have period $2\\pi$; tangent has period $\\pi$. The supplement rules follow: $\\sin(\\pi-\\theta)=\\sin\\theta$ and $\\cos(\\pi-\\theta)=-\\cos\\theta$.",
     ],
     [
-      "Do not reverse the sign of both coordinates when only reflecting across the x-axis.",
+      "Do not reverse the sign of both coordinates when only reflecting across the $x$-axis.",
       "Find the other function's size from $\\sin^2\\theta+\\cos^2\\theta=1$ before using it.",
       "Tangent repeats every $\\pi$, not every $2\\pi$.",
     ],
@@ -367,14 +367,14 @@ export const trigonometryLessons: Lesson[] = [
       "From the equation: amplitude $|A|$; midline $y=k$; period $\\frac{2\\pi}{B}$; shift: factor $B$ out and read $x-h$. Maximum $k+|A|$, minimum $k-|A|$.",
       "From a graph: find the highest and lowest points to get midline and $|A|$, measure one cycle for the period and $B=\\frac{2\\pi}{\\text{period}}$, and see whether the curve first rises or falls from the midline at $x=0$ to choose the sign of $A$.",
     ],
-    "Why $B$ divides $2\\pi$",
+    "Why a full turn is divided by the frequency factor",
     [
       "The sine repeats when its input increases by $2\\pi$. The input is $B(x-h)$, so $x$ must increase by $\\Delta x$ with $B\\,\\Delta x=2\\pi$, giving period $\\frac{2\\pi}{B}$. Replacing $x$ by $x-h$ shifts every point $h$ units right.",
     ],
     [
       "Amplitude is a distance, never negative.",
       "Factor $B$ out before reading the shift.",
-      "The midline is $y=k$, not the x-axis unless $k=0$.",
+      "The midline is $y=k$, not the $x$-axis unless $k=0$.",
     ],
     "Ask the learner to sketch one cycle after finding midline, amplitude and period.",
   ),
@@ -426,7 +426,7 @@ export const trigonometryLessons: Lesson[] = [
     ],
     "Which angles have this value?",
     [
-      "You need the unit-circle values at special angles. An equation such as $2\\sin x=\\sqrt3$ asks for the angles $x$ whose sine is $\\frac{\\sqrt3}{2}$. The sine is the height of the point on the unit circle. A given height is reached at two points of the circle, mirrored across the y-axis, unless it is the top or bottom, where there is one point.",
+      "You need the unit-circle values at special angles. An equation such as $2\\sin x=\\sqrt3$ asks for the angles $x$ whose sine is $\\frac{\\sqrt3}{2}$. The sine is the height of the point on the unit circle. A given height is reached at two points of the circle, mirrored across the $y$-axis, unless it is the top or bottom, where there is one point.",
     ],
     {
       prompt: "Solve $2\\sin x=\\sqrt3$ on $0\\le x<2\\pi$.",
