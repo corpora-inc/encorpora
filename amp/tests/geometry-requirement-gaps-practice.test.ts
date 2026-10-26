@@ -237,7 +237,7 @@ test("arc-sector-derivation answers match independent arithmetic", () => {
       const rr = num(m[2]!);
       // area = (theta / 2pi) * pi r^2 = (p0/q0) * r^2 / 2 times pi
       const expected: [number, number] = [p0 * rr * rr, 2 * q0];
-      const label = c.correctLabel.replace(/^\$/, "").replace(/\$ cm.*$/, "");
+      const label = c.correctLabel.replace(/^\$/, "").replace(/\$ (?:cm|square centimeters).*$/, "");
       assert.ok(equalRational(coefficient(label), expected), label);
     } else {
       const m =
@@ -245,7 +245,7 @@ test("arc-sector-derivation answers match independent arithmetic", () => {
           p,
         )!;
       const area = (num(m[1]!) * num(m[2]!) ** 2) / 2;
-      assert.equal(c.correctLabel, `$${area}$ cm$^2$`);
+      assert.equal(c.correctLabel, `$${area}$ square centimeters`);
     }
   }
   assert.equal(seen.size, 6);
@@ -484,7 +484,7 @@ test("congruence and similarity sequences really map the drawn triangles", () =>
       } else if (c.variant === "predict-image") {
         const at = scenePoints(c);
         const p = c.problem.public.prompt;
-        const m = /: (.*)\. What are the coordinates of ([DEF])\?$/.exec(p)!;
+        const m = /: (.*)\. What are the coordinates of \$?([DEF])\$?\?$/.exec(p)!;
         const index = "DEF".indexOf(m[2]!);
         const original = at.get("ABC"[index]!)!;
         const image = interpret(m[1]!).reduce((acc, op) => op(acc), original);

@@ -51,7 +51,7 @@ export const complexPlaneOperationsTemplate = meta(
   "Complex arithmetic in the plane",
   "complex-plane",
   0.4,
-  "Interpret sums, differences, conjugates, multiplication by i, and multiplication by a modulus and argument as moves in the complex plane.",
+  "Interpret sums, differences, conjugates, multiplication by $i$, and multiplication by a modulus and argument as moves in the complex plane.",
   "9–12",
   "scenes-v1",
 );
@@ -60,7 +60,7 @@ export const conditionalEverydayTemplate = meta(
   "Conditional probability and independence in everyday situations",
   "conditional-probability",
   0.3,
-  "Distinguish P(A given B) from P(B given A), read conditional statements in words, and decide independence from described rates.",
+  "Distinguish $P(A \\mid B)$ from $P(B \\mid A)$, read conditional statements in words, and decide independence from described rates.",
 );
 export const congruenceRigidMotionTemplate = meta(
   "congruence-by-rigid-motion",
@@ -356,7 +356,7 @@ function arcSectorDerivation(r: Random): Built {
       [1, 6],
     ] as const);
     const rad = r(2, 9);
-    const area = (t: string) => `${M(t)} cm$^2$`;
+    const area = (t: string) => `${M(t)} square centimeters`;
     const correct = area(piMul(p * rad * rad, 2 * q));
     return {
       variant,
@@ -396,7 +396,7 @@ function arcSectorDerivation(r: Random): Built {
   const rad = r(2, 10);
   const thetaText = `${theta2 / 2}`;
   const quarters = (v: number) => `${v / 4}`; // exact: v is a count of quarters
-  const area = (t: string) => `${M(t)} cm$^2$`;
+  const area = (t: string) => `${M(t)} square centimeters`;
   const correctQ = theta2 * rad * rad;
   return {
     variant,
@@ -935,7 +935,7 @@ function conditionalEveryday(r: Random): Built {
       return {
         variant,
         prompt: `${events} Which expression states: "${sentence[kind]}"`,
-        hint: `Decide which group the percentage is taken of: everyone, only those ${s.rel} ${s.aWho}, or only those ${s.rel} ${s.bWho}. The event that defines the group goes after the vertical bar in $P(\\cdot\\mid\\cdot)$.`,
+        hint: `Decide which group the ${pct(p)} is taken of: everyone, only those ${s.rel} ${s.aWho}, or only those ${s.rel} ${s.bWho}. The event that defines the group goes after the vertical bar in $P(\\cdot\\mid\\cdot)$.`,
         explanation: [
           `The statement gives ${pct(p)} as a proportion of ${kind === "a-given-b" ? `those ${s.rel} ${s.bWho}` : kind === "b-given-a" ? `those ${s.rel} ${s.aWho}` : "all " + s.group}.`,
           kind === "a-given-b" || kind === "b-given-a"
@@ -955,7 +955,7 @@ function conditionalEveryday(r: Random): Built {
     return {
       variant,
       prompt: `${events} If $${notation[kind]}=${dec(p)}$, which statement is true?`,
-      hint: `In $P(X\\mid Y)$ the event after the bar, $Y$, names the group you restrict to. Read the given probability as "among ... , the share that ...".`,
+      hint: `In $P(X\\mid Y)$ the event after the bar, $Y$, names the group you restrict to. Read the given probability ${dec(p)} as "among ... , the share that ...".`,
       explanation: [
         `The probability $${notation[kind]}$ is read ${kind === "a-given-b" ? "within the group where $B$ happens" : kind === "b-given-a" ? "within the group where $A$ happens" : kind === "both" ? "over everyone, for both events together" : "over everyone, for event $A$"}.`,
         `With the value ${dec(p)}, the share is ${pct(p)}.`,
@@ -1325,7 +1325,7 @@ function congruenceRigidMotion(r: Random): Built {
     return {
       variant,
       prompt: `A sequence of rigid motions maps triangle $ABC$ onto triangle $DEF$, with $A\\to D$, $B\\to E$ and $C\\to F$. In triangle $ABC$, $${sideName[sideIdx]}=${length}$ cm and $\\angle ${NAMES_1[vertexIdx]}=${angle}^\\circ$. Which statement must be true?`,
-      hint: `A rigid motion carries each vertex to its image and keeps every length and angle. Use the arrows $A\\to D$, $B\\to E$, $C\\to F$ to find the images of the two endpoints of $${sideName[sideIdx]}$ and of vertex ${NAMES_1[vertexIdx]}.`,
+      hint: `A rigid motion carries each vertex to its image and keeps every length and angle. Use the arrows $A\\to D$, $B\\to E$, $C\\to F$ to find the images of the two endpoints of $${sideName[sideIdx]}$ and of vertex $${NAMES_1[vertexIdx]}$. Then match the ${length} cm length and the $${angle}^\\circ$ angle to their images.`,
       explanation: [
         `Rigid motions preserve length and angle measure, so corresponding parts are equal.`,
         `Side $${sideName[sideIdx]}$ goes to side $${sideImage[sideIdx]}$, and angle ${NAMES_1[vertexIdx]} goes to angle ${NAMES_2[vertexIdx]}.`,
@@ -1419,7 +1419,7 @@ function congruenceRigidMotion(r: Random): Built {
   const orientation =
     cross(from) > 0 === cross(to) > 0
       ? "both triangles run the same way around"
-      : "the order A, B, C runs the opposite way around from D, E, F";
+      : "the order $A$, $B$, $C$ runs the opposite way around from $D$, $E$, $F$";
   if (variant === "predict-image") {
     const which = r(0, 2);
     const original = from[which]!;
@@ -1479,15 +1479,15 @@ function congruenceRigidMotion(r: Random): Built {
       return congruenceRigidMotion(r);
     return {
       variant,
-      prompt: `Triangle $ABC$ is shown. A sequence of rigid motions maps it onto triangle $DEF$ with $A\\to D$, $B\\to E$, $C\\to F$: ${lc(sequenceText(ops))}. What are the coordinates of ${NAMES_2[which]}?`,
+      prompt: `Triangle $ABC$ is shown. A sequence of rigid motions maps it onto triangle $DEF$ with $A\\to D$, $B\\to E$, $C\\to F$: ${lc(sequenceText(ops))}. What are the coordinates of $${NAMES_2[which]}$?`,
       figure: sceneFigure(
         drawn.scene({ title: "Triangle ABC on a coordinate grid" }),
       ),
-      hint: `Apply the first motion alone to $${NAMES_1[which]}${ptText(original)}$ and write the new coordinates. Then apply the second motion to that point. A reflection or rotation about the origin only changes signs or swaps the coordinates.`,
+      hint: `The motions are ${lc(sequenceText(ops))}. Apply the first motion alone to $${NAMES_1[which]}${ptText(original)}$ and write the new coordinates. Then apply the second motion to that point. A reflection or rotation about the origin only changes signs or swaps the coordinates.`,
       explanation: [
         `Start from $${NAMES_1[which]}${ptText(original)}$.`,
         `After the first motion: $${ptText(run([motion], original))}$.`,
-        `After the second motion: $${ptText(to[which]!)}$. So ${NAMES_2[which]} is at $${ptText(to[which]!)}$, and since rigid motions preserve length and angle, $DEF\\cong ABC$.`,
+        `After the second motion: $${ptText(to[which]!)}$. So $${NAMES_2[which]}$ is at $${ptText(to[which]!)}$, and since rigid motions preserve length and angle, $DEF\\cong ABC$.`,
       ],
       correct,
       wrong: wrongImages.map(([p, feedback]) => ({
@@ -1746,7 +1746,7 @@ function aaSimilarity(r: Random): Built {
     return {
       variant,
       prompt: `Triangle $ABC$ has $\\angle A=${x}^\\circ$ and $\\angle B=${y}^\\circ$. In triangle $DEF$, $\\angle ${NAMES_2[order[0]]}=${x}^\\circ$ and $\\angle ${NAMES_2[order[1]]}=${y}^\\circ$. The triangles are similar by AA. What is $\\angle ${target}$?`,
-      hint: `The angles of a triangle add to $180^\\circ$. Use the two angles given for $DEF$ to find the third angle of that triangle.`,
+      hint: `The angles of a triangle add to $180^\\circ$. Use the two angles given for $DEF$, $${x}^\\circ$ and $${y}^\\circ$, to find the third angle of that triangle.`,
       explanation: [
         `In $DEF$ the two known angles are ${x}° and ${y}°, so the third is $180^\\circ-${x}^\\circ-${y}^\\circ=${third}^\\circ$.`,
         `The unknown angle is the remaining vertex, $${target}$, so $\\angle ${target}=${third}^\\circ$.`,
@@ -1869,7 +1869,7 @@ function aaSimilarity(r: Random): Built {
   const missDEF = [0, 1, 2].find((i) => !shownDEF.includes(i as never))!;
   const fb3 =
     "A triangle's angles add to 180°, so two angles determine the third. Both triangles' angles are known.";
-  const hint = `Find the third angle of each triangle: the angles of a triangle add to $180^\\circ$. Then compare the three angles of $ABC$ with the three angles of $DEF$.`;
+  const hint = `Find the third angle of each triangle: the angles of a triangle add to $180^\\circ$, so subtract ${shownABC.map((i) => `${abc[i]}°`).join(" and ")} for $ABC$ and ${shownDEF.map((i) => `${def[i]}°`).join(" and ")} for $DEF$. Then compare the three angles of $ABC$ with the three angles of $DEF$.`;
   const explainThirds = `The missing angle of $ABC$ is $\\angle ${NAMES_1[missABC]}=${thirdOf(abc, shownABC)}^\\circ$, and the missing angle of $DEF$ is $\\angle ${NAMES_2[missDEF]}=${thirdOf(def, shownDEF)}^\\circ$.`;
   if (similar) {
     const imageFor = (i: number) => def.indexOf(abc[i]!);
@@ -2101,7 +2101,7 @@ function conicFoci(r: Random): Built {
     return {
       variant,
       prompt: `An ellipse centered at the origin has foci ${fociText}. For every point on it, the sum of the distances to the two foci is ${2 * a}. Which equation describes the ellipse?`,
-      hint: `The constant sum of the distances equals $2a$, the length of the major axis, so you can find $a$. Then use the relation among $a$, $b$ and $c$ for an ellipse to find $b^2$. The major axis lies along the line through the foci.`,
+      hint: `The constant sum of the distances, ${2 * a}, equals $2a$, the length of the major axis, so you can find $a$; the foci give $c=${c}$. Then use the relation among $a$, $b$ and $c$ for an ellipse to find $b^2$. The major axis lies along the line through the foci.`,
       explanation: [
         `The sum of distances is $2a=${2 * a}$, so $a=${a}$ and $a^2=${a * a}$. The foci give $c=${c}$.`,
         `For an ellipse $c^2=a^2-b^2$, so $b^2=a^2-c^2=${a * a}-${c * c}=${b2}$.`,
@@ -2152,7 +2152,7 @@ function conicFoci(r: Random): Built {
     return {
       variant,
       prompt: `A hyperbola centered at the origin has foci ${fociText}. For every point on it, the difference of the distances to the two foci is ${2 * a} in absolute value. Which equation describes the hyperbola?`,
-      hint: `The constant difference of the distances equals $2a$, so you can find $a$. Then use the relation among $a$, $b$ and $c$ for a hyperbola to find $b^2$. The positive term goes with the axis that contains the foci.`,
+      hint: `The constant difference of the distances, ${2 * a}, equals $2a$, so you can find $a$; the foci give $c=${c}$. Then use the relation among $a$, $b$ and $c$ for a hyperbola to find $b^2$. The positive term goes with the axis that contains the foci.`,
       explanation: [
         `The difference of distances is $2a=${2 * a}$, so $a=${a}$ and $a^2=${a * a}$. The foci give $c=${c}$.`,
         `For a hyperbola $c^2=a^2+b^2$, so $b^2=c^2-a^2=${c * c}-${a * a}=${b2}$.`,
@@ -2496,7 +2496,7 @@ function choosePlot(r: Random): Built {
         summary,
         unit: s.unit,
       },
-      hint: `Read the five marks of the plot: minimum, lower quartile, median, upper quartile, maximum. For each list, order the values and find those five numbers the same way, then compare.`,
+      hint: `Read the five marks of the plot: minimum, lower quartile, median, upper quartile, maximum. For each list of ${n} values, order the values and find those five numbers the same way, then compare.`,
       explanation: [
         `The plot marks the minimum ${summary[0]}, lower quartile ${summary[1]}, median ${summary[2]}, upper quartile ${summary[3]} and maximum ${summary[4]}.`,
         `Order each list. The median is the middle value; the quartiles are the middle values of the lower and upper halves.`,
@@ -2549,7 +2549,7 @@ function choosePlot(r: Random): Built {
     return {
       variant,
       prompt: `The data are ${s.what}: ${shuffled.join(", ")}. A histogram has bars for the intervals ${Array.from({ length: bins }, (_, i) => `$${i * width}\\le x<${(i + 1) * width}$`).join(", ")}. Which list gives the bar heights from left to right?`,
-      hint: `Sort the values into the intervals one at a time. A value equal to the left end of an interval belongs to that interval. Tally each interval, then read the tallies from left to right.`,
+      hint: `Sort the values into the intervals, each ${width} wide, one at a time. A value equal to the left end of an interval belongs to that interval. Tally each interval, then read the tallies from left to right.`,
       explanation: [
         `Place each value in the interval that contains it, using $a\\le x<b$: the left end belongs to the interval.`,
         `The tallies from left to right are ${correct.join(", ")}.`,
@@ -2613,7 +2613,7 @@ function choosePlot(r: Random): Built {
   return {
     variant,
     prompt: `A box plot is drawn for these ${n} values, listed in the order they were recorded: ${values.join(", ")}. Quartiles are the medians of the lower and upper halves of the ordered data, not counting the overall median. Which list gives the minimum, lower quartile, median, upper quartile and maximum, in that order?`,
-    hint: `Put the values in order from least to greatest first. The median is the middle value; the quartiles are the middle values of the lower and upper halves.`,
+    hint: `Put the ${n} values in order from least to greatest first. The median is the middle value; the quartiles are the middle values of the lower and upper halves.`,
     explanation: [
       `In order: ${sorted.join(", ")}.`,
       `The median is the middle value, ${summary[2]}. The lower half is ${sorted.slice(0, (n - 1) / 2).join(", ")}, with median ${summary[1]}. The upper half is ${sorted.slice((n + 1) / 2).join(", ")}, with median ${summary[3]}.`,
