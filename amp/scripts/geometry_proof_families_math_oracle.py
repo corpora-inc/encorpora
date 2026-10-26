@@ -7,8 +7,13 @@ checked against explicit rules keyed to the stated givens.
 import copy
 import math
 import re
+from figure_givens import check_figure_givens
 from fractions import Fraction
 
+FIGURED = frozenset({
+    'line-angle-proof-reasons', 'triangle-theorem-consequences', 'parallelogram-property-consequences',
+    'inscribed-polygon-reasoning', 'triangle-circle-centers', 'tangent-circle-computation',
+})
 SUPPORTED = frozenset({
     'line-angle-proof-reasons', 'triangle-theorem-consequences', 'parallelogram-property-consequences',
     'precise-geometric-definitions', 'transformation-invariant-claims', 'polygon-symmetry-counts',
@@ -647,7 +652,8 @@ DISPATCH = {
 
 def solve(public):
     require(public['templateId'] in SUPPORTED, 'Unexpected geometry-proof family')
-    require(public.get('figure') is None, 'Unexpected figure in a text-only item')
+    require(public.get('figure') is None or public['templateId'] in FIGURED, 'Unexpected figure in a text-only item')
+    check_figure_givens(public, require)
     return DISPATCH[public['templateId']](public)
 
 
