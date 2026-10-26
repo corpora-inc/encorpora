@@ -516,9 +516,13 @@ export const staarAlgebra1 = defineLedger(
       demand:
         "Graph an exponential function with a base of one third and an asymptote",
       status: "partial",
-      templateIds: ["function-graph-features", "exponential-model-value"],
+      templateIds: [
+        "graph-exponential-points",
+        "function-graph-features",
+        "exponential-model-value",
+      ],
       limitations:
-        "STAAR interaction: graphing, 1 point. Related families read features of a given exponential graph or evaluate the model; drawing the curve has no response protocol.",
+        "STAAR interaction: graphing, 1 point. graph-exponential-points places three lattice points of y = a times b to the x for bases 2, 3, one half and one third, graded as exact solutions of the equation; base one third gives only a few whole-number outputs, and the asymptote and the drawn curve are not part of the response.",
     },
     {
       item: {
