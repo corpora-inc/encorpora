@@ -40,6 +40,21 @@ Eight requirements have partial task reconciliation. Decimal practice is reused;
 
 `src/curriculum/texas-grade5.ts` holds the source inventory and reusable task crosswalk. The report validates source, requirement, skill and template-owner references; invalid links cannot establish reconciliation. Texas has a partial source inventory, while statewide coverage, component reconciliation and the complete STAAR assessment inventory remain incomplete. Custom catalog reports do not inherit production state mappings unless explicitly supplied.
 
+## Florida B.E.S.T. source reconciliation
+
+The coverage report includes 486 requirements from [Florida's B.E.S.T. Standards for Mathematics](https://cpalmsmediaprod.blob.core.windows.net/uploads/docs/standards/best/ma/mathbeststandardsfinal.pdf), the July 2025 PDF linked from the [FLDOE mathematics page](https://cdn.fldoe.org/academics/standards/subject-areas/math-science/mathematics/): every benchmark in kindergarten through grade 8 (298), the 181 benchmarks listed for Algebra 1, Geometry, [Algebra 2](https://cdn.fldoe.org/core/fileparse.php/7576/urlt/Algebra-2.pdf) and [Precalculus Honors](https://cdn.fldoe.org/core/fileparse.php/7576/urlt/PrecalcHonors.pdf), and the seven Mathematical Thinking and Reasoning standards. Sources carry URL, retrieval date (2026-10-26) and SHA-256. Summaries are original; benchmark clarifications such as number ranges, denominators and term limits are kept in each requirement's scope.
+
+Each benchmark is related practice with partial scope, a missing family with a concrete demand, or unreviewed. Of 479 benchmarks, 413 have related practice and 66 are missing; none is unreviewed. Related means a template assesses a real subset, checked against generated samples; limitations record range mismatches (for example generators that exceed a stated limit) and every unassessed representation, including drawing, constructing, explaining and graphing. Related practice never certifies a benchmark. The Mathematical Thinking and Reasoning standards are cross-cutting and not assessed by item practice.
+
+| Band                                        | Benchmarks | Related | Missing |
+| ------------------------------------------- | ---------: | ------: | ------: |
+| K-2                                         |         75 |      64 |      11 |
+| 3-5                                         |        109 |      97 |      12 |
+| 6-8                                         |        114 |      94 |      20 |
+| Algebra 1, Geometry, Algebra 2, Precalculus |        181 |     158 |      23 |
+
+Calculus, further data analysis, logic and discrete mathematics, financial literacy and benchmarks used only by other 9-12 courses (156 in all) are out of scope. `src/curriculum/florida/` holds the inventory; the Florida statewide assessment blueprints are not inventoried, and the target stays incomplete.
+
 ## Selection weights
 
 General adaptive learning uses a versioned blend of instructional importance and editorial assessment emphasis. The default gives each equal influence. This reduces extension objectives such as constructions and complex numbers while preserving central arithmetic and algebra weights. `objectiveExposureWeights(blend)` produces the explicit map stored in the compiled practice policy. Policy overrides can replace any objective, skill or family weight. These are editorial estimates, not measured test frequencies.
