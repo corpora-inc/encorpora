@@ -5,6 +5,12 @@ import type {
 } from "./contracts";
 import { table } from "./scene/author";
 import {
+  altitudeFigure,
+  obliqueFigure,
+  sceneFigure,
+  sidesFromAngles,
+} from "./geometry-teaching-figures";
+import {
   assemble,
   random,
   shuffle,
@@ -24,6 +30,7 @@ export const remainingGapTemplates: readonly TemplateMetadata[] = [
     skillId: "triangle-law-proofs",
     gradeBand: "9–12",
     difficultyOffset: 0.4,
+    ...scenes,
     description:
       "Select the altitude relations behind the laws of sines and cosines, the law that starts a triangle with given measurements, and the number of triangles an ambiguous side-side-angle case allows.",
   },
@@ -124,7 +131,17 @@ export function triangleLawCase(seed: string) {
   const c = C.toLowerCase();
   const sides = `side $${a}$ is opposite angle $${A}$, side $${b}$ is opposite angle $${B}$, and side $${c}$ is opposite angle $${C}$`;
   let draft: Draft;
+  let figure: SemanticFigure | undefined;
   if (variant === 0) {
+    figure = sceneFigure(
+      altitudeFigure({
+        names: [A, B, C],
+        sides: [6, 7, 8],
+        from: 2,
+        hLabel: "h",
+        sideLabels: [c, a, b],
+      }),
+    );
     const ok = `$h=${b}\\sin ${A}$ and $h=${a}\\sin ${B}$`;
     draft = {
       prompt: `In triangle $${A}${B}${C}$, ${sides}. The altitude from $${C}$ meets side $${A}${B}$ at $D$, between $${A}$ and $${B}$, and has length $h$. Which pair of equations gives $h$ in right triangles $${A}D${C}$ and $${B}D${C}$?`,
@@ -151,6 +168,15 @@ export function triangleLawCase(seed: string) {
       ]),
     };
   } else if (variant === 1) {
+    figure = sceneFigure(
+      altitudeFigure({
+        names: [A, B, C],
+        sides: [6, 7, 8],
+        from: 0,
+        sideLabels: [c, a, b],
+        footLabels: [`${a}-u`, "u"],
+      }),
+    );
     const ok = `$u=${b}\\cos ${C}$`;
     draft = {
       prompt: `In triangle $${A}${B}${C}$, ${sides}. The altitude from $${A}$ meets side $${B}${C}$ at $D$, between $${B}$ and $${C}$. Let $u=${C}D$, so $${B}D=${a}-u$. Which expression gives $u$ from right triangle $${A}D${C}$?`,
@@ -177,6 +203,16 @@ export function triangleLawCase(seed: string) {
       ]),
     };
   } else if (variant === 2) {
+    figure = sceneFigure(
+      altitudeFigure({
+        names: [A, B, C],
+        sides: [6, 7, 8],
+        from: 0,
+        hLabel: "h",
+        sideLabels: [c, a, b],
+        footLabels: [`${a}-u`, "u"],
+      }),
+    );
     const law = (angle: string) =>
       `$${c}^2=${a}^2+${b}^2-2${a}${b}\\cos ${angle}$`;
     const ok = law(C);
@@ -218,8 +254,20 @@ export function triangleLawCase(seed: string) {
     const cosinesNote = `The law of cosines starts from three sides or from two sides and the angle between them.`;
     const setup = {
       SAS: () => {
-        const given = `$${a}=${side()}$, $${b}=${side()}$ and the angle between them, $${C}=${r(35, 120)}^\\circ$`;
+        const s1 = side(),
+          s2 = side(),
+          ang = r(35, 120);
+        const given = `$${a}=${s1}$, $${b}=${s2}$ and the angle between them, $${C}=${ang}^\\circ$`;
+        const third = Math.sqrt(
+          s1 * s1 + s2 * s2 - 2 * s1 * s2 * Math.cos((ang * Math.PI) / 180),
+        );
         return {
+          fig: obliqueFigure({
+            names: [A, B, C],
+            sides: [s1, s2, third],
+            shown: { a: String(s1), b: String(s2), c: null },
+            angles: { C: `${ang}°` },
+          }),
           given,
           target: `side $${c}$`,
           ok: `Law of cosines, because the known angle lies between the two known sides`,
@@ -237,6 +285,12 @@ export function triangleLawCase(seed: string) {
         const s2 = side();
         const s3 = r(Math.abs(s1 - s2) + 1, s1 + s2 - 1);
         return {
+          fig: obliqueFigure({
+            names: [A, B, C],
+            sides: [s1, s2, s3],
+            shown: { a: String(s1), b: String(s2), c: String(s3) },
+            angles: { C: null },
+          }),
           given: `$${a}=${s1}$, $${b}=${s2}$ and $${c}=${s3}$`,
           target: `angle $${C}$`,
           ok: `Law of cosines, because all three sides are known and no angle is`,
@@ -249,31 +303,59 @@ export function triangleLawCase(seed: string) {
           first: `ask whether any known angle has its opposite side known`,
         };
       },
-      ASA: () => ({
-        given: `$${A}=${r(30, 80)}^\\circ$, $${B}=${r(30, 80)}^\\circ$ and the side between them, $${c}=${side()}$`,
-        target: `side $${a}$`,
-        ok: `Law of sines, because the third angle $180^\\circ-${A}-${B}$ gives side $${c}$ a known opposite angle`,
-        wrong: `Law of cosines, because it applies to every triangle`,
-        wrongWhy: `${cosinesNote} Only one side is known here. Find the third angle, then use the law of sines.`,
-        steps: [
-          `The angle sum gives $${C}=180^\\circ-${A}-${B}$, which is opposite the known side $${c}$.`,
-          `Now $\\frac{${a}}{\\sin ${A}}=\\frac{${c}}{\\sin ${C}}$ has one unknown, $${a}$.`,
-        ],
-        first: `ask which known side has its opposite angle known`,
-      }),
-      AAS: () => ({
-        given: `$${A}=${r(30, 80)}^\\circ$, $${B}=${r(30, 80)}^\\circ$ and side $${a}=${side()}$ (opposite $${A}$)`,
-        target: `side $${b}$`,
-        ok: `Law of sines, because side $${a}$ and its opposite angle $${A}$ are both known`,
-        wrong: `Law of cosines, because it applies to every triangle`,
-        wrongWhy: `${cosinesNote} Only one side is known here. The known pair $${a}$ and $${A}$ fits the law of sines.`,
-        steps: [
-          `Side $${a}$ and its opposite angle $${A}$ are both known, and angle $${B}$ is opposite the wanted side $${b}$.`,
-          `$\\frac{${b}}{\\sin ${B}}=\\frac{${a}}{\\sin ${A}}$ has one unknown, $${b}$.`,
-        ],
-        first: `ask which known side has its opposite angle known`,
-      }),
+      ASA: () => {
+        const angA = r(30, 80),
+          angB = r(30, 80),
+          sc = side();
+        const sa =
+          (sc * Math.sin((angA * Math.PI) / 180)) /
+          Math.sin(((180 - angA - angB) * Math.PI) / 180);
+        const sd = sidesFromAngles(angA, angB, sa);
+        return {
+          fig: obliqueFigure({
+            names: [A, B, C],
+            sides: [sd.a, sd.b, sd.c],
+            shown: { c: String(sc), a: null },
+            angles: { A: `${angA}°`, B: `${angB}°` },
+          }),
+          given: `$${A}=${angA}^\\circ$, $${B}=${angB}^\\circ$ and the side between them, $${c}=${sc}$`,
+          target: `side $${a}$`,
+          ok: `Law of sines, because the third angle $180^\\circ-${A}-${B}$ gives side $${c}$ a known opposite angle`,
+          wrong: `Law of cosines, because it applies to every triangle`,
+          wrongWhy: `${cosinesNote} Only one side is known here. Find the third angle, then use the law of sines.`,
+          steps: [
+            `The angle sum gives $${C}=180^\\circ-${A}-${B}$, which is opposite the known side $${c}$.`,
+            `Now $\\frac{${a}}{\\sin ${A}}=\\frac{${c}}{\\sin ${C}}$ has one unknown, $${a}$.`,
+          ],
+          first: `ask which known side has its opposite angle known`,
+        };
+      },
+      AAS: () => {
+        const angA = r(30, 80),
+          angB = r(30, 80),
+          sa = side();
+        const sd = sidesFromAngles(angA, angB, sa);
+        return {
+          fig: obliqueFigure({
+            names: [A, B, C],
+            sides: [sd.a, sd.b, sd.c],
+            shown: { a: String(sa), b: null },
+            angles: { A: `${angA}°`, B: `${angB}°` },
+          }),
+          given: `$${A}=${angA}^\\circ$, $${B}=${angB}^\\circ$ and side $${a}=${sa}$ (opposite $${A}$)`,
+          target: `side $${b}$`,
+          ok: `Law of sines, because side $${a}$ and its opposite angle $${A}$ are both known`,
+          wrong: `Law of cosines, because it applies to every triangle`,
+          wrongWhy: `${cosinesNote} Only one side is known here. The known pair $${a}$ and $${A}$ fits the law of sines.`,
+          steps: [
+            `Side $${a}$ and its opposite angle $${A}$ are both known, and angle $${B}$ is opposite the wanted side $${b}$.`,
+            `$\\frac{${b}}{\\sin ${B}}=\\frac{${a}}{\\sin ${A}}$ has one unknown, $${b}$.`,
+          ],
+          first: `ask which known side has its opposite angle known`,
+        };
+      },
     }[kind]();
+    figure = sceneFigure(setup.fig);
     draft = {
       prompt: `A triangle $${A}${B}${C}$ has ${setup.given}. You want ${setup.target}. Which law starts the solution, and why?`,
       answer: "",
@@ -369,7 +451,13 @@ export function triangleLawCase(seed: string) {
       ),
     };
   }
-  return { variant, problem: assemble(meta, seed, r, draft) };
+  return {
+    variant,
+    problem: assemble(meta, seed, r, {
+      ...draft,
+      ...(figure ? { figure } : {}),
+    }),
+  };
 }
 
 /* ------------------------------------------------------------------ */

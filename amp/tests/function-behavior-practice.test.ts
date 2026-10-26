@@ -9,6 +9,7 @@ import {
   polynomialIdentityCase,
   binomialCoefficientCase,
   numberSystemClosureCase,
+  polynomialGraphMatchCase,
 } from "../src/math/function-behavior-practice";
 import { problemLesson } from "../src/content/problem-lessons";
 
@@ -19,6 +20,7 @@ const cases = {
   "polynomial-identity-use": polynomialIdentityCase,
   "binomial-coefficient": binomialCoefficientCase,
   "number-system-closure-classify": numberSystemClosureCase,
+  "polynomial-graph-match": polynomialGraphMatchCase,
 } as const;
 const variantCount: Record<string, number> = {
   "polynomial-behavior-description": 5,
@@ -27,6 +29,7 @@ const variantCount: Record<string, number> = {
   "polynomial-identity-use": 6,
   "binomial-coefficient": 5,
   "number-system-closure-classify": 6,
+  "polynomial-graph-match": 1,
 };
 const skills: Record<string, string> = {
   "polynomial-behavior-description": "polynomial-behavior",
@@ -35,6 +38,7 @@ const skills: Record<string, string> = {
   "polynomial-identity-use": "polynomial-identities",
   "binomial-coefficient": "binomial-theorem",
   "number-system-closure-classify": "number-system-closure",
+  "polynomial-graph-match": "polynomial-behavior",
 };
 
 for (const [id, make] of Object.entries(cases)) {
