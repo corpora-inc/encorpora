@@ -3,7 +3,7 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const remainingGapMethods: Record<string, ProblemMethod> = {
   "triangle-law-reasoning": {
-    goal: "Given a triangle situation, choose the step in the derivation of the law of sines or cosines, the law that starts a given triangle, or the number of triangles the measurements allow.",
+    goal: "Choose a step in deriving the law of sines or cosines, the law that starts a given triangle, or the number of triangles the data allow.",
     intuition:
       "An altitude is a segment from a vertex perpendicular to the opposite side. It cuts a triangle into right triangles, where sine and cosine are ratios of sides. Writing the same altitude in two ways, or Pythagoras' theorem in two right triangles, links the original sides and angles.",
     terms: [
@@ -54,7 +54,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
       "A fixed rate or starting amount is a number in the model, not a variable. A definition without a unit leaves it unclear what a value such as 90 means.",
   },
   "stem-leaf-read": {
-    goal: "Given a stem-and-leaf plot and its key, read a value or a summary such as the least, greatest, range, median, mode, a count above a value, or a difference of ordered values.",
+    goal: "Given a stem-and-leaf plot and its key, read a value or a summary such as the range, median, mode, a count above a value or a difference.",
     intuition:
       "A stem-and-leaf plot writes each data value in two pieces. The stem holds the leading digits and the leaf holds the last digit. The key tells you what a stem and leaf mean together, including where the decimal point goes. The values increase down the plot and from left to right, so the plot is already in order.",
     terms: [
@@ -81,7 +81,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
       "A leaf alone is only the last digit. Combine it with its stem and apply the key, especially when the key shows a decimal point.",
   },
   "budget-category-balance": {
-    goal: "Given an income and categorized expenses with dollars and cents, find a missing category, the surplus or deficit, or the change that balances the budget.",
+    goal: "Given an income and categorized expenses in dollars and cents, find a missing category, the surplus or deficit, or the change that balances.",
     intuition:
       "A budget balances when the income equals the total of the expenses. If expenses are less than income, the difference is a surplus. If expenses are more than income, the difference is a deficit. Money amounts are decimals: add and subtract them with the decimal points lined up.",
     terms: [
@@ -100,7 +100,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
       "Include every category in the total. A deficit is not a negative expense: it is a name for expenses exceeding income.",
   },
   "gross-net-pay": {
-    goal: "Given gross pay, listed deductions and net pay with dollars and cents, find net pay, gross pay or a missing deduction, or identify the take-home amount.",
+    goal: "Given gross pay, deductions and net pay in dollars and cents, find net pay, gross pay or a missing deduction, or the take-home amount.",
     intuition:
       "Gross pay is what a worker earns before anything is taken out. Deductions, such as taxes and a health plan, are amounts withheld from it. Net pay, or take-home pay, is what remains: gross pay minus all the deductions.",
     terms: [

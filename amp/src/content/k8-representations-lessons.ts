@@ -33,12 +33,12 @@ const specs: Spec[] = [
     templateId: "proportional-graph",
     title: "Read a proportional graph",
     summary:
-      "A proportional graph is a straight line through (0, 0). The point (1, r) gives the unit rate, and every point says how much of one quantity goes with how much of the other.",
+      "A proportional graph is a straight line through $(0, 0)$. The point $(1, r)$ gives the unit rate, and every point says how much of one quantity goes with how much of the other.",
     objectives: [
       "Read the unit rate and the meaning of a point from a graph.",
       "Decide whether a graph shows a proportional relationship.",
     ],
-    goal: "Read a graph of two quantities: find the unit rate, say what a point means in the situation, and decide whether the relationship is proportional.",
+    goal: "Read a graph of two quantities: find the unit rate, say what a point means, and decide whether the relationship is proportional.",
     figure: true,
     intuition: [
       t`Two quantities are in a proportional relationship when one is always the same number of times the other. Apples sold at one price per pound are an example: 2 pounds cost twice as much as 1 pound, and 3 pounds cost three times as much. The cost of 1 pound is the unit rate, the amount of the second quantity for 1 of the first.`,
@@ -103,7 +103,7 @@ const specs: Spec[] = [
       "Describe a graph as increasing, constant and decreasing parts in order.",
       "Match a story to a graph and find where a quantity changes fastest or slowest.",
     ],
-    goal: "Match a story to a graph that has no scale, and describe where the quantity increases, decreases, stays constant, or changes fastest or slowest.",
+    goal: "Match a story to a graph with no scale and describe where the quantity increases, decreases, stays constant, or changes fastest or slowest.",
     figure: true,
     intuition: [
       t`Some graphs have no numbers. They show how one quantity changes over time. Time runs from left to right, so the left side of the graph is the beginning. When the line goes up, the quantity is increasing. When the line is level, the quantity is constant, which means it stays the same. When the line goes down, the quantity is decreasing.`,
@@ -316,8 +316,8 @@ const specs: Spec[] = [
     example: {
       prompt: t`A triangle $ABC$ has $\angle A = 30^\circ$, $AC = 10$ cm and $BC = 7$ cm. How many different triangles fit?`,
       steps: [
-        "Draw the 30° angle at A and mark C on one ray, 10 cm from A. Side BC must go from C to the other ray.",
-        "The shortest way from C to the other ray is straight across at a right angle. In a right triangle with a 30° angle, the side opposite 30° is half the hypotenuse, so that distance is 10 ÷ 2 = 5 cm.",
+        "Draw the 30° angle at $A$ and mark $C$ on one ray, 10 cm from $A$. Side $BC$ must go from $C$ to the other ray.",
+        "The shortest way from $C$ to the other ray is straight across at a right angle. In a right triangle with a 30° angle, the side opposite 30° is half the hypotenuse, so that distance is 10 ÷ 2 = 5 cm.",
         "BC is 7 cm. That is longer than 5 cm, so it reaches the ray. It is shorter than 10 cm, so both places where it reaches are on the ray.",
       ],
       answer: "Exactly two different triangles.",
@@ -412,7 +412,7 @@ const specs: Spec[] = [
       "Find a compound-event probability from a list of all outcomes.",
       "Estimate a probability from simulated trials and compare it with the theoretical probability.",
     ],
-    goal: "Find the probability of a compound event from its sample space, estimate it from random-digit trials, and compare experimental with theoretical probability.",
+    goal: "Find a compound event's probability from its sample space, estimate it from random-digit trials, and compare experimental with theoretical.",
     intuition: [
       t`A compound event has more than one stage, such as rolling two dice or flipping a coin three times. The sample space is the list of all possible outcomes. When every outcome is equally likely, the probability of an event is the number of outcomes where it happens, divided by the number of outcomes in all.`,
       t`If it is hard to list outcomes, you can estimate a probability with a simulation. Pick random digits to stand for the outcomes, run many trials, and count how often the event happens. That is the experimental probability: the number of trials where the event happened, divided by the number of trials. The exact value from the sample space is the theoretical probability. The two are usually close, but not equal.`,

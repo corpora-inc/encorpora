@@ -727,7 +727,7 @@ def solve_parametric(public):
     if match:
         T = rat(int(match[1]))
         return pick(public, cartesian_key, (x0 + a * T, y0 + b * T))
-    match = re.search(r'At what time is its ([xy])-coordinate (-?\d+)\?', prompt)
+    match = re.search(r'At what time is its \$?([xy])\$?-coordinate (-?\d+)\?', prompt)
     if match:
         require('with $t$ in seconds' in prompt, 'Time units')
         start, rate = (x0, a) if match[1] == 'x' else (y0, b)

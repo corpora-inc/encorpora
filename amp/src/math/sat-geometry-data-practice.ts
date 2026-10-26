@@ -9,6 +9,9 @@ import {
 } from "./distribution-practice";
 import { table } from "./scene/author";
 
+/** A number in parentheses only when negative. */
+const par = (v: number) => (v < 0 ? `(${v})` : `${v}`);
+
 /**
  * SAT geometry and data problem types that the neighbouring skills did not
  * yet practise: right-triangle trigonometry from a described situation,
@@ -328,7 +331,7 @@ function trigCase(r: Random): SatGeometryDataCase {
         tag === "ramp-angle"
           ? `A straight ramp rises ${rise} feet over a horizontal distance of ${run} feet. What angle does the ramp make with the level ground, in degrees? ${rule}`
           : `A vertical pole ${rise} meters tall casts a shadow ${run} meters long on level ground. What is the angle of elevation of the sun, in degrees? ${rule}`;
-      hint = `Draw the right triangle: the ${tag === "ramp-angle" ? "rise" : "pole"} (${rise}) and the ${tag === "ramp-angle" ? "horizontal distance" : "shadow"} (${run}) are its two legs. The unknown angle is at the ground end. Choose the ratio of those two legs, then use the inverse function to find the angle.`;
+      hint = `Draw the right triangle: the ${tag === "ramp-angle" ? "rise" : "pole"} is ${rise} and the ${tag === "ramp-angle" ? "horizontal distance" : "shadow"} is ${run}; these are its two legs. The unknown angle is at the ground end. Choose the ratio of those two legs, then use the inverse function to find the angle.`;
       correct = d1(cand[0]!);
       wrong = [
         [
@@ -358,7 +361,7 @@ function trigCase(r: Random): SatGeometryDataCase {
       const ans = h / tan;
       if (!safe(ans)) continue;
       prompt = `A vertical flagpole ${h} feet tall casts a shadow on level ground when the angle of elevation of the sun is ${t}°. How long is the shadow, in feet? ${rule}`;
-      hint = `The pole, its shadow and the sun's ray form a right triangle, and the sun's angle of elevation is the angle at the end of the shadow. The pole is one leg. Decide whether it is opposite or adjacent to that angle.`;
+      hint = `The pole, its shadow and the sun's ray form a right triangle, and the sun's angle of elevation (${t}°) is the angle at the end of the shadow. The pole (${h} feet) is one leg. Decide whether it is opposite or adjacent to that angle.`;
       correct = len(ans, "feet");
       wrong = [
         [
@@ -387,7 +390,7 @@ function trigCase(r: Random): SatGeometryDataCase {
       prompt = top
         ? `From the top $T$ of a vertical lighthouse, the angle of depression to a ship $S$ on the level sea is ${t}°. The base of the lighthouse is $B$, so triangle $TBS$ has a right angle at $B$. What is the measure of angle $BTS$ at the top, in degrees?`
         : `From the top $T$ of a vertical lighthouse, the angle of depression to a ship $S$ on the level sea is ${t}°. The base of the lighthouse is $B$, so triangle $TBS$ has a right angle at $B$. What is the measure of angle $BST$ at the ship, in degrees?`;
-      hint = `Draw the horizontal line through $T$. The angle of depression is measured from that line down to the line of sight $TS$. Because the horizontal line is parallel to the sea $BS$, line $TS$ is a transversal; find the angle at $S$ that matches by alternate interior angles.${top ? " Then use the angle sum of triangle $TBS$." : ""}`;
+      hint = `Draw the horizontal line through $T$. The ${t}° angle of depression is measured from that line down to the line of sight $TS$. Because the horizontal line is parallel to the sea $BS$, line $TS$ is a transversal; find the angle at $S$ that matches by alternate interior angles.${top ? " Then use the angle sum of triangle $TBS$." : ""}`;
       correct = d1(target);
       wrong = top
         ? [
@@ -478,7 +481,7 @@ function midpointCase(r: Random): SatGeometryDataCase {
         ],
         [
           pair(half(B[0] - A[0]), half(B[1] - A[1])),
-          "This halves the change from A to B, which is the vector to the midpoint, not the midpoint itself. Add it to A.",
+          "This halves the change from $A$ to $B$, which is the vector to the midpoint, not the midpoint itself. Add it to $A$.",
         ],
         [
           pair(half(A[0] - B[0]), half(A[1] - B[1])),
@@ -498,7 +501,7 @@ function midpointCase(r: Random): SatGeometryDataCase {
           hint: `The midpoint is halfway between the endpoints in each coordinate. For the $x$-coordinate, use ${A[0]} and ${B[0]}; then do the same for $y$.`,
           explanation: [
             `The midpoint's coordinates are the averages of the endpoints' coordinates.`,
-            `$x=\\frac{${A[0]}+(${B[0]})}{2}=${m[0]}$ and $y=\\frac{${A[1]}+(${B[1]})}{2}=${m[1]}$.`,
+            `$x=\\frac{${A[0]}+${par(B[0])}}{2}=${m[0]}$ and $y=\\frac{${A[1]}+${par(B[1])}}{2}=${m[1]}$.`,
             `The midpoint is $(${m[0]},\\ ${m[1]})$.`,
           ],
           choices,
@@ -515,7 +518,7 @@ function midpointCase(r: Random): SatGeometryDataCase {
       const wrongPts: Option[] = [
         [
           pair(M[0] - A[0], M[1] - A[1]),
-          "This is the vector from A to the midpoint. Add it to the midpoint again, or double the midpoint and subtract A.",
+          "This is the vector from $A$ to the midpoint. Add it to the midpoint again, or double the midpoint and subtract $A$.",
         ],
         [
           pair(M[0] + A[0], M[1] + A[1]),
@@ -523,7 +526,7 @@ function midpointCase(r: Random): SatGeometryDataCase {
         ],
         [
           pair(half(A[0] + M[0]), half(A[1] + M[1])),
-          "This finds the midpoint of A and M, a point only a quarter of the way along the full segment.",
+          "This finds the midpoint of $A$ and $M$, a point only a quarter of the way along the full segment.",
         ],
         [
           pair(2 * M[0] + A[0], 2 * M[1] + A[1]),
@@ -551,9 +554,9 @@ function midpointCase(r: Random): SatGeometryDataCase {
           hint: `Each midpoint coordinate is the average of the endpoint coordinates. For the $x$-coordinate write $\\frac{${A[0]}+x_B}{2}=${M[0]}$, and solve for $x_B$; then do the same for $y$.`,
           explanation: [
             `The midpoint averages the endpoints: $\\frac{${A[0]}+x_B}{2}=${M[0]}$ and $\\frac{${A[1]}+y_B}{2}=${M[1]}$.`,
-            `Multiply by 2 and subtract: $x_B=2(${M[0]})-(${A[0]})=${B[0]}$ and $y_B=2(${M[1]})-(${A[1]})=${B[1]}$.`,
+            `Multiply by 2 and subtract: $x_B=2(${M[0]})-${par(A[0])}=${B[0]}$ and $y_B=2(${M[1]})-${par(A[1])}=${B[1]}$.`,
             sum
-              ? `$B=(${B[0]},\\ ${B[1]})$, and ${B[0]} + (${B[1]}) = ${B[0] + B[1]}.`
+              ? `$B=(${B[0]},\\ ${B[1]})$, and ${B[0]} + ${par(B[1])} = ${B[0] + B[1]}.`
               : `$B=(${B[0]},\\ ${B[1]})$.`,
           ],
           choices,
@@ -597,7 +600,7 @@ function midpointCase(r: Random): SatGeometryDataCase {
           hint: `Every diameter passes through the center and the center is halfway between its endpoints. Average the $x$-coordinates ${A[0]} and ${B[0]}, then the $y$-coordinates.`,
           explanation: [
             "The center of a circle is the midpoint of any diameter.",
-            `$x=\\frac{${A[0]}+(${B[0]})}{2}=${h}$ and $y=\\frac{${A[1]}+(${B[1]})}{2}=${k}$.`,
+            `$x=\\frac{${A[0]}+${par(B[0])}}{2}=${h}$ and $y=\\frac{${A[1]}+${par(B[1])}}{2}=${k}$.`,
             `The center is $(${h},\\ ${k})$.`,
           ],
           choices,
@@ -627,10 +630,10 @@ function midpointCase(r: Random): SatGeometryDataCase {
       draft: {
         prompt: `In the $xy$-plane, a circle has a diameter with endpoints $(${sgn(A[0])},\\ ${sgn(A[1])})$ and $(${sgn(B[0])},\\ ${sgn(B[1])})$. Which equation represents the circle?`,
         answer: "",
-        hint: `Find the center first: it is the midpoint of the diameter. Then find the distance from the center to one endpoint; that is the radius, and the equation needs its square.`,
+        hint: `Find the center first: it is the midpoint of the diameter with endpoints $(${sgn(A[0])},\\ ${sgn(A[1])})$ and $(${sgn(B[0])},\\ ${sgn(B[1])})$. Then find the distance from the center to one endpoint; that is the radius, and the equation needs its square.`,
         explanation: [
-          `The center is the midpoint: $(\\frac{${A[0]}+(${B[0]})}{2},\\ \\frac{${A[1]}+(${B[1]})}{2})=(${h},\\ ${k})$.`,
-          `The radius is the distance from the center to $(${B[0]},\\ ${B[1]})$: $r^2=(${B[0]}-(${h}))^2+(${B[1]}-(${k}))^2=${p * p}+${q * q}=${r2}$.`,
+          `The center is the midpoint: $(\\frac{${A[0]}+${par(B[0])}}{2},\\ \\frac{${A[1]}+${par(B[1])}}{2})=(${h},\\ ${k})$.`,
+          `The radius is the distance from the center to $(${B[0]},\\ ${B[1]})$: $r^2=(${B[0]}-${par(h)})^2+(${B[1]}-${par(k)})^2=${p * p}+${q * q}=${r2}$.`,
           `The equation $(x-h)^2+(y-k)^2=r^2$ becomes $(${shiftTex("x", h)})^2+(${shiftTex("y", k)})^2=${r2}$.`,
         ],
         choices,
@@ -1125,7 +1128,7 @@ function circleSegmentCase(r: Random): SatGeometryDataCase {
       draft: {
         prompt: `In the $xy$-plane, a circle has center $(${sgn(h)},\\ ${sgn(k)})$ and passes through $P(${sgn(P[0])},\\ ${sgn(P[1])})$. What is the slope of the line tangent to the circle at $P$?`,
         answer: "",
-        hint: `The tangent at $P$ is perpendicular to the radius that ends at $P$. First find the slope of that radius using the center and $P$.`,
+        hint: `The tangent at $P(${sgn(P[0])},\\ ${sgn(P[1])})$ is perpendicular to the radius that ends at $P$. First find the slope of that radius using the center $(${sgn(h)},\\ ${sgn(k)})$ and $P$.`,
         explanation: [
           `The radius from the center to $P$ has rise ${Y} and run ${X}.`,
           axis
@@ -1327,7 +1330,7 @@ function freqCase(r: Random): SatGeometryDataCase {
         draft: {
           prompt: `A course grade counts tests for ${wts[0]}%, projects for ${wts[1]}% and homework for ${wts[2]}%. A student's averages are ${sc[0]} on tests, ${sc[1]} on projects and ${sc[2]} on homework. What is the student's course grade?`,
           answer: "",
-          hint: `Each average counts in proportion to its percentage. Multiply each average by its percentage written as a decimal, and add the three products.`,
+          hint: `Each average counts in proportion to its percentage: ${wts[0]}%, ${wts[1]}% and ${wts[2]}%. Multiply each average by its percentage written as a decimal, and add the three products.`,
           explanation: [
             `Weighted mean = ${sc[0]}(${wts[0] / 100}) + ${sc[1]}(${wts[1] / 100}) + ${sc[2]}(${wts[2] / 100}).`,
             `= ${dec(sc[0]! * wts[0], 100)} + ${dec(sc[1]! * wts[1], 100)} + ${dec(sc[2]! * wts[2], 100)}.`,
@@ -1370,7 +1373,7 @@ function freqCase(r: Random): SatGeometryDataCase {
         draft: {
           prompt: `One class of ${n1} students has a mean test score of ${m1}. Another class of ${n2} students has a mean test score of ${m2}. What is the mean test score of all ${n1 + n2} students together?`,
           answer: "",
-          hint: `A group's total is its size times its mean. Find the total score of each class, add them, and then divide by the number of students in both classes.`,
+          hint: `A group's total is its size times its mean, such as ${n1} students with mean ${m1}. Find the total score of each class, add them, and then divide by the number of students in both classes.`,
           explanation: [
             `Class totals: ${n1}·${m1} = ${n1 * m1} and ${n2}·${m2} = ${n2 * m2}.`,
             `Combined total: ${n1 * m1} + ${n2 * m2} = ${T}, for ${n1 + n2} students.`,
@@ -1710,8 +1713,8 @@ function independenceCase(r: Random): SatGeometryDataCase {
               ] as Option,
           ),
         [
-          "No person is in both A and B, so the events are independent.",
-          `The table shows ${joint} people in both A and B. Events with no overlap are mutually exclusive, which is a different idea from independence.`,
+          "No person is in both $A$ and $B$, so the events are independent.",
+          `The table shows ${joint} people in both $A$ and $B$. Events with no overlap are mutually exclusive, which is a different idea from independence.`,
         ],
       ]);
       if (!choices) continue;
@@ -1721,7 +1724,7 @@ function independenceCase(r: Random): SatGeometryDataCase {
           prompt: `The table shows how ${N} people are classified by two events, $A$ and $B$. Which statement is true?`,
           figure: twoByTwoFigure(rows, cols, tab, "Counts of people"),
           answer: "",
-          hint: `Find $P(A\\mid B)$ by restricting to the ${colB} people in column $B$ and counting those also in $A$. Find $P(A)$ from the whole table, and compare the two.`,
+          hint: `Find $P(A\\mid B)$ by restricting to the ${colB} people in column $B$ and counting those also in $A$. Find $P(A)$ from the whole table of ${N} people, and compare the two.`,
           explanation: [
             `$P(A\\mid B)=\\frac{${joint}}{${colB}}=${rational(joint, colB)}$ and $P(A)=\\frac{${rowA}}{${N}}=${rational(rowA, N)}$.`,
             dir === "same"
@@ -1812,7 +1815,7 @@ function independenceCase(r: Random): SatGeometryDataCase {
         draft: {
           prompt: `Events $A$ and $B$ are independent. $P(A)=${pa}\\%$ and $P(B)=${pb}\\%$. What is $P(A\\text{ and }B)$?`,
           answer: "",
-          hint: `Independence means knowing one event gives no information about the other. Write $P(A)$ and $P(B)$ as decimals and use the product rule for independent events.`,
+          hint: `Independence means knowing one event gives no information about the other. Write $P(A)=${pa}\\%$ and $P(B)=${pb}\\%$ as decimals and use the product rule for independent events.`,
           explanation: [
             `For independent events, $P(A\\text{ and }B)=P(A)\\cdot P(B)$.`,
             `$${pa / 100}\\times ${pb / 100}=${Number(((pa * pb) / 10000).toFixed(4))}$.`,
@@ -1848,7 +1851,7 @@ function independenceCase(r: Random): SatGeometryDataCase {
       draft: {
         prompt: `In a survey of ${c.group}, let $${c.A.letter}$ be the event that a randomly selected respondent ${c.A.one}, and let $${c.B.letter}$ be the event that the respondent ${c.B.one}. It is known that $P(${X.letter}\\mid ${Y.letter})=${p / 100}$. Which statement correctly interprets this probability?`,
         answer: "",
-        hint: `In $P(${X.letter}\\mid ${Y.letter})$, the event after the bar is the condition: first restrict attention to the respondents for whom $${Y.letter}$ is true. Then ask what share of that restricted group has $${X.letter}$.`,
+        hint: `In $P(${X.letter}\\mid ${Y.letter})$, the event after the bar is the condition: first restrict attention to the respondents for whom $${Y.letter}$ is true. Then ask what share of that restricted group has $${X.letter}$; the given probability is ${p / 100}.`,
         explanation: [
           `The vertical bar reads "given that". The event $${Y.letter}$ after the bar defines the group considered: ${c.all} who ${Y.pred}.`,
           `The probability ${p / 100} is the share of that group for whom $${X.letter}$ occurs.`,

@@ -274,6 +274,10 @@ import {
   generateNumberMeasurementGapProblem,
 } from "./number-measurement-gaps-practice";
 import {
+  floridaGapTemplates,
+  generateFloridaGapProblem,
+} from "./florida-gaps-practice";
+import {
   satAlgebraStructureTemplates,
   generateSatAlgebraStructureProblem,
 } from "./sat-algebra-structure-practice";
@@ -472,6 +476,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...extendedTemplates,
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
+  ...floridaGapTemplates,
   ...k8StateNumberTemplates,
   complexMultiplicationTemplate,
   ...algebraRequirementGapTemplates,
@@ -939,6 +944,8 @@ function generateRawProblem(
     return generateQuadraticProblem(templateId, seed);
   if (numberMeasurementGapTemplates.some((t) => t.id === templateId))
     return generateNumberMeasurementGapProblem(templateId, seed);
+  if (floridaGapTemplates.some((t) => t.id === templateId))
+    return generateFloridaGapProblem(templateId, seed);
   if (k8StateNumberTemplates.some((t) => t.id === templateId))
     return generateK8StateNumberProblem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))

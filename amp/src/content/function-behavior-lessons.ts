@@ -3,7 +3,7 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const functionBehaviorMethods: Record<string, ProblemMethod> = {
   "polynomial-behavior-description": {
-    goal: "Given a polynomial in factored form or as a sum of terms, describe how its graph behaves at the far left and right, at each zero, and how many turning points it can have.",
+    goal: "Given a polynomial, describe its graph at the far left and right, at each zero, and how many turning points it can have.",
     intuition:
       "For very large positive or negative $x$, the highest power of $x$ outweighs every other term, so only the degree and the sign of the leading coefficient decide where the ends go. Near a zero, a factor raised to an odd power changes sign and the graph crosses the $x$-axis; an even power keeps the sign and the graph touches the axis and turns back.",
     terms: [
@@ -74,7 +74,7 @@ export const functionBehaviorMethods: Record<string, ProblemMethod> = {
       "A square of a two-term sum has three terms: the middle term $2ab$ is easy to leave out. One value of $x$ that makes both sides agree does not prove an identity, but one that makes them differ shows it is false.",
   },
   "binomial-coefficient": {
-    goal: "Find a coefficient of $(ax+b)^n$ for $n\\le7$, including a negative $b$, the constant term and the leading term, or choose the row of Pascal's triangle that holds the coefficients.",
+    goal: "Find a coefficient of $(ax+b)^n$ for $n\\le7$, including a constant or leading term, or choose the Pascal's triangle row that holds them.",
     intuition:
       "$(ax+b)^n$ means multiplying $n$ copies of $ax+b$. Each term of the product chooses either $ax$ or $b$ from every copy. The term with $x^k$ picks $ax$ from $k$ copies and $b$ from the other $n-k$, and the number of ways to choose which $k$ copies is the binomial coefficient, a row entry of Pascal's triangle.",
     terms: [
@@ -247,7 +247,7 @@ export const functionBehaviorLessons: Lesson[] = [
   },
   {
     id: "graphical-solution-table",
-    title: "Solve f(x) = g(x) with a table",
+    title: "Solve two functions with a table",
     summary:
       "The solutions of $f(x)=g(x)$ are the inputs where the two outputs match. A table shows an exact match or the step where one function overtakes the other.",
     templateIds: ["graphical-solution-table"],
@@ -365,7 +365,7 @@ export const functionBehaviorLessons: Lesson[] = [
   },
   {
     id: "binomial-coefficient",
-    title: "Coefficients of (ax + b)^n",
+    title: "Coefficients of a binomial power",
     summary:
       "Each term of a binomial power picks $ax$ or $b$ from every factor; Pascal's triangle counts the ways.",
     templateIds: ["binomial-coefficient"],
