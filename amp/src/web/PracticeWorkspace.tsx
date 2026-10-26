@@ -18,6 +18,8 @@ import {
 } from "../math/selection-response";
 import type { ProblemLessonView } from "../content/problem-lessons";
 import { ChoiceFigure } from "./ChoiceFigure";
+import { PointPlotAnswer, PointPlotInput, plotReview } from "./PointPlotInput";
+import { pointPlotAnswerText } from "../math/point-plot";
 import {
   useEffect,
   useLayoutEffect,
@@ -174,6 +176,9 @@ type Props = {
 /** Phones too short to keep the keypad docked under the problem. Taller
  * phones, tablets and desktops answer inline with no extra tap. */
 export const compactAnswerQuery = "(max-width: 650px) and (max-height: 640px)";
+/** The two-column practice layout of practice-tablet.css. */
+const sideBySideQuery =
+  "(orientation: landscape) and (min-width: 900px) and (min-height: 500px)";
 
 export function PracticeWorkspace(props: Props) {
   const {
@@ -202,6 +207,9 @@ export function PracticeWorkspace(props: Props) {
     problem.response.kind === "multi-select";
   const multiResponse =
     problem.response.kind === "multi-select" ? problem.response : null;
+  // Point plots answer on the grid in the problem itself; the dock holds
+  // only the readout and Check, so they never use the answer dialog.
+  const plot = problem.response.kind === "point-plot" ? problem.response : null;
   const selectedIds = multiResponse
     ? (parseSelection(response) ?? []).filter((id) =>
         multiResponse.options.some((option) => option.id === id),
@@ -215,6 +223,13 @@ export function PracticeWorkspace(props: Props) {
       ? problem.figure.scene
       : null;
   const displayResponse = (value: string) => {
+    if (problem.response.kind === "point-plot") {
+      try {
+        return pointPlotAnswerText(problem.response, value);
+      } catch {
+        return "No points placed";
+      }
+    }
     if (problem.response.kind === "multi-select") {
       const labels = responseAnswerLabels(problem.response, value);
       return labels ? joinAnswerLabels(labels) : "Unavailable selection";
@@ -244,9 +259,23 @@ export function PracticeWorkspace(props: Props) {
   // side-by-side workspace width, keep that sheet behind a clear answer action.
   const answerLayoutQuery =
     multiResponse && problem.figure ? "(max-width: 899px)" : compactAnswerQuery;
-  const [compact, setCompact] = useState(
+  const [compactQuery, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
+  const compact = compactQuery && !plot;
+  // Side by side (practice-tablet.css), the feedback sheet has its own
+  // column; stacked, it covers the dock only, so a plotted answer's grid and
+  // its feedback overlay stay in view and the explanation opens on request.
+  const [sideBySide, setSideBySide] = useState(
+    () => matchMedia(sideBySideQuery).matches,
+  );
+  useEffect(() => {
+    const media = matchMedia(sideBySideQuery);
+    const changed = () => setSideBySide(media.matches);
+    media.addEventListener("change", changed);
+    return () => media.removeEventListener("change", changed);
+  }, []);
+  const deferSteps = !!plot && !sideBySide;
   useEffect(() => {
     const media = matchMedia(answerLayoutQuery);
     const changed = () => setCompact(media.matches);
@@ -311,7 +340,7 @@ export function PracticeWorkspace(props: Props) {
     // Typed answers start in the answer field. On touch it suppresses the
     // system keyboard (inputMode none), so AMP's keypad stays in charge; the
     // field announces the question through aria-describedby.
-    if (choice) prompt.current?.focus({ preventScroll: true });
+    if (choice || plot) prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
   useEffect(() => {
@@ -358,7 +387,7 @@ export function PracticeWorkspace(props: Props) {
   const locked = busy || pending || !!outcome;
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
-  const keypad = !choice;
+  const keypad = !choice && !plot;
   const caret = useKeypadCaret(input);
   function key(value: string) {
     if (locked) return;
@@ -405,6 +434,18 @@ export function PracticeWorkspace(props: Props) {
     );
   }
   function answerControls(includeContext = false) {
+    if (problem.response.kind === "point-plot")
+      return (
+        <PointPlotAnswer
+          response={problem.response}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          busy={busy}
+          resolved={!!outcome}
+          submit={props.submit}
+        />
+      );
     if (problem.response.kind === "multi-select") {
       const selected = selectedIds;
       const complete = selected.length === problem.response.selectionCount;
@@ -650,7 +691,7 @@ export function PracticeWorkspace(props: Props) {
     return (
       <div className="practice-tools">
         {outcome ? (
-          outcome.correct &&
+          (outcome.correct || deferSteps) &&
           !showWhy && (
             <button className="text-button" onClick={() => setShowWhy(true)}>
               See why
@@ -737,6 +778,30 @@ export function PracticeWorkspace(props: Props) {
           ? "with the lesson"
           : "with a hint or lesson";
   const skipped = !!outcome?.skipped;
+  /** The worked answer in the feedback title. A plotted answer is drawn on
+   * the grid above the sheet, so the sheet names where to look and keeps the
+   * coordinates for screen readers; the explanation lists them in full. */
+  const answerLine = (raw: string) =>
+    plot ? (
+      <span
+        className="solution-answer plot-answer"
+        data-text={displayResponse(raw)}
+      >
+        {plot.connect === "line"
+          ? "The answer is dashed"
+          : "The answer is circled"}
+        <span className="sr-only">
+          . Answer: {spokenMath(displayResponse(raw))}
+        </span>
+      </span>
+    ) : (
+      <span className="solution-answer" data-text={displayResponse(raw)}>
+        Answer:{" "}
+        <strong>
+          <MathText text={displayResponse(raw)} />
+        </strong>
+      </span>
+    );
   const compactAnswerLabel =
     problem.response.kind === "multi-select"
       ? selectedIds.length
@@ -795,7 +860,9 @@ export function PracticeWorkspace(props: Props) {
           {props.status && (
             <span className="workspace-status">{props.status}</span>
           )}
-          {props.calculator ? (
+          {/* Plotted answers are placed, not typed: the calculator's Use
+              key has nothing to fill, and lattice arithmetic needs none. */}
+          {props.calculator && !plot ? (
             <button
               ref={calculatorToggle}
               className="calculator-toggle"
@@ -844,7 +911,7 @@ export function PracticeWorkspace(props: Props) {
               <MathText text={problem.prompt} />
             </h2>
             {problem.figure &&
-              (choice ? (
+              (choice || plot ? (
                 <ChoiceFigure figure={problem.figure} />
               ) : (
                 <Figure
@@ -856,6 +923,19 @@ export function PracticeWorkspace(props: Props) {
                   }
                 />
               ))}
+            {plot && (
+              <PointPlotInput
+                response={plot}
+                value={outcome ? outcome.response : response}
+                onChange={setResponse}
+                locked={locked}
+                review={
+                  outcome
+                    ? plotReview(plot, outcome.answer, outcome.correct)
+                    : null
+                }
+              />
+            )}
           </div>
           {celebrate && (
             <div className="practice-celebration" aria-hidden="true">
@@ -927,15 +1007,7 @@ export function PracticeWorkspace(props: Props) {
               <span className="feedback-title">
                 {skipped ? (
                   <>
-                    <span
-                      className="solution-answer"
-                      data-text={displayResponse(outcome.answer)}
-                    >
-                      Answer:{" "}
-                      <strong>
-                        <MathText text={displayResponse(outcome.answer)} />
-                      </strong>
-                    </span>
+                    {answerLine(outcome.answer)}
                     <small>Skipped. Your progress is unchanged.</small>
                   </>
                 ) : outcome.correct ? (
@@ -945,22 +1017,27 @@ export function PracticeWorkspace(props: Props) {
                   </>
                 ) : (
                   <>
-                    <span
-                      className="solution-answer"
-                      data-text={displayResponse(outcome.answer)}
-                    >
-                      Answer:{" "}
-                      <strong>
-                        <MathText text={displayResponse(outcome.answer)} />
-                      </strong>
-                    </span>
-                    <small>
-                      {problem.response.kind === "multi-select"
-                        ? "You selected "
-                        : "You entered "}
-                      <MathText text={displayResponse(outcome.response)} />
-                      {support && `, ${support}`}
-                    </small>
+                    {answerLine(outcome.answer)}
+                    {plot ? (
+                      // The grid shows the learner's points beside the
+                      // correct ones; the sentence stays for screen readers.
+                      <small>
+                        <span className="sr-only">
+                          You placed{" "}
+                          {spokenMath(displayResponse(outcome.response))}
+                          {support ? ", " : "."}
+                        </span>
+                        {support && capitalize(support)}
+                      </small>
+                    ) : (
+                      <small>
+                        {problem.response.kind === "multi-select"
+                          ? "You selected "
+                          : "You entered "}
+                        <MathText text={displayResponse(outcome.response)} />
+                        {support && `, ${support}`}
+                      </small>
+                    )}
                   </>
                 )}
               </span>
@@ -976,7 +1053,7 @@ export function PracticeWorkspace(props: Props) {
                 </span>
               </p>
             )}
-            {(!outcome.correct || showWhy) && (
+            {((!outcome.correct && !deferSteps) || showWhy) && (
               <ol
                 className="feedback-steps"
                 // It scrolls when long, so keyboards must be able to reach it.
