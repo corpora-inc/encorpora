@@ -9,6 +9,13 @@ import { mcas2025Grade5 } from "./mcas-2025-5";
 import { mcas2025Grade8 } from "./mcas-2025-8";
 import { mcas2025Grade10 } from "./mcas-2025-10";
 import { ny2026Grade7 } from "./ny-2026-7";
+import { staarGrade3 } from "./staar-2025-3";
+import { staarGrade4 } from "./staar-2025-4";
+import { staarGrade5 } from "./staar-2025-5";
+import { staarGrade6 } from "./staar-2025-6";
+import { staarGrade7 } from "./staar-2025-7";
+import { staarGrade8 } from "./staar-2025-8";
+import { staarAlgebra1 } from "./staar-2025-alg1";
 import { satFramework2026 } from "./sat-framework-2026";
 import { satPractice4 } from "./sat-practice-4";
 import { satPractice5 } from "./sat-practice-5";
@@ -41,6 +48,13 @@ export const releasedLedgers: readonly SourceLedger[] = [
   regentsAlgebra1June2026,
   regentsGeometryJune2026,
   regentsAlgebra2June2026,
+  staarGrade3,
+  staarGrade4,
+  staarGrade5,
+  staarGrade6,
+  staarGrade7,
+  staarGrade8,
+  staarAlgebra1,
 ];
 export const releasedItems = releasedLedgers.flatMap((l) => l.items);
 /** Production ledger. Pass `ledgers` (and matching `templates`) to report a

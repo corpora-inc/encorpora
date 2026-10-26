@@ -30,7 +30,30 @@ number.rational-irrational|Decide whether a sum or product of rational and irrat
 number.repeating-decimal|Write a repeating decimal as a fraction
 number.approximate-roots|Bound, approximate or order square and cube roots
 number.scientific-notation|Convert between scientific notation and standard form
-number.scientific-operations|Compare or compute with numbers in scientific notation`,
+number.scientific-operations|Compare or compute with numbers in scientific notation
+finance.budget-percent|Find budget amounts as percents of income
+finance.check-register|Complete or reconcile a check register
+finance.credit-concept|Recognize credit, borrowing and related financial terms
+finance.fixed-variable-expense|Tell fixed from variable expenses in a budget
+finance.income-compare|Compare earnings over several years
+finance.simple-interest|Find simple interest or compare interest earned or paid
+number.add-subtract-story|Solve an addition and subtraction story within 1000 that takes more than one step
+number.decimal-fraction-equivalent|Write or match a decimal with a fraction or mixed number
+number.decimal-model-operation|Match a decimal grid model with a multiplication or division equation
+number.expanded-form-whole|Write or recognize a whole number as a sum of place-value amounts
+number.fraction-benchmark-estimate|Estimate fraction sums or differences with benchmark fractions
+number.fraction-equal-share|Name the fraction of a whole that each equal share receives
+number.fraction-sum-expression|Write a sum of like fractions for a shaded or grouped amount
+number.number-classification|Classify numbers as whole, integer or rational
+number.number-line-equation|Match a number-line diagram with an addition or subtraction story
+number.number-word-form|Write or read a number in word form
+number.percent-fraction-decimal|Rename a percent as a decimal or fraction, or a fraction as a percent
+number.place-value-ratio|Compare a digit's value in two places of a whole number or decimal
+number.place-value-units|Write a number from counts of place-value units such as seventy hundreds
+number.rational-operations|Compute with signed rational numbers in fraction and decimal forms
+number.real-order|Order real numbers written as roots, fractions, decimals and percents
+number.remainder-interpret|Interpret a division remainder in context
+number.strip-diagram|Choose a strip diagram that models a story`,
   algebra: `
 expression.verbal|Translate a verbal description into an algebraic expression or equation
 linear.solve|Solve a one-variable linear equation, including grouped and fractional coefficients
@@ -73,7 +96,12 @@ inequality.number-line|Match an inequality with its number-line graph
 sequence.arithmetic|Find a term, common difference or rule of an arithmetic sequence
 sequence.recursive|Compute terms from a recursive rule, including rules that are not geometric or arithmetic
 function.parity|Decide whether a function is odd or even from its rule or graph
-inequality.graph-region|Draw the solution region of a linear inequality or a system of inequalities`,
+inequality.graph-region|Draw the solution region of a linear inequality or a system of inequalities
+expression.multistep-equations|Choose the linked equations that model a two-step story
+function.proportional-identify|Recognize a proportional relationship from a situation, table, graph or rule
+inequality.solution-set|Decide which values or inequalities hold for a stated inequality
+pattern.graph-relationship|Choose the graph of a rule or proportional relationship
+system.from-graph|Choose the system of equations that two graphed lines show`,
   "advanced-math": `
 expression.polynomial|Add, subtract or multiply polynomials and combine like terms
 expression.factor|Factor a polynomial or identify one of its factors
@@ -144,7 +172,9 @@ function.inverse|Find an inverse function's value or expression
 function.compare-representations|Compare features of functions given by a formula, a table or a graph
 expression.polynomial-structure|Build or classify a polynomial by degree, number of terms, leading coefficient and constant term
 exponential.compare-linear|Find when an exponential function first exceeds a linear function
-graph.draw-nonlinear|Draw the graph of a nonlinear function from its rule, a stated domain or stated features`,
+graph.draw-nonlinear|Draw the graph of a nonlinear function from its rule, a stated domain or stated features
+exponential.graph|Graph an exponential function from its rule
+exponential.graph-features|Read the intercept, direction or asymptote of an exponential graph`,
   data: `
 data.graph-read|Read values, extremes or changes from a bar graph, line graph or table
 ratio.units|Convert units of length, rate, area, volume or density
@@ -194,7 +224,17 @@ univariate.compare-distributions|Compare the centers and spreads of two distribu
 bivariate.categorical-association|Decide whether two categorical variables are associated from row percents
 univariate.quartiles|Find a quartile or the interquartile range of a listed data set
 bivariate.regression-compute|Compute a regression equation from a data table
-bivariate.correlation-coefficient|Interpret the sign and strength of a correlation coefficient`,
+bivariate.correlation-coefficient|Interpret the sign and strength of a correlation coefficient
+bivariate.correlation|Interpret the sign and strength of a correlation coefficient
+data.frequency-table-read|Read counts from a tally or frequency table and compare them
+data.graph-error|Find the mismatch between a described data set and its graph
+data.percent-bar-graph|Read a percentage bar graph
+data.stem-leaf-read|Read values or sums from a stem-and-leaf plot
+data.table-to-graph|Match a table of paired values with its plotted points
+probability.prediction|Predict how often an outcome occurs from a probability or a sample
+ratio.part-whole|Find a part of a total from a part-to-part ratio
+ratio.write-simplify|Write a ratio from quantities and simplify it
+univariate.shape|Describe the shape or symmetry of a distribution from a display`,
   geometry: `
 measure.area|Find perimeters, areas or missing lengths of polygons and composite figures
 measure.volume|Find volumes of solids or missing dimensions from a volume
@@ -270,7 +310,13 @@ triangle.midsegment|Use the midsegment of a triangle
 triangle.side-splitter|Use a line parallel to a triangle side to find proportional segments
 triangle.altitude-hypotenuse|Use the altitude to the hypotenuse of a right triangle
 segment.perpendicular-bisector|Use the points of a perpendicular bisector
-proof.geometry-written|Write a formal geometric proof or coordinate proof from givens`,
+proof.geometry-written|Write a formal geometric proof or coordinate proof from givens
+coordinate.plane-point|Name, locate or describe a point on the coordinate plane
+measure.circle|Find a circle's circumference, area or diameter, or estimate pi
+shape.attribute-classify|Sort shapes by attributes such as right angles and parallel sides
+shape.parallel-perpendicular-sides|Count or identify parallel and perpendicular sides of polygons
+shape.solid-properties|Compare faces, edges or parallel and congruent faces of solids
+transform.rule|Match a transformation with its coordinate rule`,
   arithmetic: `
 number.estimate|Estimate sums, products or quotients by rounding or compatible numbers, or judge an answer by estimating
 number.whole-unit-stories|Count whole kits, vehicles or leftovers when only whole units count
