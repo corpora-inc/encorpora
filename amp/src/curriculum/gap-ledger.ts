@@ -6,6 +6,7 @@ import {
 import { texasGrade5Inventory } from "./texas-grade5";
 import { floridaInventories } from "./florida";
 import { buildReleasedItemLedger } from "./released-items";
+import type { SourceLedger } from "./released-items/types";
 import {
   renderReleasedItemReport,
   summarizeReleasedItems,
@@ -165,6 +166,8 @@ export const initialGapTasks: readonly GapTask[] = [
 
 export interface GapLedgerInput extends CoverageInput {
   sourceInventories?: readonly SourceInventory[];
+  /** Released-item ledgers; custom catalogs default to none. */
+  releasedLedgers?: readonly SourceLedger[];
 }
 
 export function buildGapLedger(input: GapLedgerInput = {}) {
@@ -251,7 +254,19 @@ export function buildGapLedger(input: GapLedgerInput = {}) {
         !mappings.some((m) => m.templateId === a.sourceId),
     )
     .map((a) => a.sourceId);
-  const releasedItems = buildReleasedItemLedger();
+  const customCatalog = !!(input.skills || input.templates || input.standards);
+  // Custom catalogs never inherit production items or template links.
+  const releasedItems = buildReleasedItemLedger(
+    customCatalog
+      ? {
+          ledgers: input.releasedLedgers ?? [],
+          templates: input.templates ?? registeredTemplates,
+          templateArchetypes: {},
+          skillIds: nodes.map((s) => s.id),
+          facetMappings: input.facetMappings ?? [],
+        }
+      : { ledgers: input.releasedLedgers },
+  );
   return {
     schemaVersion: 1,
     valid: manifest.valid && sourceReconciliation.valid && releasedItems.valid,

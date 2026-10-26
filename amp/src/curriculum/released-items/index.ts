@@ -3,7 +3,7 @@ import { actualFacetMappings } from "../../content/facet-mappings";
 import { skills } from "../catalog";
 import { archetypes } from "../archetypes";
 import { templateArchetypes } from "../template-archetypes";
-import { buildReleasedItemReport } from "./ledger";
+import { buildReleasedItemReport, type ReleasedItemInput } from "./ledger";
 import type { SourceLedger } from "./types";
 import { mcas2025Grade5 } from "./mcas-2025-5";
 import { mcas2025Grade8 } from "./mcas-2025-8";
@@ -37,13 +37,17 @@ export const releasedLedgers: readonly SourceLedger[] = [
   ny2026Grade7,
 ];
 export const releasedItems = releasedLedgers.flatMap((l) => l.items);
-export function buildReleasedItemLedger() {
+/** Production ledger. Pass `ledgers` (and matching `templates`) to report a
+ * custom catalog; it never inherits production items. */
+export function buildReleasedItemLedger(
+  input: Partial<Omit<ReleasedItemInput, "archetypes">> = {},
+) {
   return buildReleasedItemReport({
-    ledgers: releasedLedgers,
+    ledgers: input.ledgers ?? releasedLedgers,
     archetypes,
-    templates,
-    templateArchetypes,
-    skillIds: skills.map((s) => s.id),
-    facetMappings: actualFacetMappings,
+    templates: input.templates ?? templates,
+    templateArchetypes: input.templateArchetypes ?? templateArchetypes,
+    skillIds: input.skillIds ?? skills.map((s) => s.id),
+    facetMappings: input.facetMappings ?? actualFacetMappings,
   });
 }

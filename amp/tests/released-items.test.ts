@@ -16,6 +16,7 @@ import {
   type ReleasedSource,
 } from "../src/curriculum/released-items/types";
 import { templateArchetypes } from "../src/curriculum/template-archetypes";
+import { buildGapLedger } from "../src/curriculum/gap-ledger";
 import { templates } from "../src/math/engine";
 
 const source = (id: string, test = "Fixture"): ReleasedSource => ({
@@ -332,6 +333,80 @@ test("metrics, gaps and saturation are computed from a small fixture", () => {
   assert.deepEqual(report.archetypeLinks.archetypesWithoutTemplates, [
     "data.mean",
   ]);
+});
+
+test("source, item and archetype fields are validated", () => {
+  const errors = (input: ReleasedItemInput) =>
+    buildReleasedItemReport(input).errors.join("\n");
+  const bad = fixture([row("1")]);
+  bad.ledgers = [
+    defineLedger(
+      { ...source("a"), url: "http://example.org/a.pdf", sha256: "abc" },
+      common,
+      [row("1")],
+    ),
+  ];
+  assert.match(errors(bad), /needs https URLs and SHA-256 digests/);
+  bad.ledgers = [
+    defineLedger({ ...source("a"), retrievedAt: "26 Oct" }, common, [row("1")]),
+  ];
+  assert.match(errors(bad), /needs edition, form and retrieval date/);
+  assert.match(
+    errors(fixture([row("1", { demand: "Solve" })])),
+    /one-line original summary/,
+  );
+  assert.match(
+    errors(fixture([row("1", { demand: "x".repeat(241) })])),
+    /one-line original summary/,
+  );
+  assert.match(
+    errors(fixture([row("1", { archetypeIds: ["alg.solve", "alg.solve"] })])),
+    /duplicate archetype/,
+  );
+  assert.match(
+    errors(
+      fixture([row("1", { templateIds: ["solve-numeric", "solve-numeric"] })]),
+    ),
+    /duplicate template/,
+  );
+  const unlabeled = fixture([]);
+  unlabeled.ledgers = [
+    defineLedger(source("a"), { labeledBy: "", labeledAt: "today" }, [
+      row("1"),
+    ]),
+  ];
+  assert.match(errors(unlabeled), /missing labeler or label date/);
+  const archetypeErrors = fixture([row("1")]);
+  archetypeErrors.archetypes = [
+    ...archetypeErrors.archetypes,
+    { id: "Bad Id", domain: "algebra", summary: "Malformed identifier" },
+    { id: "alg.solve", domain: "algebra", summary: "Solve a linear equation" },
+  ];
+  archetypeErrors.templateArchetypes = {
+    ...archetypeErrors.templateArchetypes,
+    "area-numeric": [],
+  };
+  assert.match(errors(archetypeErrors), /Malformed archetype: Bad Id/);
+  assert.match(errors(archetypeErrors), /Duplicate archetype: alg.solve/);
+  assert.match(errors(archetypeErrors), /Empty archetype link: area-numeric/);
+});
+
+test("custom gap-ledger catalogs do not inherit production released items", () => {
+  const fixtureTemplate = {
+    id: "fixture-template",
+    skillId: "fixture",
+    version: 1,
+  };
+  const ledger = buildGapLedger({ templates: [fixtureTemplate] });
+  assert.equal(
+    ledger.releasedItems.valid,
+    true,
+    ledger.releasedItems.errors.join("\n"),
+  );
+  assert.equal(ledger.releasedItems.summary.items, 0);
+  assert.equal(ledger.releasedItems.archetypeLinks.templatesLinked, 0);
+  const production = buildGapLedger();
+  assert.ok(production.releasedItems.summary.items >= 432);
 });
 
 test("reports are deterministic", () => {

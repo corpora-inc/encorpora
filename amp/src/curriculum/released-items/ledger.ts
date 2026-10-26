@@ -53,6 +53,8 @@ function tally(items: readonly ReleasedItem[]) {
   };
 }
 const sorted = (values: Iterable<string>) => [...new Set(values)].sort();
+const byId = (x: { id: string }, y: { id: string }) =>
+  x.id < y.id ? -1 : x.id > y.id ? 1 : 0;
 
 /** Validate every ledger and compute bounded-set coverage metrics. Pure and
  * deterministic: the same input always yields the same report. */
@@ -204,7 +206,7 @@ export function buildReleasedItemReport(input: ReleasedItemInput) {
         templateIds: linked(a.id),
       };
     })
-    .sort((x, y) => x.id.localeCompare(y.id));
+    .sort(byId);
   const gaps = archetypeRows
     .filter((a) => a.missing + a.partial > 0)
     .map(({ id, domain, summary, items, missing, partial, sources }) => ({
@@ -220,7 +222,7 @@ export function buildReleasedItemReport(input: ReleasedItemInput) {
       (x, y) =>
         y.missing + y.partial - (x.missing + x.partial) ||
         y.missing - x.missing ||
-        x.id.localeCompare(y.id),
+        byId(x, y),
     );
 
   const seen = new Set<string>();
