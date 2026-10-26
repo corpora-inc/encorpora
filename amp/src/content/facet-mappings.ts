@@ -60,6 +60,48 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "gauss-3x3-solve",
+    facetId: "linear-systems.core",
+    extent: "partial",
+    rationale:
+      "Solve a three-equation, three-variable linear system with an integer solution by elimination, choose the row operation that cancels a variable, complete a back-substitution, or classify a system as having one, no or infinitely many solutions. Does not assess modelling a system from a context, non-integer solutions, matrix inverses or written elimination work.",
+  },
+  {
+    templateId: "quadratic-inequality-interval",
+    facetId: "quadratic-equations.core",
+    extent: "partial",
+    rationale:
+      "Select the solution set of a quadratic inequality with integer zeros in interval notation, including either sign of the leading coefficient, rearranged forms, endpoint inclusion, and expressions with a double zero or no real zeros. Does not assess irrational zeros, graphing, or inequalities in a context.",
+  },
+  {
+    templateId: "conditional-statements",
+    facetId: "geometric-proof.core",
+    extent: "partial",
+    rationale:
+      "Select the converse, inverse or contrapositive of a conditional, the statement that must also be true, its negation or biconditional, and the true or false compound statement given truth values of P, Q and R. Does not assess truth tables written out, Venn diagrams, or writing a proof.",
+  },
+  {
+    templateId: "cube-root-equation",
+    facetId: "radical-equations.core",
+    extent: "partial",
+    rationale:
+      "Select the real solution of an equation containing a cube root or a cube, including negative values, an outside constant, and the check that cube roots give no extraneous solutions. Does not assess square-root equations with extraneous solutions, rational exponents or equations with two radicals.",
+  },
+  {
+    templateId: "polar-graph-identify",
+    facetId: "polar-coordinates.core",
+    extent: "partial",
+    rationale:
+      "Choose the family of a polar curve from its equation, the petal count of a rose, the greatest distance from the pole, and the symmetry of a limaçon. Does not assess sketching or plotting polar graphs, intersections of curves or area.",
+  },
+  {
+    templateId: "cone-section-name",
+    facetId: "conic-sections.core",
+    extent: "partial",
+    rationale:
+      "Name the circle, ellipse, parabola, hyperbola or degenerate section produced by a plane cutting a double cone from the plane's angle with the axis or its position relative to a side line. Does not assess equations of conics, foci or deriving the sections.",
+  },
+  {
     templateId: "sat-entry-system-solve",
     facetId: "linear-systems.core",
     extent: "partial",
