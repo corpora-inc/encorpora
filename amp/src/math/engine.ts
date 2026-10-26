@@ -277,6 +277,11 @@ import {
   complexMultiplicationCase,
 } from "./complex-practice";
 import {
+  financeCreditTemplates,
+  financeCreditTemplateIds,
+  generateFinanceCreditProblem,
+} from "./finance-credit-practice";
+import {
   algebraRequirementGapTemplates,
   generateAlgebraRequirementGapProblem,
 } from "./algebra-requirement-gaps-practice";
@@ -459,6 +464,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
   complexMultiplicationTemplate,
+  ...financeCreditTemplates,
   ...algebraRequirementGapTemplates,
   ...advancedMathGapTemplates,
   ...satAlgebraStructureTemplates,
@@ -913,6 +919,8 @@ function generateRawProblem(
     return generateSatNumericEntryProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (financeCreditTemplateIds.has(templateId))
+    return generateFinanceCreditProblem(templateId, seed);
   if (algebraRequirementGapTemplates.some((t) => t.id === templateId))
     return generateAlgebraRequirementGapProblem(templateId, seed);
   if (satAlgebraStructureTemplates.some((t) => t.id === templateId))

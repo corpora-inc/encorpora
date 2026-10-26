@@ -60,6 +60,55 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
+    templateId: "interest-compare-years",
+    facetId: "exponential-models.core",
+    extent: "partial",
+    rationale:
+      "Choose, from a stated principal, rate and number of years, the gap between a simple-interest and a yearly-compounded balance with cent rounding, which of two accounts holds more and by how much, the compound account in a balance table, and one year's extra interest. Does not assess continuous or multiple-per-year compounding, solving for time or rate, or graphing the balances.",
+  },
+  {
+    templateId: "loan-total-cost",
+    facetId: "linear-models.core",
+    extent: "partial",
+    rationale:
+      "Choose the total repaid and finance charge on a loan from a stated equal payment and term, the cost gap between two terms or two rates, a missing payment, and a term given in years. Does not assess computing the payment from the rate, amortization schedules or APR derivation.",
+  },
+  {
+    templateId: "loan-compare-options",
+    facetId: "linear-models.core",
+    extent: "partial",
+    rationale:
+      "Choose the cheaper of two stated loan offers by payment times months plus an optional upfront fee, with the gap, and the true statement about lower payment versus lower total. Does not assess computing payments from rates, early payoff or tax effects.",
+  },
+  {
+    templateId: "credit-card-balance",
+    facetId: "percent-change.core",
+    extent: "partial",
+    rationale:
+      "Choose a credit card's monthly finance charge from the APR divided by 12, the new balance after a payment, the balance after two months, total interest over three months, the debt-reducing share of a payment and the effect of a larger payment, with interest rounded to the cent and no tie cases. Does not assess daily balances, grace periods, minimum-payment formulas, credit scores or reports.",
+  },
+  {
+    templateId: "credit-cost-concepts",
+    facetId: "percent-change.core",
+    extent: "partial",
+    rationale:
+      "Choose the numeric consequence of a credit choice: APR and monthly rate conversion, interest from paying only the minimum, the interest gap between two APRs, the extra cost of credit over debit for one month, and a new balance with purchases, late fee and payment. Does not assess opinions about credit use, credit-score or report content, or compound card interest beyond the stated month.",
+  },
+  {
+    templateId: "savings-plan-growth",
+    facetId: "linear-models.core",
+    extent: "partial",
+    rationale:
+      "Choose a balance from a starting amount and equal monthly deposits, months to a goal rounded up, the deposit needed, the month two plans are equal, which plan leads, and a later balance read from a table. Does not assess interest on deposits, annuity formulas or graphing the plan.",
+  },
+  {
+    templateId: "interest-table-type",
+    facetId: "percent-change.core",
+    extent: "partial",
+    rationale:
+      "Tell simple from compound interest in two balance tables by comparing yearly increases, extend the simple account to a later year, and find one year's interest from consecutive balances. Does not assess deriving the compound formula, continuous compounding or graphing.",
+  },
+  {
     templateId: "sat-entry-system-solve",
     facetId: "linear-systems.core",
     extent: "partial",
