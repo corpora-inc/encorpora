@@ -851,6 +851,10 @@ def self_test():
         review_problem(fixture)
     return {'fixtures': len(fixtures), 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
+
+
 
 if __name__ == '__main__':
     print(self_test())

@@ -1,3 +1,4 @@
+import { familyRegistry } from "../families/registry";
 /** Task archetypes: the reusable join key between released assessment items,
  * standards and AMP problem families. One archetype is one distinct
  * mathematical task in one representation, never one per test. The list is
@@ -414,8 +415,9 @@ time.rename-units|Rename hours and minutes as minutes or minutes as hours
 number.factors-identify|Choose the numbers that are factors of a given whole number
 fractions.multiply-scaling|Decide whether a product exceeds, equals or falls below a factor from the size of the other factor`,
 };
-export const archetypes: readonly Archetype[] = Object.entries(rows).flatMap(
-  ([domain, text]) =>
+/** Frozen legacy rows, then family archetypes from src/families/. */
+export const archetypes: readonly Archetype[] = [
+  ...Object.entries(rows).flatMap(([domain, text]) =>
     text
       .trim()
       .split("\n")
@@ -427,4 +429,6 @@ export const archetypes: readonly Archetype[] = Object.entries(rows).flatMap(
           summary: summary!,
         };
       }),
-);
+  ),
+  ...familyRegistry.archetypes,
+];

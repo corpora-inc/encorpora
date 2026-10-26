@@ -22,7 +22,32 @@ Choose the next task by assessment importance, prerequisite value, distinct requ
 6. Supply a validated lesson or book-page binding before activation. A polished lesson can follow verified problems, but public practice must have instructional support.
 7. Run the applicable local gates, independent mathematics checks and rendered checks. Merge through required gates; only then attach the merged revision to evidence.
 
-Generator integration normally touches the runtime engine registry, template-to-facet mappings, methods/principles, lesson or book bindings, and independent review cases. Search for a neighboring family and follow its actual registration path. Verify all generated cases are reachable through the public engine and supported by the client and printable renderer.
+Verify all generated cases are reachable through the public engine and supported by the client and printable renderer.
+
+## Register a family: new files only
+
+Adding a family adds files; it does not edit a shared registry. The lists in `src/math/engine.ts`, `src/content/lessons.ts`, `problem-methods.ts`, `problem-principles.ts`, `facet-mappings.ts`, `src/curriculum/archetypes.ts`, `template-archetypes.ts`, `connections.ts`, `sat-coverage.ts`, `released-items/index.ts` and the dispatch in `scripts/independent-math-review.py` are frozen legacy entries. Each registry appends family contributions after them in family-id order, so existing template order, generated problems and public payloads never change.
+
+1. `src/math/<id>-practice.ts`: the templates and `generate(templateId, seed)`.
+2. `src/content/<id>-lessons.ts`: lessons, methods and principles keyed by template id; facet mappings here or in `<id>-coverage.ts`.
+3. `src/families/<id>.ts` exports the descriptor:
+
+   ```ts
+   import type { ContentFamily } from "./registry/types";
+   export const family = {
+     id: "<id>",
+     practice: { templates, generate, preserveAlgebra: true },
+     lessons, methods, principles, facetMappings, archetypeLinks,
+     // optional: archetypes, connections, satTasks, satTaskTemplates, releasedLedgers
+   } satisfies ContentFamily;
+   ```
+
+   `preserveAlgebra: true` keeps authored strings verbatim; `false` applies the legacy noun/number copy-edit. `satTaskTemplates` appends templates to an existing SAT task; `satTasks` adds rows. A released-item ledger without practice is a descriptor with only `id` and `releasedLedgers`; it appends after the legacy saturation order. A descriptor and its imports must not import a registry value (engine, lessons, methods and the other lists above), because the registries import the descriptors.
+4. `npm run families:index` adds the descriptor's one line to `src/families/index.ts`, sorted by file name. This is the only shared line a family adds; sorted one-line inserts merge cleanly unless two new families sort next to each other. `tests/family-index.test.ts` fails when the index is stale.
+5. `scripts/<id_with_underscores>_math_oracle.py` defines `SUPPORTED`, `solve(public)`, `review_problem(problem)` and `self_test()`. The review script discovers it by file name. By default `review_problem` is a check and `solve` gives the expected answer, compared as an exact number. Set `REVIEW_RETURNS_ANSWER = True` when `review_problem` returns the expected answer; set `CHOICE_REVIEW` to the template ids whose `solve` returns an option id (or `'choice-response'` for every template with a choice response).
+6. `tests/<id>-practice.test.ts`.
+
+Loading fails on a template, method, principle or archetype link that another family or a legacy entry already defines, and on an oracle template that another oracle already supports. A new skill (`src/curriculum/catalog.ts`), a new exposure objective (`selection.ts`), and changed rows of an existing released-item ledger or source inventory are deliberate curriculum edits and still change those shared files.
 
 A template can assess only part of a broad skill. Record its actual scope and exclusions. Selecting an equation, explanation or graph does not certify constructing one. Written explanations awaiting rubric review cannot produce automatic mastery credit.
 

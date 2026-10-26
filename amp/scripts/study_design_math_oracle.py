@@ -98,5 +98,9 @@ def self_test():
     case=fixture(False,False);case['public']['prompt']=case['public']['prompt'].replace('volunteer after seeing an invitation. These volunteers enter the study without random sampling.', 'who are easiest for the researcher to reach enter the study without random sampling.');review_problem(case);cases.append(case)
     return {'fixtures':len(cases),'rejectedMutations':rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
+
+
 if __name__ == '__main__':
     print(self_test())

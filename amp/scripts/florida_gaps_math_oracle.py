@@ -811,3 +811,7 @@ def self_test():
         else:
             raise ValueError('Corrupt Florida gap structure was accepted')
     return rejected
+
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = FL_CHOICE

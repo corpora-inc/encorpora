@@ -84,11 +84,13 @@ import { geometryRequirementGapMethods } from "./geometry-requirement-gaps-lesso
 import { functionBehaviorMethods } from "./function-behavior-lessons";
 import { absoluteValueMethods } from "./absolute-value-lessons";
 import type { ProblemMethod } from "./problem-lessons";
+import { familyRegistry } from "../families/registry";
+import { withFamilyEntries } from "../families/registry/aggregate";
 
 /** Authored methods, keyed by template id. Keep each one short and complete:
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
-export const methods: Record<string, ProblemMethod> = {
+const legacyMethods: Record<string, ProblemMethod> = {
   ...assessmentGapMethods,
   ...satCompletionMethods,
   ...satGeometryDataMethods,
@@ -1636,3 +1638,9 @@ export const methods: Record<string, ProblemMethod> = {
   },
   ...rightTriangleMethods,
 };
+/** Frozen legacy entries, then families from src/families/. */
+export const methods: Record<string, ProblemMethod> = withFamilyEntries(
+  "method",
+  legacyMethods,
+  familyRegistry.methods,
+);

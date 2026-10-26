@@ -1,6 +1,7 @@
 import { templates } from "../math/engine";
 import { lessons } from "../content/lessons";
 import { methods } from "../content/problem-methods";
+import { familyRegistry } from "../families/registry";
 import { SAT_PROFILE_VERSION, satPracticeEligible } from "./sat";
 
 export const SAT_SOURCE = {
@@ -92,23 +93,39 @@ circle.unit-trig|Use special-angle unit-circle coordinates and signs|unit-circle
 circle.angle-units|Convert degrees and radians in both directions|degree-radian-conversion,sat-entry-radian-conversion
 circle.coordinate|Read or create a circle equation, complete the square, and use distance or midpoint|circle-equation,midpoint-endpoint`,
 };
-export const satTasks = Object.entries(rows).flatMap(([domain, text]) =>
-  text
-    .trim()
-    .split("\n")
-    .map((row) => {
-      const [id, task, families] = row.split("|");
-      return {
-        id: id!,
-        domain: domain as SatDomain,
-        task: task!,
-        templateIds: families!.split(","),
-      };
-    }),
-);
+/** Frozen legacy rows, then family rows; families may also append templates
+ * to an existing task through `satTaskTemplates` (src/families/). */
+export const satTasks = [
+  ...Object.entries(rows).flatMap(([domain, text]) =>
+    text
+      .trim()
+      .split("\n")
+      .map((row) => {
+        const [id, task, families] = row.split("|");
+        return {
+          id: id!,
+          domain: domain as SatDomain,
+          task: task!,
+          templateIds: families!.split(","),
+        };
+      }),
+  ),
+  ...familyRegistry.satTasks.map((task) => ({
+    ...task,
+    templateIds: [...task.templateIds],
+  })),
+].map((task) => {
+  const added = familyRegistry.satTaskTemplates[task.id];
+  return added
+    ? { ...task, templateIds: [...task.templateIds, ...added] }
+    : task;
+});
 export function buildSatCoverage() {
   const errors: string[] = [];
   const seen = new Set<string>();
+  for (const id of Object.keys(familyRegistry.satTaskTemplates))
+    if (!satTasks.some((task) => task.id === id))
+      errors.push(`Unknown SAT task: ${id}`);
   const tasks = satTasks.map((task) => {
     if (seen.has(task.id)) errors.push(`Duplicate SAT task: ${task.id}`);
     seen.add(task.id);

@@ -740,6 +740,10 @@ def self_test():
         raise ValueError('Mismatched method prompt was accepted')
     return {'fixtures': len(good), 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
+
+
 
 if __name__ == '__main__':
     print(self_test())

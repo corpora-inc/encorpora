@@ -83,9 +83,11 @@ import { geometryModelingPrinciples } from "./geometry-modeling-lessons";
 import { geometryRequirementGapPrinciples } from "./geometry-requirement-gaps-lessons";
 import { functionBehaviorPrinciples } from "./function-behavior-lessons";
 import { absoluteValuePrinciples } from "./absolute-value-lessons";
+import { familyRegistry } from "../families/registry";
+import { withFamilyEntries } from "../families/registry/aggregate";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
-export const principles: Record<string, string> = {
+const legacyPrinciples: Record<string, string> = {
   ...assessmentGapPrinciples,
   ...satCompletionPrinciples,
   ...satGeometryDataPrinciples,
@@ -446,3 +448,9 @@ export const principles: Record<string, string> = {
   "logarithm-integer":
     "Definition of a logarithm: $\\log_b N = p$ exactly when $b^p = N$, where $b > 0$, $b \\neq 1$ and $N > 0$.",
 };
+/** Frozen legacy entries, then families from src/families/. */
+export const principles: Record<string, string> = withFamilyEntries(
+  "principle",
+  legacyPrinciples,
+  familyRegistry.principles,
+);
