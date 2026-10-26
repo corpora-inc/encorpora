@@ -1374,6 +1374,153 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     rationale:
       "Find a length or angle using the trapezoid midsegment theorem, the base angles and supplementary leg angles of an isosceles trapezoid, and its congruent diagonals, with numeric or linear expressions. Does not assess written proofs, constructions or drawn figures.",
   },
+  {
+    templateId: "staar-nested-grouping",
+    facetId: "numerical-expressions.core",
+    extent: "partial",
+    rationale:
+      "Evaluate whole-number expressions with brackets around two parenthesized groups, division inside a bracket, or a product described in words with a sum or difference. Does not assess writing an expression for a verbal description or finding the first step of a worked solution.",
+  },
+  {
+    templateId: "staar-signed-exponent-order",
+    facetId: "integer-powers.core",
+    extent: "partial",
+    rationale:
+      "Evaluate integer expressions that mix a negative factor, a parenthesized difference, a squared number, products and sums. Does not assess powers above 2, zero or negative exponents, or fractional bases.",
+  },
+  {
+    templateId: "staar-number-word-form",
+    facetId: "decimal-place-value.core",
+    extent: "partial",
+    rationale:
+      "Choose the words for a whole number below one million or a decimal to thousandths written in expanded form, or the number named by counts of hundreds, tens and ones. Does not assess writing number words by typing or numbers above 999,999.",
+  },
+  {
+    templateId: "staar-rename-percent-fraction-decimal",
+    facetId: "percentages.core",
+    extent: "partial",
+    rationale:
+      "Choose the decimal for a percent, the decimal or percent for a fraction greater than 1 whose decimal ends, or the true equality between a decimal and a mixed number with tenths or hundredths. Does not assess repeating decimals or fractions less than 1.",
+  },
+  {
+    templateId: "staar-ratio-statements",
+    facetId: "ratios.core",
+    extent: "partial",
+    rationale:
+      "Choose a ratio of two counts in simplest form, a part from a part-to-part ratio and a total, or a unit rate with units in the right order. Does not assess three-part ratios, ratio tables or written justification.",
+  },
+  {
+    templateId: "staar-story-model-choice",
+    facetId: "multi-operation-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the multiplication equation with an unknown factor for equal sharing, the addition equation with an unknown part, or the equation or expression that does not model a sharing story. Does not assess writing an equation or solving it.",
+  },
+  {
+    templateId: "staar-rate-equation-choice",
+    facetId: "dependent-variables.core",
+    extent: "partial",
+    rationale:
+      "Find the unit rate from a total over many units and choose the equation y = kx for any number of units. Does not assess tables, graphs or equations with a starting amount.",
+  },
+  {
+    templateId: "staar-order-decimals",
+    facetId: "compare-decimals.core",
+    extent: "partial",
+    rationale:
+      "Order four decimals with one to three places from least to greatest or greatest to least, or choose the second or third in order. Does not assess decimals above 1 or ordering with fractions.",
+  },
+  {
+    templateId: "staar-order-mixed-forms",
+    facetId: "approximate-roots.core",
+    extent: "partial",
+    rationale:
+      "Order signed fractions and decimals, order a fraction, percent, decimal and square root, or choose the true comparison among signed decimals, fractions and square roots. Does not assess cube roots, pi or ordering by exact algebraic proof.",
+  },
+  {
+    templateId: "staar-decimal-operations",
+    facetId: "decimal-algorithms.core",
+    extent: "partial",
+    rationale:
+      "Multiply a whole number by hundredths in a money story, divide a decimal total by a whole number, subtract a tenths decimal from a whole number to compare amounts, or subtract a unit fraction from a decimal. Does not assess division by decimals or repeating results.",
+  },
+  {
+    templateId: "staar-salary-percent",
+    facetId: "percentages.core",
+    extent: "partial",
+    rationale:
+      "Find a percent raise of a salary of tens of thousands, the salary after the raise, or the difference in earnings of two careers over several years from a table. Does not assess percent decrease, compound raises or taxes.",
+  },
+  {
+    templateId: "staar-measure-chains",
+    facetId: "area-perimeter-models.core",
+    extent: "partial",
+    rationale:
+      "Find a rectangle's width from its perimeter and length and then its area, a perimeter with decimal sides, or a square's area from its perimeter. Does not assess composite figures or finding the perimeter from the area.",
+  },
+  {
+    templateId: "staar-multistep-stories",
+    facetId: "multistep-whole-stories.core",
+    extent: "partial",
+    rationale:
+      "Solve two-step stories: add then subtract to compare totals, share then regroup, multiply then divide into full servings, multiply decimals of a liter then convert, or convert from a stated unit row. Does not assess three or more steps or unit systems not stated in the problem.",
+  },
+  {
+    templateId: "staar-line-from-points",
+    facetId: "slope.core",
+    extent: "partial",
+    rationale:
+      "Choose the slope and y-intercept of the line through two integer points, the equation from a fractional slope and a point, or the rate of change from standard form. Does not assess graphing, point-slope form or parallel and perpendicular lines.",
+  },
+  {
+    templateId: "staar-stem-leaf-combine",
+    facetId: "distribution-plots.core",
+    extent: "partial",
+    rationale:
+      "Read a stem-and-leaf plot with its key and add the two greatest values or subtract the second-least from the greatest. Does not assess decimal keys, medians or constructing a plot.",
+  },
+  {
+    templateId: "staar-dot-plot-threshold",
+    facetId: "line-plots.core",
+    extent: "partial",
+    rationale:
+      "Count the dots below, at least or above a stated value on a dot plot of whole-number ratings. Does not assess fractional scales, means or constructing a dot plot.",
+  },
+  {
+    templateId: "staar-money-vocabulary",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Recognize an example of credit, or tell the variable or fixed expense from three months of amounts shown in a table. Does not assess interest calculations, budgets or the inline choice response format.",
+  },
+  {
+    templateId: "staar-table-rule-choice",
+    facetId: "related-patterns.core",
+    extent: "partial",
+    rationale:
+      "Choose from four tables of paired values the one whose every pair follows a stated add or multiply rule. Does not assess finding the rule from a table or writing it.",
+  },
+  {
+    templateId: "staar-multistep-equations",
+    facetId: "linear-equations.core",
+    extent: "partial",
+    rationale:
+      "Solve a linear equation with a negative coefficient distributed over a group and variables on both sides, like terms on one side, or fractional coefficients with an integer solution. Does not assess equations with no solution or infinitely many, or non-integer solutions.",
+  },
+  {
+    templateId: "staar-experiment-probability",
+    facetId: "probability.core",
+    extent: "partial",
+    rationale:
+      "Find the experimental probability of one of two outcomes from a frequency table, or the probability of a red card then a labeled card with replacement, as a fraction in simplest form. Does not assess drawing without replacement or simulations.",
+  },
+  {
+    templateId: "staar-number-sets",
+    facetId: "signed-numbers.core",
+    extent: "partial",
+    rationale:
+      "Choose the number that belongs in a region of nested whole numbers, integers and rational numbers, the number outside a set, or the region a misplaced quotient belongs to, with the sets described in words. Does not assess a drawn Venn diagram, irrational numbers or the dropdown response format.",
+  },
   ...numberSenseFacetMappings,
   ...multiplyDivideFacetMappings,
   ...addSubtractFacetMappings,
@@ -1405,4 +1552,60 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...absoluteValueFacetMappings,
   ...inequalityFacetMappings,
   ...linearSystemFacetMappings,
+  {
+    templateId: "arc-sector-derivation",
+    facetId: "arc-sector-measure.HSG.C.B.5",
+    extent: "partial",
+    rationale:
+      "Choose the proportion that relates arc lengths of similar circles, give the radian measure of an arc over its radius, find an arc from a radian angle and radius, and find a sector's area as the fraction of the disk, including the simplified form (1/2)θr². Does not assess writing the derivation, degree-to-radian conversion or composite regions.",
+  },
+  {
+    templateId: "complex-plane-operations",
+    facetId: "complex-plane.HSN.CN.B.5",
+    extent: "partial",
+    rationale:
+      "Locate the sum, difference and conjugate of complex numbers in the plane, identify multiplication by i as a quarter turn, apply a modulus and argument as a scaling and rotation, and combine moduli and arguments under multiplication. Does not assess division, powers or roots, or drawing the representations by hand.",
+  },
+  {
+    templateId: "conditional-everyday-reasoning",
+    facetId: "conditional-probability.HSS.CP.A.5",
+    extent: "partial",
+    rationale:
+      "Match percent statements to P(A|B), P(B|A), P(A and B) and P(A), compare the two conditional probabilities from counts, and decide independence from stated probabilities or from a conditional rate against the overall rate. Does not assess Bayes' rule calculations, tree diagrams or written explanations.",
+  },
+  {
+    templateId: "congruence-by-rigid-motion",
+    facetId: "congruence-criteria.HSG.CO.B.6",
+    extent: "partial",
+    rationale:
+      "Choose the sequence of rigid motions that maps one grid triangle onto another, predict a vertex's image, decide congruence from the existence of such a sequence including mirror images and enlargements, and match corresponding parts. Does not assess the congruence criteria themselves, written proofs or motions about centers other than the origin.",
+  },
+  {
+    templateId: "conic-foci",
+    facetId: "conic-sections.HSG.GPE.A.3",
+    extent: "partial",
+    rationale:
+      "Find the foci of an ellipse or hyperbola centered at the origin from its equation using c² = a² − b² or c² = a² + b², and choose the equation from the foci and the constant sum or difference of distances. Does not assess conics with translated centers, rotated axes, parabolas or the algebraic derivation.",
+  },
+  {
+    templateId: "choose-the-plot",
+    facetId: "distribution-plots.HSS.ID.A.1",
+    extent: "partial",
+    rationale:
+      "Choose the data list a dot plot, histogram or box plot displays, and choose the bar heights or five-number summary a data list produces under stated interval and quartile conventions. Does not assess drawing the plots, choosing a display for a purpose, or skewed-shape description.",
+  },
+  {
+    templateId: "similarity-by-transformation",
+    facetId: "similarity-proofs.HSG.SRT.A.2",
+    extent: "partial",
+    rationale:
+      "Choose the dilation about the origin and the rigid motions that map one grid triangle onto another, and decide similarity from whether the sides scale by one factor. Does not assess dilations about other centers, written justification or similarity of non-triangular figures.",
+  },
+  {
+    templateId: "aa-similarity",
+    facetId: "similarity-proofs.HSG.SRT.A.3",
+    extent: "partial",
+    rationale:
+      "Decide similarity by AA from two stated angles of each triangle, name the vertex correspondence, find a missing angle, and choose the matching proportion of sides. Does not assess the proof that AA follows from similarity transformations or other similarity criteria.",
+  },
 ];

@@ -267,6 +267,10 @@ import {
   generateGeometryModelingProblem,
 } from "./geometry-modeling-practice";
 import {
+  geometryRequirementGapTemplates,
+  generateGeometryRequirementGapProblem,
+} from "./geometry-requirement-gaps-practice";
+import {
   functionBehaviorTemplates,
   generateFunctionBehaviorProblem,
 } from "./function-behavior-practice";
@@ -282,6 +286,10 @@ import {
   floridaGapTemplates,
   generateFloridaGapProblem,
 } from "./florida-gaps-practice";
+import {
+  generateStaarGapProblem,
+  staarGapTemplates,
+} from "./staar-gap-practice";
 import {
   satAlgebraStructureTemplates,
   generateSatAlgebraStructureProblem,
@@ -482,6 +490,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
   ...floridaGapTemplates,
+  ...staarGapTemplates,
   ...k8StateNumberTemplates,
   complexMultiplicationTemplate,
   ...algebraRequirementGapTemplates,
@@ -495,6 +504,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...complexConicsTemplates,
   ...trigonometryTemplates,
   ...geometryModelingTemplates,
+  ...geometryRequirementGapTemplates,
   ...functionBehaviorTemplates,
   ...remainingGapTemplates,
   ...polynomialTemplates,
@@ -957,6 +967,8 @@ function generateRawProblem(
     return generateNumberMeasurementGapProblem(templateId, seed);
   if (floridaGapTemplates.some((t) => t.id === templateId))
     return generateFloridaGapProblem(templateId, seed);
+  if (staarGapTemplates.some((t) => t.id === templateId))
+    return generateStaarGapProblem(templateId, seed);
   if (k8StateNumberTemplates.some((t) => t.id === templateId))
     return generateK8StateNumberProblem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))
@@ -987,6 +999,8 @@ function generateRawProblem(
     return generateTrigonometryProblem(templateId, seed);
   if (geometryModelingTemplates.some((t) => t.id === templateId))
     return generateGeometryModelingProblem(templateId, seed);
+  if (geometryRequirementGapTemplates.some((t) => t.id === templateId))
+    return generateGeometryRequirementGapProblem(templateId, seed);
   if (absoluteValueTemplates.some((t) => t.id === templateId))
     return generateAbsoluteValueProblem(templateId, seed);
   if (measurementTemplates.some((t) => t.id === templateId))

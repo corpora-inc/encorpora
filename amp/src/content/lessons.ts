@@ -82,6 +82,7 @@ import { algebraRequirementGapLessons } from "./algebra-requirement-gaps-lessons
 import { advancedMathGapLessons } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapLessons } from "./number-measurement-gaps-lessons";
 import { floridaGapLessons } from "./florida-gaps-lessons";
+import { staarGapLessons } from "./staar-gap-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
 import { remainingGapLessons } from "./remaining-gap-lessons";
 import { vectorMatrixLessons } from "./vectors-matrices-lessons";
@@ -89,6 +90,7 @@ import { statisticsProbabilityLessons } from "./statistics-probability-lessons";
 import { complexConicsLessons } from "./complex-conics-lessons";
 import { trigonometryLessons } from "./trigonometry-lessons";
 import { geometryModelingLessons } from "./geometry-modeling-lessons";
+import { geometryRequirementGapLessons } from "./geometry-requirement-gaps-lessons";
 import { functionBehaviorLessons } from "./function-behavior-lessons";
 import { absoluteValueLessons } from "./absolute-value-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
@@ -701,6 +703,7 @@ export const lessons: readonly Lesson[] = [
   ...advancedMathGapLessons,
   ...numberMeasurementGapLessons,
   ...floridaGapLessons,
+  ...staarGapLessons,
   ...satAlgebraStructureLessons,
   ...remainingGapLessons,
   ...vectorMatrixLessons,
@@ -708,6 +711,7 @@ export const lessons: readonly Lesson[] = [
   ...complexConicsLessons,
   ...trigonometryLessons,
   ...geometryModelingLessons,
+  ...geometryRequirementGapLessons,
   ...functionBehaviorLessons,
   ...absoluteValueLessons,
   ...polynomialLessons,
