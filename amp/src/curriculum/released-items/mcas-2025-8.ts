@@ -77,10 +77,10 @@ export const mcasGrade8 = defineLedger(
       standards: ["8.NS.A.1"],
       archetypeIds: ["number.rational-irrational"],
       demand: "Select the two rational numbers among five radical expressions",
-      status: "partial",
-      templateIds: ["classify-real-number"],
+      status: "covered",
+      templateIds: ["classify-real-number", "mcas-rational-irrational-select"],
       limitations:
-        "classify-real-number chooses one rational or irrational number; selecting two of five radical expressions by multiple selection is not practiced.",
+        "Two rational numbers among five square-root, cube-root and fraction radicals are selected by multiple selection; proofs of irrationality are not assessed.",
     },
     {
       section: "Session 1",
@@ -122,10 +122,10 @@ export const mcasGrade8 = defineLedger(
       archetypeIds: ["number.scientific-notation"],
       demand:
         "Select the three true equations that rewrite a power of ten times two as a standard numeral",
-      status: "partial",
-      templateIds: ["scientific-to-standard"],
+      status: "covered",
+      templateIds: ["scientific-to-standard", "mcas-sci-notation-select"],
       limitations:
-        "scientific-to-standard writes one numeral by entry; judging six stated equations by multiple selection is not practiced.",
+        "Three of six equations writing a digit times a power of ten as a standard numeral are selected by multiple selection, with positive and negative exponents; operations in scientific notation are not assessed.",
     },
     {
       section: "Session 1",
@@ -191,10 +191,10 @@ export const mcasGrade8 = defineLedger(
       archetypeIds: ["function.compare-representations"],
       demand:
         "Select the three tables whose y-intercept is less than that of a stated linear function",
-      status: "partial",
-      templateIds: ["compare-representations"],
+      status: "covered",
+      templateIds: ["compare-representations", "mcas-table-intercept-select"],
       limitations:
-        "compare-representations chooses one true statement comparing two functions; scanning six tables against a stated intercept by multiple selection is not practiced.",
+        "Three of six linear tables are selected by comparing their y-intercepts, found with or without x = 0 listed, with a stated function's; the tables are listed as x and y value rows and nonlinear tables are not assessed.",
     },
     {
       section: "Session 2",

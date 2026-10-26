@@ -282,6 +282,10 @@ import {
   generateFloridaGapProblem,
 } from "./florida-gaps-practice";
 import {
+  generateMcasGapProblem,
+  mcasGapTemplates,
+} from "./mcas-gap-practice";
+import {
   generateStaarGapProblem,
   staarGapTemplates,
 } from "./staar-gap-practice";
@@ -485,6 +489,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
   ...floridaGapTemplates,
+  ...mcasGapTemplates,
   ...staarGapTemplates,
   ...k8StateNumberTemplates,
   complexMultiplicationTemplate,
@@ -956,6 +961,8 @@ function generateRawProblem(
     return generateNumberMeasurementGapProblem(templateId, seed);
   if (floridaGapTemplates.some((t) => t.id === templateId))
     return generateFloridaGapProblem(templateId, seed);
+  if (mcasGapTemplates.some((t) => t.id === templateId))
+    return generateMcasGapProblem(templateId, seed);
   if (staarGapTemplates.some((t) => t.id === templateId))
     return generateStaarGapProblem(templateId, seed);
   if (k8StateNumberTemplates.some((t) => t.id === templateId))
