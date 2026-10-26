@@ -79,13 +79,14 @@ export const mcasGrade10 = defineLedger(
       archetypeIds: ["nonlinear.quadratic"],
       demand:
         "Select the two values of x that make a quadratic expression zero",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "quadratic-factored-solutions",
         "quadratic-expanded-solutions",
+        "mcas-quadratic-zeros-select",
       ],
       limitations:
-        "Both families choose the complete solution set of a stated quadratic; selecting each solution by multiple selection is not practiced.",
+        "Two zeros of a factored, standard-form or non-monic quadratic with integer zeros are selected by multiple selection; irrational or complex zeros are not assessed.",
     },
     {
       section: "Session 1",
@@ -152,10 +153,10 @@ export const mcasGrade10 = defineLedger(
       archetypeIds: ["triangle.congruence-correspondence"],
       demand:
         "Select the three true statements of corresponding sides and angles from a triangle congruence statement",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["mcas-congruence-statement-select"],
       limitations:
-        "Congruence correspondence and selecting all parts need direct practice.",
+        "Three of six corresponding sides and angles of a congruence statement are selected by multiple selection, with aligned or scrambled letters; proving congruence is not assessed.",
     },
     {
       section: "Session 1",
@@ -235,9 +236,13 @@ export const mcasGrade10 = defineLedger(
       demand:
         "Select the two expressions with rational values among sums and products with pi and roots",
       status: "partial",
-      templateIds: ["number-system-closure-classify", "classify-real-number"],
+      templateIds: [
+        "number-system-closure-classify",
+        "classify-real-number",
+        "mcas-rational-irrational-select",
+      ],
       limitations:
-        "The families decide one rational or irrational result by choice; selecting two of five expressions by multiple selection is not practiced.",
+        "Two rational values among sums, products and quotients of roots and pi are selected; the released item's powers of pi and of radicals (a square of pi, a radical raised to a power) are not practiced.",
     },
     {
       section: "Session 1",
@@ -290,10 +295,10 @@ export const mcasGrade10 = defineLedger(
       archetypeIds: ["circle.coordinate"],
       demand:
         "Select the two true statements about a circle's center and radius from its equation",
-      status: "partial",
-      templateIds: ["circle-equation"],
+      status: "covered",
+      templateIds: ["circle-equation", "mcas-circle-equation-select"],
       limitations:
-        "circle-equation finds one coordinate or the squared radius by entry; selecting true statements about center and radius by multiple selection is not practiced.",
+        "Two true statements about the center, radius, diameter, a point and the origin are selected from a circle's equation with integer center and radius; completing the square is not assessed.",
     },
     {
       section: "Session 1",
@@ -343,9 +348,10 @@ export const mcasGrade10 = defineLedger(
       standards: ["G-CO.A.3"],
       archetypeIds: ["shape.rotational-symmetry"],
       demand: "Choose the figure that has rotational symmetry",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family decides rotational symmetry.",
+      status: "partial",
+      templateIds: ["mcas-rotational-symmetry"],
+      limitations:
+        "mcas-rotational-symmetry chooses among named figures that do or do not map onto themselves in a turn of less than a full circle; judging drawn figures is not practiced.",
     },
     {
       section: "Session 2",
@@ -467,10 +473,10 @@ export const mcasGrade10 = defineLedger(
       archetypeIds: ["measure.scale", "measure.volume"],
       demand:
         "Select the two true statements about how a cylinder's volume changes when its radius or its height is multiplied",
-      status: "partial",
-      templateIds: ["cylinder-volume"],
+      status: "covered",
+      templateIds: ["cylinder-volume", "mcas-cylinder-scaling-select"],
       limitations:
-        "cylinder-volume finds a volume or a dimension; reasoning about scaling one dimension at a time and selecting two statements are not practiced.",
+        "Two true statements about the volume factor when a cylinder's radius, height or both are multiplied are selected by multiple selection; computing a volume is not assessed.",
     },
     {
       section: "Session 2",
@@ -593,10 +599,10 @@ export const mcasGrade10 = defineLedger(
       archetypeIds: ["line.slope-sign"],
       demand:
         "Decide the sign of a linear function's slope when its output falls as its input rises",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["mcas-slope-sign-description"],
       limitations:
-        "No family decides the sign of a slope from a description of how the variables change.",
+        "The sign of a linear function's slope is decided from how the output changes as the input rises or falls, including zero; computing a slope value is not assessed.",
     },
   ],
 );
