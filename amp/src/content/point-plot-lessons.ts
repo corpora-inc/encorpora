@@ -306,7 +306,7 @@ const entries: Entry[] = [
       "The graph of $y = a(x - h)^2 + k$ is the parabola $y = ax^2$ shifted $h$ units right and $k$ units up. It is symmetric about $x = h$, and a point $(x, y)$ is on the graph exactly when its coordinates satisfy the equation.",
     example: {
       prompt:
-        "Graph $y = 2(x - 1)^2 - 3$ by placing its vertex and 2 other points on the curve.",
+        "Graph $y = 2(x - 1)^2 - 3$ by placing its vertex and 2 more points.",
       figure: solvedCurve(
         { kind: "quadratic", a: [2, 1], h: [1, 1], k: [-3, 1] },
         [
@@ -341,9 +341,9 @@ const entries: Entry[] = [
     id: "graph-absolute-value-points",
     title: "Graph an absolute value function by placing points",
     summary:
-      "The graph of $y = a|x - h| + k$ is a V with its vertex at $(h, k)$. Both sides are straight, with slopes $a$ and $-a$.",
+      "The graph of $y = a|x - h| + k$ is V-shaped with its vertex at $(h, k)$. Both sides are straight, with slopes $a$ and $-a$.",
     objectives: [
-      "Find the vertex of $y = a|x - h| + k$ and the direction the V opens.",
+      "Find the vertex of $y = a|x - h| + k$ and the direction the graph opens.",
       "Find lattice points on both sides of the vertex by substituting.",
     ],
     intuition:
@@ -355,7 +355,7 @@ const entries: Entry[] = [
       ],
       [
         "vertex",
-        "The point where the two rays of the V meet: the lowest point if $a > 0$ and the highest if $a < 0$.",
+        "The point where the two rays of the graph meet: the lowest point if $a > 0$ and the highest if $a < 0$.",
       ],
     ],
     method: [
@@ -369,7 +369,7 @@ const entries: Entry[] = [
       "The function $y = a|x - h| + k$ equals $a(x - h) + k$ for $x \\ge h$ and $-a(x - h) + k$ for $x < h$: two linear pieces that meet at $(h, k)$ and are mirror images across $x = h$.",
     example: {
       prompt:
-        "Graph $y = 2\\left|x + 1\\right| - 4$ by placing its vertex and 2 other points on the curve.",
+        "Graph $y = 2\\left|x + 1\\right| - 4$ by placing its vertex and 2 more points.",
       figure: solvedCurve(
         { kind: "absolute", a: [2, 1], h: [-1, 1], k: [-4, 1] },
         [
@@ -398,7 +398,7 @@ const entries: Entry[] = [
       "Evaluate the inside first, then take the absolute value, then multiply by $a$.",
     ],
     parentGuide:
-      "Ask your learner where the V turns and how far each placed point is from that turning point.",
+      "Ask your learner where the graph turns and how far each placed point is from that turning point.",
   },
   {
     id: "graph-exponential-points",
@@ -432,7 +432,7 @@ const entries: Entry[] = [
       "For $a > 0$ and $b > 0$, $b \\ne 1$, the function $y = a \\cdot b^x$ is positive for every $x$, increasing if $b > 1$ and decreasing if $b < 1$, and $b^{x + 1} = b \\cdot b^x$, so equal steps in $x$ multiply $y$ by equal factors.",
     example: {
       prompt:
-        "Graph $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^x$ by placing 3 points on its curve.",
+        "Graph $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^x$ by placing 3 points.",
       figure: solvedCurve(
         { kind: "exponential", a: [3, 1], b: [1, 2] },
         [
@@ -493,7 +493,7 @@ const entries: Entry[] = [
       "The function $y = \\sqrt{x}$ is defined for $x \\ge 0$ and increasing. The graph of $y = a\\sqrt{x - h} + k$ is that curve stretched by $|a|$ (and reflected over the $x$-axis if $a < 0$), then moved $h$ right and $k$ up.",
     example: {
       prompt:
-        "Graph $y = 2\\sqrt{x + 3} - 1$ by placing its starting point and 2 other points on the curve.",
+        "Graph $y = 2\\sqrt{x + 3} - 1$ by placing its starting point and 2 more points.",
       figure: solvedCurve(
         { kind: "root", a: [2, 1], h: [-3, 1], k: [-1, 1] },
         [

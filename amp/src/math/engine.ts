@@ -282,6 +282,7 @@ import {
   numberMeasurementGapTemplates,
   generateNumberMeasurementGapProblem,
 } from "./number-measurement-gaps-practice";
+import { texasK2Templates, generateTexasK2Problem } from "./texas-k2-practice";
 import {
   floridaGapTemplates,
   generateFloridaGapProblem,
@@ -303,18 +304,39 @@ import {
   generateSatAlgebraStructureProblem,
 } from "./sat-algebra-structure-practice";
 import {
+  satFunctionFormsTemplates,
+  generateSatFunctionFormsProblem,
+} from "./sat-function-forms-practice";
+import {
   satNumericEntryTemplates,
   generateSatNumericEntryProblem,
 } from "./sat-numeric-entry-practice";
 import { satSprDecimalAccepted } from "./sat-spr-entry";
 import {
+  hsStateGapTemplates,
+  generateHsStateGapProblem,
+} from "./hs-state-gaps-practice";
+import {
   k8StateNumberTemplates,
   generateK8StateNumberProblem,
 } from "./k8-state-number-practice";
 import {
+  texas38Templates,
+  generateTexas38Problem,
+} from "./texas-38-practice";
+import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
 } from "./complex-practice";
+import {
+  financeCreditTemplates,
+  financeCreditTemplateIds,
+  generateFinanceCreditProblem,
+} from "./finance-credit-practice";
+import {
+  texasHsTemplates,
+  generateTexasHsProblem,
+} from "./texas-hs-practice";
 import {
   algebraRequirementGapTemplates,
   generateAlgebraRequirementGapProblem,
@@ -323,6 +345,14 @@ import {
   remainingGapTemplates,
   generateRemainingGapProblem,
 } from "./remaining-gap-practice";
+import {
+  financeIncomeTemplates,
+  generateFinanceIncomeProblem,
+} from "./finance-income-practice";
+import {
+  dataDisplayStateTemplates,
+  generateDataDisplayStateProblem,
+} from "./data-display-state-practice";
 import {
   vectorMatrixTemplates,
   generateVectorMatrixProblem,
@@ -502,12 +532,18 @@ export const templates: readonly TemplateMetadata[] = [
   ...regentsGapTemplates,
   ...mcasGapTemplates,
   ...staarGapTemplates,
+  ...texasK2Templates,
   ...k8StateNumberTemplates,
+  ...texas38Templates,
   complexMultiplicationTemplate,
+  ...financeCreditTemplates,
+  ...hsStateGapTemplates,
   ...algebraRequirementGapTemplates,
+  ...texasHsTemplates,
   ...advancedMathGapTemplates,
   ...satAlgebraStructureTemplates,
   ...satNumericEntryTemplates,
+  ...satFunctionFormsTemplates,
   ...pointPlotTemplates,
   ...multiPartChoiceTemplates,
   ...vectorMatrixTemplates,
@@ -518,6 +554,8 @@ export const templates: readonly TemplateMetadata[] = [
   ...geometryRequirementGapTemplates,
   ...functionBehaviorTemplates,
   ...remainingGapTemplates,
+  ...financeIncomeTemplates,
+  ...dataDisplayStateTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
   ...addSubtractTemplates,
@@ -813,6 +851,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
     ...algebraRequirementGapTemplates,
+    ...texasHsTemplates,
     ...pointPlotTemplates,
     ...multiPartChoiceTemplates,
   ].some((t) => t.id === problem.public.templateId);
@@ -992,8 +1031,12 @@ function generateRawProblem(
     return generateMcasGapProblem(templateId, seed);
   if (staarGapTemplates.some((t) => t.id === templateId))
     return generateStaarGapProblem(templateId, seed);
+  if (texasK2Templates.some((t) => t.id === templateId))
+    return generateTexasK2Problem(templateId, seed);
   if (k8StateNumberTemplates.some((t) => t.id === templateId))
     return generateK8StateNumberProblem(templateId, seed);
+  if (texas38Templates.some((t) => t.id === templateId))
+    return generateTexas38Problem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))
     return generateStatisticsProbabilityProblem(templateId, seed);
   if (complexConicsTemplates.some((t) => t.id === templateId))
@@ -1002,20 +1045,32 @@ function generateRawProblem(
     return generateFunctionBehaviorProblem(templateId, seed);
   if (advancedMathGapTemplates.some((t) => t.id === templateId))
     return generateAdvancedMathGapProblem(templateId, seed);
+  if (satFunctionFormsTemplates.some((t) => t.id === templateId))
+    return generateSatFunctionFormsProblem(templateId, seed);
   if (satNumericEntryTemplates.some((t) => t.id === templateId))
     return generateSatNumericEntryProblem(templateId, seed);
+  if (hsStateGapTemplates.some((t) => t.id === templateId))
+    return generateHsStateGapProblem(templateId, seed);
   if (pointPlotTemplates.some((t) => t.id === templateId))
     return generatePointPlotProblem(templateId, seed);
   if (multiPartChoiceTemplates.some((t) => t.id === templateId))
     return generateMultiPartChoiceProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (financeCreditTemplateIds.has(templateId))
+    return generateFinanceCreditProblem(templateId, seed);
+  if (texasHsTemplates.some((t) => t.id === templateId))
+    return generateTexasHsProblem(templateId, seed);
   if (algebraRequirementGapTemplates.some((t) => t.id === templateId))
     return generateAlgebraRequirementGapProblem(templateId, seed);
   if (satAlgebraStructureTemplates.some((t) => t.id === templateId))
     return generateSatAlgebraStructureProblem(templateId, seed);
   if (remainingGapTemplates.some((t) => t.id === templateId))
     return generateRemainingGapProblem(templateId, seed);
+  if (financeIncomeTemplates.some((t) => t.id === templateId))
+    return generateFinanceIncomeProblem(templateId, seed);
+  if (dataDisplayStateTemplates.some((t) => t.id === templateId))
+    return generateDataDisplayStateProblem(templateId, seed);
   if (vectorMatrixTemplates.some((t) => t.id === templateId))
     return generateVectorMatrixProblem(templateId, seed);
   if (trigonometryTemplates.some((t) => t.id === templateId))

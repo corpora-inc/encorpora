@@ -7,6 +7,7 @@ import {
   AdvertisingPermissionError,
   measurementNotice,
   metaPermissionChangeSchema,
+  openaiPermissionChangeSchema,
   type AdvertisingProvider,
   advertisingOptOut,
   permissionChangeSchema,
@@ -20,6 +21,8 @@ function permissionTable(provider: AdvertisingProvider) {
       return "amp_advertising_permissions";
     case "meta":
       return "amp_meta_advertising_permissions";
+    case "openai":
+      return "amp_openai_advertising_permissions";
     default:
       throw new Error("Unsupported advertising provider");
   }
@@ -113,7 +116,7 @@ export async function revokeAdvertisingPermission(
   // preference changes only that recipient.
   for (const recipient of provider
     ? [provider]
-    : (["google", "meta"] as const)) {
+    : (["google", "meta", "openai"] as const)) {
     if (!(await installed(client, recipient))) continue;
     const table = permissionTable(recipient);
     if (
@@ -210,7 +213,11 @@ export async function changeAdvertisingPermission(
 ) {
   const notice = measurementNotice(provider);
   const change = (
-    provider === "meta" ? metaPermissionChangeSchema : permissionChangeSchema
+    provider === "openai"
+      ? openaiPermissionChangeSchema
+      : provider === "meta"
+        ? metaPermissionChangeSchema
+        : permissionChangeSchema
   ).parse(input);
   return transaction(pool, account, async (client) => {
     if (!(await installed(client, provider)))
@@ -274,7 +281,7 @@ export function withAdvertisingPrivacySignals(
 /** Called by the privacy worker. No event, payload or email is exported. */
 export async function purgeAdvertisingPermissions(pool: Pool) {
   let deleted = 0;
-  for (const provider of ["google", "meta"] as const) {
+  for (const provider of ["google", "meta", "openai"] as const) {
     if (!(await installed(pool, provider))) continue;
     const result = await pool.query(
       `DELETE FROM ${permissionTable(provider)} WHERE COALESCE(withdrawn_at,expires_at)<clock_timestamp()-($1::int * interval '1 day')`,

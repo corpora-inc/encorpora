@@ -186,7 +186,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
       "The other two angles of the right triangle add to 90. Subtract the one you know.",
     ],
     watch:
-      "Check whether E is on the side or on its extension. On the extension, the triangle's angle at the vertex is the supplement of the parallelogram's angle, not the angle itself.",
+      "Check whether $E$ is on the side or on its extension. On the extension, the triangle's angle at the vertex is the supplement of the parallelogram's angle, not the angle itself.",
   },
   "rg-segment-property-choice": {
     goal: "Use a perpendicular bisector or a triangle's midsegment, in words or with algebraic lengths.",

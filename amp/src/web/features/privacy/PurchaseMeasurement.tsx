@@ -34,9 +34,11 @@ export function PurchaseMeasurement({
     mutationKey: ["account", identity, "purchase-measurement", provider],
     mutationFn: (body: PermissionChange) =>
       request(
-        provider === "meta"
-          ? "/family/meta-purchase-measurement"
-          : "/family/purchase-measurement",
+        provider === "openai"
+          ? "/family/openai-purchase-measurement"
+          : provider === "meta"
+            ? "/family/meta-purchase-measurement"
+            : "/family/purchase-measurement",
         purchaseMeasurementSchema,
         {
           token,
@@ -76,14 +78,21 @@ export function PurchaseMeasurement({
         <a
           style={{ color: "var(--color-primary)" }}
           href={
-            provider === "meta"
-              ? "https://www.facebook.com/privacy/policy/"
-              : "https://policies.google.com/privacy"
+            provider === "openai"
+              ? "https://openai.com/policies/privacy-policy/"
+              : provider === "meta"
+                ? "https://www.facebook.com/privacy/policy/"
+                : "https://policies.google.com/privacy"
           }
           target="_blank"
           rel="noopener noreferrer"
         >
-          {provider === "meta" ? "Meta" : "Google"} privacy policy
+          {provider === "openai"
+            ? "OpenAI"
+            : provider === "meta"
+              ? "Meta"
+              : "Google"}{" "}
+          privacy policy
         </a>
       </p>
       <p>

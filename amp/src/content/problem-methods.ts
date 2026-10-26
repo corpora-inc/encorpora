@@ -64,8 +64,14 @@ import { rightTriangleMethods } from "./right-triangle-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import { complexMethods } from "./complex-lessons";
+import { financeCreditMethods } from "./finance-credit-lessons";
+import { hsStateGapMethods } from "./hs-state-gaps-lessons";
+import { financeIncomeMethods } from "./finance-income-lessons";
+import { texasHsMethods } from "./texas-hs-lessons";
 import { k8StateNumberMethods } from "./k8-state-number-lessons";
+import { texas38Methods } from "./texas-38-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
+import { satFunctionFormsMethods } from "./sat-function-forms-lessons";
 import { pointPlotMethods } from "./point-plot-lessons";
 import { multiPartChoiceMethods } from "./multi-part-choice-lessons";
 import { algebraRequirementGapMethods } from "./algebra-requirement-gaps-lessons";
@@ -75,8 +81,10 @@ import { floridaGapMethods } from "./florida-gaps-lessons";
 import { regentsGapMethods } from "./regents-gap-lessons";
 import { mcasGapMethods } from "./mcas-gap-lessons";
 import { staarGapMethods } from "./staar-gap-lessons";
+import { texasK2Methods } from "./texas-k2-lessons";
 import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
+import { dataDisplayStateMethods } from "./data-display-state-lessons";
 import { vectorMatrixMethods } from "./vectors-matrices-lessons";
 import { statisticsProbabilityMethods } from "./statistics-probability-lessons";
 import { complexConicsMethods } from "./complex-conics-lessons";
@@ -114,8 +122,14 @@ const legacyMethods: Record<string, ProblemMethod> = {
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...complexMethods,
+  ...financeCreditMethods,
+  ...hsStateGapMethods,
+  ...financeIncomeMethods,
+  ...texasHsMethods,
   ...k8StateNumberMethods,
+  ...texas38Methods,
   ...satNumericEntryMethods,
+  ...satFunctionFormsMethods,
   ...pointPlotMethods,
   ...multiPartChoiceMethods,
   ...algebraRequirementGapMethods,
@@ -125,8 +139,10 @@ const legacyMethods: Record<string, ProblemMethod> = {
   ...regentsGapMethods,
   ...mcasGapMethods,
   ...staarGapMethods,
+  ...texasK2Methods,
   ...satAlgebraStructureMethods,
   ...remainingGapMethods,
+  ...dataDisplayStateMethods,
   ...vectorMatrixMethods,
   ...statisticsProbabilityMethods,
   ...complexConicsMethods,

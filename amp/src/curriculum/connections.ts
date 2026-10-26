@@ -7,6 +7,14 @@ const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
   to: string;
 })[] = [
   {
+    from: "financial-literacy-middle",
+    to: "piecewise-functions",
+    kind: "application",
+    explanation:
+      "Tax owed as a function of income uses a different rule on each bracket. That is a piecewise function whose pieces join where the brackets meet.",
+    templateIds: ["piecewise-evaluate"],
+  },
+  {
     from: "triangle-law-proofs",
     to: "oblique-triangles",
     kind: "application",

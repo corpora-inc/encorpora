@@ -64,8 +64,14 @@ import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
+import { financeCreditPrinciples } from "./finance-credit-lessons";
+import { hsStateGapPrinciples } from "./hs-state-gaps-lessons";
+import { financeIncomePrinciples } from "./finance-income-lessons";
+import { texasHsPrinciples } from "./texas-hs-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
+import { texas38Principles } from "./texas-38-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
+import { satFunctionFormsPrinciples } from "./sat-function-forms-lessons";
 import { pointPlotPrinciples } from "./point-plot-lessons";
 import { multiPartChoicePrinciples } from "./multi-part-choice-lessons";
 import { algebraRequirementGapPrinciples } from "./algebra-requirement-gaps-lessons";
@@ -75,8 +81,10 @@ import { floridaGapPrinciples } from "./florida-gaps-lessons";
 import { regentsGapPrinciples } from "./regents-gap-lessons";
 import { mcasGapPrinciples } from "./mcas-gap-lessons";
 import { staarGapPrinciples } from "./staar-gap-lessons";
+import { texasK2Principles } from "./texas-k2-lessons";
 import { satAlgebraStructurePrinciples } from "./sat-algebra-structure-lessons";
 import { remainingGapPrinciples } from "./remaining-gap-lessons";
+import { dataDisplayStatePrinciples } from "./data-display-state-lessons";
 import { vectorMatrixPrinciples } from "./vectors-matrices-lessons";
 import { statisticsProbabilityPrinciples } from "./statistics-probability-lessons";
 import { complexConicsPrinciples } from "./complex-conics-lessons";
@@ -110,8 +118,14 @@ const legacyPrinciples: Record<string, string> = {
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...complexPrinciples,
+  ...financeCreditPrinciples,
+  ...hsStateGapPrinciples,
+  ...financeIncomePrinciples,
+  ...texasHsPrinciples,
   ...k8StateNumberPrinciples,
+  ...texas38Principles,
   ...satNumericEntryPrinciples,
+  ...satFunctionFormsPrinciples,
   ...pointPlotPrinciples,
   ...multiPartChoicePrinciples,
   ...algebraRequirementGapPrinciples,
@@ -121,8 +135,10 @@ const legacyPrinciples: Record<string, string> = {
   ...regentsGapPrinciples,
   ...mcasGapPrinciples,
   ...staarGapPrinciples,
+  ...texasK2Principles,
   ...satAlgebraStructurePrinciples,
   ...remainingGapPrinciples,
+  ...dataDisplayStatePrinciples,
   ...vectorMatrixPrinciples,
   ...statisticsProbabilityPrinciples,
   ...complexConicsPrinciples,

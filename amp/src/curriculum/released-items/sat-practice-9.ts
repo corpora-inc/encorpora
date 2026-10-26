@@ -114,10 +114,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand:
         "Find the input of a linear profit function that yields a target output",
-      status: "partial",
-      templateIds: ["linear-model-value"],
+      status: "covered",
+      templateIds: ["sat-entry-fn-linear-notation", "linear-model-value"],
       limitations:
-        "Samples solve fee-plus-rate linear models for the input given a total, numeric entry; the item states the function rule directly, a subset of the same work. Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "input-contextual includes a profit function P(n) = mn - f and asks for the input giving a positive target profit, with numeric entry.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {
@@ -128,10 +128,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["line.constraint"],
       demand:
         "Choose the two-variable equation for total distance from two speeds and two unknown times",
-      status: "partial",
-      templateIds: ["system-model-value"],
+      status: "covered",
+      templateIds: ["sat-fn-constraint-choice", "system-model-value"],
       limitations:
-        "system-model-value writes ax + by = c style equations but is numeric and solves a system; no template asks to choose a single two-variable constraint equation with reciprocal-rate distractors.",
+        "distance chooses ax + by = D for two speeds and two times, with the reciprocal-rate distractor x/a + y/b = D.",
     },
     {
       section: "Math module 1",
@@ -167,10 +167,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["exponential.context"],
       demand:
         "Choose the exponential growth equation from an initial value and the value after many periods",
-      status: "partial",
-      templateIds: ["exponential-model-rule"],
+      status: "covered",
+      templateIds: ["sat-fn-exponential-choice", "exponential-model-rule"],
       limitations:
-        "exponential-model-rule uses tables with unit steps, doubling stories or stated percent rates; the item requires finding the growth factor from a value many periods later (an nth root) and rejecting a decay base.",
+        "factor-from-later-value finds the daily factor from the start and a value several days later by a root and offers a decay base and the total-change base as distractors.",
     },
     {
       section: "Math module 1",
@@ -439,10 +439,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Choose the slope-intercept equation of a line from a fractional slope and its y-intercept",
-      status: "partial",
-      templateIds: ["graph-equation-choice"],
+      status: "covered",
+      templateIds: ["sat-fn-line-equation-choice", "graph-equation-choice"],
       limitations:
-        "graph-equation-choice matches a graphed line with positive integer slope to its equation; the item gives slope and intercept in words with a fractional slope and sign distractors.",
+        "slope-intercept-point gives a fractional or negative slope and the y-intercept, as a point or a stated value, with sign and inverted-slope distractors.",
     },
     {
       section: "Math module 2",
@@ -464,10 +464,13 @@ export const satPractice9 = defineLedger(
       standards: ["sat.alg.linear-functions"],
       archetypeIds: ["function.input-output"],
       demand: "Evaluate a linear function at a fractional input",
-      status: "partial",
-      templateIds: ["substitute-linear-expression"],
+      status: "covered",
+      templateIds: [
+        "sat-entry-fn-linear-notation",
+        "substitute-linear-expression",
+      ],
       limitations:
-        "substitute-linear-expression evaluates at integers or halves; the item uses an input and constant with a larger shared denominator and function notation.",
+        "evaluate-fraction-input evaluates f(x) = mx + b at a fractional input whose denominator divides the coefficient, with denominators up to 8.",
     },
     {
       section: "Math module 2",
@@ -515,10 +518,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["exponential.context"],
       demand:
         "Choose the exponential equation in initial-value-times-one-plus-rate form from a table with a small growth rate",
-      status: "partial",
-      templateIds: ["exponential-model-rule"],
+      status: "covered",
+      templateIds: ["sat-fn-exponential-choice", "exponential-model-rule"],
       limitations:
-        "exponential-model-rule tables use whole-number bases; the item's small decimal rate in (1 + r) form is not practiced.",
+        "small-rate-table gives f(0), f(1), f(2) with a small percent rate and offers the rate-as-base, decay and linear-growth distractors.",
     },
     {
       section: "Math module 2",
@@ -540,10 +543,10 @@ export const satPractice9 = defineLedger(
       standards: ["sat.alg.linear-functions"],
       archetypeIds: ["function.rule"],
       demand: "Find the constant of a linear function from its value at zero",
-      status: "partial",
-      templateIds: ["recover-linear-intercept"],
+      status: "covered",
+      templateIds: ["sat-entry-fn-linear-notation", "recover-linear-intercept"],
       limitations:
-        "Samples recover the output at zero from a rate and a point; the item is the special case where the given point is at zero. Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "constant-term includes the input 0 in function notation and asks for the constant.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {

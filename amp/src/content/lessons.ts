@@ -74,8 +74,14 @@ import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
+import { financeCreditLessons } from "./finance-credit-lessons";
+import { hsStateGapLessons } from "./hs-state-gaps-lessons";
+import { financeIncomeLessons } from "./finance-income-lessons";
+import { texasHsLessons } from "./texas-hs-lessons";
 import { k8StateNumberLessons } from "./k8-state-number-lessons";
+import { texas38Lessons } from "./texas-38-lessons";
 import { satNumericEntryLessons } from "./sat-numeric-entry-lessons";
+import { satFunctionFormsLessons } from "./sat-function-forms-lessons";
 import { pointPlotLessons } from "./point-plot-lessons";
 import { multiPartChoiceLessons } from "./multi-part-choice-lessons";
 import { algebraRequirementGapLessons } from "./algebra-requirement-gaps-lessons";
@@ -85,8 +91,10 @@ import { floridaGapLessons } from "./florida-gaps-lessons";
 import { regentsGapLessons } from "./regents-gap-lessons";
 import { mcasGapLessons } from "./mcas-gap-lessons";
 import { staarGapLessons } from "./staar-gap-lessons";
+import { texasK2Lessons } from "./texas-k2-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
 import { remainingGapLessons } from "./remaining-gap-lessons";
+import { dataDisplayStateLessons } from "./data-display-state-lessons";
 import { vectorMatrixLessons } from "./vectors-matrices-lessons";
 import { statisticsProbabilityLessons } from "./statistics-probability-lessons";
 import { complexConicsLessons } from "./complex-conics-lessons";
@@ -698,8 +706,14 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...complexLessons,
+  ...financeCreditLessons,
+  ...hsStateGapLessons,
+  ...financeIncomeLessons,
+  ...texasHsLessons,
   ...k8StateNumberLessons,
+  ...texas38Lessons,
   ...satNumericEntryLessons,
+  ...satFunctionFormsLessons,
   ...pointPlotLessons,
   ...multiPartChoiceLessons,
   ...algebraRequirementGapLessons,
@@ -709,8 +723,10 @@ export const lessons: readonly Lesson[] = [
   ...regentsGapLessons,
   ...mcasGapLessons,
   ...staarGapLessons,
+  ...texasK2Lessons,
   ...satAlgebraStructureLessons,
   ...remainingGapLessons,
+  ...dataDisplayStateLessons,
   ...vectorMatrixLessons,
   ...statisticsProbabilityLessons,
   ...complexConicsLessons,

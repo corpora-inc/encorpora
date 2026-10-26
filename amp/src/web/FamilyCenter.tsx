@@ -832,13 +832,14 @@ export function FamilyCenter({
                       "Understand billing, sign-in, and backups.",
                     ],
                     ...((family.purchaseMeasurement?.available ||
-                      family.metaPurchaseMeasurement?.available) &&
+                      family.metaPurchaseMeasurement?.available ||
+                      family.openaiPurchaseMeasurement?.available) &&
                     !nativeRuntime
                       ? [
                           [
                             "measurement",
                             "Purchase measurement",
-                            "Choose separately whether Google and Meta receive adult purchase details.",
+                            "Choose whether Google, Meta or OpenAI receives adult purchase details.",
                           ] as const,
                         ]
                       : []),
@@ -883,6 +884,18 @@ export function FamilyCenter({
                   key={`${identity}:meta`}
                   provider="meta"
                   view={family.metaPurchaseMeasurement}
+                  token={token}
+                  identity={identity}
+                />
+              )}
+            {section === "privacy" &&
+              privacy === "measurement" &&
+              family.openaiPurchaseMeasurement?.available &&
+              !nativeRuntime && (
+                <PurchaseMeasurement
+                  key={`${identity}:openai`}
+                  provider="openai"
+                  view={family.openaiPurchaseMeasurement}
                   token={token}
                   identity={identity}
                 />

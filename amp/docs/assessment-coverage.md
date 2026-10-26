@@ -51,7 +51,6 @@ The largest gaps are order of operations with nested groups, negatives and expon
 The STAAR sources are not saturated: from Grade 3 to Algebra I they add 21, 20, 15, 13, 7, 9 and 8 archetypes not seen in any earlier source, and 17% to 76% of their items fall on archetypes already seen. Elementary tests introduce the most.
 
 A second labeler re-labeled a seeded random 10% sample (26 items across all seven tests) without seeing the first labels. Response format agreed on 26 (100%), status on 22 (84.6%), archetypes overlapped on 25 (96.2%) and templates on 22 (84.6%). The status disagreements were resolved by applying two rules to every test: a family counts as related practice only if it practices the item's core operation or reading, not merely its topic or representation (two sampled items and two others of the same kind became missing), and perimeter practice with whole-number sides does not cover decimal sides. A story context or label around a graph read does not change the task.
-
 #### Spring 2024 STAAR (second year)
 
 All 210 mathematics items of the Spring 2024 STAAR released tests for grades 3 through 8 (30, 32, 34, 36, 38 and 40 items) are labeled from TEA's rationale and answer-key PDFs, as for 2025. Algebra I was not labeled.
@@ -109,6 +108,24 @@ The largest remaining gaps among multiple-choice items are the Algebra I and Alg
 Each exam still added 8 to 11 archetypes that earlier sources had not used and 58 to 77 percent of its questions fell on archetypes already seen, so the high-school task set is not saturated; the SAT, STAAR and MCAS sources saw few of these tasks. Fourteen archetypes were minted for tasks no existing archetype named.
 
 A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Status agreed on 11 (100%), archetypes overlapped on 10 (90.9%), templates on 11 (100%) and response format on 10 (90.9%). The disagreements were a proposed archetype for rationalizing denominators, resolved by widening `expression.radical-simplify`, and a multipart graphing item (Algebra II 36) that the first labeler recorded as graph/drag because a graph is the first required response.
+### New York Regents mathematics exams, January 2026
+
+All 107 questions of the January 2026 Regents Examinations in Algebra I (35), Geometry (35) and Algebra II (37) are labeled the same way as the June 2026 exams, each in its own file. The rating guides state the cluster codes, and every question allows a graphing calculator.
+
+| Exam | Covered | Partial | Missing |
+| --- | ---: | ---: | ---: |
+| Algebra I | 3 (8.6%) | 31 (88.6%) | 1 (2.9%) |
+| Geometry | 2 (5.7%) | 32 (91.4%) | 1 (2.9%) |
+| Algebra II | 2 (5.4%) | 34 (91.9%) | 1 (2.7%) |
+
+Of the 107 questions, 72 are multiple choice, 10 numeric, 6 graph and 19 constructed response. No question is covered unless a family practices the same task in a protocol that takes the response; 6 of 72 choice questions and 1 of 10 numeric questions are covered. Only three questions have no related practice: building a polynomial from its degree, leading coefficient and constant term, the centroid of a triangle, and a normal-distribution probability between two values.
+
+The January exams are far closer to saturation than the June exams. Each added 2, 4 and 5 archetypes that no earlier source had used, against 8 to 11 for June, and 87 to 94 percent of their questions fell on archetypes already seen, against 58 to 77 percent for June. Two archetypes were minted (the centroid and the graph of a logarithm). Of the 98 archetypes the three January exams use, 69 appear in the June exams. The 11 first used in January are narrow tasks: Algebra I added graphical solution of two functions and interpreting a fitted model; Geometry added identifying and placing images under rigid motions, whole trips for a volume, quadrilateral claims from coordinates and the centroid; Algebra II added sinusoid models, parabola focus and directrix, trigonometric identities, simulation judgments and the graph of a logarithm.
+
+The gaps match June: constructed response (19 questions) and graph drawing (6) have no protocol, and most partials are a representation change, such as reading a figure instead of coordinates, choosing among written forms, rounding a calculator decimal, or chaining two single-step families.
+
+A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Response format agreed on 11 (100%), archetypes overlapped on 11 (100%), status on 9 (81.8%) and templates on 9 (81.8%). Two disagreements were resolved against the first labeler's status or citations: a family that draws a triangle and its image covers choosing a rigid motion (Geometry 1), and a family that reads logarithmic graphs is related practice for choosing a logarithm graph, so that question is partial instead of missing (Algebra II 4). One citation was widened to the family that interprets a coefficient (Algebra I 8).
+
 ### Adding a source
 
 1. Download the official question and answer PDFs into a scratch directory. Record the URL, edition, retrieval date and SHA-256, and read them with text extraction only.
@@ -165,7 +182,7 @@ Each inventory validates its requirement identifiers against an outline of the o
 | 2 | 44 | 30 | 11 | 3 | 2 |
 | 3 | 47 | 32 | 7 | 8 | 6 |
 | 4 | 47 | 34 | 6 | 7 | 5 |
-| 5 | 46 | 27 | 5 | 14 | 0 |
+| 5 | 46 | 28 | 4 | 14 | 0 |
 | 6 | 53 | 31 | 14 | 8 | 7 |
 | 7 | 44 | 35 | 4 | 5 | 3 |
 | 8 | 46 | 36 | 4 | 6 | 5 |
@@ -173,7 +190,7 @@ Each inventory validates its requirement identifiers against an outline of the o
 | Algebra II | 49 | 41 | 6 | 2 | 1 |
 | Geometry | 43 | 34 | 6 | 3 | 2 |
 | Precalculus | 51 | 41 | 8 | 2 | 1 |
-| Total | 594 | 432 | 93 | 69 | 40 |
+| Total | 594 | 433 | 92 | 69 | 40 |
 
 Every related-practice link is partial. Its limitations say what the linked templates establish, such as a numeric response without a learner-built model, a range narrower than the standard, or a skill authored for another grade; one generated sample of each linked template was reviewed, and a test regenerates two problems from each. A missing-family record names a concrete absent demand and the closest skill; sixteen more requirements have related practice and also name a missing demand. Open-ended demands (explain, describe, create, draw, list) are unreviewed because tap-response items do not assess them. Spring 2025 STAAR rationale items 14 and 21 establish occurrence of two Grade 5 tasks, not their frequency.
 

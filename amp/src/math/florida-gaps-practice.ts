@@ -170,7 +170,7 @@ export const floridaGapTemplates: readonly TemplateMetadata[] = [
     difficultyOffset: 0.15,
     requiredResponseCapability: "single-choice-v1",
     description:
-      "Choose the formula for (f+g)(x), (f−g)(x) or (fg)(x), the domain of (f/g)(x), or the value of (f/g)(a).",
+      "Choose the formula for $(f+g)(x)$, $(f-g)(x)$ or $(fg)(x)$, the domain of $(f/g)(x)$, or the value of $(f/g)(a)$.",
   },
   {
     id: "fl-trapezoid-consequences",
@@ -735,7 +735,7 @@ function expressionMatch(r: Random): Built {
     variant: "description-to-expression",
     prompt: `Which expression matches this description? "${desc}"`,
     answer: "",
-    hint: `Underline the operation that the description says to do first, and put it in parentheses.`,
+    hint: `In "${desc}", underline the operation the description says to do first, and put it in parentheses.`,
     explanation: [
       `Write each step of the description in order: "${desc}"`,
       `The step that happens first goes inside parentheses.`,
@@ -1514,7 +1514,7 @@ function functionArithmetic(r: Random): Built {
       variant,
       prompt: `${header(f, g)} Which expression is $(${diff ? "f-g" : "f+g"})(x)$?`,
       answer: "",
-      hint: `$(${diff ? "f-g" : "f+g"})(x)$ means $f(x)${diff ? "-" : "+"}g(x)$. ${diff ? "Put $g(x)$ in parentheses so the minus sign reaches every term." : "Line up like terms with the same power of $x$."}`,
+      hint: `$(${diff ? "f-g" : "f+g"})(x)$ means $f(x)${diff ? "-" : "+"}g(x)$, here $(${fTex(f)})${diff ? "-" : "+"}(${fTex(g)})$. ${diff ? "Keep $g(x)$ in parentheses so the minus sign reaches every term." : "Line up like terms with the same power of $x$."}`,
       explanation: [
         `$(${diff ? "f-g" : "f+g"})(x)=f(x)${diff ? "-" : "+"}g(x)=(${fTex(f)})${diff ? "-" : "+"}(${fTex(g)})$.`,
         diff
@@ -1739,7 +1739,7 @@ function trapezoid(r: Random): Built {
       variant,
       prompt: `${iso}. The measure of $\\angle D$ is $(${polyText([k1, m1])})^\\circ$ and the measure of $\\angle C$ is $(${polyText([k2, m2])})^\\circ$. Find the measure of $\\angle C$ in degrees.`,
       answer: String(angle),
-      hint: `$\\angle D$ and $\\angle C$ are the two angles on the same base $\\overline{DC}$. Think about what the equal legs say about those two angles, then write an equation in $x$.`,
+      hint: `$\\angle D$ and $\\angle C$ are the two angles on the same base $\\overline{DC}$. Think about what the equal legs say about $(${polyText([k1, m1])})^\\circ$ and $(${polyText([k2, m2])})^\\circ$, then write an equation in $x$.`,
       explanation: [
         "The base angles of an isosceles trapezoid are congruent: the two angles on the same base have equal measure.",
         `$\\angle C$ and $\\angle D$ are both on base $\\overline{DC}$, so $${polyText([k2, m2])}=${polyText([k1, m1])}$ and $x=${x}$.`,
@@ -1753,7 +1753,7 @@ function trapezoid(r: Random): Built {
       variant,
       prompt: `${iso}. The measure of $\\angle D$ is $${d}^\\circ$. Find the measure of $\\angle A$ in degrees.`,
       answer: String(180 - d),
-      hint: `Leg $\\overline{AD}$ is a transversal of the parallel lines $AB$ and $DC$. Decide how $\\angle A$ and $\\angle D$ are related.`,
+      hint: `Leg $\\overline{AD}$ is a transversal of the parallel lines $AB$ and $DC$. Decide how $\\angle A$ and the $${d}^\\circ$ angle $\\angle D$ are related.`,
       explanation: [
         "$\\overline{AB}\\parallel\\overline{DC}$, so $\\angle A$ and $\\angle D$ are consecutive interior angles along the leg $\\overline{AD}$. They are supplementary.",
         `$m\\angle A=180^\\circ-${d}^\\circ=${180 - d}^\\circ$.`,
