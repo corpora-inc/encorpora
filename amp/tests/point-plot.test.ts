@@ -652,3 +652,39 @@ test("hints teach the first move without placing an answer point", () => {
     }
   }
 });
+
+test("a lesson never works an example whose answer also answers the learner's line", async () => {
+  const { problemLesson } = await import("../src/content/problem-lessons");
+  let overlapsWithoutGuard = 0;
+  for (let i = 0; i < 400; i++) {
+    const problem = generateProblem("graph-linear-equation", `x${i}`);
+    const pub = problem.public;
+    const lesson = problemLesson(
+      pub.templateId,
+      pub.seed,
+      pub.prompt,
+      pub.response,
+      problem,
+    );
+    const unguarded = problemLesson(
+      pub.templateId,
+      pub.seed,
+      pub.prompt,
+      pub.response,
+    );
+    for (const [view, guarded] of [
+      [lesson, true],
+      [unguarded, false],
+    ] as const) {
+      const example = [0, ...Array.from({ length: 23 }, (_, k) => k + 1)]
+        .map((k) => generateProblem(pub.templateId, `${pub.seed}:lesson:${k}`))
+        .find((p) => p.public.prompt === view.example.prompt)!;
+      const solves = gradeAnswer(problem, example.answer);
+      if (guarded)
+        assert.equal(solves, false, `${pub.prompt} / ${example.public.prompt}`);
+      else if (solves) overlapsWithoutGuard++;
+    }
+  }
+  // The guard matters: equivalent forms of one line do occur.
+  assert.ok(overlapsWithoutGuard > 0);
+});

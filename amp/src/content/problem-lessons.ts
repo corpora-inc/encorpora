@@ -1,5 +1,9 @@
-import { generateProblem, templates } from "../math/engine";
-import type { ProblemResponse, SemanticFigure } from "../math/contracts";
+import { generateProblem, gradeAnswer, templates } from "../math/engine";
+import type {
+  GeneratedProblem,
+  ProblemResponse,
+  SemanticFigure,
+} from "../math/contracts";
 import {
   realNumberGivens,
   type RealNumberGivens,
@@ -60,11 +64,20 @@ export function problemLesson(
   seed: string,
   avoidPrompt?: string,
   avoidResponse?: ProblemResponse,
+  /** The learner's own instance: an example whose worked answer would also
+   * answer it (one line written in another form) is never shown. */
+  learnerProblem?: GeneratedProblem,
 ): ProblemLessonView {
   const template = byId.get(templateId);
   if (!template) throw new Error(`Unknown problem type ${templateId}`);
   let example = generateProblem(templateId, `${seed}:lesson:0`);
   const repeatsProblem = (p: typeof example) => {
+    if (
+      learnerProblem?.public.response.kind === "point-plot" &&
+      learnerProblem.public.templateId === p.public.templateId &&
+      gradeAnswer(learnerProblem, p.answer)
+    )
+      return true;
     if (p.public.prompt !== avoidPrompt) return false;
     if (avoidResponse?.kind !== "multi-select") return true;
     return (

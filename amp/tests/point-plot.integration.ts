@@ -224,14 +224,22 @@ test(
         correctImages[0],
         ...correctImages.slice(2),
       ];
-      const swappedReply = await send({
+      const imageInput = {
         problemId: image.id,
         requestId: randomUUID(),
         response: JSON.stringify(swapped),
-      });
+      };
+      const swappedReply = await send(imageInput);
       assert.equal(swappedReply.statusCode, 200, swappedReply.body);
       assert.equal(swappedReply.json().correct, false);
       assert.equal(swappedReply.json().response, JSON.stringify(swapped));
+      // Reusing the request id with the labels reordered is a conflict.
+      assert.equal(
+        (await send({ ...imageInput, response: imageSecret.answer }))
+          .statusCode,
+        409,
+      );
+      assert.equal((await send(imageInput)).json().id, swappedReply.json().id);
 
       // Exact sets: the given points in any order.
       const plotted = await serve("plot-points");

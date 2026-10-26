@@ -634,6 +634,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
           problem.public.seed,
           problem.public.prompt,
           problem.public.response,
+          problem,
         ),
       };
     });
@@ -653,7 +654,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
           duplicate.response === input.response ||
           (selected !== null &&
             canonicalSelection(input.response) === selected) ||
-          (plotted !== null && canonicalPointSet(input.response) === plotted);
+          // Sets are stored sorted; an ordered answer keeps its slots, so a
+          // reordered retry of labeled images is a different submission.
+          (plotted !== null &&
+            plotted === duplicate.response &&
+            canonicalPointSet(input.response) === plotted);
         if (duplicate.problemId !== input.problemId || !sameResponse)
           throw new ApiError(
             409,
