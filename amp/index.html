@@ -19,22 +19,64 @@
         font-family: system-ui, sans-serif;
       }
       .app-loading {
-        min-height: 100dvh;
-      }
-      .app-loading-bar {
-        display: flex;
-        align-items: center;
+        display: grid;
+        place-items: center;
         box-sizing: border-box;
-        height: 64px;
-        padding: 0 16px;
-        border-bottom: 1px solid #e2e5da;
-        font-size: 22px;
-        font-weight: 800;
-        letter-spacing: -0.04em;
+        min-height: 100dvh;
+        padding: 24px;
+        background: var(--color-surface, #f7f6f0);
+        color: var(--color-on-surface, #183e3a);
       }
-      /* Header-free screens omit the first-paint brand bar too. */
-      [data-frame="card"] .app-loading-bar {
-        display: none;
+      .app-loading-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        min-width: 0;
+        max-width: 100%;
+      }
+      .app-loading-mark {
+        display: block;
+        flex: none;
+        width: 56px;
+        height: 36px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        color: var(--color-primary, #1f5f55);
+        overflow: hidden;
+        mask-image: linear-gradient(
+          90deg,
+          transparent,
+          #000 12%,
+          #000 88%,
+          transparent
+        );
+      }
+      /* One full wavelength per loop, so its endpoints join without a jump. */
+      @keyframes amp-loading-wave {
+        to {
+          transform: translateX(-24px);
+        }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .app-loading[aria-busy="true"] .app-loading-wave {
+          animation: amp-loading-wave 1.8s linear infinite;
+        }
+      }
+      .app-loading-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+      .app-loading-body p {
+        margin: 0;
+        max-width: 32ch;
+        line-height: 1.5;
       }
       @media (prefers-color-scheme: dark) {
         html,
@@ -42,26 +84,32 @@
           background: #122522;
           color: #e9f0e8;
         }
-        .app-loading-bar {
-          border-bottom-color: #365148;
+        .app-loading {
+          background: var(--color-surface, #122522);
+          color: var(--color-on-surface, #e9f0e8);
+        }
+        .app-loading-mark {
+          color: var(--color-primary, #8bd1b5);
         }
       }
     </style>
   </head>
   <body>
-    <script>
-      if (
-        /^\/(sign-in|sign-up|reset-password|start|invoice|access)(\/|$)/.test(
-          location.pathname,
-        ) ||
-        /^\/try(?:\/(map|plans))?\/?$/.test(location.pathname) ||
-        location.pathname === "/account/ready"
-      )
-        document.documentElement.dataset.frame = "card";
-    </script>
     <div id="root">
-      <div class="app-loading" aria-busy="true">
-        <div class="app-loading-bar">AMP</div>
+      <div
+        class="app-loading"
+        role="status"
+        aria-label="Loading AMP"
+        aria-busy="true"
+      >
+        <div class="app-loading-content">
+          <svg class="app-loading-mark" viewBox="0 0 44 28" aria-hidden="true">
+            <path
+              class="app-loading-wave"
+              d="M-23 14C-19 0-15 0-11 14S-3 28 1 14S9 0 13 14S21 28 25 14S33 0 37 14S45 28 49 14S57 0 61 14S69 28 73 14"
+            />
+          </svg>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/web/main.tsx"></script>

@@ -273,9 +273,17 @@ import {
   generateSatAlgebraStructureProblem,
 } from "./sat-algebra-structure-practice";
 import {
+  satNumericEntryTemplates,
+  generateSatNumericEntryProblem,
+} from "./sat-numeric-entry-practice";
+import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
 } from "./complex-practice";
+import {
+  algebraRequirementGapTemplates,
+  generateAlgebraRequirementGapProblem,
+} from "./algebra-requirement-gaps-practice";
 import {
   remainingGapTemplates,
   generateRemainingGapProblem,
@@ -455,8 +463,10 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
   complexMultiplicationTemplate,
+  ...algebraRequirementGapTemplates,
   ...advancedMathGapTemplates,
   ...satAlgebraStructureTemplates,
+  ...satNumericEntryTemplates,
   ...vectorMatrixTemplates,
   ...statisticsProbabilityTemplates,
   ...complexConicsTemplates,
@@ -733,6 +743,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...k8RepresentationTemplates,
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
+    ...algebraRequirementGapTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
   return {
@@ -903,8 +914,12 @@ function generateRawProblem(
     return generateFunctionBehaviorProblem(templateId, seed);
   if (advancedMathGapTemplates.some((t) => t.id === templateId))
     return generateAdvancedMathGapProblem(templateId, seed);
+  if (satNumericEntryTemplates.some((t) => t.id === templateId))
+    return generateSatNumericEntryProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (algebraRequirementGapTemplates.some((t) => t.id === templateId))
+    return generateAlgebraRequirementGapProblem(templateId, seed);
   if (satAlgebraStructureTemplates.some((t) => t.id === templateId))
     return generateSatAlgebraStructureProblem(templateId, seed);
   if (remainingGapTemplates.some((t) => t.id === templateId))

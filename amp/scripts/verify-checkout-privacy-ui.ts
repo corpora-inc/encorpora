@@ -42,7 +42,7 @@ function Screen(){const[identity,setIdentity]=useState('amp|parent');(window as 
 const token=identity==='amp|parent'?'synthetic-parent':'synthetic-other';
 const session={accountId:identity,token};const result=useQuery(meOptions(session));
 if(!result.data?.signedIn)return <p role="status">Loading family…</p>;
-return <PageFrame centered><PlanStep key={identity} session={session} family={result.data.family}/></PageFrame>;}
+return <PageFrame centered><PlanStep key={identity} session={session} /></PageFrame>;}
 const root=createRootRoute({component:Outlet});const child=createRoute({getParentRoute:()=>root,path:'/start/plan',component:Screen});
 const router=createRouter({routeTree:root.addChildren([child])});
 createRoot(document.getElementById('root')!).render(<QueryClientProvider client={queryClient}><RouterProvider router={router}/></QueryClientProvider>);`,
@@ -134,6 +134,11 @@ try {
           body: "<h1>Checkout fixture</h1>",
         }),
       );
+      const preferenceRequests: string[] = [];
+      page.on("request", (request) => {
+        if (/\/family\/(meta-)?purchase-measurement/.test(request.url()))
+          preferenceRequests.push(request.url());
+      });
       await page.goto(origin + "/start/plan");
       const checkout = page.getByRole("button", {
         name: "Continue to secure checkout",
@@ -151,180 +156,26 @@ try {
         path: new URL(`closed-${width}-${theme}.png`, directory).pathname,
         fullPage: true,
       });
-      // Buying requires no advertising preference and writes no preference.
-      await checkout.click();
-      await page.waitForURL("https://checkout.stripe.com/**");
       assert.equal(
-        (await pool.query("SELECT * FROM amp_advertising_permissions"))
-          .rowCount,
+        await page.locator("[data-purchase-measurement]").count(),
         0,
       );
       assert.equal(
-        (await pool.query("SELECT * FROM amp_meta_advertising_permissions"))
-          .rowCount,
-        0,
-      );
-      await page.goto(origin + "/start/plan");
-      await parent.click();
-      await page.locator("summary").click();
-      for (const provider of ["google", "meta"] as const) {
-        const endpoint =
-          provider === "google"
-            ? "purchase-measurement"
-            : "meta-purchase-measurement";
-        const card = page.locator(`[data-purchase-measurement="${provider}"]`);
-        const save = card.getByRole("button", {
-          name: "Allow purchase measurement",
-          exact: true,
-        });
-        assert.equal(
-          await card.getByRole("checkbox").getAttribute("aria-checked"),
-          "false",
-        );
-        assert.ok(await save.isDisabled());
-        await card.getByRole("checkbox").click();
-        await save.scrollIntoViewIfNeeded();
-        const before = await save.boundingBox();
-        let release: (() => void) | undefined;
-        await page.route(`**/api/v1/family/${endpoint}`, async (route) => {
-          await new Promise<void>((resolve) => {
-            release = resolve;
-          });
-          await route.fulfill({
-            status: 503,
-            json: { error: "purchase_measurement_unavailable" },
-          });
-        });
-        await save.click();
-        await card.getByText("Saving your preference…").waitFor();
-        assert.ok(
-          await checkout.isDisabled(),
-          "wait for an explicitly requested preference save",
-        );
-        assert.deepEqual(await save.boundingBox(), before);
-        release!();
-        await card
-          .getByText(
-            "Your purchase preference could not be saved. Refresh and try again.",
-          )
-          .waitFor();
-        // Pending includes the canonical /me refresh; wait until it completes.
-        await checkout.waitFor({ state: "attached" });
-        await page.waitForFunction(() =>
-          Array.from(document.querySelectorAll("button")).some(
-            (b) =>
-              b.textContent === "Continue to secure checkout" && !b.disabled,
-          ),
-        );
-        assert.ok(
-          await checkout.isEnabled(),
-          "a failed optional preference must not block purchase",
-        );
-        assert.deepEqual(await save.boundingBox(), before);
-        await page.screenshot({
-          path: new URL(`error-${provider}-${width}-${theme}.png`, directory)
-            .pathname,
-        });
-        await page.unroute(`**/api/v1/family/${endpoint}`);
-        await save.click();
-        await card
-          .getByRole("button", { name: "Withdraw permission", exact: true })
-          .waitFor();
-        const table =
-          provider === "google"
-            ? "amp_advertising_permissions"
-            : "amp_meta_advertising_permissions";
-        assert.ok(
-          (
-            await pool.query(
-              `SELECT granted_at FROM ${table} WHERE account_id='amp|parent'`,
-            )
-          ).rows[0].granted_at,
-        );
-      }
-      await page.screenshot({
-        path: new URL(`allowed-${width}-${theme}.png`, directory).pathname,
-        fullPage: true,
-      });
-      const google = page.locator('[data-purchase-measurement="google"]');
-      const meta = page.locator('[data-purchase-measurement="meta"]');
-      await google
-        .getByRole("button", { name: "Withdraw permission", exact: true })
-        .click();
-      await google.getByRole("checkbox").waitFor();
-      assert.equal(
-        await meta
-          .getByRole("button", { name: "Withdraw permission", exact: true })
+        await page
+          .getByText("Optional purchase sharing", { exact: true })
           .count(),
-        1,
+        0,
       );
-      await page.reload();
-      await parent.waitFor();
-      await page.locator("summary").click();
-      await meta
-        .getByRole("button", { name: "Withdraw permission", exact: true })
-        .waitFor();
-      assert.equal(
-        await google.getByRole("checkbox").getAttribute("aria-checked"),
-        "false",
-      );
-      await google.getByRole("checkbox").click();
-      await page.evaluate(() => (window as any).switchAccount("amp|other"));
-      await page.waitForFunction(
-        () =>
-          document
-            .querySelector(
-              '[data-purchase-measurement="google"] [role="checkbox"]',
-            )
-            ?.getAttribute("aria-checked") === "false",
-      );
-      await page.locator("summary").click();
-      assert.ok(
-        await google
-          .getByRole("button", {
-            name: "Allow purchase measurement",
-            exact: true,
-          })
-          .isDisabled(),
-      );
-      assert.equal(
-        await meta.getByRole("checkbox").getAttribute("aria-checked"),
-        "false",
-      );
-      await page.evaluate(() => (window as any).switchAccount("amp|parent"));
-      await meta
-        .getByRole("button", {
-          name: "Withdraw permission",
-          exact: true,
-          includeHidden: true,
-        })
-        .waitFor({ state: "attached" });
-      await page.locator("summary").click();
-      await parent.click();
-      const geometry = await page.evaluate(() => ({
-        width: document.documentElement.scrollWidth,
-        viewport: innerWidth,
-        heights: [...document.querySelectorAll("button,summary")]
-          .filter((e) => e.getBoundingClientRect().height > 0)
-          .map((e) => e.getBoundingClientRect().height),
-      }));
-      assert.ok(
-        geometry.width <= geometry.viewport + 1,
-        JSON.stringify(geometry),
-      );
-      assert.ok(
-        geometry.heights.every((h) => h >= 44),
-        JSON.stringify(geometry),
-      );
-      // Preference controls are locked after checkout starts, before redirect.
-      let releaseCheckout: (() => void) | undefined;
+      // The actual privacy API is registered: buying must neither call it nor
+      // grant permission as a side effect of opening the payment page.
+      let releaseCheckout!: () => void;
       await page.route(
         "**/api/v1/billing/enrollment/checkout",
         async (route) => {
           await new Promise<void>((resolve) => {
             releaseCheckout = resolve;
           });
-          await route.continue();
+          await route.fulfill({ status: 503, json: { error: "unavailable" } });
         },
       );
       await checkout.click();
@@ -332,17 +183,84 @@ try {
         .getByRole("button", { name: "Opening secure checkout…" })
         .waitFor();
       assert.ok(
-        await meta
-          .getByRole("button", { name: "Withdraw permission", exact: true })
-          .isDisabled(),
+        await parent.isDisabled(),
+        "consent control stays locked during payment startup",
       );
-      releaseCheckout!();
+      releaseCheckout();
+      await page.getByRole("alert").waitFor();
+      await page.waitForFunction(() =>
+        [...document.querySelectorAll("button")].some(
+          (button) =>
+            button.textContent === "Continue to secure checkout" &&
+            !button.disabled,
+        ),
+      );
+      await page.screenshot({
+        path: new URL(`error-${width}-${theme}.png`, directory).pathname,
+        fullPage: true,
+      });
+      await page.unroute("**/api/v1/billing/enrollment/checkout");
+      await checkout.click();
       await page.waitForURL("https://checkout.stripe.com/**");
+      for (const table of [
+        "amp_advertising_permissions",
+        "amp_meta_advertising_permissions",
+      ])
+        assert.equal(
+          (await pool.query(`SELECT * FROM ${table}`)).rowCount,
+          0,
+          "checkout does not create advertising permission",
+        );
+      assert.deepEqual(
+        preferenceRequests,
+        [],
+        "checkout does not request an advertising choice",
+      );
+
+      await page.goto(origin + "/start/plan");
+      await parent.waitFor();
+      assert.equal(await parent.getAttribute("aria-checked"), "false");
+      await parent.click();
+      await page.evaluate(() => (window as any).switchAccount("amp|other"));
+      await page.waitForFunction(
+        () =>
+          document
+            .querySelector('[role="checkbox"]')
+            ?.getAttribute("aria-checked") === "false",
+      );
+      assert.ok(
+        await checkout.isDisabled(),
+        "another account must acknowledge the parent notice itself",
+      );
+      assert.equal(
+        await page.locator("[data-purchase-measurement]").count(),
+        0,
+      );
+      const geometry = await page.evaluate(() => ({
+        width: document.documentElement.scrollWidth,
+        viewport: innerWidth,
+        heights: [...document.querySelectorAll("button")]
+          .filter((element) => element.getBoundingClientRect().height > 0)
+          .map((element) => element.getBoundingClientRect().height),
+      }));
+      assert.ok(
+        geometry.width <= geometry.viewport + 1,
+        JSON.stringify(geometry),
+      );
+      assert.ok(
+        geometry.heights.every((height) => height >= 44),
+        JSON.stringify(geometry),
+      );
+      assert.deepEqual(
+        preferenceRequests,
+        [],
+        "account changes do not request advertising permission",
+      );
       assert.equal(errors.length, 0, errors.join("\n"));
       await page.close();
     }
   console.log(
-    "Checkout privacy: real permission API/database, optional purchase, save failure/retry, independent grants, withdrawal, reload, account isolation, checkout lock, 320/390/768/1280 light/dark passed.",
+    "Checkout: no advertising prompt, preference requests or permission grants; parent acknowledgement, payment failure/retry, account isolation and 320/390/768/1280 light/dark passed.",
   );
 } catch (error) {
   for (const context of browser?.contexts() ?? [])

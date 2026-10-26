@@ -27,6 +27,15 @@ FIGURES = {'signed-fraction-sum': 'signed-fraction-number-line', 'complex-fracti
 VOCABULARY = ['numerator', 'denominator', 'equal parts', 'whole', 'integer', 'lowest terms', 'equivalent']
 
 
+def own_pairs(rows, expected):
+    """A family's own (template, facet) pairs are all present; any extra mapping of its
+    templates may only name other facets of the same skill (partial extent is checked by the caller)."""
+    skill = {t: f.split('.')[0] for t, f in expected}
+    # Other families in the same skill keep their own mappings; judge only this family's templates.
+    pairs = {(m['templateId'], m['facetId']) for m in rows if m['templateId'] in skill}
+    return set(expected) <= pairs and all(f.split('.')[0] == skill[t] for t, f in pairs)
+
+
 def check_problem(problem):
     public = problem['public']
     require(set(problem) == {'public', 'answer', 'hint', 'explanation'}, 'Unexpected private rational problem shape')
@@ -56,11 +65,10 @@ def check_manifest(record):
     complex_skill = skills['complex-fractions']
     require([a['standardId'] for a in complex_skill['alignments']] == ['7.NS.A.3'], 'Complex fractions must align to 7.NS.A.3')
     expected = set(FACETS.items())
-    require(record['coverageValid'] and len(record['mappings']) == 4 and
-            {(m['templateId'], m['facetId']) for m in record['mappings']} == expected, 'Missing rational facet mappings')
+    require(record['coverageValid'] and own_pairs(record['mappings'], expected), 'Missing rational facet mappings')
     require(all(m['extent'] == 'partial' and m['rationale'].strip() for m in record['mappings']),
             'Unsupported complete rational coverage claim')
-    require(len(record['bindings']) == 4 and {(m['templateId'], m['facetId']) for m in record['bindings']} == expected
+    require(own_pairs(record['bindings'], expected)
             and all(m['skillId'] == SKILLS[m['templateId']] and not m['independentlyReviewed'] for m in record['bindings']),
             'Incorrect default rational coverage bindings')
     require({c['id'] for c in record['calculator']} == RATIONAL_TYPES and all(c['allowed'] is False for c in record['calculator']),

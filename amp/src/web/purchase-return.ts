@@ -44,6 +44,31 @@ export function clearPurchaseReturn() {
     /* Storage may be disabled. */
   }
 }
+/** Check a handoff before choosing an ordinary home destination. No URL/storage writes. */
+export function hasPurchaseReturn(search: string, now = Date.now()): boolean {
+  const query = new URLSearchParams(search);
+  if (query.has("billing")) {
+    const state = query.get("billing");
+    return !!parsePurchaseReturn(
+      {
+        state,
+        ...(state === "account" ? {} : { purchaseId: query.get("purchase") }),
+        expiresAt: now + lifetime,
+      },
+      now,
+    );
+  }
+  try {
+    const raw = sessionStorage.getItem(purchaseReturnSlot);
+    return !!(
+      raw &&
+      raw.length <= 256 &&
+      parsePurchaseReturn(JSON.parse(raw), now)
+    );
+  } catch {
+    return false;
+  }
+}
 export function capturePurchaseReturn(now = Date.now()): PurchaseReturn | null {
   const url = new URL(location.href);
   if (url.searchParams.has("billing")) {
