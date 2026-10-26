@@ -212,7 +212,12 @@ function linearNotation(r: R): Case {
       let p = nz(r, 7);
       while (gcd(p, d) !== 1) p = nz(r, 7);
       k = [p, d];
-    } else k = [nz(r, 9), 1];
+    } else {
+      // A coefficient of 1 or -1 makes the rule the input itself and gives the answer away.
+      let c = nz(r, 9);
+      while (Math.abs(c) === 1) c = nz(r, 9);
+      k = [c, 1];
+    }
     const x = nz(r, 12);
     const v = q(k[0] * x, k[1]);
     return {
@@ -648,10 +653,16 @@ function exponentialChoice(r: R): Case {
           label: f(`${b}^{t}`),
           feedback: `This multiplies by ${b} every year, which is faster than every ${k} years.`,
         },
-        {
-          label: f(`${b * k}^{t}`),
-          feedback: `The growth factor each year is not ${b * k}; ${b} is the factor for a full ${k}-year period.`,
-        },
+        // 2^(2t) and 4^t are the same function, so that pair needs a different third wrong choice.
+        b ** k === b * k
+          ? {
+              label: f(`${b}^{t+${k}}`),
+              feedback: `Adding ${k} to the exponent only multiplies the starting value by ${b ** k}; it does not slow the growth to once every ${k} years.`,
+            }
+          : {
+              label: f(`${b * k}^{t}`),
+              feedback: `The growth factor each year is not ${b * k}; ${b} is the factor for a full ${k}-year period.`,
+            },
       ]),
     };
   }
@@ -812,7 +823,9 @@ function relatedValue(r: R): Case {
     const s = nz(r, 8);
     const x = d * s;
     const c = p * s;
-    const k = pick(r, [2, 3, 4, 5, 6, 7]);
+    // With a whole coefficient the asked multiple must differ from the given one, or the question restates the equation.
+    let k = pick(r, [2, 3, 4, 5, 6, 7]);
+    while (d === 1 && k === p) k = pick(r, [2, 3, 4, 5, 6, 7]);
     const coef: Q = [p, d];
     return {
       variant: "scaled-term",
