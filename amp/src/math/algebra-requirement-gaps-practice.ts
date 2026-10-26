@@ -29,14 +29,14 @@ export const arithmeticSequenceAsFunctionTemplate = make(
   "Arithmetic sequence as a function",
   "arithmetic-sequences",
   0.4,
-  "Use a(n) notation for an arithmetic sequence: domain of positive integers, evaluation, undefined inputs, discrete graph and membership of a value.",
+  "Use $a(n)$ notation for an arithmetic sequence: domain of positive integers, evaluation, undefined inputs, discrete graph and membership of a value.",
 );
 export const geometricSequenceAsFunctionTemplate = make(
   "geometric-sequence-as-function",
   "Geometric sequence as a function",
   "geometric-sequences",
   0.4,
-  "Use a(n) notation for a geometric sequence: domain of positive integers, evaluation, undefined inputs, discrete graph and membership of a value.",
+  "Use $a(n)$ notation for a geometric sequence: domain of positive integers, evaluation, undefined inputs, discrete graph and membership of a value.",
 );
 export const geometricRuleFormsTemplate = make(
   "geometric-rule-forms",
@@ -61,10 +61,10 @@ export const complexQuadraticSolveTemplate = make(
 );
 export const complexPartsTemplate = make(
   "complex-parts",
-  "Parts of a complex number and powers of i",
+  "Parts of a complex number and its powers",
   "complex-numbers",
   0.1,
-  "Name the real and imaginary parts of a+bi, simplify powers of i and write a root of a negative number in a+bi form.",
+  "Name the real and imaginary parts of $a+bi$, simplify powers of $i$ and write a root of a negative number in $a+bi$ form.",
 );
 export const interpretLinearParametersTemplate = make(
   "interpret-linear-parameters",
@@ -159,6 +159,8 @@ const pick = <T>(r: Random, items: readonly T[]): T =>
   items[r(0, items.length - 1)]!;
 const signed = (n: number) => (n < 0 ? `-${-n}` : `${n}`);
 const tex = (s: string) => `$${s}$`;
+/** A square in TeX: parentheses only around a negative base. */
+const sqr = (v: number) => (v < 0 ? `(${v})^2` : `${v}^2`);
 const isSquare = (n: number) => n >= 0 && Number.isInteger(Math.sqrt(n));
 const nonzeroIn = (r: Random, lo: number, hi: number) => {
   let v = 0;
@@ -317,12 +319,12 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
     }
     spec = {
       prompt: `${setup} Which expression is undefined?`,
-      hint: `$a(n)$ is defined only for inputs that name a position in the list. Check each input: is it a position with a term?`,
+      hint: `$a(n)=${rule}$ is defined only for inputs that name a position in the list. Check each input: is it a position with a term?`,
       explanation: [
         `The domain of $a$ is the positive integers, because the terms sit in positions $1,2,3,\\ldots$.`,
         ...ints.map(
           (n) =>
-            `$a(${n})$ is defined: position ${n} exists and $a(${n})=${t(n)}$.`,
+            `$a(${n})$ is defined: the sequence has a term in position $${n}$, and $a(${n})=${t(n)}$.`,
         ),
         `$a(${bad})$ is undefined: ${bad} is not a positive integer, so there is no term in position ${bad}.`,
       ],
@@ -340,7 +342,7 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
         : `Separate points ${tex(`${points},\\ldots`)} that do not lie on one line, with no points between them`;
     spec = {
       prompt: `${setup} The sequence is graphed with $n$ on the horizontal axis and $a(n)$ on the vertical axis. Which description of the graph is correct?`,
-      hint: `Find the first three points $(1,a(1))$, $(2,a(2))$, $(3,a(3))$. Then ask whether the function has any input between 1 and 2.`,
+      hint: `Use $a(n)=${rule}$ to find the first three points $(1,a(1))$, $(2,a(2))$, $(3,a(3))$. Then ask whether the function has any input between 1 and 2.`,
       explanation: [
         `Evaluate the first terms: $a(1)=${t(1)}$, $a(2)=${t(2)}$, $a(3)=${t(3)}$. These give points ${tex(points)}.`,
         `The domain is only the positive integers, so the graph has points only at $n=1,2,3,\\ldots$ and nothing between them.`,
@@ -400,7 +402,7 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
     spec = isTerm
       ? {
           prompt,
-          hint: `Compute terms of the sequence and compare each with $${target}$. A value is a term only if some whole-number position gives exactly that value.`,
+          hint: `Compute terms of $a(n)=${rule}$ and compare each with $${target}$. A value is a term only if some whole-number position gives exactly that value.`,
           explanation: [
             `Compute neighboring terms: $a(${k - 1})=${before}$, $a(${k})=${lo}$ and $a(${k + 1})=${hi}$.`,
             `$a(${k})=${target}$, so position ${k} produces $${target}$.`,
@@ -546,7 +548,7 @@ function geometricRuleFormsCase(seed: string) {
       hint: `Evaluate the explicit rule at $n=1$ to get the first term, then compare $a_2$ with $a_1$ to see the multiplier between consecutive terms.`,
       explanation: [
         `At $n=1$: $a_1=${first}\\cdot ${base}^0=${first}$.`,
-        `Each increase of $n$ by 1 multiplies by ${tex(base)}: $a_{n+1}=a_n\\cdot ${base}$.`,
+        `Going from $a_n$ to $a_{n+1}$ multiplies by ${tex(base)}: $a_{n+1}=a_n\\cdot ${base}$.`,
         `The recursive rule is ${f.recursive}.`,
       ],
       correct: f.recursive,
@@ -619,7 +621,7 @@ function geometricRuleFormsCase(seed: string) {
         }
       : {
           prompt: `${ctx.text(first, CR.q === 1 ? `${CR.p} times` : rp)} Let $a_n$ be ${ctx.noun}. Which recursive rule describes the sequence?`,
-          hint: `A recursive rule gives the starting value and says how to get each term from the one before. Identify both in the description.`,
+          hint: `A recursive rule gives the starting value and says how to get each term from the one before. Identify both in the description: the count starts at ${first} and the multiplier is ${rp}.`,
           explanation: [
             `The starting value is $a_1=${first}$.`,
             `Each value is ${rp} times the value before it: $a_{n+1}=${ratioTex(CR)}\\,a_n$.`,
@@ -657,7 +659,7 @@ function geometricRuleFormsCase(seed: string) {
     const f = forms(first, R);
     spec = {
       prompt: `A geometric sequence has $a_2=${second}$ and $a_3=${third}$. Which explicit rule gives $a_n$?`,
-      hint: `Divide $a_3$ by $a_2$ to find the common ratio. Then undo one multiplication to get $a_1$ from $a_2$.`,
+      hint: `Divide $a_3=${third}$ by $a_2=${second}$ to find the common ratio. Then undo one multiplication to get $a_1$ from $a_2$.`,
       explanation: [
         `The common ratio is $a_3\\div a_2=${third}\\div ${signed(second)}=${ratioTex(R)}$.`,
         `Since $a_2=a_1\\cdot ${base}$, the first term is $a_1=${second}\\div ${base}=${first}$.`,
@@ -718,13 +720,13 @@ function solveByCompletingSquareCase(seed: string) {
       hint:
         a === 1
           ? `Move the constant to the right. Half of the coefficient of $x$ in ${equation} is ${h}; add its square to both sides so the left side factors as a square.`
-          : `The leading coefficient is ${a}, so divide every term by ${a} first. Then half of the new coefficient of $x$ is ${h}; add its square to both sides.`,
+          : `The leading coefficient is ${a}, so divide every term of ${equation} by ${a} first. Then half of the new coefficient of $x$ is ${h}; add its square to both sides.`,
       explanation: [
         ...(a === 1
           ? []
           : [`Divide both sides by ${a}: ${tex(`${monic}=0`)}.`]),
         `Move the constant: $x^2${h === 0 ? "" : ` ${2 * h < 0 ? "-" : "+"} ${Math.abs(2 * h)}x`}=${-c}$.`,
-        `Half of ${2 * h} is ${h}, and $(${h})^2=${h * h}$. Add ${h * h} to both sides: $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2=${rhs}$.`,
+        `Half of ${2 * h} is ${h}, and $${sqr(h)}=${h * h}$. Add ${h * h} to both sides: $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2=${rhs}$.`,
         `Take both square roots: $x ${h < 0 ? "-" : "+"} ${Math.abs(h)}=\\pm ${k}$, so $x=${-h}\\pm ${k}$.`,
         `The solutions are $x=${-h + k}$ and $x=${-h - k}$.`,
       ],
@@ -765,7 +767,7 @@ function solveByCompletingSquareCase(seed: string) {
       hint: `Move the constant ${c} to the right side. Half of the coefficient ${2 * h} is ${h}; add ${h * h} to both sides to make the left side a perfect square.`,
       explanation: [
         `Move the constant: $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x=${-c}$.`,
-        `Add $(${h})^2=${h * h}$ to both sides: $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2=${m}$.`,
+        `Add $${sqr(h)}=${h * h}$ to both sides: $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2=${m}$.`,
         `Take square roots: $x ${h < 0 ? "-" : "+"} ${Math.abs(h)}=\\pm ${sqrtM}$. ${m} is not a perfect square, so keep the radical.`,
         `Subtract the shift: $x=${-h}\\pm ${sqrtM}$.`,
       ],
@@ -811,10 +813,10 @@ function solveByCompletingSquareCase(seed: string) {
     model = { h, c, rhs };
     spec = {
       prompt: `To solve ${equation} by completing the square, you add the same number to both sides and factor the left side. Which equation results?`,
-      hint: `Half of the coefficient of $x$ is ${h}, so the number to add to both sides is $(${h})^2$. Add it to the right side too, after moving the constant ${c} across.`,
+      hint: `Half of the coefficient of $x$ is ${h}, so the number to add to both sides is $${sqr(h)}$. Add it to the right side too, after moving the constant ${c} to the other side.`,
       explanation: [
         `Move the constant: $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x=${-c}$.`,
-        `Half of ${2 * h} is ${h}; $(${h})^2=${h * h}$. Adding ${h * h} to both sides gives $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h}=${-c}+${h * h}$.`,
+        `Half of ${2 * h} is ${h}; $${sqr(h)}=${h * h}$. Adding ${h * h} to both sides gives $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h}=${-c}+${h * h}$.`,
         `The left side factors as $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2$ and the right side is ${rhs}: ${tex(lhs(rhs, h))}.`,
       ],
       correct: tex(lhs(rhs, h)),
@@ -948,7 +950,7 @@ function complexQuadraticSolveCase(seed: string) {
     const k = Math.sqrt(m);
     spec = {
       prompt: `Which quadratic equation with real coefficients has the solutions ${pm(-h, `${k === 1 ? "" : k}i`)}?`,
-      hint: `Solutions $p\\pm qi$ come from $(x-p)^2=-q^2$. Move everything to one side and expand.`,
+      hint: `Solutions ${pm(-h, `${k === 1 ? "" : k}i`)} have the form $p\\pm qi$, which comes from $(x-p)^2=-q^2$. Move everything to one side and expand.`,
       explanation: [
         `The solutions are $x=${-h}\\pm ${k === 1 ? "" : k}i$, so $${h === 0 ? "x" : `x${h < 0 ? "-" : "+"}${Math.abs(h)}`}=\\pm ${k === 1 ? "" : k}i$, that is $(x${h < 0 ? "-" : "+"}${Math.abs(h)})^2=(${k === 1 ? "" : k}i)^2=${-m}$.`,
         `Expand and move ${-m} to the left: $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h}+${m}=0$.`,
@@ -988,7 +990,7 @@ function complexQuadraticSolveCase(seed: string) {
       hint:
         variant === 0
           ? `Isolate $x^2$ in ${equation}. A real number squared is never negative, so use $i^2=-1$ to take the square root of a negative number.`
-          : `Complete the square${a === 1 ? "" : ` after dividing by ${a}`}: half of the coefficient of $x$ is ${h}. The right side will be negative, so use $i^2=-1$ for its square root.`,
+          : `Complete the square in ${equation}${a === 1 ? "" : `, after dividing by ${a}`}: half of the coefficient of $x$ is ${h}. The right side will be negative, so use $i^2=-1$ for its square root.`,
       explanation: [
         ...dividing,
         variant === 0
@@ -1143,7 +1145,7 @@ function complexPartsCase(seed: string) {
       hint: `Find $i^{${e}}$ first: powers of $i$ repeat every 4 steps, so use the remainder of ${e} divided by 4. Then multiply by ${big}.`,
       explanation: [
         `${e} divided by 4 leaves remainder ${rem}, so $i^{${e}}=${POWER_I[rem]}$.`,
-        `Multiply: $${big}\\cdot (${POWER_I[rem]})=${own.im === 0 ? own.re : `${own.im}i`}$.`,
+        `Multiply: $${big}\\cdot ${POWER_I[rem]!.startsWith("-") ? `(${POWER_I[rem]})` : POWER_I[rem]}=${own.im === 0 ? own.re : `${own.im}i`}$.`,
       ],
       correct: cx(own),
       wrong: values
@@ -1209,12 +1211,12 @@ function complexPartsCase(seed: string) {
     const im = nonzeroIn(r, -6, 6);
     spec = {
       prompt: "Which of these is a real number (its imaginary part is 0)?",
-      hint: "Reduce each power of $i$ using the cycle of 4: $i,\\ -1,\\ -i,\\ 1$. Then ask whether any $i$ remains.",
+      hint: "Reduce each power of $i$ using the cycle of 4: $i,\\ -1,\\ -i,\\ 1$. Then ask whether any $i$ remains: the imaginary part is 0 only if none does.",
       explanation: [
         `$i^{${evens[0]}}$: ${evens[0]} leaves remainder ${evens[0]! % 4} when divided by 4, so it equals ${POWER_I[evens[0]! % 4]}, which has no $i$.`,
         ...odds.map(
           (o) =>
-            `$i^{${o}}$: remainder ${o % 4}, so it equals ${POWER_I[o % 4]}, a nonzero multiple of $i$.`,
+            `$i^{${o}}$: remainder ${o % 4}, so it equals $${POWER_I[o % 4]}$, a nonzero multiple of $i$.`,
         ),
         `$${poly([
           [re, ""],
@@ -1504,7 +1506,7 @@ function quadraticFormConversionCase(seed: string) {
       prompt: `Rewrite ${std} in vertex form $y=(x-h)^2+k$ by completing the square. Which equation is correct?`,
       hint: `Half of the coefficient of $x$ is ${-h}. Write $x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x$ as a perfect square minus ${h * h}, then combine with the constant ${c}.`,
       explanation: [
-        `Half of ${-2 * h} is ${-h}, and $(${-h})^2=${h * h}$.`,
+        `Half of ${-2 * h} is ${-h}, and $${sqr(-h)}=${h * h}$.`,
         `Group the first two terms and add and subtract ${h * h}: $y=(x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h})+${c}-${h * h}$.`,
         `Factor and combine: ${tex(`y=${vertexForm(1, h, k)}`)}.`,
         `The vertex is $(${h},${k})$.`,
@@ -1574,6 +1576,15 @@ function quadraticFormConversionCase(seed: string) {
           label: tex(`${c + a * h * h}`),
           feedback: `The number added inside the square must be subtracted outside, not added again.`,
         },
+        // Fallbacks, used only when the mistakes above coincide (they come last).
+        {
+          label: tex(`${3 * a * h * h + c}`),
+          feedback: `That is the value at $x=${-h}$. The vertex of ${tex(`y=${vertexForm(a, h, k)}`)} is at $x=${h}$.`,
+        },
+        {
+          label: tex(`${k + a}`),
+          feedback: `That is the value one unit from the vertex. The ${word} is the value at the vertex itself, $x=${h}$.`,
+        },
       ],
     };
   } else if (variant === 2) {
@@ -1624,7 +1635,7 @@ function quadraticFormConversionCase(seed: string) {
     model = { p, q, axis };
     spec = {
       prompt: `The parabola is ${f}. Which equation is its axis of symmetry?`,
-      hint: `The zeros of the function are where each factor is 0. A parabola is symmetric about the vertical line through the point halfway between its two zeros.`,
+      hint: `The zeros of the function are where each factor of ${f} is 0. A parabola is symmetric about the vertical line through the point halfway between its two zeros.`,
       explanation: [
         `The zeros are $x=${p}$ and $x=${q}$.`,
         `The axis of symmetry passes halfway between them: $\\frac{${p}${q < 0 ? `+(${q})` : `+${q}`}}{2}=${axis}$.`,
@@ -1680,29 +1691,29 @@ function quadraticFormConversionCase(seed: string) {
     const factored = `${a === 1 ? "" : a === -1 ? "-" : a}${lin(p)}${lin(q)}`;
     model = { a, p, q, h, k, c };
     spec = {
-      prompt: `The function $f$ is written three equivalent ways: (A) ${tex(`f(x)=${quad(a, -a * (p + q), c)}`)}, (B) ${tex(`f(x)=${factored}`)}, (C) ${tex(`f(x)=${vertexForm(a, h, k)}`)}. Which form shows the ${word} value of $f$ directly, and what is that value?`,
-      hint: `The ${word} of a parabola occurs at its vertex. Decide which form is written in terms of a squared factor, then read the number added to it.`,
+      prompt: `The function $f$ is written three equivalent ways: option A: ${tex(`f(x)=${quad(a, -a * (p + q), c)}`)}, option B: ${tex(`f(x)=${factored}`)}, option C: ${tex(`f(x)=${vertexForm(a, h, k)}`)}. Which option shows the ${word} value of $f$ directly, and what is that value?`,
+      hint: `The ${word} of a parabola occurs at its vertex, halfway between the zeros ${p} and ${q}. Decide which option is written in terms of a squared factor, then read the number added to it.`,
       explanation: [
-        `In (C), $${shift(h)}^2$ is never negative, so ${a} times it is ${a > 0 ? "at least 0" : "at most 0"}, and equals 0 at $x=${h}$.`,
-        `So the ${word} is the added constant ${k}, which form (C) shows directly.`,
-        `Form (B) shows the zeros ${p} and ${q}, and form (A) shows $f(0)=${c}$; neither displays the ${word}.`,
+        `In option C, $${shift(h)}^2$ is never negative, so ${a} times it is ${a > 0 ? "at least 0" : "at most 0"}, and equals 0 at $x=${h}$.`,
+        `So the ${word} is the added constant ${k}, which option C shows directly.`,
+        `Option B shows the zeros ${p} and ${q}, and option A shows $f(0)=${c}$; neither displays the ${word}.`,
       ],
-      correct: `Form (C); the ${word} value is ${tex(`${k}`)}.`,
+      correct: `Option C; the ${word} value is ${tex(`${k}`)}.`,
       wrong: [
         {
-          label: `Form (C); the ${word} value is ${tex(`${h}`)}.`,
+          label: `Option C; the ${word} value is ${tex(`${h}`)}.`,
           feedback: `${h} is the $x$-value of the vertex. The ${word} value of $f$ is the $y$-value, the added constant.`,
         },
         {
-          label: `Form (B); the ${word} value is ${tex("0")}.`,
-          feedback: `Form (B) shows where $f$ is 0, but $f$ goes ${a > 0 ? "below" : "above"} 0 between the zeros; 0 is not the ${word}.`,
+          label: `Option B; the ${word} value is ${tex("0")}.`,
+          feedback: `Option B shows where $f$ is 0, but $f$ goes ${a > 0 ? "below" : "above"} 0 between the zeros; 0 is not the ${word}.`,
         },
         {
-          label: `Form (A); the ${word} value is ${tex(`${c}`)}.`,
+          label: `Option A; the ${word} value is ${tex(`${c}`)}.`,
           feedback: `${c} is $f(0)$, the $y$-intercept. It is not the ${word} unless the vertex is on the $y$-axis.`,
         },
         {
-          label: `Form (B); the ${word} value is ${tex(`${p}`)} or ${tex(`${q}`)}.`,
+          label: `Option B; the ${word} value is ${tex(`${p}`)} or ${tex(`${q}`)}.`,
           feedback:
             "The numbers in the factored form are zeros of $f$, which are inputs, not the extreme output value.",
         },
@@ -1971,7 +1982,7 @@ function squareRootExtraneousCase(seed: string) {
       prompt: `Solve $${equation}$ over the real numbers. Which statement describes all solutions?`,
       hint:
         d === 0
-          ? `Square both sides to get a quadratic, then substitute each candidate into the original equation. A principal square root is never negative.`
+          ? `Square both sides of $${equation}$ to get a quadratic, then substitute each candidate into the original equation. A principal square root is never negative.`
           : `Isolate the square root first: move ${d} to the other side. Then square, solve, and check every candidate in the original equation.`,
       explanation: [
         ...steps,
@@ -2022,7 +2033,7 @@ function squareRootExtraneousCase(seed: string) {
   } else {
     spec = {
       prompt: `To solve $\\sqrt{${radicand}}=${isolated}$, a student squares both sides and finds $x=${lo}$ and $x=${hi}$. Why must each candidate be checked in the original equation?`,
-      hint: `Squaring turns $A=B$ into $A^2=B^2$. Ask what other equation also has the same square.`,
+      hint: `Squaring turns $A=B$ into $A^2=B^2$. Ask what other equation than $\\sqrt{${radicand}}=${isolated}$ also has the same square.`,
       explanation: [
         `Squaring gives $(\\sqrt{${radicand}})^2=(${isolated})^2$, and $(-B)^2=B^2$ as well.`,
         `So the squared equation is also true when $\\sqrt{${radicand}}=-(${isolated})$, an equation the original does not state.`,

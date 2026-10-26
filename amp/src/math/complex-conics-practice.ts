@@ -33,7 +33,7 @@ export const complexConicsTemplates: readonly TemplateMetadata[] = [
     "Complex plane, modulus and polar form",
     "complex-plane",
     0.5,
-    "Read a point as a+bi, find a modulus, add as vectors, and convert between a+bi and r(cos θ + i sin θ) for special angles.",
+    "Read a point as $a+bi$, find a modulus, add as vectors, and convert between $a+bi$ and $r(\\cos\\theta+i\\sin\\theta)$ for special angles.",
     true,
   ),
   meta(
@@ -41,7 +41,7 @@ export const complexConicsTemplates: readonly TemplateMetadata[] = [
     "Conjugates and complex division",
     "complex-conjugates",
     0.6,
-    "Use the conjugate: write z·z̄ = |z|², find conjugates, and divide complex numbers into exact standard form.",
+    "Use the conjugate: write $z\\bar{z}=|z|^2$, find conjugates, and divide complex numbers into exact standard form.",
   ),
   meta(
     "complex-distance-midpoint",
@@ -55,7 +55,7 @@ export const complexConicsTemplates: readonly TemplateMetadata[] = [
     "Factor and solve over the complex numbers",
     "complex-factorization",
     0.55,
-    "Factor x² + k² as (x + ki)(x − ki), solve quadratics with negative discriminant in a ± bi form, and rebuild a quadratic from conjugate roots.",
+    "Factor $x^2+k^2$ as $(x+ki)(x-ki)$, solve quadratics with negative discriminant in $a\\pm bi$ form, and rebuild a quadratic from conjugate roots.",
   ),
   meta(
     "polynomial-root-count",
@@ -69,14 +69,14 @@ export const complexConicsTemplates: readonly TemplateMetadata[] = [
     "Polar and Cartesian coordinates",
     "polar-coordinates",
     0.5,
-    "Convert between polar and Cartesian coordinates at special angles, including negative r, and recognize equivalent polar names.",
+    "Convert between polar and Cartesian coordinates at special angles, including negative $r$, and recognize equivalent polar names.",
   ),
   meta(
     "parametric-linear-motion",
     "Linear parametric motion",
     "parametric-models",
     0.55,
-    "Evaluate position from x(t), y(t), eliminate the parameter, find speed and timing, and read direction from signs.",
+    "Evaluate position from $x(t)$, $y(t)$, eliminate the parameter, find speed and timing, and read direction from signs.",
   ),
   meta(
     "conic-standard-form",
@@ -90,7 +90,7 @@ export const complexConicsTemplates: readonly TemplateMetadata[] = [
     "Parabolas from focus and directrix",
     "parabola-locus",
     0.6,
-    "Use the vertex as the midpoint of focus and directrix, the distance p, and (x − h)² = 4p(y − k) in both directions.",
+    "Use the vertex as the midpoint of focus and directrix, the distance $p$, and $(x - h)^2 = 4p(y - k)$ in both directions.",
   ),
 ];
 const byId = new Map(complexConicsTemplates.map((t) => [t.id, t]));
@@ -399,7 +399,7 @@ function planeCase(r: Random): Spec {
     return {
       variant,
       prompt: `The points $P$ and $Q$ represent the complex numbers $z$ and $w$. The horizontal axis shows real parts and the vertical axis shows imaginary parts. Adding complex numbers adds their arrows from 0. Choose $z+w$.`,
-      hint: `Read $z$ from $P$ and $w$ from $Q$, then add the two real parts together and the two imaginary parts together.`,
+      hint: `Read $z$ from $P$ and $w$ from $Q$ as arrows from 0, then add the two real parts together and the two imaginary parts together.`,
       explanation: [
         `$P$ is $z=${cxInt(a, b)}$ and $Q$ is $w=${cxInt(c, d)}$.`,
         `Add real parts: $${a}+(${c})=${a + c}$. Add imaginary parts: $${b}+(${d})=${b + d}$.`,
@@ -592,7 +592,7 @@ function conjugateCase(r: Random): Spec {
     return {
       variant,
       prompt: `Find the conjugate of $${cxInt(re, im)}$, the number with the sign of the imaginary part reversed.`,
-      hint: `The conjugate keeps the real part and changes only the sign of the imaginary part. A part that is 0 stays 0.`,
+      hint: `The conjugate of $${cxInt(re, im)}$ keeps the real part and changes only the sign of the imaginary part. A part that is 0 stays 0.`,
       explanation: [
         `Real part: $${re}$. Imaginary part: $${im}$.`,
         `Reverse only the imaginary part: $${-im}$ (it is 0 when there is no $i$ term).`,
@@ -740,7 +740,7 @@ function distanceCase(r: Random): Spec {
     return {
       variant,
       prompt: `Let $z=${lab(a, b)}$ and $w=${lab(c, d)}$. The distance between them in the complex plane is $|z-w|$. Find it in simplest exact form.`,
-      hint: `Subtract first: find $z-w$ by subtracting real parts and subtracting imaginary parts. Then find the modulus of that difference.`,
+      hint: `Subtract first: find $z-w$ for $z=${lab(a, b)}$ and $w=${lab(c, d)}$ by subtracting real parts and subtracting imaginary parts. Then find the modulus of that difference.`,
       explanation: [
         `$z-w=(${a}-(${c}))+(${b}-(${d}))i=${lab(a - c, b - d)}$.`,
         `$|z-w|=\\sqrt{(${a - c})^2+(${b - d})^2}=\\sqrt{${n}}$.`,
@@ -781,7 +781,7 @@ function distanceCase(r: Random): Spec {
     return {
       variant,
       prompt: `Find the midpoint of the segment joining $z=${lab(a, b)}$ and $w=${lab(c, d)}$ in the complex plane, written as a complex number.`,
-      hint: `The midpoint is the average of the two numbers. Average the real parts, then average the imaginary parts.`,
+      hint: `The midpoint of $z=${lab(a, b)}$ and $w=${lab(c, d)}$ is the average of the two numbers. Average the real parts, then average the imaginary parts.`,
       explanation: [
         `Real part: $\\frac{${a}+(${c})}{2}=${mx}$.`,
         `Imaginary part: $\\frac{${b}+(${d})}{2}=${my}$.`,
@@ -820,7 +820,7 @@ function distanceCase(r: Random): Spec {
     return {
       variant,
       prompt: `The midpoint of the segment joining $z=${lab(a, b)}$ and $w$ is $m=${lab(mx, my)}$. Find $w$.`,
-      hint: `The midpoint is the average, $m=\\frac{z+w}{2}$. Multiply both sides by 2 to see what $z+w$ equals.`,
+      hint: `The midpoint is the average, $m=\\frac{z+w}{2}$, and here $m=${lab(mx, my)}$. Multiply both sides by 2 to see what $z+w$ equals.`,
       explanation: [
         `Since $m=\\frac{z+w}{2}$, we have $z+w=2m=${lab(2 * mx, 2 * my)}$.`,
         `$w=2m-z=${lab(2 * mx, 2 * my)}-(${lab(a, b)})$.`,
@@ -863,7 +863,7 @@ function distanceCase(r: Random): Spec {
   return {
     variant: 4,
     prompt: `The complex numbers $z$ with $${form}$ form a circle in the complex plane. Which gives its center and radius?`,
-    hint: `$|z-w|$ is the distance from $z$ to $w$. Write the left side as a distance $|z-w|$ for some $w$; that $w$ is the center.`,
+    hint: `$|z-w|$ is the distance from $z$ to $w$. Write the left side of $${form}$ as a distance $|z-w|$ for some $w$; that $w$ is the center.`,
     explanation: [
       `$|z-w|=${radius}$ says the distance from $z$ to $w$ is ${radius}.`,
       plus
@@ -1026,7 +1026,7 @@ function factorCase(r: Random): Spec {
   return {
     variant: 4,
     prompt: `A quadratic with real coefficients and leading coefficient 1 has the solutions $${cxInt(p, q)}$ and $${cxInt(p, -q)}$. Choose its equation.`,
-    hint: `If the roots are $r_1$ and $r_2$, the quadratic is $(x-r_1)(x-r_2)$. Find the sum $r_1+r_2$ and the product $r_1r_2$ of the two roots.`,
+    hint: `If the roots are $r_1=${cxInt(p, q)}$ and $r_2=${cxInt(p, -q)}$, the quadratic is $(x-r_1)(x-r_2)$. Find the sum $r_1+r_2$ and the product $r_1\\cdot r_2$ of the two roots.`,
     explanation: [
       `Sum of roots: $(${cxInt(p, q)})+(${cxInt(p, -q)})=${2 * p}$.`,
       `Product: $(${cxInt(p, q)})(${cxInt(p, -q)})=${p * p}+${q * q}=${p * p + q * q}$.`,
@@ -1110,7 +1110,7 @@ function rootCountCase(r: Random): Spec {
     return {
       variant,
       prompt: `How many complex roots does $p(x)=${fac}${quad ? `(x^2+${quad})` : ""}$ have, counting each root as many times as its multiplicity?`,
-      hint: `A factor $(x-a)^e$ gives the root $a$ with multiplicity $e$. Add up the multiplicities from every factor, and think about how many roots a factor $x^2+${quad || "k"}$ contributes.`,
+      hint: `In $p(x)=${fac}${quad ? `(x^2+${quad})` : ""}$, a factor $(x-a)^e$ gives the root $a$ with multiplicity $e$. Add up the multiplicities from every factor, and think about how many roots a factor $x^2+${quad || "k"}$ contributes.`,
       explanation: [
         `A factor $(x-a)^e$ contributes the root $a$ with multiplicity $e$.`,
         ...factors.map(
@@ -1349,7 +1349,7 @@ function polarCase(r: Random): Spec {
     return {
       variant,
       prompt: `The polar point $${pol(R, deg)}$ can be named in more than one way. Which pair names the same point?`,
-      hint: `Adding $2\\pi$ to the angle turns a full circle and returns to the same direction. A negative $r$ means moving the opposite way along the angle, which is the same as turning by $\\pi$.`,
+      hint: `For $${pol(R, deg)}$, adding $2\\pi$ to the angle turns a full circle and returns to the same direction. A negative $r$ means moving the opposite way along the angle, which is the same as turning by $\\pi$.`,
       explanation: [
         `Adding $2\\pi$ to the angle gives $(${R}, ${piTex(deg + 360)})$ and the point is the same.`,
         `Changing the sign of $r$ and adding $\\pi$ to the angle also returns to the same point: $(${-R}, ${piTex(mod360(deg + 180))})$.`,
@@ -1539,8 +1539,8 @@ function parametricCase(r: Random): Spec {
     const target = c0 + c1 * t0;
     return {
       variant,
-      prompt: `A drone's position, in meters, is $x(t)=${constFirst(x0, a, "t")}$, $y(t)=${constFirst(y0, b, "t")}$ with $t$ in seconds. At what time is its ${name}-coordinate ${target}?`,
-      hint: `Set $${name}(t)=${target}$ and solve the equation for $t$. Only the ${name}-equation matters here.`,
+      prompt: `A drone's position, in meters, is $x(t)=${constFirst(x0, a, "t")}$, $y(t)=${constFirst(y0, b, "t")}$ with $t$ in seconds. At what time is its $${name}$-coordinate ${target}?`,
+      hint: `Set $${name}(t)=${target}$ and solve the equation for $t$. Only the $${name}$-equation matters here.`,
       explanation: [
         `Set $${constFirst(c0, c1, "t")}=${target}$.`,
         `Subtract ${c0}: $${c1}t=${target - c0}$.`,
@@ -1586,7 +1586,7 @@ function parametricCase(r: Random): Spec {
   return {
     variant: 4,
     prompt: `A drone's position, in meters, is $x(t)=${constFirst(x0, a, "t")}$, $y(t)=${constFirst(y0, b, "t")}$, with $x$ increasing to the right and $y$ increasing upward. Which statement describes its motion?`,
-    hint: `The coefficient of $t$ in $x(t)$ is the change in $x$ each second, and the same for $y(t)$. Compare their signs for direction and their sizes for which is faster.`,
+    hint: `In $x(t)=${constFirst(x0, a, "t")}$ and $y(t)=${constFirst(y0, b, "t")}$, the coefficient of $t$ in $x(t)$ is the change in $x$ each second, and the same for $y(t)$. Compare their signs for direction and their sizes for which is faster.`,
     explanation: [
       `$x$ changes by ${a} m each second: ${a > 0 ? "increasing, so it moves right" : "decreasing, so it moves left"}.`,
       `$y$ changes by ${b} m each second: ${b > 0 ? "increasing, so it moves up" : "decreasing, so it moves down"}.`,
@@ -1720,7 +1720,7 @@ function conicCase(r: Random): Spec {
     return {
       variant,
       prompt: `What kind of conic section is the graph of $${eq}$?`,
-      hint: `Check which variables are squared. If both are, look at the sign between the squared terms and whether their denominators or coefficients are equal.`,
+      hint: `Check which variables are squared in $${eq}$. If both are, look at the sign between the squared terms and whether their denominators or coefficients are equal.`,
       explanation: [
         `Check which variables are squared and how the squared terms are combined.`,
         reason,
@@ -1778,7 +1778,7 @@ function conicCase(r: Random): Spec {
     return {
       variant,
       prompt: `The ellipse $${eq}$ has a longer axis. Which points are the ends of its longer axis?`,
-      hint: `Compare the denominators under $(x...)^2$ and $(y...)^2$. The longer axis lies along the variable with the larger denominator, and its ends are the square root of that denominator away from the center.`,
+      hint: `In $${eq}$, compare the denominators under $(x...)^2$ and $(y...)^2$. The longer axis lies along the variable with the larger denominator, and its ends are the square root of that denominator away from the center.`,
       explanation: [
         `The denominators are ${a * a} (under $x$) and ${b * b} (under $y$). The larger is ${L * L}, under $${wide ? "x" : "y"}$, so the longer axis is ${wide ? "horizontal" : "vertical"}.`,
         `Its half-length is $\\sqrt{${L * L}}=${L}$, measured from the center $${pt(h, k)}$.`,
@@ -1815,7 +1815,7 @@ function conicCase(r: Random): Spec {
     return {
       variant,
       prompt: `Complete the square to find the center and radius of the circle $${gen}$.`,
-      hint: `Group the $x$ terms and the $y$ terms, move ${F === 0 ? "nothing" : "the constant term"} to the right side, and add the square of half the $x$ coefficient and the square of half the $y$ coefficient to both sides.`,
+      hint: `Group the $x$ terms and the $y$ terms of $${gen}$, move ${F === 0 ? "nothing" : "the constant term"} to the right side, and add the square of half the $x$ coefficient and the square of half the $y$ coefficient to both sides.`,
       explanation: [
         `Group: $(x^2${D < 0 ? "-" : "+"}${Math.abs(D)}x)+(y^2${E < 0 ? "-" : "+"}${Math.abs(E)}y)=${-F}$.`,
         `Add $(${D / 2})^2=${h * h}$ and $(${E / 2})^2=${k * k}$ to both sides: $${sq("x", h)}+${sq("y", k)}=${r2}$.`,
@@ -1946,7 +1946,7 @@ function parabolaCase(r: Random): Spec {
     return {
       variant,
       prompt: `A parabola has focus $${pt(h, focusY)}$ and directrix $${line(directrixY)}$. What is its vertex?`,
-      hint: `Every point on the parabola is equally far from the focus and the directrix, so the vertex lies halfway between them along the axis of symmetry.`,
+      hint: `Every point on the parabola is equally far from the focus and the directrix, so the vertex lies halfway between them along the axis of symmetry. Here the focus height is ${focusY} and the directrix height is ${directrixY}.`,
       explanation: [
         `The axis of symmetry is the vertical line through the focus, $x=${h}$.`,
         `The vertex is halfway between $y=${focusY}$ and $y=${directrixY}$: $\\frac{${focusY}+(${directrixY})}{2}=${k}$.`,
@@ -1988,7 +1988,7 @@ function parabolaCase(r: Random): Spec {
     return {
       variant,
       prompt: `Find the focus of the parabola $${form ? eq : `x^2=${4 * p}y`}$.`,
-      hint: `Compare with $(x-h)^2=4p(y-k)$. The vertex is $(h,k)$, the number in front of the $y$ bracket is $4p$, and the focus is $p$ units from the vertex along the axis of symmetry.`,
+      hint: `Compare $${form ? eq : `x^2=${4 * p}y`}$ with $(x-h)^2=4p(y-k)$. The vertex is $(h,k)$, the number in front of the $y$ bracket is $4p$, and the focus is $p$ units from the vertex along the axis of symmetry.`,
       explanation: [
         `Match $(x-h)^2=4p(y-k)$: the vertex is $${pt(h, k)}$ and $4p=${4 * p}$, so $p=${p}$.`,
         `The parabola opens ${p > 0 ? "upward" : "downward"}, so the focus is $p$ units ${p > 0 ? "above" : "below"} the vertex.`,
@@ -2023,7 +2023,7 @@ function parabolaCase(r: Random): Spec {
     return {
       variant,
       prompt: `Find the equation of the directrix of the parabola $${eqn(h, k, 4 * p)}$.`,
-      hint: `The vertex is $(h,k)$ and $4p$ is the coefficient of the $y$ bracket. The directrix is a horizontal line $p$ units from the vertex on the side away from the focus.`,
+      hint: `In $${eqn(h, k, 4 * p)}$, the vertex is $(h,k)$ and $4p$ is the coefficient of the $y$ bracket. The directrix is a horizontal line $p$ units from the vertex on the side away from the focus.`,
       explanation: [
         `The vertex is $${pt(h, k)}$ and $4p=${4 * p}$, so $p=${p}$.`,
         `The focus is ${p > 0 ? "above" : "below"} the vertex, so the directrix is $|p|=${Math.abs(p)}$ units ${p > 0 ? "below" : "above"} it: $y=${k}-(${p})$.`,

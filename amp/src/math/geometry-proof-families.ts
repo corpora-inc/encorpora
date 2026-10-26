@@ -156,7 +156,7 @@ const lineAngleFamily: Family = {
         ],
         hint: `Compare what is given, $P${x}=P${y}$, with what the step concludes. Which theorem begins with that kind of statement?`,
         explanation: [
-          `The given is that $P$ is the same distance from ${x} and ${y}.`,
+          `The given is that $P$ is the same distance from $${x}$ and $${y}$.`,
           `The conclusion places $P$ on the perpendicular bisector. Reason: ${lineReasons.conv}`,
         ],
       };
@@ -189,7 +189,7 @@ const lineAngleFamily: Family = {
             "The four angles around $O$ total $360^\\circ$, but only two of them are named here.",
           ],
         ],
-        hint: `Rays $OA$ and $OC$ are opposite, and so are $OB$ and $OD$. Decide whether angles $AOB$ and $COD$ are opposite angles at $O$ or share a side.`,
+        hint: `Rays $OA$ and $OC$ are opposite, and so are $OB$ and $OD$. Decide whether angles $AOB=(${left})^\\circ$ and $COD=(${right})^\\circ$ are opposite angles at $O$ or share a side.`,
         explanation: [
           `Angles $AOB$ and $COD$ are formed by opposite rays, so they are vertical angles and have equal measures: $${left}=${right}$.`,
           `Subtracting $${a}x$ from both sides and solving gives $x=${x0}$, so each angle measures $${v}^\\circ$.`,
@@ -235,7 +235,7 @@ const triangleProofFamily: Family = {
           ],
           [deg(a / 2), "Halve the sum of the base angles, not the apex angle."],
         ],
-        hint: `Sides $AB$ and $AC$ are equal, so find which two angles are opposite them. The angle sum of the triangle is $180^\\circ$, and $\\angle A$ is already given as ${dg(a)}$.`,
+        hint: `Sides $AB$ and $AC$ are equal, so find which two angles are opposite them. The angle sum of the triangle is $180^\\circ$, and $\\angle A$ is already given as $${dg(a)}$.`,
         explanation: [
           `Since $AB=AC$, the angles opposite them, $\\angle C$ and $\\angle B$, are congruent (base angles of an isosceles triangle).`,
           `The angles sum to $180^\\circ$, so $m\\angle B+m\\angle C=180-${a}=${180 - a}$.`,
@@ -269,7 +269,7 @@ const triangleProofFamily: Family = {
           [m(4 * t), "Double $DE$ once, not twice."],
           [m(x0), "That is the value of $x$, not the length of $BC$."],
         ],
-        hint: `$\\overline{DE}$ joins the midpoints of two sides, so it is a midsegment. Write the relationship between $DE$ and $BC$, then use it to find $x$ before computing the length of $BC$.`,
+        hint: `$\\overline{DE}$ joins the midpoints of two sides, so it is a midsegment. Write the relationship between $DE=${lin(p, q)}$ and $BC=${lin(c, d)}$, then use it to find $x$ before computing the length of $BC$.`,
         explanation: [
           `A midsegment is parallel to the third side and half as long, so $BC=2\\cdot DE$.`,
           `Set $${lin(c, d)}=2(${lin(p, q)})$ and solve: $x=${x0}$.`,
@@ -339,7 +339,7 @@ const triangleProofFamily: Family = {
             "The proof has not stated that any two sides of the triangle are equal.",
           ],
         ],
-        hint: `Line $AC$ crosses the two parallel lines $\\ell$ and $AB$. Look at where the two angles lie: between the lines or outside, and on the same or opposite sides of line $AC$.`,
+        hint: `The angles of triangle $ABC$ sum to $180^\\circ$, and the proof uses line $\\ell$ parallel to $AB$. Line $AC$ crosses the two parallel lines. Look at where the two angles lie: between the lines or outside, and on the same or opposite sides of line $AC$.`,
         explanation: [
           `Line $AC$ is a transversal of the parallel lines $\\ell$ and $AB$. Angles $A'CA$ and $CAB$ lie between those lines on opposite sides of $AC$.`,
           `They are alternate interior angles, so ${reasons.alt.toLowerCase()}`,
@@ -437,7 +437,7 @@ const parallelogramFamily: Family = {
           [m(x0), "That is the value of $x$, not the length of $AC$."],
           [m(4 * t), "Add $AE$ and $EC$ once; do not double the sum."],
         ],
-        hint: `The diagonals of a parallelogram meet at $E$. Write the relationship between $AE$ and $EC$ as an equation, solve for $x$, and only then find $AC$.`,
+        hint: `The diagonals of a parallelogram meet at $E$. Write the relationship between $AE=${lin(p, q)}$ and $EC=${lin(c, d)}$ as an equation, solve for $x$, and only then find $AC$.`,
         explanation: [
           `The diagonals of a parallelogram bisect each other, so $AE=EC$: $${lin(p, q)}=${lin(c, d)}$.`,
           `Solving gives $x=${x0}$, so $AE=EC=${t}$.`,
@@ -471,7 +471,7 @@ const parallelogramFamily: Family = {
             "Substitute the solved value of $x$ into the expression for $AC$.",
           ],
         ],
-        hint: `The figure is a rectangle, so its diagonals $AC$ and $BD$ have a special relationship. Write it as an equation in $x$, solve, then substitute into $AC$.`,
+        hint: `The figure is a rectangle, so its diagonals $AC=${lin(p, q)}$ and $BD=${lin(c, d)}$ have a special relationship. Write it as an equation in $x$, solve, then substitute into $AC$.`,
         explanation: [
           `The diagonals of a rectangle are congruent, so $${lin(p, q)}=${lin(c, d)}$.`,
           `Solving gives $x=${x0}$.`,
@@ -505,7 +505,7 @@ const parallelogramFamily: Family = {
             "Adjacent angles of a parallelogram total $180^\\circ$; they are not complementary.",
           ],
         ],
-        hint: `$\\angle A$ and $\\angle B$ share side $\\overline{AB}$. Sides $\\overline{AD}$ and $\\overline{BC}$ are parallel, with $\\overline{AB}$ as a transversal, so look for a relationship between the angles on the same side of $AB$.`,
+        hint: `$m\\angle A=${dg(a)}$, and $\\angle A$ and $\\angle B$ share side $\\overline{AB}$. Sides $\\overline{AD}$ and $\\overline{BC}$ are parallel, with $\\overline{AB}$ as a transversal, so look for a relationship between the angles on the same side of $AB$.`,
         explanation: [
           `$\\overline{AD}\\parallel\\overline{BC}$ and $\\overline{AB}$ is a transversal, so consecutive angles $\\angle A$ and $\\angle B$ are supplementary.`,
           `$m\\angle B=180-${a}=${180 - a}$.`,
@@ -888,7 +888,7 @@ const transformationInvariantFamily: Family = {
             "That describes a reflection. A reflection reverses orientation, a rotation does not.",
           ],
         ],
-        hint: `Think of $X$ moving along a circle centered at $C$. What stays the same about the distance from $C$, and what measures the turn?`,
+        hint: `Think of $X$ moving along a circle centered at $C$ through a turn of $${dg(t)}$. What stays the same about the distance from $C$, and what measures the turn?`,
         explanation: [
           "A rotation about a center turns every point around the center by the same angle without changing its distance from the center.",
           `So $CX'=CX$ and the angle from ray $CX$ to ray $CX'$ measures $${dg(t)}$.`,
@@ -1088,7 +1088,7 @@ const polygonSymmetryFamily: Family = {
                 `That list belongs to ${owner[k]}, not to ${fig[0]}.`,
               ] as Wrong,
           ),
-        hint: `Rotate ${fig[0]} in steps and ask after each step whether every vertex lands on a vertex and the sides match. Check that each side lands on a side of the same length.`,
+        hint: `Rotate ${fig[0]} in steps between $0^\\circ$ and $360^\\circ$ and ask after each step whether every vertex lands on a vertex and the sides match. Check that each side lands on a side of the same length.`,
         explanation: [
           `A rotation carries the figure onto itself when each vertex lands on a vertex and each side on a side.`,
           `For ${fig[0]} the rotations are: ${sets[key]}.`,
@@ -1174,7 +1174,7 @@ function sequenceVariant(
     prompt: `Triangle $PQR$ has $P${pt(P)}$, $Q${pt(Q)}$ and $R${pt(Rr)}$. Its image $P'Q'R'$ has $P'${pt(P2)}$, $Q'${pt(Q2)}$ and $R'${pt(R2)}$, with each vertex sent to its primed vertex. Which sequence of transformations maps $PQR$ onto $P'Q'R'$?`,
     correct: label(correct),
     wrong,
-    hint: `Compare side $\\overline{PQ}$ with $\\overline{P'Q'}$: it goes from $\\langle 3,0\\rangle$ to $\\langle ${sv(Q2[0] - P2[0])},${sv(Q2[1] - P2[1])}\\rangle$. Decide whether its length changed and whether its direction turned or flipped, then account for the shift of $P$.`,
+    hint: `Compare side $\\overline{PQ}$ from $P${pt(P)}$ to $Q${pt(Q)}$ with $\\overline{P'Q'}$ from $P'${pt(P2)}$ to $Q'${pt(Q2)}$: it goes from $\\langle ${sv(Q[0] - P[0])},${sv(Q[1] - P[1])}\\rangle$ to $\\langle ${sv(Q2[0] - P2[0])},${sv(Q2[1] - P2[1])}\\rangle$. Decide whether its length changed and whether its direction turned or flipped, then account for the shift of $P$.`,
     explanation: [
       `Follow $P$: ${path(P)}. Follow $Q$: ${path(Q)}. These match $P'$ and $Q'$.`,
       `Follow $R$: ${path(Rr)}, which matches $R'$. The sequence is: ${seqText(correct)}.`,
@@ -1263,25 +1263,25 @@ const constructionFamily: Family = {
       return {
         tag: "bisector-next-step",
         label: "Next step",
-        prompt: `To construct the perpendicular bisector of $\\overline{${A}${B}}$, you open the compass wider than half of ${A}${B} and draw an arc centered at ${A}, above and below the segment. What is the next step?`,
-        correct: `Keep the same opening and draw an arc centered at ${B} that crosses the first arc above and below the segment.`,
+        prompt: `To construct the perpendicular bisector of $\\overline{${A}${B}}$, you open the compass wider than half of $${A}${B}$ and draw an arc centered at $${A}$, above and below the segment. What is the next step?`,
+        correct: `Keep the same opening and draw an arc centered at $${B}$ that crosses the first arc above and below the segment.`,
         wrong: [
           [
-            `Close the compass to less than half of ${A}${B} and draw an arc centered at ${B}.`,
+            `Close the compass to less than half of $${A}${B}$ and draw an arc centered at $${B}$.`,
             `An arc that small cannot reach the first arc, so the two arcs would not cross.`,
           ],
           [
-            `Use a ruler to measure ${A}${B}, halve the length and mark the midpoint.`,
+            `Use a ruler to measure $${A}${B}$, halve the length and mark the midpoint.`,
             "A construction uses only a compass and an unmarked straightedge, so no measuring is allowed.",
           ],
           [
-            `Draw a line through ${A} at a right angle to $\\overline{${A}${B}}$.`,
-            `A perpendicular through ${A} does not pass through the midpoint of $\\overline{${A}${B}}$.`,
+            `Draw a line through $${A}$ at a right angle to $\\overline{${A}${B}}$.`,
+            `A perpendicular through $${A}$ does not pass through the midpoint of $\\overline{${A}${B}}$.`,
           ],
         ],
-        hint: `Points on the perpendicular bisector are the same distance from ${A} and ${B}. Decide what second arc would produce points that are as far from ${B} as from ${A}.`,
+        hint: `Points on the perpendicular bisector are the same distance from $${A}$ and $${B}$. Decide what second arc would produce points that are as far from $${B}$ as from $${A}$.`,
         explanation: [
-          `Any point on the first arc is the chosen distance from ${A}. To find points equally far from ${B}, use the same opening centered at ${B}.`,
+          `Any point on the first arc is the chosen distance from $${A}$. To find points equally far from $${B}$, use the same opening centered at $${B}$.`,
           `The two arcs cross above and below the segment; the line through those crossings is the perpendicular bisector.`,
         ],
       };
@@ -1368,7 +1368,7 @@ const constructionFamily: Family = {
       ],
     }),
     (r) => {
-      const letters = shuffle(r, ["A", "B", "C", "D"]);
+      const letters = shuffle(r, ["1", "2", "3", "4"]);
       const letterOf = (step: number) => letters[step]!;
       const sorted = [0, 1, 2, 3].sort((a, b) =>
         letterOf(a).localeCompare(letterOf(b)),
@@ -1383,7 +1383,7 @@ const constructionFamily: Family = {
       return {
         tag: "step-order",
         label: "Order of steps",
-        prompt: `These steps construct the perpendicular to line $\\ell$ at point $P$ on $\\ell$, but they are listed out of order. ${sorted.map((s) => `${letterOf(s)}. ${stepsForPerpendicular[s]}`).join(" ")} Which order is correct?`,
+        prompt: `These steps construct the perpendicular to line $\\ell$ at point $P$ on $\\ell$, but they are listed out of order. ${sorted.map((s) => `Step ${letterOf(s)}: ${stepsForPerpendicular[s]}`).join(" ")} Which order is correct?`,
         correct: order(canonical),
         wrong: [
           [
@@ -1403,7 +1403,7 @@ const constructionFamily: Family = {
             "This is the reverse order; each step needs points made by an earlier one.",
           ],
         ],
-        hint: "Each step uses points made earlier. Find the step that needs nothing else, then the step that uses only that point, and continue.",
+        hint: "Among Steps 1, 2, 3 and 4, each step uses points made earlier. Find the step that needs nothing else, then the step that uses only that point, and continue.",
         explanation: [
           `Mark $P$ first. Then arcs from $P$ make $X$ and $Y$ on $\\ell$, which are the same distance from $P$.`,
           `Arcs from $X$ and $Y$ with equal radii cross at $Z$, which is as far from $X$ as from $Y$, so $Z$ is on the perpendicular bisector of $\\overline{XY}$, which passes through $P$. The line $PZ$ is the perpendicular.`,
@@ -1642,7 +1642,7 @@ const triangleCirclesFamily: Family = {
             "Half an angle is not related to its opposite angle here.",
           ],
         ],
-        hint: `Angles ${A} and ${C} are at opposite vertices of the inscribed quadrilateral. Recall how the opposite angles of a quadrilateral inscribed in a circle relate.`,
+        hint: `Angles $${A}$ and $${C}$ are at opposite vertices of the inscribed quadrilateral, and the given angle is $${a}^\\circ$. Recall how the opposite angles of a quadrilateral inscribed in a circle relate.`,
         explanation: [
           `Opposite angles of a quadrilateral inscribed in a circle are supplementary.`,
           `$m\\angle ${C}=180-${a}=${c}$.`,
@@ -1678,7 +1678,7 @@ const triangleCirclesFamily: Family = {
             "Check the sum; opposite angles total $180^\\circ$.",
           ],
         ],
-        hint: `$\\angle A$ and $\\angle C$ are opposite angles of an inscribed quadrilateral. Write their sum as an equation, solve it for $x$, then substitute into the expression for $\\angle A$.`,
+        hint: `$\\angle A=(${lin(p, q)})^\\circ$ and $\\angle C=(${lin(c, d)})^\\circ$ are opposite angles of an inscribed quadrilateral. Write their sum as an equation, solve it for $x$, then substitute into the expression for $\\angle A$.`,
         explanation: [
           `Opposite angles of an inscribed quadrilateral are supplementary: $(${lin(p, q)})+(${lin(c, d)})=180$.`,
           `Solving gives $x=${x0}$.`,
@@ -1810,7 +1810,7 @@ const tangentFamily: Family = {
             "Substitute the solved value of $x$ into the expression for $PA$.",
           ],
         ],
-        hint: `Two tangent segments drawn to a circle from the same external point have a special relationship. Write it as an equation in $x$ using the expressions given for $PA$ and $PB$, then solve.`,
+        hint: `Two tangent segments drawn to a circle from the same external point have a special relationship. Write it as an equation in $x$ using the expressions $PA=${lin(p, q)}$ and $PB=${lin(c, d)}$, then solve.`,
         explanation: [
           `Two tangent segments from one external point are congruent, so $${lin(p, q)}=${lin(c, d)}$.`,
           `Solving gives $x=${x0}$, so $PA=${p}(${x0})${q < 0 ? "-" : "+"}${Math.abs(q)}=${t}$.`,
@@ -1838,7 +1838,7 @@ const tangentFamily: Family = {
             "That adds the squares, as if the radius were the hypotenuse. $OP$ is the hypotenuse.",
           ],
         ],
-        hint: `The radius $OT$ ends at the point of tangency. What does that tell you about the angle between $OT$ and $PT$, and which side of triangle $OTP$ is the longest?`,
+        hint: `The radius $OT$ ends at the point of tangency. What does that tell you about the angle between $OT$ and $PT$, and which side of triangle $OTP$ is the longest, given $OP=${d}$ and $PT=${t}$?`,
         explanation: [
           `A tangent is perpendicular to the radius at the point of tangency, so triangle $OTP$ has a right angle at $T$ and hypotenuse $OP=${d}$.`,
           `$OT^2=${d}^2-${t}^2=${d * d - t * t}$, so the radius is $${rad}$.`,
@@ -1868,7 +1868,7 @@ const tangentFamily: Family = {
             "That is $m\\angle OTP$, the angle at the point of tangency.",
           ],
         ],
-        hint: `The tangent $PT$ meets the radius $OT$ at $T$. What is the angle between them, and what do the three angles of triangle $OTP$ add to?`,
+        hint: `The tangent $PT$ meets the radius $OT$ at $T$. What is the angle between them, and what do the three angles of triangle $OTP$, one of which is $${dg(a)}$, add to?`,
         explanation: [
           `The tangent is perpendicular to the radius at $T$, so $m\\angle OTP=90^\\circ$.`,
           `The angles of triangle $OTP$ total $180^\\circ$: $m\\angle OPT=180-90-${a}=${90 - a}$.`,
@@ -2000,7 +2000,7 @@ const circleSimilarityFamily: Family = {
             "The circumference formula was already used to get the given circumference; multiply it once by the scale factor.",
           ],
         ],
-        hint: `Circumference is a length, so a dilation multiplies it by the same scale factor as every other length. Use the given circumference of circle $A$.`,
+        hint: `Circumference is a length, so a dilation multiplies it by the same scale factor as every other length. Multiply the circumference $${cir}\\pi$ cm of circle $A$ by ${k} once.`,
         explanation: [
           `Circumference is proportional to radius, so a dilation with scale factor ${k} multiplies it by ${k}.`,
           `$${cir}\\pi\\times ${k}=${cir * k}\\pi$ cm.`,
@@ -2218,7 +2218,7 @@ const coordinateProofFamily: Family = {
       wrong: others.map(
         (t) => [quadLabel[t], `${facts} ${quadRequirement[t]}`] as Wrong,
       ),
-      hint: `Find the vectors for two adjacent sides, $\\overrightarrow{AB}=${vec(AB)}$ and $\\overrightarrow{AD}=${vec(AD)}$, and for the opposite sides $\\overrightarrow{DC}$ and $\\overrightarrow{BC}$. Compare opposite sides for parallelism, then test the right angle with a dot product and the side lengths.`,
+      hint: `Subtract coordinates to find the vectors for two adjacent sides, from $A${pt(A)}$ to $B${pt(B)}$ giving $\\overrightarrow{AB}=${vec(AB)}$ and from $A$ to $D${pt(D)}$ giving $\\overrightarrow{AD}=${vec(AD)}$, and for the opposite sides $\\overrightarrow{DC}$ and $\\overrightarrow{BC}$. Compare opposite sides for parallelism, then test the right angle with a dot product and the side lengths.`,
       explanation: [
         `$\\overrightarrow{AB}=${vec(AB)}$ and $\\overrightarrow{DC}=${vec(DC)}$; $\\overrightarrow{BC}=${vec(BC)}$ and $\\overrightarrow{AD}=${vec(AD)}$. ${facts}`,
         `The coordinates prove: ${quadLabel[type].toLowerCase()}.`,
@@ -2324,7 +2324,7 @@ const measurementFamily: Family = {
             "That multiplies instead of dividing; the cone fits inside the cylinder.",
           ],
         ],
-        hint: `The cone fits inside the cylinder with the same base and height. A pyramid's volume is what fraction of the volume of the prism with the same base and height?`,
+        hint: `The cone fits inside the cylinder of volume ${V} cm³ with the same base and height. A pyramid's volume is what fraction of the volume of the prism with the same base and height?`,
         explanation: [
           `A cube splits into three congruent pyramids, so a pyramid is one third of the prism with the same base and height. The same fraction holds for a cone and the cylinder with the same base and height.`,
           `Cone volume $=${V}\\div 3=${V / 3}$ cm³.`,
@@ -2353,7 +2353,7 @@ const measurementFamily: Family = {
           "A circle is not a polygon with a fixed number of sides, and $r$ is a length, not a count.",
         ],
       ],
-      hint: "Ask which choice is true for every circle, not only the ones measured, and starts from a definition or a proved fact rather than an observation.",
+      hint: "Ask which choice justifies $C=2\\pi r$ for every circle, not only the ones measured, and starts from a definition or a proved fact rather than an observation.",
       explanation: [
         "All circles are similar, so the ratio of circumference to diameter is the same for every circle. That constant is named $\\pi$.",
         "Hence $C=\\pi d$, and since $d=2r$, $C=2\\pi r$.",

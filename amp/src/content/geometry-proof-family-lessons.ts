@@ -339,7 +339,7 @@ const specs: Spec[] = [
     templateId: "polygon-symmetry-counts",
     title: "Count and describe polygon symmetries",
     summary:
-      "A regular polygon with n sides has n rotations and n lines of reflection. Other shapes have fewer.",
+      "A regular polygon with $n$ sides has $n$ rotations and $n$ lines of reflection. Other shapes have fewer.",
     objectives: [
       "Find the smallest rotation and the number of rotations for a regular polygon.",
       "Count lines of symmetry and list rotations for rectangles, parallelograms and trapezoids.",
@@ -381,7 +381,7 @@ const specs: Spec[] = [
     methodText: [
       t`A rectangle that is not a square has a vertical and a horizontal line of symmetry, so $2$ lines, and a $180^\circ$ rotation. A turn of $90^\circ$ would swap its long and short sides, so it fails. A square has $4$ lines and rotations of $90^\circ$, $180^\circ$ and $270^\circ$.`,
     ],
-    formalTitle: "Why n rotations",
+    formalTitle: "Why a regular polygon has as many rotations as sides",
     formal: [
       t`A rotation of a regular $n$-gon about its center is decided by where it sends one chosen vertex. The vertex may land on any of $n$ vertices, and each choice gives one rotation, so there are $n$ rotations. Each is a multiple of $360^\circ/n$. Rotation by $0^\circ$ is the identity and is counted.`,
     ],
@@ -431,7 +431,7 @@ const specs: Spec[] = [
         t`Reflect across the $x$-axis: $P(1,1)\to(1,-1)$. To reach $P'(3,4)$ translate by $\langle2,5\rangle$.`,
         t`Check $R$: $(1,3)\to(1,-3)\to(3,2)=R'$.`,
       ],
-      answer: "Reflect across the x-axis, then translate by <2, 5>.",
+      answer: "Reflect across the $x$-axis, then translate by <2, 5>.",
     },
     methodTitle: "Order matters",
     methodText: [
@@ -487,7 +487,7 @@ const specs: Spec[] = [
         t`A point equally far from $A$ and $B$ is on the perpendicular bisector of $\overline{AB}$, so $X$ and $Y$ both are. Two points determine one line, so $XY$ is the bisector.`,
       ],
       answer:
-        "X and Y are each equidistant from A and B, so both lie on the perpendicular bisector.",
+        "$X$ and $Y$ are each equidistant from $A$ and $B$, so both lie on the perpendicular bisector.",
     },
     methodTitle: "Angle bisector and parallel line",
     methodText: [
@@ -656,7 +656,7 @@ const specs: Spec[] = [
     principle: t`A tangent is perpendicular to the radius at the point of tangency. If $T$ is the point of tangency and $P$ is outside the circle with center $O$, then $OT^2+PT^2=OP^2$. Two tangent segments to a circle from the same external point are congruent.`,
     example: {
       prompt:
-        "Point P is outside a circle with center O and radius 5. OP = 13 and PT is tangent to the circle at T. What is PT?",
+        "Point $P$ is outside a circle with center $O$ and radius 5. $OP=13$ and $PT$ is tangent to the circle at $T$. What is $PT$?",
       steps: [
         t`The radius $OT$ is perpendicular to the tangent, so triangle $OTP$ is right-angled at $T$, with hypotenuse $OP=13$.`,
         t`$PT^2=13^2-5^2=169-25=144$.`,
