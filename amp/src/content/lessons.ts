@@ -89,6 +89,7 @@ import { statisticsProbabilityLessons } from "./statistics-probability-lessons";
 import { complexConicsLessons } from "./complex-conics-lessons";
 import { trigonometryLessons } from "./trigonometry-lessons";
 import { geometryModelingLessons } from "./geometry-modeling-lessons";
+import { geometryRequirementGapLessons } from "./geometry-requirement-gaps-lessons";
 import { functionBehaviorLessons } from "./function-behavior-lessons";
 import { absoluteValueLessons } from "./absolute-value-lessons";
 import { measurementLessons } from "./measurement-lessons.js";
@@ -708,6 +709,7 @@ export const lessons: readonly Lesson[] = [
   ...complexConicsLessons,
   ...trigonometryLessons,
   ...geometryModelingLessons,
+  ...geometryRequirementGapLessons,
   ...functionBehaviorLessons,
   ...absoluteValueLessons,
   ...polynomialLessons,

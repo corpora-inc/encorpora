@@ -79,6 +79,7 @@ import { statisticsProbabilityMethods } from "./statistics-probability-lessons";
 import { complexConicsMethods } from "./complex-conics-lessons";
 import { trigonometryMethods } from "./trigonometry-lessons";
 import { geometryModelingMethods } from "./geometry-modeling-lessons";
+import { geometryRequirementGapMethods } from "./geometry-requirement-gaps-lessons";
 import { functionBehaviorMethods } from "./function-behavior-lessons";
 import { absoluteValueMethods } from "./absolute-value-lessons";
 import type { ProblemMethod } from "./problem-lessons";
@@ -123,6 +124,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...complexConicsMethods,
   ...trigonometryMethods,
   ...geometryModelingMethods,
+  ...geometryRequirementGapMethods,
   ...functionBehaviorMethods,
   ...absoluteValueMethods,
   ...polynomialMethods,

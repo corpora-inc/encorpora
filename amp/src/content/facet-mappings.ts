@@ -1550,4 +1550,60 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...absoluteValueFacetMappings,
   ...inequalityFacetMappings,
   ...linearSystemFacetMappings,
+  {
+    templateId: "arc-sector-derivation",
+    facetId: "arc-sector-measure.HSG.C.B.5",
+    extent: "partial",
+    rationale:
+      "Choose the proportion that relates arc lengths of similar circles, give the radian measure of an arc over its radius, find an arc from a radian angle and radius, and find a sector's area as the fraction of the disk, including the simplified form (1/2)θr². Does not assess writing the derivation, degree-to-radian conversion or composite regions.",
+  },
+  {
+    templateId: "complex-plane-operations",
+    facetId: "complex-plane.HSN.CN.B.5",
+    extent: "partial",
+    rationale:
+      "Locate the sum, difference and conjugate of complex numbers in the plane, identify multiplication by i as a quarter turn, apply a modulus and argument as a scaling and rotation, and combine moduli and arguments under multiplication. Does not assess division, powers or roots, or drawing the representations by hand.",
+  },
+  {
+    templateId: "conditional-everyday-reasoning",
+    facetId: "conditional-probability.HSS.CP.A.5",
+    extent: "partial",
+    rationale:
+      "Match percent statements to P(A|B), P(B|A), P(A and B) and P(A), compare the two conditional probabilities from counts, and decide independence from stated probabilities or from a conditional rate against the overall rate. Does not assess Bayes' rule calculations, tree diagrams or written explanations.",
+  },
+  {
+    templateId: "congruence-by-rigid-motion",
+    facetId: "congruence-criteria.HSG.CO.B.6",
+    extent: "partial",
+    rationale:
+      "Choose the sequence of rigid motions that maps one grid triangle onto another, predict a vertex's image, decide congruence from the existence of such a sequence including mirror images and enlargements, and match corresponding parts. Does not assess the congruence criteria themselves, written proofs or motions about centers other than the origin.",
+  },
+  {
+    templateId: "conic-foci",
+    facetId: "conic-sections.HSG.GPE.A.3",
+    extent: "partial",
+    rationale:
+      "Find the foci of an ellipse or hyperbola centered at the origin from its equation using c² = a² − b² or c² = a² + b², and choose the equation from the foci and the constant sum or difference of distances. Does not assess conics with translated centers, rotated axes, parabolas or the algebraic derivation.",
+  },
+  {
+    templateId: "choose-the-plot",
+    facetId: "distribution-plots.HSS.ID.A.1",
+    extent: "partial",
+    rationale:
+      "Choose the data list a dot plot, histogram or box plot displays, and choose the bar heights or five-number summary a data list produces under stated interval and quartile conventions. Does not assess drawing the plots, choosing a display for a purpose, or skewed-shape description.",
+  },
+  {
+    templateId: "similarity-by-transformation",
+    facetId: "similarity-proofs.HSG.SRT.A.2",
+    extent: "partial",
+    rationale:
+      "Choose the dilation about the origin and the rigid motions that map one grid triangle onto another, and decide similarity from whether the sides scale by one factor. Does not assess dilations about other centers, written justification or similarity of non-triangular figures.",
+  },
+  {
+    templateId: "aa-similarity",
+    facetId: "similarity-proofs.HSG.SRT.A.3",
+    extent: "partial",
+    rationale:
+      "Decide similarity by AA from two stated angles of each triangle, name the vertex correspondence, find a missing angle, and choose the matching proportion of sides. Does not assess the proof that AA follows from similarity transformations or other similarity criteria.",
+  },
 ];
