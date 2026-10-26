@@ -1,0 +1,449 @@
+/* Multi-part choice: blanks in a sentence, labeled slots, or a match table.
+   Each blank is as wide as its widest option from the first frame, menus
+   open over the page, and review marks draw inside the controls, so
+   choosing, checking and feedback never move anything. */
+.multi-part {
+  flex: none;
+  width: 100%;
+  margin: var(--space-4) 0 0;
+}
+
+/* ---------- a blank: a picker button that opens a menu ---------- */
+.multi-part-sentence {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+.multi-part-blank {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  box-sizing: border-box;
+  min-width: var(--target-size);
+  min-height: var(--target-size);
+  margin: 3px 2px;
+  padding: 0 var(--space-2) 0 var(--space-3);
+  border: 2px dashed var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: 1.2;
+  vertical-align: middle;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.multi-part-blank:hover:not(:disabled) {
+  background: var(--color-surface-raised-hover);
+  color: var(--color-on-surface-raised);
+}
+.multi-part-blank[data-state="open"] {
+  background: var(--color-surface-raised-active);
+  color: var(--color-on-surface-raised);
+}
+.multi-part-blank[data-filled] {
+  border-style: solid;
+  border-color: var(--color-primary);
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.multi-part-blank[data-filled]:hover:not(:disabled) {
+  background: var(--color-secondary-hover);
+  color: var(--color-on-secondary);
+}
+.multi-part-blank:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+/* Locked while checking and after feedback; the choice stays fully legible. */
+.multi-part-blank:disabled {
+  opacity: 1;
+  cursor: default;
+}
+.multi-part-blank[data-mark="correct"],
+.multi-part-blank[data-mark="correct"]:disabled {
+  border-style: solid;
+  border-color: var(--color-success-accent);
+  background: var(--color-success);
+  color: var(--color-on-success);
+}
+.multi-part-blank[data-mark="incorrect"],
+.multi-part-blank[data-mark="missed"],
+.multi-part-blank[data-mark="incorrect"]:disabled,
+.multi-part-blank[data-mark="missed"]:disabled {
+  border-style: solid;
+  border-color: var(--color-danger-accent);
+  background: var(--color-danger);
+  color: var(--color-on-danger);
+}
+/* Every option sits in one grid cell; the cell is as wide as the widest. */
+.multi-part-blank-stack {
+  display: inline-grid;
+  justify-items: center;
+}
+.multi-part-blank-value {
+  grid-area: 1 / 1;
+  visibility: hidden;
+}
+.multi-part-blank-value[data-shown] {
+  visibility: visible;
+}
+.multi-part-placeholder {
+  font-size: var(--text-label);
+  font-weight: 600;
+}
+.multi-part-chevron {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.multi-part-blank:disabled .multi-part-chevron {
+  visibility: hidden;
+}
+/* The review mark overlaps the corner, outside the layout. */
+.multi-part-mark {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-success-accent);
+  color: var(--color-surface-raised);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+.multi-part-blank[data-mark="incorrect"] .multi-part-mark,
+.multi-part-blank[data-mark="missed"] .multi-part-mark {
+  background: var(--color-danger-accent);
+  color: var(--color-surface-raised);
+}
+
+/* ---------- the menu of one blank's options ---------- */
+.multi-part-menu {
+  z-index: 1000;
+  box-sizing: border-box;
+  min-width: max(var(--radix-dropdown-menu-trigger-width), 168px);
+  max-width: var(--radix-dropdown-menu-content-available-width);
+  max-height: var(--radix-dropdown-menu-content-available-height);
+  overflow-y: auto;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  box-shadow: 0 8px 30px var(--color-shadow);
+}
+.multi-part-menu:focus {
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .multi-part-menu {
+    transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+    animation: multi-part-menu-in var(--motion-fast) ease-out;
+  }
+}
+@keyframes multi-part-menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+.multi-part-menu-label {
+  padding: var(--space-1) var(--space-3) var(--space-2);
+  font-size: var(--text-small);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-on-menu);
+}
+.multi-part-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  min-height: var(--target-size);
+  padding: 0 var(--space-3) 0 var(--space-2);
+  border-radius: calc(var(--radius-control) - var(--space-1));
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  font-size: 17px;
+  line-height: 1.25;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.multi-part-option[data-highlighted] {
+  outline: none;
+  background: var(--color-menu-hover);
+  color: var(--color-on-menu);
+}
+.multi-part-option[data-highlighted]:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+.multi-part-option:active {
+  background: var(--color-menu-active);
+  color: var(--color-on-menu);
+}
+.multi-part-option[data-state="checked"] {
+  font-weight: 700;
+}
+.multi-part-option-check {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  font-weight: 700;
+}
+
+/* ---------- labeled slots: one row per slot ---------- */
+.multi-part-slots {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.multi-part-slots li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 56px;
+  padding: var(--space-1) var(--space-1) var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.multi-part-slot-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--text-label);
+  line-height: 1.35;
+}
+.multi-part-slots .multi-part-blank {
+  flex: none;
+  margin: 0;
+}
+
+/* ---------- match table: one radio per row and column ---------- */
+.multi-part-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.multi-part-table th,
+.multi-part-table td {
+  padding: var(--space-1);
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+  vertical-align: middle;
+}
+/* Option columns shrink to their longest word and wrap only between words. */
+.multi-part-table thead th {
+  width: 1%;
+  min-width: var(--target-size);
+  padding-bottom: var(--space-2);
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.multi-part-table thead th:first-child {
+  width: auto;
+  text-align: start;
+}
+.multi-part-table tbody th {
+  padding: var(--space-2) var(--space-2) var(--space-2) 0;
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: start;
+}
+@media (min-width: 520px) {
+  .multi-part-table thead th:not(:first-child) {
+    min-width: 112px;
+  }
+}
+.multi-part-cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--target-size);
+  height: var(--target-size);
+  margin: 0 auto;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.multi-part-cell input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+.multi-part-cell:has(input:disabled) {
+  cursor: default;
+}
+.multi-part-cell:has(input:focus-visible) {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 0;
+}
+.multi-part-radio {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--color-border-strong);
+  border-radius: 50%;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+.multi-part-cell:hover:not(:has(input:disabled)) .multi-part-radio {
+  border-color: var(--color-primary);
+}
+.multi-part-cell[data-selected] .multi-part-radio {
+  border: 8px solid var(--color-primary);
+  background: var(--color-surface-raised);
+}
+.multi-part-cell[data-mark="correct"] .multi-part-radio,
+.multi-part-cell[data-mark="incorrect"] .multi-part-radio {
+  border-width: 2px;
+  color: var(--color-surface-raised);
+}
+.multi-part-cell[data-mark="correct"] .multi-part-radio {
+  border-color: var(--color-success-accent);
+  background: var(--color-success-accent);
+}
+.multi-part-cell[data-mark="incorrect"] .multi-part-radio {
+  border-color: var(--color-danger-accent);
+  background: var(--color-danger-accent);
+}
+/* The answer the learner missed: a ring drawn outside the radio's box. */
+.multi-part-cell[data-mark="answer"] .multi-part-radio {
+  border-color: var(--color-success-accent);
+  box-shadow: 0 0 0 3px var(--color-success-accent);
+}
+
+/* ---------- the dock: the count, Clear and Check ---------- */
+.multi-part-form {
+  display: grid;
+  gap: var(--space-2);
+}
+.multi-part-count {
+  margin: 0;
+  min-height: 20px;
+  font-size: var(--text-small);
+  line-height: 20px;
+  color: var(--color-muted-text);
+  text-align: center;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.multi-part-actions {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-2);
+}
+.multi-part-clear {
+  min-width: 84px;
+  min-height: var(--target-size);
+  font-size: var(--text-label);
+}
+.multi-part-actions .multi-part-check {
+  width: auto;
+  min-height: 52px;
+  margin-top: 0;
+  /* Completing the answer changes fill and text together, never a fade. */
+  transition: none;
+}
+
+/* Each option names its column only when the rows stack. */
+.multi-part-cell-text {
+  display: none;
+}
+/* Narrow screens: each row is a card, its statement on top and one option
+   per column below it, so long statements and column names never squeeze. */
+@media (max-width: 479px) {
+  .multi-part-table,
+  .multi-part-table tbody {
+    display: block;
+  }
+  .multi-part-table thead {
+    display: none;
+  }
+  .multi-part-table tr {
+    display: grid;
+    grid-template-columns: repeat(var(--columns, 2), minmax(0, 1fr));
+    gap: var(--space-2);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .multi-part-table tbody th,
+  .multi-part-table td {
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+  .multi-part-table tbody th {
+    grid-column: 1 / -1;
+  }
+  .multi-part-cell {
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--space-2);
+    width: auto;
+    height: auto;
+    min-height: var(--target-size);
+    padding: var(--space-1) var(--space-3) var(--space-1) var(--space-2);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-control);
+    background: var(--color-surface-raised);
+    color: var(--color-on-surface-raised);
+  }
+  .multi-part-cell[data-selected] {
+    border-color: var(--color-primary);
+    background: var(--color-secondary);
+    color: var(--color-on-secondary);
+  }
+  .multi-part-cell[data-mark="answer"] {
+    border-color: var(--color-success-accent);
+  }
+  .multi-part-radio {
+    flex: none;
+  }
+  .multi-part-cell-text {
+    display: block;
+    min-width: 0;
+    font-size: var(--text-label);
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: start;
+  }
+}

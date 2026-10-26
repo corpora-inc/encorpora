@@ -132,10 +132,12 @@ export function syntheticProbability(
     (hash(template.id) - 0.5) * 0.7 +
     (population.difficultyOffset ?? 0);
   const width = population.noise * (0.85 + 0.3 * hash(`${template.id}:width`));
-  // Selected answers can be guessed; placed points practically cannot.
+  // Single selections can be guessed; placed points and one choice for
+  // each of several blanks practically cannot.
   const guess =
     template.requiredResponseCapability &&
-    template.requiredResponseCapability !== "point-plot-v1"
+    template.requiredResponseCapability !== "point-plot-v1" &&
+    template.requiredResponseCapability !== "multi-part-choice-v1"
       ? Math.max(0.2, population.guess)
       : population.guess;
   return (

@@ -747,7 +747,7 @@ export const mcasGapLessons: Lesson[] = [
     templateIds: ["mcas-statistical-question-select"],
     objectives: [
       "Tell a statistical question from a question with a single answer.",
-      "Decide whether the answers to a question would vary from one person or item to the next.",
+      "Explain that a statistical question expects different answers, so it needs data.",
     ],
     intuition: [
       "Will the answers vary?",
@@ -773,7 +773,7 @@ export const mcasGapLessons: Lesson[] = [
     ],
     pitfalls: [
       "“How many” does not make a question statistical. Check whether the answer varies.",
-      "A question about one named person or object has one answer, even when it asks for a number.",
+      "A question about a group is not statistical if it has one fixed answer, such as the number of students in one room.",
     ],
     parentGuide:
       "Ask the learner to change “How many seats does the theater have?” into a statistical question about the theater.",

@@ -20,6 +20,10 @@ export interface Archetype {
 }
 const rows: Record<ArchetypeDomain, string> = {
   number: `
+finance.net-worth|Find an unknown asset or the net worth from assets and liabilities
+finance.fee-compare|Compare total bank fees from monthly and per-use charges
+number.number-line-position|Pick or place a whole number from its position on a number line between hundreds
+finance.supply-price|Tell how scarce or plentiful supply changes a price and why
 number.multidigit-multiply-context|Multiply multidigit whole numbers in a one-step context
 number.round-decimal|Round a decimal to a given place
 number.inverse-rounding|Choose or find a number that rounds to a given decimal value
@@ -58,6 +62,7 @@ number.inverse-round-whole|Choose the whole numbers that round to a stated ten o
 rational.negative-fraction-forms|Choose the expressions that equal a negative fraction`,
   algebra: `
 expression.verbal|Translate a verbal description into an algebraic expression or equation
+expression.parts|Name the terms, coefficients, exponents, constant term and factors of an expression
 linear.solve|Solve a one-variable linear equation, including grouped and fractional coefficients
 linear.structure|Find the value of a related linear expression from an equation by scaling or rearranging without isolating the variable
 linear.step-justification|Name the property that justifies a step in solving an equation
@@ -246,6 +251,7 @@ ratio.part-whole|Find a part of a total from a part-to-part ratio
 ratio.write-simplify|Write a ratio from quantities and simplify it
 univariate.shape|Describe the shape or symmetry of a distribution from a display`,
   geometry: `
+shape.congruent-equal-parts|Pick the congruent figures whose equal-area parts show the same unit fraction
 measure.area|Find perimeters, areas or missing lengths of polygons and composite figures
 measure.volume|Find volumes of solids or missing dimensions from a volume
 measure.surface|Find surface areas of solids
