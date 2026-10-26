@@ -88,21 +88,28 @@ try {
   browser = await chromium.launch();
   for (const width of [320, 390, 768, 1280])
     for (const theme of ["light", "dark"] as const)
-      for (const provider of ["google", "meta"] as const) {
+      for (const provider of ["google", "meta", "openai"] as const) {
         const table =
-          provider === "google"
-            ? "amp_advertising_permissions"
-            : "amp_meta_advertising_permissions";
+          provider === "openai"
+            ? "amp_openai_advertising_permissions"
+            : provider === "google"
+              ? "amp_advertising_permissions"
+              : "amp_meta_advertising_permissions";
         const endpoint =
-          provider === "google"
-            ? "/family/purchase-measurement"
-            : "/family/meta-purchase-measurement";
+          provider === "openai"
+            ? "/family/openai-purchase-measurement"
+            : provider === "google"
+              ? "/family/purchase-measurement"
+              : "/family/meta-purchase-measurement";
         const title =
-          provider === "google"
-            ? "Google purchase measurement"
-            : "Meta purchase measurement and ad delivery";
+          provider === "openai"
+            ? "OpenAI purchase measurement"
+            : provider === "google"
+              ? "Google purchase measurement"
+              : "Meta purchase measurement and ad delivery";
         await pool.query("DELETE FROM amp_advertising_permissions");
         await pool.query("DELETE FROM amp_meta_advertising_permissions");
+        await pool.query("DELETE FROM amp_openai_advertising_permissions");
         const page = await browser.newPage({
           viewport: { width, height: 900 },
           colorScheme: theme,
@@ -167,10 +174,9 @@ try {
             })
             .isDisabled(),
         );
-        await page.screenshot({
+        await card.screenshot({
           path: new URL(`off-${provider}-${width}-${theme}.png`, directory)
             .pathname,
-          fullPage: true,
         });
         let fail = true;
         await page.route("**/api/v1" + endpoint, async (route) => {
@@ -196,7 +202,7 @@ try {
           )
           .waitFor();
         assert.deepEqual(await save.boundingBox(), before);
-        await page.screenshot({
+        await card.screenshot({
           path: new URL(`error-${provider}-${width}-${theme}.png`, directory)
             .pathname,
         });
@@ -225,10 +231,9 @@ try {
           JSON.stringify(geometry),
         );
         assert.ok(geometry.controls.every((b) => b.height >= 44));
-        await page.screenshot({
+        await card.screenshot({
           path: new URL(`active-${provider}-${width}-${theme}.png`, directory)
             .pathname,
-          fullPage: true,
         });
         await other.getByRole("checkbox").click();
         await other
@@ -343,7 +348,7 @@ try {
         await page.close();
       }
   console.log(
-    "Independent Google/Meta purchase preferences: real API/database, opt-in, failure/retry, withdrawal, reload/history, account isolation, GPC, 320/390/768/1280 light/dark passed.",
+    "Independent Google/Meta/OpenAI purchase preferences: real API/database, opt-in, failure/retry, withdrawal, reload/history, account isolation, GPC, 320/390/768/1280 light/dark passed.",
   );
 } catch (error) {
   for (const context of browser?.contexts() ?? [])
