@@ -52,7 +52,7 @@ export const satPractice5 = defineLedger(
         "Find a quantity after several periods of constant growth from a starting amount in context",
       status: "covered",
       templateIds: [
-        "sat-fn-linear-notation",
+        "sat-entry-fn-linear-notation",
         "arithmetic-term",
         "linear-model-value",
       ],
@@ -169,7 +169,7 @@ export const satPractice5 = defineLedger(
       demand:
         "Find the value of x − c from a linear equation by dividing through by a common factor",
       status: "covered",
-      templateIds: ["sat-fn-related-value", "two-step-equation"],
+      templateIds: ["sat-entry-fn-related-value", "two-step-equation"],
       limitations:
         "common-factor asks for x - c from an equation whose left side is a multiple of x - c, solved by dividing through, with numeric entry; choices are plain numbers.",
     },
@@ -413,7 +413,10 @@ export const satPractice5 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand: "Evaluate a linear function at an integer input",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "substitute-linear-expression"],
+      templateIds: [
+        "sat-entry-fn-linear-notation",
+        "substitute-linear-expression",
+      ],
       limitations:
         "evaluate-integer states the rule in function notation with signed integer coefficients and asks for f(a) at an integer. Choices are plain numbers, so exact numeric entry practices the same answer.",
       labeledBy: "agent:sat-first-pass+review",
@@ -452,7 +455,7 @@ export const satPractice5 = defineLedger(
       archetypeIds: ["linear.structure"],
       demand: "Solve a one-step equation and evaluate a related expression",
       status: "covered",
-      templateIds: ["sat-fn-related-value", "one-step-equation"],
+      templateIds: ["sat-entry-fn-related-value", "one-step-equation"],
       limitations:
         "scaled-term gives a one-step equation, with an integer or fractional coefficient, and asks for a multiple of the variable.",
     },

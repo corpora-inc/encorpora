@@ -119,7 +119,7 @@ export const satPractice6 = defineLedger(
         "Find the input of a fee-plus-rate linear cost function that gives a stated total",
       status: "covered",
       templateIds: [
-        "sat-fn-linear-notation",
+        "sat-entry-fn-linear-notation",
         "two-step-word-problem",
         "linear-model-value",
       ],
@@ -136,7 +136,7 @@ export const satPractice6 = defineLedger(
       demand:
         "Find the constant term of a linear function from its value at input zero",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "recover-linear-intercept"],
+      templateIds: ["sat-entry-fn-linear-notation", "recover-linear-intercept"],
       limitations:
         "constant-term asks for the constant of f(x) = mx + c from a stated output, including the input 0, in function notation. Choices are plain numbers, so exact numeric entry practices the same answer.",
       labeledBy: "agent:sat-first-pass+review",
@@ -404,7 +404,7 @@ export const satPractice6 = defineLedger(
       demand:
         "Find the input of a proportional linear function that gives a stated output",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "dependent-variable-value"],
+      templateIds: ["sat-entry-fn-linear-notation", "dependent-variable-value"],
       limitations:
         "input-proportional solves f(x) = kx = v in function notation, with integer and fractional k. Choices are plain numbers, so exact numeric entry practices the same answer.",
       labeledBy: "agent:sat-first-pass+review",

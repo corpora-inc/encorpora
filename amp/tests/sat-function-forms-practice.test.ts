@@ -10,15 +10,15 @@ import { buildSatCoverage } from "../src/curriculum/sat-coverage";
 import { buildReleasedItemLedger } from "../src/curriculum/released-items";
 
 const skills: Record<string, string> = {
-  "sat-fn-linear-notation": "function-evaluation",
+  "sat-entry-fn-linear-notation": "function-evaluation",
   "sat-fn-line-equation-choice": "linear-models",
   "sat-fn-constraint-choice": "linear-equation-modeling",
   "sat-fn-exponential-choice": "exponential-models",
-  "sat-fn-exponential-numeric": "exponential-models",
-  "sat-fn-related-value": "linear-equations",
+  "sat-entry-fn-exponential": "exponential-models",
+  "sat-entry-fn-related-value": "linear-equations",
 };
 const variants: Record<string, string[]> = {
-  "sat-fn-linear-notation": [
+  "sat-entry-fn-linear-notation": [
     "evaluate-integer",
     "evaluate-fraction-coefficient",
     "evaluate-fraction-input",
@@ -47,8 +47,8 @@ const variants: Record<string, string[]> = {
     "small-rate-table",
     "first-round-coefficient",
   ],
-  "sat-fn-exponential-numeric": ["initial-from-later", "base-then-next-output"],
-  "sat-fn-related-value": [
+  "sat-entry-fn-exponential": ["initial-from-later", "base-then-next-output"],
+  "sat-entry-fn-related-value": [
     "scaled-term",
     "common-factor",
     "reciprocal-ratio",
@@ -313,9 +313,9 @@ test("SAT coverage and released-item ledger stay valid", () => {
 test("numeric function-form practice reaches negative and fractional answers", () => {
   const kinds = new Set<string>();
   for (const id of [
-    "sat-fn-linear-notation",
-    "sat-fn-related-value",
-    "sat-fn-exponential-numeric",
+    "sat-entry-fn-linear-notation",
+    "sat-entry-fn-related-value",
+    "sat-entry-fn-exponential",
   ])
     for (let seed = 0; seed < 400; seed++) {
       const answer = generateProblem(id, `kinds:${seed}`).answer;

@@ -194,7 +194,7 @@ export const satPractice4 = defineLedger(
       archetypeIds: ["linear.structure"],
       demand: "Given x/k = c, find the value of the reciprocal ratio k/x",
       status: "covered",
-      templateIds: ["sat-fn-related-value", "one-step-equation"],
+      templateIds: ["sat-entry-fn-related-value", "one-step-equation"],
       limitations:
         "reciprocal-ratio gives a ratio of two nonzero variables and asks for the reciprocal ratio, with numeric entry.",
     },
@@ -466,7 +466,10 @@ export const satPractice4 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand: "Evaluate a linear function in context at a given input",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "substitute-linear-expression"],
+      templateIds: [
+        "sat-entry-fn-linear-notation",
+        "substitute-linear-expression",
+      ],
       limitations:
         "evaluate-contextual states a fee- or start-plus-rate model in function notation and asks for its value at a stated input, the same task with numeric entry.",
       labeledBy: "agent:sat-first-pass+review",

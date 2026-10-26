@@ -115,7 +115,7 @@ export const satPractice9 = defineLedger(
       demand:
         "Find the input of a linear profit function that yields a target output",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "linear-model-value"],
+      templateIds: ["sat-entry-fn-linear-notation", "linear-model-value"],
       limitations:
         "input-contextual includes a profit function P(n) = mn - f and asks for the input giving a positive target profit, with numeric entry.",
       labeledBy: "agent:sat-first-pass+review",
@@ -465,7 +465,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand: "Evaluate a linear function at a fractional input",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "substitute-linear-expression"],
+      templateIds: [
+        "sat-entry-fn-linear-notation",
+        "substitute-linear-expression",
+      ],
       limitations:
         "evaluate-fraction-input evaluates f(x) = mx + b at a fractional input whose denominator divides the coefficient, with denominators up to 8.",
     },
@@ -541,7 +544,7 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["function.rule"],
       demand: "Find the constant of a linear function from its value at zero",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "recover-linear-intercept"],
+      templateIds: ["sat-entry-fn-linear-notation", "recover-linear-intercept"],
       limitations:
         "constant-term includes the input 0 in function notation and asks for the constant.",
       labeledBy: "agent:sat-first-pass+review",

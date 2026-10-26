@@ -95,7 +95,7 @@ export const satPractice10 = defineLedger(
         "Evaluate a given affine model of a quantity in context at a stated input",
       status: "covered",
       templateIds: [
-        "sat-fn-linear-notation",
+        "sat-entry-fn-linear-notation",
         "dependent-variable-value",
         "substitute-linear-expression",
       ],
@@ -166,7 +166,7 @@ export const satPractice10 = defineLedger(
       demand:
         "Find the value of a multiple of a linear expression by scaling the given equation rather than solving",
       status: "covered",
-      templateIds: ["sat-fn-related-value", "system-expression-value"],
+      templateIds: ["sat-entry-fn-related-value", "system-expression-value"],
       limitations:
         "scaled-equation scales a single two-variable equation, by an integer, negative or half multiple, to a target expression and asks for its value. Choices are plain numbers, so exact numeric entry practices the same answer.",
     },
@@ -473,7 +473,7 @@ export const satPractice10 = defineLedger(
         "Find the input of a proportional function written in function notation that gives a stated output",
       status: "covered",
       templateIds: [
-        "sat-fn-linear-notation",
+        "sat-entry-fn-linear-notation",
         "dependent-variable-value",
         "one-step-equation",
       ],
@@ -568,7 +568,7 @@ export const satPractice10 = defineLedger(
       demand:
         "Recover the base of an exponential function from one output, then evaluate at the next input",
       status: "covered",
-      templateIds: ["sat-fn-exponential-numeric", "exponential-model-value"],
+      templateIds: ["sat-entry-fn-exponential", "exponential-model-value"],
       limitations:
         "base-then-next-output gives one output of a*b^x, requires the base from a root, and asks for the output at the next input.",
     },

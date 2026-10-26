@@ -24,7 +24,7 @@ type Entry = {
 
 const entries: Entry[] = [
   {
-    id: "sat-fn-linear-notation",
+    id: "sat-entry-fn-linear-notation",
     title: "Linear functions in function notation",
     summary:
       "Read f(a) as the output for input a, then substitute to evaluate, or set f(x) equal to a value and solve for the input.",
@@ -238,7 +238,7 @@ const entries: Entry[] = [
       "Ask your learner to compute the first two values from their function and compare them with the story.",
   },
   {
-    id: "sat-fn-exponential-numeric",
+    id: "sat-entry-fn-exponential",
     title: "Enter an exponential value",
     summary:
       "Undo repeated multiplication by dividing, or find the base with a root, then use the same factor once more.",
@@ -287,7 +287,7 @@ const entries: Entry[] = [
       "Ask your learner how many times the amount doubled and how they know.",
   },
   {
-    id: "sat-fn-related-value",
+    id: "sat-entry-fn-related-value",
     title: "Enter the value of a related expression",
     summary:
       "Look for the asked expression inside the equation, as a factor, a multiple or a group, and find its value without solving for each variable.",

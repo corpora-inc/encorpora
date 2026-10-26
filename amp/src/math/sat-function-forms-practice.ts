@@ -971,7 +971,7 @@ const defs: {
 }[] = [
   {
     template: meta(
-      "sat-fn-linear-notation",
+      "sat-entry-fn-linear-notation",
       "Linear functions in function notation",
       "function-evaluation",
       0.35,
@@ -1019,7 +1019,7 @@ const defs: {
   },
   {
     template: meta(
-      "sat-fn-exponential-numeric",
+      "sat-entry-fn-exponential",
       "Enter an exponential value",
       "exponential-models",
       0.55,
@@ -1031,7 +1031,7 @@ const defs: {
   },
   {
     template: meta(
-      "sat-fn-related-value",
+      "sat-entry-fn-related-value",
       "Enter the value of a related expression",
       "linear-equations",
       0.4,
@@ -1073,3 +1073,7 @@ export function generateSatFunctionFormsProblem(
 ): GeneratedProblem {
   return satFunctionFormsCase(id, seed).problem;
 }
+
+/** True when a template's problems carry the SAT entry policy. */
+export const hasFunctionFormsEntryPolicy = (templateId: string): boolean =>
+  defs.some((d) => d.template.id === templateId && d.numeric);

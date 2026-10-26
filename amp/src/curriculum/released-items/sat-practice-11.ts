@@ -212,7 +212,7 @@ export const satPractice11 = defineLedger(
       demand:
         "Find an initial population from a later value when it doubles over a fixed multi-year period",
       status: "covered",
-      templateIds: ["sat-fn-exponential-numeric", "exponential-model-value"],
+      templateIds: ["sat-entry-fn-exponential", "exponential-model-value"],
       limitations:
         "initial-from-later divides a later count by the growth factor once per multi-year period to find the start.",
     },
@@ -443,7 +443,7 @@ export const satPractice11 = defineLedger(
       demand:
         "Find the input of a grouped linear function that gives a stated output",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "two-step-equation"],
+      templateIds: ["sat-entry-fn-linear-notation", "two-step-equation"],
       limitations:
         "input-grouped solves f(x) = p(x + c) = v for x in function notation. Choices are plain numbers, so exact numeric entry practices the same answer.",
     },

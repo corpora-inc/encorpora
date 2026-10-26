@@ -61,7 +61,7 @@ import { absoluteValueFacetMappings } from "./absolute-value-coverage";
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
   {
-    templateId: "sat-fn-linear-notation",
+    templateId: "sat-entry-fn-linear-notation",
     facetId: "function-evaluation.core",
     extent: "partial",
     rationale:
@@ -89,14 +89,14 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Choose an exponential model from a percent increase above 100 percent, a doubling or tripling period of several years, a later value that fixes the factor by a root, a table with a small percent rate, or a first value that is not at t=0. Does not assess decay with logarithms, continuous growth, graphs, or writing the model without choices.",
   },
   {
-    templateId: "sat-fn-exponential-numeric",
+    templateId: "sat-entry-fn-exponential",
     facetId: "exponential-models.core",
     extent: "partial",
     rationale:
       "Enter the starting amount of a quantity that doubles or triples every several years, or recover the base of a·b^x from one output and enter the next output. Does not assess non-integer bases, logarithms, choosing a model, or interpreting parameters.",
   },
   {
-    templateId: "sat-fn-related-value",
+    templateId: "sat-entry-fn-related-value",
     facetId: "linear-equations.core",
     extent: "partial",
     rationale:

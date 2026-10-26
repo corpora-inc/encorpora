@@ -153,7 +153,10 @@ export const satPractice7 = defineLedger(
       demand:
         "Evaluate a linear function with a fractional coefficient at an integer",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "substitute-linear-expression"],
+      templateIds: [
+        "sat-entry-fn-linear-notation",
+        "substitute-linear-expression",
+      ],
       limitations:
         "evaluate-fraction-coefficient evaluates f(x) with a fractional coefficient at an integer multiple of its denominator. Choices are plain numbers, so exact numeric entry practices the same answer.",
       labeledBy: "agent:sat-first-pass+review",
@@ -193,7 +196,10 @@ export const satPractice7 = defineLedger(
       demand:
         "Find a multiple of the variable from a linear equation with a fractional coefficient",
       status: "covered",
-      templateIds: ["sat-fn-related-value", "rational-coefficient-equation"],
+      templateIds: [
+        "sat-entry-fn-related-value",
+        "rational-coefficient-equation",
+      ],
       limitations:
         "scaled-term includes a fractional coefficient and asks for a multiple of the variable, with numeric entry.",
     },
@@ -444,7 +450,7 @@ export const satPractice7 = defineLedger(
       demand: "Evaluate a fee-plus-rate linear function in context",
       status: "covered",
       templateIds: [
-        "sat-fn-linear-notation",
+        "sat-entry-fn-linear-notation",
         "substitute-linear-expression",
         "dependent-variable-value",
       ],
@@ -473,7 +479,7 @@ export const satPractice7 = defineLedger(
       demand:
         "Find a multiple of the variable from a one-step linear equation by scaling",
       status: "covered",
-      templateIds: ["sat-fn-related-value", "one-step-equation"],
+      templateIds: ["sat-entry-fn-related-value", "one-step-equation"],
       limitations:
         "scaled-term gives a one-step equation and asks for a multiple of the variable; choices are plain numbers, so numeric entry practices the same answer.",
     },

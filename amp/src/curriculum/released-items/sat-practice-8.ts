@@ -125,7 +125,7 @@ export const satPractice8 = defineLedger(
       demand:
         "Find the constant term of a linear function from its slope and one function value",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "recover-linear-intercept"],
+      templateIds: ["sat-entry-fn-linear-notation", "recover-linear-intercept"],
       limitations:
         "constant-term gives the coefficient of x and one input-output pair in function notation and asks for the constant. Choices are plain numbers, so exact numeric entry practices the same answer.",
       labeledBy: "agent:sat-first-pass+review",
@@ -450,7 +450,7 @@ export const satPractice8 = defineLedger(
       demand:
         "Find the input of a proportional linear function that gives a stated output",
       status: "covered",
-      templateIds: ["sat-fn-linear-notation", "dependent-variable-value"],
+      templateIds: ["sat-entry-fn-linear-notation", "dependent-variable-value"],
       limitations:
         "input-proportional solves f(x) = kx = v in function notation, with numeric entry.",
       labeledBy: "agent:sat-first-pass+review",
@@ -579,7 +579,7 @@ export const satPractice8 = defineLedger(
       demand:
         "Find the value of a repeated grouped expression in a linear equation by treating it as a single unknown",
       status: "covered",
-      templateIds: ["sat-fn-related-value", "grouped-linear-equation"],
+      templateIds: ["sat-entry-fn-related-value", "grouped-linear-equation"],
       limitations:
         "grouped-unit treats a group repeated on both sides as one unknown and asks for its value; the numeric answer is the group's value, so a distractor equal to x is not needed.",
     },
