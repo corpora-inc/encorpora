@@ -383,7 +383,7 @@ export async function openaiMeasurementBatch(
       const result = await queueOpenAIPayment(
         pool,
         config,
-        paymentReferenceSchema.parse(row),
+        paymentReferenceSchema.parse({ kind: row.kind, id: row.id }),
       );
       await pool.query(
         `INSERT INTO amp_openai_purchase_scan(payment_kind,payment_ref,expires_at) VALUES($1,$2,$3)
