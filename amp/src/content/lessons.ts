@@ -73,6 +73,7 @@ import { fractionAdditionLesson } from "./fraction-addition-lesson";
 import { polynomialLessons } from "./polynomial-lessons";
 import { quadraticLessons } from "./quadratic-lessons";
 import { complexLessons } from "./complex-lessons";
+import { texasHsLessons } from "./texas-hs-lessons";
 import { k8StateNumberLessons } from "./k8-state-number-lessons";
 import { satNumericEntryLessons } from "./sat-numeric-entry-lessons";
 import { pointPlotLessons } from "./point-plot-lessons";
@@ -689,6 +690,7 @@ export const lessons: readonly Lesson[] = [
   ...rightTriangleLessons,
   ...quadraticLessons,
   ...complexLessons,
+  ...texasHsLessons,
   ...k8StateNumberLessons,
   ...satNumericEntryLessons,
   ...pointPlotLessons,

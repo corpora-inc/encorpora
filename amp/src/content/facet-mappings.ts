@@ -8,6 +8,7 @@ import { areaVolumeFacetMappings } from "./area-volume-coverage";
 import { transformationFacetMappings } from "./transformation-coverage";
 import { completingSquareFacetMappings } from "./completing-square-coverage";
 import { algebraRequirementGapFacetMappings } from "./algebra-requirement-gaps-coverage";
+import { texasHsFacetMappings } from "./texas-hs-coverage";
 import { pointPlotFacetMappings } from "./point-plot-coverage";
 import { factoringFacetMappings } from "./factoring-coverage";
 import { numberSystemFacetMappings } from "./number-system-coverage";
@@ -1275,6 +1276,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...completingSquareFacetMappings,
   ...pointPlotFacetMappings,
   ...algebraRequirementGapFacetMappings,
+  ...texasHsFacetMappings,
   ...integerExponentFacetMappings,
   ...descriptiveStatisticsFacetMappings,
   ...percentChangeFacetMappings,

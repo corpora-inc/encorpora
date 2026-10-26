@@ -63,6 +63,7 @@ import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
+import { texasHsPrinciples } from "./texas-hs-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
 import { pointPlotPrinciples } from "./point-plot-lessons";
@@ -100,6 +101,7 @@ export const principles: Record<string, string> = {
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...complexPrinciples,
+  ...texasHsPrinciples,
   ...k8StateNumberPrinciples,
   ...satNumericEntryPrinciples,
   ...pointPlotPrinciples,

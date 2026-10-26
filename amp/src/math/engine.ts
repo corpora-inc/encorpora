@@ -287,6 +287,10 @@ import {
   complexMultiplicationCase,
 } from "./complex-practice";
 import {
+  texasHsTemplates,
+  generateTexasHsProblem,
+} from "./texas-hs-practice";
+import {
   algebraRequirementGapTemplates,
   generateAlgebraRequirementGapProblem,
 } from "./algebra-requirement-gaps-practice";
@@ -471,6 +475,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...k8StateNumberTemplates,
   complexMultiplicationTemplate,
   ...algebraRequirementGapTemplates,
+  ...texasHsTemplates,
   ...advancedMathGapTemplates,
   ...satAlgebraStructureTemplates,
   ...satNumericEntryTemplates,
@@ -768,6 +773,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...nonlinearSystemTemplates,
     ...absoluteValueTemplates,
     ...algebraRequirementGapTemplates,
+    ...texasHsTemplates,
     ...pointPlotTemplates,
   ].some((t) => t.id === problem.public.templateId);
   const text = (value: string) => (preserveAlgebra ? value : polish(value));
@@ -947,6 +953,8 @@ function generateRawProblem(
     return generatePointPlotProblem(templateId, seed);
   if (templateId === complexMultiplicationTemplate.id)
     return complexMultiplicationCase(seed).problem;
+  if (texasHsTemplates.some((t) => t.id === templateId))
+    return generateTexasHsProblem(templateId, seed);
   if (algebraRequirementGapTemplates.some((t) => t.id === templateId))
     return generateAlgebraRequirementGapProblem(templateId, seed);
   if (satAlgebraStructureTemplates.some((t) => t.id === templateId))
