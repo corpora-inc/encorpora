@@ -64,6 +64,7 @@ import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
+import { texas38Principles } from "./texas-38-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
 import { algebraRequirementGapPrinciples } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapPrinciples } from "./advanced-math-gaps-lessons";
@@ -100,6 +101,7 @@ export const principles: Record<string, string> = {
   ...quadraticPrinciples,
   ...complexPrinciples,
   ...k8StateNumberPrinciples,
+  ...texas38Principles,
   ...satNumericEntryPrinciples,
   ...algebraRequirementGapPrinciples,
   ...advancedMathGapPrinciples,

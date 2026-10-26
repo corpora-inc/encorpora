@@ -278,6 +278,10 @@ import {
   generateK8StateNumberProblem,
 } from "./k8-state-number-practice";
 import {
+  texas38Templates,
+  generateTexas38Problem,
+} from "./texas-38-practice";
+import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
 } from "./complex-practice";
@@ -464,6 +468,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...quadraticTemplates,
   ...numberMeasurementGapTemplates,
   ...k8StateNumberTemplates,
+  ...texas38Templates,
   complexMultiplicationTemplate,
   ...algebraRequirementGapTemplates,
   ...advancedMathGapTemplates,
@@ -914,6 +919,8 @@ function generateRawProblem(
     return generateNumberMeasurementGapProblem(templateId, seed);
   if (k8StateNumberTemplates.some((t) => t.id === templateId))
     return generateK8StateNumberProblem(templateId, seed);
+  if (texas38Templates.some((t) => t.id === templateId))
+    return generateTexas38Problem(templateId, seed);
   if (statisticsProbabilityTemplates.some((t) => t.id === templateId))
     return generateStatisticsProbabilityProblem(templateId, seed);
   if (complexConicsTemplates.some((t) => t.id === templateId))
