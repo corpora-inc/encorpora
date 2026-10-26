@@ -6,6 +6,7 @@ from advanced_math_gaps_math_oracle import SUPPORTED as ADVANCED_MATH_GAPS, solv
 from sat_geometry_data_math_oracle import SUPPORTED as SAT_GEOMETRY_DATA, solve as solve_sat_geometry_data, review_problem as review_sat_geometry_data_problem, self_test as review_sat_geometry_data_fixtures
 from trigonometry_math_oracle import SUPPORTED as TRIGONOMETRY, solve as solve_trigonometry, review_problem as review_trigonometry_problem, self_test as review_trigonometry_fixtures
 from slope_triangle_math_oracle import SUPPORTED as SLOPE_TRIANGLE, solve as solve_slope_triangle, review_problem as review_slope_triangle_problem, self_test as review_slope_triangle_fixtures
+from point_plot_math_oracle import SUPPORTED as POINT_PLOT, solve as solve_point_plot, review_problem as review_point_plot_problem, self_test as review_point_plot_fixtures
 from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MULTISELECT, solve as solve_hierarchy_multiselect, review_problem as review_hierarchy_multiselect_problem, self_test as review_hierarchy_multiselect_fixtures
 from number_measurement_gaps_math_oracle import SUPPORTED as NUMBER_MEASUREMENT, CHOICE_TEMPLATES as NUMBER_MEASUREMENT_CHOICE, solve as solve_number_measurement, review_problem as review_number_measurement_problem, self_test as review_number_measurement_fixtures
 from remaining_gap_math_oracle import SUPPORTED as REMAINING_GAP, solve as solve_remaining_gap, review_problem as review_remaining_gap_problem, self_test as review_remaining_gap_fixtures
@@ -127,6 +128,7 @@ SUPPORTED |= SAT_GEOMETRY_DATA
 SUPPORTED |= ADVANCED_MATH_GAPS
 SUPPORTED |= COMPLEX_CONICS
 SUPPORTED |= SAT_NUMERIC_ENTRY
+SUPPORTED |= POINT_PLOT
 SUPPORTED |= ALGEBRA_REQUIREMENT_GAPS
 SUPPORTED |= GEOMETRY_FAMILIES
 SUPPORTED |= GEOMETRY_MODELING
@@ -252,6 +254,8 @@ def solve_family(public):
         return solve_successive_percent(public)
     if public["templateId"] in HIERARCHY_MULTISELECT:
         return solve_hierarchy_multiselect(public)
+    if public["templateId"] in POINT_PLOT:
+        return solve_point_plot(public)
     if public["templateId"] in GEOMETRY_FAMILIES:
         return solve_geometry_families(public)
     if public["templateId"] in COMPLEX:
@@ -779,6 +783,9 @@ def review(stream):
         elif template in HIERARCHY_MULTISELECT:
             expected = review_hierarchy_multiselect_problem(problem)
             actual = problem["answer"]
+        elif template in POINT_PLOT:
+            expected = review_point_plot_problem(problem)
+            actual = problem["answer"]
         elif template in LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | ALGEBRA_REQUIREMENT_GAPS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS | SAT_ALGEBRA_STRUCTURE | NUMBER_MEASUREMENT_CHOICE | ADVANCED_MATH_GAPS or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
@@ -857,6 +864,7 @@ def review(stream):
     review_linear_initial_value_fixtures()
     review_hierarchy_multiselect_fixtures()
     review_slope_triangle_fixtures()
+    review_point_plot_fixtures()
     review_trigonometry_fixtures()
     review_study_design_fixtures()
     review_sat_completion_fixtures()

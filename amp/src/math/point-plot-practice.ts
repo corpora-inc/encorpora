@@ -360,10 +360,13 @@ function graphLinearEquation(seed: string): GeneratedProblem {
       prompt = `Graph $${equation}$ by placing 2 points on its line.`;
       hint = `Choose whole-number values of $x$ and solve $${equation}$ for $y$. Keep a value when $y$ comes out whole; the coefficient $${signed(b)}$ of $y$ decides which $x$-values work.`;
       const substitute = ([x, y]: LatticePoint) =>
-        `Substitute $x = ${signed(x)}$: $${a}(${x}) ${b < 0 ? "-" : "+"} ${Math.abs(b)}y = ${signed(c)}$, so $${signed(b)}y = ${signed(c - a * x)}$ and $y = ${signed(y)}$. The point ${pointTex([x, y])} is on the line.`;
+        `Substitute $x = ${signed(x)}$: $${a}(${x}) ${b < 0 ? "-" : "+"} ${Math.abs(b) === 1 ? "" : Math.abs(b)}y = ${signed(c)}$, so ${Math.abs(b) === 1 ? "" : `$${signed(b)}y = ${signed(c - a * x)}$ and `}$y = ${signed(y)}$. The point ${pointTex([x, y])} is on the line.`;
+      const next = points.length >= 3 ? neighbor(points, first) : null;
+      if (!next) continue;
+      // Work left to right, so the run is positive.
+      const [left, second] = next[0] > first[0] ? [first, next] : [next, first];
+      first = left;
       lead = [substitute(first)];
-      const second = points.length >= 3 ? neighbor(points, first) : null;
-      if (!second) continue;
       return finishLine(meta, seed, {
         prompt,
         hint,
@@ -418,8 +421,13 @@ function graphLinearEquation(seed: string): GeneratedProblem {
       line = lineThrough(first, [first[0] + m.d, first[1] + m.n]);
       const [x1, y1] = first;
       const shiftY = y1 === 0 ? "y" : `y ${y1 < 0 ? "+" : "-"} ${Math.abs(y1)}`;
+      // A slope of 1 needs no brackets: y - 3 = x - 3.
       const shiftX =
-        x1 === 0 ? "x" : `(x ${x1 < 0 ? "+" : "-"} ${Math.abs(x1)})`;
+        x1 === 0
+          ? "x"
+          : m.n === 1 && m.d === 1
+            ? `x ${x1 < 0 ? "+" : "-"} ${Math.abs(x1)}`
+            : `(x ${x1 < 0 ? "+" : "-"} ${Math.abs(x1)})`;
       const slopeText =
         m.d === 1
           ? Math.abs(m.n) === 1
@@ -538,10 +546,12 @@ function motionWords(m: PlaneMotion) {
       throw new Error("Unsupported motion");
   }
 }
+const shift = (v: string, by: number) =>
+  by === 0 ? v : `${v} ${by < 0 ? "-" : "+"} ${Math.abs(by)}`;
 function motionRule(m: PlaneMotion) {
   switch (m.kind) {
     case "translate":
-      return `$(x, y) \\to (x ${m.dx < 0 ? "-" : "+"} ${Math.abs(m.dx)}, y ${m.dy < 0 ? "-" : "+"} ${Math.abs(m.dy)})$`;
+      return `$(x, y) \\to (${shift("x", m.dx)}, ${shift("y", m.dy)})$`;
     case "reflect":
       return m.axis === "x" ? "$(x, y) \\to (x, -y)$" : "$(x, y) \\to (-x, y)$";
     case "rotate":
