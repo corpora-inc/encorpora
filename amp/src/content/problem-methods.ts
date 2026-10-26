@@ -80,6 +80,7 @@ import { mcasGapMethods } from "./mcas-gap-lessons";
 import { staarGapMethods } from "./staar-gap-lessons";
 import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
+import { dataDisplayStateMethods } from "./data-display-state-lessons";
 import { vectorMatrixMethods } from "./vectors-matrices-lessons";
 import { statisticsProbabilityMethods } from "./statistics-probability-lessons";
 import { complexConicsMethods } from "./complex-conics-lessons";
@@ -131,6 +132,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...staarGapMethods,
   ...satAlgebraStructureMethods,
   ...remainingGapMethods,
+  ...dataDisplayStateMethods,
   ...vectorMatrixMethods,
   ...statisticsProbabilityMethods,
   ...complexConicsMethods,

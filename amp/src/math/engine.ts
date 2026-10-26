@@ -337,6 +337,10 @@ import {
   generateFinanceIncomeProblem,
 } from "./finance-income-practice";
 import {
+  dataDisplayStateTemplates,
+  generateDataDisplayStateProblem,
+} from "./data-display-state-practice";
+import {
   vectorMatrixTemplates,
   generateVectorMatrixProblem,
 } from "./vectors-matrices-practice";
@@ -533,6 +537,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...functionBehaviorTemplates,
   ...remainingGapTemplates,
   ...financeIncomeTemplates,
+  ...dataDisplayStateTemplates,
   ...polynomialTemplates,
   ...radicalTemplates,
   ...addSubtractTemplates,
@@ -1029,6 +1034,8 @@ function generateRawProblem(
     return generateRemainingGapProblem(templateId, seed);
   if (financeIncomeTemplates.some((t) => t.id === templateId))
     return generateFinanceIncomeProblem(templateId, seed);
+  if (dataDisplayStateTemplates.some((t) => t.id === templateId))
+    return generateDataDisplayStateProblem(templateId, seed);
   if (vectorMatrixTemplates.some((t) => t.id === templateId))
     return generateVectorMatrixProblem(templateId, seed);
   if (trigonometryTemplates.some((t) => t.id === templateId))

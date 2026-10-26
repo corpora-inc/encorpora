@@ -588,6 +588,41 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Read a whole-number or one-decimal stem-and-leaf plot through its key to find a value, least, greatest, range, median, mode, a count of values above a given value, and the difference of the greatest and second least values, by selecting from choices. Does not assess constructing a plot, keys with hundredths or fractions, plots with split stems or back-to-back plots, or the mean.",
   },
   {
+    templateId: "stem-leaf-construct",
+    facetId: "distribution-plots.core",
+    extent: "partial",
+    rationale:
+      "Choose the stem-and-leaf plot that shows a raw list of whole numbers, hundreds or one-decimal values, with every stem kept (including an empty one), ordered leaves and repeated leaves, or choose the key that matches a plot. Does not assess drawing a plot by hand, split stems, back-to-back plots or choosing the stem size.",
+  },
+  {
+    templateId: "frequency-table-build",
+    facetId: "picture-bar-graphs.core",
+    extent: "partial",
+    rationale:
+      "Count whole-number data from a list or a dot plot into a frequency table, including a value with frequency 0 and three equal-width intervals that include both end values, or give one frequency. Does not assess writing a table by hand, tally marks, fractional or decimal data, cumulative or relative frequency, or choosing the interval width.",
+  },
+  {
+    templateId: "circle-graph-read",
+    facetId: "percentages.core",
+    extent: "partial",
+    rationale:
+      "From the table of a circle graph's sectors (percent, central angle or count), find a sector's angle, percent or count, a missing sector, or how many more one sector holds than another, with percents that are multiples of 5. The sectors are shown as a table, not drawn as a circle. Does not assess drawing a circle graph, measuring angles with a protractor, or reading a drawn graph.",
+  },
+  {
+    templateId: "best-display-choice",
+    facetId: "distribution-plots.core",
+    extent: "partial",
+    rationale:
+      "Choose the display that fits a described situation among circle graph, bar graph, line graph, histogram, scatterplot, and dot plot or stem-and-leaf plot, with one defensible answer for each situation. Does not assess constructing a display, judging a misleading display, or box plots.",
+  },
+  {
+    templateId: "return-claim-check",
+    facetId: "percent-change.core",
+    extent: "partial",
+    rationale:
+      "Compute a simple yearly rate of return from starting and ending amounts over years or months, compare two investments or a monthly rate with a yearly one, and check a stated return against the computed one. Does not assess compound growth, taxes or fees, risk, or whether a promised return is lawful.",
+  },
+  {
     templateId: "budget-category-balance",
     facetId: "decimal-arithmetic.core",
     extent: "partial",

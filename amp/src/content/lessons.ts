@@ -90,6 +90,7 @@ import { mcasGapLessons } from "./mcas-gap-lessons";
 import { staarGapLessons } from "./staar-gap-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
 import { remainingGapLessons } from "./remaining-gap-lessons";
+import { dataDisplayStateLessons } from "./data-display-state-lessons";
 import { vectorMatrixLessons } from "./vectors-matrices-lessons";
 import { statisticsProbabilityLessons } from "./statistics-probability-lessons";
 import { complexConicsLessons } from "./complex-conics-lessons";
@@ -716,6 +717,7 @@ export const lessons: readonly Lesson[] = [
   ...staarGapLessons,
   ...satAlgebraStructureLessons,
   ...remainingGapLessons,
+  ...dataDisplayStateLessons,
   ...vectorMatrixLessons,
   ...statisticsProbabilityLessons,
   ...complexConicsLessons,
