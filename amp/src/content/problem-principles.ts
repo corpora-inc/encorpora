@@ -67,10 +67,12 @@ import { complexPrinciples } from "./complex-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
 import { pointPlotPrinciples } from "./point-plot-lessons";
+import { multiPartChoicePrinciples } from "./multi-part-choice-lessons";
 import { algebraRequirementGapPrinciples } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapPrinciples } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapPrinciples } from "./number-measurement-gaps-lessons";
 import { floridaGapPrinciples } from "./florida-gaps-lessons";
+import { mcasGapPrinciples } from "./mcas-gap-lessons";
 import { staarGapPrinciples } from "./staar-gap-lessons";
 import { satAlgebraStructurePrinciples } from "./sat-algebra-structure-lessons";
 import { remainingGapPrinciples } from "./remaining-gap-lessons";
@@ -108,10 +110,12 @@ export const principles: Record<string, string> = {
   ...k8StateNumberPrinciples,
   ...satNumericEntryPrinciples,
   ...pointPlotPrinciples,
+  ...multiPartChoicePrinciples,
   ...algebraRequirementGapPrinciples,
   ...advancedMathGapPrinciples,
   ...numberMeasurementGapPrinciples,
   ...floridaGapPrinciples,
+  ...mcasGapPrinciples,
   ...staarGapPrinciples,
   ...satAlgebraStructurePrinciples,
   ...remainingGapPrinciples,

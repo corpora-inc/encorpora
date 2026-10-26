@@ -60,17 +60,17 @@ All 162 mathematics items that the Massachusetts Department of Elementary and Se
 
 | Test | Items | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: | ---: |
-| Grade 3 | 20 | 4 (20%) | 16 (80%) | 0 (0%) |
-| Grade 4 | 20 | 4 (20%) | 16 (80%) | 0 (0%) |
-| Grade 5 | 20 | 10 (50%) | 8 (40%) | 2 (10%) |
-| Grade 6 | 20 | 4 (20%) | 15 (75%) | 1 (5%) |
-| Grade 7 | 20 | 4 (20%) | 14 (70%) | 2 (10%) |
-| Grade 8 | 20 | 5 (25%) | 14 (70%) | 1 (5%) |
-| Grade 10 | 42 | 3 (7.1%) | 35 (83.3%) | 4 (9.5%) |
+| Grade 3 | 20 | 5 (25%) | 15 (75%) | 0 (0%) |
+| Grade 4 | 20 | 6 (30%) | 14 (70%) | 0 (0%) |
+| Grade 5 | 20 | 11 (55%) | 9 (45%) | 0 (0%) |
+| Grade 6 | 20 | 7 (35%) | 13 (65%) | 0 (0%) |
+| Grade 7 | 20 | 8 (40%) | 12 (60%) | 0 (0%) |
+| Grade 8 | 20 | 8 (40%) | 11 (55%) | 1 (5%) |
+| Grade 10 | 42 | 8 (19%) | 33 (78.6%) | 1 (2.4%) |
 
-Of the 162 items, 103 are single-answer choice, 31 multiselect, 16 constructed response and 12 short-answer numeric. Only two multiselect items are covered (the quadrilateral hierarchy and the slope triangles, the two families with a multi-select protocol); the other 29 multiselect items have related practice only in single-choice or numeric families, or none, and the 16 constructed responses (multipart, with shown work or explanations) have no protocol.
+Of the 162 items, 103 are single-answer choice, 31 multiselect, 16 constructed response and 12 short-answer numeric. Eighteen multiselect items are covered: the quadrilateral hierarchy, the slope triangles and 16 items practiced by families that grade an exact set of true statements, equations, numbers, tables or expressions. The other 13 multiselect items need a drawn shape, cube arrangement, protractor, symmetry figure or number line, pair true and false statements of one equation, give the larger quantity of a comparison, write equations with the result first, use powers of pi or radicals, or pair word forms with numerals, and have related practice only in single-choice or numeric families. The 16 constructed responses (multipart, with shown work or explanations) have no protocol.
 
-MCAS adds no single dominant gap. Partial items concentrate on volume and area chains, rates with fractional quantities, percent of a quantity, coordinate distance, scale, systems given in slope-intercept form, scatter plots and true-or-false equation judgment. Ten items have no related practice: ratio writing in part-to-part, part-to-whole and whole-to-part form, a radius as a center-to-point distance, reasoning about whether a product exceeds a factor, placements of a negative sign in a fraction, a times-as-large statement about a parenthesized expression, a graph described as linear or nonlinear, congruence correspondence, naming the parts of an expression, rotational symmetry and the sign of a slope.
+MCAS adds no single dominant gap. Partial items concentrate on volume and area chains, rates with fractional quantities, percent of a quantity, coordinate distance, scale, systems given in slope-intercept form, scatter plots and true-or-false equation judgment. Two items have no related practice: a graph described as linear or nonlinear and increasing, and naming the parts of an expression.
 
 MCAS is not saturated even though it follows the Common Core. In ledger order, after the SAT and STAAR sources, grades 3 through 10 add 19, 13, 9, 6, 4, 9 and 12 archetypes not seen in any earlier source, and 30%, 50%, 50%, 65%, 85%, 60% and 71% of their items fall on archetypes already seen. Elementary forms introduce the most, as in STAAR. Sixteen archetypes were minted for the MCAS items; the other new ones were already listed from earlier sources but unused by an earlier ledger.
 
@@ -113,6 +113,8 @@ Implemented families include one-choice inverse rounding to tenths or hundredths
 The purposive samples identify further work: general inverse decimal intervals, congruence correspondence, multi-step geometric reasoning, large percent increases, quadratic parameter constraints and bounds on means from grouped data. Related generators should be checked for reuse before authoring additional families. The multi-select protocol supports a stated number of selections; linked multipart scoring and written reasoning require additional response support and rubrics.
 
 The point-plot protocol (`point-plot-v1`) lets learners place one to four lattice points on a coordinate grid. The server grades an exact set, an ordered list of labeled images, or any distinct points on a target line; the grading rule never reaches the client, and clients that do not declare the capability, including offline packs, are never served these items. Three families use it: plotting signed pairs, points described by distances from the axes and reflections across both axes; graphing a line from slope-intercept, standard or point-slope form, a horizontal line or a proportional relationship; and placing the ordered images of a segment or triangle under a translation, an axis reflection or a rotation of 90° or 180° about the origin. Printed workbooks show the empty grid and the solutions draw the answer. Shading inequality regions, drawing curves, dragging segments and graphing non-lattice points require further response support.
+
+The multi-part choice protocol (`multi-part-choice-v1`) answers state-test inline-choice, match-table-grid and drag-into-slots items. A problem has two to six blanks, each with two to six options, laid out as blanks in a sentence, rows of a table that share their column options, or labeled slots; drag-and-drop tiles are offered as one picker per slot, so no dragging is needed. Credit requires every blank to be correct. The attempt records which blanks were right, its first feedback line names the parts to recheck, and the problem marks each part. The answer key stays on the server, and clients that do not declare the capability, including offline packs, are never served these items. Three families use it: completing a line's slope, y-intercept and direction, or the m and b of y = mx + b, from a graph, two points or a table; marking equations and sets of pairs as proportional or not; and labeling the coefficients, terms, exponent, constant and factors of an expression. Printed workbooks show a box for each option, and the solutions tick the correct boxes. Hot spots, selecting objects in a drawing and composing an expression from shared tiles require further response support.
 
 Successive-percent practice applies two stated changes to a price, using the changed price as the second base. It includes decimal percentage rates, equal opposite changes, discount followed by tax and final-only cent rounding. [New York's Spring 2026 Grade 7 item 17](https://www.nysedregents.org/ei/math/2026/2026-released-items-math-g7.pdf#page=12), mapped to NY-7.RP.3, demonstrates the discount-then-tax demand. The family uses numeric answers and shares the existing ratios-percent exposure budget. Inverse recovery, rounding after each change and written justifications require separate assessment.
 

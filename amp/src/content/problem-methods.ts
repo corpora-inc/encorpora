@@ -67,10 +67,12 @@ import { complexMethods } from "./complex-lessons";
 import { k8StateNumberMethods } from "./k8-state-number-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
 import { pointPlotMethods } from "./point-plot-lessons";
+import { multiPartChoiceMethods } from "./multi-part-choice-lessons";
 import { algebraRequirementGapMethods } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapMethods } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapMethods } from "./number-measurement-gaps-lessons";
 import { floridaGapMethods } from "./florida-gaps-lessons";
+import { mcasGapMethods } from "./mcas-gap-lessons";
 import { staarGapMethods } from "./staar-gap-lessons";
 import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
@@ -112,10 +114,12 @@ export const methods: Record<string, ProblemMethod> = {
   ...k8StateNumberMethods,
   ...satNumericEntryMethods,
   ...pointPlotMethods,
+  ...multiPartChoiceMethods,
   ...algebraRequirementGapMethods,
   ...advancedMathGapMethods,
   ...numberMeasurementGapMethods,
   ...floridaGapMethods,
+  ...mcasGapMethods,
   ...staarGapMethods,
   ...satAlgebraStructureMethods,
   ...remainingGapMethods,

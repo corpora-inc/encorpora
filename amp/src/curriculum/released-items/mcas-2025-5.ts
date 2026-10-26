@@ -151,10 +151,10 @@ export const mcasGrade5 = defineLedger(
       archetypeIds: ["expression.numerical-structure"],
       demand:
         "Choose the statement that describes a parenthesized product without evaluating it",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["mcas-parenthesized-product-statement"],
       limitations:
-        "No family asks which times-as-large statement describes the value of a parenthesized expression; fl-expression-description-match matches an expression with its words only.",
+        "The statement that describes a product or quotient with a parenthesized sum or difference is chosen without evaluating it; writing the expression from words is not assessed.",
     },
     {
       section: "Session 2",
@@ -206,10 +206,10 @@ export const mcasGrade5 = defineLedger(
       archetypeIds: ["fractions.multiply-scaling"],
       demand:
         "Choose a product greater than a factor, find factors giving a product equal to a factor, and explain how factor size predicts product size, with two fractions to write",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["mcas-product-factor-size"],
       limitations:
-        "Constructed response in four parts. No family asks whether a product is larger or smaller than a factor from the other factor's size, and written explanations have no protocol.",
+        "mcas-product-factor-size chooses a product greater than, less than or equal to a fraction factor from the other factor's size; the four-part constructed response with factors that make a product equal a factor, written explanations and two fractions to write has no protocol.",
     },
     {
       section: "Session 2",
@@ -221,9 +221,13 @@ export const mcasGrade5 = defineLedger(
       demand:
         "Select the two prisms whose combined volume falls in a stated range",
       status: "partial",
-      templateIds: ["composite-prism-volume", "prism-volume-edges"],
+      templateIds: [
+        "composite-prism-volume",
+        "prism-volume-edges",
+        "mcas-prism-range-select",
+      ],
       limitations:
-        "composite-prism-volume and prism-volume-edges find volumes by entry; choosing two of five prisms by multiple selection from a range is not practiced.",
+        "Two of five prisms are selected by combined volume, but the edge lengths are given as numbers; the released item draws each prism as unit cubes, so reading volume from a drawn cube arrangement is not practiced.",
     },
     {
       section: "Session 2",

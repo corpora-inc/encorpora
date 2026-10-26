@@ -77,10 +77,12 @@ import { complexLessons } from "./complex-lessons";
 import { k8StateNumberLessons } from "./k8-state-number-lessons";
 import { satNumericEntryLessons } from "./sat-numeric-entry-lessons";
 import { pointPlotLessons } from "./point-plot-lessons";
+import { multiPartChoiceLessons } from "./multi-part-choice-lessons";
 import { algebraRequirementGapLessons } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapLessons } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapLessons } from "./number-measurement-gaps-lessons";
 import { floridaGapLessons } from "./florida-gaps-lessons";
+import { mcasGapLessons } from "./mcas-gap-lessons";
 import { staarGapLessons } from "./staar-gap-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
 import { remainingGapLessons } from "./remaining-gap-lessons";
@@ -697,10 +699,12 @@ export const lessons: readonly Lesson[] = [
   ...k8StateNumberLessons,
   ...satNumericEntryLessons,
   ...pointPlotLessons,
+  ...multiPartChoiceLessons,
   ...algebraRequirementGapLessons,
   ...advancedMathGapLessons,
   ...numberMeasurementGapLessons,
   ...floridaGapLessons,
+  ...mcasGapLessons,
   ...staarGapLessons,
   ...satAlgebraStructureLessons,
   ...remainingGapLessons,

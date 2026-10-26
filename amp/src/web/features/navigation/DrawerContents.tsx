@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useLearningView } from "../../lib/learning-view";
 import { useLearnerStore } from "../../learner-store";
+import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { gradeName } from "../../Home";
 import styles from "./Navigation.module.css";
 function NavIcon({
@@ -267,6 +268,7 @@ export default function DrawerContents({ close }: { close: () => void }) {
           )}
         </div>
       </nav>
+      <FeedbackPreferences />
       {view.session.data && (
         <div className={styles.signOut}>
           <button
