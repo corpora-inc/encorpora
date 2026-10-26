@@ -14,7 +14,7 @@ A representative session might move from a fraction picture to a measurement puz
 
 The learning application occupies the device viewport. Its chrome is compact and consistent. Navigation has generous padded hit areas and a visible active state without changing geometry. A marketing introduction never consumes the upper half of an active practice screen.
 
-The problem owns the central stage. The answer controls occupy a predictable dock. Checking an answer keeps the question, diagram, and primary action in stable positions. Check becomes Continue in the same place. A short celebration appears in the problem's working space, with reduced-motion behavior, and gives way to calm feedback. There is no automatic page jump and no result appended below the visible screen.
+The problem owns the central stage. The answer controls occupy a predictable dock. Checking an answer keeps the question, diagram, and primary action in stable positions. Check becomes Next in the same place. A short celebration appears in the problem's working space, with reduced-motion behavior, and gives way to calm feedback. There is no automatic page jump and no result appended below the visible screen.
 
 Practice is a continuous loop without required sets or units. Next asks the adaptive planner for the next problem. Answer feedback names the practiced skill and offers direct connections: Builds on opens prerequisite skills, and Leads to opens skills that use the current idea. Selecting a connection requests one problem; its result offers another choice, and Next returns to adaptive selection. Incorrect answers offer Builds on alongside the explanation. Only connections with implemented problems appear as practice choices.
 
