@@ -56,6 +56,11 @@ import {
   type PointPlotGrading,
   type PointPlotResponse,
 } from "./point-plot.js";
+import {
+  multiPartChoiceResponseSchema,
+  normalizeMultiPart,
+  type MultiPartChoiceResponse,
+} from "./multi-part-choice.js";
 import { stepsSchema, type Step } from "./scene/timeline.js";
 /** An input/output table, a first-quadrant graph, or both side by side.
  * A graph line is exact: y × run = rise × x + b × run. */
@@ -239,6 +244,7 @@ export const responseCapabilities = [
   "single-choice-v1",
   "multi-select-v1",
   "point-plot-v1",
+  "multi-part-choice-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -281,12 +287,13 @@ export type MultiSelectResponse = {
   options: { id: string; label: string }[];
   selectionCount: number;
 };
-export type { PointPlotResponse, PointPlotGrading };
+export type { PointPlotResponse, PointPlotGrading, MultiPartChoiceResponse };
 export type ProblemResponse =
   | { kind: "number" | "fraction"; label: string }
   | { kind: "choice"; label: string; options: { id: string; label: string }[] }
   | MultiSelectResponse
-  | PointPlotResponse;
+  | PointPlotResponse
+  | MultiPartChoiceResponse;
 /** Safe teaching content delivered beside a problem; never grading data. */
 export interface ProblemHint {
   hint: string;
@@ -914,6 +921,7 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
       "Select fewer than all options, using unique identifiers and labels",
     ),
   pointPlotResponseSchema,
+  multiPartChoiceResponseSchema,
 ]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
@@ -972,6 +980,13 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
         )
       );
     if (problem.pointGrading) return false;
+    // Every blank's correct option is a displayed option; the key is canonical.
+    if (response.kind === "multi-part-choice")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        normalizeMultiPart(response, problem.answer) === problem.answer
+      );
     if (response.kind === "multi-select")
       return (
         !problem.choiceFeedback &&

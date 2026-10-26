@@ -29,6 +29,32 @@ test(
       const snapshot = response.json<ProgressSnapshot>();
       assert.ok(Number.isFinite(Date.parse(snapshot.asOf)));
       const count = snapshot.skills.find((s) => s.skillId === "count-to-20")!;
+      const focused = await app.inject({
+        url: `/api/v1/learners/${learner.id}/progress?skill=count-to-20`,
+      });
+      assert.equal(focused.statusCode, 200);
+      assert.deepEqual(focused.json<ProgressSnapshot>().skills, [count]);
+      const absent = await app.inject({
+        url: `/api/v1/learners/${learner.id}/progress?skill=absent`,
+      });
+      assert.deepEqual(absent.json<ProgressSnapshot>().skills, []);
+      assert.equal(
+        (
+          await app.inject({
+            url: `/api/v1/learners/${learner.id}/progress?skill=count-to-20`,
+            headers: { "x-account": "foreign" },
+          })
+        ).statusCode,
+        404,
+      );
+      assert.equal(
+        (
+          await app.inject({
+            url: `/api/v1/learners/${learner.id}/progress?skill=${"a".repeat(101)}`,
+          })
+        ).statusCode,
+        400,
+      );
       assert.equal(count.attempts, 5);
       assert.equal(count.independentOccasions, 1);
       assert.equal(count.recent.length, 5);
