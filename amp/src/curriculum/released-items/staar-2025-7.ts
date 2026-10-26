@@ -70,10 +70,10 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["number.number-classification"],
       demand:
         "Choose the fix for a Venn diagram of rational numbers, integers and whole numbers where a quotient is misplaced",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["staar-number-sets"],
       limitations:
-        "No family classifies numbers as whole, integer or non-integer rational against nested sets, or repairs a set diagram.",
+        "staar-number-sets fixes a misplaced quotient among nested sets described in words by choice; the item's drawn Venn diagram is not shown.",
     },
     {
       item: {
@@ -219,10 +219,14 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["probability.direct"],
       demand:
         "Find the experimental probability of drawing one of two colors from a frequency table of 40 trials",
-      status: "partial",
-      templateIds: ["compound-event-simulation", "simple-probability"],
+      status: "covered",
+      templateIds: [
+        "staar-experiment-probability",
+        "compound-event-simulation",
+        "simple-probability",
+      ],
       limitations:
-        "simple-probability uses equally likely objects and compound-event-simulation compares experimental with theoretical probability; combining two frequencies from an experiment table is not practiced.",
+        "staar-experiment-probability finds the experimental probability of one of two colors from a frequency table of 40, 50 or 60 trials.",
     },
     {
       item: {
@@ -339,10 +343,10 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Complete the equation y = mx + b from a graphed line by choosing m and b from dropdowns",
-      status: "partial",
-      templateIds: ["graph-equation-choice"],
+      status: "covered",
+      templateIds: ["inline-linear-features", "graph-equation-choice"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. graph-equation-choice chooses a complete equation for an increasing line with positive integer slope and intercept; dropdown blanks for the slope and intercept are not practiced.",
+        "STAAR interaction: inline choice, 2 points. inline-linear-features completes m and b of y = mx + b for a graphed line through two labeled lattice points, choosing each from a dropdown blank.",
     },
     {
       item: {
@@ -368,10 +372,14 @@ export const staarGrade7 = defineLedger(
       standards: ["TEKS.7.2.3.A"],
       archetypeIds: ["number.rational-operations"],
       demand: "Subtract a unit fraction from a decimal",
-      status: "partial",
-      templateIds: ["signed-fraction-sum", "multidigit-decimal-sum"],
+      status: "covered",
+      templateIds: [
+        "staar-decimal-operations",
+        "signed-fraction-sum",
+        "multidigit-decimal-sum",
+      ],
       limitations:
-        "Related families add signed fractions or decimals; a mixed decimal and fraction in one expression is not practiced.",
+        "staar-decimal-operations subtracts a unit fraction from a decimal, including results below zero, by entry.",
     },
     {
       item: {
@@ -383,10 +391,13 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["probability.compound-event"],
       demand:
         "Find the probability of drawing a red card and then a card labeled zero with replacement",
-      status: "partial",
-      templateIds: ["compound-event-simulation"],
+      status: "covered",
+      templateIds: [
+        "staar-experiment-probability",
+        "compound-event-simulation",
+      ],
       limitations:
-        "compound-event-simulation finds compound probabilities from a sample space and compares experiments; multiplying two independent probabilities from a deck is not practiced.",
+        "staar-experiment-probability finds the probability of a red card then a labeled card with replacement, as a fraction.",
     },
     {
       item: {
@@ -490,10 +501,14 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Choose the equation for food eaten in d days from a total eaten over 130 days",
-      status: "partial",
-      templateIds: ["dependent-variable-equation", "unit-rate"],
+      status: "covered",
+      templateIds: [
+        "staar-rate-equation-choice",
+        "dependent-variable-equation",
+        "unit-rate",
+      ],
       limitations:
-        "dependent-variable-equation chooses an equation from a stated rate; deriving the unit rate from a total over many days first is not practiced.",
+        "staar-rate-equation-choice finds the unit rate from a total over a long period and chooses the equation for any number of units.",
     },
     {
       item: {
@@ -519,10 +534,14 @@ export const staarGrade7 = defineLedger(
       standards: ["TEKS.7.2.11.A"],
       archetypeIds: ["linear.solve"],
       demand: "Solve an equation whose variable terms must be combined first",
-      status: "partial",
-      templateIds: ["two-step-equation", "combine-like-coefficient"],
+      status: "covered",
+      templateIds: [
+        "staar-multistep-equations",
+        "two-step-equation",
+        "combine-like-coefficient",
+      ],
       limitations:
-        "two-step-equation solves px + q = r and combine-like-coefficient finds only the combined coefficient; solving an equation with a like-term sum on one side is not practiced.",
+        "staar-multistep-equations solves an equation with like variable terms to combine first, by entry.",
     },
     {
       item: {

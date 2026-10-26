@@ -113,10 +113,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Complete a linear function in slope-intercept form from a table by dragging the slope and intercept",
-      status: "partial",
-      templateIds: ["linear-model-equation", "unequal-step-rate"],
+      status: "covered",
+      templateIds: [
+        "inline-linear-features",
+        "linear-model-equation",
+        "unequal-step-rate",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. Related families choose a model equation or find a rate from unequal steps; assembling slope and intercept by drag and drop has no response protocol.",
+        "STAAR interaction: drag and drop, 2 points. inline-linear-features completes the slope and intercept of y = mx + b from a table of evenly spaced values; the drag-and-drop tiles are offered as one picker per blank.",
     },
     {
       item: {
@@ -143,10 +147,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Write a line in slope-intercept form from a fractional slope and one point",
-      status: "partial",
-      templateIds: ["linear-model-equation", "recover-linear-intercept"],
+      status: "covered",
+      templateIds: [
+        "staar-line-from-points",
+        "linear-model-equation",
+        "recover-linear-intercept",
+      ],
       limitations:
-        "Related families choose a model equation or recover an intercept from a rate; solving for the intercept given a negative fractional slope and a point is not practiced.",
+        "staar-line-from-points chooses the slope-intercept equation from a fractional slope, positive or negative, and one point.",
     },
     {
       item: {
@@ -217,10 +225,10 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Find the rate of change of y from a linear equation in standard form",
-      status: "partial",
-      templateIds: ["formula-isolate", "line-slope"],
+      status: "covered",
+      templateIds: ["staar-line-from-points", "formula-isolate", "line-slope"],
       limitations:
-        "formula-isolate rewrites a formula for y and line-slope finds slope from two points; reading the slope of a standard-form equation is not practiced.",
+        "staar-line-from-points chooses the rate of change of y from an equation in standard form.",
     },
     {
       item: {
@@ -456,10 +464,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["linear.solve"],
       demand:
         "Solve an equation with fractional coefficients and a parenthesized term on one side",
-      status: "partial",
-      templateIds: ["rational-coefficient-equation", "grouped-linear-equation"],
+      status: "covered",
+      templateIds: [
+        "staar-multistep-equations",
+        "rational-coefficient-equation",
+        "grouped-linear-equation",
+      ],
       limitations:
-        "Related families handle fractional coefficients or grouped terms separately; both with variables on both sides are not practiced.",
+        "staar-multistep-equations solves an equation with fractional coefficients and a parenthesized term with variables on both sides, by entry.",
     },
     {
       item: {
@@ -516,9 +528,13 @@ export const staarAlgebra1 = defineLedger(
       demand:
         "Graph an exponential function with a base of one third and an asymptote",
       status: "partial",
-      templateIds: ["function-graph-features", "exponential-model-value"],
+      templateIds: [
+        "graph-exponential-points",
+        "function-graph-features",
+        "exponential-model-value",
+      ],
       limitations:
-        "STAAR interaction: graphing, 1 point. Related families read features of a given exponential graph or evaluate the model; drawing the curve has no response protocol.",
+        "STAAR interaction: graphing, 1 point. graph-exponential-points places three lattice points of y = a times b to the x for bases 2, 3, one half and one third, graded as exact solutions of the equation; base one third gives only a few whole-number outputs, and the asymptote and the drawn curve are not part of the response.",
     },
     {
       item: {

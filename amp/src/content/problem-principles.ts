@@ -1,5 +1,6 @@
 import { satCompletionPrinciples } from "./sat-completion-lessons";
 import { satGeometryDataPrinciples } from "./sat-geometry-data-lessons";
+import { satGeometryAdvancedPrinciples } from "./sat-geometry-advanced-lessons";
 import { congruencePrinciples } from "./congruence-lessons";
 import { assessmentGapPrinciples } from "./assessment-gap-lessons";
 import { radicalEquationPrinciples } from "./radical-equation-lessons";
@@ -66,10 +67,14 @@ import { complexPrinciples } from "./complex-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
 import { pointPlotPrinciples } from "./point-plot-lessons";
+import { multiPartChoicePrinciples } from "./multi-part-choice-lessons";
 import { algebraRequirementGapPrinciples } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapPrinciples } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapPrinciples } from "./number-measurement-gaps-lessons";
 import { floridaGapPrinciples } from "./florida-gaps-lessons";
+import { regentsGapPrinciples } from "./regents-gap-lessons";
+import { mcasGapPrinciples } from "./mcas-gap-lessons";
+import { staarGapPrinciples } from "./staar-gap-lessons";
 import { satAlgebraStructurePrinciples } from "./sat-algebra-structure-lessons";
 import { remainingGapPrinciples } from "./remaining-gap-lessons";
 import { vectorMatrixPrinciples } from "./vectors-matrices-lessons";
@@ -77,6 +82,7 @@ import { statisticsProbabilityPrinciples } from "./statistics-probability-lesson
 import { complexConicsPrinciples } from "./complex-conics-lessons";
 import { trigonometryPrinciples } from "./trigonometry-lessons";
 import { geometryModelingPrinciples } from "./geometry-modeling-lessons";
+import { geometryRequirementGapPrinciples } from "./geometry-requirement-gaps-lessons";
 import { functionBehaviorPrinciples } from "./function-behavior-lessons";
 import { absoluteValuePrinciples } from "./absolute-value-lessons";
 /** The mathematics each problem type rests on, named precisely and stated in
@@ -85,6 +91,7 @@ export const principles: Record<string, string> = {
   ...assessmentGapPrinciples,
   ...satCompletionPrinciples,
   ...satGeometryDataPrinciples,
+  ...satGeometryAdvancedPrinciples,
   ...factoringPrinciples,
   ...volumeCoordinatePrinciples,
   ...shapePrinciples,
@@ -104,10 +111,14 @@ export const principles: Record<string, string> = {
   ...k8StateNumberPrinciples,
   ...satNumericEntryPrinciples,
   ...pointPlotPrinciples,
+  ...multiPartChoicePrinciples,
   ...algebraRequirementGapPrinciples,
   ...advancedMathGapPrinciples,
   ...numberMeasurementGapPrinciples,
   ...floridaGapPrinciples,
+  ...regentsGapPrinciples,
+  ...mcasGapPrinciples,
+  ...staarGapPrinciples,
   ...satAlgebraStructurePrinciples,
   ...remainingGapPrinciples,
   ...vectorMatrixPrinciples,
@@ -115,6 +126,7 @@ export const principles: Record<string, string> = {
   ...complexConicsPrinciples,
   ...trigonometryPrinciples,
   ...geometryModelingPrinciples,
+  ...geometryRequirementGapPrinciples,
   ...functionBehaviorPrinciples,
   ...absoluteValuePrinciples,
   ...polynomialPrinciples,
