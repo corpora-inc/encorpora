@@ -470,6 +470,48 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Choose the equation or inequality that compares two situations with a starting amount and a rate each, including a decreasing quantity and the less-than comparison. Does not assess solving it, graphing it or writing it in words.",
   },
   {
+    templateId: "sat-entry-fn-linear-notation",
+    facetId: "function-evaluation.core",
+    extent: "partial",
+    rationale:
+      "Evaluate a linear function written in function notation at an integer, fractional or contextual input, find the input for a stated output (proportional, fee-plus-rate, profit and grouped forms), and find the constant term from one input-output pair, entering an integer, fraction or decimal. Does not assess composition, nonlinear functions, writing a rule from a table or graph, or interpreting f(a) in words.",
+  },
+  {
+    templateId: "sat-fn-line-equation-choice",
+    facetId: "linear-models.core",
+    extent: "partial",
+    rationale:
+      "Choose the slope-intercept equation of a line from a fractional or negative slope with the y-intercept point or another point, or from a constant rate and one later value in context. Does not assess reading the intercept from a graph, point-slope or standard form, parallel or perpendicular lines, or entering an equation.",
+  },
+  {
+    templateId: "sat-fn-constraint-choice",
+    facetId: "linear-equation-modeling.core",
+    extent: "partial",
+    rationale:
+      "Choose the two-variable linear equation for a total built from two prices, speeds or point values, and the equation of a full load from its two extreme cases. Does not assess solving the equation, interpreting a coefficient, systems, or writing the equation without choices.",
+  },
+  {
+    templateId: "sat-fn-exponential-choice",
+    facetId: "exponential-models.core",
+    extent: "partial",
+    rationale:
+      "Choose an exponential model from a percent increase above 100 percent, a doubling or tripling period of several years, a later value that fixes the factor by a root, a table with a small percent rate, or a first value that is not at t=0. Does not assess decay with logarithms, continuous growth, graphs, or writing the model without choices.",
+  },
+  {
+    templateId: "sat-entry-fn-exponential",
+    facetId: "exponential-models.core",
+    extent: "partial",
+    rationale:
+      "Enter the starting amount of a quantity that doubles or triples every several years, or recover the base of a·b^x from one output and enter the next output. Does not assess non-integer bases, logarithms, choosing a model, or interpreting parameters.",
+  },
+  {
+    templateId: "sat-entry-fn-related-value",
+    facetId: "linear-equations.core",
+    extent: "partial",
+    rationale:
+      "Enter the value of an expression related to a linear equation without solving for each variable: a multiple of x, a common-factor expression, a reciprocal ratio, a scaled left side or a repeated grouped expression. Does not assess solving a full system, quadratic or nonlinear relations, or choosing among values.",
+  },
+  {
     templateId: "divisibility-rule-check",
     facetId: "factors-multiples.core",
     extent: "partial",

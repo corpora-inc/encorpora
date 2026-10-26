@@ -304,6 +304,10 @@ import {
   generateSatAlgebraStructureProblem,
 } from "./sat-algebra-structure-practice";
 import {
+  satFunctionFormsTemplates,
+  generateSatFunctionFormsProblem,
+} from "./sat-function-forms-practice";
+import {
   satNumericEntryTemplates,
   generateSatNumericEntryProblem,
 } from "./sat-numeric-entry-practice";
@@ -538,6 +542,7 @@ export const templates: readonly TemplateMetadata[] = [
   ...advancedMathGapTemplates,
   ...satAlgebraStructureTemplates,
   ...satNumericEntryTemplates,
+  ...satFunctionFormsTemplates,
   ...pointPlotTemplates,
   ...multiPartChoiceTemplates,
   ...vectorMatrixTemplates,
@@ -1031,6 +1036,8 @@ function generateRawProblem(
     return generateFunctionBehaviorProblem(templateId, seed);
   if (advancedMathGapTemplates.some((t) => t.id === templateId))
     return generateAdvancedMathGapProblem(templateId, seed);
+  if (satFunctionFormsTemplates.some((t) => t.id === templateId))
+    return generateSatFunctionFormsProblem(templateId, seed);
   if (satNumericEntryTemplates.some((t) => t.id === templateId))
     return generateSatNumericEntryProblem(templateId, seed);
   if (hsStateGapTemplates.some((t) => t.id === templateId))

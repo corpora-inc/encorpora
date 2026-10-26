@@ -14,6 +14,7 @@ import {
 } from "../math/contracts.js";
 import { generateProblem, templates } from "../math/engine.js";
 import { hasEntryPolicy } from "../math/sat-numeric-entry-practice.js";
+import { hasFunctionFormsEntryPolicy } from "../math/sat-function-forms-practice.js";
 import { skills } from "../curriculum/catalog.js";
 import { PgTransaction, ApiError } from "../server/repository.js";
 import {
@@ -40,7 +41,10 @@ export function supportedOfflineTemplates(
   // Offline grader v1 is frozen and grades exactly, so templates whose online
   // grading carries an entry policy (SAT decimal entry) are never packed offline.
   return available.filter(
-    (t) => clientCanDraw(t, input) && !hasEntryPolicy(t.id),
+    (t) =>
+      clientCanDraw(t, input) &&
+      !hasEntryPolicy(t.id) &&
+      !hasFunctionFormsEntryPolicy(t.id),
   );
 }
 export function uniquePoolChoices(

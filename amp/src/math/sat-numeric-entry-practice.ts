@@ -7,7 +7,7 @@ import { assemble, random } from "./distribution-practice";
  * accepts every equivalent form (0.5, .5, 1/2, 2/4). No choice list is shown.
  */
 type R = (lo: number, hi: number) => number;
-type Q = [number, number];
+export type Q = [number, number];
 type Case = {
   variant: string;
   prompt: string;
@@ -18,8 +18,9 @@ type Case = {
   data: Record<string, number | string>;
 };
 
-const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : Math.abs(a));
-const q = (n: number, d = 1): Q => {
+export const gcd = (a: number, b: number): number =>
+  b ? gcd(b, a % b) : Math.abs(a);
+export const q = (n: number, d = 1): Q => {
   if (!d) throw new Error("Zero denominator");
   if (d < 0) {
     n = -n;
@@ -28,8 +29,8 @@ const q = (n: number, d = 1): Q => {
   const g = gcd(n, d) || 1;
   return [n / g, d / g];
 };
-const qs = ([n, d]: Q) => (d === 1 ? `${n}` : `${n}/${d}`);
-const tex = ([n, d]: Q) =>
+export const qs = ([n, d]: Q) => (d === 1 ? `${n}` : `${n}/${d}`);
+export const tex = ([n, d]: Q) =>
   d === 1 ? `${n}` : `${n < 0 ? "-" : ""}\\frac{${Math.abs(n)}}{${d}}`;
 const par = (x: Q) => (x[0] < 0 ? `(${tex(x)})` : tex(x));
 const terminating = ([, d]: Q) => {
@@ -40,7 +41,7 @@ const terminating = ([, d]: Q) => {
 };
 const nzr = (r: R) => (m: number) => r(1, m) * (r(0, 1) ? 1 : -1);
 
-function lin(terms: [number, string][]): string {
+export function lin(terms: [number, string][]): string {
   let out = "";
   for (const [c, s] of terms) {
     if (!c) continue;

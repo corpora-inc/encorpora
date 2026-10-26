@@ -124,10 +124,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Find the constant term of a linear function from its slope and one function value",
-      status: "partial",
-      templateIds: ["recover-linear-intercept"],
+      status: "covered",
+      templateIds: ["sat-entry-fn-linear-notation", "recover-linear-intercept"],
       limitations:
-        "Samples give a rate and one point and ask for the output at zero, which is the constant term; item uses function notation and plain-number choices. Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "constant-term gives the coefficient of x and one input-output pair in function notation and asks for the constant. Choices are plain numbers, so exact numeric entry practices the same answer.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {
@@ -449,10 +449,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand:
         "Find the input of a proportional linear function that gives a stated output",
-      status: "partial",
-      templateIds: ["dependent-variable-value"],
+      status: "covered",
+      templateIds: ["sat-entry-fn-linear-notation", "dependent-variable-value"],
       limitations:
-        "Samples give y = kx style equations and ask for the input producing a stated output, numeric entry. Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "input-proportional solves f(x) = kx = v in function notation, with numeric entry.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {
@@ -488,10 +488,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["line.constraint"],
       demand:
         "Choose the two-variable linear equation for a total built from two item sizes",
-      status: "partial",
-      templateIds: ["system-model-value"],
+      status: "covered",
+      templateIds: ["sat-fn-constraint-choice", "system-model-value"],
       limitations:
-        "system-model-value writes similar ax + by = c equations but is numeric and solves a full system; no template asks to choose the single constraint equation.",
+        "sales and points choose ax + by = c for a total from two prices or values, with swapped, reciprocal and product distractors.",
     },
     {
       section: "Math module 2",
@@ -578,10 +578,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["linear.structure"],
       demand:
         "Find the value of a repeated grouped expression in a linear equation by treating it as a single unknown",
-      status: "partial",
-      templateIds: ["grouped-linear-equation"],
+      status: "covered",
+      templateIds: ["sat-entry-fn-related-value", "grouped-linear-equation"],
       limitations:
-        "grouped-linear-equation solves for x in a single grouped equation; no template asks for the value of the grouped expression itself or offers the x-value as a distractor.",
+        "grouped-unit treats a group repeated on both sides as one unknown and asks for its value; the numeric answer is the group's value, so a distractor equal to x is not needed.",
     },
     {
       section: "Math module 2",

@@ -71,6 +71,7 @@ import { texasHsMethods } from "./texas-hs-lessons";
 import { k8StateNumberMethods } from "./k8-state-number-lessons";
 import { texas38Methods } from "./texas-38-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
+import { satFunctionFormsMethods } from "./sat-function-forms-lessons";
 import { pointPlotMethods } from "./point-plot-lessons";
 import { multiPartChoiceMethods } from "./multi-part-choice-lessons";
 import { algebraRequirementGapMethods } from "./algebra-requirement-gaps-lessons";
@@ -126,6 +127,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...k8StateNumberMethods,
   ...texas38Methods,
   ...satNumericEntryMethods,
+  ...satFunctionFormsMethods,
   ...pointPlotMethods,
   ...multiPartChoiceMethods,
   ...algebraRequirementGapMethods,

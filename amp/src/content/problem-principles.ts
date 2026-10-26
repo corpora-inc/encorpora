@@ -71,6 +71,7 @@ import { texasHsPrinciples } from "./texas-hs-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
 import { texas38Principles } from "./texas-38-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
+import { satFunctionFormsPrinciples } from "./sat-function-forms-lessons";
 import { pointPlotPrinciples } from "./point-plot-lessons";
 import { multiPartChoicePrinciples } from "./multi-part-choice-lessons";
 import { algebraRequirementGapPrinciples } from "./algebra-requirement-gaps-lessons";
@@ -122,6 +123,7 @@ export const principles: Record<string, string> = {
   ...k8StateNumberPrinciples,
   ...texas38Principles,
   ...satNumericEntryPrinciples,
+  ...satFunctionFormsPrinciples,
   ...pointPlotPrinciples,
   ...multiPartChoicePrinciples,
   ...algebraRequirementGapPrinciples,
