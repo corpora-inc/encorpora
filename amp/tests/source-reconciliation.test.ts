@@ -35,7 +35,7 @@ test("Texas identifier inventory preserves unreviewed components and reuses exis
   assert.equal(slice.componentReconciliationComplete, false);
   assert.equal(slice.statewideComplete, false);
   assert.equal(slice.frequencyEstimate, false);
-  assert.equal(slice.summary.partiallyReconciled, 27);
+  assert.equal(slice.summary.partiallyReconciled, 28);
   assert.equal(slice.summary.unreviewed, 14);
   assert.equal(slice.summary.missingFamilies, 5);
   assert.equal(
@@ -270,8 +270,8 @@ test("Texas K-8 and high-school inventories report honest aggregate counts", () 
   });
   assert.deepEqual(band(texasGrades35Inventories), {
     requirements: 140,
-    relatedPractice: 93,
-    missingOnly: 18,
+    relatedPractice: 94,
+    missingOnly: 17,
     unreviewed: 29,
   });
   assert.deepEqual(band(texasGrades68Inventories), {

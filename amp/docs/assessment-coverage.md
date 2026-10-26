@@ -165,7 +165,7 @@ Each inventory validates its requirement identifiers against an outline of the o
 | 2 | 44 | 30 | 11 | 3 | 2 |
 | 3 | 47 | 32 | 7 | 8 | 6 |
 | 4 | 47 | 34 | 6 | 7 | 5 |
-| 5 | 46 | 27 | 5 | 14 | 0 |
+| 5 | 46 | 28 | 4 | 14 | 0 |
 | 6 | 53 | 31 | 14 | 8 | 7 |
 | 7 | 44 | 35 | 4 | 5 | 3 |
 | 8 | 46 | 36 | 4 | 6 | 5 |
@@ -173,7 +173,7 @@ Each inventory validates its requirement identifiers against an outline of the o
 | Algebra II | 49 | 41 | 6 | 2 | 1 |
 | Geometry | 43 | 34 | 6 | 3 | 2 |
 | Precalculus | 51 | 41 | 8 | 2 | 1 |
-| Total | 594 | 432 | 93 | 69 | 40 |
+| Total | 594 | 433 | 92 | 69 | 40 |
 
 Every related-practice link is partial. Its limitations say what the linked templates establish, such as a numeric response without a learner-built model, a range narrower than the standard, or a skill authored for another grade; one generated sample of each linked template was reviewed, and a test regenerates two problems from each. A missing-family record names a concrete absent demand and the closest skill; sixteen more requirements have related practice and also name a missing demand. Open-ended demands (explain, describe, create, draw, list) are unreviewed because tap-response items do not assess them. Spring 2025 STAAR rationale items 14 and 21 establish occurrence of two Grade 5 tasks, not their frequency.
 
