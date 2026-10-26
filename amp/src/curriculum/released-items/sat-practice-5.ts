@@ -50,10 +50,14 @@ export const satPractice5 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand:
         "Find a quantity after several periods of constant growth from a starting amount in context",
-      status: "partial",
-      templateIds: ["arithmetic-term", "linear-model-value"],
+      status: "covered",
+      templateIds: [
+        "sat-fn-linear-notation",
+        "arithmetic-term",
+        "linear-model-value",
+      ],
       limitations:
-        "arithmetic-term evaluates an abstract sequence with a first-term index offset; linear-model-value solves for the input. No forward evaluation of a contextual start-plus-rate model.",
+        "growth-words gives a starting amount and a constant gain per period and asks for the amount after several periods in a context. Choices are plain numbers, so exact numeric entry practices the same answer.",
     },
     {
       section: "Math module 1",
@@ -164,10 +168,10 @@ export const satPractice5 = defineLedger(
       archetypeIds: ["linear.structure"],
       demand:
         "Find the value of x − c from a linear equation by dividing through by a common factor",
-      status: "partial",
-      templateIds: ["two-step-equation"],
+      status: "covered",
+      templateIds: ["sat-fn-related-value", "two-step-equation"],
       limitations:
-        "two-step-equation solves for the variable only; no template asks a related expression's value or rewards the scaling shortcut.",
+        "common-factor asks for x - c from an equation whose left side is a multiple of x - c, solved by dividing through, with numeric entry; choices are plain numbers.",
     },
     {
       section: "Math module 1",
@@ -408,10 +412,10 @@ export const satPractice5 = defineLedger(
       standards: ["sat.alg.linear-functions"],
       archetypeIds: ["function.input-output"],
       demand: "Evaluate a linear function at an integer input",
-      status: "partial",
-      templateIds: ["substitute-linear-expression"],
+      status: "covered",
+      templateIds: ["sat-fn-linear-notation", "substitute-linear-expression"],
       limitations:
-        "Checked samples: numeric evaluation of a signed linear rule (choices are plain numbers). Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "evaluate-integer states the rule in function notation with signed integer coefficients and asks for f(a) at an integer. Choices are plain numbers, so exact numeric entry practices the same answer.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {
@@ -447,10 +451,10 @@ export const satPractice5 = defineLedger(
       standards: ["sat.alg.linear-equations-one-variable"],
       archetypeIds: ["linear.structure"],
       demand: "Solve a one-step equation and evaluate a related expression",
-      status: "partial",
-      templateIds: ["one-step-equation"],
+      status: "covered",
+      templateIds: ["sat-fn-related-value", "one-step-equation"],
       limitations:
-        "one-step-equation solves for the variable only; no template asks a related expression's value.",
+        "scaled-term gives a one-step equation, with an integer or fractional coefficient, and asks for a multiple of the variable.",
     },
     {
       section: "Math module 2",
@@ -476,10 +480,10 @@ export const satPractice5 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Choose the slope-intercept equation of a line from its slope and its y-intercept point",
-      status: "partial",
-      templateIds: ["linear-model-equation"],
+      status: "covered",
+      templateIds: ["sat-fn-line-equation-choice", "linear-model-equation"],
       limitations:
-        "linear-model-equation builds y = mx + b from a starting amount and rate in a context; it never states 'slope' and a point (0, b) in the plane.",
+        "slope-intercept-point gives the slope and the point (0, b) and offers swapped, sign-reversed and inverted-slope distractors.",
     },
     {
       section: "Math module 2",

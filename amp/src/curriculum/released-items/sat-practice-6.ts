@@ -117,10 +117,14 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand:
         "Find the input of a fee-plus-rate linear cost function that gives a stated total",
-      status: "partial",
-      templateIds: ["two-step-word-problem", "linear-model-value"],
+      status: "covered",
+      templateIds: [
+        "sat-fn-linear-notation",
+        "two-step-word-problem",
+        "linear-model-value",
+      ],
       limitations:
-        "Templates have the learner write and solve fixed-fee-plus-rate = total; item supplies the function rule, a strict sub-case. Numeric entry. Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "input-contextual states C(h) = fee + rate*h and asks for the input giving a stated total, with numeric entry.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {
@@ -131,10 +135,10 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Find the constant term of a linear function from its value at input zero",
-      status: "partial",
-      templateIds: ["recover-linear-intercept"],
+      status: "covered",
+      templateIds: ["sat-fn-linear-notation", "recover-linear-intercept"],
       limitations:
-        "Template recovers the zero-input output from a rate and a point; item gives the point at zero directly. Choices are plain numbers. Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "constant-term asks for the constant of f(x) = mx + c from a stated output, including the input 0, in function notation. Choices are plain numbers, so exact numeric entry practices the same answer.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {
@@ -236,10 +240,14 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Write a linear equation from a constant rate and one point that is not the intercept",
-      status: "partial",
-      templateIds: ["recover-linear-intercept", "linear-model-equation"],
+      status: "covered",
+      templateIds: [
+        "sat-fn-line-equation-choice",
+        "recover-linear-intercept",
+        "linear-model-equation",
+      ],
       limitations:
-        "recover-linear-intercept computes the intercept numerically only; linear-model-equation chooses an equation but states the starting amount directly. No template chooses the equation from a rate plus a non-intercept point.",
+        "rate-point gives a constant rate in a context and the value after several units and asks for the equation by choice, with start-level and sign distractors.",
     },
     {
       section: "Math module 1",
@@ -356,10 +364,10 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["exponential.context"],
       demand:
         "Choose the exponential model for an increase of more than 100% per period from a starting amount",
-      status: "partial",
-      templateIds: ["exponential-model-rule"],
+      status: "covered",
+      templateIds: ["sat-fn-exponential-choice", "exponential-model-rule"],
       limitations:
-        "Same build-the-rule task, but samples state growth as doubling/tripling or small percent decay; none converts a percent increase above 100% into the factor 1 + p/100 (the 1.9 vs 2.9 trap).",
+        "percent-over-100 converts a percent increase above 100% into the factor 1 + p/100 and offers the p/100 and percent-as-whole-number traps.",
     },
     {
       section: "Math module 1",
@@ -395,10 +403,10 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand:
         "Find the input of a proportional linear function that gives a stated output",
-      status: "partial",
-      templateIds: ["dependent-variable-value"],
+      status: "covered",
+      templateIds: ["sat-fn-linear-notation", "dependent-variable-value"],
       limitations:
-        "Sample solves c = 8n for n given c; item uses function notation; choices are plain numbers. Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "input-proportional solves f(x) = kx = v in function notation, with integer and fractional k. Choices are plain numbers, so exact numeric entry practices the same answer.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {

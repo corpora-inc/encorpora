@@ -63,10 +63,14 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Choose a linear function's rule from its slope and its y-intercept point",
-      status: "partial",
-      templateIds: ["linear-model-equation", "graph-equation-choice"],
+      status: "covered",
+      templateIds: [
+        "sat-fn-line-equation-choice",
+        "linear-model-equation",
+        "graph-equation-choice",
+      ],
       limitations:
-        "Rules are chosen from contexts, tables or graphs; no context-free slope-and-point description.",
+        "slope-intercept-point includes a function-notation version, f(x) = mx + b from the slope and the point (0, b).",
     },
     {
       section: "Math module 1",
@@ -129,10 +133,14 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["line.constraint"],
       demand:
         "Choose the two-variable linear equation for a total of points earned at two rates",
-      status: "partial",
-      templateIds: ["system-model-value", "two-step-equation-model"],
+      status: "covered",
+      templateIds: [
+        "sat-fn-constraint-choice",
+        "system-model-value",
+        "two-step-equation-model",
+      ],
       limitations:
-        "Two-variable totals are written inside systems and solved numerically; no choosing the single two-variable equation.",
+        "points chooses ax + by = c for a total score from two point values, with swapped, reciprocal and product distractors.",
     },
     {
       section: "Math module 1",
@@ -203,10 +211,10 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["exponential.context"],
       demand:
         "Find an initial population from a later value when it doubles over a fixed multi-year period",
-      status: "partial",
-      templateIds: ["exponential-model-value"],
+      status: "covered",
+      templateIds: ["sat-fn-exponential-numeric", "exponential-model-value"],
       limitations:
-        "Works forward from a start; never back to the initial value across several doubling periods.",
+        "initial-from-later divides a later count by the growth factor once per multi-year period to find the start.",
     },
     {
       section: "Math module 1",
@@ -434,10 +442,10 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand:
         "Find the input of a grouped linear function that gives a stated output",
-      status: "partial",
-      templateIds: ["two-step-equation"],
+      status: "covered",
+      templateIds: ["sat-fn-linear-notation", "two-step-equation"],
       limitations:
-        "Solves p(x + q) = r but never from function notation f(x) = value.",
+        "input-grouped solves f(x) = p(x + c) = v for x in function notation. Choices are plain numbers, so exact numeric entry practices the same answer.",
     },
     {
       section: "Math module 2",
@@ -510,10 +518,10 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["exponential.context"],
       demand:
         "Choose the exponential model for counts that halve each round when the coefficient is not the first-round value",
-      status: "partial",
-      templateIds: ["exponential-model-rule"],
+      status: "covered",
+      templateIds: ["sat-fn-exponential-choice", "exponential-model-rule"],
       limitations:
-        "Stories state the starting amount as the coefficient; the item's modeled quantity differs from the stated starting count.",
+        "first-round-coefficient models a count that is multiplied by a fraction each round when round 1 is the first value, so the exponent is x - 1.",
     },
     {
       section: "Math module 2",

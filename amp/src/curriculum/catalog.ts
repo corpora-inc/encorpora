@@ -1472,12 +1472,14 @@ for (const [skillId, suffix, description] of [
       status: "implemented",
     });
 
-skills.find((skill) => skill.id === "slope")!.facets.push({
-  id: "slope.similar-triangle-reasoning",
-  description:
-    "Relate matching angles and proportional side lengths of right triangles on one line to equal slopes, distinguishing similarity from congruence.",
-  status: "implemented",
-});
+skills
+  .find((skill) => skill.id === "slope")!
+  .facets.push({
+    id: "slope.similar-triangle-reasoning",
+    description:
+      "Relate matching angles and proportional side lengths of right triangles on one line to equal slopes, distinguishing similarity from congruence.",
+    status: "implemented",
+  });
 
 // High-school coordinate geometry and circles (G-GPE, G-C).
 for (const [skillId, suffix, description] of [

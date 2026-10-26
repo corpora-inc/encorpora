@@ -152,10 +152,10 @@ export const satPractice7 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand:
         "Evaluate a linear function with a fractional coefficient at an integer",
-      status: "partial",
-      templateIds: ["substitute-linear-expression"],
+      status: "covered",
+      templateIds: ["sat-fn-linear-notation", "substitute-linear-expression"],
       limitations:
-        "Same evaluation task; choices are plain numbers. Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "evaluate-fraction-coefficient evaluates f(x) with a fractional coefficient at an integer multiple of its denominator. Choices are plain numbers, so exact numeric entry practices the same answer.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {
@@ -192,10 +192,10 @@ export const satPractice7 = defineLedger(
       archetypeIds: ["linear.structure"],
       demand:
         "Find a multiple of the variable from a linear equation with a fractional coefficient",
-      status: "partial",
-      templateIds: ["rational-coefficient-equation"],
+      status: "covered",
+      templateIds: ["sat-fn-related-value", "rational-coefficient-equation"],
       limitations:
-        "Template solves for the variable itself; no template asks for a related expression's value.",
+        "scaled-term includes a fractional coefficient and asks for a multiple of the variable, with numeric entry.",
     },
     {
       section: "Math module 1",
@@ -442,10 +442,14 @@ export const satPractice7 = defineLedger(
       standards: ["sat.alg.linear-functions"],
       archetypeIds: ["function.input-output"],
       demand: "Evaluate a fee-plus-rate linear function in context",
-      status: "partial",
-      templateIds: ["substitute-linear-expression", "dependent-variable-value"],
+      status: "covered",
+      templateIds: [
+        "sat-fn-linear-notation",
+        "substitute-linear-expression",
+        "dependent-variable-value",
+      ],
       limitations:
-        "Same evaluation; numeric entry. Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "evaluate-contextual states a fee-plus-rate rule in function notation and asks for its value at a stated input, with numeric entry.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {
@@ -468,10 +472,10 @@ export const satPractice7 = defineLedger(
       archetypeIds: ["linear.structure"],
       demand:
         "Find a multiple of the variable from a one-step linear equation by scaling",
-      status: "partial",
-      templateIds: ["one-step-equation"],
+      status: "covered",
+      templateIds: ["sat-fn-related-value", "one-step-equation"],
       limitations:
-        "Template solves for the variable; no template asks for the value of a scaled expression.",
+        "scaled-term gives a one-step equation and asks for a multiple of the variable; choices are plain numbers, so numeric entry practices the same answer.",
     },
     {
       section: "Math module 2",
@@ -555,10 +559,14 @@ export const satPractice7 = defineLedger(
       archetypeIds: ["exponential.context"],
       demand:
         "Choose the model for an amount that doubles every fixed multi-year period",
-      status: "partial",
-      templateIds: ["exponential-model-rule", "exponential-time-scale"],
+      status: "covered",
+      templateIds: [
+        "sat-fn-exponential-choice",
+        "exponential-model-rule",
+        "exponential-time-scale",
+      ],
       limitations:
-        "exponential-model-rule builds rules with one-unit periods; exponential-time-scale interprets t/k exponents but does not build them from a story.",
+        "multi-year-period builds the model for a quantity that doubles or triples every several years, with the 2^(kt), 2^t and (bk)^t distractors.",
     },
     {
       section: "Math module 2",

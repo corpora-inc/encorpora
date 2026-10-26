@@ -193,10 +193,10 @@ export const satPractice4 = defineLedger(
       standards: ["sat.alg.linear-equations-one-variable"],
       archetypeIds: ["linear.structure"],
       demand: "Given x/k = c, find the value of the reciprocal ratio k/x",
-      status: "partial",
-      templateIds: ["one-step-equation"],
+      status: "covered",
+      templateIds: ["sat-fn-related-value", "one-step-equation"],
       limitations:
-        "one-step-equation solves x ÷ p = q for x only; no template asks the value of a related expression (here a reciprocal) or rewards the structural shortcut.",
+        "reciprocal-ratio gives a ratio of two nonzero variables and asks for the reciprocal ratio, with numeric entry.",
     },
     {
       section: "Math module 1",
@@ -218,10 +218,14 @@ export const satPractice4 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Choose the slope-intercept equation of a line from a negative fractional slope and a point",
-      status: "partial",
-      templateIds: ["recover-linear-intercept", "perpendicular-slopes"],
+      status: "covered",
+      templateIds: [
+        "sat-fn-line-equation-choice",
+        "recover-linear-intercept",
+        "perpendicular-slopes",
+      ],
       limitations:
-        "recover-linear-intercept computes the intercept from a rate and a point; perpendicular-slopes sometimes asks b for a line through a point. Both are numeric; no template offers equation choices for point-slope information.",
+        "slope-point gives a fractional or negative slope and a point off the y-axis and asks for the equation by choice, with the same intercept and sign distractors.",
     },
     {
       section: "Math module 1",
@@ -461,10 +465,10 @@ export const satPractice4 = defineLedger(
       standards: ["sat.alg.linear-functions"],
       archetypeIds: ["function.input-output"],
       demand: "Evaluate a linear function in context at a given input",
-      status: "partial",
-      templateIds: ["substitute-linear-expression"],
+      status: "covered",
+      templateIds: ["sat-fn-linear-notation", "substitute-linear-expression"],
       limitations:
-        "Checked samples: numeric evaluation of a signed linear rule; template lacks context and function notation. Linear families state rules as equations such as y = mx + b, never in function notation, so reading f(a) or solving f(x) = value for a linear rule is not practiced.",
+        "evaluate-contextual states a fee- or start-plus-rate model in function notation and asks for its value at a stated input, the same task with numeric entry.",
       labeledBy: "agent:sat-first-pass+review",
     },
     {
