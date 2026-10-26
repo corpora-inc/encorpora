@@ -133,7 +133,7 @@ For an explicitly permitted Meta purchase, the adult first-payment confirmation 
 
 Meta delivery history retains only financial references, destination, purchase amount/date, permission revision and redacted attempt outcomes for 90 days after payment. It contains no email hash or browser context. Withdrawal blocks unsent delivery and erases browser context; it does not erase the minimal record of an attempted disclosure. Family exports include delivery status, amount/date and receipt message count without internal routing identifiers. Accepted means the provider reported receipt, not matching, attribution or net revenue.
 
-First-party [ad acquisition](ad-click-attribution.md) is collected only on the parent-facing Arkansas marketing page and bound to owned purchase requests. It does not include learner activity. Existing purchase-sharing permissions do not authorize exporting the added click identifiers.
+First-party [ad acquisition](ad-click-attribution.md) is collected only on the parent-facing Arkansas marketing page and bound to owned purchase requests. It does not include learner activity. Click-identifier export requires the current provider-specific purchase-measurement permission. Older grants that omit those identifiers do not authorize their export.
 
 A minimal provider opt-out setting persists until the parent changes it. Expiry
 of advertising permission evidence does not resume acquisition collection.
