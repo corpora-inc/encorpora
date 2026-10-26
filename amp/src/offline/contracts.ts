@@ -67,14 +67,20 @@ export const packSchema = z
       .max(15),
   })
   .superRefine((pack, ctx) => {
-    // Grader v1 predates multiple selections. Its immutable protocol must not
-    // widen when the online public-problem schema gains a response kind.
+    // Grader v1 predates multiple selections and plotted points. Its
+    // immutable protocol must not widen when the online public-problem schema
+    // gains a response kind.
     if (
-      pack.items.some((item) => item.problem.response.kind === "multi-select")
+      pack.items.some(
+        (item) =>
+          item.problem.response.kind === "multi-select" ||
+          item.problem.response.kind === "point-plot",
+      )
     )
       ctx.addIssue({
         code: "custom",
-        message: "Offline grader v1 does not support multiple selections",
+        message:
+          "Offline grader v1 supports only typed and single-choice answers",
       });
     const issued = Date.parse(pack.issuedAt),
       expires = Date.parse(pack.expiresAt);

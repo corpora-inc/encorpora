@@ -16,6 +16,8 @@ export interface SourceRequirement {
   description: string;
   /** Required representations, restrictions and reasoning retained for reconciliation. */
   scope: string;
+  /** A process standard that item practice does not assess; recorded honestly, never as covered. */
+  crossCutting?: boolean;
 }
 export interface ReconciledTask {
   id: string;
@@ -151,9 +153,13 @@ export function reconcileSources(
       );
       return {
         ...requirement,
-        reconciliation: links.length
+        reconciliation: links.some((t) => t.disposition === "related-practice")
           ? ("partial" as const)
-          : ("unreviewed" as const),
+          : links.length
+            ? ("missing" as const)
+            : requirement.crossCutting
+              ? ("cross-cutting" as const)
+              : ("unreviewed" as const),
         taskIds: links.map((t) => t.id),
         coverageComplete: false as const,
       };
@@ -176,6 +182,11 @@ export function reconcileSources(
         ).length,
         unreviewed: requirements.filter(
           (r) => r.reconciliation === "unreviewed",
+        ).length,
+        missing: requirements.filter((r) => r.reconciliation === "missing")
+          .length,
+        crossCutting: requirements.filter(
+          (r) => r.reconciliation === "cross-cutting",
         ).length,
         missingFamilies: tasks.filter((t) => t.disposition === "missing-family")
           .length,

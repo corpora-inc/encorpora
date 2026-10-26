@@ -6,6 +6,7 @@ import {
   texasGrade5Inventory,
   texasGrade5ExpectedIds,
 } from "../src/curriculum/texas-grade5";
+import { floridaBands, floridaInventories } from "../src/curriculum/florida";
 import {
   reconcileSources,
   type SourceInventory,
@@ -46,12 +47,91 @@ test("Texas identifier inventory preserves unreviewed components and reuses exis
     report.targets.find((t) => t.id === "US.TX")!.sourceInventory,
     "partial",
   );
-  assert.equal(report.summary.pendingTargetInventories, 54);
-  assert.equal(report.summary.partialTargetInventories, 1);
+  assert.equal(report.summary.pendingTargetInventories, 53);
+  assert.equal(report.summary.partialTargetInventories, 2);
   assert.equal(report.summary.incompleteTargetInventories, 55);
   assert.equal(report.targetComplete, false);
   assert.match(renderGapLedger(report), /stem-and-leaf-interpretation/);
   assert.match(renderGapLedger(report), /TX.5.10.D/);
+});
+
+test("Florida B.E.S.T. inventory counts benchmarks honestly and never claims coverage", () => {
+  const report = buildGapLedger();
+  assert.equal(report.valid, true, report.errors.join("\n"));
+  const slices = report.sourceReconciliation.slices.filter(
+    (s) => s.targetId === "US.FL",
+  );
+  assert.equal(slices.length, 5);
+  // Independent counts from the July 2025 PDF: K-2 75, 3-5 109, 6-8 114,
+  // Algebra 1 / Geometry / Algebra 2 / Precalculus 181, MTR 7.
+  const expected = [
+    [75, 64, 11, 0, 0],
+    [109, 97, 12, 0, 0],
+    [114, 94, 20, 0, 0],
+    [181, 158, 23, 0, 0],
+    [7, 0, 0, 0, 7],
+  ];
+  slices.forEach((slice, i) => {
+    const [n, partial, missing, unreviewed, cross] = expected[i]!;
+    assert.equal(slice.requirements.length, n);
+    assert.equal(slice.summary.partiallyReconciled, partial);
+    assert.equal(slice.summary.missing, missing);
+    assert.equal(slice.summary.unreviewed, unreviewed);
+    assert.equal(slice.summary.crossCutting, cross);
+    assert.equal(slice.identifierInventoryComplete, true);
+    assert.equal(slice.statewideComplete, false);
+    assert.equal(slice.componentReconciliationComplete, false);
+    assert.ok(slice.requirements.every((r) => !r.coverageComplete));
+  });
+  const all = slices.flatMap((s) => s.requirements);
+  assert.equal(all.length, 486);
+  assert.equal(new Set(all.map((r) => r.id)).size, 486);
+  assert.equal(all.filter((r) => r.reconciliation === "partial").length, 413);
+  assert.equal(all.filter((r) => r.reconciliation === "missing").length, 66);
+  // Every missing benchmark is a concrete, template-free demand with an owner skill.
+  const missing = slices.flatMap((s) =>
+    s.tasks.filter((t) => t.disposition === "missing-family"),
+  );
+  assert.equal(missing.length, 66);
+  assert.ok(
+    missing.every((t) => !t.templateIds.length && t.skillIds.length === 1),
+  );
+  assert.ok(
+    all
+      .filter((r) => r.id.startsWith("MA.K12.MTR"))
+      .every((r) => r.reconciliation === "cross-cutting" && !r.taskIds.length),
+  );
+  // Clarification-limited demands keep their stated limits in scope text.
+  const byId = new Map(all.map((r) => [r.id, r]));
+  assert.match(byId.get("MA.5.NSO.1.1")!.scope, /./);
+  assert.match(byId.get("MA.912.AR.1.3")!.scope, /3 or fewer terms|three/i);
+  assert.ok(floridaBands.every((b) => b.rows.every((r) => r[2].length <= 400)));
+  assert.match(renderGapLedger(report), /MA\.912\.AR\.6\.6/);
+  assert.equal(floridaInventories.length, 5);
+  assert.equal(
+    reconcileSources(floridaInventories, skills, templates, ["US.FL"]).valid,
+    true,
+  );
+  // A fabricated template link or hash invalidates a whole slice.
+  for (const mutate of [
+    (i: SourceInventory) => {
+      i.tasks.find((t) => t.disposition === "related-practice")!.templateIds = [
+        "unknown",
+      ];
+    },
+    (i: SourceInventory) => {
+      i.sources[0]!.sha256 = "bad";
+    },
+    (i: SourceInventory) => {
+      i.requirements = i.requirements.slice(1);
+    },
+  ]) {
+    const inventory = structuredClone(floridaInventories[1]!);
+    mutate(inventory);
+    const result = reconcileSources([inventory], skills, templates, ["US.FL"]);
+    assert.equal(result.valid, false);
+    assert.equal(result.slices[0]!.tasks.length, 0);
+  }
 });
 
 test("invalid source, catalog or inventory links cannot establish reconciliation", () => {

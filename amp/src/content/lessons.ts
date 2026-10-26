@@ -76,6 +76,7 @@ import { complexLessons } from "./complex-lessons";
 import { k8StateNumberLessons } from "./k8-state-number-lessons";
 import { texas38Lessons } from "./texas-38-lessons";
 import { satNumericEntryLessons } from "./sat-numeric-entry-lessons";
+import { pointPlotLessons } from "./point-plot-lessons";
 import { algebraRequirementGapLessons } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapLessons } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapLessons } from "./number-measurement-gaps-lessons";
@@ -692,6 +693,7 @@ export const lessons: readonly Lesson[] = [
   ...k8StateNumberLessons,
   ...texas38Lessons,
   ...satNumericEntryLessons,
+  ...pointPlotLessons,
   ...algebraRequirementGapLessons,
   ...advancedMathGapLessons,
   ...numberMeasurementGapLessons,

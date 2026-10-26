@@ -66,6 +66,7 @@ import { complexMethods } from "./complex-lessons";
 import { k8StateNumberMethods } from "./k8-state-number-lessons";
 import { texas38Methods } from "./texas-38-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
+import { pointPlotMethods } from "./point-plot-lessons";
 import { algebraRequirementGapMethods } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapMethods } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapMethods } from "./number-measurement-gaps-lessons";
@@ -107,6 +108,7 @@ export const methods: Record<string, ProblemMethod> = {
   ...k8StateNumberMethods,
   ...texas38Methods,
   ...satNumericEntryMethods,
+  ...pointPlotMethods,
   ...algebraRequirementGapMethods,
   ...advancedMathGapMethods,
   ...numberMeasurementGapMethods,

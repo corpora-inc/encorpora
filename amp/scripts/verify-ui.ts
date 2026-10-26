@@ -484,7 +484,9 @@ try {
       throw failure;
     });
     await page
-      .locator("#answer, .choice-form, .compact-answer-action")
+      .locator(
+        "#answer, .choice-form, .point-plot-form, .compact-answer-action",
+      )
       .first()
       .waitFor();
     assert.ok(
@@ -504,14 +506,22 @@ try {
     ]) {
       await page.setViewportSize(size);
       // Let the media-query subscription commit the appropriate answer surface.
-      await page.waitForFunction((multiSelect) => {
-        const compact =
-          matchMedia("(max-width: 650px) and (max-height: 640px)").matches ||
-          (multiSelect &&
-            !!document.querySelector(".problem-content svg") &&
-            matchMedia("(max-width: 899px)").matches);
-        return !!document.querySelector(".compact-answer-action") === compact;
-      }, template.requiredResponseCapability === "multi-select-v1");
+      // A point plot answers on its grid and never uses the answer dialog.
+      await page.waitForFunction(
+        ([multiSelect, plot]) => {
+          const compact =
+            !plot &&
+            (matchMedia("(max-width: 650px) and (max-height: 640px)").matches ||
+              (multiSelect &&
+                !!document.querySelector(".problem-content svg") &&
+                matchMedia("(max-width: 899px)").matches));
+          return !!document.querySelector(".compact-answer-action") === compact;
+        },
+        [
+          template.requiredResponseCapability === "multi-select-v1",
+          template.requiredResponseCapability === "point-plot-v1",
+        ],
+      );
       if (isPhoneLandscape(size)) {
         await assertPhoneLandscapeSmoke(page, template.id);
         continue;
