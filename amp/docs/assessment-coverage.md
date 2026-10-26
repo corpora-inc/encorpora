@@ -52,6 +52,23 @@ The STAAR sources are not saturated: from Grade 3 to Algebra I they add 21, 20, 
 
 A second labeler re-labeled a seeded random 10% sample (26 items across all seven tests) without seeing the first labels. Response format agreed on 26 (100%), status on 22 (84.6%), archetypes overlapped on 25 (96.2%) and templates on 22 (84.6%). The status disagreements were resolved by applying two rules to every test: a family counts as related practice only if it practices the item's core operation or reading, not merely its topic or representation (two sampled items and two others of the same kind became missing), and perimeter practice with whole-number sides does not cover decimal sides. A story context or label around a graph read does not change the task.
 
+#### Spring 2024 STAAR (second year)
+
+All 210 mathematics items of the Spring 2024 STAAR released tests for grades 3 through 8 (30, 32, 34, 36, 38 and 40 items) are labeled from TEA's rationale and answer-key PDFs, as for 2025. Algebra I was not labeled.
+
+| Test | Items | Covered | Partial | Missing | New archetypes | Items on archetypes already seen |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Grade 3 | 30 | 5 (16.7%) | 22 (73.3%) | 3 (10%) | 7 | 76.7% |
+| Grade 4 | 32 | 9 (28.1%) | 22 (68.8%) | 1 (3.1%) | 0 | 100% |
+| Grade 5 | 34 | 10 (29.4%) | 24 (70.6%) | 0 (0%) | 1 | 97.1% |
+| Grade 6 | 36 | 9 (25%) | 24 (66.7%) | 3 (8.3%) | 2 | 94.4% |
+| Grade 7 | 38 | 12 (31.6%) | 25 (65.8%) | 1 (2.6%) | 2 | 92.1% |
+| Grade 8 | 40 | 9 (22.5%) | 31 (77.5%) | 0 (0%) | 1 | 97.5% |
+
+The second year is close to saturated for grades 4 through 8: 92% to 100% of their items fall on archetypes seen in an earlier source, and only six archetypes were not seen. Grade 3 still adds seven, of which five were minted for it (supply and price, a whole number on a number line, congruent figures with equal-area parts) or for later grades (bank fee comparison, net worth); the others were listed but unused. Items on drag, hot spot, multiselect and inline-choice interactions stay partial except where an inline slope-and-intercept family exists. The largest gaps are choosing the graph of a rule or rate among drawn graphs, coordinate rules of dilations, rotations and translations, volumes with decimal approximations and equations, and tally, percentage bar graph, financial aid and net worth items, which have no related practice.
+
+A second labeler re-labeled a seeded random 10% sample (21 of 210 items) without seeing the first labels. Response format agreed on 21 (100%), status on 15 (71.4%), archetypes overlapped on 19 (90.5%) and templates on 20 (95.2%). Of the six status disagreements, one was changed (a pair of equivalent expressions with a fractional coefficient became partial); the others kept the rule already applied to STAAR 2025: four choices compared with a given fraction are partial, a percentage bar graph with counts is missing, and a numeric family covers choices written as multiples of pi.
+
 The earlier purposive samples (New York grade 7 and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
 
 ### MCAS mathematics

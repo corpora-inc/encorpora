@@ -386,11 +386,11 @@ export const staar2024Grade6 = defineLedger(
       standards: ["TEKS.6.1.7.D"],
       archetypeIds: ["expression.polynomial"],
       demand:
-        "Choose the pair of equivalent expressions after combining like terms",
-      status: "covered",
+        "Choose the pair of equivalent expressions after combining like terms and removing a fractional coefficient",
+      status: "partial",
       templateIds: ["equivalent-expressions-check"],
       limitations:
-        "equivalent-expressions-check tests equivalence of expressions by combining like terms and distributing.",
+        "equivalent-expressions-check tests equivalence with integer coefficients; a pair involving a fractional coefficient is not practiced.",
     },
     {
       item: { number: "32", page: "rationale PDF p.39" },
