@@ -100,6 +100,10 @@ function.relation-equation|Identify the dependent variable and write its equatio
 function.linear-test|Decide which equation defines a linear or proportional function
 equation.solution-point|Choose the point on the graph of an equation by testing ordered pairs
 inequality.number-line|Match an inequality with its number-line graph
+sequence.arithmetic|Find a term, common difference or rule of an arithmetic sequence
+sequence.recursive|Compute terms from a recursive rule, including rules that are not geometric or arithmetic
+function.parity|Decide whether a function is odd or even from its rule or graph
+inequality.graph-region|Draw the solution region of a linear inequality or a system of inequalities
 expression.multistep-equations|Choose the linked equations that model a two-step story
 function.proportional-identify|Recognize a proportional relationship from a situation, table, graph or rule
 inequality.solution-set|Decide which values or inequalities hold for a stated inequality
@@ -181,6 +185,9 @@ function.piecewise|Read or write a piecewise function from its graph or absolute
 function.composition|Evaluate or write a composition of functions
 function.inverse|Find an inverse function's value or expression
 function.compare-representations|Compare features of functions given by a formula, a table or a graph
+expression.polynomial-structure|Build or classify a polynomial by degree, number of terms, leading coefficient and constant term
+exponential.compare-linear|Find when an exponential function first exceeds a linear function
+graph.draw-nonlinear|Draw the graph of a nonlinear function from its rule, a stated domain or stated features
 exponential.graph|Graph an exponential function from its rule
 exponential.graph-features|Read the intercept, direction or asymptote of an exponential graph`,
   data: `
@@ -230,6 +237,9 @@ probability.multiplication-rule|Find P(A and B) with the multiplication rule or 
 study.statistical-question|Choose the question that anticipates variability in its answers
 univariate.compare-distributions|Compare the centers and spreads of two distributions
 bivariate.categorical-association|Decide whether two categorical variables are associated from row percents
+univariate.quartiles|Find a quartile or the interquartile range of a listed data set
+bivariate.regression-compute|Compute a regression equation from a data table
+bivariate.correlation-coefficient|Interpret the sign and strength of a correlation coefficient
 bivariate.correlation|Interpret the sign and strength of a correlation coefficient
 data.frequency-table-read|Read counts from a tally or frequency table and compare them
 data.graph-error|Find the mismatch between a described data set and its graph
@@ -312,6 +322,11 @@ transformation.invariants|Decide which transformations preserve distance and ang
 construction.compass-straightedge|Choose or order the steps of a compass and straightedge construction
 circle.inscribed-centers|Choose the construction of a circumcenter or incenter or find angles of an inscribed quadrilateral
 coordinate.quadrilateral-claims|Use slopes and distances to name the most specific quadrilateral from vertex coordinates
+triangle.midsegment|Use the midsegment of a triangle
+triangle.side-splitter|Use a line parallel to a triangle side to find proportional segments
+triangle.altitude-hypotenuse|Use the altitude to the hypotenuse of a right triangle
+segment.perpendicular-bisector|Use the points of a perpendicular bisector
+proof.geometry-written|Write a formal geometric proof or coordinate proof from givens
 coordinate.plane-point|Name, locate or describe a point on the coordinate plane
 measure.circle|Find a circle's circumference, area or diameter, or estimate pi
 shape.attribute-classify|Sort shapes by attributes such as right angles and parallel sides

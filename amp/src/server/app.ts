@@ -294,9 +294,16 @@ function routes(app: FastifyInstance, options: AppOptions) {
   app.get("/api/v1/learners/:learnerId/progress", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
+    const { skill } = z
+      .object({ skill: z.string().min(1).max(100).optional() })
+      .parse(request.query);
+    const available = [...new Set(templates.map((t) => t.skillId))];
     return options.repository.transaction(account, learnerId, async (tx) => ({
       asOf: new Date().toISOString(),
-      skills: await tx.progress([...new Set(templates.map((t) => t.skillId))]),
+      // Answer feedback needs one skill, not the full learning inventory.
+      skills: await tx.progress(
+        skill ? available.filter((id) => id === skill) : available,
+      ),
     }));
   });
   app.get("/api/v1/learners/:learnerId/frontier", async (request) => {
