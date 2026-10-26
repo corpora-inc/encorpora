@@ -524,7 +524,7 @@ function timesAsManyComparison(r: Random): Built {
   ]);
   const [a, b] = twoNames(r);
   const thing = pick(r, THINGS);
-  const k = r(2, 9);
+  const k = variant === "expression-to-sentence" ? r(3, 9) : r(2, 9);
   if (variant === "expression-to-sentence") {
     const base = r(2, 25);
     return {
@@ -556,7 +556,8 @@ function timesAsManyComparison(r: Random): Built {
     };
   }
   if (variant === "sentence-to-expression") {
-    const base = r(2, 12);
+    let base = r(2, 12);
+    if (base === 2 && k === 2) base = 3;
     return {
       variant,
       prompt: `${a} has ${base} ${thing}. ${b} has ${k} times as many ${thing} as ${a}. Which expression gives the number of ${thing} ${b} has?`,
@@ -574,10 +575,15 @@ function timesAsManyComparison(r: Random): Built {
           label: `${base} ÷ ${k}`,
           feedback: `Dividing would give a part of ${a}'s amount. ${b} has more, ${k} times as many.`,
         },
-        {
-          label: `${k} × ${k}`,
-          feedback: `The amount being copied is ${a}'s ${base} ${thing}, not ${k}.`,
-        },
+        k * k === k + base
+          ? {
+              label: `${base} − ${k}`,
+              feedback: `Times as many is repeated equal groups, which is multiplication, not taking ${k} away.`,
+            }
+          : {
+              label: `${k} × ${k}`,
+              feedback: `The amount being copied is ${a}'s ${base} ${thing}, not ${k}.`,
+            },
         {
           label: `${base} × ${k + 1}`,
           feedback: `${k} times as many is ${k} copies, not ${k + 1}.`,
@@ -772,11 +778,11 @@ function situationPairTable(r: Random): Built {
   const xs = [2, 3, 5];
   return {
     variant,
-    prompt: `Every ${c.whole.replace("one ", "")} has the same number of ${c.outWord}. The table shows the number of ${c.outWord} for different numbers of ${c.inWord}. How many ${c.outWord} are there for 1 ${c.whole.replace("one ", "")}?`,
+    prompt: `Every ${c.whole.replace("one ", "")} has the same number of ${c.outWord}. The table shows the number of ${c.outWord} for different numbers of ${c.inWord}. How many ${c.outWord} are there for ${c.whole}?`,
     hint: `Look at the row for ${xs[0]} ${c.inWord}: ${xs[0]! * p} ${c.outWord} are shared equally among ${xs[0]}. How many does each get?`,
     explanation: [
       `The rows show ${xs[0]! * p} ${c.outWord} for ${xs[0]} ${c.inWord}, and the same amount for each.`,
-      `${xs[0]! * p} ÷ ${xs[0]} = ${p}, so 1 ${c.whole.replace("one ", "")} has ${p} ${c.outWord}.`,
+      `${xs[0]! * p} ÷ ${xs[0]} = ${p}, so ${c.whole} has ${p} ${c.outWord}.`,
     ],
     figure: pairTable(c.inn, c.out, [
       ...xs.map((x): [string, number | string] => [String(x), x * p]),
@@ -1404,6 +1410,10 @@ function fractionBenchmarkReasonable(r: Random): Built {
 /* 4.8.A Relative sizes of units                                           */
 /* ---------------------------------------------------------------------- */
 
+const art = (unit: string, capital: boolean) => {
+  const word = /^[aeiou]/.test(unit) ? "an" : "a";
+  return capital ? "A".concat(word.slice(1)) : word;
+};
 type Family = { kind: "length" | "weight" | "capacity"; units: string[] };
 const FAMILIES: Family[] = [
   { kind: "length", units: ["millimeter", "centimeter", "meter", "kilometer"] },
@@ -1449,9 +1459,9 @@ const ANCHOR: Record<string, string> = {
   gallon: "a jug of milk",
 };
 const MORE: Record<Family["kind"], (x: string, y: string) => string> = {
-  length: (x, y) => `A ${x} is longer than a ${y}.`,
-  weight: (x, y) => `A ${x} is heavier than a ${y}.`,
-  capacity: (x, y) => `A ${x} holds more than a ${y}.`,
+  length: (x, y) => `${art(x, true)} ${x} is longer than ${art(y, false)} ${y}.`,
+  weight: (x, y) => `${art(x, true)} ${x} is heavier than ${art(y, false)} ${y}.`,
+  capacity: (x, y) => `${art(x, true)} ${x} holds more than ${art(y, false)} ${y}.`,
 };
 const WORD: Record<Family["kind"], string> = {
   length: "length",
@@ -1501,14 +1511,14 @@ function unitRelativeSize(r: Random): Built {
       ...falsePairs.map((p) => ({ big: p.small, small: p.big, kind: p.kind })),
     ].map((p) => ({
       label: MORE[p.kind](p.big, p.small),
-      feedback: `That is reversed: a ${p.small} is larger than a ${p.big}. Picture ${ANCHOR[p.small]!} and ${ANCHOR[p.big]!}.`,
+      feedback: `That is reversed: ${art(p.small, false)} ${p.small} is larger than ${art(p.big, false)} ${p.big}. Picture ${ANCHOR[p.small]!} and ${ANCHOR[p.big]!}.`,
     }));
     return {
       variant,
       prompt: `Which statement about the sizes of units is true?`,
-      hint: `Picture each unit: a ${truth.big} is about ${ANCHOR[truth.big]}, and a ${truth.small} is about ${ANCHOR[truth.small]}. Then compare the two statements about ${truth.big} and ${truth.small}.`,
+      hint: `Picture each unit: ${art(truth.big, false)} ${truth.big} is about ${ANCHOR[truth.big]}, and ${art(truth.small, false)} ${truth.small} is about ${ANCHOR[truth.small]}. Then compare the two statements about ${truth.big} and ${truth.small}.`,
       explanation: [
-        `A ${truth.big} is about ${ANCHOR[truth.big]}; a ${truth.small} is about ${ANCHOR[truth.small]}.`,
+        `${art(truth.big, true)} ${truth.big} is about ${ANCHOR[truth.big]}; ${art(truth.small, false)} ${truth.small} is about ${ANCHOR[truth.small]}.`,
         `So ${correct.charAt(0).toLowerCase()}${correct.slice(1)}`,
       ],
       choices: choicesFrom(correct, wrong),
@@ -1522,38 +1532,45 @@ function unitRelativeSize(r: Random): Built {
     return {
       variant,
       prompt: `${OBJECT[fam.kind]} is measured twice, once in ${big}s and once in ${small}s. Which measurement has the greater number?`,
-      hint: `A ${big} is a bigger unit than a ${small}. Do you need more of the bigger unit or more of the smaller unit to measure the same amount?`,
+      hint: `${art(big, true)} ${big} is a bigger unit than ${art(small, false)} ${small}. Do you need more of the bigger unit or more of the smaller unit to measure the same amount?`,
       explanation: [
         `It takes more small units than large units to cover the same ${WORD[fam.kind]}.`,
-        `A ${small} is smaller than a ${big}, so the measurement in ${small}s has the greater number.`,
+        `${art(small, true)} ${small} is smaller than ${art(big, false)} ${big}, so the measurement in ${small}s has the greater number.`,
       ],
       choices: choicesFrom(`The measurement in ${small}s`, [
         {
           label: `The measurement in ${big}s`,
-          feedback: `A ${big} is a larger unit, so fewer of them are needed.`,
+          feedback: `${art(big, true)} ${big} is a larger unit, so fewer of them are needed.`,
         },
         {
           label: `The two numbers are the same`,
           feedback: `The amount is the same, but the units are different sizes, so the numbers differ.`,
         },
         {
-          label: `The measurement in ${big}s, because a ${big} is the larger unit`,
+          label: `The measurement in ${big}s, because ${art(big, false)} ${big} is the larger unit`,
           feedback: `A larger unit gives a smaller number for the same amount.`,
         },
       ]),
     };
   }
+  const orderFam =
+    fam.units.length >= 3
+      ? fam
+      : pick(
+          r,
+          FAMILIES.filter((f) => f.kind === fam.kind && f.units.length >= 3),
+        );
   const picked = shuffle(
     r,
-    fam.units.map((_, i) => i),
+    orderFam.units.map((_, i) => i),
   )
     .slice(0, 3)
     .sort((x, y) => x - y);
-  const names = picked.map((i) => fam.units[i]!);
+  const names = picked.map((i) => orderFam.units[i]!);
   const adjective =
-    fam.kind === "length"
+    orderFam.kind === "length"
       ? "shortest to longest"
-      : fam.kind === "weight"
+      : orderFam.kind === "weight"
         ? "lightest to heaviest"
         : "least to greatest capacity";
   const list = (xs: string[]) => xs.join(", ");
@@ -1568,9 +1585,9 @@ function unitRelativeSize(r: Random): Built {
   return {
     variant,
     prompt: `Which list orders these units from ${adjective}?`,
-    hint: `Picture each unit: ${names.map((n) => `a ${n} is about ${ANCHOR[n]}`).join("; ")}. Put the smallest first.`,
+    hint: `Picture each unit: ${names.map((n) => `${art(n, false)} ${n} is about ${ANCHOR[n]}`).join("; ")}. Put the smallest first.`,
     explanation: [
-      names.map((n) => `a ${n} is about ${ANCHOR[n]}`).join("; ") + ".",
+      names.map((n) => `${art(n, false)} ${n} is about ${ANCHOR[n]}`).join("; ") + ".",
       `From smallest to largest: ${asc}.`,
     ],
     choices: choicesFrom(
@@ -1844,7 +1861,7 @@ function numberSetVenn(r: Random): Built {
   if (variant === "place-number") {
     return {
       variant,
-      prompt: `In the diagram of nested number sets, which region holds ${item.text}?`,
+      prompt: `Regions A to D in the diagram of nested number sets are the rings between the circles. Which region holds ${item.text}?`,
       hint: `Region A holds natural numbers, B is whole but not natural, C is integers that are not whole, and D is rational numbers that are not integers. Decide which sets ${item.text} belongs to, then find the innermost one.${value}`,
       explanation: [
         `${item.text}${item.simplified ? ` = ${item.simplified}, which` : ""} is ${k === 3 ? "a rational number that is not an integer" : k === 2 ? "an integer that is not a whole number" : k === 1 ? "a whole number that is not a natural number" : "a natural number"}.`,
@@ -2061,7 +2078,7 @@ function scalingDirectionChoice(r: Random): Built {
     return {
       variant,
       prompt: `Without calculating, which product is ${greater ? "greater" : "less"} than ${N}?`,
-      hint: `Compare each multiplier with 1. Multiplying by a number ${greater ? "greater" : "less"} than 1 makes the result ${greater ? "greater" : "less"} than the starting number.`,
+      hint: `Compare each multiplier with 1. Multiplying by a number ${greater ? "greater" : "less"} than 1 gives a result ${greater ? "greater" : "less"} than the starting number.`,
       explanation: [
         `${frText(odd)} is ${greater ? "greater" : "less"} than 1, so ${expr(odd)} is ${greater ? "greater" : "less"} than ${N}.`,
         `The other multipliers are ${greater ? "less" : "greater"} than 1, so their products are ${greater ? "less" : "greater"} than ${N}.`,
@@ -2126,8 +2143,8 @@ function scalingDirectionChoice(r: Random): Built {
     explanation: [
       `${label} is ${kind === "less" ? "less than" : kind === "more" ? "greater than" : "equal to"} 1.`,
       kind === "equal"
-        ? `Multiplying by 1 leaves ${N} unchanged, so the product equals ${N}.`
-        : `Multiplying by a number ${kind === "less" ? "less" : "greater"} than 1 makes the result ${kind === "less" ? "less" : "greater"} than ${N}.`,
+        ? `Multiplying by 1 does not change ${N}, so the product equals ${N}.`
+        : `Multiplying by a number ${kind === "less" ? "less" : "greater"} than 1 gives a result ${kind === "less" ? "less" : "greater"} than ${N}.`,
     ],
     choices: choicesFrom(correct, pool),
   };
@@ -2138,6 +2155,7 @@ function scalingDirectionChoice(r: Random): Built {
 /* ---------------------------------------------------------------------- */
 
 const trimNum = (x: number) => String(Number(x.toFixed(2)));
+const exactDec = (x: number) => String(Number(x.toFixed(6)));
 function percentGridModel(r: Random): Built {
   const variant = pick(r, ["grid-percent", "grid-fraction", "grid-decimal"]);
   let k = r(4, 96);
@@ -2254,8 +2272,8 @@ function percentFormsAndParts(r: Random): Built {
       prompt: `Write ${n}/${d} as a percent. Enter the number without the percent sign.`,
       hint: `A percent is a number out of 100. Divide ${n} by ${d}, then multiply by 100, or rewrite ${n}/${d} with a denominator of 100.`,
       explanation: [
-        `${n} ÷ ${d} = ${trimNum(n / d)}.`,
-        `${trimNum(n / d)} × 100 = ${trimNum(p)}, so ${n}/${d} = ${trimNum(p)}%.`,
+        `${n} ÷ ${d} = ${exactDec(n / d)}.`,
+        `${exactDec(n / d)} × 100 = ${trimNum(p)}, so ${n}/${d} = ${trimNum(p)}%.`,
       ],
       answer: trimNum(p),
       responseLabel: "Percent",
@@ -2320,8 +2338,8 @@ function percentFormsAndParts(r: Random): Built {
       hint: `${p}% of the whole is ${part}. Find what 1% is by dividing ${part} by ${p}, or use ${p}% as a fraction and undo it.`,
       explanation: [
         `${p}% of the whole is ${part}.`,
-        `1% is ${part} ÷ ${p} = ${trimNum(part / p)}.`,
-        `The whole is 100% = ${trimNum(part / p)} × 100 = ${W}.`,
+        `1% is ${part} ÷ ${p} = ${exactDec(part / p)}.`,
+        `The whole is 100% = ${exactDec(part / p)} × 100 = ${W}.`,
       ],
       answer: String(W),
       responseLabel: "The whole",
@@ -2336,8 +2354,8 @@ function percentFormsAndParts(r: Random): Built {
     prompt: `${name} got ${part} of ${whole} questions right. What percent of the questions is that? Enter the number without the percent sign.`,
     hint: `The part is ${part} and the whole is ${whole}. Write the part over the whole as a fraction, change it to a decimal, then to a percent.`,
     explanation: [
-      `The fraction right is ${part}/${whole} = ${trimNum(part / whole)}.`,
-      `${trimNum(part / whole)} × 100 = ${trimNum(p)}, so ${trimNum(p)}% were right.`,
+      `The fraction right is ${part}/${whole} = ${exactDec(part / whole)}.`,
+      `${exactDec(part / whole)} × 100 = ${trimNum(p)}, so ${trimNum(p)}% were right.`,
     ],
     answer: trimNum(p),
     responseLabel: "Percent",
@@ -2902,7 +2920,7 @@ function categoricalSummary(r: Random): Built {
     hint: `The relative frequency of a category is its count divided by the total, ${total}. Then write the result as a percent.`,
     explanation: [
       `${cats[idx]} was chosen by ${counts[idx]} of ${total} students.`,
-      `${counts[idx]} ÷ ${total} = ${trimNum(counts[idx]! / total)}, which is ${trimNum(p)}%.`,
+      `${counts[idx]} ÷ ${total} = ${exactDec(counts[idx]! / total)}, which is ${trimNum(p)}%.`,
     ],
     figure,
     answer: trimNum(p),
@@ -3344,7 +3362,7 @@ function cylinderPrismSurfaceArea(r: Random): Built {
       hint: `Unroll the curved side into a rectangle. One side of the rectangle is the height ${h} cm and the other is the distance around the circular base.`,
       explanation: [
         `The unrolled side is a rectangle ${h} cm tall. Its width is the circumference $2\\pi\\times${rad}=${2 * rad}\\pi$ cm.`,
-        `Area = ${2 * rad}\\pi \\times ${h} = ${2 * rad * h}\\pi$, so $a=${2 * rad * h}$.`,
+        `Area = $${2 * rad}\\pi \\times ${h} = ${2 * rad * h}\\pi$, so $a=${2 * rad * h}$.`,
       ],
       answer: String(2 * rad * h),
       responseLabel: "a",

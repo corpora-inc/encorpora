@@ -9,9 +9,13 @@ const invariant = new Set([
   "times",
   "less",
   "this",
+  "bus",
+  "makes",
+  "leaves",
 ]);
 function singular(word: string) {
   if (invariant.has(word)) return word;
+  if (word === "buses") return "bus";
   if (/(ches|shes|xes|sses)$/.test(word)) return word.slice(0, -2);
   return word.endsWith("s") ? word.slice(0, -1) : word;
 }

@@ -17,6 +17,7 @@ from statistics_probability_math_oracle import SUPPORTED as STAT_PROB, solve as 
 from geometry_proof_families_math_oracle import SUPPORTED as GEOMETRY_FAMILIES, solve as solve_geometry_families, review_problem as review_geometry_family_problem, self_test as review_geometry_family_fixtures
 from k8_representations_math_oracle import SUPPORTED as K8_REPRESENTATIONS, solve as solve_k8_representations, review_problem as review_k8_representations_problem, self_test as review_k8_representations_fixtures
 from k8_state_number_math_oracle import SUPPORTED as K8_STATE_NUMBER, solve as solve_k8_state_number, review_problem as review_k8_state_number_problem, self_test as review_k8_state_number_fixtures
+from texas_38_math_oracle import SUPPORTED as TEXAS_38, solve as solve_texas_38, review_problem as review_texas_38_problem, self_test as review_texas_38_fixtures
 from complex_math_oracle import SUPPORTED as COMPLEX, solve as solve_complex, review_problem as review_complex_problem, self_test as review_complex_fixtures
 from sat_numeric_entry_math_oracle import SUPPORTED as SAT_NUMERIC_ENTRY, solve as solve_sat_numeric_entry, review_problem as review_sat_numeric_entry_problem, self_test as review_sat_numeric_entry_fixtures
 from complex_conics_math_oracle import SUPPORTED as COMPLEX_CONICS, solve as solve_complex_conics, review_problem as review_complex_conics_problem, self_test as review_complex_conics_fixtures
@@ -124,6 +125,7 @@ SUPPORTED |= TRIANGLE_CONGRUENCE
 SUPPORTED |= QUADRATIC_IRRATIONAL
 SUPPORTED |= RELATION_REPAIR
 SUPPORTED |= COMPLEX
+SUPPORTED |= TEXAS_38
 SUPPORTED |= K8_REPRESENTATIONS
 SUPPORTED |= K8_STATE_NUMBER
 SUPPORTED |= SAT_GEOMETRY_DATA
@@ -236,6 +238,8 @@ def solve(public):
 
 
 def solve_family(public):
+    if public["templateId"] in TEXAS_38:
+        return solve_texas_38(public)
     if public["templateId"] in K8_STATE_NUMBER:
         return solve_k8_state_number(public)
     if public["templateId"] in K8_REPRESENTATIONS:
@@ -683,6 +687,8 @@ def review(stream):
             review_geometry_family_problem(problem)
         if template in COMPLEX:
             review_complex_problem(problem)
+        if template in TEXAS_38:
+            review_texas_38_problem(problem)
         if template in NUMBER_MEASUREMENT:
             review_number_measurement_problem(problem)
         if template in K8_REPRESENTATIONS:
@@ -792,6 +798,10 @@ def review(stream):
         elif template in POINT_PLOT:
             expected = review_point_plot_problem(problem)
             actual = problem["answer"]
+        elif template in TEXAS_38 and public['response']['kind'] == 'choice':
+            expected = solved
+            actual = problem['answer']
+            require(isinstance(actual, str), 'Choice answer must be an option ID')
         elif template in (K8_STATE_NUMBER if public['response']['kind'] == 'choice' else frozenset()) or template in LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | ALGEBRA_REQUIREMENT_GAPS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS | SAT_ALGEBRA_STRUCTURE | NUMBER_MEASUREMENT_CHOICE | ADVANCED_MATH_GAPS or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
@@ -852,6 +862,7 @@ def review(stream):
     review_quadratic_irrational_fixtures()
     review_relation_repair_fixtures()
     review_complex_fixtures()
+    review_texas_38_fixtures()
     review_k8_representations_fixtures()
     review_k8_state_number_fixtures()
     review_sat_geometry_data_fixtures()
