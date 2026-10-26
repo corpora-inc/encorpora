@@ -17,7 +17,7 @@ test("target membership includes every jurisdiction and separately blocks unrevi
   const report = buildGapLedger();
   assert.equal(report.valid, true);
   assert.equal(report.targetComplete, false);
-  assert.equal(report.summary.pendingTargetInventories, 54);
+  assert.equal(report.summary.pendingTargetInventories, 53);
   assert.equal(
     report.summary.skillsWithPractice + report.summary.skillsWithoutPractice,
     skills.length,

@@ -1,4 +1,5 @@
 import type { MultiSelectResponse, ProblemResponse } from "./contracts";
+import { normalizePointPlot, pointPlotAnswerText } from "./point-plot";
 
 export const MAX_SELECTION_OPTIONS = 8;
 export const MAX_SELECTION_RESPONSE_LENGTH = 200;
@@ -80,6 +81,11 @@ export function joinAnswerLabels(labels: readonly string[]): string {
 
 /** Completed worked answers are readable labels, never the transport format. */
 export function answerText(response: ProblemResponse, raw: string): string {
+  if (response.kind === "point-plot") {
+    if (normalizePointPlot(response, raw) === null)
+      throw new Error("Worked answer must place the required grid points");
+    return pointPlotAnswerText(response, raw);
+  }
   if (response.kind !== "choice" && response.kind !== "multi-select")
     return raw;
   if (

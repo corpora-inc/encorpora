@@ -132,9 +132,12 @@ export function syntheticProbability(
     (hash(template.id) - 0.5) * 0.7 +
     (population.difficultyOffset ?? 0);
   const width = population.noise * (0.85 + 0.3 * hash(`${template.id}:width`));
-  const guess = template.requiredResponseCapability
-    ? Math.max(0.2, population.guess)
-    : population.guess;
+  // Selected answers can be guessed; placed points practically cannot.
+  const guess =
+    template.requiredResponseCapability &&
+    template.requiredResponseCapability !== "point-plot-v1"
+      ? Math.max(0.2, population.guess)
+      : population.guess;
   return (
     guess +
     (1 - guess - population.slip) * normalCdf((ability - difficulty) / width)
