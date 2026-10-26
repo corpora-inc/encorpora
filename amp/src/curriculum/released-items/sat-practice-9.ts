@@ -219,10 +219,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["triangle.pythagorean"],
       demand:
         "Find a missing leg of a right triangle from the hypotenuse and one leg given as decimals",
-      status: "partial",
-      templateIds: ["right-triangle-missing-leg"],
+      status: "covered",
+      templateIds: ["radical-side-entry"],
       limitations:
-        "right-triangle-missing-leg is the same task but only with integer triples; the item uses decimal side lengths.",
+        "Decimal hypotenuse and leg lengths scaled from integer triples, with numeric entry that also answers plain-number choices.",
     },
     {
       section: "Math module 1",
@@ -309,10 +309,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["nonlinear.transform", "nonlinear.polynomial-zeros"],
       demand:
         "Find the sum of the x-intercepts of a horizontally shifted factored cubic",
-      status: "partial",
-      templateIds: ["zeros-from-factors", "transform-point"],
+      status: "covered",
+      templateIds: ["shifted-polynomial-features"],
       limitations:
-        "Templates read zeros from factors or move one point under a transformation separately; no template shifts a factored polynomial horizontally and works with all its zeros.",
+        "Sum of the x-intercepts of f(x - c) or f(x + c) for a factored cubic with distinct integer zeros, with numeric entry that also answers plain-number choices.",
     },
     {
       section: "Math module 1",
@@ -335,10 +335,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["nonlinear.transform", "nonlinear.features"],
       demand:
         "Find where a horizontally shifted standard-form quadratic reaches its minimum",
-      status: "partial",
-      templateIds: ["parabola-vertex", "transform-point"],
+      status: "covered",
+      templateIds: ["shifted-polynomial-features"],
       limitations:
-        "parabola-vertex finds the vertex of a given quadratic and transform-point moves one point; no template finds the extremum of f(x + c) from f in standard form.",
+        "Location of the extreme value of f(x + c) or f(x - c) for a standard-form quadratic with an integer vertex, entered numerically. The extreme value itself and graph choices are not assessed.",
     },
     {
       section: "Math module 1",
@@ -618,10 +618,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["triangle.relationships"],
       demand:
         "Use a similarity correspondence to state the measure of a corresponding angle despite a side scale factor",
-      status: "partial",
-      templateIds: ["similar-triangle-side"],
+      status: "covered",
+      templateIds: ["corresponding-angle-transfer"],
       limitations:
-        "similar-triangle-side uses correspondence for side lengths only; no template asks for a corresponding angle or traps scaling the angle.",
+        "The similar-scale variant gives a side scale factor and asks a corresponding angle, with the scaled angle as a distractor. Proofs and figure reading are not assessed.",
     },
     {
       section: "Math module 2",
@@ -684,9 +684,9 @@ export const satPractice9 = defineLedger(
       demand:
         "Find the side of a square inscribed in a circle from the circle's radical radius",
       status: "partial",
-      templateIds: ["special-right-triangle"],
+      templateIds: ["special-triangle-in-figure"],
       limitations:
-        "special-right-triangle covers the 45-45-90 step; no template links the circle diameter to the square's diagonal.",
+        "Numeric entry finds the side of a square inscribed in a circle from a radical radius or diameter, using the diagonal as a diameter. The released item's choices may be radical expressions, which numeric integer entry does not verify.",
     },
     {
       section: "Math module 2",

@@ -52,7 +52,7 @@ quadratic.context|Choose a quadratic model and interpret maximum, zero, or initi
 exponential.context|Build and use a growth, decay, or half-life model|exponential-model-rule,exponential-model-value
 exponential.form|Recognize equivalent time-scale forms and interpret factors|exponential-time-scale,compound-growth
 nonlinear.features|Read vertex, symmetry, intercepts, and equivalent structural forms|parabola-vertex,parabola-axis,structure-meaning,quadratic-form-conversion
-nonlinear.transform|Relate transformations to graphs, equations, and points|parabola-shift,transform-equation,transform-point
+nonlinear.transform|Relate transformations to graphs, equations, and points|parabola-shift,transform-equation,transform-point,shifted-polynomial-features
 nonlinear.representations|Connect polynomial, quadratic, and exponential tables, graphs, and formulas|zeros-from-factors,exponential-model-rule,compare-representations
 nonlinear.rational-representations|Connect a rational rule with a table or graph|rational-function-representation
 nonlinear.input-output|Evaluate nonlinear functions or recover allowed inputs|function-evaluation,same-base-equation,rational-function-representation,radical-equation-isolated`,
@@ -81,12 +81,12 @@ measure.area|Find perimeter, area, missing lengths, and composite areas|rectangl
 measure.volume|Find solid volumes and missing dimensions|prism-missing-edge,cylinder-volume,cone-sphere-volume
 measure.surface|Compute surface area from faces or nets|net-surface-area,composite-face-prism-surface-area
 measure.scale|Connect similarity scale factors to lengths, areas, and volumes|dilation-measure,similar-triangle-side,similar-solid-volume
-triangle.relationships|Use congruence and similarity, including sufficient conditions|triangle-congruence-criteria,similar-triangle-side,geometry-proof-step
-angle.relationships|Apply triangle sums and parallel/transversal angle relationships|triangle-angle-sum,geometry-proof-step
-triangle.pythagorean|Solve right triangles and recognize the converse|right-triangle,right-triangle-missing-leg,pythagorean-converse,space-diagonal
-triangle.special|Apply special triangles and acute trigonometric ratios|special-right-triangle,trig-ratio,trig-context-triangle
+triangle.relationships|Use congruence and similarity, including sufficient conditions|triangle-congruence-criteria,similar-triangle-side,geometry-proof-step,corresponding-angle-transfer,crossing-segment-similarity
+angle.relationships|Apply triangle sums and parallel/transversal angle relationships|triangle-angle-sum,geometry-proof-step,angle-chase-chain,angle-claim-reasoning
+triangle.pythagorean|Solve right triangles and recognize the converse|right-triangle,right-triangle-missing-leg,pythagorean-converse,space-diagonal,radical-side-entry
+triangle.special|Apply special triangles and acute trigonometric ratios|special-right-triangle,trig-ratio,trig-context-triangle,special-triangle-in-figure
 triangle.complement|Use sine/cosine relationships of complementary angles|complementary-trig
-circle.parts|Use radius, diameter, tangent, central, and inscribed angle relationships, plus chord, secant, and tangent segment lengths|circle-angles,circle-segment-lengths,circle-circumference-coefficient,circle-area-coefficient
+circle.parts|Use radius, diameter, tangent, central, and inscribed angle relationships, plus chord, secant, and tangent segment lengths|circle-angles,circle-segment-lengths,circle-circumference-coefficient,circle-area-coefficient,circle-radii-triangle
 circle.arc-sector|Find arc lengths, sector areas, and angles in radians|arc-length-coefficient,sector-area-coefficient,radian-arc-ratio
 circle.unit-trig|Use special-angle unit-circle coordinates and signs|unit-circle-coordinate
 circle.angle-units|Convert degrees and radians in both directions|degree-radian-conversion,sat-entry-radian-conversion

@@ -148,10 +148,10 @@ export const satPractice10 = defineLedger(
       ],
       demand:
         "Use a congruence correspondence of right triangles and the angle sum to find a corresponding angle",
-      status: "partial",
-      templateIds: ["triangle-angle-sum"],
+      status: "covered",
+      templateIds: ["corresponding-angle-transfer"],
       limitations:
-        "Angle sums are practiced; no template transfers an angle between triangles through a congruence correspondence.",
+        "The congruent-right variant transfers an acute angle of a right triangle through a congruence statement using the 90-degree sum. Proofs and the released figure are not reproduced.",
     },
     {
       section: "Math module 1",
@@ -212,10 +212,10 @@ export const satPractice10 = defineLedger(
       standards: ["sat.adv.nonlinear-functions"],
       archetypeIds: ["nonlinear.transform", "nonlinear.input-output"],
       demand: "Evaluate at zero a factored cubic after a vertical translation",
-      status: "partial",
-      templateIds: ["transform-point", "function-evaluation"],
+      status: "covered",
+      templateIds: ["shifted-polynomial-features"],
       limitations:
-        "transform-point moves a given point and function-evaluation covers quadratics only; no evaluation of a shifted factored cubic.",
+        "Evaluates a vertically shifted factored cubic at zero with numeric entry. The released cubic's graph is replaced by its factored rule.",
     },
     {
       section: "Math module 1",
@@ -303,10 +303,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["triangle.pythagorean"],
       demand:
         "Find a non-integer hypotenuse from two legs and enter the radicand of its simplified radical form",
-      status: "partial",
-      templateIds: ["right-triangle", "simplify-square-root"],
+      status: "covered",
+      templateIds: ["radical-side-entry"],
       limitations:
-        "right-triangle uses scaled integer triples; simplify-square-root is choice-only; no numeric entry of a radicand from a simplified hypotenuse.",
+        "Numeric entry of the radicand, or the coefficient, of a simplified radical hypotenuse from two integer legs.",
     },
     {
       section: "Math module 1",
@@ -730,10 +730,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["triangle.special"],
       demand:
         "Find the coefficient of the square-root-3 height of an equilateral triangle from its perimeter",
-      status: "partial",
-      templateIds: ["special-right-triangle"],
+      status: "covered",
+      templateIds: ["special-triangle-in-figure"],
       limitations:
-        "30-60-90 ratios with coefficient answers are practiced; no equilateral-triangle altitude from a perimeter.",
+        "An equilateral triangle's perimeter gives its side, and numeric entry asks the coefficient of the square root in the altitude.",
     },
   ],
 );
