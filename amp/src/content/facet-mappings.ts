@@ -921,6 +921,13 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Choose the end behavior, the cross-or-touch description at every zero, or the greatest number of turning points from a factored polynomial or a list of terms, with degrees up to 7. Does not assess sketching or reading a graph, factoring an expanded polynomial, finding zeros of an unfactored polynomial, or inequalities.",
   },
   {
+    templateId: "polynomial-graph-match",
+    facetId: "polynomial-behavior.core",
+    extent: "partial",
+    rationale:
+      "Choose the factored polynomial that matches a plotted graph with integer zeros marked: read each zero, whether the graph crosses or touches there, and the sign of the leading coefficient, with degrees from 3 to 5. Does not assess sketching a graph, factoring an expanded polynomial, zeros that are not integers, or leading coefficients other than 1 and −1.",
+  },
+  {
     templateId: "rational-function-features",
     facetId: "rational-function-behavior.core",
     extent: "partial",

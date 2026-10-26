@@ -2074,6 +2074,13 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
       "Identify end behavior, behavior at zeros and turning points of a polynomial as needed to sketch its graph. Does not assess sketching a graph.",
   },
   {
+    templateId: "polynomial-graph-match",
+    facetId: "polynomial-behavior.HSF.IF.C.7",
+    extent: "partial",
+    rationale:
+      "Match a polynomial graph with marked integer zeros to its factored form using the zeros, the cross-or-touch behavior and the right end. Does not assess sketching a graph or non-integer zeros.",
+  },
+  {
     templateId: "remainder-theorem",
     facetId: "polynomial-division.HSA.APR.B.2",
     extent: "partial",

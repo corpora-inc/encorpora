@@ -5,7 +5,8 @@ import {
   shuffle,
   type Random,
 } from "./distribution-practice";
-import { table } from "./scene/author";
+import { f, graph, table } from "./scene/author";
+import { fromRoots, polynomialWindow } from "./polynomial-scenes";
 
 const choice = {
   version: 1 as const,
@@ -69,6 +70,16 @@ export const functionBehaviorTemplates: readonly TemplateMetadata[] = [
     description:
       "Decide whether a sum or product of rational and irrational numbers is rational, including the zero exception and irrational pairs with a rational result.",
   },
+  {
+    ...choice,
+    id: "polynomial-graph-match",
+    title: "Match a polynomial graph to its factored form",
+    skillId: "polynomial-behavior",
+    difficultyOffset: 0.3,
+    requiredFigureCapability: "scenes-v1",
+    description:
+      "Read the zeros, the cross-or-touch behavior at each zero and the end behavior from a plotted polynomial with integer zeros, and choose the factored polynomial that has that graph.",
+  },
 ];
 
 export const polynomialBehaviorTemplate = functionBehaviorTemplates[0]!;
@@ -77,6 +88,7 @@ export const graphicalSolutionTemplate = functionBehaviorTemplates[2]!;
 export const polynomialIdentityTemplate = functionBehaviorTemplates[3]!;
 export const binomialCoefficientTemplate = functionBehaviorTemplates[4]!;
 export const numberSystemClosureTemplate = functionBehaviorTemplates[5]!;
+export const polynomialGraphMatchTemplate = functionBehaviorTemplates[6]!;
 
 type Wrong = { label: string; feedback: string };
 type Spec = {
@@ -1324,6 +1336,135 @@ export function numberSystemClosureCase(seed: string) {
   };
 }
 
+// ------------------------------------------------------- polynomial graph match
+type PolyShape = { roots: number[]; mult: number[]; a: 1 | -1 };
+const polyText = ({ roots, mult, a }: PolyShape) =>
+  `$P(x)=${a < 0 ? "-" : ""}${roots.map((z, i) => factor(z, mult[i]!)).join("")}$`;
+const polyKey = ({ roots, mult, a }: PolyShape) =>
+  JSON.stringify([roots, mult, a]);
+
+export function polynomialGraphMatchCase(seed: string) {
+  const meta = polynomialGraphMatchTemplate;
+  const r = start(meta, seed);
+  let shape: PolyShape;
+  for (;;) {
+    const count = r(2, 3);
+    const roots = shuffle(r, [-3, -2, -1, 0, 1, 2, 3]).slice(0, count);
+    roots.sort((x, y) => x - y);
+    const mult = roots.map(() => r(1, 2));
+    const degree = mult.reduce((t, m) => t + m, 0);
+    // Both a crossing and a touching zero, so the graph shows both shapes.
+    if (degree < 3 || degree > 5 || !mult.includes(1) || !mult.includes(2))
+      continue;
+    shape = { roots, mult, a: r(0, 1) ? 1 : -1 };
+    break;
+  }
+  const { roots, mult, a } = shape;
+  const degree = mult.reduce((t, m) => t + m, 0);
+  const wrongShapes: { shape: PolyShape; feedback: string }[] = [];
+  // Flip the sign: the ends go the other way.
+  wrongShapes.push({
+    shape: { ...shape, a: -a as 1 | -1 },
+    feedback:
+      "The zeros match, but the ends do not. Check the sign of the leading coefficient: the right end of the graph rises when it is positive and falls when it is negative.",
+  });
+  // Swap a crossing and a touching zero.
+  const k = r(0, roots.length - 1);
+  wrongShapes.push({
+    shape: { ...shape, mult: mult.map((m, i) => (i === k ? 3 - m : m)) },
+    feedback: `At $x=${roots[k]}$ the graph ${mult[k] === 1 ? "crosses the axis, so that factor needs an odd exponent" : "touches the axis and turns back, so that factor needs an even exponent"}. The exponent of this choice does the opposite.`,
+  });
+  // Mirror the zeros left to right.
+  wrongShapes.push({
+    shape: {
+      roots: roots.map((z) => -z).reverse(),
+      mult: [...mult].reverse(),
+      a,
+    },
+    feedback:
+      "The zeros are on the wrong sides of the origin. A factor $(x+c)$ has its zero at $x=-c$, and $(x-c)$ at $x=c$; read each zero from the graph and then write the factor.",
+  });
+  // Move one zero by one unit.
+  const step = r(0, 1) ? 1 : -1;
+  wrongShapes.push({
+    shape: { ...shape, roots: roots.map((z, i) => (i === k ? z + step : z)) },
+    feedback: `One zero is misplaced. The graph meets the axis at ${andList(roots.map((z) => `$x=${z}$`))}; each factor must have its zero at one of these points.`,
+  });
+  // Spares when a symmetric set of zeros makes two of the above coincide.
+  wrongShapes.push({
+    shape: {
+      roots: roots.map((z) => -z).reverse(),
+      mult: [...mult].reverse(),
+      a: -a as 1 | -1,
+    },
+    feedback:
+      "Both the zeros and the ends are wrong. Read each zero from the graph, write its factor, then check which way the right end goes.",
+  });
+  wrongShapes.push({
+    shape: {
+      ...shape,
+      mult: mult.map((m, i) => (i === (k + 1) % roots.length ? 3 - m : m)),
+    },
+    feedback: `The exponents do not match the graph: a factor has an odd exponent where the graph crosses the axis and an even exponent where it touches.`,
+  });
+  wrongShapes.push({
+    shape: { ...shape, mult: mult.map((m) => 3 - m) },
+    feedback:
+      "Every crossing and touching is reversed. A crossing needs an odd exponent and a touch needs an even one.",
+  });
+  const seen = new Set([polyKey(shape)]);
+  const wrong: Wrong[] = [];
+  for (const w of shuffle(r, wrongShapes)) {
+    const sorted = [...w.shape.roots].sort((x, y) => x - y);
+    if (
+      new Set(w.shape.roots).size !== w.shape.roots.length ||
+      sorted.some((z, i) => z !== w.shape.roots[i]) ||
+      seen.has(polyKey(w.shape))
+    )
+      continue;
+    seen.add(polyKey(w.shape));
+    wrong.push({ label: polyText(w.shape), feedback: w.feedback });
+  }
+  if (wrong.length < 3) throw new Error("Too few distinct graph-match choices");
+  const desc = fromRoots(
+    a,
+    roots.flatMap((z, i) => Array<number>(mult[i]!).fill(z)),
+  );
+  const win = polynomialWindow(desc, roots);
+  let g = graph({
+    id: "g",
+    x: win.x,
+    y: win.y,
+    grid: [1, win.grid],
+    tick: [1, win.grid],
+  }).curve(f.poly(...desc));
+  // Each zero is marked with its x-value; the learner reads the factors,
+  // whether each crosses or touches, and the end behavior from the curve.
+  for (const z of roots) g = g.point(z, 0, `${z}`.replace("-", "−"));
+  const figure = g.scene({
+    title: "The graph of a polynomial with integer zeros",
+  });
+  const cross = roots.filter((_, i) => mult[i] === 1);
+  const touch = roots.filter((_, i) => mult[i] === 2);
+  return {
+    variant: 0,
+    shape,
+    problem: finish(meta, seed, r, {
+      prompt:
+        "The graph of a polynomial $P$ is shown. Its zeros are integers, and its leading coefficient is $1$ or $-1$. Which factored form gives this graph?",
+      hint: `Find where the graph meets the $x$-axis and whether it crosses or touches there: a crossing needs an odd exponent and a touch needs an even one. Then check which way the right end goes.`,
+      explanation: [
+        `The graph meets the $x$-axis at ${andList(roots.map((z) => `$x=${z}$`))}, so the factors are ${andList(roots.map((z) => `$${factor(z)}$`))}.`,
+        `It crosses at ${andList(cross.map((z) => `$x=${z}$`))} (exponent 1) and touches and turns back at ${andList(touch.map((z) => `$x=${z}$`))} (exponent 2), so the degree is $${degree}$.`,
+        `The right end ${a > 0 ? "rises" : "falls"}, so the leading coefficient is $${a}$: ${polyText(shape)}.`,
+      ],
+      figure: { kind: "scene", scene: figure },
+      correct: polyText(shape),
+      wrong,
+    }),
+  };
+}
+
 const generators: Record<string, (seed: string) => { problem: GeneratedProblem }> = {
   "polynomial-behavior-description": polynomialBehaviorCase,
   "rational-function-features": rationalFunctionCase,
@@ -1331,6 +1472,7 @@ const generators: Record<string, (seed: string) => { problem: GeneratedProblem }
   "polynomial-identity-use": polynomialIdentityCase,
   "binomial-coefficient": binomialCoefficientCase,
   "number-system-closure-classify": numberSystemClosureCase,
+  "polynomial-graph-match": polynomialGraphMatchCase,
 };
 export function generateFunctionBehaviorProblem(
   templateId: string,

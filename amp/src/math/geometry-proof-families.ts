@@ -1,4 +1,22 @@
 import type { TemplateMetadata } from "./contracts";
+import type { Scene } from "./scene/spec";
+import {
+  angleSumFigure,
+  bisectorFigure,
+  crossingFigure,
+  cyclicQuadrilateralFigure,
+  equidistantFigure,
+  isoscelesFigure,
+  medianFigure,
+  midsegmentFigure,
+  parallelogramFigure,
+  regularPolygonFigure,
+  rightTriangleCircleFigure,
+  tangentFigure,
+  transversalFigure,
+  triangleCircleFigure,
+  twoTangentsFigure,
+} from "./geometry-teaching-figures";
 import { assemble, seeded, pick, shuffle, gcd } from "./algebra-one-kit";
 import type { Random } from "./algebra-one-kit";
 
@@ -16,6 +34,8 @@ export type ProofVariant = {
   wrong: Wrong[];
   hint: string;
   explanation: string[];
+  /** The teaching figure: only the givens, never the answer. */
+  scene?: Scene;
   /** Private numeric facts used by independent checks. */
   model?: Record<string, unknown>;
 };
@@ -55,6 +75,7 @@ const lineReasons = {
 const lineAngleFamily: Family = {
   meta: {
     id: "line-angle-proof-reasons",
+    requiredFigureCapability: "scenes-v1",
     title: "Justify a line and angle proof step",
     skillId: "line-angle-proofs",
     difficultyOffset: -0.2,
@@ -69,6 +90,7 @@ const lineAngleFamily: Family = {
       ]);
       return {
         tag: "alternate-interior",
+        scene: transversalFigure(),
         label: "Reason for the proof step",
         prompt: `Lines $\\ell$ and $m$ are parallel. Transversal $t$ crosses both. Angles ${a} and ${b} lie between $\\ell$ and $m$, on opposite sides of $t$. A proof states $m\\angle ${a} = m\\angle ${b}$. Which reason justifies this step?`,
         correct: lineReasons.alt,
@@ -105,6 +127,7 @@ const lineAngleFamily: Family = {
       ]);
       return {
         tag: "bisector-equidistant",
+        scene: bisectorFigure(x, y),
         label: "Reason for the proof step",
         prompt: `Line $\\ell$ is the perpendicular bisector of $\\overline{${x}${y}}$, and point $P$ is on $\\ell$. A proof states $P${x} = P${y}$. Which reason justifies this step?`,
         correct: lineReasons.bis,
@@ -137,6 +160,7 @@ const lineAngleFamily: Family = {
       ]);
       return {
         tag: "equidistant-converse",
+        scene: equidistantFigure(x, y),
         label: "Reason for the proof step",
         prompt: `In a proof, $P${x} = P${y}$ is given. The next step states that $P$ lies on the perpendicular bisector of $\\overline{${x}${y}}$. Which reason justifies this step?`,
         correct: lineReasons.conv,
@@ -172,6 +196,7 @@ const lineAngleFamily: Family = {
       const right = lin(c, -dd);
       return {
         tag: "vertical-equation",
+        scene: crossingFigure(left, right),
         label: "Equation for the proof step",
         prompt: `Lines $AC$ and $BD$ cross at $O$, with $O$ between $A$ and $C$ and between $B$ and $D$. Angle $AOB$ measures $(${left})^\\circ$ and angle $COD$ measures $(${right})^\\circ$. Which equation does the vertical angles theorem justify?`,
         correct: m(`${left}=${right}`),
@@ -204,6 +229,7 @@ const lineAngleFamily: Family = {
 const triangleProofFamily: Family = {
   meta: {
     id: "triangle-theorem-consequences",
+    requiredFigureCapability: "scenes-v1",
     title: "Use a triangle theorem in a proof",
     skillId: "triangle-proofs",
     difficultyOffset: 0,
@@ -217,6 +243,7 @@ const triangleProofFamily: Family = {
       const b = (180 - a) / 2;
       return {
         tag: "base-angles",
+        scene: isoscelesFigure(a),
         label: "Angle measure",
         prompt: `In triangle $ABC$, $AB = AC$ and $m\\angle A = ${dg(a)}$. What is $m\\angle B$?`,
         correct: deg(b),
@@ -254,6 +281,7 @@ const triangleProofFamily: Family = {
       const d = 2 * t - c * x0;
       return {
         tag: "midsegment",
+        scene: midsegmentFigure(lin(p, q), lin(c, d)),
         label: "Length",
         prompt: `In triangle $ABC$, $D$ and $E$ are the midpoints of $\\overline{AB}$ and $\\overline{AC}$. The length of $\\overline{DE}$ is $${lin(p, q)}$ and the length of $\\overline{BC}$ is $${lin(c, d)}$ (same units). What is $BC$?`,
         correct: m(2 * t),
@@ -293,6 +321,7 @@ const triangleProofFamily: Family = {
           ];
       return {
         tag: "median-ratio",
+        scene: medianFigure(ask ? "AM" : "GM", ask ? full : k),
         label: "Length",
         prompt: `The medians of triangle $ABC$ meet at $G$. $M$ is the midpoint of $\\overline{BC}$, so $\\overline{AM}$ is a median and $G$ lies on it between $A$ and $M$. $${givenName}=${givenValue}$. What is $${wantName}$?`,
         correct: m(correct as number),
@@ -322,6 +351,7 @@ const triangleProofFamily: Family = {
       };
       return {
         tag: "angle-sum-step",
+        scene: angleSumFigure(),
         label: "Reason for the proof step",
         prompt: `A proof that the angles of triangle $ABC$ sum to $180^\\circ$ draws line $\\ell$ through $C$ parallel to $\\overline{AB}$. Let $A'$ be a point on $\\ell$ on the same side of $C$ as $A$. The proof then states $m\\angle A'CA = m\\angle CAB$. Which reason justifies this step?`,
         correct: reasons.alt,
@@ -359,6 +389,7 @@ const pReasons = {
 const parallelogramFamily: Family = {
   meta: {
     id: "parallelogram-property-consequences",
+    requiredFigureCapability: "scenes-v1",
     title: "Use parallelogram and rectangle theorems",
     skillId: "parallelogram-proofs",
     difficultyOffset: 0.1,
@@ -397,6 +428,11 @@ const parallelogramFamily: Family = {
       }[kind];
       return {
         tag: `reason-${kind}`,
+        scene: parallelogramFigure({
+          rectangle: kind === "rectDiag",
+          parallel: kind !== "rectDiag",
+          diagonals: kind === "bisect" || kind === "rectDiag",
+        }),
         label: "Reason for the proof step",
         prompt: `${info[0]} Which reason justifies this step?`,
         correct: pReasons[kind],
@@ -425,6 +461,11 @@ const parallelogramFamily: Family = {
       const d = t - c * x0;
       return {
         tag: "diagonal-halves",
+        scene: parallelogramFigure({
+          parallel: true,
+          diagonals: true,
+          labels: { ae: lin(p, q), ec: lin(c, d) },
+        }),
         label: "Length",
         prompt: `Diagonals $\\overline{AC}$ and $\\overline{BD}$ of parallelogram $ABCD$ meet at $E$. $AE=${lin(p, q)}$ and $EC=${lin(c, d)}$ (same units). What is $AC$?`,
         correct: m(2 * t),
@@ -456,6 +497,11 @@ const parallelogramFamily: Family = {
       const d = t - c * x0;
       return {
         tag: "rectangle-diagonals",
+        scene: parallelogramFigure({
+          rectangle: true,
+          diagonals: true,
+          labels: { ac: lin(p, q), bd: lin(c, d) },
+        }),
         label: "Length",
         prompt: `$ABCD$ is a rectangle with diagonals $AC=${lin(p, q)}$ and $BD=${lin(c, d)}$ (same units). What is $AC$?`,
         correct: m(t),
@@ -484,6 +530,11 @@ const parallelogramFamily: Family = {
       const a = R(r, [50, 60, 70, 80, 100, 110, 120, 130]);
       return {
         tag: "consecutive-angles",
+        scene: parallelogramFigure({
+          parallel: true,
+          angleA: a,
+          angles: { A: `${a}°`, B: null },
+        }),
         label: "Angle measure",
         prompt: `In parallelogram $ABCD$, $m\\angle A=${dg(a)}$. What is $m\\angle B$?`,
         correct: deg(180 - a),
@@ -1417,6 +1468,7 @@ const constructionFamily: Family = {
 const inscribedFamily: Family = {
   meta: {
     id: "inscribed-polygon-reasoning",
+    requiredFigureCapability: "scenes-v1",
     title: "Reason about polygons inscribed in a circle",
     skillId: "inscribed-polygons",
     difficultyOffset: 0.2,
@@ -1426,6 +1478,7 @@ const inscribedFamily: Family = {
   variants: [
     () => ({
       tag: "hexagon-side-reason",
+      scene: regularPolygonFigure(6, { radiusLabel: "r" }),
       label: "Reason",
       prompt:
         "A regular hexagon is inscribed in a circle with center $O$ and radius $r$, by stepping a compass opened to $r$ around the circle. Why does each side of the hexagon equal $r$?",
@@ -1456,6 +1509,7 @@ const inscribedFamily: Family = {
       const rad = r(3, 12);
       return {
         tag: "hexagon-perimeter",
+        scene: regularPolygonFigure(6, { radiusLabel: `${rad}` }),
         label: "Perimeter",
         prompt: `A regular hexagon is inscribed in a circle of radius ${rad} cm by stepping a compass opened to ${rad} cm around the circle. What is the perimeter of the hexagon?`,
         correct: m(`${6 * rad}\\text{ cm}`),
@@ -1483,6 +1537,7 @@ const inscribedFamily: Family = {
       const c = 360 / n;
       return {
         tag: "central-angle",
+        scene: regularPolygonFigure(n, { central: "unknown" }),
         label: "Angle",
         prompt: `A regular polygon with ${n} sides is inscribed in a circle with center $O$. What is the measure of the central angle between two neighboring vertices, the angle at $O$ formed by the radii to them?`,
         correct: deg(c),
@@ -1580,6 +1635,7 @@ const centerFeedback = {
 const triangleCirclesFamily: Family = {
   meta: {
     id: "triangle-circle-centers",
+    requiredFigureCapability: "scenes-v1",
     title: "Find circles tied to a triangle or quadrilateral",
     skillId: "triangle-circles",
     difficultyOffset: 0.3,
@@ -1592,6 +1648,7 @@ const triangleCirclesFamily: Family = {
       const key = incircle ? "in" : "circum";
       return {
         tag: incircle ? "incenter" : "circumcenter",
+        scene: triangleCircleFigure(incircle ? "in" : "circum"),
         label: "Construction",
         prompt: incircle
           ? "Which construction locates the center of the circle inside triangle $ABC$ that touches all three sides?"
@@ -1621,6 +1678,7 @@ const triangleCirclesFamily: Family = {
       ]);
       return {
         tag: "cyclic-opposite",
+        scene: cyclicQuadrilateralFigure(a, { [A]: `${a}°`, [C]: null }),
         label: "Angle measure",
         prompt: `Quadrilateral $ABCD$ is inscribed in a circle, with vertices in order around the circle. $m\\angle ${A} = ${dg(a)}$. What is $m\\angle ${C}$?`,
         correct: deg(c),
@@ -1660,6 +1718,10 @@ const triangleCirclesFamily: Family = {
       const d = 180 - alpha - c * x0;
       return {
         tag: "cyclic-algebra",
+        scene: cyclicQuadrilateralFigure(alpha, {
+          A: `(${lin(p, q)})°`,
+          C: `(${lin(c, d)})°`,
+        }),
         label: "Angle measure",
         prompt: `Quadrilateral $ABCD$ is inscribed in a circle. $m\\angle A=(${lin(p, q)})^\\circ$ and the opposite angle has $m\\angle C=(${lin(c, d)})^\\circ$. What is $m\\angle A$?`,
         correct: deg(alpha),
@@ -1699,6 +1761,7 @@ const triangleCirclesFamily: Family = {
       const inr = (a + b - h) / 2;
       return {
         tag: "right-triangle-circumradius",
+        scene: rightTriangleCircleFigure(a, b, h),
         label: "Radius",
         prompt: `A right triangle has legs ${a} and ${b}. The circle through all three of its vertices has center at the midpoint of the hypotenuse. What is the radius of that circle?`,
         correct: m(circum),
@@ -1741,6 +1804,7 @@ const triples: [number, number, number][] = [
 const tangentFamily: Family = {
   meta: {
     id: "tangent-circle-computation",
+    requiredFigureCapability: "scenes-v1",
     title: "Compute with tangents to a circle",
     skillId: "tangent-construction",
     difficultyOffset: 0.3,
@@ -1753,6 +1817,11 @@ const tangentFamily: Family = {
       const [rad, t] = r(0, 1) ? [x, y] : [y, x];
       return {
         tag: "tangent-length",
+        scene: tangentFigure({
+          radius: rad,
+          op: d,
+          labels: { r: `${rad}`, op: `${d}`, pt: null },
+        }),
         label: "Length",
         prompt: `Point $P$ is outside a circle with center $O$ and radius ${rad}. $OP=${d}$ and $\\overline{PT}$ is tangent to the circle at $T$. What is $PT$?`,
         correct: m(t),
@@ -1792,6 +1861,7 @@ const tangentFamily: Family = {
       const d = t - c * x0;
       return {
         tag: "equal-tangents",
+        scene: twoTangentsFigure(lin(p, q), lin(c, d)),
         label: "Length",
         prompt: `From an external point $P$, tangent segments $\\overline{PA}$ and $\\overline{PB}$ touch a circle at $A$ and $B$. $PA=${lin(p, q)}$ and $PB=${lin(c, d)}$ (same units). What is $PA$?`,
         correct: m(t),
@@ -1823,6 +1893,11 @@ const tangentFamily: Family = {
       const [rad, t] = r(0, 1) ? [x, y] : [y, x];
       return {
         tag: "radius-from-tangent",
+        scene: tangentFigure({
+          radius: rad,
+          op: d,
+          labels: { r: null, op: `${d}`, pt: `${t}` },
+        }),
         label: "Length",
         prompt: `Line $PT$ is tangent to a circle with center $O$ at point $T$. $OP=${d}$ and $PT=${t}$. What is the radius of the circle?`,
         correct: m(rad),
@@ -1850,6 +1925,13 @@ const tangentFamily: Family = {
       const a = R(r, [20, 25, 30, 35, 40, 55, 60, 65, 70]);
       return {
         tag: "tangent-angle",
+        scene: tangentFigure({
+          radius: 1,
+          op: 1 / Math.cos((a * Math.PI) / 180),
+          labels: {},
+          angleTOP: `${a}°`,
+          angleOPT: null,
+        }),
         label: "Angle measure",
         prompt: `Line $PT$ is tangent to a circle with center $O$ at $T$. $m\\angle TOP=${dg(a)}$. What is $m\\angle OPT$?`,
         correct: deg(90 - a),
@@ -2445,6 +2527,7 @@ export function proofConstructionCase(id: string, seed: string) {
       explanation: v.explanation,
       hint: v.hint,
       tags: [v.tag],
+      ...(v.scene ? { scene: v.scene } : {}),
     },
     r,
     v.label,

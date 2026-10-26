@@ -1,4 +1,13 @@
-import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import type {
+  GeneratedProblem,
+  SemanticFigure,
+  TemplateMetadata,
+} from "./contracts";
+import {
+  obliqueFigure,
+  sceneFigure,
+  sidesFromAngles,
+} from "./geometry-teaching-figures";
 import { assemble, random, type Random } from "./distribution-practice";
 import { f, graph } from "./scene/author";
 
@@ -77,6 +86,7 @@ export const trigonometryTemplates: readonly TemplateMetadata[] = [
     "oblique-triangles",
     0.45,
     "Find a side or angle of a non-right triangle with the law of sines or cosines, or count the triangles in the ambiguous side-side-angle case.",
+    { requiredFigureCapability: "scenes-v1" },
   ),
   meta(
     "trig-triangle-area",
@@ -1654,6 +1664,7 @@ export function obliqueCase(seed: string) {
   let cands: Cand[] = [];
   let explanation: string[] = [];
   let truth = 0;
+  let figure: SemanticFigure | undefined;
   const lengthLabel = (x: number) => math(tenth(x));
   const degreeLabel = (x: number) => math(`${Math.round(x)}^\\circ`);
 
@@ -1695,6 +1706,16 @@ export function obliqueCase(seed: string) {
         `$b=\\frac{${a}\\sin ${B}^\\circ}{\\sin ${A}^\\circ}$.`,
         `$b\\approx${tenth(val)}$ units.`,
       ];
+      {
+        const sd = sidesFromAngles(A, B, a);
+        figure = sceneFigure(
+          obliqueFigure({
+            sides: [sd.a, sd.b, sd.c],
+            shown: { a: String(a), b: null },
+            angles: { A: `${A}°`, B: `${B}°` },
+          }),
+        );
+      }
       if (new Set([correct, ...cands.map((c) => c.label)]).size < 4) continue;
       break;
     }
@@ -1729,6 +1750,13 @@ export function obliqueCase(seed: string) {
         `$c^2\\approx${tenth(val * val)}$.`,
         `$c\\approx${tenth(val)}$ units.`,
       ];
+      figure = sceneFigure(
+        obliqueFigure({
+          sides: [a, b, val],
+          shown: { a: String(a), b: String(b), c: null },
+          angles: { C: `${C}°` },
+        }),
+      );
       if (new Set([correct, ...cands.map((c) => c.label)]).size < 4) continue;
       break;
     }
@@ -1777,6 +1805,13 @@ export function obliqueCase(seed: string) {
         `$c^2=a^2+b^2-2ab\\cos C$ gives $\\cos C=\\frac{${a * a}+${b * b}-${c * c}}{2(${a})(${b})}=\\frac{${a * a + b * b - c * c}}{${2 * a * b}}$.`,
         `$C=\\arccos\\left(\\frac{${a * a + b * b - c * c}}{${2 * a * b}}\\right)\\approx${Math.round(C)}^\\circ$.`,
       ];
+      figure = sceneFigure(
+        obliqueFigure({
+          sides: [a, b, c],
+          shown: { a: String(a), b: String(b), c: String(c) },
+          angles: { C: null },
+        }),
+      );
       if (new Set([correct, ...cands.map((c) => c.label)]).size < 4) continue;
       break;
     }
@@ -1824,6 +1859,16 @@ export function obliqueCase(seed: string) {
         `$\\sin B=\\frac{${b}\\sin ${A}^\\circ}{${a}}\\approx${s.toFixed(3)}$.`,
         `Since $b<a$, angle $B$ is smaller than $A$, so it is the acute angle: $B\\approx${Math.round(B)}^\\circ$.`,
       ];
+      {
+        const sd = sidesFromAngles(A, B, a);
+        figure = sceneFigure(
+          obliqueFigure({
+            sides: [sd.a, sd.b, sd.c],
+            shown: { a: String(a), b: String(b) },
+            angles: { A: `${A}°`, B: null },
+          }),
+        );
+      }
       if (new Set([correct, ...cands.map((c) => c.label)]).size < 4) continue;
       break;
     }
@@ -1914,6 +1959,7 @@ export function obliqueCase(seed: string) {
   const choices = choicesFrom(correct, cands);
   const problem = assemble(trigonometryTemplates[6]!, seed, r, {
     prompt,
+    ...(figure ? { figure } : {}),
     answer: "",
     hint,
     explanation,
