@@ -37,10 +37,10 @@ export const mcasGrade4 = defineLedger(
       standards: ["4.OA.B.4"],
       archetypeIds: ["number.prime-composite"],
       demand: "Select the two prime numbers among five whole numbers",
-      status: "partial",
-      templateIds: ["prime-composite-sort"],
+      status: "covered",
+      templateIds: ["prime-composite-sort", "mcas-prime-factor-select"],
       limitations:
-        "prime-composite-sort chooses one prime, composite or neither number; selecting every prime of a list by multiple selection is not practiced.",
+        "Two primes of five whole numbers below 100 are selected by multiple selection; prime factorization is not assessed here.",
     },
     {
       section: "Session 1",
@@ -136,9 +136,13 @@ export const mcasGrade4 = defineLedger(
       demand:
         "Select the three equations that find the number of students when a quantity is four times another",
       status: "partial",
-      templateIds: ["comparison-amount", "comparison-factor"],
+      templateIds: [
+        "comparison-amount",
+        "comparison-factor",
+        "mcas-comparison-equations-select",
+      ],
       limitations:
-        "Both families solve times-as-many stories by entry; choosing the multiplication and division equations of a comparison story by multiple selection is not practiced.",
+        "Three of six equations for a times-as-many or more-than story are selected, but the unknown is always the larger quantity; the released item gives the larger total (36 jars is 4 times the students) and asks for the smaller, so the division direction is not practiced.",
     },
     {
       section: "Session 1",
@@ -249,10 +253,14 @@ export const mcasGrade4 = defineLedger(
         "number.divisibility",
       ],
       demand: "Select the three factors of sixty-four among six numbers",
-      status: "partial",
-      templateIds: ["factor-partner", "divisibility-rule-check"],
+      status: "covered",
+      templateIds: [
+        "factor-partner",
+        "divisibility-rule-check",
+        "mcas-prime-factor-select",
+      ],
       limitations:
-        "factor-partner finds a partner of one factor and divisibility-rule-check chooses a digit; listing the factors of a number by multiple selection is not practiced.",
+        "Three factors of a number up to 96 among six candidates that include multiples are selected by multiple selection; listing all factors by entry is not assessed.",
     },
     {
       section: "Session 2",
@@ -307,9 +315,9 @@ export const mcasGrade4 = defineLedger(
       demand:
         "Select the three correct statements about whether three products of a three-digit and a one-digit number are right",
       status: "partial",
-      templateIds: ["multiply-by-one-digit"],
+      templateIds: ["multiply-by-one-digit", "mcas-true-product-equations"],
       limitations:
-        "multiply-by-one-digit finds a product by entry; judging a stated product true or false for three equations by multiple selection is not practiced.",
+        "Three of six stated products of a three-digit and a one-digit number are judged correct, but every option is an equation to confirm; the released item pairs each product with an 'is true' and an 'is false' statement and asks for the correct one of each pair, so selecting false statements is not practiced.",
     },
   ],
 );

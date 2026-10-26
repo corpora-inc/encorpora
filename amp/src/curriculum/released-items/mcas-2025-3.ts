@@ -101,10 +101,10 @@ export const mcasGrade3 = defineLedger(
       standards: ["3.NBT.A.1"],
       archetypeIds: ["number.inverse-round-whole", "number.round-whole"],
       demand: "Select the two prices that round to a stated hundred",
-      status: "partial",
-      templateIds: ["round-to-hundred"],
+      status: "covered",
+      templateIds: ["round-to-hundred", "mcas-round-hundred-select"],
       limitations:
-        "round-to-hundred rounds one number forward by entry; selecting every value that rounds to a stated hundred is the inverse and needs two selections.",
+        "Two of five prices or counts that round to a stated hundred, with values at and just past the halfway point, are selected by multiple selection; rounding to other places is not assessed here.",
     },
     {
       section: "Session 1",
@@ -225,9 +225,9 @@ export const mcasGrade3 = defineLedger(
       demand:
         "Select the three true multiplication and division equations among six",
       status: "partial",
-      templateIds: ["fl-equation-truth-mult-div"],
+      templateIds: ["fl-equation-truth-mult-div", "mcas-true-fact-equations"],
       limitations:
-        "fl-equation-truth-mult-div chooses one true equation; selecting three true equations by multiple selection with a quotient on the left side is not practiced.",
+        "Three of six multiplication and division facts are selected as true, but every equation has the operation on the left; equations written with the result first, such as 64 = 8 times 8 and 7 = 63 divided by 8, are not practiced.",
     },
     {
       section: "Session 2",
