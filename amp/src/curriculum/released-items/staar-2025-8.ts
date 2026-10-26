@@ -85,10 +85,14 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["number.real-order"],
       demand:
         "Choose the true inequality among numbers written as signed decimals, fractions and roots",
-      status: "partial",
-      templateIds: ["compare-irrational-values", "signed-context-order"],
+      status: "covered",
+      templateIds: [
+        "staar-order-mixed-forms",
+        "compare-irrational-values",
+        "signed-context-order",
+      ],
       limitations:
-        "Related families compare roots, fractions and decimals or signed values; mixing negative decimals with roots in one comparison is not practiced.",
+        "staar-order-mixed-forms chooses the true comparison among signed decimals, fractions and square roots.",
     },
     {
       item: {
@@ -100,10 +104,14 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Choose both the slope and the y-intercept of the line through two stated points",
-      status: "partial",
-      templateIds: ["line-slope", "graphed-line-slope"],
+      status: "covered",
+      templateIds: [
+        "staar-line-from-points",
+        "line-slope",
+        "graphed-line-slope",
+      ],
       limitations:
-        "line-slope and graphed-line-slope find the slope by entry; finding the y-intercept as well and choosing the pair are not practiced.",
+        "staar-line-from-points chooses the slope and y-intercept of the line through two integer points.",
     },
     {
       item: {
@@ -175,10 +183,14 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["linear.solve"],
       demand:
         "Solve an equation with a distributed negative coefficient and variables on both sides",
-      status: "partial",
-      templateIds: ["both-sides-linear-equation", "grouped-linear-equation"],
+      status: "covered",
+      templateIds: [
+        "staar-multistep-equations",
+        "both-sides-linear-equation",
+        "grouped-linear-equation",
+      ],
       limitations:
-        "Related families handle grouped terms or variables on both sides separately; an equation with both in one problem is not practiced.",
+        "staar-multistep-equations solves an equation with a negative factor distributed over a group and variables on both sides, by entry.",
     },
     {
       item: {
@@ -586,10 +598,10 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["number.real-order"],
       demand:
         "Choose the list of a fraction, a percent, a decimal and a root in order from least to greatest",
-      status: "partial",
-      templateIds: ["compare-irrational-values"],
+      status: "covered",
+      templateIds: ["staar-order-mixed-forms", "compare-irrational-values"],
       limitations:
-        "compare-irrational-values orders roots, fractions and decimals; a percent value in the list is not practiced.",
+        "staar-order-mixed-forms orders a fraction, a percent, a decimal and a square root from least to greatest by choice.",
     },
     {
       item: {

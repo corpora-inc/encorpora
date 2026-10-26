@@ -48,9 +48,50 @@ Of the 260 items, 179 are multiple choice, 29 drag and drop, 19 inline choice, 1
 
 The largest gaps are order of operations with nested groups, negatives and exponents, choosing or assembling the equation for a story, relationships between paired terms and tables, dot-plot, histogram and stem-and-leaf reading beyond a single count, area and perimeter chains and decimal sides, slope and intercept from points, the coordinate rule of a transformation and area, volume and surface-area chains. Fifteen items have no related practice: number words, percent-fraction-decimal renaming, credit and expense vocabulary, classification of number sets, benchmark fraction estimates, percentage bar graphs, strip diagrams for multistep stories, ratio writing, number-line diagrams of stories and properties of solid faces.
 
-The STAAR sources are not saturated: from Grade 3 to Algebra I they add 20, 20, 13, 13, 7, 8 and 8 archetypes not seen in any earlier source, and 20% to 76% of their items fall on archetypes already seen. Elementary tests introduce the most.
+The STAAR sources are not saturated: from Grade 3 to Algebra I they add 21, 20, 15, 13, 7, 9 and 8 archetypes not seen in any earlier source, and 17% to 76% of their items fall on archetypes already seen. Elementary tests introduce the most.
 
 A second labeler re-labeled a seeded random 10% sample (26 items across all seven tests) without seeing the first labels. Response format agreed on 26 (100%), status on 22 (84.6%), archetypes overlapped on 25 (96.2%) and templates on 22 (84.6%). The status disagreements were resolved by applying two rules to every test: a family counts as related practice only if it practices the item's core operation or reading, not merely its topic or representation (two sampled items and two others of the same kind became missing), and perimeter practice with whole-number sides does not cover decimal sides. A story context or label around a graph read does not change the task.
+
+The earlier purposive samples (New York grade 7 and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
+
+### MCAS mathematics
+
+All 162 mathematics items that the Massachusetts Department of Elementary and Secondary Education released from the Spring 2025 paper-based MCAS tests are labeled: 20 operational items each for grades 3 through 8 (of 40 per form) and all 42 for grade 10. The other 20 items of each grade 3 through 8 form are listed as unreleased and are not labeled; computer-based technology-enhanced items are released separately and are not in these forms. The released-item table of each PDF states the standard, item type and answer, so every row records the standard as printed. The earlier five-item purposive samples of grades 5, 8 and 10 are folded into the same source records.
+
+| Test | Items | Covered | Partial | Missing |
+| --- | ---: | ---: | ---: | ---: |
+| Grade 3 | 20 | 5 (25%) | 15 (75%) | 0 (0%) |
+| Grade 4 | 20 | 6 (30%) | 14 (70%) | 0 (0%) |
+| Grade 5 | 20 | 11 (55%) | 9 (45%) | 0 (0%) |
+| Grade 6 | 20 | 7 (35%) | 13 (65%) | 0 (0%) |
+| Grade 7 | 20 | 8 (40%) | 12 (60%) | 0 (0%) |
+| Grade 8 | 20 | 8 (40%) | 11 (55%) | 1 (5%) |
+| Grade 10 | 42 | 8 (19%) | 33 (78.6%) | 1 (2.4%) |
+
+Of the 162 items, 103 are single-answer choice, 31 multiselect, 16 constructed response and 12 short-answer numeric. Eighteen multiselect items are covered: the quadrilateral hierarchy, the slope triangles and 16 items practiced by families that grade an exact set of true statements, equations, numbers, tables or expressions. The other 13 multiselect items need a drawn shape, cube arrangement, protractor, symmetry figure or number line, pair true and false statements of one equation, give the larger quantity of a comparison, write equations with the result first, use powers of pi or radicals, or pair word forms with numerals, and have related practice only in single-choice or numeric families. The 16 constructed responses (multipart, with shown work or explanations) have no protocol.
+
+MCAS adds no single dominant gap. Partial items concentrate on volume and area chains, rates with fractional quantities, percent of a quantity, coordinate distance, scale, systems given in slope-intercept form, scatter plots and true-or-false equation judgment. Two items have no related practice: a graph described as linear or nonlinear and increasing, and naming the parts of an expression.
+
+MCAS is not saturated even though it follows the Common Core. In ledger order, after the SAT and STAAR sources, grades 3 through 10 add 19, 13, 9, 6, 4, 9 and 12 archetypes not seen in any earlier source, and 30%, 50%, 50%, 65%, 85%, 60% and 71% of their items fall on archetypes already seen. Elementary forms introduce the most, as in STAAR. Sixteen archetypes were minted for the MCAS items; the other new ones were already listed from earlier sources but unused by an earlier ledger.
+
+A second labeler re-labeled a seeded random 10% sample (16 of 162 items, across all seven forms) without seeing the first labels. Response format agreed on 16 (100%), status on 12 (75%), archetypes overlapped on 14 (87.5%) and templates on 14 (87.5%). The four status disagreements were resolved by applying three rules to every form: matching an expression with words does not cover choosing a times-as-large statement about its value (Grade 5 item 10 became missing, with a new archetype); changing a dot plot to a listed data set, or adding an outlier to removing it, does not change the task; and a model statement for an exponential written with a per-period growth factor is the same task as one written with an exponent in years (Grade 10 items 19 and 29 became covered). Grade 8 item 4 stays covered because the family chooses exactly the equation for a starting amount plus a per-unit rate, as it does for STAAR Grade 8 item 40.
+### New York Regents mathematics exams
+
+All 106 questions of the June 2026 Regents Examinations in Algebra I (35), Geometry (35) and Algebra II (36), Next Generation Learning Standards, are labeled. Standards are the cluster codes in each rating guide's map to the learning standards. Every question allows a graphing calculator.
+
+| Exam | Covered | Partial | Missing |
+| --- | ---: | ---: | ---: |
+| Algebra I | 5 (14.3%) | 28 (80.0%) | 2 (5.7%) |
+| Geometry | 4 (11.4%) | 30 (85.7%) | 1 (2.9%) |
+| Algebra II | 2 (5.6%) | 34 (94.4%) | 0 (0.0%) |
+
+Part I multiple choice is 72 of 106 items and 10 of them are covered. The 34 constructed-response items are the main gap: 6 require a drawn graph (graph/drag) and 18 a written expression, construction, proof or explanation (constructed), and AMP has no protocol that can take either. The graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. The remaining 10 constructed-response items ask for one number and are numeric, but the rating guides also credit shown work, which AMP does not score, so only one is covered. Three items have no related family: building a polynomial from its degree and coefficients, graphing an absolute-value function and the perpendicular-bisector property.
+
+The largest gaps are parallelogram and rhombus properties and proofs, factoring beyond one-variable trinomials, unit and density chains in volume problems, drawing nonlinear graphs, rational exponents and exponent rules, zeros of nonmonic factors and growth rates read from exponential bases. Algebra I and Algebra II families usually stop short on one feature: decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations and fractional ratios in series.
+
+Each exam still added 8 to 11 archetypes that earlier sources had not used and 58 to 77 percent of its questions fell on archetypes already seen, so the high-school task set is not saturated; the SAT, STAAR and MCAS sources saw few of these tasks. Fourteen archetypes were minted for tasks no existing archetype named.
+
+A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Status agreed on 11 (100%), archetypes overlapped on 10 (90.9%), templates on 11 (100%) and response format on 10 (90.9%). The disagreements were a proposed archetype for rationalizing denominators, resolved by widening `expression.radical-simplify`, and a multipart graphing item (Algebra II 36) that the first labeler recorded as graph/drag because a graph is the first required response.
 
 The earlier purposive samples (Massachusetts grades 5, 8 and 10, New York grade 7, and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
 
