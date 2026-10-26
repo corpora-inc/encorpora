@@ -1532,6 +1532,181 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...angleTriangleFacetMappings,
   ...realNumberFacetMappings,
   ...numberSystemFacetMappings,
+  {
+    templateId: "mcas-true-fact-equations",
+    facetId: "missing-factor.core",
+    extent: "partial",
+    rationale:
+      "Select the true equations among six multiplication and division facts, with the quotient on the left and with facts of tens. Does not assess writing or solving an equation for an unknown or explaining why an equation is false.",
+  },
+  {
+    templateId: "mcas-round-hundred-select",
+    facetId: "round-whole-numbers.nearest-ten-hundred",
+    extent: "partial",
+    rationale:
+      "Select the prices or counts that round to a stated hundred, from three-digit and four-digit numbers including values at the halfway point. Does not assess rounding to other places or choosing the rounded value itself.",
+  },
+  {
+    templateId: "mcas-prime-factor-select",
+    facetId: "factors-multiples.core",
+    extent: "partial",
+    rationale:
+      "Select the primes among five whole numbers below 100, or the factors of a number up to 96 among candidates that include multiples. Does not assess prime factorization, common factors or multiples of a number.",
+  },
+  {
+    templateId: "mcas-comparison-equations-select",
+    facetId: "multiplicative-comparison.core",
+    extent: "partial",
+    rationale:
+      "Select the multiplication, division, addition or subtraction equations that fit a times-as-many or more-than story with an unknown amount. Does not assess solving the equation or writing it unprompted.",
+  },
+  {
+    templateId: "mcas-true-product-equations",
+    facetId: "whole-multiplication.one-digit-factor",
+    extent: "partial",
+    rationale:
+      "Judge stated products of a three-digit and a one-digit number, with errors from missed regrouping and place value. Does not assess two-digit multipliers or written multiplication by hand.",
+  },
+  {
+    templateId: "mcas-prism-range-select",
+    facetId: "prism-volume.additive-volume",
+    extent: "partial",
+    rationale:
+      "Find the volume of five prisms from their edge lengths and select the two whose combined volume is in a range or equals a total. Does not assess composite solids, missing edges or unit conversion.",
+  },
+  {
+    templateId: "mcas-ratio-statements-select",
+    facetId: "ratios.core",
+    extent: "partial",
+    rationale:
+      "Select the true part-to-part, part-to-whole and whole-to-part ratio statements for counted objects, including equal ratios. Does not assess ratio tables, three-part ratios or rates with units.",
+  },
+  {
+    templateId: "mcas-true-quotient-equations",
+    facetId: "whole-division.core",
+    extent: "partial",
+    rationale:
+      "Judge stated quotients of three- or four-digit dividends and two-digit divisors, including a zero digit in the quotient. Does not assess remainders, decimals or division by hand.",
+  },
+  {
+    templateId: "mcas-cube-prism-statements",
+    facetId: "fractional-prism-volume.unit-fraction-packing",
+    extent: "partial",
+    rationale:
+      "Select the true statements about the number of cubes along an edge, the cube's volume, the count and the volume of a prism packed with cubes of unit-fraction edge. Does not assess edges that are not multiples of the cube edge or non-unit-fraction cubes.",
+  },
+  {
+    templateId: "mcas-statistical-question-select",
+    facetId: "statistical-questions.recognize-variability",
+    extent: "partial",
+    rationale:
+      "Select the statistical questions among five about one setting, by deciding whether the answers vary. Does not assess writing a statistical question or choosing a display.",
+  },
+  {
+    templateId: "mcas-fraction-rate-select",
+    facetId: "rational-unit-rates.fraction-quotient-rates",
+    extent: "partial",
+    rationale:
+      "Judge stated speeds from distances and times written as fractions and mixed numbers over three days. Does not assess unit conversion, complex fractions written as a single expression or comparing rates across stories.",
+  },
+  {
+    templateId: "mcas-negative-fraction-forms",
+    facetId: "signed-multiplication.signed-fraction-products",
+    extent: "partial",
+    rationale:
+      "Select the expressions equal to a stated improper fraction or its opposite among placements of negative signs in the numerator, denominator and front. Does not assess operations with signed fractions or decimals.",
+  },
+  {
+    templateId: "mcas-markup-price-select",
+    facetId: "percent-change.changed-quantity",
+    extent: "partial",
+    rationale:
+      "Select the items whose stated price is the cost increased or decreased by a stated percent. Does not assess finding the percent of change, the original amount or successive changes.",
+  },
+  {
+    templateId: "mcas-rational-irrational-select",
+    facetId: "irrational-numbers.classify-forms",
+    extent: "partial",
+    rationale:
+      "Select the rational numbers among five square or cube roots, or among sums and products of roots and pi. Does not assess proofs of irrationality or repeating decimals.",
+  },
+  {
+    templateId: "mcas-sci-notation-select",
+    facetId: "scientific-notation.standard-form",
+    extent: "partial",
+    rationale:
+      "Select the true equations that write a single digit times a power of ten, positive or negative, as a standard numeral. Does not assess coefficients that are not single digits, operations or comparing magnitudes.",
+  },
+  {
+    templateId: "mcas-table-intercept-select",
+    facetId: "compare-functions.rate-and-initial-value",
+    extent: "partial",
+    rationale:
+      "Find the y-intercept of six linear tables, with or without x = 0 listed, and select those above or below a stated function's intercept. Does not assess comparing slopes, graphs or nonlinear tables.",
+  },
+  {
+    templateId: "mcas-quadratic-zeros-select",
+    facetId: "quadratic-equations.core",
+    extent: "partial",
+    rationale:
+      "Select the two zeros of a factored, standard-form or non-monic quadratic with integer zeros. Does not assess irrational or complex zeros or solving by the quadratic formula.",
+  },
+  {
+    templateId: "mcas-congruence-statement-select",
+    facetId: "congruence-criteria.core",
+    extent: "partial",
+    rationale:
+      "Select the true corresponding sides and angles from a congruence statement, with letters in alphabetical or scrambled order. Does not assess proving congruence, the criteria or measures of the parts.",
+  },
+  {
+    templateId: "mcas-circle-equation-select",
+    facetId: "circle-equations.center-radius",
+    extent: "partial",
+    rationale:
+      "Select the true statements about the center, radius, diameter, a point and the origin from the equation of a circle with integer center and radius. Does not assess completing the square, writing an equation or graphing.",
+  },
+  {
+    templateId: "mcas-cylinder-scaling-select",
+    facetId: "curved-solid-volume.cylinder-volume",
+    extent: "partial",
+    rationale:
+      "Select the true statements about the factor by which a cylinder's volume changes when its radius, height or both are multiplied. Does not assess computing a volume, cones or spheres.",
+  },
+  {
+    templateId: "mcas-circle-radius-distance",
+    facetId: "circle-measurement.core",
+    extent: "partial",
+    rationale:
+      "Give the distance from a circle's center to a point on it from the radius, the diameter or the circumference. Does not assess chords, tangents or points not on the circle.",
+  },
+  {
+    templateId: "mcas-parenthesized-product-statement",
+    facetId: "numerical-expressions.core",
+    extent: "partial",
+    rationale:
+      "Choose the words that describe a product with a parenthesized sum or difference, without evaluating it. Does not assess writing an expression from words or evaluating it.",
+  },
+  {
+    templateId: "mcas-slope-sign-description",
+    facetId: "slope.core",
+    extent: "partial",
+    rationale:
+      "Decide the sign of a linear function's slope from a description of how the output changes as the input rises or falls. Does not assess computing a slope value, graphs or vertical lines.",
+  },
+  {
+    templateId: "mcas-rotational-symmetry",
+    facetId: "polygon-symmetries.core",
+    extent: "partial",
+    rationale:
+      "Choose the named quadrilateral, triangle or regular polygon that does, or does not, have rotational symmetry. Does not assess finding the angle of rotation, symmetry of drawn figures or the center of rotation.",
+  },
+  {
+    templateId: "mcas-product-factor-size",
+    facetId: "fraction-multiplication.core",
+    extent: "partial",
+    rationale:
+      "Choose the product that is greater than, less than or equal to a fraction from the size of the other factor, without multiplying. Does not assess computing the product or explaining the rule in writing.",
+  },
   ...ratioRateFacetMappings,
   ...patternFunctionFacetMappings,
   ...linearFunctionFacetMappings,
@@ -1552,4 +1727,60 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...absoluteValueFacetMappings,
   ...inequalityFacetMappings,
   ...linearSystemFacetMappings,
+  {
+    templateId: "arc-sector-derivation",
+    facetId: "arc-sector-measure.HSG.C.B.5",
+    extent: "partial",
+    rationale:
+      "Choose the proportion that relates arc lengths of similar circles, give the radian measure of an arc over its radius, find an arc from a radian angle and radius, and find a sector's area as the fraction of the disk, including the simplified form (1/2)θr². Does not assess writing the derivation, degree-to-radian conversion or composite regions.",
+  },
+  {
+    templateId: "complex-plane-operations",
+    facetId: "complex-plane.HSN.CN.B.5",
+    extent: "partial",
+    rationale:
+      "Locate the sum, difference and conjugate of complex numbers in the plane, identify multiplication by i as a quarter turn, apply a modulus and argument as a scaling and rotation, and combine moduli and arguments under multiplication. Does not assess division, powers or roots, or drawing the representations by hand.",
+  },
+  {
+    templateId: "conditional-everyday-reasoning",
+    facetId: "conditional-probability.HSS.CP.A.5",
+    extent: "partial",
+    rationale:
+      "Match percent statements to P(A|B), P(B|A), P(A and B) and P(A), compare the two conditional probabilities from counts, and decide independence from stated probabilities or from a conditional rate against the overall rate. Does not assess Bayes' rule calculations, tree diagrams or written explanations.",
+  },
+  {
+    templateId: "congruence-by-rigid-motion",
+    facetId: "congruence-criteria.HSG.CO.B.6",
+    extent: "partial",
+    rationale:
+      "Choose the sequence of rigid motions that maps one grid triangle onto another, predict a vertex's image, decide congruence from the existence of such a sequence including mirror images and enlargements, and match corresponding parts. Does not assess the congruence criteria themselves, written proofs or motions about centers other than the origin.",
+  },
+  {
+    templateId: "conic-foci",
+    facetId: "conic-sections.HSG.GPE.A.3",
+    extent: "partial",
+    rationale:
+      "Find the foci of an ellipse or hyperbola centered at the origin from its equation using c² = a² − b² or c² = a² + b², and choose the equation from the foci and the constant sum or difference of distances. Does not assess conics with translated centers, rotated axes, parabolas or the algebraic derivation.",
+  },
+  {
+    templateId: "choose-the-plot",
+    facetId: "distribution-plots.HSS.ID.A.1",
+    extent: "partial",
+    rationale:
+      "Choose the data list a dot plot, histogram or box plot displays, and choose the bar heights or five-number summary a data list produces under stated interval and quartile conventions. Does not assess drawing the plots, choosing a display for a purpose, or skewed-shape description.",
+  },
+  {
+    templateId: "similarity-by-transformation",
+    facetId: "similarity-proofs.HSG.SRT.A.2",
+    extent: "partial",
+    rationale:
+      "Choose the dilation about the origin and the rigid motions that map one grid triangle onto another, and decide similarity from whether the sides scale by one factor. Does not assess dilations about other centers, written justification or similarity of non-triangular figures.",
+  },
+  {
+    templateId: "aa-similarity",
+    facetId: "similarity-proofs.HSG.SRT.A.3",
+    extent: "partial",
+    rationale:
+      "Decide similarity by AA from two stated angles of each triangle, name the vertex correspondence, find a missing angle, and choose the matching proportion of sides. Does not assess the proof that AA follows from similarity transformations or other similarity criteria.",
+  },
 ];
