@@ -27,6 +27,7 @@ import {
   queueOpenAIPayment,
   deliverOpenAIPayment,
   openaiMeasurementBatch,
+  purgeOpenAIPurchases,
 } from "../src/advertising/openai-delivery.js";
 import type { PaymentReference } from "../src/advertising/verified-payment.js";
 const config = { enabled: true, pixelId: "synthetic_pixel", sources };
@@ -406,5 +407,44 @@ test(
         "accepted",
       );
       assert.equal(bodies.length, 1);
+    }),
+);
+
+test(
+  "repeated collection never extends scan retention or recreates expired evidence",
+  enabled,
+  () =>
+    fixture(async (pool) => {
+      const p = await stripe(pool);
+      await bind(pool, p.reference);
+      await openaiMeasurementBatch(pool, config, "collect", 1);
+      const first = (
+        await pool.query("SELECT expires_at FROM amp_openai_purchase_scan")
+      ).rows[0].expires_at;
+      await openaiMeasurementBatch(pool, config, "collect", 1);
+      assert.equal(
+        +(await pool.query("SELECT expires_at FROM amp_openai_purchase_scan"))
+          .rows[0].expires_at,
+        +first,
+      );
+      await pool.query(
+        "UPDATE amp_openai_purchase_scan SET expires_at=clock_timestamp()-interval '1 second'",
+      );
+      await pool.query(
+        "UPDATE amp_ad_click_journeys SET expires_at=clock_timestamp()-interval '1 second'",
+      );
+      await purgeOpenAIPurchases(pool);
+      assert.deepEqual(
+        await openaiMeasurementBatch(pool, config, "collect", 1),
+        {},
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int AS n FROM amp_openai_purchase_scan",
+          )
+        ).rows[0].n,
+        0,
+      );
     }),
 );

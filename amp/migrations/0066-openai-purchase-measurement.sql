@@ -33,5 +33,6 @@ CREATE TABLE amp_openai_purchase_scan (
  payment_kind text NOT NULL CHECK(payment_kind IN ('stripe','arkansas-efa','arizona-esa')),
  payment_ref text NOT NULL,
  checked_at timestamptz NOT NULL DEFAULT clock_timestamp(),
+ expires_at timestamptz NOT NULL,
  PRIMARY KEY(payment_kind,payment_ref)
 );

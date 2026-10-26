@@ -355,14 +355,18 @@ export async function openaiMeasurementBatch(
     // trusted payment projection below independently rejects unpaid/test/renewal rows.
     const rows = (
       await pool.query(
-        `SELECT p.kind,p.id FROM (
-      SELECT 'stripe' AS kind,p.id::text AS id,p.created_at FROM amp_payment_records p
+        `SELECT p.kind,p.id,p.expires_at FROM (
+      SELECT 'stripe' AS kind,p.id::text AS id,p.created_at,j.expires_at FROM amp_payment_records p
       JOIN amp_ad_order_attribution a ON a.stripe_checkout_id=p.checkout_id AND a.account_id=p.account_id AND a.provider='openai' AND a.click_id IS NOT NULL
+      JOIN amp_ad_click_evidence c ON c.id=a.click_id
+      JOIN amp_ad_click_journeys j ON j.id=c.journey_id AND j.expires_at>clock_timestamp()
       WHERE p.namespace=$1
       UNION ALL
-      SELECT CASE WHEN r.offer_snapshot->>'programId'='az-esa' THEN 'arizona-esa' ELSE 'arkansas-efa' END,o.id,o.updated_at
+      SELECT CASE WHEN r.offer_snapshot->>'programId'='az-esa' THEN 'arizona-esa' ELSE 'arkansas-efa' END,o.id,o.updated_at,j.expires_at
       FROM amp_commerce_orders o JOIN amp_funding_requests r ON r.order_id=o.id AND r.account_id=o.account_id
       JOIN amp_ad_order_attribution a ON a.funding_request_id=r.id AND a.account_id=o.account_id AND a.provider='openai' AND a.click_id IS NOT NULL
+      JOIN amp_ad_click_evidence c ON c.id=a.click_id
+      JOIN amp_ad_click_journeys j ON j.id=c.journey_id AND j.expires_at>clock_timestamp()
       WHERE o.channel='esa' AND o.channel_reference IN ($2,$3)
     ) p LEFT JOIN amp_openai_purchase_scan s ON s.payment_kind=p.kind AND s.payment_ref=p.id
     WHERE NOT EXISTS(SELECT 1 FROM amp_openai_purchase_queue q WHERE q.payment_kind=p.kind AND q.payment_ref=p.id)
@@ -382,9 +386,9 @@ export async function openaiMeasurementBatch(
         paymentReferenceSchema.parse(row),
       );
       await pool.query(
-        `INSERT INTO amp_openai_purchase_scan(payment_kind,payment_ref) VALUES($1,$2)
+        `INSERT INTO amp_openai_purchase_scan(payment_kind,payment_ref,expires_at) VALUES($1,$2,$3)
          ON CONFLICT(payment_kind,payment_ref) DO UPDATE SET checked_at=clock_timestamp()`,
-        [row.kind, row.id],
+        [row.kind, row.id, row.expires_at],
       );
       counts[result.outcome] = (counts[result.outcome] ?? 0) + 1;
     }
@@ -410,7 +414,7 @@ export async function openaiMeasurementBatch(
 }
 export async function purgeOpenAIPurchases(pool: Pool) {
   await pool.query(
-    "DELETE FROM amp_openai_purchase_scan WHERE checked_at<clock_timestamp()-interval '90 days'",
+    "DELETE FROM amp_openai_purchase_scan WHERE expires_at<=clock_timestamp()",
   );
   return (
     (
