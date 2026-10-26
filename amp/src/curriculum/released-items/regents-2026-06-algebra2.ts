@@ -112,9 +112,10 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["expression.radical", "expression.exponent-rules"],
       demand:
         "Rewrite a product of a cube root and a coefficient power with a rational exponent",
-      status: "covered",
+      status: "partial",
       templateIds: ["symbolic-rational-exponent", "rg-rational-exponent-forms"],
-      limitations: "",
+      limitations:
+        "The families multiply a coefficient by a power and add exponents; taking the cube root of a perfect-cube coefficient inside the radical, writing a radicand power as a fractional exponent, and adding it to an integer power of the same base is not practiced.",
     },
     {
       section: "Part I",
@@ -416,13 +417,14 @@ export const regentsAlgebra2June2026 = defineLedger(
       standards: ["A-SSE.B"],
       archetypeIds: ["exponential.context", "exponential.form"],
       demand: "Choose the decay model from a half-life in hours",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "exponential-model-rule",
         "exponential-time-scale",
         "rg-exponential-base-rate",
       ],
-      limitations: "",
+      limitations:
+        "The families keep the half-life in the exponent as 0.5^(t/h); converting a non-integer half-life to a single per-hour base with a calculator (for example 0.5^(1/12.4)) and choosing among decimal bases is not practiced.",
     },
     {
       section: "Part II",

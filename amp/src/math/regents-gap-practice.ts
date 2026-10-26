@@ -412,7 +412,9 @@ function factorCompletely(r: Random): Built {
   )[r(0, 2)]!;
   if (variant === "nonmonic-squares") {
     const m = r(2, 5);
-    const n = r(1, 9);
+    let n = r(1, 9);
+    // gcd(m, n) = 1 keeps both factors primitive, so the keyed answer is complete.
+    while (gcd(m, n) !== 1) n = r(1, 9);
     const expr = `${m * m}x^{2}-${n * n}`;
     const correct = tex(`(${m}x-${n})(${m}x+${n})`);
     return {
@@ -485,7 +487,9 @@ function factorCompletely(r: Random): Built {
   }
   const k = pick(r, [2, 3, 5, 6]);
   const m = r(1, 3);
-  const n = r(1, 4);
+  let n = r(1, 4);
+  // gcd(m, n) = 1 so the greatest common factor is exactly kx and each factor is primitive.
+  while (gcd(m, n) !== 1) n = r(1, 4);
   const mx = `${co(m)}x`;
   const ny = `${co(n)}y`;
   const expr = `${k * m * m}x^{3}-${k * n * n}xy^{2}`;
@@ -530,7 +534,7 @@ function factorCompletely(r: Random): Built {
 type Rat = [number, number];
 const ratVal = ([n, d]: Rat) => n / d;
 function ratTex([n, d]: Rat) {
-  const g = gcd(n, d);
+  const g = gcd(n, d) * (d < 0 ? -1 : 1);
   const a = n / g;
   const b = d / g;
   if (b === 1) return String(a);
