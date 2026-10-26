@@ -72,6 +72,7 @@ import { advancedMathGapPrinciples } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapPrinciples } from "./number-measurement-gaps-lessons";
 import { floridaGapPrinciples } from "./florida-gaps-lessons";
 import { mcasGapPrinciples } from "./mcas-gap-lessons";
+import { staarGapPrinciples } from "./staar-gap-lessons";
 import { satAlgebraStructurePrinciples } from "./sat-algebra-structure-lessons";
 import { remainingGapPrinciples } from "./remaining-gap-lessons";
 import { vectorMatrixPrinciples } from "./vectors-matrices-lessons";
@@ -112,6 +113,7 @@ export const principles: Record<string, string> = {
   ...numberMeasurementGapPrinciples,
   ...floridaGapPrinciples,
   ...mcasGapPrinciples,
+  ...staarGapPrinciples,
   ...satAlgebraStructurePrinciples,
   ...remainingGapPrinciples,
   ...vectorMatrixPrinciples,

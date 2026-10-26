@@ -55,10 +55,14 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["expression.verbal"],
       demand:
         "Pick the multiplication equation with an unknown factor that models equal sharing of a total",
-      status: "partial",
-      templateIds: ["story-operation-choice", "missing-factor-fact"],
+      status: "covered",
+      templateIds: [
+        "staar-story-model-choice",
+        "story-operation-choice",
+        "missing-factor-fact",
+      ],
       limitations:
-        "story-operation-choice offers division, subtraction, addition and multiplication equations for sharing stories but never the related multiplication equation with an unknown factor; missing-factor-fact solves the equation but does not choose it for a story.",
+        "staar-story-model-choice chooses the multiplication equation with an unknown factor that models equal sharing.",
     },
     {
       item: {
@@ -116,10 +120,14 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["number.add-subtract-story"],
       demand:
         "Add two three-digit amounts, then subtract a third, to compare combined seasonal totals with another season",
-      status: "partial",
-      templateIds: ["add-three-digit", "subtract-three-digit"],
+      status: "covered",
+      templateIds: [
+        "staar-multistep-stories",
+        "add-three-digit",
+        "subtract-three-digit",
+      ],
       limitations:
-        "Both families are single-step bare equations; the chained add-then-subtract story with a comparison is not practiced.",
+        "staar-multistep-stories adds two three-digit amounts, subtracts a third and compares the totals, by entry.",
     },
     {
       item: {
@@ -175,10 +183,14 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["whole.multi-step-stories"],
       demand:
         "Share a total equally among people, then split one share into equal piles and find a pile",
-      status: "partial",
-      templateIds: ["multiplication-division-story", "divide-by-one-digit"],
+      status: "covered",
+      templateIds: [
+        "staar-multistep-stories",
+        "multiplication-division-story",
+        "divide-by-one-digit",
+      ],
       limitations:
-        "Related families solve a single multiplication or division step; the two-step chain is not practiced.",
+        "staar-multistep-stories shares a total equally and then splits one share into equal piles, by entry.",
     },
     {
       item: {
@@ -278,10 +290,10 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["pattern.paired"],
       demand:
         "Choose the table whose pairs all follow a stated multiply-by-six rule",
-      status: "partial",
-      templateIds: ["pattern-pair-relationship"],
+      status: "covered",
+      templateIds: ["staar-table-rule-choice", "pattern-pair-relationship"],
       limitations:
-        "pattern-pair-relationship builds and relates paired terms from rules; picking which table fits a stated rule is not practiced.",
+        "staar-table-rule-choice chooses the table whose every pair follows a multiply rule, such as times six; tables are shown as rows of paired values.",
     },
     {
       item: {
@@ -353,9 +365,10 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["finance.credit-concept"],
       demand:
         "Recognize an example of using credit, as opposed to paying a tax",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family teaches credit, loans or borrowing vocabulary.",
+      status: "covered",
+      templateIds: ["staar-money-vocabulary"],
+      limitations:
+        "staar-money-vocabulary chooses the example of using credit, with a sales tax among the distractors.",
     },
     {
       item: {
@@ -382,10 +395,14 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["number.place-value-units"],
       demand:
         "Write the sum of seventy hundreds, one ten and further ones as a number",
-      status: "partial",
-      templateIds: ["multidigit-digit-value", "expanded-form-missing"],
+      status: "covered",
+      templateIds: [
+        "staar-number-word-form",
+        "multidigit-digit-value",
+        "expanded-form-missing",
+      ],
       limitations:
-        "Related families name a digit's value or fill an expanded sum; reading a count of place-value units (seventy hundreds) is not practiced.",
+        "staar-number-word-form names the number made of counts of hundreds, tens and ones, with more than nine hundreds, by choice.",
     },
     {
       item: {
@@ -441,10 +458,14 @@ export const staarGrade3 = defineLedger(
       standards: ["TEKS.3.4.8.B"],
       archetypeIds: ["univariate.displays"],
       demand: "Count ratings below a given value from a dot plot",
-      status: "partial",
-      templateIds: ["line-plot-whole", "fraction-line-plot"],
+      status: "covered",
+      templateIds: [
+        "staar-dot-plot-threshold",
+        "line-plot-whole",
+        "fraction-line-plot",
+      ],
       limitations:
-        "Related families count at or beyond a length on a line plot of measurements; counting every category below a threshold on a dot plot of ratings is not practiced.",
+        "staar-dot-plot-threshold counts every dot below a stated value on a dot plot of ratings, and also at-least and greater-than conditions.",
     },
     {
       item: {

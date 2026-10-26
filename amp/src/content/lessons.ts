@@ -82,6 +82,7 @@ import { advancedMathGapLessons } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapLessons } from "./number-measurement-gaps-lessons";
 import { floridaGapLessons } from "./florida-gaps-lessons";
 import { mcasGapLessons } from "./mcas-gap-lessons";
+import { staarGapLessons } from "./staar-gap-lessons";
 import { satAlgebraStructureLessons } from "./sat-algebra-structure-lessons";
 import { remainingGapLessons } from "./remaining-gap-lessons";
 import { vectorMatrixLessons } from "./vectors-matrices-lessons";
@@ -701,6 +702,7 @@ export const lessons: readonly Lesson[] = [
   ...numberMeasurementGapLessons,
   ...floridaGapLessons,
   ...mcasGapLessons,
+  ...staarGapLessons,
   ...satAlgebraStructureLessons,
   ...remainingGapLessons,
   ...vectorMatrixLessons,
