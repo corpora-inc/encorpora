@@ -144,13 +144,23 @@ test("guess chance comes from each family's answer schema and is never understat
           ? "multi-select"
           : template.requiredResponseCapability === "point-plot-v1"
             ? "point-plot"
-            : "choice",
+            : template.requiredResponseCapability === "multi-part-choice-v1"
+              ? "multi-part-choice"
+              : "choice",
         template.id,
       );
       if (response.kind === "choice")
         assert.ok(
           chance >= 1 / response.options.length - 1e-12,
           `${template.id} seed ${i}: ${response.options.length} options, chance ${chance}`,
+        );
+      if (response.kind === "multi-part-choice")
+        // One combination of one option per blank among all combinations.
+        assert.ok(
+          chance >=
+            1 / response.blanks.reduce((n, b) => n * b.options.length, 1) -
+              1e-12,
+          template.id,
         );
       if (response.kind === "multi-select") {
         // Enumerate permitted sets independently of the binomial implementation.

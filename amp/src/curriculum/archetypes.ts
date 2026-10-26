@@ -56,6 +56,7 @@ number.remainder-interpret|Interpret a division remainder in context
 number.strip-diagram|Choose a strip diagram that models a story`,
   algebra: `
 expression.verbal|Translate a verbal description into an algebraic expression or equation
+expression.parts|Name the terms, coefficients, exponents, constant term and factors of an expression
 linear.solve|Solve a one-variable linear equation, including grouped and fractional coefficients
 linear.structure|Find the value of a related linear expression from an equation by scaling or rearranging without isolating the variable
 linear.step-justification|Name the property that justifies a step in solving an equation

@@ -47,6 +47,12 @@ import {
   normalizeSelection,
 } from "../math/selection-response";
 import { canonicalPointSet, normalizePointPlot } from "../math/point-plot";
+import {
+  canonicalMultiPart,
+  multiPartFeedback,
+  multiPartMarks,
+  normalizeMultiPart,
+} from "../math/multi-part-choice";
 import { recordProblemFlag } from "../feedback/record";
 import {
   publicJson,
@@ -650,6 +656,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
         // sets on retries without depending on instance retention or option order.
         const selected = canonicalSelection(duplicate.response);
         const plotted = canonicalPointSet(duplicate.response);
+        const parts = canonicalMultiPart(duplicate.response);
         const sameResponse =
           duplicate.response === input.response ||
           (selected !== null &&
@@ -658,7 +665,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
           // reordered retry of labeled images is a different submission.
           (plotted !== null &&
             plotted === duplicate.response &&
-            canonicalPointSet(input.response) === plotted);
+            canonicalPointSet(input.response) === plotted) ||
+          // Multi-part answers are keyed by blank, so key order is not a change.
+          (parts !== null && canonicalMultiPart(input.response) === parts);
         if (duplicate.problemId !== input.problemId || !sameResponse)
           throw new ApiError(
             409,
@@ -687,14 +696,18 @@ function routes(app: FastifyInstance, options: AppOptions) {
               ? `Choose ${problem.public.response.selectionCount} of the displayed answers`
               : problem.public.response.kind === "point-plot"
                 ? `Place ${problem.public.response.pointCount} different ${problem.public.response.pointCount === 1 ? "point" : "points"} on the grid`
-                : "Enter a number, decimal, or fraction such as 3/4",
+                : problem.public.response.kind === "multi-part-choice"
+                  ? `Choose one of the displayed options for each of the ${problem.public.response.blanks.length} parts`
+                  : "Enter a number, decimal, or fraction such as 3/4",
         );
       const response =
         problem.public.response.kind === "multi-select"
           ? normalizeSelection(problem.public.response, input.response)!
           : problem.public.response.kind === "point-plot"
             ? normalizePointPlot(problem.public.response, input.response)!
-            : input.response;
+            : problem.public.response.kind === "multi-part-choice"
+              ? normalizeMultiPart(problem.public.response, input.response)!
+              : input.response;
       const answered = await tx.attemptByProblem(input.problemId);
       if (answered)
         throw new ApiError(409, "This problem has already been answered");
@@ -710,6 +723,15 @@ function routes(app: FastifyInstance, options: AppOptions) {
         problem.hintViewed = true;
         await tx.saveProblem(problem);
       }
+      // A multi-part answer earns credit only when every part is right; the
+      // attempt records which parts were wrong in its first feedback line.
+      const multiPart =
+        problem.public.response.kind === "multi-part-choice"
+          ? problem.public.response
+          : null;
+      const partFeedback = multiPart
+        ? multiPartFeedback(multiPart, problem.answer, response)
+        : null;
       const outcome: Outcome = {
         id: randomUUID(),
         problemId: input.problemId,
@@ -721,9 +743,18 @@ function routes(app: FastifyInstance, options: AppOptions) {
         assisted: !!problem.hintViewed || !!problem.lessonViewed,
         explanation: problem.choiceFeedback?.[response]
           ? [problem.choiceFeedback[response]!, ...problem.explanation]
-          : problem.explanation,
+          : partFeedback
+            ? [partFeedback, ...problem.explanation]
+            : problem.explanation,
         answer: problem.answer,
         createdAt: new Date().toISOString(),
+        ...(multiPart
+          ? {
+              parts: multiPartMarks(multiPart, problem.answer, response).map(
+                (mark) => mark.correct,
+              ),
+            }
+          : {}),
       };
       const before = await tx.masteredSkills();
       await tx.saveAttempt(outcome);

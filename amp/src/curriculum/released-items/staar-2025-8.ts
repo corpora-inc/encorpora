@@ -265,10 +265,10 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Complete y = mx + b from two points by dragging the slope and intercept",
-      status: "partial",
-      templateIds: ["line-slope"],
+      status: "covered",
+      templateIds: ["inline-linear-features", "line-slope"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. line-slope finds the slope by entry; finding the intercept and placing both by drag and drop have no response protocol.",
+        "STAAR interaction: drag and drop, 2 points. inline-linear-features completes m and b of y = mx + b from two given points; the drag-and-drop tiles are offered as one picker per blank.",
     },
     {
       item: {

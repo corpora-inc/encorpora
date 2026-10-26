@@ -79,6 +79,21 @@ export function problemLesson(
     )
       return true;
     if (p.public.prompt !== avoidPrompt) return false;
+    // Multi-part items share their wording; their givens are in the blanks
+    // and the figure.
+    // and the figure; option order is shuffled, so it is not compared.
+    if (avoidResponse?.kind === "multi-part-choice")
+      return (
+        p.public.response.kind === "multi-part-choice" &&
+        JSON.stringify([
+          p.public.response.blanks.map((blank) => blank.label),
+          p.public.figure ?? null,
+        ]) ===
+          JSON.stringify([
+            avoidResponse.blanks.map((blank) => blank.label),
+            learnerProblem?.public.figure ?? null,
+          ])
+      );
     if (avoidResponse?.kind !== "multi-select") return true;
     return (
       p.public.response.kind === "multi-select" &&
@@ -108,7 +123,8 @@ export function problemLesson(
   const answer =
     response.kind === "choice" ||
     response.kind === "multi-select" ||
-    response.kind === "point-plot"
+    response.kind === "point-plot" ||
+    response.kind === "multi-part-choice"
       ? answerText(response, example.answer)
       : skills.find((skill) => skill.id === template.skillId)?.strand ===
           "fractions"

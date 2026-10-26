@@ -21,6 +21,12 @@ import { ChoiceFigure } from "./ChoiceFigure";
 import { PointPlotAnswer, PointPlotInput, plotReview } from "./PointPlotInput";
 import { pointPlotAnswerText } from "../math/point-plot";
 import {
+  MultiPartChoiceAnswer,
+  MultiPartChoiceInput,
+  partsReview,
+} from "./MultiPartChoiceInput";
+import { multiPartAnswerText } from "../math/multi-part-choice";
+import {
   useEffect,
   useLayoutEffect,
   useRef,
@@ -210,6 +216,9 @@ export function PracticeWorkspace(props: Props) {
   // Point plots answer on the grid in the problem itself; the dock holds
   // only the readout and Check, so they never use the answer dialog.
   const plot = problem.response.kind === "point-plot" ? problem.response : null;
+  // Multi-part choices answer in the problem too: blanks, slots or a table.
+  const parts =
+    problem.response.kind === "multi-part-choice" ? problem.response : null;
   const selectedIds = multiResponse
     ? (parseSelection(response) ?? []).filter((id) =>
         multiResponse.options.some((option) => option.id === id),
@@ -230,6 +239,8 @@ export function PracticeWorkspace(props: Props) {
         return "No points placed";
       }
     }
+    if (problem.response.kind === "multi-part-choice")
+      return multiPartAnswerText(problem.response, value);
     if (problem.response.kind === "multi-select") {
       const labels = responseAnswerLabels(problem.response, value);
       return labels ? joinAnswerLabels(labels) : "Unavailable selection";
@@ -262,7 +273,7 @@ export function PracticeWorkspace(props: Props) {
   const [compactQuery, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
-  const compact = compactQuery && !plot;
+  const compact = compactQuery && !plot && !parts;
   // Side by side (practice-tablet.css), the feedback sheet has its own
   // column; stacked, it covers the dock only, so a plotted answer's grid and
   // its feedback overlay stay in view and the explanation opens on request.
@@ -275,7 +286,7 @@ export function PracticeWorkspace(props: Props) {
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
-  const deferSteps = !!plot && !sideBySide;
+  const deferSteps = (!!plot || !!parts) && !sideBySide;
   useEffect(() => {
     const media = matchMedia(answerLayoutQuery);
     const changed = () => setCompact(media.matches);
@@ -340,7 +351,7 @@ export function PracticeWorkspace(props: Props) {
     // Typed answers start in the answer field. On touch it suppresses the
     // system keyboard (inputMode none), so AMP's keypad stays in charge; the
     // field announces the question through aria-describedby.
-    if (choice || plot) prompt.current?.focus({ preventScroll: true });
+    if (choice || plot || parts) prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
   useEffect(() => {
@@ -387,7 +398,7 @@ export function PracticeWorkspace(props: Props) {
   const locked = busy || pending || !!outcome;
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
-  const keypad = !choice && !plot;
+  const keypad = !choice && !plot && !parts;
   const caret = useKeypadCaret(input);
   function key(value: string) {
     if (locked) return;
@@ -437,6 +448,18 @@ export function PracticeWorkspace(props: Props) {
     if (problem.response.kind === "point-plot")
       return (
         <PointPlotAnswer
+          response={problem.response}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          busy={busy}
+          resolved={!!outcome}
+          submit={props.submit}
+        />
+      );
+    if (problem.response.kind === "multi-part-choice")
+      return (
+        <MultiPartChoiceAnswer
           response={problem.response}
           value={outcome ? outcome.response : response}
           onChange={setResponse}
@@ -782,14 +805,16 @@ export function PracticeWorkspace(props: Props) {
    * the grid above the sheet, so the sheet names where to look and keeps the
    * coordinates for screen readers; the explanation lists them in full. */
   const answerLine = (raw: string) =>
-    plot ? (
+    plot || parts?.layout === "table" ? (
       <span
         className="solution-answer plot-answer"
         data-text={displayResponse(raw)}
       >
-        {plot.connect === "line"
-          ? "The answer is dashed"
-          : "The answer is circled"}
+        {parts
+          ? "Each row’s answer is ringed"
+          : plot?.connect === "line"
+            ? "The answer is dashed"
+            : "The answer is circled"}
         <span className="sr-only">
           . Answer: {spokenMath(displayResponse(raw))}
         </span>
@@ -862,7 +887,7 @@ export function PracticeWorkspace(props: Props) {
           )}
           {/* Plotted answers are placed, not typed: the calculator's Use
               key has nothing to fill, and lattice arithmetic needs none. */}
-          {props.calculator && !plot ? (
+          {props.calculator && !plot && !parts ? (
             <button
               ref={calculatorToggle}
               className="calculator-toggle"
@@ -911,7 +936,7 @@ export function PracticeWorkspace(props: Props) {
               <MathText text={problem.prompt} />
             </h2>
             {problem.figure &&
-              (choice || plot ? (
+              (choice || plot || parts ? (
                 <ChoiceFigure figure={problem.figure} />
               ) : (
                 <Figure
@@ -923,6 +948,19 @@ export function PracticeWorkspace(props: Props) {
                   }
                 />
               ))}
+            {parts && (
+              <MultiPartChoiceInput
+                response={parts}
+                value={outcome ? outcome.response : response}
+                onChange={setResponse}
+                locked={locked}
+                review={
+                  outcome
+                    ? partsReview(parts, outcome.answer, outcome.response)
+                    : null
+                }
+              />
+            )}
             {plot && (
               <PointPlotInput
                 response={plot}
@@ -1018,7 +1056,18 @@ export function PracticeWorkspace(props: Props) {
                 ) : (
                   <>
                     {answerLine(outcome.answer)}
-                    {plot ? (
+                    {parts ? (
+                      // Each part is marked in the problem; the sentence
+                      // stays for screen readers.
+                      <small>
+                        {partsSummary(parts, outcome)}
+                        <span className="sr-only">
+                          . You chose:{" "}
+                          {spokenMath(displayResponse(outcome.response))}
+                        </span>
+                        {support && `, ${support}`}
+                      </small>
+                    ) : plot ? (
                       // The grid shows the learner's points beside the
                       // correct ones; the sentence stays for screen readers.
                       <small>
@@ -1188,6 +1237,15 @@ export function PracticeWorkspace(props: Props) {
       )}
     </main>
   );
+}
+/** "2 of 3 parts correct", from the marks the problem shows. */
+function partsSummary(
+  response: Extract<PublicProblem["response"], { kind: "multi-part-choice" }>,
+  outcome: Outcome,
+) {
+  const marks = partsReview(response, outcome.answer, outcome.response);
+  if (!marks) return "Your choices are marked above";
+  return `${marks.filter((m) => m.correct).length} of ${marks.length} parts correct`;
 }
 function capitalize(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1);
