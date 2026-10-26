@@ -101,6 +101,21 @@ def oracle_consumers(path, root):
                   and any(pattern.search(text) for pattern in patterns))
 
 
+def is_review_helper(consumer, root):
+    """A non-test script under amp/tests that no test imports, run only by review scripts."""
+    if not consumer.startswith('amp/tests/') or re.search(r'\.(test|integration)\.[jt]s$', consumer):
+        return False
+    stem = re.compile(r'(?<![\w-])' + re.escape(Path(consumer).stem) + r'(?![\w-])')
+    for name, file in _sources(root):
+        if name.startswith('amp/tests/') and name != consumer:
+            try:
+                if stem.search(file.read_text()):
+                    return False
+            except UnicodeDecodeError:
+                continue
+    return True
+
+
 def plan(paths, root=ROOT, full=False, quick=False):
     paths = sorted(set(paths))
     # A change to the selection policy or its workflows is validated by the
@@ -157,6 +172,8 @@ def plan(paths, root=ROOT, full=False, quick=False):
                     result['content'] = True
                 elif consumer.endswith('.md'):
                     pass
+                elif is_review_helper(consumer, root):
+                    result['content'] = True
                 elif consumer == 'amp/package.json' or consumer.startswith('amp/scripts/'):
                     result['content'] = True
                 else:
