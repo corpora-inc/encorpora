@@ -328,7 +328,7 @@ export function interestCompareYearsCase(seed: string): FinanceCase {
         given: { P, pct, t, compoundIsA: compIsA ? 1 : 0 },
         value: diff,
         problem: finish(m, seed, r, {
-          prompt: `Both accounts started with ${usd(Pc)} and earn the same yearly rate. One pays simple interest and one pays compound interest. The table shows year-end balances in dollars.\n${interestTable(rows, cents)}\nWhich statement is true?`,
+          prompt: `Both accounts started with ${usd(Pc)} and earn the same yearly rate; nothing is added or withdrawn. One account pays simple interest and one pays compound interest. The table shows year-end balances in dollars. Which statement is true?\n${interestTable(rows, cents)}`,
           hint: `Look at how much each account grows from one year to the next. The account that earns simple interest grows by the same amount every year; find the other account's increases, then compare the year ${t} balances.`,
           explanation: [
             `Account ${other} grows by ${usd((Pc / 100) * pct)} every year, so it earns simple interest.`,
@@ -1499,7 +1499,7 @@ export function savingsPlanGrowthCase(seed: string): FinanceCase {
     given: { S, d, month },
     value: c(ans),
     problem: finish(m, seed, r, {
-      prompt: `${who} saves the same amount every month. The table shows the balance in dollars at the end of months 1, 2 and 3.\n$\\begin{array}{c|ccc}\\text{Month}&1&2&3\\\\\\hline\\text{Balance}&${[1, 2, 3].map((k) => cell(c(S + d * k), false)).join("&")}\\end{array}$\nIf the pattern continues, what is the balance at the end of month ${month}?`,
+      prompt: `${who} saves the same amount every month. The table shows the balance in dollars at the end of months 1, 2 and 3. If the pattern continues, what is the balance at the end of month ${month}?\n$\\begin{array}{c|ccc}\\text{Month}&1&2&3\\\\\\hline\\text{Balance}&${[1, 2, 3].map((k) => cell(c(S + d * k), false)).join("&")}\\end{array}$`,
       hint: `Subtract neighbouring balances to find how much is added each month. Then count how many more months are needed after month 3, or work back to the starting amount.`,
       explanation: [
         `Each month adds ${group(S + d * 2)} − ${group(b1)} = ${d} dollars.`,
@@ -1561,7 +1561,7 @@ export function interestTableTypeCase(seed: string): FinanceCase {
         given: { P, pct },
         value: S10,
         problem: finish(m, seed, r, {
-          prompt: `Both accounts started with ${usd(Pc)} and earn the same yearly rate; nothing is added or withdrawn. One account pays simple interest and one pays compound interest. The table shows year-end balances in dollars.\n${table}\nWhich account pays simple interest, and what will it hold after 10 years?`,
+          prompt: `Both accounts started with ${usd(Pc)} and earn the same yearly rate; nothing is added or withdrawn. One account pays simple interest and one pays compound interest. The table shows year-end balances in dollars. Which account pays simple interest, and what will it hold after 10 years?\n${table}`,
           hint: `Find each account's increase from one year to the next. The simple-interest account's increase never changes. Once you know that amount, count how many years of it to add to the starting ${usd(Pc)}.`,
           explanation: [
             `Account ${simpName} grows by ${usd(I)} every year, so it pays simple interest. Account ${compName} grows by a larger amount each year (${usd(C[1]! - C[0]!)}, ${usd(C[2]! - C[1]!)}, ${usd(C[3]! - C[2]!)}).`,
@@ -1596,7 +1596,7 @@ export function interestTableTypeCase(seed: string): FinanceCase {
       given: { P, pct },
       value: int3,
       problem: finish(m, seed, r, {
-        prompt: `Both accounts started with ${usd(Pc)} and earn the same yearly rate. One pays simple interest and one pays compound interest. The table shows year-end balances in dollars.\n${table}\nHow much interest does the compound-interest account earn during year 3?`,
+        prompt: `Both accounts started with ${usd(Pc)} and earn the same yearly rate; nothing is added or withdrawn. One account pays simple interest and one pays compound interest. The table shows year-end balances in dollars. How much interest does the compound-interest account earn during year 3?\n${table}`,
         hint: `First decide which account is compound: its yearly increases are not all equal. Then subtract its year 2 balance from its year 3 balance.`,
         explanation: [
           `Account ${simpName} grows by ${usd(I)} every year (simple). Account ${compName} is the compound account.`,

@@ -23,7 +23,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
       "Compare the balances at the same time, and subtract the smaller from the larger for the gap.",
     ],
     watch:
-      "Both accounts earn the same interest in year 1. They separate only from year 2, when compound interest starts earning interest on interest.",
+      "At the same rate, both accounts earn the same interest in year 1 and separate only from year 2, when compound interest starts earning interest on interest. With different rates, compare the actual balances.",
   },
   "loan-total-cost": {
     goal: "From a loan's equal payment and term, find total repaid and the finance charge, or compare terms and rates.",
@@ -151,7 +151,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
 
 export const financeCreditPrinciples: Record<string, string> = {
   "interest-compare-years":
-    "With principal $P$ and yearly rate $r$ (as a decimal), simple interest gives balance $P(1+rt)$ after $t$ years: linear growth with constant step $Pr$. Compound interest added yearly multiplies the balance by $1+r$ each year: geometric growth $P(1+r)^t$ before cent rounding. They agree at $t=1$, and for $t\\ge2$ and $r>0$ the compound balance is larger.",
+    "With principal $P$ and yearly rate $r$ (as a decimal), simple interest gives balance $P(1+rt)$ after $t$ years: linear growth with constant step $Pr$. Compound interest added yearly multiplies the balance by $1+r$ each year: geometric growth $P(1+r)^t$ before cent rounding. At the same rate $r>0$ they agree at $t=1$, and for $t\\ge2$ the compound balance is larger.",
   "loan-total-cost":
     "For $n$ equal payments of size $p$ on a principal $P$, the total repaid is $T=pn$ and the finance charge is $pn-P$. Total repaid is a linear function of the number of payments, with rate $p$ dollars per month.",
   "loan-compare-options":
@@ -222,7 +222,7 @@ export const financeCreditLessons: Lesson[] = [
         "Account C, year 1: 4% of 1,000 = 40, balance 1,040. Year 2: 4% of 1,040 = 41.60, balance 1,081.60.",
         "Year 3: 4% of 1,081.60 = 43.264, which rounds to 43.26, so the balance is 1,124.86 dollars.",
         "The gap is 1,124.86 − 1,120 = 4.86 dollars.",
-        "Check: the gap is the interest earned on interest: 1.60 in year 2 and a little more in year 3, which together is about 4.86.",
+        "Check: the gap is the interest earned on interest: 1.60 in year 2 and 3.26 in year 3 (43.26 instead of 40), which together is 4.86.",
       ],
       answer: "4.86 dollars",
     },
@@ -232,7 +232,7 @@ export const financeCreditLessons: Lesson[] = [
       "Compare the balances for the same number of years. Subtract for the gap. In a table, equal yearly increases mean simple interest and growing increases mean compound.",
     ],
     formal: [
-      "With principal $P$ and yearly rate $r$ written as a decimal, simple interest gives the balance $P(1+rt)$ after $t$ years: a linear function of $t$ with constant yearly step $Pr$. Compound interest added yearly multiplies by $1+r$ each year, giving $P(1+r)^t$ before rounding to cents: an exponential function of $t$. At $t=1$ both equal $P(1+r)$. For $t\\ge2$ and $r>0$ the compound balance is larger.",
+      "With principal $P$ and yearly rate $r$ written as a decimal, simple interest gives the balance $P(1+rt)$ after $t$ years: a linear function of $t$ with constant yearly step $Pr$. Compound interest added yearly multiplies by $1+r$ each year, giving $P(1+r)^t$ before rounding to cents: an exponential function of $t$. At the same rate, both equal $P(1+r)$ at $t=1$, and for $t\\ge2$ and $r>0$ the compound balance is larger.",
     ],
     pitfalls: [
       "Do not use the original principal for every year of compound interest; use the current balance.",
