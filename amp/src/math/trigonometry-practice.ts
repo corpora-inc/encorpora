@@ -484,7 +484,7 @@ export function symmetryCase(seed: string) {
   const hint = `Compare the angle $${expr}$ with $\\theta$ on the unit circle: is it a reflection, a half turn, or whole turns? ${
     acute
       ? `Because $\\theta$ is acute, the Pythagorean identity gives the other coordinate from $${givenText}$.`
-      : `Only the given value of $${givenText.replace(/=.*/, "")}$, the number $${givenText.replace(/^[^=]*=/, "")}$, is needed; its sign follows the rule.`
+      : `Only the given value, $${givenText.replace(/^([^=]*)=(.*)$/, "$2=$1")}$, is needed; its sign follows the rule.`
   }`;
   const explanation = [
     rule,
