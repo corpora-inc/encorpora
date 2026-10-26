@@ -330,6 +330,15 @@ export interface GeneratedProblem {
    * or rounded decimal for an answer that does not fit the entry space.
    * Absent on problems saved before the policy existed, which keep exact grading. */
   entryPolicy?: "sat-spr";
+  /** Private realized surface: the family's variant label and the value of
+   * each variation axis (src/math/variation). Saved with the instance and
+   * copied to its attempt evidence so calibration and review can reason per
+   * axis; never part of the public payload. Absent on older instances. */
+  variant?: ProblemVariant;
+}
+export interface ProblemVariant {
+  id: string;
+  axes?: Record<string, string>;
 }
 
 const displayInteger = z.number().int().min(-100000).max(100000);
@@ -918,6 +927,16 @@ export const publicProblemSchema: z.ZodType<PublicProblem> = z
     figure: semanticFigureSchema.optional(),
   })
   .strict();
+const variantText = z.string().regex(/^[a-z0-9][a-z0-9-]{0,63}$/);
+export const problemVariantSchema: z.ZodType<ProblemVariant> = z
+  .object({
+    id: variantText,
+    axes: z
+      .record(z.string().regex(/^[a-z][a-z0-9-]{0,31}$/), variantText)
+      .refine((axes) => Object.keys(axes).length <= 6, "At most six axes")
+      .optional(),
+  })
+  .strict();
 export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
   .object({
     public: publicProblemSchema,
@@ -931,6 +950,7 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
       .optional(),
     pointGrading: pointPlotGradingSchema.optional(),
     entryPolicy: z.literal("sat-spr").optional(),
+    variant: problemVariantSchema.optional(),
   })
   .strict()
   .refine((problem) => {

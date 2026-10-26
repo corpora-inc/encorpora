@@ -62,7 +62,7 @@ import { eq, and, isNull } from "drizzle-orm";
 import * as schema from "./schema";
 import type { SkillEvidence } from "./evidence.js";
 import type { LearnerSkillProgress } from "./progress";
-import type { GeneratedProblem } from "../math/contracts";
+import type { GeneratedProblem, ProblemVariant } from "../math/contracts";
 import type { PracticeSkip } from "../learning/skip";
 import type { ProblemFlag } from "../feedback/problem-flags";
 import type {
@@ -85,6 +85,8 @@ export type Outcome = {
   createdAt: string;
   /** Only on a skip's reveal, which is never stored as an attempt. */
   skipped?: true;
+  /** The instance's realized variant and axis values, for per-axis evidence. */
+  variant?: ProblemVariant;
 };
 export type SavedProblem = GeneratedProblem & {
   hintViewed?: boolean;

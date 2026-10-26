@@ -734,6 +734,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
           : problem.explanation,
         answer: problem.answer,
         createdAt: new Date().toISOString(),
+        ...(problem.variant ? { variant: problem.variant } : {}),
       };
       const before = await tx.masteredSkills();
       await tx.saveAttempt(outcome);
