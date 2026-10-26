@@ -143,10 +143,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Write a line in slope-intercept form from a fractional slope and one point",
-      status: "partial",
-      templateIds: ["linear-model-equation", "recover-linear-intercept"],
+      status: "covered",
+      templateIds: [
+        "staar-line-from-points",
+        "linear-model-equation",
+        "recover-linear-intercept",
+      ],
       limitations:
-        "Related families choose a model equation or recover an intercept from a rate; solving for the intercept given a negative fractional slope and a point is not practiced.",
+        "staar-line-from-points chooses the slope-intercept equation from a fractional slope, positive or negative, and one point.",
     },
     {
       item: {
@@ -217,10 +221,10 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Find the rate of change of y from a linear equation in standard form",
-      status: "partial",
-      templateIds: ["formula-isolate", "line-slope"],
+      status: "covered",
+      templateIds: ["staar-line-from-points", "formula-isolate", "line-slope"],
       limitations:
-        "formula-isolate rewrites a formula for y and line-slope finds slope from two points; reading the slope of a standard-form equation is not practiced.",
+        "staar-line-from-points chooses the rate of change of y from an equation in standard form.",
     },
     {
       item: {
@@ -456,10 +460,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["linear.solve"],
       demand:
         "Solve an equation with fractional coefficients and a parenthesized term on one side",
-      status: "partial",
-      templateIds: ["rational-coefficient-equation", "grouped-linear-equation"],
+      status: "covered",
+      templateIds: [
+        "staar-multistep-equations",
+        "rational-coefficient-equation",
+        "grouped-linear-equation",
+      ],
       limitations:
-        "Related families handle fractional coefficients or grouped terms separately; both with variables on both sides are not practiced.",
+        "staar-multistep-equations solves an equation with fractional coefficients and a parenthesized term with variables on both sides, by entry.",
     },
     {
       item: {

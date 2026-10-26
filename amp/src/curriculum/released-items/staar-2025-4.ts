@@ -99,9 +99,10 @@ export const staarGrade4 = defineLedger(
       standards: ["TEKS.4.1.2.B"],
       archetypeIds: ["number.number-word-form"],
       demand: "Write a number in words from its expanded notation",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family writes or reads number words.",
+      status: "covered",
+      templateIds: ["staar-number-word-form"],
+      limitations:
+        "staar-number-word-form chooses the word form of a whole number below one million written in expanded notation.",
     },
     {
       item: {
@@ -128,14 +129,15 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["whole.multi-step-stories", "number.remainder-interpret"],
       demand:
         "Multiply pizzas by slices per pizza, then divide by slices per serving and keep only whole servings",
-      status: "partial",
+      status: "covered",
       templateIds: [
+        "staar-multistep-stories",
         "multiply-by-one-digit",
         "divide-by-one-digit",
         "division-remainder-story",
       ],
       limitations:
-        "Related families do one multiplication or one division with a remainder; chaining a product into a quotient story is not practiced.",
+        "staar-multistep-stories multiplies pizzas by slices, then divides by slices per serving and keeps whole servings, by entry.",
     },
     {
       item: {
@@ -160,10 +162,10 @@ export const staarGrade4 = defineLedger(
       standards: ["TEKS.4.4.9.B"],
       archetypeIds: ["data.stem-leaf-read"],
       demand: "Add the two greatest values read from a stem-and-leaf plot",
-      status: "partial",
-      templateIds: ["stem-leaf-read"],
+      status: "covered",
+      templateIds: ["staar-stem-leaf-combine", "stem-leaf-read"],
       limitations:
-        "stem-leaf-read answers extremes, range, median, mode and counts; the sum of the two largest values is not asked.",
+        "staar-stem-leaf-combine adds the two greatest values of a stem-and-leaf plot with a key.",
     },
     {
       item: {
@@ -204,10 +206,14 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["number.decimal-fraction-equivalent"],
       demand:
         "Choose the true equality that connects a decimal with its fraction or mixed number",
-      status: "partial",
-      templateIds: ["tenths-as-hundredths", "decimal-grid-read"],
+      status: "covered",
+      templateIds: [
+        "staar-rename-percent-fraction-decimal",
+        "tenths-as-hundredths",
+        "decimal-grid-read",
+      ],
       limitations:
-        "Related families rename tenths as hundredths and read grids; writing a decimal with a zero place as a fraction with denominator 100 and choosing among equalities is not practiced.",
+        "staar-rename-percent-fraction-decimal chooses the true equality between a decimal with a zero in the tenths place and its mixed number over 10 or 100.",
     },
     {
       item: {
@@ -264,9 +270,14 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["measure.area"],
       demand:
         "Find a rectangle's width from its perimeter and length, then compute its area",
-      status: "partial",
-      templateIds: ["rectangle-missing-border-side", "rectangle-area"],
-      limitations: "Both steps are practiced separately; the chain is not.",
+      status: "covered",
+      templateIds: [
+        "staar-measure-chains",
+        "rectangle-missing-border-side",
+        "rectangle-area",
+      ],
+      limitations:
+        "staar-measure-chains finds a rectangle's width from its perimeter and length, then its area, by entry.",
     },
     {
       item: {
@@ -293,10 +304,10 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["decimal.add-subtract"],
       demand:
         "Subtract a tenths decimal from a whole number to compare two amounts of sugar",
-      status: "partial",
-      templateIds: ["multidigit-decimal-sum"],
+      status: "covered",
+      templateIds: ["staar-decimal-operations", "multidigit-decimal-sum"],
       limitations:
-        "multidigit-decimal-sum adds and subtracts two decimals with unlike place counts; checked samples never use a whole-number minuend that needs trailing zeros, and the story is not separately practiced.",
+        "staar-decimal-operations subtracts a tenths decimal from a whole number and compares two amounts, by entry.",
     },
     {
       item: {
@@ -323,10 +334,10 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["measure.customary-units"],
       demand:
         "Use a given miles-to-feet row to find feet in a multiple of miles",
-      status: "partial",
-      templateIds: ["customary-unit-rename"],
+      status: "covered",
+      templateIds: ["staar-multistep-stories", "customary-unit-rename"],
       limitations:
-        "customary-unit-rename states the conversion factor; deriving it from a two-column conversion row first is not practiced.",
+        "staar-multistep-stories finds the amount in a larger number of units from a stated conversion row, by entry.",
     },
     {
       item: {
@@ -443,10 +454,10 @@ export const staarGrade4 = defineLedger(
       standards: ["TEKS.4.4.10.A"],
       archetypeIds: ["finance.fixed-variable-expense"],
       demand: "Decide which listed expenses vary month to month",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["staar-money-vocabulary"],
       limitations:
-        "STAAR interaction: inline choice, 1 point. No family covers fixed and variable expenses.",
+        "STAAR interaction: inline choice, 1 point. staar-money-vocabulary tells the variable or fixed expense from three months of amounts by single choice; the item's inline-choice response has no protocol.",
     },
     {
       item: {
@@ -458,10 +469,10 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["expression.verbal"],
       demand:
         "Choose the equation that cannot find the number of gallons in each of four equal types",
-      status: "partial",
-      templateIds: ["story-operation-choice"],
+      status: "covered",
+      templateIds: ["staar-story-model-choice", "story-operation-choice"],
       limitations:
-        "story-operation-choice picks the valid equation; spotting the invalid one among related equations is not practiced.",
+        "staar-story-model-choice finds the equation that cannot be used to find the number in each equal group.",
     },
     {
       item: {

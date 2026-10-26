@@ -39,10 +39,14 @@ export const staarGrade5 = defineLedger(
       standards: ["TEKS.5.2.4.C"],
       archetypeIds: ["pattern.paired"],
       demand: "Choose the table whose every pair satisfies y = x + 4",
-      status: "partial",
-      templateIds: ["pattern-pair-relationship", "rule-pattern-term"],
+      status: "covered",
+      templateIds: [
+        "staar-table-rule-choice",
+        "pattern-pair-relationship",
+        "rule-pattern-term",
+      ],
       limitations:
-        "Related families generate terms from a rule or relate patterns; testing which table fits a stated y = x + 4 rule is not practiced.",
+        "staar-table-rule-choice chooses the table whose every pair satisfies an add rule such as y = x + 4; tables are shown as rows of paired values.",
     },
     {
       item: {
@@ -99,10 +103,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["number.decimal-expanded-compare"],
       demand:
         "Find the third of four weights in order from least to greatest when they have unlike numbers of decimal places",
-      status: "partial",
-      templateIds: ["compare-decimals-thousandths"],
+      status: "covered",
+      templateIds: ["staar-order-decimals", "compare-decimals-thousandths"],
       limitations:
-        "compare-decimals-thousandths compares two decimals, including shorter-but-greater pairs; ordering four decimals is not practiced.",
+        "staar-order-decimals chooses the second or third of four ordered decimals with unlike numbers of places.",
     },
     {
       item: {
@@ -129,10 +133,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["measure.area"],
       demand:
         "Find the perimeter of a rectangular sign from decimal length and width in feet",
-      status: "partial",
-      templateIds: ["rectangle-border-length"],
+      status: "covered",
+      templateIds: ["staar-measure-chains", "rectangle-border-length"],
       limitations:
-        "rectangle-border-length uses whole-number side lengths in checked samples; decimal sides such as hundredths are not practiced.",
+        "staar-measure-chains finds the perimeter of a rectangle with decimal length and width, by entry.",
     },
     {
       item: {
@@ -174,10 +178,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["number.number-word-form"],
       demand:
         "Choose the word form of a decimal written in expanded notation with tenths and thousandths",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["staar-number-word-form"],
       limitations:
-        "No family writes or reads number words, including decimals.",
+        "staar-number-word-form chooses the word form of a decimal with tenths and thousandths written in expanded notation.",
     },
     {
       item: {
@@ -234,10 +238,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["data.stem-leaf-read"],
       demand:
         "Subtract the second-lowest from the highest score read from a stem-and-leaf plot",
-      status: "partial",
-      templateIds: ["stem-leaf-read"],
+      status: "covered",
+      templateIds: ["staar-stem-leaf-combine", "stem-leaf-read"],
       limitations:
-        "stem-leaf-read asks extremes, range and median; the difference between the highest and the second-lowest value is not asked.",
+        "staar-stem-leaf-combine subtracts the second-least value from the greatest in a stem-and-leaf plot with a key.",
     },
     {
       item: {
@@ -327,10 +331,14 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["expression.verbal"],
       demand:
         "Choose the equation for a purchase total made of two known prices and an unknown",
-      status: "partial",
-      templateIds: ["one-step-equation-story", "story-operation-choice"],
+      status: "covered",
+      templateIds: [
+        "staar-story-model-choice",
+        "one-step-equation-story",
+        "story-operation-choice",
+      ],
       limitations:
-        "Related families choose one-step story equations; a three-part addition story with an unknown part is not practiced.",
+        "staar-story-model-choice chooses the addition equation for a total made of two known prices and an unknown price.",
     },
     {
       item: {
@@ -371,10 +379,10 @@ export const staarGrade5 = defineLedger(
       standards: ["TEKS.5.2.3.G"],
       archetypeIds: ["decimal.divide"],
       demand: "Divide a decimal total by a whole number of weeks",
-      status: "partial",
-      templateIds: ["multidigit-decimal-quotient"],
+      status: "covered",
+      templateIds: ["staar-decimal-operations", "multidigit-decimal-quotient"],
       limitations:
-        "multidigit-decimal-quotient always uses a decimal divisor; a whole-number divisor is not practiced.",
+        "staar-decimal-operations divides a decimal money total by a whole number of weeks, by entry.",
     },
     {
       item: {
@@ -385,10 +393,14 @@ export const staarGrade5 = defineLedger(
       standards: ["TEKS.5.3.4.H"],
       archetypeIds: ["measure.area"],
       demand: "Find a square's area from its perimeter",
-      status: "partial",
-      templateIds: ["rectangle-area", "rectangle-border-length"],
+      status: "covered",
+      templateIds: [
+        "staar-measure-chains",
+        "rectangle-area",
+        "rectangle-border-length",
+      ],
       limitations:
-        "Related families find perimeter or area from sides; recovering a square's side from its perimeter and then its area is not practiced.",
+        "staar-measure-chains finds a square's side from its perimeter and then its area, by entry.",
     },
     {
       item: {
@@ -415,10 +427,14 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["ratio.units"],
       demand:
         "Multiply liters per glass by the glasses, then convert liters to milliliters using a reference table",
-      status: "partial",
-      templateIds: ["mass-volume-story", "metric-length-rename"],
+      status: "covered",
+      templateIds: [
+        "staar-multistep-stories",
+        "mass-volume-story",
+        "metric-length-rename",
+      ],
       limitations:
-        "Related families do one-step liter stories or rename metric length; the chain with a liters-to-milliliters step is not practiced.",
+        "staar-multistep-stories multiplies liters per glass by the glasses and converts to milliliters with the stated factor, by entry.",
     },
     {
       item: {
@@ -444,10 +460,10 @@ export const staarGrade5 = defineLedger(
       standards: ["TEKS.5.1.2.B"],
       archetypeIds: ["number.decimal-expanded-compare"],
       demand: "Choose the list of four decimals ordered from least to greatest",
-      status: "partial",
-      templateIds: ["compare-decimals-thousandths"],
+      status: "covered",
+      templateIds: ["staar-order-decimals", "compare-decimals-thousandths"],
       limitations:
-        "compare-decimals-thousandths compares two decimals; ordering four decimals is not practiced.",
+        "staar-order-decimals chooses the list of four decimals with unlike numbers of places in order, either direction.",
     },
     {
       item: {
@@ -503,10 +519,14 @@ export const staarGrade5 = defineLedger(
       standards: ["TEKS.5.2.3.B"],
       archetypeIds: ["expression.order-of-operations"],
       demand: "Find the product of 538 and the sum of 42 and 6",
-      status: "partial",
-      templateIds: ["operation-order", "multiply-multidigit"],
+      status: "covered",
+      templateIds: [
+        "staar-nested-grouping",
+        "operation-order",
+        "multiply-multidigit",
+      ],
       limitations:
-        'operation-order evaluates numeric expressions and multiply-multidigit multiplies up to a three-digit by a two-digit number; reading a verbal "product of a number and a sum" is not practiced.',
+        "staar-nested-grouping states a product of a three-digit number and a sum or difference in words and evaluates it by entry.",
     },
     {
       item: {
@@ -518,10 +538,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["expression.order-of-operations"],
       demand:
         "Evaluate an expression with a bracket around two parenthesized groups, multiplication and subtraction",
-      status: "partial",
-      templateIds: ["operation-order"],
+      status: "covered",
+      templateIds: ["staar-nested-grouping", "operation-order"],
       limitations:
-        "operation-order uses one level of parentheses; nested brackets with subtraction are not practiced.",
+        "staar-nested-grouping evaluates a bracket around two parenthesized groups with multiplication and subtraction; it does not ask the learner to find a worked solution's first step.",
     },
     {
       item: {
