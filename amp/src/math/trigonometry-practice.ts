@@ -47,7 +47,7 @@ export const trigonometryTemplates: readonly TemplateMetadata[] = [
     "Amplitude, period, midline and shift",
     "trigonometric-graphs",
     0.3,
-    "Read amplitude, period, midline, extreme values and horizontal shift from y = A sin(B(x − h)) + k, or choose the equation of a plotted sinusoid.",
+    "Read amplitude, period, midline, extreme values and horizontal shift from $y = A\\sin(B(x - h)) + k$, or choose the equation of a plotted sinusoid.",
     { requiredFigureCapability: "scenes-v1" },
   ),
   meta(
@@ -55,7 +55,7 @@ export const trigonometryTemplates: readonly TemplateMetadata[] = [
     "Inverse trigonometric values",
     "inverse-trigonometry",
     0.45,
-    "Evaluate arcsin, arccos and arctan at special values within their restricted ranges, including arcsin(sin x) for x outside the range and compositions.",
+    "Evaluate arcsin, arccos and arctan at special values within their restricted ranges, including $\\arcsin(\\sin x)$ for $x$ outside the range and compositions.",
   ),
   meta(
     "trig-equation-solutions",
@@ -83,14 +83,14 @@ export const trigonometryTemplates: readonly TemplateMetadata[] = [
     "Triangle area from two sides and the angle",
     "trigonometric-area",
     0.35,
-    "Use area = ½ab sin C for exact and rounded areas, to find a missing side from the area, and to compare areas with supplementary angles.",
+    "Use area $=\\frac12ab\\sin C$ for exact and rounded areas, to find a missing side from the area, and to compare areas with supplementary angles.",
   ),
   meta(
     "sinusoid-model",
     "Build a periodic model",
     "periodic-modeling",
     0.45,
-    "Turn a maximum, minimum, period and starting position into the amplitude, midline and B of a sinusoidal model, then use the model.",
+    "Turn a maximum, minimum, period and starting position into the amplitude, midline and $B$ of a sinusoidal model, then use the model.",
   ),
 ];
 
@@ -210,9 +210,9 @@ const quadrantSign: Record<Fn, number[]> = {
   tan: [0, 1, -1, 1, -1],
 };
 const reading: Record<Fn, string> = {
-  sin: "the y-coordinate of the point on the unit circle",
-  cos: "the x-coordinate of the point on the unit circle",
-  tan: "y divided by x, the slope of the terminal side",
+  sin: "the $y$-coordinate of the point on the unit circle",
+  cos: "the $x$-coordinate of the point on the unit circle",
+  tan: "$y$ divided by $x$, the slope of the terminal side",
 };
 
 export function specialAngleCase(seed: string) {
@@ -245,15 +245,15 @@ export function specialAngleCase(seed: string) {
       {
         label: pt(s, c),
         feedback:
-          "The x-coordinate is $\\cos\\theta$ and the y-coordinate is $\\sin\\theta$; these two are swapped.",
+          "The $x$-coordinate is $\\cos\\theta$ and the $y$-coordinate is $\\sin\\theta$; these two are swapped.",
       },
       {
         label: pt(-c, s),
-        feedback: "Check the sign of the x-coordinate in this quadrant.",
+        feedback: "Check the sign of the $x$-coordinate in this quadrant.",
       },
       {
         label: pt(c, -s),
-        feedback: "Check the sign of the y-coordinate in this quadrant.",
+        feedback: "Check the sign of the $y$-coordinate in this quadrant.",
       },
       {
         label: pt(-c, -s),
@@ -261,11 +261,11 @@ export function specialAngleCase(seed: string) {
           "Both signs are reversed. Decide the signs from the quadrant the angle ends in.",
       },
     ];
-    hint = `Name the quadrant that $\\theta=${angleTex(base, radians)}$ ends in and its reference angle, the acute angle between the terminal side and the x-axis. The point is $(\\cos\\theta,\\sin\\theta)$.`;
+    hint = `Name the quadrant that $\\theta=${angleTex(base, radians)}$ ends in and its reference angle, the acute angle between the terminal side and the $x$-axis. The point is $(\\cos\\theta,\\sin\\theta)$.`;
     explanation = [
       `$\\theta=${angleTex(base, radians)}$ ends in quadrant ${ordinal[quad]}, with reference angle $${angleTex(ref, radians)}$.`,
       `At the reference angle, $\\cos=${exact(Math.abs(c))}$ and $\\sin=${exact(Math.abs(s))}$.`,
-      `In quadrant ${ordinal[quad]}, x is ${c < 0 ? "negative" : "positive"} and y is ${s < 0 ? "negative" : "positive"}.`,
+      `In quadrant ${ordinal[quad]}, $x$ is ${c < 0 ? "negative" : "positive"} and $y$ is ${s < 0 ? "negative" : "positive"}.`,
       `The point is ${correct}.`,
     ];
   } else if (variant === 2) {
@@ -294,7 +294,7 @@ export function specialAngleCase(seed: string) {
     };
     explanation = [
       `$${angleTex(deg, radians)}$ ends on the axis at the point $${pointOf[n]}$ of the unit circle.`,
-      `$${fnTex(fn)}$ is ${reading[fn]}${fn === "tan" ? (correct === "Undefined" ? ", and the x-coordinate is 0, so division by zero makes it undefined" : "") : ""}.`,
+      `$${fnTex(fn)}$ is ${reading[fn]}${fn === "tan" ? (correct === "Undefined" ? ", and the $x$-coordinate is 0, so division by zero makes it undefined" : "") : ""}.`,
       correct === "Undefined"
         ? "So the value is undefined."
         : `So the value is ${correct}.`,
@@ -315,7 +315,7 @@ export function specialAngleCase(seed: string) {
       },
       {
         label: withSign(ofRef(fn, 90 - ref)),
-        feedback: `The reference angle is $${angleTex(ref, radians)}$, not $${angleTex(90 - ref, radians)}$. Measure from the x-axis.`,
+        feedback: `The reference angle is $${angleTex(ref, radians)}$, not $${angleTex(90 - ref, radians)}$. Measure from the $x$-axis.`,
       },
       {
         label: withSign(ofRef(others[0]!, ref)),
@@ -338,7 +338,7 @@ export function specialAngleCase(seed: string) {
     hint =
       variant === 3
         ? `First replace $${angleTex(deg, radians)}$ by the coterminal angle between $0$ and a full turn. Then find its quadrant and reference angle.`
-        : `Find the quadrant of $${angleTex(deg, radians)}$ and its reference angle, the acute angle it makes with the x-axis. The reference angle gives the size; the quadrant gives the sign.`;
+        : `Find the quadrant of $${angleTex(deg, radians)}$ and its reference angle, the acute angle it makes with the $x$-axis. The reference angle gives the size; the quadrant gives the sign.`;
     explanation = [
       ...(turns ? [turns.trim()] : []),
       `The angle $${angleTex(normalize(deg), radians)}$ ends in quadrant ${ordinal[quadrantOf(deg)]}; its reference angle is $${angleTex(ref, radians)}$.`,
@@ -484,7 +484,7 @@ export function symmetryCase(seed: string) {
   const hint = `Compare the angle $${expr}$ with $\\theta$ on the unit circle: is it a reflection, a half turn, or whole turns? ${
     acute
       ? `Because $\\theta$ is acute, the Pythagorean identity gives the other coordinate from $${givenText}$.`
-      : `Only the given value is needed; its sign follows the rule.`
+      : `Only the given value, $${givenText.replace(/^([^=]*)=(.*)$/, "$2=$1")}$, is needed; its sign follows the rule.`
   }`;
   const explanation = [
     rule,
@@ -494,7 +494,7 @@ export function symmetryCase(seed: string) {
           `Because $\\theta$ is acute, $\\sin^2\\theta+\\cos^2\\theta=1$ gives $\\${givenFn === "sin" ? "cos" : "sin"}\\theta=${tex(oMag)}$.`,
         ]
       : []),
-    `$${askText}$ is the ${askFn === "tan" ? "tangent" : askFn === "sin" ? "sine" : "cosine"} of $${expr}$, which is ${sigma === -1 ? "the reflection of $\\theta$ across the x-axis" : "$\\theta$"}${k === 0 ? "" : half === -1 ? " turned through an odd number of half turns" : " turned through whole turns"}, so the value is ${correct}.`,
+    `$${askText}$ is the ${askFn === "tan" ? "tangent" : askFn === "sin" ? "sine" : "cosine"} of $${expr}$, which is ${sigma === -1 ? "the reflection of $\\theta$ across the $x$-axis" : "$\\theta$"}${k === 0 ? "" : half === -1 ? " turned through an odd number of half turns" : " turned through whole turns"}, so the value is ${correct}.`,
   ];
   const choices = choicesFrom(correct, cands);
   const problem = assemble(trigonometryTemplates[1]!, seed, r, {
@@ -647,7 +647,7 @@ export function sinusoidCase(seed: string) {
       },
     ];
     prompt = `What is the amplitude of $${simple}$?`;
-    hint = `Amplitude is how far the curve rises above, or falls below, its midline. Find the number that multiplies $\\sin$.`;
+    hint = `Amplitude is how far the curve rises above, or falls below, its midline. In $${simple}$, find the number that multiplies $\\sin$.`;
     explanation = [
       `The curve moves from the midline by $|A|$ each way.`,
       `Here $A=${A}$, so the amplitude is $|${A}|=${amp}$${A < 0 ? "; the negative sign reflects the curve but does not change the distance" : ""}.`,
@@ -675,7 +675,7 @@ export function sinusoidCase(seed: string) {
       {
         label: math("y=0"),
         feedback:
-          "The x-axis is the midline only when there is no vertical shift.",
+          "The $x$-axis is the midline only when there is no vertical shift.",
       },
       {
         label: math(`y=${kk - amp}`),
@@ -859,7 +859,7 @@ export function sinusoidCase(seed: string) {
       },
     ];
     prompt = `What is the ${which} value of $${eq}$?`;
-    hint = `Sine takes every value from $-1$ to $1$. Use the amplitude $|A|$ and the midline $k$ to find the ${which}.`;
+    hint = `Sine takes every value from $-1$ to $1$. Use the amplitude $|A|$ and the midline $k$ to find the ${which} of $${eq}$.`;
     explanation = [
       `The midline is $y=${kk}$ and the amplitude is $|${A}|=${amp}$.`,
       `The ${which} is the midline ${which === "maximum" ? "plus" : "minus"} the amplitude: $${kk}${which === "maximum" ? "+" : "-"}${amp}=${value}$.`,
@@ -1486,7 +1486,7 @@ export function identityCase(seed: string) {
         },
       ];
       prompt = `Given $\\${givenFn}\\theta=${fracTex(givenN, c)}$ and ${where}, find $\\tan\\theta$.`;
-      hint = `Find the missing coordinate from $\\sin^2\\theta+\\cos^2\\theta=1$, choose its sign from ${where.startsWith("$\\theta") ? "the quadrant" : "the stated signs"}, then divide: $\\tan\\theta=\\sin\\theta\\div\\cos\\theta$.`;
+      hint = `Starting from $\\${givenFn}\\theta=${fracTex(givenN, c)}$, find the missing coordinate from $\\sin^2\\theta+\\cos^2\\theta=1$, choose its sign from ${where.startsWith("$\\theta") ? "the quadrant" : "the stated signs"}, then divide: $\\tan\\theta=\\sin\\theta\\div\\cos\\theta$.`;
       explanation = [
         `$\\${otherName}^2\\theta=1-\\left(${fracTex(givenN, c)}\\right)^2=\\frac{${c * c - givenN * givenN}}{${c * c}}$, so $|\\${otherName}\\theta|=\\frac{${Math.abs(missing)}}{${c}}$.`,
         `${where.charAt(0).toUpperCase()}${where.slice(1)}, so $\\${otherName}\\theta=${fracTex(missing, c)}$.`,
@@ -2325,7 +2325,7 @@ export function periodicModelCase(seed: string) {
         },
       ];
       prompt = `A sinusoidal model $y=A\\sin(Bt)+k$ has period ${P} (in the same units as $t$). What is $B$?`;
-      hint = `The sine function repeats when $Bt$ increases by $2\\pi$. Set $B\\cdot${P}=2\\pi$ and solve for $B$.`;
+      hint = `The sine function repeats when $Bt$ increases by $2\\pi$. Set $B\\cdot ${P}=2\\pi$ and solve for $B$.`;
       explanation = [
         `One cycle needs $B\\cdot${P}=2\\pi$.`,
         `So $B=\\frac{2\\pi}{${P}}=${bTex}$.`,

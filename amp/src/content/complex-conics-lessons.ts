@@ -278,7 +278,7 @@ export const complexConicsLessons: Lesson[] = [
       "Divide complex numbers into exact standard form.",
     ],
     intuition: {
-      title: "Clearing $i$ from a denominator",
+      title: "Clearing the imaginary unit from a denominator",
       paragraphs: [
         r`A complex number is $a+bi$ with $i^2=-1$. Its conjugate $a-bi$ has the opposite imaginary part. Multiplying them gives $a^2-(bi)^2=a^2+b^2$, a real number with no $i$.`,
         r`A fraction with $i$ in the denominator cannot be simplified directly. Multiplying top and bottom by the conjugate of the denominator keeps the value and makes the denominator real.`,
@@ -610,7 +610,7 @@ export const complexConicsLessons: Lesson[] = [
       answer: r`$(x-1)^2=8(y-3)$`,
     },
     method: {
-      title: "Vertex, $p$, equation",
+      title: "Vertex, focal distance, equation",
       paragraphs: [
         r`From focus and directrix: vertex first, then $p$ (positive if the focus is above the vertex), then the equation. From an equation: the vertex is $(h,k)$, the bracket coefficient is $4p$, the focus is $p$ from the vertex and the directrix is $p$ on the other side.`,
         r`For $(y-k)^2=4p(x-h)$ the roles of $x$ and $y$ swap: the axis is horizontal and the focus is $(h+p,k)$.`,

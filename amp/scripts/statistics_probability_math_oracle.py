@@ -107,7 +107,7 @@ def solve_normal(public):
         s = re.fullmatch(
             r'Both exams have approximately normal scores\. (\w+) scored (\d+) on the \w+ exam \(mean (\d+), standard deviation (\d+)\)\. '
             r'(\w+) scored (\d+) on the \w+ exam \(mean (\d+), standard deviation (\d+)\)\. Who scored higher relative to the others who took the same exam\? '
-            r'Compare z-scores, where z = \(score - mean\) ÷ standard deviation\.', prompt)
+            r'Compare z-scores, where z=\\frac\{\\text\{score\}-\\text\{mean\}\}\{\\text\{standard deviation\}\}\.', prompt)
         require(s is not None, 'z-score prompt not recognised')
         (a, xa, ma, sa, b, xb, mb, sb) = s.groups()
         za, zb = z_of(int(xa), int(ma), int(sa)), z_of(int(xb), int(mb), int(sb))
@@ -294,8 +294,8 @@ def solve_strategy(public):
     best = max(nets.values())
     require(list(nets.values()).count(best) == 1, 'Tied best game')
     winner = next(g for g, v in nets.items() if v == best)
-    require(len({o['label'] for o in options}) == 4 and {o['label'] for o in options} == {f'Game {g}' for g in 'ABCD'}, 'Each game must be one choice')
-    return pick(options, lambda l: l == f'Game {winner}', 'best game')
+    require(len({clean(o['label']) for o in options}) == 4 and {clean(o['label']) for o in options} == {f'Game {g}' for g in 'ABCD'}, 'Each game must be one choice')
+    return pick(options, lambda l: clean(l) == f'Game {winner}', 'best game')
 
 
 # ------------------------------------------------------------------ fair draw

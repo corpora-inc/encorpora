@@ -79,11 +79,11 @@ export const matrixTransformTemplate: TemplateMetadata = {
 export const matrixSystemTemplate: TemplateMetadata = {
   ...base,
   id: "matrix-linear-system",
-  title: "Linear systems as AX = B",
+  title: "Linear systems as matrix equations",
   skillId: "matrix-systems",
   difficultyOffset: 0.9,
   description:
-    "Write a 2×2 linear system as AX = B, solve it with the inverse, and recognize a zero determinant.",
+    "Write a 2×2 linear system as $AX=B$, solve it with the inverse, and recognize a zero determinant.",
 };
 export const vectorMatrixTemplates: readonly TemplateMetadata[] = [
   vectorComponentsTemplate,
@@ -568,15 +568,15 @@ const modes: Mode[] = [
   },
   {
     setup: (s, c) =>
-      `Two forces pull on a ring at right angles: ${s} N due east and ${c} N due north.`,
+      `Two forces pull on a ring at right angles: ${s} newtons due east and ${c} newtons due north.`,
     mag: "What is the magnitude of the resultant force?",
-    unit: "N",
+    unit: "newtons",
     angle:
       "The resultant points $\\theta$ degrees north of east. Find $\\theta$.",
     angleOther:
       "The resultant points $\\theta$ degrees east of north. Find $\\theta$.",
     reverse: (R, c) =>
-      `Two forces act on a ring at right angles. One force is ${c} N and the magnitude of the resultant is ${R} N.`,
+      `Two forces act on a ring at right angles. One force is ${c} newtons and the magnitude of the resultant is ${R} newtons.`,
     reverseAsk: "What is the magnitude of the other force?",
   },
 ];
@@ -792,7 +792,7 @@ function matrixDataOnce(seed: string, attempt: number) {
   if (variant === 0)
     return finishV({
       prompt: `${setup} How many ${items[j]} does ${stores[i]} have?`,
-      hint: `${stores[i]} is row ${i + 1} and ${items[j]} is column ${j + 1}. The count is where that row and that column cross.`,
+      hint: `${stores[i]} is row ${i + 1} and ${items[j]} is column ${j + 1}. Start at the first entry, ${A[0]![0]}, in row 1 and column 1, and move to where that row and that column cross.`,
       explanation: [
         `Row ${i + 1} is ${stores[i]} and column ${j + 1} is ${items[j]}.`,
         `The entry in row ${i + 1}, column ${j + 1} is ${A[i]![j]}.`,
@@ -820,7 +820,7 @@ function matrixDataOnce(seed: string, attempt: number) {
   if (variant === 1)
     return finishV({
       prompt: `${setup} What are the dimensions of $A$, written rows $\\times$ columns?`,
-      hint: `Count the stores (rows) and the items (columns). Dimensions are always written with the number of rows first.`,
+      hint: `Each store is a row and each item is a column. Row 1 reads ${A[0]!.join(", ")}; count its entries for the columns, then count the rows. Dimensions are always written with the number of rows first.`,
       explanation: [
         `$A$ has ${m} rows, one for each of ${m} stores, and ${n} columns, one for each of ${n} items.`,
         `Its dimensions are $${m}\\times${n}$.`,
@@ -849,7 +849,7 @@ function matrixDataOnce(seed: string, attempt: number) {
   if (variant === 2)
     return finishV({
       prompt: `${setup} Which statement describes the entry ${dollar(ent(i, j))}, in row ${i + 1} and column ${j + 1}?`,
-      hint: `The first subscript, ${i + 1}, picks the row and the second, ${j + 1}, picks the column. Say what the row and the column stand for.`,
+      hint: `The first subscript, ${i + 1}, picks the row and the second, ${j + 1}, picks the column. Row 1 reads ${A[0]!.join(", ")}. Say what the row and the column stand for.`,
       explanation: [
         `Row ${i + 1} is ${stores[i]}; column ${j + 1} is ${items[j]}.`,
         `The entry is the number of ${items[j]} at ${stores[i]}, here ${A[i]![j]}.`,
@@ -877,7 +877,7 @@ function matrixDataOnce(seed: string, attempt: number) {
   if (variant === 3)
     return finishV({
       prompt: `${setup} How many items of all kinds does ${stores[i]} have in stock?`,
-      hint: `${stores[i]} is row ${i + 1}. Add every entry in that row.`,
+      hint: `${stores[i]} is row ${i + 1}. Add every entry in that row: ${A[i]!.join(", ")}.`,
       explanation: [
         `Row ${i + 1} is ${A[i]!.join(", ")}.`,
         `Their sum is ${A[i]!.join(" + ")} = ${rowSum(i)}.`,
@@ -906,7 +906,7 @@ function matrixDataOnce(seed: string, attempt: number) {
   if (variant === 4)
     return finishV({
       prompt: `${setup} How many ${items[j]} are in stock at all the stores combined?`,
-      hint: `${items[j]} is column ${j + 1}. Add every entry in that column.`,
+      hint: `${items[j]} is column ${j + 1}. Add every entry in that column: ${A.map((row) => row[j]).join(", ")}.`,
       explanation: [
         `Column ${j + 1} is ${A.map((row) => row[j]).join(", ")}.`,
         `Their sum is ${A.map((row) => row[j]).join(" + ")} = ${colSum(j)}.`,
@@ -935,7 +935,7 @@ function matrixDataOnce(seed: string, attempt: number) {
   const wrongSwap = j < m && i < n;
   return finishV({
     prompt: `${setup} Which entry gives the number of ${items[j]} at ${stores[i]}?`,
-    hint: `Write the row number of ${stores[i]} first, then the column number of ${items[j]}. An entry $a_{rc}$ is in row $r$ and column $c$.`,
+    hint: `Write the row number of ${stores[i]} first, then the column number of ${items[j]}. An entry $a_{rc}$ is in row $r$ and column $c$. Row 1 reads ${A[0]!.join(", ")}.`,
     explanation: [
       `${stores[i]} is row ${i + 1} and ${items[j]} is column ${j + 1}.`,
       `The entry is $${ent(i, j)}$.`,
@@ -1203,7 +1203,7 @@ function matrixOperationOnce(seed: string, attempt: number) {
     : `$${name}$ is not defined: $${L}$ has ${ly} columns but $${Rt}$ has ${rx} rows`;
   return finishV({
     prompt: `Matrix $A$ is $${p}\\times${q}$ and matrix $B$ is $${rr}\\times${s}$. Which statement about the product $${name}$ is true?`,
-    hint: `Compare the number of columns of the left factor $${L}$ with the number of rows of the right factor $${Rt}$. A product exists only when they are equal; then the result has the rows of $${L}$ and the columns of $${Rt}$.`,
+    hint: `Read the dimensions $${p}\\times${q}$ and $${rr}\\times${s}$. Compare the number of columns of the left factor $${L}$ with the number of rows of the right factor $${Rt}$. A product exists only when they are equal; then the result has the rows of $${L}$ and the columns of $${Rt}$.`,
     explanation: defined
       ? [
           `$${L}$ has ${ly} columns and $${Rt}$ has ${rx} rows; they match, so the product is defined.`,
@@ -1330,7 +1330,7 @@ function matrixLawsOnce(seed: string, attempt: number) {
     const BA = mmul(B, A);
     return finishV({
       prompt: `Let $A=${bm(A)}$ and $B=${bm(B)}$. Find $BA$.`,
-      hint: `In $BA$ the left factor is $B$: each entry pairs a row of $B$ with a column of $A$. For row 1, column 1: $(${B[0]![0]!.n})(${A[0]![0]!.n})+(${B[0]![1]!.n})(${A[1]![0]!.n})$.`,
+      hint: `In $BA$ the left factor is $B$: each entry pairs a row of $B$ with a column of $A$. For row 1, column 1: $(${B[0]![0]!.n})(${A[0]![0]!.n})+(${B[0]![1]!.n})(${A[1]![0]!.n})$. For row 2, column 2: $(${B[1]![0]!.n})(${A[0]![1]!.n})+(${B[1]![1]!.n})(${A[1]![1]!.n})$.`,
       explanation: [
         `Row of $B$ times column of $A$: entry (1,1) is $(${B[0]![0]!.n})(${A[0]![0]!.n})+(${B[0]![1]!.n})(${A[1]![0]!.n})=${BA[0]![0]!.n}$.`,
         `$BA=${bm(BA)}$. For comparison, $AB=${bm(AB)}$, which is different.`,
@@ -1649,7 +1649,7 @@ function matrixInverseOnce(seed: string, attempt: number) {
     );
     return finishV({
       prompt: `Exactly one of these $2\\times2$ matrices has no inverse. Which one?`,
-      hint: `A matrix has no inverse exactly when its determinant $ad-bc$ is 0. Compute $ad-bc$ for each choice; a zero determinant happens when one row is a multiple of the other.`,
+      hint: `A $2\\times2$ matrix has no inverse exactly when its determinant $ad-bc$ is 0. Compute $ad-bc$ for each choice; a zero determinant happens when one row is a multiple of the other.`,
       explanation: [
         `A $2\\times2$ matrix is invertible exactly when $\\det\\ne0$.`,
         `For $${bm(S)}$: $\\det=(${a})(${k * b})-(${b})(${k * a})=${a * k * b}-(${b * k * a})=0$, since the second row is ${k} times the first.`,
@@ -1943,7 +1943,7 @@ function matrixTransformOnce(seed: string, attempt: number) {
     if (variant === 1)
       return finishV({
         prompt: `Which matrix ${target.name.replace(/^./, (c) => c.toLowerCase())}, when it multiplies the column $\\begin{bmatrix}x\\\\y\\end{bmatrix}$?`,
-        hint: `Follow the points $(1,0)$ and $(0,1)$. The first column of the matrix is where $(1,0)$ lands and the second column is where $(0,1)$ lands.`,
+        hint: `Follow the points $(1,0)$ and $(0,1)$ under the matrix that ${target.name.replace(/^./, (c) => c.toLowerCase())}. The first column of the matrix is where $(1,0)$ lands and the second column is where $(0,1)$ lands.`,
         explanation: [
           `Find where $(1,0)$ and $(0,1)$ go; these images are the columns of the matrix.`,
           `The matrix is $${bm(mat(target.m))}$.`,
@@ -1956,7 +1956,7 @@ function matrixTransformOnce(seed: string, attempt: number) {
       });
     return finishV({
       prompt: `Multiplying the column $\\begin{bmatrix}x\\\\y\\end{bmatrix}$ by $M=${bm(mat(target.m))}$ transforms points. What does it do?`,
-      hint: `Test the points $(1,0)$ and $(0,1)$: the columns of $M$ are their images. Decide where each point lands.`,
+      hint: `The entries of $M$ are ${target.m.flat().join(", ")}. Test the points $(1,0)$ and $(0,1)$: the columns of $M$ are their images. Decide where each point lands.`,
       explanation: [
         `The first column of $M$ is the image of $(1,0)$ and the second column is the image of $(0,1)$.`,
         `$(1,0)\\to(${target.m[0]![0]}, ${target.m[1]![0]})$ and $(0,1)\\to(${target.m[0]![1]}, ${target.m[1]![1]})$. ${target.name}.`,
@@ -2123,7 +2123,7 @@ function matrixSystemOnce(seed: string, attempt: number) {
     if (variant === 0)
       return finishV({
         prompt: `Write the system ${sys} as $AX=B$ with $X=\\begin{bmatrix}x\\\\y\\end{bmatrix}$. What is the coefficient matrix $A$?`,
-        hint: `Each row of $A$ holds the coefficients of $x$ and then $y$ from one equation, in the order the equations are listed. Write each equation with $x$ first before reading its coefficients.`,
+        hint: `Each row of $A$ holds the coefficients of $x$ and then $y$ from one equation, in the order the equations are listed. In ${sys}, write each equation with $x$ first before reading its coefficients.`,
         explanation: [
           `Write each equation with $x$ first: $${rewritten[0]}$ and $${rewritten[1]}$ (the constants move to the right side).`,
           `The coefficient rows are $(${A[0]!.join(", ")})$ and $(${A[1]!.join(", ")})$, so $A=${bm(Am)}$.`,
@@ -2158,7 +2158,7 @@ function matrixSystemOnce(seed: string, attempt: number) {
       });
     return finishV({
       prompt: `Write the system ${sys} as $AX=B$ with $X=\\begin{bmatrix}x\\\\y\\end{bmatrix}$. What is the constant matrix $B$?`,
-      hint: `Move each constant term to the right side of its equation so that each equation reads (terms in $x$ and $y$) = (constant). Then list the right sides in the order the equations are given.`,
+      hint: `In ${sys}, move each constant term to the right side of its equation so that each equation reads (terms in $x$ and $y$) = (constant). Then list the right sides in the order the equations are given.`,
       explanation: [
         `Moving the constants gives $${rewritten[0]} = ${e1}$ and $${rewritten[1]} = ${e2}$.`,
         `The right sides are ${e1} and ${e2}, so $B=${bm(Bm)}$.`,

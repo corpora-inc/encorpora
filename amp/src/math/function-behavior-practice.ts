@@ -35,7 +35,7 @@ export const functionBehaviorTemplates: readonly TemplateMetadata[] = [
   {
     ...choice,
     id: "graphical-solution-table",
-    title: "Solve f(x) = g(x) with a table of values",
+    title: "Solve two functions with a table of values",
     skillId: "graphical-equation-solving",
     difficultyOffset: 0.3,
     requiredFigureCapability: "scenes-v1",
@@ -49,7 +49,7 @@ export const functionBehaviorTemplates: readonly TemplateMetadata[] = [
     skillId: "polynomial-identities",
     difficultyOffset: 0.2,
     description:
-      "Use (a+b)², a²−b² and (x²+y²)² = (x²−y²)² + (2xy)² to compute quickly, build Pythagorean triples, or choose the equation that is true for every x.",
+      "Use $(a+b)^2$, $a^2-b^2$ and $(x^2+y^2)^2=(x^2-y^2)^2+(2xy)^2$ to compute quickly, build Pythagorean triples, or choose the equation that is true for every $x$.",
   },
   {
     ...choice,
@@ -58,7 +58,7 @@ export const functionBehaviorTemplates: readonly TemplateMetadata[] = [
     skillId: "binomial-theorem",
     difficultyOffset: 0.3,
     description:
-      "Find the coefficient of a given term of (ax+b)ⁿ for n ≤ 7, including negative b, the constant term and the leading term, or read Pascal's row.",
+      "Find the coefficient of a given term of $(ax+b)^n$ for $n\\le 7$, including negative $b$, the constant term and the leading term, or read Pascal's row.",
   },
   {
     ...choice,
@@ -674,7 +674,7 @@ export function graphicalSolutionCase(seed: string) {
         problem: finish(meta, seed, r, {
           prompt: `${head} The table shows their values. For which input $x$ is $f(x)=g(x)$?`,
           figure: makeFigure(rows),
-          hint: `A solution of $f(x)=g(x)$ is an input where the two columns of the table show the same number. Scan the rows of the table for $f(x)$ and $g(x)$ side by side.`,
+          hint: `A solution of $f(x)=g(x)$ is an input where the two columns of the table show the same number. Scan the rows for $f(x)=${ftext}$ and $g(x)=${gtext}$ side by side.`,
           explanation: [
             `Compare the two output columns row by row.`,
             `At $x=${k}$, $f(${k})=${out}$ and $g(${k})=${out}$, so the outputs are equal.`,
@@ -732,7 +732,7 @@ export function graphicalSolutionCase(seed: string) {
         problem: finish(meta, seed, r, {
           prompt: `${head} A solution of $f(x)=g(x)$ lies in the table's range. Between which consecutive table inputs does it lie?`,
           figure: makeFigure(rows),
-          hint: `In each row compare $f(x)$ with $g(x)$ and note which is larger. The solution is between two rows where the larger function changes.`,
+          hint: `In each row compare $f(x)=${ftext}$ with $g(x)=${gtext}$ and note which is larger. The solution is between two rows where the larger function changes.`,
           explanation: [
             `At $x=${lo}$, $f(${lo})=${f(lo)}$ and $g(${lo})=${g(lo)}$, so $f$ is ${f(lo) > g(lo) ? "above" : "below"} $g$.`,
             `At $x=${lo + 1}$, $f(${lo + 1})=${f(lo + 1)}$ and $g(${lo + 1})=${g(lo + 1)}$, so $f$ is now ${f(lo + 1) > g(lo + 1) ? "above" : "below"} $g$.`,
@@ -785,7 +785,7 @@ export function graphicalSolutionCase(seed: string) {
       problem: finish(meta, seed, r, {
         prompt: `${head} The table brackets a solution of $f(x)=g(x)$ between $x=${dec(X0, 100)}$ and $x=${dec(X0 + 10, 100)}$. To the nearest tenth, what is the solution?`,
         figure: makeFigure(rows),
-        hint: `Compare $f(x)$ and $g(x)$ in each row of the table and find which of the two steps contains the change in which function is larger. The solution lies in that step.`,
+        hint: `Compare $f(x)=${ftext}$ and $g(x)=${gtext}$ in each row of the table and find which of the two steps contains the change in which function is larger. The solution lies in that step.`,
         explanation: [
           `At $x=${dec(X0, 100)}$, $f=${rows[0]!.f}$ and $g=${rows[0]!.g}$: $f$ is ${H(X0) > 0 ? "above" : "below"} $g$.`,
           `At $x=${dec(X0 + 5, 100)}$, $f=${rows[1]!.f}$ and $g=${rows[1]!.g}$: $f$ is ${H(X0 + 5) > 0 ? "above" : "below"} $g$.`,
@@ -1307,7 +1307,7 @@ export function numberSystemClosureCase(seed: string) {
     variant,
     problem: finish(meta, seed, r, {
       prompt: `The number $${root}$ is irrational. For which rational number $q$ is $q\\cdot${root}$ not irrational?`,
-      hint: `The product of a nonzero rational number and an irrational number is irrational, so look for the one rational number that is excluded from that rule.`,
+      hint: `The product of a nonzero rational number and the irrational number $${root}$ is irrational, so look for the one rational number that is excluded from that rule.`,
       explanation: [
         `If $q\\ne0$, then $q\\cdot${root}$ is irrational: if the product were rational, dividing it by $q$ would make $${root}$ rational.`,
         "If $q=0$, the product is 0, which is rational.",
