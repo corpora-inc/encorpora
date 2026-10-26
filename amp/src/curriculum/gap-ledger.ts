@@ -5,7 +5,12 @@ import {
 } from "./source-reconciliation";
 import { texasGrade5Inventory } from "./texas-grade5";
 import { floridaInventories } from "./florida";
-import { buildAssessmentSampleAudit } from "./assessment-sample";
+import { buildReleasedItemLedger } from "./released-items";
+import type { SourceLedger } from "./released-items/types";
+import {
+  renderReleasedItemReport,
+  summarizeReleasedItems,
+} from "./released-items/ledger";
 import { skills, standards } from "./catalog";
 import { coverageTargets } from "./coverage-targets";
 import { buildCoverageManifest, type CoverageInput } from "../content/coverage";
@@ -161,6 +166,8 @@ export const initialGapTasks: readonly GapTask[] = [
 
 export interface GapLedgerInput extends CoverageInput {
   sourceInventories?: readonly SourceInventory[];
+  /** Released-item ledgers; custom catalogs default to none. */
+  releasedLedgers?: readonly SourceLedger[];
 }
 
 export function buildGapLedger(input: GapLedgerInput = {}) {
@@ -247,10 +254,27 @@ export function buildGapLedger(input: GapLedgerInput = {}) {
         !mappings.some((m) => m.templateId === a.sourceId),
     )
     .map((a) => a.sourceId);
+  const customCatalog = !!(input.skills || input.templates || input.standards);
+  // Custom catalogs never inherit production items or template links.
+  const releasedItems = buildReleasedItemLedger(
+    customCatalog
+      ? {
+          ledgers: input.releasedLedgers ?? [],
+          templates: input.templates ?? registeredTemplates,
+          templateArchetypes: {},
+          skillIds: nodes.map((s) => s.id),
+          facetMappings: input.facetMappings ?? [],
+        }
+      : { ledgers: input.releasedLedgers },
+  );
   return {
     schemaVersion: 1,
-    valid: manifest.valid && sourceReconciliation.valid,
-    errors: [...manifest.errors, ...sourceReconciliation.errors],
+    valid: manifest.valid && sourceReconciliation.valid && releasedItems.valid,
+    errors: [
+      ...manifest.errors,
+      ...sourceReconciliation.errors,
+      ...releasedItems.errors,
+    ],
     target: "US-50-states-DC-general-math-assessments-and-SAT-Suite",
     targetComplete: false,
     targets,
@@ -292,9 +316,8 @@ export function buildGapLedger(input: GapLedgerInput = {}) {
     // Narrow gap tasks are intentionally separate from the broad facet statuses.
     // Never mark them complete merely because a related skill has a template.
     initialTasks: initialGapTasks,
-    assessmentSample: buildAssessmentSampleAudit(
-      rows.flatMap((row) => row.templateIds),
-    ),
+    // Item-level detail: `npm run coverage:items`.
+    releasedItems: summarizeReleasedItems(releasedItems),
   };
 }
 
@@ -357,17 +380,7 @@ export function renderGapLedger(
       ),
       "",
     ]),
-    "## Released-test sample",
-    "",
-    "Purposive gap-finding sample; not a test-frequency estimate or complete standards inventory.",
-    "",
-    "| Source/item | Requirement | Related practice | Remaining scope |",
-    "| --- | --- | --- | --- |",
-    ...report.assessmentSample.items.map(
-      (item) =>
-        `| ${cell(item.sourceId + " / " + item.item)} | ${cell(item.requirement)} | ${item.availableTemplateIds.join(", ") || "—"} | ${cell(item.limitations)} |`,
-    ),
-    "",
+    renderReleasedItemReport(report.releasedItems, { gapLimit: 20 }),
     "## Initial gap tasks",
     "",
     ...report.initialTasks.flatMap((t) => [

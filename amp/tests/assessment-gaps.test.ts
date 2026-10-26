@@ -6,7 +6,7 @@ import { generatedProblemSchema } from "../src/math/contracts";
 import { assessmentGapTemplates } from "../src/math/assessment-gap-practice";
 import { assessmentGapLessons } from "../src/content/assessment-gap-lessons";
 import { buildGapLedger } from "../src/curriculum/gap-ledger";
-import { assessmentSample } from "../src/curriculum/assessment-sample";
+import { releasedItems } from "../src/curriculum/released-items";
 import {
   SAT_BLUEPRINT,
   satObjectiveDomains,
@@ -67,23 +67,21 @@ print('Independent public-givens oracle passed')`,
   assert.equal(review.status, 0, review.stderr + review.stdout);
 });
 
-test("released-test sample is an explicit partial inventory with real registry references", () => {
+test("released items are a bounded ledger with real registry references", () => {
   const known = new Set(templates.map((t) => t.id));
-  for (const item of assessmentSample) {
-    assert.ok(item.limitations.length > 30);
+  for (const item of releasedItems) {
+    if (item.status !== "covered") assert.ok(item.limitations.length > 20);
     for (const id of item.templateIds)
-      assert.ok(known.has(id), `${item.item}: unknown ${id}`);
+      assert.ok(known.has(id), `${item.item.number}: unknown ${id}`);
   }
   const audit = buildGapLedger();
   assert.equal(audit.valid, true, audit.errors.join("\n"));
   assert.equal(audit.targetComplete, false);
-  assert.equal(audit.assessmentSample.frequencyEstimate, false);
+  assert.equal(audit.releasedItems.predictsFutureQuestions, false);
+  assert.ok(audit.releasedItems.summary.missing > 0);
   assert.ok(
-    audit.assessmentSample.items.some((i) => i.status === "practice-gap"),
-  );
-  assert.ok(
-    audit.assessmentSample.items.some((i) =>
-      i.availableTemplateIds.includes("measurement-error-bound"),
+    releasedItems.some((i) =>
+      i.templateIds.includes("measurement-error-bound"),
     ),
   );
 });
