@@ -248,6 +248,7 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "function-graph-features": [
     "exponential.features",
     "exponential.graph-features",
+    "logarithm.graph",
     "nonlinear.features",
   ],
   "function-relation-test": ["function.identify"],

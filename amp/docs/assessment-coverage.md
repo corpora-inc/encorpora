@@ -69,6 +69,24 @@ Each exam still added 12 to 15 archetypes that earlier sources had not used and 
 
 A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Status agreed on 11 (100%), archetypes overlapped on 10 (90.9%), templates on 11 (100%) and response format on 10 (90.9%). The disagreements were a proposed archetype for rationalizing denominators, resolved by widening `expression.radical-simplify`, and a multipart graphing item (Algebra II 36) that the first labeler recorded as graph/drag because a graph is the first required response.
 
+### New York Regents mathematics exams, January 2026
+
+All 107 questions of the January 2026 Regents Examinations in Algebra I (35), Geometry (35) and Algebra II (37) are labeled the same way as the June 2026 exams, each in its own file. The rating guides state the cluster codes, and every question allows a graphing calculator.
+
+| Exam | Covered | Partial | Missing |
+| --- | ---: | ---: | ---: |
+| Algebra I | 3 (8.6%) | 31 (88.6%) | 1 (2.9%) |
+| Geometry | 2 (5.7%) | 32 (91.4%) | 1 (2.9%) |
+| Algebra II | 2 (5.4%) | 34 (91.9%) | 1 (2.7%) |
+
+Of the 107 questions, 72 are multiple choice, 10 numeric, 6 graph and 19 constructed response. No question is covered unless a family practices the same task in a protocol that takes the response; 6 of 72 choice questions and 1 of 10 numeric questions are covered. Only three questions have no related practice: building a polynomial from its degree, leading coefficient and constant term, the centroid of a triangle, and a normal-distribution probability between two values.
+
+The January exams are far closer to saturation than the June exams. Each added 3, 5 and 6 archetypes that no earlier source had used, against 11 to 13 for June, and 83 to 91 percent of their questions fell on archetypes already seen, against 46 to 69 percent for June. Two archetypes were minted (the centroid and the graph of a logarithm). Of the 98 archetypes the three January exams use, 69 appear in the June exams. The 14 first used in January are narrow tasks: Algebra I added the product of rational and irrational numbers, graphical solution of two functions and interpreting a fitted model; Geometry added identifying and placing images under rigid motions, whole trips for a volume, quadrilateral claims from coordinates and the centroid; Algebra II added sinusoid models, parabola focus and directrix, trigonometric identities, the addition rule, simulation judgments and the graph of a logarithm.
+
+The gaps match June: constructed response (19 questions) and graph drawing (6) have no protocol, and most partials are a representation change, such as reading a figure instead of coordinates, choosing among written forms, rounding a calculator decimal, or chaining two single-step families.
+
+A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Response format agreed on 11 (100%), archetypes overlapped on 11 (100%), status on 9 (81.8%) and templates on 9 (81.8%). Two disagreements were resolved against the first labeler's status or citations: a family that draws a triangle and its image covers choosing a rigid motion (Geometry 1), and a family that reads logarithmic graphs is related practice for choosing a logarithm graph, so that question is partial instead of missing (Algebra II 4). One citation was widened to the family that interprets a coefficient (Algebra I 8).
+
 The earlier purposive samples (Massachusetts grades 5, 8 and 10, New York grade 7, and three framework requirements) are ledger sources marked incomplete. They are probes for gaps, not frequency samples.
 
 ### Adding a source
