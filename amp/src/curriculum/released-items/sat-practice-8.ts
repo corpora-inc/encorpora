@@ -138,10 +138,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["triangle.relationships"],
       demand:
         "Use a similarity correspondence to state the measure of a corresponding angle",
-      status: "partial",
-      templateIds: ["similar-triangle-side", "triangle-congruence-criteria"],
+      status: "covered",
+      templateIds: ["corresponding-angle-transfer"],
       limitations:
-        "similar-triangle-side uses correspondence only for side lengths; triangle-congruence-criteria uses vertex correspondence for criteria. No template asks for a corresponding angle of similar triangles or uses complement/supplement distractors.",
+        "Original single-choice items match vertices through a similarity statement and ask a corresponding angle, with other-vertex, supplement and complement distractors. Proving similarity and the released item's own figure are not reproduced.",
     },
     {
       section: "Math module 1",
@@ -371,10 +371,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["triangle.special", "circle.parts"],
       demand:
         "Find the circumradius of an equilateral triangle from its perimeter and enter the coefficient of a square-root radius",
-      status: "partial",
-      templateIds: ["special-right-triangle", "inscribed-polygon-reasoning"],
+      status: "covered",
+      templateIds: ["special-triangle-in-figure"],
       limitations:
-        "special-right-triangle practices the 30-60-90 side step only; inscribed-polygon-reasoning (not SAT-eligible) gives central angles and construction reasons. No template derives the circumradius of an inscribed equilateral triangle.",
+        "An equilateral triangle's perimeter gives its side and numeric entry asks the coefficient of the square root in the circumradius, using 30-60-90 triangles.",
     },
     {
       section: "Math module 2",
@@ -630,10 +630,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["circle.parts", "angle.relationships"],
       demand:
         "Find a base angle of an isosceles triangle formed by two radii and a chord from the central angle",
-      status: "partial",
-      templateIds: ["circle-angles", "triangle-theorem-consequences"],
+      status: "covered",
+      templateIds: ["circle-radii-triangle"],
       limitations:
-        "circle-angles practices inscribed/central angle and tangent facts; triangle-theorem-consequences (choice) includes isosceles base angles. No numeric template uses equal radii to find the base angle.",
+        "Numeric entry of a base angle from a central angle or minor arc through equal radii. The released item's figure is replaced by a written setup.",
     },
     {
       section: "Math module 2",

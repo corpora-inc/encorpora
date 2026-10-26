@@ -2,6 +2,7 @@ import { legacyFacetMappings } from "./legacy-facet-mappings";
 import { reconciledFacetMappings } from "./reconciled-facet-mappings";
 import { satCompletionFacetMappings } from "./sat-completion-coverage";
 import { satGeometryDataFacetMappings } from "./sat-geometry-data-coverage";
+import { satGeometryAdvancedFacetMappings } from "./sat-geometry-advanced-coverage";
 import { congruenceFacetMappings } from "./congruence-coverage";
 import { assessmentGapFacetMappings } from "./assessment-gap-coverage";
 import { areaVolumeFacetMappings } from "./area-volume-coverage";
@@ -1066,6 +1067,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...reconciledFacetMappings,
   ...satCompletionFacetMappings,
   ...satGeometryDataFacetMappings,
+  ...satGeometryAdvancedFacetMappings,
   {
     templateId: "radical-equation-isolated",
     facetId: "square-root-equations.isolated-linear-radicand",

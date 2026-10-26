@@ -128,6 +128,9 @@ function.value-meaning|Interpret a statement f(a) = b about a context model as a
 nonlinear.features|Read vertex, axis, intercepts or extreme values from a quadratic or polynomial rule or graph
 nonlinear.transform|Relate translations and reflections of graphs to function rules and points
 nonlinear.representations|Match a nonlinear rule with its table or graph
+nonlinear.graph-quadratic|Graph a quadratic function from its vertex or standard form by plotting its points
+nonlinear.graph-absolute|Graph an absolute value function from its rule by plotting its points
+nonlinear.graph-root|Graph a square root function from its rule by plotting its points
 nonlinear.rational-representations|Connect a rational function rule with its table or graph
 quadratic.context|Choose or use a quadratic model and interpret its maximum, zeros or initial value
 exponential.context|Build, evaluate or find a parameter of an exponential growth or decay model
