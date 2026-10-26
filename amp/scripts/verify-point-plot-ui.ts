@@ -5,7 +5,7 @@
  * artifacts/point-plot-ui). Requires AMP_TEST_DATABASE_URL. */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { chromium, type Page } from "playwright";
+import { chromium, webkit, type Page } from "playwright";
 import { createServer } from "vite";
 import { buildApp } from "../src/server/app";
 import { developmentAuth } from "../src/server/auth";
@@ -62,7 +62,10 @@ const vite = await createServer({
   },
 });
 await vite.listen();
-const browser = await chromium.launch();
+// WebKit is the iOS and native-shell engine; it lacks the layout-shift API,
+// so there the bounding-box comparisons carry the no-shift proof.
+const engine = process.env.AMP_BROWSER === "webkit" ? "webkit" : "chromium";
+const browser = await (engine === "webkit" ? webkit : chromium).launch();
 const errors: string[] = [];
 
 type Family =
@@ -224,7 +227,7 @@ try {
         "graph-linear-equation",
         "place-transformed-image",
       ] as const) {
-        const tag = `${family}-${width}-${theme}`;
+        const tag = `${engine === "webkit" ? "webkit-" : ""}${family}-${width}-${theme}`;
         const problem = instance(family, `${theme}:${width}`);
         await repository.transaction(
           "development-household",
@@ -296,11 +299,19 @@ try {
         await page.evaluate(() => {
           const w = window as unknown as { __shift: number };
           w.__shift = 0;
+          if (
+            !PerformanceObserver.supportedEntryTypes?.includes("layout-shift")
+          )
+            return;
           new PerformanceObserver((list) => {
             for (const entry of list.getEntries()) {
               const shift = entry as unknown as {
                 value: number;
-                sources?: { node?: Node; previousRect: DOMRect; currentRect: DOMRect }[];
+                sources?: {
+                  node?: Node;
+                  previousRect: DOMRect;
+                  currentRect: DOMRect;
+                }[];
               };
               w.__shift += shift.value;
               (w as unknown as { __sources: string[] }).__sources ??= [];
