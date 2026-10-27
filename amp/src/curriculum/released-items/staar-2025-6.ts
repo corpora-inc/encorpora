@@ -253,10 +253,14 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["linear.literal"],
       demand:
         "Write the formula for a parallelogram's height by solving area equals base times height",
-      status: "partial",
-      templateIds: ["formula-isolate", "formula-value"],
+      status: "covered",
+      templateIds: [
+        "solve-justify-formula",
+        "formula-isolate",
+        "formula-value",
+      ],
       limitations:
-        "STAAR interaction: equation editor, 1 point. formula-isolate offers a choice of rearranged formulas and formula-value substitutes numbers; typing a rearranged expression has no response protocol.",
+        "STAAR interaction: equation editor, 1 point. solve-justify-formula (structured-work-v1) types the rearranged formula A/b = h (or h = A/b) for A = bh, line by line with the property of equality used; the final formula is graded by exact symbolic equivalence.",
     },
     {
       item: {

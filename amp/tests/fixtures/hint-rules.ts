@@ -23,7 +23,17 @@ function givens(p: GeneratedProblem) {
         ? r.blanks
             .map((b) => [b.label, ...b.options.map((o) => o.label)].join("\n"))
             .join("\n")
-        : "",
+        : r.kind === "structured-work"
+          ? [
+              r.start ?? "",
+              r.goal ?? "",
+              ...r.banks.flatMap((b) => b.options.map((o) => o.label)),
+              ...r.rows.flatMap((row) => [
+                row.label ?? "",
+                ...row.fields.map((f) => f.given ?? ""),
+              ]),
+            ].join("\n")
+          : "",
   ].join("\n");
 }
 const tokens = (text: string) =>

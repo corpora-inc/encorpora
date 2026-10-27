@@ -23,4 +23,5 @@ import "../problem-flag.css";
 import "../point-plot.css";
 import "../multi-part-choice.css";
 import "../figure-choice.css";
+import "../structured-work.css";
 import "../practice-tablet.css";

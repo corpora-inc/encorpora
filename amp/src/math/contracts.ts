@@ -66,6 +66,15 @@ import {
   normalizeFigureChoice,
   type FigureChoiceResponse,
 } from "./figure-choice.js";
+import {
+  gradeStructuredWork,
+  gradingFits,
+  normalizeStructuredWork,
+  structuredWorkResponseSchema,
+  workGradingSchema,
+  type StructuredWorkResponse,
+  type WorkGrading,
+} from "./structured-work.js";
 import { stepsSchema, type Step } from "./scene/timeline.js";
 /** An input/output table, a first-quadrant graph, or both side by side.
  * A graph line is exact: y × run = rise × x + b × run. */
@@ -251,6 +260,7 @@ export const responseCapabilities = [
   "point-plot-v1",
   "multi-part-choice-v1",
   "figure-choice-v1",
+  "structured-work-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -298,6 +308,8 @@ export type {
   PointPlotGrading,
   MultiPartChoiceResponse,
   FigureChoiceResponse,
+  StructuredWorkResponse,
+  WorkGrading,
 };
 export type ProblemResponse =
   | { kind: "number" | "fraction"; label: string }
@@ -305,7 +317,8 @@ export type ProblemResponse =
   | MultiSelectResponse
   | PointPlotResponse
   | MultiPartChoiceResponse
-  | FigureChoiceResponse;
+  | FigureChoiceResponse
+  | StructuredWorkResponse;
 /** Safe teaching content delivered beside a problem; never grading data. */
 export interface ProblemHint {
   hint: string;
@@ -344,6 +357,10 @@ export interface GeneratedProblem {
   choiceFeedback?: Record<string, string>;
   /** Private grading rule of a point-plot response (point-plot.ts). */
   pointGrading?: PointPlotGrading;
+  /** Private grading rule of a structured-work response (structured-work.ts):
+   * expected fields, the moves a derivation's reasons name and its
+   * solutions, or a proof's justified claims. Never public. */
+  workGrading?: WorkGrading;
   /** Private answer-acceptance policy for numeric responses. Absent means exact
    * rational comparison. `sat-spr` also accepts the College Board's truncated
    * or rounded decimal for an answer that does not fit the entry space.
@@ -936,6 +953,7 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
   pointPlotResponseSchema,
   multiPartChoiceResponseSchema,
   figureChoiceResponseSchema,
+  structuredWorkResponseSchema,
 ]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
@@ -962,7 +980,9 @@ export const problemVariantSchema: z.ZodType<ProblemVariant> = z
 export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
   .object({
     public: publicProblemSchema,
-    answer: z.string().min(1).max(100),
+    // A worked structured response (every row of the key) may run to 200
+    // characters; every other answer stays within 100.
+    answer: z.string().min(1).max(200),
     explanation: z.array(z.string().min(1).max(4000)).min(1).max(20),
     hint: z.string().min(1).max(4000),
     hintCue: stepsSchema.optional(),
@@ -971,12 +991,25 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
       .record(choiceIdSchema, z.string().trim().min(1).max(1000))
       .optional(),
     pointGrading: pointPlotGradingSchema.optional(),
+    workGrading: workGradingSchema.optional(),
     entryPolicy: z.literal("sat-spr").optional(),
     variant: problemVariantSchema.optional(),
   })
   .strict()
   .refine((problem) => {
     const response = problem.public.response;
+    // A worked key is canonical, fits its private rule and earns credit.
+    if (response.kind === "structured-work")
+      return (
+        !problem.choiceFeedback &&
+        !problem.entryPolicy &&
+        !problem.pointGrading &&
+        !!problem.workGrading &&
+        gradingFits(response, problem.workGrading) &&
+        normalizeStructuredWork(response, problem.answer) === problem.answer &&
+        gradeStructuredWork(response, problem.workGrading, problem.answer)
+      );
+    if (problem.workGrading || problem.answer.length > 100) return false;
     // A plotted answer is canonical, complete, and accepted by its own rule.
     if (response.kind === "point-plot")
       return (

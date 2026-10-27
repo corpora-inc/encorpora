@@ -19,6 +19,10 @@ import {
 } from "./multi-part-choice-practice";
 import { gradeFigureChoice, normalizeFigureChoice } from "./figure-choice";
 import {
+  gradeStructuredWork,
+  normalizeStructuredWork,
+} from "./structured-work";
+import {
   pointPlotTemplates,
   generatePointPlotProblem,
 } from "./point-plot-practice";
@@ -672,6 +676,8 @@ export function isValidResponse(
     return normalizeMultiPart(problem.response, response) !== null;
   if (problem.response.kind === "figure-choice")
     return normalizeFigureChoice(problem.response, response) !== null;
+  if (problem.response.kind === "structured-work")
+    return normalizeStructuredWork(problem.response, response) !== null;
   return problem.response.kind === "choice"
     ? problem.response.options.some((option) => option.id === response)
     : normalizeAnswer(response) !== null;
@@ -701,6 +707,15 @@ export function gradeAnswer(
     return gradeMultiPart(problem.public.response, problem.answer, response);
   if (problem.public.response.kind === "figure-choice")
     return gradeFigureChoice(problem.public.response, problem.answer, response);
+  if (problem.public.response.kind === "structured-work")
+    return (
+      !!problem.workGrading &&
+      gradeStructuredWork(
+        problem.public.response,
+        problem.workGrading,
+        response,
+      )
+    );
   if (problem.public.response.kind === "choice")
     return (
       isValidResponse(problem.public, response) && response === problem.answer

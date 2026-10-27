@@ -457,10 +457,10 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["inequality.solve"],
       demand:
         "Solve a linear inequality with grouped terms and state the solution",
-      status: "partial",
-      templateIds: ["grouped-linear-inequality"],
+      status: "covered",
+      templateIds: ["solve-justify-inequality", "grouped-linear-inequality"],
       limitations:
-        "Solving is practiced by choosing a solution; entering an inequality is not supported. The rating guide credits shown work, which AMP does not score.",
+        "solve-justify-inequality (structured-work-v1), grouped-right form: the variable on both sides with a product and like terms on the right, solved line by line with the property of inequality for each line, any valid path accepted, ending with the reversed sign after dividing by a negative coefficient. The typed lines are the shown work the rating guide credits.",
     },
     {
       section: "Part II",
@@ -472,10 +472,10 @@ export const regentsAlgebra1June2026 = defineLedger(
       standards: ["A-CED.A"],
       archetypeIds: ["linear.literal"],
       demand: "Solve the triangle area formula for its height",
-      status: "partial",
-      templateIds: ["formula-isolate"],
+      status: "covered",
+      templateIds: ["solve-justify-formula", "formula-isolate"],
       limitations:
-        "Rearranging is practiced by choosing a formula; typing the rearranged formula is not supported. The rating guide credits shown work, which AMP does not score.",
+        "solve-justify-formula (structured-work-v1) solves A = (1/2)bh for h (or b) line by line, multiplying by 2 and dividing by the positive base, with the property for each line; the final formula is graded by exact symbolic equivalence. The typed lines are the shown work the rating guide credits.",
     },
     {
       section: "Part II",

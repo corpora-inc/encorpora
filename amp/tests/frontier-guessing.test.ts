@@ -3,7 +3,11 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { estimateFrontier, strandLevel } from "../src/learning/frontier";
 import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
-import { guessChance, guessChanceOf } from "../src/math/guess-chance";
+import {
+  guessChance,
+  guessChanceOf,
+  problemGuessChance,
+} from "../src/math/guess-chance";
 import { skills } from "../src/curriculum/catalog";
 import { templateGrade } from "../src/server/mixed-practice";
 
@@ -133,6 +137,20 @@ test("guess chance comes from each family's answer schema and is never understat
       assert.equal(chance, 0, template.id);
       continue;
     }
+    if (template.requiredResponseCapability === "structured-work-v1") {
+      // Typed steps cannot be guessed; orderings and bank-built proofs can.
+      // The family's chance covers every instance's exact chance.
+      assert.ok(chance >= 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
+      for (let i = 0; i < 120; i++) {
+        const problem = generateProblem(template.id, `audit:${i}`);
+        assert.equal(problem.public.response.kind, "structured-work");
+        assert.ok(
+          chance >= problemGuessChance(problem) - 1e-12,
+          `${template.id} seed ${i}: ${problemGuessChance(problem)} > ${chance}`,
+        );
+      }
+      continue;
+    }
     choiceFamilies++;
     assert.ok(chance > 0 && chance <= 1 / 2, `${template.id}: ${chance}`);
     for (let i = 0; i < 120; i++) {
@@ -146,9 +164,9 @@ test("guess chance comes from each family's answer schema and is never understat
             ? "point-plot"
             : template.requiredResponseCapability === "multi-part-choice-v1"
               ? "multi-part-choice"
-            : template.requiredResponseCapability === "figure-choice-v1"
-              ? "figure-choice"
-              : "choice",
+              : template.requiredResponseCapability === "figure-choice-v1"
+                ? "figure-choice"
+                : "choice",
         template.id,
       );
       if (response.kind === "choice" || response.kind === "figure-choice")
