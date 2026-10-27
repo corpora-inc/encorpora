@@ -18,7 +18,7 @@ import {
 } from "../src/math/number-domain-axes";
 
 /** Digests of the pre-axis output (before this change), seeds legacy:0..299,
- * over canonical JSON (sorted keys) and without the private `variant`. */
+ * over canonical JSON (sorted keys, floats to 9 decimals) and without the private `variant`. */
 const golden = JSON.parse(
   readFileSync(
     new URL("./fixtures/number-domain-sweep-digests.json", import.meta.url),
@@ -35,7 +35,11 @@ const canonical = (value: unknown): unknown =>
             .sort(([a], [b]) => (a < b ? -1 : 1))
             .map(([k, v]) => [k, canonical(v)]),
         )
-      : value;
+      : typeof value === "number" && !Number.isInteger(value)
+        ? // Trigonometric coordinates differ in the last bits between
+          // platforms' math libraries; the digest compares 9 decimals.
+          Number(value.toFixed(9))
+        : value;
 const digest = (problem: GeneratedProblem) => {
   const { variant, ...rest } = problem;
   void variant;
