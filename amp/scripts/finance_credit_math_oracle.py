@@ -113,7 +113,8 @@ def solve_interest_table(prompt):
     cols = [[r[1] for r in rows], [r[2] for r in rows]]
     letter = 'AB'
     if m := re.search(r'How much interest does the compound-interest account earn during year (\d+)\?\n', prompt):
-        require(f'started with {fmt(principal)} dollars' in prompt, 'Starting amount mismatch')
+        start = re.search(r'started with ' + NUM + r' dollars', prompt)
+        require(start is not None and num(start[1]) == principal, 'Starting amount mismatch')
         y = int(m[1])
         require(1 <= y < len(rows), 'Year outside table')
         return ('$', cols[compound][y] - cols[compound][y - 1])
@@ -125,10 +126,6 @@ def solve_interest_table(prompt):
         n = len(rows) - 1
         return ('table', letter[compound], n, cols[compound][n] - cols[simple][n])
     raise ValueError('Unrecognised table question')
-
-
-def fmt(value):
-    return f'{value:,}'
 
 
 def solve_interest_compare(prompt):
