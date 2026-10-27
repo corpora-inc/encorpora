@@ -277,10 +277,10 @@ export const staar2024Grade8 = defineLedger(
       archetypeIds: ["function.identify"],
       demand:
         "Select the ordered pairs that can be added to keep a graph a function",
-      status: "partial",
-      templateIds: ["relation-function-choice"],
+      status: "covered",
+      templateIds: ["relation-function-choice", "function-pair-select"],
       limitations:
-        "STAAR interaction: multiselect, 2 points. relation-function-choice identifies a relation by one choice; no family takes a multi-select of pairs to add.",
+        "function-pair-select graphs a relation that is a function and selects the two or three ordered pairs, among five, that can be added so that the graph is still a function.",
     },
     {
       item: { number: "22", page: "rationale PDF p.22" },
@@ -469,10 +469,14 @@ export const staar2024Grade8 = defineLedger(
       standards: ["TEKS.8.1.2.D"],
       archetypeIds: ["number.real-order"],
       demand: "Select the numbers greater than pi",
-      status: "partial",
-      templateIds: ["compare-irrational-values", "staar-order-mixed-forms"],
+      status: "covered",
+      templateIds: [
+        "compare-irrational-values",
+        "staar-order-mixed-forms",
+        "compare-to-pi-select",
+      ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. compare-irrational-values and staar-order-mixed-forms order values by choice; no family takes a multi-select of numbers compared with a single value.",
+        "compare-to-pi-select selects the two or three of five numbers, among decimals, fractions and square roots, that are greater than pi, or less than pi or than a square root.",
     },
     {
       item: { number: "38", page: "rationale PDF p.38" },

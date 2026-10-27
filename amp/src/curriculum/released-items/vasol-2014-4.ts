@@ -348,10 +348,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["line.terms"],
       demand:
         "Select the two lines that appear parallel among five drawn lines",
-      status: "partial",
-      templateIds: ["line-relationship"],
+      status: "covered",
+      templateIds: ["line-relationship", "line-pair-select"],
       limitations:
-        "line-relationship names the relation of one pair of lines; finding the parallel pair among five lines by selection has no template on the multi-select protocol.",
+        "line-pair-select draws five lines and selects the two that appear parallel, or the two that appear perpendicular.",
     },
     {
       item: { number: "29", page: "PDF p.35" },

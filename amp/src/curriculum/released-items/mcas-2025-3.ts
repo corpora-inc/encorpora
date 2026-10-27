@@ -228,10 +228,14 @@ export const mcasGrade3 = defineLedger(
       archetypeIds: ["equation.truth"],
       demand:
         "Select the three true multiplication and division equations among six",
-      status: "partial",
-      templateIds: ["fl-equation-truth-mult-div", "mcas-true-fact-equations"],
+      status: "covered",
+      templateIds: [
+        "fl-equation-truth-mult-div",
+        "mcas-true-fact-equations",
+        "equal-factor-equations-select",
+      ],
       limitations:
-        "Three of six multiplication and division facts are selected as true, with the result written first, last or mixed in one set (orientation axis); a fact of a number times itself, such as 64 = 8 times 8, is not generated.",
+        "equal-factor-equations-select selects the true multiplication and division equations among six, including a number times itself such as 64 = 8 times 8 and its division fact, written with the result first or last.",
     },
     {
       section: "Session 2",
@@ -284,10 +288,14 @@ export const mcasGrade3 = defineLedger(
       archetypeIds: ["shape.attributes"],
       demand:
         "Select the two named shapes that have as many sides as a pictured shape",
-      status: "partial",
-      templateIds: ["count-sides-corners", "name-polygon"],
+      status: "covered",
+      templateIds: [
+        "count-sides-corners",
+        "name-polygon",
+        "polygon-sides-select",
+      ],
       limitations:
-        "count-sides-corners and name-polygon count sides by entry and name one polygon; comparing a pictured shape's side count with named shapes by multiple selection is not practiced.",
+        "polygon-sides-select draws one polygon with four, five, six or eight sides and selects the two or three of five named shapes or descriptions by corners or angles that have as many sides.",
     },
     {
       section: "Session 2",

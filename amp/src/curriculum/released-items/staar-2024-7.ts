@@ -296,10 +296,14 @@ export const staar2024Grade7 = defineLedger(
       standards: ["TEKS.7.4.6.G"],
       archetypeIds: ["univariate.displays"],
       demand: "Select the statements a dot plot of thirty game turns supports",
-      status: "partial",
-      templateIds: ["dot-plot-mean", "line-plot-whole"],
+      status: "covered",
+      templateIds: [
+        "dot-plot-mean",
+        "line-plot-whole",
+        "dot-plot-statement-select",
+      ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. dot-plot-mean and line-plot-whole read counts and the mean from a dot plot; no family judges statements about shares of the data or takes a multi-select.",
+        "dot-plot-statement-select draws a dot plot of thirty values and selects the two or three of five statements about counts, shares and the most common value that the plot supports.",
     },
     {
       item: { number: "22", page: "rationale PDF p.22" },

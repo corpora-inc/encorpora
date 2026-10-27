@@ -415,9 +415,9 @@ export const staarAlgebra1 = defineLedger(
       demand:
         "Mark every true prediction made from a line of best fit found by regression",
       status: "partial",
-      templateIds: ["regression-line-predict"],
+      templateIds: ["regression-line-predict", "regression-prediction-select"],
       limitations:
-        "STAAR interaction: multiselect, 2 points. regression-line-predict predicts one value from a stated fitted line; computing the line with technology and picking two true predictions have no response protocol.",
+        "regression-prediction-select selects the true predictions and the true readings of the slope and intercept of a stated line of best fit; computing the line from data with technology is not practiced.",
     },
     {
       item: {
@@ -714,13 +714,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["expression.factor"],
       demand:
         "Mark both expressions equivalent to a trinomial among factored and distributed forms",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "greatest-monomial-factor",
         "nonmonic-quadratic-factorization",
+        "equivalent-trinomial-select",
       ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. Related families choose one complete factorization; recognizing two equivalent forms with multiple selection has no response protocol.",
+        "equivalent-trinomial-select gives a trinomial or a product of two binomials and selects the two or three of five equal expressions among factored, partly distributed, four-term and expanded forms.",
     },
     {
       item: {
