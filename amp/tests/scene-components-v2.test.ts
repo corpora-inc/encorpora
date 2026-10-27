@@ -32,8 +32,7 @@ const item = (items: Drawn[], id: string) => {
   assert.ok(d, `missing ${id}`);
   return d;
 };
-const valid = (element: unknown) =>
-  sceneSchema.safeParse(one(element)).success;
+const valid = (element: unknown) => sceneSchema.safeParse(one(element)).success;
 
 const pie = (extra: object = {}) => ({
   type: "circleGraph",
@@ -97,7 +96,9 @@ test("every earlier gallery scene stays scenes-v1; the new components need scene
     ["scenes-v2"],
   );
   assert.deepEqual(
-    sceneCapabilitiesIn({ figure: { kind: "scene", scene: galleryCases[0]!.scene } }),
+    sceneCapabilitiesIn({
+      figure: { kind: "scene", scene: galleryCases[0]!.scene },
+    }),
     [],
   );
 });
@@ -186,14 +187,21 @@ test("circle graph sectors are their exact shares, clockwise from 12 o'clock", (
 
 test("circle graph labels sit inside their own sector, or the key carries them", () => {
   const inside = layoutScene(one(pie()));
-  const center = item(inside.items, "g.edge.0") as Extract<Drawn, { k: "line" }>;
+  const center = item(inside.items, "g.edge.0") as Extract<
+    Drawn,
+    { k: "line" }
+  >;
   const [cx, cy] = [center.x1, center.y1];
   const angles = sectorAngles(pie() as never);
   for (const [i, a] of angles.entries()) {
-    const t = item(inside.items, `g.name.${i}`) as Extract<Drawn, { k: "text" }>;
+    const t = item(inside.items, `g.name.${i}`) as Extract<
+      Drawn,
+      { k: "text" }
+    >;
     const x = (t.box.x0 + t.box.x1) / 2 - cx,
       y = cy - t.box.y1;
-    const deg = (((Math.atan2(y, x) * 180) / Math.PI - a.from) % 360 + 360) % 360;
+    const deg =
+      ((((Math.atan2(y, x) * 180) / Math.PI - a.from) % 360) + 360) % 360;
     assert.ok(deg <= a.sweep, `name ${i} lies in its sector`);
   }
   const thin = pie({
@@ -231,7 +239,16 @@ test("a derived sector value is masked in the drawing and the description", () =
   assert.doesNotMatch(describeScene(one(c)), /Bus 50%/);
   assert.match(describeScene(one(c), true), /Bus 50%/);
   assert.match(
-    describeScene(one(pie({ sectors: [{ label: "A", value: 1 }, { label: "B", value: 1, text: "1" }] }))),
+    describeScene(
+      one(
+        pie({
+          sectors: [
+            { label: "A", value: 1 },
+            { label: "B", value: 1, text: "1" },
+          ],
+        }),
+      ),
+    ),
     /A, value not shown/,
   );
 });
@@ -239,22 +256,51 @@ test("a derived sector value is masked in the drawing and the description", () =
 test("the thermometer's liquid ends on its reading tick, and 0 is emphasized", () => {
   for (const t of [
     thermometer(),
-    thermometer({ unit: "C", min: -20, max: 20, minor: 1, major: 5, reading: -7 }),
+    thermometer({
+      unit: "C",
+      min: -20,
+      max: 20,
+      minor: 1,
+      major: 5,
+      reading: -7,
+    }),
   ]) {
     const l = layoutScene(one(t, { maxHeight: 420 }));
     const liquid = item(l.items, "t.liquid") as Extract<Drawn, { k: "rect" }>;
-    const tick = item(l.items, `t.tick.${t.reading}`) as Extract<Drawn, { k: "line" }>;
+    const tick = item(l.items, `t.tick.${t.reading}`) as Extract<
+      Drawn,
+      { k: "line" }
+    >;
     assert.ok(Math.abs(liquid.y - tick.y1) < 0.01, `top at ${t.reading}`);
     const labels = texts(l.items).filter((x) => x.id.startsWith("t.label."));
     assert.equal(labels.length, (t.max - t.min) / t.major + 1);
     // Minor ticks at least 6 px apart, labels at least 28 px apart.
-    const next = item(l.items, `t.tick.${t.min + t.minor}`) as Extract<Drawn, { k: "line" }>;
-    const first = item(l.items, `t.tick.${t.min}`) as Extract<Drawn, { k: "line" }>;
+    const next = item(l.items, `t.tick.${t.min + t.minor}`) as Extract<
+      Drawn,
+      { k: "line" }
+    >;
+    const first = item(l.items, `t.tick.${t.min}`) as Extract<
+      Drawn,
+      { k: "line" }
+    >;
     assert.ok(first.y1 - next.y1 >= 6, "minor tick spacing");
-    assert.ok((first.y1 - next.y1) * (t.major / t.minor) >= 28, "label spacing");
+    assert.ok(
+      (first.y1 - next.y1) * (t.major / t.minor) >= 28,
+      "label spacing",
+    );
   }
   const below = layoutScene(
-    one(thermometer({ unit: "C", min: -20, max: 20, minor: 1, major: 5, reading: -7 }), { maxHeight: 420 }),
+    one(
+      thermometer({
+        unit: "C",
+        min: -20,
+        max: 20,
+        minor: 1,
+        major: 5,
+        reading: -7,
+      }),
+      { maxHeight: 420 },
+    ),
   );
   const zero = item(below.items, "t.tick.0") as Extract<Drawn, { k: "line" }>;
   const five = item(below.items, "t.tick.5") as Extract<Drawn, { k: "line" }>;
@@ -279,7 +325,12 @@ test("ruler ticks shorten with the part, and the object ends on ticks", () => {
   );
   for (const r of [
     ruler(),
-    ruler({ unit: "cm", length: 6, parts: 10, object: { from: 20, to: 57, shape: "ribbon" } }),
+    ruler({
+      unit: "cm",
+      length: 6,
+      parts: 10,
+      object: { from: 20, to: 57, shape: "ribbon" },
+    }),
   ]) {
     // At the phone width the ticks stay countable.
     const l = layoutScene({ ...one(r), width: 288 });
@@ -293,7 +344,10 @@ test("ruler ticks shorten with the part, and the object ends on ticks", () => {
       ["start", r.object.from],
       ["end", r.object.to],
     ] as const) {
-      const guide = item(l.items, `r.guide.${key}`) as Extract<Drawn, { k: "line" }>;
+      const guide = item(l.items, `r.guide.${key}`) as Extract<
+        Drawn,
+        { k: "line" }
+      >;
       assert.ok(Math.abs(guide.x1 - x(k)) < 0.01, `${key} on tick ${k}`);
     }
     const said = describeScene(one(r));
@@ -321,12 +375,16 @@ test("coins are drawn to true relative size, ridged only on dimes and quarters, 
   });
   const l = layoutScene(s);
   const r = coins.map(
-    (_, i) => (item(l.items, `c.coin.${i}`) as Extract<Drawn, { k: "circle" }>).r,
+    (_, i) =>
+      (item(l.items, `c.coin.${i}`) as Extract<Drawn, { k: "circle" }>).r,
   );
   coins.forEach((coin, i) =>
-    assert.ok(Math.abs(r[i]! / r[0]! - coinDiameter[coin] / coinDiameter.penny) < 1e-9),
+    assert.ok(
+      Math.abs(r[i]! / r[0]! - coinDiameter[coin] / coinDiameter.penny) < 1e-9,
+    ),
   );
-  const ridged = (i: number) => l.items.some((d) => d.id.startsWith(`c.coin.${i}.ridge.`));
+  const ridged = (i: number) =>
+    l.items.some((d) => d.id.startsWith(`c.coin.${i}.ridge.`));
   assert.deepEqual([0, 1, 2, 3].map(ridged), [false, false, true, true]);
   const said = describeScene(s).toLowerCase();
   for (const word of [...coins, "cent", "¢", "value"])
@@ -360,7 +418,9 @@ test("an axis value that needs a newer figure falls back to its legacy value for
   for (let i = 0; i < 200; i++) {
     const seed = `s:${i}`;
     const all = chooseAxes("t", seed, axes);
-    const old = withClientFigures(["scenes-v1"], () => chooseAxes("t", seed, axes));
+    const old = withClientFigures(["scenes-v1"], () =>
+      chooseAxes("t", seed, axes),
+    );
     const current = withClientFigures([...figureCapabilities], () =>
       chooseAxes("t", seed, axes),
     );
@@ -372,6 +432,8 @@ test("an axis value that needs a newer figure falls back to its legacy value for
   }
   assert.ok(drawn > 50 && drawn < 150);
   assert.throws(() =>
-    defineAxis("display", ["table", "drawn"], { needs: { table: "scenes-v2" } }),
+    defineAxis("display", ["table", "drawn"], {
+      needs: { table: "scenes-v2" },
+    }),
   );
 });

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { base } from "../base";
+import { base, label } from "../base";
 import { registerComponent, type Prim } from "../layout";
 import { atSchema, shifted } from "./shapes";
 import { num, spoken } from "./format";
@@ -23,6 +23,8 @@ export const thermometerSchema = z
     minor: z.union([z.literal(1), z.literal(2), z.literal(5)]),
     major: z.union([z.literal(5), z.literal(10), z.literal(20)]),
     reading: degree,
+    /** A name under the bulb ("Morning"), for thermometers side by side. */
+    label: label.optional(),
     /** The reading is the unknown: described as to be found (the liquid
      * still shows it, as on a printed item). */
     derived: z.boolean().optional(),
@@ -39,8 +41,7 @@ export const thermometerSchema = z
   )
   .refine((t) => (t.max - t.min) / t.minor <= 60, "At most 60 minor ticks")
   .refine(
-    (t) =>
-      t.reading > t.min && t.reading <= t.max && t.reading % t.minor === 0,
+    (t) => t.reading > t.min && t.reading <= t.max && t.reading % t.minor === 0,
     "The reading is on a tick above the bottom of the scale",
   );
 export type Thermometer = z.infer<typeof thermometerSchema>;
@@ -112,6 +113,18 @@ function draw(t: Thermometer, s: number): Prim[] {
         data: { degrees: d },
       });
   }
+  if (t.label)
+    prims.push({
+      type: "text",
+      id: "name",
+      at: [0, bulbY - px(BULB)],
+      text: t.label,
+      font: "sans",
+      size: "sm",
+      bold: true,
+      align: [0, -1],
+      offset: [0, 6],
+    });
   prims.push({
     type: "text",
     id: "unit",
@@ -135,7 +148,7 @@ registerComponent("thermometer", {
   },
   describe(t, reveal) {
     const unit = t.unit === "F" ? "degrees Fahrenheit" : "degrees Celsius";
-    const scale = `A thermometer in ${unit}, marked every ${t.minor} ${t.minor === 1 ? "degree" : "degrees"} from ${spoken(t.min)} to ${spoken(t.max)}, with numbers every ${t.major} degrees.`;
+    const scale = `${t.label ? `${t.label}: a` : "A"} thermometer in ${unit}, marked every ${t.minor} ${t.minor === 1 ? "degree" : "degrees"} from ${spoken(t.min)} to ${spoken(t.max)}, with numbers every ${t.major} degrees.`;
     return t.derived && !reveal
       ? `${scale} The reading is to be found from the top of the liquid.`
       : `${scale} The liquid reaches ${spoken(t.reading)} ${unit}.`;

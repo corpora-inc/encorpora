@@ -334,10 +334,12 @@ export const vasolGrade4 = defineLedger(
       standards: ["SOL.2009.4.7a"],
       archetypeIds: ["measure.ruler"],
       demand: "Measure a drawn hair comb to the nearest eighth of an inch",
-      status: "partial",
+      status: "covered",
       templateIds: ["fractional-ruler-length"],
       limitations:
-        "fractional-ruler-length reads an exact half or quarter unit; choices that include eighths and a measure chosen as closest are not practiced.",
+        'fractional-ruler-length (ruler: inch-ruler) measures a pencil or ribbon on a drawn inch ruler marked in halves, quarters or eighths, "to the nearest eighth of an inch" when marked in eighths, by entry; the object ends on a mark, and entering the measure subsumes choosing it. Clients without scenes-v2 see the centimeter strip.',
+      labeledBy: "agent:scene-components",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "28", page: "PDF p.34" },

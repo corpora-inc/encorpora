@@ -135,16 +135,26 @@ export const sweepAxes = {
   /** Circle graph: the table of its sectors (legacy) or the drawn graph
    * with each sector labeled. */
   "circle-graph-read": {
-    display: axisFor("display", ["sector-table", "drawn-graph"], "sector-table", {
-      "drawn-graph": "scenes-v2",
-    }),
+    display: axisFor(
+      "display",
+      ["sector-table", "drawn-graph"],
+      "sector-table",
+      {
+        "drawn-graph": "scenes-v2",
+      },
+    ),
   },
   /** Coins: pictures with the value printed on each (legacy) or drawn
    * without values, known by size, color and edge. */
   "coin-name-and-cent-value": {
-    picture: axisFor("picture", ["value-printed", "features-only"], "value-printed", {
-      "features-only": "scenes-v2",
-    }),
+    picture: axisFor(
+      "picture",
+      ["value-printed", "features-only"],
+      "value-printed",
+      {
+        "features-only": "scenes-v2",
+      },
+    ),
   },
   /** Five prisms: edge lengths in words (legacy) or each drawn as unit
    * cubes to count. */
@@ -200,7 +210,11 @@ export function withLegacySurfaces<T>(build: () => T): T {
 export const sweepChoose = <K extends SweepId>(id: K, seed: string) =>
   (legacyOnly
     ? legacyAxes(sweepAxes[id] as AxisSet)
-    : chooseAxes(id, seed, sweepAxes[id] as AxisSet)) as unknown as SweepAxes<K>;
+    : chooseAxes(
+        id,
+        seed,
+        sweepAxes[id] as AxisSet,
+      )) as unknown as SweepAxes<K>;
 
 /** The private variant record: the family's label and the axis values. */
 export const sweepVariant = (

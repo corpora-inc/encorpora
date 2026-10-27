@@ -1,6 +1,6 @@
 /**
  * The scenes-v2 components inside real practice problems: each component's
- * migrated family (and the new thermometer family) rendered by the practice
+ * migrated family rendered by the practice
  * workspace at 320, 390, 768 and 1280 px in light and dark, then printed on
  * Letter and A4 through the print layout oracle. No database or account data.
  *
@@ -60,13 +60,13 @@ const fixtures: {
   },
   {
     name: "thermometer",
-    template: "thermometer-reading",
-    accept: has("thermometer"),
+    template: "read-thermometer",
+    accept: (p) => elements(p).length === 1 && has("thermometer")(p),
   },
   {
-    name: "thermometer-below-zero",
-    template: "thermometer-reading",
-    accept: (p) => has("thermometer")(p) && Number(p.answer) < 0,
+    name: "thermometer-pair",
+    template: "read-thermometer",
+    accept: (p) => elements(p).length === 2 && has("thermometer")(p),
   },
   {
     name: "ruler-eighths",
@@ -85,8 +85,7 @@ const fixtures: {
     name: "coin-single",
     template: "coin-name-and-cent-value",
     accept: (p) =>
-      has("coins")(p) &&
-      !JSON.stringify(p.public.figure).includes('"label":'),
+      has("coins")(p) && !JSON.stringify(p.public.figure).includes('"label":'),
   },
   {
     name: "cube-steps",
@@ -167,6 +166,15 @@ try {
   await page.goto(`http://127.0.0.1:${port}/layout`);
   await page.waitForFunction(() => typeof window.layoutCase === "function");
   await page.evaluate("globalThis.__name ??= (f) => f");
+  // Fonts load once per session in the app: load them before measuring, so
+  // a figure that moves afterwards moved because of its own layout.
+  await page.evaluate(async () => {
+    for (const f of ["KaTeX_Main", "KaTeX_Math"])
+      await document.fonts.load(`17px ${f}`);
+    await document.fonts.load("italic 17px KaTeX_Math");
+    await document.fonts.load("bold 17px KaTeX_Main");
+    await document.fonts.ready;
+  });
   for (const c of cases)
     for (const [width, height] of [
       [320, 568],
@@ -176,7 +184,10 @@ try {
     ] as const)
       for (const theme of ["light", "dark"] as const) {
         await page.setViewportSize({ width, height });
-        await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
+        await page.emulateMedia({
+          colorScheme: theme,
+          reducedMotion: "reduce",
+        });
         await page.evaluate(
           ({ value, theme }) => {
             document.documentElement.dataset.theme = theme;
@@ -189,8 +200,21 @@ try {
           (id) => window.layoutReady === id,
           c.problem.public.id,
         );
-        const figure = page.locator(".problem-content svg.scene-figure").first();
+        const figure = page
+          .locator(".problem-content svg.scene-figure")
+          .first();
         await figure.waitFor();
+        // The workspace sizes itself to the viewport first.
+        await page.waitForFunction(
+          () =>
+            Math.abs(
+              parseFloat(
+                document.documentElement.style.getPropertyValue(
+                  "--practice-height",
+                ),
+              ) - innerHeight,
+            ) < 2,
+        );
         const first = await figure.boundingBox();
         await page.evaluate(async () => {
           await document.fonts.ready;
@@ -208,18 +232,23 @@ try {
           Math.abs(first.width - settled.width) > 0.5 ||
           Math.abs(first.height - settled.height) > 0.5
         )
-          failures.push(`${where}: figure moved after fonts settled`);
+          failures.push(
+            `${where}: figure moved after fonts settled ${JSON.stringify([first, settled])}`,
+          );
         const issues = await probePracticeLayout(page);
-        for (const i of issues) failures.push(`${where}: ${i.kind} ${i.detail}`);
+        for (const i of issues)
+          failures.push(`${where}: ${i.kind} ${i.detail}`);
         const labels = await figure.evaluate((svg) => {
           const items = [...svg.querySelectorAll("g[data-label]")].map((g) => {
             const t = g.querySelector("text")!;
             const m = t.getScreenCTM()!;
-            const b = g.getBoundingClientRect();
+            // The glyphs, not a label's paper backing.
+            const b = t.getBoundingClientRect();
             return {
               id: g.getAttribute("data-id"),
               text: g.textContent,
-              px: parseFloat(getComputedStyle(t).fontSize) * Math.hypot(m.c, m.d),
+              px:
+                parseFloat(getComputedStyle(t).fontSize) * Math.hypot(m.c, m.d),
               box: { x0: b.left, y0: b.top, x1: b.right, y1: b.bottom },
             };
           });
@@ -242,9 +271,13 @@ try {
         });
         const smallest = Math.min(...labels.items.map((l) => l.px));
         if (labels.items.length && smallest < 11.99)
-          failures.push(`${where}: a figure label is ${smallest.toFixed(1)} px`);
+          failures.push(
+            `${where}: a figure label is ${smallest.toFixed(1)} px`,
+          );
         if (labels.overlaps.length)
-          failures.push(`${where}: overlapping labels ${labels.overlaps.join(", ")}`);
+          failures.push(
+            `${where}: overlapping labels ${labels.overlaps.join(", ")}`,
+          );
         rows.push({
           case: c.name,
           template: c.meta.id,
@@ -255,7 +288,9 @@ try {
           figure: settled,
           issues: issues.length,
         });
-        await page.screenshot({ path: `${out}${c.name}-${width}-${theme}.png` });
+        await page.screenshot({
+          path: `${out}${c.name}-${width}-${theme}.png`,
+        });
       }
 } finally {
   await browser.close();
@@ -270,7 +305,8 @@ const tokens =
 const body = cases
   .map((c) => {
     const scene = sceneOf(c.problem);
-    if (describeScene(scene).length < 20) failures.push(`${c.name}: no description`);
+    if (describeScene(scene).length < 20)
+      failures.push(`${c.name}: no description`);
     return `<section class="exercise"><h2>${c.name}</h2><p>${c.problem.public.prompt.replace(/[<&]/g, "")}</p>${renderToStaticMarkup(
       React.createElement(SceneFigure, { scene, medium: "print" }),
     )}</section>`;
@@ -281,7 +317,11 @@ const file = `${out}print.html`;
 writeFileSync(file, html);
 const oracle = spawnSync(
   "node",
-  ["--import", "tsx", new URL("print-layout-oracle.ts", import.meta.url).pathname],
+  [
+    "--import",
+    "tsx",
+    new URL("print-layout-oracle.ts", import.meta.url).pathname,
+  ],
   {
     input: JSON.stringify([
       { file, format: "Letter" },
@@ -290,7 +330,8 @@ const oracle = spawnSync(
     encoding: "utf8",
   },
 );
-if (oracle.status !== 0) failures.push(`print: ${oracle.stderr || oracle.stdout}`);
+if (oracle.status !== 0)
+  failures.push(`print: ${oracle.stderr || oracle.stdout}`);
 const printer = await chromium.launch();
 try {
   const page = await printer.newPage();

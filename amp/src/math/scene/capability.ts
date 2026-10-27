@@ -13,7 +13,9 @@ const rank: Record<SceneCapability, number> = {
   "scenes-v2": 2,
 };
 export function elementCapability(element: Element): SceneCapability {
-  return componentDef(element.type)?.capability?.(element as never) ?? "scenes-v1";
+  return (
+    componentDef(element.type)?.capability?.(element as never) ?? "scenes-v1"
+  );
 }
 export function sceneCapability(scene: Scene): SceneCapability {
   let best: SceneCapability = "scenes-v1";

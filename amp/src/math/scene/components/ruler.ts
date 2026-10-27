@@ -217,7 +217,15 @@ const partName = (parts: number, unit: "in" | "cm") =>
       : parts === 2
         ? "half centimeters"
         : "whole centimeters"
-    : ({ 1: "whole inches", 2: "half inches", 4: "quarter inches", 8: "eighth inches", 16: "sixteenth inches" } as Record<number, string>)[parts]!;
+    : (
+        {
+          1: "whole inches",
+          2: "half inches",
+          4: "quarter inches",
+          8: "eighth inches",
+          16: "sixteenth inches",
+        } as Record<number, string>
+      )[parts]!;
 
 registerComponent("ruler", {
   capability: () => "scenes-v2",

@@ -110,7 +110,8 @@ export function fitsInside(
     const x = cx + dx,
       y = cy + dy;
     if (Math.hypot(x, y) > s - pad) return false;
-    const angle = (((Math.atan2(y, x) * 180) / Math.PI - from) % 360 + 360) % 360;
+    const angle =
+      ((((Math.atan2(y, x) * 180) / Math.PI - from) % 360) + 360) % 360;
     if (angle > sweep) return false;
     if (rayDistance(x, y, from) < pad || rayDistance(x, y, to) < pad)
       return false;
@@ -131,6 +132,14 @@ function insideLayout(c: CircleGraph, s: number, reveal: boolean) {
       if (fitsInside(from, to, rho, w, h, s)) return rho;
     return null;
   });
+}
+
+/** Labels go in a key when any sector's label cannot fit inside it at a
+ * radius of `s` pixels (decided on the masked text, which is never wider). */
+function usesKey(c: CircleGraph, s: number) {
+  if (c.labels === "inside") return false;
+  if (c.labels === "key") return true;
+  return insideLayout(c, s, true).some((r) => r === null);
 }
 
 function draw(c: CircleGraph, s: number, reveal: boolean): Prim[] {
@@ -162,10 +171,7 @@ function draw(c: CircleGraph, s: number, reveal: boolean): Prim[] {
     }),
   );
   const rhos = insideLayout(c, s, reveal);
-  const inside =
-    c.labels === "inside" ||
-    (c.labels !== "key" && rhos.every((r) => r !== null));
-  if (inside) {
+  if (!usesKey(c, s)) {
     c.sectors.forEach((sector, i) => {
       const { from, to } = angles[i]!;
       const at = polar((from + to) / 2, rhos[i] ?? 0.6);
@@ -198,6 +204,7 @@ function draw(c: CircleGraph, s: number, reveal: boolean): Prim[] {
     return prims;
   }
   // Key: each sector shows its number; rows below the circle explain them.
+  let below = 0; // pixels an outside number reaches below the circle
   c.sectors.forEach((_, i) => {
     const { from, to } = angles[i]!;
     const mid = (from + to) / 2;
@@ -205,6 +212,11 @@ function draw(c: CircleGraph, s: number, reveal: boolean): Prim[] {
     const rho = [0.78, 0.7, 0.62].find((r) =>
       fitsInside(from, to, r, digit.width + 2, 16, s, 3),
     );
+    if (rho === undefined)
+      below = Math.max(
+        below,
+        -Math.sin((mid * Math.PI) / 180) * s - s + 5 + 20,
+      );
     prims.push({
       type: "text",
       id: `key.${i}`,
@@ -236,9 +248,9 @@ function draw(c: CircleGraph, s: number, reveal: boolean): Prim[] {
         : {}),
     });
   });
-  const row = 26 / s,
+  const row = 24 / s,
     swatch = 14 / s;
-  const top = -1 - 20 / s;
+  const top = -1 - (Math.max(0, below) + 20) / s;
   c.sectors.forEach((sector, i) => {
     const y = top - i * row;
     const value = shown(sector, reveal);
@@ -274,7 +286,10 @@ function draw(c: CircleGraph, s: number, reveal: boolean): Prim[] {
       },
     );
     if (value) {
-      const nameWidth = typeset(sector.label, "sans", "sm").width;
+      // Values line up in one column after the longest category.
+      const nameWidth = Math.max(
+        ...c.sectors.map((q) => typeset(q.label, "sans", "sm").width),
+      );
       prims.push({
         type: "text",
         id: `legend.${i}.value`,
@@ -295,14 +310,14 @@ function draw(c: CircleGraph, s: number, reveal: boolean): Prim[] {
 registerComponent("circleGraph", {
   capability: () => "scenes-v2",
   // A radius of at most 100 px: a 200 px circle fits a 288 px phone stage.
-  maxScale: () => 100,
+  // With the key below it, 76 px, so circle and key stay one glance tall.
+  maxScale: (c) => (usesKey(c, 100) ? 76 : 100),
   compile(c, ctx) {
     return shifted(draw(c, ctx.s, ctx.reveal), c.at);
   },
   describe(c, reveal) {
     const parts = c.sectors.map((sector) => {
-      if (sector.text === undefined)
-        return `${sector.label}, value not shown`;
+      if (sector.text === undefined) return `${sector.label}, value not shown`;
       if (sector.derived && !reveal) return `${sector.label}, value to find`;
       return `${sector.label} ${sector.text}`;
     });

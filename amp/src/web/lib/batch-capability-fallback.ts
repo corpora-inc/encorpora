@@ -59,7 +59,10 @@ const newerFigureCapabilities = ["scenes-v2"];
  * choice; any other failure is final. Capabilities are listed oldest first.
  * A newer figure capability rejected the same way is dropped too. */
 export async function batchWithCapabilityFallback<
-  Body extends { responseCapabilities: string[]; figureCapabilities?: string[] },
+  Body extends {
+    responseCapabilities: string[];
+    figureCapabilities?: string[];
+  },
   Result,
 >(
   body: Body,

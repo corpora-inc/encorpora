@@ -106,7 +106,10 @@ function draw(c: Coins, s: number): Prim[] {
         prims.push({
           type: "segment",
           id: `${id}.ridge.${j}`,
-          from: [center[0] + Math.cos(t) * (r - 1.1), center[1] + Math.sin(t) * (r - 1.1)],
+          from: [
+            center[0] + Math.cos(t) * (r - 1.1),
+            center[1] + Math.sin(t) * (r - 1.1),
+          ],
           to: [center[0] + Math.cos(t) * r, center[1] + Math.sin(t) * r],
           stroke: rim,
           width: 1,
@@ -134,7 +137,8 @@ function draw(c: Coins, s: number): Prim[] {
     );
     // Letters share one baseline under the row's largest coin.
     const rowCoins = c.coins.slice(row * perRow, (row + 1) * perRow);
-    const rowRadius = Math.max(...rowCoins.map((q) => coinDiameter[q.coin])) / 2;
+    const rowRadius =
+      Math.max(...rowCoins.map((q) => coinDiameter[q.coin])) / 2;
     if (k.label)
       prims.push({
         type: "text",
