@@ -258,7 +258,7 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
             whole,
             Number(`${whole}${frac100}`),
             frac100 + 1,
-            hundredths ? Math.floor(frac100 / 10) : frac100 * 10,
+            hundredths ? Math.floor(frac100 / 10) : frac100 + 2,
           ].filter((x) => x > 0),
         ),
         " over ",
@@ -277,7 +277,7 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
         label: "Choose a number for each gap",
         slots: built.slots,
         sentence: built.sentence,
-        hint: `The digits to the left of the decimal point, ${whole}, give the whole number. Count the digits to the right of the point in ${text}: that count tells whether the fraction part is in tenths or hundredths.`,
+        hint: `In ${text}, the digits to the left of the decimal point give the whole number. Count the digits to the right of the point: that count tells whether the fraction part is in tenths or hundredths.`,
         explanation: [
           `The whole part is ${whole}.`,
           `The digits after the decimal point are ${hundredths ? `${String(frac100).padStart(2, "0")}, which is ${frac100} ${frac100 === 1 ? "hundredth" : "hundredths"}` : `${frac100}, which is ${frac100} ${frac100 === 1 ? "tenth" : "tenths"}`}, written as $${frac(frac100, den)}$.`,

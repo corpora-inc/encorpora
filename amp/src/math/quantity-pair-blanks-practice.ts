@@ -364,7 +364,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
           label: "Choose a number for each gap",
           slots: built.slots,
           sentence: built.sentence,
-          hint: `Find how many groups of ${size} fit in ${total}: estimate with tens, such as ${size} times ${Math.max(1, Math.floor(total / size / 10))}0, then adjust. The leftover is what remains after those groups are removed.`,
+          hint: `Find how many groups of ${size} fit in ${total}: estimate with tens, such as ${size} times ${[Math.floor((q - 1) / 10) * 10, 10, 5, 2].find((n) => n >= 2 && n !== q && n !== rem)}, then adjust. The leftover is what remains after those groups are removed.`,
           explanation: [
             `Divide ${total} by ${size}: $${total}\\div ${size}=${q}$ with a remainder, because $${size}\\times ${q}=${size * q}$.`,
             `The leftover is $${total}-${size * q}=${rem}$, which is less than ${size}, so no more full group fits.`,

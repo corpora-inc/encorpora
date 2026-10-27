@@ -429,7 +429,9 @@ export const statementBlanksGenerate = defineGenerate(
         for (const s of sets) {
           const [a, b, c] = s.sides;
           need(
-            (a * a + b * b === c * c) === s.right && c > Math.max(a, b),
+            (a * a + b * b === c * c) === s.right &&
+              c > Math.max(a, b) &&
+              a + b > c,
             "a valid triangle",
           );
         }
