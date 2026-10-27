@@ -430,7 +430,7 @@ export const specialAngleMatch = chainFamily({
   template: specialAngleMatchTemplate,
   axes: specialAxes,
   model: specialModel,
-  variant: (m) => `${m.target.fn}-${m.target.angle}`,
+  variant: (m) => `${m.target.fn}-${m.target.angle.replace("/", "-")}`,
   render: (m, _ax, r) => {
     // Distractors must differ in value from one another, not only in form.
     const used: number[] = [];
