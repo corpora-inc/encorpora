@@ -61,6 +61,11 @@ import {
   normalizeMultiPart,
   type MultiPartChoiceResponse,
 } from "./multi-part-choice.js";
+import {
+  figureChoiceResponseSchema,
+  normalizeFigureChoice,
+  type FigureChoiceResponse,
+} from "./figure-choice.js";
 import { stepsSchema, type Step } from "./scene/timeline.js";
 /** An input/output table, a first-quadrant graph, or both side by side.
  * A graph line is exact: y × run = rise × x + b × run. */
@@ -245,6 +250,7 @@ export const responseCapabilities = [
   "multi-select-v1",
   "point-plot-v1",
   "multi-part-choice-v1",
+  "figure-choice-v1",
 ] as const;
 export type ResponseCapability = (typeof responseCapabilities)[number];
 /** The response and figure families a client declares it can show. */
@@ -287,13 +293,19 @@ export type MultiSelectResponse = {
   options: { id: string; label: string }[];
   selectionCount: number;
 };
-export type { PointPlotResponse, PointPlotGrading, MultiPartChoiceResponse };
+export type {
+  PointPlotResponse,
+  PointPlotGrading,
+  MultiPartChoiceResponse,
+  FigureChoiceResponse,
+};
 export type ProblemResponse =
   | { kind: "number" | "fraction"; label: string }
   | { kind: "choice"; label: string; options: { id: string; label: string }[] }
   | MultiSelectResponse
   | PointPlotResponse
-  | MultiPartChoiceResponse;
+  | MultiPartChoiceResponse
+  | FigureChoiceResponse;
 /** Safe teaching content delivered beside a problem; never grading data. */
 export interface ProblemHint {
   hint: string;
@@ -923,6 +935,7 @@ export const problemResponseSchema: z.ZodType<ProblemResponse> = z.union([
     ),
   pointPlotResponseSchema,
   multiPartChoiceResponseSchema,
+  figureChoiceResponseSchema,
 ]);
 export const publicProblemSchema: z.ZodType<PublicProblem> = z
   .object({
@@ -987,6 +1000,18 @@ export const generatedProblemSchema: z.ZodType<GeneratedProblem> = z
         !problem.choiceFeedback &&
         !problem.entryPolicy &&
         normalizeMultiPart(response, problem.answer) === problem.answer
+      );
+    // A figure choice names a displayed option; distractor feedback keys
+    // name the other options, like a single choice.
+    if (response.kind === "figure-choice")
+      return (
+        !problem.entryPolicy &&
+        normalizeFigureChoice(response, problem.answer) === problem.answer &&
+        Object.keys(problem.choiceFeedback ?? {}).every(
+          (id) =>
+            normalizeFigureChoice(response, id) !== null &&
+            id !== problem.answer,
+        )
       );
     if (response.kind === "multi-select")
       return (

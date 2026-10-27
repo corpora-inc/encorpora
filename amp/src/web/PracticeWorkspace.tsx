@@ -27,6 +27,12 @@ import {
 } from "./MultiPartChoiceInput";
 import { multiPartAnswerText } from "../math/multi-part-choice";
 import {
+  FigureChoiceAnswer,
+  FigureChoiceInput,
+  figureReview,
+} from "./FigureChoiceInput";
+import { figureChoiceName } from "../math/figure-choice";
+import {
   useEffect,
   useLayoutEffect,
   useRef,
@@ -225,6 +231,10 @@ export function PracticeWorkspace(props: Props) {
   // Multi-part choices answer in the problem too: blanks, slots or a table.
   const parts =
     problem.response.kind === "multi-part-choice" ? problem.response : null;
+  // Figure choices answer on their cards in the problem; the dock holds the
+  // selection readout and Check.
+  const figures =
+    problem.response.kind === "figure-choice" ? problem.response : null;
   const selectedIds = multiResponse
     ? (parseSelection(response) ?? []).filter((id) =>
         multiResponse.options.some((option) => option.id === id),
@@ -247,6 +257,8 @@ export function PracticeWorkspace(props: Props) {
     }
     if (problem.response.kind === "multi-part-choice")
       return multiPartAnswerText(problem.response, value);
+    if (problem.response.kind === "figure-choice")
+      return figureChoiceName(problem.response, value) ?? "Unavailable answer";
     if (problem.response.kind === "multi-select") {
       const labels = responseAnswerLabels(problem.response, value);
       return labels ? joinAnswerLabels(labels) : "Unavailable selection";
@@ -279,7 +291,7 @@ export function PracticeWorkspace(props: Props) {
   const [compactQuery, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
-  const compact = compactQuery && !plot && !parts;
+  const compact = compactQuery && !plot && !parts && !figures;
   // Side by side (practice-tablet.css), the feedback sheet has its own
   // column; stacked, it covers the dock only, so a plotted answer's grid and
   // its feedback overlay stay in view and the explanation opens on request.
@@ -292,7 +304,7 @@ export function PracticeWorkspace(props: Props) {
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
-  const deferSteps = (!!plot || !!parts) && !sideBySide;
+  const deferSteps = (!!plot || !!parts || !!figures) && !sideBySide;
   useEffect(() => {
     const media = matchMedia(answerLayoutQuery);
     const changed = () => setCompact(media.matches);
@@ -357,7 +369,8 @@ export function PracticeWorkspace(props: Props) {
     // Typed answers start in the answer field. On touch it suppresses the
     // system keyboard (inputMode none), so AMP's keypad stays in charge; the
     // field announces the question through aria-describedby.
-    if (choice || plot || parts) prompt.current?.focus({ preventScroll: true });
+    if (choice || plot || parts || figures)
+      prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
   useEffect(() => {
@@ -406,7 +419,7 @@ export function PracticeWorkspace(props: Props) {
   const locked = busy || pending || !!outcome;
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
-  const keypad = !choice && !plot && !parts;
+  const keypad = !choice && !plot && !parts && !figures;
   const caret = useKeypadCaret(input);
   function key(value: string) {
     if (locked) return;
@@ -476,6 +489,16 @@ export function PracticeWorkspace(props: Props) {
           value={outcome ? outcome.response : response}
           onChange={setResponse}
           locked={locked}
+          busy={busy}
+          resolved={!!outcome}
+          submit={props.submit}
+        />
+      );
+    if (problem.response.kind === "figure-choice")
+      return (
+        <FigureChoiceAnswer
+          response={problem.response}
+          value={outcome ? outcome.response : response}
           busy={busy}
           resolved={!!outcome}
           submit={props.submit}
@@ -899,7 +922,7 @@ export function PracticeWorkspace(props: Props) {
           )}
           {/* Plotted answers are placed, not typed: the calculator's Use
               key has nothing to fill, and lattice arithmetic needs none. */}
-          {props.calculator && !plot && !parts ? (
+          {props.calculator && !plot && !parts && !figures ? (
             <button
               ref={calculatorToggle}
               className="calculator-toggle"
@@ -948,7 +971,7 @@ export function PracticeWorkspace(props: Props) {
               <MathText text={problem.prompt} />
             </h2>
             {problem.figure &&
-              (choice || plot || parts ? (
+              (choice || plot || parts || figures ? (
                 <ChoiceFigure figure={problem.figure} />
               ) : (
                 <Figure
@@ -969,6 +992,20 @@ export function PracticeWorkspace(props: Props) {
                 review={
                   outcome
                     ? partsReview(parts, outcome.answer, outcome.response)
+                    : null
+                }
+              />
+            )}
+            {figures && (
+              <FigureChoiceInput
+                problemId={problem.id}
+                response={figures}
+                value={outcome ? outcome.response : response}
+                onChange={setResponse}
+                locked={locked}
+                review={
+                  outcome
+                    ? figureReview(figures, outcome.answer, outcome.response)
                     : null
                 }
               />
@@ -1098,7 +1135,9 @@ export function PracticeWorkspace(props: Props) {
                       <small>
                         {problem.response.kind === "multi-select"
                           ? "You selected "
-                          : "You entered "}
+                          : figures
+                            ? "You chose "
+                            : "You entered "}
                         <MathText text={displayResponse(outcome.response)} />
                         {support && `, ${support}`}
                       </small>
