@@ -63,6 +63,41 @@ const purchaseSchema = z.strictObject({
 });
 export type GooglePurchase = z.infer<typeof purchaseSchema>;
 
+/** A verified parent registration; no revenue, email or learner data. */
+const signupSchema = z.strictObject({
+  transactionId: z.string().regex(/^amp_signup_[a-f0-9]{32}$/),
+  occurredAt: instant,
+  adIdentifiers: googleClickIdentifiersSchema,
+});
+export type GoogleSignup = z.infer<typeof signupSchema>;
+export function googleSignupRequest(
+  config: GoogleConversionDestination,
+  input: GoogleSignup,
+  mode: "validate" | "ingest" = "validate",
+  now = new Date(),
+) {
+  const signup = parse(signupSchema, input, "invalid_signup");
+  const at = Date.parse(signup.occurredAt);
+  if (at > +now || at < +now - 90 * 86400_000)
+    throw new GoogleConversionError(
+      "event_outside_delivery_window",
+      "not_sent",
+    );
+  return {
+    destinations: [destination(config)],
+    events: [
+      {
+        transactionId: signup.transactionId,
+        eventTimestamp: signup.occurredAt,
+        eventSource: "WEB",
+        adIdentifiers: signup.adIdentifiers,
+        consent: { adPersonalization: "CONSENT_DENIED" },
+      },
+    ],
+    validateOnly: mode === "validate",
+  };
+}
+
 type Outcome = "not_sent" | "rejected" | "unknown";
 /** Safe to log: never contains payloads, access tokens or provider diagnostics. */
 export class GoogleConversionError extends Error {
@@ -356,6 +391,13 @@ export class GoogleDataManager {
       googlePurchaseRequest(this.config, input, mode, now),
       mode,
     );
+  }
+  async signup(
+    input: GoogleSignup,
+    mode: "validate" | "ingest" = "validate",
+    now = new Date(),
+  ) {
+    return this.send(googleSignupRequest(this.config, input, mode, now), mode);
   }
   async restate(
     input: GooglePurchase,

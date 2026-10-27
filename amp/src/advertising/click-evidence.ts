@@ -16,6 +16,7 @@ export const AD_CLICK_SOURCE_URL = "https://corpora.inc/esa/arkansas-efa/";
 export const adClickSourceSchema = z.enum([
   AD_CLICK_SOURCE_URL,
   "https://amp.corpora.inc/",
+  "https://amp.corpora.inc/sign-up",
   "https://corpora.inc/amp/",
   "https://corpora.inc/esa/arizona-esa/",
 ]);

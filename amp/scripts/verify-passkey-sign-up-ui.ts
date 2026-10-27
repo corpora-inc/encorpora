@@ -207,9 +207,7 @@ try {
   await page.getByRole("heading", { name: "Your account is ready" }).waitFor();
   await page.getByRole("link", { name: "Continue free assessment" }).click();
   await page.waitForURL(`${origin}/try`);
-  await page
-    .getByRole("heading", { name: "Your math pathways start here" })
-    .waitFor();
+  await page.getByRole("heading", { name: "See how AMP adapts" }).waitFor();
   await page.getByRole("group", { name: "Birth year", exact: true }).waitFor();
   assert.equal(
     await page

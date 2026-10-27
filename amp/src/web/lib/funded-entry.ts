@@ -1,3 +1,4 @@
+import { signupEntrySchema } from "../../parent-followup/contracts";
 import { z } from "zod";
 import {
   CAMPAIGN_NAMES,
@@ -56,7 +57,9 @@ const labels = z.object({
 });
 export type CampaignSearch = Partial<z.infer<typeof labels>>;
 export type FundedSearch = CampaignSearch & {
-  return?: "security" | "access" | FundedProgramSlug;
+  return?: "security" | "access" | "free-practice" | FundedProgramSlug;
+  program?: "ar-efa" | "az-esa";
+  entry?: "openai-math-path" | "openai-math-plans";
 };
 
 export function measurementOptOut() {
@@ -82,8 +85,16 @@ export function continuationSearch(
 ): FundedSearch {
   return {
     ...campaignSearch(search),
+    ...(signupEntrySchema.safeParse(search.entry).success &&
+    !measurementOptOut()
+      ? { entry: signupEntrySchema.parse(search.entry) }
+      : {}),
+    ...(search.program === "ar-efa" || search.program === "az-esa"
+      ? { program: search.program }
+      : {}),
     ...(search.return === "security" ||
     search.return === "access" ||
+    search.return === "free-practice" ||
     isFundedReturn(search.return)
       ? { return: search.return }
       : {}),
@@ -96,16 +107,21 @@ export function continuationUrl(
 ) {
   const safe = continuationSearch(search);
   const path =
-    safe.return === "access"
-      ? "/access"
-      : safe.return === "security"
-        ? "/family/security"
-        : isFundedReturn(safe.return)
-          ? fundedPrograms[safe.return].path
-          : fallback;
-  const params = new URLSearchParams(
-    campaignSearch(safe) as Record<string, string>,
-  );
+    safe.return === "free-practice"
+      ? "/try"
+      : safe.return === "access"
+        ? "/access"
+        : safe.return === "security"
+          ? "/family/security"
+          : isFundedReturn(safe.return)
+            ? fundedPrograms[safe.return].path
+            : fallback;
+  const params = new URLSearchParams({
+    ...campaignSearch(safe),
+    ...(safe.program ? { program: safe.program } : {}),
+    ...(safe.entry ? { entry: safe.entry } : {}),
+    ...(safe.return === "free-practice" ? { return: safe.return } : {}),
+  } as Record<string, string>);
   return path + (params.size ? `?${params}` : "");
 }
 

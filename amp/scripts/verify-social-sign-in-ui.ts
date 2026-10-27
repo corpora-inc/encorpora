@@ -1,3 +1,4 @@
+import { registerParentFollowupRoutes } from "../src/parent-followup/routes.js";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { chromium, webkit, type Browser, type Page } from "playwright";
@@ -32,6 +33,7 @@ const accounts = await createAccounts(repository.pool, {
   secret: "v".repeat(40),
   production: false,
   passwords: true,
+  parentFollowup: true,
   trustedOrigins: [],
   google: { clientId: "google-client", clientSecret: "google-secret" },
   github: { clientId: "github-client", clientSecret: "github-secret" },
@@ -52,6 +54,12 @@ const accounts = await createAccounts(repository.pool, {
 const authenticate = accountsAuth(accounts);
 const app = buildApp({ repository, authenticate, development: true });
 await registerAccountRoutes(app, accounts);
+await registerParentFollowupRoutes(app, {
+  pool: repository.pool,
+  origin,
+  authenticate,
+  enabled: true,
+});
 await registerFamilyRoutes(app, {
   pool: repository.pool,
   authenticate,
@@ -79,7 +87,7 @@ const jwk: JWK = {
   alg: "RS256",
   use: "sig",
 };
-const parentEmail = `provider-parent-${Date.now()}@example.com`;
+let parentEmail = `provider-parent-${Date.now()}@example.com`;
 const realFetch = globalThis.fetch;
 globalThis.fetch = async (input, init) => {
   const address = String(input instanceof Request ? input.url : input);
@@ -262,6 +270,43 @@ try {
   for (const path of ["/sign-up", "/sign-in"] as const)
     for (const theme of ["light", "dark"] as const)
       for (const size of sizes) await checkScreen(browser, path, theme, size);
+  // Paid acquisition is a parent signup offer, with reachable social actions.
+  for (const theme of ["light", "dark"] as const)
+    for (const size of sizes.filter((s) => s.width !== 384)) {
+      const context = await browser.newContext({
+        viewport: size,
+        colorScheme: theme,
+      });
+      const page = await context.newPage();
+      await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
+      await page
+        .getByRole("heading", { name: "Try AMP’s free math assessment." })
+        .waitFor();
+      assert.equal(await page.getByRole("checkbox").isChecked(), false);
+      assert.ok(
+        (await page.locator("[data-free-parent-signup]").innerText()).includes(
+          "Arizona ESA",
+        ),
+      );
+      const box = await page
+        .locator("button[data-provider=google]")
+        .boundingBox();
+      assert.ok(
+        box && box.y + box.height <= size.height,
+        `Google visible at ${size.width}`,
+      );
+      assert.ok(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      );
+      await page.screenshot({
+        path: new URL(`parent-signup-${theme}-${size.width}.png`, shots)
+          .pathname,
+        fullPage: true,
+      });
+      await context.close();
+    }
   // The longest translations still fit the narrowest phone.
   for (const lang of ["de", "fi", "ta", "ml", "ar", "ja"])
     await checkScreen(browser, "/sign-up", "light", sizes[0], lang);
@@ -290,6 +335,37 @@ try {
       },
     });
   });
+
+  await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
+  await page.getByRole("checkbox").check();
+  await page.getByRole("button", { name: "Continue with Google" }).click();
+  await page.waitForURL(
+    /\/try\?return=free-practice&program=az-esa|\/try\?program=az-esa&return=free-practice/,
+  );
+  await page.getByRole("heading", { name: "See how AMP adapts" }).waitFor();
+  const lead = (
+    await repository.pool.query(
+      "SELECT p.* FROM amp_parent_followups p JOIN amp_auth_users u ON u.id=p.user_id WHERE u.email=$1",
+      [parentEmail],
+    )
+  ).rows[0];
+  assert.ok(lead?.verified_at, "Google signup becomes a verified parent lead");
+  assert.equal(lead.program, "az-esa");
+  assert.equal(lead.newsletter, true);
+  assert.equal(
+    (
+      await repository.pool.query(
+        "SELECT count(*)::int AS n FROM amp_parent_followup_outbox WHERE user_id=$1",
+        [lead.user_id],
+      )
+    ).rows[0].n,
+    2,
+  );
+  await page.request.post(`${origin}/api/auth/sign-out`, {
+    headers: { origin },
+  });
+  await context.clearCookies();
+  parentEmail = `standard-parent-${Date.now()}@example.com`;
 
   // A cancelled provider screen returns to the same screen with a message
   // that overlays the page; the buttons do not move.

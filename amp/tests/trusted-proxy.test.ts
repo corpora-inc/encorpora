@@ -7,9 +7,7 @@ import type { Repository } from "../src/server/repository.js";
 const repository = {
   createTrial: async () => ({ token: "t".repeat(43), learnerId: "trial" }),
 } as unknown as Repository;
-const authenticate = async () => {
-  throw Object.assign(new Error("unused"), { statusCode: 401 });
-};
+const authenticate = async () => "amp|synthetic-parent";
 const lb = "35.191.10.20";
 const ingress = "34.120.0.1";
 

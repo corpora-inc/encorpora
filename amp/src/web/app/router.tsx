@@ -1,3 +1,4 @@
+import { signupEntrySchema } from "../../parent-followup/contracts";
 import {
   createRootRoute,
   createRoute,
@@ -36,6 +37,7 @@ const searchSchema = z
   .object({
     return: z
       .enum([
+        "free-practice",
         "security",
         "access",
         "arkansas-efa",
@@ -44,6 +46,7 @@ const searchSchema = z
       ])
       .optional()
       .catch(undefined),
+    entry: signupEntrySchema.optional().catch(undefined),
     program: z.enum(["ar-efa", "az-esa"]).optional().catch(undefined),
     token: z.string().max(2048).optional(),
     error: z.string().max(200).optional(),
@@ -92,6 +95,7 @@ const root = createRootRoute({
           "utm_campaign",
           "utm_content",
           "program",
+          "entry",
         ])({ search, next });
         // Validation merges into raw router search. Explicitly erase rejected
         // values after retention; omission alone would preserve them.
@@ -148,25 +152,45 @@ async function beforeStart({
 }
 const trial = (name: "TryStart" | "TrialPractice" | "TrialMap" | "Paywall") =>
   lazyRouteComponent(() => import("../features/trial"), name);
-/** The free trial: anonymous, resumable on this device, every step a URL. */
+/** A parent signs in before the free assessment. Practice stays device-scoped
+ * until the existing consent/adoption flow saves it to a learner profile. */
+async function beforeTrial({ search }: { search: Record<string, unknown> }) {
+  const session = await queryClient.ensureQueryData(sessionOptions);
+  if (!session)
+    throw redirect({
+      to: "/sign-up",
+      search: { ...continuationSearch(search), return: "free-practice" },
+    });
+  if (search.return === "free-practice")
+    await fetch("/api/v1/parent-followup/complete", {
+      method: "POST",
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    }).catch(() => undefined);
+}
 const tryStart = createRoute({
   getParentRoute: () => root,
   path: "/try",
+  beforeLoad: beforeTrial,
   component: trial("TryStart"),
 });
 const tryPractice = createRoute({
   getParentRoute: () => root,
   path: "/try/practice",
+  beforeLoad: beforeTrial,
   component: trial("TrialPractice"),
 });
 const tryMap = createRoute({
   getParentRoute: () => root,
   path: "/try/map",
+  beforeLoad: beforeTrial,
   component: trial("TrialMap"),
 });
 const tryPlans = createRoute({
   getParentRoute: () => root,
   path: "/try/plans",
+  beforeLoad: beforeTrial,
   component: trial("Paywall"),
 });
 const home = createRoute({
