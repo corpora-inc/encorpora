@@ -85,6 +85,13 @@ async function inspect(html: string, format: "Letter" | "A4") {
         ".exercise,.example,.representation,.lesson-illustration",
       )) {
         if (section.classList.contains("exercise--solutions")) continue;
+        // A section allowed to break between its parts may span pages.
+        if (
+          !["avoid", "avoid-page"].includes(
+            getComputedStyle(section).breakInside,
+          )
+        )
+          continue;
         if (section.getBoundingClientRect().height > pageHeight)
           issues.push("A section kept together is taller than a printable page");
       }
