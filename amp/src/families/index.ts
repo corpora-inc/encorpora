@@ -16,3 +16,4 @@ export { family as quadraticModelChain } from "./quadratic-model-chain";
 export { family as shareRemainder } from "./share-remainder";
 export { family as similarSolidChain } from "./similar-solid-chain";
 export { family as totalMinusParts } from "./total-minus-parts";
+export { family as virginiaSolLedger } from "./virginia-sol-ledger";
