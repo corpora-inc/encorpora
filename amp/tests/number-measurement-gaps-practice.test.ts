@@ -15,6 +15,7 @@ const expectedVariants: Record<string, string[]> = {
     "one-value-check",
     "combine",
     "factor",
+    "fractional-factor",
   ],
   "area-tiling-distributive": [
     "array-split",
@@ -27,6 +28,7 @@ const expectedVariants: Record<string, string[]> = {
     "verdict",
     "two-step",
     "quotient",
+    "decimal-difference",
   ],
   "unit-chain-conversion": [
     "dose",
@@ -53,6 +55,10 @@ const skills: Record<string, string> = {
 function evalText(text: string, x: number): number {
   const js = text
     .replace(/\$/g, "")
+    .replace(/\\left|\\right/g, "")
+    .replace(/\\frac\{(\d+)\}\{(\d+)\}/g, "($1/$2)")
+    .replace(/\\cdot/g, "*")
+    .replace(/\)\(/g, ")*(")
     .replace(/×/g, "*")
     .replace(/(\d)\(/g, "$1*(")
     .replace(/(\d)x/g, "$1*x")
@@ -160,7 +166,7 @@ test("equivalent expressions: independent evaluation finds the right choice", ()
     )!;
     const given = (prompt[1] ?? prompt[2])!;
     const matches = options.filter((o) => same(o.label, given));
-    if (variant === "not-equivalent") {
+    if (variant === "not-equivalent" || variant === "fractional-factor") {
       assert.equal(matches.length, 3);
       assert.ok(!same(options.find((o) => o.id === g.answer)!.label, given));
     } else {
@@ -252,6 +258,15 @@ test("estimates follow the stated rounding rule", () => {
           : Math.abs(claim - est) / est > 0.8,
       );
       assert.ok(correct.includes(`= ${est.toLocaleString("en-US")}`));
+    } else if (variant === "decimal-difference") {
+      const m =
+        /holds (\d+\.\d) milliliters and another holds (\d+\.\d) milliliters/.exec(
+          p,
+        )!;
+      assert.equal(
+        num(correct),
+        Math.round(Number(m[1])) - Math.round(Number(m[2])),
+      );
     } else if (variant === "two-step") {
       const m =
         /fills (\d+) trays with (\d+) rolls each .* and (\d+) trays with (\d+) rolls/.exec(

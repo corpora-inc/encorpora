@@ -166,6 +166,17 @@ def solve_rename(public):
             left, right = plain(o['label']).split('=')
             return value_of(left) == value_of(right)
         return only(options, true, 'True equation')
+    lowest = re.fullmatch(r'Which fraction in lowest terms is equal to (\d+\.\d+)\?', prompt)
+    if lowest:
+        source = Fraction(lowest[1])
+        require(source.denominator != 1 and len(lowest[1].split('.')[1]) == 2,
+                'A two-place decimal that is not whole is required')
+        def reduced(o):
+            parts = re.fullmatch(r'\\frac\{(\d+)\}\{(\d+)\}', plain(o['label']))
+            require(parts is not None, 'Fraction choices need the form a/b')
+            top, bottom = int(parts[1]), int(parts[2])
+            return Fraction(top, bottom) == source and gcd(top, bottom) == 1
+        return only(options, reduced, 'Lowest-terms fraction')
     match = re.fullmatch(r'Which (decimal|percent) is equal to (.+?)\??', prompt)
     require(match is not None, 'Unknown rename prompt')
     source = value_of(match[2].rstrip('?'))
@@ -677,6 +688,8 @@ def self_test():
                        ['five hundred six thousandths', 'three and fifty-six hundredths', 'three and six hundred five thousandths', 'three and five hundred six thousandths']), 3),
         (choice_public('staar-number-word-form', 'Which number is 77 hundreds, 7 tens and 3 ones?', ['8,403', '7,710', '843', '7,773']), 3),
         (choice_public('staar-rename-percent-fraction-decimal', 'Which decimal is equal to 6%?', ['0.6', '0.006', '6', '0.06']), 3),
+        (choice_public('staar-rename-percent-fraction-decimal', 'Which fraction in lowest terms is equal to 0.05?', ['$\\frac{5}{100}$', '$\\frac{1}{20}$', '$\\frac{5}{10}$', '$\\frac{1}{100}$']), 1),
+        (choice_public('staar-rename-percent-fraction-decimal', 'Which fraction in lowest terms is equal to 0.68?', ['$\\frac{68}{100}$', '$\\frac{17}{100}$', '$\\frac{17}{25}$', '$\\frac{34}{25}$']), 2),
         (choice_public('staar-rename-percent-fraction-decimal', 'Which percent is equal to $\\frac{47}{20}$?', ['2350%', '2.35%', '235%', '47%']), 2),
         (choice_public('staar-rename-percent-fraction-decimal', 'Which equation is true?', ['$2.02=2\\frac{2}{10}$', '$2.02=\\frac{2}{100}$', '$2.02=2\\frac{2}{100}$', '$2.02=2\\frac{2}{1000}$']), 2),
         (choice_public('staar-ratio-statements', 'A floor uses green tiles and yellow tiles in the ratio 1 to 4. There are 30 tiles in all. How many are green?', ['36', '24', '29', '6']), 3),
@@ -698,6 +711,7 @@ def self_test():
         (choice_public('staar-money-vocabulary', "A family's expenses for three months are shown in dollars. Which expense is a variable expense, one that changes from month to month?", ['Rent', 'Car payment', 'Water bill', 'Gym membership'], expenses), 2),
         (choice_public('staar-money-vocabulary', 'Which is an example of using credit?', ['Dev pays 10 dollars of sales tax on a couch at the register.', 'Dev puts 125 dollars into a savings account.', 'Dev earns 125 dollars mowing lawns.', 'Dev takes a couch that costs 125 dollars home today and agrees to pay the store back over 11 months.']), 3),
         (choice_public('staar-table-rule-choice', 'Which table shows that every pair follows the rule $y=x+9$?', [array([1, 3, 5, 7], ys) for ys in ([11, 13, 15, 17], [9, 27, 45, 63], [9, 11, 13, 15], [10, 12, 14, 16])]), 3),
+        (choice_public('staar-table-rule-choice', 'Which table shows that every pair follows the rule $y=x-5$?', [array([8, 9, 10, 11], ys) for ys in ([3, 4, 7, 6], [3, 4, 5, 6], [4, 5, 6, 7], [13, 14, 15, 16])]), 1),
         (choice_public('staar-table-rule-choice', 'Which table shows that every output $y$ is 9 times its input $x$?', [array([2, 3, 4, 5], ys) for ys in ([11, 12, 13, 14], [16, 24, 32, 40], [18, 27, 36, 45], [19, 28, 37, 46])]), 2),
         (choice_public('staar-number-sets', sets + 'Which number does NOT belong in the region for the integers?', ['$0$', '$15$', '$-2.5$', '$\\frac{40}{5}$']), 2),
         (choice_public('staar-number-sets', sets + 'Which number belongs in the region for integers that are not whole numbers?', ['$36\\div6$', '$15$', '$\\frac{-20}{5}$', '$\\frac{24}{3}$']), 2),

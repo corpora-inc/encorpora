@@ -115,7 +115,7 @@ test("every template is registered, deterministic, reaches the engine and has al
     "staar-nested-grouping": 4,
     "staar-signed-exponent-order": 4,
     "staar-number-word-form": 3,
-    "staar-rename-percent-fraction-decimal": 4,
+    "staar-rename-percent-fraction-decimal": 5,
     "staar-ratio-statements": 3,
     "staar-story-model-choice": 4,
     "staar-rate-equation-choice": 1,
@@ -129,7 +129,7 @@ test("every template is registered, deterministic, reaches the engine and has al
     "staar-stem-leaf-combine": 2,
     "staar-dot-plot-threshold": 3,
     "staar-money-vocabulary": 3,
-    "staar-table-rule-choice": 2,
+    "staar-table-rule-choice": 3,
     "staar-multistep-equations": 3,
     "staar-experiment-probability": 2,
     "staar-number-sets": 3,
@@ -271,6 +271,22 @@ test("renaming forms are exact", () => {
           !near(val(l2), val(r2.replace(/^(\d+)\\frac/, "$1+\\frac"))),
           o.label,
         );
+      }
+    } else if (c.variant === "decimal-to-fraction") {
+      // A two-place decimal named as a fraction in lowest terms.
+      const decimal = Number(/equal to ([\d.]+)\?/.exec(prompt)![1]);
+      const value = (text: string) => {
+        const m = /^\\frac\{(\d+)\}\{(\d+)\}$/.exec(strip(text))!;
+        return [Number(m[1]), Number(m[2])] as const;
+      };
+      const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+      const [top, bottom] = value(label);
+      assert.ok(near(top / bottom, decimal), prompt);
+      assert.equal(gcd(top, bottom), 1, label);
+      for (const o of choices(c)) {
+        if (o.label === label) continue;
+        const [t, b] = value(o.label);
+        assert.ok(!(near(t / b, decimal) && gcd(t, b) === 1), o.label);
       }
     } else {
       const [n, d] = nums(prompt.replace(/\\frac/g, ""));
@@ -638,11 +654,12 @@ test("plots, tables, equations and probability match independent derivations", (
   for (const c of cases("staar-table-rule-choice")) {
     const prompt = c.problem.public.prompt;
     const mul = /times its input/.test(prompt);
+    const minus = /x-\d+/.test(strip(prompt));
     const k = Number(
-      /(\d+) times|x\+(\d+)/.exec(strip(prompt))!.slice(1).find(Boolean),
+      /(\d+) times|x[+-](\d+)/.exec(strip(prompt))!.slice(1).find(Boolean),
     );
     const parse = (label: string) => {
-      const m = /x&([\d&]+)\\\\\\hline y&([\d&]+)/.exec(label)!;
+      const m = /x&([\d&]+)\\\\\\hline y&([-\d&]+)/.exec(label)!;
       return [
         m[1]!.split("&").map(Number),
         m[2]!.split("&").map(Number),
@@ -650,7 +667,9 @@ test("plots, tables, equations and probability match independent derivations", (
     };
     const fits = (label: string) => {
       const [xs, ys] = parse(label);
-      return xs.every((x, i) => ys[i] === (mul ? k * x : x + k));
+      return xs.every(
+        (x, i) => ys[i] === (mul ? k * x : minus ? x - k : x + k),
+      );
     };
     assert.ok(fits(correctLabel(c)));
     for (const o of choices(c))

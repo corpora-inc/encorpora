@@ -1,5 +1,11 @@
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import {
+  exactDecimal,
+  sweepChoose,
+  sweepVariant,
+  type SweepAxes,
+} from "./number-domain-axes";
 
 export const circleMeasurementTemplates: readonly TemplateMetadata[] = [
   [
@@ -66,9 +72,12 @@ const angles = [
   30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330,
 ];
 
+/** `piAxes` selects the pi form of the area family. Printed worksheets omit
+ * it and keep the original exact-coefficient problems. */
 export function circleMeasurementPrintCase(
   id: string,
   seed: string,
+  piAxes?: SweepAxes<"circle-area-coefficient">,
 ): {
   problem: GeneratedProblem;
   tags: string[];
@@ -82,6 +91,44 @@ export function circleMeasurementPrintCase(
   const r = random(id, seed),
     given = q(r(1, 24), r(1, 2)),
     isRadius = r(0, 1) === 0;
+  if (piAxes?.["pi-form"] === "pi-3-14") {
+    // A numeric area with pi taken as 3.14. A whole radius keeps the area to
+    // two decimal places.
+    const whole = r(2, 15);
+    const shown = isRadius ? whole : 2 * whole;
+    const dimension = isRadius ? "radius" : "diameter";
+    const area = exactDecimal(314 * whole * whole, 100);
+    return {
+      tags: [dimension, "approximate"],
+      caseKey: JSON.stringify([whole, "pi-3-14"]),
+      angle: null,
+      problem: {
+        public: {
+          id: createHash("sha256")
+            .update(JSON.stringify([id, 1, seed]))
+            .digest("hex"),
+          templateId: id,
+          templateVersion: 1,
+          seed,
+          skillId: metadata.skillId,
+          prompt: `A circle has a ${dimension} of ${shown} cm. Use 3.14 for $\\pi$. What is its area, in square centimeters?`,
+          response: { kind: "number", label: "Area in square centimeters" },
+        },
+        answer: area,
+        hint: isRadius
+          ? `The area is $A = \\pi r^2$, and the radius is ${shown} cm. Square the radius, then multiply by 3.14.`
+          : `The area is $A = \\pi r^2$, and $r$ is half the diameter. Halve ${shown} cm first, square it, then multiply by 3.14.`,
+        explanation: [
+          isRadius
+            ? `The given length is the radius: $r = ${whole}$ cm.`
+            : `A diameter is twice the radius. Divide by 2: $r = ${shown} \\div 2 = ${whole}$ cm.`,
+          `Square the radius: $${whole} \\times ${whole} = ${whole * whole}$.`,
+          `Replace $\\pi$ with 3.14: $A \\approx 3.14 \\times ${whole * whole} = ${area}$ square centimeters.`,
+        ],
+        variant: sweepVariant("pi-3-14", piAxes),
+      },
+    };
+  }
   const radius = isRadius ? given : divide(given, q(2)),
     diameter = multiply(radius, q(2));
   const isArc = id === "arc-length-coefficient",
@@ -172,6 +219,7 @@ export function circleMeasurementPrintCase(
       answer: plain(coefficient),
       hint,
       explanation,
+      ...(piAxes ? { variant: sweepVariant("multiple-of-pi", piAxes) } : {}),
     },
   };
 }
@@ -180,5 +228,11 @@ export function generateCircleMeasurementProblem(
   id: string,
   seed: string,
 ): GeneratedProblem {
-  return circleMeasurementPrintCase(id, seed).problem;
+  return circleMeasurementPrintCase(
+    id,
+    seed,
+    id === "circle-area-coefficient"
+      ? sweepChoose("circle-area-coefficient", seed)
+      : undefined,
+  ).problem;
 }

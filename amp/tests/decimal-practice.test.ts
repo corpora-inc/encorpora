@@ -104,12 +104,25 @@ test("rounding, digit value and operations agree with exact integer arithmetic",
     assert.equal(product.answer, decimal(raw, px + py));
 
     const quotient = generateProblem("multidigit-decimal-quotient", `dec-${i}`);
-    const [, dividend, divisor] = /^What is ([\d.]+) ÷ ([\d.]+)\?$/.exec(
+    // Positive quotients are written plainly; the sign axis adds one negative
+    // operand (or two), typeset with a leading minus.
+    const plainForm = /^What is ([\d.]+) ÷ ([\d.]+)\?$/.exec(
       quotient.public.prompt,
+    );
+    const signedForm =
+      /^What is \$(-?)([\d.]+) \\div (?:\\left\(-([\d.]+)\\right\)|([\d.]+))\$\?$/.exec(
+        quotient.public.prompt,
+      );
+    const dividend = (plainForm ? plainForm[1] : signedForm![2])!;
+    const divisor = (
+      plainForm ? plainForm[2] : (signedForm![3] ?? signedForm![4])
     )!;
+    const negatives =
+      (signedForm?.[1] ? 1 : 0) + (signedForm?.[3] !== undefined ? 1 : 0);
+    assert.equal(quotient.answer.startsWith("-"), negatives === 1);
     assert.equal(
-      exact(quotient.answer) * exact(divisor!),
-      exact(dividend!) * 1000000n,
+      exact(quotient.answer.replace("-", "")) * exact(divisor),
+      exact(dividend) * 1000000n,
       quotient.public.prompt,
     );
 

@@ -8,6 +8,14 @@ import type {
   TemplateMetadata,
 } from "./contracts";
 import { applyMotion } from "./plane-motion";
+import {
+  exactDecimal,
+  isPerfectSquare,
+  roundedRoot,
+  sweepChoose,
+  sweepVariant,
+  type SweepAxes,
+} from "./number-domain-axes";
 
 type Random = (low: number, high: number) => number;
 type Point = { x: number; y: number };
@@ -20,6 +28,8 @@ type Case = {
   figure?: SemanticFigure;
   options?: string[];
   feedback?: Record<string, string>;
+  /** Overrides the template's response label. */
+  label?: string;
 };
 
 const geometry = {
@@ -479,17 +489,86 @@ function distanceCase(r: Random): Case {
     ],
   };
 }
-function exactDistanceCase(r: Random): Case {
+function exactDistanceCase(r: Random, axes?: Record<string, string>): Case {
+  const form = axes?.["answer-form"] ?? "exact";
   let dx: number, dy: number;
   do {
     dx = r(1, 9);
     dy = r(1, 9);
-  } while ((dx === dy && r(0, 2) > 0) || dx + dy < 3);
+  } while (
+    (dx === dy && r(0, 2) > 0) ||
+    dx + dy < 3 ||
+    (form !== "exact" && isPerfectSquare(dx * dx + dy * dy))
+  );
   const [a, b] = placeSegment(r, dx, dy, 8) as [Point, Point];
   const c2 = dx * dx + dy * dy,
     root = simplestRoot(c2),
     correct = rootLabel(root);
   const l = legs(a, b);
+  if (form !== "exact") {
+    // The same distance as a decimal rounded to a stated place. The wrong
+    // choices are the misconceptions of the exact form plus a wrong place.
+    const places = form === "nearest-tenth" ? 1 : 2;
+    const rounded = roundedRoot(c2, places, "$AB$");
+    const wrongPlace = roundedRoot(c2, (places - 1) as 0 | 1, "$AB$");
+    const unit = 10 ** places;
+    const step = (sign: 1 | -1) =>
+      exactDecimal(Math.round(Number(rounded.answer) * unit) + sign, unit);
+    const candidates: [string, string][] = [
+      [
+        wrongPlace.answer,
+        `That rounds to the nearest ${wrongPlace.unitWord}. The question asks for the nearest ${rounded.unitWord}.`,
+      ],
+      [
+        String(dx + dy),
+        `${dx} + ${dy} is the length of a path along the grid lines. The straight distance is the hypotenuse: its square is ${dx}² + ${dy}² = ${c2}.`,
+      ],
+      [
+        String(c2),
+        `${c2} is the distance squared. Take its square root to find the distance.`,
+      ],
+      [
+        step(1),
+        `That is one ${rounded.unitWord} too large. Check the digit after the place you round to.`,
+      ],
+      [
+        step(-1),
+        `That is one ${rounded.unitWord} too small. Check the digit after the place you round to.`,
+      ],
+    ];
+    const distractors: [string, string][] = [];
+    for (const candidate of candidates)
+      if (
+        candidate[0] !== rounded.answer &&
+        !distractors.some((d) => d[0] === candidate[0]) &&
+        distractors.length < 3
+      )
+        distractors.push(candidate);
+    return {
+      prompt: `Point $A$ is at ${pt(a)} and point $B$ is at ${pt(b)}. What is the distance AB, in units, to the nearest ${rounded.unitWord}?`,
+      answer: rounded.answer,
+      options: [rounded.answer, ...distractors.map((d) => d[0])],
+      feedback: Object.fromEntries(distractors),
+      label: "Distance (units)",
+      explanation: [
+        `Draw a right triangle with $AB$ as its hypotenuse and legs along the grid. ${l.text}`,
+        `By the Pythagorean theorem, $AB^2 = ${dx}^2 + ${dy}^2 = ${dx * dx} + ${dy * dy} = ${c2}$, so $AB$ = $\\sqrt{${c2}}$.`,
+        ...rounded.steps,
+        `The distance is about ${rounded.answer} units.`,
+      ],
+      tags: [form, "crosses-axis"],
+      figure: coordinateFigure([
+        {
+          role: "given",
+          closed: false,
+          vertices: [
+            { ...a, label: "A" },
+            { ...b, label: "B" },
+          ],
+        },
+      ]),
+    };
+  }
   // Misconceptions in priority order; each is an exact value that differs from the answer.
   const signX = Math.abs(Math.abs(a.x) - Math.abs(b.x)),
     signY = Math.abs(Math.abs(a.y) - Math.abs(b.y));
@@ -1228,7 +1307,10 @@ function scaleCase(r: Random): Case {
   };
 }
 
-const builders: Record<string, (r: Random) => Case> = {
+const builders: Record<
+  string,
+  (r: Random, axes?: Record<string, string>) => Case
+> = {
   "coordinate-side-length": sideCase,
   "coordinate-rectangle-measure": rectangleCase,
   "coordinate-distance": distanceCase,
@@ -1253,16 +1335,19 @@ const labels: Record<string, string> = {
   "scale-drawing": "Length or area",
 };
 
+/** `axes` selects the answer form of the exact-distance family. Printed
+ * worksheets omit it and keep the exact distances. */
 export function transformationPrintCase(
   id: string,
   seed: string,
+  axes?: SweepAxes<"coordinate-distance-exact">,
 ): { problem: GeneratedProblem; tags: string[]; caseKey: string } {
   const metadata = transformationTemplates.find((t) => t.id === id);
   if (!metadata) throw new Error(`Unknown transformation template ${id}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(id, seed);
-  const c = builders[id]!(r);
+  const c = builders[id]!(r, axes);
   let response: GeneratedProblem["public"]["response"];
   let answer = c.answer;
   let choiceFeedback: Record<string, string> | undefined;
@@ -1272,7 +1357,7 @@ export function transformationPrintCase(
       label,
     }));
     answer = options.find((o) => o.label === c.answer)!.id;
-    response = { kind: "choice", label: labels[id]!, options };
+    response = { kind: "choice", label: c.label ?? labels[id]!, options };
     choiceFeedback = Object.fromEntries(
       options
         .filter((o) => o.id !== answer)
@@ -1303,6 +1388,7 @@ export function transformationPrintCase(
     explanation: c.explanation,
     hint: instanceHint(id, c, !c.options),
     ...(choiceFeedback ? { choiceFeedback } : {}),
+    ...(axes ? { variant: sweepVariant(axes["answer-form"], axes) } : {}),
   };
   // The prompt states every given, so equal prompts are the same case.
   return { problem, tags: c.tags, caseKey: c.prompt };
@@ -1337,4 +1423,11 @@ function instanceHint(id: string, c: Case, numeric: boolean): string {
 export const generateTransformationProblem = (
   id: string,
   seed: string,
-): GeneratedProblem => transformationPrintCase(id, seed).problem;
+): GeneratedProblem =>
+  transformationPrintCase(
+    id,
+    seed,
+    id === "coordinate-distance-exact"
+      ? sweepChoose("coordinate-distance-exact", seed)
+      : undefined,
+  ).problem;
