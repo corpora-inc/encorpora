@@ -57,6 +57,7 @@ export { family as similarSolidChain } from "./similar-solid-chain";
 export { family as similarityProof } from "./similarity-proof";
 export { family as solidProperty } from "./solid-property";
 export { family as solveAndJustify } from "./solve-and-justify";
+export { family as statementBlanks } from "./statement-blanks";
 export { family as stripDiagram } from "./strip-diagram";
 export { family as supplyPrice } from "./supply-price";
 export { family as tableFits } from "./table-fits";
