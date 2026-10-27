@@ -96,7 +96,6 @@ function draw(c: Coins, s: number): Prim[] {
       fill,
       stroke: rim,
       width: 2,
-      data: { coin: k.coin, diameter: d },
     });
     if (reeded[k.coin]) {
       // Ridges: short radial strokes all around the edge.

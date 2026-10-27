@@ -178,11 +178,10 @@ test("circle graph sectors are their exact shares, clockwise from 12 o'clock", (
   angles.forEach((a, i) =>
     assert.ok(Math.abs(a.sweep - (c.sectors[i]!.value / 100) * 360) < 1e-9),
   );
+  // Drawn sectors carry no share or value in their attributes.
   const l = layoutScene(one(c));
-  for (const [i, s] of c.sectors.entries()) {
-    const sector = item(l.items, `g.sector.${i}`);
-    assert.equal(sector.data?.share, s.value / 100);
-  }
+  for (const i of c.sectors.keys())
+    assert.deepEqual(item(l.items, `g.sector.${i}`).data, { sector: i });
 });
 
 test("circle graph labels sit inside their own sector, or the key carries them", () => {
@@ -390,6 +389,12 @@ test("coins are drawn to true relative size, ridged only on dimes and quarters, 
   for (const word of [...coins, "cent", "¢", "value"])
     assert.ok(!said.includes(word), `description names "${word}"`);
   for (const t of texts(l.items)) assert.match(t.plain, /^[A-D]$/);
+  // No coin is named in the drawing's attributes either.
+  assert.ok(
+    l.items.every(
+      (d) => !JSON.stringify(d.data ?? {}).match(/penny|nickel|dime|quarter/),
+    ),
+  );
   // Letters share one baseline.
   const ys = texts(l.items).map((t) => t.y);
   assert.ok(Math.max(...ys) - Math.min(...ys) < 0.01);

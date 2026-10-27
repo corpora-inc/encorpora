@@ -822,9 +822,13 @@ export function generateProblemFor(
   figureCapabilities: readonly string[],
 ): GeneratedProblem {
   const fits = (problem: GeneratedProblem) =>
-    sceneCapabilitiesIn(problem.public).every((needs) =>
-      figureCapabilities.includes(needs),
-    );
+    // The public problem, and what reaches the client beside it: the hint
+    // cue's scene and a lesson's walkthrough.
+    sceneCapabilitiesIn([
+      problem.public,
+      problem.hintCue,
+      problem.walkthrough,
+    ]).every((needs) => figureCapabilities.includes(needs));
   const problem = withClientFigures(figureCapabilities, () =>
     generateProblem(templateId, seed),
   );

@@ -81,6 +81,11 @@ export function problemLesson(
   if (!template) throw new Error(`Unknown problem type ${templateId}`);
   const generateProblem = (id: string, exampleSeed: string) =>
     generateProblemFor(id, exampleSeed, lessonFigures(template));
+  // The learner may see a newer figure surface than the example (which is
+  // drawn for the oldest client); its legacy twin has the example's wording.
+  const twinPrompt = learnerProblem
+    ? generateProblem(templateId, learnerProblem.public.seed).public.prompt
+    : undefined;
   let example = generateProblem(templateId, `${seed}:lesson:0`);
   const repeatsProblem = (p: typeof example) => {
     if (
@@ -105,7 +110,8 @@ export function problemLesson(
       p.public.response.kind === "structured-work"
     )
       return workGivens(p) === workGivens(learnerProblem);
-    if (p.public.prompt !== avoidPrompt) return false;
+    if (p.public.prompt !== avoidPrompt && p.public.prompt !== twinPrompt)
+      return false;
     // Multi-part items share their wording; their givens are the blank
     // labels and the figure. Rows and options are shuffled, so neither order
     // is compared.

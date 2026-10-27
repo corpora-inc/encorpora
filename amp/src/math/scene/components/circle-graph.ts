@@ -157,7 +157,7 @@ function draw(c: CircleGraph, s: number, reveal: boolean): Prim[] {
       fill: sectorFill(i, n),
       stroke: "ink",
       width: 1.5,
-      data: { sector: i, share: +((to - from) / 360).toFixed(6) },
+      data: { sector: i },
     }),
   );
   angles.forEach(({ to }, i) =>
