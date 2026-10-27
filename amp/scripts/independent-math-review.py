@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
+from variation_axes_oracle import self_test as review_variation_axes_fixtures
 from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MULTISELECT, solve as solve_hierarchy_multiselect, review_problem as review_hierarchy_multiselect_problem, self_test as review_hierarchy_multiselect_fixtures
 from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_CHOICE, solve_rational_equation, review_rational_equation_fixtures, review_rational_equation_problem
 from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, review_geometry_proof_fixtures, review_geometry_proof_problem
@@ -761,6 +762,7 @@ def review(stream):
         oracle.self_test()
     review_fraction_expression_fixtures()
     review_hierarchy_multiselect_fixtures()
+    review_variation_axes_fixtures()
     review_radical_equation_fixtures()
     review_rational_equation_fixtures()
     review_geometry_proof_fixtures()
