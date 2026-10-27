@@ -63,14 +63,15 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["inequality.context"],
       demand:
         "Choose the inequality for a one-time fee plus an hourly rate that must stay at or under a budget",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "inequality-from-context",
         "two-step-equation-model",
         "linear-model-value",
+        "fee-budget-inequality",
       ],
       limitations:
-        "inequality-from-context only offers x compared with a constant; two-step-equation-model chooses a fee-plus-rate equation, not an inequality; linear-model-value is numeric and solves rather than selects the model.",
+        "fee-budget-inequality (write-inequality) chooses the inequality for a one-time fee plus a per-unit cost that stays at most within a budget, among four inequalities.",
     },
     {
       section: "Math module 1",
@@ -372,10 +373,14 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Recover the extra-hour rate from a flat charge for the first hours and one total, then choose the slope-intercept rule",
-      status: "partial",
-      templateIds: ["linear-model-equation", "piecewise-evaluate"],
+      status: "covered",
+      templateIds: [
+        "linear-model-equation",
+        "piecewise-evaluate",
+        "fee-rule-choice",
+      ],
       limitations:
-        "linear-model-equation starts from a stated rate and start; piecewise-evaluate only evaluates a given 'base for the first units plus a rate for extra units' rule; none recovers the rate and rewrites it.",
+        "fee-rule-choice (recovered-rate) finds the rate for hours beyond a flat-fee allowance from one total and offers the rule in expanded slope-intercept form among four equations.",
     },
     {
       section: "Math module 1",

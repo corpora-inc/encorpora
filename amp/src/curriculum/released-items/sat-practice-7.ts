@@ -620,10 +620,10 @@ export const satPractice7 = defineLedger(
       archetypeIds: ["quadratic.context"],
       demand:
         "Find the landing time of a dropped object after setting the constant of its height model from the initial height",
-      status: "partial",
-      templateIds: ["sat-entry-quadratic-context"],
+      status: "covered",
+      templateIds: ["sat-entry-quadratic-context", "quadratic-model-chain"],
       limitations:
-        "Template gives the full height model; item first sets the constant from the drop height, then solves a pure-square equation.",
+        "quadratic-model-chain (drop-landing) sets the constant of a falling-object model from the drop height and solves for an integer landing time; choices are plain numbers, so numeric entry fits.",
     },
     {
       section: "Math module 2",

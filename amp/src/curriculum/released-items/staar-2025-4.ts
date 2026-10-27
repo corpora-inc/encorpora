@@ -40,10 +40,14 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["money.change", "money.count-coins"],
       demand:
         "Count mixed bills and coins in a wallet and subtract a purchase price to find money left",
-      status: "partial",
-      templateIds: ["decimal-money-change", "coin-total"],
+      status: "covered",
+      templateIds: [
+        "decimal-money-change",
+        "coin-total",
+        "wallet-purchase-chain",
+      ],
       limitations:
-        "decimal-money-change finds change from stated prices and bills; coin-total counts cents in coins only. Counting a wallet of bills and coins and then subtracting a price in dollars and cents is not practiced.",
+        "wallet-purchase-chain (wallet-then-purchase) counts a wallet of five-dollar bills, one-dollar bills, quarters, dimes and nickels and subtracts a price in dollars and cents; choices are plain amounts, so numeric entry fits.",
     },
     {
       item: {

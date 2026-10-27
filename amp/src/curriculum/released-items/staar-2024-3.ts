@@ -334,10 +334,14 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["expression.multistep-equations"],
       demand:
         "Choose the equation that finds flowers in three vases when seventy-two flowers go equally in eight vases",
-      status: "partial",
-      templateIds: ["staar-story-model-choice", "two-step-equation-model"],
+      status: "covered",
+      templateIds: [
+        "staar-story-model-choice",
+        "two-step-equation-model",
+        "linked-division-equations",
+      ],
       limitations:
-        "staar-story-model-choice and two-step-equation-model choose one equation for a story; neither writes a division followed by a multiplication as linked steps.",
+        "linked-division-equations (share-then-multiply) chooses the equation, or linked pair, for a total shared equally and then multiplied for several holders.",
     },
     {
       item: { number: "27", page: "rationale PDF p.30" },
