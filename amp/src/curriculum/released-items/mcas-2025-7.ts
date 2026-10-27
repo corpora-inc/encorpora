@@ -265,10 +265,10 @@ export const mcasGrade7 = defineLedger(
       archetypeIds: ["measure.scale"],
       demand:
         "Use a scale to find the length and area of a floor and a new scale from a second drawing, showing the work",
-      status: "partial",
-      templateIds: ["scale-drawing"],
+      status: "covered",
+      templateIds: ["scale-drawing", "scale-drawing-work"],
       limitations:
-        "Constructed response in four parts. scale-drawing finds an actual length or area from a scale by entry; finding an unknown scale and a drawn width, with explanations, are not practiced.",
+        'scale-drawing-work (structured-work-v1) enters the four parts as labeled exact steps: the actual length from a drawing in centimeters at a scale in feet per centimeter, the actual area of the rectangle, the scale of a second drawing from its length (feet per inch) and that drawing\'s width in inches, and a second system in meters and centimeters. The "show or explain" parts are credited by these calculations; a written explanation in words is not scored. The scale of the new drawing is the single value from the drawn length, where the item accepts any consistent scale.',
     },
     {
       section: "Session 2",

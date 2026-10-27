@@ -73,6 +73,6 @@ export const polynomialProductFacetMappings: FacetMapping[] = [
     facetId: "polynomial-arithmetic.core",
     extent: "partial",
     rationale:
-      "Written work: the first, outer, inner and last products, or a binomial times each term of a trinomial, typed as expressions graded by exact symbolic equivalence, then the combined coefficients and the product in standard form. Binomials with leading coefficients up to 3, a squared binomial and a binomial times a trinomial. Does not assess factors of degree above 2, several variables, or enforcing that the final line is fully expanded.",
+      "Written work: the first, outer, inner and last products, or a binomial times each term of a trinomial, typed as expressions graded by exact symbolic equivalence, then the coefficients of the product from the highest power down, which makes standard form exact and rejects an unexpanded product. Binomials with leading coefficients up to 3, a squared binomial and a binomial times a trinomial. Does not assess factors of degree above 2, several variables, or typing the whole product as one line",
   },
 ];

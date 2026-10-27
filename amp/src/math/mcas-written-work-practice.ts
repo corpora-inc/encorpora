@@ -415,24 +415,26 @@ const sciNotation = chainFamily({
     );
     const totalValue = m.count * m.second.m;
     const total = normalize(totalValue, m.second.e);
-    const sciField = (value: string, caption: string) => ({
+    // The unit after the coefficient reads "3 × 10^ 5" across the two fields.
+    const sciField = (value: string, caption: string, unit?: string) => ({
       caption,
       kind: "number" as const,
       value,
       maxLength: 8,
+      ...(unit ? { unit } : {}),
     });
     const rows: RowSpec[] = [
       {
         label: `${cap(c.qty)} of the ${c.bigName} in scientific notation, $a\\times10^{n}$ ${c.unit}`,
         fields: [
-          sciField(big.c, "Coefficient a"),
+          sciField(big.c, "Coefficient a", "× 10^"),
           sciField(`${big.n}`, "Power n"),
         ],
       },
       {
         label: `${cap(c.qty)} of the ${c.smallName} in scientific notation, $a\\times10^{n}$ ${c.unit}`,
         fields: [
-          sciField(small.c, "Coefficient a"),
+          sciField(small.c, "Coefficient a", "× 10^"),
           sciField(`${small.n}`, "Power n"),
         ],
       },
@@ -443,7 +445,7 @@ const sciNotation = chainFamily({
       {
         label: `Total ${c.qty} of the ${c.many} in scientific notation, $a\\times10^{n}$ ${c.unit}`,
         fields: [
-          sciField(total.c, "Coefficient a"),
+          sciField(total.c, "Coefficient a", "× 10^"),
           sciField(`${total.n}`, "Power n"),
         ],
       },

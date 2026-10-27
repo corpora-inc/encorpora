@@ -486,10 +486,10 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["expression.polynomial"],
       demand:
         "Multiply a binomial and a trinomial and write the product in standard form",
-      status: "partial",
-      templateIds: ["polynomial-multiplication"],
+      status: "covered",
+      templateIds: ["polynomial-multiplication", "polynomial-product-steps"],
       limitations:
-        "The family multiplies a monomial and a binomial or two binomials and takes a choice. Entering a written cubic polynomial has no protocol.",
+        "polynomial-product-steps (structured-work-v1), binomial times trinomial form: the learner types the binomial's first term and then its second term times the whole trinomial, then enters the four coefficients of the cubic product from the highest power down, so standard form is graded exactly. The two partial products are the algebraic work the rating guide credits.",
     },
     {
       section: "Part II",
@@ -518,10 +518,10 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Write a line in slope-intercept form from a fractional slope and a point",
-      status: "partial",
-      templateIds: ["linear-model-equation"],
+      status: "covered",
+      templateIds: ["linear-model-equation", "line-from-point-steps"],
       limitations:
-        "The family chooses an equation for a context or graph. Entering the written equation y = mx + b with a fractional slope has no protocol.",
+        "line-from-point-steps (structured-work-v1), slope-and-point form: a fractional slope and an integer point, entering the slope times x, the y-intercept (the step the rating guide credits on its own) and the typed equation, graded as the same relation so y must stand alone, which is the slope-intercept form the rating guide requires.",
     },
     {
       section: "Part II",

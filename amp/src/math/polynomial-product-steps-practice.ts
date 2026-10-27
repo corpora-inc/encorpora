@@ -7,8 +7,9 @@ import { defineAxis } from "./variation/axes";
 /**
  * Multiply polynomials with the written work a rating guide credits: each
  * partial product is its own typed step, then the like terms are combined
- * and the product is typed in standard form. Every step is graded by exact
- * symbolic equivalence on the server.
+ * and the product is entered as its coefficients from the highest power down,
+ * which is standard form and cannot be an unexpanded product. Every step is
+ * graded exactly on the server.
  */
 
 const capability = "structured-work-v1" as const;
@@ -22,7 +23,7 @@ export const polynomialProductTemplates: readonly TemplateMetadata[] = [
     difficultyOffset: 0.3,
     requiredResponseCapability: capability,
     description:
-      "Multiply two binomials, square a binomial or multiply a binomial and a trinomial, typing each partial product, the combined coefficients and the product in standard form.",
+      "Multiply two binomials, square a binomial or multiply a binomial and a trinomial, typing each partial product and entering the coefficients of the product from the highest power down.",
   },
 ];
 
@@ -68,6 +69,14 @@ const nonzero = (
   return v === 0 ? hi : v;
 };
 
+const coef = (value: string, unit?: string) =>
+  ({
+    caption: "Coefficient",
+    kind: "number" as const,
+    value,
+    ...(unit ? { unit } : {}),
+  }) as const;
+
 const family = chainFamily({
   template: polynomialProductTemplates[0]!,
   axes: {
@@ -100,7 +109,6 @@ const family = chainFamily({
   },
   render: (m, axes, r) => {
     const product = mul(m.f, m.g);
-    const standard = text(product);
     const [a, b] = m.f as [number, number];
     let rows: RowSpec[];
     let route: string[];
@@ -135,36 +143,19 @@ const family = chainFamily({
           ],
         },
         {
-          label: "Coefficient of $x^2$ in the product",
-          fields: [
-            { caption: "Number", kind: "number", value: `${product[1]}` },
-          ],
+          label: "Coefficients of $x^3$ and $x^2$ in the product",
+          fields: [coef(`${product[0]}`, "x³"), coef(`${product[1]}`, "x²")],
         },
         {
-          label: "Coefficient of $x$ in the product",
-          fields: [
-            { caption: "Number", kind: "number", value: `${product[2]}` },
-          ],
-        },
-        {
-          label: "The product in standard form",
-          fields: [
-            {
-              caption: "Expression",
-              kind: "expression",
-              value: standard,
-              variables: ["x"],
-              powers: true,
-              maxLength: 24,
-            },
-          ],
+          label: "Coefficient of $x$ and the constant term of the product",
+          fields: [coef(`${product[2]}`, "x"), coef(`${product[3]}`)],
         },
       ];
       route = [
         `$${m.f[0] === 1 ? "" : m.f[0]}x\\cdot(${tex(m.g)})=${tex(scale(m.g, a).concat(0))}$.`,
         `$${b}\\cdot(${tex(m.g)})=${tex(scale(m.g, b))}$.`,
         `Add the $x^2$ terms: $${sum(m.g[1]! * a, m.g[0]! * b)}=${product[1]}$. Add the $x$ terms: $${sum(m.g[2]! * a, m.g[1]! * b)}=${product[2]}$.`,
-        `Standard form: $${tex(product)}$.`,
+        `In standard form the product is $${tex(product)}$, so the coefficients from the highest power down are $${product.join(", ")}$.`,
       ];
     } else {
       const [c, d] = m.g as [number, number];
@@ -213,27 +204,18 @@ const family = chainFamily({
           ],
         },
         {
-          label: "Product of the last terms",
-          fields: [{ caption: "Number", kind: "number", value: `${last}` }],
+          label: "Coefficients of $x^2$ and $x$ in the product",
+          fields: [coef(`${product[0]}`, "x²"), coef(`${product[1]}`, "x")],
         },
         {
-          label: "The product in standard form",
-          fields: [
-            {
-              caption: "Expression",
-              kind: "expression",
-              value: standard,
-              variables: ["x"],
-              powers: true,
-              maxLength: 24,
-            },
-          ],
+          label: "Constant term of the product",
+          fields: [coef(`${product[2]}`)],
         },
       ];
       route = [
-        `First $\\times$ first: $${tex([first, 0, 0])}$. Outer: $${tex([outer, 0])}$. Inner: $${tex([inner, 0])}$. Last $\\times$ last: $${last}$.`,
+        `First $\\times$ first: $${tex([first, 0, 0])}$. Outer: $${tex([outer, 0])}$. Inner: $${tex([inner, 0])}$. Last $\\times$ last: $${last}$, the constant term.`,
         `Add the $x$ terms: $${outer}x${inner < 0 ? "" : "+"}${inner}x=${outer + inner}x$.`,
-        `Standard form: $${tex(product)}$.`,
+        `In standard form the product is $${tex(product)}$, so the coefficients from the highest power down are $${product.join(", ")}$.`,
       ];
     }
     const built = rowsWork(rows, axes.mode, r, "Your work");
@@ -248,7 +230,7 @@ const family = chainFamily({
     const terms = m.g.length;
     const sign = b < 0 ? ` Keep the negative sign with $${b}$.` : "";
     return workSurface(built, {
-      prompt: `Multiply ${factors} and write the product in standard form, highest power first. ${task}`,
+      prompt: `Multiply ${factors} and write the product in standard form. After the partial products, enter the coefficients of the product from the highest power down. ${task}`,
       hint:
         m.shape === "binomial-trinomial"
           ? `Each of the 2 terms of $${tex(m.f)}$ multiplies each of the 3 terms of $${tex(m.g)}$, giving 6 products. Multiply one term of the first factor by the whole second factor, then the other.${sign}`

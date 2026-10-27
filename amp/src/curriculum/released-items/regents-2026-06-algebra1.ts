@@ -445,10 +445,10 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["expression.polynomial"],
       demand:
         "Multiply two binomials and write the product as a polynomial in standard form",
-      status: "partial",
-      templateIds: ["polynomial-multiplication"],
+      status: "covered",
+      templateIds: ["polynomial-multiplication", "polynomial-product-steps"],
       limitations:
-        "Multiplication is practiced by choosing among expansions; typing a polynomial is not supported. The rating guide credits shown work, which AMP does not score.",
+        "polynomial-product-steps (structured-work-v1), binomials and squared-binomial forms: the learner types the first, outer and inner products, then enters the coefficients of the product from the highest power down, so standard form is graded exactly and an unexpanded product earns no credit. The partial products are the shown work the rating guide credits.",
     },
     {
       section: "Part II",
