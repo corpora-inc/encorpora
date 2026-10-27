@@ -542,7 +542,7 @@ export const regentsAlgebra1January2026 = defineLedger(
         "budget-items-steps",
       ],
       limitations:
-        "budget-items-steps (structured-work-v1) enters the inequality for a fixed amount plus a price per item (graded as the same relation with the fixed amount first, so an equivalent rearranged inequality is not accepted), the money left and the greatest whole number as steps, the algebraic work the rating guide credits. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
+        "budget-items-steps (structured-work-v1) enters the inequality for a fixed amount plus a price per item (graded as the same relation with its terms or sides in either order, so an inequality already reduced to the price times n alone is not accepted as this step), the money left and the greatest whole number as steps, the algebraic work the rating guide credits. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
     },
     {
       section: "Part III",

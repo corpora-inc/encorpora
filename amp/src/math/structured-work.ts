@@ -461,7 +461,14 @@ export type FieldRule =
   | { kind: "number"; value: string; fraction?: boolean }
   /** `identity`: the same expression. `sides`: the same relation, side by
    * side (either side first, with the sign read from that side). */
-  | { kind: "expression"; value: string; match: "identity" | "sides" }
+  | {
+      kind: "expression";
+      value: string;
+      match: "identity" | "sides";
+      /** The entry must be a sum of single terms (no parentheses or
+       * products), so an unexpanded product is not credited as a step. */
+      expanded?: boolean;
+    }
   | { kind: "choice"; accept: string[] };
 /** How a reason transforms one line into the next. */
 export type Move =
@@ -590,6 +597,27 @@ function markFields(
 const lowerFirst = (s: string) =>
   /^[A-Z][a-z]/.test(s) ? s.charAt(0).toLowerCase() + s.slice(1) : s;
 
+const SUPERSCRIPT_DIGITS = "⁰¹²³⁴⁵⁶⁷⁸⁹";
+/** A sum of single terms, each a number, a letter with a power or both, with
+ * every power used once: standard form with nothing left to multiply out. */
+export function isExpandedSum(value: string): boolean {
+  const s = value
+    .replace(/\s+/g, "")
+    .replace(
+      /[⁰¹²³⁴⁵⁶⁷⁸⁹]+/g,
+      (m) => `^${[...m].map((c) => SUPERSCRIPT_DIGITS.indexOf(c)).join("")}`,
+    );
+  const terms = s.split(/(?=[+\-−])/);
+  const powers = new Set<string>();
+  for (const t of terms) {
+    const m = /^[+\-−]?(\d+(?:\.\d+)?)?(?:([a-z])(?:\^(\d+))?)?$/.exec(t);
+    if (!m || (m[1] === undefined && m[2] === undefined)) return false;
+    const key = m[2] ? `${m[2]}${m[3] ?? "1"}` : "1";
+    if (powers.has(key)) return false;
+    powers.add(key);
+  }
+  return true;
+}
 /** One field against its rule. */
 export function fieldMatches(
   f: WorkField,
@@ -605,6 +633,7 @@ export function fieldMatches(
     return f.kind === "number" && !!a && !!b && qEq(a, b);
   }
   if (f.kind !== "expression") return false;
+  if (rule.expanded && !isExpandedSum(value)) return false;
   const options = fieldParseOptions(f);
   const got = parseLine(value, options),
     want = parseLine(rule.value, options);
@@ -1255,6 +1284,7 @@ const ruleSchema = z.union([
         .min(1)
         .max(MAX_EXPRESSION_LENGTH * 2),
       match: z.enum(["identity", "sides"]),
+      expanded: z.boolean().optional(),
     })
     .strict(),
   z

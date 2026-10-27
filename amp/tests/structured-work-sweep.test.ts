@@ -146,3 +146,44 @@ test("similarity proofs: any valid order and a false statement fail", () => {
   }
   assert.equal(order, 5);
 });
+
+test("polynomial products: an unexpanded product is not a step", () => {
+  let checked = 0;
+  for (let i = 0; i < SEEDS && checked < 20; i++) {
+    const p = generateProblem("polynomial-product-steps", `sweep-expand-${i}`);
+    const response = p.public.response as StructuredWorkResponse;
+    const rows = JSON.parse(p.answer) as string[][];
+    const r = rows.findIndex(
+      (row, k) =>
+        row[0] !== "" &&
+        response.rows[k]!.fields[0]!.kind === "expression" &&
+        /[+-]/.test(row[0]!.slice(1)),
+    );
+    if (r < 0) continue;
+    for (const form of [
+      `(${rows[r]![0]})`,
+      `1*(${rows[r]![0]})`,
+      `x*(${rows[r]![0]})/x`,
+    ]) {
+      const wrong = rows.map((row) => [...row]);
+      wrong[r]![0] = form;
+      assert.equal(
+        gradeStructuredWork(response, p.workGrading!, JSON.stringify(wrong)),
+        false,
+        `${form} is not an expanded step`,
+      );
+    }
+    const reversed = rows.map((row) => [...row]);
+    reversed[r]![0] = rows[r]![0]!.split(/(?=[+-])/)
+      .reverse()
+      .map((t) => (/^[+-]/.test(t) ? t : `+${t}`))
+      .join("")
+      .replace(/^\+/, "");
+    assert.ok(
+      gradeStructuredWork(response, p.workGrading!, JSON.stringify(reversed)),
+      `${reversed[r]![0]} reordered is accepted`,
+    );
+    checked++;
+  }
+  assert.ok(checked >= 5);
+});

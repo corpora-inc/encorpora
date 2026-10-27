@@ -31,6 +31,8 @@ export interface RowField {
   variables?: string[];
   powers?: boolean;
   relations?: boolean;
+  /** Expression: a sum of single terms; an unexpanded product earns nothing. */
+  expanded?: boolean;
   /** The relation is an inequality (keypad display only). */
   inequality?: boolean;
   maxLength?: number;
@@ -66,7 +68,12 @@ const ruleOf = (f: RowField): FieldRule =>
         value: f.value,
         ...(f.fraction ? { fraction: true } : {}),
       }
-    : { kind: "expression", value: f.value, match: f.match ?? "identity" };
+    : {
+        kind: "expression",
+        value: f.value,
+        match: f.match ?? "identity",
+        ...(f.expanded ? { expanded: true } : {}),
+      };
 
 /** Build the response, private rule and answer key of labeled rows. In
  * fill mode one or two early rows are given whole and the last rows are

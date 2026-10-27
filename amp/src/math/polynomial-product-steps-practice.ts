@@ -122,6 +122,7 @@ const family = chainFamily({
             {
               caption: "Expression",
               kind: "expression",
+              expanded: true,
               value: top,
               variables: ["x"],
               powers: true,
@@ -135,6 +136,7 @@ const family = chainFamily({
             {
               caption: "Expression",
               kind: "expression",
+              expanded: true,
               value: bottom,
               variables: ["x"],
               powers: true,
@@ -170,6 +172,7 @@ const family = chainFamily({
             {
               caption: "Expression",
               kind: "expression",
+              expanded: true,
               value: text([first, 0, 0]),
               variables: ["x"],
               powers: true,
@@ -183,6 +186,7 @@ const family = chainFamily({
             {
               caption: "Expression",
               kind: "expression",
+              expanded: true,
               value: text([outer, 0]),
               variables: ["x"],
               powers: true,
@@ -196,6 +200,7 @@ const family = chainFamily({
             {
               caption: "Expression",
               kind: "expression",
+              expanded: true,
               value: text([inner, 0]),
               variables: ["x"],
               powers: true,
