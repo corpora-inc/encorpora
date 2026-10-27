@@ -78,10 +78,15 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["number.round-whole"],
       demand:
         "Drag the roundings of one four-digit number to the thousand, hundred and ten into a table",
-      status: "partial",
-      templateIds: ["round-to-ten", "round-to-hundred", "round-large"],
+      status: "covered",
+      templateIds: [
+        "round-place-blanks",
+        "round-to-ten",
+        "round-to-hundred",
+        "round-large",
+      ],
       limitations:
-        "Each template rounds one number to one place by entry; placing all three roundings from a bank of drag tiles has no protocol beyond a multi-part choice.",
+        "round-place-blanks rounds one four-digit number to the thousand, hundred and ten, as slots or a three-gap sentence. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "5", page: "PDF p.9" },
@@ -137,10 +142,14 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["place.compare-whole"],
       demand:
         "Drag a comparison symbol into each of two sentences comparing whole numbers",
-      status: "partial",
-      templateIds: ["compare-multidigit", "three-digit-symbol"],
+      status: "covered",
+      templateIds: [
+        "compare-symbol-blanks",
+        "compare-multidigit",
+        "three-digit-symbol",
+      ],
       limitations:
-        "compare-multidigit chooses the greater number and three-digit-symbol chooses a true statement for three-digit numbers; placing a symbol by drag in two sentences, one with an equal pair and one with four digits, has no protocol beyond a multi-part choice.",
+        "compare-symbol-blanks chooses less than, equal to or greater than for two comparisons, one of them an equal pair written in expanded form. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "10", page: "PDF p.14" },

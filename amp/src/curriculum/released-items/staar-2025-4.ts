@@ -442,13 +442,14 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["measure.area"],
       demand:
         "Find a rectangle's length from its area and width, then its perimeter, and place both values",
-      status: "partial",
+      status: "covered",
       templateIds: [
+        "rectangle-chain-blanks",
         "rectangle-missing-area-side",
         "rectangle-missing-border-side",
       ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. Both steps are practiced separately; the chain and dragging values into place are not.",
+        "rectangle-chain-blanks chooses a rectangle's length from its area and width, then its perimeter. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -474,10 +475,10 @@ export const staarGrade4 = defineLedger(
       standards: ["TEKS.4.4.10.A"],
       archetypeIds: ["finance.fixed-variable-expense"],
       demand: "Decide which listed expenses vary month to month",
-      status: "partial",
-      templateIds: ["staar-money-vocabulary"],
+      status: "covered",
+      templateIds: ["fixed-variable-expense-table", "staar-money-vocabulary"],
       limitations:
-        "STAAR interaction: inline choice, 1 point. staar-money-vocabulary tells the variable or fixed expense from three months of amounts by single choice; the item's inline-choice response has no protocol.",
+        "fixed-variable-expense-table marks four expenses as varying or staying the same, from three months of amounts or the kind of expense. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -504,10 +505,14 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["number.decimal-fraction-equivalent"],
       demand:
         "Write a decimal with a whole part as a mixed number with a denominator of ten or one hundred",
-      status: "partial",
-      templateIds: ["tenths-as-hundredths", "decimal-grid-read"],
+      status: "covered",
+      templateIds: [
+        "decimal-mixed-number-blanks",
+        "tenths-as-hundredths",
+        "decimal-grid-read",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 1 point. Related families rename tenths as hundredths or read grids; mixed-number form of a decimal and dragging parts into the form are not practiced.",
+        "decimal-mixed-number-blanks writes a decimal with tenths or hundredths as a mixed number: whole part, numerator and denominator. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -533,10 +538,14 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["measure.mixed-units"],
       demand:
         "Add three distances in meters and write the total in kilometers and meters",
-      status: "partial",
-      templateIds: ["mixed-length-total", "metric-length-reverse"],
+      status: "covered",
+      templateIds: [
+        "meters-to-kilometers-blanks",
+        "mixed-length-total",
+        "metric-length-reverse",
+      ],
       limitations:
-        "STAAR interaction: inline choice, 1 point. Related families add meters and centimeters or rename metric units; regrouping a long sum of meters into kilometers and meters and dropdown blanks are not practiced.",
+        "meters-to-kilometers-blanks adds three distances in meters and chooses the whole kilometers and the meters left. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
   ],
 );

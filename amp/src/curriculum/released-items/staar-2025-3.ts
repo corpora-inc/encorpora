@@ -177,10 +177,10 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["place.compare-whole"],
       demand:
         "Order the capacities of three five-digit stadiums by comparing place values from the left",
-      status: "partial",
-      templateIds: ["compare-multidigit"],
+      status: "covered",
+      templateIds: ["order-whole-numbers-slots", "compare-multidigit"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. compare-multidigit picks the greater or lesser of two numbers up to 999,999; completing a two-blank comparison sentence across three values is not practiced.",
+        "order-whole-numbers-slots orders three five-digit numbers by their first different place, in either direction, one position per slot. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -457,10 +457,10 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["number.place-value-ratio"],
       demand:
         "Complete a two-blank comparison of an 8 in two places of a six-digit number",
-      status: "partial",
-      templateIds: ["digit-value-ratio"],
+      status: "covered",
+      templateIds: ["digit-value-blanks", "digit-value-ratio"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. digit-value-ratio finds how many times one place is worth another by entry; dropdown blanks have no response protocol.",
+        "digit-value-blanks completes a sentence comparing the value of an 8 in two places of a six-digit number: the place and how many times as great. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -490,10 +490,14 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["number.estimate"],
       demand:
         "Round each addend to the nearest ten and place the rounded values and their sum",
-      status: "partial",
-      templateIds: ["round-to-ten", "estimate-reasonableness"],
+      status: "covered",
+      templateIds: [
+        "round-addends-sum",
+        "round-to-ten",
+        "estimate-reasonableness",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. round-to-ten rounds a single number by entry and estimate-reasonableness chooses an estimate; arranging rounded values by drag and drop has no response protocol.",
+        "round-addends-sum rounds two addends to the nearest ten or hundred and chooses both rounded values and their sum. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {

@@ -59,10 +59,10 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["finance.simple-interest"],
       demand:
         "Find the simple interest earned over five years and the total, completing two dropdown blanks",
-      status: "partial",
-      templateIds: ["percent-applications"],
+      status: "covered",
+      templateIds: ["simple-interest-blanks", "percent-applications"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. percent-applications includes simple interest as a choice question; dropdown blanks and a two-quantity answer have no response protocol.",
+        "simple-interest-blanks chooses the simple interest and the total amount for two to six years. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -206,10 +206,14 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["measure.scale"],
       demand:
         "Complete two sentences about how area and perimeter change under a scale factor",
-      status: "partial",
-      templateIds: ["dilation-scale-factor", "scale-drawing"],
+      status: "covered",
+      templateIds: [
+        "scale-factor-effects-blanks",
+        "dilation-scale-factor",
+        "scale-drawing",
+      ],
       limitations:
-        "STAAR interaction: inline choice, 2 points. Related families find a scale factor or actual lengths; squaring the factor for area and the factor for perimeter through dropdown blanks are not practiced.",
+        "scale-factor-effects-blanks chooses the factors by which a dilation multiplies the perimeter and the area of a rectangle. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -412,10 +416,10 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["measure.volume"],
       demand:
         "Complete the cylinder-volume equation for a pool by dragging a radius and a depth",
-      status: "partial",
-      templateIds: ["cylinder-volume"],
+      status: "covered",
+      templateIds: ["cylinder-volume-slots", "cylinder-volume"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. cylinder-volume finds volume or height by entry; assembling the volume equation from parts by drag and drop has no response protocol.",
+        "cylinder-volume-slots completes V = pi times r times r times h for a pool given by diameter or radius, choosing the radius twice and the height. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -489,10 +493,14 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Find an hourly wage and a uniform cost from a table of pay and hours and place both by drag and drop",
-      status: "partial",
-      templateIds: ["unequal-step-rate", "recover-linear-intercept"],
+      status: "covered",
+      templateIds: [
+        "wage-and-cost-blanks",
+        "unequal-step-rate",
+        "recover-linear-intercept",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. Related families find a rate from unequal steps and the output at zero; a table with a negative initial amount and drag and drop have no response protocol.",
+        "wage-and-cost-blanks chooses the hourly wage and the starting cost from a table of net pay that begins below zero. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -518,10 +526,14 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["transform.rule"],
       demand:
         "Match each transformation in a table to its coordinate rule (a reflection and a rotation) by drag and drop",
-      status: "partial",
-      templateIds: ["transformation-image", "identify-rigid-motion"],
+      status: "covered",
+      templateIds: [
+        "transformation-rule-slots",
+        "transformation-image",
+        "identify-rigid-motion",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. Related families find images or name motions; writing the (x, y) rule of a reflection or rotation and drag and drop are not practiced.",
+        "transformation-rule-slots matches two or three reflections and rotations about the origin to their coordinate rules. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -547,10 +559,10 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["finance.simple-interest"],
       demand:
         "Compare simple interest on two loan offers and say which bank costs less and by how much, with dropdown blanks",
-      status: "partial",
-      templateIds: ["percent-applications"],
+      status: "covered",
+      templateIds: ["loan-offer-compare-blanks", "percent-applications"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. percent-applications includes simple interest; comparing two offers and dropdown blanks are not practiced.",
+        "loan-offer-compare-blanks compares the simple interest of two offers and chooses the cheaper bank and the difference. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {

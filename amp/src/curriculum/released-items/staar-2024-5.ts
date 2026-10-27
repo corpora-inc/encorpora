@@ -125,10 +125,14 @@ export const staar2024Grade5 = defineLedger(
       archetypeIds: ["fractions.divide-context"],
       demand:
         "Drag values to write the equation for sharing one fifth of a cake between two people",
-      status: "partial",
-      templateIds: ["unit-fraction-share", "divide-fractions"],
+      status: "covered",
+      templateIds: [
+        "unit-fraction-division-slots",
+        "unit-fraction-share",
+        "divide-fractions",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. unit-fraction-share divides a unit fraction of a liter by a group and divide-fractions divides by entry; building the equation from a model by drag and drop has no multi-part family.",
+        "unit-fraction-division-slots completes the division of a unit fraction by a whole number, of a whole number by a unit fraction, or the denominator of a shared unit fraction. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "9", page: "rationale PDF p.9" },
@@ -267,9 +271,9 @@ export const staar2024Grade5 = defineLedger(
       demand:
         "Drag terms such as y-axis, x-coordinate and origin to match descriptions on a coordinate plane",
       status: "partial",
-      templateIds: ["first-quadrant-coordinates"],
+      templateIds: ["coordinate-terms-slots", "first-quadrant-coordinates"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. first-quadrant-coordinates reads the ordered pair of a plotted point; naming plane parts by drag and drop has no family.",
+        "STAAR interaction: drag and drop, 2 points. coordinate-terms-slots matches verbal descriptions to the terms axis, origin and coordinate; naming parts of a drawn coordinate plane is not practiced.",
     },
     {
       item: { number: "20", page: "rationale PDF p.21" },
@@ -290,10 +294,10 @@ export const staar2024Grade5 = defineLedger(
       archetypeIds: ["money.budget"],
       demand:
         "Complete a statement that tells how taxes and deductions relate to gross income and take-home pay",
-      status: "partial",
-      templateIds: ["gross-net-pay"],
+      status: "covered",
+      templateIds: ["gross-net-sentence", "gross-net-pay"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. gross-net-pay computes net or gross pay from deductions; the vocabulary statement with two dropdown blanks has no multi-part family.",
+        "gross-net-sentence completes the statement relating gross pay, taxes and deductions, and take-home pay. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "22", page: "rationale PDF p.23" },
@@ -336,10 +340,14 @@ export const staar2024Grade5 = defineLedger(
       archetypeIds: ["fractions.divide-context"],
       demand:
         "Drag values to write the division that finds the laps in a three-mile run of quarter-mile laps",
-      status: "partial",
-      templateIds: ["unit-fraction-share", "divide-fractions"],
+      status: "covered",
+      templateIds: [
+        "unit-fraction-division-slots",
+        "unit-fraction-share",
+        "divide-fractions",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. unit-fraction-share divides a unit fraction among a group and divide-fractions divides by entry; building the equation by drag and drop has no multi-part family.",
+        "unit-fraction-division-slots completes the division of a unit fraction by a whole number, of a whole number by a unit fraction, or the denominator of a shared unit fraction. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "26", page: "rationale PDF p.27" },
@@ -421,10 +429,10 @@ export const staar2024Grade5 = defineLedger(
       standards: ["TEKS.5.2.4.C"],
       archetypeIds: ["pattern.rule"],
       demand: "Drag values into a table for y equals six times x",
-      status: "partial",
-      templateIds: ["rule-pattern-term"],
+      status: "covered",
+      templateIds: ["rule-table-fill-slots", "rule-pattern-term"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. rule-pattern-term finds one later term of a rule by entry; completing a table of inputs and outputs by drag and drop has no multi-part family.",
+        "rule-table-fill-slots chooses two missing outputs and two missing inputs of a table for an add, subtract or multiply rule. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "33", page: "rationale PDF p.34" },

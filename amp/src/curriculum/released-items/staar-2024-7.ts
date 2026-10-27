@@ -111,10 +111,10 @@ export const staar2024Grade7 = defineLedger(
       ],
       demand:
         "Drag book types into a statement about which type is more than twice as likely as another",
-      status: "partial",
-      templateIds: ["comparison-factor"],
+      status: "covered",
+      templateIds: ["times-as-many-blanks", "comparison-factor"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. comparison-factor finds a factor in a multiplicative comparison; applying it to counts in a table and filling two blanks by drag and drop has no family.",
+        "times-as-many-blanks completes a times-as-many sentence or a more-than-twice-as-likely sentence from a table of three counts. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "7", page: "rationale PDF p.7" },
@@ -159,10 +159,10 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["inequality.solve"],
       demand:
         "Drag the solution to each of two inequalities with a negative coefficient",
-      status: "partial",
-      templateIds: ["affine-linear-inequality"],
+      status: "covered",
+      templateIds: ["inequality-solution-blanks", "affine-linear-inequality"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. affine-linear-inequality chooses one half-line solution; placing two solution sets by drag and drop has no multi-part family.",
+        "inequality-solution-blanks chooses the solution of each of two inequalities with a negative coefficient. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "11", page: "rationale PDF p.11" },
@@ -367,10 +367,10 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Complete two statements giving the pages per minute printed in black and white and in color",
-      status: "partial",
-      templateIds: ["unit-rate", "fraction-unit-rate"],
+      status: "covered",
+      templateIds: ["unit-rate-pair-blanks", "unit-rate", "fraction-unit-rate"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. unit-rate and fraction-unit-rate find one unit rate by entry; the two decimal times and the two dropdown blanks have no multi-part family.",
+        "unit-rate-pair-blanks chooses two decimal unit rates from two totals and two times. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "27", page: "rationale PDF p.27" },
@@ -498,10 +498,10 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Complete two blanks with the blue gumballs from twenty-four yellow at a ratio of four to three and a related count",
-      status: "partial",
-      templateIds: ["ratio-missing"],
+      status: "covered",
+      templateIds: ["ratio-pair-blanks", "ratio-missing"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. ratio-missing scales a ratio to find a missing quantity by entry; the two dropdown blanks have no multi-part family.",
+        "ratio-pair-blanks chooses the count of the other color and the total from a ratio and one count. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "38", page: "rationale PDF p.38" },

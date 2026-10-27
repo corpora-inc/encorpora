@@ -208,10 +208,10 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["expression.multistep-equations"],
       demand:
         "Drag the operations that make an equation for the total of courts, bags and balls",
-      status: "partial",
-      templateIds: ["story-operation-choice"],
+      status: "covered",
+      templateIds: ["story-operations-slots", "story-operation-choice"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. story-operation-choice chooses an equation for one story; assembling a two-factor product equation by drag and drop has no multi-part protocol family.",
+        "story-operations-slots chooses the operations of an equation for equal groups plus extras, groups less some removed, or three factors; one choice gives the total. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "16", page: "rationale PDF p.17" },
@@ -331,10 +331,14 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["fractions.compare"],
       demand:
         "Compare five sixths and five eighths of a milkshake and give the reason",
-      status: "partial",
-      templateIds: ["compare-like-numerators", "compare-unlike-fractions"],
+      status: "covered",
+      templateIds: [
+        "compare-fractions-reason-blanks",
+        "compare-like-numerators",
+        "compare-unlike-fractions",
+      ],
       limitations:
-        "STAAR interaction: inline choice, 2 points. compare-like-numerators chooses the greater of two fractions with the same numerator; the item's two dropdown blanks (which is larger and why) have no family.",
+        "compare-fractions-reason-blanks chooses the greater of two fractions with the same numerator or denominator and the reason. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "26", page: "rationale PDF p.29" },
@@ -393,10 +397,14 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["number.expanded-form-whole"],
       demand:
         "Drag place-value terms to write an expression equal to a five-digit number",
-      status: "partial",
-      templateIds: ["expanded-form-missing", "multidigit-digit-value"],
+      status: "covered",
+      templateIds: [
+        "expanded-whole-slots",
+        "expanded-form-missing",
+        "multidigit-digit-value",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. expanded-form-missing completes one part of a three-digit expanded sum; building the five-digit expression by drag and drop has no multi-part family.",
+        "expanded-whole-slots builds the sum of the values of the nonzero digits of a five-digit number, as values or digit-times-place terms. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
   ],
 );

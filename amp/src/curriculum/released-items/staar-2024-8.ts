@@ -142,10 +142,10 @@ export const staar2024Grade8 = defineLedger(
       archetypeIds: ["transform.rule"],
       demand:
         "Drag terms to write the coordinate rule of a dilation from a vertex and its image",
-      status: "partial",
-      templateIds: ["dilation-image"],
+      status: "covered",
+      templateIds: ["dilation-rule-slots", "dilation-image"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. dilation-image finds the image of a vertex under a dilation by choice; writing the rule by drag and drop has no multi-part family.",
+        "dilation-rule-slots completes the rule (x, y) to (kx, ky) of a dilation about the origin from a vertex and its image. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "11", page: "rationale PDF p.11" },
@@ -229,10 +229,13 @@ export const staar2024Grade8 = defineLedger(
       archetypeIds: ["transformation.invariants"],
       demand:
         "Mark which transformations preserve congruence for a table of rules",
-      status: "partial",
-      templateIds: ["transformation-invariant-claims"],
+      status: "covered",
+      templateIds: [
+        "congruence-claims-table",
+        "transformation-invariant-claims",
+      ],
       limitations:
-        "STAAR interaction: match table grid, 2 points. transformation-invariant-claims decides one claim by choice; marking several transformations in a match table has no family.",
+        "congruence-claims-table marks four or five coordinate rules as preserving congruence or not. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "18", page: "rationale PDF p.18" },
@@ -420,10 +423,10 @@ export const staar2024Grade8 = defineLedger(
       archetypeIds: ["triangle.pythagorean"],
       demand:
         "Drag each set of side lengths to right triangle or not a right triangle",
-      status: "partial",
-      templateIds: ["pythagorean-converse"],
+      status: "covered",
+      templateIds: ["pythagorean-sort-table", "pythagorean-converse"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. pythagorean-converse decides one set of sides by choice; sorting several sets by drag and drop has no multi-part family.",
+        "pythagorean-sort-table marks four or five sets of side lengths as a right triangle or not, with scaled triples and near misses. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "34", page: "rationale PDF p.34" },

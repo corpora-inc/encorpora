@@ -158,10 +158,10 @@ export const staar2024Grade4 = defineLedger(
       archetypeIds: ["number.expanded-form-whole"],
       demand:
         "Drag place values to write a decimal with thousands and tenths as an expanded sum",
-      status: "partial",
-      templateIds: ["expanded-decimal"],
+      status: "covered",
+      templateIds: ["expanded-decimal-slots", "expanded-decimal"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. expanded-decimal writes the decimal for a stated expanded sum; building the sum by drag and drop has no multi-part family.",
+        "expanded-decimal-slots builds the sum of the values of the nonzero digits of a decimal with thousands to hundredths. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "12", page: "rationale PDF p.13" },
@@ -303,10 +303,14 @@ export const staar2024Grade4 = defineLedger(
       archetypeIds: ["expression.verbal"],
       demand:
         "Complete an equation with the operations that find the tulips left after adding two shops and removing a number",
-      status: "partial",
-      templateIds: ["story-operation-choice", "delivery-then-use"],
+      status: "covered",
+      templateIds: [
+        "delivery-operations-slots",
+        "story-operation-choice",
+        "delivery-then-use",
+      ],
       limitations:
-        "STAAR interaction: inline choice, 2 points. story-operation-choice chooses an equation for one story; the two operation dropdowns have no multi-part family.",
+        "delivery-operations-slots chooses three operations for a start amount with arrivals and removals; one choice gives the amount left. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "24", page: "rationale PDF p.26" },
@@ -326,10 +330,10 @@ export const staar2024Grade4 = defineLedger(
       archetypeIds: ["whole.related-equation"],
       demand:
         "Drag numbers to complete a division equation that fits a twelve by seven array",
-      status: "partial",
-      templateIds: ["divide-facts"],
+      status: "covered",
+      templateIds: ["array-division-slots", "divide-facts"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. divide-facts divides within 100 using a covered array; building a division equation by drag and drop has no multi-part family.",
+        "array-division-slots completes the division equation for an array, finding the rows or the number in each row. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "26", page: "rationale PDF p.28" },
