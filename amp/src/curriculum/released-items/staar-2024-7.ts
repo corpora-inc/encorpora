@@ -48,14 +48,15 @@ export const staar2024Grade7 = defineLedger(
       standards: ["TEKS.7.2.3.A"],
       archetypeIds: ["number.rational-operations"],
       demand: "Subtract two fifths from forty-five hundredths",
-      status: "partial",
+      status: "covered",
       templateIds: [
+        "decimal-rename-chain",
         "staar-decimal-operations",
         "signed-fraction-sum",
         "multidigit-decimal-sum",
       ],
       limitations:
-        "staar-decimal-operations and multidigit-decimal-sum work with decimals and signed-fraction-sum with two fractions; renaming a fraction as a decimal to subtract from a decimal is not practiced.",
+        "decimal-rename-chain fraction-to-decimal adds or subtracts a fraction or mixed number with denominator 2, 4, 5, 10, 20 or 25 and a decimal in hundredths, renaming the fraction as a decimal; choices are plain decimals.",
     },
     {
       item: { number: "3", page: "rationale PDF p.3" },
@@ -91,10 +92,14 @@ export const staar2024Grade7 = defineLedger(
       ],
       demand:
         "Find the milk left after four days of uses written as sixteenths, eighths and fourths",
-      status: "partial",
-      templateIds: ["signed-fraction-sum", "add-fractions"],
+      status: "covered",
+      templateIds: [
+        "fraction-term-chain",
+        "signed-fraction-sum",
+        "add-fractions",
+      ],
       limitations:
-        "signed-fraction-sum adds two fractions; a four-term sum with three denominators and a final subtraction is not practiced.",
+        "fraction-term-chain uses-from-start takes four uses with denominators 4, 8 and 16 from a whole-number start, answered by numeric entry.",
     },
     {
       item: { number: "6", page: "rationale PDF p.6" },

@@ -220,13 +220,14 @@ export const mcasGrade7 = defineLedger(
       archetypeIds: ["expression.polynomial"],
       demand:
         "Choose the expression equivalent to a linear expression by factoring out a number",
-      status: "partial",
+      status: "covered",
       templateIds: [
+        "factor-out-choice",
         "distributive-expression-choice",
         "equivalent-expressions-check",
       ],
       limitations:
-        "Related families expand or combine linear expressions; the reverse, recognizing a common factor, is not practiced.",
+        "factor-out-choice gives a linear expression and a number to factor out, including a negative factor, three terms and subtraction, and offers one equivalent expression among wrong quotients and signs.",
     },
     {
       section: "Session 2",

@@ -191,10 +191,14 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["number.rational-operations"],
       demand:
         "Evaluate a signed expression that subtracts a mixed number times a whole number from a decimal",
-      status: "partial",
-      templateIds: ["signed-fraction-product", "operation-order"],
+      status: "covered",
+      templateIds: [
+        "decimal-rename-chain",
+        "signed-fraction-product",
+        "operation-order",
+      ],
       limitations:
-        "Related families multiply signed fractions or order operations on whole numbers; mixing a decimal with a mixed number is not practiced.",
+        "decimal-rename-chain decimal-minus-product subtracts a mixed number times a whole number from a decimal, and the result can be negative; choices are plain decimals.",
     },
     {
       item: {
