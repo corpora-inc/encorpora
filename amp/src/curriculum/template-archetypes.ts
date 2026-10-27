@@ -220,7 +220,7 @@ const legacyTemplateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "exponential-time-scale": ["exponential.context", "exponential.form"],
   "factor-partner": ["number.factor-pairs"],
   "facts-to-five": ["early.add-within-20", "early.subtract-within-20"],
-  "fair-selection-procedure": ["probability.likelihood-design"],
+  "fair-selection-procedure": ["probability.fair-selection"],
   "fewest-coins-change": ["money.fewest-coins"],
   "find-equal-shares": ["fractions.equal-shares"],
   "find-equal-thirds": ["fractions.equal-shares"],

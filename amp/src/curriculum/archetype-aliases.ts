@@ -6,9 +6,7 @@
  * consistency"). */
 export const archetypeAliases: Readonly<Record<string, string>> = {
   "measure.thermometer": "measure.read-scale",
-  "shape.subdivide-name": "shape.compose",
   "univariate.mode": "univariate.center",
-  "probability.fair-selection": "probability.likelihood-design",
   "number.number-line-equation": "early.number-line-hops",
   "shape.name-flat": "shape.attributes",
   "fractions.name-equal-share": "fractions.model",

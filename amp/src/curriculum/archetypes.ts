@@ -224,6 +224,7 @@ distribution.normal|Use the empirical rule with a normal model
 distribution.random-variable|Define a random variable and read its probability distribution
 distribution.expectation|Find the expected value from a theoretical or observed distribution
 distribution.decision|Compare expected payoffs to choose between strategies
+probability.fair-selection|Choose a random procedure that gives everyone the same chance
 inference.simulation|Judge a claim from a chart of simulated results
 inference.randomization|Decide from a randomization distribution whether a difference is unusual
 probability.counting-principle|Count outcomes of a sequence of independent choices by multiplying
@@ -274,7 +275,7 @@ coordinate.distance-midpoint|Use the distance or midpoint formula
 measure.unit-cube-volume|Find a prism's volume by counting unit cubes or one layer of cubes
 coordinate.first-quadrant|Locate, name or move to a point by ordered pair in the first quadrant
 shape.name-solid|Name a solid shape and tell it from a flat shape
-shape.compose|Name the shape that smaller shapes make, the pieces a cut figure forms, or choose the piece that completes it
+shape.compose|Name the shape that smaller shapes make or choose the piece that completes it
 shape.attributes|Count sides, corners or angles of a polygon and name it, pick the one of a named kind among near misses, or tell its defining attributes
 shape.solid-parts|Count the faces, edges or vertices of a prism or pyramid
 angle.measure|Measure an angle with a protractor or as a fraction of a full turn

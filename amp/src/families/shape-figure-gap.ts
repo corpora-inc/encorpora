@@ -24,8 +24,7 @@ export const family = {
   archetypeLinks: {
     "congruent-figure-pair": ["shape.congruent-figures"],
     "classify-triangle-by-sides": ["triangle.classify-sides"],
-    // shape.subdivide-name is merged into shape.compose.
-    "name-cut-shape-pieces": ["shape.compose"],
+    "name-cut-shape-pieces": ["shape.subdivide-name"],
   },
   connections: [
     {

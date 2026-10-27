@@ -228,7 +228,11 @@ export const standardToExpanded = chainFamily({
     const fracDigits = m.digits.slice(5 - m.from);
     const wholeValue = Number(standardText(m.digits, m.from).split(".")[0]!);
     const fracWord = fracDigits.length
-      ? ` and ${below1000(Number(fracDigits.join("")))} ${places[5 + fracDigits.length - 1 + 0]!.word}`
+      ? ` and ${below1000(Number(fracDigits.join("")))} ${
+          Number(fracDigits.join("")) === 1
+            ? places[5 + fracDigits.length - 1]!.word.replace(/ths$/, "th")
+            : places[5 + fracDigits.length - 1]!.word
+        }`
       : "";
     const given =
       m.given === "standard"

@@ -14,6 +14,12 @@ export const family = {
       summary: "Pick the figure or pair of figures that are congruent",
     },
     {
+      id: "shape.subdivide-name",
+      domain: "geometry",
+      summary:
+        "Name the figures formed when a flat figure is cut along drawn segments",
+    },
+    {
       id: "triangle.classify-sides",
       domain: "geometry",
       summary: "Classify a triangle as scalene, isosceles or equilateral",
@@ -40,7 +46,7 @@ export const family = {
       id: "probability.likelihood-design",
       domain: "data",
       summary:
-        "Build or choose a set of outcomes, bag, spinner or random procedure that meets a stated likelihood or gives everyone the same chance",
+        "Build or choose a set of outcomes, bag or spinner that meets a stated likelihood",
     },
     {
       id: "probability.likelihood-scale",

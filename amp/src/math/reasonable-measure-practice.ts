@@ -120,7 +120,7 @@ const things: Thing[] = [
   },
   {
     attr: "capacity",
-    phrase: "the amount of juice in a bottle",
+    phrase: "the amount of juice in a large bottle",
     metric: [1, "liters"],
     customary: [1, "quarts"],
   },
@@ -138,7 +138,7 @@ const things: Thing[] = [
   },
   {
     attr: "capacity",
-    phrase: "the amount of soup in a pot",
+    phrase: "the amount of soup in a big pot",
     metric: [2, "liters"],
     customary: [2, "quarts"],
   },

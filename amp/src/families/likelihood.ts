@@ -24,7 +24,6 @@ export const family = {
   archetypeLinks: {
     "likelihood-in-words": ["probability.likelihood-scale"],
     "probability-on-number-line": ["probability.likelihood-scale"],
-    // probability.fair-selection is merged into probability.likelihood-design.
     "equal-chance-choice": ["probability.likelihood-design"],
   },
   connections: [

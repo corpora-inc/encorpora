@@ -415,10 +415,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["pattern.repeating-unit"],
       demand:
         "Find the two circles removed from a repeating pattern of shaded and half-shaded circles",
-      status: "covered",
+      status: "partial",
       templateIds: ["repeating-shape-pattern"],
       limitations:
-        "repeating-shape-pattern fills two empty boxes in a repeating pattern of circles, squares and triangles; the kind of shape stands for the shaded and half-shaded circles.",
+        "repeating-shape-pattern fills two empty boxes in a repeating pattern of circles, squares and triangles; the item repeats shaded and half-shaded circles, a pattern in shading that is not drawn.",
     },
     {
       item: { number: "34", page: "PDF p.40" },

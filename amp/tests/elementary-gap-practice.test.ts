@@ -1126,8 +1126,13 @@ test("standard-to-expanded-choice: only the keyed sum equals the number", () => 
     const whole =
       under1000(thousands!) * 1000 + (rest?.trim() ? under1000(rest) : 0);
     if (!fracPart) return whole;
-    const unit = ["tenths", "hundredths", "thousandths"].findIndex((u) =>
-      fracPart.endsWith(u),
+    // "one tenth" is singular; every other count is plural.
+    const unit = ["tenth", "hundredth", "thousandth"].findIndex((u) =>
+      new RegExp(`${u}s?$`).test(fracPart),
+    );
+    assert.ok(
+      !/^one \w+ths$/.test(fracPart),
+      `"one" takes a singular place name: ${fracPart}`,
     );
     const digits = under1000(fracPart.replace(/ \w+$/, ""));
     return whole + digits / 10 ** (unit + 1);
@@ -1157,10 +1162,10 @@ test("reasonable-measure-choice: only the keyed measure or unit is within a fact
     "the mass of a bicycle": 12,
     "the mass of a student": 35,
     "the mass of a small car": 1500,
-    "the amount of juice in a bottle": 1,
+    "the amount of juice in a large bottle": 1,
     "the amount of milk in a glass": 0.25,
     "the amount of water in a bathtub": 150,
-    "the amount of soup in a pot": 2,
+    "the amount of soup in a big pot": 2,
     "the amount of medicine in a spoon": 0.005,
   };
   const unitSize: Record<string, number> = {

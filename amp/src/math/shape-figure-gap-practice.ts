@@ -312,8 +312,17 @@ function triangleModel(
   a: { ask: "name-type" | "find-type" },
 ): TriangleModel {
   const target = pick(r, ["scalene", "isosceles", "equilateral"] as const);
-  if (a.ask === "name-type")
-    return { ask: a.ask, target, sides: [sidesOf(r, target)], correct: 0 };
+  if (a.ask === "name-type") {
+    const sides = sidesOf(r, target);
+    // "Right triangle" is a choice: sides such as 6, 8, 10 would make it correct too.
+    const [x, y, z] = [...sides].sort((p, q) => p - q) as [
+      number,
+      number,
+      number,
+    ];
+    if (x * x + y * y === z * z) throw new Error("Need three retries");
+    return { ask: a.ask, target, sides: [sides], correct: 0 };
+  }
   const others: TriType[] =
     target === "scalene"
       ? ["isosceles", "equilateral"]
@@ -639,7 +648,18 @@ export const cutShape = chainFamily({
       },
     ];
     const answer = describePieces(m.names);
-    const pool = cutNames.filter((n) => n !== answer);
+    // A square is a rectangle, and the order of the words does not matter, so a
+    // distractor that names the same kinds of pieces would also be correct.
+    const kinds = (name: string) =>
+      [...name.matchAll(/(a|\d) (triangle|square|rectangle|trapezoid)s?/g)]
+        .flatMap(([, n, kind]) =>
+          Array<string>(n === "a" ? 1 : Number(n)).fill(
+            kind === "square" ? "rectangle" : kind!,
+          ),
+        )
+        .sort()
+        .join();
+    const pool = cutNames.filter((n) => kinds(n) !== kinds(answer));
     const wrong = draw(r, pool, 3);
     return {
       ...choiceFrom(

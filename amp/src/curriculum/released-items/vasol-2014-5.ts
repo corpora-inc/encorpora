@@ -333,7 +333,7 @@ export const vasolGrade5 = defineLedger(
       item: { number: "26", page: "PDF p.32" },
       responseFormat: "graph/drag",
       standards: ["SOL.2009.5.13b"],
-      archetypeIds: ["shape.compose"],
+      archetypeIds: ["shape.subdivide-name"],
       demand:
         "Drag the names of the three figures formed by cutting a flat figure along dashed segments",
       status: "partial",

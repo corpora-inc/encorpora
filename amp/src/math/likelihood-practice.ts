@@ -123,6 +123,10 @@ function makeEvent(r: R, device: Event["device"], wanted?: Word): Event {
   else k = r(0, n);
   if (k < 0 || k > n || (wanted === "likely" && 2 * k <= n))
     throw new Error("Need three retries");
+  // A chance within a sixth of one half (such as 3 of 8) is a close call between
+  // "as likely as not" and the words on either side of it, so it is not asked.
+  if (k > 0 && k < n && 2 * k !== n && 3 * Math.abs(2 * k - n) < n)
+    throw new Error("Need three retries");
   // Split the rest among up to two other colors.
   const others = draw(
     r,
