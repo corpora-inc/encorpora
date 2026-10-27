@@ -161,7 +161,7 @@ export const repeatingShapePattern = chainFamily({
   template: repeatingPatternTemplate,
   axes,
   model,
-  variant: (m) => `${m.ask}:${m.unit.length}`,
+  variant: (m) => `${m.ask}-${m.unit.length}`,
   render: (m, _a, r) => {
     const correct = pairText(m.answer);
     const unitText = m.unit.join(", ");

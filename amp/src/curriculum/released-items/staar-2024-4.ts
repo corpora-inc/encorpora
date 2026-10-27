@@ -120,10 +120,10 @@ export const staar2024Grade4 = defineLedger(
       archetypeIds: ["fractions.compare"],
       demand:
         "Choose the fraction greater than a given fraction from four choices",
-      status: "partial",
-      templateIds: ["compare-unlike-fractions", "compare-fractions"],
+      status: "covered",
+      templateIds: ["fraction-choice-compare"],
       limitations:
-        "Related families compare two stated fractions by entry; comparing four choices with a given fraction is not practiced.",
+        "fraction-choice-compare picks the one of four fractions with denominators 3 to 12 that is greater or less than a stated proper fraction.",
     },
     {
       item: { number: "9", page: "rationale PDF p.10" },
@@ -267,10 +267,10 @@ export const staar2024Grade4 = defineLedger(
       standards: ["TEKS.4.1.2.C"],
       archetypeIds: ["place.compare-whole"],
       demand: "Choose the true comparison of three nine-digit numbers",
-      status: "partial",
-      templateIds: ["compare-multidigit"],
+      status: "covered",
+      templateIds: ["true-comparison-statement"],
       limitations:
-        "compare-multidigit compares two numbers up to 999,999; three nine-digit numbers are outside its range.",
+        "true-comparison-statement orders three numbers of seven to nine digits that share leading digits and picks the true statement.",
     },
     {
       item: { number: "21", page: "rationale PDF p.22" },
@@ -292,9 +292,9 @@ export const staar2024Grade4 = defineLedger(
       demand:
         "Choose the true comparison of improper fractions in a table by changing them to mixed numbers",
       status: "partial",
-      templateIds: ["compare-unlike-fractions", "compare-fractions"],
+      templateIds: ["fraction-choice-compare", "compare-unlike-fractions"],
       limitations:
-        "Related families compare two stated proper fractions by entry; comparing fractions greater than one among four statements is not practiced.",
+        "fraction-choice-compare compares four fractions with a stated fraction or whole number; changing improper fractions in a table to mixed numbers to compare them is not practiced.",
     },
     {
       item: { number: "23", page: "rationale PDF p.25" },
@@ -337,10 +337,10 @@ export const staar2024Grade4 = defineLedger(
       standards: ["TEKS.4.1.2.B"],
       archetypeIds: ["number.expanded-form-whole"],
       demand: "Choose the expanded notation of a decimal given in words",
-      status: "partial",
-      templateIds: ["expanded-decimal", "multidigit-digit-value"],
+      status: "covered",
+      templateIds: ["standard-to-expanded-choice"],
       limitations:
-        "expanded-decimal enters the decimal for a given sum; choosing among expanded expressions for a number in words is not practiced.",
+        "standard-to-expanded-choice picks the expanded form of a decimal given in words or in digits, against a digit in the wrong place, swapped digits and a missing zero place.",
     },
     {
       item: { number: "27", page: "rationale PDF p.29" },

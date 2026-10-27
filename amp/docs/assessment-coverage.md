@@ -136,11 +136,39 @@ All 140 mathematics items of the spring 2014 Virginia Standards of Learning rele
 | Grade 4 | 50 | 15 (30%) | 28 (56%) | 7 (14%) | 5 | 86% |
 | Grade 5 | 50 | 12 (24%) | 29 (58%) | 9 (18%) | 8 | 80% |
 
-Of the 140 items, 120 are multiple choice, 9 typed numeric, 8 drag or click on a graph, and 3 select all. Covered items are mostly whole-number and decimal computation, estimation, unit renaming and fraction sums and differences. Statements, lists and drawn options keep most choice items partial. Of 23 missing items, 19 name one of 12 archetypes minted for this source: reading a thermometer, congruent figures, repeating patterns, properties of operations (identity, associative, distributive), building a set or spinner for a likelihood, a probability on a zero to one number line, triangles by sides, the figures made by cutting a shape, the mode, naming a measure of center or variation, a tile model of an equation, and the variable in a situation. The other four lack a family for hours renamed as minutes, a table matched to a survey total, a two-way table built from a description and the story for a subtraction sentence.
+Of the 140 items, 120 are multiple choice, 9 typed numeric, 8 drag or click on a graph, and 3 select all. Covered items are mostly whole-number and decimal computation, estimation, unit renaming and fraction sums and differences. Statements, lists and drawn options keep most choice items partial. At labeling time 23 items were missing, and 19 named one of 12 archetypes minted for this source (the elementary gap cluster below closes all of them): reading a thermometer, congruent figures, repeating patterns, properties of operations (identity, associative, distributive), building a set or spinner for a likelihood, a probability on a zero to one number line, triangles by sides, the figures made by cutting a shape, the mode, naming a measure of center or variation, a tile model of an equation, and the variable in a situation. The other four lack a family for hours renamed as minutes, a table matched to a survey total, a two-way table built from a description and the story for a subtraction sentence.
 
 The Virginia forms are not saturated. Grade 3 adds 13 archetypes not seen in any earlier source (5 minted, 8 existing archetypes no earlier source used) and 35% of its items fall on archetypes not yet seen. Grades 4 and 5 add 5 and 8, and 86% and 80% of their items fall on archetypes already seen, in line with the STAAR 2024 elementary tests. Early grades keep finding narrow tasks: measurement tools, properties, probability vocabulary and statistics vocabulary.
 
 A second labeler re-labeled a seeded random 10% sample (14 items across the three tests) without seeing the first labels. Response format agreed on 14 (100%), status on 13 (92.9%), archetypes overlapped on 10 (71.4%) and templates on 11 (78.6%). The archetype disagreements were a different archetype for the same task (a spinner or bag built for equal chances, a table matched to a total) or a minted archetype where the second labeler used the nearest existing one (the mode). The one status disagreement kept the rule from earlier sources: a family counts as related practice only if it practices the item's core operation, and customary renaming of lengths, weights and capacities is not renaming hours as minutes, so that item stays missing.
+
+### Elementary gap cluster (grades 3 to 5)
+
+Thirty-three practice templates in 21 families close every missing item of the grades 3 to 5 sources and raise 35 items to covered. The ledger counts below are the labeled forms for Virginia 2014, STAAR 2024 and 2025 and MCAS 2025 for grades 3 to 5.
+
+| Source | Items | Covered | Partial | Missing |
+| --- | ---: | ---: | ---: | ---: |
+| Virginia grade 3 | 40 | 6 to 11 | 27 to 29 | 7 to 0 |
+| Virginia grade 4 | 50 | 15 to 20 | 28 to 30 | 7 to 0 |
+| Virginia grade 5 | 50 | 12 to 22 | 29 to 28 | 9 to 0 |
+| STAAR 2024 grade 3 | 30 | 6 to 10 | 21 to 20 | 3 to 0 |
+| STAAR 2024 grade 4 | 32 | 12 to 15 | 19 to 17 | 1 to 0 |
+| STAAR 2024 grade 5 | 34 | 13 to 13 | 21 to 21 | 0 to 0 |
+| STAAR 2025 grade 3 | 30 | 13 to 16 | 15 to 14 | 2 to 0 |
+| STAAR 2025 grade 4 | 32 | 13 to 16 | 17 to 16 | 2 to 0 |
+| STAAR 2025 grade 5 | 34 | 19 to 19 | 15 to 15 | 0 to 0 |
+| MCAS 2025 grade 3 | 20 | 6 to 6 | 14 to 14 | 0 to 0 |
+| MCAS 2025 grade 4 | 20 | 9 to 11 | 11 to 9 | 0 to 0 |
+| MCAS 2025 grade 5 | 20 | 11 to 11 | 9 to 9 | 0 to 0 |
+| All twelve | 392 | 135 to 170 | 226 to 222 | 31 to 0 |
+
+The new families practice properties of operations, hours and other time units, reading a thermometer on a gridded scale, congruent figures, triangles by their sides, the pieces of a cut figure, likelihood words, a chance on a zero to one number line, equal chances, the mode, naming mean, median, mode and range, variables in a situation, the story for a subtraction sentence, repeating shape patterns, tables that fit a survey, whole numbers on a number line and number-line jumps, supply and price, strip diagrams, one fourth of congruent figures, solid properties, benchmark fraction estimates, comparing fractions among four choices, rules and later terms of number patterns, numbers between bounds and true comparisons, expanded form, reasonable measures and lists that match a display. Surface differences of one task (which unknown, which property, which display, metric or customary) are variation axes of one model, not templates.
+
+Rows stay partial where the item draws a figure that AMP shows as text (a thermometer, a spinner, a two-way table, a group of solids, towers of blocks), asks for the reverse direction (the strip diagram for a story, a dot plot for a list) or uses a drag, hot spot or inline-choice interaction. Every limitation names what is practiced and what is not.
+
+#### Archetype consistency
+
+An archetype is one task in one representation. When two archetypes in the union describe the same task, merge them: keep the id that more rows and templates already use, widen its summary to name both forms, replace the other id in every ledger row and template link, drop it from the archetype list, and add it to `src/curriculum/archetype-aliases.ts` so old references resolve. `tests/archetype-aliases.test.ts` fails if a merged id is still listed or used. The Virginia blind relabel agreed with the first labeler on archetypes for 71.4% of its sample because several minted archetypes named a task that an existing archetype already covered. Eight archetypes were merged: reading a temperature into the read-a-scale archetype, the figures made by cutting a shape into the shapes made by smaller shapes, the mode into means and medians, a fair-selection procedure into building a set for a likelihood, a number-line diagram of jumps into hops on a number line, naming a flat shape into counting and naming a polygon, naming an equal share into the shaded fraction, and a tile or bar model of an equation into the strip diagram. A table matched to a survey description now uses the graph-and-table mismatch archetype instead of the tally-and-frequency read. The rule applies to every source: a task that differs only in how it is shown keeps one archetype and a variation axis.
 
 ### Adding a source
 

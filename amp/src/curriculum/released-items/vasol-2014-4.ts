@@ -245,10 +245,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["place.compare-whole"],
       demand:
         "Choose the true comparison among four pairs of numbers of five to seven digits",
-      status: "partial",
-      templateIds: ["compare-multidigit"],
+      status: "covered",
+      templateIds: ["true-comparison-statement"],
       limitations:
-        "compare-multidigit picks the greater or lesser of two numbers up to 999,999; judging comparison statements with seven-digit numbers is not practiced.",
+        "true-comparison-statement picks the one true comparison among four pairs of numbers of five to nine digits that share leading digits.",
     },
     {
       item: { number: "20", page: "PDF p.26" },
@@ -600,10 +600,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["pattern.rule"],
       demand:
         "Choose the pattern that adds the same amount as 5, 14, 23, 32, 41",
-      status: "partial",
-      templateIds: ["rule-pattern-term", "rule-pattern-feature"],
+      status: "covered",
+      templateIds: ["pattern-rule-choice"],
       limitations:
-        "The templates start from a stated rule; recognizing the same rule across listed patterns of different starts is not practiced.",
+        "pattern-rule-choice picks the listed pattern that adds the same amount as a given five-term pattern, among patterns with other amounts, other rules and other starts.",
     },
   ],
 );

@@ -224,7 +224,7 @@ export const measureMeaning = chainFamily({
   template: measureMeaningTemplate,
   axes: measureAxes,
   model: measureModel,
-  variant: (m) => `${m.ask}:${m.measure}`,
+  variant: (m) => `${m.ask}-${m.measure}`,
   render: (m, _a, r) => {
     const all: Measure[] = ["mean", "median", "mode", "range"];
     const list = m.values.join(", ");

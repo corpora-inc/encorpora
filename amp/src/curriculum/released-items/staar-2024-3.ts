@@ -373,10 +373,10 @@ export const staar2024Grade3 = defineLedger(
       standards: ["TEKS.3.3.7.D"],
       archetypeIds: ["measure.unit-choice"],
       demand: "Pick the unit used to measure the juice in a bottle",
-      status: "partial",
-      templateIds: ["customary-unit-choice"],
+      status: "covered",
+      templateIds: ["reasonable-measure-choice"],
       limitations:
-        "customary-unit-choice chooses customary units for everyday objects; the metric liter as a capacity unit is not practiced.",
+        "reasonable-measure-choice picks the unit that fits a stated amount of capacity, including liters for a bottle of juice, among customary and metric units far apart in size.",
     },
     {
       item: { number: "30", page: "rationale PDF p.33" },

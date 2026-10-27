@@ -301,10 +301,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["measure.unit-choice"],
       demand:
         "Choose the reasonable length of a bed among feet, inches, meters and centimeters",
-      status: "partial",
-      templateIds: ["customary-unit-choice"],
+      status: "covered",
+      templateIds: ["reasonable-measure-choice"],
       limitations:
-        "customary-unit-choice chooses among customary units only; choices that mix customary and metric units are not practiced.",
+        "reasonable-measure-choice picks the reasonable length of an everyday object among customary and metric units that are far apart in size.",
     },
     {
       item: { number: "24", page: "PDF p.30" },
@@ -474,10 +474,10 @@ export const vasolGrade3 = defineLedger(
       standards: ["SOL.2009.3.19"],
       archetypeIds: ["pattern.rule"],
       demand: "Choose the rule that generates 1, 3, 9, 27, 81",
-      status: "partial",
-      templateIds: ["rule-pattern-feature", "rule-pattern-term"],
+      status: "covered",
+      templateIds: ["pattern-rule-choice"],
       limitations:
-        "The pattern templates start from additive rules; finding a multiplicative rule from listed terms is not practiced.",
+        "pattern-rule-choice picks the rule, including multiply by a number, that makes a five-term pattern; the terms of the item are 1, 3, 9, 27 and 81.",
     },
     {
       item: { number: "39", page: "PDF p.45" },

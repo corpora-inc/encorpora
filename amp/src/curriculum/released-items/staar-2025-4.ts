@@ -230,9 +230,9 @@ export const staarGrade4 = defineLedger(
       demand:
         "Choose the fraction that is less than the amount a shaded model shows",
       status: "partial",
-      templateIds: ["compare-unlike-fractions", "compare-fractions"],
+      templateIds: ["fraction-choice-compare", "compare-unlike-fractions"],
       limitations:
-        "Related families compare two stated fractions by entry; comparing four choices with a modeled amount is not practiced.",
+        "fraction-choice-compare compares four choices with a stated fraction; reading the amount from a shaded model and choosing the fraction less than it is not practiced.",
     },
     {
       item: {
@@ -297,10 +297,10 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["number.expanded-form-whole"],
       demand:
         "Write the standard decimal for a sum of digit-times-place-value products up to thousands",
-      status: "partial",
-      templateIds: ["expanded-decimal", "multidigit-digit-value"],
+      status: "covered",
+      templateIds: ["expanded-sum-to-standard"],
       limitations:
-        "STAAR interaction: equation editor, 1 point. expanded-decimal writes decimals from ones through thousandths; products with thousands and hundreds are not practiced.",
+        "expanded-sum-to-standard writes the standard form of a whole number or decimal from a sum of digit-times-place-value products with a zero place, from ten thousands to thousandths; numeric entry serves the typed decimal.",
     },
     {
       item: {
@@ -370,10 +370,10 @@ export const staarGrade4 = defineLedger(
       standards: ["TEKS.4.1.3.D"],
       archetypeIds: ["fractions.compare"],
       demand: "Choose the fraction greater than a given fraction",
-      status: "partial",
-      templateIds: ["compare-unlike-fractions", "compare-fractions"],
+      status: "covered",
+      templateIds: ["fraction-choice-compare"],
       limitations:
-        "Related families compare two stated fractions by entry; comparing four choices with a given fraction is not practiced.",
+        "fraction-choice-compare picks the one of four fractions with denominators 3 to 12 that is greater or less than a stated proper fraction, among choices that include a larger numerator or denominator that does not decide the comparison.",
     },
     {
       item: {
@@ -400,10 +400,10 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["univariate.displays"],
       demand:
         "Choose the data set that could produce a frequency table with ranges",
-      status: "partial",
-      templateIds: ["histogram-read"],
+      status: "covered",
+      templateIds: ["data-list-for-display"],
       limitations:
-        "histogram-read reads counts from a binned display; deciding which raw data fit a table is not practiced.",
+        "data-list-for-display picks the list of whole numbers that could produce a table of counts in ranges of ten, against lists with a value moved across a range.",
     },
     {
       item: {

@@ -102,7 +102,7 @@ export const timeUnitRenameFamily = chainFamily({
   template: timeUnitRenameTemplate,
   axes,
   model,
-  variant: (m) => `${m.ask}:${m.pair.big}`,
+  variant: (m) => `${m.ask}-${m.pair.big}`,
   render: (m) => {
     const { pair: p, count: n } = m;
     if (m.ask === "hours-and-minutes") {

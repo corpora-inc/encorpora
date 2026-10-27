@@ -202,7 +202,7 @@ export const likelihoodWords = chainFamily({
     );
     return { event, word: actual, options: [actual, ...others] };
   },
-  variant: (m) => `${m.event.device}:${m.word}`,
+  variant: (m) => `${m.event.device}-${m.word}`,
   render: (m, _a, r) => {
     const { event: e } = m;
     const half = e.n / 2;
@@ -399,7 +399,7 @@ export const equalChance = chainFamily({
       total,
     };
   },
-  variant: (m) => `${m.goal}:${m.device}`,
+  variant: (m) => `${m.goal}-${m.device}`,
   render: (m) => {
     const [c1, c2, c3] = m.colorsUsed;
     const thing = m.device === "bag" ? "bag of marbles" : "spinner";

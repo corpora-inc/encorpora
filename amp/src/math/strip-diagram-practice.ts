@@ -122,7 +122,7 @@ export const stripDiagramMatch = chainFamily({
   template: stripDiagramTemplate,
   axes,
   model,
-  variant: (m) => `${m.form}:${m.choose}`,
+  variant: (m) => `${m.form}-${m.choose}`,
   render: (m, _a, r) => {
     const { ctx, known, k, share, total } = m;
     const T = ctx.thing;

@@ -173,10 +173,10 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["fractions.compare"],
       demand:
         "Choose the greatest of four heights written as mixed numbers with sixths, fourths, twelfths and thirds",
-      status: "partial",
-      templateIds: ["compare-unlike-fractions"],
+      status: "covered",
+      templateIds: ["fraction-choice-compare"],
       limitations:
-        "compare-unlike-fractions picks the greater of two proper fractions by entry; four mixed numbers with a common whole part are not practiced.",
+        "fraction-choice-compare picks the greatest of four mixed numbers with the same whole part and fractions with denominators 3, 4, 6 and 12.",
     },
     {
       item: { number: "13", page: "PDF p.17" },
@@ -361,9 +361,9 @@ export const vasolGrade5 = defineLedger(
       demand:
         "Choose the likely length of a basketball court among inches, feet, centimeters and kilometers",
       status: "partial",
-      templateIds: ["customary-unit-choice"],
+      templateIds: ["reasonable-measure-choice"],
       limitations:
-        "customary-unit-choice chooses among customary units only; choices that include metric units and a pictured object are not practiced.",
+        "reasonable-measure-choice picks the reasonable length of a named object among customary and metric units; the item shows a pictured basketball court, which is not drawn.",
     },
     {
       item: { number: "29", page: "PDF p.35" },
@@ -511,10 +511,10 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["pattern.rule"],
       demand:
         "Choose the rule that finds the next number in an increasing pattern whose differences grow by one",
-      status: "partial",
-      templateIds: ["rule-pattern-feature", "rule-pattern-term"],
+      status: "covered",
+      templateIds: ["pattern-rule-choice"],
       limitations:
-        "The pattern templates start from a stated constant rule; finding a rule with growing differences from listed terms is not practiced.",
+        "pattern-rule-choice picks the rule for a pattern whose added amount grows by one each time, among add, multiply and growing rules.",
     },
     {
       item: { number: "42", page: "PDF p.48" },
@@ -570,10 +570,10 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["pattern.rule"],
       demand:
         "Type the seventh term of a decreasing pattern whose differences shrink by one",
-      status: "partial",
-      templateIds: ["rule-pattern-term"],
+      status: "covered",
+      templateIds: ["pattern-term-unknown-rule"],
       limitations:
-        "rule-pattern-term applies a stated constant rule to find a later term; a pattern whose differences change must be inferred from listed terms and is not practiced.",
+        "pattern-term-unknown-rule takes the first five terms of a decreasing pattern whose differences shrink by one and asks for the seventh term by numeric entry.",
     },
     {
       item: { number: "47", page: "PDF p.53" },

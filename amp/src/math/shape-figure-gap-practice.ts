@@ -335,7 +335,7 @@ export const classifyTriangle = chainFamily({
   template: triangleSidesTemplate,
   axes: triangleAxes,
   model: triangleModel,
-  variant: (m) => `${m.ask}:${m.target}`,
+  variant: (m) => `${m.ask}-${m.target}`,
   render: (m, _a, r) => {
     if (m.ask === "name-type") {
       const s = m.sides[0]!;

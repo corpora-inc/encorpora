@@ -97,7 +97,7 @@ export const congruentFourths = chainFamily({
   template: congruentFourthsTemplate,
   axes,
   model,
-  variant: (m) => `${m.shape}:${m.odd}`,
+  variant: (m) => `${m.shape}-${m.odd}`,
   render: (m, _a, r) => {
     const at = (role: Role) => m.roles.indexOf(role);
     const oddWhy: Record<Odd, string> = {

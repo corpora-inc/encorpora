@@ -40,6 +40,21 @@ import { stripDiagramMatch } from "../src/math/strip-diagram-practice";
 import { congruentFourths } from "../src/math/congruent-parts-practice";
 import { solidProperty } from "../src/math/solid-property-practice";
 import { benchmarkEstimate } from "../src/math/benchmark-estimate-practice";
+import { fractionChoice } from "../src/math/fraction-choice-practice";
+import {
+  patternRuleChoice,
+  patternTerm,
+} from "../src/math/pattern-rule-practice";
+import {
+  numberBetween,
+  trueComparison,
+} from "../src/math/number-order-choice-practice";
+import {
+  expandedToStandard,
+  standardToExpanded,
+} from "../src/math/expanded-form-practice";
+import { reasonableMeasure } from "../src/math/reasonable-measure-practice";
+import { dataList } from "../src/math/data-list-practice";
 
 const SEEDS = 400;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -73,6 +88,15 @@ const gens: Record<string, Gen> = {
   "congruent-fourths-pair": congruentFourths,
   "solid-property-select": solidProperty,
   "benchmark-fraction-estimate": benchmarkEstimate,
+  "fraction-choice-compare": fractionChoice,
+  "pattern-rule-choice": patternRuleChoice,
+  "pattern-term-unknown-rule": patternTerm,
+  "number-between-bounds": numberBetween,
+  "true-comparison-statement": trueComparison,
+  "expanded-sum-to-standard": expandedToStandard,
+  "standard-to-expanded-choice": standardToExpanded,
+  "reasonable-measure-choice": reasonableMeasure,
+  "data-list-for-display": dataList,
 } as unknown as Record<string, Gen>;
 const ids = Object.keys(gens);
 
@@ -156,8 +180,19 @@ test("exactly one answer is keyed, wrong choices carry feedback, nothing leaks",
           assert.ok(!gradeAnswer(p, o.id), `${id} wrong accepted`);
         }
         const label = labelOf(p);
-        assert.ok(!p.public.prompt.includes(label), `${id} prompt leaks`);
-        assert.ok(!p.hint.includes(label), `${id} hint leaks`);
+        // Whole-word match: "meters" is not inside "centimeters".
+        const words = (t: string) =>
+          ` ${t.toLowerCase().replace(/[^\p{L}\p{N}/.−-]+/gu, " ")} `;
+        const shown = words(label).trim();
+        assert.ok(
+          shown.length < 2 || !words(p.hint).includes(` ${shown} `),
+          `${id} hint leaks`,
+        );
+        assert.ok(
+          !p.public.prompt.includes(label) ||
+            /^(?:[A-D] and [A-D])$/.test(label),
+          `${id} prompt leaks`,
+        );
       }
       assert.ok(p.explanation.length >= 2, id);
     }
@@ -860,5 +895,357 @@ test("benchmark-fraction-estimate: the estimate rounds each fraction to a benchm
     for (const v of [x, y])
       assert.ok(Math.abs(v - near(v) / 2) <= 0.125, String(v));
     assert.equal(new Set(labels(p).map((o) => labelHalves(o.label))).size, 4);
+  }
+});
+
+/** Fractions and mixed numbers written as TeX in a prompt or label, as exact [n, d] pairs. */
+const texValues = (text: string) =>
+  [...text.matchAll(/\$?(\d+)?\\frac\{(\d+)\}\{(\d+)\}/g)].map(
+    (m) =>
+      [Number(m[1] ?? 0) * Number(m[3]) + Number(m[2]), Number(m[3])] as const,
+  );
+test("fraction-choice-compare: exactly one choice meets the stated comparison", () => {
+  const lessThan = (
+    a: readonly [number, number],
+    b: readonly [number, number],
+  ) => a[0] * b[1] < b[0] * a[1];
+  for (const p of prompts("fraction-choice-compare")) {
+    const text = p.public.prompt;
+    const choices = labels(p).map((o) => ({
+      id: o.id,
+      v: texValues(o.label)[0]!,
+    }));
+    if (/greatest/.test(text)) {
+      const best = choices.reduce((x, y) => (lessThan(x.v, y.v) ? y : x));
+      assert.equal(best.id, p.answer);
+      for (const c of choices)
+        if (c.id !== best.id) assert.ok(lessThan(c.v, best.v));
+      continue;
+    }
+    const wholeMatch = text.match(/(greater|less) than (\d+)\?/);
+    const anchor: readonly [number, number] = wholeMatch
+      ? [Number(wholeMatch[2]), 1]
+      : texValues(text)[0]!;
+    const greater = /greater/.test(text);
+    const ok = choices.filter((c) =>
+      greater ? lessThan(anchor, c.v) : lessThan(c.v, anchor),
+    );
+    assert.deepEqual(
+      ok.map((c) => c.id),
+      [p.answer],
+      text,
+    );
+    for (const c of choices)
+      assert.ok(
+        c.v[0] * anchor[1] !== anchor[0] * c.v[1],
+        "no choice equals the anchor",
+      );
+  }
+});
+
+const listOf = (text: string) =>
+  [...text.matchAll(/\d+/g)].map((m) => Number(m[0]));
+/** Classify a list of numbers: constant change, constant factor, or changes that grow by a constant. */
+function classify(list: number[]): string {
+  const d = list.slice(1).map((v, i) => v - list[i]!);
+  if (d.every((v) => v === d[0])) return `add ${d[0]}`;
+  if (
+    list[0]! > 0 &&
+    list
+      .slice(1)
+      .every(
+        (v, i) => v % list[i]! === 0 && v / list[i]! === list[1]! / list[0]!,
+      )
+  )
+    return `multiply ${list[1]! / list[0]!}`;
+  const dd = d.slice(1).map((v, i) => v - d[i]!);
+  if (dd.every((v) => v === 1)) return `grow ${d[0]}`;
+  return "none";
+}
+test("pattern-rule-choice: the keyed rule or pattern is the only one with the listed behavior", () => {
+  for (const p of prompts("pattern-rule-choice")) {
+    const list = listOf(p.public.prompt);
+    const own = classify(list);
+    assert.notEqual(own, "none");
+    if (/Which rule/.test(p.public.prompt)) {
+      const word = (label: string) => {
+        const n = listOf(label);
+        return /Multiply/.test(label)
+          ? `multiply ${n[0]}`
+          : /then add/.test(label)
+            ? `grow ${n[0]}`
+            : `add ${n[0]}`;
+      };
+      const ok = labels(p)
+        .filter((o) => word(o.label) === own)
+        .map((o) => o.id);
+      assert.deepEqual(ok, [p.answer], p.public.prompt);
+    } else {
+      const ok = labels(p)
+        .filter((o) => {
+          const c = classify(listOf(o.label));
+          return c === own;
+        })
+        .map((o) => o.id);
+      assert.deepEqual(ok, [p.answer], p.public.prompt);
+    }
+  }
+});
+test("pattern-term-unknown-rule: the next or seventh term follows the pattern of changes", () => {
+  for (const p of prompts("pattern-term-unknown-rule")) {
+    const list = listOf(p.public.prompt.split("What")[0]!);
+    const d = list.slice(1).map((v, i) => v - list[i]!);
+    const c = d.length > 1 ? d[1]! - d[0]! : 0;
+    assert.ok(d.every((v, i) => v === d[0]! + c * i));
+    const total = /seventh/.test(p.public.prompt) ? 7 : list.length + 1;
+    const out = [...list];
+    while (out.length < total) {
+      const next = d[0]! + c * (out.length - 1);
+      out.push(out[out.length - 1]! + next);
+    }
+    assert.equal(Number(p.answer), out[total - 1]);
+    assert.ok(out.every((v) => v > 0));
+  }
+});
+
+const numOf = (text: string) =>
+  Number(text.replaceAll("{,}", "").replaceAll(",", "").replaceAll("$", ""));
+test("number-between-bounds: only the keyed value lies strictly between the bounds", () => {
+  for (const p of prompts("number-between-bounds")) {
+    const [lo, hi] = [
+      ...p.public.prompt.matchAll(/(\d[\d{},]*)<n<(\d[\d{},]*)/g),
+    ].flatMap((m) => [numOf(m[1]!), numOf(m[2]!)]);
+    const ok = labels(p)
+      .filter((o) => numOf(o.label) > lo! && numOf(o.label) < hi!)
+      .map((o) => o.id);
+    assert.deepEqual(ok, [p.answer], p.public.prompt);
+  }
+});
+test("true-comparison-statement: only the keyed statement is true", () => {
+  for (const p of prompts("true-comparison-statement")) {
+    const holds = (label: string) => {
+      const parts = label
+        .replaceAll("$", "")
+        .replaceAll("{,}", "")
+        .split(/([<>])/);
+      for (let i = 0; i + 2 < parts.length; i += 2) {
+        const a = Number(parts[i]);
+        const b = Number(parts[i + 2]);
+        if (!(parts[i + 1] === "<" ? a < b : a > b)) return false;
+      }
+      return true;
+    };
+    assert.deepEqual(
+      labels(p)
+        .filter((o) => holds(o.label))
+        .map((o) => o.id),
+      [p.answer],
+      p.public.prompt,
+    );
+  }
+});
+
+const placeValue: Record<string, number> = {
+  "10{,}000": 10000,
+  "1{,}000": 1000,
+  "100": 100,
+  "10": 10,
+  "1": 1,
+  "0.1": 0.1,
+  "0.01": 0.01,
+  "0.001": 0.001,
+};
+/** The exact value of a sum of digit-times-place-value products written as TeX. */
+const sumValue = (tex: string) =>
+  Math.round(
+    tex
+      .replaceAll("$", "")
+      .split("+")
+      .reduce((s2, term) => {
+        const [d, p] = term.split("\\times ");
+        return s2 + Number(d) * placeValue[p!]! * 1000;
+      }, 0),
+  ) / 1000;
+test("expanded-sum-to-standard: the answer equals the value of the sum", () => {
+  for (const p of prompts("expanded-sum-to-standard")) {
+    const sum = p.public.prompt.split(": ")[1]!;
+    assert.equal(Number(p.answer), sumValue(sum), sum);
+  }
+});
+test("standard-to-expanded-choice: only the keyed sum equals the number", () => {
+  const small = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+  ];
+  const tensW = [
+    "",
+    "",
+    "twenty",
+    "thirty",
+    "forty",
+    "fifty",
+    "sixty",
+    "seventy",
+    "eighty",
+    "ninety",
+  ];
+  const under100 = (w: string) => {
+    const [t, o] = w.split("-");
+    const ti = tensW.indexOf(t!);
+    return ti > 1 ? ti * 10 + (o ? small.indexOf(o) : 0) : small.indexOf(w);
+  };
+  const under1000 = (words: string) => {
+    let n = 0;
+    for (const part of words.trim().split(" ")) {
+      if (part === "hundred") n *= 100;
+      else n += under100(part);
+    }
+    return n;
+  };
+  const wordsToNumber = (text: string) => {
+    const [wholePart, fracPart] = text.split(" and ");
+    const [thousands, rest] = wholePart!.split(" thousand");
+    const whole =
+      under1000(thousands!) * 1000 + (rest?.trim() ? under1000(rest) : 0);
+    if (!fracPart) return whole;
+    const unit = ["tenths", "hundredths", "thousandths"].findIndex((u) =>
+      fracPart.endsWith(u),
+    );
+    const digits = under1000(fracPart.replace(/ \w+$/, ""));
+    return whole + digits / 10 ** (unit + 1);
+  };
+  for (const p of prompts("standard-to-expanded-choice")) {
+    const given = p.public.prompt.match(
+      /equal to (?:the number )?(.*)\?$/,
+    )![1]!;
+    const target = given.startsWith("$") ? numOf(given) : wordsToNumber(given);
+    const ok = labels(p)
+      .filter((o) => Math.abs(sumValue(o.label) - target) < 1e-9)
+      .map((o) => o.id);
+    assert.deepEqual(ok, [p.answer], p.public.prompt);
+  }
+});
+
+test("reasonable-measure-choice: only the keyed measure or unit is within a factor of two of the object's size", () => {
+  const typical: Record<string, number> = {
+    "the length of a bed": 2,
+    "the length of a pencil": 0.18,
+    "the length of a basketball court": 28,
+    "the height of a classroom door": 2,
+    "the width of a classroom": 8,
+    "the length of a walk to school": 1800,
+    "the mass of an apple": 0.15,
+    "the mass of a cat": 4,
+    "the mass of a bicycle": 12,
+    "the mass of a student": 35,
+    "the mass of a small car": 1500,
+    "the amount of juice in a bottle": 1,
+    "the amount of milk in a glass": 0.25,
+    "the amount of water in a bathtub": 150,
+    "the amount of soup in a pot": 2,
+    "the amount of medicine in a spoon": 0.005,
+  };
+  const unitSize: Record<string, number> = {
+    centimeter: 0.01,
+    meter: 1,
+    kilometer: 1000,
+    inch: 0.0254,
+    foot: 0.3048,
+    mile: 1609,
+    yard: 0.9144,
+    gram: 0.001,
+    kilogram: 1,
+    ounce: 0.02835,
+    pound: 0.4536,
+    ton: 907,
+    milliliter: 0.001,
+    liter: 1,
+    teaspoon: 0.005,
+    cup: 0.24,
+    quart: 0.95,
+    gallon: 3.785,
+  };
+  const singular = (u: string) =>
+    u === "feet" ? "foot" : u === "inches" ? "inch" : u.replace(/s$/, "");
+  for (const p of prompts("reasonable-measure-choice")) {
+    const text = p.public.prompt;
+    const phrase = Object.keys(typical).find((k) =>
+      text.toLowerCase().includes(k),
+    )!;
+    const near = (n: number, unit: string) => {
+      const v = n * unitSize[singular(unit)]!;
+      const t = typical[phrase]!;
+      return Math.max(v, t) / Math.min(v, t) <= 2.2;
+    };
+    const given = /is about ([\d,]+)\./.exec(text);
+    const ok = labels(p).filter((o) => {
+      if (given) return near(Number(given[1]!.replaceAll(",", "")), o.label);
+      const [n, ...u] = o.label.split(" ");
+      return near(Number(n!.replaceAll(",", "")), u.join(" "));
+    });
+    assert.deepEqual(
+      ok.map((o) => o.id),
+      [p.answer],
+      text,
+    );
+  }
+});
+
+test("data-list-for-display: only the keyed list gives the displayed counts", () => {
+  for (const p of prompts("data-list-for-display")) {
+    const f = fig(p);
+    const asList = (label: string) => label.split(", ").map(Number);
+    // Counts per value (dot plot, count table) or per range (range table).
+    let expected: Map<string, number>;
+    let bucket: (v: number) => string;
+    if (f.scene.elements[0].type === "dotPlot") {
+      expected = new Map();
+      for (const v of f.scene.elements[0].groups[0].values as number[])
+        expected.set(String(v), (expected.get(String(v)) ?? 0) + 1);
+      bucket = (v) => String(v);
+    } else {
+      const rows = f.scene.elements[0].rows as string[][];
+      const ranged = rows[0]![0] === "Range";
+      expected = new Map(
+        rows[0]!.slice(1).map((h, i) => [h, Number(rows[1]![i + 1])]),
+      );
+      bucket = ranged
+        ? (v) => `${Math.floor(v / 10) * 10}–${Math.floor(v / 10) * 10 + 9}`
+        : (v) => String(v);
+    }
+    const matches = (label: string) => {
+      const got = new Map<string, number>();
+      for (const v of asList(label))
+        got.set(bucket(v), (got.get(bucket(v)) ?? 0) + 1);
+      return (
+        got.size === expected.size &&
+        [...expected].every(([k, c]) => got.get(k) === c)
+      );
+    };
+    assert.deepEqual(
+      labels(p)
+        .filter((o) => matches(o.label))
+        .map((o) => o.id),
+      [p.answer],
+      p.public.prompt,
+    );
   }
 });

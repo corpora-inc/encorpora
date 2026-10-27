@@ -100,7 +100,7 @@ export const thermometerReadingFamily = chainFamily({
   template: thermometerReadingTemplate,
   axes,
   model,
-  variant: (m) => `${m.ask}:${m.scale.name}`,
+  variant: (m) => `${m.ask}-${m.scale.name.toLowerCase()}`,
   render: (m) => {
     const { scale } = m;
     const hi = Math.max(m.first, m.second);

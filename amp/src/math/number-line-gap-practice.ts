@@ -58,7 +58,7 @@ export const numberLinePosition = chainFamily({
     if (new Set(options).size !== 4) throw new Error("Need three retries");
     return { range: a.range, low, tens, options };
   },
-  variant: (m) => `${m.range}:${m.tens >= 5 ? "past-half" : "before-half"}`,
+  variant: (m) => `${m.range}-${m.tens >= 5 ? "past-half" : "before-half"}`,
   render: (m, _a, r) => {
     const v = m.low + 10 * m.tens;
     const half = m.low + 50;

@@ -49,7 +49,7 @@ export const supplyPrice = chainFamily({
       ? { supply: a.supply, goods: g, forSale: small, wanted: big }
       : { supply: a.supply, goods: g, forSale: big, wanted: small };
   },
-  variant: (m) => `${m.supply}:${m.goods.item}`,
+  variant: (m) => `${m.supply}-${m.goods.item.replaceAll(" ", "-")}`,
   render: (m, _a, r) => {
     const { goods: g, forSale, wanted } = m;
     const rise = m.supply === "scarce";

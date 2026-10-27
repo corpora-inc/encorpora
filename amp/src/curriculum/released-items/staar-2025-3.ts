@@ -106,10 +106,10 @@ export const staarGrade3 = defineLedger(
       standards: ["TEKS.3.4.8.A"],
       archetypeIds: ["univariate.displays"],
       demand: "Choose the list of values that matches a dot plot",
-      status: "partial",
-      templateIds: ["line-plot-whole", "fraction-line-plot"],
+      status: "covered",
+      templateIds: ["data-list-for-display"],
       limitations:
-        "line-plot-whole and fraction-line-plot read counts and differences from a line plot; none matches a full data list to a plot or uses a dot plot of small whole-number values.",
+        "data-list-for-display picks the list of whole numbers that matches a dot plot with up to 13 dots, against lists with one value changed.",
     },
     {
       item: {
@@ -501,10 +501,10 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["place.compare-whole"],
       demand:
         "Choose a number that makes a compound inequality with two five-digit numbers true",
-      status: "partial",
-      templateIds: ["compare-multidigit"],
+      status: "covered",
+      templateIds: ["number-between-bounds"],
       limitations:
-        "compare-multidigit picks the greater or lesser of two numbers; finding a value between two bounds is not practiced.",
+        "number-between-bounds picks the value that makes a statement with a lower and an upper bound true, for five-digit and seven-digit bounds, against values below, above and equal to a bound.",
     },
   ],
 );
