@@ -127,7 +127,7 @@ export const altitudeRatio = chainFamily({
       angle: ax.angle === "a" ? ("A" as const) : ("B" as const),
     };
   },
-  variant: (m) => `${m.fn}-${m.angle}`,
+  variant: (m) => `${m.fn}-${m.angle.toLowerCase()}`,
   render: (m, _ax, r) => {
     const L = lengths(m.p, m.q);
     const target = trig(m.fn, m.angle, L);
@@ -222,7 +222,8 @@ export const parallelStatement = chainFamily({
   template: parallelStatementTemplate,
   axes: { figure: defineAxis("figure", ["crossing", "nested"] as const) },
   model: (r: R) => ({ names: shuffle(r, [...letters]).slice(0, 5) }),
-  variant: (m) => m.names.slice(0, 2).join(""),
+  // Point letters are surface; the figure axis records the structural case.
+  variant: () => "parallel-statement",
   render: (m, ax, r) => {
     const [a, b, c, d, e] = m.names as [string, string, string, string, string];
     if (ax.figure === "crossing") {
@@ -433,7 +434,7 @@ export const densityRank = chainFamily({
     if (new Set(pops).size < 4 || new Set(areas).size < 4) retry();
     return { rows };
   },
-  variant: (m) => m.rows[0]!.name,
+  variant: () => "density-rank",
   render: (m, ax, r) => {
     const byDensity = [...m.rows].sort(
       (p, q) => q.pop / q.area - p.pop / p.area,

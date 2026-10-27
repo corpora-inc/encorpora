@@ -14,7 +14,7 @@ const deg = Math.PI / 180;
 
 test("altitude ratio from coordinates", () => {
   checkTemplate("geo-altitude-ratio", {
-    variants: ["sin-A", "cos-B", "tan-A"],
+    variants: ["sin-a", "cos-b", "tan-a"],
     axes: { fn: ["sin", "cos", "tan"], angle: ["a", "b"] },
     hintsMin: 20,
   });
@@ -78,7 +78,7 @@ test("parallel perimeter", () => {
 
 test("parallel statement", () => {
   checkTemplate("geo-parallel-statement", {
-    variants: ["AB"],
+    variants: ["parallel-statement"],
     hintsMin: 20,
     axes: { figure: ["crossing", "nested"] },
   });
@@ -141,7 +141,7 @@ test("elevation and depression", () => {
 
 test("density rank", () => {
   checkTemplate("geo-density-rank", {
-    variants: ["Alder"],
+    variants: ["density-rank"],
     hintsMin: 20,
     axes: { order: ["greatest-first", "least-first"] },
   });
