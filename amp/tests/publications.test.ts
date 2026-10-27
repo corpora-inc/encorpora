@@ -5,7 +5,9 @@ import { publicationHtml } from "../src/content/publications";
 import { lessons } from "../src/content/lessons";
 import { generateProblem } from "../src/math/engine";
 const { JSDOM } = createRequire(import.meta.url)("jsdom") as {
-  JSDOM: new (html: string) => { window: { document: Document } };
+  JSDOM: new (html: string) => {
+    window: { document: Document; getComputedStyle: typeof getComputedStyle };
+  };
 };
 test("workbooks and solutions reproduce the same twelve exercises without answer leakage", () => {
   for (const lesson of lessons) {
@@ -65,6 +67,46 @@ test("multi-select solutions review each printed statement once and retain its l
       for (let choice = 0; choice < labels.length; choice++)
         assert.ok(explanations[choice]!.startsWith(`“${labels[choice]}” `));
       assert.ok(plain(solvedItems[index]!).includes("Answer:"));
+    }
+  }
+});
+
+test("worked solution prompts keep structured tables and givens attached", () => {
+  for (const lessonId of [
+    "line-from-point-steps",
+    "solve-justify-linear",
+    "two-column-congruence-proof",
+  ]) {
+    const lesson = lessons.find((item) => item.id === lessonId);
+    assert.ok(lesson);
+    const { window } = new JSDOM(publicationHtml(lesson, "solutions"));
+    const exercises = [...window.document.querySelectorAll(".exercise")];
+    assert.equal(exercises.length, 12);
+    const tables = window.document.querySelectorAll(".print-work");
+    assert.ok(tables.length > 0, `${lessonId}: worked tables are present`);
+    if (lessonId !== "line-from-point-steps")
+      assert.ok(
+        window.document.querySelectorAll(".print-work-start").length > 0,
+      );
+    for (const exercise of exercises) {
+      assert.equal(window.getComputedStyle(exercise).breakInside, "auto");
+      for (const part of exercise.querySelectorAll(
+        ":scope > h2, :scope > .print-work, :scope > .print-work-start",
+      )) {
+        const style = window.getComputedStyle(part);
+        assert.equal(
+          style.breakInside,
+          "avoid",
+          `${lessonId}: ${part.className}`,
+        );
+        assert.equal(
+          style.breakAfter,
+          "avoid",
+          `${lessonId}: ${part.className}`,
+        );
+      }
+      assert.ok(exercise.querySelector(":scope > ol > li"));
+      assert.match(exercise.lastElementChild?.textContent ?? "", /^Answer:/);
     }
   }
 });
