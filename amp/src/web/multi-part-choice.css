@@ -22,6 +22,8 @@
   gap: var(--space-1);
   box-sizing: border-box;
   min-width: var(--target-size);
+  /* A blank never runs past the line; a long option wraps inside it. */
+  max-width: calc(100% - 4px);
   min-height: var(--target-size);
   margin: 3px 2px;
   padding: 0 var(--space-2) 0 var(--space-3);
@@ -81,14 +83,21 @@
   background: var(--color-danger);
   color: var(--color-on-danger);
 }
-/* Every option sits in one grid cell; the cell is as wide as the widest. */
+/* Every option sits in one grid cell; the cell is as wide as the widest,
+   up to the line, and as tall as the tallest once wrapped. */
 .multi-part-blank-stack {
   display: inline-grid;
-  justify-items: center;
+  place-items: center;
+  min-width: 0;
 }
 .multi-part-blank-value {
   grid-area: 1 / 1;
   visibility: hidden;
+  /* Short options stay on one line; one wider than the line wraps between
+     words rather than overflowing the problem. */
+  white-space: normal;
+  text-align: center;
+  text-wrap: balance;
 }
 .multi-part-blank-value[data-shown] {
   visibility: visible;
@@ -130,6 +139,14 @@
 .multi-part-blank[data-mark="missed"] .multi-part-mark {
   background: var(--color-danger-accent);
   color: var(--color-surface-raised);
+}
+
+/* A blank and the punctuation after it share a line; the blank leaves room. */
+.multi-part-glued {
+  white-space: nowrap;
+}
+.multi-part-glued .multi-part-blank {
+  max-width: calc(100% - 4px - 0.5em);
 }
 
 /* ---------- the menu of one blank's options ---------- */

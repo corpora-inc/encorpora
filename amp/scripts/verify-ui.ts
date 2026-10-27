@@ -540,9 +540,10 @@ try {
           const shown = await page
             .locator(".compact-answer-action")
             .count()
-            .catch(() => -1);
+            .then((n) => (n ? "the compact answer action" : "inline answers"))
+            .catch(() => "an unreadable page");
           throw new Error(
-            `${template.id} ${size.width}×${size.height}: answer surface never settled (compact action shown: ${shown > 0}, response capability: ${template.requiredResponseCapability ?? "none"})`,
+            `${template.id} ${size.width}×${size.height}: the answer surface did not match the expected one; the page shows ${shown} (response capability: ${template.requiredResponseCapability ?? "none"})`,
             { cause: failure },
           );
         });
