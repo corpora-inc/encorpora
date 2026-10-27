@@ -25,7 +25,7 @@ export const multiPartFormatsTemplates: readonly TemplateMetadata[] = [
     id: "table-rule-sentence",
     version: 1,
     title: "Complete the rule of a table",
-    skillId: "rule-patterns",
+    skillId: "related-patterns",
     gradeBand: "3–5",
     ...parts,
     requiredFigureCapability: "scenes-v1",
@@ -36,7 +36,7 @@ export const multiPartFormatsTemplates: readonly TemplateMetadata[] = [
     id: "substitution-match-table",
     version: 1,
     title: "Mark each equation true or not true",
-    skillId: "two-step-equations",
+    skillId: "linear-equations",
     gradeBand: "6–8",
     ...parts,
     description:
