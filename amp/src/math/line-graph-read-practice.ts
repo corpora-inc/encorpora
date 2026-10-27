@@ -534,7 +534,11 @@ function surfaceLine(m: LineModel, r: Random): Surface | null {
         truth: ys[i - 1]! > ys[j - 1]!,
         feedback: `${day(m, i)} was ${val(ys[i - 1]!)} and ${day(m, j)} was ${val(ys[j - 1]!)}, so ${day(m, i)} was not greater.`,
       });
-    if (kind === 1) {
+    // Superlative statements need a unique, real extreme; ties or no change in
+    // that direction would make a "false" statement arguably true.
+    const upClear = Math.max(...d) > 0 && unique(d, Math.max(...d));
+    const downClear = Math.min(...d) < 0 && unique(d, Math.min(...d));
+    if (kind === 1 && upClear) {
       const k = r(1, m.n - 1);
       pool.push({
         text: `The greatest increase was from ${interval(m, k)}.`,
@@ -542,7 +546,7 @@ function surfaceLine(m: LineModel, r: Random): Surface | null {
         feedback: `From ${interval(m, k)} the value changed by ${d[k - 1]! > 0 ? "+" : "−"}${Math.abs(d[k - 1]!)}; the greatest increase was ${d[upBest - 1]} from ${interval(m, upBest)}.`,
       });
     }
-    if (kind === 2) {
+    if (kind === 2 && downClear) {
       const k = r(1, m.n - 1);
       pool.push({
         text: `The greatest decrease was from ${interval(m, k)}.`,
