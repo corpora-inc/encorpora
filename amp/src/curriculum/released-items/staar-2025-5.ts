@@ -220,10 +220,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["expression.order-of-operations"],
       demand:
         "Find the first step of a multi-step simplification where bracketed operations were skipped",
-      status: "partial",
-      templateIds: ["operation-order"],
+      status: "covered",
+      templateIds: ["expression-after-first-step", "operation-order"],
       limitations:
-        "operation-order evaluates an expression with parentheses; locating an error in a shown solution is not practiced.",
+        "expression-after-first-step first-wrong-line shows four lines of a student's simplification of a whole-number expression with a bracketed product and asks for the first line with a mistake, where the bracket is skipped at line 2 or 3 or an arithmetic slip is made at line 4.",
     },
     {
       item: {

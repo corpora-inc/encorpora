@@ -313,13 +313,15 @@ export const staar2024Grade8 = defineLedger(
       item: { number: "24", page: "rationale PDF p.24" },
       responseFormat: "choice",
       standards: ["TEKS.8.4.12.D"],
-      archetypeIds: ["finance.simple-interest"],
+      archetypeIds: ["finance.simple-interest", "percent.of"],
       demand:
         "Find the closest account balance after two years of simple interest",
-      status: "partial",
+      status: "covered",
       templateIds: ["percent-applications"],
       limitations:
-        "percent-applications finds the simple-interest rate or amount; adding the interest to the principal for the balance is not practiced.",
+        "percent-applications asks how much is in an account after 2 to 5 years of simple interest on the amount deposited, so the balance is the principal plus the interest. The template is linked to the percent archetype, which this row now also lists.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "25", page: "rationale PDF p.25" },

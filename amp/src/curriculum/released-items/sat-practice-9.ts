@@ -50,10 +50,14 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["linear.solve"],
       demand:
         "Choose the equation produced by one inverse-operation step of a two-step linear equation",
-      status: "partial",
-      templateIds: ["two-step-equation", "equation-step-property"],
+      status: "covered",
+      templateIds: [
+        "equation-after-one-step",
+        "two-step-equation",
+        "equation-step-property",
+      ],
       limitations:
-        "two-step-equation is numeric (solves fully); equation-step-property names the property for a step. No template asks to choose the equivalent intermediate equation.",
+        "equation-after-one-step undo-constant, divide-grouped and undo-fraction give a two-step linear equation and one named or inverse step, and offer the resulting equation among one-side and wrong-sign slips; solving to the final value is practiced by two-step-equation.",
     },
     {
       section: "Math module 1",
@@ -283,10 +287,12 @@ export const satPractice9 = defineLedger(
       standards: ["sat.psda.percentages"],
       archetypeIds: ["percent.of"],
       demand: "Find what percent one quantity is of another",
-      status: "partial",
-      templateIds: ["percent-of"],
+      status: "covered",
+      templateIds: ["percent-forms-and-parts", "percent-of"],
       limitations:
-        "percent-of only asks for p% of a quantity; no template solves for the percent itself.",
+        "percent-forms-and-parts asks what percent one quantity is of another by numeric entry (a count out of a whole of 8 to 200 or a table of 50), the entry the item requires; percent-of asks the forward task.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Math module 1",

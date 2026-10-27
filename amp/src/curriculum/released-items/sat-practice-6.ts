@@ -515,10 +515,10 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["linear.structure"],
       demand:
         "Identify an equation with the same solution by dividing both sides of a grouped equation by its factor",
-      status: "partial",
-      templateIds: ["equation-step-property"],
+      status: "covered",
+      templateIds: ["equation-after-one-step", "equation-step-property"],
       limitations:
-        "Template names the property behind a step or finds a broken step; it does not ask which transformed equation is equivalent.",
+        "equation-after-one-step divide-grouped divides both sides of a(x + b) = c by the factor a and offers one equation among slips that divide one side only or divide inside the group.",
     },
     {
       section: "Math module 2",

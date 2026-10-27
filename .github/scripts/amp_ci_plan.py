@@ -78,7 +78,7 @@ def _sources(root):
 
 
 def oracle_consumers(path, root):
-    """Every file that names the oracle, directly or through scripts that use it."""
+    """Consumers reached through literal references or the math-review discovery glob."""
     texts = {}
     for name, file in _sources(root):
         try:
@@ -88,14 +88,23 @@ def oracle_consumers(path, root):
     def names(stem):
         return re.compile(r'(?<![\w-])' + re.escape(stem) + r'(?![\w-])')
     users = {path}
-    pending = [Path(path).stem]
+    pending = [path]
     while pending:
-        pattern = names(pending.pop())
+        current = Path(pending.pop())
+        pattern = names(current.stem)
+        # discover_family_oracles imports every matching sibling, even without
+        # a literal module reference. Include its dispatcher and follow its users.
+        dispatcher = 'amp/scripts/independent-math-review.py'
+        if (current.parent.as_posix() == 'amp/scripts'
+                and current.match('*_math_oracle.py')
+                and dispatcher in texts and dispatcher not in users):
+            users.add(dispatcher)
+            pending.append(dispatcher)
         for name, text in texts.items():
             if (name not in users and name.startswith('amp/scripts/') and name.endswith('.py')
                     and pattern.search(text)):
                 users.add(name)
-                pending.append(Path(name).stem)
+                pending.append(name)
     patterns = [names(Path(user).stem) for user in users]
     return sorted(name for name, text in texts.items() if name not in users
                   and any(pattern.search(text) for pattern in patterns))

@@ -17,6 +17,7 @@ import {
   normalizeAnswer,
 } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
+import { withLegacySurfaces } from "../src/math/number-domain-axes";
 
 const ids = [
   "circle-circumference-coefficient",
@@ -111,8 +112,8 @@ async function main() {
         edition,
         lessonId: lesson.id,
         problems,
-        replayed: problems.map((p) =>
-          generateProblem(templateId, p.public.seed),
+        replayed: withLegacySurfaces(() =>
+          problems.map((p) => generateProblem(templateId, p.public.seed)),
         ),
         workbookHtml: publicationHtml(lesson, "workbook", edition),
         solutionsHtml: publicationHtml(lesson, "solutions", edition),

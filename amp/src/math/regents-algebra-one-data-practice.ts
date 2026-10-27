@@ -635,13 +635,13 @@ export const quartileList = chainFamily({
     const part = upper ? sorted.slice(half) : sorted.slice(0, half);
     const q = median(part);
     return numberSurface({
-      prompt: `A data set has ${m.values.length} values: $${m.values.join(",\\ ")}$. The ${upper ? "upper" : "lower"} quartile is the median of the ${upper ? "upper" : "lower"} half of the ordered data. What is the ${upper ? "upper" : "lower"} quartile?`,
+      prompt: `A data set has ${m.values.length} values: ${m.values.join(", ")}. The ${upper ? "upper" : "lower"} quartile is the median of the ${upper ? "upper" : "lower"} half of the ordered data. What is the ${upper ? "upper" : "lower"} quartile?`,
       answer: String(q),
       label: upper ? "Upper quartile" : "Lower quartile",
       hint: `Put the ${m.values.length} values in order from least, ${sorted[0]}, to greatest, ${sorted[sorted.length - 1]}, repeating any value that appears more than once. Split the list into two halves of ${half} values and look at the ${upper ? "upper" : "lower"} half.`,
       explanation: [
-        `Ordered: $${sorted.join(",\\ ")}$.`,
-        `The ${upper ? "upper" : "lower"} half is $${part.join(",\\ ")}$.`,
+        `Ordered: ${sorted.join(", ")}.`,
+        `The ${upper ? "upper" : "lower"} half is ${part.join(", ")}.`,
         part.length % 2
           ? `The median of ${part.length} values is the middle one, ${q}.`
           : `The median of ${part.length} values is the mean of the two middle values, $(${part[part.length / 2 - 1]}+${part[part.length / 2]})\\div2=${q}$.`,

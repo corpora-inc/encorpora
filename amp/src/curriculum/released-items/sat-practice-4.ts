@@ -49,10 +49,16 @@ export const satPractice4 = defineLedger(
       standards: ["sat.psda.percentages"],
       archetypeIds: ["percent.of"],
       demand: "Find what percent one whole number is of another",
-      status: "partial",
-      templateIds: ["percent-of", "percent-applications"],
+      status: "covered",
+      templateIds: [
+        "percent-forms-and-parts",
+        "percent-of",
+        "percent-applications",
+      ],
       limitations:
-        "percent-of only asks the forward task (p% of N); percent-applications finds a rate only inside interest, tax or error contexts. No bare 'what percent of B is A' practice.",
+        "percent-forms-and-parts (numeric entry; its choices would be plain numbers) asks what percent a part is of a whole from a stated count of a whole of 8 to 200 or from a table of 50 students, so the task is practiced; percent-of asks the forward task.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Math module 1",

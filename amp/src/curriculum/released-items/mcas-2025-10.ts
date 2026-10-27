@@ -53,9 +53,9 @@ export const mcasGrade10 = defineLedger(
       demand:
         "Choose the table that names the property justifying each step of a linear equation's solution",
       status: "partial",
-      templateIds: ["equation-step-property"],
+      templateIds: ["step-reason-table", "equation-step-property"],
       limitations:
-        "Single-step reason practice does not establish a complete multi-step justification.",
+        "step-reason-table shows a two-step, fraction-coefficient or distribute-first solution and offers one list that names the property for each step, but its choices are lists, not the item's tables, and no template renders a choice as a table grid.",
     },
     {
       section: "Session 1",
@@ -333,12 +333,15 @@ export const mcasGrade10 = defineLedger(
       responseFormat: "choice",
       calculator: "permitted",
       standards: ["A-SSE.A.1"],
-      archetypeIds: ["expression.parts-names"],
+      archetypeIds: ["expression.parts-names", "expression.parts"],
       demand:
         "Choose the table that names the coefficient, constant, exponent and variable of a quadratic expression",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family names the parts of an expression.",
+      status: "partial",
+      templateIds: ["label-expression-parts"],
+      limitations:
+        "label-expression-parts (multi-part-choice-v1) labels the parts of expressions such as 3x^2+5x+7, one picker per part; the item chooses one table that names the coefficient, constant, exponent and variable of a quadratic expression, a single choice.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Session 2",

@@ -73,10 +73,14 @@ export const staar2024Grade5 = defineLedger(
       archetypeIds: ["expression.order-of-operations"],
       demand:
         "Choose the expression equal to a bracketed decimal expression after its inner product is evaluated",
-      status: "partial",
-      templateIds: ["operation-order", "staar-nested-grouping"],
+      status: "covered",
+      templateIds: [
+        "expression-after-first-step",
+        "operation-order",
+        "staar-nested-grouping",
+      ],
       limitations:
-        "operation-order and staar-nested-grouping evaluate whole-number expressions; choosing the intermediate form of an expression with decimal factors is not practiced.",
+        "expression-after-first-step first-step-result gives a decimal expression in tenths with a bracketed product and offers the expression after only the first step among skipped-step and left-to-right slips.",
     },
     {
       item: { number: "5", page: "rationale PDF p.5" },
@@ -163,10 +167,12 @@ export const staar2024Grade5 = defineLedger(
       standards: ["TEKS.5.4.9.A"],
       archetypeIds: ["data.stem-leaf-read"],
       demand: "Choose the stem-and-leaf plot that shows a team's listed wins",
-      status: "partial",
-      templateIds: ["stem-leaf-read"],
+      status: "covered",
+      templateIds: ["stem-leaf-read", "stem-leaf-construct"],
       limitations:
-        "stem-leaf-read reads values from a plot; no family chooses the plot that matches a data list.",
+        "stem-leaf-construct (single-choice-v1) lists 9 to 12 data values and asks which stem-and-leaf plot shows them, with plots that drop or repeat a leaf, leave leaves unordered or use other stems as the wrong choices; stem-leaf-read reads values from a plot.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "12", page: "rationale PDF p.12" },
@@ -175,10 +181,14 @@ export const staar2024Grade5 = defineLedger(
       archetypeIds: ["fractions.add-subtract-unlike"],
       demand:
         "Add three distances, one written as a decimal, to find total miles ridden",
-      status: "partial",
-      templateIds: ["add-fractions", "unlike-fraction-difference"],
+      status: "covered",
+      templateIds: [
+        "fraction-term-chain",
+        "add-fractions",
+        "unlike-fraction-difference",
+      ],
       limitations:
-        "STAAR interaction: equation editor. add-fractions adds two fractions; a third addend and a decimal that must be renamed as a fraction are not practiced.",
+        "fraction-term-chain decimal-among-fractions adds three distances, one a decimal and two fractions or mixed numbers with denominators from 2 to 10, answered by numeric entry. The STAAR equation editor is replaced by the same fraction, decimal or whole-number entry.",
     },
     {
       item: { number: "13", page: "rationale PDF p.13" },
@@ -221,10 +231,14 @@ export const staar2024Grade5 = defineLedger(
       archetypeIds: ["fractions.add-subtract-unlike"],
       demand:
         "Evaluate a sum and difference of three fractions with denominators twelve, five and ten",
-      status: "partial",
-      templateIds: ["add-fractions", "unlike-fraction-difference"],
+      status: "covered",
+      templateIds: [
+        "fraction-term-chain",
+        "add-fractions",
+        "unlike-fraction-difference",
+      ],
       limitations:
-        "add-fractions adds two fractions and unlike-fraction-difference subtracts two; a three-term expression with three different denominators is not practiced.",
+        "fraction-term-chain sum-and-difference evaluates a sum and a difference of three proper fractions, including denominators 12, 5 and 10; choices are exact values, so numeric entry practices the same answer.",
     },
     {
       item: { number: "17", page: "rationale PDF p.18" },

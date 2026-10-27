@@ -176,8 +176,19 @@ nav button {
     font-size: 18px;
   }
   /* Keep both account columns visible inside the phone's scrollbar gutters. */
-  .problem-content[data-template="interest-table-type"] .question > .math:has(.mtable) {
+  .problem-content[data-template="interest-table-type"]
+    .question
+    > .math:has(.mtable),
+  .problem-content[data-template="interest-compare-years"]
+    .question
+    > .math:has(.mtable) {
     font-size: 16px;
+  }
+  /* A three-factor polynomial must fit with its closing punctuation. */
+  .problem-content[data-template="shifted-polynomial-features"]
+    .question
+    > .math {
+    font-size: 18px;
   }
 }
 .problem-content .figure {
