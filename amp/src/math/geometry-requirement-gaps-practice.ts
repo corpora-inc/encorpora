@@ -1162,6 +1162,14 @@ const sequenceText = (ops: Op[]) => {
   const text = ops.map((op) => op.text).join(", then ");
   return text.charAt(0).toUpperCase() + text.slice(1);
 };
+/** Option-length form: dilations and rotations are about the origin, stated in the prompt. */
+const briefSequenceText = (ops: Op[]) =>
+  sequenceText(
+    ops.map((op) => ({
+      ...op,
+      text: op.text.replace(" about the origin", ""),
+    })),
+  );
 const maps = (ops: Op[], from: Pt[], to: Pt[]) =>
   from.every((p, i) => {
     const image = run(ops, p);
@@ -1227,16 +1235,16 @@ function failingSequences(
   from: Pt[],
   to: Pt[],
   feedback: (ops: Op[]) => string,
+  text: (ops: Op[]) => string = sequenceText,
 ): Wrong[] {
-  const seen = new Set([sequenceText(correct)]);
+  const seen = new Set([text(correct)]);
   // Different wordings can be the same transformation (a half-turn commutes with
   // a translation reversed), so distractors must also differ in effect.
   const effects = new Set<string>();
-  const effect = (ops: Op[]) =>
-    from.map((p) => ptText(run(ops, p))).join(";");
+  const effect = (ops: Op[]) => from.map((p) => ptText(run(ops, p))).join(";");
   const out: Wrong[] = [];
   for (const ops of pool) {
-    const label = sequenceText(ops);
+    const label = text(ops);
     if (seen.has(label) || maps(ops, from, to) || effects.has(effect(ops)))
       continue;
     seen.add(label);
@@ -1589,10 +1597,10 @@ function similarityTransformation(r: Random): Built {
       [gx, gy + ay * q],
     ];
     const wrongSeq = (k: number) =>
-      `Yes: ${lc(sequenceText([dilate(k), translate(gx - x0 * k, gy - y0 * k)]))}`;
+      `Yes: ${lc(briefSequenceText([dilate(k), translate(gx - x0 * k, gy - y0 * k)]))}`;
     return {
       variant,
-      prompt: `Triangles $ABC$ and $DEF$ are shown, with $A\\to D$, $B\\to E$, $C\\to F$. Two figures are similar exactly when some sequence of dilations and rigid motions maps one onto the other. Are $ABC$ and $DEF$ similar?`,
+      prompt: `Triangles $ABC$ and $DEF$ are shown, with $A\\to D$, $B\\to E$, $C\\to F$. Two figures are similar exactly when some sequence of dilations and rigid motions maps one onto the other. Dilations and rotations are about the origin. Are $ABC$ and $DEF$ similar?`,
       figure: trianglePair(from, to, "Triangles ABC and DEF on a grid"),
       hint: `Compare the horizontal leg $AB$ with $DE$ and the vertical leg $AC$ with $DF$ by counting grid units. A dilation multiplies every length by the same factor.`,
       explanation: [
@@ -1667,15 +1675,16 @@ function similarityTransformation(r: Random): Built {
     to,
     (candidate) =>
       `Apply this to $A$ at $${ptText(from[0]!)}$: it ends at $${ptText(run(candidate, from[0]!))}$, but $D$ is at $${ptText(to[0]!)}$.`,
+    briefSequenceText,
   );
   if (wrongSeq.length < 3) throw new Error("Insufficient distinct sequences");
   const fig = trianglePair(from, to, "Triangles ABC and DEF on a grid");
-  const correct = sequenceText(ops);
+  const correct = briefSequenceText(ops);
   if (variant === "decide-similar") {
     const falseYes = wrongSeq[0]!;
     return {
       variant,
-      prompt: `Triangles $ABC$ and $DEF$ are shown, with $A\\to D$, $B\\to E$, $C\\to F$. Two figures are similar exactly when some sequence of dilations and rigid motions maps one onto the other. Are $ABC$ and $DEF$ similar, and why?`,
+      prompt: `Triangles $ABC$ and $DEF$ are shown, with $A\\to D$, $B\\to E$, $C\\to F$. Two figures are similar exactly when some sequence of dilations and rigid motions maps one onto the other. Dilations and rotations are about the origin. Are $ABC$ and $DEF$ similar, and why?`,
       figure: fig,
       hint: `Compare the grid steps along $AB$ and $DE$, then along $BC$ and $EF$. If every side of $DEF$ is the same multiple of the matching side of $ABC$, a dilation by that multiple, followed by rigid motions, can match them.`,
       explanation: [
@@ -1701,7 +1710,7 @@ function similarityTransformation(r: Random): Built {
   }
   return {
     variant,
-    prompt: `Triangle $DEF$ is similar to triangle $ABC$, with $A\\to D$, $B\\to E$, $C\\to F$. Which sequence of a dilation and rigid motions maps $ABC$ onto $DEF$? Dilations are about the origin, and the steps happen in the order listed.`,
+    prompt: `Triangle $DEF$ is similar to triangle $ABC$, with $A\\to D$, $B\\to E$, $C\\to F$. Which sequence of a dilation and rigid motions maps $ABC$ onto $DEF$? Dilations and rotations are about the origin, and the steps happen in the order listed.`,
     figure: fig,
     hint: `Compare the length of $AB$ with $DE$ by counting grid steps to find the dilation factor. Then follow where the dilated copy of $A$ must be moved to reach $D$ at $${ptText(to[0]!)}$.`,
     explanation: [
