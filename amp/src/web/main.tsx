@@ -6,6 +6,7 @@ import { router } from "./app/router";
 import "./app/styles";
 import { captureOpenAIEntry } from "./lib/openai-acquisition";
 import { startEngagement } from "./lib/engagement";
+import { watchForNewRelease } from "./lib/app-recovery";
 import { trackSessionStart, trackGooglePage } from "./lib/analytics";
 // After consent-entry has removed any private fragment from the URL.
 captureOpenAIEntry();
@@ -16,6 +17,7 @@ router.subscribe("onResolved", () => {
 });
 trackGooglePage();
 trackSessionStart();
+watchForNewRelease();
 createRoot(document.getElementById("root")!).render(
   <Providers>
     <RouterView />

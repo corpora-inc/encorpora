@@ -2,6 +2,11 @@ import { observePurchaseRequest } from "./purchase-analytics";
 import type { z } from "zod";
 import { AppError } from "./AppError";
 import { validationPaths } from "./batch-capability-fallback";
+import {
+  buildIsStale,
+  reloadIntoCurrentRelease,
+  signedOut,
+} from "./app-recovery";
 const messages: Record<string, string> = {
   gift_unavailable:
     "This invitation is no longer available. Return to your access page to check your options.",
@@ -39,6 +44,7 @@ const messages: Record<string, string> = {
   parental_consent_required: "Continue setup to review parent consent.",
   license_required: "Choose a plan for this learner before practicing.",
   sign_in_required: "Your session ended. Sign in again to continue.",
+  "Sign in to continue": "Your session ended. Sign in again to continue.",
   invalid_family_request: "Check the learner details and try again.",
   family_service_unavailable: "Family details could not be loaded. Try again.",
   notice_changed:
@@ -79,6 +85,13 @@ const messages: Record<string, string> = {
   "Too Many Requests":
     "Too many requests from this network. Wait a few minutes, then try again.",
 };
+const errorCode = (data: unknown) =>
+  data &&
+  typeof data === "object" &&
+  "error" in data &&
+  typeof data.error === "string"
+    ? data.error
+    : "";
 export async function request<T>(
   path: string,
   schema: z.ZodType<T>,
@@ -138,6 +151,28 @@ export async function request<T>(
   const requestId = response.headers.get("x-request-id");
   const data: unknown = await response.json().catch(() => null);
   checkAborted();
+  // A tab running an older release than the API: a missing route or a
+  // rejected sign-in reloads into the current release rather than reporting a
+  // failure the visitor didn't cause. Other errors still show, so a filled-in
+  // form is never wiped by a reload.
+  if (
+    (response.status === 401 || response.status === 404) &&
+    (await buildIsStale())
+  ) {
+    const reloading = reloadIntoCurrentRelease();
+    if (reloading) return reloading;
+  }
+  // The server ended this parent's sign-in: go to sign-in instead of failing.
+  // A free-practice request reports the parent's sign-in the same way; only
+  // "This free trial has ended" belongs to the practice screens.
+  if (
+    response.status === 401 &&
+    (!options.trial || errorCode(data) === "Sign in to continue") &&
+    signedOut()
+  ) {
+    observe("cancelled");
+    return new Promise<never>(() => {});
+  }
   if (!response.ok) {
     const code =
       data &&
