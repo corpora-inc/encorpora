@@ -1,0 +1,156 @@
+/* Single-choice rows and the button that discloses them. Every row and the
+   button keep one fixed border width, so selection, focus and hover change
+   color only and never move anything. */
+.list {
+  display: grid;
+  gap: var(--space-1);
+  outline: none;
+}
+.option,
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: var(--target-size);
+  margin: 0;
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-2);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.option:hover,
+.trigger:hover {
+  filter: none;
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.option[aria-selected="true"] {
+  border-color: var(--color-primary);
+}
+.list:focus .option[data-active] {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+.trigger:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+.trigger[aria-expanded="true"] {
+  border-color: var(--color-primary);
+}
+.mark {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  visibility: hidden;
+}
+.option[aria-selected="true"] .mark {
+  visibility: visible;
+}
+.text {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+.label {
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+/* Words wrap as whole units, never at a hyphen. Only a single word wider
+   than the whole row may break, so it stays inside the row instead of
+   spilling out of it or being cut off. */
+.word {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.detail {
+  color: var(--color-muted-text);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.trigger:hover .detail,
+.option:hover .detail {
+  color: var(--color-muted-text);
+}
+.trigger {
+  padding-left: var(--space-3);
+}
+.chevron {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--motion-fast) ease;
+}
+.trigger[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+.disclosure {
+  position: relative;
+}
+/* Laid over the content below the button, never pushing it down. */
+.popover {
+  position: absolute;
+  z-index: 2;
+  top: calc(100% + var(--space-1));
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  max-height: min(320px, 55dvh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius-control) + var(--space-1));
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  box-shadow: 0 8px 30px var(--color-shadow);
+  animation: listbox-in var(--motion-fast) ease-out;
+}
+.popover .option {
+  border-color: transparent;
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+}
+.popover .option:hover {
+  background: var(--color-menu-hover);
+  color: var(--color-on-menu);
+}
+.popover .option[aria-selected="true"] {
+  border-color: var(--color-primary);
+}
+@keyframes listbox-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
