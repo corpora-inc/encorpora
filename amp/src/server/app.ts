@@ -773,6 +773,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
               ),
             }
           : {}),
+        ...(problem.variant ? { variant: problem.variant } : {}),
       };
       const before = await tx.masteredSkills();
       await tx.saveAttempt(outcome);

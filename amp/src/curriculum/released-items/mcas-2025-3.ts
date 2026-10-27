@@ -227,7 +227,7 @@ export const mcasGrade3 = defineLedger(
       status: "partial",
       templateIds: ["fl-equation-truth-mult-div", "mcas-true-fact-equations"],
       limitations:
-        "Three of six multiplication and division facts are selected as true, but every equation has the operation on the left; equations written with the result first, such as 64 = 8 times 8 and 7 = 63 divided by 8, are not practiced.",
+        "Three of six multiplication and division facts are selected as true, with the result written first, last or mixed in one set (orientation axis); a fact of a number times itself, such as 64 = 8 times 8, is not generated.",
     },
     {
       section: "Session 2",
