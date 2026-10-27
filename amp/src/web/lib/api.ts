@@ -2,6 +2,11 @@ import { observePurchaseRequest } from "./purchase-analytics";
 import type { z } from "zod";
 import { AppError } from "./AppError";
 import { validationPaths } from "./batch-capability-fallback";
+import {
+  buildIsStale,
+  reloadIntoCurrentRelease,
+  signedOut,
+} from "./app-recovery";
 const messages: Record<string, string> = {
   gift_unavailable:
     "This invitation is no longer available. Return to your access page to check your options.",
@@ -39,6 +44,7 @@ const messages: Record<string, string> = {
   parental_consent_required: "Continue setup to review parent consent.",
   license_required: "Choose a plan for this learner before practicing.",
   sign_in_required: "Your session ended. Sign in again to continue.",
+  "Sign in to continue": "Your session ended. Sign in again to continue.",
   invalid_family_request: "Check the learner details and try again.",
   family_service_unavailable: "Family details could not be loaded. Try again.",
   notice_changed:
@@ -138,6 +144,17 @@ export async function request<T>(
   const requestId = response.headers.get("x-request-id");
   const data: unknown = await response.json().catch(() => null);
   checkAborted();
+  if (!response.ok && response.status < 500) {
+    // A tab running an older release than the API: reload into the current
+    // one rather than report a failure the visitor didn't cause.
+    if (await buildIsStale()) return reloadIntoCurrentRelease();
+    // The server ended this parent sign-in: go to sign-in with the place kept.
+    // A free-practice token is the device's own and is handled by its screens.
+    if (response.status === 401 && !options.trial && signedOut()) {
+      observe("cancelled");
+      return new Promise<never>(() => {});
+    }
+  }
   if (!response.ok) {
     const code =
       data &&

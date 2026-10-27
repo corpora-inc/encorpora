@@ -33,6 +33,7 @@ import {
 import { chosenPlan } from "../lib/pending-trial";
 import { hasInitialConsentChallenge } from "../consent-entry";
 import { hasPurchaseReturn } from "../purchase-return";
+import { knownStale, onSignedOut } from "../lib/app-recovery";
 const searchSchema = z
   .object({
     return: z
@@ -115,6 +116,15 @@ const root = createRootRoute({
     ],
   },
   errorComponent: RouterError,
+  // A tab already found to run an older release turns its next navigation
+  // into a full page load of the same URL. The current screen stays painted
+  // until the new page paints, so no loading screen shows in between.
+  beforeLoad: ({ location }) => {
+    if (nativeRuntime || !knownStale()) return;
+    window.location.assign(location.href);
+    return new Promise<never>(() => {});
+  },
+  pendingMs: 600_000,
 });
 const legacy = lazyRouteComponent(() => import("./LegacyApp"), "LegacyApp");
 const auth = lazyRouteComponent(
@@ -491,6 +501,52 @@ export const router = createRouter({
   defaultPendingComponent: LoadingScreen,
   defaultPendingMs: 250,
   defaultPendingMinMs: 0,
+});
+const SIGNED_OUT_KEY = "amp.signed-out-redirect";
+/** True when this tab was sent to sign-in moments ago: a second 401 then is
+ * not an ended session, and redirecting again would loop. */
+function redirectedRecently() {
+  try {
+    const at = Number(sessionStorage.getItem(SIGNED_OUT_KEY));
+    sessionStorage.setItem(SIGNED_OUT_KEY, String(Date.now()));
+    return Date.now() - at < 30_000;
+  } catch {
+    return false;
+  }
+}
+// The server ended this parent's sign-in (expired, or signed out elsewhere).
+// Free practice returns to the free-account signup, everything else to
+// sign-in, with the place kept. The destination is loaded before the switch,
+// so the current screen stays until it is replaced in one step; the session
+// is cleared only after, so no mounted screen renders without one.
+onSignedOut(() => {
+  const { pathname, search } = router.state.location;
+  if (/^\/(sign-in|sign-up|reset-password)(\/|$)/.test(pathname)) return false;
+  if (redirectedRecently()) return false;
+  const carry = continuationSearch(search);
+  const clear = () => {
+    queryClient.setQueryData(sessionOptions.queryKey, null);
+    queryClient.removeQueries({ queryKey: ["account"] });
+  };
+  if (pathname === "/try" || pathname.startsWith("/try/")) {
+    const target = {
+      to: "/sign-up",
+      search: { ...carry, return: "free-practice" },
+    } as const;
+    void router
+      .preloadRoute(target)
+      .catch(() => undefined)
+      .then(() => router.navigate({ ...target, replace: true }))
+      .then(clear);
+  } else {
+    const target = { to: "/sign-in", search: carry } as const;
+    void router
+      .preloadRoute(target)
+      .catch(() => undefined)
+      .then(() => router.navigate({ ...target, replace: true }))
+      .then(clear);
+  }
+  return true;
 });
 declare module "@tanstack/react-router" {
   interface Register {
