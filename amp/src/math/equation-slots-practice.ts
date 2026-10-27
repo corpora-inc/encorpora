@@ -829,7 +829,11 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
           ],
           "Table of x and y values",
         ),
-        hint: `When $x$ goes up by ${step}, $y$ goes up by ${ys[1]! - ys[0]!}. Use that to find the number multiplied by $x$, then use the first pair, $x = ${xs[0]}$ and $y = ${ys[0]}$, to find the constant.`,
+        hint: `${
+          step === 1
+            ? "When $x$ goes up by 1, look at how much $y$ goes up. Use that change to find the number multiplied by $x$,"
+            : `When $x$ goes up by ${step}, $y$ goes up by ${ys[1]! - ys[0]!}. Use that to find the number multiplied by $x$,`
+        } then use the first pair, $x = ${xs[0]}$ and $y = ${ys[0]}$, to find the constant.`,
         explanation: [
           `Each time $x$ increases by ${step}, $y$ increases by ${a * step}, so the multiplier is $${a * step}\\div ${step}=${a}$.`,
           `For $x=${xs[0]}$: $${a}\\cdot ${xs[0]}=${a * xs[0]!}$, and $y=${ys[0]}$, so the constant is ${minus ? "subtracted" : "added"}: ${b}.`,
