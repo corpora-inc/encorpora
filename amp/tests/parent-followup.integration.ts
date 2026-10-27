@@ -15,7 +15,10 @@ import {
   unsubscribe,
 } from "../src/parent-followup/repository.js";
 import { deliverParentFollowup } from "../src/parent-followup/worker.js";
-import { signupNotice } from "../src/parent-followup/contracts.js";
+import {
+  explicitNewsletterNotice,
+  signupNotice,
+} from "../src/parent-followup/contracts.js";
 import { retainAdClick } from "../src/advertising/click-evidence.js";
 import { redactUrl } from "../src/server/app.js";
 const config = {
@@ -114,7 +117,7 @@ test(
       const intent = await createSignupIntent(pool, {
         program: "az-esa",
         newsletter: true,
-        notice: signupNotice,
+        notice: explicitNewsletterNotice,
       });
       await completeSignup(pool, `amp.parent-signup=${intent}`, "parent");
       assert.equal(
@@ -142,6 +145,20 @@ test(
           )
         ).rows[0].newsletter,
         false,
+      );
+      // The default opt-in on a later sign-in never overrides an unsubscribe.
+      const again = await createSignupIntent(pool, {
+        newsletter: true,
+        notice: signupNotice,
+      });
+      await completeSignup(pool, `amp.parent-signup=${again}`, "parent");
+      assert.deepEqual(
+        (
+          await pool.query(
+            "SELECT newsletter, unsubscribed_at IS NOT NULL AS unsubscribed FROM amp_parent_followups WHERE user_id='parent'",
+          )
+        ).rows[0],
+        { newsletter: false, unsubscribed: true },
       );
 
       await parent("race");

@@ -2,7 +2,11 @@ import { eraseAccountAdClicks } from "../advertising/click-evidence.js";
 import { acquisitionToken } from "../advertising/acquisition.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { Pool } from "pg";
-import { signupIntentSchema, type SignupIntent } from "./contracts.js";
+import {
+  explicitNewsletterNotice,
+  signupIntentSchema,
+  type SignupIntent,
+} from "./contracts.js";
 export const signupCookie = "amp.parent-signup";
 const hash = (value: string) =>
   createHash("sha256").update(value).digest("hex");
@@ -92,8 +96,9 @@ export async function completeSignup(
           "INSERT INTO amp_parent_followup_outbox(id,user_id,stage) VALUES ($1,$2,$3)",
           [randomUUID(), userId, stage],
         );
-    } else if (intent.newsletter) {
-      // A fresh explicit opt-in changes the subscription, never restarts the trial sequence.
+    } else if (intent.newsletter && intent.notice === explicitNewsletterNotice) {
+      // A fresh checkbox opt-in changes the subscription, never restarts the
+      // trial sequence. The default opt-in never overrides an unsubscribe.
       await db.query(
         "UPDATE amp_parent_followups SET newsletter=true,unsubscribed_at=NULL WHERE user_id=$1",
         [userId],
