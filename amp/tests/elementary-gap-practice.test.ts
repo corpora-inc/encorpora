@@ -1,6 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import {
+  generateProblem,
+  generateProblemFor,
+  gradeAnswer,
+  templates,
+} from "../src/math/engine";
+import { figureCapabilities } from "../src/math/contracts";
+import { sceneCapabilitiesIn } from "../src/math/scene/index";
 import { methods } from "../src/content/problem-methods";
 import { principles } from "../src/content/problem-principles";
 import { lessons } from "../src/content/lessons";
@@ -269,6 +278,7 @@ test("rename-time-units: answers match a unit table", () => {
 test("read-thermometer: the answer is read from the bars of the figure", () => {
   for (const p of prompts("read-thermometer")) {
     const chart = fig(p).scene.elements[0];
+    if (chart.type === "thermometer") continue; // the drawn surface: below
     const values: number[] = chart.bars.map((b: { value: number }) => b.value);
     for (const v of values) {
       assert.equal(v % chart.step, 0);
@@ -1253,4 +1263,77 @@ test("data-list-for-display: only the keyed list gives the displayed counts", ()
       p.public.prompt,
     );
   }
+});
+
+test("read-thermometer: the bar surface is byte-identical, and drawn thermometers carry the same readings", () => {
+  const golden = JSON.parse(
+    readFileSync(
+      new URL("./fixtures/scene-v2-legacy-digests.json", import.meta.url),
+      "utf8",
+    ),
+  )["read-thermometer"] as string[];
+  const canonical = (value: unknown): unknown =>
+    Array.isArray(value)
+      ? value.map(canonical)
+      : value && typeof value === "object"
+        ? Object.fromEntries(
+            Object.entries(value as Record<string, unknown>)
+              .sort(([a], [b]) => (a < b ? -1 : 1))
+              .map(([k, v]) => [k, canonical(v)]),
+          )
+        : typeof value === "number" && !Number.isInteger(value)
+          ? Number(value.toFixed(9))
+          : value;
+  const digest = (problem: { variant?: unknown }) => {
+    const { variant, ...rest } = problem;
+    void variant;
+    return createHash("sha256")
+      .update(JSON.stringify(canonical(rest)))
+      .digest("hex")
+      .slice(0, 16);
+  };
+  const older = figureCapabilities.filter((c) => c !== "scenes-v2");
+  const seen = new Set<string>();
+  golden.forEach((expected, i) => {
+    const seed = `legacy:${i}`;
+    const p = generateProblem("read-thermometer", seed);
+    const display = p.variant!.axes!.display!;
+    seen.add(display);
+    if (display === "bar-scale") {
+      assert.equal(digest(p), expected, seed);
+      assert.deepEqual(sceneCapabilitiesIn(p.public), []);
+      return;
+    }
+    // An older client gets the old problem for the same seed.
+    const old = generateProblemFor("read-thermometer", seed, older);
+    assert.equal(old.variant!.axes!.display, "bar-scale");
+    assert.equal(digest(old), expected, `${seed} for an older client`);
+    assert.deepEqual(sceneCapabilitiesIn(p.public), ["scenes-v2"]);
+    const els = fig(p).scene.elements as {
+      type: string;
+      reading: number;
+      minor: number;
+      max: number;
+      derived?: boolean;
+      label?: string;
+    }[];
+    assert.ok(els.every((e) => e.type === "thermometer"));
+    const readings = els.map((e) => e.reading);
+    for (const e of els) {
+      assert.equal(e.reading % e.minor, 0);
+      assert.ok(e.reading > 0 && e.reading <= e.max);
+    }
+    const expectedAnswer =
+      readings.length === 1
+        ? readings[0]!
+        : Math.abs(readings[0]! - readings[1]!);
+    assert.equal(Number(p.answer), expectedAnswer, seed);
+    // The asked-for reading is masked; the hint never states the answer.
+    if (readings.length === 1) {
+      assert.ok(els[0]!.derived);
+      assert.doesNotMatch(p.public.prompt, new RegExp(`\\b${p.answer}\\b`));
+    }
+    assert.doesNotMatch(p.hint, new RegExp(`(?<!\\d)${p.answer}(?!\\d)`));
+  });
+  assert.deepEqual([...seen].sort(), ["bar-scale", "thermometer"]);
 });

@@ -176,16 +176,38 @@ def parse_cell(cell):
     return Fraction(text)
 
 
+def circle_cells(public):
+    """The sector values a learner reads, from the sector table or the drawn
+    graph, as {name: value or None} with the column they are in."""
+    elements = public['figure']['scene']['elements']
+    require(len(elements) == 1, 'One circle-graph figure required')
+    figure = elements[0]
+    if figure['type'] == 'table':
+        require(figure['columns'] in (['Number'], ['Percent'], ['Angle']), 'Unknown sector column')
+        column = figure['columns'][0]
+        cells = {r['label']: (None if r['cells'][0] is None else parse_cell(r['cells'][0])) for r in figure['rows']}
+        require(len(cells) == len(figure['rows']), 'Duplicate sector labels')
+        return column, cells, None
+    require(figure['type'] == 'circleGraph', 'Sector table or circle graph required')
+    sectors = figure['sectors']
+    require(not any(s.get('derived') for s in sectors), 'No sector value is masked')
+    texts = [s.get('text') for s in sectors if s.get('text') is not None]
+    require(texts, 'Some sector is labeled')
+    kinds = {'%' if t.endswith('%') else '°' if t.endswith('°') else '' for t in texts}
+    require(len(kinds) == 1, 'Every label is in one unit')
+    column = {'%': 'Percent', '°': 'Angle', '': 'Number'}[kinds.pop()]
+    cells = {s['label']: (None if s.get('text') is None else parse_cell(s['text'])) for s in sectors}
+    require(len(cells) == len(sectors), 'Duplicate sector labels')
+    # The drawn sizes are the givens too: they must agree with the labels.
+    sizes = {s['label']: Fraction(s['value']) for s in sectors}
+    require(sum(sizes.values()) == 100, 'Drawn sector sizes are percents of the circle')
+    return column, cells, sizes
+
+
 def solve_circle(public):
     prompt = plain(public['prompt'])
     options = options_of(public)
-    elements = public['figure']['scene']['elements']
-    require(len(elements) == 1 and elements[0]['type'] == 'table', 'Sector table required')
-    table = elements[0]
-    require(table['columns'] in (['Number'], ['Percent'], ['Angle']), 'Unknown sector column')
-    column = table['columns'][0]
-    cells = {r['label']: (None if r['cells'][0] is None else parse_cell(r['cells'][0])) for r in table['rows']}
-    require(len(cells) == len(table['rows']), 'Duplicate sector labels')
+    column, cells, sizes = circle_cells(public)
     whole = {'Number': None, 'Percent': Fraction(100), 'Angle': Fraction(360)}[column]
     people = re.search(r'graph shows (?:the favorite \w+ of|how) (\d+) ', prompt)
     stated_count = Fraction(people[1]) if people else None
@@ -195,7 +217,15 @@ def solve_circle(public):
     else:
         full = re.search(r'full circle is (\d+)°|which is (\d+)°', prompt)
         require(full is None or int(full[1] or full[2]) == 360, 'The full circle is 360 degrees')
-    leftover = re.search(r'leaves out the last sector, (\w+)\. The sectors fill the whole circle', prompt)
+    if sizes is not None:
+        for name, value in cells.items():
+            require(value is None or value == sizes[name] / 100 * whole,
+                    f'Sector {name} is drawn at a size its label does not state')
+    leftover = re.search(
+        r'(?:leaves out|does not show the percent for) the last sector, (\w+)\. The sectors fill the whole circle', prompt)
+    if sizes is not None:
+        unlabeled = [k for k, v in cells.items() if v is None]
+        require(unlabeled == ([leftover[1]] if leftover else []), 'Only the named sector is unlabeled')
     if leftover:
         require(cells.get(leftover[1], 'x') is None, 'Left-out sector must have a blank cell')
         cells[leftover[1]] = whole - sum(v for v in cells.values() if v is not None)
@@ -370,6 +400,11 @@ def self_test():
             value['figure'] = figure
         return value
 
+    def graph(sectors):
+        return {'kind': 'scene', 'scene': {'v': 1, 'elements': [{
+            'id': 'graph', 'type': 'circleGraph',
+            'sectors': [{'label': k, 'value': v, **({'text': t} if t is not None else {})} for k, v, t in sectors]}]}}
+
     def table(columns, rows):
         return {'kind': 'scene', 'scene': {'v': 1, 'elements': [{
             'id': 'plot', 'type': 'table', 'columns': columns, 'corner': 'x',
@@ -399,6 +434,12 @@ def self_test():
         (public('circle-graph-read',
                 "A circle graph shows the favorite pet of families. The table lists the graph's sectors, one row for each. The table leaves out the last sector, Other. The sectors fill the whole circle, which is 360°. What is the central angle of the sector for Other?",
                 ['108°', '72°', '90°', '252°'], table(['Angle'], [('Dog', 180), ('Cat', 72), ('Other', None)])), 'o0'),
+        (public('circle-graph-read',
+                "The circle graph shows the favorite sport of 200 people. How many people are in the sector for Running?",
+                ['40', '20', '160', '41'], graph([('Soccer', 50, '50%'), ('Running', 20, '20%'), ('Other', 30, '30%')])), 'o0'),
+        (public('circle-graph-read',
+                "The circle graph shows the favorite pet of families. The graph does not show the percent for the last sector, Other. The sectors fill the whole circle, which is 360°. What is the central angle of the sector for Other?",
+                ['108°', '30°', '90°', '252°'], graph([('Dog', 50, '50%'), ('Cat', 20, '20%'), ('Other', 30, None)])), 'o0'),
         (public('best-display-choice',
                 'A store records its monthly sales for one year. You want to show whether sales rose or fell through the year. Which display fits best?',
                 ['Line graph', 'Circle graph', 'Histogram', 'Dot plot or stem-and-leaf plot']), 'o0'),
@@ -418,6 +459,24 @@ def self_test():
     ]
     for item, answer in cases:
         item['templateId']
+    # A drawn sector whose size disagrees with its label, or an extra
+    # unlabeled sector, is rejected.
+    drawn = [c for c in cases if c[0].get('figure', {}).get('scene', {}).get('elements', [{}])[0].get('type') == 'circleGraph']
+    require(len(drawn) == 2, 'Drawn circle-graph self-test cases present')
+    for item, answer in drawn:
+        for corrupt in ('size', 'blank'):
+            bad = copy.deepcopy(item)
+            sectors = bad['figure']['scene']['elements'][0]['sectors']
+            if corrupt == 'size':
+                sectors[0]['value'] += 5
+                sectors[1]['value'] -= 5
+            else:
+                sectors[0].pop('text')
+            try:
+                review_problem({'public': bad, 'answer': answer})
+            except ValueError:
+                continue
+            raise ValueError(f'Corrupt drawn circle graph ({corrupt}) was accepted')
     rejected = 0
 
     def reject(problem):

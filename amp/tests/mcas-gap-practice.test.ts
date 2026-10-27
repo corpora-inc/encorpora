@@ -6,7 +6,17 @@ import {
   mcasGapTemplates,
   type McasGapCase,
 } from "../src/math/mcas-gap-practice";
-import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import {
+  generateProblem,
+  generateProblemFor,
+  gradeAnswer,
+  templates,
+} from "../src/math/engine";
+import {
+  describeScene,
+  layoutScene,
+  sceneCapability,
+} from "../src/math/scene/index";
 import { methods } from "../src/content/problem-methods";
 import { principles } from "../src/content/problem-principles";
 import { lessons } from "../src/content/lessons";
@@ -393,6 +403,7 @@ test("prism pairs are unique and meet the stated condition", () => {
   for (const c of cases("mcas-prism-range-select")) {
     const response = selection(c);
     const vols = response.options.map((o) => {
+      if (c.axes!.prisms === "unit-cubes") return drawnPrismVolume(c, o.label);
       const m = /\$(\d+)\\times(\d+)\\times(\d+)\$/.exec(o.label)!;
       return Number(m[1]) * Number(m[2]) * Number(m[3]);
     });
@@ -456,6 +467,12 @@ test("cube prism statements agree with the packing arithmetic", () => {
     let m: RegExpExecArray | null;
     if ((m = /^(\d+) cubes fit along the length\.$/.exec(label)))
       return Number(m[1]) === a;
+    if (
+      (m = /^The prism is \$?(.+?)\$? units (long|wide|tall)\.$/.exec(label))
+    ) {
+      const count = { long: a, wide: b, tall: h }[m[2] as "long"];
+      return near(tex(m[1]!), count / n);
+    }
     if ((m = /Each small cube has a volume of \$(.+)\$ cubic unit/.exec(label)))
       return near(tex(m[1]!), 1 / n ** 3);
     if ((m = /^It takes (\d+) cubes/.exec(label)))
@@ -772,3 +789,112 @@ test("every family has a method, principle, lesson, one partial facet mapping an
     assert.ok(lesson.intuition?.trim() && lesson.example.steps.length > 0);
   }
 });
+
+/* ------------------------------------------- figure-surface sweep axes */
+
+type IsoCubes = {
+  type: "isoSolid";
+  id: string;
+  solid: { form: "cubes"; length: number; width: number; height: number };
+};
+const sceneOf = (c: McasGapCase) => {
+  const figure = c.problem.public.figure;
+  assert.equal(figure?.kind, "scene");
+  if (figure?.kind !== "scene") throw new Error("scene expected");
+  return figure.scene;
+};
+const isoSolids = (c: McasGapCase) =>
+  sceneOf(c).elements.filter((e) => e.type === "isoSolid") as IsoCubes[];
+/** Volume of "Prism X" read from its drawn unit cubes, never from the model. */
+function drawnPrismVolume(c: McasGapCase, label: string): number {
+  const letter = /^Prism ([A-E])$/.exec(label)![1];
+  const e = isoSolids(c).find((s) => s.id === `prism${letter}`)!;
+  return e.solid.length * e.solid.width * e.solid.height;
+}
+
+test("both figure surfaces of the prism families are reached and drawn from the model", () => {
+  for (const [id, axis, drawn] of [
+    ["mcas-prism-range-select", "prisms", "unit-cubes"],
+    ["mcas-cube-prism-statements", "prism", "drawn-cubes"],
+  ] as const) {
+    const values = new Set(cases(id).map((c) => c.axes?.[axis]));
+    assert.equal(values.size, 2, id);
+    for (const c of cases(id)) {
+      assert.deepEqual(c.problem.variant?.axes, { [axis]: c.axes![axis] });
+      if (c.axes![axis] !== drawn) {
+        assert.equal(c.problem.public.figure, undefined, id);
+        continue;
+      }
+      const scene = sceneOf(c);
+      assert.equal(sceneCapability(scene), "scenes-v1", id);
+      // The figure and its description never state a volume.
+      const said = describeScene(scene);
+      assert.doesNotMatch(said, /volume|cubic/i, id);
+      assert.doesNotMatch(JSON.stringify(scene), /cubic/, id);
+    }
+  }
+  for (const c of cases("mcas-prism-range-select")) {
+    if (c.axes!.prisms !== "unit-cubes") continue;
+    const model = c.model as { dims: number[][] };
+    assert.deepEqual(
+      isoSolids(c).map((e) => [e.solid.length, e.solid.width, e.solid.height]),
+      model.dims,
+    );
+    for (const o of selection(c).options)
+      assert.match(o.label, /^Prism [A-E]$/);
+    assert.match(promptOf(c), /1-centimeter cubes/);
+  }
+  for (const c of cases("mcas-cube-prism-statements")) {
+    if (c.axes!.prism !== "drawn-cubes") continue;
+    const m = c.model as { n: number; a: number; b: number; c: number };
+    const [solid] = isoSolids(c);
+    assert.deepEqual(
+      [solid!.solid.length, solid!.solid.width, solid!.solid.height],
+      [m.a, m.b, m.c],
+    );
+    const brace = sceneOf(c).elements.find((e) => e.type === "brace");
+    assert.equal(brace && "label" in brace && brace.label, `1/${m.n}`);
+    // The prompt no longer states the prism's dimensions.
+    assert.doesNotMatch(promptOf(c), /units long/);
+    assert.ok(
+      selection(c).options.some((o) =>
+        /^The prism is .* units (long|wide|tall)\.$/.test(o.label),
+      ),
+      "a measured-edge statement is shown",
+    );
+  }
+});
+
+test("drawn prisms stay countable on a 288 px phone stage", () => {
+  for (const id of ["mcas-prism-range-select", "mcas-cube-prism-statements"])
+    for (const c of cases(id)) {
+      const figure = c.problem.public.figure;
+      if (figure?.kind !== "scene") continue;
+      const layout = layoutScene({ ...figure.scene, width: 288 });
+      // One math unit is one cube edge.
+      assert.ok(
+        layout.scale >= 12,
+        `${id} ${c.problem.public.seed}: ${layout.scale}`,
+      );
+      assert.ok(layout.width <= 288 && layout.dropped.length === 0, id);
+    }
+});
+
+test("a client without scenes-v1 always receives the legacy prism surfaces", () => {
+  for (const id of ["mcas-prism-range-select", "mcas-cube-prism-statements"])
+    for (let i = 0; i < 60; i++) {
+      const seed = `mg:${i}`;
+      const old = generateProblemFor(id, seed, []);
+      assert.equal(old.public.figure, undefined, `${id} ${seed}`);
+      assert.deepEqual(
+        old.public,
+        mcasGapCase(id, seed, legacyOf(id)).problem.public,
+      );
+      const current = generateProblemFor(id, seed, ["scenes-v1"]);
+      assert.deepEqual(current.public, generateProblem(id, seed).public);
+    }
+});
+const legacyOf = (id: string): Record<string, string> =>
+  id === "mcas-prism-range-select"
+    ? { prisms: "edge-lengths" }
+    : { prism: "stated-edges" };

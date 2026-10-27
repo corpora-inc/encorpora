@@ -167,9 +167,15 @@ export const staar2024Grade7 = defineLedger(
       demand:
         "Find how many more commuters drive than bike from percents in a circle graph of one hundred fifty people",
       status: "covered",
-      templateIds: ["percent-of", "share-remainder-percent"],
+      templateIds: [
+        "percent-of",
+        "share-remainder-percent",
+        "circle-graph-read",
+      ],
       limitations:
-        "share-remainder-percent (difference-of-shares) finds the remaining share from three stated percents of a total up to 500 and the difference of two group counts; the circle graph is replaced by the written percents.",
+        "circle-graph-read (display: drawn-graph) reads percents from a drawn circle graph and finds how many more are in one sector than another; share-remainder-percent (difference-of-shares) covers totals up to 500 such as this item's 150.",
+      labeledBy: "agent:scene-components",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "12", page: "rationale PDF p.12" },

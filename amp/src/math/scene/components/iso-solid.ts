@@ -12,7 +12,10 @@ import type { FillRole, Point } from "../spec";
  *    `layer.k`); with `counts`, a running total beside each layer
  *    (`count.k`, derived);
  *  - `box`: a solid box with edges labeled in centimeters, one may be "?";
- *  - `composite`: two boxes of one depth side by side, the taller behind.
+ *  - `composite`: two boxes of one depth side by side, the taller behind;
+ *  - `steps` (scenes-v2): a stepped solid of unit cubes, columns from back to
+ *    front, each no taller than the one behind it, so every column's height
+ *    shows and the solid can be counted from the drawing.
  */
 const cube = z.number().int().min(1).max(6);
 const edge = z.number().int().min(1).max(12);
@@ -68,6 +71,21 @@ export const isoSolidSchema = z
         .refine(
           (c) => c.parts[0]!.height > c.parts[1]!.height,
           "The taller is behind",
+        ),
+      z
+        .object({
+          form: z.literal("steps"),
+          /** Cubes from front to back (the depth of every column). */
+          width: cube,
+          /** Column heights, back (left) to front (right). */
+          columns: z.array(cube).min(2).max(6),
+        })
+        .strict()
+        .refine(
+          (c) =>
+            c.columns.every((h, i) => i === 0 || h <= c.columns[i - 1]!) &&
+            c.columns.at(-1)! < c.columns[0]!,
+          "Each column is no taller than the one behind it, and some step down",
         ),
     ]),
   })
@@ -256,6 +274,24 @@ function draw(c: IsoSolid): Prim[] {
     }
     return prims;
   }
+  if (s.form === "steps") {
+    // Runs of equal height are one box ruled into cubes.
+    const prims: Prim[] = [];
+    let start = 0;
+    s.columns.forEach((h, i) => {
+      if (i + 1 < s.columns.length && s.columns[i + 1] === h) return;
+      prims.push(
+        ...isoBox(
+          [start, 0, 0],
+          [i + 1 - start, s.width, h],
+          true,
+          `step.${start}`,
+        ),
+      );
+      start = i + 1;
+    });
+    return prims;
+  }
   if (s.form === "box") {
     const given = [s.length, s.width, s.height];
     const known = given.filter((e) => e !== null).map((e) => e!.value);
@@ -330,7 +366,9 @@ function draw(c: IsoSolid): Prim[] {
 }
 
 registerComponent("isoSolid", {
-  maxScale: (c) => (c.solid.form === "cubes" ? 46 : 40),
+  capability: (c) => (c.solid.form === "steps" ? "scenes-v2" : "scenes-v1"),
+  maxScale: (c) =>
+    c.solid.form === "cubes" || c.solid.form === "steps" ? 46 : 40,
   compile(c) {
     return shifted(draw(c), c.at);
   },
@@ -338,6 +376,8 @@ registerComponent("isoSolid", {
     const s = c.solid;
     if (s.form === "cubes")
       return `A rectangular prism built from unit cubes: ${s.length} cubes long, ${s.width} cubes wide and ${s.height} cubes high. Some cubes are hidden behind the visible faces.${s.counts ? (reveal ? " Running totals beside each layer." : " Running totals beside each layer are to be found.") : ""}`;
+    if (s.form === "steps")
+      return `A stepped solid built from unit cubes, ${s.width} ${s.width === 1 ? "cube" : "cubes"} deep. From back to front its columns are ${s.columns.join(", ")} cubes high. Every column is filled to the bottom; some cubes are hidden behind the visible faces.`;
     if (s.form === "box") {
       const t = (e: typeof s.length) =>
         e ? `${e.value} ${e.unit}` : "unknown";

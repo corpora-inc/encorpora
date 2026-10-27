@@ -223,13 +223,46 @@ def product_equations(public):
     return arithmetic(public)
 
 
+def scene_elements(public):
+    figure = public.get("figure")
+    require(figure is not None and figure.get("kind") == "scene", "Expected a scene figure")
+    return figure["scene"]["elements"]
+
+
+def drawn_cubes(element):
+    """Counts of a unit-cube prism drawn as an isoSolid `cubes` element."""
+    require(element.get("type") == "isoSolid", "Expected an isoSolid")
+    solid = element["solid"]
+    require(solid.get("form") == "cubes", "Expected a prism of cubes")
+    counts = [solid["length"], solid["width"], solid["height"]]
+    require(all(isinstance(n, int) and 1 <= n <= 6 for n in counts), "Cube counts")
+    return counts
+
+
 def prism_range(public):
     prisms = []
+    drawn = None
     for o in public["response"]["options"]:
         m = re.fullmatch(r"Prism ([A-E]): \$(\d+)\\times(\d+)\\times(\d+)\$ cm", o["label"])
-        require(m is not None, "Prism label")
-        prisms.append(int(m.group(2)) * int(m.group(3)) * int(m.group(4)))
+        if m is not None:
+            require(drawn is not True, "Mixed prism surfaces")
+            drawn = False
+            prisms.append(int(m.group(2)) * int(m.group(3)) * int(m.group(4)))
+            continue
+        # Drawn surface: each prism is counted from its unit cubes in the figure.
+        m = re.fullmatch(r"Prism ([A-E])", o["label"])
+        require(m is not None and drawn is not False, "Prism label")
+        drawn = True
+        solids = {e["id"]: e for e in scene_elements(public) if e.get("type") == "isoSolid"}
+        element = solids.get(f"prism{m.group(1)}")
+        require(element is not None, f"No drawing of Prism {m.group(1)}")
+        l, w, h = drawn_cubes(element)
+        prisms.append(l * w * h)
     p = public["prompt"]
+    if drawn:
+        require("1-centimeter cubes" in p, "Drawn prisms state the cube size")
+        letters = [e["text"] for e in scene_elements(public) if e.get("type") == "text"]
+        require(sorted(letters) == ["A", "B", "C", "D", "E"], "Each prism is labeled once")
     m = re.search(r"Choose the 2 prisms whose volumes added together equal (\d+) cubic centimeters\.", p)
     if m:
         lo = hi = int(m.group(1))
@@ -288,8 +321,28 @@ def cube_prism(public):
         r"A rectangular prism is \$(.+?)\$ units long, \$(.+?)\$ units wide and \$(.+?)\$ units tall\. It is packed with no gaps or overlaps with small cubes whose edges are \$(.+?)\$ unit long\.",
         public["prompt"],
     )
-    require(m is not None, "Cube prompt")
-    length, width, height, edge = (number(m.group(i)) for i in range(1, 5))
+    if m is not None:
+        length, width, height, edge = (number(m.group(i)) for i in range(1, 5))
+    else:
+        # Drawn surface: edge lengths are counted cubes times the marked edge.
+        m = re.match(
+            r"The rectangular prism shown is packed with no gaps or overlaps with small cubes, including cubes hidden behind the visible faces\. Each small cube has edges \$(.+?)\$ unit long, as marked\.",
+            public["prompt"],
+        )
+        require(m is not None, "Cube prompt")
+        edge = number(m.group(1))
+        elements = scene_elements(public)
+        solids = [e for e in elements if e.get("type") == "isoSolid"]
+        braces = [e for e in elements if e.get("type") == "brace"]
+        require(len(solids) == 1 and len(braces) == 1, "One prism and one marked edge")
+        mark = re.fullmatch(r"(\d+)/(\d+)", braces[0].get("label", ""))
+        require(mark is not None, "Marked edge label")
+        require(Fraction(int(mark.group(1)), int(mark.group(2))) == edge, "Marked edge differs from the prompt")
+        # The brace spans one cube edge of the drawing: its endpoints are one
+        # unit of the isometric grid apart.
+        (x1, y1), (x2, y2) = braces[0]["from"], braces[0]["to"]
+        require(abs(((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5 - 1) < 1e-9, "The mark spans one cube")
+        length, width, height = (n * edge for n in drawn_cubes(solids[0]))
     volume = length * width * height
     cube = edge**3
     truths, key = [], []
@@ -297,6 +350,8 @@ def cube_prism(public):
         s = o["label"]
         if (g := re.fullmatch(r"(\d+) cubes fit along the length\.", s)):
             t = length / edge == int(g.group(1))
+        elif (g := re.fullmatch(r"The prism is \$?(.+?)\$? units (long|wide|tall)\.", s)):
+            t = number(g.group(1)) == {"long": length, "wide": width, "tall": height}[g.group(2)]
         elif (g := re.fullmatch(r"Each small cube has a volume of \$(.+?)\$ cubic unit\.", s)):
             t = number(g.group(1)) == cube
         elif (g := re.fullmatch(r"It takes (\d+) cubes to fill the prism\.", s)):
@@ -823,6 +878,58 @@ def expect_failure(fn, message):
     raise AssertionError(message)
 
 
+def drawn_tests(multi):
+    """Drawn surfaces: the volumes and lengths come from the figure."""
+    c = 3**0.5 / 2
+    scene = lambda elements: {"kind": "scene", "scene": {"v": 1, "elements": elements}}
+    cubes = lambda ident, l, w, h: {
+        "type": "isoSolid",
+        "id": ident,
+        "solid": {"form": "cubes", "length": l, "width": w, "height": h},
+    }
+    dims = {"A": (2, 1, 1), "B": (3, 3, 4), "C": (2, 2, 3), "D": (3, 1, 2), "E": (2, 2, 2)}
+    prisms = multi(
+        "mcas-prism-range-select",
+        "Five rectangular prisms are built from 1-centimeter cubes, with no gaps and no cubes missing behind the visible faces. Choose the 2 prisms whose volumes added together equal 18 cubic centimeters.",
+        [f"Prism {k}" for k in "ABCDE"],
+        2,
+    )
+    prisms["figure"] = scene(
+        [cubes(f"prism{k}", *v) for k, v in dims.items()]
+        + [{"type": "text", "id": f"label{k}", "at": [0, 0], "text": k} for k in dims]
+    )
+    # 12 + 6 = 18 (C and D) is the only pair.
+    require(solve(prisms) == '["option-c","option-d"]', "Drawn prism fixture")
+    bad = copy.deepcopy(prisms)
+    bad["figure"]["scene"]["elements"][3]["solid"]["height"] = 3
+    expect_failure(lambda: solve(bad), "Accepted a drawing whose pair changed")
+    statements = multi(
+        "mcas-cube-prism-statements",
+        "The rectangular prism shown is packed with no gaps or overlaps with small cubes, including cubes hidden behind the visible faces. Each small cube has edges $\\frac{1}{3}$ unit long, as marked. Choose the 2 true statements.",
+        [
+            "The prism is $1\\frac{1}{3}$ units wide.",
+            "Each small cube has a volume of $\\frac{1}{9}$ cubic unit.",
+            "It takes 24 cubes to fill the prism.",
+            "The volume of the prism is 24 cubic units.",
+            "Adding the three edge lengths gives the volume.",
+        ],
+        2,
+    )
+    statements["figure"] = scene(
+        [
+            cubes("prism", 2, 4, 3),
+            {"type": "brace", "id": "edge", "from": [c * (1 - 4), -(1 + 4) / 2], "to": [-4 * c, -2], "label": "1/3"},
+        ]
+    )
+    require(solve(statements) == '["option-a","option-c"]', "Drawn cube fixture")
+    bad = copy.deepcopy(statements)
+    bad["figure"]["scene"]["elements"][1]["label"] = "1/2"
+    expect_failure(lambda: solve(bad), "Accepted a mark that differs from the prompt")
+    bad = copy.deepcopy(statements)
+    bad["figure"]["scene"]["elements"][0]["solid"]["width"] = 5
+    expect_failure(lambda: solve(bad), "Accepted a drawing that changes the measured width")
+
+
 def self_test():
     def multi(template, prompt, labels, count):
         return {
@@ -983,6 +1090,7 @@ def self_test():
     require(solve(bad) == "option-c", "Opposite directions give a negative slope")
     bad["response"]["options"][2]["label"] = "Positive"
     expect_failure(lambda: solve(bad), "Accepted two defensible slope signs or none")
+    drawn_tests(multi)
     require(rational_expr("(\\sqrt{7}+4)(\\sqrt{7}-4)".replace("(", "\\left(").replace(")", "\\right)")), "Difference of squares")
     require(not rational_expr("\\sqrt{7}+\\sqrt{3}"), "Surd sum")
     # Variation axes: result-first orientation, true/false pairs, the smaller

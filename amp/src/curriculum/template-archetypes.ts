@@ -59,6 +59,7 @@ const legacyTemplateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "circle-circumference-coefficient": ["circle.circumference"],
   "circle-dilation-scaling": ["circle.coordinate", "measure.scale"],
   "circle-equation": ["circle.coordinate"],
+  "circle-graph-read": ["percent.of"],
   "circle-radii-triangle": ["circle.parts", "angle.relationships"],
   "circle-segment-lengths": ["circle.parts"],
   "classify-quadrilateral": ["shape.quadrilateral-hierarchy"],

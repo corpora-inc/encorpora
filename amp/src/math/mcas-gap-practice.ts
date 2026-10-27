@@ -31,6 +31,9 @@ import {
   type StatementSetCopy,
 } from "./variation/statement-set";
 import { factEquations, targetAxis } from "./variation/target";
+import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
+import { iso } from "./scene/components/iso-solid";
+import type { Element, Scene } from "./scene/spec";
 
 /**
  * Round-2 problem types for the Massachusetts MCAS 2025 released items whose
@@ -831,8 +834,12 @@ function trueProductEquations(r: Random): Built {
   };
 }
 
-function prismRangeSelect(r: Random): Built {
+function prismRangeSelect(
+  r: Random,
+  surface: "edge-lengths" | "unit-cubes" = "edge-lengths",
+): Built {
   const variant = pick(r, ["range", "exact"] as const);
+  if (surface === "unit-cubes") return prismCubesSelect(r, variant);
   for (let attempt = 0; attempt < 200; attempt++) {
     const dims = Array.from(
       { length: 5 },
@@ -875,6 +882,108 @@ function prismRangeSelect(r: Random): Built {
         `Together, Prism ${names[Math.min(i, j)]} and Prism ${names[Math.max(i, j)]} have volume $${vols[i]}+${vols[j]}=${sum}$ cubic centimeters${variant === "range" ? `, which is between ${lo} and ${hi}` : `, which equals ${lo}`}. No other pair does.`,
       ],
       model: { dims, vols, lo, hi, variant },
+    };
+  }
+  throw new Error("Need three retry: no unique pair");
+}
+
+/** Unit-cube prisms the learner counts: at most 3 cubes long, 3 wide and 4
+ * high, so every prism stays countable on a phone. */
+type CubeDims = readonly [number, number, number];
+const ISO_C = Math.sqrt(3) / 2;
+/** Five prisms in two rows (three, then two), each labeled under its base. */
+function prismCubesScene(dims: readonly CubeDims[]): Scene {
+  const slot = 6.2;
+  const rowTop = (row: CubeDims[]) =>
+    Math.max(...row.map(([l, w, h]) => h + (l + w) / 2));
+  const rows = [dims.slice(0, 3), dims.slice(3)];
+  const secondBottom = 0;
+  const firstBottom = secondBottom + rowTop(rows[1]!) + 2.6;
+  const elements: Element[] = [];
+  dims.forEach(([l, w, h], i) => {
+    const first = i < 3;
+    const cx = first ? slot * (i + 0.5) : slot * (i - 3 + 1);
+    const bottom = first ? firstBottom : secondBottom;
+    // Center the drawing [−w·C, l·C] on the slot; its lowest vertex is the
+    // near bottom corner, (l + w) / 2 below the origin.
+    const at: [number, number] = [
+      +(cx - ((l - w) * ISO_C) / 2).toFixed(6),
+      +(bottom + (l + w) / 2).toFixed(6),
+    ];
+    const letter = "ABCDE"[i]!;
+    elements.push(
+      {
+        type: "isoSolid",
+        id: `prism${letter}`,
+        at,
+        solid: { form: "cubes", length: l, width: w, height: h },
+      },
+      {
+        type: "text",
+        id: `label${letter}`,
+        at: [+cx.toFixed(6), bottom],
+        text: letter,
+        font: "sans",
+        size: "md",
+        bold: true,
+        align: [0, -1],
+        offset: [0, 6],
+      },
+    );
+  });
+  return {
+    v: 1,
+    title: "Five prisms built from unit cubes",
+    width: 360,
+    maxHeight: 360,
+    elements,
+  };
+}
+function prismCubesSelect(r: Random, variant: "range" | "exact"): Built {
+  for (let attempt = 0; attempt < 200; attempt++) {
+    const dims = Array.from({ length: 5 }, (): CubeDims => [
+      r(2, 3),
+      r(1, 3),
+      r(1, 4),
+    ]);
+    const vols = dims.map(([l, w, h]) => l * w * h);
+    if (new Set(vols).size < 5) continue;
+    const i = r(0, 4);
+    let j = r(0, 4);
+    while (j === i) j = r(0, 4);
+    const sum = vols[i]! + vols[j]!;
+    const lo = variant === "range" ? sum - r(2, 5) : sum;
+    const hi = variant === "range" ? sum + r(2, 5) : sum;
+    const fits = (s: number) =>
+      variant === "range" ? s > lo && s < hi : s === lo;
+    let count = 0;
+    for (let x = 0; x < 5; x++)
+      for (let y = x + 1; y < 5; y++) if (fits(vols[x]! + vols[y]!)) count++;
+    if (count !== 1) continue;
+    const names = ["A", "B", "C", "D", "E"];
+    const pool = dims.map(([l, w, h], idx) => ({
+      label: `Prism ${names[idx]}`,
+      holds: idx === i || idx === j,
+      js: `${l}*${w}*${h}`,
+      why: `It is ${l} cubes long, ${w} ${w === 1 ? "cube" : "cubes"} wide and ${h} ${h === 1 ? "layer" : "layers"} high: $${l}${times}${w}${times}${h}=${vols[idx]}$ cubic centimeters.`,
+    }));
+    return {
+      variant,
+      prompt:
+        variant === "range"
+          ? `Five rectangular prisms are built from 1-centimeter cubes, with no gaps and no cubes missing behind the visible faces. Choose the 2 prisms whose volumes added together are greater than ${lo} and less than ${hi} cubic centimeters.`
+          : `Five rectangular prisms are built from 1-centimeter cubes, with no gaps and no cubes missing behind the visible faces. Choose the 2 prisms whose volumes added together equal ${lo} cubic centimeters.`,
+      hint: `Each 1-centimeter cube is 1 cubic centimeter. For each prism, count the cubes along the length and the width of the top layer, multiply, then multiply by the number of layers. Add pairs of volumes, keeping only the pair whose total ${variant === "range" ? `is more than ${lo} and less than ${hi}` : `is exactly ${lo}`}.`,
+      pool,
+      total: 5,
+      k: 2,
+      noun: "prisms",
+      ordered: true,
+      figure: { kind: "scene", scene: prismCubesScene(dims) },
+      tail: [
+        `Together, Prism ${names[Math.min(i, j)]} and Prism ${names[Math.max(i, j)]} have volume $${vols[i]}+${vols[j]}=${sum}$ cubic centimeters${variant === "range" ? `, which is between ${lo} and ${hi}` : `, which equals ${lo}`}. No other pair does.`,
+      ],
+      model: { dims, vols, lo, hi, variant, surface: "unit-cubes" },
     };
   }
   throw new Error("Need three retry: no unique pair");
@@ -1719,7 +1828,35 @@ function quadraticZeros(r: Random): Built {
 /* Geometry and functions                                                  */
 /* ---------------------------------------------------------------------- */
 
-function cubePrismStatements(r: Random): Built {
+/** A prism of a × b × c small cubes with one cube's edge marked 1/n. */
+function fractionCubeScene(a: number, b: number, c: number, n: number): Scene {
+  return {
+    v: 1,
+    title: "A rectangular prism packed with small cubes",
+    width: 340,
+    maxHeight: 340,
+    elements: [
+      {
+        type: "isoSolid",
+        id: "prism",
+        solid: { form: "cubes", length: a, width: b, height: c },
+      },
+      {
+        // The near bottom edge of the front-left cube, braced below.
+        type: "brace",
+        id: "edge",
+        from: iso(1, b, 0),
+        to: iso(0, b, 0),
+        gap: 4,
+        label: `1/${n}`,
+      },
+    ],
+  };
+}
+function cubePrismStatements(
+  r: Random,
+  surface: "stated-edges" | "drawn-cubes" = "stated-edges",
+): Built {
   const n = pick(r, [2, 3, 4]);
   let a = 0;
   let b = 0;
@@ -1820,6 +1957,44 @@ function cubePrismStatements(r: Random): Built {
       },
     ],
   ];
+  if (surface === "drawn-cubes") {
+    // The drawing gives the counts; the released task asks for the
+    // measured edge lengths, so that statement replaces counting cubes.
+    const [count, word] = pick(r, [
+      [a, "long"],
+      [b, "wide"],
+      [c, "tall"],
+    ] as const);
+    cats[0] = [
+      {
+        label: `The prism is $${mixed(edge(count))}$ units ${word}.`,
+        holds: true,
+        why: `${count} cubes, each $${ftex(unit)}$ unit, make $${count}${times}${ftex(unit)}=${mixed(edge(count))}$ units.`,
+      },
+      {
+        label: `The prism is ${count} units ${word}.`,
+        holds: false,
+        why: `${count} is the number of cubes. Each cube is $${ftex(unit)}$ unit, so the prism is $${mixed(edge(count))}$ units ${word}.`,
+      },
+      {
+        label: `The prism is $${mixed(fr(count * n, 1))}$ units ${word}.`,
+        holds: false,
+        why: `Multiplying ${count} cubes by ${n} treats each cube as ${n} units. Each cube is $${ftex(unit)}$ unit, so the prism is $${mixed(edge(count))}$ units ${word}.`,
+      },
+    ];
+    const options = fromCategories(r, cats, 2);
+    return {
+      variant: `edge-1-over-${n}`,
+      prompt: `The rectangular prism shown is packed with no gaps or overlaps with small cubes, including cubes hidden behind the visible faces. Each small cube has edges $${ftex(unit)}$ unit long, as marked. Choose the 2 true statements.`,
+      hint: `Count the cubes along the length, the width and the height of the prism. Each cube edge is $${ftex(unit)}$ unit, so an edge of the prism is its number of cubes times $${ftex(unit)}$. A cube's volume is its edge multiplied by itself three times.`,
+      pool: options,
+      total: 5,
+      k: 2,
+      noun: "true statements",
+      figure: { kind: "scene", scene: fractionCubeScene(a, b, c, n) },
+      model: { n, a, b, c, surface },
+    };
+  }
   const options = fromCategories(r, cats, 2);
   return {
     variant: `edge-1-over-${n}`,
@@ -2469,21 +2644,26 @@ function productFactorSize(r: Random): Single {
 
 /* ---------------------------------------------------------------------- */
 
-const multiBuilders: Record<string, (r: Random) => Built> = {
+const multiBuilders: Record<
+  string,
+  (r: Random, axes: Record<string, string>) => Built
+> = {
   "mcas-true-fact-equations": trueFactEquations,
   "mcas-round-hundred-select": roundSelect,
   "mcas-prime-factor-select": primeFactorSelect,
-  "mcas-comparison-equations-select": comparisonEquations,
+  "mcas-comparison-equations-select": (r) => comparisonEquations(r),
   "mcas-true-product-equations": trueProductEquations,
-  "mcas-prism-range-select": prismRangeSelect,
+  "mcas-prism-range-select": (r, axes) =>
+    prismRangeSelect(r, axes.prisms as "edge-lengths" | "unit-cubes"),
   "mcas-ratio-statements-select": ratioStatements,
   "mcas-true-quotient-equations": trueQuotientEquations,
-  "mcas-cube-prism-statements": cubePrismStatements,
+  "mcas-cube-prism-statements": (r, axes) =>
+    cubePrismStatements(r, axes.prism as "stated-edges" | "drawn-cubes"),
   "mcas-statistical-question-select": statisticalQuestions,
   "mcas-fraction-rate-select": fractionRateSelect,
   "mcas-negative-fraction-forms": negativeFractionForms,
   "mcas-markup-price-select": markupSelect,
-  "mcas-rational-irrational-select": rationalIrrationalSelect,
+  "mcas-rational-irrational-select": (r) => rationalIrrationalSelect(r),
   "mcas-sci-notation-select": sciSelect,
   "mcas-table-intercept-select": tableInterceptSelect,
   "mcas-quadratic-zeros-select": quadraticZeros,
@@ -2606,7 +2786,12 @@ export function mcasGapCase(
   const template = mcasGapTemplates.find((t) => t.id === templateId);
   if (!template) throw new Error(`Unknown template ${templateId}`);
   const varied = variedFamilies[templateId];
-  if (!varied && Object.keys(force).length)
+  // Figure-surface axes (number-domain-axes.ts): drawn from their own
+  // streams, so the legacy value reproduces the pre-axis problem exactly.
+  const sweep: Record<string, string> | undefined = isSweepId(templateId)
+    ? { ...sweepChoose(templateId, seed), ...force }
+    : undefined;
+  if (!varied && !sweep && Object.keys(force).length)
     throw new Error(`${templateId} has no variation axes`);
   if (varied) {
     const c = generateVaried(varied, seed, force);
@@ -2623,14 +2808,18 @@ export function mcasGapCase(
   for (let attempt = 0; attempt < 80; attempt++) {
     try {
       if (multiBuild) {
-        const built = multiBuild(r);
+        const built = multiBuild(r, sweep ?? {});
         const options = drawOptions(r, built);
         if (leaks(built, options)) continue;
+        const problem = assembleSelect(template, seed, built, options);
         return {
           variant: built.variant,
+          ...(sweep ? { axes: sweep } : {}),
           model: built.model,
           options,
-          problem: assembleSelect(template, seed, built, options),
+          problem: sweep
+            ? { ...problem, variant: sweepVariant(built.variant, sweep) }
+            : problem,
         };
       }
       const single = singleBuilders[templateId]!(r);

@@ -5,15 +5,17 @@ import type {
 } from "./contracts";
 import { table } from "./scene/author";
 import { assemble, random, shuffle, type Draft } from "./distribution-practice";
+import { sweepChoose, sweepVariant } from "./number-domain-axes";
 
 /**
  * State-standard gaps in data displays and consumer statistics: constructing
  * stem-and-leaf plots and frequency tables, reading circle graphs, choosing a
  * display, and checking an investment claim.
  *
- * The scene framework has no sector drawing, and shared renderers are not
- * changed here, so a circle graph is presented as the table of its sectors
- * (percent, central angle or count) rather than as a drawn circle.
+ * A circle graph has two surfaces of one model (the `display` axis): the
+ * table of its sectors (percent, central angle or count), the original
+ * surface, or the drawn graph with each sector labeled the same way
+ * (`circleGraph`, scenes-v2). A client without scenes-v2 receives the table.
  */
 const choice = { requiredResponseCapability: "single-choice-v1" } as const;
 
@@ -52,7 +54,7 @@ export const dataDisplayStateTemplates: readonly TemplateMetadata[] = [
     gradeBand: "6–8",
     difficultyOffset: 0.2,
     description:
-      "Connect the percent, central angle and count of a circle-graph sector, and compare sectors, using the table of the graph's sectors.",
+      "Connect the percent, central angle and count of a circle-graph sector, and compare sectors, reading the drawn graph or the table of its sectors.",
   },
   {
     id: "best-display-choice",
@@ -720,7 +722,7 @@ export function frequencyTableCase(seed: string) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Circle graphs (shown as their table of sectors)                      */
+/* Circle graphs (a table of sectors, or the drawn graph)              */
 /* ------------------------------------------------------------------ */
 
 const circleContexts: {
@@ -750,10 +752,25 @@ const circleContexts: {
   },
 ];
 
+/** The question each variant asks, as its private variant label. */
+const circleVariants = [
+  "percent-to-count",
+  "count-to-percent",
+  "percent-to-angle",
+  "angle-to-percent",
+  "angle-to-count",
+  "count-difference",
+  "missing-sector",
+] as const;
+const capital = (t: string) => `${t[0]!.toUpperCase()}${t.slice(1)}`;
+
 export function circleGraphCase(seed: string) {
   checkSeed(seed);
   const meta = byId("circle-graph-read");
   const r = random(meta.id, seed);
+  // Axes draw from their own streams: the model below is unchanged.
+  const axes = sweepChoose("circle-graph-read", seed);
+  const drawn = axes.display === "drawn-graph";
   const variant = r(0, 6);
   const ctx = pick(r, circleContexts);
   const k = r(0, 1) ? 4 : 5;
@@ -785,19 +802,44 @@ export function circleGraphCase(seed: string) {
   const p = percents[target]!;
   const name = names[target]!;
   const intro = (n?: number) =>
-    `A circle graph shows ${ctx.about(n)}. The table lists the graph's sectors, one row for each.`;
+    drawn
+      ? `The circle graph shows ${ctx.about(n)}.`
+      : `A circle graph shows ${ctx.about(n)}. The table lists the graph's sectors, one row for each.`;
+  // Each sector shows what its table row showed; a blank cell is a sector
+  // drawn without a value.
   const makeTable = (
     cols: string[],
     cell: (i: number) => string | number | null,
   ) =>
-    sceneFigure(
-      table({
-        id: "sectors",
-        corner: "Sector",
-        columns: cols,
-        rows: names.map((label, i) => ({ label, cells: [cell(i)] })),
-      }).scene(),
-    );
+    drawn
+      ? sceneFigure({
+          v: 1,
+          title: capital(ctx.about()),
+          maxHeight: 420,
+          elements: [
+            {
+              type: "circleGraph",
+              id: "graph",
+              sectors: names.map((label, i) => {
+                const text = cell(i);
+                return {
+                  label,
+                  value: percents[i]!,
+                  ...(text === null ? {} : { text: String(text) }),
+                };
+              }),
+            },
+          ],
+        })
+      : sceneFigure(
+          table({
+            id: "sectors",
+            corner: "Sector",
+            columns: cols,
+            rows: names.map((label, i) => ({ label, cells: [cell(i)] })),
+          }).scene(),
+        );
+  const source = drawn ? "on the graph" : "in the table";
   const pc = (x: number) => `${x}%`;
   const deg = (x: number) => `${x}°`;
   let prompt: string;
@@ -814,8 +856,7 @@ export function circleGraphCase(seed: string) {
       .filter((x) => x > 0)
       .map((x) => ({
         label: label(x),
-        feedback:
-          "Check the arithmetic step by step with the numbers in the table.",
+        feedback: `Check the arithmetic step by step with the numbers ${source}.`,
       }));
   if (variant === 0) {
     const c = countOf(p);
@@ -974,7 +1015,7 @@ export function circleGraphCase(seed: string) {
     const last = k - 1;
     const rest = percents[last]!;
     const a = angleOf(rest);
-    prompt = `${intro()} The table leaves out the last sector, ${names[last]}. The sectors fill the whole circle, which is 360°. What is the central angle of the sector for ${names[last]}?`;
+    prompt = `${intro()} ${drawn ? "The graph does not show the percent for" : "The table leaves out"} the last sector, ${names[last]}. The sectors fill the whole circle, which is 360°. What is the central angle of the sector for ${names[last]}?`;
     figure = makeTable(["Percent"], (i) =>
       i === last ? null : pc(percents[i]!),
     );
@@ -1000,18 +1041,23 @@ export function circleGraphCase(seed: string) {
       `${rest}% of 360° is ${rest} ÷ 100 × 360 = ${a}°.`,
     ];
   }
+  const problem = assemble(meta, seed, r, {
+    prompt,
+    figure,
+    answer: "",
+    hint,
+    explanation,
+    choices: options(correct, wrong),
+  });
   return {
     percents,
     N,
     variant,
-    problem: assemble(meta, seed, r, {
-      prompt,
-      figure,
-      answer: "",
-      hint,
-      explanation,
-      choices: options(correct, wrong),
-    }),
+    axes,
+    problem: {
+      ...problem,
+      variant: sweepVariant(circleVariants[variant]!, axes),
+    },
   };
 }
 

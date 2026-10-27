@@ -250,6 +250,11 @@ export const figureCapabilities = [
   "volume-coordinate-figures-v1",
   "shape-figures-v1",
   "scenes-v1",
+  /** Scenes that use the second component set: circle graphs, thermometers,
+   * rulers, coins and stepped unit-cube solids (scene/capability.ts). A
+   * figure-surface axis value that draws one falls back to its legacy
+   * surface for a client without it (variation/axes.ts). */
+  "scenes-v2",
 ] as const;
 export type FigureCapability = (typeof figureCapabilities)[number];
 /** Answer formats beyond typed numbers. A client lists those it can show;

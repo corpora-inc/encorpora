@@ -8,7 +8,13 @@ import {
   returnClaimCase,
   stemLeafConstructCase,
 } from "../src/math/data-display-state-practice";
-import { generateProblem, templates } from "../src/math/engine";
+import {
+  generateProblem,
+  generateProblemFor,
+  templates,
+} from "../src/math/engine";
+import { figureCapabilities } from "../src/math/contracts";
+import { describeScene, sceneCapabilitiesIn } from "../src/math/scene";
 import { problemLesson } from "../src/content/problem-lessons";
 
 const ids = dataDisplayStateTemplates.map((t) => t.id);
@@ -248,6 +254,84 @@ test("circle graph: percent, angle and count agree with an independent computati
     assert.ok(Number.isInteger(value));
   }
   for (let v = 0; v < 7; v++) assert.ok(seen.has(`v${v}`), `v${v}`);
+});
+
+test("circle graph: the drawn graph shows the same model as the sector table", () => {
+  const reached = new Set<string>();
+  for (let seed = 0; seed < SEEDS; seed++) {
+    const c = circleGraphCase(`s:${seed}`);
+    const display = c.problem.variant!.axes!.display!;
+    reached.add(display);
+    const figure = c.problem.public.figure;
+    assert.ok(figure?.kind === "scene");
+    if (figure?.kind !== "scene") continue;
+    const element = figure.scene.elements[0]!;
+    if (display === "sector-table") {
+      assert.equal(element.type, "table");
+      assert.deepEqual(sceneCapabilitiesIn(c.problem.public), []);
+      continue;
+    }
+    assert.equal(element.type, "circleGraph");
+    if (element.type !== "circleGraph") continue;
+    assert.deepEqual(sceneCapabilitiesIn(c.problem.public), ["scenes-v2"]);
+    assert.doesNotMatch(c.problem.public.prompt, /table/);
+    assert.deepEqual(
+      element.sectors.map((s) => s.value),
+      c.percents,
+    );
+    // Each label is what the table row showed: the percent, the count or
+    // the angle the sector's share gives; only the left-out sector is blank.
+    const unit = (i: number) => {
+      const text = element.sectors[i]!.text;
+      return text === undefined ? null : text;
+    };
+    element.sectors.forEach((s, i) => {
+      const t = unit(i);
+      if (t === null) {
+        assert.equal(c.variant, 6);
+        assert.equal(i, element.sectors.length - 1);
+        return;
+      }
+      const v = Number(t.replace(/[%°]/g, ""));
+      if (t.endsWith("%")) assert.equal(v, s.value);
+      else if (t.endsWith("°")) assert.equal(v, s.value * 3.6);
+      else assert.equal(v, (s.value * c.N) / 100);
+    });
+    // The asked value never appears on the drawing or in its description.
+    const response = c.problem.public.response;
+    if (response.kind !== "choice") throw new Error("choice expected");
+    const correct = response.options.find(
+      (o) => o.id === c.problem.answer,
+    )!.label;
+    const shown = element.sectors.map((s) => s.text ?? "");
+    const said = describeScene(figure.scene);
+    if (c.variant === 1 || c.variant === 3 || c.variant === 6)
+      // Converting: the answer is in another unit than the labels.
+      assert.ok(!shown.includes(correct), `${seed}: ${correct} drawn`);
+    if (c.variant === 6)
+      assert.ok(!mentions(said, correct), `${seed}: ${correct} described`);
+  }
+  assert.deepEqual([...reached].sort(), ["drawn-graph", "sector-table"]);
+});
+
+test("circle graph: a client without scenes-v2 always receives the sector table", () => {
+  const old = figureCapabilities.filter((c) => c !== "scenes-v2");
+  let drawn = 0;
+  for (let seed = 0; seed < 120; seed++) {
+    const forOld = generateProblemFor("circle-graph-read", `c:${seed}`, old);
+    assert.equal(forOld.variant!.axes!.display, "sector-table");
+    assert.deepEqual(sceneCapabilitiesIn(forOld.public), []);
+    const forNew = generateProblemFor("circle-graph-read", `c:${seed}`, [
+      ...figureCapabilities,
+    ]);
+    assert.deepEqual(forNew, generateProblem("circle-graph-read", `c:${seed}`));
+    if (forNew.variant!.axes!.display === "drawn-graph") {
+      drawn++;
+      // Same model either way: the same question and the same choices.
+      assert.deepEqual(forNew.public.response, forOld.public.response);
+    }
+  }
+  assert.ok(drawn > 20, `drawn ${drawn}`);
 });
 
 test("best display: each situation has exactly one defensible display among the choices", () => {

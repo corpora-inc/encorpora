@@ -55,7 +55,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Read the number of cents on the coin, or in the question.",
+      "Read the number of cents on the coin, or in the question. If the picture shows no value, name the coin by how it looks: the penny is the only copper coin; of the silver coins, the dime is the smallest, the nickel has a smooth edge and the quarter is the largest, with a ridged edge.",
       "Match the value to the name: 1¢ is a penny, 5¢ is a nickel, 10¢ is a dime and 25¢ is a quarter.",
       "To write a value, write the number and put ¢ right after it.",
     ],
@@ -356,7 +356,7 @@ export const texasK2Lessons: Lesson[] = [
     summary:
       "Each coin has a name and a value in cents. Match the value to the name, and write ¢ after the number.",
     objectives: [
-      "Name a penny, a nickel, a dime and a quarter from the value on the coin.",
+      "Name a penny, a nickel, a dime and a quarter from the value on the coin, or from its color, size and edge.",
       "Write the value of a coin with the cent symbol.",
     ],
     intuitionTitle: "A name and a value",
@@ -377,6 +377,7 @@ export const texasK2Lessons: Lesson[] = [
     methodTitle: "Match by value",
     method: [
       "Read the number of cents on the coin. Find that value in the list: 1¢ penny, 5¢ nickel, 10¢ dime, 25¢ quarter.",
+      "A picture without values: the penny is copper with a smooth edge; the nickel is silver with a smooth edge; the dime is the smallest coin, silver with a ridged edge; the quarter is the largest, silver with a ridged edge.",
       "A coin's size does not tell its value. A dime is smaller than a nickel but worth more.",
     ],
     formalTitle: "The four coins",
@@ -384,7 +385,7 @@ export const texasK2Lessons: Lesson[] = [
       "A penny is 1 cent, written 1¢. A nickel is 5 cents, written 5¢. A dime is 10 cents, written 10¢. A quarter is 25 cents, written 25¢. The cent symbol is written after the number.",
     ],
     pitfalls: [
-      "Match a coin by its value, not by its size.",
+      "Size names a coin but does not order values: the small dime is worth more than the larger nickel and penny.",
       "Write ¢ after the number: 5¢, not ¢5.",
       "Do not use a dollar sign for cents. $5 means five dollars.",
     ],

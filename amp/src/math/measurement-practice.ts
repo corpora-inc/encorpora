@@ -2,9 +2,12 @@ import { createHash } from "node:crypto";
 import { measurementDefinitions } from "../content/measurement-definitions.js";
 import type {
   GeneratedProblem,
+  ProblemVariant,
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
+import { sweepChoose, sweepVariant } from "./number-domain-axes.js";
+import { sceneSchema } from "./scene/spec.js";
 
 const visual = new Set([
   "shifted-ruler-length",
@@ -74,11 +77,62 @@ export function generateMeasurementProblem(
     label = "Value",
     explanation: string[] = [],
     figure: SemanticFigure | undefined,
-    choices: Choice[] | undefined;
+    choices: Choice[] | undefined,
+    variant: ProblemVariant | undefined;
   const measure = (value: number, unit: "cm" | "m" = "cm") => ({ value, unit });
   switch (templateId) {
     case "shifted-ruler-length":
     case "fractional-ruler-length": {
+      const axes =
+        templateId === "fractional-ruler-length"
+          ? sweepChoose("fractional-ruler-length", seed)
+          : undefined;
+      if (axes) variant = sweepVariant(axes.ruler, axes);
+      if (axes?.ruler === "inch-ruler") {
+        // An object on an inch ruler: its ends sit on ticks, and its length
+        // in lowest terms has the ruler's own part as denominator.
+        const parts = ([2, 4, 8] as const)[r(0, 2)]!,
+          length = parts === 8 ? 4 : r(4, 6),
+          start = r(0, 3) === 0 ? r(1, 2) : 0,
+          room = (length - start) * parts,
+          spaces = 2 * r(Math.ceil(parts / 2), Math.floor((room - 1) / 2)) + 1,
+          end = start * parts + spaces;
+        const shape = r(0, 1) ? "pencil" : "ribbon",
+          noun = shape;
+        const partWord = { 2: "half", 4: "quarter", 8: "eighth" }[parts];
+        figure = {
+          kind: "scene",
+          scene: sceneSchema.parse({
+            v: 1,
+            width: 360,
+            elements: [
+              {
+                type: "ruler",
+                id: "ruler",
+                unit: "in",
+                length,
+                parts,
+                object: { from: start * parts, to: end, shape },
+              },
+            ],
+          }),
+        };
+        prompt =
+          parts === 8
+            ? `What is the length of the ${noun}, to the nearest eighth of an inch?`
+            : `How long is the ${noun}, in inches?`;
+        answer = rational(spaces, parts);
+        label = "Length in inches";
+        hint = `Each inch on this ruler is cut into ${parts} equal spaces, so each small space is $1/${parts}$ inch.${start ? ` The ${noun} starts at the ${start}-inch mark, not at 0.` : ""} Count the small spaces from one end of the ${noun} to the other, then write that count over ${parts}.`;
+        explanation = [
+          `Each inch is cut into ${parts} equal spaces, so each space is $1/${parts}$ inch.`,
+          start
+            ? `The ${noun} runs from the ${start}-inch mark to the mark at $${rational(end, parts)}$ inches: $${rational(end, parts)} - ${start} = ${answer}$.`
+            : `The ${noun} starts at 0 and ends at the mark for $${answer}$ inches.`,
+          `That is ${spaces} spaces of $1/${parts}$ inch, so the ${noun} is $${answer}$ inches long, measured to the nearest ${partWord} of an inch.`,
+        ];
+        break;
+      }
       const whole = templateId === "shifted-ruler-length",
         denominator = whole ? 1 : ([2, 4] as const)[r(0, 1)]!,
         maxWhole = whole ? 12 : 3;
@@ -435,5 +489,6 @@ export function generateMeasurementProblem(
     hint,
     explanation,
     ...(choiceFeedback ? { choiceFeedback } : {}),
+    ...(variant ? { variant } : {}),
   };
 }

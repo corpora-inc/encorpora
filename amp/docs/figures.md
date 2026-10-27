@@ -10,7 +10,7 @@ import { numberLine, areaModel, graph, f } from "./scene/author";
 figure = { kind: "scene", scene: numberLine({ min: 0, max: 20 }).mark(a).hop(a, b).scene() };
 ```
 
-- A new family whose problems need their figure sets `requiredFigureCapability: "scenes-v1"`. Clients that cannot draw scenes then never receive it.
+- A new family whose problems need their figure sets `requiredFigureCapability: "scenes-v1"`, or `"scenes-v2"` when it draws a second-set component (below). Clients that cannot draw it then never receive it.
 - Do not add a figure kind to `contracts.ts`, and do not write a one-off component.
 - `.scene()` validates with zod and throws on a bad spec. Run the generator's tests.
 
@@ -26,6 +26,11 @@ figure = { kind: "scene", scene: numberLine({ min: 0, max: 20 }).mark(a).hop(a, 
 | `array(rows, cols, {splitAfterRow})`, `tenFrame(8, 5)`, `baseTen(247)`, `fractionBar({shaded, parts})`, `clock(h, m)` | early-number models |
 | `table({…})`, `rowBars({…})` | two-way tables and row-percentage bars |
 | `angle({rays, marks, labels})`, `protractor(rays, labels)` | angles and measuring |
+| `{type: "circleGraph", sectors}` | circle graphs: sector angle = value ÷ total; `text` (percent, angle or count) may be absent or `derived` |
+| `{type: "thermometer", unit, min, max, minor, major, reading}` | a liquid thermometer in °F or °C, negatives included |
+| `{type: "ruler", unit, length, parts, object}` | inch rulers in halves to sixteenths, centimeter rulers in halves or millimeters, with an object whose ends sit on ticks |
+| `{type: "coins", coins}` | pennies, nickels, dimes and quarters drawn to scale without values |
+| `{type: "isoSolid", solid}` | unit-cube prisms (`cubes`), labeled boxes, composites and stepped solids (`steps`) |
 | `scene(a, b, {type: "brace", …}).build({title})` | several elements in one coordinate system; primitives (`text`, `segment`, `arrow`, `brace`, `polygon`, `arc`, `point`, …) annotate a component in its own math units |
 
 Geometry is in math units with y pointing up. Mark sizes, label sizes and offsets are in pixels and stay fixed whatever the data scale. Width, fit, label placement and print are handled for you: do not pass pixel positions.
@@ -84,6 +89,17 @@ numberLine({ id: "nl", min: 0, max: 20 }).mark(8).hop(8, 2, { landing: "none" })
 
 Complete examples: `src/math/scene/explanations.ts` (`makeTenHops`, `partialProducts`, `partialProductsHint`).
 
+## Second component set: `scenes-v2`
+
+Circle graphs, thermometers, rulers, coins and the `steps` form of `isoSolid` were added after clients shipped with `scenes-v1`. A client that cannot draw one must never receive it:
+
+- A component (or a later form) declares `capability` in `registerComponent`; `sceneCapability(scene)` and `sceneCapabilitiesIn(problem)` report what a figure needs.
+- A template whose every instance draws one declares `requiredFigureCapability: "scenes-v2"`.
+- An existing family moves a figure onto a new component with a figure-surface axis whose new value declares `needs: { value: "scenes-v2" }` (number-domain-axes.ts). The server generates through `generateProblemFor(templateId, seed, clientFigures)`: for a client without the capability the axis shows its legacy value, and any instance that still needs more than the client declared is rebuilt on legacy surfaces or refused. Lesson examples are drawn for the oldest client that can receive the template.
+- An older API rejects `scenes-v2`; the web client then retries once without it (`batch-capability-fallback.ts`).
+
+Layout rules for these components: a circle graph labels every sector inside when all labels fit, otherwise numbers the sectors and lists number, swatch, category and value in a key below; a thermometer keeps minor ticks at least 6 px and labels at least 28 px apart; an inch ruler in eighths is at most 4 inches so eighths stay 7 px apart on a 288 px phone stage, and millimeters are never finer than a real ruler; coins keep true relative diameters and are described by size, color and edge, never by name or value.
+
 ## Add a component
 
 1. Create `src/math/scene/components/<name>.ts`. It holds the zod schema (built from `../base`), its type, and `registerComponent("<name>", { compile, describe, maxScale })`.
@@ -118,4 +134,5 @@ Bar charts, histograms, dot and line plots, box plots, scatter plots and tables 
 - `npm run tsc`, `npm test` and `npm run lint:colors`. Paints are role names, never colors.
 - `npx tsx scripts/scene-gallery.ts`: every scene at 320, 390, 768 and 1280 px in light and dark. It fails on overflow, a label outside the view box, overlapping labels, a stroke through a label, loose math spacing, or a starved plot. Look at the screenshots in `artifacts/scene-gallery/`.
 - `npx tsx scripts/scene-print.ts`: every scene on Letter and A4 print pages through the print layout oracle.
+- `npm run test:scene-components-ui`: each scenes-v2 component inside a real practice problem at 320, 390, 768 and 1280 px in light and dark, plus Letter and A4 print. It fails on layout probe issues, figure labels under 12 px or overlapping, and a figure that moves after fonts settle.
 - `npx tsx scripts/verify-scene-player-ui.ts`: walkthroughs in a lesson and in a hint. The panel must not resize, controls must be at least 44 px, playback must finish, and reduced motion must show the final frame.

@@ -65,6 +65,18 @@ def grid(figure):
 def solve_volume_coordinate(public):
     family, prompt, figure = public['templateId'], public['prompt'], figure_view(public['figure'])
     require(family in VOLUME_COORDINATE, 'Unsupported family')
+    if family == 'unit-cube-volume' and figure['kind'] == 'cube-steps':
+        # A stepped solid: read the drawn columns and depth, then count every
+        # cube one by one (each column is filled to the bottom).
+        require(prompt == 'This solid is built from 1-unit cubes, and every column is filled to the bottom. '
+                'What is its volume, in cubic units?', 'Steps wording')
+        depth = whole(figure['width'], 1, 6, 'Depth')
+        columns = [whole(h, 1, 6, 'Column') for h in figure['columns']]
+        require(2 <= len(columns) <= 6, 'Two to six columns')
+        require(all(a >= b for a, b in zip(columns, columns[1:])) and columns[0] > columns[-1],
+                'Columns step down from back to front, so every column shows')
+        cubes = [(x, y, z) for x, h in enumerate(columns) for y in range(depth) for z in range(h)]
+        return Fraction(len(cubes))
     if family in {'unit-cube-volume', 'cube-layer-count'}:
         require(prompt == ('Each small cube is 1 cubic unit. What is the volume of this rectangular prism, in cubic units?'
                            if family == 'unit-cube-volume' else
@@ -137,6 +149,15 @@ def review_volume_coordinate_fixtures():
     require(solve_volume_coordinate(cube) == 24, '4 by 3 by 2 holds 24 cubes')
     layer = dict(cube, templateId='cube-layer-count', prompt='This prism is built from unit cubes. How many cubes are in its bottom layer?')
     require(solve_volume_coordinate(layer) == 12, 'A layer of a 4 by 3 base holds 12')
+    steps = {'templateId': 'unit-cube-volume',
+             'prompt': 'This solid is built from 1-unit cubes, and every column is filled to the bottom. '
+                       'What is its volume, in cubic units?',
+             'figure': {'kind': 'scene', 'scene': {'v': 1, 'elements': [
+                 {'type': 'isoSolid', 'id': 'solid', 'solid': {'form': 'steps', 'width': 3, 'columns': [4, 4, 3, 2, 1]}}]}}}
+    require(solve_volume_coordinate(steps) == 42, '3 deep times 4 + 4 + 3 + 2 + 1')
+    steps_up = {**steps, 'figure': {'kind': 'scene', 'scene': {'v': 1, 'elements': [
+        {'type': 'isoSolid', 'id': 'solid', 'solid': {'form': 'steps', 'width': 2, 'columns': [1, 3]}}]}}}
+    require(rejects(steps_up), 'A taller column in front would hide cubes')
     missing = {'templateId': 'prism-missing-edge', 'prompt': 'This rectangular prism has a volume of 60 cubic centimeters. What is the length of the edge marked ?, in centimeters?',
                'figure': {'kind': 'box-prism', 'length': {'value': 5, 'unit': 'cm'}, 'width': None, 'height': {'value': 3, 'unit': 'cm'}}}
     require(solve_volume_coordinate(missing) == 4, '60 = 5 x 3 x 4')
@@ -160,7 +181,7 @@ def review_volume_coordinate_fixtures():
     require(solve_volume_coordinate(move) == 'option-a', 'Right adds to x, up adds to y')
     move['response'] = options('(4, 5)', '(4, 5 )')
     require(rejects(move), 'Malformed pairs are rejected')
-    return 10
+    return 12
 
 
 def review_volume_coordinate_problem(problem):

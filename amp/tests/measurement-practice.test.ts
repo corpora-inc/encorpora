@@ -13,9 +13,17 @@ import {
 } from "../src/math/measurement-models.js";
 import {
   generateProblem,
+  generateProblemFor,
   polishProblem,
   templates,
 } from "../src/math/engine.js";
+import { figureCapabilities } from "../src/math/contracts.js";
+import {
+  describeScene,
+  layoutScene,
+  sceneCapabilitiesIn,
+  type Drawn,
+} from "../src/math/scene/index.js";
 import { lessons } from "../src/content/lessons.js";
 
 test("measurement families have instruction, deterministic public givens and honest response capabilities", () => {
@@ -161,4 +169,65 @@ test("measurement schemas reject invisible, impossible and unbounded givens", ()
   assert.throws(() =>
     generateMeasurementProblem("shifted-ruler-length", "x".repeat(129)),
   );
+});
+
+test("fractional ruler lengths: a centimeter strip or an object on an inch ruler, the ruler only for scenes-v2 clients", () => {
+  const older = figureCapabilities.filter((c) => c !== "scenes-v2");
+  const reached = new Set<string>();
+  const parts = new Set<number>();
+  let shifted = 0;
+  for (let i = 0; i < 300; i++) {
+    const seed = `ruler-${i}`;
+    const p = generateProblem("fractional-ruler-length", seed);
+    generatedProblemSchema.parse(p);
+    const surface = p.variant!.axes!.ruler!;
+    reached.add(surface);
+    const old = generateProblemFor("fractional-ruler-length", seed, older);
+    assert.equal(old.variant!.axes!.ruler, "cm-strip");
+    assert.equal(old.public.figure?.kind, "length-interval");
+    if (surface === "cm-strip") {
+      assert.deepEqual(old, p);
+      continue;
+    }
+    const f = p.public.figure!;
+    assert(f.kind === "scene");
+    assert.deepEqual(sceneCapabilitiesIn(p.public), ["scenes-v2"]);
+    const r = f.scene.elements[0]!;
+    assert(r.type === "ruler" && r.unit === "in" && r.object);
+    parts.add(r.parts);
+    assert.ok(r.length <= (r.parts === 8 ? 4 : 6));
+    if (r.object.from > 0) {
+      shifted++;
+      assert.equal(
+        r.object.from % r.parts,
+        0,
+        "a shifted start is a whole inch",
+      );
+    }
+    // The answer is the object's span in the ruler's parts, in lowest terms
+    // with the part as denominator.
+    const spaces = r.object.to - r.object.from;
+    assert.equal(p.answer, `${spaces}/${r.parts}`);
+    assert.equal(spaces % 2, 1);
+    assert.equal(p.public.response.kind, "fraction");
+    if (r.parts === 8)
+      assert.match(p.public.prompt, /nearest eighth of an inch/);
+    // No surface states the length before the answer.
+    const said = `${p.public.prompt} ${describeScene(f.scene)} ${p.hint}`;
+    assert.ok(!said.includes(p.answer), said);
+    assert.ok(!said.includes(`${spaces} spaces`));
+    // Eighths stay at least 7 px apart at the phone width.
+    const l = layoutScene({ ...f.scene, width: 288 });
+    const x = (k: number) =>
+      (
+        l.items.find((d) => d.id === `ruler.tick.${k}`) as Extract<
+          Drawn,
+          { k: "line" }
+        >
+      ).x1;
+    if (r.parts === 8) assert.ok(x(1) - x(0) >= 7, `${x(1) - x(0)} px`);
+  }
+  assert.deepEqual([...reached].sort(), ["cm-strip", "inch-ruler"]);
+  assert.deepEqual([...parts].sort(), [2, 4, 8]);
+  assert.ok(shifted > 0);
 });
