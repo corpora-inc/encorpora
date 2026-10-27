@@ -365,3 +365,12 @@ problem choices, reasons, utilities and probabilities across 80 fixed runs
 against the implementation before parameter extraction. Policy injection tests
 verify altered weights, temperature, targeting and repair, plus isolation between
 runs. No default selection values change when this configuration layer is used.
+
+## Connected skills are navigation only
+
+The pathways screen, answer feedback and public skill pages list strict
+prerequisites first under "Builds on" and "Leads to", then editorial extension
+and application connections in a quieter style. Related-kind connections, in
+both directions, sit under "Related skills". `skillNeighbors` in
+`src/web/features/pathways/neighbors.ts` builds these lists. Connections never
+enter readiness, support inference or selection; they carry no evidence.
