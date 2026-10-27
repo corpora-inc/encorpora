@@ -221,7 +221,10 @@ test("funded v5 vocabulary is exactly fifty fixed labels and preserves previous 
   assert.deepEqual(
     values(sql),
     CAMPAIGN_CREATIVES.filter(
-      (label) => !/^a[rz]-product-(adaptive|planning)-search-v1$/.test(label),
+      (label) =>
+        !/^a[rz]-(product-(adaptive|planning)-search-v1|product-in-action|staircase-)/.test(
+          label,
+        ),
     ),
   );
   for (const creative of labels) {
@@ -268,6 +271,29 @@ test("product-led creative labels preserve the existing database vocabulary", ()
     ...additions,
   ]);
   assert.deepEqual(values("0059-product-search-creative-labels.sql"), [
-    ...CAMPAIGN_CREATIVES,
+    ...CAMPAIGN_CREATIVES.filter(
+      (label) => !/^a[rz]-(product-in-action|staircase-)/.test(label),
+    ),
   ]);
+});
+
+test("signup creative labels match the database and retain historical labels", () => {
+  const sql = readFileSync(
+    new URL("../migrations/0069-parent-followup.sql", import.meta.url),
+    "utf8",
+  );
+  const constraint = sql.split("CHECK (creative IN (")[1]!;
+  const values = [...constraint.matchAll(/'([a-z0-9-]+)'/g)].map(
+    (match) => match[1],
+  );
+  assert.deepEqual(values, [...CAMPAIGN_CREATIVES]);
+  const prior = readFileSync(
+    new URL(
+      "../migrations/0059-product-search-creative-labels.sql",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  for (const [, value] of prior.matchAll(/'([a-z0-9-]+)'/g))
+    assert.ok((values as readonly string[]).includes(value));
 });

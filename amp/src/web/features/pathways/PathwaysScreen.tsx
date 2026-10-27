@@ -411,7 +411,7 @@ export function MapView({
       {guestMode && (
         <div className="pathways-guest-intro">
           <p>
-            No account needed
+            Free parent account
             {catalog.data?.trial?.free
               ? ` · ${catalog.data.trial.free} free problems`
               : ""}

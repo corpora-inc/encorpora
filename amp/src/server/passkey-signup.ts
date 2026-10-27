@@ -116,6 +116,8 @@ export function passkeySignup(config: {
           method: "POST",
           body: z.object({
             response: z.object({ id: z.string().min(1).max(1024) }).loose(),
+            freePractice: z.boolean().optional(),
+            program: z.enum(["ar-efa", "az-esa"]).optional(),
           }),
         },
         async (ctx) => {
@@ -224,7 +226,7 @@ export function passkeySignup(config: {
             await verify?.sendVerificationEmail?.(
               {
                 user: created.user,
-                url: `${ctx.context.baseURL}/verify-email?token=${emailToken}&callbackURL=${encodeURIComponent("/start")}`,
+                url: `${ctx.context.baseURL}/verify-email?token=${emailToken}&callbackURL=${encodeURIComponent(ctx.body.freePractice ? `/try?return=free-practice${ctx.body.program ? `&program=${ctx.body.program}` : ""}` : "/start")}`,
                 token: emailToken,
               },
               ctx.request,

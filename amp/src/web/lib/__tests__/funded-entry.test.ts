@@ -162,3 +162,38 @@ test("gift invitations survive sign-in without sharing a recipient address or to
   ).toEqual({ return: "access" });
   expect(continuationUrl({ return: "access" })).toBe("/access");
 });
+
+test("free account sign-in preserves a fixed practice destination and funding context", () => {
+  expect(
+    continuationUrl({
+      return: "free-practice",
+      program: "az-esa",
+      ...campaign,
+    }),
+  ).toBe(
+    "/try?utm_campaign=ar-efa-launch&utm_source=facebook&utm_medium=paid-social&program=az-esa&return=free-practice",
+  );
+  expect(
+    continuationSearch({ return: "free-practice", program: "bad" }),
+  ).toEqual({ return: "free-practice" });
+});
+
+test("a shared-state card retains its identity without inventing a funding program", () => {
+  expect(
+    continuationSearch({ return: "free-practice", entry: "openai-math-path" }),
+  ).toEqual({
+    return: "free-practice",
+    entry: "openai-math-path",
+  });
+  expect(
+    continuationUrl({ return: "free-practice", entry: "openai-math-plans" }),
+  ).toBe("/try?entry=openai-math-plans&return=free-practice");
+  expect(
+    continuationSearch({
+      return: "free-practice",
+      entry: "private@example.test",
+    }),
+  ).toEqual({
+    return: "free-practice",
+  });
+});

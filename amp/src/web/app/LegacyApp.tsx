@@ -1394,7 +1394,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           <p>
             {nativeRuntime
               ? "Sign in as a parent to choose a learner."
-              : `No account needed. AMP adjusts as you answer. Your free trial includes up to ${catalog?.trial?.free ?? 100} problems, with hints and lessons along the way.`}
+              : `Create your free parent account. AMP adjusts as you answer. Your free trial includes up to ${catalog?.trial?.free ?? 100} problems, with hints and lessons along the way.`}
           </p>
           {hasPendingConsent && (
             <p>
