@@ -84,16 +84,19 @@ function tex(source: string): number {
     .replace(/\\times|\\cdot/g, "*")
     .replace(/\\div/g, "/")
     .replace(/\\left|\\right/g, "");
-  t = t.replace(/(\d+)\\frac\{(\d+)\}\{(\d+)\}/g, "($1+$2/$3)");
-  while (/\\frac\{[^{}]*\}\{[^{}]*\}/.test(t))
-    t = t.replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, "(($1)/($2))");
   t = t
-    .replace(/\\pi/g, "(Math.PI)")
-    .replace(/\\sqrt\[3\]\{([^{}]*)\}/g, "Math.cbrt($1)")
-    .replace(/\\sqrt\{([^{}]*)\}/g, "Math.sqrt($1)")
-    .replace(/(\d|\))\s*(Math|\()/g, "$1*$2")
-    .replace(/\)(\d)/g, ")*$1")
-    .replace(/\^\{(-?\d+)\}/g, "**($1)");
+    .replace(/\^\{(-?\d+)\}/g, "**($1)")
+    .replace(/(\d+)\\frac\{(\d+)\}\{(\d+)\}/g, "($1+$2/$3)")
+    .replace(/\\pi/g, "(Math.PI)");
+  // Innermost first: roots and fractions nest in either order.
+  for (let before = ""; before !== t;) {
+    before = t;
+    t = t
+      .replace(/\\sqrt\[3\]\{([^{}]*)\}/g, "Math.cbrt($1)")
+      .replace(/\\sqrt\{([^{}]*)\}/g, "Math.sqrt($1)")
+      .replace(/\\frac\{([^{}]*)\}\{([^{}]*)\}/g, "(($1)/($2))");
+  }
+  t = t.replace(/(\d|\))\s*(Math|\()/g, "$1*$2").replace(/\)(\d)/g, ")*$1");
   return Function(`return (${t})`)() as number;
 }
 const near = (a: number, b: number) =>
@@ -112,24 +115,48 @@ const selection = (c: McasGapCase) => {
   if (response.kind !== "multi-select") throw new Error("multi expected");
   return response;
 };
+const pairClaim = /^(.*) is (true|false)\.$/;
+/** True/false pairs list each statement twice, "… is true." then "… is false." */
+const isPairs = (c: McasGapCase) =>
+  c.axes?.["answer-format"] === "true-false-pair";
+/** The displayed statements, whatever the answer format. */
+const statementsOf = (c: McasGapCase): string[] => {
+  const labels = selection(c).options.map((o) => o.label);
+  if (!isPairs(c)) return labels;
+  const out: string[] = [];
+  for (let i = 0; i < labels.length; i += 2) {
+    const t = pairClaim.exec(labels[i]!)!,
+      f = pairClaim.exec(labels[i + 1]!)!;
+    assert.ok(t && f && t[1] === f[1] && t[2] === "true" && f[2] === "false");
+    out.push(t[1]!);
+  }
+  return out;
+};
+/** The statements the keyed answer says are true. */
 const keyed = (c: McasGapCase): Set<string> => {
   const ids = parseSelection(c.problem.answer);
   assert.ok(ids, "answer parses");
-  const response = selection(c);
+  const chosen = selection(c)
+    .options.filter((o) => ids!.includes(o.id))
+    .map((o) => o.label);
+  if (!isPairs(c)) return new Set(chosen);
+  const statements = statementsOf(c);
+  assert.equal(chosen.length, statements.length, "one choice per pair");
   return new Set(
-    response.options.filter((o) => ids!.includes(o.id)).map((o) => o.label),
+    chosen
+      .map((label) => pairClaim.exec(label)!)
+      .filter((m) => m[2] === "true")
+      .map((m) => m[1]!),
   );
 };
-/** The semantic oracle returns the set of labels that must be keyed. */
+/** The semantic oracle returns the set of statements that must be keyed. */
 const checkTruth = (
   id: string,
   truth: (c: McasGapCase, label: string) => boolean,
 ) => {
   for (const c of cases(id)) {
     const expected = new Set(
-      selection(c)
-        .options.map((o) => o.label)
-        .filter((label) => truth(c, label)),
+      statementsOf(c).filter((label) => truth(c, label)),
     );
     assert.deepEqual(
       [...keyed(c)].sort(),
@@ -172,7 +199,11 @@ test("multi-select problems have distinct options, one exact keyed set and no le
       assert.ok(response.selectionCount >= 2);
       assert.ok(response.selectionCount < response.options.length);
       const trueLabels = c.options!.filter((o) => o.holds).map((o) => o.label);
-      assert.equal(trueLabels.length, response.selectionCount, id);
+      assert.equal(
+        isPairs(c) ? c.options!.length : trueLabels.length,
+        response.selectionCount,
+        id,
+      );
       assert.deepEqual(
         [...keyed(c)].sort(),
         [...trueLabels].sort(),
@@ -239,11 +270,17 @@ test("engine generation reaches every template and keeps its capability", () => 
 });
 
 test("equation templates agree with independent arithmetic", () => {
-  const equation = /^\$([\d{},]+)\\(times|div)([\d{},]+)=([\d{},]+)\$$/;
+  // Either orientation: 63÷9=7 or 7=63÷9.
+  const opFirst = /^\$([\d{},]+)\\(times|div)([\d{},]+)=([\d{},]+)\$$/;
+  const resultFirst = /^\$([\d{},]+)=([\d{},]+)\\(times|div)([\d{},]+)\$$/;
   const holds = (_: McasGapCase, label: string) => {
-    const m = equation.exec(label)!;
-    const [x, y, z] = [int(m[1]!), int(m[3]!), int(m[4]!)];
-    return m[2] === "times" ? x * y === z : x === y * z;
+    const a = opFirst.exec(label),
+      b = resultFirst.exec(label);
+    assert.ok(a || b, label);
+    const [x, op, y, z] = a
+      ? [int(a[1]!), a[2]!, int(a[3]!), int(a[4]!)]
+      : [int(b![2]!), b![3]!, int(b![4]!), int(b![1]!)];
+    return op === "times" ? x * y === z : x === y * z;
   };
   for (const id of [
     "mcas-true-fact-equations",
@@ -252,14 +289,34 @@ test("equation templates agree with independent arithmetic", () => {
   ])
     checkTruth(id, holds);
   for (const c of cases("mcas-true-fact-equations"))
-    assert.ok(
-      selection(c).options.filter((o) => o.label.includes("\\div")).length >= 3,
-      "at least three divisions with the quotient on the left",
-    );
-  for (const c of cases("mcas-true-quotient-equations"))
-    if (c.variant === "zero-in-quotient")
+    if (!isPairs(c))
       assert.ok(
-        selection(c).options.some((o) => /=\d*0\d*\$/.test(o.label)),
+        selection(c).options.filter((o) => o.label.includes("\\div")).length >=
+          3,
+        "at least three divisions",
+      );
+  for (const id of [
+    "mcas-true-fact-equations",
+    "mcas-true-product-equations",
+    "mcas-true-quotient-equations",
+  ]) {
+    const seen = new Set(cases(id).map((c) => JSON.stringify(c.axes)));
+    assert.equal(seen.size, 6, `${id} reaches every orientation × format`);
+    for (const c of cases(id)) {
+      const flipped = statementsOf(c).map((l) => resultFirst.test(l));
+      const o = c.axes!.orientation;
+      if (o === "operation-first") assert.ok(!flipped.some(Boolean));
+      if (o === "result-first") assert.ok(flipped.every(Boolean));
+      if (o === "mixed")
+        assert.ok(flipped.some(Boolean) && !flipped.every(Boolean), id);
+    }
+  }
+  for (const c of cases("mcas-true-quotient-equations"))
+    if (c.variant === "zero-in-quotient" && !isPairs(c))
+      assert.ok(
+        selection(c).options.some(
+          (o) => /=\d*0\d*\$/.test(o.label) || /^\$\d*0\d*=/.test(o.label),
+        ),
         "a quotient with a zero digit appears",
       );
 });
@@ -298,15 +355,38 @@ test("rounding, primes and factors agree with independent arithmetic", () => {
   );
 });
 
-test("comparison equations hold for the stated amount", () => {
+test("comparison equations hold for the stated amount, whichever quantity is unknown", () => {
+  const story =
+    /^A group has (\d+) (.+?)\. There are (\d+) (times as many|more) (.+?) (?:as|than) (.+?)\. Let \$n\$ be the number of (.+?)\./;
+  const unknownValue = (c: McasGapCase) => {
+    const [, given, givenNoun, k, relation, big, small, asked] = story.exec(
+      promptOf(c),
+    )!;
+    const g = int(given!),
+      m = int(k!);
+    const times = relation === "times as many";
+    if (givenNoun === small && asked === big) return times ? g * m : g + m;
+    assert.ok(givenNoun === big && asked === small, promptOf(c));
+    return times ? g / m : g - m;
+  };
   checkTruth("mcas-comparison-equations-select", (c, label) => {
-    const a = int(/has (\d+) /.exec(promptOf(c))![1]!);
-    const m = int(/There are (\d+) /.exec(promptOf(c))![1]!);
-    const N = c.variant === "times" ? m * a : a + m;
+    const N = unknownValue(c);
     const [left, right] = label.replace(/\$/g, "").split("=");
     const side = (s: string) => tex(s.replace(/n/g, `(${N})`));
     return near(side(left!), side(right!));
   });
+  const targets = new Set(
+    cases("mcas-comparison-equations-select").map((c) => c.axes!.unknown),
+  );
+  assert.deepEqual([...targets].sort(), ["larger", "smaller"]);
+  for (const c of cases("mcas-comparison-equations-select"))
+    if (c.axes!.unknown === "smaller")
+      assert.ok(
+        Number.isInteger(unknownValue(c)) &&
+          c.problem.explanation.some((l) =>
+            l.includes(`$n=${unknownValue(c)}$`),
+          ),
+      );
 });
 
 test("prism pairs are unique and meet the stated condition", () => {
@@ -468,6 +548,15 @@ test("rational and irrational selections match numeric rationality", () => {
   checkTruth("mcas-rational-irrational-select", (_, label) =>
     isRationalValue(tex(label)),
   );
+  for (const c of cases("mcas-rational-irrational-select"))
+    if (c.axes!["number-domain"] === "with-powers") {
+      const powers = statementsOf(c).filter((l) => l.includes("^{"));
+      assert.ok(
+        powers.some((l) => c.options!.find((o) => o.label === l)!.holds) &&
+          powers.some((l) => !c.options!.find((o) => o.label === l)!.holds),
+        "a rational and an irrational power appear",
+      );
+    }
 });
 
 test("scientific notation equations are exactly equal to their numerals", () => {

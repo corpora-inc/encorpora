@@ -2120,7 +2120,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "missing-factor.core",
     extent: "partial",
     rationale:
-      "Select the true equations among six multiplication and division facts, with the quotient on the left and with facts of tens. Does not assess writing or solving an equation for an unknown or explaining why an equation is false.",
+      "Judge multiplication and division facts, including facts of tens, written with the result on either side, as a select-all list or as true-or-false pairs. Does not assess writing or solving an equation for an unknown or explaining why an equation is false.",
   },
   {
     templateId: "mcas-round-hundred-select",
@@ -2141,14 +2141,14 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "multiplicative-comparison.core",
     extent: "partial",
     rationale:
-      "Select the multiplication, division, addition or subtraction equations that fit a times-as-many or more-than story with an unknown amount. Does not assess solving the equation or writing it unprompted.",
+      "Select the multiplication, division, addition or subtraction equations that fit a times-as-many or more-than story, with either the larger or the smaller amount unknown. Does not assess solving the equation or writing it unprompted.",
   },
   {
     templateId: "mcas-true-product-equations",
     facetId: "whole-multiplication.one-digit-factor",
     extent: "partial",
     rationale:
-      "Judge stated products of a three-digit and a one-digit number, with errors from missed regrouping and place value. Does not assess two-digit multipliers or written multiplication by hand.",
+      "Judge stated products of a three-digit and a one-digit number, with errors from missed regrouping and place value, written with the result on either side, as a select-all list or as true-or-false pairs. Does not assess two-digit multipliers or written multiplication by hand.",
   },
   {
     templateId: "mcas-prism-range-select",
@@ -2169,7 +2169,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "whole-division.core",
     extent: "partial",
     rationale:
-      "Judge stated quotients of three- or four-digit dividends and two-digit divisors, including a zero digit in the quotient. Does not assess remainders, decimals or division by hand.",
+      "Judge stated quotients of three- or four-digit dividends and two-digit divisors, including a zero digit in the quotient, written with the result on either side, as a select-all list or as true-or-false pairs. Does not assess remainders, decimals or division by hand.",
   },
   {
     templateId: "mcas-cube-prism-statements",
@@ -2211,7 +2211,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     facetId: "irrational-numbers.classify-forms",
     extent: "partial",
     rationale:
-      "Select the rational numbers among five square or cube roots, or among sums and products of roots and pi. Does not assess proofs of irrationality or repeating decimals.",
+      "Select the rational numbers among five square or cube roots, or among sums, products, quotients and powers of roots and pi. Does not assess proofs of irrationality or repeating decimals.",
   },
   {
     templateId: "mcas-sci-notation-select",

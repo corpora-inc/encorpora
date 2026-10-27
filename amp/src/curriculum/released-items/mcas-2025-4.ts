@@ -135,14 +135,14 @@ export const mcasGrade4 = defineLedger(
       ],
       demand:
         "Select the three equations that find the number of students when a quantity is four times another",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "comparison-amount",
         "comparison-factor",
         "mcas-comparison-equations-select",
       ],
       limitations:
-        "Three of six equations for a times-as-many or more-than story are selected, but the unknown is always the larger quantity; the released item gives the larger total (36 jars is 4 times the students) and asks for the smaller, so the division direction is not practiced.",
+        "Three of six equations for a times-as-many or more-than story are selected; the unknown axis makes either the larger or the smaller quantity the unknown, so the division direction from a given larger total is practiced.",
     },
     {
       section: "Session 1",
@@ -314,10 +314,10 @@ export const mcasGrade4 = defineLedger(
       archetypeIds: ["equation.truth", "whole.multiply-one-digit"],
       demand:
         "Select the three correct statements about whether three products of a three-digit and a one-digit number are right",
-      status: "partial",
+      status: "covered",
       templateIds: ["multiply-by-one-digit", "mcas-true-product-equations"],
       limitations:
-        "Three of six stated products of a three-digit and a one-digit number are judged correct, but every option is an equation to confirm; the released item pairs each product with an 'is true' and an 'is false' statement and asks for the correct one of each pair, so selecting false statements is not practiced.",
+        "Stated products of a three-digit and a one-digit number are judged as a select-all list or, through the answer-format axis, as three products each paired with an 'is true' and an 'is false' statement, choosing the correct one of each pair.",
     },
   ],
 );

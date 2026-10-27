@@ -5,6 +5,10 @@ with exact Fraction arithmetic. No generator helper is imported. Multi-select
 answers are the sorted JSON list of option IDs; the stated selection count must
 equal the number of true statements, and mathematically equivalent statements
 are rejected as duplicates.
+
+Families on the variation-axis layer (equation orientation, true/false pairs,
+unknown target, number domain) are decoded by variation_axes_oracle: this file
+judges each displayed statement once and the shared helper checks the format.
 """
 
 import copy
@@ -12,6 +16,14 @@ import json
 import math
 import re
 from fractions import Fraction
+
+from variation_axes_oracle import (
+    is_rational as exact_is_rational,
+    oriented_equation,
+    statement_set,
+    statements as displayed_statements,
+    verdict_lines,
+)
 
 MULTI = frozenset(
     {
@@ -111,11 +123,13 @@ def finish(public, truths, key=None):
 # ---------------------------------------------------------------- templates
 
 
-def eval_arith(label, ops):
-    m = re.fullmatch(r"\$([\d{},]+)\\(times|div)(\d+)=([\d{},]+)\$", label)
-    require(m is not None, f"Bad arithmetic label {label!r}")
+def eval_arith(label, ops=None):
+    """Truth of "a op b = c" written in either orientation (7 = 63 / 9 too)."""
+    operation, result = oriented_equation(tex(label), lambda side: "\\times" in side or "\\div" in side)
+    m = re.fullmatch(r"([\d{},]+)\\(times|div)(\d+)", operation)
+    require(m is not None and re.fullmatch(r"[\d{},]+", result), f"Bad arithmetic label {label!r}")
     a, op, b = integer(m.group(1)), m.group(2), int(m.group(3))
-    rhs = integer(m.group(4))
+    rhs = integer(result)
     if op == "times":
         return a * b == rhs, ("t", a, b, rhs)
     require(b != 0, "Division by zero")
@@ -123,8 +137,8 @@ def eval_arith(label, ops):
 
 
 def arithmetic(public):
-    res = [eval_arith(o["label"], None) for o in public["response"]["options"]]
-    return finish(public, [r[0] for r in res], [r[1] for r in res])
+    """Any statement-set format: select-all or true/false pairs."""
+    return statement_set(public, lambda l: eval_arith(l)[0], lambda l: eval_arith(l)[1])
 
 
 def round_hundred(public):
@@ -163,40 +177,45 @@ def prime_factor(public):
 
 
 def comparison(public):
+    """Either quantity of the story may be the unknown $n$."""
     m = re.match(
-        r"A group has (\d+) (.+?)\. There are (\d+) (times as many|more) (.+?) (?:than|as) \2\. Let \$n\$ be the number of \5\. Which \d+ equations can be used to find \$n\$\?$",
+        r"A group has (\d+) (.+?)\. There are (\d+) (times as many|more) (.+?) (?:than|as) (.+?)\. Let \$n\$ be the number of (.+?)\. Which \d+ equations can be used to find \$n\$\?$",
         public["prompt"],
     )
     require(m is not None, "Comparison prompt")
-    a, b = int(m.group(1)), int(m.group(3))
-    target = a * b if m.group(4) == "times as many" else a + b
-    truths, key = [], []
-    for o in public["response"]["options"]:
-        body = tex(o["label"])
-        lhs, rhs = body.split("=")
+    given, given_noun, b = int(m.group(1)), m.group(2), int(m.group(3))
+    times, big, small, asked = m.group(4) == "times as many", m.group(5), m.group(6), m.group(7)
+    if given_noun == small and asked == big:
+        target = Fraction(given * b) if times else Fraction(given + b)
+    else:
+        require(given_noun == big and asked == small, "The story names the given and the asked groups")
+        target = Fraction(given, b) if times else Fraction(given - b)
+        require(target.denominator == 1 and target > 0, "The smaller amount is a whole number")
 
-        def ev(side, n):
-            side = side.strip()
-            if side == "n":
-                return Fraction(n)
-            for sym, fn in (
-                ("\\times", lambda x, y: x * y),
-                ("\\div", None),
-                ("+", lambda x, y: x + y),
-                ("-", lambda x, y: x - y),
-            ):
-                if sym in side:
-                    x, y = side.split(sym)
-                    x, y = ev(x, n), ev(y, n)
-                    if sym == "\\div":
-                        require(y != 0, "div0")
-                        return x / y
-                    return fn(x, y)
-            return Fraction(int(side))
+    def ev(side, n):
+        side = side.strip()
+        if side == "n":
+            return Fraction(n)
+        for sym, fn in (
+            ("\\times", lambda x, y: x * y),
+            ("\\div", None),
+            ("+", lambda x, y: x + y),
+            ("-", lambda x, y: x - y),
+        ):
+            if sym in side:
+                x, y = side.split(sym)
+                x, y = ev(x, n), ev(y, n)
+                if sym == "\\div":
+                    require(y != 0, "div0")
+                    return x / y
+                return fn(x, y)
+        return Fraction(int(side))
 
-        truths.append(ev(lhs, target) == ev(rhs, target))
-        key.append(body.replace("\\times", "*"))
-    return finish(public, truths, key)
+    def truth(label):
+        lhs, rhs = tex(label).split("=")
+        return ev(lhs, target) == ev(rhs, target)
+
+    return statement_set(public, truth, lambda label: tex(label).replace("\\times", "*").replace(" ", ""))
 
 
 def product_equations(public):
@@ -458,7 +477,8 @@ def rational_expr(text):
         return True
     if (m := re.fullmatch(r"\\left\(\\sqrt\{(\d+)\}\+(\d+)\\right\)\\left\(\\sqrt\{\1\}-\2\\right\)", t)):
         return True  # difference of squares: a - b^2
-    raise ValueError(f"Unclassified irrational/rational form {text!r}")
+    # Powers of pi and of radicals, and other forms: the shared exact evaluator.
+    return exact_is_rational(t)
 
 
 def rational_irrational(public):
@@ -765,18 +785,8 @@ def solve(public):
 
 
 def verdicts(public, problem):
-    """Per-option verdict lines in the explanation must match the independent truth."""
-    expected = set(json.loads(solve(public)))
-    lines = problem.get("explanation", [])
-    found = 0
-    for o in public["response"]["options"]:
-        hits = [x for x in lines if x.startswith(o["label"] + ": ")]
-        require(len(hits) == 1, f"No unique explanation line for {o['label']!r}")
-        verdict = hits[0][len(o["label"]) + 2 :].split(".")[0].split(":")[0].strip().lower()
-        require(verdict in ("true", "false"), f"No verdict for {o['label']!r}")
-        require((verdict == "true") == (o["id"] in expected), f"Explanation misclassifies {o['label']!r}")
-        found += 1
-    return found
+    """Per-statement verdict lines in the explanation must match the independent truth."""
+    return verdict_lines({**problem, "public": public, "answer": solve(public)})
 
 
 def review_problem(problem):
@@ -975,6 +985,52 @@ def self_test():
     expect_failure(lambda: solve(bad), "Accepted two defensible slope signs or none")
     require(rational_expr("(\\sqrt{7}+4)(\\sqrt{7}-4)".replace("(", "\\left(").replace(")", "\\right)")), "Difference of squares")
     require(not rational_expr("\\sqrt{7}+\\sqrt{3}"), "Surd sum")
+    # Variation axes: result-first orientation, true/false pairs, the smaller
+    # quantity as the unknown and powers of pi and radicals.
+    oriented = multi(
+        "mcas-true-fact-equations",
+        "Choose the 3 equations that are true.",
+        ["$7=63\\div9$", "$64=8\\times8$", "$5=36\\div6$", "$4\\times6=25$", "$56=7\\times8$", "$9=45\\div4$"],
+        3,
+    )
+    require(solve(oriented) == '["option-a","option-b","option-e"]', "Result-first fixture")
+    pairs = multi(
+        "mcas-true-product-equations",
+        "Each equation states the product of a three-digit number and a one-digit number. Decide whether each of the 3 equations is true or false, and choose the correct statement for each equation.",
+        [
+            "$294\\times6=1{,}746$ is true.",
+            "$294\\times6=1{,}746$ is false.",
+            "$2{,}233=319\\times7$ is true.",
+            "$2{,}233=319\\times7$ is false.",
+            "$785\\times9=7{,}065$ is true.",
+            "$785\\times9=7{,}065$ is false.",
+        ],
+        3,
+    )
+    require(solve(pairs) == '["option-b","option-c","option-e"]', "Pair fixture")
+    bad = copy.deepcopy(pairs)
+    bad["response"]["options"][1]["label"] = "$294\\times6=1{,}764$ is false."
+    expect_failure(lambda: solve(bad), "Accepted a pair whose claims name different equations")
+    smaller = multi(
+        "mcas-comparison-equations-select",
+        "A group has 36 students. There are 4 times as many students as chaperones. Let $n$ be the number of chaperones. Which 3 equations can be used to find $n$?",
+        ["$n\\times4=36$", "$36\\times4=n$", "$36\\div4=n$", "$36=n+4$", "$36\\div n=4$", "$n\\div36=4$"],
+        3,
+    )
+    require(solve(smaller) == '["option-a","option-c","option-e"]', "Smaller-unknown fixture")
+    powers = multi(
+        "mcas-rational-irrational-select",
+        "A rational number can be written as a ratio of two integers. Which 2 of these expressions have a rational value?",
+        [
+            "$\\pi^{2}$",
+            "$4\\pi$",
+            "$\\frac{4\\pi^{2}}{\\pi^{2}}$",
+            "$\\left(\\sqrt{10}\\right)^{3}$",
+            "$\\left(\\sqrt{2}\\right)^{4}$",
+        ],
+        2,
+    )
+    require(solve(powers) == '["option-c","option-e"]', "Powers fixture")
 
 
 # Read by independent-math-review.py (FamilyOracle).
