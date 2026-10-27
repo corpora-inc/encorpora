@@ -219,8 +219,8 @@
   font-weight: 600;
   color: var(--color-muted-text);
 }
-/* One reserved line under each entry: its typeset preview, or the fix. A
-   stacked fraction fits, so the line never grows. */
+/* One reserved band under each entry: its typeset preview (a stacked
+   fraction fits) or the fix in up to two short lines; it never grows. */
 .work-note {
   display: flex;
   align-items: center;
@@ -228,10 +228,11 @@
   overflow: hidden;
   padding: 0 var(--space-1);
   font-size: var(--text-small);
-  line-height: 1.2;
+  line-height: 1.25;
   color: var(--color-muted-text);
+}
+.work-note .math {
   white-space: nowrap;
-  text-overflow: ellipsis;
 }
 .work-note .math {
   font-size: 17px;

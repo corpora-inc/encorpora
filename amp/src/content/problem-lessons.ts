@@ -87,6 +87,13 @@ export function problemLesson(
         answerText(learnerProblem.public.response, learnerProblem.answer)
     )
       return true;
+    // Structured work: the same givens asked in another mode (build, fill
+    // or order) is the same problem, and the lesson would work it.
+    if (
+      learnerProblem?.public.response.kind === "structured-work" &&
+      p.public.response.kind === "structured-work"
+    )
+      return workGivens(p) === workGivens(learnerProblem);
     if (p.public.prompt !== avoidPrompt) return false;
     // Multi-part items share their wording; their givens are the blank
     // labels and the figure. Rows and options are shuffled, so neither order
@@ -190,4 +197,17 @@ export function problemLesson(
       answer,
     },
   };
+}
+
+/** What a structured problem is about, independent of its mode: the line to
+ * solve, the proof's goal and figure, or the values to find. */
+function workGivens(p: GeneratedProblem): string {
+  const g = p.workGrading;
+  const r = p.public.response;
+  if (!g || r.kind !== "structured-work") return p.public.prompt;
+  if (g.mode === "derivation") return `derivation:${g.start}`;
+  if (g.mode === "proof")
+    return `proof:${r.goal}:${JSON.stringify(p.public.figure ?? null)}`;
+  // Labeled values: the story without its mode sentence, and the labels.
+  return `fields:${p.public.prompt.replace(/ (?:Enter each step|Some steps are filled in\. Enter the others)\.$/, "")}:${JSON.stringify(r.rows.map((row) => row.label ?? ""))}`;
 }

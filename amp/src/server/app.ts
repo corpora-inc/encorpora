@@ -54,7 +54,6 @@ import {
   normalizeMultiPart,
 } from "../math/multi-part-choice";
 import {
-  canonicalStructuredWork,
   markStructuredWork,
   normalizeStructuredWork,
   structuredWorkFeedback,
@@ -680,7 +679,19 @@ function routes(app: FastifyInstance, options: AppOptions) {
           stored?.public.response.kind === "point-plot" &&
           stored.public.response.ordered;
         const parts = canonicalMultiPart(duplicate.response);
-        const work = canonicalStructuredWork(duplicate.response);
+        // Structured work is stored in its canonical form; a retry is the same
+        // when the problem normalizes it to that form (spacing, ≤ or <=).
+        const workProblem =
+          duplicate.response !== input.response &&
+          duplicate.response.startsWith("[")
+            ? await tx.problem(duplicate.problemId)
+            : null;
+        const sameWork =
+          workProblem?.public.response.kind === "structured-work" &&
+          normalizeStructuredWork(
+            workProblem.public.response,
+            input.response,
+          ) === duplicate.response;
         const sameResponse =
           duplicate.response === input.response ||
           (selected !== null &&
@@ -693,9 +704,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
             canonicalPointSet(input.response) === plotted) ||
           // Multi-part answers are keyed by blank, so key order is not a change.
           (parts !== null && canonicalMultiPart(input.response) === parts) ||
-          // Structured work is stored canonical; spacing and symbol spelling
-          // (≤ or <=) of a retry are not a change.
-          (work !== null && canonicalStructuredWork(input.response) === work);
+          sameWork;
         if (duplicate.problemId !== input.problemId || !sameResponse)
           throw new ApiError(
             409,

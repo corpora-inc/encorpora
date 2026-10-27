@@ -324,7 +324,7 @@ const rental = chainFamily({
         variables: [m.v],
       },
       {
-        label: `Inequality that is true when plan A costs ${m.ask} than plan B`,
+        label: `Inequality comparing plan A's cost with plan B's cost, true when plan A costs ${m.ask}`,
         kind: "expression",
         value: `${A}${op}${B}`,
         match: "sides",

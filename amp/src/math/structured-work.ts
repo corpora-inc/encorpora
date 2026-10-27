@@ -5,8 +5,10 @@ import {
   evaluate,
   flipOp,
   groupedProducts,
+  ExpressionError,
   lineTex,
   lineText,
+  nodeText,
   parseLine,
   polyConstant,
   productFactors,
@@ -26,6 +28,7 @@ import {
   solvedFor,
   termCount,
   type Line,
+  type Node,
   type ParseOptions,
   type Q,
   type RF,
@@ -370,6 +373,12 @@ export function checkEntry(
       : { ok: false, error: "Choose one of the listed options" };
   }
   if (f.kind === "number") {
+    // "22 1/2" is not 221/2: a space inside a number is never removed.
+    if (/[\d.]\s+[\d./]/.test(text))
+      return {
+        ok: false,
+        error: "Write one number without spaces; use a fraction such as 45/2",
+      };
     const value = text.replace(/[−–]/g, "-").replace(/\s+/g, "");
     return qParse(value)
       ? { ok: true, value }
@@ -444,19 +453,6 @@ export function normalizeStructuredWork(
   const text = JSON.stringify(out);
   return text.length <= MAX_WORK_RESPONSE_LENGTH ? text : null;
 }
-/** A stored response compared without its problem: canonical JSON. */
-export function canonicalStructuredWork(raw: string): string | null {
-  const parsed = parseWorkDraft(raw);
-  if (!parsed || !parsed.length) return null;
-  return JSON.stringify(
-    parsed.map((row) =>
-      Array.isArray(row)
-        ? row.map((v) => compactLine(v, / or |,/i.test(v)))
-        : row,
-    ),
-  );
-}
-
 /* ------------------------------------------------------------ grading */
 
 /** A fixed expected field. */
@@ -614,12 +610,14 @@ export function fieldMatches(
     want = parseLine(rule.value, options);
   if (!got.ok || !want.ok) return false;
   if (got.line.parts.length !== want.line.parts.length) return false;
-  return got.line.parts.every((p, i) => {
-    const w = want.line.parts[i]!;
-    if (rule.match === "identity" || !w.op)
-      return !p.op && !w.op && rfEq(evaluate(p.left), evaluate(w.left));
-    return sameRelation(p, w);
-  });
+  return bounded(false, () =>
+    got.line.parts.every((p, i) => {
+      const w = want.line.parts[i]!;
+      if (rule.match === "identity" || !w.op)
+        return !p.op && !w.op && rfEq(evaluate(p.left), evaluate(w.left));
+      return sameRelation(p, w);
+    }),
+  );
 }
 /** The same relation side by side, in either order. */
 function sameRelation(a: Relation, b: Relation): boolean {
@@ -814,19 +812,19 @@ export function validMoves(
     const sameGroups =
       groupedProducts(b.left) === groupedProducts(a.left) &&
       groupedProducts(b.right!) === groupedProducts(a.right!);
+    const changed = lineText({ parts: [a] }) !== lineText({ parts: [b] });
+    // Combining like terms, or carrying out arithmetic (3x/3 to x, 15/3 to
+    // 5): fewer terms, or a shorter line, with the groupings kept.
     if (
       sameGroups &&
+      changed &&
       (termCount(b.left) < termCount(a.left) ||
-        termCount(b.right!) < termCount(a.right!))
+        termCount(b.right!) < termCount(a.right!) ||
+        compact(b) < compact(a))
     )
       out.add("combine");
-    // Reordering terms or factors without changing any count.
-    if (
-      sameGroups &&
-      termCount(b.left) === termCount(a.left) &&
-      termCount(b.right!) === termCount(a.right!) &&
-      lineText({ parts: [a] }) !== lineText({ parts: [b] })
-    )
+    // Reordering: each side has the same terms (or factors), in another order.
+    if (changed && samePieces(a.left, b.left) && samePieces(a.right!, b.right!))
       out.add("commute");
     return out;
   }
@@ -864,22 +862,73 @@ export function validMoves(
   return out;
 }
 
+const compact = (r: Relation) =>
+  lineText({ parts: [r] }).replace(/\s+/g, "").length;
+const bare = (n: Node): Node => (n.t === "group" ? bare(n.node) : n);
+/** The terms of a sum (or factors of a product) as sorted texts. */
+function pieces(n: Node): string[] {
+  const u = bare(n);
+  if (u.t === "add")
+    return u.terms.map((t) => `${t.sign}${nodeText(bare(t.node))}`).sort();
+  if (u.t === "mul") return u.factors.map((f) => nodeText(bare(f))).sort();
+  return [nodeText(u)];
+}
+const samePieces = (a: Node, b: Node) =>
+  JSON.stringify(pieces(a)) === JSON.stringify(pieces(b));
+/** A single number written out: 5, −4, 3/4, −3/4, 2.5 (fractions in
+ * lowest terms). */
+function literal(n: Node): boolean {
+  const u = bare(n);
+  if (u.t === "num") return true;
+  if (u.t === "add")
+    return (
+      u.terms.length === 1 &&
+      u.terms[0]!.sign < 0 &&
+      bare(u.terms[0]!.node).t !== "add" &&
+      literal(u.terms[0]!.node)
+    );
+  // A fraction of whole numbers in lowest terms: 3/4, not 35/5 or 6/8.
+  if (u.t === "div") {
+    const n = bare(u.num),
+      d = bare(u.den);
+    if (n.t !== "num" || d.t !== "num") return false;
+    const [a, b] = [n.value, d.value];
+    if (a.d !== 1n || b.d !== 1n || b.n <= 1n) return false;
+    let [x, y] = [a.n < 0n ? -a.n : a.n, b.n];
+    while (y) [x, y] = [y, x % y];
+    return x === 1n;
+  }
+  return false;
+}
+
 /** The line is solved for v: v alone on one side of every part, with a
- * value free of v. Returns each part's relation read as "v op value". */
+ * value free of v. Returns each part's relation read as "v op value", and
+ * whether every value is written as a single number. */
 function solvedParts(
   line: Line,
   v: string,
-): { op: RelationOp; value: RF }[] | null {
-  const out: { op: RelationOp; value: RF }[] = [];
+): { op: RelationOp; value: RF; literal: boolean }[] | null {
+  const out: { op: RelationOp; value: RF; literal: boolean }[] = [];
   for (const part of line.parts) {
     const s = solvedFor(part, v);
     if (!s || !part.op) return null;
     out.push({
       op: s.flipped ? flipOp(part.op) : part.op,
       value: evaluate(s.value),
+      literal: literal(s.value),
     });
   }
   return out;
+}
+/** Run an exact comparison that may exceed the size guards; too large is
+ * simply not a match (never a server error). */
+function bounded<T>(fallback: T, run: () => T): T {
+  try {
+    return run();
+  } catch (error) {
+    if (error instanceof ExpressionError) return fallback;
+    throw error;
+  }
 }
 function matchesSolution(
   solved: { op: RelationOp; value: RF }[],
@@ -928,7 +977,9 @@ function markDerivation(
     const prev = i ? lines[i - 1]! : start.line;
     const move = grading.moves[rows[i]!.values[1]!];
     const step = move
-      ? checkMove(prev, line, move, grading.positive)
+      ? bounded({ ok: false, why: "move" } as const, () =>
+          checkMove(prev, line, move, grading.positive),
+        )
       : ({ ok: false, why: "reason" } as const);
     if (!step.ok) {
       valid.push(false);
@@ -946,13 +997,24 @@ function markDerivation(
   });
   // The last line must be solved, with exactly the solutions.
   const lastIndex = lines.length - 1;
-  const solved = solvedParts(lines[lastIndex]!, grading.variable);
-  const finished = !!solved && matchesSolution(solved, grading);
+  const solved = bounded(null, () =>
+    solvedParts(lines[lastIndex]!, grading.variable),
+  );
+  // A numeric solution is written as one number, not 15/3 or 2 + 3.
+  const numeric =
+    !grading.positive &&
+    !grading.line.variables.some((v) => v !== grading.variable);
+  const simplified = !!solved && (!numeric || solved.every((p) => p.literal));
+  const right =
+    !!solved && bounded(false, () => matchesSolution(solved, grading));
+  const finished = right && simplified;
   if (!finished && valid[lastIndex]) {
     valid[lastIndex] = false;
-    why[lastIndex] = solved
-      ? "is solved, but its solutions are not the equation’s"
-      : `is not solved yet: end with ${grading.variable} alone on one side`;
+    why[lastIndex] = !solved
+      ? `is not solved yet: end with ${grading.variable} alone on one side`
+      : !right
+        ? "is solved, but its solutions are not the equation’s"
+        : "is solved; write each value as a single number";
   }
   // A given row that does not follow from the learner's row above it is the
   // learner row's error (fill-ins); given rows themselves are never marked.

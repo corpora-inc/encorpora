@@ -16,6 +16,7 @@ import {
   draftRows,
   fieldMaxLength,
   fieldParseOptions,
+  normalizeStructuredWork,
   numberTex,
   rowShape,
   serializeDraft,
@@ -463,12 +464,34 @@ export function StructuredWorkInput({
     );
   };
 
+  // After a move, focus follows the row; at the top or bottom, where the
+  // pressed arrow is disabled, it moves to the other arrow.
+  const pendingFocus = useRef<{ row: string; dir: "up" | "down" } | null>(null);
+  useLayoutEffect(() => {
+    const p = pendingFocus.current;
+    if (!p) return;
+    pendingFocus.current = null;
+    const row = document.querySelector<HTMLElement>(
+      `.work-row[data-row="${p.row}"]`,
+    );
+    const buttons =
+      row?.querySelectorAll<HTMLButtonElement>(".work-move-button");
+    if (!buttons || buttons.length < 2) return;
+    const [up, down] = [buttons[0]!, buttons[1]!];
+    const want = p.dir === "up" ? up : down;
+    (want.disabled ? (p.dir === "up" ? down : up) : want).focus({
+      preventScroll: true,
+    });
+  });
   function move(position: number, by: -1 | 1) {
     if (locked) return;
     const next = [...order];
     const to = position + by;
     if (to < 0 || to >= next.length) return;
     [next[position], next[to]] = [next[to]!, next[position]!];
+    const moved = document.activeElement?.closest(".work-move");
+    if (moved)
+      pendingFocus.current = { row: next[to]!, dir: by < 0 ? "up" : "down" };
     onChange(JSON.stringify(next));
     setAnnounce(`${noun} moved to position ${to + 1} of ${next.length}.`);
   }
@@ -718,7 +741,8 @@ export function StructuredWorkAnswer({
   submit: () => void;
 }) {
   const { done, total } = workProgress(r, value);
-  const complete = done === total;
+  // Exactly what the server accepts, so Check never offers a rejection.
+  const complete = normalizeStructuredWork(r, value) !== null;
   const order = r.mode === "order";
   const shown = JSON.stringify(r.rows.map((x) => x.id));
   const rows = order ? [] : draftRows(r, value);

@@ -186,7 +186,22 @@ export function derivationWork(
     id: `r${i + 1}`,
     fields: [lineField(line), reasonField(reason)],
   }));
-  const { shown, key } = shuffledRows(r, rows);
+  const orderResponse = (shown: WorkRow[]): StructuredWorkResponse => ({
+    kind: "structured-work",
+    label,
+    layout: "steps",
+    mode,
+    start: startTex,
+    banks: [bank],
+    rows: shown,
+  });
+  const { shown, key } = shuffledRows(r, rows, (shown) =>
+    gradeStructuredWork(
+      orderResponse(shown),
+      grading,
+      JSON.stringify(shown.map((x) => x.id)),
+    ),
+  );
   return finish(
     {
       kind: "structured-work",
@@ -207,17 +222,23 @@ export function derivationWork(
 function shuffledRows(
   r: Random,
   rows: WorkRow[],
+  /** True when the rows as shown (display ids in shown order) already
+   * earn credit: some given lines may be swapped, so the shown order must
+   * be no valid order at all, not only different from the key. */
+  creditedAsShown: (shown: WorkRow[]) => boolean,
 ): { shown: WorkRow[]; key: string } {
-  let shown = shuffle(r, [...rows]);
-  for (let i = 0; i < 20 && shown.every((x, j) => x.id === rows[j]!.id); i++)
-    shown = shuffle(r, [...rows]);
-  if (shown.every((x, j) => x.id === rows[j]!.id))
-    shown = [...rows.slice(1), rows[0]!];
-  const display = new Map(shown.map((x, j) => [x.id, `r${j + 1}`]));
-  return {
-    shown: shown.map((x) => ({ ...x, id: display.get(x.id)! })),
-    key: JSON.stringify(rows.map((x) => display.get(x.id)!)),
+  const renumber = (order: WorkRow[]) => {
+    const display = new Map(order.map((x, j) => [x.id, `r${j + 1}`]));
+    return {
+      shown: order.map((x) => ({ ...x, id: display.get(x.id)! })),
+      key: JSON.stringify(rows.map((x) => display.get(x.id)!)),
+    };
   };
+  for (let i = 0; i < 60; i++) {
+    const out = renumber(shuffle(r, [...rows]));
+    if (!creditedAsShown(out.shown)) return out;
+  }
+  throw new Error("Need three retry: no unsolved order to show");
 }
 
 /* ------------------------------------------------------------- proofs */
@@ -307,7 +328,13 @@ export function proofWork(
     field("statements", s),
     field("reasons", reason),
   ]);
-  const { shown, key } = shuffledRows(r, given);
+  const { shown, key } = shuffledRows(r, given, (shown) =>
+    gradeStructuredWork(
+      { ...base, mode, rows: shown },
+      grading,
+      JSON.stringify(shown.map((x) => x.id)),
+    ),
+  );
   return finish({ ...base, mode, rows: shown }, grading, key);
 }
 

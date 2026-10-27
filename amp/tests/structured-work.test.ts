@@ -22,7 +22,6 @@ import {
   type ParseOptions,
 } from "../src/math/expression";
 import {
-  canonicalStructuredWork,
   checkMove,
   draftRows,
   gradeStructuredWork,
@@ -621,10 +620,6 @@ test("only complete, valid work can be submitted, in one canonical spelling", ()
     normalizeStructuredWork(r, '[[" 3x  ≤ 12 ","su"]]'),
     '[["3x<=12","su"]]',
   );
-  assert.equal(
-    canonicalStructuredWork('[["3x ≤ 12","su"]]'),
-    canonicalStructuredWork('[["3x<=12","su"]]'),
-  );
   assert.deepEqual(workProgress(r, '[["3x=12",""]]'), { done: 1, total: 2 });
   assert.deepEqual(draftRows(r, ""), [["", ""]]);
   assert.equal(
@@ -974,4 +969,88 @@ print(len(data['cases']))`,
   );
   assert.equal(result.status, 0, result.stderr);
   assert.match(result.stdout, new RegExp(`${cases.length}`));
+});
+
+test("review findings: oversize comparisons, arithmetic steps, simplified answers, spaced numbers", () => {
+  const p = solveJustifyCases["solve-justify-linear"]("review", {
+    mode: "build",
+    form: "grouped",
+    fill: "reasons",
+  }).problem;
+  // Each line parses, but comparing them exceeds the size guard: not a
+  // server error, simply not a valid step.
+  const huge = JSON.stringify([
+    ["xxxxxxxxxxxxx=1", "ad"],
+    ["1/(xxxxxxxxxxxx)=1", "ad"],
+  ]);
+  assert.ok(isValidResponse(p.public, huge));
+  assert.equal(gradeAnswer(p, huge), false);
+  // Carrying out arithmetic is combining; reordering is only a permutation.
+  const ok = (a: string, b: string, m: Parameters<typeof checkMove>[2]) =>
+    checkMove(L(a), L(b), m).ok;
+  assert.ok(ok("3x/3=15/3", "x=5", "combine"));
+  assert.ok(!ok("3x/3=15/3", "x=5", "commute"));
+  assert.ok(ok("x=10/2", "x=5", "combine"));
+  assert.ok(ok("2+x=7", "x+2=7", "commute"));
+  assert.ok(!ok("x+5=7", "x+2+3=7", "commute"));
+  // A numeric answer is written as one number.
+  const r = linearWork("build", [
+    { id: "r1", fields: [lineField(), reasonField()] },
+  ]);
+  const unsimplified = markStructuredWork(
+    r,
+    linearGrading,
+    JSON.stringify([
+      ["3(x+2)=18", "su"],
+      ["x+2=6", "di"],
+      ["x=6-2", "su"],
+    ]),
+  );
+  assert.equal(unsimplified.correct, false);
+  assert.match(unsimplified.notes.at(-1)!, /single number/);
+  // A space inside a number is an entry error, never a different number.
+  const box = showWorkCases["show-work-box-cost"]("spaces", {
+    mode: "build",
+  }).problem;
+  const rows = JSON.parse(box.answer) as string[][];
+  rows[0] = ["22 1/2"];
+  assert.equal(isValidResponse(box.public, JSON.stringify(rows)), false);
+});
+
+test("an ordering is never shown already solved, and a lesson never works the same givens in another mode", () => {
+  for (const id of families)
+    for (let i = 0; i < 60; i++) {
+      const p = generateProblem(id, `order-shown-${i}`);
+      const r = p.public.response as StructuredWorkResponse;
+      if (r.mode === "order")
+        assert.equal(
+          gradeAnswer(p, JSON.stringify(r.rows.map((row) => row.id))),
+          false,
+          `${id} ${i}`,
+        );
+    }
+  for (const id of families)
+    for (let i = 0; i < 30; i++) {
+      const learner = generateProblem(id, `lesson-mode-${i}`);
+      const lesson = problemLesson(
+        id,
+        `lesson-mode-${i}`,
+        learner.public.prompt,
+        learner.public.response,
+        learner,
+      );
+      const r = learner.public.response as StructuredWorkResponse;
+      if (r.start)
+        assert.ok(!lesson.example.prompt.includes(r.start), `${id} ${i}`);
+      // A proof is the same problem when its goal and figure match.
+      if (r.goal)
+        assert.ok(
+          !(
+            lesson.example.prompt.includes(r.goal) &&
+            JSON.stringify(lesson.example.figure ?? null) ===
+              JSON.stringify(learner.public.figure ?? null)
+          ),
+          `${id} ${i}`,
+        );
+    }
 });

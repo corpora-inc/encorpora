@@ -331,6 +331,41 @@ def _products_of_sums(node):
     return count
 
 
+def _size(node):
+    node = _strip(node)
+    if node[0] in ("num", "var"):
+        return 1
+    return 1 + sum(_size(c) for c in node[1:] if isinstance(c, tuple))
+
+
+def _canon(node):
+    node = _strip(node)
+    kind = node[0]
+    if kind == "num":
+        return str(node[1])
+    if kind == "var":
+        return node[1]
+    if kind in ("add", "sub"):
+        return "S(" + ",".join(repr(k) for k in _side_key(node)) + ")"
+    if kind == "mul":
+        return "M(" + ",".join(sorted(_canon(f) for f in _factors(node))) + ")"
+    if kind == "neg":
+        return "N(" + _canon(node[1]) + ")"
+    return kind + "(" + ",".join(_canon(c) for c in node[1:]) + ")"
+
+
+def _term_key(term):
+    sign = 1
+    term = _strip(term)
+    while term[0] == "neg":
+        sign, term = -sign, _strip(term[1])
+    return (sign, tuple(sorted(_canon(f) for f in _factors(term))))
+
+
+def _side_key(node):
+    return sorted(_term_key(t) for t in _terms(node))
+
+
 def _factors(node):
     node = _strip(node)
     if node[0] == "mul":
@@ -468,10 +503,15 @@ def _single_step(prev, cur, move, ctx, compound):
     if move == "distribute":
         return after < before
     if move == "combine":
-        return after == before and len(_terms(cur.lhs)) + len(_terms(cur.rhs)) < len(_terms(prev.lhs)) + len(_terms(prev.rhs))
+        # fewer terms, or arithmetic folded (3x/3 to x, 15/3 to 5), groupings kept
+        fewer = len(_terms(cur.lhs)) + len(_terms(cur.rhs)) < len(_terms(prev.lhs)) + len(_terms(prev.rhs))
+        smaller = _size(cur.lhs) + _size(cur.rhs) < _size(prev.lhs) + _size(prev.rhs)
+        not_more = len(_terms(cur.lhs)) + len(_terms(cur.rhs)) <= len(_terms(prev.lhs)) + len(_terms(prev.rhs))
+        return after == before and (fewer or (smaller and not_more))
     if move == "commute":
-        return (after == before and cur.text != prev.text and len(_terms(cur.lhs)) == len(_terms(prev.lhs))
-                and len(_terms(cur.rhs)) == len(_terms(prev.rhs)))
+        # a true permutation of the terms (and of the factors within a term)
+        return (cur.text != prev.text and _side_key(cur.lhs) == _side_key(prev.lhs)
+                and _side_key(cur.rhs) == _side_key(prev.rhs))
     if move == "factor":
         for old, new in ((prev.lhs, cur.lhs), (prev.rhs, cur.rhs)):
             fs = _factors(new)
@@ -576,6 +616,12 @@ def _final_matches(line, solution, ctx):
         else:
             return False
     kind = solution[0]
+    if kind != "formula":
+        # a finished line states a single number: x=6-2 is not finished
+        for part in line:
+            other = part.rhs if _strip(part.lhs) == ("var", v) else part.lhs
+            if not _is_literal(other):
+                return False
     if kind == "formula":
         return len(readings) == 1 and readings[0][0] == "=" and _req(readings[0][1], solution[1])
     if kind == "inequality":
@@ -585,6 +631,19 @@ def _final_matches(line, solution, ctx):
         return rel == solution[1] and _rconst(value) == solution[2]
     values = [_rconst(value) for rel, value in readings]
     return all(rel == "=" for rel, _ in readings) and None not in values and len(set(values)) == len(values) and set(values) == solution[1]
+
+
+def _is_literal(node):
+    node = _strip(node)
+    if node[0] == "neg":
+        node = _strip(node[1])
+    if node[0] == "num":
+        return True
+    if node[0] == "div":
+        a, b = _strip(node[1]), _strip(node[2])
+        if a[0] == "num" and b[0] == "num" and a[1].denominator == 1 and b[1].denominator == 1 and b[1] > 1:
+            return math.gcd(int(a[1]), int(b[1])) == 1
+    return False
 
 
 def _check_derivation(start, steps, ctx):
@@ -804,6 +863,12 @@ def _review_derivation(problem):
     _check_derivation(start, steps, ctx)
     if response["mode"] == "order":
         rows_given = [(_parse_line(r["fields"][0]["given"]), ctx["moves"][r["fields"][1]["given"]]) for r in response["rows"]]
+        try:
+            _check_derivation(start, rows_given, ctx)
+            shown_valid = True
+        except ValueError:
+            shown_valid = False
+        require(not shown_valid, "The shown order is already a valid solution")
         if _count_valid_orders(start, rows_given, ctx) > 1:
             STATS["orderKeysWithSeveralValidOrders"] += 1
     _check_derivation_grading(problem, start, ctx)
@@ -1574,6 +1639,7 @@ def _review_proof(problem):
     proof.check_proof(lines)
     if response["mode"] == "order":
         given = [(r["fields"][0]["given"], r["fields"][1]["given"]) for r in response["rows"]]
+        require(not proof.valid(given), "The shown order is already a valid proof")
         valid_orders = sum(1 for perm in itertools.permutations(given) if proof.valid(list(perm)))
         if valid_orders > 1:
             STATS["orderKeysWithSeveralValidOrders"] += 1
@@ -1841,7 +1907,8 @@ def _row_values(public):
         fa, ra, unit, fb, rb, v = F(m[2]), F(m[3]), m[4], F(m[5]), F(m[6]), m[7]
         require(labels[0] == f"Cost of plan A for {v} {unit}s, in dollars" and labels[1] == f"Cost of plan B for {v} {unit}s, in dollars",
                 "Unread cost rows")
-        im = re.fullmatch(r"Inequality that is true when plan A costs (more|less) than plan B", labels[2])
+        im = (re.fullmatch(r"Inequality comparing plan A's cost with plan B's cost, true when plan A costs (more|less)", labels[2])
+              or re.fullmatch(r"Inequality that is true when plan A costs (more|less) than plan B", labels[2]))
         require(im, f"Unread row {labels[2]!r}")
         require(labels[3] == f"Number of {unit}s at which the plans cost the same", f"Unread row {labels[3]!r}")
         a = _radd(_rconstval(fa), _rmul(_rconstval(ra), _rvar(v)))
@@ -2149,7 +2216,7 @@ def _show_work_fixture(template):
         prompt = ("A company rents kayaks on two plans. Plan A costs 15 dollars plus 0.35 dollars per hour. Plan B costs 22.50 dollars plus 0.30 dollars per hour. "
                   "Let $h$ be the number of hours. Enter each step.")
         labels = ["Cost of plan A for h hours, in dollars", "Cost of plan B for h hours, in dollars",
-                  "Inequality that is true when plan A costs more than plan B", "Number of hours at which the plans cost the same"]
+                  "Inequality comparing plan A's cost with plan B's cost, true when plan A costs more", "Number of hours at which the plans cost the same"]
         kinds = ["expression", "expression", "relation", "number"]
         key = [["15+0.35h"], ["22.5+0.3h"], ["15+0.35h>22.5+0.3h"], ["150"]]
         rules = [{"kind": "expression", "value": "15+0.35h", "match": "identity"}, {"kind": "expression", "value": "22.5+0.3h", "match": "identity"},
@@ -2194,6 +2261,13 @@ def self_test():
     _rejects(_with_key(linear, [["5x-10+7=32", "cl"], ["5x-3=32", "cl"], ["5x=35", "ad"], ["x=7", "di"]]), "combine named for distribute")
     _rejects(_with_key(linear, [["5x-10+7=32", "dp"], ["5x-3=32", "cl"], ["5x=35", "ad"]]), "stops before the variable is alone")
     _rejects(_with_key(linear, [["5x-10+7=32", "dp"], ["5x+4=32", "cl"], ["5x=28", "su"], ["x=28/5", "di"]]), "sign slip when combining")
+    _rejects(_with_key(linear, [["5x-10+7=32", "dp"], ["5x-3=32", "cl"], ["5x=35", "ad"], ["x=35/5", "di"]]), "last line not a single number (35/5)")
+    _rejects(_with_key(linear, [["5x-10+7=32", "dp"], ["5x-3=32", "cl"], ["x-3/5=32/5", "di"], ["x=32/5+3/5", "ad"]]), "last line x=32/5+3/5 is not finished")
+    folded = _with_key(linear, [["5x-10+7=32", "dp"], ["5x-3=32", "cl"], ["5x=35", "ad"], ["5x/5=35/5", "di"], ["x=7", "cl"]])
+    require(review_problem(folded) == folded["answer"], "arithmetic folding is combining")
+    swapped = _with_key(linear, [["5x-10+7=32", "dp"], ["7-10+5x=32", "co"], ["-3+5x=32", "cl"], ["5x=35", "ad"], ["x=7", "di"]])
+    require(review_problem(swapped) == swapped["answer"], "a true permutation is commuting")
+    _rejects(_with_key(linear, [["5x-10+7=32", "dp"], ["5x-3=32", "cl"], ["10x/2-3=32", "co"], ["5x=35", "ad"], ["x=7", "di"]]), "commute that is not a permutation")
     _rejects(_with_key(linear, [["5x - 10+7=32", "dp"], ["5x-3=32", "cl"], ["5x=35", "ad"], ["x=7", "di"]]), "non-canonical key")
     bad = copy.deepcopy(linear)
     bad["workGrading"]["solution"] = ["8"]
@@ -2215,6 +2289,11 @@ def self_test():
     require(review_problem(ordered) == ordered["answer"], "order fixture")
     _rejects(_with_key(ordered, ["r4", "r2", "r1", "r3"]), "invalid order key")
     _rejects(_with_key(ordered, ["r2", "r4", "r1"]), "order key missing a row")
+    shown = copy.deepcopy(ordered)
+    rows = shown["public"]["response"]["rows"]
+    shown["public"]["response"]["rows"] = [dict(rows[i], id=f"r{n}") for n, i in enumerate((1, 3, 0, 2), 1)]
+    shown["answer"] = json.dumps(["r1", "r2", "r3", "r4"], separators=(",", ":"))
+    _rejects(shown, "order shown already solved")
     # ---- fill mode
     filled = _derivation_fixture("solve-justify-linear", "Solve $5(x-2)+7=32$. Some lines of a solution are shown. Write the missing lines and choose their reasons.",
                                  "$5(x-2)+7=32$", ["x"], "fill", [("5x-10+7=32", "dp"), (None, None), ("5x=35", "ad"), (None, None)],
@@ -2277,6 +2356,15 @@ def self_test():
     bad = copy.deepcopy(kite)
     del bad["workGrading"]["claims"]["sc"]
     _rejects(bad, "grading omits a valid line")
+    shown = _congruence_fixture("order")
+    for row, (sid, rid) in zip(shown["public"]["response"]["rows"], json.loads(kite["answer"])):
+        row["fields"][0]["given"], row["fields"][1]["given"] = sid, rid
+    shown["answer"] = json.dumps(["r1", "r2", "r3", "r4"], separators=(",", ":"))
+    _rejects(shown, "proof shown in an order that is already valid")
+    reshuffled = copy.deepcopy(shown)
+    reshuffled["public"]["response"]["rows"] = [dict(r, id=f"r{n}") for n, r in enumerate(reversed(shown["public"]["response"]["rows"]), 1)]
+    reshuffled["answer"] = json.dumps(["r4", "r3", "r2", "r1"], separators=(",", ":"))
+    require(review_problem(reshuffled) == reshuffled["answer"], "order-mode proof fixture")
     bad = copy.deepcopy(kite)
     bad["public"]["response"]["banks"][0]["options"][0]["label"] = "$\\overline{AD}\\cong\\overline{AB}$"
     _rejects(bad, "two bank statements say the same thing")
@@ -2319,6 +2407,15 @@ def self_test():
     pc = _show_work_fixture("show-work-percent-count")
     _rejects(_with_key(pc, [["0.25"], ["5"], ["7"], ["35"], ["10"], ["3"]]), "decimal where a fraction is required")
     _rejects(_with_key(pc, [["5/20"], ["5"], ["7"], ["35"], ["10"], ["3"]]), "fraction not in lowest terms")
+    _rejects(_with_key(pc, [["1/4"], ["5"], ["7"], ["3 5"], ["10"], ["3"]]), "number with an internal space")
+    _rejects(_with_key(pc, [["1/4"], ["5"], ["7"], ["35"], ["10"], ["0 3"]]), "number with an internal space (mixed form)")
+    for text, fraction in (("22 1/2", False), ("22 1/2", True), ("3 5", False), ("1 /4", True)):
+        try:
+            _canonical_number(text, fraction)
+        except ValueError:
+            MUTATIONS.append(f"number entry {text!r}")
+            continue
+        raise ValueError(f"Self-test mutation accepted: number entry {text!r}")
     _rejects(_with_key(pc, [["1/4"], ["5"], ["7"], ["35"], ["10"], ["5"]]), "wrong count")
     bad = copy.deepcopy(pc)
     bad["workGrading"]["fields"][0][0]["fraction"] = False
