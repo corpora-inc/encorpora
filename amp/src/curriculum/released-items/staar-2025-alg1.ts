@@ -83,10 +83,16 @@ export const staarAlgebra1 = defineLedger(
       standards: ["TEKS.A1.3.2.I"],
       archetypeIds: ["system.from-graph"],
       demand: "Choose the system of equations that matches two graphed lines",
-      status: "partial",
-      templateIds: ["graph-equation-choice", "linear-system-pair"],
+      status: "covered",
+      templateIds: [
+        "graph-equation-choice",
+        "linear-system-pair",
+        "system-equation-choice",
+      ],
       limitations:
-        "graph-equation-choice matches one increasing line with positive integer slope and intercept to its equation; reading two lines, including negative slopes, to choose a system is not practiced.",
+        "system-equation-choice (single-choice-v1) draws two lines on a grid and asks which system of equations is graphed, with slopes and intercepts of either sign among the four systems, so reading two lines to choose a system is practiced.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: {
@@ -342,10 +348,16 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["nonlinear.features"],
       demand:
         "Choose the equation of a parabola's axis of symmetry from its graph with a labeled vertex",
-      status: "partial",
-      templateIds: ["parabola-vertex", "parabola-axis"],
+      status: "covered",
+      templateIds: [
+        "parabola-vertex",
+        "parabola-axis",
+        "parabola-axis-vertex-graph",
+      ],
       limitations:
-        "parabola-vertex reads the vertex of a graphed parabola and parabola-axis finds the axis from zeros, two equal-height points or standard form; reading the axis from a graph is not practiced.",
+        "parabola-axis-vertex-graph (single-choice-v1) draws a parabola opening up or down with its vertex left or right of the y-axis and asks for the equation of the axis of symmetry together with the vertex, reading the axis from the graph; the item asks only for the axis.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: {

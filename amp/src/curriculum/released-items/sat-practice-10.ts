@@ -50,10 +50,16 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["system.graph"],
       demand:
         "Read the solution of a system of two linear equations as the intersection point of their graphed lines",
-      status: "partial",
-      templateIds: ["nonlinear-system-read", "linear-system-pair"],
+      status: "covered",
+      templateIds: [
+        "graph-estimate-system-solution",
+        "nonlinear-system-read",
+        "linear-system-pair",
+      ],
       limitations:
-        "No template reads the intersection of two graphed lines; nonlinear-system-read reads one coordinate of a line-parabola intersection (numeric) and linear-system-pair solves symbolically.",
+        "graph-estimate-system-solution (single-choice-v1) draws two lines in a savings or cost story and asks which ordered pair estimates where they meet, including non-integer coordinates, which is reading the solution of a linear system as the intersection of its graphs.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Math module 1",
@@ -493,9 +499,15 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["percent.of"],
       demand: "Find what percent a part is of a large whole",
       status: "partial",
-      templateIds: ["percent-of", "relative-frequency-percent"],
+      templateIds: [
+        "percent-forms-and-parts",
+        "percent-of",
+        "relative-frequency-percent",
+      ],
       limitations:
-        "percent-of finds a percent of a number; relative-frequency-percent finds a share from a table; no bare 'what percent of the whole' with large counts.",
+        "percent-forms-and-parts asks what percent a part is of a whole by entry, with wholes up to 200; the item's large whole (counts in the hundreds or thousands) and its choice response are not practiced at that size.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Math module 2",
