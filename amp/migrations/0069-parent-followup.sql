@@ -77,11 +77,11 @@ ALTER TABLE amp_campaign_creative_daily
   'ar-product-in-action',
   'az-product-in-action',
   'ar-staircase-01-what-if-madeline',
-  'ar-staircase-02-next-step-paul',
+  'ar-staircase-02-world-of-math',
   'ar-staircase-03-path-grows-paul',
   'ar-staircase-04-path-opens-madeline',
   'az-staircase-01-what-if-madeline',
-  'az-staircase-02-next-step-paul',
+  'az-staircase-02-world-of-math',
   'az-staircase-03-path-grows-paul',
   'az-staircase-04-path-opens-madeline',
 
