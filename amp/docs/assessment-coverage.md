@@ -36,15 +36,15 @@ All 260 mathematics items of the Spring 2025 STAAR released tests for grades 3 t
 
 | Test | Items | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: | ---: |
-| Grade 3 | 30 | 10 (33.3%) | 18 (60%) | 2 (6.7%) |
-| Grade 4 | 32 | 11 (34.4%) | 19 (59.4%) | 2 (6.2%) |
-| Grade 5 | 34 | 14 (41.2%) | 20 (58.8%) | 0 (0%) |
-| Grade 6 | 36 | 14 (38.9%) | 20 (55.6%) | 2 (5.6%) |
-| Grade 7 | 38 | 11 (28.9%) | 27 (71.1%) | 0 (0%) |
-| Grade 8 | 40 | 12 (30%) | 28 (70%) | 0 (0%) |
-| Algebra I | 50 | 17 (34%) | 33 (66%) | 0 (0%) |
+| Grade 3 | 30 | 20 (66.7%) | 10 (33.3%) | 0 (0%) |
+| Grade 4 | 32 | 20 (62.5%) | 12 (37.5%) | 0 (0%) |
+| Grade 5 | 34 | 26 (76.5%) | 8 (23.5%) | 0 (0%) |
+| Grade 6 | 36 | 23 (63.9%) | 12 (33.3%) | 1 (2.8%) |
+| Grade 7 | 38 | 21 (55.3%) | 17 (44.7%) | 0 (0%) |
+| Grade 8 | 40 | 22 (55%) | 18 (45%) | 0 (0%) |
+| Algebra I | 50 | 25 (50%) | 25 (50%) | 0 (0%) |
 
-Of the 260 items, 179 are multiple choice, 29 drag and drop, 19 inline choice, 12 multiselect, 10 equation editor, 6 hot spot, 3 graphing, 1 number line and 1 match table grid. Hot spot, drag and drop, graphing and number line are `graph/drag`; inline choice and match table grid are `other`; an equation editor is `numeric` when the answer is a number (8) and `constructed` when the learner types an expression or inequality (2). Structured work covers both constructed items: typing a parallelogram's area formula solved for its height, and typing the inequality that compares two rental plans. Only the point-plot protocol takes `graph/drag`, so 38 of the 39 such items are partial: only the graphing item that places two points of a proportional line is covered, while the dashed boundary and shading of an inequality, an exponential curve, number-line endpoints and arrows, hot-spot selection and drag-and-drop assembly have no protocol. The 12 multiselect items have only two families that take a multi-select response (quadrilateral categories and slope triangles), and the 20 inline-choice and match items (dropdown blanks, mostly with two parts) have none.
+Of the 260 items, 179 are multiple choice, 29 drag and drop, 19 inline choice, 12 multiselect, 10 equation editor, 6 hot spot, 3 graphing, 1 number line and 1 match table grid. Hot spot, drag and drop, graphing and number line are `graph/drag`; inline choice and match table grid are `other`; an equation editor is `numeric` when the answer is a number (8) and `constructed` when the learner types an expression or inequality (2). Structured work covers both constructed items: typing a parallelogram's area formula solved for its height, and typing the inequality that compares two rental plans. Two protocols take `graph/drag` items: point plotting and the multi-part choice protocol (`multi-part-choice-v1`: blanks in a sentence, a match table and labeled slots, each answered by one picker), so 23 of the 39 such items are covered and 16 are partial; the dashed boundary and shading of an inequality, an exponential curve, number-line endpoints and arrows and hot-spot selection have no protocol. The 12 multiselect items have only two families that take a multi-select response (quadrilateral categories and slope triangles). The multi-part families also take the inline-choice and match items (dropdown blanks, mostly with two parts): 18 of the 20 are covered.
 
 The largest gaps are order of operations with nested groups, negatives and exponents, choosing or assembling the equation for a story, relationships between paired terms and tables, dot-plot, histogram and stem-and-leaf reading beyond a single count, area and perimeter chains and decimal sides, slope and intercept from points, the coordinate rule of a transformation and area, volume and surface-area chains. Six items have no related practice: properties of solid faces, number-line diagrams of stories, a strip diagram for a multistep story, benchmark fraction estimates, debit and credit card statements and a percentage bar graph.
 
@@ -57,14 +57,14 @@ All 210 mathematics items of the Spring 2024 STAAR released tests for grades 3 t
 
 | Test | Items | Covered | Partial | Missing | New archetypes | Items on archetypes already seen |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Grade 3 | 30 | 5 (16.7%) | 22 (73.3%) | 3 (10%) | 7 | 76.7% |
-| Grade 4 | 32 | 9 (28.1%) | 22 (68.8%) | 1 (3.1%) | 0 | 100% |
-| Grade 5 | 34 | 10 (29.4%) | 24 (70.6%) | 0 (0%) | 1 | 97.1% |
-| Grade 6 | 36 | 9 (25%) | 24 (66.7%) | 3 (8.3%) | 2 | 94.4% |
-| Grade 7 | 38 | 12 (31.6%) | 25 (65.8%) | 1 (2.6%) | 2 | 92.1% |
-| Grade 8 | 40 | 9 (22.5%) | 31 (77.5%) | 0 (0%) | 1 | 97.5% |
+| Grade 3 | 30 | 15 (50%) | 15 (50%) | 0 (0%) | 7 | 76.7% |
+| Grade 4 | 32 | 18 (56.2%) | 14 (43.8%) | 0 (0%) | 0 | 100% |
+| Grade 5 | 34 | 22 (64.7%) | 12 (35.3%) | 0 (0%) | 1 | 97.1% |
+| Grade 6 | 36 | 16 (44.4%) | 18 (50%) | 2 (5.6%) | 2 | 94.4% |
+| Grade 7 | 38 | 23 (60.5%) | 15 (39.5%) | 0 (0%) | 2 | 92.1% |
+| Grade 8 | 40 | 18 (45%) | 22 (55%) | 0 (0%) | 1 | 97.5% |
 
-The second year is close to saturated for grades 4 through 8: 92% to 100% of their items fall on archetypes seen in an earlier source, and only six archetypes were not seen. Grade 3 still adds seven, of which five were minted for it (supply and price, a whole number on a number line, congruent figures with equal-area parts) or for later grades (bank fee comparison, net worth); the others were listed but unused. Items on drag, hot spot, multiselect and inline-choice interactions stay partial except where an inline slope-and-intercept family exists. The largest gaps are choosing the graph of a rule or rate among drawn graphs, coordinate rules of dilations, rotations and translations, volumes with decimal approximations and equations, and tally, percentage bar graph, financial aid and net worth items, which have no related practice.
+The second year is close to saturated for grades 4 through 8: 92% to 100% of their items fall on archetypes seen in an earlier source, and only six archetypes were not seen. Grade 3 still adds seven, of which five were minted for it (supply and price, a whole number on a number line, congruent figures with equal-area parts) or for later grades (bank fee comparison, net worth); the others were listed but unused. Of the 28 graph and drag items, 17 are covered, and 8 of the 13 inline-choice and match items, by multi-part choice families that take their blanks; multiselect items (10) stay partial. The largest gaps are choosing the graph of a rule or rate among drawn graphs, coordinate rules of dilations, rotations and translations, volumes with decimal approximations and equations, and tally, percentage bar graph, financial aid and net worth items, which have no related practice.
 
 A second labeler re-labeled a seeded random 10% sample (21 of 210 items) without seeing the first labels. Response format agreed on 21 (100%), status on 15 (71.4%), archetypes overlapped on 19 (90.5%) and templates on 20 (95.2%). Of the six status disagreements, one was changed (a pair of equivalent expressions with a fractional coefficient became partial); the others kept the rule already applied to STAAR 2025: four choices compared with a given fraction are partial, a percentage bar graph with counts is missing, and a numeric family covers choices written as multiples of pi.
 
