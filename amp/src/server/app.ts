@@ -53,6 +53,11 @@ import {
   multiPartMarks,
   normalizeMultiPart,
 } from "../math/multi-part-choice";
+import {
+  markStructuredWork,
+  normalizeStructuredWork,
+  structuredWorkFeedback,
+} from "../math/structured-work";
 import { recordProblemFlag } from "../feedback/record";
 import {
   publicJson,
@@ -674,6 +679,19 @@ function routes(app: FastifyInstance, options: AppOptions) {
           stored?.public.response.kind === "point-plot" &&
           stored.public.response.ordered;
         const parts = canonicalMultiPart(duplicate.response);
+        // Structured work is stored in its canonical form; a retry is the same
+        // when the problem normalizes it to that form (spacing, ≤ or <=).
+        const workProblem =
+          duplicate.response !== input.response &&
+          duplicate.response.startsWith("[")
+            ? await tx.problem(duplicate.problemId)
+            : null;
+        const sameWork =
+          workProblem?.public.response.kind === "structured-work" &&
+          normalizeStructuredWork(
+            workProblem.public.response,
+            input.response,
+          ) === duplicate.response;
         const sameResponse =
           duplicate.response === input.response ||
           (selected !== null &&
@@ -685,7 +703,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
             plotted === duplicate.response &&
             canonicalPointSet(input.response) === plotted) ||
           // Multi-part answers are keyed by blank, so key order is not a change.
-          (parts !== null && canonicalMultiPart(input.response) === parts);
+          (parts !== null && canonicalMultiPart(input.response) === parts) ||
+          sameWork;
         if (duplicate.problemId !== input.problemId || !sameResponse)
           throw new ApiError(
             409,
@@ -716,9 +735,13 @@ function routes(app: FastifyInstance, options: AppOptions) {
                 ? `Place ${problem.public.response.pointCount} different ${problem.public.response.pointCount === 1 ? "point" : "points"} on the grid`
                 : problem.public.response.kind === "multi-part-choice"
                   ? `Choose one of the displayed options for each of the ${problem.public.response.blanks.length} parts`
-                : problem.public.response.kind === "figure-choice"
-                  ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : "number lines"}`
-                  : "Enter a number, decimal, or fraction such as 3/4",
+                  : problem.public.response.kind === "figure-choice"
+                    ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : "number lines"}`
+                    : problem.public.response.kind === "structured-work"
+                      ? problem.public.response.mode === "order"
+                        ? "Place every step once, in an order"
+                        : "Complete every step with a valid entry"
+                      : "Enter a number, decimal, or fraction such as 3/4",
         );
       const response =
         problem.public.response.kind === "multi-select"
@@ -727,7 +750,12 @@ function routes(app: FastifyInstance, options: AppOptions) {
             ? normalizePointPlot(problem.public.response, input.response)!
             : problem.public.response.kind === "multi-part-choice"
               ? normalizeMultiPart(problem.public.response, input.response)!
-              : input.response;
+              : problem.public.response.kind === "structured-work"
+                ? normalizeStructuredWork(
+                    problem.public.response,
+                    input.response,
+                  )!
+                : input.response;
       const answered = await tx.attemptByProblem(input.problemId);
       if (answered)
         throw new ApiError(409, "This problem has already been answered");
@@ -752,6 +780,19 @@ function routes(app: FastifyInstance, options: AppOptions) {
       const partFeedback = multiPart
         ? multiPartFeedback(multiPart, problem.answer, response)
         : null;
+      // Structured work is marked row by row on the server; credit needs
+      // every row, and the first feedback lines name the rows to recheck.
+      const work =
+        problem.public.response.kind === "structured-work" &&
+        problem.workGrading
+          ? {
+              response: problem.public.response,
+              grading: problem.workGrading,
+            }
+          : null;
+      const workFeedback = work
+        ? structuredWorkFeedback(work.response, work.grading, response)
+        : [];
       const outcome: Outcome = {
         id: randomUUID(),
         problemId: input.problemId,
@@ -765,7 +806,9 @@ function routes(app: FastifyInstance, options: AppOptions) {
           ? [problem.choiceFeedback[response]!, ...problem.explanation]
           : partFeedback
             ? [partFeedback, ...problem.explanation]
-            : problem.explanation,
+            : workFeedback.length
+              ? [...workFeedback, ...problem.explanation].slice(0, 20)
+              : problem.explanation,
         answer: problem.answer,
         createdAt: new Date().toISOString(),
         ...(multiPart
@@ -773,6 +816,12 @@ function routes(app: FastifyInstance, options: AppOptions) {
               parts: multiPartMarks(multiPart, problem.answer, response).map(
                 (mark) => mark.correct,
               ),
+            }
+          : {}),
+        ...(work
+          ? {
+              parts: markStructuredWork(work.response, work.grading, response)
+                .rows,
             }
           : {}),
         ...(problem.variant ? { variant: problem.variant } : {}),

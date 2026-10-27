@@ -564,10 +564,14 @@ export const regentsGeometryJanuary2026 = defineLedger(
       archetypeIds: ["proof.geometry-written", "triangle.relationships"],
       demand:
         "Prove two triangles formed by the diagonals of a quadrilateral are congruent from parallel and congruent sides",
-      status: "partial",
-      templateIds: ["triangle-congruence-criteria", "geometry-proof-step"],
+      status: "covered",
+      templateIds: [
+        "two-column-congruence-proof",
+        "triangle-congruence-criteria",
+        "geometry-proof-step",
+      ],
       limitations:
-        "The families choose a congruence criterion and a reason for one step. Writing a full two-column proof with alternate interior angles and vertical angles has no protocol.",
+        "two-column-congruence-proof (structured-work-v1), parallelogram configuration: given one pair of opposite sides parallel and congruent, prove the triangles on the other two sides congruent. The learner builds every line of the two-column proof, choosing each statement and reason from banks that include unproved and false statements, and any valid proof (SAS through the bisecting diagonals, or SSS) is accepted. Statements are chosen from a bank rather than written freely.",
     },
     {
       section: "Part III",
