@@ -73,3 +73,22 @@ test("automation never collects", () => {
   captureOpenAIEntry();
   expect(send).not.toHaveBeenCalled();
 });
+
+test("signup entrance retains Google and Meta clicks before social sign-in", () => {
+  at(
+    "https://amp.corpora.inc/sign-up?return=free-practice&program=ar-efa&gclid=Google-Click&fbclid=Meta-Click",
+  );
+  captureOpenAIEntry();
+  expect(JSON.parse(send.mock.calls[0][1].body)).toEqual({
+    sourcePath: "/sign-up",
+    clicks: [
+      { provider: "google", identifiers: { gclid: "Google-Click" } },
+      { provider: "meta", identifiers: { fbclid: "Meta-Click" } },
+    ],
+  });
+  expect(replace).toHaveBeenCalledWith(
+    { kept: true },
+    "",
+    "/sign-up?return=free-practice&program=ar-efa",
+  );
+});

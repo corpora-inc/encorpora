@@ -44,6 +44,7 @@ async function post(path: string, body: unknown) {
  * creates nothing until the passkey is verified. */
 export async function signUpWithPasskey(
   email: string,
+  freePractice?: { program?: "ar-efa" | "az-esa" },
 ): Promise<PasskeySignUpResult> {
   const options = await post("/passkey-signup/options", { email });
   if (options.data?.code === "ACCOUNT_EXISTS")
@@ -81,7 +82,12 @@ export async function signUpWithPasskey(
     };
   }
   const { clientExtensionResults: _ignored, ...response } = credential;
-  const verified = await post("/passkey-signup/verify", { response });
+  const verified = await post("/passkey-signup/verify", {
+    response,
+    ...(freePractice
+      ? { freePractice: true, program: freePractice.program }
+      : {}),
+  });
   if (verified.data?.code === "ACCOUNT_EXISTS")
     return {
       ok: false,

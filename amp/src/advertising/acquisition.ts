@@ -9,7 +9,11 @@ import {
   purgeAdClickEvidence,
   type AttributionTarget,
 } from "./click-evidence.js";
-import { fundedCampaignSchema } from "../analytics/funded-campaign.js";
+import {
+  campaignMatchesOffer,
+  incrementFundedCampaign,
+  fundedCampaignSchema,
+} from "../analytics/funded-campaign.js";
 import { advertisingOptOut } from "./permission-contracts.js";
 
 export const ACQUISITION_COOKIE = "__Host-amp-acquisition";
@@ -30,7 +34,7 @@ const cookie = (token: string, seconds: number) =>
   `${ACQUISITION_COOKIE}=${token}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=${Math.max(0, Math.floor(seconds))}`;
 const captureSchema = z.strictObject({
   sourcePath: z
-    .enum(["/", "/amp/", "/esa/arkansas-efa/", "/esa/arizona-esa/"])
+    .enum(["/", "/sign-up", "/amp/", "/esa/arkansas-efa/", "/esa/arizona-esa/"])
     .optional(),
   clicks: z
     .array(clickEvidenceSchema)
@@ -101,7 +105,9 @@ export async function registerAcquisitionRoutes(
         // The app accepts acquisition only at its public entrance. Other
         // routes and arbitrary source URLs cannot be recorded as landing pages.
         const appEntry = request.headers.origin === "https://amp.corpora.inc";
-        if (appEntry !== (parsed.data.sourcePath === "/"))
+        if (
+          appEntry !== ["/", "/sign-up"].includes(parsed.data.sourcePath ?? "")
+        )
           return reply.code(400).send({ error: "invalid_acquisition_request" });
         if (inFlight >= 2)
           return reply.code(503).send({ error: "acquisition_busy" });
@@ -161,11 +167,11 @@ export async function linkPurchaseAcquisition(
   source: string | { invoiceId: string } | undefined,
   target: AttributionTarget,
 ) {
-  if (!source) return false;
   if (
-    typeof source === "string"
+    source &&
+    (typeof source === "string"
       ? !/^[a-f0-9]{64}$/.test(source)
-      : !z.strictObject({ invoiceId: z.uuid() }).safeParse(source).success
+      : !z.strictObject({ invoiceId: z.uuid() }).safeParse(source).success)
   )
     return false;
   let client;
@@ -190,7 +196,7 @@ export async function linkPurchaseAcquisition(
         ),
     );
     const retained =
-      typeof source !== "string" && target.kind === "funding-request"
+      source && typeof source !== "string" && target.kind === "funding-request"
         ? (
             await client.query(
               "SELECT acquisition_journey_id FROM amp_funding_invoice_intents WHERE id=$1 AND claimed_account_id=$2 AND claimed_request_id=$3",
@@ -198,15 +204,67 @@ export async function linkPurchaseAcquisition(
             )
           ).rows[0]?.acquisition_journey_id
         : null;
+    const signupJourney = !retained
+      ? (
+          await client.query(
+            "SELECT acquisition_journey_id FROM amp_parent_followups WHERE 'amp|'||user_id=$1",
+            [account],
+          )
+        ).rows[0]?.acquisition_journey_id
+      : null;
     const lookup =
       typeof source === "string"
         ? source
-        : retained
-          ? { retainedJourneyId: retained }
+        : (retained ?? signupJourney)
+          ? { retainedJourneyId: retained ?? signupJourney }
           : null;
     const result = lookup
       ? await bindAdClicksToOrder(client, account, lookup, target, providers)
       : { bound: 0 };
+    if (
+      !result.bound &&
+      signupJourney &&
+      !(
+        typeof lookup === "object" &&
+        lookup?.retainedJourneyId === signupJourney
+      )
+    )
+      result.bound += (
+        await bindAdClicksToOrder(
+          client,
+          account,
+          { retainedJourneyId: signupJourney },
+          target,
+          providers,
+        )
+      ).bound;
+    if (target.kind === "funding-request" && providers.length) {
+      const saved = (
+        await client.query(
+          `SELECT p.campaign,r.offer_snapshot FROM amp_parent_followups p
+        JOIN amp_funding_requests r ON r.account_id='amp|'||p.user_id
+        WHERE r.id=$1 AND r.account_id=$2 AND r.campaign_attribution IS NULL`,
+          [target.id, account],
+        )
+      ).rows[0];
+      const labels = fundedCampaignSchema.safeParse(saved?.campaign);
+      if (
+        labels.success &&
+        campaignMatchesOffer(labels.data, saved.offer_snapshot)
+      ) {
+        const restored = await client.query(
+          "UPDATE amp_funding_requests SET campaign_attribution=$3 WHERE id=$1 AND account_id=$2 AND campaign_attribution IS NULL RETURNING created_at",
+          [target.id, account, labels.data],
+        );
+        if (restored.rowCount)
+          await incrementFundedCampaign(
+            client,
+            labels.data,
+            "request_prepared",
+            restored.rows[0].created_at.toISOString(),
+          );
+      }
+    }
     for (const provider of ["google", "meta", "openai"] as const)
       if (!providers.includes(provider))
         await eraseAccountAdClicks(client, account, provider);

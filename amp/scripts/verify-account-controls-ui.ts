@@ -274,6 +274,18 @@ try {
           localStorage.setItem("amp.trial", "synthetic-practice-layout"),
         );
         await practice.goto(`${origin}/try/practice`);
+        if (!authenticated) {
+          await practice
+            .getByRole("heading", {
+              name: "Try AMP’s free math assessment.",
+              exact: true,
+            })
+            .waitFor();
+          assert.equal(new URL(practice.url()).pathname, "/sign-up");
+          await fits(practice, `practice signup ${theme} ${width}`);
+          await practice.close();
+          continue;
+        }
         await practice.locator(".problem-stage .question").waitFor();
         await practice
           .getByRole("button", { name: "Open AMP menu", exact: true })
@@ -490,6 +502,7 @@ try {
   await page.addInitScript(
     "Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async function(text) { window.copiedShareText = text; } } });",
   );
+  signedIn = true;
   for (const theme of ["light", "dark"] as const) {
     await page.emulateMedia({ colorScheme: theme });
     for (const width of [320, 390, 768, 1280]) {
@@ -552,7 +565,7 @@ try {
       ["/sign-in", "Sign in"],
       ["/sign-up", "Create your account"],
       ["/sign-in/forgot", "Reset your password"],
-      ["/try", "Your math pathways start here"],
+      ["/try", "See how AMP adapts"],
     ]) {
       if (path === "/try")
         await page.evaluate(() => localStorage.removeItem("amp.trial"));
