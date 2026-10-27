@@ -10,7 +10,8 @@ import {
 // the production planner and estimator, for learners whose age puts them in
 // grades 6–8, from a grade and a half below that level to two above.
 test("the free trial interleaves: no template repeats soon, and the strands are broad", (t) => {
-  const learners = trialLearners(4);
+  // The planner is path-dependent: 4 seeds left ~0.023 sampling noise against a true support gap of ~0.075.
+  const learners = trialLearners(16);
   const runs = learners.map((learner) => simulateTrial(learner));
   const stats = varietyStats(runs);
   t.diagnostic(JSON.stringify(stats));
