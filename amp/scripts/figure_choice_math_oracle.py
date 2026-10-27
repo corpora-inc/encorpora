@@ -392,24 +392,31 @@ def target_linear_rule(public):
 
 
 RATE = re.compile(
-    r"(An? [a-z]+) ([a-z]+) (\d+) ([a-z]+) (?:every (\d+) ([a-z]+) at a constant rate|per ([a-z]+))\. "
-    r"Which graph shows the number of ([a-z]+), \$y\$, after \$x\$ ([a-z]+)\?")
+    r"(An? [a-z]+) ([a-z]+) (\d+(?:\.\d+)?) ([a-z][a-z ]*?) "
+    r"(?:every (half|\d+(?:\.\d+)?) ([a-z]+)(?: at a constant rate)?|per ([a-z]+))\. "
+    r"Which graph shows the number of ([a-z][a-z ]*?), \$y\$, after \$x\$ ([a-z]+)\?")
 
 
 def read_rate(prompt):
+    """The unit rate a rate prompt states, exactly: a rate per unit, or an
+    amount over a whole, decimal or half period of time."""
     match = RATE.fullmatch(prompt)
     require(match is not None, f"Unrecognized prompt {prompt!r}")
-    amount, units = int(match.group(3)), match.group(4)
+    amount, units = F(match.group(3)), match.group(4)
     require(match.group(8) == units, "Question counts other units")
     time = match.group(9)
     if match.group(5):
-        per = int(match.group(5))
-        require(per >= 2 and match.group(6) == time, "Rate period")
+        if match.group(5) == "half":
+            period = F(1, 2)
+            require(match.group(6) + "s" == time, "Half period unit")
+        else:
+            period = F(match.group(5))
+            require(period != 1 and match.group(6) == time, "Rate period")
     else:
-        per = 1
+        period = F(1)
         require(match.group(7) + "s" == time, "Rate unit")
-    require(amount > 0 and units.endswith("s"), "Rate amount")
-    return F(amount, per), units, time
+    require(amount > 0 and period > 0 and units.split()[0].endswith("s") and amount != 1, "Rate amount")
+    return amount / period, units, time
 
 
 def target_rate(public):
@@ -525,12 +532,15 @@ def review_graph_label(template, option):
         require(match is not None, f"Unrecognized description {label!r}")
         start, through = read_point(*match.group(1, 2)), read_point(*match.group(3, 4))
         if figure[0] == "half-line":
-            require(figure[1][0] == "poly" and figure[3] == 1, f"{label!r}: not a ray to the right")
+            vertical = figure[1][0] == "vertical"
+            require(figure[1][0] in ("poly", "vertical") and figure[3] == 1, f"{label!r}: not a ray to the right or up")
             require(figure[2] == start, f"{label!r}: the ray does not start there")
+            require(through[1] > start[1] if vertical else through[0] > start[0], f"{label!r}: the ray does not reach its point")
         else:
             require(figure[0] == "poly" and len(figure) <= 3, "Described as a line")
             require(entry_point(element, figure) == start, f"{label!r}: the line does not start there")
-        require(on_figure(figure, through) and through[0] > start[0], f"{label!r}: misses its point")
+            require(through[0] > start[0], f"{label!r}: misses its point")
+        require(on_figure(figure, through), f"{label!r}: misses its point")
         named = [start, through]
     else:
         lines = r"A line" if template == "graph-of-linear-rule" else r"A straight line"
@@ -630,7 +640,15 @@ def review_problem(problem):
         for option in options:
             names = option_element(option).get("axisNames")
             require(names == [time.capitalize(), units.capitalize()], f"Axis names {names}")
-            require(window(option_element(option))[0] == 0 == window(option_element(option))[2], "Not a first-quadrant window")
+            x0, x1, y0, y1 = window(option_element(option))
+            require(x0 == 0 == y0 and x1 == 12, "Not a first-quadrant window")
+            # A scaled vertical axis keeps the window square: 12 columns of
+            # gridlines, each worth y1 / 12, labelled every second one.
+            step = y1 / 12
+            require(step in (1, 5, 10, 20), f"Vertical gridline value {step}")
+            el = option_element(option)
+            require(el["grid"] == [1, step] if step != 1 else el["grid"] in (1, [1, 1]), "Gridlines")
+            require(el["tick"] in ([2, 2 * step],) or (step == 1 and el["tick"] == 2), "Tick labels")
 
     public_text = json.dumps(public, ensure_ascii=False)
     for option_id in IDS:
@@ -687,6 +705,15 @@ def ray_option(option_id, label, start, end, open_flags):
     element = {"type": "numberLine", "min": -6, "max": 6, "step": 1,
                "intervals": [{"from": start, "to": end, "open": list(open_flags)}]}
     return {"id": option_id, "label": label, "scene": {"v": 1, "width": 260, "maxHeight": 110, "elements": [element]}}
+
+
+def scaled_option(option, step):
+    """The option with its vertical axis counted in `step`s."""
+    element = option["scene"]["elements"][0]
+    element["grid"] = [1, step]
+    element["tick"] = [2, 2 * step]
+    element["aspect"] = 1 / step
+    return option
 
 
 def fixture(template, prompt, noun, options, answer, explanation, hint, feedback, figure=None):
@@ -748,6 +775,18 @@ def handwritten():
                 graph_option("option-b", "A line starting at (0, 0) and passing through (1, 2).", ("half-line", (0, 0), (6, 12)), [(0, 0), (1, 2)], (0, 12), (0, 12), ("Weeks", "Books")),
             ], "option-b", ["Graph B is the line from (0, 0) through (1, 2)."], "Zero weeks, zero books.",
             {"option-a": "Graph A starts at 2."}),
+        # A decimal period and a vertical axis counted in tens.
+        "rate-scaled": fixture(
+            "graph-of-proportional-rate",
+            "A typist types 30 words every half minute at a constant rate. Which graph shows the number of words, $y$, after $x$ minutes?",
+            "Graph", [
+                scaled_option(graph_option("option-a", "A line starting at (0, 0) and passing through (1, 60).", ("half-line", (0, 0), (2, 120)), [(0, 0), (1, 60)], (0, 12), (0, 120), ("Minutes", "Words")), 10),
+                scaled_option(graph_option("option-b", "A line starting at (0, 0) and passing through (1, 6).", ("half-line", (0, 0), (12, 72)), [(0, 0), (1, 6)], (0, 12), (0, 120), ("Minutes", "Words")), 10),
+                scaled_option(graph_option("option-c", "A line starting at (0, 30) and passing through (1, 90).", ("half-line", (0, 30), (1.5, 120)), [(0, 30), (1, 90)], (0, 12), (0, 120), ("Minutes", "Words")), 10),
+                scaled_option(graph_option("option-d", "A line starting at (0, 30) and passing through (6, 30).", ("half-line", (0, 30), (12, 30)), [(0, 30), (6, 30)], (0, 12), (0, 120), ("Minutes", "Words")), 10),
+            ], "option-a", ["The unit rate is 30 \u00f7 0.5 = 60 words per minute.", "Graph A is the line from (0, 0) through (1, 60)."],
+            "Divide 30 words by 0.5 minutes.",
+            {"option-b": "Graph B counts each gridline as 1.", "option-c": "Graph C starts at 30.", "option-d": "Graph D never rises."}),
         "inequality": fixture(
             "graph-of-inequality-number-line", "Which number line shows the solutions of $-3x + 1 \\le 7$?", "Number line", [
                 ray_option("option-a", "A closed circle at \u22122 with the ray shaded to the left.", None, -2, (False, False)),
@@ -869,6 +908,10 @@ def self_test():
     mutate("rate", lambda b: element(b, 0)["segments"][0].update(**{"from": [2, 3]}), "ray starts away from the origin")
     mutate("rate", lambda b: element(b, 0)["segments"][0].update(to=[-8, -12]), "ray points back in time")
     mutate("per", lambda b: b["public"].update(prompt=b["public"]["prompt"].replace("per week", "per day")), "rate unit")
+    mutate("rate-scaled", lambda b: b["public"].update(prompt=b["public"]["prompt"].replace("every half minute", "every minute")), "half period read as one")
+    mutate("rate-scaled", lambda b: b["public"].update(prompt=b["public"]["prompt"].replace("30 words", "15 words")), "scaled amount")
+    mutate("rate-scaled", lambda b: [element(b, i).update(grid=1) for i in range(4)], "gridlines ignore the scale")
+    mutate("rate-scaled", lambda b: [element(b, i).update(y=[0, 100]) for i in range(4)], "window is not twelve gridlines")
     mutate("inequality", lambda b: element(b, 0)["intervals"][0].update(open=[False, True]), "open flag flipped")
     mutate("inequality", lambda b: b["public"].update(prompt="Which number line shows the solutions of $3x + 1 \\le 7$?"),
            "sign not reversed")

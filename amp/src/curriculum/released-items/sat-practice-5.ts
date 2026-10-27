@@ -236,7 +236,7 @@ export const satPractice5 = defineLedger(
       status: "partial",
       templateIds: ["transform-equation", "transform-point"],
       limitations:
-        "transform-equation matches parent graphs to equations (equation choices); transform-point follows one point numerically. No graph choice for a vertical shift of a given graph.",
+        "graph-after-shift chooses shifted graphs of lines, absolute-value graphs, parabolas and zigzags; the graph of a rational function shifted vertically is not drawn, because its asymptote labels crowd the axis labels.",
     },
     {
       section: "Math module 1",

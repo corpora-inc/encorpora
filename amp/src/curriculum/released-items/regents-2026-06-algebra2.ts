@@ -128,10 +128,10 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["nonlinear.transform"],
       demand:
         "Choose the graph of a function after a left shift and a downward shift",
-      status: "partial",
-      templateIds: ["transform-equation"],
+      status: "covered",
+      templateIds: ["transform-equation", "graph-after-shift"],
       limitations:
-        "The family matches rules to graphs of named parents; selecting among graphs for a generic plotted f is not practiced.",
+        "graph-after-shift (figure-choice-v1), zigzag shape: the graph of a generic plotted f after a left or right and an up or down move, in words or as f(x - h) + k, among graphs moved the wrong way, only partly or with the two moves swapped.",
     },
     {
       section: "Part I",

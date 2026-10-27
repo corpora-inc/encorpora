@@ -3,3 +3,5 @@
 // script; tests/family-index.test.ts fails when this file is stale.
 export {};
 export { family as figureChoice } from "./figure-choice";
+export { family as figureChoiceFormats } from "./figure-choice-formats";
+export { family as multiPartFormats } from "./multi-part-formats";

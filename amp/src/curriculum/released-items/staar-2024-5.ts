@@ -133,10 +133,14 @@ export const staar2024Grade5 = defineLedger(
       archetypeIds: ["pattern.graph-relationship"],
       demand:
         "Choose the graph of cost after a five dollar coupon against cost before it",
-      status: "partial",
-      templateIds: ["coordinate-context-points", "first-quadrant-locate"],
+      status: "covered",
+      templateIds: [
+        "coordinate-context-points",
+        "first-quadrant-locate",
+        "graph-of-paired-values",
+      ],
       limitations:
-        "coordinate-context-points and first-quadrant-locate read and place single points; choosing the graph whose every point follows a stated relationship is not practiced.",
+        "graph-of-paired-values (figure-choice-v1), shift-rule format: the graph whose points follow a stated difference (a price after a coupon is a number less than the price before), among graphs with swapped coordinates, the wrong operation, a constant y or a left-out pair.",
     },
     {
       item: { number: "10", page: "rationale PDF p.10" },
@@ -414,10 +418,14 @@ export const staar2024Grade5 = defineLedger(
       standards: ["TEKS.5.3.8.C"],
       archetypeIds: ["data.table-to-graph"],
       demand: "Choose the graph that plots the three pairs in a table",
-      status: "partial",
-      templateIds: ["first-quadrant-locate", "first-quadrant-coordinates"],
+      status: "covered",
+      templateIds: [
+        "first-quadrant-locate",
+        "first-quadrant-coordinates",
+        "graph-of-paired-values",
+      ],
       limitations:
-        "first-quadrant-locate and first-quadrant-coordinates name one point; choosing the graph that shows a table of three pairs is not practiced.",
+        "graph-of-paired-values (figure-choice-v1), table format: the graph that plots every pair of a table of three to seven pairs, among graphs with swapped coordinates, mismatched columns, reversed y-values or a left-out pair.",
     },
     {
       item: { number: "34", page: "rationale PDF p.35" },
