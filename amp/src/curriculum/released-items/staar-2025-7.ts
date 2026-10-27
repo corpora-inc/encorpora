@@ -613,10 +613,10 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Set up and solve a proportion for the minutes needed to scan a given number of items at a stated rate",
-      status: "partial",
+      status: "covered",
       templateIds: ["ratio-missing", "unit-rate"],
       limitations:
-        "ratio-missing scales a ratio to a whole-number quantity; a non-integer result such as a decimal number of minutes is not checked.",
+        "ratio-missing with scale-factor=decimal sets a target that is not a whole multiple of the ratio's second quantity, so the missing amount is an exact decimal entered as a number; its story is a paint mix, not a scan rate.",
     },
   ],
 );

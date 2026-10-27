@@ -1,7 +1,9 @@
 """Exact public-prompt review for integer missing legs and the Pythagorean converse."""
 import copy
+import decimal
 import math
 import re
+from fractions import Fraction
 from collections import Counter
 from itertools import permutations
 
@@ -19,9 +21,40 @@ PATTERNS = {
 }
 
 
+TENTHS = r'([1-9][0-9]*\.[0-9])'
+TENTHS_LEG = re.compile(rf'A right triangle has a hypotenuse of {TENTHS} cm and one leg of {TENTHS} cm\. '
+                        r'What is the length of the other leg, to the nearest tenth of a centimeter\?')
+
+
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def tenths_leg(public):
+    """Hypotenuse and known leg of the rounded form, as exact fractions, or None."""
+    if public['templateId'] != MISSING_LEG:
+        return None
+    found = TENTHS_LEG.fullmatch(public['prompt'])
+    return None if found is None else (Fraction(found[1]), Fraction(found[2]))
+
+
+def solve_tenths_leg(public, hypotenuse, known):
+    require(public.get('figure') is None, 'These triangle prompts must not disclose a diagram answer')
+    require(public['response']['kind'] == 'number' and 'options' not in public['response'],
+            'Missing leg requires a numeric response')
+    require(Fraction(5, 2) <= hypotenuse <= 12 and 1 <= known <= hypotenuse - Fraction(1, 2),
+            'Invalid decimal missing-leg bounds')
+    square = hypotenuse*hypotenuse - known*known
+    require(square > 0, 'The known leg must be shorter than the hypotenuse')
+    # The leg is irrational: the rounded form must not hide an exact tenth.
+    scaled = square * 100
+    require(scaled.denominator == 1 and math.isqrt(scaled.numerator) ** 2 != scaled.numerator,
+            'A rounded leg needs an irrational root')
+    with decimal.localcontext() as context:
+        context.prec = 60
+        root = (decimal.Decimal(square.numerator) / decimal.Decimal(square.denominator)).sqrt()
+        return Fraction(root.quantize(decimal.Decimal('0.1'), rounding=decimal.ROUND_HALF_UP))
 
 
 def givens(public):
@@ -42,6 +75,9 @@ def triangle_class(sides):
 
 
 def solve_right_triangle(public):
+    decimals = tenths_leg(public)
+    if decimals is not None:
+        return solve_tenths_leg(public, *decimals)
     values = givens(public)
     response = public['response']
     if public['templateId'] == MISSING_LEG:
@@ -118,10 +154,17 @@ class RightTriangleCorpusReview:
         self.positions = Counter()
         self.unique_longest = Counter()
         self.keys = Counter()
+        self.decimal_missing = 0
 
     def record(self, public, independent_answer):
-        values = givens(public)
         template = public['templateId']
+        if tenths_leg(public) is not None:
+            # Decimal lengths are outside the finite integer domain; they are
+            # counted and judged by solve_tenths_leg.
+            self.counts[template] += 1
+            self.decimal_missing += 1
+            return
+        values = givens(public)
         self.counts[template] += 1
         if template == MISSING_LEG:
             self.missing.add((*values, independent_answer))
@@ -196,6 +239,22 @@ def review_right_triangle_fixtures():
     for template, values, expected in handwritten:
         require(solve_right_triangle(fixture_public(template, values)) == expected,
                 'Handwritten triangle fixture failed')
+    def rounded_leg(hypotenuse, known):
+        return {'templateId': MISSING_LEG,
+                'prompt': f'A right triangle has a hypotenuse of {hypotenuse} cm and one leg of {known} cm. '
+                          'What is the length of the other leg, to the nearest tenth of a centimeter?',
+                'response': {'kind': 'number'}}
+    for hypotenuse, known, expected in [('4.2', '2.3', '3.5'), ('3.3', '1.7', '2.8'), ('8.5', '4.2', '7.4'),
+                                        ('2.5', '1.0', '2.3')]:
+        require(solve_right_triangle(rounded_leg(hypotenuse, known)) == Fraction(expected),
+                'Handwritten rounded-leg fixture failed')
+    for hypotenuse, known in [('5.0', '3.0'), ('2.5', '2.5'), ('2.5', '2.6'), ('13.0', '2.0'), ('2.0', '1.0'),
+                              ('5.0', '0.5'), ('5.0', '4.8')]:
+        try:
+            solve_right_triangle(rounded_leg(hypotenuse, known))
+        except ValueError:
+            continue
+        raise ValueError(f'Accepted corrupt rounded-leg fixture: {hypotenuse}, {known}')
     explanation_public = fixture_public(CONVERSE, (24, 26, 10))
     review_converse_explanation(explanation_public, ['The results are equal: 10² + 24² = 26².'])
     review_converse_explanation(fixture_public(CONVERSE, (4, 5, 6)), ['The results differ: 41 ≠ 36.'])

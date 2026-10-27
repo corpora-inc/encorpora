@@ -284,10 +284,10 @@ export const staar2024Grade5 = defineLedger(
       archetypeIds: ["number.estimate"],
       demand:
         "Estimate how many more milliliters one jar holds than another by rounding decimals",
-      status: "partial",
+      status: "covered",
       templateIds: ["estimate-reasonableness"],
       limitations:
-        "estimate-reasonableness rounds to estimate a product, quotient or total; estimating a difference of decimals is not practiced.",
+        "estimate-reasonableness with operation=decimal-difference rounds two decimal amounts to whole numbers and estimates how many more the first is.",
     },
     {
       item: { number: "23", page: "rationale PDF p.24" },

@@ -47,7 +47,27 @@ def parse_circle(public):
     return template, found[1], dimension, angle
 
 
+APPROXIMATE_AREA = re.compile(r'A circle has a (radius|diameter) of ([1-9][0-9]*) cm\. Use 3\.14 for \$\\pi\$\. What is its area, in square centimeters\?')
+
+
+def solve_approximate_area(public):
+    """Area with pi taken as 3.14, from a whole radius or an even diameter."""
+    require(public.get('templateId') == 'circle-area-coefficient', 'Only the area family uses 3.14')
+    require(public.get('figure') is None, 'Unexpected runtime circle figure')
+    require(public.get('response') == {'kind': 'number', 'label': 'Area in square centimeters'},
+            'Approximate area response must be numeric')
+    found = APPROXIMATE_AREA.fullmatch(public.get('prompt', ''))
+    require(found is not None, 'Malformed approximate area statement')
+    given = int(found[2])
+    require(found[1] == 'radius' or given % 2 == 0, 'A diameter must be even so the radius is whole')
+    radius = Fraction(given) if found[1] == 'radius' else Fraction(given, 2)
+    require(2 <= radius <= 15, 'Radius outside the reviewed domain')
+    return Fraction(314, 100) * radius * radius
+
+
 def solve_circle(public):
+    if public.get('prompt', '').find('Use 3.14') >= 0:
+        return solve_approximate_area(public)
     template, kind, dimension, angle = parse_circle(public)
     diameter = dimension if kind == 'diameter' else dimension + dimension
     # C/π = diameter; A/π = diameter squared divided by four.
@@ -86,8 +106,21 @@ def review_circle_fixtures():
     for template, kind, dimension, angle, answer in cases:
         require(solve_circle(fixture(template, kind, dimension, angle)) == Fraction(answer),
                 'Circle handwritten fixture mismatch')
+    approximate = {'templateId': 'circle-area-coefficient',
+                   'prompt': 'A circle has a diameter of 10 cm. Use 3.14 for $\\pi$. What is its area, in square centimeters?',
+                   'response': {'kind': 'number', 'label': 'Area in square centimeters'}}
+    require(solve_circle(approximate) == Fraction('78.5'), 'Circle handwritten fixture mismatch')
+    approximate['prompt'] = approximate['prompt'].replace('diameter of 10', 'radius of 12')
+    require(solve_circle(approximate) == Fraction('452.16'), 'Circle handwritten fixture mismatch')
     original = fixture('sector-area-coefficient', 'diameter', '7/2', 270)
     mutants = []
+    for old, new in [('radius of 12', 'diameter of 11'), ('radius of 12', 'radius of 1'), ('3.14', '3.1'),
+                     ('in square centimeters', 'in centimeters'), ('Use 3.14 for $\\pi$. ', '')]:
+        altered = copy.deepcopy(approximate)
+        altered['prompt'] = altered['prompt'].replace(old, new)
+        mutants.append(altered)
+    altered = copy.deepcopy(approximate); altered['response'] = {'kind': 'fraction', 'label': 'Exact coefficient $a$'}; mutants.append(altered)
+    altered = copy.deepcopy(approximate); altered['templateId'] = 'circle-circumference-coefficient'; mutants.append(altered)
     for old, new in [('7/2', '0'), ('7/2', '-1'), ('7/2', '2/2'),
                      ('7/2', '25'), ('270', '360'), ('270', '0'),
                      ('270', '361'), ('270', '25'), ('square centimeters', 'cm'),

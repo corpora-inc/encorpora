@@ -112,9 +112,18 @@ def solve_decimal(public):
         a, b = match(NUMBER.join(['What is ', ' × ', r'\?']), prompt)
         return value(a) * value(b)
     if template == 'multidigit-decimal-quotient':
-        a, b = match(NUMBER.join(['What is ', ' ÷ ', r'\?']), prompt)
+        signed = re.fullmatch(r'What is \$(-?)' + NUMBER + r' \\div (?:\\left\(-' + NUMBER + r'\\right\)|' + NUMBER + r')\$\?', prompt)
+        if signed:
+            negative_dividend, a = bool(signed[1]), signed[2]
+            negative_divisor, b = signed[3] is not None, signed[3] or signed[4]
+            require(negative_dividend or negative_divisor, 'A signed quotient needs a negative operand')
+        else:
+            a, b = match(NUMBER.join(['What is ', ' ÷ ', r'\?']), prompt)
+            negative_dividend = negative_divisor = False
         require('.' in b, 'The divisor is a decimal')
         q = value(a) / value(b)
+        if negative_dividend != negative_divisor:
+            q = -q
         d = q.denominator
         for prime in (2, 5):
             while d % prime == 0:
@@ -166,6 +175,9 @@ def review_decimal_fixtures():
         ({'templateId': 'multidigit-decimal-sum', 'prompt': 'What is 12.5 − 3.75?'}, Fraction(875, 100)),
         ({'templateId': 'multidigit-decimal-product', 'prompt': 'What is 1.2 × 0.35?'}, Fraction(42, 100)),
         ({'templateId': 'multidigit-decimal-quotient', 'prompt': 'What is 0.84 ÷ 0.02?'}, 42),
+        ({'templateId': 'multidigit-decimal-quotient', 'prompt': 'What is $-5.76 \\div 1.2$?'}, Fraction(-48, 10)),
+        ({'templateId': 'multidigit-decimal-quotient', 'prompt': 'What is $0.84 \\div \\left(-0.02\\right)$?'}, -42),
+        ({'templateId': 'multidigit-decimal-quotient', 'prompt': 'What is $-0.84 \\div \\left(-0.02\\right)$?'}, 42),
     ]
     for public, expected in cases:
         require(solve_decimal(public) == expected, f'Decimal fixture {public["prompt"]!r}')
@@ -176,6 +188,8 @@ def review_decimal_fixtures():
         {'templateId': 'compare-decimals-hundredths', 'prompt': 'Which is greater: 0.5 or 0.45? Enter that decimal.',
          'figure': chart([{'ones': 0, 'decimals': '45'}, {'ones': 0, 'decimals': '5'}], 2)},
         {'templateId': 'multidigit-decimal-quotient', 'prompt': 'What is 1 ÷ 0.3?'},
+        {'templateId': 'multidigit-decimal-quotient', 'prompt': 'What is $5.76 \\div 1.2$?'},
+        {'templateId': 'multidigit-decimal-quotient', 'prompt': 'What is $-5.76 \\div -1.2$?'},
         {'templateId': 'round-decimal', 'prompt': 'Round 2.3 to the nearest tenth.'},
     ]
     for public in rejected:

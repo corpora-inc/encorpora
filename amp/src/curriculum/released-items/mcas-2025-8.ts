@@ -177,10 +177,10 @@ export const mcasGrade8 = defineLedger(
       archetypeIds: ["measure.volume"],
       demand:
         "Estimate the water needed to fill a cylindrical pool with pi taken as 3.14",
-      status: "partial",
+      status: "covered",
       templateIds: ["cylinder-volume"],
       limitations:
-        "cylinder-volume finds a cylinder's volume as a multiple of pi by entry; a decimal approximation of pi and choices of nearest values are not practiced.",
+        "cylinder-volume in its approximate mode takes pi as 3.14 and enters the volume as a decimal from a whole radius or diameter; the pool setting is not stated.",
     },
     {
       section: "Session 2",

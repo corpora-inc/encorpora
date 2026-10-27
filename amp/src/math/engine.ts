@@ -291,10 +291,7 @@ import {
   regentsGapTemplates,
   generateRegentsGapProblem,
 } from "./regents-gap-practice";
-import {
-  generateMcasGapProblem,
-  mcasGapTemplates,
-} from "./mcas-gap-practice";
+import { generateMcasGapProblem, mcasGapTemplates } from "./mcas-gap-practice";
 import {
   generateStaarGapProblem,
   staarGapTemplates,
@@ -320,10 +317,7 @@ import {
   k8StateNumberTemplates,
   generateK8StateNumberProblem,
 } from "./k8-state-number-practice";
-import {
-  texas38Templates,
-  generateTexas38Problem,
-} from "./texas-38-practice";
+import { texas38Templates, generateTexas38Problem } from "./texas-38-practice";
 import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
@@ -333,10 +327,7 @@ import {
   financeCreditTemplateIds,
   generateFinanceCreditProblem,
 } from "./finance-credit-practice";
-import {
-  texasHsTemplates,
-  generateTexasHsProblem,
-} from "./texas-hs-practice";
+import { texasHsTemplates, generateTexasHsProblem } from "./texas-hs-practice";
 import {
   algebraRequirementGapTemplates,
   generateAlgebraRequirementGapProblem,
@@ -399,10 +390,17 @@ import { makeTenHops } from "./scene/explanations";
 import { mathLabel, polish } from "./polish";
 import type {
   GeneratedProblem,
+  ProblemVariant,
   PublicProblem,
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
+import {
+  isPerfectSquare,
+  roundedRoot,
+  sweepChoose,
+  sweepVariant,
+} from "./number-domain-axes";
 export type {
   GeneratedProblem,
   PublicProblem,
@@ -1114,6 +1112,7 @@ function generateRawProblem(
   let explanation: string[] = [];
   let figure: SemanticFigure | undefined;
   let kind: "number" | "fraction" = "number";
+  let variant: ProblemVariant | undefined;
   switch (templateId) {
     case "count-objects": {
       const n = r(1, 10);
@@ -1238,6 +1237,27 @@ function generateRawProblem(
       break;
     }
     case "right-triangle": {
+      const axes = sweepChoose("right-triangle", seed);
+      variant = sweepVariant(axes.hypotenuse, axes);
+      if (axes.hypotenuse !== "integer-triple") {
+        // Legs whose hypotenuse is irrational, rounded as the prompt asks.
+        const places = axes.hypotenuse === "nearest-tenth" ? 1 : 0;
+        let a = r(2, 12),
+          b = r(2, 12);
+        while (isPerfectSquare(a * a + b * b)) [a, b] = [r(2, 12), r(2, 12)];
+        const sum = a * a + b * b;
+        const rounded = roundedRoot(sum, places, "$c$");
+        answer = rounded.answer;
+        figure = { kind: "right-triangle", a, b, unit: "cm" };
+        prompt = `A right triangle has perpendicular legs ${a} cm and ${b} cm. What is the hypotenuse length in centimeters, to the nearest ${rounded.unitWord}?`;
+        hint = `The hypotenuse $c$ is the side opposite the right angle. Write $c^2 = ${a}^2 + ${b}^2$ and work out the right side. Then find which two ${places ? "tenths" : "whole numbers"} the square root lies between and decide which is nearer.`;
+        explanation = [
+          `$c^2 = ${a}^2 + ${b}^2 = ${sum}$, so $c = \\sqrt{${sum}}$.`,
+          ...rounded.steps.slice(0, 2),
+          `To the nearest ${rounded.unitWord}, the hypotenuse is ${answer} cm.`,
+        ];
+        break;
+      }
       const scale = r(1, 6),
         triple = r(0, 1) ? [3, 4, 5] : [5, 12, 13];
       const a = triple[0]! * scale,
@@ -1267,6 +1287,33 @@ function generateRawProblem(
       break;
     }
     case "geometric-sequence": {
+      const axes = sweepChoose("geometric-sequence", seed);
+      variant = sweepVariant(axes["ratio-form"], axes);
+      if (axes["ratio-form"] !== "multiply-whole") {
+        // Shrinking sequences: the start is a whole multiple of the divisor's
+        // power, so every term is a whole number.
+        const divisor = r(2, 5),
+          n = r(3, 6),
+          end = r(1, 6);
+        const start = end * divisor ** (n - 1);
+        answer = `${end}`;
+        if (axes["ratio-form"] === "divide-whole") {
+          prompt = `A pattern starts at ${start}. Each term is the previous term divided by ${divisor}. What is term ${n} (the first term is term 1)?`;
+          hint = `From term 1 to term ${n} is ${n - 1} steps. Start at ${start} and divide by ${divisor} once per step.`;
+          explanation = [
+            `Each step divides by ${divisor}, so term ${n} is the first term divided by ${divisor} a total of ${n - 1} times.`,
+            `Term ${n} is $${start} \\div ${divisor}^{${n - 1}} = ${answer}$.`,
+          ];
+        } else {
+          prompt = `A geometric sequence has first term ${start} and common ratio $\\frac{1}{${divisor}}$. What is term ${n} (the first term is term 1)?`;
+          hint = `From term 1 to term ${n} is ${n - 1} steps. Multiplying by $\\frac{1}{${divisor}}$ once per step splits the term into ${divisor} equal parts and keeps one.`;
+          explanation = [
+            `Term $n$ is the first term times the ratio raised to the power $n - 1$.`,
+            `Term ${n} is $${start} \\times \\left(\\frac{1}{${divisor}}\\right)^{${n - 1}} = ${start} \\div ${divisor ** (n - 1)} = ${answer}$.`,
+          ];
+        }
+        break;
+      }
       const a = r(1, 9),
         ratio = r(2, 4),
         n = r(3, 7);
@@ -1314,5 +1361,11 @@ function generateRawProblem(
     },
     ...(figure ? { figure } : {}),
   };
-  return { public: publicProblem, answer, explanation, hint };
+  return {
+    public: publicProblem,
+    answer,
+    explanation,
+    hint,
+    ...(variant ? { variant } : {}),
+  };
 }

@@ -1,5 +1,16 @@
 import { createHash } from "node:crypto";
-import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import type {
+  GeneratedProblem,
+  ProblemVariant,
+  TemplateMetadata,
+} from "./contracts";
+import {
+  exactDecimal,
+  isPerfectSquare,
+  nearestRoot,
+  sweepChoose,
+  sweepVariant,
+} from "./number-domain-axes";
 
 export const rightTriangleTemplates: readonly TemplateMetadata[] = [
   {
@@ -71,7 +82,49 @@ export function generateRightTriangleProblem(
   let prompt: string, answer: string, hint: string, explanation: string[];
   let response: GeneratedProblem["public"]["response"];
   let choiceFeedback: Record<string, string> | undefined;
+  let variant: ProblemVariant | undefined;
   if (templateId === "right-triangle-missing-leg") {
+    const axes = sweepChoose("right-triangle-missing-leg", seed);
+    variant = sweepVariant(axes.lengths, axes);
+  }
+  if (
+    templateId === "right-triangle-missing-leg" &&
+    variant?.axes?.lengths === "tenths-nearest-tenth"
+  ) {
+    // Hypotenuse and known leg are given to the tenth. Work in tenths: the
+    // other leg squared is (H² - K²) hundredths, so its tenths count is the
+    // square root of the integer H² - K².
+    let hypotenuse = r(25, 120),
+      known = r(10, hypotenuse - 5);
+    while (
+      isPerfectSquare(hypotenuse ** 2 - known ** 2) ||
+      hypotenuse % 10 === 0 ||
+      known % 10 === 0
+    ) {
+      hypotenuse = r(25, 120);
+      known = r(10, hypotenuse - 5);
+    }
+    const square = hypotenuse ** 2 - known ** 2;
+    const { lower, nearest } = nearestRoot(square);
+    const H = exactDecimal(hypotenuse, 10),
+      K = exactDecimal(known, 10);
+    const low = exactDecimal(lower, 10),
+      high = exactDecimal(lower + 1, 10),
+      mid = exactDecimal(2 * lower + 1, 20),
+      midSquare = exactDecimal((2 * lower + 1) ** 2, 400),
+      leg2 = exactDecimal(square, 100);
+    const up = square > lower * lower + lower;
+    answer = exactDecimal(nearest, 10);
+    prompt = `A right triangle has a hypotenuse of ${H} cm and one leg of ${K} cm. What is the length of the other leg, to the nearest tenth of a centimeter?`;
+    response = { kind: "number", label: "Missing leg length in centimeters" };
+    hint = `The ${H} cm side is the hypotenuse, opposite the right angle. Write $x^2 + ${K}^2 = ${H}^2$, subtract $${K}^2$ from $${H}^2$, then find which two tenths the square root lies between.`;
+    explanation = [
+      `Let $x$ be the missing leg length in centimeters. The Pythagorean theorem gives $x^2 + ${K}^2 = ${H}^2$.`,
+      `$${H}^2 = ${exactDecimal(hypotenuse ** 2, 100)}$ and $${K}^2 = ${exactDecimal(known ** 2, 100)}$, so $x^2 = ${exactDecimal(hypotenuse ** 2, 100)} - ${exactDecimal(known ** 2, 100)} = ${leg2}$.`,
+      `$${low}^2 \\le ${leg2} < ${high}^2$, so $x$ is between ${low} and ${high}. The midpoint is ${mid}, and $${mid}^2 = ${midSquare}$.`,
+      `Since ${leg2} is ${up ? "greater" : "less"} than ${midSquare}, $x$ is ${up ? "above" : "below"} ${mid}. The missing leg is about ${answer} cm.`,
+    ];
+  } else if (templateId === "right-triangle-missing-leg") {
     const [a, b, c] =
       integerRightTriangles[r(0, integerRightTriangles.length - 1)]!;
     const known = r(0, 1) === 0 ? a : b;
@@ -144,5 +197,6 @@ export function generateRightTriangleProblem(
     hint,
     explanation,
     ...(choiceFeedback ? { choiceFeedback } : {}),
+    ...(variant ? { variant } : {}),
   };
 }

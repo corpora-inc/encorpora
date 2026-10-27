@@ -141,10 +141,10 @@ export const staar2024Grade4 = defineLedger(
       standards: ["TEKS.4.2.5.B"],
       archetypeIds: ["pattern.paired"],
       demand: "Choose the table that follows a subtract-four rule",
-      status: "partial",
+      status: "covered",
       templateIds: ["staar-table-rule-choice"],
       limitations:
-        "staar-table-rule-choice chooses tables for add and multiply rules; a subtraction rule is not practiced.",
+        "staar-table-rule-choice with rule=subtract offers four tables for a stated rule y = x - k (k from 1 to 6); one table follows the rule in every column.",
     },
     {
       item: { number: "11", page: "rationale PDF p.12" },

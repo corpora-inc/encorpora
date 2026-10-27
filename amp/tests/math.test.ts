@@ -64,8 +64,14 @@ test("all reference families are deterministic and independently solve from disp
           expected = numbers.reduce((a, b) => a + b, 0) / numbers.length;
           assert.deepEqual(p.figure, { kind: "dataset", values: numbers });
           break;
-        case "right-triangle":
+        case "right-triangle": {
           expected = Math.hypot(numbers[0]!, numbers[1]!);
+          // The rounded surfaces name the place; the integer triples do not.
+          const rounded = /to the nearest (whole number|tenth)\?/.exec(
+            p.prompt,
+          );
+          if (rounded)
+            expected = Number(expected.toFixed(rounded[1] === "tenth" ? 1 : 0));
           assert.deepEqual(p.figure, {
             kind: "right-triangle",
             a: numbers[0],
@@ -73,6 +79,7 @@ test("all reference families are deterministic and independently solve from disp
             unit: "cm",
           });
           break;
+        }
         case "quadratic-vertex": {
           const [a, h, k] = numbers;
           expected = k!;
@@ -82,7 +89,13 @@ test("all reference families are deterministic and independently solve from disp
         }
         case "geometric-sequence": {
           let term = numbers[0]!;
-          for (let j = 1; j < numbers[2]!; j++) term *= numbers[1]!;
+          if (/divided by/.test(p.prompt)) {
+            // "starts at S ... divided by D ... term N"
+            for (let j = 1; j < numbers[2]!; j++) term /= numbers[1]!;
+          } else if (/\\frac/.test(p.prompt)) {
+            // "first term S and common ratio 1/D ... term N"
+            for (let j = 1; j < numbers[3]!; j++) term /= numbers[2]!;
+          } else for (let j = 1; j < numbers[2]!; j++) term *= numbers[1]!;
           expected = term;
           break;
         }

@@ -47,11 +47,13 @@ def round_half_up(value, step):
 
 # ---------------------------------------------------------------- polynomials
 
-TOKEN = re.compile(r'\s*(\d+(?:\.\d+)?|x|[-+*()×]|\\cdot)')
+TOKEN = re.compile(r'\s*(\d+/\d+|\d+(?:\.\d+)?|x|[-+*()×]|\\cdot)')
 
 
 def tokens(text):
-    text = clean(text).replace('$', '')
+    text = clean(text).replace('$', '').replace('\\left', '').replace('\\right', '')
+    # A typeset fraction is one number token: \\frac{3}{2} reads as 3/2.
+    text = re.sub(r'\\frac\{(\d+)\}\{(\d+)\}', r' \1/\2 ', text)
     out, position = [], 0
     while position < len(text.rstrip()):
         match = TOKEN.match(text, position)
@@ -96,7 +98,7 @@ def polynomial(text):
             inner = expression()
             require(take() == ')', 'Unclosed parenthesis')
             return inner
-        require(re.fullmatch(r'\d+(?:\.\d+)?', token) is not None, f'Unexpected token {token}')
+        require(re.fullmatch(r'\d+(?:/[1-9]\d*)?(?:\.\d+)?', token) is not None, f'Unexpected token {token}')
         value = Fraction(token)
         return {0: value} if value else {}
 
@@ -422,6 +424,16 @@ def solve_estimate(public):
                 require(label in ('Cannot tell without finding the exact product of %d and %d.' % (x, y), 'Reasonable, because %s is a whole number.' % kai[3]), f'Unrecognised statement {label!r}')
                 flags.append(False)
         return single(options, flags, 'Missing or ambiguous verdict')
+    decimals = re.fullmatch(r'One [a-z]+ holds (\d+\.\d) milliliters and another holds (\d+\.\d) milliliters\. Round each amount to the nearest whole number\. Which is the best estimate of how many more milliliters the first [a-z]+ holds\?', prompt)
+    if decimals:
+        first, second = Fraction(decimals[1]), Fraction(decimals[2])
+        require(first > second and first - second >= 50, 'The first amount is clearly the larger')
+        require(all(text[-1] not in '05' for text in (decimals[1], decimals[2])),
+                'Rounding to a whole number must not hinge on a tenths digit of 5 or 0')
+        estimate = round_half_up(first, 1) - round_half_up(second, 1)
+        values = [Fraction(clean(o['label']).replace(',', '')) for o in options]
+        require(len(set(values)) == 4, 'Duplicate numeric choices')
+        return single(options, [v == estimate for v in values], 'Missing or ambiguous best estimate')
     amounts = []
     buses = re.fullmatch(r'(\d+) students ride to a game on buses that each seat (\d+)\. Round \1 to the nearest hundred and \2 to the nearest ten\. Which is the best estimate of the number of buses needed\?', prompt)
     trays = re.fullmatch(r'A bakery fills (\d+) trays with (\d+) rolls each in the morning and (\d+) trays with (\d+) rolls each in the afternoon\. Round the number on each tray to the nearest ten\. Which is the best estimate of the total number of rolls\?', prompt)
@@ -588,6 +600,12 @@ def self_test():
                ['(5 + 10) × 6', '5 × 16', '5 × 10 + 5 × 6', '16 × 5'], 0, {'kind': 'area-model', 'columns': [10, 6], 'rows': [5]}),
         choice('signed-context-order', 'Height above sea level is positive and depth below sea level is negative. A submarine is at $-230$ meters and a gull is at $265$ meters. Which statement is correct about distance from sea level?',
                ['A submarine is farther, because $-230$ is less than $265$.', 'They cannot be compared, because one number is negative.', 'They are the same distance, because one is above and one is below sea level.', 'A gull is farther, because $|265|=265$ is greater than $|-230|=230$.'], 3),
+        choice('equivalent-expressions-check', r'Which expression is NOT equivalent to $\frac{3}{2}\left(8x - 12\right)$?',
+               [r'$12x - 18$', r'$12x - \frac{36}{2}$', r'$4x - 6$', r'$\frac{3}{2}\cdot 8x - \frac{3}{2}\cdot 12$'], 2),
+        choice('equivalent-expressions-check', r'Which expression is NOT equivalent to $\frac{1}{2}\left(4x + 8\right)$?',
+               [r'$2x + 4$', r'$2x + 8$', r'$4 + 2x$', r'$\frac{1}{2}\cdot 4x + \frac{1}{2}\cdot 8$'], 1),
+        choice('estimate-reasonableness', 'One pitcher holds 583.9 milliliters and another holds 131.2 milliliters. Round each amount to the nearest whole number. Which is the best estimate of how many more milliliters the first pitcher holds?',
+               ['453', '452', '715', '4530'], 0),
     ]
     rejected = 0
 

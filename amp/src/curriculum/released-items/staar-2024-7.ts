@@ -332,7 +332,7 @@ export const staar2024Grade7 = defineLedger(
       status: "partial",
       templateIds: ["circle-area-coefficient"],
       limitations:
-        "circle-area-coefficient finds an exact area in terms of pi; a numeric area with a decimal approximation for pi is not practiced.",
+        "circle-area-coefficient with pi-form=pi-3-14 practices this task (a whole radius or even diameter, pi as 3.14, a decimal area); the row stays partial only because the template's archetype link in the frozen template-archetypes list is circle.parts, not measure.circle.",
     },
     {
       item: { number: "26", page: "rationale PDF p.26" },
