@@ -54,10 +54,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["rational.signed-context"],
       demand:
         "Add seven signed daily changes to find the net change in a count",
-      status: "partial",
-      templateIds: ["integer-addition", "signed-story"],
+      status: "covered",
+      templateIds: ["signed-changes-sum", "integer-addition", "signed-story"],
       limitations:
-        "integer-addition combines two integers and signed-story chains a few decimal changes; a seven-term sum of integer changes is not practiced.",
+        "signed-changes-sum adds five to seven signed integer changes read from a table to find the net change; choices are plain integers, so numeric entry practices the same answer.",
     },
     {
       item: {
@@ -407,10 +407,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Scale a rate of dollars per hours to find the charge for nine hours from a table",
-      status: "partial",
-      templateIds: ["ratio-table-missing", "unit-rate"],
+      status: "covered",
+      templateIds: ["dollar-rate-scale", "ratio-table-missing", "unit-rate"],
       limitations:
-        "ratio-table-missing finds a missing cell by scaling a ratio; checked samples use whole-number tables, not dollars and cents.",
+        "dollar-rate-scale gives the charge in dollars and cents for two numbers of hours in a table and asks for the charge for 7 to 12 hours, or the hours for a charge, at a constant hourly price.",
     },
     {
       item: {

@@ -24,10 +24,10 @@ export const mcasGrade3 = defineLedger(
       archetypeIds: ["whole.expression-story", "whole.multiplicative-stories"],
       demand:
         "Choose the word problem that a multiplication expression of two single digits represents",
-      status: "partial",
-      templateIds: ["story-operation-choice"],
+      status: "covered",
+      templateIds: ["operation-sentence-choice", "story-operation-choice"],
       limitations:
-        "story-operation-choice chooses an equation for a stated story; the reverse direction, choosing a story for a given expression among addition, subtraction and division distractors, is not practiced.",
+        "operation-sentence-choice story-for-expression gives a product of two single digits and offers one equal-groups story among addition, subtraction and division stories.",
     },
     {
       section: "Session 1",
@@ -56,10 +56,14 @@ export const mcasGrade3 = defineLedger(
       ],
       demand:
         "Choose the multiplication equation that helps solve a division equation by a multiple of ten",
-      status: "partial",
-      templateIds: ["divide-facts", "missing-factor-fact"],
+      status: "covered",
+      templateIds: [
+        "related-division-sentence",
+        "divide-facts",
+        "missing-factor-fact",
+      ],
       limitations:
-        "Related families use or solve a fact; choosing the related multiplication equation among rearrangements with a multiple of ten is not practiced.",
+        "related-division-sentence division-by-ten-multiple gives a division sentence by a multiple of ten and offers one multiplication sentence with the divisor and unknown among rearrangements that change the numbers or the operation.",
     },
     {
       section: "Session 1",

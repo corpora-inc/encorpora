@@ -37,10 +37,14 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["whole.add-subtract-1000"],
       demand:
         "Subtract a smaller amount from a three-digit total in a sales story",
-      status: "partial",
-      templateIds: ["subtract-three-digit"],
+      status: "covered",
+      templateIds: [
+        "story-sentence-match-1000",
+        "story-equation-choice",
+        "subtract-three-digit",
+      ],
       limitations:
-        "subtract-three-digit practices the regrouped subtraction as a bare computation; no family sets a one-step subtraction in a story where the learner must choose the operation.",
+        "story-sentence-match-1000 and story-equation-choice set a one-step take-away story within 1,000 in a shop and ask the learner to choose the sentence or equation, so the operation is chosen; subtract-three-digit practices the regrouped computation.",
     },
     {
       item: { number: "2", page: "rationale PDF p.2" },
@@ -132,10 +136,10 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["whole.multiplicative-stories"],
       demand:
         "Choose the equation that cannot find the total of ten jumps of four",
-      status: "partial",
-      templateIds: ["story-operation-choice"],
+      status: "covered",
+      templateIds: ["operation-sentence-choice", "story-operation-choice"],
       limitations:
-        "story-operation-choice chooses the equation that models a story; recognizing a product written as repeated multiplication of a different factor as invalid is not practiced.",
+        "operation-sentence-choice cannot-find-total gives 3 to 10 equal jumps and three sentences that find the total, including repeated addition and the related divisions, with one that cannot; it includes ten jumps of four.",
     },
     {
       item: { number: "10", page: "rationale PDF p.11" },

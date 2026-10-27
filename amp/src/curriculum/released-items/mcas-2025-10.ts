@@ -52,10 +52,10 @@ export const mcasGrade10 = defineLedger(
       archetypeIds: ["linear.step-justification"],
       demand:
         "Choose the table that names the property justifying each step of a linear equation's solution",
-      status: "partial",
-      templateIds: ["equation-step-property"],
+      status: "covered",
+      templateIds: ["step-reason-table", "equation-step-property"],
       limitations:
-        "Single-step reason practice does not establish a complete multi-step justification.",
+        "step-reason-table shows the lines of a two-step, fraction-coefficient or distribute-first solution and offers one list that names the property for each step, shown as a list rather than a table grid.",
     },
     {
       section: "Session 1",
