@@ -230,7 +230,7 @@ def solid_traits(solid):
         return dict(curved=True, flat=0, prism=False, polygon=None, parallel=False, triangle=False)
     if base['type'] == 'ellipse':
         require(abs(base['radii'][0] - base['radii'][1]) < 1e-9, 'Round base is a circle')
-        return dict(curved=True, flat=2 if kind == 'prism' else 1, prism=kind == 'prism', polygon=None, parallel=kind == 'prism', triangle=False)  # a cylinder's two circular bases are congruent parallel faces
+        return dict(curved=True, flat=2 if kind == 'prism' else 1, prism=kind == 'prism', polygon=None, parallel=False, triangle=False)
     n = len(corners(base['points']))
     return dict(curved=False, flat=n + 2 if kind == 'prism' else n + 1, prism=kind == 'prism', polygon=n, parallel=kind == 'prism',
                 triangle=(kind == 'prism' and n == 3) or kind == 'pyramid')
@@ -247,8 +247,11 @@ def solid_figure(public):
     letters = option_letters(public, 'Solid')
     if prompt.endswith('have a curved surface.'):
         return [traits[x]['curved'] for x in letters]
-    if prompt.endswith('have only flat faces.'):
+    if prompt.endswith('have only flat surfaces.'):
         return [not traits[x]['curved'] for x in letters]
+    # Whether a cylinder, cone or sphere has "faces" differs between curricula,
+    # so every statement about faces must concern polyhedra only.
+    require('faces' not in prompt or not any(traits[x]['curved'] for x in traits), 'Face statement with a curved solid drawn')
     if prompt.endswith('have two congruent parallel faces.'):
         return [traits[x]['parallel'] for x in letters]
     m = re.search(r'have (\d+) or more flat faces\.$', prompt)
@@ -399,3 +402,8 @@ def self_test():
     kit.must_fail(solve, edit('stem-leaf-match-select', lambda p: p['figure']['scene']['elements'][3].__setitem__('text', '2 | 8 3')))
     # a changed edge label changes the volume, so the stated count no longer holds
     kit.must_fail(solve, edit('prism-volume-select', lambda p: p['figure']['scene']['elements'][4].__setitem__('text', '7 cm')))
+    # statements about faces never concern a curved solid
+    solids = by['solid-figure-select']
+    for ask in ('have two congruent parallel faces.', 'have only flat faces.'):
+        faces = kit.tamper(solids, lambda p: p.__setitem__('prompt', 'Select the 2 solids that ' + ask))
+        kit.must_fail(solve, faces)

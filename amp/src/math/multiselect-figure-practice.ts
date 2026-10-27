@@ -1066,7 +1066,7 @@ export const solidFiguresTemplate = selectTemplate({
   gradeBand: "3–5",
   difficultyOffset: 0.3,
   description:
-    "Select every drawn solid that has a stated property, such as two congruent parallel faces, a curved surface, only flat faces or triangular faces, among prisms, pyramids, a cylinder, a cone and a sphere.",
+    "Select every drawn solid that has a stated property, such as two congruent parallel faces, a curved surface, only flat surfaces or triangular faces, among prisms, pyramids, a cylinder, a cone and a sphere.",
 });
 
 interface SolidDef {
@@ -1091,11 +1091,11 @@ const solidDefs: SolidDef[] = [
 const solidProps = {
   "parallel-faces": {
     phrase: "two congruent parallel faces",
-    test: (d: SolidDef) => d.kind === "prism" || d.kind === "cylinder",
+    test: (d: SolidDef) => d.kind === "prism",
     why: (d: SolidDef) =>
-      d.kind === "prism" || d.kind === "cylinder"
+      d.kind === "prism"
         ? `a ${d.name} has two congruent bases that are parallel.`
-        : `a ${d.name} has at most one base, so it has no two parallel congruent faces.`,
+        : `a ${d.name} has one base, so it has no two parallel congruent faces.`,
   },
   "curved-surface": {
     phrase: "a curved surface",
@@ -1106,11 +1106,11 @@ const solidProps = {
         : `a ${d.name} has only flat faces.`,
   },
   "flat-faces": {
-    phrase: "only flat faces",
+    phrase: "only flat surfaces",
     test: (d: SolidDef) => d.kind === "prism" || d.kind === "pyramid",
     why: (d: SolidDef) =>
       d.kind === "prism" || d.kind === "pyramid"
-        ? `all the faces of a ${d.name} are flat.`
+        ? `every surface of a ${d.name} is flat.`
         : `a ${d.name} has a curved surface.`,
   },
   "triangle-face": {
@@ -1195,10 +1195,16 @@ function solidFigures(r: Random) {
   const key = pick(r, Object.keys(solidProps) as (keyof typeof solidProps)[]);
   const prop = solidProps[key];
   const k = r(2, 3);
-  const yes = shuffled(r, solidDefs.filter(prop.test));
+  // Whether a curved solid has "faces" varies between curricula, so a
+  // statement about faces is asked only of prisms and pyramids.
+  const pool0 =
+    key === "curved-surface" || key === "flat-faces"
+      ? solidDefs
+      : solidDefs.filter((d) => d.kind === "prism" || d.kind === "pyramid");
+  const yes = shuffled(r, pool0.filter(prop.test));
   const no = shuffled(
     r,
-    solidDefs.filter((d) => !prop.test(d)),
+    pool0.filter((d) => !prop.test(d)),
   );
   if (yes.length < k || no.length < 6 - k)
     throw new Error("Need three retry: solids");
@@ -1230,7 +1236,7 @@ function solidFigures(r: Random) {
     ask: (n) => `Select the ${n} solids that have ${prop.phrase}.`,
     one: "solid",
     hint: (shown) =>
-      `${numberOfTrue(shown)} of the six solids ${key === "parallel-faces" ? "have two parallel congruent faces" : key === "curved-surface" ? "have a curved surface" : key === "flat-faces" ? "have only flat faces" : key === "triangle-face" ? "have a triangular face" : "have six or more flat faces"}. ` +
+      `${numberOfTrue(shown)} of the six solids ${key === "parallel-faces" ? "have two parallel congruent faces" : key === "curved-surface" ? "have a curved surface" : key === "flat-faces" ? "have only flat surfaces" : key === "triangle-face" ? "have a triangular face" : "have six or more flat faces"}. ` +
       (key === "parallel-faces"
         ? "Look for a solid with two faces that are the same size and shape and face each other, like the top and bottom of a box."
         : key === "curved-surface" || key === "flat-faces"

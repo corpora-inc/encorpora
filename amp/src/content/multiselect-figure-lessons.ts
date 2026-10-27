@@ -415,7 +415,7 @@ const specs: SelectContentSpec[] = [
       "Select the solids that have it and check the count.",
     ],
     watch:
-      "A cylinder has two parallel congruent faces but also a curved surface, so it has the first property and not the property of only flat faces.",
+      "Only prisms and pyramids are asked about faces. A cylinder, a cone and a sphere have a curved surface, so they do not have only flat surfaces.",
     principle:
       "A prism with an $n$-sided base has $n+2$ flat faces: two congruent parallel bases and $n$ rectangles. A pyramid with an $n$-sided base has $n+1$ flat faces: one base and $n$ triangles. Cylinders, cones and spheres each have a curved surface.",
     example: {
@@ -430,17 +430,17 @@ const specs: SelectContentSpec[] = [
     },
     objectives: [
       "Name prisms, pyramids, cylinders, cones and spheres from a drawing.",
-      "Decide whether a solid has a stated property of its faces.",
+      "Decide whether a prism or pyramid has a stated property of its faces, and whether a solid has a curved surface.",
     ],
     pitfalls: [
       "Counting only the faces that show and leaving out hidden faces.",
       "Calling a pyramid a prism because it has a polygon base.",
-      "Saying a cylinder has only flat faces.",
+      "Saying a cylinder has only flat surfaces.",
     ],
     parentGuide:
       "Look for boxes, cans, balls and party hats at home and ask your learner which have flat faces and which have curved surfaces.",
     assessed:
-      "Selecting the two or three solids of six drawn solids, chosen from cubes and rectangular, triangular, pentagonal and hexagonal prisms, square, triangular and pentagonal pyramids, a cylinder, a cone and a sphere, that have two congruent parallel faces, a curved surface, only flat faces, a triangular face or six or more flat faces.",
+      "Selecting the two or three solids of six drawn solids, chosen from cubes and rectangular, triangular, pentagonal and hexagonal prisms, square, triangular and pentagonal pyramids (and, for the curved surface and only flat surfaces questions, a cylinder, a cone and a sphere), that have a curved surface, only flat surfaces, or, among prisms and pyramids only, two congruent parallel faces, a triangular face or six or more flat faces.",
     notAssessed:
       "Does not assess counting edges or vertices, nets, or naming a solid from a description.",
     facet: "polygon-properties.solid-parts",

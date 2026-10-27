@@ -590,7 +590,7 @@ const oracles: Record<string, Oracle> = {
         return prism;
       case "a curved surface":
         return curved;
-      case "only flat faces":
+      case "only flat surfaces":
         return !curved;
       case "at least one triangular face":
         return (pyramid && !curved) || (prism && n === 3);
