@@ -72,12 +72,12 @@ test("tangent to cosine: ratio check", () => {
 test("special angle match: exactly one option equals the target", () => {
   checkTemplate("special-angle-match", {
     variants: [
-      "sin-2pi/3",
-      "sin-3pi/4",
-      "sin-5pi/6",
-      "cos-2pi/3",
-      "cos-3pi/4",
-      "cos-5pi/6",
+      "sin-2pi-3",
+      "sin-3pi-4",
+      "sin-5pi-6",
+      "cos-2pi-3",
+      "cos-3pi-4",
+      "cos-5pi-6",
     ],
     axes: { target: ["sine", "cosine"] },
     hintsMin: 3,

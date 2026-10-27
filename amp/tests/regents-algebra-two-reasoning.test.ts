@@ -125,7 +125,7 @@ test("complete the square steps", () => {
 
 test("exponential points", () => {
   checkTemplate("exponential-points-statement", {
-    variants: ["T-2", "T-5"],
+    variants: ["t-2", "t-5"],
     hintsMin: 8,
   });
   for (let i = 0; i < 100; i++) {

@@ -370,7 +370,7 @@ export const exponentialPointsStatement = chainFamily({
   template: exponentialPointsStatementTemplate,
   axes: {},
   model: (r: R) => ({ T: r(2, 5), A: pick(r, [10, 20, 40, 50] as const) }),
-  variant: (m) => `T-${m.T}`,
+  variant: (m) => `t-${m.T}`,
   render: (m, _ax, r) => {
     const { T, A } = m;
     const pts = [

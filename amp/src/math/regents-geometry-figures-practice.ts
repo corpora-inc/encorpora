@@ -198,7 +198,7 @@ export const centroidMedian = chainFamily({
   template: centroidMedianTemplate,
   axes: centroidAxes,
   model: (r: R) => ({ which: r(0, 2), t: r(1, 9), asksFar: r(0, 1) === 1 }),
-  variant: (m) => medianNames[m.which]![0] + "-median",
+  variant: (m) => medianNames[m.which]![0].toLowerCase() + "-median",
   render: (m, a, r) => {
     const [V, M, side] = medianNames[m.which]!;
     const vg = `${V}G`;

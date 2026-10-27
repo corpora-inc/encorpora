@@ -20,7 +20,7 @@ test("figure templates pass the shared checks", () => {
     axes: { ask: ["leg", "altitude", "other-leg"] },
   });
   checkTemplate("geo-centroid-median", {
-    variants: ["A-median", "B-median", "C-median"],
+    variants: ["a-median", "b-median", "c-median"],
     axes: { ask: ["true-statement", "segment-length"] },
   });
   checkTemplate("geo-polygon-rotation", {
