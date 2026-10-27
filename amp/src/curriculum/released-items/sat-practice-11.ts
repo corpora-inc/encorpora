@@ -50,10 +50,14 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["linear.solve"],
       demand:
         "Choose the equation produced by one inverse-operation step on a two-step linear equation",
-      status: "partial",
-      templateIds: ["two-step-equation", "equation-step-property"],
+      status: "covered",
+      templateIds: [
+        "equation-after-one-step",
+        "two-step-equation",
+        "equation-step-property",
+      ],
       limitations:
-        "Templates solve or audit solution steps; none selects the equivalent equation after one step.",
+        "equation-after-one-step undo-constant, divide-grouped and undo-fraction give a two-step linear equation and one named or inverse step, and offer the resulting equation among one-side and wrong-sign slips; solving to the final value is practiced by two-step-equation.",
     },
     {
       section: "Math module 1",

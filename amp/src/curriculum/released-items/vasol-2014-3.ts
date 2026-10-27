@@ -42,10 +42,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["early.subtract-within-20"],
       demand:
         "Choose the subtraction sentence that a stated addition fact helps solve",
-      status: "partial",
-      templateIds: ["related-subtraction"],
+      status: "covered",
+      templateIds: ["related-subtraction-sentence", "related-subtraction"],
       limitations:
-        "related-subtraction computes a bare subtraction by thinking of the related addition; choosing the sentence in a fact family among subtraction, multiplication, division and addition distractors is not practiced.",
+        "related-subtraction-sentence gives an addition fact within 10 or 20 and offers one subtraction sentence from the whole among reversed, part-from-part, addition, multiplication and division sentences.",
     },
     {
       item: { number: "2", page: "PDF p.6" },
@@ -125,10 +125,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["whole.related-equation", "whole.division-facts"],
       demand:
         "Choose the division sentence that a multiplication fact helps solve",
-      status: "partial",
-      templateIds: ["divide-facts"],
+      status: "covered",
+      templateIds: ["related-division-sentence", "divide-facts"],
       limitations:
-        "divide-facts divides within 100 by recalling the related multiplication fact; choosing the sentence in a fact family among division, multiplication and addition distractors is not practiced.",
+        "related-division-sentence multiplication-to-division gives a multiplication fact within 100 and offers one division sentence that starts from the product among reversed, mismatched and operation-changed sentences.",
     },
     {
       item: { number: "9", page: "PDF p.13" },
@@ -184,10 +184,14 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["whole.multiplicative-stories"],
       demand:
         "Choose the number sentence that fits a drawn set of four equal boxes of flowers",
-      status: "partial",
-      templateIds: ["story-operation-choice", "multiplication-division-story"],
+      status: "covered",
+      templateIds: [
+        "operation-sentence-choice",
+        "story-operation-choice",
+        "multiplication-division-story",
+      ],
       limitations:
-        "story-operation-choice picks an equation for a worded story; choosing the sentence for a drawn set of equal groups is not practiced.",
+        "operation-sentence-choice fits-drawn-groups draws 2 to 8 equal groups of 2 to 8 counters, including four groups, and asks for the sentence that finds the total among addition, subtraction, division and multiplication sentences.",
     },
     {
       item: { number: "14", page: "PDF p.18" },
@@ -254,10 +258,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["early.number-line-hops"],
       demand:
         "Choose the sentence for four equal jumps of six drawn on a number line to 24",
-      status: "partial",
-      templateIds: ["number-line-hops"],
+      status: "covered",
+      templateIds: ["operation-sentence-choice", "number-line-hops"],
       limitations:
-        "number-line-hops adds or subtracts a tens hop and a ones hop by entry; choosing a multiplication or addition sentence for equal jumps drawn on a number line is not practiced.",
+        "operation-sentence-choice fits-number-line draws three or four equal jumps of 2 to 7 on a number line from 0, including four jumps of six, and asks for the sentence that finds where the last jump lands.",
     },
     {
       item: { number: "20", page: "PDF p.24" },
