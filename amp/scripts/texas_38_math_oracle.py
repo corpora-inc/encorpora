@@ -945,7 +945,7 @@ def round_half_up(v, places=2):
 def solve_pi(public):
     p = public['prompt']
     opts = options_of(public)
-    if p == 'Pi (π) is the same number for every circle. Which ratio equals π?':
+    if p == 'The ratio $\\pi$ (pi) is the same number for every circle. Which ratio equals $\\pi$?':
         return only([o['id'] for o in opts if o['label'] == 'circumference ÷ diameter'], 'Circumference over diameter')
     m = re.fullmatch(r"A circle's diameter is made (\d+) times as long\. What happens to the ratio circumference ÷ diameter\?", p)
     if m:

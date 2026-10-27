@@ -307,17 +307,17 @@ function coinNameAndValue(r: Random): Built {
       hint: `Remember the value of a ${coin}. Look for the coin with that many cents written on it.`,
       explanation: [
         `A ${coin} is worth ${v}¢.`,
-        `Coin ${letters[order.indexOf(coin)]} shows ${v}¢, so it is the ${coin}.`,
+        `Coin $${letters[order.indexOf(coin)]}$ shows ${v}¢, so it is the ${coin}.`,
       ],
       choices: [
-        { label: letters[order.indexOf(coin)]!, correct: true },
+        { label: `$${letters[order.indexOf(coin)]}$`, correct: true },
         ...order.flatMap((c, i) =>
           c === coin
             ? []
             : [
                 {
-                  label: letters[i]!,
-                  feedback: `Coin ${letters[i]} shows ${COIN_CENTS[c]}¢. A ${coin} is worth ${v}¢.`,
+                  label: `$${letters[i]}$`,
+                  feedback: `Coin $${letters[i]}$ shows ${COIN_CENTS[c]}¢. A ${coin} is worth ${v}¢.`,
                 },
               ],
         ),
@@ -394,6 +394,17 @@ const SOLID_BASE: Record<SolidKind, string> = {
   cone: "circle",
 };
 
+/** What a hint may call each solid without naming the answer's shape. */
+const SOLID_NAME: Record<SolidKind, string> = {
+  cube: "cube",
+  box: "box",
+  "triangular prism": "prism",
+  "square pyramid": "pyramid",
+  "triangular pyramid": "pyramid",
+  cylinder: "cylinder",
+  cone: "cone",
+};
+
 function solidBottomFace(r: Random): Built {
   const kind = pick(r, Object.keys(SOLID_BASE) as SolidKind[]);
   const azimuth = pick(r, [20, 25, 30, 35, 40]);
@@ -464,7 +475,7 @@ function solidBottomFace(r: Random): Built {
       "A solid stands on a table. What is the shape of its flat face that touches the table?",
     figure: { kind: "solid-shape", solid },
     answer: "",
-    hint: "Look at the bottom of the solid, where it touches the table. Is it round or does it have straight sides? Count its straight sides and corners.",
+    hint: `The solid is a ${SOLID_NAME[kind]}. Look at the face of the ${SOLID_NAME[kind]} that touches the table. Is it round or does it have straight sides? Count its straight sides and corners.`,
     explanation: [
       `The face on the table has ${SHAPE_DESC[correct]}.`,
       `A ${correct} has ${SHAPE_DESC[correct]}, so the bottom face is a ${correct}.`,
@@ -817,6 +828,10 @@ function sentencePool(s: Story): { text: string; value: number }[] {
   return all;
 }
 
+/** The numbers the story states, written as "320 and 301". */
+const storyNumbers = (s: Story, a: string, b: string, obj: string) =>
+  (storyText(s, a, b, obj).match(/\d+/g) ?? []).join(" and ");
+
 function storySentenceMatch(r: Random, big: boolean): Built {
   const variant = r(0, 1) ? "story-for-sentence" : "sentence-for-story";
   let p: number, q: number;
@@ -843,7 +858,7 @@ function storySentenceMatch(r: Random, big: boolean): Built {
       variant,
       prompt: `Which number sentence matches this story? ${box} ${storyText(story, a, b, obj)}`,
       answer: "",
-      hint: `Ask what happens to the ${obj} in the story: are they put together, taken away or compared? Then find the number the story does not tell you.`,
+      hint: `The story tells you ${storyNumbers(story, a, b, obj)} ${obj}. Ask what happens to the ${obj}: are they put together, taken away or compared? Then find the number the story does not tell you.`,
       explanation: [STORY_REASON[type], `The number sentence is ${correct}.`],
       choices: choicesFrom(r, correct, wrongs),
     };
@@ -920,21 +935,21 @@ function openNumberLine(r: Random, lines: Line[]): Built {
         feedback:
           x === v + step || x === v - step
             ? "That is one tick mark away. Count the tick marks from a labeled number to the point."
-            : "Count the tick marks from a labeled number to the point P, and check which way you counted.",
+            : "Count the tick marks from a labeled number to the point $P$, and check which way you counted.",
       }));
     const nearest = labels.reduce((best, l) =>
       Math.abs(l - v) < Math.abs(best - v) ? l : best,
     );
     return {
       variant,
-      prompt: "Which number is at point P on the number line?",
+      prompt: "Which number is at point $P$ on the number line?",
       figure: { kind: "scene", scene: spec([{ at: v, label: "P" }]) },
       answer: "",
-      hint: `Find the labeled number nearest to P. Count the tick marks from there to P, and count by the size of each step (each step is ${step} here).`,
+      hint: `Find the labeled number nearest to $P$. Count the tick marks from there to $P$, and count by the size of each step (each step is ${step} here).`,
       explanation: [
         `Each tick mark is ${step} more than the one before it.`,
-        `Start at ${nearest}. Count ${count(ticks(nearest, v), "tick mark")} ${v > nearest ? "right" : "left"}, by ${step}s.`,
-        `Point P is at ${v}.`,
+        `Start at ${nearest}. Count ${count(ticks(nearest, v), "tick mark")} ${v > nearest ? "right" : "left"}, ${step} at a time.`,
+        `Point $P$ is at ${v}.`,
       ],
       choices: choicesFrom(r, `${v}`, pool),
     };
@@ -955,21 +970,21 @@ function openNumberLine(r: Random, lines: Line[]): Built {
       scene: spec(order.map((at, i) => ({ at, label: letters[i]! }))),
     },
     answer: "",
-    hint: `Start at the labeled number nearest to ${v}. Count by ${step}s along the tick marks until you reach ${v}, then see which point is there.`,
+    hint: `Start at the labeled number nearest to ${v}. Count along the tick marks, ${step} at a time, until you reach ${v}, then see which point is there.`,
     explanation: [
       `Each tick mark is ${step} more than the one before it.`,
-      `Start at ${nearest} and count by ${step}s ${v > nearest ? "right" : "left"} to ${v}: that takes ${count(ticks(nearest, v), "tick mark")}.`,
-      `Point ${correct} is at ${v}.`,
+      `Start at ${nearest} and count ${step} at a time ${v > nearest ? "right" : "left"} to ${v}: that takes ${count(ticks(nearest, v), "tick mark")}.`,
+      `Point $${correct}$ is at ${v}.`,
     ],
     choices: [
-      { label: correct, correct: true as const },
+      { label: `$${correct}$`, correct: true as const },
       ...order.flatMap((at, i) =>
         at === v
           ? []
           : [
               {
-                label: letters[i]!,
-                feedback: `Point ${letters[i]} is at ${at}, not ${v}. Count the tick marks from a labeled number.`,
+                label: `$${letters[i]}$`,
+                feedback: `Point $${letters[i]}$ is at ${at}, not ${v}. Count the tick marks from a labeled number.`,
               },
             ],
       ),
@@ -1208,7 +1223,7 @@ function decomposeFlatShape(r: Random): Built {
       shapes: [{ shape, cut, sizes, shaded: [] }],
     },
     answer: "",
-    hint: "Count the parts the cuts make. Then pick one part and count its sides and corners to name its shape.",
+    hint: `The ${shape} is cut ${cutWords[cut]}. Count the parts the cuts make. Then pick one part and count its sides and corners to name its shape.`,
     explanation: [
       `The ${shape} is cut ${cutWords[cut]}. The cut makes ${parts} parts.`,
       `Each part has ${KIND_FACT[kind]}.`,
@@ -1356,65 +1371,65 @@ function unitSizeAndCount(r: Random): Built {
   const longer = aLonger ? "A" : "B";
   const shorter = aLonger ? "B" : "A";
   if (variant === "which-fewer") {
-    const correct = `Unit ${longer}, because it is longer`;
+    const correct = `Unit $${longer}$, because it is longer`;
     return {
       variant,
       prompt:
-        "The same ribbon is measured with unit A and with unit B. Which unit needs fewer copies to cover the ribbon, and why?",
+        "The same ribbon is measured with unit $A$ and with unit $B$. Which unit needs fewer copies to cover the ribbon, and why?",
       figure,
       answer: "",
       hint: "Compare the two rows. Count the copies of each unit and see which unit is longer. Does the longer unit or the shorter unit need more copies?",
       explanation: [
-        `Unit ${longer} is the longer unit and unit ${shorter} is the shorter unit.`,
+        `Unit $${longer}$ is the longer unit and unit $${shorter}$ is the shorter unit.`,
         `A longer unit covers more of the ribbon with each copy, so it needs fewer copies.`,
-        `Unit ${longer} needs fewer copies because it is longer.`,
+        `Unit $${longer}$ needs fewer copies because it is longer.`,
       ],
       choices: [
         { label: correct, correct: true as const },
         {
-          label: `Unit ${longer}, because it is shorter`,
-          feedback: `Unit ${longer} is the longer unit, so it is not shorter.`,
+          label: `Unit $${longer}$, because it is shorter`,
+          feedback: `Unit $${longer}$ is the longer unit, so it is not shorter.`,
         },
         {
-          label: `Unit ${shorter}, because it is longer`,
-          feedback: `Unit ${shorter} is the shorter unit, so this reason is not true.`,
+          label: `Unit $${shorter}$, because it is longer`,
+          feedback: `Unit $${shorter}$ is the shorter unit, so this reason is not true.`,
         },
         {
-          label: `Unit ${shorter}, because it is shorter`,
-          feedback: `Unit ${shorter} is shorter, but a shorter unit needs more copies to cover the same ribbon.`,
+          label: `Unit $${shorter}$, because it is shorter`,
+          feedback: `Unit $${shorter}$ is shorter, but a shorter unit needs more copies to cover the same ribbon.`,
         },
       ],
     };
   }
   const reasons: Wrong[] = [
     {
-      label: `Unit ${shorter} is longer than unit ${longer}.`,
-      feedback: `Unit ${shorter} is the shorter unit. A longer unit would need fewer copies.`,
+      label: `Unit $${shorter}$ is longer than unit $${longer}$.`,
+      feedback: `Unit $${shorter}$ is the shorter unit. A longer unit would need fewer copies.`,
     },
     {
-      label: `The ribbon is longer in the row of unit ${shorter}.`,
+      label: `The ribbon is longer in the row of unit $${shorter}$.`,
       feedback: "Both rows measure the same ribbon, so the length is the same.",
     },
     {
-      label: `The copies of unit ${shorter} have gaps between them.`,
+      label: `The copies of unit $${shorter}$ have gaps between them.`,
       feedback:
         "The copies fit end to end with no gaps. The units are not the same size.",
     },
   ];
   return {
     variant,
-    prompt: `Both rows cover the same ribbon, end to end, with no gaps. Row ${shorter} uses more units than row ${longer}. Why?`,
+    prompt: `Both rows cover the same ribbon, end to end, with no gaps. Row $${shorter}$ uses more units than row $${longer}$. Why?`,
     figure,
     answer: "",
     hint: "Both rows measure the same ribbon. Compare the size of one unit in each row. What does a smaller unit do to the count?",
     explanation: [
       "Both rows cover the same ribbon, so the length is the same.",
-      `One copy of unit ${shorter} is shorter than one copy of unit ${longer}.`,
+      `One copy of unit $${shorter}$ is shorter than one copy of unit $${longer}$.`,
       `A shorter unit covers less each time, so more copies are needed.`,
     ],
     choices: choicesFrom(
       r,
-      `Unit ${shorter} is shorter than unit ${longer}.`,
+      `Unit $${shorter}$ is shorter than unit $${longer}$.`,
       reasons,
     ),
   };
@@ -1959,7 +1974,7 @@ function tallyAndTChart(r: Random): Built {
       variant,
       prompt: `${a} asked ${total} children for a ${topic.asked}. The answers were: ${list.join(", ")}. Which T-chart shows how many children chose each?`,
       answer: "",
-      hint: `Go through the list and make one tally mark for each answer, one column per ${topic.header.toLowerCase()}. Then count the marks for each.`,
+      hint: `Go through the list of ${total} answers and make one tally mark for each, one column per ${topic.header.toLowerCase()}. Then count the marks for each.`,
       explanation: [
         `Count each answer in the list: ${things.map((t, i) => `${t} ${counts[i]}`).join(", ")}.`,
         `The counts add to ${total}, the number of children asked.`,
@@ -2297,7 +2312,7 @@ function earlyMoneyDecisions(r: Random): Built {
       variant,
       prompt: `${n}'s bank account has ${dollars(bal)}. ${n} makes a deposit of ${dollars(dep)} and a withdrawal of ${dollars(wd)}. How much is in the account now?`,
       answer: "",
-      hint: "A deposit puts money in, so the balance goes up. A withdrawal takes money out, so the balance goes down. Change the balance one step at a time.",
+      hint: `Start with ${dollars(bal)}. A deposit puts money in, so the balance goes up. A withdrawal takes money out, so the balance goes down. Change the balance one step at a time.`,
       explanation: [
         `The deposit adds ${dep}: ${bal} + ${dep} = ${bal + dep}.`,
         `The withdrawal takes away ${wd}: ${bal + dep} − ${wd} = ${total}.`,
@@ -2401,7 +2416,7 @@ function earlyMoneyDecisions(r: Random): Built {
     variant,
     prompt: `${n} makes one ${recipe.item} and buys ${listed}. How much does it cost ${n} to make the ${recipe.item}?`,
     answer: "",
-    hint: `For each kind of part, find its cost: the number of parts times the cost of one. Then add the costs of all the parts.`,
+    hint: `For each kind of part, find its cost: the number of parts times the cost of one, such as ${first[2]} × ${first[3]}¢ for the ${first[1]}. Then add the costs of all the parts.`,
     explanation: [
       ...recipe.parts.map(
         ([one, many, c, e]) =>

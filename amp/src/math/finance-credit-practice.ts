@@ -32,7 +32,7 @@ export const interestCompareYearsTemplate = meta(
   "exponential-models",
   "9–12",
   0.05,
-  "Compare a simple-interest account with a compound-interest account over several years: the gap after t years, which account holds more, a balance table, and the interest earned in one year, in exact cents.",
+  "Compare a simple-interest account with a compound-interest account over several years: the gap after $t$ years, which account holds more, a balance table, and the interest earned in one year, in exact cents.",
 );
 export const loanTotalCostTemplate = meta(
   "loan-total-cost",
@@ -1079,7 +1079,7 @@ export function creditCostConceptsCase(seed: string): FinanceCase {
             prompt: `A credit card charges ${pctText(monthly)} of the balance each month. The APR, the annual percentage rate, is the monthly rate times 12 months. What is this card's APR?`,
             hint: `The rate ${pctText(monthly)} is for one month. A year has 12 months, so multiply the monthly rate by 12.`,
             explanation: [
-              `APR = monthly rate × 12 = ${pctText(monthly)} × 12 = ${pctText(apr)}.`,
+              `APR is the monthly rate × 12: ${pctText(monthly)} × 12 = ${pctText(apr)}.`,
               `Check: twelve months of ${pctText(monthly)} add up to ${pctText(apr)} a year.`,
             ],
             correct: pctText(apr),
@@ -1597,7 +1597,7 @@ export function interestTableTypeCase(seed: string): FinanceCase {
       value: int3,
       problem: finish(m, seed, r, {
         prompt: `Both accounts started with ${usd(Pc)} and earn the same yearly rate; nothing is added or withdrawn. One account pays simple interest and one pays compound interest. The table shows year-end balances in dollars. How much interest does the compound-interest account earn during year 3?\n${table}`,
-        hint: `First decide which account is compound: its yearly increases are not all equal. Then subtract its year 2 balance from its year 3 balance.`,
+        hint: `First decide which account is compound: its yearly increases are not all equal. Then subtract its year 2 balance from its year 3 balance. The starting ${usd(Pc)} is not interest.`,
         explanation: [
           `Account ${simpName} grows by ${usd(I)} every year (simple). Account ${compName} is the compound account.`,
           `Interest during year 3 = balance at the end of year 3 − balance at the end of year 2 = ${usd(C[3]!)} − ${usd(C[2]!)} = ${usd(int3)}.`,

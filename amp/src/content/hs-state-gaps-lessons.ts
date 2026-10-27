@@ -281,7 +281,7 @@ export const hsStateGapLessons: Lesson[] = [
     sections: [
       {
         stage: "intuition",
-        title: "If $P$, then $Q$ and its relatives",
+        title: "A conditional and its related statements",
         paragraphs: [
           "A conditional has a hypothesis $P$ after “if” and a conclusion $Q$ after “then”. Swapping them gives the converse. Negating both gives the inverse. Doing both gives the contrapositive. A statement is true or false, and these related statements can have different truth values.",
         ],

@@ -9,8 +9,8 @@ const exporter = fileURLToPath(
 const oracle = fileURLToPath(
   new URL("../scripts/independent-math-review.py", import.meta.url),
 );
-// The full inventory export exceeds 32 MiB; the cap only bounds child output.
-const maxBuffer = 256 * 1024 * 1024;
+// The full inventory export exceeds 256 MiB; the cap only bounds child output.
+const maxBuffer = 1024 * 1024 * 1024;
 function review(input: string) {
   return spawnSync("python3", [oracle], {
     cwd: root,

@@ -20,8 +20,8 @@ const NAMING = /\$\\pi\$ \(pi\)/g;
 export const ALLOWED: readonly [RegExp, string][] = [
   [/\b(?:e\.g\.|i\.e\.|a\.m\.|p\.m\.)/g, "Latin abbreviations are prose"],
   [
-    /\b(?:[LTUV]-shaped?|[LTU] shapes?|T-shirts?|U-turns?|X-rays?)\b|\b[LT]-(?= or\b)|\b(?:an|the) L\b(?! =)/g,
-    "a letter that names a shape (an L-shaped face), not a quantity",
+    /\b(?:[LTUV]-shaped?|[LTU] shapes?|T-shirts?|T-charts?|U-turns?|X-rays?)\b|\b[LT]-(?= or\b)|\b(?:an|the) L\b(?! =)/g,
+    "a letter that names a shape (an L-shaped face) or a chart (T-chart), not a quantity",
   ],
   [
     /\bletters [A-Z] through [A-Z]\b/g,

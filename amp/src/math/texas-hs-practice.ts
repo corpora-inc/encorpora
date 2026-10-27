@@ -139,14 +139,14 @@ export const compositionOrderTemplate = make(
   "Does the order of composition matter?",
   "function-composition",
   0.4,
-  "Compare f(g(x)) with g(f(x)) for given functions and decide whether they are equal.",
+  "Compare $f(g(x))$ with $g(f(x))$ for given functions and decide whether they are equal.",
 );
 export const oneSidedBehaviorTemplate = make(
   "one-sided-behavior-choice",
   "Behavior on each side of a discontinuity",
   "rational-function-behavior",
   0.55,
-  "Describe what f(x) approaches from the left and from the right of a vertical asymptote, a hole or a jump.",
+  "Describe what $f(x)$ approaches from the left and from the right of a vertical asymptote, a hole or a jump.",
 );
 export const parametricRectangularTemplate = make(
   "parametric-rectangular-convert",
@@ -984,7 +984,7 @@ export function systemEquationChoiceCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "system-from-counts",
       prompt: `A theater sold ${total} tickets for ${money} dollars. Adult tickets cost ${adult} dollars and child tickets cost ${child} dollars. Let $x$ be the number of adult tickets and $y$ the number of child tickets. Which system models the sales?`,
-      hint: `Write one equation for the number of tickets and one for the money. In the money equation each ticket count is multiplied by that ticket's price.`,
+      hint: `Write one equation for the ${total} tickets and one for the ${money} dollars. In the money equation each ticket count is multiplied by that ticket's price, ${adult} dollars or ${child} dollars.`,
       explanation: [
         `The tickets sold add to ${total}: $x+y=${total}$.`,
         `The money from adult tickets is ${adult} dollars times $x$ and from child tickets is ${child} dollars times $y$, totaling ${money}: $${adult}x+${child}y=${money}$.`,
@@ -1202,7 +1202,7 @@ export function graphEstimateSystemCase(seed: string): TexasHsCase {
     variant: half ? "crossing-between-gridlines" : "crossing-on-gridlines",
     scene,
     prompt: `The graph shows the ${ctx.thing} $y$ of ${ctx.a} and ${ctx.b} after $x$ ${ctx.unit}. Which ordered pair $(x, y)$ best estimates when the two ${ctx.t === "cost" ? "costs are" : "balances are"} equal and what that amount is?`,
-    hint: `The two amounts are equal where the lines cross. Find that crossing on the grid, then read its $x$ value on the horizontal axis and its $y$ value on the vertical axis.`,
+    hint: `The two ${ctx.t === "cost" ? "costs" : "balances"} are equal where the lines for ${ctx.a} and ${ctx.b} cross. Find that crossing on the grid, then read its $x$ value on the horizontal axis and its $y$ value on the vertical axis.`,
     explanation: [
       `The lines cross at one point, and there both ${ctx.t === "cost" ? "costs" : "balances"} are equal.`,
       half
@@ -1534,7 +1534,7 @@ export function rationalEquationFormulateCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "work-together",
       prompt: `One ${worker[0]} ${worker[1]} a ${worker[2]} in ${a} hours working alone. A second ${worker[0]} does the same job in ${b} hours working alone. Working together they take $x$ hours. Which equation models this?`,
-      hint: `Each worker's rate is the part of the job done in one hour, which is 1 divided by the hours alone. Together the rates add to the rate for the whole team, $\\frac{1}{x}$.`,
+      hint: `Each worker's rate is the part of the job done in one hour, which is 1 divided by the hours alone, ${a} or ${b}. Together the rates add to the rate for the whole team, $\\frac{1}{x}$.`,
       explanation: [
         `The first ${worker[0]} does $\\frac{1}{${a}}$ of the job per hour and the second does $\\frac{1}{${b}}$ of the job per hour.`,
         `Together they do $\\frac{1}{x}$ of the job per hour.`,
@@ -1572,7 +1572,7 @@ export function rationalEquationFormulateCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "current-speed",
       prompt: `A boat travels ${dd} miles downstream in the same time it takes to travel ${du} miles upstream. The current flows at ${cur} miles per hour. Let $x$ be the boat's speed in still water, in miles per hour. Which equation models this?`,
-      hint: `Time equals distance divided by speed. The current adds to the boat's speed downstream and subtracts from it upstream. The two times are equal.`,
+      hint: `Time equals distance divided by speed: ${dd} miles downstream and ${du} miles upstream. The current of ${cur} miles per hour adds to the boat's speed downstream and subtracts from it upstream. The two times are equal.`,
       explanation: [
         `Downstream the speed is $x+${cur}$, so the time is $\\frac{${dd}}{x+${cur}}$. Upstream the speed is $x-${cur}$, so the time is $\\frac{${du}}{x-${cur}}$.`,
         `The times are equal.`,
@@ -1849,7 +1849,7 @@ export function transformationCompositionCase(seed: string): TexasHsCase {
       },
       {
         label: label(apply(p, center, rigid.mistake)),
-        feedback: `The motion "${rigid.words.replace(/\$/g, "")}" sends each point to a different place than this. Re-check which way it moves or reflects the point.`,
+        feedback: `The motion "${rigid.words}" sends each point to a different place than this. Re-check which way it moves or reflects the point.`,
       },
       {
         label: label(dilateFirst ? rigid.apply(p) : dilate(p, center, k)),
@@ -2206,7 +2206,7 @@ export function regularPolygonAreaCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "hexagon-apothem",
       prompt: `A regular hexagon has side length ${s} cm. What is its apothem, the distance from the center to the midpoint of a side?`,
-      hint: `Draw the center to two neighboring vertices. That triangle is equilateral. The apothem is its height, which splits the triangle into two $30^\\circ$-$60^\\circ$-$90^\\circ$ triangles.`,
+      hint: `Draw the center to two neighboring vertices of the hexagon with side ${s} cm. That triangle is equilateral with side ${s} cm. The apothem is its height, which splits the triangle into two $30^\\circ$-$60^\\circ$-$90^\\circ$ triangles.`,
       explanation: [
         `The center and two neighboring vertices form an equilateral triangle with side ${s} cm.`,
         `The apothem is its height. It splits the triangle into two $30^\\circ$-$60^\\circ$-$90^\\circ$ triangles with short leg ${t} (half the side) and hypotenuse ${s}.`,
@@ -2234,7 +2234,7 @@ export function regularPolygonAreaCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "square-from-apothem",
       prompt: `A square has an apothem of ${a} cm. What is its area in square centimeters?`,
-      hint: `The apothem of a square goes from the center to the midpoint of a side. Use it to find the side length, then the perimeter, then $A=\\tfrac12ap$.`,
+      hint: `The apothem of ${a} cm goes from the center to the midpoint of a side. Use it to find the side length, then the perimeter, then $A=\\tfrac12ap$.`,
       explanation: [
         `The apothem is half the side length, so the side is $2\\times${a}=${2 * a}$ cm.`,
         `The perimeter is $4\\times${2 * a}=${8 * a}$ cm.`,
@@ -2303,7 +2303,7 @@ export function regularPolygonAreaCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "decimal-polygon-area",
       prompt: `A regular ${name} has side length ${side} cm and an apothem of ${decimal(apothemH)} cm, rounded to the nearest hundredth. Use the rounded apothem to find the area in square centimeters.`,
-      hint: `The perimeter of a regular ${name} is ${n} times its side. Then use $A=\\tfrac12ap$ with the given apothem.`,
+      hint: `The perimeter of a regular ${name} with side ${side} cm is ${n} times its side. Then use $A=\\tfrac12ap$ with the given apothem.`,
       explanation: [
         `The perimeter is $${n}\\times${side}=${perimeter}$ cm.`,
         `$A=\\tfrac12ap=\\tfrac12(${decimal(apothemH)})(${perimeter})$.`,
@@ -2328,7 +2328,7 @@ export function regularPolygonAreaCase(seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: "missing-side-from-area",
     prompt: `A regular ${name} has an apothem of ${decimal(apothemH)} cm and an area of ${areaText} square centimeters. What is the length of one side in centimeters?`,
-    hint: `The area is $\\tfrac12ap$, so the perimeter is $\\dfrac{2A}{a}$. A regular ${name} has ${n} equal sides.`,
+    hint: `Put the area ${areaText} and the apothem ${decimal(apothemH)} into $A=\\tfrac12ap$ and solve for the perimeter $p$. The perimeter is shared by the equal sides of a regular ${name}.`,
     explanation: [
       `Solve $A=\\tfrac12ap$ for the perimeter: $p=\\dfrac{2A}{a}=\\dfrac{2(${areaText})}{${decimal(apothemH)}}=${perimeter}$ cm.`,
       `A regular ${name} has ${n} equal sides, so one side is $${perimeter}\\div${n}$.`,
@@ -2375,7 +2375,7 @@ export function curvedSolidSurfaceCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "cone-given-slant",
       prompt: `A closed cone has a base radius of ${rad} cm and a slant height of ${slant} cm. What is its total surface area, including the base?`,
-      hint: `The surface is the circular base, $\\pi r^2$, plus the curved side, $\\pi r\\ell$, where $\\ell$ is the slant height.`,
+      hint: `The surface is the circular base, $\\pi r^2$ with $r=${rad}$, plus the curved side, $\\pi r\\ell$, where $\\ell=${slant}$ is the slant height.`,
       explanation: [
         `The base is a circle: $\\pi r^2=\\pi(${rad})^2=${rad * rad}\\pi$.`,
         `The curved side is $\\pi r\\ell=\\pi(${rad})(${slant})=${rad * slant}\\pi$.`,
@@ -2401,7 +2401,7 @@ export function curvedSolidSurfaceCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "cone-given-height",
       prompt: `A closed cone has a base radius of ${rad} cm and a height of ${h} cm. What is its total surface area, including the base?`,
-      hint: `The side formula needs the slant height, the distance along the surface from the apex to the base edge. Find it from the radius and the height with the Pythagorean theorem.`,
+      hint: `The side formula needs the slant height, the distance along the surface from the apex to the base edge. Find it from the radius ${rad} cm and the height ${h} cm with the Pythagorean theorem.`,
       explanation: [
         `The slant height $\\ell$ is the hypotenuse of a right triangle with legs ${rad} and ${h}: $\\ell=\\sqrt{${rad}^2+${h}^2}=${slant}$ cm.`,
         `Base: $\\pi(${rad})^2=${rad * rad}\\pi$. Curved side: $\\pi(${rad})(${slant})=${rad * slant}\\pi$.`,
@@ -2429,7 +2429,7 @@ export function curvedSolidSurfaceCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "cylinder-with-hemisphere",
       prompt: `A solid is a cylinder with radius ${R} cm and height ${H} cm, with a hemisphere of radius ${R} cm attached to its top face. The bottom face is exposed. What is the surface area of the solid, counting only the outside surfaces?`,
-      hint: `List the exposed surfaces: the bottom circle, the curved side of the cylinder, and the curved surface of the hemisphere. The cylinder's top is covered by the hemisphere.`,
+      hint: `List the exposed surfaces for radius ${R} cm and height ${H} cm: the bottom circle, the curved side of the cylinder, and the curved surface of the hemisphere. The cylinder's top is covered by the hemisphere.`,
       explanation: [
         `Bottom circle: $\\pi r^2=${R * R}\\pi$. Cylinder side: $2\\pi rh=2\\pi(${R})(${H})=${2 * R * H}\\pi$.`,
         `Hemisphere: half of a sphere's $4\\pi r^2$, which is $2\\pi r^2=${2 * R * R}\\pi$. The cylinder's top face is covered, so it is not counted.`,
@@ -2455,7 +2455,7 @@ export function curvedSolidSurfaceCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "cone-on-cylinder",
       prompt: `A silo is a cylinder of radius ${rad} cm and height ${H} cm with a cone of slant height ${slant} cm and the same radius on top. The bottom of the cylinder is a flat base. What is the surface area of the silo, counting only the outside surfaces?`,
-      hint: `The exposed surfaces are the flat bottom, the curved side of the cylinder and the curved side of the cone. The cone's base and the cylinder's top face are joined and not exposed.`,
+      hint: `The exposed surfaces are the flat bottom of radius ${rad} cm, the curved side of the cylinder of height ${H} cm and the curved side of the cone of slant height ${slant} cm. The cone's base and the cylinder's top face are joined and not exposed.`,
       explanation: [
         `Bottom circle: $\\pi r^2=${rad * rad}\\pi$. Cylinder side: $2\\pi rh=2\\pi(${rad})(${H})=${2 * rad * H}\\pi$.`,
         `Cone side: $\\pi r\\ell=\\pi(${rad})(${slant})=${rad * slant}\\pi$. The two joined circles are inside the solid.`,
@@ -2480,7 +2480,7 @@ export function curvedSolidSurfaceCase(seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: "cone-with-hemisphere",
     prompt: `An ice-cream cone is a cone of base radius ${rad} cm and slant height ${slant} cm topped with a hemisphere of radius ${rad} cm that sits over the open end. What is the surface area of the outside, counting the cone's side and the hemisphere's curved surface?`,
-    hint: `The cone's circular base is covered by the hemisphere's flat face, so only two curved surfaces are on the outside: the cone's side and the hemisphere.`,
+    hint: `The cone's circular base is covered by the hemisphere's flat face, so only two curved surfaces are on the outside: the cone's side, with slant height ${slant} cm, and the hemisphere, with radius ${rad} cm.`,
     explanation: [
       `Cone side: $\\pi r\\ell=\\pi(${rad})(${slant})=${rad * slant}\\pi$.`,
       `Hemisphere: half of $4\\pi r^2$, which is $2\\pi r^2=${2 * rad * rad}\\pi$.`,
@@ -2530,7 +2530,7 @@ export function areaProbabilityCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: inside ? "circle-in-square" : "outside-the-circle",
       prompt: `A dart lands at a random point of a square target with side ${side} cm. The target has a shaded circle of radius ${rad} cm entirely inside the square. What is the probability that the dart lands ${inside ? "in the circle" : "outside the circle"}? Give the exact probability.`,
-      hint: `The probability is the favorable area divided by the whole area. ${inside ? "The favorable region is the circle." : "The favorable region is the square without the circle."} Find each area first.`,
+      hint: `The probability is the favorable area divided by the whole area, the square of side ${side} cm. ${inside ? "The favorable region is the circle." : "The favorable region is the square without the circle."} Find each area first.`,
       explanation: [
         `The square has area $${side}^2=${side * side}$ square centimeters. The circle has area $\\pi(${rad})^2=${rad * rad === 1 ? "" : rad * rad}\\pi$.`,
         inside
@@ -2583,7 +2583,7 @@ export function areaProbabilityCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "rectangle-in-rectangle",
       prompt: `A point is chosen at random on a ${L} by ${W} rectangular board. A shaded ${l} by ${w} rectangle lies entirely on the board. What is the probability that the point is in the shaded rectangle? Give a fraction in simplest form.`,
-      hint: `The probability is the shaded area divided by the board's area. Multiply length by width for each rectangle.`,
+      hint: `The probability is the shaded area divided by the board's area. Multiply length by width for the ${l} by ${w} rectangle and for the ${L} by ${W} board.`,
       explanation: [
         `The board's area is $${L}\\times${W}=${L * W}$. The shaded area is $${l}\\times${w}=${l * w}$.`,
         `The probability is $\\dfrac{${l * w}}{${L * W}}$, which simplifies to $${p}$.`,
@@ -2616,7 +2616,7 @@ export function areaProbabilityCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "ring-region",
       prompt: `A circular target has radius ${R} cm. Its center is a circle of radius ${rad} cm, and the ring around it is shaded. A dart lands at a random point on the target. What is the probability that it lands in the shaded ring? Give a fraction in simplest form.`,
-      hint: `The ring's area is the whole target's area minus the center circle's area. Both areas contain $\\pi$, which cancels in the ratio.`,
+      hint: `The ring's area is the whole target's area (radius ${R} cm) minus the center circle's area (radius ${rad} cm). Both areas contain $\\pi$, which cancels in the ratio.`,
       explanation: [
         `The target's area is $\\pi(${R})^2=${R * R}\\pi$. The center circle's area is $\\pi(${rad})^2=${rad * rad}\\pi$.`,
         `The ring's area is $${R * R}\\pi-${rad * rad}\\pi=${R * R - rad * rad}\\pi$.`,
@@ -2652,7 +2652,7 @@ export function areaProbabilityCase(seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: "triangle-in-rectangle",
     prompt: `A point is chosen at random on a rectangle that is ${W} cm wide and ${Lg} cm tall. A shaded triangle inside the rectangle has base ${b} cm and height ${hh} cm. What is the probability that the point is in the triangle? Give a fraction in simplest form.`,
-    hint: `The triangle's area is half of base times height. Divide it by the rectangle's area, width times height.`,
+    hint: `The triangle's area is half of its base ${b} cm times its height ${hh} cm. Divide it by the rectangle's area, ${W} cm times ${Lg} cm.`,
     explanation: [
       `The rectangle's area is $${W}\\times${Lg}=${W * Lg}$. The triangle's area is $\\tfrac12(${b})(${hh})=${area2 / 2}$.`,
       `$P=\\dfrac{${area2 / 2}}{${W * Lg}}$.`,
@@ -2752,7 +2752,7 @@ export function compositionOrderCase(seed: string): TexasHsCase {
   if (variant <= 1 && commute) return compositionOrderCase(`${seed}~`);
   const E = (c: number[]) => polyText(c);
   const prompt = `Let $f(x)=${fText}$ and $g(x)=${gText}$. Which statement about $f(g(x))$ and $g(f(x))$ is true?`;
-  const hint = `For $f(g(x))$, replace every $x$ in $f$ with the whole expression $g(x)$. For $g(f(x))$, replace every $x$ in $g$ with $f(x)$. Simplify both and compare.`;
+  const hint = `For $f(g(x))$, replace every $x$ in $f(x)=${fText}$ with the whole expression $g(x)=${gText}$. For $g(f(x))$, replace every $x$ in $g$ with $f(x)$. Simplify both and compare.`;
   const prod = polyMul(f, g);
   const sum = polyAdd(f, g);
   if (!commute) {
@@ -2806,7 +2806,7 @@ export function compositionOrderCase(seed: string): TexasHsCase {
       },
       {
         label: `$f(g(x))=${shown}$ and $g(f(x))=${E(prod)}$, so the order matters`,
-        feedback: `$g(f(x))$ substitutes $f(x)$ into $g$; it is not the product $f(x)g(x)$. Computing it by substitution gives ${shown}.`,
+        feedback: `$g(f(x))$ substitutes $f(x)$ into $g$; it is not the product $f(x)g(x)$. Computing it by substitution gives $${shown}$.`,
       },
       {
         label: `$f(g(x))=g(f(x))=${E(prod)}$, so the order does not matter`,
@@ -2984,7 +2984,7 @@ export function parametricRectangularCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "linear-eliminate",
       prompt: `A point moves so that $x=${ax}$ and $y=${cy}$, where $t$ can be any real number. Which rectangular equation describes its path?`,
-      hint: `Solve the equation for $x$ to get $t$, then substitute that expression for $t$ into the equation for $y$. Simplify to $y=mx+b$.`,
+      hint: `Solve the equation $x=${ax}$ for $t$, then substitute that expression for $t$ into $y=${cy}$. Simplify to $y=mx+b$.`,
       explanation: [
         `Solve $x=${ax}$ for $t$: $t=${tExpr}$.`,
         `Substitute into $y=${cy}$: $y=${c === 1 ? "" : c === -1 ? "-" : c}\\cdot${a === 1 || a === -1 ? `\\left(${tExpr}\\right)` : tExpr} ${plus(d)}$. The factor ${c} and the divisor ${a} combine to ${s}, so $y=${s}(x ${minus(b)}) ${plus(d)}$.`,
@@ -3150,7 +3150,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "angular-speed-from-rpm",
       prompt: `A ${wheel} turns at ${n} revolutions per minute. What is its angular speed in radians per minute?`,
-      hint: `One full revolution is an angle of $2\\pi$ radians. Multiply the number of revolutions per minute by the radians in one revolution.`,
+      hint: `One full revolution is an angle of $2\\pi$ radians. Multiply the ${n} revolutions per minute by the radians in one revolution.`,
       explanation: [
         `One revolution is $2\\pi$ radians.`,
         `In one minute the ${wheel} turns ${n} revolutions, which is $${n}\\times2\\pi=${2 * n}\\pi$ radians.`,
@@ -3179,7 +3179,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "linear-speed-of-rim",
       prompt: `A ${wheel} with radius ${rad} cm turns at ${n} revolutions per minute. How fast, in centimeters per minute, does a point on its rim move?`,
-      hint: `In one revolution a point on the rim travels once around the circle, a distance of $2\\pi r$. Multiply that distance by the revolutions per minute.`,
+      hint: `In one revolution a point on the rim travels once around the circle, a distance of $2\\pi r$, with $r=${rad}$ cm. Multiply that distance by the ${n} revolutions per minute.`,
       explanation: [
         `In one revolution a point on the rim travels the circumference, $2\\pi r=2\\pi(${rad})=${2 * rad}\\pi$ cm.`,
         `It makes ${n} revolutions each minute, so it travels $${n}\\times${2 * rad}\\pi=${2 * rad * n}\\pi$ cm in a minute.`,
@@ -3210,7 +3210,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "angular-speed-from-linear",
       prompt: `A point on the rim of a ${wheel} with radius ${rad} cm moves at ${v} centimeters per second. What is the ${wheel}'s angular speed in radians per second?`,
-      hint: `Arc length is radius times angle, so speed along the rim is radius times angular speed. Divide the rim speed by the radius.`,
+      hint: `Arc length is radius times angle, so the rim speed ${v} cm per second is the radius ${rad} cm times the angular speed. Divide the rim speed by the radius.`,
       explanation: [
         `For a point at distance $r$ from the center, $v=r\\omega$, where $\\omega$ is angular speed in radians per second.`,
         `So $\\omega=\\dfrac{v}{r}=\\dfrac{${v}}{${rad}}=${w}$.`,
@@ -3240,7 +3240,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "distance-in-time",
       prompt: `A point on the rim of a ${wheel} with radius ${rad} cm turns at an angular speed of ${w} radians per second. How far along the rim, in centimeters, does the point travel in ${t} seconds?`,
-      hint: `First find the angle the ${wheel} turns in ${t} seconds. Then use arc length equals radius times angle in radians.`,
+      hint: `First find the angle the ${wheel} turns in ${t} seconds at ${w} radians per second. Then use arc length equals radius times angle in radians.`,
       explanation: [
         `In ${t} seconds the ${wheel} turns through $${w}\\times${t}=${w * t}$ radians.`,
         `The arc length is $s=r\\theta=${rad}\\times${w * t}=${rad * w * t}$ cm.`,
@@ -3267,7 +3267,7 @@ export function angularVelocityCase(seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: "rpm-to-radians-per-second",
     prompt: `A fan turns at ${n} revolutions per minute. What is its angular speed in radians per second?`,
-    hint: `Convert in two steps: revolutions to radians, using $2\\pi$ radians per revolution, and minutes to seconds, using 60 seconds per minute.`,
+    hint: `Convert ${n} revolutions per minute in two steps: revolutions to radians, using $2\\pi$ radians per revolution, and minutes to seconds, using 60 seconds per minute.`,
     explanation: [
       `Each revolution is $2\\pi$ radians, so ${n} revolutions per minute is $${2 * n}\\pi$ radians per minute.`,
       `There are 60 seconds in a minute, so divide by 60: $\\dfrac{${2 * n}\\pi}{60}=${lab(`${fracTex(2 * n, 60)}`).slice(1, -1)}\\pi$.`,
@@ -3324,7 +3324,7 @@ export function referenceAngleCase(seed: string): TexasHsCase {
       return finish(meta, seed, r, {
         variant: "quadrant-radians",
         prompt: `In which quadrant does the terminal side of the angle $\\theta=${angle}$ radians lie when the angle is in standard position?`,
-        hint: `Add or subtract full turns of $2\\pi$ until the angle is between 0 and $2\\pi$. Then compare it with $\\frac{\\pi}{2}$, $\\pi$ and $\\frac{3\\pi}{2}$.`,
+        hint: `Add or subtract full turns of $2\\pi$ from $${angle}$ until the angle is between 0 and $2\\pi$. Then compare it with $\\frac{\\pi}{2}$, $\\pi$ and $\\frac{3\\pi}{2}$.`,
         explanation: [
           `Standard position puts the vertex at the origin and the initial side on the positive $x$-axis. Positive angles turn counterclockwise and negative angles clockwise.`,
           `Adding or subtracting multiples of $2\\pi$ gives the coterminal angle $${piTwelfths(k0)}$ in $[0, 2\\pi)$.`,
@@ -3372,7 +3372,7 @@ export function referenceAngleCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "reference-radians",
       prompt: `What is the reference angle of $\\theta=${angle}$ radians, the acute angle between the terminal side and the $x$-axis?`,
-      hint: `Add or subtract full turns of $2\\pi$ to get an angle between 0 and $2\\pi$. Find its quadrant, then measure how far the terminal side is from the $x$-axis.`,
+      hint: `Add or subtract full turns of $2\\pi$ from $${angle}$ to get an angle between 0 and $2\\pi$. Find its quadrant, then measure how far the terminal side is from the $x$-axis.`,
       explanation: [
         k === k0
           ? `The angle $${piTwelfths(k)}$ is already between 0 and $2\\pi$.`
@@ -3402,7 +3402,7 @@ export function referenceAngleCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "quadrant-degrees",
       prompt: `In which quadrant does the terminal side of an angle of $${degTex(theta)}$ in standard position lie?`,
-      hint: `Add or subtract full turns of $360^\\circ$ until the angle is between $0^\\circ$ and $360^\\circ$. Then compare it with $90^\\circ$, $180^\\circ$ and $270^\\circ$.`,
+      hint: `Add or subtract full turns of $360^\\circ$ from $${degTex(theta)}$ until the angle is between $0^\\circ$ and $360^\\circ$. Then compare it with $90^\\circ$, $180^\\circ$ and $270^\\circ$.`,
       explanation: [
         `Standard position puts the vertex at the origin and the initial side on the positive $x$-axis. Positive angles turn counterclockwise and negative angles clockwise.`,
         `Adding or subtracting multiples of $360^\\circ$ gives the coterminal angle $${degTex(t0)}$ in $[0^\\circ, 360^\\circ)$.`,
@@ -3487,7 +3487,7 @@ export function referenceAngleCase(seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: "reference-degrees",
     prompt: `What is the reference angle of $${degTex(theta)}$, the acute angle between the terminal side and the $x$-axis, when the angle is in standard position?`,
-    hint: `Add or subtract full turns of $360^\\circ$ to get an angle between $0^\\circ$ and $360^\\circ$. Find its quadrant, then measure how far the terminal side is from the $x$-axis.`,
+    hint: `Add or subtract full turns of $360^\\circ$ from $${degTex(theta)}$ to get an angle between $0^\\circ$ and $360^\\circ$. Find its quadrant, then measure how far the terminal side is from the $x$-axis.`,
     explanation: [
       theta === t0
         ? `$${degTex(theta)}$ is already between $0^\\circ$ and $360^\\circ$.`
@@ -3529,7 +3529,7 @@ export function bearingTrigCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "bearing-from-legs",
       prompt: `A hiker starts at a trailhead, walks ${ct(nsLeg)} km due ${north ? "north" : "south"}, and then ${ct(ewLeg)} km due ${east ? "east" : "west"}. A three-digit bearing is the angle measured clockwise from north. What is the bearing of the hiker from the trailhead?`,
-      hint: `Sketch the two legs as a right triangle. The angle at the trailhead between the north-south line and the line to the hiker has tangent equal to the east-west leg divided by the north-south leg. Then convert that angle to a clockwise-from-north bearing.`,
+      hint: `Sketch the two legs, ${ct(nsLeg)} km and ${ct(ewLeg)} km, as a right triangle. The angle at the trailhead between the north-south line and the line to the hiker has tangent equal to the east-west leg divided by the north-south leg. Then convert that angle to a clockwise-from-north bearing.`,
       explanation: [
         `The two legs are perpendicular. The angle $\\alpha$ between the north-south line and the hiker's direction satisfies $\\tan\\alpha=\\dfrac{${compTex(ewLeg)}}{${compTex(nsLeg)}}=${base === 30 ? "\\dfrac{1}{\\sqrt3}" : "\\sqrt3"}$, so $\\alpha=${degTex(base)}$.`,
         `The hiker is ${dirs} of the trailhead, so the bearing is ${north ? (east ? `$${degTex(base)}$ clockwise from north` : `$360^\\circ-${degTex(base)}$`) : east ? `$180^\\circ-${degTex(base)}$` : `$180^\\circ+${degTex(base)}$`}.`,
@@ -3572,8 +3572,8 @@ export function bearingTrigCase(seed: string): TexasHsCase {
     const word = askNS ? (north ? "north" : "south") : east ? "east" : "west";
     return finish(meta, seed, r, {
       variant: "compass-bearing-component",
-      prompt: `A plane flies ${dist} km on a bearing of ${north ? "N" : "S"} $${degTex(base)}$ ${east ? "E" : "W"}, which means $${degTex(base)}$ from ${north ? "north" : "south"} toward ${east ? "east" : "west"}. How many kilometers ${word} of its starting point is it?`,
-      hint: `Draw a right triangle with the flight path as the hypotenuse and a ${north ? "north" : "south"}-pointing leg along the ${north ? "N" : "S"} direction. The $${degTex(base)}$ angle sits between that leg and the path. Decide whether the leg you need is adjacent to or opposite the $${degTex(base)}$ angle.`,
+      prompt: `A plane flies ${dist} km on a bearing of $\\mathrm{${north ? "N" : "S"}}\\,${degTex(base)}\\,\\mathrm{${east ? "E" : "W"}}$, which means $${degTex(base)}$ from ${north ? "north" : "south"} toward ${east ? "east" : "west"}. How many kilometers ${word} of its starting point is it?`,
+      hint: `Draw a right triangle with the flight path as the hypotenuse and a ${north ? "north" : "south"}-pointing leg along the ${north ? "north" : "south"} line. The $${degTex(base)}$ angle sits between that leg and the path. Decide whether the leg you need is adjacent to or opposite the $${degTex(base)}$ angle.`,
       explanation: [
         `The path is the hypotenuse, ${dist} km. The $${degTex(base)}$ angle is between the ${north ? "north" : "south"} direction and the path.`,
         askNS
@@ -3783,7 +3783,7 @@ export function sigmaNotationCase(seed: string): TexasHsCase {
   return finish(meta, seed, r, {
     variant: "geometric-series",
     prompt: `Which sigma notation represents the series $${listing}$, which has ${nmax} terms?`,
-    hint: `Each term is the one before multiplied by the same ratio. Find that ratio, then write the $k$th term as the first term times the ratio to a power, and check the first and last terms.`,
+    hint: `Each term of $${listing}$ is the one before multiplied by the same ratio. Find that ratio, then write the $k$th term as the first term times the ratio to a power, and check the first and last terms.`,
     explanation: [
       `The series is geometric with first term ${a1} and ratio ${ratio}: $${t(2)}\\div${t(1)}=${ratio}$.`,
       `The $k$th term is $${a1}\\cdot${rText}^{k-1}$, and there are ${nmax} terms.`,
@@ -3832,7 +3832,7 @@ export function infiniteGeometricCase(seed: string): TexasHsCase {
     return finish(meta, seed, r, {
       variant: "ratio-too-large",
       prompt: `What is the sum of the infinite geometric series $${listing} + \\cdots$?`,
-      hint: `An infinite geometric series has a finite sum only when the absolute value of the ratio is less than 1. Find the ratio by dividing a term by the one before it.`,
+      hint: `An infinite geometric series has a finite sum only when the absolute value of the ratio is less than 1. Find the ratio of $${listing}$ by dividing a term by the one before it.`,
       explanation: [
         `The ratio is $r=${rr}$, because each term is ${rr} times the one before.`,
         `A finite sum requires $|r|<1$. Here $|${rr}|=${Math.abs(rr)}$, which is not less than 1, so the terms do not shrink toward 0.`,
@@ -3949,7 +3949,7 @@ export function infiniteGeometricCase(seed: string): TexasHsCase {
           ? "sigma-starting-at-second-term"
           : "sigma-series",
     prompt,
-    hint: `Find the first term $a$ and the ratio $r$. If $|r|<1$, the sum is $\\dfrac{a}{1-r}$. Check which term the series starts with before choosing $a$.`,
+    hint: `Find the first term $a$ and the ratio $r$; the number ${c} in the series is ${form === 0 ? "the first term" : "the multiplier of the powers"}. If $|r|<1$, the sum is $\\dfrac{a}{1-r}$. Check which term the series starts with before choosing $a$.`,
     explanation: [
       `${startNote} The ratio is $r=${rText}$, and $|r|<1$, so the series has a finite sum.`,
       `The sum is $\\dfrac{a}{1-r}=\\dfrac{${firstValue}}{1-${p < 0 ? `\\left(${rText}\\right)` : rText}}$.`,
@@ -4134,7 +4134,7 @@ export function polynomialInequalityCase(seed: string): TexasHsCase {
             ? "two-roots"
             : "three-roots",
     prompt: `Solve $${expression}${opTex[op]}0$. Write the solution in interval notation.`,
-    hint: `${variant === 3 ? "Factor the expression completely first. " : ""}The expression can change sign only at its zeros, $${roots.join(", ")}$. Test one number in each interval between them, and decide whether the endpoints are included.`,
+    hint: `${variant === 3 ? "Factor the expression completely first. " : ""}The expression can change sign only at its zeros. Find the ${roots.length} zeros of $${expression}$, then test one number in each interval between them and decide whether the endpoints are included.`,
     explanation: [
       `${factorNote}The zeros are $${roots.join(", ")}$. They split the number line into ${roots.length + 1} intervals.`,
       `Testing a number in each interval: ${chart}.`,
@@ -4246,7 +4246,7 @@ export function rationalInequalityCase(seed: string): TexasHsCase {
             ? "two-numerator-factors"
             : "single-fraction",
     prompt: `Solve $\\dfrac{${num}}{${den}}${opTex[op]}0$. Write the solution in interval notation.`,
-    hint: `The fraction can change sign only where the numerator is 0 or the denominator is 0. Mark both kinds of values, test a number in each interval, and remember a value that makes the denominator 0 is never allowed.`,
+    hint: `The fraction can change sign only where the numerator $${num}$ is 0 or the denominator $${den}$ is 0. Mark both kinds of values, test a number in each interval, and remember a value that makes the denominator 0 is never allowed.`,
     explanation: [
       `The numerator is 0 at $${factors
         .filter((f) => f.power > 0)

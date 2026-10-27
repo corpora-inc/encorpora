@@ -293,7 +293,7 @@ export function profitCase(seed: string) {
     draft = {
       prompt: `${biz.seller} has these costs for selling ${biz.items}: ${list}, and ${biz.make} (${wd(unitCost)} for each one made). Which cost is a variable cost, one that grows with the number made?`,
       answer: "",
-      hint: `Imagine making twice as many ${biz.items}. A cost that stays at the same amount is fixed; a cost that doubles is variable. Test each listed cost this way.`,
+      hint: `Imagine making twice as many ${biz.items}. Would the ${wd(amounts[0]!)} for ${biz.fixedTitles[0]!.toLowerCase()} change? A cost that stays at the same amount is fixed; a cost that doubles is variable. Test each listed cost this way.`,
       explanation: [
         `If twice as many are made, the ${biz.fixed.join(", ")} costs stay the same, so they are fixed costs.`,
         `The cost of ${biz.make} is ${wd(unitCost)} for each one, so it doubles when twice as many are made.`,
@@ -399,7 +399,7 @@ const taxKinds = [
       },
       {
         text: "A book costs 20.00 dollars, and the receipt shows 21.60 dollars because of an added percent of the price.",
-        clue: "added percent of the price",
+        clue: "20.00 dollars becomes 21.60 dollars because of an added percent of the price",
       },
     ],
   },
@@ -1322,7 +1322,7 @@ export function netWorthCase(seed: string) {
     draft = {
       prompt: `A person's total assets are ${wd(A)} and net worth is ${wd(net)}. What are the person's total liabilities?`,
       answer: "",
-      hint: `Net worth is assets minus liabilities. Rearrange this for the liabilities: they are the assets minus the net worth.`,
+      hint: `Net worth, ${wd(net)}, is assets, ${wd(A)}, minus liabilities. Rearrange this for the liabilities: they are the assets minus the net worth.`,
       explanation: [
         `Net worth = assets − liabilities, so liabilities = assets − net worth.`,
         `${A} − (${net}) = ${L}. The liabilities are ${ok}.`,
@@ -1382,7 +1382,7 @@ export function netWorthCase(seed: string) {
     draft = {
       prompt: `A person ${e.text}. How does the person's net worth change?`,
       answer: "",
-      hint: `Decide separately what happens to the person's assets and to the person's liabilities. Then compare the two changes, since net worth is assets minus liabilities.`,
+      hint: `Decide separately what happens to the person's assets and to the person's liabilities when ${wd(x)} changes hands. Then compare the two changes, since net worth is assets minus liabilities.`,
       explanation: [e.why, `Net worth: ${ok.toLowerCase()}.`],
       choices: options(
         ok,

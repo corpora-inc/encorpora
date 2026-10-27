@@ -27,9 +27,9 @@ const entries: Entry[] = [
     id: "sat-entry-fn-linear-notation",
     title: "Linear functions in function notation",
     summary:
-      "Read f(a) as the output for input a, then substitute to evaluate, or set f(x) equal to a value and solve for the input.",
+      "Read $f(a)$ as the output for input $a$, then substitute to evaluate, or set $f(x)$ equal to a value and solve for the input.",
     objectives: [
-      "Evaluate a linear function written as f(x) at a given input, including a negative or fractional input.",
+      "Evaluate a linear function written as $f(x)$ at a given input, including a negative or fractional input.",
       "Find the input for a stated output, or the constant term, by writing and solving an equation.",
     ],
     intuition:
@@ -85,7 +85,7 @@ const entries: Entry[] = [
     id: "sat-fn-line-equation-choice",
     title: "Choose a line's equation from its slope and a point",
     summary:
-      "Use y = mx + b: the slope is m, and substituting any point on the line gives the constant b.",
+      "Use $y = mx + b$: the slope is $m$, and substituting any point on the line gives the constant $b$.",
     objectives: [
       "Write the slope-intercept equation of a line from its slope and a point, including a fractional or negative slope.",
       "Translate a constant rate and one later value in context into an equation.",
@@ -119,7 +119,7 @@ const entries: Entry[] = [
       ],
       answer: "$y=-\\frac{2}{3}x+5$",
     },
-    methodTitle: "Find b from the point",
+    methodTitle: "Find the constant from the point",
     methodText: [
       "Rearranged, $b=y-mx$. For a point $(x_0,y_0)$ this is $y_0-mx_0$: subtract the slope term from the $y$-value.",
       "Test the finished equation: substituting the given point should make both sides equal.",
@@ -139,7 +139,7 @@ const entries: Entry[] = [
     summary:
       "Multiply each count by its own rate or price, add the products, and set the sum equal to the total.",
     objectives: [
-      "Write ax + by = c for a total made of two kinds of items, trips or scores.",
+      "Write $ax + by = c$ for a total made of two kinds of items, trips or scores.",
       "Choose the equation of a full load from its two extreme cases by testing points.",
     ],
     intuition:

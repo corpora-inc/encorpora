@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readdirSync, readFileSync } from "node:fs";
-import { familyFiles, renderFamilyIndex } from "../scripts/gen-family-index";
+import {
+  familyFiles,
+  familyIndexLines,
+  renderFamilyIndex,
+} from "../scripts/gen-family-index";
 import {
   aggregateFamilies,
   withFamilyEntries,
@@ -22,11 +26,11 @@ import type { GeneratedProblem } from "../src/math/contracts";
 
 const directory = new URL("../src/families/", import.meta.url);
 
-test("the committed family index lists every descriptor file, one sorted line each", () => {
+test("the committed family index lists exactly the descriptor files, in any order", () => {
   const ids = familyFiles(readdirSync(directory));
-  assert.equal(
-    readFileSync(new URL("index.ts", directory), "utf8"),
-    renderFamilyIndex(ids),
+  assert.deepEqual(
+    familyIndexLines(readFileSync(new URL("index.ts", directory), "utf8")),
+    familyIndexLines(renderFamilyIndex(ids)),
     "run npm run families:index",
   );
   assert.deepEqual(
@@ -181,4 +185,19 @@ test("the index renderer is deterministic and rejects ambiguous file names", () 
   );
   assert.throws(() => renderFamilyIndex(["Bad"]), /kebab-case/);
   assert.throws(() => renderFamilyIndex(["a-b1", "a-b-1"]), /share aB1/);
+});
+
+test("index line order does not matter and the registry sorts by id", () => {
+  const ids = familyFiles(readdirSync(directory));
+  const shuffled = renderFamilyIndex([...ids].reverse());
+  assert.notEqual(shuffled, renderFamilyIndex(ids));
+  assert.deepEqual(
+    familyIndexLines(shuffled),
+    familyIndexLines(renderFamilyIndex(ids)),
+  );
+  const reversed = [...familyRegistry.families].reverse();
+  assert.deepEqual(
+    aggregateFamilies(reversed).families.map((f) => f.id),
+    familyRegistry.families.map((f) => f.id),
+  );
 });

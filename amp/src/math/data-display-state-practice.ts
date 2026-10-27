@@ -837,7 +837,7 @@ export function circleGraphCase(seed: string) {
       },
       ...fillers(c, String),
     ];
-    hint = `${N} ${ctx.who} is the whole, or 100%. Find 1% of ${N}, then multiply by the ${p} percent for ${name}.`;
+    hint = `${N} ${ctx.who} is the whole, or 100%. Read the percent for ${name} from the graph, write it as a fraction out of 100, then take that fraction of ${N}.`;
     explanation = [
       `${p}% means ${p} out of 100, so the count is $${p}\\div100\\times${N}$.`,
       `${N} × ${p} ÷ 100 = ${c}.`,
@@ -1070,7 +1070,7 @@ const scenarios: Record<Display, { text: string; cue: string }[]> = {
   bar: [
     {
       text: "A class counts its pets: 9 dogs, 6 cats, 4 fish and 3 birds. You want to compare how many pets there are of each kind.",
-      cue: "Each kind of pet is a separate category with its own count, and the goal is to compare the counts.",
+      cue: "Each of the 4 kinds of pet is a separate category with its own count, and the goal is to compare the counts.",
     },
     {
       text: "Four bakeries each report how many loaves they sold on Saturday. You want to compare the four totals.",
@@ -1088,11 +1088,11 @@ const scenarios: Record<Display, { text: string; cue: string }[]> = {
   line: [
     {
       text: "A town records its population every ten years from 1950 to 2020. You want to show how the population has changed over those years.",
-      cue: "The measurements are taken at equally spaced times, and the goal is to show how one quantity changes as time passes.",
+      cue: "The measurements are taken at equally spaced times from 1950 to 2020, and the goal is to show how one quantity changes as time passes.",
     },
     {
       text: "A plant's height is measured every week for 12 weeks. You want to show how its height changes from week to week.",
-      cue: "Each height goes with a week, and the goal is to show the change from week to week.",
+      cue: "Each of the 12 heights goes with a week, and the goal is to show the change from week to week.",
     },
     {
       text: "A store records its monthly sales for one year. You want to show whether sales rose or fell through the year.",
@@ -1124,19 +1124,19 @@ const scenarios: Record<Display, { text: string; cue: string }[]> = {
   scatter: [
     {
       text: "For 30 students, you have the hours each studied and the score each earned on a test. You want to see whether more study time goes with higher scores.",
-      cue: "Each student has two numerical measures, and the goal is to see whether they are related.",
+      cue: "Each of the 30 students has two numerical measures, and the goal is to see whether they are related.",
     },
     {
       text: "For 25 cities, you have each city's average winter temperature and its yearly heating cost. You want to see whether colder cities pay more.",
-      cue: "Each city has two numerical measures, and the goal is to see whether one goes with the other.",
+      cue: "Each of the 25 cities has two numerical measures, and the goal is to see whether one goes with the other.",
     },
     {
       text: "For 40 used cars, you have each car's age and its price. You want to see how price relates to age.",
-      cue: "Each car has two numerical measures, and the goal is the relationship between them.",
+      cue: "Each of the 40 cars has two numerical measures, and the goal is the relationship between them.",
     },
     {
       text: "For 20 plants, you have the hours of sunlight each got and its final height. You want to see whether more sunlight goes with taller plants.",
-      cue: "Each plant has two numerical measures, and the goal is to see whether they are related.",
+      cue: "Each of the 20 plants has two numerical measures, and the goal is to see whether they are related.",
     },
   ],
   dotstem: [
@@ -1217,7 +1217,7 @@ export function returnClaimCase(seed: string) {
   const meta = byId("return-claim-check");
   const r = random(meta.id, seed);
   const variant = r(0, 5);
-  const names = ["A", "B"];
+  const names = ["$A$", "$B$"];
   let prompt: string;
   let correct: string;
   let wrong: Wrong[];

@@ -277,7 +277,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
   "tally-and-t-chart": {
     goal: "Read a tally chart to find a count, a difference or a total, and choose the T-chart that organizes a list of answers.",
     intuition:
-      "A tally chart records counts with marks. A T-chart has two columns, one for the name of each choice and one for its count. Tally marks come in groups of five: four lines and one line across them.",
+      "A tally chart records counts with marks. The T-chart has two columns, one for the name of each choice and one for its count. Tally marks come in groups of five: four lines and one line across them.",
     terms: [
       [
         "tally mark",
@@ -285,7 +285,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
       ],
       [
         "T-chart",
-        "A chart with two columns, shaped like the letter T, that lists each choice with its count.",
+        "A chart with two columns and a line down the middle that lists each choice with its count.",
       ],
     ],
     method: [
@@ -607,10 +607,10 @@ export const texasK2Lessons: Lesson[] = [
     ],
     example: {
       prompt:
-        "A number line goes from 0 to 100 with a tick for every 10. Only 0, 50 and 100 are labeled. What number is at point P, 3 ticks to the right of 50?",
+        "A number line goes from 0 to 100 with a tick for every 10. Only 0, 50 and 100 are labeled. What number is at point $P$, 3 ticks to the right of 50?",
       steps: [
         "From 0 to 50 there are 5 steps. Each step is 50 ÷ 5 = 10.",
-        "P is 3 steps right of 50: 50 + 10 + 10 + 10 = 80.",
+        "$P$ is 3 steps right of 50: 50 + 10 + 10 + 10 = 80.",
       ],
       answer: "80.",
     },
@@ -647,10 +647,10 @@ export const texasK2Lessons: Lesson[] = [
     ],
     example: {
       prompt:
-        "A number line goes from 0 to 500 with 10 equal steps. Only 0, 250 and 500 are labeled. What number is at point P, 3 ticks to the right of 250?",
+        "A number line goes from 0 to 500 with 10 equal steps. Only 0, 250 and 500 are labeled. What number is at point $P$, 3 ticks to the right of 250?",
       steps: [
         "From 0 to 250 there are 5 steps. Each step is 250 ÷ 5 = 50.",
-        "P is 3 steps right of 250: 250 + 50 + 50 + 50 = 400.",
+        "$P$ is 3 steps right of 250: 250 + 50 + 50 + 50 = 400.",
       ],
       answer: "400.",
     },
@@ -887,7 +887,7 @@ export const texasK2Lessons: Lesson[] = [
     intuitionTitle: "Counting with marks",
     intuition: [
       "A tally mark is a line that stands for one answer. Four lines and one line across them make a group of five. Groups of five make long counts easy to read.",
-      "A T-chart has two columns shaped like the letter T. One column names each choice and the other tells how many chose it.",
+      "Every T-chart has two columns with a line down the middle. One column names each choice and the other tells how many chose it.",
     ],
     example: {
       prompt:

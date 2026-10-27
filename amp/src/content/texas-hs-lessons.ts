@@ -979,7 +979,7 @@ export const texasHsLessons: Lesson[] = [
         "The center and two neighboring vertices form an equilateral triangle with side 4.",
         "Its height, the apothem, is $2\\sqrt3$ cm from a $30^\\circ$-$60^\\circ$-$90^\\circ$ triangle.",
         "The perimeter is $6\\times4=24$ cm.",
-        "$A=\\frac12(2\\sqrt3)(24)=24\\sqrt3$ cm$^2$.",
+        "$A=\\frac12(2\\sqrt3)(24)=24\\sqrt3\\text{ cm}^2$.",
       ],
       answer: "$24\\sqrt3$ square centimeters",
     },
@@ -1023,7 +1023,7 @@ export const texasHsLessons: Lesson[] = [
         "Bottom circle: $\\pi(3)^2=9\\pi$.",
         "Cylinder side: $2\\pi(3)(5)=30\\pi$.",
         "Hemisphere: $2\\pi(3)^2=18\\pi$. The cylinder's top is covered.",
-        "Total: $9\\pi+30\\pi+18\\pi=57\\pi$ cm$^2$.",
+        "Total: $9\\pi+30\\pi+18\\pi=57\\pi\\text{ cm}^2$.",
       ],
       answer: "$57\\pi$ square centimeters",
     },
@@ -1063,8 +1063,8 @@ export const texasHsLessons: Lesson[] = [
       prompt:
         "A dart lands at random on a 10 cm by 10 cm square. A circle of radius 2 cm is inside it. What is the probability it lands in the circle?",
       steps: [
-        "The square's area is $100$ cm$^2$.",
-        "The circle's area is $\\pi(2)^2=4\\pi$ cm$^2$.",
+        "The square's area is $100\\text{ cm}^2$.",
+        "The circle's area is $\\pi(2)^2=4\\pi\\text{ cm}^2$.",
         "$P=\\frac{4\\pi}{100}=\\frac{\\pi}{25}$.",
       ],
       answer: "$\\frac{\\pi}{25}$",
@@ -1230,7 +1230,7 @@ export const texasHsLessons: Lesson[] = [
     intuition: [
       "A bearing is a direction given as an angle clockwise from north, written with three digits: east is $090^\\circ$ and west is $270^\\circ$.",
       "A trip along a bearing together with its north-south and east-west parts forms a right triangle.",
-      "A compass bearing such as N $60^\\circ$ W means $60^\\circ$ from north toward west, which is the three-digit bearing $300^\\circ$. N $60^\\circ$ E is $060^\\circ$, S $60^\\circ$ E is $120^\\circ$ and S $60^\\circ$ W is $240^\\circ$.",
+      "A compass bearing such as $\\mathrm{N}\\,60^\\circ\\,\\mathrm{W}$ means $60^\\circ$ from north toward west, which is the three-digit bearing $300^\\circ$. $\\mathrm{N}\\,60^\\circ\\,\\mathrm{E}$ is $060^\\circ$, $\\mathrm{S}\\,60^\\circ\\,\\mathrm{E}$ is $120^\\circ$ and $\\mathrm{S}\\,60^\\circ\\,\\mathrm{W}$ is $240^\\circ$.",
     ],
     example: {
       prompt:
@@ -1292,7 +1292,7 @@ export const texasHsLessons: Lesson[] = [
       ],
     },
     formal: {
-      title: "Why $\\frac{a}{1-r}$",
+      title: "Why the infinite sum formula works",
       paragraphs: [
         "The partial sum of $n$ terms is $a\\frac{1-r^n}{1-r}$. When $|r|<1$, $r^n\\to0$, so the sums approach $\\frac{a}{1-r}$. When $|r|\\ge1$ they do not approach a number.",
       ],
