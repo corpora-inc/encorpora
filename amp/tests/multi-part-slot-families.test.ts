@@ -16,6 +16,7 @@ import { problemLesson } from "../src/content/problem-lessons";
 import { numberOrderSlotsAxes } from "../src/math/number-order-slots-practice";
 import { placeValueBlanksAxes } from "../src/math/place-value-blanks-practice";
 import { equationSlotsAxes } from "../src/math/equation-slots-practice";
+import { quantityPairBlanksAxes } from "../src/math/quantity-pair-blanks-practice";
 import type { AxisSet } from "../src/math/variation/axes";
 
 /** Every template of the multi-part slot families: one entry per template with
@@ -24,6 +25,7 @@ const families: Record<string, Record<string, AxisSet>> = {
   "number-order-slots": numberOrderSlotsAxes,
   "place-value-blanks": placeValueBlanksAxes,
   "equation-slots": equationSlotsAxes,
+  "quantity-pair-blanks": quantityPairBlanksAxes,
 };
 const ids = Object.values(families).flatMap((axes) => Object.keys(axes));
 const SEEDS = 300;

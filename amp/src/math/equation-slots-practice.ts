@@ -389,7 +389,7 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
     const one = r(5, 60);
     const fee = axes.story === "fee";
     const total = fee ? rate * count + one : rate * count - one;
-    need(total > 0 && one !== rate && total !== rate * 10, "distinct amounts");
+    need(total > 1 && one !== rate && total !== rate * 10 && one > 1, "distinct amounts");
     need(new Set([rate, one, total, count]).size === 4, "distinct values");
     const opLabel = fee ? OPS[0] : OPS[1];
     const a = slotOf("rate", `The amount for each ${unit}`, String(rate), [

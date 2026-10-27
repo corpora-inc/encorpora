@@ -205,7 +205,7 @@ export const placeValueBlanksGenerate = defineGenerate(
         layout: "slots",
         label: "Choose the place of each digit",
         slots,
-        hint: `Start at the rightmost digit, ${digits.at(-1)}, and move left one place at a time, saying the place names in order. Then find where the digit ${digits[0]} sits.`,
+        hint: `Start at the rightmost digit, ${digits.at(-1)}, and move left one place at a time, saying the place names in order. Then locate the digit ${digits[0]} by counting the same way.`,
         explanation: [
           `Count places from the right: ${[...bank].reverse().join(", ")}.`,
           ...digits.map(

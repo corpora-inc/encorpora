@@ -30,6 +30,7 @@ export { family as placeValueBlanks } from "./place-value-blanks";
 export { family as polynomialProductSteps } from "./polynomial-product-steps";
 export { family as purchaseChain } from "./purchase-chain";
 export { family as quadraticModelChain } from "./quadratic-model-chain";
+export { family as quantityPairBlanks } from "./quantity-pair-blanks";
 export { family as reasonableMeasure } from "./reasonable-measure";
 export { family as regentsAlgebraOneData } from "./regents-algebra-one-data";
 export { family as regentsAlgebraOneExpressions } from "./regents-algebra-one-expressions";

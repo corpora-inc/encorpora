@@ -46,22 +46,28 @@ export interface Slot {
 export const optionsOf = (labels: readonly string[]): PartOption[] =>
   labels.map((label, i) => ({ id: LETTERS[i]!, label }));
 
+/** A label that is a whole number of four or more digits is written with
+ * thousands separators: 1700 becomes 1,700. */
+const tidy = (label: string) =>
+  /^\d{4,}$/.test(label) ? grouped(Number(label)) : label;
+
 function blankOf(r: Random, slot: Slot): MultiPartBlank {
   let labels: string[];
+  const correct = tidy(slot.correct);
   if (slot.fixed) {
     if (!slot.fixed.includes(slot.correct))
       throw new Error(`Slot ${slot.id}: the bank lacks its correct label`);
-    labels = [...slot.fixed];
+    labels = slot.fixed.map(tidy);
   } else {
-    const seen = new Set<string>([slot.correct]);
-    const wrong = (slot.wrong ?? []).filter((w) => {
+    const seen = new Set<string>([correct]);
+    const wrong = (slot.wrong ?? []).map(tidy).filter((w) => {
       if (seen.has(w)) return false;
       seen.add(w);
       return true;
     });
     const max = Math.min(slot.max ?? 4, 6);
     if (wrong.length < 1) throw new Error(`Need a wrong option for ${slot.id}`);
-    labels = shuffle(r, [slot.correct, ...shuffle(r, wrong).slice(0, max - 1)]);
+    labels = shuffle(r, [correct, ...shuffle(r, wrong).slice(0, max - 1)]);
   }
   if (new Set(labels).size !== labels.length || labels.length < 2)
     throw new Error(`Need distinct options for ${slot.id}`);
@@ -81,6 +87,19 @@ export interface Built {
   explanation: string[];
 }
 
+/** Inside a formula, thousands separators are written {,} so that TeX does
+ * not add a space after the comma ($1,700$ becomes $1{,}700$), and the minus
+ * sign is the TeX hyphen. */
+export const texCommas = (text: string) =>
+  text
+    .split(/(\$[^$]*\$)/)
+    .map((part, i) =>
+      i % 2
+        ? part.replace(/(\d),(?=\d{3}(?!\d))/g, "$1{,}").replaceAll("−", "-")
+        : part,
+    )
+    .join("");
+
 /** One problem from a built model: the key names each slot's correct option. */
 export function multiPartProblem(
   meta: TemplateMetadata,
@@ -94,14 +113,20 @@ export function multiPartProblem(
     label: built.label,
     layout: built.layout,
     blanks,
-    ...(built.layout === "inline" ? { sentence: built.sentence } : {}),
+    ...(built.layout === "inline"
+      ? {
+          sentence: built.sentence?.map((part) =>
+            "text" in part ? { text: texCommas(part.text) } : part,
+          ),
+        }
+      : {}),
     ...(built.layout === "table" ? { rowHeader: built.rowHeader } : {}),
   };
   multiPartChoiceResponseSchema.parse(response);
   const key = Object.fromEntries(
     blanks.map((b, i) => [
       b.id,
-      b.options.find((o) => o.label === built.slots[i]!.correct)!.id,
+      b.options.find((o) => o.label === tidy(built.slots[i]!.correct))!.id,
     ]),
   );
   return {
@@ -112,14 +137,14 @@ export function multiPartProblem(
       templateId: meta.id,
       templateVersion: 1,
       seed,
-      prompt: built.prompt,
+      prompt: texCommas(built.prompt),
       skillId: meta.skillId,
       response,
       ...(built.figure ? { figure: built.figure } : {}),
     },
     answer: serializeMultiPart(response, key),
-    explanation: built.explanation,
-    hint: built.hint,
+    explanation: built.explanation.map(texCommas),
+    hint: texCommas(built.hint),
   };
 }
 
@@ -223,3 +248,22 @@ export const listOf = (items: readonly string[]) =>
   items.length < 2
     ? items.join("")
     : `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`;
+
+/** A slot whose bank is the correct label plus the other pool labels. */
+export const slotOf = (
+  id: string,
+  label: string,
+  correct: string | number,
+  pool: readonly (string | number)[],
+  max = 4,
+  format: (n: number) => string = String,
+): Slot => {
+  const text = (v: string | number) => (typeof v === "number" ? format(v) : v);
+  return {
+    id,
+    label,
+    correct: text(correct),
+    wrong: pool.map(text).filter((p) => p !== text(correct)),
+    max,
+  };
+};
