@@ -333,12 +333,13 @@ export const vasolGrade5 = defineLedger(
       item: { number: "26", page: "PDF p.32" },
       responseFormat: "graph/drag",
       standards: ["SOL.2009.5.13b"],
-      archetypeIds: ["shape.subdivide-name"],
+      archetypeIds: ["shape.compose"],
       demand:
         "Drag the names of the three figures formed by cutting a flat figure along dashed segments",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family names the pieces formed when a figure is cut.",
+      status: "partial",
+      templateIds: ["name-cut-shape-pieces"],
+      limitations:
+        "name-cut-shape-pieces chooses the names of the pieces from a list for a rectangle or square cut along straight lines; dragging names onto three drawn figures is not practiced.",
     },
     {
       item: { number: "27", page: "PDF p.33" },
@@ -370,10 +371,10 @@ export const vasolGrade5 = defineLedger(
       standards: ["SOL.2009.5.12b"],
       archetypeIds: ["triangle.classify-sides"],
       demand: "Choose the drawn triangle that appears scalene",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["classify-triangle-by-sides"],
       limitations:
-        "No family classifies a triangle as scalene, isosceles or equilateral.",
+        "classify-triangle-by-sides picks the scalene, isosceles or equilateral triangle among four drawn triangles whose equal sides carry tick marks.",
     },
     {
       item: { number: "30", page: "PDF p.36" },
@@ -427,10 +428,10 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["univariate.measure-meaning"],
       demand:
         "Name the measure that is the fair share of fish among seven aquariums",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["measure-meaning-choice"],
       limitations:
-        "No family names the measure of center that a situation defines.",
+        "measure-meaning-choice names the mean, median, mode or range from its description, including the fair share of a total among equal groups.",
     },
     {
       item: { number: "35", page: "PDF p.41" },
@@ -460,11 +461,12 @@ export const vasolGrade5 = defineLedger(
       item: { number: "37", page: "PDF p.43" },
       responseFormat: "numeric",
       standards: ["SOL.2009.5.16c"],
-      archetypeIds: ["univariate.mode"],
+      archetypeIds: ["univariate.center"],
       demand: "Type the mode of a list of nine numbers",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family finds the mode of a data set.",
+      status: "covered",
+      templateIds: ["mode-of-data"],
+      limitations:
+        "mode-of-data takes a list of 8 to 14 whole numbers or a table of counts and has one mode.",
     },
     {
       item: { number: "38", page: "PDF p.44" },
@@ -494,13 +496,13 @@ export const vasolGrade5 = defineLedger(
       item: { number: "40", page: "PDF p.46" },
       responseFormat: "choice",
       standards: ["SOL.2009.5.18c"],
-      archetypeIds: ["equation.model-choice"],
+      archetypeIds: ["number.strip-diagram"],
       demand:
         "Choose the tile model that shows the equation one plus n equals six",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["strip-diagram-match"],
       limitations:
-        "No family chooses a drawn tile or bar model for a one-step equation.",
+        "strip-diagram-match shows a strip diagram and chooses the equation or story it shows; choosing the tile model for a given equation is not practiced.",
     },
     {
       item: { number: "41", page: "PDF p.47" },
@@ -532,10 +534,10 @@ export const vasolGrade5 = defineLedger(
       standards: ["SOL.2009.5.16d"],
       archetypeIds: ["univariate.measure-meaning"],
       demand: "Choose the description of the range of five game scores",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["measure-meaning-choice"],
       limitations:
-        "No family names the measure of variation that a description defines.",
+        "measure-meaning-choice chooses the sentence that describes a named measure, including the range, for 5 or 7 whole numbers.",
     },
     {
       item: { number: "44", page: "PDF p.50" },
@@ -591,10 +593,10 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["whole.expression-story"],
       demand:
         "Choose the situation that an open sentence of a subtraction with an unknown result represents",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["story-for-subtraction-sentence"],
       limitations:
-        "No family chooses the story that fits a subtraction sentence.",
+        "story-for-subtraction-sentence chooses the story for a subtraction sentence with the result, the amount taken away or the start unknown.",
     },
     {
       item: { number: "49", page: "PDF p.55" },
@@ -602,9 +604,10 @@ export const vasolGrade5 = defineLedger(
       standards: ["SOL.2009.5.19"],
       archetypeIds: ["whole.property-identify"],
       demand: "Choose the equation that shows the distributive property",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family names or identifies a property of operations.",
+      status: "covered",
+      templateIds: ["operation-property-identify"],
+      limitations:
+        "operation-property-identify picks the equation that shows a named property, with the distributive property of multiplication over addition one of seven properties.",
     },
     {
       item: { number: "50", page: "PDF p.56" },
@@ -613,9 +616,10 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["equation.variable-identify"],
       demand:
         "Choose the quantity in a sharing situation that can change and so is a variable",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family identifies the variable in a situation.",
+      status: "covered",
+      templateIds: ["variable-in-situation"],
+      limitations:
+        "variable-in-situation chooses the one quantity that can change, or the one that stays the same, in a short situation that includes sharing a total equally.",
     },
   ],
 );

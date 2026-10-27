@@ -195,10 +195,10 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["number.strip-diagram"],
       demand:
         "Choose the strip diagram for a story with a start, a small removal, a halving and an unknown remainder",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["strip-diagram-match"],
       limitations:
-        "The one bar-model family reads a diagram for a single addition story; no family matches a strip diagram to a multistep story with several operations.",
+        "strip-diagram-match reads a drawn strip diagram and chooses the story or equation; choosing the strip diagram for a story is not practiced.",
     },
     {
       item: {
@@ -415,10 +415,10 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["number.fraction-benchmark-estimate"],
       demand:
         "Estimate with benchmark fractions what fraction remains after sharing portions",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["benchmark-fraction-estimate"],
       limitations:
-        "No family estimates sums or differences of fractions with benchmarks.",
+        "benchmark-fraction-estimate rounds two fractions to 0, one half or 1 and estimates the amount left, a sum or a difference; the fractions and the wording of the item differ.",
     },
     {
       item: {

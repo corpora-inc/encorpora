@@ -108,9 +108,10 @@ export const staar2024Grade4 = defineLedger(
       archetypeIds: ["number.strip-diagram"],
       demand:
         "Choose the strip diagram that shows a total split into a used part and two equal remaining shares",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family practices choosing a strip diagram for a story.",
+      status: "partial",
+      templateIds: ["strip-diagram-match"],
+      limitations:
+        "strip-diagram-match reads a drawn strip diagram of a used part and equal shares and chooses the story or equation; choosing the strip diagram for a story is not practiced.",
     },
     {
       item: { number: "8", page: "rationale PDF p.9" },

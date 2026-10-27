@@ -85,9 +85,10 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["finance.supply-price"],
       demand:
         "Decide whether a price rises or falls when a product is scarce or plentiful and give the reason",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family practices how supply and scarcity change prices.",
+      status: "covered",
+      templateIds: ["supply-price-choice"],
+      limitations:
+        "supply-price-choice chooses the direction of the price and the reason for a scarce or plentiful product, with the amount for sale and the number of buyers stated.",
     },
     {
       item: { number: "6", page: "rationale PDF p.6" },
@@ -119,10 +120,10 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["number.number-line-position"],
       demand:
         "Pick the number a point could name when it is past the halfway mark of a hundred-wide number line interval",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["number-line-between-hundreds"],
       limitations:
-        "No family places or reads a whole number between two hundreds on a number line; fraction-line-position reads fractions only.",
+        "number-line-between-hundreds names the number a point shows on a line between neighboring hundreds or thousands with ticks of 10 and a labeled halfway mark; the point is on a tick mark.",
     },
     {
       item: { number: "9", page: "rationale PDF p.10" },
@@ -215,10 +216,10 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["shape.congruent-equal-parts"],
       demand:
         "Pick the pair of congruent figures that each show one fourth shaded",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["congruent-fourths-pair"],
       limitations:
-        "No family compares congruent figures cut into equal-area parts or expresses the shaded part of each as a unit fraction.",
+        "congruent-fourths-pair picks the two same-size figures that each show one fourth shaded when the figures are cut in different ways, against thirds, two fourths and unequal parts.",
     },
     {
       item: { number: "17", page: "rationale PDF p.18" },

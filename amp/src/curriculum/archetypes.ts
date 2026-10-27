@@ -50,7 +50,6 @@ number.fraction-benchmark-estimate|Estimate fraction sums or differences with be
 number.fraction-equal-share|Name the fraction of a whole that each equal share receives
 number.fraction-sum-expression|Write a sum of like fractions for a shaded or grouped amount
 number.number-classification|Classify numbers as whole, integer or rational
-number.number-line-equation|Match a number-line diagram with an addition or subtraction story
 number.number-word-form|Write or read a number in word form
 number.percent-fraction-decimal|Rename a percent as a decimal or fraction, or a fraction as a percent
 number.place-value-ratio|Compare a digit's value in two places of a whole number or decimal
@@ -58,7 +57,7 @@ number.place-value-units|Write a number from counts of place-value units such as
 number.rational-operations|Compute with signed rational numbers in fraction and decimal forms
 number.real-order|Order real numbers written as roots, fractions, decimals and percents
 number.remainder-interpret|Interpret a division remainder in context
-number.strip-diagram|Choose a strip diagram that models a story
+number.strip-diagram|Choose the strip, tile or bar diagram that models a story or a one-step equation, or the story or equation a strip diagram shows
 number.inverse-round-whole|Choose the whole numbers that round to a stated ten or hundred
 rational.negative-fraction-forms|Choose the expressions that equal a negative fraction`,
   algebra: `
@@ -201,7 +200,7 @@ percent.of|Find a percent of a quantity or what percent one quantity is of anoth
 percent.change|Find a percent increase or decrease, a changed value or the original value
 percent.successive|Apply successive percent changes with a changing base
 univariate.displays|Read frequencies and summaries from dot plots, histograms or box plots
-univariate.center|Calculate or compare means and medians
+univariate.center|Calculate or compare means, medians and modes
 univariate.spread|Compare ranges or standard deviations of data sets
 univariate.outliers|Describe how removing or adding a value changes mean, median or spread
 univariate.grouped-bounds|Bound a mean or median from grouped or binned data
@@ -225,7 +224,6 @@ distribution.normal|Use the empirical rule with a normal model
 distribution.random-variable|Define a random variable and read its probability distribution
 distribution.expectation|Find the expected value from a theoretical or observed distribution
 distribution.decision|Compare expected payoffs to choose between strategies
-probability.fair-selection|Choose a random procedure that gives everyone the same chance
 inference.simulation|Judge a claim from a chart of simulated results
 inference.randomization|Decide from a randomization distribution whether a difference is unusual
 probability.counting-principle|Count outcomes of a sequence of independent choices by multiplying
@@ -244,7 +242,7 @@ bivariate.regression-compute|Compute a regression equation from a data table
 bivariate.correlation-coefficient|Interpret the sign and strength of a correlation coefficient
 bivariate.correlation|Interpret the sign and strength of a correlation coefficient
 data.frequency-table-read|Read counts from a tally or frequency table and compare them
-data.graph-error|Find the mismatch between a described data set and its graph
+data.graph-error|Find the mismatch between a described data set and its graph or table, or choose the table that fits a description
 data.percent-bar-graph|Read a percentage bar graph
 data.stem-leaf-read|Read values or sums from a stem-and-leaf plot
 data.table-to-graph|Match a table of paired values with its plotted points
@@ -275,10 +273,9 @@ circle.coordinate|Read or write a circle's equation, including completing the sq
 coordinate.distance-midpoint|Use the distance or midpoint formula
 measure.unit-cube-volume|Find a prism's volume by counting unit cubes or one layer of cubes
 coordinate.first-quadrant|Locate, name or move to a point by ordered pair in the first quadrant
-shape.name-flat|Name a flat shape or pick the one of a named kind among near misses
 shape.name-solid|Name a solid shape and tell it from a flat shape
-shape.compose|Name the shape that smaller shapes make or choose the piece that completes it
-shape.attributes|Count sides, corners or angles of a polygon and name it or tell its defining attributes
+shape.compose|Name the shape that smaller shapes make, the pieces a cut figure forms, or choose the piece that completes it
+shape.attributes|Count sides, corners or angles of a polygon and name it, pick the one of a named kind among near misses, or tell its defining attributes
 shape.solid-parts|Count the faces, edges or vertices of a prism or pyramid
 angle.measure|Measure an angle with a protractor or as a fraction of a full turn
 angle.additive|Find a whole angle or a missing part from adjacent angles
@@ -311,7 +308,7 @@ coordinate.segment-partition|Find the point that divides a segment in a given ra
 circle.circumference|Find a circumference or its coefficient of pi from a radius or diameter
 measure.compare-attributes|Compare or order objects by length, weight or capacity
 measure.equal-units|Measure a length by laying equal units end to end
-measure.read-scale|Read a liquid level or balance on a measuring scale
+measure.read-scale|Read a temperature, liquid level or balance on a measuring scale
 measure.mass-volume-story|Solve a one-step story in grams, kilograms or liters
 time.read-clock|Read an analog clock to the half hour or five minutes
 time.match-clock|Pick the analog clock that shows a written time
@@ -345,7 +342,7 @@ early.count-to-20|Count a set of up to twenty objects
 early.add-within-20|Add two whole numbers with a sum at most twenty
 early.make-ten|Add or subtract within twenty by making or passing through ten
 early.subtract-within-20|Subtract within twenty
-fractions.model|Express a shaded part of a whole as a fraction
+fractions.model|Express a shaded part of a whole, cut into equal parts, as a fraction
 fractions.add-subtract-unlike|Add or subtract fractions with unlike denominators, including distances on a number line
 place.digit-value|Find the value of a digit or a missing part of an expanded form
 place.base-ten-model|Compose a number from a base-ten model or regroup tens and ones
@@ -375,7 +372,7 @@ early.compare-groups|Tell which of two groups of objects has more, fewer or the 
 place.compare-whole|Compare two whole numbers and choose the greater, lesser or true symbol statement
 number.round-whole|Round a whole number to the nearest ten, hundred, thousand or ten thousand
 early.count-sequence|Find a missing number when counting by ones or tens or on a hundred chart
-early.number-line-hops|Add, subtract or measure a distance with hops on a number line
+early.number-line-hops|Add, subtract or measure a distance with hops on a number line, or match a number-line diagram of jumps to a story
 place.powers-of-ten|Multiply or divide a number by 10, 100 or 1,000
 whole.multiply-one-digit|Multiply a multidigit number by a one-digit number or a multiple of ten
 whole.multiply-area-model|Multiply two-digit numbers with an area model and partial products
@@ -401,7 +398,6 @@ whole.multiplicative-stories|Choose the operation or equation for an equal-group
 rational.signed-multiply|Multiply or divide signed fractions
 fractions.complex|Simplify a fraction whose numerator or denominator contains fractions
 fractions.equal-shares|Pick the shape cut into halves, thirds or fourths among unequal cuts
-fractions.name-equal-share|Name the shaded part of a shape cut into equal parts
 fractions.compare-shares|Compare equal shares of same-size wholes
 fractions.partition-area|Name or find the area of one equal-area part of a rectangle
 decimal.read-model|Name a decimal from a tenths strip, hundredths grid or number line, or rename tenths as hundredths
@@ -415,11 +411,11 @@ early.odd-even|Tell whether a number of objects pairs up evenly
 whole.distributive-parts|Find a partial product or total from parts of an array or nested groups
 whole.multiplicative-comparison|Find a quantity or the factor in a multiplicative comparison
 whole.multi-step-stories|Solve a two-step story of equal groups and a known use or payment
-whole.expression-story|Choose the word problem that a multiplication or division expression represents
+whole.expression-story|Choose the word problem that a multiplication, division or subtraction expression represents
 whole.related-equation|Choose the multiplication equation related to a division equation, or the reverse
 fractions.choose-model|Choose the drawn model that shows a stated fraction
 equation.truth|Decide which equations with a value on each side are true
-time.rename-units|Rename hours and minutes as minutes or minutes as hours
+time.rename-units|Rename hours and minutes as minutes or minutes as hours, or days, weeks and years in smaller units
 number.factors-identify|Choose the numbers that are factors of a given whole number
 fractions.multiply-scaling|Decide whether a product exceeds, equals or falls below a factor from the size of the other factor`,
 };

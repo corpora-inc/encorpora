@@ -2,18 +2,33 @@
 // sorted by file name. Add a family by adding its descriptor and running the
 // script; tests/family-index.test.ts fails when this file is stale.
 export {};
+export { family as benchmarkEstimate } from "./benchmark-estimate";
+export { family as congruentParts } from "./congruent-parts";
 export { family as conversionChain } from "./conversion-chain";
 export { family as countRelationChain } from "./count-relation-chain";
+export { family as dataMeasure } from "./data-measure";
 export { family as feeChain } from "./fee-chain";
 export { family as figureChoice } from "./figure-choice";
 export { family as figureChoiceFormats } from "./figure-choice-formats";
+export { family as likelihood } from "./likelihood";
 export { family as linkedEquations } from "./linked-equations";
 export { family as multiPartFormats } from "./multi-part-formats";
+export { family as numberLineGap } from "./number-line-gap";
+export { family as operationProperty } from "./operation-property";
 export { family as percentChain } from "./percent-chain";
 export { family as perimeterAreaChain } from "./perimeter-area-chain";
 export { family as purchaseChain } from "./purchase-chain";
 export { family as quadraticModelChain } from "./quadratic-model-chain";
+export { family as repeatingPattern } from "./repeating-pattern";
+export { family as shapeFigureGap } from "./shape-figure-gap";
 export { family as shareRemainder } from "./share-remainder";
 export { family as similarSolidChain } from "./similar-solid-chain";
+export { family as solidProperty } from "./solid-property";
+export { family as stripDiagram } from "./strip-diagram";
+export { family as supplyPrice } from "./supply-price";
+export { family as tableFits } from "./table-fits";
+export { family as thermometerReading } from "./thermometer-reading";
+export { family as timeUnitRename } from "./time-unit-rename";
 export { family as totalMinusParts } from "./total-minus-parts";
+export { family as variableStory } from "./variable-story";
 export { family as virginiaSolLedger } from "./virginia-sol-ledger";
