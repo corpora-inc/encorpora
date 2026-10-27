@@ -508,24 +508,45 @@ try {
       // Let the media-query subscription commit the appropriate answer surface.
       // Point plots, multi-part choices, figure choices and structured work
       // answer in the problem and never use the answer dialog.
-      await page.waitForFunction(
-        ([multiSelect, plot]) => {
-          const compact =
-            !plot &&
-            (matchMedia("(max-width: 650px) and (max-height: 640px)").matches ||
-              (multiSelect &&
-                !!document.querySelector(".problem-content svg") &&
-                matchMedia("(max-width: 899px)").matches));
-          return !!document.querySelector(".compact-answer-action") === compact;
-        },
-        [
-          template.requiredResponseCapability === "multi-select-v1",
-          template.requiredResponseCapability === "point-plot-v1" ||
-            template.requiredResponseCapability === "multi-part-choice-v1" ||
-            template.requiredResponseCapability === "figure-choice-v1" ||
-            template.requiredResponseCapability === "structured-work-v1",
-        ],
-      );
+      await page
+        .waitForFunction(
+          ([multiSelect, plot]) => {
+            const compact =
+              !plot &&
+              (matchMedia("(max-width: 650px) and (max-height: 640px)")
+                .matches ||
+                (multiSelect &&
+                  // A drawn figure, as the app's `problem.figure`. KaTeX
+                  // typesets a radical's surd as an inline svg, so a
+                  // figure-less option like √11 is not a figure.
+                  [...document.querySelectorAll(".problem-content svg")].some(
+                    (svg) => !svg.closest(".katex"),
+                  ) &&
+                  matchMedia("(max-width: 899px)").matches));
+            return (
+              !!document.querySelector(".compact-answer-action") === compact
+            );
+          },
+          [
+            template.requiredResponseCapability === "multi-select-v1",
+            template.requiredResponseCapability === "point-plot-v1" ||
+              template.requiredResponseCapability === "multi-part-choice-v1" ||
+              template.requiredResponseCapability === "figure-choice-v1" ||
+              template.requiredResponseCapability === "structured-work-v1",
+          ],
+        )
+        .catch(async (failure) => {
+          // Name the problem type and viewport; the timeout alone does not.
+          const shown = await page
+            .locator(".compact-answer-action")
+            .count()
+            .then((n) => (n ? "the compact answer action" : "inline answers"))
+            .catch(() => "an unreadable page");
+          throw new Error(
+            `${template.id} ${size.width}×${size.height}: the answer surface did not match the expected one; the page shows ${shown} (response capability: ${template.requiredResponseCapability ?? "none"})`,
+            { cause: failure },
+          );
+        });
       if (isPhoneLandscape(size)) {
         await assertPhoneLandscapeSmoke(page, template.id);
         continue;

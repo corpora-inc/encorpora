@@ -19,6 +19,10 @@ import {
 
 const capitalize = (text: string) =>
   text.charAt(0).toUpperCase() + text.slice(1);
+/** The one closing mark that opens a sentence part: ".", "," and so on.
+ * One character, so the room the blank leaves for it (0.5em) suffices. */
+const trailingPunctuation = (text: string) =>
+  /^[.,;:!?)]/.exec(text)?.[0] ?? "";
 
 /** Review marks for a resolved problem: each blank's choice and answer. */
 export function partsReview(
@@ -301,15 +305,32 @@ export function MultiPartChoiceInput({
       aria-label={spokenMath(response.label)}
     >
       <p className="multi-part-sentence">
-        {(response.sentence ?? []).map((part, i) => {
-          if ("text" in part)
+        {(response.sentence ?? []).map((part, i, parts) => {
+          if ("text" in part) {
+            // Punctuation right after a blank travels with that blank.
+            const text =
+              i > 0 && "blank" in parts[i - 1]!
+                ? part.text.slice(trailingPunctuation(part.text).length)
+                : part.text;
+            if (!text) return null;
             return (
               <span key={i} aria-hidden="true">
-                <MathText text={part.text} />
+                <MathText text={text} />
               </span>
             );
+          }
           const blank = response.blanks.find((b) => b.id === part.blank)!;
-          return <span key={i}>{picker(blank)}</span>;
+          const next = parts[i + 1];
+          const glued =
+            next && "text" in next ? trailingPunctuation(next.text) : "";
+          // A blank and its punctuation share a line, so a full-width blank
+          // never leaves a lone period on the next one.
+          return (
+            <span key={i} className={glued ? "multi-part-glued" : undefined}>
+              {picker(blank)}
+              {glued && <span aria-hidden="true">{glued}</span>}
+            </span>
+          );
         })}
       </p>
       {/* The sentence, read once in full for screen readers. */}
