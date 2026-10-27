@@ -67,9 +67,9 @@ export const packSchema = z
       .max(15),
   })
   .superRefine((pack, ctx) => {
-    // Grader v1 predates multiple selections, plotted points and
-    // multi-part choices. Its immutable protocol must not widen when the
-    // online public-problem schema gains a response kind.
+    // Grader v1 predates multiple selections, plotted points, multi-part
+    // choices and figure choices. Its immutable protocol must not widen when
+    // the online public-problem schema gains a response kind.
     if (
       pack.items.some(
         (item) =>

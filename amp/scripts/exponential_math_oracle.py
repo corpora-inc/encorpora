@@ -239,6 +239,16 @@ def model_value(prompt, public):
         ratio = ys[1] / ys[0]
         target = int(re.search(r'when \$x = (\d+)\$', prompt)[1])
         return ys[0] * ratio ** int(target - xs[0])
+    if 'Round to the nearest cent' in prompt:
+        # A percent change over whole years, valued exactly and rounded half up to cents.
+        text = clean(prompt)
+        m = re.search(r'(?:holds|is worth) (\d+) dollars and (earns|loses) (\d+)% .*?after (\d+) years', text)
+        require(m is not None, f'Unknown rounded model prompt: {prompt}')
+        start, pct, years = int(m[1]), Fraction(int(m[3]), 100), int(m[4])
+        value = start * (1 + (pct if m[2] == 'earns' else -pct)) ** years
+        cents = value * 100
+        require(cents.denominator != 2, 'No half-cent ties')
+        return Fraction(int(cents + Fraction(1, 2)) if cents >= 0 else 0, 100)
     m = re.search(r'(?:has|holds) (\d+) (?:residents|dollars).*?(\d+)% .*?after (\d+) years', clean(prompt))
     if m:
         start, pct, years = int(m[1]), Fraction(int(m[2]), 100), int(m[3])
@@ -591,9 +601,9 @@ def sequence_rule(prompt, public):
     if m:
         a, c = Fraction(int(m[1])), Fraction(int(m[2]))
         return a * exact_root(c / a, 2)
-    m = re.search(r'\$a_1 = (\d+)\$ and \$a_n = (-?\d+)a_\{n-1\}\$.*What is \$a_\{(\d+)\}\$', p)
+    m = re.search(r'\$a_1 = (\d+)\$ and \$a_n = (-?\d+(?:\.\d+)?)a_\{n-1\}\$.*What is \$a_\{(\d+)\}\$', p)
     if m:
-        a, r, k = int(m[1]), int(m[2]), int(m[3])
+        a, r, k = int(m[1]), Fraction(m[2]), int(m[3])
         term = Fraction(a)
         for _ in range(k - 1):
             term *= r
@@ -651,6 +661,9 @@ def review_exponential_fixtures():
     require(log_equation('Solve $\\log_{3} x - \\log_{3}(x - 4) = 1$.') == 6, 'quotient log')
     require(log_rules('What is $\\log_{6} 4 + \\log_{6} 9$?') == 2, 'product rule')
     require(log_rules('What is $2\\log_{3} 6 - \\log_{3} 4$?') == 2, 'power rule')
+    require(model_value('A savings account holds 1,700 dollars and earns 4% interest, added to the balance at the end of each year. With no withdrawals, how many dollars will it hold after 3 years? Round to the nearest cent.', None) == Fraction(191227, 100), 'rounded growth')
+    require(model_value('A delivery van is worth 6,000 dollars and loses 18% of its value each year. How many dollars is it worth after 12 years? Round to the nearest cent.', None) == Fraction(55452, 100), 'rounded decay')
+    require(sequence_rule('A sequence has $a_1 = 64$ and $a_n = -2.5a_{n-1}$ for $n \\ge 2$. What is $a_{5}$?', None) == 2500, 'decimal ratio')
     require(series('Find the sum $3 + 6 + 12 + \\cdots + 96$.', None) == 189, 'series')
     require(first_exceed(10, 10, 2) == 7, 'overtake')
     require(classify([Fraction(v) for v in (1, 4, 9, 16)]) == 'neither', 'squares')

@@ -565,10 +565,14 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["linear.context"],
       demand:
         "Find elapsed time for a quantity decreasing at a constant slow rate from a start to an end amount",
-      status: "partial",
-      templateIds: ["two-step-word-problem", "linear-model-value"],
+      status: "covered",
+      templateIds: [
+        "two-step-word-problem",
+        "linear-model-value",
+        "fee-plan-chain",
+      ],
       limitations:
-        "Templates use whole-number per-unit rates (e.g. liters per minute); the item gives the rate as one unit per several days, which requires inverting the rate.",
+        "fee-plan-chain (slow-rate) finds elapsed time when 1 unit changes every several time units, from a start to an end amount; choices are plain numbers, so numeric entry fits.",
     },
     {
       section: "Math module 2",
@@ -604,10 +608,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["expression.radical"],
       demand:
         "Choose the radical form equivalent to a rational-exponent power when the radical is written with an unreduced index and power",
-      status: "partial",
+      status: "covered",
       templateIds: ["symbolic-rational-exponent"],
       limitations:
-        "symbolic-rational-exponent converts between a reduced radical and its rational exponent; the item's correct choice uses a scaled-up index and power that must be reduced to match.",
+        "The direction axis (power-to-radical) gives the rational exponent and offers radicals with scaled-up indexes and powers, so the correct choice must be reduced to match.",
     },
     {
       section: "Math module 2",
@@ -643,10 +647,14 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["percent.change"],
       demand:
         "Apply a percent decrease to a price, then recover an earlier cost from a percent increase to that result",
-      status: "partial",
-      templateIds: ["percent-change-final", "percent-change-original"],
+      status: "covered",
+      templateIds: [
+        "percent-change-final",
+        "percent-change-original",
+        "percent-chain",
+      ],
       limitations:
-        "Each template practices one step (apply a change, or undo a change); no template chains a forward change with a reverse change on a different base.",
+        "percent-chain (earlier-cost) lowers a marked price by a percent, then finds the earlier cost that the new price exceeds by a stated percent, with exact whole-dollar results. Choices are plain numbers, so numeric entry fits.",
     },
     {
       section: "Math module 2",
@@ -721,10 +729,14 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["nonlinear.quadratic-from-data", "quadratic.context"],
       demand:
         "Build a quadratic model from its vertex and a zero in context and evaluate it at another input, rounded",
-      status: "partial",
-      templateIds: ["quadratic-from-data", "sat-entry-quadratic-context"],
+      status: "covered",
+      templateIds: [
+        "quadratic-from-data",
+        "sat-entry-quadratic-context",
+        "quadratic-model-chain",
+      ],
       limitations:
-        "quadratic-from-data chooses an equation from a vertex and a point; sat-entry-quadratic-context reads values from a given height model. No numeric template builds the model from context and then evaluates it.",
+        "quadratic-model-chain (vertex-zero) builds a quadratic from a vertex and a zero in context and evaluates it at another input, rounded to the nearest tenth.",
     },
   ],
 );

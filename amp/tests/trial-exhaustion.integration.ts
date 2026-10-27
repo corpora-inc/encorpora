@@ -137,6 +137,10 @@ test(
           responseCapabilities: ["single-choice-v1" as const],
           figureCapabilities: ["measurement-models-v1" as const],
         };
+        // Kindergarten is grade 0. A few K items carry a fractional
+        // difficulty offset below it (-0.4); that fine ordering inside K must
+        // not shrink the "one grade above the start" allowance to under 1.
+        const catalogStart = Math.max(0, earliest);
         const supported = templates.filter((template) =>
           clientCanDraw(template, capabilities),
         );
@@ -144,10 +148,13 @@ test(
           nodes.get(template.skillId)?.strand ?? template.skillId;
         const assertIntroductory = (selected: (typeof templates)[number]) => {
           const grade = templateGrade(selected, nodes);
-          const strandFloor = Math.min(
-            ...supported
-              .filter((template) => strandOf(template) === strandOf(selected))
-              .map((template) => templateGrade(template, nodes)),
+          const strandFloor = Math.max(
+            0,
+            Math.min(
+              ...supported
+                .filter((template) => strandOf(template) === strandOf(selected))
+                .map((template) => templateGrade(template, nodes)),
+            ),
           );
           // A nearby introductory item can win the weighted draw: K comparison
           // and grade-1 ordering/clock items share the measurement strand.
@@ -157,7 +164,7 @@ test(
             `${selected.id}: grade ${grade} exceeds introductory material in its strand (${strandFloor})`,
           );
           assert.ok(
-            grade <= earliest + 1,
+            grade <= catalogStart + 1,
             `${selected.id}: grade ${grade} exceeds a grade above the catalog start (${earliest})`,
           );
         };

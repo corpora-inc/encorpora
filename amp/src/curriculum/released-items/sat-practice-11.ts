@@ -198,10 +198,14 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["line.constraint"],
       demand:
         "Substitute a known count into a two-variable value equation in context and solve for the other count",
-      status: "partial",
-      templateIds: ["solution-coordinate", "two-step-word-problem"],
+      status: "covered",
+      templateIds: [
+        "solution-coordinate",
+        "two-step-word-problem",
+        "count-relation-chain",
+      ],
       limitations:
-        "solution-coordinate substitutes into context-free equations; two-step-word-problem writes its own equation; no given two-variable model in context.",
+        "count-relation-chain (value-equation) substitutes a known count into a given two-variable value equation in context and solves for the other count or the total.",
     },
     {
       section: "Math module 1",
@@ -252,10 +256,14 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["linear.context"],
       demand:
         "Choose the equation for a flat charge covering initial hours plus an hourly rate for the extra hours",
-      status: "partial",
-      templateIds: ["two-step-equation-model", "piecewise-evaluate"],
+      status: "covered",
+      templateIds: [
+        "two-step-equation-model",
+        "piecewise-evaluate",
+        "fee-rule-choice",
+      ],
       limitations:
-        "Fee-plus-rate equations use the full input; the 'extra hours beyond the first' structure appears only in numeric piecewise evaluation.",
+        "fee-rule-choice (stated-rate) chooses the equation for a flat fee covering the first hours plus an hourly rate for the extra hours, in grouped or expanded form.",
     },
     {
       section: "Math module 1",
@@ -645,10 +653,10 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["percent.successive"],
       demand:
         "Apply a percent increase over 300% and then a percent decrease to a number",
-      status: "partial",
-      templateIds: ["successive-percent-change"],
+      status: "covered",
+      templateIds: ["successive-percent-change", "percent-chain"],
       limitations:
-        "Two moderate percent changes to a price with cent rounding; the item has a very large increase.",
+        "percent-chain (final-value, large increase) applies an increase of 150% to 500% and then a decrease to a whole-number amount with an exact result.",
     },
     {
       section: "Math module 2",

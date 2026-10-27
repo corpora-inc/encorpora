@@ -325,10 +325,10 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["percent.successive"],
       demand:
         "Find the overall multiplier from two successive percent increases",
-      status: "partial",
-      templateIds: ["successive-percent-change"],
+      status: "covered",
+      templateIds: ["successive-percent-change", "percent-chain"],
       limitations:
-        "Template applies two changes to a dollar price and asks the final price; item asks for the combined growth factor itself.",
+        "percent-chain (overall-multiplier) asks the single factor of two successive percent increases as an exact decimal; choices are plain decimals, so numeric entry fits.",
     },
     {
       section: "Math module 1",
@@ -557,10 +557,14 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Take a fraction of a periodic amount and scale it over several periods",
-      status: "partial",
-      templateIds: ["fraction-of-quantity", "unit-price"],
+      status: "covered",
+      templateIds: [
+        "fraction-of-quantity",
+        "unit-price",
+        "share-remainder-fractions",
+      ],
       limitations:
-        "Each template covers one step (fraction of a small whole amount; constant rate times count); none chains them with multi-digit amounts.",
+        "share-remainder-fractions (periods-total) takes a proper fraction of a multi-digit periodic amount and scales it over 3 to 12 periods with exact whole-number results.",
     },
     {
       section: "Math module 2",
@@ -620,10 +624,10 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["line.parallel-perpendicular"],
       demand:
         "Find the slope of a line perpendicular to a line given in slope-intercept form",
-      status: "partial",
+      status: "covered",
       templateIds: ["perpendicular-slopes"],
       limitations:
-        "Template defines the given line by two plotted points; reading the slope from a y = mx + b equation is never practiced there.",
+        "The line-given axis (slope-intercept) states the reference line as y = mx + b with a fractional, negative or integer slope, so the slope is read from the equation and the perpendicular slope is entered.",
     },
     {
       section: "Math module 2",

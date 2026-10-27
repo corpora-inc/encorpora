@@ -130,10 +130,14 @@ export const staar2024Grade4 = defineLedger(
       standards: ["TEKS.4.3.5.D"],
       archetypeIds: ["measure.area"],
       demand: "Find a square's area from its perimeter",
-      status: "partial",
-      templateIds: ["staar-measure-chains", "rectangle-area"],
+      status: "covered",
+      templateIds: [
+        "staar-measure-chains",
+        "rectangle-area",
+        "perimeter-area-chain",
+      ],
       limitations:
-        "staar-measure-chains finds a rectangle's width from its perimeter and length; the square's side from perimeter alone is not practiced.",
+        "perimeter-area-chain finds a square's side from its perimeter and then its area, and the reverse; choices are plain numbers, so numeric entry fits.",
     },
     {
       item: { number: "10", page: "rationale PDF p.11" },
@@ -247,10 +251,14 @@ export const staar2024Grade4 = defineLedger(
       standards: ["TEKS.4.2.4.A"],
       archetypeIds: ["decimal.add-subtract"],
       demand: "Add two prices and subtract a coupon",
-      status: "partial",
-      templateIds: ["multidigit-decimal-sum", "staar-decimal-operations"],
+      status: "covered",
+      templateIds: [
+        "multidigit-decimal-sum",
+        "staar-decimal-operations",
+        "wallet-purchase-chain",
+      ],
       limitations:
-        "multidigit-decimal-sum and staar-decimal-operations do one or two operations in separate forms; adding two prices then subtracting a coupon in one story is not practiced.",
+        "wallet-purchase-chain (prices-then-coupon) adds two prices and subtracts a coupon, in dollars and cents; choices are plain amounts, so numeric entry fits.",
     },
     {
       item: { number: "20", page: "rationale PDF p.21" },

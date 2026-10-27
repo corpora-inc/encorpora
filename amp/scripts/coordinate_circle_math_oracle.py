@@ -184,10 +184,28 @@ def solve_partition(prompt):
 def solve_slopes(prompt):
     head = rf'Line ℓ passes through A\({N}, {N}\) and B\({N}, {N}\)\. '
     m = re.match(head, prompt)
-    require(m is not None, f'Unrecognized slope prompt: {prompt}')
-    ax, ay, bx, by = (i(v) for v in m.groups())
-    d = (bx - ax, by - ay)
-    rest = prompt[m.end():]
+    if m is None:
+        # The reference line is given by an equation: read a direction vector from it.
+        eq = re.match(r'Line ℓ has equation (.+?)\. ', prompt)
+        require(eq is not None, f'Unrecognized slope prompt: {prompt}')
+        text = eq[1]
+        slope_form = re.fullmatch(r'y = (−?)(?:(\d+)/(\d+)|(\d+))x ([+−]) (\d+)', text)
+        standard = re.fullmatch(r'(\d*)x ([+−]) (\d*)y = (−?\d+)', text)
+        if slope_form:
+            num = int(slope_form[2] or slope_form[4])
+            den = int(slope_form[3] or 1)
+            d = (den, -num if slope_form[1] else num)
+        else:
+            require(standard is not None, f'Unrecognized equation: {text}')
+            a = int(standard[1] or 1)
+            b = int(standard[3] or 1) * (-1 if standard[2] == '−' else 1)
+            # a x + b y = c: the vector (b, −a) lies along the line.
+            d = (b, -a)
+        rest = prompt[eq.end():]
+    else:
+        ax, ay, bx, by = (i(v) for v in m.groups())
+        d = (bx - ax, by - ay)
+        rest = prompt[m.end():]
     m = re.fullmatch(r'What is the slope of a line (parallel|perpendicular) to ℓ\?', rest)
     if m:
         # A direction with zero dot product (perpendicular) or zero cross product (parallel).
@@ -297,6 +315,9 @@ def review_coordinate_circle_fixtures():
     require(rejects(pub('coordinate-polygon', 'A triangle has vertices A(0, 0), B(2, 0) and C(3, 3). What is its perimeter?')), 'Irrational perimeter rejected')
     require(solve_coordinate_circle(pub('segment-partition', 'Point P is on segment AB, with A(−3, −2) and B(6, 4), and divides it so that AP : PB = 1 : 2. What is the y-coordinate of P?')) == 0, 'Partition')
     require(solve_coordinate_circle(pub('perpendicular-slopes', 'Line ℓ passes through A(0, 1) and B(3, 3). What is the slope of a line perpendicular to ℓ?')) == Fraction(-3, 2), 'Perpendicular')
+    require(solve_coordinate_circle(pub('perpendicular-slopes', 'Line ℓ has equation $y = \\frac{4}{3}x - 5$. What is the slope of a line perpendicular to ℓ?')) == Fraction(-3, 4), 'Slope-intercept perpendicular')
+    require(solve_coordinate_circle(pub('perpendicular-slopes', 'Line ℓ has equation $3x + 2y = -11$. What is the slope of a line parallel to ℓ?')) == Fraction(-3, 2), 'Standard-form parallel')
+    require(solve_coordinate_circle(pub('perpendicular-slopes', 'Line ℓ has equation $5x - 2y = 4$. A line through P(4, 2) perpendicular to ℓ has equation y = mx + b. What is b?')) == Fraction(18, 5), 'Standard-form intercept')
     require(solve_coordinate_circle(pub('circle-angles', 'PT is tangent to circle O at T. The radius is 5 and OP = 13. How long is PT?')) == 12, 'Tangent')
     require(solve_coordinate_circle(pub('circle-angles', 'In circle O, central angle AOB measures 110°, and C is on the circle but not on arc AB, the arc inside angle AOB. What is the measure of inscribed angle ACB, in degrees?')) == 55, 'Inscribed')
     return 8

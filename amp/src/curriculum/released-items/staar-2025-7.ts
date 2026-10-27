@@ -268,10 +268,14 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["inequality.context"],
       demand:
         "Choose the solution set for how many guests fit a budget with a fixed room fee and a per-guest cost",
-      status: "partial",
-      templateIds: ["affine-linear-inequality", "two-step-word-problem"],
+      status: "covered",
+      templateIds: [
+        "affine-linear-inequality",
+        "two-step-word-problem",
+        "fee-budget-inequality",
+      ],
       limitations:
-        "Related families solve an inequality or a two-step story separately; writing the inequality from the story and picking its solution set is not practiced.",
+        "fee-budget-inequality (solution-set) chooses the solution set of the budget inequality for a fixed fee plus a per-unit cost, for whole-number counts.",
     },
     {
       item: {
@@ -411,11 +415,12 @@ export const staarGrade7 = defineLedger(
         "Solve a two-step inequality with a negative coefficient and draw it on a number line, placing the endpoint and arrow",
       status: "partial",
       templateIds: [
+        "graph-of-inequality-number-line",
         "inequality-number-line-choice",
         "affine-linear-inequality",
       ],
       limitations:
-        "STAAR interaction: number line, 2 points. Related families solve and choose a drawn graph; drawing the graph by placing an open endpoint and an arrow has no response protocol.",
+        "STAAR interaction: number line, 2 points. graph-of-inequality-number-line solves two-step inequalities with negative coefficients and chooses the drawn number line; drawing it by placing the endpoint and arrow has no response protocol.",
     },
     {
       item: {
@@ -583,10 +588,14 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["percent.change"],
       demand:
         "Find the cost of mixed-number yards of canvas at a price per yard, then apply a one-tenth discount",
-      status: "partial",
-      templateIds: ["percent-change-final", "multidigit-decimal-product"],
+      status: "covered",
+      templateIds: [
+        "percent-change-final",
+        "multidigit-decimal-product",
+        "mixed-quantity-discount",
+      ],
       limitations:
-        "Related families apply one percent change or multiply decimals; a mixed-number quantity chained into a unit-price total and a fractional discount is not practiced.",
+        "mixed-quantity-discount multiplies a mixed-number quantity by a decimal unit price and takes one-tenth, one-fifth or one-fourth off the total, written as a fraction or a percent; choices are plain amounts, so numeric entry fits.",
     },
     {
       item: {

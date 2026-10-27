@@ -41,9 +41,13 @@ export const staarGrade8 = defineLedger(
       demand:
         "Choose the graph whose slope equals a rate of books read per weeks",
       status: "partial",
-      templateIds: ["proportional-graph", "graph-linear-equation"],
+      templateIds: [
+        "graph-of-proportional-rate",
+        "proportional-graph",
+        "graph-linear-equation",
+      ],
       limitations:
-        "proportional-graph reads a unit rate from one graph; graph-linear-equation places points by plotting. Choosing among drawn graphs for a stated rate is not practiced.",
+        "graph-of-proportional-rate chooses among drawn graphs for a total over a time, including fractional unit rates and the inverted-rate distractor, on unit-scaled axes to 12. Axes scaled to reach (15, 24) and horizontal or vertical distractor lines are not practiced.",
     },
     {
       item: {
@@ -453,9 +457,13 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["function.representations"],
       demand: "Choose the line whose slope is a stated speed in miles per hour",
       status: "partial",
-      templateIds: ["proportional-graph", "graph-linear-equation"],
+      templateIds: [
+        "graph-of-proportional-rate",
+        "proportional-graph",
+        "graph-linear-equation",
+      ],
       limitations:
-        "proportional-graph reads a unit rate from one graph; choosing among drawn lines for a stated speed is not practiced.",
+        "graph-of-proportional-rate chooses among drawn lines for a rate given as a total over whole hours, on unit-scaled axes; a decimal time (half an hour) and a y-axis scaled by tens are not practiced.",
     },
     {
       item: {

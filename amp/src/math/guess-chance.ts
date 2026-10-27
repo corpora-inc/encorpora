@@ -1,6 +1,7 @@
 import type { ProblemResponse, TemplateMetadata } from "./contracts";
 import { pointPlotGuessChance } from "./point-plot";
 import { multiPartGuessChance } from "./multi-part-choice";
+import { figureChoiceGuessChance } from "./figure-choice";
 import { generateProblem, templates } from "./engine";
 
 /** Instances sampled to read a choice family's option count from its answer
@@ -19,6 +20,8 @@ export function responseGuessChance(response: ProblemResponse): number {
   if (response.kind === "point-plot") return pointPlotGuessChance(response);
   if (response.kind === "multi-part-choice")
     return multiPartGuessChance(response);
+  if (response.kind === "figure-choice")
+    return figureChoiceGuessChance(response);
   if (response.kind !== "multi-select") return 0;
   const n = response.options.length,
     k = response.selectionCount;

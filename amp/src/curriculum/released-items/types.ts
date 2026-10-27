@@ -28,7 +28,8 @@ export type TemplateResponse = "numeric" | ResponseCapability;
 export const acceptedResponses: Readonly<
   Record<ResponseFormat, readonly TemplateResponse[]>
 > = {
-  choice: ["single-choice-v1", "numeric"],
+  // Figure choices answer "choose the graph" items whose options are drawn.
+  choice: ["single-choice-v1", "figure-choice-v1", "numeric"],
   numeric: ["numeric"],
   "multi-select": ["multi-select-v1"],
   "graph/drag": ["point-plot-v1", "multi-part-choice-v1"],

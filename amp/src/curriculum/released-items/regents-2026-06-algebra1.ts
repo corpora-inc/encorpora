@@ -363,10 +363,10 @@ export const regentsAlgebra1June2026 = defineLedger(
       standards: ["N-Q.A"],
       archetypeIds: ["ratio.units"],
       demand: "Convert rods to inches through yards and feet",
-      status: "partial",
-      templateIds: ["unit-chain-conversion"],
+      status: "covered",
+      templateIds: ["unit-chain-conversion", "conversion-chain-story"],
       limitations:
-        "Every factor is stated in the family's problems; the item expects the inches per foot to be recalled.",
+        "conversion-chain-story (length-recalled) converts rods through yards and feet to inches, with the 3 feet per yard and 12 inches per foot recalled by the learner; choices are plain numbers, so numeric entry fits.",
     },
     {
       section: "Part I",

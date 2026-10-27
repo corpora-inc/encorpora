@@ -166,10 +166,10 @@ export const staar2024Grade6 = defineLedger(
       archetypeIds: ["measure.customary-units"],
       demand:
         "Convert one and a half gallons to cups using the reference chart",
-      status: "partial",
-      templateIds: ["customary-unit-rename"],
+      status: "covered",
+      templateIds: ["customary-unit-rename", "conversion-chain-story"],
       limitations:
-        "customary-unit-rename states the larger-to-smaller equivalence in the item; chaining gallons, quarts, pints and cups with a decimal count is not practiced.",
+        "conversion-chain-story (capacity-chart) chains gallons, quarts, pints and cups from a stated chart for a decimal or mixed-number amount; choices are plain numbers, so numeric entry fits.",
     },
     {
       item: { number: "13", page: "rationale PDF p.15" },
@@ -295,10 +295,10 @@ export const staar2024Grade6 = defineLedger(
       archetypeIds: ["finance.fee-compare"],
       demand:
         "Compare the total fees at two banks from monthly charges and overdraft charges",
-      status: "partial",
-      templateIds: ["linear-model-value"],
+      status: "covered",
+      templateIds: ["linear-model-value", "fee-plan-chain"],
       limitations:
-        "linear-model-value writes a fee-and-rate model for one situation; computing and comparing two banks' combined charges is not practiced.",
+        "fee-plan-chain (compare-plans) totals each plan's monthly charges and per-event charges and finds how much more one costs; choices are plain amounts, so numeric entry fits.",
     },
     {
       item: { number: "24", page: "rationale PDF p.29" },

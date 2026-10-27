@@ -212,6 +212,16 @@ def solve(public):
         target = math.sin(math.radians(degree)) if 'the y-coordinate' in p else math.cos(math.radians(degree))
         return only(public,number_expr,target)
     if kind == 'similar-solid-volume':
+        if 'surface area' in p:
+            # Surface area scales by the square of the length factor, volume by its cube.
+            small_area = Q(match(r'smaller solid has surface area '+N+r' square centimeters',p)[1]); small_volume = Q(match(r'and volume '+N+r' cubic centimeters',p)[1])
+            if "larger solid's volume" in p:
+                large_area = Q(match(r'larger solid has surface area '+N+r' square centimeters',p)[1])
+                scale = math.isqrt((large_area/small_area).numerator); require(Q(scale)**2==large_area/small_area and large_area>small_area>0, 'Expected exact squared scale')
+                return str(small_volume*scale**3)
+            large_volume = Q(match(r'larger solid has volume '+N+r' cubic centimeters',p)[1])
+            ratio = large_volume/small_volume; scale = round(float(ratio)**(1/3)); require(Q(scale)**3==ratio and scale>1, 'Expected exact cubed scale')
+            return str(small_area*scale**2)
         if 'The smaller has volume' in p:
             small = Q(match(r'smaller has volume '+N,p)[1]); large = Q(match(r'larger has volume '+N,p)[1]); edge = Q(match(r'edge of '+N+r' cm',p)[1])
             ratio = large/small; scale = round(float(ratio)**(1/3)); require(Q(scale)**3==ratio, 'Expected exact cubed scale')
@@ -254,6 +264,21 @@ def solve(public):
         d = offset**2+4*area; root = math.isqrt(d.numerator)
         require(d.denominator==1 and root*root==d,'Expected exact positive area root')
         return only(public,number_expr,(-offset+root)/2)
+    if kind == 'exponential-time-scale' and 'four decimal places' in p:
+        m = match(r'P\(t\)='+N+r'\('+N+r'\)\^\{t/(\d+\.\d+)\}',p); start,factor,period = Q(m[1]),Q(m[2]),Q(m[3])
+        require(start>0 and factor>0 and factor!=1 and period>1,'Nontrivial positive exponential model required')
+        yearly = float(factor)**(1/float(period))
+        def rounded_model(s):
+            g = re.fullmatch(r'P\(t\)='+N+r'\((\d+\.\d{4})\)\^t',s)
+            require(g is not None and Q(g[1])==start,'Choice must be a yearly model with the same initial value')
+            return float(g[2])
+        # Each choice states a base rounded to four places: the key is the base within half a unit of the true yearly factor.
+        options = [(o,rounded_model(plain(o['label']))) for o in public['response']['options']]
+        require(len({v for _,v in options})==4,'Duplicate rounded bases')
+        keyed = [o['id'] for o,v in options if abs(v-yearly)<=0.00005+1e-12]
+        require(len(keyed)==1,'Expected exactly one correct rounded base')
+        require(all(abs(v-yearly)>=0.0005 for o,v in options if o['id']!=keyed[0]),'A distractor is within rounding of the key')
+        return keyed[0]
     if kind == 'exponential-time-scale':
         m = match(r'P\(t\)='+N+r'\('+N+r'\)\^\{t/(\d+)\}',p); start,factor,period = Q(m[1]),Q(m[2]),int(m[3])
         require(start>0 and factor>0 and factor!=1 and period>1,'Nontrivial positive exponential model required')
@@ -274,6 +299,13 @@ def solve(public):
             raise ValueError('Unknown exponential interpretation')
         return only(public,statement,('factor',period,factor),same=lambda a,b:a==b)
     if kind == 'symbolic-rational-exponent':
+        if (g := re.search(r'equivalent to x\^\{(\d+)/(\d+)\}',p)):
+            exponent = Q(int(g[1]),int(g[2]))
+            def radical(s):
+                m2 = re.fullmatch(r'\\sqrt(?:\[(\d+)\])?\{x(?:\^\{(\d+)\})?\}',s)
+                require(m2 is not None,'Unrecognized radical choice')
+                return Q(int(m2[2] or 1),int(m2[1] or 2))
+            return only(public,radical,exponent)
         m = match(r'equivalent to (1/)?\\sqrt\[(\d+)\]\{x\^\{(\d+)\}\}',p)
         exponent = Q(int(m[3]),int(m[2]))*(-1 if m[1] else 1)
         def power(s): return Q(match(r'^x\^\{(-?\d+(?:/\d+)?)\}$',s)[1])
@@ -306,8 +338,8 @@ def solve(public):
             require(stated==points,'Figure note disagrees with plotted observations')
         return options[errors.index(minimum)]['id']
     if kind == 'quadratic-parameter-root':
-        m = match(r'(-?\d+)x\^2([+-]\d+|\+\(-?\d+\))x\+c=0',p)
-        a,b = Q(m[1]),Q(m[2].replace('(','').replace(')','').removeprefix('+')); require(a!=0,'Not quadratic')
+        m = match(r'(-?\d*)x\^2([+-]\d+|\+\(-?\d+\))x\+c=0',p)
+        a,b = Q(1 if m[1]=='' else -1 if m[1]=='-' else int(m[1])),Q(m[2].replace('(','').replace(')','').removeprefix('+')); require(a!=0,'Not quadratic')
         return str(b*b/(4*a))
     if kind == 'rational-function-representation':
         if 'graphed function' in p:
@@ -397,6 +429,13 @@ def self_test():
     cases.append(item('degree-radian-conversion',r'An angle measures 180 degrees. Which expression gives its measure in radians?', [r'$\pi$',r'$\frac{\pi}{2}$',r'$2\pi$','$180$']))
     cases.append(item('quadratic-parameter-root',r'For which value of $c$ does $2x^2-12x+c=0$ have exactly one distinct real solution?',answer='18'))
     cases.append(item('quadratic-parameter-root',r'For which value of $c$ does $2x^2+12x+c=0$ have exactly one distinct real solution?',answer='18'))
+    cases.append(item('similar-solid-volume','Two solids are similar. The smaller solid has surface area 16 square centimeters and volume 47 cubic centimeters. The larger solid has surface area 400 square centimeters. What is the larger solid\'s volume, in cubic centimeters?',answer='5875'))
+    cases.append(item('similar-solid-volume','Two solids are similar. The smaller solid has surface area 23 square centimeters and volume 41 cubic centimeters. The larger solid has volume 328 cubic centimeters. What is the larger solid\'s surface area, in square centimeters?',answer='92'))
+    cases.append(item('symbolic-rational-exponent',r'For $x>0$, which expression is equivalent to $x^{1/3}$?', [r'$\sqrt[9]{x^{3}}$',r'$\sqrt[3]{x^{9}}$',r'$\sqrt[9]{x}$',r'$\sqrt[3]{x^{3}}$']))
+    cases.append(item('symbolic-rational-exponent',r'For $x>0$, which expression is equivalent to $x^{2/3}$?', [r'$\sqrt[6]{x^{4}}$',r'$\sqrt[4]{x^{6}}$',r'$\sqrt[6]{x^{2}}$',r'$\sqrt[3]{x^{4}}$']))
+    cases.append(item('exponential-time-scale',r'A population is modeled by $P(t)=80(1/2)^{t/12.4}$, where $t$ is in years. Which expression is an equivalent model with one factor per year? Each choice rounds the yearly factor to four decimal places.', [r'$P(t)=80\left(0.9456\right)^t$',r'$P(t)=80\left(1.0575\right)^t$',r'$P(t)=80\left(0.0403\right)^t$',r'$P(t)=80\left(0.9439\right)^t$']))
+    cases.append(item('quadratic-parameter-root',r'For which value of $c$ does $-3x^2+24x+c=0$ have exactly one distinct real solution?',answer='-48'))
+    cases.append(item('quadratic-parameter-root',r'For which value of $c$ does $-x^2+6x+c=0$ have exactly one distinct real solution?',answer='-9'))
     count=0
     def reject(bad):
         nonlocal count

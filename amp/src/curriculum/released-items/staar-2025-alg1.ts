@@ -43,7 +43,7 @@ export const staarAlgebra1 = defineLedger(
       status: "partial",
       templateIds: ["polynomial-subtraction", "polynomial-addition"],
       limitations:
-        "Related families add or subtract polynomials in x with integer coefficients; distributing decimal factors and two variables are not practiced.",
+        "The coefficients axis (tenths) adds and subtracts polynomials with decimal coefficients; distributing a decimal multiplier over binomials and two variables are not yet practiced.",
     },
     {
       item: {
@@ -561,10 +561,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["function.representations"],
       demand:
         "Choose the graph of a line with a given fractional slope and y-intercept",
-      status: "partial",
-      templateIds: ["graph-equation-choice", "graph-linear-equation"],
+      status: "covered",
+      templateIds: [
+        "graph-of-linear-rule",
+        "graph-equation-choice",
+        "graph-linear-equation",
+      ],
       limitations:
-        "graph-equation-choice picks an equation for a graph and graph-linear-equation plots points; choosing among drawn graphs for a fractional slope is not practiced.",
+        "graph-of-linear-rule chooses among four drawn lines for a slope, including 2/3, and a y-intercept stated in words, with the item's distractors: the slope's sign flipped and the intercept placed on the x-axis.",
     },
     {
       item: {
@@ -641,7 +645,7 @@ export const staarAlgebra1 = defineLedger(
       status: "partial",
       templateIds: ["geometric-sequence-rule", "geometric-rule-forms"],
       limitations:
-        "Related families find a term or an explicit rule of a geometric sequence; listing terms from a recursive rule with a decimal ratio is not practiced.",
+        "The number-domain axis (decimal-ratios) finds a term from a recursive rule with a decimal ratio and lists its terms in the explanation; choosing the first four generated terms is not yet an answer format.",
     },
     {
       item: {

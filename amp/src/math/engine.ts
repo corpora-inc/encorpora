@@ -17,6 +17,7 @@ import {
   multiPartChoiceTemplates,
   generateMultiPartChoiceProblem,
 } from "./multi-part-choice-practice";
+import { gradeFigureChoice, normalizeFigureChoice } from "./figure-choice";
 import {
   pointPlotTemplates,
   generatePointPlotProblem,
@@ -669,6 +670,8 @@ export function isValidResponse(
     return normalizePointPlot(problem.response, response) !== null;
   if (problem.response.kind === "multi-part-choice")
     return normalizeMultiPart(problem.response, response) !== null;
+  if (problem.response.kind === "figure-choice")
+    return normalizeFigureChoice(problem.response, response) !== null;
   return problem.response.kind === "choice"
     ? problem.response.options.some((option) => option.id === response)
     : normalizeAnswer(response) !== null;
@@ -696,6 +699,8 @@ export function gradeAnswer(
     );
   if (problem.public.response.kind === "multi-part-choice")
     return gradeMultiPart(problem.public.response, problem.answer, response);
+  if (problem.public.response.kind === "figure-choice")
+    return gradeFigureChoice(problem.public.response, problem.answer, response);
   if (problem.public.response.kind === "choice")
     return (
       isValidResponse(problem.public, response) && response === problem.answer

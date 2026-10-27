@@ -63,14 +63,15 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["inequality.context"],
       demand:
         "Choose the inequality for a one-time fee plus an hourly rate that must stay at or under a budget",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "inequality-from-context",
         "two-step-equation-model",
         "linear-model-value",
+        "fee-budget-inequality",
       ],
       limitations:
-        "inequality-from-context only offers x compared with a constant; two-step-equation-model chooses a fee-plus-rate equation, not an inequality; linear-model-value is numeric and solves rather than selects the model.",
+        "fee-budget-inequality (write-inequality) chooses the inequality for a one-time fee plus a per-unit cost that stays at most within a budget, among four inequalities.",
     },
     {
       section: "Math module 1",
@@ -372,10 +373,14 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Recover the extra-hour rate from a flat charge for the first hours and one total, then choose the slope-intercept rule",
-      status: "partial",
-      templateIds: ["linear-model-equation", "piecewise-evaluate"],
+      status: "covered",
+      templateIds: [
+        "linear-model-equation",
+        "piecewise-evaluate",
+        "fee-rule-choice",
+      ],
       limitations:
-        "linear-model-equation starts from a stated rate and start; piecewise-evaluate only evaluates a given 'base for the first units plus a rate for extra units' rule; none recovers the rate and rewrites it.",
+        "fee-rule-choice (recovered-rate) finds the rate for hours beyond a flat-fee allowance from one total and offers the rule in expanded slope-intercept form among four equations.",
     },
     {
       section: "Math module 1",
@@ -388,7 +393,7 @@ export const satPractice10 = defineLedger(
       status: "partial",
       templateIds: ["sat-entry-root-relations"],
       limitations:
-        "Quadratics are given in standard form; the item first expands and collects both sides before using the coefficients.",
+        "The equation-form axis (both-sides) collects terms from both sides before the coefficients give the sum of the solutions; products that must first be expanded on each side are not yet written.",
     },
     {
       section: "Math module 2",
@@ -657,10 +662,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["line.parallel-perpendicular"],
       demand:
         "Find the slope of a line perpendicular to a line given in standard form",
-      status: "partial",
+      status: "covered",
       templateIds: ["perpendicular-slopes"],
       limitations:
-        "Lines are always given by two points; the item's line is in standard form with a fractional answer.",
+        "The line-given axis (standard-form) states the reference line as ax + by = c, so the slope -a/b is read from the equation and the perpendicular slope is entered, often as a fraction.",
     },
     {
       section: "Math module 2",
@@ -696,10 +701,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["nonlinear.root-count"],
       demand:
         "Find the constant term that gives a quadratic with a negative leading coefficient exactly one solution",
-      status: "partial",
+      status: "covered",
       templateIds: ["quadratic-parameter-root"],
       limitations:
-        "Leading coefficients are always positive; the item has a negative leading coefficient and a negative answer.",
+        "The leading-sign axis (negative) gives a negative leading coefficient and a negative constant term; the choices are plain numbers.",
     },
     {
       section: "Math module 2",

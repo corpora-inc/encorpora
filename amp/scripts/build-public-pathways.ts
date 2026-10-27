@@ -8,9 +8,12 @@ import {
   bandLabel,
   layout,
   neighborhood,
-  relatedConnections,
-  connectionLabel,
 } from "../src/web/features/pathways/model";
+import {
+  neighborLabel,
+  skillNeighbors,
+  type Neighbor,
+} from "../src/web/features/pathways/neighbors";
 
 const origin = "https://amp.corpora.inc";
 const destination = new URL("../dist/", import.meta.url);
@@ -264,20 +267,25 @@ function skillPage(skill: (typeof skills)[number]) {
         )
         .join("")}</ul>`
     : "<p>Practice for this skill is being developed.</p>";
-  const next = dependents.get(skill.id) ?? [];
-  const related = relatedConnections(skills, skill.id);
-  const relatedList = related.length
-    ? `<ul>${related.map(({ skill: other, connection }) => `<li><a href="${skillUrl(other.id)}">${escapeHtml(other.title)}</a> · ${escapeHtml(bandLabel(other.gradeBand))}${connection ? ` · ${escapeHtml(connectionLabel(connection))}<p>${escapeHtml(connection.explanation)}</p>` : " · Shared foundations"}</li>`).join("")}</ul>`
-    : "<p>None listed.</p>";
+  const neighbors = skillNeighbors(skills, skill.id, { shared: true });
+  const neighborList = (items: Neighbor<(typeof skills)[number]>[]) =>
+    items.length
+      ? `<ul>${items
+          .map(({ skill: other, connection, source }) => {
+            const label = neighborLabel({ skill: other, connection, source });
+            return `<li><a href="${skillUrl(other.id)}">${escapeHtml(other.title)}</a> · ${escapeHtml(bandLabel(other.gradeBand))}${label ? ` · ${escapeHtml(label)}` : ""}${connection ? `<p>${escapeHtml(connection.explanation)}</p>` : ""}</li>`;
+          })
+          .join("")}</ul>`
+      : "<p>None listed.</p>";
   const content = `<main class="pathways-static">
     <nav><a href="/pathways">Explore the whole skill map</a></nav>
     <p class="grade">${escapeHtml(bandLabel(skill.gradeBand))}</p>
     <h1>${escapeHtml(skill.title)}</h1>
     <p>${escapeHtml(skill.description)}</p>
     <section><h2>Problem types</h2>${typeList}</section>
-    <section><h2>Builds on</h2>${skillLinks(skill.prerequisites)}</section>
-    <section><h2>Leads to</h2>${skillLinks(next.map((item) => item.id))}</section>
-    <section><h2>Related skills</h2>${relatedList}</section>
+    <section><h2>Builds on</h2>${neighborList(neighbors.buildsOn)}</section>
+    <section><h2>Leads to</h2>${neighborList(neighbors.leadsTo)}</section>
+    <section><h2>Related skills</h2>${neighborList(neighbors.related)}</section>
     <p><a href="/pathways">Open the interactive map</a> to explore lessons and skill connections.</p>
   </main>`;
   return page(

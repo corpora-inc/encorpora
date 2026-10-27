@@ -1,0 +1,165 @@
+/* Figure-choice responses: each option is a card holding a small graph or
+   number line. A card is one radio button: the whole card is the target.
+   Its figure is drawn at the width it was laid out for, so labels keep
+   their typeset size; the grid shows two cards across only where two fit at
+   that size, else one, and the stage scrolls. Selecting, checking and
+   feedback change colours and the reserved mark line, never a box. */
+.figure-choice {
+  flex: none;
+  container-type: inline-size;
+  width: 100%;
+  min-width: 0;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  border: 0;
+}
+.figure-choice-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-3);
+}
+/* Two 240 px figures and their card padding side by side. */
+@container (min-width: 540px) {
+  .figure-choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.figure-choice-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  min-height: var(--target-size);
+  margin: 0;
+  padding: var(--space-2) var(--space-3) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  /* The selection ring is drawn inside the border: the box never grows. */
+  box-shadow: inset 0 0 0 1px transparent;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
+}
+@media (hover: hover) {
+  .figure-choice:not(:disabled) .figure-choice-card:hover {
+    border-color: var(--color-primary);
+  }
+}
+.figure-choice-radio {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  pointer-events: none;
+}
+.figure-choice-card:has(.figure-choice-radio:focus-visible) {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.figure-choice-card[data-selected] {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+.figure-choice:disabled .figure-choice-card {
+  cursor: default;
+}
+/* Letter and mark share one reserved line above the figure. */
+.figure-choice-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 28px;
+}
+.figure-choice-letter {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  font-size: var(--text-label);
+  font-weight: 700;
+}
+.figure-choice-card[data-selected] .figure-choice-letter {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.figure-choice-mark {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: var(--text-label);
+  font-weight: 700;
+  line-height: 20px;
+  text-align: end;
+  white-space: nowrap;
+}
+.figure-choice-card[data-mark="correct"] {
+  border-color: var(--color-success-accent);
+  box-shadow: inset 0 0 0 2px var(--color-success-accent);
+}
+.figure-choice-card[data-mark="correct"] .figure-choice-mark {
+  color: var(--color-success-accent);
+}
+.figure-choice-card[data-mark="correct"] .figure-choice-letter {
+  background: var(--color-success);
+  color: var(--color-on-success);
+}
+.figure-choice-card[data-mark="chosen"] {
+  border-color: var(--color-danger-accent);
+  box-shadow: inset 0 0 0 2px var(--color-danger-accent);
+}
+.figure-choice-card[data-mark="chosen"] .figure-choice-mark {
+  color: var(--color-danger-accent);
+}
+.figure-choice-card[data-mark="chosen"] .figure-choice-letter {
+  background: var(--color-danger);
+  color: var(--color-on-danger);
+}
+.figure-choice-figure {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  pointer-events: none;
+}
+/* The stage's figure rule caps prompt figures by viewport height; option
+   figures keep their laid-out size and the stage scrolls instead. */
+.problem-content .figure-choice-figure > .figure {
+  display: block;
+  flex: none;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  margin: 0 auto;
+}
+
+/* The dock: the selection readout, then Check. */
+.figure-choice-form {
+  display: grid;
+  gap: var(--space-2);
+}
+.figure-choice-status {
+  margin: 0;
+  min-height: 20px;
+  font-size: var(--text-small);
+  line-height: 20px;
+  color: var(--color-muted-text);
+  /* Starts at a fixed edge: a new choice replaces the words without moving
+     the line's start, so the change is not a layout shift. */
+  text-align: start;
+  white-space: nowrap;
+}
+.figure-choice-form .figure-choice-check {
+  min-height: 52px;
+  margin-top: 0;
+  /* Choosing changes fill and text together, never a fade. */
+  transition: none;
+}
