@@ -46,10 +46,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["nonlinear.features"],
       demand:
         "Read the axis of symmetry and the vertex of a graphed parabola and choose the pair that names both",
-      status: "partial",
-      templateIds: ["parabola-vertex", "parabola-axis"],
-      limitations:
-        "The vertex family reads a graphed vertex and the axis family finds the line from points or intercepts, but each answers one feature. A choice of an axis equation and vertex pair, with the wrong-axis options x = k versus y = k, is not practiced.",
+      status: "covered",
+      templateIds: [
+        "parabola-vertex",
+        "parabola-axis",
+        "parabola-axis-vertex-graph",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -77,13 +80,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["nonlinear.absolute", "equation.graphical-solution"],
       demand:
         "Find the input where an absolute-value function and a linear function are equal",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "absolute-value-affine-equation",
         "graphical-solution-table",
+        "abs-equals-linear-unique",
       ],
-      limitations:
-        "Absolute-value equations are solved with one absolute value against a constant, and graphical solutions come from a table of two functions. Equating an absolute-value expression with a linear expression and reading the crossing is not practiced.",
+      limitations: "",
     },
     {
       section: "Part I",
@@ -96,10 +99,9 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["expression.factor"],
       demand:
         "Factor a monic trinomial with a negative middle term and a large negative constant",
-      status: "partial",
-      templateIds: ["monic-quadratic-factorization"],
-      limitations:
-        "Sampled trinomials have small constants such as 36. A constant of -120 with factors 20 and 6 needs a longer search than the family asks.",
+      status: "covered",
+      templateIds: ["monic-quadratic-factorization", "factor-large-trinomial"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -112,10 +114,9 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["expression.radical-simplify"],
       demand:
         "Combine square-root terms with unlike radicands and like radicands into one expression",
-      status: "partial",
-      templateIds: ["combine-square-roots"],
-      limitations:
-        "The family simplifies one square root into a coefficient times a root before combining. Collecting like radicals while an unlike radical stays separate is not practiced.",
+      status: "covered",
+      templateIds: ["combine-square-roots", "combine-unlike-radicals"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -128,10 +129,9 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["expression.polynomial-structure"],
       demand:
         "Choose the polynomial that has a stated degree, leading coefficient and constant term when terms are out of order",
-      status: "missing",
-      templateIds: [],
-      limitations:
-        "No family names the degree, leading coefficient or constant term of a polynomial written out of order.",
+      status: "covered",
+      templateIds: ["polynomial-structure"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -143,10 +143,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       standards: ["F-IF.A"],
       archetypeIds: ["function.identify"],
       demand: "Choose which of four graphs represents a function",
-      status: "partial",
-      templateIds: ["function-relation-test", "relation-function-choice"],
-      limitations:
-        "The families test equations, ordered pairs and tables. The vertical-line test on a drawn graph, including a sideways curve and a circle, is not practiced.",
+      status: "covered",
+      templateIds: [
+        "function-relation-test",
+        "relation-function-choice",
+        "graph-is-function",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -159,10 +162,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["exponential.context"],
       demand:
         "Read the starting value of an exponential growth model written as a rule",
-      status: "partial",
-      templateIds: ["structure-meaning", "exponential-model-rule"],
-      limitations:
-        "The meaning family asks what a coefficient represents and the rule family builds a rule from a context or graph. Choosing the starting value of a given growth rule as a number, ignoring the 1.08 factor, is not practiced.",
+      status: "covered",
+      templateIds: [
+        "structure-meaning",
+        "exponential-model-rule",
+        "exponential-initial-value",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -174,10 +180,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       standards: ["A-CED.A"],
       archetypeIds: ["nonlinear.literal"],
       demand: "Solve the surface-area formula of a cylinder for its height",
-      status: "partial",
-      templateIds: ["nonlinear-formula-isolate", "formula-isolate"],
-      limitations:
-        "The families isolate one variable in a product or a power. Moving a two-term sum before dividing by a variable that appears in only one of two terms is not practiced.",
+      status: "covered",
+      templateIds: [
+        "nonlinear-formula-isolate",
+        "formula-isolate",
+        "isolate-two-term-formula",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -190,10 +199,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["system.solve"],
       demand:
         "Choose the equation that results from substituting one equation into another",
-      status: "partial",
-      templateIds: ["linear-system-pair", "elimination-equivalent"],
-      limitations:
-        "The families check a solution pair and form combinations by elimination. Solving one equation for a variable with a coefficient of -1 and substituting it, with the sign of the substituted expression as the distractor, is not practiced.",
+      status: "covered",
+      templateIds: [
+        "linear-system-pair",
+        "elimination-equivalent",
+        "substitute-into-equation",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -206,13 +218,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["inequality.solve", "inequality.number-line"],
       demand:
         "Solve an inequality with the variable on both sides and choose its graph on a number line",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "grouped-linear-inequality",
         "inequality-number-line-choice",
+        "inequality-both-sides-number-line",
       ],
-      limitations:
-        "The inequality family solves with the variable on both sides and the number-line family matches a single inequality with its graph. Choosing the graph of a fractional endpoint from a two-sided solve is not practiced.",
+      limitations: "",
     },
     {
       section: "Part I",
@@ -239,10 +251,9 @@ export const regentsAlgebra1January2026 = defineLedger(
       standards: ["F-LE.A"],
       archetypeIds: ["bivariate.growth"],
       demand: "Choose the table of values that shows exponential decay",
-      status: "partial",
-      templateIds: ["linear-or-exponential"],
-      limitations:
-        "The family classifies a table as linear or exponential. Telling decay from growth and from other nonlinear tables with a repeating ratio less than 1 is not practiced.",
+      status: "covered",
+      templateIds: ["linear-or-exponential", "exponential-decay-table"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -254,10 +265,9 @@ export const regentsAlgebra1January2026 = defineLedger(
       standards: ["F-IF.A"],
       archetypeIds: ["nonlinear.input-output"],
       demand: "Evaluate a square-root function at a given input",
-      status: "partial",
-      templateIds: ["function-evaluation"],
-      limitations:
-        "Function evaluation is practiced with quadratic rules. A radical rule with a translated radicand is not practiced.",
+      status: "covered",
+      templateIds: ["function-evaluation", "radical-function-value"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -270,10 +280,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["nonlinear.transform"],
       demand:
         "Write the rule of a parabola shifted left from a rule already written in vertex form",
-      status: "partial",
-      templateIds: ["parabola-shift", "transform-equation"],
-      limitations:
-        "The families shift the basic parabola or a basic function. Shifting a function that already has a horizontal and a vertical shift and combining the new shift with the old one is not practiced.",
+      status: "covered",
+      templateIds: [
+        "parabola-shift",
+        "transform-equation",
+        "shift-function-notation",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -285,10 +298,9 @@ export const regentsAlgebra1January2026 = defineLedger(
       standards: ["F-IF.C"],
       archetypeIds: ["nonlinear.polynomial-zeros"],
       demand: "Find the zeros of a product of x and a difference of squares",
-      status: "partial",
-      templateIds: ["zeros-from-factors"],
-      limitations:
-        "The family reads zeros from linear factors. Factoring x squared minus 36 first, and counting x = 0 among the zeros, is not practiced.",
+      status: "covered",
+      templateIds: ["zeros-from-factors", "zeros-of-factored-product"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -301,10 +313,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["nonlinear.input-output"],
       demand:
         "Find the inputs that put a point with a given negative output on a parabola",
-      status: "partial",
-      templateIds: ["solve-square-cube-equation", "function-evaluation"],
-      limitations:
-        "Square equations are solved only for pure squares and functions are evaluated forward. Setting a quadratic equal to a negative output and solving the resulting trinomial is not practiced.",
+      status: "covered",
+      templateIds: [
+        "solve-square-cube-equation",
+        "function-evaluation",
+        "quadratic-negative-output",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -317,10 +332,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["probability.conditional"],
       demand:
         "Find the share of all purchases that fall in one cell of a two-way frequency table",
-      status: "partial",
-      templateIds: ["relative-frequency-percent", "two-way-missing"],
-      limitations:
-        "The families give a conditional share within a row or column or find a missing count. The joint relative frequency of one cell over the grand total is not practiced.",
+      status: "covered",
+      templateIds: [
+        "relative-frequency-percent",
+        "two-way-missing",
+        "two-way-share",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -333,10 +351,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["ratio.units"],
       demand:
         "Name the unit of a rate after a chain of conversion factors is multiplied",
-      status: "partial",
-      templateIds: ["unit-chain-conversion", "compound-unit-conversion"],
-      limitations:
-        "The families compute the converted number. Reading the resulting unit from the cancelled chain, here feet per second, is not practiced.",
+      status: "covered",
+      templateIds: [
+        "unit-chain-conversion",
+        "compound-unit-conversion",
+        "rate-unit-chain",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -349,10 +370,9 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["expression.exponent-rules"],
       demand:
         "Simplify a negative monomial with a coefficient raised to a power",
-      status: "partial",
-      templateIds: ["power-of-power-exponent"],
-      limitations:
-        "The family raises powers with exponent rules and entry of an exponent. A negative coefficient cubed together with a squared variable and a sign choice is not practiced.",
+      status: "covered",
+      templateIds: ["power-of-power-exponent", "negative-monomial-power"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -365,10 +385,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["function.average-rate-change"],
       demand:
         "Find the average rate of change of a table of decaying values over an interval to the nearest tenth",
-      status: "partial",
-      templateIds: ["average-rate-formula", "average-rate-display"],
-      limitations:
-        "The families use function values from a rule and read a displayed rate. A table with uneven years and a decimal result is not practiced.",
+      status: "covered",
+      templateIds: [
+        "average-rate-formula",
+        "average-rate-display",
+        "average-rate-table-rounded",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -395,10 +418,9 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["nonlinear.quadratic"],
       demand:
         "Choose the equation in completed-square form that has the same solutions as a quadratic equation",
-      status: "partial",
-      templateIds: ["complete-square-monic"],
-      limitations:
-        "The family rewrites an expression in completed-square form. Completing the square on both sides of an equation and keeping the constant balanced is not practiced.",
+      status: "covered",
+      templateIds: ["complete-square-monic", "complete-square-equation"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -411,10 +433,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["sequence.geometric"],
       demand:
         "Find the fourth term of a geometric sequence with a negative first term and a negative ratio",
-      status: "partial",
-      templateIds: ["geometric-sequence", "geometric-sequence-rule"],
-      limitations:
-        "Sampled first terms and ratios are positive. A negative ratio that alternates the sign of terms is not practiced.",
+      status: "covered",
+      templateIds: [
+        "geometric-sequence",
+        "geometric-sequence-rule",
+        "geometric-signed-term",
+      ],
+      limitations: "",
     },
     {
       section: "Part II",
@@ -427,10 +452,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["linear.solve"],
       demand:
         "Solve a linear equation with a grouped term and a variable term on each side",
-      status: "partial",
-      templateIds: ["grouped-linear-equation", "both-sides-linear-equation"],
-      limitations:
-        "Grouped terms and variables on both sides are practiced separately. Distributing a factor, combining the variable terms on one side and then solving for a fraction is not. The rating guide credits shown work, which AMP does not score.",
+      status: "covered",
+      templateIds: [
+        "grouped-linear-equation",
+        "both-sides-linear-equation",
+        "grouped-both-sides-solve",
+      ],
+      limitations: "",
     },
     {
       section: "Part II",
@@ -443,9 +471,9 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["exponential.graph", "graph.draw-nonlinear"],
       demand: "Graph an exponential function over a stated interval of inputs",
       status: "partial",
-      templateIds: ["exponential-model-value"],
+      templateIds: ["exponential-model-value", "graph-exponential-points"],
       limitations:
-        "Only values of an exponential rule are practiced, by entry. Plotting the points on an interval and drawing the curve has no protocol, and point plotting accepts only lines.",
+        "exponential-model-value gives values by entry and graph-exponential-points places three lattice points of an exponential function with base 2, 3, one half or one third. A stated interval of inputs with a decimal or fractional base, and the drawn curve between the points, are not required.",
     },
     {
       section: "Part II",
@@ -506,10 +534,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["inequality.context"],
       demand:
         "Find the greatest whole number of items that fit a budget after a fixed expense",
-      status: "partial",
-      templateIds: ["first-cheaper-whole-input", "inequality-from-context"],
-      limitations:
-        "The families find a whole-number threshold between two plans and choose an inequality for a context. Writing and solving the budget inequality and rounding down a decimal bound is not practiced, and the guide credits shown work.",
+      status: "covered",
+      templateIds: [
+        "first-cheaper-whole-input",
+        "inequality-from-context",
+        "budget-whole-items",
+      ],
+      limitations: "",
     },
     {
       section: "Part III",

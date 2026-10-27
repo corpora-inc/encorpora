@@ -45,10 +45,12 @@ export const regentsGeometryJune2026 = defineLedger(
       standards: ["G-CO.A"],
       archetypeIds: ["transformation.invariants"],
       demand: "Identify the transformation that changes a rectangle's area",
-      status: "partial",
-      templateIds: ["transformation-invariant-claims"],
-      limitations:
-        "The family decides which transformations keep distance and angle; asking which of four, including a vertical stretch, changes area is not sampled.",
+      status: "covered",
+      templateIds: [
+        "transformation-invariant-claims",
+        "geo-area-changing-transformation",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -113,10 +115,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["triangle.congruence-transformations"],
       demand:
         "Name the side that is the image of a given side after two reflections",
-      status: "partial",
-      templateIds: ["transformation-sequence-mapping"],
-      limitations:
-        "The family chooses a transformation sequence from coordinates; tracing a labeled side through successive reflections in a diagram is not practiced.",
+      status: "covered",
+      templateIds: ["transformation-sequence-mapping", "geo-reflection-side"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -129,10 +130,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["line.parallel-perpendicular"],
       demand:
         "Decide whether two lines given by equations are parallel, perpendicular, identical or neither",
-      status: "partial",
-      templateIds: ["perpendicular-slopes"],
-      limitations:
-        "The family enters one intercept or coordinate; classifying a pair of equations into four cases is not practiced.",
+      status: "covered",
+      templateIds: ["perpendicular-slopes", "geo-line-pair-relationship"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -175,10 +175,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["triangle.trig-ratio", "triangle.altitude-hypotenuse"],
       demand:
         "Choose the ratio equation for an altitude in a right triangle's sub-triangle",
-      status: "partial",
-      templateIds: ["trig-ratio"],
-      limitations:
-        "Trig ratios are entered for a whole right triangle; choosing among equations that use a ratio in the sub-triangles formed by an altitude is not practiced.",
+      status: "covered",
+      templateIds: ["trig-ratio", "geo-altitude-ratio"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -191,10 +190,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["shape.symmetry"],
       demand:
         "Find the regular polygon that maps to itself under both 120 and 180 degree rotations",
-      status: "partial",
-      templateIds: ["polygon-symmetry-counts"],
-      limitations:
-        "The family counts the rotations of a given polygon; working backward from two rotation angles to the polygon is not practiced.",
+      status: "covered",
+      templateIds: ["polygon-symmetry-counts", "geo-polygon-rotation"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -207,10 +205,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["coordinate.segment-partition"],
       demand:
         "Find the coordinates of the point that divides a segment in a 1:4 ratio",
-      status: "partial",
-      templateIds: ["segment-partition"],
-      limitations:
-        "The family enters one coordinate at a time with positive ratios; choosing a coordinate pair is not practiced.",
+      status: "covered",
+      templateIds: ["segment-partition", "geo-segment-partition-point"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -222,10 +219,13 @@ export const regentsGeometryJune2026 = defineLedger(
       standards: ["G-SRT.A"],
       archetypeIds: ["transformation.dilation"],
       demand: "Find the scale factor and the center of a graphed dilation",
-      status: "partial",
-      templateIds: ["dilation-scale-factor", "dilation-measure"],
-      limitations:
-        "Scale factor is found for centers at the origin and images for other centers; finding both from a graph with a center off the origin is not practiced.",
+      status: "covered",
+      templateIds: [
+        "dilation-scale-factor",
+        "dilation-measure",
+        "geo-dilation-center",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -238,10 +238,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["circle.coordinate"],
       demand:
         "Read the center and radius from a circle equation that must be rearranged first",
-      status: "partial",
-      templateIds: ["circle-equation"],
-      limitations:
-        "The family completes squares for the center and radius but enters one value; choosing a center and radius pair from a rearranged general form is not practiced.",
+      status: "covered",
+      templateIds: ["circle-equation", "geo-circle-general-form"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -335,10 +334,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["triangle.complement"],
       demand:
         "Solve a sine equals cosine condition and report the smallest angle of the triangle",
-      status: "partial",
-      templateIds: ["complementary-trig"],
-      limitations:
-        "The family solves for the variable or an angle; reporting the smallest angle from two expressions is an extra step.",
+      status: "covered",
+      templateIds: ["complementary-trig", "geo-complementary-trig-choice"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -351,10 +349,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["solid.cross-section"],
       demand:
         "Identify which polygon cannot be a plane section of a rectangular prism",
-      status: "partial",
-      templateIds: ["cross-section-shape"],
-      limitations:
-        "The family names the section of a described slice; deciding which of four shapes is impossible is not practiced.",
+      status: "covered",
+      templateIds: ["cross-section-shape", "geo-section-impossible"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -399,10 +396,13 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["triangle.relationships", "measure.scale"],
       demand:
         "Find a perimeter from triangles made similar by parallel segments",
-      status: "partial",
-      templateIds: ["similar-triangle-side"],
-      limitations:
-        "The family finds one missing side; establishing similarity from alternate angles and combining the sides into a perimeter is not practiced.",
+      status: "covered",
+      templateIds: [
+        "similar-triangle-side",
+        "geo-parallel-segment-length",
+        "geo-parallel-perimeter",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -415,10 +415,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["transformation.dilation"],
       demand:
         "Decide how a dilation of a line about a point on it changes its slope and intercept",
-      status: "partial",
-      templateIds: ["dilation-measure"],
-      limitations:
-        "The family keeps slopes and angles and finds images; comparing slopes and intercepts across statements is not practiced.",
+      status: "covered",
+      templateIds: ["dilation-measure", "geo-dilation-line-center"],
+      limitations: "",
     },
     {
       section: "Part II",
@@ -481,9 +480,13 @@ export const regentsGeometryJune2026 = defineLedger(
       demand:
         "Find the segment length that makes a line parallel to a triangle's side",
       status: "partial",
-      templateIds: ["similarity-theorem-length", "similar-triangle-side"],
+      templateIds: [
+        "similarity-theorem-length",
+        "similar-triangle-side",
+        "geo-parallel-segment-length",
+      ],
       limitations:
-        "Families use parallel segments to find lengths; the converse that chooses a length proving parallelism is not practiced, and the first is a choice family. The rating guide credits shown work, which AMP does not score.",
+        "geo-parallel-segment-length practices the length that makes the segment parallel by entry. The rating guide credits shown work, which AMP does not score.",
     },
     {
       section: "Part II",
@@ -543,10 +546,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["triangle.trig-ratio"],
       demand:
         "Find a height from elevation and depression angles at the same spot",
-      status: "partial",
-      templateIds: ["trig-context-triangle"],
-      limitations:
-        "The family has one angle and one right triangle and is choice-only; adding two triangle heights is not practiced. The rating guide credits shown work, which AMP does not score.",
+      status: "covered",
+      templateIds: ["trig-context-triangle", "geo-elevation-depression"],
+      limitations: "",
     },
     {
       section: "Part III",

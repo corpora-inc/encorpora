@@ -97,13 +97,13 @@ All 106 questions of the June 2026 Regents Examinations in Algebra I (35), Geome
 
 | Exam | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: |
-| Algebra I | 10 (28.6%) | 24 (68.6%) | 1 (2.9%) |
-| Geometry | 16 (45.7%) | 19 (54.3%) | 0 (0%) |
-| Algebra II | 6 (16.7%) | 30 (83.3%) | 0 (0%) |
+| Algebra I | 25 (71.4%) | 10 (28.6%) | 0 (0%) |
+| Geometry | 29 (82.9%) | 6 (17.1%) | 0 (0%) |
+| Algebra II | 26 (72.2%) | 10 (27.8%) | 0 (0%) |
 
-Part I multiple choice is 72 of 106 items and 27 of them are covered. The 34 constructed-response items are the main gap: 6 require a drawn graph (graph/drag) and 18 a written expression, construction, proof or explanation (constructed), and AMP has no protocol that can take either. The graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. The remaining 10 constructed-response items ask for one number and are numeric, but the rating guides also credit shown work, which AMP does not score, so five are covered. One item has no related family: graphing an absolute-value function.
+Of the 72 multiple-choice items, 71 are covered. The remaining gaps are the 24 items that need a drawn graph (6, graph/drag) or a written expression, construction, proof or explanation (18, constructed), which AMP cannot take for response (written responses await rubric review) or can take only as lattice points on a curve (point plotting). The graph items need the whole curve over a domain, shaded regions or scaled sketches. Of the 10 numeric items, 9 are covered; the rating guides also credit shown work, which AMP does not score, so those items are covered on their final numeric answer, as the first five were. One numeric item (Geometry 28) stays partial because its guide credits the work itself.
 
-The largest remaining gaps among multiple-choice items are the Algebra I and Algebra II families that stop short on one feature: decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations, fractional ratios in series, a circle with a line, and graph-reading items that compare a plotted curve with a rule. Parallelogram and rhombus conditions, factoring with a common factor or a nonmonic square, density and volume chains, exponent rules, zeros of nonmonic factors, polynomials built from their structure and growth rates read from exponential bases are now practiced.
+The multiple-choice gaps that remain are narrow: the radian measure of a drawn angle (Algebra II 13). Decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations, fractional ratios in series, a circle with a line, and graph-reading items that compare a plotted curve with a rule are now practiced, along with the dilation, rigid-motion, parallel-segment and altitude items of Geometry, normal-distribution probabilities, and choosing among drawn graphs for functions, inequalities and logarithms.
 
 Each exam still added 8 to 11 archetypes that earlier sources had not used and 58 to 77 percent of its questions fell on archetypes already seen, so the high-school task set is not saturated; the SAT, STAAR and MCAS sources saw few of these tasks. Fourteen archetypes were minted for tasks no existing archetype named.
 
@@ -114,15 +114,15 @@ All 107 questions of the January 2026 Regents Examinations in Algebra I (35), Ge
 
 | Exam | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: |
-| Algebra I | 3 (8.6%) | 31 (88.6%) | 1 (2.9%) |
-| Geometry | 2 (5.7%) | 32 (91.4%) | 1 (2.9%) |
-| Algebra II | 2 (5.4%) | 34 (91.9%) | 1 (2.7%) |
+| Algebra I | 26 (74.3%) | 9 (25.7%) | 0 (0%) |
+| Geometry | 29 (82.9%) | 6 (17.1%) | 0 (0%) |
+| Algebra II | 25 (67.6%) | 12 (32.4%) | 0 (0%) |
 
-Of the 107 questions, 72 are multiple choice, 10 numeric, 6 graph and 19 constructed response. No question is covered unless a family practices the same task in a protocol that takes the response; 6 of 72 choice questions and 1 of 10 numeric questions are covered. Only three questions have no related practice: building a polynomial from its degree, leading coefficient and constant term, the centroid of a triangle, and a normal-distribution probability between two values.
+Of the 107 questions, 72 are multiple choice, 10 numeric, 6 graph and 19 constructed response. No question is covered unless a family practices the same task in a protocol that takes the response; 70 of 72 choice questions and all 10 numeric questions are covered; every question now has related practice, including the three that had none: building a polynomial from its degree, leading coefficient and constant term, the centroid of a triangle, and a normal-distribution probability between two values.
 
 The January exams are far closer to saturation than the June exams. Each added 2, 4 and 5 archetypes that no earlier source had used, against 8 to 11 for June, and 87 to 94 percent of their questions fell on archetypes already seen, against 58 to 77 percent for June. Two archetypes were minted (the centroid and the graph of a logarithm). Of the 98 archetypes the three January exams use, 69 appear in the June exams. The 11 first used in January are narrow tasks: Algebra I added graphical solution of two functions and interpreting a fitted model; Geometry added identifying and placing images under rigid motions, whole trips for a volume, quadrilateral claims from coordinates and the centroid; Algebra II added sinusoid models, parabola focus and directrix, trigonometric identities, simulation judgments and the graph of a logarithm.
 
-The gaps match June: constructed response (19 questions) and graph drawing (6) have no protocol, and most partials are a representation change, such as reading a figure instead of coordinates, choosing among written forms, rounding a calculator decimal, or chaining two single-step families.
+The gaps match June: constructed response (19 questions) has no protocol and graph drawing (6) takes only lattice points on a curve. Two choice items remain partial, the angle chain through a perpendicular segment (Geometry 15) and the polynomial rule matching a sketch with a nonmonic factor (Algebra II 15).
 
 A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Response format agreed on 11 (100%), archetypes overlapped on 11 (100%), status on 9 (81.8%) and templates on 9 (81.8%). Two disagreements were resolved against the first labeler's status or citations: a family that draws a triangle and its image covers choosing a rigid motion (Geometry 1), and a family that reads logarithmic graphs is related practice for choosing a logarithm graph, so that question is partial instead of missing (Algebra II 4). One citation was widened to the family that interprets a coefficient (Algebra I 8).
 

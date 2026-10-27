@@ -46,10 +46,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["expression.exponent-rules"],
       demand:
         "Solve an exponential equation whose two sides are powers of different powers of 3",
-      status: "partial",
-      templateIds: ["same-base-equation"],
-      limitations:
-        "The family solves equations in which one side is a power of the base and the other a constant. Rewriting both 27 and 9 as powers of 3 and solving the resulting linear equation is not practiced.",
+      status: "covered",
+      templateIds: ["same-base-equation", "common-base-exponential"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -62,10 +61,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["expression.factor"],
       demand:
         "Factor a trinomial written in terms of a binomial treated as one quantity",
-      status: "partial",
-      templateIds: ["structure-rewrite"],
-      limitations:
-        "The family rewrites perfect squares and a difference of squares in a grouped quantity. Factoring a general trinomial in x minus 4 and expressing the result in x is not practiced.",
+      status: "covered",
+      templateIds: ["structure-rewrite", "shifted-trinomial-factor"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -78,10 +76,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["study.scope"],
       demand:
         "Decide whether a described study is an experiment or an observational study and give the reason",
-      status: "partial",
-      templateIds: ["study-design-choice"],
-      limitations:
-        "The family decides which conclusion a randomized design justifies or which study can show cause. Classifying a described study and choosing the sentence that gives its reason is not practiced.",
+      status: "covered",
+      templateIds: ["study-design-choice", "study-design-classify"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -93,10 +90,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       standards: ["F-IF.C"],
       archetypeIds: ["logarithm.graph"],
       demand: "Choose the graph of a logarithm with a base between 0 and 1",
-      status: "partial",
-      templateIds: ["function-graph-features"],
-      limitations:
-        "The family reads the domain, asymptote or intercept of a drawn logarithmic graph. Matching a rule whose base is one half with its graph from four graphs, where the curve falls instead of rising, is not practiced.",
+      status: "covered",
+      templateIds: ["function-graph-features", "log-base-fraction-graph"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -108,10 +104,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       standards: ["F-TF.B"],
       archetypeIds: ["trig.sinusoid-model"],
       demand: "Choose the cosine equation of a tide read from its graph",
-      status: "partial",
-      templateIds: ["sinusoid-model"],
-      limitations:
-        "The family builds a function from a stated maximum, minimum and period. Reading the maximum, minimum and the 12 hour period from a plotted graph with a vertical shift is not practiced.",
+      status: "covered",
+      templateIds: ["sinusoid-model", "tide-cosine-equation"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -124,10 +119,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["complex.quadratic"],
       demand:
         "Solve a quadratic with nonreal solutions and a leading coefficient of 3",
-      status: "partial",
-      templateIds: ["complex-quadratic-solve"],
-      limitations:
-        "Sampled quadratics are monic or have even coefficients that simplify. A non-monic quadratic whose roots are fractions with an imaginary part under a radical is not practiced.",
+      status: "covered",
+      templateIds: ["complex-quadratic-solve", "nonmonic-complex-quadratic"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -140,10 +134,13 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["circle.unit-trig"],
       demand:
         "Choose the trigonometric value equal to the sine of two thirds of pi",
-      status: "partial",
-      templateIds: ["trig-symmetry-value", "special-angle-exact-value"],
-      limitations:
-        "The families evaluate or relate values of one function. Matching a sine of 2 pi over 3 with a cosine or tangent of another special angle is not practiced.",
+      status: "covered",
+      templateIds: [
+        "trig-symmetry-value",
+        "special-angle-exact-value",
+        "special-angle-match",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -156,10 +153,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["function.inverse"],
       demand:
         "Find a function from its inverse, a cube root of a linear expression",
-      status: "partial",
-      templateIds: ["inverse-expression"],
-      limitations:
-        "The family inverts quadratics with a restricted domain. Inverting a cube root and reading the original as a cube and a quotient is not practiced.",
+      status: "covered",
+      templateIds: ["inverse-expression", "inverse-exponential-root"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -172,10 +168,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["distribution.normal"],
       demand:
         "Find the probability that a normally distributed height falls between two values",
-      status: "missing",
-      templateIds: [],
-      limitations:
-        "The normal-model family uses the 68-95-99.7 rule and comparison of z-scores. No family finds a probability between two arbitrary values of a normal distribution by calculator.",
+      status: "covered",
+      templateIds: ["normal-probability"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -188,10 +183,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["nonlinear.system"],
       demand:
         "Classify the solution of a circle and a vertical line as rational, irrational or imaginary",
-      status: "partial",
-      templateIds: ["nonlinear-system-solve"],
-      limitations:
-        "The family solves a line and a parabola. Substituting into a circle and classifying the number type of both coordinates is not practiced.",
+      status: "covered",
+      templateIds: ["nonlinear-system-solve", "circle-line-system"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -204,10 +198,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["expression.factor"],
       demand:
         "Decide which factored forms equal a quartic binomial with a common factor",
-      status: "partial",
-      templateIds: ["polynomial-factoring-patterns"],
-      limitations:
-        "The family chooses a complete factorization of one quartic. Testing four candidate forms, including fractional factors, and selecting the true set is not practiced.",
+      status: "covered",
+      templateIds: ["polynomial-factoring-patterns", "quartic-factored-form"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -220,10 +213,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["exponential.form"],
       demand:
         "Choose the expression that models monthly growth from an annual growth rate",
-      status: "partial",
-      templateIds: ["exponential-time-scale"],
-      limitations:
-        "The family rewrites between time scales with whole-number ratios of bases. A decimal annual factor rewritten with a monthly rate and an exponent of 12t is not practiced.",
+      status: "covered",
+      templateIds: ["exponential-time-scale", "growth-model-rewrite"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -236,10 +228,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["expression.polynomial-division"],
       demand:
         "Choose the graph of a polynomial that leaves remainder zero when divided by x minus 4",
-      status: "partial",
-      templateIds: ["remainder-theorem"],
-      limitations:
-        "The family finds a remainder or a constant that makes a binomial a factor, by entry. Reading a zero at x = 4 from a graph is not practiced.",
+      status: "covered",
+      templateIds: ["remainder-theorem", "remainder-zero-graph"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -252,10 +243,13 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["expression.radical"],
       demand:
         "Rewrite a product and quotient of a cube root and powers of a as one power of a",
-      status: "partial",
-      templateIds: ["symbolic-rational-exponent", "rational-power"],
-      limitations:
-        "The families rewrite one radical as a rational exponent or evaluate a numeric power. Combining a root, a product of powers and a quotient into one fractional exponent is not practiced.",
+      status: "covered",
+      templateIds: [
+        "symbolic-rational-exponent",
+        "rational-power",
+        "rational-exponent-product",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -269,9 +263,13 @@ export const regentsAlgebra2January2026 = defineLedger(
       demand:
         "Choose the polynomial rule that matches a sketch with a leading negative sign and a repeated zero",
       status: "partial",
-      templateIds: ["zero-multiplicity", "polynomial-behavior-description"],
+      templateIds: [
+        "zero-multiplicity",
+        "polynomial-behavior-description",
+        "repeated-zero-rule",
+      ],
       limitations:
-        "The families match a graph that touches or crosses with a cubic and describe end behavior. Reading the sign of a nonmonic factor, positive zeros and a negative leading coefficient from a sketch is not practiced.",
+        "repeated-zero-rule chooses the factored rule of a drawn cubic with one double zero, one simple zero and a negative leading coefficient, all monic in their factors. A nonmonic factor and positive-only zeros are not practiced.",
     },
     {
       section: "Part I",
@@ -299,10 +297,13 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["expression.rational", "expression.polynomial-division"],
       demand:
         "Choose the factored form equivalent to a cubic divided by a linear binomial",
-      status: "partial",
-      templateIds: ["rational-expression-simplify", "polynomial-quotient"],
-      limitations:
-        "The families cancel a common factor and divide by x minus a. Dividing a cubic by a binomial with a leading coefficient of 3 and choosing the factored quotient is not practiced.",
+      status: "covered",
+      templateIds: [
+        "rational-expression-simplify",
+        "polynomial-quotient",
+        "cubic-quotient-factored",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -315,10 +316,13 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["nonlinear.quadratic", "linear.step-justification"],
       demand:
         "Decide which first steps of completing the square on a quadratic equation are correct",
-      status: "partial",
-      templateIds: ["equation-step-property", "complete-square-monic"],
-      limitations:
-        "The families give reasons for linear steps and complete the square on an expression. Judging three different first steps, including an invalid zero-product step, is not practiced.",
+      status: "covered",
+      templateIds: [
+        "equation-step-property",
+        "complete-square-monic",
+        "complete-square-first-steps",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -331,10 +335,13 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["sequence.rule-forms", "sequence.recursive"],
       demand:
         "Choose the recursive rule for the value of an item that loses a percent of its value each year",
-      status: "partial",
-      templateIds: ["geometric-rule-forms", "series-recursion"],
-      limitations:
-        "The families translate between recursive and explicit forms of a geometric sequence. Converting a percent depreciation to a ratio of one minus the rate in a recursive rule is not practiced.",
+      status: "covered",
+      templateIds: [
+        "geometric-rule-forms",
+        "series-recursion",
+        "depreciation-recursion",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -347,10 +354,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["conic.parabola"],
       demand:
         "Find a possible vertex of a parabola from its directrix and the distance of its focus",
-      status: "partial",
-      templateIds: ["parabola-focus-directrix"],
-      limitations:
-        "The family gives the focus and directrix as coordinates. A focus described only by its distance from the directrix, and a vertex halfway between them, is not practiced.",
+      status: "covered",
+      templateIds: ["parabola-focus-directrix", "parabola-vertex-distance"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -366,10 +372,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       ],
       demand:
         "Count the solutions of an equation that sets a rational expression equal to an absolute-value expression",
-      status: "partial",
-      templateIds: ["graphical-solution-table"],
-      limitations:
-        "The family brackets one solution from a table of a quadratic and a line. Graphing a rational function against an absolute-value function and counting their intersections is not practiced.",
+      status: "covered",
+      templateIds: ["graphical-solution-table", "rational-abs-solution-count"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -382,10 +387,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["trig.identity"],
       demand:
         "Find the cosine of an angle in the second quadrant from its tangent",
-      status: "partial",
-      templateIds: ["trig-identity-value"],
-      limitations:
-        "The family finds a tangent from a given cosine and a sign. Using the quadrant to give the sign of a cosine from a tangent of minus 6 is not practiced.",
+      status: "covered",
+      templateIds: ["trig-identity-value", "tangent-quadrant-cosine"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -398,10 +402,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["sequence.series-sum"],
       demand:
         "Find the total of six annual payments that grow by 8 percent a year",
-      status: "partial",
-      templateIds: ["geometric-series-sum"],
-      limitations:
-        "The family sums a series with a whole-number ratio. A decimal ratio of 1.08 read from a percent increase, with a total rounded to the nearest dollar, is not practiced.",
+      status: "covered",
+      templateIds: ["geometric-series-sum", "geometric-series-total"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -414,10 +417,13 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["exponential.context"],
       demand:
         "Choose the true statement about an exponential model fit to three graphed points",
-      status: "partial",
-      templateIds: ["exponential-model-rule", "exponential-time-scale"],
-      limitations:
-        "The families build a rule from points and rewrite time scales. Testing the doubling time and the form of a model from decimal points is not practiced.",
+      status: "covered",
+      templateIds: [
+        "exponential-model-rule",
+        "exponential-time-scale",
+        "exponential-points-statement",
+      ],
+      limitations: "",
     },
     {
       section: "Part II",
@@ -430,10 +436,13 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["exponential.context", "logarithm.solve"],
       demand:
         "Find the time for an exponential model of a crowd to reach a target to the nearest hundredth",
-      status: "partial",
-      templateIds: ["exponential-log-solution", "log-equation"],
-      limitations:
-        "The families give an exact solution of an exponential equation by choice and solve a logarithmic equation by entry. Solving 250 times 1.8 to the t equal to 2000 as a rounded decimal is not practiced.",
+      status: "covered",
+      templateIds: [
+        "exponential-log-solution",
+        "log-equation",
+        "exponential-target-time",
+      ],
+      limitations: "",
     },
     {
       section: "Part II",
