@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "id": "01-when-it-clicks",
+  "title": "When it clicks, everything moves.",
+  "duration": 30,
+  "fps": 24,
+  "formats": ["portrait", "feed", "square", "wide"],
+  "generatedMedia": true,
+  "shots": [
+    {"id": "machine", "source": "$AMP_MEDIA_ROOT/2026-10-27/missing-piece-films/raw/mp2-machine-{orientation}-311.mp4",
+     "in": 0, "out": 3, "duration": 4.0, "retime": false, "transition": {"type": "fade", "duration": 0.25}},
+    {"id": "socket", "source": "$AMP_MEDIA_ROOT/2026-10-27/missing-piece-films/raw/mp2-socket-{orientation}-311.mp4",
+     "in": 0, "out": 5, "duration": 5.7, "transition": {"type": "fade", "duration": 0.25}},
+    {"id": "click", "source": "$AMP_MEDIA_ROOT/2026-10-27/missing-piece-films/raw/mp2-click-{orientation}-311.mp4",
+     "in": 0, "out": 5, "duration": 5.0, "transition": {"type": "fade", "duration": 0.25}},
+    {"id": "cascade", "source": "$AMP_MEDIA_ROOT/2026-10-27/missing-piece-films/raw/mp2-cascade-{orientation}-311.mp4",
+     "in": 0, "out": 5, "duration": 4.8, "transition": {"type": "fade", "duration": 0.25}},
+    {"id": "gateway", "source": "$AMP_MEDIA_ROOT/2026-10-27/missing-piece-films/raw/mp2-gateway-{orientation}-311.mp4",
+     "in": 0, "out": 5, "duration": 4.9, "transition": {"type": "fade", "duration": 0.25}},
+    {"id": "heaven", "source": "$AMP_MEDIA_ROOT/2026-10-27/missing-piece-films/raw/mp2-heaven-{orientation}-311.mp4",
+     "in": 0, "out": 5, "duration": 5.6}
+  ],
+  "cards": [
+    {"text": "One missing piece.", "start": 0.15, "end": 2.9}
+  ],
+  "endCard": {"start": 23.0, "cta": "Try AMP free"},
+  "voice": {
+    "voice": "Paul",
+    "voiceId": "<elevenlabs voice id: copy from the last batch's ads.json>",
+    "model": "eleven_v4",
+    "take": "$AMP_MEDIA_ROOT/2026-10-27/missing-piece-films/voices/01-when-it-clicks/take-1.mp3",
+    "script": "Sometimes, the hardest math problem starts with a little piece you missed along the way. Amp finds your level and helps you build the skills that connect. One question at a time. Adaptive Math Pathways. When it clicks, everything moves. Try Amp free.",
+    "transcriptVerified": true,
+    "segments": [
+      {"text": "Sometimes, the hardest math problem starts with a little piece you missed along the way.", "from": 0, "to": 4.92, "at": 3.1},
+      {"text": "Amp finds your level and helps you build the skills that connect.", "from": 4.92, "to": 8.68, "at": 9.7},
+      {"text": "One question at a time.", "from": 8.68, "to": 10.54, "at": 14.3},
+      {"text": "Adaptive Math Pathways.", "from": 10.54, "to": 12.4, "at": 23.0},
+      {"text": "When it clicks, everything moves.", "from": 12.4, "to": 14.64, "at": 25.0},
+      {"text": "Try Amp free.", "from": 14.64, "to": 16.0, "at": 28.0}
+    ]
+  },
+  "music": {
+    "title": "Let the Light In",
+    "path": "$AMP_MUSIC_POOL/let-the-light-in-instrumental.mp3",
+    "offset": 0,
+    "rights": "Corpora original instrumental from the owned music pool"
+  }
+}
