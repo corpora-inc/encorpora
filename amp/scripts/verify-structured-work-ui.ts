@@ -27,6 +27,7 @@ import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
+import { assertPhoneLandscapeSmoke } from "./ui-viewports";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
 if (!database) throw new Error("AMP_TEST_DATABASE_URL is required");
@@ -133,13 +134,14 @@ const workOf = (p: GeneratedProblem) => {
 /** Positions in the stage's scroll content, so a scroll is not a shift. */
 async function geometry(page: Page) {
   return page.evaluate(() => {
-    const stage = document.querySelector<HTMLElement>(".problem-stage")!;
     const box = (node: Element) => {
       const b = node.getBoundingClientRect();
-      const inStage = stage.contains(node);
+      const scroller = node.closest<HTMLElement>(
+        ".answer-editor, .problem-stage",
+      );
       return [
         Math.round(b.x * 10) / 10,
-        Math.round((b.y + (inStage ? stage.scrollTop : 0)) * 10) / 10,
+        Math.round((b.y + (scroller?.scrollTop ?? 0)) * 10) / 10,
         Math.round(b.width * 10) / 10,
         Math.round(b.height * 10) / 10,
       ];
@@ -186,7 +188,7 @@ async function observeShifts(page: Page) {
         w.__shift += shift.value;
         for (const source of shift.sources ?? [])
           w.__sources.push(
-            `${(source.node as Element | undefined)?.className ?? source.node?.nodeName} ${JSON.stringify(source.previousRect)} -> ${JSON.stringify(source.currentRect)}`,
+            `${(source.node as Element | undefined)?.outerHTML ?? source.node?.nodeName} ${JSON.stringify(source.previousRect)} -> ${JSON.stringify(source.currentRect)}`,
           );
       }
     }).observe({ type: "layout-shift", buffered: false });
@@ -286,10 +288,11 @@ try {
         [320, 568],
         [390, 844],
         [768, 1024],
+        [1024, 768],
         [1280, 800],
       ] as const
     ).filter(([w]) => !widths || widths.includes(w))) {
-      const touch = width <= 768;
+      const touch = width <= 1024;
       const context = await browser.newContext({
         viewport: { width, height },
         colorScheme: theme,
@@ -599,6 +602,39 @@ try {
         if (r.mode !== "order") assert.deepEqual(filled.prompt, before.prompt);
         await page.screenshot({ path: `${shots}/${tag}-filled.png` });
 
+        if (width === 1024) {
+          const draft = () =>
+            page
+              .locator(".work-input, .work-choice")
+              .evaluateAll((fields) =>
+                fields.map((field) =>
+                  field instanceof HTMLInputElement
+                    ? field.value
+                    : field.getAttribute("aria-label"),
+                ),
+              );
+          const entered = await draft();
+          await page.setViewportSize({ width: 768, height: 1024 });
+          await page.locator(".answer-editor").waitFor({ state: "detached" });
+          assert.deepEqual(
+            await draft(),
+            entered,
+            `${tag}: portrait retained draft`,
+          );
+          await page.setViewportSize({ width: 1024, height: 768 });
+          await page.locator(".answer-editor").waitFor();
+          assert.deepEqual(
+            await draft(),
+            entered,
+            `${tag}: landscape retained draft`,
+          );
+          assert.deepEqual(
+            (await geometry(page)).rows,
+            filled.rows,
+            `${tag}: rotation restored row geometry`,
+          );
+        }
+
         const sent = page.waitForRequest(
           (request) =>
             request.url().endsWith("/attempts") && request.method() === "POST",
@@ -644,6 +680,8 @@ try {
           );
           assert.match(text, /of \d+ steps correct/);
         }
+        if (await page.locator(".answer-editor").count())
+          await assertPhoneLandscapeSmoke(page, `${tag}: marked answer editor`);
         const after = await geometry(page);
         assert.deepEqual(
           after.rows,
@@ -666,6 +704,17 @@ try {
           );
         assert.equal(await shifts(page), 0, `${tag}: cumulative layout shift`);
         await page.screenshot({ path: `${shots}/${tag}-feedback.png` });
+        if (await page.locator(".feedback-details").count()) {
+          await page.locator(".feedback-details").evaluate((node) => {
+            node.scrollTop = node.scrollHeight;
+          });
+          await page.screenshot({
+            path: `${shots}/${tag}-feedback-details.png`,
+          });
+          await page.locator(".feedback-details").evaluate((node) => {
+            node.scrollTop = 0;
+          });
+        }
         const why = page.getByRole("button", { name: "See why", exact: true });
         if (await why.count()) await why.click();
         await page.locator(".feedback-steps").waitFor();
@@ -675,6 +724,65 @@ try {
             /Recheck step/,
           );
         await page.screenshot({ path: `${shots}/${tag}-explanation.png` });
+        if (width === 1024 && run.family === "solve-justify-linear") {
+          const explanation = page.getByRole("dialog", {
+            name: "Explanation",
+            exact: true,
+          });
+          const builds = explanation.getByRole("button", {
+            name: "Builds on",
+            exact: true,
+          });
+          await builds.click();
+          const connected = page.getByRole("dialog", {
+            name: "Builds on",
+            exact: true,
+          });
+          await connected.waitFor();
+          const ids = await page
+            .locator("dialog[open]")
+            .evaluateAll((dialogs) =>
+              dialogs.map((dialog) => dialog.getAttribute("aria-labelledby")),
+            );
+          assert.equal(
+            new Set(ids).size,
+            2,
+            `${tag}: nested dialogs have distinct accessible names`,
+          );
+          await connected
+            .getByRole("button", { name: "Close panel", exact: true })
+            .click();
+          await connected.waitFor({ state: "detached" });
+          assert.ok(
+            await builds.evaluate((node) => node === document.activeElement),
+          );
+          await builds.click();
+          await connected.waitFor();
+          await page.keyboard.press("Escape");
+          await connected.waitFor({ state: "detached" });
+          assert.ok(
+            await explanation.isVisible(),
+            `${tag}: Escape returns to explanation`,
+          );
+          assert.ok(
+            await builds.evaluate((node) => node === document.activeElement),
+          );
+          await builds.click();
+          await connected.waitFor();
+          await page.unroute(`**/api/v1/learners/${learner.id}/batches`);
+          await connected.locator(".dialog-content li button").first().click();
+          await page.locator("dialog[open]").waitFor({ state: "detached" });
+          await page.locator(".feedback").waitFor({ state: "detached" });
+        }
+        if (await page.locator("dialog[open]").count()) {
+          await page.keyboard.press("Escape");
+          await page.locator("dialog[open]").waitFor({ state: "detached" });
+          if (width >= 1024)
+            assert.ok(
+              await why.evaluate((node) => node === document.activeElement),
+              `${tag}: explanation restores trigger focus`,
+            );
+        }
         checked++;
       }
       await context.close();

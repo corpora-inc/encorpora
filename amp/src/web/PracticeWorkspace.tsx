@@ -40,6 +40,7 @@ import {
 import { structuredWorkAnswerText } from "../math/structured-work";
 import {
   useEffect,
+  useId,
   useLayoutEffect,
   useRef,
   useState,
@@ -76,6 +77,7 @@ export function FocusDialog({
   returnFocus?: HTMLElement | null;
   className?: string;
 }) {
+  const titleId = useId();
   const dialog = useRef<HTMLDialogElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   useLayoutEffect(() => {
@@ -95,14 +97,15 @@ export function FocusDialog({
     <dialog
       ref={dialog}
       className={`practice-dialog ${className}`}
-      aria-labelledby="practice-dialog-title"
+      aria-labelledby={titleId}
       onCancel={(event) => {
         event.preventDefault();
+        event.stopPropagation();
         close();
       }}
     >
       <div className="dialog-heading">
-        <h2 id="practice-dialog-title" ref={heading} tabIndex={-1}>
+        <h2 id={titleId} ref={heading} tabIndex={-1}>
           {title}
         </h2>
         <button
@@ -316,7 +319,9 @@ export function PracticeWorkspace(props: Props) {
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
-  const deferSteps = (!!plot || !!parts || !!figures || !!work) && !sideBySide;
+  const editorInDock = sideBySide && (!!work || !!figures);
+  const deferSteps =
+    editorInDock || ((!!plot || !!parts || !!figures || !!work) && !sideBySide);
   useEffect(() => {
     const media = matchMedia(answerLayoutQuery);
     const changed = () => setCompact(media.matches);
@@ -769,12 +774,187 @@ export function PracticeWorkspace(props: Props) {
       </>
     );
   }
+  function responseEditor() {
+    return (
+      <>
+        {work && (
+          <StructuredWorkInput
+            key={problem.id}
+            problemId={problem.id}
+            response={work}
+            value={outcome ? outcome.response : response}
+            onChange={setResponse}
+            locked={locked}
+            marks={outcome && !outcome.skipped ? (outcome.parts ?? null) : null}
+            small={small}
+          />
+        )}
+
+        {figures && (
+          <FigureChoiceInput
+            problemId={problem.id}
+            response={figures}
+            value={outcome ? outcome.response : response}
+            onChange={setResponse}
+            locked={locked}
+            review={
+              outcome
+                ? figureReview(figures, outcome.answer, outcome.response)
+                : null
+            }
+          />
+        )}
+      </>
+    );
+  }
+  function dockControls() {
+    return (
+      <>
+        <div
+          className="answer-controls"
+          style={outcome ? { visibility: "hidden" } : undefined}
+        >
+          {/* Floats just above the answer it explains, in either layout. */}
+          {inputError && !outcome && (
+            <p className="answer-error" role="alert">
+              {inputError}
+            </p>
+          )}
+          {compact ? (
+            <button
+              className="compact-answer-action"
+              disabled={busy}
+              onClick={() => setEntering(true)}
+            >
+              {compactAnswerLabel}
+            </button>
+          ) : (
+            answerControls()
+          )}
+        </div>
+        {/* Keeps its space under the feedback sheet so nothing moves. */}
+        <div style={outcome ? { visibility: "hidden" } : undefined}>
+          {tools()}
+        </div>
+      </>
+    );
+  }
+  function progressFeedback() {
+    return (
+      <>
+        {props.answerFeedback}
+        {props.mastered && (
+          <p className="mastery-moment">
+            <span className="mastery-mark" aria-hidden="true">
+              ★
+            </span>
+            <span>
+              <strong>Skill mastered</strong>
+              <span>{props.mastered}</span>
+            </span>
+          </p>
+        )}
+      </>
+    );
+  }
+  function feedbackDetails() {
+    if (!outcome) return null;
+    return (
+      <>
+        <div
+          className="feedback-head"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <span className="result-mark" aria-hidden="true">
+            {outcome.correct ? "✓" : skipped ? "→" : "✕"}
+          </span>
+          <span className="feedback-title">
+            {skipped ? (
+              <>
+                {answerLine(outcome.answer)}
+                <small>Skipped. Your progress is unchanged.</small>
+              </>
+            ) : outcome.correct ? (
+              <>
+                Correct
+                {support && <small>{capitalize(support)}</small>}
+              </>
+            ) : (
+              <>
+                {answerLine(outcome.answer)}
+                {work ? (
+                  // Each step is marked in the problem; the work stays
+                  // readable for screen readers.
+                  <small>
+                    {workSummary(work, outcome.parts)}
+                    <span className="sr-only">
+                      . Your last line:{" "}
+                      {spokenMath(displayResponse(outcome.response))}
+                    </span>
+                    {support && `, ${support}`}
+                  </small>
+                ) : parts ? (
+                  // Each part is marked in the problem; the sentence
+                  // stays for screen readers.
+                  <small>
+                    {partsSummary(parts, outcome)}
+                    <span className="sr-only">
+                      . You chose:{" "}
+                      {spokenMath(displayResponse(outcome.response))}
+                    </span>
+                    {support && `, ${support}`}
+                  </small>
+                ) : plot ? (
+                  // The grid shows the learner's points beside the
+                  // correct ones; the sentence stays for screen readers.
+                  <small>
+                    <span className="sr-only">
+                      You placed {spokenMath(displayResponse(outcome.response))}
+                      {support ? ", " : "."}
+                    </span>
+                    {support && capitalize(support)}
+                  </small>
+                ) : (
+                  <small>
+                    {problem.response.kind === "multi-select"
+                      ? "You selected "
+                      : figures
+                        ? "You chose "
+                        : "You entered "}
+                    <MathText text={displayResponse(outcome.response)} />
+                    {support && `, ${support}`}
+                  </small>
+                )}
+              </>
+            )}
+          </span>
+        </div>
+        {!editorInDock && progressFeedback()}
+        {((!outcome.correct && !deferSteps) || (showWhy && !editorInDock)) && (
+          <ol
+            className="feedback-steps"
+            // It scrolls when long, so keyboards must be able to reach it.
+            tabIndex={0}
+            aria-label="Explanation"
+          >
+            {outcome.explanation.map((step, index) => (
+              <li key={index} data-text={step}>
+                <MathText text={step} />
+              </li>
+            ))}
+          </ol>
+        )}
+      </>
+    );
+  }
   function tools(feedback = false) {
     return (
       <div className="practice-tools">
         {outcome ? (
           (outcome.correct || deferSteps) &&
-          !showWhy && (
+          (!showWhy || editorInDock) && (
             <button className="text-button" onClick={() => setShowWhy(true)}>
               See why
             </button>
@@ -1022,34 +1202,8 @@ export function PracticeWorkspace(props: Props) {
                 }
               />
             )}
-            {work && (
-              <StructuredWorkInput
-                key={problem.id}
-                problemId={problem.id}
-                response={work}
-                value={outcome ? outcome.response : response}
-                onChange={setResponse}
-                locked={locked}
-                marks={
-                  outcome && !outcome.skipped ? (outcome.parts ?? null) : null
-                }
-                small={small}
-              />
-            )}
-            {figures && (
-              <FigureChoiceInput
-                problemId={problem.id}
-                response={figures}
-                value={outcome ? outcome.response : response}
-                onChange={setResponse}
-                locked={locked}
-                review={
-                  outcome
-                    ? figureReview(figures, outcome.answer, outcome.response)
-                    : null
-                }
-              />
-            )}
+            {!sideBySide && work && responseEditor()}
+            {!sideBySide && figures && responseEditor()}
             {plot && (
               <PointPlotInput
                 response={plot}
@@ -1070,33 +1224,24 @@ export function PracticeWorkspace(props: Props) {
             </div>
           )}
         </div>
-        <div className="answer-dock" ref={dock}>
-          <div
-            className="answer-controls"
-            style={outcome ? { visibility: "hidden" } : undefined}
-          >
-            {/* Floats just above the answer it explains, in either layout. */}
-            {inputError && !outcome && (
-              <p className="answer-error" role="alert">
-                {inputError}
-              </p>
-            )}
-            {compact ? (
-              <button
-                className="compact-answer-action"
-                disabled={busy}
-                onClick={() => setEntering(true)}
-              >
-                {compactAnswerLabel}
-              </button>
-            ) : (
-              answerControls()
-            )}
-          </div>
-          {/* Keeps its space under the feedback sheet so nothing moves. */}
-          <div style={outcome ? { visibility: "hidden" } : undefined}>
-            {tools()}
-          </div>
+        <div
+          className={`answer-dock${sideBySide && (work || figures) ? " editor-dock" : ""}`}
+          ref={dock}
+        >
+          {sideBySide && (work || figures) && (
+            <section
+              className="answer-editor"
+              tabIndex={0}
+              aria-label={work ? "Your work" : "Your choices"}
+            >
+              {responseEditor()}
+            </section>
+          )}
+          {editorInDock ? (
+            <div className="editor-footer">{dockControls()}</div>
+          ) : (
+            dockControls()
+          )}
         </div>
         {calculatorOpen && !outcome && (
           <Calculator
@@ -1126,102 +1271,16 @@ export function PracticeWorkspace(props: Props) {
                 />
               </svg>
             )}
-            <div
-              className="feedback-head"
-              role="status"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              <span className="result-mark" aria-hidden="true">
-                {outcome.correct ? "✓" : skipped ? "→" : "✕"}
-              </span>
-              <span className="feedback-title">
-                {skipped ? (
-                  <>
-                    {answerLine(outcome.answer)}
-                    <small>Skipped. Your progress is unchanged.</small>
-                  </>
-                ) : outcome.correct ? (
-                  <>
-                    Correct
-                    {support && <small>{capitalize(support)}</small>}
-                  </>
-                ) : (
-                  <>
-                    {answerLine(outcome.answer)}
-                    {work ? (
-                      // Each step is marked in the problem; the work stays
-                      // readable for screen readers.
-                      <small>
-                        {workSummary(work, outcome.parts)}
-                        <span className="sr-only">
-                          . Your last line:{" "}
-                          {spokenMath(displayResponse(outcome.response))}
-                        </span>
-                        {support && `, ${support}`}
-                      </small>
-                    ) : parts ? (
-                      // Each part is marked in the problem; the sentence
-                      // stays for screen readers.
-                      <small>
-                        {partsSummary(parts, outcome)}
-                        <span className="sr-only">
-                          . You chose:{" "}
-                          {spokenMath(displayResponse(outcome.response))}
-                        </span>
-                        {support && `, ${support}`}
-                      </small>
-                    ) : plot ? (
-                      // The grid shows the learner's points beside the
-                      // correct ones; the sentence stays for screen readers.
-                      <small>
-                        <span className="sr-only">
-                          You placed{" "}
-                          {spokenMath(displayResponse(outcome.response))}
-                          {support ? ", " : "."}
-                        </span>
-                        {support && capitalize(support)}
-                      </small>
-                    ) : (
-                      <small>
-                        {problem.response.kind === "multi-select"
-                          ? "You selected "
-                          : figures
-                            ? "You chose "
-                            : "You entered "}
-                        <MathText text={displayResponse(outcome.response)} />
-                        {support && `, ${support}`}
-                      </small>
-                    )}
-                  </>
-                )}
-              </span>
-            </div>
-            {props.answerFeedback}
-            {props.mastered && (
-              <p className="mastery-moment">
-                <span className="mastery-mark" aria-hidden="true">
-                  ★
-                </span>
-                <span>
-                  <strong>Skill mastered</strong>
-                  <span>{props.mastered}</span>
-                </span>
-              </p>
-            )}
-            {((!outcome.correct && !deferSteps) || showWhy) && (
-              <ol
-                className="feedback-steps"
-                // It scrolls when long, so keyboards must be able to reach it.
+            {editorInDock ? (
+              <div
+                className="feedback-details"
                 tabIndex={0}
-                aria-label="Explanation"
+                aria-label="Feedback details"
               >
-                {outcome.explanation.map((step, index) => (
-                  <li key={index} data-text={step}>
-                    <MathText text={step} />
-                  </li>
-                ))}
-              </ol>
+                {feedbackDetails()}
+              </div>
+            ) : (
+              feedbackDetails()
             )}
             <button
               className="next-action"
@@ -1236,6 +1295,18 @@ export function PracticeWorkspace(props: Props) {
           </div>
         )}
       </section>
+      {outcome && editorInDock && showWhy && (
+        <FocusDialog title="Explanation" close={() => setShowWhy(false)}>
+          {progressFeedback()}
+          <ol className="feedback-steps" aria-label="Explanation">
+            {outcome.explanation.map((step, index) => (
+              <li key={index}>
+                <MathText text={step} />
+              </li>
+            ))}
+          </ol>
+        </FocusDialog>
+      )}
       {outcome && props.error && (
         <div className="feedback-navigation-error" role="alert">
           <span>{props.error}</span>

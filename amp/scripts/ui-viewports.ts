@@ -421,6 +421,8 @@ export async function assertProblemReachable(page: Page, label: string) {
     [],
     `${label}: part of the problem cannot be reached\n${result.found.join("\n")}`,
   );
+  if (await page.locator(".answer-editor").count())
+    await assertPhoneLandscapeSmoke(page, `${label}: answer editor`);
   return result.geometry;
 }
 
@@ -464,7 +466,9 @@ export async function figureTextScale(page: Page) {
         .fontSize,
     );
     const labels = [
-      ...document.querySelectorAll<SVGTextElement>(".problem-content svg text"),
+      ...document.querySelectorAll<SVGTextElement>(
+        ".problem-content svg text, .answer-editor svg text",
+      ),
     ]
       .filter((t) => t.textContent?.trim() && t.getBBox().width > 0)
       .map((t) => {

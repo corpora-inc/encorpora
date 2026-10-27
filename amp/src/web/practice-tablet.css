@@ -41,6 +41,50 @@
     padding: 0 0 0 var(--space-5);
     border-left: 1px solid var(--color-border);
   }
+  /* Longer answers have their own scrollable workspace; the question and
+     figure stay in the left column and Check stays within reach below. */
+  .practice-surface:has(> .editor-dock) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .practice-surface > .editor-dock {
+    position: relative;
+    justify-content: flex-start;
+  }
+  .answer-editor {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding: var(--space-1);
+    scroll-padding-block: var(--space-3);
+  }
+  .answer-editor > .work,
+  .answer-editor > .figure-choice {
+    margin-top: 0;
+  }
+  .editor-footer {
+    flex: 0 0 184px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .practice-surface:has(.answer-editor > .figure-choice) {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+  .answer-editor .figure-choice-card {
+    margin: 0;
+  }
+  .answer-editor .figure-choice-grid {
+    gap: var(--space-2);
+  }
+  .answer-editor .work-keypad {
+    position: absolute;
+    left: var(--space-5);
+    right: 0;
+    width: auto;
+    transform: none;
+  }
   /* The answer column has the card's height; a choice dock need not stop at
      the stacked layout's 62% (practice.css). Its options still scroll inside
      it before anything leaves the column. */
@@ -103,5 +147,43 @@
   .problem-content .figure {
     height: min(50dvh, 420px);
     max-height: min(420px, var(--figure-cap-height, 420px));
+  }
+  .practice-surface:has(> .editor-dock) > .feedback {
+    top: auto;
+    height: 184px;
+    min-height: 0;
+    max-height: 184px;
+    overflow: auto;
+    gap: 6px;
+    padding: 10px;
+  }
+  .practice-surface:has(> .editor-dock) > .feedback .feedback-head {
+    flex-direction: row;
+    text-align: left;
+    margin-block: 0;
+  }
+  .practice-surface:has(> .editor-dock) > .feedback .feedback-title {
+    align-items: flex-start;
+  }
+  .practice-surface:has(> .editor-dock) > .feedback .result-mark {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+  .editor-dock ~ .feedback > .feedback-details {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .editor-dock ~ .feedback > .feedback-details > *,
+  .editor-dock ~ .feedback > .next-action,
+  .editor-dock ~ .feedback > .practice-tools {
+    flex: none;
   }
 }

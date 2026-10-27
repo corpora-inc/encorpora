@@ -294,12 +294,12 @@ export function StructuredWorkInput({
     input.setSelectionRange(p.caret, p.caret);
   });
   const keypadOpen = small && active !== null && !locked && keys.length > 0;
-  // Keep the active entry above the keypad: scroll the stage, never move it.
+  // Keep the active entry above the keypad within its own scrolling workspace.
   useLayoutEffect(() => {
     if (!keypadOpen || !active) return;
     const input = inputs.current.get(`${active.row}:${active.field}`);
     const pad = keypad.current;
-    const stage = input?.closest<HTMLElement>(".problem-stage");
+    const stage = input?.closest<HTMLElement>(".answer-editor, .problem-stage");
     if (!input || !pad || !stage) return;
     const field = input.closest<HTMLElement>(".work-entry") ?? input;
     const bottom = field.getBoundingClientRect().bottom;
