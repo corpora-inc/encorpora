@@ -323,10 +323,12 @@ export const vasolGrade3 = defineLedger(
       standards: ["SOL.2009.3.13"],
       archetypeIds: ["measure.read-scale"],
       demand: "Type the temperature a Fahrenheit thermometer shows",
-      status: "partial",
+      status: "covered",
       templateIds: ["read-thermometer"],
       limitations:
-        "read-thermometer reads a Fahrenheit or Celsius temperature at the top of a bar on a gridded scale; the item draws a bulb-and-tube thermometer, which is not drawn.",
+        "read-thermometer (display: thermometer) reads a Fahrenheit or Celsius temperature at the top of the liquid in a drawn bulb-and-tube thermometer, with small marks every 2 or 5 degrees and numbers every 10, by entry. Clients without scenes-v2 see the bar-scale surface instead.",
+      labeledBy: "agent:scene-components",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "26", page: "PDF p.32" },

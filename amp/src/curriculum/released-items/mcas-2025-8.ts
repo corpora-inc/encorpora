@@ -94,10 +94,14 @@ export const mcasGrade8 = defineLedger(
       ],
       demand:
         "Write two animal weights in scientific notation, find how many times greater one is and find a total, showing the work",
-      status: "partial",
-      templateIds: ["standard-to-scientific", "scientific-operations"],
+      status: "covered",
+      templateIds: [
+        "standard-to-scientific",
+        "scientific-operations",
+        "scientific-notation-work",
+      ],
       limitations:
-        "Constructed response in four parts. Choice questions on scientific notation and its operations exist; entering numbers written in scientific notation, explaining a quotient and a total in a story are not practiced.",
+        'scientific-notation-work (structured-work-v1) enters the four parts as labeled exact steps: a large and a small number written as a coefficient from 1 up to 10 and a power of 10 (graded exactly, so 30 and 4 is not accepted for 3 and 5), how many times greater one number in scientific notation is than another, and the total of a count of items from an average in scientific notation as a coefficient and a power. The "show or explain" parts are credited by these calculations; a written explanation in words is not scored.',
     },
     {
       section: "Session 1",

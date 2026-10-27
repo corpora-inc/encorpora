@@ -31,6 +31,7 @@ import {
   stepTable,
 } from "../exponential-scenes";
 import { completeSquareTiles, vertexGraph } from "../quadratic-scenes";
+import { sceneV2Cases } from "./gallery-v2";
 
 /** Reference scenes for every component: the gallery renders them at four
  * widths in both themes, and the unit tests lay every one of them out. */
@@ -1057,6 +1058,7 @@ export const galleryCases: GalleryCase[] = [
       angles: [{ at: "T", from: "O", to: "P", mark: "right" }],
     }).scene({ title: "Tangent PT and radius OT" }),
   },
+  ...sceneV2Cases,
 ];
 
 /** Legacy figures drawn through both renderers for screenshot parity. */

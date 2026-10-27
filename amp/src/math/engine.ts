@@ -11,6 +11,8 @@ import {
   generateSatGeometryAdvancedProblem,
 } from "./sat-geometry-advanced-practice";
 import { normalizeSelection } from "./selection-response";
+import { sceneCapabilitiesIn } from "./scene/capability";
+import { withClientFigures } from "./variation/axes";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
 import { gradeMultiPart, normalizeMultiPart } from "./multi-part-choice";
 import {
@@ -405,6 +407,7 @@ import {
   roundedRoot,
   sweepChoose,
   sweepVariant,
+  withLegacySurfaces,
 } from "./number-domain-axes";
 export type {
   GeneratedProblem,
@@ -804,6 +807,39 @@ export function generateProblem(
   seed: string,
 ): GeneratedProblem {
   return polishProblem(generateRawProblem(templateId, seed));
+}
+/**
+ * Generate a problem a client can draw. Figure-surface axes fall back to
+ * their legacy value when the client lacks the capability a value needs
+ * (variation/axes.ts). The result is then checked: should a family draw a
+ * newer scene component without declaring it on its axis, the instance is
+ * rebuilt on legacy surfaces, and a template that still needs more than the
+ * client has is an error, never a figure the client cannot show.
+ */
+export function generateProblemFor(
+  templateId: string,
+  seed: string,
+  figureCapabilities: readonly string[],
+): GeneratedProblem {
+  const fits = (problem: GeneratedProblem) =>
+    // The public problem, and what reaches the client beside it: the hint
+    // cue's scene and a lesson's walkthrough.
+    sceneCapabilitiesIn([
+      problem.public,
+      problem.hintCue,
+      problem.walkthrough,
+    ]).every((needs) => figureCapabilities.includes(needs));
+  const problem = withClientFigures(figureCapabilities, () =>
+    generateProblem(templateId, seed),
+  );
+  if (fits(problem)) return problem;
+  const legacy = withClientFigures(figureCapabilities, () =>
+    withLegacySurfaces(() => generateProblem(templateId, seed)),
+  );
+  if (fits(legacy)) return legacy;
+  throw new Error(
+    `${templateId} drew a figure outside the client's capabilities`,
+  );
 }
 /** Apply the legacy count copy-edit without changing authored algebra notation. */
 export function polishProblem(problem: GeneratedProblem): GeneratedProblem {

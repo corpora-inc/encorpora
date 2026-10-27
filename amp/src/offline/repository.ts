@@ -12,7 +12,7 @@ import {
   type GeneratedProblem,
   type TemplateMetadata,
 } from "../math/contracts.js";
-import { generateProblem, templates } from "../math/engine.js";
+import { generateProblemFor, templates } from "../math/engine.js";
 import { hasEntryPolicy } from "../math/sat-numeric-entry-practice.js";
 import { hasFunctionFormsEntryPolicy } from "../math/sat-function-forms-practice.js";
 import { skills } from "../curriculum/catalog.js";
@@ -216,9 +216,10 @@ export class OfflineRepository {
       for (let variant = 0; variant < 3; variant++)
         for (const choice of choices) {
           const problem = generatedProblemSchema.parse(
-            generateProblem(
+            generateProblemFor(
               choice.template.id,
               `offline-v1:${packId}:${variant}:${choice.template.id}`,
+              input.figureCapabilities,
             ),
           );
           originals.push(problem);

@@ -486,10 +486,10 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["expression.polynomial"],
       demand:
         "Multiply a binomial and a trinomial and write the product in standard form",
-      status: "partial",
-      templateIds: ["polynomial-multiplication"],
+      status: "covered",
+      templateIds: ["polynomial-multiplication", "polynomial-product-steps"],
       limitations:
-        "The family multiplies a monomial and a binomial or two binomials and takes a choice. Entering a written cubic polynomial has no protocol.",
+        "polynomial-product-steps (structured-work-v1), binomial times trinomial form: the learner types the binomial's first term and then its second term times the whole trinomial, then enters the four coefficients of the cubic product from the highest power down, so standard form is graded exactly. The two partial products are the algebraic work the rating guide credits.",
     },
     {
       section: "Part II",
@@ -518,10 +518,10 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Write a line in slope-intercept form from a fractional slope and a point",
-      status: "partial",
-      templateIds: ["linear-model-equation"],
+      status: "covered",
+      templateIds: ["linear-model-equation", "line-from-point-steps"],
       limitations:
-        "The family chooses an equation for a context or graph. Entering the written equation y = mx + b with a fractional slope has no protocol.",
+        "line-from-point-steps (structured-work-v1), slope-and-point form: a fractional slope and an integer point, entering the slope times x, the y-intercept (the step the rating guide credits on its own) and the typed equation, graded as the same relation so y must stand alone, which is the slope-intercept form the rating guide requires.",
     },
     {
       section: "Part II",
@@ -529,18 +529,20 @@ export const regentsAlgebra1January2026 = defineLedger(
         number: "30",
         page: "printed p.15; PDF p.15; standard map rating guide PDF p.13",
       },
-      responseFormat: "numeric",
+      responseFormat: "constructed",
       standards: ["A-CED.A"],
       archetypeIds: ["inequality.context"],
       demand:
         "Find the greatest whole number of items that fit a budget after a fixed expense",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "first-cheaper-whole-input",
         "inequality-from-context",
         "budget-whole-items",
+        "budget-items-steps",
       ],
-      limitations: "Final answer practiced; shown-work credit not assessed.",
+      limitations:
+        "budget-items-steps (structured-work-v1) enters the inequality for a fixed amount plus a price per item (graded as the same relation with its terms or sides in either order, so an inequality already reduced to the price times n alone is not accepted as this step), the money left and the greatest whole number as steps, the algebraic work the rating guide credits. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
     },
     {
       section: "Part III",

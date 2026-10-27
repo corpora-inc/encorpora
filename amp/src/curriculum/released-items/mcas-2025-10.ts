@@ -488,9 +488,9 @@ export const mcasGrade10 = defineLedger(
       demand:
         "Find an angle, the scale factor and two side lengths of similar triangles from a diagram, showing the work",
       status: "partial",
-      templateIds: ["similar-triangles-side"],
+      templateIds: ["similar-triangles-side", "similar-triangles-work"],
       limitations:
-        "Constructed response in four parts. similar-triangles-side finds one side by entry; the angle, scale factor and explanations are not practiced.",
+        "Constructed response in four parts. similar-triangles-work (structured-work-v1) enters the angle from the angle sum, the scale factor and two side lengths as labeled exact steps for two separate similar triangles; the item draws one triangle nested in the other with the shared angle at E, and no family draws or reasons about nested similar triangles, so the row stays partial. Explanations in words are not scored.",
     },
     {
       section: "Session 2",

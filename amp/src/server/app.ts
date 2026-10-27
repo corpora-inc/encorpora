@@ -20,7 +20,7 @@ import {
   type ProblemHint,
 } from "../math/contracts";
 import {
-  generateProblem,
+  generateProblemFor,
   gradeAnswer,
   isValidResponse,
   templates,
@@ -503,7 +503,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
       const hints: Record<string, ProblemHint> = {};
       for (const choice of selected) {
         const problem: SavedProblem = generatedProblemSchema.parse(
-          generateProblem(choice.template.id, randomUUID()),
+          generateProblemFor(
+            choice.template.id,
+            randomUUID(),
+            input.figureCapabilities,
+          ),
         );
         await tx.saveProblem(problem);
         problems.push(problem.public);

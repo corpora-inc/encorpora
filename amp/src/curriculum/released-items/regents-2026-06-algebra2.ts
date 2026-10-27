@@ -434,18 +434,20 @@ export const regentsAlgebra2June2026 = defineLedger(
         number: "25",
         page: "printed p.13; PDF p.13; standard map rating guide PDF p.12",
       },
-      responseFormat: "numeric",
+      responseFormat: "constructed",
       standards: ["F-IF.A"],
       archetypeIds: ["sequence.recursive"],
       demand:
         "Find the third term of a sequence defined by a nonlinear recursive rule",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "series-recursion",
         "geometric-sequence-rule",
         "nonlinear-recursion-term",
+        "recursion-term-steps",
       ],
-      limitations: "Final answer practiced; shown-work credit not assessed.",
+      limitations:
+        "recursion-term-steps (structured-work-v1) enters each term from the second to the third or fourth as an exact step, for a rule that squares the previous term and adds a constant, so the term the rating guide credits before the final answer is graded. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
     },
     {
       section: "Part II",
@@ -468,13 +470,14 @@ export const regentsAlgebra2June2026 = defineLedger(
         number: "27",
         page: "printed p.15; PDF p.15; standard map rating guide PDF p.12",
       },
-      responseFormat: "numeric",
+      responseFormat: "constructed",
       standards: ["A-APR.B"],
       archetypeIds: ["expression.polynomial-division"],
       demand: "Find the remainder when a cubic is divided by x - 2",
-      status: "partial",
-      templateIds: ["remainder-theorem"],
-      limitations: "Final answer practiced; shown-work credit not assessed.",
+      status: "covered",
+      templateIds: ["remainder-theorem", "remainder-steps"],
+      limitations:
+        "remainder-steps (structured-work-v1) enters the zero of the divisor, the value of the higher-power terms and of the lower-power terms of a cubic at that value and the remainder as exact steps, the evaluation the rating guide credits. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
     },
     {
       section: "Part II",

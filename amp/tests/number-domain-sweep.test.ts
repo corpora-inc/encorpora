@@ -120,6 +120,17 @@ test("every axis value is reachable and every instance is valid, deterministic a
             gradeAnswer(problem, option.id),
             option.id === problem.answer,
           );
+      } else if (response.kind === "multi-select") {
+        // An exact set: its keyed options grade, and the hint quotes none
+        // of the option statements the key marks true.
+        assert.ok(gradeAnswer(problem, problem.answer), `${id} ${seed}`);
+        const keyed = JSON.parse(problem.answer) as string[];
+        for (const option of response.options)
+          if (keyed.includes(option.id))
+            assert.ok(
+              !problem.hint.includes(option.label),
+              `${id} ${seed} hint quotes ${option.label}`,
+            );
       } else {
         assert.ok(gradeAnswer(problem, problem.answer), `${id} ${seed}`);
         // A hint may repeat a given that equals the answer, never reveal it.

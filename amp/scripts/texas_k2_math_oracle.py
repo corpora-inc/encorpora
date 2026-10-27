@@ -45,31 +45,79 @@ COIN_CENTS = {'penny': 1, 'nickel': 5, 'dime': 10, 'quarter': 25}
 CENT_WORDS = {'one': 1, 'five': 5, 'ten': 10, 'twenty-five': 25}
 
 
+# What a drawn coin shows: metal, edge and diameter in millimeters (United
+# States Mint specifications). A drawn coin is named from these, never from
+# printed text.
+COIN_FEATURES = {
+    'penny': ('copper', 'smooth', 19.05),
+    'nickel': ('silver', 'smooth', 21.21),
+    'dime': ('silver', 'reeded', 17.91),
+    'quarter': ('silver', 'reeded', 24.26),
+}
+
+
+def name_by_features(metal, edge, diameter):
+    """The coin with these features: copper is a penny; among silver coins a
+    smooth edge is a nickel, and a reeded one is a dime or a quarter by size."""
+    if metal == 'copper':
+        return 'penny'
+    if edge == 'smooth':
+        return 'nickel'
+    return 'dime' if diameter < 21 else 'quarter'
+
+
+def pictured_coins(figure):
+    """[(coin, label)] from either picture surface: lettered money sets with
+    printed values, or the drawn `coins` scene component without values."""
+    require(figure is not None, 'Coin picture expected')
+    if figure['kind'] == 'money-sets':
+        sets = figure['sets']
+        require(all(len(s['items']) == 1 and s['items'][0] in COIN_CENTS for s in sets), 'Single coins per picture')
+        return [(s['items'][0], s.get('label')) for s in sets]
+    els = elements({'figure': figure})
+    require(len(els) == 1 and els[0]['type'] == 'coins', 'One coins element')
+    out = []
+    for c in els[0]['coins']:
+        require(set(c) <= {'coin', 'label'}, 'A drawn coin carries no value or text')
+        require(c['coin'] in COIN_FEATURES, 'Unknown drawn coin')
+        named = name_by_features(*COIN_FEATURES[c['coin']])
+        require(named == c['coin'], 'Drawn features name a different coin')
+        out.append((named, c.get('label')))
+    text = repr(figure).lower()
+    require('¢' not in text and 'cent' not in text, 'A drawn coin shows no value')
+    labels = [l for _, l in out if l]
+    require(len(out) == 1 and not labels or labels == list('ABC'[:len(out)]), 'Letters A, B, C on several coins only')
+    return out
+
+
 def solve_coin(public):
     opts = options(public)
     prompt = public['prompt']
     figure = public.get('figure')
     if prompt == 'What is the name of this coin?':
-        sets = figure['sets']
-        require(figure['kind'] == 'money-sets' and len(sets) == 1 and len(sets[0]['items']) == 1, 'One coin expected')
-        coin = sets[0]['items'][0]
+        coins = pictured_coins(figure)
+        require(len(coins) == 1, 'One coin expected')
+        coin = coins[0][0]
+        if figure['kind'] == 'scene':
+            require(not any(n in prompt.lower() for n in COIN_CENTS), 'Prompt names no coin')
         require(coin in COIN_CENTS, 'Unknown coin')
         require({o['label'] for o in opts} == set(COIN_CENTS), 'Four coin names expected')
         return only(opts, lambda l: l == coin, 'One correct coin name')
     match = re.fullmatch(r'Which picture shows an? (\w+)\?', prompt)
     if match:
         coin = match[1]
-        require(coin in COIN_CENTS and figure['kind'] == 'money-sets', 'Coin picture question')
-        sets = figure['sets']
-        require(all(len(s['items']) == 1 and s['items'][0] in COIN_CENTS for s in sets), 'Single coins per picture')
-        require(len({s['items'][0] for s in sets}) == len(sets), 'Duplicate coin pictures')
-        require(sorted(o['label'] for o in opts) == sorted(s['label'] for s in sets), 'Choices must be the picture labels')
-        labels = [s['label'] for s in sets if s['items'] == [coin]]
+        require(coin in COIN_CENTS, 'Coin picture question')
+        coins = pictured_coins(figure)
+        require(len({c for c, _ in coins}) == len(coins), 'Duplicate coin pictures')
+        letter = lambda label: label.strip('$')
+        require(sorted(letter(o['label']) for o in opts) == sorted(l for _, l in coins), 'Choices must be the picture labels')
+        labels = [l for c, l in coins if c == coin]
         require(len(labels) == 1, 'Named coin must appear exactly once')
-        return only(opts, lambda l: l == labels[0], 'One correct picture')
+        return only(opts, lambda l: letter(l) == labels[0], 'One correct picture')
     if prompt == 'How do you write the value of this coin with the cent symbol?':
-        require(figure['kind'] == 'money-sets' and len(figure['sets']) == 1 and len(figure['sets'][0]['items']) == 1, 'One coin')
-        value = COIN_CENTS[figure['sets'][0]['items'][0]]
+        coins = pictured_coins(figure)
+        require(len(coins) == 1, 'One coin')
+        value = COIN_CENTS[coins[0][0]]
     else:
         match = re.fullmatch(r'An? (\w+) is worth ([\w-]+) cents?\. How do you write that value with the cent symbol\?', prompt)
         require(match and match[1] in COIN_CENTS and CENT_WORDS[match[2]] == COIN_CENTS[match[1]], 'Stated coin value must be true')
@@ -701,6 +749,14 @@ def self_test():
                        ['Ana takes $30 out of the bank to pay for shoes.', 'Ana puts $30 into a bank account.', 'Ana adds $30 to savings at the bank.'], 0),
         choice_problem('early-money-decisions', 'Dee saves $6 each week. How much has Dee saved after 4 weeks?', ['$10', '$24', '$64', '$2'], 1),
     ]
+    drawn = lambda *coins: {'kind': 'scene', 'scene': {'v': 1, 'elements': [{'type': 'coins', 'id': 'coins', 'coins': [
+        {'coin': c, **({'label': 'ABC'[i]} if len(coins) > 1 else {})} for i, c in enumerate(coins)]}]}}
+    first_drawn = len(cases)
+    cases += [
+        choice_problem('coin-name-and-cent-value', 'What is the name of this coin?', ['penny', 'nickel', 'dime', 'quarter'], 3, drawn('quarter')),
+        choice_problem('coin-name-and-cent-value', 'Which picture shows a dime?', ['$A$', '$B$', '$C$'], 1, drawn('quarter', 'dime', 'penny')),
+        choice_problem('coin-name-and-cent-value', 'How do you write the value of this coin with the cent symbol?', ['5', '5¢', '¢5', '$5'], 1, drawn('nickel')),
+    ]
     # Fixtures use hand-built figures, so mutate each one that has an unambiguous cheap corruption.
     rejected = 0
 
@@ -743,6 +799,11 @@ def self_test():
     fig_case(20, lambda p: p['figure']['scene']['elements'].pop(-6), 'tally slash removed')
     prompt_case = lambda index, old, new, why: fig_case(index, lambda p: p.update(prompt=p['prompt'].replace(old, new)), why)
     prompt_case(1, 'ten cents', 'five cents', 'false coin value')
+    fig_case(first_drawn, lambda p: p['figure']['scene']['elements'][0]['coins'][0].update({'value': '25¢'}), 'a drawn coin prints its value')
+    fig_case(first_drawn + 1, lambda p: p['figure']['scene']['elements'][0]['coins'][1].update({'coin': 'quarter'}), 'two pictures of one coin')
+    fig_case(first_drawn + 1, lambda p: p['figure']['scene']['elements'][0]['coins'][1].update({'coin': 'nickel'}), 'named coin missing from the drawing')
+    fig_case(first_drawn + 2, lambda p: p['figure']['scene']['elements'][0]['coins'][0].update({'coin': 'dime'}), 'drawn coin changed')
+    fig_case(first_drawn, lambda p: p['figure']['scene']['elements'].append({'type': 'text', 'at': [0, 0], 'text': '25¢'}), 'value text beside a drawn coin')
     prompt_case(7, '10 − 8', '10 + 8', 'sentence changed')
     prompt_case(8, '530 cards', '520 cards', 'story numbers changed')
     prompt_case(14, 'Row A uses more', 'Row B uses more', 'row claim contradicts figure')

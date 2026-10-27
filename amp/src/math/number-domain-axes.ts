@@ -6,7 +6,7 @@ import {
   type AxisSet,
   type AxisValues,
 } from "./variation/axes";
-import type { ProblemVariant } from "./contracts";
+import type { FigureCapability, ProblemVariant } from "./contracts";
 
 /**
  * Number-domain and surface axes for grade K-8 families whose released-item
@@ -22,7 +22,8 @@ const axisFor = <const V extends string>(
   id: string,
   values: readonly V[],
   legacy: NoInfer<V>,
-) => defineAxis(id, values, { legacy });
+  needs?: Partial<Record<NoInfer<V>, FigureCapability>>,
+) => defineAxis(id, values, { legacy, ...(needs ? { needs } : {}) });
 
 export const sweepAxes = {
   /** Scale a ratio: the target quantity is a whole multiple of the ratio's
@@ -127,6 +128,61 @@ export const sweepAxes = {
       "integer-triple",
     ),
   },
+  /* Figure surfaces: the same model drawn with a scene component instead of
+   * described in words or a table. A value that needs a capability the
+   * template does not declare shows its legacy surface to a client without
+   * it. */
+  /** Circle graph: the table of its sectors (legacy) or the drawn graph
+   * with each sector labeled. */
+  "circle-graph-read": {
+    display: axisFor(
+      "display",
+      ["sector-table", "drawn-graph"],
+      "sector-table",
+      {
+        "drawn-graph": "scenes-v2",
+      },
+    ),
+  },
+  /** Coins: pictures with the value printed on each (legacy) or drawn
+   * without values, known by size, color and edge. */
+  "coin-name-and-cent-value": {
+    picture: axisFor(
+      "picture",
+      ["value-printed", "features-only"],
+      "value-printed",
+      {
+        "features-only": "scenes-v2",
+      },
+    ),
+  },
+  /** Five prisms: edge lengths in words (legacy) or each drawn as unit
+   * cubes to count. */
+  "mcas-prism-range-select": {
+    prisms: axisFor("prisms", ["edge-lengths", "unit-cubes"], "edge-lengths", {
+      "unit-cubes": "scenes-v1",
+    }),
+  },
+  /** A prism of fractional cubes: edge lengths stated (legacy) or the prism
+   * drawn as cubes with one cube's edge given. */
+  "mcas-cube-prism-statements": {
+    prism: axisFor("prism", ["stated-edges", "drawn-cubes"], "stated-edges", {
+      "drawn-cubes": "scenes-v1",
+    }),
+  },
+  /** Count unit cubes: a rectangular prism (legacy) or a stepped solid. */
+  "unit-cube-volume": {
+    solid: axisFor("solid", ["prism", "steps"], "prism", {
+      steps: "scenes-v2",
+    }),
+  },
+  /** Measure a length: a centimeter strip in halves or quarters (legacy)
+   * or an object on an inch ruler in halves, quarters or eighths. */
+  "fractional-ruler-length": {
+    ruler: axisFor("ruler", ["cm-strip", "inch-ruler"], "cm-strip", {
+      "inch-ruler": "scenes-v2",
+    }),
+  },
 } as const satisfies Record<string, AxisSet>;
 
 export type SweepId = keyof typeof sweepAxes;
@@ -154,7 +210,11 @@ export function withLegacySurfaces<T>(build: () => T): T {
 export const sweepChoose = <K extends SweepId>(id: K, seed: string) =>
   (legacyOnly
     ? legacyAxes(sweepAxes[id] as AxisSet)
-    : chooseAxes(id, seed, sweepAxes[id] as AxisSet)) as unknown as SweepAxes<K>;
+    : chooseAxes(
+        id,
+        seed,
+        sweepAxes[id] as AxisSet,
+      )) as unknown as SweepAxes<K>;
 
 /** The private variant record: the family's label and the axis values. */
 export const sweepVariant = (
