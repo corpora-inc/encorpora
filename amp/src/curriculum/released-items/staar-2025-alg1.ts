@@ -446,13 +446,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["expression.exponent-rules"],
       demand:
         "Complete an equivalent form of a quotient with a negative exponent by dragging the coefficient and exponent",
-      status: "partial",
+      status: "covered",
       templateIds: [
+        "exponent-quotient-slots",
         "quotient-of-powers-exponent",
         "product-of-powers-exponent",
       ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. Related families find an exponent in one product or quotient; dividing coefficients with a negative exponent and drag and drop are not practiced.",
+        "exponent-quotient-slots chooses the coefficient and exponent of a quotient of terms with the same base, including a negative exponent. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -580,13 +581,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["nonlinear.quadratic"],
       demand:
         "Solve a squared binomial equal to 25 and place both solutions by drag and drop",
-      status: "partial",
+      status: "covered",
       templateIds: [
+        "square-root-solutions-slots",
         "quadratic-expanded-solutions",
         "solve-by-completing-square",
       ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. Related families solve quadratics by factoring or completing the square; the square root method on a binomial and drag and drop have no response protocol.",
+        "square-root-solutions-slots chooses the lesser and the greater solution of a squared binomial equal to a perfect square. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -627,10 +629,10 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["nonlinear.transform"],
       demand:
         "Complete a sentence that describes g(x) = f(x − 6) + 2 as a shift right and up, with dropdown blanks",
-      status: "partial",
-      templateIds: ["parabola-shift"],
+      status: "covered",
+      templateIds: ["function-shift-sentence", "parabola-shift"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. parabola-shift gives equations for shifted parabolas and comparisons; dropdown blanks and function notation are not practiced.",
+        "function-shift-sentence completes the sentence describing g(x) = f(x -/+ h) +/- k as a horizontal and a vertical shift. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -780,10 +782,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["exponential.form"],
       demand:
         "Complete two sentences that interpret the initial value and the percent decrease of an exponential model",
-      status: "partial",
-      templateIds: ["exponential-time-scale", "compound-growth"],
+      status: "covered",
+      templateIds: [
+        "exponential-parameters-blanks",
+        "exponential-time-scale",
+        "compound-growth",
+      ],
       limitations:
-        "STAAR interaction: inline choice, 2 points. Related families choose equivalent models or compound-growth rates; interpreting a and b in context with dropdown blanks has no response protocol.",
+        "exponential-parameters-blanks chooses the initial value, the direction and the percent rate of an exponential model. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {

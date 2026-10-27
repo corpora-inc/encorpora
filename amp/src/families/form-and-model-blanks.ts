@@ -28,10 +28,30 @@ export const family = {
       "number.percent-fraction-decimal",
       "number.decimal-fraction-equivalent",
     ],
-    "decimal-mixed-number-blanks": ["decimal.read-model"],
+    "decimal-mixed-number-blanks": [
+      "decimal.read-model",
+      "number.decimal-fraction-equivalent",
+    ],
     "inequality-solution-blanks": ["inequality.solve"],
-    "conversion-proportion-blanks": ["ratio.proportion"],
-    "exponential-parameters-blanks": ["exponential.context"],
-    "circle-estimate-blanks": ["circle.parts", "circle.circumference"],
+    "conversion-proportion-blanks": ["ratio.proportion", "ratio.units"],
+    "exponential-parameters-blanks": [
+      "exponential.context",
+      "exponential.form",
+    ],
+    "circle-estimate-blanks": [
+      "circle.parts",
+      "circle.circumference",
+      "measure.circle",
+    ],
   },
+  connections: [
+    {
+      from: "decimal-fractions",
+      to: "percentages",
+      kind: "extension",
+      explanation:
+        "Tenths and hundredths name fractions with denominator 10 and 100. A percent is a fraction with denominator 100, so a decimal and a percent are the same amount written with the point moved two places.",
+      templateIds: ["fraction-forms-blanks"],
+    },
+  ],
 } satisfies ContentFamily;

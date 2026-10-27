@@ -24,12 +24,19 @@ export const family = {
   principles: quantityPairBlanksPrinciples,
   facetMappings: quantityPairBlanksFacetMappings,
   archetypeLinks: {
-    "quotient-remainder-blanks": ["whole.divide-two-digit"],
+    "quotient-remainder-blanks": [
+      "whole.divide-two-digit",
+      "number.remainder-interpret",
+    ],
     "meters-to-kilometers-blanks": ["measure.mixed-units"],
-    "simple-interest-blanks": ["percent.of"],
-    "loan-offer-compare-blanks": ["percent.of"],
+    "simple-interest-blanks": ["percent.of", "finance.simple-interest"],
+    "loan-offer-compare-blanks": ["percent.of", "finance.simple-interest"],
     "scale-factor-effects-blanks": ["measure.scale"],
-    "expected-count-blanks": ["probability.direct", "inference.estimate"],
+    "expected-count-blanks": [
+      "probability.direct",
+      "inference.estimate",
+      "probability.prediction",
+    ],
     "unit-rate-pair-blanks": ["ratio.proportion"],
     "ratio-pair-blanks": ["ratio.proportion"],
     "mean-median-blanks": ["univariate.center"],
@@ -39,7 +46,10 @@ export const family = {
     ],
     "rectangle-chain-blanks": ["measure.area"],
     "wage-and-cost-blanks": ["function.rule", "linear.meaning"],
-    "percent-amounts-blanks": ["percent.of"],
-    "check-register-blanks": ["rational.signed-context"],
+    "percent-amounts-blanks": ["percent.of", "finance.budget-percent"],
+    "check-register-blanks": [
+      "rational.signed-context",
+      "finance.check-register",
+    ],
   },
 } satisfies ContentFamily;

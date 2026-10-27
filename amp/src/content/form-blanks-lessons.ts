@@ -259,7 +259,7 @@ const entries: FormatLessonEntry[] = [
   },
   {
     id: "circle-estimate-blanks",
-    title: "Estimate with 3.14, or estimate pi",
+    title: "Estimate a circle with 3.14",
     summary:
       "Use the radius, half the diameter, in $\\pi r^2$ with 3.14 for $\\pi$; and $\\pi$ is the circumference divided by the diameter.",
     objectives: [

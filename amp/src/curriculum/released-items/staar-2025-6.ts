@@ -148,10 +148,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["function.relation-equation"],
       demand:
         "Complete the equation that fits a table of paired values by dragging pieces",
-      status: "partial",
-      templateIds: ["dependent-variable-equation"],
+      status: "covered",
+      templateIds: ["table-equation-slots", "dependent-variable-equation"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. dependent-variable-equation chooses the equation for a described relationship; building it from a table by drag and drop has no response protocol.",
+        "table-equation-slots completes y = ax + b or y = ax - b for a table by choosing the multiplier, the operation and the constant. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -194,9 +194,13 @@ export const staarGrade6 = defineLedger(
       demand:
         "Place numbers into inequalities so each statement holds, using signed decimals and fractions",
       status: "partial",
-      templateIds: ["signed-context-order", "compare-decimals-thousandths"],
+      templateIds: [
+        "inequality-number-blanks",
+        "signed-context-order",
+        "compare-decimals-thousandths",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. Related families compare signed values or decimals; mixing fractions and decimals across two chained inequalities and drag and drop are not practiced.",
+        "STAAR interaction: drag and drop, 2 points. inequality-number-blanks chooses numbers for two separate inequalities from a bank of signed decimals and fractions; the chained form of two inequalities in one statement is not practiced.",
     },
     {
       item: {
@@ -223,10 +227,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["univariate.center"],
       demand:
         "Find the mean and the median of six decimal sprint times and place both",
-      status: "partial",
-      templateIds: ["mean-data", "median-data"],
+      status: "covered",
+      templateIds: ["mean-median-blanks", "mean-data", "median-data"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. mean-data averages five whole-number values and median-data works on short lists; six decimal values and dragging two answers are not practiced.",
+        "mean-median-blanks chooses the mean and the median of six decimal values listed out of order. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -287,10 +291,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["inequality.context"],
       demand:
         "Build the inequality for the money left for snacks after a ticket price by dragging symbols",
-      status: "partial",
-      templateIds: ["inequality-from-context"],
+      status: "covered",
+      templateIds: ["budget-inequality-slots", "inequality-from-context"],
       limitations:
-        "STAAR interaction: drag and drop, 1 point. inequality-from-context chooses a one-step inequality for a condition; a sum with an unknown inequality and drag and drop are not practiced.",
+        "budget-inequality-slots completes an inequality for spending within a budget or saving toward a goal by choosing the known amount, the symbol and the limit. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -489,10 +493,13 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["expression.order-of-operations"],
       demand:
         "Drag the two equivalent expressions out of several with a variable and the number one",
-      status: "partial",
-      templateIds: ["equivalent-expressions-check"],
+      status: "covered",
+      templateIds: [
+        "equivalent-expressions-table",
+        "equivalent-expressions-check",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 1 point. equivalent-expressions-check chooses one equivalent expression; the identity and associative properties with drag and drop are not practiced.",
+        "equivalent-expressions-table marks four or five expressions as equivalent or not to an expression using the identity or associative property; exactly two are equivalent. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -518,10 +525,10 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["finance.check-register"],
       demand:
         "Complete two missing balances and deposit amounts in a check register by dragging values",
-      status: "partial",
-      templateIds: ["signed-story"],
+      status: "covered",
+      templateIds: ["check-register-blanks", "signed-story"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. signed-story solves account-balance stories by entry; completing a check register by drag and drop has no response protocol.",
+        "check-register-blanks chooses two missing balances and two missing amounts of a four-line register, with balances below zero. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {

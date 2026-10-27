@@ -74,7 +74,7 @@ export const formBlanksTemplates: readonly TemplateMetadata[] = [
   {
     id: "circle-estimate-blanks",
     version: 1,
-    title: "Estimate with 3.14 or estimate pi",
+    title: "Estimate a circle with 3.14",
     skillId: "circle-measurement",
     gradeBand: "6–8",
     ...multiPartCapability,
@@ -280,7 +280,7 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
         hint: `The digits to the left of the decimal point, ${whole}, give the whole number. Count the digits to the right of the point in ${text}: that count tells whether the fraction part is in tenths or hundredths.`,
         explanation: [
           `The whole part is ${whole}.`,
-          `The digits after the decimal point are ${hundredths ? `${String(frac100).padStart(2, "0")}, which is ${frac100} hundredths` : `${frac100}, which is ${frac100} tenths`}, written as $${frac(frac100, den)}$.`,
+          `The digits after the decimal point are ${hundredths ? `${String(frac100).padStart(2, "0")}, which is ${frac100} ${frac100 === 1 ? "hundredth" : "hundredths"}` : `${frac100}, which is ${frac100} ${frac100 === 1 ? "tenth" : "tenths"}`}, written as $${frac(frac100, den)}$.`,
           `So ${text} $=${whole}\\frac{${frac100}}{${den}}$.`,
         ],
       });
@@ -448,7 +448,7 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
         label: "Choose a number or word for each gap",
         slots: built.slots,
         sentence: built.sentence,
-        hint: `At $t=0$ the power $(${baseText})^{0}$ equals 1, so see what is left. For the yearly change compare the base ${baseText} with 1: is it greater or less, and by how much?`,
+        hint: `At $t=0$ the base is raised to the power 0, which equals 1, so see what is left. For the yearly change compare the base ${baseText} with 1: is it greater or less, and by how much?`,
         explanation: [
           `At $t=0$: $${letter}(0)=${grouped(initial)}\\times 1=${grouped(initial)}$, so the starting amount is ${grouped(initial)} ${unit}.`,
           `The base is ${baseText}, which is ${growth ? "greater" : "less"} than 1, so the amount ${growth ? "increases" : "decreases"}.`,

@@ -34,7 +34,7 @@ test("right triangles satisfy the converse and congruence rules keep distance", 
     const verdicts = new Set<string>();
     for (const b of response.blanks) {
       const [x, y, z] = b.label.split(", ").map(Number);
-      const [a, c] = [Math.min(x!, y!), Math.max(x!, y!, z!)];
+      const c = Math.max(x!, y!, z!);
       const others = [x!, y!, z!].filter((v) => v !== c);
       const right = others[0]! ** 2 + others[1]! ** 2 === c ** 2;
       assert.equal(
@@ -42,7 +42,6 @@ test("right triangles satisfy the converse and congruence rules keep distance", 
         right ? "Right triangle" : "Not a right triangle",
       );
       verdicts.add(chosen[b.id]!);
-      void a;
     }
     assert.equal(verdicts.size, 2);
   }

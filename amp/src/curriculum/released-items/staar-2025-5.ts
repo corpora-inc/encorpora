@@ -59,9 +59,13 @@ export const staarGrade5 = defineLedger(
       demand:
         "Compare tally counts of cups, mugs and bottles as times-as-many, completing two dropdown blanks",
       status: "partial",
-      templateIds: ["comparison-factor", "scaled-picture-graph"],
+      templateIds: [
+        "times-as-many-blanks",
+        "comparison-factor",
+        "scaled-picture-graph",
+      ],
       limitations:
-        "STAAR interaction: inline choice, 1 point. Related families find a multiplicative factor or read a scaled graph; reading tally counts from a frequency table and dropdown blanks are not practiced.",
+        "STAAR interaction: inline choice, 1 point. times-as-many-blanks completes the times-as-many sentence from a table of numeric counts; reading the counts from tally marks is not practiced.",
     },
     {
       item: {
@@ -118,10 +122,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["expression.verbal"],
       demand:
         "Build the equation for a story with a per-booth rent and a fixed fee, dragging symbols into place",
-      status: "partial",
-      templateIds: ["two-step-equation-model"],
+      status: "covered",
+      templateIds: ["booth-equation-slots", "two-step-equation-model"],
       limitations:
-        "STAAR interaction: drag and drop, 1 point. two-step-equation-model chooses among complete equations; assembling an equation from parts by drag and drop has no response protocol.",
+        "booth-equation-slots completes the equation for a rate per item plus a fixed fee or discount by choosing the rate, operation, one-time amount and total. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -148,10 +152,14 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["fractions.divide-context"],
       demand:
         "Divide a unit fraction by a whole number and enter the denominator of the quotient",
-      status: "partial",
-      templateIds: ["unit-fraction-share", "divide-fractions"],
+      status: "covered",
+      templateIds: [
+        "unit-fraction-division-slots",
+        "unit-fraction-share",
+        "divide-fractions",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 1 point. unit-fraction-share divides a unit fraction of a liter among a whole group by entry; placing a number into the quotient by drag and drop has no response protocol.",
+        "unit-fraction-division-slots completes the division of a unit fraction by a whole number, of a whole number by a unit fraction, or the denominator of a shared unit fraction. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -425,10 +433,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["pattern.rule"],
       demand:
         "Complete missing inputs and outputs of a table for y = x + 7 by dragging values",
-      status: "partial",
-      templateIds: ["rule-pattern-term"],
+      status: "covered",
+      templateIds: ["rule-table-fill-slots", "rule-pattern-term"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. rule-pattern-term finds a later term by entry; completing both an output and an input with drag and drop has no response protocol.",
+        "rule-table-fill-slots chooses two missing outputs and two missing inputs of a table for an add, subtract or multiply rule. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -488,10 +496,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["coordinate.first-quadrant"],
       demand:
         "Complete a statement about the point (0, 3), such as which axis distance the first coordinate shows",
-      status: "partial",
-      templateIds: ["first-quadrant-coordinates"],
+      status: "covered",
+      templateIds: ["point-on-axis-sentence", "first-quadrant-coordinates"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. first-quadrant-coordinates names a plotted point; describing what each coordinate means for a point on an axis, with dropdown blanks, is not practiced.",
+        "point-on-axis-sentence completes a statement about a point with one coordinate 0: its axis, the zero coordinate, the units and the direction. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -522,10 +530,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["number.round-decimal"],
       demand:
         "Complete both blanks with a number rounded to the nearest tenth and to the nearest hundredth",
-      status: "partial",
-      templateIds: ["round-decimal"],
+      status: "covered",
+      templateIds: ["round-decimal-blanks", "round-decimal"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. round-decimal rounds one value to one place by entry; dropdown blanks for two roundings have no response protocol.",
+        "round-decimal-blanks rounds a decimal to the nearest tenth and hundredth in a two-gap sentence, including carries across a nine. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -570,10 +578,14 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["number.remainder-interpret"],
       demand:
         "Divide candies by the bag size and give both the number of full bags and the leftover, with dropdown blanks",
-      status: "partial",
-      templateIds: ["division-remainder-story", "divide-by-two-digit"],
+      status: "covered",
+      templateIds: [
+        "quotient-remainder-blanks",
+        "division-remainder-story",
+        "divide-by-two-digit",
+      ],
       limitations:
-        "STAAR interaction: inline choice, 2 points. division-remainder-story finds complete groups by entry; naming both the quotient and the remainder through dropdown blanks has no response protocol.",
+        "quotient-remainder-blanks chooses the number of full groups and the number left over for a total below 1,000 and a two-digit group size. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
   ],
 );

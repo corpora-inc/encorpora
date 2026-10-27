@@ -258,8 +258,7 @@ export const deliveryAxes = {
 
 /** Evaluate `a op1 b op2 c` with the usual order of operations, exactly. */
 function evaluate(nums: readonly number[], ops: readonly string[]) {
-  const tokens: { n: [number, number]; op?: string }[] = [];
-  let terms: [number, number][] = [[nums[0]!, 1]];
+  const terms: [number, number][] = [[nums[0]!, 1]];
   const adds: string[] = [];
   nums.slice(1).forEach((n, i) => {
     const op = ops[i]!;
@@ -271,7 +270,6 @@ function evaluate(nums: readonly number[], ops: readonly string[]) {
       terms.push([n, 1]);
     }
   });
-  void tokens;
   let [num, den] = terms[0]!;
   adds.forEach((op, i) => {
     const [a, b] = terms[i + 1]!;
@@ -389,7 +387,10 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
     const one = r(5, 60);
     const fee = axes.story === "fee";
     const total = fee ? rate * count + one : rate * count - one;
-    need(total > 1 && one !== rate && total !== rate * 10 && one > 1, "distinct amounts");
+    need(
+      total > 1 && one !== rate && total !== rate * 10 && one > 1,
+      "distinct amounts",
+    );
     need(new Set([rate, one, total, count]).size === 4, "distinct values");
     const opLabel = fee ? OPS[0] : OPS[1];
     const a = slotOf("rate", `The amount for each ${unit}`, String(rate), [

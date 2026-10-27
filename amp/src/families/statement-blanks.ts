@@ -27,11 +27,20 @@ export const family = {
     "fixed-variable-expense-table": ["finance.fixed-variable-expense"],
     "pythagorean-sort-table": ["triangle.pythagorean"],
     "congruence-claims-table": ["transformation.invariants"],
-    "equivalent-expressions-table": ["expression.polynomial"],
+    "equivalent-expressions-table": [
+      "expression.polynomial",
+      "expression.order-of-operations",
+    ],
     "gross-net-sentence": ["money.budget"],
-    "coordinate-terms-slots": ["coordinate.first-quadrant"],
+    "coordinate-terms-slots": [
+      "coordinate.first-quadrant",
+      "coordinate.plane-point",
+    ],
     "point-on-axis-sentence": ["coordinate.first-quadrant"],
-    "times-as-many-blanks": ["whole.multiplicative-comparison"],
+    "times-as-many-blanks": [
+      "whole.multiplicative-comparison",
+      "data.frequency-table-read",
+    ],
     "compare-fractions-reason-blanks": ["fractions.compare"],
     "inequality-number-blanks": ["rational.order-absolute"],
   },

@@ -154,10 +154,10 @@ export const staar2024Grade6 = defineLedger(
       archetypeIds: ["percent.of"],
       demand:
         "Drag values to complete a statement of how many of thirty-five books fall in each of two percent groups",
-      status: "partial",
-      templateIds: ["percent-of"],
+      status: "covered",
+      templateIds: ["percent-amounts-blanks", "percent-of"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. percent-of finds an exact percentage of a quantity by entry; filling two blanks by drag and drop has no multi-part family.",
+        "percent-amounts-blanks chooses two percents of a whole as counts, or as budget amounts each compared with its limit. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "12", page: "rationale PDF p.14" },
@@ -178,10 +178,14 @@ export const staar2024Grade6 = defineLedger(
       archetypeIds: ["rational.order-absolute"],
       demand:
         "Drag signed fractions and decimals into order from least to greatest",
-      status: "partial",
-      templateIds: ["staar-order-mixed-forms", "signed-context-order"],
+      status: "covered",
+      templateIds: [
+        "order-rationals-slots",
+        "staar-order-mixed-forms",
+        "signed-context-order",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 1 point. staar-order-mixed-forms chooses a list of ordered mixed forms; arranging five numbers by drag and drop has no multi-part family.",
+        "order-rationals-slots orders four or five signed decimals and fractions in either direction, with the order of absolute values as the trap. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "14", page: "rationale PDF p.16" },
@@ -422,10 +426,13 @@ export const staar2024Grade6 = defineLedger(
       standards: ["TEKS.6.1.4.G"],
       archetypeIds: ["number.percent-fraction-decimal"],
       demand: "Drag the decimal and the percent equal to three eighths",
-      status: "partial",
-      templateIds: ["staar-rename-percent-fraction-decimal"],
+      status: "covered",
+      templateIds: [
+        "fraction-forms-blanks",
+        "staar-rename-percent-fraction-decimal",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. staar-rename-percent-fraction-decimal chooses one decimal or percent for a fraction; placing both by drag and drop has no multi-part family.",
+        "fraction-forms-blanks writes a fraction as a decimal and as a percent. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "35", page: "rationale PDF p.42" },

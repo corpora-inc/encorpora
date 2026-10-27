@@ -384,7 +384,8 @@ export const quantityPairBlanksGenerate = defineGenerate(
           total > 2000 &&
             total < 3000 &&
             total % 1000 !== 0 &&
-            total % 100 !== 0,
+            total % 100 !== 0 &&
+            total % 1000 > 1,
           "a regrouped total",
         );
         const km = Math.floor(total / 1000);

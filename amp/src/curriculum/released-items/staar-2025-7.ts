@@ -55,10 +55,10 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Complete a sentence that divides the total cost by the number of pairs to get the price per pair",
-      status: "partial",
-      templateIds: ["unit-rate"],
+      status: "covered",
+      templateIds: ["unit-price-sentence-slots", "unit-rate"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. unit-rate finds the price for one unit by entry; building the sentence by drag and drop has no response protocol.",
+        "unit-price-sentence-slots completes total cost divided by number of pairs equals price per pair. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -115,10 +115,14 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["probability.prediction"],
       demand:
         "Predict how many times a spinner with ten equal sections lands on 20 in 150 spins, with dropdown blanks",
-      status: "partial",
-      templateIds: ["simple-probability", "sample-proportion-estimate"],
+      status: "covered",
+      templateIds: [
+        "expected-count-blanks",
+        "simple-probability",
+        "sample-proportion-estimate",
+      ],
       limitations:
-        "STAAR interaction: inline choice, 2 points. simple-probability finds a probability and sample-proportion-estimate scales a sample; predicting an expected count from a theoretical probability and dropdown blanks are not practiced.",
+        "expected-count-blanks chooses the probability of a number on a ten-section spinner and the expected count in a number of spins. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -144,10 +148,10 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["measure.circle"],
       demand:
         "Find the circular sign's area from its diameter with 3.14 and place the estimate by drag and drop",
-      status: "partial",
-      templateIds: ["circle-area-coefficient"],
+      status: "covered",
+      templateIds: ["circle-estimate-blanks", "circle-area-coefficient"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. circle-area-coefficient gives the area as a multiple of pi; using 3.14, rounding to a measurement and dragging values are not practiced.",
+        "circle-estimate-blanks finds the area of a circle from its diameter with 3.14, or chooses the measurements and quotient that estimate pi. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -238,10 +242,13 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["measure.circle"],
       demand:
         "Use a circle's circumference and diameter to estimate pi, placing values by drag and drop",
-      status: "partial",
-      templateIds: ["circle-circumference-coefficient"],
+      status: "covered",
+      templateIds: [
+        "circle-estimate-blanks",
+        "circle-circumference-coefficient",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 1 point. circle-circumference-coefficient gives circumference as a multiple of pi; estimating pi as a ratio and dragging values are not practiced.",
+        "circle-estimate-blanks finds the area of a circle from its diameter with 3.14, or chooses the measurements and quotient that estimate pi. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -447,10 +454,10 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["finance.budget-percent"],
       demand:
         "Compare a rent amount and an insurance amount, each a percent of income, with stated dollar limits, using dropdown blanks",
-      status: "partial",
-      templateIds: ["percent-of"],
+      status: "covered",
+      templateIds: ["percent-amounts-blanks", "percent-of"],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. percent-of finds a percent of a quantity by entry; comparing two budget amounts with limits and dropdowns are not practiced.",
+        "percent-amounts-blanks chooses two percents of a whole as counts, or as budget amounts each compared with its limit. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -558,10 +565,14 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["univariate.center"],
       demand:
         "Compare two teams' medians and say whether their modes match, completing two dropdown blanks",
-      status: "partial",
-      templateIds: ["median-data", "compare-distributions-choice"],
+      status: "covered",
+      templateIds: [
+        "median-mode-compare-blanks",
+        "median-data",
+        "compare-distributions-choice",
+      ],
       limitations:
-        "STAAR interaction: inline choice, 2 points. median-data finds a median by entry; comparing medians and modes of two data sets and dropdown blanks are not practiced.",
+        "median-mode-compare-blanks completes a sentence comparing the medians and the modes of two lists of seven values. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {
@@ -607,10 +618,14 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["ratio.units"],
       demand:
         "Complete the proportion that converts yards to meters from a conversion factor by dragging parts",
-      status: "partial",
-      templateIds: ["ratio-missing", "metric-length-rename"],
+      status: "covered",
+      templateIds: [
+        "conversion-proportion-blanks",
+        "ratio-missing",
+        "metric-length-rename",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. Related families scale a ratio or rename units by entry; assembling the proportion by drag and drop has no response protocol.",
+        "conversion-proportion-blanks completes the proportion that converts yards to meters from the conversion factor. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: {

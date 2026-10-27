@@ -71,19 +71,13 @@ test("dilation, spinner, rates and ratios follow the givens", () => {
     assert.ok(Math.abs(l * k * w * k - l * w * ratio(chosen.area!)) < 1e-9);
   }
   for (const seed of seeds("ex")) {
-    const { prompt, chosen } = view("expected-count-blanks", seed);
+    const { prompt, chosen, sentence } = view("expected-count-blanks", seed);
     const list = prompt
       .match(/numbers: ([\d, ]+)\./)![1]!
       .split(", ")
       .map(Number);
     const spins = Number(prompt.match(/spun (\d+) times/)![1]);
-    const target = Number(
-      chosen.prob!.length
-        ? view("expected-count-blanks", seed).sentence.match(
-            /landing on (\d+) is/,
-          )![1]
-        : 0,
-    );
+    const target = Number(sentence.match(/landing on (\d+) is/)![1]);
     const c = list.filter((v) => v === target).length;
     const frac = chosen.prob!.match(/\\frac\{(\d+)\}\{(\d+)\}/);
     const p = frac ? Number(frac[1]) / Number(frac[2]) : Number(chosen.prob);
@@ -202,7 +196,6 @@ test("statistics, geometry and money keys follow the data shown", () => {
   for (const seed of seeds("reg")) {
     const { rows, chosen } = view("check-register-blanks", seed);
     const bal = [num(rows![1]![2]!)];
-    const amt: number[] = [];
     // Lines 1 and 3 show their amounts; lines 2 and 4 show their balances.
     const b1 = num(chosen.b1!);
     const a1 = num(rows![2]![1]!);
@@ -213,6 +206,5 @@ test("statistics, geometry and money keys follow the data shown", () => {
     const b3 = num(chosen.b3!);
     assert.equal(b3, num(rows![3]![2]!) + a3);
     assert.equal(b3 + num(chosen.a4!), num(rows![5]![2]!));
-    void amt;
   }
 });

@@ -221,10 +221,14 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["place.digit-value"],
       demand:
         "Drag the place name of each digit of a six-digit number into a table",
-      status: "partial",
-      templateIds: ["place-value-digit", "multidigit-digit-value"],
+      status: "covered",
+      templateIds: [
+        "digit-place-names",
+        "place-value-digit",
+        "multidigit-digit-value",
+      ],
       limitations:
-        "place-value-digit and multidigit-digit-value name one digit's value by entry; matching six digits to place names by drag has no protocol beyond a multi-part choice.",
+        "digit-place-names names the place of every digit of a five- or six-digit number with all different digits. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "18", page: "PDF p.24" },
@@ -301,10 +305,10 @@ export const vasolGrade4 = defineLedger(
       standards: ["SOL.2009.4.2a"],
       archetypeIds: ["fractions.compare"],
       demand: "Drag three fractions into order from greatest to least",
-      status: "partial",
-      templateIds: ["compare-fractions"],
+      status: "covered",
+      templateIds: ["order-fractions-slots", "compare-fractions"],
       limitations:
-        "compare-fractions picks the larger of two fractions by entry; ordering three by drag has no protocol beyond a multi-part choice.",
+        "order-fractions-slots orders three fractions with a common numerator, a common denominator or a half benchmark, in either direction. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
     {
       item: { number: "25", page: "PDF p.31" },
