@@ -373,10 +373,14 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["measure.customary-units"],
       demand:
         "Mark every measurement equivalent to six yards in feet and inches",
-      status: "partial",
-      templateIds: ["customary-unit-rename", "customary-unit-reverse"],
+      status: "covered",
+      templateIds: [
+        "customary-unit-rename",
+        "customary-unit-reverse",
+        "customary-equivalent-select",
+      ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. Related families rename one customary unit by entry; choosing two correct equivalents has no response protocol.",
+        "customary-equivalent-select gives a whole number of yards, gallons or pounds and selects the two or three of five measurements equal to it, written in one unit or two units such as feet and inches.",
     },
     {
       item: {
@@ -441,10 +445,13 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["pattern.paired"],
       demand:
         "Mark both statements that describe y = 7x as multiplicative and y = x + 7 as additive",
-      status: "partial",
-      templateIds: ["pattern-pair-relationship"],
+      status: "covered",
+      templateIds: [
+        "pattern-pair-relationship",
+        "additive-multiplicative-select",
+      ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. pattern-pair-relationship relates matched terms of two patterns; classifying equations as multiplicative or additive and a two-answer selection are not practiced.",
+        "additive-multiplicative-select gives one rule y = mx and one rule y = x + c and selects the true statements about which rule is multiplicative or additive, with the constant relationship and the value of y for a given x.",
     },
     {
       item: {

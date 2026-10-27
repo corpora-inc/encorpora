@@ -89,10 +89,10 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["angle.measure"],
       demand:
         "Mark every angle whose protractor reading is not a stated measure",
-      status: "partial",
-      templateIds: ["protractor-reading"],
+      status: "covered",
+      templateIds: ["protractor-reading", "protractor-angles-select"],
       limitations:
-        "STAAR interaction: multiselect, 2 points. protractor-reading reads one angle by entry; choosing several angles by their rays (two-answer selection) and finding differences of the two scale readings are not practiced.",
+        "protractor-angles-select (not-the-measure variant) draws four rays on one protractor and selects the angles, among all six pairs of rays, whose measure is not a stated value; the learner reads each ray and subtracts the readings.",
     },
     {
       item: {
@@ -152,10 +152,14 @@ export const staarGrade4 = defineLedger(
       standards: ["TEKS.4.3.6.B"],
       archetypeIds: ["shape.symmetry"],
       demand: "Mark every shape whose drawn lines of symmetry are all correct",
-      status: "partial",
-      templateIds: ["symmetry-line-check", "symmetry-line-count"],
+      status: "covered",
+      templateIds: [
+        "symmetry-line-check",
+        "symmetry-line-count",
+        "symmetry-lines-select",
+      ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. Related families choose one correct dashed line or count a figure's lines; checking several drawn lines on several figures with a two-answer selection is not practiced.",
+        "symmetry-lines-select (two-lines variant) draws five figures with two dashed lines each and selects the figures whose two lines are both lines of symmetry; each line is tested by reflecting the drawn coordinates.",
     },
     {
       item: {
@@ -180,10 +184,14 @@ export const staarGrade4 = defineLedger(
       standards: ["TEKS.4.1.3.C"],
       archetypeIds: ["fractions.equivalent"],
       demand: "Choose both fractions equivalent to a given fraction",
-      status: "partial",
-      templateIds: ["fraction-equivalence-choice", "equivalent-numerator"],
+      status: "covered",
+      templateIds: [
+        "fraction-equivalence-choice",
+        "equivalent-numerator",
+        "equivalent-fractions-select",
+      ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. fraction-equivalence-choice offers one correct equivalent among misconceptions; selecting two correct equivalents has no response protocol.",
+        "equivalent-fractions-select gives a proper fraction and selects the two or three of five fractions equivalent to it, among fractions that scale both parts, change one part, add to both parts or exchange the parts.",
     },
     {
       item: {
@@ -385,10 +393,14 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["expression.verbal"],
       demand:
         "Choose both expressions that find an unknown part after two quantities are removed from a total",
-      status: "partial",
-      templateIds: ["story-operation-choice", "delivery-then-use"],
+      status: "covered",
+      templateIds: [
+        "story-operation-choice",
+        "delivery-then-use",
+        "story-expression-select",
+      ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. Related families choose one equation for a one-step story or solve a two-step story; selecting two valid representations of a multistep story has no response protocol.",
+        "story-expression-select (two-removals variant) gives a total with two amounts taken away and selects the two or three of five expressions that find the amount left, written with the amounts taken away one at a time, together or in a different order.",
     },
     {
       item: {

@@ -108,10 +108,10 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["expression.verbal"],
       demand:
         "Select the two number sentences that can find the part of a trip already traveled",
-      status: "partial",
-      templateIds: ["staar-story-model-choice"],
+      status: "covered",
+      templateIds: ["staar-story-model-choice", "story-expression-select"],
       limitations:
-        "STAAR interaction: multiselect, 2 points. staar-story-model-choice picks one equation for a story; none takes a two-answer selection or related addition and subtraction forms of one story.",
+        "story-expression-select (unknown-part variant) gives a total and the part left and selects the two or three number sentences with a box for the unknown that find the part already used.",
     },
     {
       item: { number: "8", page: "rationale PDF p.9" },
@@ -300,10 +300,14 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["fractions.number-line", "fractions.equivalent"],
       demand:
         "Select the two fractions that name a point at one third on a zero-to-one number line",
-      status: "partial",
-      templateIds: ["fraction-line-position", "fraction-equivalence-choice"],
+      status: "covered",
+      templateIds: [
+        "fraction-line-position",
+        "fraction-equivalence-choice",
+        "fraction-line-names-select",
+      ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. fraction-line-position reads one fraction at a point; fraction-equivalence-choice picks one equivalent name; no family takes a two-answer selection.",
+        "fraction-line-names-select draws a point on a number line from 0 to 1 cut into equal parts and selects the two or three fractions that name it.",
     },
     {
       item: { number: "24", page: "rationale PDF p.27" },

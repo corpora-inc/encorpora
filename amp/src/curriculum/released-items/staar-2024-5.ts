@@ -61,10 +61,10 @@ export const staar2024Grade5 = defineLedger(
       archetypeIds: ["measure.volume"],
       demand:
         "Select every drawn rectangular prism with a volume of twenty-four cubic centimeters",
-      status: "partial",
-      templateIds: ["prism-volume-edges"],
+      status: "covered",
+      templateIds: ["prism-volume-edges", "prism-volume-select"],
       limitations:
-        "STAAR interaction: multiselect, 2 points. prism-volume-edges finds the volume of one prism by entry; no family takes a selection of several prisms.",
+        "prism-volume-select draws six rectangular prisms with labeled edges and selects the two or three whose volume is a stated number of cubic centimeters, including 24.",
     },
     {
       item: { number: "4", page: "rationale PDF p.4" },
@@ -205,10 +205,10 @@ export const staar2024Grade5 = defineLedger(
       standards: ["TEKS.5.1.2.C"],
       archetypeIds: ["number.inverse-rounding"],
       demand: "Select the two numbers that round to 124.6 at the nearest tenth",
-      status: "partial",
-      templateIds: ["inverse-round-decimal"],
+      status: "covered",
+      templateIds: ["inverse-round-decimal", "rounds-to-select"],
       limitations:
-        "STAAR interaction: multiselect, 2 points. inverse-round-decimal chooses one decimal that rounds to a stated tenth; no family takes a multi-select or numbers with a hundreds place.",
+        "rounds-to-select selects the two or three of five numbers that round to a stated value at the nearest whole number, tenth or hundredth, including numbers with a hundreds place.",
     },
     {
       item: { number: "16", page: "rationale PDF p.17" },

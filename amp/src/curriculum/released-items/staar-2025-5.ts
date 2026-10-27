@@ -261,10 +261,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["expression.order-of-operations"],
       demand:
         "Choose both expressions that equal one with a subtraction inside parentheses",
-      status: "partial",
-      templateIds: ["operation-order"],
+      status: "covered",
+      templateIds: ["operation-order", "equal-expression-select"],
       limitations:
-        "STAAR interaction: multiselect, 2 points. operation-order evaluates one expression by entry; recognizing equivalent expressions with multiple selection has no response protocol.",
+        "equal-expression-select gives an expression with a subtraction inside parentheses, multiplied, added to or divided, and selects the two or three of five expressions with the same value.",
     },
     {
       item: {
