@@ -185,11 +185,11 @@ export function Legal({
             program and the starting birth year chosen for a demonstration. A
             campaign’s target state and a demonstration year are context, not
             confirmed residence, eligibility or a child’s age. The signup page
-            says that AMP will email the parent. A free account receives a
-            welcome email, a next-day reminder and occasional math problems,
-            tips, videos and product news. Every one of these emails includes
-            an unsubscribe link; unsubscribing does not affect account access
-            or security and purchase messages.
+            says that AMP will email the parent. Parents who sign up or sign in
+            there opt in to a welcome email, a next-day reminder and occasional
+            math problems, tips, videos and product news. Every one of these
+            emails includes an unsubscribe link; unsubscribing does not affect
+            account access or security and purchase messages.
           </p>
           <h2>Education-fund purchase documents</h2>
           <p>
