@@ -27,12 +27,17 @@ test("stadiums are listed in the order the prompt asks, read from the numbers in
   for (let i = 0; i < 200; i++) {
     const { problem, slots } = keyed("order-whole-numbers-slots", `w:${i}`);
     const crowds = [
-      ...problem.public.prompt.matchAll(/([A-Z][A-Za-z ]+?) holds ([\d,]+) people/g),
+      ...problem.public.prompt.matchAll(
+        /([A-Z][A-Za-z ]+?) holds ([\d,]+) people/g,
+      ),
     ].map((m) => ({ name: m[1]!, value: Number(m[2]!.replaceAll(",", "")) }));
     assert.equal(crowds.length, 3);
     const sorted = [...crowds].sort((a, b) => a.value - b.value);
     if (!leastFirst(problem.public.prompt)) sorted.reverse();
-    assert.deepEqual(slots.map((s) => s.chosen), sorted.map((c) => c.name));
+    assert.deepEqual(
+      slots.map((s) => s.chosen),
+      sorted.map((c) => c.name),
+    );
   }
 });
 
@@ -43,8 +48,17 @@ test("fractions and signed numbers are keyed in the order of their values", () =
       const values = slots.map((s) => numeric(s.chosen));
       const ascending = leastFirst(problem.public.prompt);
       for (let k = 1; k < values.length; k++)
-        assert.ok(ascending ? values[k - 1]! < values[k]! : values[k - 1]! > values[k]!, `${id} ${i}`);
-      const listed = problem.public.prompt.split(": ")[1]!.replace(/\.$/, "").split(", ");
-      assert.deepEqual([...listed.map(numeric)].sort((a, b) => a - b), [...values].sort((a, b) => a - b));
+        assert.ok(
+          ascending ? values[k - 1]! < values[k]! : values[k - 1]! > values[k]!,
+          `${id} ${i}`,
+        );
+      const listed = problem.public.prompt
+        .split(": ")[1]!
+        .replace(/\.$/, "")
+        .split(", ");
+      assert.deepEqual(
+        [...listed.map(numeric)].sort((a, b) => a - b),
+        [...values].sort((a, b) => a - b),
+      );
     }
 });

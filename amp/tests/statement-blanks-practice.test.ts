@@ -85,14 +85,20 @@ test("equivalent rows have the same value as the given expression", () => {
       .replace(/(\d|x|\))(?=[x(\d])(?!\*)/g, (m, c, offset, str) =>
         /\d/.test(c) && /\d/.test(str[offset + 1] ?? "") ? c : `${c}*`,
       );
-    try { return Function("x", `return ${js}`)(v) as number; } catch (e) { throw new Error(`${tex} -> ${js}`); }
+    try {
+      return Function("x", `return ${js}`)(v) as number;
+    } catch (e) {
+      throw new Error(`${tex} -> ${js}`);
+    }
   };
   for (const seed of seeds("eq")) {
     const { prompt, response, chosen } = view(
       "equivalent-expressions-table",
       seed,
     );
-    const letter = prompt.replace(/\\[a-z]+/g, "").match(/to \$.*?([a-z])/)![1]!;
+    const letter = prompt
+      .replace(/\\[a-z]+/g, "")
+      .match(/to \$.*?([a-z])/)![1]!;
     const norm = (t: string) => t.replaceAll("$", "").replaceAll(letter, "x");
     const base = norm(prompt.match(/to (\$.+\$)\./)![1]!);
     let yes = 0;
