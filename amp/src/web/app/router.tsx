@@ -516,15 +516,21 @@ function redirectedRecently() {
 }
 // The server ended this parent's sign-in (expired, or signed out elsewhere).
 // Free practice returns to the free-account signup, everything else to
-// sign-in, with the place kept. The destination is loaded before the switch,
+// sign-in, with campaign, program and return context kept. The destination is loaded before the switch,
 // so the current screen stays until it is replaced in one step; the session
 // is cleared only after, so no mounted screen renders without one.
+let leaving = false;
 onSignedOut(() => {
+  // Several requests from one screen can fail together: one redirect, and the
+  // rest wait silently for the screen to be replaced.
+  if (leaving) return true;
   const { pathname, search } = router.state.location;
   if (/^\/(sign-in|sign-up|reset-password)(\/|$)/.test(pathname)) return false;
   if (redirectedRecently()) return false;
+  leaving = true;
   const carry = continuationSearch(search);
   const clear = () => {
+    leaving = false;
     queryClient.setQueryData(sessionOptions.queryKey, null);
     queryClient.removeQueries({ queryKey: ["account"] });
   };
@@ -537,14 +543,14 @@ onSignedOut(() => {
       .preloadRoute(target)
       .catch(() => undefined)
       .then(() => router.navigate({ ...target, replace: true }))
-      .then(clear);
+      .finally(clear);
   } else {
     const target = { to: "/sign-in", search: carry } as const;
     void router
       .preloadRoute(target)
       .catch(() => undefined)
       .then(() => router.navigate({ ...target, replace: true }))
-      .then(clear);
+      .finally(clear);
   }
   return true;
 });

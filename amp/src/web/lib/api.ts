@@ -85,6 +85,13 @@ const messages: Record<string, string> = {
   "Too Many Requests":
     "Too many requests from this network. Wait a few minutes, then try again.",
 };
+const errorCode = (data: unknown) =>
+  data &&
+  typeof data === "object" &&
+  "error" in data &&
+  typeof data.error === "string"
+    ? data.error
+    : "";
 export async function request<T>(
   path: string,
   schema: z.ZodType<T>,
@@ -144,16 +151,27 @@ export async function request<T>(
   const requestId = response.headers.get("x-request-id");
   const data: unknown = await response.json().catch(() => null);
   checkAborted();
-  if (!response.ok && response.status < 500) {
-    // A tab running an older release than the API: reload into the current
-    // one rather than report a failure the visitor didn't cause.
-    if (await buildIsStale()) return reloadIntoCurrentRelease();
-    // The server ended this parent sign-in: go to sign-in with the place kept.
-    // A free-practice token is the device's own and is handled by its screens.
-    if (response.status === 401 && !options.trial && signedOut()) {
-      observe("cancelled");
-      return new Promise<never>(() => {});
-    }
+  // A tab running an older release than the API: a missing route or a
+  // rejected sign-in reloads into the current release rather than reporting a
+  // failure the visitor didn't cause. Other errors still show, so a filled-in
+  // form is never wiped by a reload.
+  if (
+    (response.status === 401 || response.status === 404) &&
+    (await buildIsStale())
+  ) {
+    const reloading = reloadIntoCurrentRelease();
+    if (reloading) return reloading;
+  }
+  // The server ended this parent's sign-in: go to sign-in instead of failing.
+  // A free-practice request reports the parent's sign-in the same way; only
+  // "This free trial has ended" belongs to the practice screens.
+  if (
+    response.status === 401 &&
+    (!options.trial || errorCode(data) === "Sign in to continue") &&
+    signedOut()
+  ) {
+    observe("cancelled");
+    return new Promise<never>(() => {});
   }
   if (!response.ok) {
     const code =

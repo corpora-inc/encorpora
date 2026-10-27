@@ -3,8 +3,8 @@ import { nativeRuntime } from "../native-runtime";
 /** Recovery for a tab that outlived its release or its sign-in. A page left
  * open overnight can run yesterday's code against today's API, or hold a
  * session the server has ended. Neither is the visitor's mistake, so neither
- * shows an error: the tab reloads into the current release, or goes to
- * sign-in with its place kept. */
+ * shows an error: the tab loads the current release, or goes to sign-in
+ * with its campaign and program context kept. */
 
 const entryOf = (doc: Document): string | null => {
   const script = doc.querySelector<HTMLScriptElement>(
@@ -54,24 +54,33 @@ export function buildIsStale(maxAgeMs = 30_000): Promise<boolean> {
 /** Whether a check has already found this tab stale (no request). */
 export const knownStale = () => stale;
 
+const RELOAD_KEY = "amp.release-reload";
 /** Reloads the page at its current URL. The returned promise never settles,
- * so the caller shows nothing while the page is replaced. */
-export function reloadIntoCurrentRelease(): Promise<never> {
+ * so the caller shows nothing while the page is replaced. Returns null, and
+ * does not reload, when this tab already reloaded for a release in the last
+ * minute: a "/" that keeps naming another release (a rollout, a cache) must
+ * not reload the page forever. */
+export function reloadIntoCurrentRelease(): Promise<never> | null {
+  try {
+    if (Date.now() - Number(sessionStorage.getItem(RELOAD_KEY)) < 60_000)
+      return null;
+    sessionStorage.setItem(RELOAD_KEY, String(Date.now()));
+  } catch {
+    return null;
+  }
   location.reload();
   return new Promise<never>(() => {});
 }
 
-const AWAY_BEFORE_RELOAD_MS = 5 * 60_000;
-/** Returning to a tab after a while reloads it if a new release went live,
- * before the visitor acts on old code. Short tab switches never reload. */
+const AWAY_BEFORE_CHECK_MS = 5 * 60_000;
+/** Returning to a tab after a while checks for a new release. A stale tab is
+ * not reloaded under the visitor (an answer or form would be lost); its next
+ * navigation loads the current release instead (see the root route). */
 export function watchForNewRelease() {
   if (nativeRuntime) return;
   let hiddenAt = document.visibilityState === "hidden" ? Date.now() : 0;
   const returned = (awayMs: number) => {
-    if (awayMs < AWAY_BEFORE_RELOAD_MS) return;
-    void buildIsStale(0).then((isStale) => {
-      if (isStale) void reloadIntoCurrentRelease();
-    });
+    if (awayMs >= AWAY_BEFORE_CHECK_MS) void buildIsStale(0);
   };
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") hiddenAt = Date.now();
