@@ -33,6 +33,7 @@ export type AuthConfig =
       passwords: boolean;
       /** A new parent can create the account with a passkey. */
       passkeySignup?: boolean;
+      parentFollowup?: boolean;
       providers: string[];
     }
   | { mode: "oidc" | "development" | "native" };

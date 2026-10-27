@@ -398,7 +398,7 @@ async function coldLoad(
     `${label}: only the skeleton or the destination is ever painted`,
   );
   assert.ok(shots.length > 0, `${label}: frames were captured`);
-  if (destination === "Your math pathways start here") {
+  if (destination === "See how AMP adapts") {
     assert.equal(
       await page.locator("header").count(),
       0,
@@ -514,6 +514,13 @@ try {
       if (audit) await axe(page, "welcome");
       await shoot(page, "welcome", tag);
       await tryFree.click();
+      await page.waitForURL("**/sign-up?return=free-practice");
+      await page
+        .getByRole("heading", { name: "Try AMP’s free math assessment." })
+        .waitFor();
+      // Identity-provider behavior is verified in verify-social-sign-in-ui.
+      await page.evaluate(() => localStorage.setItem("fixture.parent", "1"));
+      await page.goto(`${origin}/try`);
       await page.waitForURL("**/try");
       const years = page.getByRole("group", { name: "Birth year" });
       await years.waitFor();
@@ -811,17 +818,10 @@ try {
       await page.getByRole("link", { name: "See plans" }).click();
       await page.waitForURL("**/try/plans?reason=limit");
 
-      // Continue: the monthly plan, through sign-up, to the plan step.
+      // The parent signed up before practice; continue straight to the plan.
       await monthly.click();
       await page.getByRole("button", { name: "Continue", exact: true }).click();
-      await page.waitForURL("**/sign-up");
-      await page
-        .getByRole("heading", { name: "Create your account" })
-        .waitFor();
-      // The verification link returns to /start once the account exists.
-      await page.evaluate(() => localStorage.setItem("fixture.parent", "1"));
-      await page.goto(`${origin}/start`);
-      await page.waitForURL("**/start/plan");
+      await page.waitForURL(/\/start\/plan(?:\?|$)/);
       await page.getByRole("radiogroup", { name: "Plan" }).waitFor();
       assert.equal(
         await page
@@ -898,7 +898,7 @@ try {
       const seen = await coldLoad(
         parent,
         "/",
-        "Your math pathways start here",
+        "See how AMP adapts",
         `parent-${tag}`,
         fresh(),
       );
@@ -910,7 +910,7 @@ try {
       await coldLoad(
         parent,
         "/start",
-        "Your math pathways start here",
+        "See how AMP adapts",
         `parent-start-${tag}`,
         fresh(),
       );
@@ -924,7 +924,7 @@ try {
       await coldLoad(
         visitor,
         "/try",
-        "Your math pathways start here",
+        "Try AMP’s free math assessment.",
         `direct-try-${tag}`,
         fresh(),
       );

@@ -819,9 +819,13 @@ def solve_roles(public):
     good = []
     for o in opts:
         m = re.fullmatch(r'(.+) changes when (.+) changes, so (.+) is the independent quantity(?: and (.+) is the dependent quantity)?\.', o['label'])
-        if not m:
-            continue  # blanket claims such as "both independent" or "first column is dependent"
-        if role(m[3]) == 'indep' and role(m[2]) == 'indep' and role(m[1]) == 'dep':
+        if m:
+            if (role(m[3]) == 'indep' and role(m[2]) == 'indep' and role(m[1]) == 'dep'
+                    and (m[4] is None or role(m[4]) == 'dep')):
+                good.append(o['id'])
+            continue
+        m = re.fullmatch(r'(.+) is the independent quantity and (.+) is the dependent quantity\.', o['label'])
+        if m and role(m[1]) == 'indep' and role(m[2]) == 'dep':
             good.append(o['id'])
     return only(good, 'True statement')
 
@@ -1247,6 +1251,23 @@ def self_test():
     review_problem(good)
     bad = copy.deepcopy(good); bad['answer'] = 'option-a'; must_reject(bad, 'roles reversed')
     bad = copy.deepcopy(good); bad['public']['figure']['scene']['elements'][0]['corner'] = 'Cost ($)'; bad['public']['figure']['scene']['elements'][0]['columns'] = ['Minutes']; must_reject(bad, 'table headings swapped')
+    # Direct role statements must check both clauses, independently of the key.
+    good = case('independent-dependent-roles', 'Which statement about the table is true?', [
+        'The minutes on a call is the independent quantity and the cost of the call is the dependent quantity.',
+        'The cost of the call is the independent quantity and the minutes on a call is the dependent quantity.',
+        'Both quantities are independent because both are numbers in the table.',
+        'The first column is always dependent because it is listed first.'], figure=rt)
+    review_problem(good)
+    bad = copy.deepcopy(good); bad['answer'] = 'option-b'; must_reject(bad, 'reversed statement marked correct')
+    bad = copy.deepcopy(good); bad['public']['response']['options'][0]['label'] = 'The minutes on a call is the independent quantity and the minutes on a call is the dependent quantity.'; must_reject(bad, 'dependent clause names the input')
+    bad = copy.deepcopy(good); bad['public']['response']['options'][0]['label'] = 'The cost of the call is the independent quantity and the cost of the call is the dependent quantity.'; must_reject(bad, 'independent clause names the output')
+    bad = copy.deepcopy(good); bad['public']['response']['options'][1]['label'] = good['public']['response']['options'][0]['label']; must_reject(bad, 'two true role statements')
+    # Older causal wording is also supported, including its optional dependent clause.
+    for suffix in ['', ' and the cost of the call is the dependent quantity']:
+        causal = copy.deepcopy(good)
+        causal['public']['response']['options'][0]['label'] = 'The cost of the call changes when the minutes on a call changes, so the minutes on a call is the independent quantity' + suffix + '.'
+        review_problem(causal)
+    bad = copy.deepcopy(causal); bad['public']['response']['options'][0]['label'] = bad['public']['response']['options'][0]['label'].replace('and the cost of the call', 'and the minutes on a call'); must_reject(bad, 'causal statement contradicts its dependent clause')
     # 16 expression vs equation
     good = case('expression-or-equation', 'Which of these is an equation, not an expression?', ['7x − 3', 'y + 9 = 11', '5m', '3a'], answer='option-b')
     review_problem(good)

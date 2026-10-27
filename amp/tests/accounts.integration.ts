@@ -93,6 +93,51 @@ test(
         .join("; ");
       assert.match(cookies, /amp\.session_token=/);
 
+      const hosted = buildApp({
+        repository,
+        authenticate: accountsAuth(accounts),
+        development: false,
+      });
+      const anonymousTrial = await hosted.inject({
+        method: "POST",
+        url: "/api/v1/trials",
+        payload: { birthYear: 2016 },
+      });
+      assert.equal(
+        anonymousTrial.statusCode,
+        401,
+        "assessment requires a parent account",
+      );
+      const parentTrial = await hosted.inject({
+        method: "POST",
+        url: "/api/v1/trials",
+        payload: { birthYear: 2016 },
+        headers: { cookie: cookies },
+      });
+      assert.equal(parentTrial.statusCode, 201, parentTrial.body);
+      const trialAuth = { authorization: `Trial ${parentTrial.json().token}` };
+      assert.equal(
+        (
+          await hosted.inject({
+            method: "GET",
+            url: "/api/v1/session",
+            headers: trialAuth,
+          })
+        ).statusCode,
+        401,
+      );
+      assert.equal(
+        (
+          await hosted.inject({
+            method: "GET",
+            url: "/api/v1/session",
+            headers: { ...trialAuth, cookie: cookies },
+          })
+        ).statusCode,
+        200,
+      );
+      await hosted.close();
+
       // The same account through either credential; nothing without one.
       const bearer = await learners({ authorization: `Bearer ${token}` });
       assert.equal(bearer.statusCode, 200, bearer.body);

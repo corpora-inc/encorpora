@@ -3,95 +3,87 @@ import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
 export const thermometerReadingMethods: Record<string, ProblemMethod> = {
-  "thermometer-reading": {
-    goal: "Read the temperature a liquid thermometer shows, in degrees Fahrenheit or degrees Celsius.",
+  "read-thermometer": {
+    goal: "Read a temperature from the top of the liquid on a marked scale, then compare two readings by subtracting.",
     intuition:
-      "A thermometer is a number line standing up. The liquid rises when it is warmer, and the number where its top ends is the temperature.",
+      "A thermometer is a number line stood on its end. The liquid rises higher when it is warmer, and the height of the top of the liquid shows the temperature. You read it the way you read any scale: find what one mark is worth, then count from a labeled mark.",
     terms: [
       [
-        "degree (°)",
-        "The unit of temperature. °F means degrees Fahrenheit and °C means degrees Celsius.",
+        "degree",
+        "The unit for temperature. Degrees Fahrenheit and degrees Celsius are two scales.",
       ],
       [
-        "small mark",
-        "A mark between the numbers. Every small mark on one thermometer stands for the same number of degrees.",
-      ],
-      [
-        "below zero",
-        "Colder than 0. Readings below 0 are negative numbers, such as −5.",
+        "gridline",
+        "A mark across the scale. Not every gridline has a number written beside it.",
       ],
     ],
     method: [
-      "Find what one small mark is worth: the jump between two numbers divided by the spaces between them.",
-      "Find the last numbered mark at or below the top of the liquid.",
-      "Count the small marks from that number up to the top of the liquid, adding the value of one small mark for each.",
-      "Write the number with its unit, °F or °C. Below 0, count up from the negative number.",
+      "Work out what one gridline is worth: take two neighboring labeled lines, subtract, and divide by the number of spaces between them.",
+      "Find the labeled line just below the top of the liquid and count up by the gridline value to the top.",
+      "To compare two readings, read each one and subtract the lower from the higher.",
     ],
     watch:
-      "Count spaces, not numbers, and check what one small mark is worth: on many thermometers a small mark is 2 degrees, not 1.",
+      "Do not read the nearest label if the top is between labels. Count the gridlines from the label below it, and count by what each gridline is worth, not by ones.",
   },
 };
 
 export const thermometerReadingPrinciples: Record<string, string> = {
-  "thermometer-reading":
-    "A thermometer's scale is a number line with equal spaces for equal changes in temperature. If numbered marks $a$ and $a+d$ have $s$ equal spaces between them, each space is $d \\div s$ degrees, so a reading $k$ spaces above $a$ is $a + k \\cdot \\frac{d}{s}$. Numbers below 0 are negative, and a reading closer to 0 from below is warmer.",
+  "read-thermometer":
+    "A temperature scale is a number line: equal gridline spaces are equal numbers of degrees, and the reading is the number at the top of the liquid. The change between two temperatures is the higher reading minus the lower reading.",
 };
 
 export const thermometerReadingLessons = [
   chainLesson({
-    id: "thermometer-reading",
-    title: "Read a thermometer",
+    id: "read-thermometer-lesson",
+    title: "Reading a thermometer",
     summary:
-      "Find what one small mark is worth, then count up from the number below the liquid, in °F or °C, above and below zero.",
-    templateIds: ["thermometer-reading"],
+      "Read a temperature from a marked scale and find how many degrees warmer or colder one reading is.",
+    templateIds: ["read-thermometer"],
     objectives: [
-      "Work out how many degrees one small mark of a thermometer stands for.",
-      "Read a temperature between numbered marks, including temperatures below zero.",
+      "Find what one gridline of a temperature scale is worth.",
+      "Read the temperature at the top of the liquid, and subtract two readings to find a change.",
     ],
-    openingTitle: "A number line standing up",
+    openingTitle: "A thermometer is an upright number line",
     opening: [
-      "A thermometer is a number line turned on its end. Warmer temperatures are higher, colder ones lower. The liquid in the tube rises as it gets warmer, and the temperature is the number where the top of the liquid ends.",
-      "Only some marks have numbers. The marks between them are small marks, and each one stands for the same number of degrees. That number is not always 1, so find it before you count.",
+      "The liquid in a thermometer rises when it gets warmer. The height of its top shows the temperature on the scale beside it. Degrees measure temperature, in degrees Fahrenheit or degrees Celsius.",
+      "Only some gridlines have numbers, so first find what one gridline is worth. If the labels 25 and 50 have five spaces between them, each space is $(50-25)\\div5=5$ degrees.",
     ],
     example: {
       prompt:
-        "A Fahrenheit thermometer has numbers 30, 40, 50, 60 and 70. Between two numbers there are 5 spaces. The liquid ends 2 small marks above 50. What temperature does it show?",
+        "The top of the liquid is two gridlines above the labeled line 50. Each gridline is worth 5 degrees. What does it read?",
       steps: [
-        "The numbers go up by 10 and there are 5 spaces between them, so each small mark is $10\\div5=2$ degrees.",
-        "The last number below the top of the liquid is 50.",
-        "The liquid ends 2 small marks above it: $50+2\\times2=54$.",
-        "The thermometer shows 54°F.",
+        "Start at the labeled line: 50 degrees.",
+        "Two gridlines up is $2\\times5=10$ degrees more.",
+        "$50+10=60$.",
       ],
-      answer: "54°F",
+      answer: "60 degrees",
     },
-    methodTitle: "Step size, then count on",
+    methodTitle: "Find the step, then count from a label",
     method: [
-      "Divide the jump between two numbers by the spaces between them to find what one small mark is worth.",
-      "Start at the last number at or below the top of the liquid and count up by that amount for each small mark. Below zero the numbers are negative: from −10, three marks of 1 degree up is −7.",
+      "Step: subtract two neighboring labels and divide by the spaces between them.",
+      "Reading: start at the label just below the top and count up by the step. To find how much warmer one reading is than another, subtract.",
     ],
-    formalTitle: "Why counting spaces works",
+    formalTitle: "Scales and change",
     formal: [
-      "Equal spaces on a scale stand for equal changes in temperature. If numbered marks $a$ and $a+d$ have $s$ spaces between them, one space is $d\\div s$ degrees, and $k$ spaces above $a$ is $a+k\\cdot\\frac{d}{s}$.",
-      "Temperatures below 0 are negative numbers on the same line. A reading of $-7$ is 7 degrees below 0, and $-7$ is warmer than $-10$ because it is higher on the scale.",
+      "Equal spaces on the scale are equal differences in temperature. The reading is the label below plus the number of gridlines times the step.",
+      "The difference between two temperatures is the higher reading minus the lower reading, in the same degrees.",
     ],
     pitfalls: [
-      "A small mark can be worth 2 degrees: find its value before counting.",
-      "Count the spaces between marks, not the marks themselves, when finding a small mark's value.",
-      "Below zero, the number just below the liquid is the more negative one, such as −10 under −7.",
+      "Counting gridlines by ones when each one is worth 5 or 2 degrees.",
+      "Reading the closest labeled number when the top is between labels.",
+      "Subtracting readings from two different scales. Both readings must be in the same degrees.",
     ],
     parentGuide:
-      "Ask your learner what one small mark is worth on this thermometer before they read it, and which numbered mark they counted from.",
+      "Ask your learner what one tick mark is worth before reading the top of the liquid.",
   }),
 ];
 
-/** The attached skill is grade 3 measurement with scaled instruments; a
- * thermometer is read the same way as its liquid-volume scale. */
 export const thermometerReadingFacetMappings: FacetMapping[] = [
   {
-    templateId: "thermometer-reading",
+    templateId: "read-thermometer",
     facetId: "mass-volume.core",
     extent: "partial",
     rationale:
-      "Numeric entry for reading a drawn thermometer in degrees Fahrenheit or Celsius whose small marks are 1 or 2 degrees, including readings below zero: the scale-reading part of measuring with instruments. Does not assess mass, liquid volume, temperature changes or choosing a tool.",
+      "Numeric entry for reading a positive Fahrenheit or Celsius temperature from the top of a bar on a gridded scale whose gridlines are worth 5 or 2 degrees, and for the difference between two readings. The bar chart stands in for the liquid column. Does not assess negative temperatures, a drawn bulb-and-tube thermometer, estimating between gridlines, or temperature stories.",
   },
 ];

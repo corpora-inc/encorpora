@@ -1,229 +1,149 @@
-import type {
-  GeneratedProblem,
-  SemanticFigure,
-  TemplateMetadata,
-} from "./contracts";
-import { assemble, random, type Random } from "./distribution-practice";
-import type { Scene } from "./scene/spec";
-import type { Step } from "./scene/timeline";
+import type { TemplateMetadata } from "./contracts";
+import { sceneSchema } from "./scene/spec";
+import { barChartGeometry } from "./scene/components/bar-chart";
+import { defineAxis } from "./variation/axes";
+import { chainFamily, dispatch, numberSurface, pick } from "./chain-kit";
 
-/**
- * Read the temperature a liquid thermometer shows (Virginia SOL grade 3:
- * "the temperature a Fahrenheit thermometer shows"). The figure is the
- * scenes-v2 `thermometer`: one scale in °F or °C, small marks every 1 or 2
- * degrees, numbers every 5 or 10, and the liquid ending on a mark. Most
- * readings fall between numbered marks, so the learner works out what one
- * small mark is worth and counts on from the number below the liquid. A
- * minority of instances read below zero, where the numbers below 0 are
- * negative and count down.
- */
 export const thermometerReadingTemplate: TemplateMetadata = {
-  id: "thermometer-reading",
+  id: "read-thermometer",
   version: 1,
-  title: "Read a thermometer",
+  requiredFigureCapability: "scenes-v1",
+  title: "Reading a thermometer",
   skillId: "mass-volume",
   gradeBand: "3–5",
-  difficultyOffset: 0.1,
-  requiredFigureCapability: "scenes-v2",
+  difficultyOffset: -0.1,
   description:
-    "Read the temperature a liquid thermometer shows in degrees Fahrenheit or Celsius, on scales whose small marks are 1 or 2 degrees and whose numbers go up by 5 or 10, including some readings below zero.",
+    "Read a temperature in degrees Fahrenheit or Celsius from the top of the liquid on a marked scale, or find how many degrees warmer or colder one reading is than another.",
 };
-export const thermometerReadingTemplates: readonly TemplateMetadata[] = [
-  thermometerReadingTemplate,
+
+interface Scale {
+  name: "Fahrenheit" | "Celsius";
+  max: number;
+  step: number;
+  /** Readings land on a gridline, away from both ends of the scale. */
+  low: number;
+  high: number;
+}
+const scales: readonly Scale[] = [
+  { name: "Fahrenheit", max: 100, step: 5, low: 4, high: 18 },
+  { name: "Celsius", max: 40, step: 2, low: 3, high: 17 },
 ];
 
-/** Scales whose small marks stay at least 6 px apart and whose numbers stay
- * at least 28 px apart in a 400 px tall figure (tested). */
-export const thermometerScales = [
-  { minor: 1, major: 5, span: 30 },
-  { minor: 1, major: 10, span: 40 },
-  { minor: 2, major: 10, span: 40 },
-  { minor: 2, major: 10, span: 60 },
-] as const;
-export const THERMOMETER_HEIGHT = 400;
+const axes = {
+  ask: defineAxis("ask", ["read", "warmer", "colder"] as const),
+};
+interface Model {
+  ask: "read" | "warmer" | "colder";
+  scale: Scale;
+  first: number;
+  second: number;
+}
+const model = (
+  r: (lo: number, hi: number) => number,
+  a: { ask: Model["ask"] },
+): Model => {
+  const scale = pick(r, scales);
+  const first = scale.step * r(scale.low, scale.high);
+  if (a.ask === "read") return { ask: a.ask, scale, first, second: 0 };
+  const second = scale.step * r(scale.low, scale.high);
+  const hi = Math.max(first, second);
+  const lo = Math.min(first, second);
+  // The hint names these numbers, so the answer must not be one of them.
+  if (
+    hi - lo < 3 * scale.step ||
+    [labelBelow(scale, lo), labelBelow(scale, hi), scale.step].includes(hi - lo)
+  )
+    throw new Error("Need three retries");
+  return { ask: a.ask, scale, first, second };
+};
 
-export type ThermometerVariant = "fahrenheit" | "celsius" | "below-zero";
-export interface ThermometerModel {
-  variant: ThermometerVariant;
-  unit: "F" | "C";
-  minor: 1 | 2;
-  major: 5 | 10;
-  min: number;
-  max: number;
-  reading: number;
-  /** The numbered mark at or below the reading, and the small marks above it. */
-  base: number;
-  steps: number;
+/** The labeled gridline just below a reading, as the drawn chart labels it. */
+function labelBelow(scale: Scale, value: number) {
+  const g = barChartGeometry({
+    type: "barChart",
+    bars: [{ label: "x", value: 0 }],
+    max: scale.max,
+    step: scale.step,
+  });
+  return Math.max(...[...g.labeled].filter((v) => v < value));
 }
 
-const unitName = (unit: "F" | "C") =>
-  unit === "F" ? "degrees Fahrenheit" : "degrees Celsius";
-/** A signed number as typeset math: a true minus sign. */
-const n = (v: number) => `$${v < 0 ? `-${-v}` : v}$`;
-const degreeWord = (k: number) => (k === 1 ? "degree" : "degrees");
-
-export function thermometerModel(r: Random): ThermometerModel {
-  // Grade 3 reads Fahrenheit mostly; below zero is the minority variant.
-  const roll = r(0, 9);
-  const variant: ThermometerVariant =
-    roll < 5 ? "fahrenheit" : roll < 8 ? "celsius" : "below-zero";
-  const unit =
-    variant === "fahrenheit"
-      ? "F"
-      : variant === "celsius"
-        ? "C"
-        : (["F", "C"] as const)[r(0, 1)]!;
-  const scale = thermometerScales[r(0, thermometerScales.length - 1)]!;
-  const { minor, major, span } = scale;
-  // The lowest number on the scale, a multiple of the label step.
-  const lows =
-    variant === "below-zero"
-      ? [-30, -20, -10].filter((m) => m + span > 0 && m % major === 0)
-      : variant === "fahrenheit"
-        ? [0, 10, 20, 30, 40, 50, 60].filter((m) => m % major === 0)
-        : [0, 10].filter((m) => m % major === 0);
-  const min = lows[r(0, lows.length - 1)]!;
-  const max = min + span;
-  // A reading strictly inside the scale, on a numbered mark one time in ten
-  // when the scale has one to offer. A reading equal to a number the hint
-  // states (the step, the label gap, the spaces between labels) is skipped.
-  const marks = span / minor;
-  const named = new Set<number>([minor, major, major / minor]);
-  const inside: number[] = [];
-  for (let k = 1; k < marks; k++) {
-    const v = min + k * minor;
-    if (variant === "below-zero" && v >= 0) continue;
-    if (named.has(Math.abs(v))) continue;
-    inside.push(v);
-  }
-  const labeled = inside.filter((v) => v % major === 0);
-  const between = inside.filter((v) => v % major !== 0);
-  const candidates = r(0, 9) === 0 && labeled.length ? labeled : between;
-  const reading = candidates[r(0, candidates.length - 1)]!;
-  const base = Math.floor(reading / major) * major;
-  return {
-    variant,
-    unit,
-    minor,
-    major,
-    min,
-    max,
-    reading,
-    base,
-    steps: (reading - base) / minor,
-  };
-}
-
-export function thermometerScene(m: ThermometerModel): Scene {
-  return {
+const figure = (m: Model) => ({
+  kind: "scene" as const,
+  scene: sceneSchema.parse({
     v: 1,
-    title: "Thermometer",
-    maxHeight: THERMOMETER_HEIGHT,
     elements: [
       {
-        type: "thermometer",
-        id: "t",
-        unit: m.unit,
-        min: m.min,
-        max: m.max,
-        minor: m.minor,
-        major: m.major,
-        reading: m.reading,
-        derived: true,
+        type: "barChart",
+        id: "thermometer",
+        bars:
+          m.ask === "read"
+            ? [{ label: "Liquid", value: m.first }]
+            : m.ask === "warmer"
+              ? [
+                  { label: "Morning", value: Math.min(m.first, m.second) },
+                  { label: "Afternoon", value: Math.max(m.first, m.second) },
+                ]
+              : [
+                  { label: "Noon", value: Math.max(m.first, m.second) },
+                  { label: "Night", value: Math.min(m.first, m.second) },
+                ],
+        max: m.scale.max,
+        step: m.scale.step,
+        unit: `Degrees ${m.scale.name}`,
       },
     ],
-  };
-}
+  }),
+});
 
-function render(m: ThermometerModel) {
-  const unit = unitName(m.unit);
-  const spaces = m.major / m.minor;
-  const symbol = `°${m.unit}`;
-  const prompt = `What temperature does the thermometer show, in ${unit}?`;
-  // The hint names this scale's step and spacing; on a numbered mark it does
-  // not name the mark, which would be the answer.
-  const hint =
-    m.steps === 0
-      ? `The numbers on this thermometer go up by ${m.major} ${degreeWord(m.major)}, with ${spaces} small spaces between them, so each small mark is ${m.minor} ${degreeWord(m.minor)}. Look at where the top of the liquid ends: is it on a numbered mark?`
-      : `The numbers on this thermometer go up by ${m.major} ${degreeWord(m.major)}, with ${spaces} small spaces between them, so each small mark is ${m.minor} ${degreeWord(m.minor)}. Find the last numbered mark below the top of the liquid, then count the small marks up to the top.`;
-  const explanation = [
-    `The numbers go up by ${m.major}, and there are ${spaces} spaces between numbers, so each small mark is $${m.major}\\div${spaces}=${m.minor}$ ${degreeWord(m.minor)}.`,
-    m.steps === 0
-      ? `The top of the liquid is exactly at the mark numbered ${n(m.reading)}.`
-      : `The last numbered mark below the top of the liquid is ${n(m.base)}. The liquid ends ${m.steps} small ${m.steps === 1 ? "mark" : "marks"} above it.`,
-    ...(m.steps === 0
-      ? []
-      : [
-          m.base < 0
-            ? `Counting up from ${n(m.base)}: $-${-m.base}+${m.steps}\\times${m.minor}=${m.reading < 0 ? `-${-m.reading}` : m.reading}$. Below 0 the readings are negative, and numbers closer to 0 are warmer.`
-            : `Counting up from ${n(m.base)}: $${m.base}+${m.steps}\\times${m.minor}=${m.reading}$.`,
-        ]),
-    `The thermometer shows ${n(m.reading)}${symbol}.`,
-  ];
-  // The hint plays on the figure: the numbered mark to count from.
-  const hintCue: Step[] | undefined =
-    m.steps === 0
-      ? undefined
-      : [
-          {
-            caption: "Start at the last numbered mark below the liquid.",
-            actions: [
-              { do: "highlight", target: `t.tick.${m.base}` },
-              { do: "highlight", target: `t.label.${m.base}` },
+export const thermometerReadingFamily = chainFamily({
+  template: thermometerReadingTemplate,
+  axes,
+  model,
+  variant: (m) => `${m.ask}-${m.scale.name.toLowerCase()}`,
+  render: (m) => {
+    const { scale } = m;
+    const hi = Math.max(m.first, m.second);
+    const lo = Math.min(m.first, m.second);
+    const tick = `Each gridline is worth ${scale.step} degrees.`;
+    const surface =
+      m.ask === "read"
+        ? numberSurface({
+            prompt: `The liquid in a thermometer rises to the top of the bar. What temperature does the thermometer show, in degrees ${scale.name}?`,
+            answer: String(m.first),
+            hint: `${tick} The labeled line just below the top of the bar is ${labelBelow(scale, m.first)}. Count up from it by ${scale.step}s to the top.`,
+            explanation: [
+              `${tick}`,
+              `The top of the bar is on a gridline. Counting by ${scale.step}s from the labeled line below it reaches ${m.first}.`,
+              `The thermometer shows ${m.first} degrees ${scale.name}.`,
             ],
-          },
-        ];
-  return { prompt, hint, explanation, hintCue };
-}
+            label: `Answer (degrees ${scale.name})`,
+          })
+        : numberSurface({
+            prompt:
+              m.ask === "warmer"
+                ? `Two thermometers show the temperature in the morning and in the afternoon. How many degrees ${scale.name} warmer was the afternoon than the morning?`
+                : `Two thermometers show the temperature at noon and at night. How many degrees ${scale.name} colder was the night than noon?`,
+            answer: String(hi - lo),
+            hint: `${tick} Read the top of each bar first, counting up by ${scale.step}s from the labeled lines ${labelBelow(scale, lo)} and ${labelBelow(scale, hi)}. Then find how far apart the two readings are.`,
+            explanation: [
+              `${tick} The warmer reading is ${hi} and the cooler reading is ${lo}.`,
+              `The difference is $${hi}-${lo}=${hi - lo}$.`,
+              `It was ${hi - lo} degrees ${scale.name} ${m.ask === "warmer" ? "warmer in the afternoon" : "colder at night"}.`,
+            ],
+            label: `Answer (degrees ${scale.name})`,
+          });
+    return { ...surface, figure: figure(m) };
+  },
+});
 
-export interface ThermometerCase {
-  model: ThermometerModel;
-  problem: GeneratedProblem;
-}
-
-export function thermometerReadingCase(seed: string): ThermometerCase {
-  if (typeof seed !== "string" || !seed.length || seed.length > 128)
-    throw new Error("Seed must contain 1–128 characters");
-  const meta = thermometerReadingTemplate;
-  const r = random(meta.id, seed);
-  const model = thermometerModel(r);
-  const { prompt, hint, explanation, hintCue } = render(model);
-  const figure: SemanticFigure = {
-    kind: "scene",
-    scene: thermometerScene(model),
-  };
-  const problem = assemble(meta, seed, r, {
-    prompt,
-    figure,
-    answer: String(model.reading),
-    hint,
-    explanation,
-  });
-  return {
-    model,
-    problem: {
-      ...problem,
-      public: {
-        ...problem.public,
-        response: {
-          kind: "number",
-          label: `Temperature in ${symbolOf(model.unit)}`,
-        },
-      },
-      ...(hintCue ? { hintCue } : {}),
-      variant: {
-        id: `${model.variant}-${model.minor === 1 ? "ones" : "twos"}`,
-      },
-    },
-  };
-}
-const symbolOf = (unit: "F" | "C") => `°${unit}`;
-
-export function thermometerReadingGenerate(
-  templateId: string,
-  seed: string,
-): GeneratedProblem {
-  if (templateId !== thermometerReadingTemplate.id)
-    throw new Error(`Unknown thermometer template: ${templateId}`);
-  return thermometerReadingCase(seed).problem;
-}
+export const thermometerReadingTemplates = [
+  thermometerReadingTemplate,
+] as const;
+export const thermometerReadingGenerate = dispatch(
+  thermometerReadingTemplates,
+  {
+    "read-thermometer": (seed) =>
+      thermometerReadingFamily.generate(seed).problem,
+  },
+);

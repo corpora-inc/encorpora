@@ -16,7 +16,7 @@ import { track, trackSessionStart } from "./analytics";
 import { TrialFailure, TrialSkeleton } from "./TrialFrame";
 import styles from "./Trial.module.css";
 
-/** `/try`: a birth year starts anonymous free practice. A trial already
+/** `/try`: a parent selects a starting birth year for free practice. A trial already
  * started on this device resumes where it left off. */
 export function TryStart() {
   // Only this fixed campaign contract crosses from the public site. No visitor ID.
@@ -71,13 +71,13 @@ function BirthYear() {
           header: <FrameBrand expanded />,
           footer: (
             <p className={styles.introNote}>
-              Free practice · No account needed
+              Free practice · No payment needed
             </p>
           ),
         }}
         name="the learner"
-        title="Your math pathways start here"
-        description="Choose your birth year to start. We’ll adapt as you learn."
+        title="See how AMP adapts"
+        description="Choose your child’s birth year for a starting level. Then answer as yourself and watch AMP adapt."
         birthYear={null}
         busy={busy}
         saveBirthYear={(year) => {
