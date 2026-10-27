@@ -333,12 +333,15 @@ export const mcasGrade10 = defineLedger(
       responseFormat: "choice",
       calculator: "permitted",
       standards: ["A-SSE.A.1"],
-      archetypeIds: ["expression.parts-names"],
+      archetypeIds: ["expression.parts-names", "expression.parts"],
       demand:
         "Choose the table that names the coefficient, constant, exponent and variable of a quadratic expression",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family names the parts of an expression.",
+      status: "partial",
+      templateIds: ["label-expression-parts"],
+      limitations:
+        "label-expression-parts (multi-part-choice-v1) labels the parts of expressions such as 3x^2+5x+7, one picker per part; the item chooses one table that names the coefficient, constant, exponent and variable of a quadratic expression, a single choice.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Session 2",

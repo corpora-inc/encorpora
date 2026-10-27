@@ -447,18 +447,22 @@ export const regentsAlgebra1January2026 = defineLedger(
         number: "25",
         page: "printed p.10; PDF p.10; standard map rating guide PDF p.13",
       },
-      responseFormat: "numeric",
+      responseFormat: "constructed",
       standards: ["A-REI.B"],
       archetypeIds: ["linear.solve"],
       demand:
         "Solve a linear equation with a grouped term and a variable term on each side",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "grouped-linear-equation",
         "both-sides-linear-equation",
         "grouped-both-sides-solve",
+        "grouped-both-sides-steps",
       ],
-      limitations: "Final answer practiced; shown-work credit not assessed.",
+      limitations:
+        "grouped-both-sides-steps (structured-work-v1) enters the grouped side with the parentheses removed and like terms combined as a typed expression, the coefficient of the variable and the number after collecting terms, and the solution, as exact steps. The steps are the shown work the rating guide credits. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Part II",

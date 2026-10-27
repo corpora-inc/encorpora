@@ -222,9 +222,11 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["pattern.graph-relationship"],
       demand: "Choose the graph of a line where y is three more than half of x",
       status: "partial",
-      templateIds: ["graph-linear-equation"],
+      templateIds: ["graph-of-linear-rule", "graph-linear-equation"],
       limitations:
-        "graph-linear-equation places points of a line and is point-plot only; choosing among four drawn graphs has no choice family for a rule with a fraction coefficient.",
+        "graph-of-linear-rule (figure-choice-v1) chooses among four drawn lines for y=mx+b with fractional slopes such as 1/2 and intercepts of either sign; the item states the rule in words (y is 3 more than half of x), which must first be written as y=x/2+3, a step not practiced.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "16", page: "rationale PDF p.16" },
@@ -313,9 +315,12 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["finance.net-worth"],
       demand:
         "Find a savings account balance from a net worth and a list of assets and liabilities",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family practices assets, liabilities or net worth.",
+      status: "partial",
+      templateIds: ["net-worth-statement"],
+      limitations:
+        "net-worth-statement finds net worth from a table of assets and liabilities and total liabilities from total assets and net worth; finding one unknown asset, the savings balance, from the net worth and the other listed items is not asked.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "24", page: "rationale PDF p.24" },
@@ -337,12 +342,14 @@ export const staar2024Grade7 = defineLedger(
       item: { number: "25", page: "rationale PDF p.25" },
       responseFormat: "choice",
       standards: ["TEKS.7.3.9.B"],
-      archetypeIds: ["measure.circle"],
+      archetypeIds: ["measure.circle", "circle.parts"],
       demand: "Find the area of the circular lawn a sprinkler waters",
-      status: "partial",
+      status: "covered",
       templateIds: ["circle-area-coefficient"],
       limitations:
-        "circle-area-coefficient with pi-form=pi-3-14 practices this task (a whole radius or even diameter, pi as 3.14, a decimal area); the row stays partial only because the template's archetype link in the frozen template-archetypes list is circle.parts, not measure.circle.",
+        "circle-area-coefficient with pi-form=pi-3-14 practices this task by numeric entry: a whole radius or an even diameter, pi as 3.14 and a decimal area; its plain-number choices are subsumed by entry. The template is linked to the circle-parts archetype, which this row now also lists.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "26", page: "rationale PDF p.26" },

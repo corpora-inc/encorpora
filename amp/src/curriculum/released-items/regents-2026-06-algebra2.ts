@@ -597,18 +597,22 @@ export const regentsAlgebra2June2026 = defineLedger(
         number: "35",
         page: "printed p.23; PDF p.23; standard map rating guide PDF p.12",
       },
-      responseFormat: "numeric",
+      responseFormat: "constructed",
       standards: ["A-REI.A"],
       archetypeIds: ["nonlinear.rational-radical"],
       demand:
         "Solve an equation with two square-root terms and reject any extraneous value",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "sat-entry-radical-equation",
         "radical-equation-shifted",
         "two-radical-equation",
+        "two-radical-steps",
       ],
-      limitations: "Final answer practiced; shown-work credit not assessed.",
+      limitations:
+        "two-radical-steps (structured-work-v1) enters the coefficients of the quadratic after squaring twice, the solution that satisfies the equation and the extraneous one, for equations whose two solutions are integers. The steps are the shown work the rating guide credits. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Part IV",
