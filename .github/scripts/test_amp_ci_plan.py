@@ -239,6 +239,33 @@ def test_oracle_consumers_are_followed_through_python_imports(tmp_path):
     assert result['content_force'] and result['native']
 
 
+@pytest.mark.parametrize('quick', [True, False])
+def test_oracle_consumers_include_glob_discovery_and_transitive_helpers(tmp_path, quick):
+    (tmp_path / 'amp/tests').mkdir(parents=True)
+    (tmp_path / 'amp/scripts').mkdir()
+    (tmp_path / 'amp/src').mkdir()
+    (tmp_path / 'amp/package.json').write_text('{"scripts":{}}')
+    (tmp_path / 'amp/tests/account.integration.ts').write_text('')
+    (tmp_path / 'amp/tests/review.test.ts').write_text("run('scripts/independent-math-review.py')")
+    (tmp_path / 'amp/tests/other.test.ts').write_text('')
+    (tmp_path / 'amp/scripts/shared_oracle.py').write_text('')
+    (tmp_path / 'amp/scripts/new_math_oracle.py').write_text('from shared_oracle import solve\n')
+    (tmp_path / 'amp/scripts/unrelated_oracle.py').write_text('')
+    (tmp_path / 'amp/scripts/independent-math-review.py').write_text(
+        "for path in directory.glob('*_math_oracle.py'):\n"
+        "    importlib.import_module(path.stem)\n")
+    for path in ('new_math_oracle.py', 'shared_oracle.py'):
+        result = plan(['amp/scripts/' + path], root=tmp_path, quick=quick)
+        assert result['core'] == ['tests/review.test.ts']
+        assert result['content'] and not result['content_force']
+        assert not any(result[key] for key in ('database', 'build', 'typecheck', 'browser', 'native'))
+    assert not plan(['amp/scripts/unrelated_oracle.py'], root=tmp_path, quick=quick)['core']
+    # A runtime consumer of the dynamic dispatcher must still force broad checks.
+    (tmp_path / 'amp/src/server.ts').write_text("spawn('scripts/independent-math-review.py')")
+    result = plan(['amp/scripts/new_math_oracle.py'], root=tmp_path, quick=quick)
+    assert result['content_force'] and result['native']
+
+
 def test_content_pr_quick_checks_skip_database_and_mobile():
     result = plan(['amp/src/content/lessons.ts', 'amp/src/math/engine.ts',
                    'amp/scripts/independent-math-review.py', 'amp/tests/sat.test.ts'], quick=True)
