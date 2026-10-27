@@ -1459,9 +1459,12 @@ const ANCHOR: Record<string, string> = {
   gallon: "a jug of milk",
 };
 const MORE: Record<Family["kind"], (x: string, y: string) => string> = {
-  length: (x, y) => `${art(x, true)} ${x} is longer than ${art(y, false)} ${y}.`,
-  weight: (x, y) => `${art(x, true)} ${x} is heavier than ${art(y, false)} ${y}.`,
-  capacity: (x, y) => `${art(x, true)} ${x} holds more than ${art(y, false)} ${y}.`,
+  length: (x, y) =>
+    `${art(x, true)} ${x} is longer than ${art(y, false)} ${y}.`,
+  weight: (x, y) =>
+    `${art(x, true)} ${x} is heavier than ${art(y, false)} ${y}.`,
+  capacity: (x, y) =>
+    `${art(x, true)} ${x} holds more than ${art(y, false)} ${y}.`,
 };
 const WORD: Record<Family["kind"], string> = {
   length: "length",
@@ -1587,7 +1590,9 @@ function unitRelativeSize(r: Random): Built {
     prompt: `Which list orders these units from ${adjective}?`,
     hint: `Picture each unit: ${names.map((n) => `${art(n, false)} ${n} is about ${ANCHOR[n]}`).join("; ")}. Put the smallest first.`,
     explanation: [
-      names.map((n) => `${art(n, false)} ${n} is about ${ANCHOR[n]}`).join("; ") + ".",
+      names
+        .map((n) => `${art(n, false)} ${n} is about ${ANCHOR[n]}`)
+        .join("; ") + ".",
       `From smallest to largest: ${asc}.`,
     ],
     choices: choicesFrom(
@@ -2451,7 +2456,7 @@ function independentDependentRoles(r: Random): Built {
   };
   const I = `The ${c.indep}`,
     D = `The ${c.dep}`;
-  const rule = `${D} changes when ${I.toLowerCase()} changes, so ${I.toLowerCase()} is the independent quantity and ${D.toLowerCase()} is the dependent quantity.`;
+  const rule = `${I} is the independent quantity and ${D.toLowerCase()} is the dependent quantity.`;
   const common = {
     hint: `Ask which quantity you choose or set first, and which quantity's value is then determined by it.`,
     explanation: [
@@ -2516,7 +2521,7 @@ function independentDependentRoles(r: Random): Built {
     ...common,
     choices: choicesFrom(rule, [
       {
-        label: `${I} changes when ${D.toLowerCase()} changes, so ${D.toLowerCase()} is the independent quantity.`,
+        label: `${D} is the independent quantity and ${I.toLowerCase()} is the dependent quantity.`,
         feedback: `The roles are reversed. The ${c.dep} depends on the ${c.indep}.`,
       },
       {

@@ -1387,6 +1387,8 @@ function interpretLinearParametersCase(seed: string) {
   const opposite = ctx.direction > 0 ? "decreases" : "increases";
   const equation = tex(ctx.model(m, b));
   const slope = `${Y} ${verb} by ${m} ${ctx.yMany} for each additional ${ctx.xOne}.`;
+  const slopeShort = `${Y} ${verb} by ${m} ${ctx.yMany} per ${ctx.xOne}.`;
+  const initialShort = `It is ${b} ${ctx.yMany} ${ctx.atZero}.`;
   const initial = `${Y} ${ctx.atZero} is ${b} ${ctx.yMany}.`;
   const prompt = `${ctx.intro(equation)}`;
   const slopeWrong: Wrong[] = [
@@ -1461,22 +1463,22 @@ function interpretLinearParametersCase(seed: string) {
         `The constant ${b} is the value when the variable is 0: ${initial.charAt(0).toLowerCase()}${initial.slice(1)}`,
         "State each with its units.",
       ],
-      correct: `${slope} ${initial}`,
+      correct: `${slopeShort} ${initialShort}`,
       wrong: [
         {
-          label: `${Y} ${verb} by ${b} ${ctx.yMany} for each additional ${ctx.xOne}. ${Y} ${ctx.atZero} is ${m} ${ctx.yMany}.`,
+          label: `${Y} ${verb} by ${b} ${ctx.yMany} per ${ctx.xOne}. It is ${m} ${ctx.yMany} ${ctx.atZero}.`,
           feedback: `The roles are swapped: ${m} is the change per ${ctx.xOne} and ${b} is the value ${ctx.atZero}.`,
         },
         {
-          label: `${Y} ${opposite} by ${m} ${ctx.yMany} for each additional ${ctx.xOne}. ${initial}`,
+          label: `${Y} ${opposite} by ${m} ${ctx.yMany} per ${ctx.xOne}. ${initialShort}`,
           feedback: `The initial value is right, but the direction of change is reversed.`,
         },
         {
-          label: `${slope} ${Y} after one ${ctx.xOne} is ${b} ${ctx.yMany}.`,
+          label: `${slopeShort} It is ${b} ${ctx.yMany} after one ${ctx.xOne}.`,
           feedback: `The rate is right, but ${b} is the value when the variable is 0, not after one ${ctx.xOne}.`,
         },
         {
-          label: `${Y} ${verb} by ${m} ${ctx.yMany} in total. ${initial}`,
+          label: `${Y} ${verb} by ${m} ${ctx.yMany} in total. ${initialShort}`,
           feedback: `${m} ${ctx.yMany} is the change for each ${ctx.xOne}, not the total change.`,
         },
       ],
@@ -2041,7 +2043,7 @@ function squareRootExtraneousCase(seed: string) {
         checkText(hi),
         `The candidate $x=${extraneous}$ solves the squared equation because its right side is negative, so $\\sqrt{${radicand}}=-(${isolated})$ holds instead of the original equation.`,
       ],
-      correct: `Squaring also keeps solutions of $\\sqrt{${radicand}}=-(${isolated})$, so a candidate may satisfy the squared equation but not the original.`,
+      correct: `Squaring also admits solutions of $\\sqrt{${radicand}}=-(${isolated})$, so a candidate can fail the original.`,
       wrong: [
         {
           label:
