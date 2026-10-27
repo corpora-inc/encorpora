@@ -31,24 +31,27 @@ const fractionAxes = {
   ask: defineAxis("ask", ["remaining-part", "periods-total"] as const),
 };
 const wholes = [
-  { unit: "days", total: "season", a: "sunny", b: "rainy", rest: "snowy" },
+  { unit: "days", total: "the season", be: "were ", a: "sunny", b: "rainy", rest: "snowy" },
   {
     unit: "cookies",
-    total: "batch",
+    total: "the batch",
+    be: "were ",
     a: "oatmeal",
     b: "chocolate chip",
     rest: "peanut butter",
   },
   {
     unit: "students",
-    total: "grade",
+    total: "the grade",
+    be: "",
     a: "walked to school",
     b: "rode a bus",
     rest: "rode in a car",
   },
   {
     unit: "books",
-    total: "shelf",
+    total: "the shelf",
+    be: "were ",
     a: "mysteries",
     b: "biographies",
     rest: "poetry books",
@@ -156,14 +159,14 @@ export const shareRemainderFractions = chainFamily({
     const b = (m.whole * m.k2) / m.d2;
     const rest = m.whole - a - b;
     return numberSurface({
-      prompt: `Of the ${m.whole} ${c.unit} in the ${c.total}, ${tex(m.k1, m.d1)} were ${c.a} and ${tex(m.k2, m.d2)} were ${c.b}. The rest were ${c.rest}. How many ${c.unit} were ${c.rest}?`,
+      prompt: `Of the ${m.whole} ${c.unit} ${c.total === "the shelf" ? "on" : "in"} ${c.total}, ${tex(m.k1, m.d1)} ${c.be}${c.a} and ${tex(m.k2, m.d2)} ${c.be}${c.b}. The rest ${c.be}${c.rest}. How many ${c.unit} ${c.be}${c.rest}?`,
       answer: String(rest),
-      hint: `Begin with the ${c.a} group: split ${m.whole} into ${m.d1} equal parts and take ${m.k1}.`,
+      hint: `Begin with the first group, ${tex(m.k1, m.d1)} of ${m.whole}: split ${m.whole} into ${m.d1} equal parts and take ${m.k1}.`,
       explanation: [
         `${c.a}: ${tex(m.k1, m.d1)} of ${m.whole} is $${m.whole}\\div${m.d1}\\times${m.k1}=${a}$.`,
         `${c.b}: ${tex(m.k2, m.d2)} of ${m.whole} is $${m.whole}\\div${m.d2}\\times${m.k2}=${b}$.`,
         `The rest is what remains of the whole: $${m.whole}-${a}-${b}=${rest}$.`,
-        `${rest} ${c.unit} were ${c.rest}.`,
+        `${rest} ${c.unit} ${c.be}${c.rest}.`,
       ],
       label: `Answer (${c.unit})`,
     });

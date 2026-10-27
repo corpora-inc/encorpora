@@ -61,7 +61,9 @@ function model(
     const den = halfWidth * halfWidth;
     if (2 * (num % den) === den) continue; // exact tie
     if (num % den === 0) continue; // want a rounded value
-    return { ...blank, kind, peak, halfWidth, vertexAt: r(4, 14), offset };
+    // The thrower stands at x = 0, so the asked distance x0 + offset is never negative.
+    const vertexAt = Math.max(r(4, 14), -offset);
+    return { ...blank, kind, peak, halfWidth, vertexAt, offset };
   }
   throw new Error("Need three retries");
 }
