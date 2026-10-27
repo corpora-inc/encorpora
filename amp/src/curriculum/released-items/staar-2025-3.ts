@@ -88,13 +88,14 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["pattern.paired"],
       demand:
         "Complete a sentence that says how a table's second column relates to its first, a multiplication by a constant",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "pattern-pair-relationship",
         "related-patterns-relationship",
+        "table-rule-sentence",
       ],
       limitations:
-        "STAAR interaction: inline choice, 2 points. Related families relate two named patterns in words or choices; neither shows a two-column table of paired values, and no family takes dropdown blanks.",
+        "table-rule-sentence (multi-part-choice-v1, inline layout): complete a sentence about a table of four or five pairs by choosing the operation and the number of its rule, including multiplication by a constant.",
     },
     {
       item: {

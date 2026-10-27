@@ -47,7 +47,7 @@ export const staarGrade8 = defineLedger(
         "graph-linear-equation",
       ],
       limitations:
-        "graph-of-proportional-rate chooses among drawn graphs for a total over a time, including fractional unit rates and the inverted-rate distractor, on unit-scaled axes to 12. Axes scaled to reach (15, 24) and horizontal or vertical distractor lines are not practiced.",
+        "graph-of-proportional-rate now draws decimal and scaled-axis rates on a 0 to 12 horizontal axis; axes scaled to reach (15, 24), such as a horizontal axis to 15, are not practiced.",
     },
     {
       item: {
@@ -456,14 +456,14 @@ export const staarGrade8 = defineLedger(
       standards: ["TEKS.8.2.4.B"],
       archetypeIds: ["function.representations"],
       demand: "Choose the line whose slope is a stated speed in miles per hour",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "graph-of-proportional-rate",
         "proportional-graph",
         "graph-linear-equation",
       ],
       limitations:
-        "graph-of-proportional-rate chooses among drawn lines for a rate given as a total over whole hours, on unit-scaled axes; a decimal time (half an hour) and a y-axis scaled by tens are not practiced.",
+        "graph-of-proportional-rate with the decimal-time and scaled-axis values: a total over half or decimal hours, with a vertical axis whose gridlines count by 5, 10 or 20, among lines that ignore the scale, start above zero, use the total as the rate or are horizontal or vertical.",
     },
     {
       item: {

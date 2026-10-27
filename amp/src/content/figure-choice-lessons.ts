@@ -117,13 +117,14 @@ const entries: Entry[] = [
     methodTitle: "Read the slope back",
     methodText: [
       "On the chosen graph, move 1 unit right from the origin and read the height: it should be the unit rate.",
-      "Check the axes: the quantity that depends on time goes up the side, and time goes across.",
+      "Check the axes: the quantity that depends on time goes up the side, and time goes across. A decimal rate such as 1.5 is $y = 1.5x$: the point at $x = 2$ is $(2, 3)$.",
     ],
     formal:
       "If $y = kx$ then $\\frac{y}{x} = k$ for every point with $x \\ne 0$ and $(0, 0)$ is on the graph. A line $y = kx + c$ with $c \\ne 0$ has the same steepness but $\\frac{y}{x} = k + \\frac{c}{x}$ changes with $x$, so it is not proportional.",
     pitfalls: [
       "A line with the right steepness that starts above zero is not proportional.",
       "Do not turn the rate upside down: minutes per page gives a much shallower line.",
+      "Read the labels on the vertical axis: when its gridlines count by 10, a rate of 30 reaches the third gridline after 1 unit, not the 30th.",
     ],
     parentGuide:
       "Ask your learner where the graph should be at time zero, and what height it reaches after one unit of time.",

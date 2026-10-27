@@ -180,10 +180,10 @@ export const mcasGrade10 = defineLedger(
       standards: ["F-BF.B.3"],
       archetypeIds: ["nonlinear.transform"],
       demand: "Choose the graph of a linear function shifted down two units",
-      status: "partial",
-      templateIds: ["parabola-shift"],
+      status: "covered",
+      templateIds: ["parabola-shift", "graph-after-shift"],
       limitations:
-        "parabola-shift relates vertical shifts of parabolas to equations; choosing the drawn graph of a shifted line is not practiced.",
+        "graph-after-shift (figure-choice-v1), line shape: the graph of a shown line moved up or down by one to three units, among lines moved the wrong way, sideways or only partly.",
     },
     {
       section: "Session 1",

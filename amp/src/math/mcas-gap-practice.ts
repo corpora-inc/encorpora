@@ -2457,7 +2457,7 @@ function productFactorSize(r: Random): Single {
   return {
     variant,
     prompt: `Without multiplying, which product is ${want} $${fx}$?`,
-    hint: `Every product here has $${fx}$ as one factor, so compare the other factor with 1 instead of multiplying. Multiplying by a number greater than 1 makes a number larger, multiplying by 1 leaves it the same, and multiplying by a number between 0 and 1 makes it smaller.`,
+    hint: `Every product here has $${fx}$ as one factor, so compare the other factor with $1$ instead of multiplying. Multiplying by a number greater than $1$ makes a number larger, multiplying by $1$ leaves it the same, and multiplying by a number between $0$ and $1$ makes it smaller.`,
     explanation: [
       `The product of $${fx}$ and a number is ${want} $${fx}$ when that number is ${variant === "greater" ? "greater than 1" : variant === "less" ? "between 0 and 1" : "equal to 1"}.`,
       `Only ${rightLabel} has a ${variant === "greater" ? "factor greater than 1" : variant === "less" ? "factor less than 1" : "factor equal to 1"}.`,

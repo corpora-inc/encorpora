@@ -547,10 +547,14 @@ export const staarGrade6 = defineLedger(
       standards: ["TEKS.6.3.11.A"],
       archetypeIds: ["coordinate.plane-point"],
       demand: "Choose the grid point for a pair with two negative coordinates",
-      status: "partial",
-      templateIds: ["first-quadrant-locate", "plot-points"],
+      status: "covered",
+      templateIds: [
+        "first-quadrant-locate",
+        "plot-points",
+        "point-on-signed-grid",
+      ],
       limitations:
-        "first-quadrant-locate chooses a point in the first quadrant and plot-points places signed pairs by plotting; choosing among labeled points in four quadrants is not practiced.",
+        "point-on-signed-grid (figure-choice-v1): the graph that shows one signed pair or its distances from the axes, among points with a sign flipped or the coordinates swapped. Options are separate graphs of one point each, not labeled points on one grid.",
     },
     {
       item: {

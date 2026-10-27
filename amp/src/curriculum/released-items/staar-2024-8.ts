@@ -154,10 +154,14 @@ export const staar2024Grade8 = defineLedger(
       archetypeIds: ["function.representations"],
       demand:
         "Choose the graph whose slope shows ounces of ink used per minute",
-      status: "partial",
-      templateIds: ["proportional-graph", "graph-linear-equation"],
+      status: "covered",
+      templateIds: [
+        "proportional-graph",
+        "graph-linear-equation",
+        "graph-of-proportional-rate",
+      ],
       limitations:
-        "proportional-graph reads the unit rate from a graph and graph-linear-equation places points; choosing the graph for a given rate is not practiced.",
+        "graph-of-proportional-rate chooses the graph whose slope is a stated rate in context, among lines that start above zero, invert the rate or use the total as the rate.",
     },
     {
       item: { number: "12", page: "rationale PDF p.12" },
@@ -498,10 +502,14 @@ export const staar2024Grade8 = defineLedger(
       standards: ["TEKS.8.2.4.B"],
       archetypeIds: ["function.representations"],
       demand: "Choose the graph whose slope shows cabinets painted per hour",
-      status: "partial",
-      templateIds: ["proportional-graph", "graph-linear-equation"],
+      status: "covered",
+      templateIds: [
+        "proportional-graph",
+        "graph-linear-equation",
+        "graph-of-proportional-rate",
+      ],
       limitations:
-        "proportional-graph reads the unit rate from a graph and graph-linear-equation places points; choosing the graph for a given rate is not practiced.",
+        "graph-of-proportional-rate chooses the graph whose slope is a stated rate in context, among lines that start above zero, invert the rate or use the total as the rate.",
     },
   ],
 );
