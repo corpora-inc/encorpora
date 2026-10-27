@@ -300,9 +300,9 @@ export const satPractice6 = defineLedger(
       demand:
         "Find the y-intercept of a two-variable linear equation with fractional coefficients",
       status: "partial",
-      templateIds: ["rational-coefficient-equation"],
+      templateIds: ["rational-coefficient-equation", "intercept-point-choice"],
       limitations:
-        "Only the sub-step of solving a fractional-coefficient equation is practiced; no template asks for an intercept of an equation not in slope-intercept form.",
+        "intercept-point-choice finds a y-intercept from an equation in standard or slope-intercept form by choosing an ordered pair, with integer coefficients; this item enters a number for an equation with fractional coefficients, which is not practiced.",
     },
     {
       section: "Math module 1",
@@ -454,10 +454,10 @@ export const satPractice6 = defineLedger(
       standards: ["sat.alg.linear-functions"],
       archetypeIds: ["function.intercepts"],
       demand: "Read the y-intercept of a function's graph",
-      status: "partial",
-      templateIds: ["coordinate-point-reading"],
+      status: "covered",
+      templateIds: ["intercept-point-choice"],
       limitations:
-        "Template reads one coordinate of a labeled point; item locates the unlabeled axis crossing and chooses an ordered pair.",
+        "intercept-point-choice locates the unlabeled crossing of a graphed line with the vertical axis and chooses the ordered pair, not a labeled point.",
     },
     {
       section: "Math module 2",
@@ -637,10 +637,10 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Write a linear relationship from a table with unequal input steps and choose it in standard form",
-      status: "partial",
-      templateIds: ["linear-model-equation", "unequal-step-rate"],
+      status: "covered",
+      templateIds: ["table-standard-form"],
       limitations:
-        "linear-model-equation answers in slope-intercept form with simple tables; unequal-step-rate gives the rate numerically. No template asks for an equivalent standard-form equation.",
+        "table-standard-form gives a table with unevenly spaced inputs, finds the slope from the actual change in x, and chooses the line in standard form.",
     },
     {
       section: "Math module 2",

@@ -63,10 +63,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Read the y-intercept of a graphed line and report it as a coordinate point",
-      status: "partial",
-      templateIds: ["graph-equation-choice"],
+      status: "covered",
+      templateIds: ["intercept-point-choice"],
       limitations:
-        "graph-equation-choice reads the intercept only implicitly while matching an equation to a graphed line; no template asks for the y-intercept itself as an ordered pair or offers axis-swap distractors.",
+        "intercept-point-choice asks for the y-intercept itself as an ordered pair and offers swapped-coordinate, sign and x-intercept distractors.",
     },
     {
       section: "Math module 1",
@@ -151,10 +151,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["line.parallel-perpendicular"],
       demand:
         "Choose the slope-intercept equation of a line through a given intercept parallel to a given line",
-      status: "partial",
-      templateIds: ["perpendicular-slopes"],
+      status: "covered",
+      templateIds: ["parallel-line-intercept"],
       limitations:
-        "perpendicular-slopes is numeric (enter b or a slope) and emphasizes perpendicular lines; the item chooses a whole equation among swapped slope/intercept distractors.",
+        "parallel-line-intercept chooses the slope-intercept equation of the line parallel to a given line that passes through a stated x- or y-intercept, with perpendicular-slope and intercept distractors.",
     },
     {
       section: "Math module 1",
@@ -384,10 +384,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Read the y-intercept of a graphed line and report it as a coordinate point",
-      status: "partial",
-      templateIds: ["graph-equation-choice"],
+      status: "covered",
+      templateIds: ["intercept-point-choice"],
       limitations:
-        "graph-equation-choice reads the intercept only implicitly while matching an equation; no template asks for the intercept point itself.",
+        "intercept-point-choice asks for the y-intercept itself as an ordered pair and offers swapped-coordinate, sign and x-intercept distractors.",
     },
     {
       section: "Math module 2",
@@ -475,10 +475,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["function.intercepts"],
       demand:
         "Find the y-intercept point of a linear function with a fractional slope",
-      status: "partial",
-      templateIds: ["recover-linear-intercept"],
+      status: "covered",
+      templateIds: ["intercept-point-choice"],
       limitations:
-        "recover-linear-intercept finds the output at zero from a rate and another point; no template asks for the y-intercept as an ordered pair from a rule, with axis-swap distractors.",
+        "intercept-point-choice gives a linear rule in slope-intercept form with a fractional slope, or in standard form, and asks for the y-intercept as an ordered pair, with swapped-coordinate and slope-as-intercept distractors.",
     },
     {
       section: "Math module 2",
@@ -677,10 +677,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["system.classify"],
       demand:
         "Choose a second linear equation that makes a system with a given line have no solution",
-      status: "partial",
-      templateIds: ["linear-system-solution-count", "parameter-solution-count"],
+      status: "covered",
+      templateIds: ["system-second-equation"],
       limitations:
-        "linear-system-solution-count classifies a given system; parameter-solution-count enters a parameter. Neither asks to choose an equation (parallel and distinct) among rearranged standard-form candidates.",
+        "system-second-equation's no-solution variant asks for the equation that is parallel to and distinct from a given line, with same-line and crossing distractors.",
     },
     {
       section: "Math module 2",

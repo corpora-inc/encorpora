@@ -511,10 +511,10 @@ export const satPractice9 = defineLedger(
       standards: ["sat.alg.linear-functions"],
       archetypeIds: ["function.intercepts"],
       demand: "Find the x-intercept point of a linear function from its rule",
-      status: "partial",
-      templateIds: ["two-step-equation"],
+      status: "covered",
+      templateIds: ["intercept-point-choice"],
       limitations:
-        "two-step-equation practices solving the zero equation only; no template asks for an x-intercept as an ordered pair from a linear rule.",
+        "intercept-point-choice asks for the x-intercept as an ordered pair from a rule in standard or slope-intercept form, including fractional intercepts.",
     },
     {
       section: "Math module 2",

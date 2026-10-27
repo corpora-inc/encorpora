@@ -438,10 +438,10 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["time.elapsed"],
       demand:
         "Find the starting time given the finish time and the elapsed hours and minutes",
-      status: "partial",
-      templateIds: ["clock-elapsed-minutes"],
+      status: "covered",
+      templateIds: ["elapsed-time-hm"],
       limitations:
-        "clock-elapsed-minutes finds the duration between two times on one morning; the start time from an end time and a duration is not practiced.",
+        "elapsed-time-hm's start-time variant counts back hours and then minutes from a finish time, written or on an analog clock, with add-instead-of-subtract and carry distractors.",
     },
     {
       item: {
