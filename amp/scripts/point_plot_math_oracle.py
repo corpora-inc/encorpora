@@ -1153,6 +1153,10 @@ def self_test():
     mutations += expect_rejected(flat, "collinear triangle")
     return {"handwritten_cases": len(cases), "mutations": mutations}
 
+# Read by independent-math-review.py (FamilyOracle).
+REVIEW_RETURNS_ANSWER = True
+
+
 
 if __name__ == "__main__":
     print(self_test())

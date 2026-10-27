@@ -1457,3 +1457,7 @@ def self_test():
     reject(_fixture('rational-inequality-solve', 'Solve $\\dfrac{x + 3}{(x - 2)^2}>0$. Write the solution in interval notation.', ['$(-3,2)\\cup(2,\\infty)$', '$[-3,2)\\cup(2,\\infty)$', '$(-\\infty,-3]$', '$(-3,\\infty)$'], 'd'), 'excluded pole kept in answer')
     review_problem(_fixture('rational-inequality-solve', 'Solve $\\dfrac{x + 3}{(x - 2)^2}>0$. Write the solution in interval notation.', ['$(-3,2)\\cup(2,\\infty)$', '$[-3,2)\\cup(2,\\infty)$', '$(-\\infty,-3]$', '$(-3,\\infty)$'], 'a'))
     require(rejected >= len(FIXTURES) * 4, 'Texas oracle self-test did not exercise enough corrupted cases')
+
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED

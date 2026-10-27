@@ -119,9 +119,10 @@ sys.path.insert(0,'scripts')
 o=runpy.run_path('scripts/independent-math-review.py')
 data=json.load(sys.stdin)
 assert set(data['ids'])==set(o['SUPPORTED'])
-print(o['review_sat_completion_fixtures']())
+sat=o['family_oracle']('sat_completion_math_oracle')
+print(sat.self_test())
 for p in data['cases']:
- o['review_sat_completion_problem'](p)
+ sat.review_problem(p)
  assert o['solve'](p['public'])==p['answer']
 print(len(data['cases']))`,
     ],

@@ -750,6 +750,10 @@ def self_test():
             reject(bad)
     return {'fixtures': len(FIXTURES), 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+REVIEW_RETURNS_ANSWER = True
+
+
 
 if __name__ == '__main__':
     print(self_test())

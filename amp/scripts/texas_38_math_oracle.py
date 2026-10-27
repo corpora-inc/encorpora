@@ -1300,6 +1300,10 @@ def review_stream(lines, ids=SUPPORTED):
     require(set(counts) == set(ids), 'A template produced no cases')
     return counts
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = 'choice-response'
+
+
 
 if __name__ == '__main__':
     print(self_test())

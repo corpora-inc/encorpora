@@ -109,6 +109,7 @@ import { choiceLessons } from "./choice-lessons.js";
 import { elementaryLessons } from "./elementary-lessons";
 import { graphicalLessons } from "./graphical-lessons";
 import { extendedLessons } from "./extended-lessons";
+import { familyRegistry } from "../families/registry";
 /** Original reference lessons for the implemented templates, not a full course. */
 export interface Lesson {
   id: string;
@@ -796,4 +797,6 @@ export const lessons: readonly Lesson[] = [
   ...algebraLessons,
   ...measurementLessons,
   ...choiceLessons,
+  // Frozen legacy list above; families append from src/families/.
+  ...familyRegistry.lessons,
 ];

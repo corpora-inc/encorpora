@@ -421,6 +421,10 @@ def self_test():
     require(set(c['public']['templateId'] for c in cases)==SUPPORTED,'Missing family fixture')
     return {'fixtures':len(cases),'rejectedMutations':count}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = CHOICE
+
+
 
 if __name__ == '__main__':
     print(self_test())

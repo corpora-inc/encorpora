@@ -393,6 +393,7 @@ import {
 import { elementaryTemplates, generateElementaryProblem } from "./elementary";
 import { graphicalTemplates, generateGraphicalProblem } from "./graphical";
 import { extendedTemplates, generateExtendedProblem } from "./extended";
+import { familyRegistry } from "../families/registry";
 import { createHash } from "node:crypto";
 import { makeTenHops } from "./scene/explanations";
 import { mathLabel, polish } from "./polish";
@@ -620,6 +621,9 @@ export const templates: readonly TemplateMetadata[] = [
   ...satGeometryDataTemplates,
   ...satGeometryAdvancedTemplates,
   ...bivariateTemplates,
+  // Frozen legacy list above. New families register through src/families/
+  // (docs/content-family-playbook.md) and append here in family-id order.
+  ...familyRegistry.templates,
 ];
 
 function gcd(a: bigint, b: bigint): bigint {
@@ -851,7 +855,10 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...pointPlotTemplates,
     ...multiPartChoiceTemplates,
   ].some((t) => t.id === problem.public.templateId);
-  const text = (value: string) => (preserveAlgebra ? value : polish(value));
+  const keepAuthored =
+    preserveAlgebra ||
+    familyRegistry.preserveAlgebra.has(problem.public.templateId);
+  const text = (value: string) => (keepAuthored ? value : polish(value));
   return {
     ...problem,
     public: {
@@ -880,6 +887,8 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  const familyGenerate = familyRegistry.generators.get(templateId);
+  if (familyGenerate) return familyGenerate(templateId, seed);
   if (areaVolumeTemplates.some((t) => t.id === templateId))
     return generateAreaVolumeProblem(templateId, seed);
   if (transformationTemplates.some((t) => t.id === templateId))

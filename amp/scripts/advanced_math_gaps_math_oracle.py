@@ -887,6 +887,10 @@ def self_test():
         reject(bad, 'figure edited: ' + text)
     return {'fixtures': checked, 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
+
+
 
 if __name__ == '__main__':
     print(self_test())

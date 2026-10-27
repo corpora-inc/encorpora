@@ -390,6 +390,10 @@ def self_test():
         raise ValueError(f'Corrupt SAT geometry choice accepted: {name}')
     return {'fixtures': 2, 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = CHOICE
+
+
 
 if __name__ == '__main__':
     print(self_test())
