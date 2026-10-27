@@ -204,7 +204,7 @@ test("a surface-area similar-solid answer never equals a number the problem stat
     const problem = generateProblem("similar-solid-volume", `clash:${i}`);
     if (problem.variant!.axes!["scale-given"] !== "surface-areas") continue;
     checked++;
-    const stated = problem.public.prompt.match(/\d+/g) ?? [];
+    const stated: string[] = problem.public.prompt.match(/\d+/g) ?? [];
     assert.ok(
       !stated.includes(problem.answer),
       `clash:${i} answer ${problem.answer} is stated`,
