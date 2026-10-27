@@ -169,7 +169,6 @@ export function SignInScreen() {
   }
   const carry = continuationSearch(routeLocation.search);
   const freeEntry = carry.return === "free-practice";
-  const [newsletter, setNewsletter] = useState(false);
   const followupEnabled = accounts && config.parentFollowup;
   async function prepareFreeSignup() {
     if (!freeEntry || !followupEnabled) return;
@@ -184,7 +183,8 @@ export function SignInScreen() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         notice: signupNotice,
-        newsletter,
+        // Opted in by default; every email carries a one-click unsubscribe.
+        newsletter: true,
         entry: carry.entry,
         program: carry.program,
         campaign: fundedAttribution(carry),
@@ -376,20 +376,13 @@ export function SignInScreen() {
       >
         <FrameBrand />
         <h2>
-          {freeEntry && step === "create"
-            ? "Try AMP’s free math assessment."
-            : titles[step]}
+          {freeEntry && step === "create" ? "Try AMP free." : titles[step]}
         </h2>
         {freeEntry && showProviders && (
           <div className={styles.pitch} data-free-parent-signup>
             <p>
-              AMP finds the right level and chooses the next lesson as you
-              answer.
-            </p>
-            <p className={styles.offer}>
-              Create your free parent account.
-              <br />
-              Try up to 100 problems. No card required.
+              AMP finds the right level as you answer. Up to 100 problems, no
+              card required.
             </p>
             {carry.program && (
               <p className={styles.funding}>
@@ -405,14 +398,6 @@ export function SignInScreen() {
             Choose the sign-in method you used to create your account.
           </p>
         )}
-        {step === "create" && (
-          <p className={styles.hint}>
-            Already have an account?{" "}
-            <button className={styles.inlineLink} onClick={() => go("sign-in")}>
-              Sign in
-            </button>
-          </p>
-        )}
         {notice && (
           <p className="account-notice" role="status">
             {notice}
@@ -425,25 +410,6 @@ export function SignInScreen() {
           takeFocus
           onDismiss={() => setError("")}
         />
-        {freeEntry && showProviders && followupEnabled && (
-          <div className={styles.emailOptions}>
-            <p>
-              We’ll email your return link and one helpful reminder tomorrow.
-              Unsubscribe anytime.
-            </p>
-            <label>
-              <input
-                type="checkbox"
-                checked={newsletter}
-                onChange={(event) => setNewsletter(event.target.checked)}
-              />
-              <span>
-                Also send me occasional math problems, tips, videos and AMP
-                news.
-              </span>
-            </label>
-          </div>
-        )}
         {showProviders && (
           <ProviderButtons
             providers={providers}
@@ -589,6 +555,17 @@ export function SignInScreen() {
               )}
             </>
           )}
+          {step === "create" && (
+            <p className={`${styles.hint} ${styles.switchAccount}`}>
+              Already have an account?{" "}
+              <button
+                className={styles.inlineLink}
+                onClick={() => go("sign-in")}
+              >
+                Sign in
+              </button>
+            </p>
+          )}
           {step === "two-factor" && (
             <button
               className="text-button"
@@ -606,6 +583,12 @@ export function SignInScreen() {
             </button>
           )}
         </div>
+        {freeEntry && showProviders && followupEnabled && (
+          <p className={styles.fineprint} data-signup-email-notice>
+            We’ll email you about AMP. Unsubscribe anytime.{" "}
+            <a href="https://corpora.inc/legal/privacy/">Privacy</a>
+          </p>
+        )}
       </section>
     </PageFrame>
   );

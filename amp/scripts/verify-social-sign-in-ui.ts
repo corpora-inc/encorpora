@@ -280,9 +280,14 @@ try {
       const page = await context.newPage();
       await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
       await page
-        .getByRole("heading", { name: "Try AMP’s free math assessment." })
+        .getByRole("heading", { name: "Try AMP free." })
         .waitFor();
-      assert.equal(await page.getByRole("checkbox").isChecked(), false);
+      // Opt-in is a single quiet line, never a checkbox to decide on.
+      assert.equal(await page.getByRole("checkbox").count(), 0);
+      assert.match(
+        await page.locator("[data-signup-email-notice]").innerText(),
+        /^We’ll email you about AMP\. Unsubscribe anytime\. Privacy$/,
+      );
       assert.ok(
         (await page.locator("[data-free-parent-signup]").innerText()).includes(
           "Arizona ESA",
@@ -337,7 +342,6 @@ try {
   });
 
   await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
-  await page.getByRole("checkbox").check();
   await page.getByRole("button", { name: "Continue with Google" }).click();
   await page.waitForURL(
     /\/try\?return=free-practice&program=az-esa|\/try\?program=az-esa&return=free-practice/,
@@ -351,7 +355,8 @@ try {
   ).rows[0];
   assert.ok(lead?.verified_at, "Google signup becomes a verified parent lead");
   assert.equal(lead.program, "az-esa");
-  assert.equal(lead.newsletter, true);
+  assert.equal(lead.newsletter, true, "signup opts in by default");
+  assert.equal(lead.notice_version, "free-parent-account-v2");
   assert.equal(
     (
       await repository.pool.query(

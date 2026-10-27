@@ -10,7 +10,9 @@ The parent’s verified identity owns the acquisition record. Original ad click 
 
 ## Email choices
 
-The signup page discloses a welcome email with a return link and one reminder the next day. A separate, unchecked option subscribes the parent to occasional math problems, tips, videos and AMP news. Checking it does not start a bulk mailing or grant a scholarship. A scholarship invitation requires an actual license grant.
+The signup page shows one line under the form: “We’ll email you about AMP. Unsubscribe anytime.” with a link to the privacy policy. Signing up, or signing in from that page without an earlier follow-up record, opts the parent in to the welcome email, the next-day reminder and occasional math problems, tips, videos and AMP news. There is no checkbox. The intent records notice `free-parent-account-v2`; records from the earlier unchecked-box page keep `free-parent-account-v1`. Opting in does not start a bulk mailing or grant a scholarship. A scholarship invitation requires an actual license grant.
+
+A later sign-in never re-subscribes a parent who unsubscribed. Only an explicit v1 checkbox opt-in, sent by a page loaded before the change, can do that.
 
 Only verified addresses receive mail. Unsubscribe links stop optional mail without changing learning access or account-security messages. Purchases and activated scholarships suppress the trial sequence. Repeated sign-ins do not restart it. Unknown delivery outcomes retry the same immutable message with the same provider idempotency key; unresolved outcomes stop before that key expires.
 

@@ -277,7 +277,7 @@ try {
         if (!authenticated) {
           await practice
             .getByRole("heading", {
-              name: "Try AMP’s free math assessment.",
+              name: "Try AMP free.",
               exact: true,
             })
             .waitFor();

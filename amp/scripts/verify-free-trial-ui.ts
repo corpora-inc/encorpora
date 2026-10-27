@@ -516,7 +516,7 @@ try {
       await tryFree.click();
       await page.waitForURL("**/sign-up?return=free-practice");
       await page
-        .getByRole("heading", { name: "Try AMP’s free math assessment." })
+        .getByRole("heading", { name: "Try AMP free." })
         .waitFor();
       // Identity-provider behavior is verified in verify-social-sign-in-ui.
       await page.evaluate(() => localStorage.setItem("fixture.parent", "1"));
@@ -924,7 +924,7 @@ try {
       await coldLoad(
         visitor,
         "/try",
-        "Try AMP’s free math assessment.",
+        "Try AMP free.",
         `direct-try-${tag}`,
         fresh(),
       );
