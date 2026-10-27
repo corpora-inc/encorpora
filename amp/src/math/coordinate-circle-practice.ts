@@ -3,6 +3,20 @@ import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { act, circleDiagram, graph, step } from "./scene/author";
 import type { Point, Scene } from "./scene/spec";
 import type { Action } from "./scene/timeline";
+import { defineAxis } from "./variation/axes";
+import { generateWithAxes } from "./variation/legacy";
+
+/** How the reference line of the slope family is given. The first value is
+ * the surface the family showed before the axis existed. */
+export const coordinateCircleAxes = {
+  "perpendicular-slopes": {
+    "line-given": defineAxis("line-given", [
+      "two-points",
+      "slope-intercept",
+      "standard-form",
+    ]),
+  },
+} as const;
 
 /** Geometry with coordinates and circles (G-GPE, G-C): circle equations,
  * perimeter and area from coordinates, partitioning a segment, parallel and
@@ -501,7 +515,7 @@ function partitionCase(r: Random): Case {
 }
 
 // ------------------------------------------------------------- slope proofs
-function slopeCase(r: Random): Case {
+function slopeCase(r: Random, form = "two-points"): Case {
   const mode = r(0, 3);
   let rise: number, runV: number;
   do {
@@ -512,6 +526,32 @@ function slopeCase(r: Random): Case {
   const B: Point = [A[0] + runV, A[1] + rise];
   const m = q(rise, runV),
     perp = q(-runV, rise);
+  // An equation-given line replaces the two points and the figure: its slope
+  // is read from the equation, and the same slope model follows.
+  const byEquation = form !== "two-points";
+  let given = `Line $ℓ$ passes through $A${pt(A)}$ and $B${pt(B)}$.`;
+  let slopeStep =
+    `Slope of $ℓ$: $(${n(B[1])} − ${n(A[1])}) ÷ (${n(B[0])} − ${n(A[0])}) = ${frac(m)}$.`.replace(
+      /− −/g,
+      "+ ",
+    );
+  let slopeHint = `Find the slope of $ℓ$ from $A${pt(A)}$ and $B${pt(B)}$: rise over run.`;
+  if (byEquation) {
+    const c0 = r(1, 6) * (r(0, 1) ? 1 : -1);
+    if (form === "slope-intercept") {
+      const slope = `${rise < 0 ? "-" : ""}\\frac{${Math.abs(rise)}}{${runV}}`;
+      given = `Line $ℓ$ has equation $y = ${runV === 1 ? (rise < 0 ? "-" : "") + Math.abs(rise) : slope}x ${c0 < 0 ? "-" : "+"} ${Math.abs(c0)}$.`;
+      slopeStep = `In $y = mx + b$ the slope is the coefficient of $x$: the slope of $ℓ$ is ${frac(m)}.`;
+      slopeHint = `In $y = mx + b$ the number multiplying $x$ is the slope. Here that is the coefficient of $x$ in the equation of $ℓ$, $${given.replace(/^Line \$ℓ\$ has equation \$|\$\.$/g, "")}$; the constant term, ${Math.abs(c0)}, only moves the line up or down and does not change the slope.`;
+    } else {
+      const a = rise < 0 ? -rise : rise,
+        b = rise < 0 ? runV : -runV;
+      const total = r(1, 12) * (r(0, 1) ? 1 : -1);
+      given = `Line $ℓ$ has equation $${a === 1 ? "" : a}x ${b < 0 ? "-" : "+"} ${Math.abs(b) === 1 ? "" : Math.abs(b)}y = ${total}$.`;
+      slopeStep = `In $ax + by = c$ the slope is $-a/b$. Here $a = ${a}$ and $b = ${b}$, so the slope of $ℓ$ is ${frac(m)}.`;
+      slopeHint = `In $ax + by = c$ the slope is $-a/b$. Match $ℓ$, $${given.replace(/^Line \$ℓ\$ has equation \$|\$\.$/g, "")}$, to that form to find $a$ and $b$.`;
+    }
+  }
   // The figure shows line AB and its slope triangle, unlabeled: the slope
   // (and the perpendicular direction) is the learner's work.
   const base = () => {
@@ -539,22 +579,23 @@ function slopeCase(r: Random): Case {
   if (mode === 0) {
     const parallel = r(0, 1) === 1;
     return {
-      prompt: `Line $ℓ$ passes through $A${pt(A)}$ and $B${pt(B)}$. What is the slope of a line ${parallel ? "parallel" : "perpendicular"} to $ℓ$?`,
+      prompt: `${given} What is the slope of a line ${parallel ? "parallel" : "perpendicular"} to $ℓ$?`,
       answer: parallel ? m : perp,
       explanation: [
-        `Slope of $ℓ$: $(${n(B[1])} − ${n(A[1])}) ÷ (${n(B[0])} − ${n(A[0])}) = ${frac(m)}$.`.replace(
-          /− −/g,
-          "+ ",
-        ),
+        slopeStep,
         parallel
           ? `Parallel lines have equal slopes: ${frac(m)}.`
           : `Perpendicular slopes are negative reciprocals (their product is −1): −1 ÷ ${frac(m)} = ${frac(perp)}.`,
       ],
-      hint: parallel
-        ? `Find the slope of $ℓ$ from $A${pt(A)}$ and $B${pt(B)}$: rise over run. A parallel line goes in the same direction.`
-        : `Find the slope of $ℓ$ from $A${pt(A)}$ and $B${pt(B)}$, then flip it and change its sign.`,
+      hint: byEquation
+        ? parallel
+          ? `${slopeHint} A parallel line goes in the same direction.`
+          : `${slopeHint} Then flip it and change its sign.`
+        : parallel
+          ? `Find the slope of $ℓ$ from $A${pt(A)}$ and $B${pt(B)}$: rise over run. A parallel line goes in the same direction.`
+          : `Find the slope of $ℓ$ from $A${pt(A)}$ and $B${pt(B)}$, then flip it and change its sign.`,
       tags: [parallel ? "parallel" : "perpendicular"],
-      figure: base(),
+      ...(byEquation ? {} : { figure: base() }),
       label: "Slope",
     };
   }
@@ -564,15 +605,15 @@ function slopeCase(r: Random): Case {
     const s = parallel ? m : perp;
     const b = q(P[1] * s.d - s.n * P[0], s.d);
     return {
-      prompt: `Line $ℓ$ passes through $A${pt(A)}$ and $B${pt(B)}$. A line through $P${pt(P)}$ ${parallel ? "parallel" : "perpendicular"} to $ℓ$ has equation $y = mx + b$. What is $b$?`,
+      prompt: `${given} A line through $P${pt(P)}$ ${parallel ? "parallel" : "perpendicular"} to $ℓ$ has equation $y = mx + b$. What is $b$?`,
       answer: b,
       explanation: [
-        `Slope of $ℓ$: ${frac(m)}. The new line's slope is ${parallel ? `the same, ${frac(s)}` : `its negative reciprocal, ${frac(s)}`}.`,
+        `${byEquation ? slopeStep : `Slope of $ℓ$: ${frac(m)}.`} The new line's slope is ${parallel ? `the same, ${frac(s)}` : `its negative reciprocal, ${frac(s)}`}.`,
         `Through $P$: ${n(P[1])} = ${frac(s)} × ${n(P[0])} + b, so $b = ${n(P[1])} ${s.n * P[0] < 0 ? "+" : "−"} ${frac(q(Math.abs(s.n * P[0]), s.d))} = ${frac(b)}$.`,
       ],
-      hint: `First the slope: ${parallel ? "equal to $ℓ$'s" : "the negative reciprocal of $ℓ$'s"}. Then put $P${pt(P)}$ into y = mx + b and solve for $b$.`,
+      hint: `${byEquation ? `${slopeHint} Then the new slope` : "First the slope"}: ${parallel ? "equal to $ℓ$'s" : "the negative reciprocal of $ℓ$'s"}. Then put $P${pt(P)}$ into y = mx + b and solve for $b$.`,
       tags: [parallel ? "parallel-line" : "perpendicular-line"],
-      figure: base(),
+      ...(byEquation ? {} : { figure: base() }),
       label: "Value of $b$",
     };
   }
@@ -580,19 +621,21 @@ function slopeCase(r: Random): Case {
   const C: Point = [A[0], A[1]];
   const D: Point = [A[0] - rise * 2, A[1] + runV * 2];
   return {
-    prompt: `Line $ℓ$ passes through $A${pt(A)}$ and $B${pt(B)}$. Line $j$ passes through $C${pt(C)}$ and $D(${n(D[0])}, k)$. For which value of $k$ is $j$ perpendicular to $ℓ$?`,
+    prompt: `${given} Line $j$ passes through $C${pt(C)}$ and $D(${n(D[0])}, k)$. For which value of $k$ is $j$ perpendicular to $ℓ$?`,
     answer: q(D[1]),
     explanation: [
-      `Slope of $ℓ$: ${frac(m)}, so $j$ needs slope ${frac(perp)}.`,
+      byEquation
+        ? `${slopeStep} So $j$ needs slope ${frac(perp)}.`
+        : `Slope of $ℓ$: ${frac(m)}, so $j$ needs slope ${frac(perp)}.`,
       `Slope of $j$: $(k − ${n(C[1])}) ÷ (${n(D[0])} − ${n(C[0])}) = ${frac(perp)}$, so $k − ${n(C[1])} = ${frac(perp)} × ${n(D[0] - C[0])} = ${n(D[1] - C[1])}$.`.replace(
         /− −/g,
         "+ ",
       ),
       `k = ${n(D[1])}.`,
     ],
-    hint: `$j$ must have slope −1 ÷ (slope of $ℓ$). Write j's slope from $C$ and $D$ with $k$ in it, and set the two equal.`,
+    hint: `${byEquation ? `${slopeHint} $j$ must have the negative reciprocal of that slope.` : "$j$ must have slope −1 ÷ (slope of $ℓ$)."} Write j's slope from $C$ and $D$ with $k$ in it, and set the two equal.`,
     tags: ["missing-coordinate"],
-    figure: base(),
+    ...(byEquation ? {} : { figure: base() }),
     label: "Value of $k$",
   };
 }
@@ -822,7 +865,7 @@ function circleAngleCase(r: Random): Case {
   };
 }
 
-const builders: Record<string, (r: Random) => Case> = {
+const builders: Record<string, (r: Random, form?: string) => Case> = {
   "circle-equation": circleCase,
   "coordinate-polygon": polygonCase,
   "segment-partition": partitionCase,
@@ -833,12 +876,13 @@ const builders: Record<string, (r: Random) => Case> = {
 export function coordinateCircleCase(
   id: string,
   seed: string,
+  form?: string,
 ): { problem: GeneratedProblem; tags: string[]; caseKey: string } {
   const metadata = coordinateCircleTemplates.find((t) => t.id === id);
   if (!metadata) throw new Error(`Unknown coordinate template ${id}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
-  const c = builders[id]!(random(id, seed));
+  const c = builders[id]!(random(id, seed), form);
   // Keep persisted problems immutable when this family's wording changes.
   // The response protocol stays at v1; other families retain their IDs.
   const identity = [id, metadata.version, seed];
@@ -872,4 +916,15 @@ export function coordinateCircleCase(
 export const generateCoordinateCircleProblem = (
   id: string,
   seed: string,
-): GeneratedProblem => coordinateCircleCase(id, seed).problem;
+): GeneratedProblem => {
+  const axes = coordinateCircleAxes[id as "perpendicular-slopes"];
+  return axes
+    ? generateWithAxes(
+        id,
+        seed,
+        axes,
+        (values) =>
+          coordinateCircleCase(id, seed, values["line-given"]).problem,
+      )
+    : coordinateCircleCase(id, seed).problem;
+};
