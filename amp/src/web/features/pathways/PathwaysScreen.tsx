@@ -23,14 +23,14 @@ import type { AuthSession } from "../../auth";
 import { FrontierMap, gradeName } from "../../Home";
 import { strandNames } from "../../BirthYearPrompt";
 import { Graph } from "./Graph";
+import { ConnectionList } from "./ConnectionList";
+import { skillNeighbors, type Neighbor } from "./neighbors";
 import {
   bandLabel,
   bands,
   catalogSchema,
   crystal,
   neighborhoods,
-  relatedConnections,
-  connectionLabel,
   neighborhood,
   progressSchema,
   frontierSchema,
@@ -362,30 +362,22 @@ export function MapView({
   const selectedEvidence = selected ? stats.get(selected.id) : undefined;
   const families =
     catalog.data?.templates.filter((t) => t.skillId === selected?.id) ?? [];
-  const related = selected ? relatedConnections(skills ?? [], selected.id) : [];
-  const links = (ids: string[]) =>
-    ids.length ? (
-      <ul>
-        {ids.map((id) => {
-          const s = skills?.find((s) => s.id === id);
-          return s ? (
-            <li key={id}>
-              <Link
-                to="/pathways/$skillId"
-                params={{ skillId: id }}
-                search={linkSearch()}
-                onClick={() => setBrowse(false)}
-              >
-                {s.title}
-                <small>{bandLabel(s.gradeBand)}</small>
-              </Link>
-            </li>
-          ) : null;
-        })}
-      </ul>
-    ) : (
-      <p className="pathways-muted">None listed.</p>
-    );
+  const neighbors = useMemo(
+    () => skillNeighbors(skills ?? [], selected?.id ?? "", { shared: true }),
+    [skills, selected?.id],
+  );
+  const connectionList = (
+    group: "builds-on" | "leads-to" | "related",
+    items: Neighbor<MapSkill>[],
+  ) => (
+    <ConnectionList
+      key={`${selected?.id}:${group}`}
+      group={group}
+      items={items}
+      linkSearch={linkSearch()}
+      onNavigate={() => setBrowse(false)}
+    />
+  );
   return (
     <main
       className={`pathways ${selected ? "has-selection" : ""} ${browse ? "is-browsing" : ""}`}
@@ -669,45 +661,17 @@ export function MapView({
                   <i className="pathways-dot prerequisites" />
                   Builds on
                 </h3>
-                {links(selected.prerequisites)}
+                {connectionList("builds-on", neighbors.buildsOn)}
                 <h3>
                   <i className="pathways-dot dependents" />
                   Leads to
                 </h3>
-                {links(
-                  skills
-                    .filter((s) => s.prerequisites.includes(selected.id))
-                    .map((s) => s.id),
-                )}
+                {connectionList("leads-to", neighbors.leadsTo)}
                 <h3>
                   <i className="pathways-dot related" />
                   Related skills
                 </h3>
-                {related.length ? (
-                  <ul className="pathways-connections">
-                    {related.map(({ skill, connection }) => (
-                      <li key={skill.id}>
-                        <Link
-                          to="/pathways/$skillId"
-                          params={{ skillId: skill.id }}
-                          search={linkSearch()}
-                          onClick={() => setBrowse(false)}
-                        >
-                          {skill.title}
-                          <small>
-                            {bandLabel(skill.gradeBand)}
-                            {connection
-                              ? ` · ${connectionLabel(connection)}`
-                              : " · Shared foundations"}
-                          </small>
-                        </Link>
-                        {connection && <p>{connection.explanation}</p>}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="pathways-muted">None listed.</p>
-                )}
+                {connectionList("related", neighbors.related)}
                 {range && (
                   <p className="pathways-range">
                     {strandNames[selected.strand] ?? selected.strand} frontier:{" "}

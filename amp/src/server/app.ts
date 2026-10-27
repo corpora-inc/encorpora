@@ -716,6 +716,8 @@ function routes(app: FastifyInstance, options: AppOptions) {
                 ? `Place ${problem.public.response.pointCount} different ${problem.public.response.pointCount === 1 ? "point" : "points"} on the grid`
                 : problem.public.response.kind === "multi-part-choice"
                   ? `Choose one of the displayed options for each of the ${problem.public.response.blanks.length} parts`
+                : problem.public.response.kind === "figure-choice"
+                  ? `Choose one of the displayed ${problem.public.response.noun === "Graph" ? "graphs" : "number lines"}`
                   : "Enter a number, decimal, or fraction such as 3/4",
         );
       const response =

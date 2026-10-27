@@ -90,7 +90,8 @@ export type ProblemFlag = {
     | "choice"
     | "multi-select"
     | "point-plot"
-    | "multi-part-choice";
+    | "multi-part-choice"
+    | "figure-choice";
   response: string | null;
   outcome: FlagOutcome;
   assisted: boolean;

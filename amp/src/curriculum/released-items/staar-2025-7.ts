@@ -411,11 +411,12 @@ export const staarGrade7 = defineLedger(
         "Solve a two-step inequality with a negative coefficient and draw it on a number line, placing the endpoint and arrow",
       status: "partial",
       templateIds: [
+        "graph-of-inequality-number-line",
         "inequality-number-line-choice",
         "affine-linear-inequality",
       ],
       limitations:
-        "STAAR interaction: number line, 2 points. Related families solve and choose a drawn graph; drawing the graph by placing an open endpoint and an arrow has no response protocol.",
+        "STAAR interaction: number line, 2 points. graph-of-inequality-number-line solves two-step inequalities with negative coefficients and chooses the drawn number line; drawing it by placing the endpoint and arrow has no response protocol.",
     },
     {
       item: {

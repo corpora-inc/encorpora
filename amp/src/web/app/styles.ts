@@ -22,4 +22,5 @@ import "../app-shell.css";
 import "../problem-flag.css";
 import "../point-plot.css";
 import "../multi-part-choice.css";
+import "../figure-choice.css";
 import "../practice-tablet.css";

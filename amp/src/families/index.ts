@@ -2,3 +2,4 @@
 // sorted by file name. Add a family by adding its descriptor and running the
 // script; tests/family-index.test.ts fails when this file is stale.
 export {};
+export { family as figureChoice } from "./figure-choice";
