@@ -529,18 +529,20 @@ export const regentsAlgebra1January2026 = defineLedger(
         number: "30",
         page: "printed p.15; PDF p.15; standard map rating guide PDF p.13",
       },
-      responseFormat: "numeric",
+      responseFormat: "constructed",
       standards: ["A-CED.A"],
       archetypeIds: ["inequality.context"],
       demand:
         "Find the greatest whole number of items that fit a budget after a fixed expense",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "first-cheaper-whole-input",
         "inequality-from-context",
         "budget-whole-items",
+        "budget-items-steps",
       ],
-      limitations: "Final answer practiced; shown-work credit not assessed.",
+      limitations:
+        "budget-items-steps (structured-work-v1) enters the inequality for a fixed amount plus a price per item (graded as the same relation with the fixed amount first, so an equivalent rearranged inequality is not accepted), the money left and the greatest whole number as steps, the algebraic work the rating guide credits. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
     },
     {
       section: "Part III",

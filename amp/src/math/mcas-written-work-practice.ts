@@ -347,7 +347,6 @@ const contexts = [
     qty: "weight",
     heavy: "heavy",
     plural: "weights",
-    lead: "Researchers are reviewing the weights of different animals.",
   },
   {
     big: "A cargo container holds a load with a mass of",
@@ -361,7 +360,6 @@ const contexts = [
     qty: "mass",
     heavy: "massive",
     plural: "masses",
-    lead: "Engineers are comparing masses of different objects.",
   },
 ] as const;
 interface SciModel {
@@ -453,7 +451,7 @@ const sciNotation = chainFamily({
     const built = rowsWork(rows, axes.mode, r, "Your work");
     const count = m.count.toLocaleString("en-US");
     return workSurface(built, {
-      prompt: `${c.lead} ${c.big} ${standard(m.big)} ${c.unit}. ${c.small} ${standard(m.small)} ${c.unit}. The average ${c.qty} of ${c.cmp1} is $${sciTex(m.first)}$ ${c.unit} and of ${c.cmp2} is $${sciTex(m.second)}$ ${c.unit}. A count finds ${count} ${c.many}; use the average ${c.qty} of ${c.cmp2} for each one. Write each ${c.qty} as $a\\times10^{n}$ with $1\\le a<10$. ${task(axes.mode)}`,
+      prompt: `${c.big} ${standard(m.big)} ${c.unit}. ${c.small} ${standard(m.small)} ${c.unit}. The average ${c.qty} of ${c.cmp1} is $${sciTex(m.first)}$ ${c.unit} and of ${c.cmp2} is $${sciTex(m.second)}$ ${c.unit}. A count finds ${count} ${c.many}; use the average ${c.qty} of ${c.cmp2} for each one. Write each ${c.qty} as $a\\times10^{n}$ with $1\\le a<10$. ${task(axes.mode)}`,
       hint: `For ${standard(m.big)}, count how many places the decimal point moves to leave one nonzero digit in front. Moving it left gives a positive power of 10; for ${standard(m.small)} it moves right, so the power is negative. To compare ${c.cmp1} with ${c.cmp2}, divide their ${c.plural}.`,
       explanation: [
         `$${texNum(standard(m.big))}=${sciTex(m.big)}$, and $${standard(m.small)}=${sciTex(m.small)}$.`,

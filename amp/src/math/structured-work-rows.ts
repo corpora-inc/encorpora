@@ -31,6 +31,8 @@ export interface RowField {
   variables?: string[];
   powers?: boolean;
   relations?: boolean;
+  /** The relation is an inequality (keypad display only). */
+  inequality?: boolean;
   maxLength?: number;
 }
 export interface RowSpec {
@@ -52,6 +54,7 @@ const fieldOf = (f: RowField, given: boolean): WorkField =>
         label: f.caption,
         variables: f.variables ?? [],
         ...(f.relations ? { relations: true } : {}),
+        ...(f.inequality ? { inequality: true } : {}),
         ...(f.powers ? { powers: true } : {}),
         maxLength: f.maxLength ?? 24,
         ...(given ? { given: f.value } : {}),

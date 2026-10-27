@@ -32,6 +32,7 @@ export { family as regentsGeometryMeasure } from "./regents-geometry-measure";
 export { family as regentsGeometryMotions } from "./regents-geometry-motions";
 export { family as regentsGeometrySimilarity } from "./regents-geometry-similarity";
 export { family as regentsSequences } from "./regents-sequences";
+export { family as regentsWrittenWork } from "./regents-written-work";
 export { family as shareRemainder } from "./share-remainder";
 export { family as showWorkWordProblem } from "./show-work-word-problem";
 export { family as similarSolidChain } from "./similar-solid-chain";

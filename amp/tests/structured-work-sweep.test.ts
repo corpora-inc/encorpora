@@ -11,12 +11,14 @@ import { polynomialProductCases } from "../src/math/polynomial-product-steps-pra
 import { lineFromPointCases } from "../src/math/line-from-point-steps-practice";
 import { similarityProofCases } from "../src/math/similarity-proof-practice";
 import { mcasWrittenWorkCases } from "../src/math/mcas-written-work-practice";
+import { regentsWrittenWorkCases } from "../src/math/regents-written-work-practice";
 
 const cases = {
   ...polynomialProductCases,
   ...lineFromPointCases,
   ...similarityProofCases,
   ...mcasWrittenWorkCases,
+  ...regentsWrittenWorkCases,
 };
 const expectedVariants: Record<string, string[]> = {
   "polynomial-product-steps": [
@@ -34,6 +36,18 @@ const expectedVariants: Record<string, string[]> = {
   "similar-triangles-work": ["enlarge", "reduce"],
   "scale-drawing-work": ["feet-inches", "meters-centimeters"],
   "scientific-notation-work": ["animals", "objects"],
+  "recursion-term-steps": [
+    "square-plus-term-3",
+    "square-plus-term-4",
+    "double-square-minus-term-3",
+    "double-square-minus-term-4",
+    "double-plus-term-3",
+    "double-plus-term-4",
+  ],
+  "remainder-steps": ["x-minus", "x-plus"],
+  "addition-rule-steps": ["either", "neither"],
+  "average-rate-steps": ["whole-table", "inner-years"],
+  "budget-items-steps": ["budget", "goal"],
 };
 const SEEDS = 400;
 
