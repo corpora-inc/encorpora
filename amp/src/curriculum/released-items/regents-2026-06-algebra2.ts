@@ -162,9 +162,10 @@ export const regentsAlgebra2June2026 = defineLedger(
       standards: ["A-REI.C"],
       archetypeIds: ["nonlinear.system"],
       demand: "Solve a system of a circle equation and a line",
-      status: "covered",
+      status: "partial",
       templateIds: ["nonlinear-system-solve", "circle-line-system"],
-      limitations: "",
+      limitations:
+        "The practice circle is centered at the origin with an oblique line; this item's circle is centered at (5, 0) and the answer is read as points.",
     },
     {
       section: "Part I",
@@ -207,13 +208,14 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["nonlinear.rational-radical"],
       demand:
         "Solve a rational equation with two denominators and reject an excluded value",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "rational-extraneous-single",
         "rational-equation-check",
         "rational-two-denominators",
       ],
-      limitations: "",
+      limitations:
+        "Practice denominators are monic and the right side has both denominators; this item has a 4x - 3 denominator, a right side over only that denominator and an excluded value that is a fraction.",
     },
     {
       section: "Part I",
@@ -353,13 +355,14 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["nonlinear.absolute"],
       demand:
         "Find the solutions where an absolute-value function equals a second function",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "absolute-value-affine-equation",
         "absolute-value-transformed-equation",
         "absolute-value-linear",
       ],
-      limitations: "",
+      limitations:
+        "The second function here is not linear, so the equation can have three solutions; practice pairs an absolute value with a linear function and has at most two.",
     },
     {
       section: "Part I",
@@ -415,14 +418,15 @@ export const regentsAlgebra2June2026 = defineLedger(
       standards: ["A-SSE.B"],
       archetypeIds: ["exponential.context", "exponential.form"],
       demand: "Choose the decay model from a half-life in hours",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "exponential-model-rule",
         "exponential-time-scale",
         "rg-exponential-base-rate",
         "growth-model-rewrite",
       ],
-      limitations: "",
+      limitations:
+        "The choices give the hourly decay factor as a calculator value; practice keeps the exact half-life form (1/2)^(t/h).",
     },
     {
       section: "Part II",
@@ -435,13 +439,13 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["sequence.recursive"],
       demand:
         "Find the third term of a sequence defined by a nonlinear recursive rule",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "series-recursion",
         "geometric-sequence-rule",
         "nonlinear-recursion-term",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -468,9 +472,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       standards: ["A-APR.B"],
       archetypeIds: ["expression.polynomial-division"],
       demand: "Find the remainder when a cubic is divided by x - 2",
-      status: "covered",
+      status: "partial",
       templateIds: ["remainder-theorem"],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -595,13 +599,13 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["nonlinear.rational-radical"],
       demand:
         "Solve an equation with two square-root terms and reject any extraneous value",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "sat-entry-radical-equation",
         "radical-equation-shifted",
         "two-radical-equation",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part IV",

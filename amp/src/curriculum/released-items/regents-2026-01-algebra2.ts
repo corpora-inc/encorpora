@@ -183,9 +183,10 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["nonlinear.system"],
       demand:
         "Classify the solution of a circle and a vertical line as rational, irrational or imaginary",
-      status: "covered",
+      status: "partial",
       templateIds: ["nonlinear-system-solve", "circle-line-system"],
-      limitations: "",
+      limitations:
+        "Practice classifies the number and kind of solutions; this item asks whether the x-value and the y-value of the single solution are rational, irrational or imaginary.",
     },
     {
       section: "Part I",
@@ -198,9 +199,10 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["expression.factor"],
       demand:
         "Decide which factored forms equal a quartic binomial with a common factor",
-      status: "covered",
+      status: "partial",
       templateIds: ["polynomial-factoring-patterns", "quartic-factored-form"],
-      limitations: "",
+      limitations:
+        "Practice factors x^4 - k^4 with a common factor; this item has a common factor x^2 and asks which of four expressions are equivalent.",
     },
     {
       section: "Part I",
@@ -213,9 +215,10 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["exponential.form"],
       demand:
         "Choose the expression that models monthly growth from an annual growth rate",
-      status: "covered",
+      status: "partial",
       templateIds: ["exponential-time-scale", "growth-model-rewrite"],
-      limitations: "",
+      limitations:
+        "The choices give the monthly factor as a calculator decimal; practice keeps exact exponent forms.",
     },
     {
       section: "Part I",
@@ -372,9 +375,10 @@ export const regentsAlgebra2January2026 = defineLedger(
       ],
       demand:
         "Count the solutions of an equation that sets a rational expression equal to an absolute-value expression",
-      status: "covered",
+      status: "partial",
       templateIds: ["graphical-solution-table", "rational-abs-solution-count"],
-      limitations: "",
+      limitations:
+        "Practice shows both graphs; this item gives only the equation, with a coefficient 2 and a binomial 2x - 3 inside the absolute value.",
     },
     {
       section: "Part I",
@@ -417,13 +421,14 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["exponential.context"],
       demand:
         "Choose the true statement about an exponential model fit to three graphed points",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "exponential-model-rule",
         "exponential-time-scale",
         "exponential-points-statement",
       ],
-      limitations: "",
+      limitations:
+        "Practice uses points that double exactly; this item has measured points and statements that hold only approximately.",
     },
     {
       section: "Part II",
@@ -436,13 +441,13 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["exponential.context", "logarithm.solve"],
       demand:
         "Find the time for an exponential model of a crowd to reach a target to the nearest hundredth",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "exponential-log-solution",
         "log-equation",
         "exponential-target-time",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -503,9 +508,9 @@ export const regentsAlgebra2January2026 = defineLedger(
       archetypeIds: ["probability.addition-rule"],
       demand:
         "Find the percent of students who speak either language from the two percents and the overlap",
-      status: "covered",
+      status: "partial",
       templateIds: ["addition-rule-probability"],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
