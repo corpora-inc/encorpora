@@ -188,17 +188,17 @@ const entries: FormatLessonEntry[] = [
       "With the same principal $P$ the cost of an offer is $I=Prt$. Offer 1 costs less than offer 2 exactly when $r_1t_1<r_2t_2$, and the difference is $P\\,|r_1t_1-r_2t_2|$.",
     example: {
       prompt:
-        "A family borrows 1,000 dollars. Bank A charges 6% simple interest for 2 years, and Bank B charges 4% for 4 years. Which costs less, and by how much?",
+        "A family borrows 1,000 dollars. Harbor Bank charges 6% simple interest for 2 years, and Summit Bank charges 4% for 4 years. Which costs less, and by how much?",
       steps: [
-        "Bank A: $1{,}000\\times\\frac{6}{100}\\times2=120$ dollars.",
-        "Bank B: $1{,}000\\times\\frac{4}{100}\\times4=160$ dollars.",
-        "Bank A costs less, by $160-120=40$ dollars.",
+        "Harbor Bank: $1{,}000\\times\\frac{6}{100}\\times2=120$ dollars.",
+        "Summit Bank: $1{,}000\\times\\frac{4}{100}\\times4=160$ dollars.",
+        "Harbor Bank costs less, by $160-120=40$ dollars.",
       ],
-      answer: "Bank A, by 40 dollars.",
+      answer: "Harbor Bank, by 40 dollars.",
     },
     methodTitle: "Each offer alone, then compare",
     methodText: [
-      "A lower rate over a longer time can cost more, as Bank B shows.",
+      "A lower rate over a longer time can cost more, as Summit Bank shows.",
       "The difference is always positive: subtract the lesser from the greater.",
     ],
     formal:

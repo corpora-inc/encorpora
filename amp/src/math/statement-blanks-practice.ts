@@ -850,7 +850,7 @@ export const statementBlanksGenerate = defineGenerate(
             ],
             "Books of each type",
           ),
-          hint: `A book of one type is more than twice as likely as another type when its count is more than double the other count. Double ${Math.min(...counts)}, the least count, and compare it with the other counts.`,
+          hint: `Of the ${total} books, a type is more than twice as likely as another when its count is more than double the other count. Double ${Math.min(...counts)}, the least count, and compare it with the other counts.`,
           explanation: [
             `The chance of a type is proportional to its count, so compare counts: ${names.map((n, i) => `${n} ${counts[i]}`).join(", ")}.`,
             `${counts[bi]} is more than $2\\times ${counts[si]}=${2 * counts[si]!}$, and no other pair of counts has this property.`,

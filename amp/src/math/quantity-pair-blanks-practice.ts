@@ -381,7 +381,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
         const parts = [r(300, 990), r(300, 990), r(300, 990)];
         const total = parts.reduce((s, v) => s + v, 0);
         need(
-          total > 1000 &&
+          total > 2000 &&
             total < 3000 &&
             total % 1000 !== 0 &&
             total % 100 !== 0,
@@ -943,7 +943,8 @@ export const quantityPairBlanksGenerate = defineGenerate(
 
     "wage-and-cost-blanks": entry(wageAxes, ({ meta, seed, r, axes }) => {
       const wage = r(8, 18);
-      const hours = axes.hours === "consecutive" ? [1, 2, 3, 4] : [2, 4, 6, 8];
+      const hours = axes.hours === "consecutive" ? [2, 3, 4, 5] : [2, 4, 6, 8];
+      const hrs = (n: number) => `${n} ${n === 1 ? "hour" : "hours"}`;
       const step = hours[1]! - hours[0]!;
       const cost = wage * hours[0]! + r(3, 25);
       const net = hours.map((h) => wage * h - cost);
@@ -992,10 +993,10 @@ export const quantityPairBlanksGenerate = defineGenerate(
           ],
           "Hours worked and net pay",
         ),
-        hint: `Compare the net pay after ${hours[0]} hours (${fmt(net[0]!)}) with the net pay after ${hours[1]} hours (${fmt(net[1]!)}): the change shows what ${hours[1]! - hours[0]!} hour${hours[1]! - hours[0]! === 1 ? "" : "s"} earn. Then undo the first hours of pay to see the cost.`,
+        hint: `Compare the net pay after ${hrs(hours[0]!)}, which is ${fmt(net[0]!)}, with the net pay after ${hrs(hours[1]!)}, which is ${fmt(net[1]!)}: the change shows what ${hrs(hours[1]! - hours[0]!)} of work earn. Then undo the first hours of pay to see the cost.`,
         explanation: [
-          `From ${hours[0]} to ${hours[1]} hours the net pay changes by $${fmt(net[1]!)}-${fmt(net[0]!).startsWith("−") ? `(${fmt(net[0]!)})` : fmt(net[0]!)}=${net[1]! - net[0]!}$, which is ${hours[1]! - hours[0]!} hour${hours[1]! - hours[0]! === 1 ? "" : "s"} of pay, so the wage is $${net[1]! - net[0]!}\\div ${hours[1]! - hours[0]!}=${wage}$ dollars per hour.`,
-          `After ${hours[0]} hours the worker has earned $${wage}\\times ${hours[0]}=${wage * hours[0]!}$ dollars but the net pay is ${fmt(net[0]!)}, so the uniform cost $${wage * hours[0]!}-(${fmt(net[0]!)})=${cost}$ dollars.`,
+          `From ${hrs(hours[0]!)} to ${hrs(hours[1]!)} the net pay changes by $${fmt(net[1]!)}-${net[0]! < 0 ? `(${fmt(net[0]!)})` : fmt(net[0]!)}=${net[1]! - net[0]!}$, which is the pay for ${hrs(hours[1]! - hours[0]!)}, so the wage is $${net[1]! - net[0]!}\\div ${hours[1]! - hours[0]!}=${wage}$ dollars per hour.`,
+          `After ${hrs(hours[0]!)} the worker has earned $${wage}\\times ${hours[0]}=${wage * hours[0]!}$ dollars but the net pay is ${fmt(net[0]!)}, so the uniform cost $${wage * hours[0]!}-(${fmt(net[0]!)})=${cost}$ dollars.`,
         ],
       });
     }),

@@ -364,7 +364,7 @@ const entries: FormatLessonEntry[] = [
     id: "times-as-many-blanks",
     title: "Times as many",
     summary:
-      "A count is 'k times as many' as another when the first is k times the second; likelihood follows the counts.",
+      "A count is $k$ times as many as another when it is $k$ times that count; likelihood follows the counts.",
     objectives: [
       "Find how many times as many one count is than another by dividing.",
       "Compare likelihoods of choosing from counts, such as more than twice as likely.",

@@ -14,7 +14,10 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "A whole number is written with digits, and the place of a digit tells how much it is worth. The rightmost place is the ones place. Each place to the left is worth ten times the place to its right: tens, hundreds, thousands, ten thousands, hundred thousands. In 804,516 the digit 8 is in the hundred thousands place, so it stands for 800,000.",
     terms: [
-      ["place", "The position of a digit in a number, such as tens or thousands."],
+      [
+        "place",
+        "The position of a digit in a number, such as tens or thousands.",
+      ],
       [
         "place value",
         "What a digit is worth because of its place: the digit times the value of the place.",
@@ -36,7 +39,8 @@ const entries: FormatLessonEntry[] = [
         "Continuing left, 3 is in the thousands place, 0 in the ten thousands place and 6 in the hundred thousands place.",
         "The digit 6 is worth 600,000 and the digit 0 is worth nothing.",
       ],
-      answer: "6: hundred thousands; 0: ten thousands; 3: thousands; 4: hundreds; 8: tens; 1: ones.",
+      answer:
+        "6: hundred thousands; 0: ten thousands; 3: thousands; 4: hundreds; 8: tens; 1: ones.",
     },
     methodTitle: "Count places from the ones",
     methodText: [
@@ -164,7 +168,10 @@ const entries: FormatLessonEntry[] = [
       "An estimate is a quick answer that is close to the exact one. To estimate a sum, round each addend to the same place and add the rounded numbers, which is easy to do in your head. The result is close to the exact sum but usually not equal to it.",
     terms: [
       ["addend", "A number that is added."],
-      ["estimate", "An answer that is close to the exact answer and easier to find."],
+      [
+        "estimate",
+        "An answer that is close to the exact answer and easier to find.",
+      ],
     ],
     method: [
       "Round the first addend to the stated place by looking at the digit to its right.",
@@ -263,8 +270,14 @@ const entries: FormatLessonEntry[] = [
     intuition:
       "Places to the right of the decimal point are worth less. The tenths place is worth one tenth, written 0.1, and the hundredths place is worth one hundredth, 0.01. So the digit 4 in the tenths place is worth 0.4, and the digit 4 in the hundredths place is worth 0.04. Writing 3,205.4 as 3,000 + 200 + 5 + 0.4 adds up the worth of each digit.",
     terms: [
-      ["tenths place", "The first place right of the decimal point, worth 0.1 for each count."],
-      ["hundredths place", "The second place right of the decimal point, worth 0.01 for each count."],
+      [
+        "tenths place",
+        "The first place right of the decimal point, worth 0.1 for each count.",
+      ],
+      [
+        "hundredths place",
+        "The second place right of the decimal point, worth 0.01 for each count.",
+      ],
     ],
     method: [
       "Name the place of each nonzero digit, counting left from the ones place and right from the decimal point.",
@@ -373,7 +386,8 @@ const entries: FormatLessonEntry[] = [
     principle:
       "The same digit $d$ in places $10^{i}$ and $10^{j}$ has values $d\\cdot10^i$ and $d\\cdot10^j$, and the ratio of the greater to the lesser is $10^{\\,i-j}$.",
     example: {
-      prompt: "In 280,284 the digit 8 appears in two places. How many times as great is the left 8 than the right 8?",
+      prompt:
+        "In 280,284 the digit 8 appears in two places. How many times as great is the left 8 than the right 8?",
       steps: [
         "The left 8 is in the ten thousands place, so it is worth 80,000. The right 8 is in the tens place, so it is worth 80.",
         "The places are three steps apart (tens, hundreds, thousands, ten thousands is three steps).",
