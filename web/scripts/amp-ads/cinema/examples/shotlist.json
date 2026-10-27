@@ -1,0 +1,15 @@
+{
+  "batch": "missing-piece-v4",
+  "prefix": "mp4",
+  "seeds": [101, 4242, 777, 9001],
+  "framings": ["portrait", "wide"],
+  "model": {"runner": "ltx-benchmark.py", "variant": "distilled", "frames": 121, "downloads": ["ltx-quality"]},
+  "style": "Dark cinematic steampunk magical realism, extraordinary physical miniature photography at monumental scale. Antique brass and dark oxidized bronze, convincing interlocking gear teeth, warm amber highlights, drifting fine dust, crisp photographic detail. No text, no logo, no speech, no music. No people.",
+  "shots": [
+    {"id": "click-faceon",
+     "prompt": "Locked-off static camera, perfectly face-on view of a flat vertical wall of brass gears. All gears are completely still. One small brass gear slides straight down into the single empty space, its teeth meshing with the gears on either side. Decisive click. Then the small gear turns and every gear in the wall begins rotating, neighbours in opposite directions. Sound of one crisp mechanical click, then smooth ticking.",
+     "extra": "Every gear is a rigid solid disc that keeps its exact round shape and tooth count; gears only rotate about their own fixed axles."},
+    {"id": "heaven", "seeds": [101, 4242],
+     "prompt": "The camera gently rises out of an immense brass clockwork universe into a sunlit open sky. Vast rotating astronomical rings recede below, floating above luminous clouds. Smooth continuous pullback and rise. Sound of delicate ticking fading into spacious air."}
+  ]
+}
