@@ -82,7 +82,8 @@ const partStories = [
 function storyExpression(r: Random) {
   const variant = pick(r, ["two-removals", "unknown-part"]);
   if (variant === "two-removals") {
-    const T = r(200, 600);
+    // T exceeds the two amounts taken away (at most 280) so some remain.
+    const T = r(300, 600);
     const a = r(30, 140);
     const b = r(30, 140);
     const left = T - a - b;
@@ -645,9 +646,17 @@ function equivalentTrinomial(r: Random) {
     ];
     shown = [...std, ...cands.slice(2)];
   }
+  // Two wrong forms that expand to one polynomial are one distractor twice.
+  const wrongSeen = new Set<string>();
   const pool = dedupe(
     shown
       .filter((x) => x.tex !== givenTex)
+      .filter(
+        (x) =>
+          eqPoly(x.poly, target) ||
+          (!wrongSeen.has(x.poly.join(",")) &&
+            !!wrongSeen.add(x.poly.join(","))),
+      )
       .map((x) => {
         const holds = eqPoly(x.poly, target);
         const expanded = x.tex === polyTex(x.poly);
@@ -722,7 +731,8 @@ function regressionPrediction(r: Random) {
   const negative = r(0, 1) === 1;
   // Tenths so every prediction is an exact one-decimal number.
   const mT = (negative ? -1 : 1) * r(12, 48);
-  const bT = r(300, 700);
+  // The line stays above zero through x = 8: no true prediction is negative.
+  const bT = r(Math.max(300, Math.abs(mT) * 8), 700);
   const fmt = (t: number) => (t / 10).toFixed(1);
   const pred = (x: number) => mT * x + bT; // tenths
   const eq = `\\hat{y}=${mT < 0 ? "-" : ""}${fmt(Math.abs(mT))}x+${fmt(bT)}`;
@@ -783,7 +793,7 @@ function regressionPrediction(r: Random) {
     pool: dedupe(pool),
     total: 5,
     k: r(2, 3),
-    context: `A line of best fit for ${c.x} ($x$) and ${c.y} ($\\hat{y}$) is $${eq}$. The data have $x$ between $1$ and $10$.`,
+    context: `A line of best fit for ${c.x} ($x$) and ${c.y} ($\\hat{y}$) is $${eq}$. The data have $x$ between $0$ and $10$.`,
     ask: (k) => `Select the ${k} true statements.`,
     hint: () =>
       `To predict, put the number of ${c.xu}s in for $x$ in $${eq}$ and work out $\\hat{y}$. For a statement about change or about $0$, ask which number in the equation is the slope and which is the intercept.`,

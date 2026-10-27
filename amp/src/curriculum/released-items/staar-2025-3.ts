@@ -239,10 +239,10 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["shape.solid-properties"],
       demand:
         "Select the true statements about a group of solids, such as having two congruent parallel faces",
-      status: "covered",
+      status: "partial",
       templateIds: ["solid-property-select", "solid-figure-select"],
       limitations:
-        "solid-figure-select draws six solids (prisms, pyramids, a cylinder, a cone and a sphere) and selects the two or three that have a stated property: two congruent parallel faces, a curved surface, only flat faces, a triangular face or six or more flat faces.",
+        "solid-figure-select selects, among six drawn solids, the two or three that have a stated property such as two congruent parallel faces; judging written true-or-false statements about a group of solids is not practiced.",
     },
     {
       item: {

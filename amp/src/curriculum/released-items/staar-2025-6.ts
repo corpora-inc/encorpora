@@ -445,13 +445,13 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["pattern.paired"],
       demand:
         "Mark both statements that describe y = 7x as multiplicative and y = x + 7 as additive",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "pattern-pair-relationship",
         "additive-multiplicative-select",
       ],
       limitations:
-        "additive-multiplicative-select gives one rule y = mx and one rule y = x + c and selects the true statements about which rule is multiplicative or additive, with the constant relationship and the value of y for a given x.",
+        "additive-multiplicative-select selects true statements among classifications of the two rules, constant relationships and values of y; a set made only of the classification of each rule is rarely drawn, so classifying y = mx as multiplicative and y = x + c as additive alone is not reliably practiced.",
     },
     {
       item: {

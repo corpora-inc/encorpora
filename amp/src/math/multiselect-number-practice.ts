@@ -259,9 +259,16 @@ function equivalentFractions(r: Random) {
   ];
   const [a, b] = pick(r, pairs);
   const pool: Statement[] = [];
+  // Two wrong fractions of one value would be one distractor shown twice.
+  const wrongValues = new Set<string>();
   const cand = (n: number, d: number, note: string) => {
     if (n < 1 || d < 2 || d > 30 || (n === a && d === b)) return;
     const holds = n * b === a * d;
+    if (!holds) {
+      const value = `${n / gcd(n, d)}/${d / gcd(n, d)}`;
+      if (wrongValues.has(value)) return;
+      wrongValues.add(value);
+    }
     pool.push(
       st(
         `$${fr(n, d)}$`,
@@ -591,8 +598,10 @@ function compareToPi(r: Random) {
   const pool: Statement[] = [];
   const seen = new Set<string>();
   for (const c of cands) {
-    if (seen.has(c.tex) || Math.abs(c.value - ref) < 1e-7) continue;
-    seen.add(c.tex);
+    // One value is one statement: 6 and 30/5 must not both be offered.
+    const key = c.value.toFixed(9);
+    if (seen.has(key) || Math.abs(c.value - ref) < 1e-7) continue;
+    seen.add(key);
     const holds = greater ? c.value > ref : c.value < ref;
     const rel = c.value > ref ? "greater than" : "less than";
     pool.push(

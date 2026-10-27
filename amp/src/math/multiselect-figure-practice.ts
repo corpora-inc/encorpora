@@ -1264,7 +1264,16 @@ function stemLeafMatch(r: Random) {
     const lo = r(1, 3);
     data = Array.from({ length: n }, () => r(lo * 10, (lo + 2) * 10 + 9));
     const stems = new Set(data.map((v) => Math.floor(v / 10)));
-    if (stems.size >= 3 && stems.size <= 4 && new Set(data).size >= n - 2)
+    const ones = (stem: number) =>
+      new Set(data.filter((v) => Math.floor(v / 10) === stem).map((v) => v % 10))
+        .size;
+    // A row with two different leaves lets the listed order differ from the sorted one.
+    if (
+      stems.size >= 3 &&
+      stems.size <= 4 &&
+      new Set(data).size >= n - 2 &&
+      [...stems].some((stem) => ones(stem) >= 2)
+    )
       break;
   }
   const toRows = (values: readonly number[], sorted: boolean) => {
@@ -1345,13 +1354,26 @@ function stemLeafMatch(r: Random) {
         leaves: x.leaves.map((l) => (l + 1) % 10).sort((a, b) => a - b),
       })),
     );
-  const trues: Rows[] = [toRows(data, true), toRows(data, false)];
+  const sortedRows = toRows(data, true);
+  let listedRows = toRows(data, false);
+  if (JSON.stringify(listedRows) === JSON.stringify(sortedRows))
+    listedRows = listedRows.map((x) => ({
+      stem: x.stem,
+      leaves: [...x.leaves].reverse(),
+    }));
+  // Leaves out of order must not mark the right plots: a wrong plot is as
+  // likely to list its leaves in the order given.
+  const scatter = (rows: Rows): Rows =>
+    r(0, 1)
+      ? rows.map((x) => ({ stem: x.stem, leaves: shuffled(r, x.leaves) }))
+      : rows;
+  const trues: Rows[] = [sortedRows, listedRows];
   const kTrue = 2;
   const options: { rows: Rows }[] = shuffled(r, [
     ...trues.slice(0, kTrue).map((rows) => ({ rows })),
     ...shuffled(r, wrong)
       .slice(0, 4 - kTrue)
-      .map((rows) => ({ rows })),
+      .map((rows) => ({ rows: scatter(rows) })),
   ]);
   const panels: PanelSpec[] = options.map((o, i) => {
     const lines = o.rows.length;
