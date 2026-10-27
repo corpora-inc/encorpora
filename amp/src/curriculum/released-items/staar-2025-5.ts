@@ -223,10 +223,14 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["fractions.add-subtract-unlike"],
       demand:
         "Add two mixed-number amounts with eighths and sixteenths and subtract the sum from a total, entering the result",
-      status: "partial",
-      templateIds: ["add-fractions", "unlike-fraction-difference"],
+      status: "covered",
+      templateIds: [
+        "add-fractions",
+        "unlike-fraction-difference",
+        "fraction-total-minus-parts",
+      ],
       limitations:
-        "STAAR interaction: equation editor, 1 point. Related families add or subtract fractions without whole parts in one step; mixed numbers with unlike denominators chained across two steps are not practiced.",
+        "fraction-total-minus-parts (mixed-unlike) adds two mixed numbers with eighths and sixteenths and subtracts the sum from a total, entered as a fraction or decimal.",
     },
     {
       item: {
@@ -494,10 +498,14 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["fractions.add-subtract-unlike"],
       demand:
         "Subtract the sum of a fraction and a decimal distance from a total to find a third distance",
-      status: "partial",
-      templateIds: ["unlike-fraction-difference", "decimal-addition"],
+      status: "covered",
+      templateIds: [
+        "unlike-fraction-difference",
+        "decimal-addition",
+        "fraction-total-minus-parts",
+      ],
       limitations:
-        "Related families subtract fractions or add decimals; mixing a fraction and a decimal across a chained story is not practiced.",
+        "fraction-total-minus-parts (fraction-decimal) adds a fraction and a decimal measure and subtracts the sum from a total; choices are plain numbers, so numeric entry fits.",
     },
     {
       item: {

@@ -374,10 +374,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["measure.scale"],
       demand:
         "Use the surface-area ratio of similar prisms to find the length scale, then the other volume and the total volume",
-      status: "partial",
-      templateIds: ["similar-solid-volume"],
+      status: "covered",
+      templateIds: ["similar-solid-volume", "similar-solid-scale-chain"],
       limitations:
-        "similar-solid-volume now starts from a surface-area ratio (scale-given axis, surface-areas) and asks the other volume or surface area; it never combines two volumes into a total, which the item asks for.",
+        "similar-solid-scale-chain starts from the surface areas of two similar prisms, finds the length scale and the other volume or the total volume, and also goes from volumes to the other surface area.",
     },
     {
       section: "Math module 2",

@@ -237,10 +237,10 @@ export const mcasGrade7 = defineLedger(
       archetypeIds: ["ratio.units"],
       demand:
         "Convert meters to centimeters and divide to count bows from a ribbon",
-      status: "partial",
-      templateIds: ["unit-chain-conversion"],
+      status: "covered",
+      templateIds: ["unit-chain-conversion", "conversion-chain-story"],
       limitations:
-        "unit-chain-conversion chains stated conversion factors by entry; converting then counting whole pieces in a single story with a choice response is not practiced.",
+        "conversion-chain-story (cut-pieces) converts meters to centimeters and counts the whole pieces that can be cut; choices are plain numbers, so numeric entry fits.",
     },
     {
       section: "Session 2",

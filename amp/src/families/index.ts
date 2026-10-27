@@ -2,4 +2,15 @@
 // sorted by file name. Add a family by adding its descriptor and running the
 // script; tests/family-index.test.ts fails when this file is stale.
 export {};
+export { family as conversionChain } from "./conversion-chain";
+export { family as countRelationChain } from "./count-relation-chain";
+export { family as feeChain } from "./fee-chain";
 export { family as figureChoice } from "./figure-choice";
+export { family as linkedEquations } from "./linked-equations";
+export { family as percentChain } from "./percent-chain";
+export { family as perimeterAreaChain } from "./perimeter-area-chain";
+export { family as purchaseChain } from "./purchase-chain";
+export { family as quadraticModelChain } from "./quadratic-model-chain";
+export { family as shareRemainder } from "./share-remainder";
+export { family as similarSolidChain } from "./similar-solid-chain";
+export { family as totalMinusParts } from "./total-minus-parts";

@@ -166,10 +166,10 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["percent.of"],
       demand:
         "Find how many more commuters drive than bike from percents in a circle graph of one hundred fifty people",
-      status: "partial",
-      templateIds: ["percent-of"],
+      status: "covered",
+      templateIds: ["percent-of", "share-remainder-percent"],
       limitations:
-        "percent-of finds one percent of a quantity by entry; finding the bicycle share by subtracting the other shares from a circle graph and then the difference is not practiced.",
+        "share-remainder-percent (difference-of-shares) finds the remaining share from three stated percents of a total up to 500 and the difference of two group counts; the circle graph is replaced by the written percents.",
     },
     {
       item: { number: "12", page: "rationale PDF p.12" },
@@ -318,10 +318,14 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["fractions.multiply-whole"],
       demand:
         "Find the snow days from the whole-number fractions of ninety days that are sunny and rainy",
-      status: "partial",
-      templateIds: ["fraction-of-quantity", "staar-multistep-stories"],
+      status: "covered",
+      templateIds: [
+        "fraction-of-quantity",
+        "staar-multistep-stories",
+        "share-remainder-fractions",
+      ],
       limitations:
-        "fraction-of-quantity takes a fraction of one quantity; staar-multistep-stories chains whole-number stories; finding two fractions and subtracting them from the whole is not practiced.",
+        "share-remainder-fractions (remaining-part) takes two whole-number fractions of a whole up to 120 and subtracts both parts from the whole; choices are plain numbers, so numeric entry fits.",
     },
     {
       item: { number: "25", page: "rationale PDF p.25" },
