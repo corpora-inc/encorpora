@@ -97,13 +97,15 @@ All 106 questions of the June 2026 Regents Examinations in Algebra I (35), Geome
 
 | Exam | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: |
-| Algebra I | 10 (28.6%) | 24 (68.6%) | 1 (2.9%) |
-| Geometry | 16 (45.7%) | 19 (54.3%) | 0 (0%) |
-| Algebra II | 6 (16.7%) | 30 (83.3%) | 0 (0%) |
+| Algebra I | 26 (74.3%) | 9 (25.7%) | 0 (0%) |
+| Geometry | 24 (68.6%) | 11 (31.4%) | 0 (0%) |
+| Algebra II | 19 (52.8%) | 17 (47.2%) | 0 (0%) |
 
-Part I multiple choice is 72 of 106 items and 27 of them are covered. The 34 constructed-response items are the main gap: 6 require a drawn graph (graph/drag) and 18 a written expression, construction, proof or explanation (constructed). Structured work covers two constructed items whose work is a sequence of typed lines (a grouped linear inequality and the triangle area formula solved for its height); the rest need constructions, written explanations or tasks no structured family practices yet. The graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. The remaining 10 constructed-response items ask for one number and are numeric, but the rating guides also credit shown work, which AMP does not score, so five are covered. One item has no related family: graphing an absolute-value function.
+Of the 106 items, 72 are multiple choice, 10 numeric, 6 graph/drag and 18 constructed response. 67 of the 72 multiple-choice items are covered. The five that are not are Algebra II items whose form differs from the practice: the radian measure of a drawn angle (13), a circle centered off the origin with an oblique line (8), a rational equation whose denominators have a leading coefficient of 4 (11), an absolute value set equal to a nonlinear function (20) and a decay factor given as a calculator decimal (24).
 
-The largest remaining gaps among multiple-choice items are the Algebra I and Algebra II families that stop short on one feature: decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations, fractional ratios in series, a circle with a line, and graph-reading items that compare a plotted curve with a rule. Parallelogram and rhombus conditions, factoring with a common factor or a nonmonic square, density and volume chains, exponent rules, zeros of nonmonic factors, polynomials built from their structure and growth rates read from exponential bases are now practiced.
+None of the 10 numeric items is covered. Their rating guides award credit for shown work, and AMP checks only the final answer, so each is partial ("Final answer practiced; shown-work credit not assessed") until a structured-work-v1 family practices the shown work. Structured work covers two constructed items whose work is a sequence of typed lines (a grouped linear inequality and the triangle area formula solved for its height). The other 16 constructed items need constructions, written explanations or tasks no structured family practices yet, and the 6 graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. One item has no related family: graphing an absolute-value function.
+
+Decimal coefficients, a positive leading coefficient with irrational roots, two denominators or two radicals, a generic f(x) in transformations, fractional ratios in series, a circle with a line, and graph-reading items that compare a plotted curve with a rule are practiced, along with the dilation, rigid-motion, parallel-segment and altitude items of Geometry, normal-distribution probabilities, and choosing among drawn graphs for functions, inequalities and logarithms.
 
 Each exam still added 8 to 11 archetypes that earlier sources had not used and 58 to 77 percent of its questions fell on archetypes already seen, so the high-school task set is not saturated; the SAT, STAAR and MCAS sources saw few of these tasks. Fourteen archetypes were minted for tasks no existing archetype named.
 
@@ -114,11 +116,11 @@ All 107 questions of the January 2026 Regents Examinations in Algebra I (35), Ge
 
 | Exam | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: |
-| Algebra I | 3 (8.6%) | 31 (88.6%) | 1 (2.9%) |
-| Geometry | 2 (5.7%) | 32 (91.4%) | 1 (2.9%) |
-| Algebra II | 2 (5.4%) | 34 (91.9%) | 1 (2.7%) |
+| Algebra I | 24 (68.6%) | 11 (31.4%) | 0 (0%) |
+| Geometry | 24 (68.6%) | 11 (31.4%) | 0 (0%) |
+| Algebra II | 18 (48.6%) | 19 (51.4%) | 0 (0%) |
 
-Of the 107 questions, 72 are multiple choice, 10 numeric, 6 graph and 19 constructed response. No question is covered unless a family practices the same task in a protocol that takes the response; 6 of 72 choice questions and 1 of 10 numeric questions are covered. Only three questions have no related practice: building a polynomial from its degree, leading coefficient and constant term, the centroid of a triangle, and a normal-distribution probability between two values.
+Of the 107 questions, 72 are multiple choice, 10 numeric, 6 graph and 19 constructed response. No question is covered unless a family practices the same task in a protocol that takes the response; 65 of 72 choice questions and 1 of 19 constructed questions are covered, and none of the 10 numeric questions, whose rating guides award shown-work credit ("Final answer practiced; shown-work credit not assessed") until a structured-work-v1 family practices the work; every question has related practice, including the three that had none: building a polynomial from its degree, leading coefficient and constant term, the centroid of a triangle, and a normal-distribution probability between two values.
 
 The January exams are far closer to saturation than the June exams. Each added 2, 4 and 5 archetypes that no earlier source had used, against 8 to 11 for June, and 87 to 94 percent of their questions fell on archetypes already seen, against 58 to 77 percent for June. Two archetypes were minted (the centroid and the graph of a logarithm). Of the 98 archetypes the three January exams use, 69 appear in the June exams. The 11 first used in January are narrow tasks: Algebra I added graphical solution of two functions and interpreting a fitted model; Geometry added identifying and placing images under rigid motions, whole trips for a volume, quadrilateral claims from coordinates and the centroid; Algebra II added sinusoid models, parabola focus and directrix, trigonometric identities, simulation judgments and the graph of a logarithm.
 

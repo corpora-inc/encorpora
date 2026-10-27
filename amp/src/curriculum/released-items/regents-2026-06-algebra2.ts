@@ -64,10 +64,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       standards: ["S-CP.A"],
       archetypeIds: ["probability.event-sets"],
       demand: "Write the complement of a set of candidates as a set",
-      status: "partial",
-      templateIds: ["event-set-count"],
-      limitations:
-        "The family counts outcomes in unions, intersections and complements; listing the members of a complement is not practiced.",
+      status: "covered",
+      templateIds: ["event-set-count", "event-complement-set"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -96,10 +95,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["expression.polynomial-division"],
       demand:
         "Divide a cubic by x + 1 and write the quotient with the remainder as a fraction",
-      status: "partial",
-      templateIds: ["polynomial-quotient"],
-      limitations:
-        "Division is practiced with the quotient and remainder as a pair; the combined quotient plus remainder over the divisor is not.",
+      status: "covered",
+      templateIds: ["polynomial-quotient", "cubic-quotient-remainder"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -112,10 +110,13 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["expression.radical", "expression.exponent-rules"],
       demand:
         "Rewrite a product of a cube root and a coefficient power with a rational exponent",
-      status: "partial",
-      templateIds: ["symbolic-rational-exponent", "rg-rational-exponent-forms"],
-      limitations:
-        "The families multiply a coefficient by a power and add exponents; taking the cube root of a perfect-cube coefficient inside the radical, writing a radicand power as a fractional exponent, and adding it to an integer power of the same base is not practiced.",
+      status: "covered",
+      templateIds: [
+        "symbolic-rational-exponent",
+        "rg-rational-exponent-forms",
+        "rational-exponent-product",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -162,9 +163,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["nonlinear.system"],
       demand: "Solve a system of a circle equation and a line",
       status: "partial",
-      templateIds: ["nonlinear-system-solve"],
+      templateIds: ["nonlinear-system-solve", "circle-line-system"],
       limitations:
-        "The system family uses a line and a parabola with integer intersections; a circle is not practiced.",
+        "The practice circle is centered at the origin with an oblique line; this item's circle is centered at (5, 0) and the answer is read as points.",
     },
     {
       section: "Part I",
@@ -177,10 +178,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["sequence.series-sum"],
       demand:
         "Find the sum of the first five terms of a geometric sequence with ratio three fourths",
-      status: "partial",
-      templateIds: ["geometric-series-sum"],
-      limitations:
-        "Sampled sums use ratios 2, 3 and one half with integer sums; a fractional ratio with a non-integer sum is not practiced.",
+      status: "covered",
+      templateIds: ["geometric-series-sum", "geometric-series-total"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -193,10 +193,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["distribution.normal"],
       demand:
         "Estimate a count above a value using a normal model and a calculator",
-      status: "partial",
-      templateIds: ["normal-model-rule"],
-      limitations:
-        "The family uses the 68-95-99.7 rule at whole standard deviations; areas at other z-scores need technology.",
+      status: "covered",
+      templateIds: ["normal-model-rule", "normal-probability"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -210,9 +209,13 @@ export const regentsAlgebra2June2026 = defineLedger(
       demand:
         "Solve a rational equation with two denominators and reject an excluded value",
       status: "partial",
-      templateIds: ["rational-extraneous-single", "rational-equation-check"],
+      templateIds: [
+        "rational-extraneous-single",
+        "rational-equation-check",
+        "rational-two-denominators",
+      ],
       limitations:
-        "Families have one variable denominator; combining two denominators with a candidate check is not practiced.",
+        "Practice denominators are monic and the right side has both denominators; this item has a 4x - 3 denominator, a right side over only that denominator and an excluded value that is a fraction.",
     },
     {
       section: "Part I",
@@ -225,10 +228,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["nonlinear.features"],
       demand:
         "Pick the true statement about a graphed cubic's end behavior, root multiplicity and intervals",
-      status: "partial",
-      templateIds: ["polynomial-behavior-description"],
-      limitations:
-        "The family reads end behavior and crossings from a factored rule; reading them from a graph with intervals of increase is not practiced.",
+      status: "covered",
+      templateIds: ["polynomial-behavior-description", "cubic-graph-statement"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -257,10 +259,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["trig.sinusoid-features"],
       demand:
         "Compare a graphed sinusoid with a sine rule by maximum and frequency",
-      status: "partial",
-      templateIds: ["sinusoid-parameters"],
-      limitations:
-        "The family reads parameters from one rule; comparing a graph with a rule is not practiced.",
+      status: "covered",
+      templateIds: ["sinusoid-parameters", "sinusoid-compare-rule"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -306,10 +307,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       standards: ["F-BF.A"],
       archetypeIds: ["expression.polynomial"],
       demand: "Multiply two trinomials and combine like terms",
-      status: "partial",
-      templateIds: ["polynomial-multiplication"],
-      limitations:
-        "Sampled products reach a binomial times a trinomial; a trinomial times a trinomial is not practiced.",
+      status: "covered",
+      templateIds: ["polynomial-multiplication", "trinomial-product"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -336,10 +336,13 @@ export const regentsAlgebra2June2026 = defineLedger(
       standards: ["F-BF.B"],
       archetypeIds: ["function.inverse"],
       demand: "Write the inverse of an exponential function",
-      status: "partial",
-      templateIds: ["inverse-expression", "log-exponential-form"],
-      limitations:
-        "Inverses are practiced for linear and restricted quadratic functions, and logarithms are translated separately; the inverse of 3^x is not.",
+      status: "covered",
+      templateIds: [
+        "inverse-expression",
+        "log-exponential-form",
+        "inverse-exponential-root",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -356,9 +359,10 @@ export const regentsAlgebra2June2026 = defineLedger(
       templateIds: [
         "absolute-value-affine-equation",
         "absolute-value-transformed-equation",
+        "absolute-value-linear",
       ],
       limitations:
-        "Equations isolate one absolute-value expression with a constant; solving against a second function with several solution sets is not practiced.",
+        "The second function here is not linear, so the equation can have three solutions; practice pairs an absolute value with a linear function and has at most two.",
     },
     {
       section: "Part I",
@@ -371,10 +375,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["complex.arithmetic"],
       demand:
         "Simplify a sum of terms with variable coefficients and powers of i",
-      status: "partial",
-      templateIds: ["complex-parts"],
-      limitations:
-        "The family simplifies single powers of i and writes a+bi; combining several terms with symbolic coefficients is not practiced.",
+      status: "covered",
+      templateIds: ["complex-parts", "powers-of-i-sum"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -386,10 +389,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       standards: ["F-BF.B"],
       archetypeIds: ["function.parity"],
       demand: "Choose the parameters that make a sine function odd",
-      status: "partial",
-      templateIds: ["fl-even-odd-classify"],
-      limitations:
-        "The family classifies polynomial functions as even, odd or neither by substituting -x; sine with a parameter in the argument and a vertical shift, and choosing parameters that make it odd, are not practiced.",
+      status: "covered",
+      templateIds: ["fl-even-odd-classify", "odd-sine-parameters"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -402,10 +404,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["logarithm.solve"],
       demand:
         "Solve a base-10 exponential equation with a coefficient parameter for the variable",
-      status: "partial",
-      templateIds: ["exponential-log-solution"],
-      limitations:
-        "The family chooses the logarithmic solution of equations with base e and numeric constants; a symbolic coefficient divided out first is not practiced.",
+      status: "covered",
+      templateIds: ["exponential-log-solution", "exponential-parameter-log"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -422,9 +423,10 @@ export const regentsAlgebra2June2026 = defineLedger(
         "exponential-model-rule",
         "exponential-time-scale",
         "rg-exponential-base-rate",
+        "growth-model-rewrite",
       ],
       limitations:
-        "The number-domain axis (decimal-periods) converts a decimal period such as t/12.4 to one yearly factor rounded to four places and chooses among decimal bases; the half-life is not yet worded in a context with hours.",
+        "The choices give the hourly decay factor as a calculator value; practice keeps the exact half-life form (1/2)^(t/h).",
     },
     {
       section: "Part II",
@@ -438,9 +440,12 @@ export const regentsAlgebra2June2026 = defineLedger(
       demand:
         "Find the third term of a sequence defined by a nonlinear recursive rule",
       status: "partial",
-      templateIds: ["series-recursion", "geometric-sequence-rule"],
-      limitations:
-        "Families compute terms from linear recursion or are choice-only; a recursion that squares the prior term and adds a constant is not practiced. The rating guide credits shown work, which AMP does not score.",
+      templateIds: [
+        "series-recursion",
+        "geometric-sequence-rule",
+        "nonlinear-recursion-term",
+      ],
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -467,9 +472,9 @@ export const regentsAlgebra2June2026 = defineLedger(
       standards: ["A-APR.B"],
       archetypeIds: ["expression.polynomial-division"],
       demand: "Find the remainder when a cubic is divided by x - 2",
-      status: "covered",
+      status: "partial",
       templateIds: ["remainder-theorem"],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -595,9 +600,12 @@ export const regentsAlgebra2June2026 = defineLedger(
       demand:
         "Solve an equation with two square-root terms and reject any extraneous value",
       status: "partial",
-      templateIds: ["sat-entry-radical-equation", "radical-equation-shifted"],
-      limitations:
-        "Families solve equations with one radical; two radicals need isolating and squaring twice. The rating guide credits shown work, which AMP does not score.",
+      templateIds: [
+        "sat-entry-radical-equation",
+        "radical-equation-shifted",
+        "two-radical-equation",
+      ],
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part IV",

@@ -46,10 +46,13 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["sequence.arithmetic"],
       demand:
         "Find a distant term of an arithmetic sequence given its first four terms",
-      status: "partial",
-      templateIds: ["arithmetic-term", "arithmetic-sequence-as-function"],
-      limitations:
-        "arithmetic-term gives the first term and difference and asks terms 3 and 7 by entry; the sequence-as-function family evaluates stated rules. A term near 20 read from listed terms is not practiced.",
+      status: "covered",
+      templateIds: [
+        "arithmetic-term",
+        "arithmetic-sequence-as-function",
+        "arithmetic-distant-term",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -62,13 +65,13 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["linear.solve"],
       demand:
         "Solve a linear equation with a decimal coefficient and the variable on both sides",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "both-sides-linear-equation",
         "rational-coefficient-equation",
+        "decimal-both-sides-equation",
       ],
-      limitations:
-        "Variables on both sides and fractional coefficients are practiced separately with integer constants; a decimal coefficient with variables on both sides is not.",
+      limitations: "",
     },
     {
       section: "Part I",
@@ -96,10 +99,13 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["function.identify"],
       demand:
         "Choose the missing input that keeps a set of ordered pairs a function",
-      status: "partial",
-      templateIds: ["relation-function-choice", "relation-point-removal"],
-      limitations:
-        "Families choose a relation that is a function or point removals that repair one; finding a value to complete a relation is not practiced.",
+      status: "covered",
+      templateIds: [
+        "relation-function-choice",
+        "relation-point-removal",
+        "function-missing-input",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -161,10 +167,13 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["bivariate.scatter", "study.scope"],
       demand:
         "Classify the correlation sign and causal status of a described relationship",
-      status: "partial",
-      templateIds: ["scatter-association-choice", "causal-claim-choice"],
-      limitations:
-        "Families classify scatter plots and name lurking variables or reversed cause; deciding sign and causation together from a verbal relationship is not practiced.",
+      status: "covered",
+      templateIds: [
+        "scatter-association-choice",
+        "causal-claim-choice",
+        "correlation-causation-choice",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -177,10 +186,13 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["linear.context", "system.context"],
       demand:
         "Choose the one-variable equation for two unknowns with a known total and a known cost",
-      status: "partial",
-      templateIds: ["two-step-equation-model", "system-model-value"],
-      limitations:
-        "Equation choice covers one unknown with a fixed fee and rate; the system family solves two unknowns by entry. Substituting a total to form one equation is not practiced.",
+      status: "covered",
+      templateIds: [
+        "two-step-equation-model",
+        "system-model-value",
+        "total-and-cost-equation",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -222,10 +234,9 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["exponential.compare-linear"],
       demand:
         "Find the first whole input at which an exponential function exceeds a linear one given both rules",
-      status: "partial",
-      templateIds: ["exponential-overtakes"],
-      limitations:
-        "The family reads graphs, tables and offers; two stated formulas with a decimal base are not practiced.",
+      status: "covered",
+      templateIds: ["exponential-overtakes", "exponential-passes-linear"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -237,10 +248,13 @@ export const regentsAlgebra1June2026 = defineLedger(
       standards: ["A-REI.D"],
       archetypeIds: ["function.rule", "line.slope-equation"],
       demand: "Choose the point-slope equation of the line through two points",
-      status: "partial",
-      templateIds: ["linear-model-equation", "graph-equation-choice"],
-      limitations:
-        "Families choose slope-intercept models and graph equations; point-slope form from two points is not practiced.",
+      status: "covered",
+      templateIds: [
+        "linear-model-equation",
+        "graph-equation-choice",
+        "point-slope-two-points",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -253,10 +267,13 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["probability.conditional"],
       demand:
         "Find a conditional percent from a two-way table, rounded to the nearest percent",
-      status: "partial",
-      templateIds: ["relative-frequency-percent", "two-way-row-percent"],
-      limitations:
-        "Percent answers in these families are exact; rounding a non-terminating row percent is not practiced.",
+      status: "covered",
+      templateIds: [
+        "relative-frequency-percent",
+        "two-way-row-percent",
+        "two-way-share",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -284,10 +301,9 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["nonlinear.transform"],
       demand:
         "Write the transformed function after a shift right and a shift up, in function notation",
-      status: "partial",
-      templateIds: ["transform-equation"],
-      limitations:
-        "Transformation families name parent curves such as |x| and x^3; a generic f(x - h) + k is not practiced.",
+      status: "covered",
+      templateIds: ["transform-equation", "shift-function-notation"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -300,10 +316,9 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["linear.step-justification"],
       demand:
         "Name the property that justifies adding the same value to both sides while completing the square",
-      status: "partial",
-      templateIds: ["equation-step-property"],
-      limitations:
-        "Step justification is practiced on linear equations; a step in solving a quadratic is not.",
+      status: "covered",
+      templateIds: ["equation-step-property", "complete-square-step-property"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -315,10 +330,13 @@ export const regentsAlgebra1June2026 = defineLedger(
       standards: ["S-ID.A"],
       archetypeIds: ["univariate.quartiles"],
       demand: "Find the upper quartile of a listed data set of ten values",
-      status: "partial",
-      templateIds: ["interquartile-range-data", "dot-plot-iqr"],
-      limitations:
-        "Families subtract quartiles to give the interquartile range; stating the upper quartile alone, with repeated values, is not practiced.",
+      status: "covered",
+      templateIds: [
+        "interquartile-range-data",
+        "dot-plot-iqr",
+        "quartile-list",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -379,10 +397,12 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["nonlinear.quadratic"],
       demand:
         "Choose the quadratic-formula solutions of a quadratic with a positive leading coefficient",
-      status: "partial",
-      templateIds: ["quadratic-irrational-solutions"],
-      limitations:
-        "Sampled equations all have negative leading coefficients; positive nonmonic equations with irrational roots are not practiced.",
+      status: "covered",
+      templateIds: [
+        "quadratic-irrational-solutions",
+        "quadratic-formula-positive",
+      ],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -395,10 +415,9 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["nonlinear.features"],
       demand:
         "Pick the quadratic function whose axis of symmetry is x = -4 from four rules",
-      status: "partial",
-      templateIds: ["parabola-axis"],
-      limitations:
-        "The family finds one parabola's axis by entry; choosing among four rules whose axes differ is not practiced.",
+      status: "covered",
+      templateIds: ["parabola-axis", "parabola-axis-rule"],
+      limitations: "",
     },
     {
       section: "Part I",
@@ -441,10 +460,10 @@ export const regentsAlgebra1June2026 = defineLedger(
       standards: ["F-IF.C"],
       archetypeIds: ["graph.draw-nonlinear"],
       demand: "Graph an absolute-value function over a stated domain",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["graph-absolute-value-points"],
       limitations:
-        "The point-plot protocol places lattice points on a line; drawing a curve from its rule over a domain is not supported.",
+        "graph-absolute-value-points places three lattice points of an absolute-value function and accepts any three. It does not require the endpoints of a stated domain or the whole V drawn between them, which the rating guide credits.",
     },
     {
       section: "Part II",
@@ -489,9 +508,8 @@ export const regentsAlgebra1June2026 = defineLedger(
       demand:
         "Find the average rate of change of a population table over four decades, rounded to a whole number",
       status: "partial",
-      templateIds: ["average-rate-display"],
-      limitations:
-        "The family finds exact rates over short intervals of small tables; seven-digit data and rounding to an integer are not practiced. The rating guide credits shown work, which AMP does not score.",
+      templateIds: ["average-rate-display", "average-rate-table-rounded"],
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
