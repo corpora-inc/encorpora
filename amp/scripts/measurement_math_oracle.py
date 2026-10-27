@@ -13,6 +13,9 @@ SUPPORTED = {
     'rectangle-two-constraints-choice', 'rectangle-existence-choice', 'whole-pack-ribbon-choice',
 }
 SCALES = {'mm': Fraction(1, 10), 'cm': Fraction(1), 'm': Fraction(100), 'km': Fraction(100000)}
+# Capacity and mass renames, derived from the displayed units: 1 L = 1000 mL, 1 kg = 1000 g.
+QUANTITY_SCALES = {'mL': Fraction(1), 'L': Fraction(1000), 'g': Fraction(1), 'kg': Fraction(1000)}
+QUANTITY_KIND = {'mL': 'capacity', 'L': 'capacity', 'g': 'mass', 'kg': 'mass'}
 
 
 def require(condition, message):
@@ -131,6 +134,14 @@ def solve(public):
         answer = 'They are equal' if values[0] == values[1] else ('A' if values[0] < values[1] else 'B')
         return selected(public, lambda label: label == answer)
     if family in {'metric-length-rename', 'metric-length-reverse'}:
+        quantity = re.fullmatch(r'Write (\d+) (mL|L|g|kg) in (mL|L|g|kg)\.', prompt)
+        if quantity:
+            amount, source, target = quantity.groups()
+            require(QUANTITY_KIND[source] == QUANTITY_KIND[target] and source != target, 'Capacity or mass pair required')
+            require((QUANTITY_SCALES[source] > QUANTITY_SCALES[target]) == (family == 'metric-length-rename'), 'Conversion direction mismatch')
+            label = public['response'].get('label', '')
+            require(label.endswith(' in ' + target) and label.startswith(QUANTITY_KIND[source].capitalize()), 'Response label disagrees with the unit pair')
+            return int(amount)*QUANTITY_SCALES[source]/QUANTITY_SCALES[target]
         amount, source, target = match(r'Write (\d+) (mm|cm|m|km) in (mm|cm|m|km)\.', prompt)
         require((SCALES[source] > SCALES[target]) == (family == 'metric-length-rename'), 'Conversion direction mismatch')
         require(source != target, 'Identity conversion')
@@ -185,6 +196,15 @@ def self_test():
     p['prompt']=p['prompt'].replace('7 m','6 m');require(solve(p)=='2','Exact pack boundary tie')
     p={'templateId':'metric-length-reverse','prompt':'Write 1 cm in m.','response':{'kind':'fraction'}}
     require(solve(p)==Fraction(1,100),'Exact fractional reverse conversion')
+    p={'templateId':'metric-length-reverse','prompt':'Write 407 mL in L.','response':{'kind':'fraction','label':'Capacity in L'}}
+    require(solve(p)==Fraction(407,1000),'Capacity reverse conversion')
+    p={'templateId':'metric-length-rename','prompt':'Write 5 L in mL.','response':{'kind':'fraction','label':'Capacity in mL'}}
+    require(solve(p)==5000,'Capacity rename conversion')
+    for bad in ('Write 5 L in g.','Write 5 mL in L.'):
+        p={'templateId':'metric-length-rename','prompt':bad,'response':{'kind':'fraction','label':'Capacity in mL'}}
+        try: solve(p)
+        except ValueError: pass
+        else: raise AssertionError('Mixed or reversed quantity accepted: '+bad)
     p={'templateId':'rectangle-missing-border-side','prompt':'This rectangle has perimeter 10 cm. Find its missing side in cm.','figure':{'kind':'measure-rectangle','width':{'value':6,'unit':'cm'},'height':None}}
     try: solve(p)
     except ValueError: pass

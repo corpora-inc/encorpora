@@ -277,6 +277,12 @@ function sysModel(
     throw new Error("Need three retries");
   if (wrong.some((w) => targets[ax.goal](relation(first, w))))
     throw new Error("Need three retries");
+  // Two choices must never be the same equation written twice.
+  const all = [correct, ...wrong];
+  for (let i = 0; i < all.length; i++)
+    for (let j = 0; j < i; j++)
+      if (relation(all[i]!, all[j]!) === "same")
+        throw new Error("Need three retries");
   return { goal: ax.goal, given: ax.given, first, m, k, correct, wrong };
 }
 
@@ -599,7 +605,7 @@ export const tableStandardFormFamily = chainFamily({
       dy = diff(t.ys[1]!, t.ys[0]!);
     const slopeSteps = [
       `Use the actual changes in the table, because its inputs are not one unit apart. From the first two columns, $x$ changes by ${qt(dx)} and $y$ changes by ${qt(dy)}, so the slope is $${qt(dy)} \\div ${dx.n < 0 || dx.d !== 1 ? `(${qt(dx)})` : qt(dx)} = ${qt(t.m)}$.`,
-      `The input 0 is not in the table, so use a point to find the constant: $y = ${qt(t.m)}x + b$ at $(${qt(t.xs[0]!)}, ${qt(t.ys[0]!)})$ gives $b = ${qt(t.k)}$.`,
+      `${t.xs.some((x) => x.n === 0) ? "The input 0 is in the table, but use the first column to find the constant" : "The input 0 is not in the table, so use a point to find the constant"}: $y = ${qt(t.m)}x + b$ at $(${qt(t.xs[0]!)}, ${qt(t.ys[0]!)})$ gives $b = ${qt(t.k)}$.`,
     ];
     if (t.ask === "standard-form") {
       const row = standardRow(t.m, t.k);

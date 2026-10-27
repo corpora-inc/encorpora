@@ -370,7 +370,7 @@ const massCustomary: Thing[] = [
   { name: "a loaf of bread", value: 16, measure: [1, "pounds", "pound"] },
   { name: "a bowling ball", value: 224, measure: [14, "pounds", "pound"] },
   { name: "a bicycle", value: 480, measure: [30, "pounds", "pound"] },
-  { name: "a small car", value: 64000, measure: [2, "tons", "ton"] },
+  { name: "a small car", value: 32000, measure: [1, "tons", "ton"] },
 ];
 const capacityCustomary: Thing[] = [
   { name: "a teaspoon", value: 1, measure: [1, "teaspoons", "teaspoon"] },
@@ -480,8 +480,8 @@ interface Factor {
   /** Smaller units in one larger unit, to two or three digits. */
   rate: number;
   rateText: string;
-  items: string[];
-  range: [number, number];
+  /** [name, least, greatest]: a believable size of the item in the larger unit. */
+  items: [string, number, number][];
 }
 const factors: Factor[] = [
   {
@@ -489,32 +489,44 @@ const factors: Factor[] = [
     small: ["foot", "feet"],
     rate: 3.28,
     rateText: "3.28",
-    items: ["a tree", "a flagpole", "a climbing wall"],
-    range: [10, 40],
+    items: [
+      ["a tree", 6, 25],
+      ["a flagpole", 6, 30],
+      ["a climbing wall", 8, 30],
+    ],
   },
   {
     big: ["kilogram", "kilograms"],
     small: ["pound", "pounds"],
     rate: 2.2,
     rateText: "2.2",
-    items: ["a bag of potatoes", "a suitcase", "a box of books"],
-    range: [11, 55],
+    items: [
+      ["a bag of potatoes", 2, 10],
+      ["a suitcase", 8, 23],
+      ["a box of books", 5, 20],
+    ],
   },
   {
     big: ["inch", "inches"],
     small: ["centimeter", "centimeters"],
     rate: 2.54,
     rateText: "2.54",
-    items: ["a ribbon", "a pencil", "a strip of paper"],
-    range: [10, 60],
+    items: [
+      ["a ribbon", 6, 36],
+      ["a pencil", 5, 8],
+      ["a strip of paper", 6, 24],
+    ],
   },
   {
     big: ["mile", "miles"],
     small: ["kilometer", "kilometers"],
     rate: 1.6,
     rateText: "1.6",
-    items: ["a bike path", "a hiking trail", "a race course"],
-    range: [8, 40],
+    items: [
+      ["a bike path", 3, 30],
+      ["a hiking trail", 2, 20],
+      ["a race course", 3, 26],
+    ],
   },
 ];
 const factorAxes = {
@@ -535,11 +547,16 @@ function factorModel(
   a: { direction: FactorModel["direction"] },
 ): FactorModel {
   const factor = pick(r, factors);
+  const [item, least, greatest] = pick(r, factor.items);
+  // The believable size is stated in the larger unit; the smaller unit has more of them.
+  const toSmaller = a.direction === "to-bigger-unit";
   return {
     direction: a.direction,
     factor,
-    item: pick(r, factor.items),
-    amount: r(factor.range[0], factor.range[1]),
+    item,
+    amount: toSmaller
+      ? r(Math.ceil(least * factor.rate), Math.floor(greatest * factor.rate))
+      : r(least, greatest),
   };
 }
 const tenth = (hundredths: number) =>
@@ -559,9 +576,9 @@ export const approximateUnitFactorFamily = chainFamily({
     // the answer is in the larger unit (e.g. meters).
     const given = toBig ? f.small : f.big,
       asked = toBig ? f.big : f.small;
-    const exact100 = toBig
-      ? Math.round((m.amount * 10000) / rate100)
-      : m.amount * rate100;
+    // Unrounded hundredths: rounding twice (to hundredths, then to tenths)
+    // would turn 21.646 into 21.65 and then 21.7 instead of 21.6.
+    const exact100 = toBig ? (m.amount * 10000) / rate100 : m.amount * rate100;
     const label = (hundredths: number) => `${tenth(hundredths)} ${asked[1]}`;
     const wrongValues: [number, string][] = toBig
       ? [

@@ -191,3 +191,31 @@ test("table-standard-form: every inputs and ask value is reachable", () => {
     for (const ask of ["standard-form", "shifted-rule"])
       assert.ok(seen.has(`${inputs}-${ask}`), `${inputs}-${ask}`);
 });
+
+test("system-second-equation: no two choices are the same line", () => {
+  for (const p of sweep("system-second-equation")) {
+    const lines = options(p).map((o) => parseStandard(mathSpans(o.label)[0]!));
+    for (let i = 0; i < lines.length; i++)
+      for (let j = 0; j < i; j++) {
+        const a = lines[i]!,
+          b = lines[j]!;
+        const same =
+          a.a * b.b - b.a * a.b === 0 &&
+          a.a * b.c - b.a * a.c === 0 &&
+          a.b * b.c - b.b * a.c === 0;
+        assert.ok(!same, `${p.public.seed}: choices ${i} and ${j}`);
+      }
+  }
+});
+
+test("table-standard-form: the working only says input 0 is missing when the table has no 0", () => {
+  for (const p of sweep("table-standard-form")) {
+    const figure = p.public.figure;
+    const text = JSON.stringify(figure);
+    const hasZero = /"x","(?:[^"]*",")*0"/.test(text);
+    const claimsMissing = p.explanation.some((s) =>
+      s.includes("The input 0 is not in the table"),
+    );
+    assert.equal(claimsMissing, !hasZero, p.public.seed);
+  }
+});

@@ -37,10 +37,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["data.graph-read"],
       demand:
         "Read a line graph of percents by category year and name the category with the least value",
-      status: "covered",
+      status: "partial",
       templateIds: ["line-graph-reader"],
       limitations:
-        "line-graph-reader's category variant draws four categories as separate lines over five weeks and asks which has the greatest or least percent at a stated week; times are weeks, not years.",
+        "line-graph-reader's category variant draws four categories as separate lines over five weeks and asks which has the greatest or least percent at a stated week; this item's times are years, not weeks, so a year-labelled axis is not practiced.",
     },
     {
       section: "Math module 1",

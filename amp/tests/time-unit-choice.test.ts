@@ -157,8 +157,8 @@ test("approximate-unit-factor: the keyed estimate is the exact conversion rounde
     // Work in integer hundredths of the rate.
     const rate100 = Math.round(r * 100);
     const toBig = given === small;
-    // Exact value in hundredths, then to the nearest tenth (half up).
-    const hundredths = toBig ? Math.round((a * 10000) / rate100) : a * rate100;
+    // Exact value in hundredths (never rounded twice), then to the nearest tenth (half up).
+    const hundredths = toBig ? (a * 10000) / rate100 : a * rate100;
     const expected = (Math.round(hundredths / 10) / 10).toFixed(1);
     const want = label(p).match(/^([\d.]+) /)![1];
     assert.equal(want, expected, p.public.seed);

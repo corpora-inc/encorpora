@@ -399,7 +399,7 @@ export const satPractice4 = defineLedger(
       status: "covered",
       templateIds: ["line-graph-reader"],
       limitations:
-        "line-graph-reader draws a line graph over days, weeks or hours and asks on which time the value is greatest or least, with the largest-rise interval as a distractor.",
+        "line-graph-reader draws a line graph over days, weeks or hours and asks on which time the value is greatest or least, with the end of the interval of largest change as a distractor.",
     },
     {
       section: "Math module 2",
