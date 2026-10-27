@@ -4,7 +4,7 @@ import { randomUUID } from "node:crypto";
 import { migrate } from "../scripts/migrate.js";
 import { PostgresRepository } from "../src/server/repository.js";
 import { buildApp } from "../src/server/app.js";
-import { generateProblem } from "../src/math/engine.js";
+import { generateProblem, templates } from "../src/math/engine.js";
 const url = process.env.AMP_TEST_DATABASE_URL;
 test(
   "choice attempts validate owned immutable options, replay once and expose only selected feedback",
@@ -189,6 +189,19 @@ test(
           });
         }
       });
+      const choiceOnlySkill = generateProblem(
+        "relation-function-choice",
+        "compatibility-skill",
+      ).public.skillId;
+      assert.ok(
+        templates
+          .filter((template) => template.skillId === choiceOnlySkill)
+          .every(
+            (template) =>
+              template.requiredResponseCapability === "single-choice-v1",
+          ),
+        "Fixture skill has only choice responses",
+      );
       const legacy = await app.inject({
         method: "POST",
         url: `/api/v1/learners/${learner.id}/batches`,
@@ -205,8 +218,8 @@ test(
         modern
           .json()
           .problems.some(
-            (p: { templateId: string }) =>
-              p.templateId === "relation-function-choice",
+            (p: { skillId: string; response: { kind: string } }) =>
+              p.skillId === choiceOnlySkill && p.response.kind === "choice",
           ),
         "Positive control: due choice-only skill is eligible for a capable client",
       );
