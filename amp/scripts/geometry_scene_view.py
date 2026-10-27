@@ -23,6 +23,8 @@ def figure_view(figure):
             s = e['solid']
             if s['form'] == 'cubes':
                 return {'kind': 'cube-prism', 'length': s['length'], 'width': s['width'], 'height': s['height']}
+            if s['form'] == 'steps':
+                return {'kind': 'cube-steps', 'width': s['width'], 'columns': s['columns']}
             if s['form'] == 'box':
                 return {'kind': 'box-prism', 'length': s['length'], 'width': s['width'], 'height': s['height']}
             return {'kind': 'composite-prism', 'width': s['width'], 'parts': s['parts'], 'unit': s['unit']}

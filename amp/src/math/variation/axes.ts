@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import type { FigureCapability } from "../contracts";
 
 /**
  * Variation axes: surface dimensions of ONE mathematical model.
@@ -28,6 +29,10 @@ export interface Axis<V extends string = string> {
   readonly weights?: readonly number[];
   /** The surface the family showed before this axis existed. */
   readonly legacy: V;
+  /** Values whose figure needs a newer figure capability than the template
+   * declares (a drawn circle graph where the legacy surface shows a table).
+   * For a client without it, the axis shows its legacy value instead. */
+  readonly needs?: Readonly<Partial<Record<V, FigureCapability>>>;
 }
 export type AxisSet = Readonly<Record<string, Axis>>;
 export type AxisValues<A extends AxisSet> = {
@@ -42,7 +47,11 @@ export const MAX_AXES = 6;
 export function defineAxis<const V extends string>(
   id: string,
   values: readonly V[],
-  options: { legacy?: NoInfer<V>; weights?: readonly number[] } = {},
+  options: {
+    legacy?: NoInfer<V>;
+    weights?: readonly number[];
+    needs?: Partial<Record<NoInfer<V>, FigureCapability>>;
+  } = {},
 ): Axis<V> {
   if (!axisIdPattern.test(id)) throw new Error(`Bad axis id ${id}`);
   if (!values.length || new Set(values).size !== values.length)
@@ -60,7 +69,16 @@ export function defineAxis<const V extends string>(
       !weights.every((w) => Number.isInteger(w) && w > 0))
   )
     throw new Error(`Axis ${id} weights must be positive integers per value`);
-  return { id, values, legacy, ...(weights ? { weights } : {}) };
+  const needs = options.needs;
+  if (needs && Object.hasOwn(needs, legacy))
+    throw new Error(`Axis ${id}: the legacy value must draw for every client`);
+  return {
+    id,
+    values,
+    legacy,
+    ...(weights ? { weights } : {}),
+    ...(needs ? { needs } : {}),
+  };
 }
 
 /** Restrict an axis to some of its values (a family that supports fewer). */
@@ -72,12 +90,41 @@ export function restrictAxis<V extends string, W extends V>(
   for (const value of values)
     if (!axis.values.includes(value))
       throw new Error(`Axis ${axis.id} has no value ${value}`);
+  const needs = Object.fromEntries(
+    Object.entries(axis.needs ?? {}).filter(([v]) => values.includes(v as W)),
+  ) as Partial<Record<W, FigureCapability>>;
   return defineAxis(axis.id, values, {
     legacy:
       legacy ??
       (values.includes(axis.legacy as W) ? (axis.legacy as W) : values[0]!),
+    ...(Object.keys(needs).length ? { needs } : {}),
   });
 }
+
+let clientFigures: readonly string[] | null = null;
+/**
+ * Generate for one client: inside `build`, an axis value whose figure needs
+ * a capability outside `figureCapabilities` is replaced by the axis's legacy
+ * value. The server wraps every problem it sends in this; outside it (tests,
+ * scripts, the review export) every value is drawable. Synchronous only.
+ */
+export function withClientFigures<T>(
+  figureCapabilities: readonly string[],
+  build: () => T,
+): T {
+  const previous = clientFigures;
+  clientFigures = figureCapabilities;
+  try {
+    return build();
+  } finally {
+    clientFigures = previous;
+  }
+}
+/** Can the client being generated for draw a value of this axis? */
+export const clientDrawsValue = (axis: Axis, value: string): boolean => {
+  const needs = axis.needs?.[value];
+  return !needs || !clientFigures || clientFigures.includes(needs);
+};
 
 /** SHA-256 counter stream, unbiased bounded draws, keyed apart from the
  * content stream `[templateId, 1, seed, counter]` used by generators. */
@@ -128,10 +175,12 @@ export function chooseAxes<A extends AxisSet>(
 ): AxisValues<A> {
   validateAxes(axes);
   return Object.fromEntries(
-    Object.entries(axes).map(([key, axis]) => [
-      key,
-      draw(stream([templateId, 1, seed, "axis", axis.id]), axis),
-    ]),
+    Object.entries(axes).map(([key, axis]) => {
+      // The draw happens even when it is replaced, so a client's capabilities
+      // never shift another axis's stream.
+      const value = draw(stream([templateId, 1, seed, "axis", axis.id]), axis);
+      return [key, clientDrawsValue(axis, value) ? value : axis.legacy];
+    }),
   ) as AxisValues<A>;
 }
 

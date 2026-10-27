@@ -60,10 +60,36 @@ def rectangle(figure, missing=False):
     return known
 
 
+def inch_ruler(prompt, figure):
+    """An object on a drawn inch ruler: read the ruler's parts and the object's
+    end ticks from the scene, then measure by counting tick spaces."""
+    elements = figure['scene']['elements']
+    require(len(elements) == 1 and elements[0]['type'] == 'ruler', 'One ruler element')
+    ruler = elements[0]
+    require(ruler['unit'] == 'in', 'Inch ruler')
+    parts, length, obj = ruler['parts'], ruler['length'], ruler.get('object')
+    require(parts in (2, 4, 8) and type(length) is int and 1 <= length <= (4 if parts == 8 else 6), 'Ruler scale')
+    require(obj is not None and obj.get('shape') in ('pencil', 'ribbon'), 'An object to measure')
+    start, end = obj['from'], obj['to']
+    require(type(start) is int and type(end) is int and 0 <= start < end <= length * parts, 'Object lies on the ruler')
+    noun = obj['shape']
+    expected = (f'What is the length of the {noun}, to the nearest eighth of an inch?' if parts == 8
+                else f'How long is the {noun}, in inches?')
+    require(prompt == expected, 'Inch ruler wording')
+    # Walk tick to tick from one end to the other, adding one part each step.
+    total, tick = Fraction(0), start
+    while tick < end:
+        total += Fraction(1, parts)
+        tick += 1
+    return total
+
+
 def solve(public):
     family, prompt = public['templateId'], public['prompt']
     require(family in SUPPORTED, 'Unsupported measurement family')
     figure = public.get('figure')
+    if family == 'fractional-ruler-length' and figure['kind'] == 'scene':
+        return inch_ruler(prompt, figure)
     if family in {'shifted-ruler-length', 'fractional-ruler-length'}:
         require(prompt == 'The strip runs from A to B. What is its length in cm?', 'Ruler wording')
         require(figure['kind'] == 'length-interval' and figure['unit'] == 'cm', 'Ruler model')
@@ -167,7 +193,20 @@ def self_test():
     try: solve(p)
     except ValueError: pass
     else: raise AssertionError('Multiple valid choices accepted')
-    return 9
+    ruler = lambda start, end, parts=8, length=4, shape='pencil': {'kind': 'scene', 'scene': {'v': 1, 'elements': [
+        {'type': 'ruler', 'id': 'ruler', 'unit': 'in', 'length': length, 'parts': parts,
+         'object': {'from': start, 'to': end, 'shape': shape}}]}}
+    p = {'templateId': 'fractional-ruler-length', 'prompt': 'What is the length of the pencil, to the nearest eighth of an inch?',
+         'figure': ruler(0, 27)}
+    require(solve(p) == Fraction(27, 8), 'Pencil from 0 to the 27th eighth')
+    p = {'templateId': 'fractional-ruler-length', 'prompt': 'How long is the ribbon, in inches?',
+         'figure': ruler(8, 15, parts=4, length=6, shape='ribbon')}
+    require(solve(p) == Fraction(7, 4), 'A ribbon from the 2-inch mark is measured from 2, not 0')
+    p['figure'] = ruler(8, 25, parts=4, length=6, shape='ribbon')
+    try: solve(p)
+    except ValueError: pass
+    else: raise AssertionError('An object past the ruler end accepted')
+    return 12
 
 
 if __name__ == '__main__':
@@ -179,4 +218,4 @@ if __name__ == '__main__':
         solve(public)
         family = public['templateId']
         counts[family] = counts.get(family, 0)+1
-    print(json.dumps({'solvedPublicCases':sum(counts.values()),'families':counts,'handbuiltChecks':9}, sort_keys=True))
+    print(json.dumps({'solvedPublicCases':sum(counts.values()),'families':counts,'handbuiltChecks':12}, sort_keys=True))

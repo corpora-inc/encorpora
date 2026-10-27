@@ -11,3 +11,9 @@ export {
 } from "./layout";
 export { typeset, typeSizes } from "./type";
 export { features, evaluate } from "./functions";
+export {
+  elementCapability,
+  sceneCapability,
+  sceneCapabilitiesIn,
+} from "./capability";
+export type { SceneCapability } from "./layout";

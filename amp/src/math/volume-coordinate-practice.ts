@@ -1,11 +1,13 @@
 import { createHash } from "node:crypto";
 import { geometryScene } from "./geometry-scenes.js";
-import type { Scene } from "./scene/spec.js";
+import { sceneSchema, type Scene } from "./scene/spec.js";
 import type {
   GeneratedProblem,
+  ProblemVariant,
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
+import { sweepChoose, sweepVariant } from "./number-domain-axes.js";
 
 const definitions: [string, string, string, string, boolean][] = [
   [
@@ -117,10 +119,60 @@ export function generateVolumeCoordinateProblem(
     figure: SemanticFigure,
     choices: Choice[] | undefined,
     keepOrder = false,
-    edit: ((scene: Scene) => Scene) | undefined;
+    edit: ((scene: Scene) => Scene) | undefined,
+    variant: ProblemVariant | undefined;
   switch (templateId) {
     case "unit-cube-volume":
     case "cube-layer-count": {
+      const axes =
+        templateId === "unit-cube-volume"
+          ? sweepChoose("unit-cube-volume", seed)
+          : undefined;
+      if (axes) variant = sweepVariant(axes.solid, axes);
+      if (axes?.solid === "steps") {
+        // A stepped solid, not a full prism: columns from back to front, each
+        // no taller than the one behind it, so every column shows.
+        let depth = 0,
+          columns: number[] = [];
+        do {
+          depth = r(2, 4);
+          const n = r(3, 5);
+          columns = Array.from({ length: n }, () => r(1, 5)).sort(
+            (a, b) => b - a,
+          );
+        } while (
+          columns[0] === columns.at(-1) ||
+          depth * columns.reduce((a, b) => a + b, 0) < 12 ||
+          depth * columns.reduce((a, b) => a + b, 0) > 45
+        );
+        const front = columns.reduce((a, b) => a + b, 0),
+          total = depth * front;
+        figure = {
+          kind: "scene",
+          scene: sceneSchema.parse({
+            v: 1,
+            width: 320,
+            elements: [
+              {
+                type: "isoSolid",
+                id: "solid",
+                solid: { form: "steps", width: depth, columns },
+              },
+            ],
+          }),
+        };
+        prompt =
+          "This solid is built from 1-unit cubes, and every column is filled to the bottom. What is its volume, in cubic units?";
+        answer = String(total);
+        label = "Volume in cubic units";
+        hint = `Some cubes are hidden. The solid is ${depth} cubes thick, and every slice through it matches the face that shows the steps. Count the cubes on that face, column by column, then multiply by the thickness.`;
+        explanation = [
+          `The face that shows the steps has ${columns.length} columns. Their heights in cubes are ${columns.join(", ")}: $${columns.join(" + ")} = ${front}$ cubes.`,
+          `The solid is ${depth} cubes thick, and every slice behind that face has the same ${front} cubes.`,
+          `$${front} \\times ${depth} = ${total}$, so the volume is ${total} cubic units.`,
+        ];
+        break;
+      }
       const l = r(2, 5),
         w = r(2, 4),
         h = r(2, 4),
@@ -497,5 +549,6 @@ export function generateVolumeCoordinateProblem(
     hint,
     explanation,
     ...(choiceFeedback ? { choiceFeedback } : {}),
+    ...(variant ? { variant } : {}),
   };
 }

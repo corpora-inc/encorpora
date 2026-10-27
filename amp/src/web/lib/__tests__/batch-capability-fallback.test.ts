@@ -185,3 +185,33 @@ test("a current client steps down one format at a time for each older API", asyn
   );
   expect(failing).toHaveBeenCalledTimes(3);
 });
+
+test("an API older than a figure capability gets one retry without it", async () => {
+  const current = {
+    ...full,
+    figureCapabilities: ["scenes-v1", "scenes-v2"],
+  };
+  const figureError = {
+    ...oldApiError,
+    validationPaths: [["figureCapabilities", 1], ["figureCapabilities"]],
+  };
+  const send = vi
+    .fn()
+    .mockRejectedValueOnce(figureError)
+    .mockResolvedValueOnce("batch");
+  await expect(batchWithCapabilityFallback(current, send)).resolves.toBe(
+    "batch",
+  );
+  expect(send).toHaveBeenCalledTimes(2);
+  expect(send.mock.calls[1][0]).toEqual({
+    ...current,
+    figureCapabilities: ["scenes-v1"],
+  });
+  // Only a newer figure capability is ever dropped.
+  const older = vi.fn().mockRejectedValue(figureError);
+  const scenesOnly = { ...full, figureCapabilities: ["scenes-v1"] };
+  await expect(batchWithCapabilityFallback(scenesOnly, older)).rejects.toBe(
+    figureError,
+  );
+  expect(older).toHaveBeenCalledTimes(1);
+});
