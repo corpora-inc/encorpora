@@ -146,10 +146,12 @@ test("guess chance comes from each family's answer schema and is never understat
             ? "point-plot"
             : template.requiredResponseCapability === "multi-part-choice-v1"
               ? "multi-part-choice"
+            : template.requiredResponseCapability === "figure-choice-v1"
+              ? "figure-choice"
               : "choice",
         template.id,
       );
-      if (response.kind === "choice")
+      if (response.kind === "choice" || response.kind === "figure-choice")
         assert.ok(
           chance >= 1 / response.options.length - 1e-12,
           `${template.id} seed ${i}: ${response.options.length} options, chance ${chance}`,

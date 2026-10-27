@@ -288,9 +288,13 @@ export const staarGrade5 = defineLedger(
       demand:
         "Choose the graph whose points have a cost 1.5 times the number of bags",
       status: "partial",
-      templateIds: ["graph-linear-equation", "coordinate-context-points"],
+      templateIds: [
+        "graph-of-proportional-rate",
+        "graph-linear-equation",
+        "coordinate-context-points",
+      ],
       limitations:
-        "graph-linear-equation places points of a proportional relationship; the item chooses among drawn graphs, which no family does.",
+        "graph-of-proportional-rate chooses among drawn lines for a whole or fractional rate, with the reversed-pair distractor; a stated decimal multiplier such as 1.5 and graphs of separate points are not practiced.",
     },
     {
       item: {

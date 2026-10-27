@@ -1194,3 +1194,40 @@
     text-align: center;
   }
 }
+
+.pathways-connection-group ul {
+  margin-bottom: 4px;
+}
+.pathways-detail li.is-connection a {
+  background: transparent;
+  border-style: dashed;
+}
+.pathways li a small.pathways-connection-why {
+  font-size: 11px;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+.pathways-show-all {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--atlas-border);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--atlas-on-panel);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.pathways-show-all small {
+  color: var(--atlas-muted);
+  margin-left: 4px;
+}
+.pathways-show-all:hover {
+  border-color: var(--atlas-muted);
+}
+.pathways-show-all:focus-visible {
+  outline: 2px solid var(--atlas-accent);
+  outline-offset: 2px;
+}

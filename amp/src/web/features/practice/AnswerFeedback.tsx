@@ -157,7 +157,13 @@ export function AnswerFeedback({
                 >
                   <span>
                     <strong>{skill.title}</strong>
-                    {skill.description && <small>{skill.description}</small>}
+                    {skill.connected ? (
+                      <small>
+                        {skill.connected.label} · {skill.connected.explanation}
+                      </small>
+                    ) : (
+                      skill.description && <small>{skill.description}</small>
+                    )}
                   </span>
                   <span aria-hidden="true">→</span>
                 </button>
