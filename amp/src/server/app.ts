@@ -1,3 +1,4 @@
+import { recordParentAssessmentStart } from "../parent-followup/repository.js";
 import { satPracticeEligible } from "../curriculum/sat.js";
 import {
   assertPracticePolicy,
@@ -28,6 +29,7 @@ import { skills } from "../curriculum/catalog";
 import { auditCurriculum } from "../curriculum/audit";
 import {
   ApiError,
+  PostgresRepository,
   type Outcome,
   type Repository,
   type SavedProblem,
@@ -80,7 +82,7 @@ const attemptSchema = z
 export function redactUrl(url: string) {
   const parsed = new URL(url, "http://local");
   const path = parsed.pathname.replace(
-    /^(\/api\/auth\/reset-password\/)[^/]+/,
+    /^(\/api\/(?:auth\/reset-password|v1\/parent-followup\/unsubscribe)\/)[^/]+/,
     "$1[redacted]",
   );
   for (const key of [
@@ -219,7 +221,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
       .code(500)
       .send({ error: "Unable to complete the request. Please try again." });
   });
-  // Practice routes also accept an anonymous trial token. Family, billing,
+  // Free practice requires a parent session plus the device trial capability. Family, billing,
   // consent and export routes are registered with the parent authenticator
   // alone, so a trial token can never reach them.
   async function learningAccount(request: Parameters<Authenticator>[0]) {
@@ -227,6 +229,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
       /^Trial ([A-Za-z0-9_-]{20,100})$/,
     )?.[1];
     if (!trial) return options.authenticate(request);
+    if (!options.development) await options.authenticate(request);
     const account = await options.repository.trialAccount(trial);
     if (!account) throw new ApiError(401, "This free trial has ended");
     return account;
@@ -357,13 +360,22 @@ function routes(app: FastifyInstance, options: AppOptions) {
     "/api/v1/trials",
     { config: { rateLimit: { max: 20, timeWindow: "1 hour" } } },
     async (request, reply) => {
+      const account = !options.development
+        ? await options.authenticate(request)
+        : null;
       const { birthYear } = z
         .object({ birthYear: birthYearSchema })
         .strict()
         .parse(request.body);
-      return reply
-        .code(201)
-        .send(await options.repository.createTrial(birthYear));
+      const trial = await options.repository.createTrial(birthYear);
+      if (account && options.repository instanceof PostgresRepository) {
+        await recordParentAssessmentStart(
+          options.repository.pool,
+          account,
+          birthYear,
+        ).catch(() => console.warn("Parent assessment entry was not recorded"));
+      }
+      return reply.code(201).send(trial);
     },
   );
   app.post("/api/v1/trials/adopt", async (request) => {

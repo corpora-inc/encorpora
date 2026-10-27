@@ -1,3 +1,5 @@
+import { entryCapture } from "../../lib/openai-acquisition";
+import { signupNotice } from "../../../parent-followup/contracts";
 import styles from "./Auth.module.css";
 import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Button } from "../../ui/Button";
@@ -25,6 +27,7 @@ import { passkeysAvailable, signUpWithPasskey } from "./passkey";
 import {
   continuationSearch,
   continuationUrl,
+  fundedAttribution,
   fundedPrograms,
   isFundedReturn,
 } from "../../lib/funded-entry";
@@ -165,6 +168,33 @@ export function SignInScreen() {
     setNotice("");
   }
   const carry = continuationSearch(routeLocation.search);
+  const freeEntry = carry.return === "free-practice";
+  const [newsletter, setNewsletter] = useState(false);
+  const followupEnabled = accounts && config.parentFollowup;
+  async function prepareFreeSignup() {
+    if (!freeEntry || !followupEnabled) return;
+    await Promise.race([
+      entryCapture,
+      new Promise<void>((resolve) => setTimeout(resolve, 1800)),
+    ]);
+    const response = await fetch("/api/v1/parent-followup/intent", {
+      method: "POST",
+      credentials: "same-origin",
+      signal: AbortSignal.timeout(10000),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        notice: signupNotice,
+        newsletter,
+        entry: carry.entry,
+        program: carry.program,
+        campaign: fundedAttribution(carry),
+      }),
+    });
+    if (!response.ok)
+      throw new Error(
+        "We couldn’t prepare your free account. Please try again.",
+      );
+  }
   const returnTo = continuationUrl(carry, "/");
   const newUserReturn = continuationUrl(carry, "/account/ready");
   const done = async () => {
@@ -179,13 +209,15 @@ export function SignInScreen() {
     else
       await navigate({
         to:
-          carry.return === "access"
-            ? "/access"
-            : isFundedReturn(carry.return)
-              ? fundedPrograms[carry.return].path
-              : step === "create"
-                ? "/account/ready"
-                : "/",
+          carry.return === "free-practice"
+            ? "/try"
+            : carry.return === "access"
+              ? "/access"
+              : isFundedReturn(carry.return)
+                ? fundedPrograms[carry.return].path
+                : step === "create"
+                  ? "/account/ready"
+                  : "/",
         search: carry,
         replace: true,
       });
@@ -232,7 +264,9 @@ export function SignInScreen() {
     event.preventDefault();
     void run(async () => {
       if (step === "sign-in") {
+        await prepareFreeSignup();
         const result = await accountClient.signIn.email({
+          callbackURL: returnTo,
           email: email.trim(),
           password,
         });
@@ -247,6 +281,7 @@ export function SignInScreen() {
           return go("two-factor");
         await done();
       } else if (step === "create") {
+        await prepareFreeSignup();
         const result = await accountClient.signUp.email({
           name: "",
           email: email.trim(),
@@ -293,7 +328,11 @@ export function SignInScreen() {
   function createWithPasskey(event: FormEvent) {
     event.preventDefault();
     void run(async () => {
-      const result = await signUpWithPasskey(email.trim());
+      await prepareFreeSignup();
+      const result = await signUpWithPasskey(
+        email.trim(),
+        freeEntry ? { program: carry.program } : undefined,
+      );
       if (result.ok) return done();
       if (result.code === "exists") {
         useAuthDraft.getState().carry(email.trim(), result.message);
@@ -310,6 +349,7 @@ export function SignInScreen() {
     setPending(provider);
     setError("");
     void run(async () => {
+      await prepareFreeSignup();
       const result = await accountClient.signIn.social({
         provider,
         fetchOptions: { timeout: 15_000 },
@@ -335,7 +375,31 @@ export function SignInScreen() {
         className={`card welcome account-sign-in ${frameCard} ${styles.frame}`}
       >
         <FrameBrand />
-        <h2>{titles[step]}</h2>
+        <h2>
+          {freeEntry && step === "create"
+            ? "Try AMP’s free math assessment."
+            : titles[step]}
+        </h2>
+        {freeEntry && showProviders && (
+          <div className={styles.pitch} data-free-parent-signup>
+            <p>
+              AMP finds the right level and chooses the next lesson as you
+              answer.
+            </p>
+            <p className={styles.offer}>
+              Create your free parent account.
+              <br />
+              Try up to 100 problems. No card required.
+            </p>
+            {carry.program && (
+              <p className={styles.funding}>
+                Corpora Inc is an approved{" "}
+                {carry.program === "ar-efa" ? "Arkansas EFA" : "Arizona ESA"}{" "}
+                vendor. Use eligible funds when you’re ready to buy.
+              </p>
+            )}
+          </div>
+        )}
         {step === "sign-in" && providers.length > 0 && (
           <p className={styles.hint}>
             Choose the sign-in method you used to create your account.
@@ -361,6 +425,25 @@ export function SignInScreen() {
           takeFocus
           onDismiss={() => setError("")}
         />
+        {freeEntry && showProviders && followupEnabled && (
+          <div className={styles.emailOptions}>
+            <p>
+              We’ll email your return link and one helpful reminder tomorrow.
+              Unsubscribe anytime.
+            </p>
+            <label>
+              <input
+                type="checkbox"
+                checked={newsletter}
+                onChange={(event) => setNewsletter(event.target.checked)}
+              />
+              <span>
+                Also send me occasional math problems, tips, videos and AMP
+                news.
+              </span>
+            </label>
+          </div>
+        )}
         {showProviders && (
           <ProviderButtons
             providers={providers}
@@ -377,6 +460,7 @@ export function SignInScreen() {
             disabled={busy || !!pending}
             onClick={() =>
               void run(async () => {
+                await prepareFreeSignup();
                 fail(await accountClient.signIn.passkey());
                 await done();
               })

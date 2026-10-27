@@ -141,20 +141,21 @@ export function Legal({
             the service. Links to the AMP app and external program websites take
             you to separate services.
           </p>
-          <h2>Ad clicks and purchases</h2>
+          <h2>Ad clicks, signups and purchases</h2>
           <p>
-            When you follow an ad to the AMP overview or an Arkansas or Arizona
-            funding page, our server may retain its Google or Meta click
-            identifier, existing Meta browser identifiers, the observation time
-            and fixed campaign labels for up to 90 days. A secure, host-only
-            browser cookie contains a random reference, not the ad identifiers.
-            It lets AMP associate the visit with the signed-in parent’s invoice
-            or checkout without adding a tracking step. These records are
-            separate from learner profiles, assessment answers and progress. Ad
-            identifiers are removed from the page’s address before links are
-            shared. OpenAI ads can lead directly to AMP’s public home page,
-            where the same process retains the original OpenAI click reference
-            for purchase attribution. Learning routes do not collect it.
+            When you follow an ad to AMP's signup page, overview or an Arkansas
+            or Arizona funding page, our server may retain its Google or Meta
+            click identifier, existing Meta browser identifiers, the observation
+            time and fixed campaign labels for up to 90 days. A secure,
+            host-only browser cookie contains a random reference, not the ad
+            identifiers. It lets AMP associate the visit with the signed-in
+            parent’s account, invoice or checkout without adding a tracking
+            step. These records are separate from learner profiles, assessment
+            answers and progress. Ad identifiers are removed from the page’s
+            address before links are shared. OpenAI ads can lead directly to
+            AMP’s home or signup page, where the same process retains the
+            original OpenAI click reference for purchase attribution. Learning
+            routes do not collect it.
           </p>
           <p>
             Global Privacy Control and Do Not Track prevent this collection and
@@ -163,9 +164,32 @@ export function Legal({
             purchase-sharing preference deletes that provider’s associated click
             evidence; learning-consent withdrawal and learning-data deletion
             remove all providers’ associated evidence. Unassociated visits
-            expire after at most 90 days. Collection does not itself send a
-            purchase or identifiers to Google, Meta or OpenAI; external sharing
-            requires the separate applicable permission described below.
+            expire after at most 90 days. Purchase sharing uses the separate
+            permissions described below.
+          </p>
+          <p>
+            For a new, verified parent account originating from a Google ad, AMP
+            may send Google the original click identifier, signup time and a
+            random transaction reference to measure which ads lead to signups.
+            This signup event has no purchase value and includes no email, birth
+            year, learner name, answer or progress. It requests no ad
+            personalization. Browser privacy signals and the parent’s Google
+            collection withdrawal stop future signup sharing. Removing the
+            underlying click evidence also removes its local export payload; it
+            does not recall information Google has already received.
+          </p>
+          <h2>Free-account context and emails</h2>
+          <p>
+            AMP stores the account’s signup method, validated campaign or
+            creative labels, associated click reference, selected funding
+            program and the starting birth year chosen for a demonstration. A
+            campaign’s target state and a demonstration year are context, not
+            confirmed residence, eligibility or a child’s age. The signup page
+            explains the welcome email and next-day reminder. A separate,
+            unchecked newsletter option covers occasional math problems, tips,
+            videos and product news. Optional emails include an unsubscribe
+            link; unsubscribing does not affect account access or security and
+            purchase messages.
           </p>
           <h2>Education-fund purchase documents</h2>
           <p>
@@ -255,27 +279,26 @@ export function Legal({
           <h2>Free practice</h2>
           <p>
             Free practice, a short placement followed by adaptive practice up to
-            the free allowance, does not require a parent account or a learner’s
-            name. The app stores the supplied birth year, a derived
-            starting-level estimate, a random identifier stored in the browser,
-            generated problems, answer history, and whether a hint or lesson was
-            opened, to estimate levels, choose the next problem and resume the
-            session. Random identifiers and activity records can be personal
-            information even without a name. Unclaimed placement sessions expire
-            after {TRIAL_DAYS} days and are removed by the retention process. A
-            parent may save the placement into their family account; it then
-            follows the family’s learning-data policy.
+            the free allowance, requires a parent account but no learner’s name.
+            The app stores the supplied birth year, a derived starting-level
+            estimate, a random identifier stored in the browser, generated
+            problems, answer history, and whether a hint or lesson was opened,
+            to estimate levels, choose the next problem and resume the session.
+            Random identifiers and activity records can be personal information
+            even without a name. Unclaimed placement sessions expire after{" "}
+            {TRIAL_DAYS} days and are removed by the retention process. A parent
+            may save the placement into their family account; it then follows
+            the family’s learning-data policy.
           </p>
           {config.privacy ? (
             <p>{config.privacy.placementBasis}</p>
           ) : (
             <p className="notice">
               Counsel review must establish the legal basis for collecting birth
-              year, persistent identifiers, and answer history during
-              account-free placement, including use by children under 13. Family
-              enrollment consent does not authorize that earlier collection.
-              This draft does not establish an exception or permission to
-              collect it.
+              year, persistent identifiers, and answer history during unsaved
+              placement, including use by children under 13. Family enrollment
+              consent does not authorize that earlier collection. This draft
+              does not establish an exception or permission to collect it.
             </p>
           )}
           <h2>Trial milestones</h2>

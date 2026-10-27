@@ -1,3 +1,5 @@
+import { registerParentFollowupRoutes } from "../parent-followup/routes.js";
+import { followupConfiguration } from "../parent-followup/mail.js";
 import { registerAccessGiftRoutes } from "../access-grants/routes.js";
 import { registerParentFeedbackRoutes } from "../feedback/parent-routes.js";
 import { registerMetaPurchaseContextRoutes } from "../advertising/meta-context.js";
@@ -73,6 +75,7 @@ const repository = new PostgresRepository(required("AMP_DATABASE_URL"), {
 });
 // AMP's own parent accounts (email, passkeys, Google, Apple, Microsoft,
 // GitHub), stored in AMP's database.
+const followupConfig = followupConfiguration(process.env);
 const accounts =
   authMode === "accounts"
     ? await createAccounts(repository.pool, accountsConfiguration(process.env))
@@ -111,6 +114,13 @@ await registerAdvertisingPermissionRoutes(app, {
   pool: repository.pool,
   authenticate,
 });
+if (accounts)
+  await registerParentFollowupRoutes(app, {
+    pool: repository.pool,
+    authenticate,
+    origin: accounts.config.baseURL,
+    enabled: !!followupConfig,
+  });
 const billingConfig = stripeConfig(process.env);
 await registerMetaPurchaseContextRoutes(app, {
   pool: repository.pool,

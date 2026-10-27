@@ -1,3 +1,8 @@
+import {
+  createSignupIntent,
+  completeSignup,
+} from "../src/parent-followup/repository.js";
+import { signupNotice } from "../src/parent-followup/contracts.js";
 import test from "node:test";
 import {
   retainAdClick,
@@ -609,5 +614,62 @@ test(
         "SELECT count(*)::int AS count FROM amp_ad_click_evidence WHERE provider='google'",
       );
       assert.equal(evidence.rows[0].count, 0);
+    }),
+);
+
+test(
+  "signup attribution survives a later no-cookie invoice and claim",
+  enabled,
+  () =>
+    fixture(async (pool, invoices) => {
+      const click = await marketingClick(
+        pool,
+        "Signup_Click",
+        "az-funded-better-math-square-v5",
+      );
+      const labels = {
+        campaign: "az-esa-launch" as const,
+        source: "google" as const,
+        medium: "cpc" as const,
+        creative: "az-funded-better-math-square-v5" as const,
+      };
+      const signup = await createSignupIntent(
+        pool,
+        {
+          program: "az-esa",
+          campaign: labels,
+          newsletter: false,
+          notice: signupNotice,
+        },
+        `${ACQUISITION_COOKIE}=${click}`,
+      );
+      await completeSignup(pool, `amp.parent-signup=${signup}`, "owner");
+      const invoice = await invoices.create(input());
+      await eligibleParent(pool);
+      const app = Fastify();
+      await registerFundingPurchaseRoutes(app, {
+        pool,
+        offers: [offer],
+        authenticate: async () => "amp|owner",
+        development: true,
+      });
+      try {
+        const result = await app.inject({
+          method: "POST",
+          url: `/api/v1/funding/invoices/${invoice.id}/claim`,
+          payload: { learnerId: "child" },
+        });
+        assert.equal(result.statusCode, 200, result.body);
+        const request = (
+          await pool.query(
+            "SELECT id,campaign_attribution FROM amp_funding_requests WHERE account_id='amp|owner'",
+          )
+        ).rows[0];
+        assert.deepEqual(request.campaign_attribution, labels);
+        const evidence = await retainedClick(pool, request.id);
+        assert.ok(JSON.stringify(evidence).includes("Signup_Click"));
+      } finally {
+        await app.close();
+      }
     }),
 );

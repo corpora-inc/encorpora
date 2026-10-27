@@ -1,3 +1,7 @@
+import {
+  completeSignup,
+  markSignupVerified,
+} from "../parent-followup/repository.js";
 import { advertisingOptOut } from "../advertising/permission-contracts.js";
 import {
   rememberVerifiedProvider,
@@ -43,6 +47,7 @@ export interface AccountsConfig {
   production: boolean;
   /** Email and password sign-in; needs mail in production (verify, reset). */
   passwords: boolean;
+  parentFollowup?: boolean;
   mail?: { apiKey: string; from: string };
   trustedOrigins: string[];
   google?: { clientId: string; clientSecret: string };
@@ -111,6 +116,7 @@ export function accountsConfiguration(env: NodeJS.ProcessEnv): AccountsConfig {
     // Without mail, passwords cannot be verified or reset; in development the
     // links are printed to the server log instead.
     passwords: !!mail || !production,
+    parentFollowup: env.AMP_PARENT_FOLLOWUP === "enabled",
     ...(mail && {
       mail: { apiKey: mail.RESEND_API_KEY, from: mail.FROM },
     }),
@@ -284,6 +290,37 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
       emailVerified: microsoftEmailVerified(profile),
     }),
   };
+  const enroll = async (userId: string, headers?: Headers, path?: string) => {
+    if (!config.parentFollowup) return;
+    try {
+      await completeSignup(pool, headers?.get("cookie"), userId);
+      await markSignupVerified(pool, userId);
+      const method = path?.startsWith("/callback/")
+        ? path.slice("/callback/".length)
+        : path?.includes("passkey")
+          ? "passkey"
+          : path === "/sign-up/email"
+            ? "password"
+            : null;
+      if (
+        method &&
+        [
+          "google",
+          "microsoft",
+          "github",
+          "apple",
+          "password",
+          "passkey",
+        ].includes(method)
+      )
+        await pool.query(
+          "UPDATE amp_parent_followups SET signup_method=COALESCE(signup_method,$2) WHERE user_id=$1",
+          [userId, method],
+        );
+    } catch {
+      console.warn("Parent follow-up enrollment needs retry");
+    }
+  };
   const auth = betterAuth({
     appName: brand.name,
     baseURL: config.baseURL,
@@ -368,6 +405,8 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
           before: async (session, context) => ({
             data: { ...session, ...(await sessionMethodAuthority(context)) },
           }),
+          after: async (session, context) =>
+            enroll(session.userId, context?.headers, context?.path),
         },
       },
       account: {
@@ -388,10 +427,15 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
                 message: "The provider has not verified this email address.",
               });
           },
+          after: async (user, context) =>
+            enroll(user.id, context?.headers, context?.path),
         },
       },
     },
     emailVerification: {
+      afterEmailVerification: async (user) => {
+        if (config.parentFollowup) await markSignupVerified(pool, user.id);
+      },
       sendOnSignUp: true,
       // An unconfirmed parent who signs in gets a fresh link (no lockout).
       sendOnSignIn: true,
@@ -528,6 +572,7 @@ export async function registerAccountRoutes(
     mode: "accounts",
     passwords: config.passwords,
     passkeySignup: config.passwords,
+    parentFollowup: !!config.parentFollowup,
     providers: enabledProviders(config),
   }));
   await app.register(async (scope) => {
