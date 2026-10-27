@@ -153,10 +153,14 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["expression.multistep-equations"],
       demand:
         "Choose the pair of division equations that models halving a class and then splitting that part equally",
-      status: "partial",
-      templateIds: ["story-operation-choice", "multiplication-division-story"],
+      status: "covered",
+      templateIds: [
+        "story-operation-choice",
+        "multiplication-division-story",
+        "linked-division-equations",
+      ],
       limitations:
-        "Related families model or solve one-step stories; choosing two linked equations for a two-step story is not practiced.",
+        "linked-division-equations (half-then-share) chooses the linked pair, or the combined equation, for a total split into two equal groups and shared again.",
     },
     {
       item: {
@@ -275,10 +279,14 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["number.add-subtract-story"],
       demand:
         "Add two bag totals, then subtract the beads not used, and enter the result",
-      status: "partial",
-      templateIds: ["add-three-digit", "subtract-three-digit"],
+      status: "covered",
+      templateIds: [
+        "add-three-digit",
+        "subtract-three-digit",
+        "bag-totals-chain",
+      ],
       limitations:
-        "STAAR interaction: equation editor, 1 point. Both families are single-step; the chained story with a typed total is not practiced.",
+        "bag-totals-chain adds two three-digit totals and subtracts a third amount, entered as a number; the equation-editor entry is a numeric answer.",
     },
     {
       item: {

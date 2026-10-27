@@ -573,10 +573,14 @@ export const satPractice4 = defineLedger(
       archetypeIds: ["linear.context"],
       demand:
         "Combine a 'times as many' statement with a 'more than' difference to find the smaller count",
-      status: "partial",
-      templateIds: ["system-model-value", "two-step-word-problem"],
+      status: "covered",
+      templateIds: [
+        "system-model-value",
+        "two-step-word-problem",
+        "count-relation-chain",
+      ],
       limitations:
-        "system-model-value solves two-unknown total-and-value stories; two-step-word-problem solves px + q = r stories. Neither combines a multiplicative comparison with a difference (kx − x = d).",
+        "count-relation-chain (times-as-many) turns 'times as many' and 'more than' into one equation and finds the smaller count, the larger count or their total; choices are plain numbers, so numeric entry fits.",
     },
     {
       section: "Math module 2",

@@ -80,10 +80,10 @@ export const regentsAlgebra2June2026 = defineLedger(
       archetypeIds: ["inequality.context"],
       demand:
         "Choose the inequality for a fixed cost plus an hourly rate within a budget",
-      status: "partial",
-      templateIds: ["inequality-from-context"],
+      status: "covered",
+      templateIds: ["inequality-from-context", "fee-budget-inequality"],
       limitations:
-        "The family chooses a single bound such as x < c; a rate and fixed cost combined into one inequality is not practiced.",
+        "fee-budget-inequality (write-inequality) chooses the inequality for a fixed cost plus a per-unit cost within a budget, at most or under.",
     },
     {
       section: "Part I",

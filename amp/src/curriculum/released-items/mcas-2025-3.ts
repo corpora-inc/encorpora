@@ -294,10 +294,10 @@ export const mcasGrade3 = defineLedger(
       archetypeIds: ["expression.multistep-equations", "early.two-step-story"],
       demand:
         "Choose the pair of equations that finds the remaining minutes of a two-step time story",
-      status: "partial",
-      templateIds: ["two-step-change"],
+      status: "covered",
+      templateIds: ["two-step-change", "linked-time-equations"],
       limitations:
-        "two-step-change solves a two-step story within 100 by entry; writing the linked equations with an unknown for the remainder is not practiced.",
+        "linked-time-equations chooses the linked pair, or the combined equation, that finds the minutes left after two periods within 100 minutes.",
     },
   ],
 );
