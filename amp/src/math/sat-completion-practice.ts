@@ -436,12 +436,20 @@ function draft(
   if (id === "similar-solid-volume") {
     const k = r(2, 5),
       length = r(2, 7),
-      volume = r(10, 80),
+      drawnVolume = r(10, 80),
       reverse = r(0, 1) === 1;
+    let volume = drawnVolume;
     if (axes["scale-given"] === "surface-areas") {
       // Same similarity model, given by surface areas: area scales by k², volume by k³.
       const area = r(6, 40),
         large = area * k ** 2;
+      // The answer must not equal a number the problem states (the units differ,
+      // so a learner could otherwise copy a given): step the volume until it does not.
+      const clash = (v: number) =>
+        reverse
+          ? [area, v, v * k ** 3].includes(large)
+          : [area, v, large].includes(v * k ** 3);
+      while (clash(volume)) volume++;
       return {
         prompt: reverse
           ? `Two solids are similar. The smaller solid has surface area ${area} square centimeters and volume ${volume} cubic centimeters. The larger solid has volume ${volume * k ** 3} cubic centimeters. What is the larger solid's surface area, in square centimeters?`

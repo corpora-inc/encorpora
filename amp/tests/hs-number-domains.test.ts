@@ -197,3 +197,18 @@ test("new surfaces state what they ask: rounding, the other quantity, the equati
     /surface area/,
   );
 });
+
+test("a surface-area similar-solid answer never equals a number the problem states", () => {
+  let checked = 0;
+  for (let i = 0; i < 3000; i++) {
+    const problem = generateProblem("similar-solid-volume", `clash:${i}`);
+    if (problem.variant!.axes!["scale-given"] !== "surface-areas") continue;
+    checked++;
+    const stated = problem.public.prompt.match(/\d+/g) ?? [];
+    assert.ok(
+      !stated.includes(problem.answer),
+      `clash:${i} answer ${problem.answer} is stated`,
+    );
+  }
+  assert.ok(checked > 1000);
+});
