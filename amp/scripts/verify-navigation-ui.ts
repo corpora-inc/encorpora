@@ -365,7 +365,7 @@ try {
           return { y: box.y, height: box.height };
         });
       const areaBox = (await page
-        .getByLabel("Math area", { exact: true })
+        .getByRole("button", { name: /^Math area/ })
         .boundingBox())!;
       if (width >= 380 && width !== 375) {
         assert(
@@ -393,6 +393,111 @@ try {
         animations: "disabled",
       });
     }
+  // A menu opened before the assessment lookup answers must not move when it
+  // does. Signed in, the "Free assessment" row is decided by the token saved
+  // on this browser; as a guest, the card is laid out for the assessment,
+  // budget included, from the first frame.
+  const learningCard = drawer.getByRole("region", {
+    name: "Current learning",
+  });
+  const menuGeometry = () =>
+    drawer.evaluate((el) =>
+      [
+        ...el.querySelectorAll(
+          '[aria-label="Current learning"], [aria-label="Current learning"] > *, [role="option"], nav, nav a',
+        ),
+      ].map((node) => {
+        const r = node.getBoundingClientRect();
+        return `${node.getAttribute("data-value") ?? node.tagName} ${r.x},${r.y} ${r.width}x${r.height}`;
+      }),
+    );
+  const statsSettled = () =>
+    page.waitForFunction(() =>
+      [
+        ...document.querySelectorAll(
+          '[aria-label="Current learning"] [aria-live] strong',
+        ),
+      ].every((stat) => stat.textContent !== "—"),
+    );
+  for (const guest of [false, true])
+    for (const theme of ["light", "dark"] as const)
+      for (const [width, height] of [
+        [320, 568],
+        [390, 844],
+        [768, 1024],
+        [1280, 900],
+      ]) {
+        const who = guest ? "guest" : "signed-in";
+        const label = `delayed assessment ${who} ${theme} ${width}`;
+        signedIn = !guest;
+        await page.setViewportSize({ width, height });
+        await page.emulateMedia({ colorScheme: theme });
+        let release!: () => void;
+        const held = new Promise<void>((resolve) => (release = resolve));
+        await page.route("**/api/v1/learners", async (route) => {
+          await held;
+          await route.fallback();
+        });
+        const lookup = page.waitForRequest("**/api/v1/learners");
+        await page.goto(`${origin}/inventory`);
+        if (guest)
+          await page
+            .getByRole("status")
+            .filter({ hasText: "Loading" })
+            .waitFor();
+        else await page.locator('[data-strength="Strong"]').first().waitFor();
+        await lookup;
+        await trigger.click();
+        await learningCard.locator("[aria-live] strong").first().waitFor();
+        if (guest)
+          await learningCard
+            .getByRole("progressbar", { name: "Free assessment problems used" })
+            .waitFor();
+        else {
+          await learningCard
+            .getByRole("listbox", { name: "Current learner" })
+            .waitFor();
+          await statsSettled();
+        }
+        await drawer.evaluate(async (el) => {
+          await Promise.all(el.getAnimations().map((a) => a.finished));
+        });
+        const pending = await menuGeometry();
+        if (!guest)
+          assert(
+            pending.some((row) => row.startsWith("trial ")),
+            `${label}: the saved assessment is offered while its lookup is pending`,
+          );
+        await fits(`${label} pending`);
+        await page.mouse.move(0, 0);
+        await page.screenshot({
+          path: `${output}/menu-assessment-pending-${who}-${theme}-${width}.png`,
+          animations: "disabled",
+        });
+        const answered = page.waitForResponse("**/api/v1/learners");
+        release();
+        await answered;
+        await statsSettled();
+        await page.evaluate(
+          () =>
+            new Promise((resolve) =>
+              requestAnimationFrame(() => requestAnimationFrame(resolve)),
+            ),
+        );
+        assert.deepEqual(
+          await menuGeometry(),
+          pending,
+          `${label}: the menu moved when the assessment lookup answered`,
+        );
+        await page.screenshot({
+          path: `${output}/menu-assessment-loaded-${who}-${theme}-${width}.png`,
+          animations: "disabled",
+        });
+        await page.unroute("**/api/v1/learners");
+        await page.keyboard.press("Escape");
+        await drawer.waitFor({ state: "detached" });
+      }
+  signedIn = true;
   for (const [width, height] of [
     [320, 568],
     [390, 844],
@@ -604,6 +709,78 @@ try {
       .getAttribute("aria-pressed"),
     "true",
   );
+  // The math area picker is a designed list, not a native select. Choosing
+  // writes the URL without resizing the picker; Back, Forward and refresh
+  // restore the choice.
+  const areaPicker = page.getByRole("button", { name: /^Math area/ });
+  assert.equal(await page.locator("select").count(), 0, "no native select");
+  assert.equal(await areaPicker.getAttribute("aria-haspopup"), "listbox");
+  // Page coordinates: a shorter result list may scroll the page.
+  const pageBox = () =>
+    areaPicker.evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      return [r.x + scrollX, r.y + scrollY, r.width, r.height];
+    });
+  const areaPickerBox = await pageBox();
+  assert(areaPickerBox[3]! >= 44, "math area is a 44px target");
+  await areaPicker.click();
+  const areaList = page.getByRole("listbox", { name: "Math area" });
+  await areaList.waitFor();
+  assert.deepEqual(
+    await areaList
+      .getByRole("option")
+      .evaluateAll((options) =>
+        options.map(
+          (o) => `${o.textContent}:${o.getAttribute("aria-selected")}`,
+        ),
+      ),
+    [
+      "Every math area:true",
+      "Number & operations:false",
+      "Algebra & ratios:false",
+      "Functions & trigonometry:false",
+      "Geometry & measurement:false",
+      "Data & probability:false",
+      "Modeling & reasoning:false",
+    ],
+  );
+  await fits("math area list open");
+  await page.keyboard.press("End");
+  await page.keyboard.press("Enter");
+  await page.waitForURL(
+    (url) => url.searchParams.get("area") === "Modeling & reasoning",
+  );
+  await areaList.waitFor({ state: "detached" });
+  assert(await areaPicker.evaluate((el) => el === document.activeElement));
+  assert.equal(
+    await areaPicker.getAttribute("data-value"),
+    "Modeling & reasoning",
+  );
+  assert.deepEqual(
+    await pageBox(),
+    areaPickerBox,
+    "choosing a long area name resized the picker",
+  );
+  assert.equal(
+    new URL(page.url()).searchParams.get("collection"),
+    "strong",
+    "choosing an area keeps the other filters",
+  );
+  await page.goBack();
+  await page.waitForURL((url) => !url.searchParams.has("area"));
+  assert.equal(await areaPicker.getAttribute("data-value"), "");
+  await page.goForward();
+  await page.waitForURL(
+    (url) => url.searchParams.get("area") === "Modeling & reasoning",
+  );
+  await page.reload();
+  await page
+    .getByRole("button", { name: "Math area Modeling & reasoning" })
+    .waitFor();
+  await areaPicker.click();
+  await areaList.getByRole("option", { name: "Every math area" }).click();
+  await page.waitForURL((url) => !url.searchParams.has("area"));
+  assert.equal(await areaPicker.getAttribute("data-value"), "");
   // Finish restoring the saved filter before deliberately reloading into an
   // error. WebKit reports a cancelled in-flight fetch as an access-control
   // error if the second reload interrupts the first page's account lookup.

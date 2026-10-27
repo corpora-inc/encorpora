@@ -14,6 +14,7 @@ import {
 } from "../pathways/model";
 import { gradeName } from "../../Home";
 import { buttonClass } from "../../ui/Button";
+import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import styles from "./Inventory.module.css";
 
 type Filter = "tried" | "illuminated" | "strong" | "all";
@@ -22,6 +23,10 @@ const filters: { id: Filter; label: string }[] = [
   { id: "illuminated", label: "Illuminated" },
   { id: "strong", label: "Strong" },
   { id: "all", label: "All skills" },
+];
+const areaOptions: ListboxOption[] = [
+  { value: "", label: "Every math area" },
+  ...neighborhoods.map((n) => ({ value: n.title, label: n.title })),
 ];
 function strength(e?: Evidence) {
   return !e?.attempts
@@ -177,19 +182,13 @@ export function InventoryScreen() {
             }
           />
         </label>
-        <label className={styles.area}>
-          <span className={styles.srOnly}>Math area</span>
-          <select
-            aria-label="Math area"
-            value={area}
-            onChange={(e) => update({ area: e.target.value || undefined })}
-          >
-            <option value="">Every math area</option>
-            {neighborhoods.map((n) => (
-              <option key={n.title}>{n.title}</option>
-            ))}
-          </select>
-        </label>
+        <ListboxDisclosure
+          label="Math area"
+          align="end"
+          options={areaOptions}
+          value={area}
+          onChange={(next) => update({ area: next || undefined })}
+        />
       </div>
       <div
         className={styles.filterRow}

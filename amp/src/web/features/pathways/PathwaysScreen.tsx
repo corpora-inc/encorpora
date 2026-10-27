@@ -45,12 +45,17 @@ import {
   progressOptions as trialProgressOptions,
 } from "../trial/api";
 import { Dialog } from "../../ui/Dialog";
+import { ListboxDisclosure, type ListboxOption } from "../../ui/Listbox";
 import { LessonBoundary } from "./LessonRecovery";
 const SkillLesson = lazy(() => import("./SkillLesson"));
 import { trialEvidenceOptions } from "./queries";
 import { usePathwaysMetadata } from "./usePathwaysMetadata";
 import "./pathways.css";
 const emptyEvidence: Evidence[] = [];
+const bandOptions: ListboxOption[] = [
+  { value: "", label: "All grades & courses" },
+  ...bands.map((b) => ({ value: b, label: bandLabel(b) })),
+];
 export function PathwaysScreen() {
   const { data: session } = useSuspenseQuery(sessionOptions);
   const search = useSearch({ strict: false });
@@ -204,20 +209,17 @@ function LearnerMap({ session }: { session: AuthSession }) {
       controls={
         <>
           {learners.length > 0 && (
-            <label>
-              Learner{" "}
-              <select
-                value={learner?.id ?? ""}
-                onChange={(e) => select(e.target.value || null)}
-              >
-                <option value="">Choose learner</option>
-                {learners.map((l) => (
-                  <option key={l.id} value={l.id}>
-                    {l.name}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <div className="pathways-learner">
+              <span aria-hidden="true">Learner</span>
+              <ListboxDisclosure
+                label="Learner"
+                placeholder="Choose learner"
+                align="end"
+                options={learners.map((l) => ({ value: l.id, label: l.name }))}
+                value={learner?.id ?? null}
+                onChange={select}
+              />
+            </div>
           )}
           {me.data?.signedIn &&
             learners.length === 0 &&
@@ -495,20 +497,15 @@ export function MapView({
               aria-label="Find a skill"
               hidden={!browse}
             >
-              <label>
-                Grade or course
-                <select
+              <div className="pathways-grade">
+                <span aria-hidden="true">Grade or course</span>
+                <ListboxDisclosure
+                  label="Grade or course"
+                  options={bandOptions}
                   value={band}
-                  onChange={(e) => update({ filter: e.target.value }, true)}
-                >
-                  <option value="">All grades & courses</option>
-                  {bands.map((b) => (
-                    <option key={b} value={b}>
-                      {bandLabel(b)}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                  onChange={(next) => update({ filter: next }, true)}
+                />
+              </div>
               <p className="pathways-muted">
                 {filtered.length} skills · select to explore
               </p>

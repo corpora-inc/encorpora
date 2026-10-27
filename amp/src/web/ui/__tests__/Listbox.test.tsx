@@ -170,7 +170,66 @@ test("more than three choices fold behind a button that discloses the list", asy
   expect(screen.queryByRole("listbox")).toBeNull();
   expect(document.activeElement).toBe(trigger);
   expect(trigger.getAttribute("data-value")).toBe("sam");
-  expect(trigger.textContent).toBe("Sam");
+  expect(screen.getByRole("button", { name: "Current learner Sam" })).toBe(
+    trigger,
+  );
+});
+
+test("a disclosure button keeps one size whichever choice it shows", async () => {
+  const user = userEvent.setup();
+  render(
+    <Fixture options={people(["Avery", "Jordan", "Riley", "Maximiliana"])} />,
+  );
+  const trigger = screen.getByRole("button", {
+    name: "Current learner Choose a learner",
+  });
+  // Every choice and the placeholder share the button's one text cell; only
+  // the shown one is visible or read.
+  const texts = () =>
+    [...trigger.querySelectorAll("[data-word]")].map((word) => ({
+      word: word.textContent,
+      hidden: !!word.closest("[aria-hidden='true']"),
+    }));
+  expect(texts().filter((t) => !t.hidden)).toEqual([
+    { word: "Choose", hidden: false },
+    { word: "a", hidden: false },
+    { word: "learner", hidden: false },
+  ]);
+  expect(
+    texts()
+      .map((t) => t.word)
+      .sort(),
+  ).toEqual(
+    [
+      "Avery",
+      "Choose",
+      "Jordan",
+      "Maximiliana",
+      "Riley",
+      "a",
+      "learner",
+    ].sort(),
+  );
+  await user.click(trigger);
+  await user.click(screen.getByRole("option", { name: "Riley" }));
+  expect(texts().filter((t) => !t.hidden)).toEqual([
+    { word: "Riley", hidden: false },
+  ]);
+  expect(
+    texts()
+      .map((t) => t.word)
+      .sort(),
+  ).toEqual(
+    [
+      "Avery",
+      "Choose",
+      "Jordan",
+      "Maximiliana",
+      "Riley",
+      "a",
+      "learner",
+    ].sort(),
+  );
 });
 
 test("a disclosed list closes on a tap outside without choosing", async () => {
