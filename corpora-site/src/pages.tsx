@@ -264,7 +264,7 @@ function Home({ config }: { config: SiteConfig }) {
               Explore AMP <span aria-hidden="true">→</span>
             </a>
           </div>
-          <p className="fine">Free placement. No account or card required.</p>
+          <p className="fine">Free assessment with a parent account. No card required.</p>
         </div>
         <div className="hero-demo">
           <div className="demo-top">

@@ -273,6 +273,7 @@ test(
             mode: "accounts",
             passwords: true,
             passkeySignup: true,
+            parentFollowup: false,
             providers: ["google", "apple", "microsoft", "github"],
           });
         },
