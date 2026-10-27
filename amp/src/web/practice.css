@@ -179,6 +179,10 @@ nav button {
   .problem-content[data-template="interest-table-type"] .question > .math:has(.mtable) {
     font-size: 16px;
   }
+  /* A three-factor polynomial must fit with its closing punctuation. */
+  .problem-content[data-template="shifted-polynomial-features"] .question > .math {
+    font-size: 18px;
+  }
 }
 .problem-content .figure {
   flex: 0 1 auto;

@@ -549,7 +549,9 @@ export const vasolGrade5 = defineLedger(
       status: "partial",
       templateIds: ["staar-stem-leaf-combine"],
       limitations:
-        "staar-stem-leaf-combine adds or subtracts values read from a stem-and-leaf plot by entry; judging statements about the extreme values is not practiced.",
+        "staar-stem-leaf-combine adds or subtracts the greatest and least values read from a plot with a key by entry, and stem-leaf-read asks the median, mode, range and differences by choice; judging statements about the extreme values, a true-or-false choice, is not asked.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "45", page: "PDF p.51" },

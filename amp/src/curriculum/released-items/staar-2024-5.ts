@@ -159,10 +159,12 @@ export const staar2024Grade5 = defineLedger(
       standards: ["TEKS.5.4.9.A"],
       archetypeIds: ["data.stem-leaf-read"],
       demand: "Choose the stem-and-leaf plot that shows a team's listed wins",
-      status: "partial",
-      templateIds: ["stem-leaf-read"],
+      status: "covered",
+      templateIds: ["stem-leaf-read", "stem-leaf-construct"],
       limitations:
-        "stem-leaf-read reads values from a plot; no family chooses the plot that matches a data list.",
+        "stem-leaf-construct (single-choice-v1) lists 9 to 12 data values and asks which stem-and-leaf plot shows them, with plots that drop or repeat a leaf, leave leaves unordered or use other stems as the wrong choices; stem-leaf-read reads values from a plot.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "12", page: "rationale PDF p.12" },
