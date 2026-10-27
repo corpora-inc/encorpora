@@ -71,9 +71,11 @@ export const staarGrade7 = defineLedger(
       demand:
         "Choose the fix for a Venn diagram of rational numbers, integers and whole numbers where a quotient is misplaced",
       status: "partial",
-      templateIds: ["staar-number-sets"],
+      templateIds: ["staar-number-sets", "number-set-venn"],
       limitations:
-        "staar-number-sets fixes a misplaced quotient among nested sets described in words by choice; the item's drawn Venn diagram is not shown.",
+        "number-set-venn (single-choice-v1) draws the nested circles of whole numbers, integers and rational numbers and asks which region holds a number, which statement about the diagram is true or the smallest set containing a number; staar-number-sets states the sets in words. Choosing the fix for a diagram in which a quotient is misplaced is practiced only by words in staar-number-sets.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: {
@@ -189,10 +191,14 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["number.rational-operations"],
       demand:
         "Evaluate a signed expression that subtracts a mixed number times a whole number from a decimal",
-      status: "partial",
-      templateIds: ["signed-fraction-product", "operation-order"],
+      status: "covered",
+      templateIds: [
+        "decimal-rename-chain",
+        "signed-fraction-product",
+        "operation-order",
+      ],
       limitations:
-        "Related families multiply signed fractions or order operations on whole numbers; mixing a decimal with a mixed number is not practiced.",
+        "decimal-rename-chain decimal-minus-product subtracts a mixed number times a whole number from a decimal, and the result can be negative; choices are plain decimals.",
     },
     {
       item: {
@@ -435,7 +441,9 @@ export const staarGrade7 = defineLedger(
       status: "partial",
       templateIds: ["solid-volume-context"],
       limitations:
-        "solid-volume-context includes pyramid volumes in capacity and dimension contexts; the plain volume of a rectangular pyramid in cubic centimeters is not separately checked.",
+        "solid-volume-context asks the volume of a glass pyramid whose base is a square with a whole side; a pyramid on a rectangular base with different length and width is not practiced.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: {

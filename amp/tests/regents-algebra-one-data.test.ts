@@ -105,8 +105,8 @@ test("quartile list", () => {
   for (let i = 0; i < 300; i++) {
     const p = generateProblem("quartile-list", `q:${i}`);
     const values = p.public.prompt
-      .match(/values: \$([^$]+)\$/)![1]!
-      .split(/,\\ /)
+      .match(/values: ([\d, ]+)\./)![1]!
+      .split(", ")
       .map(Number);
     const s = [...values].sort((x, y) => x - y);
     const upper = p.public.prompt.includes("What is the upper");

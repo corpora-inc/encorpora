@@ -102,10 +102,14 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["expression.order-of-operations"],
       demand:
         "Choose the expression that results from the first step of the order of operations",
-      status: "partial",
-      templateIds: ["staar-nested-grouping", "operation-order"],
+      status: "covered",
+      templateIds: [
+        "expression-after-first-step",
+        "staar-nested-grouping",
+        "operation-order",
+      ],
       limitations:
-        "The templates evaluate an expression to a number; choosing the rewritten expression after only the first step is not practiced.",
+        "expression-after-first-step first-step-result gives an expression with a bracketed product and offers the expression after only the first step; the numbers are decimals in tenths or whole numbers.",
     },
     {
       item: { number: "7", page: "PDF p.11" },
@@ -113,10 +117,10 @@ export const vasolGrade5 = defineLedger(
       standards: ["SOL.2009.5.5b"],
       archetypeIds: ["decimal.add-subtract"],
       demand: "Add two decimal weights from a table and subtract a third",
-      status: "partial",
-      templateIds: ["multidigit-decimal-sum"],
+      status: "covered",
+      templateIds: ["decimal-rename-chain", "multidigit-decimal-sum"],
       limitations:
-        "multidigit-decimal-sum performs one addition or subtraction; combining two weights and subtracting a third from a table is a chain that is not practiced with decimals alone.",
+        "decimal-rename-chain table-add-subtract shows three decimal weights to hundredths in a table, adds the first two and subtracts the third, with numeric entry.",
     },
     {
       item: { number: "8", page: "PDF p.12" },
@@ -161,10 +165,14 @@ export const vasolGrade5 = defineLedger(
         "money.change",
       ],
       demand: "Find the total cost of a ticket and a drink for thirteen people",
-      status: "partial",
-      templateIds: ["decimal-multiplication", "wallet-purchase-chain"],
+      status: "covered",
+      templateIds: [
+        "price-count-chain",
+        "decimal-multiplication",
+        "wallet-purchase-chain",
+      ],
       limitations:
-        "wallet-purchase-chain adds two prices and subtracts a coupon and decimal-multiplication multiplies tenths; adding two prices and multiplying the sum by a count is not practiced.",
+        "price-count-chain adds two prices in dollars and cents and multiplies the sum by 12 to 24 people, or multiplies each price by its own count; choices are plain amounts, so numeric entry practices the same answer.",
     },
     {
       item: { number: "12", page: "PDF p.16" },
@@ -185,10 +193,10 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["fractions.add-subtract-unlike"],
       demand:
         "Subtract three mixed-number amounts of pie served from a total of ten",
-      status: "partial",
-      templateIds: ["fraction-total-minus-parts"],
+      status: "covered",
+      templateIds: ["fraction-term-chain", "fraction-total-minus-parts"],
       limitations:
-        "fraction-total-minus-parts subtracts the sum of two measures from a total; three mixed-number parts are not practiced.",
+        "fraction-term-chain whole-minus-three shows a whole-number total of 8 to 12 and three mixed-number amounts with unlike denominators in a table; numeric entry accepts the exact value, so the choices are practiced as an entered fraction.",
     },
     {
       item: { number: "14", page: "PDF p.18" },
@@ -208,10 +216,14 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["decimal.add-subtract"],
       demand:
         "Find the unknown weight in a table when a total and two other weights are known",
-      status: "partial",
-      templateIds: ["multidigit-decimal-sum", "wallet-purchase-chain"],
+      status: "covered",
+      templateIds: [
+        "decimal-rename-chain",
+        "multidigit-decimal-sum",
+        "wallet-purchase-chain",
+      ],
       limitations:
-        "The templates perform one decimal operation or a price chain; subtracting two decimal parts from a total read from a table is not practiced.",
+        "decimal-rename-chain table-missing-weight gives a decimal total and two decimal weights in a table and asks for the third; choices are plain decimals, so numeric entry practices the same answer.",
     },
     {
       item: { number: "16", page: "PDF p.20" },
@@ -220,10 +232,14 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["fractions.add-subtract-unlike"],
       demand:
         "Add three mixed-number distances with different denominators from a table",
-      status: "partial",
-      templateIds: ["add-fractions", "fraction-total-minus-parts"],
+      status: "covered",
+      templateIds: [
+        "fraction-term-chain",
+        "add-fractions",
+        "fraction-total-minus-parts",
+      ],
       limitations:
-        "add-fractions adds two proper fractions and fraction-total-minus-parts combines two measures; a sum of three mixed numbers is not practiced.",
+        "fraction-term-chain sum-of-three adds three mixed numbers with different denominators read from a table, answered as an exact fraction or decimal.",
     },
     {
       item: { number: "17", page: "PDF p.23" },
@@ -523,10 +539,14 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["linear.context", "expression.verbal"],
       demand:
         "Choose the equation that finds the miles walked so far when six more reach a goal of twenty-one",
-      status: "partial",
-      templateIds: ["one-step-equation-story", "staar-story-model-choice"],
+      status: "covered",
+      templateIds: [
+        "story-equation-choice",
+        "one-step-equation-story",
+        "staar-story-model-choice",
+      ],
       limitations:
-        "one-step-equation-story chooses an equation together with its solution and staar-story-model-choice picks multiplication or sharing equations; choosing an addition equation with an unknown part among equations that change the operation is not practiced.",
+        "story-equation-choice sets a one-step addition or subtraction story with an unknown start, change or result within 1,000 and offers equations with the letter, such as n + 6 = 21, among equations that change the operation or order.",
     },
     {
       item: { number: "43", page: "PDF p.49" },
@@ -549,7 +569,9 @@ export const vasolGrade5 = defineLedger(
       status: "partial",
       templateIds: ["staar-stem-leaf-combine"],
       limitations:
-        "staar-stem-leaf-combine adds or subtracts values read from a stem-and-leaf plot by entry; judging statements about the extreme values is not practiced.",
+        "staar-stem-leaf-combine adds or subtracts the greatest and least values read from a plot with a key by entry, and stem-leaf-read asks the median, mode, range and differences by choice; judging statements about the extreme values, a true-or-false choice, is not asked.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "45", page: "PDF p.51" },

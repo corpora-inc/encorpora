@@ -30,11 +30,11 @@ export function MathText({ text }: { text: string }) {
             key={i}
             className="math"
             data-plain={segment.plain}
-            // A short formula never breaks; a long one breaks at KaTeX's
-            // operator and relation points.
+            // Keep short formulas together when they fit. If one is wider
+            // than its container, allow KaTeX's operator and relation breaks.
             style={
               (segment.plain ?? segment.text).length <= SHORT
-                ? { whiteSpace: "nowrap" }
+                ? { display: "inline-block", maxWidth: "100%" }
                 : undefined
             }
             dangerouslySetInnerHTML={{

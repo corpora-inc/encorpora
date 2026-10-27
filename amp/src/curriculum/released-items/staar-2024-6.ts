@@ -48,10 +48,12 @@ export const staar2024Grade6 = defineLedger(
       archetypeIds: ["data.frequency-table-read", "univariate.center"],
       demand:
         "Read a tally chart of colors and name the colors that are the mode",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["tally-and-t-chart", "mode-of-data"],
       limitations:
-        "No family practices reading tally marks or finding the mode of categorical data.",
+        "tally-and-t-chart reads totals, one category and differences from a tally chart and mode-of-data finds the mode of a list of numbers; naming the most frequent categories of a tally chart, where several colors can tie, is not practiced.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "3", page: "rationale PDF p.3" },
@@ -308,9 +310,11 @@ export const staar2024Grade6 = defineLedger(
       demand:
         "Choose the Venn diagram that places listed numbers among rationals, integers and whole numbers",
       status: "partial",
-      templateIds: ["staar-number-sets"],
+      templateIds: ["staar-number-sets", "number-set-venn"],
       limitations:
-        "staar-number-sets places numbers among nested sets described in words by choice; the drawn Venn diagram options are not shown.",
+        "number-set-venn (single-choice-v1) draws the nested circles of whole numbers, integers and rational numbers and asks which region holds a number, which statement about the diagram is true or the smallest set containing a number; staar-number-sets states the sets in words. Choosing among several drawn diagrams the one that places listed numbers correctly is not practiced.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "25", page: "rationale PDF p.31" },

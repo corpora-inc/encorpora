@@ -48,14 +48,15 @@ export const staar2024Grade7 = defineLedger(
       standards: ["TEKS.7.2.3.A"],
       archetypeIds: ["number.rational-operations"],
       demand: "Subtract two fifths from forty-five hundredths",
-      status: "partial",
+      status: "covered",
       templateIds: [
+        "decimal-rename-chain",
         "staar-decimal-operations",
         "signed-fraction-sum",
         "multidigit-decimal-sum",
       ],
       limitations:
-        "staar-decimal-operations and multidigit-decimal-sum work with decimals and signed-fraction-sum with two fractions; renaming a fraction as a decimal to subtract from a decimal is not practiced.",
+        "decimal-rename-chain fraction-to-decimal adds or subtracts a fraction or mixed number with denominator 2, 4, 5, 10, 20 or 25 and a decimal in hundredths, renaming the fraction as a decimal; choices are plain decimals.",
     },
     {
       item: { number: "3", page: "rationale PDF p.3" },
@@ -91,10 +92,14 @@ export const staar2024Grade7 = defineLedger(
       ],
       demand:
         "Find the milk left after four days of uses written as sixteenths, eighths and fourths",
-      status: "partial",
-      templateIds: ["signed-fraction-sum", "add-fractions"],
+      status: "covered",
+      templateIds: [
+        "fraction-term-chain",
+        "signed-fraction-sum",
+        "add-fractions",
+      ],
       limitations:
-        "signed-fraction-sum adds two fractions; a four-term sum with three denominators and a final subtraction is not practiced.",
+        "fraction-term-chain uses-from-start takes four uses with denominators 4, 8 and 16 from a whole-number start, answered by numeric entry.",
     },
     {
       item: { number: "6", page: "rationale PDF p.6" },
@@ -222,9 +227,11 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["pattern.graph-relationship"],
       demand: "Choose the graph of a line where y is three more than half of x",
       status: "partial",
-      templateIds: ["graph-linear-equation"],
+      templateIds: ["graph-of-linear-rule", "graph-linear-equation"],
       limitations:
-        "graph-linear-equation places points of a line and is point-plot only; choosing among four drawn graphs has no choice family for a rule with a fraction coefficient.",
+        "graph-of-linear-rule (figure-choice-v1) chooses among four drawn lines for y=mx+b with fractional slopes such as 1/2 and intercepts of either sign; the item states the rule in words (y is 3 more than half of x), which must first be written as y=x/2+3, a step not practiced.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "16", page: "rationale PDF p.16" },
@@ -317,9 +324,12 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["finance.net-worth"],
       demand:
         "Find a savings account balance from a net worth and a list of assets and liabilities",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family practices assets, liabilities or net worth.",
+      status: "partial",
+      templateIds: ["net-worth-statement"],
+      limitations:
+        "net-worth-statement finds net worth from a table of assets and liabilities and total liabilities from total assets and net worth; finding one unknown asset, the savings balance, from the net worth and the other listed items is not asked.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "24", page: "rationale PDF p.24" },
@@ -341,12 +351,14 @@ export const staar2024Grade7 = defineLedger(
       item: { number: "25", page: "rationale PDF p.25" },
       responseFormat: "choice",
       standards: ["TEKS.7.3.9.B"],
-      archetypeIds: ["measure.circle"],
+      archetypeIds: ["measure.circle", "circle.parts"],
       demand: "Find the area of the circular lawn a sprinkler waters",
-      status: "partial",
+      status: "covered",
       templateIds: ["circle-area-coefficient"],
       limitations:
-        "circle-area-coefficient with pi-form=pi-3-14 practices this task (a whole radius or even diameter, pi as 3.14, a decimal area); the row stays partial only because the template's archetype link in the frozen template-archetypes list is circle.parts, not measure.circle.",
+        "circle-area-coefficient with pi-form=pi-3-14 practices this task by numeric entry: a whole radius or an even diameter, pi as 3.14 and a decimal area; its plain-number choices are subsumed by entry. The template is linked to the circle-parts archetype, which this row now also lists.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: { number: "26", page: "rationale PDF p.26" },
