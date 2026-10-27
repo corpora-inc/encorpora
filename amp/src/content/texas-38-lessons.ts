@@ -190,7 +190,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     method: [
       "Simplify first: $12/4$ equals $3$ and $-9/3$ equals $-3$.",
       "Start from the innermost set and move outward until the number fits. The number is in that set and every larger set.",
-      'A statement "every X is a Y" is true only when the circle for X lies inside the circle for Y.',
+      'A statement "every $X$ is a $Y$" is true only when the circle for $X$ lies inside the circle for $Y$.',
     ],
     watch:
       "Zero is whole but not natural. Negative numbers are integers but not whole. A fraction that simplifies to an integer is an integer.",
@@ -371,9 +371,9 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "Use the years worked, not the retirement age. For monthly pay, change to yearly pay before multiplying by years.",
   },
   "pi-as-ratio": {
-    goal: "Describe pi as the circumference divided by the diameter and compute it from a measured circle.",
+    goal: "Describe $\\pi$ as the circumference divided by the diameter and compute it from a measured circle.",
     intuition:
-      "Measure around any circle and across it through the center. The distance around is always a bit more than three times the distance across, and that number is pi.",
+      "Measure around any circle and across it through the center. The distance around is always a bit more than three times the distance across, and that number is $\\pi$.",
     terms: [
       ["circumference", "The distance around a circle."],
       [
@@ -381,7 +381,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
         "The distance across a circle through its center. It is twice the radius.",
       ],
       [
-        "pi",
+        "$\\pi$",
         "The ratio circumference divided by diameter, which is the same for every circle: about $3.14$.",
       ],
     ],
@@ -391,7 +391,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "Round as asked. Every circle gives about $3.14$, however large it is.",
     ],
     watch:
-      "Dividing the circumference by the radius gives about $6.28$, which is $2\\pi$. Pi uses the diameter.",
+      "Dividing the circumference by the radius gives about $6.28$, which is $2\\pi$. The ratio $\\pi$ uses the diameter.",
   },
   "experimental-probability-predict": {
     goal: "Find an experimental probability from trials, predict counts for more trials, and compare with expected counts.",
@@ -416,7 +416,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "Few trials can be far from the true probability by chance. More trials usually give an experimental probability closer to it.",
   },
   "cylinder-prism-surface-area": {
-    goal: "Find the lateral or total surface area of a cylinder in terms of pi, a missing height, or a triangular prism's surface area.",
+    goal: "Find the lateral or total surface area of a cylinder in terms of $\\pi$, a missing height, or a triangular prism's surface area.",
     intuition:
       "Surface area is the area of all the faces. A cylinder unrolls into two circles and one rectangle; a triangular prism has two triangles and three rectangles.",
     terms: [
@@ -913,7 +913,7 @@ export const texas38Lessons: Lesson[] = [
         stage: "formal",
         title: "Subsets",
         paragraphs: [
-          '$\\mathbb N\\subset\\mathbb W\\subset\\mathbb Z\\subset\\mathbb Q$. "Every X is a Y" is true exactly when X is a subset of Y.',
+          '$\\mathbb N\\subset\\mathbb W\\subset\\mathbb Z\\subset\\mathbb Q$. "Every $X$ is a $Y$" is true exactly when $X$ is a subset of $Y$.',
         ],
       },
     ],
@@ -1333,12 +1333,12 @@ export const texas38Lessons: Lesson[] = [
   }),
   lesson({
     id: "pi-ratio",
-    title: "Pi as a ratio",
+    title: "The circumference-to-diameter ratio",
     summary:
-      "Pi is the circumference of any circle divided by its diameter, about 3.14.",
+      "The ratio $\\pi$ (pi) is the circumference of any circle divided by its diameter, about 3.14.",
     templateIds: ["pi-as-ratio"],
     objectives: [
-      "Name the ratio that defines pi.",
+      "Name the ratio $\\pi$ as circumference divided by diameter.",
       "Compute circumference divided by diameter from measured values.",
     ],
     sections: [
@@ -1346,7 +1346,7 @@ export const texas38Lessons: Lesson[] = [
         stage: "intuition",
         title: "The same ratio for every circle",
         paragraphs: [
-          "Measure the distance around a can and the distance across it through the center. Divide the first by the second. You get about 3.14. A tiny coin and a giant wheel give the same number, which is called pi.",
+          "Measure the distance around a can and the distance across it through the center. Divide the first by the second. You get about 3.14. A tiny coin and a giant wheel give the same number, which is called $\\pi$.",
         ],
       },
     ],

@@ -14,6 +14,15 @@ export function familyFiles(names: readonly string[]): string[] {
     .sort();
 }
 
+/** The export lines of an index file, order-insensitive: two PRs that each
+ * append a line merge without conflict in any order. */
+export function familyIndexLines(source: string): string[] {
+  return source
+    .split("\n")
+    .filter((line) => line.startsWith("export { family as "))
+    .sort();
+}
+
 export function renderFamilyIndex(ids: readonly string[]): string {
   const aliases = new Map<string, string>();
   const lines = ids.map((id) => {
@@ -42,11 +51,18 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const expected = renderFamilyIndex(familyFiles(readdirSync(directory)));
   const current = readFileSync(indexPath, "utf8");
   if (args[0] === "--check") {
-    if (current !== expected) {
+    if (
+      JSON.stringify(familyIndexLines(current)) !==
+      JSON.stringify(familyIndexLines(expected))
+    ) {
       console.error(
         "src/families/index.ts is stale; run npm run families:index",
       );
       process.exit(1);
     }
-  } else if (current !== expected) writeFileSync(indexPath, expected);
+  } else if (
+    JSON.stringify(familyIndexLines(current)) !==
+    JSON.stringify(familyIndexLines(expected))
+  )
+    writeFileSync(indexPath, expected);
 }
