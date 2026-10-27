@@ -150,10 +150,10 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["measure.circle"],
       demand:
         "Find the circular sign's area from its diameter with 3.14 and place the estimate by drag and drop",
-      status: "covered",
+      status: "partial",
       templateIds: ["circle-estimate-blanks", "circle-area-coefficient"],
       limitations:
-        "circle-estimate-blanks finds the area of a circle from its diameter with 3.14, or chooses the measurements and quotient that estimate pi. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
+        "STAAR interaction: drag and drop, 2 points. circle-estimate-blanks finds the area of a circle from its diameter with 3.14 and picks the exact product from a list; rounding the result to a measurement is not practiced.",
     },
     {
       item: {
