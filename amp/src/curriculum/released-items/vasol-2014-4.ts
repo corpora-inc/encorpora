@@ -397,10 +397,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["time.elapsed"],
       demand:
         "Find the elapsed time between two afternoon times in hours and minutes",
-      status: "partial",
-      templateIds: ["clock-elapsed-minutes"],
+      status: "covered",
+      templateIds: ["elapsed-time-hm"],
       limitations:
-        "clock-elapsed-minutes finds minutes up to two hours between times on one morning; a span across the hour that is written as hours and minutes is not practiced.",
+        "elapsed-time-hm's elapsed variant gives two written times in the morning or afternoon and chooses the elapsed hours and minutes, with a no-borrow distractor.",
     },
     {
       item: { number: "33", page: "PDF p.39" },
@@ -408,10 +408,10 @@ export const vasolGrade4 = defineLedger(
       standards: ["SOL.2009.4.6a"],
       archetypeIds: ["measure.unit-choice"],
       demand: "Choose the object with a mass closest to one kilogram",
-      status: "partial",
-      templateIds: ["customary-unit-choice"],
+      status: "covered",
+      templateIds: ["object-for-measure"],
       limitations:
-        "customary-unit-choice chooses a customary unit for an object; choosing the object for a metric mass is not practiced.",
+        "object-for-measure asks which of four objects has a mass (or capacity) closest to a stated metric or customary measure, such as 1 kilogram, with objects at least four times too light or heavy as distractors.",
     },
     {
       item: { number: "34", page: "PDF p.40" },
@@ -535,10 +535,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["data.graph-read"],
       demand:
         "Find the day whose temperature on a line graph is closest to a given temperature",
-      status: "partial",
-      templateIds: ["coordinate-point-reading"],
+      status: "covered",
+      templateIds: ["line-graph-reader"],
       limitations:
-        "The graph-read templates read bar graphs and plotted points; choosing the nearest value on a line graph is not practiced.",
+        "line-graph-reader's closest-value variant asks on which day the graphed value is closest to a stated value, with the next-closest days as distractors.",
     },
     {
       item: { number: "45", page: "PDF p.51" },

@@ -293,10 +293,10 @@ export const vasolGrade5 = defineLedger(
       standards: ["SOL.2009.5.8c"],
       archetypeIds: ["measure.metric-mass-capacity", "measure.metric-length"],
       demand: "Rename 530 milliliters as liters",
-      status: "partial",
+      status: "covered",
       templateIds: ["metric-length-reverse"],
       limitations:
-        "metric-length-reverse converts a count of smaller metric lengths to a larger unit; metric capacity is not practiced.",
+        "metric-length-reverse's capacity variant renames a count of milliliters as liters (and grams as kilograms in its mass variant) by dividing by 1000.",
     },
     {
       item: { number: "22", page: "PDF p.28" },
@@ -329,10 +329,10 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["time.elapsed", "time.read-clock"],
       demand:
         "Find the end time of a movie of two hours and twenty-five minutes from a start clock",
-      status: "partial",
-      templateIds: ["clock-elapsed-minutes", "read-clock-five-minutes"],
+      status: "covered",
+      templateIds: ["elapsed-time-hm"],
       limitations:
-        "clock-elapsed-minutes finds minutes between two times by entry; adding hours and minutes to a clock reading and choosing the written time is not practiced.",
+        "elapsed-time-hm's end-time variant reads the start on an analog clock, adds hours and then minutes, and chooses the written end time.",
     },
     {
       item: { number: "25", page: "PDF p.31" },
@@ -456,10 +456,10 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["data.graph-read"],
       demand:
         "Judge statements about the greatest increase and decrease on a line graph of daily temperatures",
-      status: "partial",
-      templateIds: ["coordinate-point-reading"],
+      status: "covered",
+      templateIds: ["line-graph-reader"],
       limitations:
-        "coordinate-point-reading reads one coordinate of a point on a grid; comparing changes between consecutive plotted points to judge statements is not practiced.",
+        "line-graph-reader's statement variant asks which statement about the graph is true; statements cover the greatest increase, the greatest decrease, comparisons and extremes.",
     },
     {
       item: { number: "36", page: "PDF p.42" },
@@ -503,10 +503,10 @@ export const vasolGrade5 = defineLedger(
       archetypeIds: ["data.graph-read"],
       demand:
         "Judge statements comparing weekly counts on a line graph of soup boxes",
-      status: "partial",
-      templateIds: ["coordinate-point-reading"],
+      status: "covered",
+      templateIds: ["line-graph-reader"],
       limitations:
-        "coordinate-point-reading reads one coordinate of a point on a grid; comparing values across weeks of a line graph to judge statements is not practiced.",
+        "line-graph-reader's statement variant asks which statement about a graph of boxes sold each week is true; statements compare weeks, give differences and name extremes.",
     },
     {
       item: { number: "40", page: "PDF p.46" },

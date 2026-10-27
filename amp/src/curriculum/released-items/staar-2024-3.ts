@@ -196,10 +196,10 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["univariate.displays"],
       demand:
         "Find the miles on the sixth day from a dot plot of five days and the total",
-      status: "partial",
-      templateIds: ["staar-dot-plot-threshold"],
+      status: "covered",
+      templateIds: ["dot-plot-arithmetic"],
       limitations:
-        "staar-dot-plot-threshold counts dots; no family adds the values of the dots and subtracts from a total.",
+        "dot-plot-arithmetic's missing-value variant gives a dot plot of values and a total for one more day, and asks for the missing value.",
     },
     {
       item: { number: "15", page: "rationale PDF p.16" },

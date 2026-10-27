@@ -186,6 +186,17 @@ def solve(public):
         a,b = map(int,m.groups()); require(a>0 and b>0 and a!=b,'Unequal positive samples required')
         return only(public,lambda s:s,'Survey '+('A' if a>b else 'B')+' generally has a smaller margin of error.')
     if kind == 'compound-unit-conversion':
+        if 'per second squared' in p or 'per hour squared' in p:
+            # Both given factors are read from the prompt; the time factor applies twice.
+            length = Q(match(r'Given 1 kilometer = '+N+r' meters',p)[1]); time = Q(match(r'1 hour = '+N+r' seconds',p)[1])
+            require('Given 1 kilometer =' in p and '1 hour =' in p,'Unit factors')
+            if re.search(r'speeds up at '+N+r' meters per second squared',p):
+                v = Q(match(r'speeds up at '+N+r' meters per second squared',p)[1])
+                require('acceleration in kilometers per hour squared' in p,'Target unit')
+                return str(v*time**2/length)
+            v = Q(match(r'speeds up at '+N+r' kilometers per hour squared',p)[1])
+            require('acceleration in meters per second squared' in p,'Target unit')
+            return str(v*length/time**2)
         if 'kilometers per hour' in p:
             v = Q(match(N+r' kilometers per hour',p)[1]); return str(v*1000/3600)
         if 'square meters' in p:
@@ -436,6 +447,8 @@ def self_test():
     cases.append(item('exponential-time-scale',r'A population is modeled by $P(t)=80(1/2)^{t/12.4}$, where $t$ is in years. Which expression is an equivalent model with one factor per year? Each choice rounds the yearly factor to four decimal places.', [r'$P(t)=80\left(0.9456\right)^t$',r'$P(t)=80\left(1.0575\right)^t$',r'$P(t)=80\left(0.0403\right)^t$',r'$P(t)=80\left(0.9439\right)^t$']))
     cases.append(item('quadratic-parameter-root',r'For which value of $c$ does $-3x^2+24x+c=0$ have exactly one distinct real solution?',answer='-48'))
     cases.append(item('quadratic-parameter-root',r'For which value of $c$ does $-x^2+6x+c=0$ have exactly one distinct real solution?',answer='-9'))
+    cases.append(item('compound-unit-conversion','A train speeds up at 246240 kilometers per hour squared. Given 1 kilometer = 1000 meters and 1 hour = 3600 seconds, what is its acceleration in meters per second squared?',answer='19'))
+    cases.append(item('compound-unit-conversion','A cart speeds up at 3 meters per second squared. Given 1 kilometer = 1000 meters and 1 hour = 3600 seconds, what is its acceleration in kilometers per hour squared?',answer='38880'))
     count=0
     def reject(bad):
         nonlocal count
@@ -457,6 +470,8 @@ def self_test():
     equivalent=copy.deepcopy(cases[24]); equivalent['answer']='8/2'; review_problem(equivalent)
     bad=copy.deepcopy(cases[29]); bad['public']['figure']['scene']['elements'][0]['curves'][0]['fn']['num'][0]=5; reject(bad)
     bad=copy.deepcopy(cases[29]); bad['public']['figure']['scene']['elements'][0]['points'][0]['y']=2; reject(bad)
+    bad=copy.deepcopy(cases[-2]); bad['answer']='19/3600'; reject(bad)
+    bad=copy.deepcopy(cases[-1]); bad['answer']='10.8'; reject(bad)
     require(set(c['public']['templateId'] for c in cases)==SUPPORTED,'Missing family fixture')
     return {'fixtures':len(cases),'rejectedMutations':count}
 

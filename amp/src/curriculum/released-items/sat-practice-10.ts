@@ -38,9 +38,9 @@ export const satPractice10 = defineLedger(
       demand:
         "Read a line graph of percents by category year and name the category with the least value",
       status: "partial",
-      templateIds: ["scaled-bar-graph"],
+      templateIds: ["line-graph-reader"],
       limitations:
-        "Only scaled bar and picture graphs with numeric totals or differences; no line graph and no picking the category where the value is least.",
+        "line-graph-reader's category variant draws four categories as separate lines over five weeks and asks which has the greatest or least percent at a stated week; this item's times are years, not weeks, so a year-labelled axis is not practiced.",
     },
     {
       section: "Math module 1",
@@ -275,10 +275,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["function.intercepts"],
       demand:
         "Find both intercepts of a linear function from its rule and add the nonzero coordinates",
-      status: "partial",
-      templateIds: ["solution-coordinate"],
+      status: "covered",
+      templateIds: ["intercept-point-choice"],
       limitations:
-        "Substituting for a missing coordinate on a line is practiced; no template asks for x- and y-intercepts of a linear function.",
+        "intercept-point-choice's sum variant asks for the sum of the two nonzero intercept coordinates of a rule in standard or slope-intercept form, including negative and fractional values.",
     },
     {
       section: "Math module 1",

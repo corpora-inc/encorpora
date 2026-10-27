@@ -67,10 +67,10 @@ export const satPractice5 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Read the y-intercept of a graphed decreasing linear function as a point",
-      status: "partial",
-      templateIds: ["coordinate-point-reading", "graph-equation-choice"],
+      status: "covered",
+      templateIds: ["intercept-point-choice"],
       limitations:
-        "coordinate-point-reading reads one coordinate of a labeled point; graph-equation-choice uses intercepts of increasing lines only. No y-intercept identification with point choices.",
+        "intercept-point-choice draws a graphed line, increasing or decreasing, and asks for its y-intercept as an ordered pair, with coordinate-swap, sign and x-intercept distractors.",
     },
     {
       section: "Math module 1",
