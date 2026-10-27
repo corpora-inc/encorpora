@@ -659,7 +659,7 @@ def solve_linear_meaning(public):
     claims = {'rate': None}
 
     def part_truth(sentence):
-        r = re.fullmatch(r'The .+? (increases|decreases) by (\d+) ([a-z]+) for each additional ([a-z]+)\.', sentence)
+        r = re.fullmatch(r'The .+? (increases|decreases) by (\d+) ([a-z]+) (?:for each additional|per) ([a-z]+)\.', sentence)
         if r:
             require(r[3] == out_unit and r[4] == singular, f'Units in {sentence!r} must match the prompt')
             return (1 if r[1] == 'increases' else -1) * F(r[2]) == slope
@@ -678,6 +678,11 @@ def solve_linear_meaning(public):
         raise ValueError(f'Unknown meaning sentence {sentence!r}')
 
     def start_truth(sentence):
+        # Resolve the short second sentence to the same output and units; its
+        # time/event clause still goes through the full initial-value checks.
+        compact = re.fullmatch(r'It is (\d+) ([a-z]+) (.+)\.', sentence)
+        if compact:
+            sentence = f'The output {compact[3]} is {compact[1]} {compact[2]}.'
         r = re.fullmatch(r'The .+? (?:when the drain opens|at purchase|at planting) \(0 ([a-z]+)\) is (\d+) ([a-z]+)\.', sentence)
         if r is None:
             r = re.fullmatch(r'The .+? for a (?:trip|job) of 0 ([a-z]+) is (\d+) ([a-z]+)\.', sentence)
@@ -689,7 +694,7 @@ def solve_linear_meaning(public):
 
     def truth(o):
         label = o['label']
-        sentences = re.findall(r'The .+?\.(?= The |$)', label)
+        sentences = re.findall(r'(?:The|It) .+?\.(?= The | It |$)', label)
         require(''.join(sentences).replace(' ', '') == label.replace(' ', '') and 1 <= len(sentences) <= 2, f'Choice wording {label!r}')
         require(len(sentences) == (2 if question.startswith('Which') else 1), 'Sentence count must match the question')
         return all(start_truth(s) for s in sentences)
@@ -932,9 +937,10 @@ def solve_sqrt(public):
 
     def truth(o):
         text = o['label']
-        if text.startswith('Squaring also keeps solutions of $'):
-            eq = re.fullmatch(r'Squaring also keeps solutions of \$(.+)\$, so a candidate may satisfy the squared equation but not the original\.', text)
-            require(eq is not None, 'Reason wording')
+        eq = re.fullmatch(r'Squaring also keeps solutions of \$(.+)\$, so a candidate may satisfy the squared equation but not the original\.', text)
+        if eq is None:
+            eq = re.fullmatch(r'Squaring also admits solutions of \$(.+)\$, so a candidate can fail the original\.', text)
+        if eq:
             l2, r2 = sides(eq[1])
             return plain(l2).replace(' ', '') == plain(left).replace(' ', '') and plain(r2).replace(' ', '') == '-(' + plain(right).replace(' ', '') + ')'
         if text == 'Squaring changes the numbers, so the check is only to catch arithmetic mistakes.':
@@ -1015,6 +1021,12 @@ def self_test():
               'The population increases by 120 people for each additional year. The population in 1990 (0 years after 1990) is 5400 people.',
               'The population decreases by 120 people for each additional year. The population after one year is 5400 people.',
               'The population decreases by 5400 people for each additional year. The population in 1990 (0 years after 1990) is 120 people.'], 'a'),
+        make('interpret-linear-parameters',
+             'A town\'s population, $P$ people, $t$ years after 1990 is modeled by $P=5400-120t$. Which statement interprets both numbers in the model?',
+             ['The population decreases by 120 people per year. It is 5400 people in 1990 (0 years after 1990).',
+              'The population increases by 120 people per year. It is 5400 people in 1990 (0 years after 1990).',
+              'The population decreases by 120 people per year. It is 5400 people after one year.',
+              'The population decreases by 5400 people per year. It is 120 people in 1990 (0 years after 1990).'], 'a'),
         make('quadratic-form-conversion',
              'The parabola is $y=(x-1)(x-3)$. Which equation is its axis of symmetry?',
              ['$x=4$', '$x=1$', '$x=-2$', '$x=2$'], 'd'),
@@ -1027,6 +1039,17 @@ def self_test():
               '$x=4$: the square root there does not equal the right side.',
               '$x=11$: the right side $-x + 6$ equals -5, which is negative, but a square root is never negative.'], 'd'),
     ]
+    # Both phrasings must still name the exact equation with the opposite sign.
+    for wording in [
+        'Squaring also keeps solutions of $\\sqrt{3x - 8}=-(-x + 6)$, so a candidate may satisfy the squared equation but not the original.',
+        'Squaring also admits solutions of $\\sqrt{3x - 8}=-(-x + 6)$, so a candidate can fail the original.',
+    ]:
+        fixtures.append(make('square-root-extraneous',
+            'To solve $\\sqrt{3x - 8}=-x + 6$, a student squares both sides and finds $x=4$ and $x=11$. Why must each candidate be checked in the original equation?',
+            [wording,
+             'Squaring can make solutions disappear, so the check finds the missing ones.',
+             'Squaring changes the numbers, so the check is only to catch arithmetic mistakes.',
+             'A square root equation always has exactly one solution, and the check picks which.'], 'a'))
     rejected = 0
     by = lambda template: next(f for f in fixtures if f['public']['templateId'] == template)
 
@@ -1060,12 +1083,26 @@ def self_test():
     bad = copy.deepcopy(by('interpret-linear-parameters'))
     bad['public']['response']['options'][0]['label'] = bad['public']['response']['options'][0]['label'].replace('people', 'dollars')
     reject(bad, 'wrong unit')
+    compact = next(f for f in fixtures if f['public']['templateId'] == 'interpret-linear-parameters'
+                   and ' It is ' in f['public']['response']['options'][0]['label'])
+    for old, new in [('120 people per year', '120 dollars per year'),
+                     ('5400 people in', '5400 dollars in'),
+                     ('5400 people in', '5401 people in'),
+                     ('in 1990', 'in 1991')]:
+        bad = copy.deepcopy(compact)
+        bad['public']['response']['options'][0]['label'] = bad['public']['response']['options'][0]['label'].replace(old, new)
+        reject(bad, 'compact statement has an incorrect unit, initial value or year')
     bad = copy.deepcopy(by('complex-parts'))
     bad['public']['prompt'] = bad['public']['prompt'].replace('i^{11}', 'i^{12}')
     reject(bad, 'changed exponent')
     bad = copy.deepcopy(by('complex-quadratic-solve'))
     bad['public']['prompt'] = bad['public']['prompt'].replace('62', '12')
     reject(bad, 'real roots stated as complex')
+    reason = fixtures[-1]
+    for old, new in [('3x - 8', '3x - 9'), ('=-(-x + 6)', '=(-x + 6)')]:
+        bad = copy.deepcopy(reason)
+        bad['public']['response']['options'][0]['label'] = bad['public']['response']['options'][0]['label'].replace(old, new)
+        reject(bad, 'extraneous-root explanation changes the equation or omits the opposite sign')
     # typeset and plain fractions must both be read
     typeset = ev('\\frac{3}{4}+\\left(\\frac{1}{2}\\right)^{2}')
     assert typeset == ev('3/4+(1/2)^2') == G(1), 'fraction readings differ'
