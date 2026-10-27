@@ -175,6 +175,10 @@ nav button {
   .problem-content .question:has(.mtable) {
     font-size: 18px;
   }
+  /* Keep both account columns visible inside the phone's scrollbar gutters. */
+  .problem-content[data-template="interest-table-type"] .question > .math:has(.mtable) {
+    font-size: 16px;
+  }
 }
 .problem-content .figure {
   flex: 0 1 auto;
