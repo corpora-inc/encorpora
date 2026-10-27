@@ -125,7 +125,7 @@
 .work-columns {
   display: none;
 }
-@container (min-width: 560px) {
+@container (min-width: 480px) {
   .work-rows[data-layout="steps"] .work-fields:has(> .work-cell + .work-cell) {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   }
@@ -413,7 +413,7 @@
   gap: var(--space-1);
 }
 /* Wide: the two arrows sit side by side, so a row stays one line tall. */
-@container (min-width: 560px) {
+@container (min-width: 480px) {
   .work-move {
     grid-auto-flow: column;
   }

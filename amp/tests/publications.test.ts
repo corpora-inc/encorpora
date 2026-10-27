@@ -110,3 +110,13 @@ test("worked solution prompts keep structured tables and givens attached", () =>
     }
   }
 });
+
+test("a shown-work workbook lets a page-tall exercise break between its parts", () => {
+  const lesson = lessons.find((item) => item.id === "similarity-proof-aa");
+  assert.ok(lesson);
+  const html = publicationHtml(lesson, "workbook");
+  assert.match(html, /\.exercise:has\(>\.print-work/);
+  const plain = lessons.find((item) => item.id === "add-multidigit");
+  if (plain)
+    assert.doesNotMatch(publicationHtml(plain, "workbook"), /:has\(>\.print-work/);
+});

@@ -170,7 +170,7 @@ test(
         // so three correct picks before the miss keep grade-8 work in reach.
         const outcomes = [true, true, true, false];
         for (const [index, correct] of outcomes.entries()) {
-          const p = generateProblem("relation-function-choice", randomUUID());
+          const p = generateProblem("story-graph-match", randomUUID());
           await tx.saveProblem(p);
           await tx.saveAttempt({
             id: randomUUID(),
@@ -178,7 +178,7 @@ test(
             problemId: p.public.id,
             skillId: p.public.skillId,
             templateId: p.public.templateId,
-            response: correct ? p.answer : Object.keys(p.choiceFeedback!)[0]!,
+            response: correct ? p.answer : Object.keys(p.choiceFeedback!).find((key) => key !== p.answer)!,
             correct,
             assisted: false,
             answer: p.answer,
@@ -190,7 +190,7 @@ test(
         }
       });
       const choiceOnlySkill = generateProblem(
-        "relation-function-choice",
+        "story-graph-match",
         "compatibility-skill",
       ).public.skillId;
       assert.ok(
