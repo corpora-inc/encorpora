@@ -20,11 +20,11 @@ All 432 mathematics questions of the eight published nonadaptive digital SAT Pra
 
 | Status | Items |
 | --- | ---: |
-| Covered | 139 (32.2%) |
-| Partial | 285 (66.0%) |
-| Missing | 8 (1.9%) |
+| Covered | 199 (46.1%) |
+| Partial | 227 (52.5%) |
+| Missing | 6 (1.4%) |
 
-Student-produced numeric responses are covered at 37.5% (42 of 112) and multiple-choice questions at 30.3% (97 of 320). Nine numeric-entry questions have related practice only in choice families. 85 uncovered choice questions are practiced only by numeric entry, usually because their choices are expressions, equations, graphs or statements. Other partials come from narrower difficulty ranges (percent increases above 200%, negative leading coefficients, radical side lengths, decimal data), linear rules never written in function notation, or single-step families for chained tasks. The largest gaps are linear input-output and rule-building in function notation, exponential models, related-expression values, two-variable linear constraints, angle relationships, intercepts from graphs and nonlinear evaluation and transformation.
+Student-produced numeric responses are covered at 55.4% (62 of 112) and multiple-choice questions at 42.8% (137 of 320). Some numeric-entry questions have related practice only in choice families, and some uncovered choice questions are practiced only by numeric entry, usually because their choices are expressions, equations, graphs or statements. Other partials come from narrower difficulty ranges (percent increases above 200%, negative leading coefficients, radical side lengths, decimal data), linear rules never written in function notation, or single-step families for chained tasks. The largest gaps are linear input-output and rule-building in function notation, exponential models, related-expression values, two-variable linear constraints, angle relationships, intercepts from graphs and nonlinear evaluation and transformation.
 
 Practice Test 11 added no archetypes. Tests 7–10 each added at most three, and 94–100% of their questions fell on archetypes already seen, so the SAT task set is close to saturated at 83 archetypes.
 
@@ -36,17 +36,17 @@ All 260 mathematics items of the Spring 2025 STAAR released tests for grades 3 t
 
 | Test | Items | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: | ---: |
-| Grade 3 | 30 | 3 (10%) | 24 (80%) | 3 (10%) |
-| Grade 4 | 32 | 3 (9.4%) | 25 (78.1%) | 4 (12.5%) |
-| Grade 5 | 34 | 2 (5.9%) | 31 (91.2%) | 1 (2.9%) |
-| Grade 6 | 36 | 2 (5.6%) | 28 (77.8%) | 6 (16.7%) |
-| Grade 7 | 38 | 5 (13.2%) | 32 (84.2%) | 1 (2.6%) |
-| Grade 8 | 40 | 7 (17.5%) | 33 (82.5%) | 0 (0%) |
-| Algebra I | 50 | 13 (26%) | 37 (74%) | 0 (0%) |
+| Grade 3 | 30 | 10 (33.3%) | 18 (60%) | 2 (6.7%) |
+| Grade 4 | 32 | 11 (34.4%) | 19 (59.4%) | 2 (6.2%) |
+| Grade 5 | 34 | 14 (41.2%) | 20 (58.8%) | 0 (0%) |
+| Grade 6 | 36 | 14 (38.9%) | 20 (55.6%) | 2 (5.6%) |
+| Grade 7 | 38 | 11 (28.9%) | 27 (71.1%) | 0 (0%) |
+| Grade 8 | 40 | 12 (30%) | 28 (70%) | 0 (0%) |
+| Algebra I | 50 | 17 (34%) | 33 (66%) | 0 (0%) |
 
 Of the 260 items, 179 are multiple choice, 29 drag and drop, 19 inline choice, 12 multiselect, 10 equation editor, 6 hot spot, 3 graphing, 1 number line and 1 match table grid. Hot spot, drag and drop, graphing and number line are `graph/drag`; inline choice and match table grid are `other`; an equation editor is `numeric` when the answer is a number (8) and `constructed` when the learner types an expression or inequality (2). Only the point-plot protocol takes `graph/drag`, so 38 of the 39 such items are partial: only the graphing item that places two points of a proportional line is covered, while the dashed boundary and shading of an inequality, an exponential curve, number-line endpoints and arrows, hot-spot selection and drag-and-drop assembly have no protocol. The 12 multiselect items have only two families that take a multi-select response (quadrilateral categories and slope triangles), and the 20 inline-choice and match items (dropdown blanks, mostly with two parts) have none.
 
-The largest gaps are order of operations with nested groups, negatives and exponents, choosing or assembling the equation for a story, relationships between paired terms and tables, dot-plot, histogram and stem-and-leaf reading beyond a single count, area and perimeter chains and decimal sides, slope and intercept from points, the coordinate rule of a transformation and area, volume and surface-area chains. Fifteen items have no related practice: number words, percent-fraction-decimal renaming, credit and expense vocabulary, classification of number sets, benchmark fraction estimates, percentage bar graphs, strip diagrams for multistep stories, ratio writing, number-line diagrams of stories and properties of solid faces.
+The largest gaps are order of operations with nested groups, negatives and exponents, choosing or assembling the equation for a story, relationships between paired terms and tables, dot-plot, histogram and stem-and-leaf reading beyond a single count, area and perimeter chains and decimal sides, slope and intercept from points, the coordinate rule of a transformation and area, volume and surface-area chains. Six items have no related practice: properties of solid faces, number-line diagrams of stories, a strip diagram for a multistep story, benchmark fraction estimates, debit and credit card statements and a percentage bar graph.
 
 The STAAR sources are not saturated: from Grade 3 to Algebra I they add 21, 20, 15, 13, 7, 9 and 8 archetypes not seen in any earlier source, and 17% to 76% of their items fall on archetypes already seen. Elementary tests introduce the most.
 
@@ -98,8 +98,8 @@ All 106 questions of the June 2026 Regents Examinations in Algebra I (35), Geome
 | Exam | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: |
 | Algebra I | 10 (28.6%) | 24 (68.6%) | 1 (2.9%) |
-| Geometry | 16 (45.7%) | 19 (54.3%) | 0 (0.0%) |
-| Algebra II | 6 (16.7%) | 30 (83.3%) | 0 (0.0%) |
+| Geometry | 16 (45.7%) | 19 (54.3%) | 0 (0%) |
+| Algebra II | 6 (16.7%) | 30 (83.3%) | 0 (0%) |
 
 Part I multiple choice is 72 of 106 items and 27 of them are covered. The 34 constructed-response items are the main gap: 6 require a drawn graph (graph/drag) and 18 a written expression, construction, proof or explanation (constructed), and AMP has no protocol that can take either. The graph items need curves, shaded regions or scaled sketches, while point plotting accepts lattice points on a line. Nine items require a written proof, justification or explanation. The remaining 10 constructed-response items ask for one number and are numeric, but the rating guides also credit shown work, which AMP does not score, so five are covered. One item has no related family: graphing an absolute-value function.
 
@@ -130,8 +130,8 @@ A second labeler re-labeled a seeded random 10% sample (11 questions) without se
 
 1. Download the official question and answer PDFs into a scratch directory. Record the URL, edition, retrieval date and SHA-256, and read them with text extraction only.
 2. Create `src/curriculum/released-items/<source-id>.ts` with `defineLedger`. Label every mathematics item and set `complete: true` only when none is skipped. Write an original demand, the source's stated standards and response format, and the closest existing archetypes.
-3. Check candidate families by id, title and description, and generate two samples of each before citing it. Apply the status rules strictly. Link each cited template in `template-archetypes.ts`.
-4. Append the ledger to `releasedLedgers` in `index.ts`, run `npm run coverage:items`, and have a second labeler blind-relabel a random 10% sample. Record the agreement in the PR.
+3. Check candidate families by id, title and description, and generate two samples of each before citing it. Apply the status rules strictly. Link each cited template to an archetype: in `template-archetypes.ts` for a legacy template, or in its family descriptor's `archetypeLinks`.
+4. Register the ledger with a descriptor `src/families/<source-id>.ts` that exports `{ id, releasedLedgers: [ledger] }` and run `npm run families:index` ([content-family playbook](content-family-playbook.md#register-a-family-new-files-only)); it appends after the legacy ledger order. Run `npm run coverage:items`, and have a second labeler blind-relabel a random 10% sample. Record the agreement in the PR.
 
 ### Limits
 
