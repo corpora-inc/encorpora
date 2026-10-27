@@ -5,6 +5,7 @@ from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MU
 from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_CHOICE, solve_rational_equation, review_rational_equation_fixtures, review_rational_equation_problem
 from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, review_geometry_proof_fixtures, review_geometry_proof_problem
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
+import decimal
 import importlib
 import json
 import math
@@ -488,10 +489,20 @@ def solve_family(public):
         require(figure == {'kind': 'dataset', 'values': numbers} and len(numbers) == 5, 'Dataset mismatch')
         return f(sum(numbers), len(numbers))
     if template == 'right-triangle':
+        rounded = re.search(r'to the nearest (whole number|tenth)\?$', public['prompt'])
         a, b = numbers
         require(figure == {'kind': 'right-triangle', 'a': a, 'b': b, 'unit': 'cm'}, 'Triangle prompt/figure mismatch')
         square = a*a + b*b
         root = math.isqrt(square)
+        if rounded:
+            # Rounded form: the hypotenuse must be irrational, then round half up
+            # with 60-digit decimal arithmetic rather than the author's midpoint test.
+            require(root*root != square, 'A rounded hypotenuse needs an irrational root')
+            places = {'whole number': 0, 'tenth': 1}[rounded[1]]
+            with decimal.localcontext() as context:
+                context.prec = 60
+                value = decimal.Decimal(square).sqrt().quantize(decimal.Decimal(1).scaleb(-places), rounding=decimal.ROUND_HALF_UP)
+            return f(value)
         require(root*root == square, 'Integer-root family produced an irrational result')
         return root
     if template == 'quadratic-vertex':
@@ -499,6 +510,18 @@ def solve_family(public):
         require(coefficient > 0 and 'For real x' in prompt, 'Minimum requires positive coefficient and real domain')
         return vertex_y
     if template == 'geometric-sequence':
+        # Shrinking sequences are read from their own wording, as exact quotients.
+        divided = re.fullmatch(r'A pattern starts at ([0-9]+)\. Each term is the previous term divided by ([0-9]+)\. What is term ([0-9]+) \(the first term is term 1\)\?', public['prompt'])
+        ratio_form = re.fullmatch(r'A geometric sequence has first term ([0-9]+) and common ratio \$\\frac\{1\}\{([0-9]+)\}\$\. What is term ([0-9]+) \(the first term is term 1\)\?', public['prompt'])
+        shrinking = divided or ratio_form
+        if shrinking:
+            first, divisor, term = (int(value) for value in shrinking.groups())
+            require(divisor >= 2 and term >= 3, 'A shrinking sequence needs a divisor of at least 2')
+            result = f(first)
+            for _ in range(term - 1):
+                result /= divisor
+                require(result.denominator == 1, 'Every term of a shrinking sequence is a whole number')
+            return result
         first, ratio, term, first_label = numbers
         require(first_label == 1, 'Unsupported sequence indexing')
         result = first

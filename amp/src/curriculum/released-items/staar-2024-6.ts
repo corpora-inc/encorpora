@@ -95,10 +95,10 @@ export const staar2024Grade6 = defineLedger(
       archetypeIds: ["expression.polynomial"],
       demand:
         "Find the expression not equivalent to one half times a difference",
-      status: "partial",
+      status: "covered",
       templateIds: ["equivalent-expressions-check"],
       limitations:
-        "equivalent-expressions-check finds the expression that is not equivalent when the factor distributed is an integer; a fractional factor is not practiced.",
+        "equivalent-expressions-check with coefficients=fractional-factor asks which expression is not equivalent to a fraction times a binomial, such as one half times a difference.",
     },
     {
       item: { number: "7", page: "rationale PDF p.7" },
@@ -272,10 +272,10 @@ export const staar2024Grade6 = defineLedger(
       standards: ["TEKS.6.1.4.G"],
       archetypeIds: ["number.decimal-fraction-equivalent"],
       demand: "Choose the measure equal to 0.05 inch from fractions",
-      status: "partial",
+      status: "covered",
       templateIds: ["staar-rename-percent-fraction-decimal"],
       limitations:
-        "staar-rename-percent-fraction-decimal renames percents and improper fractions as decimals; writing a hundredths decimal as a fraction in lowest terms is not practiced.",
+        "staar-rename-percent-fraction-decimal with direction=decimal-to-fraction chooses the fraction in lowest terms equal to a two-place decimal such as 0.05; the measurement setting is not stated.",
     },
     {
       item: { number: "22", page: "rationale PDF p.26" },

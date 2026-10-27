@@ -266,10 +266,10 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["coordinate.distance-midpoint"],
       demand:
         "Choose the length of a segment between two plotted points, nearest of several decimal lengths",
-      status: "partial",
+      status: "covered",
       templateIds: ["coordinate-distance-exact"],
       limitations:
-        "coordinate-distance-exact chooses an exact distance; estimating the nearest decimal length is not practiced.",
+        "coordinate-distance-exact with answer-form=nearest-tenth or nearest-hundredth chooses the length of a segment between two plotted points among decimal lengths.",
     },
     {
       item: {
@@ -325,10 +325,10 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["triangle.pythagorean"],
       demand:
         "Find the missing leg of a right triangle with a decimal hypotenuse and give the nearest length",
-      status: "partial",
+      status: "covered",
       templateIds: ["right-triangle-missing-leg"],
       limitations:
-        "right-triangle-missing-leg uses integer right triangles; decimal sides and a nearest-value choice are not practiced.",
+        "right-triangle-missing-leg with lengths=tenths-nearest-tenth gives a decimal hypotenuse and a decimal leg and asks the other leg to the nearest tenth.",
     },
     {
       item: {

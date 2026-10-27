@@ -161,6 +161,15 @@ def choice_ids(public, expect=4):
     return options
 
 
+def mixed_value(text):
+    """A mixed number such as 2\\frac{1}{4} is 2 + 1/4; a plain fraction or integer is read as written."""
+    found = re.fullmatch(r'(\d+)\\frac\{(\d+)\}\{(\d+)\}', text)
+    if found:
+        require(0 < int(found[2]) < int(found[3]), 'A mixed number has a proper fractional part')
+        return Q(found[1]) + Q(found[2]) / Q(found[3])
+    return ev(text)
+
+
 def pick_numeric(public, expected):
     options = choice_ids(public)
     values = [label_value(o['label']) for o in options]
@@ -340,6 +349,26 @@ def solve_variation(public):
         require(len(hits) == 1, 'Exactly one multiplicative factor must match')
         return ids[hits[0]]
 
+    mixed = r'(\d+\\frac\{\d+\}\{\d+\}|\\frac\{\d+\}\{\d+\}|\d+)'
+    fractional = re.search(rf'When \$(\w)={mixed}\$, \$(\w)={mixed}\$\. What is \$(\w)\$ when \$(\w)={mixed}\$\?', prompt)
+    if fractional and '\\frac' in fractional[0]:
+        # Direct variation with mixed-number values: read each mixed number as
+        # whole + fraction (never as a product) and compare the choices exactly.
+        require(kind == 'direct', 'Mixed-number values are used for direct variation')
+        ind, x1, dep, y1, ask, ind2, x2 = (fractional[i] for i in range(1, 8))
+        require(ask == dep and ind2 == ind, 'Variable roles mismatch')
+        x1, y1, x2 = (mixed_value(v) for v in (x1, y1, x2))
+        require(x1 != 0 and x2 != 0 and x1 != x2, 'Distinct nonzero x values required')
+        expected = y1 / x1 * x2
+        values = []
+        for label in labels:
+            segs = maths(label)
+            require(len(segs) == 1, f'One math segment expected in {label!r}')
+            values.append(mixed_value(segs[0]))
+        require(len(set(values)) == len(values), 'Mathematically duplicate choices')
+        hits = [o['id'] for o, v in zip(options, values) if v == expected]
+        require(len(hits) == 1, f'Expected {expected} matches {len(hits)} choices')
+        return hits[0]
     pair = (re.search(r'When \$(\w)=(-?\d+)\$, \$(\w)=(-?\d+)\$\.', prompt)
             or re.search(r'The value of \$(\w)\$ is (-?\d+) when \$(\w)\$ is (-?\d+)\.', prompt)
             or re.search(r'\$(\w)=(\-?\d+)\$ when \$(\w)=(-?\d+)\$\.', prompt))
@@ -658,6 +687,8 @@ def self_test():
         F('system-expression-value', 'If $-3x + 3y=-3$ and $5x + 4y=14$, what is the value of $2x + 7y$?', ['$-42$', '$11$', '$-11$', '$-17$'], 1),
         F('system-expression-value', 'If $-8x - 2y=4$, what is the value of $-16x - 4y$?', ['$8$', '$-4$', '$2$', '$-8$'], 0),
         F('system-expression-value', 'If $-24x - 12y=-36$ and $-20x - 10y=-30$, what is the value of $-12x - 6y$?', ['$-18$', '$18$', '$-36$', '$0$'], 0),
+        F('variation-constant', 'The cost $C$, in dollars, of a bulk order varies directly with the number $n$ of items ordered. When $n=2\\frac{1}{2}$, $C=8\\frac{3}{4}$. What is $C$ when $n=2\\frac{1}{4}$?', ['$9\\frac{13}{18}$', '$8\\frac{1}{2}$', '$7\\frac{7}{8}$', '$19\\frac{11}{16}$'], 2),
+        F('variation-constant', 'The mass $m$, in grams, of a block cut from one metal varies directly with its volume $V$, in cubic centimeters. When $V=1\\frac{1}{2}$, $m=4\\frac{1}{2}$. What is $m$ when $V=3\\frac{1}{4}$?', ['$9\\frac{3}{4}$', '$6\\frac{1}{4}$', '$1\\frac{1}{2}$', '$14\\frac{5}{8}$'], 0),
         F('variation-constant', 'A fixed prize pool is split equally, so each winner\'s share $w$, in dollars, varies inversely with the number $n$ of winners. When $n=7$, $w=9$. What is $w$ when $n=9$?', ['$7$', '$63$', '$81$', '$\\frac{81}{7}$'], 0),
         F('variation-constant', 'The table shows three values of $y$ for three values of $x$. Which equation fits every row?\n$\\begin{array}{c|ccc}x&2&5&6\\\\\\hline y&5&14&17\\end{array}$', ['$y=x+3$', '$y=\\frac{5}{2}x$', '$y=3x-1$', '$y=\\frac{10}{x}$'], 2),
         F('variation-constant', 'The quantity $y$ varies inversely with $x$. By what factor does $y$ change when $x$ changes from 2 to 7?', ['$y$ is multiplied by $\\frac{4}{49}$', '$y$ is multiplied by $\\frac{7}{2}$', '$y$ is multiplied by $\\frac{2}{7}$', '$y$ increases by $5$'], 2),

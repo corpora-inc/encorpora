@@ -36,8 +36,17 @@ const cmp = (a: F, b: F) => {
   const r = b.n * a.d;
   return l < r ? -1 : l > r ? 1 : 0;
 };
-const RAT = String.raw`-?(?:\\frac\{\d+\}\{\d+\}|\d+)`;
+const RAT = String.raw`-?(?:\d+\\frac\{\d+\}\{\d+\}|\\frac\{\d+\}\{\d+\}|\d+)`;
 function parseRat(text: string): F {
+  // A mixed number is its whole part plus its fraction.
+  const mixed = /^(-?)(\d+)\\frac\{(\d+)\}\{(\d+)\}$/.exec(text);
+  if (mixed) {
+    const magnitude = plus(
+      f(BigInt(mixed[2]!)),
+      f(BigInt(mixed[3]!), BigInt(mixed[4]!)),
+    );
+    return mixed[1] ? f(-magnitude.n, magnitude.d) : magnitude;
+  }
   const frac = /^(-?)\\frac\{(\d+)\}\{(\d+)\}$/.exec(text);
   if (frac) return f(BigInt(frac[2]!) * (frac[1] ? -1n : 1n), BigInt(frac[3]!));
   assert.match(text, /^-?\d+$/);
@@ -449,6 +458,16 @@ test("variation-constant matches an independent model for every representation",
     const p = generateProblem("variation-constant", `o${seed}`);
     const prompt = p.public.prompt;
     const directText = prompt.includes("varies directly");
+    const mixedHit = new RegExp(
+      String.raw`When \$\w=(${RAT})\$, \$\w=(${RAT})\$\. What is \$\w\$ when \$\w=(${RAT})\$\?`,
+    ).exec(prompt);
+    if (mixedHit && mixedHit[0].includes("\\frac")) {
+      // Mixed-number values: the constant is y1 / x1 and the answer is k * x2.
+      assert.ok(directText, prompt);
+      const [x1, y1, x2] = [1, 2, 3].map((i) => parseRat(mixedHit[i]!));
+      expectValue(p, times(over(y1, x1), x2));
+      continue;
+    }
     let hit =
       /When \$\w\$=?|When \$(\w)=(\d+)\$, \$(\w)=(\d+)\$\. What is \$\w\$ when \$\w=(\d+)\$\?/.exec(
         prompt,

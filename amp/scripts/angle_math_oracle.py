@@ -4,6 +4,7 @@ Measures come from the drawn rays, relationships from the drawn lines, and
 lines of symmetry from reflecting the drawn vertices. Generated answers,
 hints and explanations never enter `solve_angle`.
 """
+import copy
 import math
 import re
 
@@ -109,6 +110,22 @@ def solve_angle(public):
             return sum(stated.values())
         return stated[f'{a}{b}{d}'] - next(v for k, v in stated.items() if k != f'{a}{b}{d}')
     if family == 'turn-degrees':
+        fraction = re.fullmatch(r'The shaded angle at the center of the circle is \$\\frac\{(\d+)\}\{(\d+)\}\$ of the full circle\. How many degrees is the shaded angle\?', prompt)
+        if fraction:
+            # A stated fraction of the full circle: the figure must shade exactly that
+            # sweep and draw only the two rays that bound it.
+            top, bottom = int(fraction[1]), int(fraction[2])
+            require(0 < top < bottom and math.gcd(top, bottom) == 1, 'A proper fraction in lowest terms')
+            expected = 360 * top / bottom
+            shaded = el['shaded']
+            require(abs(shaded['to'] - shaded['from'] - expected) < 1e-6, 'The shading matches the stated fraction')
+            spokes = [e for k, e in el.items() if k.startswith('spoke')]
+            dirs = [math.degrees(math.atan2(e['to'][1], e['to'][0])) % 360 for e in spokes]
+            bounds = [shaded['from'] % 360, shaded['to'] % 360]
+            apart = lambda a, b: min((a - b) % 360, (b - a) % 360)
+            require(len(spokes) == 2 and all(any(apart(d, b) < 1e-6 for d in dirs) for b in bounds) and
+                    apart(dirs[0], dirs[1]) > 1e-6, 'Two rays bound the shaded angle')
+            return round(expected)
         found = re.fullmatch(r'The circle is cut into (\d+) equal angles that meet at its center\. How many degrees is the shaded angle\?', prompt)
         spokes = [e for k, e in el.items() if k.startswith('spoke')]
         require(found is not None and int(found[1]) == len(spokes), 'The prompt counts the drawn angles')
@@ -217,6 +234,22 @@ def review_angle_fixtures():
     require(solve_angle(parts) == 75, '120 - 45')
     parts['figure']['scene']['elements'][0]['rays'] = [10, 60, 130]
     require(rejects(parts), 'A drawing that disagrees with its numbers is rejected')
+    def ray(angle):
+        return [math.cos(math.radians(angle)), math.sin(math.radians(angle))]
+    turn = {'templateId': 'turn-degrees',
+            'prompt': 'The shaded angle at the center of the circle is $\\frac{3}{8}$ of the full circle. How many degrees is the shaded angle?',
+            'figure': scene({'type': 'arc', 'id': 'shaded', 'from': 20, 'to': 155},
+                            {'type': 'segment', 'id': 'spoke0', 'from': [0, 0], 'to': ray(20)},
+                            {'type': 'segment', 'id': 'spoke3', 'from': [0, 0], 'to': ray(155)})}
+    require(solve_angle(turn) == 135, '3/8 of 360 is 135')
+    for mutate in (lambda t: t['figure']['scene']['elements'][0].update(to=160),
+                   lambda t: t['figure']['scene']['elements'][2].update(to=ray(150)),
+                   lambda t: t.update(prompt=t['prompt'].replace('frac{3}{8}', 'frac{6}{16}')),
+                   lambda t: t.update(prompt=t['prompt'].replace('frac{3}{8}', 'frac{9}{8}')),
+                   lambda t: t['figure']['scene']['elements'].pop()):
+        bad = copy.deepcopy(turn)
+        mutate(bad)
+        require(rejects(bad), 'A turn drawing that disagrees with its fraction is rejected')
     require(symmetry_axes([(-1, -1), (1, -1), (1, 1), (-1, 1)]) == 4, 'A square has 4 lines of symmetry')
     require(symmetry_axes([(-1.6, -0.8), (1.6, -0.8), (1.6, 0.8), (-1.6, 0.8)]) == 2, 'A rectangle has 2')
     require(symmetry_axes([(0, 0), (2.6, 0), (3.4, 1.4), (0.8, 1.4)]) == 0, 'A slanted parallelogram has none')

@@ -126,6 +126,22 @@ The gaps match June: constructed response (19 questions) and graph drawing (6) h
 
 A second labeler re-labeled a seeded random 10% sample (11 questions) without seeing the first labels. Response format agreed on 11 (100%), archetypes overlapped on 11 (100%), status on 9 (81.8%) and templates on 9 (81.8%). Two disagreements were resolved against the first labeler's status or citations: a family that draws a triangle and its image covers choosing a rigid motion (Geometry 1), and a family that reads logarithmic graphs is related practice for choosing a logarithm graph, so that question is partial instead of missing (Algebra II 4). One citation was widened to the family that interprets a coefficient (Algebra I 8).
 
+### Virginia SOL mathematics (2014 released tests)
+
+All 140 mathematics items of the spring 2014 Virginia Standards of Learning released tests for grades 3, 4 and 5 (40, 50 and 50 items) are labeled, one file per grade. These are the newest complete forms VDOE publishes: they assess the 2009 Mathematics Standards of Learning, and no form for the 2016 or 2023 revisions is released. The PDFs print each item as a picture and the answer key states the item type, the answer and one of four reporting categories, never a standard. Standards are classified against the 2009 grade standards, numbered as in VDOE's 2009 to 2016 crosswalk. doe.virginia.gov refused automated requests, so the files and their SHA-256 come from the Internet Archive's capture of the VDOE URLs. Virginia is not a Common Core state, and its forms use technology-enhanced items (drag, typed response, select all, click on a graph or number line).
+
+| Test | Items | Covered | Partial | Missing | New archetypes | Items on archetypes already seen |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Grade 3 | 40 | 6 (15%) | 27 (67.5%) | 7 (17.5%) | 13 | 65% |
+| Grade 4 | 50 | 15 (30%) | 28 (56%) | 7 (14%) | 5 | 86% |
+| Grade 5 | 50 | 12 (24%) | 29 (58%) | 9 (18%) | 8 | 80% |
+
+Of the 140 items, 120 are multiple choice, 9 typed numeric, 8 drag or click on a graph, and 3 select all. Covered items are mostly whole-number and decimal computation, estimation, unit renaming and fraction sums and differences. Statements, lists and drawn options keep most choice items partial. Of 23 missing items, 19 name one of 12 archetypes minted for this source: reading a thermometer, congruent figures, repeating patterns, properties of operations (identity, associative, distributive), building a set or spinner for a likelihood, a probability on a zero to one number line, triangles by sides, the figures made by cutting a shape, the mode, naming a measure of center or variation, a tile model of an equation, and the variable in a situation. The other four lack a family for hours renamed as minutes, a table matched to a survey total, a two-way table built from a description and the story for a subtraction sentence.
+
+The Virginia forms are not saturated. Grade 3 adds 13 archetypes not seen in any earlier source (5 minted, 8 existing archetypes no earlier source used) and 35% of its items fall on archetypes not yet seen. Grades 4 and 5 add 5 and 8, and 86% and 80% of their items fall on archetypes already seen, in line with the STAAR 2024 elementary tests. Early grades keep finding narrow tasks: measurement tools, properties, probability vocabulary and statistics vocabulary.
+
+A second labeler re-labeled a seeded random 10% sample (14 items across the three tests) without seeing the first labels. Response format agreed on 14 (100%), status on 13 (92.9%), archetypes overlapped on 10 (71.4%) and templates on 11 (78.6%). The archetype disagreements were a different archetype for the same task (a spinner or bag built for equal chances, a table matched to a total) or a minted archetype where the second labeler used the nearest existing one (the mode). The one status disagreement kept the rule from earlier sources: a family counts as related practice only if it practices the item's core operation, and customary renaming of lengths, weights and capacities is not renaming hours as minutes, so that item stays missing.
+
 ### Adding a source
 
 1. Download the official question and answer PDFs into a scratch directory. Record the URL, edition, retrieval date and SHA-256, and read them with text extraction only.
