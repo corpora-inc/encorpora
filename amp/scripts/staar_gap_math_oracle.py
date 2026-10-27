@@ -745,6 +745,10 @@ def self_test():
     reject(bad, 'two varying expenses')
     return {'fixtures': len(numeric) + len(choices), 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = CHOICE
+
+
 
 if __name__ == '__main__':
     print(self_test())

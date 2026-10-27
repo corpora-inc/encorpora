@@ -411,3 +411,7 @@ def self_test():
         except ValueError:
             continue
         raise AssertionError(f'Duplicate correct options accepted: {prompt}')
+
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = CHOICE

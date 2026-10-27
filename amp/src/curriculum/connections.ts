@@ -1,5 +1,6 @@
 import type { SkillConnection } from "./types";
 import { denseConnectionTable } from "./connections-dense";
+import { familyRegistry } from "../families/registry";
 
 /** Editorial connections supported by existing content, not assessment dependencies. */
 const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
@@ -353,6 +354,11 @@ export const curriculumConnections: typeof authoredConnections = [
   ...authoredConnections,
   ...parseConnectionTable(connectionTable),
   ...parseConnectionTable(denseConnectionTable),
+  // Frozen legacy entries above; families append from src/families/.
+  ...familyRegistry.connections.map((connection) => ({
+    ...connection,
+    templateIds: [...connection.templateIds],
+  })),
 ];
 
 export function connectionsFor(skillId: string): SkillConnection[] {

@@ -716,6 +716,10 @@ def self_test():
     reject(F('quadratic-from-data', 'The graph of a quadratic function $y=f(x)$ passes through $(0,0)$, $(1,1)$ and $(2,2)$. Which equation defines $f$?', ['$y=x$', '$y=x^2$', '$y=2x$', '$y=-x$'], 0), 'collinear points')
     return {'fixtures': len(cases), 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
+
+
 
 if __name__ == '__main__':
     print(self_test())

@@ -122,6 +122,10 @@ def self_test():
     assert rounded(F('4.685'), 2) == F('4.69')
     return {'fixtures': len(fixtures), 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
+
+
 
 if __name__ == '__main__':
     print(self_test())

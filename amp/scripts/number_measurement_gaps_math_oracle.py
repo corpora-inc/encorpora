@@ -667,6 +667,10 @@ def self_test():
     mutated(23, lambda p: p['response']['options'][0].update(label='A submarine is farther, because $-230$ is greater than $265$.'), 'false signed comparison')
     return {'fixtures': len(fixtures), 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = CHOICE_TEMPLATES
+
+
 
 if __name__ == '__main__':
     print(self_test())

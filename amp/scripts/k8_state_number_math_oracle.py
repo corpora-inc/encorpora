@@ -585,6 +585,10 @@ def self_test():
     reject(_number_problem('fewest-coins-change', 'A cashier owes 30 cents in change. Using quarters, dimes, nickels and pennies, what is the fewest number of coins the cashier can give?', '3'))
     return {'fixtures': len(good), 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = 'choice-response'
+
+
 
 if __name__ == '__main__':
     print(self_test())

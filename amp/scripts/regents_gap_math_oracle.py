@@ -678,6 +678,10 @@ def self_test():
            'mathematically duplicate zero sets')
     return {'fixtures': len(good), 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = CHOICE
+
+
 
 if __name__ == '__main__':
     print(self_test())

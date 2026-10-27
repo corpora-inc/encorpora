@@ -174,3 +174,7 @@ def self_test():
     return {'topologyFixtures':7,'figureFixtures':1,'rejectedMutations':rejected}
 
 if __name__=='__main__':print(self_test())
+
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED

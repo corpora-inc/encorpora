@@ -439,3 +439,7 @@ def self_test():
     good['prompt'] = good['prompt'].replace('1{,}144.00', '1{,}144.90')
     require(review_problem({'public': good, 'answer': 'option-a'}) == 'option-a', 'Valid table fixture rejected')
     require(rejected == 7, 'Finance corrupted fixtures were not all rejected')
+
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED

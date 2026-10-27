@@ -64,3 +64,7 @@ def self_test():
         bad=copy.deepcopy(p);bad['public']['response']['options'][0]['label']='$A$ or $A$';reject(bad)
     return {'fixtures':3,'rejectedMutations':rejected}
 if __name__=='__main__':print(self_test())
+
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED

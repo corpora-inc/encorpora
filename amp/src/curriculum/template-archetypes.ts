@@ -1,8 +1,10 @@
+import { familyRegistry } from "../families/registry";
+import { withFamilyEntries } from "../families/registry/aggregate";
 /** Template → archetypes it practices. Every template cited by a released
  * item must link to one of that item's archetypes. Skills and facets reach
  * archetypes through their templates. Every template must be linked;
  * `npm run coverage:items` reports how many are. */
-export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
+const legacyTemplateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "absolute-compound-inequality": ["inequality.absolute", "inequality.context"],
   "absolute-value-affine-equation": ["nonlinear.absolute"],
   "absolute-value-direct-equation": ["nonlinear.absolute"],
@@ -869,3 +871,10 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   ],
   "staar-number-sets": ["number.number-classification"],
 };
+/** Frozen legacy entries, then families from src/families/. */
+export const templateArchetypes: Readonly<Record<string, readonly string[]>> =
+  withFamilyEntries(
+    "archetype link",
+    legacyTemplateArchetypes,
+    familyRegistry.archetypeLinks,
+  );

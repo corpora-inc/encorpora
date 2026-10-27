@@ -750,6 +750,10 @@ def self_test():
     prompt_case(17, '3 rulers', '4 rulers', 'product changed')
     return {'fixtures': len(cases), 'rejectedMutations': rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
+
+
 
 if __name__ == '__main__':
     import json

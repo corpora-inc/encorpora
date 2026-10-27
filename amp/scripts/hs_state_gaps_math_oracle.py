@@ -811,3 +811,7 @@ def self_test():
                 'options': [dict(o) for o in options[:3]] + [dict(options[0], id=options[3]['id'])]}}}
         reject(twin, 'duplicate choice')
     return {'fixtures': len(fixtures), 'rejected': rejected}
+
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
