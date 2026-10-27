@@ -40,7 +40,7 @@ export const staar2024Grade8 = defineLedger(
       status: "partial",
       templateIds: ["cone-sphere-volume"],
       limitations:
-        "cone-sphere-volume gives the volume as a multiple of pi; the choices here are decimal approximations of the volume.",
+        "cone-sphere-volume in its approximate mode takes pi as 3.14 and gives the volume as a decimal from a sphere's radius or even diameter; the item's odd diameter of 13 mm, a radius of 6.5, and a closest-value choice are not practiced.",
     },
     {
       item: { number: "2", page: "rationale PDF p.2" },
@@ -253,10 +253,10 @@ export const staar2024Grade8 = defineLedger(
       archetypeIds: ["triangle.pythagorean"],
       demand:
         "Find the length of a roof as the hypotenuse of a right triangle to the nearest foot",
-      status: "partial",
+      status: "covered",
       templateIds: ["right-triangle"],
       limitations:
-        "right-triangle finds a hypotenuse from a scaled integer right triangle; a hypotenuse that needs rounding is not practiced.",
+        "right-triangle with hypotenuse=nearest-whole gives two legs whose hypotenuse is irrational and asks for it to the nearest whole number; the roof setting is not stated.",
     },
     {
       item: { number: "20", page: "rationale PDF p.20" },
@@ -289,10 +289,10 @@ export const staar2024Grade8 = defineLedger(
       archetypeIds: ["coordinate.distance-midpoint"],
       demand:
         "Find the distance between two plotted points whose legs are five and five",
-      status: "partial",
+      status: "covered",
       templateIds: ["coordinate-distance", "coordinate-distance-exact"],
       limitations:
-        "coordinate-distance finds whole-number distances and coordinate-distance-exact gives whole numbers or simplified roots; the item's choices are decimal lengths of an irrational distance.",
+        "coordinate-distance-exact with answer-form=nearest-tenth or nearest-hundredth asks the distance between two plotted points as a rounded decimal chosen among decimal lengths; equal legs such as 5 and 5 occur.",
     },
     {
       item: { number: "23", page: "rationale PDF p.23" },
@@ -301,10 +301,10 @@ export const staar2024Grade8 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Find y when x is two and three quarters from a direct variation with fractional values",
-      status: "partial",
+      status: "covered",
       templateIds: ["variation-constant"],
       limitations:
-        "variation-constant uses whole-number values; direct variation with fractional inputs and a fractional constant is not practiced.",
+        "variation-constant with values=fractional gives a direct variation with mixed-number inputs and a fractional constant and asks for the value at a new mixed-number input.",
     },
     {
       item: { number: "24", page: "rationale PDF p.24" },

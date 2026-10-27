@@ -47,7 +47,27 @@ def parse_circle(public):
     return template, found[1], dimension, angle
 
 
+APPROXIMATE_AREA = re.compile(r'A circle has a (radius|diameter) of ([1-9][0-9]*) cm\. Use 3\.14 for \$\\pi\$\. What is its area, in square centimeters\?')
+
+
+def solve_approximate_area(public):
+    """Area with pi taken as 3.14, from a whole radius or an even diameter."""
+    require(public.get('templateId') == 'circle-area-coefficient', 'Only the area family uses 3.14')
+    require(public.get('figure') is None, 'Unexpected runtime circle figure')
+    require(public.get('response') == {'kind': 'number', 'label': 'Area in square centimeters'},
+            'Approximate area response must be numeric')
+    found = APPROXIMATE_AREA.fullmatch(public.get('prompt', ''))
+    require(found is not None, 'Malformed approximate area statement')
+    given = int(found[2])
+    require(found[1] == 'radius' or given % 2 == 0, 'A diameter must be even so the radius is whole')
+    radius = Fraction(given) if found[1] == 'radius' else Fraction(given, 2)
+    require(2 <= radius <= 15, 'Radius outside the reviewed domain')
+    return Fraction(314, 100) * radius * radius
+
+
 def solve_circle(public):
+    if public.get('prompt', '').find('Use 3.14') >= 0:
+        return solve_approximate_area(public)
     template, kind, dimension, angle = parse_circle(public)
     diameter = dimension if kind == 'diameter' else dimension + dimension
     # C/π = diameter; A/π = diameter squared divided by four.
@@ -86,8 +106,37 @@ def review_circle_fixtures():
     for template, kind, dimension, angle, answer in cases:
         require(solve_circle(fixture(template, kind, dimension, angle)) == Fraction(answer),
                 'Circle handwritten fixture mismatch')
+    approximate = {'templateId': 'circle-area-coefficient',
+                   'prompt': 'A circle has a diameter of 10 cm. Use 3.14 for $\\pi$. What is its area, in square centimeters?',
+                   'response': {'kind': 'number', 'label': 'Area in square centimeters'}}
+    require(solve_circle(approximate) == Fraction('78.5'), 'Circle handwritten fixture mismatch')
+    approximate['prompt'] = approximate['prompt'].replace('diameter of 10', 'radius of 12')
+    require(solve_circle(approximate) == Fraction('452.16'), 'Circle handwritten fixture mismatch')
+    worked = {'public': {'id': 'x', 'templateId': 'circle-area-coefficient', 'templateVersion': 1, 'seed': 's', 'skillId': 'circle-measurement',
+                         'prompt': 'A circle has a diameter of 10 cm. Use 3.14 for $\\pi$. What is its area, in square centimeters?',
+                         'response': {'kind': 'number', 'label': 'Area in square centimeters'}},
+              'answer': '78.5', 'hint': 'Square the radius, then multiply by 3.14.',
+              'explanation': ['A diameter is twice the radius. Divide by 2: $r = 10 \\div 2 = 5$ cm.', 'Square the radius: $5 \\times 5 = 25$.',
+                              'Replace $\\pi$ with 3.14: $A \\approx 3.14 \\times 25 = 78.5$ square centimeters.']}
+    require(check_approximate_problem(worked) == Fraction('78.5'), 'Approximate worked fixture mismatch')
+    for change in (lambda w: w.__setitem__('answer', '79'), lambda w: w['explanation'].__setitem__(1, 'Square the radius: $5 \\times 5 = 24$.'),
+                   lambda w: w['explanation'].__setitem__(2, 'Replace $\\pi$ with 3.14: $A \\approx 3.14 \\times 25 = 78$ square centimeters.'),
+                   lambda w: w['public'].__setitem__('answer', '78.5'), lambda w: w.__setitem__('hint', ' ')):
+        altered = copy.deepcopy(worked); change(altered)
+        try:
+            check_approximate_problem(altered)
+        except (ValueError, KeyError):
+            continue
+        raise ValueError('Approximate circle checker accepted a corrupted problem')
     original = fixture('sector-area-coefficient', 'diameter', '7/2', 270)
     mutants = []
+    for old, new in [('radius of 12', 'diameter of 11'), ('radius of 12', 'radius of 1'), ('3.14', '3.1'),
+                     ('in square centimeters', 'in centimeters'), ('Use 3.14 for $\\pi$. ', '')]:
+        altered = copy.deepcopy(approximate)
+        altered['prompt'] = altered['prompt'].replace(old, new)
+        mutants.append(altered)
+    altered = copy.deepcopy(approximate); altered['response'] = {'kind': 'fraction', 'label': 'Exact coefficient $a$'}; mutants.append(altered)
+    altered = copy.deepcopy(approximate); altered['templateId'] = 'circle-circumference-coefficient'; mutants.append(altered)
     for old, new in [('7/2', '0'), ('7/2', '-1'), ('7/2', '2/2'),
                      ('7/2', '25'), ('270', '360'), ('270', '0'),
                      ('270', '361'), ('270', '25'), ('square centimeters', 'cm'),
@@ -152,6 +201,28 @@ def check_problem(problem):
             'Missing explicit circle solution')
     check_steps(public, problem['explanation'])
     return parse_circle(public), answer
+
+
+def check_approximate_problem(problem):
+    """An area with pi taken as 3.14: public shape, exact answer and the worked steps' arithmetic."""
+    public = problem['public']
+    require(set(public) == {'id', 'templateId', 'templateVersion', 'seed', 'skillId', 'prompt', 'response'},
+            'Unexpected public circle data or answer leakage')
+    require(public['templateVersion'] == 1 and public['skillId'] == 'circle-measurement', 'Wrong circle version or skill')
+    answer = solve_approximate_area(public)
+    require(Fraction(problem['answer']) == answer, 'Mismatch in approximate circle area')
+    require(isinstance(problem['hint'], str) and problem['hint'].strip(), 'Missing circle hint')
+    steps = problem['explanation']
+    require(len(steps) >= 3 and all(isinstance(step, str) and step.strip() for step in steps), 'Missing explicit circle solution')
+    found = APPROXIMATE_AREA.fullmatch(public['prompt'])
+    radius = int(found[2]) if found[1] == 'radius' else int(found[2]) // 2
+    squares = re.findall(r'\$(\d+) \\times (\d+) = (\d+)\$', ' '.join(steps))
+    require(squares and all(int(a) == int(b) == radius and int(a) * int(b) == int(c) for a, b, c in squares),
+            'False radius square in an approximate area')
+    products = re.findall(r'\$A \\approx 3\.14 \\times (\d+) = ([\d.]+)\$', steps[-1])
+    require(len(products) == 1 and int(products[0][0]) == radius * radius and Fraction(products[0][1]) == answer,
+            'False 3.14 product in an approximate area')
+    return answer
 
 
 def exact_expression(source, bindings):
@@ -371,6 +442,7 @@ def review_circle_content():
     require(records, 'Missing circle review export')
     check_manifest(records[0])
     seen, sheets, lessons = set(), set(), set()
+    approximate = 0
     values = {template: [] for template in CIRCLE}
     for record in records[1:]:
         template = record['templateId']; require(template in CIRCLE, 'Unknown circle export family')
@@ -381,6 +453,11 @@ def review_circle_content():
             problem = record['problem']
             require(problem == record['replayed'] and problem['public']['seed'] == f'circle-measurement-review-{record["index"]}' and problem['public']['templateId'] == template,
                     'Circle runtime determinism or identity mismatch')
+            if 'Use 3.14' in problem['public']['prompt']:
+                # The pi-3-14 surface of the area family: numeric, decimal, not a coefficient.
+                require(template == 'circle-area-coefficient', 'Only the area family uses 3.14')
+                check_approximate_problem(problem); approximate += 1
+                continue
             parsed, answer = check_problem(problem); values[template].append((*parsed[1:], answer))
         elif record['kind'] == 'circle-measurement-worksheet':
             key = (template, record['edition'])
@@ -392,13 +469,14 @@ def review_circle_content():
         else:
             raise ValueError('Unknown circle review record')
     require(len(seen) == 4096 and len(sheets) == 64 and lessons == CIRCLE, 'Incomplete circle review inventory')
+    require(approximate >= 100, 'The 3.14 area surface is not reached')
     for template, rows in values.items():
         require({row[0] for row in rows} == {'radius', 'diameter'} and
                 any(row[1].denominator > 1 for row in rows) and len(set(rows)) >= 30,
                 'Missing circle runtime variety')
         if not template.startswith('circle-'):
             require({row[2] for row in rows} == ANGLES, 'Circle runtime misses a central angle')
-    return {'runtimeCases': len(seen), 'worksheetEditions': len(sheets), 'lessons': len(lessons),
+    return {'runtimeCases': len(seen), 'approximateAreas': approximate, 'worksheetEditions': len(sheets), 'lessons': len(lessons),
             'exactFigures': 4, 'rejectedContentMutations': review_content_mutations(records)}
 
 

@@ -58,10 +58,10 @@ export const mcasGrade7 = defineLedger(
         "rational.signed-multiply",
       ],
       demand: "Divide a negative decimal by a positive decimal",
-      status: "partial",
+      status: "covered",
       templateIds: ["multidigit-decimal-quotient", "signed-fraction-product"],
       limitations:
-        "multidigit-decimal-quotient divides positive decimals and signed-fraction-product handles signs in fractions; a signed decimal quotient is not practiced.",
+        "multidigit-decimal-quotient with sign=negative-dividend divides a negative decimal by a positive decimal, and sign=negative-divisor and both-negative vary the signs; the quotient is entered as a signed decimal.",
     },
     {
       section: "Session 1",
@@ -72,10 +72,10 @@ export const mcasGrade7 = defineLedger(
       archetypeIds: ["sequence.geometric"],
       demand:
         "Find the sixth number of a pattern that divides by four each time",
-      status: "partial",
+      status: "covered",
       templateIds: ["geometric-sequence"],
       limitations:
-        "geometric-sequence finds a term with a whole-number ratio; a ratio of one fourth, written as repeated division, is not practiced.",
+        "geometric-sequence with ratio-form=divide-whole starts at a stated number and divides by a whole number for each step to a stated term, with every term a whole number.",
     },
     {
       section: "Session 1",

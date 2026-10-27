@@ -62,6 +62,8 @@ Released items often differ from practice only in surface: an equation written r
 - The chosen values are saved as `variant.axes` on the private problem and copied to its attempt, so calibration and review can compare axis values.
 - The independent oracle judges each displayed statement once; `scripts/variation_axes_oracle.py` decodes the answer format, splits either equation orientation and decides rationality exactly.
 
+Older families whose generators are one switch case or a `build(r)` function keep that shape: declare the family's axes in `src/math/number-domain-axes.ts` (`sweepAxes`), draw them with `sweepChoose(id, seed)` (their own hash streams, so the legacy value reproduces the old output), branch on the value inside the generator, and attach `sweepVariant(label, axes)` to the problem. Printed worksheets call the print case without axes and keep the legacy problems. `tests/number-domain-sweep.test.ts` freezes digests of the legacy output for every such family.
+
 Add an axis when the task, its answer and its misconceptions are unchanged and only the way they are shown or asked differs. Add a family when the mathematics differs: another relation, another reasoning step, other misconceptions or another required skill. Record what each axis value practices in the ledger row it closes.
 
 ## Lesson structure

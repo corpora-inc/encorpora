@@ -9,6 +9,7 @@ Malformed, inconsistent or ambiguous prompts are rejected.
 """
 import ast
 import copy
+import decimal as decimal_context
 import json
 import math
 import re
@@ -262,12 +263,27 @@ def radical_square(label):
 
 
 def solve_exact_distance(public):
-    m = re.fullmatch(r'Point A is at ' + POINT + ' and point B is at ' + POINT + r'\. What is the exact distance AB, in units\?', public['prompt'])
-    require(m is not None, 'Unrecognized exact-distance prompt')
+    head = 'Point A is at ' + POINT + ' and point B is at ' + POINT + r'\. What is the '
+    m = re.fullmatch(head + r'exact distance AB, in units\?', public['prompt'])
+    rounded = None if m else re.fullmatch(head + r'distance AB, in units, to the nearest (tenth|hundredth)\?', public['prompt'])
+    require(m is not None or rounded is not None, 'Unrecognized exact-distance prompt')
+    m = m or rounded
     p, q = (integer(m[1]), integer(m[2])), (integer(m[3]), integer(m[4]))
     require(p[0] != q[0] and p[1] != q[1], 'Distance item must be slanted')
     require_figure(public, [p, q], ['A', 'B'], closed=False)
     target = squared(p, q)
+    if rounded is not None:
+        # Decimal form: round the irrational distance half up with 60-digit decimals.
+        require(math.isqrt(target) ** 2 != target, 'A rounded distance needs an irrational root')
+        places = {'tenth': 1, 'hundredth': 2}[rounded[5]]
+        with decimal_context.localcontext() as context:
+            context.prec = 60
+            expected = Fraction(decimal_context.Decimal(target).sqrt().quantize(
+                decimal_context.Decimal(1).scaleb(-places), rounding=decimal_context.ROUND_HALF_UP))
+        def decimal_label(label):
+            require(re.fullmatch(r'\d+(?:\.\d+)?', label) is not None, 'Decimal choices are plain decimals')
+            return Fraction(label) == expected
+        return unique(public, decimal_label)
     return unique(public, lambda label: radical_square(label) == target)
 
 
@@ -484,6 +500,8 @@ def review_transformation_fixtures():
         (case('coordinate-rectangle-measure', 'Rectangle ABCD has vertices $A(−4, 3)$, $B(5, 3)$, $C(5, −2)$ and $D(−4, −2)$. What is its area, in square units?', grid([('given', True, 'ABCD', rect)])), Fraction(45)),
         (case('coordinate-distance', 'What is the distance between the points (−3, −1) and (5, 5)?'), Fraction(10)),
         (case('coordinate-distance-exact', 'Point A is at (1, 2) and point B is at (5, 4). What is the exact distance AB, in units?', grid([('given', False, 'AB', [(1, 2), (5, 4)])]), ['6', '$2\\sqrt{5}$', '20', '$4\\sqrt{5}$']), 'option-b'),
+        (case('coordinate-distance-exact', 'Point A is at (−2, −1) and point B is at (4, −4). What is the distance AB, in units, to the nearest hundredth?', grid([('given', False, 'AB', [(-2, -1), (4, -4)])]), ['45', '6.7', '6.71', '9']), 'option-c'),
+        (case('coordinate-distance-exact', 'Point A is at (3, 8) and point B is at (−6, 0). What is the distance AB, in units, to the nearest tenth?', grid([('given', False, 'AB', [(3, 8), (-6, 0)])]), ['12', '17', '145', '9']), 'option-a'),
         (case('transformation-image', 'Triangle ABC has vertices $A(1, 1)$, $B(4, 1)$ and $C(1, 3)$. It is rotated 90° counterclockwise about the origin to form triangle A′B′C′. What are the coordinates of B′?', grid([('given', True, 'ABC', tri)], motion={'kind': 'rotate', 'degrees': 90}), ['(1, −4)', '(−1, 4)', '(−4, 1)', '(4, −1)']), 'option-b'),
         (case('transformation-image', 'Triangle ABC has vertices $A(1, 1)$, $B(4, 1)$ and $C(1, 3)$. It is translated 6 units left and 2 units up to form triangle A′B′C′. What are the coordinates of C′?', grid([('given', True, 'ABC', tri)], motion={'kind': 'translate', 'dx': -6, 'dy': 2}), ['(7, 1)', '(−5, 5)', '(−4, −3)', '(3, −3)']), 'option-b'),
         (case('identify-rigid-motion', 'Triangle ABC has vertices $A(1, 1)$, $B(4, 1)$ and $C(1, 3)$. Triangle A′B′C′ has vertices $A′(1, −1)$, $B′(4, −1)$ and $C′(1, −3)$. Which single transformation maps triangle ABC onto triangle A′B′C′?', grid([('given', True, 'ABC', tri), ('image', True, ['A′', 'B′', 'C′'], [(1, -1), (4, -1), (1, -3)])]), ['A reflection over the y-axis', 'A translation 2 units down', 'A reflection over the x-axis', 'A rotation of 180° about the origin']), 'option-c'),
@@ -504,6 +522,11 @@ def review_transformation_fixtures():
         case('coordinate-side-length', 'Rectangle ABCD has vertices $A(−4, 3)$, $B(5, 3)$, $C(5, −2)$ and $D(−4, −2)$. What is the length of side AB, in units?', grid([('given', True, 'ABCD', [(-4, 3), (6, 3), (5, -2), (-4, -2)])])),
         case('coordinate-rectangle-measure', 'Rectangle ABCD has vertices $A(−4, 3)$, $B(5, 3)$, $C(6, −2)$ and $D(−4, −2)$. What is its area, in square units?', grid([('given', True, 'ABCD', [(-4, 3), (5, 3), (6, -2), (-4, -2)])])),
         case('coordinate-distance', 'What is the distance between the points (1, 2) and (5, 4)?'),
+        case('coordinate-distance-exact', 'Point A is at (0, 0) and point B is at (5, 12). What is the distance AB, in units, to the nearest tenth?', grid([('given', False, 'AB', [(0, 0), (5, 12)])]), ['13', '17', '169', '12']),
+        case('coordinate-distance-exact', 'Point A is at (−2, −1) and point B is at (4, −4). What is the distance AB, in units, to the nearest hundredth?', grid([('given', False, 'AB', [(-2, -1), (4, -4)])]), ['45', '6.7', '6.70', '9']),
+        case('coordinate-distance-exact', 'Point A is at (−2, −1) and point B is at (4, −4). What is the distance AB, in units, to the nearest hundredth?', grid([('given', False, 'AB', [(-2, -1), (4, -4)])]), ['45', '6.7', '6.72', '9']),
+        case('coordinate-distance-exact', 'Point A is at (−2, −1) and point B is at (4, −4). What is the distance AB, in units, to the nearest hundredth?', grid([('given', False, 'AB', [(-2, -1), (4, -4)])]), ['45', '$3\\sqrt{5}$', '6.71', '9']),
+        case('coordinate-distance-exact', 'Point A is at (−2, −1) and point B is at (4, −4). What is the distance AB, in units, to the nearest whole number?', grid([('given', False, 'AB', [(-2, -1), (4, -4)])]), ['45', '6.7', '6.71', '9']),
         case('coordinate-distance-exact', 'Point A is at (1, 2) and point B is at (5, 4). What is the exact distance AB, in units?', grid([('given', False, 'AB', [(1, 2), (5, 4)])]), ['6', '$\\sqrt{20}$', '20', '$4\\sqrt{5}$']),
         case('coordinate-distance-exact', 'Point A is at (1, 2) and point B is at (5, 4). What is the exact distance AB, in units?', grid([('given', False, 'AB', [(1, 2), (5, 4)])]), ['6', '$2\\sqrt{5}$', '$2\\sqrt{5}$', '$4\\sqrt{5}$']),
         case('transformation-image', 'Triangle ABC has vertices $A(1, 1)$, $B(4, 1)$ and $C(1, 3)$. It is rotated 90° counterclockwise about the origin to form triangle A′B′C′. What are the coordinates of B′?', grid([('given', True, 'ABC', tri)], motion={'kind': 'rotate', 'degrees': 270}), ['(1, −4)', '(−1, 4)', '(−4, 1)', '(4, −1)']),
