@@ -1,4 +1,4 @@
-import type { FormEvent } from "react";
+import { useLayoutEffect, useRef, useState, type FormEvent } from "react";
 import {
   figureChoiceLetter,
   figureChoiceName,
@@ -24,6 +24,59 @@ function markOf(review: FigureChoiceReview | null, id: string) {
   return null;
 }
 
+/** On a tablet or desktop the whole problem fits the stage: the tallest each
+ * option figure may be so every row of cards shares the height left below
+ * the prompt. The figure is laid out again at that height with its labels at
+ * their typeset size, so the plot shrinks and the text does not. The result
+ * depends only on the stage and the fixed card chrome, never on the current
+ * figure height, so measuring cannot oscillate. Phones scroll and keep full
+ * size. */
+const MIN_FIGURE = 176;
+function useFigureHeight() {
+  const root = useRef<HTMLFieldSetElement>(null);
+  const [cap, setCap] = useState<{ height: number; width: number } | undefined>(
+    undefined,
+  );
+  useLayoutEffect(() => {
+    const field = root.current;
+    const stage = field?.closest<HTMLElement>(".problem-stage");
+    if (!field || !stage) return;
+    const fit = () => {
+      const grid = field.querySelector<HTMLElement>(".figure-choice-grid");
+      const card = field.querySelector<HTMLElement>(".figure-choice-card");
+      const figure = field.querySelector<HTMLElement>(".figure-choice-figure");
+      if (!grid || !card || !figure || window.innerWidth < 768) {
+        setCap(undefined);
+        return;
+      }
+      const style = getComputedStyle(grid);
+      const columns = style.gridTemplateColumns.split(" ").length;
+      const rows = Math.ceil(grid.children.length / columns);
+      const gap = parseFloat(style.rowGap) || 0;
+      const above =
+        grid.getBoundingClientRect().top -
+        stage.getBoundingClientRect().top +
+        stage.scrollTop;
+      const below = parseFloat(getComputedStyle(stage).paddingBottom) || 0;
+      const chrome = card.offsetHeight - figure.offsetHeight;
+      const room = stage.clientHeight - above - below - (rows - 1) * gap;
+      const next = Math.floor(room / rows - chrome);
+      const height = Math.min(280, Math.max(MIN_FIGURE, next));
+      const width = Math.floor(figure.clientWidth);
+      setCap((old) =>
+        old?.height === height && old.width === width
+          ? old
+          : { height, width },
+      );
+    };
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(stage);
+    return () => observer.disconnect();
+  }, []);
+  return { root, cap };
+}
+
 /** Choose one of several figures. Every card is a whole-card radio button
  * with a letter, a reserved mark line and its figure, drawn at the size the
  * figure was laid out for so its labels stay legible; cards wrap to one
@@ -46,8 +99,10 @@ export function FigureChoiceInput({
   locked: boolean;
   review: FigureChoiceReview | null;
 }) {
+  const { root, cap } = useFigureHeight();
   return (
     <fieldset
+      ref={root}
       className="figure-choice"
       disabled={locked}
       data-reviewed={review ? "" : undefined}
@@ -79,7 +134,15 @@ export function FigureChoiceInput({
                 <span className="figure-choice-mark">{mark?.text ?? ""}</span>
               </span>
               <span className="figure-choice-figure" aria-hidden="true">
-                <SceneFigure scene={option.scene} kind="figure-option" />
+                <SceneFigure
+                  scene={
+                    cap && cap.width < (option.scene.width ?? 360)
+                      ? { ...option.scene, width: cap.width }
+                      : option.scene
+                  }
+                  kind="figure-option"
+                  maxHeight={cap?.height}
+                />
               </span>
             </label>
           );

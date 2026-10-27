@@ -18,8 +18,10 @@
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-3);
 }
-/* Two 240 px figures and their card padding side by side. */
-@container (min-width: 540px) {
+/* Two cards across wherever each keeps a figure of at least 190 px: a card
+   narrower than its figure's laid-out width relays the figure out narrower,
+   with its labels at their typeset size. */
+@container (min-width: 460px) {
   .figure-choice-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

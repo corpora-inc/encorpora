@@ -727,7 +727,10 @@ function variedRate(
   const meta = figureChoiceTemplates[1]!;
   const r = random(meta.id, seed);
   const scaled = scaleAxis === "scaled";
-  const S = scaled ? pick(r, [5, 10, 20]) : 1;
+  // A scaled decimal rate (n/2 per gridline unit of 5) must still print a
+  // decimal, so it uses halves with a scale of 5.
+  const S =
+    scaled && form === "decimal-rate" ? 5 : scaled ? pick(r, [5, 10, 20]) : 1;
   const c = pick(
     r,
     scaled ? [...EXTRA_CONTEXTS, ...CONTEXTS.slice(0, 4)] : CONTEXTS,
@@ -742,7 +745,10 @@ function variedRate(
   let T = 0;
   let timeNum = 1;
   if (form === "decimal-rate") {
-    const [n, d] = pick(r, DECIMAL_RATES);
+    const [n, d] = pick(
+      r,
+      scaled ? DECIMAL_RATES.filter(([, den]) => den === 2) : DECIMAL_RATES,
+    );
     rate = q(n, d);
     x0 = d;
     const shown = decimalText(value(rate) * S);

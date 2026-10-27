@@ -278,6 +278,8 @@ function graphOfPairedValues(seed: string, salt: string): GeneratedProblem {
           : [1, 2, 3];
     const xs = sample(r, xChoices, 3).sort((a, b) => a - b);
     pairs = xs.map((x) => [x, c * x] as Pt);
+    // Adding c agrees with multiplying at one x (x = 2 when c = 2): name an x where they differ.
+    const differing = xs.find((x) => x + c !== c * x) ?? xs[0]!;
     prompt = `${cap(ctx.yd)}, $y$, is ${num(c)} times ${ctx.xd}, $x$. Which graph shows the pairs for ${list(xs.map((x) => `$x = ${x}$`))}?`;
     hint = `For each $x$, multiply it by ${num(c)} to get $y$. Start with $x = ${xs[0]}$, then plot the pair: right ${xs[0]}, up by the $y$ you found.`;
     steps = [
@@ -307,7 +309,7 @@ function graphOfPairedValues(seed: string, salt: string): GeneratedProblem {
                   xs.map((x) => [x, x + c] as Pt),
                   n,
                   (name) =>
-                    `${name} adds ${num(c)} to $x$ instead of multiplying by ${num(c)}: for $x = ${xs[0]}$ it shows $y = ${num(xs[0]! + c)}$, not ${num(c * xs[0]!)}.`,
+                    `${name} adds ${num(c)} to $x$ instead of multiplying by ${num(c)}: for $x = ${differing}$ it shows $y = ${num(differing + c)}$, not ${num(c * differing)}.`,
                 ),
             },
             {
@@ -849,8 +851,8 @@ function graphAfterShift(seed: string, salt: string): GeneratedProblem {
     kind: "scene",
     scene: sceneOf(drawBase(plotWindow(), base, "ink")).build({
       title: "The graph of y = f(x)",
-      width: 280,
-      maxHeight: 280,
+      width: 230,
+      maxHeight: 230,
     }),
   };
   return problemOf(meta, seed, r, {

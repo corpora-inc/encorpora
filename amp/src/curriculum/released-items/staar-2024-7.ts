@@ -226,10 +226,10 @@ export const staar2024Grade7 = defineLedger(
       standards: ["TEKS.7.2.4.A"],
       archetypeIds: ["pattern.graph-relationship"],
       demand: "Choose the graph of a cost of twelve cents per kilowatt-hour",
-      status: "covered",
+      status: "partial",
       templateIds: ["graph-linear-equation", "graph-of-proportional-rate"],
       limitations:
-        "graph-of-proportional-rate with the decimal-rate and scaled-axis values: a unit rate such as 12 (1.2 times a gridline of 10) read on a scaled vertical axis. Contexts use other quantities than cents per kilowatt-hour.",
+        "graph-of-proportional-rate chooses among drawn graphs for a stated rate on unit and scaled vertical axes, but its contexts and rates do not include a price in cents per kilowatt-hour such as 12.",
     },
     {
       item: { number: "17", page: "rationale PDF p.17" },
