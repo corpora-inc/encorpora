@@ -611,8 +611,8 @@ def compass(public):
     if p.startswith('To construct the line through P parallel to line \\ell, you draw a transversal through P, then copy the angle'):
         return pick(public, lambda l: l == 'If corresponding angles formed by a transversal are congruent, the two lines are parallel.')
     require(p.startswith('These steps construct the perpendicular to line \\ell at point P on \\ell, but they are listed out of order.'), 'Unrecognised compass prompt')
-    steps = dict(re.findall(r'(?:^|\. | )([A-D])\. (.*?)(?= [A-D]\. |\sWhich order is correct\?)', p))
-    require(len(steps) == 4, 'Four lettered steps required')
+    steps = dict(re.findall(r'(?:^|\. | )Step ([1-4]): (.*?)(?= Step [1-4]: |\sWhich order is correct\?)', p))
+    require(len(steps) == 4, 'Four labeled steps required')
     rank = lambda s: 0 if s.startswith('Mark point') else 1 if s.startswith('With the compass centered at P') else 2 if s.startswith('Open the compass wider') else 3 if s.startswith('Draw line PZ') else None
     ranks = {k: rank(v) for k, v in steps.items()}
     require(None not in ranks.values() and sorted(ranks.values()) == [0, 1, 2, 3], 'Unreviewed construction steps')
@@ -739,6 +739,10 @@ def self_test():
     else:
         raise ValueError('Mismatched method prompt was accepted')
     return {'fixtures': len(good), 'rejectedMutations': rejected}
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
+
 
 
 if __name__ == '__main__':

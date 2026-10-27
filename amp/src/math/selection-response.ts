@@ -1,5 +1,6 @@
 import type { MultiSelectResponse, ProblemResponse } from "./contracts";
 import { normalizePointPlot, pointPlotAnswerText } from "./point-plot";
+import { multiPartAnswerText, normalizeMultiPart } from "./multi-part-choice";
 import { figureChoiceAnswerText } from "./figure-choice";
 
 export const MAX_SELECTION_OPTIONS = 8;
@@ -86,6 +87,11 @@ export function answerText(response: ProblemResponse, raw: string): string {
     if (normalizePointPlot(response, raw) === null)
       throw new Error("Worked answer must place the required grid points");
     return pointPlotAnswerText(response, raw);
+  }
+  if (response.kind === "multi-part-choice") {
+    if (normalizeMultiPart(response, raw) === null)
+      throw new Error("Worked answer must choose an option for every blank");
+    return multiPartAnswerText(response, raw);
   }
   if (response.kind === "figure-choice")
     return figureChoiceAnswerText(response, raw);

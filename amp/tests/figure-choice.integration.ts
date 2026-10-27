@@ -237,7 +237,7 @@ test(
       assert.equal(lesson.json().lesson.example.figure.kind, "scene");
       assert.equal(/option-[a-d]/.test(lesson.body), false);
 
-      // A report keeps the figure-choice response kind (migration 0066).
+      // A report keeps the figure-choice response kind (migration 0067).
       const report = await app.inject({
         method: "POST",
         url: base + "/problem-flags",

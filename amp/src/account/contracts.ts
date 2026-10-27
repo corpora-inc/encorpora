@@ -4,6 +4,7 @@ import { z } from "zod";
 export const familySummarySchema = z.object({
   purchaseMeasurement: purchaseMeasurementSchema.optional(),
   metaPurchaseMeasurement: purchaseMeasurementSchema.optional(),
+  openaiPurchaseMeasurement: purchaseMeasurementSchema.optional(),
   consent: z.object({
     status: z.enum(["active", "withdrawn", "not-recorded", "development"]),
     policyVersion: z.string().nullable(),

@@ -465,8 +465,8 @@ def spec_points(curve, grid):
 
 
 CURVE_PROMPT = re.compile(
-    r"^Graph \$(y = [^$]+)\$ (by placing 3 points on its curve|by placing its vertex and 2 other points on the curve"
-    r"|by placing its \$y\$-intercept and 2 other points on the curve|by placing its starting point and 2 other points on the curve)\.$")
+    r"^Graph \$(y = [^$]+)\$ (by placing 3 points|by placing its vertex and 2 more points"
+    r"|by placing its \$y\$-intercept and 2 more points|by placing its starting point and 2 more points)\.$")
 CURVE_KIND = {"graph-quadratic-points": "quadratic", "graph-absolute-value-points": "absolute",
               "graph-exponential-points": "exponential", "graph-sqrt-points": "root"}
 
@@ -971,7 +971,7 @@ def handwritten():
     curve_response = response_for(3, connect="curve", label="Place 3 points on the curve")
     exp_response = dict(curve_response, grid=dict(EXP_GRID))
     cases["parabola"] = fixture(
-        "graph-quadratic-points", "Graph $y = 2(x - 1)^2 - 3$ by placing its vertex and 2 other points on the curve.",
+        "graph-quadratic-points", "Graph $y = 2(x - 1)^2 - 3$ by placing its vertex and 2 more points.",
         curve_response, "[[0,-1],[1,-3],[2,-1]]",
         {"mode": "on-curve", "curve": {"kind": "quadratic", "a": [2, 1], "h": [1, 1], "k": [-3, 1]}, "required": [[1, -3]]},
         ["The vertex is the point $(h, k)$.",
@@ -980,7 +980,7 @@ def handwritten():
          "$x = 2$: $y = 2(2 - 1)^2 - 3 = 2 \\cdot 1 - 3 = -1$, so $(2, -1)$ is on the curve."],
         "Find the vertex $(h, k)$ first.")
     cases["parabola-standard"] = fixture(
-        "graph-quadratic-points", "Graph $y = x^2 - 4x + 1$ by placing its $y$-intercept and 2 other points on the curve.",
+        "graph-quadratic-points", "Graph $y = x^2 - 4x + 1$ by placing its $y$-intercept and 2 more points.",
         curve_response, "[[0,1],[1,-2],[2,-3]]",
         {"mode": "on-curve", "curve": {"kind": "quadratic", "a": [1, 1], "h": [2, 1], "k": [-3, 1]}, "required": [[0, 1]]},
         ["$x = 0$: $y = 0^2 - 4 \\cdot 0 + 1 = 0 + 0 + 1 = 1$, so $(0, 1)$ is on the curve.",
@@ -988,7 +988,7 @@ def handwritten():
          "$x = 2$: $y = 2^2 - 4 \\cdot 2 + 1 = 4 - 8 + 1 = -3$, so $(2, -3)$ is on the curve."],
         "Substitute $x = 0$ for the intercept.")
     cases["absolute"] = fixture(
-        "graph-absolute-value-points", "Graph $y = 2\\left|x + 1\\right| - 4$ by placing 3 points on its curve.",
+        "graph-absolute-value-points", "Graph $y = 2\\left|x + 1\\right| - 4$ by placing 3 points.",
         curve_response, "[[-2,-2],[-1,-4],[0,-2]],".rstrip(","),
         {"mode": "on-curve", "curve": {"kind": "absolute", "a": [2, 1], "h": [-1, 1], "k": [-4, 1]}},
         ["$x = -2$: $y = 2\\left|-2 + 1\\right| - 4 = 2 \\cdot 1 - 4 = -2$, so $(-2, -2)$ is on the curve.",
@@ -996,7 +996,7 @@ def handwritten():
          "$x = 0$: $y = 2\\left|0 + 1\\right| - 4 = 2 \\cdot 1 - 4 = -2$, so $(0, -2)$ is on the curve."],
         "Find where the inside is 0.")
     cases["exponential"] = fixture(
-        "graph-exponential-points", "Graph $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^x$ by placing 3 points on its curve.",
+        "graph-exponential-points", "Graph $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^x$ by placing 3 points.",
         exp_response, "[[-2,12],[-1,6],[0,3]]",
         {"mode": "on-curve", "curve": {"kind": "exponential", "a": [3, 1], "b": [1, 2]}},
         ["$x = -2$: $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^{-2} = 3 \\cdot 4 = 12$, so $(-2, 12)$ is on the curve.",
@@ -1004,7 +1004,7 @@ def handwritten():
          "$x = 0$: $y = 3 \\cdot \\left(\\frac{1}{2}\\right)^{0} = 3 \\cdot 1 = 3$, so $(0, 3)$ is on the curve."],
         "Make a table starting at $x = 0$.")
     cases["root"] = fixture(
-        "graph-sqrt-points", "Graph $y = 2\\sqrt{x + 3} - 1$ by placing its starting point and 2 other points on the curve.",
+        "graph-sqrt-points", "Graph $y = 2\\sqrt{x + 3} - 1$ by placing its starting point and 2 more points.",
         curve_response, "[[-3,-1],[-2,1],[1,3]]",
         {"mode": "on-curve", "curve": {"kind": "root", "a": [2, 1], "h": [-3, 1], "k": [-1, 1]}, "required": [[-3, -1]]},
         ["$x = -3$: $y = 2\\sqrt{-3 + 3} - 1 = 2 \\cdot \\sqrt{0} - 1 = 0 - 1 = -1$, so $(-3, -1)$ is on the curve.",
@@ -1126,10 +1126,10 @@ def self_test():
     mutate("parabola", setter("explanation", 1, value="$x = 0$: $y = 2(0 - 1)^2 - 3 = 2 \\cdot 1 - 3 = 1$, so $(0, -1)$ is on the curve."),
            "false substitution")
     mutate("parabola", setter("hint", value="Find the vertex, which is $(1, -3)$."), "hint places the vertex")
-    mutate("parabola", setter("public", "prompt", value="Graph $y = 2(x - 1)^2 - 3$ by placing 3 points on its curve."),
+    mutate("parabola", setter("public", "prompt", value="Graph $y = 2(x - 1)^2 - 3$ by placing 3 points."),
            "prompt drops the required vertex")
     mutate("parabola-standard", setter("pointGrading", "required", value=[[2, -3]]), "vertex required for an intercept ask")
-    mutate("absolute", setter("public", "prompt", value="Graph $y = 2\\left|x - 1\\right| - 4$ by placing 3 points on its curve."),
+    mutate("absolute", setter("public", "prompt", value="Graph $y = 2\\left|x - 1\\right| - 4$ by placing 3 points."),
            "sign inside the bars")
     mutate("absolute", setter("answer", value="[[-3,0],[-1,-4],[0,-2]]"), "absolute value point off the V")
     mutate("exponential", setter("public", "response", "grid", value=dict(GRID)), "exponential window")
@@ -1137,7 +1137,7 @@ def self_test():
     mutate("exponential", setter("pointGrading", "curve", "b", value=[2, 1]), "growth for decay")
     mutate("root", setter("answer", value="[[-3,-1],[-2,1],[-1,2]]"), "irrational output placed")
     mutate("root", setter("pointGrading", "required", value=[[-2, 1]]), "start is not the first point")
-    mutate("root", setter("public", "prompt", value="Graph $y = 2\\sqrt{x + 3} - 1$ by placing its vertex and 2 other points on the curve."),
+    mutate("root", setter("public", "prompt", value="Graph $y = 2\\sqrt{x + 3} - 1$ by placing its vertex and 2 more points."),
            "a root has no vertex")
     mutate("segment", setter("public", "response", "given", "closed", value=True), "closed segment")
     mutate("segment", setter("public", "response", "connect", value="line"), "segment connect")
@@ -1152,6 +1152,10 @@ def self_test():
     flat["public"]["prompt"] = flat["public"]["prompt"].replace("C(1, 5)", "C(7, 2)")
     mutations += expect_rejected(flat, "collinear triangle")
     return {"handwritten_cases": len(cases), "mutations": mutations}
+
+# Read by independent-math-review.py (FamilyOracle).
+REVIEW_RETURNS_ANSWER = True
+
 
 
 if __name__ == "__main__":

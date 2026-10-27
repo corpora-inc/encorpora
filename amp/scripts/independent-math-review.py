@@ -1,42 +1,10 @@
-from sat_algebra_structure_math_oracle import SUPPORTED as SAT_ALGEBRA_STRUCTURE, solve as solve_sat_algebra_structure, self_test as review_sat_algebra_structure_fixtures, review_problem as review_sat_algebra_structure_problem
-from sat_completion_math_oracle import SUPPORTED as SAT_COMPLETION, CHOICE as SAT_COMPLETION_CHOICE, solve as solve_sat_completion, self_test as review_sat_completion_fixtures, review_problem as review_sat_completion_problem
 #!/usr/bin/env python3
 """Independent prompt-based exact oracle. Read export-math-cases.ts JSONL on stdin."""
-from staar_gap_math_oracle import SUPPORTED as STAAR_GAPS, CHOICE as STAAR_GAP_CHOICE, solve as solve_staar_gaps, review_problem as review_staar_gaps_problem, self_test as review_staar_gaps_fixtures
-from advanced_math_gaps_math_oracle import SUPPORTED as ADVANCED_MATH_GAPS, solve as solve_advanced_math_gaps, review_problem as review_advanced_math_gaps_problem, self_test as review_advanced_math_gaps_fixtures
-from sat_geometry_data_math_oracle import SUPPORTED as SAT_GEOMETRY_DATA, solve as solve_sat_geometry_data, review_problem as review_sat_geometry_data_problem, self_test as review_sat_geometry_data_fixtures
-from trigonometry_math_oracle import SUPPORTED as TRIGONOMETRY, solve as solve_trigonometry, review_problem as review_trigonometry_problem, self_test as review_trigonometry_fixtures
-from slope_triangle_math_oracle import SUPPORTED as SLOPE_TRIANGLE, solve as solve_slope_triangle, review_problem as review_slope_triangle_problem, self_test as review_slope_triangle_fixtures
-from point_plot_math_oracle import SUPPORTED as POINT_PLOT, solve as solve_point_plot, review_problem as review_point_plot_problem, self_test as review_point_plot_fixtures
-from figure_choice_math_oracle import SUPPORTED as FIGURE_CHOICE, solve as solve_figure_choice, review_problem as review_figure_choice_problem, self_test as review_figure_choice_fixtures
-from mcas_gap_math_oracle import SUPPORTED as MCAS_GAP, solve as solve_mcas_gap, review_problem as review_mcas_gap_problem, self_test as review_mcas_gap_fixtures
 from quadrilateral_hierarchy_multiselect_oracle import SUPPORTED as HIERARCHY_MULTISELECT, solve as solve_hierarchy_multiselect, review_problem as review_hierarchy_multiselect_problem, self_test as review_hierarchy_multiselect_fixtures
-from number_measurement_gaps_math_oracle import SUPPORTED as NUMBER_MEASUREMENT, CHOICE_TEMPLATES as NUMBER_MEASUREMENT_CHOICE, solve as solve_number_measurement, review_problem as review_number_measurement_problem, self_test as review_number_measurement_fixtures
-from remaining_gap_math_oracle import SUPPORTED as REMAINING_GAP, solve as solve_remaining_gap, review_problem as review_remaining_gap_problem, self_test as review_remaining_gap_fixtures
-from geometry_modeling_math_oracle import SUPPORTED as GEOMETRY_MODELING, solve as solve_geometry_modeling, review_problem as review_geometry_modeling_problem, self_test as review_geometry_modeling_fixtures
-from vectors_matrices_math_oracle import SUPPORTED as VECTORS_MATRICES, solve as solve_vectors_matrices, review_problem as review_vectors_matrices_problem, self_test as review_vectors_matrices_fixtures
-from function_behavior_math_oracle import SUPPORTED as FUNCTION_BEHAVIOR, solve as solve_function_behavior, review_problem as review_function_behavior_problem, self_test as review_function_behavior_fixtures
-from statistics_probability_math_oracle import SUPPORTED as STAT_PROB, solve as solve_stat_prob, review_problem as review_stat_prob_problem, self_test as review_stat_prob_fixtures
-from geometry_proof_families_math_oracle import SUPPORTED as GEOMETRY_FAMILIES, solve as solve_geometry_families, review_problem as review_geometry_family_problem, self_test as review_geometry_family_fixtures
-from k8_representations_math_oracle import SUPPORTED as K8_REPRESENTATIONS, solve as solve_k8_representations, review_problem as review_k8_representations_problem, self_test as review_k8_representations_fixtures
-from k8_state_number_math_oracle import SUPPORTED as K8_STATE_NUMBER, solve as solve_k8_state_number, review_problem as review_k8_state_number_problem, self_test as review_k8_state_number_fixtures
-from florida_gaps_math_oracle import SUPPORTED as FLORIDA_GAPS, FL_CHOICE, solve as solve_florida_gaps, review_problem as review_florida_gaps_problem, self_test as review_florida_gaps_fixtures
-from sat_geometry_advanced_math_oracle import SUPPORTED as SAT_GEOMETRY_ADVANCED, CHOICE as SAT_GEOMETRY_ADVANCED_CHOICE, solve as solve_sat_geometry_advanced, review_problem as review_sat_geometry_advanced_problem, self_test as review_sat_geometry_advanced_fixtures
-from complex_math_oracle import SUPPORTED as COMPLEX, solve as solve_complex, review_problem as review_complex_problem, self_test as review_complex_fixtures
-from sat_numeric_entry_math_oracle import SUPPORTED as SAT_NUMERIC_ENTRY, solve as solve_sat_numeric_entry, review_problem as review_sat_numeric_entry_problem, self_test as review_sat_numeric_entry_fixtures
-from complex_conics_math_oracle import SUPPORTED as COMPLEX_CONICS, solve as solve_complex_conics, review_problem as review_complex_conics_problem, self_test as review_complex_conics_fixtures
-from algebra_requirement_gaps_math_oracle import SUPPORTED as ALGEBRA_REQUIREMENT_GAPS, solve as solve_algebra_requirement_gaps, review_problem as review_algebra_requirement_gaps_problem, self_test as review_algebra_requirement_gaps_fixtures
-from geometry_requirement_gaps_math_oracle import SUPPORTED as GEOMETRY_REQUIREMENT_GAPS, solve as solve_geometry_requirement_gaps, review_problem as review_geometry_requirement_gaps_problem, self_test as review_geometry_requirement_gaps_fixtures
 from rational_equation_math_oracle import RATIONAL_EQUATION, RATIONAL_EQUATION_CHOICE, solve_rational_equation, review_rational_equation_fixtures, review_rational_equation_problem
 from geometry_proof_math_oracle import GEOMETRY_PROOF, solve_geometry_proof, review_geometry_proof_fixtures, review_geometry_proof_problem
 from radical_equation_math_oracle import RADICAL_EQUATION, RADICAL_EQUATION_CHOICE, solve_radical_equation, review_radical_equation_fixtures, review_radical_equation_problem
-from assessment_gap_math_oracle import SUPPORTED as ASSESSMENT_GAP, CHOICE as ASSESSMENT_GAP_CHOICE, solve as solve_assessment_gap, self_test as review_assessment_gap_fixtures, review_problem as review_assessment_gap_problem
-from triangle_congruence_math_oracle import SUPPORTED as TRIANGLE_CONGRUENCE, solve as solve_triangle_congruence, review_problem as review_triangle_congruence_problem, self_test as review_triangle_congruence_fixtures
-from linear_initial_value_math_oracle import SUPPORTED as LINEAR_INITIAL_VALUE, solve as solve_linear_initial_value, review_problem as review_linear_initial_value_problem, self_test as review_linear_initial_value_fixtures
-from study_design_math_oracle import SUPPORTED as STUDY_DESIGN, solve as solve_study_design, review_problem as review_study_design_problem, self_test as review_study_design_fixtures
-from quadratic_irrational_math_oracle import SUPPORTED as QUADRATIC_IRRATIONAL, solve as solve_quadratic_irrational, review_problem as review_quadratic_irrational_problem, self_test as review_quadratic_irrational_fixtures
-from relation_repair_math_oracle import SUPPORTED as RELATION_REPAIR, solve as solve_relation_repair, review_problem as review_relation_repair_problem, self_test as review_relation_repair_fixtures
-from inverse_rounding_math_oracle import SUPPORTED as INVERSE_ROUNDING, solve as solve_inverse_rounding, review_problem as review_inverse_rounding_problem, self_test as review_inverse_rounding_fixtures
+import importlib
 import json
 import math
 import os
@@ -59,7 +27,6 @@ from absolute_value_math_oracle import ABSOLUTE_VALUE, solve_absolute_value, rev
 from polynomial_math_oracle import POLYNOMIAL, solve_polynomial, review_polynomial_fixtures, PolynomialShortcutReview
 from factoring_math_oracle import FACTORING, solve_factoring, review_factoring_fixtures, review_explanation as review_factoring_explanation, FactoringReview, review_factoring_content
 from inequality_math_oracle import INEQUALITY, solve_inequality, review_inequality_fixtures, InequalityReview, review_inequality_content
-from successive_percent_math_oracle import SUPPORTED as SUCCESSIVE_PERCENT, solve as solve_successive_percent, review_problem as review_successive_percent_problem, self_test as review_successive_percent_fixtures
 from percent_change_math_oracle import PERCENT_CHANGE, solve_percent_change, review_percent_change_fixtures, check_explanation as review_percent_explanation, review_percent_change_content
 from linear_system_math_oracle import LINEAR_SYSTEM, solve_linear_system, review_linear_system_fixtures, LinearSystemReview, review_linear_system_explanation, review_linear_system_content
 from right_triangle_math_oracle import RIGHT_TRIANGLE, RIGHT_TRIANGLE_CHOICE, solve_right_triangle, review_right_triangle_fixtures, RightTriangleCorpusReview, review_converse_explanation
@@ -126,35 +93,7 @@ SUPPORTED = frozenset({
     'bar-chart-difference', 'clock-elapsed-minutes', 'number-line-distance',
 })
 SUPPORTED = AREA_VOLUME | ANGLE_TRIANGLE | REAL_NUMBER | COMBINATORICS | DESCRIPTIVE_STATISTICS | SUPPORTED | CIRCLE | ELEMENTARY | FRACTION_PRACTICE | CHOICE | EQUAL_GROUPS | ALGEBRA | MEASUREMENT | QUADRATIC | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE | PERCENT_CHANGE | LINEAR_SYSTEM | RADICAL_TYPES | RATIONAL_TYPES | INTEGER_EXPONENT | NUMBER_SYSTEM | RATIO_RATE | PATTERN_FUNCTION | DATA_DISPLAY | COMPARISON | PART_WHOLE | EQUATIONS | FACTS | VOLUME_COORDINATE | ADD_SUBTRACT | DECIMAL | TIME_MONEY | SHAPES | FACT_ARRAYS | MULTIPLY_DIVIDE | ATTRIBUTE | EARLY_OPERATIONS | POLYGONS | ANGLES | TRANSFORMATION | PROBABILITY_RULES | NUMBER_SENSE | SIMILARITY_TRIG | COORDINATE_CIRCLE | POWER | ALGEBRA_STATISTICS
-SUPPORTED |= TRIANGLE_CONGRUENCE
-SUPPORTED |= QUADRATIC_IRRATIONAL
-SUPPORTED |= RELATION_REPAIR
-SUPPORTED |= COMPLEX
-SUPPORTED |= SAT_GEOMETRY_ADVANCED
-SUPPORTED |= FLORIDA_GAPS
-SUPPORTED |= K8_REPRESENTATIONS
-SUPPORTED |= K8_STATE_NUMBER
-SUPPORTED |= SAT_GEOMETRY_DATA
-SUPPORTED |= ADVANCED_MATH_GAPS
-SUPPORTED |= STAAR_GAPS
-SUPPORTED |= COMPLEX_CONICS
-SUPPORTED |= SAT_NUMERIC_ENTRY
-SUPPORTED |= POINT_PLOT
-SUPPORTED |= FIGURE_CHOICE
-SUPPORTED |= ALGEBRA_REQUIREMENT_GAPS
-SUPPORTED |= GEOMETRY_REQUIREMENT_GAPS
-SUPPORTED |= GEOMETRY_FAMILIES
-SUPPORTED |= GEOMETRY_MODELING
-SUPPORTED |= REMAINING_GAP
-SUPPORTED |= NUMBER_MEASUREMENT
-SUPPORTED |= FUNCTION_BEHAVIOR
-SUPPORTED |= VECTORS_MATRICES
-SUPPORTED |= STAT_PROB
-SUPPORTED |= INVERSE_ROUNDING
-SUPPORTED |= TRIGONOMETRY | SLOPE_TRIANGLE | SUCCESSIVE_PERCENT | STUDY_DESIGN | LINEAR_INITIAL_VALUE | HIERARCHY_MULTISELECT | MCAS_GAP
-SUPPORTED |= SAT_COMPLETION
-SUPPORTED |= SAT_ALGEBRA_STRUCTURE
-SUPPORTED |= ASSESSMENT_GAP
+SUPPORTED |= HIERARCHY_MULTISELECT
 SUPPORTED |= RADICAL_EQUATION | RATIONAL_EQUATION | GEOMETRY_PROOF
 SUPPORTED |= RATIONAL_EXPRESSION
 SUPPORTED |= NONLINEAR_SYSTEM
@@ -223,6 +162,71 @@ def read_plainly(check):
     return check_typeset
 
 
+class FamilyOracle:
+    """A scripts/<family>_math_oracle.py module exposing SUPPORTED, solve,
+    review_problem and self_test. Discovered by file name, so adding a family
+    oracle never edits this script. Optional module attributes:
+
+    REVIEW_RETURNS_ANSWER = True  review_problem(problem) returns the expected
+                                  answer, compared with problem['answer'].
+                                  Otherwise review_problem is a check and
+                                  solve() supplies the expected answer.
+    CHOICE_REVIEW = <ids>         templates whose solve() returns an option id
+                                  (or other exact string) compared without
+                                  Fraction; 'choice-response' means every
+                                  template whose response kind is 'choice'.
+    """
+
+    API = ('SUPPORTED', 'solve', 'review_problem', 'self_test')
+
+    def __init__(self, module):
+        self.name = module.__name__
+        self.supported = frozenset(module.SUPPORTED)
+        # The module's own functions, held before read_plainly wraps the
+        # module attributes below, exactly as an imported name would be.
+        self.solve = module.solve
+        self.review_problem = module.review_problem
+        self.self_test = module.self_test
+        self.returns_answer = getattr(module, 'REVIEW_RETURNS_ANSWER', False) is True
+        choice = getattr(module, 'CHOICE_REVIEW', frozenset())
+        self.choice_by_response = choice == 'choice-response'
+        self.choice = frozenset() if self.choice_by_response else frozenset(choice)
+        require(self.choice <= self.supported, f'{self.name}: CHOICE_REVIEW names templates outside SUPPORTED')
+
+    def reviews_choice(self, template, choice_response):
+        return template in self.choice or (self.choice_by_response and choice_response)
+
+
+def discover_family_oracles(directory=Path(__file__).resolve().parent):
+    oracles = []
+    for path in sorted(directory.glob('*_math_oracle.py')):
+        module = importlib.import_module(path.stem)
+        if all(hasattr(module, name) for name in FamilyOracle.API):
+            oracles.append(FamilyOracle(module))
+    return tuple(oracles)
+
+
+FAMILY_ORACLES = discover_family_oracles()
+FAMILY_ORACLE_FOR = {}
+for _oracle in FAMILY_ORACLES:
+    for _template in _oracle.supported:
+        # Dispatch order is irrelevant only while every template has one oracle.
+        require(_template not in SUPPORTED and _template not in FAMILY_ORACLE_FOR,
+                f'{_oracle.name}: template {_template} already has an independent oracle')
+        FAMILY_ORACLE_FOR[_template] = _oracle
+SUPPORTED |= frozenset(FAMILY_ORACLE_FOR)
+
+
+def family_oracle(name):
+    """The discovered oracle for a module name, e.g. 'sat_completion_math_oracle'."""
+    return next(oracle for oracle in FAMILY_ORACLES if oracle.name == name)
+
+
+def reviews_family_choice(template, choice_response):
+    oracle = FAMILY_ORACLE_FOR.get(template)
+    return oracle is not None and oracle.reviews_choice(template, choice_response)
+
+
 # Family oracles also call their own solvers and checks (worksheet, lesson and
 # explanation reviews); each reads typeset variables the same way.
 PLAIN_CHECKS = re.compile(r'^(?:solve|review_|check_|parse|worked_answer|equation_of)')
@@ -247,76 +251,11 @@ def solve(public):
 
 
 def solve_family(public):
-    if public["templateId"] in FLORIDA_GAPS:
-        return solve_florida_gaps(public)
-    if public["templateId"] in K8_STATE_NUMBER:
-        return solve_k8_state_number(public)
-    if public["templateId"] in K8_REPRESENTATIONS:
-        return solve_k8_representations(public)
-    if public["templateId"] in SAT_GEOMETRY_DATA:
-        return solve_sat_geometry_data(public)
-    if public["templateId"] in ADVANCED_MATH_GAPS:
-        return solve_advanced_math_gaps(public)
-    if public["templateId"] in STAAR_GAPS:
-        return solve_staar_gaps(public)
-    if public["templateId"] in TRIGONOMETRY:
-        return solve_trigonometry(public)
-    if public["templateId"] in NUMBER_MEASUREMENT:
-        return solve_number_measurement(public)
-    if public["templateId"] in REMAINING_GAP:
-        return solve_remaining_gap(public)
-    if public["templateId"] in GEOMETRY_MODELING:
-        return solve_geometry_modeling(public)
-    if public["templateId"] in SLOPE_TRIANGLE:
-        return solve_slope_triangle(public)
-    if public["templateId"] in SUCCESSIVE_PERCENT:
-        return solve_successive_percent(public)
+    oracle = FAMILY_ORACLE_FOR.get(public["templateId"])
+    if oracle is not None:
+        return oracle.solve(public)
     if public["templateId"] in HIERARCHY_MULTISELECT:
         return solve_hierarchy_multiselect(public)
-    if public["templateId"] in MCAS_GAP:
-        return solve_mcas_gap(public)
-    if public["templateId"] in POINT_PLOT:
-        return solve_point_plot(public)
-    if public["templateId"] in FIGURE_CHOICE:
-        return solve_figure_choice(public)
-    if public["templateId"] in GEOMETRY_FAMILIES:
-        return solve_geometry_families(public)
-    if public["templateId"] in SAT_GEOMETRY_ADVANCED:
-        return solve_sat_geometry_advanced(public)
-    if public["templateId"] in COMPLEX:
-        return solve_complex(public)
-    if public["templateId"] in COMPLEX_CONICS:
-        return solve_complex_conics(public)
-    if public["templateId"] in SAT_NUMERIC_ENTRY:
-        return solve_sat_numeric_entry(public)
-    if public["templateId"] in GEOMETRY_REQUIREMENT_GAPS:
-        return solve_geometry_requirement_gaps(public)
-    if public["templateId"] in ALGEBRA_REQUIREMENT_GAPS:
-        return solve_algebra_requirement_gaps(public)
-    if public["templateId"] in FUNCTION_BEHAVIOR:
-        return solve_function_behavior(public)
-    if public["templateId"] in VECTORS_MATRICES:
-        return solve_vectors_matrices(public)
-    if public["templateId"] in STAT_PROB:
-        return solve_stat_prob(public)
-    if public["templateId"] in INVERSE_ROUNDING:
-        return solve_inverse_rounding(public)
-    if public["templateId"] in RELATION_REPAIR:
-        return solve_relation_repair(public)
-    if public["templateId"] in TRIANGLE_CONGRUENCE:
-        return solve_triangle_congruence(public)
-    if public["templateId"] in QUADRATIC_IRRATIONAL:
-        return solve_quadratic_irrational(public)
-    if public["templateId"] in LINEAR_INITIAL_VALUE:
-        return solve_linear_initial_value(public)
-    if public["templateId"] in STUDY_DESIGN:
-        return solve_study_design(public)
-    if public["templateId"] in SAT_ALGEBRA_STRUCTURE:
-        return solve_sat_algebra_structure(public)
-    if public["templateId"] in SAT_COMPLETION:
-        return solve_sat_completion(public)
-    if public["templateId"] in ASSESSMENT_GAP:
-        return solve_assessment_gap(public)
     if public["templateId"] in RADICAL_EQUATION:
         return solve_radical_equation(public)
     if public["templateId"] in RATIONAL_EQUATION:
@@ -656,6 +595,9 @@ def review(stream):
         public = problem['public']
         template, seed = public['templateId'], public['seed']
         solved = solve_family(public)
+        family = FAMILY_ORACLE_FOR.get(template)
+        if family is not None and not family.returns_answer:
+            family.review_problem(problem)
         if template in COMPLETING_SQUARE:
             if record:
                 completing_square_review.record(problem)
@@ -675,8 +617,6 @@ def review(stream):
             if record:
                 factoring_review.record(public, solved)
             review_factoring_explanation(problem)
-        if template in SUCCESSIVE_PERCENT:
-            review_successive_percent_problem(problem)
         if template in PERCENT_CHANGE:
             review_percent_explanation(public, problem['explanation'])
         if template in INEQUALITY:
@@ -696,62 +636,6 @@ def review(stream):
             review_two_variable_problem(problem)
         if template in LINEAR_FUNCTION:
             review_linear_function_problem(problem)
-        if template in TRIANGLE_CONGRUENCE:
-            review_triangle_congruence_problem(problem)
-        if template in QUADRATIC_IRRATIONAL:
-            review_quadratic_irrational_problem(problem)
-        if template in RELATION_REPAIR:
-            review_relation_repair_problem(problem)
-        if template in GEOMETRY_FAMILIES:
-            review_geometry_family_problem(problem)
-        if template in SAT_GEOMETRY_ADVANCED:
-            review_sat_geometry_advanced_problem(problem)
-        if template in COMPLEX:
-            review_complex_problem(problem)
-        if template in FLORIDA_GAPS:
-            review_florida_gaps_problem(problem)
-        if template in NUMBER_MEASUREMENT:
-            review_number_measurement_problem(problem)
-        if template in K8_REPRESENTATIONS:
-            review_k8_representations_problem(problem)
-        if template in K8_STATE_NUMBER:
-            review_k8_state_number_problem(problem)
-        if template in SAT_GEOMETRY_DATA:
-            review_sat_geometry_data_problem(problem)
-        if template in ADVANCED_MATH_GAPS:
-            review_advanced_math_gaps_problem(problem)
-        if template in STAAR_GAPS:
-            review_staar_gaps_problem(problem)
-        if template in REMAINING_GAP:
-            review_remaining_gap_problem(problem)
-        if template in COMPLEX_CONICS:
-            review_complex_conics_problem(problem)
-        if template in SAT_NUMERIC_ENTRY:
-            review_sat_numeric_entry_problem(problem)
-        if template in GEOMETRY_REQUIREMENT_GAPS:
-            review_geometry_requirement_gaps_problem(problem)
-        if template in ALGEBRA_REQUIREMENT_GAPS:
-            review_algebra_requirement_gaps_problem(problem)
-        if template in GEOMETRY_MODELING:
-            review_geometry_modeling_problem(problem)
-        if template in FUNCTION_BEHAVIOR:
-            review_function_behavior_problem(problem)
-        if template in VECTORS_MATRICES:
-            review_vectors_matrices_problem(problem)
-        if template in STAT_PROB:
-            review_stat_prob_problem(problem)
-        if template in INVERSE_ROUNDING:
-            review_inverse_rounding_problem(problem)
-        if template in LINEAR_INITIAL_VALUE:
-            review_linear_initial_value_problem(problem)
-        if template in STUDY_DESIGN:
-            review_study_design_problem(problem)
-        if template in SAT_ALGEBRA_STRUCTURE:
-            review_sat_algebra_structure_problem(problem)
-        if template in SAT_COMPLETION:
-            review_sat_completion_problem(problem)
-        if template in ASSESSMENT_GAP:
-            review_assessment_gap_problem(problem)
         if template in RADICAL_EQUATION:
             review_radical_equation_problem(problem)
         if template in RATIONAL_EQUATION:
@@ -811,25 +695,13 @@ def review(stream):
             review_rational_problem(problem)
             if record:
                 rational_corpus.record(public, solved)
-        if template in TRIGONOMETRY:
-            expected = review_trigonometry_problem(problem)
-            actual = problem["answer"]
-        elif template in SLOPE_TRIANGLE:
-            expected = review_slope_triangle_problem(problem)
+        if family is not None and family.returns_answer:
+            expected = family.review_problem(problem)
             actual = problem["answer"]
         elif template in HIERARCHY_MULTISELECT:
             expected = review_hierarchy_multiselect_problem(problem)
             actual = problem["answer"]
-        elif template in MCAS_GAP:
-            expected = review_mcas_gap_problem(problem)
-            actual = problem["answer"]
-        elif template in POINT_PLOT:
-            expected = review_point_plot_problem(problem)
-            actual = problem["answer"]
-        elif template in FIGURE_CHOICE:
-            expected = review_figure_choice_problem(problem)
-            actual = problem["answer"]
-        elif template in (K8_STATE_NUMBER if public['response']['kind'] == 'choice' else frozenset()) or template in SAT_GEOMETRY_ADVANCED_CHOICE | FL_CHOICE | STAAR_GAP_CHOICE | GEOMETRY_REQUIREMENT_GAPS | LINEAR_INITIAL_VALUE | FRACTION_CHOICE | GEOMETRY_FAMILIES | GEOMETRY_MODELING | STAT_PROB | COMPLEX | COMPLEX_CONICS | ALGEBRA_REQUIREMENT_GAPS | FUNCTION_BEHAVIOR | INVERSE_ROUNDING | RELATION_REPAIR | TRIANGLE_CONGRUENCE | QUADRATIC_IRRATIONAL | STUDY_DESIGN | SAT_COMPLETION_CHOICE | ASSESSMENT_GAP_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE | VECTORS_MATRICES | REMAINING_GAP | SAT_GEOMETRY_DATA | K8_REPRESENTATIONS | SAT_ALGEBRA_STRUCTURE | NUMBER_MEASUREMENT_CHOICE | ADVANCED_MATH_GAPS or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
+        elif reviews_family_choice(template, public['response']['kind'] == 'choice') or template in FRACTION_CHOICE | RADICAL_EQUATION_CHOICE | RATIONAL_EQUATION_CHOICE | GEOMETRY_PROOF | RATIONAL_EXPRESSION | FUNCTION_TOOLKIT_CHOICE | QUADRATIC_STRUCTURE_CHOICE | EXPONENTIAL_CHOICE | TRANSFORMATION_CHOICE | (COMPLETING_SQUARE - {'complete-square-term'}) | ANGLE_TRIANGLE_CHOICE | ANGLES_CHOICE | REAL_NUMBER_CHOICE | ABSOLUTE_VALUE | FACTORING | NUMBER_SYSTEM_CHOICE | POLYGONS_CHOICE | SHAPES_CHOICE | EQUATIONS_CHOICE or template in TWO_VARIABLE_CHOICE | LINEAR_FUNCTION_CHOICE | RATIO_RATE_CHOICE | PATTERN_FUNCTION_CHOICE | VOLUME_COORDINATE_CHOICE | DATA_DISPLAY_CHOICE | CHOICE | ALGEBRA_CHOICE | QUADRATIC_CHOICE | POLYNOMIAL | INEQUALITY | RIGHT_TRIANGLE_CHOICE | LINEAR_SYSTEM | RADICAL_TYPES | COMPARISON_CHOICE | TIME_MONEY_CHOICE | ATTRIBUTE_CHOICE | POWER_CHOICE | ALGEBRA_STATISTICS_CHOICE or (template in MEASUREMENT | PART_WHOLE and public["response"]["kind"] == "choice"):
             expected = solved
             actual = problem['answer']
             require(isinstance(actual, str), 'Choice answer must be an option ID')
@@ -885,41 +757,10 @@ def review(stream):
     require(all(counts[template] == count for template in SUPPORTED), f'Incomplete coverage: {dict(counts)}')
     # Reject invalid input before the expensive authored-content fixtures. Every
     # successful review still runs the full fixture and mutation inventory.
-    review_triangle_congruence_fixtures()
-    review_quadratic_irrational_fixtures()
-    review_relation_repair_fixtures()
-    review_complex_fixtures()
-    review_sat_geometry_advanced_fixtures()
-    review_florida_gaps_fixtures()
-    review_k8_representations_fixtures()
-    review_k8_state_number_fixtures()
-    review_sat_geometry_data_fixtures()
-    review_advanced_math_gaps_fixtures()
-    review_staar_gaps_fixtures()
-    review_remaining_gap_fixtures()
-    review_number_measurement_fixtures()
-    review_complex_conics_fixtures()
-    review_sat_numeric_entry_fixtures()
-    review_algebra_requirement_gaps_fixtures()
-    review_geometry_requirement_gaps_fixtures()
-    review_geometry_family_fixtures()
-    review_geometry_modeling_fixtures()
-    review_function_behavior_fixtures()
-    review_vectors_matrices_fixtures()
-    review_stat_prob_fixtures()
+    for oracle in FAMILY_ORACLES:
+        oracle.self_test()
     review_fraction_expression_fixtures()
-    review_inverse_rounding_fixtures()
-    review_linear_initial_value_fixtures()
     review_hierarchy_multiselect_fixtures()
-    review_mcas_gap_fixtures()
-    review_slope_triangle_fixtures()
-    review_point_plot_fixtures()
-    review_figure_choice_fixtures()
-    review_trigonometry_fixtures()
-    review_study_design_fixtures()
-    review_sat_completion_fixtures()
-    review_sat_algebra_structure_fixtures()
-    review_assessment_gap_fixtures()
     review_radical_equation_fixtures()
     review_rational_equation_fixtures()
     review_geometry_proof_fixtures()
@@ -990,7 +831,6 @@ def review(stream):
     review_factoring_fixtures()
     review_inequality_fixtures()
     review_percent_change_fixtures()
-    review_successive_percent_fixtures()
     review_linear_system_fixtures()
     review_right_triangle_fixtures()
     print('Independent area/volume review: ' + json.dumps({**area_volume_fixtures, 'checkedEqualities': area_volume_equalities}), file=sys.stderr)

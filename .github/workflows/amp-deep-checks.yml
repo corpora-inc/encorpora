@@ -27,11 +27,11 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     outputs:
-      browser: ${{ steps.paths.outputs.browser }}
-      content: ${{ steps.paths.outputs.content }}
-      native: ${{ steps.paths.outputs.native }}
+      browser: ${{ steps.paths.outputs.amp_browser }}
+      content: ${{ steps.paths.outputs.amp_content }}
+      native: ${{ steps.paths.outputs.amp_mobile }}
       amp_plan: ${{ steps.paths.outputs.amp_plan }}
-      content_force: ${{ steps.paths.outputs.content_force }}
+      content_force: ${{ steps.paths.outputs.amp_content_force }}
     steps:
       - name: Initialize verified client trust
         id: ci-trust

@@ -583,9 +583,9 @@ def event_predicate(event, space):
         return lambda o, k=int(m[1]): o.count('T') >= k
     if e == 'the first and last flips are different':
         return lambda o: o[0] != o[-1]
-    if e == 'spinner 1 does not land on red and spinner 2 lands on a number greater than 2':
+    if e == 'the first spinner does not land on red and the second spinner lands on a number greater than 2':
         return lambda o: o[0] != 'red' and o[1] > 2
-    if e == 'spinner 1 lands on red and spinner 2 lands on an even number':
+    if e == 'the first spinner lands on red and the second spinner lands on an even number':
         return lambda o: o[0] == 'red' and o[1] % 2 == 0
     raise ValueError(f'Unknown event: {e}')
 
@@ -850,6 +850,10 @@ def self_test():
             pass
         review_problem(fixture)
     return {'fixtures': len(fixtures), 'rejectedMutations': rejected}
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
+
 
 
 if __name__ == '__main__':

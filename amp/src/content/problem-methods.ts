@@ -64,18 +64,27 @@ import { rightTriangleMethods } from "./right-triangle-lessons";
 import { polynomialMethods } from "./polynomial-lessons";
 import { quadraticMethods } from "./quadratic-lessons";
 import { complexMethods } from "./complex-lessons";
+import { financeCreditMethods } from "./finance-credit-lessons";
+import { hsStateGapMethods } from "./hs-state-gaps-lessons";
+import { financeIncomeMethods } from "./finance-income-lessons";
+import { texasHsMethods } from "./texas-hs-lessons";
 import { k8StateNumberMethods } from "./k8-state-number-lessons";
+import { texas38Methods } from "./texas-38-lessons";
 import { satNumericEntryMethods } from "./sat-numeric-entry-lessons";
+import { satFunctionFormsMethods } from "./sat-function-forms-lessons";
 import { pointPlotMethods } from "./point-plot-lessons";
-import { figureChoiceMethods } from "./figure-choice-lessons";
+import { multiPartChoiceMethods } from "./multi-part-choice-lessons";
 import { algebraRequirementGapMethods } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapMethods } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapMethods } from "./number-measurement-gaps-lessons";
 import { floridaGapMethods } from "./florida-gaps-lessons";
+import { regentsGapMethods } from "./regents-gap-lessons";
 import { mcasGapMethods } from "./mcas-gap-lessons";
 import { staarGapMethods } from "./staar-gap-lessons";
+import { texasK2Methods } from "./texas-k2-lessons";
 import { satAlgebraStructureMethods } from "./sat-algebra-structure-lessons";
 import { remainingGapMethods } from "./remaining-gap-lessons";
+import { dataDisplayStateMethods } from "./data-display-state-lessons";
 import { vectorMatrixMethods } from "./vectors-matrices-lessons";
 import { statisticsProbabilityMethods } from "./statistics-probability-lessons";
 import { complexConicsMethods } from "./complex-conics-lessons";
@@ -85,11 +94,13 @@ import { geometryRequirementGapMethods } from "./geometry-requirement-gaps-lesso
 import { functionBehaviorMethods } from "./function-behavior-lessons";
 import { absoluteValueMethods } from "./absolute-value-lessons";
 import type { ProblemMethod } from "./problem-lessons";
+import { familyRegistry } from "../families/registry";
+import { withFamilyEntries } from "../families/registry/aggregate";
 
 /** Authored methods, keyed by template id. Keep each one short and complete:
  * state what is given and what to find, define terms before using them, and
  * give steps that solve every instance of the template. */
-export const methods: Record<string, ProblemMethod> = {
+const legacyMethods: Record<string, ProblemMethod> = {
   ...assessmentGapMethods,
   ...satCompletionMethods,
   ...satGeometryDataMethods,
@@ -111,18 +122,27 @@ export const methods: Record<string, ProblemMethod> = {
   ...descriptiveStatisticsMethods,
   ...quadraticMethods,
   ...complexMethods,
+  ...financeCreditMethods,
+  ...hsStateGapMethods,
+  ...financeIncomeMethods,
+  ...texasHsMethods,
   ...k8StateNumberMethods,
+  ...texas38Methods,
   ...satNumericEntryMethods,
+  ...satFunctionFormsMethods,
   ...pointPlotMethods,
-  ...figureChoiceMethods,
+  ...multiPartChoiceMethods,
   ...algebraRequirementGapMethods,
   ...advancedMathGapMethods,
   ...numberMeasurementGapMethods,
   ...floridaGapMethods,
+  ...regentsGapMethods,
   ...mcasGapMethods,
   ...staarGapMethods,
+  ...texasK2Methods,
   ...satAlgebraStructureMethods,
   ...remainingGapMethods,
+  ...dataDisplayStateMethods,
   ...vectorMatrixMethods,
   ...statisticsProbabilityMethods,
   ...complexConicsMethods,
@@ -1638,3 +1658,9 @@ export const methods: Record<string, ProblemMethod> = {
   },
   ...rightTriangleMethods,
 };
+/** Frozen legacy entries, then families from src/families/. */
+export const methods: Record<string, ProblemMethod> = withFamilyEntries(
+  "method",
+  legacyMethods,
+  familyRegistry.methods,
+);

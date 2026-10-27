@@ -1,8 +1,10 @@
+import { familyRegistry } from "../families/registry";
+import { withFamilyEntries } from "../families/registry/aggregate";
 /** Template → archetypes it practices. Every template cited by a released
  * item must link to one of that item's archetypes. Skills and facets reach
  * archetypes through their templates. Every template must be linked;
  * `npm run coverage:items` reports how many are. */
-export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
+const legacyTemplateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "absolute-compound-inequality": ["inequality.absolute", "inequality.context"],
   "absolute-value-affine-equation": ["nonlinear.absolute"],
   "absolute-value-direct-equation": ["nonlinear.absolute"],
@@ -259,6 +261,7 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "function-graph-features": [
     "exponential.features",
     "exponential.graph-features",
+    "logarithm.graph",
     "nonlinear.features",
   ],
   "function-relation-test": ["function.identify"],
@@ -274,26 +277,6 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "graph-domain-range": ["function.domain-range"],
   "graph-equation-choice": ["line.slope-equation"],
   "graph-linear-equation": ["line.graph-equation"],
-  "graph-of-inequality-number-line": [
-    "inequality.number-line",
-    "inequality.solve",
-  ],
-  "graph-of-linear-rule": [
-    "function.representations",
-    "pattern.graph-relationship",
-    "line.slope-equation",
-  ],
-  "graph-of-proportional-rate": [
-    "pattern.graph-relationship",
-    "function.proportional-identify",
-    "function.representations",
-  ],
-  "graph-of-quadratic-or-exponential": [
-    "nonlinear.representations",
-    "nonlinear.transform",
-    "nonlinear.features",
-    "exponential.graph-features",
-  ],
   "graph-absolute-value-points": ["nonlinear.graph-absolute"],
   "graph-exponential-points": ["exponential.graph"],
   "graph-quadratic-points": ["nonlinear.graph-quadratic"],
@@ -322,6 +305,7 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "inequality-solution-point": ["inequality.graph"],
   "inequality-solution-set": ["inequality.number-line"],
   "inherited-property": ["shape.quadrilateral-hierarchy"],
+  "inline-linear-features": ["line.slope-equation", "function.rule"],
   "inscribed-polygon-reasoning": ["circle.parts"],
   "integer-addition": ["rational.signed-add"],
   "integer-power": ["expression.whole-powers"],
@@ -333,6 +317,7 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "inverse-value": ["function.inverse"],
   "join-within-10": ["early.add-within-20"],
   "kit-leftovers": ["number.whole-unit-stories"],
+  "label-expression-parts": ["expression.parts"],
   "larger-share": ["fractions.compare-shares"],
   "least-common-multiple": ["number.lcm"],
   "like-fraction-difference": ["fractions.add-subtract-like"],
@@ -502,6 +487,10 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "probability-missing-count": ["probability.inverse"],
   "product-of-powers-exponent": ["expression.exponent-rules"],
   "proportional-graph": ["function.graph-context"],
+  "proportional-match-table": [
+    "function.proportional-identify",
+    "function.linear-test",
+  ],
   "proportional-rule-choice": ["function.linear-test"],
   "protractor-reading": ["angle.measure"],
   "purchase-change": ["whole.multi-step-stories"],
@@ -577,6 +566,32 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "representative-sample-choice": ["study.scope"],
   "residual-function-fit": ["bivariate.nonlinear-fit"],
   "residual-value": ["bivariate.linear-fit"],
+  "rg-altitude-segment": ["triangle.altitude-hypotenuse"],
+  "rg-exponent-monomial-power": ["expression.exponent-rules"],
+  "rg-exponential-base-rate": ["exponential.form"],
+  "rg-factor-completely": ["expression.factor"],
+  "rg-isosceles-right-decimal": ["triangle.special"],
+  "rg-parallelogram-perpendicular": [
+    "angle.relationships",
+    "proof.parallelogram",
+  ],
+  "rg-polynomial-build": ["expression.polynomial-structure"],
+  "rg-polynomial-zeros-forms": [
+    "nonlinear.polynomial-zeros",
+    "expression.factor",
+  ],
+  "rg-quadrilateral-choice": ["proof.parallelogram", "angle.relationships"],
+  "rg-rational-exponent-forms": [
+    "expression.exponent-rules",
+    "expression.radical",
+  ],
+  "rg-segment-property-choice": [
+    "segment.perpendicular-bisector",
+    "triangle.midsegment",
+  ],
+  "rg-solid-density": ["measure.volume", "ratio.units"],
+  "rg-triangle-area-sas": ["trig.triangle-area"],
+  "rg-triangle-third-side-test": ["triangle.inequality"],
   "right-triangle": ["triangle.pythagorean"],
   "right-triangle-missing-leg": ["triangle.pythagorean"],
   "root-between-integers": ["number.approximate-roots"],
@@ -607,6 +622,12 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   "sat-entry-root-relations": ["nonlinear.root-relations"],
   "sat-entry-system-expression": ["system.expression"],
   "sat-entry-system-solve": ["system.solve"],
+  "sat-fn-constraint-choice": ["line.constraint"],
+  "sat-fn-exponential-choice": ["exponential.context"],
+  "sat-entry-fn-exponential": ["exponential.context"],
+  "sat-fn-line-equation-choice": ["line.slope-equation", "function.rule"],
+  "sat-entry-fn-linear-notation": ["function.input-output", "function.rule"],
+  "sat-entry-fn-related-value": ["linear.structure"],
   "scale-drawing": ["measure.scale"],
   "scaled-bar-graph": ["data.graph-read"],
   "scaled-picture-graph": ["data.picture-graph"],
@@ -850,3 +871,10 @@ export const templateArchetypes: Readonly<Record<string, readonly string[]>> = {
   ],
   "staar-number-sets": ["number.number-classification"],
 };
+/** Frozen legacy entries, then families from src/families/. */
+export const templateArchetypes: Readonly<Record<string, readonly string[]>> =
+  withFamilyEntries(
+    "archetype link",
+    legacyTemplateArchetypes,
+    familyRegistry.archetypeLinks,
+  );

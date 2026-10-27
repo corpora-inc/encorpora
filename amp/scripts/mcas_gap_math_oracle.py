@@ -975,3 +975,7 @@ def self_test():
     expect_failure(lambda: solve(bad), "Accepted two defensible slope signs or none")
     require(rational_expr("(\\sqrt{7}+4)(\\sqrt{7}-4)".replace("(", "\\left(").replace(")", "\\right)")), "Difference of squares")
     require(not rational_expr("\\sqrt{7}+\\sqrt{3}"), "Surd sum")
+
+
+# Read by independent-math-review.py (FamilyOracle).
+REVIEW_RETURNS_ANSWER = True

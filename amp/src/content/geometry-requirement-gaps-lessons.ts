@@ -123,7 +123,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
     terms: [
       ["foci", "The two fixed points used to define an ellipse or hyperbola."],
       [
-        "a, b and c",
+        "$a$, $b$ and $c$",
         "For an ellipse or hyperbola centered at the origin, $a$ is the distance from the center to a vertex on the axis through the foci, $c$ is the distance from the center to a focus, and the other denominator is $b^2$.",
       ],
     ],
@@ -276,14 +276,14 @@ export const geometryRequirementGapLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "A central angle cuts off an arc 4 cm long in a circle of radius 3 cm. (a) How long an arc does the same angle cut off in a circle of radius 9 cm? (b) What is the angle in radians? (c) What is the area of the sector in the circle of radius 3 cm?",
+        "A central angle cuts off an arc 4 cm long in a circle of radius 3 cm. (1) How long an arc does the same angle cut off in a circle of radius 9 cm? (2) What is the angle in radians? (3) What is the area of the sector in the circle of radius 3 cm?",
       steps: [
-        "(a) The radius is multiplied by $9/3=3$, so the arc is too: $4\\times3=12$ cm. Check the ratios: $4/3=12/9$.",
-        "(b) Radian measure is arc over radius: $\\theta=4/3$ radians.",
-        "(c) A full turn is $2\\pi$ radians, so the sector is the fraction $\\frac{4/3}{2\\pi}$ of the disk. The disk's area is $\\pi\\cdot3^2=9\\pi$. Then $\\frac{4/3}{2\\pi}\\cdot9\\pi=\\frac{4}{6}\\cdot9=6$.",
+        "(1) The radius is multiplied by $9/3=3$, so the arc is too: $4\\times3=12$ cm. Check the ratios: $4/3=12/9$.",
+        "(2) Radian measure is arc over radius: $\\theta=4/3$ radians.",
+        "(3) One full turn is $2\\pi$ radians, so the sector is the fraction $\\frac{4/3}{2\\pi}$ of the disk. The disk's area is $\\pi\\cdot3^2=9\\pi$. Then $\\frac{4/3}{2\\pi}\\cdot9\\pi=\\frac{4}{6}\\cdot9=6$.",
         "Check with the shortcut $\\tfrac12\\theta r^2=\\tfrac12\\cdot\\tfrac43\\cdot9=6$.",
       ],
-      answer: "(a) 12 cm; (b) $\\tfrac43$ radians; (c) 6 cm$^2$",
+      answer: "(1) 12 cm; (2) $\\tfrac43$ radians; (3) 6 square centimeters",
     },
     closingSections: [
       {
@@ -501,13 +501,13 @@ export const geometryRequirementGapLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "(a) Find the foci of $\\frac{x^2}{25}+\\frac{y^2}{9}=1$. (b) Find the equation of the ellipse with foci $(\\pm4,0)$ whose distances to the foci always add to $10$.",
+        "(1) Find the foci of $\\frac{x^2}{25}+\\frac{y^2}{9}=1$. (2) Find the equation of the ellipse with foci $(\\pm4,0)$ whose distances to the foci always add to $10$.",
       steps: [
-        "(a) The larger denominator is $a^2=25$ and the smaller is $b^2=9$. For an ellipse $c^2=a^2-b^2=25-9=16$, so $c=4$. The larger denominator is under $x^2$, so the foci are $(\\pm4,0)$.",
-        "(b) The constant sum is $2a=10$, so $a=5$ and $a^2=25$. The foci give $c=4$, so $b^2=a^2-c^2=25-16=9$.",
-        "The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\frac{x^2}{25}+\\frac{y^2}{9}=1$. This is the curve in part (a), a consistency check.",
+        "(1) The larger denominator is $a^2=25$ and the smaller is $b^2=9$. For an ellipse $c^2=a^2-b^2=25-9=16$, so $c=4$. The larger denominator is under $x^2$, so the foci are $(\\pm4,0)$.",
+        "(2) The constant sum is $2a=10$, so $a=5$ and $a^2=25$. The foci give $c=4$, so $b^2=a^2-c^2=25-16=9$.",
+        "The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\frac{x^2}{25}+\\frac{y^2}{9}=1$. This is the curve in part (1), a consistency check.",
       ],
-      answer: "(a) $(\\pm4,0)$; (b) $\\frac{x^2}{25}+\\frac{y^2}{9}=1$",
+      answer: "(1) $(\\pm4,0)$; (2) $\\frac{x^2}{25}+\\frac{y^2}{9}=1$",
     },
     closingSections: [
       {

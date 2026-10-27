@@ -113,10 +113,14 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Complete a linear function in slope-intercept form from a table by dragging the slope and intercept",
-      status: "partial",
-      templateIds: ["linear-model-equation", "unequal-step-rate"],
+      status: "covered",
+      templateIds: [
+        "inline-linear-features",
+        "linear-model-equation",
+        "unequal-step-rate",
+      ],
       limitations:
-        "STAAR interaction: drag and drop, 2 points. Related families choose a model equation or find a rate from unequal steps; assembling slope and intercept by drag and drop has no response protocol.",
+        "STAAR interaction: drag and drop, 2 points. inline-linear-features completes the slope and intercept of y = mx + b from a table of evenly spaced values; the drag-and-drop tiles are offered as one picker per blank.",
     },
     {
       item: {

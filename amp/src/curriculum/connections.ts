@@ -1,10 +1,19 @@
 import type { SkillConnection } from "./types";
+import { familyRegistry } from "../families/registry";
 
 /** Editorial connections supported by existing content, not assessment dependencies. */
 const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
   from: string;
   to: string;
 })[] = [
+  {
+    from: "financial-literacy-middle",
+    to: "piecewise-functions",
+    kind: "application",
+    explanation:
+      "Tax owed as a function of income uses a different rule on each bracket. That is a piecewise function whose pieces join where the brackets meet.",
+    templateIds: ["piecewise-evaluate"],
+  },
   {
     from: "triangle-law-proofs",
     to: "oblique-triangles",
@@ -339,6 +348,11 @@ export const curriculumConnections: typeof authoredConnections = [
       ];
       return { from, to, kind, explanation, templateIds: [templateId] };
     }),
+  // Frozen legacy entries above; families append from src/families/.
+  ...familyRegistry.connections.map((connection) => ({
+    ...connection,
+    templateIds: [...connection.templateIds],
+  })),
 ];
 
 export function connectionsFor(skillId: string): SkillConnection[] {

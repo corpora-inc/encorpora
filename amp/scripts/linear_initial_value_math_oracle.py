@@ -177,3 +177,7 @@ def self_test():
     else:
         raise AssertionError("Incorrect private answer accepted")
     return {"fixtures": 2, "rejectedMutations": len(mutants) + 1}
+
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED

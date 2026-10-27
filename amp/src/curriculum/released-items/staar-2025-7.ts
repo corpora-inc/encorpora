@@ -343,10 +343,10 @@ export const staarGrade7 = defineLedger(
       archetypeIds: ["line.slope-equation"],
       demand:
         "Complete the equation y = mx + b from a graphed line by choosing m and b from dropdowns",
-      status: "partial",
-      templateIds: ["graph-equation-choice"],
+      status: "covered",
+      templateIds: ["inline-linear-features", "graph-equation-choice"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. graph-equation-choice chooses a complete equation for an increasing line with positive integer slope and intercept; dropdown blanks for the slope and intercept are not practiced.",
+        "STAAR interaction: inline choice, 2 points. inline-linear-features completes m and b of y = mx + b for a graphed line through two labeled lattice points, choosing each from a dropdown blank.",
     },
     {
       item: {

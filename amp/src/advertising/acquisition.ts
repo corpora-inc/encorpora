@@ -30,12 +30,12 @@ const cookie = (token: string, seconds: number) =>
   `${ACQUISITION_COOKIE}=${token}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=${Math.max(0, Math.floor(seconds))}`;
 const captureSchema = z.strictObject({
   sourcePath: z
-    .enum(["/amp/", "/esa/arkansas-efa/", "/esa/arizona-esa/"])
+    .enum(["/", "/amp/", "/esa/arkansas-efa/", "/esa/arizona-esa/"])
     .optional(),
   clicks: z
     .array(clickEvidenceSchema)
     .min(1)
-    .max(2)
+    .max(3)
     .refine((v) => new Set(v.map((c) => c.provider)).size === v.length),
   labels: fundedCampaignSchema.optional(),
 });
@@ -56,10 +56,13 @@ export async function registerAcquisitionRoutes(
         .header("Cache-Control", "no-store")
         .header("Vary", "Origin")
         .header("X-Content-Type-Options", "nosniff");
-      if (request.headers.origin !== options.origin)
+      if (
+        request.headers.origin !== options.origin &&
+        request.headers.origin !== "https://amp.corpora.inc"
+      )
         return reply.code(403).send({ error: "origin_not_allowed" });
       reply
-        .header("Access-Control-Allow-Origin", options.origin!)
+        .header("Access-Control-Allow-Origin", request.headers.origin!)
         .header("Access-Control-Allow-Credentials", "true");
     });
     scope.setErrorHandler((_error, _request, reply) =>
@@ -95,6 +98,11 @@ export async function registerAcquisitionRoutes(
         const parsed = captureSchema.safeParse(request.body);
         if (!parsed.success)
           return reply.code(400).send({ error: "invalid_acquisition_request" });
+        // The app accepts acquisition only at its public entrance. Other
+        // routes and arbitrary source URLs cannot be recorded as landing pages.
+        const appEntry = request.headers.origin === "https://amp.corpora.inc";
+        if (appEntry !== (parsed.data.sourcePath === "/"))
+          return reply.code(400).send({ error: "invalid_acquisition_request" });
         if (inFlight >= 2)
           return reply.code(503).send({ error: "acquisition_busy" });
         inFlight++;
@@ -119,7 +127,7 @@ export async function registerAcquisitionRoutes(
               predecessorToken,
               new URL(
                 parsed.data.sourcePath ?? "/esa/arkansas-efa/",
-                options.origin,
+                request.headers.origin,
               ).href,
             );
             token = retained.token;
@@ -175,7 +183,7 @@ export async function linkPurchaseAcquisition(
       "SELECT provider,true AS withdrawn_at FROM amp_ad_collection_withdrawals WHERE account_id=$1",
       [account],
     );
-    const providers = (["google", "meta"] as const).filter(
+    const providers = (["google", "meta", "openai"] as const).filter(
       (provider) =>
         !preferences.rows.some(
           (row) => row.provider === provider && row.withdrawn_at,
@@ -199,7 +207,7 @@ export async function linkPurchaseAcquisition(
     const result = lookup
       ? await bindAdClicksToOrder(client, account, lookup, target, providers)
       : { bound: 0 };
-    for (const provider of ["google", "meta"] as const)
+    for (const provider of ["google", "meta", "openai"] as const)
       if (!providers.includes(provider))
         await eraseAccountAdClicks(client, account, provider);
     await client.query("COMMIT");

@@ -1,3 +1,4 @@
+import { familyRegistry } from "../families/registry";
 /** Task archetypes: the reusable join key between released assessment items,
  * standards and AMP problem families. One archetype is one distinct
  * mathematical task in one representation, never one per test. The list is
@@ -20,6 +21,10 @@ export interface Archetype {
 }
 const rows: Record<ArchetypeDomain, string> = {
   number: `
+finance.net-worth|Find an unknown asset or the net worth from assets and liabilities
+finance.fee-compare|Compare total bank fees from monthly and per-use charges
+number.number-line-position|Pick or place a whole number from its position on a number line between hundreds
+finance.supply-price|Tell how scarce or plentiful supply changes a price and why
 number.multidigit-multiply-context|Multiply multidigit whole numbers in a one-step context
 number.round-decimal|Round a decimal to a given place
 number.inverse-rounding|Choose or find a number that rounds to a given decimal value
@@ -58,6 +63,7 @@ number.inverse-round-whole|Choose the whole numbers that round to a stated ten o
 rational.negative-fraction-forms|Choose the expressions that equal a negative fraction`,
   algebra: `
 expression.verbal|Translate a verbal description into an algebraic expression or equation
+expression.parts|Name the terms, coefficients, exponents, constant term and factors of an expression
 linear.solve|Solve a one-variable linear equation, including grouped and fractional coefficients
 linear.structure|Find the value of a related linear expression from an equation by scaling or rearranging without isolating the variable
 linear.step-justification|Name the property that justifies a step in solving an equation
@@ -183,6 +189,7 @@ function.compare-representations|Compare features of functions given by a formul
 expression.polynomial-structure|Build or classify a polynomial by degree, number of terms, leading coefficient and constant term
 exponential.compare-linear|Find when an exponential function first exceeds a linear function
 graph.draw-nonlinear|Draw the graph of a nonlinear function from its rule, a stated domain or stated features
+logarithm.graph|Match a logarithmic function with its graph, including bases between zero and one
 exponential.graph|Graph an exponential function from its rule
 exponential.graph-features|Read the intercept, direction or asymptote of an exponential graph`,
   data: `
@@ -246,6 +253,7 @@ ratio.part-whole|Find a part of a total from a part-to-part ratio
 ratio.write-simplify|Write a ratio from quantities and simplify it
 univariate.shape|Describe the shape or symmetry of a distribution from a display`,
   geometry: `
+shape.congruent-equal-parts|Pick the congruent figures whose equal-area parts show the same unit fraction
 measure.area|Find perimeters, areas or missing lengths of polygons and composite figures
 measure.volume|Find volumes of solids or missing dimensions from a volume
 measure.surface|Find surface areas of solids
@@ -321,6 +329,7 @@ triangle.side-splitter|Use a line parallel to a triangle side to find proportion
 triangle.altitude-hypotenuse|Use the altitude to the hypotenuse of a right triangle
 segment.perpendicular-bisector|Use the points of a perpendicular bisector
 proof.geometry-written|Write a formal geometric proof or coordinate proof from givens
+triangle.centroid|Use the centroid of a triangle and the 2 to 1 split of each median
 coordinate.plane-point|Name, locate or describe a point on the coordinate plane
 measure.circle|Find a circle's circumference, area or diameter, or estimate pi
 shape.attribute-classify|Sort shapes by attributes such as right angles and parallel sides
@@ -414,8 +423,9 @@ time.rename-units|Rename hours and minutes as minutes or minutes as hours
 number.factors-identify|Choose the numbers that are factors of a given whole number
 fractions.multiply-scaling|Decide whether a product exceeds, equals or falls below a factor from the size of the other factor`,
 };
-export const archetypes: readonly Archetype[] = Object.entries(rows).flatMap(
-  ([domain, text]) =>
+/** Frozen legacy rows, then family archetypes from src/families/. */
+export const archetypes: readonly Archetype[] = [
+  ...Object.entries(rows).flatMap(([domain, text]) =>
     text
       .trim()
       .split("\n")
@@ -427,4 +437,6 @@ export const archetypes: readonly Archetype[] = Object.entries(rows).flatMap(
           summary: summary!,
         };
       }),
-);
+  ),
+  ...familyRegistry.archetypes,
+];

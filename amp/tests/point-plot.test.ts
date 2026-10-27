@@ -594,6 +594,7 @@ test("clients without point-plot-v1 are never served these families, online or o
       "single-choice-v1",
       "multi-select-v1",
       "point-plot-v1",
+      "multi-part-choice-v1",
       "figure-choice-v1",
     ],
   );

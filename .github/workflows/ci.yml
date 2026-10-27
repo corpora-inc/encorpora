@@ -93,12 +93,40 @@ jobs:
         run: |
           set -euo pipefail
 
+          # The range is exactly this change, so each job runs only when the
+          # change can affect it:
+          #   pull_request  merge-base(base, head)..head. `pull_request.base.sha`
+          #                 is main's tip when the event fired; diffing a branch
+          #                 that is behind main against it adds every file main
+          #                 changed since the fork point.
+          #   merge_group   base_sha..head_sha. The queue builds each entry as
+          #                 one squash commit whose parent is base_sha (main, or
+          #                 the entry ahead of it), so this is the entry's own
+          #                 change; entries ahead are validated by their own runs.
+          #   push          before..sha.
+          # A missing base, or a base that is not an ancestor of head, is not a
+          # comparison of this change: run everything rather than guess.
           amp_full=false
+          run_all=false
+          if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
+            run_all=true
+          fi
           base="${BASE_SHA}"
           head="${HEAD_SHA}"
           if [ -z "${base}" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
             amp_full=true
+            run_all=true
             base="$(git rev-parse "${head}^" 2>/dev/null || true)"
+          elif [ "${EVENT_NAME}" = "pull_request" ]; then
+            if fork="$(git merge-base "${base}" "${head}")"; then
+              base="${fork}"
+            else
+              amp_full=true
+              run_all=true
+            fi
+          elif ! git merge-base --is-ancestor "${base}" "${head}"; then
+            amp_full=true
+            run_all=true
           fi
 
           changed="$(mktemp)"
@@ -108,13 +136,8 @@ jobs:
             git diff-tree --no-commit-id --name-only -r "${head}" > "${changed}"
           fi
 
-          echo "Changed files:"
+          echo "Changed files (${base:-root}..${head}):"
           sed 's/^/  /' "${changed}"
-
-          run_all=false
-          if [ "${EVENT_NAME}" = "workflow_dispatch" ]; then
-            run_all=true
-          fi
 
           set_output() {
             local name="$1"
@@ -244,7 +267,16 @@ jobs:
           # it DOES self-trigger on `ci.yml`, exactly like every other filter
           # that drives a job. A workflow edit that breaks the native gate has
           # to be caught by the native gate.
-          set_output native '^(native/|.*/src-tauri/|corpan/plugins/|\.github/workflows/ci\.yml$|\.github/scripts/(patch_integrity|clippy_report)\.py$)'
+          #
+          # The rustfmt ratchet walks every tracked crate (amp/mobile too) and
+          # patch_integrity reads every Cargo manifest and lock, so any Rust
+          # source, Cargo file or toolchain/format config anywhere selects it.
+          # Two non-Rust inputs are compiled or read by it: Corpán embeds
+          # `corpan/dja/release.sqlite3` (`include_bytes!` in db.rs), and
+          # Dynawalla's `packs::` tests read every `dynawalla/games/*/pack.json`.
+          # Nothing else does: TypeScript, content and docs cannot change a
+          # Rust build.
+          set_output native '^(native/|.*/src-tauri/|corpan/plugins/|corpan/dja/release\.sqlite3$|dynawalla/games/[^/]+/pack\.json$|\.github/workflows/ci\.yml$|\.github/scripts/(patch_integrity|clippy_report)\.py$)|\.rs$|(^|/)(Cargo\.(toml|lock)|rust-toolchain(\.toml)?|\.?rustfmt\.toml|\.?clippy\.toml|\.cargo/config(\.toml)?)$'
 
           # One tested planner serves routine and deep checks. Missing history
           # forces full validation rather than an incomplete diff.
@@ -257,15 +289,24 @@ jobs:
           fi
           python3 .github/scripts/amp_ci_plan.py "${plan_args[@]}" < "$changed" >> "$GITHUB_OUTPUT"
 
+          # A repeated output name silently keeps only the LAST value. The
+          # planner once printed `native`, which replaced the Rust filter above:
+          # every AMP oracle edit ran the Rust job, and a Rust-only PR would
+          # have skipped it. Fail rather than let two producers share a name.
+          duplicates="$(cut -d= -f1 "$GITHUB_OUTPUT" | sort | uniq -d)"
+          if [ -n "${duplicates}" ]; then
+            echo "::error::Duplicate change outputs: ${duplicates}"
+            exit 1
+          fi
+
       # Coverage warning. WARN-ONLY, and permanently scoped to `pull_request`.
       #
-      # Do NOT extend this to merge_group. The `changes` job resolves its range
-      # as merge_group.base_sha..head_sha, which spans the WHOLE batch the queue
-      # assembled — so a fail-closed hygiene check here would attribute one PR's
-      # uncovered path to every PR batched with it and eject them all at once.
-      # On a pull_request the range is exactly that PR's own change, which is
-      # the only range where "this path has no CI area" is a true statement
-      # about the author's diff.
+      # Do NOT extend this to merge_group. It is advice for the author, given
+      # while the author can still act on it; in the queue a fail-closed
+      # version would eject an already-reviewed PR (and every entry stacked
+      # behind it) over a warning. On a pull_request the range is the PR's own
+      # change from its fork point, the only range where "this path has no CI
+      # area" is a true statement about the author's diff.
       #
       # Belt and braces so this can never flip a gate: an explicit `set +e`, an
       # explicit `exit 0`, and `continue-on-error: true`. The `set +e` is load
@@ -286,6 +327,9 @@ jobs:
           head="${HEAD_SHA}"
           if [ -z "${base}" ] || ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
             base="$(git rev-parse "${head}^" 2>/dev/null || true)"
+          else
+            # The author's own diff, from the fork point (see `changes`).
+            base="$(git merge-base "${base}" "${head}" 2>/dev/null || echo "${base}")"
           fi
           if [ -z "${base}" ]; then
             echo "No base commit resolved; skipping coverage warning."
@@ -1386,6 +1430,10 @@ jobs:
           cargo fmt --version
           cargo clippy --version
       - name: System libraries (Tauri + llama.cpp)
+        # apt has hung here (not failed) until the job's 30-minute timeout,
+        # on #1618 and in a queue run of #1632, so `retry` never got a turn.
+        # Each attempt is bounded; three bounded attempts fit in this budget.
+        timeout-minutes: 16
         # Tauri v2 on Linux links webkit2gtk/soup; llama-cpp-sys-2's build
         # script drives cmake and bindgen (libclang). `cargo clippy` runs build
         # scripts, so these are needed for a check-only build too.
@@ -1411,8 +1459,9 @@ jobs:
             done
           }
 
-          retry sudo apt-get update
-          retry sudo apt-get install -y --no-install-recommends \
+          apt=(timeout 300 sudo apt-get -o Acquire::Retries=3 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30)
+          retry "${apt[@]}" update
+          retry "${apt[@]}" install -y --no-install-recommends \
             libwebkit2gtk-4.1-dev \
             libjavascriptcoregtk-4.1-dev \
             libsoup-3.0-dev \

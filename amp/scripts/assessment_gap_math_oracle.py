@@ -115,5 +115,9 @@ def self_test():
         reject(bad)
     return {'fixtures':len(cases),'rejectedMutations':rejected}
 
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = CHOICE
+
+
 if __name__ == '__main__':
     print(self_test())

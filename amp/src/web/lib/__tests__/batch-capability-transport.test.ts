@@ -52,6 +52,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "single-choice-v1",
       "multi-select-v1",
       "point-plot-v1",
+      "multi-part-choice-v1",
       "figure-choice-v1",
     ],
   });
@@ -62,6 +63,7 @@ test("trial transport retries an older API without its newest format, keeping au
       "single-choice-v1",
       "multi-select-v1",
       "point-plot-v1",
+      "multi-part-choice-v1",
     ],
   });
 });

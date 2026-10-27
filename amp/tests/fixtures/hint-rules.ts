@@ -19,7 +19,11 @@ function givens(p: GeneratedProblem) {
     JSON.stringify(p.public.figure ?? null),
     r.kind === "choice" || r.kind === "figure-choice"
       ? r.options.map((o) => o.label).join("\n")
-      : "",
+      : r.kind === "multi-part-choice"
+        ? r.blanks
+            .map((b) => [b.label, ...b.options.map((o) => o.label)].join("\n"))
+            .join("\n")
+        : "",
   ].join("\n");
 }
 const tokens = (text: string) =>

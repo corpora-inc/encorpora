@@ -21,6 +21,12 @@ import { ChoiceFigure } from "./ChoiceFigure";
 import { PointPlotAnswer, PointPlotInput, plotReview } from "./PointPlotInput";
 import { pointPlotAnswerText } from "../math/point-plot";
 import {
+  MultiPartChoiceAnswer,
+  MultiPartChoiceInput,
+  partsReview,
+} from "./MultiPartChoiceInput";
+import { multiPartAnswerText } from "../math/multi-part-choice";
+import {
   FigureChoiceAnswer,
   FigureChoiceInput,
   figureReview,
@@ -42,6 +48,10 @@ import { visibleSteps, type Step } from "../math/scene/timeline";
 import type { ProblemFlagInput } from "../feedback/problem-flags";
 import { problemFlagBody } from "./problem-flag";
 import { ReportProblemButton, type ReportResult } from "./ProblemFlag";
+import {
+  prepareFeedbackSound,
+  playCorrectFeedback,
+} from "./features/practice/feedback-preferences";
 type ReportSheet = typeof import("./ReportProblemSheet");
 /** The report sheet uses the UI kit's stylesheets, so it loads in the
  * browser on demand (this module also loads under Node). */
@@ -173,6 +183,8 @@ type Props = {
   navigation?: ReactNode;
   /** A skill this answer just mastered, shown once with the feedback. */
   mastered?: string | null;
+  /** Progress and optional one-problem branches; Next remains adaptive. */
+  answerFeedback?: ReactNode;
   /** Sends "Report a problem" once this problem resolves. Absent: no flag. */
   reportProblem?: (body: ProblemFlagInput) => Promise<ReportResult>;
   /** The report offers its optional note (see `noteAllowed`). */
@@ -216,6 +228,9 @@ export function PracticeWorkspace(props: Props) {
   // Point plots answer on the grid in the problem itself; the dock holds
   // only the readout and Check, so they never use the answer dialog.
   const plot = problem.response.kind === "point-plot" ? problem.response : null;
+  // Multi-part choices answer in the problem too: blanks, slots or a table.
+  const parts =
+    problem.response.kind === "multi-part-choice" ? problem.response : null;
   // Figure choices answer on their cards in the problem; the dock holds the
   // selection readout and Check.
   const figures =
@@ -240,6 +255,8 @@ export function PracticeWorkspace(props: Props) {
         return "No points placed";
       }
     }
+    if (problem.response.kind === "multi-part-choice")
+      return multiPartAnswerText(problem.response, value);
     if (problem.response.kind === "figure-choice")
       return figureChoiceName(problem.response, value) ?? "Unavailable answer";
     if (problem.response.kind === "multi-select") {
@@ -274,7 +291,7 @@ export function PracticeWorkspace(props: Props) {
   const [compactQuery, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
-  const compact = compactQuery && !plot && !figures;
+  const compact = compactQuery && !plot && !parts && !figures;
   // Side by side (practice-tablet.css), the feedback sheet has its own
   // column; stacked, it covers the dock only, so a plotted answer's grid and
   // its feedback overlay stay in view and the explanation opens on request.
@@ -287,7 +304,7 @@ export function PracticeWorkspace(props: Props) {
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
-  const deferSteps = (!!plot || !!figures) && !sideBySide;
+  const deferSteps = (!!plot || !!parts || !!figures) && !sideBySide;
   useEffect(() => {
     const media = matchMedia(answerLayoutQuery);
     const changed = () => setCompact(media.matches);
@@ -352,7 +369,7 @@ export function PracticeWorkspace(props: Props) {
     // Typed answers start in the answer field. On touch it suppresses the
     // system keyboard (inputMode none), so AMP's keypad stays in charge; the
     // field announces the question through aria-describedby.
-    if (choice || plot || figures)
+    if (choice || plot || parts || figures)
       prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
@@ -362,6 +379,8 @@ export function PracticeWorkspace(props: Props) {
     input.current?.blur();
     setEntering(false);
     focusNext.current = true;
+    if (outcome.correct && !outcome.skipped)
+      playCorrectFeedback(!!props.mastered);
     const focus = window.setTimeout(() => {
       if (outcome.correct) setCelebrate(true);
     }, 0);
@@ -400,7 +419,7 @@ export function PracticeWorkspace(props: Props) {
   const locked = busy || pending || !!outcome;
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
-  const keypad = !choice && !plot && !figures;
+  const keypad = !choice && !plot && !parts && !figures;
   const caret = useKeypadCaret(input);
   function key(value: string) {
     if (locked) return;
@@ -446,10 +465,26 @@ export function PracticeWorkspace(props: Props) {
       </>
     );
   }
+  function submitAnswer() {
+    prepareFeedbackSound();
+    props.submit();
+  }
   function answerControls(includeContext = false) {
     if (problem.response.kind === "point-plot")
       return (
         <PointPlotAnswer
+          response={problem.response}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          busy={busy}
+          resolved={!!outcome}
+          submit={submitAnswer}
+        />
+      );
+    if (problem.response.kind === "multi-part-choice")
+      return (
+        <MultiPartChoiceAnswer
           response={problem.response}
           value={outcome ? outcome.response : response}
           onChange={setResponse}
@@ -517,7 +552,7 @@ export function PracticeWorkspace(props: Props) {
           onSubmit={(event) => {
             event.preventDefault();
             if (busy || (!outcome && !complete)) return;
-            outcome ? advance() : props.submit();
+            outcome ? advance() : submitAnswer();
           }}
         >
           {includeContext ? (
@@ -553,7 +588,7 @@ export function PracticeWorkspace(props: Props) {
           onSubmit={(event) => {
             event.preventDefault();
             if (!busy && (outcome || response))
-              outcome ? advance() : props.submit();
+              outcome ? advance() : submitAnswer();
           }}
         >
           <fieldset disabled={locked}>
@@ -608,7 +643,7 @@ export function PracticeWorkspace(props: Props) {
               return setAnswerError(
                 "Enter a number, decimal, or fraction such as 3/4.",
               );
-            props.submit();
+            submitAnswer();
           }}
         >
           <label htmlFor="answer">
@@ -805,14 +840,16 @@ export function PracticeWorkspace(props: Props) {
    * the grid above the sheet, so the sheet names where to look and keeps the
    * coordinates for screen readers; the explanation lists them in full. */
   const answerLine = (raw: string) =>
-    plot ? (
+    plot || parts?.layout === "table" ? (
       <span
         className="solution-answer plot-answer"
         data-text={displayResponse(raw)}
       >
-        {plot.connect === "line"
-          ? "The answer is dashed"
-          : "The answer is circled"}
+        {parts
+          ? "Each row’s answer is ringed"
+          : plot?.connect === "line"
+            ? "The answer is dashed"
+            : "The answer is circled"}
         <span className="sr-only">
           . Answer: {spokenMath(displayResponse(raw))}
         </span>
@@ -885,7 +922,7 @@ export function PracticeWorkspace(props: Props) {
           )}
           {/* Plotted answers are placed, not typed: the calculator's Use
               key has nothing to fill, and lattice arithmetic needs none. */}
-          {props.calculator && !plot && !figures ? (
+          {props.calculator && !plot && !parts && !figures ? (
             <button
               ref={calculatorToggle}
               className="calculator-toggle"
@@ -934,7 +971,7 @@ export function PracticeWorkspace(props: Props) {
               <MathText text={problem.prompt} />
             </h2>
             {problem.figure &&
-              (choice || plot || figures ? (
+              (choice || plot || parts || figures ? (
                 <ChoiceFigure figure={problem.figure} />
               ) : (
                 <Figure
@@ -946,6 +983,19 @@ export function PracticeWorkspace(props: Props) {
                   }
                 />
               ))}
+            {parts && (
+              <MultiPartChoiceInput
+                response={parts}
+                value={outcome ? outcome.response : response}
+                onChange={setResponse}
+                locked={locked}
+                review={
+                  outcome
+                    ? partsReview(parts, outcome.answer, outcome.response)
+                    : null
+                }
+              />
+            )}
             {figures && (
               <FigureChoiceInput
                 problemId={problem.id}
@@ -1020,9 +1070,8 @@ export function PracticeWorkspace(props: Props) {
         {outcome && (
           <div
             className={`feedback solution-panel ${outcome.correct ? "correct" : skipped ? "skipped" : "incorrect"}`}
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
+            role="region"
+            aria-label="Answer feedback"
           >
             {outcome.correct && (
               <svg
@@ -1037,7 +1086,12 @@ export function PracticeWorkspace(props: Props) {
                 />
               </svg>
             )}
-            <div className="feedback-head">
+            <div
+              className="feedback-head"
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            >
               <span className="result-mark" aria-hidden="true">
                 {outcome.correct ? "✓" : skipped ? "→" : "✕"}
               </span>
@@ -1055,7 +1109,18 @@ export function PracticeWorkspace(props: Props) {
                 ) : (
                   <>
                     {answerLine(outcome.answer)}
-                    {plot ? (
+                    {parts ? (
+                      // Each part is marked in the problem; the sentence
+                      // stays for screen readers.
+                      <small>
+                        {partsSummary(parts, outcome)}
+                        <span className="sr-only">
+                          . You chose:{" "}
+                          {spokenMath(displayResponse(outcome.response))}
+                        </span>
+                        {support && `, ${support}`}
+                      </small>
+                    ) : plot ? (
                       // The grid shows the learner's points beside the
                       // correct ones; the sentence stays for screen readers.
                       <small>
@@ -1081,6 +1146,7 @@ export function PracticeWorkspace(props: Props) {
                 )}
               </span>
             </div>
+            {props.answerFeedback}
             {props.mastered && (
               <p className="mastery-moment">
                 <span className="mastery-mark" aria-hidden="true">
@@ -1119,6 +1185,14 @@ export function PracticeWorkspace(props: Props) {
           </div>
         )}
       </section>
+      {outcome && props.error && (
+        <div className="feedback-navigation-error" role="alert">
+          <span>{props.error}</span>
+          <button onClick={props.clearError} aria-label="Dismiss error">
+            ×
+          </button>
+        </div>
+      )}
       {lessonError && (
         <p className="workspace-error" role="alert">
           {lessonError}
@@ -1227,6 +1301,15 @@ export function PracticeWorkspace(props: Props) {
       )}
     </main>
   );
+}
+/** "2 of 3 parts correct", from the marks the problem shows. */
+function partsSummary(
+  response: Extract<PublicProblem["response"], { kind: "multi-part-choice" }>,
+  outcome: Outcome,
+) {
+  const marks = partsReview(response, outcome.answer, outcome.response);
+  if (!marks) return "Your choices are marked above";
+  return `${marks.filter((m) => m.correct).length} of ${marks.length} parts correct`;
 }
 function capitalize(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1);

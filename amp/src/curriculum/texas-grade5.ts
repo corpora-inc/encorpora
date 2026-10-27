@@ -408,11 +408,11 @@ export const texasGrade5Inventory: SourceInventory = {
       id: "budget-category-balance",
       description: "Find an allocation from income and an expense table",
       requirementIds: [id("10.F")],
-      skillIds: ["decimal-arithmetic"],
-      templateIds: ["budget-category-balance"],
+      skillIds: ["decimal-arithmetic", "financial-literacy-middle"],
+      templateIds: ["budget-category-balance", "budget-percent-share"],
       disposition: "related-practice",
       limitations:
-        "Choice-response practice with one to five expense categories in dollars and cents: a missing category, a surplus or deficit with its name, and the change that balances a budget. Learner-built budgets, percent allocation, written deficit explanations and other financial components are not assessed or reconciled.",
+        "Choice-response practice with one to five expense categories in dollars and cents: a missing category, a surplus or deficit with its name, and the change that balances a budget. Learner-built budgets, written deficit explanations and other financial components are not assessed or reconciled. The related percent-share practice reads category percents and amounts from a given budget; it does not assess balancing a budget.",
       evidence: [
         {
           sourceId: release,
@@ -423,14 +423,25 @@ export const texasGrade5Inventory: SourceInventory = {
       ],
     },
     {
+      id: "tax-kinds",
+      description: "Define income, payroll, sales and property taxes",
+      requirementIds: [id("10.A")],
+      skillIds: ["financial-literacy-elementary"],
+      templateIds: ["tax-kinds-defined"],
+      disposition: "related-practice",
+      limitations:
+        "Choice-response matching of a short description or example to income, payroll, sales or property tax. Defining the kinds in the learner's own words and computing taxes are not assessed by this template. Standards evidence only, not a sampled released item.",
+      evidence: [],
+    },
+    {
       id: "gross-net-income",
       description: "Explain gross versus net income",
       requirementIds: [id("10.B")],
-      skillIds: ["decimal-arithmetic"],
-      templateIds: ["gross-net-pay"],
+      skillIds: ["decimal-arithmetic", "financial-literacy-middle"],
+      templateIds: ["gross-net-pay", "payroll-property-tax"],
       disposition: "related-practice",
       limitations:
-        "Choice-response practice in dollars and cents: net pay from gross pay and deductions, gross pay from net pay, a missing deduction and identifying take-home pay on a stub. This exercises the distinction through arithmetic; it does not assess an explanation in words, percent-based taxes or other payroll content. Standards evidence only, not a sampled released item.",
+        "Choice-response practice in dollars and cents: net pay from gross pay and deductions, gross pay from net pay, a missing deduction and identifying take-home pay on a stub. This exercises the distinction through arithmetic; it does not assess an explanation in words, written definitions or tax forms; the related tax-amount practice computes practice-rate payroll tax and net pay after percent withholdings. Standards evidence only, not a sampled released item.",
       evidence: [],
     },
     {

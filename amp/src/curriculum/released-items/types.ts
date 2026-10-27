@@ -20,8 +20,11 @@ export type TemplateResponse = "numeric" | ResponseCapability;
 /** Which AMP response protocols can practice an item's response format.
  * Producing a number subsumes choosing it, so numeric entry may serve a choice
  * item whose choices are plain numbers; labelers decide that case. A
- * choice-only template can never fully cover numeric entry. Graph, drag and
- * constructed responses have no AMP protocol yet. */
+ * choice-only template can never fully cover numeric entry. Point plots
+ * answer graphing items; multi-part choices answer inline-choice and
+ * match-table items ("other") and drag-into-slots items, offered as one
+ * picker per slot. Hot spots, drawn graphs and constructed responses have no
+ * AMP protocol yet; labelers decide whether a protocol fits an item. */
 export const acceptedResponses: Readonly<
   Record<ResponseFormat, readonly TemplateResponse[]>
 > = {
@@ -29,9 +32,9 @@ export const acceptedResponses: Readonly<
   choice: ["single-choice-v1", "figure-choice-v1", "numeric"],
   numeric: ["numeric"],
   "multi-select": ["multi-select-v1"],
-  "graph/drag": ["point-plot-v1"],
+  "graph/drag": ["point-plot-v1", "multi-part-choice-v1"],
   constructed: [],
-  other: [],
+  other: ["multi-part-choice-v1"],
 };
 /** Digital SAT Suite skills (Assessment Framework, Appendix B, SAT column). */
 export const satSkills = [

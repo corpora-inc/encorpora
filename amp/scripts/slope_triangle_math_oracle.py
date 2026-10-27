@@ -531,3 +531,7 @@ def self_test():
             continue
         raise AssertionError("Accepted corrupt slope-triangle case")
     return {"handwritten_cases": 6, "mutations": len(mutants) + 2}
+
+
+# Read by independent-math-review.py (FamilyOracle).
+REVIEW_RETURNS_ANSWER = True
