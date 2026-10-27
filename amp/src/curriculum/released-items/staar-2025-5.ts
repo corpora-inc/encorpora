@@ -215,7 +215,7 @@ export const staarGrade5 = defineLedger(
       status: "covered",
       templateIds: ["expression-after-first-step", "operation-order"],
       limitations:
-        "expression-after-first-step first-wrong-line shows four lines of a student's simplification of a decimal expression with a bracketed product and asks for the first line with a mistake, where the bracket is skipped at line 2 or 3 or an arithmetic slip is made at line 4.",
+        "expression-after-first-step first-wrong-line shows four lines of a student's simplification of a whole-number expression with a bracketed product and asks for the first line with a mistake, where the bracket is skipped at line 2 or 3 or an arithmetic slip is made at line 4.",
     },
     {
       item: {

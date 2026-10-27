@@ -846,7 +846,10 @@ function changeModel(r: R, ax: { ask: ChangeModel["ask"] }): ChangeModel {
   if (changes.every((v) => v > 0) || changes.every((v) => v < 0))
     throw new Error("Need three retries");
   const start = r(25, 70);
-  if (ax.ask === "final-count" && start + net < 0)
+  // A count of books, players or cars can never be below zero on any day.
+  let running = start;
+  const dipsBelowZero = changes.some((v) => (running += v) < 0);
+  if (ax.ask === "final-count" && (start + net < 0 || dipsBelowZero))
     throw new Error("Need three retries");
   return {
     ask: ax.ask,

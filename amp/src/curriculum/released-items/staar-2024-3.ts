@@ -37,14 +37,14 @@ export const staar2024Grade3 = defineLedger(
       archetypeIds: ["whole.add-subtract-1000"],
       demand:
         "Subtract a smaller amount from a three-digit total in a sales story",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "story-sentence-match-1000",
         "story-equation-choice",
         "subtract-three-digit",
       ],
       limitations:
-        "story-sentence-match-1000 and story-equation-choice set a one-step take-away story within 1,000 in a shop and ask the learner to choose the sentence or equation, so the operation is chosen; subtract-three-digit practices the regrouped computation.",
+        "story-sentence-match-1000 and story-equation-choice choose the sentence or equation for a take-away story within 1,000, and subtract-three-digit computes the regrouped difference as a bare computation; no template asks for the computed answer to the story itself.",
     },
     {
       item: { number: "2", page: "rationale PDF p.2" },

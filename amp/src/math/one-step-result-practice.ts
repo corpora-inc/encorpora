@@ -262,22 +262,24 @@ interface ExpressionModel {
 }
 function expressionModel(r: Random, ax: { ask: string }): ExpressionModel {
   const inner = r(0, 1) ? "sum" : "difference";
-  const c = r(5, 30);
+  // One first-step item in three uses whole numbers, the rest tenths.
+  const whole = ax.ask === "first-step-result" && r(0, 2) === 0;
+  const unit = whole ? 10 : 1;
+  const c = whole ? 10 * r(1, 3) : r(5, 30);
   const d = r(2, 9);
   const p = c * d;
   let a: number;
   let b: number;
   if (inner === "sum") {
-    b = r(10, 40);
-    a = b + p + r(10, 60);
+    b = whole ? unit * r(1, 5) : r(10, 40);
+    a = b + p + (whole ? unit * r(1, 6) : r(10, 60));
   } else {
-    b = p + r(5, 40);
-    a = r(10, 80);
+    b = p + (whole ? unit * r(1, 4) : r(5, 40));
+    a = whole ? unit * r(1, 8) : r(10, 80);
   }
   const error = (
     ["bracket-line-2", "bracket-line-3", "arithmetic-line-4"] as const
   )[r(0, 2)]!;
-  void ax;
   return { inner, a, b, c, d, error, slip: r(1, 9) };
 }
 const dt = (tenths: number) => decimalText(tenths, 10);
