@@ -20,11 +20,11 @@ All 432 mathematics questions of the eight published nonadaptive digital SAT Pra
 
 | Status | Items |
 | --- | ---: |
-| Covered | 199 (46.1%) |
-| Partial | 227 (52.5%) |
+| Covered | 204 (47.2%) |
+| Partial | 222 (51.4%) |
 | Missing | 6 (1.4%) |
 
-Student-produced numeric responses are covered at 55.4% (62 of 112) and multiple-choice questions at 42.8% (137 of 320). Some numeric-entry questions have related practice only in choice families, and some uncovered choice questions are practiced only by numeric entry, usually because their choices are expressions, equations, graphs or statements. Other partials come from narrower difficulty ranges (percent increases above 200%, negative leading coefficients, radical side lengths, decimal data), linear rules never written in function notation, or single-step families for chained tasks. The largest gaps are linear input-output and rule-building in function notation, exponential models, related-expression values, two-variable linear constraints, angle relationships, intercepts from graphs and nonlinear evaluation and transformation.
+Student-produced numeric responses are covered at 57.1% (64 of 112) and multiple-choice questions at 43.8% (140 of 320). Some numeric-entry questions have related practice only in choice families, and some uncovered choice questions are practiced only by numeric entry, usually because their choices are expressions, equations, graphs or statements. Other partials come from narrower difficulty ranges (percent increases above 200%, radical side lengths, decimal data), linear rules never written in function notation, or single-step families for chained tasks. Five SAT items are closed by variation axes of one family model: the smaller quadratic solution of a squared binomial set equal to a linear expression, a negative leading coefficient, a perpendicular slope from a slope-intercept or standard-form equation, and a radical written with a scaled-up index and power. The largest gaps are linear input-output and rule-building in function notation, exponential models, related-expression values, two-variable linear constraints, angle relationships, intercepts from graphs and nonlinear evaluation and transformation.
 
 Practice Test 11 added no archetypes. Tests 7–10 each added at most three, and 94–100% of their questions fell on archetypes already seen, so the SAT task set is close to saturated at 83 archetypes.
 

@@ -15,6 +15,25 @@ import {
   valueTable,
 } from "./exponential-scenes.js";
 import { act, step } from "./scene/author.js";
+import { defineAxis } from "./variation/axes.js";
+import { generateWithAxes } from "./variation/legacy.js";
+
+/** Surface axes. A model value can be exact (the legacy frames) or a
+ * calculator value rounded to the nearest cent, from a percent rate. */
+export const exponentialAxes = {
+  "exponential-model-value": {
+    "number-domain": defineAxis("number-domain", [
+      "exact-values",
+      "rounded-decimals",
+    ]),
+  },
+  "geometric-sequence-rule": {
+    "number-domain": defineAxis("number-domain", [
+      "integer-ratios",
+      "decimal-ratios",
+    ]),
+  },
+} as const;
 
 /** Exponential growth, geometric sequences and series, and logarithms
  * (Algebra 1 and 2). Every answer is exact; figures carry only givens. */
@@ -205,8 +224,51 @@ const scene = (sc: import("./scene/spec.js").Scene): SemanticFigure => ({
 const factor = (percent: number) => String((100 + percent) / 100);
 
 // ---------------------------------------------------------------- generators
-function modelValue(r: Rand): Draft {
+/** a·n^t/100^t, exactly, truncated to four places and rounded half-up to cents. */
+function centsOfGrowth(a: number, n: number, t: number) {
+  const scaled =
+    (BigInt(a) * BigInt(n) ** BigInt(t) * 10_000n) / 100n ** BigInt(t);
+  return {
+    cents: Number((scaled + 50n) / 100n),
+    fourPlaces: Number(scaled) / 10_000,
+    // A value within the last digits of a tie is redrawn: no half-cent answers.
+    tie: scaled % 100n === 50n,
+  };
+}
+const money = (cents: number) =>
+  `${Math.floor(cents / 100)}.${String(cents % 100).padStart(2, "0")}`;
+/** A percent change over whole years, valued with a calculator and rounded. */
+function roundedGrowth(r: Rand): Draft {
+  const growth = r(0, 1) === 0;
+  for (let attempt = 0; attempt < 200; attempt++) {
+    const p = growth ? r(2, 9) : r(5, 18);
+    const t = r(3, 12);
+    const a = 100 * r(5, 120);
+    const n = growth ? 100 + p : 100 - p;
+    const { cents, fourPlaces, tie } = centsOfGrowth(a, n, t);
+    if (tie) continue;
+    const f = factor(growth ? p : -p);
+    const start = a.toLocaleString("en-US");
+    return {
+      prompt: growth
+        ? `A savings account holds ${start} dollars and earns ${p}% interest, added to the balance at the end of each year. With no withdrawals, how many dollars will it hold after ${t} years? Round to the nearest cent.`
+        : `A delivery van is worth ${start} dollars and loses ${p}% of its value each year. How many dollars is it worth after ${t} years? Round to the nearest cent.`,
+      answer: money(cents),
+      hint: `${growth ? `Growing by ${p}%` : `Losing ${p}%`} multiplies the amount by ${f} each year. Multiply ${start} by ${f} once for each of the ${t} years, using a calculator's power key, and round only at the end.`,
+      explanation: [
+        `${[8, 11, 18].includes(p) ? "An" : "A"} ${p}% ${growth ? "increase" : "decrease"} multiplies by $${growth ? `1 + ${p / 100}` : `1 - ${p / 100}`} = ${f}$ each year.`,
+        `After ${t} years: $${a} \\times ${f}^{${t}} \\approx ${fourPlaces.toFixed(4)}$.`,
+        `Rounded to the nearest cent, the amount is ${money(cents)} dollars.`,
+      ],
+      label: "Dollars",
+    };
+  }
+  throw new Error("Need three tie-free rounded values");
+}
+
+function modelValue(r: Rand, axes: Record<string, string> = {}): Draft {
   const frame = r(0, 3);
+  if (axes["number-domain"] === "rounded-decimals") return roundedGrowth(r);
   if (frame === 0) {
     const b = pick(r, [2, 3]),
       a = r(2, 6),
@@ -1284,8 +1346,29 @@ function logForm(r: Rand): Draft {
   };
 }
 
-function sequenceRule(r: Rand): Draft {
+/** A recursive rule with a decimal ratio; terms are listed until the one asked. */
+function decimalRecursion(r: Rand): Draft {
+  const ratio = pick(r, [0.5, 1.5, 2.5, -0.5, -1.5, -2.5] as const);
+  const k = r(4, 6);
+  const a = 2 ** (k - 1) * r(1, 4);
+  const terms = Array.from({ length: k }, (_, i) => a * ratio ** i);
+  const text = ratio < 0 ? `-${-ratio}` : `${ratio}`;
+  return {
+    kind: "fraction",
+    label: "Exact value",
+    prompt: `A sequence has $a_1 = ${a}$ and $a_n = ${text}a_{n-1}$ for $n \\ge 2$. What is $a_{${k}}$?`,
+    answer: `${terms.at(-1)}`,
+    hint: `Each term is ${text.replace("-", "−")} times the one before. Starting from ${a}, multiply by ${text.replace("-", "−")} once for each step from $a_1$ to $a_{${k}}$, keeping the sign and the decimal.`,
+    explanation: [
+      `The terms are ${terms.map(s).join(", ")}.`,
+      `Equivalently, $a_{${k}} = ${a} \\cdot ${ratio < 0 ? `(${ratio})` : ratio}^{${k - 1}} = ${terms.at(-1)}$.`,
+    ],
+  };
+}
+
+function sequenceRule(r: Rand, axes: Record<string, string> = {}): Draft {
   const frame = r(0, 3);
+  if (axes["number-domain"] === "decimal-ratios") return decimalRecursion(r);
   const base = { kind: "fraction" as const, label: "Exact value" };
   if (frame === 0) {
     const [rn, rd] = pick(r, [
@@ -1371,7 +1454,10 @@ function sequenceRule(r: Rand): Draft {
   };
 }
 
-const generators: Record<string, (r: Rand) => Draft> = {
+const generators: Record<
+  string,
+  (r: Rand, axes?: Record<string, string>) => Draft
+> = {
   "exponential-model-value": modelValue,
   "exponential-model-rule": modelRule,
   "linear-or-exponential": linearOrExponential,
@@ -1396,8 +1482,26 @@ export function generateExponentialProblem(
   if (!meta) throw new Error(`Unknown exponential template ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
+  const axes = (
+    exponentialAxes as Record<
+      string,
+      Record<string, ReturnType<typeof defineAxis>>
+    >
+  )[templateId];
+  return axes
+    ? generateWithAxes(templateId, seed, axes, (values) =>
+        exponentialProblem(templateId, seed, meta, values),
+      )
+    : exponentialProblem(templateId, seed, meta, {});
+}
+function exponentialProblem(
+  templateId: string,
+  seed: string,
+  meta: TemplateMetadata,
+  axes: Record<string, string>,
+): GeneratedProblem {
   const r = random(templateId, seed);
-  const d = generators[templateId]!(r);
+  const d = generators[templateId]!(r, axes);
   let answer = d.answer ?? "";
   let response: GeneratedProblem["public"]["response"] = {
     kind: d.kind ?? "number",
