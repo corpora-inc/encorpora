@@ -445,13 +445,13 @@ export const regentsGeometryJune2026 = defineLedger(
       standards: ["G-CO.C"],
       archetypeIds: ["angle.relationships", "proof.parallelogram"],
       demand: "Find an angle in a parallelogram with a perpendicular segment",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "angle-pair-measure",
         "parallelogram-property-consequences",
         "rg-parallelogram-perpendicular",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -464,9 +464,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["measure.volume", "ratio.units"],
       demand:
         "Find the weight of a cylindrical log from its diameter, height and density",
-      status: "covered",
+      status: "partial",
       templateIds: ["cylinder-volume", "density-context", "rg-solid-density"],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -485,8 +485,7 @@ export const regentsGeometryJune2026 = defineLedger(
         "similar-triangle-side",
         "geo-parallel-segment-length",
       ],
-      limitations:
-        "geo-parallel-segment-length practices the length that makes the segment parallel by entry. The rating guide credits shown work, which AMP does not score.",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -499,9 +498,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["trig.triangle-area"],
       demand:
         "Find a triangle's area from two sides and the included angle, to the nearest tenth",
-      status: "covered",
+      status: "partial",
       templateIds: ["trig-triangle-area", "rg-triangle-area-sas"],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -546,9 +545,9 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["triangle.trig-ratio"],
       demand:
         "Find a height from elevation and depression angles at the same spot",
-      status: "covered",
+      status: "partial",
       templateIds: ["trig-context-triangle", "geo-elevation-depression"],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part III",
@@ -561,13 +560,13 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["measure.volume", "ratio.units"],
       demand:
         "Find how many pyramids can be made from a mass of clay with a stated density",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "solid-volume-context",
         "density-context",
         "rg-solid-density",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part III",

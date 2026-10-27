@@ -230,14 +230,23 @@ const psAxes = {
 export const linePointSlope = chainFamily({
   template: perpendicularPointSlopeTemplate,
   axes: psAxes,
-  model: (r: R) => {
+  model: (r: R, a) => {
     for (;;) {
       const dx = r(2, 5) * (r(0, 1) ? 1 : -1);
       const dy = r(1, 6) * (r(0, 1) ? 1 : -1);
       if (Math.abs(dx) === Math.abs(dy)) continue;
       const px = r(-6, 6);
       const py = r(-6, 6);
-      return { px, py, dx, dy, qx: r(-6, 6), qy: r(-6, 6) };
+      const qx = r(-6, 6);
+      const qy = r(-6, 6);
+      // The correct line has slope sn/sd through (qx, qy). Two options must never
+      // describe that same line: the sign-reversed point lies on it when the line
+      // passes through the origin, and the given line's point lies on it when
+      // (qx, qy) is on a parallel/perpendicular line through that point.
+      const [sn, sd] = a.relation === "perpendicular" ? [-dx, dy] : [dy, dx];
+      if (qy * sd === sn * qx) continue;
+      if ((qy - py) * sd === sn * (qx - px)) continue;
+      return { px, py, dx, dy, qx, qy };
     }
   },
   variant: (m) => (m.dy / m.dx > 0 ? "positive-slope" : "negative-slope"),

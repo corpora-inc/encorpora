@@ -560,6 +560,9 @@ export const rigidStatement = chainFamily({
       } else seq.push(motionWords[r(0, 1) === 0 ? 0 : 2]!);
     }
     if (left > 0) retry();
+    // A chain of translations alone keeps every side parallel, which would make
+    // the parallel-sides statement true as well as the congruence statements.
+    if (seq.every((word) => word === motionWords[0])) retry();
     return { seq, reflections };
   },
   variant: (m) => `reflections-${m.reflections}`,

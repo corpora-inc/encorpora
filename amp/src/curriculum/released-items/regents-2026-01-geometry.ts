@@ -460,9 +460,9 @@ export const regentsGeometryJanuary2026 = defineLedger(
       archetypeIds: ["measure.volume", "ratio.units"],
       demand:
         "Find the weight of soil that fills a cylindrical bucket from its inside diameter, height and weight per cubic inch",
-      status: "covered",
+      status: "partial",
       templateIds: ["cylinder-volume", "density-context", "geo-volume-context"],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -475,13 +475,13 @@ export const regentsGeometryJanuary2026 = defineLedger(
       archetypeIds: ["triangle.trig-ratio"],
       demand:
         "Find a leg of a right triangle from a hypotenuse and an acute angle of 27 degrees to the nearest tenth",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "trig-ratio",
         "trig-context-triangle",
         "geo-trig-leg-degrees",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -494,9 +494,9 @@ export const regentsGeometryJanuary2026 = defineLedger(
       archetypeIds: ["trig.triangle-area"],
       demand:
         "Find the area of a triangle from two sides and the included obtuse angle to the nearest tenth",
-      status: "covered",
+      status: "partial",
       templateIds: ["trig-triangle-area", "geo-sas-triangle-area"],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -509,13 +509,13 @@ export const regentsGeometryJanuary2026 = defineLedger(
       archetypeIds: ["measure.circle", "measure.area"],
       demand:
         "Find the area of a ring-shaped deck around a circular pool to the nearest square foot",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "circle-area-coefficient",
         "composite-area",
         "geo-ring-area",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -560,13 +560,13 @@ export const regentsGeometryJanuary2026 = defineLedger(
       archetypeIds: ["triangle.trig-ratio"],
       demand:
         "Find the perimeter of an isosceles triangle from its apex angle and the altitude to the base",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "trig-context-triangle",
         "trig-ratio",
         "geo-isosceles-trig",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part III",
@@ -595,14 +595,14 @@ export const regentsGeometryJanuary2026 = defineLedger(
       archetypeIds: ["measure.volume", "ratio.units"],
       demand:
         "Find the mass of a solid trophy made of a prism and a pyramid from a density in grams per cubic centimeter",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "composite-prism-volume",
         "density-context",
         "cone-sphere-volume",
         "geo-volume-context",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part IV",
