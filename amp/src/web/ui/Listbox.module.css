@@ -71,8 +71,13 @@
   font-weight: 650;
   line-height: 1.25;
 }
+/* Words wrap as whole units, never at a hyphen. Only a single word wider
+   than the whole row may break, so it stays inside the row instead of
+   spilling out of it or being cut off. */
 .word {
-  white-space: nowrap;
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 .detail {
   color: var(--color-muted-text);

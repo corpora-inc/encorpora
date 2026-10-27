@@ -198,3 +198,46 @@ test("a disclosed list closes on a tap outside without choosing", async () => {
   expect(screen.queryByRole("listbox")).toBeNull();
   expect(onChange).toHaveBeenCalledExactlyOnceWith("riley");
 });
+
+test("a disclosed list closes when focus moves past it", async () => {
+  const user = userEvent.setup();
+  render(<Fixture options={people(["Avery", "Jordan", "Riley", "Sam"])} />);
+  await user.click(
+    screen.getByRole("button", { name: "Current learner Choose a learner" }),
+  );
+  const list = screen.getByRole("listbox");
+  await waitFor(() => expect(document.activeElement).toBe(list));
+  await user.tab();
+  expect(document.activeElement).toBe(
+    screen.getByRole("button", { name: "Outside" }),
+  );
+  expect(screen.queryByRole("listbox")).toBeNull();
+});
+
+test("the active row follows its option when the list changes", async () => {
+  const user = userEvent.setup();
+  const onChange = vi.fn();
+  const { rerender } = render(
+    <ChoicePicker
+      label="Current learner"
+      options={people(["Avery", "Jordan"])}
+      value="avery"
+      onChange={onChange}
+    />,
+  );
+  const list = screen.getByRole("listbox");
+  await user.tab();
+  await user.keyboard("{ArrowDown}");
+  expect(active(list)?.textContent).toBe("Jordan");
+  rerender(
+    <ChoicePicker
+      label="Current learner"
+      options={people(["Avery", "Casey", "Jordan"])}
+      value="avery"
+      onChange={onChange}
+    />,
+  );
+  expect(active(list)?.textContent).toBe("Jordan");
+  await user.keyboard("{Enter}");
+  expect(onChange).toHaveBeenCalledExactlyOnceWith("jordan");
+});

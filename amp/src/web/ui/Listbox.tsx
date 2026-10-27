@@ -75,8 +75,11 @@ export function Listbox({
   const fallbackId = useId();
   const base = id ?? fallbackId;
   const selected = options.findIndex((option) => option.value === value);
-  const [active, setActive] = useState(Math.max(0, selected));
-  const current = Math.min(active, options.length - 1);
+  // The active row is held by value, so a list that changes under it keeps
+  // the same choice active rather than whatever now sits at that position.
+  const [active, setActive] = useState<string | null>(value);
+  const found = options.findIndex((option) => option.value === active);
+  const current = found >= 0 ? found : Math.max(0, selected);
   const choose = (index: number) => {
     const option = options[index];
     onSettle?.();
@@ -96,7 +99,7 @@ export function Listbox({
               : null;
     if (next !== null) {
       event.preventDefault();
-      setActive(next);
+      setActive(options[next]!.value);
       document
         .getElementById(`${base}-${next}`)
         ?.scrollIntoView?.({ block: "nearest" });
@@ -119,7 +122,7 @@ export function Listbox({
       aria-activedescendant={`${base}-${current}`}
       className={`${styles.list} ${className ?? ""}`}
       onKeyDown={onKeyDown}
-      onFocus={() => setActive(Math.max(0, selected))}
+      onFocus={() => setActive(value)}
     >
       {options.map((option, index) => (
         <div
@@ -130,7 +133,7 @@ export function Listbox({
           data-value={option.value}
           data-active={index === current || undefined}
           className={styles.option}
-          onPointerMove={() => setActive(index)}
+          onPointerMove={() => setActive(option.value)}
           onClick={() => choose(index)}
         >
           <svg viewBox="0 0 20 20" aria-hidden="true" className={styles.mark}>
@@ -145,8 +148,9 @@ export function Listbox({
 
 /**
  * A button that discloses a Listbox laid over the content below it, so
- * opening, closing and choosing never move the page. Escape, a tap outside
- * and choosing close it; Escape and choosing return focus to the button.
+ * opening, closing and choosing never move the page. Escape, a tap outside,
+ * focus leaving and choosing close it; Escape and choosing return focus to
+ * the button.
  */
 export function ListboxDisclosure({
   label,
@@ -194,7 +198,14 @@ export function ListboxDisclosure({
     };
   }, [open]);
   return (
-    <div className={styles.disclosure} ref={root}>
+    <div
+      className={styles.disclosure}
+      ref={root}
+      onBlur={(event) => {
+        if (!root.current?.contains(event.relatedTarget as Node | null))
+          setOpen(false);
+      }}
+    >
       <span id={`${id}-label`} className={styles.srOnly}>
         {label}
       </span>

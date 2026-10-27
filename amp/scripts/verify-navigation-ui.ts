@@ -27,7 +27,7 @@ const browser = await (
 ).launch();
 const output = `artifacts/navigation-${remoteOrigin ? "deployed-" : ""}${engine}`;
 await mkdir(output, { recursive: true });
-const account = fixtureMe(
+const twoLearners = fixtureMe(
   {
     consent: {
       status: "active",
@@ -48,6 +48,7 @@ const account = fixtureMe(
   },
   "amp|drawer-fixture",
 );
+let account = twoLearners;
 const frontier = {
   expected: 4,
   overall: { level: 5.3, sd: 0.65, answered: 42, independent: 31 },
@@ -492,6 +493,100 @@ try {
     "arrows alone do not switch learners",
   );
   await page.keyboard.press("Enter");
+  await page.locator('[data-strength="Strong"]').first().waitFor();
+  // Four or more choices fold behind a button whose list overlays the card
+  // below it. Long names wrap between words only; a single word too wide for
+  // the row is the one thing that may break, and it stays inside the row.
+  account = fixtureMe(
+    {
+      ...twoLearners.family,
+      learners: [
+        ...twoLearners.family.learners,
+        ...["Maximiliana Okonkwo-Reyes", "Bartholomewmaximilianwolfgang"].map(
+          (name, i) => ({
+            id: `extra-${i}`,
+            name,
+            birthYear: 2016,
+            deletedAt: null,
+            access: [],
+            stripeLinked: false,
+            canPractice: true,
+          }),
+        ),
+      ],
+    },
+    "amp|drawer-fixture",
+  );
+  await page.setViewportSize({ width: 320, height: 700 });
+  await page.reload();
+  await page.locator('[data-strength="Strong"]').first().waitFor();
+  await trigger.click();
+  const card = drawer.getByRole("region", { name: "Current learning" });
+  const learnerButton = card.getByRole("button", {
+    name: /^Current learner\s*Jordan$/,
+  });
+  await learnerButton.waitFor();
+  assert.equal(await learnerButton.getAttribute("aria-haspopup"), "listbox");
+  assert.equal(await learnerButton.getAttribute("aria-expanded"), "false");
+  assert.equal(await card.getByRole("listbox").count(), 0);
+  await drawer.evaluate(async (el) => {
+    await Promise.all(el.getAnimations().map((a) => a.finished));
+  });
+  const cardBox = await card.boundingBox();
+  const statsBox = await card.locator("[aria-live]").boundingBox();
+  await learnerButton.click();
+  const crowded = card.getByRole("listbox", { name: "Current learner" });
+  await crowded.waitFor();
+  await drawer.evaluate(async (el) => {
+    await Promise.all(el.getAnimations().map((a) => a.finished));
+  });
+  assert.equal(await learnerButton.getAttribute("aria-expanded"), "true");
+  assert.equal(await crowded.getByRole("option").count(), 5);
+  assert.deepEqual(await card.boundingBox(), cardBox, "opening shifts card");
+  assert.deepEqual(
+    await card.locator("[aria-live]").boundingBox(),
+    statsBox,
+    "opening shifts the content below",
+  );
+  assert.deepEqual(
+    await crowded.getByRole("option").evaluateAll((options) =>
+      options.flatMap((o) => {
+        const row = o.getBoundingClientRect();
+        return [...o.querySelectorAll<HTMLElement>("[data-word]")]
+          .filter((w) => {
+            const r = w.getBoundingClientRect();
+            const line = parseFloat(getComputedStyle(w).lineHeight);
+            const fits = w.textContent!.length < 20;
+            return (
+              r.left < row.left - 1 ||
+              r.right > row.right + 1 ||
+              (fits && r.height > line * 1.5)
+            );
+          })
+          .map((w) => w.textContent);
+      }),
+    ),
+    [],
+    "crowded list words wrap whole and stay inside their rows",
+  );
+  await fits("crowded learner list 320");
+  // Escape closes only the list and returns focus to its button.
+  await page.keyboard.press("Escape");
+  await crowded.waitFor({ state: "detached" });
+  assert.equal(await drawer.count(), 1, "Escape kept the drawer open");
+  assert(await learnerButton.evaluate((el) => el === document.activeElement));
+  assert.deepEqual(await card.locator("[aria-live]").boundingBox(), statsBox);
+  // The keyboard opens it again; Tab moves on and closes it.
+  await page.keyboard.press("ArrowDown");
+  await crowded.waitFor();
+  assert(await crowded.evaluate((el) => el === document.activeElement));
+  await page.keyboard.press("Tab");
+  await crowded.waitFor({ state: "detached" });
+  await page.keyboard.press("Escape");
+  await drawer.waitFor({ state: "detached" });
+  account = twoLearners;
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload();
   await page.locator('[data-strength="Strong"]').first().waitFor();
   await page.getByRole("searchbox", { name: "Search your skills" }).fill("L");
   await page.getByRole("searchbox", { name: "Search your skills" }).fill("");
