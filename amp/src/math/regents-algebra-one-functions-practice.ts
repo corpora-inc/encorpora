@@ -140,7 +140,7 @@ export const functionMissingInput = chainFamily({
       ...m.pairs.map(([x, y]) => `(${x}, ${y})`),
       `(k, ${m.newOut})`,
     ]);
-    const set = `\\{${display.join(", ")}\\}`;
+    const set = `{${display.map((pair) => `$${pair}$`).join(", ")}}`;
     const makes = a.ask === "makes-function";
     const used = m.pairs.map(([x]) => x);
     const conflict = (k: number) => {
@@ -152,7 +152,7 @@ export const functionMissingInput = chainFamily({
     const pool = makes ? used.slice(0, 3) : m.unused.slice(0, 3);
     const answerK = makes ? m.unused[0]! : used[0]!;
     return choiceSurface(r, {
-      prompt: `The relation $${set}$ has an unknown input $k$. ${makes ? "Which value of $k$ makes the relation a function?" : "Which value of $k$ means the relation is not a function?"}`,
+      prompt: `The relation ${set} has an unknown input $k$. ${makes ? "Which value of $k$ makes the relation a function?" : "Which value of $k$ means the relation is not a function?"}`,
       label: "Choose the value",
       options: [
         { label: `$${answerK}$`, correct: true },
