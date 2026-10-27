@@ -436,18 +436,22 @@ export const regentsAlgebra2January2026 = defineLedger(
         number: "25",
         page: "printed p.12; PDF p.12; standard map rating guide PDF p.13",
       },
-      responseFormat: "numeric",
+      responseFormat: "constructed",
       standards: ["A-CED.A"],
       archetypeIds: ["exponential.context", "logarithm.solve"],
       demand:
         "Find the time for an exponential model of a crowd to reach a target to the nearest hundredth",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "exponential-log-solution",
         "log-equation",
         "exponential-target-time",
+        "exponential-time-steps",
       ],
-      limitations: "Final answer practiced; shown-work credit not assessed.",
+      limitations:
+        "exponential-time-steps (structured-work-v1) enters the ratio of the target to the start, the natural logarithms of the ratio and of the growth factor, and the time to the nearest hundredth, for a base-b or a natural-rate model, as exact steps. The steps are the shown work the rating guide credits. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Part II",

@@ -99,10 +99,12 @@ export const staarGrade6 = defineLedger(
       archetypeIds: ["finance.credit-concept"],
       demand:
         "Decide for each statement whether it describes a debit card or a credit card",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["credit-cost-concepts"],
       limitations:
-        "STAAR interaction: match table grid, 2 points. No family covers payment methods or credit; the response is a match table grid.",
+        "credit-cost-concepts practices what a debit card and a credit card cost and how the monthly rate follows from the APR, by single choice with computed amounts; deciding for each statement whether it describes a debit card or a credit card, a match table grid worth 2 points, is not practiced.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: {
@@ -134,9 +136,11 @@ export const staarGrade6 = defineLedger(
       demand:
         "Choose the value outside a Venn region of integers within rational numbers",
       status: "partial",
-      templateIds: ["staar-number-sets"],
+      templateIds: ["staar-number-sets", "number-set-venn"],
       limitations:
-        "staar-number-sets places numbers among nested sets described in words by choice; the item's drawn Venn diagram is not shown.",
+        "number-set-venn (single-choice-v1) draws the nested circles of whole numbers, integers and rational numbers and asks which region holds a number, which statement about the diagram is true or the smallest set containing a number; staar-number-sets states the sets in words. Choosing the value that lies outside one region of the diagram is the reverse direction and is not asked.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       item: {

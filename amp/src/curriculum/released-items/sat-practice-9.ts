@@ -287,10 +287,12 @@ export const satPractice9 = defineLedger(
       standards: ["sat.psda.percentages"],
       archetypeIds: ["percent.of"],
       demand: "Find what percent one quantity is of another",
-      status: "partial",
-      templateIds: ["percent-of"],
+      status: "covered",
+      templateIds: ["percent-forms-and-parts", "percent-of"],
       limitations:
-        "percent-of only asks for p% of a quantity; no template solves for the percent itself.",
+        "percent-forms-and-parts asks what percent one quantity is of another by numeric entry (a count out of a whole of 8 to 200 or a table of 50), the entry the item requires; percent-of asks the forward task.",
+      labeledBy: "agent:stale-shown-work-relabel",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Math module 1",
