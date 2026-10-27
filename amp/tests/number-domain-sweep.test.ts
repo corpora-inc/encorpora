@@ -13,6 +13,7 @@ import {
   exactDecimal,
   nearestRoot,
   sweepAxes,
+  withLegacySurfaces,
   type SweepId,
 } from "../src/math/number-domain-axes";
 
@@ -72,6 +73,17 @@ test("legacy axis values reproduce the pre-axis output exactly", () => {
     });
     assert.ok(legacy >= 30, `${id} reaches its legacy surface (${legacy})`);
   }
+});
+
+test("printed editions build on legacy surfaces for every seed", () => {
+  withLegacySurfaces(() => {
+    for (const id of ids)
+      golden[id]!.forEach((expected, i) => {
+        const problem = generateProblem(id, `legacy:${i}`);
+        assert.ok(isLegacy(id, problem.variant!.axes!), `${id} legacy:${i}`);
+        assert.equal(digest(problem), expected, `${id} legacy:${i}`);
+      });
+  });
 });
 
 test("every axis value is reachable and every instance is valid, deterministic and gradable", () => {

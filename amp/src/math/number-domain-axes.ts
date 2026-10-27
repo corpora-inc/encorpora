@@ -2,6 +2,7 @@ import {
   axisRecord,
   chooseAxes,
   defineAxis,
+  legacyAxes,
   type AxisSet,
   type AxisValues,
 } from "./variation/axes";
@@ -132,9 +133,28 @@ export type SweepId = keyof typeof sweepAxes;
 export const isSweepId = (id: string): id is SweepId => id in sweepAxes;
 export type SweepAxes<K extends SweepId> = AxisValues<(typeof sweepAxes)[K]>;
 
-/** Axis values for one instance, from the axes' own streams. */
+let legacyOnly = 0;
+/**
+ * Run `build` with every sweep family on its legacy surface. Published
+ * editions are built this way: a given edition keeps the exact problems it
+ * had before the axes existed (legacy axis values reproduce them byte for
+ * byte), instead of re-selecting around the new surfaces. Synchronous only.
+ */
+export function withLegacySurfaces<T>(build: () => T): T {
+  legacyOnly++;
+  try {
+    return build();
+  } finally {
+    legacyOnly--;
+  }
+}
+
+/** Axis values for one instance, from the axes' own streams (or all legacy
+ * inside `withLegacySurfaces`). */
 export const sweepChoose = <K extends SweepId>(id: K, seed: string) =>
-  chooseAxes(id, seed, sweepAxes[id] as AxisSet) as unknown as SweepAxes<K>;
+  (legacyOnly
+    ? legacyAxes(sweepAxes[id] as AxisSet)
+    : chooseAxes(id, seed, sweepAxes[id] as AxisSet)) as unknown as SweepAxes<K>;
 
 /** The private variant record: the family's label and the axis values. */
 export const sweepVariant = (
@@ -202,19 +222,4 @@ export function roundedRoot(
       `To the nearest ${unitWord}, ${name} is ${answer}.`,
     ],
   };
-}
-
-/** True when a problem shows the surface its family had before these axes
- * (or its family has none). Printed worksheets and lesson sheets are built
- * from legacy surfaces so their editions keep their content. */
-export function isLegacySurface(problem: {
-  public: { templateId: string };
-  variant?: ProblemVariant;
-}): boolean {
-  const id = problem.public.templateId;
-  if (!isSweepId(id)) return true;
-  const axes = problem.variant?.axes;
-  return Object.entries(sweepAxes[id] as AxisSet).every(
-    ([key, axis]) => axes?.[key] === axis.legacy,
-  );
 }

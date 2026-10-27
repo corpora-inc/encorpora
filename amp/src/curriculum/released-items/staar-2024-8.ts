@@ -37,10 +37,10 @@ export const staar2024Grade8 = defineLedger(
       archetypeIds: ["measure.volume"],
       demand:
         "Find the volume in cubic millimeters of a marble from its diameter",
-      status: "covered",
+      status: "partial",
       templateIds: ["cone-sphere-volume"],
       limitations:
-        "cone-sphere-volume in its approximate mode takes pi as 3.14 and gives the volume as a decimal from a whole radius or diameter, including a sphere given by its diameter.",
+        "cone-sphere-volume in its approximate mode takes pi as 3.14 and gives the volume as a decimal from a sphere's radius or even diameter; the item's odd diameter of 13 mm, a radius of 6.5, and a closest-value choice are not practiced.",
     },
     {
       item: { number: "2", page: "rationale PDF p.2" },

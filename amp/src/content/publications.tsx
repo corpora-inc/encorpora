@@ -64,6 +64,7 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { Figure } from "../web/Figure";
 import { generateProblem } from "../math/engine";
+import { withLegacySurfaces } from "../math/number-domain-axes";
 import type { GeneratedProblem } from "../math/contracts";
 import { answerText } from "../math/selection-response";
 import { plotPoints, pointPlotScene } from "../math/point-plot";
@@ -217,10 +218,17 @@ function explanationsQuoteEveryOption(problem: GeneratedProblem): boolean {
     )
   );
 }
-export function publicationHtml(
+/** Printed editions keep the surfaces they had before number-domain axes, so
+ * an existing edition reprints byte for byte. */
+export const publicationHtml = (
   lesson: Lesson,
   kind: PublicationKind,
   edition = "1",
+) => withLegacySurfaces(() => buildPublicationHtml(lesson, kind, edition));
+function buildPublicationHtml(
+  lesson: Lesson,
+  kind: PublicationKind,
+  edition: string,
 ) {
   const problems = lesson.templateIds.flatMap((id) =>
     areaVolumeTemplates.some((t) => t.id === id)
