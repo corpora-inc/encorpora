@@ -982,7 +982,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
       ]);
       return multiPartProblem(meta, seed, r, {
         prompt:
-          "A worker buys a uniform before starting a job that pays the same amount for each hour worked. The table shows the worker's net pay, in dollars, after each number of hours: pay earned minus the cost of the uniform. Complete the sentence.",
+          "A worker buys a uniform and then earns the same amount each hour. The table shows net pay in dollars, which is pay earned minus the cost of the uniform. Complete the sentence.",
         layout: "inline",
         label: "Choose a number for each gap",
         slots: built.slots,
@@ -1188,7 +1188,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
       ];
       return multiPartProblem(meta, seed, r, {
         prompt:
-          "A check register shows deposits as positive amounts and withdrawals as negative amounts, in dollars. Each balance is the previous balance plus the amount. Complete the missing balances and amounts.",
+          "In this check register, deposits are positive and withdrawals negative, in dollars. Complete it.",
         layout: "slots",
         label: "Choose each missing value",
         slots,
