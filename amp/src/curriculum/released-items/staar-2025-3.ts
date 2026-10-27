@@ -106,10 +106,10 @@ export const staarGrade3 = defineLedger(
       standards: ["TEKS.3.4.8.A"],
       archetypeIds: ["univariate.displays"],
       demand: "Choose the list of values that matches a dot plot",
-      status: "partial",
-      templateIds: ["line-plot-whole", "fraction-line-plot"],
+      status: "covered",
+      templateIds: ["data-list-for-display"],
       limitations:
-        "line-plot-whole and fraction-line-plot read counts and differences from a line plot; none matches a full data list to a plot or uses a dot plot of small whole-number values.",
+        "data-list-for-display picks the list of whole numbers that matches a dot plot with up to 13 dots, against lists with one value changed.",
     },
     {
       item: {
@@ -235,10 +235,10 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["shape.solid-properties"],
       demand:
         "Select the true statements about a group of solids, such as having two congruent parallel faces",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["solid-property-select"],
       limitations:
-        "STAAR interaction: multiselect, 2 points. Existing solid practice names solids or counts faces, edges and vertices; no family compares face shape, congruence or parallel faces across solids, and multi-select across drawn solids has no figure support.",
+        "solid-property-select selects exactly three of six named prisms and pyramids that have a stated property; the item draws a group of solids and asks for the true statements.",
     },
     {
       item: {
@@ -247,13 +247,13 @@ export const staarGrade3 = defineLedger(
       },
       responseFormat: "choice",
       standards: ["TEKS.3.2.5.A"],
-      archetypeIds: ["number.number-line-equation"],
+      archetypeIds: ["early.number-line-hops"],
       demand:
         "Match a number-line diagram of a leftward ray and a rightward ray to a story about library books",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["number-line-jump-story"],
       limitations:
-        "Related practice hops from a start on a number line to a landing value within 100; no family asks the learner to read a diagram of jumps and match it to an equation or story.",
+        "number-line-jump-story matches a number line with a left jump and a right jump from a start to the story with the same actions, amounts and order, in contexts that include library books.",
     },
     {
       item: {
@@ -501,10 +501,10 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["place.compare-whole"],
       demand:
         "Choose a number that makes a compound inequality with two five-digit numbers true",
-      status: "partial",
-      templateIds: ["compare-multidigit"],
+      status: "covered",
+      templateIds: ["number-between-bounds"],
       limitations:
-        "compare-multidigit picks the greater or lesser of two numbers; finding a value between two bounds is not practiced.",
+        "number-between-bounds picks the value that makes a statement with a lower and an upper bound true, for five-digit and seven-digit bounds, against values below, above and equal to a bound.",
     },
   ],
 );

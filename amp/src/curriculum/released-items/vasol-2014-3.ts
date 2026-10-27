@@ -251,7 +251,7 @@ export const vasolGrade3 = defineLedger(
       item: { number: "19", page: "PDF p.23" },
       responseFormat: "choice",
       standards: ["SOL.2009.3.6"],
-      archetypeIds: ["number.number-line-equation", "early.number-line-hops"],
+      archetypeIds: ["early.number-line-hops"],
       demand:
         "Choose the sentence for four equal jumps of six drawn on a number line to 24",
       status: "partial",
@@ -277,15 +277,16 @@ export const vasolGrade3 = defineLedger(
       standards: ["SOL.2009.3.12"],
       archetypeIds: ["time.rename-units"],
       demand: "Rename five hours as minutes",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family renames hours as minutes.",
+      status: "covered",
+      templateIds: ["rename-time-units"],
+      limitations:
+        "rename-time-units renames whole numbers of hours as minutes, and minutes, days, weeks and years in the other directions; numeric entry serves the plain-number choices.",
     },
     {
       item: { number: "22", page: "PDF p.28" },
       responseFormat: "choice",
       standards: ["SOL.2009.3.14"],
-      archetypeIds: ["shape.name-flat"],
+      archetypeIds: ["shape.attributes"],
       demand:
         "Name the kind of figure that makes up a drawn picture of gray pieces around a dark piece",
       status: "partial",
@@ -300,10 +301,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["measure.unit-choice"],
       demand:
         "Choose the reasonable length of a bed among feet, inches, meters and centimeters",
-      status: "partial",
-      templateIds: ["customary-unit-choice"],
+      status: "covered",
+      templateIds: ["reasonable-measure-choice"],
       limitations:
-        "customary-unit-choice chooses among customary units only; choices that mix customary and metric units are not practiced.",
+        "reasonable-measure-choice picks the reasonable length of an everyday object among customary and metric units that are far apart in size.",
     },
     {
       item: { number: "24", page: "PDF p.30" },
@@ -320,11 +321,12 @@ export const vasolGrade3 = defineLedger(
       item: { number: "25", page: "PDF p.31" },
       responseFormat: "numeric",
       standards: ["SOL.2009.3.13"],
-      archetypeIds: ["measure.thermometer"],
+      archetypeIds: ["measure.read-scale"],
       demand: "Type the temperature a Fahrenheit thermometer shows",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family reads a thermometer.",
+      status: "partial",
+      templateIds: ["read-thermometer"],
+      limitations:
+        "read-thermometer reads a Fahrenheit or Celsius temperature at the top of a bar on a gridded scale; the item draws a bulb-and-tube thermometer, which is not drawn.",
     },
     {
       item: { number: "26", page: "PDF p.32" },
@@ -332,10 +334,10 @@ export const vasolGrade3 = defineLedger(
       standards: ["SOL.2009.3.16"],
       archetypeIds: ["shape.congruent-figures"],
       demand: "Choose the tower of blocks congruent to a drawn tower",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["congruent-figure-pair"],
       limitations:
-        "No family tells congruent from similar or different figures.",
+        "congruent-figure-pair picks the congruent pair among four drawn convex figures; choosing the tower of blocks congruent to a drawn tower is not practiced.",
     },
     {
       item: { number: "27", page: "PDF p.33" },
@@ -413,22 +415,22 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["pattern.repeating-unit"],
       demand:
         "Find the two circles removed from a repeating pattern of shaded and half-shaded circles",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["repeating-shape-pattern"],
       limitations:
-        "No family extends or repairs a repeating pattern of figures.",
+        "repeating-shape-pattern fills two empty boxes in a repeating pattern of circles, squares and triangles; the item repeats shaded and half-shaded circles, a pattern in shading that is not drawn.",
     },
     {
       item: { number: "34", page: "PDF p.40" },
       responseFormat: "choice",
       standards: ["SOL.2009.3.17b"],
-      archetypeIds: ["data.graph-error", "data.frequency-table-read"],
+      archetypeIds: ["data.graph-error"],
       demand:
         "Choose the chart that could show the favorite foods of 14 surveyed students",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["table-fits-description"],
       limitations:
-        "No family judges which table fits a stated total and number of categories.",
+        "table-fits-description checks tables written as text lists against a survey total and the number of choices; drawn charts are not shown.",
     },
     {
       item: { number: "35", page: "PDF p.41" },
@@ -461,10 +463,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["whole.property-identify"],
       demand:
         "Choose the sentence that shows the identity property of multiplication",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["operation-property-identify"],
       limitations:
-        "No family names or identifies the identity, commutative or associative property.",
+        "operation-property-identify picks the equation that shows a named property, with the identity property of multiplication one of seven properties of addition and multiplication.",
     },
     {
       item: { number: "38", page: "PDF p.44" },
@@ -472,10 +474,10 @@ export const vasolGrade3 = defineLedger(
       standards: ["SOL.2009.3.19"],
       archetypeIds: ["pattern.rule"],
       demand: "Choose the rule that generates 1, 3, 9, 27, 81",
-      status: "partial",
-      templateIds: ["rule-pattern-feature", "rule-pattern-term"],
+      status: "covered",
+      templateIds: ["pattern-rule-choice"],
       limitations:
-        "The pattern templates start from additive rules; finding a multiplicative rule from listed terms is not practiced.",
+        "pattern-rule-choice picks the rule, including multiply by a number, that makes a five-term pattern; the terms of the item are 1, 3, 9, 27 and 81.",
     },
     {
       item: { number: "39", page: "PDF p.45" },
@@ -496,10 +498,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["probability.likelihood-design"],
       demand:
         "Drag eight cards into a bag so that stars and hearts are equally likely",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["equal-chance-choice"],
       limitations:
-        "No family builds a set of outcomes to meet a stated likelihood.",
+        "equal-chance-choice chooses among given bags and spinners for equal, greatest or least chance; building the set by dragging eight cards into a bag is not practiced.",
     },
   ],
 );

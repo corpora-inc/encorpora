@@ -245,10 +245,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["place.compare-whole"],
       demand:
         "Choose the true comparison among four pairs of numbers of five to seven digits",
-      status: "partial",
-      templateIds: ["compare-multidigit"],
+      status: "covered",
+      templateIds: ["true-comparison-statement"],
       limitations:
-        "compare-multidigit picks the greater or lesser of two numbers up to 999,999; judging comparison statements with seven-digit numbers is not practiced.",
+        "true-comparison-statement picks the one true comparison among four pairs of numbers of five to nine digits that share leading digits.",
     },
     {
       item: { number: "20", page: "PDF p.26" },
@@ -368,9 +368,10 @@ export const vasolGrade4 = defineLedger(
       standards: ["SOL.2009.4.11a"],
       archetypeIds: ["shape.congruent-figures"],
       demand: "Choose the pair of drawn figures that appear congruent",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family tells congruent figures from near copies.",
+      status: "covered",
+      templateIds: ["congruent-figure-pair"],
+      limitations:
+        "congruent-figure-pair picks the congruent pair among four drawn figures: a turned or flipped copy against a larger or smaller copy and a figure with a moved corner.",
     },
     {
       item: { number: "31", page: "PDF p.37" },
@@ -468,10 +469,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["probability.likelihood-design"],
       demand:
         "Choose the spinner with four equal spaces that gives equally likely outcomes",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["equal-chance-choice"],
       limitations:
-        "No family builds or chooses a device that meets a stated likelihood.",
+        "equal-chance-choice describes each bag or spinner by its counts of colors; choosing among drawn spinners is not practiced.",
     },
     {
       item: { number: "40", page: "PDF p.46" },
@@ -516,10 +517,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["probability.likelihood-scale"],
       demand:
         "Choose the point on a zero to one number line for the chance of tails on one coin flip",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["probability-on-number-line"],
       limitations:
-        "No family places a probability on a number line from zero to one.",
+        "probability-on-number-line chooses the lettered point for the chance of an event with 4 to 10 equally likely outcomes; a coin with two outcomes is not used.",
     },
     {
       item: { number: "44", page: "PDF p.50" },
@@ -540,10 +541,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["probability.likelihood-scale"],
       demand:
         "Name the likelihood of drawing a color that is not in a set of folders",
-      status: "missing",
-      templateIds: [],
+      status: "covered",
+      templateIds: ["likelihood-in-words"],
       limitations:
-        "No family names certain, likely, unlikely or impossible for an event.",
+        "likelihood-in-words names certain, likely, as likely as not, unlikely or impossible for an event from a bag, spinner or number cube, including a color that is not in the bag.",
     },
     {
       item: { number: "46", page: "PDF p.52" },
@@ -563,9 +564,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["whole.property-identify"],
       demand:
         "Choose the equation that shows the associative property of multiplication",
-      status: "missing",
-      templateIds: [],
-      limitations: "No family names or identifies a property of operations.",
+      status: "covered",
+      templateIds: ["operation-property-identify"],
+      limitations:
+        "operation-property-identify picks the equation that shows a named property, with the associative property of multiplication one of seven properties of addition and multiplication.",
     },
     {
       item: { number: "48", page: "PDF p.54" },
@@ -574,22 +576,22 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["probability.likelihood-scale"],
       demand:
         "Place a point on a number line at the probability of rolling a two on a number cube",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["probability-on-number-line"],
       limitations:
-        "No family places a probability on a number line from zero to one.",
+        "probability-on-number-line chooses a lettered point on a zero to one number line; placing a point by dragging is not practiced.",
     },
     {
       item: { number: "49", page: "PDF p.55" },
       responseFormat: "choice",
       standards: ["SOL.2009.4.14"],
-      archetypeIds: ["data.frequency-table-read"],
+      archetypeIds: ["data.graph-error"],
       demand:
         "Choose the two-way table that shows counts of boys and girls in two grades",
-      status: "missing",
-      templateIds: [],
+      status: "partial",
+      templateIds: ["table-fits-description"],
       limitations:
-        "No family builds or checks a two-way table of counts against a description.",
+        "table-fits-description chooses among two-way tables written as text lists for two row totals and a column total; drawn two-way tables are not shown.",
     },
     {
       item: { number: "50", page: "PDF p.56" },
@@ -598,10 +600,10 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["pattern.rule"],
       demand:
         "Choose the pattern that adds the same amount as 5, 14, 23, 32, 41",
-      status: "partial",
-      templateIds: ["rule-pattern-term", "rule-pattern-feature"],
+      status: "covered",
+      templateIds: ["pattern-rule-choice"],
       limitations:
-        "The templates start from a stated rule; recognizing the same rule across listed patterns of different starts is not practiced.",
+        "pattern-rule-choice picks the listed pattern that adds the same amount as a given five-term pattern, among patterns with other amounts, other rules and other starts.",
     },
   ],
 );
