@@ -142,10 +142,10 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["ratio.units"],
       demand:
         "Find the meters closest to a fifteen-foot height when one meter is about 3.28 feet",
-      status: "partial",
-      templateIds: ["ratio-missing", "metric-length-rename"],
+      status: "covered",
+      templateIds: ["approximate-unit-factor"],
       limitations:
-        "ratio-missing scales with whole ratios and metric-length-rename converts whole counts of metric units; a decimal conversion factor between systems is not practiced.",
+        "approximate-unit-factor converts feet to meters (and kilograms, centimeters, kilometers) with a stated decimal factor such as 3.28 and chooses the closest estimate to the nearest tenth, with multiply-for-divide and add-the-factor distractors.",
     },
     {
       item: { number: "10", page: "rationale PDF p.10" },

@@ -345,10 +345,10 @@ export const staar2024Grade5 = defineLedger(
       archetypeIds: ["univariate.displays", "data.fraction-line-plot"],
       demand:
         "Find the difference between the greatest and least values of a dot plot with mixed numbers",
-      status: "partial",
-      templateIds: ["fraction-line-plot"],
+      status: "covered",
+      templateIds: ["dot-plot-arithmetic"],
       limitations:
-        "fraction-line-plot counts and compares dots on a fractional line plot; subtracting the extreme values as mixed numbers is not practiced.",
+        "dot-plot-arithmetic's range variant subtracts the least from the greatest value of a dot plot of mixed numbers in halves or fourths.",
     },
     {
       item: { number: "28", page: "rationale PDF p.29" },

@@ -7,6 +7,15 @@ import type {
   TemplateMetadata,
 } from "./contracts.js";
 import { sweepChoose, sweepVariant } from "./number-domain-axes.js";
+import { axisRecord, chooseAxes, defineAxis } from "./variation/axes.js";
+
+/** What the metric renaming items are about: lengths (legacy), capacities in
+ * liters and milliliters, or masses in kilograms and grams. */
+export const metricQuantityAxes = {
+  quantity: defineAxis("quantity", ["length", "capacity", "mass"] as const, {
+    legacy: "length",
+  }),
+};
 import { sceneSchema } from "./scene/spec.js";
 
 const visual = new Set([
@@ -298,26 +307,47 @@ export function generateMeasurementProblem(
     }
     case "metric-length-rename":
     case "metric-length-reverse": {
+      const axes = chooseAxes(templateId, seed, metricQuantityAxes);
+      variant = {
+        id: axes.quantity === "length" ? "legacy" : axes.quantity,
+        axes: axisRecord(axes),
+      };
       const reverse = templateId === "metric-length-reverse",
         km = !!r(0, 1),
-        factor = km ? 1000 : 100;
-      const large = km ? "km" : "m",
-        small = km ? "m" : "cm",
-        n = reverse ? (km ? r(25, 3000) : r(1, 900)) : r(1, 12),
+        length = axes.quantity === "length",
+        factor = length && !km ? 100 : 1000;
+      const [large, small] =
+        axes.quantity === "capacity"
+          ? ["L", "mL"]
+          : axes.quantity === "mass"
+            ? ["kg", "g"]
+            : km
+              ? ["km", "m"]
+              : ["m", "cm"];
+      const n = reverse
+          ? factor === 1000
+            ? r(25, 3000)
+            : r(1, 900)
+          : r(1, 12),
         from = reverse ? small : large,
         to = reverse ? large : small;
+      const quantity = { length: "Length", capacity: "Capacity", mass: "Mass" }[
+        axes.quantity
+      ];
       prompt = `Write ${n} ${from} in ${to}.`;
       answer = reverse ? rational(n, factor) : String(n * factor);
-      label = `Length in ${to}`;
+      label = `${quantity} in ${to}`;
       hint = reverse
         ? `Every ${factor} ${small} make 1 ${large}. How many groups of ${factor} are in ${n}?`
         : n === 1
-          ? `How many ${small} make 1 ${large}? A ${small} is much shorter, so the count is large.`
+          ? `How many ${small} make 1 ${large}? ${length ? `A ${small} is much shorter, so the count is large.` : `A ${small} is much smaller than a ${large}, so the count is large.`}`
           : `Each ${large} is ${factor} ${small}, and you have ${n} of them: ${n} groups of ${factor}.`;
       explanation = [
         `1 ${large} = ${factor} ${small}.`,
         `${n} ${reverse ? "÷" : "×"} ${factor} = ${answer}, so ${n} ${from} = ${answer} ${to}.`,
-        "The physical length stays the same; only its unit and numerical name change.",
+        length
+          ? "The physical length stays the same; only its unit and numerical name change."
+          : `The ${axes.quantity} stays the same; only its unit and numerical name change.`,
       ];
       break;
     }

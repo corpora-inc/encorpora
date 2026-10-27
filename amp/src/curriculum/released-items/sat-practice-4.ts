@@ -390,10 +390,10 @@ export const satPractice4 = defineLedger(
       standards: ["sat.psda.two-variable-data"],
       archetypeIds: ["data.graph-read"],
       demand: "Identify the time with the greatest value on a line graph",
-      status: "partial",
-      templateIds: ["scaled-bar-graph"],
+      status: "covered",
+      templateIds: ["line-graph-reader"],
       limitations:
-        "Only bar and picture graph readers exist (scaled-bar-graph totals and differences); no line-graph or time-series maximum practice.",
+        "line-graph-reader draws a line graph over days, weeks or hours and asks on which time the value is greatest or least, with the largest-rise interval as a distractor.",
     },
     {
       section: "Math module 2",

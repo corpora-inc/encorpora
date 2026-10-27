@@ -348,10 +348,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["time.elapsed", "time.read-clock"],
       demand:
         "Find the finish time three hours after the time on an analog clock",
-      status: "partial",
-      templateIds: ["clock-elapsed-minutes", "read-clock-five-minutes"],
+      status: "covered",
+      templateIds: ["elapsed-time-hm"],
       limitations:
-        "clock-elapsed-minutes finds minutes between two times by entry; adding whole hours to a clock reading and choosing the written time with A.M. is not practiced.",
+        "elapsed-time-hm's end-time variant reads the start on an analog clock, adds whole hours or hours and minutes, and chooses the written time with a.m. or p.m.",
     },
     {
       item: { number: "28", page: "PDF p.34" },
@@ -488,10 +488,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["data.fraction-line-plot", "data.graph-read"],
       demand:
         "Find the total points scored from a line plot of whole-number team points",
-      status: "partial",
-      templateIds: ["fraction-line-plot"],
+      status: "covered",
+      templateIds: ["dot-plot-arithmetic"],
       limitations:
-        "fraction-line-plot counts measurements at or beyond a mark on a half-unit line plot; totaling the values by multiplying each mark by its count on a whole-number line plot is not practiced.",
+        "dot-plot-arithmetic's total variant adds the value of every dot of a whole-number plot, counting a repeated value once per dot.",
     },
     {
       item: { number: "40", page: "PDF p.46" },

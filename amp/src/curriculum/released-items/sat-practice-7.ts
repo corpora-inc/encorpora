@@ -182,10 +182,10 @@ export const satPractice7 = defineLedger(
       archetypeIds: ["system.classify"],
       demand:
         "Choose a second equation that makes a linear system have infinitely many solutions",
-      status: "partial",
-      templateIds: ["linear-system-solution-count"],
+      status: "covered",
+      templateIds: ["system-second-equation"],
       limitations:
-        "Template classifies a given pair; item reverses it, choosing the equivalent equation among near misses.",
+        "system-second-equation asks for the second equation that gives infinitely many solutions, with parallel and crossing distractors, from a first equation in standard or slope-intercept form.",
     },
     {
       section: "Math module 1",
@@ -339,9 +339,13 @@ export const satPractice7 = defineLedger(
       demand:
         "Write a linear relationship from a table whose inputs involve a symbolic constant",
       status: "partial",
-      templateIds: ["linear-model-equation", "unequal-step-rate"],
+      templateIds: [
+        "linear-model-equation",
+        "unequal-step-rate",
+        "table-standard-form",
+      ],
       limitations:
-        "Templates use numeric tables; none carries a parameter through the slope and the equation.",
+        "table-standard-form practices tables with unevenly spaced and fractional numeric inputs; a table whose inputs involve a symbolic constant is not practiced.",
     },
     {
       section: "Math module 1",
@@ -659,10 +663,10 @@ export const satPractice7 = defineLedger(
       archetypeIds: ["function.rule"],
       demand:
         "Find a linear function from a table with fractional inputs and apply a vertical shift",
-      status: "partial",
-      templateIds: ["linear-model-equation", "unequal-step-rate"],
+      status: "covered",
+      templateIds: ["table-standard-form"],
       limitations:
-        "Templates use whole-number tables and no shifted function; item has fractional inputs and h(x) = f(x) - c.",
+        "table-standard-form's shifted-rule variant gives a table with fractional inputs and chooses the rule of g(x) = f(x) plus or minus a constant.",
     },
     {
       section: "Math module 2",
@@ -710,10 +714,10 @@ export const satPractice7 = defineLedger(
       standards: ["sat.psda.ratios-rates-units"],
       archetypeIds: ["ratio.units"],
       demand: "Convert an acceleration between units with a squared time unit",
-      status: "partial",
+      status: "covered",
       templateIds: ["compound-unit-conversion"],
       limitations:
-        "Template converts rates, area, density and energy; none has a squared unit in a rate's denominator.",
+        "compound-unit-conversion's squared-time variant converts an acceleration between meters per second squared and kilometers per hour squared, using the hour-to-second factor twice.",
     },
     {
       section: "Math module 2",

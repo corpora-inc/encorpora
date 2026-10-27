@@ -312,10 +312,10 @@ export const staarAlgebra1 = defineLedger(
       archetypeIds: ["function.intercepts"],
       demand:
         "Choose the zero of a linear function from the point where its graph crosses the x-axis",
-      status: "partial",
-      templateIds: ["coordinate-point-reading", "solution-coordinate"],
+      status: "covered",
+      templateIds: ["intercept-point-choice"],
       limitations:
-        "coordinate-point-reading reads one coordinate of a labeled point and solution-coordinate completes a point of an equation; naming a zero from an x-intercept is not practiced.",
+        "intercept-point-choice's zero variant shows a graphed line and asks for the zero of the function, the x-value where the graph meets the x-axis; it also gives rules.",
     },
     {
       item: {

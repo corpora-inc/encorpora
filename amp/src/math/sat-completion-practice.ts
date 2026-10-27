@@ -36,6 +36,16 @@ export const satCompletionAxes = {
     ]),
   },
 } as const;
+/** Axes added after the first release of a family; kept apart so the frozen
+ * number-domain list above stays as released. `tests/unit-axes.test.ts`
+ * freezes the legacy output. */
+export const satCompletionExtraAxes = {
+  "compound-unit-conversion": {
+    /** The mixed conversions of the first release (legacy), or an
+     * acceleration whose time unit is squared. */
+    rate: defineAxis("rate", ["mixed", "squared-time"], { legacy: "mixed" }),
+  },
+} as const;
 type SatAxes = Record<string, string>;
 const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
 /** A decimal rounded to four places, written without exponent notation. */
@@ -305,6 +315,33 @@ function draft(
         "This is a statement about sampling uncertainty, not a guarantee of a more accurate realized estimate or a cure for biased sampling.",
       ],
     };
+  }
+  if (id === "compound-unit-conversion" && axes.rate === "squared-time") {
+    const v = r(2, 20),
+      toHours = r(0, 1) === 0;
+    return toHours
+      ? {
+          prompt: `A cart speeds up at ${v} meters per second squared. Given 1 kilometer = 1000 meters and 1 hour = 3600 seconds, what is its acceleration in kilometers per hour squared?`,
+          answer: String(v * 12960),
+          hint: `Start with ${v} meters per second squared. The time unit is squared, so convert seconds to hours twice, and convert meters to kilometers once.`,
+          explanation: [
+            `One second is 1/3600 hour, so one second squared is 1/3600 × 1/3600 hour squared. Dividing by seconds squared multiplies by $3600 \\times 3600 = 12960000$ per hour squared.`,
+            `${v} meters per second squared is $${v} \\times 12960000 = ${v * 12960000}$ meters per hour squared.`,
+            `Divide by 1000 meters per kilometer: $${v * 12960000} \\div 1000 = ${v * 12960}$ kilometers per hour squared.`,
+          ],
+          fraction: true,
+        }
+      : {
+          prompt: `A train speeds up at ${v * 12960} kilometers per hour squared. Given 1 kilometer = 1000 meters and 1 hour = 3600 seconds, what is its acceleration in meters per second squared?`,
+          answer: String(v),
+          hint: `Start with ${v * 12960} kilometers per hour squared. Convert kilometers to meters once, and convert hours to seconds twice because the time unit is squared.`,
+          explanation: [
+            `${v * 12960} kilometers is $${v * 12960} \\times 1000 = ${v * 12960000}$ meters.`,
+            `One hour squared is $3600 \\times 3600 = 12960000$ seconds squared.`,
+            `$${v * 12960000} \\div 12960000 = ${v}$ meters per second squared.`,
+          ],
+          fraction: true,
+        };
   }
   if (id === "compound-unit-conversion") {
     const mode = r(0, 4),
@@ -1006,7 +1043,7 @@ export function generateSatCompletionProblem(
     throw new Error("Could not generate a valid problem");
   };
   const axes = (
-    satCompletionAxes as Record<
+    { ...satCompletionAxes, ...satCompletionExtraAxes } as Record<
       string,
       Record<string, ReturnType<typeof defineAxis>>
     >

@@ -364,10 +364,10 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["system.classify"],
       demand:
         "Decide which candidate second equations give a linear system at least one solution",
-      status: "partial",
-      templateIds: ["linear-system-solution-count"],
+      status: "covered",
+      templateIds: ["system-second-equation"],
       limitations:
-        "Classifies one given system; the item tests two candidate equations with decimal coefficients in Roman-numeral format.",
+        "system-second-equation's at-least-one variant asks which second equation gives at least one solution; the other choices are parallel distinct lines.",
     },
     {
       section: "Math module 1",
@@ -539,10 +539,10 @@ export const satPractice11 = defineLedger(
       archetypeIds: ["line.parallel-perpendicular"],
       demand:
         "Choose the equation of a line parallel to a given line through its y-intercept point",
-      status: "partial",
-      templateIds: ["perpendicular-slopes"],
+      status: "covered",
+      templateIds: ["parallel-line-intercept"],
       limitations:
-        "Numeric slope or intercept from two points; the item selects an equation from a slope-intercept line.",
+        "parallel-line-intercept's other-line variant chooses the equation of the line parallel to a given line through the y-intercept of another stated line.",
     },
     {
       section: "Math module 2",
