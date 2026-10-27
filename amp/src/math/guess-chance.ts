@@ -13,6 +13,21 @@ import { generateProblem, templates } from "./engine";
  * schema. tests/frontier-guessing.test.ts checks far more seeds against it. */
 const SAMPLE_SEEDS = 16;
 const STRUCTURED_SEEDS = 128;
+/** Floors for variable multi-part families whose high-guessability variants
+ * are rarer than the deterministic sample. Keep these in sync with the
+ * generator-variation audit in frontier-guessing.test.ts. */
+const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
+  "booth-equation-slots": 1 / 16,
+  "circle-estimate-blanks": 1 / 8,
+  "round-decimal-blanks": 1 / 8,
+  "quotient-remainder-blanks": 1 / 8,
+  "unit-rate-pair-blanks": 1 / 8,
+  "table-equation-slots": 1 / 24,
+  "decimal-mixed-number-blanks": 1 / 48,
+  "round-place-blanks": 1 / 36,
+  "round-addends-sum": 1 / 36,
+  "expanded-decimal-slots": 1 / 54,
+};
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */
 const UNKNOWN_CHOICE_GUESS = 1 / 2;
@@ -56,7 +71,8 @@ export function guessChance(
     // sampled instance has a typed field cannot be guessed.
     const structured =
       template.requiredResponseCapability === "structured-work-v1";
-    let greatest = 0;
+    // The sample can miss rare, more guessable variants in these generators.
+    let greatest = MULTI_PART_GUESS_FLOOR[template.id] ?? 0;
     for (let i = 0; i < (structured ? STRUCTURED_SEEDS : SAMPLE_SEEDS); i++)
       greatest = Math.max(
         greatest,
