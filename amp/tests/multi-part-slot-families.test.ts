@@ -18,6 +18,7 @@ import { placeValueBlanksAxes } from "../src/math/place-value-blanks-practice";
 import { equationSlotsAxes } from "../src/math/equation-slots-practice";
 import { quantityPairBlanksAxes } from "../src/math/quantity-pair-blanks-practice";
 import { statementBlanksAxes } from "../src/math/statement-blanks-practice";
+import { formBlanksAxes } from "../src/math/form-blanks-practice";
 import type { AxisSet } from "../src/math/variation/axes";
 
 /** Every template of the multi-part slot families: one entry per template with
@@ -28,6 +29,7 @@ const families: Record<string, Record<string, AxisSet>> = {
   "equation-slots": equationSlotsAxes,
   "quantity-pair-blanks": quantityPairBlanksAxes,
   "statement-blanks": statementBlanksAxes,
+  "form-and-model-blanks": formBlanksAxes,
 };
 const ids = Object.values(families).flatMap((axes) => Object.keys(axes));
 const SEEDS = 300;
@@ -70,6 +72,9 @@ test("problems are deterministic, valid and reach every axis value", () => {
             JSON.stringify(problem.public.figure ?? null) +
             JSON.stringify(
               response.sentence ?? response.blanks.map((b) => b.label),
+            ) +
+            JSON.stringify(
+              response.blanks.map((b) => b.options.map((o) => o.label).sort()),
             ),
         );
         for (const [axis, value] of Object.entries(problem.variant!.axes!))

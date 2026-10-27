@@ -33,7 +33,7 @@ export function view(id: string, seed: string) {
 }
 /** "−3" and "-3" and "12" and "1,200" as a number. */
 export const num = (s: string) =>
-  Number(s.replaceAll("−", "-").replaceAll(",", "").replaceAll("{,}", ""));
+  Number(s.replaceAll("−", "-").replaceAll("{,}", "").replaceAll(",", ""));
 /** A label such as "$\frac{1}{5}$" or "6" as an exact fraction [n, d]. */
 export function ratio(label: string): [number, number] {
   const m = label.match(/^\$?(-?)\\frac\{(\d+)\}\{(\d+)\}\$?$/);
