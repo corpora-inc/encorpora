@@ -1,4 +1,5 @@
 import type { SkillConnection } from "./types";
+import { denseConnectionTable } from "./connections-dense";
 
 /** Editorial connections supported by existing content, not assessment dependencies. */
 const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
@@ -332,9 +333,8 @@ sections-and-revolutions|solid-volume-models|application|A rotated rectangle, ri
 similarity-theorems|pythagorean-theorem|related|The two leg relations of a right triangle with its altitude add to give the Pythagorean theorem.|similarity-theorem-length
 `;
 
-export const curriculumConnections: typeof authoredConnections = [
-  ...authoredConnections,
-  ...connectionTable
+function parseConnectionTable(table: string): typeof authoredConnections {
+  return table
     .trim()
     .split("\n")
     .map((line) => {
@@ -346,7 +346,13 @@ export const curriculumConnections: typeof authoredConnections = [
         string,
       ];
       return { from, to, kind, explanation, templateIds: [templateId] };
-    }),
+    });
+}
+
+export const curriculumConnections: typeof authoredConnections = [
+  ...authoredConnections,
+  ...parseConnectionTable(connectionTable),
+  ...parseConnectionTable(denseConnectionTable),
 ];
 
 export function connectionsFor(skillId: string): SkillConnection[] {

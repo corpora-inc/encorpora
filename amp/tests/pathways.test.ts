@@ -142,6 +142,7 @@ test("authored parity connections cross grade bands in both directions without c
       "factors-multiples",
       "multistep-whole-stories",
       "event-sets",
+      "skip-counting",
     ],
   );
   assert(
