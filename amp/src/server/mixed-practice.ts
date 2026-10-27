@@ -194,12 +194,26 @@ export function planMixedPractice(options: {
   // Placement asks whole skill items only; method-step scaffolds return once
   // the learner is placed. The first answers follow the scripted openers.
   const answered = frontier.overall.answered;
-  const pool =
+  const placementPool =
     answered < policy.placement.assessmentOnlyAttempts
       ? templates.filter(
           (template) => templateRole(template.id) === "assessment",
         )
       : templates;
+  const catalogFloor = Math.min(
+    ...placementPool.map((template) => gradeOfTemplate.get(template.id)!),
+  );
+  // Below the available catalog, keep variety within introductory material.
+  // An uncertain strand or a freshness penalty must not pull a beginner above
+  // that range. Fractional offsets below kindergarten still start at grade 0.
+  const pool =
+    (frontier.adaptive ?? frontier.overall).level < catalogFloor
+      ? placementPool.filter(
+          (template) =>
+            gradeOfTemplate.get(template.id)! <=
+            Math.max(0, catalogFloor) + scoring.poolReach,
+        )
+      : placementPool;
   const attemptedTemplates = new Set(attempts.map((a) => a.templateId));
   const stats = new Map(
     projectSkillEvidence(attempts).map((entry) => [entry.skillId, entry]),
