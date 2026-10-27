@@ -1,7 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { texasK2Case, texasK2Templates } from "../src/math/texas-k2-practice";
-import { generateProblem, templates } from "../src/math/engine";
+import {
+  generateProblem,
+  generateProblemFor,
+  templates,
+} from "../src/math/engine";
+import { figureCapabilities } from "../src/math/contracts";
+import { describeScene, sceneCapabilitiesIn } from "../src/math/scene";
 import { problemLesson } from "../src/content/problem-lessons";
 
 const ids = texasK2Templates.map((t) => t.id);
@@ -153,6 +159,12 @@ test("choices are distinct, exactly one is correct, each wrong choice has feedba
   }
 });
 
+/** Coin kinds and letters of either picture surface. */
+const pictured = (figure: any): { coin: string; label?: string }[] =>
+  figure.kind === "money-sets"
+    ? figure.sets.map((s: any) => ({ coin: s.items[0], label: s.label }))
+    : figure.scene.elements[0].coins;
+
 test("coins: the named coin has the pictured value and the written value uses the cent symbol", () => {
   const cents: Record<string, number> = {
     penny: 1,
@@ -166,35 +178,80 @@ test("coins: the named coin has the pictured value and the written value uses th
       `k${seed}`,
     );
     const g = generateProblem("coin-name-and-cent-value", `k${seed}`);
-    const figure = problem.public.figure as any;
+    const coins = problem.public.figure ? pictured(problem.public.figure) : [];
     const label = correctLabel(g);
     if (variant === "name-coin") {
-      const item = figure.sets[0].items[0] as string;
-      assert.equal(label, item);
-      assert.equal(figure.sets[0].items.length, 1);
+      assert.equal(coins.length, 1);
+      assert.equal(label, coins[0]!.coin);
     } else if (variant === "picture-of-coin") {
       const named = /shows a (\w+)\?/.exec(problem.public.prompt)![1]!;
       const index = "ABC".indexOf(label.replaceAll("$", ""));
       assert.deepEqual(
-        figure.sets.map((s: any) => s.label),
+        coins.map((c) => c.label),
         ["A", "B", "C"],
       );
-      assert.equal(figure.sets[index].items[0], named);
-      assert.equal(
-        figure.sets.filter((s: any) => s.items[0] === named).length,
-        1,
-      );
+      assert.equal(coins[index]!.coin, named);
+      assert.equal(coins.filter((c) => c.coin === named).length, 1);
     } else {
       assert.match(label, /^\d+¢$/);
       const value = Number(label.slice(0, -1));
       if (variant === "write-cents-picture")
-        assert.equal(cents[figure.sets[0].items[0]], value);
+        assert.equal(cents[coins[0]!.coin], value);
       else {
         const named = /^A (\w+) is worth/.exec(problem.public.prompt)![1]!;
         assert.equal(cents[named], value);
       }
     }
   }
+});
+
+test("coins: the features-only surface draws coins without values, for clients that can", () => {
+  const id = "coin-name-and-cent-value";
+  const reached = new Set<string>();
+  const older = figureCapabilities.filter((c) => c !== "scenes-v2");
+  for (let seed = 0; seed < 300; seed++) {
+    const p = generateProblem(id, `f${seed}`);
+    const picture = p.variant!.axes!.picture!;
+    reached.add(picture);
+    const old = generateProblemFor(id, `f${seed}`, older);
+    assert.equal(old.variant!.axes!.picture, "value-printed");
+    assert.deepEqual(sceneCapabilitiesIn(old.public), []);
+    if (picture === "value-printed") {
+      assert.deepEqual(
+        old,
+        p,
+        "the legacy surface is unchanged for any client",
+      );
+      continue;
+    }
+    const figure = p.public.figure;
+    if (!figure) {
+      assert.equal(p.variant!.id, "write-cents-name");
+      continue;
+    }
+    assert.equal(figure.kind, "scene");
+    assert.deepEqual(sceneCapabilitiesIn(p.public), ["scenes-v2"]);
+    const scene = (figure as Extract<typeof figure, { kind: "scene" }>).scene;
+    const said =
+      `${describeScene(scene)} ${JSON.stringify(scene)}`.toLowerCase();
+    for (const word of ["penny", "nickel", "dime", "quarter", "cent", "¢"])
+      assert.ok(
+        !describeScene(scene).toLowerCase().includes(word),
+        `description names ${word}`,
+      );
+    assert.doesNotMatch(said, /\d+\s*¢|cents?\b/);
+    // The prompt never states the coin's name or value on a picture item.
+    if (p.variant!.id !== "picture-of-coin")
+      for (const word of ["penny", "nickel", "dime", "quarter", "¢"])
+        assert.ok(
+          !p.public.prompt.toLowerCase().includes(word),
+          p.public.prompt,
+        );
+    assert.doesNotMatch(p.hint, /written|number on the coin|cents written/i);
+    for (const text of Object.values(p.choiceFeedback ?? {}))
+      assert.doesNotMatch(text, /shows \d+¢/);
+  }
+  assert.deepEqual([...reached].sort(), ["features-only", "value-printed"]);
 });
 
 test("solids: the correct shape is the base polygon or ellipse of the pictured solid", () => {

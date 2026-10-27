@@ -503,14 +503,15 @@ export const regentsAlgebra2January2026 = defineLedger(
         number: "29",
         page: "printed p.16; PDF p.16; standard map rating guide PDF p.13",
       },
-      responseFormat: "numeric",
+      responseFormat: "constructed",
       standards: ["S-CP.B"],
       archetypeIds: ["probability.addition-rule"],
       demand:
         "Find the percent of students who speak either language from the two percents and the overlap",
-      status: "partial",
-      templateIds: ["addition-rule-probability"],
-      limitations: "Final answer practiced; shown-work credit not assessed.",
+      status: "covered",
+      templateIds: ["addition-rule-probability", "addition-rule-steps"],
+      limitations:
+        "addition-rule-steps (structured-work-v1) enters the sum of the two percents and the percent in either group after subtracting the overlap as exact steps, the work the rating guide credits. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
     },
     {
       section: "Part II",

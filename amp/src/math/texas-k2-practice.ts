@@ -8,6 +8,11 @@ import {
 import { fractionBar, numberLine, scene } from "./scene/author";
 import type { Element, PathOp } from "./scene/spec";
 import { place, type Pt, type Solid } from "./shape-figures";
+import {
+  sweepChoose,
+  sweepVariant,
+  type SweepAxes,
+} from "./number-domain-axes";
 
 /**
  * Round-2 problem types for Texas kindergarten to grade 2 requirements that
@@ -261,7 +266,55 @@ const coinSet = (...items: Coin[]): SemanticFigure => ({
   })),
 });
 
-function coinNameAndValue(r: Random): Built {
+/** The features-only surface: coins drawn without values (scenes-v2), known
+ * by size, color and edge. Letters only when there are several. */
+const drawnCoins = (...items: Coin[]): SemanticFigure => ({
+  kind: "scene",
+  scene: {
+    v: 1,
+    elements: [
+      {
+        type: "coins",
+        id: "coins",
+        coins: items.map((coin, i) => ({
+          coin,
+          ...(items.length > 1 ? { label: "ABC"[i] as "A" | "B" | "C" } : {}),
+        })),
+      },
+    ],
+  },
+});
+/** What a coin looks like: the features that name it without its value. */
+const COIN_LOOKS: Record<Coin, string> = {
+  penny: "copper with a smooth edge",
+  nickel: "silver, bigger than a dime, with a smooth edge",
+  dime: "silver, the smallest coin, with a ridged edge",
+  quarter: "silver, the largest coin, with a ridged edge",
+};
+const COIN_TELLS: Record<Coin, string> = {
+  penny: "it is the only copper coin",
+  nickel: "it is silver with a smooth edge",
+  dime: "it is the smallest coin, silver with a ridged edge",
+  quarter: "it is the largest coin, silver with a ridged edge",
+};
+/** Why a coin is not another: the first feature that differs. */
+function notCoin(seen: Coin, named: Coin): string {
+  if (seen === "penny") return `A ${named} is silver; this coin is copper.`;
+  if (named === "penny") return "A penny is copper; this coin is silver.";
+  if ((seen === "nickel") !== (named === "nickel"))
+    return seen === "nickel"
+      ? `A ${named} has a ridged edge; this coin's edge is smooth.`
+      : "A nickel has a smooth edge; this coin's edge is ridged.";
+  return seen === "dime"
+    ? "A quarter is the largest coin; this ridged coin is the smallest."
+    : "A dime is the smallest coin; this ridged coin is the largest.";
+}
+
+function coinNameAndValue(
+  r: Random,
+  axes: SweepAxes<"coin-name-and-cent-value">,
+): Built {
+  const drawn = axes.picture === "features-only";
   const variant = (
     [
       "name-coin",
@@ -272,6 +325,26 @@ function coinNameAndValue(r: Random): Built {
   )[r(0, 3)];
   const coin = pick(r, COINS);
   const v = COIN_CENTS[coin];
+  if (variant === "name-coin" && drawn)
+    return {
+      variant,
+      prompt: "What is the name of this coin?",
+      figure: drawnCoins(coin),
+      answer: "",
+      hint: "Look at three things: the coin's color (copper or silver), its size (small or large) and its edge (smooth or ridged). Then match those features to the coin you know.",
+      explanation: [
+        `This coin is ${COIN_LOOKS[coin]}.`,
+        `It is a ${coin}: ${COIN_TELLS[coin]}.`,
+      ],
+      choices: choicesFrom(
+        r,
+        coin,
+        COINS.filter((c) => c !== coin).map((c) => ({
+          label: c,
+          feedback: notCoin(coin, c),
+        })),
+      ),
+    };
   if (variant === "name-coin")
     return {
       variant,
@@ -299,6 +372,31 @@ function coinNameAndValue(r: Random): Built {
     ).slice(0, 2);
     const order = shuffled(r, [coin, ...others]);
     const letters = ["A", "B", "C"];
+    if (drawn)
+      return {
+        variant,
+        prompt: `Which picture shows a ${coin}?`,
+        figure: drawnCoins(...order),
+        answer: "",
+        hint: `Compare the coins' color, size and edge. A ${coin} is ${COIN_LOOKS[coin]}.`,
+        explanation: [
+          `A ${coin} is ${COIN_LOOKS[coin]}.`,
+          `Coin $${letters[order.indexOf(coin)]}$ is the ${coin}: ${COIN_TELLS[coin]}.`,
+        ],
+        choices: [
+          { label: `$${letters[order.indexOf(coin)]}$`, correct: true },
+          ...order.flatMap((c, i) =>
+            c === coin
+              ? []
+              : [
+                  {
+                    label: `$${letters[i]}$`,
+                    feedback: `Coin $${letters[i]}$ is not a ${coin}. ${notCoin(c, coin)}`,
+                  },
+                ],
+          ),
+        ],
+      };
     return {
       variant,
       prompt: `Which picture shows a ${coin}?`,
@@ -339,6 +437,20 @@ function coinNameAndValue(r: Random): Built {
       feedback: `A dollar sign means dollars. $${v} is much more than ${v}¢.`,
     },
   ];
+  if (variant === "write-cents-picture" && drawn)
+    return {
+      variant,
+      prompt: "How do you write the value of this coin with the cent symbol?",
+      figure: drawnCoins(coin),
+      answer: "",
+      hint: "First name the coin from its color, size and edge, and remember what it is worth. The cent symbol is ¢. It goes after the number, like 3¢ for three cents.",
+      explanation: [
+        `This coin is ${COIN_LOOKS[coin]}, so it is a ${coin}.`,
+        `A ${coin} is worth ${count(v, "cent")}.`,
+        `Write the number, then the cent symbol after it: ${correct}.`,
+      ],
+      choices: choicesFrom(r, correct, wrongs),
+    };
   return variant === "write-cents-picture"
     ? {
         variant,
@@ -2451,8 +2563,14 @@ function earlyMoneyDecisions(r: Random): Built {
 
 /* ---------------------------------------------------------------------- */
 
-const builders: Record<string, (r: Random) => Built> = {
-  "coin-name-and-cent-value": coinNameAndValue,
+const builders: Record<
+  string,
+  (r: Random, seed: string) => Built & { axes?: Record<string, string> }
+> = {
+  "coin-name-and-cent-value": (r, seed) => {
+    const axes = sweepChoose("coin-name-and-cent-value", seed);
+    return { ...coinNameAndValue(r, axes), axes };
+  },
   "solid-bottom-face-shape": solidBottomFace,
   "measurable-attribute-choice": measurableAttribute,
   "dot-group-compared-to-number": dotGroupCompare,
@@ -2494,14 +2612,23 @@ export function texasK2Case(templateId: string, seed: string) {
   for (let attempt = 0; attempt < 60; attempt++) {
     let draft: Built;
     try {
-      draft = build(r);
+      draft = build(r, seed);
     } catch (error) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;
       throw error;
     }
     if (leaks(draft)) continue;
-    return { variant: draft.variant, problem: assemble(meta, seed, r, draft) };
+    const { axes, ...rest } = draft as Built & {
+      axes?: Record<string, string>;
+    };
+    const problem = assemble(meta, seed, r, rest);
+    return {
+      variant: draft.variant,
+      problem: axes
+        ? { ...problem, variant: sweepVariant(draft.variant, axes) }
+        : problem,
+    };
   }
   throw new Error("Could not generate a problem without leaking the answer");
 }

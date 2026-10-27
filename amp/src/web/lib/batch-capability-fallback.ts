@@ -18,7 +18,10 @@ export function validationPaths(details: unknown): ValidationPath[] | null {
   return paths;
 }
 
-function rejectedOnlyNewCapability(error: unknown): boolean {
+function rejectedOnlyNewCapability(
+  error: unknown,
+  field: "responseCapabilities" | "figureCapabilities" = "responseCapabilities",
+): boolean {
   if (!error || typeof error !== "object") return false;
   const candidate = error as {
     status?: unknown;
@@ -33,7 +36,7 @@ function rejectedOnlyNewCapability(error: unknown): boolean {
     candidate.validationPaths.every(
       (path: unknown) =>
         Array.isArray(path) &&
-        path[0] === "responseCapabilities" &&
+        path[0] === field &&
         path.slice(1).every((part) => typeof part === "number"),
     )
   );
@@ -48,11 +51,18 @@ export const clientResponseCapabilities = [
   "figure-choice-v1",
   "structured-work-v1",
 ];
+/** Figure capabilities an API may predate. An older API rejects the value;
+ * the client then asks without it and receives the legacy figure surfaces. */
+const newerFigureCapabilities = ["scenes-v2"];
 /** An API older than a response format rejects its enum value and the longer
  * array. Retry without the newest format, one at a time, down to single
- * choice; any other failure is final. Capabilities are listed oldest first. */
+ * choice; any other failure is final. Capabilities are listed oldest first.
+ * A newer figure capability rejected the same way is dropped too. */
 export async function batchWithCapabilityFallback<
-  Body extends { responseCapabilities: string[] },
+  Body extends {
+    responseCapabilities: string[];
+    figureCapabilities?: string[];
+  },
   Result,
 >(
   body: Body,
@@ -64,6 +74,17 @@ export async function batchWithCapabilityFallback<
     try {
       return await send(current);
     } catch (error) {
+      const figures = current.figureCapabilities ?? [];
+      const newest = figures.at(-1);
+      if (
+        newest !== undefined &&
+        newerFigureCapabilities.includes(newest) &&
+        rejectedOnlyNewCapability(error, "figureCapabilities") &&
+        canRetry()
+      ) {
+        current = { ...current, figureCapabilities: figures.slice(0, -1) };
+        continue;
+      }
       if (
         current.responseCapabilities.length < 2 ||
         current.responseCapabilities[0] !== "single-choice-v1" ||

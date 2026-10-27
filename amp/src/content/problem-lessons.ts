@@ -1,8 +1,10 @@
-import { generateProblem, gradeAnswer, templates } from "../math/engine";
-import type {
-  GeneratedProblem,
-  ProblemResponse,
-  SemanticFigure,
+import { generateProblemFor, gradeAnswer, templates } from "../math/engine";
+import {
+  figureCapabilities,
+  type GeneratedProblem,
+  type ProblemResponse,
+  type SemanticFigure,
+  type TemplateMetadata,
 } from "../math/contracts";
 import {
   realNumberGivens,
@@ -52,6 +54,13 @@ export type ProblemMethod = {
 };
 
 const byId = new Map(templates.map((template) => [template.id, template]));
+/** Lessons are served to every client that can receive the template, whatever
+ * else it can draw, so the example is drawn for the oldest such client: a
+ * newer scene component only when the template itself requires it. */
+const lessonFigures = (template: TemplateMetadata) =>
+  figureCapabilities.filter(
+    (c) => c !== "scenes-v2" || template.requiredFigureCapability === c,
+  );
 
 export function hasProblemLesson(templateId: string) {
   return byId.has(templateId);
@@ -70,6 +79,13 @@ export function problemLesson(
 ): ProblemLessonView {
   const template = byId.get(templateId);
   if (!template) throw new Error(`Unknown problem type ${templateId}`);
+  const generateProblem = (id: string, exampleSeed: string) =>
+    generateProblemFor(id, exampleSeed, lessonFigures(template));
+  // The learner may see a newer figure surface than the example (which is
+  // drawn for the oldest client); its legacy twin has the example's wording.
+  const twinPrompt = learnerProblem
+    ? generateProblem(templateId, learnerProblem.public.seed).public.prompt
+    : undefined;
   let example = generateProblem(templateId, `${seed}:lesson:0`);
   const repeatsProblem = (p: typeof example) => {
     if (
@@ -94,7 +110,8 @@ export function problemLesson(
       p.public.response.kind === "structured-work"
     )
       return workGivens(p) === workGivens(learnerProblem);
-    if (p.public.prompt !== avoidPrompt) return false;
+    if (p.public.prompt !== avoidPrompt && p.public.prompt !== twinPrompt)
+      return false;
     // Multi-part items share their wording; their givens are the blank
     // labels and the figure. Rows and options are shuffled, so neither order
     // is compared.

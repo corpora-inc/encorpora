@@ -32,7 +32,12 @@ export type ComponentDef<C> = {
   describe(c: C, reveal: boolean, hidden: (part: string) => boolean): string;
   /** Largest useful pixels per math unit (a ten-frame cell, a clock radius). */
   maxScale?(c: C): number;
+  /** The figure capability a client needs to draw this element. Absent is
+   * `scenes-v1`; components (or forms) added later name their own, so a
+   * client that cannot draw them is never sent one (scene/capability.ts). */
+  capability?(c: C): SceneCapability;
 };
+export type SceneCapability = "scenes-v1" | "scenes-v2";
 
 export type Box = { x0: number; y0: number; x1: number; y1: number };
 type Common = { id: string; data?: Record<string, string | number> };

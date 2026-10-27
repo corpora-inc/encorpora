@@ -279,14 +279,16 @@ export const mcasGrade6 = defineLedger(
       archetypeIds: ["measure.fraction-volume"],
       demand:
         "Select the two true statements about the edges and volume of a prism built from cubes with a fractional edge",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "unit-fraction-cube-packing",
         "fraction-edge-volume",
         "mcas-cube-prism-statements",
       ],
       limitations:
-        "Statements about cubes, count and volume of a prism packed with unit-fraction cubes are selected from stated edge lengths; the released item draws the prism built from cubes and asks for its measured dimensions, so reading edge lengths from counted cubes is not practiced.",
+        "mcas-cube-prism-statements (prism: drawn-cubes) draws the prism built from cubes with one cube edge marked as a unit fraction; the measured edge length, the cube count, one cube's volume and the prism's volume are judged as statements, two of them true.",
+      labeledBy: "agent:scene-components",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Session 2",

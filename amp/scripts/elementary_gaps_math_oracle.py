@@ -864,9 +864,35 @@ def solve_probability_line(public):
 
 
 # ------------------------------------------------------------------ thermometers
+def solve_drawn_thermometers(public, prompt):
+    # Drawn bulb-and-tube thermometers: read each liquid level from the
+    # figure's own scale (it must sit on a small mark inside the scale).
+    els = elements(public)
+    unit = 'Fahrenheit' if 'Fahrenheit' in prompt else 'Celsius'
+    readings = {}
+    for el in els:
+        require(el['type'] == 'thermometer', 'Only thermometers are drawn')
+        require(el['unit'] == unit[0], 'Scale unit must match the question')
+        require(el['min'] == 0 and el['max'] > 0 and el['major'] == 10 and el['minor'] in (2, 5), 'Scale of the family')
+        require(el['reading'] % el['minor'] == 0 and 0 < el['reading'] <= el['max'], 'Reading sits on a mark inside the scale')
+        readings[el.get('label', 'Liquid')] = el['reading']
+    require(public['response']['kind'] == 'number', 'Number response')
+    if prompt.startswith('What temperature does this thermometer show'):
+        require(list(readings) == ['Liquid'] and els[0].get('derived') is True, 'One masked reading')
+        return readings['Liquid']
+    ask = re.search(r'How many degrees \w+ (warmer|colder) was the (\w+) than (?:the )?(\w+)\?', prompt)
+    require(ask is not None, 'Unreadable comparison')
+    a, b = ask[2].capitalize(), ask[3].capitalize()
+    require(a in readings and b in readings and a != b and len(readings) == 2, 'Named readings are drawn')
+    require(all(not el.get('derived') for el in els), 'Both readings are shown')
+    return readings[a] - readings[b] if ask[1] == 'warmer' else readings[b] - readings[a]
+
+
 def solve_thermometer(public):
     prompt = plain(public['prompt'])
     el = elements(public)[0]
+    if el['type'] == 'thermometer':
+        return solve_drawn_thermometers(public, prompt)
     require(el['type'] == 'barChart' and el['id'] == 'thermometer', 'Thermometer scale expected')
     unit = 'Fahrenheit' if 'Fahrenheit' in prompt else 'Celsius'
     require(el['unit'] == f'Degrees {unit}', 'Scale unit must match the question')
@@ -1363,6 +1389,22 @@ def self_test():
                                   'The price stays the same, because the price of bike helmets does not depend on how many are for sale or wanted.',
                                   'The price goes down, because there are more bike helmets for sale than people who want them.',
                                   'The price goes up, because there are more bike helmets for sale than people who want them.'])), 'option-c'))
+    def drawn(reading, label=None, derived=True, unit='F', **extra):
+        el = {'type': 'thermometer', 'id': 'thermometer', 'unit': unit, 'min': 0, 'max': 100 if unit == 'F' else 40,
+              'minor': 5 if unit == 'F' else 2, 'major': 10, 'reading': reading, **extra}
+        if label:
+            el['label'] = label
+        if derived:
+            el['derived'] = True
+        return el
+    read_drawn = _public('read-thermometer', 'What temperature does this thermometer show, in degrees Fahrenheit?',
+                         {'kind': 'number', 'label': 'Answer (degrees Fahrenheit)'},
+                         {'kind': 'scene', 'scene': {'v': 1, 'elements': [drawn(65)]}})
+    good.append((read_drawn, 65))
+    colder_drawn = _public('read-thermometer', 'Two thermometers show the temperature at noon and at night. How many degrees Celsius colder was the night than noon?',
+                           {'kind': 'number', 'label': 'Answer (degrees Celsius)'},
+                           {'kind': 'scene', 'scene': {'v': 1, 'elements': [drawn(30, 'Noon', False, 'C'), drawn(12, 'Night', False, 'C', at=[17, 0])]}})
+    good.append((colder_drawn, 18))
     for public, expected in good:
         got = solve(public)
         require(got == expected, f'Fixture {public["templateId"]}: expected {expected!r}, got {got!r}')
@@ -1382,6 +1424,14 @@ def self_test():
         dup = copy.deepcopy(public)
         dup['response']['options'][3]['label'] = dup['response']['options'][2]['label']
         rejects(dup, f'duplicate choice in {public["templateId"]}')
+    p = copy.deepcopy(read_drawn); p['figure']['scene']['elements'][0]['reading'] = 63
+    rejects(p, 'a drawn reading between marks')
+    p = copy.deepcopy(read_drawn); p['figure']['scene']['elements'][0]['unit'] = 'C'
+    rejects(p, 'a Celsius thermometer for a Fahrenheit question')
+    p = copy.deepcopy(read_drawn); del p['figure']['scene']['elements'][0]['derived']
+    rejects(p, 'the asked-for reading is not masked')
+    p = copy.deepcopy(colder_drawn); p['figure']['scene']['elements'][1]['label'] = 'Morning'
+    rejects(p, 'a drawn thermometer the question does not name')
     # a second defensible choice is rejected
     p = copy.deepcopy(good[1][0]); p['response']['options'][0]['label'] = '37,500'
     rejects(p, 'two values between the bounds')

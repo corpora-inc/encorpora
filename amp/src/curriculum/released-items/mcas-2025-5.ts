@@ -36,10 +36,12 @@ export const mcasGrade5 = defineLedger(
       standards: ["5.MD.C.4"],
       archetypeIds: ["measure.unit-cube-volume"],
       demand: "Count the unit cubes that make up a drawn figure",
-      status: "partial",
+      status: "covered",
       templateIds: ["unit-cube-volume", "cube-layer-count"],
       limitations:
-        "unit-cube-volume counts the cubes of a rectangular prism by entry; a figure that is not a full prism with counts in the choices of 22 to 40 cubes is not established.",
+        "unit-cube-volume (solid: steps) counts the cubes of a drawn stepped solid that is not a full prism, 12 to 45 cubes, by entry; entering the count subsumes choosing it. Clients without scenes-v2 see a rectangular prism.",
+      labeledBy: "agent:scene-components",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Session 1",
@@ -220,14 +222,16 @@ export const mcasGrade5 = defineLedger(
       archetypeIds: ["measure.volume"],
       demand:
         "Select the two prisms whose combined volume falls in a stated range",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "composite-prism-volume",
         "prism-volume-edges",
         "mcas-prism-range-select",
       ],
       limitations:
-        "Two of five prisms are selected by combined volume, but the edge lengths are given as numbers; the released item draws each prism as unit cubes, so reading volume from a drawn cube arrangement is not practiced.",
+        "mcas-prism-range-select (prisms: unit-cubes) draws five prisms built from 1-centimeter cubes, lettered A to E, and selects the two whose combined volume is in a stated range or equals a total.",
+      labeledBy: "agent:scene-components",
+      labeledAt: "2026-10-27",
     },
     {
       section: "Session 2",
