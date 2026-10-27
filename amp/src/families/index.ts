@@ -8,6 +8,7 @@ export { family as conversionChain } from "./conversion-chain";
 export { family as countRelationChain } from "./count-relation-chain";
 export { family as dataList } from "./data-list";
 export { family as dataMeasure } from "./data-measure";
+export { family as equationSlots } from "./equation-slots";
 export { family as expandedForm } from "./expanded-form";
 export { family as feeChain } from "./fee-chain";
 export { family as figureChoice } from "./figure-choice";
