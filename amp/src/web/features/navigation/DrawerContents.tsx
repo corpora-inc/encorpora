@@ -62,6 +62,11 @@ export default function DrawerContents({ close }: { close: () => void }) {
       !view.learners.length &&
       !view.identityLoading &&
       !view.identityError);
+  // The budget holds its place, as placeholders, only while it is loading.
+  const budgetLoading =
+    assessmentCard &&
+    !trialProgress &&
+    (view.trial.isPending || view.trialProgressLoading);
   const learnerChoices: ListboxOption[] = [
     ...view.learners.map((l) => ({ value: l.id, label: l.name })),
     ...(assessmentChoice
@@ -182,20 +187,28 @@ export default function DrawerContents({ close }: { close: () => void }) {
               ? "Progress saved to this learner"
               : "Start an assessment or set up a learner."}
         </p>
-        {assessmentCard && (
-          <div className={styles.budget} aria-busy={!trialProgress}>
+        {trialProgress ? (
+          <div className={styles.budget}>
             <span>
-              <strong>{trialProgress?.totals.answered ?? "—"}</strong> /{" "}
-              {trialProgress?.free ?? "—"} free problems
+              <strong>{trialProgress.totals.answered}</strong> /{" "}
+              {trialProgress.free} free problems
             </span>
-            <span>{trialProgress?.remaining ?? "—"} left</span>
+            <span>{trialProgress.remaining} left</span>
             <progress
-              max={trialProgress?.free ?? 1}
-              value={trialProgress?.totals.answered ?? 0}
+              max={trialProgress.free}
+              value={trialProgress.totals.answered}
               aria-label="Free assessment problems used"
             />
           </div>
-        )}
+        ) : budgetLoading ? (
+          <div className={styles.budget} aria-busy="true" data-placeholder>
+            <span>
+              <strong>—</strong> / — free problems
+            </span>
+            <span>— left</span>
+            <progress max={1} value={0} aria-hidden="true" />
+          </div>
+        ) : null}
         <div className={styles.stats} aria-live="polite">
           <span>
             <strong>{level ?? "—"}</strong>

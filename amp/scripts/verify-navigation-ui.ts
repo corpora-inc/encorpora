@@ -449,11 +449,18 @@ try {
         await lookup;
         await trigger.click();
         await learningCard.locator("[aria-live] strong").first().waitFor();
-        if (guest)
+        if (guest) {
+          // The budget holds its place, unnamed until its numbers arrive.
           await learningCard
-            .getByRole("progressbar", { name: "Free assessment problems used" })
+            .locator('[aria-busy="true"]')
+            .getByText("free problems")
             .waitFor();
-        else {
+          assert.equal(
+            await learningCard.getByRole("progressbar").count(),
+            0,
+            `${label}: the placeholder budget is not announced as progress`,
+          );
+        } else {
           await learningCard
             .getByRole("listbox", { name: "Current learner" })
             .waitFor();
@@ -478,6 +485,10 @@ try {
         release();
         await answered;
         await statsSettled();
+        if (guest)
+          await learningCard
+            .getByRole("progressbar", { name: "Free assessment problems used" })
+            .waitFor();
         await page.evaluate(
           () =>
             new Promise((resolve) =>
