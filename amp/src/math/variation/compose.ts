@@ -4,6 +4,7 @@ import type {
   ProblemResponse,
   SemanticFigure,
   TemplateMetadata,
+  WorkGrading,
 } from "../contracts";
 import { random } from "../distribution-practice";
 import {
@@ -37,6 +38,8 @@ export interface Surface {
   explanation: string[];
   figure?: SemanticFigure;
   choiceFeedback?: Record<string, string>;
+  /** Private rule of a structured-work response (structured-work.ts). */
+  workGrading?: WorkGrading;
 }
 
 /**
@@ -128,6 +131,7 @@ export function generateVaried<A extends AxisSet, M>(
         hint: s.hint,
         explanation: s.explanation,
         ...(s.choiceFeedback ? { choiceFeedback: s.choiceFeedback } : {}),
+        ...(s.workGrading ? { workGrading: s.workGrading } : {}),
         variant: { id: family.variant(model), axes: axisRecord(axes) },
       };
       return { axes, model, surface: s, problem };

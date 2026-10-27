@@ -19,6 +19,10 @@ import {
 } from "./multi-part-choice-practice";
 import { gradeFigureChoice, normalizeFigureChoice } from "./figure-choice";
 import {
+  gradeStructuredWork,
+  normalizeStructuredWork,
+} from "./structured-work";
+import {
   pointPlotTemplates,
   generatePointPlotProblem,
 } from "./point-plot-practice";
@@ -292,10 +296,7 @@ import {
   regentsGapTemplates,
   generateRegentsGapProblem,
 } from "./regents-gap-practice";
-import {
-  generateMcasGapProblem,
-  mcasGapTemplates,
-} from "./mcas-gap-practice";
+import { generateMcasGapProblem, mcasGapTemplates } from "./mcas-gap-practice";
 import {
   generateStaarGapProblem,
   staarGapTemplates,
@@ -321,10 +322,7 @@ import {
   k8StateNumberTemplates,
   generateK8StateNumberProblem,
 } from "./k8-state-number-practice";
-import {
-  texas38Templates,
-  generateTexas38Problem,
-} from "./texas-38-practice";
+import { texas38Templates, generateTexas38Problem } from "./texas-38-practice";
 import {
   complexMultiplicationTemplate,
   complexMultiplicationCase,
@@ -334,10 +332,7 @@ import {
   financeCreditTemplateIds,
   generateFinanceCreditProblem,
 } from "./finance-credit-practice";
-import {
-  texasHsTemplates,
-  generateTexasHsProblem,
-} from "./texas-hs-practice";
+import { texasHsTemplates, generateTexasHsProblem } from "./texas-hs-practice";
 import {
   algebraRequirementGapTemplates,
   generateAlgebraRequirementGapProblem,
@@ -674,6 +669,8 @@ export function isValidResponse(
     return normalizeMultiPart(problem.response, response) !== null;
   if (problem.response.kind === "figure-choice")
     return normalizeFigureChoice(problem.response, response) !== null;
+  if (problem.response.kind === "structured-work")
+    return normalizeStructuredWork(problem.response, response) !== null;
   return problem.response.kind === "choice"
     ? problem.response.options.some((option) => option.id === response)
     : normalizeAnswer(response) !== null;
@@ -703,6 +700,15 @@ export function gradeAnswer(
     return gradeMultiPart(problem.public.response, problem.answer, response);
   if (problem.public.response.kind === "figure-choice")
     return gradeFigureChoice(problem.public.response, problem.answer, response);
+  if (problem.public.response.kind === "structured-work")
+    return (
+      !!problem.workGrading &&
+      gradeStructuredWork(
+        problem.public.response,
+        problem.workGrading,
+        response,
+      )
+    );
   if (problem.public.response.kind === "choice")
     return (
       isValidResponse(problem.public, response) && response === problem.answer

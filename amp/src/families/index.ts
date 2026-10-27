@@ -14,5 +14,8 @@ export { family as perimeterAreaChain } from "./perimeter-area-chain";
 export { family as purchaseChain } from "./purchase-chain";
 export { family as quadraticModelChain } from "./quadratic-model-chain";
 export { family as shareRemainder } from "./share-remainder";
+export { family as showWorkWordProblem } from "./show-work-word-problem";
 export { family as similarSolidChain } from "./similar-solid-chain";
+export { family as solveAndJustify } from "./solve-and-justify";
 export { family as totalMinusParts } from "./total-minus-parts";
+export { family as twoColumnProof } from "./two-column-proof";

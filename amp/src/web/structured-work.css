@@ -1,0 +1,566 @@
+/* Structured work: steps or a two-column proof built field by field. Every
+   control keeps its size from the first frame (a choice is as tall as its
+   tallest option, an entry reserves its preview line, marks have reserved
+   space) and the keypad overlays the dock, so typing, choosing, checking
+   and feedback never move anything. */
+.work {
+  flex: none;
+  width: 100%;
+  margin: var(--space-4) 0 0;
+  container-type: inline-size;
+}
+/* The keypad covers the bottom of the screen while an entry is active; the
+   last step can always scroll above it. */
+.work[data-keypad-space] {
+  padding-bottom: 272px;
+}
+.work-start,
+.work-goal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+.work-goal {
+  margin: var(--space-3) 0 0;
+}
+.work-start-label {
+  flex: none;
+  padding: 2px var(--space-2);
+  border-radius: 999px;
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  font-size: var(--text-small);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- rows ---------- */
+.work-rows {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.work-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 24px;
+  align-items: start;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-2) var(--space-2) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+}
+.work-rows[data-mode="order"] .work-row {
+  grid-template-columns: 28px minmax(0, 1fr) auto 24px;
+}
+.work-row[data-mark="correct"] {
+  border-color: var(--color-success-accent);
+}
+.work-row[data-mark="incorrect"] {
+  border-color: var(--color-danger-accent);
+}
+.work-number {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-top: 10px;
+  border-radius: 50%;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  border: 1px solid var(--color-border-strong);
+  font-size: var(--text-small);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.work-mark {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin-top: 12px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+.work-mark[data-mark="correct"] {
+  background: var(--color-success-accent);
+  color: var(--color-surface-raised);
+}
+.work-mark[data-mark="incorrect"] {
+  background: var(--color-danger-accent);
+  color: var(--color-surface-raised);
+}
+.work-fields {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.work-label {
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.4;
+  padding-top: 2px;
+}
+.work-cell {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.work-cell-caption {
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-muted-text);
+}
+/* Wide: a step's line and reason sit side by side; a proof is two columns
+   under one heading; a labeled value sits beside its label. */
+.work-columns {
+  display: none;
+}
+@container (min-width: 560px) {
+  .work-rows[data-layout="steps"] .work-fields:has(> .work-cell + .work-cell) {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  }
+  .work-rows[data-layout="proof"] .work-fields {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .work-rows[data-layout="proof"] .work-cell-caption {
+    display: none;
+  }
+  .work-columns {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) minmax(0, 1fr) 24px;
+    gap: var(--space-2);
+    padding: 0 var(--space-2) var(--space-1);
+    color: var(--color-muted-text);
+    font-size: var(--text-small);
+    font-weight: 700;
+  }
+  .work-rows[data-layout="steps"] .work-fields:has(> .work-label) {
+    grid-template-columns: minmax(0, 1fr) minmax(200px, 260px);
+    align-items: start;
+  }
+  .work-rows[data-layout="steps"] .work-fields > .work-label {
+    padding-top: 12px;
+  }
+}
+
+/* ---------- given values ---------- */
+/* A given value reads as printed text in the row, not as a field. */
+.work-given {
+  display: flex;
+  align-items: center;
+  min-height: var(--target-size);
+  padding: var(--space-1) var(--space-1);
+  font-size: var(--text-body);
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+.work-given[data-kind="choice"] {
+  font-size: var(--text-label);
+}
+
+/* ---------- typed entries ---------- */
+.work-entry {
+  display: grid;
+  min-width: 0;
+}
+.work-entry-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+}
+.work-input {
+  flex: 1 1 auto;
+  width: 0;
+  min-width: 0;
+  height: var(--target-size);
+  margin: 0;
+  padding: 0 var(--space-3);
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  font-size: 19px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  box-sizing: border-box;
+}
+.work-input::placeholder {
+  color: var(--color-subtle-text);
+  font-size: var(--text-label);
+  letter-spacing: 0;
+}
+.work-input:focus-visible,
+.work-input:focus {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+  border-color: var(--color-primary);
+}
+.work-input[data-invalid] {
+  border-color: var(--color-danger-accent);
+}
+.work-input:read-only {
+  cursor: default;
+}
+.work-unit {
+  flex: none;
+  font-size: var(--text-label);
+  font-weight: 600;
+  color: var(--color-muted-text);
+}
+/* One reserved line under each entry: its typeset preview, or the fix. A
+   stacked fraction fits, so the line never grows. */
+.work-note {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  overflow: hidden;
+  padding: 0 var(--space-1);
+  font-size: var(--text-small);
+  line-height: 1.2;
+  color: var(--color-muted-text);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.work-note .math {
+  font-size: 17px;
+  color: var(--color-on-surface-sunken);
+}
+.work-note[data-tone="hint"] {
+  color: var(--color-subtle-text);
+}
+.work-note[data-tone="error"] {
+  color: var(--color-on-danger);
+  font-weight: 600;
+}
+
+/* ---------- a choice: a picker button that opens a menu ---------- */
+.work-choice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  min-height: var(--target-size);
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 2px dashed var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  font: inherit;
+  font-size: var(--text-label);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: start;
+  cursor: pointer;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+.work-choice:hover:not(:disabled) {
+  background: var(--color-surface-raised-hover);
+  color: var(--color-on-surface-raised);
+}
+.work-choice[data-state="open"] {
+  background: var(--color-surface-raised-active);
+  color: var(--color-on-surface-raised);
+}
+.work-choice[data-filled] {
+  border-style: solid;
+  border-color: var(--color-primary);
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.work-choice[data-filled]:hover:not(:disabled) {
+  background: var(--color-secondary-hover);
+  color: var(--color-on-secondary);
+}
+.work-choice:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.work-choice:disabled {
+  opacity: 1;
+  cursor: default;
+}
+/* Every option sits in one grid cell, so the button is as tall as the
+   tallest option at its width from the first frame. */
+.work-choice-stack {
+  display: grid;
+  flex: 1 1 auto;
+  min-width: 0;
+  align-items: center;
+}
+.work-choice-value {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  overflow-wrap: anywhere;
+}
+.work-choice-value[data-shown] {
+  visibility: visible;
+}
+.work-choice-placeholder {
+  color: var(--color-muted-text);
+}
+.work-chevron {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.work-choice:disabled .work-chevron {
+  visibility: hidden;
+}
+.work-menu {
+  z-index: 1000;
+  box-sizing: border-box;
+  min-width: max(var(--radix-dropdown-menu-trigger-width), 200px);
+  max-width: min(var(--radix-dropdown-menu-content-available-width), 480px);
+  max-height: var(--radix-dropdown-menu-content-available-height);
+  overflow-y: auto;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  box-shadow: 0 8px 30px var(--color-shadow);
+}
+.work-menu:focus {
+  outline: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .work-menu {
+    transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+    animation: work-menu-in var(--motion-fast) ease-out;
+  }
+}
+@keyframes work-menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+.work-menu-label {
+  padding: var(--space-1) var(--space-3) var(--space-2);
+  font-size: var(--text-small);
+  font-weight: 700;
+  color: var(--color-muted-text);
+}
+.work-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  min-height: var(--target-size);
+  padding: var(--space-1) var(--space-3) var(--space-1) var(--space-2);
+  border-radius: calc(var(--radius-control) - var(--space-1));
+  background: var(--color-menu);
+  color: var(--color-on-menu);
+  font-size: 16px;
+  line-height: 1.35;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.work-option[data-highlighted] {
+  outline: none;
+  background: var(--color-menu-hover);
+  color: var(--color-on-menu);
+}
+.work-option[data-highlighted]:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+.work-option:active {
+  background: var(--color-menu-active);
+  color: var(--color-on-menu);
+}
+.work-option[data-state="checked"] {
+  font-weight: 700;
+}
+.work-option-check {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  font-weight: 700;
+}
+.work-option-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- ordering ---------- */
+.work-move {
+  display: grid;
+  gap: var(--space-1);
+}
+/* Wide: the two arrows sit side by side, so a row stays one line tall. */
+@container (min-width: 560px) {
+  .work-move {
+    grid-auto-flow: column;
+  }
+}
+.work-move-button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+}
+.work-move-button:hover:not(:disabled) {
+  background: var(--color-surface-raised-hover);
+  color: var(--color-on-surface-raised);
+}
+.work-move-button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.work-move-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.work-move-button svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------- open lists ---------- */
+.work-list-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 0;
+}
+.work-list-actions button {
+  flex: 1 1 140px;
+  min-height: var(--target-size);
+  margin: 0;
+  font-size: var(--text-label);
+}
+
+/* ---------- the keypad: over the dock, never in the layout ---------- */
+.work-keypad {
+  position: fixed;
+  z-index: 60;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  width: min(100%, 560px);
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+  padding: var(--space-2) var(--space-4)
+    calc(var(--space-2) + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--color-border);
+  border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface-raised);
+  box-shadow: 0 -6px 24px var(--color-shadow);
+}
+.work-key {
+  height: var(--target-size);
+  min-height: var(--target-size);
+  margin: 0;
+  padding: 0 2px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface-sunken);
+  color: var(--color-on-surface-sunken);
+  font-size: 19px;
+  touch-action: manipulation;
+}
+.work-key:hover {
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+}
+.work-key:active {
+  background: var(--color-secondary);
+  color: var(--color-on-secondary);
+  transform: translateY(1px);
+}
+.work-key[data-key="done"] {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-size: var(--text-label);
+  font-weight: 700;
+}
+/* Letters are variables: set as in the typeset preview. */
+.work-key[data-variable] {
+  font-family: KaTeX_Math, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 21px;
+}
+.work-key[data-key="or"] {
+  font-size: var(--text-label);
+  font-weight: 700;
+}
+
+/* ---------- the dock: progress, Clear and Check ---------- */
+.work-form {
+  display: grid;
+  gap: var(--space-2);
+}
+.work-count {
+  margin: 0;
+  min-height: 20px;
+  font-size: var(--text-small);
+  line-height: 20px;
+  color: var(--color-muted-text);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-variant-numeric: tabular-nums;
+}
+.work-actions {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-2);
+}
+.work-clear {
+  min-width: 84px;
+  min-height: var(--target-size);
+  font-size: var(--text-label);
+}
+.work-actions .work-check {
+  width: auto;
+  min-height: 52px;
+  margin-top: 0;
+  transition: none;
+}
+
+/* Work grows as steps are added; the problem stays put at the top of the
+   stage instead of re-centering. */
+.problem-content:has(> .work) {
+  margin: 0 auto;
+}

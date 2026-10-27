@@ -99,10 +99,14 @@ export const mcasGrade6 = defineLedger(
       ],
       demand:
         "Cost of a number of boxes, an expression in c, an expression with a coupon and the boxes bought for a stated budget",
-      status: "partial",
-      templateIds: ["two-step-equation-model", "substitute-linear-expression"],
+      status: "covered",
+      templateIds: [
+        "show-work-box-cost",
+        "two-step-equation-model",
+        "substitute-linear-expression",
+      ],
       limitations:
-        "Constructed response in four parts. Equation choice for a story and substitution into an expression are practiced; writing an expression with a variable and solving for the boxes with a one-time coupon, with shown work, are not.",
+        "Constructed response in four parts with shown work. show-work-box-cost (structured-work-v1) enters each part as a labeled step: the cost of a number of boxes, typed expressions for c boxes without and with a one-time coupon (graded by exact symbolic equivalence), the amount before the coupon and the boxes a budget buys. The shown work is those intermediate values, not a written explanation.",
     },
     {
       section: "Session 1",
@@ -194,10 +198,10 @@ export const mcasGrade6 = defineLedger(
       archetypeIds: ["number.percent-fraction-decimal", "percent.of"],
       demand:
         "Rename a percent as a fraction, find a percent of 50 states, a new percent and the states needed to reach a target",
-      status: "partial",
-      templateIds: ["percent-of"],
+      status: "covered",
+      templateIds: ["show-work-percent-count", "percent-of"],
       limitations:
-        "Constructed response in four parts with shown work. percent-of finds a percent of a quantity; renaming 30% as a fraction, finding what percent a count is of fifty and working backward to a target are not practiced.",
+        "Constructed response in four parts with shown work. show-work-percent-count (structured-work-v1) enters each part as a labeled step: the percent as a fraction, that percent of the total, the count and percent after more are added, and the target count and how many more reach it, for totals of 20, 25, 40 or 50. The shown work is those intermediate values, not a written explanation.",
     },
     {
       section: "Session 2",

@@ -137,7 +137,8 @@ export function problemLesson(
     response.kind === "multi-select" ||
     response.kind === "point-plot" ||
     response.kind === "multi-part-choice" ||
-    response.kind === "figure-choice"
+    response.kind === "figure-choice" ||
+    response.kind === "structured-work"
       ? answerText(response, example.answer)
       : skills.find((skill) => skill.id === template.skillId)?.strand ===
           "fractions"

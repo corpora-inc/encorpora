@@ -2,6 +2,7 @@ import type { MultiSelectResponse, ProblemResponse } from "./contracts";
 import { normalizePointPlot, pointPlotAnswerText } from "./point-plot";
 import { multiPartAnswerText, normalizeMultiPart } from "./multi-part-choice";
 import { figureChoiceAnswerText } from "./figure-choice";
+import { structuredWorkAnswerText } from "./structured-work";
 
 export const MAX_SELECTION_OPTIONS = 8;
 export const MAX_SELECTION_RESPONSE_LENGTH = 200;
@@ -95,6 +96,8 @@ export function answerText(response: ProblemResponse, raw: string): string {
   }
   if (response.kind === "figure-choice")
     return figureChoiceAnswerText(response, raw);
+  if (response.kind === "structured-work")
+    return structuredWorkAnswerText(response, raw);
   if (response.kind !== "choice" && response.kind !== "multi-select")
     return raw;
   if (

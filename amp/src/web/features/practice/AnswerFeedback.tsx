@@ -99,12 +99,22 @@ export function AnswerFeedback({
                 </small>
               </span>
             </>
+          ) : progress.isPending ? (
+            // The loaded layout, empty: bars and two lines keep their places,
+            // so the strength arriving moves nothing.
+            <>
+              <span className={styles.recent} aria-hidden="true">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <i key={i} data-state="empty" />
+                ))}
+              </span>
+              <span>
+                <strong>Skill strength</strong>
+                <small>Updating…</small>
+              </span>
+            </>
           ) : (
-            <span>
-              {progress.isPending
-                ? "Updating skill strength…"
-                : "Skill practiced"}
-            </span>
+            <span>Skill practiced</span>
           )}
         </div>
       )}

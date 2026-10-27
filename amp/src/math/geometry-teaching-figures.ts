@@ -1314,3 +1314,15 @@ export function tangentSecantFigure(o: {
     els,
   );
 }
+
+/** Primitives for figures composed elsewhere (structured-work proofs). */
+export {
+  seg as figureSegment,
+  dot as figurePoint,
+  name as figureName,
+  ticks as figureTicks,
+  parallelMark as figureParallelMark,
+  angleMark as figureAngleMark,
+  rightMark as figureRightMark,
+  finish as figureScene,
+};
