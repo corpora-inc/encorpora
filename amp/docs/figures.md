@@ -134,4 +134,5 @@ Bar charts, histograms, dot and line plots, box plots, scatter plots and tables 
 - `npm run tsc`, `npm test` and `npm run lint:colors`. Paints are role names, never colors.
 - `npx tsx scripts/scene-gallery.ts`: every scene at 320, 390, 768 and 1280 px in light and dark. It fails on overflow, a label outside the view box, overlapping labels, a stroke through a label, loose math spacing, or a starved plot. Look at the screenshots in `artifacts/scene-gallery/`.
 - `npx tsx scripts/scene-print.ts`: every scene on Letter and A4 print pages through the print layout oracle.
+- `npm run test:scene-components-ui`: each scenes-v2 component inside a real practice problem at 320, 390, 768 and 1280 px in light and dark, plus Letter and A4 print. It fails on layout probe issues, figure labels under 12 px or overlapping, and a figure that moves after fonts settle.
 - `npx tsx scripts/verify-scene-player-ui.ts`: walkthroughs in a lesson and in a hint. The panel must not resize, controls must be at least 44 px, playback must finish, and reduced motion must show the final frame.
