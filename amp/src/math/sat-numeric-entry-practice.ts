@@ -1,5 +1,23 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random } from "./distribution-practice";
+import { defineAxis } from "./variation/axes";
+import { generateWithAxes } from "./variation/legacy";
+
+/** Surface axes of the quadratic-solution entry family: which of the two
+ * solutions is asked for, and whether the equation is given in standard form
+ * or as a product that must be expanded first. The first value of each axis
+ * is the surface the family showed before the axes existed. */
+export const quadraticSolutionAxes = {
+  ask: defineAxis("ask", ["greater", "smaller"]),
+  layout: defineAxis("layout", ["standard", "product-form", "square-form"]),
+};
+type SolutionAxes = { ask?: string; layout?: string };
+
+/** Surface axis of the root-relations family: the quadratic is given in
+ * standard form or with terms on both sides that must be collected first. */
+export const rootRelationsAxes = {
+  "equation-form": defineAxis("equation-form", ["standard", "both-sides"]),
+};
 
 /**
  * SAT student-produced-response practice. The learner types an exact integer,
@@ -213,8 +231,14 @@ function systemExpression(r: R): Case {
 }
 
 // ------------------------------------------------------------- quadratics
-function quadraticSolution(r: R): Case {
-  const variant = r(0, 3);
+function quadraticSolution(r: R, axes: SolutionAxes = {}): Case {
+  const smaller = axes.ask === "smaller";
+  const product = axes.layout === "product-form";
+  const square = axes.layout === "square-form";
+  const drawn = r(0, 3);
+  // A single repeated solution has no smaller one, and the product form is a
+  // monic two-solution equation: those surfaces use the monic variants.
+  const variant = product || square ? 0 : smaller && drawn === 3 ? 0 : drawn;
   const nz = nzr(r);
   if (variant === 0 || variant === 2) {
     let r1 = nz(9);
@@ -222,33 +246,98 @@ function quadraticSolution(r: R): Case {
     while (r1 === r2) r2 = nz(9);
     const sum = r1 + r2;
     const prod = r1 * r2;
-    const greater = Math.max(r1, r2);
+    const greater = smaller ? Math.min(r1, r2) : Math.max(r1, r2);
+    const word = smaller ? "smaller" : "greater";
     const standard = poly([1, -sum, prod]);
     const answer = q(greater);
+    if (square) {
+      // (x + a)² = dx + e with integer solutions: expand, collect and factor.
+      let a = nz(6),
+        d = sum + 2 * a;
+      while (d === 0 || Math.abs(d) > 14) {
+        a = nz(6);
+        d = sum + 2 * a;
+      }
+      const e = a * a - prod;
+      const binomial = `(${lin([
+        [1, "x"],
+        [a, ""],
+      ])})^2`;
+      const right = lin([
+        [d, "x"],
+        [e, ""],
+      ]);
+      const expanded = poly([1, 2 * a, a * a]);
+      return {
+        variant: `square-${word}`,
+        prompt: `What is the ${word} solution of $${binomial}=${right}$?`,
+        answer,
+        hint: `Square the binomial on the left, then move every term of $${right}$ to the left side and factor.`,
+        explanation: [
+          `Expand the left side: $${binomial}=${expanded}$.`,
+          `Subtract $${right}$ from both sides: $${expanded} - (${right})=0$, which is $${standard}=0$.`,
+          `The numbers ${-r1} and ${-r2} multiply to ${prod} and add to ${-sum}, so $(x${r1 > 0 ? "-" : "+"}${Math.abs(r1)})(x${r2 > 0 ? "-" : "+"}${Math.abs(r2)})=0$.`,
+          `The solutions are ${r1} and ${r2}; the ${word} is ${greater}.`,
+        ],
+        data: { coeffs: `1,${-sum},${prod}`, ask: word },
+      };
+    }
+    if (product) {
+      let a = nz(9),
+        b = -sum - a;
+      while (b === 0 || Math.abs(b) > 12 || a * b === prod) {
+        a = nz(9);
+        b = -sum - a;
+      }
+      const k = a * b - prod;
+      const factors = `(${lin([
+        [1, "x"],
+        [a, ""],
+      ])})(${lin([
+        [1, "x"],
+        [b, ""],
+      ])})`;
+      const expanded = poly([1, a + b, a * b]);
+      return {
+        variant: `product-${word}`,
+        prompt: `What is the ${word} solution of $${factors}=${k}$?`,
+        answer,
+        hint: `The equation is not yet set equal to 0. Multiply out the two factors on the left, then ${k > 0 ? `subtract ${k}` : `add ${-k}`} on both sides and factor.`,
+        explanation: [
+          `Expand the left side: $${factors}=${expanded}$.`,
+          `${k > 0 ? `Subtract ${k}` : `Add ${-k}`} on both sides: $${standard}=0$.`,
+          `The numbers ${-r1} and ${-r2} multiply to ${prod} and add to ${-sum}, so $(x${r1 > 0 ? "-" : "+"}${Math.abs(r1)})(x${r2 > 0 ? "-" : "+"}${Math.abs(r2)})=0$.`,
+          `The solutions are ${r1} and ${r2}; the ${word} is ${greater}.`,
+        ],
+        data: { coeffs: `1,${-sum},${prod}`, ask: word },
+      };
+    }
     if (variant === 0)
       return {
-        variant: "monic-greater",
-        prompt: `What is the greater solution of $${standard}=0$?`,
+        variant: smaller ? "monic-smaller" : "monic-greater",
+        prompt: `What is the ${word} solution of $${standard}=0$?`,
         answer,
-        hint: `Find two numbers whose product is ${prod} and whose sum is ${-sum}. They give the constants in the two factors of $${standard}$.`,
+        hint: smaller
+          ? `Find two numbers whose product is the constant term and whose sum is the opposite of the coefficient of $x$. They give the constants in the two factors of $${standard}$.`
+          : `Find two numbers whose product is ${prod} and whose sum is ${-sum}. They give the constants in the two factors of $${standard}$.`,
         explanation: [
           `Look for two numbers with product ${prod} and sum ${-sum}: ${-r1} and ${-r2}.`,
           `So $${standard}=(x${r1 > 0 ? "-" : "+"}${Math.abs(r1)})(x${r2 > 0 ? "-" : "+"}${Math.abs(r2)})=0$.`,
-          `The solutions are $x=${r1}$ and $x=${r2}$. The greater is ${greater}.`,
+          `The solutions are $x=${r1}$ and $x=${r2}$. The ${word} is ${greater}.`,
         ],
-        data: { coeffs: `1,${-sum},${prod}`, ask: "greater" },
+        data: { coeffs: `1,${-sum},${prod}`, ask: word },
       };
     return {
-      variant: "rearranged-greater",
-      prompt: `What is the greater solution of $${poly([1, -sum, 0])}=${-prod}$?`,
+      variant: smaller ? "rearranged-smaller" : "rearranged-greater",
+      prompt: `What is the ${word} solution of $${poly([1, -sum, 0])}=${-prod}$?`,
       answer,
       hint: `The equation $${poly([1, -sum, 0])}=${-prod}$ is not yet equal to 0. ${prod > 0 ? `Add ${prod}` : `Subtract ${-prod}`} on both sides, then factor the quadratic.`,
       explanation: [
         `${prod > 0 ? `Add ${prod}` : `Subtract ${-prod}`} on both sides: $${standard}=0$.`,
         `The numbers ${-r1} and ${-r2} multiply to ${prod} and add to ${-sum}, so $(x${r1 > 0 ? "-" : "+"}${Math.abs(r1)})(x${r2 > 0 ? "-" : "+"}${Math.abs(r2)})=0$.`,
-        `The solutions are ${r1} and ${r2}; the greater is ${greater}.`,
+        `The solutions are ${r1} and ${r2}; the ${word} is ${greater}.`,
       ],
-      data: { coeffs: `1,${-sum},${prod}`, ask: "greater" },
+      data: { coeffs: `1,${-sum},${prod}`, ask: word },
     };
   }
   if (variant === 1) {
@@ -259,21 +348,23 @@ function quadraticSolution(r: R): Case {
     } while (gcd(n, d) !== 1);
     const m = r(1, 6);
     const cs = [d, d * m - n, -n * m];
-    const answer = q(n, d);
+    const answer = smaller ? q(-m) : q(n, d);
     return {
-      variant: "nonmonic-positive",
-      prompt: `What is the positive solution of $${poly(cs)}=0$?`,
+      variant: smaller ? "nonmonic-negative" : "nonmonic-positive",
+      prompt: `What is the ${smaller ? "negative" : "positive"} solution of $${poly(cs)}=0$?`,
       answer,
-      hint: `The leading coefficient is ${d}, so try factoring into two binomials whose first terms multiply to $${d}x^2$ and whose last terms multiply to ${-n * m}. Set each factor equal to 0.`,
+      hint: `The leading coefficient is ${d}, so try factoring into two binomials whose first terms multiply to $${d}x^2$ and whose last terms multiply to ${smaller ? "the constant term" : -n * m}. Set each factor equal to 0.`,
       explanation: [
         `Factor: $${poly(cs)}=(${lin([
           [d, "x"],
           [-n, ""],
         ])})(x+${m})$, because $${d}x\\cdot x=${d}x^2$, $(-${n})(${m})=${-n * m}$, and the middle term is $${d}\\cdot${m}x-${n}x=${d * m - n}x$.`,
         `Set each factor equal to 0: $x=${tex(answer)}$ or $x=-${m}$.`,
-        `Only $${tex(answer)}$ is positive.`,
+        smaller
+          ? `Only $${tex(answer)}$ is negative.`
+          : `Only $${tex(answer)}$ is positive.`,
       ],
-      data: { coeffs: cs.join(","), ask: "positive" },
+      data: { coeffs: cs.join(","), ask: smaller ? "negative" : "positive" },
     };
   }
   // Perfect square: exactly one solution, possibly negative or fractional.
@@ -303,7 +394,7 @@ function quadraticSolution(r: R): Case {
   };
 }
 
-function rootRelations(r: R): Case {
+function rootRelations(r: R, axes: { "equation-form"?: string } = {}): Case {
   const variant = r(0, 3);
   for (let tries = 0; tries < 2000; tries++) {
     const a = variant === 0 ? r(2, 5) : r(1, 5);
@@ -312,15 +403,37 @@ function rootRelations(r: R): Case {
     if (b * b - 4 * a * c <= 0) continue;
     if (variant === 0 && b % a === 0) continue;
     const e = poly([a, b, c]);
-    const common = `The equation $${e}=0$ has two distinct real solutions, $p$ and $q$.`;
+    // Both-sides form: move dx + k to the right; collecting terms restores the standard form.
+    const sides = axes["equation-form"] === "both-sides";
+    const d = sides ? r(1, 6) : 0;
+    const k = sides ? r(1, 9) * (r(0, 1) ? 1 : -1) : 0;
+    const right = lin([
+      [d, "x"],
+      [k, ""],
+    ]);
+    const collect = sides
+      ? `Collect all terms on the left: subtract $${right}$ from both sides to get $${e}=0$. `
+      : "";
+    // The collected equation is named without "= 0": a hint must not print a 0 the prompt never showed.
+    const eq0 = sides ? e : `${e}=0`;
+    const collectHint = sides
+      ? `First collect all terms on the left by subtracting $${right}$ from both sides. `
+      : "";
+    const common = sides
+      ? `The equation $${poly([a, b + d, c + k])}=${right}$ has two distinct real solutions, $p$ and $q$.`
+      : `The equation $${e}=0$ has two distinct real solutions, $p$ and $q$.`;
     const vieta = `Here $a=${a}$, $b=${b}$ and $c=${c}$. Since $ax^2+bx+c=a(x-p)(x-q)=ax^2-a(p+q)x+a(pq)$, matching coefficients gives $p+q=\\frac{-b}{a}=${tex(q(-b, a))}$ and $pq=\\frac{c}{a}=${tex(q(c, a))}$.`;
     if (variant === 0)
       return {
         variant: "sum",
         prompt: `${common} What is the value of $p+q$?`,
         answer: q(-b, a),
-        hint: `You do not need $p$ or $q$ themselves. In $${e}=0$, expand $${a === 1 ? "" : a}(x-p)(x-q)$ and compare its $x$ coefficient with the one in the equation.`,
-        explanation: [vieta, `So $p+q=${tex(q(-b, a))}$.`],
+        hint: `${collectHint}You do not need $p$ or $q$ themselves. In $${eq0}$, expand $${a === 1 ? "" : a}(x-p)(x-q)$ and compare its $x$ coefficient with the one in the equation.`,
+        explanation: [
+          ...(sides ? [collect.trim()] : []),
+          vieta,
+          `So $p+q=${tex(q(-b, a))}$.`,
+        ],
         data: { a, b, c, ask: "sum" },
       };
     if (variant === 1)
@@ -328,8 +441,12 @@ function rootRelations(r: R): Case {
         variant: "product",
         prompt: `${common} What is the value of $pq$?`,
         answer: q(c, a),
-        hint: `In $${e}=0$, expand $${a === 1 ? "" : a}(x-p)(x-q)$. Its constant term is $${a === 1 ? "" : a}pq$; compare it with the constant term of the equation.`,
-        explanation: [vieta, `So $pq=${tex(q(c, a))}$.`],
+        hint: `${collectHint}In $${eq0}$, expand $${a === 1 ? "" : a}(x-p)(x-q)$. Its constant term is $${a === 1 ? "" : a}pq$; compare it with the constant term of the equation.`,
+        explanation: [
+          ...(sides ? [collect.trim()] : []),
+          vieta,
+          `So $pq=${tex(q(c, a))}$.`,
+        ],
         data: { a, b, c, ask: "product" },
       };
     if (variant === 2)
@@ -337,8 +454,9 @@ function rootRelations(r: R): Case {
         variant: "reciprocal-sum",
         prompt: `${common} What is the value of $\\frac{1}{p}+\\frac{1}{q}$?`,
         answer: q(-b, c),
-        hint: `Combine $\\frac{1}{p}+\\frac{1}{q}$ over a common denominator, then rewrite the numerator and denominator using the sum and product of the solutions of $${e}=0$.`,
+        hint: `${collectHint}Combine $\\frac{1}{p}+\\frac{1}{q}$ over a common denominator, then rewrite the numerator and denominator using the sum and product of the solutions of $${eq0}$.`,
         explanation: [
+          ...(sides ? [collect.trim()] : []),
           vieta,
           `$\\frac{1}{p}+\\frac{1}{q}=\\frac{p+q}{pq}=\\frac{${tex(q(-b, a))}}{${tex(q(c, a))}}=${tex(q(-b, c))}$.`,
         ],
@@ -349,8 +467,9 @@ function rootRelations(r: R): Case {
       variant: "sum-of-squares",
       prompt: `${common} What is the value of $p^2+q^2$?`,
       answer,
-      hint: `Write $p^2+q^2=(p+q)^2-2pq$, then find $p+q$ and $pq$ from the coefficients of $${e}=0$.`,
+      hint: `${collectHint}Write $p^2+q^2=(p+q)^2-2pq$, then find $p+q$ and $pq$ from the coefficients of $${eq0}$.`,
       explanation: [
+        ...(sides ? [collect.trim()] : []),
         vieta,
         `$p^2+q^2=(p+q)^2-2pq=\\left(${tex(q(-b, a))}\\right)^2-2\\left(${tex(q(c, a))}\\right)=${tex(answer)}$.`,
       ],
@@ -478,7 +597,19 @@ function absoluteEquation(r: R): Case {
       [-t, ""],
     ])}|$ has exactly one solution. What is it?`,
     answer,
-    hint: `Equal absolute values mean $${lin([[1, "x"], [-h, ""]])}=${lin([[1, "x"], [-t, ""]])}$ or $${lin([[1, "x"], [-h, ""]])}=-(${lin([[1, "x"], [-t, ""]])})$. One of those equations has no solution; solve the other.`,
+    hint: `Equal absolute values mean $${lin([
+      [1, "x"],
+      [-h, ""],
+    ])}=${lin([
+      [1, "x"],
+      [-t, ""],
+    ])}$ or $${lin([
+      [1, "x"],
+      [-h, ""],
+    ])}=-(${lin([
+      [1, "x"],
+      [-t, ""],
+    ])})$. One of those equations has no solution; solve the other.`,
     explanation: [
       `Equal expressions: $${lin([
         [1, "x"],
@@ -1013,7 +1144,10 @@ function inequalityInteger(r: R): Case {
         [b, ""],
       ])}< ${c}$?`,
       answer: q(bound - 1),
-      hint: `Solve $${lin([[a, "x"], [b, ""]])}< ${c}$ for $x$ first. The inequality is strict, so check whether the boundary value itself is allowed.`,
+      hint: `Solve $${lin([
+        [a, "x"],
+        [b, ""],
+      ])}< ${c}$ for $x$ first. The inequality is strict, so check whether the boundary value itself is allowed.`,
       explanation: [
         `Subtract ${b}: $${a}x< ${c - b}$. Divide by ${a}: $x< ${bound}$.`,
         `The boundary ${bound} is not allowed because the inequality is strict, so the greatest integer is ${bound - 1}.`,
@@ -1055,7 +1189,10 @@ function inequalityInteger(r: R): Case {
       [b, ""],
     ])}\\le ${c}$?`,
     answer: q(count),
-    hint: `Solve $${lin([[a, "x"], [b, ""]])}\\le ${c}$ for $x$ first, then list the positive integers up to the boundary. If the boundary is below 1, there are none.`,
+    hint: `Solve $${lin([
+      [a, "x"],
+      [b, ""],
+    ])}\\le ${c}$ for $x$ first, then list the positive integers up to the boundary. If the boundary is below 1, there are none.`,
     explanation: [
       `Subtract ${b}: $${a}x\\le ${c - b}$. Divide by ${a}: $x\\le ${tex(bound)}$.`,
       count === 0
@@ -1203,17 +1340,43 @@ export function satNumericEntryCase(id: string, seed: string) {
   const def = defs.find((d) => d.template.id === id);
   if (!def) throw new Error(`Unknown SAT numeric-entry template ${id}`);
   const r = random(id, seed);
-  const made = def.make(r);
-  const problem: GeneratedProblem = assemble(def.template, seed, r, {
-    prompt: made.prompt,
-    answer: qs(made.answer),
-    fraction: true,
-    hint: made.hint,
-    explanation: made.explanation,
+  let axes: SolutionAxes & { "equation-form"?: string } = {};
+  const build = () => {
+    const made =
+      id === "sat-entry-quadratic-solution"
+        ? quadraticSolution(r, axes)
+        : id === "sat-entry-root-relations"
+          ? rootRelations(r, axes)
+          : def.make(r);
+    const problem: GeneratedProblem = assemble(def.template, seed, r, {
+      prompt: made.prompt,
+      answer: qs(made.answer),
+      fraction: true,
+      hint: made.hint,
+      explanation: made.explanation,
+    });
+    // Grading metadata only: the public problem and its id are unchanged.
+    problem.entryPolicy = "sat-spr";
+    return { made, problem };
+  };
+  const familyAxes =
+    id === "sat-entry-quadratic-solution"
+      ? quadraticSolutionAxes
+      : id === "sat-entry-root-relations"
+        ? rootRelationsAxes
+        : undefined;
+  if (!familyAxes) {
+    const { made, problem } = build();
+    return { ...made, problem };
+  }
+  let made: Case | undefined;
+  const problem = generateWithAxes(id, seed, familyAxes, (values) => {
+    axes = values;
+    const built = build();
+    made = built.made;
+    return built.problem;
   });
-  // Grading metadata only: the public problem and its id are unchanged.
-  problem.entryPolicy = "sat-spr";
-  return { ...made, problem };
+  return { ...made!, problem };
 }
 
 export function generateSatNumericEntryProblem(

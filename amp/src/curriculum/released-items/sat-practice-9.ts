@@ -296,10 +296,10 @@ export const satPractice9 = defineLedger(
       archetypeIds: ["nonlinear.quadratic"],
       demand:
         "Expand a squared binomial set equal to a linear expression, solve the quadratic and enter the smaller solution",
-      status: "partial",
+      status: "covered",
       templateIds: ["sat-entry-quadratic-solution"],
       limitations:
-        "sat-entry-quadratic-solution solves standard-form quadratics and enters the greater, positive or only solution; the item needs expansion and rearrangement first and asks for the smaller (negative) solution.",
+        "The ask axis makes the smaller solution the target, and the layout axis (square-form) writes a squared binomial equal to a linear expression that is expanded and collected before factoring; the entry is numeric.",
     },
     {
       section: "Math module 1",

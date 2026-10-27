@@ -1,5 +1,17 @@
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { defineAxis, type AxisValues } from "./variation/axes";
+import { generateWithAxes } from "./variation/legacy";
+
+/** Sums and differences can be written with whole or tenth-valued
+ * coefficients; the integer model, options and distractors are the same. */
+export const polynomialAxes = {
+  coefficients: defineAxis("coefficients", ["integers", "tenths"]),
+};
+const surfaceAxes: Record<string, typeof polynomialAxes> = {
+  "polynomial-addition": polynomialAxes,
+  "polynomial-subtraction": polynomialAxes,
+};
 
 export const polynomialTemplates: readonly TemplateMetadata[] = [
   {
@@ -31,14 +43,26 @@ type Polynomial = number[];
 const power = (degree: number) => ["", "x", "x²", "x³"][degree]!;
 /** The power named in prose, typeset as math. */
 const powerMath = (degree: number) => `$${["", "x", "x^2", "x^3"][degree]!}$`;
-const signed = (value: number) =>
-  value < 0 ? `(${String(value).replace("-", "−")})` : String(value);
-function format(p: Polynomial): string {
+/** A coefficient in tenths (3 means 0.3), without trailing zeros. */
+const tenth = (c: number) =>
+  Math.abs(c) % 10 === 0
+    ? String(Math.abs(c) / 10)
+    : (Math.abs(c) / 10).toFixed(1);
+const shown = (c: number, tenths: boolean) =>
+  tenths ? tenth(c) : String(Math.abs(c));
+const signed = (value: number, tenths = false) =>
+  value < 0
+    ? `(${tenths ? "−" + tenth(value) : String(value).replace("-", "−")})`
+    : tenths
+      ? tenth(value)
+      : String(value);
+function format(p: Polynomial, tenths = false): string {
   const terms: string[] = [];
   for (let k = p.length - 1; k >= 0; k--) {
     const c = p[k]!;
     if (!c) continue;
-    const magnitude = `${Math.abs(c) === 1 && k ? "" : Math.abs(c)}${power(k)}`;
+    const unit = tenths ? 10 : 1;
+    const magnitude = `${Math.abs(c) === unit && k ? "" : shown(c, tenths)}${power(k)}`;
     terms.push(
       `${terms.length ? (c < 0 ? " − " : " + ") : c < 0 ? "−" : ""}${magnitude}`,
     );
@@ -64,6 +88,7 @@ function combineSteps(
   a: Polynomial,
   b: Polynomial,
   source = "polynomial",
+  tenths = false,
 ): string[] {
   const steps: string[] = [];
   for (let k = Math.max(a.length, b.length) - 1; k >= 0; k--) {
@@ -74,12 +99,12 @@ function combineSteps(
       const term = Array<number>(k + 1).fill(0);
       term[k] = c + d;
       steps.push(
-        `Keep ${format(term)}; the other ${source} has no ${k ? `${powerMath(k)} term` : "constant term"}.`,
+        `Keep ${format(term, tenths)}; the other ${source} has no ${k ? `${powerMath(k)} term` : "constant term"}.`,
       );
       continue;
     }
     steps.push(
-      `${k ? `Coefficient of ${powerMath(k)}` : "Constant term"}: ${signed(c)} + ${signed(d)} = ${String(c + d).replace("-", "−")}.${c + d === 0 ? " These terms cancel." : ""}`,
+      `${k ? `Coefficient of ${powerMath(k)}` : "Constant term"}: ${signed(c, tenths)} + ${signed(d, tenths)} = ${(c + d < 0 ? "−" : "") + shown(c + d, tenths)}.${c + d === 0 ? " These terms cancel." : ""}`,
     );
   }
   return steps;
@@ -215,6 +240,22 @@ export function generatePolynomialProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  const axes = surfaceAxes[templateId];
+  return axes
+    ? generateWithAxes(
+        templateId,
+        seed,
+        axes,
+        (values: AxisValues<typeof polynomialAxes>) =>
+          polynomialProblem(templateId, seed, values.coefficients === "tenths"),
+      )
+    : polynomialProblem(templateId, seed, false);
+}
+function polynomialProblem(
+  templateId: string,
+  seed: string,
+  tenths: boolean,
+): GeneratedProblem {
   const meta = polynomialTemplates.find((t) => t.id === templateId);
   if (!meta) throw new Error(`Unknown polynomial template: ${templateId}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
@@ -227,7 +268,7 @@ export function generatePolynomialProblem(
   const { left: a, right: b, result: correct } = selected;
   const multiply = templateId === "polynomial-multiplication";
   const subtract = templateId === "polynomial-subtraction";
-  const label = format(correct);
+  const label = format(correct, tenths);
   let prompt: string, hint: string, explanation: string[];
   if (multiply) {
     prompt = `Expand and simplify (${format(a)})(${format(b)}).`;
@@ -285,21 +326,22 @@ export function generatePolynomialProblem(
       );
     }
   } else {
-    prompt = `Simplify (${format(a)}) ${subtract ? "−" : "+"} (${format(b)}).`;
+    const t = tenths;
+    prompt = `Simplify (${format(a, t)}) ${subtract ? "−" : "+"} (${format(b, t)}).`;
     hint = subtract
-      ? `Subtracting (${format(b)}) means adding its opposite: change the sign of every one of its terms. Then combine terms with the same power of $x$.`
-      : `Match the terms of ${format(a)} and ${format(b)} by their power of $x$ and add the coefficients; a missing power has coefficient 0.`;
+      ? `Subtracting (${format(b, t)}) means adding its opposite: change the sign of every one of its terms. Then combine terms with the same power of $x$.`
+      : `Match the terms of ${format(a, t)} and ${format(b, t)} by their power of $x$ and add the coefficients; a missing power has coefficient 0.`;
     const signedB = b.map((c) => (subtract ? -c : c));
     explanation = [
       subtract
-        ? `Distribute −1 to every term of the second polynomial: −(${format(b)}) = ${format(signedB)}.`
+        ? `Distribute −1 to every term of the second polynomial: −(${format(b, t)}) = ${format(signedB, t)}.`
         : "Group like terms: terms with the same power of $x$. Add their coefficients without changing the power.",
     ];
     if (subtract)
       explanation.push(
-        `Rewrite the difference as a sum: (${format(a)}) + (${format(signedB)}).`,
+        `Rewrite the difference as a sum: (${format(a, t)}) + (${format(signedB, t)}).`,
       );
-    explanation.push(...combineSteps(a, signedB));
+    explanation.push(...combineSteps(a, signedB, "polynomial", t));
   }
   explanation.push(
     `${label === "0" ? "All terms cancel, so the" : "The"} ${multiply ? "product" : subtract ? "difference" : "sum"} is ${label}.`,
@@ -329,13 +371,13 @@ export function generatePolynomialProblem(
             );
           } else {
             feedback.push(
-              `For ${target}, calculate ${signed(a[k] ?? 0)} ${subtract ? "−" : "+"} ${signed(b[k] ?? 0)}.`,
+              `For ${target}, calculate ${signed(a[k] ?? 0, tenths)} ${subtract ? "−" : "+"} ${signed(b[k] ?? 0, tenths)}.`,
             );
           }
         }
         choiceFeedback[id] = feedback.join(" ");
       }
-      return { id, label: format(item.result) };
+      return { id, label: format(item.result, tenths) };
     }),
   };
   return {

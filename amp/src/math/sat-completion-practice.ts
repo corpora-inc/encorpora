@@ -7,6 +7,39 @@ import {
 } from "./distribution-practice";
 import { scene, table, graph, f } from "./scene/author";
 import { dataGraph } from "./algebra-statistics-scenes";
+import { defineAxis, type AxisValues } from "./variation/axes";
+import { generateWithAxes } from "./variation/legacy";
+
+/** Surface axes of the SAT-completion families that share one model across
+ * several ways of giving or asking it. The first value of each axis is the
+ * surface these families showed before the axis existed. */
+export const satCompletionAxes = {
+  "similar-solid-volume": {
+    "scale-given": defineAxis("scale-given", [
+      "lengths-volumes",
+      "surface-areas",
+    ]),
+  },
+  "symbolic-rational-exponent": {
+    direction: defineAxis("direction", [
+      "radical-to-power",
+      "power-to-radical",
+    ]),
+  },
+  "quadratic-parameter-root": {
+    "leading-sign": defineAxis("leading-sign", ["positive", "negative"]),
+  },
+  "exponential-time-scale": {
+    "number-domain": defineAxis("number-domain", [
+      "whole-periods",
+      "decimal-periods",
+    ]),
+  },
+} as const;
+type SatAxes = Record<string, string>;
+const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+/** A decimal rounded to four places, written without exponent notation. */
+const fourPlaces = (x: number) => x.toFixed(4);
 
 // Each row closes a distinct SAT demand inside an existing exposure objective.
 const definitions = [
@@ -151,7 +184,11 @@ const piMultiple = (numerator: number, denominator: number) => {
   const [n, d] = q.split("/");
   return d ? `\\frac{${n}\\pi}{${d}}` : `${n}\\pi`;
 };
-function draft(id: string, r: ReturnType<typeof random>): Draft {
+function draft(
+  id: string,
+  r: ReturnType<typeof random>,
+  axes: SatAxes = {},
+): Draft {
   if (id === "sample-mean-estimate") {
     const mean = r(12, 50),
       n = 10 * r(4, 10),
@@ -399,8 +436,39 @@ function draft(id: string, r: ReturnType<typeof random>): Draft {
   if (id === "similar-solid-volume") {
     const k = r(2, 5),
       length = r(2, 7),
-      volume = r(10, 80),
+      drawnVolume = r(10, 80),
       reverse = r(0, 1) === 1;
+    let volume = drawnVolume;
+    if (axes["scale-given"] === "surface-areas") {
+      // Same similarity model, given by surface areas: area scales by k², volume by k³.
+      const area = r(6, 40),
+        large = area * k ** 2;
+      // The answer must not equal a number the problem states (the units differ,
+      // so a learner could otherwise copy a given): step the volume until it does not.
+      const clash = (v: number) =>
+        reverse
+          ? [area, v, v * k ** 3].includes(large)
+          : [area, v, large].includes(v * k ** 3);
+      while (clash(volume)) volume++;
+      return {
+        prompt: reverse
+          ? `Two solids are similar. The smaller solid has surface area ${area} square centimeters and volume ${volume} cubic centimeters. The larger solid has volume ${volume * k ** 3} cubic centimeters. What is the larger solid's surface area, in square centimeters?`
+          : `Two solids are similar. The smaller solid has surface area ${area} square centimeters and volume ${volume} cubic centimeters. The larger solid has surface area ${large} square centimeters. What is the larger solid's volume, in cubic centimeters?`,
+        answer: String(reverse ? large : volume * k ** 3),
+        hint: reverse
+          ? `Compare the volumes ${volume} and ${volume * k ** 3} cubic centimeters. Volume scales with the cube of the length scale factor and surface area with its square: find the length scale factor first.`
+          : `Compare the surface areas ${area} and ${large} square centimeters. Surface area scales with the square of the length scale factor and volume with its cube: find the length scale factor first.`,
+        explanation: reverse
+          ? [
+              `The volume ratio is ${volume * k ** 3}/${volume} = ${k ** 3}, so the length scale factor is its cube root, ${k}.`,
+              `Surface area scales by ${k}² = ${k ** 2}, so the larger surface area is ${area} × ${k ** 2} = ${large} square centimeters.`,
+            ]
+          : [
+              `The surface-area ratio is ${large}/${area} = ${k ** 2}, so the length scale factor is its square root, ${k}.`,
+              `Volume scales by ${k}³ = ${k ** 3}, so the larger volume is ${volume} × ${k ** 3} = ${volume * k ** 3} cubic centimeters.`,
+            ],
+      };
+    }
     return {
       prompt: reverse
         ? `Two solids are similar. The smaller has volume ${volume} cubic centimeters and a corresponding edge of ${length} cm. The larger has volume ${volume * k ** 3} cubic centimeters. How long is the corresponding edge of the larger solid, in centimeters?`
@@ -562,7 +630,42 @@ function draft(id: string, r: ReturnType<typeof random>): Draft {
       factor = r(0, 1) ? 2 : r(2, 5),
       decay = r(0, 1) === 1;
     const f = decay ? `1/${factor}` : String(factor);
-    if (r(0, 1) === 1)
+    const form = r(0, 1);
+    if (axes["number-domain"] === "decimal-periods") {
+      // The period is a decimal number of years, so the yearly factor is a
+      // decimal found with a calculator and rounded to four places.
+      const value = decay ? 1 / factor : factor;
+      const periods = [1.5, 2.5, 3.2, 4.5, 5.7, 8.1, 12.4];
+      const h = periods[r(0, periods.length - 1)]!;
+      const yearly = value ** (1 / h);
+      const labels = [
+        yearly,
+        1 / yearly,
+        value / h,
+        value ** (1 / Math.round(h)),
+      ].map(fourPlaces);
+      if (
+        new Set(labels).size !== labels.length ||
+        labels.some((l, i) => i && Math.abs(Number(l) - yearly) < 5e-4) ||
+        Math.abs(yearly * 1e4 - Math.round(yearly * 1e4)) > 0.45
+      )
+        throw new Error("Need three distinct decimal factors");
+      return {
+        prompt: `A population is modeled by $P(t)=${a}(${f})^{t/${h}}$, where $t$ is in years. Which expression is an equivalent model with one factor per year? Each choice rounds the yearly factor to four decimal places.`,
+        answer: "",
+        hint: `Write the exponent $t/${h}$ as $\\frac{1}{${h}}\\,t$, so the yearly factor is ${f} raised to the power $1/${h}$. Evaluate that power on a calculator.`,
+        choices: choices(
+          labels.map((l) => math(`P(t)=${a}\\left(${l}\\right)^t`)),
+          "The yearly factor is the base raised to $1/h$ with $h$ as given, not rounded: it is not the reciprocal, the base divided by $h$, or the base to a rounded root.",
+        ),
+        explanation: [
+          `For a positive base, $b^{t/${h}}=\\left(b^{1/${h}}\\right)^t$.`,
+          `The yearly factor is $${decay ? `\\left(\\frac{1}{${factor}}\\right)` : factor}^{1/${h}}\\approx ${labels[0]}$.`,
+          `So $P(t)\\approx ${a}\\left(${labels[0]}\\right)^t$; the initial value stays ${a}.`,
+        ],
+      };
+    }
+    if (form === 1)
       return {
         prompt: `A population is modeled by $P(t)=${a}(${f})^{t/${period}}$, where $t$ is in years. Which expression is an equivalent model?`,
         answer: "",
@@ -609,6 +712,34 @@ function draft(id: string, r: ReturnType<typeof random>): Draft {
       expression =
         mode === 0 ? `\\sqrt[${n}]{x^{${m}}}` : `1/\\sqrt[${n}]{x^{${m}}}`,
       exponent = rational(mode === 0 ? m : -m, n);
+    if (axes.direction === "power-to-radical") {
+      // The exponent is given; the equivalent radical may use a scaled index and power.
+      const g = gcd(m, n),
+        lo = m / g,
+        hi = n / g,
+        s = 2 + (r(0, 1) as number);
+      const radical = (index: number, power: number) =>
+        `\\sqrt${index === 2 ? "" : `[${index}]`}{${power === 1 ? "x" : `x^{${power}}`}}`;
+      return {
+        prompt: `For $x>0$, which expression is equivalent to $x^{${rational(lo, hi)}}$?`,
+        answer: "",
+        hint: `In $x^{${rational(lo, hi)}}$ the denominator ${hi} is the root index and the numerator ${lo} is the power. Write it as a radical first, then look for a choice that multiplies the index and the power by the same number.`,
+        choices: choices(
+          [
+            radical(hi * s, lo * s),
+            radical(lo * s, hi * s),
+            radical(hi * s, lo),
+            radical(hi, lo * s),
+          ].map(math),
+          "A radical $\\sqrt[b]{x^{a}}$ equals $x^{a/b}$: the index is the denominator and the power is the numerator.",
+        ),
+        explanation: [
+          `The exponent ${lo}/${hi} puts ${lo} on top and ${hi} below, so $x^{${rational(lo, hi)}}=${radical(hi, lo)}$.`,
+          `Multiplying the index and the power by ${s} keeps the exponent ${lo * s}/${hi * s} = ${lo}/${hi}.`,
+          `So $x^{${rational(lo, hi)}}=${radical(hi * s, lo * s)}$.`,
+        ],
+      };
+    }
     return {
       prompt: `For $x>0$, which expression is equivalent to $${expression}$?`,
       answer: "",
@@ -748,18 +879,23 @@ function draft(id: string, r: ReturnType<typeof random>): Draft {
     };
   }
   if (id === "quadratic-parameter-root") {
-    const a = r(1, 5),
+    const magnitude = r(1, 5),
       root = r(1, 9) * (r(0, 1) ? 1 : -1),
+      negative = axes["leading-sign"] === "negative",
+      a = negative ? -magnitude : magnitude,
       b = -2 * a * root,
       c = a * root * root;
+    const lead = negative ? `-${magnitude === 1 ? "" : magnitude}` : `${a}`;
     return {
-      prompt: `For which value of $c$ does $${a}x^2${b < 0 ? "-" : "+"}${Math.abs(b)}x+c=0$ have exactly one distinct real solution?`,
+      prompt: `For which value of $c$ does $${lead}x^2${b < 0 ? "-" : "+"}${Math.abs(b)}x+c=0$ have exactly one distinct real solution?`,
       answer: String(c),
-      hint: `The leading coefficient is ${a} and the linear coefficient is ${b}. Exactly one distinct real root requires the discriminant $b^2-4ac$ to be zero.`,
+      hint: negative
+        ? `The leading coefficient $a$ is negative, with $|a|=${magnitude}$, and the linear coefficient has $|b|=${Math.abs(b)}$. Exactly one distinct real root requires the discriminant $b^2-4ac$ to be zero.`
+        : `The leading coefficient is ${a} and the linear coefficient is ${b}. Exactly one distinct real root requires the discriminant $b^2-4ac$ to be zero.`,
       explanation: [
-        `Set the discriminant equal to zero: $${b < 0 ? `(${b})` : b}^2-${4 * a}c=0$.`,
-        `Thus $c=\\frac{${b * b}}{${4 * a}}=${c}$.`,
-        `Check: the equation becomes $${a}(x${root < 0 ? "+" : "-"}${Math.abs(root)})^2=0$, with the single distinct real root $x=${root}$.`,
+        `Set the discriminant equal to zero: $${b < 0 ? `(${b})` : b}^2-${negative ? `(${4 * a})` : 4 * a}c=0$.`,
+        `Thus $c=\\frac{${b * b}}{${negative ? `(${4 * a})` : 4 * a}}=${c}$.`,
+        `Check: the equation becomes $${negative ? (magnitude === 1 ? "-" : `-${magnitude}`) : a}(x${root < 0 ? "+" : "-"}${Math.abs(root)})^2=0$, with the single distinct real root $x=${root}$.`,
       ],
     };
   }
@@ -857,6 +993,27 @@ export function generateSatCompletionProblem(
   if (!meta) throw new Error("Unknown SAT completion family");
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
-  const r = random(id, seed);
-  return assemble(meta, seed, r, draft(id, r));
+  const build = (axes: SatAxes) => {
+    const r = random(id, seed);
+    for (let attempt = 0; attempt < 80; attempt++) {
+      try {
+        return assemble(meta, seed, r, draft(id, r, axes));
+      } catch (error) {
+        if (!(error instanceof Error && error.message.startsWith("Need three")))
+          throw error;
+      }
+    }
+    throw new Error("Could not generate a valid problem");
+  };
+  const axes = (
+    satCompletionAxes as Record<
+      string,
+      Record<string, ReturnType<typeof defineAxis>>
+    >
+  )[id];
+  return axes
+    ? generateWithAxes(id, seed, axes, (values: AxisValues<typeof axes>) =>
+        build(values),
+      )
+    : build({});
 }

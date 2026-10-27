@@ -1,6 +1,7 @@
 """Independent polynomial arithmetic from public prompts and choice labels."""
 import copy
 import re
+from fractions import Fraction
 from itertools import zip_longest
 
 
@@ -24,19 +25,20 @@ def normalized(coefficients):
 def polynomial(expression):
     """Read integer terms in descending degree; return constant-first coefficients."""
     source = expression.replace('−', '-')
-    term = r'(?:[0-9]*x[²³]?|[0-9]+)'
+    number = r'[0-9]+(?:\.[0-9]+)?'
+    term = rf'(?:(?:{number})?x[²³]?|{number})'
     require(re.fullmatch(rf'[+-]?{term}(?:\s*[+-]\s*{term})*', source) is not None,
             f'Unsupported polynomial: {expression}')
     coefficients = [0, 0, 0, 0]
     previous_degree = 4
     for found in re.finditer(rf'([+-]?)\s*({term})', source):
         sign, body = found.groups()
-        variable = re.fullmatch(r'([0-9]*)x([²³]?)', body)
+        variable = re.fullmatch(r'([0-9.]*)x([²³]?)', body)
         if variable:
-            coefficient = int(variable[1]) if variable[1] else 1
+            coefficient = Fraction(variable[1]) if variable[1] else Fraction(1)
             degree = {'': 1, '²': 2, '³': 3}[variable[2]]
         else:
-            coefficient, degree = int(body), 0
+            coefficient, degree = Fraction(body), 0
         require(degree < previous_degree, 'Polynomial must have distinct descending powers')
         coefficients[degree] = -coefficient if sign == '-' else coefficient
         previous_degree = degree
@@ -329,6 +331,8 @@ def review_polynomial_fixtures():
         (public('multiplication', 'x² + x + 1', 'x − 1', ['x³ − 1', 'x³ + 1', 'x³ + x² + x − 1']), '0'),
         (public('multiplication', '−2x', '−x²', ['−2x³', '2x³', '2x²']), '1'),
         (public('multiplication', 'x', '−x', ['0', '−x²', 'x²']), '1'),
+        (public('addition', '0.3x² − 0.5x + 0.8', '−0.1x² + 1.2x − 0.8', ['0.2x² + 0.7x', '0.4x² + 0.7x', '0.2x² − 1.7x']), '0'),
+        (public('subtraction', '0.1x − 0.8', '0.6x − 0.7', ['−0.5x − 0.3', '−0.5x − 0.1', '0.7x − 1.5']), '1'),
     ]
     for given, expected in cases:
         require(solve_polynomial(given) == expected, f'Handwritten polynomial fixture failed: {given}')

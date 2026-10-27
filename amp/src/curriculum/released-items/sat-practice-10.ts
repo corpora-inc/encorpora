@@ -393,7 +393,7 @@ export const satPractice10 = defineLedger(
       status: "partial",
       templateIds: ["sat-entry-root-relations"],
       limitations:
-        "Quadratics are given in standard form; the item first expands and collects both sides before using the coefficients.",
+        "The equation-form axis (both-sides) collects terms from both sides before the coefficients give the sum of the solutions; products that must first be expanded on each side are not yet written.",
     },
     {
       section: "Math module 2",
@@ -662,10 +662,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["line.parallel-perpendicular"],
       demand:
         "Find the slope of a line perpendicular to a line given in standard form",
-      status: "partial",
+      status: "covered",
       templateIds: ["perpendicular-slopes"],
       limitations:
-        "Lines are always given by two points; the item's line is in standard form with a fractional answer.",
+        "The line-given axis (standard-form) states the reference line as ax + by = c, so the slope -a/b is read from the equation and the perpendicular slope is entered, often as a fraction.",
     },
     {
       section: "Math module 2",
@@ -701,10 +701,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["nonlinear.root-count"],
       demand:
         "Find the constant term that gives a quadratic with a negative leading coefficient exactly one solution",
-      status: "partial",
+      status: "covered",
       templateIds: ["quadratic-parameter-root"],
       limitations:
-        "Leading coefficients are always positive; the item has a negative leading coefficient and a negative answer.",
+        "The leading-sign axis (negative) gives a negative leading coefficient and a negative constant term; the choices are plain numbers.",
     },
     {
       section: "Math module 2",
