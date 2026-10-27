@@ -163,10 +163,10 @@ export const mcasGrade8 = defineLedger(
       archetypeIds: ["pattern.graph-relationship", "function.graph-context"],
       demand:
         "Choose the graph of a constant typing rate of forty words per minute",
-      status: "partial",
+      status: "covered",
       templateIds: ["graph-of-proportional-rate", "proportional-graph"],
       limitations:
-        "graph-of-proportional-rate chooses among four drawn graphs for a stated unit rate from 2 to 4 on unit-scaled axes; a rate of 40 read on a y-axis scaled by forties is not practiced.",
+        "graph-of-proportional-rate with the scaled-axis value: a constant rate such as 40 words per minute read on a vertical axis whose labels count by 40 (gridlines of 20), among lines that ignore the scale, add the rate once or start above zero.",
     },
     {
       section: "Session 2",

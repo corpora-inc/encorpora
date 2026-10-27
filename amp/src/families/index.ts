@@ -6,6 +6,8 @@ export { family as conversionChain } from "./conversion-chain";
 export { family as countRelationChain } from "./count-relation-chain";
 export { family as feeChain } from "./fee-chain";
 export { family as figureChoice } from "./figure-choice";
+export { family as figureChoiceFormats } from "./figure-choice-formats";
+export { family as multiPartFormats } from "./multi-part-formats";
 export { family as linkedEquations } from "./linked-equations";
 export { family as percentChain } from "./percent-chain";
 export { family as perimeterAreaChain } from "./perimeter-area-chain";

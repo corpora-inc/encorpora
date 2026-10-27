@@ -244,10 +244,14 @@ export const staarGrade4 = defineLedger(
       archetypeIds: ["pattern.paired"],
       demand:
         "Complete a sentence naming the operation and number of an input-output table rule",
-      status: "partial",
-      templateIds: ["rule-pattern-term", "pattern-pair-relationship"],
+      status: "covered",
+      templateIds: [
+        "rule-pattern-term",
+        "pattern-pair-relationship",
+        "table-rule-sentence",
+      ],
       limitations:
-        "STAAR interaction: inline choice, 2 points. Related families generate terms from a rule or relate two patterns; finding a rule from a table and dropdown blanks are not practiced.",
+        "table-rule-sentence (multi-part-choice-v1, inline layout): complete a sentence naming the operation and the number of the rule of an input-output table.",
     },
     {
       item: {

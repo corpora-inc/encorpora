@@ -15,7 +15,7 @@ export const figureChoiceFacetMappings: readonly FacetMapping[] = [
     facetId: "proportional-relationships.core",
     extent: "partial",
     rationale:
-      "Choose the first-quadrant graph of a constant rate given as a total over two to four units or as a unit rate from 2 to 4, among lines that start above the origin, use the total as the rate, invert the rate or add the rate once. Does not assess reading the constant from a graph, tables, or rates with fractions.",
+      "Choose the first-quadrant graph of a constant rate given as a total over whole, half or decimal time, as a whole or decimal unit rate, on a vertical axis whose gridlines count by 1, 5, 10 or 20, among lines that start above the origin, use the total as the rate, invert the rate, add the rate once, ignore the axis scale, drop the decimal part, multiply by the time, or are horizontal or vertical. Does not assess reading the constant from a graph, tables, graphs drawn as separate points, or a horizontal axis that is scaled.",
   },
   {
     templateId: "graph-of-inequality-number-line",

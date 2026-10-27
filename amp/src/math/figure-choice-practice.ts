@@ -13,6 +13,7 @@ import {
   scene as sceneOf,
 } from "./scene/author";
 import type { Scene } from "./scene/spec";
+import { axisRecord, chooseAxes, defineAxis, isLegacy } from "./variation/axes";
 import {
   figureOptionIds,
   figureOptionLetters,
@@ -111,14 +112,14 @@ const nonzero = (r: Random, lo: number, hi: number) =>
   (r(0, 1) ? 1 : -1) * r(lo, hi);
 
 /* ---------- assembling a problem ---------- */
-type Candidate = {
+export type Candidate = {
   /** Plain-text description of the figure, from the same model. */
   description: string;
   scene: Scene;
   /** Absent on the correct option; names the misconception otherwise. */
   feedback?: (name: string) => string;
 };
-type Parts = {
+export type Parts = {
   prompt: string;
   label: string;
   noun: FigureChoiceNoun;
@@ -135,7 +136,7 @@ type Parts = {
 const distinct = (all: readonly Candidate[]) =>
   new Set(all.map((c) => JSON.stringify(c.scene.elements))).size ===
     all.length && new Set(all.map((c) => c.description)).size === all.length;
-function problemOf(
+export function problemOf(
   meta: TemplateMetadata,
   seed: string,
   r: Random,
@@ -183,7 +184,7 @@ function problemOf(
 }
 /** Card size: the figure is drawn at this width, so its labels keep their
  * typeset 15 px wherever a card is at least 80% as wide. */
-const CARD = { width: 264, maxHeight: 280 } as const;
+export const CARD = { width: 264, maxHeight: 280 } as const;
 const STRIP = { width: 260, maxHeight: 110 } as const;
 
 /* ---------- lines on a four-quadrant grid ---------- */
@@ -611,6 +612,331 @@ function proportionalRate(seed: string): GeneratedProblem {
     walkthrough: rateWalkthrough([2, 2 * k], axes),
   });
 }
+/* ---------- rates with decimals and scaled vertical axes ---------- */
+/** Surface axes of the rate graph. `whole-or-fraction` with `unit` is the
+ * family as it was before axes: every other pair re-expresses the same
+ * proportional model with a decimal rate, a decimal time or a vertical axis
+ * that counts in fives, tens or twenties. */
+export const rateAxes = {
+  "rate-form": defineAxis(
+    "rate-form",
+    ["whole-or-fraction", "decimal-rate", "decimal-time"],
+    { weights: [2, 1, 1] },
+  ),
+  "y-scale": defineAxis("y-scale", ["unit", "scaled"], { weights: [2, 1] }),
+} as const;
+/** Decimal unit rates whose first lattice point (x, y) has x of 2 or 5. */
+const DECIMAL_RATES: readonly [number, number][] = [
+  [1, 2],
+  [3, 2],
+  [5, 2],
+  [7, 2],
+  [9, 2],
+  [6, 5],
+  [8, 5],
+  [9, 5],
+  [12, 5],
+];
+/** Totals over a decimal time: [rate, time, time words]. */
+const DECIMAL_TIMES: readonly [number, number][] = [
+  [4, 0.5],
+  [6, 0.5],
+  [2, 1.5],
+  [4, 1.5],
+  [6, 1.5],
+  [2, 2.5],
+  [4, 2.5],
+];
+const EXTRA_CONTEXTS = [
+  {
+    doer: "A typist",
+    verb: "types",
+    unit: "words",
+    one: "word",
+    per: "minute",
+    pers: "minutes",
+    x: "Minutes",
+    y: "Words",
+  },
+  {
+    doer: "A printer",
+    verb: "uses",
+    unit: "milliliters of ink",
+    one: "milliliter of ink",
+    per: "minute",
+    pers: "minutes",
+    x: "Minutes",
+    y: "Milliliters of ink",
+  },
+  {
+    doer: "A runner",
+    verb: "burns",
+    unit: "calories",
+    one: "calorie",
+    per: "hour",
+    pers: "hours",
+    x: "Hours",
+    y: "Calories",
+  },
+] as const;
+const decimalText = (n: number) => `${Number(n.toFixed(4))}`;
+/** A ray from `start` through `through`, to the edge of the 12 by 12S window. */
+function rayEndScaled(start: Pt, through: Pt, top: number): Pt {
+  const [dx, dy] = [through[0] - start[0], through[1] - start[1]];
+  const round = (v: number) => Math.round(v * 1e6) / 1e6;
+  if (dx === 0) return [start[0], top];
+  if (dy === 0) return [RATE_LIMIT, start[1]];
+  const t = Math.min((RATE_LIMIT - start[0]) / dx, (top - start[1]) / dy);
+  return [round(start[0] + t * dx), round(start[1] + t * dy)];
+}
+function scaledPlot(axes: readonly [string, string], scale: number) {
+  return graph({
+    x: [0, RATE_LIMIT],
+    y: [0, RATE_LIMIT * scale],
+    grid: [1, scale],
+    tick: [2, 2 * scale],
+    aspect: 1 / scale,
+    axisNames: [axes[0], axes[1]],
+  });
+}
+function scaledRateCandidate(
+  start: Pt,
+  through: Pt,
+  axes: readonly [string, string],
+  scale: number,
+  feedback?: (name: string) => string,
+): Candidate {
+  const plot = scaledPlot(axes, scale)
+    .segment(start, rayEndScaled(start, through, RATE_LIMIT * scale), {
+      arrow: true,
+      color: "accent",
+    })
+    .point(start[0], start[1], undefined, { color: "accent" })
+    .point(through[0], through[1], undefined, { color: "accent" });
+  return {
+    description: `A line starting at ${point(start)} and passing through ${point(through)}.`,
+    scene: sceneOf(plot).build(CARD),
+    ...(feedback ? { feedback } : {}),
+  };
+}
+function variedRate(
+  seed: string,
+  form: (typeof rateAxes)["rate-form"]["values"][number],
+  scaleAxis: (typeof rateAxes)["y-scale"]["values"][number],
+): GeneratedProblem {
+  const meta = figureChoiceTemplates[1]!;
+  const r = random(meta.id, seed);
+  const scaled = scaleAxis === "scaled";
+  // A scaled decimal rate (n/2 per gridline unit of 5) must still print a
+  // decimal, so it uses halves with a scale of 5.
+  const S =
+    scaled && form === "decimal-rate" ? 5 : scaled ? pick(r, [5, 10, 20]) : 1;
+  const c = pick(
+    r,
+    scaled ? [...EXTRA_CONTEXTS, ...CONTEXTS.slice(0, 4)] : CONTEXTS,
+  );
+  const axes = [c.x, c.y] as const;
+  const amt = (n: number) => `${decimalText(n)} ${n === 1 ? c.one : c.unit}`;
+  // The unit rate in graph units, a first lattice point and how it is told.
+  let rate: Q;
+  let x0: number;
+  let told: { prompt: string; hint: string; lead: string };
+  let totalForm = false;
+  let T = 0;
+  let timeNum = 1;
+  if (form === "decimal-rate") {
+    const [n, d] = pick(
+      r,
+      scaled ? DECIMAL_RATES.filter(([, den]) => den === 2) : DECIMAL_RATES,
+    );
+    rate = q(n, d);
+    x0 = d;
+    const shown = decimalText(value(rate) * S);
+    told = {
+      prompt: `${c.doer} ${c.verb} ${shown} ${c.unit} per ${c.per}.`,
+      hint: `In 0 ${c.pers}, how many ${c.unit}? Then every ${c.per} adds ${shown} more: find the graph that starts there and rises ${shown} for every 1 to the right.`,
+      lead: `${shown} ${c.unit} per ${c.per} gives $y = ${shown}x$`,
+    };
+  } else if (form === "decimal-time") {
+    const [k, t] = pick(r, DECIMAL_TIMES);
+    rate = q(k);
+    x0 = 2;
+    totalForm = true;
+    timeNum = t;
+    T = k * t * S;
+    const words = t === 0.5 ? `half ${c.per}` : `${decimalText(t)} ${c.pers}`;
+    told = {
+      prompt: `${c.doer} ${c.verb} ${amt(T)} every ${words} at a constant rate.`,
+      hint: `Divide to find ${c.unit} per ${c.per}: ${amt(T)} ÷ ${decimalText(t)} ${c.pers}. A proportional graph starts at (0, 0) and rises by that amount for each ${c.per}.`,
+      lead: `The unit rate is ${decimalText(T)} ÷ ${decimalText(t)} = ${decimalText(k * S)} ${c.unit} per ${c.per}`,
+    };
+  } else if (r(0, 1)) {
+    // A rate told as a total over whole units, as in the family before axes.
+    totalForm = true;
+    const t = r(2, 4);
+    const whole = scaled || r(0, 1) === 0;
+    const units = whole
+      ? r(2, Math.min(4, Math.floor(RATE_LIMIT / t))) * t
+      : pick(
+          r,
+          Array.from({ length: 12 - t }, (_, i) => t + 1 + i).filter(
+            (n) => n % t !== 0,
+          ),
+        );
+    rate = q(units, t);
+    x0 = t;
+    timeNum = t;
+    T = units * S;
+    told = {
+      prompt: `${c.doer} ${c.verb} ${amt(T)} every ${t} ${c.pers} at a constant rate.`,
+      hint: `Divide to find ${c.unit} per ${c.per}: ${amt(T)} ÷ ${t} ${c.pers}. A proportional graph starts at (0, 0) and rises by that amount for each ${c.per}.`,
+      lead: `The unit rate is ${T} ÷ ${t} = ${prose(mul(rate, q(S)))} ${c.unit} per ${c.per}`,
+    };
+  } else {
+    const k = r(2, 4);
+    rate = q(k);
+    x0 = 2;
+    told = {
+      prompt: `${c.doer} ${c.verb} ${k * S} ${c.unit} per ${c.per}.`,
+      hint: `In 0 ${c.pers}, how many ${c.unit}? Then every ${c.per} adds ${k * S} more: find the graph that starts there.`,
+      lead: `${k * S} ${c.unit} per ${c.per} gives $y = ${k * S}x$`,
+    };
+  }
+  const R = value(rate) * S; // actual unit rate
+  const Y = R * x0; // value at the first lattice point
+  const top = RATE_LIMIT * S;
+  const here = (a: Pt, b: Pt, f?: (name: string) => string) =>
+    scaledRateCandidate(a, b, axes, S, f);
+  const correct = here([0, 0], [x0, Y]);
+  const pool: Candidate[] = [];
+  // Two options that start at the same place with the same slope draw one ray.
+  const rayKey = (a: Pt, b: Pt) =>
+    `${a}|${b[0] === a[0] ? "up" : (b[1] - a[1]) / (b[0] - a[0])}`;
+  const keys = new Map<Candidate, string>();
+  const inWindow = (p: Pt) =>
+    p[0] >= 0 && p[0] <= RATE_LIMIT && p[1] >= 0 && p[1] <= top;
+  const offer = (a: Pt, b: Pt, f: (name: string) => string) => {
+    if (!inWindow(a) || !inWindow(b)) return;
+    const candidate = here(a, b, f);
+    keys.set(candidate, rayKey(a, b));
+    pool.push(candidate);
+  };
+  if (totalForm && x0 > 1)
+    offer(
+      [0, 0],
+      [1, Y],
+      (name) =>
+        `${name} rises ${decimalText(Y)} for each ${c.per}: it uses the total, ${amt(Y)}, as the rate. Those ${amt(Y)} take ${decimalText(timeNum)} ${c.pers}.`,
+    );
+  if (!totalForm)
+    offer(
+      [0, R],
+      [1, 1 + R],
+      (name) =>
+        `${name} is $y = x + ${decimalText(R)}$: it adds ${decimalText(R)} once instead of ${decimalText(R)} for every ${c.per}. After 1 ${c.per} it shows ${decimalText(1 + R)} ${c.unit}, not ${decimalText(R)}.`,
+    );
+  if (Y <= RATE_LIMIT && x0 !== Y)
+    offer(
+      [0, 0],
+      [Y, x0],
+      (name) =>
+        `${name} passes through ${point([Y, x0])}: the rate is upside down, ${c.pers} per ${c.one}. Put ${c.unit} on the vertical axis: ${amt(Y)} after ${x0} ${c.pers} is the point ${point([x0, Y])}.`,
+    );
+  if (R * 2 <= top)
+    offer(
+      [0, R],
+      [1, 2 * R],
+      (name) =>
+        `${name} rises ${decimalText(R)} each ${c.per} but starts at ${point([0, R])}. In 0 ${c.pers}, 0 ${c.unit}: a proportional graph starts at the origin.`,
+    );
+  if (totalForm && Y > x0)
+    offer(
+      [0, Y - x0],
+      [x0, Y],
+      (name) =>
+        `${name} passes through ${point([x0, Y])} but starts at ${point([0, Y - x0])}. In 0 ${c.pers}, 0 ${c.unit}: a proportional graph starts at the origin.`,
+    );
+  offer(
+    [0, Y],
+    [x0, Y],
+    (name) =>
+      `${name} is a horizontal line at ${amt(Y)}: the amount stays the same as ${c.pers} pass, but a constant rate adds ${amt(R)} every ${c.per}.`,
+  );
+  offer(
+    [x0, 0],
+    [x0, Y],
+    (name) =>
+      `${name} is a vertical line at ${decimalText(x0)} ${c.pers}: ${c.unit} would change while no time passes.`,
+  );
+  if (scaled)
+    offer(
+      [0, 0],
+      [x0, Y / S],
+      (name) =>
+        `${name} reads each gridline of the vertical axis as 1. The gridlines count ${S}, so ${amt(Y)} after ${x0} ${c.pers} is the point ${point([x0, Y])}, not ${point([x0, Y / S])}.`,
+    );
+  if (form === "decimal-rate" && !Number.isInteger(R) && R > 1)
+    offer(
+      [0, 0],
+      [1, Math.floor(R)],
+      (name) =>
+        `${name} rises ${Math.floor(R)} for each ${c.per}: it drops the decimal part of ${decimalText(R)}.`,
+    );
+  if (form === "decimal-time")
+    offer(
+      [0, 0],
+      [x0, x0 * T * timeNum],
+      (name) =>
+        `${name} multiplies by ${decimalText(timeNum)} instead of dividing: ${decimalText(T)} × ${decimalText(timeNum)} is not the ${c.unit} in one ${c.per}. Divide ${decimalText(T)} by ${decimalText(timeNum)}.`,
+    );
+  const seen = new Set<string>([rayKey([0, 0], [x0, Y])]);
+  const distractors = shuffle(r, pool)
+    .filter((c2) => !seen.has(keys.get(c2)!) && seen.add(keys.get(c2)!))
+    .slice(0, 3);
+  if (distractors.length < 3) throw new Error("Need three distractors");
+  const rateText = decimalText(R);
+  return problemOf(meta, seed, r, {
+    prompt: `${told.prompt} Which graph shows the number of ${c.unit}, $y$, after $x$ ${c.pers}?`,
+    label: "Choose the graph",
+    noun: "Graph",
+    correct,
+    distractors,
+    hint: scaled
+      ? `${told.hint} Check what one gridline of the vertical axis is worth: its labels count by ${2 * S}.`
+      : told.hint,
+    explanation: (name) => [
+      `${told.lead}: the constant of proportionality is ${rateText}.`,
+      `In 0 ${c.pers}, 0 ${c.unit}: the graph starts at the origin, and after ${x0} ${x0 === 1 ? c.per : c.pers} it shows ${amt(Y)}, the point ${point([x0, Y])}.`,
+      `${name} is the line from ${point([0, 0])} through ${point([x0, Y])}.`,
+    ],
+    walkthrough: sceneOf(
+      scaledPlot(axes, S)
+        .segment([0, 0], rayEndScaled([0, 0], [x0, Y], top), {
+          arrow: true,
+          color: "accent",
+        })
+        .point(0, 0, undefined, { color: "accent" })
+        .point(x0, Y, undefined, { color: "accent" }),
+    ).build({
+      title: `The graph of y = ${rateText}x`,
+      width: 300,
+      maxHeight: 300,
+    }),
+  });
+}
+const rateWithAxes = (seed: string): GeneratedProblem => {
+  const chosen = chooseAxes(figureChoiceTemplates[1]!.id, seed, rateAxes);
+  const problem = isLegacy(rateAxes, chosen)
+    ? proportionalRate(seed)
+    : variedRate(seed, chosen["rate-form"], chosen["y-scale"]);
+  return {
+    ...problem,
+    variant: {
+      id: `${chosen["rate-form"]}-${chosen["y-scale"]}`,
+      axes: axisRecord(chosen),
+    },
+  };
+};
 function rateWalkthrough(at: Pt, axes: readonly [string, string]) {
   const rate = q(at[1], at[0]);
   return sceneOf(
@@ -1005,7 +1331,7 @@ function quadraticOrExponential(seed: string): GeneratedProblem {
 
 const generators: Record<string, (seed: string) => GeneratedProblem> = {
   "graph-of-linear-rule": linearRule,
-  "graph-of-proportional-rate": proportionalRate,
+  "graph-of-proportional-rate": rateWithAxes,
   "graph-of-inequality-number-line": inequalityNumberLine,
   "graph-of-quadratic-or-exponential": quadraticOrExponential,
 };

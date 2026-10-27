@@ -227,9 +227,9 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["pattern.graph-relationship"],
       demand: "Choose the graph of a cost of twelve cents per kilowatt-hour",
       status: "partial",
-      templateIds: ["graph-linear-equation"],
+      templateIds: ["graph-linear-equation", "graph-of-proportional-rate"],
       limitations:
-        "graph-linear-equation places points of a proportional line; choosing among four drawn graphs of a unit rate in cents is not practiced.",
+        "graph-of-proportional-rate chooses among drawn graphs for a stated rate on unit and scaled vertical axes, but its contexts and rates do not include a price in cents per kilowatt-hour such as 12.",
     },
     {
       item: { number: "17", page: "rationale PDF p.17" },
@@ -368,10 +368,10 @@ export const staar2024Grade7 = defineLedger(
       archetypeIds: ["equation.truth", "linear.solve"],
       demand:
         "Mark each of several equations true or not true when m is negative five",
-      status: "partial",
-      templateIds: ["check-equation-candidate"],
+      status: "covered",
+      templateIds: ["check-equation-candidate", "substitution-match-table"],
       limitations:
-        "STAAR interaction: match table grid, 2 points. check-equation-candidate checks one value in one equation; marking several equations in a match table has no family.",
+        "substitution-match-table (multi-part-choice-v1, match table): mark each of four or five equations true or not true for a stated negative or positive integer value.",
     },
     {
       item: { number: "29", page: "rationale PDF p.29" },

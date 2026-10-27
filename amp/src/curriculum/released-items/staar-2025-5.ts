@@ -163,10 +163,14 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["data.table-to-graph"],
       demand:
         "Choose the scatterplot whose points match a table of paired values",
-      status: "partial",
-      templateIds: ["first-quadrant-coordinates", "first-quadrant-locate"],
+      status: "covered",
+      templateIds: [
+        "first-quadrant-coordinates",
+        "first-quadrant-locate",
+        "graph-of-paired-values",
+      ],
       limitations:
-        "Related families name a plotted point or locate a named pair; matching seven table pairs to a plot and avoiding swapped coordinates is not practiced.",
+        "graph-of-paired-values (figure-choice-v1), table format: the graph that plots every pair of a table of three to seven pairs, among graphs with swapped coordinates, mismatched columns, reversed y-values or a left-out pair.",
     },
     {
       item: {
@@ -287,14 +291,15 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["pattern.graph-relationship"],
       demand:
         "Choose the graph whose points have a cost 1.5 times the number of bags",
-      status: "partial",
+      status: "covered",
       templateIds: [
         "graph-of-proportional-rate",
         "graph-linear-equation",
         "coordinate-context-points",
+        "graph-of-paired-values",
       ],
       limitations:
-        "graph-of-proportional-rate chooses among drawn lines for a whole or fractional rate, with the reversed-pair distractor; a stated decimal multiplier such as 1.5 and graphs of separate points are not practiced.",
+        "graph-of-paired-values (figure-choice-v1), times-rule format: the graph whose points are the pairs of a relationship with a decimal multiplier such as 1.5, among graphs with swapped coordinates, the rounded multiplier or a left-out pair. Drawn separate points, as in the item.",
     },
     {
       item: {
@@ -454,10 +459,10 @@ export const staarGrade5 = defineLedger(
       archetypeIds: ["pattern.paired"],
       demand:
         "Decide whether a table's outputs add or multiply the inputs and name the number, using dropdown blanks",
-      status: "partial",
-      templateIds: ["pattern-pair-relationship"],
+      status: "covered",
+      templateIds: ["pattern-pair-relationship", "table-rule-sentence"],
       limitations:
-        "STAAR interaction: inline choice, 2 points. pattern-pair-relationship relates matched terms of two patterns; classifying a table as additive or multiplicative and dropdowns are not practiced.",
+        "table-rule-sentence (multi-part-choice-v1, inline layout), kind-number format: choose whether the table is additive or multiplicative and the number its rule uses.",
     },
     {
       item: {

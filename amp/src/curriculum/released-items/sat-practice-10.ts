@@ -81,10 +81,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["nonlinear.transform"],
       demand:
         "Choose the graph that results from translating a given V-shaped graph up by a few units",
-      status: "partial",
-      templateIds: ["transform-equation"],
+      status: "covered",
+      templateIds: ["transform-equation", "graph-after-shift"],
       limitations:
-        "Templates match a transformed graph to an equation or describe the change in words; none offers candidate graphs of a shifted graph to choose from.",
+        "graph-after-shift (figure-choice-v1), absolute-value shape: the graph of a shown V-shaped graph moved up by one to three units, in words or as f(x) + k, among graphs moved the wrong way or sideways.",
     },
     {
       section: "Math module 1",
