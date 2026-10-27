@@ -97,7 +97,7 @@ All 106 questions of the June 2026 Regents Examinations in Algebra I (35), Geome
 
 | Exam | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: |
-| Algebra I | 25 (71.4%) | 10 (28.6%) | 0 (0%) |
+| Algebra I | 24 (68.6%) | 11 (31.4%) | 0 (0%) |
 | Geometry | 29 (82.9%) | 6 (17.1%) | 0 (0%) |
 | Algebra II | 26 (72.2%) | 10 (27.8%) | 0 (0%) |
 
@@ -114,7 +114,7 @@ All 107 questions of the January 2026 Regents Examinations in Algebra I (35), Ge
 
 | Exam | Covered | Partial | Missing |
 | --- | ---: | ---: | ---: |
-| Algebra I | 26 (74.3%) | 9 (25.7%) | 0 (0%) |
+| Algebra I | 24 (68.6%) | 11 (31.4%) | 0 (0%) |
 | Geometry | 29 (82.9%) | 6 (17.1%) | 0 (0%) |
 | Algebra II | 25 (67.6%) | 12 (32.4%) | 0 (0%) |
 

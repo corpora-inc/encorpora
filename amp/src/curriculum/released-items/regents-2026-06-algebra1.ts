@@ -507,9 +507,9 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["function.average-rate-change"],
       demand:
         "Find the average rate of change of a population table over four decades, rounded to a whole number",
-      status: "covered",
+      status: "partial",
       templateIds: ["average-rate-display", "average-rate-table-rounded"],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",

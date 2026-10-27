@@ -38,6 +38,15 @@ interface ArithmeticModel {
   d: number;
   n: number;
 }
+function ordinal(n: number): string {
+  const tens = n % 100;
+  const suffix =
+    tens >= 11 && tens <= 13
+      ? "th"
+      : (({ 1: "st", 2: "nd", 3: "rd" } as Record<number, string>)[n % 10] ??
+        "th");
+  return `${n}${suffix}`;
+}
 function arithmeticModel(
   r: (lo: number, hi: number) => number,
   axes: { domain: "whole" | "decimal" },
@@ -61,7 +70,7 @@ export const arithmeticDistantTerm = chainFamily({
     const label = (v: number) => `$${f(v)}$`;
     const steps = m.n - 1;
     return choiceSurface(r, {
-      prompt: `The first four terms of an arithmetic sequence are $${list}, \\dots$. What is the ${m.n}th term, $a_{${m.n}}$?`,
+      prompt: `The first four terms of an arithmetic sequence are $${list}, \\dots$. What is the ${ordinal(m.n)} term, $a_{${m.n}}$?`,
       options: [
         { label: label(term(m.n)), correct: true },
         {

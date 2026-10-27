@@ -452,13 +452,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["linear.solve"],
       demand:
         "Solve a linear equation with a grouped term and a variable term on each side",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "grouped-linear-equation",
         "both-sides-linear-equation",
         "grouped-both-sides-solve",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part II",
@@ -534,13 +534,13 @@ export const regentsAlgebra1January2026 = defineLedger(
       archetypeIds: ["inequality.context"],
       demand:
         "Find the greatest whole number of items that fit a budget after a fixed expense",
-      status: "covered",
+      status: "partial",
       templateIds: [
         "first-cheaper-whole-input",
         "inequality-from-context",
         "budget-whole-items",
       ],
-      limitations: "",
+      limitations: "Final answer practiced; shown-work credit not assessed.",
     },
     {
       section: "Part III",

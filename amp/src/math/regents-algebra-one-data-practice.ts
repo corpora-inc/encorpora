@@ -775,7 +775,7 @@ const relationships = [
     cause: false,
   },
   {
-    text: "the number of coats sold each week and the average weekly temperature",
+    text: "the number of coats sold each week and the number of swimmers at a public pool",
     sign: "negative",
     cause: false,
   },
