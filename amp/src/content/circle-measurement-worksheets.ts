@@ -1,6 +1,8 @@
 import { createHash } from "node:crypto";
 import { circleMeasurementPrintCase } from "../math/circle-measurement-practice";
 import type { GeneratedProblem } from "../math/contracts";
+import { generateProblem } from "../math/engine";
+import { withLegacySurfaces } from "../math/number-domain-axes";
 
 /** Select ordinary seeded problems while retaining both diameter and radius practice. */
 export function circleMeasurementWorksheet(
@@ -74,23 +76,25 @@ export function circleMeasurementWorksheet(
       Object.values(remaining).every((n) => n === 0) &&
       (!angular || seenAngles.size >= 6)
     )
-      return selected
-        .map((c) => c.problem)
-        .sort((a, b) => {
-          const key = (p: GeneratedProblem) =>
-            createHash("sha256")
-              .update(
-                JSON.stringify([
-                  "circle-sheet-order",
-                  templateId,
-                  lessonId,
-                  edition,
-                  p.public.seed,
-                ]),
-              )
-              .digest("hex");
-          return key(a).localeCompare(key(b));
-        });
+      return withLegacySurfaces(() =>
+        selected
+          .map((c) => generateProblem(templateId, c.problem.public.seed))
+          .sort((a, b) => {
+            const key = (p: GeneratedProblem) =>
+              createHash("sha256")
+                .update(
+                  JSON.stringify([
+                    "circle-sheet-order",
+                    templateId,
+                    lessonId,
+                    edition,
+                    p.public.seed,
+                  ]),
+                )
+                .digest("hex");
+            return key(a).localeCompare(key(b));
+          }),
+      );
   }
   throw new Error(`Cannot fill representative circle worksheet: ${templateId}`);
 }
