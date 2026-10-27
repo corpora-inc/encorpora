@@ -28,8 +28,10 @@ export async function probePracticeLayout(page: Page) {
         document.documentElement,
         `${document.documentElement.scrollWidth}>${innerWidth}`,
       );
-    const stage = document.querySelector<HTMLElement>(".problem-stage");
-    if (stage && !document.querySelector(".feedback, dialog[open]")) {
+    for (const stage of document.querySelectorAll<HTMLElement>(
+      ".problem-stage, .answer-editor",
+    )) {
+      if (document.querySelector("dialog[open]")) continue;
       const saved = stage.scrollTop;
       stage.scrollTop = 0;
       const box = stage.getBoundingClientRect();
@@ -37,13 +39,19 @@ export async function probePracticeLayout(page: Page) {
       const bottom = top + stage.scrollHeight;
       const left = box.left + stage.clientLeft;
       const right = left + stage.clientWidth;
-      if (innerWidth >= 768 && stage.scrollHeight > stage.clientHeight + 1)
+      if (
+        stage.matches(".problem-stage") &&
+        innerWidth >= 768 &&
+        stage.scrollHeight > stage.clientHeight + 1
+      )
         add(
           "whole-problem-requires-scroll",
           stage,
           `${stage.scrollHeight}>${stage.clientHeight}; tablet/desktop whole-problem fit expected`,
         );
-      const content = stage.querySelector(".problem-content");
+      const content = stage.matches(".answer-editor")
+        ? stage
+        : stage.querySelector(".problem-content");
       const parts = [
         stage.querySelector(".question"),
         ...(content?.children ?? []),
@@ -70,7 +78,7 @@ export async function probePracticeLayout(page: Page) {
       stage.scrollTop = saved;
     }
     for (const e of document.querySelectorAll(
-      ".choice-option, #problem-prompt, .answer-prompt-summary, .feedback li, .feedback .feedback-answer, .problem-content svg, .problem-content table, .problem-content img, .problem-content canvas",
+      ".choice-option, #problem-prompt, .answer-prompt-summary, .feedback li, .feedback .feedback-answer, .problem-content svg, .problem-content table, .problem-content img, .problem-content canvas, .answer-editor svg, .answer-editor table",
     )) {
       if (!visible(e)) continue;
       const box = e.getBoundingClientRect();

@@ -133,7 +133,8 @@
 }
 /* The stage's figure rule caps prompt figures by viewport height; option
    figures keep their laid-out size and the stage scrolls instead. */
-.problem-content .figure-choice-figure > .figure {
+.problem-content .figure-choice-figure > .figure,
+.answer-editor .figure-choice-figure > .figure {
   display: block;
   flex: none;
   width: 100%;

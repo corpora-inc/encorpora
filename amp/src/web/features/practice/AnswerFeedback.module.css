@@ -32,8 +32,14 @@
   min-height: calc(var(--target-size) + var(--space-2));
   font-size: var(--text-label);
 }
+/* Pending and loaded notes occupy the same width and two text lines. */
+.strength > span:has(> small) {
+  flex: 1;
+  min-width: 0;
+}
 .strength small {
   display: block;
+  min-height: 2.6em;
   color: var(--color-muted-text);
   font-size: var(--text-small);
   line-height: 1.3;
@@ -49,6 +55,7 @@
   flex: none;
 }
 .recent i {
+  position: relative;
   width: var(--space-2);
   height: var(--space-4);
   border-radius: var(--radius-control);
@@ -60,9 +67,18 @@
   border-color: var(--color-success-accent);
 }
 .recent i[data-state="practiced"] {
-  background: var(--color-border-strong);
+  background: transparent;
+  border-color: transparent;
+}
+.recent i[data-state="practiced"]::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
   height: var(--space-2);
-  align-self: center;
+  transform: translateY(-50%);
+  border-radius: var(--radius-control);
+  background: var(--color-border-strong);
 }
 .connections {
   display: flex;

@@ -22,6 +22,7 @@ import { migrate } from "./migrate";
 import { assertTestDatabaseTarget } from "./test-database-preflight";
 import { choose } from "./ui-controls";
 import { startTopic } from "./ui-practice";
+import { assertPhoneLandscapeSmoke } from "./ui-viewports";
 
 const database = process.env.AMP_TEST_DATABASE_URL;
 if (!database) throw new Error("AMP_TEST_DATABASE_URL is required");
@@ -98,13 +99,14 @@ const figuresOf = (p: GeneratedProblem): FigureChoiceResponse => {
 /** Positions in the stage's scroll content, so a scroll is not a shift. */
 async function geometry(page: Page) {
   return page.evaluate(() => {
-    const stage = document.querySelector<HTMLElement>(".problem-stage")!;
     const box = (node: Element) => {
       const b = node.getBoundingClientRect();
-      const inStage = stage.contains(node);
+      const scroller = node.closest<HTMLElement>(
+        ".answer-editor, .problem-stage",
+      );
       return [
         Math.round(b.x * 10) / 10,
-        Math.round((b.y + (inStage ? stage.scrollTop : 0)) * 10) / 10,
+        Math.round((b.y + (scroller?.scrollTop ?? 0)) * 10) / 10,
         Math.round(b.width * 10) / 10,
         Math.round(b.height * 10) / 10,
       ];
@@ -170,7 +172,7 @@ async function observeShifts(page: Page) {
         w.__shift += shift.value;
         for (const source of shift.sources ?? [])
           w.__sources.push(
-            `${(source.node as Element | undefined)?.className ?? source.node?.nodeName} ${JSON.stringify(source.previousRect)} -> ${JSON.stringify(source.currentRect)}`,
+            `${(source.node as Element | undefined)?.outerHTML ?? source.node?.nodeName} ${JSON.stringify(source.previousRect)} -> ${JSON.stringify(source.currentRect)}`,
           );
       }
     }).observe({ type: "layout-shift", buffered: false });
@@ -188,6 +190,7 @@ try {
       [320, 568],
       [390, 844],
       [768, 1024],
+      [1024, 768],
       [1280, 800],
     ] as const) {
       const touch = width <= 390;
@@ -338,6 +341,16 @@ try {
         assert.equal(await shifts(page), 0, `${tag}: choosing shifted layout`);
         await page.screenshot({ path: `${shots}/${tag}-chosen.png` });
 
+        let releaseProgress: (() => void) | undefined;
+        if (expectCorrect && width <= 768) {
+          const held = new Promise<void>((resolve) => {
+            releaseProgress = resolve;
+          });
+          await page.route("**/progress*", async (route) => {
+            await held;
+            await route.continue();
+          });
+        }
         const sent = page.waitForRequest(
           (request) =>
             request.url().endsWith("/attempts") && request.method() === "POST",
@@ -349,6 +362,26 @@ try {
           .locator(`.feedback.${expectCorrect ? "correct" : "incorrect"}`)
           .waitFor();
         await page.waitForTimeout(300);
+        if (releaseProgress) {
+          const text = page.locator(
+            "[data-answer-feedback] [aria-busy] > span:has(> small)",
+          );
+          await page
+            .locator('[data-answer-feedback] [aria-busy="true"]')
+            .waitFor();
+          const pendingBox = await text.boundingBox();
+          releaseProgress();
+          await page
+            .locator('[data-answer-feedback] [aria-busy="false"]')
+            .waitFor();
+          assert.deepEqual(
+            await text.boundingBox(),
+            pendingBox,
+            `${tag}: progress note keeps its reserved box`,
+          );
+          await page.unroute("**/progress");
+        }
+
         const sheet =
           (await page.locator(".solution-panel").textContent()) ?? "";
         if (!expectCorrect)
@@ -373,6 +406,8 @@ try {
           await page.locator(".figure-choice-card[data-mark]").count(),
           expectCorrect ? 1 : 2,
         );
+        if (await page.locator(".answer-editor").count())
+          await assertPhoneLandscapeSmoke(page, `${tag}: marked answer editor`);
         const after = await geometry(page);
         assert.deepEqual(
           { ...after, dock: null },
@@ -384,6 +419,17 @@ try {
         // The marked cards, scrolled into view.
         await card(page, answerAt).scrollIntoViewIfNeeded();
         await page.screenshot({ path: `${shots}/${tag}-feedback.png` });
+        if (await page.locator(".feedback-details").count()) {
+          await page.locator(".feedback-details").evaluate((node) => {
+            node.scrollTop = node.scrollHeight;
+          });
+          await page.screenshot({
+            path: `${shots}/${tag}-feedback-details.png`,
+          });
+          await page.locator(".feedback-details").evaluate((node) => {
+            node.scrollTop = 0;
+          });
+        }
         const why = page.getByRole("button", { name: "See why", exact: true });
         if (await why.count()) await why.click();
         await page.locator(".feedback-steps").waitFor();
@@ -401,6 +447,10 @@ try {
             `${tag}: distractor feedback leads`,
           );
         await page.screenshot({ path: `${shots}/${tag}-explanation.png` });
+        if (await page.locator("dialog[open]").count()) {
+          await page.keyboard.press("Escape");
+          await page.locator("dialog[open]").waitFor({ state: "detached" });
+        }
         checked++;
       }
       await context.close();

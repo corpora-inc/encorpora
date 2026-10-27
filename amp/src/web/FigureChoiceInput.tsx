@@ -39,7 +39,7 @@ function useFigureHeight() {
   );
   useLayoutEffect(() => {
     const field = root.current;
-    const stage = field?.closest<HTMLElement>(".problem-stage");
+    const stage = field?.closest<HTMLElement>(".answer-editor, .problem-stage");
     if (!field || !stage) return;
     const fit = () => {
       const grid = field.querySelector<HTMLElement>(".figure-choice-grid");
@@ -64,9 +64,7 @@ function useFigureHeight() {
       const height = Math.min(280, Math.max(MIN_FIGURE, next));
       const width = Math.floor(figure.clientWidth);
       setCap((old) =>
-        old?.height === height && old.width === width
-          ? old
-          : { height, width },
+        old?.height === height && old.width === width ? old : { height, width },
       );
     };
     fit();
