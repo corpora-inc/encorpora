@@ -179,6 +179,18 @@ try {
   page.on("pageerror", (e) => errors.push(e.message));
   const drawer = page.getByRole("dialog", { name: "Adaptive Math Pathways" });
   const trigger = page.getByRole("button", { name: "Open AMP menu" });
+  const identity = drawer.getByRole("region", { name: "Current account" });
+  // Recorded sessions must never show the address: it is absent from the DOM
+  // until the eye button reveals it, and every menu opening starts hidden.
+  async function assertEmailHidden(label: string) {
+    const show = identity.getByRole("button", { name: "Show email" });
+    await show.waitFor();
+    assert.equal(await show.getAttribute("aria-pressed"), "false", label);
+    assert(
+      !(await drawer.innerHTML()).includes("parent@example.test"),
+      `${label}: email rendered while hidden`,
+    );
+  }
   async function fits(label: string) {
     assert(
       await page.evaluate(
@@ -257,7 +269,7 @@ try {
         path: `${output}/practice-${theme}-${width}.png`,
       });
       await trigger.click();
-      await drawer.getByText("parent@example.test", { exact: true }).waitFor();
+      await assertEmailHidden(`drawer ${theme} ${width}`);
       await drawer.getByText("42", { exact: true }).waitFor();
       assert.equal(
         await drawer.getByLabel("Current learner").inputValue(),
@@ -269,6 +281,31 @@ try {
         path: `${output}/drawer-${theme}-${width}.png`,
         animations: "disabled",
       });
+      const hiddenBox = await identity.boundingBox();
+      await identity.getByRole("button", { name: "Show email" }).click();
+      const hide = identity.getByRole("button", { name: "Hide email" });
+      assert.equal(await hide.getAttribute("aria-pressed"), "true");
+      const shown = identity.getByText("parent@example.test", { exact: true });
+      await shown.waitFor();
+      assert.equal(
+        await shown.evaluate((el) => {
+          const css = getComputedStyle(el);
+          return `${css.whiteSpace} ${css.textOverflow}`;
+        }),
+        "nowrap ellipsis",
+        "long addresses truncate on one line",
+      );
+      assert.deepEqual(
+        await identity.boundingBox(),
+        hiddenBox,
+        `drawer ${theme} ${width}: revealing the email shifted layout`,
+      );
+      await fits(`drawer revealed ${theme} ${width}`);
+      await page.mouse.move(0, 0);
+      await page.screenshot({
+        path: `${output}/drawer-revealed-${theme}-${width}.png`,
+        animations: "disabled",
+      });
       await page.keyboard.press("Escape");
       await page.waitForFunction(
         () =>
@@ -276,6 +313,7 @@ try {
           "Open AMP menu",
       );
       await trigger.click();
+      await assertEmailHidden(`drawer reopened ${theme} ${width}`);
       await drawer
         .getByRole("link", { name: "Your inventory", exact: true })
         .click();

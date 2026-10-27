@@ -9,12 +9,50 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+.emailRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--target-size);
+}
 .email {
-  display: block;
-  margin-top: var(--space-1);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
   font-size: var(--text-label);
   font-weight: 600;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.reveal {
+  display: grid;
+  place-items: center;
+  width: var(--target-size);
+  height: var(--target-size);
+  flex: none;
+  margin-right: calc(-1 * var(--space-3));
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-muted-text);
+}
+.reveal:hover {
+  background: var(--color-surface-sunken);
+  filter: none;
+}
+.reveal:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+.reveal svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
 .authLinks {
   display: flex;

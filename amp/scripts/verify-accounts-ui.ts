@@ -97,10 +97,9 @@ async function signedIn(page: Page, email: string) {
     .locator(".shell > header")
     .getByRole("button", { name: "Open AMP menu" })
     .click();
-  await page
-    .getByRole("region", { name: "Current account" })
-    .getByText(email, { exact: true })
-    .waitFor();
+  const identity = page.getByRole("region", { name: "Current account" });
+  await identity.getByRole("button", { name: "Show email" }).click();
+  await identity.getByText(email, { exact: true }).waitFor();
   const signOut = page.getByRole("button", { name: "Sign out", exact: true });
   await signOut.waitFor();
   await page.getByRole("button", { name: "Close AMP menu" }).click();
