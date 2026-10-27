@@ -251,10 +251,10 @@ export const staarGrade8 = defineLedger(
       archetypeIds: ["inequality.context"],
       demand:
         "Write the inequality that compares two rental plans with a fixed fee and a per-mile charge",
-      status: "partial",
-      templateIds: ["inequality-from-context"],
+      status: "covered",
+      templateIds: ["show-work-rental-plans", "inequality-from-context"],
       limitations:
-        "STAAR interaction: equation editor, 1 point. inequality-from-context chooses a one-step inequality; typing a two-sided inequality from a story has no response protocol.",
+        "STAAR interaction: equation editor, 1 point. show-work-rental-plans (structured-work-v1) types each plan's cost for a fixed fee and a per-mile or per-hour rate, then the two-sided inequality comparing them, graded side by side in either order; an equivalent solved inequality is not accepted for the written comparison.",
     },
     {
       item: {

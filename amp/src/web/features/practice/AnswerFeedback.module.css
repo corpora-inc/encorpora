@@ -23,11 +23,13 @@
   font-weight: 750;
   white-space: nowrap;
 }
+/* Reserved for the loaded two-line strength ("Building" over a note that
+   wraps once on a phone), so its arrival never grows the feedback sheet. */
 .strength {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  min-height: var(--target-size);
+  min-height: calc(var(--target-size) + var(--space-2));
   font-size: var(--text-label);
 }
 .strength small {

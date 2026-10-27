@@ -23,8 +23,12 @@ export type TemplateResponse = "numeric" | ResponseCapability;
  * choice-only template can never fully cover numeric entry. Point plots
  * answer graphing items; multi-part choices answer inline-choice and
  * match-table items ("other") and drag-into-slots items, offered as one
- * picker per slot. Hot spots, drawn graphs and constructed responses have no
- * AMP protocol yet; labelers decide whether a protocol fits an item. */
+ * picker per slot. Structured work answers constructed responses whose
+ * work is a sequence of exact values, typed expressions or equations, and
+ * reasons chosen from a bank: a derivation, a two-column proof or labeled
+ * intermediate results. A free written explanation scored by a rubric has
+ * no protocol. Hot spots and drawn graphs have none either; labelers decide
+ * whether a protocol fits an item. */
 export const acceptedResponses: Readonly<
   Record<ResponseFormat, readonly TemplateResponse[]>
 > = {
@@ -33,7 +37,7 @@ export const acceptedResponses: Readonly<
   numeric: ["numeric"],
   "multi-select": ["multi-select-v1"],
   "graph/drag": ["point-plot-v1", "multi-part-choice-v1"],
-  constructed: [],
+  constructed: ["structured-work-v1"],
   other: ["multi-part-choice-v1"],
 };
 /** Digital SAT Suite skills (Assessment Framework, Appendix B, SAT column). */

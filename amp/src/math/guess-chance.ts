@@ -1,12 +1,18 @@
-import type { ProblemResponse, TemplateMetadata } from "./contracts";
+import type {
+  GeneratedProblem,
+  ProblemResponse,
+  TemplateMetadata,
+} from "./contracts";
 import { pointPlotGuessChance } from "./point-plot";
 import { multiPartGuessChance } from "./multi-part-choice";
 import { figureChoiceGuessChance } from "./figure-choice";
+import { structuredWorkGuessChance } from "./structured-work";
 import { generateProblem, templates } from "./engine";
 
 /** Instances sampled to read a choice family's option count from its answer
  * schema. tests/frontier-guessing.test.ts checks far more seeds against it. */
 const SAMPLE_SEEDS = 16;
+const STRUCTURED_SEEDS = 128;
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */
 const UNKNOWN_CHOICE_GUESS = 1 / 2;
@@ -14,8 +20,11 @@ const UNKNOWN_CHOICE_GUESS = 1 / 2;
 const byId = new Map(templates.map((template) => [template.id, template]));
 const cache = new Map<string, number>();
 
-/** Uniform guessing among all permitted answers; multiple selections are sets. */
+/** Uniform guessing among all permitted answers; multiple selections are sets.
+ * Structured work needs its private rule to count valid orders and proofs
+ * (`problemGuessChance`); from the public response alone it is unknown. */
 export function responseGuessChance(response: ProblemResponse): number {
+  if (response.kind === "structured-work") return UNKNOWN_CHOICE_GUESS;
   if (response.kind === "choice") return 1 / response.options.length;
   if (response.kind === "point-plot") return pointPlotGuessChance(response);
   if (response.kind === "multi-part-choice")
@@ -42,16 +51,31 @@ export function guessChance(
   if (known !== undefined) return known;
   let chance = UNKNOWN_CHOICE_GUESS;
   if (byId.has(template.id)) {
+    // Structured work mixes typed steps (never guessed) with orderings and
+    // proofs built from banks; sample more, and a family whose every
+    // sampled instance has a typed field cannot be guessed.
+    const structured =
+      template.requiredResponseCapability === "structured-work-v1";
     let greatest = 0;
-    for (let i = 0; i < SAMPLE_SEEDS; i++) {
-      const response = generateProblem(template.id, `guess-chance:${i}`).public
-        .response;
-      greatest = Math.max(greatest, responseGuessChance(response));
-    }
-    if (greatest > 0) chance = greatest;
+    for (let i = 0; i < (structured ? STRUCTURED_SEEDS : SAMPLE_SEEDS); i++)
+      greatest = Math.max(
+        greatest,
+        problemGuessChance(generateProblem(template.id, `guess-chance:${i}`)),
+      );
+    if (greatest > 0 || structured) chance = greatest;
   }
   cache.set(template.id, chance);
   return chance;
+}
+
+/** One instance's guessing chance, using its private rule where needed. */
+export function problemGuessChance(problem: GeneratedProblem): number {
+  const response = problem.public.response;
+  if (response.kind === "structured-work")
+    return problem.workGrading
+      ? structuredWorkGuessChance(response, problem.workGrading)
+      : UNKNOWN_CHOICE_GUESS;
+  return responseGuessChance(response);
 }
 
 /** `guessChance` by template id, for the frontier estimator. Unknown ids are

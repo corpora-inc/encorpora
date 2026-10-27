@@ -33,6 +33,12 @@ import {
 } from "./FigureChoiceInput";
 import { figureChoiceName } from "../math/figure-choice";
 import {
+  StructuredWorkAnswer,
+  StructuredWorkInput,
+  workSummary,
+} from "./StructuredWorkInput";
+import { structuredWorkAnswerText } from "../math/structured-work";
+import {
   useEffect,
   useLayoutEffect,
   useRef,
@@ -235,6 +241,10 @@ export function PracticeWorkspace(props: Props) {
   // selection readout and Check.
   const figures =
     problem.response.kind === "figure-choice" ? problem.response : null;
+  // Structured work is built in the problem: steps or proof lines, with
+  // the keypad over the dock; the dock holds progress, Clear and Check.
+  const work =
+    problem.response.kind === "structured-work" ? problem.response : null;
   const selectedIds = multiResponse
     ? (parseSelection(response) ?? []).filter((id) =>
         multiResponse.options.some((option) => option.id === id),
@@ -259,6 +269,8 @@ export function PracticeWorkspace(props: Props) {
       return multiPartAnswerText(problem.response, value);
     if (problem.response.kind === "figure-choice")
       return figureChoiceName(problem.response, value) ?? "Unavailable answer";
+    if (problem.response.kind === "structured-work")
+      return structuredWorkAnswerText(problem.response, value);
     if (problem.response.kind === "multi-select") {
       const labels = responseAnswerLabels(problem.response, value);
       return labels ? joinAnswerLabels(labels) : "Unavailable selection";
@@ -291,7 +303,7 @@ export function PracticeWorkspace(props: Props) {
   const [compactQuery, setCompact] = useState(
     () => matchMedia(answerLayoutQuery).matches,
   );
-  const compact = compactQuery && !plot && !parts && !figures;
+  const compact = compactQuery && !plot && !parts && !figures && !work;
   // Side by side (practice-tablet.css), the feedback sheet has its own
   // column; stacked, it covers the dock only, so a plotted answer's grid and
   // its feedback overlay stay in view and the explanation opens on request.
@@ -304,7 +316,7 @@ export function PracticeWorkspace(props: Props) {
     media.addEventListener("change", changed);
     return () => media.removeEventListener("change", changed);
   }, []);
-  const deferSteps = (!!plot || !!parts || !!figures) && !sideBySide;
+  const deferSteps = (!!plot || !!parts || !!figures || !!work) && !sideBySide;
   useEffect(() => {
     const media = matchMedia(answerLayoutQuery);
     const changed = () => setCompact(media.matches);
@@ -369,7 +381,7 @@ export function PracticeWorkspace(props: Props) {
     // Typed answers start in the answer field. On touch it suppresses the
     // system keyboard (inputMode none), so AMP's keypad stays in charge; the
     // field announces the question through aria-describedby.
-    if (choice || plot || parts || figures)
+    if (choice || plot || parts || figures || work)
       prompt.current?.focus({ preventScroll: true });
     else input.current?.focus({ preventScroll: true });
   }, [problem.id]);
@@ -419,7 +431,7 @@ export function PracticeWorkspace(props: Props) {
   const locked = busy || pending || !!outcome;
   // AMP's keypad is always present for typed answers; touch devices never
   // raise the system keyboard, and a physical keyboard still types.
-  const keypad = !choice && !plot && !parts && !figures;
+  const keypad = !choice && !plot && !parts && !figures && !work;
   const caret = useKeypadCaret(input);
   function key(value: string) {
     if (locked) return;
@@ -492,6 +504,18 @@ export function PracticeWorkspace(props: Props) {
           busy={busy}
           resolved={!!outcome}
           submit={props.submit}
+        />
+      );
+    if (problem.response.kind === "structured-work")
+      return (
+        <StructuredWorkAnswer
+          response={problem.response}
+          value={outcome ? outcome.response : response}
+          onChange={setResponse}
+          locked={locked}
+          busy={busy}
+          resolved={!!outcome}
+          submit={submitAnswer}
         />
       );
     if (problem.response.kind === "figure-choice")
@@ -840,16 +864,18 @@ export function PracticeWorkspace(props: Props) {
    * the grid above the sheet, so the sheet names where to look and keeps the
    * coordinates for screen readers; the explanation lists them in full. */
   const answerLine = (raw: string) =>
-    plot || parts?.layout === "table" ? (
+    plot || (work && !skipped) || parts?.layout === "table" ? (
       <span
         className="solution-answer plot-answer"
         data-text={displayResponse(raw)}
       >
-        {parts
-          ? "Each row’s answer is ringed"
-          : plot?.connect === "line"
-            ? "The answer is dashed"
-            : "The answer is circled"}
+        {work
+          ? `Each ${work.layout === "proof" ? "line" : "step"} is marked`
+          : parts
+            ? "Each row’s answer is ringed"
+            : plot?.connect === "line"
+              ? "The answer is dashed"
+              : "The answer is circled"}
         <span className="sr-only">
           . Answer: {spokenMath(displayResponse(raw))}
         </span>
@@ -922,7 +948,7 @@ export function PracticeWorkspace(props: Props) {
           )}
           {/* Plotted answers are placed, not typed: the calculator's Use
               key has nothing to fill, and lattice arithmetic needs none. */}
-          {props.calculator && !plot && !parts && !figures ? (
+          {props.calculator && !plot && !parts && !figures && !work ? (
             <button
               ref={calculatorToggle}
               className="calculator-toggle"
@@ -971,7 +997,7 @@ export function PracticeWorkspace(props: Props) {
               <MathText text={problem.prompt} />
             </h2>
             {problem.figure &&
-              (choice || plot || parts || figures ? (
+              (choice || plot || parts || figures || work ? (
                 <ChoiceFigure figure={problem.figure} />
               ) : (
                 <Figure
@@ -994,6 +1020,20 @@ export function PracticeWorkspace(props: Props) {
                     ? partsReview(parts, outcome.answer, outcome.response)
                     : null
                 }
+              />
+            )}
+            {work && (
+              <StructuredWorkInput
+                key={problem.id}
+                problemId={problem.id}
+                response={work}
+                value={outcome ? outcome.response : response}
+                onChange={setResponse}
+                locked={locked}
+                marks={
+                  outcome && !outcome.skipped ? (outcome.parts ?? null) : null
+                }
+                small={small}
               />
             )}
             {figures && (
@@ -1109,7 +1149,18 @@ export function PracticeWorkspace(props: Props) {
                 ) : (
                   <>
                     {answerLine(outcome.answer)}
-                    {parts ? (
+                    {work ? (
+                      // Each step is marked in the problem; the work stays
+                      // readable for screen readers.
+                      <small>
+                        {workSummary(work, outcome.parts)}
+                        <span className="sr-only">
+                          . Your last line:{" "}
+                          {spokenMath(displayResponse(outcome.response))}
+                        </span>
+                        {support && `, ${support}`}
+                      </small>
+                    ) : parts ? (
                       // Each part is marked in the problem; the sentence
                       // stays for screen readers.
                       <small>

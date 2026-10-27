@@ -485,7 +485,7 @@ try {
     });
     await page
       .locator(
-        "#answer, .choice-form, .point-plot-form, .multi-part-form, .figure-choice-form, .compact-answer-action",
+        "#answer, .choice-form, .point-plot-form, .multi-part-form, .figure-choice-form, .work-form, .compact-answer-action",
       )
       .first()
       .waitFor();
@@ -506,8 +506,8 @@ try {
     ]) {
       await page.setViewportSize(size);
       // Let the media-query subscription commit the appropriate answer surface.
-      // Point plots, multi-part choices and figure choices answer in the
-      // problem and never use the answer dialog.
+      // Point plots, multi-part choices, figure choices and structured work
+      // answer in the problem and never use the answer dialog.
       await page.waitForFunction(
         ([multiSelect, plot]) => {
           const compact =
@@ -522,7 +522,8 @@ try {
           template.requiredResponseCapability === "multi-select-v1",
           template.requiredResponseCapability === "point-plot-v1" ||
             template.requiredResponseCapability === "multi-part-choice-v1" ||
-            template.requiredResponseCapability === "figure-choice-v1",
+            template.requiredResponseCapability === "figure-choice-v1" ||
+            template.requiredResponseCapability === "structured-work-v1",
         ],
       );
       if (isPhoneLandscape(size)) {
