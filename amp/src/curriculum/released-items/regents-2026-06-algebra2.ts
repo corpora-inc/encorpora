@@ -424,7 +424,7 @@ export const regentsAlgebra2June2026 = defineLedger(
         "rg-exponential-base-rate",
       ],
       limitations:
-        "The families keep the half-life in the exponent as 0.5^(t/h); converting a non-integer half-life to a single per-hour base with a calculator (for example 0.5^(1/12.4)) and choosing among decimal bases is not practiced.",
+        "The number-domain axis (decimal-periods) converts a decimal period such as t/12.4 to one yearly factor rounded to four places and chooses among decimal bases; the half-life is not yet worded in a context with hours.",
     },
     {
       section: "Part II",

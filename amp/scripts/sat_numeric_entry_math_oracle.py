@@ -290,7 +290,7 @@ def quadratic_from_sides(text):
 
 
 def quadratic_solution(prompt):
-    m = re.fullmatch(r'What is the (positive|greater) solution of \$([^$]+)\$\?', prompt)
+    m = re.fullmatch(r'What is the (positive|negative|greater|smaller) solution of \$([^$]+)\$\?', prompt)
     one = re.fullmatch(r'The equation \$([^$]+)\$ has exactly one real solution\. What is it\?', prompt)
     require(m or one, 'Unknown quadratic-solution prompt')
     p = quadratic_from_sides((m or one)[2 if m else 1])
@@ -299,12 +299,12 @@ def quadratic_solution(prompt):
     if one:
         require(len(roots) == 1, 'Claimed exactly one real solution')
         return roots[0]
-    if m[1] == 'positive':
-        positive = [r for r in roots if r > 0]
-        require(len(positive) == 1, 'Exactly one positive solution required')
-        return positive[0]
-    require(len(roots) == 2, 'Two distinct solutions required for "greater"')
-    return roots[1]
+    if m[1] in ('positive', 'negative'):
+        sign = [r for r in roots if (r > 0) == (m[1] == 'positive')]
+        require(len(sign) == 1, f'Exactly one {m[1]} solution required')
+        return sign[0]
+    require(len(roots) == 2, f'Two distinct solutions required for "{m[1]}"')
+    return roots[1] if m[1] == 'greater' else roots[0]
 
 
 def root_relations(prompt):
@@ -598,6 +598,13 @@ def self_test():
         ('sat-entry-quadratic-solution', 'What is the positive solution of $3x^2 + 5x - 28=0$?', '7/3'),
         ('sat-entry-quadratic-solution', 'What is the greater solution of $x^2 - 4x=32$?', '8'),
         ('sat-entry-quadratic-solution', 'The equation $16x^2 + 48x + 36=0$ has exactly one real solution. What is it?', '-3/2'),
+        ('sat-entry-quadratic-solution', 'What is the smaller solution of $(x + 4)(x - 12)=-60$?', '2'),
+        ('sat-entry-quadratic-solution', 'What is the greater solution of $(x + 1)(x - 4)=6$?', '5'),
+        ('sat-entry-quadratic-solution', 'What is the negative solution of $3x^2 + 5x - 28=0$?', '-4'),
+        ('sat-entry-quadratic-solution', 'What is the smaller solution of $(x + 4)^2=2x + 8$?', '-4'),
+        ('sat-entry-quadratic-solution', 'What is the greater solution of $(x - 3)^2=6x - 23$?', '8'),
+        ('sat-entry-quadratic-solution', 'What is the smaller solution of $x^2 - 4x=32$?', '-4'),
+        ('sat-entry-root-relations', 'The equation $2x^2 + 8x + 1=3x + 2$ has two distinct real solutions, $p$ and $q$. What is the value of $p^2+q^2$?', '29/4'),
         ('sat-entry-root-relations', 'The equation $3x^2 + 10x + 4=0$ has two distinct real solutions, $p$ and $q$. What is the value of $p+q$?', '-10/3'),
         ('sat-entry-root-relations', 'The equation $5x^2 + 12x - 6=0$ has two distinct real solutions, $p$ and $q$. What is the value of $\\frac{1}{p}+\\frac{1}{q}$?', '2'),
         ('sat-entry-root-relations', 'The equation $x^2 + 2x - 2=0$ has two distinct real solutions, $p$ and $q$. What is the value of $p^2+q^2$?', '8'),

@@ -620,10 +620,10 @@ export const satPractice6 = defineLedger(
       archetypeIds: ["line.parallel-perpendicular"],
       demand:
         "Find the slope of a line perpendicular to a line given in slope-intercept form",
-      status: "partial",
+      status: "covered",
       templateIds: ["perpendicular-slopes"],
       limitations:
-        "Template defines the given line by two plotted points; reading the slope from a y = mx + b equation is never practiced there.",
+        "The line-given axis (slope-intercept) states the reference line as y = mx + b with a fractional, negative or integer slope, so the slope is read from the equation and the perpendicular slope is entered.",
     },
     {
       section: "Math module 2",

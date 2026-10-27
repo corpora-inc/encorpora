@@ -604,10 +604,10 @@ export const satPractice8 = defineLedger(
       archetypeIds: ["expression.radical"],
       demand:
         "Choose the radical form equivalent to a rational-exponent power when the radical is written with an unreduced index and power",
-      status: "partial",
+      status: "covered",
       templateIds: ["symbolic-rational-exponent"],
       limitations:
-        "symbolic-rational-exponent converts between a reduced radical and its rational exponent; the item's correct choice uses a scaled-up index and power that must be reduced to match.",
+        "The direction axis (power-to-radical) gives the rational exponent and offers radicals with scaled-up indexes and powers, so the correct choice must be reduced to match.",
     },
     {
       section: "Math module 2",
