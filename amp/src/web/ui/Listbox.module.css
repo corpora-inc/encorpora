@@ -6,8 +6,10 @@
   gap: var(--space-1);
   outline: none;
 }
+/* The trigger's selectors carry the disclosure's class too, so a screen's
+   element rules (e.g. ".pathways button") cannot restyle it. */
 .option,
-.trigger {
+.disclosure .trigger {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -28,7 +30,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 .option:hover,
-.trigger:hover {
+.disclosure .trigger:hover {
   filter: none;
   background: var(--color-surface-sunken);
   color: var(--color-on-surface-sunken);
@@ -40,11 +42,11 @@
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 1px;
 }
-.trigger:focus-visible {
+.disclosure .trigger:focus-visible {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 1px;
 }
-.trigger[aria-expanded="true"] {
+.disclosure .trigger[aria-expanded="true"] {
   border-color: var(--color-primary);
 }
 .mark {
@@ -89,8 +91,22 @@
 .option:hover .detail {
   color: var(--color-muted-text);
 }
-.trigger {
+.disclosure .trigger {
   padding-left: var(--space-3);
+}
+/* Every choice's text shares one cell, only the current one visible, so the
+   button is sized by the longest choice and never by the current one. */
+.value {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+.value > .text {
+  grid-area: 1 / 1;
+  align-self: center;
+}
+.sizer {
+  visibility: hidden;
 }
 .chevron {
   flex: none;
@@ -112,7 +128,7 @@
 /* Laid over the content below the button, never pushing it down. */
 .popover {
   position: absolute;
-  z-index: 2;
+  z-index: 10;
   top: calc(100% + var(--space-1));
   left: 0;
   right: 0;
@@ -127,6 +143,12 @@
   color: var(--color-on-menu);
   box-shadow: 0 8px 30px var(--color-shadow);
   animation: listbox-in var(--motion-fast) ease-out;
+}
+.popover.end {
+  left: auto;
+  width: max-content;
+  min-width: 100%;
+  max-width: min(320px, calc(100vw - 2 * var(--space-4)));
 }
 .popover .option {
   border-color: transparent;

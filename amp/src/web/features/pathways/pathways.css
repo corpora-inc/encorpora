@@ -14,8 +14,7 @@
   color: var(--atlas-accent);
 }
 .pathways button,
-.pathways input,
-.pathways select {
+.pathways input {
   font: inherit;
   min-height: 44px;
   border: 1px solid var(--atlas-border);
@@ -148,15 +147,33 @@
   max-width: 660px;
   line-height: 1.5;
 }
-.pathways-status label {
+/* The atlas is dark in either theme, so its pickers take the atlas roles. */
+.pathways-learner,
+.pathways-grade {
+  --color-surface-raised: var(--atlas-panel);
+  --color-on-surface-raised: var(--atlas-on-panel);
+  --color-surface-sunken: var(--atlas-surface);
+  --color-on-surface-sunken: var(--atlas-on-surface);
+  --color-menu: var(--atlas-panel);
+  --color-on-menu: var(--atlas-on-panel);
+  --color-menu-hover: var(--atlas-border);
+  --color-border: var(--atlas-border);
+  --color-primary: var(--atlas-accent);
+  --color-focus-ring: var(--atlas-accent);
+  --color-muted-text: var(--atlas-muted);
+  --color-shadow: var(--atlas-surface);
+}
+/* "Learner" beside a fixed-width picker, so a longer name never resizes
+   the status bar; the picker's list lays over the map. */
+.pathways-learner {
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 8px;
+  font-size: 12px;
 }
-.pathways-status select {
-  width: 180px;
-  font-size: 16px;
-  height: 2.75em;
+.pathways-learner > :last-child {
+  width: 220px;
 }
 .pathways-status button {
   min-height: 44px;
@@ -324,17 +341,10 @@
 .pathways-browser[hidden] {
   display: none;
 }
-.pathways-browser label {
+.pathways-grade {
   display: grid;
   gap: 8px;
   font-size: 12px;
-}
-.pathways-browser select {
-  width: 100%;
-  min-width: 0;
-  font-size: 16px;
-  /* Native WebKit selects shrink below min-height without an explicit height. */
-  height: 2.75em;
 }
 .pathways ul {
   list-style: none;
@@ -602,12 +612,9 @@
     min-height: 36px;
     font-size: 10px;
   }
-  .pathways-status label {
+  .pathways-learner {
     margin: 8px 0;
     justify-content: space-between;
-  }
-  .pathways-status select {
-    width: 180px;
   }
   .pathways-toolbar {
     flex-wrap: wrap;
@@ -736,9 +743,6 @@
   .pathways-status {
     min-height: 30px;
   }
-  .pathways-status label {
-    display: flex;
-  }
   .pathways.has-selection .pathways-workspace {
     display: flex;
     flex-direction: column;
@@ -806,16 +810,8 @@
 .pathways .pathways-gesture {
   color: var(--atlas-muted);
 }
-.pathways input,
-.pathways select {
+.pathways input {
   margin-top: 0;
-}
-.pathways-status label {
-  flex-shrink: 0;
-}
-.pathways-status select {
-  min-width: 180px;
-  flex-shrink: 0;
 }
 .pathways-footer {
   display: block;
@@ -833,11 +829,8 @@
   .pathways-header {
     height: 60px;
   }
-  .pathways-status label {
+  .pathways-learner {
     font-size: 11px;
-  }
-  .pathways-status label select {
-    font-size: 16px;
   }
 }
 :root:fullscreen .pathways {
@@ -994,21 +987,6 @@
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-}
-
-.pathways-status select {
-  height: 44px;
-  min-height: 44px;
-  appearance: none;
-  padding-right: 28px;
-  background-image:
-    linear-gradient(45deg, transparent 50%, var(--atlas-muted) 50%),
-    linear-gradient(135deg, var(--atlas-muted) 50%, transparent 50%);
-  background-position:
-    calc(100% - 16px) 20px,
-    calc(100% - 12px) 20px;
-  background-size: 4px 4px;
-  background-repeat: no-repeat;
 }
 
 @media (max-height: 700px) and (min-width: 651px) {

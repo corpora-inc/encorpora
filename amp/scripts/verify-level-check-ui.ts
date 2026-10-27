@@ -581,7 +581,7 @@ try {
           .filter({ hasText: new RegExp(`^${earned} skills illuminated`) })
           .waitFor();
         assert.equal(
-          await page.getByRole("combobox", { name: /^Learner/ }).count(),
+          await page.getByRole("button", { name: /^Learner/ }).count(),
           0,
         );
         await fits(page, `${tag}: earned pathways`);

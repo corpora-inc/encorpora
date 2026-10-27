@@ -284,12 +284,15 @@ async function noOverflow(page: Page) {
         .map((el) => el.textContent),
     );
   assert.deepEqual(bad, [], "44px controls");
-  const learner = page.locator(".pathways-status select");
+  const learner = page
+    .locator(".pathways-status")
+    .getByRole("button", { name: /^Learner/ });
   if (await learner.count()) {
     assert(
-      (await learner.evaluate((el) =>
-        parseFloat(getComputedStyle(el).fontSize),
-      )) >= 16,
+      (await learner
+        .locator("[data-word]")
+        .first()
+        .evaluate((el) => parseFloat(getComputedStyle(el).fontSize))) >= 16,
       "readable learner selector text",
     );
     assert(
@@ -611,6 +614,17 @@ async function verifyLessonRecovery() {
     await page.close();
   }
 }
+/** Chooses `value` from one of the map's designed pickers (never a native
+ * select): open its button, then click the option. */
+async function choose(page: Page, label: string, value: string) {
+  const button = page.getByRole("button", { name: new RegExp(`^${label}`) });
+  assert.equal(await button.getAttribute("aria-haspopup"), "listbox");
+  await button.click();
+  const list = page.getByRole("listbox", { name: label, exact: true });
+  await list.locator(`[role="option"][data-value="${value}"]`).click();
+  await list.waitFor({ state: "detached" });
+  assert.equal(await button.getAttribute("data-value"), value);
+}
 async function verifySearchFilters() {
   for (const [width, colorScheme] of [
     [320, "light"],
@@ -651,13 +665,20 @@ async function verifySearchFilters() {
         "Deleting keeps the keyboard focused on search",
       );
       assert.equal(new URL(page.url()).searchParams.get("filter"), "K");
-      const grade = page.getByRole("combobox", { name: "Grade or course" });
-      await grade.selectOption("");
+      const grade = page.getByRole("button", { name: /^Grade or course/ });
+      assert.equal(await grade.getAttribute("data-value"), "K");
+      const gradeBox = await grade.boundingBox();
+      await choose(page, "Grade or course", "");
       await page.waitForURL((url) => !url.searchParams.has("filter"));
       assert.equal(
-        await grade.inputValue(),
+        await grade.getAttribute("data-value"),
         "",
         "All grades clears the grade filter",
+      );
+      assert.deepEqual(
+        await grade.boundingBox(),
+        gradeBox,
+        "choosing a grade never resizes its picker",
       );
       assert.equal(
         await page.locator(".pathways-skill-list a").count(),
@@ -719,7 +740,7 @@ async function verifySearchFilters() {
       );
       await input.focus();
       assert.equal(
-        await grade.inputValue(),
+        await grade.getAttribute("data-value"),
         "K",
         "Other valid filters survive a malformed query",
       );
@@ -749,7 +770,7 @@ async function verifySearchFilters() {
       );
       await input.fill("");
       await page.waitForURL((url) => !url.searchParams.has("topic"));
-      await grade.selectOption("");
+      await choose(page, "Grade or course", "");
       await page.waitForURL((url) => !url.searchParams.has("filter"));
       await input.focus();
       await noOverflow(page);
@@ -1053,7 +1074,7 @@ try {
     "the trial's earned evidence must not be replaced by parent evidence",
   );
   assert.equal(
-    await trialPage.getByRole("combobox", { name: /^Learner/ }).count(),
+    await trialPage.getByRole("button", { name: /^Learner/ }).count(),
     0,
   );
   const related = trialPage
@@ -1173,7 +1194,7 @@ try {
   await empty.goto(`${origin}/pathways`);
   await empty.getByText("Add a learner to see earned skills.").waitFor();
   assert.equal(
-    await empty.getByRole("combobox", { name: /^Learner/ }).count(),
+    await empty.getByRole("button", { name: /^Learner/ }).count(),
     0,
   );
   assert.equal(
@@ -1367,7 +1388,7 @@ try {
       .getByText("Choose a learner to see earned skills.")
       .waitFor();
     assert.equal(
-      await unselected.getByRole("combobox", { name: /^Learner/ }).count(),
+      await unselected.getByRole("button", { name: /^Learner/ }).count(),
       1,
     );
     assert.equal(
@@ -1383,9 +1404,7 @@ try {
   await page
     .getByText("2 skills illuminated", { exact: false })
     .waitFor({ state: "attached" });
-  await page
-    .getByRole("combobox", { name: /^Learner/ })
-    .selectOption("parent-one-b");
+  await choose(page, "Learner", "parent-one-b");
   await page
     .getByText("0 skills illuminated", { exact: false })
     .waitFor({ state: "attached" });
@@ -1393,9 +1412,7 @@ try {
     await page.getByRole("link", { name: "Try a problem" }).count(),
     0,
   );
-  await page
-    .getByRole("combobox", { name: /^Learner/ })
-    .selectOption("parent-one-a");
+  await choose(page, "Learner", "parent-one-a");
   await page
     .getByText("2 skills illuminated", { exact: false })
     .waitFor({ state: "attached" });

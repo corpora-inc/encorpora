@@ -76,15 +76,17 @@
 }
 .filters {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 240px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 280px);
   gap: var(--space-3);
 }
 .filters label {
   margin: 0;
 }
+/* As tall as the area picker beside it, which holds room for its longest
+   area name. */
 .search {
   box-sizing: border-box;
-  height: var(--target-size);
+  min-height: var(--target-size);
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -121,20 +123,6 @@
 .search input:focus {
   outline: none;
   box-shadow: none;
-}
-.area select {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  min-width: 0;
-  height: var(--target-size);
-  margin: 0;
-  padding-inline: var(--space-3);
-  font-size: 16px;
-  border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-control);
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface-raised);
 }
 .filterRow {
   display: flex;

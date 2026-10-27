@@ -46,9 +46,30 @@ export default function DrawerContents({ close }: { close: () => void }) {
     frontier && frontier.overall.answered > 0
       ? gradeName(frontier.overall.level)
       : null;
+  // The assessment row comes from the token saved on this browser, which is
+  // known on the first frame (without one the lookup starts settled as
+  // null). It shows while the lookup is pending or failing and leaves only
+  // when the server reports no assessment, so the rows never grow, or fold
+  // behind a button, after the menu has opened.
+  const assessmentChoice =
+    !!view.trial.data || view.trial.isPending || view.trial.isError;
+  // Without learners, a saved assessment becomes the learning context once
+  // its lookup answers, so the card takes the assessment's layout, budget
+  // included, from the first frame rather than growing into it.
+  const assessmentCard =
+    trialMode ||
+    (view.trial.isPending &&
+      !view.learners.length &&
+      !view.identityLoading &&
+      !view.identityError);
+  // The budget holds its place, as placeholders, only while it is loading.
+  const budgetLoading =
+    assessmentCard &&
+    !trialProgress &&
+    (view.trial.isPending || view.trialProgressLoading);
   const learnerChoices: ListboxOption[] = [
     ...view.learners.map((l) => ({ value: l.id, label: l.name })),
-    ...(view.trial.data
+    ...(assessmentChoice
       ? [{ value: "trial", label: "Free assessment", detail: "This browser" }]
       : []),
   ];
@@ -137,7 +158,7 @@ export default function DrawerContents({ close }: { close: () => void }) {
         <div className={styles.learningHeading}>
           <span className={styles.kicker}>Learning</span>
           <span className={styles.mode}>
-            {trialMode
+            {assessmentCard
               ? "Free assessment"
               : learner?.entitlement.active
                 ? "Access active"
@@ -154,19 +175,19 @@ export default function DrawerContents({ close }: { close: () => void }) {
           />
         ) : (
           <strong className={styles.learnerName}>
-            {trialMode
+            {assessmentCard
               ? "Your assessment"
               : (learner?.name ?? "Your math pathways")}
           </strong>
         )}
         <p className={styles.contextNote}>
-          {trialMode
+          {assessmentCard
             ? "Progress on this browser"
             : learner
               ? "Progress saved to this learner"
               : "Start an assessment or set up a learner."}
         </p>
-        {trialProgress && (
+        {trialProgress ? (
           <div className={styles.budget}>
             <span>
               <strong>{trialProgress.totals.answered}</strong> /{" "}
@@ -179,7 +200,15 @@ export default function DrawerContents({ close }: { close: () => void }) {
               aria-label="Free assessment problems used"
             />
           </div>
-        )}
+        ) : budgetLoading ? (
+          <div className={styles.budget} aria-busy="true" data-placeholder>
+            <span>
+              <strong>—</strong> / — free problems
+            </span>
+            <span>— left</span>
+            <progress max={1} value={0} aria-hidden="true" />
+          </div>
+        ) : null}
         <div className={styles.stats} aria-live="polite">
           <span>
             <strong>{level ?? "—"}</strong>

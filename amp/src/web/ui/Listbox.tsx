@@ -20,9 +20,22 @@ export type ListboxOption = {
  * A choice's label over its detail; read aloud as "label, detail". A long
  * label wraps between words only, never inside one (hyphens included).
  */
-function OptionText({ option, id }: { option: ListboxOption; id?: string }) {
+function OptionText({
+  option,
+  id,
+  sizer = false,
+}: {
+  option: ListboxOption;
+  id?: string;
+  /** Unseen and unread: only holds room for a choice not currently shown. */
+  sizer?: boolean;
+}) {
   return (
-    <span id={id} className={styles.text}>
+    <span
+      id={id}
+      className={`${styles.text} ${sizer ? styles.sizer : ""}`}
+      aria-hidden={sizer || undefined}
+    >
       <span className={styles.label}>
         {option.label.split(" ").map((word, index) => (
           <Fragment key={index}>
@@ -148,9 +161,10 @@ export function Listbox({
 
 /**
  * A button that discloses a Listbox laid over the content below it, so
- * opening, closing and choosing never move the page. Escape, a tap outside,
- * focus leaving and choosing close it; Escape and choosing return focus to
- * the button.
+ * opening, closing and choosing never move the page. The button is as tall
+ * as its longest choice needs, whichever is shown, so a new choice never
+ * resizes it either. Escape, a tap outside, focus leaving and choosing close
+ * it; Escape and choosing return focus to the button.
  */
 export function ListboxDisclosure({
   label,
@@ -158,12 +172,16 @@ export function ListboxDisclosure({
   value,
   onChange,
   placeholder = "Choose",
+  align = "start",
 }: {
   label: string;
   options: ListboxOption[];
   value: string | null;
   onChange: (value: string) => void;
   placeholder?: string;
+  /** "end": the list lines up with the button's right edge and may grow
+   * leftward past a narrow button to fit its choices on fewer lines. */
+  align?: "start" | "end";
 }) {
   const id = useId();
   const [open, setOpen] = useState(false);
@@ -177,7 +195,8 @@ export function ListboxDisclosure({
   };
   useEffect(() => {
     if (!open) return;
-    list.current?.focus();
+    // Opening lays the list over the page; it never scrolls the page.
+    list.current?.focus({ preventScroll: true });
     // A surrounding modal (the navigation drawer) listens for Escape on the
     // document in the capture phase. The window sees the key first, so Escape
     // closes only this list.
@@ -226,16 +245,29 @@ export function ListboxDisclosure({
           }
         }}
       >
-        <OptionText
-          id={`${id}-value`}
-          option={selected ?? { value: "", label: placeholder }}
-        />
+        <span className={styles.value}>
+          <OptionText
+            id={`${id}-value`}
+            option={selected ?? { value: "", label: placeholder }}
+          />
+          {(selected
+            ? [
+                { value: "", label: placeholder },
+                ...options.filter((option) => option !== selected),
+              ]
+            : options
+          ).map((option, index) => (
+            <OptionText key={index} option={option} sizer />
+          ))}
+        </span>
         <svg viewBox="0 0 12 12" aria-hidden="true" className={styles.chevron}>
           <path d="M2.5 4.5 6 8l3.5-3.5" />
         </svg>
       </button>
       {open && (
-        <div className={styles.popover}>
+        <div
+          className={`${styles.popover} ${align === "end" ? styles.end : ""}`}
+        >
           <Listbox
             id={`${id}-list`}
             listRef={list}

@@ -138,6 +138,10 @@ export function useLearningView() {
     trial,
     trialMode,
     trialProgress: trialMode ? trialProgress.data : undefined,
+    /** The assessment's budget is on its way: the lookup or its progress. */
+    trialProgressLoading:
+      trialMode &&
+      (trial.isPending || (!!trial.data && trialProgress.isPending)),
     active,
     canPractice,
     evidence: active ? evidence.data : undefined,
