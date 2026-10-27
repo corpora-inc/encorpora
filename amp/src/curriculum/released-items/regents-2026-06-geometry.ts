@@ -579,10 +579,10 @@ export const regentsGeometryJune2026 = defineLedger(
       archetypeIds: ["triangle.relationships", "proof.geometry-written"],
       demand:
         "Prove two perpendicular segments give a proportion by triangle similarity",
-      status: "partial",
-      templateIds: ["geometry-proof-step"],
+      status: "covered",
+      templateIds: ["geometry-proof-step", "similarity-proof-aa"],
       limitations:
-        "Families choose justifications for angle steps; writing a similarity proof is not supported. The rating guide credits shown work, which AMP does not score.",
+        "similarity-proof-aa (structured-work-v1), isosceles configuration: given two congruent sides and two perpendiculars to the base, the learner builds a two-column proof from banks (base angles, right angles, AA similarity, the proportion of corresponding sides and its rearrangement) with out-of-order and false statements in the banks; any valid proof is accepted. Statements and reasons are chosen from a bank rather than written freely.",
     },
     {
       section: "Part IV",

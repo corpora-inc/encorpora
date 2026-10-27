@@ -445,10 +445,10 @@ export const regentsAlgebra1June2026 = defineLedger(
       archetypeIds: ["expression.polynomial"],
       demand:
         "Multiply two binomials and write the product as a polynomial in standard form",
-      status: "partial",
-      templateIds: ["polynomial-multiplication"],
+      status: "covered",
+      templateIds: ["polynomial-multiplication", "polynomial-product-steps"],
       limitations:
-        "Multiplication is practiced by choosing among expansions; typing a polynomial is not supported. The rating guide credits shown work, which AMP does not score.",
+        "polynomial-product-steps (structured-work-v1), binomials and squared-binomial forms: the learner types the first, outer and inner products, then enters the coefficients of the product from the highest power down, so standard form is graded exactly and an unexpanded product earns no credit. The partial products are the shown work the rating guide credits.",
     },
     {
       section: "Part II",
@@ -502,14 +502,19 @@ export const regentsAlgebra1June2026 = defineLedger(
         number: "29",
         page: "printed p.12; PDF p.12; standard map rating guide PDF p.13",
       },
-      responseFormat: "numeric",
+      responseFormat: "constructed",
       standards: ["F-IF.B"],
       archetypeIds: ["function.average-rate-change"],
       demand:
         "Find the average rate of change of a population table over four decades, rounded to a whole number",
-      status: "partial",
-      templateIds: ["average-rate-display", "average-rate-table-rounded"],
-      limitations: "Final answer practiced; shown-work credit not assessed.",
+      status: "covered",
+      templateIds: [
+        "average-rate-display",
+        "average-rate-table-rounded",
+        "average-rate-steps",
+      ],
+      limitations:
+        "average-rate-steps (structured-work-v1) enters the work as labeled exact steps from a table of five values at equal year steps: the change in the quantity between two years, the change in years and the average rate rounded to the nearest integer. The steps are the shown work the rating guide credits. The item is a two-credit constructed response, labeled constructed because its credit depends on the work.",
     },
     {
       section: "Part II",
