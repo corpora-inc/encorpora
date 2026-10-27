@@ -9,11 +9,6 @@ export const family = {
   id: "virginia-sol-ledger",
   archetypes: [
     {
-      id: "measure.thermometer",
-      domain: "geometry",
-      summary: "Read a temperature from a Celsius or Fahrenheit thermometer",
-    },
-    {
       id: "shape.congruent-figures",
       domain: "geometry",
       summary: "Pick the figure or pair of figures that are congruent",
@@ -34,12 +29,6 @@ export const family = {
       domain: "algebra",
       summary:
         "Extend or repair a repeating pattern of figures and find the missing elements",
-    },
-    {
-      id: "equation.model-choice",
-      domain: "algebra",
-      summary:
-        "Choose the drawn tile or bar model that shows a one-step equation",
     },
     {
       id: "equation.variable-identify",
@@ -64,11 +53,6 @@ export const family = {
       domain: "data",
       summary:
         "Name the likelihood of an event in words or place its probability on a zero to one number line",
-    },
-    {
-      id: "univariate.mode",
-      domain: "data",
-      summary: "Find the mode of a data set",
     },
     {
       id: "univariate.measure-meaning",

@@ -218,7 +218,7 @@ export function FundingPage({
                 {appUrl ? "Start your free assessment" : "Explore AMP Math"} <span aria-hidden="true">→</span>
               </a>
             </div>
-            {appUrl && <p className="fine">No account or card required. Ready to buy? You can create your invoice without taking the assessment.</p>}
+            {appUrl && <p className="fine">Free parent account. No card required. Ready to buy? You can create your invoice without taking the assessment.</p>}
             <ul className="funding-proof-links">
               {appUrl && <li><a href={new URL("/pathways", appUrl).href}>Explore the live curriculum map ↗</a></li>}
               <li><a href="/#sample-lesson">Read a lesson excerpt →</a></li>

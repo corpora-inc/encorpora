@@ -172,7 +172,7 @@ def scene_points(public):
     return points, graph
 
 
-def parse_motion(text):
+def parse_motion(text, origin_given=False):
     """Steps of a motion sentence as a list of callables on (x, y)."""
     s = plain(text)
     s = re.sub(r'^Yes:\s*', '', s).strip()
@@ -185,8 +185,9 @@ def parse_motion(text):
             dx, dy = int(m[1] or 0), int(m[2] or 0)
             steps.append(('translate', lambda p, dx=dx, dy=dy: (p[0] + dx, p[1] + dy)))
             continue
-        m = re.fullmatch(r'rotate (\d+)°( counterclockwise)? about the origin', low)
+        m = re.fullmatch(r'rotate (\d+)°( counterclockwise)?( about the origin)?', low)
         if m:
+            require(m[3] or origin_given, 'Rotation center must be stated in the choice or prompt')
             angle = int(m[1])
             require(m[2] or angle == 180, f'Rotation direction ambiguous: {part}')
             require(angle in (90, 180, 270), f'Unsupported rotation {angle}')
@@ -202,8 +203,9 @@ def parse_motion(text):
             else:
                 steps.append(('reflect', lambda p: (-p[0], p[1])))
             continue
-        m = re.fullmatch(r'dilate by a factor of (.+) about the origin', low)
+        m = re.fullmatch(r'dilate by a factor of (.+?)( about the origin)?', low)
         if m:
+            require(m[2] or origin_given, 'Dilation center must be stated in the choice or prompt')
             k = number(m[1])
             require(k > 0, 'Dilation factor must be positive')
             steps.append(('dilate', lambda p, k=k: (p[0] * k, p[1] * k)))
@@ -218,8 +220,8 @@ def apply(steps, point):
     return point
 
 
-def motion_maps(label, points, sources='ABC', targets='DEF', allow_dilation=False):
-    steps = parse_motion(label)
+def motion_maps(label, points, sources='ABC', targets='DEF', allow_dilation=False, origin_given=False):
+    steps = parse_motion(label, origin_given=origin_given)
     if not allow_dilation:
         require(all(kind != 'dilate' for kind, _ in steps), 'Rigid motion list contains a dilation')
     return all(apply(steps, points[a]) == points[b] for a, b in zip(sources, targets))
@@ -849,19 +851,20 @@ def axis_legs(points, names):
 
 def solve_similarity(public):
     prompt = plain(public['prompt'])
+    origin_given = 'Dilations and rotations are about the origin' in prompt
     points, _ = scene_points(public)
     require(set(points) == set('ABCDEF'), 'Both triangles must be drawn')
     require(cross(points['A'], points['B'], points['C']) != 0 and cross(points['D'], points['E'], points['F']) != 0,
             'Degenerate triangle')
     similar, ratio = similar_by_sides(points)
     if re.fullmatch(r'Triangle DEF is similar to triangle ABC, with A→D, B→E, C→F\. Which sequence of a dilation and rigid '
-                    r'motions maps ABC onto DEF\? Dilations are about the origin, and the steps happen in the order listed\.',
+                    r'motions maps ABC onto DEF\? Dilations(?: and rotations)? are about the origin, and the steps happen in the order listed\.',
                     prompt):
         require(similar, 'Stated similarity is false in the figure')
-        distinct(public, lambda t: tuple(tuple(apply(parse_motion(t), points[v])) for v in 'ABC'))
-        return pick(public, lambda text: motion_maps(text, points, allow_dilation=True))
+        distinct(public, lambda t: tuple(tuple(apply(parse_motion(t, origin_given=origin_given), points[v])) for v in 'ABC'))
+        return pick(public, lambda text: motion_maps(text, points, allow_dilation=True, origin_given=origin_given))
     require(re.fullmatch(r'Triangles ABC and DEF are shown, with A→D, B→E, C→F\. Two figures are similar exactly when some sequence '
-                         r'of dilations and rigid motions maps one onto the other\. Are ABC and DEF similar(, and why)?\?', prompt),
+                         r'of dilations and rigid motions maps one onto the other\.(?: Dilations and rotations are about the origin\.)? Are ABC and DEF similar(, and why)?\?', prompt),
             f'Unrecognised similarity prompt: {prompt}')
 
     def valid(label):
@@ -869,7 +872,7 @@ def solve_similarity(public):
         if s.startswith('Yes: both triangles are right triangles'):
             return False
         if s.startswith('Yes:'):
-            return similar and motion_maps(label, points, allow_dilation=True)
+            return similar and motion_maps(label, points, allow_dilation=True, origin_given=origin_given)
         if s.startswith('No: the triangles have different sizes') or s.startswith('No: DEF is in a different position'):
             return False
         mm = re.fullmatch(r'No: the horizontal legs scale by (.+?) but the vertical legs scale by (.+?), and a dilation scales all '
@@ -1127,6 +1130,17 @@ def self_test():
                ['$\\frac{AB}{EF}=\\frac{BC}{FD}$', '$\\frac{AB}{DE}=\\frac{BC}{EF}$', '$\\frac{AB}{FD}=\\frac{BC}{EF}$',
                 '$\\frac{AB}{BC}=\\frac{FD}{EF}$'], 0),
     ]
+    shared_origin = choice(
+        'Triangle $DEF$ is similar to triangle $ABC$, with $A\\to D$, $B\\to E$, $C\\to F$. '
+        'Which sequence of a dilation and rigid motions maps $ABC$ onto $DEF$? '
+        'Dilations and rotations are about the origin, and the steps happen in the order listed.',
+        'similarity-by-transformation',
+        ['Dilate by a factor of $2$, then rotate $180^\\circ$',
+         'Dilate by a factor of $\\frac{1}{2}$, then rotate $180^\\circ$',
+         'Dilate by a factor of $2$, then rotate $90^\\circ$ counterclockwise',
+         'Dilate by a factor of $2$'], 0,
+        graph({**abc, 'D': (-2, -2), 'E': (-8, -2), 'F': (-2, -6)}))
+    cases.append(shared_origin)
     rejected = 0
 
     def reject(problem, why):
@@ -1150,6 +1164,15 @@ def self_test():
         other = bad['public']['response']['options'][(int(case['answer'][1:]) + 1) % len(options)]
         other['label'] = bad['public']['response']['options'][int(case['answer'][1:])]['label']
         reject(bad, 'duplicate of the correct choice')
+    bad = copy.deepcopy(shared_origin)
+    bad['public']['prompt'] = bad['public']['prompt'].replace('Dilations and rotations', 'Dilations')
+    reject(bad, 'compact rotation has no stated center')
+    bad = copy.deepcopy(shared_origin)
+    bad['public']['prompt'] = bad['public']['prompt'].replace('about the origin', 'about point A')
+    reject(bad, 'unsupported center must not be interpreted as the origin')
+    bad = copy.deepcopy(shared_origin)
+    bad['public']['figure']['scene']['elements'][0]['points'][-1]['y'] = -5
+    reject(bad, 'the sequence must map the third vertex too')
     return {'fixtures': len(cases), 'rejectedMutations': rejected}
 
 # Read by independent-math-review.py (FamilyOracle).
