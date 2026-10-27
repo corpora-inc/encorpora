@@ -25,7 +25,7 @@ export const pointPlotCurveTemplates: readonly TemplateMetadata[] = [
     gradeBand: "9–12",
     ...plot,
     description:
-      "Graph a quadratic function from vertex or standard form by placing three of its lattice points, sometimes including the vertex or the y-intercept; any three distinct points on the parabola are accepted.",
+      "Graph a quadratic function from vertex or standard form by placing three of its lattice points, sometimes including the vertex or the $y$-intercept; any three distinct points on the parabola are accepted.",
   },
   {
     id: "graph-absolute-value-points",
@@ -35,7 +35,7 @@ export const pointPlotCurveTemplates: readonly TemplateMetadata[] = [
     gradeBand: "9–12",
     ...plot,
     description:
-      "Graph y = a|x - h| + k by placing three lattice points, sometimes including the vertex; any three distinct points on the V-shaped graph are accepted.",
+      "Graph $y = a|x - h| + k$ by placing three lattice points, sometimes including the vertex; any three distinct points on the V-shaped graph are accepted.",
   },
   {
     id: "graph-exponential-points",
@@ -45,7 +45,7 @@ export const pointPlotCurveTemplates: readonly TemplateMetadata[] = [
     gradeBand: "9–12",
     ...plot,
     description:
-      "Graph y = a·b^x for a whole-number a and a base of 2, 3, one half or one third by placing three lattice points whose outputs are whole numbers, including negative inputs.",
+      "Graph $y = a \\cdot b^x$ for a whole-number $a$ and a base of 2, 3, one half or one third by placing three lattice points whose outputs are whole numbers, including negative inputs.",
   },
   {
     id: "graph-sqrt-points",
@@ -55,7 +55,7 @@ export const pointPlotCurveTemplates: readonly TemplateMetadata[] = [
     gradeBand: "9–12",
     ...plot,
     description:
-      "Graph y = a√(x - h) + k by placing three lattice points whose square roots are whole numbers, sometimes including the starting point; the graph exists only for x at least h.",
+      "Graph $y = a\\sqrt{x - h} + k$ by placing three lattice points whose square roots are whole numbers, sometimes including the starting point; the graph exists only for $x \\ge h$.",
   },
 ];
 
@@ -167,12 +167,12 @@ function finish(core: Core, r: Random): CurveParts {
   const answer = sortPoints([...required, ...chosen]);
   const ask =
     feature === undefined
-      ? "by placing 3 points on its curve."
+      ? "by placing 3 points."
       : feature.kind === "vertex"
-        ? "by placing its vertex and 2 other points on the curve."
+        ? "by placing its vertex and 2 more points."
         : feature.kind === "y-intercept"
-          ? "by placing its $y$-intercept and 2 other points on the curve."
-          : "by placing its starting point and 2 other points on the curve.";
+          ? "by placing its $y$-intercept and 2 more points."
+          : "by placing its starting point and 2 more points.";
   const response: PointPlotResponse = {
     kind: "point-plot",
     label: "Place 3 points on the curve",
@@ -199,7 +199,7 @@ function finish(core: Core, r: Random): CurveParts {
       ...core.method,
       ...lines,
       feature
-        ? `Place ${list(answer.map((p) => pointTex(p)))}. The ${feature.kind === "start" ? "starting point" : feature.kind} ${pointTex(feature.point)} is one of them, and any 2 other points that satisfy the equation also work.`
+        ? `Place ${list(answer.map((p) => pointTex(p)))}. The ${feature.kind === "start" ? "starting point" : feature.kind === "y-intercept" ? "$y$-intercept" : feature.kind} ${pointTex(feature.point)} is one of them, and any 2 other points that satisfy the equation also work.`
         : `Place ${list(answer.map((p) => pointTex(p)))}. Any 3 different points that satisfy the equation are correct.`,
     ],
   };
@@ -334,7 +334,7 @@ function absoluteParts(seed: string): CurveParts {
         work,
         center: h,
         method: [
-          `The graph of $y = a|x - h| + k$ is a V with its vertex at $(h, k)$, which opens ${a[0] > 0 ? "upward" : "downward"} because $a$ is ${a[0] > 0 ? "positive" : "negative"}. Here the vertex is ${pointTex([h, k])}.`,
+          `The graph of $y = a|x - h| + k$ is V-shaped with its vertex at $(h, k)$, which opens ${a[0] > 0 ? "upward" : "downward"} because $a$ is ${a[0] > 0 ? "positive" : "negative"}. Here the vertex is ${pointTex([h, k])}.`,
           `Each side is a straight ray: $y$ changes by $${ratTex(a)}$ for every unit $x$ moves from $h$, ${a[1] > 1 ? "so whole-number points appear every 2 units" : "so whole-number points appear at every unit"}. Equal distances left and right of $x = ${h}$ give equal $y$-values.`,
         ],
         hint: `In $${equation}$, the vertex is where the expression inside the absolute value is 0, because $|0| = 0$ leaves only the number added at the end. Find that $x$-value, then substitute $x$-values on both sides of it.`,
@@ -377,7 +377,7 @@ function exponentialParts(seed: string): CurveParts {
           `In $y = a \\cdot b^x$, the starting value is $a = ${a[0]}$ at $x = 0$ and each step of 1 in $x$ multiplies $y$ by $b = ${ratTex(b)}$. The curve ${b[0] > b[1] ? "rises" : "falls"} as $x$ increases and never reaches $y = 0$.`,
           `A negative exponent takes the reciprocal of the base: $b^{-1} = ${b[1] === 1 ? `\\frac{1}{${b[0]}}` : `${b[1]}`}$. Only some $x$-values give a whole-number $y$ inside the grid, so test $x$-values and keep those.`,
         ],
-        hint: `Make a table. Start at $x = 0$, where $b^0 = 1$, then try $x = 1$, $x = 2$ and negative values such as $x = -1$. Keep a point only when $y$ is a whole number that fits on the grid (a fraction such as $\\frac{3}{2}$ is not a lattice point).`,
+        hint: `Make a table for $${equation}$. Start at $x = 0$, where $b^0 = 1$, then try $x = 1$, $x = 2$ and negative values such as $x = -1$. Keep a point only when $y$ is a whole number that fits on the grid (a fraction such as $\\frac{3}{2}$ is not a lattice point).`,
       },
       r,
     );

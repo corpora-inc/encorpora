@@ -87,6 +87,7 @@ export function redactUrl(url: string) {
     "gbraid",
     "wbraid",
     "fbclid",
+    "oppref",
     "fbc",
     "fbp",
   ])

@@ -64,18 +64,27 @@ import { rightTrianglePrinciples } from "./right-triangle-lessons";
 import { polynomialPrinciples } from "./polynomial-lessons";
 import { quadraticPrinciples } from "./quadratic-lessons";
 import { complexPrinciples } from "./complex-lessons";
+import { financeCreditPrinciples } from "./finance-credit-lessons";
+import { hsStateGapPrinciples } from "./hs-state-gaps-lessons";
+import { financeIncomePrinciples } from "./finance-income-lessons";
+import { texasHsPrinciples } from "./texas-hs-lessons";
 import { k8StateNumberPrinciples } from "./k8-state-number-lessons";
+import { texas38Principles } from "./texas-38-lessons";
 import { satNumericEntryPrinciples } from "./sat-numeric-entry-lessons";
+import { satFunctionFormsPrinciples } from "./sat-function-forms-lessons";
 import { pointPlotPrinciples } from "./point-plot-lessons";
 import { multiPartChoicePrinciples } from "./multi-part-choice-lessons";
 import { algebraRequirementGapPrinciples } from "./algebra-requirement-gaps-lessons";
 import { advancedMathGapPrinciples } from "./advanced-math-gaps-lessons";
 import { numberMeasurementGapPrinciples } from "./number-measurement-gaps-lessons";
 import { floridaGapPrinciples } from "./florida-gaps-lessons";
+import { regentsGapPrinciples } from "./regents-gap-lessons";
 import { mcasGapPrinciples } from "./mcas-gap-lessons";
 import { staarGapPrinciples } from "./staar-gap-lessons";
+import { texasK2Principles } from "./texas-k2-lessons";
 import { satAlgebraStructurePrinciples } from "./sat-algebra-structure-lessons";
 import { remainingGapPrinciples } from "./remaining-gap-lessons";
+import { dataDisplayStatePrinciples } from "./data-display-state-lessons";
 import { vectorMatrixPrinciples } from "./vectors-matrices-lessons";
 import { statisticsProbabilityPrinciples } from "./statistics-probability-lessons";
 import { complexConicsPrinciples } from "./complex-conics-lessons";
@@ -84,9 +93,11 @@ import { geometryModelingPrinciples } from "./geometry-modeling-lessons";
 import { geometryRequirementGapPrinciples } from "./geometry-requirement-gaps-lessons";
 import { functionBehaviorPrinciples } from "./function-behavior-lessons";
 import { absoluteValuePrinciples } from "./absolute-value-lessons";
+import { familyRegistry } from "../families/registry";
+import { withFamilyEntries } from "../families/registry/aggregate";
 /** The mathematics each problem type rests on, named precisely and stated in
  * general form. Shown in every lesson so learners meet the real vocabulary. */
-export const principles: Record<string, string> = {
+const legacyPrinciples: Record<string, string> = {
   ...assessmentGapPrinciples,
   ...satCompletionPrinciples,
   ...satGeometryDataPrinciples,
@@ -107,18 +118,27 @@ export const principles: Record<string, string> = {
   ...descriptiveStatisticsPrinciples,
   ...quadraticPrinciples,
   ...complexPrinciples,
+  ...financeCreditPrinciples,
+  ...hsStateGapPrinciples,
+  ...financeIncomePrinciples,
+  ...texasHsPrinciples,
   ...k8StateNumberPrinciples,
+  ...texas38Principles,
   ...satNumericEntryPrinciples,
+  ...satFunctionFormsPrinciples,
   ...pointPlotPrinciples,
   ...multiPartChoicePrinciples,
   ...algebraRequirementGapPrinciples,
   ...advancedMathGapPrinciples,
   ...numberMeasurementGapPrinciples,
   ...floridaGapPrinciples,
+  ...regentsGapPrinciples,
   ...mcasGapPrinciples,
   ...staarGapPrinciples,
+  ...texasK2Principles,
   ...satAlgebraStructurePrinciples,
   ...remainingGapPrinciples,
+  ...dataDisplayStatePrinciples,
   ...vectorMatrixPrinciples,
   ...statisticsProbabilityPrinciples,
   ...complexConicsPrinciples,
@@ -448,3 +468,9 @@ export const principles: Record<string, string> = {
   "logarithm-integer":
     "Definition of a logarithm: $\\log_b N = p$ exactly when $b^p = N$, where $b > 0$, $b \\neq 1$ and $N > 0$.",
 };
+/** Frozen legacy entries, then families from src/families/. */
+export const principles: Record<string, string> = withFamilyEntries(
+  "principle",
+  legacyPrinciples,
+  familyRegistry.principles,
+);

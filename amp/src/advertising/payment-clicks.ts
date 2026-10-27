@@ -11,7 +11,7 @@ export async function paymentClickEvidence(
   client: PoolClient,
   account: string,
   rawReference: PaymentReference,
-  provider: "google" | "meta",
+  provider: "google" | "meta" | "openai",
 ) {
   const reference = paymentReferenceSchema.parse(rawReference);
   const stripe = reference.kind === "stripe";

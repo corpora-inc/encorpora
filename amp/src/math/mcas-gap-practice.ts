@@ -201,11 +201,11 @@ export const mcasGapTemplates: readonly TemplateMetadata[] = [
   ),
   meta(
     "mcas-table-intercept-select",
-    "Select the tables with a smaller or larger y-intercept",
+    "Select the tables with a smaller or larger intercept",
     "compare-functions",
     "6–8",
     0.45,
-    "Find the y-intercept of six linear tables, whether or not x = 0 is listed, and select those below or above the y-intercept of a stated function.",
+    "Find the $y$-intercept of six linear tables, whether or not $x = 0$ is listed, and select those below or above the $y$-intercept of a stated function.",
     multi,
   ),
   meta(
@@ -214,7 +214,7 @@ export const mcasGapTemplates: readonly TemplateMetadata[] = [
     "quadratic-equations",
     "9–12",
     0.3,
-    "Select the two values of x that make a factored, standard-form or non-monic quadratic expression equal to zero.",
+    "Select the two values of $x$ that make a factored, standard-form or non-monic quadratic expression equal to zero.",
     multi,
   ),
   meta(
@@ -1709,7 +1709,7 @@ function quadraticZeros(r: Random): Built {
     pool,
     total: 5,
     k: 2,
-    noun: "values of x",
+    noun: "values of $x$",
     tail: [`The expression equals 0 only at $x=${p}$ and $x=${q}$.`],
     model: { p, q, lead, expr },
   };
@@ -1862,8 +1862,8 @@ function congruenceSelect(r: Random): Built {
         holds: i === j,
         why:
           i === j
-            ? `Vertex ${first[i]} is in the same position as ${second[j]} in the congruence statement, so the angles correspond.`
-            : `${first[i]} corresponds to ${second[i]}, not ${second[j]}, so these angles do not correspond.`,
+            ? `Vertex $${first[i]}$ is in the same position as $${second[j]}$ in the congruence statement, so the angles correspond.`
+            : `$${first[i]}$ corresponds to $${second[i]}$, not $${second[j]}$, so these angles do not correspond.`,
       });
   for (const [i, j] of pairs)
     for (const [x, y] of pairs) {
@@ -1872,20 +1872,20 @@ function congruenceSelect(r: Random): Built {
         label: `$\\overline{${name(first, i, j, r(0, 1) === 1)}}\\cong\\overline{${name(second, x, y, r(0, 1) === 1)}}$`,
         holds,
         why: holds
-          ? `${first[i]} corresponds to ${second[i]} and ${first[j]} corresponds to ${second[j]}, so these sides correspond.`
-          : `Side ${first[i]}${first[j]} corresponds to side ${second[i]}${second[j]}, not to ${second[x]}${second[y]}.`,
+          ? `$${first[i]}$ corresponds to $${second[i]}$ and $${first[j]}$ corresponds to $${second[j]}$, so these sides correspond.`
+          : `Side $${first[i]}${first[j]}$ corresponds to side $${second[i]}${second[j]}$, not to $${second[x]}${second[y]}$.`,
       });
     }
   return {
     variant,
     prompt: `The triangles satisfy ${statement}. Choose the 3 statements about corresponding parts that must be true.`,
-    hint: `The letters of ${statement} are listed in matching order: ${first[0]} is matched with ${second[0]}, the second letters match, and so on. Write the three matching pairs of vertices, then read each statement as a pair of vertices or two pairs.`,
+    hint: `The letters of ${statement} are listed in matching order: $${first[0]}$ is matched with $${second[0]}$, the second letters match, and so on. Write the three matching pairs of vertices, then read each statement as a pair of vertices or two pairs.`,
     pool,
     total: 6,
     k: 3,
     noun: "true statements",
     lead: [
-      `By position in the statement, ${first.map((l, i) => `${l} matches ${second[i]}`).join(", ")}.`,
+      `By position in the statement, ${first.map((l, i) => `$${l}$ matches $${second[i]}$`).join(", ")}.`,
     ],
     model: { first, second },
   };

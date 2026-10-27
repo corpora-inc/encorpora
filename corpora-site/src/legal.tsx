@@ -152,7 +152,9 @@ export function Legal({
             or checkout without adding a tracking step. These records are
             separate from learner profiles, assessment answers and progress. Ad
             identifiers are removed from the page’s address before links are
-            shared.
+            shared. OpenAI ads can lead directly to AMP’s public home page,
+            where the same process retains the original OpenAI click reference
+            for purchase attribution. Learning routes do not collect it.
           </p>
           <p>
             Global Privacy Control and Do Not Track prevent this collection and
@@ -160,10 +162,10 @@ export function Legal({
             in the parent’s data export. Withdrawing a provider’s
             purchase-sharing preference deletes that provider’s associated click
             evidence; learning-consent withdrawal and learning-data deletion
-            remove both providers’ associated evidence. Unassociated visits
+            remove all providers’ associated evidence. Unassociated visits
             expire after at most 90 days. Collection does not itself send a
-            purchase or identifiers to Google or Meta; external sharing requires
-            the separate applicable permission described below.
+            purchase or identifiers to Google, Meta or OpenAI; external sharing
+            requires the separate applicable permission described below.
           </p>
           <h2>Education-fund purchase documents</h2>
           <p>
@@ -202,14 +204,14 @@ export function Legal({
           <h2>Optional adult purchase sharing</h2>
           <p>
             In AMP’s Family privacy controls, an adult with a confirmed account
-            email can independently allow Google or Meta purchase sharing. For
-            Google, with that permission, AMP may share an encoded version of
-            the adult’s email, a random purchase reference, purchase date,
-            amount and currency. When available, this includes the saved Google
-            ad click identifier. Google can match the click identifier and
-            encoded email with its records; it is not anonymous. Learner names,
-            ages, answers, lessons and progress are excluded. AMP requests
-            measurement without ad personalization.
+            email can independently allow Google, Meta or OpenAI purchase
+            sharing. For Google, with that permission, AMP may share an encoded
+            version of the adult’s email, a random purchase reference, purchase
+            date, amount and currency. When available, this includes the saved
+            Google ad click identifier. Google can match the click identifier
+            and encoded email with its records; it is not anonymous. Learner
+            names, ages, answers, lessons and progress are excluded. AMP
+            requests measurement without ad personalization.
           </p>
           <p>
             For Meta (Facebook and Instagram), the separate permission covers an
@@ -223,12 +225,20 @@ export function Legal({
             names, ages, answers, lessons and progress are excluded.
           </p>
           <p>
+            For OpenAI, separate permission covers the saved ad click reference,
+            a random purchase reference, purchase date, amount and currency.
+            OpenAI can match the click reference with its advertising records.
+            No email, learner names, ages, answers, lessons or progress are
+            sent. AMP requests measurement without future user-level
+            personalization.
+          </p>
+          <p>
             Each optional permission lasts one year and does not affect pricing,
             purchasing or learning access. Each can be withdrawn independently.
             Withdrawal stops future sharing; it does not recall information
             already received by the provider. Learning-data deletion,
             learning-consent withdrawal, and Global Privacy Control or Do Not
-            Track received on an authenticated AMP request withdraw both
+            Track received on an authenticated AMP request withdraw all
             preferences. AMP retains permission evidence for its duration and up
             to 90 days after withdrawal or expiry. A minimal opt-out setting
             stays until you change it, so expiry of that evidence cannot resume
@@ -238,8 +248,9 @@ export function Legal({
             the purchase and included in the family export. Withdrawal cancels
             unsent preparations. Providers handle received information under
             their own privacy policies:{" "}
-            <a href="https://policies.google.com/privacy">Google</a> and{" "}
-            <a href="https://www.facebook.com/privacy/policy/">Meta</a>.
+            <a href="https://policies.google.com/privacy">Google</a>,{" "}
+            <a href="https://www.facebook.com/privacy/policy/">Meta</a> and{" "}
+            <a href="https://openai.com/policies/privacy-policy/">OpenAI</a>.
           </p>
           <h2>Free practice</h2>
           <p>
@@ -328,15 +339,19 @@ export function Legal({
           <h2>Google Analytics</h2>
           <p>
             Our public marketing and purchase pages use Google Analytics to
-            measure visits, traffic sources, engagement and purchase-flow actions.
-            Google receives limited page and campaign information and uses
-            browser cookies that expire after 90 days. We do not send learner
-            answers, learning records, names, email addresses, invoice identifiers
-            or form contents to Google Analytics. Assessment, practice, lessons
-            and family-account pages use our first-party measurement instead.
-            Google advertising personalization is disabled for this measurement.
-            We honor browser Do Not Track and Global Privacy Control signals.
-            See <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from sites that use its services</a>.
+            measure visits, traffic sources, engagement and purchase-flow
+            actions. Google receives limited page and campaign information and
+            uses browser cookies that expire after 90 days. We do not send
+            learner answers, learning records, names, email addresses, invoice
+            identifiers or form contents to Google Analytics. Assessment,
+            practice, lessons and family-account pages use our first-party
+            measurement instead. Google advertising personalization is disabled
+            for this measurement. We honor browser Do Not Track and Global
+            Privacy Control signals. See{" "}
+            <a href="https://policies.google.com/technologies/partner-sites">
+              how Google uses information from sites that use its services
+            </a>
+            .
           </p>
           <h2>Problem reports</h2>
           <p>

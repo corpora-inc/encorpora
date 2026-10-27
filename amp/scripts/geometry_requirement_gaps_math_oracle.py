@@ -294,7 +294,7 @@ def pick_pv(public, expected, unit=None):
     def read(label):
         s = label
         if unit == 'cm^2':
-            s = s.replace('cm$^2$', '').replace('cm^2', '')
+            s = s.replace('cm$^2$', '').replace('cm^2', '').replace('square centimeters', '')
         elif unit == 'cm':
             s = s.replace('cm', '')
         return pv(s)
@@ -1151,6 +1151,10 @@ def self_test():
         other['label'] = bad['public']['response']['options'][int(case['answer'][1:])]['label']
         reject(bad, 'duplicate of the correct choice')
     return {'fixtures': len(cases), 'rejectedMutations': rejected}
+
+# Read by independent-math-review.py (FamilyOracle).
+CHOICE_REVIEW = SUPPORTED
+
 
 
 if __name__ == '__main__':

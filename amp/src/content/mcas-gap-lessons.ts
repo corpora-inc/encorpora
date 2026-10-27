@@ -303,12 +303,12 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       "A negative exponent never makes the number negative: $2\\times10^{-3}=0.002$.",
   },
   "mcas-table-intercept-select": {
-    goal: "Find the y-intercept of each linear table and choose those above or below a stated y-intercept.",
+    goal: "Find the $y$-intercept of each linear table and choose those above or below a stated $y$-intercept.",
     intuition:
       "The $y$-intercept is the value of $y$ at $x=0$. In a linear table $y$ changes by the same amount for each step in $x$, so you can step backward from any row to $x=0$.",
     terms: [
       [
-        "y-intercept",
+        "$y$-intercept",
         "The value of $y$ when $x=0$, where the graph crosses the $y$-axis.",
       ],
       ["slope", "The change in $y$ for each increase of 1 in $x$."],
@@ -323,7 +323,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       "The first $y$ value is the intercept only when the first $x$ value is 0.",
   },
   "mcas-quadratic-zeros-select": {
-    goal: "Choose the two values of x that make a quadratic expression equal to 0.",
+    goal: "Choose the two values of $x$ that make a quadratic expression equal to 0.",
     intuition:
       "A product is 0 only when one of its factors is 0, so a factored quadratic is 0 at the value that zeroes each factor. A value is a zero of any expression if substituting it gives 0.",
     terms: [
@@ -750,6 +750,7 @@ export const mcasGapLessons: Lesson[] = [
     templateIds: ["mcas-statistical-question-select"],
     objectives: [
       "Tell a statistical question from a question with a single answer.",
+      "Explain that a statistical question expects different answers, so it needs data.",
     ],
     intuition: [
       "Will the answers vary?",
@@ -775,6 +776,7 @@ export const mcasGapLessons: Lesson[] = [
     ],
     pitfalls: [
       "“How many” does not make a question statistical. Check whether the answer varies.",
+      "A question about a group is not statistical if it has one fixed answer, such as the number of students in one room.",
     ],
     parentGuide:
       "Ask the learner to change “How many seats does the theater have?” into a statistical question about the theater.",
@@ -791,7 +793,7 @@ export const mcasGapLessons: Lesson[] = [
     ],
     objectives: [
       "Find the expressions equal to a negative fraction.",
-      "Decide which radical or pi expressions are rational.",
+      "Decide which radical or $\\pi$ expressions are rational.",
       "Check equations between scientific notation and standard numerals.",
     ],
     intuition: [
@@ -839,7 +841,7 @@ export const mcasGapLessons: Lesson[] = [
       "mcas-slope-sign-description",
     ],
     objectives: [
-      "Find the y-intercept of a table that may not list $x=0$.",
+      "Find the $y$-intercept of a table that may not list $x=0$.",
       "Find the values that make a quadratic expression zero.",
       "Read the center and radius from the equation of a circle.",
       "Decide the sign of a slope from how the output changes.",

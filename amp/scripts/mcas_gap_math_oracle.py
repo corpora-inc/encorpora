@@ -1031,3 +1031,7 @@ def self_test():
         2,
     )
     require(solve(powers) == '["option-c","option-e"]', "Powers fixture")
+
+
+# Read by independent-math-review.py (FamilyOracle).
+REVIEW_RETURNS_ANSWER = True

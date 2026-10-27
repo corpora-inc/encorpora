@@ -93,10 +93,14 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand:
         "Evaluate a given affine model of a quantity in context at a stated input",
-      status: "partial",
-      templateIds: ["dependent-variable-value", "substitute-linear-expression"],
+      status: "covered",
+      templateIds: [
+        "sat-entry-fn-linear-notation",
+        "dependent-variable-value",
+        "substitute-linear-expression",
+      ],
       limitations:
-        "dependent-variable-value uses proportional rules like d = kt; substitute-linear-expression is context-free; no template evaluates a given contextual model with a nonzero intercept.",
+        "evaluate-contextual gives a fee- or start-plus-rate model with a nonzero constant in function notation and asks for its value at a stated input. Choices are plain numbers, so exact numeric entry practices the same answer.",
     },
     {
       section: "Math module 1",
@@ -161,10 +165,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["linear.structure"],
       demand:
         "Find the value of a multiple of a linear expression by scaling the given equation rather than solving",
-      status: "partial",
-      templateIds: ["system-expression-value"],
+      status: "covered",
+      templateIds: ["sat-entry-fn-related-value", "system-expression-value"],
       limitations:
-        "Scaling equations to reach a target expression is practiced only for two-equation systems; no single-equation version.",
+        "scaled-equation scales a single two-variable equation, by an integer, negative or half multiple, to a target expression and asks for its value. Choices are plain numbers, so exact numeric entry practices the same answer.",
     },
     {
       section: "Math module 1",
@@ -467,10 +471,14 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["function.input-output"],
       demand:
         "Find the input of a proportional function written in function notation that gives a stated output",
-      status: "partial",
-      templateIds: ["dependent-variable-value", "one-step-equation"],
+      status: "covered",
+      templateIds: [
+        "sat-entry-fn-linear-notation",
+        "dependent-variable-value",
+        "one-step-equation",
+      ],
       limitations:
-        "Solving px = q and contextual y = kx are practiced, but not with function notation f(x) = value.",
+        "input-proportional solves f(x) = kx = v in function notation, with numeric entry.",
     },
     {
       section: "Math module 2",
@@ -559,10 +567,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["exponential.context"],
       demand:
         "Recover the base of an exponential function from one output, then evaluate at the next input",
-      status: "partial",
-      templateIds: ["exponential-model-value"],
+      status: "covered",
+      templateIds: ["sat-entry-fn-exponential", "exponential-model-value"],
       limitations:
-        "Evaluates models with a known base; no recovering the base from a given output by a cube root.",
+        "base-then-next-output gives one output of a*b^x, requires the base from a root, and asks for the output at the next input.",
     },
     {
       section: "Math module 2",
@@ -585,10 +593,10 @@ export const satPractice10 = defineLedger(
       archetypeIds: ["line.constraint"],
       demand:
         "Choose the standard-form equation of a decreasing line in context from its intercepts",
-      status: "partial",
-      templateIds: ["graph-equation-choice"],
+      status: "covered",
+      templateIds: ["sat-fn-constraint-choice", "graph-equation-choice"],
       limitations:
-        "Matches increasing slope-intercept lines; no decreasing line matched to a standard-form equation by its intercepts.",
+        "capacity-intercepts gives the two extreme full loads of a context and asks for the standard-form equation of the decreasing line through them, with swapped-coefficient distractors.",
     },
     {
       section: "Math module 2",

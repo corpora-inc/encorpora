@@ -9,6 +9,7 @@ import { areaVolumeFacetMappings } from "./area-volume-coverage";
 import { transformationFacetMappings } from "./transformation-coverage";
 import { completingSquareFacetMappings } from "./completing-square-coverage";
 import { algebraRequirementGapFacetMappings } from "./algebra-requirement-gaps-coverage";
+import { texasHsFacetMappings } from "./texas-hs-coverage";
 import { pointPlotFacetMappings } from "./point-plot-coverage";
 import { multiPartChoiceFacetMappings } from "./multi-part-choice-coverage";
 import { factoringFacetMappings } from "./factoring-coverage";
@@ -59,9 +60,458 @@ import { inequalityFacetMappings } from "./inequality-coverage";
 import { linearSystemFacetMappings } from "./linear-system-coverage";
 import { rightTriangleFacetMappings } from "./right-triangle-coverage";
 import { absoluteValueFacetMappings } from "./absolute-value-coverage";
+import { familyRegistry } from "../families/registry";
 
 /** Authored task-domain associations; evidence controls tested, reviewed and published states. */
 export const actualFacetMappings: readonly FacetMapping[] = [
+  {
+    templateId: "interest-compare-years",
+    facetId: "exponential-models.core",
+    extent: "partial",
+    rationale:
+      "Choose, from a stated principal, rate and number of years, the gap between a simple-interest and a yearly-compounded balance with cent rounding, which of two accounts holds more and by how much, the compound account in a balance table, and one year's extra interest. Does not assess continuous or multiple-per-year compounding, solving for time or rate, or graphing the balances.",
+  },
+  {
+    templateId: "loan-total-cost",
+    facetId: "linear-models.core",
+    extent: "partial",
+    rationale:
+      "Choose the total repaid and finance charge on a loan from a stated equal payment and term, the cost gap between two terms or two rates, a missing payment, and a term given in years. Does not assess computing the payment from the rate, amortization schedules or APR derivation.",
+  },
+  {
+    templateId: "loan-compare-options",
+    facetId: "linear-models.core",
+    extent: "partial",
+    rationale:
+      "Choose the cheaper of two stated loan offers by payment times months plus an optional upfront fee, with the gap, and the true statement about lower payment versus lower total. Does not assess computing payments from rates, early payoff or tax effects.",
+  },
+  {
+    templateId: "credit-card-balance",
+    facetId: "percent-change.core",
+    extent: "partial",
+    rationale:
+      "Choose a credit card's monthly finance charge from the APR divided by 12, the new balance after a payment, the balance after two months, total interest over three months, the debt-reducing share of a payment and the effect of a larger payment, with interest rounded to the cent and no tie cases. Does not assess daily balances, grace periods, minimum-payment formulas, credit scores or reports.",
+  },
+  {
+    templateId: "credit-cost-concepts",
+    facetId: "percent-change.core",
+    extent: "partial",
+    rationale:
+      "Choose the numeric consequence of a credit choice: APR and monthly rate conversion, interest from paying only the minimum, the interest gap between two APRs, the extra cost of credit over debit for one month, and a new balance with purchases, late fee and payment. Does not assess opinions about credit use, credit-score or report content, or compound card interest beyond the stated month.",
+  },
+  {
+    templateId: "savings-plan-growth",
+    facetId: "linear-models.core",
+    extent: "partial",
+    rationale:
+      "Choose a balance from a starting amount and equal monthly deposits, months to a goal rounded up, the deposit needed, the month two plans are equal, which plan leads, and a later balance read from a table. Does not assess interest on deposits, annuity formulas or graphing the plan.",
+  },
+  {
+    templateId: "interest-table-type",
+    facetId: "percent-change.core",
+    extent: "partial",
+    rationale:
+      "Tell simple from compound interest in two balance tables by comparing yearly increases, extend the simple account to a later year, and find one year's interest from consecutive balances. Does not assess deriving the compound formula, continuous compounding or graphing.",
+  },
+  {
+    templateId: "gauss-3x3-solve",
+    facetId: "linear-systems.core",
+    extent: "partial",
+    rationale:
+      "Solve a three-equation, three-variable linear system with an integer solution by elimination, choose the row operation that cancels a variable, complete a back-substitution, or classify a system as having one, no or infinitely many solutions. Does not assess modelling a system from a context, non-integer solutions, matrix inverses or written elimination work.",
+  },
+  {
+    templateId: "quadratic-inequality-interval",
+    facetId: "quadratic-equations.core",
+    extent: "partial",
+    rationale:
+      "Select the solution set of a quadratic inequality with integer zeros in interval notation, including either sign of the leading coefficient, rearranged forms, endpoint inclusion, and expressions with a double zero or no real zeros. Does not assess irrational zeros, graphing, or inequalities in a context.",
+  },
+  {
+    templateId: "conditional-statements",
+    facetId: "geometric-proof.core",
+    extent: "partial",
+    rationale:
+      "Select the converse, inverse or contrapositive of a conditional, the statement that must also be true, its negation or biconditional, and the true or false compound statement given truth values of P, Q and R. Does not assess truth tables written out, Venn diagrams, or writing a proof.",
+  },
+  {
+    templateId: "cube-root-equation",
+    facetId: "radical-equations.core",
+    extent: "partial",
+    rationale:
+      "Select the real solution of an equation containing a cube root or a cube, including negative values, an outside constant, and the check that cube roots give no extraneous solutions. Does not assess square-root equations with extraneous solutions, rational exponents or equations with two radicals.",
+  },
+  {
+    templateId: "polar-graph-identify",
+    facetId: "polar-coordinates.core",
+    extent: "partial",
+    rationale:
+      "Choose the family of a polar curve from its equation, the petal count of a rose, the greatest distance from the pole, and the symmetry of a limaçon. Does not assess sketching or plotting polar graphs, intersections of curves or area.",
+  },
+  {
+    templateId: "cone-section-name",
+    facetId: "conic-sections.core",
+    extent: "partial",
+    rationale:
+      "Name the circle, ellipse, parabola, hyperbola or degenerate section produced by a plane cutting a double cone from the plane's angle with the axis or its position relative to a side line. Does not assess equations of conics, foci or deriving the sections.",
+  },
+  {
+    templateId: "profit-cost-breakeven",
+    facetId: "financial-literacy-elementary.core",
+    extent: "partial",
+    rationale:
+      "Select profit or loss, total cost, the break-even number, sales still needed and the variable cost for small whole-dollar prices and costs. Does not assess graphing cost and revenue, constructing equations, nonintegral break-even points or business planning.",
+  },
+  {
+    templateId: "tax-kinds-defined",
+    facetId: "financial-literacy-elementary.core",
+    extent: "partial",
+    rationale:
+      "Match a description or short example to income, payroll, sales or property tax by choice. Does not assess written definitions, tax forms, or tax rules of a particular jurisdiction.",
+  },
+  {
+    templateId: "tax-bracket-owed",
+    facetId: "financial-literacy-middle.core",
+    extent: "partial",
+    rationale:
+      "Select the tax owed from a three-row bracket table with whole-dollar incomes and whole-percent rates, including boundary incomes, a deduction first, the part of income in the middle row, and the added tax on a raise. Does not assess tax forms, credits, filing status or real tax tables.",
+  },
+  {
+    templateId: "payroll-property-tax",
+    facetId: "financial-literacy-middle.core",
+    extent: "partial",
+    rationale:
+      "Select a payroll tax as a percent of pay, net pay after two percent withholdings, a sales-tax total with one exempt item and a property tax from a rate per 100 dollars with or without an exemption. Rates are practice values, not a state's actual rates. Does not assess other taxes or filing.",
+  },
+  {
+    templateId: "budget-percent-share",
+    facetId: "financial-literacy-middle.core",
+    extent: "partial",
+    rationale:
+      "Select a category's percent of a budget total, a dollar amount from a percent, the fixed-expense share, a missing savings percent and expenses as a percent of income. Does not assess building a budget, circle graphs or written responses to a deficit.",
+  },
+  {
+    templateId: "net-worth-statement",
+    facetId: "financial-literacy-middle.core",
+    extent: "partial",
+    rationale:
+      "Select an asset or liability, net worth including negative values, a missing liability total and the effect of a simple transaction on net worth. Does not assess building a full financial record or valuing assets.",
+  },
+  {
+    templateId: "incentive-compare",
+    facetId: "financial-literacy-middle.core",
+    extent: "partial",
+    rationale:
+      "Select the lowest final cost among a coupon, a percent discount and a rebate, the final cost with a percent and a coupon in a stated order, and the cheaper of two stores. Does not assess markup, rebates with conditions or sales-tax interaction.",
+  },
+  {
+    templateId: "coin-name-and-cent-value",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Name a penny, nickel, dime or quarter from a picture whose coin shows its value in cents, choose the picture of a named coin, and choose the correct way to write a coin's value with the cent symbol. The pictured coins print their values, so identification by appearance alone (size, color, design) is not assessed. Does not assess dollar bills, totals of several coins or writing the symbol freehand.",
+  },
+  {
+    templateId: "solid-bottom-face-shape",
+    facetId: "polygon-properties.core",
+    extent: "partial",
+    rationale:
+      "Name the circle, triangle, square or rectangle that is the flat face of a pictured cube, box, triangular prism, pyramid, cylinder or cone standing on a table. Does not assess side faces, counting faces, edges or vertices, nets or naming the solid.",
+  },
+  {
+    templateId: "measurable-attribute-choice",
+    facetId: "compare-attributes.core",
+    extent: "partial",
+    rationale:
+      "Name length, capacity or weight as the attribute a question or goal asks about, and pick the question that asks about a named attribute, with color as a non-measurable distractor. Does not assess measuring, comparing two objects, units or listing attributes of a pictured object without choices.",
+  },
+  {
+    templateId: "dot-group-compared-to-number",
+    facetId: "compare-small-groups.core",
+    extent: "partial",
+    rationale:
+      "Choose the group of dots (counts up to 20) with more than, fewer than or the same number as a given number or a shown group. Does not assess building or drawing a set, comparing numbers as symbols, or counts above 20.",
+  },
+  {
+    templateId: "story-sentence-match-20",
+    facetId: "addition-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the number sentence for a joining, separating, comparing, missing-part or missing-start story within 20, and the story for a number sentence with the unknown shown as a box. Does not assess writing a sentence or story freehand, or solving the sentence.",
+  },
+  {
+    templateId: "story-sentence-match-1000",
+    facetId: "two-step-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the number sentence for a one-step joining, separating, comparing, missing-part or missing-start story within 1,000, and the story for a sentence with a box unknown. Does not assess two-step stories, writing a sentence or story freehand, or solving the sentence.",
+  },
+  {
+    templateId: "open-number-line-to-120",
+    facetId: "compare-two-digit.core",
+    extent: "partial",
+    rationale:
+      "Read the whole number at a marked point, or choose the lettered point at a given number, on a number line up to 120 that labels only its ends and one middle tick. Does not assess ordering three numbers, placing a point by drawing, or estimating between ticks.",
+  },
+  {
+    templateId: "open-number-line-to-1000",
+    facetId: "hundreds-place-value.core",
+    extent: "partial",
+    rationale:
+      "Read the whole number at a marked point, or choose the lettered point at a given number, on a number line up to 1,000 that labels only its ends and one middle tick. Does not assess placing a point by drawing, ordering numbers or estimating between ticks.",
+  },
+  {
+    templateId: "eighths-and-parts-beyond-one",
+    facetId: "thirds-and-partitions.core",
+    extent: "partial",
+    rationale:
+      "Name the shaded eighths (or fourths) of a bar, give how many equal parts make one whole (halves, thirds, fourths, eighths), count shaded parts across two bars and describe them as one whole and some parts. Does not assess fraction notation, partitioning a shape, equivalent fractions or sixths.",
+  },
+  {
+    templateId: "decompose-flat-shape",
+    facetId: "compose-shapes.core",
+    extent: "partial",
+    rationale:
+      "Give the number and name (triangles, rectangles or squares) of the parts when a square or rectangle is cut by a diagonal, both diagonals, equal strips or a grid. Does not assess composing shapes, cutting a shape by hand, shapes other than squares and rectangles or unequal parts.",
+  },
+  {
+    templateId: "unit-size-and-count",
+    facetId: "measure-equal-units.core",
+    extent: "partial",
+    rationale:
+      "Choose which of two units needs fewer copies for the same length with the reason, find the count of a longer unit from the count of a shorter one, and explain why a shorter unit needs more copies. Does not assess measuring with a ruler, unequal or overlapping units or length in standard units.",
+  },
+  {
+    templateId: "benchmark-length-estimate",
+    facetId: "ruler-measurement.core",
+    extent: "partial",
+    rationale:
+      "Estimate a length by repeating a given benchmark length (inches or centimeters), and choose the reasonable estimate with unit for a pencil, door, bed, bus or paper clip. Does not assess measuring with a ruler, choosing a benchmark, converting units or estimating area.",
+  },
+  {
+    templateId: "clock-minute-match",
+    facetId: "clock-five-minutes.core",
+    extent: "partial",
+    rationale:
+      "Read an analog clock to the minute and choose the matching digital time, choose the analog clock for a digital time, and give the minutes after the hour. Does not assess elapsed time, a.m. and p.m., setting a clock by hand or time to the half minute.",
+  },
+  {
+    templateId: "tally-and-t-chart",
+    facetId: "categorical-data.core",
+    extent: "partial",
+    rationale:
+      "Read a tally chart (up to 14 per category) for a count, difference or total, and choose the T-chart that records a list of answers in three categories. Does not assess drawing tally marks or a T-chart, graphs of the data or sorting objects.",
+  },
+  {
+    templateId: "early-money-decisions",
+    facetId: "money-values.core",
+    extent: "partial",
+    rationale:
+      "Choose income versus a gift, spending versus saving, a deposit versus a withdrawal and the producer and consumer in a sale, and find savings over weeks, a balance after a deposit and a withdrawal, and the cost to make a one-item recipe from priced parts. Wants versus needs, borrowing and lending are not assessed. Does not assess budgeting, interest or opinion-based judgments.",
+  },
+  {
+    templateId: "times-as-many-comparison",
+    facetId: "multiplicative-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the times-as-many sentence for a product such as 3 \u00d7 24, the expression for a times-as-many sentence, and the correct sentence comparing two counts, each with a plausible additive or reversed alternative. Does not assess writing the sentence, fractional comparisons or division word problems.",
+  },
+  {
+    templateId: "situation-pair-table",
+    facetId: "arithmetic-patterns.core",
+    extent: "partial",
+    rationale:
+      "Enter one missing entry in a two-column table of number pairs built from equal groups (price, seats, items per package) or a fixed age gap, going forward, backward or finding the per-one rate. Does not assess building the whole table, graphing the pairs or writing the rule as an equation.",
+  },
+  {
+    templateId: "story-equation-choice",
+    facetId: "addition-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation with a letter for the unknown that matches a joining, separating, unknown-start, unknown-change or two-step addition and subtraction story within 1,000. Does not assess drawing the number line or picture, solving the equation or multiplication stories.",
+  },
+  {
+    templateId: "strip-diagram-equation",
+    facetId: "multistep-whole-stories.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation with a letter that matches a strip diagram of a multistep story: equal groups plus extra, total minus equal groups, an unknown in equal groups, and a part removed before sharing. Does not assess drawing the strip diagram, solving for the letter or stories with remainders.",
+  },
+  {
+    templateId: "division-area-model",
+    facetId: "whole-division.core",
+    extent: "partial",
+    rationale:
+      "Choose the partial-quotient equation, the area equation with an unknown side, or the quotient from the partial areas of an area model for a division by a single digit. Does not assess drawing the model, remainders or divisors with two digits.",
+  },
+  {
+    templateId: "fraction-benchmark-reasonable",
+    facetId: "like-fraction-addition.core",
+    extent: "partial",
+    rationale:
+      "Choose the benchmark nearest a fraction among 0, 1/4, 1/2, 3/4 and 1, the benchmark estimate of a like-denominator sum or difference, and the benchmark statement that shows an added-denominator answer is unreasonable. Does not assess unlike denominators, mixed numbers or exact computation.",
+  },
+  {
+    templateId: "unit-relative-size",
+    facetId: "unit-conversion.core",
+    extent: "partial",
+    rationale:
+      "Choose the true statement about which customary, metric or cross-system unit is larger, which of two measurements of one amount has the greater number, and the order of three units of one kind. Does not assess converting values, recalling exact conversion factors or approximate cross-system equivalents.",
+  },
+  {
+    templateId: "decimal-area-model",
+    facetId: "decimal-arithmetic.core",
+    extent: "partial",
+    rationale:
+      "Read a tenths-by-tenths product from a shaded rectangle on a hundredths square, choose the sentence the model shows, and divide a decimal in tenths or hundredths by a whole number as the missing side of an area model. Does not assess drawing the model, decimal divisors or products with more than two decimal places.",
+  },
+  {
+    templateId: "number-set-venn",
+    facetId: "signed-numbers.core",
+    extent: "partial",
+    rationale:
+      "Place a number in a region of a nested diagram of natural, whole, integer and rational numbers, name the smallest set that contains it, and choose the true subset statement, including numbers written as fractions that simplify to integers. Does not assess irrational numbers, drawing the diagram or set notation.",
+  },
+  {
+    templateId: "reciprocal-division-choice",
+    facetId: "fraction-division.core",
+    extent: "partial",
+    rationale:
+      "Choose the multiplication by the reciprocal that equals a division of a whole number or fraction by a fraction or whole number, and the expression for how many fractional groups fit in a quantity. Does not assess computing the quotient, mixed numbers or explaining why the reciprocal works.",
+  },
+  {
+    templateId: "scaling-direction-choice",
+    facetId: "fraction-multiplication.core",
+    extent: "partial",
+    rationale:
+      "Choose the product greater or less than the starting number, or the true comparison with reasoning, from the multiplier compared with 1, including improper fractions and a multiplier equal to 1. Does not assess computing the product or explaining why the product changes.",
+  },
+  {
+    templateId: "percent-grid-model",
+    facetId: "percentages.core",
+    extent: "partial",
+    rationale:
+      "Name the percent, simplest fraction or decimal for a shaded part of a 10 by 10 grid. Does not assess strip diagrams, number lines, ratio models or shading a grid.",
+  },
+  {
+    templateId: "percent-forms-and-parts",
+    facetId: "percentages.core",
+    extent: "partial",
+    rationale:
+      "Enter a fraction or decimal written as a percent, choose a percent written as a simplest fraction, and enter the whole from a part and a percent or the percent that a part is of a whole, with benchmark and non-benchmark percents. Does not assess percents above 100 for parts, percent of change or percent equations written symbolically.",
+  },
+  {
+    templateId: "independent-dependent-roles",
+    facetId: "dependent-variables.core",
+    extent: "partial",
+    rationale:
+      "Choose the independent quantity, the dependent quantity or the horizontal-axis quantity from a table of two related real-world quantities, and the true statement about their roles. Does not assess identifying the roles from a graph or equation, or relationships with no clear determination.",
+  },
+  {
+    templateId: "expression-or-equation",
+    facetId: "variable-expressions.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation among expressions or the expression among equations in algebraic, numeric and verbal forms, including a false equation. Does not assess inequalities, writing an expression or equation or evaluating either.",
+  },
+  {
+    templateId: "rational-area-volume-equation",
+    facetId: "triangle-area.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation with a letter for the unknown height, base or width that relates the area of a triangle or rectangle, or the volume of a rectangular prism, to fractional or mixed-number measures. Does not assess solving the equation, circles or composite figures.",
+  },
+  {
+    templateId: "categorical-summary",
+    facetId: "categorical-data.core",
+    extent: "partial",
+    rationale:
+      "Choose the mode of a four-category frequency table, enter a category's relative frequency as a percent, and enter a category count from a percent bar of a stated total. Does not assess drawing a percent bar graph, bar graphs or datasets with ties for the mode.",
+  },
+  {
+    templateId: "check-register-balance",
+    facetId: "signed-numbers.core",
+    extent: "partial",
+    rationale:
+      "Enter the running balance after deposits, checks, a transfer and a fee in a check register with dollars and cents, or a missing deposit or payment from the balances around it. Does not assess overdrafts, negative balances or reconciling a statement.",
+  },
+  {
+    templateId: "lifetime-income-salary",
+    facetId: "decimal-algorithms.core",
+    extent: "partial",
+    rationale:
+      "Enter total earnings from a yearly or monthly pay and a career length (given as years or ages), or the difference in career earnings between two salaries. Does not assess raises over time, taxes, inflation or present value.",
+  },
+  {
+    templateId: "pi-as-ratio",
+    facetId: "circle-measurement.core",
+    extent: "partial",
+    rationale:
+      "Choose the ratio that defines pi, compute circumference divided by diameter to the nearest hundredth from a measured diameter or radius, and say what happens to the ratio when the circle is scaled. Does not assess carrying out the measurement or deriving the circumference formula.",
+  },
+  {
+    templateId: "experimental-probability-predict",
+    facetId: "probability.core",
+    extent: "partial",
+    rationale:
+      "Enter an experimental probability as a decimal from collected trials, predict a count for a multiple of the observed number of trials, find the excess of an observed count over the theoretical expectation, and choose which of two experiments to trust. Does not assess running the experiment, probabilities as fractions or compound events.",
+  },
+  {
+    templateId: "cylinder-prism-surface-area",
+    facetId: "surface-area.core",
+    extent: "partial",
+    rationale:
+      "Enter the coefficient of pi in the lateral or total surface area of a cylinder, the height from a total surface area in terms of pi, or the total surface area of a right triangular prism with a Pythagorean-triple base. Does not assess nets drawn by the learner, cones, spheres or rounding with a decimal pi.",
+  },
+  {
+    templateId: "both-sides-situation-equation",
+    facetId: "linear-equations.core",
+    extent: "partial",
+    rationale:
+      "Choose the equation or inequality that compares two situations with a starting amount and a rate each, including a decreasing quantity and the less-than comparison. Does not assess solving it, graphing it or writing it in words.",
+  },
+  {
+    templateId: "sat-entry-fn-linear-notation",
+    facetId: "function-evaluation.core",
+    extent: "partial",
+    rationale:
+      "Evaluate a linear function written in function notation at an integer, fractional or contextual input, find the input for a stated output (proportional, fee-plus-rate, profit and grouped forms), and find the constant term from one input-output pair, entering an integer, fraction or decimal. Does not assess composition, nonlinear functions, writing a rule from a table or graph, or interpreting f(a) in words.",
+  },
+  {
+    templateId: "sat-fn-line-equation-choice",
+    facetId: "linear-models.core",
+    extent: "partial",
+    rationale:
+      "Choose the slope-intercept equation of a line from a fractional or negative slope with the y-intercept point or another point, or from a constant rate and one later value in context. Does not assess reading the intercept from a graph, point-slope or standard form, parallel or perpendicular lines, or entering an equation.",
+  },
+  {
+    templateId: "sat-fn-constraint-choice",
+    facetId: "linear-equation-modeling.core",
+    extent: "partial",
+    rationale:
+      "Choose the two-variable linear equation for a total built from two prices, speeds or point values, and the equation of a full load from its two extreme cases. Does not assess solving the equation, interpreting a coefficient, systems, or writing the equation without choices.",
+  },
+  {
+    templateId: "sat-fn-exponential-choice",
+    facetId: "exponential-models.core",
+    extent: "partial",
+    rationale:
+      "Choose an exponential model from a percent increase above 100 percent, a doubling or tripling period of several years, a later value that fixes the factor by a root, a table with a small percent rate, or a first value that is not at t=0. Does not assess decay with logarithms, continuous growth, graphs, or writing the model without choices.",
+  },
+  {
+    templateId: "sat-entry-fn-exponential",
+    facetId: "exponential-models.core",
+    extent: "partial",
+    rationale:
+      "Enter the starting amount of a quantity that doubles or triples every several years, or recover the base of a·b^x from one output and enter the next output. Does not assess non-integer bases, logarithms, choosing a model, or interpreting parameters.",
+  },
+  {
+    templateId: "sat-entry-fn-related-value",
+    facetId: "linear-equations.core",
+    extent: "partial",
+    rationale:
+      "Enter the value of an expression related to a linear equation without solving for each variable: a multiple of x, a common-factor expression, a reciprocal ratio, a scaled left side or a repeated grouped expression. Does not assess solving a full system, quadratic or nonlinear relations, or choosing among values.",
+  },
   {
     templateId: "divisibility-rule-check",
     facetId: "factors-multiples.core",
@@ -446,6 +896,41 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     extent: "partial",
     rationale:
       "Read a whole-number or one-decimal stem-and-leaf plot through its key to find a value, least, greatest, range, median, mode, a count of values above a given value, and the difference of the greatest and second least values, by selecting from choices. Does not assess constructing a plot, keys with hundredths or fractions, plots with split stems or back-to-back plots, or the mean.",
+  },
+  {
+    templateId: "stem-leaf-construct",
+    facetId: "distribution-plots.core",
+    extent: "partial",
+    rationale:
+      "Choose the stem-and-leaf plot that shows a raw list of whole numbers, hundreds or one-decimal values, with every stem kept (including an empty one), ordered leaves and repeated leaves, or choose the key that matches a plot. Does not assess drawing a plot by hand, split stems, back-to-back plots or choosing the stem size.",
+  },
+  {
+    templateId: "frequency-table-build",
+    facetId: "picture-bar-graphs.core",
+    extent: "partial",
+    rationale:
+      "Count whole-number data from a list or a dot plot into a frequency table, including a value with frequency 0 and three equal-width intervals that include both end values, or give one frequency. Does not assess writing a table by hand, tally marks, fractional or decimal data, cumulative or relative frequency, or choosing the interval width.",
+  },
+  {
+    templateId: "circle-graph-read",
+    facetId: "percentages.core",
+    extent: "partial",
+    rationale:
+      "From the table of a circle graph's sectors (percent, central angle or count), find a sector's angle, percent or count, a missing sector, or how many more one sector holds than another, with percents that are multiples of 5. The sectors are shown as a table, not drawn as a circle. Does not assess drawing a circle graph, measuring angles with a protractor, or reading a drawn graph.",
+  },
+  {
+    templateId: "best-display-choice",
+    facetId: "distribution-plots.core",
+    extent: "partial",
+    rationale:
+      "Choose the display that fits a described situation among circle graph, bar graph, line graph, histogram, scatterplot, and dot plot or stem-and-leaf plot, with one defensible answer for each situation. Does not assess constructing a display, judging a misleading display, or box plots.",
+  },
+  {
+    templateId: "return-claim-check",
+    facetId: "percent-change.core",
+    extent: "partial",
+    rationale:
+      "Compute a simple yearly rate of return from starting and ending amounts over years or months, compare two investments or a monthly rate with a yearly one, and check a stated return against the computed one. Does not assess compound growth, taxes or fees, risk, or whether a promised return is lawful.",
   },
   {
     templateId: "budget-category-balance",
@@ -1375,6 +1860,104 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Find a length or angle using the trapezoid midsegment theorem, the base angles and supplementary leg angles of an isosceles trapezoid, and its congruent diagonals, with numeric or linear expressions. Does not assess written proofs, constructions or drawn figures.",
   },
   {
+    templateId: "rg-exponential-base-rate",
+    facetId: "exponential-models.core",
+    extent: "partial",
+    rationale:
+      "Choose the percent increase or decrease per period read from an exponential model's base (including bases with the exponent t divided by a period) or the model for a stated half-life. Does not assess writing a model from a table, solving for time or continuous growth.",
+  },
+  {
+    templateId: "rg-factor-completely",
+    facetId: "factor-quadratics.core",
+    extent: "partial",
+    rationale:
+      "Choose the complete factorization of a difference of squares with a coefficient, of a binomial with a common factor first, and of a two-variable binomial with a common factor and a difference of squares. Does not assess typing a factorization, sums or differences of cubes, grouping or trinomials.",
+  },
+  {
+    templateId: "rg-polynomial-zeros-forms",
+    facetId: "polynomial-zeros.core",
+    extent: "partial",
+    rationale:
+      "Choose the zeros of a product of a variable and two linear factors with one nonmonic factor, and a zero of an expanded cubic that factors by grouping into integer zeros. Does not assess multiplicity, irrational or complex zeros, or sketching the graph.",
+  },
+  {
+    templateId: "rg-exponent-monomial-power",
+    facetId: "exponent-laws.core",
+    extent: "partial",
+    rationale:
+      "Choose the simplified monomial with a coefficient and two variables raised to a power 2 to 4, alone or multiplied by a second monomial. Does not assess negative exponents, quotients or typing the simplified expression.",
+  },
+  {
+    templateId: "rg-rational-exponent-forms",
+    facetId: "rational-exponents.core",
+    extent: "partial",
+    rationale:
+      "Choose the single power equal to a coefficient radical times a rational power, the radical form of a fraction with a negative rational exponent, and the value of a perfect-power fraction with a negative rational exponent. Does not assess rationalizing denominators, nested radicals or typing a radical expression.",
+  },
+  {
+    templateId: "rg-polynomial-build",
+    facetId: "polynomial-arithmetic.core",
+    extent: "partial",
+    rationale:
+      "Choose a polynomial with a stated degree, number of terms, leading coefficient and constant term, or the statement of those properties for a polynomial written out of order. Does not assess writing a polynomial from stated zeros, classifying by graph or typing a polynomial.",
+  },
+  {
+    templateId: "rg-solid-density",
+    facetId: "solid-volume-models.core",
+    extent: "partial",
+    rationale:
+      "Enter a weight from a cylinder's diameter in inches, height in feet and density, a whole-number count of pyramids from a mass of clay and its density, and the liters of water in a partly filled rectangular tank. Does not assess drawing a figure, other solids or the written work the rating guides credit.",
+  },
+  {
+    templateId: "rg-quadrilateral-choice",
+    facetId: "parallelogram-proofs.core",
+    extent: "partial",
+    rationale:
+      "Choose the fact that makes a parallelogram a rhombus or a rectangle, and find an angle of a trapezoid from linear expressions for the two angles on a leg. Does not assess written proofs, isosceles trapezoid reasons or constructions.",
+  },
+  {
+    templateId: "rg-parallelogram-perpendicular",
+    facetId: "parallelogram-proofs.core",
+    extent: "partial",
+    rationale:
+      "Enter an angle formed by a side of a parallelogram and a perpendicular from a vertex, with the foot on the side or on its extension, described in words. Does not assess written proofs, drawn figures or perpendiculars to a diagonal.",
+  },
+  {
+    templateId: "rg-segment-property-choice",
+    facetId: "triangle-proofs.core",
+    extent: "partial",
+    rationale:
+      "Choose the statement that must be true for a point on a perpendicular bisector or a triangle's midsegment, and use each property to find a length from linear expressions. Does not assess written proofs, constructions or the converse in a proof.",
+  },
+  {
+    templateId: "rg-isosceles-right-decimal",
+    facetId: "special-right-triangles.core",
+    extent: "partial",
+    rationale:
+      "Enter a leg, a hypotenuse, or a square's side from its diagonal as a decimal rounded to the nearest tenth. Does not assess exact radical answers, 30-60-90 triangles or written justification.",
+  },
+  {
+    templateId: "rg-triangle-area-sas",
+    facetId: "trigonometric-area.core",
+    extent: "partial",
+    rationale:
+      "Enter the area of a triangle from two sides and an acute or obtuse included angle, in a figure or a land story, rounded to the nearest tenth. Does not assess finding a missing angle or side, Heron's formula or written work.",
+  },
+  {
+    templateId: "rg-triangle-third-side-test",
+    facetId: "triangle-construction.core",
+    extent: "partial",
+    rationale:
+      "Choose the length that could, or could not, be the third side of a triangle with two stated sides. Does not assess explaining the triangle inequality or the largest-angle opposite largest-side rule.",
+  },
+  {
+    templateId: "rg-altitude-segment",
+    facetId: "similarity-theorems.core",
+    extent: "partial",
+    rationale:
+      "Enter the other segment of the hypotenuse, rounded to the nearest tenth, from a leg and the adjacent segment cut by the altitude to the hypotenuse. Does not assess proving the similar triangles, the altitude length or the other leg.",
+  },
+  {
     templateId: "staar-nested-grouping",
     facetId: "numerical-expressions.core",
     extent: "partial",
@@ -1720,6 +2303,7 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...pointPlotFacetMappings,
   ...multiPartChoiceFacetMappings,
   ...algebraRequirementGapFacetMappings,
+  ...texasHsFacetMappings,
   ...integerExponentFacetMappings,
   ...descriptiveStatisticsFacetMappings,
   ...percentChangeFacetMappings,
@@ -1783,4 +2367,6 @@ export const actualFacetMappings: readonly FacetMapping[] = [
     rationale:
       "Decide similarity by AA from two stated angles of each triangle, name the vertex correspondence, find a missing angle, and choose the matching proportion of sides. Does not assess the proof that AA follows from similarity transformations or other similarity criteria.",
   },
+  // Frozen legacy entries above; families append from src/families/.
+  ...familyRegistry.facetMappings,
 ];

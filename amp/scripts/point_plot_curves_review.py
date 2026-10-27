@@ -136,9 +136,9 @@ def zero_of_linear(a):
 
 def required_features(tid, f, marks, wording):
     """(required lattice points, number of other points) from wording."""
-    m = re.search(r"its (vertex|starting point|\$y\$-intercept) and (\d+) other points", wording)
+    m = re.search(r"its (vertex|starting point|\$y\$-intercept) and (\d+) more points", wording)
     if not m:
-        m2 = re.fullmatch(r"(\d+) points on its curve", wording)
+        m2 = re.fullmatch(r"(\d+) points", wording)
         assert m2, wording
         return None, int(m2.group(1)), []
     kind, others = m.group(1), int(m.group(2))

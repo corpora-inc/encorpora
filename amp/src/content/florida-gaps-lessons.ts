@@ -151,7 +151,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write the factor as “1 of the given unit = k of the wanted unit.”",
+      "Write the factor as “1 of the given unit equals $k$ of the wanted unit.”",
       "If you are going from the unit written on the left of the factor to the unit on the right, multiply by $k$. If you are going back, divide by $k$.",
       "Check the size: the unit with the smaller value in the factor has the larger number.",
     ],
@@ -781,7 +781,7 @@ export const floridaGapLessons: Lesson[] = [
     closingSections: [
       {
         stage: "method",
-        title: "Compare $f(-x)$ with two things",
+        title: "Compare the negated input with two things",
         paragraphs: [
           "Compute $f(-x)$ and simplify. If it equals $f(x)$, the function is even. If it equals $-f(x)$, it is odd. If it equals neither, the function is neither.",
           "For a polynomial, check the exponents: all even means even, all odd means odd. A constant term counts as an even exponent, so $x^3+1$ is neither.",
