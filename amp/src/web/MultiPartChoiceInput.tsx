@@ -19,9 +19,10 @@ import {
 
 const capitalize = (text: string) =>
   text.charAt(0).toUpperCase() + text.slice(1);
-/** Closing punctuation that opens a sentence part: ".", ",", ")." and so on. */
+/** The one closing mark that opens a sentence part: ".", "," and so on.
+ * One character, so the room the blank leaves for it (0.5em) suffices. */
 const trailingPunctuation = (text: string) =>
-  /^[.,;:!?)]+/.exec(text)?.[0] ?? "";
+  /^[.,;:!?)]/.exec(text)?.[0] ?? "";
 
 /** Review marks for a resolved problem: each blank's choice and answer. */
 export function partsReview(
