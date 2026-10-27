@@ -36,18 +36,42 @@ test("connection audit rejects missing/self endpoints, duplicate edges and unrel
     assert(auditConnectionEvidence(skills, templates, mutation).length > 0);
 });
 
-test("every practiced skill leads to a later skill by prerequisite or connection", () => {
+test("every practiced skill has at least three next steps and two foundations", () => {
   const practiced = new Set(templates.map((t) => t.skillId));
-  const leadsTo = new Set<string>();
+  const leadsTo = new Map<string, Set<string>>();
+  const buildsOn = new Map<string, Set<string>>();
+  const link = (from: string, to: string) => {
+    for (const [map, key, value] of [
+      [leadsTo, from, to],
+      [buildsOn, to, from],
+    ] as const) {
+      if (!map.has(key)) map.set(key, new Set());
+      map.get(key)!.add(value);
+    }
+  };
   for (const skill of skills)
-    for (const id of skill.prerequisites) leadsTo.add(id);
-  for (const { from } of curriculumConnections) leadsTo.add(from);
-  // Deliberately terminal skills (none today); list each with its reason.
-  const terminal = new Set<string>();
-  const dead = [...practiced].filter(
-    (id) => !leadsTo.has(id) && !terminal.has(id),
+    for (const id of skill.prerequisites) link(id, skill.id);
+  for (const { from, to } of curriculumConnections) link(from, to);
+  // Entry skills with nothing honestly earlier; each lists the foundations it has.
+  const fewerFoundations = new Map<string, number>([
+    ["count-to-20", 0], // counting is the first skill; no skill precedes it
+    ["compare-attributes", 0], // the first measurement idea; nothing precedes it
+    ["name-shapes", 1], // only comparing attributes precedes naming shapes
+  ]);
+  const leadsToShort = [...practiced].filter(
+    (id) => (leadsTo.get(id)?.size ?? 0) < 3,
   );
-  assert.deepEqual(dead, []);
+  const buildsOnShort = [...practiced].filter(
+    (id) => (buildsOn.get(id)?.size ?? 0) < 2 && !fewerFoundations.has(id),
+  );
+  assert.deepEqual(leadsToShort, []);
+  assert.deepEqual(buildsOnShort, []);
+  for (const [id, count] of fewerFoundations)
+    assert.equal(
+      buildsOn.get(id)?.size ?? 0,
+      count,
+      `${id} has gained foundations; remove it from the exception list`,
+    );
 });
 
 test("editorial connections never contradict the prerequisite order", () => {
