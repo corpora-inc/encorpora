@@ -95,8 +95,10 @@ logo, no speech, no music" because text, narration and music are added later.
 `launch` copies the batch to `$AMP_SPARK_ROOT/<batch>` and starts
 `supervise.sh` under `nohup`. The supervisor feeds `plan.json` through the
 guarded runner (free-memory floor, thermal ceiling, per-job time limit, the
-host-wide `workload.lock`). A failed job is quarantined with its evidence and
-never retried; three failures in a row with no progress stop the batch. A
+host-wide `workload.lock`). A failed or guard-aborted job is quarantined with
+its evidence and never retried; three failures in a row with no progress stop
+the batch. A job the host deferred (memory, temperature, lease) stops the
+supervisor for a human instead of being dropped. A
 distilled LTX clip takes roughly 1.5-3.5 minutes. `spark.sh status <batch>`
 shows progress.
 

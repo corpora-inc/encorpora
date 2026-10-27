@@ -125,7 +125,7 @@ def premix_command(spec, voice, music, sfx, voice_gain, music_gain, out, voice_s
         args += ['-ss', _t(m['offset']), '-t', _t(total), '-i', str(music)]
         graph.append(f'[{k}:a]{STEREO},volume={music_gain:.2f}dB,afade=t=in:st=0:d=0.8,'
                      f'afade=t=out:st={_t(total - 1.7)}:d=1.7[min]')
-        # The excerpt may be shorter than the ad: lay it on the silent timeline too.
+        # render.audio refuses an excerpt shorter than the ad, so this piece is exactly `total`.
         graph += _place('min', [(0.0, total, 0.0)], total, 'bed')
         if voice:
             graph.append(f'[bed][key]{DUCK}[music]')

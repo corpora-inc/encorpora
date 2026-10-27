@@ -39,7 +39,9 @@ case "$cmd" in
     local_dir="$(cd "$3" && pwd)"
     while :; do
       scp -q "$AMP_SPARK_HOST:$AMP_SPARK_ROOT/$b/plan.json" "$AMP_SPARK_HOST:$AMP_SPARK_ROOT/$b/batch.env" "$local_dir/"
-      prefix=$(. "$local_dir/batch.env" && echo "$PREFIX")
+      # Never source a file fetched from the shared host: read one validated value.
+      prefix=$(sed -n "s/^PREFIX=//p" "$local_dir/batch.env" | tr -d "'")
+      [[ "$prefix" =~ ^[a-z0-9][a-z0-9-]*$ ]] || { echo "bad PREFIX in batch.env" >&2; exit 1; }
       rsync -a --include="$prefix-*.mp4" --include="$prefix-*.json" --exclude='*' \
         "$AMP_SPARK_HOST:$AMP_SPARK_OUTPUTS/" "$local_dir/clips/"
       ssh "$AMP_SPARK_HOST" "tail -1 '$AMP_SPARK_ROOT/$b/supervise.log'" > "$local_dir/spark-status.txt" 2>/dev/null || true

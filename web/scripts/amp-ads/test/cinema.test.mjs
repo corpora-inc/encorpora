@@ -68,6 +68,19 @@ test("renders every format with centered text, ducked music and passing QC", asy
     const changed = py(["-m", "cinema", "render", join(dir, "ad.json"), "--out", out, "--divisor", "4"],
       { ...env, AMP_X264_PRESET: "veryfast" });
     assert.match(changed.stderr, /exists with different inputs/);
+    // A 4K master of a format already rendered at delivery size sits beside it.
+    const master = py(["-m", "cinema", "render", join(dir, "ad.json"), "--out", out, "--divisor", "4", "--master",
+      "--format", "portrait"], env);
+    assert.equal(master.status, 0, master.stderr);
+    const m = JSON.parse(await readFile(join(out, "smoke", "portrait-4k-receipt.json"), "utf8"));
+    assert.deepEqual(m.dimensions, [540, 960]);
+    assert.equal(render().status, 0);
+    // Music that ends before the ad is refused, not silently truncated.
+    ff("-f", "lavfi", "-i", "sine=f=200:d=3", join(dir, "short.wav"));
+    await writeFile(join(dir, "short.json"), JSON.stringify({ ...spec, id: "short", voice: undefined,
+      music: { ...spec.music, path: "short.wav" } }));
+    const short = py(["-m", "cinema", "render", join(dir, "short.json"), "--out", out, "--divisor", "4"], env);
+    assert.match(short.stderr, /music track ends before the ad/);
     // A review page lists the ad.
     assert.equal(py(["-m", "cinema", "review", out]).status, 0);
     assert.match(await readFile(join(out, "review.html"), "utf8"), /Smoke test/);

@@ -109,25 +109,25 @@ class Outputs:
                              'at': stamp(), **extra})
 
 
-def cards(spec, fmt, frame, out, outputs):
+def cards(spec, fmt, name, frame, out, outputs):
     """Render (or reuse) this format's text cards; gate every one through the
     pixel-measured safe-zone check before it can reach a video."""
     d = out / 'cards'
     d.mkdir(exist_ok=True)
     area = text_area(fmt, frame)
-    items = [{'name': f'{fmt}-card-{i}', 'kind': 'card', 'text': c['text']} for i, c in enumerate(spec['cards'])]
+    items = [{'name': f'{name}-card-{i}', 'kind': 'card', 'text': c['text']} for i, c in enumerate(spec['cards'])]
     e = spec['endCard']
-    items.append({'name': f'{fmt}-end', 'kind': 'end', **{k: e[k] for k in ('brand', 'tagline', 'cta', 'url')}})
+    items.append({'name': f'{name}-end', 'kind': 'end', **{k: e[k] for k in ('brand', 'tagline', 'cta', 'url')}})
     for it in items:
         it.update(width=frame[0], height=frame[1], area=list(area),
                   out=str(d / f'{it["name"]}.png'), textOut=str(d / f'{it["name"]}.text.png'))
-    receipt = d / f'{fmt}-cards.json'
+    receipt = d / f'{name}-cards.json'
     builder = HERE / 'cards.mjs'
     recipe = {'items': [{k: v for k, v in it.items() if k not in ('out', 'textOut')} for it in items],
               'builderSha256': sha(builder), 'safe': FORMATS[fmt]['safe']}
     files = [p for it in items for p in (it['out'], it['textOut'])]
     if outputs.fresh(receipt, recipe, *files):
-        job = d / f'{fmt}-job.json'
+        job = d / f'{name}-job.json'
         job.write_text(json.dumps({'items': items}))
         layout = json.loads(run(['node', builder, job], cwd=HERE.parent).stdout)
         job.unlink()
@@ -151,6 +151,12 @@ def audio(spec, out, outputs):
             raise SpecError(f'missing audio input {p}')
     total = spec['duration']
     took = float(probe(voice)['format']['duration']) if voice else None
+    # Every placed piece must really be as long as the timeline assumes, or the mix ends early.
+    for seg in (v or {}).get('segments') or []:
+        if seg['to'] > took + 0.02:
+            raise SpecError(f'voice segment ends at {seg["to"]}s but the take is only {took:.2f}s')
+    if music and float(probe(music)['format']['duration']) - m['offset'] < total - 0.02:
+        raise SpecError('the music track ends before the ad: lower music.offset or pick a longer track')
     if voice and not v.get('segments'):
         if v['start'] + took > total - 0.3:
             raise SpecError(f'voice take is {took:.2f}s; it must finish 0.3s before the end '
@@ -209,7 +215,7 @@ def qc(spec, fmt, path, frame, contact):
     duration = float(meta['format']['duration'])
     checks = {
         'dimensions': [video['width'], video['height']] == list(frame),
-        'duration': abs(duration - total) <= 0.1,
+        'duration': abs(duration - total) <= 0.1 and bool(sound) and abs(float(sound[0]['duration']) - total) <= 0.1,
         'audioPresent': bool(sound) and int(sound[0]['sample_rate']) == 48000 and float(loud['input_i']) > -30,
         'loudness': -15.5 <= float(loud['input_i']) <= -12.5,
         'truePeak': float(loud['input_tp']) <= -1.0,
@@ -234,12 +240,12 @@ def render(spec, out_root, formats=None, master=False, divisor=1, replace=False)
         if fmt not in spec['formats']:
             raise SpecError(f'{fmt} is not enabled in this spec')
         frame = size(fmt, master, divisor)
-        timed, end_png = cards(spec, fmt, frame, out, outputs)
+        name = f'{fmt}-4k' if master else fmt
+        timed, end_png = cards(spec, fmt, name, frame, out, outputs)
         sources = [shot_source(spec, s, fmt) for s in spec['shots']]
         for p in sources:
             if not p.is_file():
                 raise SpecError(f'missing shot source {p}')
-        name = f'{fmt}-4k' if master else fmt
         video, receipt, contact = out / f'{name}.mp4', out / f'{name}-receipt.json', out / f'{name}-contact.jpg'
         args = graph.video_command(spec, frame, sources, timed, end_png, mix, video, encoder, preset)
         recipe = {'args': args, 'inputs': {str(p): sha(p) for p in [*sources, *(c[0] for c in timed), end_png, mix]}}

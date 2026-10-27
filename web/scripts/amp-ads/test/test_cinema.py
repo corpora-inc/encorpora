@@ -252,8 +252,8 @@ status = json.loads(Path(a.status).read_text()) if Path(a.status).exists() else 
 for job in json.loads(Path(a.plan).read_text()):
     if status.get(job['name'], {}).get('status') == 'complete':
         continue
-    ok = 'bad' not in job['name']
-    status[job['name']] = {'status': 'complete' if ok else 'failed'}
+    ok = 'bad' not in job['name'] and 'defer' not in job['name']
+    status[job['name']] = {'status': 'complete' if ok else ('deferred' if 'defer' in job['name'] else 'failed')}
     Path(a.status).write_text(json.dumps(status))
     if not ok:
         Path(a.attempts, job['name']).mkdir(parents=True, exist_ok=True)
@@ -283,6 +283,25 @@ class Supervisor(unittest.TestCase):
             self.assertEqual(len(remaining), len(jobs) - len(bad))
             self.assertTrue((root / 'guard-runs' / f'{data["batch"]}-failed' / bad[0]).is_dir())
             self.assertEqual(len(json.loads((batch / 'plan.json').read_text())), len(jobs))  # original kept
+
+
+    def test_a_host_side_stop_is_not_quarantined(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / 'gpu'
+            (root / 'guard-v1').mkdir(parents=True)
+            (root / 'guard-v1' / 'batch.py').write_text(FAKE_RUNNER)
+            data = json.loads((EXAMPLES / 'shotlist.json').read_text())
+            data['shots'][1]['id'] = 'defer-me'
+            shotlist = Path(tmp) / 'shotlist.json'
+            shotlist.write_text(json.dumps(data))
+            batch = root / data['batch']
+            jobs = plan.write(shotlist, batch, str(root), '/py', str(root / 'outputs'))
+            r = subprocess.run(['bash', str(batch / 'supervise.sh'), str(batch)], capture_output=True, text=True,
+                               env={**os.environ, 'QUARANTINE_PAUSE': '0'}, timeout=60)
+            self.assertEqual(r.returncode, 1)
+            self.assertIn('=deferred', r.stdout)
+            self.assertNotIn('QUARANTINE', r.stdout)
+            self.assertEqual(len(json.loads((batch / 'active-plan.json').read_text())), len(jobs))
 
 
 class Pages(unittest.TestCase):
