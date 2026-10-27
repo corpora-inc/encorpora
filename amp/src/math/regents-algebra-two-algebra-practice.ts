@@ -464,8 +464,12 @@ export const circleLineSystem = chainFamily({
   variant: (m) => m.kind,
   render: (m, _ax, r) => {
     if (m.kind === "points") {
-      const set = (a: [number, number], b: [number, number]) =>
-        `$\\{${ptText(a)},\\ ${ptText(b)}\\}$`;
+      // Points are listed in a fixed order, so one pair has one label.
+      const set = (a: [number, number], b: [number, number]) => {
+        const [first, second] =
+          a[0] < b[0] || (a[0] === b[0] && a[1] <= b[1]) ? [a, b] : [b, a];
+        return `$\\{${ptText(first)},\\ ${ptText(second)}\\}$`;
+      };
       const { P, Q } = m;
       const eqL = lineText(m.A, m.B, m.C);
       return choiceSurface(r, {
@@ -1141,7 +1145,9 @@ export const shiftedTrinomialFactor = chainFamily({
     const expr = `${part(A, `${u}^{2}`, true)}${part(B, u, false)}${part(C, "", false)}`;
     const good = [binomial(p, q - p * k), binomial(r, s - r * k)];
     const wrap = (t: string) => (/^[a-z]$/.test(t) ? t : `(${t})`);
-    const f = (a: string, b: string) => `$${wrap(a)}${wrap(b)}$`;
+    // Factors commute: list them in a fixed order so one product has one label.
+    const f = (a: string, b: string) =>
+      `$${[wrap(a), wrap(b)].sort().join("")}$`;
     const opts = [
       { label: f(good[0]!, good[1]!), correct: true as const },
       {

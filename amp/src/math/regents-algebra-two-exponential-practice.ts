@@ -342,6 +342,9 @@ function paramModel(r: (lo: number, hi: number) => number): ParamModel {
   ] as const);
   const a = r(2, 9);
   const mult = r(2, 12);
+  // For 2 and 4, log(4)/2 and log(4/2) are the same number, so two choices
+  // would both be correct.
+  if (a === 2 && mult === 2) throw new Error("Need three retries");
   return { a, b: a * mult, letters: [letters[0], letters[1]] };
 }
 export const exponentialParameterLog = chainFamily({

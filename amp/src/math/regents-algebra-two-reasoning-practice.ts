@@ -181,8 +181,8 @@ export const quarticFactoredForm = chainFamily({
         feedback: `$x^2 - ${k * k}$ was factored once, leaving $x^2 + ${k * k}$, not a second difference of squares: the second quadratic factor is the sum $x^2 + ${k * k}$.`,
       },
       {
-        label: lab(prod(c, [difK, difK])),
-        feedback: `$${difK.slice(1, -1)}$ squared expands to a middle term $-${2 * k * k}x^2$; $x^4 - ${k ** 4}$ has no $x^2$ term.`,
+        label: lab(prod(c, [sumK, sumK])),
+        feedback: `$${sumK.slice(1, -1)}$ squared expands to $x^4 + ${2 * k * k}x^2 + ${k ** 4}$; $x^4 - ${k ** 4}$ has no $x^2$ term and its constant term is negative.`,
       },
       {
         label: lab(prod(c, [bin(-k), bin(-k), sumK])),

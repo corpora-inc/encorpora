@@ -432,8 +432,16 @@ export const specialAngleMatch = chainFamily({
   model: specialModel,
   variant: (m) => `${m.target.fn}-${m.target.angle}`,
   render: (m, _ax, r) => {
+    // Distractors must differ in value from one another, not only in form.
+    const used: number[] = [];
     const bad = shuffle(r, m.pool)
-      .filter((e) => exprTex(e) !== exprTex(m.correct))
+      .filter((e) => {
+        if (exprTex(e) === exprTex(m.correct)) return false;
+        const v = value(e);
+        if (used.some((u) => Math.abs(u - v) < 1e-9)) return false;
+        used.push(v);
+        return true;
+      })
       .slice(0, 3);
     const tv = exprValueTex(m.target);
     return choiceSurface(r, {
