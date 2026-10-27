@@ -381,10 +381,11 @@ try {
       await page
         .getByRole("button", { name: "Sign out", exact: true })
         .waitFor();
-      await page
+      const identity = page
         .getByRole("dialog")
-        .getByText(email, { exact: true })
-        .waitFor();
+        .getByRole("region", { name: "Current account" });
+      await identity.getByRole("button", { name: "Show email" }).click();
+      await identity.getByText(email, { exact: true }).waitFor();
       await fits(page, `menu ${theme} ${width}`);
       await page.screenshot({
         path: `${output}/ready-menu-${theme}-${width}.png`,

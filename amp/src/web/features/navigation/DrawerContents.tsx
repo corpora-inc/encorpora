@@ -4,6 +4,7 @@ import { useLearningView } from "../../lib/learning-view";
 import { useLearnerStore } from "../../learner-store";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { gradeName } from "../../Home";
+import { SignedInEmail } from "./SignedInEmail";
 import styles from "./Navigation.module.css";
 function NavIcon({
   kind,
@@ -106,7 +107,7 @@ export default function DrawerContents({ close }: { close: () => void }) {
                   : "Guest · This browser"}
         </span>
         {account?.account.email ? (
-          <strong className={styles.email}>{account.account.email}</strong>
+          <SignedInEmail email={account.account.email} />
         ) : !view.session.data &&
           !view.session.isPending &&
           !view.session.error ? (
