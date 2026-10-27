@@ -271,10 +271,44 @@ try {
       await trigger.click();
       await assertEmailHidden(`drawer ${theme} ${width}`);
       await drawer.getByText("42", { exact: true }).waitFor();
-      assert.equal(
-        await drawer.getByLabel("Current learner").inputValue(),
-        "trial",
+      const learners = drawer.getByRole("listbox", {
+        name: "Current learner",
+      });
+      assert.deepEqual(
+        await learners
+          .getByRole("option")
+          .evaluateAll((options) =>
+            options.map(
+              (o) =>
+                `${o.getAttribute("data-value")}:${o.getAttribute("aria-selected")}`,
+            ),
+          ),
+        ["jordan:false", "avery:false", "trial:true"],
         "assessment remains distinct from signed-in learner",
+      );
+      assert.equal(
+        await drawer.locator("select").count(),
+        0,
+        "no native select in the drawer",
+      );
+      assert(
+        await learners.getByRole("option").evaluateAll((options) =>
+          options.every((o) => {
+            const r = o.getBoundingClientRect();
+            const words = [...o.querySelectorAll("[data-word]")];
+            return (
+              r.height >= 44 &&
+              r.width >= 44 &&
+              words.length > 0 &&
+              words.every(
+                (w) =>
+                  w.getClientRects().length === 1 &&
+                  w.getBoundingClientRect().right <= r.right + 1,
+              )
+            );
+          }),
+        ),
+        `learner rows are 44px targets that never wrap mid-word ${theme} ${width}`,
       );
       await fits(`drawer ${theme} ${width}`);
       await page.screenshot({
@@ -425,7 +459,10 @@ try {
   await page.goto(`${origin}/inventory`);
   await page.locator('[data-strength="Strong"]').first().waitFor();
   await trigger.click();
-  await page.getByLabel("Current learner").selectOption("avery");
+  await page
+    .getByRole("listbox", { name: "Current learner" })
+    .getByRole("option", { name: "Avery", exact: true })
+    .click();
   await page
     .getByRole("heading", { name: "Your collection starts with a problem" })
     .waitFor();
@@ -435,7 +472,26 @@ try {
     "learner switch removes previous learner's skills",
   );
   await trigger.click();
-  await page.getByLabel("Current learner").selectOption("jordan");
+  // Keyboard: arrows move the active row without switching; Enter switches.
+  const picker = page.getByRole("listbox", { name: "Current learner" });
+  await picker.focus();
+  const activeRow = () =>
+    picker.evaluate(
+      (el) =>
+        document.getElementById(el.getAttribute("aria-activedescendant")!)
+          ?.dataset.value,
+    );
+  assert.equal(await activeRow(), "avery");
+  await page.keyboard.press("ArrowUp");
+  assert.equal(await activeRow(), "jordan");
+  assert.equal(
+    await picker
+      .getByRole("option", { name: "Avery", exact: true })
+      .getAttribute("aria-selected"),
+    "true",
+    "arrows alone do not switch learners",
+  );
+  await page.keyboard.press("Enter");
   await page.locator('[data-strength="Strong"]').first().waitFor();
   await page.getByRole("searchbox", { name: "Search your skills" }).fill("L");
   await page.getByRole("searchbox", { name: "Search your skills" }).fill("");

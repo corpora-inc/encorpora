@@ -4,6 +4,7 @@ import { useLearningView } from "../../lib/learning-view";
 import { useLearnerStore } from "../../learner-store";
 import { FeedbackPreferences } from "../practice/FeedbackPreferences";
 import { gradeName } from "../../Home";
+import { ChoicePicker, type ListboxOption } from "../../ui/Listbox";
 import { SignedInEmail } from "./SignedInEmail";
 import styles from "./Navigation.module.css";
 function NavIcon({
@@ -45,6 +46,12 @@ export default function DrawerContents({ close }: { close: () => void }) {
     frontier && frontier.overall.answered > 0
       ? gradeName(frontier.overall.level)
       : null;
+  const learnerChoices: ListboxOption[] = [
+    ...view.learners.map((l) => ({ value: l.id, label: l.name })),
+    ...(view.trial.data
+      ? [{ value: "trial", label: "Free assessment", detail: "This browser" }]
+      : []),
+  ];
   const nav = (
     href: string,
     title: string,
@@ -137,28 +144,14 @@ export default function DrawerContents({ close }: { close: () => void }) {
                 : "Getting started"}
           </span>
         </div>
-        {view.learners.length > 1 ||
-        (view.learners.length > 0 && view.trial.data) ? (
-          <label className={styles.learnerLabel}>
-            <span className={styles.srOnly}>Current learner</span>
-            <select
-              aria-label="Current learner"
-              value={trialMode ? "trial" : (learner?.id ?? "")}
-              onChange={(e) => chooseLearner(e.target.value)}
-            >
-              <option value="" disabled>
-                Choose a learner
-              </option>
-              {view.learners.map((l) => (
-                <option key={l.id} value={l.id}>
-                  {l.name}
-                </option>
-              ))}
-              {view.trial.data && (
-                <option value="trial">Free assessment · This browser</option>
-              )}
-            </select>
-          </label>
+        {learnerChoices.length > 1 ? (
+          <ChoicePicker
+            label="Current learner"
+            placeholder="Choose a learner"
+            options={learnerChoices}
+            value={trialMode ? "trial" : (learner?.id ?? null)}
+            onChange={chooseLearner}
+          />
         ) : (
           <strong className={styles.learnerName}>
             {trialMode
