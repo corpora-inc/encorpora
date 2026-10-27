@@ -46,7 +46,10 @@ export const progressSchema = z.object({
 });
 export type MapSkill = z.infer<typeof catalogSchema>["skills"][number];
 export function connectionLabel(
-  connection: NonNullable<MapSkill["connections"]>[number],
+  connection: Pick<
+    NonNullable<MapSkill["connections"]>[number],
+    "kind" | "direction"
+  >,
 ) {
   if (connection.kind === "related") return "Related idea";
   if (connection.kind === "extension")

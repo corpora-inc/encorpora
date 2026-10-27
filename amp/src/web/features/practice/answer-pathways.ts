@@ -1,8 +1,22 @@
+import { skillNeighbors, type NeighborConnection } from "../pathways/neighbors";
+import { connectionLabel } from "../pathways/model";
+
 export type AnswerSkill = {
   id: string;
   title?: string;
   description?: string;
+  gradeBand?: string;
   prerequisites?: readonly string[];
+  connections?: readonly NeighborConnection[];
+};
+
+/** Strict prerequisites are never crowded out; connections add a few more. */
+export const answerConnectionLimit = 3;
+
+type Choice = AnswerSkill & {
+  title: string;
+  templateId: string;
+  connected?: { label: string; explanation: string };
 };
 
 /** Minimum further independent successes needed by the existing strength rule.
@@ -24,7 +38,8 @@ export function answersToStrength(
   return 5;
 }
 
-/** Only authored, direct graph connections with a playable problem are offered. */
+/** Playable direct prerequisites first, then the nearest authored extension or
+ * application connections, so a correct answer never ends at a dead end. */
 export function answerPathways(
   skillId: string,
   skills: readonly AnswerSkill[],
@@ -36,18 +51,31 @@ export function answerPathways(
     if (!available.has(template.skillId))
       available.set(template.skillId, template.id);
   }
-  const playable = (candidates: readonly AnswerSkill[]) =>
-    candidates.flatMap((s) => {
+  const neighbors = skillNeighbors(skills, skillId);
+  const playable = (items: typeof neighbors.buildsOn) => {
+    let connected = 0;
+    return items.flatMap(({ skill: s, source, connection }): Choice[] => {
       const templateId = available.get(s.id);
-      return templateId && s.id !== skillId && s.title
-        ? [{ ...s, title: s.title, templateId }]
-        : [];
+      if (!templateId || s.id === skillId || !s.title) return [];
+      if (source === "prerequisite")
+        return [{ ...s, title: s.title, templateId }];
+      if (++connected > answerConnectionLimit) return [];
+      return [
+        {
+          ...s,
+          title: s.title,
+          templateId,
+          connected: {
+            label: connection ? connectionLabel(connection) : "",
+            explanation: connection?.explanation ?? "",
+          },
+        },
+      ];
     });
+  };
   return {
     skill,
-    buildsOn: playable(
-      skills.filter((s) => skill?.prerequisites?.includes(s.id)),
-    ),
-    leadsTo: playable(skills.filter((s) => s.prerequisites?.includes(skillId))),
+    buildsOn: playable(neighbors.buildsOn.filter((n) => n.source !== "shared")),
+    leadsTo: playable(neighbors.leadsTo.filter((n) => n.source !== "shared")),
   };
 }
