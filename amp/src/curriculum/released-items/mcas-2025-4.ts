@@ -24,10 +24,10 @@ export const mcasGrade4 = defineLedger(
       archetypeIds: ["fractions.compare"],
       demand:
         "Choose the fraction that makes a comparison with a whole number true",
-      status: "partial",
-      templateIds: ["compare-fractions"],
+      status: "covered",
+      templateIds: ["fraction-choice-compare"],
       limitations:
-        "compare-fractions picks the greater of two fractions by entry; choosing a fraction that exceeds a stated whole number among four candidates is not practiced.",
+        "fraction-choice-compare picks the one of four fractions that is greater or less than a whole number from 1 to 3, with denominators 3 to 8.",
     },
     {
       section: "Session 1",
@@ -300,10 +300,10 @@ export const mcasGrade4 = defineLedger(
       archetypeIds: ["pattern.rule"],
       demand:
         "Find the next number of a decreasing pattern whose rule is not stated",
-      status: "partial",
-      templateIds: ["rule-pattern-term"],
+      status: "covered",
+      templateIds: ["pattern-term-unknown-rule"],
       limitations:
-        "rule-pattern-term applies a stated rule; inferring the rule from the first four terms is not practiced.",
+        "pattern-term-unknown-rule infers the rule from the first four terms of a decreasing pattern, whose change is constant or shrinks by one, and asks for the next term.",
     },
     {
       section: "Session 2",
