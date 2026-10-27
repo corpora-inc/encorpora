@@ -1,5 +1,6 @@
 import { generateProblem } from "../math/engine";
 import type { GeneratedProblem } from "../math/contracts";
+import { isLegacySurface } from "../math/number-domain-axes";
 
 const family = new Set([
   "right-triangle",
@@ -38,6 +39,8 @@ export function rightTriangleWorksheetProblems(
       templateId,
       `print:${lessonId}:${edition}:${candidate}`,
     );
+    // Sheets print the exact-integer surfaces; rounded surfaces are practice.
+    if (!isLegacySurface(problem)) continue;
     const key = caseKey(problem);
     if (used.has(key)) continue;
     used.add(key);

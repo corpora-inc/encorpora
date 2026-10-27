@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { circleMeasurementPrintCase } from "../math/circle-measurement-practice";
 import type { GeneratedProblem } from "../math/contracts";
+import { isLegacySurface, sweepChoose } from "../math/number-domain-axes";
 
 /** Select ordinary seeded problems while retaining both diameter and radius practice. */
 export function circleMeasurementWorksheet(
@@ -32,6 +33,14 @@ export function circleMeasurementWorksheet(
         circleMeasurementPrintCase(
           templateId,
           `print:${lessonId}:${edition}:${pool.length}`,
+          // The same instance the app draws for this seed, so a printed
+          // problem replays; the 3.14 surface is not a coefficient problem.
+          templateId === "circle-area-coefficient"
+            ? sweepChoose(
+                "circle-area-coefficient",
+                `print:${lessonId}:${edition}:${pool.length}`,
+              )
+            : undefined,
         ),
       );
     const selected: typeof pool = [],
@@ -44,6 +53,7 @@ export function circleMeasurementWorksheet(
       for (const candidate of pool) {
         if (
           used.has(candidate.caseKey) ||
+          !isLegacySurface(candidate.problem) ||
           candidate.tags.some(
             (t) => (t === "radius" || t === "diameter") && remaining[t] === 0,
           )

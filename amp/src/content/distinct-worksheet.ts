@@ -1,5 +1,6 @@
 import { generateProblem } from "../math/engine";
 import type { GeneratedProblem } from "../math/contracts";
+import { isLegacySurface } from "../math/number-domain-axes";
 
 /** Twelve ordinary seeded problems with no repeated prompt-and-figure pair,
  * taken in seed order so an edition always reprints the same sheet. */
@@ -17,6 +18,8 @@ export function distinctWorksheet(
       templateId,
       `print:${lessonId}:${edition}:${i}`,
     );
+    // Sheets print the surfaces their lessons teach; axis surfaces are practice.
+    if (!isLegacySurface(problem)) continue;
     const key = JSON.stringify([problem.public.prompt, problem.public.figure]);
     if (seen.has(key)) continue;
     seen.add(key);

@@ -203,3 +203,18 @@ export function roundedRoot(
     ],
   };
 }
+
+/** True when a problem shows the surface its family had before these axes
+ * (or its family has none). Printed worksheets and lesson sheets are built
+ * from legacy surfaces so their editions keep their content. */
+export function isLegacySurface(problem: {
+  public: { templateId: string };
+  variant?: ProblemVariant;
+}): boolean {
+  const id = problem.public.templateId;
+  if (!isSweepId(id)) return true;
+  const axes = problem.variant?.axes;
+  return Object.entries(sweepAxes[id] as AxisSet).every(
+    ([key, axis]) => axes?.[key] === axis.legacy,
+  );
+}

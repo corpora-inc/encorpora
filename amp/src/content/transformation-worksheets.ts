@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { transformationPrintCase } from "../math/transformation-practice";
+import { isLegacySurface, sweepChoose } from "../math/number-domain-axes";
 
 /** Each worksheet covers every shape, motion and case the type assesses. */
 const required: Record<string, string[]> = {
@@ -80,9 +81,18 @@ export function transformationWorksheet(
 ) {
   const tags = required[templateId];
   if (!tags) throw new Error(`No worksheet plan for ${templateId}`);
-  const pool = Array.from({ length: 512 }, (_, i) =>
-    transformationPrintCase(templateId, `${lessonId}:${edition}:geometry:${i}`),
-  );
+  // The instance the app draws for each seed, so a printed problem replays;
+  // the rounded-distance surface is not an exact-distance problem.
+  const pool = Array.from({ length: 512 }, (_, i) => {
+    const seed = `${lessonId}:${edition}:geometry:${i}`;
+    return transformationPrintCase(
+      templateId,
+      seed,
+      templateId === "coordinate-distance-exact"
+        ? sweepChoose("coordinate-distance-exact", seed)
+        : undefined,
+    );
+  }).filter((c) => isLegacySurface(c.problem));
   const selected: typeof pool = [];
   const used = new Set<string>();
   const take = (predicate: (c: (typeof pool)[number]) => boolean) => {
