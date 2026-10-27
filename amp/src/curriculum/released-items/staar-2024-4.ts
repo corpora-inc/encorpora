@@ -364,10 +364,10 @@ export const staar2024Grade4 = defineLedger(
       archetypeIds: ["shape.parallel-perpendicular-sides"],
       demand:
         "Select every figure with at least one pair of perpendicular sides",
-      status: "partial",
-      templateIds: ["line-relationship"],
+      status: "covered",
+      templateIds: ["line-relationship", "shape-sides-select"],
       limitations:
-        "STAAR interaction: multiselect, 2 points. line-relationship tells perpendicular from parallel lines on a dot grid by choice; no family takes a multi-select of polygons.",
+        "shape-sides-select (perpendicular-sides variant) draws six polygons turned in any direction and selects the two to four that have at least one pair of perpendicular sides.",
     },
     {
       item: { number: "29", page: "rationale PDF p.31" },
@@ -387,10 +387,10 @@ export const staar2024Grade4 = defineLedger(
       standards: ["TEKS.4.4.9.A"],
       archetypeIds: ["data.stem-leaf-read"],
       demand: "Select the stem-and-leaf plots that show a listed data set",
-      status: "partial",
-      templateIds: ["stem-leaf-read"],
+      status: "covered",
+      templateIds: ["stem-leaf-read", "stem-leaf-match-select"],
       limitations:
-        "STAAR interaction: multiselect, 2 points. stem-leaf-read reads one plot; no family checks plots against a data list or takes a multi-select.",
+        "stem-leaf-match-select gives a list of nine to twelve two-digit values and four stem-and-leaf plots and selects the two plots that show exactly that data.",
     },
     {
       item: { number: "31", page: "rationale PDF p.33" },

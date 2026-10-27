@@ -409,10 +409,10 @@ export const vasolGrade5 = defineLedger(
       standards: ["SOL.2009.5.12a"],
       archetypeIds: ["angle.classify"],
       demand: "Select every drawn angle that appears acute among six angles",
-      status: "partial",
-      templateIds: ["angle-classify"],
+      status: "covered",
+      templateIds: ["angle-classify", "angle-kind-select"],
       limitations:
-        "angle-classify names the kind of one drawn angle; selecting all acute angles from six drawn angles has no template on the multi-select protocol.",
+        "angle-kind-select draws six angles turned in any direction and selects the two or three that appear acute, right or obtuse.",
     },
     {
       item: { number: "32", page: "PDF p.38" },

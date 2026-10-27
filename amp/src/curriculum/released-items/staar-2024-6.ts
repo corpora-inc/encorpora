@@ -350,10 +350,14 @@ export const staar2024Grade6 = defineLedger(
       archetypeIds: ["ratio.proportion"],
       demand:
         "Select the volunteer groups that keep a ratio of five students to two adults",
-      status: "partial",
-      templateIds: ["ratio-missing", "ratio-table-missing"],
+      status: "covered",
+      templateIds: [
+        "ratio-missing",
+        "ratio-table-missing",
+        "equivalent-ratios-select",
+      ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. ratio-missing and ratio-table-missing scale a ratio by entry; no family takes a multi-select of equivalent ratios.",
+        "equivalent-ratios-select gives a part-to-part ratio in a context and selects the two or three of five groups that keep the ratio.",
     },
     {
       item: { number: "28", page: "rationale PDF p.35" },

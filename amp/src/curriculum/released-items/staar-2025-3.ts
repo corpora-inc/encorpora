@@ -40,10 +40,14 @@ export const staarGrade3 = defineLedger(
       archetypeIds: ["number.expanded-form-whole"],
       demand:
         "Choose every expression that equals a five-digit number written as place-value parts",
-      status: "partial",
-      templateIds: ["expanded-form-missing", "multidigit-digit-value"],
+      status: "covered",
+      templateIds: [
+        "expanded-form-missing",
+        "multidigit-digit-value",
+        "place-value-forms-select",
+      ],
       limitations:
-        "STAAR interaction: multiselect, 2 points. expanded-form-missing completes one part of a three-digit expanded sum and multidigit-digit-value names one digit's value; no family builds or recognizes a full expanded sum beyond 999, and none takes a two-answer selection.",
+        "place-value-forms-select (five-digit and inner-zero variants) gives a five-digit number and selects the two or three of five expressions equal to it: sums of place-value parts, products of a digit and its place, and grouped counts of hundreds or thousands, with and without a zero digit.",
     },
     {
       item: {
@@ -236,9 +240,9 @@ export const staarGrade3 = defineLedger(
       demand:
         "Select the true statements about a group of solids, such as having two congruent parallel faces",
       status: "partial",
-      templateIds: ["solid-property-select"],
+      templateIds: ["solid-property-select", "solid-figure-select"],
       limitations:
-        "solid-property-select selects exactly three of six named prisms and pyramids that have a stated property; the item draws a group of solids and asks for the true statements.",
+        "solid-figure-select selects, among six drawn solids, the two or three that have a stated property such as two congruent parallel faces among prisms and pyramids, or a curved surface; judging written true-or-false statements about a group of solids is not practiced.",
     },
     {
       item: {

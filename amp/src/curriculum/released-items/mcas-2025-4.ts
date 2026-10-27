@@ -86,10 +86,10 @@ export const mcasGrade4 = defineLedger(
       archetypeIds: ["shape.parallel-perpendicular-sides", "line.terms"],
       demand:
         "Select the three drawn shapes that have a pair of parallel sides",
-      status: "partial",
-      templateIds: ["line-relationship"],
+      status: "covered",
+      templateIds: ["line-relationship", "shape-sides-select"],
       limitations:
-        "line-relationship tells parallel from intersecting lines; finding parallel sides inside polygons and selecting several shapes are not practiced.",
+        "shape-sides-select (parallel-sides variant) draws six polygons turned in any direction and selects the two to four that have at least one pair of parallel sides.",
     },
     {
       section: "Session 1",
@@ -119,9 +119,13 @@ export const mcasGrade4 = defineLedger(
       demand:
         "Match expanded forms to word forms and decide which word-form comparisons with a standard numeral are true, each with three selections",
       status: "partial",
-      templateIds: ["expanded-form-missing", "compare-multidigit"],
+      templateIds: [
+        "expanded-form-missing",
+        "compare-multidigit",
+        "place-value-forms-select",
+      ],
       limitations:
-        "expanded-form-missing completes an expanded form and compare-multidigit picks the lesser of two numerals; reading and writing number words and selecting several true statements are not practiced.",
+        "place-value-forms-select selects the true expanded forms of one number or the true comparisons of one number with numbers written in words; matching expanded forms to word forms and the second, linked selection of the same item are not practiced.",
     },
     {
       section: "Session 1",
@@ -165,10 +169,10 @@ export const mcasGrade4 = defineLedger(
       standards: ["4.G.A.3"],
       archetypeIds: ["shape.symmetry"],
       demand: "Select the two figures whose drawn line is a line of symmetry",
-      status: "partial",
-      templateIds: ["symmetry-line-check"],
+      status: "covered",
+      templateIds: ["symmetry-line-check", "symmetry-lines-select"],
       limitations:
-        "symmetry-line-check chooses one dashed line of symmetry among options; judging each of five figures by multiple selection is not practiced.",
+        "symmetry-lines-select (one-line variant) draws five figures with one dashed line each and selects the two or three whose line is a line of symmetry.",
     },
     {
       section: "Session 2",
@@ -236,10 +240,10 @@ export const mcasGrade4 = defineLedger(
       standards: ["4.MD.C.6"],
       archetypeIds: ["angle.measure"],
       demand: "Select the true measures of two angles read on one protractor",
-      status: "partial",
-      templateIds: ["protractor-reading"],
+      status: "covered",
+      templateIds: ["protractor-reading", "protractor-angles-select"],
       limitations:
-        "protractor-reading reads one angle by entry; reading two angles that share a ray and choosing two true statements are not practiced.",
+        "protractor-angles-select (true-measures variant) draws three rays on one protractor and selects the true measures among angle statements, including the angle between two rays that are both away from zero.",
     },
     {
       section: "Session 2",

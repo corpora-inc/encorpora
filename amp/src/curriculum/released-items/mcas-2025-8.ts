@@ -140,10 +140,14 @@ export const mcasGrade8 = defineLedger(
       archetypeIds: ["number.approximate-roots"],
       demand:
         "Select the three true approximate values of points marked on a number line",
-      status: "partial",
-      templateIds: ["root-between-integers", "root-nearest-tenth"],
+      status: "covered",
+      templateIds: [
+        "root-between-integers",
+        "root-nearest-tenth",
+        "root-approximation-select",
+      ],
       limitations:
-        "Both families bound or approximate one root by entry; reading marked irrational points and choosing three true statements are not practiced.",
+        "root-approximation-select marks four points at square roots of whole numbers on a number line between two integers and selects the true approximations to the nearest tenth.",
     },
     {
       section: "Session 1",

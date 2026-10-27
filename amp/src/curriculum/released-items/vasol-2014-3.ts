@@ -279,10 +279,10 @@ export const vasolGrade3 = defineLedger(
       archetypeIds: ["whole.multiplication-facts"],
       demand:
         "Select every multiplication fact in a grid of six that equals 48",
-      status: "partial",
-      templateIds: ["multiply-facts"],
+      status: "covered",
+      templateIds: ["multiply-facts", "multiplication-fact-grid-select"],
       limitations:
-        "multiply-facts finds one product by entry; selecting all facts that share a product has no template on the multi-select protocol.",
+        "multiplication-fact-grid-select gives a grid of six multiplication facts and selects the two or three that have a stated product, including 48.",
     },
     {
       item: { number: "21", page: "PDF p.27" },
