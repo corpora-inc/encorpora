@@ -254,7 +254,7 @@ function gaussCase(r: Random): Draft {
     return {
       prompt: `Solve the system ${M(sysTex(sys.A, sys.b))} Which ordered triple $(x, y, z)$ satisfies all three equations?`,
       answer: "",
-      hint: `Use an equation with an $x$ term to remove $x$ from another equation. That leaves two equations in $y$ and $z$; remove one more variable and work back up.`,
+      hint: `Use an equation with an $x$ term, such as ${M(eqTex(sys.A[sys.A.findIndex((row) => row[0] !== 0)]!, sys.b[sys.A.findIndex((row) => row[0] !== 0)]!))}, to remove $x$ from another equation. That leaves two equations in $y$ and $z$; remove one more variable and work back up.`,
       explanation: [
         ...eliminationSteps(sys),
         `Check in every equation: ${sys.A.map((row, i) => `${M(eqTex(row, sys.b[i]!))}`).join("; ")} all hold for ${triple(sys.sol)}.`,
@@ -290,7 +290,7 @@ function gaussCase(r: Random): Draft {
     return {
       prompt: `In the system ${M(sysTex(sys.A, sys.b))} equations are numbered 1, 2, 3 from the top, and $R_n$ means equation $n$. Which row operation eliminates $x$ from equation ${target + 1} using equation 1?`,
       answer: "",
-      hint: `Equation 1 has ${a}x and equation ${target + 1} has ${bcoef}x. Find the multiple of equation 1 whose $x$ term equals ${bcoef}x, then subtract it.`,
+      hint: `Equation 1 has ${M(`${a}x`)} and equation ${target + 1} has ${M(`${bcoef}x`)}. Find the multiple of equation 1 whose $x$ term equals ${M(`${bcoef}x`)}, then subtract it.`,
       explanation: [
         `Compare $x$ coefficients: $${bcoef}=${mul(k, a)}$, so equation ${target + 1} loses its $x$ term when ${k} times equation 1 is subtracted.`,
         `Subtract ${k} times equation 1 from equation ${target + 1}: the $x$ terms cancel, leaving ${M(eqTex(eliminated, eliminatedRhs))}.`,
@@ -375,7 +375,7 @@ function gaussCase(r: Random): Draft {
     return {
       prompt: `How many solutions does the system ${M(sysTex(A, b))} have?`,
       answer: "",
-      hint: short,
+      hint: `${short} Equation 1 is ${M(eqTex(A[0]!, b[0]!))}.`,
       explanation: [reason, `The answer is: ${COUNT_LABELS[correct]}.`],
       choices: labels.map((l) =>
         l === correct
@@ -609,7 +609,7 @@ function quadraticInequalityCase(r: Random): Draft {
     prompt: `Solve ${M(`${lhs} ${opT} ${rhs}`)}. Write the solution set in interval notation.`,
     answer: "",
     hint: rearranged
-      ? `Move every term to one side so the other side is 0. The related parabola ${unit} when its leading coefficient is ${a > 0 ? "positive" : "negative"}; find its zeros, then decide where it is ${op === "<" || op === "≤" ? "below" : "above"} the axis.`
+      ? `Move every term of ${M(`${lhs} ${opT} ${rhs}`)} to one side so the other side is 0. The related parabola ${unit} when its leading coefficient is ${a > 0 ? "positive" : "negative"}; find its zeros, then decide where it is ${op === "<" || op === "≤" ? "below" : "above"} the axis.`
       : `The parabola for ${M(lhs)} ${unit}. Find where it crosses the $x$-axis, then decide whether it is ${op === "<" || op === "≤" ? "below" : "above"} the axis between those points or outside them.`,
     explanation: [
       rearranged
@@ -853,7 +853,7 @@ function conditionalCase(r: Random): Draft {
     return {
       prompt: `Let $P$ be “${pp}” and $Q$ be “${qq}”. Both $P \\to Q$ and its converse $Q \\to P$ are true. Which single statement says exactly this?`,
       answer: "",
-      hint: `A biconditional joins a conditional and its converse. Compare the connective in each choice with “if ... then” in both directions.`,
+      hint: `“${pp}” and “${qq}” are linked by a conditional and its converse. A biconditional joins them. Compare the connective in each choice with “if ... then” in both directions.`,
       explanation: [
         `$P \\to Q$ says $P$ is enough for $Q$. $Q \\to P$ says $Q$ is enough for $P$.`,
         `Together they say $P$ and $Q$ are true together or false together: $P \\leftrightarrow Q$, read “$P$ if and only if $Q$”.`,
@@ -893,7 +893,7 @@ function conditionalCase(r: Random): Draft {
     return {
       prompt: `Which statement is the negation of “${orig}”?`,
       answer: "",
-      hint: `The conditional is false in exactly one situation: the hypothesis holds and the conclusion fails. Describe that situation.`,
+      hint: `The conditional “${orig}” is false in exactly one situation: the hypothesis holds and the conclusion fails. Describe that situation.`,
       explanation: [
         `A conditional is false only when its hypothesis is true and its conclusion is false.`,
         `So its negation says the hypothesis is true and the conclusion is false: “${correct}”`,
@@ -1039,7 +1039,7 @@ function cubeRootCase(r: Random): Draft {
     return {
       prompt: `Solve ${M(`${cbrtTex(rad)} = ${c}`)} for real $x$.`,
       answer: "",
-      hint: `Cube both sides to remove the cube root. The right side ${c} becomes a single number; then solve the linear equation in $x$.`,
+      hint: `Cube both sides to remove the cube root, so the left side becomes ${M(rad)}. The right side ${c} becomes a single number; then solve the linear equation in $x$.`,
       explanation: [
         `Cube both sides: ${M(`${rad} = ${par(c)}^3 = ${c ** 3}`)}.`,
         `Solve: ${M(`${poly([[a, "x"]])} = ${c ** 3 - b}`)}, so ${xv(x)}.`,
@@ -1097,7 +1097,7 @@ function cubeRootCase(r: Random): Draft {
     return {
       prompt: `Solve ${M(`${cbrtTex(rad)} ${d < 0 ? "-" : "+"} ${Math.abs(d)} = ${c}`)} for real $x$.`,
       answer: "",
-      hint: `First isolate the cube root: undo the ${d < 0 ? "subtraction" : "addition"} of ${Math.abs(d)} on both sides. Then cube both sides.`,
+      hint: `First isolate the cube root ${M(cbrtTex(rad))}: undo the ${d < 0 ? "subtraction" : "addition"} of ${Math.abs(d)} on both sides. Then cube both sides.`,
       explanation: [
         `Isolate the root: ${M(`${cbrtTex(rad)} = ${c} ${d < 0 ? "+" : "-"} ${Math.abs(d)} = ${s}`)}.`,
         `Cube both sides: ${M(`${rad} = ${par(s)}^3 = ${s ** 3}`)}.`,
@@ -1154,7 +1154,7 @@ function cubeRootCase(r: Random): Draft {
         ])} = ${c}`,
       )}. Choose the complete solution set.`,
       answer: "",
-      hint: `Isolate $x^3$ first: undo the constant, then the coefficient ${a}. Then take the cube root of both sides.`,
+      hint: `Isolate $x^3$ first: undo the constant ${b}, then the coefficient ${a}. Then take the cube root of both sides.`,
       explanation: [
         `Subtract $${b}$: ${M(`${poly([[a, "x^3"]])} = ${c - b}`)}.`,
         `Divide by ${a}: ${M(`x^3 = ${raw}`)}.`,
@@ -1177,7 +1177,7 @@ function cubeRootCase(r: Random): Draft {
   return {
     prompt: `To solve ${M(`${cbrtTex(rad)} = ${c}`)} a student cubes both sides and gets $x=${x}$. Which statement is correct?`,
     answer: "",
-    hint: `Substitute the candidate into the original equation: find the number under the cube root, then its cube root, and compare with ${c}.`,
+    hint: `Substitute the candidate $x=${x}$ into the original equation ${M(`${cbrtTex(rad)} = ${c}`)}: find the number under the cube root, then its cube root, and compare with ${c}.`,
     explanation: [
       `Substitute $x=${x}$: ${M(`${cbrtTex(`${x}${b < 0 ? "-" : "+"}${Math.abs(b)}`)} = ${cbrtTex(String(c ** 3))} = ${c}`)}.`,
       `It satisfies the original equation, so it is a solution. Cubing is one-to-one on real numbers, so cubing both sides cannot create false solutions; the extraneous candidates of square-root equations come from squaring, which loses sign.`,
@@ -1262,7 +1262,7 @@ function polarCase(r: Random): Draft {
     return {
       prompt: `Which description matches the graph of ${M(eq[t.key])}?`,
       answer: "",
-      hint: `Look at how $\\theta$ appears. A constant $r$, a constant $\\theta$, $r$ equal to a trigonometric function of $\\theta$, and $r$ equal to a constant plus a trigonometric term each give a different family.`,
+      hint: `Look at how $\\theta$ appears in ${M(eq[t.key])}. A constant $r$, a constant $\\theta$, $r$ equal to a trigonometric function of $\\theta$, and $r$ equal to a constant plus a trigonometric term each give a different family.`,
       explanation: [
         `Equation: ${M(eq[t.key])}.`,
         `${t.name} has equations of the form ${t.form}. This equation has that form.`,
@@ -1337,7 +1337,7 @@ function polarCase(r: Random): Draft {
       return {
         prompt: `What is the greatest distance from the pole to a point on the graph of ${M(`r = ${sign}${a} ${trig(fn, n)}`)}?`,
         answer: "",
-        hint: `The trigonometric factor ranges from $-1$ to $1$. Distance from the pole is $|r|$, so find the largest $|r|$ can be.`,
+        hint: `The trigonometric factor ranges from $-1$ to $1$, and $r$ is ${sign}${a} times it. Distance from the pole is $|r|$, so find the largest $|r|$ can be.`,
         explanation: [
           `${M(trig(fn, n))} takes every value from $-1$ to $1$, so $r$ ranges from $-${a}$ to ${a}.`,
           `Distance from the pole is $|r|$, whose largest value is ${a}.`,
@@ -1420,7 +1420,7 @@ function polarCase(r: Random): Draft {
   return {
     prompt: `The graph of ${M(`r = ${a} ${s} ${b}${trig(fn, 1)}`)} is symmetric about which of these?`,
     answer: "",
-    hint: `Test a symmetry by replacing $\\theta$ with $-\\theta$ (reflection in the polar axis) or with $\\pi-\\theta$ (reflection in the line $\\theta=\\frac{\\pi}{2}$) and see whether the equation stays the same.`,
+    hint: `Test a symmetry of ${M(`r = ${a} ${s} ${b}${trig(fn, 1)}`)} by replacing $\\theta$ with $-\\theta$ (reflection in the polar axis) or with $\\pi-\\theta$ (reflection in the line $\\theta=\\frac{\\pi}{2}$) and see whether the equation stays the same.`,
     explanation: [
       fn === "cos"
         ? `$\\cos(-\\theta)=\\cos\\theta$, so replacing $\\theta$ by $-\\theta$ leaves $r=${a}${s}${b}\\cos\\theta$ unchanged: the graph is symmetric about the polar axis.`

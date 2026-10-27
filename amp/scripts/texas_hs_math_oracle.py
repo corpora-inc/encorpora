@@ -1096,7 +1096,7 @@ def solve_bearing(public):
         distance, bearing = int(m[1]), int(m[2])
         east, north = distance * math.sin(math.radians(bearing)), distance * math.cos(math.radians(bearing))
         return direction_choices(public, east, north, 'east-west' if m[3].startswith('east') else 'north-south')
-    if (m := re.fullmatch(r'A plane flies (\d+) km on a bearing of ([NS]) (\d+)\^\\circ ([EW]), which means \3\^\\circ from (north|south) toward (east|west)\. How many kilometers (north|south|east|west) of its starting point is it\?', prompt)):
+    if (m := re.fullmatch(r'A plane flies (\d+) km on a bearing of \\mathrm\{([NS])\}(\d+)\^\\circ\\mathrm\{([EW])\}, which means \3\^\\circ from (north|south) toward (east|west)\. How many kilometers (north|south|east|west) of its starting point is it\?', prompt)):
         distance, ns, angle, ew = int(m[1]), m[2], int(m[3]), m[4]
         require({'N': 'north', 'S': 'south'}[ns] == m[5] and {'E': 'east', 'W': 'west'}[ew] == m[6], 'Convention text must match the bearing')
         along = distance * math.cos(math.radians(angle))

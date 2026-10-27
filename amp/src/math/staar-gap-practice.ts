@@ -1,3 +1,4 @@
+import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { MAX_STACK, stackHeights } from "./data-display-models.js";
 import { table } from "./scene/author";
@@ -674,7 +675,52 @@ function numberWordForm(r: Random): Built {
 /* Renaming percents, fractions and decimals; ratio statements             */
 /* ---------------------------------------------------------------------- */
 
-function renameForms(r: Random): Built {
+/** A two-place decimal written as a fraction in lowest terms. */
+function decimalToFraction(r: Random): Built {
+  // A hundredths decimal that is not already in lowest terms over 100.
+  let h = r(2, 98);
+  while (h % 10 === 0 || gcd(h, 100) === 1) h = r(2, 98);
+  const g = gcd(h, 100);
+  const [n, d] = [h / g, 100 / g];
+  const shown = dec(h, 2);
+  const frac = (a: number, b: number) => tex(`\\frac{${a}}{${b}}`);
+  return {
+    variant: "decimal-to-fraction",
+    prompt: `Which fraction in lowest terms is equal to ${shown}?`,
+    answer: "",
+    hint: `${shown} has two decimal places, so it is a count of hundredths. Write it over 100, then divide the numerator and the denominator by a number they share.`,
+    explanation: [
+      `${shown} is ${h} hundredths: $${shown}=\\frac{${h}}{100}$.`,
+      `The greatest common factor of ${h} and 100 is ${g}. Divide both by ${g}: $\\frac{${h}}{100}=\\frac{${n}}{${d}}$.`,
+      `Check: $${n}\\times${g}=${h}$ and $${d}\\times${g}=100$.`,
+    ],
+    choices: choicesFrom(r, frac(n, d), [
+      {
+        label: frac(h, 100),
+        feedback: `That is equal to ${shown}, but it is not in lowest terms: ${h} and 100 share the factor ${g}.`,
+      },
+      {
+        label: frac(h, 10),
+        feedback: `Two decimal places make hundredths, so the denominator is 100, not 10.`,
+      },
+      {
+        label: frac(n, 100),
+        feedback: `The numerator was divided by ${g} but the denominator was not. Divide both by the same number.`,
+      },
+      {
+        label: frac(h, 1000),
+        feedback: `Two decimal places make hundredths, so the denominator is 100, not 1000.`,
+      },
+      {
+        label: frac(d, n),
+        feedback: `That has the numerator and the denominator swapped, which is a number greater than 1.`,
+      },
+    ]),
+  };
+}
+
+function renameForms(r: Random, axes?: Record<string, string>): Built {
+  if (axes?.direction === "decimal-to-fraction") return decimalToFraction(r);
   const variant = pick(r, [
     "percent-to-decimal",
     "fraction-to-decimal",
@@ -2394,7 +2440,61 @@ const xSets = [
   [2, 3, 4, 5],
   [3, 4, 5, 6],
 ];
-function tableRuleChoice(r: Random): Built {
+/** Subtract rule: every output is its input minus k; the inputs all exceed k. */
+function subtractRuleChoice(r: Random): Built {
+  const k = r(1, 6);
+  const step = r(1, 3);
+  const first = r(k + 1, k + 6);
+  const xs = [0, 1, 2, 3].map((i) => first + i * step);
+  const label = (ys: number[]) =>
+    tex(
+      `\\begin{array}{c|cccc}x&${xs.join("&")}\\\\\\hline y&${ys.join("&")}\\end{array}`,
+    );
+  const right = xs.map((x) => x - k);
+  const oneOff = right.slice();
+  const bad = r(0, 3);
+  oneOff[bad] = oneOff[bad]! + (r(0, 1) ? 1 : -1) * r(1, 2);
+  const added = xs.map((x) => x + k);
+  const shifted = right.map((y) => y + 1);
+  const wrongK = xs.map((x) => x - (k + (k > 1 ? -1 : 1)));
+  const flipped = xs.map((x) => k - x);
+  return {
+    variant: "subtract",
+    prompt: `Which table shows that every pair follows the rule $y=x-${k}$?`,
+    answer: "",
+    hint: `Try the rule on the first pair. For $x=${xs[0]}$ the rule gives $${xs[0]}-${k}$. Check that value in each table, then check the other pairs: one wrong pair rules a table out.`,
+    explanation: [
+      `Apply the rule to each input: ${xs.map((x) => `$x=${x}$ gives $y=${x - k}$`).join("; ")}.`,
+      `Only one table has outputs ${right.join(", ")} for these inputs.`,
+    ],
+    choices: choicesFrom(r, label(right), [
+      {
+        label: label(oneOff),
+        feedback: `One output does not follow the rule: for $x=${xs[bad]}$ it should be ${right[bad]}. Every pair must follow the rule.`,
+      },
+      {
+        label: label(added),
+        feedback: `These outputs add ${k} to each input. The rule subtracts ${k}.`,
+      },
+      {
+        label: label(shifted),
+        feedback:
+          "Every output is 1 too large. Check the first pair against the rule.",
+      },
+      {
+        label: label(wrongK),
+        feedback: `These outputs subtract a different number. The rule subtracts ${k}.`,
+      },
+      {
+        label: label(flipped),
+        feedback: `These outputs subtract each input from ${k}. The rule subtracts ${k} from each input.`,
+      },
+    ]),
+  };
+}
+
+function tableRuleChoice(r: Random, axes?: Record<string, string>): Built {
+  if (axes?.rule === "subtract") return subtractRuleChoice(r);
   const mul = r(0, 1) === 1;
   const k = r(2, 9);
   const xs = pick(r, xSets);
@@ -2735,7 +2835,10 @@ function numberSets(r: Random): Built {
 
 /* ---------------------------------------------------------------------- */
 
-const builders: Record<string, (r: Random) => Built> = {
+const builders: Record<
+  string,
+  (r: Random, axes?: Record<string, string>) => Built
+> = {
   "staar-nested-grouping": nestedGrouping,
   "staar-signed-exponent-order": signedExponentOrder,
   "staar-number-word-form": numberWordForm,
@@ -2782,10 +2885,13 @@ export function staarGapCase(templateId: string, seed: string) {
   const build = builders[templateId];
   if (!template || !build) throw new Error(`Unknown template ${templateId}`);
   const r = random(template.id, seed);
+  const axes = isSweepId(templateId)
+    ? sweepChoose(templateId, seed)
+    : undefined;
   for (let attempt = 0; attempt < 80; attempt++) {
     let draft: Built;
     try {
-      draft = build(r);
+      draft = build(r, axes);
     } catch (error) {
       if (error instanceof Error && error.message.startsWith("Need three"))
         continue;
@@ -2796,7 +2902,10 @@ export function staarGapCase(templateId: string, seed: string) {
     return {
       variant: draft.variant,
       model: draft.model,
-      problem: assemble(template, seed, r, draft),
+      problem: {
+        ...assemble(template, seed, r, draft),
+        ...(axes ? { variant: sweepVariant(draft.variant, axes) } : {}),
+      },
     };
   }
   throw new Error("Could not generate a problem without leaking the answer");

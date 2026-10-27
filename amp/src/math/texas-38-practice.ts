@@ -251,13 +251,13 @@ export const texas38Templates: readonly TemplateMetadata[] = [
   ),
   metadata(
     "pi-as-ratio",
-    "Pi as circumference over diameter",
+    "Circumference over diameter",
     "circle-measurement",
     "6–8",
     0.1,
     "choice",
     false,
-    "Choose the ratio that defines pi, compute it from a measured circle, and say how it changes when a circle is scaled.",
+    "Choose the ratio that defines $\\pi$, compute it from a measured circle, and say how it changes when a circle is scaled.",
   ),
   metadata(
     "experimental-probability-predict",
@@ -277,7 +277,7 @@ export const texas38Templates: readonly TemplateMetadata[] = [
     0.6,
     "number",
     false,
-    "Find the lateral or total surface area of a cylinder in terms of pi, a missing height from a surface area, or the surface area of a right triangular prism.",
+    "Find the lateral or total surface area of a cylinder in terms of $\\pi$, a missing height from a surface area, or the surface area of a right triangular prism.",
   ),
   metadata(
     "both-sides-situation-equation",
@@ -704,7 +704,7 @@ function situationPairTable(r: Random): Built {
       return {
         variant,
         prompt: `${old} is ${g} years older than ${young}. The table shows their ages at different times. How old is ${old} when ${young} is ${n}?`,
-        hint: `Compare a row you can see, such as ${young} at ${givens[0]} and ${old} at ${givens[0]! + g}. How much older is ${old}? That gap is the same in every row.`,
+        hint: `${old} is ${g} years older than ${young}. Compare a row you can see, such as ${young} at ${givens[0]} and ${old} at ${givens[0]! + g}. That gap is the same in every row.`,
         explanation: [
           `The gap is ${g} years in every row, for example ${givens[0]! + g} − ${givens[0]} = ${g}.`,
           `When ${young} is ${n}, ${old} is ${n} + ${g} = ${n + g}.`,
@@ -719,7 +719,7 @@ function situationPairTable(r: Random): Built {
     return {
       variant,
       prompt: `${old} is ${g} years older than ${young}. The table shows their ages at different times. How old is ${young} when ${old} is ${n + g}?`,
-      hint: `Subtract to compare the ages in a row you can see, such as ${givens[0]! + g} and ${givens[0]}. The same gap applies to the row with ?.`,
+      hint: `Subtract to compare the ages in a row you can see, such as ${givens[0]! + g} and ${givens[0]}. The same ${g}-year gap applies to the row with ?.`,
       explanation: [
         `The gap is ${g} years in every row.`,
         `${young} is ${g} years younger: ${n + g} − ${g} = ${n}.`,
@@ -820,7 +820,7 @@ function storyEquationChoice(r: Random): Built {
   let hint = "";
   if (variant === "join-result") {
     story = `${name} has ${a} ${thing} and gets ${b} more.`;
-    ask = `Let n be the number of ${thing} ${name} has now.`;
+    ask = `Let $n$ be the number of ${thing} ${name} has now.`;
     correct = r(0, 1) ? `${a} + ${b} = n` : `n − ${b} = ${a}`;
     wrong = [
       {
@@ -833,17 +833,17 @@ function storyEquationChoice(r: Random): Built {
       },
       {
         text: `n + ${a} = ${b}`,
-        reason: `The total n is not what ${b} gets added to; ${a} and ${b} are the parts and n is the total.`,
+        reason: `The total $n$ is not what ${b} gets added to; ${a} and ${b} are the parts and $n$ is the total.`,
       },
     ];
     steps = [
       `${name} starts with ${a} and gets ${b} more, so the amounts are joined.`,
-      `The total n equals ${a} + ${b}, so ${a} + ${b} = n (or n − ${b} = ${a}).`,
+      `The total $n$ equals ${a} + ${b}, so ${a} + ${b} = $n$ (or $n$ − ${b} = ${a}).`,
     ];
-    hint = `Is ${name}'s ${a} a part or the total? The amount ${name} gets joins it, so the total n is the unknown.`;
+    hint = `Is ${name}'s ${a} a part or the total? The amount ${name} gets joins it, so the total $n$ is the unknown.`;
   } else if (variant === "separate-result") {
     story = `${name} has ${a + b} ${thing} and gives away ${b}.`;
-    ask = `Let n be the number of ${thing} ${name} has left.`;
+    ask = `Let $n$ be the number of ${thing} ${name} has left.`;
     correct = r(0, 1) ? `${a + b} − ${b} = n` : `n + ${b} = ${a + b}`;
     wrong = [
       {
@@ -852,7 +852,7 @@ function storyEquationChoice(r: Random): Built {
       },
       {
         text: `n − ${a + b} = ${b}`,
-        reason: `That starts from n and takes ${a + b} away. ${a + b} is the starting amount.`,
+        reason: `That starts from $n$ and takes ${a + b} away. ${a + b} is the starting amount.`,
       },
       {
         text: `${b} − ${a + b} = n`,
@@ -861,21 +861,21 @@ function storyEquationChoice(r: Random): Built {
     ];
     steps = [
       `${name} starts with ${a + b} and gives away ${b}, so ${b} is taken away.`,
-      `What is left is ${a + b} − ${b} = n, or n + ${b} = ${a + b}.`,
+      `What is left is ${a + b} − ${b} = $n$, or $n$ + ${b} = ${a + b}.`,
     ];
     hint = `${name} starts with ${a + b}. Giving ${b} away takes it from that starting amount.`;
   } else if (variant === "join-start-unknown") {
     story = `${name} has some ${thing}. After getting ${b} more, ${name} has ${a + b}.`;
-    ask = `Let n be the number of ${thing} ${name} had at first.`;
+    ask = `Let $n$ be the number of ${thing} ${name} had at first.`;
     correct = `n + ${b} = ${a + b}`;
     wrong = [
       {
         text: `n − ${b} = ${a + b}`,
-        reason: `That says ${name} took ${b} away from n. The story says ${name} got ${b} more.`,
+        reason: `That says ${name} took ${b} away from $n$. The story says ${name} got ${b} more.`,
       },
       {
         text: `${b} − n = ${a + b}`,
-        reason: `n is the starting amount; ${b} is not taken from n and the total is larger than ${b}.`,
+        reason: `$n$ is the starting amount; ${b} is not taken from $n$ and the total is larger than ${b}.`,
       },
       {
         text: `${a + b} + ${b} = n`,
@@ -883,13 +883,13 @@ function storyEquationChoice(r: Random): Built {
       },
     ];
     steps = [
-      `The start n and the ${b} that is added make the new total.`,
-      `So n + ${b} = ${a + b}.`,
+      `The start $n$ and the ${b} that is added make the new total.`,
+      `So $n$ + ${b} = ${a + b}.`,
     ];
-    hint = `n is the amount before anything changes. Write what happens to n, then what it equals afterwards.`;
+    hint = `$n$ is the amount before anything changes. Write what happens to $n$ when ${b} more arrive, then what it equals afterwards.`;
   } else if (variant === "separate-start-unknown") {
     story = `${name} has some ${thing}, gives away ${b}, and then has ${a} left.`;
-    ask = `Let n be the number of ${thing} ${name} had at first.`;
+    ask = `Let $n$ be the number of ${thing} ${name} had at first.`;
     correct = `n − ${b} = ${a}`;
     wrong = [
       {
@@ -902,17 +902,17 @@ function storyEquationChoice(r: Random): Built {
       },
       {
         text: `${b} − n = ${a}`,
-        reason: `That takes n from ${b}. The ${b} is taken away from n.`,
+        reason: `That takes $n$ from ${b}. The ${b} is taken away from $n$.`,
       },
     ];
     steps = [
-      `The start is n. Giving away ${b} leaves ${a}.`,
-      `So n − ${b} = ${a}.`,
+      `The start is $n$. Giving away ${b} leaves ${a}.`,
+      `So $n$ − ${b} = ${a}.`,
     ];
-    hint = `Start with n, the amount before. Show ${b} being taken away, and set that equal to what is left.`;
+    hint = `Start with $n$, the amount before. Show ${b} being taken away, and set that equal to what is left.`;
   } else if (variant === "join-change-unknown") {
     story = `${name} has ${a} ${thing}, gets some more, and then has ${a + b}.`;
-    ask = `Let n be the number of ${thing} ${name} got.`;
+    ask = `Let $n$ be the number of ${thing} ${name} got.`;
     correct = `${a} + n = ${a + b}`;
     wrong = [
       {
@@ -921,7 +921,7 @@ function storyEquationChoice(r: Random): Built {
       },
       {
         text: `n − ${a} = ${a + b}`,
-        reason: `That makes n the total. n is the part that was added.`,
+        reason: `That makes $n$ the total. $n$ is the part that was added.`,
       },
       {
         text: `${a} + ${a + b} = n`,
@@ -929,15 +929,15 @@ function storyEquationChoice(r: Random): Built {
       },
     ];
     steps = [
-      `${name} starts with ${a} and gets n more.`,
-      `The total after joining is ${a + b}, so ${a} + n = ${a + b}.`,
+      `${name} starts with ${a} and gets $n$ more.`,
+      `The total after joining is ${a + b}, so ${a} + $n$ = ${a + b}.`,
     ];
     hint = `The start, ${a}, and the unknown amount that joins it make the new total.`;
   } else if (variant === "two-step-result") {
     const c = r(60, Math.min(a + b - 40, 300));
     const cc = c === b ? c + 7 : c;
     story = `${name} has ${a} ${thing}, gets ${b} more, and then gives away ${cc}.`;
-    ask = `Let n be the number of ${thing} ${name} has now.`;
+    ask = `Let $n$ be the number of ${thing} ${name} has now.`;
     correct = `${a} + ${b} − ${cc} = n`;
     wrong = [
       {
@@ -955,16 +955,16 @@ function storyEquationChoice(r: Random): Built {
     ];
     steps = [
       `Getting ${b} more adds ${b}. Giving away ${cc} subtracts ${cc}.`,
-      `So ${a} + ${b} − ${cc} = n.`,
+      `So ${a} + ${b} − ${cc} = $n$.`,
     ];
-    hint = `Take the changes in order: one joins ${name}'s ${thing} and one takes some away. Match each with + or −.`;
+    hint = `Take the changes in order: ${b} joins ${name}'s ${a} ${thing} and ${cc} takes some away. Match each with + or −.`;
   } else {
     const c = r(40, 200);
     const cc = c === b ? c + 9 : c;
     const start = a;
     const end = start + b - cc;
     story = `${name} has some ${thing}, gets ${b} more, and then gives away ${cc}. Now ${name} has ${end}.`;
-    ask = `Let n be the number of ${thing} ${name} had at first.`;
+    ask = `Let $n$ be the number of ${thing} ${name} had at first.`;
     correct = `n + ${b} − ${cc} = ${end}`;
     wrong = [
       {
@@ -981,10 +981,10 @@ function storyEquationChoice(r: Random): Built {
       },
     ];
     steps = [
-      `Start with n, add the ${b} received and subtract the ${cc} given away.`,
-      `That leaves ${end}: n + ${b} − ${cc} = ${end}.`,
+      `Start with $n$, add the ${b} received and subtract the ${cc} given away.`,
+      `That leaves ${end}: $n$ + ${b} − ${cc} = ${end}.`,
     ];
-    hint = `Begin with n and apply each change in order: one adds and one subtracts. The result is ${end}.`;
+    hint = `Begin with $n$ and apply each change in order: one adds and one subtracts. The result is ${end}.`;
   }
   return {
     variant,
@@ -1019,11 +1019,11 @@ function stripDiagramEquation(r: Random): Built {
       c = r(2, 9);
     return {
       variant,
-      prompt: `${name} packs ${a} bags with ${b} ${thing} in each bag and adds ${c} loose ${thing}. The strip diagram shows the story, with n for the total number of ${thing}. Which equation matches the diagram?`,
-      hint: `Count the equal parts and say what each one is worth. Then look at the last part. How are they combined to make n?`,
+      prompt: `${name} packs ${a} bags with ${b} ${thing} in each bag and adds ${c} loose ${thing}. The strip diagram shows the story, with $n$ for the total number of ${thing}. Which equation matches the diagram?`,
+      hint: `Count the ${a} equal parts and say what each one is worth. Then look at the last part, ${c}. How are they combined to make $n$?`,
       explanation: [
         `The diagram has ${a} equal parts of ${b}, which is ${a} × ${b}, and one more part of ${c}.`,
-        `The whole is the parts together: n = ${a} × ${b} + ${c}.`,
+        `The whole is the parts together: $n$ = ${a} × ${b} + ${c}.`,
       ],
       figure: {
         kind: "scene",
@@ -1057,11 +1057,11 @@ function stripDiagramEquation(r: Random): Built {
     const T = a * b + left;
     return {
       variant,
-      prompt: `${name} has ${T} dollars and buys ${a} items that cost ${b} dollars each. The strip diagram shows the story, with n for the dollars left. Which equation matches the diagram?`,
-      hint: `The whole strip is ${T} dollars. The parts that are ${b} each are spent. n is the part that remains.`,
+      prompt: `${name} has ${T} dollars and buys ${a} items that cost ${b} dollars each. The strip diagram shows the story, with $n$ for the dollars left. Which equation matches the diagram?`,
+      hint: `The whole strip is ${T} dollars. The parts that are ${b} each are spent. $n$ is the part that remains.`,
       explanation: [
         `The whole is ${T}. The spent parts are ${a} equal parts of ${b}, which is ${a} × ${b}.`,
-        `The part that remains is the whole minus the spent parts: ${T} − ${a} × ${b} = n.`,
+        `The part that remains is the whole minus the spent parts: ${T} − ${a} × ${b} = $n$.`,
       ],
       figure: {
         kind: "scene",
@@ -1098,11 +1098,11 @@ function stripDiagramEquation(r: Random): Built {
     const T = a * n + c;
     return {
       variant,
-      prompt: `${name} puts the same number of ${thing}, n, in each of ${a} boxes and ${c} more ${thing} in a bag. There are ${T} ${thing} in all. The strip diagram shows the story. Which equation matches the diagram?`,
-      hint: `The equal parts are all labeled n. Count them, then think about how the last part joins them to make ${T}.`,
+      prompt: `${name} puts the same number of ${thing}, $n$, in each of ${a} boxes and ${c} more ${thing} in a bag. There are ${T} ${thing} in all. The strip diagram shows the story. Which equation matches the diagram?`,
+      hint: `The equal parts are all labeled $n$. Count them, then think about how the last part joins them to make ${T}.`,
       explanation: [
-        `There are ${a} equal parts of n, which is ${a} × n, and one part of ${c}.`,
-        `Together they make ${T}: ${a} × n + ${c} = ${T}.`,
+        `There are ${a} equal parts of $n$, which is ${a} × $n$, and one part of ${c}.`,
+        `Together they make ${T}: ${a} × $n$ + ${c} = ${T}.`,
       ],
       figure: {
         kind: "scene",
@@ -1116,7 +1116,7 @@ function stripDiagramEquation(r: Random): Built {
       choices: choicesFrom(`${a} × n + ${c} = ${T}`, [
         {
           label: `${a} + n + ${c} = ${T}`,
-          feedback: `There are ${a} parts that each equal n, so they make ${a} × n.`,
+          feedback: `There are ${a} parts that each equal $n$, so they make ${a} × $n$.`,
         },
         {
           label: `${a} × (n + ${c}) = ${T}`,
@@ -1135,11 +1135,11 @@ function stripDiagramEquation(r: Random): Built {
   const T = a * n + c;
   return {
     variant,
-    prompt: `${name} has ${T} ${thing}, sets aside ${c}, and shares the rest equally among ${a} friends. Each friend gets n. The strip diagram shows the story. Which equation matches the diagram?`,
-    hint: `First take away the part that is set aside. What is left is split into ${a} equal parts, each n.`,
+    prompt: `${name} has ${T} ${thing}, sets aside ${c}, and shares the rest equally among ${a} friends. Each friend gets $n$. The strip diagram shows the story. Which equation matches the diagram?`,
+    hint: `First take away the part that is set aside. What is left is split into ${a} equal parts, each $n$.`,
     explanation: [
       `Removing ${c} from the whole ${T} leaves ${T} − ${c}, in ${a} equal parts.`,
-      `Each part is n, so (${T} − ${c}) ÷ ${a} = n.`,
+      `Each part is $n$, so (${T} − ${c}) ÷ ${a} = $n$.`,
     ],
     figure: {
       kind: "scene",
@@ -1184,11 +1184,11 @@ function divisionAreaModel(r: Random): Built {
     const unit = pick(r, ["feet", "centimeters", "meters"]);
     return {
       variant,
-      prompt: `A rectangle has an area of ${commas(N)} square ${unit} and a height of ${d} ${unit}. Its width is w ${unit}. Which equation shows ${commas(N)} ÷ ${d} as an area model?`,
+      prompt: `A rectangle has an area of ${commas(N)} square ${unit} and a height of ${d} ${unit}. Its width is $w$ ${unit}. Which equation shows ${commas(N)} ÷ ${d} as an area model?`,
       hint: `Area is height times width. Write that for this rectangle with ${commas(N)} as the area. The quotient is the unknown side.`,
       explanation: [
-        `Area = height × width, so ${d} × w = ${commas(N)}.`,
-        `Dividing the area by the known side finds w: ${commas(N)} ÷ ${d} = ${Q}.`,
+        `Area = height × width, so ${d} × $w$ = ${commas(N)}.`,
+        `Dividing the area by the known side finds $w$: ${commas(N)} ÷ ${d} = ${Q}.`,
       ],
       choices: choicesFrom(`${d} × w = ${commas(N)}`, [
         {
@@ -1197,11 +1197,11 @@ function divisionAreaModel(r: Random): Built {
         },
         {
           label: `w ÷ ${d} = ${commas(N)}`,
-          feedback: `The area is the product of the sides. Dividing the area by ${d} finds w, not the other way around.`,
+          feedback: `The area is the product of the sides. Dividing the area by ${d} finds $w$, not the other way around.`,
         },
         {
           label: `${commas(N)} × ${d} = w`,
-          feedback: `${commas(N)} is the area, so w is found by dividing it by ${d}, not by multiplying.`,
+          feedback: `${commas(N)} is the area, so $w$ is found by dividing it by ${d}, not by multiplying.`,
         },
       ]),
     };
@@ -1663,7 +1663,7 @@ function decimalAreaModel(r: Random): Built {
     return {
       variant,
       prompt: `The large square is 1 whole. Which multiplication sentence does the shaded part show?`,
-      hint: `Count the rows and the columns of the shaded rectangle in tenths, then count how many hundredths it covers.`,
+      hint: `The large square is 1 whole, cut into 10 rows and 10 columns. Count the rows and the columns of the shaded rectangle in tenths, then count how many hundredths it covers.`,
       explanation: [
         `The shaded part is ${a} tenths tall and ${b} tenths wide, so the sentence is 0.${a} × 0.${b}.`,
         `It covers ${a} × ${b} = ${P} hundredths, so 0.${a} × 0.${b} = ${dec(P, 100)}.`,
@@ -1841,7 +1841,7 @@ function numberSetVenn(r: Random): Built {
     return {
       variant,
       prompt: `Use the diagram of nested sets. Which statement is true?`,
-      hint: `In the diagram, a set inside another set is a subset. A statement "every X is a Y" is true only when the circle for X lies completely inside the circle for Y.`,
+      hint: `In the diagram, a set inside another set is a subset. A statement "every $X$ is a $Y$" is true only when the circle for $X$ lies completely inside the circle for $Y$.`,
       explanation: [
         `The circles are nested: natural numbers inside whole numbers inside integers inside rational numbers.`,
         `${truth} The circle for the first set lies completely inside the circle for the second.`,
@@ -1933,7 +1933,7 @@ function reciprocalDivisionChoice(r: Random): Built {
     return {
       variant,
       prompt: `Which multiplication equals ${w} ÷ ${frText(d)}?`,
-      hint: `Dividing by a fraction is the same as multiplying by its reciprocal, the fraction turned upside down. Which number do you flip: the divisor or the number being divided?`,
+      hint: `Dividing ${w} by ${frText(d)} is the same as multiplying by a reciprocal, a fraction turned upside down. Which number do you flip: ${frText(d)}, the divisor, or ${w}, the number being divided?`,
       explanation: [
         `The divisor is ${frText(d)}, and its reciprocal is ${frText(rec(d))}.`,
         `${w} ÷ ${frText(d)} = ${w} × ${frText(rec(d))}.`,
@@ -2078,7 +2078,7 @@ function scalingDirectionChoice(r: Random): Built {
     return {
       variant,
       prompt: `Without calculating, which product is ${greater ? "greater" : "less"} than ${N}?`,
-      hint: `Compare each multiplier with 1. Multiplying by a number ${greater ? "greater" : "less"} than 1 gives a result ${greater ? "greater" : "less"} than the starting number.`,
+      hint: `Compare each multiplier with 1. Multiplying ${N} by a number ${greater ? "greater" : "less"} than 1 gives a result ${greater ? "greater" : "less"} than ${N}.`,
       explanation: [
         `${frText(odd)} is ${greater ? "greater" : "less"} than 1, so ${expr(odd)} is ${greater ? "greater" : "less"} than ${N}.`,
         `The other multipliers are ${greater ? "less" : "greater"} than 1, so their products are ${greater ? "less" : "greater"} than ${N}.`,
@@ -2139,7 +2139,7 @@ function scalingDirectionChoice(r: Random): Built {
   return {
     variant,
     prompt: `Without calculating, how does ${label} × ${N} compare with ${N}?`,
-    hint: `Compare the multiplier ${label} with 1. Is it less than 1, equal to 1, or greater than 1?`,
+    hint: `Compare the multiplier ${label} with 1. Is it less than 1, equal to 1, or greater than 1? That tells you how the product compares with ${N}.`,
     explanation: [
       `${label} is ${kind === "less" ? "less than" : kind === "more" ? "greater than" : "equal to"} 1.`,
       kind === "equal"
@@ -2171,7 +2171,13 @@ function percentGridModel(r: Random): Built {
       percentShading(k),
     ),
   };
-  const hint = `The grid has 100 equal squares, so a percent is the number of shaded squares. Count the full columns of 10 and then the extra squares.`;
+  const count = `The grid has 100 equal squares. Count the shaded squares: the full columns of 10, then the extra squares.`;
+  const hint =
+    variant === "grid-percent"
+      ? `${count} A percent is a number out of 100.`
+      : variant === "grid-fraction"
+        ? `${count} Write that count over 100, then divide the top and bottom by their greatest common factor.`
+        : `${count} Each square is one hundredth of the whole, so write the count as hundredths.`;
   if (variant === "grid-percent")
     return {
       variant,
@@ -2693,35 +2699,38 @@ function rationalAreaVolumeEquation(r: Random): Built {
     const uname = variant === "triangle-height" ? "height" : "base";
     const t = (rest: string) => rest;
     const correct: Option = {
-      text: t(`1/2 × ${f(known)} × ${u} = ${f(A)}`),
+      text: t(`1/2 × ${f(known)} × $${u}$ = ${f(A)}`),
       sol: unknown,
     };
     return build(
-      `A triangular banner has an area of ${f(A)} square feet and a ${k} of ${f(known)} feet. Which equation can be used to find its ${uname}, ${u}, in feet?`,
-      `The area of a triangle is one half of its base times its height. Write that with the ${k} ${f(known)} and the area ${f(A)}, and leave ${u} as the unknown.`,
+      `A triangular banner has an area of ${f(A)} square feet and a ${k} of ${f(known)} feet. Which equation can be used to find its ${uname}, $${u}$, in feet?`,
+      `The area of a triangle is one half of its base times its height. Write that with the ${k} ${f(known)} and the area ${f(A)}, and leave $${u}$ as the unknown.`,
       [
         `Area of a triangle = 1/2 × base × height.`,
-        `With the ${k} ${f(known)} and area ${f(A)}: 1/2 × ${f(known)} × ${u} = ${f(A)}.`,
+        `With the ${k} ${f(known)} and area ${f(A)}: 1/2 × ${f(known)} × $${u}$ = ${f(A)}.`,
       ],
       correct,
       [
         {
-          o: { text: `${f(known)} × ${u} = ${f(A)}`, sol: frDiv(A, known) },
+          o: {
+            text: `${f(known)} × $${u}$ = ${f(A)}`,
+            sol: frDiv(A, known),
+          },
           feedback: `That is the area of a rectangle. A triangle's area is half of base times height.`,
         },
         {
           o: {
-            text: `1/2 × (${f(known)} + ${u}) = ${f(A)}`,
+            text: `1/2 × (${f(known)} + $${u}$) = ${f(A)}`,
             sol: frSub(frMul(fr(2), A), known),
           },
           feedback: `Base and height are multiplied, not added.`,
         },
         {
           o: {
-            text: `1/2 × ${f(known)} + ${u} = ${f(A)}`,
+            text: `1/2 × ${f(known)} + $${u}$ = ${f(A)}`,
             sol: frSub(A, frMul(HALF, known)),
           },
-          feedback: `The half applies to the whole product base × height, and ${u} is multiplied, not added.`,
+          feedback: `The half applies to the whole product base × height, and $${u}$ is multiplied, not added.`,
         },
       ],
     );
@@ -2731,28 +2740,28 @@ function rationalAreaVolumeEquation(r: Random): Built {
       W = dims[1]!;
     const A = frMul(L, W);
     return build(
-      `A rectangular garden has an area of ${f(A)} square meters and a length of ${f(L)} meters. Which equation can be used to find its width, w, in meters?`,
-      `The area of a rectangle is its length times its width. Write that with the length ${f(L)} and the area ${f(A)}, and leave w as the unknown.`,
+      `A rectangular garden has an area of ${f(A)} square meters and a length of ${f(L)} meters. Which equation can be used to find its width, $w$, in meters?`,
+      `The area of a rectangle is its length times its width. Write that with the length ${f(L)} and the area ${f(A)}, and leave $w$ as the unknown.`,
       [
         `Area of a rectangle = length × width.`,
-        `With the length ${f(L)} and area ${f(A)}: ${f(L)} × w = ${f(A)}.`,
+        `With the length ${f(L)} and area ${f(A)}: ${f(L)} × $w$ = ${f(A)}.`,
       ],
-      { text: `${f(L)} × w = ${f(A)}`, sol: W },
+      { text: `${f(L)} × $w$ = ${f(A)}`, sol: W },
       [
         {
-          o: { text: `${f(L)} + w = ${f(A)}`, sol: frSub(A, L) },
+          o: { text: `${f(L)} + $w$ = ${f(A)}`, sol: frSub(A, L) },
           feedback: `Area comes from multiplying length and width, not adding them.`,
         },
         {
           o: {
-            text: `2 × ${f(L)} + 2 × w = ${f(A)}`,
+            text: `2 × ${f(L)} + 2 × $w$ = ${f(A)}`,
             sol: frSub(frMul(HALF, A), L),
           },
           feedback: `That is the perimeter. The area is length times width.`,
         },
         {
-          o: { text: `${f(L)} ÷ w = ${f(A)}`, sol: frDiv(L, A) },
-          feedback: `The area is the product ${f(L)} × w, not the quotient ${f(L)} ÷ w.`,
+          o: { text: `${f(L)} ÷ $w$ = ${f(A)}`, sol: frDiv(L, A) },
+          feedback: `The area is the product ${f(L)} × $w$, not the quotient ${f(L)} ÷ $w$.`,
         },
       ],
     );
@@ -2763,28 +2772,34 @@ function rationalAreaVolumeEquation(r: Random): Built {
   const V = frMul(frMul(L, W), H);
   const LW = frMul(L, W);
   return build(
-    `A fish tank shaped like a rectangular prism has a length of ${f(L)} feet, a width of ${f(W)} feet and a volume of ${f(V)} cubic feet. Which equation can be used to find its height, h, in feet?`,
-    `The volume of a rectangular prism is length times width times height. Write that with the two known edges and the volume ${f(V)}, and leave h as the unknown.`,
+    `A fish tank shaped like a rectangular prism has a length of ${f(L)} feet, a width of ${f(W)} feet and a volume of ${f(V)} cubic feet. Which equation can be used to find its height, $h$, in feet?`,
+    `The volume of a rectangular prism is length times width times height. Write that with the two known edges and the volume ${f(V)}, and leave $h$ as the unknown.`,
     [
       `Volume of a rectangular prism = length × width × height.`,
-      `With the length ${f(L)}, width ${f(W)} and volume ${f(V)}: ${f(L)} × ${f(W)} × h = ${f(V)}.`,
+      `With the length ${f(L)}, width ${f(W)} and volume ${f(V)}: ${f(L)} × ${f(W)} × $h$ = ${f(V)}.`,
     ],
-    { text: `${f(L)} × ${f(W)} × h = ${f(V)}`, sol: H },
+    {
+      text: `${f(L)} × ${f(W)} × $h$ = ${f(V)}`,
+      sol: H,
+    },
     [
       {
         o: {
-          text: `${f(L)} + ${f(W)} + h = ${f(V)}`,
+          text: `${f(L)} + ${f(W)} + $h$ = ${f(V)}`,
           sol: frSub(V, frAdd(L, W)),
         },
         feedback: `Volume comes from multiplying the three edges, not adding them.`,
       },
       {
-        o: { text: `${f(L)} × ${f(W)} + h = ${f(V)}`, sol: frSub(V, LW) },
+        o: {
+          text: `${f(L)} × ${f(W)} + $h$ = ${f(V)}`,
+          sol: frSub(V, LW),
+        },
         feedback: `The height multiplies the base area ${f(L)} × ${f(W)}; it is not added to it.`,
       },
       {
         o: {
-          text: `2 × (${f(L)} × ${f(W)} + ${f(L)} × h + ${f(W)} × h) = ${f(V)}`,
+          text: `2 × (${f(L)} × ${f(W)} + ${f(L)} × $h$ + ${f(W)} × $h$) = ${f(V)}`,
           sol: frDiv(frSub(frMul(HALF, V), LW), frAdd(L, W)),
         },
         feedback: `That is the surface area. Volume is length × width × height.`,
@@ -2892,7 +2907,7 @@ function categoricalSummary(r: Random): Built {
     return {
       variant,
       prompt: `The table shows the ${set.title} of ${total} students. Which category is the mode?`,
-      hint: `The mode of categorical data is the category that occurs most often. Compare the counts in the table.`,
+      hint: `The mode of categorical data is the category that occurs most often. Compare the counts of the ${total} students in the table.`,
       explanation: [
         `The counts are ${cats.map((c, i) => `${c} ${counts[i]}`).join(", ")}.`,
         `${mode} has the greatest count, ${top}, so ${mode} is the mode.`,
@@ -3007,7 +3022,7 @@ function checkRegisterBalance(r: Random): Built {
     return {
       variant,
       prompt: `The check register shows the balance after each entry, but the amount in the row "${e.name}" is missing. How many dollars is that ${e.cents < 0 ? "payment" : "deposit"}? Enter the amount without a sign.`,
-      hint: `Subtract the balance before this entry from the balance after it, or the other way around, and find the difference. ${e.cents < 0 ? "The balance went down." : "The balance went up."}`,
+      hint: `Find the balance before the ${e.name} row and the balance after it. Subtract one from the other and find the difference. ${e.cents < 0 ? "The balance went down." : "The balance went up."}`,
       explanation: [
         `The balance before the entry is ${dl(start + entries.slice(0, k).reduce((a, x) => a + x.cents, 0))} and after it is ${dl(start + entries.slice(0, k + 1).reduce((a, x) => a + x.cents, 0))}.`,
         `The difference is ${dl(Math.abs(e.cents))}, so the ${e.cents < 0 ? "payment" : "deposit"} is ${dl(Math.abs(e.cents))} dollars.`,
@@ -3073,7 +3088,7 @@ function lifetimeIncomeSalary(r: Random): Built {
     return {
       variant,
       prompt: `A person works from age ${from} until retiring at age ${to} and earns ${money(S)} dollars a year. How many dollars does the person earn over the whole career?`,
-      hint: `First find how many years the person works: subtract the starting age from the retirement age. Then multiply by the yearly pay.`,
+      hint: `First find how many years the person works: subtract the starting age ${from} from the retirement age ${to}. Then multiply by the yearly pay.`,
       explanation: [
         `Years worked = ${to} − ${from} = ${to - from}.`,
         `Total = ${money(S)} × ${to - from} = ${money(S * (to - from))} dollars.`,
@@ -3139,24 +3154,24 @@ function piAsRatio(r: Random): Built {
   if (variant === "definition")
     return {
       variant,
-      prompt: `Pi (π) is the same number for every circle. Which ratio equals π?`,
-      hint: `Pi compares two lengths of a circle: the distance around it and the distance straight across through its center.`,
+      prompt: `The ratio $\\pi$ (pi) is the same number for every circle. Which ratio equals $\\pi$?`,
+      hint: `The ratio $\\pi$ compares two lengths of a circle: the distance around it and the distance straight across through its center.`,
       explanation: [
-        `The distance around a circle is its circumference C, and the distance across through the center is its diameter d.`,
-        `Pi is the ratio C ÷ d, the circumference divided by the diameter.`,
+        `The distance around a circle is its circumference $C$, and the distance across through the center is its diameter $d$.`,
+        `The ratio $\\pi$ is $C \\div d$, the circumference divided by the diameter.`,
       ],
       choices: choicesFrom("circumference ÷ diameter", [
         {
           label: "diameter ÷ circumference",
-          feedback: `That is the reciprocal of π, about 0.32.`,
+          feedback: `That is the reciprocal of $\\pi$, about 0.32.`,
         },
         {
           label: "circumference ÷ radius",
-          feedback: `The radius is half the diameter, so this ratio is 2π, about 6.28.`,
+          feedback: `The radius is half the diameter, so this ratio is $2\\pi$, about 6.28.`,
         },
         {
           label: "area ÷ diameter",
-          feedback: `Area is measured in square units; π compares two lengths.`,
+          feedback: `Area is measured in square units; $\\pi$ compares two lengths.`,
         },
       ]),
     };
@@ -3165,10 +3180,10 @@ function piAsRatio(r: Random): Built {
     return {
       variant,
       prompt: `A circle's diameter is made ${k} times as long. What happens to the ratio circumference ÷ diameter?`,
-      hint: `The circumference grows when the diameter grows. Compare how much each is multiplied. Is the ratio the same for every circle?`,
+      hint: `The circumference grows when the diameter grows. The diameter is multiplied by ${k}. How much is the circumference multiplied? Is the ratio the same for every circle?`,
       explanation: [
         `The circumference is also multiplied by ${k}, because circumference is always about 3.14 times the diameter.`,
-        `So the ratio circumference ÷ diameter is still π: it stays the same.`,
+        `So the ratio circumference ÷ diameter is still $\\pi$: it stays the same.`,
       ],
       choices: choicesFrom("It stays the same", [
         {
@@ -3181,7 +3196,7 @@ function piAsRatio(r: Random): Built {
         },
         {
           label: `It increases by ${k}`,
-          feedback: `The ratio is π for every circle, so it does not change.`,
+          feedback: `The ratio is $\\pi$ for every circle, so it does not change.`,
         },
       ]),
     };
@@ -3198,12 +3213,12 @@ function piAsRatio(r: Random): Built {
     explanation: [
       ...(radius ? [`The diameter is 2 × ${d / 2} = ${d} cm.`] : []),
       `${C} ÷ ${d} = ${(C / d).toFixed(4)}, which rounds to ${(C / d).toFixed(2)}.`,
-      `This is the value of π to the nearest hundredth.`,
+      `This is the value of $\\pi$ to the nearest hundredth.`,
     ],
     choices: choicesFrom((C / d).toFixed(2), [
       {
         label: (C / (d / 2)).toFixed(2),
-        feedback: `That divides the circumference by the radius. Pi uses the diameter.`,
+        feedback: `That divides the circumference by the radius. The ratio $\\pi$ uses the diameter.`,
       },
       {
         label: (d / C).toFixed(2),
@@ -3255,7 +3270,7 @@ function experimentalProbabilityPredict(r: Random): Built {
     return {
       variant,
       prompt: `${e.setup(t, s)} What is the experimental probability that ${e.event}? Enter a decimal.`,
-      hint: `Experimental probability is the number of times the event happened divided by the total number of ${e.per}.`,
+      hint: `Experimental probability is the number of times the event happened, ${s}, divided by the total number of ${e.per}, ${t}.`,
       explanation: [
         `The event happened ${s} times in ${t} ${e.per}.`,
         `Experimental probability = ${s} ÷ ${t} = ${trimNum(s / t)}.`,
@@ -3310,7 +3325,7 @@ function experimentalProbabilityPredict(r: Random): Built {
   return {
     variant,
     prompt: `${a} ran an experiment with ${small} trials and the event happened ${sa} times. ${b} ran the same experiment with ${big} trials and the event happened ${sb} times. Whose result is the better basis for predicting what will happen in 500 trials?`,
-    hint: `Compare how many trials each person ran. Does an experimental probability tend to be steadier after a few trials or after many?`,
+    hint: `Compare how many trials each person ran: ${small} for ${a} and ${big} for ${b}. Does an experimental probability tend to be steadier after a few trials or after many?`,
     explanation: [
       `${a} used ${small} trials and ${b} used ${big} trials.`,
       `An experimental probability tends to get closer to the true probability as the number of trials grows, so ${b}'s result is the better basis.`,
@@ -3371,7 +3386,7 @@ function cylinderPrismSurfaceArea(r: Random): Built {
     return {
       variant,
       prompt: `A cylinder has a radius of ${rad} cm and a height of ${h} cm. Its total surface area, including both circular bases, is $a\\pi$ square centimeters. What is $a$?`,
-      hint: `Add the area of the two circular bases to the area of the unrolled curved side.`,
+      hint: `Add the area of the two circular bases, radius ${rad} cm, to the area of the unrolled curved side, ${h} cm tall.`,
       explanation: [
         `Two bases: $2\\times\\pi\\times${rad}^2=${2 * rad * rad}\\pi$.`,
         `Curved side: $2\\pi\\times${rad}\\times${h}=${2 * rad * h}\\pi$.`,
@@ -3385,7 +3400,7 @@ function cylinderPrismSurfaceArea(r: Random): Built {
     return {
       variant,
       prompt: `A cylinder has a radius of ${rad} cm and a total surface area of $${a}\\pi$ square centimeters. What is its height, in centimeters?`,
-      hint: `Write the total surface area as two bases plus the curved side. Subtract the two bases from ${a}π and then divide by the circumference-coefficient of the side.`,
+      hint: `Write the total surface area as two bases plus the curved side. Subtract the two bases from $${a}\\pi$ and then divide by the circumference-coefficient of the side.`,
       explanation: [
         `Two bases: $2\\pi\\times${rad}^2=${2 * rad * rad}\\pi$.`,
         `The curved side is $${a}\\pi-${2 * rad * rad}\\pi=${2 * rad * h}\\pi$.`,
@@ -3444,10 +3459,10 @@ function bothSidesSituationEquation(r: Random): Built {
       throw new Error("Need three solutions");
     return {
       variant,
-      prompt: `Tank A has ${A0} liters and loses ${a1} liters each minute. Tank B has ${B0} liters and gains ${b1} liters each minute. Which equation can be used to find the number of minutes, t, when the tanks hold the same amount?`,
-      hint: `Write each tank's amount after t minutes: a tank that loses water has its rate subtracted, and a tank that gains water has its rate added. Then set the two amounts equal.`,
+      prompt: `Tank A has ${A0} liters and loses ${a1} liters each minute. Tank B has ${B0} liters and gains ${b1} liters each minute. Which equation can be used to find the number of minutes, $t$, when the tanks hold the same amount?`,
+      hint: `Write each tank's amount after $t$ minutes: Tank A starts at ${A0} liters and loses ${a1} each minute, so that rate is subtracted; Tank B starts at ${B0} liters and gains ${b1} each minute, so that rate is added. Then set the two amounts equal.`,
       explanation: [
-        `Tank A after t minutes: ${A0} − ${a1}t. Tank B after t minutes: ${B0} + ${b1}t.`,
+        `Tank A after $t$ minutes: ${A0} − ${a1}t. Tank B after $t$ minutes: ${B0} + ${b1}t.`,
         `The amounts are equal when ${A0} − ${a1}t = ${B0} + ${b1}t.`,
       ],
       choices: choicesFrom(options[0]!.text, [
@@ -3504,8 +3519,8 @@ function bothSidesSituationEquation(r: Random): Built {
   if (variant === "equation-same-cost")
     return {
       variant,
-      prompt: `${setup} Which equation can be used to find the number of ${c.what}, ${v}, for which the two total costs are equal?`,
-      hint: `Write each total cost as the fee plus the rate times ${v}. The costs are equal, so connect the two totals with an equal sign.`,
+      prompt: `${setup} Which equation can be used to find the number of ${c.what}, $${v}$, for which the two total costs are equal?`,
+      hint: `Write each total cost as the fee plus the rate times $${v}$: ${c.a} charges ${a0} dollars plus ${a1} dollars ${c.per}, and ${c.b} charges ${b0} dollars plus ${b1} dollars ${c.per}. The costs are equal, so connect the two totals with an equal sign.`,
       explanation: [
         `${c.a}: ${a0} + ${a1}${v}. ${c.b}: ${b0} + ${b1}${v}.`,
         `The costs are equal when ${same}.`,
@@ -3521,14 +3536,14 @@ function bothSidesSituationEquation(r: Random): Built {
         },
         {
           label: `${a0 + a1}${v} = ${b0 + b1}${v}`,
-          feedback: `The fee is paid once and the rate is multiplied by ${v}, so they cannot be combined.`,
+          feedback: `The fee is paid once and the rate is multiplied by $${v}$, so they cannot be combined.`,
         },
       ]),
     };
   return {
     variant,
-    prompt: `${setup} Which inequality can be used to find the numbers of ${c.what}, ${v}, for which ${c.a} costs less than ${c.b}?`,
-    hint: `Write each total cost as the fee plus the rate times ${v}. "Costs less than" puts ${c.a}'s total on the smaller side of the inequality symbol.`,
+    prompt: `${setup} Which inequality can be used to find the numbers of ${c.what}, $${v}$, for which ${c.a} costs less than ${c.b}?`,
+    hint: `Write each total cost as the fee plus the rate times $${v}$, using the ${a0} and ${a1} for ${c.a} and the ${b0} and ${b1} for ${c.b}. "Costs less than" puts ${c.a}'s total on the smaller side of the inequality symbol.`,
     explanation: [
       `${c.a}: ${a0} + ${a1}${v}. ${c.b}: ${b0} + ${b1}${v}.`,
       `${c.a} costs less than ${c.b} when ${a0} + ${a1}${v} < ${b0} + ${b1}${v}.`,

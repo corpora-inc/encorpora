@@ -312,7 +312,7 @@ test("return claim: the correct choice is the independently computed simple year
         return ((money[2 * i + 1]! - money[2 * i]!) / money[2 * i]! / t) * 100;
       });
       const best = rates[0]! > rates[1]! ? "A" : "B";
-      assert.ok(label.startsWith(`${best}: `), `${prompt} -> ${label}`);
+      assert.ok(label.startsWith(`$${best}$: `), `${prompt} -> ${label}`);
     } else {
       const m = Number(/pays (\d+)% a month/.exec(prompt)![1]);
       const y = Number(/pays (\d+)% a year/.exec(prompt)![1]);

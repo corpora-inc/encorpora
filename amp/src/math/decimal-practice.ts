@@ -1,9 +1,11 @@
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
+  ProblemVariant,
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts";
+import { sweepChoose, sweepVariant } from "./number-domain-axes";
 import { decimal, fixed } from "./decimal-models";
 
 // id | title | skill | grade band | description
@@ -80,6 +82,7 @@ type Draft = {
   label: string;
   figure?: SemanticFigure;
   choices?: { value: string; feedback: string }[];
+  variant?: ProblemVariant;
 };
 
 /** A pair of unequal decimals with up to `max` places, chosen so that the
@@ -185,7 +188,7 @@ function compareDraft(r: Random, max: 2 | 3): Draft {
   };
 }
 
-function draft(templateId: string, r: Random): Draft {
+function draft(templateId: string, r: Random, seed: string): Draft {
   switch (templateId) {
     case "decimal-grid-read": {
       if (r(0, 2) === 0) {
@@ -441,7 +444,7 @@ function draft(templateId: string, r: Random): Draft {
       const A = a * 10 ** (p - pa),
         B = b * 10 ** (p - pb);
       // Equal values would make a difference of 0; draw again.
-      if (A === B) return draft(templateId, r);
+      if (A === B) return draft(templateId, r, seed);
       const subtract = r(0, 1) === 1;
       const [x, y, X, Y, px, py] =
         subtract && A < B ? [b, a, B, A, pb, pa] : [a, b, A, B, pa, pb];
@@ -509,6 +512,34 @@ function draft(templateId: string, r: Random): Draft {
       const scale = 10 ** pd;
       // Dividend times the same power of ten, still exact.
       const scaled = decimal(dividend, pq);
+      const axes = sweepChoose("multidigit-decimal-quotient", seed);
+      const sign = axes.sign;
+      const variant = sweepVariant(`${sign}-quotient`, axes);
+      if (sign !== "positive") {
+        const negDividend =
+          sign === "negative-dividend" || sign === "both-negative";
+        const negDivisor =
+          sign === "negative-divisor" || sign === "both-negative";
+        const negative = negDividend !== negDivisor;
+        const shownDividend = negDividend ? `-${sn}` : sn;
+        const shownDivisor = negDivisor ? `\\left(-${sd}\\right)` : sd;
+        const reason = negative
+          ? "The signs differ, so the quotient is negative"
+          : "Both numbers are negative, so the quotient is positive";
+        const value = negative ? `-${answer}` : answer;
+        return {
+          prompt: `What is $${shownDividend} \\div ${shownDivisor}$?`,
+          hint: `${negative ? "Different signs give a negative quotient" : "Equal signs give a positive quotient"}. Divide the sizes ${sn} and ${sd} first: multiply both by ${scale} so the divisor is whole, then divide by ${d}.`,
+          explanation: [
+            `${reason}. Divide the sizes: ${sn} ÷ ${sd}.`,
+            `Multiply both by ${scale}: ${sn} ÷ ${sd} = ${scaled} ÷ ${d} = ${answer}.`,
+            `Apply the sign: the quotient is ${value}.`,
+          ],
+          answer: value,
+          label: "Decimal",
+          variant,
+        };
+      }
       return {
         prompt: `What is ${sn} ÷ ${sd}?`,
         hint: `Make the divisor whole: multiply both ${sn} and ${sd} by ${scale}. The quotient stays the same; then divide by ${d}.`,
@@ -519,6 +550,7 @@ function draft(templateId: string, r: Random): Draft {
         ],
         answer,
         label: "Decimal",
+        variant,
       };
     }
   }
@@ -533,7 +565,7 @@ export function generateDecimalProblem(
   if (!meta) throw new Error(`Unknown decimal template: ${templateId}`);
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
-  const d = draft(templateId, random(templateId, seed));
+  const d = draft(templateId, random(templateId, seed), seed);
   const choices = d.choices;
   const choiceFeedback: Record<string, string> = {};
   const options = choices?.map((choice, index) => {
@@ -562,5 +594,6 @@ export function generateDecimalProblem(
     explanation: d.explanation,
     hint: d.hint,
     ...(choices ? { choiceFeedback } : {}),
+    ...(d.variant ? { variant: d.variant } : {}),
   };
 }

@@ -5,6 +5,7 @@ import {
   type Draft,
   type Random,
 } from "./distribution-practice";
+import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
 
 /**
  * Round-2 problem types inside existing number, expression, area, estimation,
@@ -345,7 +346,93 @@ function signedContextOrder(r: Random): Built {
 /* equivalent-expressions-check                                            */
 /* ---------------------------------------------------------------------- */
 
-function equivalentExpressions(r: Random): Built {
+/** Which expression is NOT equivalent to a fraction times a binomial. */
+function fractionalFactorNotEquivalent(r: Random): Built {
+  const d = pick(r, [2, 3, 4, 5]);
+  const n = pick(
+    r,
+    [1, 1, 2, 3].filter((x) => gcd(x, d) === 1),
+  );
+  const b = r(1, 5);
+  const c = r(1, 6) * (r(0, 1) ? 1 : -1);
+  const A = d * b,
+    K = d * c;
+  const m = n * b,
+    k = n * c;
+  const original = `\\frac{${n}}{${d}}\\left(${lin(A, K)}\\right)`;
+  const at1 = n * (b + c);
+  const equal: Wrong[] = [
+    {
+      label: lin(m, k),
+      feedback: `This is equivalent: ${tex(`\\frac{${n}}{${d}}`)} times ${tex(`${A}x`)} is ${tex(`${m}x`)} and times ${tex(`${K}`)} is ${tex(`${k}`)}.`,
+    },
+    {
+      label: `${k} ${sgn(m)} ${term(Math.abs(m))}`,
+      feedback:
+        "This is equivalent: the same two terms are written in the other order, and adding is order-free.",
+    },
+    {
+      label: `\\frac{${n}}{${d}}\\cdot ${A}x ${sgn(K)} \\frac{${n}}{${d}}\\cdot ${Math.abs(K)}`,
+      feedback:
+        "This is equivalent: it multiplies each term of the binomial by the fraction, before the products are simplified.",
+    },
+    {
+      label: `${term(m)} ${sgn(k)} \\frac{${Math.abs(n * K)}}{${d}}`,
+      feedback: `This is equivalent: ${tex(`\\frac{${Math.abs(n * K)}}{${d}}`)} equals ${Math.abs(k)}, the product of the fraction and ${Math.abs(K)}.`,
+    },
+  ];
+  const bad: { m: number; k: number; feedback: string }[] = [
+    {
+      m,
+      k: K,
+      feedback: `Check by substituting $x=1$: the original gives ${at1} and this expression gives ${m + K}. The fraction must multiply the constant ${K} too.`,
+    },
+    {
+      m: A,
+      k,
+      feedback: `Check by substituting $x=1$: the original gives ${at1} and this expression gives ${A + k}. The fraction must multiply ${tex(term(A))} too.`,
+    },
+    {
+      m,
+      k: -k,
+      feedback: `Check by substituting $x=1$: the original gives ${at1} and this expression gives ${m - k}. The constant keeps its sign when it is multiplied.`,
+    },
+    {
+      m: b,
+      k: c,
+      feedback: `Check by substituting $x=1$: the original gives ${at1} and this expression gives ${b + c}. Multiplying by ${tex(`\\frac{${n}}{${d}}`)} divides by ${d} and multiplies by ${n}.`,
+    },
+  ].filter((e) => e.m !== m || e.k !== k);
+  const wrong = pick(r, bad);
+  const eqPool = [...equal];
+  const keep: Wrong[] = [];
+  while (keep.length < 3)
+    keep.push(eqPool.splice(r(0, eqPool.length - 1), 1)[0]!);
+  const label = lin(wrong.m, wrong.k);
+  return {
+    variant: "fractional-factor",
+    prompt: `Which expression is NOT equivalent to ${tex(original)}?`,
+    answer: "",
+    hint: `Multiply ${tex(`\\frac{${n}}{${d}}`)} by each term inside the parentheses of ${tex(original)}, then compare. An equivalent expression has the same value for every $x$. Check each choice at $x=1$ if you want a quick test.`,
+    explanation: [
+      `Distribute: ${tex(`\\frac{${n}}{${d}}\\cdot ${A}x=${term(m)}`)} and ${tex(`\\frac{${n}}{${d}}\\cdot ${K < 0 ? `\\left(${K}\\right)` : K}=${k}`)}.`,
+      `So the original equals ${tex(lin(m, k))}.`,
+      `At x = 1 the original is ${at1}. ${tex(label)} gives ${wrong.m + wrong.k}, so it is the one that is not equivalent.`,
+    ],
+    choices: choicesFrom(
+      r,
+      tex(label),
+      keep.map((w) => ({ label: tex(w.label), feedback: w.feedback })),
+    ),
+  };
+}
+
+function equivalentExpressions(
+  r: Random,
+  axes?: Record<string, string>,
+): Built {
+  if (axes?.coefficients === "fractional-factor")
+    return fractionalFactorNotEquivalent(r);
   const variant = ["not-equivalent", "one-value-check", "combine", "factor"][
     r(0, 3)
   ]!;
@@ -846,7 +933,65 @@ const noFive = (r: Random, lo: number, hi: number) => {
 /** Two-digit numbers within 2 of a multiple of ten, so rounded products stay close. */
 const nearTen = (r: Random) => r(2, 9) * 10 + pick(r, [1, 2, 8, 9]);
 
-function estimateReasonableness(r: Random): Built {
+/** Estimate how many more one decimal quantity is than another by rounding
+ * each to the nearest whole number. */
+function decimalDifferenceEstimate(r: Random): Built {
+  const story = pick(r, [
+    ["jar", "milliliters", "holds"],
+    ["bottle", "milliliters", "holds"],
+    ["pitcher", "milliliters", "holds"],
+  ] as const);
+  const tenths = () => pick(r, [1, 2, 3, 4, 6, 7, 8, 9]);
+  const whole = r(300, 980);
+  const lessWhole = r(100, whole - 60);
+  const a = { whole, tenths: tenths() };
+  const b = { whole: lessWhole, tenths: tenths() };
+  const text = (x: { whole: number; tenths: number }) =>
+    `${x.whole}.${x.tenths}`;
+  const rounded = (x: { whole: number; tenths: number }) =>
+    x.tenths >= 6 ? x.whole + 1 : x.whole;
+  const ra = rounded(a),
+    rb = rounded(b);
+  const est = ra - rb;
+  return {
+    variant: "decimal-difference",
+    prompt: `One ${story[0]} ${story[2]} ${text(a)} ${story[1]} and another ${story[2]} ${text(b)} ${story[1]}. Round each amount to the nearest whole number. Which is the best estimate of how many more ${story[1]} the first ${story[0]} ${story[2]}?`,
+    answer: "",
+    hint: `Round ${text(a)} and ${text(b)} to the nearest whole number first: look at the tenths digit. Then decide whether "how many more" calls for adding or subtracting.`,
+    explanation: [
+      `${text(a)} rounds to ${ra} and ${text(b)} rounds to ${rb}.`,
+      `"How many more" compares the two amounts, so subtract: ${ra} − ${rb} = ${est}.`,
+      `The best estimate is about ${est} ${story[1]}.`,
+    ],
+    choices: choicesFrom(r, String(est), [
+      {
+        label: String(ra + rb),
+        feedback:
+          '"How many more" compares two amounts, so subtract the rounded numbers instead of adding them.',
+      },
+      {
+        label: String(a.whole - b.whole),
+        feedback: `Round each amount by its tenths digit: ${text(a)} rounds to ${ra} and ${text(b)} rounds to ${rb}. Cutting off the decimals does not round.`,
+      },
+      {
+        label: String(round10(a.whole) - round10(b.whole)),
+        feedback:
+          "The task rounds to the nearest whole number. Rounding to the nearest ten throws away too much.",
+      },
+      {
+        label: String(est * 10),
+        feedback: `Check the place value: ${ra} − ${rb} is 10 times smaller than this.`,
+      },
+    ]),
+  };
+}
+
+function estimateReasonableness(
+  r: Random,
+  axes?: Record<string, string>,
+): Built {
+  if (axes?.operation === "decimal-difference")
+    return decimalDifferenceEstimate(r);
   const variant = ["best-product", "verdict", "two-step", "quotient"][r(0, 3)]!;
   if (variant === "best-product") {
     const story = pick(r, [
@@ -1235,7 +1380,10 @@ function fractionOfSet(r: Random): Built {
 
 /* ---------------------------------------------------------------------- */
 
-const builders: Record<string, (r: Random) => Built> = {
+const builders: Record<
+  string,
+  (r: Random, axes?: Record<string, string>) => Built
+> = {
   "signed-context-order": signedContextOrder,
   "equivalent-expressions-check": equivalentExpressions,
   "area-tiling-distributive": areaTiling,
@@ -1266,10 +1414,13 @@ export function numberMeasurementGapCase(templateId: string, seed: string) {
   const build = builders[templateId];
   if (!meta || !build) throw new Error(`Unknown template ${templateId}`);
   const r = random(meta.id, seed);
+  const axes = isSweepId(templateId)
+    ? sweepChoose(templateId, seed)
+    : undefined;
   for (let attempt = 0; attempt < 60; attempt++) {
     let draft: Built;
     try {
-      draft = build(r);
+      draft = build(r, axes);
     } catch (error) {
       // Too few distinct wrong choices for these numbers: draw again.
       if (error instanceof Error && error.message.startsWith("Need three"))
@@ -1277,7 +1428,13 @@ export function numberMeasurementGapCase(templateId: string, seed: string) {
       throw error;
     }
     if (leaks(draft)) continue;
-    return { variant: draft.variant, problem: assemble(meta, seed, r, draft) };
+    const problem = assemble(meta, seed, r, draft);
+    return {
+      variant: draft.variant,
+      problem: axes
+        ? { ...problem, variant: sweepVariant(draft.variant, axes) }
+        : problem,
+    };
   }
   throw new Error("Could not generate a problem without leaking the answer");
 }

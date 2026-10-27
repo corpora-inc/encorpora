@@ -174,7 +174,7 @@ test("coins: the named coin has the pictured value and the written value uses th
       assert.equal(figure.sets[0].items.length, 1);
     } else if (variant === "picture-of-coin") {
       const named = /shows a (\w+)\?/.exec(problem.public.prompt)![1]!;
-      const index = "ABC".indexOf(label);
+      const index = "ABC".indexOf(label.replaceAll("$", ""));
       assert.deepEqual(
         figure.sets.map((s: any) => s.label),
         ["A", "B", "C"],
@@ -338,7 +338,7 @@ test("number lines: labels, marks and answers agree with the stated numbers", ()
         const n = Number(/at (\d+) on/.exec(problem.public.prompt)![1]);
         const at = line.marks.filter((m: any) => m.at === n);
         assert.equal(at.length, 1);
-        assert.equal(at[0].label, correctLabel(g));
+        assert.equal(at[0].label, correctLabel(g).replaceAll("$", ""));
         assert.equal(new Set(line.marks.map((m: any) => m.at)).size, 4);
       }
     }
@@ -422,13 +422,13 @@ test("unit rows: copies times unit length covers the ribbon, and the answer foll
       const [a, b] = lists as [any[], any[]];
       if (variant === "which-fewer") {
         const longer = a[0].size[0] > b[0].size[0] ? "A" : "B";
-        assert.equal(correctLabel(g), `Unit ${longer}, because it is longer`);
+        assert.equal(correctLabel(g), `Unit $${longer}$, because it is longer`);
       } else {
         const moreIsA = a.length > b.length;
         const prompt = g.public.prompt;
         assert.match(
           prompt,
-          new RegExp(`Row ${moreIsA ? "A" : "B"} uses more units`),
+          new RegExp(`Row \\$${moreIsA ? "A" : "B"}\\$ uses more units`),
         );
         assert.match(correctLabel(g), /is shorter than unit/);
       }

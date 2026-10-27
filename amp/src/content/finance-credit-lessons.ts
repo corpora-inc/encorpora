@@ -106,7 +106,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
       ["late fee", "A charge added to the balance when a payment is late."],
     ],
     method: [
-      "Convert between APR and monthly rate: APR = monthly rate × 12.",
+      "Convert between APR and monthly rate: APR is the monthly rate × 12.",
       "Interest is the monthly rate times the part of the balance left unpaid, rounded to the cent. Paying in full by the due date leaves nothing, so costs no interest here.",
       "Add charges (interest, purchases, fees) to the balance and subtract payments to get the new balance.",
     ],
@@ -415,7 +415,7 @@ export const financeCreditLessons: Lesson[] = [
       answer: "15.50 dollars",
     },
     method: [
-      "APR = monthly rate × 12; monthly rate = APR ÷ 12.",
+      "APR is the monthly rate × 12; the monthly rate is APR ÷ 12.",
       "Interest = monthly rate × the part of the balance left unpaid, rounded to the nearest cent.",
       "To compare two cards, find each month's interest to the cent and subtract.",
       "New balance = balance + interest + purchases + fees − payments.",

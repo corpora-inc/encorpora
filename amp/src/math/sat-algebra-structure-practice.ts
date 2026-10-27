@@ -1,4 +1,6 @@
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
+import { sweepChoose, sweepVariant } from "./number-domain-axes";
+import { writeRational } from "./variation/number-domain";
 import {
   assemble,
   random,
@@ -664,7 +666,82 @@ function coprimeRatio(r: Random) {
   }
 }
 
-function variationConstant(r: Random): Built {
+/** Direct variation with mixed-number inputs and a fractional constant. */
+function fractionalDirectVariation(r: Random): Built {
+  const ctx = pick(r, directContexts);
+  const k = pick(r, [
+    q(3, 2),
+    q(5, 2),
+    q(3, 4),
+    q(5, 4),
+    q(7, 2),
+    q(2, 3),
+    q(4, 3),
+    q(5, 3),
+  ]);
+  const mixedNumber = (x: Q) => writeRational(x, "mixed");
+  const label = (x: Q) => `$${mixedNumber(x)}$`;
+  // Quarters or halves that are not whole numbers.
+  const quarter = (): Q => {
+    for (;;) {
+      const x = q(r(5, 15), pick(r, [2, 4]));
+      if (x[1] !== 1) return x;
+    }
+  };
+  const x1 = quarter();
+  let x2 = quarter();
+  while (eq(x1, x2)) x2 = quarter();
+  const y1 = mul(k, x1);
+  const y2 = mul(k, x2);
+  // A given that contains the answer's digits ("8¾" inside "18¾") would
+  // look like a hint to the answer: draw again.
+  if (
+    [x1, y1, x2].some((v) =>
+      writeRational(v, "mixed").includes(writeRational(y2, "mixed")),
+    )
+  )
+    throw new Error("Insufficient distinct choices");
+  return {
+    variant: 0,
+    draft: {
+      prompt: `${ctx.text} When $${ctx.x}=${mixedNumber(x1)}$, $${ctx.y}=${mixedNumber(y1)}$. What is $${ctx.y}$ when $${ctx.x}=${mixedNumber(x2)}$?`,
+      answer: "",
+      hint: `Direct variation means $${ctx.y}=k${ctx.x}$ for one constant $k$. Use the pair $${ctx.x}=${mixedNumber(x1)}$, $${ctx.y}=${mixedNumber(y1)}$ to find $k$ first.`,
+      explanation: [
+        `Direct variation: $${ctx.y}=k${ctx.x}$. From $${mixedNumber(y1)}=k\\cdot ${mixedNumber(x1)}$, $k=${mixedNumber(y1)}\\div ${mixedNumber(x1)}=${tex(k)}$.`,
+        `Then $${ctx.y}=${tex(k)}\\cdot ${mixedNumber(x2)}=${mixedNumber(y2)}$.`,
+      ],
+      choices: choices(label(y2), [
+        {
+          label: label(div(mul(y1, x1), x2)),
+          feedback:
+            "That treats the relationship as inverse variation. In direct variation the ratio $y/x$ stays constant.",
+        },
+        {
+          label: label(add(y1, sub(x2, x1))),
+          feedback:
+            "Direct variation multiplies by a constant; it does not add the same amount to both quantities.",
+        },
+        {
+          label: label(mul(y1, x2)),
+          feedback: "Find $k=y/x$ first, then multiply $k$ by the new input.",
+        },
+        {
+          label: label(div(mul(x1, x2), y1)),
+          feedback: "That uses the ratio $x/y$. The constant is $y/x$.",
+        },
+        {
+          label: label(y1),
+          feedback:
+            "$y$ changes when $x$ changes; use the constant ratio $y/x$ to find the new value.",
+        },
+      ]),
+    },
+  };
+}
+
+function variationConstant(r: Random, axes?: Record<string, string>): Built {
+  if (axes?.values === "fractional") return fractionalDirectVariation(r);
   const variant = r(0, 5);
   if (variant === 0) {
     const ctx = pick(r, directContexts);
@@ -1927,7 +2004,10 @@ function quadraticFromData(r: Random): Built {
 
 /* ---------- registry ---------- */
 
-const builders: Record<string, (r: Random) => Built> = {
+const builders: Record<
+  string,
+  (r: Random, axes?: Record<string, string>) => Built
+> = {
   "quadratic-root-relations": quadraticRootRelations,
   "system-expression-value": systemExpressionValue,
   "variation-constant": variationConstant,
@@ -1947,12 +2027,22 @@ export function satAlgebraStructureCase(
   const build = builders[templateId];
   if (!meta || !build) throw new Error(`Unknown template ${templateId}`);
   const r = random(meta.id, seed);
+  const axes =
+    templateId === "variation-constant"
+      ? sweepChoose(templateId, seed)
+      : undefined;
   // A rare draw whose misconceptions coincide with the answer is redrawn from
   // the same deterministic stream, so a seed always yields the same problem.
   for (let attempt = 0; attempt < 50; attempt++) {
     try {
-      const { variant, draft } = build(r);
-      return { variant, problem: assemble(meta, seed, r, draft) };
+      const { variant, draft } = build(r, axes);
+      const problem = assemble(meta, seed, r, draft);
+      return {
+        variant,
+        problem: axes
+          ? { ...problem, variant: sweepVariant(`variant-${variant}`, axes) }
+          : problem,
+      };
     } catch (error) {
       if (
         !(error instanceof Error) ||

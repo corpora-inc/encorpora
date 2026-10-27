@@ -396,7 +396,7 @@ function lineEquationChoice(r: R): Case {
       return {
         variant: "slope-intercept-point",
         prompt,
-        hint: `A line with slope $m$ and $y$-intercept $b$ has the form $y=mx+b$. The $y$-intercept is the value of $y$ when $x=0$; decide which given number it is.`,
+        hint: `A line with slope $m$ and $y$-intercept $b$ has the form $y=mx+b$. The $y$-intercept is the value of $y$ when $x=0$; decide whether it is $${tex(m)}$ or ${b}.`,
         explanation: [
           `The $y$-intercept is ${b}, the $y$-value at $x=0$.`,
           `With slope $${tex(m)}$ and $y$-intercept ${b}, $y=mx+b$ becomes $${correct}$.`,
@@ -542,19 +542,19 @@ function constraintChoice(r: R): Case {
     {
       kind: "sales",
       prompt: `A store sold small candles for ${a} dollars each and large candles for ${b} dollars each. The sales from candles were ${c} dollars. If $x$ small candles and $y$ large candles were sold, which equation represents this situation?`,
-      hint: `Each kind of candle contributes (price)×(number sold) to the sales. Write the two contributions, then set their sum equal to the total.`,
+      hint: `Each kind of candle contributes (price)×(number sold) to the sales, ${a} dollars or ${b} dollars per candle. Write the two contributions, then set their sum equal to ${c} dollars.`,
       why: `Sales from small candles are $${a}x$ and from large candles $${b}y$.`,
     },
     {
       kind: "distance",
       prompt: `A cyclist rode $x$ hours at ${a} kilometers per hour and then $y$ hours at ${b} kilometers per hour, for a total distance of ${c} kilometers. Which equation represents this situation?`,
-      hint: `Distance is speed times time. Find the distance of each part of the ride, then add the parts to get the total.`,
+      hint: `Distance is speed times time. Find the distance of each part of the ride at ${a} and ${b} kilometers per hour, then add the parts to get the total, ${c} kilometers.`,
       why: `The first part covers $${a}x$ kilometers and the second part $${b}y$ kilometers.`,
     },
     {
       kind: "points",
       prompt: `A quiz has easy questions worth ${a} points each and hard questions worth ${b} points each. A student earned ${c} points by answering $x$ easy and $y$ hard questions correctly. Which equation represents this situation?`,
-      hint: `Points from a type of question are (points per question)×(number answered). Add the two amounts and set the sum equal to the total.`,
+      hint: `Points from a type of question are (points per question)×(number answered), worth ${a} or ${b} points each. Add the two amounts and set the sum equal to ${c} points.`,
       why: `Easy questions give $${a}x$ points and hard questions $${b}y$ points.`,
     },
   ][variant]!;
@@ -1000,7 +1000,7 @@ const defs: {
       "Choose a line's equation from its slope and a point",
       "linear-models",
       0.4,
-      "Choose the slope-intercept equation of a line from a slope and the y-intercept point or another point, including fractional and negative slopes and a constant rate in context.",
+      "Choose the slope-intercept equation of a line from a slope and the $y$-intercept point or another point, including fractional and negative slopes and a constant rate in context.",
       true,
     ),
     make: lineEquationChoice,

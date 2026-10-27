@@ -1,5 +1,10 @@
 import { createHash } from "node:crypto";
-import type { GeneratedProblem, TemplateMetadata } from "./contracts.js";
+import type {
+  GeneratedProblem,
+  ProblemVariant,
+  TemplateMetadata,
+} from "./contracts.js";
+import { exactDecimal, sweepChoose, sweepVariant } from "./number-domain-axes";
 import { isAre } from "./agreement.js";
 export const generatorVersion = 1 as const;
 export const extendedTemplates: readonly TemplateMetadata[] = [
@@ -163,6 +168,7 @@ export function generateExtendedProblem(
     hint = "";
   let explanation: string[] = [];
   let kind: "number" | "fraction" = "number";
+  let variant: ProblemVariant | undefined;
   switch (templateId) {
     case "place-value-digit": {
       const h = r(1, 9),
@@ -252,6 +258,30 @@ export function generateExtendedProblem(
       break;
     }
     case "ratio-missing": {
+      const axes = sweepChoose("ratio-missing", seed);
+      if (axes["scale-factor"] === "decimal") {
+        // The white paint is not a whole multiple of the ratio's white: the
+        // scale factor and the answer are exact decimals.
+        const b = [2, 4, 5, 8][r(0, 3)]!;
+        // The blue amount shares no factor with the white, so the answer is
+        // whole only when the white target is a multiple of it.
+        let a = r(2, 9);
+        while (a % 2 === 0 && b !== 5) a = r(2, 9);
+        while (b === 5 && a % 5 === 0) a = r(2, 9);
+        let white = r(b + 1, 6 * b);
+        while (white % b === 0) white = r(b + 1, 6 * b);
+        const factor = exactDecimal(white, b);
+        answer = exactDecimal(a * white, b);
+        prompt = `A paint mix uses ${a} cups of blue for every ${b} cups of white. How many cups of blue are needed for ${white} cups of white at the same ratio? Give the answer as a decimal.`;
+        hint = `${white} cups of white is how many times ${b} cups? That factor is not a whole number, so write it as a decimal. Scale the ${a} cups of blue by that same factor.`;
+        explanation = [
+          `${white} ÷ ${b} = ${factor}, so the mix is scaled by ${factor}.`,
+          `${a} × ${factor} = ${answer} cups of blue.`,
+        ];
+        variant = sweepVariant("decimal-scale", axes);
+        break;
+      }
+      variant = sweepVariant("whole-scale", axes);
       const a = r(1, 8),
         b = r(2, 9),
         scale = r(2, 8);
@@ -443,5 +473,6 @@ export function generateExtendedProblem(
     answer,
     hint,
     explanation,
+    ...(variant ? { variant } : {}),
   };
 }

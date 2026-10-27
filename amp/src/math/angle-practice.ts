@@ -1,9 +1,11 @@
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
+  ProblemVariant,
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
+import { sweepChoose, sweepVariant } from "./number-domain-axes";
 import { centroid, place, type Pt } from "./shape-figures.js";
 import { angle, protractor, scene } from "./scene/author.js";
 import type { Element } from "./scene/spec.js";
@@ -474,6 +476,7 @@ export function generateAngleProblem(
   if (typeof seed !== "string" || seed.length < 1 || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(templateId, seed);
+  let variant: ProblemVariant | undefined;
   let prompt = "",
     answer = "",
     hint = "",
@@ -619,7 +622,13 @@ export function generateAngleProblem(
       break;
     }
     case "turn-degrees": {
-      const n = pick(r, [4, 6, 8, 10, 12, 36]);
+      const axes = sweepChoose("turn-degrees", seed);
+      variant = sweepVariant(axes["turn-form"], axes);
+      const stated = axes["turn-form"] === "fraction-of-circle";
+      const n = pick(
+        r,
+        stated ? [2, 3, 4, 5, 6, 8, 10, 12] : [4, 6, 8, 10, 12, 36],
+      );
       const k = r(1, n - 1);
       const each = 360 / n,
         total = k * each;
@@ -644,14 +653,18 @@ export function generateAngleProblem(
           stroke: "ink",
           width: 2,
         },
-        ...Array.from({ length: n }, (_, i) => ({
-          type: "segment" as const,
-          id: `spoke${i}`,
-          from: [0, 0] as Pt,
-          to: toward(start + i * each, 1),
-          stroke: "ink" as const,
-          width: n > 12 ? 1 : 1.5,
-        })),
+        // Drawn parts show every equal angle; a stated fraction shows only
+        // the two rays of the shaded angle.
+        ...(stated ? [0, k] : Array.from({ length: n }, (_, i) => i)).map(
+          (i) => ({
+            type: "segment" as const,
+            id: `spoke${i}`,
+            from: [0, 0] as Pt,
+            to: toward(start + i * each, 1),
+            stroke: "ink" as const,
+            width: n > 12 ? 1 : 1.5,
+          }),
+        ),
         {
           type: "arc",
           id: "mark",
@@ -663,6 +676,23 @@ export function generateAngleProblem(
           width: 3,
         },
       );
+      if (stated) {
+        const g = ((a: number, b: number): number => {
+          while (b) [a, b] = [b, a % b];
+          return a;
+        })(k, n);
+        const part = `\\frac{${k / g}}{${n / g}}`;
+        prompt = `The shaded angle at the center of the circle is $${part}$ of the full circle. How many degrees is the shaded angle?`;
+        label = "Degrees";
+        answer = String(total);
+        hint = `A full turn is 360°. Find $${part}$ of 360: divide 360 by ${n / g}, then multiply by ${k / g}.`;
+        explanation = [
+          `A full turn around the center is 360°, so one of ${n / g} equal parts is $360 \\div ${n / g} = ${(360 * g) / n}$ degrees.`,
+          `The shaded angle is ${k / g === 1 ? "1 part" : `${k / g} parts`}: $${k / g} \\times ${(360 * g) / n} = ${total}$.`,
+          `The shaded angle measures ${total}°.`,
+        ];
+        break;
+      }
       prompt = `The circle is cut into ${n} equal angles that meet at its center. How many degrees is the shaded angle?`;
       label = "Degrees";
       answer = String(total);
@@ -1204,5 +1234,6 @@ export function generateAngleProblem(
     hint,
     explanation,
     ...(choiceFeedback ? { choiceFeedback } : {}),
+    ...(variant ? { variant } : {}),
   };
 }

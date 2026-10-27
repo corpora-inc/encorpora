@@ -152,10 +152,10 @@ export const mcasGrade4 = defineLedger(
       standards: ["4.MD.C.5"],
       archetypeIds: ["angle.measure"],
       demand: "Give the degrees of an angle that is a quarter of a circle",
-      status: "partial",
+      status: "covered",
       templateIds: ["turn-degrees"],
       limitations:
-        "turn-degrees finds the degrees of one of several equal angles drawn in a circle; a turn stated as a fraction of a circle with no drawn parts is not practiced.",
+        "turn-degrees with turn-form=fraction-of-circle states the shaded angle as a fraction of the full circle, such as one fourth, and asks its degrees.",
     },
     {
       section: "Session 1",

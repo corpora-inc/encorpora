@@ -19,3 +19,4 @@ export { family as similarSolidChain } from "./similar-solid-chain";
 export { family as solveAndJustify } from "./solve-and-justify";
 export { family as totalMinusParts } from "./total-minus-parts";
 export { family as twoColumnProof } from "./two-column-proof";
+export { family as virginiaSolLedger } from "./virginia-sol-ledger";
