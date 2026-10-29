@@ -7,7 +7,21 @@ import {
 } from "../src/math/calculator";
 import { templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
-import { templateGrade } from "../src/server/mixed-practice";
+import { gradeNumber } from "../src/learning/frontier";
+
+const nodes = new Map(skills.map((s) => [s.id, s]));
+function allowed(id: string) {
+  const template = templates.find((t) => t.id === id);
+  assert(template, `Unknown template: ${id}`);
+  const skill = nodes.get(template.skillId);
+  assert(skill, `Missing skill for ${id}`);
+  // Use the same skill grade as signed-in and trial practice.
+  return calculatorAllowed(
+    template,
+    skill.strand,
+    gradeNumber[skill.gradeBand],
+  );
+}
 
 test("the calculator evaluates SAT-style arithmetic without eval", () => {
   assert.equal(evaluate("(-4)^2 + 6(-4) + 4"), -4);
@@ -24,15 +38,6 @@ test("the calculator evaluates SAT-style arithmetic without eval", () => {
 });
 
 test("calculator policy: off where computation is the skill, on for SAT-style work", () => {
-  const nodes = new Map(skills.map((s) => [s.id, s]));
-  const allowed = (id: string) => {
-    const t = templates.find((x) => x.id === id)!;
-    return calculatorAllowed(
-      t,
-      nodes.get(t.skillId)?.strand,
-      templateGrade(t, nodes),
-    );
-  };
   for (const id of [
     "multiply-facts",
     "add-fractions",
@@ -52,4 +57,50 @@ test("calculator policy: off where computation is the skill, on for SAT-style wo
     "quadratic-vertex",
   ])
     assert.equal(allowed(id), true, id);
+});
+
+test("applied tasks can use a calculator despite arithmetic strands or younger grades", () => {
+  for (const id of [
+    "price-count-chain", // Same decimal skill as the protected drills below.
+    "budget-category-balance",
+    "gross-net-pay",
+    "purchase-change", // Grade 3: choose the operations, then compute.
+    "whole-pack-ribbon-choice", // Whole packs must still be interpreted.
+    "conversion-chain-story", // Grade 4: compose several unit conversions.
+    "staar-measure-chains",
+    "rectangle-chain-blanks",
+    "division-remainder-story", // A decimal quotient is not the answer.
+    "signed-changes-sum",
+    "share-remainder-fractions",
+    "dot-plot-arithmetic",
+    "dot-plot-mean",
+    "mean-missing-value",
+    "dot-plot-mad",
+    "dot-plot-iqr",
+    "median-data",
+    "range-data",
+    "interquartile-range-data",
+  ])
+    assert.equal(allowed(id), true, id);
+});
+
+test("applied exceptions do not unlock facts, algorithms, estimation or exact arithmetic", () => {
+  for (const id of [
+    "multiply-facts",
+    "decimal-addition",
+    "decimal-multiplication",
+    "integer-addition",
+    "add-fractions",
+    "divide-fractions",
+    "fraction-term-chain",
+    "decimal-rename-chain",
+    "bag-totals-chain",
+    "estimate-reasonableness",
+    "scientific-to-standard",
+    "integer-power",
+    "operation-order",
+    "simplify-square-root",
+    "complete-square-monic",
+  ])
+    assert.equal(allowed(id), false, id);
 });
