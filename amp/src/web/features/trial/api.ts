@@ -1,3 +1,4 @@
+import { accessSession, authConfig } from "../../auth";
 import { queryOptions } from "@tanstack/react-query";
 import { problemHintSchema, withProblemHints } from "../../lib/problem-hints";
 import { z } from "zod";
@@ -111,11 +112,39 @@ export type TrialSession = {
   token: string;
   learnerId: string;
   birthYear?: number | null;
+  expiresAt?: string;
 };
 export const trialSessionOptions = queryOptions({
   queryKey: ["trial", "session"],
   queryFn: async ({ signal }): Promise<TrialSession | null> => {
     const token = storedTrial();
+    if ((await authConfig()).mode !== "development") {
+      const parent = await accessSession();
+      signal.throwIfAborted();
+      if (!parent) return null;
+      const result = await request(
+        "/trials/current",
+        z.object({
+          trial: z
+            .object({
+              token: z.string(),
+              learnerId: z.string(),
+              birthYear: z.number().nullable(),
+              expiresAt: z.string(),
+            })
+            .nullable(),
+        }),
+        { token: parent.token, body: { ...(token ? { token } : {}) }, signal },
+      );
+      signal.throwIfAborted();
+      try {
+        if (result.trial) localStorage.setItem(trialKey, result.trial.token);
+        else clearStoredTrial();
+      } catch {
+        /* Account resume does not depend on browser storage. */
+      }
+      return result.trial;
+    }
     if (!token) return null;
     try {
       const { learners } = await request(
@@ -147,9 +176,6 @@ export const trialSessionOptions = queryOptions({
     }
   },
   staleTime: Infinity,
-  // Without a stored token there is nothing to look up: the start screen
-  // paints on the first frame instead of a skeleton.
-  initialData: () => (storedTrial() ? undefined : null),
 });
 export const progressOptions = (session: TrialSession) =>
   queryOptions({
@@ -194,11 +220,24 @@ export const pricesOptions = queryOptions({
 });
 
 export async function startTrial(birthYear: number): Promise<TrialSession> {
+  const owner = await accessSession();
   const created = await request(
     "/trials",
-    z.object({ token: z.string(), learnerId: z.string() }),
-    { body: { birthYear } },
+    z.object({
+      token: z.string(),
+      learnerId: z.string(),
+      birthYear: z.number().optional(),
+      expiresAt: z.string().optional(),
+    }),
+    { token: owner?.token, body: { birthYear } },
   );
+  if ((await accessSession())?.accountId !== owner?.accountId) {
+    throw new AppError(
+      "authentication",
+      "Your account changed. Open free practice again.",
+      true,
+    );
+  }
   try {
     localStorage.setItem(trialKey, created.token);
   } catch (failure) {
@@ -207,7 +246,8 @@ export async function startTrial(birthYear: number): Promise<TrialSession> {
   const session = {
     token: created.token,
     learnerId: created.learnerId,
-    birthYear,
+    birthYear: created.birthYear ?? birthYear,
+    expiresAt: created.expiresAt,
   };
   queryClient.setQueryData(trialSessionOptions.queryKey, session);
   return session;

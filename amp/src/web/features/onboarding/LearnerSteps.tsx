@@ -1,3 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
+import { trialSessionOptions } from "../trial/api";
 import { useActivateGift } from "../access/api";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
@@ -11,7 +13,7 @@ import {
   fundedPrograms,
   isFundedReturn,
 } from "../../lib/funded-entry";
-import { clearStoredTrial, storedTrial } from "../../lib/pending-trial";
+import { clearStoredTrial } from "../../lib/pending-trial";
 import { Button, buttonClass } from "../../ui/Button";
 import { FrameBrand, frameCard } from "../../ui/PageFrame";
 import { queryClient, refreshMe } from "../../lib/query";
@@ -47,12 +49,15 @@ export function LearnerSteps({
   const giftClaim = useActivateGift(session);
   const correct = useSetBirthYear(session);
   const adopt = useAdoptTrial(session);
-  const [trial, setTrial] = useState(storedTrial);
+  const trialQuery = useQuery(trialSessionOptions);
+  const [useAnswers, setUseAnswers] = useState<boolean | null>(null);
+  const [dismissedTrial, setDismissedTrial] = useState(false);
+  const trial = dismissedTrial ? null : (trialQuery.data?.token ?? null);
   const [ended, setEnded] = useState("");
   const dropTrial = () => {
     clearStoredTrial();
     queryClient.removeQueries({ queryKey: ["trial"] });
-    setTrial(null);
+    setDismissedTrial(true);
   };
   const firstRun = me.next !== "practice";
   const funded = isFundedReturn(search.return);
@@ -73,6 +78,7 @@ export function LearnerSteps({
       void navigate({ to: "/start/name", search, replace: true });
   }, [location.pathname, name]);
   const busy =
+    trialQuery.isPending ||
     create.isPending ||
     claim.isPending ||
     giftClaim.isPending ||
@@ -212,7 +218,7 @@ export function LearnerSteps({
       <h1>{trial ? "Who’s been practicing?" : "Who’s learning?"}</h1>
       <p>
         {trial
-          ? "Their free practice carries over: every answer, the map and the next problem."
+          ? "Were these answers given by the learner you’re setting up?"
           : "A first name or nickname helps you keep each learner’s practice separate."}
       </p>
       {!trial && (purchase || gift) && waiting.length > 0 && (
@@ -234,11 +240,41 @@ export function LearnerSteps({
           <p className={styles.divider}>or add a new learner</p>
         </div>
       )}
+      {trial && (
+        <div className={styles.actions} role="group" aria-label="Trial answers">
+          <Button
+            type="button"
+            variant={useAnswers === true ? "primary" : "secondary"}
+            aria-pressed={useAnswers === true}
+            onClick={() => setUseAnswers(true)}
+          >
+            Use these answers
+          </Button>
+          <Button
+            type="button"
+            variant={useAnswers === false ? "primary" : "secondary"}
+            aria-pressed={useAnswers === false}
+            onClick={() => setUseAnswers(false)}
+          >
+            Start fresh
+          </Button>
+          <p>Start fresh if you were exploring on their behalf.</p>
+        </div>
+      )}
+      {trialQuery.error && (
+        <p role="alert">
+          Free practice could not be checked.{" "}
+          <button type="button" onClick={() => void trialQuery.refetch()}>
+            Try again
+          </button>
+        </p>
+      )}
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          if (!name.trim()) return;
-          if (!trial) return void navigate({ to: "/start/birth-year", search });
+          if (!name.trim() || (trial && useAnswers === null)) return;
+          if (!trial || useAnswers === false)
+            return void navigate({ to: "/start/birth-year", search });
           // Saved before a failed claim: claim again, never adopt twice.
           if (mine && draft.learnerId) return assign(draft.learnerId);
           claim.reset();
@@ -277,20 +313,17 @@ export function LearnerSteps({
           required
           onChange={(event) => draft.set(session.accountId, event.target.value)}
         />
-        <Button variant="primary" disabled={busy || !name.trim()}>
+        <Button
+          variant="primary"
+          disabled={
+            busy ||
+            !!trialQuery.error ||
+            !name.trim() ||
+            (!!trial && useAnswers === null)
+          }
+        >
           Continue
         </Button>
-        {trial && (
-          // Keeps the free practice on this device for a later learner.
-          <Button
-            type="button"
-            variant="quiet"
-            disabled={busy}
-            onClick={() => setTrial(null)}
-          >
-            Add a different learner
-          </Button>
-        )}
         {!firstRun && (
           <Link
             className={`${buttonClass("quiet")} ${styles.textLink}`}

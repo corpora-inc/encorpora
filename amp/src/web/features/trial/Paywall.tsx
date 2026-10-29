@@ -163,8 +163,8 @@ function PlansView({
                 payment and the whole payment is refunded.
               </li>
               <li>
-                <strong>Your free practice carries over.</strong> Every answer
-                and the map move into your family account.
+                <strong>Keep the learner’s progress.</strong> Use their trial
+                answers at setup, or start fresh if you were exploring.
               </li>
             </ul>
             <p className={styles.fine}>
@@ -179,7 +179,8 @@ function PlansView({
               {programId
                 ? "Card checkout isn’t available."
                 : "Enrollment isn’t open yet."}{" "}
-              Your free practice stays saved on this device.
+              Sign in on any device to continue free practice, saved for 14 days
+              from its start.
             </p>
             <div className={styles.actions}>
               <Link to="/try/map" className={buttonClass("primary")}>
@@ -239,7 +240,7 @@ function PlansView({
         <p className={styles.fine}>
           {run && left > 0
             ? `You have ${left} free problems left.`
-            : "Your map and answers stay saved on this device."}
+            : "Your trial is saved to your account for 14 days from its start."}
         </p>
       </Dialog>
     </PageFrame>

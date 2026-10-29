@@ -71,13 +71,13 @@ function BirthYear() {
           header: <FrameBrand expanded />,
           footer: (
             <p className={styles.introNote}>
-              Free practice · No payment needed
+              Free practice · No payment needed · Saved for 14 days
             </p>
           ),
         }}
         name="the learner"
         title="See how AMP adapts"
-        description="Choose your child’s birth year for a starting level. Then answer as yourself and watch AMP adapt."
+        description="Choose the birth year of the person who will be learning. This sets the starting level."
         birthYear={null}
         busy={busy}
         saveBirthYear={(year) => {

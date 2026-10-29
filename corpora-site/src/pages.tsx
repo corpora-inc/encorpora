@@ -494,7 +494,7 @@ function Esa({ config }: { config: SiteConfig }) {
 const faq = [
   [
     "What happens in the free placement?",
-    "The learner answers a short adaptive sequence. AMP estimates levels in different mathematical areas. No parent account or payment card is required to begin. The result is an estimate, not a diagnostic evaluation.",
+    "The learner answers a short adaptive sequence. AMP estimates levels in different mathematical areas. A parent account is required; no payment card is needed to begin. The result is an estimate, not a diagnostic evaluation.",
   ],
   [
     "Does AMP cover every grade or standard?",
@@ -770,8 +770,8 @@ export function Page({ route, config }: { route: string; config: SiteConfig }) {
       <>
         <Intro label="Try AMP" heading="Start with free practice.">
           <p className="lead">
-            Open AMP, then choose “Try free” to begin placement without an
-            account or card.
+            Create your free parent account, choose the learner’s birth year,
+            and try adaptive practice. No payment card needed.
           </p>
           {config.appUrl ? (
             <Try config={config} label="Open AMP" />

@@ -53,7 +53,7 @@ export async function recordEventBatch(
           }>(
             `SELECT t.analytics_id,l.birth_year FROM amp_trials t
              LEFT JOIN amp_learners l ON l.id=t.learner_id
-             WHERE t.token_hash=$1 AND t.adopted_at IS NULL AND t.expires_at>$2`,
+             WHERE t.token_hash=$1 AND t.owner_account_id IS NULL AND t.adopted_at IS NULL AND t.expires_at>$2`,
             [trialTokenHash(batch.trial), now],
           )
         ).rows[0]

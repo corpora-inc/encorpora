@@ -188,6 +188,7 @@ type Props = {
   satMathFocus?: boolean;
   /** A calm status in the toolbar, such as the free-practice meter. */
   status?: ReactNode;
+  introduction?: ReactNode;
   /** Global navigation supplied by browser routes; native keeps its home link. */
   navigation?: ReactNode;
   /** A skill this answer just mastered, shown once with the feedback. */
@@ -1166,6 +1167,7 @@ export function PracticeWorkspace(props: Props) {
           tabIndex={0}
           aria-label="Problem workspace"
         >
+          {props.introduction}
           <div className="problem-content" data-template={problem.templateId}>
             <h2
               id="problem-prompt"

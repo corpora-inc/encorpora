@@ -4,7 +4,7 @@ import { Toast } from "../ui/Toast";
 import { AppError } from "../lib/AppError";
 import { clearOnboardingDraft } from "../features/onboarding/state";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { useEffect, useState, type ReactNode } from "react";
+import { Fragment, useEffect, useState, type ReactNode } from "react";
 import { onSessionChanged } from "../auth";
 import { queryClient, sessionOptions } from "../lib/query";
 export function Providers({ children }: { children: ReactNode }) {
@@ -13,6 +13,7 @@ export function Providers({ children }: { children: ReactNode }) {
 }
 function SessionProviders({ children }: { children: ReactNode }) {
   const [error, setError] = useState("");
+  const [identity, setIdentity] = useState<string | null>(null);
   useEffect(
     () =>
       onSessionChanged(
@@ -21,6 +22,10 @@ function SessionProviders({ children }: { children: ReactNode }) {
           const previous = queryClient.getQueryData(sessionOptions.queryKey);
           if (previous?.accountId !== session?.accountId) {
             clearOnboardingDraft();
+            setIdentity(session?.accountId ?? null);
+            void queryClient.cancelQueries({ queryKey: ["trial"] });
+            queryClient.setQueryData(["trial", "session"], null);
+            queryClient.removeQueries({ queryKey: ["trial"] });
             void queryClient.cancelQueries({ queryKey: ["account"] });
             queryClient.removeQueries({ queryKey: ["account"] });
           }
@@ -45,7 +50,7 @@ function SessionProviders({ children }: { children: ReactNode }) {
   );
   return (
     <QueryClientProvider client={queryClient}>
-      {children}
+      <Fragment key={identity}>{children}</Fragment>
       <Toast message={error} onDismiss={() => setError("")} />
     </QueryClientProvider>
   );

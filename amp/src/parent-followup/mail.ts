@@ -51,8 +51,8 @@ export function followupMail(
     ? [
         "Your free AMP account is ready.",
         "AMP — Adaptive Math Pathways — finds the right level and chooses the next lesson as you answer. Try up to 100 free problems, with explanations when you need them. No payment card required.",
-        `Start or return to free practice:\n${trial.href}`,
-        "Free practice resumes on the browser where you started it. You can start on another device too.",
+        `Continue free practice:\n${trial.href}`,
+        "Sign in on any device to continue. Free practice is saved for 14 days from when you start.",
         ...(program
           ? [
               `Have ${program.short} funds? Corpora Inc is an approved vendor. Eligible, available funds can cover the full cost of AMP. We’ll help with the purchase steps:\n${funding}`,
@@ -64,13 +64,13 @@ export function followupMail(
           ? `Put your ${program.short} funds toward a math program that plans the next lesson for you.`
           : "Ready for another look at AMP?",
         "Catch up, get ahead, or add focused practice alongside school. AMP adapts question by question, so you can spend time learning instead of deciding what to work on next.",
+        `Continue free practice:\n${trial.href}`,
         ...(program
           ? [
               `Corpora Inc, the maker of AMP, is an approved vendor for the ${program.name} program. You can use eligible, available scholarship funds to cover AMP. Get your invoice and the payment steps here:\n${funding}`,
             ]
           : [`See learning options:\n${funding}`]),
-        `You can continue free practice whenever you’re ready:\n${trial.href}`,
-        "Free practice resumes on the browser where you started it.",
+        "Sign in on any device to continue. Free practice is saved for 14 days from when you start.",
       ];
   paragraphs.push(
     "Need a hand choosing a level or paying with your funds? Reply to this email or write to support@corpora.inc. We’re happy to help.",
@@ -85,7 +85,7 @@ export function followupMail(
       ? "Your free AMP account is ready"
       : program
         ? `Your ${program.short} funds can cover AMP`
-        : "A math path built around you",
+        : "See how AMP adapts",
     text: paragraphs.join("\n\n"),
     headers: {
       "List-Unsubscribe": `<${optout}>`,

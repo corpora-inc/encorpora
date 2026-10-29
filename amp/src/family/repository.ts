@@ -18,6 +18,12 @@ export class FamilyRepository {
     readonly pool: Pool,
     readonly development = false,
   ) {}
+  private async ownedTrialsAvailable(client: PoolClient): Promise<boolean> {
+    return !!(
+      await client.query(`SELECT 1 FROM information_schema.columns
+      WHERE table_schema=current_schema() AND table_name='amp_trials' AND column_name='owner_account_id'`)
+    ).rowCount;
+  }
   async transaction<T>(
     accountId: string,
     action: (client: PoolClient) => Promise<T>,
@@ -208,6 +214,13 @@ export class FamilyRepository {
     learnerId?: string,
     action?: "learner.retention-deleted",
   ): Promise<DeletionReceipt> {
+    if (!learnerId && (await this.ownedTrialsAvailable(client)))
+      await client.query(
+        `DELETE FROM amp_learners l USING amp_trials t
+       WHERE l.id=t.learner_id AND l.account_id='trial:'||t.id
+       AND t.owner_account_id=$1 AND t.adopted_at IS NULL`,
+        [accountId],
+      );
     const rows = (
       await client.query(
         "SELECT id,deleted_at FROM amp_learners WHERE account_id=$1 AND ($2::text IS NULL OR id=$2) ORDER BY id FOR UPDATE",
@@ -387,23 +400,23 @@ export class FamilyRepository {
         ],
         [
           "learner",
-          "SELECT to_jsonb(l) - 'account_id' AS value FROM amp_learners l WHERE account_id=$1 ORDER BY id",
+          "SELECT to_jsonb(l) - 'account_id' AS value FROM amp_learners l WHERE (account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY id",
         ],
         [
           "problem",
-          "SELECT to_jsonb(i) AS value FROM amp_instances i JOIN amp_learners l ON l.id=i.learner_id WHERE l.account_id=$1 ORDER BY i.id",
+          "SELECT to_jsonb(i) AS value FROM amp_instances i JOIN amp_learners l ON l.id=i.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY i.id",
         ],
         [
           "attempt",
-          "SELECT to_jsonb(a) AS value FROM amp_attempts a JOIN amp_learners l ON l.id=a.learner_id WHERE l.account_id=$1 ORDER BY a.id",
+          "SELECT to_jsonb(a) AS value FROM amp_attempts a JOIN amp_learners l ON l.id=a.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY a.id",
         ],
         [
           "derived-skill-evidence",
-          "SELECT jsonb_build_object('learnerId',e.learner_id,'evidence',e.state) AS value FROM amp_skill_evidence e JOIN amp_learners l ON l.id=e.learner_id WHERE l.account_id=$1 ORDER BY e.learner_id,e.skill_id",
+          "SELECT jsonb_build_object('learnerId',e.learner_id,'evidence',e.state) AS value FROM amp_skill_evidence e JOIN amp_learners l ON l.id=e.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY e.learner_id,e.skill_id",
         ],
         [
           "license",
-          "SELECT to_jsonb(g) AS value FROM amp_grants g JOIN amp_learners l ON l.id=g.learner_id WHERE l.account_id=$1 ORDER BY g.id",
+          "SELECT to_jsonb(g) AS value FROM amp_grants g JOIN amp_learners l ON l.id=g.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY g.id",
         ],
         [
           "order",
@@ -548,19 +561,19 @@ export class FamilyRepository {
         datasets.push(
           [
             "offline-pack",
-            "SELECT to_jsonb(p) - 'signed_pack' - 'request_digest' - 'consent_revision' - 'binding' AS value FROM amp_offline_packs p JOIN amp_learners l ON l.id=p.learner_id WHERE l.account_id=$1 ORDER BY p.id",
+            "SELECT to_jsonb(p) - 'signed_pack' - 'request_digest' - 'consent_revision' - 'binding' AS value FROM amp_offline_packs p JOIN amp_learners l ON l.id=p.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY p.id",
           ],
           [
             "offline-problem",
-            "SELECT to_jsonb(i) AS value FROM amp_offline_instances i JOIN amp_offline_packs p ON p.id=i.pack_id JOIN amp_learners l ON l.id=p.learner_id WHERE l.account_id=$1 ORDER BY i.id",
+            "SELECT to_jsonb(i) AS value FROM amp_offline_instances i JOIN amp_offline_packs p ON p.id=i.pack_id JOIN amp_learners l ON l.id=p.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY i.id",
           ],
           [
             "offline-provisional-attempt",
-            "SELECT to_jsonb(a) AS value FROM amp_offline_attempts a JOIN amp_offline_packs p ON p.id=a.pack_id JOIN amp_learners l ON l.id=p.learner_id WHERE l.account_id=$1 ORDER BY a.id",
+            "SELECT to_jsonb(a) AS value FROM amp_offline_attempts a JOIN amp_offline_packs p ON p.id=a.pack_id JOIN amp_learners l ON l.id=p.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY a.id",
           ],
           [
             "offline-receipt",
-            "SELECT to_jsonb(r) - 'input_digest' AS value FROM amp_offline_receipts r JOIN amp_offline_packs p ON p.id=r.pack_id JOIN amp_learners l ON l.id=p.learner_id WHERE l.account_id=$1 ORDER BY r.pack_id,r.request_id",
+            "SELECT to_jsonb(r) - 'input_digest' AS value FROM amp_offline_receipts r JOIN amp_offline_packs p ON p.id=r.pack_id JOIN amp_learners l ON l.id=p.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY r.pack_id,r.request_id",
           ],
         );
       if (
@@ -594,7 +607,7 @@ export class FamilyRepository {
       )
         datasets.push([
           "problem-report",
-          "SELECT to_jsonb(f) AS value FROM amp_problem_flags f JOIN amp_learners l ON l.id=f.learner_id WHERE l.account_id=$1 ORDER BY f.created_at,f.id",
+          "SELECT to_jsonb(f) AS value FROM amp_problem_flags f JOIN amp_learners l ON l.id=f.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY f.created_at,f.id",
         ]);
       if (
         (
@@ -671,7 +684,14 @@ export class FamilyRepository {
           "SELECT jsonb_build_object('id',o.id,'recordId',o.record_id,'observation',o.observation,'observedAt',o.observed_at) AS value FROM amp_payment_observations o JOIN amp_payment_records r ON r.id=o.record_id WHERE r.account_id=$1 ORDER BY o.sequence",
         ]);
       }
-      for (const [type, query] of datasets) {
+      const ownedTrials = await this.ownedTrialsAvailable(client);
+      for (const [type, source] of datasets) {
+        const query = ownedTrials
+          ? source
+          : source.replaceAll(
+              " OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)",
+              "",
+            );
         if (signal?.aborted) throw new Error("Export canceled");
         await client.query(
           `DECLARE export_rows NO SCROLL CURSOR FOR ${query}`,
