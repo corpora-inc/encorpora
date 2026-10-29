@@ -1,3 +1,4 @@
+import { createMarketingDelivery } from "./engagement-delivery";
 import { entryContext } from "../../amp/src/analytics/entry-context";
 import { browserIdentity } from "../../amp/src/analytics/browser-identity";
 import { marketingScreen } from "../../amp/src/analytics/site-actions";
@@ -16,6 +17,7 @@ if (
   const google = createGoogleAnalytics();
   google.navigate();
   const endpoint = script.dataset.engagementEndpoint;
+  const deliver = createMarketingDelivery();
   const identity = browserIdentity(),
     visitorId = identity.visitor();
   const sessionId = crypto.randomUUID();
@@ -82,13 +84,7 @@ if (
       }
       const ids = new Set(events.map((e) => e.id));
       busy++;
-      void fetch(endpoint, {
-        method: "POST",
-        credentials: "omit",
-        keepalive: true,
-        headers: { "Content-Type": "application/json" },
-        body,
-      })
+      void deliver(endpoint, body)
         .then((response) => {
           if (
             response.ok ||
