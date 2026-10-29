@@ -82,7 +82,7 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
     );
     await page.evaluate(() => {
       const ga = (window as any).ga;
-      history.pushState({}, "", "/purchase/arizona?token=private-invoice");
+      history.pushState({}, "", "/purchase/arizona-esa?token=private-invoice");
       ga.navigate();
       ga.navigate();
       ga.event("checkout_start");
@@ -100,7 +100,7 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
     await awaitEvent("user_engagement", 1);
     assert.equal(
       hits.find((h) => h.get("en") === "user_engagement")?.get("dl"),
-      "https://amp.corpora.inc/purchase/arizona",
+      "https://amp.corpora.inc/purchase/arizona-esa",
     );
     await page.evaluate(
       `Object.defineProperty(document, 'visibilityState', {configurable: true, get: () => 'visible'}); document.dispatchEvent(new Event('visibilitychange'));`,
@@ -120,7 +120,7 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
     await page.waitForTimeout(1500);
     assert.equal(hits.length, count, "learning route must not send GA events");
     await page.evaluate(() => {
-      history.pushState({}, "", "/purchase/arizona");
+      history.pushState({}, "", "/purchase/arizona-esa");
       (window as any).ga.navigate();
       (window as any).ga.event("checkout_start");
     });

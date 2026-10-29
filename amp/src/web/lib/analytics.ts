@@ -12,8 +12,10 @@ import {
   MAX_BATCH_BYTES,
   MAX_EVENTS_PER_BATCH,
   funnelPropsSchemas,
+  clientEventSchema,
 } from "../../analytics/events";
-import { storedTrial } from "./pending-trial";
+import type { AuthSession } from "../auth";
+import { screenForPath } from "../../analytics/engagement";
 import type { TrafficKind } from "../../analytics/engagement";
 import { nativeRuntime } from "../native-runtime";
 import { createGoogleAnalytics } from "../../analytics/google-analytics";
@@ -24,13 +26,9 @@ export function trackGooglePage(): void {
   (google ??= createGoogleAnalytics()).navigate();
 }
 
-/**
- * First-party funnel analytics. `track` only appends to an in-memory buffer;
- * the buffer is sent with `navigator.sendBeacon` after a short delay, when it
- * fills, and when the page is hidden. Nothing here can throw into the UI or
- * delay a screen. The visitor ID is a random UUID in this browser's storage:
- * it is not derived from, or sent with, any account, learner or contact.
- */
+/** First-party journey collection. A bounded tab queue survives reloads;
+ * acknowledged batches are removed and retry IDs prevent duplicate counting.
+ * Auth tokens stay in memory. Events retain their original account scope. */
 export const visitorKey = VISITOR_KEY;
 export const firstVisitKey = FIRST_VISIT_KEY;
 const sessionKey = "amp.visitor.session";
@@ -38,7 +36,156 @@ const endpoint = "/api/v1/events";
 const flushDelayMs = 2000;
 const maxBuffered = 200;
 
-type Queued = { event: ClientEvent; props: unknown; at: number };
+const queueKey = "amp.analytics.pending.v2";
+const documentSession = crypto.randomUUID();
+const queueLifetime = 24 * 60 * 60 * 1000;
+type Queued = {
+  event: ClientEvent;
+  props: unknown;
+  at: number;
+  id: string;
+  sessionId: string;
+  scope?: string;
+  generation?: string;
+};
+let account: AuthSession | null | undefined;
+let accountGeneration = "initial";
+let contextVersion = 0;
+const scopeListeners = new Set<() => void>();
+export function onAnalyticsScopeChanging(callback: () => void) {
+  scopeListeners.add(callback);
+  return () => {
+    scopeListeners.delete(callback);
+  };
+}
+function beforeScopeChange() {
+  for (const callback of scopeListeners) callback();
+  flush(true);
+}
+let restored = false;
+let sending = 0;
+let retryMs = flushDelayMs;
+let nextSendAt = 0;
+
+export function captureAnalyticsTracker(): typeof track {
+  const scope = account?.accountId,
+    generation = accountGeneration;
+  return ((event: ClientEvent, props: never) => {
+    if (scope === account?.accountId && generation === accountGeneration)
+      (track as (event: ClientEvent, props: unknown) => void)(event, props);
+  }) as typeof track;
+}
+export function analyticsSessionId() {
+  return documentSession;
+}
+export function setAnalyticsSession(next: AuthSession | null) {
+  const previous = account?.accountId;
+  if (previous !== next?.accountId) {
+    beforeScopeChange();
+    accountGeneration = "initial";
+  }
+  account = next;
+  if (next && previous !== next.accountId && analyticsAllowed()) {
+    const version = ++contextVersion;
+    // No product request waits on diagnostic metadata. Pending events retain
+    // the generation captured at creation, even if this lookup finishes later.
+    void fetch("/api/v1/events/context", {
+      headers: { Authorization: `Bearer ${next.token}` },
+      cache: "no-store",
+    })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        const generation = data?.generation;
+        if (
+          version !== contextVersion ||
+          account?.accountId !== next.accountId ||
+          (generation !== "initial" &&
+            !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+              generation ?? "",
+            ))
+        )
+          return;
+        if (generation !== accountGeneration) {
+          beforeScopeChange();
+          accountGeneration = generation;
+          track("account_session");
+          trackPageView(location.pathname);
+        }
+      })
+      .catch(() => {});
+  } else if (!next) contextVersion++;
+  restore();
+  buffer = buffer.filter((e) => !e.scope || e.scope === next?.accountId);
+  persist();
+  if (next && previous !== next.accountId) {
+    track("account_session");
+    trackPageView(location.pathname);
+  }
+  schedule();
+}
+function restore() {
+  if (restored) return;
+  restored = true;
+  try {
+    const saved: unknown = JSON.parse(sessionStorage.getItem(queueKey) ?? "[]");
+    if (!Array.isArray(saved)) return;
+    for (const candidate of saved.slice(-maxBuffered)) {
+      const { scope, generation, ...event } = candidate;
+      const parsed = clientEventSchema.safeParse(event);
+      if (
+        parsed.success &&
+        event.id &&
+        event.sessionId &&
+        Date.now() - event.at < queueLifetime &&
+        event.at <= Date.now() + 60000 &&
+        (scope === undefined || typeof scope === "string")
+      )
+        buffer.push({ ...parsed.data, scope, generation } as Queued);
+    }
+  } catch {
+    /* Storage is optional. */
+  }
+}
+let persistenceTimer: ReturnType<typeof setTimeout> | null = null;
+function persist(immediate = false) {
+  if (immediate) {
+    if (persistenceTimer) clearTimeout(persistenceTimer);
+    persistenceTimer = null;
+    try {
+      sessionStorage.setItem(queueKey, JSON.stringify(buffer));
+    } catch {
+      /* Memory fallback. */
+    }
+    return;
+  }
+  // Coalesce synchronous Web Storage work outside the interaction/render call.
+  persistenceTimer ??= setTimeout(() => persist(true), 0);
+}
+function schedule() {
+  if (buffer.length && !timer) timer = setTimeout(flush, retryMs);
+}
+export function trackPageView(path: string) {
+  const pages = {
+    "/sign-up": "sign-up",
+    "/sign-in": "sign-in",
+    "/reset-password": "reset-password",
+    "/try": "trial-start",
+    "/try/practice": "trial-practice",
+    "/try/map": "trial-map",
+    "/try/plans": "trial-plans",
+    "/purchase/arizona-esa": "funding-az",
+    "/purchase/arkansas-efa": "funding-ar",
+    "/purchase/new-hampshire-efa": "funding-nh",
+  } as const;
+  const clean = path.split(/[?#]/)[0];
+  track("page_view", {
+    screen: screenForPath(clean),
+    page:
+      pages[clean as keyof typeof pages] ??
+      (clean.startsWith("/invoice/") ? "invoice" : "other"),
+  });
+}
+
 let buffer: Queued[] = [];
 let timer: ReturnType<typeof setTimeout> | null = null;
 let identity: ReturnType<typeof browserIdentity> | undefined;
@@ -82,15 +229,30 @@ export function track<E extends ClientEvent>(
 ): void {
   // The native shell talks to AMP only through its own session; the web
   // funnel is measured on the web.
-  if (!analyticsAllowed()) return;
+  if (!analyticsAllowed()) {
+    buffer = [];
+    persist();
+    return;
+  }
   try {
+    restore();
     const parsed = funnelPropsSchemas[event].safeParse(props ?? {});
     if (!parsed.success) {
       console.warn("Analytics event dropped: invalid props", event);
       return;
     }
     if (buffer.length >= maxBuffered) buffer.shift();
-    buffer.push({ event, props: parsed.data, at: Date.now() });
+    buffer.push({
+      event,
+      props: parsed.data,
+      at: Date.now(),
+      id: crypto.randomUUID(),
+      sessionId: documentSession,
+      ...(account
+        ? { scope: account.accountId, generation: accountGeneration }
+        : {}),
+    });
+    persist();
     google?.event(event);
     listen();
     if (buffer.length >= MAX_EVENTS_PER_BATCH) flush();
@@ -117,53 +279,119 @@ export function trackOnce<E extends ClientEvent>(
   (track as (event: E, props: FunnelProps<E>) => void)(event, props);
 }
 
-/** Send everything buffered now. Safe to call at any time. */
-export function flush(): void {
+/** Fetch acknowledges delivery; keepalive also permits navigation-time sends.
+ * A blocked/offline/overloaded collector retries with the same event IDs. */
+export function flush(unloading = false): void {
   if (timer) clearTimeout(timer);
   timer = null;
-  while (buffer.length) {
-    const events = buffer.splice(0, MAX_EVENTS_PER_BATCH);
-    send(events);
+  if (!analyticsAllowed()) {
+    buffer = [];
+    persist();
+    return;
   }
-}
-
-function send(events: Queued[]): void {
-  if (!analyticsAllowed()) return;
-  try {
-    const trial = storedTrial();
-    const body = JSON.stringify({
-      visitorId: visitorId(),
-      ...(entryContext ? { context: entryContext } : {}),
-      traffic: analyticsTraffic(),
-      ...(trial ? { trial } : {}),
-      events,
-    });
-    if (body.length > MAX_BATCH_BYTES && events.length > 1) {
-      const half = Math.ceil(events.length / 2);
-      send(events.slice(0, half));
-      send(events.slice(half));
-      return;
+  restore();
+  if (unloading) persist(true);
+  if (sending && !unloading) return;
+  if (!unloading && Date.now() < nextSendAt) {
+    schedule();
+    return;
+  }
+  buffer = buffer.filter((e) => Date.now() - e.at < queueLifetime);
+  let remaining = buffer.filter(
+    (e) => !e.scope || account?.accountId === e.scope,
+  );
+  while (remaining.length) {
+    const first = remaining[0];
+    let events = remaining
+      .filter(
+        (e) => e.scope === first.scope && e.generation === first.generation,
+      )
+      .slice(0, MAX_EVENTS_PER_BATCH);
+    const payload = () =>
+      JSON.stringify({
+        visitorId: visitorId(),
+        ...(entryContext ? { context: entryContext } : {}),
+        traffic: analyticsTraffic(),
+        ...(first.scope
+          ? {
+              accountScope: first.scope,
+              accountGeneration: first.generation ?? "initial",
+            }
+          : {}),
+        events: events.map(
+          ({ scope: _scope, generation: _generation, ...e }) => e,
+        ),
+      });
+    let body = payload();
+    while (
+      new TextEncoder().encode(body).length > MAX_BATCH_BYTES &&
+      events.length > 1
+    ) {
+      events = events.slice(0, Math.ceil(events.length / 2));
+      body = payload();
     }
-    const blob = new Blob([body], { type: "application/json" });
-    if (navigator.sendBeacon?.(endpoint, blob)) return;
+    const ids = new Set(events.map((e) => e.id));
+    sending++;
     void fetch(endpoint, {
       method: "POST",
-      body: blob,
+      body,
       keepalive: true,
-      headers: { "Content-Type": "application/json" },
-    }).catch((error: unknown) => console.warn("Analytics not sent", error));
-  } catch (error) {
-    console.warn("Analytics not sent", error);
+      headers: {
+        "Content-Type": "application/json",
+        ...(first.scope && account
+          ? { Authorization: `Bearer ${account.token}` }
+          : {}),
+      },
+    })
+      .then((response) => {
+        if (
+          response.ok ||
+          (response.status >= 400 &&
+            response.status < 500 &&
+            ![408, 429].includes(response.status))
+        ) {
+          buffer = buffer.filter((e) => !ids.has(e.id));
+          retryMs = flushDelayMs;
+          nextSendAt = 0;
+        } else {
+          retryMs = Math.min(60000, retryMs * 2);
+          nextSendAt = Date.now() + retryMs;
+        }
+      })
+      .catch(() => {
+        retryMs = Math.min(60000, retryMs * 2);
+        nextSendAt = Date.now() + retryMs;
+      })
+      .finally(() => {
+        sending = Math.max(0, sending - 1);
+        persist();
+        schedule();
+      });
+    if (!unloading) break;
+    remaining = remaining.filter((e) => !ids.has(e.id));
   }
 }
-
 function listen(): void {
   if (listening || typeof window === "undefined") return;
   listening = true;
-  window.addEventListener("pagehide", flush);
+  window.addEventListener("online", () => flush());
+  window.addEventListener("pagehide", () => flush(true));
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "hidden") flush();
+    if (document.visibilityState === "hidden") flush(true);
   });
+  // Only a fixed category and screen: never error text, stack, URLs or inputs.
+  window.addEventListener("error", () =>
+    track("client_error", {
+      kind: "error",
+      screen: screenForPath(location.pathname),
+    }),
+  );
+  window.addEventListener("unhandledrejection", () =>
+    track("client_error", {
+      kind: "unhandled_rejection",
+      screen: screenForPath(location.pathname),
+    }),
+  );
 }
 
 /** Whole days since this browser's first visit. */
@@ -209,8 +437,17 @@ export function landingProps(
 /** Test seam: forget buffered events and the in-memory visitor. */
 export function resetAnalyticsForTests(): void {
   if (timer) clearTimeout(timer);
+  if (persistenceTimer) clearTimeout(persistenceTimer);
+  persistenceTimer = null;
   timer = null;
   buffer = [];
+  account = undefined;
+  accountGeneration = "initial";
+  contextVersion++;
+  restored = false;
+  sending = 0;
+  retryMs = flushDelayMs;
+  nextSendAt = 0;
   identity = undefined;
   entryContext = undefined;
 }

@@ -188,6 +188,7 @@ await registerOfflineRoutes(app, {
 });
 await registerAnalyticsRoutes(app, {
   pool: repository.pool,
+  authenticate: authenticateIdentity,
   origin: campaignOrigin(process.env.AMP_CAMPAIGN_SITE_ORIGIN),
 });
 await registerParentFeedbackRoutes(app, { pool: repository.pool });

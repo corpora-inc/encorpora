@@ -1,3 +1,4 @@
+import { observeLearningRequest } from "./lib/learning-analytics";
 import { invoke } from "@tauri-apps/api/core";
 import { nativeRuntime } from "./native-runtime";
 
@@ -57,15 +58,48 @@ export async function learningRequest(
   token: string | null,
   body?: unknown,
 ): Promise<{ ok: boolean; status: number; json: () => Promise<any> }> {
-  if (!nativeRuntime)
-    return fetch(`/api/v1${path}`, {
-      method: body === undefined ? "GET" : "POST",
-      headers: {
-        "content-type": "application/json",
-        ...(token ? { authorization: `Bearer ${token}` } : {}),
-      },
-      body: body === undefined ? undefined : JSON.stringify(body),
-    });
+  if (!nativeRuntime) {
+    const method = body === undefined ? "GET" : "POST";
+    const observe = observeLearningRequest(path, method);
+    try {
+      const response = await fetch(`/api/v1${path}`, {
+        method,
+        headers: {
+          "content-type": "application/json",
+          ...(token ? { authorization: `Bearer ${token}` } : {}),
+        },
+        body: body === undefined ? undefined : JSON.stringify(body),
+      });
+      if (!response.ok)
+        observe(
+          "failed",
+          response.status === 401
+            ? "authentication"
+            : response.status === 403
+              ? "permission"
+              : response.status < 500
+                ? "validation"
+                : "unavailable",
+        );
+      return {
+        ok: response.ok,
+        status: response.status,
+        json: async () => {
+          try {
+            const data = await response.json();
+            if (response.ok) observe("succeeded");
+            return data;
+          } catch (error) {
+            observe("failed", "contract");
+            throw error;
+          }
+        },
+      };
+    } catch (error) {
+      observe("failed", "network");
+      throw error;
+    }
+  }
   if (!token) throw new Error("Please sign in to continue.");
   try {
     const response = await invoke<{ status: number; data: unknown }>(
@@ -92,7 +126,7 @@ export async function learningRequest(
 export async function learningCatalog(): Promise<any> {
   if (nativeRuntime)
     return invoke("read_public_resource", { resource: "catalog" });
-  const response = await fetch("/api/v1/catalog");
+  const response = await learningRequest("/catalog", null);
   if (!response.ok) throw new Error("The learning service is unavailable.");
   return response.json();
 }

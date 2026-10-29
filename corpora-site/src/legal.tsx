@@ -283,12 +283,13 @@ export function Legal({
             The app stores the supplied birth year, a derived starting-level
             estimate, a trial linked to the signed-in parent account, generated
             problems, answer history, and whether a hint or lesson was opened,
-            to estimate levels, choose the next problem and resume on another device.
-            Random identifiers and activity records can be personal information
-            even without a name. Unclaimed placement sessions expire after{" "}
-            {TRIAL_DAYS} days and are removed by the retention process. A parent
-            may choose to use the trial answers when setting up a learner, or start fresh; saved learner answers then follow
-            the family’s learning-data policy.
+            to estimate levels, choose the next problem and resume on another
+            device. Random identifiers and activity records can be personal
+            information even without a name. Unclaimed placement sessions expire
+            after {TRIAL_DAYS} days and are removed by the retention process. A
+            parent may choose to use the trial answers when setting up a
+            learner, or start fresh; saved learner answers then follow the
+            family’s learning-data policy.
           </p>
           {config.privacy ? (
             <p>{config.privacy.placementBasis}</p>
@@ -335,12 +336,16 @@ export function Legal({
             Random page and session identifiers distinguish visits; staff and
             automated browser markers help exclude testing from customer
             reports. Raw URLs, keystrokes and form contents are not collected by
-            this measurement. Event dates are whole UTC days. Events contain no
-            account, learner, trial, email, checkout or invoice identifiers or
-            free-text answers. These records stay in AMP; they are not
-            advertising-platform events. A purchase date can still identify a
-            buyer when compared with billing records on a day with few
-            purchases.
+            this measurement. Detailed events retain the browser timestamp and
+            server receipt time. Signed-in activity is linked to the
+            authenticated parent account so we can understand where setup or
+            practice stops. Anonymous browser history is not assigned
+            retroactively to an account. Event properties contain no names,
+            email addresses, learner identifiers, free-text answers or raw error
+            messages. These records stay in AMP; they are not
+            advertising-platform events. Family exports include the account's
+            activity records, and learning-data deletion erases that account's
+            diagnostic history.
           </p>
           <p>
             Events, marketing actions and page-engagement records are deleted
@@ -356,8 +361,8 @@ export function Legal({
             creation. This connects browsing activity with invoice preparation,
             parent-reported submission, verified payment and access
             provisioning. The link is identifiable operational data, kept
-            separately from anonymous event rows. Financial records and coarse
-            purchase counts follow their separate retention policies.
+            separately from the detailed event history. Financial records and
+            coarse purchase counts follow their separate retention policies.
           </p>
           <h2>Google Analytics</h2>
           <p>

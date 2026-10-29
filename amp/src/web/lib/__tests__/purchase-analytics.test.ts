@@ -1,9 +1,13 @@
 import { beforeEach, afterEach, expect, test, vi } from "vitest";
 import { z } from "zod";
-vi.mock("../analytics", () => ({
-  analyticsAllowed: vi.fn(() => true),
-  track: vi.fn(),
-}));
+vi.mock("../analytics", () => {
+  const track = vi.fn();
+  return {
+    analyticsAllowed: vi.fn(() => true),
+    track,
+    captureAnalyticsTracker: () => track,
+  };
+});
 import { analyticsAllowed, track } from "../analytics";
 import { request } from "../api";
 import { purchaseFetch } from "../purchase-analytics";
@@ -124,4 +128,33 @@ test("signed-in funded requests and legacy checkout share the same outcome obser
     outcome: "succeeded",
   });
   expect(JSON.stringify(outcomes())).not.toMatch(/private/i);
+});
+
+test("paid learning transport reports network, service and JSON failures", async () => {
+  const { learningRequest } = await import("../../learning-transport");
+  vi.stubGlobal(
+    "fetch",
+    vi.fn().mockRejectedValue(new Error("private raw failure")),
+  );
+  await expect(
+    learningRequest("/learners/synthetic/batches", "synthetic", {}),
+  ).rejects.toBeDefined();
+  expect(outcomes().at(-1)).toMatchObject({
+    operation: "problem",
+    outcome: "failed",
+    failure: "network",
+  });
+  vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response("bad-json")));
+  const response = await learningRequest(
+    "/learners/synthetic/attempts",
+    "synthetic",
+    {},
+  );
+  await expect(response.json()).rejects.toBeDefined();
+  expect(outcomes().at(-1)).toMatchObject({
+    operation: "answer",
+    outcome: "failed",
+    failure: "contract",
+  });
+  expect(JSON.stringify(outcomes())).not.toMatch(/private|synthetic/);
 });

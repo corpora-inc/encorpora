@@ -71,6 +71,7 @@ test(
           visitorId: string;
           traffic: string;
           context: { utmContent?: string };
+          events: unknown[];
         }[] = [];
         const errors: string[] = [];
         await context.addInitScript((mode) => {
@@ -129,6 +130,14 @@ test(
             });
             return;
           }
+          if (u.hostname === "www.googletagmanager.com") {
+            // GA has a separate real-SDK test; no external network in this fixture.
+            await route.fulfill({
+              contentType: "application/javascript",
+              body: "",
+            });
+            return;
+          }
           if (!["corpora.inc", "amp.corpora.inc"].includes(u.hostname)) {
             errors.push("Unexpected external request");
             await route.abort();
@@ -175,7 +184,20 @@ test(
         }
         await page.getByRole("link", { name: "Start assessment" }).click();
         await page.waitForURL("https://amp.corpora.inc/try");
-        await page.waitForLoadState("networkidle");
+        await page.getByText("Assessment fixture").waitFor();
+        if (mode !== "gpc") {
+          const until = Date.now() + 10000;
+          while (
+            Date.now() < until &&
+            !(
+              await repository.pool.query(
+                "SELECT 1 FROM amp_engagement_pages WHERE screen='assessment' AND visitor_id=$1",
+                [marketingId],
+              )
+            ).rowCount
+          )
+            await page.waitForTimeout(50);
+        }
         const ampId = await page.evaluate(() =>
           localStorage.getItem("amp.visitor"),
         );
@@ -192,7 +214,7 @@ test(
             );
           assert.ok(marketingId);
           assert.equal(ampId, marketingId);
-          assert.ok(collected.length >= 3);
+          assert.ok(collected.reduce((n, b) => n + b.events.length, 0) >= 3);
           assert.ok(collected.every((b) => b.visitorId === marketingId));
           assert.ok(
             collected.every(
@@ -215,6 +237,17 @@ test(
             },
           ]);
           if (mode === "customer") {
+            const until = Date.now() + 5000;
+            while (
+              Date.now() < until &&
+              (
+                await repository.pool.query(
+                  "SELECT count(*)::int n FROM amp_journey_actions WHERE visitor_id=$1 AND action='invoice_close'",
+                  [marketingId],
+                )
+              ).rows[0].n < 2
+            )
+              await page.waitForTimeout(50);
             const closes = await repository.pool.query(
               "SELECT count(*)::int n FROM amp_journey_actions WHERE visitor_id=$1 AND action='invoice_close'",
               [marketingId],
@@ -248,3 +281,50 @@ test(
     }
   },
 );
+
+test("marketing backlog splits within collector byte limits without blocking navigation", async () => {
+  const bundle = await build({
+    entryPoints: ["../corpora-site/src/engagement-client.ts"],
+    bundle: true,
+    write: false,
+    format: "iife",
+    platform: "browser",
+  });
+  const browser = await chromium.launch();
+  const context = await browser.newContext();
+  const bodies: string[] = [];
+  let release!: () => void;
+  const hold = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  try {
+    await context.route("**/*", async (route) => {
+      if (route.request().url().endsWith("/site-events")) {
+        bodies.push(route.request().postData()!);
+        await hold;
+        await route.fulfill({ status: 202, body: "{}" });
+      } else
+        await route.fulfill({
+          contentType: "text/html",
+          body: `<script data-engagement-endpoint="https://amp.corpora.inc/api/v1/site-events">${bundle.outputFiles[0].text}</script>`,
+        });
+    });
+    const page = await context.newPage();
+    await page.clock.install();
+    await page.goto("https://corpora.inc/amp/");
+    await page.clock.runFor(15_000 * 28);
+    await page.evaluate(() => window.dispatchEvent(new Event("pagehide")));
+    await page.waitForTimeout(100);
+    assert.ok(
+      bodies.length >= 3,
+      "backlog is split while the first request is held",
+    );
+    for (const body of bodies) assert.ok(Buffer.byteLength(body) <= 8192);
+    const events = bodies.flatMap((body) => JSON.parse(body).events);
+    assert.ok(new Set(events.map((e) => e.id)).size >= 25);
+  } finally {
+    release();
+    await context.close();
+    await browser.close();
+  }
+});

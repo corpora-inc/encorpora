@@ -214,6 +214,24 @@ export class FamilyRepository {
     learnerId?: string,
     action?: "learner.retention-deleted",
   ): Promise<DeletionReceipt> {
+    // Events have no learner identifier; erase the account's diagnostic history
+    // on either whole-family or individual learning-data deletion.
+    if (
+      (
+        await client.query(
+          "SELECT to_regclass('amp_visitor_journeys') AS relation",
+        )
+      ).rows[0]?.relation
+    ) {
+      await client.query(
+        "INSERT INTO amp_journey_generations(account_id,generation) VALUES($1,$2) ON CONFLICT(account_id) DO UPDATE SET generation=EXCLUDED.generation",
+        [accountId, randomUUID()],
+      );
+      await client.query(
+        "DELETE FROM amp_visitor_journeys WHERE account_id=$1",
+        [accountId],
+      );
+    }
     if (!learnerId && (await this.ownedTrialsAvailable(client)))
       await client.query(
         `DELETE FROM amp_learners l USING amp_trials t
@@ -684,6 +702,17 @@ export class FamilyRepository {
           "SELECT jsonb_build_object('id',o.id,'recordId',o.record_id,'observation',o.observation,'observedAt',o.observed_at) AS value FROM amp_payment_observations o JOIN amp_payment_records r ON r.id=o.record_id WHERE r.account_id=$1 ORDER BY o.sequence",
         ]);
       }
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_visitor_journeys') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "journey-event",
+          "SELECT jsonb_build_object('event',event,'props',props,'clientAt',client_at,'receivedAt',received_at) AS value FROM amp_visitor_journeys WHERE account_id=$1 ORDER BY client_at,event_id",
+        ]);
       const ownedTrials = await this.ownedTrialsAvailable(client);
       for (const [type, source] of datasets) {
         const query = ownedTrials

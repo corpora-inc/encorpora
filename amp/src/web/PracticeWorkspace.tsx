@@ -1,3 +1,4 @@
+import { track } from "./lib/analytics";
 import { ProblemLesson } from "./ProblemLesson";
 import { MathText, spokenMath } from "./MathText";
 import { Calculator, type CalculatorDismissal } from "./Calculator";
@@ -220,6 +221,28 @@ export function PracticeWorkspace(props: Props) {
     busy,
     pending,
   } = props;
+  useEffect(() => {
+    let frame = 0,
+      sent = false;
+    const visible = () => {
+      if (document.visibilityState !== "visible" || sent) return;
+      frame = requestAnimationFrame(() => {
+        frame = requestAnimationFrame(() => {
+          if (sent || document.visibilityState !== "visible") return;
+          sent = true;
+          const trial = location.pathname.startsWith("/try/");
+          track("problem_rendered", { mode: trial ? "trial" : "practice" });
+          if (trial) track("trial_problem_view");
+        });
+      });
+    };
+    visible();
+    document.addEventListener("visibilitychange", visible);
+    return () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener("visibilitychange", visible);
+    };
+  }, [problem.id]);
   const alive = useRef(true);
   const currentProblem = useRef(problem.id);
   currentProblem.current = problem.id;

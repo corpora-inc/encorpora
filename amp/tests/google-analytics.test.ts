@@ -91,3 +91,15 @@ test("signup pages retain only sanitized acquisition context", () => {
     "https://amp.corpora.inc/sign-in",
   );
 });
+
+test("GA covers the actual public funded purchase routes", () => {
+  for (const path of [
+    "/purchase/arizona-esa",
+    "/purchase/arkansas-efa",
+    "/purchase/new-hampshire-efa",
+  ])
+    assert.equal(
+      googlePage(`https://amp.corpora.inc${path}?email=private@example.test`),
+      `https://amp.corpora.inc${path}`,
+    );
+});

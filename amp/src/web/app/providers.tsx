@@ -1,3 +1,4 @@
+import { setAnalyticsSession } from "../lib/analytics";
 import { NativeGate } from "../NativeGate";
 import { nativeRuntime } from "../native-runtime";
 import { Toast } from "../ui/Toast";
@@ -18,6 +19,7 @@ function SessionProviders({ children }: { children: ReactNode }) {
     () =>
       onSessionChanged(
         (session) => {
+          setAnalyticsSession(session);
           setError("");
           const previous = queryClient.getQueryData(sessionOptions.queryKey);
           if (previous?.accountId !== session?.accountId) {

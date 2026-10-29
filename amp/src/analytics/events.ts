@@ -6,13 +6,13 @@ import { entryContextSchema } from "./entry-context.js";
 export { REFERRER_CATEGORIES, DEVICE_CLASSES } from "./entry-context.js";
 import { z } from "zod";
 import { siteActionSchema } from "./site-actions.js";
-import { engagementSchema, TRAFFIC_KINDS } from "./engagement.js";
+import { engagementSchema, TRAFFIC_KINDS, SCREENS } from "./engagement.js";
 
 /**
  * The AMP funnel vocabulary, shared by the server and the web app. It is
  * fixed: the collection endpoint rejects any other name. Props are small,
- * closed objects with no free text, so no event can carry a name, an email
- * address or anything else that identifies a child or a parent.
+ * closed objects with no free text, so event props cannot carry names, emails, answers or raw errors.
+ * The optional envelope account scope is independently authenticated.
  */
 export const FUNNEL_EVENTS = [
   "landing_view",
@@ -43,6 +43,11 @@ export const FUNNEL_EVENTS = [
   "purchase_action",
   "trial_problem_view",
   "auth_failure",
+  "page_view",
+  "problem_rendered",
+  "learning_request",
+  "client_error",
+  "account_session",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -101,6 +106,52 @@ const none = z.strictObject({});
 
 export const funnelPropsSchemas = {
   page_engagement: engagementSchema,
+  page_view: z.strictObject({
+    screen: z.enum(SCREENS),
+    page: z.enum([
+      "sign-up",
+      "sign-in",
+      "reset-password",
+      "trial-start",
+      "trial-practice",
+      "trial-map",
+      "trial-plans",
+      "funding-az",
+      "funding-ar",
+      "funding-nh",
+      "invoice",
+      "other",
+    ]),
+  }),
+  account_session: none,
+  problem_rendered: z.strictObject({ mode: z.enum(["trial", "practice"]) }),
+  learning_request: z.strictObject({
+    attemptId: z.uuidv4(),
+    operation: z.enum([
+      "problem",
+      "answer",
+      "skip",
+      "hint",
+      "progress",
+      "trial",
+      "catalog",
+    ]),
+    outcome: z.enum(["started", "succeeded", "failed", "cancelled"]),
+    failure: z
+      .enum([
+        "authentication",
+        "permission",
+        "validation",
+        "unavailable",
+        "network",
+        "contract",
+      ])
+      .optional(),
+  }),
+  client_error: z.strictObject({
+    kind: z.enum(["error", "unhandled_rejection", "render"]),
+    screen: z.enum(SCREENS),
+  }),
   site_action: siteActionSchema,
   landing_view: entryContextSchema,
   try_click: none,
@@ -163,7 +214,9 @@ export const clientEventSchema = z
   .strictObject({
     event: z.enum([...FUNNEL_EVENTS, "page_engagement", "site_action"]),
     props: z.unknown().optional(),
-    at: z.number().int().positive(),
+    at: z.number().int().positive().max(8_640_000_000_000_000),
+    id: z.uuidv4().optional(),
+    sessionId: z.uuidv4().optional(),
   })
   .transform((value, ctx) => {
     if ((SERVER_ONLY_EVENTS as readonly string[]).includes(value.event)) {
@@ -175,16 +228,18 @@ export const clientEventSchema = z
       ctx.addIssue({ code: "custom", message: "invalid props" });
       return z.NEVER;
     }
-    return { event: value.event, props: props.data, at: value.at };
+    return { ...value, props: props.data };
   });
 
 export const MAX_EVENTS_PER_BATCH = 25;
 export const MAX_BATCH_BYTES = 8192;
 
 /** The body of `POST /api/v1/events`. `trial` is the device's trial token,
- * used only to link the visitor to its trial and never stored. */
+ * used by legacy clients only to read a coarse age band and never stored. */
 export const eventBatchSchema = z.strictObject({
   visitorId: visitorIdSchema,
+  accountScope: z.string().min(1).max(256).optional(),
+  accountGeneration: z.union([z.literal("initial"), z.uuidv4()]).optional(),
   context: funnelPropsSchemas.landing_view.optional(),
   traffic: z.enum(TRAFFIC_KINDS).optional(),
   trial: z

@@ -3,10 +3,11 @@ import {
   type PurchaseAttempt,
   type PurchaseAction,
 } from "../../analytics/purchase-attempt";
-import { analyticsAllowed, track } from "./analytics";
+import { analyticsAllowed, captureAnalyticsTracker } from "./analytics";
 
 /** Analytics failure must never change the purchase request or its result. */
 export function observePurchaseRequest(path: string, method: string) {
+  const track = captureAnalyticsTracker();
   const noop = (
     _outcome: PurchaseAttempt["outcome"],
     _failure?: PurchaseAttempt["failure"],
@@ -72,7 +73,10 @@ export async function purchaseFetch(
 export function recordPurchaseAction(action: PurchaseAction["action"]) {
   try {
     if (analyticsAllowed())
-      track("purchase_action", { actionId: crypto.randomUUID(), action });
+      captureAnalyticsTracker()("purchase_action", {
+        actionId: crypto.randomUUID(),
+        action,
+      });
   } catch {
     /* A measurement failure must not interrupt a download or navigation. */
   }

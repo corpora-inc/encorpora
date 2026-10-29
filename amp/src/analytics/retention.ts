@@ -23,6 +23,20 @@ export async function purgeFunnelEvents(
   let expiredFunnelEvents = 0,
     expiredFunnelVisitors = 0,
     expiredFunnelLinks = 0;
+  if (
+    (await pool.query("SELECT to_regclass('amp_visitor_journeys') AS relation"))
+      .rows[0]?.relation
+  ) {
+    for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
+      const result = await pool.query(
+        `DELETE FROM amp_visitor_journeys WHERE (visitor_id,event_id) IN (
+        SELECT visitor_id,event_id FROM amp_visitor_journeys WHERE received_at <= $1::date-$2::int
+        ORDER BY received_at LIMIT $3 FOR UPDATE SKIP LOCKED)`,
+        params,
+      );
+      if ((result.rowCount ?? 0) < RETENTION_BATCH.batchSize) break;
+    }
+  }
   for (let batch = 0; batch < RETENTION_BATCH.maxBatches; batch++) {
     const result = await pool.query(
       `DELETE FROM amp_funded_visitor_links WHERE request_id IN (

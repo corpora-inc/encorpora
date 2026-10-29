@@ -1,3 +1,4 @@
+import { observeLearningRequest } from "./learning-analytics";
 import { observePurchaseRequest } from "./purchase-analytics";
 import type { z } from "zod";
 import { AppError } from "./AppError";
@@ -107,7 +108,15 @@ export async function request<T>(
 ): Promise<T> {
   const method =
     options.method ?? (options.body === undefined ? "GET" : "POST");
-  const observe = observePurchaseRequest(path, method);
+  const purchase = observePurchaseRequest(path, method);
+  const learning = observeLearningRequest(path, method);
+  const observe = (
+    outcome: "succeeded" | "failed" | "cancelled",
+    failure?: import("./AppError").ErrorKind,
+  ) => {
+    purchase(outcome, failure);
+    learning(outcome, failure);
+  };
   const checkAborted = () => {
     if (options.signal?.aborted) {
       observe("cancelled");

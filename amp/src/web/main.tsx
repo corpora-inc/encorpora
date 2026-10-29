@@ -1,3 +1,5 @@
+import { track } from "./lib/analytics";
+import { screenForPath } from "../analytics/engagement";
 import "./consent-entry";
 import { createRoot } from "react-dom/client";
 import { RouterView } from "./app/RouterView";
@@ -18,7 +20,18 @@ router.subscribe("onResolved", () => {
 trackGooglePage();
 trackSessionStart();
 watchForNewRelease();
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById("root")!, {
+  onCaughtError: () =>
+    track("client_error", {
+      kind: "render",
+      screen: screenForPath(location.pathname),
+    }),
+  onUncaughtError: () =>
+    track("client_error", {
+      kind: "render",
+      screen: screenForPath(location.pathname),
+    }),
+}).render(
   <Providers>
     <RouterView />
   </Providers>,
