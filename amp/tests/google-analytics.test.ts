@@ -103,3 +103,18 @@ test("GA covers the actual public funded purchase routes", () => {
       `https://amp.corpora.inc${path}`,
     );
 });
+
+test("GA covers parent, school and actual legal marketing routes", () => {
+  for (const path of [
+    "/parents",
+    "/schools",
+    "/legal/privacy",
+    "/legal/terms",
+    "/legal/refund",
+    "/legal/accessibility",
+  ])
+    assert.equal(
+      googlePage(`https://corpora.inc${path}/?email=private@example.test`),
+      `https://corpora.inc${path}`,
+    );
+});

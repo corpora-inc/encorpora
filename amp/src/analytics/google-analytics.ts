@@ -14,10 +14,13 @@ const publicMarketingPaths = new Set([
   "/esa/new-hampshire-efa",
   "/samples",
   "/about",
-  "/privacy",
-  "/terms",
+  "/parents",
+  "/schools",
+  "/legal/privacy",
+  "/legal/terms",
+  "/legal/accessibility",
   "/support",
-  "/refunds",
+  "/legal/refund",
 ]);
 const publicAppPaths = new Set([
   "/sign-up",
