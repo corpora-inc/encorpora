@@ -85,9 +85,9 @@ try {
         });
         await context.addInitScript("globalThis.__name ??= (f) => f");
         await context.addInitScript(
-          ({ mode, theme }) => {
+          ({ theme }) => {
             localStorage.setItem("amp.trial", "synthetic-trial");
-            if (mode === "account") localStorage.setItem("fixture.parent", "1");
+            localStorage.setItem("fixture.parent", "1");
             localStorage.setItem("amp.theme", theme);
             navigator.sendBeacon = () => true;
             Object.defineProperty(navigator, "vibrate", { value: () => true });
@@ -108,6 +108,17 @@ try {
               json: { mode: "accounts", passwords: true, providers: [] },
             });
           if (path === "/api/v1/me") return route.fulfill({ json: account });
+          if (path === "/api/v1/trials/current")
+            return route.fulfill({
+              json: {
+                trial: {
+                  token: "synthetic-trial",
+                  learnerId: "trial-learner",
+                  birthYear: 2016,
+                  expiresAt: "2099-01-01T00:00:00.000Z",
+                },
+              },
+            });
           if (path === "/api/v1/catalog")
             return route.fulfill({
               json: {

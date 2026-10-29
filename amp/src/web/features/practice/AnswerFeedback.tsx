@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import type { Outcome } from "../../../server/repository";
 import type { ProgressSnapshot } from "../../../server/progress";
 import { FocusDialog } from "../../PracticeWorkspace";
+import { bandLabel } from "../pathways/model";
 import {
   answerPathways,
   answersToStrength,
@@ -165,7 +166,12 @@ export function AnswerFeedback({
                     choose(skill.templateId);
                   }}
                 >
-                  <span>
+                  <span className={styles.choiceContent}>
+                    {skill.gradeBand && (
+                      <span className={styles.grade}>
+                        {bandLabel(skill.gradeBand)}
+                      </span>
+                    )}
                     <strong>{skill.title}</strong>
                     {skill.connected ? (
                       <small>
