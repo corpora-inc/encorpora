@@ -1,8 +1,32 @@
 import type { TemplateMetadata } from "./contracts";
 
-/** Where computation is the skill being practiced, the calculator stays off.
- * Elsewhere — as on the SAT, which allows a calculator throughout the math
- * section — understanding and setting up the operations is the point. */
+/** Applied tasks can share a strand with arithmetic drills. Allow these by
+ * task, even below grade 5: choosing operations, interpreting units, money or
+ * remainders is the goal; hand calculation is supporting work. Keep pure
+ * fraction/decimal chains, facts, algorithms and estimation calculator-free. */
+const APPLIED_TEMPLATES = new Set([
+  // Money and budgets.
+  "price-count-chain",
+  "budget-category-balance",
+  "gross-net-pay",
+  "gross-net-sentence",
+  "purchase-change",
+  "whole-pack-ribbon-choice",
+  // Multi-step quantities, units and geometric models.
+  "staar-multistep-stories",
+  "staar-measure-chains",
+  "conversion-chain-story",
+  "perimeter-area-chain",
+  "rectangle-chain-blanks",
+  "division-remainder-story",
+  "signed-changes-sum",
+  "share-remainder-fractions",
+  "dot-plot-arithmetic",
+]);
+
+/** Where computation itself is the skill, the calculator stays off. Data
+ * summaries (mean, median, spread) permit arithmetic support: the learner
+ * still has to read the data and choose and apply the statistic. */
 const COMPUTATION_STRANDS = new Set([
   "number",
   "operations",
@@ -13,10 +37,6 @@ const COMPUTATION_TEMPLATES = new Set([
   "complete-square-term",
   "complete-square-monic",
   "complete-square-nonmonic",
-  "dot-plot-mean",
-  "mean-missing-value",
-  "dot-plot-mad",
-  "dot-plot-iqr",
   "fraction-plot-difference",
   "fraction-plot-equal-share",
   "simplify-square-root",
@@ -38,15 +58,13 @@ const COMPUTATION_TEMPLATES = new Set([
   "greatest-monomial-factor",
   "monic-quadratic-factorization",
   "nonmonic-quadratic-factorization",
-  "median-data",
-  "range-data",
-  "interquartile-range-data",
 ]);
 export function calculatorAllowed(
   template: Pick<TemplateMetadata, "id">,
   strand: string | undefined,
   grade: number,
 ): boolean {
+  if (APPLIED_TEMPLATES.has(template.id)) return true;
   if (COMPUTATION_TEMPLATES.has(template.id)) return false;
   if (strand && COMPUTATION_STRANDS.has(strand)) return false;
   return grade >= 5;

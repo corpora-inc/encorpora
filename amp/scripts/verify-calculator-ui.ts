@@ -3,25 +3,25 @@ import { createServer as httpServer } from "node:http";
 import { mkdir } from "node:fs/promises";
 import { chromium, type Page } from "playwright";
 import { createServer } from "vite";
+import { generateProblem } from "../src/math/engine";
+import { skills } from "../src/curriculum/catalog";
+import { gradeNumber } from "../src/learning/frontier";
 
-// Isolated harness: the real practice workspace with a calculator-allowed
-// typed-answer problem, no API or database.
-const problem = {
-  id: "a".repeat(64),
-  templateId: "calculator-review",
-  templateVersion: 1,
-  seed: "calculator-review",
-  prompt: "A tank holds 48.6 litres. How many litres are in 3 tanks?",
-  skillId: "calculator-review",
-  response: { kind: "number", label: "Litres" },
-};
+// Real generated tasks and policy in the practice workspace, no API/database.
+const fixtures = ["price-count-chain", "multiply-facts"].map((id) => {
+  const problem = generateProblem(id, "calculator-review").public;
+  const skill = skills.find((s) => s.id === problem.skillId)!;
+  return { problem, strand: skill.strand, grade: gradeNumber[skill.gradeBand] };
+});
 const entry = `
 import React from 'react';
 import {createRoot} from 'react-dom/client';
 import {PracticeWorkspace, usePracticeViewport} from '/src/web/PracticeWorkspace.tsx';
+import {calculatorAllowed} from '/src/math/calculator.ts';
 import '/src/web/style.css';import '/src/web/practice.css';import '/node_modules/katex/dist/katex.min.css';
 import '/src/web/theme.css';import '/src/web/premium-controls.css';import '/src/web/app-shell.css';import '/src/web/practice-tablet.css';
-const problem=${JSON.stringify(problem)};
+const fixtures=${JSON.stringify(fixtures)};
+const {problem,strand,grade}=fixtures[new URLSearchParams(location.search).has('fluency')?1:0];
 window.pressed=[];
 function App(){
   usePracticeViewport(true);
@@ -29,7 +29,7 @@ function App(){
   const note=(name)=>()=>window.pressed.push(name);
   return React.createElement('div',{className:'shell app-shell practice-shell immersive'},
     React.createElement(PracticeWorkspace,{problem,lesson:null,response,setResponse,outcome:null,hint:'',pending:false,busy:false,
-      calculator:true,submit:note('submit'),next:note('next'),requestHint:note('hint'),exit:note('exit'),exitHref:'/',
+      calculator:calculatorAllowed({id:problem.templateId},strand,grade),submit:note('submit'),next:note('next'),requestHint:note('hint'),exit:note('exit'),exitHref:'/',
       requestLesson:()=>new Promise(()=>{})}));
 }
 createRoot(document.getElementById('root')).render(React.createElement(App));
@@ -409,6 +409,18 @@ try {
   );
   await desktop.close();
 
+  const fluency = await browser.newPage();
+  await fluency.goto(pageUrl + "?fluency");
+  await fluency.locator(".question").waitFor();
+  assert.equal(
+    await fluency
+      .getByRole("button", { name: "Calculator", exact: true })
+      .count(),
+    0,
+    "Multiplication facts must not offer a calculator",
+  );
+  await fluency.close();
+
   // Synthetic screenshots: no overflow at any width, light or dark.
   for (const colorScheme of ["light", "dark"] as const) {
     for (const [width, height] of [
@@ -429,7 +441,7 @@ try {
         .getByRole("button", { name: "Calculator", exact: true })
         .click();
       await calculator(shot).waitFor();
-      await shot.keyboard.type("48.6×3");
+      await shot.keyboard.type("(4.60+1.50)×14");
       await calculator(shot).evaluate((el) =>
         Promise.all(el.getAnimations().map((animation) => animation.finished)),
       );
