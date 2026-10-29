@@ -39,25 +39,94 @@ if (
   let clock = new EngagementClock(performance.now(), visible());
   let lastActive = -1,
     lastVisible = -1;
+  type Event = {
+    event: string;
+    props: object;
+    at: number;
+    id: string;
+    sessionId: string;
+  };
+  let pending: Event[] = [];
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  let busy = 0,
+    delay = 2000;
+  const flush = (unloading = false) => {
+    if (timer) clearTimeout(timer);
+    timer = undefined;
+    if (privacy.globalPrivacyControl || navigator.doNotTrack === "1") {
+      pending = [];
+      return;
+    }
+    if ((busy && !unloading) || !pending.length) return;
+    let remaining = pending.slice();
+    while (remaining.length) {
+      let events = remaining.slice(0, 25);
+      const encode = () =>
+        JSON.stringify({
+          visitorId,
+          context,
+          traffic: identity.internal()
+            ? "internal"
+            : navigator.webdriver
+              ? "automated"
+              : "external",
+          events,
+        });
+      let body = encode();
+      while (
+        new TextEncoder().encode(body).length > 8192 &&
+        events.length > 1
+      ) {
+        events = events.slice(0, Math.ceil(events.length / 2));
+        body = encode();
+      }
+      const ids = new Set(events.map((e) => e.id));
+      busy++;
+      void fetch(endpoint, {
+        method: "POST",
+        credentials: "omit",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body,
+      })
+        .then((response) => {
+          if (
+            response.ok ||
+            (response.status >= 400 &&
+              response.status < 500 &&
+              ![408, 429].includes(response.status))
+          ) {
+            pending = pending.filter((e) => !ids.has(e.id));
+            delay = 2000;
+          } else delay = Math.min(60000, delay * 2);
+        })
+        .catch(() => {
+          delay = Math.min(60000, delay * 2);
+        })
+        .finally(() => {
+          busy--;
+          if (pending.length) timer ??= setTimeout(flush, delay);
+        });
+      if (!unloading) break;
+      remaining = remaining.filter((e) => !ids.has(e.id));
+    }
+  };
   const send = (event: string, props: object) => {
     if (privacy.globalPrivacyControl || navigator.doNotTrack === "1") return;
-    void fetch(endpoint, {
-      method: "POST",
-      credentials: "omit",
-      keepalive: true,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        visitorId,
-        context,
-        traffic: identity.internal()
-          ? "internal"
-          : navigator.webdriver
-            ? "automated"
-            : "external",
-        events: [{ event, props, at: Date.now() }],
-      }),
-    }).catch(() => {});
+    pending = pending.filter((e) => Date.now() - e.at < 86400000).slice(-24);
+    pending.push({
+      event,
+      props,
+      at: Date.now(),
+      id: crypto.randomUUID(),
+      sessionId,
+    });
+    // Navigation may close this document before a batch timer runs. User
+    // actions are infrequent and start a nonblocking keepalive send immediately.
+    if (event === "site_action") flush(true);
+    else timer ??= setTimeout(flush, 2000);
   };
+  window.addEventListener("online", () => flush());
   const snapshot = () => {
     const nextDay = new Date().toISOString().slice(0, 10);
     if (nextDay !== day) {
@@ -88,8 +157,14 @@ if (
     window.addEventListener(event, activity, { passive: true });
   window.addEventListener("focus", activity);
   for (const event of ["blur", "pagehide"])
-    window.addEventListener(event, snapshot);
-  document.addEventListener("visibilitychange", snapshot);
+    window.addEventListener(event, () => {
+      snapshot();
+      flush(true);
+    });
+  document.addEventListener("visibilitychange", () => {
+    snapshot();
+    if (document.visibilityState === "hidden") flush(true);
+  });
   setInterval(() => {
     if (visible()) snapshot();
   }, 15000);

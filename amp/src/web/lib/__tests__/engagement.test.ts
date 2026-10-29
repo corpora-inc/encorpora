@@ -1,14 +1,25 @@
 import { beforeEach, afterEach, test, expect, vi } from "vitest";
 import { startEngagement } from "../engagement";
-import { flush, resetAnalyticsForTests, trafficKey } from "../analytics";
+import {
+  flush,
+  resetAnalyticsForTests,
+  trafficKey,
+  setAnalyticsSession,
+} from "../analytics";
 let visible = true;
 let focused = true;
-const beacon = vi.fn((_url: string, _body: Blob) => true);
+const beacon = vi.fn((_url: string, _body: RequestInit) =>
+  Promise.resolve(new Response(null, { status: 202 })),
+);
 async function events() {
   const batches = await Promise.all(
-    beacon.mock.calls.map(async (c) => JSON.parse(await c[1].text())),
+    beacon.mock.calls
+      .filter(([url]) => url === "/api/v1/events")
+      .map(async (c) => JSON.parse(c[1].body as string)),
   );
-  return batches.flatMap((b) => b.events);
+  return [
+    ...new Map(batches.flatMap((b) => b.events).map((e) => [e.id, e])).values(),
+  ];
 }
 beforeEach(() => {
   vi.useFakeTimers();
@@ -22,10 +33,7 @@ beforeEach(() => {
     configurable: true,
   });
   vi.spyOn(document, "hasFocus").mockImplementation(() => focused);
-  Object.defineProperty(navigator, "sendBeacon", {
-    value: beacon,
-    configurable: true,
-  });
+  vi.stubGlobal("fetch", beacon);
   window.history.replaceState(
     {},
     "",
@@ -39,17 +47,19 @@ afterEach(() => {
 test("deep entry context and internal marker accompany initial page, SPA transition, hidden flush", async () => {
   localStorage.setItem(trafficKey, "internal");
   const tracker = startEngagement();
-  vi.advanceTimersByTime(10000);
+  await vi.advanceTimersByTimeAsync(10000);
   window.history.pushState({}, "", "/invoice/arizona-esa?private=discard");
   tracker.navigate("/invoice/arizona-esa?private=discard");
-  vi.advanceTimersByTime(5000);
+  await vi.advanceTimersByTimeAsync(5000);
   focused = visible = false;
   document.dispatchEvent(new Event("visibilitychange"));
-  vi.advanceTimersByTime(30000);
+  await vi.advanceTimersByTimeAsync(30000);
   tracker.stop();
   flush();
   const batches = await Promise.all(
-    beacon.mock.calls.map(async (c) => JSON.parse(await c[1].text())),
+    beacon.mock.calls
+      .filter(([url]) => url === "/api/v1/events")
+      .map(async (c) => JSON.parse(c[1].body as string)),
   );
   expect(
     batches.every(
@@ -76,12 +86,12 @@ test("deep entry context and internal marker accompany initial page, SPA transit
 });
 test("engagement stops increasing after idle and resumes with interaction", async () => {
   const tracker = startEngagement();
-  vi.advanceTimersByTime(90000);
+  await vi.advanceTimersByTimeAsync(90000);
   flush();
   let pages = (await events()).filter((e) => e.event === "page_engagement");
   expect(pages.at(-1).props.activeMs).toBe(60000);
   window.dispatchEvent(new Event("pointerdown"));
-  vi.advanceTimersByTime(15000);
+  await vi.advanceTimersByTimeAsync(15000);
   tracker.stop();
   pages = (await events()).filter((e) => e.event === "page_engagement");
   expect(pages.at(-1).props.activeMs).toBe(75000);
@@ -90,13 +100,34 @@ test("engagement stops increasing after idle and resumes with interaction", asyn
 test("a hidden tab does not emit heartbeat traffic or create pages at midnight", async () => {
   vi.setSystemTime(new Date("2026-10-24T23:59:55Z"));
   const tracker = startEngagement();
-  vi.advanceTimersByTime(1000);
+  await vi.advanceTimersByTimeAsync(1000);
   focused = visible = false;
   document.dispatchEvent(new Event("visibilitychange"));
   const count = (await events()).length;
-  vi.advanceTimersByTime(10 * 60 * 1000);
+  await vi.advanceTimersByTimeAsync(10 * 60 * 1000);
   flush();
   expect((await events()).length).toBe(count);
   tracker.stop();
   expect((await events()).length).toBe(count);
+});
+
+test("account changes reset the page clock before recording the next account", async () => {
+  setAnalyticsSession({ accountId: "amp|first", token: "first" });
+  const tracker = startEngagement();
+  await vi.advanceTimersByTimeAsync(10000);
+  setAnalyticsSession({ accountId: "amp|second", token: "second" });
+  await vi.advanceTimersByTimeAsync(5000);
+  tracker.stop();
+  flush(true);
+  const batches = beacon.mock.calls
+    .filter(([url]) => url === "/api/v1/events")
+    .map(([, r]) => JSON.parse(r.body as string));
+  const second = batches
+    .filter((b) => b.accountScope === "amp|second")
+    .flatMap((b) => b.events)
+    .filter((e) => e.event === "page_engagement");
+  expect(second.length).toBeGreaterThan(0);
+  expect(Math.max(...second.map((e) => e.props.visibleMs))).toBeLessThanOrEqual(
+    5000,
+  );
 });

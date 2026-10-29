@@ -185,7 +185,6 @@ function Practice({ session }: { session: TrialSession }) {
   }
   function show(next: Next) {
     if (next === "complete") return leave("/try/plans");
-    if (next.problems[0]) track("trial_problem_view");
     setProblem(next.problems[0] ?? null);
     setResponse("");
     setOutcome(null);

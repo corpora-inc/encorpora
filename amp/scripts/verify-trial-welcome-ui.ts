@@ -3,6 +3,7 @@ import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { chromium, webkit } from "playwright";
 import { createServer } from "vite";
+import { registerAnalyticsRoutes } from "../src/analytics/routes";
 import { buildApp } from "../src/server/app";
 import { PostgresRepository } from "../src/server/repository";
 import { retentionNotice } from "../src/family/contracts";
@@ -14,6 +15,10 @@ await migrate(database);
 const repo = new PostgresRepository(database, { development: true });
 const app = buildApp({
   repository: repo,
+  authenticate: async () => "welcome-fixture",
+});
+await registerAnalyticsRoutes(app, {
+  pool: repo.pool,
   authenticate: async () => "welcome-fixture",
 });
 await app.listen({ host: "127.0.0.1", port: 4387 });
@@ -46,8 +51,15 @@ try {
   for (const engine of [chromium, webkit]) {
     const browser = await engine.launch();
     try {
-      for (const width of [320, 390, 768, 1280])
-        for (const colorScheme of ["light", "dark"] as const) {
+      for (const width of process.env.AMP_JOURNEY_SMOKE
+        ? [390]
+        : [320, 390, 768, 1280])
+        for (const colorScheme of process.env.AMP_JOURNEY_SMOKE
+          ? (["light"] as const)
+          : (["light", "dark"] as const)) {
+          await repo.pool.query(
+            "DELETE FROM amp_visitor_journeys WHERE account_id='welcome-fixture'",
+          );
           await repo.pool.query(
             "DELETE FROM amp_learners l USING amp_trials t WHERE l.id=t.learner_id AND t.owner_account_id='welcome-fixture'",
           );
@@ -85,6 +97,14 @@ try {
           await context.route("**/api/auth/send-verification-email", (route) =>
             route.fulfill({ json: { status: true } }),
           );
+          let release!: () => void;
+          const held = new Promise<void>((resolve) => {
+            release = resolve;
+          });
+          await context.route("**/api/v1/events", async (route) => {
+            await held;
+            await route.continue();
+          });
           const page = await context.newPage();
           await page.goto("http://127.0.0.1:4386/try");
           await page
@@ -92,6 +112,27 @@ try {
             .waitFor();
           await page.getByRole("button", { name: "2013", exact: true }).click();
           await page.locator("#problem-prompt").waitFor();
+          // The real product renders while the telemetry collector is blocked.
+          await page.waitForTimeout(100);
+          release();
+          await page.evaluate(() =>
+            document.dispatchEvent(new Event("visibilitychange")),
+          );
+          const until = Date.now() + 10000;
+          let rendered = false;
+          while (Date.now() < until) {
+            rendered = !!(
+              await repo.pool.query(
+                "SELECT 1 FROM amp_visitor_journeys WHERE account_id='welcome-fixture' AND event='problem_rendered' LIMIT 1",
+              )
+            ).rowCount;
+            if (rendered) break;
+            await page.waitForTimeout(100);
+          }
+          assert.ok(
+            rendered,
+            "visible problem rendering reaches the first-party ledger",
+          );
           await page
             .getByText("Try a few problems and watch AMP adapt.")
             .waitFor();
@@ -166,7 +207,7 @@ try {
     }
   }
   console.log(
-    "Trial entry, skip, persistent dismissal and cross-device resume passed in Chromium and WebKit at four widths and both themes.",
+    "Trial entry, skip, persistent dismissal, cross-device resume and blocked-collector checks passed in Chromium and WebKit for the selected viewport/theme matrix.",
   );
 } finally {
   await repo.pool.query(

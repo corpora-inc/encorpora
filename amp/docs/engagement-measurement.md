@@ -151,7 +151,8 @@ outcome and optional error category. It covers public invoice creation and claim
 signed-in funded request creation and status changes, ClassWallet checkout,
 card checkout in both purchase interfaces, and paid-plan claim. Status polling
 and learning requests are excluded. Events contain no form values, request URLs,
-account or learner identifiers, request bodies, raw errors or payment amounts.
+learner identifiers, request bodies, raw errors or payment amounts. The envelope
+can carry a server-verified parent account scope.
 They are not sent to Google Analytics or advertising platforms.
 
 Started, succeeded, failed and cancelled are request outcomes. Succeeded means
@@ -172,3 +173,58 @@ a fixed category. Repeated delivery counts once per browser/action ID. Download
 clicks do not prove the file was saved, and opening ClassWallet does not prove
 submission, approval or payment. Both public invoices and signed-in funded
 purchase screens record these actions. They stay in first-party reporting.
+
+
+## Individual journeys
+
+`npm run report:visitor -- --email parent@example.test --days 30` reads an
+operator-only timeline from the database configured by `AMP_DATABASE_URL`.
+Use `--visitor <UUID>` instead of email to inspect a browser. Output contains
+personal information and belongs in private operational storage, never public
+issues, PRs, logs or artifacts. No public report endpoint exists.
+
+The timeline combines authenticated browser milestones with account creation,
+email verification, trial creation, generated problems, recorded answers and
+skips, prepared invoices, funding requests, card checkouts, payment records and
+follow-up provider acceptance. Current invoice/request status is labeled as a
+snapshot; it does not supply a historical status-change timestamp. An invoice
+created with an email is associated with that account only after email ownership
+is verified, or after an authenticated claim.
+
+Browser events carry a retry ID, document session, client timestamp and server
+receipt timestamp. Authentication validates the account on every scoped batch.
+Anonymous events remain anonymous; account switching never retroactively assigns
+a browser's history to the next parent. The random browser ID supplies acquisition
+context, not proof that every visit came from the same person. Cross-device
+activity joins only while authenticated. Earlier day-only events and legacy
+unowned trials cannot be reconstructed as exact account histories.
+
+A successful problem request is separate from `problem_rendered`: the latter
+fires after the workspace commits in a visible document and gets a paint
+opportunity. It does not prove that someone read the problem. Learning requests
+report fixed operation/outcome/error categories. Caught React errors and browser
+errors report only their category and screen. No answer text, keystrokes,
+screenshots, error messages, stack traces or raw URLs enter this stream.
+
+Delivery does not block product requests or rendering. Events batch after two
+seconds or 25 entries; the collector accepts at most 8 KB and shares a four-request
+database concurrency limit. Storage writes are coalesced outside the interaction
+call. A maximum of 200 queued events survives tab reloads for up to 24 hours.
+Network, throttling and server errors retry with backoff up to one minute.
+Navigation uses keepalive; idempotent insertion prevents retry inflation. Marketing actions start a nonblocking send on the click so navigation cannot cancel a pending batch timer.
+Offline tab closure, blockers and privacy preferences can leave gaps. These
+limits are preferable to delaying the product or accumulating an unbounded queue.
+
+Account-linked detail is first-party only and expires after 90 days. Family data
+exports include the account's events. Learning-data deletion erases that account's
+diagnostic history and rotates a server-owned collection generation so old queued events cannot recreate it, even with an inaccurate device clock. The account keeps only that random generation marker after erasure; it contains no event history or activity date.
+A document open during learning-data deletion stops contributing account diagnostics until its account context is refreshed or the page reloads. No account-linked journey or learning activity is sent to Google Analytics or
+advertising platforms. GA measures only approved public acquisition and purchase
+routes; it retires when a document enters a learning/private route. First-party
+measurement covers the later return to the paywall within that document.
+
+For personal outreach, `--outreach-file /private/path/sent-receipts.json` joins an
+existing private sent-receipt ledger (email, ISO `sent_at`, status `sent`). This
+reads evidence; it sends no mail. Provider acceptance and a sent receipt do not
+prove delivery, opens, clicks or replies. Do not label an ordinary return visit
+as an email conversion without corresponding evidence.

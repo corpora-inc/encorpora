@@ -1,4 +1,6 @@
 import type { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
+import type { Authenticator } from "../server/auth.js";
+import { ApiError } from "../server/repository.js";
 import type { Pool } from "pg";
 import { MAX_BATCH_BYTES, eventBatchSchema } from "./events.js";
 import { recordEventBatch } from "./repository.js";
@@ -11,13 +13,13 @@ export const EVENT_RATE_LIMIT = 120;
 export const EVENT_MAX_IN_FLIGHT = 4;
 
 /**
- * `POST /api/v1/events`: anonymous, first-party funnel collection. Accepts the
+ * `POST /api/v1/events`: first-party funnel collection with optional authenticated scope. Accepts the
  * fixed vocabulary only (zod), at most 25 events and 8 KB per batch. A
- * failure never reaches the learner: the web helper fires and forgets.
+ * failure never reaches the learner: the web helper retries independently.
  */
 export async function registerAnalyticsRoutes(
   app: FastifyInstance,
-  options: { pool: Pool; origin?: string },
+  options: { pool: Pool; origin?: string; authenticate?: Authenticator },
 ): Promise<void> {
   let inFlight = 0;
   const collect = async (
@@ -32,7 +34,8 @@ export async function registerAnalyticsRoutes(
       return reply.code(400).send({ error: "invalid_events" });
     if (
       siteOnly &&
-      (parsed.data.trial !== undefined ||
+      (parsed.data.accountScope !== undefined ||
+        parsed.data.trial !== undefined ||
         parsed.data.events.some(
           (e) =>
             e.event !== "site_action" &&
@@ -48,7 +51,30 @@ export async function registerAnalyticsRoutes(
       return reply.code(503).send({ error: "events_busy" });
     inFlight++;
     try {
-      const accepted = await recordEventBatch(options.pool, parsed.data);
+      let account: string | null = null;
+      if (parsed.data.accountScope) {
+        if (!options.authenticate || !parsed.data.accountGeneration)
+          return reply.code(202).send({ accepted: 0 });
+        try {
+          account = await options.authenticate(request);
+        } catch (error) {
+          if (
+            error instanceof ApiError &&
+            (error.statusCode === 401 || error.statusCode === 403)
+          )
+            return reply.code(202).send({ accepted: 0 });
+          throw error;
+        }
+        // A stale tab or retry may belong to a different signed-in account.
+        if (account !== parsed.data.accountScope)
+          return reply.code(202).send({ accepted: 0 });
+      }
+      const accepted = await recordEventBatch(
+        options.pool,
+        parsed.data,
+        new Date(),
+        account,
+      );
       return reply.code(202).send({ accepted });
     } finally {
       inFlight--;
@@ -66,6 +92,21 @@ export async function registerAnalyticsRoutes(
   };
   // Both collectors share the same pool and database concurrency budget.
   await app.register(async (scope) => {
+    scope.get("/api/v1/events/context", config, async (request, reply) => {
+      reply.header("Cache-Control", "no-store");
+      if (
+        !options.authenticate ||
+        request.headers.dnt === "1" ||
+        request.headers["sec-gpc"] === "1"
+      )
+        return reply.code(204).send();
+      const account = await options.authenticate(request);
+      const result = await options.pool.query(
+        "SELECT generation FROM amp_journey_generations WHERE account_id=$1",
+        [account],
+      );
+      return { generation: result.rows[0]?.generation ?? "initial" };
+    });
     scope.post("/api/v1/events", config, (request, reply) =>
       collect(request, reply),
     );

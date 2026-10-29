@@ -1,6 +1,9 @@
 import { EngagementClock, screenForPath } from "../../analytics/engagement";
 import {
   analyticsAllowed,
+  onAnalyticsScopeChanging,
+  analyticsSessionId,
+  trackPageView,
   flush,
   initializeAnalyticsContext,
   track,
@@ -11,7 +14,7 @@ export function startEngagement() {
   if (!analyticsAllowed())
     return { navigate: (_path: string) => {}, stop: () => {} };
   initializeAnalyticsContext();
-  const sessionId = crypto.randomUUID();
+  const sessionId = analyticsSessionId();
   let ordinal = -1;
   let pageId = "";
   let path = "";
@@ -45,6 +48,7 @@ export function startEngagement() {
     if (stopped || (path === clean && today === day)) return;
     snapshot();
     path = clean;
+    trackPageView(clean);
     day = today;
     pageId = crypto.randomUUID();
     sentVisible = sentActive = -1;
@@ -52,10 +56,17 @@ export function startEngagement() {
     clock = new EngagementClock(performance.now(), visible());
     snapshot();
   }
+  const unsubscribeScope = onAnalyticsScopeChanging(() => {
+    snapshot();
+    pageId = crypto.randomUUID();
+    ordinal++;
+    sentVisible = sentActive = -1;
+    clock = new EngagementClock(performance.now(), visible());
+  });
   const interact = () => clock?.sample(performance.now(), visible(), true);
   const change = () => {
     snapshot();
-    flush();
+    flush(document.visibilityState === "hidden");
   };
   const timer = setInterval(() => {
     if (visible()) {
@@ -81,6 +92,7 @@ export function startEngagement() {
     stop() {
       change();
       stopped = true;
+      unsubscribeScope();
       clearInterval(timer);
       for (const e of interactions) window.removeEventListener(e, interact);
       window.removeEventListener("focus", interact);

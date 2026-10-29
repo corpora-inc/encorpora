@@ -16,6 +16,8 @@ import {
   recordVerifiedPurchase,
   recordVerifiedRefund,
 } from "../src/analytics/repository.js";
+import { visitorJourneyReport } from "../src/analytics/visitor-journey-report.js";
+import { FamilyRepository } from "../src/family/repository.js";
 import { RETENTION } from "../src/privacy/retention-periods.js";
 
 const enabled = { skip: !process.env.AMP_TEST_DATABASE_URL };
@@ -38,7 +40,10 @@ async function fixture(
   try {
     await admin.query(`CREATE SCHEMA ${schema}`);
     await migrate(scoped.href);
-    await registerAnalyticsRoutes(app, { pool: repository.pool });
+    await registerAnalyticsRoutes(app, {
+      pool: repository.pool,
+      authenticate: async () => "parent",
+    });
     await run({ pool: repository.pool, app });
   } finally {
     await app.close();
@@ -198,7 +203,7 @@ test(
       // The database is a second guard against any other writer.
       await assert.rejects(
         pool.query(
-          "INSERT INTO amp_funnel_events(event,occurred_on) VALUES('page_view',current_date)",
+          "INSERT INTO amp_funnel_events(event,occurred_on) VALUES('unknown_page',current_date)",
         ),
         /check constraint/,
       );
@@ -749,4 +754,195 @@ test(
         },
       ]);
     }),
+);
+
+test(
+  "journey envelopes deduplicate and require matching authenticated scope",
+  enabled,
+  async () => {
+    await fixture(async ({ pool, app }) => {
+      const visitorId = randomUUID(),
+        id = randomUUID(),
+        sessionId = randomUUID();
+      const at = Date.now() - 5000;
+      const batch = {
+        visitorId,
+        accountScope: "parent",
+        accountGeneration: "initial" as const,
+        events: [
+          {
+            id,
+            sessionId,
+            at,
+            event: "page_view",
+            props: { screen: "auth", page: "sign-up" },
+          },
+        ],
+      };
+      assert.equal((await post(app, batch)).statusCode, 202);
+      assert.equal((await post(app, batch)).statusCode, 202);
+      const rows = (await pool.query("SELECT * FROM amp_visitor_journeys"))
+        .rows;
+      assert.equal(rows.length, 1);
+      assert.equal(rows[0].account_id, "parent");
+      assert.equal(rows[0].client_at.getTime(), at);
+      assert.equal(
+        await count(pool, "SELECT count(*)::int AS n FROM amp_funnel_events"),
+        1,
+      );
+      await post(app, {
+        ...batch,
+        accountScope: "another-parent",
+        events: [{ ...batch.events[0], id: randomUUID() }],
+      });
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*)::int AS n FROM amp_visitor_journeys",
+        ),
+        1,
+      );
+      await post(app, {
+        ...batch,
+        accountScope: undefined,
+        events: [{ ...batch.events[0], id: randomUUID() }],
+      });
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*)::int AS n FROM amp_visitor_journeys WHERE account_id IS NULL",
+        ),
+        1,
+      );
+    });
+  },
+);
+test(
+  "erasure generation rejects skewed-clock retries and retention expires details",
+  enabled,
+  async () => {
+    await fixture(async ({ pool, app }) => {
+      const visitorId = randomUUID();
+      const batch = {
+        visitorId,
+        accountScope: "parent",
+        accountGeneration: "initial" as const,
+        events: [
+          {
+            id: randomUUID(),
+            sessionId: randomUUID(),
+            at: Date.now() + 300000,
+            event: "plan_view",
+            props: {},
+          },
+        ],
+      };
+      await post(app, batch);
+      await pool.query(
+        "INSERT INTO amp_journey_generations VALUES('parent',gen_random_uuid())",
+      );
+      await pool.query(
+        "DELETE FROM amp_visitor_journeys WHERE account_id='parent'",
+      );
+      await post(app, batch);
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*)::int AS n FROM amp_visitor_journeys",
+        ),
+        0,
+      );
+      const context = await app.inject({
+        method: "GET",
+        url: "/api/v1/events/context",
+      });
+      assert.equal(context.statusCode, 200);
+      assert.equal(context.headers["cache-control"], "no-store");
+      await post(app, {
+        ...batch,
+        accountGeneration: context.json().generation,
+        events: [{ ...batch.events[0], id: randomUUID() }],
+      });
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*)::int AS n FROM amp_visitor_journeys WHERE account_id='parent'",
+        ),
+        1,
+      );
+      await post(app, {
+        ...batch,
+        accountScope: undefined,
+        events: [{ ...batch.events[0], id: randomUUID() }],
+      });
+      await purgeFunnelEvents(pool, new Date(Date.now() + 92 * 86400000));
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*)::int AS n FROM amp_visitor_journeys",
+        ),
+        0,
+      );
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*)::int AS n FROM amp_journey_generations",
+        ),
+        1,
+      );
+    });
+  },
+);
+
+test(
+  "private timeline distinguishes anonymous events and exports/deletes account detail",
+  enabled,
+  async () => {
+    await fixture(async ({ pool }) => {
+      await pool.query(
+        `INSERT INTO amp_auth_users(id,name,email,"emailVerified") VALUES('journey','Synthetic','journey@example.test',true)`,
+      );
+      const visitorId = randomUUID(),
+        sessionId = randomUUID();
+      const envelope = (event: "plan_view" | "map_view") => ({
+        visitorId,
+        events: [
+          { id: randomUUID(), sessionId, at: Date.now(), event, props: {} },
+        ],
+      });
+      await recordEventBatch(pool, envelope("map_view"));
+      await recordEventBatch(
+        pool,
+        envelope("plan_view"),
+        new Date(),
+        "amp|journey",
+      );
+      const report = await visitorJourneyReport(pool, {
+        email: "journey@example.test",
+      });
+      assert.ok(report.timeline.some((e) => e.event === "plan_view"));
+      assert.ok(!report.timeline.some((e) => e.event === "map_view"));
+      assert.equal(report.browsers.length, 1);
+      const family = new FamilyRepository(pool);
+      let exported = "";
+      for await (const line of family.export("amp|journey")) exported += line;
+      assert.match(exported, /journey-event/);
+      assert.doesNotMatch(exported, /map_view/);
+      await family.deleteLearning("amp|journey");
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*)::int AS n FROM amp_visitor_journeys WHERE account_id='amp|journey'",
+        ),
+        0,
+      );
+      assert.equal(
+        await count(
+          pool,
+          "SELECT count(*)::int AS n FROM amp_journey_generations WHERE account_id='amp|journey'",
+        ),
+        1,
+      );
+    });
+  },
 );

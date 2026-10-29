@@ -3,6 +3,7 @@ import { meSchema } from "../../account/contracts";
 import type { AuthSession } from "../auth";
 import { accessSession, authConfig } from "../auth";
 import { request } from "./api";
+import { setAnalyticsSession } from "./analytics";
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: { retry: false, staleTime: 0, refetchOnWindowFocus: true },
@@ -14,6 +15,7 @@ export const sessionOptions = queryOptions({
   queryFn: async ({ signal }) => {
     const session = await accessSession();
     signal.throwIfAborted();
+    setAnalyticsSession(session);
     return session;
   },
   staleTime: Infinity,

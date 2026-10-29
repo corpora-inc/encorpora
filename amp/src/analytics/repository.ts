@@ -11,8 +11,8 @@ import {
 
 type Queryable = Pick<PoolClient, "query">;
 
-/** Funnel rows are dated by whole UTC day: a finer time could be matched
- * against checkout or payment timestamps and re-identify a visitor. */
+/** Aggregate reporting uses whole UTC days. Detailed first-party evidence has
+ * separate client and received timestamps with the same retention limit. */
 export const funnelDay = (at: Date) => at.toISOString().slice(0, 10);
 
 /** A coarse band from a trial's birth year; the year itself is never copied. */
@@ -33,18 +33,36 @@ export function ageBandFromBirthYear(
  * (UTM, referrer category, device), the latest placed grade band and a coarse
  * age band; event rows carry only the closed props, in batch order. A trial
  * token is used only to read the trial's age band; no trial identifier is
- * stored, so a later trial adoption cannot join a visitor to an account.
+ * stored, account attribution is recorded separately only from a verified parent session.
  */
 export async function recordEventBatch(
   pool: Pool,
   batch: EventBatch,
   now = new Date(),
+  accountId: string | null = null,
 ): Promise<number> {
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
     await client.query("SET LOCAL statement_timeout='5s'");
-    // Only a live, unadopted trial links: before consent there is no account.
+    if (accountId) {
+      await client.query(
+        "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+        [accountId],
+      );
+      const generation =
+        (
+          await client.query(
+            "SELECT generation FROM amp_journey_generations WHERE account_id=$1",
+            [accountId],
+          )
+        ).rows[0]?.generation ?? "initial";
+      if ((batch.accountGeneration ?? "initial") !== generation) {
+        await client.query("COMMIT");
+        return 0;
+      }
+    }
+    // Legacy anonymous trials contribute only a coarse age band.
     const trial = batch.trial
       ? (
           await client.query<{
@@ -114,6 +132,43 @@ export async function recordEventBatch(
         landing?.utmContent ?? null,
       ],
     );
+    const detailed = batch.events.filter((e) => e.id && e.sessionId);
+    const inserted = detailed.length
+      ? (
+          await client.query<{ event_id: string }>(
+            `INSERT INTO amp_visitor_journeys(visitor_id,event_id,session_id,account_id,event,props,client_at,received_at)
+       SELECT $1,x.id,x.session_id,$2,x.event,x.props,x.at,$4 FROM jsonb_to_recordset($3::jsonb)
+         AS x(id uuid,session_id uuid,event text,props jsonb,at timestamptz)
+       ON CONFLICT DO NOTHING RETURNING event_id`,
+            [
+              batch.visitorId,
+              accountId,
+              JSON.stringify(
+                detailed.map((e) => ({
+                  id: e.id,
+                  session_id: e.sessionId,
+                  event: e.event,
+                  props: e.props,
+                  at: new Date(e.at).toISOString(),
+                })),
+              ),
+              now,
+            ],
+          )
+        ).rows
+      : [];
+    const ids = new Set(inserted.map((row) => row.event_id));
+    const seen = new Set<string>();
+    const received = batch.events.length;
+    batch = {
+      ...batch,
+      events: batch.events.filter((e) => {
+        if (!e.id || !e.sessionId) return true;
+        if (!ids.has(e.id) || seen.has(e.id)) return false;
+        seen.add(e.id);
+        return true;
+      }),
+    };
     for (const event of batch.events.filter(
       (e) => e.event === "page_engagement",
     )) {
@@ -162,7 +217,7 @@ export async function recordEventBatch(
       ],
     );
     await client.query("COMMIT");
-    return batch.events.length;
+    return received;
   } catch (error) {
     await client.query("ROLLBACK").catch(() => {});
     throw error;
