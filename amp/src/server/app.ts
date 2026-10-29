@@ -229,8 +229,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
       /^Trial ([A-Za-z0-9_-]{20,100})$/,
     )?.[1];
     if (!trial) return options.authenticate(request);
-    if (!options.development) await options.authenticate(request);
-    const account = await options.repository.trialAccount(trial);
+    const owner = !options.development
+      ? await options.authenticate(request)
+      : undefined;
+    const account = await options.repository.trialAccount(trial, owner);
     if (!account) throw new ApiError(401, "This free trial has ended");
     return account;
   }
@@ -367,7 +369,10 @@ function routes(app: FastifyInstance, options: AppOptions) {
         .object({ birthYear: birthYearSchema })
         .strict()
         .parse(request.body);
-      const trial = await options.repository.createTrial(birthYear);
+      const trial = await options.repository.createTrial(
+        birthYear,
+        account ?? undefined,
+      );
       if (account && options.repository instanceof PostgresRepository) {
         await recordParentAssessmentStart(
           options.repository.pool,
@@ -378,6 +383,21 @@ function routes(app: FastifyInstance, options: AppOptions) {
       return reply.code(201).send(trial);
     },
   );
+  app.post("/api/v1/trials/current", async (request) => {
+    const owner = await options.authenticate(request);
+    const { token } = z
+      .object({
+        token: z
+          .string()
+          .regex(/^[A-Za-z0-9_-]{20,100}$/)
+          .optional(),
+      })
+      .strict()
+      .parse(request.body ?? {});
+    return {
+      trial: (await options.repository.currentTrial?.(owner, token)) ?? null,
+    };
+  });
   app.post("/api/v1/trials/adopt", async (request) => {
     const account = await options.authenticate(request);
     const { token, name } = z

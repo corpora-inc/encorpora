@@ -1,3 +1,4 @@
+import { track as trackAuth } from "../../lib/analytics";
 import { entryCapture } from "../../lib/openai-acquisition";
 import { signupNotice } from "../../../parent-followup/contracts";
 import styles from "./Auth.module.css";
@@ -334,6 +335,7 @@ export function SignInScreen() {
         freeEntry ? { program: carry.program } : undefined,
       );
       if (result.ok) return done();
+      trackAuth("auth_failure", { method: "passkey", reason: result.code });
       if (result.code === "exists") {
         useAuthDraft.getState().carry(email.trim(), result.message);
         go("sign-in");
@@ -363,6 +365,7 @@ export function SignInScreen() {
         )}`,
       });
       if (result.error) {
+        trackAuth("auth_failure", { method: "social", reason: "failed" });
         setPending(null);
         throw new Error(socialErrorMessage(copy, "", providerNames[provider]));
       }

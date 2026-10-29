@@ -41,6 +41,8 @@ export const FUNNEL_EVENTS = [
   "level_check_view",
   "purchase_attempt",
   "purchase_action",
+  "trial_problem_view",
+  "auth_failure",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -102,6 +104,11 @@ export const funnelPropsSchemas = {
   site_action: siteActionSchema,
   landing_view: entryContextSchema,
   try_click: none,
+  trial_problem_view: none,
+  auth_failure: z.strictObject({
+    method: z.enum(["passkey", "social"]),
+    reason: z.enum(["exists", "cancelled", "failed"]),
+  }),
   placement_answer: z.strictObject({ index }),
   placement_done: z.strictObject({
     gradeBand: z.enum(GRADE_BANDS),

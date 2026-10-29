@@ -533,6 +533,8 @@ onSignedOut(() => {
     leaving = false;
     queryClient.setQueryData(sessionOptions.queryKey, null);
     queryClient.removeQueries({ queryKey: ["account"] });
+    void queryClient.cancelQueries({ queryKey: ["trial"] });
+    queryClient.removeQueries({ queryKey: ["trial"] });
   };
   if (pathname === "/try" || pathname.startsWith("/try/")) {
     const target = {

@@ -281,13 +281,13 @@ export function Legal({
             Free practice, a short placement followed by adaptive practice up to
             the free allowance, requires a parent account but no learner’s name.
             The app stores the supplied birth year, a derived starting-level
-            estimate, a random identifier stored in the browser, generated
+            estimate, a trial linked to the signed-in parent account, generated
             problems, answer history, and whether a hint or lesson was opened,
-            to estimate levels, choose the next problem and resume the session.
+            to estimate levels, choose the next problem and resume on another device.
             Random identifiers and activity records can be personal information
             even without a name. Unclaimed placement sessions expire after{" "}
             {TRIAL_DAYS} days and are removed by the retention process. A parent
-            may save the placement into their family account; it then follows
+            may choose to use the trial answers when setting up a learner, or start fresh; saved learner answers then follow
             the family’s learning-data policy.
           </p>
           {config.privacy ? (

@@ -1,3 +1,4 @@
+import { useTrialWelcome } from "./TrialWelcome";
 import { AnswerFeedback } from "../practice/AnswerFeedback";
 import { answerProgress } from "./api";
 import { NavigationDrawer } from "../navigation/NavigationDrawer";
@@ -89,6 +90,7 @@ function Practice({ session }: { session: TrialSession }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [answered, setAnswered] = useState<number | null>(null);
+  const welcome = useTrialWelcome(answered !== null && answered < 3);
   const upcoming = useRef<Promise<Next> | null>(null);
   // An answer whose response was lost retries with the same request id, so
   // the server returns the recorded result instead of "already answered".
@@ -183,6 +185,7 @@ function Practice({ session }: { session: TrialSession }) {
   }
   function show(next: Next) {
     if (next === "complete") return leave("/try/plans");
+    if (next.problems[0]) track("trial_problem_view");
     setProblem(next.problems[0] ?? null);
     setResponse("");
     setOutcome(null);
@@ -240,8 +243,9 @@ function Practice({ session }: { session: TrialSession }) {
         />
       )}
       <PracticeWorkspace
-        navigation={nativeRuntime ? undefined : <NavigationDrawer />}
         key={problem.id}
+        introduction={welcome}
+        navigation={nativeRuntime ? undefined : <NavigationDrawer />}
         problem={problem}
         meta={catalog.data?.templates.find((t) => t.id === problem.templateId)}
         strand={skill?.strand}

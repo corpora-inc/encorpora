@@ -20,6 +20,8 @@ const publicMarketingPaths = new Set([
   "/refunds",
 ]);
 const publicAppPaths = new Set([
+  "/sign-up",
+  "/sign-in",
   "/",
   "/pathways",
   "/plans",

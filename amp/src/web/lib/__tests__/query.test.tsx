@@ -135,3 +135,52 @@ test("privacy invalidation clears mounted disabled Family observers despite a fa
   expect(await screen.findByText("No learning access")).toBeTruthy();
   expect(queryClient.getQueryData(meKey(parent.accountId))).toBeUndefined();
 });
+
+test("switching accounts unmounts the old trial view and clears its observed data", async () => {
+  const { useQuery } = await import("@tanstack/react-query");
+  queryClient.setQueryData(sessionOptions.queryKey, parent);
+  queryClient.setQueryData(["trial", "session"], { learnerId: "old-learner" });
+  function TrialView() {
+    const trial = useQuery({
+      queryKey: ["trial", "session"],
+      queryFn: async () => null,
+      enabled: false,
+    });
+    return (
+      <div>
+        {(trial.data as { learnerId?: string } | null)?.learnerId ?? "No trial"}
+      </div>
+    );
+  }
+  render(
+    <Providers>
+      <TrialView />
+    </Providers>,
+  );
+  expect(screen.getByText("old-learner")).toBeTruthy();
+  await act(async () =>
+    events.update({ token: "other", accountId: "parent-b" }),
+  );
+  expect(screen.queryByText("old-learner")).toBeNull();
+  expect(screen.getByText("No trial")).toBeTruthy();
+});
+
+test("signing out remounts an existing trial view even before a session notification", async () => {
+  const { useState } = await import("react");
+  queryClient.setQueryData(sessionOptions.queryKey, parent);
+  function TrialView() {
+    const [owner] = useState(
+      () => queryClient.getQueryData(sessionOptions.queryKey)?.accountId,
+    );
+    return <div>{owner ?? "Signed out"}</div>;
+  }
+  render(
+    <Providers>
+      <TrialView />
+    </Providers>,
+  );
+  expect(screen.getByText("parent-a")).toBeTruthy();
+  await act(async () => events.update(null));
+  expect(screen.queryByText("parent-a")).toBeNull();
+  expect(screen.getByText("Signed out")).toBeTruthy();
+});

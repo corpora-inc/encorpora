@@ -168,9 +168,19 @@ export interface Repository {
   /** Starts an anonymous placement trial; returns the device's token once. */
   createTrial(
     birthYear: number,
+    owner?: string,
   ): Promise<{ token: string; learnerId: string; expiresAt: string }>;
+  currentTrial?(
+    owner: string,
+    legacyToken?: string,
+  ): Promise<{
+    token: string;
+    learnerId: string;
+    birthYear: number;
+    expiresAt: string;
+  } | null>;
   /** The synthetic account for a live trial token, or null. */
-  trialAccount(token: string): Promise<string | null>;
+  trialAccount(token: string, owner?: string): Promise<string | null>;
   /** Moves a trial learner, with all answers, into a parent's account. */
   adoptTrial(accountId: string, token: string, name: string): Promise<Learner>;
 }
@@ -297,7 +307,7 @@ export class PostgresRepository implements Repository {
   async close() {
     await this.pool.end();
   }
-  async createTrial(birthYear: number) {
+  async createTrial(birthYear: number, owner?: string) {
     const id = randomUUID(),
       learnerId = randomUUID(),
       token = newTrialToken(),
@@ -305,13 +315,35 @@ export class PostgresRepository implements Repository {
     const client = await this.pool.connect();
     try {
       await client.query("BEGIN");
+      if (owner) {
+        await client.query(
+          "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+          [owner],
+        );
+        const existing = await client.query(
+          `SELECT t.id,t.learner_id,t.expires_at,l.birth_year FROM amp_trials t
+           JOIN amp_learners l ON l.id=t.learner_id
+           WHERE owner_account_id=$1 AND adopted_at IS NULL AND expires_at>now()`,
+          [owner],
+        );
+        if (existing.rowCount) {
+          await client.query("COMMIT");
+          const row = existing.rows[0];
+          return {
+            token: row.id,
+            learnerId: row.learner_id,
+            birthYear: row.birth_year,
+            expiresAt: row.expires_at.toISOString(),
+          };
+        }
+      }
       await client.query(
         "INSERT INTO amp_learners(id,account_id,name,birth_year) VALUES($1,$2,'Trial',$3)",
         [learnerId, `${TRIAL_PREFIX}${id}`, birthYear],
       );
       await client.query(
-        "INSERT INTO amp_trials(id,token_hash,learner_id,expires_at) VALUES($1,$2,$3,$4)",
-        [id, trialTokenHash(token), learnerId, expiresAt],
+        "INSERT INTO amp_trials(id,token_hash,learner_id,expires_at,owner_account_id) VALUES($1,$2,$3,$4,$5)",
+        [id, trialTokenHash(token), learnerId, expiresAt, owner ?? null],
       );
       await recordTrialEvent(client, learnerId, "trial_started");
       await client.query("COMMIT");
@@ -321,12 +353,60 @@ export class PostgresRepository implements Repository {
     } finally {
       client.release();
     }
-    return { token, learnerId, expiresAt: expiresAt.toISOString() };
+    return {
+      token: owner ? id : token,
+      learnerId,
+      birthYear,
+      expiresAt: expiresAt.toISOString(),
+    };
   }
-  async trialAccount(token: string) {
+  async currentTrial(owner: string, legacyToken?: string) {
+    const client = await this.pool.connect();
+    try {
+      await client.query("BEGIN");
+      await client.query(
+        "SELECT pg_advisory_xact_lock(hashtextextended($1,0))",
+        [owner],
+      );
+      let result = await client.query(
+        `SELECT t.id,t.learner_id,t.expires_at,l.birth_year FROM amp_trials t
+         JOIN amp_learners l ON l.id=t.learner_id
+         WHERE owner_account_id=$1 AND adopted_at IS NULL AND expires_at>now()`,
+        [owner],
+      );
+      if (!result.rowCount && legacyToken) {
+        result = await client.query(
+          `UPDATE amp_trials SET owner_account_id=$1 WHERE token_hash=$2
+           AND owner_account_id IS NULL AND adopted_at IS NULL AND expires_at>now()
+           RETURNING id,learner_id,expires_at,
+           (SELECT birth_year FROM amp_learners WHERE id=learner_id) AS birth_year`,
+          [owner, trialTokenHash(legacyToken)],
+        );
+      }
+      await client.query("COMMIT");
+      const row = result.rows[0];
+      return row
+        ? {
+            token: row.id,
+            learnerId: row.learner_id,
+            birthYear: row.birth_year,
+            expiresAt: row.expires_at.toISOString(),
+          }
+        : null;
+    } catch (error) {
+      await client.query("ROLLBACK");
+      throw error;
+    } finally {
+      client.release();
+    }
+  }
+  async trialAccount(token: string, owner?: string) {
     const result = await this.pool.query(
-      "SELECT id FROM amp_trials WHERE token_hash=$1 AND adopted_at IS NULL AND expires_at>now()",
-      [trialTokenHash(token)],
+      `SELECT id FROM amp_trials WHERE
+       ((token_hash=$1 AND (owner_account_id IS NULL OR owner_account_id=$3))
+        OR (id::text=$2 AND owner_account_id=$3))
+       AND adopted_at IS NULL AND expires_at>now()`,
+      [trialTokenHash(token), token, owner ?? null],
     );
     return result.rowCount ? `${TRIAL_PREFIX}${result.rows[0].id}` : null;
   }
@@ -349,9 +429,9 @@ export class PostgresRepository implements Repository {
           "Parent consent is required before collecting learning data",
         );
       const trial = await client.query(
-        `SELECT id,learner_id,adopted_by FROM amp_trials WHERE token_hash=$1
+        `SELECT id,learner_id,adopted_by FROM amp_trials WHERE ((token_hash=$1 AND (owner_account_id IS NULL OR owner_account_id=$2)) OR (id::text=$3 AND owner_account_id=$2))
          AND ((adopted_at IS NULL AND expires_at>now()) OR adopted_by=$2) FOR UPDATE`,
-        [trialTokenHash(token), accountId],
+        [trialTokenHash(token), accountId, token],
       );
       if (!trial.rowCount) throw new ApiError(404, "trial_ended");
       // A retry after a lost response returns the learner it already saved.

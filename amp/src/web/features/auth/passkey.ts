@@ -68,7 +68,7 @@ export async function signUpWithPasskey(
       optionsJSON: options.data as never,
     });
   } catch (error) {
-    console.warn("Passkey registration did not finish", error);
+    console.warn("Passkey registration did not finish");
     const cancelled =
       (error instanceof WebAuthnError &&
         error.code === "ERROR_CEREMONY_ABORTED") ||

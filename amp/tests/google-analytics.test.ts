@@ -55,7 +55,6 @@ test("GA excludes learning, account, auth, private invoice and nonproduction URL
     "/lesson/secret",
     "/family",
     "/account",
-    "/sign-in",
     "/auth/callback",
     "/invoice/private-id",
     "/pathways/private-id",
@@ -77,5 +76,18 @@ test("Google Ads click IDs survive sanitization for linked campaign reporting", 
       "https://amp.corpora.inc/?gclid=Valid_Click_123&wbraid=bad%40email.test",
     ),
     "https://amp.corpora.inc/?gclid=Valid_Click_123",
+  );
+});
+
+test("signup pages retain only sanitized acquisition context", () => {
+  assert.equal(
+    googlePage(
+      "https://amp.corpora.inc/sign-up?email=private%40example.test&token=secret#private",
+    ),
+    "https://amp.corpora.inc/sign-up",
+  );
+  assert.equal(
+    googlePage("https://amp.corpora.inc/sign-in?return=free-practice"),
+    "https://amp.corpora.inc/sign-in",
   );
 });
