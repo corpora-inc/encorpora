@@ -71,7 +71,7 @@ function BirthYear() {
           header: <FrameBrand expanded />,
           footer: (
             <p className={styles.introNote}>
-              Free practice · No payment needed · Saved for 14 days
+              Free practice · No payment needed
             </p>
           ),
         }}

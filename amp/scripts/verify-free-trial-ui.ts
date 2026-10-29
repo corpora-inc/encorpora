@@ -855,6 +855,7 @@ try {
       await fits(page, `${tag} name`);
       if (audit) await axe(page, "name");
       await shoot(page, "adopt", tag);
+      await page.getByRole("button", { name: "Use these answers", exact: true }).click();
       await page.getByLabel("Learner name").fill(`Avery ${tag}`);
       await page.getByRole("button", { name: "Continue", exact: true }).click();
       await page.waitForURL("**/practice");

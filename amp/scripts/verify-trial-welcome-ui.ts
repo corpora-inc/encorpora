@@ -144,6 +144,7 @@ try {
     "Trial entry, skip, persistent dismissal and cross-device resume passed in Chromium and WebKit at four widths and both themes.",
   );
 } finally {
+  await repo.pool.query("DELETE FROM amp_learners l USING amp_trials t WHERE l.id=t.learner_id AND t.owner_account_id='welcome-fixture'");
   await vite.close();
   await app.close();
 }
