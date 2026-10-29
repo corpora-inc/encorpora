@@ -164,3 +164,23 @@ test("switching accounts unmounts the old trial view and clears its observed dat
   expect(screen.queryByText("old-learner")).toBeNull();
   expect(screen.getByText("No trial")).toBeTruthy();
 });
+
+test("signing out remounts an existing trial view even before a session notification", async () => {
+  const { useState } = await import("react");
+  queryClient.setQueryData(sessionOptions.queryKey, parent);
+  function TrialView() {
+    const [owner] = useState(
+      () => queryClient.getQueryData(sessionOptions.queryKey)?.accountId,
+    );
+    return <div>{owner ?? "Signed out"}</div>;
+  }
+  render(
+    <Providers>
+      <TrialView />
+    </Providers>,
+  );
+  expect(screen.getByText("parent-a")).toBeTruthy();
+  await act(async () => events.update(null));
+  expect(screen.queryByText("parent-a")).toBeNull();
+  expect(screen.getByText("Signed out")).toBeTruthy();
+});

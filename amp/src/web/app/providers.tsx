@@ -13,7 +13,7 @@ export function Providers({ children }: { children: ReactNode }) {
 }
 function SessionProviders({ children }: { children: ReactNode }) {
   const [error, setError] = useState("");
-  const [identity, setIdentity] = useState<string | null>(null);
+  const [identityVersion, setIdentityVersion] = useState(0);
   useEffect(
     () =>
       onSessionChanged(
@@ -22,7 +22,7 @@ function SessionProviders({ children }: { children: ReactNode }) {
           const previous = queryClient.getQueryData(sessionOptions.queryKey);
           if (previous?.accountId !== session?.accountId) {
             clearOnboardingDraft();
-            setIdentity(session?.accountId ?? null);
+            setIdentityVersion((version) => version + 1);
             void queryClient.cancelQueries({ queryKey: ["trial"] });
             queryClient.setQueryData(["trial", "session"], null);
             queryClient.removeQueries({ queryKey: ["trial"] });
@@ -50,7 +50,7 @@ function SessionProviders({ children }: { children: ReactNode }) {
   );
   return (
     <QueryClientProvider client={queryClient}>
-      <Fragment key={identity}>{children}</Fragment>
+      <Fragment key={identityVersion}>{children}</Fragment>
       <Toast message={error} onDismiss={() => setError("")} />
     </QueryClientProvider>
   );
