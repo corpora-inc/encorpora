@@ -215,10 +215,10 @@ export function LearnerSteps({
           <span>Step 1 of 2</span>
         </div>
       )}
-      <h1>{trial ? "Who’s been practicing?" : "Who’s learning?"}</h1>
+      <h1>Who’s learning?</h1>
       <p>
         {trial
-          ? "Were these answers given by the learner you’re setting up?"
+          ? "Use their trial answers, or start fresh if you were exploring."
           : "A first name or nickname helps you keep each learner’s practice separate."}
       </p>
       {!trial && (purchase || gift) && waiting.length > 0 && (
@@ -241,10 +241,14 @@ export function LearnerSteps({
         </div>
       )}
       {trial && (
-        <div className={styles.actions} role="group" aria-label="Trial answers">
+        <div
+          className={styles.trialChoice}
+          role="group"
+          aria-label="Trial answers"
+        >
           <Button
             type="button"
-            variant={useAnswers === true ? "primary" : "secondary"}
+            variant="secondary"
             aria-pressed={useAnswers === true}
             onClick={() => setUseAnswers(true)}
           >
@@ -252,13 +256,12 @@ export function LearnerSteps({
           </Button>
           <Button
             type="button"
-            variant={useAnswers === false ? "primary" : "secondary"}
+            variant="secondary"
             aria-pressed={useAnswers === false}
             onClick={() => setUseAnswers(false)}
           >
             Start fresh
           </Button>
-          <p>Start fresh if you were exploring on their behalf.</p>
         </div>
       )}
       {trialQuery.error && (

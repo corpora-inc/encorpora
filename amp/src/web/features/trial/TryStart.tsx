@@ -13,7 +13,8 @@ import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Toast } from "../../ui/Toast";
 import { startTrial, trialSessionOptions } from "./api";
 import { track, trackSessionStart } from "./analytics";
-import { TrialFailure, TrialSkeleton } from "./TrialFrame";
+import { TrialFailure } from "./TrialFrame";
+import { LoadingScreen } from "../../ui/LoadingScreen";
 import styles from "./Trial.module.css";
 
 /** `/try`: a parent selects a starting birth year for free practice. A trial already
@@ -48,7 +49,7 @@ export function TryStart() {
         retry={() => session.refetch()}
       />
     );
-  if (session.isPending) return <TrialSkeleton centered />;
+  if (session.isPending) return <LoadingScreen />;
   if (session.data) return <Navigate to="/try/practice" replace />;
   return <BirthYear />;
 }

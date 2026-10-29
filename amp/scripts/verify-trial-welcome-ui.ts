@@ -55,6 +55,7 @@ try {
             viewport: { width, height: width === 320 ? 640 : 900 },
             colorScheme,
           });
+          let setup = false;
           await context.route("**/api/v1/me", (route) =>
             route.fulfill({
               json: {
@@ -62,15 +63,15 @@ try {
                 account: {
                   id: "welcome-fixture",
                   email: "parent@example.test",
-                  emailVerified: false,
-                  confirmationRequired: true,
+                  emailVerified: setup,
+                  confirmationRequired: !setup,
                 },
-                consent: { status: "none", method: null },
+                consent: { status: setup ? "active" : "none", method: null },
                 learners: [],
-                next: "try",
+                next: setup ? "add-learner" : "try",
                 family: {
                   consent: {
-                    status: "not-recorded",
+                    status: setup ? "active" : "not-recorded",
                     policyVersion: null,
                     recordedAt: null,
                     withdrawnAt: null,
@@ -105,6 +106,7 @@ try {
             .click();
           await page.getByText("Email sent. Check your inbox.").waitFor();
           await page.screenshot({
+            animations: "disabled",
             path: `${dir}/${engine.name()}-${width}-${colorScheme}.png`,
           });
           await page
@@ -134,6 +136,29 @@ try {
             trial.learnerId,
           );
           await freshDevice.close();
+          if (width === 320 && colorScheme === "light") {
+            setup = true;
+            await page.goto("http://127.0.0.1:4386/start/name");
+            const continueButton = page.getByRole("button", {
+              name: "Continue",
+              exact: true,
+            });
+            await page.getByLabel("Learner name").fill("Synthetic learner");
+            assert.equal(await continueButton.isDisabled(), true);
+            await page
+              .getByRole("button", { name: "Start fresh", exact: true })
+              .click();
+            await page.screenshot({
+              animations: "disabled",
+              path: `${dir}/${engine.name()}-fresh-setup.png`,
+            });
+            await continueButton.click();
+            await page.waitForURL("**/start/birth-year");
+            assert.equal(
+              (await repo.currentTrial("welcome-fixture"))?.learnerId,
+              trial.learnerId,
+            );
+          }
           await context.close();
         }
     } finally {
@@ -144,7 +169,9 @@ try {
     "Trial entry, skip, persistent dismissal and cross-device resume passed in Chromium and WebKit at four widths and both themes.",
   );
 } finally {
-  await repo.pool.query("DELETE FROM amp_learners l USING amp_trials t WHERE l.id=t.learner_id AND t.owner_account_id='welcome-fixture'");
+  await repo.pool.query(
+    "DELETE FROM amp_learners l USING amp_trials t WHERE l.id=t.learner_id AND t.owner_account_id='welcome-fixture'",
+  );
   await vite.close();
   await app.close();
 }
