@@ -15,6 +15,7 @@ await migrate(database);
 const repo = new PostgresRepository(database, { development: true });
 const app = buildApp({
   repository: repo,
+  trustedProxies: ["127.0.0.1", "::1"],
   authenticate: async () => "welcome-fixture",
 });
 await registerAnalyticsRoutes(app, {
@@ -47,6 +48,7 @@ const dir = fileURLToPath(
   new URL("../artifacts/trial-welcome/", import.meta.url),
 );
 await mkdir(dir, { recursive: true });
+let fixtureAddress = 0;
 try {
   for (const engine of [chromium, webkit]) {
     const browser = await engine.launch();
@@ -63,7 +65,11 @@ try {
           await repo.pool.query(
             "DELETE FROM amp_learners l USING amp_trials t WHERE l.id=t.learner_id AND t.owner_account_id='welcome-fixture'",
           );
+          const clientHeaders = {
+            "x-forwarded-for": `192.0.2.${++fixtureAddress}`,
+          };
           const context = await browser.newContext({
+            extraHTTPHeaders: clientHeaders,
             viewport: { width, height: width === 320 ? 640 : 900 },
             colorScheme,
           });
@@ -106,17 +112,57 @@ try {
             await route.continue();
           });
           const page = await context.newPage();
+          const failedRequests: string[] = [];
+          page.on("response", (response) => {
+            if (response.status() >= 400)
+              failedRequests.push(
+                `${response.status()} ${new URL(response.url()).pathname}`,
+              );
+          });
           await page.goto("http://127.0.0.1:4386/try");
           await page
             .getByRole("heading", { name: "See how AMP adapts" })
             .waitFor();
           await page.getByRole("button", { name: "2013", exact: true }).click();
+          const intro = page.getByRole("dialog", { name: "Watch AMP adapt" });
+          await intro.waitFor();
+          assert.equal(
+            await page.locator("#problem-prompt").count(),
+            0,
+            "practice starts after the interlude",
+          );
+          assert.equal(
+            await page.locator("details").count(),
+            0,
+            "no reveal link",
+          );
+          const box = await intro.boundingBox();
+          assert(
+            box &&
+              box.x >= 0 &&
+              box.y >= 0 &&
+              box.x + box.width <= width &&
+              box.y + box.height <= (width === 320 ? 640 : 900),
+          );
+          await page.screenshot({
+            animations: "disabled",
+            path: `${dir}/${engine.name()}-${width}-${colorScheme}-intro.png`,
+          });
+          await intro.getByRole("button", { name: "Start practicing" }).click();
           await page.locator("#problem-prompt").waitFor();
           // The real product renders while the telemetry collector is blocked.
-          await page.waitForTimeout(100);
+          await page.bringToFront();
+          await page.evaluate(
+            () =>
+              new Promise<void>((resolve) =>
+                requestAnimationFrame(() =>
+                  requestAnimationFrame(() => resolve()),
+                ),
+              ),
+          );
           release();
           await page.evaluate(() =>
-            document.dispatchEvent(new Event("visibilitychange")),
+            window.dispatchEvent(new Event("pagehide")),
           );
           const until = Date.now() + 10000;
           let rendered = false;
@@ -131,28 +177,36 @@ try {
           }
           assert.ok(
             rendered,
-            "visible problem rendering reaches the first-party ledger",
+            `visible problem rendering reaches the first-party ledger: ${failedRequests.join(", ")}`,
           );
-          await page
-            .getByText("Try a few problems and watch AMP adapt.")
-            .waitFor();
+          await page.reload();
+          await page.locator("#problem-prompt").waitFor();
+          assert.equal(
+            await page.getByRole("dialog", { name: "Watch AMP adapt" }).count(),
+            0,
+            "dismissed intro stays dismissed on reload",
+          );
+          assert.equal(
+            await page.locator('[aria-label="Free practice guidance"]').count(),
+            0,
+          );
+          assert.equal(
+            await page
+              .getByRole("button", { name: "Resend", exact: true })
+              .count(),
+            0,
+          );
+
           assert.equal(
             await page.evaluate(
               () => document.documentElement.scrollWidth <= innerWidth,
             ),
             true,
           );
-          await page
-            .getByRole("button", { name: "Resend", exact: true })
-            .click();
-          await page.getByText("Email sent. Check your inbox.").waitFor();
           await page.screenshot({
             animations: "disabled",
-            path: `${dir}/${engine.name()}-${width}-${colorScheme}.png`,
+            path: `${dir}/${engine.name()}-${width}-${colorScheme}-practice.png`,
           });
-          await page
-            .getByRole("button", { name: "Dismiss practice guidance" })
-            .click();
           await page
             .getByRole("button", {
               name: "Skip this problem and see its answer",
@@ -161,14 +215,14 @@ try {
             .click();
           await page.locator(".next-action").click();
           assert.equal(
-            await page
-              .getByText("Try a few problems and watch AMP adapt.")
-              .count(),
+            await page.getByRole("dialog", { name: "Watch AMP adapt" }).count(),
             0,
           );
           const trial = await repo.currentTrial("welcome-fixture");
           assert.ok(trial);
-          const freshDevice = await browser.newContext();
+          const freshDevice = await browser.newContext({
+            extraHTTPHeaders: clientHeaders,
+          });
           const second = await freshDevice.newPage();
           await second.goto("http://127.0.0.1:4386/try");
           await second.locator("#problem-prompt").waitFor();

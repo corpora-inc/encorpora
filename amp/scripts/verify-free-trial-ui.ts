@@ -591,6 +591,9 @@ try {
 
       // Placement keeps the budget in the shared navigation drawer.
       await years.getByRole("button", { name: "2016", exact: true }).click();
+      await page
+        .getByRole("button", { name: "Start practicing", exact: true })
+        .click();
       await page.waitForURL("**/try/practice");
       await page.getByRole("button", { name: "Open AMP menu" }).click();
       const meter = page.getByRole("progressbar", {
