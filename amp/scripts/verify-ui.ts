@@ -203,6 +203,19 @@ try {
   );
   await page.getByRole("button", { name: /Your answer: 1/ }).click();
   await page.locator("#answer").fill("999");
+  // The same skill includes multipart problems. Exercise that next-problem
+  // transition deterministically instead of depending on a random family draw.
+  await page.route(
+    "**/api/v1/learners/*/batches",
+    (route) =>
+      route.continue({
+        postData: JSON.stringify({
+          ...route.request().postDataJSON(),
+          templateId: "mean-median-blanks",
+        }),
+      }),
+    { times: 1 },
+  );
   await page.getByRole("button", { name: "Check" }).click();
   await page.locator(".solution-panel").waitFor();
   assert.match(
@@ -227,14 +240,14 @@ try {
   );
   await page.getByRole("button", { name: "Next", exact: false }).click();
   await page.setViewportSize({ width: 390, height: 844 });
-  // The adaptive planner may serve a typed or a multiple-choice problem. The
-  // answered problem stays mounted until the next one arrives, so wait for its
-  // feedback to leave before accepting either answer form.
+  // The answered problem stays mounted until the next one arrives. The shared
+  // controls cover typed answers, choices, multipart and graphical responses.
   await page.locator(".solution-panel").waitFor({ state: "detached" });
-  await page
-    .locator("#answer, .choice-form, .compact-answer-action")
-    .first()
-    .waitFor();
+  await page.locator(".answer-controls").waitFor();
+  assert.equal(
+    await page.locator(".problem-content").getAttribute("data-template"),
+    "mean-median-blanks",
+  );
   const opened = await page.locator(".problem-stage").evaluate((stage) => {
     const top = stage.scrollTop;
     stage.style.paddingBottom = "";
