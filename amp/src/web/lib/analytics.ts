@@ -393,7 +393,7 @@ function listen(): void {
   );
   window.addEventListener("unhandledrejection", (event) =>
     track("client_error", {
-      ...errorDetails(event.reason),
+      ...errorDetails(event.reason, undefined, location.origin),
       kind: "unhandled_rejection",
       screen: screenForPath(location.pathname),
     }),

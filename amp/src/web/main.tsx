@@ -24,14 +24,16 @@ watchForNewRelease();
 createRoot(document.getElementById("root")!, {
   onCaughtError: (error) =>
     track("client_error", {
-      ...errorDetails(error),
+      ...errorDetails(error, undefined, location.origin),
       kind: "render",
+      boundary: "caught",
       screen: screenForPath(location.pathname),
     }),
   onUncaughtError: (error) =>
     track("client_error", {
-      ...errorDetails(error),
+      ...errorDetails(error, undefined, location.origin),
       kind: "render",
+      boundary: "uncaught",
       screen: screenForPath(location.pathname),
     }),
 }).render(

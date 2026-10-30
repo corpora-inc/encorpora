@@ -154,6 +154,7 @@ export const funnelPropsSchemas = {
     ...errorDetailsSchema.shape,
     kind: z.enum(["error", "unhandled_rejection", "render"]),
     screen: z.enum(SCREENS),
+    boundary: z.enum(["caught", "uncaught"]).optional(),
   }),
   auth_request: z.strictObject({
     attemptId: z.uuidv4(),

@@ -54,3 +54,9 @@ error categories and app bundle coordinates, never error messages, stacks,
 form values, or private URLs. Passkey failures also record the delay before the
 prompt and whether browser user activation was available; a `NotAllowedError`
 does not establish that the person deliberately cancelled.
+
+React errors and unhandled promise rejections retain the first same-origin
+hashed JavaScript bundle location found within a bounded stack scan. Only the
+public asset basename, line and column leave the browser. React's numeric
+production error code is retained when present. Render events distinguish
+caught and uncaught errors; a caught error does not prove the visitor recovered.
