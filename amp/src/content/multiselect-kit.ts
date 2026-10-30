@@ -11,6 +11,8 @@ import { chainLesson } from "./chain-lesson-kit";
  */
 export interface SelectContentSpec {
   id: string;
+  /** Preserve a published lesson URL when its practice family is replaced. */
+  lessonId?: string;
   skillId: string;
   title: string;
   summary: string;
@@ -46,7 +48,7 @@ export function buildSelectContent(specs: readonly SelectContentSpec[]) {
     principles[s.id] = s.principle;
     lessons.push(
       chainLesson({
-        id: `${s.id}-lesson`,
+        id: s.lessonId ?? `${s.id}-lesson`,
         title: s.title,
         summary: s.summary,
         templateIds: [s.id],

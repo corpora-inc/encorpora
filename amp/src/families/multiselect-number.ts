@@ -32,7 +32,7 @@ export const family = {
     "rounds-to-select": ["number.inverse-rounding"],
     "compare-to-pi-select": ["number.real-order", "number.approximate-roots"],
     "multiplication-fact-grid-select": ["whole.multiplication-facts"],
-    "equal-factor-equations-select": ["equation.truth"],
+    "equal-factor-truth-select": ["equation.truth"],
   },
   connections: [
     {

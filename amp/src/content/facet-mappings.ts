@@ -1762,15 +1762,15 @@ export const actualFacetMappings: readonly FacetMapping[] = [
       "Select the true or false addition or subtraction equation within 100, including sums with different addends and the same value. Does not assess writing an equation or a written explanation of why it is true.",
   },
   {
-    templateId: "fl-equation-truth-mult-div",
-    facetId: "missing-factor.core",
+    templateId: "multiplication-division-equation-truth",
+    facetId: "multiplication-division-equality.core",
     extent: "partial",
     rationale:
       "Select the true or false multiplication or division equation with facts within 12 and the result on either side. Does not assess finding a missing number or explaining the choice in words.",
   },
   {
-    templateId: "fl-equation-truth-whole",
-    facetId: "missing-factor.core",
+    templateId: "whole-number-equation-truth",
+    facetId: "whole-number-equality.core",
     extent: "partial",
     rationale:
       "Select the true or false whole-number equation using any of the four operations, with multiplication facts within 12 and repeated-subtraction forms. Does not assess decimals, parentheses or written explanation.",
@@ -2116,8 +2116,8 @@ export const actualFacetMappings: readonly FacetMapping[] = [
   ...realNumberFacetMappings,
   ...numberSystemFacetMappings,
   {
-    templateId: "mcas-true-fact-equations",
-    facetId: "missing-factor.core",
+    templateId: "fact-equation-truth-select",
+    facetId: "multiplication-division-equality.core",
     extent: "partial",
     rationale:
       "Judge multiplication and division facts, including facts of tens, written with the result on either side, as a select-all list or as true-or-false pairs. Does not assess writing or solving an equation for an unknown or explaining why an equation is false.",

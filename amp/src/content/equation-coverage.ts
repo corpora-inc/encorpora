@@ -36,7 +36,7 @@ export const equationFacetMappings: readonly FacetMapping[] = [
     "Find the whole-number weight of one block on a drawn level balance showing px + q = r (p from 2 to 4) or p(x + q) = r with 2 or 3 identical bags, at most 30 cubes. Does not assess negative quantities.",
   ],
   [
-    "inequality-from-context",
+    "inequality-context-bound",
     "simple-inequalities.context-inequality",
     "Choose x > c, x < c, x ≥ c or x ≤ c for ten real-world conditions (taller than, above, colder than, at least, at most, no more than, or more), including negative temperature boundaries. Does not assess compound conditions or writing the inequality without choices.",
   ],

@@ -382,8 +382,9 @@ const specs: SelectContentSpec[] = [
     facet: "multiplication-facts.core",
   },
   {
-    id: "equal-factor-equations-select",
-    skillId: "missing-factor",
+    id: "equal-factor-truth-select",
+    lessonId: "equal-factor-equations-select-lesson",
+    skillId: "multiplication-division-equality",
     title: "True equations with a number times itself",
     summary:
       "Decide which multiplication and division equations are true, including squares.",

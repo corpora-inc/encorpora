@@ -10,6 +10,7 @@ import {
 } from "./trial-progress";
 import { skills } from "../curriculum/catalog";
 import { templates } from "../math/engine";
+import { historicalTemplates } from "../math/historical-templates";
 import { guessChanceOf } from "../math/guess-chance";
 import {
   estimateFrontier,
@@ -19,7 +20,9 @@ import {
 } from "../learning/frontier";
 import { trendCounts, type TrendPoint } from "../learning/level-check";
 import { templateGrade } from "./mixed-practice";
-const templateById = new Map(templates.map((t) => [t.id, t]));
+const templateById = new Map(
+  [...templates, ...historicalTemplates].map((t) => [t.id, t]),
+);
 const skillById = new Map(skills.map((s) => [s.id, s]));
 /** The frontier from a starting level and answers, with the catalog's
  * grades, strands and guessing chances. */

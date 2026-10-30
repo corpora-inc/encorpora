@@ -326,7 +326,7 @@ export const satPractice7 = defineLedger(
       demand:
         "Translate a verbal comparison of consecutive odd integers into a linear inequality",
       status: "partial",
-      templateIds: ["inequality-from-context"],
+      templateIds: ["inequality-context-bound"],
       limitations:
         "Template translates one-sided verbal limits into x < c forms; no template builds consecutive-integer expressions or translates 'at most k less than'.",
     },

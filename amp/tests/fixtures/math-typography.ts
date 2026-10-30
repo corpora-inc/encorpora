@@ -88,7 +88,7 @@ export type Context = { variables?: Set<string>; names?: Set<string> };
 
 /** English words that follow a variable but never the article "a". */
 const VARIABLE_FOLLOWERS =
-  "is|are|was|and|or|to|lies|has|equals|stays|appears|varies|changes|increases|decreases";
+  "is|are|was|be|and|or|to|lies|has|equals|stays|appears|varies|changes|increases|decreases";
 
 /** A text as one typesetter reads it, each formula replaced by the
  * placeholder 0, so prose keeps its neighbours ("$r = 4$ m" reads "0 m"). */

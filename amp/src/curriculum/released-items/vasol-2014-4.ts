@@ -488,9 +488,12 @@ export const vasolGrade4 = defineLedger(
       demand:
         "Choose the true equation among products equal to sums and differences",
       status: "covered",
-      templateIds: ["true-equation-choice", "mcas-true-fact-equations"],
+      templateIds: [
+        "whole-number-equality-choice",
+        "fact-equation-truth-select",
+      ],
       limitations:
-        "true-equation-choice product-equals-sum-or-difference offers four equations with a product on one side and a sum or difference on the other; the truth of every option is computed and exactly one is true.",
+        "whole-number-equality-choice product-equals-sum-or-difference offers four equations with a product on one side and a sum or difference on the other; the truth of every option is computed and exactly one is true.",
     },
     {
       item: { number: "41", page: "PDF p.47" },
@@ -559,9 +562,12 @@ export const vasolGrade4 = defineLedger(
       archetypeIds: ["equation.truth"],
       demand: "Choose the true equation comparing products of three factors",
       status: "covered",
-      templateIds: ["true-equation-choice", "mcas-true-fact-equations"],
+      templateIds: [
+        "whole-number-equality-choice",
+        "fact-equation-truth-select",
+      ],
       limitations:
-        "true-equation-choice products-of-three-factors offers four equations that compare two products of three whole-number factors; exactly one is true.",
+        "whole-number-equality-choice products-of-three-factors offers four equations that compare two products of three whole-number factors; exactly one is true.",
     },
     {
       item: { number: "47", page: "PDF p.53" },

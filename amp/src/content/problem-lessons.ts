@@ -1,5 +1,9 @@
 import { generateProblemFor, gradeAnswer, templates } from "../math/engine";
 import {
+  historicalTemplates,
+  templateReplacements,
+} from "../math/historical-templates";
+import {
   figureCapabilities,
   type GeneratedProblem,
   type ProblemResponse,
@@ -53,7 +57,12 @@ export type ProblemMethod = {
   watch?: string;
 };
 
-const byId = new Map(templates.map((template) => [template.id, template]));
+const byId = new Map(
+  [...templates, ...historicalTemplates].map((template) => [
+    template.id,
+    template,
+  ]),
+);
 /** Lessons are served to every client that can receive the template, whatever
  * else it can draw, so the example is drawn for the oldest such client: a
  * newer scene component only when the template itself requires it. */
@@ -168,10 +177,11 @@ export function problemLesson(
           "fractions"
         ? example.answer
         : displayAnswer(example.answer);
-  const authored = methods[templateId];
+  const lessonTemplateId = templateReplacements[templateId] ?? templateId;
+  const authored = methods[lessonTemplateId];
   const givens = realNumberGivens(templateId, example.public.seed);
   const reference = lessons.find((lesson) =>
-    lesson.templateIds.includes(templateId),
+    lesson.templateIds.includes(lessonTemplateId),
   );
   return {
     templateId,
@@ -182,7 +192,7 @@ export function problemLesson(
       reference?.summary ??
       authored?.goal ??
       template.description,
-    principle: principles[templateId] ?? null,
+    principle: principles[lessonTemplateId] ?? null,
     terms: (authored?.terms ?? []).map(([term, meaning]) => ({
       term,
       meaning,

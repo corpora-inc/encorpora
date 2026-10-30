@@ -60,7 +60,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
     watch:
       "Subtracting the whole from a part, or one part from the other, does not use the fact. The whole is always the number you start from.",
   },
-  "true-equation-choice": {
+  "whole-number-equality-choice": {
     goal: "Choose the one true equation when a product equals a sum or difference, or when two products of three factors are compared.",
     intuition:
       "The equal sign says both sides have the same value. To test an equation, work out the value of each side separately and compare. A product and a sum can be equal even though they use different operations.",
@@ -85,7 +85,7 @@ export const operationSentencePrinciples: Record<string, string> = {
     "If $a \\times b = c$ with $a \\ne 0$ and $b \\ne 0$, then $c \\div a = b$ and $c \\div b = a$. Conversely $c \\div a = n$ means $a \\times n = c$. These hold because division is the inverse of multiplication by a nonzero number.",
   "related-subtraction-sentence":
     "If $a + b = c$ then $c - a = b$ and $c - b = a$. Subtraction is the inverse of addition, so each part is the whole minus the other part.",
-  "true-equation-choice":
+  "whole-number-equality-choice":
     "An equation $L = R$ is true exactly when $L$ and $R$ have the same value. Multiplication is evaluated before addition or subtraction, and a product of three factors does not depend on the order or grouping of the factors.",
 };
 
@@ -184,7 +184,7 @@ export const operationSentenceLessons = [
     title: "Find the true equation",
     summary:
       "Evaluate both sides of an equation with products, sums, differences and three factors to find the one that is true.",
-    templateIds: ["true-equation-choice"],
+    templateIds: ["whole-number-equality-choice"],
     objectives: [
       "Decide whether an equation with a product on one side and a sum or difference on the other is true.",
       "Compare two products of three factors by evaluating each side.",
@@ -248,8 +248,8 @@ export const operationSentenceFacetMappings: FacetMapping[] = [
       "Choose the subtraction sentence that an addition fact within 20 helps solve, among subtraction, addition, multiplication and division sentences. Does not assess computing the difference or recalling facts quickly.",
   },
   {
-    templateId: "true-equation-choice",
-    facetId: "missing-factor.core",
+    templateId: "whole-number-equality-choice",
+    facetId: "whole-number-equality.core",
     extent: "partial",
     rationale:
       "Choose the true equation when a product equals a sum or difference, or when two products of three factors are compared. Does not assess finding a missing factor, writing an equation, or explaining why an equation is true.",

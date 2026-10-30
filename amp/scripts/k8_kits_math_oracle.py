@@ -15,7 +15,7 @@ CHAIN = frozenset({
 })
 SENTENCE = frozenset({
     'operation-sentence-choice', 'related-division-sentence',
-    'related-subtraction-sentence', 'true-equation-choice',
+    'related-subtraction-sentence', 'whole-number-equality-choice',
 })
 STEP = frozenset({
     'equation-after-one-step', 'expression-after-first-step',
@@ -669,7 +669,7 @@ CHOICE_SOLVERS = {
     'operation-sentence-choice': solve_operation_sentence,
     'related-division-sentence': solve_related_division,
     'related-subtraction-sentence': solve_related_subtraction,
-    'true-equation-choice': solve_true_equation,
+    'whole-number-equality-choice': solve_true_equation,
     'equation-after-one-step': solve_equation_after_step,
     'expression-after-first-step': solve_expression_step,
     'factor-out-choice': solve_factor_out,
@@ -844,9 +844,9 @@ def self_test():
            ['$12 - 10 = n$', '$12 \\div 10 = n$', '$12 + 10 = n$', '$12 \\times 10 = n$'], 'option-a')
     must_fail('related-subtraction-sentence', _public('related-subtraction-sentence', 'Here is an addition fact: $10 + 2 = 12$. Which subtraction sentence can this fact help you solve? Use $n$ for the unknown.',
               ['$12 - 10 = n$', '$12 - 2 = n$', '$12 + 10 = n$', '$12 \\times 10 = n$']), 'option-a')
-    choice('true-equation-choice', 'Which equation is true? One side is a product and the other side is a sum or a difference.',
+    choice('whole-number-equality-choice', 'Which equation is true? One side is a product and the other side is a sum or a difference.',
            ['$8 \\times 7 = 62 + 6$', '$8 \\times 7 = 62 - 8$', '$8 \\times 7 = 62 - 6$', '$8 \\times 6 = 62 - 6$'], 'option-c')
-    must_fail('true-equation-choice', _public('true-equation-choice', 'Which equation is true? Each side is a product of three factors.',
+    must_fail('whole-number-equality-choice', _public('whole-number-equality-choice', 'Which equation is true? Each side is a product of three factors.',
               ['$2 \\times 9 \\times 8 = 6 \\times 4 \\times 6$', '$2 \\times 9 \\times 8 = 4 \\times 6 \\times 6$', '$2 \\times 9 \\times 8 = 5 \\times 4 \\times 6$', '$2 \\times 9 \\times 8 = 6 \\times 4 \\times 5$']), 'option-a')
     choice('equation-after-one-step', 'Add $2$ to both sides of $9x-2=79$. Which equation results?',
            ['$9x=77$', '$x=81$', '$9x-4=77$', '$9x=81$'], 'option-d')

@@ -17,7 +17,7 @@ const gens: Record<string, any> = {
   "operation-sentence-choice": operationSentenceChoice,
   "related-division-sentence": relatedDivisionSentence,
   "related-subtraction-sentence": relatedSubtractionSentence,
-  "true-equation-choice": trueEquationChoice,
+  "whole-number-equality-choice": trueEquationChoice,
 };
 const run = (id: string) =>
   Array.from({ length: SEEDS }, (_, i) => gens[id].generate(`os:${i}`));
