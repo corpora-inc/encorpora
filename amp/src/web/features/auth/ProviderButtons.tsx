@@ -96,6 +96,7 @@ export function ProviderButtons({
   busy,
   pending,
   onSelect,
+  emphasizeFirst = false,
 }: {
   providers: Provider[];
   copy: SocialCopy;
@@ -103,11 +104,16 @@ export function ProviderButtons({
   /** The provider whose redirect is starting. */
   pending: Provider | null;
   onSelect: (provider: Provider) => void;
+  emphasizeFirst?: boolean;
 }) {
   if (!providers.length) return null;
   return (
-    <div className={styles.stack} data-compact={providers.length > 2}>
-      {providers.map((provider) => (
+    <div
+      className={styles.stack}
+      data-compact={providers.length > 2}
+      data-emphasize-first={emphasizeFirst}
+    >
+      {providers.map((provider, index) => (
         <button
           key={provider}
           type="button"
@@ -126,7 +132,7 @@ export function ProviderButtons({
             <Mark provider={provider} />
           </span>
           <span className={styles.label}>
-            {providers.length > 2
+            {providers.length > 2 && !(emphasizeFirst && index === 0)
               ? providerNames[provider]
               : fill(copy.continueWith, providerNames[provider])}
           </span>

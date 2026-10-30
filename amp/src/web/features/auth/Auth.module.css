@@ -8,6 +8,31 @@
   font-size: var(--text-small);
   line-height: 1.4;
 }
+.emailHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 44px;
+}
+.emailHeader .inlineLink {
+  margin: 0;
+  padding-block: 8px;
+  font-size: var(--text-small);
+}
+.moreMethods {
+  width: 100%;
+  color: var(--color-primary);
+  font-size: var(--text-small);
+}
+.moreMethods summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .inlineLink {
   display: inline-flex;
   align-items: center;

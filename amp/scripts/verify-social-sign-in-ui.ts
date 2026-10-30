@@ -280,7 +280,9 @@ try {
       });
       const page = await context.newPage();
       await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
-      await page.getByRole("heading", { name: "Try AMP free." }).waitFor();
+      await page
+        .getByRole("heading", { name: "Math that adapts as you answer." })
+        .waitFor();
       // Opt-in is a single quiet line, never a checkbox to decide on.
       assert.equal(await page.getByRole("checkbox").count(), 0);
       assert.match(
@@ -295,6 +297,32 @@ try {
       const box = await page
         .locator("button[data-provider=google]")
         .boundingBox();
+      const apple = await page
+        .locator("button[data-provider=apple]")
+        .boundingBox();
+      const microsoft = await page
+        .locator("button[data-provider=microsoft]")
+        .boundingBox();
+      assert(box && apple && microsoft);
+      assert(
+        box.width > apple.width * 1.9,
+        "Google is the full-width first choice",
+      );
+      assert.equal(apple.y, microsoft.y, "Apple and Microsoft share a row");
+      assert.equal(
+        await page.locator("button[data-provider=github]").isVisible(),
+        false,
+      );
+      const password = page.getByRole("button", {
+        name: "Use a password instead",
+      });
+      const passwordBox = await password.boundingBox();
+      assert(
+        passwordBox &&
+          passwordBox.height >= 44 &&
+          passwordBox.y + passwordBox.height <= size.height,
+        `password alternative is visible at ${size.width}`,
+      );
       assert.ok(
         box && box.y + box.height <= size.height,
         `Google visible at ${size.width}`,
@@ -309,6 +337,28 @@ try {
           .pathname,
         fullPage: true,
       });
+      await page
+        .getByLabel("Email", { exact: true })
+        .fill("parent@example.com");
+      await password.click();
+      await page.getByLabel(/^AMP password/).waitFor();
+      assert.equal(
+        await page.getByLabel("Email", { exact: true }).inputValue(),
+        "parent@example.com",
+      );
+      await page.goBack();
+      await page
+        .getByRole("button", { name: "Create account with a passkey" })
+        .waitFor();
+      assert.equal(
+        await page.getByLabel("Email", { exact: true }).inputValue(),
+        "parent@example.com",
+      );
+      await page.getByText("More sign-in options", { exact: true }).click();
+      assert.equal(
+        await page.locator("button[data-provider=github]").isVisible(),
+        true,
+      );
       await context.close();
     }
   // The longest translations still fit the narrowest phone.
@@ -463,6 +513,132 @@ try {
   );
   await page.getByRole("button", { name: "Dismiss message" }).click();
   await page.unroute("**/api/auth/sign-in/social");
+
+  // A successful handoff response can leave an embedded browser on AMP.
+  // Both a stalled redirect and a restored page must release the controls.
+  await page.getByRole("button", { name: "Use a password instead" }).click();
+  await page.getByLabel("Email", { exact: true }).fill("pending@example.com");
+  await page.getByLabel(/^AMP password/).fill("synthetic-password-123");
+  let conflictingSubmissions = 0;
+  await page.route("**/api/auth/sign-up/email", (route) => {
+    conflictingSubmissions++;
+    return route.fulfill({ status: 409 });
+  });
+  await page.route("**/api/auth/sign-in/social", (route) =>
+    route.fulfill({
+      json: { url: "https://provider.example.test/authorize", redirect: false },
+    }),
+  );
+  await page.getByRole("button", { name: "Continue with Microsoft" }).click();
+  assert.equal(
+    await page
+      .getByRole("button", { name: "Create account", exact: true })
+      .isDisabled(),
+    true,
+  );
+  await page
+    .locator("form.account-form")
+    .evaluate((form) =>
+      form.dispatchEvent(
+        new Event("submit", { bubbles: true, cancelable: true }),
+      ),
+    );
+  await page
+    .getByText(
+      "Microsoft sign-in didn’t finish here. Try again or choose another option.",
+      { exact: true },
+    )
+    .waitFor({ timeout: 20000 });
+  assert.equal(await page.locator("button[data-provider]:disabled").count(), 0);
+  assert.equal(
+    conflictingSubmissions,
+    0,
+    "pending provider prevents a concurrent password submission",
+  );
+  await page.unroute("**/api/auth/sign-up/email");
+  await page.getByRole("button", { name: "Dismiss message" }).click();
+  await page.getByRole("button", { name: "Continue with Apple" }).click();
+  await page.waitForTimeout(100);
+  await page.evaluate(() =>
+    window.dispatchEvent(
+      new PageTransitionEvent("pageshow", { persisted: true }),
+    ),
+  );
+  await page
+    .getByText(
+      "Apple sign-in didn’t finish here. Try again or choose another option.",
+      { exact: true },
+    )
+    .waitFor({ timeout: 3000 });
+  assert.equal(await page.locator("button[data-provider]:disabled").count(), 0);
+  await page.getByRole("button", { name: "Dismiss message" }).click();
+  await page.unroute("**/api/auth/sign-in/social");
+
+  // A provider can complete in another tab before this form is restored.
+  // Recovered identity B must discard trial/account state cached for A.
+  await page.goto(`${origin}/sign-up?return=free-practice`);
+  await page.locator('[data-provider="google"]').waitFor();
+  await page.evaluate(async () => {
+    const queryModule = "/src/web/lib/query.ts";
+    const { queryClient, sessionOptions } = await import(queryModule);
+    queryClient.setQueryData(sessionOptions.queryKey, {
+      accountId: "amp|previous-account",
+      token: "previous-token",
+    });
+    queryClient.setQueryData(["trial", "session"], { token: "previous-trial" });
+    queryClient.setQueryData(["account", "amp|previous-account", "me"], {
+      privateFixture: true,
+    });
+  });
+  await page.route("**/api/auth/sign-in/social", (route) =>
+    route.fulfill({
+      json: { url: "https://provider.example.test/authorize", redirect: false },
+    }),
+  );
+  await page.getByRole("button", { name: "Continue with Google" }).click();
+  const recovered = await page.request.post(
+    `${origin}/api/auth/sign-up/email`,
+    {
+      headers: { origin },
+      data: {
+        name: "Recovered Parent",
+        email: `recovered-${Date.now()}@example.com`,
+        password: "synthetic-password-123",
+      },
+    },
+  );
+  assert.equal(recovered.status(), 200);
+  await page.evaluate(() =>
+    window.dispatchEvent(
+      new PageTransitionEvent("pageshow", { persisted: true }),
+    ),
+  );
+  await page
+    .getByRole("heading", { name: "See how AMP adapts" })
+    .waitFor({ timeout: 3000 });
+  assert.equal(
+    await page.evaluate(async () => {
+      const queryModule = "/src/web/lib/query.ts";
+      const { queryClient } = await import(queryModule);
+      return (
+        JSON.stringify(
+          queryClient
+            .getQueryCache()
+            .getAll()
+            .map((q: { state: unknown }) => q.state),
+        ).includes("previous-trial") ||
+        queryClient.getQueryData(["account", "amp|previous-account", "me"]) !==
+          undefined
+      );
+    }),
+    false,
+    "recovery clears another account's cached trial and family data",
+  );
+  await page.unroute("**/api/auth/sign-in/social");
+  await page.request.post(`${origin}/api/auth/sign-out`, {
+    headers: { origin },
+  });
+  await context.clearCookies();
 
   // Registration points existing users to sign-in without discarding their email
   // or entitlement continuation, and a bad password explains provider recovery.

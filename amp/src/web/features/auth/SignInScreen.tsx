@@ -7,16 +7,12 @@ import { FrameBrand, frameCard, PageFrame } from "../../ui/PageFrame";
 import { Button } from "../../ui/Button";
 import { Toast } from "../../ui/Toast";
 import { useLocation, useNavigate } from "@tanstack/react-router";
-import {
-  authConfigOptions,
-  queryClient,
-  sessionOptions,
-} from "../../lib/query";
+import { authConfigOptions } from "../../lib/query";
 import { useLoggedError } from "../../feedback";
 import { useEffect, useState, type FormEvent } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { accountClient } from "../../account-client";
-import { signIn, notifyAccountSessionChanged } from "../../auth";
+import { signIn, accessSession, notifyAccountSessionChanged } from "../../auth";
 import {
   EmailDivider,
   ProviderButtons,
@@ -112,6 +108,7 @@ export function SignInScreen() {
   const copy = socialCopyFor(document.documentElement.lang);
   const errorProvider = params.get("provider");
   const [pending, setPending] = useState<Provider | null>(null);
+  const [handoffReady, setHandoffReady] = useState(false);
   const { email, setEmail } = useAuthDraft();
   const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
@@ -156,14 +153,6 @@ export function SignInScreen() {
       replace: true,
     });
   }, []);
-  // Returning from the provider with Back restores this page from the cache.
-  useEffect(() => {
-    const restored = (event: PageTransitionEvent) => {
-      if (event.persisted) setPending(null);
-    };
-    addEventListener("pageshow", restored);
-    return () => removeEventListener("pageshow", restored);
-  }, []);
   function go(next: Step | "create-password") {
     setStep(next);
     setError("");
@@ -171,7 +160,103 @@ export function SignInScreen() {
   }
   const carry = continuationSearch(routeLocation.search);
   const freeEntry = carry.return === "free-practice";
+  const parentEntry = freeEntry && step === "create";
+  const primaryProviders =
+    parentEntry && providers.some((p) => p !== "github")
+      ? providers.filter((p) => p !== "github")
+      : providers;
+  const additionalProviders = providers.filter(
+    (p) => !primaryProviders.includes(p),
+  );
   const followupEnabled = accounts && config.parentFollowup;
+  // A route arrival does not prove these controls rendered. This uses the
+  // existing first-party batch and contains no field contents or URL values.
+  useEffect(() => {
+    let frame = 0,
+      recorded = false;
+    const ready = () => {
+      if (recorded || document.visibilityState !== "visible") return;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        frame = requestAnimationFrame(() => {
+          if (document.visibilityState !== "visible") return;
+          recorded = true;
+          trackAuth("auth_request", {
+            attemptId: crypto.randomUUID(),
+            stage: "screen",
+            outcome: "succeeded",
+          });
+        });
+      });
+    };
+    ready();
+    document.addEventListener("visibilitychange", ready);
+    return () => {
+      cancelAnimationFrame(frame);
+      document.removeEventListener("visibilitychange", ready);
+    };
+  }, [step]);
+  // A successful redirect request is not a completed sign-in. Recover if an
+  // in-app browser keeps this page open, or Back restores a pending form.
+  useEffect(() => {
+    if (!pending) return;
+    let active = true,
+      checking = false;
+    const deadline = Date.now() + 15000;
+    const recover = async (timedOut: boolean) => {
+      if (!active || checking) return;
+      checking = true;
+      try {
+        const session = await measureAuth("session", accessSession);
+        if (!active) return;
+        if (session) {
+          notifyAccountSessionChanged(session);
+          await continueAfterSignIn();
+          return;
+        }
+        trackAuth("auth_failure", {
+          method: "social",
+          provider: pending,
+          reason: "incomplete",
+          ...(timedOut ? { category: "timeout" as const } : {}),
+        });
+        setError(
+          `${providerNames[pending]} sign-in didn’t finish here. Try again or choose another option.`,
+        );
+      } catch {
+        if (active)
+          setError(
+            "Your sign-in could not be checked. Try again or choose another option.",
+          );
+      } finally {
+        if (active) {
+          setPending(null);
+          setHandoffReady(false);
+          setBusy(false);
+        }
+      }
+    };
+    const restored = (event: PageTransitionEvent) => {
+      if (event.persisted) void recover(false);
+    };
+    const visible = () => {
+      if (
+        handoffReady &&
+        document.visibilityState === "visible" &&
+        Date.now() >= deadline
+      )
+        void recover(true);
+    };
+    const timer = handoffReady ? setTimeout(visible, 15000) : undefined;
+    addEventListener("pageshow", restored);
+    document.addEventListener("visibilitychange", visible);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+      removeEventListener("pageshow", restored);
+      document.removeEventListener("visibilitychange", visible);
+    };
+  }, [pending, handoffReady]);
   async function prepareFreeSignup() {
     if (!freeEntry || !followupEnabled) return;
     await measureAuth("prepare", async () => {
@@ -203,10 +288,12 @@ export function SignInScreen() {
   const returnTo = continuationUrl(carry, "/");
   const newUserReturn = continuationUrl(carry, "/account/ready");
   const done = async () => {
-    notifyAccountSessionChanged();
-    await measureAuth("session", () =>
-      queryClient.fetchQuery({ ...sessionOptions, staleTime: 0 }),
-    );
+    const session = await measureAuth("session", accessSession);
+    if (!session) throw new Error("Sign-in didn’t finish. Please try again.");
+    notifyAccountSessionChanged(session);
+    await continueAfterSignIn();
+  };
+  async function continueAfterSignIn() {
     if (carry.return === "security")
       await navigate({
         to: "/$",
@@ -228,7 +315,7 @@ export function SignInScreen() {
         search: carry,
         replace: true,
       });
-  };
+  }
   async function run(
     work: () => Promise<void>,
     stage: "password" | "passkey" | null = "password",
@@ -273,6 +360,7 @@ export function SignInScreen() {
   };
   function submit(event: FormEvent) {
     event.preventDefault();
+    if (busy || pending) return;
     void run(async () => {
       if (step === "sign-in") {
         await prepareFreeSignup();
@@ -338,6 +426,7 @@ export function SignInScreen() {
   // account owner sees confirmation and a clear next step.
   function createWithPasskey(event: FormEvent) {
     event.preventDefault();
+    if (busy || pending) return;
     const startedAt = performance.now();
     void run(async () => {
       await prepareFreeSignup();
@@ -364,7 +453,9 @@ export function SignInScreen() {
   // The provider returns here on failure (with its code), to the guided first
   // run for a new account, or to where this sign-in was headed.
   const social = (provider: Provider) => {
+    if (busy || pending) return;
     setPending(provider);
+    setHandoffReady(false);
     setError("");
     void run(async () => {
       await prepareFreeSignup();
@@ -390,6 +481,7 @@ export function SignInScreen() {
               socialErrorMessage(copy, "", providerNames[provider]),
             );
           }
+          setHandoffReady(true);
         },
         provider,
       );
@@ -403,19 +495,19 @@ export function SignInScreen() {
       >
         <FrameBrand />
         <h2>
-          {freeEntry && step === "create" ? "Try AMP free." : titles[step]}
+          {parentEntry ? "Math that adapts as you answer." : titles[step]}
         </h2>
         {freeEntry && showProviders && (
           <div className={styles.pitch} data-free-parent-signup>
             <p>
-              AMP finds the right level as you answer. Up to 100 problems, no
+              Try a few questions and watch AMP find your level. Free to try, no
               card required.
             </p>
             {carry.program && (
               <p className={styles.funding}>
-                Corpora Inc is an approved{" "}
+                Approved{" "}
                 {carry.program === "ar-efa" ? "Arkansas EFA" : "Arizona ESA"}{" "}
-                vendor. Use eligible funds when you’re ready to buy.
+                vendor.
               </p>
             )}
           </div>
@@ -439,7 +531,8 @@ export function SignInScreen() {
         />
         {showProviders && (
           <ProviderButtons
-            providers={providers}
+            providers={primaryProviders}
+            emphasizeFirst={parentEntry}
             copy={copy}
             busy={busy || !!pending}
             pending={pending}
@@ -467,22 +560,37 @@ export function SignInScreen() {
           (passwords || passkeyCreate) && <EmailDivider copy={copy} />}
         {passkeyMethod ? (
           <form className="account-form" onSubmit={createWithPasskey}>
-            <label>
-              Email
-              <input
-                required
-                type="email"
-                autoComplete="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </label>
-            <Button variant="primary" type="submit" disabled={busy}>
+            <div className={styles.emailHeader}>
+              <label htmlFor="signup-passkey-email">Email</label>
+              {passwords && (
+                <button
+                  type="button"
+                  className={styles.inlineLink}
+                  disabled={busy || !!pending}
+                  onClick={() => go("create-password")}
+                >
+                  Use a password instead
+                </button>
+              )}
+            </div>
+            <input
+              id="signup-passkey-email"
+              required
+              type="email"
+              autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Button
+              variant={
+                parentEntry && primaryProviders.length ? "secondary" : "primary"
+              }
+              type="submit"
+              disabled={busy || !!pending}
+            >
               Create account with a passkey
             </Button>
-            <small className={styles.hint}>
-              No password to remember. This device keeps your passkey.
-            </small>
+            <small className={styles.hint}>No password to remember.</small>
           </form>
         ) : step === "check-email" ? (
           <div className={styles.emailHelp}>
@@ -540,7 +648,11 @@ export function SignInScreen() {
                   />
                 </label>
               )}
-              <Button variant="primary" type="submit" disabled={busy}>
+              <Button
+                variant="primary"
+                type="submit"
+                disabled={busy || !!pending}
+              >
                 {
                   {
                     "sign-in": "Sign in",
@@ -558,19 +670,28 @@ export function SignInScreen() {
         <div className="account-links">
           {step === "sign-in" && passwords && (
             <>
-              <button className="text-button" onClick={() => go("forgot")}>
+              <button
+                className="text-button"
+                disabled={busy || !!pending}
+                onClick={() => go("forgot")}
+              >
                 Forgot password?
               </button>
-              <button className="text-button" onClick={() => go("create")}>
+              <button
+                className="text-button"
+                disabled={busy || !!pending}
+                onClick={() => go("create")}
+              >
                 Create an account
               </button>
             </>
           )}
           {step === "create" && (
             <>
-              {passkeyCreate && passwords && (
+              {passkeyCreate && passwords && !passkeyMethod && (
                 <button
                   className="text-button"
+                  disabled={busy || !!pending}
                   onClick={() =>
                     go(passkeyMethod ? "create-password" : "create")
                   }
@@ -587,11 +708,24 @@ export function SignInScreen() {
               Already have an account?{" "}
               <button
                 className={styles.inlineLink}
+                disabled={busy || !!pending}
                 onClick={() => go("sign-in")}
               >
                 Sign in
               </button>
             </p>
+          )}
+          {additionalProviders.length > 0 && (
+            <details className={styles.moreMethods}>
+              <summary>More sign-in options</summary>
+              <ProviderButtons
+                providers={additionalProviders}
+                copy={copy}
+                busy={busy || !!pending}
+                pending={pending}
+                onSelect={social}
+              />
+            </details>
           )}
           {step === "two-factor" && (
             <button

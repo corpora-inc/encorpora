@@ -48,8 +48,13 @@ retrying could double-count a key event. Validate payload changes with Google's
 Measurement Protocol debug endpoint, which does not ingest test events, and
 confirm reporting against a subsequent real signup.
 
-First-party `auth_request` events identify preparation, provider handoff,
-password, passkey, and session failures. Runtime diagnostics contain fixed
+First-party `auth_request` events identify configuration, preparation, provider
+handoff, password, passkey, and session failures. The `screen` stage records
+visible auth controls after rendering; a route arrival alone does not establish
+that the form appeared. A completed handoff request does not establish a
+completed login. If the browser stays on AMP or restores a pending form, AMP
+checks the session and either continues or releases the controls with a retry
+message. These events use the existing asynchronous first-party batch. Runtime diagnostics contain fixed
 error categories and app bundle coordinates, never error messages, stacks,
 form values, or private URLs. Passkey failures also record the delay before the
 prompt and whether browser user activation was available; a `NotAllowedError`

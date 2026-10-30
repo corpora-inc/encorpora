@@ -36,9 +36,18 @@ try {
   for (const engine of [chromium, webkit]) {
     const browser = await engine.launch();
     try {
-      for (const failure of ["css", "promise"] as const) {
+      for (const failure of [
+        "css",
+        "promise",
+        "configuration",
+        "handoff",
+        "restored",
+      ] as const) {
         const context = await browser.newContext();
         const errors: Record<string, unknown>[] = [];
+        const auth: Record<string, unknown>[] = [];
+        const failures: Record<string, unknown>[] = [];
+        let failConfiguration = failure === "configuration";
         await context.route("**/*", async (route) => {
           const request = route.request(),
             url = new URL(request.url());
@@ -47,8 +56,13 @@ try {
             const batch = eventBatchSchema.parse(request.postDataJSON());
             for (const event of batch.events)
               if (event.event === "client_error") errors.push(event.props);
+              else if (event.event === "auth_request") auth.push(event.props);
+              else if (event.event === "auth_failure")
+                failures.push(event.props);
             return route.fulfill({ status: 202 });
           }
+          if (url.pathname === "/api/v1/auth-config" && failConfiguration)
+            return route.fulfill({ status: 503 });
           if (url.pathname === "/api/v1/auth-config")
             return route.fulfill({
               json: {
@@ -61,6 +75,13 @@ try {
             });
           if (url.pathname === "/api/auth/get-session")
             return route.fulfill({ json: null });
+          if (url.pathname === "/api/auth/sign-in/social")
+            return route.fulfill({
+              json: {
+                url: "https://provider.example.test/login",
+                redirect: false,
+              },
+            });
           if (url.pathname.startsWith("/api/"))
             return route.fulfill({ status: 204 });
           if (
@@ -83,6 +104,104 @@ try {
               waitUntil: "domcontentloaded",
             },
           );
+          if (failure === "configuration") {
+            await page
+              .getByText("Sign-in options couldn’t load. Please try again.")
+              .waitFor();
+            assert.equal(new URL(page.url()).pathname, "/sign-up");
+            assert.equal(
+              await page.locator('[data-provider="google"]').count(),
+              0,
+            );
+            await page.evaluate(() =>
+              window.dispatchEvent(new Event("pagehide")),
+            );
+            await page.waitForTimeout(100);
+            assert(
+              !auth.some((event) => event.stage === "screen"),
+              "failed configuration never reports a ready form",
+            );
+            failConfiguration = false;
+            await page
+              .getByRole("button", { name: "Try again", exact: true })
+              .click();
+            await page.locator('[data-provider="google"]').waitFor();
+            assert.equal(new URL(page.url()).pathname, "/sign-up");
+            const deadline = Date.now() + 15000;
+            while (
+              !auth.some((event) => event.stage === "screen") &&
+              Date.now() < deadline
+            )
+              await new Promise((resolve) => setTimeout(resolve, 100));
+            assert(
+              auth.some(
+                (event) =>
+                  event.stage === "configuration" && event.outcome === "failed",
+              ),
+            );
+            assert.doesNotMatch(
+              JSON.stringify([...auth, ...errors]),
+              /private|secret|https?:|stack|message/,
+            );
+            assert(
+              auth.some(
+                (event) =>
+                  event.stage === "screen" && event.outcome === "succeeded",
+              ),
+            );
+            console.log(
+              `${engine.name()}/configuration: signup recovers in place`,
+            );
+            continue;
+          }
+          if (failure === "handoff" || failure === "restored") {
+            const provider = page.locator('[data-provider="google"]');
+            await provider.waitFor();
+            const before = await provider.boundingBox();
+            const response = page.waitForResponse("**/api/auth/sign-in/social");
+            await provider.click();
+            await response;
+            if (failure === "restored") {
+              await page.waitForTimeout(100);
+              await page.evaluate(() =>
+                window.dispatchEvent(
+                  new PageTransitionEvent("pageshow", { persisted: true }),
+                ),
+              );
+            }
+            await page
+              .getByText(
+                "Google sign-in didn’t finish here. Try again or choose another option.",
+                { exact: true },
+              )
+              .waitFor({ timeout: failure === "restored" ? 3000 : 20000 });
+            assert.equal(await provider.isEnabled(), true);
+            assert.deepEqual(
+              await provider.boundingBox(),
+              before,
+              "recovery must not move controls",
+            );
+            await page.evaluate(() =>
+              window.dispatchEvent(new Event("pagehide")),
+            );
+            const deadline = Date.now() + 15000;
+            while (!failures.length && Date.now() < deadline)
+              await new Promise((resolve) => setTimeout(resolve, 100));
+            assert(
+              failures.some(
+                (event) =>
+                  event.reason === "incomplete" && event.provider === "google",
+              ),
+            );
+            assert.doesNotMatch(
+              JSON.stringify([...auth, ...failures]),
+              /private|secret|https?:|stack|message/,
+            );
+            console.log(
+              `${engine.name()}/${failure}: sign-in choices recover without layout shift`,
+            );
+            continue;
+          }
           if (failure === "css")
             await page.getByText("This screen could not be loaded.").waitFor();
           else {

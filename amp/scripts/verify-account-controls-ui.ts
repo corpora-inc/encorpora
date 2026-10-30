@@ -171,6 +171,19 @@ try {
           trial: { free: 100, placement: 10 },
         },
       });
+    if (path === "/api/v1/trials/current")
+      return route.fulfill({
+        json: {
+          trial: signedIn
+            ? {
+                token: "synthetic-practice-layout",
+                learnerId: "account-practice-learner",
+                birthYear: 2008,
+                expiresAt: "2099-01-01T00:00:00.000Z",
+              }
+            : null,
+        },
+      });
     if (path === "/api/v1/learners")
       return route.fulfill({
         json: {
@@ -277,7 +290,7 @@ try {
         if (!authenticated) {
           await practice
             .getByRole("heading", {
-              name: "Try AMP free.",
+              name: "Math that adapts as you answer.",
               exact: true,
             })
             .waitFor();
@@ -474,9 +487,12 @@ try {
   await page.getByRole("searchbox", { name: "Find a skill" }).waitFor();
   const search = page.getByRole("searchbox", { name: "Find a skill" });
   await page
-    .getByText("Your free assessment and practice are lighting up this map.", {
-      exact: true,
-    })
+    .getByText(
+      "Explore the curriculum. Start a free assessment to illuminate your skills.",
+      {
+        exact: true,
+      },
+    )
     .waitFor({ state: "attached" });
   const accountBox = (await page
     .getByRole("button", { name: "Open AMP menu" })
