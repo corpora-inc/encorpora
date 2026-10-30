@@ -531,6 +531,22 @@ test(
         outbox.find((r) => r.stage === "reminder").stopped_reason,
         "founder-managed",
       );
+      // Keep the historical migration assertions above, then bring the fixture
+      // forward before exercising the current operator commands and report.
+      for (const name of (
+        await readdir(new URL("../migrations/", import.meta.url))
+      )
+        .filter(
+          (name) =>
+            name.endsWith(".sql") && name > "0072-acquisition-outreach.sql",
+        )
+        .sort())
+        await pool.query(
+          await readFile(
+            new URL(`../migrations/${name}`, import.meta.url),
+            "utf8",
+          ),
+        );
       await runPipelineCommand(pool, {
         action: "import-sent",
         email: "old@example.com",

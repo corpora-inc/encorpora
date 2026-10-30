@@ -762,6 +762,24 @@ export class FamilyRepository {
           "SELECT jsonb_build_object('kind',kind,'occurredAt',occurred_at,'recordedAt',recorded_at) AS value FROM amp_acquisition_contact_events WHERE 'amp|'||user_id=$1 ORDER BY occurred_at,id",
         ]);
       }
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_account_classifications') AS relation",
+          )
+        ).rows[0]?.relation
+      ) {
+        datasets.push(
+          [
+            "account-classification",
+            "SELECT jsonb_build_object('category',category,'note',note,'updatedAt',updated_at) AS value FROM amp_account_classifications WHERE 'amp|'||user_id=$1",
+          ],
+          [
+            "account-classification-event",
+            "SELECT jsonb_build_object('category',category,'note',note,'recordedAt',recorded_at) AS value FROM amp_account_classification_events WHERE 'amp|'||user_id=$1 ORDER BY recorded_at,event_key",
+          ],
+        );
+      }
       const ownedTrials = await this.ownedTrialsAvailable(client);
       for (const [type, source] of datasets) {
         const query = ownedTrials

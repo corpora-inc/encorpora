@@ -9,5 +9,7 @@ export function purchaseEvidenceSql(account: string) {
 
 export function grantedAccessSql(account: string) {
   return `(EXISTS(SELECT 1 FROM amp_access_gifts g WHERE g.account_id=${account} AND g.activated_at IS NOT NULL)
+    OR EXISTS(SELECT 1 FROM amp_grants g JOIN amp_learners l ON l.id=g.learner_id WHERE l.account_id=${account}
+      AND g.channel='pilot' AND g.status='active' AND g.starts_at<=now() AND g.ends_at>now())
     OR EXISTS(SELECT 1 FROM amp_commerce_orders o WHERE o.account_id=${account} AND o.grant_state IS NOT NULL))`;
 }

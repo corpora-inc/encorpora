@@ -2,6 +2,10 @@ import { createHash, randomUUID } from "node:crypto";
 import type { Pool, PoolClient } from "pg";
 import { z } from "zod";
 import { purchaseEvidenceSql, grantedAccessSql } from "./evidence.js";
+import {
+  classificationCommandSchema,
+  classifyAccount,
+} from "./classification.js";
 
 const text = z.string().trim().min(1).max(500);
 const email = z
@@ -22,6 +26,7 @@ const receipt = {
   threadId: text,
 };
 export const pipelineCommandSchema = z.discriminatedUnion("action", [
+  classificationCommandSchema,
   z
     .object({
       action: z.literal("reconcile-sent"),
@@ -167,6 +172,7 @@ async function event(
 /** Operator-only commands. This module never calls a mail provider or sends mail. */
 export async function runPipelineCommand(pool: Pool, input: unknown) {
   const c = pipelineCommandSchema.parse(input);
+  if (c.action === "classify-account") return classifyAccount(pool, c);
   const db = await pool.connect();
   try {
     await db.query("BEGIN");
@@ -363,6 +369,16 @@ export async function runPipelineCommand(pool: Pool, input: unknown) {
           throw new Error("Recipient is unverified or changed");
         if (lead.suppressed_at || lead.unsubscribed_at || lead.hold_reason)
           throw new Error("Contact is held or suppressed");
+        if (
+          m.purpose !== "reply" &&
+          (
+            await db.query(
+              "SELECT 1 FROM amp_account_classifications WHERE user_id=$1 AND category<>'prospect'",
+              [uid],
+            )
+          ).rowCount
+        )
+          throw new Error("Account is not an acquisition prospect");
         if (
           !lead.mailbox_checked_at ||
           lead.mailbox_checked_for !== m.sender ||
