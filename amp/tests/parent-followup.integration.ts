@@ -29,7 +29,7 @@ const config = {
 };
 
 test(
-  "verified parent signup retains attribution; welcome and next-day reminder are retry-safe and optional",
+  "legacy parent follow-up retains attribution; welcome and next-day reminder are retry-safe and optional",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -43,7 +43,7 @@ test(
       await migrate(scoped.href);
       async function parent(id: string, verified = true, newsletter = false) {
         await pool.query(
-          "INSERT INTO amp_auth_users(id,name,email,\"emailVerified\") VALUES ($1,'Parent',$2,$3)",
+          "INSERT INTO amp_auth_users(id,name,email,\"emailVerified\",\"createdAt\") VALUES ($1,'Parent',$2,$3,now()-interval '1 day')",
           [id, `${id}@example.com`, verified],
         );
         const token = await createSignupIntent(pool, {
@@ -245,6 +245,22 @@ test(
       ).rows[0];
       assert.equal(linked.account_id, "amp|attributed");
       await markSignupVerified(pool, "attributed");
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_acquisition_contacts WHERE user_id='attributed'",
+          )
+        ).rows[0].n,
+        1,
+      );
+      assert.equal(
+        (
+          await pool.query(
+            "SELECT count(*)::int n FROM amp_parent_followup_outbox WHERE user_id='attributed' AND stopped_reason='founder-managed'",
+          )
+        ).rows[0].n,
+        2,
+      );
       const measurement = {
         enabled: true,
         destination: {

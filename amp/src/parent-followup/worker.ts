@@ -89,6 +89,7 @@ export async function deliverParentFollowup(
     AND o.lease_id=$2 AND o.lease_until>now()+interval '15 seconds'
     AND o.first_dispatch_at>now()-interval '23 hours'+interval '15 seconds'
     AND o.accepted_at IS NULL AND o.stopped_at IS NULL
+    AND NOT EXISTS(SELECT 1 FROM amp_acquisition_contacts c WHERE c.user_id=o.user_id)
     AND NOT EXISTS(SELECT 1 FROM amp_commerce_orders c WHERE c.account_id='amp|'||p.user_id AND c.grant_state IS NOT NULL)
     AND NOT EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.account_id='amp|'||p.user_id AND r.status='verified')
     AND NOT EXISTS(SELECT 1 FROM amp_access_gifts g WHERE g.account_id='amp|'||p.user_id AND g.activated_at IS NOT NULL)`,

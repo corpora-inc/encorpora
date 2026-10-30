@@ -223,8 +223,9 @@ advertising platforms. GA measures only approved public acquisition and purchase
 routes; it retires when a document enters a learning/private route. First-party
 measurement covers the later return to the paywall within that document.
 
-For personal outreach, `--outreach-file /private/path/sent-receipts.json` joins an
-existing private sent-receipt ledger (email, ISO `sent_at`, status `sent`). This
-reads evidence; it sends no mail. Provider acceptance and a sent receipt do not
-prove delivery, opens, clicks or replies. Do not label an ordinary return visit
-as an email conversion without corresponding evidence.
+Personal correspondence is recorded in the [acquisition pipeline](acquisition-pipeline.md).
+The visitor report includes its sent receipts, replies, opt-outs and holds from
+PostgreSQL. `--outreach-file` supports older private snapshots; use it only for
+receipts not imported into the database. Provider acceptance and a sent receipt
+do not prove delivery, opens, clicks or replies. Do not label an ordinary return
+visit as an email conversion without corresponding evidence.
