@@ -29,6 +29,7 @@ import { RETENTION } from "../privacy/retention-periods.js";
 
 export const metaDeliveryConfigSchema = z.strictObject({
   enabled: z.boolean().default(false),
+  signupEnabled: z.boolean().optional(),
   destination: metaDestinationSchema.omit({ enabled: true }),
   sources: measurementSourcesSchema,
 });

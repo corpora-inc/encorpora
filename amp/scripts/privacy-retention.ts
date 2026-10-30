@@ -1,4 +1,5 @@
 import { purgeOpenAIPurchases } from "../src/advertising/openai-delivery.js";
+import { purgeSignupMeasurement } from "../src/advertising/provider-signups.js";
 import { purgeParentFeedback } from "../src/feedback/parent-retention.js";
 import { purgeMetaPurchaseContexts } from "../src/advertising/meta-context.js";
 import { purgeAcquisition } from "../src/advertising/acquisition.js";
@@ -27,6 +28,7 @@ try {
   console.log(
     JSON.stringify({
       ...(await purgeExpiredPrivacyRecords(pool)),
+      ...(await purgeSignupMeasurement(pool)),
       expiredOpenAIPurchaseDeliveries: await purgeOpenAIPurchases(pool),
       expiredAdvertisingPermissions: await purgeAdvertisingPermissions(pool),
       expiredAcquisitionJourneys: await purgeAcquisition(pool),

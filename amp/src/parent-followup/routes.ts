@@ -67,6 +67,7 @@ export async function registerParentFollowupRoutes(
           options.pool,
           request.headers.cookie,
           account.slice(4),
+          request.headers,
         );
         await markSignupVerified(options.pool, account.slice(4));
       }

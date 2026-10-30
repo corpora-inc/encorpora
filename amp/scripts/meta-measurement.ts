@@ -6,6 +6,7 @@ import {
 import { metaMeasurementCredentials } from "../src/advertising/meta-credentials.js";
 import { readPrivateMeasurementJson } from "../src/advertising/google-credentials.js";
 import { createDatabasePool } from "../src/server/database.js";
+import { providerSignupBatch } from "../src/advertising/provider-signups.js";
 
 // Counts only: never print email, browser context, payloads, IDs or credentials.
 async function main() {
@@ -33,6 +34,27 @@ async function main() {
     connectionString: process.env.AMP_DATABASE_URL,
   });
   try {
+    console.log(
+      JSON.stringify({
+        signup: await providerSignupBatch(
+          pool,
+          {
+            enabled: config.enabled && config.signupEnabled === true,
+            provider: "meta",
+            destinationId: config.destination.datasetId,
+          },
+          operation,
+          limit,
+          {
+            accessToken: async () => {
+              const path = process.env.AMP_META_MEASUREMENT_CREDENTIALS;
+              if (!path) throw new Error("credentials_required");
+              return metaMeasurementCredentials(path)();
+            },
+          },
+        ),
+      }),
+    );
     if (operation === "report") {
       const report = await metaMeasurementReport(pool, config);
       console.log(

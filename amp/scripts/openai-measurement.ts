@@ -1,6 +1,7 @@
 import { readFile, lstat } from "node:fs/promises";
 import { createDatabasePool } from "../src/server/database.js";
 import { readPrivateMeasurementJson } from "../src/advertising/google-credentials.js";
+import { providerSignupBatch } from "../src/advertising/provider-signups.js";
 import {
   openaiDeliveryConfigSchema,
   openaiDestinationKey,
@@ -30,6 +31,31 @@ async function main() {
     connectionString: process.env.AMP_DATABASE_URL,
   });
   try {
+    const runtime = {
+      accessToken: async () => {
+        const key = process.env.AMP_OPENAI_MEASUREMENT_KEY;
+        if (!key) throw new Error();
+        const info = await lstat(key);
+        if (!info.isFile() || (info.mode & 0o077) !== 0 || info.size > 8192)
+          throw new Error();
+        return (await readFile(key, "utf8")).trim();
+      },
+    };
+    console.log(
+      JSON.stringify({
+        signup: await providerSignupBatch(
+          pool,
+          {
+            enabled: config.enabled && config.signupEnabled === true,
+            provider: "openai",
+            destinationId: config.pixelId,
+          },
+          operation,
+          limit,
+          runtime,
+        ),
+      }),
+    );
     if (operation === "report") {
       const rows = await pool.query(
         "SELECT state,count(*)::int AS count FROM amp_openai_purchase_queue WHERE destination_key=$1 GROUP BY state ORDER BY state",
@@ -51,20 +77,7 @@ async function main() {
             config,
             operation as "collect" | "deliver",
             limit,
-            {
-              accessToken: async () => {
-                const key = process.env.AMP_OPENAI_MEASUREMENT_KEY;
-                if (!key) throw new Error();
-                const info = await lstat(key);
-                if (
-                  !info.isFile() ||
-                  (info.mode & 0o077) !== 0 ||
-                  info.size > 8192
-                )
-                  throw new Error();
-                return (await readFile(key, "utf8")).trim();
-              },
-            },
+            runtime,
           ),
         ),
       );

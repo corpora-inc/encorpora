@@ -293,7 +293,11 @@ export async function createAccounts(pool: Pool, config: AccountsConfig) {
   const enroll = async (userId: string, headers?: Headers, path?: string) => {
     if (!config.parentFollowup) return;
     try {
-      await completeSignup(pool, headers?.get("cookie"), userId);
+      await completeSignup(pool, headers?.get("cookie"), userId, {
+        "user-agent": headers?.get("user-agent"),
+        "sec-gpc": headers?.get("sec-gpc"),
+        dnt: headers?.get("dnt"),
+      });
       await markSignupVerified(pool, userId);
       const method = path?.startsWith("/callback/")
         ? path.slice("/callback/".length)
