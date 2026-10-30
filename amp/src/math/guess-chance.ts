@@ -8,6 +8,7 @@ import { multiPartGuessChance } from "./multi-part-choice";
 import { figureChoiceGuessChance } from "./figure-choice";
 import { structuredWorkGuessChance } from "./structured-work";
 import { generateProblem, templates } from "./engine";
+import { historicalTemplates } from "./historical-templates";
 
 /** Instances sampled to read a choice family's option count from its answer
  * schema. tests/frontier-guessing.test.ts checks far more seeds against it. */
@@ -32,7 +33,12 @@ const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
  * options. Overstating the guess chance only discounts a correct answer. */
 const UNKNOWN_CHOICE_GUESS = 1 / 2;
 
-const byId = new Map(templates.map((template) => [template.id, template]));
+const byId = new Map(
+  [...templates, ...historicalTemplates].map((template) => [
+    template.id,
+    template,
+  ]),
+);
 const cache = new Map<string, number>();
 
 /** Uniform guessing among all permitted answers; multiple selections are sets.

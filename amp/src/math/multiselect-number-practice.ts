@@ -690,14 +690,19 @@ function factGrid(r: Random) {
 /* ------------------------------------------- equations with equal factors */
 
 export const equalFactorTemplate = selectTemplate({
-  id: "equal-factor-equations-select",
+  id: "equal-factor-truth-select",
   title: "Select the true equations with squares",
-  skillId: "missing-factor",
+  skillId: "multiplication-division-equality",
   gradeBand: "3–5",
   difficultyOffset: 0.2,
   description:
     "Select every true multiplication or division equation, including a number times itself and a number divided by itself, written with the operation or the result first.",
 });
+export const historicalEqualFactorTemplate = {
+  ...equalFactorTemplate,
+  id: "equal-factor-equations-select",
+  skillId: "missing-factor",
+};
 
 function equalFactor(r: Random) {
   const pool: Statement[] = [];
@@ -799,6 +804,12 @@ const equalFactorFamily = selectFamily(
   },
   "both",
 );
+export const historicalEqualFactorFamily = selectFamily(
+  historicalEqualFactorTemplate,
+  (r) => equalFactor(r),
+  { orientation: orientationAxis },
+  "both",
+);
 const placeValueFamily = selectFamily(placeValueFormsTemplate, (r) =>
   placeValueModel(r, pick(r, ["five-digit", "inner-zero", "word-comparison"])),
 );
@@ -819,7 +830,7 @@ const families = {
   "rounds-to-select": selectFamily(roundsToTemplate, roundsTo),
   "compare-to-pi-select": selectFamily(compareToPiTemplate, compareToPi),
   "multiplication-fact-grid-select": selectFamily(factGridTemplate, factGrid),
-  "equal-factor-equations-select": equalFactorFamily,
+  "equal-factor-truth-select": equalFactorFamily,
 };
 export const multiselectNumberFamilies = families;
 export const multiselectNumberTemplates = [

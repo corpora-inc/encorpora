@@ -40,6 +40,23 @@ test("the fixed circle problem passes", () => {
     assert.deepEqual(rules(text, { variables: new Set("a") }), [], text);
 });
 
+test("the bus-age variable is math in new inequality problems", () => {
+  assert.deepEqual(
+    rules("Let a be the age in years. Which values of $a$ fit?"),
+    ["bare lowercase letter"],
+  );
+  let buses = 0;
+  for (let i = 0; i < 64; i++) {
+    const problem = generateProblem("inequality-context-bound", `bus-age:${i}`);
+    assert.deepEqual(rules(problem.public.prompt), []);
+    if (problem.public.prompt.includes("ride the bus")) {
+      buses++;
+      assert.match(problem.public.prompt, /Let \$a\$ be/);
+    }
+  }
+  assert.ok(buses > 0, "The seed sweep includes the bus-age context");
+});
+
 test("the gate accepts ordinary prose", () => {
   const variables = new Set(["a", "A", "x"]);
   for (const text of [

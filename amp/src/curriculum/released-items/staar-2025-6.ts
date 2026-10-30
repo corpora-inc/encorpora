@@ -296,7 +296,7 @@ export const staarGrade6 = defineLedger(
       demand:
         "Build the inequality for the money left for snacks after a ticket price by dragging symbols",
       status: "covered",
-      templateIds: ["budget-inequality-slots", "inequality-from-context"],
+      templateIds: ["budget-inequality-slots", "inequality-context-bound"],
       limitations:
         "budget-inequality-slots completes an inequality for spending within a budget or saving toward a goal by choosing the known amount, the symbol and the limit. Each blank or slot takes one choice from its own list, the picker form of placing a value by dragging or choosing from a menu.",
     },
@@ -367,9 +367,9 @@ export const staarGrade6 = defineLedger(
       demand:
         "Choose the inequality for how many items at a unit price fit a budget",
       status: "partial",
-      templateIds: ["inequality-from-context"],
+      templateIds: ["inequality-context-bound"],
       limitations:
-        "inequality-from-context handles a count threshold; the product of a price and a variable compared with a budget is not practiced.",
+        "inequality-context-bound handles a count threshold; the product of a price and a variable compared with a budget is not practiced.",
     },
     {
       item: {

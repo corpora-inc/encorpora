@@ -247,7 +247,7 @@ export const staarAlgebra1 = defineLedger(
       demand:
         "Choose the two-variable inequality for a budget of two ingredients with different prices per pound",
       status: "partial",
-      templateIds: ["constraint-feasible", "inequality-from-context"],
+      templateIds: ["constraint-feasible", "inequality-context-bound"],
       limitations:
         "Related families choose a one-variable inequality or test points of a stated region; writing a two-variable cost inequality is not practiced.",
     },

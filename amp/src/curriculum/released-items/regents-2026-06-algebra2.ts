@@ -80,7 +80,7 @@ export const regentsAlgebra2June2026 = defineLedger(
       demand:
         "Choose the inequality for a fixed cost plus an hourly rate within a budget",
       status: "covered",
-      templateIds: ["inequality-from-context", "fee-budget-inequality"],
+      templateIds: ["inequality-context-bound", "fee-budget-inequality"],
       limitations:
         "fee-budget-inequality (write-inequality) chooses the inequality for a fixed cost plus a per-unit cost within a budget, at most or under.",
     },

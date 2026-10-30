@@ -68,9 +68,9 @@ const meta = (
 
 export const mcasGapTemplates: readonly TemplateMetadata[] = [
   meta(
-    "mcas-true-fact-equations",
+    "fact-equation-truth-select",
     "Select the true multiplication and division equations",
-    "missing-factor",
+    "multiplication-division-equality",
     "3–5",
     0.3,
     "Judge multiplication and division facts, including facts of tens, written with the result on either side, as a select-all list or as true-or-false pairs.",
@@ -2648,7 +2648,7 @@ const multiBuilders: Record<
   string,
   (r: Random, axes: Record<string, string>) => Built
 > = {
-  "mcas-true-fact-equations": trueFactEquations,
+  "fact-equation-truth-select": trueFactEquations,
   "mcas-round-hundred-select": roundSelect,
   "mcas-prime-factor-select": primeFactorSelect,
   "mcas-comparison-equations-select": (r) => comparisonEquations(r),
@@ -2692,7 +2692,15 @@ const equationAxes = {
     "true-false-pair",
   ]),
 };
-const templateById = (id: string) => mcasGapTemplates.find((t) => t.id === id)!;
+export const historicalMcasEquationTemplate: TemplateMetadata = {
+  ...mcasGapTemplates.find((t) => t.id === "fact-equation-truth-select")!,
+  id: "mcas-true-fact-equations",
+  skillId: "missing-factor",
+};
+const templateById = (id: string) =>
+  id === historicalMcasEquationTemplate.id
+    ? historicalMcasEquationTemplate
+    : mcasGapTemplates.find((t) => t.id === id)!;
 /** A statement-set family on the variation layer: the builder is the model,
  * `statementSurface` draws, orients and formats it. */
 function statementFamily<A extends AxisSet>(
@@ -2733,6 +2741,11 @@ function statementFamily<A extends AxisSet>(
 const variedFamilies: Record<string, VariedFamily<any, Built>> = {
   "mcas-true-fact-equations": statementFamily(
     "mcas-true-fact-equations",
+    equationAxes,
+    (r) => trueFactEquations(r),
+  ),
+  "fact-equation-truth-select": statementFamily(
+    "fact-equation-truth-select",
     equationAxes,
     (r) => trueFactEquations(r),
   ),
@@ -2783,7 +2796,7 @@ export function mcasGapCase(
 ): McasGapCase {
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
-  const template = mcasGapTemplates.find((t) => t.id === templateId);
+  const template = templateById(templateId);
   if (!template) throw new Error(`Unknown template ${templateId}`);
   const varied = variedFamilies[templateId];
   // Figure-surface axes (number-domain-axes.ts): drawn from their own

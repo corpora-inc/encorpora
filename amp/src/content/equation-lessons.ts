@@ -451,7 +451,7 @@ export const equationLessons: Lesson[] = [
     title: "Write an inequality for a condition",
     summary:
       "Translate a condition into a direction, greater or less, and an endpoint rule, included or not.",
-    templateIds: ["inequality-from-context"],
+    templateIds: ["inequality-context-bound"],
     objectives: [
       "Write x > c, x < c, x ≥ c or x ≤ c for a condition described in words.",
       "Decide whether the boundary value itself satisfies the condition.",
@@ -753,7 +753,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
     ],
     watch: "Count the cubes in every bag; each bag has its own.",
   },
-  "inequality-from-context": {
+  "inequality-context-bound": {
     goal: "Write the inequality for a condition stated in words.",
     terms: [["boundary", "The number the condition compares with."]],
     method: [
@@ -820,7 +820,7 @@ export const equationPrinciples: Record<string, string> = {
     "An equation represents a story when each quantity appears with the role it has in the story: repeated amounts multiply, one-time amounts add or subtract once.",
   "balance-two-step":
     "A balance stays level when both pans change the same way; removing the loose cubes and splitting into equal groups isolates one block.",
-  "inequality-from-context":
+  "inequality-context-bound":
     "Greater-than conditions use > or ≥ and less-than conditions use < or ≤; the boundary is included exactly when the condition allows the boundary value.",
   "inequality-from-number-line":
     "A graph's circle shows whether the boundary is a solution, and its ray shows the direction in which all other solutions lie.",

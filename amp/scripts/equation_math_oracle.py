@@ -15,7 +15,7 @@ from pathlib import Path
 
 ONE_STEP = frozenset({'one-step-equation', 'one-step-equation-story', 'balance-one-step'})
 TWO_STEP = frozenset({'two-step-equation', 'two-step-word-problem', 'two-step-equation-model', 'balance-two-step'})
-INEQUALITY = frozenset({'inequality-from-context', 'inequality-from-number-line',
+INEQUALITY = frozenset({'inequality-context-bound', 'inequality-from-number-line',
                         'inequality-number-line-choice', 'inequality-solution-set'})
 EQUATIONS = ONE_STEP | TWO_STEP | INEQUALITY
 EQUATIONS_CHOICE = frozenset({'one-step-equation-story', 'two-step-equation-model'}) | INEQUALITY
@@ -499,7 +499,7 @@ def solve_equations(public):
         'one-step-equation-story': solve_one_step_story,
         'two-step-word-problem': solve_two_step_story,
         'two-step-equation-model': solve_two_step_story,
-        'inequality-from-context': solve_context,
+        'inequality-context-bound': solve_context,
         'inequality-from-number-line': solve_number_line,
         'inequality-number-line-choice': solve_line_choice,
         'inequality-solution-set': solve_solution_set,
@@ -540,7 +540,7 @@ def review_equation_fixtures():
     model = 'Each of 5 friends buys one movie ticket and one 8-dollar snack. Together they spend 95 dollars. Let c be the cost of one ticket, in dollars. Which equation can be used to find c?'
     assert solve_equations(public('two-step-equation-model', model, choices('5c + 8 = 95', '5(c − 8) = 95', '5(c + 8) = 95', '8(c + 5) = 95'))) == 'option-c'
     ctx = 'An elevator may carry at most 11 people. Let n be the number of people on the elevator during a trip. Which inequality describes all possible values of n?'
-    assert solve_equations(public('inequality-from-context', ctx, choices('n ≥ 11', 'n > 11', 'n ≤ 11', 'n < 11'))) == 'option-c'
+    assert solve_equations(public('inequality-context-bound', ctx, choices('n ≥ 11', 'n > 11', 'n ≤ 11', 'n < 11'))) == 'option-c'
     line = {'kind': 'inequality-lines', 'min': -12, 'max': -2, 'lines': [{'boundary': -8, 'direction': 'right', 'included': False}]}
     assert solve_equations(public('inequality-from-number-line', 'Which inequality does the number line show?', choices('x ≤ −8', 'x > −8', 'x ≥ −8', 'x < −8'), line)) == 'option-b'
     lists = choices('−13, −4, −2', '−1.3, 0, 28', '−11, −2, 0', '−10, −2.7, −1.3')
@@ -587,7 +587,7 @@ def content(data=None):
 
 def worked_answer(lesson):
     """Recompute each worked example from its prompt with this file's readers."""
-    template, worked = lesson['id'], lesson['workedExample']
+    template, worked = lesson['templateIds'][0], lesson['workedExample']
     prompt, answer = worked['prompt'], worked['answer']
     if template in ('one-step-equation', 'two-step-equation'):
         m = re.fullmatch(r'Solve for ([a-z]): (.+)\.', prompt)
@@ -605,7 +605,7 @@ def worked_answer(lesson):
     if template == 'two-step-equation-model':
         key, form, (v, define, _), unknown, rest = two_step_story(prompt)
         return equivalent(equation(answer, v)[0], form)
-    if template == 'inequality-from-context':
+    if template == 'inequality-context-bound':
         m, op = next((re.match(p, prompt), op) for p, op in CONDITIONS if re.match(p, prompt))
         return relation_label(answer, m[2]) == (op, number(m[1]))
     if template == 'inequality-from-number-line':
@@ -630,7 +630,7 @@ WORKSHEET_BREADTH = {
     'two-step-word-problem': lambda ps: len({two_step_story(p['prompt'])[0] for p in ps}) == 7,
     'two-step-equation-model': lambda ps: len({two_step_story(p['prompt'])[0] for p in ps}) == 7,
     'balance-two-step': lambda ps: {p['figure']['groups'] > 1 for p in ps} == {True, False},
-    'inequality-from-context': lambda ps: len({re.search(r'[<>≤≥]', ' '.join(o['label'] for o in p['response']['options'])) is not None for p in ps}) == 1,
+    'inequality-context-bound': lambda ps: len({re.search(r'[<>≤≥]', ' '.join(o['label'] for o in p['response']['options'])) is not None for p in ps}) == 1,
     'inequality-from-number-line': lambda ps: {line_relation(p['figure']['lines'][0]) for p in ps} == set('<>≤≥'),
     'inequality-number-line-choice': lambda ps: any('all numbers' in p['prompt'] for p in ps) and any('solutions of' in p['prompt'] for p in ps),
     'inequality-solution-set': lambda ps: any('statement' in p['prompt'] for p in ps) and any('list' in p['prompt'] for p in ps),
@@ -700,7 +700,7 @@ def review_equation_content(data=None):
             require(actual == expected, f'Worksheet answer: {p["public"]["prompt"]!r}')
             checked += review_problem(p)
         require(WORKSHEET_BREADTH[sheet['templateId']]([p['public'] for p in problems]), 'Worksheet lacks breadth: ' + sheet['templateId'])
-    lessons = {lesson['id']: lesson for lesson in data['lessons']}
+    lessons = {lesson['templateIds'][0]: lesson for lesson in data['lessons']}
     require(set(lessons) == EQUATIONS, 'Missing standalone lesson')
     for lesson in lessons.values():
         require(worked_answer(lesson), 'Worked example answer: ' + lesson['id'])

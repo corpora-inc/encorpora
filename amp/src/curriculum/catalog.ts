@@ -352,6 +352,8 @@ multiplication-facts|3|operations|Recall products of one-digit factors|multiplic
 division-meaning|3|operations|Interpret division as equal sharing and grouping|multiplication-meaning|3.OA.A.2
 division-facts|3|operations|Use related multiplication facts to find quotients|division-meaning,multiplication-facts|3.OA.B.6,3.OA.C.7
 missing-factor|3|algebra|Find missing factors and quotients|division-facts|3.OA.A.4
+multiplication-division-equality|3|algebra|Decide whether multiplication and division equations have equal values on both sides|equality,multiplication-facts,division-facts|
+whole-number-equality|4|algebra|Decide whether whole-number equations with the four operations have equal values on both sides|multiplication-division-equality,add-subtract-thousands|
 operation-properties|3|operations|Use associative commutative and distributive structure|multiplication-meaning|3.OA.B.5
 multiplicative-stories|3|modeling|Select multiplication or division to model a story|division-meaning|3.OA.A.3
 multi-operation-stories|3|modeling|Solve two-step stories and assess reasonableness|multiplicative-stories,two-step-stories|3.OA.D.8

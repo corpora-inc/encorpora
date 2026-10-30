@@ -253,9 +253,9 @@ export const mcasGrade7 = defineLedger(
       demand:
         "Choose the inequality of the form px + q at most r for a sample-collection limit",
       status: "partial",
-      templateIds: ["inequality-from-context"],
+      templateIds: ["inequality-context-bound"],
       limitations:
-        "inequality-from-context chooses a one-variable bound; a two-term inequality with a fixed amount and a per-item amount is not practiced.",
+        "inequality-context-bound chooses a one-variable bound; a two-term inequality with a fixed amount and a per-item amount is not practiced.",
     },
     {
       section: "Session 2",

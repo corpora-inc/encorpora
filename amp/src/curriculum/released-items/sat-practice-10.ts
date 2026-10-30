@@ -71,7 +71,7 @@ export const satPractice10 = defineLedger(
         "Choose the inequality for a one-time fee plus an hourly rate that must stay at or under a budget",
       status: "covered",
       templateIds: [
-        "inequality-from-context",
+        "inequality-context-bound",
         "two-step-equation-model",
         "linear-model-value",
         "fee-budget-inequality",
