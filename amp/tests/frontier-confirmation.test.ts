@@ -31,6 +31,57 @@ const estimate = (observations: FrontierObservation[]) =>
     guessOf: () => 0.25,
   });
 
+test("below-kindergarten practice retains introductory variety without widening strict or advanced-focus ceilings", () => {
+  const nodes = new Map(skills.map((skill) => [skill.id, skill]));
+  const byId = new Map(templates.map((template) => [template.id, template]));
+  const gradeOf = (id: string) => templateGrade(byId.get(id)!, nodes);
+  const frontier = estimateFrontier({
+    start: 0,
+    observations: Array.from({ length: 30 }, (_, n) => ({
+      templateId: "count-objects",
+      correct: false,
+      assisted: false,
+      createdAt: new Date(day + n * 60000).toISOString(),
+    })),
+    gradeOf,
+    strandOf: (id) => nodes.get(byId.get(id)!.skillId)!.strand,
+    guessOf: guessChanceOf,
+  });
+  assert.ok(frontier.adaptive!.level < -0.4);
+  const seen = new Set<number>();
+  const advanced = templates.filter((template) => gradeOf(template.id) >= 9);
+  const advancedFloor = Math.min(
+    ...advanced.map((template) => gradeOf(template.id)),
+  );
+  for (let seed = 0; seed < 32; seed++) {
+    const input = {
+      templates,
+      skills,
+      frontier,
+      attempts: [],
+      evidence: [],
+      count: 5,
+      seed: `beginner-bound:${seed}`,
+      now: day,
+    };
+    const online = planMixedPractice(input);
+    assert.equal(online.length, 5);
+    for (const choice of online) {
+      const grade = gradeOf(choice.template.id);
+      assert.ok(grade <= 1);
+      seen.add(grade);
+    }
+    const offline = planMixedPractice({ ...input, strictCeiling: true });
+    assert.ok(offline.every((choice) => gradeOf(choice.template.id) <= 0.5));
+    const focused = planMixedPractice({ ...input, templates: advanced });
+    assert.equal(focused.length, 5);
+    assert.ok(
+      focused.every((choice) => gradeOf(choice.template.id) === advancedFloor),
+    );
+  }
+  assert.ok(seen.has(1), "nearby introductory families remain available");
+});
+
 test("a failed harder probe preserves established lower readiness", () => {
   const history = Array.from({ length: 8 }, (_, n) =>
     answer(7, n, true, n * 7),
