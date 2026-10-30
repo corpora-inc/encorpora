@@ -498,7 +498,7 @@ const courses: readonly TexasCourse[] = [
           "one-step-equation",
           "one-step-equation-story",
           "balance-one-step",
-          "inequality-from-context",
+          "inequality-context-bound",
           "check-equation-candidate",
           "inequality-solution-set",
         ],
@@ -1110,7 +1110,7 @@ const courses: readonly TexasCourse[] = [
         ["two-step-equations", "simple-inequalities"],
         [
           "two-step-equation-model",
-          "inequality-from-context",
+          "inequality-context-bound",
           "inequality-number-line-choice",
           "inequality-from-number-line",
         ],

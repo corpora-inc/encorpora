@@ -51,8 +51,8 @@ test("every template is registered, deterministic, reaches the engine and has al
   const expected: Record<string, number> = {
     "fl-equation-truth-20": 2,
     "fl-equation-truth-100": 2,
-    "fl-equation-truth-mult-div": 2,
-    "fl-equation-truth-whole": 2,
+    "multiplication-division-equation-truth": 2,
+    "whole-number-equation-truth": 2,
     "fl-equation-truth-grouped": 2,
     "fl-decimal-tenth-hundredth-step": 8,
     "fl-decimal-by-tenth-hundredth": 5,
@@ -121,11 +121,11 @@ test("equation truth: exactly one choice has the asked truth value and ranges fo
   const bands: Record<string, { cap: number; ops: RegExp }> = {
     "fl-equation-truth-20": { cap: 20, ops: /^[0-9 +\-=]+$/ },
     "fl-equation-truth-100": { cap: 100, ops: /^[0-9 +\-=]+$/ },
-    "fl-equation-truth-mult-div": {
+    "multiplication-division-equation-truth": {
       cap: 144,
       ops: /^[0-9 =]*(\\times|\\div|[0-9 =])*$/,
     },
-    "fl-equation-truth-whole": {
+    "whole-number-equation-truth": {
       cap: 190,
       ops: /^[0-9 +\-=]*(\\times|\\div|[0-9 +\-=])*$/,
     },
@@ -148,15 +148,15 @@ test("equation truth: exactly one choice has the asked truth value and ranges fo
         assert.match(text, band.ops, `${id}: ${text}`);
         const numbers = text.match(/\d+(\.\d+)?/g)!.map(Number);
         for (const n of numbers) assert.ok(n <= band.cap, `${id}: ${text}`);
-        if (id === "fl-equation-truth-mult-div")
+        if (id === "multiplication-division-equation-truth")
           assert.doesNotMatch(text, /[+-]/, text);
         if (id === "fl-equation-truth-20")
           for (const side of text.split(" = "))
             assert.ok(evalExpr(side) <= 20 && evalExpr(side) >= 0, text);
-        if (id === "fl-equation-truth-mult-div")
+        if (id === "multiplication-division-equation-truth")
           for (const m of text.matchAll(/(\d+) \\div (\d+)/g))
             assert.ok(num(m[2]!) <= 12 && num(m[1]!) / num(m[2]!) <= 12, text);
-        if (id === "fl-equation-truth-mult-div")
+        if (id === "multiplication-division-equation-truth")
           for (const m of text.matchAll(/(\d+) \\times (\d+)/g))
             assert.ok(num(m[1]!) <= 12 && num(m[2]!) <= 12, text);
         if (id === "fl-equation-truth-grouped") {

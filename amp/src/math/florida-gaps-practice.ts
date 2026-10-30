@@ -6,6 +6,32 @@ import {
   type Random,
 } from "./distribution-practice";
 
+/** Frozen metadata for previously served v1 problems. */
+export const historicalFloridaGapTemplates: readonly TemplateMetadata[] = [
+  {
+    id: "fl-equation-truth-mult-div",
+    version: 1,
+    title: "Is the multiplication or division equation true?",
+    skillId: "missing-factor",
+    gradeBand: "3–5",
+    difficultyOffset: 0.1,
+    requiredResponseCapability: "single-choice-v1",
+    description:
+      "Choose the true (or false) multiplication or division equation using facts within 12, with the result on either side.",
+  },
+  {
+    id: "fl-equation-truth-whole",
+    version: 1,
+    title: "Is the whole-number equation true?",
+    skillId: "missing-factor",
+    gradeBand: "3–5",
+    difficultyOffset: 0.2,
+    requiredResponseCapability: "single-choice-v1",
+    description:
+      "Choose the true (or false) whole-number equation that uses any of the four operations, with multiplication facts within 12.",
+  },
+];
+
 /**
  * Round-2 problem types for Florida B.E.S.T. benchmarks whose task is not yet
  * practiced. Every template is new and attached to an existing skill; no
@@ -35,10 +61,10 @@ export const floridaGapTemplates: readonly TemplateMetadata[] = [
       "Choose the true (or false) addition or subtraction equation within 100, such as 27 + 13 = 26 + 14, by finding the value of each side.",
   },
   {
-    id: "fl-equation-truth-mult-div",
+    id: "multiplication-division-equation-truth",
     version: 1,
     title: "Is the multiplication or division equation true?",
-    skillId: "missing-factor",
+    skillId: "multiplication-division-equality",
     gradeBand: "3–5",
     difficultyOffset: 0.1,
     requiredResponseCapability: "single-choice-v1",
@@ -46,10 +72,10 @@ export const floridaGapTemplates: readonly TemplateMetadata[] = [
       "Choose the true (or false) multiplication or division equation using facts within 12, with the result on either side.",
   },
   {
-    id: "fl-equation-truth-whole",
+    id: "whole-number-equation-truth",
     version: 1,
     title: "Is the whole-number equation true?",
-    skillId: "missing-factor",
+    skillId: "whole-number-equality",
     gradeBand: "3–5",
     difficultyOffset: 0.2,
     requiredResponseCapability: "single-choice-v1",
@@ -1784,6 +1810,8 @@ function trapezoid(r: Random): Built {
 const builders: Record<string, (r: Random) => Built> = {
   "fl-equation-truth-20": equationTruth("g1"),
   "fl-equation-truth-100": equationTruth("g2"),
+  "multiplication-division-equation-truth": equationTruth("g3"),
+  "whole-number-equation-truth": equationTruth("g4"),
   "fl-equation-truth-mult-div": equationTruth("g3"),
   "fl-equation-truth-whole": equationTruth("g4"),
   "fl-equation-truth-grouped": equationTruth("g5"),
@@ -1799,7 +1827,7 @@ const builders: Record<string, (r: Random) => Built> = {
   "fl-function-arithmetic": functionArithmetic,
   "fl-trapezoid-consequences": trapezoid,
 };
-export const floridaGapTemplateIds = Object.keys(builders);
+export const floridaGapTemplateIds = floridaGapTemplates.map((t) => t.id);
 
 const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 function leaks(draft: Draft): boolean {
@@ -1819,7 +1847,9 @@ function leaks(draft: Draft): boolean {
 export function floridaGapCase(templateId: string, seed: string) {
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
-  const meta = floridaGapTemplates.find((t) => t.id === templateId);
+  const meta = [...floridaGapTemplates, ...historicalFloridaGapTemplates].find(
+    (t) => t.id === templateId,
+  );
   const build = builders[templateId];
   if (!meta || !build) throw new Error(`Unknown template ${templateId}`);
   const r = random(meta.id, seed);

@@ -11,6 +11,8 @@ import {
   generateSatGeometryAdvancedProblem,
 } from "./sat-geometry-advanced-practice";
 import { normalizeSelection } from "./selection-response";
+import { historicalTrueEquationChoice } from "./operation-sentence-practice";
+import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
 import { withClientFigures } from "./variation/axes";
 import { gradePointPlot, normalizePointPlot } from "./point-plot";
@@ -89,6 +91,7 @@ import {
 import { decimalTemplates, generateDecimalProblem } from "./decimal-practice";
 import {
   equationTemplates,
+  historicalEquationTemplates,
   generateEquationProblem,
 } from "./equation-practice";
 import {
@@ -292,6 +295,7 @@ import {
 import { texasK2Templates, generateTexasK2Problem } from "./texas-k2-practice";
 import {
   floridaGapTemplates,
+  historicalFloridaGapTemplates,
   generateFloridaGapProblem,
 } from "./florida-gaps-practice";
 import {
@@ -861,6 +865,7 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
     ...functionToolkitTemplates,
     ...twoVariableTemplates,
     ...equationTemplates,
+    ...historicalEquationTemplates,
     ...volumeCoordinateTemplates,
     ...distributionTemplates,
     ...inferenceTemplates,
@@ -911,6 +916,9 @@ export function polishProblem(problem: GeneratedProblem): GeneratedProblem {
   ].some((t) => t.id === problem.public.templateId);
   const keepAuthored =
     preserveAlgebra ||
+    ["true-equation-choice", "equal-factor-equations-select"].includes(
+      problem.public.templateId,
+    ) ||
     familyRegistry.preserveAlgebra.has(problem.public.templateId);
   const text = (value: string) => (keepAuthored ? value : polish(value));
   return {
@@ -941,6 +949,12 @@ function generateRawProblem(
   templateId: string,
   seed: string,
 ): GeneratedProblem {
+  if (templateId === "true-equation-choice")
+    return historicalTrueEquationChoice.generate(seed).problem;
+  if (templateId === "equal-factor-equations-select")
+    return historicalEqualFactorFamily.generate(seed).problem;
+  if (templateId === "mcas-true-fact-equations")
+    return generateMcasGapProblem(templateId, seed);
   const familyGenerate = familyRegistry.generators.get(templateId);
   if (familyGenerate) return familyGenerate(templateId, seed);
   if (areaVolumeTemplates.some((t) => t.id === templateId))
@@ -987,7 +1001,11 @@ function generateRawProblem(
     return generatePatternFunctionProblem(templateId, seed);
   if (timeMoneyTemplates.some((t) => t.id === templateId))
     return generateTimeMoneyProblem(templateId, seed);
-  if (equationTemplates.some((t) => t.id === templateId))
+  if (
+    [...equationTemplates, ...historicalEquationTemplates].some(
+      (t) => t.id === templateId,
+    )
+  )
     return generateEquationProblem(templateId, seed);
   if (decimalTemplates.some((t) => t.id === templateId))
     return generateDecimalProblem(templateId, seed);
@@ -1077,7 +1095,11 @@ function generateRawProblem(
     return generateQuadraticProblem(templateId, seed);
   if (numberMeasurementGapTemplates.some((t) => t.id === templateId))
     return generateNumberMeasurementGapProblem(templateId, seed);
-  if (floridaGapTemplates.some((t) => t.id === templateId))
+  if (
+    [...floridaGapTemplates, ...historicalFloridaGapTemplates].some(
+      (t) => t.id === templateId,
+    )
+  )
     return generateFloridaGapProblem(templateId, seed);
   if (regentsGapTemplates.some((t) => t.id === templateId))
     return generateRegentsGapProblem(templateId, seed);

@@ -10,8 +10,8 @@ from decimal import Decimal
 from fractions import Fraction
 
 EQUATION_TRUTH = frozenset({
-    'fl-equation-truth-20', 'fl-equation-truth-100', 'fl-equation-truth-mult-div',
-    'fl-equation-truth-whole', 'fl-equation-truth-grouped',
+    'fl-equation-truth-20', 'fl-equation-truth-100', 'multiplication-division-equation-truth',
+    'whole-number-equation-truth', 'fl-equation-truth-grouped',
 })
 FL_CHOICE = EQUATION_TRUTH | frozenset({
     'fl-expression-description-match', 'fl-two-step-story-equation', 'fl-vector-angle',
@@ -175,12 +175,12 @@ def solve_equation_truth(public):
         elif template == 'fl-equation-truth-100':
             require(not has('*') and not has('/') and not has('('), 'Within 100 uses only + and -')
             require(max(numerals) <= 100 and 0 <= left <= 100 and 0 <= right <= 100, 'Value above 100')
-        elif template == 'fl-equation-truth-mult-div':
+        elif template == 'multiplication-division-equation-truth':
             require(not re.search(r'[+]|\d\s*-', label), 'Only multiplication and division')
             require(all(n.denominator == 1 for n in numerals), 'Whole numbers only')
             for a, op, b in re.findall(r'(\d+)\s*([*/])\s*(\d+)', label):
                 require(int(b) <= 12 and (op == '/' or int(a) <= 12), 'Fact outside 12')
-        elif template == 'fl-equation-truth-whole':
+        elif template == 'whole-number-equation-truth':
             require(all(n.denominator == 1 for n in numerals), 'Whole numbers only')
             require(left.denominator == 1 and right.denominator == 1 and left >= 0 and right >= 0, 'Whole sides')
         else:
@@ -734,8 +734,8 @@ def self_test():
     cases = [
         ('fl-equation-truth-20', 'Which equation is false?' + truth, opts(['$15 - 1 = 14$', '$11 - 1 = 10 + 1$', '$16 = 18 - 2$', '$19 - 6 = 18 - 5$']), 'option-b', 'option-a'),
         ('fl-equation-truth-100', 'Which equation is true?' + truth, opts(['$2 + 21 = 23$', '$69 - 54 = 92 - 78$', '$56 + 42 = 55 + 33$', '$81 = 88 - 5$']), 'option-a', 'option-d'),
-        ('fl-equation-truth-mult-div', 'Which equation is false?' + truth, opts(['$41 = 4 \\times 10$', '$4 \\times 7 = 28$', '$72 \\div 6 = 60 \\div 5$', '$15 = 5 \\times 3$']), 'option-a', 'option-b'),
-        ('fl-equation-truth-whole', 'Which equation is true?' + truth, opts(['$72 \\div 2 = 4 \\times 10$', '$8 \\times 7 = 75 - 20$', '$15 = 112 \\div 8$', '$6 \\times 2 = 24 \\div 2$']), 'option-d', 'option-a'),
+        ('multiplication-division-equation-truth', 'Which equation is false?' + truth, opts(['$41 = 4 \\times 10$', '$4 \\times 7 = 28$', '$72 \\div 6 = 60 \\div 5$', '$15 = 5 \\times 3$']), 'option-a', 'option-b'),
+        ('whole-number-equation-truth', 'Which equation is true?' + truth, opts(['$72 \\div 2 = 4 \\times 10$', '$8 \\times 7 = 75 - 20$', '$15 = 112 \\div 8$', '$6 \\times 2 = 24 \\div 2$']), 'option-d', 'option-a'),
         ('fl-equation-truth-grouped', 'Which equation is true?' + truth, opts(['$(21 + 11) \\div 4 = (21 + 21) \\div 6$', '$30.2 - 9 = 23.2 - 7$', '$(69 + 36) \\div 5 = (1 + 6) \\times 3$', '$34.8 = 30.8 - 6$']), 'option-c', 'option-a'),
         ('fl-decimal-tenth-hundredth-step', 'What number is 0.01 more than 3.79? Enter it as a decimal.', NUMBER_RESPONSE, '3.8', '3.7'),
         ('fl-decimal-tenth-hundredth-step', 'What number is 0.1 less than 7.06? Enter it as a decimal.', NUMBER_RESPONSE, '6.96', '7.05'),

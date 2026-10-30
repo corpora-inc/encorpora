@@ -48,6 +48,10 @@ import {
   type TemplateMetadata,
 } from "../src/math/contracts";
 import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
+import {
+  historicalTemplates,
+  templateReplacements,
+} from "../src/math/historical-templates";
 import { parseSelection } from "../src/math/selection-response";
 import { mcasVariedAxes } from "../src/math/mcas-gap-practice";
 import { objectiveForSkill } from "../src/curriculum/selection";
@@ -409,7 +413,11 @@ test("migrated families keep every pre-axis output byte for byte at legacy axis 
   ) as Record<string, string[]>;
   assert.deepEqual(
     Object.keys(golden).sort(),
-    Object.keys(mcasVariedAxes).sort(),
+    // The classification replacement has a new content identity, so the
+    // original family keeps its pre-axis fixture in the historical catalog.
+    Object.keys(mcasVariedAxes)
+      .filter((id) => !Object.values(templateReplacements).includes(id))
+      .sort(),
   );
   for (const [id, digests] of Object.entries(golden)) {
     let legacy = 0;
@@ -443,9 +451,11 @@ test("migrated families keep every pre-axis output byte for byte at legacy axis 
   }
 });
 
-test("axes add no templates: migrated families keep their ids, skills and exposure objective", () => {
+test("each varied family has one active or historical identity and an exposure objective", () => {
   for (const id of Object.keys(mcasVariedAxes)) {
-    const matches = templates.filter((t) => t.id === id);
+    const matches = [...templates, ...historicalTemplates].filter(
+      (t) => t.id === id,
+    );
     assert.equal(matches.length, 1, id);
     assert.ok(objectiveForSkill(matches[0]!.skillId), id);
     assert.ok(!templates.some((t) => t.id.startsWith(`${id}-`)), id);

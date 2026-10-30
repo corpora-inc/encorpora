@@ -70,13 +70,18 @@ export const relatedSubtractionSentenceTemplate: TemplateMetadata = {
 };
 export const trueEquationChoiceTemplate: TemplateMetadata = {
   ...base,
-  id: "true-equation-choice",
+  id: "whole-number-equality-choice",
   title: "Choose the true equation",
-  skillId: "missing-factor",
+  skillId: "whole-number-equality",
   gradeBand: "3–5",
   difficultyOffset: 0.3,
   description:
     "Choose the one true equation when a product equals a sum or difference, or when two products of three factors are compared.",
+};
+export const historicalTrueEquationTemplate: TemplateMetadata = {
+  ...trueEquationChoiceTemplate,
+  id: "true-equation-choice",
+  skillId: "missing-factor",
 };
 
 const tex = (s: string) => `$${s}$`;
@@ -669,37 +674,44 @@ function threeFactors(r: Random): TrueModel {
   }
   throw new Error("Need three retries");
 }
-export const trueEquationChoice = chainFamily({
-  template: trueEquationChoiceTemplate,
-  axes: trueAxes,
-  model: (r, ax): TrueModel =>
-    ax.form === "products-of-three-factors" ? threeFactors(r) : sumDiff(r),
-  variant: (m) => m.form,
-  render: (m, _ax, r) => {
-    const [truth, ...wrong] = m.eqs;
-    const show = (e: Eq) => tex(`${e.left} = ${e.right}`);
-    return choiceSurface(r, {
-      prompt:
-        m.form === "products-of-three-factors"
-          ? "Which equation is true? Each side is a product of three factors."
-          : "Which equation is true? One side is a product and the other side is a sum or a difference.",
-      options: [
-        { label: show(truth!), correct: true },
-        ...wrong.map((e) => ({
-          label: show(e),
-          feedback: `The left side is ${e.l} and the right side is ${e.r}, so the two sides are not equal.`,
-        })),
-      ],
-      hint: `Work out the value of both sides of one equation at a time. For example, find ${wrong[0]!.left.replaceAll(T, "times")} and then the other side; the sides of a true equation have the same value.`,
-      explanation: [
-        `Find the value of each side of every equation.`,
-        `${wrong.map((e) => `$${e.left}=${e.l}$ but the other side is ${e.r}`).join("; ")}.`,
-        `Only $${truth!.left} = ${truth!.right}$ has the same value, ${truth!.l}, on both sides.`,
-      ],
-      label: "Choose the true equation",
-    });
-  },
-});
+const trueEquationFamily = (template: TemplateMetadata) =>
+  chainFamily({
+    template,
+    axes: trueAxes,
+    model: (r, ax): TrueModel =>
+      ax.form === "products-of-three-factors" ? threeFactors(r) : sumDiff(r),
+    variant: (m) => m.form,
+    render: (m, _ax, r) => {
+      const [truth, ...wrong] = m.eqs;
+      const show = (e: Eq) => tex(`${e.left} = ${e.right}`);
+      return choiceSurface(r, {
+        prompt:
+          m.form === "products-of-three-factors"
+            ? "Which equation is true? Each side is a product of three factors."
+            : "Which equation is true? One side is a product and the other side is a sum or a difference.",
+        options: [
+          { label: show(truth!), correct: true },
+          ...wrong.map((e) => ({
+            label: show(e),
+            feedback: `The left side is ${e.l} and the right side is ${e.r}, so the two sides are not equal.`,
+          })),
+        ],
+        hint: `Work out the value of both sides of one equation at a time. For example, find ${wrong[0]!.left.replaceAll(T, "times")} and then the other side; the sides of a true equation have the same value.`,
+        explanation: [
+          `Find the value of each side of every equation.`,
+          `${wrong.map((e) => `$${e.left}=${e.l}$ but the other side is ${e.r}`).join("; ")}.`,
+          `Only $${truth!.left} = ${truth!.right}$ has the same value, ${truth!.l}, on both sides.`,
+        ],
+        label: "Choose the true equation",
+      });
+    },
+  });
+export const trueEquationChoice = trueEquationFamily(
+  trueEquationChoiceTemplate,
+);
+export const historicalTrueEquationChoice = trueEquationFamily(
+  historicalTrueEquationTemplate,
+);
 
 export const operationSentenceTemplates = [
   operationSentenceChoiceTemplate,
@@ -714,5 +726,6 @@ export const operationSentenceGenerate = dispatch(operationSentenceTemplates, {
     relatedDivisionSentence.generate(seed).problem,
   "related-subtraction-sentence": (seed) =>
     relatedSubtractionSentence.generate(seed).problem,
-  "true-equation-choice": (seed) => trueEquationChoice.generate(seed).problem,
+  "whole-number-equality-choice": (seed) =>
+    trueEquationChoice.generate(seed).problem,
 });

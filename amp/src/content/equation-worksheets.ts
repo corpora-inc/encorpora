@@ -47,7 +47,7 @@ const required: Record<string, string[]> = {
   "two-step-word-problem": stories,
   "two-step-equation-model": stories,
   "balance-two-step": ["plain", "grouped"],
-  "inequality-from-context": [...operators, "negative"],
+  "inequality-context-bound": [...operators, "negative"],
   "inequality-from-number-line": [...operators, "negative", "nonnegative"],
   "inequality-number-line-choice": [
     ...operators,

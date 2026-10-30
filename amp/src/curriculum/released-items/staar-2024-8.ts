@@ -131,9 +131,9 @@ export const staar2024Grade8 = defineLedger(
       demand:
         "Choose the inequality for when a draining tank holds more water than a filling pool",
       status: "partial",
-      templateIds: ["inequality-from-context", "first-cheaper-whole-input"],
+      templateIds: ["inequality-context-bound", "first-cheaper-whole-input"],
       limitations:
-        "inequality-from-context chooses a one-sided inequality for a stated condition; comparing two changing amounts is not practiced.",
+        "inequality-context-bound chooses a one-sided inequality for a stated condition; comparing two changing amounts is not practiced.",
     },
     {
       item: { number: "10", page: "rationale PDF p.10" },

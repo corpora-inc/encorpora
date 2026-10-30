@@ -37,7 +37,7 @@ const cases = (id: string): McasGapCase[] => {
 };
 
 const expectedVariants: Record<string, string[]> = {
-  "mcas-true-fact-equations": ["facts", "tens"],
+  "fact-equation-truth-select": ["facts", "tens"],
   "mcas-round-hundred-select": ["three-digit", "four-digit", "halfway"],
   "mcas-prime-factor-select": ["primes", "factors"],
   "mcas-comparison-equations-select": ["times", "more"],
@@ -293,12 +293,12 @@ test("equation templates agree with independent arithmetic", () => {
     return op === "times" ? x * y === z : x === y * z;
   };
   for (const id of [
-    "mcas-true-fact-equations",
+    "fact-equation-truth-select",
     "mcas-true-product-equations",
     "mcas-true-quotient-equations",
   ])
     checkTruth(id, holds);
-  for (const c of cases("mcas-true-fact-equations"))
+  for (const c of cases("fact-equation-truth-select"))
     if (!isPairs(c))
       assert.ok(
         selection(c).options.filter((o) => o.label.includes("\\div")).length >=
@@ -306,7 +306,7 @@ test("equation templates agree with independent arithmetic", () => {
         "at least three divisions",
       );
   for (const id of [
-    "mcas-true-fact-equations",
+    "fact-equation-truth-select",
     "mcas-true-product-equations",
     "mcas-true-quotient-equations",
   ]) {

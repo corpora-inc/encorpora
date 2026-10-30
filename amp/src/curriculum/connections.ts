@@ -8,6 +8,14 @@ const authoredConnections: (Omit<SkillConnection, "skillId" | "direction"> & {
   to: string;
 })[] = [
   {
+    from: "whole-number-equality",
+    to: "one-step-equations",
+    kind: "extension",
+    explanation:
+      "An equation says both sides have the same value. Solving a one-step equation finds the unknown value that makes that statement true.",
+    templateIds: ["one-step-equation"],
+  },
+  {
     from: "financial-literacy-middle",
     to: "piecewise-functions",
     kind: "application",

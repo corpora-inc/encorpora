@@ -79,9 +79,9 @@ export const satPractice6 = defineLedger(
       demand:
         "Write the compound inequality for a quantity bounded below and above in a context",
       status: "partial",
-      templateIds: ["inequality-from-context", "absolute-compound-inequality"],
+      templateIds: ["inequality-context-bound", "absolute-compound-inequality"],
       limitations:
-        "inequality-from-context only writes one-sided x>c/x<=c conditions; absolute-compound-inequality handles compound sets but without a context to translate. No template translates a 'between a and b' context into a <= x <= b.",
+        "inequality-context-bound only writes one-sided x>c/x<=c conditions; absolute-compound-inequality handles compound sets but without a context to translate. No template translates a 'between a and b' context into a <= x <= b.",
     },
     {
       section: "Math module 1",
