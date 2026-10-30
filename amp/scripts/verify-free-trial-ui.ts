@@ -516,7 +516,7 @@ try {
       await tryFree.click();
       await page.waitForURL("**/sign-up?return=free-practice");
       await page
-        .getByRole("heading", { name: "Try AMP free." })
+        .getByRole("heading", { name: "Math that adapts as you answer." })
         .waitFor();
       // Identity-provider behavior is verified in verify-social-sign-in-ui.
       await page.evaluate(() => localStorage.setItem("fixture.parent", "1"));
@@ -849,13 +849,13 @@ try {
       await page.getByRole("heading", { name: "Payment confirmed" }).waitFor();
       await page.getByRole("link", { name: "Continue", exact: true }).click();
       await page.waitForURL("**/start/name");
-      await page
-        .getByRole("heading", { name: "Who’s learning?" })
-        .waitFor();
+      await page.getByRole("heading", { name: "Who’s learning?" }).waitFor();
       await fits(page, `${tag} name`);
       if (audit) await axe(page, "name");
       await shoot(page, "adopt", tag);
-      await page.getByRole("button", { name: "Use these answers", exact: true }).click();
+      await page
+        .getByRole("button", { name: "Use these answers", exact: true })
+        .click();
       await page.getByLabel("Learner name").fill(`Avery ${tag}`);
       await page.getByRole("button", { name: "Continue", exact: true }).click();
       await page.waitForURL("**/practice");
@@ -925,7 +925,7 @@ try {
       await coldLoad(
         visitor,
         "/try",
-        "Try AMP free.",
+        "Math that adapts as you answer.",
         `direct-try-${tag}`,
         fresh(),
       );

@@ -8,6 +8,8 @@ import {
 } from "./native-session";
 import { UserManager, WebStorageStateStore, type User } from "oidc-client-ts";
 import { accountClient } from "./account-client";
+import { AppError } from "./lib/AppError";
+import { measureAuth } from "./lib/auth-measurement";
 const authority = import.meta.env.VITE_AMP_AUTHORITY as string | undefined;
 const clientId = import.meta.env.VITE_AMP_CLIENT_ID as string | undefined;
 const manager =
@@ -43,15 +45,22 @@ export function authConfig(): Promise<AuthConfig> {
   // The native app signs in through its own session layer, not this API.
   if (nativeRuntime) return Promise.resolve({ mode: "native" });
   const fallback: AuthConfig = { mode: manager ? "oidc" : "development" };
-  config ??= fetch("/api/v1/auth-config").then((r) => {
-    if (r.ok) return r.json() as Promise<AuthConfig>;
-    throw new Error(`auth-config ${r.status}`);
+  config ??= measureAuth("configuration", async () => {
+    const response = await fetch("/api/v1/auth-config", {
+      signal: AbortSignal.timeout(10000),
+    });
+    if (response.ok) return response.json() as Promise<AuthConfig>;
+    throw new Error(`auth-config ${response.status}`);
   });
   // A failed lookup is not remembered: the next call asks again.
-  return config.catch((error) => {
-    console.warn("Sign-in configuration unavailable", error);
+  return config.catch(() => {
     config = null;
-    return fallback;
+    if (import.meta.env.DEV) return fallback;
+    throw new AppError(
+      "unavailable",
+      "Sign-in options couldn’t load. Please try again.",
+      true,
+    );
   });
 }
 export interface AuthSession {
@@ -68,7 +77,9 @@ export async function accessSession(): Promise<AuthSession | null> {
   if (nativeRuntime) return nativeSession();
   if ((await authConfig()).mode === "accounts") {
     // AMP's own accounts: the session token doubles as the API bearer token.
-    const { data, error } = await accountClient.getSession();
+    const { data, error } = await accountClient.getSession({
+      fetchOptions: { timeout: 10000 },
+    });
     if (error) throw new Error(error.message ?? "Sign-in could not be checked");
     return data
       ? { token: data.session.token, accountId: `amp|${data.user.id}` }
@@ -126,9 +137,16 @@ export async function signOut() {
   if (manager) await manager.signoutRedirect();
 }
 
-/** Notify this tab and other tabs without putting credentials in messages/storage. */
-export function notifyAccountSessionChanged() {
-  window.dispatchEvent(new Event("amp-account-session-changed"));
+const accountSessionListeners = new Set<
+  (session: AuthSession | null) => void
+>();
+
+/** Publish a checked session in this tab before navigation. Cross-tab messages
+ * carry no credentials; other tabs check their own session. */
+export function notifyAccountSessionChanged(checked?: AuthSession | null) {
+  if (checked === undefined)
+    window.dispatchEvent(new Event("amp-account-session-changed"));
+  else for (const listener of accountSessionListeners) listener(checked);
   broadcastAccountChange();
 }
 
@@ -137,8 +155,13 @@ export function onSessionChanged(
   error?: (message: string) => void,
 ) {
   if (nativeRuntime) return nativeSessionEvents(update, error);
+  let generation = 0;
+  const checked = (session: AuthSession | null) => {
+    generation++;
+    update(session);
+  };
+  accountSessionListeners.add(checked);
   if (!manager) {
-    let generation = 0;
     const changed = () => {
       const current = ++generation;
       void accessSession()
@@ -154,6 +177,7 @@ export function onSessionChanged(
     window.addEventListener("amp-account-session-changed", changed);
     return () => {
       generation++;
+      accountSessionListeners.delete(checked);
       window.removeEventListener("amp-account-session-changed", changed);
       try {
         channel?.close();
@@ -168,6 +192,7 @@ export function onSessionChanged(
   manager.events.addUserUnloaded(unloaded);
   manager.events.addAccessTokenExpired(unloaded);
   return () => {
+    accountSessionListeners.delete(checked);
     manager.events.removeUserLoaded(loaded);
     manager.events.removeUserUnloaded(unloaded);
     manager.events.removeAccessTokenExpired(unloaded);

@@ -49,6 +49,7 @@ const summary = fixtureMe(
 summary.account.email = email;
 let practiceTemplate = "two-step-equation";
 let signedIn = true,
+  hasTrial = true,
   access = false,
   failMe = false,
   failSignOut = false;
@@ -171,6 +172,20 @@ try {
           trial: { free: 100, placement: 10 },
         },
       });
+    if (path === "/api/v1/trials/current")
+      return route.fulfill({
+        json: {
+          trial:
+            signedIn && hasTrial
+              ? {
+                  token: "synthetic-practice-layout",
+                  learnerId: "account-practice-learner",
+                  birthYear: 2008,
+                  expiresAt: "2099-01-01T00:00:00.000Z",
+                }
+              : null,
+        },
+      });
     if (path === "/api/v1/learners")
       return route.fulfill({
         json: {
@@ -277,7 +292,7 @@ try {
         if (!authenticated) {
           await practice
             .getByRole("heading", {
-              name: "Try AMP free.",
+              name: "Math that adapts as you answer.",
               exact: true,
             })
             .waitFor();
@@ -474,9 +489,12 @@ try {
   await page.getByRole("searchbox", { name: "Find a skill" }).waitFor();
   const search = page.getByRole("searchbox", { name: "Find a skill" });
   await page
-    .getByText("Your free assessment and practice are lighting up this map.", {
-      exact: true,
-    })
+    .getByText(
+      "Explore the curriculum. Start a free assessment to illuminate your skills.",
+      {
+        exact: true,
+      },
+    )
     .waitFor({ state: "attached" });
   const accountBox = (await page
     .getByRole("button", { name: "Open AMP menu" })
@@ -562,6 +580,8 @@ try {
   for (const theme of ["light", "dark"] as const) {
     await page.emulateMedia({ colorScheme: theme });
     await page.setViewportSize({ width: 390, height: 844 });
+    // This screen set represents a parent who has not started a trial.
+    hasTrial = false;
     for (const [path, heading] of [
       ["/sign-in", "Sign in"],
       ["/sign-up", "Create your account"],
