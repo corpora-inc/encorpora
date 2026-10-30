@@ -19,6 +19,7 @@ export async function deliverParentFollowup(
       await db.query(`SELECT o.*,p.email,p.program,p.unsubscribe_token,p.unsubscribed_at,
       u.email AS current_email,u."emailVerified",
       EXISTS(SELECT 1 FROM amp_parent_followup_outbox w WHERE w.user_id=o.user_id AND w.stage='welcome' AND w.stopped_at IS NOT NULL) AS welcome_stopped,
+      EXISTS(SELECT 1 FROM amp_account_classifications k WHERE k.user_id=o.user_id AND k.category<>'prospect') AS non_prospect,
       EXISTS(SELECT 1 FROM amp_commerce_orders c WHERE c.account_id='amp|'||p.user_id AND c.grant_state IS NOT NULL)
       OR EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.account_id='amp|'||p.user_id AND r.status='verified')
       OR EXISTS(SELECT 1 FROM amp_access_gifts g WHERE g.account_id='amp|'||p.user_id AND g.activated_at IS NOT NULL) AS purchased
@@ -35,8 +36,9 @@ export async function deliverParentFollowup(
       await db.query("COMMIT");
       return false;
     }
-    const reason =
-      row.stage === "reminder" && row.welcome_stopped
+    const reason = row.non_prospect
+      ? "not-a-prospect"
+      : row.stage === "reminder" && row.welcome_stopped
         ? "welcome-not-delivered"
         : row.unsubscribed_at
           ? "unsubscribed"
@@ -90,6 +92,7 @@ export async function deliverParentFollowup(
     AND o.first_dispatch_at>now()-interval '23 hours'+interval '15 seconds'
     AND o.accepted_at IS NULL AND o.stopped_at IS NULL
     AND NOT EXISTS(SELECT 1 FROM amp_acquisition_contacts c WHERE c.user_id=o.user_id)
+    AND NOT EXISTS(SELECT 1 FROM amp_account_classifications k WHERE k.user_id=o.user_id AND k.category<>'prospect')
     AND NOT EXISTS(SELECT 1 FROM amp_commerce_orders c WHERE c.account_id='amp|'||p.user_id AND c.grant_state IS NOT NULL)
     AND NOT EXISTS(SELECT 1 FROM amp_payment_records r WHERE r.account_id='amp|'||p.user_id AND r.status='verified')
     AND NOT EXISTS(SELECT 1 FROM amp_access_gifts g WHERE g.account_id='amp|'||p.user_id AND g.activated_at IS NOT NULL)`,

@@ -21,6 +21,24 @@ Authentication accounts outside that cohort appear as `unclassifiedAccounts`.
 Review that list for missing enrollment or internal accounts; those addresses
 are never automatically eligible for outreach.
 
+Operator-confirmed account categories distinguish `friends_family`, `internal`
+and `prospect` accounts independently of paid or complimentary access. Use
+`classify-account` with `email`, a stable `eventKey`, `category` and a concise
+`note` recording the basis. It works for accounts outside the acquisition cohort
+without enrolling them in marketing or changing their access. Do not infer a
+relationship from a name, address or free grant.
+
+`classifiedAccounts` lists those decisions separately from `unclassifiedAccounts`.
+The `acquisition_signups`, `missing_contacts` and `prospect_contacts` counts exclude
+friends-and-family and internal accounts. Contact rows retain their history and
+classification; non-prospects cannot claim welcome or follow-up outreach.
+Explicitly approved replies retain the existing mailbox and eligibility checks.
+An outstanding send must be reconciled before changing the account category.
+Classification changes have an idempotent audit history; replaying an old command
+does not restore its old category. They do not rewrite advertising attribution.
+Active pilot grants, including older operator-issued grants, count as existing
+complimentary access in the report and prevent prospect outreach.
+
 The first review becomes due at noon on the day after verified signup. Arizona and Arkansas
 campaigns provisionally use Phoenix and Chicago time; other sources use New York
 time. The report labels these assumptions. Due time is a review target, not a
@@ -105,6 +123,8 @@ advertising platforms. This pipeline adds no per-page work.
 Contact, message and audit rows cascade when the owning authentication account
 is deleted. Parent data exports include correspondence state. Learning-data
 deletion does not erase adult communication records or their suppression state.
+Account classifications and their history are included in account exports and
+cascade on authentication-account deletion.
 Mailbox records follow the mailbox's own retention process; deleting a database
 row does not delete a Gmail message. Private JSON snapshots are operator exports,
 not the live queue.

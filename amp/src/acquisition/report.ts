@@ -11,6 +11,7 @@ export async function acquisitionPipelineReport(pool: Pool) {
     const contacts = (
       await db.query(`SELECT c.user_id,u.name,p.email,u."createdAt" AS signed_up_at,
       p.program,p.campaign,p.entry_label,p.signup_method,u."emailVerified" AS email_verified,p.verified_at,
+      COALESCE(k.category,'prospect') AS classification,
       c.next_contact_at,c.time_zone,c.time_zone_basis,c.hold_reason,c.suppressed_at,c.suppression_reason,
       p.unsubscribed_at,c.mailbox_checked_at,c.mailbox_checked_for,
       lower(u.email)<>lower(p.email) AS email_changed,
@@ -32,6 +33,7 @@ export async function acquisitionPipelineReport(pool: Pool) {
       COALESCE((SELECT jsonb_agg(jsonb_build_object('stage',o.stage,'acceptedAt',o.accepted_at,'stoppedAt',o.stopped_at,'reason',o.stopped_reason) ORDER BY o.stage)
         FROM amp_parent_followup_outbox o WHERE o.user_id=c.user_id),'[]'::jsonb) AS automated_mail
       FROM amp_acquisition_contacts c JOIN amp_parent_followups p USING(user_id) JOIN amp_auth_users u ON u.id=c.user_id
+      LEFT JOIN amp_account_classifications k ON k.user_id=c.user_id
       ORDER BY u."createdAt",c.user_id`)
     ).rows;
     for (const c of contacts) {
@@ -56,6 +58,7 @@ export async function acquisitionPipelineReport(pool: Pool) {
           return pendingReply.status === "approved"
             ? "approved_check_mailbox"
             : "review_draft";
+        if (c.classification !== "prospect") return "not_a_prospect";
         if (c.has_verified_payment || c.has_granted_access) return "customer";
         if (
           !messages.some((m) => ["draft", "approved"].includes(m.status)) &&
@@ -91,14 +94,35 @@ export async function acquisitionPipelineReport(pool: Pool) {
         acquisition_signups: number;
         missing_contacts: number;
       }>(`SELECT count(*)::int AS acquisition_signups,count(*) FILTER(WHERE c.user_id IS NULL)::int AS missing_contacts
-      FROM amp_parent_followups p LEFT JOIN amp_acquisition_contacts c USING(user_id) WHERE p.new_account`)
+      FROM amp_parent_followups p LEFT JOIN amp_acquisition_contacts c USING(user_id)
+      LEFT JOIN amp_account_classifications k ON k.user_id=p.user_id
+      WHERE p.new_account AND COALESCE(k.category,'prospect')='prospect'`)
     ).rows[0];
     const unclassifiedAccounts = (
-      await db.query(`SELECT u.id,u.email,u.name,u."createdAt" AS created_at,u."emailVerified" AS email_verified
-      FROM amp_auth_users u LEFT JOIN amp_acquisition_contacts c ON c.user_id=u.id WHERE c.user_id IS NULL ORDER BY u."createdAt",u.id`)
+      await db.query(`SELECT u.id,u.email,u.name,u."createdAt" AS created_at,u."emailVerified" AS email_verified,
+      ${grantedAccessSql("'amp|'||u.id")} AS has_granted_access,
+      ${purchaseEvidenceSql("'amp|'||u.id")} AS has_verified_payment
+      FROM amp_auth_users u LEFT JOIN amp_acquisition_contacts c ON c.user_id=u.id
+      LEFT JOIN amp_account_classifications k ON k.user_id=u.id
+      WHERE c.user_id IS NULL AND k.user_id IS NULL ORDER BY u."createdAt",u.id`)
+    ).rows;
+    const classifiedAccounts = (
+      await db.query(`SELECT u.id,u.email,u.name,k.category,k.note,k.updated_at,
+      ${grantedAccessSql("'amp|'||u.id")} AS has_granted_access
+      FROM amp_account_classifications k JOIN amp_auth_users u ON u.id=k.user_id
+      ORDER BY u."createdAt",u.id`)
     ).rows;
     await db.query("COMMIT");
-    return { asOf, ...totals, ...coverage, contacts, unclassifiedAccounts };
+    return {
+      asOf,
+      ...totals,
+      ...coverage,
+      prospect_contacts: contacts.filter((c) => c.classification === "prospect")
+        .length,
+      contacts,
+      unclassifiedAccounts,
+      classifiedAccounts,
+    };
   } catch (error) {
     await db.query("ROLLBACK");
     throw error;
