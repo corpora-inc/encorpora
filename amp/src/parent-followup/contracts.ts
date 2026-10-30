@@ -1,3 +1,4 @@
+import { gaSignupContextSchema } from "../analytics/ga-signup-context.js";
 import { z } from "zod";
 import { fundedCampaignSchema } from "../analytics/funded-campaign.js";
 /** v1 offered an unchecked newsletter box; v2 opts new parents in with a one-line notice. */
@@ -11,6 +12,7 @@ export const signupIntentSchema = z.strictObject({
   program: z.enum(["ar-efa", "az-esa"]).optional(),
   campaign: fundedCampaignSchema.optional(),
   newsletter: z.boolean(),
+  analytics: gaSignupContextSchema.optional(),
   entry: signupEntrySchema.optional(),
   // Pages loaded before a deploy still send the notice they showed.
   notice: z.enum([explicitNewsletterNotice, signupNotice]),

@@ -94,6 +94,18 @@ export async function completeSignup(
         "UPDATE amp_ad_click_journeys SET account_id=$2 WHERE id=$1 AND account_id IS NULL",
         [pending.acquisition_journey_id, `amp|${userId}`],
       );
+      if (intent.analytics && !advertisingOptOut(headers))
+        await db.query(
+          `INSERT INTO amp_ga_signup_exports(user_id,client_id,session_id,captured_at)
+           SELECT user_id,$2,$3,$4 FROM amp_parent_followups
+           WHERE user_id=$1 AND new_account ON CONFLICT DO NOTHING`,
+          [
+            userId,
+            intent.analytics.clientId,
+            intent.analytics.sessionId,
+            pending.created_at,
+          ],
+        );
       const agent = signupUserAgent.safeParse(headers["user-agent"]);
       if (!advertisingOptOut(headers) && agent.success)
         await db.query(
@@ -134,7 +146,7 @@ export async function completeSignup(
       await eraseAccountAdClicks(db, `amp|${userId}`, row.provider);
     // A sign-in never restarts the sequence or overrides an unsubscribe.
     await db.query(
-      "UPDATE amp_parent_signup_intents SET used_by=$2 WHERE token_hash=$1",
+      "UPDATE amp_parent_signup_intents SET used_by=$2,context=context-'analytics' WHERE token_hash=$1",
       [hash(token), userId],
     );
     await db.query("COMMIT");

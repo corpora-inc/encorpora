@@ -371,10 +371,11 @@ export function Legal({
           </p>
           <h2>Google Analytics</h2>
           <p>
-            Our public marketing and purchase pages use Google Analytics to
-            measure visits, traffic sources, engagement and purchase-flow
-            actions. Google receives limited page and campaign information and
-            uses browser cookies that expire after 90 days. We do not send
+            Our public marketing, signup and purchase pages use Google Analytics
+            to measure visits, traffic sources, engagement, verified parent
+            signups and purchase-flow actions. Google receives limited page and
+            campaign information and uses browser cookies that expire after 90
+            days. We do not send
             learner answers, learning records, names, email addresses, invoice
             identifiers or form contents to Google Analytics. Assessment,
             practice, lessons and family-account pages use our first-party

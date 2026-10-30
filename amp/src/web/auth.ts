@@ -1,3 +1,4 @@
+import { accountChannel, broadcastAccountChange } from "./lib/account-signals";
 import { nativeRuntime } from "./native-runtime";
 import {
   nativeSession,
@@ -128,11 +129,7 @@ export async function signOut() {
 /** Notify this tab and other tabs without putting credentials in messages/storage. */
 export function notifyAccountSessionChanged() {
   window.dispatchEvent(new Event("amp-account-session-changed"));
-  if ("BroadcastChannel" in window) {
-    const channel = new BroadcastChannel("amp-account-session");
-    channel.postMessage("changed");
-    channel.close();
-  }
+  broadcastAccountChange();
 }
 
 export function onSessionChanged(
@@ -152,16 +149,17 @@ export function onSessionChanged(
           if (current === generation) error?.(String(failure));
         });
     };
-    const channel =
-      "BroadcastChannel" in window
-        ? new BroadcastChannel("amp-account-session")
-        : null;
+    const channel = accountChannel();
     if (channel) channel.onmessage = changed;
     window.addEventListener("amp-account-session-changed", changed);
     return () => {
       generation++;
       window.removeEventListener("amp-account-session-changed", changed);
-      channel?.close();
+      try {
+        channel?.close();
+      } catch {
+        /* Optional cross-tab transport. */
+      }
     };
   }
   const loaded = (user: User) => update(session(user));

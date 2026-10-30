@@ -322,6 +322,20 @@ export async function eraseAccountAdClicks(
   )
     throw new Error("invalid_attribution_provider");
   await lockSignupSharing(client, account);
+  if (!provider || provider === "google") {
+    // This table is optional in fixtures using an earlier migration boundary.
+    if (
+      (
+        await client.query(
+          "SELECT to_regclass('amp_ga_signup_exports') AS relation",
+        )
+      ).rows[0]?.relation
+    )
+      await client.query(
+        "DELETE FROM amp_ga_signup_exports WHERE 'amp|'||user_id=$1",
+        [account],
+      );
+  }
   const result = await client.query(
     `DELETE FROM amp_ad_click_evidence c USING amp_ad_click_journeys j
      WHERE j.id=c.journey_id AND j.account_id=$1 AND ($2::text IS NULL OR c.provider=$2)`,

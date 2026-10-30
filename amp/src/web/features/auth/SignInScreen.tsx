@@ -1,4 +1,5 @@
-import { track as trackAuth } from "../../lib/analytics";
+import { measureAuth } from "../../lib/auth-measurement";
+import { track as trackAuth, googleSignupContext } from "../../lib/analytics";
 import { entryCapture } from "../../lib/openai-acquisition";
 import { signupNotice } from "../../../parent-followup/contracts";
 import styles from "./Auth.module.css";
@@ -173,34 +174,39 @@ export function SignInScreen() {
   const followupEnabled = accounts && config.parentFollowup;
   async function prepareFreeSignup() {
     if (!freeEntry || !followupEnabled) return;
-    await Promise.race([
-      entryCapture,
-      new Promise<void>((resolve) => setTimeout(resolve, 1800)),
-    ]);
-    const response = await fetch("/api/v1/parent-followup/intent", {
-      method: "POST",
-      credentials: "same-origin",
-      signal: AbortSignal.timeout(10000),
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        notice: signupNotice,
-        // Opted in by default; every email carries a one-click unsubscribe.
-        newsletter: true,
-        entry: carry.entry,
-        program: carry.program,
-        campaign: fundedAttribution(carry),
-      }),
+    await measureAuth("prepare", async () => {
+      await Promise.race([
+        entryCapture,
+        new Promise<void>((resolve) => setTimeout(resolve, 1800)),
+      ]);
+      const response = await fetch("/api/v1/parent-followup/intent", {
+        method: "POST",
+        credentials: "same-origin",
+        signal: AbortSignal.timeout(10000),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          notice: signupNotice,
+          analytics: googleSignupContext(),
+          // Opted in by default; every email carries a one-click unsubscribe.
+          newsletter: true,
+          entry: carry.entry,
+          program: carry.program,
+          campaign: fundedAttribution(carry),
+        }),
+      });
+      if (!response.ok)
+        throw new Error(
+          "We couldn’t prepare your free account. Please try again.",
+        );
     });
-    if (!response.ok)
-      throw new Error(
-        "We couldn’t prepare your free account. Please try again.",
-      );
   }
   const returnTo = continuationUrl(carry, "/");
   const newUserReturn = continuationUrl(carry, "/account/ready");
   const done = async () => {
     notifyAccountSessionChanged();
-    await queryClient.fetchQuery({ ...sessionOptions, staleTime: 0 });
+    await measureAuth("session", () =>
+      queryClient.fetchQuery({ ...sessionOptions, staleTime: 0 }),
+    );
     if (carry.return === "security")
       await navigate({
         to: "/$",
@@ -223,11 +229,15 @@ export function SignInScreen() {
         replace: true,
       });
   };
-  async function run(work: () => Promise<void>) {
+  async function run(
+    work: () => Promise<void>,
+    stage: "password" | "passkey" | null = "password",
+  ) {
     setBusy(true);
     setError("");
     try {
-      await work();
+      if (stage) await measureAuth(stage, work);
+      else await work();
     } catch (failure) {
       setPending(null);
       setError(
@@ -328,14 +338,20 @@ export function SignInScreen() {
   // account owner sees confirmation and a clear next step.
   function createWithPasskey(event: FormEvent) {
     event.preventDefault();
+    const startedAt = performance.now();
     void run(async () => {
       await prepareFreeSignup();
       const result = await signUpWithPasskey(
         email.trim(),
         freeEntry ? { program: carry.program } : undefined,
+        startedAt,
       );
       if (result.ok) return done();
-      trackAuth("auth_failure", { method: "passkey", reason: result.code });
+      trackAuth("auth_failure", {
+        method: "passkey",
+        reason: result.code,
+        ...result.diagnostics,
+      });
       if (result.code === "exists") {
         useAuthDraft.getState().carry(email.trim(), result.message);
         go("sign-in");
@@ -343,7 +359,7 @@ export function SignInScreen() {
         return;
       }
       throw new Error(result.message);
-    });
+    }, "passkey");
   }
   // The provider returns here on failure (with its code), to the guided first
   // run for a new account, or to where this sign-in was headed.
@@ -352,24 +368,32 @@ export function SignInScreen() {
     setError("");
     void run(async () => {
       await prepareFreeSignup();
-      const result = await accountClient.signIn.social({
-        provider,
-        fetchOptions: { timeout: 15_000 },
-        callbackURL: returnTo,
-        newUserCallbackURL: newUserReturn,
-        errorCallbackURL: `${step === "create" ? "/sign-up" : "/sign-in"}?${new URLSearchParams(
-          {
+      await measureAuth(
+        "social",
+        async () => {
+          const result = await accountClient.signIn.social({
             provider,
-            ...carry,
-          },
-        )}`,
-      });
-      if (result.error) {
-        trackAuth("auth_failure", { method: "social", reason: "failed" });
-        setPending(null);
-        throw new Error(socialErrorMessage(copy, "", providerNames[provider]));
-      }
-    });
+            fetchOptions: { timeout: 15_000 },
+            callbackURL: returnTo,
+            newUserCallbackURL: newUserReturn,
+            errorCallbackURL: `${step === "create" ? "/sign-up" : "/sign-in"}?${new URLSearchParams(
+              {
+                provider,
+                ...carry,
+              },
+            )}`,
+          });
+          if (result.error) {
+            trackAuth("auth_failure", { method: "social", reason: "failed" });
+            setPending(null);
+            throw new Error(
+              socialErrorMessage(copy, "", providerNames[provider]),
+            );
+          }
+        },
+        provider,
+      );
+    }, null);
   };
   const showProviders = step === "sign-in" || step === "create";
   return (

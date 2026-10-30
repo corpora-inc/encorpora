@@ -61,6 +61,7 @@
     "test:native-ui": "tsx scripts/verify-native-preview.ts",
     "test:native-session": "tsx scripts/verify-native-session.ts",
     "test:payment-ui": "tsx scripts/verify-payment-ui.ts",
+    "analytics:signup": "tsx scripts/ga-signups.ts",
     "advertising:signup": "tsx scripts/signup-measurement.ts",
     "parent:followup": "tsx scripts/parent-followup.ts",
     "consent:deliver": "tsx scripts/consent-delivery.ts",

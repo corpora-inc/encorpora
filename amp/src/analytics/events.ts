@@ -1,3 +1,4 @@
+import { errorDetailsSchema } from "./error-details.js";
 import {
   purchaseAttemptSchema,
   purchaseActionSchema,
@@ -48,6 +49,7 @@ export const FUNNEL_EVENTS = [
   "learning_request",
   "client_error",
   "account_session",
+  "auth_request",
 ] as const;
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
 
@@ -149,8 +151,16 @@ export const funnelPropsSchemas = {
       .optional(),
   }),
   client_error: z.strictObject({
+    ...errorDetailsSchema.shape,
     kind: z.enum(["error", "unhandled_rejection", "render"]),
     screen: z.enum(SCREENS),
+  }),
+  auth_request: z.strictObject({
+    attemptId: z.uuidv4(),
+    stage: z.enum(["prepare", "social", "password", "passkey", "session"]),
+    outcome: z.enum(["started", "succeeded", "failed"]),
+    provider: z.enum(["google", "apple", "microsoft", "github"]).optional(),
+    ...errorDetailsSchema.pick({ exception: true, category: true }).shape,
   }),
   site_action: siteActionSchema,
   landing_view: entryContextSchema,
@@ -159,6 +169,9 @@ export const funnelPropsSchemas = {
   auth_failure: z.strictObject({
     method: z.enum(["passkey", "social"]),
     reason: z.enum(["exists", "cancelled", "failed"]),
+    ...errorDetailsSchema.pick({ exception: true, category: true }).shape,
+    promptDelayMs: z.number().int().min(0).max(60000).optional(),
+    userActivation: z.boolean().optional(),
   }),
   placement_answer: z.strictObject({ index }),
   placement_done: z.strictObject({

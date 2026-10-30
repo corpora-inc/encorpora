@@ -15,3 +15,42 @@ Deleting click evidence cascades to its signup context and delivery record. Acco
 Validate OpenAI payloads with `validate_only` before enabling a destination. Meta’s `test_event_code` is not an isolated sink: test events can be used for advertising measurement. Do not manufacture a production signup to test the integration. Use intercepted transport tests and inspect the receipt for the first eligible real signup. Configure campaign conversion goals separately; changing an event export does not change campaign bidding or budgets.
 
 Provider references: [OpenAI supported events](https://developers.openai.com/ads/supported-events), [OpenAI Conversions API](https://developers.openai.com/ads/conversions-api), [Meta customer information](https://developers.facebook.com/documentation/ads-commerce/conversions-api/parameters/customer-information-parameters/), and [Meta test events](https://developers.facebook.com/documentation/ads-commerce/conversions-api/using-the-api#testEvents).
+
+## GA4 signup key event
+
+The web signup context uses the existing Google tag's client and session IDs
+only when its analytics cookie exists and browser privacy settings allow it.
+Signup never waits for the tag. A blocked tag, internal visit, automation, or
+missing context produces no GA4 signup export. The signup intent passes that
+context to the server; email and account identifiers never enter GA4.
+
+`npm run analytics:signup -- deliver` sends `sign_up` through Measurement
+Protocol after the server observes a new, verified parent account. Returning
+logins and repeated callbacks cannot enqueue another event. Run this command in
+a background worker with `AMP_DATABASE_URL` and `AMP_GA_SIGNUP_CONFIG` pointing
+to a private JSON file containing `enabled`, the public `measurementId`, and
+an `apiSecret` from that web stream. Configure `sign_up` as a GA4 key event;
+do not import it as another primary Google Ads conversion alongside the
+existing verified-signup action.
+
+Exports require verification and delivery within 24 hours of the signup
+context. Google applies the consent state from the matching web interaction;
+ad user data and personalization are explicitly denied. Learning screens and
+learning activity remain outside GA4. DNT/GPC and Google-sharing withdrawal
+prevent export. Browser identifiers are cleared after dispatch or expiry;
+account export/deletion includes the remaining receipt, which expires after
+90 days.
+
+`npm run analytics:signup -- report` returns receipt counts. `accepted` means
+HTTP acceptance, not proven appearance or attribution in GA4. A timeout or
+worker crash becomes `uncertain` and requires reconciliation; automatically
+retrying could double-count a key event. Validate payload changes with Google's
+Measurement Protocol debug endpoint, which does not ingest test events, and
+confirm reporting against a subsequent real signup.
+
+First-party `auth_request` events identify preparation, provider handoff,
+password, passkey, and session failures. Runtime diagnostics contain fixed
+error categories and app bundle coordinates, never error messages, stacks,
+form values, or private URLs. Passkey failures also record the delay before the
+prompt and whether browser user activation was available; a `NotAllowedError`
+does not establish that the person deliberately cancelled.
