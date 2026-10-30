@@ -10,6 +10,11 @@ import { skills } from "../src/curriculum/catalog";
 import { generateProblem, templates } from "../src/math/engine";
 import { retentionNotice } from "../src/family/contracts";
 import { fixtureMe } from "./me-fixture";
+import {
+  defaultPracticeSettings,
+  practiceChangeSchema,
+  type PracticeSettings,
+} from "../src/learning/practice-settings";
 
 // Synthetic identities and progress; real routes, catalog, layout, WebGL, and controls.
 const authPath = fileURLToPath(new URL("../src/web/auth.ts", import.meta.url));
@@ -90,6 +95,7 @@ async function fixture(
   } = {},
 ) {
   const batches: { templateId?: string }[] = [];
+  const practice = new Map<string, PracticeSettings>();
   await page.addInitScript(
     ({ signedIn, trial, selectedLearnerId }) => {
       if (trial)
@@ -104,6 +110,26 @@ async function fixture(
   );
   await page.route("**/api/v1/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
+    if (pathname.endsWith("/practice-state")) {
+      const learnerId = pathname.split("/").at(-2)!;
+      let state = practice.get(learnerId) ?? defaultPracticeSettings();
+      if (route.request().method() === "POST") {
+        const change = practiceChangeSchema.parse(
+          route.request().postDataJSON(),
+        );
+        assert.equal(change.kind, "focus");
+        assert.equal(change.revision, state.revision);
+        if (change.kind === "focus") {
+          state = {
+            ...state,
+            revision: state.revision + 1,
+            focusSkillId: change.skillId,
+          };
+          practice.set(learnerId, state);
+        }
+      }
+      return route.fulfill({ json: state });
+    }
     if (
       failTrialLookup &&
       pathname.endsWith("/learners") &&
@@ -176,6 +202,12 @@ async function fixture(
       return route.fulfill({ json: { books: [] } });
     if (pathname.endsWith("/batches")) {
       const body = route.request().postDataJSON() as { templateId?: string };
+      if (body.templateId)
+        assert.equal(
+          practice.get(pathname.split("/").at(-2)!)?.focusSkillId,
+          templates.find((entry) => entry.id === body.templateId)?.skillId,
+          "explicit pathway practice saves the selected skill before requesting a problem",
+        );
       batches.push(body);
       return route.fulfill({
         json: {
