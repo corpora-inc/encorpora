@@ -27,13 +27,22 @@ try {
           email: z.email(),
           sent_at: z.iso.datetime(),
           status: z.string(),
+          message_id: z.string().optional(),
         }),
       )
       .parse(JSON.parse(await readFile(ledger, "utf8")));
     for (const row of rows)
       if (
         row.email.toLowerCase() === email.toLowerCase() &&
-        row.status === "sent"
+        row.status === "sent" &&
+        !report.timeline.some(
+          (event) =>
+            event.event === "founder_email_sent" &&
+            ((row.message_id &&
+              (event.details as { messageId?: string }).messageId ===
+                row.message_id) ||
+              new Date(event.at).getTime() === Date.parse(row.sent_at)),
+        )
       )
         report.timeline.push({
           at: row.sent_at,

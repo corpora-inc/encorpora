@@ -713,6 +713,26 @@ export class FamilyRepository {
           "journey-event",
           "SELECT jsonb_build_object('event',event,'props',props,'clientAt',client_at,'receivedAt',received_at) AS value FROM amp_visitor_journeys WHERE account_id=$1 ORDER BY client_at,event_id",
         ]);
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_acquisition_contacts') AS relation",
+          )
+        ).rows[0]?.relation
+      ) {
+        datasets.push([
+          "acquisition-contact",
+          "SELECT jsonb_build_object('nextContactAt',next_contact_at,'timeZone',time_zone,'timeZoneBasis',time_zone_basis,'holdReason',hold_reason,'suppressedAt',suppressed_at,'suppressionReason',suppression_reason,'mailboxCheckedAt',mailbox_checked_at) AS value FROM amp_acquisition_contacts WHERE 'amp|'||user_id=$1",
+        ]);
+        datasets.push([
+          "acquisition-message",
+          "SELECT jsonb_build_object('purpose',purpose,'sender',sender,'recipient',recipient,'subject',subject,'body',body,'status',status,'createdAt',created_at,'sentAt',sent_at) AS value FROM amp_acquisition_messages WHERE 'amp|'||user_id=$1 ORDER BY created_at,id",
+        ]);
+        datasets.push([
+          "acquisition-contact-event",
+          "SELECT jsonb_build_object('kind',kind,'occurredAt',occurred_at,'recordedAt',recorded_at) AS value FROM amp_acquisition_contact_events WHERE 'amp|'||user_id=$1 ORDER BY occurred_at,id",
+        ]);
+      }
       const ownedTrials = await this.ownedTrialsAvailable(client);
       for (const [type, source] of datasets) {
         const query = ownedTrials

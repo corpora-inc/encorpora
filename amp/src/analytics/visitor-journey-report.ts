@@ -69,6 +69,24 @@ export async function visitorJourneyReport(
       followup = f ?? null;
       add(f?.verified_at, "email_verified");
       add(f?.unsubscribed_at, "followup_unsubscribed");
+      for (const message of (
+        await db.query(
+          "SELECT purpose,sent_at,provider_message_id,provider_thread_id FROM amp_acquisition_messages WHERE user_id=$1 AND status='sent' AND sent_at>=now()-make_interval(days=>$2)",
+          [user.id, days],
+        )
+      ).rows)
+        add(message.sent_at, "founder_email_sent", {
+          purpose: message.purpose,
+          messageId: message.provider_message_id,
+          threadId: message.provider_thread_id,
+        });
+      for (const item of (
+        await db.query(
+          "SELECT kind,occurred_at FROM amp_acquisition_contact_events WHERE user_id=$1 AND kind IN ('reply','optout','bounce','hold','release') AND occurred_at>=now()-make_interval(days=>$2)",
+          [user.id, days],
+        )
+      ).rows)
+        add(item.occurred_at, `founder_email_${item.kind}`);
       const rows = async (sql: string) =>
         (await db.query(sql, [accountId, days])).rows;
       for (const row of await rows(
