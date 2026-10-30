@@ -15,6 +15,7 @@ await migrate(database);
 const repo = new PostgresRepository(database, { development: true });
 const app = buildApp({
   repository: repo,
+  trustedProxies: ["127.0.0.1", "::1"],
   authenticate: async () => "welcome-fixture",
 });
 await registerAnalyticsRoutes(app, {
@@ -47,6 +48,7 @@ const dir = fileURLToPath(
   new URL("../artifacts/trial-welcome/", import.meta.url),
 );
 await mkdir(dir, { recursive: true });
+let fixtureAddress = 0;
 try {
   for (const engine of [chromium, webkit]) {
     const browser = await engine.launch();
@@ -63,7 +65,11 @@ try {
           await repo.pool.query(
             "DELETE FROM amp_learners l USING amp_trials t WHERE l.id=t.learner_id AND t.owner_account_id='welcome-fixture'",
           );
+          const clientHeaders = {
+            "x-forwarded-for": `192.0.2.${++fixtureAddress}`,
+          };
           const context = await browser.newContext({
+            extraHTTPHeaders: clientHeaders,
             viewport: { width, height: width === 320 ? 640 : 900 },
             colorScheme,
           });
@@ -214,7 +220,9 @@ try {
           );
           const trial = await repo.currentTrial("welcome-fixture");
           assert.ok(trial);
-          const freshDevice = await browser.newContext();
+          const freshDevice = await browser.newContext({
+            extraHTTPHeaders: clientHeaders,
+          });
           const second = await freshDevice.newPage();
           await second.goto("http://127.0.0.1:4386/try");
           await second.locator("#problem-prompt").waitFor();
