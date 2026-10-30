@@ -329,17 +329,15 @@ try {
     });
   });
   await page.addInitScript(recordShifts);
-  await page.addInitScript(() => {
-    if (location.pathname === "/sign-up")
+  // Literal browser source avoids bundler helpers in serialized constructors.
+  await page.addInitScript(`
+    if (location.pathname === "/sign-up") {
       Object.defineProperty(window, "BroadcastChannel", {
         configurable: true,
-        value: class {
-          constructor() {
-            throw new DOMException("Storage blocked", "SecurityError");
-          }
-        },
+        value: function () { throw new DOMException("Storage blocked", "SecurityError"); }
       });
-  });
+    }
+  `);
   // The provider screens: GitHub is cancelled, Google approves.
   await context.route("https://github.com/login/oauth/authorize**", (route) => {
     const state = new URL(route.request().url()).searchParams.get("state")!;
