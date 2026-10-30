@@ -172,7 +172,9 @@ def upload(built_dir: Path, variant: str | None, privacy: str | None, dry_run: b
     description = yt_meta.get("description", "")
     tags = list(yt_meta.get("tags", []))
     category_id = int(yt_meta.get("category_id", 27))
-    privacy = privacy or yt_meta.get("privacy", "public")
+    privacy = privacy or yt_meta.get("privacy", "private")
+    if privacy != "private":
+        raise click.UsageError("Upload private first; follow docs/youtube-publishing.md for reviewed release scheduling.")
     daudio = yt_meta.get("default_audio_language")
     dlang = yt_meta.get("default_language")
     made_for_kids = bool(yt_meta.get("made_for_kids", False))

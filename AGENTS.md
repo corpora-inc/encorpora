@@ -14,6 +14,19 @@ that says otherwise is stale — fix it or delete it.
 > The CEO is no longer the gate. Machine-enforced checks are. Green = it ships to
 > production. **Prune this doc as it ages — delete what you don't need.**
 
+## YouTube production and publishing
+
+Before any video production, upload, schedule, or settings change, read and follow
+[the shared YouTube operating policy](docs/youtube-publishing.md). It covers AMP
+ads, explanations, tutoring sessions, and future formats. Upload private, target
+release about 24 hours later, keep comments on with Basic moderation, prepare a
+pinned AMP free-trial CTA, and use the shared cadence budget. Do not infer
+made-for-kids from school grade alone. Never publish immediately just because a
+render was approved, bypass the policy with ad hoc upload code, or revert a live
+video to private as a reflex. Apply the settled settings without asking Skylar
+to repeat them; verify actual Studio and viewer behavior. Private receipts and
+channel access configuration stay outside this public repository.
+
 ## Public repository: protect operational information
 
 This repository, its issues, PRs, review comments, CI logs, screenshots, and

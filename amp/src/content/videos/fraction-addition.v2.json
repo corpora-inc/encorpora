@@ -1,0 +1,42 @@
+{
+  "id": "fraction-addition",
+  "version": 2,
+  "title": "Add fractions with different denominators",
+  "templateIds": ["add-fractions"],
+  "durationSeconds": 69.03333333333333,
+  "language": "en",
+  "voiceId": "XescS24CsOySAkKrLAO3",
+  "transcript": "How do you add two thirds and one fourth?\n\nEach full strip is one whole. The wholes must be the same size.\n\nThe bottom number tells how many equal pieces make a whole. The top counts the pieces we have.\n\nThirds and fourths are different sizes. First, make the pieces the same size.\n\nMultiply the bottom numbers: three times four is twelve.\n\nSplit each third into four. Multiply both numbers by four: two thirds becomes eight twelfths.\n\nSplit each fourth into three. Multiply both numbers by three: one fourth becomes three twelfths.\n\nNeither amount has changed. We have only divided it into smaller pieces.\n\nNow combine eight twelfths and three twelfths: eleven twelfths.\n\nAdd the top numbers. Keep twelve on the bottom, because the pieces are still twelfths.\n\nThat shared bottom number is called a common denominator.\n\nFinally, simplify if you can divide the top and bottom evenly by the same whole number greater than one. Eleven and twelve have no such number, so eleven twelfths is our answer.",
+  "workedAnswers": ["11/12"],
+  "assets": {
+    "video": {
+      "url": "https://d38iwc9748jekz.cloudfront.net/amp/lessons/fraction-addition/v2/add-fractions-landscape-clean.mp4",
+      "sha256": "c718984123ad2a96d9a2f4c6b0e216c4f8fcf350bb6d30232df90b30ff3df1d8"
+    },
+    "captions": {
+      "url": "https://d38iwc9748jekz.cloudfront.net/amp/lessons/fraction-addition/v2/add-fractions.en.vtt",
+      "sha256": "e4326df90f7dff2a375703af1452a727aa04b6da3da011c787c4df4d4e71447a"
+    },
+    "portrait": {
+      "url": "https://d38iwc9748jekz.cloudfront.net/amp/lessons/fraction-addition/v2/add-fractions-portrait.mp4",
+      "sha256": "9d538217dd302ce60f2246d3575adbaa46d67db8177865152214856a2fa6d53e"
+    },
+    "captionedLandscape": {
+      "url": "https://d38iwc9748jekz.cloudfront.net/amp/lessons/fraction-addition/v2/add-fractions-landscape.mp4",
+      "sha256": "b729e14aed5e92361f4a7b7429c22dbb238f0e9e6c44f2a20d1720e2020481c4"
+    },
+    "poster": {
+      "url": "https://d38iwc9748jekz.cloudfront.net/amp/lessons/fraction-addition/v2/poster.png",
+      "sha256": "eb6df871bdd49a9bdb9a33032ace7b5f63ed9de3a6d7f97856aa35259054dde2"
+    },
+    "subtitles": {
+      "url": "https://d38iwc9748jekz.cloudfront.net/amp/lessons/fraction-addition/v2/add-fractions.en.srt",
+      "sha256": "fc92c01e024248a7f2628f441c9a5a76645e4b7ca605108bfcc0a9da945cd5e2"
+    },
+    "source": {
+      "url": "https://d38iwc9748jekz.cloudfront.net/amp/lessons/fraction-addition/v2/lesson-source.zip",
+      "sha256": "6532b739d4ca3bc91b48dd0d58fcadc92dc3165f352c28bce0384d325fa3f4ac"
+    }
+  },
+  "youtubeUrl": "https://www.youtube.com/watch?v=Ag5oqcOuTM4"
+}

@@ -62,11 +62,11 @@ Omit `static` to encode a video. Each scene accepts either `image` or `video`; v
 
 Exports include a verification JSON with source and output SHA-256 hashes, measured layout boxes, dimensions, duration, and codecs. A hash proves which files were used; it does not prove permission, mathematical accuracy, or an advertising claim. Review each final asset at phone size, listen to the complete soundtrack, and check platform previews before release. A demonstration learner's initial estimates must not be presented as learning gains.
 
-`narrate.py` generates built-in Cedar or Marin narration through OpenAI. It requires `OPENAI_API_KEY` in the process environment and saves the script, model, and voice alongside the WAV. It makes a billable API request. Do not commit keys, voice files, or learner information.
-
-```sh
-python narrate.py /path/to/script.txt /path/to/voice.wav --voice cedar
-```
+AMP narration must use the approved ElevenLabs voice IDs in the
+[publishing policy](../../../docs/youtube-publishing.md): Madeline Brousseaux
+`XescS24CsOySAkKrLAO3` or Paul `J3Ei0Lj6fAobhIqY5ySH`. Use the cinema voice
+workflow and preserve the ID in generation metadata. The legacy OpenAI
+`narrate.py` helper does not implement this preset and must not be used for AMP.
 
 ## Google Search campaigns
 

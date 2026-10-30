@@ -1,0 +1,33 @@
+{
+  "policyVersion": "2026-10-30.2",
+  "contentType": "explanation",
+  "audience": {
+    "classification": "general",
+    "rationale": "Replace with the actual intended audience and presentation of this video."
+  },
+  "aiDisclosure": {
+    "required": false,
+    "rationale": "Replace with the actual disclosure assessment."
+  },
+  "pinnedComment": "Try Adaptive Math Pathways free: https://amp.corpora.inc\n\nWhich step would you like to see explained next?",
+  "relatedVideoIds": [],
+  "studioReview": {
+    "videoId": "REPLACE_AFTER_UPLOAD",
+    "checkedAt": "2026-01-01T00:00:00Z",
+    "checks": {
+      "audience": false,
+      "commentsOn": false,
+      "everyoneCanComment": false,
+      "basicModeration": false,
+      "likesVisible": false,
+      "notifySubscribers": false,
+      "captions": false,
+      "thumbnail": false,
+      "playlist": false,
+      "landingPage": false,
+      "copyrightChecks": false,
+      "aiDisclosure": false,
+      "endScreenOrRelatedVideo": false
+    }
+  }
+}
