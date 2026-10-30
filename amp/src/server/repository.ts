@@ -1,3 +1,9 @@
+import {
+  defaultPracticeSettings,
+  practiceSettingsSchema,
+  type PracticeSettings,
+  type PracticeChange,
+} from "../learning/practice-settings";
 import { activateGiftInTransaction } from "../access-grants/repository.js";
 import {
   isLiveTrial,
@@ -96,6 +102,11 @@ export type Outcome = {
   variant?: ProblemVariant;
 };
 export type SavedProblem = GeneratedProblem & {
+  /** Serving context is private and immutable for evidence interpretation. */
+  practiceEpoch?: number;
+  practiceRevision?: number;
+  workingTogether?: boolean;
+  selection?: unknown;
   hintViewed?: boolean;
   lessonViewed?: boolean;
   /** Passed with Skip: the answer was shown, and it can no longer be
@@ -112,6 +123,14 @@ export class ApiError extends Error {
   }
 }
 export interface LearnerTransaction {
+  practiceSettings(): Promise<PracticeSettings>;
+  practiceChange(
+    requestId: string,
+  ): Promise<{ change: PracticeChange; result: PracticeSettings } | undefined>;
+  savePracticeChange(
+    change: PracticeChange,
+    result: PracticeSettings,
+  ): Promise<void>;
   startingPoint(): Promise<PracticeStartingPoint>;
   setStartingPoint(band: StartingBand): Promise<void>;
   setBirthYear(birthYear: number): Promise<void>;
@@ -478,6 +497,42 @@ export class PostgresRepository implements Repository {
   }
 }
 export class PgTransaction implements LearnerTransaction {
+  private settingsCache?: Promise<PracticeSettings>;
+  practiceSettings(): Promise<PracticeSettings> {
+    return (this.settingsCache ??= this.db
+      .query("SELECT state FROM amp_practice_settings WHERE learner_id=$1", [
+        this.learnerId,
+      ])
+      .then(({ rows }) =>
+        rows[0]
+          ? practiceSettingsSchema.parse(rows[0].state)
+          : defaultPracticeSettings(),
+      ));
+  }
+  async practiceChange(requestId: string) {
+    const { rows } = await this.db.query(
+      "SELECT change,result FROM amp_practice_changes WHERE learner_id=$1 AND request_id=$2",
+      [this.learnerId, requestId],
+    );
+    return rows[0] as
+      { change: PracticeChange; result: PracticeSettings } | undefined;
+  }
+  async savePracticeChange(change: PracticeChange, result: PracticeSettings) {
+    await this.db.query(
+      "INSERT INTO amp_practice_changes(learner_id,request_id,change,result) VALUES($1,$2,$3,$4)",
+      [
+        this.learnerId,
+        change.requestId,
+        JSON.stringify(change),
+        JSON.stringify(result),
+      ],
+    );
+    await this.db.query(
+      "INSERT INTO amp_practice_settings(learner_id,state) VALUES($1,$2) ON CONFLICT(learner_id) DO UPDATE SET state=EXCLUDED.state,updated_at=now()",
+      [this.learnerId, JSON.stringify(result)],
+    );
+    this.settingsCache = Promise.resolve(result);
+  }
   constructor(
     private db: PoolClient,
     private learnerId: string,
@@ -529,8 +584,33 @@ export class PgTransaction implements LearnerTransaction {
     now = Date.now(),
     answers: number | null = null,
   ): Promise<Frontier> {
-    const { start, observations } = await this.frontierInputs(now, answers);
-    return frontierFrom(start, observations, now);
+    const { start, observations, settings } = await this.frontierInputs(
+      now,
+      answers,
+    );
+    const frontier = frontierFrom(start, observations, now);
+    for (const [strand, reset] of Object.entries(settings.strandStarts)) {
+      const local = frontierFrom(
+        reset.level,
+        observations.filter(
+          (o) =>
+            o.practiceRevision >= reset.revision &&
+            skillById.get(templateById.get(o.templateId)?.skillId ?? "")
+              ?.strand === strand,
+        ),
+        now,
+      );
+      frontier.strands[strand] = local.strands[strand] ?? local.overall;
+      if (frontier.confirmation)
+        frontier.confirmation[strand] = {
+          ...(local.confirmation?.[strand] ?? {
+            level: local.unconfirmedCeiling!,
+            foundationConfirmed: false,
+          }),
+          foundationLevel: reset.level,
+        };
+    }
+    return frontier;
   }
   /** The starting estimate from age and the answers in evidence order. */
   private async frontierInputs(now: number, answers: number | null = null) {
@@ -538,19 +618,23 @@ export class PgTransaction implements LearnerTransaction {
       "SELECT birth_year,starting_band FROM amp_learners WHERE id=$1",
       [this.learnerId],
     );
+    const settings = await this.practiceSettings();
     const history = await this.db.query(
-      `SELECT outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
-        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt" FROM amp_attempts
-        WHERE learner_id=$1 ORDER BY evidence_sequence LIMIT $2`,
-      [this.learnerId, answers],
+      `SELECT a.outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
+        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision" FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
+        WHERE a.learner_id=$1 AND COALESCE((i.content->>'practiceEpoch')::int,0)=$3 ORDER BY a.evidence_sequence LIMIT $2`,
+      [this.learnerId, answers, settings.epoch],
     );
     return {
+      settings,
       start: initialLevel({
         birthYear: learner.rows[0]?.birth_year,
         band: learner.rows[0]?.starting_band,
         now,
       }),
-      observations: history.rows as FrontierObservation[],
+      observations: history.rows as (FrontierObservation & {
+        practiceRevision: number;
+      })[],
     };
   }
   async frontierTrend(): Promise<TrendPoint[]> {
@@ -566,9 +650,10 @@ export class PgTransaction implements LearnerTransaction {
     });
   }
   async recentAttempts() {
+    const settings = await this.practiceSettings();
     const result = await this.db.query(
-      "SELECT outcome,evidence_sequence::text AS sequence FROM amp_attempts WHERE learner_id=$1 ORDER BY evidence_sequence DESC LIMIT 12",
-      [this.learnerId],
+      "SELECT a.outcome,a.evidence_sequence::text AS sequence FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id WHERE a.learner_id=$1 AND COALESCE((i.content->>'practiceEpoch')::int,0)=$2 ORDER BY a.evidence_sequence DESC LIMIT 12",
+      [this.learnerId, settings.epoch],
     );
     return result.rows
       .map((r) => ({ ...r.outcome, ingestionSequence: r.sequence }) as Outcome)
@@ -666,13 +751,15 @@ export class PgTransaction implements LearnerTransaction {
     await recordTrialMilestones(this.db, this.learnerId, this.limits);
   }
   async recentSkips(): Promise<PracticeSkip[]> {
+    const settings = await this.practiceSettings();
     const result = await this.db.query(
       `SELECT content->'public'->>'templateId' AS "templateId",
         content->'public'->>'skillId' AS "skillId", content->>'skippedAt' AS "createdAt"
        FROM amp_instances WHERE learner_id=$1 AND (content->>'skipped')::boolean
          AND created_at>now()-interval '3 hours'
+         AND COALESCE((content->>'practiceEpoch')::int,0)=$2
        ORDER BY content->>'skippedAt' DESC LIMIT 12`,
-      [this.learnerId],
+      [this.learnerId, settings.epoch],
     );
     return (result.rows as PracticeSkip[]).reverse();
   }

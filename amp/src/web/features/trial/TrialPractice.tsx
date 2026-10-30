@@ -1,3 +1,8 @@
+import { PracticeControls } from "../practice/PracticeControls";
+import {
+  usePracticeAdjustment,
+  type PracticeIntent,
+} from "../practice/practice-settings";
 import { TrialWelcome, useTrialWelcome } from "./TrialWelcome";
 import { AnswerFeedback } from "../practice/AnswerFeedback";
 import { answerProgress } from "./api";
@@ -91,6 +96,11 @@ function Practice({ session }: { session: TrialSession }) {
   const [error, setError] = useState("");
   const [answered, setAnswered] = useState<number | null>(null);
   const welcome = useTrialWelcome(session.learnerId);
+  const adjustments = usePracticeAdjustment({
+    identity: "trial",
+    learnerId: session.learnerId,
+    trial: session.token,
+  });
   const upcoming = useRef<Promise<Next> | null>(null);
   // An answer whose response was lost retries with the same request id, so
   // the server returns the recorded result instead of "already answered".
@@ -127,6 +137,33 @@ function Practice({ session }: { session: TrialSession }) {
     session.learnerId,
   ]);
 
+  async function adjustPractice(intent: PracticeIntent) {
+    setBusy(true);
+    try {
+      const saved = await adjustments.change(intent);
+      if (!saved) return;
+      upcoming.current = null;
+      due.current = null;
+      setCheckOpen(false);
+      if (intent.kind !== "together") {
+        open = null;
+        unsent.current = null;
+        setPending(false);
+        const strand =
+          intent.kind === "easier"
+            ? Object.entries(saved.strandStarts).find(
+                ([, reset]) => reset.revision === saved.revision,
+              )?.[0]
+            : undefined;
+        const next = await nextProblem(session, undefined, strand);
+        if (!adjustments.isCurrent()) return;
+        show(next);
+        invalidateProgress(session);
+      }
+    } finally {
+      setBusy(false);
+    }
+  }
   const limits = progress.data;
   // The server's count seeds the meter once; answers then advance it here.
   useEffect(() => {
@@ -204,6 +241,13 @@ function Practice({ session }: { session: TrialSession }) {
                   t.id === search.template),
             )
           : undefined;
+      if (template && !nativeRuntime) {
+        const saved = await adjustments.change({
+          kind: "focus",
+          skillId: template.skillId,
+        });
+        if (!saved) return;
+      }
       const next = await nextProblem(session, template?.id);
       focused.current = true;
       show(next);
@@ -246,7 +290,21 @@ function Practice({ session }: { session: TrialSession }) {
       )}
       <PracticeWorkspace
         key={problem.id}
-        navigation={nativeRuntime ? undefined : <NavigationDrawer />}
+        navigation={
+          nativeRuntime ? undefined : (
+            <NavigationDrawer
+              practiceControls={(close) => (
+                <PracticeControls
+                  scope={adjustments.scope}
+                  problemId={problem.id}
+                  busy={busy || pending}
+                  apply={adjustPractice}
+                  close={close}
+                />
+              )}
+            />
+          )
+        }
         problem={problem}
         meta={catalog.data?.templates.find((t) => t.id === problem.templateId)}
         strand={skill?.strand}
@@ -272,11 +330,15 @@ function Practice({ session }: { session: TrialSession }) {
               busy={busy}
               choose={
                 answered < limits.free
-                  ? (templateId) =>
+                  ? (templateId, skillId) =>
                       void run(async () => {
-                        const next = await nextProblem(session, templateId);
-                        upcoming.current = null;
-                        show(next);
+                        if (skillId)
+                          await adjustPractice({ kind: "focus", skillId });
+                        else {
+                          const next = await nextProblem(session, templateId);
+                          upcoming.current = null;
+                          show(next);
+                        }
                       })
                   : undefined
               }
@@ -343,6 +405,14 @@ function Practice({ session }: { session: TrialSession }) {
                 : nextProblem(session);
             upcoming.current?.catch(() => undefined);
           })
+        }
+        easier={
+          nativeRuntime || answered >= limits.free
+            ? undefined
+            : () =>
+                void run(() =>
+                  adjustPractice({ kind: "easier", problemId: problem.id }),
+                )
         }
         next={() =>
           void run(async () => {

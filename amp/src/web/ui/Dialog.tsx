@@ -8,19 +8,23 @@ export function Dialog({
   title,
   children,
   onCloseAutoFocus,
+  aboveNavigation = false,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: string;
   children: ReactNode;
   onCloseAutoFocus?: (event: Event) => void;
+  aboveNavigation?: boolean;
 }) {
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
       <RadixDialog.Portal>
-        <RadixDialog.Overlay className={styles.overlay} />
+        <RadixDialog.Overlay
+          className={`${styles.overlay} ${aboveNavigation ? styles.aboveNavigation : ""}`}
+        />
         <RadixDialog.Content
-          className={styles.content}
+          className={`${styles.content} ${aboveNavigation ? styles.aboveNavigation : ""}`}
           aria-describedby={undefined}
           onCloseAutoFocus={onCloseAutoFocus}
         >

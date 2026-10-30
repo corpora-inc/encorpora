@@ -272,6 +272,11 @@ export class FamilyRepository {
         "SELECT to_regclass('amp_purchase_consents') AS relation",
       )
     ).rows[0]?.relation;
+    const practice = !!(
+      await client.query(
+        "SELECT to_regclass('amp_practice_settings') AS relation",
+      )
+    ).rows[0]?.relation;
     const flags = !!(
       await client.query("SELECT to_regclass('amp_problem_flags') AS relation")
     ).rows[0]?.relation;
@@ -329,6 +334,16 @@ export class FamilyRepository {
           [row.id],
         );
       if (!row.deleted_at) deleted++;
+      if (practice) {
+        await client.query(
+          "DELETE FROM amp_practice_changes WHERE learner_id=$1",
+          [row.id],
+        );
+        await client.query(
+          "DELETE FROM amp_practice_settings WHERE learner_id=$1",
+          [row.id],
+        );
+      }
       await client.query("DELETE FROM amp_skill_evidence WHERE learner_id=$1", [
         row.id,
       ]);
@@ -449,6 +464,26 @@ export class FamilyRepository {
           "SELECT to_jsonb(p) - 'account_id' AS value FROM amp_privacy_events p WHERE account_id=$1 ORDER BY occurred_at,id",
         ],
       ];
+      if (
+        (
+          await client.query(
+            "SELECT to_regclass('amp_practice_settings') AS relation",
+          )
+        ).rows[0]?.relation
+      ) {
+        for (const [type, table, order] of [
+          ["practice-settings", "amp_practice_settings", "p.learner_id"],
+          [
+            "practice-change",
+            "amp_practice_changes",
+            "p.learner_id,p.created_at,p.request_id",
+          ],
+        ])
+          datasets.push([
+            type!,
+            `SELECT to_jsonb(p) AS value FROM ${table} p JOIN amp_learners l ON l.id=p.learner_id WHERE (l.account_id=$1 OR EXISTS (SELECT 1 FROM amp_trials t WHERE t.learner_id=l.id AND t.owner_account_id=$1)) ORDER BY ${order}`,
+          ]);
+      }
       if (
         (
           await client.query(

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import { mkdir } from "node:fs/promises";
 import { createServer } from "vite";
 import { chromium, type Page } from "playwright";
@@ -29,7 +30,7 @@ const address = vite.httpServer!.address();
 assert(address && typeof address !== "string");
 const origin = `http://127.0.0.1:${address.port}`;
 const browser = await chromium.launch();
-const output = "artifacts/answer-feedback";
+const output = process.env.FEEDBACK_SCREENS ?? "artifacts/answer-feedback";
 await mkdir(output, { recursive: true });
 const initial = templates.find((t) => t.skillId === "add-two-digit")!;
 assert(initial);
@@ -97,6 +98,7 @@ try {
         const attempts: Outcome[] = [];
         const instances = new Map<string, ReturnType<typeof generateProblem>>();
         const batches: (string | null)[] = [];
+        let practice = defaultPracticeSettings();
         let failProgress = false;
         let failBranch = false;
         const errors: string[] = [];
@@ -173,6 +175,23 @@ try {
           }
           if (path.endsWith("/frontier"))
             return route.fulfill({ json: frontier });
+          if (path.endsWith("/practice-state")) {
+            if (route.request().method() === "POST") {
+              if (failBranch)
+                return route.fulfill({
+                  status: 503,
+                  json: { error: "Synthetic branch failure" },
+                });
+              practice = {
+                ...practice,
+                revision: practice.revision + 1,
+                ...(body.kind === "focus"
+                  ? { focusSkillId: body.skillId }
+                  : {}),
+              };
+            }
+            return route.fulfill({ json: practice });
+          }
           if (path.endsWith("/batches")) {
             batches.push(body.templateId ?? null);
             if (body.templateId && failBranch)
@@ -181,7 +200,10 @@ try {
                 json: { error: "Synthetic branch failure" },
               });
             const problem = generateProblem(
-              body.templateId ?? initial.id,
+              body.templateId ??
+                templates.find((t) => t.skillId === practice.focusSkillId)
+                  ?.id ??
+                initial.id,
               `feedback-${batches.length}`,
             );
             instances.set(problem.public.id, problem);
@@ -291,8 +313,8 @@ try {
           initial.id,
         );
         assert(
-          batches.some((t) => t !== null),
-          "Connected choice requests a specific problem",
+          practice.focusSkillId !== null,
+          "Connected choice persists the selected skill",
         );
         await submit(page, "999999999");
         assert.equal(
@@ -314,8 +336,29 @@ try {
           incorrectNext && box && Math.abs(incorrectNext.y - box.y) <= 2,
           `${mode} ${width}: correct and incorrect Next must share a position`,
         );
-        const beforeNext = batches.length;
+        const selectedTemplate = templates.find(
+          (t) => t.skillId === practice.focusSkillId,
+        )!.id;
         await next.click();
+        await page.waitForFunction(
+          (templateId) =>
+            document
+              .querySelector(".problem-content")
+              ?.getAttribute("data-template") === templateId,
+          selectedTemplate,
+        );
+        assert.equal(
+          batches.at(-1),
+          null,
+          "Next lets the server select within the saved skill",
+        );
+        await page.getByRole("button", { name: "Open AMP menu" }).click();
+        await page
+          .getByRole("button", {
+            name: "Return to mixed practice",
+            exact: true,
+          })
+          .click();
         await page.waitForFunction(
           (templateId) =>
             document
@@ -323,15 +366,7 @@ try {
               ?.getAttribute("data-template") === templateId,
           initial.id,
         );
-        assert.equal(
-          batches.at(-1),
-          null,
-          "Next consumes an adaptive request, not the last selected template",
-        );
-        assert(
-          batches.length >= beforeNext,
-          "Adaptive prefetch can be consumed",
-        );
+        assert.equal(practice.focusSkillId, null);
         if (width === 390 && theme === "light") {
           failProgress = true;
           await submit(page, (await current()).answer);
@@ -390,7 +425,7 @@ try {
         }
         assert.deepEqual(errors, []);
         console.log(
-          `${mode} ${width} ${theme}: correct → connected problem → incorrect → adaptive Next`,
+          `${mode} ${width} ${theme}: correct → focused skill → incorrect → continued focus → mixed practice`,
         );
         await context.close();
       }

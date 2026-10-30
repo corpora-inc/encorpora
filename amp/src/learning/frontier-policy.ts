@@ -55,6 +55,44 @@ export const frontierPolicySchema = z
         incorrectWeight: z.number().finite().min(0).max(1),
       })
       .strict(),
+    confirmation: z
+      .object({
+        enabled: z.boolean(),
+        sameSessionRise: z.number().finite().min(0).max(4),
+        provisionalSuccessesPerGrade: z
+          .number()
+          .int()
+          .min(2)
+          .max(30)
+          .default(6),
+        independentSuccesses: z.number().int().min(2).max(20),
+        evidenceWindow: z.number().int().min(4).max(100).default(12),
+        minimumSuccessRate: z.number().min(0.5).max(1).default(0.75),
+        gradeTolerance: z.number().min(0).max(2).default(0.5),
+        foundationReach: z.number().min(0).max(2).default(1),
+        singleFamilySuccessMultiplier: z
+          .number()
+          .int()
+          .min(2)
+          .max(10)
+          .default(2),
+        distinctFamilies: z.number().int().min(1).max(10),
+        separationHours: z.number().finite().min(1).max(168),
+      })
+      .strict()
+      .default({
+        enabled: false,
+        evidenceWindow: 12,
+        minimumSuccessRate: 0.75,
+        gradeTolerance: 0.5,
+        foundationReach: 1,
+        sameSessionRise: 1,
+        provisionalSuccessesPerGrade: 6,
+        singleFamilySuccessMultiplier: 2,
+        independentSuccesses: 4,
+        distinctFamilies: 2,
+        separationHours: 6,
+      }),
     overallUncertainty: z
       .object({
         rareMissThreshold: z.number().finite().min(0.5).max(1),
@@ -131,7 +169,14 @@ export const LEGACY_FRONTIER_POLICY = createFrontierPolicy({
  * A surprising miss does not make the next overall answer count extra. */
 export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
   ...LEGACY_FRONTIER_POLICY,
-  version: "grade-frontier-v2-working-level",
+  version: "grade-frontier-v3-independent-confirmation",
+  confirmation: {
+    enabled: true,
+    sameSessionRise: 1,
+    independentSuccesses: 4,
+    distinctFamilies: 2,
+    separationHours: 6,
+  },
   response: {
     typedGuess: 0.04,
     slip: 0.08,
@@ -144,7 +189,7 @@ export const DEFAULT_FRONTIER_POLICY = createFrontierPolicy({
     surpriseCorrect: 0.3,
     surpriseIncorrect: 0,
   },
-  assisted: { treatAsFailure: false, correctWeight: 0.5, incorrectWeight: 0 },
+  assisted: { treatAsFailure: false, correctWeight: 0, incorrectWeight: 0 },
   overallUncertainty: {
     rareMissThreshold: 0.7,
     rareMissVariance: 0.36,
