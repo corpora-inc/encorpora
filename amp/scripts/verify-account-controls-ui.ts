@@ -49,6 +49,7 @@ const summary = fixtureMe(
 summary.account.email = email;
 let practiceTemplate = "two-step-equation";
 let signedIn = true,
+  hasTrial = true,
   access = false,
   failMe = false,
   failSignOut = false;
@@ -174,14 +175,15 @@ try {
     if (path === "/api/v1/trials/current")
       return route.fulfill({
         json: {
-          trial: signedIn
-            ? {
-                token: "synthetic-practice-layout",
-                learnerId: "account-practice-learner",
-                birthYear: 2008,
-                expiresAt: "2099-01-01T00:00:00.000Z",
-              }
-            : null,
+          trial:
+            signedIn && hasTrial
+              ? {
+                  token: "synthetic-practice-layout",
+                  learnerId: "account-practice-learner",
+                  birthYear: 2008,
+                  expiresAt: "2099-01-01T00:00:00.000Z",
+                }
+              : null,
         },
       });
     if (path === "/api/v1/learners")
@@ -578,6 +580,8 @@ try {
   for (const theme of ["light", "dark"] as const) {
     await page.emulateMedia({ colorScheme: theme });
     await page.setViewportSize({ width: 390, height: 844 });
+    // This screen set represents a parent who has not started a trial.
+    hasTrial = false;
     for (const [path, heading] of [
       ["/sign-in", "Sign in"],
       ["/sign-up", "Create your account"],
