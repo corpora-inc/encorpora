@@ -73,16 +73,28 @@ JSON; `AMP_YOUTUBE_CHANNEL_ID` pins the intended channel.
 ```sh
 python3 scripts/publish-lesson-youtube.py src/content/videos/<lesson>.v1.json \
   /path/to/production/deliverables /private/path/youtube-receipt.json \
-  --title 'Lesson title | AMP' --description-file /path/to/description.txt
+  --title 'Lesson title | AMP' --description-file /path/to/description.txt \
+  --plan /private/path/release-plan.json
 ```
 
 The command prepares a private upload, attaches captions and the poster, and
-records its video ID for reuse on subsequent runs. Once YouTube processing has
-finished and publication is authorized, rerun the same command with `--publish`.
-It verifies the channel, asset hash, metadata, and public status. This uploader
-is for child-directed lessons: it marks them made for kids and discloses
-synthetic media. Other audiences require an explicit publishing policy change.
-Vertical exports are also ready for a separately authorized Shorts/Reels post.
+records its video ID for reuse. Copy `docs/youtube-release-plan.example.json` to private storage and complete
+it from the actual brief and Studio review. The release plan follows the
+[shared YouTube policy](../../docs/youtube-publishing.md) and records the intended
+audience, disclosure decision, pinned CTA, and browser-verified Studio settings.
+Once processing and review are complete, rerun with `--schedule`. It chooses a
+noon or 6pm America/New_York slot near upload +24 hours, checks the channel's
+existing public/scheduled releases, enforces a 12-hour minimum hold, six-hour
+spacing, and at most two releases per rolling 24 hours, and reads back the schedule.
+`publishAt` in the plan can request a specific compliant slot. Immediate-public
+upload is not supported. An existing public video is never returned to private.
+
+The uploader queues the prepared pinned-comment action in its local receipt;
+it does not execute a future browser action on its own. A release worker must
+post/pin and verify the comment after publication. The same worker verifies
+comments and playback. Studio-only checks must be completed and recorded, not
+inferred from a successful Data API call. Run `python3 -m unittest discover -s
+scripts -p test_youtube_policy.py` to verify release safeguards.
 
 ## Quality and throughput
 

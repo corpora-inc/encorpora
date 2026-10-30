@@ -23,8 +23,10 @@ Runbook: [README.md](README.md). These rules are not negotiable.
    queue, status files or locks, never kill another job, and never run a
    download alongside generation (that combination has crashed the host). A
    new batch waits for the queue; it does not jump it.
-5. **Nothing is published by this pipeline.** Uploads are private. Public
-   release, paid use and campaign changes need the founder's explicit approval.
+5. **Upload private.** Follow [the shared YouTube policy](../../../../docs/youtube-publishing.md)
+   for review, cadence, scheduling, comments, and pinned CTAs. Render approval
+   does not authorize immediate public release. Paid use and campaign changes
+   require the applicable explicit authorization.
 6. **Provenance.** Never overwrite a render, batch or take. Changed inputs get
    `--replace` (old files move to `superseded/`) or a new id. Keep receipts.
 7. **Look and listen.** QC proves the media decodes, is loud enough and has no

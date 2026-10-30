@@ -8,6 +8,23 @@ import { lessonVideos } from "../src/content/lesson-videos";
 import { problemLesson } from "../src/content/problem-lessons";
 import { generateProblem, gradeAnswer, templates } from "../src/math/engine";
 
+test("YouTube release policy enforces hold, cadence, audience review, and fail-forward behavior", () => {
+  const result = spawnSync(
+    "python3",
+    [
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      new URL("../scripts/", import.meta.url).pathname,
+      "-p",
+      "test_youtube_policy.py",
+    ],
+    { encoding: "utf8", timeout: 10000 },
+  );
+  assert.equal(result.status, 0, result.stderr);
+});
+
 test("publishing rejects an unapproved voice even with Python optimization enabled", () => {
   const dir = mkdtempSync(join(tmpdir(), "amp-video-policy-"));
   try {
@@ -38,6 +55,8 @@ test("publishing rejects an unapproved voice even with Python optimization enabl
         "Example",
         "--description-file",
         join(dir, "description.txt"),
+        "--plan",
+        manifest,
       ],
     ];
     for (const [script, ...args] of cases) {
