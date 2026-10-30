@@ -106,10 +106,62 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
       `Object.defineProperty(document, 'visibilityState', {configurable: true, get: () => 'visible'}); document.dispatchEvent(new Event('visibilitychange'));`,
     );
     for (const hit of hits) {
-      assert.equal(hit.get("dt"), "AMP by Corpora");
+      assert.equal(
+        hit.get("dt"),
+        new URL(hit.get("dl")!).pathname === "/"
+          ? "AMP · Adaptive Math Pathways"
+          : "Pay with Arizona ESA | AMP",
+      );
       assert.ok(!decodeURIComponent(hit.toString()).includes("private"));
       assert.ok(!decodeURIComponent(hit.toString()).includes("secret"));
     }
+    await page.evaluate(() => {
+      history.pushState({}, "", "/sign-up?email=private@example.test");
+      (window as any).ga.navigate();
+    });
+    await awaitEvent("page_view", 3);
+    assert.equal(
+      hits
+        .filter((h) => h.get("en") === "page_view")
+        .at(-1)
+        ?.get("dt"),
+      "Create Your Account | AMP",
+    );
+    await page.evaluate(() => {
+      history.pushState({}, "", "/plans");
+      (window as any).ga.navigate();
+    });
+    await awaitEvent("page_view", 4);
+    assert.equal(
+      hits
+        .filter((h) => h.get("en") === "page_view")
+        .at(-1)
+        ?.get("dt"),
+      "Plans | AMP",
+    );
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) => {
+          window.addEventListener(
+            "popstate",
+            () => {
+              (window as any).ga.navigate();
+              resolve();
+            },
+            { once: true },
+          );
+          history.back();
+        }),
+    );
+    await awaitEvent("page_view", 5);
+    assert.equal(
+      hits
+        .filter((h) => h.get("en") === "page_view")
+        .at(-1)
+        ?.get("dt"),
+      "Create Your Account | AMP",
+    );
+    assert.equal(tagLoads, 1);
     const count = hits.length;
     await page.evaluate(() => {
       history.pushState({}, "", "/try/practice?learner=private");
