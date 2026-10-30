@@ -43,6 +43,7 @@ export async function registerParentFollowupRoutes(
         if (advertisingOptOut(request.headers)) {
           delete intent.data.campaign;
           delete intent.data.entry;
+          delete intent.data.analytics;
         }
         const token = await createSignupIntent(
           options.pool,

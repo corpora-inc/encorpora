@@ -1,3 +1,4 @@
+import { purgeGaSignups } from "../src/analytics/ga-signups.js";
 import { purgeOpenAIPurchases } from "../src/advertising/openai-delivery.js";
 import { purgeSignupMeasurement } from "../src/advertising/provider-signups.js";
 import { purgeParentFeedback } from "../src/feedback/parent-retention.js";
@@ -25,6 +26,7 @@ const pool = createDatabasePool({
   connectionString: process.env.AMP_DATABASE_URL,
 });
 try {
+  await purgeGaSignups(pool);
   console.log(
     JSON.stringify({
       ...(await purgeExpiredPrivacyRecords(pool)),

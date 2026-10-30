@@ -68,6 +68,18 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
       "https://amp.corpora.inc/?utm_source=google&utm_medium=cpc&gclid=Valid_Click_123&email=private@example.test#secret",
     );
     await awaitEvent("page_view", 1);
+    await page.waitForFunction(() => !!(window as any).ga.signupContext());
+    const signup = await page.evaluate(() =>
+      (window as any).ga.signupContext(),
+    );
+    assert.equal(
+      signup.clientId,
+      hits.find((h) => h.get("en") === "page_view")!.get("cid"),
+    );
+    assert.equal(
+      String(signup.sessionId),
+      hits.find((h) => h.get("en") === "page_view")!.get("sid"),
+    );
     await page.evaluate(() => {
       const url = new URL(location.href);
       url.searchParams.delete("gclid");
@@ -171,6 +183,10 @@ test("real Google tag emits sanitized pages/actions and stops on learning routes
     });
     await page.waitForTimeout(1500);
     assert.equal(hits.length, count, "learning route must not send GA events");
+    assert.equal(
+      await page.evaluate(() => (window as any).ga.signupContext()),
+      undefined,
+    );
     await page.evaluate(() => {
       history.pushState({}, "", "/purchase/arizona-esa");
       (window as any).ga.navigate();

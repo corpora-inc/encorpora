@@ -1,3 +1,4 @@
+import { errorDetails } from "../analytics/error-details";
 import { track } from "./lib/analytics";
 import { screenForPath } from "../analytics/engagement";
 import "./consent-entry";
@@ -21,13 +22,15 @@ trackGooglePage();
 trackSessionStart();
 watchForNewRelease();
 createRoot(document.getElementById("root")!, {
-  onCaughtError: () =>
+  onCaughtError: (error) =>
     track("client_error", {
+      ...errorDetails(error),
       kind: "render",
       screen: screenForPath(location.pathname),
     }),
-  onUncaughtError: () =>
+  onUncaughtError: (error) =>
     track("client_error", {
+      ...errorDetails(error),
       kind: "render",
       screen: screenForPath(location.pathname),
     }),

@@ -279,9 +279,7 @@ try {
       });
       const page = await context.newPage();
       await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
-      await page
-        .getByRole("heading", { name: "Try AMP free." })
-        .waitFor();
+      await page.getByRole("heading", { name: "Try AMP free." }).waitFor();
       // Opt-in is a single quiet line, never a checkbox to decide on.
       assert.equal(await page.getByRole("checkbox").count(), 0);
       assert.match(
@@ -321,6 +319,16 @@ try {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
   await page.addInitScript(recordShifts);
+  await page.addInitScript(() => {
+    Object.defineProperty(window, "BroadcastChannel", {
+      configurable: true,
+      value: class {
+        constructor() {
+          throw new DOMException("Storage blocked", "SecurityError");
+        }
+      },
+    });
+  });
   // The provider screens: GitHub is cancelled, Google approves.
   await context.route("https://github.com/login/oauth/authorize**", (route) => {
     const state = new URL(route.request().url()).searchParams.get("state")!;
@@ -610,7 +618,17 @@ try {
   });
   await page.goto(`${origin}/`);
   await page.waitForURL(`${origin}/try/practice`);
-  await page.locator("#problem-prompt").waitFor();
+  await page
+    .locator("#problem-prompt")
+    .waitFor()
+    .catch(async (error) => {
+      console.error("Synthetic trial response", trial);
+      console.error(
+        "Synthetic failed screen",
+        await page.locator("body").innerText(),
+      );
+      throw error;
+    });
   const destinations = await page.evaluate(
     () => (window as unknown as { __destinations: string[] }).__destinations,
   );

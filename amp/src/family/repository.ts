@@ -506,6 +506,17 @@ export class FamilyRepository {
       if (
         (
           await client.query(
+            "SELECT to_regclass('amp_ga_signup_exports') AS relation",
+          )
+        ).rows[0]?.relation
+      )
+        datasets.push([
+          "signup-web-analytics",
+          "SELECT to_jsonb(g)-'user_id' AS value FROM amp_ga_signup_exports g WHERE 'amp|'||user_id=$1",
+        ]);
+      if (
+        (
+          await client.query(
             "SELECT to_regclass('amp_provider_signup_exports') AS relation",
           )
         ).rows[0]?.relation

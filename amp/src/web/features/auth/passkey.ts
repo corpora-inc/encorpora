@@ -1,3 +1,5 @@
+import { errorDetails } from "../../../analytics/error-details";
+import type { FunnelProps } from "../../../analytics/events";
 import {
   browserSupportsWebAuthn,
   startRegistration,
@@ -24,12 +26,21 @@ export function passkeysAvailable(): boolean {
 
 export type PasskeySignUpResult =
   | { ok: true }
-  | { ok: false; code: "exists" | "cancelled" | "failed"; message: string };
+  | {
+      ok: false;
+      code: "exists" | "cancelled" | "failed";
+      message: string;
+      diagnostics?: Pick<
+        FunnelProps<"auth_failure">,
+        "exception" | "category" | "promptDelayMs" | "userActivation"
+      >;
+    };
 
 async function post(path: string, body: unknown) {
   const response = await fetch(`/api/auth${path}`, {
     method: "POST",
     credentials: "same-origin",
+    signal: AbortSignal.timeout(15000),
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
@@ -45,6 +56,7 @@ async function post(path: string, body: unknown) {
 export async function signUpWithPasskey(
   email: string,
   freePractice?: { program?: "ar-efa" | "az-esa" },
+  startedAt = performance.now(),
 ): Promise<PasskeySignUpResult> {
   const options = await post("/passkey-signup/options", { email });
   if (options.data?.code === "ACCOUNT_EXISTS")
@@ -63,6 +75,11 @@ export async function signUpWithPasskey(
     };
   }
   let credential;
+  const promptDelayMs = Math.min(
+    60000,
+    Math.max(0, Math.round(performance.now() - startedAt)),
+  );
+  const userActivation = navigator.userActivation?.isActive;
   try {
     credential = await startRegistration({
       optionsJSON: options.data as never,
@@ -76,6 +93,11 @@ export async function signUpWithPasskey(
     return {
       ok: false,
       code: cancelled ? "cancelled" : "failed",
+      diagnostics: {
+        ...errorDetails(error),
+        promptDelayMs,
+        ...(typeof userActivation === "boolean" ? { userActivation } : {}),
+      },
       message: cancelled
         ? "No passkey was saved, so no account was created. Try again, or use a password instead."
         : "This device could not save a passkey. Use a password or another way to sign up.",

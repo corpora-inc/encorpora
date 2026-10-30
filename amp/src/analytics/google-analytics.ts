@@ -1,3 +1,7 @@
+import {
+  gaSignupContextSchema,
+  type GaSignupContext,
+} from "./ga-signup-context";
 import { browserIdentity } from "./browser-identity";
 import { entryContext } from "./entry-context";
 import { marketingPageTitles, publicAppPageTitles } from "./page-titles";
@@ -93,6 +97,7 @@ export function createGoogleAnalytics() {
   let loaded = false;
   let retired = false;
   let previous = "";
+  let signup: GaSignupContext | undefined;
   const identity = browserIdentity();
   const permitted = () =>
     navigator.doNotTrack !== "1" &&
@@ -196,6 +201,22 @@ export function createGoogleAnalytics() {
         send_to: GA_MEASUREMENT_ID,
       });
       previous = page;
+      // Non-blocking reads from the existing tag. Missing/blocked SDK means no
+      // context; signup never waits on analytics or invents a client ID.
+      command("get", GA_MEASUREMENT_ID, "client_id", (clientId: unknown) => {
+        command(
+          "get",
+          GA_MEASUREMENT_ID,
+          "session_id",
+          (sessionId: unknown) => {
+            const parsed = gaSignupContextSchema.safeParse({
+              clientId,
+              sessionId: Number(sessionId),
+            });
+            if (parsed.success) signup = parsed.data;
+          },
+        );
+      });
     } catch {
       /* Analytics must never interrupt navigation or checkout. */
     }
@@ -218,7 +239,32 @@ export function createGoogleAnalytics() {
       /* Measurement is optional. */
     }
   }
-  return { navigate, event };
+  function signupContext(): GaSignupContext | undefined {
+    try {
+      if (
+        !signup ||
+        !loaded ||
+        retired ||
+        !permitted() ||
+        !googlePage(location.href)
+      )
+        return;
+      // Cookieless consent-mode pings cannot become server-side signup events.
+      const cookie = document.cookie
+        .split(";")
+        .map((v) => v.trim())
+        .find((v) => v.startsWith("_ga="));
+      if (
+        cookie?.slice(4).match(/^GA\d+\.\d+\.(\d+\.\d+)$/)?.[1] !==
+        signup.clientId
+      )
+        return;
+      return { ...signup };
+    } catch {
+      return;
+    }
+  }
+  return { navigate, event, signupContext };
 }
 
 function safeReferrer(value: string): string {

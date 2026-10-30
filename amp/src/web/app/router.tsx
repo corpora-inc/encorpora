@@ -162,8 +162,7 @@ async function beforeStart({
 }
 const trial = (name: "TryStart" | "TrialPractice" | "TrialMap" | "Paywall") =>
   lazyRouteComponent(() => import("../features/trial"), name);
-/** A parent signs in before the free assessment. Practice stays device-scoped
- * until the existing consent/adoption flow saves it to a learner profile. */
+/** A parent signs in before the account-owned free assessment. */
 async function beforeTrial({ search }: { search: Record<string, unknown> }) {
   const session = await queryClient.ensureQueryData(sessionOptions);
   if (!session)
@@ -172,7 +171,8 @@ async function beforeTrial({ search }: { search: Record<string, unknown> }) {
       search: { ...continuationSearch(search), return: "free-practice" },
     });
   if (search.return === "free-practice")
-    await fetch("/api/v1/parent-followup/complete", {
+    void fetch("/api/v1/parent-followup/complete", {
+      signal: AbortSignal.timeout(10000),
       method: "POST",
       credentials: "same-origin",
       headers: { "Content-Type": "application/json" },

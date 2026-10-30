@@ -1,3 +1,4 @@
+import { errorDetails } from "../../analytics/error-details";
 import { entryContext as captureEntryContext } from "../../analytics/entry-context";
 export { referrerCategory, deviceClass } from "../../analytics/entry-context";
 import {
@@ -21,6 +22,9 @@ import { nativeRuntime } from "../native-runtime";
 import { createGoogleAnalytics } from "../../analytics/google-analytics";
 
 let google: ReturnType<typeof createGoogleAnalytics> | undefined;
+export function googleSignupContext() {
+  return google?.signupContext();
+}
 export function trackGooglePage(): void {
   if (nativeRuntime || (!analyticsAllowed() && !google)) return;
   (google ??= createGoogleAnalytics()).navigate();
@@ -379,15 +383,17 @@ function listen(): void {
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "hidden") flush(true);
   });
-  // Only a fixed category and screen: never error text, stack, URLs or inputs.
-  window.addEventListener("error", () =>
+  // Fixed categories and app bundle coordinates; no error text or private URLs.
+  window.addEventListener("error", (event) =>
     track("client_error", {
+      ...errorDetails(event.error, event, location.origin),
       kind: "error",
       screen: screenForPath(location.pathname),
     }),
   );
-  window.addEventListener("unhandledrejection", () =>
+  window.addEventListener("unhandledrejection", (event) =>
     track("client_error", {
+      ...errorDetails(event.reason),
       kind: "unhandled_rejection",
       screen: screenForPath(location.pathname),
     }),
