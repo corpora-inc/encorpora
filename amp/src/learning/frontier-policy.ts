@@ -66,6 +66,10 @@ export const frontierPolicySchema = z
           .max(30)
           .default(6),
         independentSuccesses: z.number().int().min(2).max(20),
+        evidenceWindow: z.number().int().min(4).max(100).default(12),
+        minimumSuccessRate: z.number().min(0.5).max(1).default(0.75),
+        gradeTolerance: z.number().min(0).max(2).default(0.5),
+        foundationReach: z.number().min(0).max(2).default(1),
         singleFamilySuccessMultiplier: z
           .number()
           .int()
@@ -78,6 +82,10 @@ export const frontierPolicySchema = z
       .strict()
       .default({
         enabled: false,
+        evidenceWindow: 12,
+        minimumSuccessRate: 0.75,
+        gradeTolerance: 0.5,
+        foundationReach: 1,
         sameSessionRise: 1,
         provisionalSuccessesPerGrade: 6,
         singleFamilySuccessMultiplier: 2,

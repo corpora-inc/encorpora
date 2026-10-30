@@ -1,9 +1,11 @@
+import { DEFAULT_FRONTIER_POLICY } from "../learning/frontier-policy";
 import { practiceChangeSchema } from "../learning/practice-settings";
 import { changePractice } from "./practice-settings";
 import { recordParentAssessmentStart } from "../parent-followup/repository.js";
 import { satPracticeEligible } from "../curriculum/sat.js";
 import {
   assertPracticePolicy,
+  DEFAULT_PRACTICE_POLICY,
   type PracticePolicy,
 } from "../learning/practice-policy.js";
 import fp from "fastify-plugin";
@@ -570,6 +572,12 @@ function routes(app: FastifyInstance, options: AppOptions) {
         problem.selection = {
           reason: choice.reason,
           strand: choice.strand,
+          frontierPolicy: DEFAULT_FRONTIER_POLICY.version,
+          practicePolicy: (options.practicePolicy ?? DEFAULT_PRACTICE_POLICY)
+            .version,
+          practiceFingerprint: (
+            options.practicePolicy ?? DEFAULT_PRACTICE_POLICY
+          ).fingerprint,
           ...("selection" in choice ? { trace: choice.selection } : {}),
           epoch: practice.epoch,
           focusSkillId: practice.focusSkillId,

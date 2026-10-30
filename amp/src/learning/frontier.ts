@@ -320,12 +320,12 @@ export function estimateFrontier(options: {
         const relevant = independent
           .filter(
             (e) =>
-              e.grade >= grade - 0.5 &&
+              e.grade >= grade - c.gradeTolerance &&
               (foundation
-                ? e.grade <= grade + 1
-                : e.success || e.grade <= grade + 0.5),
+                ? e.grade <= grade + c.foundationReach
+                : e.success || e.grade <= grade + c.gradeTolerance),
           )
-          .slice(-12);
+          .slice(-c.evidenceWindow);
         const successes = relevant.filter((e) => e.success);
         const times = successes.map((e) => e.at).sort((a, b) => a - b);
         const separated =
@@ -338,7 +338,7 @@ export function estimateFrontier(options: {
         // retrievals of their one available family, without a permanent gate.
         if (
           successes.length < c.independentSuccesses ||
-          successes.length / relevant.length < 0.75 ||
+          successes.length / relevant.length < c.minimumSuccessRate ||
           (!varied &&
             !(
               separated &&
@@ -353,7 +353,7 @@ export function estimateFrontier(options: {
       // Provisional placement advances gradually within a session; spacing
       // strengthens a demonstrated band without imposing a time or age gate.
       const higherSuccesses = independent.filter(
-        (e) => e.success && e.grade >= baseline - 0.5,
+        (e) => e.success && e.grade >= baseline - c.gradeTolerance,
       );
       const provisional =
         baseline +

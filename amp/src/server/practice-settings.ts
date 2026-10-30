@@ -1,5 +1,6 @@
 import { isDeepStrictEqual } from "node:util";
 import { skills } from "../curriculum/catalog";
+import { historicalTemplates } from "../math/historical-templates";
 import { templates } from "../math/engine";
 import type { PracticeChange } from "../learning/practice-settings";
 import { strandEstimate, targetGrade } from "../learning/frontier";
@@ -48,7 +49,9 @@ export async function changePractice(
         409,
         "The practice level has already changed. Continue with a new problem.",
       );
-    const template = templates.find((t) => t.id === problem.public.templateId);
+    const template = [...templates, ...historicalTemplates].find(
+      (t) => t.id === problem.public.templateId,
+    );
     const frontier = await tx.frontier();
     const strand = nodes.get(problem.public.skillId)?.strand ?? "math";
     if (

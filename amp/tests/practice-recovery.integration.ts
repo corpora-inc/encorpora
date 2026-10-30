@@ -228,6 +228,8 @@ test(
       assert.equal(saved.practiceEpoch, 1);
       assert.equal(saved.practiceRevision, easier.state.revision);
       assert.ok(saved.selection.reason);
+      assert.ok(saved.selection.frontierPolicy);
+      assert.ok(saved.selection.practiceFingerprint);
       assert.equal(
         (
           await post("/practice-state", {
