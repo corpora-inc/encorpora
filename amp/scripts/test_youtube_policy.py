@@ -6,7 +6,7 @@ import tempfile
 import time
 from pathlib import Path
 from datetime import timedelta
-from youtube_policy import allowed_slot, release_time, timestamp, validate_plan, validate_review, calendar_event, CHECKS
+from youtube_policy import allowed_slot, release_time, timestamp, validate_plan, validate_review, calendar_event, CHECKS, POLICY_VERSION
 
 
 def upload_worker(folder):
@@ -43,24 +43,32 @@ class ReleasePolicyTests(unittest.TestCase):
             self.assertEqual((Path(directory) / "uploads.log").read_text().splitlines(), ["one-upload"])
 
     def test_24_hour_target_uses_next_local_slot(self):
-        self.assertEqual(release_time(self.uploaded, self.now, []), timestamp("2026-10-31T22:00:00Z"))
+        self.assertEqual(release_time(self.uploaded, self.now, []), timestamp("2026-10-31T20:00:00Z"))
 
     def test_immediate_or_early_publication_rejected(self):
         for hours in (0, 1, 11):
             with self.assertRaises(ValueError):
                 release_time(self.uploaded, self.now, [], requested=(self.now + timedelta(hours=hours)).isoformat())
 
-    def test_rolling_window_and_six_hour_spacing(self):
+    def test_rolling_window_and_four_hour_spacing(self):
         candidate = self.now + timedelta(hours=24)
-        for hours in (1, 5):
+        for hours in (1, 3):
             self.assertFalse(allowed_slot(candidate, self.uploaded, self.now, [{'id': 'x', 'at': candidate - timedelta(hours=hours)}]))
-        events = [{'id': 'a', 'at': candidate - timedelta(hours=18)}, {'id': 'b', 'at': candidate - timedelta(hours=7)}]
+        events = [{'id': str(hours), 'at': candidate - timedelta(hours=hours)} for hours in (20, 16, 12, 8, 4)]
+        self.assertTrue(allowed_slot(candidate, self.uploaded, self.now, events))
+        # A legacy burst can exhaust the cap even when this release is spaced.
+        events.append({'id': 'legacy-burst', 'at': candidate - timedelta(hours=18)})
         self.assertFalse(allowed_slot(candidate, self.uploaded, self.now, events))
-        self.assertTrue(allowed_slot(candidate, self.uploaded, self.now, events[:1]))
-        # A later scheduled neighbor can also make this a third release.
-        events[1]['at'] = candidate + timedelta(hours=7)
-        events[0]['at'] = candidate - timedelta(hours=7)
+        # Include future scheduled neighbors in windows crossing this release.
+        events = [{'id': str(hours), 'at': candidate + timedelta(hours=hours)} for hours in (-8, -4, 4, 8, 12, 15)]
         self.assertFalse(allowed_slot(candidate, self.uploaded, self.now, events))
+
+    def test_spring_dst_cannot_shorten_the_four_hour_gap(self):
+        uploaded = timestamp('2027-03-13T05:00:00Z')
+        events = [{'id': 'midnight', 'at': timestamp('2027-03-14T05:00:00Z')}]
+        # Midnight to 4am is only three elapsed hours on this date.
+        self.assertFalse(allowed_slot(timestamp('2027-03-14T08:00:00Z'), uploaded, uploaded, events))
+        self.assertTrue(allowed_slot(timestamp('2027-03-14T12:00:00Z'), uploaded, uploaded, events))
 
     def test_related_editions_stay_a_day_apart(self):
         candidate = self.now + timedelta(hours=24)
@@ -74,7 +82,7 @@ class ReleasePolicyTests(unittest.TestCase):
     def test_delayed_livestream_counts_its_actual_start(self):
         event = calendar_event({'id': 'stream', 'status': {'privacyStatus': 'public'}, 'snippet': {'publishedAt': '2026-10-31T10:00:00Z'}, 'liveStreamingDetails': {'scheduledStartTime': '2026-10-31T10:00:00Z', 'actualStartTime': '2026-10-31T14:00:00Z'}})
         self.assertEqual(event['at'], timestamp('2026-10-31T14:00:00Z'))
-        self.assertFalse(allowed_slot(timestamp('2026-10-31T18:00:00Z'), self.uploaded, self.now, [event]))
+        self.assertFalse(allowed_slot(timestamp('2026-10-31T17:00:00Z'), self.uploaded, self.now, [event]))
 
     def test_review_cannot_make_a_public_video_private(self):
         with self.assertRaisesRegex(ValueError, "never changes a public"):
@@ -90,7 +98,7 @@ class ReleasePolicyTests(unittest.TestCase):
             validate_review(plan, receipt, current, self.now)
 
     def test_grade_is_not_an_audience_classification(self):
-        plan = {'policyVersion': '2026-10-30', 'contentType': 'explanation', 'audience': {'classification': 'fifth-grade', 'rationale': 'Grade level'}, 'aiDisclosure': {'required': False, 'rationale': 'Diagram'}, 'pinnedComment': 'https://amp.corpora.inc', 'relatedVideoIds': []}
+        plan = {'policyVersion': POLICY_VERSION, 'contentType': 'explanation', 'audience': {'classification': 'fifth-grade', 'rationale': 'Grade level'}, 'aiDisclosure': {'required': False, 'rationale': 'Diagram'}, 'pinnedComment': 'https://amp.corpora.inc', 'relatedVideoIds': []}
         with self.assertRaisesRegex(ValueError, 'audience rationale'):
             validate_plan(plan)
 

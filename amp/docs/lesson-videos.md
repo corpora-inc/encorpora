@@ -83,9 +83,9 @@ it from the actual brief and Studio review. The release plan follows the
 [shared YouTube policy](../../docs/youtube-publishing.md) and records the intended
 audience, disclosure decision, pinned CTA, and browser-verified Studio settings.
 Once processing and review are complete, rerun with `--schedule`. It chooses a
-noon or 6pm America/New_York slot near upload +24 hours, checks the channel's
-existing public/scheduled releases, enforces a 12-hour minimum hold, six-hour
-spacing, and at most two releases per rolling 24 hours, and reads back the schedule.
+four-hour America/New_York slot near upload +24 hours, checks the channel's
+existing public/scheduled releases, enforces a 12-hour minimum hold, four-hour
+spacing, and at most six releases per rolling 24 hours, and reads back the schedule.
 `publishAt` in the plan can request a specific compliant slot. Immediate-public
 upload is not supported. An existing public video is never returned to private.
 

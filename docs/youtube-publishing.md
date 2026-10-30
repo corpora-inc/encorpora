@@ -31,6 +31,9 @@ buys. Never promise a universal algorithm trick or a guaranteed result.
 - Generated narration uses only Madeline Brousseaux
   (`XescS24CsOySAkKrLAO3`) or Paul (`J3Ei0Lj6fAobhIqY5ySH`), selected by exact ID.
   Keep natural tutoring audio when it belongs to the recording.
+- Target **one video every four hours** and **two Community posts per day**.
+  Use one calendar, prepare a buffer, and skip weak material. These are AMP's
+  starting operating targets, not platform guarantees.
 - Apply these defaults autonomously within an authorized production brief.
   Skylar does not need to reconfirm them for each video. Resolve routine choices
   through the presets and research. Surface a material exception with a concrete
@@ -110,17 +113,18 @@ technical checks does not establish clarity or persuasive value.
 
 ## Release cadence and production buffer
 
-Start with a **four-week operating experiment: up to two organic releases per
-rolling 24 hours, at least six hours apart**, using 12:00 and 18:00
-America/New_York as the initial slots. Count all organic videos, Shorts, live
-streams, and Premieres against the same channel budget. This stays below
-YouTube's three-notification ceiling without treating that ceiling as a target.
+Run a **four-week operating experiment: one organic release every four hours,
+up to six per rolling 24 hours**. Initial local slots are 00:00, 04:00, 08:00,
+12:00, 16:00, and 20:00 America/New_York. Enforce at least four elapsed hours
+between releases, including daylight-saving transitions. Count all organic
+videos, Shorts, live streams, and Premieres against the same channel calendar.
 
-The first slot is normally a strong Short. Reserve the second slot for a full
-explanation on Tuesday, a tutoring session on Friday, and a useful product/ESA
-demonstration on Sunday. On other days it may carry another distinct teaching
-Short. Up to 14 releases a week is capacity, not a quota. Use roughly six useful
-teaching/proof releases for each direct product offer, adjusting from evidence.
+Fill slots with distinct useful explanations, teaching clips, tutoring proof,
+and product demonstrations. Reserve daytime slots for full explanations and
+tutoring sessions when possible. Up to 42 releases a week is capacity, not a
+quota. Use roughly six useful teaching/proof releases for each direct product
+offer, adjusting from evidence. Funding is one purchase route; lead ordinary
+discovery creative with the learning benefit and real AMP experience.
 
 These are initial operating choices, not proven optimal hours. Skip a slot
 rather than publish weak material. Keep related landscape/vertical versions
@@ -128,7 +132,7 @@ at least 24 hours apart; give each its own opening and composition. Do not dump
 ad variants or near-duplicate renders into the feed. Paid-only assets do not
 consume organic slots, but their approvals and platform limits still apply.
 Check the rolling window across midnight and daylight-saving changes, not just
-calendar-day counts. Never spend all three notification opportunities by default.
+calendar-day counts. The notification ceiling does not set the publishing cap.
 
 Batch production by visual model and content lane. Maintain a seven-day buffer
 of reviewed, rendered packages. Upload each package about a day before its
@@ -138,10 +142,17 @@ channel calendar owns all formats and all agents; check existing public and
 scheduled videos before reserving a slot. Record UTC and the named timezone so
 daylight-saving changes do not shift the intended local hour.
 
-YouTube recommends sustainable schedules and batching production. It limits
-subscriber notifications and warns against bulk publication, including batches
-with notifications disabled. Private preparation and spaced release address
-that directly. Publish time is not established as a long-term ranking advantage.
+YouTube recommends sustainable schedules and batching production. Its limit of
+three subscriber notifications per 24 hours is a notification rule, not a
+recommendation to publish only three videos or evidence of a ranking penalty
+for a fourth. Six spaced releases can exceed notification delivery; accept that
+tradeoff rather than restrict useful content to notification capacity. Leave
+organic subscription-feed/notification delivery enabled and let the platform
+apply its limits. Do not rapidly publish a batch or toggle notifications as a
+workaround. YouTube reports no correlation between growth in views across
+uploads and time between uploads; neither six daily releases nor a specific
+hour guarantees growth. Retention, viewer satisfaction, and qualified business
+outcomes decide whether to sustain this cadence.
 [Scheduling advice](https://support.google.com/youtube/answer/13616979),
 [notification limits](https://support.google.com/youtube/answer/7389684),
 [performance FAQ](https://support.google.com/youtube/answer/141805).
@@ -204,6 +215,60 @@ After release, pin the prepared comment, verify it as a viewer, and respond to
 useful questions. Heart substantive contributions. Review held comments for
 false positives. Never manufacture engagement, post fake praise, buy views, or
 answer funding/support questions with invented information.
+
+## Community posts
+
+Schedule **two posts a day**, initially at 13:00 and 21:00 America/New_York.
+Posts complement the video calendar and have their own two-post budget. With
+six video slots, choose the two strongest conversation opportunities rather
+than making six repetitive announcements. Schedule through YouTube's native
+post composer and verify the scheduled time or published post URL.
+
+Rotate a short poll, a visual math question, a useful moment from tutoring, and
+a follow-up to a released video. Ask one specific question that is easy to
+answer. Use an accurate curiosity hook, such as “Why can't you add the
+denominators?” or “Screen practice, paper worksheets, or both?” The linked video
+must deliver the promised explanation. Avoid misleading clickbait, repetitive
+link dumps, generic “thoughts?”, and invented results.
+
+Prepare post copy alongside the video. Link the relevant video when it helps;
+use the AMP offer when it fits the conversation. Keep comments open. Respond to
+useful answers during a daily comment sweep, and turn recurring questions into
+new lessons. Record post impressions, votes, likes, comments, and useful traffic
+in the weekly review. Adjust the format from actual response, not notification
+delivery. [YouTube post tips](https://support.google.com/youtube/answer/11912631),
+[scheduling posts](https://support.google.com/youtube/answer/7124474),
+[post analytics](https://support.google.com/youtube/answer/12340301).
+
+## Existing videos and paid creative
+
+Apply the editable defaults to the existing library: accurate audience,
+comments, pinned CTA, captions, description links, playlist, and next-watch
+links. Start with videos receiving paid traffic or meaningful organic views.
+Keep public URLs live. A dated video can remain useful as an archive while a
+newer video takes its place in advertising.
+
+Review Google Ads video associations weekly. Inventory active campaigns and
+asset groups, the exact YouTube IDs they serve, destination pages, impressions,
+clicks, spend, and the named signup/purchase conversion actions. Use the account
+timezone, verify tracking dates, and allow for conversion lag. Asset-level
+metrics overlap and do not establish a video's isolated effect; do not add them
+into campaign totals or treat impressions alone as enough evidence of failure.
+
+Prioritize obsolete claims/UI, poor presentation, broken destinations, and
+older creative with substantial spend or clicks and no recorded signups after
+tracking is working. Prefer a newer, reviewed product demonstration with the
+same audience, format, and promise. Lead ordinary discovery ads with AMP's
+learning benefit; use EFA/ESA as a relevant purchase route. Preserve useful
+state-specific creative for funded audiences.
+
+Install and verify the replacement's eligibility before removing its old
+association. Preserve the old resource IDs, metrics baseline, and change
+receipt. Keep campaign budgets, bidding, targeting, and conversion goals intact
+unless changing them is part of the authorized task. Compare subsequent results
+over a meaningful period; newly installed creative is not a proven winner.
+[Video asset guidance](https://support.google.com/google-ads/answer/14528532),
+[asset-level measurement](https://support.google.com/google-ads/answer/16259414).
 
 ## Agent execution contract
 

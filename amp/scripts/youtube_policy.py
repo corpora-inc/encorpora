@@ -2,8 +2,11 @@
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
-POLICY_VERSION = "2026-10-30"
+POLICY_VERSION = "2026-10-30.2"
 TIMEZONE = ZoneInfo("America/New_York")
+MAX_RELEASES_PER_24_HOURS = 6
+MIN_RELEASE_GAP = timedelta(hours=4)
+RELEASE_HOURS = (0, 4, 8, 12, 16, 20)
 VOICES = {"XescS24CsOySAkKrLAO3", "J3Ei0Lj6fAobhIqY5ySH"}
 CHECKS = {
     "audience", "commentsOn", "everyoneCanComment", "basicModeration",
@@ -66,7 +69,7 @@ def validate_review(plan, receipt, current, now):
 def allowed_slot(candidate, uploaded, now, events, related_ids=()):
     if candidate <= now or candidate < uploaded + timedelta(hours=12):
         return False
-    if any(abs(candidate - event["at"]) < timedelta(hours=6) for event in events):
+    if any(abs(candidate - event["at"]) < MIN_RELEASE_GAP for event in events):
         return False
     if any(event["id"] in related_ids and abs(candidate - event["at"]) < timedelta(hours=24) for event in events):
         return False
@@ -74,8 +77,9 @@ def allowed_slot(candidate, uploaded, now, events, related_ids=()):
     # future neighbors. Calendar-day counting would fail across midnight/DST.
     neighbors = [event["at"] for event in events if abs(candidate - event["at"]) < timedelta(hours=24)]
     times = sorted(neighbors + [candidate])
-    for i in range(len(times) - 2):
-        if times[i] <= candidate <= times[i + 2] and times[i + 2] - times[i] < timedelta(hours=24):
+    for i in range(len(times) - MAX_RELEASES_PER_24_HOURS):
+        end = i + MAX_RELEASES_PER_24_HOURS
+        if times[i] <= candidate <= times[end] and times[end] - times[i] < timedelta(hours=24):
             return False
     return True
 
@@ -84,12 +88,12 @@ def release_time(uploaded, now, events, related_ids=(), requested=None):
     if requested:
         chosen = timestamp(requested)
         if not allowed_slot(chosen, uploaded, now, events, related_ids):
-            raise ValueError("Release violates the 12-hour hold, spacing, related-edition separation, or two-per-24-hour cap")
+            raise ValueError("Release violates the 12-hour hold, four-hour spacing, related-edition separation, or six-per-24-hour cap")
         return chosen
     target = uploaded + timedelta(hours=24)
     start = max(now, target - timedelta(hours=12)).astimezone(TIMEZONE).date()
     slots = [datetime.combine(start + timedelta(days=d), datetime.min.time(), TIMEZONE).replace(hour=hour).astimezone(timezone.utc)
-             for d in range(8) for hour in (12, 18)]
+             for d in range(8) for hour in RELEASE_HOURS]
     for slot in sorted(slots, key=lambda value: (abs(value - target), value)):
         if allowed_slot(slot, uploaded, now, events, related_ids):
             return slot
