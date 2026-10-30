@@ -1,3 +1,4 @@
+import { prepareTrialIntroduction } from "./introduction";
 import { accessSession, authConfig } from "../../auth";
 import { queryOptions } from "@tanstack/react-query";
 import { problemHintSchema, withProblemHints } from "../../lib/problem-hints";
@@ -249,6 +250,7 @@ export async function startTrial(birthYear: number): Promise<TrialSession> {
     birthYear: created.birthYear ?? birthYear,
     expiresAt: created.expiresAt,
   };
+  prepareTrialIntroduction(session.learnerId);
   queryClient.setQueryData(trialSessionOptions.queryKey, session);
   return session;
 }
