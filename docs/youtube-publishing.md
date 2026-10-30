@@ -71,7 +71,7 @@ so identify that exception during planning, before production and upload.
 | Age restriction | None for ordinary AMP content; classify the actual content accurately |
 | AI disclosure | Evaluate actual realistic generated/altered content; record the decision. Do not infer Yes from Blender, an AI-assisted script, or a diagram alone |
 | Paid promotion | Evaluate the actual sponsorship/commercial relationship; an upload intended for use in an ad campaign is a separate question |
-| Playlist | One relevant series playlist, ordered to give a sensible next watch |
+| Playlist | Required: at least one relevant playlist for every video; verify membership before release |
 | Education details | Choose Problem walkthrough for solved examples; add accurate problem timestamps/level where available. Do not invent standards alignment |
 | Remixing | Allow owned teaching/product assets; tutoring reuse must match participant permissions |
 | End screen | A relevant next video/playlist and Subscribe when eligible, without covering the solution |
@@ -239,6 +239,22 @@ in the weekly review. Adjust the format from actual response, not notification
 delivery. [YouTube post tips](https://support.google.com/youtube/answer/11912631),
 [scheduling posts](https://support.google.com/youtube/answer/7124474),
 [post analytics](https://support.google.com/youtube/answer/12340301).
+
+## Playlists and channel organization
+
+Every public video belongs to at least one relevant public playlist. Apply this
+to the entire back catalog, not only new uploads. Use clear viewer-facing series
+for mathematical explanations, AMP product demonstrations, tutoring/practice,
+and state-specific funding guidance. Add topic playlists when they provide a
+useful learning sequence. Give each a descriptive title, a short purpose and AMP
+link, and an order that makes the next watch obvious. Feature the main series
+on the channel Home tab.
+
+Assign the playlist while preparing the private upload, then verify membership
+after release. Keep paid-only unlisted assets and unreleased production assets
+in private operational playlists; adding an unlisted video to a public playlist
+can expose it. During the weekly review, find public videos without a public
+playlist and assign them. Do not file every video into every playlist.
 
 ## Existing videos and paid creative
 
