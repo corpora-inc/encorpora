@@ -3,7 +3,34 @@ import assert from "node:assert/strict";
 import {
   googlePage,
   sameGoogleVisit,
+  googlePageTitle,
 } from "../src/analytics/google-analytics.js";
+
+test("public page titles distinguish the journey without private URL data", () => {
+  assert.equal(
+    googlePageTitle(
+      "https://amp.corpora.inc/sign-up?email=private@example.test",
+    ),
+    "Create Your Account | AMP",
+  );
+  assert.equal(googlePageTitle("https://amp.corpora.inc/plans"), "Plans | AMP");
+  assert.equal(
+    googlePageTitle("https://corpora.inc/esa/arizona-esa/"),
+    "Arizona ESA | AMP",
+  );
+  assert.equal(
+    googlePageTitle("https://corpora.inc/esa/arkansas-efa/"),
+    "Arkansas EFA | AMP",
+  );
+  assert.equal(
+    googlePageTitle("https://amp.corpora.inc/account/private"),
+    undefined,
+  );
+  assert.equal(
+    googlePageTitle("https://amp.corpora.inc/constructor"),
+    undefined,
+  );
+});
 
 test("click-ID cleanup preserves the visit but navigation and new attribution do not", () => {
   const page = "https://corpora.inc/esa/arkansas-efa?utm_source=google";

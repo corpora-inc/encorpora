@@ -1,41 +1,13 @@
 import { browserIdentity } from "./browser-identity";
 import { entryContext } from "./entry-context";
+import { marketingPageTitles, publicAppPageTitles } from "./page-titles";
 
 // Public website tag, not an API credential. Shared across both production sites.
 export const GA_MEASUREMENT_ID = "G-TGEK0ZGHMD";
 const disabledKey = `ga-disable-${GA_MEASUREMENT_ID}`;
 const clickKeys = ["gclid", "gbraid", "wbraid"];
-const publicMarketingPaths = new Set([
-  "/",
-  "/amp",
-  "/esa",
-  "/esa/arkansas-efa",
-  "/esa/arizona-esa",
-  "/esa/new-hampshire-efa",
-  "/samples",
-  "/about",
-  "/parents",
-  "/schools",
-  "/legal/privacy",
-  "/legal/terms",
-  "/legal/accessibility",
-  "/support",
-  "/legal/refund",
-]);
-const publicAppPaths = new Set([
-  "/sign-up",
-  "/sign-in",
-  "/",
-  "/pathways",
-  "/plans",
-  "/purchase",
-  "/purchase/arkansas-efa",
-  "/purchase/arizona-esa",
-  "/purchase/new-hampshire-efa",
-  "/try/plans",
-  "/start/plan",
-  "/start/purchase",
-]);
+const publicMarketingPaths = new Set(Object.keys(marketingPageTitles));
+const publicAppPaths = new Set(Object.keys(publicAppPageTitles));
 
 /** A finite public route list. Private routes, fragments and arbitrary parameters
  * never become GA page locations. Learning activity stays in first-party reports.
@@ -49,8 +21,6 @@ export function googlePage(input: string): string | undefined {
     safePath = path;
   if (url.hostname === "amp.corpora.inc") {
     if (publicAppPaths.has(path)) safePath = path;
-    if (/^\/invoice\/(arkansas-efa|arizona-esa|new-hampshire-efa)$/.test(path))
-      safePath = path;
   }
   if (!safePath) return;
   const safe = new URL(safePath, url.origin);
@@ -74,6 +44,15 @@ export function googlePage(input: string): string | undefined {
       safe.searchParams.set(key, value);
   }
   return safe.href;
+}
+
+export function googlePageTitle(input: string): string | undefined {
+  const page = googlePage(input);
+  if (!page) return;
+  const url = new URL(page);
+  return (
+    url.hostname === "corpora.inc" ? marketingPageTitles : publicAppPageTitles
+  )[url.pathname];
 }
 
 /** Clearing captured click IDs from the address bar is not a new page visit. */
@@ -142,7 +121,7 @@ export function createGoogleAnalytics() {
       const pageParams = {
         page_location: page,
         page_referrer: referrer,
-        page_title: "AMP by Corpora",
+        page_title: googlePageTitle(page),
       };
       if (!loaded) {
         loaded = true;
@@ -232,7 +211,7 @@ export function createGoogleAnalytics() {
         {
           send_to: GA_MEASUREMENT_ID,
           page_location: previous,
-          page_title: "AMP by Corpora",
+          page_title: googlePageTitle(previous),
         },
       );
     } catch {
