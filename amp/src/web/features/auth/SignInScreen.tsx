@@ -231,7 +231,7 @@ export function SignInScreen() {
   };
   async function run(
     work: () => Promise<void>,
-    stage: "password" | "passkey" | undefined = "password",
+    stage: "password" | "passkey" | null = "password",
   ) {
     setBusy(true);
     setError("");
@@ -393,7 +393,7 @@ export function SignInScreen() {
         },
         provider,
       );
-    }, undefined);
+    }, null);
   };
   const showProviders = step === "sign-in" || step === "create";
   return (

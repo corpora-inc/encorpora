@@ -52,7 +52,8 @@ const accounts = await createAccounts(repository.pool, {
   },
 });
 const authenticate = accountsAuth(accounts);
-const app = buildApp({ repository, authenticate, development: true });
+// Use account-owned trials, as hosted deployments do.
+const app = buildApp({ repository, authenticate, development: false });
 await registerAccountRoutes(app, accounts);
 await registerParentFollowupRoutes(app, {
   pool: repository.pool,
@@ -318,16 +319,26 @@ try {
   const page = await context.newPage();
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
+  const authEvents: { event: string; props: { stage?: string } }[] = [];
+  await page.route("**/api/v1/events", async (route) => {
+    const data = route.request().postDataJSON();
+    authEvents.push(...data.events);
+    await route.fulfill({
+      status: 202,
+      json: { accepted: data.events.length },
+    });
+  });
   await page.addInitScript(recordShifts);
   await page.addInitScript(() => {
-    Object.defineProperty(window, "BroadcastChannel", {
-      configurable: true,
-      value: class {
-        constructor() {
-          throw new DOMException("Storage blocked", "SecurityError");
-        }
-      },
-    });
+    if (location.pathname === "/sign-up")
+      Object.defineProperty(window, "BroadcastChannel", {
+        configurable: true,
+        value: class {
+          constructor() {
+            throw new DOMException("Storage blocked", "SecurityError");
+          }
+        },
+      });
   });
   // The provider screens: GitHub is cancelled, Google approves.
   await context.route("https://github.com/login/oauth/authorize**", (route) => {
@@ -349,12 +360,24 @@ try {
     });
   });
 
+  let releaseBookkeeping!: () => void;
+  const bookkeeping = new Promise<void>(
+    (resolve) => (releaseBookkeeping = resolve),
+  );
+  await page.route("**/api/v1/parent-followup/complete", async (route) => {
+    await bookkeeping;
+    await route.continue();
+  });
   await page.goto(`${origin}/sign-up?return=free-practice&program=az-esa`);
   await page.getByRole("button", { name: "Continue with Google" }).click();
   await page.waitForURL(
     /\/try\?return=free-practice&program=az-esa|\/try\?program=az-esa&return=free-practice/,
   );
-  await page.getByRole("heading", { name: "See how AMP adapts" }).waitFor();
+  await page
+    .getByRole("heading", { name: "See how AMP adapts" })
+    .waitFor({ timeout: 3000 });
+  releaseBookkeeping();
+  await page.unroute("**/api/v1/parent-followup/complete");
   const lead = (
     await repository.pool.query(
       "SELECT p.* FROM amp_parent_followups p JOIN amp_auth_users u ON u.id=p.user_id WHERE u.email=$1",
@@ -373,6 +396,19 @@ try {
       )
     ).rows[0].n,
     2,
+  );
+  await page.evaluate(() => window.dispatchEvent(new Event("pagehide")));
+  await page.waitForTimeout(50);
+  assert.ok(
+    authEvents.some(
+      (e) => e.event === "auth_request" && e.props.stage === "social",
+    ),
+  );
+  assert.ok(
+    !authEvents.some(
+      (e) => e.event === "auth_request" && e.props.stage === "password",
+    ),
+    "social signup must not be counted as a password attempt",
   );
   await page.request.post(`${origin}/api/auth/sign-out`, {
     headers: { origin },
@@ -618,17 +654,7 @@ try {
   });
   await page.goto(`${origin}/`);
   await page.waitForURL(`${origin}/try/practice`);
-  await page
-    .locator("#problem-prompt")
-    .waitFor()
-    .catch(async (error) => {
-      console.error("Synthetic trial response", trial);
-      console.error(
-        "Synthetic failed screen",
-        await page.locator("body").innerText(),
-      );
-      throw error;
-    });
+  await page.locator("#problem-prompt").waitFor();
   const destinations = await page.evaluate(
     () => (window as unknown as { __destinations: string[] }).__destinations,
   );
@@ -745,7 +771,13 @@ try {
   await page
     .getByRole("heading", { name: "Second Learner", exact: true })
     .waitFor();
-  await page.waitForLoadState("networkidle");
+  // Diagnostic batching is independent of the account transition. Wait on
+  // product queries, not on the absence of every background request.
+  await page.waitForFunction(async () => {
+    const queryPath = "/src/web/lib/query.ts";
+    const { queryClient } = await import(queryPath);
+    return queryClient.isFetching({ queryKey: ["account"] }) === 0;
+  });
   assert.equal(
     replayedPurchases,
     0,
