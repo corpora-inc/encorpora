@@ -110,6 +110,24 @@ async function fixture(
   );
   await page.route("**/api/v1/**", async (route) => {
     const pathname = new URL(route.request().url()).pathname;
+    if (pathname.endsWith("/trials/current"))
+      return route.fulfill(
+        failTrialLookup
+          ? { status: 503, json: { error: "unavailable" } }
+          : {
+              json: {
+                trial:
+                  trial && signedIn
+                    ? {
+                        token: "atlas-synthetic-trial-token-1413",
+                        learnerId: "trial-learner",
+                        birthYear: 2016,
+                        expiresAt: "2099-01-01T00:00:00Z",
+                      }
+                    : null,
+              },
+            },
+      );
     if (pathname.endsWith("/practice-state")) {
       const learnerId = pathname.split("/").at(-2)!;
       let state = practice.get(learnerId) ?? defaultPracticeSettings();
@@ -130,12 +148,6 @@ async function fixture(
       }
       return route.fulfill({ json: state });
     }
-    if (
-      failTrialLookup &&
-      pathname.endsWith("/learners") &&
-      route.request().headers().authorization?.startsWith("Trial ")
-    )
-      return route.fulfill({ status: 503, json: { error: "unavailable" } });
     if (pathname.endsWith("/learners"))
       return route.fulfill({
         json: {
@@ -539,7 +551,7 @@ async function verifyLessonRecovery() {
       viewport: { width: 390, height: 844 },
       reducedMotion: "reduce",
     });
-    await fixture(page, { trial: true, signedIn: false });
+    await fixture(page, { trial: true });
     const modulePattern =
       failure === "route" ? "**/PathwaysScreen.tsx*" : "**/SkillLesson.tsx*";
     if (failure === "chunk")
@@ -1085,7 +1097,7 @@ try {
   await typed.locator("#problem-prompt").waitFor();
   assert.equal(typedBatches[0]?.templateId, exactType.id);
   await typed.close();
-  // A signed-in parent can explore the anonymous assessment's own progress.
+  // A signed-in parent can explore the account's trial progress.
   const trialPage = await browser.newPage({
     viewport: { width: 390, height: 844 },
     reducedMotion: "reduce",
@@ -1145,9 +1157,14 @@ try {
     if (request.url().includes("facebook.com/reel/2346490016085488"))
       reelRequests.push(request.url());
   });
-  await fixture(guest, { signedIn: false, catalogFree: 37 });
+  await fixture(guest, { signedIn: false, trial: true, catalogFree: 37 });
   await guest.goto(`${origin}/pathways?utm_source=example`);
   await guest.getByText("37 free problems", { exact: false }).waitFor();
+  assert.equal(
+    await guest.getByText("1 skills illuminated", { exact: false }).count(),
+    0,
+    "a stored trial token does not expose saved progress while signed out",
+  );
   assert.equal(
     await guest
       .getByRole("link", { name: "Start free assessment →" })
@@ -1198,7 +1215,7 @@ try {
   const exhausted = await browser.newPage({
     viewport: { width: 390, height: 844 },
   });
-  await fixture(exhausted, { signedIn: false, trial: true, trialRemaining: 0 });
+  await fixture(exhausted, { trial: true, trialRemaining: 0 });
   await exhausted.goto(`${origin}/pathways?context=trial&skill=${target.id}`);
   await exhausted.getByText("choose a plan", { exact: false }).waitFor();
   assert.equal(
@@ -1296,7 +1313,7 @@ try {
   const pendingPhone = await browser.newPage({
     viewport: { width: 320, height: 568 },
   });
-  await fixture(pendingPhone, { signedIn: false, trial: true });
+  await fixture(pendingPhone, { trial: true });
   let releaseLookup!: () => void;
   let releaseProgress!: () => void;
   const lookupGate = new Promise<void>((resolve) => {
@@ -1305,7 +1322,7 @@ try {
   const progressGate = new Promise<void>((resolve) => {
     releaseProgress = resolve;
   });
-  await pendingPhone.route("**/api/v1/learners", async (route) => {
+  await pendingPhone.route("**/api/v1/trials/current", async (route) => {
     await lookupGate;
     await route.fallback();
   });
