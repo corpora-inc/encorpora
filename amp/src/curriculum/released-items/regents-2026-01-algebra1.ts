@@ -541,7 +541,7 @@ export const regentsAlgebra1January2026 = defineLedger(
       status: "covered",
       templateIds: [
         "first-cheaper-whole-input",
-        "inequality-from-context",
+        "inequality-context-bound",
         "budget-whole-items",
         "budget-items-steps",
       ],

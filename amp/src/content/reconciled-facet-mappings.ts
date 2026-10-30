@@ -2746,7 +2746,7 @@ export const reconciledFacetMappings: readonly FacetMapping[] = [
       "Use corresponding sides of triangles known to be similar, including a triangle cut by a parallel line, ratios of area and perimeter, and a shadow situation, to find a missing quantity. Does not assess establishing similarity or writing a proof.",
   },
   {
-    templateId: "inequality-from-context",
+    templateId: "inequality-context-bound",
     facetId: "simple-inequalities.core",
     extent: "partial",
     rationale:

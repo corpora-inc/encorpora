@@ -29,6 +29,19 @@ type Case = {
 );
 
 const choice = { requiredResponseCapability: "single-choice-v1" as const };
+/** Frozen metadata for saved v1 problems; excluded from new practice. */
+export const historicalEquationTemplates: readonly TemplateMetadata[] = [
+  {
+    id: "inequality-from-context",
+    version: 1,
+    title: "Write an inequality for a condition",
+    skillId: "simple-inequalities",
+    gradeBand: "6–8",
+    description:
+      "Choose x > c, x < c, x ≥ c or x ≤ c for a condition stated in words.",
+    ...choice,
+  },
+];
 export const equationTemplates: readonly TemplateMetadata[] = [
   {
     id: "one-step-equation",
@@ -96,7 +109,7 @@ export const equationTemplates: readonly TemplateMetadata[] = [
       "Find the weight of one unknown block on a level balance showing px + q = r or p(x + q) = r.",
   },
   {
-    id: "inequality-from-context",
+    id: "inequality-context-bound",
     version: 1,
     title: "Write an inequality for a condition",
     skillId: "simple-inequalities",
@@ -1482,6 +1495,7 @@ const builders: Record<string, (r: Random) => Case> = {
   "two-step-word-problem": twoStepWordCase,
   "two-step-equation-model": twoStepModelCase,
   "balance-two-step": (r) => balanceCase(r, true),
+  "inequality-context-bound": contextCase,
   "inequality-from-context": contextCase,
   "inequality-from-number-line": numberLineReadCase,
   "inequality-number-line-choice": numberLineChoiceCase,
@@ -1492,12 +1506,16 @@ export function equationPrintCase(
   id: string,
   seed: string,
 ): { problem: GeneratedProblem; tags: string[]; caseKey: string } {
-  const metadata = equationTemplates.find((t) => t.id === id);
+  const metadata = [...equationTemplates, ...historicalEquationTemplates].find(
+    (t) => t.id === id,
+  );
   if (!metadata) throw new Error(`Unknown equation template ${id}`);
   if (typeof seed !== "string" || !seed.length || seed.length > 128)
     throw new Error("Seed must contain 1–128 characters");
   const r = random(id, seed);
   const c = builders[id]!(r);
+  if (id === "inequality-context-bound")
+    c.prompt = c.prompt.replace("Let a be", "Let $a$ be");
   const base = {
     id: createHash("sha256")
       .update(JSON.stringify([id, 1, seed]))

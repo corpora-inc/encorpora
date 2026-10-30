@@ -182,9 +182,9 @@ export const satPractice5 = defineLedger(
       demand:
         "Write a compound inequality for a quantity bounded by a recorded minimum and maximum",
       status: "partial",
-      templateIds: ["inequality-from-context", "absolute-compound-inequality"],
+      templateIds: ["inequality-context-bound", "absolute-compound-inequality"],
       limitations:
-        "inequality-from-context writes single-bound inequalities only; absolute-compound-inequality solves given compound inequalities, not from a context.",
+        "inequality-context-bound writes single-bound inequalities only; absolute-compound-inequality solves given compound inequalities, not from a context.",
     },
     {
       section: "Math module 1",

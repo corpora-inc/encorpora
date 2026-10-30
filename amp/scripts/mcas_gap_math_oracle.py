@@ -27,7 +27,7 @@ from variation_axes_oracle import (
 
 MULTI = frozenset(
     {
-        "mcas-true-fact-equations",
+        "fact-equation-truth-select",
         "mcas-round-hundred-select",
         "mcas-prime-factor-select",
         "mcas-comparison-equations-select",
@@ -806,7 +806,7 @@ def factor_size(public):
 
 
 DISPATCH = {
-    "mcas-true-fact-equations": arithmetic,
+    "fact-equation-truth-select": arithmetic,
     "mcas-round-hundred-select": round_hundred,
     "mcas-prime-factor-select": prime_factor,
     "mcas-comparison-equations-select": comparison,
@@ -939,7 +939,7 @@ def self_test():
         }
 
     good = multi(
-        "mcas-true-fact-equations",
+        "fact-equation-truth-select",
         "Choose the 3 equations that are true.",
         ["$28\\div7=5$", "$27\\div3=9$", "$7\\times3=21$", "$35\\div5=9$", "$4\\times2=6$", "$6\\times5=30$"],
         3,
@@ -1096,7 +1096,7 @@ def self_test():
     # Variation axes: result-first orientation, true/false pairs, the smaller
     # quantity as the unknown and powers of pi and radicals.
     oriented = multi(
-        "mcas-true-fact-equations",
+        "fact-equation-truth-select",
         "Choose the 3 equations that are true.",
         ["$7=63\\div9$", "$64=8\\times8$", "$5=36\\div6$", "$4\\times6=25$", "$56=7\\times8$", "$9=45\\div4$"],
         3,

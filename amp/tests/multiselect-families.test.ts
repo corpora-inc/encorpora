@@ -270,7 +270,7 @@ const oracles: Record<string, Oracle> = {
     const P = nums(p.public.prompt.match(/product of (\$[^$]+\$)/)![1]!)[0]!;
     return evalTex(s.label) === P;
   },
-  "equal-factor-equations-select": (_p, s) => {
+  "equal-factor-truth-select": (_p, s) => {
     const [l, r] = strip(s.label).split("=");
     return close(evalTex(l!), evalTex(r!));
   },
@@ -705,7 +705,7 @@ test("the number of true statements varies, and every variant is reached", () =>
     "rounds-to-select": ["whole-place", "tenth-place", "hundredth-place"],
     "compare-to-pi-select": ["pi-greater", "pi-less", "root-greater"],
     "multiplication-fact-grid-select": ["small-product", "large-product"],
-    "equal-factor-equations-select": ["equal-factors"],
+    "equal-factor-truth-select": ["equal-factors"],
     "story-expression-select": ["two-removals", "unknown-part"],
     "equal-expression-select": [
       "multiplied-difference",
@@ -758,7 +758,7 @@ test("the number of true statements varies, and every variant is reached", () =>
 });
 
 test("equal-factor equations offer both answer formats and orientations", () => {
-  const ps = all("equal-factor-equations-select");
+  const ps = all("equal-factor-truth-select");
   const formats = new Set(ps.map((p) => p.variant!.axes!["answer-format"]));
   assert.deepEqual([...formats].sort(), ["select-all", "true-false-pair"]);
   const orientations = new Set(ps.map((p) => p.variant!.axes!["orientation"]));

@@ -36,7 +36,7 @@ export const family = {
       "early.subtract-within-20",
       "whole.related-equation",
     ],
-    "true-equation-choice": ["equation.truth"],
+    "whole-number-equality-choice": ["equation.truth"],
     // Existing story templates that the ledger now cites without an archetype link.
     "story-equation-choice": [
       "linear.context",

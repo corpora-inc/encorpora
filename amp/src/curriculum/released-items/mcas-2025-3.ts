@@ -230,12 +230,12 @@ export const mcasGrade3 = defineLedger(
         "Select the three true multiplication and division equations among six",
       status: "covered",
       templateIds: [
-        "fl-equation-truth-mult-div",
-        "mcas-true-fact-equations",
-        "equal-factor-equations-select",
+        "multiplication-division-equation-truth",
+        "fact-equation-truth-select",
+        "equal-factor-truth-select",
       ],
       limitations:
-        "equal-factor-equations-select selects the true multiplication and division equations among six, including a number times itself such as 64 = 8 times 8 and its division fact, written with the result first or last.",
+        "equal-factor-truth-select selects the true multiplication and division equations among six, including a number times itself such as 64 = 8 times 8 and its division fact, written with the result first or last.",
     },
     {
       section: "Session 2",

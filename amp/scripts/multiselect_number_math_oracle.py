@@ -15,7 +15,7 @@ getcontext().prec = 60
 SUPPORTED = frozenset({
     'place-value-forms-select', 'equivalent-fractions-select', 'fraction-line-names-select',
     'equivalent-ratios-select', 'rounds-to-select', 'compare-to-pi-select',
-    'multiplication-fact-grid-select', 'equal-factor-equations-select',
+    'multiplication-fact-grid-select', 'equal-factor-truth-select',
 })
 REVIEW_RETURNS_ANSWER = True
 PI = Decimal('3.14159265358979323846264338327950288419716939937510582097494')
@@ -211,7 +211,7 @@ VERDICTS = {
     'rounds-to-select': rounds_to,
     'compare-to-pi-select': compare_to_pi,
     'multiplication-fact-grid-select': multiplication_grid,
-    'equal-factor-equations-select': equal_factor_equations,
+    'equal-factor-truth-select': equal_factor_equations,
 }
 
 
@@ -256,7 +256,7 @@ def self_test():
         ('equivalent-ratios-select', 'Volunteer groups need $5$ students for every $2$ adults. Select the 3 groups that keep this ratio.',
          ['$10$ students and $4$ adults', '$13$ students and $4$ adults', '$14$ students and $4$ adults', '$30$ students and $12$ adults', '$35$ students and $14$ adults'],
          'Choose 3 groups', '["option-a","option-d","option-e"]'),
-        ('equal-factor-equations-select', 'Select the 2 equations that are true.',
+        ('equal-factor-truth-select', 'Select the 2 equations that are true.',
          ['$8\\times8=66$', '$18\\div3=5$', '$49\\div7=7$', '$3\\times6=21$', '$49\\div7=8$', '$121\\div11=11$'], 'Choose 2 equations', '["option-c","option-f"]'),
         ('multiplication-fact-grid-select', 'Select the 2 multiplication facts that have a product of $16$.',
          ['$4\\times8$', '$6\\times4$', '$8\\times2$', '$2\\times7$', '$3\\times8$', '$4\\times4$'], 'Choose 2 facts', '["option-c","option-f"]'),
@@ -278,7 +278,7 @@ def self_test():
         kit.must_fail(solve, kit.tamper(_public('place-value-forms-select', 'The number is $411{,}094$. Select the 1 true comparisons.',
                                                 [a + ' four hundred nineteen thousand, ninety-four', b + ' four hundred four thousand'], 1, 'Choose 1 comparisons'), lambda p: None))
     # true/false verdict format: one correct verdict per equation
-    pair = _public('equal-factor-equations-select', 'Decide whether each of the 2 statements is true or false, and choose the correct statement for each statement.',
+    pair = _public('equal-factor-truth-select', 'Decide whether each of the 2 statements is true or false, and choose the correct statement for each statement.',
                    ['$64\\div8=8$ is true.', '$64\\div8=8$ is false.', '$180\\div12=14$ is true.', '$180\\div12=14$ is false.'], 2, 'Choose 2 correct statements')
     require(solve(pair) == '["option-a","option-d"]', 'Handwritten verdict-format fixture')
     problem = {'public': pair, 'answer': '["option-a","option-d"]', 'hint': 'Work out each side.',

@@ -38,11 +38,11 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     "Given addition and subtraction equations within 100, choose the one that is true or false.",
     "Two sums can have different addends and the same value, as in $27+13=26+14$. Compare values, not the individual numbers.",
   ),
-  "fl-equation-truth-mult-div": truthMethod(
+  "multiplication-division-equation-truth": truthMethod(
     "Given multiplication and division equations with facts within 12, choose the one that is true or false.",
     "Division is not commutative: $24\\div 6$ is 4, but $6\\div 24$ is not. Evaluate each side as written.",
   ),
-  "fl-equation-truth-whole": truthMethod(
+  "whole-number-equation-truth": truthMethod(
     "Given whole-number equations that use any of the four operations, choose the one that is true or false.",
     "Repeated subtraction counts how many times a number fits, but its value is what is left: $32-8-8-8-8=0$, not 4.",
   ),
@@ -299,9 +299,9 @@ export const floridaGapPrinciples: Record<string, string> = {
     "An equation $L=R$ is true exactly when the number $L$ and the number $R$ are equal. The equal sign is symmetric: if $L=R$ then $R=L$.",
   "fl-equation-truth-100":
     "Different sums can have the same value. For whole numbers, $a+b=(a-k)+(b+k)$ and $a-b=(a+k)-(b+k)$. Transferring $k$ between addends keeps a sum, and adding the same $k$ to both terms keeps a difference.",
-  "fl-equation-truth-mult-div":
+  "multiplication-division-equation-truth":
     "Division by a nonzero $b$ undoes multiplication by $b$: $a\\div b=c$ exactly when $c\\times b=a$. Multiplication is commutative, $a\\times b=b\\times a$, but division is not.",
-  "fl-equation-truth-whole":
+  "whole-number-equation-truth":
     "Subtracting $b$ from $a$ a total of $k$ times gives $a-kb$. When $a=kb$, this is 0, while $a\\div b=k$. The two expressions count the same repetitions but have different values.",
   "fl-equation-truth-grouped":
     "Expressions are evaluated by the order of operations: parentheses, then multiplication and division from left to right, then addition and subtraction from left to right. Two expressions are equal exactly when they have the same value.",
@@ -348,8 +348,8 @@ export const floridaGapLessons: Lesson[] = [
     templateIds: [
       "fl-equation-truth-20",
       "fl-equation-truth-100",
-      "fl-equation-truth-mult-div",
-      "fl-equation-truth-whole",
+      "multiplication-division-equation-truth",
+      "whole-number-equation-truth",
       "fl-equation-truth-grouped",
     ],
     objectives: [

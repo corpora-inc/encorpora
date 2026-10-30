@@ -9,7 +9,7 @@ export interface SelectionObjective {
   basis: "editorial";
   skills: readonly string[];
 }
-export const CURRICULUM_MIX_VERSION = "2026-10-22.1";
+export const CURRICULUM_MIX_VERSION = "2026-10-30.1";
 // objective | instructional importance | assessment emphasis | member skills
 // 6 = central, 3 = regular, 1 = extension; intermediate values are intentional.
 const rows = `
@@ -38,7 +38,7 @@ right-triangles|5|5|pythagorean-theorem,right-triangle-trigonometry,special-righ
 ratios-percent|6|6|ratios,unit-rates,ratio-tables,percentages,rational-unit-rates,proportional-relationships,percent-change,financial-literacy-middle
 expressions|5|5|numerical-expressions,variable-expressions,expression-properties,linear-expressions,expression-structure
 patterns|3|3|arithmetic-patterns,rule-patterns,related-patterns,dependent-variables
-linear-equations|6|6|equality,missing-addend,missing-factor,one-step-equations,two-step-equations,linear-equations,formula-rearrangement,symbolic-linear-constraints,equation-reasoning
+linear-equations|6|6|equality,multiplication-division-equality,whole-number-equality,missing-addend,missing-factor,one-step-equations,two-step-equations,linear-equations,formula-rearrangement,symbolic-linear-constraints,equation-reasoning
 linear-models|6|6|slope,linear-models,linear-equation-modeling,model-quantities
 inequalities|4|4|simple-inequalities,linear-inequalities,inequality-regions,graph-solution-sets
 systems|5|5|linear-systems,systems-modeling,elimination-proof

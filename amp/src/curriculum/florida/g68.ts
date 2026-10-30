@@ -138,7 +138,7 @@ export const floridaG68Rows: readonly FloridaRow[] = [
     "Variable may be on either side of the inequality symbol.",
     "related",
     [
-      "inequality-from-context",
+      "inequality-context-bound",
       "inequality-number-line-choice",
       "inequality-from-number-line",
     ],
@@ -668,7 +668,7 @@ export const floridaG68Rows: readonly FloridaRow[] = [
       "inequality-solution-set",
       "affine-linear-inequality",
       "inequality-number-line-choice",
-      "inequality-from-context",
+      "inequality-context-bound",
     ],
     ["simple-inequalities", "linear-inequalities"],
     "Solving is covered by two-step-style inequalities; one-step forms such as x/p>q and negative-multiplier flips are not confirmed as separate items. Number-line choice covers only x compared with a constant, not graphs of solved inequalities. Variable on the right side was not seen.",

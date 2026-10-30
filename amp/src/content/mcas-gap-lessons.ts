@@ -8,7 +8,7 @@ const judgeStep =
   "Decide each equation on its own. In a list, choose exactly the number of true equations asked for; in true-or-false pairs, choose the one correct claim for each equation.";
 
 export const mcasGapMethods: Record<string, ProblemMethod> = {
-  "mcas-true-fact-equations": {
+  "fact-equation-truth-select": {
     goal: "Decide which multiplication and division equations are true, with the result written on either side.",
     intuition:
       "An equation is true when both sides name the same number. A multiplication fact and its division facts say the same thing: if $6\\times8=48$ then $48\\div6=8$ and $48\\div8=6$. So you can test any division by multiplying the answer back.",
@@ -490,7 +490,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
 };
 
 export const mcasGapPrinciples: Record<string, string> = {
-  "mcas-true-fact-equations":
+  "fact-equation-truth-select":
     "An equation $a\\times b=c$ is true when $ab$ equals $c$, and $c\\div b=a$ exactly when $a\\times b=c$ with $b\\neq0$. The fact family $a\\times b$, $b\\times a$, $c\\div a$, $c\\div b$ shares one set of three numbers.",
   "mcas-round-hundred-select":
     "A whole number $n$ rounds to the nearest hundred $H$ exactly when $H-50\\le n<H+50$. Halfway values $H+50$ round up.",
@@ -563,7 +563,7 @@ export const mcasGapLessons: Lesson[] = [
     summary:
       "Test a stated equation by working out its sides or by using the inverse operation, one statement at a time.",
     templateIds: [
-      "mcas-true-fact-equations",
+      "fact-equation-truth-select",
       "mcas-true-product-equations",
       "mcas-true-quotient-equations",
       "mcas-comparison-equations-select",

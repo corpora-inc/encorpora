@@ -79,7 +79,7 @@ export const mcasGrade6 = defineLedger(
         "Select the two true division equations among five with multidigit dividends",
       status: "covered",
       templateIds: [
-        "fl-equation-truth-mult-div",
+        "multiplication-division-equation-truth",
         "divide-by-one-digit",
         "mcas-true-quotient-equations",
       ],
