@@ -6,6 +6,7 @@ import { Figure } from "./Figure";
 import { MathText, withSeparators } from "./MathText";
 import { ScenePlayer } from "./scene/ScenePlayer";
 import { dataWalkthrough } from "../math/scene/data-walkthroughs";
+import { LessonVideo } from "./LessonVideo";
 
 const LessonAnimation = lazy(
   () => import("./lesson-animation/LessonAnimation"),
@@ -27,6 +28,12 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
       <p className="lesson-goal">
         <MathText text={lesson.intuition ?? lesson.goal} />
       </p>
+      {lesson.video && (
+        <LessonVideo
+          key={`${lesson.video.id}:${lesson.video.version}`}
+          video={lesson.video}
+        />
+      )}
       <section className="lesson-example">
         <h3>Example</h3>
         <p className="lesson-example-prompt">

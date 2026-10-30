@@ -1,3 +1,5 @@
+> **YouTube releases:** follow [the shared operating policy](../../../docs/youtube-publishing.md). Upload private, review settings and packaging, then schedule from the shared channel calendar. An approved render does not authorize immediate publication.
+
 # Captures — layout, workflow, and YouTube pipeline
 
 Marketing/promo captures for the Corpán YouTube channel (`@corpán1`).

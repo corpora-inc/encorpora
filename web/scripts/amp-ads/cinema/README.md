@@ -198,7 +198,8 @@ the media is sound, not that the ad is good.
 always uploads as **private** with `containsSyntheticMedia` set and
 `selfDeclaredMadeForKids` false (the audience is parents). Upload the 4K master:
 YouTube streams 4K uploads at visibly higher quality than 1080p ones. Publishing
-is a human decision in YouTube Studio; leave uploads private 24-48 hours first.
+follows the [shared YouTube operating policy](../../../../docs/youtube-publishing.md):
+private preparation, reviewed settings, and scheduled release normally about 24 hours later.
 For Meta and Google Ads, upload the 1080 deliverables in each aspect ratio and
 keep every asset group filled.
 
