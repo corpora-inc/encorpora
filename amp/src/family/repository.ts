@@ -506,6 +506,24 @@ export class FamilyRepository {
       if (
         (
           await client.query(
+            "SELECT to_regclass('amp_provider_signup_exports') AS relation",
+          )
+        ).rows[0]?.relation
+      ) {
+        datasets.push(
+          [
+            "signup-ad-measurement",
+            "SELECT jsonb_build_object('provider',provider,'signupAt',occurred_at,'state',state,'attempts',attempts,'httpStatus',http_status,'stoppedReason',stopped_reason) AS value FROM amp_provider_signup_exports WHERE 'amp|'||user_id=$1 ORDER BY occurred_at,id",
+          ],
+          [
+            "signup-browser-context",
+            "SELECT jsonb_build_object('userAgent',user_agent,'expiresAt',expires_at) AS value FROM amp_signup_browser_contexts WHERE 'amp|'||user_id=$1",
+          ],
+        );
+      }
+      if (
+        (
+          await client.query(
             "SELECT to_regclass('amp_meta_advertising_permissions') AS relation",
           )
         ).rows[0]?.relation

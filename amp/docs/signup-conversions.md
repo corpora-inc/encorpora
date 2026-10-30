@@ -1,0 +1,17 @@
+# Verified signup conversions
+
+A signup conversion means a new parent account with a verified email address and eligible original ad-click evidence. A returning sign-in, button click, trial answer or invoice request is not a signup conversion. Purchases have separate workers and revenue records.
+
+Google uses the Google signup worker. Meta and OpenAI use `src/advertising/provider-signups.ts`, called by their existing measurement workers. Set `signupEnabled: true` in the provider’s external measurement configuration to enable collection and delivery. Both the provider’s `enabled` setting and `signupEnabled` must be true. The default is disabled. `report` includes signup counts separately from purchases.
+
+Meta receives `CompleteRegistration`, the original click/browser identifiers, an opaque event ID, timestamp, fixed signup URL and actual signup browser user agent. OpenAI receives `registration_completed` with the original `oppref`, opaque event ID, timestamp, fixed signup URL and `customer_action` data. OpenAI events set `opt_out: true`. Neither receives an email, account ID, learner data or revenue value.
+
+The server captures Meta browser context during successful signup, when real Meta click evidence is attached. Missing browser context makes an event ineligible. Context expires after seven days. Both providers require signup events within seven days and click evidence preceding verification by no more than 30 days. Workers recheck account verification, email identity, evidence ownership, expiry and provider withdrawal under a dedicated sharing lock before sending. Ordinary account reads and learning operations do not acquire this sharing lock. Withdrawal acquires it exclusively, so a completed withdrawal cannot be followed by an older in-flight export. No provider request runs in the signup or practice request path.
+
+The outbox allows one event per account and provider. Concurrent workers claim a lease; uncertain delivery retries the same event ID and content. A destination change stops pending delivery for review. Provider acceptance means receipt, not confirmed matching or attribution. Inspect rejected, exhausted and stopped rows before diagnosing missing conversions. Repeated logins do not create another event.
+
+Deleting click evidence cascades to its signup context and delivery record. Account deletion also cascades; parent data exports include local signup context and delivery status. The retention worker removes expired browser context and signup intents, and delivery rows older than 90 days. It runs independently of optional email delivery.
+
+Validate OpenAI payloads with `validate_only` before enabling a destination. Meta’s `test_event_code` is not an isolated sink: test events can be used for advertising measurement. Do not manufacture a production signup to test the integration. Use intercepted transport tests and inspect the receipt for the first eligible real signup. Configure campaign conversion goals separately; changing an event export does not change campaign bidding or budgets.
+
+Provider references: [OpenAI supported events](https://developers.openai.com/ads/supported-events), [OpenAI Conversions API](https://developers.openai.com/ads/conversions-api), [Meta customer information](https://developers.facebook.com/documentation/ads-commerce/conversions-api/parameters/customer-information-parameters/), and [Meta test events](https://developers.facebook.com/documentation/ads-commerce/conversions-api/using-the-api#testEvents).

@@ -1,6 +1,7 @@
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { PoolClient } from "pg";
 import { z } from "zod";
+import { lockSignupSharing } from "./signup-privacy-lock.js";
 import {
   fundedCampaignSchema,
   type FundedCampaign,
@@ -320,6 +321,7 @@ export async function eraseAccountAdClicks(
     !["google", "meta", "openai"].includes(provider)
   )
     throw new Error("invalid_attribution_provider");
+  await lockSignupSharing(client, account);
   const result = await client.query(
     `DELETE FROM amp_ad_click_evidence c USING amp_ad_click_journeys j
      WHERE j.id=c.journey_id AND j.account_id=$1 AND ($2::text IS NULL OR c.provider=$2)`,

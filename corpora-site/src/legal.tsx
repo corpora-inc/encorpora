@@ -154,7 +154,7 @@ export function Legal({
             answers and progress. Ad identifiers are removed from the page’s
             address before links are shared. OpenAI ads can lead directly to
             AMP’s home or signup page, where the same process retains the
-            original OpenAI click reference for purchase attribution. Learning
+            original OpenAI click reference for signup and purchase attribution. Learning
             routes do not collect it.
           </p>
           <p>
@@ -168,15 +168,18 @@ export function Legal({
             permissions described below.
           </p>
           <p>
-            For a new, verified parent account originating from a Google ad, AMP
-            may send Google the original click identifier, signup time and a
-            random transaction reference to measure which ads lead to signups.
-            This signup event has no purchase value and includes no email, birth
-            year, learner name, answer or progress. It requests no ad
-            personalization. Browser privacy signals and the parent’s Google
-            collection withdrawal stop future signup sharing. Removing the
-            underlying click evidence also removes its local export payload; it
-            does not recall information Google has already received.
+            For a new, verified parent account originating from a Google, Meta
+            or OpenAI ad, AMP may send that provider the original ad identifier,
+            signup time and a random event reference. Meta also receives the
+            signup-page address and the browser’s user agent, which AMP retains
+            for up to seven days. These events measure which ads lead to
+            signups and help improve ad delivery. They contain no email, birth
+            year, learner name, answer, progress or purchase value. Google and
+            OpenAI events request no user-level ad personalization. Browser
+            privacy signals and provider collection withdrawals stop future
+            sharing. Removing the underlying click evidence removes its local
+            signup delivery records; it does not recall information a provider
+            has already received. Local delivery records expire after 90 days.
           </p>
           <h2>Free-account context and emails</h2>
           <p>
@@ -186,10 +189,12 @@ export function Legal({
             campaign’s target state and a demonstration year are context, not
             confirmed residence, eligibility or a child’s age. The signup page
             says that AMP will email the parent. Parents who sign up or sign in
-            there opt in to a welcome email, a next-day reminder and occasional
-            math problems, tips, videos and product news. Every one of these
-            emails includes an unsubscribe link; unsubscribing does not affect
-            account access or security and purchase messages.
+            there may receive a personal welcome or follow-up from AMP’s founder.
+            Parents can reply with feedback or ask to stop these messages.
+            Optional product emails can also include math problems, tips, videos
+            and product news. You can stop them through an unsubscribe link or
+            by replying. Opting out does not affect account access or security
+            and purchase messages.
           </p>
           <h2>Education-fund purchase documents</h2>
           <p>

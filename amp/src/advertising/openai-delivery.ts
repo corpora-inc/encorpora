@@ -17,6 +17,7 @@ import {
 
 export const openaiDeliveryConfigSchema = z.strictObject({
   enabled: z.boolean().default(false),
+  signupEnabled: z.boolean().optional(),
   pixelId: z.string().regex(/^[A-Za-z0-9_-]{1,128}$/),
   sources: measurementSourcesSchema,
 });

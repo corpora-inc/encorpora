@@ -1,5 +1,7 @@
 import { eraseAccountAdClicks } from "../advertising/click-evidence.js";
 import { acquisitionToken } from "../advertising/acquisition.js";
+import { signupUserAgent } from "../advertising/provider-signups.js";
+import { advertisingOptOut } from "../advertising/permission-contracts.js";
 import { createHash, randomBytes, randomUUID } from "node:crypto";
 import type { Pool } from "pg";
 import {
@@ -42,6 +44,7 @@ export async function completeSignup(
   pool: Pool,
   cookie: string | null | undefined,
   userId: string,
+  headers: Record<string, unknown> = {},
 ) {
   const token = intentToken(cookie);
   if (!token) return;
@@ -91,12 +94,25 @@ export async function completeSignup(
         "UPDATE amp_ad_click_journeys SET account_id=$2 WHERE id=$1 AND account_id IS NULL",
         [pending.acquisition_journey_id, `amp|${userId}`],
       );
+      const agent = signupUserAgent.safeParse(headers["user-agent"]);
+      if (!advertisingOptOut(headers) && agent.success)
+        await db.query(
+          `INSERT INTO amp_signup_browser_contexts(user_id,evidence_id,user_agent)
+          SELECT p.user_id,c.id,$2 FROM amp_parent_followups p
+          JOIN LATERAL (SELECT id FROM amp_ad_click_evidence WHERE journey_id=p.acquisition_journey_id AND provider='meta'
+            ORDER BY first_observed_at DESC,sequence DESC LIMIT 1) c ON true
+          WHERE p.user_id=$1 AND p.new_account ON CONFLICT DO NOTHING`,
+          [userId, agent.data],
+        );
       for (const stage of ["welcome", "reminder"])
         await db.query(
           "INSERT INTO amp_parent_followup_outbox(id,user_id,stage) VALUES ($1,$2,$3)",
           [randomUUID(), userId, stage],
         );
-    } else if (intent.newsletter && intent.notice === explicitNewsletterNotice) {
+    } else if (
+      intent.newsletter &&
+      intent.notice === explicitNewsletterNotice
+    ) {
       // A fresh checkbox opt-in changes the subscription, never restarts the
       // trial sequence. The default opt-in never overrides an unsubscribe.
       await db.query(
@@ -104,6 +120,12 @@ export async function completeSignup(
         [userId],
       );
     }
+    if (advertisingOptOut(headers))
+      await db.query(
+        `INSERT INTO amp_ad_collection_withdrawals(account_id,provider)
+        SELECT $1,unnest(ARRAY['google','meta','openai']) ON CONFLICT DO NOTHING`,
+        [`amp|${userId}`],
+      );
     const withdrawals = await db.query(
       "SELECT provider FROM amp_ad_collection_withdrawals WHERE account_id=$1",
       [`amp|${userId}`],
