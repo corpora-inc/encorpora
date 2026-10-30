@@ -55,6 +55,7 @@ async function fixture(
       "0004-parent-lifecycle.sql",
       "0006-commerce-orders.sql",
       "0014-birth-year.sql",
+      "0076-practice-recovery.sql",
     ])
       await pool.query(await sql(file));
     await pool.query(

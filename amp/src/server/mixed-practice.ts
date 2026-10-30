@@ -224,14 +224,25 @@ export function planMixedPractice(options: {
   // Below the available catalog, keep variety within introductory material.
   // An uncertain strand or a freshness penalty must not pull a beginner above
   // that range. Fractional offsets below kindergarten still start at grade 0.
-  const pool =
-    (frontier.adaptive ?? frontier.overall).level < catalogFloor
-      ? placementPool.filter(
-          (template) =>
-            gradeOfTemplate.get(template.id)! <=
-            Math.max(0, catalogFloor) + scoring.poolReach,
-        )
-      : placementPool;
+  const belowCatalog =
+    (frontier.adaptive ?? frontier.overall).level < catalogFloor;
+  const pool = belowCatalog
+    ? placementPool.filter(
+        (template) =>
+          gradeOfTemplate.get(template.id)! <=
+          Math.max(0, catalogFloor) + scoring.poolReach,
+      )
+    : placementPool;
+  // A below-kindergarten estimate still needs the introductory range, not
+  // just the single easiest family. Keep explicit/offline ceilings strict,
+  // and do not extend this allowance to a restricted higher-grade catalog.
+  const introductoryCeiling =
+    belowCatalog && catalogFloor <= 0 && !options.strictCeiling
+      ? scoring.poolReach
+      : -Infinity;
+  const withinWorkingReach = (grade: number, target: number) =>
+    grade <=
+    Math.max(target + policy.challenge.workingReach, introductoryCeiling);
   const attemptedTemplates = new Set(attempts.map((a) => a.templateId));
   const stats = new Map(
     projectSkillEvidence(attempts).map((entry) => [entry.skillId, entry]),
@@ -344,9 +355,10 @@ export function planMixedPractice(options: {
         (template) =>
           !!template &&
           (!frontier.confirmation ||
-            gradeOfTemplate.get(template.id)! <=
-              targetOf(strandOf(template.skillId)) +
-                policy.challenge.workingReach) &&
+            withinWorkingReach(
+              gradeOfTemplate.get(template.id)!,
+              targetOf(strandOf(template.skillId)),
+            )) &&
           !attemptedTemplates.has(template.id) &&
           (!variety.excludeSkipped || !skippedTemplates.has(template.id)) &&
           !chosen.some((entry) => entry.template.id === template.id),
@@ -485,7 +497,7 @@ export function planMixedPractice(options: {
         score,
         familyScore: score + familyAdjustment,
         poolEligible: frontier.confirmation
-          ? grade <= target + policy.challenge.workingReach
+          ? withinWorkingReach(grade, target)
           : grade <= target + scoring.poolReach || reason === "prerequisite",
         support: ["prerequisite", "revisit", "review"].includes(reason),
         fresh:
