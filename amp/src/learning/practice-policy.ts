@@ -38,6 +38,20 @@ export const practicePolicySchema = z
     placement: z
       .object({ assessmentOnlyAttempts: count, scriptedOpeners: z.boolean() })
       .strict(),
+    challenge: z
+      .object({
+        foundationEvery: z.number().int().min(2).max(20),
+        probeEvery: z.number().int().min(2).max(20),
+        probeRise: grades,
+        workingReach: grades,
+      })
+      .strict()
+      .default({
+        foundationEvery: 4,
+        probeEvery: 4,
+        probeRise: 2,
+        workingReach: 0.5,
+      }),
     support: z
       .object({
         reserveSlot: z.boolean(),
@@ -172,7 +186,13 @@ export function assertPracticePolicy(policy: PracticePolicy): void {
  * set. Changing hypotheses requires a new object, not a global mutation. */
 export const DEFAULT_PRACTICE_POLICY = createPracticePolicy({
   schemaVersion: 1,
-  version: "pathways-budget-v2-assessment-emphasis",
+  version: "pathways-budget-v3-confirmed-practice",
+  challenge: {
+    foundationEvery: 4,
+    probeEvery: 4,
+    probeRise: 2,
+    workingReach: 0.5,
+  },
   sampling: { utilityWindow: 24, temperature: 12 },
   target: { levelOffset: -0.5, uncertaintyWeight: 0.3, clampToAvailable: true },
   placement: { assessmentOnlyAttempts: 20, scriptedOpeners: true },

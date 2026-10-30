@@ -1,7 +1,11 @@
+import { DEFAULT_FRONTIER_POLICY } from "../learning/frontier-policy";
+import { practiceChangeSchema } from "../learning/practice-settings";
+import { changePractice } from "./practice-settings";
 import { recordParentAssessmentStart } from "../parent-followup/repository.js";
 import { satPracticeEligible } from "../curriculum/sat.js";
 import {
   assertPracticePolicy,
+  DEFAULT_PRACTICE_POLICY,
   type PracticePolicy,
 } from "../learning/practice-policy.js";
 import fp from "fastify-plugin";
@@ -409,6 +413,21 @@ function routes(app: FastifyInstance, options: AppOptions) {
       .parse(request.body);
     return options.repository.adoptTrial(account, token, name);
   });
+  app.get("/api/v1/learners/:learnerId/practice-state", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    return options.repository.transaction(account, learnerId, (tx) =>
+      tx.practiceSettings(),
+    );
+  });
+  app.post("/api/v1/learners/:learnerId/practice-state", async (request) => {
+    const account = await parent(request);
+    const { learnerId } = paramsSchema.parse(request.params);
+    const change = practiceChangeSchema.parse(request.body);
+    return options.repository.transaction(account, learnerId, (tx) =>
+      changePractice(tx, change),
+    );
+  });
   app.post("/api/v1/learners/:learnerId/birth-year", async (request) => {
     const account = await parent(request);
     const { learnerId } = paramsSchema.parse(request.params);
@@ -457,6 +476,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
     const input = z
       .object({
         templateId: z.string().max(100).optional(),
+        recoveryStrand: z.string().min(1).max(100).optional(),
         count: z.number().int().min(1).max(5).default(3),
         responseCapabilities: z
           .array(z.enum(responseCapabilities))
@@ -497,6 +517,25 @@ function routes(app: FastifyInstance, options: AppOptions) {
           ? input.count
           : Math.min(input.count, trialRemaining);
       const satMathFocus = await tx.satMathFocus();
+      const practice = await tx.practiceSettings();
+      const focusedPool = practice.focusSkillId
+        ? supported.filter((t) => t.skillId === practice.focusSkillId)
+        : [];
+      // A saved web preference must not strand an older client whose drawing
+      // capabilities cannot render that skill. Its supported mix stays usable.
+      const mixedPool = focusedPool.length
+        ? focusedPool
+        : satMathFocus
+          ? supported.filter(satPracticeEligible)
+          : supported;
+      const recoveryPool = input.recoveryStrand
+        ? mixedPool.filter(
+            (t) =>
+              skills.find((s) => s.id === t.skillId)?.strand ===
+              input.recoveryStrand,
+          )
+        : [];
+      const practicePool = recoveryPool.length ? recoveryPool : mixedPool;
       const selected = focused
         ? Array.from({ length: count }, () => ({
             template: focused,
@@ -507,9 +546,7 @@ function routes(app: FastifyInstance, options: AppOptions) {
           }))
         : planMixedPractice({
             policy: options.practicePolicy,
-            templates: satMathFocus
-              ? supported.filter(satPracticeEligible)
-              : supported,
+            templates: practicePool,
             skills,
             attempts: await tx.recentAttempts(),
             evidence: await tx.skillEvidence(),
@@ -529,6 +566,22 @@ function routes(app: FastifyInstance, options: AppOptions) {
             input.figureCapabilities,
           ),
         );
+        problem.practiceEpoch = practice.epoch;
+        problem.practiceRevision = practice.revision;
+        problem.workingTogether = practice.workingTogether;
+        problem.selection = {
+          reason: choice.reason,
+          strand: choice.strand,
+          frontierPolicy: DEFAULT_FRONTIER_POLICY.version,
+          practicePolicy: (options.practicePolicy ?? DEFAULT_PRACTICE_POLICY)
+            .version,
+          practiceFingerprint: (
+            options.practicePolicy ?? DEFAULT_PRACTICE_POLICY
+          ).fingerprint,
+          ...("selection" in choice ? { trace: choice.selection } : {}),
+          epoch: practice.epoch,
+          focusSkillId: practice.focusSkillId,
+        };
         await tx.saveProblem(problem);
         problems.push(problem.public);
         hints[problem.public.id] = {
@@ -837,7 +890,11 @@ function routes(app: FastifyInstance, options: AppOptions) {
         templateId: problem.public.templateId,
         response,
         correct: gradeAnswer(problem, response),
-        assisted: !!problem.hintViewed || !!problem.lessonViewed,
+        assisted:
+          !!problem.hintViewed ||
+          !!problem.lessonViewed ||
+          !!problem.workingTogether ||
+          (await tx.practiceSettings()).workingTogether,
         explanation: problem.choiceFeedback?.[response]
           ? [problem.choiceFeedback[response]!, ...problem.explanation]
           : partFeedback

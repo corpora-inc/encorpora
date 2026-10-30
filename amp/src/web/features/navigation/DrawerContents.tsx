@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useLearningView } from "../../lib/learning-view";
 import { useLearnerStore } from "../../learner-store";
@@ -27,7 +27,13 @@ function NavIcon({
     </svg>
   );
 }
-export default function DrawerContents({ close }: { close: () => void }) {
+export default function DrawerContents({
+  close,
+  practiceControls,
+}: {
+  close: () => void;
+  practiceControls?: ReactNode;
+}) {
   const view = useLearningView();
   const navigate = useNavigate();
   const location = useLocation();
@@ -291,6 +297,7 @@ export default function DrawerContents({ close }: { close: () => void }) {
           )}
         </div>
       </nav>
+      {practiceControls}
       <FeedbackPreferences />
       {view.session.data && (
         <div className={styles.signOut}>

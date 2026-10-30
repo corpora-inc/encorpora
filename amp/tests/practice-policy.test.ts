@@ -190,6 +190,13 @@ test("service injects a trusted policy; request bodies cannot choose one", async
     recentAttempts: async () => [],
     skillEvidence: async () => [],
     frontier: async () => frontier,
+    practiceSettings: async () => ({
+      revision: 0,
+      epoch: 0,
+      workingTogether: false,
+      focusSkillId: null,
+      startingLevel: null,
+    }),
     recentSkips: async () => [],
     saveProblem: async () => {},
   };
