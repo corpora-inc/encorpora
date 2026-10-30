@@ -255,13 +255,18 @@ export async function startTrial(birthYear: number): Promise<TrialSession> {
   return session;
 }
 /** The next adaptive problem, or "complete" when the allowance is used. */
-export async function nextProblem(session: TrialSession, templateId?: string) {
+export async function nextProblem(
+  session: TrialSession,
+  templateId?: string,
+  recoveryStrand?: string,
+) {
   try {
     const storedToken = storedTrial();
     return await batchWithCapabilityFallback(
       {
         count: 1,
         ...(templateId ? { templateId } : {}),
+        ...(recoveryStrand ? { recoveryStrand } : {}),
         responseCapabilities: [...clientResponseCapabilities],
         figureCapabilities: [...figureCapabilities],
       },

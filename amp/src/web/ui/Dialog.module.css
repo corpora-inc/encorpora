@@ -63,3 +63,11 @@
 .body p {
   margin: 0 0 var(--space-2);
 }
+
+/* A confirmation opened from the navigation sheet must sit above that sheet. */
+.overlay.aboveNavigation {
+  z-index: 1200;
+}
+.content.aboveNavigation {
+  z-index: 1201;
+}

@@ -1,5 +1,5 @@
 import { skillNeighbors, type NeighborConnection } from "../pathways/neighbors";
-import { connectionLabel } from "../pathways/model";
+import { bands, connectionLabel } from "../pathways/model";
 
 export type AnswerSkill = {
   id: string;
@@ -17,6 +17,7 @@ type Choice = AnswerSkill & {
   title: string;
   templateId: string;
   connected?: { label: string; explanation: string };
+  foundation?: boolean;
 };
 
 /** Minimum further independent successes needed by the existing strength rule.
@@ -73,9 +74,46 @@ export function answerPathways(
       ];
     });
   };
+  const buildsOn = playable(
+    neighbors.buildsOn.filter((n) => n.source !== "shared"),
+  );
+  // Navigation shortcuts follow real prerequisite/earlier-idea paths. They
+  // add no curriculum dependencies and grant no inferred mastery.
+  const foundations: Choice[] = [];
+  if (skill && bands.indexOf(skill.gradeBand ?? "") >= 6) {
+    const seen = new Set([skillId]);
+    const direct = new Set(buildsOn.map((s) => s.id));
+    let frontier = [skillId];
+    for (
+      let depth = 0;
+      depth < 8 && frontier.length && foundations.length < 3;
+      depth++
+    ) {
+      const next: string[] = [];
+      for (const id of frontier) {
+        for (const neighbor of skillNeighbors(skills, id).buildsOn) {
+          const node = neighbor.skill;
+          if (seen.has(node.id)) continue;
+          seen.add(node.id);
+          next.push(node.id);
+          if (
+            ["3", "4"].includes(node.gradeBand ?? "") &&
+            !direct.has(node.id)
+          ) {
+            const choice = playable([
+              { ...neighbor, source: "prerequisite" },
+            ])[0];
+            if (choice && foundations.length < 3)
+              foundations.push({ ...choice, foundation: true });
+          }
+        }
+      }
+      frontier = next;
+    }
+  }
   return {
     skill,
-    buildsOn: playable(neighbors.buildsOn.filter((n) => n.source !== "shared")),
+    buildsOn: [...buildsOn, ...foundations],
     leadsTo: playable(neighbors.leadsTo.filter((n) => n.source !== "shared")),
   };
 }

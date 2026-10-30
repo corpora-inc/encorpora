@@ -49,6 +49,13 @@ export type Frontier = {
   adaptive?: Estimate;
   /** Preserve the injected prior when looking up an untouched strand. */
   strandPriorSd?: number;
+  /** A scheduling ceiling supported by independent, varied retrieval.
+   * This is not mastery credit or a calibrated probability. */
+  confirmation?: Record<
+    string,
+    { level: number; foundationConfirmed: boolean; foundationLevel?: number }
+  >;
+  unconfirmedCeiling?: number;
 };
 
 /** Grades a learner born in `birthYear` should have completed by `now`.
@@ -137,6 +144,7 @@ function blur(log: number[], variance: number) {
 }
 
 type Evidence = {
+  templateId: string;
   grade: number;
   /** Chance a guess is graded correct: 0 for typed answers, 1/k for k options. */
   guess: number;
@@ -254,6 +262,7 @@ export function estimateFrontier(options: {
     const grade = options.gradeOf(observation.templateId);
     if (grade === undefined) return;
     evidence.push({
+      templateId: observation.templateId,
       grade,
       guess: Math.min(
         0.5,
@@ -297,12 +306,90 @@ export function estimateFrontier(options: {
       policy.strand,
       strandSuccess,
     );
+  const confirmation: NonNullable<Frontier["confirmation"]> = {};
+  if (policy.confirmation.enabled) {
+    const c = policy.confirmation;
+    for (const strand of new Set(evidence.map((item) => item.strand))) {
+      const independent = evidence.filter(
+        (e) => e.strand === strand && !e.assisted,
+      );
+      const supports = (grade: number, spaced: boolean, foundation = false) => {
+        // Success on harder material supports a working band. A harder miss
+        // does not refute easier knowledge; foundation checks need direct work
+        // near that foundation, not inferred mastery from downstream answers.
+        const relevant = independent
+          .filter(
+            (e) =>
+              e.grade >= grade - 0.5 &&
+              (foundation
+                ? e.grade <= grade + 1
+                : e.success || e.grade <= grade + 0.5),
+          )
+          .slice(-12);
+        const successes = relevant.filter((e) => e.success);
+        const times = successes.map((e) => e.at).sort((a, b) => a - b);
+        const separated =
+          successes.length > 0 &&
+          times.at(-1)! - times[0]! >= c.separationHours * 3600000;
+        const varied =
+          new Set(successes.map((e) => e.templateId)).size >=
+          c.distinctFamilies;
+        // Small catalogs can demonstrate a band through more separated
+        // retrievals of their one available family, without a permanent gate.
+        if (
+          successes.length < c.independentSuccesses ||
+          successes.length / relevant.length < 0.75 ||
+          (!varied &&
+            !(
+              separated &&
+              successes.length >=
+                c.independentSuccesses * c.singleFamilySuccessMultiplier
+            ))
+        )
+          return false;
+        return !spaced || separated;
+      };
+      const baseline = Math.min(MAX_GRADE, options.start + c.sameSessionRise);
+      // Provisional placement advances gradually within a session; spacing
+      // strengthens a demonstrated band without imposing a time or age gate.
+      const higherSuccesses = independent.filter(
+        (e) => e.success && e.grade >= baseline - 0.5,
+      );
+      const provisional =
+        baseline +
+        Math.floor(higherSuccesses.length / c.provisionalSuccessesPerGrade);
+      let level = baseline;
+      for (const grade of new Set(
+        independent.filter((e) => e.success).map((e) => e.grade),
+      ))
+        if (grade > level && supports(grade, false))
+          level = Math.min(
+            MAX_GRADE,
+            Math.max(
+              level,
+              supports(grade, true) ? grade : Math.min(grade, provisional),
+            ),
+          );
+
+      confirmation[strand] = {
+        level,
+        foundationConfirmed: supports(options.start, true, true),
+      };
+    }
+  }
   return {
     expected: options.start,
     overall,
     adaptive,
     strands,
     strandPriorSd: policy.prior.strandSd,
+    ...(policy.confirmation.enabled
+      ? {
+          confirmation,
+          unconfirmedCeiling:
+            options.start + policy.confirmation.sameSessionRise,
+        }
+      : {}),
   };
 }
 

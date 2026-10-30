@@ -84,3 +84,41 @@ test("a self edge cannot offer the current skill, and multiple templates make on
     ["b1"],
   );
 });
+
+test("higher-grade recovery includes reachable elementary foundations without replacing direct prerequisites", () => {
+  const nodes = [
+    { id: "facts", title: "Facts", gradeBand: "3", prerequisites: [] },
+    {
+      id: "fractions",
+      title: "Fractions",
+      gradeBand: "4",
+      prerequisites: ["facts"],
+    },
+    {
+      id: "ratios",
+      title: "Ratios",
+      gradeBand: "6",
+      prerequisites: ["fractions"],
+    },
+    {
+      id: "algebra",
+      title: "Algebra",
+      gradeBand: "algebra-1",
+      prerequisites: ["ratios"],
+    },
+    { id: "unrelated", title: "Unrelated", gradeBand: "3", prerequisites: [] },
+  ];
+  const catalog = nodes.map((s) => ({ id: s.id + "-problem", skillId: s.id }));
+  const choices = answerPathways("algebra", nodes, catalog).buildsOn;
+  assert.equal(choices[0]!.id, "ratios");
+  assert.deepEqual(
+    choices.filter((c) => c.foundation).map((c) => c.id),
+    ["fractions", "facts"],
+  );
+  assert.ok(!choices.some((c) => c.id === "unrelated"));
+  assert.ok(
+    !answerPathways("fractions", nodes, catalog).buildsOn.some(
+      (c) => c.foundation,
+    ),
+  );
+});

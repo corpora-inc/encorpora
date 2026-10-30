@@ -40,9 +40,53 @@ The executable policy includes:
 
 It does **not** estimate causal learning gain, maintain a full skill-specific
 psychometric posterior, diagnose the cause of every mixed-skill failure, or
-calibrate individual instances. The internal probability trace is returned by
-the planner, not durably stored with served problems. The richer contracts below
+calibrate individual instances. Online batches store the decision trace with each served problem, including
+its purpose, focus, and recalibration epoch. Scripted openers and explicit drills
+record their selection reason without inventing a sampling probability. The richer contracts below
 specify extensions; they are not claims about implemented storage or inference.
+
+## Practice recovery and confirmation
+
+Birth year supplies the initial estimate. Independent responses update a pooled
+estimate and strand estimates; answers marked as helped do not raise or lower
+independent ability. Earned practice and skill history are separate from those
+estimates. The menu’s **Working together** setting marks help without adding a
+step to each answer.
+
+The scheduler distinguishes ordinary work, foundation checks, and stretch
+probes. Before direct foundation retrieval has been confirmed, every fourth
+position targets that strand’s starting level or lower. On another fourth
+position, a recent independent success permits a bounded harder probe. Other
+positions stay near the strand’s working band. Prerequisite repair and due
+review compete within those bounds; explicitly chosen skills constrain the
+available content.
+
+Initial ordinary work is bounded near the starting level. Varied independent
+successes permit gradual provisional advancement during the first session.
+Successful retrieval across separated occasions can confirm a higher band.
+A failed harder probe does not erase demonstrated lower readiness. Foundation
+confirmation requires direct work near the starting level, not inferred mastery
+from harder answers. These thresholds are versioned scheduling hypotheses in
+`frontier-policy.ts` and `practice-policy.ts`, not calibrated mastery probabilities.
+The displayed grade remains an uncertain summary rather than a guarantee about
+every skill.
+
+**Skip** reveals an answer without creating an attempt or changing ability.
+**Try easier**, available after skipping, gives that strand a lower starting
+estimate. Other strands retain their estimates. **Reset practice level** starts
+all difficulty estimates from birth year. Neither action deletes attempts, XP,
+or skill evidence, and neither renews the free-practice allowance.
+
+Changes are account-authorized and serialized per learner. Request receipts
+make retries idempotent; revisions reject conflicting changes from another tab.
+Served problems retain their epoch and revision so late answers preserve earned
+work without restoring a discarded difficulty estimate. Recovery state and
+receipts are included in parent export and learning-data deletion.
+
+Selecting a skill under **Builds on** or **Leads to** keeps practice on that skill
+until **Return to mixed practice** is chosen from the menu. Higher-grade **Builds
+on** lists also include reachable elementary foundations through authored graph
+paths; these shortcuts create no prerequisite or mastery claims.
 
 ## Curriculum and content metadata
 

@@ -37,7 +37,10 @@ export type PracticeChoice = {
   reason: PracticeReason;
   strand: string;
   /** Internal explanation; absent for scripted placement openers. */
-  selection?: SelectionTrace & { mode: "adaptive" | "support" };
+  selection?: SelectionTrace & {
+    mode: "adaptive" | "support";
+    purpose?: "working" | "foundation" | "probe";
+  };
 };
 type SkillNode = {
   id: string;
@@ -176,18 +179,33 @@ export function planMixedPractice(options: {
       Math.max(strandCeiling.get(strand) ?? grade, grade),
     );
   }
+  let purpose: "working" | "foundation" | "probe" = "working";
   const targetOf = (strand: string) => {
     const estimate = strandEstimate(frontier, strand);
-    const level =
+    let level =
       estimate.level +
       policy.target.levelOffset +
       policy.target.uncertaintyWeight * estimate.sd;
+    if (frontier.confirmation) {
+      const confirmed = frontier.confirmation[strand];
+      const working = Math.min(
+        level,
+        confirmed?.level ?? frontier.unconfirmedCeiling ?? frontier.expected,
+      );
+      level =
+        purpose === "probe"
+          ? Math.min(level, working + policy.challenge.probeRise)
+          : purpose === "foundation" && !confirmed?.foundationConfirmed
+            ? Math.min(working, confirmed?.foundationLevel ?? frontier.expected)
+            : working;
+    }
     if (!policy.target.clampToAvailable) return level;
     const floor = strandFloor.get(strand)!;
     const ceiling = strandCeiling.get(strand)!;
     if (level > ceiling) return ceiling;
     return level < floor &&
-      (frontier.adaptive ?? frontier.overall).level >= floor
+      (frontier.adaptive ?? frontier.overall).level >= floor &&
+      (!frontier.confirmation || floor <= level + policy.challenge.workingReach)
       ? floor
       : level;
   };
@@ -298,6 +316,18 @@ export function planMixedPractice(options: {
     const recoveringFromSkip =
       lastSkip >= 0 && history.length - lastSkip <= variety.skipEaseProblems;
     const ease = recoveringFromSkip ? variety.skipEase : 0;
+    const position = openingPosition + slot;
+    purpose =
+      position % policy.challenge.foundationEvery === 0
+        ? "foundation"
+        : position % policy.challenge.probeEvery ===
+              Math.floor(policy.challenge.probeEvery / 2) &&
+            latest?.correct &&
+            !latest.assisted &&
+            !recoveringFromSkip
+          ? "probe"
+          : "working";
+
     // Openers must not bypass the configured variety and easing after a pass.
     const opener = (
       recoveringFromSkip
@@ -313,6 +343,10 @@ export function planMixedPractice(options: {
       .find(
         (template) =>
           !!template &&
+          (!frontier.confirmation ||
+            gradeOfTemplate.get(template.id)! <=
+              targetOf(strandOf(template.skillId)) +
+                policy.challenge.workingReach) &&
           !attemptedTemplates.has(template.id) &&
           (!variety.excludeSkipped || !skippedTemplates.has(template.id)) &&
           !chosen.some((entry) => entry.template.id === template.id),
@@ -450,8 +484,9 @@ export function planMixedPractice(options: {
         strand,
         score,
         familyScore: score + familyAdjustment,
-        poolEligible:
-          grade <= target + scoring.poolReach || reason === "prerequisite",
+        poolEligible: frontier.confirmation
+          ? grade <= target + policy.challenge.workingReach
+          : grade <= target + scoring.poolReach || reason === "prerequisite",
         support: ["prerequisite", "revisit", "review"].includes(reason),
         fresh:
           templateGap > variety.minimumTemplateGap &&
@@ -460,10 +495,34 @@ export function planMixedPractice(options: {
         skillGap: bySkill.gap(template.skillId),
       };
     });
-    const ceilinged = options.strictCeiling
-      ? candidates.filter((entry) => entry.poolEligible)
-      : candidates;
+    let ceilinged =
+      options.strictCeiling || frontier.confirmation
+        ? candidates.filter((entry) => entry.poolEligible)
+        : candidates;
+    if (!ceilinged.length && !options.strictCeiling) {
+      // Explicit skill practice or a restricted client can have no material
+      // below the target. Offer only its easiest available family.
+      const floor = Math.min(
+        ...candidates.map((c) => gradeOfTemplate.get(c.template.id)!),
+      );
+      ceilinged = candidates.filter(
+        (c) => gradeOfTemplate.get(c.template.id)! <= floor,
+      );
+    }
     if (!ceilinged.length) break;
+    if (purpose === "foundation" && frontier.confirmation) {
+      const foundations = ceilinged.filter(
+        (entry) =>
+          !frontier.confirmation![entry.strand]?.foundationConfirmed &&
+          gradeOfTemplate.get(entry.template.id)! <=
+            (frontier.confirmation![entry.strand]?.foundationLevel ??
+              frontier.expected) +
+              policy.challenge.workingReach,
+      );
+      // Reserve the purpose before support ranking; a due advanced review in
+      // a confirmed strand cannot starve unconfirmed foundations elsewhere.
+      if (foundations.length) ceilinged = foundations;
+    }
     // When enabled, freshness is a rule whenever another problem can be asked.
     const varied = variety.enforceFreshness
       ? ceilinged.filter((entry) => entry.fresh)
@@ -501,6 +560,7 @@ export function planMixedPractice(options: {
       selection: {
         ...trace,
         mode: reservedSupport ? "support" : "adaptive",
+        ...(frontier.confirmation ? { purpose } : {}),
       },
     });
   }

@@ -63,7 +63,7 @@ test("a mistake does not trap the learner in immediate same-family retry", () =>
   assert.notEqual(choices[0].template.id, "integer-power");
   assert.ok(choices[0].strand !== "algebra");
 });
-test("independent success widens challenge sampling without granting prerequisite mastery", () => {
+test("early success permits bounded probes while retaining foundations and no ancestor mastery", () => {
   const attempts = [
     answer("integer-power", 0),
     answer("ratio-missing", 1),
@@ -71,14 +71,11 @@ test("independent success widens challenge sampling without granting prerequisit
   ];
   const choices = plan(attempts, 5);
   assert.ok(new Set(choices.map((choice) => choice.strand)).size >= 3);
+  assert.ok(choices.some((choice) => choice.selection?.purpose === "probe"));
   assert.ok(
-    choices.some(
-      (choice) =>
-        choice.template.gradeBand === "6–8" ||
-        choice.template.gradeBand === "9–12",
-    ),
+    choices.some((choice) => choice.selection?.purpose === "foundation"),
   );
-  assert.ok(choices.some((choice) => choice.reason === "explore"));
+  assert.ok(choices.every((choice) => choice.template.gradeBand !== "9–12"));
   assert.equal(summarize(attempts, ["powers-of-ten"])[0].attempts, 0);
 });
 test("spacing credits separated retrievals, not a burst of same-minute answers", () => {

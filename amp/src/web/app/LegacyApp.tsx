@@ -1,3 +1,8 @@
+import { PracticeControls } from "../features/practice/PracticeControls";
+import {
+  usePracticeAdjustment,
+  type PracticeIntent,
+} from "../features/practice/practice-settings";
 import { NavigationDrawer } from "../features/navigation/NavigationDrawer";
 import { ProgressViews } from "../features/navigation/ProgressViews";
 import { withProblemHints, type HintedProblem } from "../lib/problem-hints";
@@ -232,6 +237,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // while loadFamily is selecting one can continually restart navigation.
   const learner =
     learners.find((entry) => entry.id === learnerId) ?? learners[0] ?? null;
+  const adjustments = usePracticeAdjustment({
+    identity: accountId ?? "guest",
+    learnerId: learner?.id ?? "",
+    token: token ?? undefined,
+  });
   // Remember a tab's return URL, not a second copy of its screen/filter state.
   const progressReturn = useRef({ identity: "", href: "/progress" });
   useLayoutEffect(() => {
@@ -870,12 +880,13 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     lesson: Lesson | null;
     hints?: Record<string, ProblemHint>;
   };
-  function requestBatch(templateId = family) {
+  function requestBatch(templateId = family, recoveryStrand?: string) {
     const learnerId = learner!.id;
     const epoch = authEpoch.current;
     return batchWithCapabilityFallback(
       {
         ...(templateId ? { templateId } : {}),
+        ...(recoveryStrand ? { recoveryStrand } : {}),
         count: 1,
         responseCapabilities: [...clientResponseCapabilities],
         figureCapabilities: [...figureCapabilities],
@@ -903,7 +914,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     setLesson(data.lesson);
     setFamily("");
   }
-  async function loadBatch(templateId = family) {
+  async function loadBatch(templateId = family, recoveryStrand?: string) {
     if (!learner) return;
     const capability = familySummary?.learners.find(
       (entry) => entry.id === learner.id,
@@ -914,18 +925,34 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     }
     upcoming.current = null;
     const navigation = ++navigationEpoch.current;
-    const data = await requestBatch(templateId).catch((error) => {
-      // No license yet: go to purchase rather than show an error.
-      if (
-        error instanceof HttpError &&
-        error.status === 403 &&
-        /license/i.test(error.message)
-      ) {
-        navigate("/purchase/choose", { replace: true });
-        return null;
+    if (templateId && !nativeRuntime) {
+      const skillId = catalog?.templates.find(
+        (t) => t.id === templateId,
+      )?.skillId;
+      if (skillId) {
+        const saved = await adjustments.change({ kind: "focus", skillId });
+        if (
+          !saved ||
+          navigation !== navigationEpoch.current ||
+          learnerRef.current !== learner.id
+        )
+          return;
       }
-      return navigationFailure(navigation, learner.id, error);
-    });
+    }
+    const data = await requestBatch(templateId, recoveryStrand).catch(
+      (error) => {
+        // No license yet: go to purchase rather than show an error.
+        if (
+          error instanceof HttpError &&
+          error.status === 403 &&
+          /license/i.test(error.message)
+        ) {
+          navigate("/purchase/choose", { replace: true });
+          return null;
+        }
+        return navigationFailure(navigation, learner.id, error);
+      },
+    );
     if (
       !data ||
       navigation !== navigationEpoch.current ||
@@ -933,6 +960,29 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     )
       return;
     applyBatch(data);
+  }
+  async function adjustPractice(intent: PracticeIntent) {
+    if (!learner || nativeRuntime) return;
+    setBusy(true);
+    try {
+      const saved = await adjustments.change(intent);
+      if (!saved || learnerRef.current !== learner.id) return;
+      upcoming.current = null;
+      setQueue([]);
+      if (intent.kind !== "together") {
+        setPending(null);
+        const strand =
+          intent.kind === "easier"
+            ? Object.entries(saved.strandStarts).find(
+                ([, reset]) => reset.revision === saved.revision,
+              )?.[0]
+            : undefined;
+        await loadBatch("", strand);
+        await refreshProgress();
+      }
+    } finally {
+      setBusy(false);
+    }
   }
   async function next() {
     const ready = upcoming.current;
@@ -1501,7 +1551,21 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       ) : tab === "practice" ? (
         problem && !exploring && !changingBirthYear ? (
           <PracticeWorkspace
-            navigation={nativeRuntime ? undefined : <NavigationDrawer />}
+            navigation={
+              nativeRuntime ? undefined : (
+                <NavigationDrawer
+                  practiceControls={(close) => (
+                    <PracticeControls
+                      scope={adjustments.scope}
+                      problemId={problem.id}
+                      busy={busy || !!pending}
+                      apply={adjustPractice}
+                      close={close}
+                    />
+                  )}
+                />
+              )
+            }
             exit={() => setExploring(true)}
             exitHref="/"
             key={problem.id}
@@ -1570,8 +1634,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                     )
                   }
                   busy={busy}
-                  choose={(templateId) =>
-                    void action(() => loadBatch(templateId))
+                  choose={(templateId, skillId) =>
+                    void action(() =>
+                      skillId && !nativeRuntime
+                        ? adjustPractice({ kind: "focus", skillId })
+                        : loadBatch(templateId),
+                    )
                   }
                 />
               )
@@ -1582,6 +1650,14 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
             pending={!!pending}
             submit={() => void action(submit)}
             skip={nativeRuntime ? undefined : () => void action(skip)}
+            easier={
+              nativeRuntime
+                ? undefined
+                : () =>
+                    void action(() =>
+                      adjustPractice({ kind: "easier", problemId: problem.id }),
+                    )
+            }
             next={() => void action(next)}
             requestLesson={async () =>
               (

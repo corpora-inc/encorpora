@@ -27,7 +27,7 @@ export function AnswerFeedback({
   /** Account/trial and learner scope; never a credential. */
   identity: readonly string[];
   loadProgress: () => Promise<ProgressSnapshot>;
-  choose?: (templateId: string) => void;
+  choose?: (templateId: string, skillId?: string) => void;
   busy: boolean;
 }) {
   const paths = answerPathways(outcome.skillId, skills, templates);
@@ -153,17 +153,22 @@ export function AnswerFeedback({
           returnFocus={trigger.current}
         >
           <p className={styles.intro}>
-            Try one problem from a connected skill. Next returns to adaptive
-            practice.
+            Choose a skill to practice. Return to mixed practice from the menu.
           </p>
           <ul className={styles.choices}>
-            {paths[direction].map((skill) => (
+            {paths[direction].map((skill, index) => (
               <li key={skill.id}>
+                {skill.foundation &&
+                  !paths[direction][index - 1]?.foundation && (
+                    <h3 className={styles.foundationHeading}>
+                      Earlier foundations
+                    </h3>
+                  )}
                 <button
                   disabled={busy}
                   onClick={() => {
                     setDirection(null);
-                    choose(skill.templateId);
+                    choose(skill.templateId, skill.id);
                   }}
                 >
                   <span className={styles.choiceContent}>

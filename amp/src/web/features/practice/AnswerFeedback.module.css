@@ -150,3 +150,9 @@
   font-weight: 500;
   line-height: 1.6;
 }
+
+.foundationHeading {
+  font-size: var(--text-label);
+  margin: var(--space-4) 0 var(--space-2);
+  color: var(--color-muted-text);
+}

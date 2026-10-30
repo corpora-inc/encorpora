@@ -67,12 +67,19 @@ function select(history: Outcome[], seed = "case", count = 5) {
 }
 test("misses and assistance in operations do not remove demonstrated algebra or grant ancestor evidence", () => {
   const history = [
-    ...Array.from({ length: 5 }, (_, i) => observation("advanced-algebra", i)),
-    observation("multiply", 5, false),
-    observation("add", 6, true, true),
-    observation("data-entry", 7),
+    ...Array.from({ length: 8 }, (_, i) =>
+      observation("advanced-algebra", i, true, false, now - (9 - i) * day),
+    ),
+    observation("multiply", 8, false),
+    observation("add", 9, true, true),
+    observation("data-entry", 10),
   ];
-  assert.ok(select(history).some((c) => c.template.id === "advanced-algebra"));
+  assert.ok(
+    Array.from({ length: 24 }, (_, i) => select(history, `uneven:${i}`))
+      .flat()
+      .some((c) => c.template.id === "advanced-algebra"),
+    "demonstrated algebra stays eligible alongside needed foundations and repair",
+  );
   const state = projectSkillEvidence(history);
   assert.equal(
     state.find((s) => s.skillId === "algebra-entry"),

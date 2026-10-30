@@ -174,6 +174,8 @@ type Props = {
   /** A neutral pass: shows the worked answer with no credit or penalty.
    * Absent where the route is unavailable (the native bridge). */
   skip?: () => void;
+  /** Explicit difficulty recovery, offered only after a neutral skip. */
+  easier?: () => void;
   /** This problem allows a calculator (computation is not the skill). */
   calculator?: boolean;
   /** A request error to show at the answer rather than at the top of the app. */
@@ -992,6 +994,15 @@ export function PracticeWorkspace(props: Props) {
             }}
           >
             Hint
+          </button>
+        )}
+        {outcome?.skipped && props.easier && (
+          <button
+            className="text-button"
+            disabled={busy || pending}
+            onClick={props.easier}
+          >
+            Try easier
           </button>
         )}
         {!outcome && props.skip && (

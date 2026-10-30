@@ -41,6 +41,7 @@ test(
         "0010-starting-point.sql",
         "0014-birth-year.sql",
         "0055-sat-math-focus.sql",
+        "0076-practice-recovery.sql",
       ])
         await pool.query(
           await readFile(
@@ -217,7 +218,39 @@ test(
       await pool.query("UPDATE amp_learners SET birth_year=2016 WHERE id=$1", [
         child.id,
       ]);
+      await pool.query(
+        "INSERT INTO amp_practice_settings(learner_id,state) VALUES($1,$2)",
+        [
+          child.id,
+          JSON.stringify({
+            revision: 1,
+            epoch: 1,
+            workingTogether: true,
+            focusSkillId: "multiplication-facts",
+            strandStarts: {},
+          }),
+        ],
+      );
+      await pool.query(
+        "INSERT INTO amp_practice_changes(learner_id,request_id,change,result) VALUES($1,$2,$3,$4)",
+        [child.id, randomUUID(), '{"kind":"reset"}', "{}"],
+      );
+      const exported = [];
+      for await (const line of family.export("parent"))
+        exported.push(JSON.parse(line));
+      assert.ok(exported.some((line) => line.type === "practice-settings"));
+      assert.ok(exported.some((line) => line.type === "practice-change"));
       const receipt = await family.deleteLearning("parent", child.id);
+      for (const table of ["amp_practice_settings", "amp_practice_changes"])
+        assert.equal(
+          (
+            await pool.query(
+              `SELECT count(*) FROM ${table} WHERE learner_id=$1`,
+              [child.id],
+            )
+          ).rows[0].count,
+          "0",
+        );
       assert.deepEqual(
         (
           await pool.query(

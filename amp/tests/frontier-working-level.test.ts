@@ -130,7 +130,7 @@ test("working grade tolerates errors without awarding the same level to chance g
   );
 });
 
-test("assisted success is positive at half weight; assisted misses are neutral", () => {
+test("helped answers preserve practice history without promoting independent ability", () => {
   const base = history(40);
   const a = estimate(base);
   const misses = estimate([
@@ -153,7 +153,8 @@ test("assisted success is positive at half weight; assisted misses are neutral",
     [a.overall, helped.overall, independent.overall],
     [a.strands.algebra!, helped.strands.algebra!, independent.strands.algebra!],
   ]) {
-    assert.ok(y.level > x.level && y.level < z.level);
+    assert.equal(y.level, x.level);
+    assert.ok(z.level > x.level);
     assert.equal(y.independent, x.independent);
     assert.equal(y.answered, x.answered + 5);
   }
