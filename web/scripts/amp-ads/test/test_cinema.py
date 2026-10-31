@@ -194,6 +194,11 @@ class Graph(unittest.TestCase):
         self.assertEqual(snapped["duration"], 20)
         self.assertAlmostEqual((snapped["offset"] - 8.5) % snapped["bar"], 0)
 
+    def test_bar_snap_never_seeks_before_the_file(self):
+        snapped = beat.snap_to_bars(120, 0.12, 0, 15)
+        self.assertGreaterEqual(snapped["offset"], 0)
+        self.assertEqual(snapped["offset"], 0.12)
+
     def test_ducking_is_off_unless_the_spec_asks(self):
         s = copy.deepcopy(self.s)
         s['music']['duck'] = True
