@@ -2,13 +2,13 @@
 
 Turn a shot list into finished, voiced, scored social video ads for AMP:
 generated cinematic shots (LTX-2.5 on the GPU host), real product footage, an
-ElevenLabs voice, a licensed music bed ducked under the voice, and **centered**
+ElevenLabs voice, a licensed music bed at a constant level, and **centered**
 text cards. One JSON spec per ad renders every delivery format with receipts
 and QC. Read [`AGENTS.md`](AGENTS.md) first: it holds the hard rules.
 
 ```
 spec.py      ad spec validation, formats, safe zones, edit timeline
-graph.py     FFmpeg argv builders (video stitch, premix + ducking, loudnorm)
+graph.py     FFmpeg argv builders (video stitch, premix, loudnorm). Music is never ducked.
 render.py    cards -> mix -> video per format -> QC, receipts, reuse/supersede
 cards.mjs    Playwright text-card renderer (centred, auto-fit)
 plan.py      shot list -> GPU batch (prompt files, plan.json, batch.env)
@@ -152,7 +152,7 @@ Scripted alternative: `ELEVENLABS_API_KEY=... python3 -m cinema voice <spec> --g
 | `cards[]` | `text`, `start`, `end`. No position fields: every card is centred. At most 10 words / 60 characters / 3 lines |
 | `endCard` | `start`, `cta`; optional `brand`, `tagline`, `url` (default AMP / Adaptive Math Pathways / amp.corpora.inc) |
 | `voice` | `voice`, `take`, `script`, `start` (default 0.45 s) or `segments`, `transcriptVerified`, optional `voiceId`, `model` |
-| `music` | `title`, `path`, `offset` into the track, `rights` (required), optional `lufs` (bed level before ducking, default -24) |
+| `music` | `title`, `path`, `offset`, `rights` (required). Optional `lufs` (constant level, default -24), `fade` (default 0.15 s on both edges), and `align` (`none` or `bar`). The bed is not ducked. Set `duck` to true only when that spec should sidechain the music to the voice. |
 | `sfx[]` | `path`, `at`, `gainDb` |
 | `qc.maxBlackSeconds` | longest tolerated near-black run (default 0.5) |
 
@@ -170,8 +170,8 @@ For each spec the renderer:
    of every card with FFmpeg's `bbox`. A card outside the format's safe area or
    off-centre stops the render;
 2. builds the audio once: voice normalised to -16 LUFS and placed, music bed
-   measured over the used excerpt, ducked under the voice with
-   `sidechaincompress`, mixed with any effects, then two-pass `loudnorm` to
+   measured over the used excerpt, mixed at a constant level with any effects,
+   then two-pass `loudnorm` to
    **-14 LUFS, -1.5 dBTP** (AAC 256 kb/s, 48 kHz);
 3. stitches the shots (scale/crop or letterbox, retime, `xfade` overlaps split
    around each cut), overlays the cards and end card with fades, ends with a
@@ -183,7 +183,7 @@ For each spec the renderer:
 Output, per ad: `out/<id>/{portrait,feed,square,wide}.mp4` (`-4k.mp4` with
 `--master`), `<format>-receipt.json` (exact FFmpeg argv, SHA-256 of every input
 and the output, QC results, status), `<format>-contact.jpg`, `mix.m4a` +
-`audio-receipt.json` (gains, ducking, both loudness measurements),
+`audio-receipt.json` (gains, both loudness measurements),
 `captions.vtt`, and `cards/` with each card's PNG, text-only PNG and measured
 boxes. Unchanged inputs reuse existing outputs. Changed inputs refuse to
 overwrite; `--replace` moves the old files to `superseded/<time>/`.
@@ -206,7 +206,7 @@ keep every asset group filled.
 ## Tests
 
 `npm test` runs `test/cinema.test.mjs`: a real render of synthetic clips in all
-four formats at quarter size (QC, loudness, measured ducking, reuse, refusal to
+four formats at quarter size (QC, loudness, constant music level, reuse, refusal to
 overwrite) and the pixel gate on top/bottom/centre cards. `python3 -m unittest
 discover -s test -p 'test_*.py'` runs `test/test_cinema.py`: spec rules, safe
 zones, filtergraphs (including the edit offsets of the 2026-10-27 renders), batch

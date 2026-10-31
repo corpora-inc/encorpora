@@ -233,7 +233,7 @@ export async function render(manifestPath, out) {
     }
     if (m.music) {
       inputs.push("-stream_loop", "-1", "-i", file(m.music));
-      filter += `[${n++}:a]atrim=0:${total},asetpts=PTS-STARTPTS,volume=0.10,afade=t=in:d=0.8,afade=t=out:st=${Math.max(0, total - 2)}:d=2[music];`;
+      filter += `[${n++}:a]atrim=0:${total},asetpts=PTS-STARTPTS,volume=0.10,afade=t=in:d=0.15,afade=t=out:st=${Math.max(0, total - 0.15)}:d=0.15[music];`;
     }
     if (m.voice || m.music) {
       filter +=

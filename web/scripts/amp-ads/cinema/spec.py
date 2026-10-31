@@ -259,6 +259,15 @@ def validate(spec):
             raise SpecError('music.path and music.rights (licence / provenance) are required')
         music['offset'] = _num(music.get('offset', 0), 'music.offset', 0)
         music['lufs'] = _num(music.get('lufs', -24 if voice else -16), 'music.lufs', -40, -10)
+        if 'duck' in music and music['duck'] is not True and music['duck'] is not False:
+            raise SpecError('music.duck must be true to sidechain the bed; omit it to leave the music alone')
+        music['duck'] = music.get('duck') is True
+        music['fade'] = _num(music.get('fade', 0.15), 'music.fade', 0.05, 0.3)
+        if music['fade'] * 2 >= duration:
+            raise SpecError('music.fade is too long for this piece')
+        if music.get('align', 'none') not in ('none', 'bar'):
+            raise SpecError('music.align must be none or bar')
+        music['align'] = music.get('align', 'none')
     for i, fx in enumerate(spec.setdefault('sfx', [])):
         if not fx.get('path'):
             raise SpecError(f'sfx[{i}].path is required')
