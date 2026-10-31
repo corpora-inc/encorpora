@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { generateProblem, templates } from "../src/math/engine";
 import { segments } from "../src/web/MathText";
+import { segmentPrintText } from "../src/content/math-typesetting";
 
 // MathText reads `$…$` as TeX, so two currency amounts in one text
 // ("costs $3 and $5") would typeset the prose between them as a formula.
@@ -47,4 +48,21 @@ test("no generated prompt, hint, choice or explanation pairs a currency $ into T
         if (currencySpans(text).length) found.push(`${template.id}: ${text}`);
     }
   assert.deepEqual(found, []);
+});
+
+test("print typesets a bare number or spaced TeX between dollar signs, never currency", () => {
+  const shown = (text: string) =>
+    segmentPrintText(text).map((s) =>
+      s.kind === "math" ? `[${s.tex}]` : s.source,
+    );
+  assert.deepEqual(shown("A diameter of $6$ feet"), [
+    "A diameter of ",
+    "[6]",
+    " feet",
+  ]);
+  assert.deepEqual(shown("$112.5$"), ["[112.5]"]);
+  assert.deepEqual(shown("$1\\,7\\,21$"), ["[1\\,7\\,21]"]);
+  assert.deepEqual(shown("A pen costs $3 and a book costs $5."), [
+    "A pen costs $3 and a book costs $5.",
+  ]);
 });
