@@ -11,6 +11,9 @@ comments help build that audience; qualified trials and purchases establish
 whether the funnel works. Teaching must be useful even to a viewer who never
 buys. Never promise a universal algorithm trick or a guaranteed result.
 
+For music discovery, production tooling, platform connections, and the broader
+daily workflow, start with the [AMP media pipeline](amp-media-pipeline.md).
+
 ## Standing decisions
 
 - Upload **private**. Target public release about **24 hours after upload**;
@@ -115,9 +118,15 @@ technical checks does not establish clarity or persuasive value.
 
 Run a **four-week operating experiment: one organic release every four hours,
 up to six per rolling 24 hours**. Initial local slots are 00:00, 04:00, 08:00,
-12:00, 16:00, and 20:00 America/New_York. Enforce at least four elapsed hours
-between releases, including daylight-saving transitions. Count all organic
+12:00, 16:00, and 20:00 America/New_York. For the normal schedule, leave at least
+four elapsed hours between releases, including daylight-saving transitions. Count all organic
 videos, Shorts, live streams, and Premieres against the same channel calendar.
+
+The count and spacing are operating recommendations. Skylar may explicitly
+authorize an approved queue drain or another timing exception; record it in the
+release receipts and keep the same quality, audience, playlist, and engagement
+checks. The lesson scheduler enforces its configured defaults; an authorized
+exception does not change its implementation.
 
 Fill slots with distinct useful explanations, teaching clips, tutoring proof,
 and product demonstrations. Reserve daytime slots for full explanations and
@@ -148,8 +157,7 @@ recommendation to publish only three videos or evidence of a ranking penalty
 for a fourth. Six spaced releases can exceed notification delivery; accept that
 tradeoff rather than restrict useful content to notification capacity. Leave
 organic subscription-feed/notification delivery enabled and let the platform
-apply its limits. Do not rapidly publish a batch or toggle notifications as a
-workaround. YouTube reports no correlation between growth in views across
+apply its limits. Do not toggle notifications to work around those limits. YouTube reports no correlation between growth in views across
 uploads and time between uploads; neither six daily releases nor a specific
 hour guarantees growth. Retention, viewer satisfaction, and qualified business
 outcomes decide whether to sustain this cadence.
