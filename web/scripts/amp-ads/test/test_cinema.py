@@ -12,7 +12,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from cinema import gallery, graph, plan, spec, voice, youtube  # noqa: E402
+from cinema import beat, gallery, graph, plan, spec, voice, youtube  # noqa: E402
 
 EXAMPLES = Path(__file__).resolve().parents[1] / 'cinema' / 'examples'
 ENV = {'AMP_MEDIA_ROOT': '/media', 'AMP_MUSIC_POOL': '/music'}
@@ -173,16 +173,32 @@ class Graph(unittest.TestCase):
         self.assertIn('force_original_aspect_ratio=decrease', fc)
         self.assertIn(f'color={graph.BACKGROUND}', fc)
 
-    def test_premix_ducks_music_under_voice_and_caps_length(self):
+    def test_premix_keeps_music_level_and_caps_length(self):
         args = graph.premix_command(self.s, '/v.mp3', '/m.mp3', [], 3.0, -4.0, '/pre.wav', 16.0)
         fc = args[args.index('-filter_complex') + 1]
-        self.assertIn('[bed][key]sidechaincompress', fc)
+        self.assertNotIn('sidechaincompress', fc)
+        self.assertIn('afade=t=in:st=0:d=0.15', fc)
+        self.assertIn('afade=t=out:st=29.85:d=0.15', fc)
+        self.assertIn('[bed]', fc)
         self.assertIn('concat=n=', fc)
         self.assertNotIn('apad', fc)
         self.assertEqual(args[args.index('-t', args.index('-filter_complex')) + 1], '30')
         self.assertIn('pcm_f32le', args)
         for seg in self.s['voice']['segments']:
             self.assertIn(f'atrim=start={seg["from"]:.6g}:end={seg["to"]:.6g}', fc)
+
+    def test_bar_snap_lands_on_a_downbeat(self):
+        snapped = beat.snap_to_bars(120, 0.5, 10, 19)
+        self.assertEqual(snapped["bar"], 2)
+        self.assertEqual(snapped["offset"], 8.5)
+        self.assertEqual(snapped["duration"], 20)
+        self.assertAlmostEqual((snapped["offset"] - 8.5) % snapped["bar"], 0)
+
+    def test_ducking_is_off_unless_the_spec_asks(self):
+        s = copy.deepcopy(self.s)
+        s['music']['duck'] = True
+        fc = graph.premix_command(s, '/v.mp3', '/m.mp3', [], 3.0, -4.0, '/pre.wav', 16.0)
+        self.assertIn('[bed][key]sidechaincompress', fc[fc.index('-filter_complex') + 1])
 
     def test_music_only_has_no_ducking(self):
         s = copy.deepcopy(self.s)
