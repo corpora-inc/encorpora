@@ -417,22 +417,17 @@ export function segmentPrintText(text: string): PrintSegment[] {
     const source = match[0],
       tex = match[1] ?? match[2]!;
     const converted = expressionToTex(tex);
-    // A command or a braced script is TeX; a currency amount has neither.
-    const isTex = match[1] !== undefined || /\\[A-Za-z]+|[\^_]\{/.test(tex);
-    // Explicit math the conservative grammar declines (a point $D(−7, 5)$, a
-    // formula with a variable) is still math: KaTeX reads its Unicode
-    // operators. Only prose captured between two currency amounts has two
-    // words in a row, or a space at its edge ("$3 and a book costs $").
+    // A command or a braced script is TeX and prints as written.
+    const isTex =
+      match[1] !== undefined || /\\[A-Za-z]+|\\[,;:! ]|[\^_]?\{/.test(tex);
+    // Like the app, every \$…\$ span is mathematics, except prose captured
+    // between two currency amounts: it has two words in a row, or a space at
+    // its edge ("\$3 and a book costs \$"). Generators write money in words.
     const words = tex.replace(/\\[A-Za-z]+(?:\{[^}]*\})?/g, "");
-    const declined =
-      converted === null &&
-      !/^\s|\s$/.test(tex) &&
-      !/[A-Za-z]{3,}\s+[A-Za-z]{2,}|[A-Za-z]{2,}\s+[A-Za-z]{3,}/.test(words) &&
-      /[A-Za-zπ=+−×÷/<>≤≥≠√]/.test(tex);
     const explicit =
       isTex ||
-      declined ||
-      (converted !== null && /[A-Za-z=+−\-×÷/^_<>≤≥≠√]/.test(tex));
+      (!/^\s|\s$/.test(tex) &&
+        !/[A-Za-z]{3,}\s+[A-Za-z]{2,}|[A-Za-z]{2,}\s+[A-Za-z]{3,}/.test(words));
     if (!explicit) {
       // A currency marker must not consume the opening delimiter of later TeX.
       explicitPattern.lastIndex = match.index + 1;
@@ -442,7 +437,7 @@ export function segmentPrintText(text: string): PrintSegment[] {
     segments.push({
       kind: "math",
       source,
-      tex: isTex ? tex : declined ? tex.replaceAll("−", "-") : converted!,
+      tex: isTex ? tex : (converted ?? tex.replaceAll("−", "-")),
     });
     previous = match.index + source.length;
   }
