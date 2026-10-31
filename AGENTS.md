@@ -16,6 +16,10 @@ that says otherwise is stale — fix it or delete it.
 
 ## YouTube production and publishing
 
+Start with the [AMP media pipeline](docs/amp-media-pipeline.md) for asset discovery,
+production tools, platform connections, daily operation, and measurement. Exact
+local paths and account access procedures live in its linked private runbook.
+
 Before any video production, upload, schedule, or settings change, read and follow
 [the shared YouTube operating policy](docs/youtube-publishing.md). It covers AMP
 ads, explanations, tutoring sessions, and future formats. Upload private, target
