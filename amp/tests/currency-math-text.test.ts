@@ -62,6 +62,12 @@ test("print typesets a bare number or spaced TeX between dollar signs, never cur
   ]);
   assert.deepEqual(shown("$112.5$"), ["[112.5]"]);
   assert.deepEqual(shown("$1\\,7\\,21$"), ["[1\\,7\\,21]"]);
+  assert.deepEqual(shown("Prices range from $3-$5 each."), [
+    "Prices range from $3-$5 each.",
+  ]);
+  assert.deepEqual(shown("Tickets cost $10–$15."), ["Tickets cost $10–$15."]);
+  assert.deepEqual(shown("Save $5,$10 today."), ["Save $5,$10 today."]);
+  assert.deepEqual(shown("($4)($5)"), ["($4)($5)"]);
   assert.deepEqual(shown("A pen costs $3 and a book costs $5."), [
     "A pen costs $3 and a book costs $5.",
   ]);

@@ -424,9 +424,13 @@ export function segmentPrintText(text: string): PrintSegment[] {
     // between two currency amounts: it has two words in a row, or a space at
     // its edge ("\$3 and a book costs \$"). Generators write money in words.
     const words = tex.replace(/\\[A-Za-z]+(?:\{[^}]*\})?/g, "");
+    // Two prices joined by a dash, comma or parentheses ("\$3-\$5",
+    // "(\$4)(\$5)") capture only the separator, which never ends a formula.
+    const joinsPrices = /^\d[\d,.]*(?:[-–—,]|\)\()$/.test(tex);
     const explicit =
       isTex ||
       (!/^\s|\s$/.test(tex) &&
+        !joinsPrices &&
         !/[A-Za-z]{3,}\s+[A-Za-z]{2,}|[A-Za-z]{2,}\s+[A-Za-z]{3,}/.test(words));
     if (!explicit) {
       // A currency marker must not consume the opening delimiter of later TeX.

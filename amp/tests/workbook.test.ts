@@ -182,6 +182,29 @@ test("the printed workbook numbers every problem and keeps the key after them", 
     assert.ok(html.includes(`<h2>${n}. `), `problem ${n}`);
 });
 
+test("no workbook prints the same problem twice", () => {
+  for (const id of learners.keys())
+    for (const date of ["2026-11-01", "2026-11-19", "2026-12-02"]) {
+      const { frontier, evidence } = learners.get(id)!;
+      const spec = composeWorkbook({
+        templates,
+        skills,
+        lessons,
+        frontier,
+        evidence,
+        date,
+        minutes: 60,
+        learnerKey: id,
+        now,
+      });
+      const keys = items(spec).map((i) => {
+        const p = generateProblem(i.templateId, i.seed);
+        return `${p.public.prompt}|${p.answer}`;
+      });
+      assert.equal(new Set(keys).size, keys.length, `${id} ${date}`);
+    }
+});
+
 test("invalid requests are rejected", () => {
   assert.throws(() => compose("third-grade", { minutes: 20 as never }));
   assert.throws(() => compose("third-grade", { number: 0 }));

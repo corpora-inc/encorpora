@@ -147,11 +147,24 @@ export function composeWorkbook(options: {
     createHash("sha256").update(`${seed}:${key}`).digest().readUInt32BE(0);
   const usedTemplates = new Set<string>();
   const usedSkills = new Set<string>();
-  let serial = 0;
+  // Seeds count within each section, so one more due review never changes
+  // the practice or challenge problems.
+  const serial = new Map<SectionKind, number>();
+  const printed = new Set<string>();
 
   const item = (t: TemplateMetadata, kind: SectionKind): WorkbookItem => {
-    const itemSeed = `${seed}:${serial++}`;
-    const problem = generateProblem(t.id, itemSeed);
+    const index = serial.get(kind) ?? 0;
+    serial.set(kind, index + 1);
+    // A template with few variants can repeat a problem; draw again.
+    let itemSeed = `${seed}:${kind}:${index}`;
+    let problem = generateProblem(t.id, itemSeed);
+    for (let retry = 1; retry < 8; retry++) {
+      const key = `${problem.public.prompt}\u0000${problem.answer}`;
+      if (!printed.has(key)) break;
+      itemSeed = `${seed}:${kind}:${index}:${retry}`;
+      problem = generateProblem(t.id, itemSeed);
+    }
+    printed.add(`${problem.public.prompt}\u0000${problem.answer}`);
     const grade = gradeOf.get(t.id)!;
     usedTemplates.add(t.id);
     usedSkills.add(t.skillId);
