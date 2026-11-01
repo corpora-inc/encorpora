@@ -1801,9 +1801,9 @@ const glossary: Record<
   },
   "piecewise-evaluate": {
     senses: { changes: "change" },
-    noLink: ["range", "boundary", "intervals", "rule", "rules"],
+    noLink: ["unit", "range", "boundary", "intervals", "rule", "rules"],
   },
-  "piecewise-reading": { noLink: ["rule"] },
+  "piecewise-reading": { noLink: ["change", "part", "opposite", "rule"] },
   "point-slope-two-points": { senses: { change: "change" } },
   "polar-cartesian-conversion": {
     senses: { change: "change", units: "unit" },
@@ -2879,6 +2879,7 @@ const glossary: Record<
   },
   "transform-point": {
     senses: { changes: "change", opposite: "opposite-number" },
+    noLink: ["image", "rule"],
   },
   "transformation-composition-image": {
     senses: { change: "change", image: "image-transformation", units: "unit" },
