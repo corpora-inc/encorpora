@@ -64,24 +64,25 @@ export const supplyPrice = chainFamily({
         { label: correct, correct: true },
         {
           label: `The price goes ${rise ? "down" : "up"}, because ${because(rise)}.`,
-          feedback: `The reason is right, but the price goes the other way: ${rise ? "when buyers compete for a small supply, sellers can ask for more" : "when sellers have more than people want, they lower the price to sell them"}.`,
+          feedback: `The reason is right, but you turned the price the wrong way: ${rise ? "when buyers compete for a small supply, sellers can ask for more" : "when sellers have more than people want, they lower the price to sell them"}.`,
         },
         {
           label: `The price goes ${rise ? "up" : "down"}, because ${because(!rise)}.`,
-          feedback: `The price goes the right way, but the reason does not fit this story: here ${forSale} are for sale and ${wanted} people want one, so ${because(rise)}.`,
+          feedback: `The price goes the right way, but the reason swaps the two numbers. Here ${forSale} are for sale and ${wanted} people want one, so ${because(rise)}.`,
         },
         {
           label: `The price stays the same, because the price of ${g.plural} does not depend on how many are for sale or wanted.`,
-          feedback: `Prices respond to supply and demand. With ${forSale} for sale and ${wanted} people who want one, the price is likely to go ${rise ? "up" : "down"}.`,
+          feedback: `Prices do change with how many are for sale and how many people want them. With ${forSale} for sale and ${wanted} people who want one, the price is likely to go ${rise ? "up" : "down"}.`,
         },
       ],
       hint: `Compare the ${forSale} ${g.plural} for sale with the ${wanted} people who want one. Are there more ${g.plural} than buyers, or fewer? Think about what a seller does in each case.`,
       explanation: [
-        `The supply is the number for sale, ${forSale}, and the demand is the number of people who want one, ${wanted}.`,
+        `Supply means how many are for sale: here ${forSale}. Demand means how many people want one: here ${wanted}.`,
+        `${forSale} is ${rise ? "less" : "more"} than ${wanted}, so ${because(rise)}.`,
         rise
-          ? `Few ${g.plural} for many buyers means ${g.plural} are scarce, so sellers can ask for more.`
-          : `Many ${g.plural} for few buyers means ${g.plural} are plentiful, so sellers lower the price to sell them.`,
-        correct,
+          ? `When ${g.plural} are scarce, buyers compete for them, so sellers can ask for more.`
+          : `When ${g.plural} are plentiful, sellers lower the price so that people will buy them.`,
+        `So the answer is: ${correct[0]!.toLowerCase()}${correct.slice(1)}`,
       ],
     });
   },

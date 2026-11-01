@@ -965,7 +965,7 @@ function compositeAreaCase(r: Random): Case {
   const { sides, hidden } = labels(r, shape);
   const total = area(shape);
   const explanation = [
-    `Every corner is a right angle, so opposite sides line up. Find the unlabeled ${hidden.length === 1 ? "side" : "sides"}: ${hidden.map((h) => h.text).join("; ")}.`,
+    `The sides meet only at square corners, some turning in and some turning out, so every side runs straight across or straight up and down, and opposite sides line up. Find the unlabeled ${hidden.length === 1 ? "side" : "sides"}: ${hidden.map((h) => h.text).join("; ")}.`,
     `Split the figure into rectangles: ${list(partsText(shape))}.`,
     `Add the rectangles: ${shape.parts.map(([, w, h]) => w * h).join(" + ")} = ${total}. The area is ${total} ${A}.`,
   ];
@@ -1013,7 +1013,7 @@ function compositePrismCase(r: Random, surface: boolean): Case {
     const qd = shape.face[(i + 1) % shape.face.length]!;
     return Math.abs(qd[0] - p[0]) + Math.abs(qd[1] - p[1]);
   });
-  const findSides = `Every corner of the front face is a right angle. Find the unlabeled ${hidden.length === 1 ? "edge" : "edges"}: ${hidden.map((h) => h.text).join("; ")}.`;
+  const findSides = `The edges of the front face meet only at square corners, some turning in and some turning out, so every edge runs straight across or straight up and down. Find the unlabeled ${hidden.length === 1 ? "edge" : "edges"}: ${hidden.map((h) => h.text).join("; ")}.`;
   const faceStep = `Split the front face into rectangles: ${list(partsText(shape))}. Its area is ${shape.parts.map(([, w, h]) => w * h).join(" + ")} = ${face}.`;
   const intro = `A right prism has the ${describe[shape.name]} front face shown and is ${len(depth, u)} deep. All angles are right angles. Lengths are in ${unitWords[u][1]}.`;
   if (!surface)

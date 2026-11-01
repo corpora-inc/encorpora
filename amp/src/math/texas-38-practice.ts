@@ -742,8 +742,9 @@ function situationPairTable(r: Random): Built {
       prompt: `${c.rule(p)} The table shows the number of ${c.outWord} for different numbers of ${c.inWord}. How many ${c.outWord} for ${n} ${c.inWord}?`,
       hint: `Each row is the number of ${c.inWord} times ${p}. Use the same rule for ${n}.`,
       explanation: [
-        `${c.rule(p)} So the number of ${c.outWord} is ${p} times the number of ${c.inWord}.`,
-        `For ${n} ${c.inWord}: ${n} × ${p} = ${n * p}.`,
+        `${c.rule(p)} So the number of ${c.outWord} is ${p} times the number of ${c.inWord}, in every row of the table.`,
+        `Use the same rule for ${n} ${c.inWord}: ${n} × ${p} = ${n * p}.`,
+        `${n} ${c.inWord} go with ${n * p} ${c.outWord}.`,
       ],
       figure: pairTable(c.inn, c.out, [
         ...given
@@ -1994,8 +1995,10 @@ function reciprocalDivisionChoice(r: Random): Built {
       prompt: `Which multiplication equals ${frText(a)} ÷ ${w}?`,
       hint: `A whole number is a fraction over 1, so ${w} is ${w}/1. What is its reciprocal?`,
       explanation: [
+        `The reciprocal of a number is the number you multiply it by to get 1; for a fraction, flip the top and bottom.`,
+        `Dividing by a number is the same as multiplying by its reciprocal: dividing by ${w} shares into ${w} equal parts, and so does taking 1/${w} of the amount.`,
         `${w} = ${w}/1, so its reciprocal is 1/${w}.`,
-        `${frText(a)} ÷ ${w} = ${frText(a)} × 1/${w}.`,
+        `So ${frText(a)} ÷ ${w} = ${frText(a)} × 1/${w}.`,
       ],
       choices: choicesFrom(`${frText(a)} × 1/${w}`, [
         {
@@ -2083,7 +2086,7 @@ function scalingDirectionChoice(r: Random): Built {
     return {
       variant,
       prompt: `Without calculating, which product is ${greater ? "greater" : "less"} than ${N}?`,
-      hint: `Compare each multiplier with 1. Multiplying ${N} by a number ${greater ? "greater" : "less"} than 1 gives a result ${greater ? "greater" : "less"} than ${N}.`,
+      hint: `Compare each multiplier with 1. Multiplying ${N} by a number ${greater ? "greater" : "less"} than 1 makes the result ${greater ? "greater" : "less"} than ${N}.`,
       explanation: [
         `${frText(odd)} is ${greater ? "greater" : "less"} than 1, so ${expr(odd)} is ${greater ? "greater" : "less"} than ${N}.`,
         `The other multipliers are ${greater ? "less" : "greater"} than 1, so their products are ${greater ? "less" : "greater"} than ${N}.`,
@@ -2149,7 +2152,7 @@ function scalingDirectionChoice(r: Random): Built {
       `${label} is ${kind === "less" ? "less than" : kind === "more" ? "greater than" : "equal to"} 1.`,
       kind === "equal"
         ? `Multiplying by 1 does not change ${N}, so the product equals ${N}.`
-        : `Multiplying by a number ${kind === "less" ? "less" : "greater"} than 1 gives a result ${kind === "less" ? "less" : "greater"} than ${N}.`,
+        : `Multiplying by a number ${kind === "less" ? "less" : "greater"} than 1 makes the result ${kind === "less" ? "less" : "greater"} than ${N}.`,
     ],
     choices: choicesFrom(correct, pool),
   };
@@ -2189,8 +2192,9 @@ function percentGridModel(r: Random): Built {
       prompt: `What percent of the grid is shaded?`,
       hint,
       explanation: [
-        `The grid has 100 squares and ${k} are shaded.`,
-        `${k} out of 100 is ${k}%.`,
+        `Percent means "out of 100". The grid has 100 equal squares, so each square is 1%.`,
+        `${k} of the 100 squares are shaded.`,
+        `${k} out of 100 is ${k}%, so ${k}% of the grid is shaded.`,
       ],
       figure,
       choices: choicesFrom(`${k}%`, [
@@ -2283,8 +2287,9 @@ function percentFormsAndParts(r: Random): Built {
       prompt: `Write ${n}/${d} as a percent. Enter the number without the percent sign.`,
       hint: `A percent is a number out of 100. Divide ${n} by ${d}, then multiply by 100, or rewrite ${n}/${d} with a denominator of 100.`,
       explanation: [
-        `${n} ÷ ${d} = ${exactDec(n / d)}.`,
-        `${exactDec(n / d)} × 100 = ${trimNum(p)}, so ${n}/${d} = ${trimNum(p)}%.`,
+        `Percent means "out of 100", so find how many hundredths ${n}/${d} is.`,
+        `A fraction is a division: ${n} ÷ ${d} = ${exactDec(n / d)}.`,
+        `Multiply by 100 to count hundredths: ${exactDec(n / d)} × 100 = ${trimNum(p)}, so ${n}/${d} = ${trimNum(p)}%.`,
       ],
       answer: trimNum(p),
       responseLabel: "Percent",
@@ -2300,7 +2305,11 @@ function percentFormsAndParts(r: Random): Built {
       variant,
       prompt: `Write ${x} as a percent. Enter the number without the percent sign.`,
       hint: `Percent means per 100, so multiply the decimal by 100, which moves the decimal point two places to the right.`,
-      explanation: [`${x} × 100 = ${trimNum(p)}.`, `So ${x} = ${trimNum(p)}%.`],
+      explanation: [
+        `Percent means "out of 100", so count how many hundredths ${x} is.`,
+        `Multiply by 100: ${x} × 100 = ${trimNum(p)}.`,
+        `So ${x} = ${trimNum(p)}%.`,
+      ],
       answer: trimNum(p),
       responseLabel: "Percent",
     };
