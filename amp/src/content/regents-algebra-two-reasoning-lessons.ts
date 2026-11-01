@@ -70,7 +70,7 @@ export const regentsAlgebraTwoReasoningMethods: Record<string, ProblemMethod> =
     ),
     "rational-abs-solution-count": m(
       "Count the solutions of an equation by counting the points where two graphs meet.",
-      "Each solution of $f(x)=g(x)$ is an input where the two graphs have the same height, so counting meeting points counts solutions. Count each point once. No solution can sit on a vertical asymptote, a vertical line the rational graph runs beside where its bottom is 0. The absolute value $|x|$, the distance from 0, makes a V-shaped graph with one corner.",
+      "Each solution of $f(x)=g(x)$ is an input where the two graphs have the same height, so counting meeting points counts solutions. Count each point once. No solution can sit on a vertical asymptote, a vertical line the rational graph runs beside where its bottom is 0. The absolute value $|x|$, the distance from 0, makes a graph of two straight pieces that meet at one corner.",
       ["asymptote", "intersection-graphs"],
       [
         "Draw or read both graphs.",
@@ -315,7 +315,7 @@ export const regentsAlgebraTwoReasoningLessons = [
   lesson(
     "regents-rational-abs-solution-count",
     "Counting solutions from two graphs",
-    "A solution of $f(x) = g(x)$ is an input where the two graphs have the same height. So counting solutions means counting the points where the graphs meet. Here one graph is a rational function, a fraction with $x$ in the bottom, and the other is an absolute-value graph, a V shape.",
+    "A solution of $f(x) = g(x)$ is an input where the two graphs have the same height. So counting solutions means counting the points where the graphs meet. Here one graph is a rational function, a fraction with $x$ in the bottom, and the other is an absolute-value graph, two straight pieces meeting at a corner.",
     ["rational-abs-solution-count"],
     [
       "Count the points where a rational graph meets an absolute-value graph.",
@@ -324,7 +324,7 @@ export const regentsAlgebraTwoReasoningLessons = [
     [
       "A solution of $f(x) = g(x)$ is an input where both functions give the same output, so the graphs meet there. Counting solutions means counting meeting points, each one once.",
       "A rational function such as $y = \\tfrac{1}{x}$ is undefined where its bottom is 0. Near that input its graph runs beside a vertical line, called a vertical asymptote, which no solution can lie on.",
-      "The absolute value $|x|$ is the distance of $x$ from 0, so it is never negative: $|3| = 3$ and $|-3| = 3$. The graph of $y = |x| - 2$ is a V with its corner at $(0, -2)$. To solve with it, split into two cases: $|x| = x$ when $x$ is 0 or more, and $|x| = -x$ when $x < 0$.",
+      "The absolute value $|x|$ is the distance of $x$ from 0, so it is never negative: $|3| = 3$ and $|-3| = 3$. The graph of $y = |x| - 2$ is two straight pieces meeting at a corner, $(0, -2)$. To solve with it, split into two cases: $|x| = x$ when $x$ is 0 or more, and $|x| = -x$ when $x < 0$.",
     ],
     {
       prompt:
