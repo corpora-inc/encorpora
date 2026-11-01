@@ -10,7 +10,7 @@ A daily workbook is a printable document of about 30, 45 or 60 minutes of work, 
 | Today's idea | One lesson, taught | A lesson card (summary, one method section with its diagram, worked example, one pitfall), then guided problems from the lesson's own templates. Started-but-unsecured skills come first, then new skills near the frontier |
 | Practice | Moderate challenge | 0.8 below to 0.2 above, at most two per strand, round-robin across strands, filling the remaining time |
 | Review | Spaced retrieval | Skills whose `reviewDueAt` has passed, oldest first, on a different template than last time when possible |
-| Challenge | Just beyond reach | One problem from the curated challenge pool (several steps or a figure to reason about), from the nearest bands at or above the strand level (0.5–1.3 first), shared among the three strands with the most independent evidence so it changes day to day. Then any template above the level; a pool problem below the level only at the top of the catalog |
+| Challenge | Just beyond reach | One problem 0.5–1.3 grades above the learner (`CHALLENGE_WINDOW`): above its strand's level and never more than 1.3 above the overall level. From the curated challenge pool (several steps or a figure to reason about) when it has one in that window, shared among the three strands with the most independent evidence so it changes day to day; then any template in the window. Only at the ends of the catalog, where the window is empty, the closest template |
 
 A detachable answer key (answer plus worked steps for every problem, and the lesson's parent note) and a results page (a Right / Not yet box per problem, the workbook code, and a QR code that opens the results entry) follow the student pages.
 
@@ -40,10 +40,34 @@ The routes (`src/workbook/routes.ts`) require the learner's parent with consent 
 | --- | --- |
 | `POST /api/v1/learners/:id/workbooks` `{date, minutes: 30\|45\|60, paper: letter\|a4, number?}` | The workbook for that date, number and length: stored the first time (201), returned unchanged afterwards (200). No `number` means the next number for the date ("Another one"). A new workbook is for today (within a day of the server's UTC date); stored ones of any date stay available. A changed paper size is saved; the problems are not |
 | `GET /api/v1/learners/:id/workbooks[?date=]` | History, newest first, as summaries (sections, problem counts, estimated minutes, code), and `pdf`: whether downloads are PDFs. Without a configured renderer the screens download the printable document instead |
-| `GET /api/v1/learners/:id/workbooks/:workbookId/pdf[?format=Letter\|A4]` | The workbook PDF, rendered by the [render service](deployment.md#workbook-render-service) on first request and cached for a day. A renderer that is down answers a logged 503, "Your workbook is being prepared; try again in a minute.", and the screen downloads the printable document instead. 410 as below |
+| `GET /api/v1/learners/:id/workbooks/:workbookId/pdf[?format=Letter\|A4]` | The workbook PDF, rendered by the [render service](deployment.md#workbook-render-service) for each request. PDFs are never stored; only the spec is. A renderer that is down answers a logged 503, "Your workbook is being prepared; try again in a minute.", and the screen downloads the printable document instead. 410 as below |
 | `GET /api/v1/learners/:id/workbooks/:workbookId/document[?paper=]` | The printable workbook as one HTML document. 410 when a template has changed version since the workbook was made, because its problems would no longer reprint exactly |
 
 A stored spec never changes when evidence changes later; the next number is composed from the new evidence. `workbookCode` hashes the spec with sorted keys, because JSONB storage reorders them.
+
+## Results
+
+Results come back from paper through `/learners/:id/workbooks/:workbookId/results`. The QR code on a workbook's results page links there; parents can also reach it with "Enter results" on the workbook or in history, or by typing the printed code in history.
+
+The screen has one row per problem.
+- **Typed answers.** Numbers and fractions can be typed, and printed choices picked by letter. The app's exact grader checks them (`gradeAnswer`), and they count as independent attempts.
+- **Marks.** Every row can instead be marked right or not yet, at half weight. Responses that don't type well are always marked: several choices, plotted points, multi-part answers and shown work.
+
+Recording works like this:
+- Each problem is stored once, as an attempt with `evidenceSource: "paper"`. Its problem instance (`paper:<workbook>:<n>`) is regenerated from the spec.
+- Rows already recorded are kept, so entering a workbook again changes nothing. Recorded rows show their result and lock.
+- A row the server refuses (an unreadable answer, a number not in the workbook) is named in the error. Nothing from that save is stored.
+- Progress, levels and practice read the same evidence, and the screen invalidates the account store after saving.
+
+The weights are in [adaptive evidence](adaptive-evidence.md).
+
+| Route | Result |
+| --- | --- |
+| `GET …/workbooks/:workbookId/results` | The rows, with what is already recorded |
+| `POST …/workbooks/:workbookId/results` `{entries: [{n, answer} \| {n, mark: right\|not-yet}]}` | Records new rows; returns the rows and how many were new. 400 names the problem; 410 for a stale workbook |
+| `GET …/workbooks?code=ABCD-EFGH` | The workbook with that code (any case, dash optional) |
+
+**Held back from practice.** Templates printed in a workbook made in the last 24 hours are left out of mixed practice (`reservedTemplateIds` in `planMixedPractice`), so the app does not repeat the paper that day. A focused or recovery pool made only of printed templates is still served.
 
 ## Parent screens
 
@@ -61,4 +85,5 @@ A stored spec never changes when evidence changes later; the next number is comp
 - `npx tsx scripts/workbook-challenge-pool.ts --write` regenerates `src/workbook/challenge-pool.ts` and documents its scoring; curate with its `routine` list.
 - `tests/workbook.test.ts` covers determinism, structure at every level and length, time targets, due review, a learner with no answers, key placement, the results link, the challenge pool and the lesson card's words to know.
 - `tests/workbooks.test.ts` covers the API with an in-memory repository; `tests/workbooks.integration.ts` covers storage, concurrency, export and deletion on PostgreSQL.
+- `tests/workbook-results.test.ts` covers grading, paper evidence, idempotent re-entry, refused rows, code lookup, held-back templates and the weights. `tests/workbook-results.integration.ts` covers the same flow on PostgreSQL, and `tests/skill-evidence.integration.ts` checks that the SQL and TypeScript projections agree with paper marks.
 - Review pages of representative learners are in `docs/reviews/workbooks/` (`paper-*.png`).

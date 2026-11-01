@@ -18,18 +18,24 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
       "Change the numerators when you change a denominator. Rewriting $\\frac{3}{4}$ as $\\frac{3}{12}$ instead of $\\frac{9}{12}$ changes its size.",
   },
   "decimal-rename-chain": {
+    senses: {
+      difference: "difference-subtract",
+      part: "part",
+      parts: "part",
+      rename: "rename",
+    },
     goal: "Write a fraction as a decimal, or a decimal as a fraction, then add, subtract or multiply; read decimal weights from a table.",
     intuition:
-      "A fraction and a decimal are two names for one number. When a problem mixes them, pick one name for every term first. Then the arithmetic is one you already know. In an expression, multiplication is done before subtraction.",
+      "A decimal is a number written with a decimal point, such as 0.4. A fraction and a decimal can name the same number: $\\frac{2}{5}$ and $0.4$ are equal. When a problem mixes them, write every number the same way first. To rename means to write a number another way. To rename a fraction as a decimal, divide its top number by its bottom number. Multiply before you add or subtract.",
     terms: ["rename", "mixed-number"],
     method: [
-      "Choose one form for the problem. Decimals are easiest when the denominators are 2, 4, 5, 10, 20 or 25.",
-      "Rename each fraction by dividing its top number by its bottom number.",
-      "Do multiplication before addition or subtraction. Line up decimal points to add or subtract.",
+      "Choose one form. Decimals are easiest when the bottom numbers are 2, 4, 5, 10, 20 or 25.",
+      "Rename each fraction by dividing its top number by its bottom number. A mixed number is a whole number with a fraction, such as $1\\frac{1}{4}$, which means $1+\\frac{1}{4} = 1.25$.",
+      "Multiply before you add or subtract. Line up the decimal points to add or subtract.",
       "For a table, add the weights that go together first, then subtract. For a missing weight, subtract the known weights from the total.",
     ],
     watch:
-      "Do the multiplication first in $12.5-2\\frac{1}{4}\\times 3$. Subtracting $2\\frac{1}{4}$ from $12.5$ first gives a different number.",
+      "In $12.5-2\\frac{1}{4}\\times 3$, multiply first. Subtracting $2\\frac{1}{4}$ from $12.5$ first gives a different number.",
   },
   "price-count-chain": {
     goal: "Find the total cost of a group by adding two prices and multiplying by the people, or multiplying each price by its own count.",
@@ -58,9 +64,11 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
       "Check the unit rate against both table columns. If it does not fit, the division was wrong.",
   },
   "signed-changes-sum": {
+    senses: { change: "change", changes: "change" },
+    noLink: ["net"],
     goal: "Add five to seven gains and losses from a table to find the net change, or the count after the changes.",
     intuition:
-      "A gain moves a count up and a loss moves it down. The net change is where the count ends up compared with the start. Gains and losses can be added in any order, so group the gains together and the losses together.",
+      "A gain moves a count up, and a loss moves it down. A negative number is a number below 0, such as $-8$, the way we write a loss of 8. The net change is the total of all the changes: how far the count ends up from where it started. You can add in any order, so add the gains together and the losses together.",
     terms: [
       [
         "sum",
@@ -70,11 +78,11 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
     method: [
       "Add all the gains to get one positive total.",
       "Add all the losses to get one negative total.",
-      "Add the two totals. The sign tells whether the count went up or down.",
+      "Add the two totals. A positive result means the count went up. A negative result means it went down.",
       "For a final count, add the net change to the starting count.",
     ],
     watch:
-      "Include every day in the table, including the ones at the end. A loss of 8 is $-8$, not $+8$.",
+      "Include every day in the table, including the last ones. A loss of 8 is $-8$, not $+8$.",
   },
 };
 
@@ -82,13 +90,13 @@ export const multiTermChainPrinciples: Record<string, string> = {
   "fraction-term-chain":
     "Fractions with denominators $d_1,\\dots,d_k$ can all be written over any common multiple $D$ of them, since $\\frac{n}{d}=\\frac{n\\cdot D/d}{D}$. Then $\\pm\\frac{n_1}{D}\\pm\\cdots\\pm\\frac{n_k}{D}=\\frac{\\pm n_1\\pm\\cdots\\pm n_k}{D}$, because quantities counted in the same unit add as counts.",
   "decimal-rename-chain":
-    "A fraction whose denominator divides a power of ten equals a terminating decimal, so $\\frac{p}{q}=\\frac{p\\cdot 10^k/q}{10^k}$. Multiplication is done before addition and subtraction, and a difference can be negative when the subtracted amount is larger.",
+    "A power of ten is 10, 100, 1000 and so on, written $10^k$ for $k$ tens multiplied together. If the bottom number $q$ of a fraction divides a power of ten evenly, the fraction is a decimal that stops: $\\frac{p}{q}=\\frac{p\\cdot 10^k/q}{10^k}$, where $\\cdot$ means times. Multiplication is done before addition and subtraction. A difference is negative when the amount taken away is larger.",
   "price-count-chain":
     "The distributive property gives $n(a+b)=na+nb$: one pair costing $a+b$ bought $n$ times costs the same as $n$ copies of $a$ and $n$ copies of $b$. When the counts differ the total is $ma+nb$.",
   "dollar-rate-scale":
     "If the charge is proportional to the hours, charge $=r\\times$ hours with unit rate $r=\\frac{\\text{charge}}{\\text{hours}}$, the same for every column of the table. The hours for a charge are $\\frac{\\text{charge}}{r}$.",
   "signed-changes-sum":
-    "Addition of integers is commutative and associative, so $a_1+\\cdots+a_n$ equals the sum of the positive terms plus the sum of the negative terms. The final count is the start plus that net change.",
+    "Integers are the whole numbers and their negatives. When you add integers, the order and the grouping do not change the total. So the sum of all the changes equals the sum of the gains plus the sum of the losses. The final count is the start plus that net change.",
 };
 
 export const multiTermChainLessons = [
@@ -137,48 +145,59 @@ export const multiTermChainLessons = [
     parentGuide:
       "Ask your learner which denominator all of the fractions divide into, and have them write each term over it before they add.",
   }),
-  chainLesson({
-    id: "decimal-rename-chain",
-    title: "Rename, then add, subtract or multiply",
-    summary:
-      "Write a fraction as a decimal, multiply before you subtract, and read decimal weights from a table.",
-    templateIds: ["decimal-rename-chain"],
-    objectives: [
-      "Rename a fraction or mixed number as a decimal.",
-      "Multiply before subtracting in an expression with a decimal and a mixed number.",
-      "Add, subtract and find a missing decimal weight from a table.",
-    ],
-    openingTitle: "One name for every number",
-    opening: [
-      "$\\frac{2}{5}$ and $0.4$ are the same number. If a problem has both, pick one form first. Decimals are usually quickest when the fraction has a denominator of 2, 4, 5, 10, 20 or 25.",
-      "To rename $\\frac{2}{5}$, divide 2 by 5. Then line up the decimal points and subtract. In an expression, do multiplication before addition or subtraction.",
-    ],
-    example: {
-      prompt: "Evaluate $9.5-1\\frac{1}{4}\\times 2$.",
-      steps: [
-        "Multiplication comes first: $1\\frac{1}{4}=1.25$, and $1.25\\times 2=2.5$.",
-        "Subtract: $9.5-2.5=7$.",
+  {
+    ...chainLesson({
+      id: "decimal-rename-chain",
+      title: "Rename, then add, subtract or multiply",
+      summary:
+        "A fraction and a decimal can name the same number: $\\frac{2}{5}$ and $0.4$ are equal. When a problem mixes the two, first write every number the same way. Then add, subtract or multiply as usual. Remember to multiply before you add or subtract.",
+      templateIds: ["decimal-rename-chain"],
+      objectives: [
+        "Rename a fraction or a mixed number (a whole number and a fraction, such as $1\\frac{1}{4}$) as a decimal.",
+        "Multiply before subtracting in an expression that has a decimal and a mixed number.",
+        "Add, subtract and find a missing decimal weight from a table.",
       ],
-      answer: "$7$",
+      openingTitle: "One name for every number",
+      opening: [
+        "A fraction is a number of equal parts of 1 whole. The denominator, the bottom number, says how many equal parts make 1. The numerator, the top number, says how many parts you have. So $\\frac{2}{5}$ is 2 of 5 equal parts.",
+        "A fraction also means division: $\\frac{2}{5}$ is $2\\div5=0.4$. So $\\frac{2}{5}$ and $0.4$ are two names for the same number. To rename means to write a number another way without changing its value. To rename a fraction as a decimal, divide its top number by its bottom number. Decimals come out quickest when the bottom number is 2, 4, 5, 10, 20 or 25.",
+        "A mixed number is a whole number with a fraction, such as $1\\frac{1}{4}$. It means $1+\\frac{1}{4}$, which is $1+0.25=1.25$.",
+        "If a problem mixes fractions and decimals, pick one form for every number first. In an expression (a group of numbers joined by operations), always multiply before you add or subtract.",
+      ],
+      example: {
+        prompt: "Evaluate $9.5-1\\frac{1}{4}\\times 2$.",
+        steps: [
+          "Multiplication comes before subtraction. First rename the mixed number: $1\\frac{1}{4}=1+0.25=1.25$. Then multiply: $1.25\\times 2=2.5$.",
+          "Now subtract, with the decimal points lined up: $9.5-2.5=7$.",
+        ],
+        answer: "$7$",
+      },
+      methodTitle: "Choose a form, then follow the order",
+      method: [
+        "Rename every fraction as a decimal, or every decimal as a fraction, so all the numbers match.",
+        "Multiply first. Then add or subtract, with the decimal points lined up. For a table, add the weights that go together, then subtract. For a missing weight, subtract the known weights from the total.",
+      ],
+      formalTitle: "Why renaming does not change the value",
+      formal: [
+        "A power of ten is a number like 10, 100 or 1000, written $10^k$ for $k$ tens multiplied together. If the bottom number $q$ of a fraction $\\frac{p}{q}$ divides $10^k$ evenly, then $\\frac{p}{q}=\\frac{p\\cdot 10^k/q}{10^k}$, a decimal with $k$ places. Here $\\cdot$ means times. For example, $\\frac{2}{5}=\\frac{4}{10}=0.4$.",
+        "The order of operations makes every expression mean just one thing: multiply before you add or subtract. A difference is negative, below 0, when the amount taken away is larger.",
+      ],
+      pitfalls: [
+        "Multiply before you subtract.",
+        "Line up the decimal points. To add 7.5 and 0.25, it helps to write 7.5 as 7.50.",
+        "A result can be negative when you subtract a larger amount.",
+      ],
+      parentGuide:
+        "Ask which form each number is in. Then ask whether to multiply or subtract first, and why.",
+    }),
+    senses: {
+      rename: "rename",
+      whole: "whole",
+      parts: "part",
+      difference: "difference-subtract",
     },
-    methodTitle: "Choose a form, then follow the order",
-    method: [
-      "Rename every fraction as a decimal, or every decimal as a fraction, so all terms match.",
-      "Multiply first, then add or subtract with the decimal points lined up. For a table, add the weights that go together and subtract; for a missing weight, subtract what is known from the total.",
-    ],
-    formalTitle: "Why renaming does not change the value",
-    formal: [
-      "A fraction $\\frac{p}{q}$ whose denominator divides $10^k$ equals $\\frac{p\\cdot 10^k/q}{10^k}$, a decimal with $k$ places. For example $\\frac{2}{5}=\\frac{4}{10}=0.4$.",
-      "Order of operations makes every expression mean one thing: products are found before sums and differences. The result of a difference is negative when the amount taken away is larger.",
-    ],
-    pitfalls: [
-      "Multiply before you subtract.",
-      "Line up the decimal points. 7.5 and 0.25 need the same number of places.",
-      "A result can be negative when you subtract a larger amount.",
-    ],
-    parentGuide:
-      "Ask which form each number is in, and whether to multiply or subtract first.",
-  }),
+    noLink: ["mean"],
+  },
   chainLesson({
     id: "price-and-rate-chain",
     title: "Prices for a group and rates from a table",
@@ -221,47 +240,52 @@ export const multiTermChainLessons = [
     parentGuide:
       "Ask what one person spends, or what one hour costs, before multiplying.",
   }),
-  chainLesson({
-    id: "signed-changes-sum",
-    title: "Add many gains and losses",
-    summary:
-      "Find the net change from five to seven signed changes, and the count after them.",
-    templateIds: ["signed-changes-sum"],
-    objectives: [
-      "Add a list of five to seven positive and negative changes.",
-      "Use the net change to find a final count.",
-    ],
-    openingTitle: "Gains up, losses down",
-    opening: [
-      "Each change moves a count up if it is positive and down if it is negative. The net change is the total of all of them. A positive net change means the count went up, and a negative one means it went down.",
-      "You can add in any order. Add all the gains, add all the losses, and then combine the two totals.",
-    ],
-    example: {
-      prompt:
-        "Changes in the number of books: $+9,\\ -4,\\ +6,\\ -11,\\ +3$. What is the net change?",
-      steps: [
-        "The gains total $9+6+3=18$.",
-        "The losses total $-4+(-11)=-15$.",
-        "The net change is $18+(-15)=3$.",
+  {
+    ...chainLesson({
+      id: "signed-changes-sum",
+      title: "Add many gains and losses",
+      summary:
+        "A gain moves a count up and a loss moves it down. A negative number is a number below 0, written with a minus sign. We write a gain of 9 as $+9$ and a loss of 4 as $-4$. The net change is the total of all the changes. It tells how far the count ends up from where it started. Add it to the start to get the final count.",
+      templateIds: ["signed-changes-sum"],
+      objectives: [
+        "Add a list of five to seven positive and negative changes.",
+        "Use the net change to find a final count.",
       ],
-      answer: "$3$",
-    },
-    methodTitle: "Group the gains and the losses",
-    method: [
-      "Add the positive changes, add the negative changes, and combine the two totals.",
-      "For a final count, add the net change to the start.",
-    ],
-    formalTitle: "Why the order does not matter",
-    formal: [
-      "Addition of integers is commutative and associative, so any grouping of the same terms has the same sum. Grouping the positive terms and the negative terms is one such grouping.",
-    ],
-    pitfalls: [
-      "Include every change in the list.",
-      "A loss of 8 is $-8$. Subtract it, do not add it.",
-    ],
-    parentGuide:
-      "Ask your learner to say what the gains total and what the losses total before they combine them.",
-  }),
+      openingTitle: "Gains up, losses down",
+      opening: [
+        "A library has some books. On Monday it gets 9 new books, a gain of 9, written $+9$. On Tuesday 4 books are lost, a loss of 4, written $-4$. A number with a minus sign in front is negative, below 0.",
+        "The net change is the total of all the changes. Here $9+(-4)=5$, so after two days the library has 5 more books than at the start. A positive net change means the count went up. A negative one means it went down.",
+        "You can add the changes in any order, and the total stays the same. So add all the gains, add all the losses, and then combine the two totals.",
+      ],
+      example: {
+        prompt:
+          "Changes in the number of books: $+9,\\ -4,\\ +6,\\ -11,\\ +3$. What is the net change?",
+        steps: [
+          "Add the gains together: $9+6+3=18$.",
+          "Add the losses together: $-4+(-11)=-15$. Two losses make a bigger loss.",
+          "Combine the totals: $18+(-15)=3$. The gains are 3 more than the losses, so the count went up by 3.",
+        ],
+        answer: "$3$",
+      },
+      methodTitle: "Group the gains and the losses",
+      method: [
+        "Add the positive changes. Add the negative changes. Then combine the two totals.",
+        "For a final count, add the net change to the starting count.",
+      ],
+      formalTitle: "Why the order does not matter",
+      formal: [
+        "Integers are the whole numbers and their negatives. When you add integers, you may change the order: this is called the commutative property. You may also change the grouping: this is called the associative property. The sum stays the same either way. Putting the positive numbers in one group and the negative numbers in another is one such grouping.",
+      ],
+      pitfalls: [
+        "Include every change in the list.",
+        "A loss of 8 is $-8$. It takes 8 away. Do not add 8.",
+      ],
+      parentGuide:
+        "Ask your learner what the gains add to and what the losses add to before they combine them.",
+    }),
+    senses: { change: "change", "more than": "more-than" },
+    noLink: ["net"],
+  },
 ];
 
 export const multiTermChainFacetMappings: FacetMapping[] = [

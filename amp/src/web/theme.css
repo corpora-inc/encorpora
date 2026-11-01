@@ -1,4 +1,5 @@
 @import "./ui/tokens.css";
+@import "./ui/glossary.css";
 /* AMP visual system. Loaded after the structural stylesheets: it owns colour,
    type and surface treatment. Neutral surfaces, one accent, colour only where
    it carries meaning (strand, correct, incorrect). */
@@ -64,18 +65,25 @@ button {
   background: var(--color-primary);
   color: var(--color-on-primary);
   border-radius: 12px;
-  transition:
-    background 0.12s ease,
-    filter 0.12s ease,
-    transform 0.06s ease;
+}
+/* State changes ease only for learners who allow motion; with reduced motion
+   a fill (Check enabling, a hover) changes at once and a press does not
+   shrink. */
+@media (prefers-reduced-motion: no-preference) {
+  button {
+    transition:
+      background 0.12s ease,
+      filter 0.12s ease,
+      transform 0.06s ease;
+  }
+  button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
 }
 /* Hover darkens whatever fill a button has; it never swaps in the primary
    fill, which would leave dark text on a dark surface. */
 button:hover:not(:disabled) {
   filter: brightness(0.92);
-}
-button:active:not(:disabled) {
-  transform: scale(0.98);
 }
 button:disabled {
   cursor: default;
@@ -277,11 +285,13 @@ header {
   font-size: 22px;
   font-weight: 600;
   border-radius: 12px;
-  background: var(--color-surface-sunken);
+  border: 2px solid var(--color-answer-border);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
 }
 .workspace-answer-row input:focus {
   border-color: var(--color-primary);
-  background: var(--color-surface-raised);
+  background: var(--color-answer);
 }
 .answer-action,
 .choice-submit,
@@ -350,7 +360,10 @@ header {
   flex-direction: column;
   gap: 10px;
   width: min(calc(100% - 24px), 620px);
-  min-height: min(calc(var(--dock-height, 12px) - 12px), 72%);
+  /* Sized to what it says, anchored at the bottom where Check was: Next
+     stays in the thumb zone and no empty band opens above it when the dock
+     it replaces was taller (multi-select, keypad). */
+  min-height: 0;
   max-height: max(min(72%, 440px), var(--dock-height, 0px));
   margin: 0 auto;
   padding: 16px;
@@ -663,9 +676,10 @@ header {
 }
 .lesson-example {
   padding: 14px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: 14px;
-  background: var(--color-surface-sunken);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
 }
 .lesson-example .figure {
   display: block;
@@ -1202,7 +1216,8 @@ button:focus:not(:focus-visible) {
 }
 .lesson-example,
 .lesson-watch {
-  background: var(--color-surface-sunken);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
 }
 .frontier-heading {
   margin-bottom: 16px;
@@ -2219,7 +2234,7 @@ html[data-input="pointer"] :focus-visible {
     right: 0;
     bottom: 0;
     width: 100%;
-    min-height: var(--dock-height, 0px);
+    min-height: 0;
     max-height: max(78%, var(--dock-height, 0px));
     padding: 16px 16px calc(12px + env(safe-area-inset-bottom, 0px));
     border-width: 1px 0 0;

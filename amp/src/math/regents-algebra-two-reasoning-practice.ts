@@ -139,15 +139,20 @@ export const studyDesignClassify = chainFamily({
       label: "Choose the statement",
       options,
       hint: `In the study of ${m.n} subjects, ask who decided which treatment or group each subject was in: the researcher, or the subjects themselves or circumstances.`,
-      explanation: m.exp
-        ? [
-            "The researcher decides, by chance, which treatment each subject receives.",
-            "A study in which the researcher assigns the treatments is an experiment.",
-          ]
-        : [
-            "The groups already existed, or the subjects chose them; the researcher assigned nothing.",
-            "A study that only records existing groups is observational.",
-          ],
+      explanation: [
+        "Studies come in two kinds. In an experiment, the researcher assigns each subject a treatment, the thing being tested. In an observational study, the researcher only records what happens.",
+        ...(m.exp
+          ? [
+              "Here the researcher decides, by chance, which treatment each subject receives.",
+              "Assigning by chance makes the groups alike on average, so a difference in results can be traced to the treatment.",
+              "So this study is an experiment.",
+            ]
+          : [
+              "Here the groups already existed, or the subjects chose them. The researcher assigned nothing.",
+              "Without assignment, the groups may differ in other ways, so a difference cannot be traced to one cause.",
+              "So this study is observational.",
+            ]),
+      ],
     });
   },
 });
@@ -195,10 +200,11 @@ export const quarticFactoredForm = chainFamily({
       options,
       hint: `Take out the common factor of ${c} and ${c * k ** 4} first, then notice that $x^4$ is $(x^2)^2$ and ${k ** 4} is ${k * k} squared.`,
       explanation: [
-        `Factor out ${c}: $${expr} = ${c}(x^4 - ${k ** 4})$.`,
-        `Difference of squares: $x^4 - ${k ** 4} = (x^2 - ${k * k})(x^2 + ${k * k})$.`,
-        `Factor $x^2 - ${k * k} = (x - ${k})(x + ${k})$. The sum $x^2 + ${k * k}$ does not factor over the integers.`,
-        `$${expr} = ${prod(c, [bin(-k), bin(k), sumK])}$.`,
+        `Factoring means rewriting as a product, things multiplied. First take out ${c}, the largest number that divides both terms: $${expr} = ${c}(x^4 - ${k ** 4})$.`,
+        `A difference of squares, one square minus another, factors as $a^2 - b^2 = (a - b)(a + b)$. Here $x^4 = (x^2)^2$ and $${k ** 4} = ${k * k}^2$.`,
+        `So $x^4 - ${k ** 4} = (x^2 - ${k * k})(x^2 + ${k * k})$.`,
+        `$x^2 - ${k * k}$ is again a difference of squares: $(x - ${k})(x + ${k})$. The sum $x^2 + ${k * k}$ does not factor with whole numbers.`,
+        `The fully factored form is $${expr} = ${prod(c, [bin(-k), bin(k), sumK])}$.`,
       ],
     });
   },
@@ -250,8 +256,11 @@ export const cubicQuotientFactored = chainFamily({
       options,
       hint: `Divide $${polyTex(num)}$ by $${lin}$ using long division or by checking that $${lin}$ is a factor, then factor the quadratic quotient.`,
       explanation: [
-        `Dividing the cubic by $${lin}$ leaves the quadratic quotient $${polyTex(quad)}$.`,
-        `Factor the quotient: $${polyTex(quad)} = ${bin(-p)}${bin(-q)}$, because ${p} and ${q} multiply to ${p * q} and add to ${p + q}.`,
+        `A cubic has $x^3$ as its highest power. Dividing it by $${lin}$ means finding what $${lin}$ must be multiplied by to give it.`,
+        `Long division gives the quotient, the result of dividing: $${polyTex(quad)}$, with remainder 0. So $${lin}$ is a factor.`,
+        `To factor $x^2 + bx + c$, find two numbers that multiply to $c$ and add to $b$, the number multiplying $x$.`,
+        `${-p} and ${-q} multiply to ${p * q} and add to ${-(p + q)}, so $${polyTex(quad)} = ${bin(-p)}${bin(-q)}$.`,
+        `The quotient in factored form is $${bin(-p)}${bin(-q)}$.`,
       ],
     });
   },
@@ -357,10 +366,21 @@ export const completeSquareFirstSteps = chainFamily({
       label: "Choose the statement",
       options,
       hint: `For each step, compare it with $${polyTex([a, b, c])} = 0$: did the same operation happen to every term, and did the constant ${c} change sign when it moved? Test the steps one at a time.`,
-      explanation: steps.map(
-        (s, i) =>
-          `Step ${roman[i]} is ${s.valid ? "correct" : "not correct"}: ${s.reason}.`,
-      ),
+      explanation: [
+        "A correct step does the same thing to both sides, so the new equation has exactly the same solutions.",
+        ...steps.map(
+          (s, i) =>
+            `Step ${roman[i]} is ${s.valid ? "correct" : "not correct"}: ${s.reason}.`,
+        ),
+        `So the correct steps are ${
+          steps.some((s) => s.valid)
+            ? steps
+                .map((s, i) => (s.valid ? `Step ${roman[i]}` : ""))
+                .filter(Boolean)
+                .join(" and ")
+            : "none of them"
+        }.`,
+      ],
     });
   },
 });
@@ -417,7 +437,9 @@ export const exponentialPointsStatement = chainFamily({
       options,
       hint: `Compare the $y$-values at equal spacing: ${A}, ${2 * A} and ${4 * A}, at $x = 0, ${T}, ${2 * T}$. Find the factor by which the value is multiplied each time $x$ increases by ${T}.`,
       explanation: [
+        `An exponential model multiplies by the same factor over equal steps of $x$. So compare the points ${T} apart.`,
         `From $(0, ${A})$ to $(${T}, ${2 * A})$ the value is multiplied by 2, and from $(${T}, ${2 * A})$ to $(${2 * T}, ${4 * A})$ it is multiplied by 2 again.`,
+        `The value at $x = 0$, ${A}, is the starting amount. The exponent $x/${T}$ counts how many ${T}-unit steps have passed.`,
         `So the value doubles every ${T} units, and the model is $y = ${A}\\cdot 2^{x/${T}}$.`,
       ],
     });
@@ -509,7 +531,8 @@ export const rationalAbsCount = chainFamily({
       explanation: [
         `The absolute value splits into $x \\ge ${p}$ and $x < ${p}$. In each case, multiply both sides by $${xs(-h)}$ to get a quadratic.`,
         `Solve each quadratic and keep only the roots that satisfy the case's condition and are not ${h}.`,
-        `The solutions are the points where the graphs meet. There ${count === 1 ? "is" : "are"} ${count}.`,
+        `Each solution is an $x$ where the two graphs meet, so the count matches the crossing points in the picture.`,
+        `The equation has ${count} solution${count === 1 ? "" : "s"}.`,
       ],
     });
     return (

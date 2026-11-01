@@ -116,7 +116,7 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
   "quadratic-real-solution-count": {
     goal: "Find how many different real-number solutions the quadratic equation has, without solving it.",
     intuition:
-      "Squaring means multiplying a number by itself. In $2x^2 + 3x - 5 = 0$, $x^2$ is $x$ squared, $x$ times $x$. An equation like this, with an $x^2$ part and nothing like $x^3$, is called a quadratic. Its coefficients are the numbers that multiply each part: $a = 2$ multiplies $x^2$, $b = 3$ multiplies $x$, and $c = -5$ stands alone. Square the middle number. Then subtract 4 times the first and last numbers multiplied together: $3^2 - 4 \\times 2 \\times (-5) = 9 + 40 = 49$. This number, $b^2 - 4ac$, is called the discriminant. Its sign tells how many different solutions there are on the number line. A solution, also called a root, is a value that makes the equation true. There are two if the discriminant is positive, one if it is 0, and none if it is negative. A root that comes from equal factors, the parts being multiplied, is called a repeated root.",
+      "Squaring means multiplying a number by itself. In $2x^2 + 3x - 5 = 0$, $x^2$ means $x$ times $x$. An equation like this, with an $x^2$ part and nothing like $x^3$, is called a quadratic. Its coefficients are the numbers that multiply each part: $a = 2$ multiplies $x^2$, $b = 3$ multiplies $x$, and $c = -5$ stands alone. Square the middle number. Then subtract 4 times the first and last numbers multiplied together: $3^2 - 4 \\times 2 \\times (-5) = 9 + 40 = 49$. This number, $b^2 - 4ac$, is called the discriminant. Its sign tells how many different solutions there are on the number line. A solution, also called a root, is a value that makes the equation true. There are two if the discriminant is positive, one if it is 0, and none if it is negative. A root that comes from equal factors, the parts being multiplied, is called a repeated root.",
     terms: [
       "discriminant",
       [
@@ -141,6 +141,8 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
       "right side": "side-of-equation",
     },
     noLink: [
+      "square",
+      "squared",
       "part",
       "parts",
       "change",
