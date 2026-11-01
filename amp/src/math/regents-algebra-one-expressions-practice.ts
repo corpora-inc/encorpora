@@ -141,6 +141,8 @@ export const rateUnitChain = chainFamily({
       ],
       hint: `The chain starts at ${m.rate} ${L.big[1]} per ${T.big[0]} and uses the factors ${L.factor} and ${T.factor}. Cross out matching units, one top against one bottom: the ${L.big[1]} and the ${T.big[0]} each appear once in a numerator and once in a denominator. See which two units are left.`,
       explanation: [
+        `Each conversion factor is a fraction equal to 1, such as 1 hour over 60 minutes. Multiplying by it changes the units but not the amount.`,
+        `A unit that appears once on top and once underneath cancels, just as a number divided by itself is 1.`,
         `The starting rate has ${L.big[1]} on top and ${T.big[0]} underneath.`,
         `The length factor has ${L.small[1]} on top and ${L.big[0]} underneath, so ${L.big[1]} cancel and ${L.small[1]} remain on top.`,
         `The time factor has ${T.big[0]} on top and ${T.small[1]} underneath, so the ${T.big[1]} cancel and ${T.small[1]} remain underneath.`,
@@ -194,9 +196,10 @@ export const negativeMonomialPower = chainFamily({
       ],
       hint: `Everything inside the parentheses is raised to the power ${m.k}: the sign, the number ${m.c} and $${v}^{${m.m}}$. Decide the sign from the power, then raise ${m.c} to the power and multiply the exponents.`,
       explanation: [
+        `An exponent, the small raised number, counts repeated multiplication. A power outside brackets applies to every factor inside: the sign, the number and the variable.`,
         `Raise each factor to the power ${m.k}: $(-${m.c})^{${m.k}}\\cdot(${v}^{${m.m}})^{${m.k}}$.`,
-        `$(-${m.c})^{${m.k}}=${sign * coef}$, because ${m.k} is ${m.k % 2 ? "odd" : "even"} and so the sign is ${sign < 0 ? "negative" : "positive"}.`,
-        `$(${v}^{${m.m}})^{${m.k}}=${v}^{${m.m * m.k}}$.`,
+        `A negative number multiplied by itself an ${m.k % 2 ? "odd" : "even"} number of times is ${sign < 0 ? "negative" : "positive"}, because the minus signs ${m.k % 2 ? "leave one unpaired" : "cancel in pairs"}. So $(-${m.c})^{${m.k}}=${sign * coef}$.`,
+        `A power of a power multiplies the exponents: ${m.k} groups of ${m.m} factors of $${v}$ make ${m.m * m.k}. So $(${v}^{${m.m}})^{${m.k}}=${v}^{${m.m * m.k}}$.`,
         `The result is $${term(sign * coef, m.m * m.k)}$.`,
       ],
     });
@@ -261,11 +264,14 @@ export const combineUnlikeRadicals = chainFamily({
       ],
       hint: `Look for a perfect square factor in ${m.p * m.s * m.s}: simplify $${rad(m.p * m.s * m.s)}$ so it has the same radicand as another term, then add only the like radicals.`,
       explanation: [
+        `Square roots can be added only when the numbers under the root, the radicands, are the same. Then add the numbers in front, like adding $3x + 2x$.`,
+        `${m.p * m.s * m.s} has a perfect square factor: ${m.p * m.s * m.s} = ${m.s * m.s} × ${m.p}. A square root of a product splits into a product of roots.`,
         m.c === 1
-          ? `Simplify: $${rad(m.p * m.s * m.s)} = ${m.s}${rad(m.p)}$.`
-          : `Simplify: $${rad(m.p * m.s * m.s)} = ${m.s}${rad(m.p)}$, so $${third} = ${m.c * m.s}${rad(m.p)}$.`,
-        `The like radicals are $${first}$ and $${m.c * m.s}${rad(m.p)}$. Add the coefficients: ${m.a} + ${m.c * m.s} = ${like}.`,
-        `The radical $${mid}$ is different, so it stays as a separate term: $${label(like, m.p, m.b, m.q).slice(1, -1)}$.`,
+          ? `So $${rad(m.p * m.s * m.s)} = ${rad(m.s * m.s)}\\cdot${rad(m.p)} = ${m.s}${rad(m.p)}$.`
+          : `So $${rad(m.p * m.s * m.s)} = ${rad(m.s * m.s)}\\cdot${rad(m.p)} = ${m.s}${rad(m.p)}$, and $${third} = ${m.c * m.s}${rad(m.p)}$.`,
+        `Now $${first}$ and $${m.c * m.s}${rad(m.p)}$ have the same radicand. Add the numbers in front: ${m.a} + ${m.c * m.s} = ${like}.`,
+        `The term $${mid}$ has a different radicand, so it stays separate.`,
+        `The simplified sum is $${label(like, m.p, m.b, m.q).slice(1, -1)}$.`,
       ],
     });
   },
@@ -322,11 +328,14 @@ export const completeSquareEquation = chainFamily({
       ],
       hint: `Half of the middle coefficient ${b} is ${m.h}, and its square is ${m.h * m.h}. ${ax.form === "zero-form" ? `Move the constant ${m.c} to the right side first` : `The constant ${-m.c} is already on the right side`}, then add ${m.h * m.h} to both sides.`,
       explanation: [
+        `Completing the square rewrites the $x$ terms as one squared bracket, $(x + h)^2$. That works because $(x + h)^2 = x^2 + 2hx + h^2$.`,
         ax.form === "zero-form"
-          ? `Move the constant: $${quad(1, b, 0)} = ${-m.c}$.`
-          : `The constant is already on the right: $${quad(1, b, 0)} = ${-m.c}$.`,
-        `Half of ${b} is ${m.h}, and $${m.h}^2 = ${m.h * m.h}$. Add ${m.h * m.h} to both sides: $${quad(1, b, m.h * m.h)} = ${-m.c + m.h * m.h}$.`,
-        `The left side is a perfect square: $(x ${sgn(m.h)} ${Math.abs(m.h)})^2 = ${rhs}$.`,
+          ? `First move the plain number to the right side, so the $x$ terms stand alone: $${quad(1, b, 0)} = ${-m.c}$.`
+          : `The plain number is already on the right side: $${quad(1, b, 0)} = ${-m.c}$.`,
+        `Match $${b}x$ with $2hx$: half of ${b} is ${m.h}. The missing piece is $h^2 = ${m.h}^2 = ${m.h * m.h}$.`,
+        `Add ${m.h * m.h} to both sides to keep them equal: $${quad(1, b, m.h * m.h)} = ${-m.c + m.h * m.h}$.`,
+        `The left side is now a perfect square, a bracket times itself.`,
+        `The equation becomes $(x ${sgn(m.h)} ${Math.abs(m.h)})^2 = ${rhs}$.`,
       ],
     });
   },
@@ -406,8 +415,13 @@ export const completeSquareStepProperty = chainFamily({
       ],
       hint,
       explanation: [
+        `A property of equality is a rule for changing both sides of an equation so it stays true. Compare the equation before and after the step.`,
         explain,
-        `This is the ${correct}: doing the same thing to both sides keeps the equation balanced.`,
+        correct === "addition property of equality"
+          ? `The addition property of equality says adding the same number to both sides keeps them equal. Subtracting counts too, as adding a negative.`
+          : `The multiplication property of equality says multiplying both sides by the same nonzero number keeps them equal. Dividing counts too, as multiplying by a fraction.`,
+        `Doing the same thing to both sides keeps the equation balanced, like equal weights on a scale.`,
+        `The reason for this step is the ${correct}.`,
       ],
     });
   },
@@ -522,9 +536,11 @@ export const polynomialStructure = chainFamily({
           ? `The terms are not in order. Look for the term with exponent ${m.d}: its coefficient must be ${m.lead}. Then find the term with no $x$, which must be ${m.c}.`
           : `The terms are not in order. Look for the largest exponent, which must be ${m.d}, and the term with no $x$, which must be ${m.c}.`,
       explanation: [
-        `Find the term with the highest exponent: $x^{${m.d}}$ has coefficient ${m.lead}, so the degree is ${m.d} and the leading coefficient is ${m.lead}.`,
-        `The term with no $x$ is the constant term, ${m.c}.`,
-        `The polynomial is ${polyText(base)}.`,
+        `A polynomial is a sum of terms, each a number times a whole-number power of $x$. The number multiplying a term is its coefficient.`,
+        `The degree is the highest exponent of $x$. The leading coefficient is the number multiplying that highest power.`,
+        `Here the highest power is $x^{${m.d}}$ with coefficient ${m.lead}. So the degree is ${m.d} and the leading coefficient is ${m.lead}.`,
+        `The constant term is the term with no $x$ at all. It must be ${m.c}.`,
+        `The polynomial with these features is ${polyText(base)}.`,
       ],
     });
   },
