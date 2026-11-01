@@ -100,13 +100,8 @@
   "balanced-addition": {
     "side": 2
   },
-  "bar-chart-difference": {
-    "difference": 2,
-    "scale": 3
-  },
   "bar-chart-total": {
-    "more than": 1,
-    "scale": 13
+    "more than": 1
   },
   "benchmark-fraction-estimate": {
     "changes": 1,
@@ -158,9 +153,6 @@
     "one quarter": 16,
     "parts": 16,
     "quarter": 2,
-    "quarters": 16,
-    "range": 3,
-    "scale": 4,
     "third": 1
   },
   "budget-category-balance": {
@@ -175,10 +167,7 @@
   },
   "budget-percent-share": {
     "change": 1,
-    "more than": 10,
-    "part": 12,
-    "parts": 1,
-    "whole": 15
+    "more than": 10
   },
   "cancelled-linear-inequality": {
     "sides": 61,
@@ -225,9 +214,7 @@
     "change": 3,
     "degrees": 7,
     "part": 3,
-    "parts": 1,
-    "quarter": 1,
-    "whole": 19
+    "quarter": 1
   },
   "classify-real-number": {
     "cube": 2,
@@ -583,7 +570,6 @@
     "edge": 5
   },
   "data-list-for-display": {
-    "range": 19,
     "ranges": 12,
     "sort": 10
   },
@@ -715,26 +701,23 @@
     "average": 1
   },
   "dot-plot-mad": {
-    "average": 7,
     "differences": 1,
-    "mean": 50
+    "mean": 34
   },
   "dot-plot-mean": {
-    "balance": 2,
-    "mean": 3
+    "balance": 1
   },
   "dot-plot-statement-select": {
     "more than": 12
   },
   "double-box-compare": {
     "center": 1,
-    "centers": 7,
+    "centers": 2,
     "scale": 2
   },
   "double-number-line-missing": {
     "change": 1,
     "factor": 1,
-    "scale": 19,
     "unit": 1
   },
   "early-money-decisions": {
@@ -773,10 +756,7 @@
     "opposite": 7
   },
   "equation-solution-count": {
-    "mean": 1,
-    "side": 1,
-    "sides": 38,
-    "terms": 3
+    "side": 1
   },
   "equivalent-denominator": {
     "changes": 1,
@@ -787,7 +767,6 @@
     "multiples": 3,
     "part": 1,
     "product": 1,
-    "term": 17,
     "terms": 8
   },
   "equivalent-expressions-table": {
@@ -983,7 +962,6 @@
   "fraction-equivalence-choice": {
     "factor": 10,
     "part": 15,
-    "scale": 15,
     "whole": 35
   },
   "fraction-forms-blanks": {
@@ -992,8 +970,6 @@
   },
   "fraction-line-plot": {
     "fourth": 1,
-    "leaf": 8,
-    "leaves": 1,
     "one fourth": 1,
     "unit": 1
   },
@@ -1005,12 +981,9 @@
     "whole": 3
   },
   "fraction-of-set": {
-    "part": 4,
     "whole": 1
   },
   "fraction-plot-difference": {
-    "eighths": 6,
-    "fourths": 4,
     "parts": 4
   },
   "fraction-plot-equal-share": {
@@ -1052,15 +1025,12 @@
     "units": 1
   },
   "frequency-table-build": {
-    "interval": 32,
+    "interval": 23,
     "intervals": 3,
     "range": 5
   },
   "gcf-factor-sum": {
     "leaves": 1
-  },
-  "graph-equation-choice": {
-    "rule": 12
   },
   "graph-linear-equation": {
     "changes": 1,
@@ -1089,7 +1059,7 @@
     "units": 1
   },
   "graphed-line-slope": {
-    "change": 42
+    "change": 33
   },
   "greater-numeral": {
     "more than": 1
@@ -1123,10 +1093,7 @@
     "square": 21
   },
   "histogram-read": {
-    "edge": 2,
-    "interval": 4,
-    "intervals": 1,
-    "scale": 3
+    "edge": 2
   },
   "hundred-chart-missing": {
     "part": 1
@@ -1182,7 +1149,6 @@
     "square": 3
   },
   "interest-table-type": {
-    "balance": 33,
     "balances": 3,
     "changes": 7,
     "differences": 2
@@ -7403,20 +7369,14 @@
     "change": 28
   },
   "line-graph-reader": {
-    "change": 8,
     "changes": 7,
     "degrees": 1,
-    "more than": 2,
-    "scale": 26
+    "more than": 2
   },
   "line-pair-select": {
     "edge": 1,
     "opposite": 1,
     "quarter": 6
-  },
-  "line-plot-whole": {
-    "leaf": 4,
-    "leaves": 1
   },
   "linear-function-choice": {
     "changes": 76,
@@ -7590,13 +7550,9 @@
     "sorting": 1,
     "third": 1
   },
-  "mean-missing-value": {
-    "mean": 22
-  },
   "means-in-mads": {
-    "centers": 9,
-    "difference": 2,
-    "mean": 6
+    "centers": 1,
+    "difference": 2
   },
   "measurable-attribute-choice": {
     "third": 1,
@@ -7606,8 +7562,8 @@
     "center": 1,
     "difference": 14,
     "mean": 8,
-    "mode": 14,
-    "range": 12
+    "mode": 11,
+    "range": 11
   },
   "measure-with-units": {
     "units": 5
@@ -7666,7 +7622,6 @@
     "units": 1
   },
   "mode-of-data": {
-    "mode": 34,
     "modes": 1,
     "more than": 9
   },
@@ -7791,9 +7746,8 @@
     "more than": 1
   },
   "number-line-distance": {
-    "sides": 7,
-    "unit": 16,
-    "units": 14
+    "unit": 14,
+    "units": 6
   },
   "number-line-hops": {
     "units": 1
@@ -7914,7 +7868,6 @@
     "part": 2
   },
   "percent-chain": {
-    "change": 16,
     "changes": 4,
     "factor": 9,
     "factors": 6,
@@ -7931,7 +7884,6 @@
     "leaves": 2
   },
   "percent-change-rate": {
-    "base": 40,
     "change": 101,
     "difference": 1
   },
@@ -7942,8 +7894,6 @@
   },
   "percent-grid-model": {
     "part": 14,
-    "square": 1,
-    "squares": 32,
     "whole": 2
   },
   "pi-as-ratio": {
@@ -7952,7 +7902,6 @@
     "scales": 1
   },
   "picture-graph-questions": {
-    "difference": 16,
     "leaves": 1
   },
   "place-transformed-image": {
@@ -8116,7 +8065,6 @@
   },
   "range-data": {
     "opposite": 1,
-    "range": 17,
     "unit": 1
   },
   "ratio-missing": {
@@ -8128,9 +8076,6 @@
     "part": 55,
     "parts": 58,
     "whole": 19
-  },
-  "ratio-table-missing": {
-    "part": 1
   },
   "rational-area-volume-equation": {
     "base": 23,
@@ -8343,8 +8288,7 @@
     "squares": 3
   },
   "scaled-picture-graph": {
-    "key": 21,
-    "whole": 18
+    "key": 21
   },
   "scaling-direction-choice": {
     "change": 2,
@@ -8434,9 +8378,6 @@
     "multiple": 1,
     "vertex": 2
   },
-  "situation-pair-table": {
-    "rule": 10
-  },
   "skip-count-missing": {
     "difference": 1
   },
@@ -8501,14 +8442,11 @@
     "roots": 1
   },
   "sort-shapes-count": {
-    "sort": 19,
     "sorting": 2,
-    "square": 5,
-    "squares": 20,
+    "squares": 19,
     "whole": 1
   },
   "sort-shapes-most": {
-    "sort": 4,
     "sorting": 1,
     "square": 1,
     "squares": 22
@@ -8558,9 +8496,6 @@
     "units": 1
   },
   "staar-nested-grouping": {
-    "difference": 25,
-    "part": 1,
-    "product": 17,
     "whole": 1
   },
   "staar-number-sets": {
@@ -8671,7 +8606,6 @@
     "mean": 5,
     "mode": 6,
     "more than": 10,
-    "range": 7,
     "stem": 45
   },
   "story-equation-choice": {
@@ -8810,7 +8744,6 @@
   },
   "tax-bracket-owed": {
     "increasing": 1,
-    "part": 16,
     "whole": 4
   },
   "ten-frame-complement": {
@@ -8866,7 +8799,6 @@
   },
   "trend-line-predict": {
     "change": 42,
-    "changes": 20,
     "opposite": 1
   },
   "trend-slope-meaning": {
@@ -8942,9 +8874,6 @@
     "combination": 1,
     "eighth": 9,
     "sorts": 1
-  },
-  "two-way-row-percent": {
-    "eighth": 5
   },
   "typical-value-choice": {
     "jump": 4,
