@@ -225,6 +225,7 @@ test("new workbooks are for today; stored ones of any date stay available", asyn
     { date: today, minutes: 40, paper: "letter" },
     { date: today, minutes: 45, paper: "legal" },
     { date: "2026-02-30", minutes: 45, paper: "letter" },
+    { date: "0000-01-01", minutes: 45, paper: "letter" },
     { date: today, minutes: 45, paper: "letter", number: 0 },
     { date: today, minutes: 45, paper: "letter", extra: true },
   ]) {
@@ -299,4 +300,29 @@ test("the printable document reprints the stored workbook", async () => {
     headers,
   });
   assert.equal(missing.statusCode, 404);
+});
+
+test("a workbook whose templates changed version is not reprinted as if unchanged", async () => {
+  const { repository, rows } = memoryRepository();
+  const server = app(repository);
+  const made = (
+    await server.inject({
+      method: "POST",
+      url,
+      headers,
+      payload: { date: today, minutes: 30, paper: "letter" },
+    })
+  ).json();
+  rows[0]!.spec.sections[0]!.items[0]!.templateVersion -= 1;
+  const document = await server.inject({
+    url: `${url}/${made.id}/document`,
+    headers,
+  });
+  assert.equal(document.statusCode, 410);
+  assert.match(document.json().error, /Make today's workbook/);
+  const history = await server.inject({
+    url: `${url}?date=0000-01-01`,
+    headers,
+  });
+  assert.equal(history.statusCode, 400);
 });

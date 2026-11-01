@@ -1,6 +1,6 @@
 # Daily workbooks
 
-A daily workbook is a printable PDF of about 30, 45 or 60 minutes of work, chosen for one learner from their practice evidence. Each workbook is new and they never run out. The layout and structure are the same at every level; only the problems change. Issue [#1776](https://github.com/corpora-inc/encorpora/issues/1776) tracks the feature. Parent entry points stay off until release: `workbooksEnabled` in `src/web/features/workbooks/config.ts` is the one switch. The routes work by URL either way.
+A daily workbook is a printable document of about 30, 45 or 60 minutes of work, chosen for one learner from their practice evidence. Each workbook is new and they never run out. The layout and structure are the same at every level; only the problems change. Issue [#1776](https://github.com/corpora-inc/encorpora/issues/1776) tracks the feature. Parent entry points stay off until release: `workbooksEnabled` in `src/web/features/workbooks/config.ts` is the one switch. The routes work by URL either way.
 
 ## Structure
 
@@ -34,7 +34,7 @@ The routes (`src/workbook/routes.ts`) require the learner's parent with consent 
 | --- | --- |
 | `POST /api/v1/learners/:id/workbooks` `{date, minutes: 30\|45\|60, paper: letter\|a4, number?}` | The workbook for that date, number and length: stored the first time (201), returned unchanged afterwards (200). No `number` means the next number for the date ("Another one"). A new workbook is for today (within a day of the server's UTC date); stored ones of any date stay available. A changed paper size is saved; the problems are not |
 | `GET /api/v1/learners/:id/workbooks[?date=]` | History, newest first, as summaries (sections, problem counts, estimated minutes, code) |
-| `GET /api/v1/learners/:id/workbooks/:workbookId/document[?paper=]` | The printable workbook as one HTML document |
+| `GET /api/v1/learners/:id/workbooks/:workbookId/document[?paper=]` | The printable workbook as one HTML document. 410 when a template has changed version since the workbook was made, because its problems would no longer reprint exactly |
 
 A stored spec never changes when evidence changes later; the next number is composed from the new evidence. `workbookCode` hashes the spec with sorted keys, because JSONB storage reorders them.
 

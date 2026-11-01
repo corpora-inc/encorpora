@@ -119,6 +119,9 @@ function Today({
     }),
     enabled: number !== undefined,
     placeholderData: keepPreviousData,
+    // A stored workbook never changes; there is nothing to refetch.
+    staleTime: Infinity,
+    refetchOnWindowFocus: false,
   });
   const current = workbook.isPlaceholderData ? undefined : workbook.data;
   // A workbook made here joins the day's history.
@@ -126,12 +129,14 @@ function Today({
     if (
       current &&
       history.data &&
-      !history.data.workbooks.some((w) => w.id === current.id)
+      !history.data.workbooks.some(
+        (w) => w.id === current.id && w.paper === current.paper,
+      )
     )
       void client.invalidateQueries({
         queryKey: [...workbooksKey(session, learner.id), "history"],
       });
-  }, [current?.id, history.data]);
+  }, [current?.id, current?.paper, history.data]);
   const [message, setMessage] = useState("");
   const [downloading, setDownloading] = useState(false);
   const another = useMutation({

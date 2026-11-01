@@ -26,6 +26,16 @@ import {
 import { workbookHtml } from "./render.js";
 
 const DAY = 86_400_000;
+const templateVersion = new Map(templates.map((t) => [t.id, t.version]));
+/** Problems regenerate from template and seed, so a workbook reprints
+ * exactly only while every template is still at the version it named. */
+export function workbookIsCurrent(spec: WorkbookRecord["spec"]): boolean {
+  return spec.sections.every((s) =>
+    s.items.every(
+      (i) => templateVersion.get(i.templateId) === i.templateVersion,
+    ),
+  );
+}
 const skillTitle = (id: string) => skills.find((s) => s.id === id)?.title ?? id;
 const lessonTitle = new Map(lessons.map((l) => [l.id, l.title]));
 
@@ -129,46 +139,52 @@ export function registerWorkbookRoutes(
     const { learnerId } = learnerParams.parse(request.params);
     const input = workbookRequestSchema.parse(request.body);
     const at = now();
-    return options.repository.transaction(accountId, learnerId, async (tx) => {
-      await access(tx);
-      const sameDay = await tx.workbooks(input.date);
-      const number =
-        input.number ?? Math.max(0, ...sameDay.map((w) => w.number)) + 1;
-      if (number > 999)
-        throw new ApiError(409, "This day already has 999 workbooks");
-      const existing = sameDay.find(
-        (w) => w.number === number && w.minutes === input.minutes,
-      );
-      if (existing) {
-        if (existing.paper !== input.paper) {
-          await tx.setWorkbookPaper(existing.id, input.paper);
-          existing.paper = input.paper;
-        }
-        return reply.code(200).send(workbookSummary(existing));
-      }
-      if (!composableDate(input.date, at))
-        throw new ApiError(
-          400,
-          "Workbooks can be made for today only. Open today's workbook instead.",
+    const result = await options.repository.transaction(
+      accountId,
+      learnerId,
+      async (tx) => {
+        await access(tx);
+        const sameDay = await tx.workbooks(input.date);
+        const number =
+          input.number ?? Math.max(0, ...sameDay.map((w) => w.number)) + 1;
+        if (number > 999)
+          throw new ApiError(409, "This day already has 999 workbooks");
+        const existing = sameDay.find(
+          (w) => w.number === number && w.minutes === input.minutes,
         );
-      const spec = await compose(
-        tx,
-        learnerId,
-        { date: input.date, minutes: input.minutes, number },
-        at,
-      );
-      const saved = await tx.saveWorkbook({
-        id: randomUUID(),
-        date: input.date,
-        number,
-        minutes: input.minutes,
-        paper: input.paper,
-        spec,
-        code: workbookCode(spec),
-        createdAt: new Date(at).toISOString(),
-      });
-      return reply.code(201).send(workbookSummary(saved));
-    });
+        if (existing) {
+          if (existing.paper !== input.paper) {
+            await tx.setWorkbookPaper(existing.id, input.paper);
+            existing.paper = input.paper;
+          }
+          return { status: 200, body: workbookSummary(existing) };
+        }
+        if (!composableDate(input.date, at))
+          throw new ApiError(
+            400,
+            "Workbooks can be made for today only. Open today's workbook instead.",
+          );
+        const spec = await compose(
+          tx,
+          learnerId,
+          { date: input.date, minutes: input.minutes, number },
+          at,
+        );
+        const saved = await tx.saveWorkbook({
+          id: randomUUID(),
+          date: input.date,
+          number,
+          minutes: input.minutes,
+          paper: input.paper,
+          spec,
+          code: workbookCode(spec),
+          createdAt: new Date(at).toISOString(),
+        });
+        return { status: 201, body: workbookSummary(saved) };
+      },
+    );
+    // Answer only after the transaction commits.
+    return reply.code(result.status).send(result.body);
   });
 
   /** The printable workbook as one self-contained HTML document. */
@@ -194,6 +210,11 @@ export function registerWorkbookRoutes(
           return found;
         },
       );
+      if (!workbookIsCurrent(record.spec))
+        throw new ApiError(
+          410,
+          "Some problems in this workbook have been updated since it was made. Make today's workbook instead.",
+        );
       const html = workbookHtml(record.spec, {
         lessons,
         skillTitle,

@@ -11,6 +11,8 @@ export const workbookDateSchema = z
   .refine((value) => {
     const parsed = new Date(`${value}T00:00:00Z`);
     return (
+      value >= "2000-01-01" &&
+      value <= "2100-12-31" &&
       !Number.isNaN(parsed.getTime()) &&
       parsed.toISOString().slice(0, 10) === value
     );

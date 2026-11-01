@@ -844,7 +844,8 @@ export class PgTransaction implements LearnerTransaction {
     const result = await this.db.query(
       `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
         AND ($2::date IS NULL OR workbook_date=$2::date)
-        ORDER BY workbook_date DESC,number DESC,minutes LIMIT 400`,
+        ORDER BY workbook_date DESC,number DESC,minutes
+        LIMIT CASE WHEN $2::date IS NULL THEN 400 END`,
       [this.learnerId, date ?? null],
     );
     return result.rows.map(workbookRow);
