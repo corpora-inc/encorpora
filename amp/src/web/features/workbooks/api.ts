@@ -3,6 +3,8 @@ import type { AuthSession } from "../../auth";
 import { request } from "../../lib/api";
 import { AppError } from "../../lib/AppError";
 import {
+  workbookResultsSchema,
+  type WorkbookResultEntry,
   workbookHistorySchema,
   workbookSummarySchema,
   type WorkbookPaper,
@@ -133,4 +135,46 @@ export async function downloadWorkbook(
   link.click();
   link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+export const workbookResultsOptions = (
+  session: AuthSession,
+  learnerId: string,
+  workbookId: string,
+) =>
+  queryOptions({
+    queryKey: [...workbooksKey(session, learnerId), "results", workbookId],
+    queryFn: ({ signal }) =>
+      request(
+        `${workbookPath(learnerId)}/${encodeURIComponent(workbookId)}/results`,
+        workbookResultsSchema,
+        { token: session.token, signal },
+      ),
+  });
+
+export function saveWorkbookResults(
+  session: AuthSession,
+  learnerId: string,
+  workbookId: string,
+  entries: WorkbookResultEntry[],
+) {
+  return request(
+    `${workbookPath(learnerId)}/${encodeURIComponent(workbookId)}/results`,
+    workbookResultsSchema,
+    { token: session.token, body: { entries } },
+  );
+}
+
+/** The stored workbook printed with this code, or null. */
+export async function workbookByCode(
+  session: AuthSession,
+  learnerId: string,
+  code: string,
+) {
+  const found = await request(
+    `${workbookPath(learnerId)}?code=${encodeURIComponent(code)}`,
+    workbookHistorySchema,
+    { token: session.token },
+  );
+  return found.workbooks[0] ?? null;
 }
