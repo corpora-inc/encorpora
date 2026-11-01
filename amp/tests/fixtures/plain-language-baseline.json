@@ -1984,7 +1984,6 @@
     },
     "lesson:coordinate-reading": {
       "terms": [
-        "corresponding",
         "ordered-pair"
       ],
       "long": []
@@ -3350,11 +3349,7 @@
     "lesson:graph-absolute-value-points": {
       "terms": [
         "absolute-value",
-        "ray",
-        "reflection",
-        "slope",
-        "substitute",
-        "vertical-line"
+        "slope"
       ],
       "long": []
     },
@@ -3371,8 +3366,6 @@
     },
     "lesson:graph-exponential-points": {
       "terms": [
-        "exponential-function",
-        "input",
         "ratio",
         "whole-number"
       ],
@@ -3381,11 +3374,8 @@
     "lesson:graph-linear-equation": {
       "terms": [
         "coordinate",
-        "horizontal-line",
         "origin",
-        "point-slope-form",
-        "proportional-relationship",
-        "slope"
+        "proportional-relationship"
       ],
       "long": []
     },
@@ -3445,15 +3435,8 @@
     "lesson:graph-quadratic-points": {
       "terms": [
         "completing-the-square",
-        "constant",
-        "function",
-        "parabola",
         "parentheses",
-        "quadratic",
-        "substitute",
         "symmetry",
-        "turning-point",
-        "vertical-line",
         "whole-number"
       ],
       "long": []
@@ -3461,7 +3444,6 @@
     "lesson:graph-slope": {
       "terms": [
         "coordinate",
-        "ratio",
         "round",
         "slope"
       ],
@@ -4838,12 +4820,6 @@
       ],
       "long": []
     },
-    "lesson:number-line-separation": {
-      "terms": [
-        "absolute-value"
-      ],
-      "long": []
-    },
     "lesson:number-system-closure-classify": {
       "terms": [
         "contradiction",
@@ -5258,22 +5234,14 @@
     "lesson:piecewise-functions": {
       "terms": [
         "closed-circle",
-        "function",
-        "inequality",
-        "input",
         "open-circle",
-        "output",
-        "piecewise-function",
-        "ray",
-        "solution",
-        "substitute"
+        "piecewise-function"
       ],
       "long": []
     },
     "lesson:place-transformed-image": {
       "terms": [
         "coordinate",
-        "origin",
         "reflection",
         "rigid-motion",
         "rotation",
@@ -5301,9 +5269,7 @@
     },
     "lesson:plot-points": {
       "terms": [
-        "quadrant",
-        "real-number",
-        "reflection"
+        "real-number"
       ],
       "long": []
     },
@@ -6303,13 +6269,10 @@
     },
     "lesson:regents-both-sides-equations": {
       "terms": [
-        "constant",
         "decimal",
-        "division",
         "equivalent",
         "like-terms",
         "parentheses",
-        "solution",
         "variable"
       ],
       "long": []
@@ -6476,24 +6439,13 @@
     },
     "lesson:regents-factor-then-zeros": {
       "terms": [
-        "constant",
-        "difference-of-squares",
-        "factor-pair",
-        "monic",
-        "negative-number",
-        "real-number",
-        "square-root",
-        "trinomial",
-        "zero-product-property"
+        "negative-number"
       ],
       "long": []
     },
     "lesson:regents-function-missing-input": {
       "terms": [
-        "function",
-        "input",
-        "ordered-pair",
-        "output"
+        "ordered-pair"
       ],
       "long": []
     },
@@ -6799,15 +6751,9 @@
     },
     "lesson:regents-isolate-two-term-formula": {
       "terms": [
-        "coefficient",
-        "division",
-        "equivalent-equations",
         "expression",
         "height",
-        "isolate",
-        "multiplication",
-        "surface-area",
-        "variable"
+        "surface-area"
       ],
       "long": []
     },
@@ -6861,12 +6807,8 @@
     },
     "lesson:regents-parabola-axis-rule": {
       "terms": [
-        "axis-of-symmetry",
         "completing-the-square",
-        "constant",
         "coordinate",
-        "denominator",
-        "quadratic",
         "symmetry"
       ],
       "long": []
@@ -6893,7 +6835,6 @@
     },
     "lesson:regents-point-slope-two-points": {
       "terms": [
-        "coordinate",
         "point-slope-form",
         "slope"
       ],
@@ -6953,13 +6894,9 @@
     },
     "lesson:regents-radical-function-value": {
       "terms": [
-        "expression",
         "function",
-        "input",
         "parentheses",
-        "radicand",
-        "square-root",
-        "substitute"
+        "square-root"
       ],
       "long": []
     },
@@ -7058,21 +6995,9 @@
     },
     "lesson:regents-solve-quadratic-equations": {
       "terms": [
-        "coefficient",
         "completing-the-square",
-        "constant",
-        "denominator",
-        "discriminant",
-        "expression",
-        "input",
-        "integer",
         "irrational-number",
-        "numerator",
-        "output",
-        "quadratic",
-        "rational-number",
-        "trinomial",
-        "zero-product-property"
+        "quadratic"
       ],
       "long": []
     },
@@ -7099,11 +7024,7 @@
       "terms": [
         "distribute",
         "expression",
-        "isolate",
-        "multiplier",
-        "solution",
-        "substitute",
-        "variable"
+        "multiplier"
       ],
       "long": []
     },
@@ -7136,11 +7057,8 @@
     },
     "lesson:regents-total-and-cost-equation": {
       "terms": [
-        "expression",
         "solution",
-        "substitute",
-        "variable",
-        "whole-number"
+        "substitute"
       ],
       "long": []
     },
@@ -7507,9 +7425,7 @@
     },
     "lesson:sat-entry-fn-exponential": {
       "terms": [
-        "cube-root",
         "input",
-        "multiplication",
         "output",
         "square-root"
       ],
@@ -7517,24 +7433,10 @@
     },
     "lesson:sat-entry-fn-linear-notation": {
       "terms": [
-        "coefficient",
-        "constant",
         "decimal",
-        "denominator",
         "equivalent",
-        "input",
-        "output",
         "parentheses",
-        "rate",
-        "substitute"
-      ],
-      "long": []
-    },
-    "lesson:sat-entry-fn-related-value": {
-      "terms": [
-        "expression",
-        "multiplier",
-        "variable"
+        "rate"
       ],
       "long": []
     },
@@ -7674,27 +7576,20 @@
     "lesson:sat-fn-constraint-choice": {
       "terms": [
         "rate",
-        "speed",
-        "variable"
+        "speed"
       ],
       "long": []
     },
     "lesson:sat-fn-exponential-choice": {
       "terms": [
-        "common-ratio",
-        "exponent",
-        "exponential-decay",
         "function"
       ],
       "long": []
     },
     "lesson:sat-fn-line-equation-choice": {
       "terms": [
-        "constant",
-        "coordinate",
         "intercept",
-        "slope",
-        "substitute"
+        "slope"
       ],
       "long": []
     },
@@ -11525,15 +11420,10 @@
     },
     "practice:decimal-both-sides-equation": {
       "terms": [
-        "coefficient",
-        "constant",
         "decimal",
-        "equivalent-equations",
         "expression",
         "solution",
-        "substitute",
-        "tenth",
-        "variable"
+        "tenth"
       ],
       "long": []
     },
@@ -12355,12 +12245,10 @@
     },
     "practice:factor-large-trinomial": {
       "terms": [
-        "factor-pair",
         "integer",
         "leading-coefficient",
         "negative-number",
         "polynomial",
-        "trinomial",
         "whole-number"
       ],
       "long": []
@@ -13407,8 +13295,6 @@
         "absolute-value",
         "function",
         "parabola",
-        "ray",
-        "substitute",
         "turning-point"
       ],
       "long": []
@@ -13452,10 +13338,7 @@
     },
     "practice:graph-exponential-points": {
       "terms": [
-        "equivalent",
         "exponential-decay",
-        "exponential-function",
-        "function",
         "negative-exponent"
       ],
       "long": []
@@ -13472,11 +13355,9 @@
     },
     "practice:graph-linear-equation": {
       "terms": [
-        "point-slope-form",
         "proportional-relationship",
         "slope",
-        "solution",
-        "substitute"
+        "solution"
       ],
       "long": []
     },
@@ -13531,14 +13412,8 @@
     },
     "practice:graph-quadratic-points": {
       "terms": [
-        "constant",
         "coordinate",
-        "function",
-        "intercept",
-        "quadratic",
-        "substitute",
         "symmetry",
-        "turning-point",
         "vertical-line"
       ],
       "long": []
@@ -13625,13 +13500,9 @@
     "practice:grouped-both-sides-solve": {
       "terms": [
         "coefficient",
-        "constant",
-        "distributive-property",
         "like-terms",
         "parentheses",
-        "solution",
-        "substitute",
-        "variable"
+        "solution"
       ],
       "long": []
     },
@@ -14018,11 +13889,6 @@
     },
     "practice:isolate-two-term-formula": {
       "terms": [
-        "coefficient",
-        "division",
-        "equivalent-equations",
-        "inverse-operation",
-        "multiplication",
         "solution",
         "variable"
       ],
@@ -15471,11 +15337,7 @@
     },
     "practice:parabola-axis-rule": {
       "terms": [
-        "constant",
         "constant-term",
-        "denominator",
-        "leading-coefficient",
-        "parabola",
         "polynomial",
         "quadratic",
         "symmetry",
@@ -15766,8 +15628,7 @@
         "function",
         "input",
         "output",
-        "piecewise-function",
-        "substitute"
+        "piecewise-function"
       ],
       "long": []
     },
@@ -15786,7 +15647,6 @@
       "terms": [
         "coordinate",
         "dilation",
-        "quadrant",
         "reflection",
         "rigid-motion",
         "rotation",
@@ -15805,11 +15665,8 @@
     },
     "practice:plot-points": {
       "terms": [
-        "corresponding",
         "ordered-pair",
-        "origin",
-        "real-number",
-        "reflection"
+        "origin"
       ],
       "long": []
     },
@@ -15831,8 +15688,6 @@
     },
     "practice:point-slope-two-points": {
       "terms": [
-        "coordinate",
-        "equivalent-equations",
         "negative-number",
         "slope"
       ],
@@ -16352,14 +16207,9 @@
     "practice:quadratic-formula-positive": {
       "terms": [
         "decimal",
-        "discriminant",
         "irrational-number",
         "perfect-square",
-        "quadratic",
-        "rational-number",
-        "solution",
-        "square-root",
-        "substitute"
+        "square-root"
       ],
       "long": []
     },
@@ -16426,16 +16276,9 @@
     },
     "practice:quadratic-negative-output": {
       "terms": [
-        "constant",
         "expression",
-        "function",
-        "input",
-        "integer",
-        "output",
         "polynomial",
-        "quadratic",
-        "trinomial",
-        "zero-product-property"
+        "quadratic"
       ],
       "long": []
     },
@@ -16592,16 +16435,9 @@
     "practice:radical-function-value": {
       "terms": [
         "at-least",
-        "coefficient",
-        "constant",
         "expression",
-        "function",
         "input",
-        "order-of-operations",
-        "principal",
-        "radicand",
-        "square-root",
-        "substitute"
+        "square-root"
       ],
       "long": []
     },
@@ -17582,9 +17418,7 @@
     "practice:sat-entry-fn-exponential": {
       "terms": [
         "decimal",
-        "elapsed-time",
         "equivalent",
-        "exponent",
         "input",
         "output"
       ],
@@ -17592,16 +17426,12 @@
     },
     "practice:sat-entry-fn-linear-notation": {
       "terms": [
-        "constant",
-        "constant-term",
         "decimal",
-        "domain",
         "equivalent",
         "input",
         "output",
         "parentheses",
         "rate",
-        "substitute",
         "variable"
       ],
       "long": []
@@ -17610,7 +17440,6 @@
       "terms": [
         "decimal",
         "equivalent",
-        "expression",
         "ratio",
         "variable"
       ],
@@ -17768,19 +17597,15 @@
     },
     "practice:sat-fn-exponential-choice": {
       "terms": [
-        "exponent",
-        "exponential-decay",
-        "rate"
+        "exponential-decay"
       ],
       "long": []
     },
     "practice:sat-fn-line-equation-choice": {
       "terms": [
-        "coordinate",
         "intercept",
         "rate",
-        "slope",
-        "substitute"
+        "slope"
       ],
       "long": []
     },
@@ -18931,12 +18756,9 @@
     },
     "practice:substitute-into-equation": {
       "terms": [
-        "coefficient",
-        "distribute",
         "expression",
         "multiplier",
         "parentheses",
-        "substitute",
         "variable"
       ],
       "long": []
@@ -19952,13 +19774,10 @@
     "practice:zeros-of-factored-product": {
       "terms": [
         "at-least",
-        "difference-of-squares",
         "expression",
         "function",
-        "input",
         "polynomial",
-        "solution",
-        "zero-product-property"
+        "solution"
       ],
       "long": []
     }

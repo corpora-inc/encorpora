@@ -4,10 +4,6 @@ import { chainLesson } from "./chain-lesson-kit";
 
 /** Glossary readings for the Regents linear lessons and methods. */
 const senses = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
-  term: "term-expression",
-  terms: "term-expression",
   difference: "difference-subtract",
   factor: "factor-number",
   base: "base-shape",
@@ -29,6 +25,12 @@ const noLink = [
   "kind",
   "kinds",
   "certain",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
 ];
 
 /** What an equation and its two sides are, said on every screen. */
@@ -309,7 +311,7 @@ export const regentsAlgebraOneLinearLessons = [
       id: "regents-isolate-two-term-formula",
       title: "Solving a formula that has a sum of terms",
       summary:
-        "A formula is an equation that links amounts with letters. For example, a rectangle (a four-sided shape with four right-angle corners) has perimeter $P = 2\\ell + 2w$, with length $\\ell$ and width $w$; the perimeter is the distance around it. To solve it for one letter, get that letter alone on one side. First take away the parts that do not contain it. Then divide by whatever multiplies it.",
+        "A formula is an equation that links amounts with letters. The distance around a shape is called its perimeter. A rectangle, a four-sided shape with four right-angle corners, has perimeter $P = 2\\ell + 2w$, with length $\\ell$ and width $w$. To solve it for one letter, get that letter alone on one side. First take away the parts that do not contain it. Then divide by whatever multiplies it.",
       templateIds: ["isolate-two-term-formula"],
       objectives: [
         "Remove the terms that do not contain the chosen letter before dividing.",
@@ -318,7 +320,7 @@ export const regentsAlgebraOneLinearLessons = [
       openingTitle: "Undo in reverse order",
       opening: [
         "A formula is an equation with letters. Its terms are the parts joined by + or −. To solve it for one letter, undo what was done to that letter, last step first. Do each step to both sides.",
-        "A cylinder is a can shape with radius $r$ (half the width of its circle) and height $h$. Its surface area is $S = 2\\pi r^2 + 2\\pi rh$, where $r^2$ means $r$ times $r$ and $\\pi$ is about 3.14. Here $h$ is multiplied by $2\\pi r$, and then the term $2\\pi r^2$ is added. So undo the adding first, then the multiplying.",
+        "A cylinder is a can shape. Its radius is the distance across half its circle, written $r$, and its height is $h$. Its surface area is $S = 2\\pi r^2 + 2\\pi rh$, where $r^2$ means $r$ times $r$ and $\\pi$ is about 3.14. Here $h$ is multiplied by $2\\pi r$, and then the term $2\\pi r^2$ is added. So undo the adding first, then the multiplying.",
       ],
       example: {
         prompt: "Solve $P=2\\ell+2w$ for $w$, then solve $S=2b^2+4bh$ for $h$.",
@@ -338,7 +340,7 @@ export const regentsAlgebraOneLinearLessons = [
       ],
       formalTitle: "Equivalent equations",
       formal: [
-        "Adding the same expression to both sides, or multiplying both sides by the same expression that is not 0, keeps the solutions. Dividing by an expression needs it to be not 0, such as $4b\\neq0$.",
+        "Adding the same expression to both sides, or multiplying both sides by the same expression that is not 0, keeps the solutions, the values that make it true. Dividing by an expression needs it to be not 0, such as $4b\\neq0$.",
         "The answer is a fraction whose top is the whole difference. $\\frac{S-2b^2}{4b}$ is not $\\frac{S}{4b}-2b^2$.",
       ],
       pitfalls: [
@@ -373,7 +375,7 @@ export const regentsAlgebraOneLinearLessons = [
           "A system has the equations $2x+3y=19$ and $4x-y=5$. Write the equation that results from solving the second equation for $y$ and substituting.",
         steps: [
           "Get $y$ alone in $4x-y=5$. Add $y$ to both sides: $4x=5+y$. Subtract 5 from both sides: $y=4x-5$.",
-          "In the first equation, replace $y$ with the whole expression, in parentheses, so the 3 multiplies all of it: $2x+3(4x-5)=19$.",
+          "In the first equation, replace $y$ with the whole expression, in parentheses (the curved brackets), so the 3 multiplies all of it: $2x+3(4x-5)=19$.",
           "This is one equation with $x$ alone. Distributing gives $2x+12x-15=19$, so $14x=34$.",
         ],
         answer: "$2x+3(4x-5)=19$",

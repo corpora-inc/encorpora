@@ -79,7 +79,7 @@ const entries: Entry[] = [
     title: "Plot points in all four quadrants",
     goal: "Plot points $(x, y)$ in all four quadrants: across by the first number, then up or down by the second.",
     summary:
-      "A number line is a line with evenly spaced numbers. A coordinate plane is a flat grid made from two number lines that cross at 0, at a point called the origin. A point is named by an ordered pair, such as $(3, -2)$; the order matters. Start at the origin. The first number says how far to move across: right if positive, left if negative. The second says how far to move up or down: up if positive, down if negative.",
+      "A number line is a line with evenly spaced numbers. A coordinate plane is a flat grid made from two number lines that cross at 0, at a point called the origin. A point is named by an ordered pair, a pair of numbers in a set order, such as $(3, -2)$. Start at the origin. The first number says how far to move across: right if positive, left if negative. The second says how far to move up or down: up if positive, down if negative.",
     objectives: [
       "Plot points with positive, negative and zero coordinates, including points on an axis.",
       "Plot the mirror image of a point across the $x$-axis or the $y$-axis by changing the sign of one coordinate.",
@@ -142,7 +142,7 @@ const entries: Entry[] = [
       "An equation in $x$ and $y$ is true for a set of points $(x, y)$. For a linear equation, those points lie on a straight line. The slope of the line says how much $y$ changes for each step of 1 in $x$. It is written as a fraction, rise over run: the rise is the move up (or down, if negative) and the run is the move right. In $y = mx + b$, $m$ is the slope and $(0, b)$ is where the line crosses the $y$-axis. From one point, the slope lets you walk to the next.",
     terms: ["slope", "y-intercept"],
     method: [
-      "Find one point. In $y = mx + b$ it is $(0, b)$. In $y - y_1 = m(x - x_1)$ it is $(x_1, y_1)$. A proportional rule $y = kx$ passes through $(0, 0)$. In $ax + by = c$ with $b \\ne 0$, put in an $x$ value that makes $y$ an integer (a whole number or its negative).",
+      "Find one point. In $y = mx + b$ it is $(0, b)$. In $y - y_1 = m(x - x_1)$ it is $(x_1, y_1)$. A proportional rule $y = kx$ passes through $(0, 0)$. In $ax + by = c$ with $b \\ne 0$, put in an $x$ value that makes $y$ come out with no fraction part, like $-3$, 0 or 5.",
       "From that point, use the slope $\\frac{\\text{rise}}{\\text{run}}$. Move right by the run, then up by the rise (down if the rise is negative), to a second point.",
       "Place both points. Any two different points of the line are correct; the graph is the line through them.",
     ],
@@ -169,7 +169,7 @@ const entries: Entry[] = [
     },
     methodTitle: "One point, then the slope",
     methodText: [
-      "Starting from a grid point, a fraction slope tells you how far to step to land on another grid point. With slope $\\frac{2}{3}$, move 3 right and 2 up. With an integer slope such as $-2$, move 1 right and 2 down.",
+      "Starting from a grid point, a fraction slope tells you how far to step to land on another grid point. With slope $\\frac{2}{3}$, move 3 right and 2 up. With a slope that is an integer (a number like $-2$ or 3 with no fraction part), such as $-2$, move 1 right and 2 down.",
       "A flat line $y = k$ has slope 0: every point has $y$-coordinate $k$. A proportional rule $y = kx$ always passes through the origin, $(0, 0)$.",
     ],
     formal:
@@ -193,7 +193,7 @@ const entries: Entry[] = [
       "Place the new points in order, so $A$ goes to $A'$, $B$ to $B'$ and $C$ to $C'$.",
     ],
     intuition:
-      "A rigid motion moves a figure without stretching or bending it. A translation slides every point the same way. A reflection flips the figure over a line, like a mirror. A rotation turns it around a point, here the origin $(0, 0)$; a 90° turn is a quarter turn and a 180° turn is a half turn. Each corner, called a vertex, has one new point, called its image. The image of $A$ is named $A'$ (said “A prime”). Find each image with the motion's coordinate rule.",
+      "A rigid motion moves a figure without stretching or bending it. A translation slides every point the same way. A reflection flips the figure over a line, like a mirror. A rotation turns it around a point, here the origin, the point $(0, 0)$ where the axes cross; a 90° turn is a quarter turn and a 180° turn is a half turn. Each corner, called a vertex, has one new point, called its image. The image of $A$ is named $A'$ (said “A prime”). Find each image with the motion's coordinate rule.",
     terms: ["image-transformation", "rigid-motion"],
     method: [
       "Write the rule. A slide adds the same amounts to every point: $(x, y) \\to (x + h, y + k)$, where $\\to$ means “goes to”. A flip over the $x$-axis gives $(x, -y)$, and over the $y$-axis gives $(-x, y)$.",
@@ -265,7 +265,7 @@ const entries: Entry[] = [
     title: "Graph a parabola by placing points",
     goal: "Graph a parabola by finding its turning point, the vertex, and then points on both sides of it.",
     summary:
-      "A graph shows, as points $(x, y)$ on a grid, every pair that makes an equation true. An equation with $x^2$ ($x$ times $x$), such as $y = 2(x - 1)^2 - 3$, makes a U-shaped graph called a parabola. Its turning point is called the vertex. The two sides are mirror images of each other. So find the vertex first, then put in integers (whole numbers or their negatives) next to it to find more points.",
+      "A graph shows, as points $(x, y)$ on a grid, every pair that makes an equation true. An equation with $x^2$ ($x$ times $x$), such as $y = 2(x - 1)^2 - 3$, makes a U-shaped graph called a parabola. Its turning point is called the vertex. The two sides are mirror images of each other. So find the vertex first, then put in integers (the whole numbers and their negatives) next to it to find more points.",
     objectives: [
       "Read the vertex from $y = a(x - h)^2 + k$, and find it from $y = ax^2 + bx + c$ with $x = -\\frac{b}{2a}$.",
       "Find grid points of a parabola by putting in whole numbers for $x$ and using its mirror symmetry.",
@@ -275,11 +275,11 @@ const entries: Entry[] = [
     terms: ["vertex-parabola", "axis-of-symmetry"],
     method: [
       "Find the vertex. In $y = a(x - h)^2 + k$ it is $(h, k)$. In $y = ax^2 + bx + c$, its $x$ is $-\\frac{b}{2a}$; put that $x$ into the equation to get $y$.",
-      "Put in whole numbers for $x$ next to the vertex's $x$, and work out $y$. By symmetry, $x = h + 1$ and $x = h - 1$ give the same $y$.",
+      "Put in numbers with no fraction part for $x$ next to the vertex's $x$, and work out $y$. By symmetry, $x = h + 1$ and $x = h - 1$ give the same $y$.",
       "Place the points asked for. Any points that make the equation true are correct, so the vertex plus points on either side is a good set. The point where it crosses the $y$-axis is $(0, c)$.",
     ],
     watch:
-      "In $y = a(x - h)^2 + k$, the vertex's $x$ is $h$, the opposite of the sign shown inside the parentheses. $y = (x + 3)^2$ has its vertex at $x = -3$.",
+      "In $y = a(x - h)^2 + k$, the vertex's $x$ is $h$, the opposite of the sign shown inside the curved brackets. $y = (x + 3)^2$ has its vertex at $x = -3$.",
     principle:
       "The graph of $y = a(x - h)^2 + k$, with $a \\ne 0$, is the parabola $y = ax^2$ moved $h$ units right and $k$ units up. It is symmetric about the line $x = h$. A point $(x, y)$ is on the graph exactly when its coordinates make the equation true.",
     example: {
@@ -310,7 +310,7 @@ const entries: Entry[] = [
       "Completing the square rewrites $ax^2 + bx + c$ as $a\\left(x + \\frac{b}{2a}\\right)^2 + c - \\frac{b^2}{4a}$, so the vertex is at $x = -\\frac{b}{2a}$. Since $(x - h)^2$ has the same value at $h + d$ and $h - d$, the graph is symmetric about $x = h$.",
     pitfalls: [
       "Read $h$ with the opposite sign from the one inside the parentheses.",
-      "Square the whole difference: $(3 - 1)^2 = 4$, not $3 - 1^2$.",
+      "Squaring means multiplying a number by itself, so square the whole difference: $(3 - 1)^2 = 4$, not $3 - 1^2$.",
     ],
     parentGuide:
       "Ask your learner to find the vertex first and say which way the parabola opens. Then check one other point by putting its $x$ into the equation.",
@@ -359,7 +359,7 @@ const entries: Entry[] = [
     methodTitle: "Distance from the vertex",
     methodText: [
       "Think of $|x - h|$ as the number of steps between $x$ and $h$. Each step adds $a$ to $y$, on both sides of the vertex.",
-      "With $a = \\frac{1}{2}$ and an integer $k$, $y$ is an integer only when the distance is even. So look two steps from the vertex.",
+      "With $a = \\frac{1}{2}$ and $k$ an integer (a number like $-2$, 0 or 5 with no fraction part), $y$ is an integer only when the distance is even. So look two steps from the vertex.",
     ],
     formal:
       "For $x \\ge h$, $|x - h| = x - h$, so the graph is the straight arm with slope $a$ starting at $(h, k)$. For $x < h$, $|x - h| = h - x$, so the arm has slope $-a$. The two arms are mirror images across the up-and-down line $x = h$.",
@@ -375,13 +375,13 @@ const entries: Entry[] = [
     title: "Graph an exponential function by placing points",
     goal: "Graph $y = a \\cdot b^x$ by making a table: each step right multiplies $y$ by $b$, each step left divides.",
     summary:
-      "In $y = 3 \\cdot 2^x$, the dot means times, and for a whole number $x$, $2^x$ means 2 multiplied by itself $x$ times; $2^0 = 1$. So each step of 1 to the right multiplies $y$ by 2, and each step left divides $y$ by 2. A rule like this, which multiplies by the same number each step, is called exponential. Its graph (the picture of its points) curves. Going left, it gets closer and closer to the across axis without ever touching it.",
+      "In $y = 3 \\cdot 2^x$, the dot means times, and for $x = 1, 2, 3$ and so on, $2^x$ means 2 multiplied by itself $x$ times; $2^0 = 1$. So each step of 1 to the right multiplies $y$ by 2, and each step left divides $y$ by 2. A rule like this, which multiplies by the same number each step, is called exponential. Its graph (the picture of its points) curves. Going left, it gets closer and closer to the across axis without ever touching it.",
     objectives: [
       "Make a table of $y = a \\cdot b^x$ for whole-number $x$, including negative values.",
       "Keep the points whose outputs are whole numbers that fit on the grid.",
     ],
     intuition:
-      "In $b^x$, the small raised $x$ is called the exponent: $2^3 = 2 \\cdot 2 \\cdot 2 = 8$. Any number (other than 0) to the power 0 is 1, so $b^0 = 1$. A function $y = a \\cdot b^x$, with $a > 0$, $b > 0$ and $b \\ne 1$, is called exponential. It multiplies $y$ by the same number $b$, called the growth factor, for every step of 1 in $x$. At $x = 0$, $y = a$. Moving right multiplies by $b$ and moving left divides by $b$. The graph bends, because each step multiplies instead of adding. It comes closer and closer to the $x$-axis but never touches it.",
+      "In $b^x$, the small raised $x$ is called the exponent: $2^3 = 2 \\cdot 2 \\cdot 2 = 8$. Any number (other than 0) to the power 0 is 1, so $b^0 = 1$. A function is a rule that turns each input (the number you put in) into one output (the number you get back). A function like $y = a \\cdot b^x$, with $a > 0$, $b > 0$ and $b \\ne 1$, is called exponential. It multiplies $y$ by the same number $b$, called the growth factor, for every step of 1 in $x$. At $x = 0$, $y = a$. Moving right multiplies by $b$ and moving left divides by $b$. The graph bends, because each step multiplies instead of adding. It comes closer and closer to the $x$-axis but never touches it.",
     terms: ["growth-factor", "asymptote"],
     method: [
       "Start at $x = 0$: $y = a \\cdot b^0 = a \\cdot 1 = a$.",
@@ -414,7 +414,7 @@ const entries: Entry[] = [
     },
     methodTitle: "Multiply to move right, divide to move left",
     methodText: [
-      "A table of $x$ and $y$ shows the pattern: each row multiplies $y$ by $b$. Only the rows with an integer $y$ land on grid points.",
+      "A table of $x$ and $y$ shows the pattern: each row multiplies $y$ by $b$. Only the rows whose $y$ is an integer (a number like $-2$, 0 or 5 with no fraction part) land on grid points.",
       "For $b = 2$, the useful points are often to the right of 0. For $b = \\frac{1}{2}$, they are often to the left.",
     ],
     formal:
@@ -487,21 +487,12 @@ const entries: Entry[] = [
 
 /** How every lesson and method here reads ambiguous glossary words. */
 const senses = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
-  term: "term-expression",
-  terms: "term-expression",
   unit: "unit",
   units: "unit",
   squared: "square-number",
   square: "square-number",
   vertex: "vertex-parabola",
-  image: "image-transformation",
-  images: "image-transformation",
-  plane: "plane",
   base: "base-exponent",
-  root: "root-radical",
-  roots: "root-radical",
 } as const;
 const noLink = [
   "whole",
@@ -520,6 +511,16 @@ const noLink = [
   "leaves",
   "difference",
   "increasing",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
+  "image",
+  "images",
+  "plane",
+  "prime",
 ];
 
 const stripFormat = (e: Entry): ProblemMethod => ({

@@ -3,8 +3,6 @@ import type { ProblemMethod } from "./problem-lessons";
 
 /** Glossary readings for the piecewise lesson and its two methods. */
 const PIECE_SENSES = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
   boundary: "boundary",
   vertex: "vertex-parabola",
 } as const;
@@ -20,6 +18,12 @@ const PIECE_NO_LINK = [
   "rule",
   "rules",
   "leaves",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
 ];
 
 /** The function toolkit: functions defined in pieces, transformations of
@@ -62,7 +66,7 @@ export const functionToolkitLessons: Lesson[] = [
       {
         title: "Absolute value as two pieces",
         paragraphs: [
-          "The absolute value of a number is its distance from 0, written with bars: $|-3| = 3$. So $|u| = u$ when $u \\ge 0$, and $|u| = -u$ when $u < 0$, which turns a negative number positive.",
+          "The absolute value is a number's distance from 0, written with bars: $|-3| = 3$. So $|u| = u$ when $u \\ge 0$, and $|u| = -u$ when $u < 0$, which turns a negative number (one less than 0) positive.",
           "That makes $|x - 1| + 2$ a piecewise function. For $x \\ge 1$ it is $(x - 1) + 2 = x + 1$. For $x < 1$ it is $-(x - 1) + 2 = -x + 3$. These are two straight pieces that meet at the corner point $(1, 2)$, called the vertex.",
           "To solve $f(x) = c$ on a graph, draw the flat line $y = c$. The $x$ values where it meets the graph are the solutions, and counting the meeting points tells how many there are. A filled dot on the line counts; an open circle does not.",
         ],
@@ -335,7 +339,7 @@ export const functionToolkitMethods: Record<string, ProblemMethod> = {
     terms: ["piecewise-function"],
     method: [
       "Test the input in each condition. Exactly one is true.",
-      "At the number where the rule changes, $\\le$ and $\\ge$ include it, while $<$ and $>$ do not. On a graph, use the filled dot, not the open circle.",
+      "At the number where the rule changes, $\\le$ and $\\ge$ include it, while $<$ and $>$ do not. On a graph, use the filled dot, not the open circle (an empty dot, which is left out).",
       "Put the input into that piece's rule only.",
     ],
     watch:
@@ -346,7 +350,7 @@ export const functionToolkitMethods: Record<string, ProblemMethod> = {
     senses: PIECE_SENSES,
     noLink: PIECE_NO_LINK,
     intuition:
-      "A piecewise function uses different rules for different inputs, and its graph is made of pieces. A filled dot belongs to the graph; an open circle does not. The absolute value of a number is its distance from 0, written with bars: $|-3| = 3$. So $|x - h|$ is one rule where $x - h$ is 0 or more, and another where it is negative.",
+      "A piecewise function uses different rules for different inputs, and its graph is made of pieces. A filled dot belongs to the graph; an open circle does not. The absolute value is a number's distance from 0, written with bars: $|-3| = 3$. So $|x - h|$ is one rule where $x - h$ is 0 or more, and another where it is negative.",
     method: [
       "For $|x - h|$, use $x - h$ where $x \\ge h$, and $-(x - h)$ where $x < h$. Then simplify each piece.",
       "For a straight piece on a graph, read two of its points to find its slope (rise over run). Then extend it back to $x = 0$ to find where it would cross the up-and-down axis.",

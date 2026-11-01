@@ -184,7 +184,7 @@ const entries: Entry[] = [
       "Write the model so its exponent (the small raised number) counts the right number of multiplications.",
     ],
     intuition:
-      "An exponential model multiplies by the same number, called the growth factor, at each step. In $b^t$, the small raised $t$ is the exponent: it says how many times to multiply by $b$. If an amount grows by 20% each hour, it becomes 120% of itself, so the factor is 1.2. If it doubles every 3 years, the factor 2 is used once per 3 years. So after $t$ years it is used $\\frac{t}{3}$ times.",
+      "A model is an equation that describes a real situation. An exponential model multiplies by the same number, called the growth factor, at each step. In $b^t$, the small raised $t$ is the exponent: it says how many times to multiply by $b$. If an amount grows by 20% each hour, it becomes 120% of itself, so the factor is 1.2. If it doubles every 3 years, the factor 2 is used once per 3 years. So after $t$ years it is used $\\frac{t}{3}$ times.",
     terms: [
       "growth-factor",
       [
@@ -198,7 +198,7 @@ const entries: Entry[] = [
       "If a later value is given, divide it by the start and take the root that matches the number of steps. Then test the model at the given values.",
     ],
     watch:
-      "Test the model at $t = 0$ and at one given value. An exponent that is off by one, or a factor that is only the percent, fails right away.",
+      "Test the model at $t = 0$ and at one given value. An exponent that is off by one, or a factor that leaves out the 1 (like 0.2 for a 20% rise), fails right away.",
     principle:
       "If a starting amount $y_0$ is multiplied by $b$ in each unit of time, then after $t$ units it is $y_0b^{t}$. If $b$ applies once every $k$ units, the amount is $y_0b^{t/k}$.",
     example: {
@@ -206,7 +206,7 @@ const entries: Entry[] = [
         "A population starts at 400 and increases by 150% each year. Which function gives it after $t$ years?",
       steps: [
         "An increase of 150% adds 150% of the current amount to the 100% already there. So the new amount is 100% + 150% = 250% of the old.",
-        "250% as a decimal is 2.5, so each year the population is multiplied by the factor 2.5.",
+        "250% means 250 hundredths, which is 2.5, so each year the population is multiplied by the factor 2.5.",
         "Start at 400 and multiply by 2.5 once for each year, so after $t$ years: $P(t)=400\\cdot 2.5^{t}$.",
       ],
       answer: "$P(t)=400\\cdot 2.5^{t}$",
@@ -217,7 +217,7 @@ const entries: Entry[] = [
       "When the first value is not at $t = 0$, as for rounds numbered from 1, shift the exponent so the first value comes out right.",
     ],
     formal:
-      "If the values at whole numbers one apart always have the same ratio $b$, then $f(x) = f(0)b^{x}$ at every whole number $x$. If $f(n) = y_0b^{n}$ with $b > 0$, $y_0 \\ne 0$ and $n > 0$, then $b = \\left(\\frac{f(n)}{y_0}\\right)^{1/n}$.",
+      "Say the inputs are 0, 1, 2 and so on, and each output (the result) is $b$ times the one before. Then $f(x) = f(0)b^{x}$ for each of them. If $f(n) = y_0b^{n}$ with $b > 0$, $y_0 \\ne 0$ and $n > 0$, then $b = \\left(\\frac{f(n)}{y_0}\\right)^{1/n}$.",
     pitfalls: [
       "A 150% increase is a factor of 2.5, not 1.5.",
       "Doubling every 3 years is not doubling every year.",
@@ -236,7 +236,7 @@ const entries: Entry[] = [
       "Find the growth factor from one output, and use it to find the next output.",
     ],
     intuition:
-      "In $b^x$, the small raised $x$ is the exponent: $3^2 = 3 \\times 3 = 9$. A function $f(x) = a \\cdot b^x$ is called exponential. Each time the input goes up by 1, the output is multiplied by $b$, called the base. If an amount doubles every 3 years, then after 12 years it has doubled 4 times, so it is 16 times the start. Going back to the start means dividing by 16.",
+      "In $b^x$, the small raised $x$ is the exponent: $3^2 = 3 \\times 3 = 9$. A function, a rule that gives one output for each input, written $f(x) = a \\cdot b^x$ is called exponential. Each time the input goes up by 1, the output is multiplied by $b$, called the base. If an amount doubles every 3 years, then after 12 years it has doubled 4 times, so it is 16 times the start. Going back to the start means dividing by 16.",
     terms: [
       [
         "base-exponent",
@@ -264,7 +264,7 @@ const entries: Entry[] = [
     methodTitle: "Periods and powers",
     methodText: [
       "Write the relationship as an equation with one unknown: start times $b^{m}$ equals later. Then divide.",
-      "You do not need a calculator: the numbers are chosen so each root and power is a small whole number.",
+      "You do not need a calculator: the numbers are chosen to work out to small, easy numbers.",
     ],
     formal:
       "For $f(x) = ab^{x}$ with $b > 0$, $f(x + 1) = bf(x)$. From $f(n) = v$ with $a \\ne 0$ and $n > 0$, $b = \\left(\\frac{v}{a}\\right)^{1/n}$ and $f(n + 1) = vb$.",
@@ -296,7 +296,7 @@ const entries: Entry[] = [
     ],
     method: [
       "Compare the asked-for expression with the equation. Take a common number out of the equation, or multiply the whole equation, so the expression appears.",
-      "If a group in parentheses appears on both sides, call it $u$, solve for $u$, and stop.",
+      "If a group in parentheses (the curved brackets) appears on both sides, call it $u$, solve for $u$, and stop.",
       "For a ratio $\\frac{x}{y}$ with $x$ and $y$ not 0, the ratio $\\frac{y}{x}$ is its reciprocal, the fraction flipped over. " +
         entry,
     ],
@@ -331,10 +331,6 @@ const entries: Entry[] = [
 
 /** How every SAT function lesson and method reads ambiguous glossary words. */
 const senses = {
-  side: "side-of-equation",
-  sides: "side-of-equation",
-  term: "term-expression",
-  terms: "term-expression",
   base: "base-exponent",
   root: "root-radical",
   roots: "root-radical",
@@ -364,6 +360,12 @@ const noLink = [
   "periods",
   "population",
   "certain",
+  "side",
+  "sides",
+  "left side",
+  "right side",
+  "term",
+  "terms",
 ];
 
 const stripFormat = (e: Entry): ProblemMethod => ({

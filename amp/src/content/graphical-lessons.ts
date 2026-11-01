@@ -21,6 +21,12 @@ const GRID_NO_LINK = [
   "center",
   "scale",
   "sides",
+  "side",
+  "left side",
+  "right side",
+  "term",
+  "terms",
+  "rules",
 ];
 
 export const graphicalLessons: Lesson[] = [
@@ -73,7 +79,7 @@ export const graphicalLessons: Lesson[] = [
       prompt:
         "Point $P$ is three units left and two units above the origin. What is its $x$-coordinate?",
       steps: [
-        "The $x$-coordinate is the across position. Left of the origin means a negative number, so 3 units left is $-3$.",
+        "The $x$-coordinate is the across position. Left of the origin means a negative number, one less than 0, so 3 units left is $-3$.",
         "The point is at $(-3, 2)$: across $-3$, up 2. The question asks only for $x$, which is $-3$.",
       ],
       answer: "−3",
@@ -319,7 +325,7 @@ export const graphicalLessons: Lesson[] = [
     id: "number-line-separation",
     title: "Distance between signed numbers",
     summary:
-      "A number line shows numbers in order, with tick marks (short lines) evenly spaced and negative numbers (less than 0) to the left of 0. When neighboring ticks are 1 apart, each space is one unit. The distance between two numbers is how many units apart they are. Count the spaces between them, not the tick marks. A distance is never negative.",
+      "A number line shows numbers in order, with tick marks (short lines) evenly spaced and negative numbers (the numbers less than 0) to the left of 0. When neighboring ticks are 1 apart, each space is one unit. The distance between two numbers is how many units apart they are. Count the spaces between them, not the tick marks. A distance is never negative.",
     templateIds: ["number-line-distance"],
     senses: GRID_SENSES,
     noLink: GRID_NO_LINK,
