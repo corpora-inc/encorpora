@@ -1,15 +1,4 @@
 {
-  "aa-similarity": {
-    "image": 1,
-    "side": 4,
-    "sides": 1,
-    "similar": 15,
-    "similar triangles": 1,
-    "similarity": 2,
-    "third": 29,
-    "vertex": 8,
-    "vertices": 4
-  },
   "abs-equals-linear-unique": {
     "opposite": 42,
     "rules": 20,
@@ -580,10 +569,6 @@
   "combination-probability": {
     "event": 1
   },
-  "combine-like-coefficient": {
-    "term": 22,
-    "terms": 22
-  },
   "combine-square-roots": {
     "factor": 19,
     "factors": 41,
@@ -977,16 +962,6 @@
     "square": 8,
     "squared": 1,
     "thirds": 20
-  },
-  "congruence-by-rigid-motion": {
-    "change": 1,
-    "changes": 6,
-    "image": 12,
-    "opposite": 3,
-    "scale": 1,
-    "sides": 2,
-    "vertex": 24,
-    "vertices": 2
   },
   "congruence-claims-table": {
     "change": 2,
@@ -1468,10 +1443,6 @@
   "distance-graph-meaning": {
     "changes": 1,
     "part": 1
-  },
-  "distributive-expression-choice": {
-    "term": 1,
-    "terms": 36
   },
   "divide-by-two-digit": {
     "multiple": 17,
@@ -2483,15 +2454,6 @@
     "term": 57,
     "terms": 9
   },
-  "geometry-proof-step": {
-    "corresponding angles": 2,
-    "degrees": 1,
-    "mean": 2,
-    "opposite": 5,
-    "plane": 1,
-    "rule": 1,
-    "side": 1
-  },
   "graph-absolute-value-points": {
     "changes": 18,
     "images": 1,
@@ -2766,9 +2728,6 @@
     "vertex": 2,
     "vertices": 4
   },
-  "integer-addition": {
-    "changes": 20
-  },
   "integer-power": {
     "base": 2,
     "factor": 5,
@@ -2786,18 +2745,6 @@
     "balances": 3,
     "changes": 7,
     "differences": 2
-  },
-  "interpret-linear-parameters": {
-    "balance": 19,
-    "change": 6,
-    "changes": 14,
-    "increasing": 1,
-    "mean": 1,
-    "model": 15,
-    "population": 5,
-    "term": 20,
-    "unit": 4,
-    "units": 8
   },
   "interquartile-range-data": {
     "average": 1,
@@ -2877,17 +2824,6 @@
     "multiples": 56,
     "product": 1,
     "whole": 3
-  },
-  "lesson:aa-similarity": {
-    "factor": 1,
-    "image": 3,
-    "side": 3,
-    "sides": 4,
-    "similar": 7,
-    "similarity": 2,
-    "third": 5,
-    "vertex": 1,
-    "vertices": 4
   },
   "lesson:absolute-compound-inequality": {
     "more than": 1,
@@ -3799,13 +3735,6 @@
     "thirds": 1,
     "whole": 1
   },
-  "lesson:congruence-by-rigid-motion": {
-    "image": 2,
-    "parts": 1,
-    "side": 2,
-    "vertex": 2,
-    "vertices": 1
-  },
   "lesson:congruence-claims-table": {
     "change": 3,
     "changes": 3,
@@ -4571,13 +4500,6 @@
   "lesson:expressions-and-equations": {
     "more than": 1
   },
-  "lesson:expressions-keep-the-structure": {
-    "changes": 1,
-    "factors": 1,
-    "part": 1,
-    "term": 3,
-    "terms": 2
-  },
   "lesson:factor-completely-squares": {
     "change": 1,
     "difference": 1,
@@ -5148,15 +5070,6 @@
     "change": 1,
     "differences": 4,
     "mean": 2
-  },
-  "lesson:interpret-linear-parameters": {
-    "balance": 7,
-    "change": 3,
-    "decreasing": 1,
-    "mean": 1,
-    "model": 2,
-    "unit": 2,
-    "units": 6
   },
   "lesson:interquartile-range-data": {
     "arithmetic mean": 1,
@@ -6531,16 +6444,9 @@
     "center": 1,
     "changes": 1,
     "corresponding angles": 1,
-    "degrees": 1,
     "images": 1,
     "more than": 2,
-    "opposite": 6,
-    "side": 24,
-    "sides": 5,
-    "square": 8,
-    "squared": 1,
-    "squares": 4,
-    "squaring": 1,
+    "opposite": 5,
     "third": 1,
     "unit": 5,
     "vertex": 3
@@ -6551,24 +6457,6 @@
     "sides": 5,
     "square": 3,
     "squares": 4
-  },
-  "lesson:pythagorean-theorem": {
-    "changes": 1,
-    "degrees": 1,
-    "leaves": 1,
-    "mean": 1,
-    "opposite": 5,
-    "root": 3,
-    "roots": 1,
-    "side": 18,
-    "sides": 9,
-    "square": 28,
-    "squares": 11,
-    "squaring": 2,
-    "third": 1,
-    "unit": 4,
-    "vertex": 2,
-    "whole": 1
   },
   "lesson:quadratic-context-model": {
     "square": 1,
@@ -6584,13 +6472,6 @@
     "roots": 3,
     "term": 3,
     "terms": 1
-  },
-  "lesson:quadratic-factored-solutions": {
-    "factor": 5,
-    "factors": 2,
-    "product": 6,
-    "root": 4,
-    "roots": 3
   },
   "lesson:quadratic-form-conversion": {
     "factor": 4,
@@ -6865,15 +6746,6 @@
     "factor": 2,
     "unit": 6,
     "units": 6
-  },
-  "lesson:reasons-in-angle-proofs": {
-    "corresponding angles": 3,
-    "degrees": 1,
-    "intersection": 1,
-    "opposite": 3,
-    "plane": 3,
-    "vertex": 2,
-    "vertices": 1
   },
   "lesson:rectangle-chain-blanks": {
     "side": 3,
@@ -7544,18 +7416,10 @@
     "scale": 1
   },
   "lesson:right-triangle-missing-leg": {
-    "degrees": 1,
     "difference": 3,
-    "mean": 1,
-    "opposite": 3,
+    "opposite": 2,
     "part": 5,
     "root": 1,
-    "side": 15,
-    "sides": 8,
-    "square": 28,
-    "squared": 1,
-    "squares": 7,
-    "squaring": 2,
     "third": 1,
     "unit": 2,
     "vertex": 2,
@@ -8016,17 +7880,6 @@
     "side": 1,
     "sides": 1
   },
-  "lesson:signed-addition": {
-    "change": 3,
-    "changes": 2,
-    "leaves": 1,
-    "model": 2,
-    "net": 2,
-    "opposite": 4,
-    "opposites": 1,
-    "unit": 2,
-    "units": 4
-  },
   "lesson:signed-changes-sum": {
     "change": 9,
     "changes": 5,
@@ -8200,13 +8053,6 @@
     "square": 3,
     "units": 7,
     "vertices": 1
-  },
-  "lesson:slope-two-points": {
-    "change": 9,
-    "changes": 3,
-    "difference": 1,
-    "leaves": 1,
-    "unit": 2
   },
   "lesson:small-group-changes": {
     "change": 1,
@@ -8675,14 +8521,6 @@
     "side": 2,
     "standard form": 1
   },
-  "lesson:systems-elimination": {
-    "difference": 1,
-    "multiple": 1,
-    "side": 1,
-    "term": 1,
-    "terms": 2,
-    "whole": 1
-  },
   "lesson:systems-from-representations": {
     "change": 2,
     "changes": 1,
@@ -9013,11 +8851,6 @@
     "squared": 2,
     "squaring": 6
   },
-  "lesson:two-step-equation": {
-    "change": 1,
-    "sides": 8,
-    "term": 1
-  },
   "lesson:two-step-equation-model": {
     "part": 1,
     "sides": 1,
@@ -9093,10 +8926,6 @@
   },
   "lesson:unit-price-sentence-slots": {
     "whole": 1
-  },
-  "lesson:unit-rate": {
-    "unit": 6,
-    "units": 7
   },
   "lesson:unit-rate-pair-blanks": {
     "unit": 2
@@ -9272,9 +9101,6 @@
     "change": 1,
     "product": 3
   },
-  "line-slope": {
-    "change": 78
-  },
   "linear-equation": {
     "sides": 24
   },
@@ -9336,11 +9162,6 @@
     "term": 19,
     "terms": 19,
     "whole": 1
-  },
-  "linear-system-x": {
-    "multiples": 2,
-    "right side": 1,
-    "term": 1
   },
   "linked-time-equations": {
     "part": 61,
@@ -10752,14 +10573,6 @@
     "sides": 64,
     "term": 36
   },
-  "quadratic-factored-solutions": {
-    "factor": 18,
-    "factors": 25,
-    "product": 3,
-    "root": 22,
-    "roots": 1,
-    "sides": 64
-  },
   "quadratic-form-conversion": {
     "factor": 32,
     "factors": 2,
@@ -11344,14 +11157,6 @@
     "side": 53,
     "sides": 25,
     "third": 42
-  },
-  "right-triangle": {
-    "opposite": 20,
-    "right side": 19,
-    "side": 19,
-    "square": 2,
-    "squares": 1,
-    "unit": 3
   },
   "right-triangle-missing-leg": {
     "difference": 1,
@@ -12945,9 +12750,6 @@
     "inverse": 1,
     "opposite": 1
   },
-  "two-step-equation": {
-    "sides": 76
-  },
   "two-step-equation-model": {
     "part": 1,
     "sides": 42,
@@ -13029,10 +12831,6 @@
   },
   "unit-price-sentence-slots": {
     "unit": 2
-  },
-  "unit-rate": {
-    "unit": 22,
-    "units": 2
   },
   "unit-rate-pair-blanks": {
     "unit": 4,
