@@ -2,11 +2,47 @@ import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
+/** Glossary readings for the Regents function lessons and methods. */
+const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
+  difference: "difference-subtract",
+  product: "product-multiply",
+  products: "product-multiply",
+  factor: "factor-number",
+  factors: "factor-number",
+  root: "root-radical",
+  roots: "root-radical",
+  vertex: "vertex-parabola",
+  squares: "square-number",
+  square: "square-number",
+  squared: "square-number",
+} as const;
+const noLink = [
+  "whole",
+  "part",
+  "parts",
+  "change",
+  "changes",
+  "opposite",
+  "mean",
+  "means",
+  "rule",
+  "rules",
+  "leaves",
+  "image",
+  "more than",
+];
+
 export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
   "function-missing-input": {
-    goal: "Use the rule that every input has exactly one output to choose an unknown input in a set of ordered pairs.",
+    goal: "Choose an unknown input in a list of pairs, using the rule that a function gives each input exactly one output.",
+    senses,
+    noLink,
     intuition:
-      "A relation is a function when no input is paired with two different outputs. An input that appears twice is fine only when both pairs agree, so a new pair with a new output must use an input that has not been used.",
+      "An ordered pair $(x, y)$ matches an input $x$ (the first number) with an output $y$ (the second number). A set of pairs is called a relation. It is a function when no input is paired with two different outputs. An input may appear twice only if both pairs have the same output.",
     terms: [
       [
         "input",
@@ -15,9 +51,9 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
       "function",
     ],
     method: [
-      "List the inputs already used and the output each one has.",
-      "Compare the unknown input with that list: a repeated input must carry the same output.",
-      "Choose the value that satisfies the question: unused to keep a function, used to break it.",
+      "List the inputs already used, and the output each one has.",
+      "Compare the unknown input with that list. A repeated input must have the same output.",
+      "Choose the value the question asks for: an unused input keeps a function, and a used input with a new output breaks it.",
     ],
     watch:
       "Repeated outputs are allowed. Only a repeated input with different outputs breaks the rule.",
@@ -36,35 +72,41 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
       "Inside the function the sign is opposite the direction; outside it matches the direction. Do not swap the horizontal and vertical amounts.",
   },
   "radical-function-value": {
-    goal: "Evaluate a function containing a square root by simplifying the radicand first.",
+    goal: "Find the value of a function with a square root in it, working out the inside of the root first.",
+    senses,
+    noLink,
     intuition:
-      "To evaluate a function, put the input where $x$ is, then follow the order of operations. Everything under the square root sign is calculated first, then the root is taken, then the rest of the rule is applied.",
+      "The square root of a number is the number that, times itself, gives it: $\\sqrt{25} = 5$ because $5 \\times 5 = 25$. The root sign $\\sqrt{\\phantom{x}}$ always means the root that is 0 or positive. The number under the root sign is called the radicand. $f(x)$, read “$f$ of $x$”, is the output when the input is $x$. To find it, put the input in place of $x$.",
     terms: ["radicand", "perfect-square"],
     method: [
-      "Substitute the input for $x$ and simplify the radicand.",
+      "Put the input in place of $x$, and work out the radicand (everything under the root sign).",
       "Take the square root of the radicand.",
-      "Multiply by any coefficient and add or subtract any constant outside the root.",
+      "Then multiply by any number in front of the root, and add or subtract any number outside it.",
     ],
     watch:
-      "Add the shift inside the root before taking the root. A zero radicand gives a root of 0, so the value is just the constant.",
+      "Work out everything under the root before taking the root. A radicand of 0 gives a root of 0, so the value is just the number added outside.",
   },
   "zeros-of-factored-product": {
-    goal: "Find every zero of a product with a difference of squares by setting each factor to zero.",
+    goal: "Find every zero of a function written as a product, by setting each factor equal to 0.",
+    senses,
+    noLink,
     intuition:
-      "A product of numbers is zero only when at least one factor is zero. A difference of squares $x^2-k^2$ is itself a product, $(x-k)(x+k)$, so it contributes two zeros.",
+      "A zero of a function is an input that makes the output 0. Factors are the parts being multiplied. Two numbers multiply to 0 only when at least one of them is 0. An expression like $x^2 - 36$, where $x^2$ means $x$ times $x$, is called a difference of squares. It factors as $(x - 6)(x + 6)$, so it gives two zeros.",
     terms: ["zero-of-a-function", "difference-of-squares"],
     method: [
-      "Factor completely, including any difference of squares.",
-      "Set each factor equal to zero and solve.",
-      "List every zero, counting the zero from a lone factor $x$ as well.",
+      "Factor completely, including any difference of squares: $x^2 - k^2 = (x - k)(x + k)$.",
+      "Set each factor equal to 0 and solve.",
+      "List every zero, including the zero 0 from a factor that is just $x$.",
     ],
     watch:
-      "The two solutions of $x^2=36$ are 6 and $-6$, not 36. A factor $x+5$ gives the zero $-5$.",
+      "$x^2 = 36$ has two solutions, 6 and $-6$, not 36. A factor $x + 5$ gives the zero $-5$.",
   },
   "quadratic-negative-output": {
-    goal: "Find the inputs of a quadratic function that give a stated negative output by moving it to one side and factoring.",
+    goal: "Find the inputs that make a quadratic function equal a given negative number, by making one side 0 and factoring.",
+    senses,
+    noLink,
     intuition:
-      "Asking for $f(x)=-8$ is asking where the graph is 8 below the $x$-axis. Add 8 to both sides, and the question becomes finding the zeros of a new quadratic.",
+      "A quadratic function has an $x^2$ term ($x$ times $x$), like $f(x) = x^2 - 8x + 7$. $f(x)$, read “$f$ of $x$”, is the output for input $x$. Asking for $f(x) = -8$ asks which inputs give the output $-8$. Add 8 to both sides so one side is 0. Then factor: two factors multiply to 0 only when one of them is 0.",
     terms: [
       "output",
       [
@@ -73,30 +115,34 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write $f(x)$ equal to the stated output.",
-      "Add or subtract so the right side is 0, then combine the constants.",
-      "Factor and set each factor to zero.",
+      "Write $f(x)$ equal to the given output.",
+      "Add or subtract on both sides so the right side is 0, and combine the plain numbers.",
+      "Factor, and set each factor equal to 0.",
     ],
     watch:
-      "The stated number is an output, not an input. The zeros of $f$ solve $f(x)=0$, a different equation.",
+      "The given number is an output, not an input. The zeros of $f$ solve $f(x) = 0$, which is a different equation.",
   },
   "parabola-axis-rule": {
-    goal: "Choose the quadratic rule whose axis of symmetry is a given line, using $x=-\\frac{b}{2a}$.",
+    goal: "Choose the quadratic rule whose line of symmetry is a given line, using $x = -\\frac{b}{2a}$.",
+    senses,
+    noLink,
     intuition:
-      "A parabola is symmetric about a vertical line through its vertex. The linear and quadratic terms together decide where that line is, and the constant only moves the graph up or down.",
+      "The graph of $y = ax^2 + bx + c$ (with $a \\ne 0$; $x^2$ means $x$ times $x$) is a U-shaped curve called a parabola. It is a mirror image of itself across an up-and-down line through its turning point. That line is called the axis of symmetry, and it is $x = -\\frac{b}{2a}$. The plain number $c$ only moves the graph up or down.",
     terms: ["axis-of-symmetry", "standard-form-polynomial"],
     method: [
-      "Compute $-\\frac{b}{2a}$ for each rule.",
-      "Compare with the required line, keeping the sign.",
+      "For each rule, read $a$ (the number with $x^2$) and $b$ (the number with $x$), with their signs. Work out $-\\frac{b}{2a}$.",
+      "Compare it with the required line, keeping the sign.",
       "Choose the rule whose axis matches.",
     ],
     watch:
-      "Use $2a$ in the denominator and keep the leading coefficient. The sign of $b$ is the opposite of the sign of the axis when $a$ is positive.",
+      "Divide by $2a$, not $a$. When $a$ is positive, the axis has the opposite sign to $b$.",
   },
   "quadratic-formula-positive": {
-    goal: "Apply the quadratic formula to an equation with leading coefficient greater than 1 and irrational solutions.",
+    goal: "Use the quadratic formula on an equation like $3x^2 + 4x - 2 = 0$, whose solutions are not whole numbers or fractions.",
+    senses,
+    noLink,
     intuition:
-      "When a quadratic does not factor over the integers, the quadratic formula still gives its solutions. The discriminant under the root decides how many real solutions exist and whether they are rational.",
+      "An equation $ax^2 + bx + c = 0$ with $a \\ne 0$ is called quadratic; $x^2$ means $x$ times $x$. When it does not factor, the quadratic formula still finds its solutions: $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The sign $\\pm$ means “plus or minus”, giving two answers. The number $b^2 - 4ac$ under the root is called the discriminant.",
     terms: [
       "discriminant",
       [
@@ -105,91 +151,98 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Move every term to one side so the equation is $ax^2+bx+c=0$.",
-      "Read $a$, $b$ and $c$ with their signs.",
-      "Substitute into $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$.",
+      "Move every term to one side, so the equation is $ax^2 + bx + c = 0$.",
+      "Read $a$, $b$ and $c$, each with its sign.",
+      "Put them into $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$ and simplify.",
     ],
     watch:
-      "Start with the opposite of $b$, put the whole product $4ac$ under the root with its sign, and divide everything by $2a$.",
+      "Start with the opposite of $b$. Put the whole product $4ac$, with its sign, under the root. Divide the whole top by $2a$.",
   },
   "factor-large-trinomial": {
-    goal: "Factor a monic trinomial whose constant is large by finding the factor pair with the right sum.",
+    goal: "Factor $x^2 + bx + c$ when $c$ is large, by finding two numbers that multiply to $c$ and add to $b$.",
+    senses,
+    noLink,
     intuition:
-      "Multiplying $(x+p)(x+q)$ gives $x^2+(p+q)x+pq$. Factoring reverses that: find two numbers whose product is the constant and whose sum is the middle coefficient.",
+      "Multiplying $(x + p)(x + q)$ gives $x^2 + (p + q)x + pq$. So to factor $x^2 + bx + c$, find two numbers $p$ and $q$ that multiply to $c$ and add to $b$. A pair of numbers that multiply to $c$ is called a factor pair. An expression of this kind, with three terms and 1 in front of $x^2$, is called a monic trinomial.",
     terms: ["monic", "factor-pair"],
     method: [
-      "List the factor pairs of the constant's size.",
-      "Choose the signs from the sign of the constant: a negative constant needs one positive and one negative number.",
-      "Pick the pair whose sum is the middle coefficient, then check by expanding.",
+      "List the factor pairs of the size of $c$, ignoring its sign.",
+      "Choose the signs from the sign of $c$. A negative $c$ needs one positive and one negative number.",
+      "Pick the pair that adds to $b$. Check by multiplying the two factors back out.",
     ],
     watch:
-      "Several pairs have the same product, so check the sum. The larger number takes the sign of the middle term when the constant is negative.",
+      "Several pairs have the same product, so check the sum. When $c$ is negative, the larger number takes the sign of $b$.",
   },
 };
 
 export const regentsAlgebraOneFunctionPrinciples: Record<string, string> = {
   "function-missing-input":
-    "A relation is a function exactly when no two of its ordered pairs have the same input and different outputs. Adding a pair $(k,y)$ keeps a function if $k$ is a new input or if $y$ equals the output already paired with $k$.",
+    "A relation is a function exactly when no two of its ordered pairs have the same input and different outputs. Adding a pair $(k, y)$ keeps a function if $k$ is a new input, or if $y$ equals the output already paired with $k$.",
   "shift-function-notation":
     "The graph of $g(x)=f(x-h)+k$ is the graph of $f$ moved $h$ units to the right and $k$ units up; negative $h$ or $k$ move it left or down. A parabola $y=(x-h)^2+k$ has its vertex at $(h,k)$.",
   "radical-function-value":
-    "For $f(x)=a\\sqrt{x+b}+c$, the value at an input $x_0$ is $a\\sqrt{x_0+b}+c$, where the principal (nonnegative) square root is taken. The input must make the radicand at least 0.",
+    "For $f(x) = a\\sqrt{x + b} + c$, the value at an input $x_0$ is $a\\sqrt{x_0 + b} + c$, using the square root that is 0 or positive. The input must make the radicand (the number under the root) at least 0.",
   "zeros-of-factored-product":
-    "The zero product property says $AB=0$ exactly when $A=0$ or $B=0$. Since $x^2-k^2=(x-k)(x+k)$, the function $x(x^2-k^2)$ has the three zeros $0$, $k$ and $-k$.",
+    "Two numbers multiply to 0 exactly when at least one of them is 0: $AB = 0$ exactly when $A = 0$ or $B = 0$. This is called the zero product property. Since $x^2 - k^2 = (x - k)(x + k)$, the function $x(x^2 - k^2)$ has the three zeros 0, $k$ and $-k$.",
   "quadratic-negative-output":
-    "The inputs with $f(x)=c$ are the solutions of $f(x)-c=0$. For a quadratic with integer zeros of $f(x)-c$, factoring the trinomial and applying the zero product property gives them.",
+    "The inputs with $f(x) = c$ are the solutions of $f(x) - c = 0$. When those solutions are whole numbers, factoring and setting each factor equal to 0 finds them.",
   "parabola-axis-rule":
-    "The graph of $y=ax^2+bx+c$ with $a\\ne0$ is symmetric about the vertical line $x=-\\frac{b}{2a}$, which passes through the vertex. Changing $c$ moves the graph vertically and does not change the axis.",
+    "The graph of $y = ax^2 + bx + c$ with $a \\ne 0$ is symmetric about the up-and-down line $x = -\\frac{b}{2a}$, which passes through the vertex (the turning point). Changing $c$ moves the graph up or down and does not change the axis.",
   "quadratic-formula-positive":
-    "If $a\\ne0$, the solutions of $ax^2+bx+c=0$ are $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$. They are real when $b^2-4ac\\ge0$ and irrational when $b^2-4ac$ is positive and not a perfect square.",
+    "If $a \\ne 0$, the solutions of $ax^2 + bx + c = 0$ are $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. They are real numbers when $b^2 - 4ac \\ge 0$. They are irrational (not a fraction of whole numbers) when $b^2 - 4ac$ is positive and not a perfect square.",
   "factor-large-trinomial":
-    "For integers $p$ and $q$, $(x+p)(x+q)=x^2+(p+q)x+pq$. A trinomial $x^2+bx+c$ factors over the integers this way exactly when integers $p$ and $q$ exist with $p+q=b$ and $pq=c$.",
+    "For integers $p$ and $q$, $(x + p)(x + q) = x^2 + (p + q)x + pq$. So $x^2 + bx + c$ factors this way, with integers, exactly when there are integers $p$ and $q$ with $p + q = b$ and $pq = c$.",
 };
 
 export const regentsAlgebraOneFunctionLessons = [
-  chainLesson({
-    id: "regents-function-missing-input",
-    title: "Completing a relation so it is a function",
-    summary:
-      "Use the one-output rule to decide which input keeps or breaks a function.",
-    templateIds: ["function-missing-input"],
-    objectives: [
-      "State the rule that makes a set of ordered pairs a function.",
-      "Choose an unknown input that keeps, or breaks, that rule.",
-    ],
-    openingTitle: "One input, one output",
-    opening: [
-      "An ordered pair $(x,y)$ pairs an input with an output. A set of ordered pairs is a function if no input has two different outputs. Two inputs may share an output; that is allowed.",
-      "If a new pair uses an input that is already in the set, its output must match the old pair's output. If it uses a new input, there is nothing to conflict with.",
-    ],
-    example: {
-      prompt:
-        "The relation $\\{(-2,3),(0,5),(4,-1),(k,7)\\}$ is a function. Which of $k=-2$, $0$, $4$, $1$ is possible?",
-      steps: [
-        "The inputs used so far are $-2$, $0$ and $4$, with outputs 3, 5 and $-1$.",
-        "$k=-2$ would give the input $-2$ the outputs 3 and 7. The same happens for $k=0$ and $k=4$.",
-        "$k=1$ is a new input with one output, so the relation is a function.",
+  {
+    senses,
+    noLink,
+    ...chainLesson({
+      id: "regents-function-missing-input",
+      title: "Completing a relation so it is a function",
+      summary:
+        "A function is a rule that gives each input exactly one output. A list of pairs like $(4, -1)$ shows inputs (first numbers) and outputs (second numbers). If one input showed up with two different outputs, it would not be a function. So to keep a function, an unknown input must be new, or must have the same output as before.",
+      templateIds: ["function-missing-input"],
+      objectives: [
+        "State the rule that makes a set of ordered pairs a function.",
+        "Choose an unknown input that keeps, or breaks, that rule.",
       ],
-      answer: "$k=1$",
-    },
-    methodTitle: "List inputs, then compare",
-    method: [
-      "Write each input with its output.",
-      "A repeated input needs a repeated output; otherwise the relation is not a function.",
-      "Use this to rule out values, or to find the value that causes the conflict.",
-    ],
-    formalTitle: "Definition of a function",
-    formal: [
-      "A relation is a set of ordered pairs. It is a function when for every input $x$ there is exactly one output $y$ with $(x,y)$ in the set.",
-      "Equivalently, whenever $(x,y_1)$ and $(x,y_2)$ are both in the set, $y_1=y_2$.",
-    ],
-    pitfalls: [
-      "Two different inputs with the same output do not break the rule.",
-      "Compare inputs only; the output of the new pair matters only when its input repeats.",
-    ],
-    parentGuide:
-      "Ask your learner to say which input would have two different partners, and what those partners would be.",
-  }),
+      openingTitle: "One input, one output",
+      opening: [
+        "An ordered pair $(x, y)$ matches an input $x$ with an output $y$. A set of ordered pairs is called a relation. It is a function if no input has two different outputs.",
+        "Two different inputs may share an output; that is allowed. For example, $(1, 5)$ and $(3, 5)$ can both be in a function.",
+        "If a new pair uses an input that is already in the set, its output must match the old pair's output. If it uses a new input, nothing can conflict.",
+      ],
+      example: {
+        prompt:
+          "The relation $\\{(-2,3),(0,5),(4,-1),(k,7)\\}$ is a function. Which of $k=-2$, $0$, $4$, $1$ is possible?",
+        steps: [
+          "List the inputs used so far: $-2$, 0 and 4, with outputs 3, 5 and $-1$.",
+          "$k=-2$ would give the input $-2$ two outputs, 3 and 7, which is not allowed. The same problem happens for $k=0$ and $k=4$.",
+          "$k=1$ is a new input with just one output, 7. So the relation stays a function.",
+        ],
+        answer: "$k=1$",
+      },
+      methodTitle: "List inputs, then compare",
+      method: [
+        "Write each input with its output.",
+        "A repeated input needs a repeated output. Otherwise the relation is not a function.",
+        "Use this to rule out values, or to find the value that causes the conflict.",
+      ],
+      formalTitle: "Definition of a function",
+      formal: [
+        "A relation is a set of ordered pairs. It is a function when, for every input $x$, there is exactly one output $y$ with $(x, y)$ in the set.",
+        "Another way to say it: whenever $(x, y_1)$ and $(x, y_2)$ are both in the set, $y_1 = y_2$. The small 1 and 2 just mark two outputs.",
+      ],
+      pitfalls: [
+        "Two different inputs with the same output do not break the rule.",
+        "Compare inputs. The output of the new pair matters only when its input repeats.",
+      ],
+      parentGuide:
+        "Ask your learner to say which input would have two different partners, and what those partners would be.",
+    }),
+  },
   chainLesson({
     id: "regents-shift-function-notation",
     title: "Shifting a function in function notation",
@@ -234,179 +287,201 @@ export const regentsAlgebraOneFunctionLessons = [
     parentGuide:
       "Have your learner track where the vertex goes after the shift and check it against the new rule.",
   }),
-  chainLesson({
-    id: "regents-radical-function-value",
-    title: "Evaluating a square-root function",
-    summary:
-      "Substitute into a rule with a square root, simplify the radicand, then apply the rest of the rule.",
-    templateIds: ["radical-function-value"],
-    objectives: [
-      "Substitute an input into a rule containing a square root.",
-      "Follow the order: radicand, root, coefficient, constant.",
-    ],
-    openingTitle: "Work from the inside out",
-    opening: [
-      "A rule like $f(x)=2\\sqrt{x-4}+1$ is a recipe: subtract 4, take the square root, double it, add 1. Evaluating $f$ at a number means following the recipe with that number.",
-      "The radicand, the expression under the root sign, is finished first. Its square root is the principal one, which is zero or positive.",
-    ],
-    example: {
-      prompt: "If $f(x)=2\\sqrt{x-4}+1$, what is $f(29)$?",
-      steps: [
-        "Radicand: $29-4=25$.",
-        "Square root: $\\sqrt{25}=5$.",
-        "Coefficient: $2\\cdot5=10$, then the constant: $10+1=11$.",
+  {
+    senses,
+    noLink,
+    ...chainLesson({
+      id: "regents-radical-function-value",
+      title: "Evaluating a square-root function",
+      summary:
+        "The square root of a number is the number that, times itself, gives it: $\\sqrt{25} = 5$. A rule like $f(x) = 2\\sqrt{x - 4} + 1$ is a recipe: subtract 4, take the square root, double it, then add 1. To find $f(29)$, follow the recipe with 29, working from the inside of the root outward.",
+      templateIds: ["radical-function-value"],
+      objectives: [
+        "Put an input into a rule that has a square root in it.",
+        "Work in order: the inside of the root, the root, the number in front, then the number added.",
       ],
-      answer: "$11$",
-    },
-    methodTitle: "Radicand, root, outside",
-    method: [
-      "Replace $x$ with the input, using parentheses for a negative input.",
-      "Simplify the radicand and take the root.",
-      "Then multiply and add outside the root.",
-    ],
-    formalTitle: "Principal square root",
-    formal: [
-      "For $y\\ge0$, $\\sqrt{y}$ denotes the nonnegative number whose square is $y$. The function $\\sqrt{x+b}$ is defined for $x\\ge-b$.",
-      "A radicand of 0 gives $\\sqrt{0}=0$, so $f(x)$ equals the constant outside the root.",
-    ],
-    pitfalls: [
-      "Compute the radicand before taking the root; $\\sqrt{x+b}$ is not $\\sqrt{x}+b$.",
-      "Apply the coefficient to the root only after finding the root.",
-      "A negative input needs parentheses when substituted.",
-    ],
-    parentGuide:
-      "Ask your learner to say the recipe in words before putting the number in.",
-  }),
-  chainLesson({
-    id: "regents-factor-then-zeros",
-    title: "Factoring to find zeros",
-    summary:
-      "Factor a trinomial with a large constant or a difference of squares, then use the zero product property.",
-    templateIds: ["zeros-of-factored-product", "factor-large-trinomial"],
-    objectives: [
-      "Factor a monic trinomial using the factor pair with the right product and sum.",
-      "Find every zero of a product, including the zeros of a difference of squares.",
-    ],
-    openingTitle: "A product is zero only when a factor is zero",
-    opening: [
-      "Two numbers multiply to zero only when one of them is zero. So if a function is written as a product of factors, its zeros are the solutions of each factor set to zero.",
-      "A difference of squares $x^2-36$ hides two factors, $(x-6)(x+6)$. A trinomial such as $x^2-14x-120$ also factors, once you find two numbers with product $-120$ and sum $-14$.",
-    ],
-    example: {
-      prompt: "Find all zeros of $f(x)=x(x^2-36)$, then factor $x^2-14x-120$.",
-      steps: [
-        "$x^2-36=(x-6)(x+6)$, so $f(x)=x(x-6)(x+6)$ and the zeros are $0$, $6$ and $-6$.",
-        "For $x^2-14x-120$: pairs of 120 include $20\\cdot6$, and $-20+6=-14$.",
-        "So $x^2-14x-120=(x-20)(x+6)$.",
+      openingTitle: "Work from the inside out",
+      opening: [
+        "The square root of a number is the number that, times itself, gives it. $\\sqrt{25} = 5$, because $5 \\times 5 = 25$. The root sign always means the root that is 0 or positive.",
+        "$f(x)$, read “$f$ of $x$”, is the output of the function $f$ for input $x$. A rule like $f(x) = 2\\sqrt{x - 4} + 1$ is a recipe: subtract 4, take the square root, double it, add 1. Finding $f$ at a number means following the recipe with that number.",
+        "The expression under the root sign is called the radicand. Work it out first.",
       ],
-      answer: "Zeros $\\{-6,0,6\\}$; $(x-20)(x+6)$",
-    },
-    methodTitle: "Factor, then set each factor to zero",
-    method: [
-      "For a trinomial, list factor pairs of the constant and check the sum; a negative constant needs a positive and a negative number.",
-      "For a difference of squares, take the square root of each term: $x^2-k^2=(x-k)(x+k)$.",
-      "Set every factor, including a lone $x$, equal to zero.",
-    ],
-    formalTitle: "Zero product property",
-    formal: [
-      "If $AB=0$ then $A=0$ or $B=0$. This holds for real numbers and fails if the product equals any other number.",
-      "$(x+p)(x+q)=x^2+(p+q)x+pq$, so factoring a monic trinomial means finding $p$ and $q$ with the given sum and product.",
-    ],
-    pitfalls: [
-      "$x^2=36$ has two solutions, 6 and $-6$, not 36.",
-      "Do not forget the zero from a lone factor $x$.",
-      "Several pairs share a product; check the sum before choosing.",
-    ],
-    parentGuide:
-      "Ask your learner to expand a factorization to confirm the middle term and the constant.",
-  }),
-  chainLesson({
-    id: "regents-solve-quadratic-equations",
-    title: "Solving quadratic equations by factoring and by formula",
-    summary:
-      "Find the inputs that give a stated output, and use the quadratic formula when the solutions are irrational.",
-    templateIds: ["quadratic-negative-output", "quadratic-formula-positive"],
-    objectives: [
-      "Rewrite $f(x)=c$ as an equation equal to zero and factor it.",
-      "Apply the quadratic formula with correct signs when the leading coefficient is greater than 1.",
-    ],
-    openingTitle: "Make one side zero first",
-    opening: [
-      "To find where $f(x)$ equals a number such as $-8$, write $f(x)=-8$ and move the number to the left. Now the right side is 0, and you can factor and use the zero product property.",
-      "Not every quadratic factors over the integers. The quadratic formula always works: $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$.",
-    ],
-    example: {
-      prompt:
-        "If $f(x)=x^2-8x+7$, find $x$ when $f(x)=-8$. Then write the solutions of $3x^2+4x-2=0$.",
-      steps: [
-        "$x^2-8x+7=-8$ becomes $x^2-8x+15=0$, which factors as $(x-3)(x-5)=0$, so $x=3$ or $x=5$.",
-        "For $3x^2+4x-2=0$: $a=3$, $b=4$, $c=-2$.",
-        "The discriminant is $16-4(3)(-2)=40$, so $x=\\frac{-4\\pm\\sqrt{40}}{6}$.",
+      example: {
+        prompt: "If $f(x)=2\\sqrt{x-4}+1$, what is $f(29)$?",
+        steps: [
+          "Put 29 in place of $x$, and work out the radicand first: $29-4=25$.",
+          "Take the square root of the radicand: $\\sqrt{25}=5$, because $5 \\times 5 = 25$.",
+          "Now apply the rest of the rule. Multiply by the 2 in front: $2\\cdot5=10$. Then add 1: $10+1=11$.",
+        ],
+        answer: "$11$",
+      },
+      methodTitle: "Radicand, root, outside",
+      method: [
+        "Replace $x$ with the input. Use parentheses for a negative input.",
+        "Work out the radicand and take its square root.",
+        "Then multiply and add outside the root.",
       ],
-      answer: "$x=3,5$ and $x=\\frac{-4\\pm\\sqrt{40}}{6}$",
-    },
-    methodTitle: "Zero form, then factor or formula",
-    method: [
-      "Move all terms to one side so the equation equals 0, combining constants.",
-      "If the trinomial factors, use the zero product property. Otherwise read $a$, $b$, $c$ and use the formula.",
-      "In the formula, start with $-b$, put all of $4ac$ under the root, and divide by $2a$.",
-    ],
-    formalTitle: "The quadratic formula",
-    formal: [
-      "For $a\\ne0$, completing the square on $ax^2+bx+c=0$ gives $x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}$. The expression $b^2-4ac$ is the discriminant.",
-      "If the discriminant is a perfect square the solutions are rational; if it is positive and not a perfect square they are irrational.",
-    ],
-    pitfalls: [
-      "The number in $f(x)=-8$ is an output. Solving $f(x)=0$ answers a different question.",
-      "The formula starts with $-b$, the opposite of the coefficient of $x$.",
-      "The denominator is $2a$ for the whole numerator, not just for one term.",
-    ],
-    parentGuide:
-      "Ask your learner to substitute each solution back into the original equation or function.",
-  }),
-  chainLesson({
-    id: "regents-parabola-axis-rule",
-    title: "Choosing a parabola by its axis of symmetry",
-    summary:
-      "Use $x=-\\frac{b}{2a}$ to identify which quadratic rule has a stated axis.",
-    templateIds: ["parabola-axis-rule"],
-    objectives: [
-      "Compute the axis of symmetry from the standard form of a quadratic.",
-      "Match a required axis to a rule, keeping track of sign and scale.",
-    ],
-    openingTitle: "The axis depends on the first two coefficients",
-    opening: [
-      "A parabola is a mirror image of itself across a vertical line, its axis of symmetry. The two zeros, when they exist, sit the same distance on each side of that line.",
-      "For $y=ax^2+bx+c$ the axis is at $x=-\\frac{b}{2a}$. The constant $c$ moves the whole graph up or down, but not left or right.",
-    ],
-    example: {
-      prompt: "Find the axis of symmetry of $y=2x^2+16x-5$.",
-      steps: [
-        "Here $a=2$ and $b=16$.",
-        "$x=-\\frac{16}{2\\cdot2}=-\\frac{16}{4}$.",
-        "The axis is $x=-4$.",
+      formalTitle: "Principal square root",
+      formal: [
+        "For $y \\ge 0$, $\\sqrt{y}$ means the number that is 0 or positive and whose square ($\\sqrt{y}$ times itself) is $y$. This is called the principal square root. The function $\\sqrt{x + b}$ is defined only for $x \\ge -b$, so that the radicand is not negative.",
+        "A radicand of 0 gives $\\sqrt{0} = 0$. Then $f(x)$ equals the number added outside the root.",
       ],
-      answer: "$x=-4$",
-    },
-    methodTitle: "Compute for each rule",
-    method: [
-      "For each rule, read $a$ and $b$ with their signs.",
-      "Compute $-\\frac{b}{2a}$ and compare with the required line.",
-      "Choose the rule that matches, or work backward: $b=-2ah$ for the axis $x=h$.",
-    ],
-    formalTitle: "Axis of symmetry",
-    formal: [
-      "Completing the square gives $y=a\\left(x+\\frac{b}{2a}\\right)^2+c-\\frac{b^2}{4a}$. The graph is symmetric about $x=-\\frac{b}{2a}$.",
-      "The vertex has this $x$-coordinate, so the axis passes through it.",
-    ],
-    pitfalls: [
-      "Use $2a$, not $a$, in the denominator.",
-      "The axis has the opposite sign of $\\frac{b}{2a}$.",
-      "The constant $c$ does not change the axis.",
-    ],
-    parentGuide:
-      "Ask your learner to check the answer by finding the midpoint of the two zeros, when the rule has them.",
-  }),
+      pitfalls: [
+        "Work out the radicand before taking the root. $\\sqrt{x + b}$ is not $\\sqrt{x} + b$.",
+        "Multiply by the number in front only after finding the root.",
+        "A negative input needs parentheses when you put it in.",
+      ],
+      parentGuide:
+        "Ask your learner to say the recipe in words before putting the number in.",
+    }),
+  },
+  {
+    senses,
+    noLink,
+    ...chainLesson({
+      id: "regents-factor-then-zeros",
+      title: "Factoring to find zeros",
+      summary:
+        "A zero of a function is an input that makes the output 0. If two numbers multiply to make 0, at least one of them is 0. So write the function as factors, the parts being multiplied, like $x(x - 6)(x + 6)$. Then set each factor equal to 0. Here that gives the zeros 0, 6 and $-6$.",
+      templateIds: ["zeros-of-factored-product", "factor-large-trinomial"],
+      objectives: [
+        "Factor $x^2 + bx + c$ by finding two numbers that multiply to $c$ and add to $b$.",
+        "Find every zero of a product, including the two zeros of an expression like $x^2 - 36$.",
+      ],
+      openingTitle: "A product is zero only when a factor is zero",
+      opening: [
+        "A zero of a function is an input that makes its output 0. Factors are numbers or expressions that are multiplied together, and the result is called the product.",
+        "Two numbers multiply to 0 only when one of them is 0. So if a function is written as a product of factors, its zeros come from setting each factor equal to 0.",
+        "In $x^2 - 36$, $x^2$ means $x$ times $x$. It is one square minus another, called a difference of squares, and it hides two factors: $(x - 6)(x + 6)$.",
+        "An expression like $x^2 - 14x - 120$ has three terms and is called a trinomial. It factors once you find two numbers that multiply to $-120$ and add to $-14$.",
+      ],
+      example: {
+        prompt:
+          "Find all zeros of $f(x)=x(x^2-36)$, then factor $x^2-14x-120$.",
+        steps: [
+          "Factor the difference of squares: $x^2-36=(x-6)(x+6)$. So $f(x)=x(x-6)(x+6)$. Setting each factor to 0 gives the zeros 0, 6 and $-6$.",
+          "For $x^2-14x-120$, look for two numbers that multiply to $-120$ and add to $-14$. The pairs that multiply to 120 include $20\\cdot6$, and $-20+6=-14$.",
+          "So $x^2-14x-120=(x-20)(x+6)$. Check: $-20 \\cdot 6 = -120$ and $-20 + 6 = -14$.",
+        ],
+        answer: "Zeros $\\{-6,0,6\\}$; $(x-20)(x+6)$",
+      },
+      methodTitle: "Factor, then set each factor to zero",
+      method: [
+        "For a trinomial, list the pairs of numbers that multiply to the plain number, and check each pair's sum. A negative plain number needs one positive and one negative number.",
+        "For a difference of squares, use $x^2 - k^2 = (x - k)(x + k)$.",
+        "Set every factor, including a lone $x$, equal to 0.",
+      ],
+      formalTitle: "Zero product property",
+      formal: [
+        "If $AB = 0$, then $A = 0$ or $B = 0$. This is called the zero product property. It works only when the product is 0, not any other number.",
+        "$(x + p)(x + q) = x^2 + (p + q)x + pq$. So factoring $x^2 + bx + c$ means finding $p$ and $q$ with sum $b$ and product $c$.",
+      ],
+      pitfalls: [
+        "$x^2 = 36$ has two solutions, 6 and $-6$, not 36.",
+        "Do not forget the zero 0 from a factor that is just $x$.",
+        "Several pairs share a product. Check the sum before choosing.",
+      ],
+      parentGuide:
+        "Ask your learner to multiply a factored answer back out, to check the middle term and the plain number.",
+    }),
+  },
+  {
+    senses,
+    noLink,
+    ...chainLesson({
+      id: "regents-solve-quadratic-equations",
+      title: "Solving quadratic equations by factoring and by formula",
+      summary:
+        "A quadratic equation has an $x^2$ term ($x$ times $x$), like $x^2 - 8x + 15 = 0$. To solve one, first get 0 on one side. Then factor it, because two factors multiply to 0 only when one of them is 0. When it will not factor neatly, a formula called the quadratic formula always finds the solutions.",
+      templateIds: ["quadratic-negative-output", "quadratic-formula-positive"],
+      objectives: [
+        "Rewrite $f(x) = c$ as an equation equal to 0, and factor it.",
+        "Use the quadratic formula, with every sign right, when the number in front of $x^2$ is more than 1.",
+      ],
+      openingTitle: "Make one side zero first",
+      opening: [
+        "$f(x)$, read “$f$ of $x$”, is the output of the function $f$ for input $x$. To find where $f(x)$ equals a number such as $-8$, write $f(x) = -8$. Then add 8 to both sides, so the right side is 0.",
+        "Now factor. Two factors (parts being multiplied) multiply to 0 only when one of them is 0. So set each factor equal to 0 and solve.",
+        "Not every quadratic factors into whole numbers. For $ax^2 + bx + c = 0$ with $a \\ne 0$, the quadratic formula always works: $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The sign $\\pm$ means “plus or minus”, so it gives two answers. The root sign $\\sqrt{\\phantom{x}}$ means square root.",
+      ],
+      example: {
+        prompt:
+          "If $f(x)=x^2-8x+7$, find $x$ when $f(x)=-8$. Then write the solutions of $3x^2+4x-2=0$.",
+        steps: [
+          "Set $x^2-8x+7=-8$. Add 8 to both sides to get 0 on the right: $x^2-8x+15=0$. It factors as $(x-3)(x-5)=0$, so $x=3$ or $x=5$.",
+          "$3x^2+4x-2=0$ does not factor into whole numbers, so use the formula. Read the numbers with their signs: $a=3$, $b=4$, $c=-2$.",
+          "Work out the part under the root, called the discriminant: $16-4(3)(-2)=16+24=40$. So $x=\\frac{-4\\pm\\sqrt{40}}{6}$.",
+        ],
+        answer: "$x=3,5$ and $x=\\frac{-4\\pm\\sqrt{40}}{6}$",
+      },
+      methodTitle: "Zero form, then factor or formula",
+      method: [
+        "Move all terms to one side so the equation equals 0, combining the plain numbers.",
+        "If it factors, set each factor equal to 0. Otherwise read $a$, $b$ and $c$, and use the formula.",
+        "In the formula, start with $-b$, put all of $4ac$ under the root, and divide by $2a$.",
+      ],
+      formalTitle: "The quadratic formula",
+      formal: [
+        "For $a \\ne 0$, completing the square on $ax^2 + bx + c = 0$ gives $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$. The number $b^2 - 4ac$ is called the discriminant.",
+        "If the discriminant is a perfect square (like 16 or 25), the solutions are fractions of whole numbers, called rational. If it is positive and not a perfect square, they are irrational.",
+      ],
+      pitfalls: [
+        "The number in $f(x) = -8$ is an output. Solving $f(x) = 0$ answers a different question.",
+        "The formula starts with $-b$, the opposite of the number multiplying $x$.",
+        "Divide the whole top by $2a$, not just one part of it.",
+      ],
+      parentGuide:
+        "Ask your learner to put each solution back into the original equation or function.",
+    }),
+  },
+  {
+    senses,
+    noLink,
+    ...chainLesson({
+      id: "regents-parabola-axis-rule",
+      title: "Choosing a parabola by its axis of symmetry",
+      summary:
+        "The graph of $y = ax^2 + bx + c$ is a U-shaped curve called a parabola. It is a mirror image of itself across an up-and-down line through its turning point. That line is called the axis of symmetry. It is always $x = -\\frac{b}{2a}$, so you can find it from $a$ and $b$ alone.",
+      templateIds: ["parabola-axis-rule"],
+      objectives: [
+        "Work out the axis of symmetry from $y = ax^2 + bx + c$.",
+        "Match a required axis to a rule, keeping track of the sign.",
+      ],
+      openingTitle: "The axis depends on the first two coefficients",
+      opening: [
+        "In $y = ax^2 + bx + c$, $x^2$ means $x$ times $x$, and $a$ is not 0. The numbers $a$, $b$ and $c$ are called coefficients. The graph is a parabola, a U-shaped curve.",
+        "A parabola is a mirror image of itself across an up-and-down line, called its axis of symmetry. The line passes through the turning point, called the vertex. Where the parabola crosses the $x$-axis, the two crossing points sit the same distance from that line.",
+        "For $y = ax^2 + bx + c$, the axis is $x = -\\frac{b}{2a}$. The plain number $c$ moves the whole graph up or down, but not left or right.",
+      ],
+      example: {
+        prompt: "Find the axis of symmetry of $y=2x^2+16x-5$.",
+        steps: [
+          "Read the numbers: $a=2$ (with $x^2$) and $b=16$ (with $x$). The $-5$ does not affect the axis.",
+          "Put them into $x=-\\frac{b}{2a}$: $x=-\\frac{16}{2\\cdot2}=-\\frac{16}{4}$.",
+          "Simplify: $-\\frac{16}{4}=-4$. The axis is the line $x=-4$.",
+        ],
+        answer: "$x=-4$",
+      },
+      methodTitle: "Compute for each rule",
+      method: [
+        "For each rule, read $a$ and $b$ with their signs.",
+        "Work out $-\\frac{b}{2a}$ and compare it with the required line.",
+        "Choose the rule that matches. Or work backward: the axis $x = h$ needs $b = -2ah$.",
+      ],
+      formalTitle: "Axis of symmetry",
+      formal: [
+        "Completing the square gives $y = a\\left(x + \\frac{b}{2a}\\right)^2 + c - \\frac{b^2}{4a}$. The graph is symmetric about $x = -\\frac{b}{2a}$.",
+        "The vertex has this $x$-coordinate, so the axis passes through it.",
+      ],
+      pitfalls: [
+        "Divide by $2a$, not $a$.",
+        "The axis has the opposite sign of $\\frac{b}{2a}$.",
+        "The plain number $c$ does not change the axis.",
+      ],
+      parentGuide:
+        "Ask your learner to check the answer by finding the point halfway between the two places the graph crosses the $x$-axis, when it crosses.",
+    }),
+  },
 ];
 
 const fm = (

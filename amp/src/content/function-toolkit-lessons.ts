@@ -1,6 +1,27 @@
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
+/** Glossary readings for the piecewise lesson and its two methods. */
+const PIECE_SENSES = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  boundary: "boundary",
+  vertex: "vertex-parabola",
+} as const;
+const PIECE_NO_LINK = [
+  "whole",
+  "part",
+  "parts",
+  "change",
+  "changes",
+  "opposite",
+  "mean",
+  "means",
+  "rule",
+  "rules",
+  "leaves",
+];
+
 /** The function toolkit: functions defined in pieces, transformations of
  * graphs, composition, inverses, and comparing functions across
  * representations. */
@@ -9,35 +30,41 @@ export const functionToolkitLessons: Lesson[] = [
     id: "piecewise-functions",
     title: "Functions defined in pieces",
     summary:
-      "A piecewise function uses different rules for different allowed inputs. Find the condition your input satisfies, then use that rule alone.",
+      "A function is a rule that gives each input exactly one output. A piecewise function uses different rules for different inputs. For example: double the input and add 1 when it is less than 2, but use $-x + 6$ when it is 2 or more. First find which rule your input belongs to. Then use that rule alone.",
     templateIds: ["piecewise-evaluate", "piecewise-reading"],
     includeGeneratedRepresentation: false,
+    senses: PIECE_SENSES,
+    noLink: PIECE_NO_LINK,
     objectives: [
-      "Evaluate a piecewise function at any input, including the inputs where the rule changes.",
-      "Read a piecewise graph: open circles, filled dots, and each piece's rule.",
-      "Write $|x - h| + k$ as two linear pieces, and count solutions on a piecewise graph.",
+      "Find the output of a piecewise function for any input, including the inputs where the rule changes.",
+      "Read a piecewise graph: open circles, filled dots, and the rule for each piece.",
+      "Write $|x - h| + k$ as two straight pieces, and count solutions on a piecewise graph.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "One input, one rule",
         paragraphs: [
-          "A function gives each allowed input one output. A piecewise function uses one rule for some inputs and another for the rest. The condition beside each rule tells which inputs use it. At a boundary, $<$ excludes the boundary while $\\ge$ includes it. Choose the rule first, then substitute the input.",
+          "A function gives each allowed input one output. We write $f(x)$, read “$f$ of $x$”, for the output when the input is $x$. A piecewise function uses one rule for some inputs and another rule for the rest.",
+          "A condition next to each rule says which inputs use it. The sign $<$ means “is less than”, and $\\ge$ means “is greater than or equal to”. The number where the rule changes is called the boundary. A condition with $<$ leaves the boundary out; one with $\\ge$ includes it.",
+          "So first choose the rule, by checking which condition your input makes true. Then put the input into that rule.",
         ],
       },
       {
         title: "Read a two-rule function",
         paragraphs: [
-          "In $f(x)=\\begin{cases}2x+1&x<2\\\\-x+6&x\\ge2\\end{cases}$, the cases split the number line at 2 without overlap. For $x=1$, use the first rule to get $f(1)=3$. At $x=2$, use the second rule to get $f(2)=4$.",
-          "On the graph, the left piece ends in an open circle at $(2,5)$ and the right piece starts with a filled dot at $(2,4)$. Only the filled dot is included.",
+          "Look at $f(x)=\\begin{cases}2x+1&x<2\\\\-x+6&x\\ge2\\end{cases}$. The curly bracket lists the rules, each with its condition on the right. The conditions split the number line at 2, with no overlap.",
+          "For $x=1$: $1 < 2$, so use the first rule. $f(1)=2 \\cdot 1+1=3$. For $x=2$: $2 \\ge 2$, so use the second rule. $f(2)=-2+6=4$.",
+          "On the graph, the left piece ends in an open (empty) circle at $(2,5)$, and the right piece starts with a filled dot at $(2,4)$. Only the filled dot is part of the graph.",
         ],
         illustration: "piecewise-pieces",
       },
       {
         title: "Absolute value as two pieces",
         paragraphs: [
-          "$|u| = u$ when $u \\ge 0$ and $|u| = -u$ when $u < 0$. So $|x - 1| + 2$ is $(x - 1) + 2 = x + 1$ for $x \\ge 1$ and $-(x - 1) + 2 = -x + 3$ for $x < 1$: two rays meeting at the vertex $(1, 2)$.",
-          "To solve $f(x) = c$ on a graph, draw the line $y = c$ and count where it meets the graph. A filled dot on the line counts; an open circle does not.",
+          "The absolute value of a number is its distance from 0, written with bars: $|-3| = 3$. So $|u| = u$ when $u \\ge 0$, and $|u| = -u$ when $u < 0$, which turns a negative number positive.",
+          "That makes $|x - 1| + 2$ a piecewise function. For $x \\ge 1$ it is $(x - 1) + 2 = x + 1$. For $x < 1$ it is $-(x - 1) + 2 = -x + 3$. These are two straight pieces that meet at the corner point $(1, 2)$, called the vertex.",
+          "To solve $f(x) = c$ on a graph, draw the flat line $y = c$ and count where it meets the graph. A filled dot on the line counts; an open circle does not.",
         ],
         illustration: "abs-pieces",
       },
@@ -46,8 +73,8 @@ export const functionToolkitLessons: Lesson[] = [
       prompt:
         "Let $f(x) = \\begin{cases} 2x + 1 & x < 2 \\\\ -x + 6 & x \\ge 2 \\end{cases}$. What is $f(2)$?",
       steps: [
-        "$2 \\ge 2$, so $x = 2$ uses the rule $f(x) = -x + 6$.",
-        "$f(2) = -2 + 6 = 4$.",
+        "Check the conditions with $x = 2$. $2 < 2$ is false, but $2 \\ge 2$ is true, so use the second rule, $f(x) = -x + 6$.",
+        "Put 2 into that rule only: $f(2) = -2 + 6 = 4$.",
       ],
       answer: "4",
     },
@@ -56,18 +83,18 @@ export const functionToolkitLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "A function gives each input one output; a piecewise function does it with conditions that do not overlap, so exactly one rule applies to each input.",
-          "$|u|$ equals $u$ where $u \\ge 0$ and $-u$ where $u < 0$, and the solutions of $f(x) = c$ are the points where the graph meets the line $y = c$.",
+          "A function gives each input one output. A piecewise function does this with conditions that do not overlap, so exactly one rule applies to each input.",
+          "$|u|$ equals $u$ where $u \\ge 0$, and $-u$ where $u < 0$. The solutions of $f(x) = c$ are the inputs where the graph meets the line $y = c$.",
         ],
       },
     ],
     pitfalls: [
-      "Use one rule only: the condition that the input satisfies picks it.",
-      "At a boundary, read the inequality signs: $\\le$ and $\\ge$ include the boundary, $<$ and $>$ do not.",
+      "Use one rule only. The condition that the input makes true picks it.",
+      "At a boundary, read the signs: $\\le$ and $\\ge$ include the boundary, $<$ and $>$ do not.",
       "An open circle is not a point of the graph.",
     ],
     parentGuide:
-      "Draw a number line, mark where the rule changes, and shade each condition in its own color. Ask which color an input lands in before computing anything.",
+      "Draw a number line, mark where the rule changes, and shade each condition in its own color. Ask which color an input lands in before working anything out.",
   },
   {
     id: "function-transformations",
@@ -300,22 +327,30 @@ export const functionToolkitLessons: Lesson[] = [
 
 export const functionToolkitMethods: Record<string, ProblemMethod> = {
   "piecewise-evaluate": {
-    goal: "Evaluate a function defined by different rules on different intervals.",
+    goal: "Find the output of a function that uses different rules for different inputs.",
+    senses: PIECE_SENSES,
+    noLink: PIECE_NO_LINK,
+    intuition:
+      "A function gives each input one output; $f(x)$, read “$f$ of $x$”, is the output for input $x$. A piecewise function uses different rules for different inputs. A condition next to each rule, such as $x < 2$ or $x \\ge 2$, says which inputs use it. The sign $\\le$ means “less than or equal to” and $\\ge$ means “greater than or equal to”.",
     terms: ["piecewise-function"],
     method: [
-      "Test the input in each condition; exactly one is true.",
-      "At a boundary, $\\le$ and $\\ge$ include it, $<$ and $>$ do not; on a graph, use the filled dot.",
-      "Substitute the input into that piece's rule only.",
+      "Test the input in each condition. Exactly one is true.",
+      "At the number where the rule changes, $\\le$ and $\\ge$ include it, while $<$ and $>$ do not. On a graph, use the filled dot, not the open circle.",
+      "Put the input into that piece's rule only.",
     ],
     watch:
       "Choose the piece by its condition, never by which rule is listed first.",
   },
   "piecewise-reading": {
-    goal: "Read a piecewise function: rewrite an absolute value, find a piece's rule, or count solutions.",
+    goal: "Read a piecewise function: rewrite an absolute value in pieces, find a piece's rule, or count solutions.",
+    senses: PIECE_SENSES,
+    noLink: PIECE_NO_LINK,
+    intuition:
+      "A piecewise function uses different rules for different inputs, and its graph is made of pieces. A filled dot belongs to the graph; an open circle does not. The absolute value of a number is its distance from 0, written with bars: $|-3| = 3$. So $|x - h|$ is one rule where $x - h$ is 0 or more, and another where it is negative.",
     method: [
-      "For $|x - h|$, use $x - h$ where $x \\ge h$ and $-(x - h)$ where $x < h$, then simplify.",
-      "For a piece on a graph, read two points to find its slope, then extend it to $x = 0$.",
-      "To count solutions of $f(x) = c$, follow the line $y = c$ and count where it meets the graph.",
+      "For $|x - h|$, use $x - h$ where $x \\ge h$, and $-(x - h)$ where $x < h$. Then simplify each piece.",
+      "For a piece on a graph, read two of its points to find its slope (rise over run). Then extend it back to $x = 0$ to find where it would cross the up-and-down axis.",
+      "To count solutions of $f(x) = c$, follow the flat line $y = c$ and count where it meets the graph.",
     ],
     watch: "An open circle on the line is not a solution; a filled dot is.",
   },
@@ -394,9 +429,9 @@ export const functionToolkitMethods: Record<string, ProblemMethod> = {
 
 export const functionToolkitPrinciples: Record<string, string> = {
   "piecewise-evaluate":
-    "A function gives each input one output; a piecewise function does it with conditions that do not overlap, so exactly one rule applies to each input.",
+    "A function gives each input one output. A piecewise function does this with conditions that do not overlap, so exactly one rule applies to each input.",
   "piecewise-reading":
-    "$|u|$ equals $u$ where $u \\ge 0$ and $-u$ where $u < 0$, and the solutions of $f(x) = c$ are the points where the graph meets the line $y = c$.",
+    "$|u|$ equals $u$ where $u \\ge 0$, and $-u$ where $u < 0$. The solutions of $f(x) = c$ are the inputs where the graph meets the line $y = c$.",
   "transform-equation":
     "$y = af(x - h) + k$ moves every point $\\left(x, y\\right)$ of $y = f(x)$ to $\\left(x + h, ay + k\\right)$.",
   "transform-point":
