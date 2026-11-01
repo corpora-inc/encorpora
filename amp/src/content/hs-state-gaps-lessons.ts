@@ -3,46 +3,73 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const hsStateGapMethods: Record<string, ProblemMethod> = {
   "gauss-3x3-solve": {
-    goal: "Use elimination on three equations in $x$, $y$, $z$ to find the solution, a row operation, or how many solutions exist.",
+    goal: "Combine three equations in $x$, $y$ and $z$ to find the solution, choose a step that cancels a letter, or count the solutions.",
     intuition:
-      "One equation in three unknowns leaves many possibilities. Each independent equation removes one degree of freedom, so three independent equations can pin down a single point. Elimination turns three equations into two, then one, by adding multiples of one equation to another without changing the solutions.",
+      "A system of equations is a set of equations that must all be true at once. Its solution is an ordered triple $(x, y, z)$ that makes every equation true. The part before an equals sign is called the left side; the part after is the right side. If two equations are true, adding left side to left side and right side to right side gives another true equation. Multiply one by a number other than 0 first so a letter cancels: its coefficients, the numbers in front of it, add to zero.",
+    senses: { term: "term-expression", side: "side-of-equation" },
+    noLink: [
+      "multiple",
+      "multiples",
+      "leaves",
+      "combination",
+      "third",
+      "degree",
+      "part",
+    ],
     terms: ["elimination", "row-operation", "back-substitution"],
     method: [
-      "Use one equation to cancel $x$ from the other two. The multiplier is the ratio of the two $x$ coefficients.",
+      "Use one equation to cancel $x$ from the other two. Compare the $x$ coefficients to choose the multiplier, the number to multiply by, such as 2 for $2x$ and $x$.",
       "Use one of the two new equations to cancel $y$ from the other. The last equation has only $z$.",
-      "Back-substitute: find $z$, then $y$, then $x$. Check in all three original equations.",
-      "If one equation reduces to $0=0$, there are infinitely many solutions. If one reduces to $0=c$ with $c\\ne0$, there is no solution.",
+      "Solve for $z$, then put it back to find $y$, then $x$. Check all three original equations.",
+      "Finish the elimination. If any row becomes $0=c$ with $c$ not 0, there is no solution. If no row is false and a row became $0=0$, there are infinitely many solutions.",
     ],
     watch:
-      "Apply the same operation to the right-hand sides, not only the coefficients. When one equation is a combination of the others, compare the constants: matching constants give infinitely many solutions, different constants give none.",
+      "Do each step to the number on the right too, not only to the letters. When a row cancels completely, check its right-hand number. Any false row like $0 = 5$ means no solution. A row $0 = 0$, with no false row, means infinitely many.",
   },
   "quadratic-inequality-interval": {
-    goal: "Solve a quadratic inequality using its zeros and the sign of its leading coefficient, and write the solution set.",
+    goal: "Solve an inequality with an $x^2$ part by finding where it equals 0, then write the answer with brackets (interval notation).",
     intuition:
-      "The graph of a quadratic is a parabola. An inequality asks where that parabola is above or below the $x$-axis. The zeros are where the graph crosses the axis, so between them and beyond them the sign is constant.",
+      "In $x^2 - x - 6 < 0$, $x^2$ means $x$ times $x$ and $<$ means “is less than.” An expression with an $x^2$ part and no higher power is called a quadratic. Its graph is a U-shaped curve called a parabola. The zeros are the $x$-values where it equals 0, where the curve meets the $x$-axis. The sign can only change at a zero. So between and beyond the zeros the sign stays the same.",
+    senses: { term: "term-expression", side: "side-of-equation" },
+    noLink: [
+      "factor",
+      "opposite",
+      "changes",
+      "square",
+      "part",
+      "parts",
+      "change",
+    ],
     terms: ["zero-of-a-function", "interval-notation"],
     method: [
-      "Move every term to one side so the other side is 0, then find the zeros by factoring or the quadratic formula.",
-      "Look at the leading coefficient: positive opens up, so the expression is negative between the zeros and positive outside; negative reverses this.",
-      "Choose the region matching the inequality. Include the zeros for $\\le$ and $\\ge$; exclude them for $<$ and $>$.",
-      "With no real zeros, the parabola stays on one side of the axis, so the solution is all real numbers or none. With one repeated zero, only that point differs.",
+      "A term is one piece joined by + or −. Move every term to one side so the other side is 0. Find the zeros by factoring or the quadratic formula.",
+      "The leading coefficient is the number multiplying $x^2$. Positive: the curve opens up, so it is negative between the zeros. Negative: this reverses.",
+      "Keep the parts that fit the inequality. Include the zeros, with square brackets, for $\\le$ or $\\ge$. Leave them out, with round brackets, for $<$ or $>$.",
+      "With no real zeros, the curve stays on one side of the axis, so the answer is all real numbers or none. With one repeated zero, only that point differs.",
     ],
     watch:
-      "Check one test value from your answer in the original inequality. A negative leading coefficient flips which region is positive, and the endpoints belong only when the inequality includes equality.",
+      "Test one value from your answer in the original inequality. A negative leading coefficient flips which part is positive. Zeros belong only when the sign includes “or equal to.”",
   },
   "conditional-statements": {
-    goal: "Form and compare a conditional, its converse, inverse and contrapositive, and evaluate compound statements from truth values.",
+    goal: "Build or compare an if-then statement's converse, inverse and contrapositive, or decide if a statement with and, or, not is true.",
     intuition:
-      "A conditional “if $P$, then $Q$” promises that whenever $P$ holds, $Q$ holds. It breaks only when $P$ is true and $Q$ is false. Changing the order or adding negations makes related statements, and only some of them say the same thing.",
+      "A conditional is an if-then statement, “if $P$, then $Q$,” where $P$ and $Q$ are statements that are true or false. $P$ is the hypothesis and $Q$ the conclusion. It promises that whenever $P$ is true, $Q$ is true. It is false only when $P$ is true and $Q$ is false. The converse swaps the parts, the inverse adds “not” to both, and the contrapositive does both.",
+    senses: {
+      inverse: "inverse-statement",
+      square: "square-shape",
+      side: "side",
+      multiple: "multiple",
+    },
+    noLink: ["parts", "part", "opposite"],
     terms: ["converse", "inverse-statement", "contrapositive", "biconditional"],
     method: [
-      "Name the hypothesis $P$ and the conclusion $Q$ in “if $P$, then $Q$”.",
-      "Build the requested form: converse swaps, inverse negates, contrapositive does both.",
-      "A statement and its contrapositive always have the same truth value; the converse and inverse also match each other but may differ from the original.",
-      "For a compound statement, evaluate the smallest parts first. A conditional is false only for true then false; the negation of “if $P$, then $Q$” is “$P$ and not $Q$”.",
+      "In “if $P$, then $Q$,” name the hypothesis $P$ (after “if”) and the conclusion $Q$ (after “then”).",
+      "Build the form asked for. Converse: swap. Inverse: add “not” to both. Contrapositive: do both.",
+      "A statement and its contrapositive are always both true or both false. The converse and inverse match each other, but may differ from the original.",
+      "For “and,” “or” and “not,” work out the smallest parts first. The opposite of “if $P$, then $Q$” is “$P$ and not $Q$.”",
     ],
     watch:
-      "A true conditional does not guarantee a true converse. To show a converse false, find one case where its hypothesis holds and its conclusion fails.",
+      "A true conditional can have a false converse. To show a converse false, find one case where its hypothesis is true and its conclusion is false.",
   },
   "cube-root-equation": {
     goal: "Solve equations with a cube root or a cube over the real numbers, and explain why cube roots create no extraneous solutions.",
@@ -101,11 +128,11 @@ export const hsStateGapMethods: Record<string, ProblemMethod> = {
 
 export const hsStateGapPrinciples: Record<string, string> = {
   "gauss-3x3-solve":
-    "Replacing an equation by itself plus a multiple of another equation gives an equivalent system. A linear system has no solution, exactly one, or infinitely many; the three-variable system has exactly one solution when elimination produces a pivot in every variable.",
+    "Replacing an equation by itself plus a multiple of another equation gives an equivalent system, one with the same solutions. A system of linear equations has no solution, exactly one, or infinitely many. Three equations in $x$, $y$ and $z$ have exactly one solution when elimination leaves one equation for each letter, each with a nonzero coefficient on its leading letter.",
   "quadratic-inequality-interval":
-    "For $a\\ne0$, $ax^2+bx+c$ has the sign of $a$ outside its real zeros and the opposite sign between them. With no real zeros it has the sign of $a$ everywhere; with a double zero it has the sign of $a$ everywhere except at that zero.",
+    "For real numbers $a$, $b$, $c$ with $a\\ne0$, the expression $ax^2+bx+c$ has the same sign as $a$ outside its real zeros and the opposite sign between them. With no real zeros it has the sign of $a$ everywhere. With one repeated zero it has the sign of $a$ everywhere except at that zero, where it is 0.",
   "conditional-statements":
-    "$P\\to Q$ is equivalent to its contrapositive $\\neg Q\\to\\neg P$, and the converse $Q\\to P$ is equivalent to the inverse $\\neg P\\to\\neg Q$. The negation of $P\\to Q$ is $P\\land\\neg Q$, and $P\\leftrightarrow Q$ means both $P\\to Q$ and $Q\\to P$.",
+    "Write $P\\to Q$ for “if $P$, then $Q$” and $\\neg P$ for “not $P$.” $P\\to Q$ is equivalent to its contrapositive $\\neg Q\\to\\neg P$, and the converse $Q\\to P$ is equivalent to the inverse $\\neg P\\to\\neg Q$. The negation of $P\\to Q$ is $P\\land\\neg Q$ (“$P$ and not $Q$”). A biconditional is a statement “$P$ if and only if $Q$,” written $P\\leftrightarrow Q$: it means both $P\\to Q$ and $Q\\to P$.",
   "cube-root-equation":
     "The function $x\\mapsto x^3$ is one-to-one on the real numbers, so $u^3=v^3$ exactly when $u=v$. Every real number has exactly one real cube root, and cubing both sides of an equation is reversible.",
   "polar-graph-identify":
@@ -119,82 +146,135 @@ export const hsStateGapLessons: Lesson[] = [
     id: "gauss-3x3-solve",
     title: "Solve a three-variable system by elimination",
     summary:
-      "Cancel one variable at a time with row operations, then back-substitute. A dependent equation signals no solution or infinitely many.",
+      "A system is a group of equations that must all be true at once. Here there are three unknown numbers, $x$, $y$ and $z$, and three equations. Combine two equations so one letter cancels, which means it adds to zero. Do that until one equation has a single letter. Solve it, then put that value back to find the other two.",
+    senses: { term: "term-expression", side: "side-of-equation" },
+    noLink: [
+      "multiple",
+      "multiples",
+      "leaves",
+      "combination",
+      "third",
+      "degree",
+      "rules",
+      "whole",
+      "part",
+      "change",
+    ],
     templateIds: ["gauss-3x3-solve"],
     objectives: [
-      "Choose the row operation that cancels a variable.",
-      "Solve a three-equation system by elimination and back-substitution.",
-      "Decide from the equations whether a system has one, no or infinitely many solutions.",
+      "Choose a step that cancels a letter: add or subtract a multiplied copy of one equation from another.",
+      "Solve three equations in $x$, $y$ and $z$ by cancelling letters, then working back up.",
+      "Tell from the equations whether there is one solution, no solution, or infinitely many.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Three equations, three unknowns",
         paragraphs: [
-          "You need to solve two-variable systems by elimination. A system of three equations in $x$, $y$ and $z$ works the same way, one variable at a time. Adding a multiple of one equation to another keeps every solution of the system, so you can use it to make variables cancel.",
+          "An equation says two amounts are equal, like $x + y + z = 6$. The letters $x$, $y$ and $z$ stand for unknown numbers. Writing $2x$ means 2 times $x$. The number in front of a letter is called its coefficient, so in $2x - y$ the coefficient of $y$ is $-1$.",
+          "A system is a set of equations that must all be true at the same time. A solution is a set of values, one for each letter, that makes every equation true. We write it as an ordered triple $(x, y, z)$: the value of $x$, then $y$, then $z$.",
+          "One equation with three letters has many answers. For $x + y + z = 6$, both $(1, 2, 3)$ and $(6, 0, 0)$ work. Each new equation that adds new information rules out more answers. Three equations that each add new information can leave exactly one answer.",
+          "The main tool is this. In an equation, the part before the equals sign is called the left side, and the part after it is the right side. If two equations are both true, you can add their left sides and add their right sides, and the result is still true. You can also multiply every number in an equation by the same number other than 0 first. Choose the numbers so that one letter cancels. Its coefficients add to zero, so that letter disappears.",
         ],
       },
     ],
     workedExample: {
       prompt: "Solve $x+y+z=6$, $2x-y+z=3$, $x+2y-z=2$.",
       steps: [
-        "Cancel $x$ from equation 2: subtract 2 times equation 1. The equation becomes $-3y-z=-9$.",
-        "Cancel $x$ from equation 3: subtract equation 1. It becomes $y-2z=-4$.",
-        "Cancel $y$: add 3 times the new equation 3 to the new equation 2. This gives $-7z=-21$, so $z=3$.",
-        "Back-substitute: $y-6=-4$ gives $y=2$, and $x+2+3=6$ gives $x=1$. Check: $2-2+3=3$ and $1+4-3=2$.",
+        "Number the equations 1, 2 and 3 from the top. Remove $x$ from equation 2. Equation 2 has $2x$ and equation 1 has $x$, so subtract 2 times equation 1. The $2x$ and $-2x$ cancel. The left sides give $-3y - z$ and the right sides give $3 - 12 = -9$. So $-3y - z = -9$.",
+        "Remove $x$ from equation 3. Both have $x$ with coefficient 1, so subtract equation 1 from equation 3. That gives $y - 2z = 2 - 6 = -4$.",
+        "Now there are two equations with only $y$ and $z$. Remove $y$: add 3 times $y - 2z = -4$ to $-3y - z = -9$. The $3y$ and $-3y$ cancel, leaving $-7z = -21$. Divide both sides by $-7$: $z = 3$.",
+        "Work back up. Put $z = 3$ into $y - 2z = -4$: $y - 6 = -4$, so $y = 2$. Put both into equation 1: $x + 2 + 3 = 6$, so $x = 1$.",
+        "Check all three original equations: $1 + 2 + 3 = 6$, $2 - 2 + 3 = 3$ and $1 + 4 - 3 = 2$. All are true, so the solution is $(1, 2, 3)$.",
       ],
       answer: "(1, 2, 3)",
     },
     closingSections: [
       {
         stage: "method",
-        title: "Cancel one variable at a time",
+        title: "Cancel one letter at a time",
         paragraphs: [
-          "Use one equation to cancel $x$ from the other two, then use one of the two new equations to cancel $y$. The last equation has only $z$. Solve it and substitute upward. Always apply an operation to both sides.",
-          "A row operation names the step: $R_2\\to R_2-2R_1$ means replace equation 2 by equation 2 minus 2 times equation 1. The multiple is the ratio of the two $x$ coefficients, so the $x$ terms cancel.",
+          "Use one equation to remove $x$ from the other two. That leaves two equations in $y$ and $z$. Use one of them to remove $y$ from the other. The last equation has only $z$. Solve it, then put the value back into the earlier equations. This working back up is called back-substitution.",
+          "To pick the multiplier, the number you multiply an equation by, compare the $x$ coefficients. If one equation has $2x$ and the other has $x$, subtract 2 times the second from the first. Then $2x - 2x = 0$.",
+          "Whatever you do, do it to the whole equation. A term is one piece joined by + or −, such as $2x$ or $-y$. Change every term on the left and the number on the right.",
+          "Each step is called a row operation, because each equation is a row. Problems write $R_2$ for equation 2. The step $R_2 \\to R_2 - 2R_1$ means “replace equation 2 by equation 2 minus 2 times equation 1.”",
+        ],
+      },
+      {
+        stage: "method",
+        title: "When there is not exactly one solution",
+        paragraphs: [
+          "Sometimes every letter in a row cancels. A row $0 = 0$ means that equation added no new information. Finish the elimination before deciding. If no row is false and a row became $0 = 0$, there are infinitely many solutions.",
+          "If you get something false, like $0 = 5$, the equations disagree. No values make them all true, so there is no solution.",
         ],
       },
       {
         stage: "formal",
         title: "Why the steps keep the solutions",
         paragraphs: [
-          "Replacing an equation by itself plus a multiple of another gives an equivalent system, because the old equation can be recovered by subtracting the multiple back. A linear system has no solution, exactly one, or infinitely many. If elimination gives a row $0=c$ with $c\\ne0$ there is no solution; if it gives $0=0$ with fewer than three independent equations, there are infinitely many.",
+          "Replacing an equation by itself plus a multiple of another gives an equivalent system, one with exactly the same solutions. The step can be undone by subtracting that multiple back.",
+          "A system of linear equations (equations whose letters are only multiplied by numbers, never by each other) has no solution, exactly one, or infinitely many.",
+          "If elimination gives a row $0 = c$ where $c$ is a number other than 0 (written $c \\ne 0$), there is no solution. If no row is false and fewer than three equations that add new information remain, so some row becomes $0 = 0$, there are infinitely many.",
         ],
       },
     ],
     pitfalls: [
-      "Apply each row operation to both sides of the equation.",
-      "Check dependent equations on the constants, not only the coefficients.",
+      "Apply each step to both sides. Multiply and subtract the number on the right, not only the letters on the left.",
+      "When a whole row cancels, look at the number on the right. Any row like $0 = 5$ means no solution. A row $0 = 0$, with no false row, means infinitely many solutions.",
+      "Check the answer in all three original equations, not just one.",
     ],
     parentGuide:
-      "Ask the learner to say which variable they cancel first and which multiple of which equation they use.",
+      "Before each step, ask which letter is being removed and which multiple of which equation is used. After the answer, ask to check it in all three equations.",
   },
   {
     id: "quadratic-inequality-interval",
     title: "Solve a quadratic inequality",
     summary:
-      "Find where the parabola crosses the axis, then read off where it is above or below. Write the answer in interval notation.",
+      "An inequality compares two amounts with a sign like $<$ (“is less than”) instead of $=$. In $x^2 - x - 6 < 0$, $x^2$ ($x$ squared) means $x$ times $x$. We want every $x$ that makes the left side, the part before the $<$ sign, negative. First find where it equals 0: at $x = -2$ and $x = 3$. Between and outside those two numbers, its sign cannot change. Test one number in each part to see which parts work.",
+    senses: {
+      term: "term-expression",
+      side: "side-of-equation",
+      product: "product-multiply",
+    },
+    noLink: [
+      "factor",
+      "opposite",
+      "changes",
+      "square",
+      "squared",
+      "change",
+      "part",
+      "parts",
+      "mean",
+    ],
     templateIds: ["quadratic-inequality-interval"],
     objectives: [
-      "Find the zeros and use the sign of the leading coefficient.",
-      "Write the solution in interval notation, with correct endpoints.",
-      "Handle expressions with no real zeros or one repeated zero.",
+      "Find the zeros of a quadratic, the $x$-values where it equals 0, and use the sign of its leading coefficient.",
+      "Write the solution in interval notation, with the right kind of bracket at each end.",
+      "Handle a quadratic with no real zeros or with one repeated zero.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Read the sign from the graph",
         paragraphs: [
-          "You need to solve a quadratic equation. A quadratic inequality uses the same zeros, but asks where the expression is positive or negative. A parabola changes sign only at its zeros, so between consecutive zeros the sign is constant.",
+          "A quadratic expression has an $x^2$ part and no higher power, like $x^2 - x - 6$. The number multiplying $x^2$ is called the leading coefficient. Here it is 1.",
+          "The signs $<$ and $>$ mean “is less than” and “is greater than.”",
+          "The signs $\\le$ and $\\ge$ mean “is less than or equal to” and “is greater than or equal to.”",
+          "A statement that uses one of these four signs is called an inequality.",
+          "The graph of $y = x^2 - x - 6$ is a U-shaped curve called a parabola. Where the curve is below the $x$-axis, the expression is negative. Where it is above, the expression is positive.",
+          "The zeros are the $x$-values where the expression equals 0. That is where the curve meets the $x$-axis. The curve can only switch from above to below by passing through a zero. So between two zeros, and on each side beyond them, the sign stays the same.",
+          "A positive leading coefficient makes the curve open upward, like a cup. Then the curve is below the axis between the zeros and above it outside them. A negative leading coefficient flips the curve upside down. Then it is above the axis between the zeros and below it outside them.",
         ],
       },
     ],
     workedExample: {
       prompt: "Solve $x^2-x-6<0$.",
       steps: [
-        "Factor: $x^2-x-6=(x-3)(x+2)$, so the zeros are $-2$ and $3$.",
-        "The leading coefficient is 1, positive, so the parabola opens up and is below the axis between the zeros.",
-        "The inequality is strict, so the zeros are excluded. Test $x=0$: $-6<0$ is true, and 0 is between the zeros.",
+        "Find the zeros by factoring, which means writing it as a product (the result of multiplying). Two numbers that multiply to $-6$ and add to $-1$ are $-3$ and $2$. So $x^2 - x - 6 = (x - 3)(x + 2)$. A product is 0 only when one part is 0, so the zeros are $3$ and $-2$.",
+        "The leading coefficient is 1, which is positive. So the parabola opens upward. It is below the axis, and the expression is negative, between $-2$ and $3$.",
+        "Check with a test value between the zeros. Try $x = 0$: $0 - 0 - 6 = -6$, and $-6 < 0$ is true.",
+        "The sign is $<$, not $\\le$, so the zeros themselves do not count. At $x = 3$ the expression equals 0, and 0 is not less than 0. In interval notation the answer is $(-2, 3)$: all numbers between $-2$ and $3$, ends left out.",
       ],
       answer: "(-2, 3)",
     },
@@ -203,42 +283,69 @@ export const hsStateGapLessons: Lesson[] = [
         stage: "method",
         title: "Zeros, sign, then test",
         paragraphs: [
-          "Move every term to one side, find the zeros, and mark them on a number line. They split the line into regions where the expression has one sign. A positive leading coefficient opens the parabola up, so it is negative between the zeros and positive outside; a negative one reverses this.",
-          "Pick the regions that match the inequality, and test one value from each region in the original statement. For $\\le$ and $\\ge$ the zeros belong to the answer: use square brackets. For $<$ and $>$ use round brackets.",
+          "A term is one piece of an expression joined by + or −, such as $-x$. Move every term to one side so the other side is 0. Then find the zeros, by factoring or by the quadratic formula.",
+          "Mark the zeros on a number line. They split it into parts. In each part, the expression keeps one sign. Test one value from each part in the original inequality, and keep the parts where it is true.",
+          "Interval notation writes a stretch of the number line by its two ends. A round bracket ( or ) means that end is left out. A square bracket [ or ] means it is included. Use square brackets at the zeros for $\\le$ and $\\ge$. Use round ones for $<$ and $>$.",
+          "Two separate parts are joined with the symbol $\\cup$, read “or.” For example, $(-\\infty, -2) \\cup (3, \\infty)$ means less than $-2$, or greater than $3$. The symbol $\\infty$ (infinity) means the part goes on forever.",
+        ],
+      },
+      {
+        stage: "method",
+        title: "No zeros or one repeated zero",
+        paragraphs: [
+          "If the curve never meets the axis, there are no real zeros. Then it is above the axis everywhere, or below it everywhere. So the answer is all real numbers (every number on the number line) or no numbers at all.",
+          "If the curve only touches the axis at one point, that zero repeats, as in $(x - 1)^2$. The sign is the same on both sides of that point. Only the point itself is different, where the value is 0.",
         ],
       },
       {
         stage: "formal",
         title: "Sign of a quadratic",
         paragraphs: [
-          "For $a\\ne0$ with real zeros $p<q$, $ax^2+bx+c=a(x-p)(x-q)$. It has the sign of $a$ for $x<p$ or $x>q$, and the opposite sign for $p<x<q$. With no real zeros, $b^2-4ac<0$ and the expression has the sign of $a$ for every real $x$. With one repeated zero it has the sign of $a$ everywhere except that zero.",
+          "Let $a$, $b$ and $c$ be real numbers with $a \\ne 0$ ($a$ is not 0). If $ax^2 + bx + c$ has real zeros $p < q$, it equals $a(x - p)(x - q)$.",
+          "It has the same sign as $a$ when $x < p$ or $x > q$. It has the opposite sign when $p < x < q$.",
+          "If $b^2 - 4ac < 0$, there are no real zeros, and the expression has the sign of $a$ for every real $x$. With one repeated zero, it has the sign of $a$ everywhere except at that zero, where it is 0.",
         ],
       },
     ],
     pitfalls: [
-      "A negative leading coefficient reverses which region is positive.",
-      "Strict inequalities exclude the zeros; $\\le$ and $\\ge$ include them.",
+      "A negative leading coefficient turns the curve upside down, so the expression is positive between the zeros and negative outside.",
+      "Strict signs, $<$ and $>$, leave the zeros out: use round brackets. The signs $\\le$ and $\\ge$ include them: use square brackets.",
+      "Move everything to one side first. Find zeros of the expression compared with 0, not with another number.",
     ],
     parentGuide:
-      "Ask the learner to sketch the parabola and shade where it is above or below the axis.",
+      "Ask the learner to sketch the cup-shaped graph, mark the zeros and shade where the curve is above or below the axis. Then ask for one test value that checks the answer.",
   },
   {
     id: "conditional-statements",
     title: "Conditionals, converses and truth values",
     summary:
-      "Swap and negate the parts of an if-then statement. Only the contrapositive always says the same thing as the original.",
+      "An if-then sentence, like “If it is raining, then the ground is wet,” is called a conditional. Turning its parts around, or adding “not” to them, makes new sentences. Some of these mean the same as the original, and some do not. Only the one that swaps the parts and adds “not” to both, the contrapositive, is always true exactly when the original is.",
+    senses: {
+      inverse: "inverse-statement",
+      square: "square-shape",
+      side: "side",
+      multiple: "multiple",
+    },
+    noLink: ["parts", "part", "mean", "opposite"],
     templateIds: ["conditional-statements"],
     objectives: [
-      "Write the converse, inverse and contrapositive of a conditional.",
-      "Tell which related statement is equivalent to the original.",
-      "Evaluate compound statements from given truth values.",
+      "Write the converse, inverse and contrapositive of an if-then statement.",
+      "Tell which of these always has the same truth value (true or false) as the original.",
+      "Decide whether a statement built with “and,” “or” and “not” is true from the truth of its parts.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "A conditional and its related statements",
         paragraphs: [
-          "A conditional has a hypothesis $P$ after “if” and a conclusion $Q$ after “then”. Swapping them gives the converse. Negating both gives the inverse. Doing both gives the contrapositive. A statement is true or false, and these related statements can have different truth values.",
+          "A statement is a sentence that is either true or false. Whether it is true or false is called its truth value.",
+          "A conditional is an if-then statement: “if $P$, then $Q$.” The letters $P$ and $Q$ stand for statements. The part after “if” is the hypothesis. The part after “then” is the conclusion. In “If a shape is a square, then it has four sides,” the hypothesis is “a shape is a square.” The conclusion is “it has four sides.”",
+          "A conditional is a promise: whenever $P$ is true, $Q$ is true too. It is broken, and so false, only when $P$ is true and $Q$ is false.",
+          "Three related statements come from rearranging it. Adding “not” to a part is called negating it.",
+          "The converse swaps the parts: “if $Q$, then $P$.”",
+          "The inverse is the statement that negates both parts: “if not $P$, then not $Q$.”",
+          "The contrapositive does both: “if not $Q$, then not $P$.”",
+          "Try them on the square example. The original is true. The converse, “If a shape has four sides, then it is a square,” is false: a long thin rectangle has four sides. The contrapositive, “If a shape does not have four sides, then it is not a square,” is true, like the original.",
         ],
       },
     ],
@@ -246,9 +353,9 @@ export const hsStateGapLessons: Lesson[] = [
       prompt:
         "For “If a triangle is equilateral, then it is isosceles”, which statement is the contrapositive?",
       steps: [
-        "Hypothesis: a triangle is equilateral. Conclusion: it is isosceles.",
-        "Negate the conclusion and the hypothesis, and swap them: if a triangle is not isosceles, then it is not equilateral.",
-        "This is true whenever the original is, because a triangle with no two equal sides cannot have three.",
+        "Find the parts. An equilateral triangle has all three sides equal. An isosceles triangle has two or more equal sides. The hypothesis is “a triangle is equilateral.” The conclusion is “it is isosceles.”",
+        "The contrapositive swaps the parts and negates both. Put the negated conclusion first and the negated hypothesis second: “If a triangle is not isosceles, then it is not equilateral.”",
+        "Check that it makes sense. Not isosceles means no two sides are equal. Then the three sides cannot all be equal, so it is not equilateral. It is true, just like the original.",
       ],
       answer: "If a triangle is not isosceles, then it is not equilateral.",
     },
@@ -257,24 +364,37 @@ export const hsStateGapLessons: Lesson[] = [
         stage: "method",
         title: "Swap, negate, or both",
         paragraphs: [
-          "From “if $P$, then $Q$”: swapping gives the converse “if $Q$, then $P$”; negating both gives the inverse “if not $P$, then not $Q$”; doing both gives the contrapositive “if not $Q$, then not $P$”.",
-          "The contrapositive always has the same truth value as the original. The converse and inverse also match each other, but can differ from the original. The negation of a conditional is “$P$ and not $Q$”.",
+          "Start from “if $P$, then $Q$.” Swap the parts to get the converse, “if $Q$, then $P$.” Negate both to get the inverse, “if not $P$, then not $Q$.” Do both to get the contrapositive, “if not $Q$, then not $P$.”",
+          "The contrapositive always has the same truth value as the original. The converse and the inverse always match each other. They may or may not match the original.",
+          "A counterexample is a single case where the hypothesis is true and the conclusion is false. To show a statement is false, one counterexample is enough.",
+        ],
+      },
+      {
+        stage: "method",
+        title: "And, or, not",
+        paragraphs: [
+          "“$P$ and $Q$” is true only when both are true. “$P$ or $Q$” is true when one or both are true. “Not $P$” has the opposite truth value of $P$.",
+          "Work out the smallest parts first, then combine them. The opposite of “if $P$, then $Q$” is “$P$ and not $Q$”: the promise is broken exactly when $P$ happens and $Q$ does not.",
         ],
       },
       {
         stage: "formal",
         title: "Logical equivalence",
         paragraphs: [
-          "Two statements are logically equivalent when they have the same truth value in every case. $P\\to Q$ is false only when $P$ is true and $Q$ is false, so it is equivalent to $\\neg Q\\to\\neg P$ and to $\\neg P\\lor Q$. A biconditional $P\\leftrightarrow Q$ is true exactly when $P$ and $Q$ have the same truth value; it states both $P\\to Q$ and $Q\\to P$.",
+          "Two statements are logically equivalent when they have the same truth value in every case.",
+          "Logic uses short symbols. The arrow $P \\to Q$ means “if $P$, then $Q$.” The sign $\\neg P$ means “not $P$.” The sign $\\land$ means “and,” and $\\lor$ means “or.”",
+          "$P \\to Q$ is false only when $P$ is true and $Q$ is false. So it is equivalent to its contrapositive $\\neg Q \\to \\neg P$, and to $\\neg P \\lor Q$.",
+          "A biconditional, $P \\leftrightarrow Q$, read “$P$ if and only if $Q$,” is true exactly when $P$ and $Q$ have the same truth value. It says both $P \\to Q$ and $Q \\to P$.",
         ],
       },
     ],
     pitfalls: [
-      "The converse of a true statement can be false: an isosceles triangle need not be equilateral.",
-      "A conditional is false only when the hypothesis is true and the conclusion is false.",
+      "A true statement can have a false converse. Every equilateral triangle is isosceles, but an isosceles triangle need not be equilateral.",
+      "A conditional is false only when the hypothesis is true and the conclusion is false. In every other case it is true.",
+      "The contrapositive both swaps and negates. Doing only one of the two gives the converse or the inverse.",
     ],
     parentGuide:
-      "Ask for a counterexample to the converse of a true statement.",
+      "Say a true if-then sentence from daily life, such as “If it is a dog, then it is an animal.” Ask the learner for its converse and a counterexample that shows the converse is false.",
   },
   {
     id: "cube-root-equation",

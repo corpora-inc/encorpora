@@ -24,16 +24,18 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   },
   "inverse-exponential-root": {
     goal: "Swap $x$ and $y$ and solve for $y$ to write the inverse of an exponential, or recover $f$ from a cube-root inverse.",
+    senses: { rule: "rule", side: "side-of-equation", base: "base-exponent" },
+    noLink: ["inverse", "cube", "renaming"],
     intuition:
-      "An inverse function undoes the original. Exponentials are undone by logarithms, and cubing is undone by a cube root. To find an inverse, swap the roles of input and output and solve for the new output.",
+      "An input is a number you start with, and an output is the number you get. A function is a rule that turns each input into one output. An inverse function is a function that undoes the original: it turns each output back into its input. It is written $f^{-1}$ and read “$f$ inverse”. The base is the number being raised to a power, and the exponent is the small raised number. A logarithm is the exponent that turns the base into a given number: $3^y = k$ means $y = \\log_3 k$. A cube root is the number whose three copies multiply to give what is inside: $\\sqrt[3]{8} = 2$. Cubing undoes it. To find an inverse, swap the input $x$ and the output $y$, then solve for $y$.",
     terms: ["inverse-function", "logarithm"],
     method: [
-      "Write $y=f(x)$ and swap $x$ and $y$.",
-      "Undo operations in reverse order: first isolate the power, then take the logarithm; or first cube, then add or subtract.",
-      "Check with a value: apply $f$ and then the inverse and see that you return to the start.",
+      "Write $y = f(x)$ and swap $x$ and $y$.",
+      "Undo the steps in reverse order. For an exponential, get the power alone, then take the logarithm with the same base. For a cube root, first multiply away any number it is divided by, then cube both sides, meaning the left and the right of the equals sign, then add or subtract.",
+      "Check with a number: apply $f$, then the inverse, and see that you return to the start.",
     ],
     watch:
-      "Divide or subtract constants before taking a logarithm; they sit inside the logarithm, not outside.",
+      "Undo a number that multiplies the power, or is added to it, before taking the logarithm. Those numbers end up inside the logarithm, not outside.",
   },
   "circle-line-system": {
     goal: "Find where a line meets a circle centered at the origin, or decide what kind of numbers the intersections are.",
@@ -241,43 +243,47 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-inverse-exponential-root",
     title: "Inverses of exponentials and cube roots",
     summary:
-      "Write the inverse of $a\\cdot b^x+k$ as a logarithm and recover a function from its cube-root inverse.",
+      "A function is a rule that turns each input, the number you start with, into one output, the number you get. An inverse function is a function that undoes another function. If $f$ turns 2 into 18, its inverse turns 18 back into 2. It is written $f^{-1}$, read “$f$ inverse”: here the raised $-1$ is a label, not a power. A logarithm is an exponent, and it undoes a power. A cube root is the number whose three copies multiply to give what is inside. Cubing undoes a cube root. So the inverse of $2 \\cdot 3^x$ is a logarithm, and the inverse of a cube root is a cube.",
+    senses: { rule: "rule", base: "base-exponent", side: "side-of-equation" },
+    noLink: ["inverse", "cube"],
     templateIds: ["inverse-exponential-root"],
     objectives: [
-      "Find the inverse of $b^x$, $a\\cdot b^x$ and $b^x+k$ by swapping variables.",
-      "Solve $y=\\frac{\\sqrt[3]{x+k}}{m}$ for $x$ to find the original function.",
+      "Find the inverse of functions like $3^x$, $2 \\cdot 3^x$ and $3^x + 4$ by swapping $x$ and $y$, then solving for $y$.",
+      "Recover the original function from an inverse that contains a cube root: the number whose three copies multiply to give what is inside.",
     ],
     openingTitle: "Swap, then undo in reverse",
     opening: [
-      "An inverse function reverses the original. To find it, write $y=f(x)$, swap $x$ and $y$, and solve for $y$.",
-      "Exponentials are undone by logarithms and cube roots are undone by cubes, so the work in the middle is isolating the power or the root.",
+      "A function is a rule that turns each input $x$ into one output $y$. We write $y = f(x)$, read “$y$ equals $f$ of $x$”. An inverse function runs the rule backward: it turns each output back into its input. In $2 \\cdot 3^x$, the dot means times.",
+      "To find an inverse, write $y = f(x)$, then swap the letters $x$ and $y$. Swapping trades the roles of input and output. Then solve for $y$ by undoing the steps in reverse order, the last step first.",
+      "The base is the number being raised to a power. A logarithm undoes a power. $\\log_3 k$, read “log base 3 of $k$”, is the exponent that turns 3 into $k$, so $3^y = k$ means $y = \\log_3 k$. A cube root undoes cubing: $\\sqrt[3]{8} = 2$, because $2^3 = 2 \\times 2 \\times 2 = 8$. Cubing undoes a cube root in the same way.",
     ],
     example: {
       prompt: "Find the inverse of $f(x)=2\\cdot3^{x}$.",
       steps: [
-        "Swap: $x=2\\cdot3^{y}$.",
-        "Divide by 2: $3^{y}=\\frac x2$.",
-        "Take $\\log_3$: $y=\\log_3\\left(\\frac x2\\right)$.",
+        "Write $y = 2 \\cdot 3^x$, then swap $x$ and $y$: $x = 2 \\cdot 3^y$. Now $y$ is the unknown to solve for.",
+        "Get the power alone. The 2 multiplies $3^y$, so divide both sides, the left and the right of the equals sign, by 2: $3^y = \\tfrac{x}{2}$.",
+        "A logarithm with the same base undoes the power: $3^y = \\tfrac{x}{2}$ means $y = \\log_3\\left(\\tfrac{x}{2}\\right)$.",
+        "Check with a number. $f(2) = 2 \\cdot 3^2 = 18$. The inverse at 18 gives $\\log_3 9 = 2$, which is back where we started.",
       ],
       answer: "$f^{-1}(x)=\\log_3\\left(\\frac x2\\right)$",
     },
     methodTitle: "Isolate the power, then the logarithm",
     method: [
       "Swap $x$ and $y$.",
-      "Divide or subtract so the power stands alone.",
-      "Apply the logarithm with the same base.",
+      "Divide or subtract so the power stands alone, undoing the last step first.",
+      "Apply the logarithm with the same base as the power. For a cube root, multiply away any number it is divided by, then cube both sides instead.",
     ],
     formalTitle: "Definition",
     formal: [
-      "If $y=b^{x}$ with $b>0$, $b\\ne1$, then $x=\\log_b y$, so the inverse of $b^x$ is $\\log_b x$ on $x>0$.",
-      "A function has an inverse function when it is one-to-one.",
+      "If $y = b^x$ with $b > 0$ and $b \\neq 1$ ($\\neq$ means is not equal to), then $x = \\log_b y$. So the inverse of $b^x$ is $\\log_b x$, defined for $x > 0$.",
+      "A function has an inverse function when it is one-to-one: no two inputs give the same output.",
     ],
     pitfalls: [
-      "Constants inside the power's side go inside the logarithm.",
-      "$\\log_b(x/a)$ is not $\\log_b x/a$.",
+      "A number that multiplies the power, or is added to it, is undone first, so it ends up inside the logarithm.",
+      "$\\log_b\\left(\\tfrac{x}{a}\\right)$ is not the same as $\\tfrac{\\log_b x}{a}$.",
     ],
     parentGuide:
-      "Have your learner test the answer with a number: apply $f$, then the inverse, and see if the start returns.",
+      "Have your learner test the answer with a number: apply $f$, then the inverse, and see whether the starting number comes back.",
   }),
   chainLesson({
     id: "regents-circle-line-system",
