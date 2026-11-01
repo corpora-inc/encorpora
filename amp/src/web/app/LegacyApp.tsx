@@ -357,7 +357,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const bookPositions = useRef<Record<string, number>>({});
   const readerHeading = useRef<HTMLHeadingElement>(null);
   const readerTriggerId = useRef<string | null>(null);
-  const libraryScroll = useRef(0);
+  const libraryReturn = useRef({ search: "", scroll: 0 });
   useEffect(() => {
     if (readingLesson && tab === "library")
       readerHeading.current?.focus({ preventScroll: true });
@@ -1773,65 +1773,45 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                 practice={(templateId) =>
                   void action(() => loadBatch(templateId))
                 }
+                references={catalog?.lessons ?? []}
+                openReference={(reference) => {
+                  readerTriggerId.current = reference.id;
+                  // Back returns to these results at this scroll position.
+                  libraryReturn.current = {
+                    search: route.location.search,
+                    scroll: window.scrollY,
+                  };
+                  void action(() => openReferenceLesson(reference, null));
+                }}
               />
-              {!new URLSearchParams(route.location.search).has("topic") && (
-                <>
-                  <details
-                    className="book-list"
-                    aria-labelledby="reference-materials"
-                  >
-                    <summary>
-                      <h2 id="reference-materials">Lessons and worksheets</h2>
-                    </summary>
-                    <p>
-                      Open a lesson for its printable workbook and solution key.
-                    </p>
-                    <ul>
-                      {(catalog?.lessons ?? []).map((reference) => (
-                        <li key={reference.id}>
-                          <button
-                            className="text-button"
-                            data-lesson-id={reference.id}
-                            disabled={busy}
-                            onClick={(event) => {
-                              readerTriggerId.current = reference.id;
-                              libraryScroll.current =
-                                event.currentTarget.closest("main")
-                                  ?.scrollTop ?? 0;
-                              void action(() =>
-                                openReferenceLesson(reference, null),
-                              );
-                            }}
-                          >
-                            {reference.title}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                  <section className="book-list" aria-label="Printable books">
-                    <h2>Printable books</h2>
-                    <ul>
-                      {books.map((book) => (
-                        <li key={book.id}>
-                          <span>
-                            {book.title}
-                            <small>{book.pages} pages</small>
-                          </span>
-                          <button
-                            className="text-button"
-                            disabled={busy}
-                            data-book-id={book.id}
-                            onClick={() => void action(() => openBook(book.id))}
-                          >
-                            Open book
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                </>
-              )}
+              {!new URLSearchParams(route.location.search).has("topic") &&
+                !new URLSearchParams(route.location.search).get("q") && (
+                  <>
+                    <section className="book-list" aria-label="Printable books">
+                      <h2>Printable books</h2>
+                      <ul>
+                        {books.map((book) => (
+                          <li key={book.id}>
+                            <span>
+                              {book.title}
+                              <small>{book.pages} pages</small>
+                            </span>
+                            <button
+                              className="text-button"
+                              disabled={busy}
+                              data-book-id={book.id}
+                              onClick={() =>
+                                void action(() => openBook(book.id))
+                              }
+                            >
+                              Open book
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </section>
+                  </>
+                )}
             </>
           )}
           {readingLesson && (
@@ -1841,7 +1821,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                 <button
                   className="text-button"
                   onClick={() => {
-                    navigate("/lessons");
+                    navigate(
+                      progressLessonReturn.current
+                        ? "/lessons"
+                        : `/lessons${libraryReturn.current.search}`,
+                    );
                     if (progressLessonReturn.current) {
                       const skillId = progressLessonReturn.current;
                       progressLessonReturn.current = null;
@@ -1859,10 +1843,10 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                       const trigger = document.querySelector<HTMLButtonElement>(
                         `[data-lesson-id="${CSS.escape(readerTriggerId.current ?? "")}"]`,
                       );
-                      const details = trigger?.closest("details");
-                      if (details) details.open = true;
-                      const library = trigger?.closest("main");
-                      if (library) library.scrollTop = libraryScroll.current;
+                      window.scrollTo({
+                        top: libraryReturn.current.scroll,
+                        behavior: "instant",
+                      });
                       trigger?.focus({ preventScroll: true });
                     });
                   }}
