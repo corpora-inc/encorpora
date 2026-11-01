@@ -9,7 +9,10 @@ import type { SkillEvidence } from "../src/server/evidence";
 import { templateRole } from "../src/learning/placement";
 import { challengePool } from "../src/workbook/challenge-pool";
 import { workbookResultsUrl } from "../src/workbook/links";
+import { strandEstimate } from "../src/learning/frontier";
+import { templateGrade } from "../src/server/mixed-practice";
 import {
+  CHALLENGE_WINDOW,
   composeWorkbook,
   printable,
   workbookCode,
@@ -313,5 +316,73 @@ test("the lesson card defines up to six glossary words its own text uses", () =>
     assert.ok(html.includes("Words to know"));
     for (const w of words)
       assert.ok(html.includes(`<dt>${w.term}</dt>`), w.term);
+  }
+});
+
+test("the challenge sits 0.5 to 1.3 grades above the learner wherever the catalog allows", () => {
+  const nodes = new Map(skills.map((s) => [s.id, s]));
+  const [lo, hi] = CHALLENGE_WINDOW;
+  // The shared learners plus the top of the catalog, where the window can
+  // run past the last template.
+  const precalculus = sampleLearners.find((l) => l.id === "precalculus")!;
+  const all = new Map(learners);
+  all.set("precalculus", {
+    learner: precalculus,
+    ...simulateLearner(precalculus, now),
+  });
+  for (const id of all.keys()) {
+    const { frontier, evidence } = all.get(id)!;
+    const offset = (t: (typeof templates)[number]) =>
+      templateGrade(t, nodes) -
+      strandEstimate(frontier, nodes.get(t.skillId)?.strand ?? t.skillId).level;
+    const reachable = templates.some(
+      (t) =>
+        nodes.has(t.skillId) &&
+        printable(t) &&
+        templateRole(t.id) === "assessment" &&
+        offset(t) >= lo &&
+        offset(t) <= hi,
+    );
+    for (const date of [
+      "2026-11-01",
+      "2026-11-02",
+      "2026-11-03",
+      "2026-11-04",
+    ]) {
+      const day = composeWorkbook({
+        templates,
+        skills,
+        lessons,
+        frontier,
+        evidence,
+        date,
+        learnerKey: id,
+        now,
+      });
+      {
+        const item = day.sections.at(-1)!.items[0]!;
+        const t = templates.find((x) => x.id === item.templateId)!;
+        const off = offset(t);
+        if (reachable) {
+          assert.ok(
+            off >= lo - 1e-9 && off <= hi + 1e-9,
+            `${id} ${date}: offset ${off.toFixed(2)}`,
+          );
+          assert.ok(
+            item.grade <= frontier.overall.level + hi + 1e-9 ||
+              !templates.some(
+                (x) =>
+                  nodes.has(x.skillId) &&
+                  printable(x) &&
+                  templateRole(x.id) === "assessment" &&
+                  offset(x) >= lo &&
+                  offset(x) <= hi &&
+                  templateGrade(x, nodes) <= frontier.overall.level + hi,
+              ),
+            `${id} ${date}: grade ${item.grade} above overall ${frontier.overall.level.toFixed(2)} + ${hi}`,
+          );
+        } else assert.ok(off < lo, `${id}: top of the catalog`);
+      }
+    }
   }
 });
