@@ -233,10 +233,12 @@ function Today({
           variant="primary"
           className={styles.download}
           disabled={!ready || downloading}
-          aria-busy={downloading || !ready}
+          aria-busy={downloading || (!ready && !loadError)}
           onClick={() => void download()}
         >
-          {ready && !downloading ? "Download workbook" : "Preparing…"}
+          {(ready || loadError) && !downloading
+            ? "Download workbook"
+            : "Preparing…"}
         </Button>
         <Button
           variant="secondary"
@@ -264,6 +266,10 @@ function Today({
                   "Today's workbook couldn't be prepared. Try again.",
                 ),
                 retry: () => {
+                  // Focus stays in the card the retry replaces.
+                  document
+                    .querySelector<HTMLElement>("[data-workbook-contents]")
+                    ?.focus();
                   void history.refetch();
                   void workbook.refetch();
                 },
@@ -290,6 +296,8 @@ function Contents({
   return (
     <div
       className={`${styles.contents} ${stale && !failure ? styles.stale : ""}`}
+      data-workbook-contents
+      tabIndex={-1}
       aria-label="Workbook contents"
     >
       {workbook ? (
