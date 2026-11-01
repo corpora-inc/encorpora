@@ -799,7 +799,7 @@ function parameterSolutionCount(r: Random): Case {
         `An equation has no solution when no value of $x$ makes it true. That happens when the $x$ terms cancel and leave two different numbers that would have to be equal.`,
         `Gather the $x$ terms. Subtract ${termText(q, "x")} from both sides: $(a − ${q < 0 ? `(${n(q)})` : q})x${constText(b)} = ${n(d)}$.`,
         `The number in front of $x$, its coefficient, is $a − ${q < 0 ? `(${n(q)})` : q}$. It is 0 exactly when a = ${n(q)}.`,
-        `If a = ${n(q)}, the $x$ terms vanish, leaving ${n(b)} = ${n(d)}. That is false, so no $x$ works.`,
+        `If a = ${n(q)}, the $x$ terms vanish, leaving ${n(b)} on the left and ${n(d)} on the right. Those numbers are not equal, so no $x$ works.`,
         `For any other $a$, you could divide by the coefficient and get one solution. So $a = ${n(q)}$ is the only value with no solution.`,
         `The equation has no solution when a = ${n(q)}.`,
       ],
