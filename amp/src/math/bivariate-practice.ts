@@ -747,7 +747,7 @@ function twoWayAssociation(r: Random): Draft {
         ? { label: yesLabel, correct: true as const }
         : {
             label: yesLabel,
-            feedback: `The percents differ by only ${Math.abs(p0 - p1)} points: about the same.`,
+            feedback: `The percents differ by only ${Math.abs(p0 - p1)} ${Math.abs(p0 - p1) === 1 ? "point" : "points"}: about the same, so the groups do not clearly differ.`,
           },
       associated
         ? {

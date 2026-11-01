@@ -571,7 +571,7 @@ export function frequencyTableCase(seed: string) {
           },
           {
             label: String(counts[(idx + 1) % counts.length]!),
-            feedback: `This counts a different value. Count only the ${value}s.`,
+            feedback: `This is the count of a different value. Count only the values equal to ${value}.`,
           },
           {
             label: String(values.filter((v) => v >= value).length),
