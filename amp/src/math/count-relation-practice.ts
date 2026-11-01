@@ -99,18 +99,16 @@ export const countRelation = chainFamily({
         answer: String(asked),
         hint: `Let $x$ be the number ${c.small} has. Then ${c.big} has ${m.a} times as many, which is $${m.a}x$. The difference $${m.a}x-x$ is ${diff}. Solve that for $x$ first.`,
         explanation: [
-          `Let $x$ be ${c.small}'s ${c.thing}. ${c.big} has $${m.a}x$, and the difference is ${diff}: $${m.a}x-x=${diff}$.`,
-          `Combine like terms: $${m.a - 1}x=${diff}$, so $x=${diff}\\div${m.a - 1}=${small}$. ${c.small} has ${small}.`,
-          ...(ax.ask === "target"
-            ? [`${c.small} has ${small} ${c.thing}.`]
-            : [
-                `${c.big} has $${m.a}\\times${small}=${big}$ ${c.thing}.`,
-                ...(ax.ask === "combined"
-                  ? [
-                      `Together they have $${small}+${big}=${small + big}$ ${c.thing}.`,
-                    ]
-                  : []),
-              ]),
+          `Let $x$ be the number of ${c.thing} ${c.small} has. "${m.a} times as many" means ${c.big} has $${m.a}x$, which is ${m.a} times $x$.`,
+          `"${diff} more" means the larger count minus the smaller count is ${diff}: $${m.a}x-x=${diff}$.`,
+          `Combine like terms, the terms that both contain $x$: ${m.a} groups of $x$ minus one group leaves $${m.a - 1}x$, so $${m.a - 1}x=${diff}$.`,
+          `Divide both sides by ${m.a - 1} to undo the multiplication: $x=${diff}\\div${m.a - 1}=${small}$. ${c.small} has ${small} ${c.thing}.`,
+          `${c.big} has ${m.a} times as many: $${m.a}\\times${small}=${big}$. Check the difference: $${big}-${small}=${diff}$, as stated.`,
+          {
+            target: `So ${c.small} has ${small} ${c.thing}.`,
+            partner: `So ${c.big} has ${big} ${c.thing}.`,
+            combined: `Together they have $${small}+${big}=${small + big}$, so they have ${small + big} ${c.thing} in all.`,
+          }[ax.ask],
         ],
         label: `Answer (${c.thing})`,
       });
@@ -139,12 +137,13 @@ export const countRelation = chainFamily({
       answer: String(answer),
       hint: `Substitute the known count into the equation: put ${ax.ask === "partner" ? "$q$" : "$p$"} equal to ${given}. Then ${coefGiven} times ${given} leaves the rest of ${value} for the other term.`,
       explanation: [
-        `Substitute ${ax.ask === "partner" ? `$q=${given}$` : `$p=${given}$`}: ${ax.ask === "partner" ? `$${m.a}p+${m.b}\\times${given}=${value}$` : `$${m.a}\\times${given}+${m.b}q=${value}$`}.`,
-        `Subtract the known term: $${value}-${coefGiven * given}=${rest}$, so ${ax.ask === "partner" ? `$${m.a}p=${rest}$` : `$${m.b}q=${rest}$`}.`,
-        `Divide by ${coefOther}: $${rest}\\div${coefOther}=${rest / coefOther}$ ${otherName}.`,
-        ...(ax.ask === "combined"
-          ? [`All items: $${given}+${rest / coefOther}=${answer}$.`]
-          : []),
+        `In $${m.a}p+${m.b}q=${value}$, the term $${m.a}p$ is the money from ${c.first}: ${m.a} ${c.unit} times the number sold. The term $${m.b}q$ is the money from ${c.second}.`,
+        `Substitute the known count, which means putting it in place of its letter. ${ax.ask === "partner" ? `With $q=${given}$: $${m.a}p+${m.b}\\times${given}=${value}$` : `With $p=${given}$: $${m.a}\\times${given}+${m.b}q=${value}$`}.`,
+        `The ${givenName} brought in $${coefGiven}\\times${given}=${coefGiven * given}$ ${c.unit}. Subtract that from both sides: $${value}-${coefGiven * given}=${rest}$, so ${ax.ask === "partner" ? `$${m.a}p=${rest}$` : `$${m.b}q=${rest}$`}.`,
+        `Divide both sides by ${coefOther}, the price of one of the ${otherName}: $${rest}\\div${coefOther}=${rest / coefOther}$.`,
+        ax.ask === "combined"
+          ? `Add the two counts: $${given}+${rest / coefOther}=${answer}$. So ${answer} items were sold in all.`
+          : `So ${answer} ${otherName} were sold.`,
       ],
       label: ax.ask === "combined" ? "Answer (items)" : `Answer (${otherName})`,
     });

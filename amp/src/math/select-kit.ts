@@ -76,6 +76,10 @@ export interface SelectSpec {
     string | ((shown: readonly Statement[], format: StatementFormat) => string);
   figure?: SemanticFigure;
   ordered?: boolean;
+  /** Teaching lines before and after the per-statement verdicts. The family
+   * oracle must recognize them from the prompt (an explanation frame). */
+  lead?: string[];
+  tail?: string[];
 }
 
 export function selectModel(s: SelectSpec): SelectModel {
@@ -101,6 +105,8 @@ export function selectModel(s: SelectSpec): SelectModel {
         : (shown) => hintSpec(shown, "select-all"),
     ...(typeof hintSpec === "string" ? {} : { hintByFormat: hintSpec }),
     ...(s.figure ? { figure: s.figure } : {}),
+    ...(s.lead ? { lead: s.lead } : {}),
+    ...(s.tail ? { tail: s.tail } : {}),
   };
 }
 

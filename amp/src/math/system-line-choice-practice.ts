@@ -128,6 +128,12 @@ function slopeIntercept(m: Rational, k: Rational, lhs = "y"): string {
   return `${lhs} = ${x}${x ? tail : q1(k)}`;
 }
 const math = (s: string) => `$${s}$`;
+/** Coefficient of x in working: 1x is x and −1x is −x. */
+const coefX = (m: Rational) =>
+  m.d === 1 && m.n === 1 ? "" : m.d === 1 && m.n === -1 ? "−" : qt(m);
+/** m times a value in working, with the value in parentheses. */
+const timesValue = (m: Rational, v: Rational) =>
+  coefX(m) === "" ? qt(v) : `${coefX(m)}(${qt(v)})`;
 
 /** Fractions in learner text are typeset: inside $...$ spans a/b becomes
  * \tfrac{a}{b}, and in prose (not in answer labels) a bare fraction is set as
@@ -444,7 +450,7 @@ export const parallelLineInterceptFamily = chainFamily({
     add(
       inv,
       p.b,
-      `Its slope ${qt(inv)} is the negative reciprocal of ${qt(m)}, the slope of a perpendicular line. A parallel line keeps the same slope, ${qt(m)}.`,
+      `Its slope ${qt(inv)} is the negative reciprocal of ${qt(m)} (the fraction flipped, with the sign changed). That is the slope of a perpendicular line. A parallel line keeps the same slope, ${qt(m)}.`,
     );
     add(
       rat(-m.n, m.d),
@@ -459,13 +465,13 @@ export const parallelLineInterceptFamily = chainFamily({
     add(
       m,
       rat(-p.b.n, p.b.d),
-      `It has the right slope but the sign of the $y$-intercept is reversed. Substitute the stated point to find the constant.`,
+      `It has the right slope, but the sign of the $y$-intercept, where the line crosses the $y$-axis, is reversed. Substitute the stated point to find it.`,
     );
     if (p.given === "standard")
       add(
         rat(p.line.a, p.line.b),
         p.b,
-        `Its slope ${qt(rat(p.line.a, p.line.b))} drops the minus sign: for $ax + by = c$ the slope is $-a/b$, here ${qt(m)}.`,
+        `Its slope ${qt(rat(p.line.a, p.line.b))} drops a minus sign. The slope of ${eq(p.line)} is the opposite of the $x$-coefficient divided by the $y$-coefficient, ${qt(m)}.`,
       );
     if (p.anchor === "x-intercept")
       add(
@@ -481,18 +487,31 @@ export const parallelLineInterceptFamily = chainFamily({
     ];
     const slopeWork =
       p.given === "standard"
-        ? `Solve ${eq(p.line)} for $y$: the slope is $−\\tfrac{${n(p.line.a)}}{${n(p.line.b)}} = ${qt(m)}$.`
-        : `The slope of ${lineText(p)} is the coefficient of $x$, ${qt(m)}.`;
+        ? [
+            `Solving ${eq(p.line)} for $y$ means moving the $x$-term to the right side and dividing by the $y$-coefficient, ${n(p.line.b)}.`,
+            `That leaves the opposite of the $x$-coefficient divided by the $y$-coefficient in front of $x$, so the slope is $−\\tfrac{${n(p.line.a)}}{${n(p.line.b)}} = ${qt(m)}$.`,
+          ]
+        : [
+            `${lineText(p)} is already in that form, so its slope is the coefficient of $x$, the number multiplying $x$: ${qt(m)}.`,
+          ];
     const pointText =
       p.anchor === "x-intercept"
         ? `$(${n(p.point)}, 0)$`
         : `$(0, ${n(p.point)})$`;
     const interceptWork =
       p.anchor === "x-intercept"
-        ? `The new line passes through ${pointText}. Substitute into $y = ${qt(m)}x + b$: $0 = ${qt(m)}(${n(p.point)}) + b$, so $b = ${qt(p.b)}$.`
+        ? [
+            `An $x$-intercept is where a line crosses the $x$-axis, so $y = 0$ there. Line $t$ passes through ${pointText}.`,
+            `Substitute $x = ${n(p.point)}$ and $y = 0$ into $y = ${coefX(m)}x + b$: $0 = ${timesValue(m, rat(p.point))} + b$, so $b = ${qt(p.b)}$.`,
+          ]
         : p.anchor === "y-intercept"
-          ? `The new line has $y$-intercept ${pointText}, so $b = ${n(p.point)}$.`
-          : `The $y$-intercept of ${eq(p.other)} is found with $x = 0$: $${termText(p.other.b, "y")} = ${n(p.other.c)}$, so $y = ${n(p.point)}$. The new line passes through ${pointText}, so $b = ${n(p.point)}$.`;
+          ? [
+              `The $y$-intercept is the point on the $y$-axis, where $x = 0$. Line $t$ crosses there at ${pointText}, so $b = ${n(p.point)}$.`,
+            ]
+          : [
+              `A $y$-intercept is where a line crosses the $y$-axis, so $x = 0$ there. Put $x = 0$ into ${eq(p.other)}: $${termText(p.other.b, "y")} = ${n(p.other.c)}$, so $y = ${n(p.point)}$.`,
+              `Line $t$ passes through that point, ${pointText}, so $b = ${n(p.point)}$.`,
+            ];
     const anchorText =
       p.anchor === "y-intercept"
         ? `has $y$-intercept ${pointText}`
@@ -504,17 +523,18 @@ export const parallelLineInterceptFamily = chainFamily({
         ? `Parallel lines have equal slopes. Find the slope of ${lineText(p)}, then find where ${eq(p.other)} crosses the $y$-axis by putting $x = 0$.`
         : p.anchor === "x-intercept"
           ? `Parallel lines have equal slopes. Find the slope of ${lineText(p)}, then put the point ${pointText} into $y = mx + b$ to find $b$.`
-          : `Parallel lines have equal slopes. Find the slope of ${lineText(p)}; the $y$-intercept ${pointText} gives $b$ directly.`;
+          : `Parallel lines have equal slopes. Find the slope of ${lineText(p)}. The $y$-intercept ${pointText} gives $b$ directly.`;
     return tex(
       choiceSurface(r, {
         prompt: `Line $s$ has the equation ${lineText(p)}. Line $t$ is parallel to line $s$ and ${anchorText}. Which equation represents line $t$?`,
         options,
         hint,
         explanation: [
-          slopeWork,
-          `Parallel lines have equal slopes, so line $t$ has slope ${qt(m)}.`,
-          interceptWork,
-          `Line $t$ is ${math(slopeIntercept(m, p.b))}.`,
+          `Write line $t$ as $y = mx + b$. Here $m$ is the slope, the change in $y$ for each step of 1 in $x$, and $b$ is the $y$-intercept.`,
+          ...slopeWork,
+          `Parallel lines never meet, so they rise at the same rate: they have equal slopes. Line $t$ has slope ${qt(m)}.`,
+          ...interceptWork,
+          `So line $t$ is ${math(slopeIntercept(m, p.b))}.`,
         ],
         label: "Choose the equation",
       }),
@@ -604,8 +624,11 @@ export const tableStandardFormFamily = chainFamily({
     const dx = diff(t.xs[1]!, t.xs[0]!),
       dy = diff(t.ys[1]!, t.ys[0]!);
     const slopeSteps = [
+      `A linear function has the form $y = mx + b$. The slope $m$ is the change in $y$ divided by the change in $x$, and $b$ is the value of $y$ when $x = 0$.`,
       `Use the actual changes in the table, because its inputs are not one unit apart. From the first two columns, $x$ changes by ${qt(dx)} and $y$ changes by ${qt(dy)}, so the slope is $${qt(dy)} \\div ${dx.n < 0 || dx.d !== 1 ? `(${qt(dx)})` : qt(dx)} = ${qt(t.m)}$.`,
-      `${t.xs.some((x) => x.n === 0) ? "The input 0 is in the table, but use the first column to find the constant" : "The input 0 is not in the table, so use a point to find the constant"}: $y = ${qt(t.m)}x + b$ at $(${qt(t.xs[0]!)}, ${qt(t.ys[0]!)})$ gives $b = ${qt(t.k)}$.`,
+      t.xs.some((x) => x.n === 0)
+        ? `The input 0 is in the table, and its output is the constant: $b = ${qt(t.k)}$.`
+        : `The input 0 is not in the table, so use a point to find the constant $b$. Put $(${qt(t.xs[0]!)}, ${qt(t.ys[0]!)})$ into $y = ${coefX(t.m)}x + b$: $${qt(t.ys[0]!)} = ${timesValue(t.m, t.xs[0]!)} + b$, so $b = ${qt(t.k)}$.`,
     ];
     if (t.ask === "standard-form") {
       const row = standardRow(t.m, t.k);
@@ -613,7 +636,7 @@ export const tableStandardFormFamily = chainFamily({
         [
           rat(t.m.d, t.m.n),
           t.k,
-          "It uses the change in $x$ over the change in $y$. The slope is the change in $y$ over the change in $x$.",
+          "It uses the change in $x$ divided by the change in $y$, which is upside down. The slope is the change in $y$ divided by the change in $x$.",
         ],
         [
           rat(-t.m.n, t.m.d),
@@ -623,7 +646,7 @@ export const tableStandardFormFamily = chainFamily({
         [
           t.m,
           rat(-t.k.n, t.k.d),
-          "It has the right slope but the opposite constant. Check it against a column of the table.",
+          "It has the right slope but the opposite constant term. Put a column of the table into it, and the two sides come out different.",
         ],
       ];
       // The per-column slip: the change in y between neighboring columns is
@@ -663,8 +686,11 @@ export const tableStandardFormFamily = chainFamily({
           hint: `From the first column to the second, the input changes from ${qt(t.xs[0]!)} to ${qt(t.xs[1]!)} (a change of ${qt(dx)}) and the output changes from ${qt(t.ys[0]!)} to ${qt(t.ys[1]!)} (a change of ${qt(dy)}). Divide the change in $y$ by the change in $x$ for the slope, then find the constant and move the $x$-term to the left.`,
           explanation: [
             ...slopeSteps,
-            `So $y = ${qt(t.m)}x ${t.k.n < 0 ? "−" : "+"} ${qt(rat(Math.abs(t.k.n), t.k.d))}$. Move the $x$-term to the left and clear fractions: $${twoTerm(row.a, row.b)} = ${n(row.c)}$.`,
+            `So $y = ${coefX(t.m)}x ${t.k.n < 0 ? "−" : "+"} ${qt(rat(Math.abs(t.k.n), t.k.d))}$.`,
+            `Standard form is $Ax + By = C$: the $x$- and $y$-terms on the left, a number on the right, whole-number coefficients (the numbers multiplying the variables) with no common factor, and $A$ positive.`,
+            `Move the $x$-term to the left, clear any fractions, and make the $x$-coefficient positive: $${twoTerm(row.a, row.b)} = ${n(row.c)}$.`,
             `Check with a column: at $x = ${qt(t.xs[2]!)}$, $y = ${qt(t.ys[2]!)}$, the left side is $${n(row.a)}(${qt(t.xs[2]!)}) ${row.b < 0 ? "−" : "+"} ${Math.abs(row.b)}(${qt(t.ys[2]!)}) = ${qt(addQ(mulQ(rat(row.a), t.xs[2]!), mulQ(rat(row.b), t.ys[2]!)))}$, matching ${n(row.c)}.`,
+            `So the equation in standard form is $${twoTerm(row.a, row.b)} = ${n(row.c)}$.`,
           ],
           label: "Choose the equation",
         }),
@@ -716,8 +742,10 @@ export const tableStandardFormFamily = chainFamily({
         hint: `First find the rule for $f$ from the table: from the first column to the second, the input changes by ${qt(dx)} and the output changes by ${qt(dy)}. Then ${s < 0 ? `subtract ${-s} from` : `add ${s} to`} every output.`,
         explanation: [
           ...slopeSteps,
-          `So $f(x) = ${qt(t.m)}x ${t.k.n < 0 ? "−" : "+"} ${qt(rat(Math.abs(t.k.n), t.k.d))}$.`,
-          `${s < 0 ? `Subtracting ${-s} from` : `Adding ${s} to`} every output gives ${g(shifted)}.`,
+          `So $f(x) = ${coefX(t.m)}x ${t.k.n < 0 ? "−" : "+"} ${qt(rat(Math.abs(t.k.n), t.k.d))}$, where $f(x)$, read "$f$ of $x$", is the output for input $x$.`,
+          `The rule $g(x) = f(x) ${s < 0 ? "−" : "+"} ${Math.abs(s)}$ ${s < 0 ? `subtracts ${-s} from` : `adds ${s} to`} every output of $f$. That moves the graph ${s < 0 ? "down" : "up"} and leaves the slope the same.`,
+          `Only the constant changes: $${qt(t.k)} ${s < 0 ? "−" : "+"} ${Math.abs(s)} = ${qt(shifted)}$.`,
+          `So the rule is ${g(shifted)}.`,
         ],
         label: "Choose the equation",
       }),
