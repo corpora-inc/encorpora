@@ -1,7 +1,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { templates, generateProblem } from "../src/math/engine";
+import { article, count, nounFor, plural } from "../src/math/agreement";
 import { keptAfterOne } from "../src/math/polish";
+import {
+  agreementIssues,
+  NounLexicon,
+  problemTexts,
+} from "./fixtures/count-agreement";
 
 /** Words that describe a counted noun ("1 square counter", "1 red counter"). */
 const describing =
@@ -100,4 +106,113 @@ test("a describing word between 1 and its noun does not hide the plural", () => 
   assert.equal(plural.test("2 + 1 equal parts"), false);
   // The noun is shared by a list: "6 orange, 3 purple and 1 green sections".
   assert.equal(plural.test("6 orange, 3 purple and 1 green sections"), false);
+});
+
+test("a ten-frame story reads correctly when either part is 1", () => {
+  const texts = Array.from({ length: 200 }, (_, seed) =>
+    generateProblem("join-within-10", `one-counter-${seed}`),
+  );
+  const ones = texts.filter((p) =>
+    /\b1 (round|square) counter\b/.test(p.public.prompt),
+  );
+  assert.ok(ones.length > 0, "some instances have a part of 1");
+  for (const p of texts) {
+    assert.doesNotMatch(p.public.prompt, /\b1 (round|square) counters\b/);
+    assert.doesNotMatch(p.public.prompt, /\bThere are 1 /);
+    assert.doesNotMatch(p.hint, /\b1 (round|square) counters\b/);
+  }
+});
+
+/** Counts agree with their nouns everywhere a learner reads generated text:
+ * prompts, answer labels and choices, hints, explanations, choice feedback,
+ * and figure labels and descriptions, over many instances of every
+ * template. Countable nouns are learned from the same text. */
+const AGREEMENT_SEEDS = 40;
+test("every count agrees with its noun, verb and article", () => {
+  const corpus: { id: string; where: string; text: string }[] = [];
+  for (const template of templates)
+    for (let seed = 0; seed < AGREEMENT_SEEDS; seed++)
+      for (const t of problemTexts(
+        generateProblem(template.id, `agreement-${seed}`),
+      ))
+        corpus.push({ id: template.id, ...t });
+  const lexicon = new NounLexicon();
+  for (const { text } of corpus) lexicon.learn(text);
+  assert.ok(lexicon.plurals.has("counters") && lexicon.plurals.has("marbles"));
+  const issues = new Map<string, string>();
+  for (const { id, where, text } of corpus)
+    for (const issue of agreementIssues(text, lexicon)) {
+      const key = `${id} (${where}): ${issue.rule}: “${issue.match}”`;
+      if (!issues.has(key)) issues.set(key, text);
+    }
+  assert.deepEqual(
+    [...issues].map(([key, text]) => `${key} — ${text}`),
+    [],
+  );
+});
+
+test("the agreement check finds each kind of error and passes correct text", () => {
+  const lexicon = new NounLexicon();
+  for (const text of [
+    "There are 3 counters.",
+    "She has 4 apples, 5 hours and 6 marbles.",
+    "Each counter is red; 1 apple is left; one hour passes; a marble rolls.",
+  ])
+    lexicon.learn(text);
+  const rules = (text: string) =>
+    agreementIssues(text, lexicon).map((i) => i.rule);
+  for (const [text, rule] of [
+    [
+      "There are 3 round counters and 1 square counters.",
+      "plural noun after 1",
+    ],
+    ["Take 1 apples.", "plural noun after 1"],
+    ["She waited one hours.", "plural noun after 1"],
+    ["Pick 2 red apple.", "singular noun after a count other than 1"],
+    ["1 of the marbles are blue.", "plural verb after “one of”"],
+    ["There is 3 counters here.", "singular verb before a plural count"],
+    ["Buy a 8-pound bag.", "“a” before a vowel sound"],
+    ["It is an 5 cm side.", "“an” before a consonant sound"],
+    ["Repeat it 1 times.", "plural noun after 1"],
+  ] as const)
+    assert.ok(rules(text).includes(rule), `${text} → ${rule}`);
+  for (const text of [
+    "There is 1 round counter and 3 square counters.",
+    "1 of the marbles is blue.",
+    "An 8-pound bag holds 2 red apples.",
+    "Multiply 1 times 5.",
+    "The input 1 appears twice.",
+    "At least one works; each one keeps its value.",
+    "A 4 by 4 rectangle and 12 apple trees.",
+    "The values 6 and 4 differ.",
+    "seven hundred one thousandths",
+  ])
+    assert.deepEqual(rules(text), [], text);
+});
+
+test("count, plural, nounFor and article build agreeing phrases", () => {
+  assert.equal(count(1, "square counter"), "1 square counter");
+  assert.equal(count(3, "square counter"), "3 square counters");
+  assert.equal(count(0, "box"), "0 boxes");
+  assert.equal(count(2, "story"), "2 stories");
+  assert.equal(count(2, "foot"), "2 feet");
+  assert.equal(count(2, "day"), "2 days");
+  assert.equal(plural("blue marble"), "blue marbles");
+  assert.equal(nounFor("$1$", "mile"), "mile");
+  assert.equal(nounFor("\\frac{3}{2}", "mile"), "miles");
+  for (const [n, a] of [
+    [8, "an"],
+    [11, "an"],
+    [18, "an"],
+    [80, "an"],
+    [800, "an"],
+    ["8,000", "an"],
+    [11000, "an"],
+    [1, "a"],
+    [7, "a"],
+    [12, "a"],
+    [180, "a"],
+    [1100, "a"],
+  ] as const)
+    assert.equal(article(n), a, String(n));
 });

@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -1026,7 +1027,7 @@ function conditionsCase(r: Random): Case {
       b = r(3, 15),
       angle = r(2, 16) * 10 + pick(r, [0, 5]);
     if (angle >= 170) return conditionsCase(r);
-    condition = `sides of ${a} ${u} and ${b} ${u} with a ${angle}° angle between them`;
+    condition = `sides of ${a} ${u} and ${b} ${u} with ${article(angle)} ${angle}° angle between them`;
     verdict = 0;
     reason = [
       `Draw the ${angle}° angle and mark ${a} ${u} along one ray and ${b} ${u} along the other. The third side must join those two points.`,
@@ -1266,7 +1267,7 @@ function sectionAreaCase(r: Random): Case {
   if (plane === "parallel-base") {
     answer = l * w;
     explanation = [
-      `A slice parallel to the base copies the base: a ${l} ${u} by ${w} ${u} rectangle.`,
+      `A slice parallel to the base copies the base: ${article(l)} ${l} ${u} by ${w} ${u} rectangle.`,
       `Area = ${l} × ${w} = ${answer} ${squares}.`,
     ];
   } else if (plane === "perpendicular-front") {

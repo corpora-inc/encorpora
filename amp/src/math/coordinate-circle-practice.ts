@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { act, circleDiagram, graph, step } from "./scene/author";
@@ -459,7 +460,7 @@ function polygonCase(r: Random): Case {
       `The area is half the size of that sum, ignoring its sign: ${Math.abs(shoelace(P).sum)} ÷ 2 = ${frac(q(area2, 2))}.`,
       `The quadrilateral's area is ${frac(q(area2, 2))} square units.`,
     ],
-    hint: `Surround $ABCD$, from $A${pt(P[0]!)}$, with a ${W}-by-${H} rectangle on the grid. The area you want is what is left after removing the corner triangles.`,
+    hint: `Surround $ABCD$, from $A${pt(P[0]!)}$, with ${article(W)} ${W}-by-${H} rectangle on the grid. The area you want is what is left after removing the corner triangles.`,
     tags: ["area", "quadrilateral"],
     figure: g.scene({ title: "Quadrilateral ABCD on a grid" }),
     label: "Area",

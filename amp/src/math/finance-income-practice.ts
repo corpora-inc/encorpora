@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -1482,7 +1483,7 @@ export function incentiveCase(seed: string) {
       ? `The ${p}% discount is taken from the price first, and then the ${wd(a)} coupon is subtracted.`
       : `The ${wd(a)} coupon is subtracted first, and then the ${p}% discount is taken from the reduced price.`;
     draft = {
-      prompt: `A jacket costs ${wd(P)}. A shopper uses both a ${p}% discount and a ${wd(a)} coupon. ${orderText} What is the final cost?`,
+      prompt: `A jacket costs ${wd(P)}. A shopper uses both ${article(p)} ${p}% discount and ${article(wd(a))} ${wd(a)} coupon. ${orderText} What is the final cost?`,
       answer: "",
       hint: percentFirst
         ? `Do the steps in the stated order. First find ${p}% of ${P} and subtract it. Then subtract the coupon from that new price.`

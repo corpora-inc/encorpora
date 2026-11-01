@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
   assemble,
@@ -1957,21 +1958,21 @@ export function counterexampleChoiceCase(seed: string): TexasHsCase {
       hint: `A counterexample needs two rectangles with equal perimeters but different areas. Find $2(\\text{length}+\\text{width})$ and length $\\times$ width for each pair.`,
       explanation: [
         `A counterexample has equal perimeters and different areas.`,
-        `A ${l1} by ${w1} rectangle has perimeter ${per} and area ${l1 * w1}. A ${l2} by ${w2} rectangle has perimeter ${per} and area ${l2 * w2}.`,
+        `${article(l1, true)} ${l1} by ${w1} rectangle has perimeter ${per} and area ${l1 * w1}. ${article(l2, true)} ${l2} by ${w2} rectangle has perimeter ${per} and area ${l2 * w2}.`,
         `The perimeters are equal and the areas are different, so this pair refutes the conjecture.`,
       ],
-      correct: `A ${l1} by ${w1} rectangle and a ${l2} by ${w2} rectangle`,
+      correct: `${article(l1, true)} ${l1} by ${w1} rectangle and ${article(l2)} ${l2} by ${w2} rectangle`,
       wrong: [
         {
-          label: `A ${l1} by ${w1} rectangle and a ${w1} by ${l1} rectangle`,
+          label: `${article(l1, true)} ${l1} by ${w1} rectangle and ${article(w1)} ${w1} by ${l1} rectangle`,
           feedback: `Both rectangles have perimeter ${per} and area ${l1 * w1}. The areas agree, so this pair supports the conjecture.`,
         },
         {
-          label: `A ${l1} by ${w1} rectangle and a ${l1 + 1} by ${w1} rectangle`,
+          label: `${article(l1, true)} ${l1} by ${w1} rectangle and ${article(l1 + 1)} ${l1 + 1} by ${w1} rectangle`,
           feedback: `Their perimeters are ${per} and ${per + 2}, which are not equal, so the "if" part is false.`,
         },
         {
-          label: `A ${l2} by ${w2} rectangle and a ${l2} by ${w2 + 2} rectangle`,
+          label: `${article(l2, true)} ${l2} by ${w2} rectangle and ${article(l2)} ${l2} by ${w2 + 2} rectangle`,
           feedback: `Their perimeters are ${per} and ${per + 4}, which are not equal, so the "if" part is false.`,
         },
       ],
@@ -2582,7 +2583,7 @@ export function areaProbabilityCase(seed: string): TexasHsCase {
     const comp = fracTex(L * W - l * w, L * W);
     return finish(meta, seed, r, {
       variant: "rectangle-in-rectangle",
-      prompt: `A point is chosen at random on a ${L} by ${W} rectangular board. A shaded ${l} by ${w} rectangle lies entirely on the board. What is the probability that the point is in the shaded rectangle? Give a fraction in simplest form.`,
+      prompt: `A point is chosen at random on ${article(L)} ${L} by ${W} rectangular board. A shaded ${l} by ${w} rectangle lies entirely on the board. What is the probability that the point is in the shaded rectangle? Give a fraction in simplest form.`,
       hint: `The probability is the shaded area divided by the board's area. Multiply length by width for the ${l} by ${w} rectangle and for the ${L} by ${W} board.`,
       explanation: [
         `The board's area is $${L}\\times${W}=${L * W}$. The shaded area is $${l}\\times${w}=${l * w}$.`,

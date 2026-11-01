@@ -1,3 +1,4 @@
+import { nounFor } from "./agreement";
 import { createHash } from "node:crypto";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import {
@@ -1257,12 +1258,12 @@ function fractionRateSelect(r: Random): Built {
     const form = (rate: Fr): Option => {
       const holds = feq(fmul(rate, t), d);
       return {
-        label: `${day}: $${mixed(rate)}$ miles per hour`,
+        label: `${day}: $${mixed(rate)}$ ${nounFor(mixed(rate), "mile")} per hour`,
         holds,
         js: `${rate[0]}/${rate[1]}*${t[0]}/${t[1]}===${d[0]}/${d[1]}`,
         why: holds
-          ? `$${mixed(d)}\\div${mixed(t)}${mixed(d) === ftex(d) && mixed(t) === ftex(t) ? "" : `=${ftex(d)}\\div${ftex(t)}`}=${mixed(s)}$ miles per hour.`
-          : `Distance divided by time gives $${mixed(s)}$ miles per hour, not $${mixed(rate)}$.`,
+          ? `$${mixed(d)}\\div${mixed(t)}${mixed(d) === ftex(d) && mixed(t) === ftex(t) ? "" : `=${ftex(d)}\\div${ftex(t)}`}=${mixed(s)}$ ${nounFor(mixed(s), "mile")} per hour.`
+          : `Distance divided by time gives $${mixed(s)}$ ${nounFor(mixed(s), "mile")} per hour, not $${mixed(rate)}$.`,
       };
     };
     return [form(s), ...unique.map(form)];

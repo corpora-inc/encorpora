@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { sweepChoose, sweepVariant } from "./number-domain-axes";
 import { writeRational } from "./variation/number-domain";
@@ -1250,7 +1251,7 @@ function rateCombinationModel(r: Random): Built {
       return {
         variant,
         draft: {
-          prompt: `A lab mixes ${vol(x)} of a ${p}% salt solution with ${vol(y)} of a ${strong}% salt solution. What is the salt concentration of the mixture, as a percent?`,
+          prompt: `A lab mixes ${vol(x)} of ${article(p)} ${p}% salt solution with ${vol(y)} of ${article(strong)} ${strong}% salt solution. What is the salt concentration of the mixture, as a percent?`,
           answer: "",
           hint: `Find the salt in each part: ${p}% of ${vol(x)} and ${strong}% of ${vol(y)}. Add the amounts of salt and divide by the total volume ${x + y}.`,
           explanation: [
@@ -1290,7 +1291,7 @@ function rateCombinationModel(r: Random): Built {
     return {
       variant,
       draft: {
-        prompt: `How many liters of a ${strong}% salt solution must be added to ${vol(x)} of a ${p}% salt solution to make a mixture that is ${mix}% salt?`,
+        prompt: `How many liters of ${article(strong)} ${strong}% salt solution must be added to ${vol(x)} of ${article(p)} ${p}% salt solution to make a mixture that is ${mix}% salt?`,
         answer: "",
         hint: `Let $y$ be the liters added. The salt in the mixture, $${mix / 100}(${x}+y)$, must equal the salt from the ${vol(x)} of ${p}% solution plus the salt from $y$ liters of ${strong}% solution.`,
         explanation: [

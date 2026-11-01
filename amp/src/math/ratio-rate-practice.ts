@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -190,7 +191,7 @@ function unitRateCase(r: Random): Case {
     const b = r(2, 8),
       cents = r(79, 499);
     return forwardRate(
-      `A ${b}-pound bag of apples costs ${dollars(cents * b)}. What is the price per pound, in dollars?`,
+      `${article(b, true)} ${b}-pound bag of apples costs ${dollars(cents * b)}. What is the price per pound, in dollars?`,
       "Dollars per pound",
       "1 pound",
       `Divide the cost by the pounds: ${centsAnswer(cents * b)} ÷ ${b} = ${centsAnswer(cents)} dollars.`,
@@ -825,12 +826,12 @@ function story(r: Random): Story {
           "the length of the ribbon",
         ],
         size: [
-          `${name} cuts a ${t}-centimeter ribbon into ${g} pieces of equal length.`,
+          `${name} cuts ${article(t)} ${t}-centimeter ribbon into ${g} pieces of equal length.`,
           "How long is each piece, in centimeters?",
           "the length of each piece",
         ],
         groups: [
-          `${name} cuts a ${t}-centimeter ribbon into pieces that are each ${s} centimeters long.`,
+          `${name} cuts ${article(t)} ${t}-centimeter ribbon into pieces that are each ${s} centimeters long.`,
           `How many pieces does ${name} cut?`,
           "the number of pieces",
         ],

@@ -1,3 +1,4 @@
+import { isAre, article } from "./agreement";
 import { isSweepId, sweepChoose, sweepVariant } from "./number-domain-axes";
 import type { SemanticFigure, TemplateMetadata } from "./contracts";
 import { MAX_STACK, stackHeights } from "./data-display-models.js";
@@ -1769,7 +1770,7 @@ function salaryPercent(r: Random): Built {
   if (variant === "raise")
     return {
       variant,
-      prompt: `A worker earns ${commas(salary)} dollars a year and gets a ${p} percent raise. How many dollars is the raise each year?`,
+      prompt: `A worker earns ${commas(salary)} dollars a year and gets ${article(p)} ${p} percent raise. How many dollars is the raise each year?`,
       answer: String(raise),
       hint: `${p} percent means ${p} per 100. Write it as ${dec(p, 2)} and multiply by ${commas(salary)}, or find 1 percent first and take ${p} of it.`,
       explanation: [
@@ -1780,7 +1781,7 @@ function salaryPercent(r: Random): Built {
     };
   return {
     variant,
-    prompt: `A worker earns ${commas(salary)} dollars a year and gets a ${p} percent raise. How many dollars a year does the worker earn after the raise?`,
+    prompt: `A worker earns ${commas(salary)} dollars a year and gets ${article(p)} ${p} percent raise. How many dollars a year does the worker earn after the raise?`,
     answer: String(salary + raise),
     hint: `Find the raise first: ${p} percent of ${commas(salary)}. The new salary is the old salary plus the raise.`,
     explanation: [
@@ -2684,7 +2685,7 @@ function experimentProbability(r: Random): Built {
   const den = n * n;
   return {
     variant: "with-replacement",
-    prompt: `A box holds ${n} cards. ${red} of the cards are red and ${zero} of the cards are labeled 0. A card is drawn at random and put back. Then a second card is drawn. What is the probability that the first card is red and the second card is labeled 0? Give a fraction in simplest form.`,
+    prompt: `A box holds ${n} cards. ${red} of the cards ${isAre(red)} red and ${zero} of the cards ${isAre(zero)} labeled 0. A card is drawn at random and put back. Then a second card is drawn. What is the probability that the first card is red and the second card is labeled 0? Give a fraction in simplest form.`,
     answer: reduce(num, den),
     fraction: true,
     hint: `The first card is put back, so both draws are from the same ${n} cards. Find the probability of each draw separately, then multiply.`,

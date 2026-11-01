@@ -4,11 +4,7 @@ import type {
   SemanticFigure,
   TemplateMetadata,
 } from "./contracts.js";
-import { wasWere, hasHave, isAre } from "./agreement.js";
-
-/** "1 ten", "3 tens": a count with its noun in agreement. */
-const count = (n: number, word: string) =>
-  `${n} ${n === 1 ? word : `${word}s`}`;
+import { count, wasWere, hasHave, isAre } from "./agreement.js";
 const definitions = [
   [
     "join-within-10",

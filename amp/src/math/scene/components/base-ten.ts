@@ -1,3 +1,4 @@
+import { count } from "../../agreement";
 import { z } from "zod";
 import { base, fill, label, small } from "../base";
 import { registerComponent, type Prim } from "../layout";
@@ -131,6 +132,7 @@ registerComponent("baseTen", {
     return prims;
   },
   describe(c) {
-    return `Base-ten model: ${c.hundreds} hundred flat${c.hundreds === 1 ? "" : "s"}, ${c.tens} ten rod${c.tens === 1 ? "" : "s"}, and ${c.ones} one cube${c.ones === 1 ? "" : "s"}. A hundred flat has ten rows of ten units; a rod has ten units.`;
+    // "unit cubes", not "one cubes": "4 one cubes" reads as a count error.
+    return `Base-ten model: ${count(c.hundreds, "hundred flat")}, ${count(c.tens, "ten rod")}, and ${count(c.ones, "unit cube")}. A hundred flat has ten rows of ten units; a rod has ten units.`;
   },
 });

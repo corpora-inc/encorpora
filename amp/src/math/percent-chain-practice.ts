@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
@@ -180,7 +181,7 @@ const percentChain = chainFamily({
       return numberSurface({
         prompt: `A club's fee rose ${first}% in the first year. In the second year the new fee rose ${second}%. The fee after two years equals the original fee times one number. What is that number? Enter it as a decimal.`,
         answer: total,
-        hint: `Each increase multiplies the current amount by 1 plus its rate as a decimal. Start with the first year: a ${first}% rise multiplies by ${factor(first)}.`,
+        hint: `Each increase multiplies the current amount by 1 plus its rate as a decimal. Start with the first year: ${article(first)} ${first}% rise multiplies by ${factor(first)}.`,
         explanation: [
           `The first rise of ${first}% multiplies the fee by $${factor(first)}$.`,
           `The second rise of ${second}% applies to the new fee, so it multiplies by $${factor(second)}$ as well.`,
@@ -195,8 +196,8 @@ const percentChain = chainFamily({
       answer: String(end),
       hint: `The first change is an increase of ${rise}% on ${start}, so multiply ${start} by ${factor(rise)}. Use that new amount, not ${start}, for the ${cut}% decrease.`,
       explanation: [
-        `A ${rise}% increase multiplies by ${factor(rise)}: $${start} \\times ${factor(rise)} = ${middle}$.`,
-        `A ${cut}% decrease keeps ${100 - cut}% of the new amount, so it multiplies by ${keep(cut)}: $${middle} \\times ${keep(cut)} = ${end}$.`,
+        `${article(rise, true)} ${rise}% increase multiplies by ${factor(rise)}: $${start} \\times ${factor(rise)} = ${middle}$.`,
+        `${article(cut, true)} ${cut}% decrease keeps ${100 - cut}% of the new amount, so it multiplies by ${keep(cut)}: $${middle} \\times ${keep(cut)} = ${end}$.`,
         `At the end of the second month the amount is ${end}.`,
       ],
     });

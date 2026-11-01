@@ -1,3 +1,4 @@
+import { article } from "./agreement";
 import type {
   GeneratedProblem,
   SemanticFigure,
@@ -483,7 +484,7 @@ type QuantityContext = {
 const quantityContexts: QuantityContext[] = [
   {
     scene: (rate, fixed) =>
-      `A bike shop charges ${rate} dollars for each hour a bike is rented, plus a ${fixed}-dollar helmet fee`,
+      `A bike shop charges ${rate} dollars for each hour a bike is rented, plus ${article(fixed)} ${fixed}-dollar helmet fee`,
     xSym: "h",
     xAsk: "the time a bike is rented",
     xUnit: "hours",
@@ -502,7 +503,7 @@ const quantityContexts: QuantityContext[] = [
   },
   {
     scene: (rate, fixed) =>
-      `A taxi charges ${rate} dollars for each mile driven, plus a ${fixed}-dollar pickup fee`,
+      `A taxi charges ${rate} dollars for each mile driven, plus ${article(fixed)} ${fixed}-dollar pickup fee`,
     xSym: "d",
     xAsk: "the distance the taxi drives",
     xUnit: "miles",
@@ -566,7 +567,7 @@ const quantityContexts: QuantityContext[] = [
   },
   {
     scene: (rate, fixed) =>
-      `A gym charges a ${fixed}-dollar joining fee plus ${rate} dollars each month`,
+      `A gym charges ${article(fixed)} ${fixed}-dollar joining fee plus ${rate} dollars each month`,
     xSym: "m",
     xAsk: "the number of months a member has belonged",
     xUnit: "months",

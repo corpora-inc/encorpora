@@ -1,3 +1,4 @@
+import { nounFor, article } from "./agreement";
 import type { GeneratedProblem, TemplateMetadata } from "./contracts";
 import { assemble, random } from "./distribution-practice";
 import { defineAxis } from "./variation/axes";
@@ -958,7 +959,7 @@ function quadraticContext(r: R): Case {
       explanation: [
         `The vertex lies on the axis of symmetry, the line $t=\\frac{-b}{2a}$ that splits the parabola into mirror halves. Here $t=\\frac{-${b}}{2(-${a})}=${tex(tMax)}$.`,
         `Substitute that time into the model to get the height there: $h(${tex(tMax)})=${tex(hMax)}$.`,
-        `The greatest height is $${tex(hMax)}$ meters.`,
+        `The greatest height is $${tex(hMax)}$ ${nounFor(tex(hMax), "meter")}.`,
       ],
       data: { a, b, c, ask: "height" },
     };
@@ -973,7 +974,7 @@ function quadraticContext(r: R): Case {
         [b, ""],
       ])})$, which is 0 at $t=0$ and $t=${tex(q(b, a))}$.`,
       `The highest point is halfway between: $t=${tex(tMax)}$.`,
-      `$h(${tex(tMax)})=${tex(hMax)}$, so the greatest height is $${tex(hMax)}$ meters.`,
+      `$h(${tex(tMax)})=${tex(hMax)}$, so the greatest height is $${tex(hMax)}$ ${nounFor(tex(hMax), "meter")}.`,
     ],
     data: { a, b, c, ask: "height" },
   };
@@ -1050,7 +1051,7 @@ function rateNumeric(r: R): Case {
     if (!terminating(answer)) continue;
     return {
       variant: "mixture",
-      prompt: `How many liters of a ${p2}% acid solution must be added to ${A} liters of a ${p1}% acid solution to make a ${pt}% acid solution?`,
+      prompt: `How many liters of ${article(p2)} ${p2}% acid solution must be added to ${A} liters of ${article(p1)} ${p1}% acid solution to make ${article(pt)} ${pt}% acid solution?`,
       answer,
       hint: `Let $z$ be the liters added. The acid before mixing and after mixing must be equal: ${p1}% of ${A} liters plus ${p2}% of $z$ liters equals ${pt}% of $(${A}+z)$ liters.`,
       explanation: [

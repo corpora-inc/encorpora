@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { count, isAre } from "./agreement.js";
 import { partialProducts, partialProductsHint } from "./scene/explanations.js";
 import type { Step } from "./scene/timeline.js";
 import { equalGroupsDefinitions } from "../content/equal-groups-definitions.js";
@@ -31,9 +32,6 @@ function random(id: string, seed: string) {
     return low + (value % span);
   };
 }
-/** "1 van", "3 vans": a count with its noun in agreement. */
-const count = (n: number, word: string) =>
-  `${n} ${n === 1 ? word : `${word}s`}`;
 
 export function generateEqualGroupsProblem(
   templateId: string,

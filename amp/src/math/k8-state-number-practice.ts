@@ -1,3 +1,4 @@
+import { count as plural, article as numberArticle } from "./agreement";
 import { createHash } from "node:crypto";
 import type {
   GeneratedProblem,
@@ -187,8 +188,6 @@ const dl = (cents: number) => (cents / 100).toFixed(2);
 /** A dollar amount for prose: whole dollars stay whole. */
 const dollarsText = (cents: number) =>
   cents % 100 === 0 ? `${cents / 100}` : dl(cents);
-const plural = (n: number, one: string, many = `${one}s`) =>
-  `${n} ${n === 1 ? one : many}`;
 
 /** Four distinct choices: the correct one plus three distinct wrong labels. */
 function choicesFrom(
@@ -757,7 +756,7 @@ function decimalMoneyChange(r: Random): Built {
     const thing = pick(r, THINGS)[1];
     return {
       variant,
-      prompt: `${name} buys ${thing} for ${dl(price)} dollars and pays with a ${bill / 100}-dollar bill. How much change should ${name} get? ${unit}`,
+      prompt: `${name} buys ${thing} for ${dl(price)} dollars and pays with ${numberArticle(bill / 100)} ${bill / 100}-dollar bill. How much change should ${name} get? ${unit}`,
       answer: dl(bill - price),
       responseLabel: label,
       hint: `Change is what is left of the ${bill / 100} dollars after paying ${dl(price)} dollars. Subtract, or count up from ${dl(price)} to ${bill / 100}.00. Keep the cents in line with the cents.`,
@@ -782,7 +781,7 @@ function decimalMoneyChange(r: Random): Built {
     ];
     return {
       variant,
-      prompt: `${name} buys ${x[1]} for ${dl(a)} dollars and ${y[1]} for ${dl(b)} dollars, and pays with a ${bill / 100}-dollar bill. How much change should ${name} get? ${unit}`,
+      prompt: `${name} buys ${x[1]} for ${dl(a)} dollars and ${y[1]} for ${dl(b)} dollars, and pays with ${numberArticle(bill / 100)} ${bill / 100}-dollar bill. How much change should ${name} get? ${unit}`,
       answer: dl(bill - total),
       responseLabel: label,
       hint: `First find the total cost of both items by adding ${dl(a)} and ${dl(b)}. Then find the change from ${bill / 100} dollars.`,
@@ -819,7 +818,7 @@ function decimalMoneyChange(r: Random): Built {
     const thing = pick(r, THINGS)[0];
     return {
       variant,
-      prompt: `${name} pays for a ${thing} with a ${bill / 100}-dollar bill and gets ${dl(bill - price)} dollars in change. How many dollars did the ${thing} cost? ${unit}`,
+      prompt: `${name} pays for a ${thing} with ${numberArticle(bill / 100)} ${bill / 100}-dollar bill and gets ${dl(bill - price)} dollars in change. How many dollars did the ${thing} cost? ${unit}`,
       answer: dl(price),
       responseLabel: label,
       hint: `The price and the change together make the amount paid. To find the missing price, take the change away from the ${bill / 100} dollars paid.`,
@@ -841,7 +840,7 @@ function decimalMoneyChange(r: Random): Built {
   const thing = pick(r, ["pencils", "stickers", "erasers", "marbles"]);
   return {
     variant,
-    prompt: `${name} buys ${q} ${thing} at ${dl(unitPrice)} dollars each and a folder for ${dl(extra)} dollars. ${name} pays with a ${bill / 100}-dollar bill. How much change does ${name} get? ${unit}`,
+    prompt: `${name} buys ${q} ${thing} at ${dl(unitPrice)} dollars each and a folder for ${dl(extra)} dollars. ${name} pays with ${numberArticle(bill / 100)} ${bill / 100}-dollar bill. How much change does ${name} get? ${unit}`,
     answer: dl(bill - total),
     responseLabel: label,
     hint: `Find what the ${q} ${thing} cost together by multiplying ${dl(unitPrice)} by ${q}. Add the folder, then subtract the total from ${bill / 100} dollars.`,
