@@ -236,6 +236,8 @@ function gcfCase(r: Random): Case {
     answer: String(g),
     hint: `List the factors of ${a} and the factors of ${b}, in pairs from 1 up. Find the greatest number on both lists.`,
     explanation: [
+      `A factor of a number divides it with no remainder. The greatest common factor of two numbers is the largest number that is a factor of both.`,
+      `List each number's factors in pairs from 1 up, so none is missed.`,
       ...factorSteps.slice(0, 2),
       common.length === 1
         ? `The only common factor is 1, so the greatest common factor of ${a} and ${b} is 1.`
@@ -258,6 +260,7 @@ function lcmCase(r: Random): Case {
     multiples = Array.from({ length: lcm / big }, (_, i) => big * (i + 1));
   const mode = pick(r, ["bare", "bare", "packs", "together"]);
   const listing = [
+    `A multiple of a number is that number times 1, 2, 3 and so on. Listing the larger number's multiples reaches a shared one fastest.`,
     `Multiples of ${big}: ${list(multiples)}.`,
     multiples.length === 1
       ? `${big} is itself a multiple of ${small}: ${big} = ${small} × ${big / small}.`
@@ -326,8 +329,9 @@ function lcmCase(r: Random): Case {
     answer: String(lcm),
     hint,
     explanation: [
+      `The least common multiple of two numbers is the smallest number that is a multiple of both.`,
       ...listing,
-      `The least common multiple of ${a} and ${b} is ${lcm}.`,
+      `The first multiple of ${big} that ${small} also divides is ${lcm}, so the least common multiple of ${a} and ${b} is ${lcm}.`,
     ],
     tags,
   };
@@ -376,8 +380,9 @@ function factorSumCase(r: Random): Case {
     answer: correct,
     hint: `Find the greatest common factor of ${a} and ${b}, then divide each number by it. The quotients go inside the parentheses.`,
     explanation: [
+      `The greatest common factor of two numbers is the largest number that divides both with no remainder.`,
       `${a} = ${g} × ${m} and ${b} = ${g} × ${n}. The quotients ${m} and ${n} share no factor greater than 1, so ${g} is the greatest common factor.`,
-      `By the distributive property, ${g} × ${m} + ${g} × ${n} = ${g} × (${m} + ${n}).`,
+      `The distributive property says a shared factor can be pulled out of a sum: ${g} × ${m} + ${g} × ${n} = ${g} × (${m} + ${n}).`,
       `Check: ${correct} = ${g} × ${m + n} = ${a + b}, the value of ${a} + ${b}.`,
       `The expression is ${correct}.`,
     ],
@@ -401,21 +406,27 @@ function longDivisionCase(r: Random): Case {
     ? `A school orders ${n} sheets of paper packed equally into ${d} boxes. How many sheets are in each box?`
     : `What is ${n} ÷ ${d}?`;
   const steps = longDivisionSteps(n, d);
-  const explanation = steps.map((s, i) => {
-    const lead =
-      i === 0
-        ? `${s.partial} is the first part of ${n} that is at least ${d}.`
-        : `Bring down ${steps[i - 1]!.broughtDown}, making ${s.partial}.`;
-    if (s.digit === 0)
-      return `${lead} ${s.partial} is less than ${d}, so write 0 in the quotient.`;
-    const next =
-      s.digit < 9
-        ? ` and ${d} × ${s.digit + 1} = ${d * (s.digit + 1)} is more than ${s.partial}`
-        : "";
-    return `${lead} Try ${d} × ${s.digit} = ${s.product}${next}. Write ${s.digit} in the quotient; ${s.partial} − ${s.product} = ${s.rest}.`;
-  });
+  const explanation = [
+    `Long division works one place at a time from the left, because each digit of the quotient answers how many times ${d} fits so far.`,
+  ];
   explanation.push(
-    `The remainder is 0, so the quotient is ${q}. Check: ${q} × ${d} = ${n}.${context ? ` Each box holds ${q} sheets.` : ""}`,
+    ...steps.map((s, i) => {
+      const lead =
+        i === 0
+          ? `${s.partial} is the first part of ${n} that is at least ${d}.`
+          : `Bring down ${steps[i - 1]!.broughtDown}, making ${s.partial}.`;
+      if (s.digit === 0)
+        return `${lead} ${s.partial} is less than ${d}, so write 0 in the quotient.`;
+      const next =
+        s.digit < 9
+          ? ` and ${d} × ${s.digit + 1} = ${d * (s.digit + 1)} is more than ${s.partial}`
+          : "";
+      return `${lead} Try ${d} × ${s.digit} = ${s.product}${next}. Write ${s.digit} in the quotient; ${s.partial} − ${s.product} = ${s.rest}.`;
+    }),
+  );
+  explanation.push(
+    `The remainder, what is left after the last subtraction, is 0. Check by multiplying back: ${q} × ${d} = ${n}.`,
+    context ? `Each box holds ${q} sheets.` : `So ${n} ÷ ${d} = ${q}.`,
   );
   return {
     prompt,
@@ -466,6 +477,7 @@ function remainderCase(r: Random): Case {
       hint,
       explanation: [
         divide,
+        `The quotient counts full groups, and the remainder counts what is left over.`,
         `${q} full ${groups} ${verb} ${d * q} ${items}, and ${plural(rest, item, items)} would be left out, so one more ${group} is needed: ${q} + 1 = ${q + 1}.`,
         `${q + 1} ${groups} are needed.`,
       ],
@@ -495,6 +507,7 @@ function remainderCase(r: Random): Case {
       hint,
       explanation: [
         divide,
+        `The quotient counts full groups, and the remainder counts what is left over.`,
         `The remaining ${plural(rest, item, items)} cannot fill another of the ${groupMany}, so the remainder is not counted.`,
         `${q} ${groupMany} can be filled completely.`,
       ],
@@ -506,6 +519,7 @@ function remainderCase(r: Random): Case {
     hint,
     explanation: [
       divide,
+      `The quotient counts full groups, and the remainder counts what is left over.`,
       `${q} full ${groupMany} use ${d * q} ${items}. The remainder is what is left: ${n} − ${d * q} = ${rest}.`,
       `${plural(rest, item, items)} ${rest === 1 ? "is" : "are"} left over.`,
     ],
@@ -608,7 +622,7 @@ function signedQuantityCase(r: Random): Case {
       hint: `${signed(value)} names ${given}. The quantity asked about is the same size, ${v}, in the opposite direction: which sign does that direction get?`,
       explanation: [
         `${given[0]!.toUpperCase()}${given.slice(1)} and ${asked} are opposite quantities: the same size, ${v}, in opposite directions from 0.`,
-        `Opposite quantities have opposite signs. The given quantity is ${signed(value)}, so the other is ${signed(-value)}.`,
+        `Opposite quantities have opposite signs, because they point opposite ways from 0. The given quantity is ${signed(value)}, so the other is ${signed(-value)}.`,
         `The number is ${signed(-value)}.`,
       ],
       tags: ["opposite", c.key],
@@ -621,7 +635,7 @@ function signedQuantityCase(r: Random): Case {
     answer: String(negative ? -v : v),
     hint: `${c.rule} Is this quantity of ${v} in the positive direction or the opposite one?`,
     explanation: [
-      `${c.rule} The opposite direction is negative.`,
+      `${c.rule} The opposite direction is negative: a negative number has a − sign and is less than 0.`,
       negative
         ? `The quantity is ${v} in the negative direction, ${v} units from 0: ${signed(-v)}.`
         : `The quantity is ${v} in the positive direction, ${v} units from 0: ${v}.`,

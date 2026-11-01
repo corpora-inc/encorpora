@@ -269,8 +269,9 @@ function proportionalGraph(r: Random): Built {
       choices: options(correct, ctx.wrong(b)),
       scene,
       explanation: [
-        `The first number of a point is on the horizontal axis. Here it is 0 ${ctx.xAxis}.`,
-        `The second number is ${b} ${ctx.yAxis}. So at 0 ${ctx.xAxis}, the cost is already ${b} ${ctx.yAxis}.`,
+        `A point on a graph is an ordered pair: the first number is read on the horizontal axis, the second on the vertical axis.`,
+        `Here the first number is 0, so this point is at 0 ${ctx.xAxis}.`,
+        `The second number is ${b}. So at 0 ${ctx.xAxis}, the cost is already ${b} ${ctx.yAxis}: a fixed start before any ${ctx.xAxis}.`,
         correct,
       ],
       hint: `Read the labeled point $(0, ${b})$ as (${ctx.xAxis}, ${ctx.yAxis}). Say in words how many ${ctx.xAxis} it is, then what the graph says is already paid.`,
@@ -332,7 +333,8 @@ function proportionalGraph(r: Random): Built {
       choices: options(answer, wrong),
       scene,
       explanation: [
-        "A relationship is proportional when its graph is a straight line that passes through (0, 0).",
+        "In a proportional relationship, one quantity is always the same number times the other. Then 0 of one goes with 0 of the other.",
+        "So its graph is a straight line that passes through (0, 0), the point where the axes meet.",
         kind === "through"
           ? "This graph is a straight line and it passes through (0, 0)."
           : kind === "offset"
@@ -377,8 +379,9 @@ function proportionalGraph(r: Random): Built {
       ]),
       scene,
       explanation: [
+        `A point is an ordered pair: the first number is on the horizontal axis, the second on the vertical axis.`,
         `Read the point as (${ctx.xAxis}, ${ctx.yAxis}): 0 ${ctx.xAxis} and 0 ${ctx.yAxis}.`,
-        `${correct} Every proportional graph includes this point.`,
+        `${correct} Every proportional graph includes this point, because none of one quantity goes with none of the other.`,
       ],
       hint: `Say what each number of the point $(0, 0)$ means: the first is ${ctx.xAxis}, the second is ${ctx.yAxis}. Then ask what that says about the start.`,
       hintCue: hintPoint("This point is where the two axes meet."),
@@ -415,8 +418,9 @@ function proportionalGraph(r: Random): Built {
       ]),
       scene,
       explanation: [
+        `The unit rate is the amount for exactly 1. Here it is the ${ctx.yAxis} for 1 ${ctx.one}.`,
         `The labeled point ${M(label)} means ${k} ${ctx.xAxis} go with ${y} ${ctx.yAxis}.`,
-        `The unit rate is ${y} ÷ ${k} = ${rate}. The graph passes through ${M(`(1, ${rate})`)}.`,
+        `Share the ${y} equally among the ${k}: ${y} ÷ ${k} = ${rate}. The graph passes through ${M(`(1, ${rate})`)}.`,
         `The unit rate is ${correct}.`,
       ],
       hint: `The labeled point ${M(label)} shows how many ${ctx.yAxis} go with ${k} ${ctx.xAxis}. Share that amount equally among the ${k} to find the amount for 1 ${ctx.xAxis.replace(/s$/, "")}.`,
@@ -446,9 +450,10 @@ function proportionalGraph(r: Random): Built {
       ]),
       scene,
       explanation: [
-        `Read ${M(label)} as (${ctx.xAxis}, ${ctx.yAxis}).`,
+        `A point on a graph is an ordered pair: the first number is read on the horizontal axis, the second on the vertical axis.`,
+        `Here the horizontal axis is ${ctx.xAxis} and the vertical axis is ${ctx.yAxis}, so read ${M(label)} as (${ctx.xAxis}, ${ctx.yAxis}).`,
         `The first number is ${k} ${ctx.xAxis}; the second is ${y} ${ctx.yAxis}.`,
-        correct,
+        `The point means: ${correct.charAt(0).toLowerCase()}${correct.slice(1)}`,
       ],
       hint: `The horizontal axis is ${ctx.xAxis} and the vertical axis is ${ctx.yAxis}. Read the labeled point ${M(label)}: say the first number with its unit, then the second.`,
       hintCue: hintPoint(`Read the labeled point ${label}.`),
@@ -479,8 +484,8 @@ function proportionalGraph(r: Random): Built {
     ]),
     scene,
     explanation: [
-      `The labeled point ${M(label)} gives the rate ${y} ÷ ${k} = ${rate} ${ctx.per}.`,
-      `A proportional relationship has the form ${M("y = rx")} where ${M("r")} is the unit rate, so ${correct}.`,
+      `The unit rate is the amount for exactly 1. The labeled point ${M(label)} gives ${y} ÷ ${k} = ${rate} ${ctx.per}.`,
+      `A proportional relationship has the form ${M("y = rx")}, where ${M("r")} is the unit rate: ${M("y")} is always ${M("r")} times ${M("x")}. So the equation is ${correct}.`,
       `Check: ${M(`${rate} \\cdot ${k} = ${y}`)}.`,
     ],
     hint: `A proportional relationship is ${M("y = rx")} for one fixed number ${M("r")}. Use the labeled point ${M(label)} to find ${M("r")}.`,
@@ -621,8 +626,9 @@ function storyGraphMatch(r: Random): Built {
       ...(showGraph ? { scene: pathScene(ys, ctx.quantity, false) } : {}),
       explanation: [
         "Read the graph from left to right and name each piece: a line that goes up is increasing, level is constant, and going down is decreasing.",
+        `Left to right is the order time passes, so the order of the pieces matters.`,
         `In order, the pieces are ${seq.map((d) => dirWord[d]).join(", then ")}.`,
-        `${correct}`,
+        `So the match is: ${correct}`,
       ],
       hint:
         variant === "story-to-description"
@@ -666,7 +672,7 @@ function storyGraphMatch(r: Random): Built {
         ? d === 0
           ? "The graph is level here, so nothing is changing."
           : `The line is ${Math.abs(d) === Math.abs(deltas[answerIndex]!) ? "as steep" : Math.abs(d) < Math.abs(deltas[answerIndex]!) ? "less steep" : "steeper"} here, so the ${ctx.quantity} changes ${Math.abs(d) < Math.abs(deltas[answerIndex]!) ? "more slowly" : "more quickly"} than ${slow ? "on the slowest part" : "on the part that changes fastest"}.`
-        : `The graph is ${dirWord[dirOf(d)]} here, not ${dirWord[kind]}.`;
+        : `From left to right the line ${dirOf(d) === "up" ? "goes up" : dirOf(d) === "down" ? "goes down" : "stays level"} here, so the ${ctx.quantity} is ${dirWord[dirOf(d)]}, not ${dirWord[kind]}.`;
       return [name(i), text];
     })
     .filter((w): w is Wrong => w !== null);
@@ -677,11 +683,14 @@ function storyGraphMatch(r: Random): Built {
     explanation: rate
       ? [
           "All four parts last the same time, so the steeper the line, the faster the quantity changes. A level part does not change.",
+          `Slope means steepness: how much the line rises or falls in each part.`,
           `${slow ? "The gentlest slope that is not level" : "The steepest slope"} is on ${partName(answerIndex)}.`,
+          `So the ${ctx.quantity} changes ${slow ? "most slowly" : "most quickly"} ${partName(answerIndex)}.`,
         ]
       : [
-          `Check each part from left to right: a line going ${kind === "up" ? "up" : kind === "down" ? "down" : "level"} is ${dirWord[kind]}.`,
-          `Exactly one part does that: ${partName(answerIndex)}.`,
+          `Read the graph from left to right, the way time passes. Going up is increasing, level is constant, and going down is decreasing.`,
+          `Check each part: you want a line going ${kind === "up" ? "up" : kind === "down" ? "down" : "level"}.`,
+          `Exactly one part does that, so the ${ctx.quantity} is ${dirWord[kind]} on ${partName(answerIndex)}.`,
         ],
     hint: rate
       ? `Compare how steep the four parts are. Equal time passes on each, so ${slow ? "look for the smallest slope that is not level" : "look for the biggest slope, up or down"}.`
@@ -791,8 +800,9 @@ function coordinateContextPoints(r: Random): Built {
       ]),
       scene: planeScene(ctx, [{ x: a, y: b }]),
       explanation: [
-        `From the origin, the point is at ${a} on the horizontal axis and ${b} on the vertical axis, so it is the ordered pair (${a}, ${b}).`,
-        correct,
+        `The origin is the corner where the two axes meet, at (0, 0). An ordered pair gives the count across first, then the count up.`,
+        `From the origin, the point is ${a} across on the horizontal axis and ${b} up on the vertical axis, so it is the ordered pair (${a}, ${b}).`,
+        `So the point means: ${correct.charAt(0).toLowerCase()}${correct.slice(1)}`,
       ],
       hint: `Start at the origin. Count across to the point, then up. The first number belongs to ${ctx.xAxis} and the second to ${ctx.yAxis}.`,
       hintCue: hintPoint("Count across, then up, to this point."),
@@ -809,11 +819,18 @@ function coordinateContextPoints(r: Random): Built {
           M(`(${b}, ${a})`),
           "The pair is in the order (horizontal axis, vertical axis). The numbers are swapped.",
         ],
-        [M(`(${a}, ${b + 1})`), `The second number is ${b}.`],
-        [M(`(${a + 1}, ${b})`), `The first number is ${a}.`],
+        [
+          M(`(${a}, ${b + 1})`),
+          `The second number changed. Copy it from the sentence exactly: the ${ctx.yAxis} value is ${b}.`,
+        ],
+        [
+          M(`(${a + 1}, ${b})`),
+          `The first number changed. Copy it from the sentence exactly: the ${ctx.xAxis} value is ${a}.`,
+        ],
         [M(`(${a + b}, ${b})`), `Do not add. The first number is just ${a}.`],
       ]),
       explanation: [
+        `An ordered pair is two numbers in a fixed order: (horizontal value, vertical value).`,
         `The horizontal axis shows ${ctx.xAxis}, so the first number is ${a}.`,
         `The vertical axis shows ${ctx.yAxis}, so the second number is ${b}.`,
         `The ordered pair is ${correct}.`,
@@ -856,7 +873,8 @@ function coordinateContextPoints(r: Random): Built {
       ),
       explanation: [
         `The situation is the ordered pair (${a}, ${b}): ${a} on the ${ctx.xAxis} axis and ${b} on the ${ctx.yAxis} axis.`,
-        `Point $${right.letter}$ is ${a} across and ${b} up.`,
+        `Start at the origin, count ${a} across, then ${b} up. Point $${right.letter}$ is there.`,
+        `So point $${right.letter}$ shows the situation.`,
       ],
       hint: `Find ${a} on the horizontal axis, which shows ${ctx.xAxis}. Then look up to the height ${b} on the vertical axis, which shows ${ctx.yAxis}.`,
       tags: [variant],
@@ -898,9 +916,15 @@ function coordinateContextPoints(r: Random): Built {
       { x: a, y: y2, label: "B" },
     ]),
     explanation: [
-      `Both points are at ${a} on the horizontal axis, so compare the vertical values.`,
-      `Point A is at ${y1} and point B is at ${y2}. The difference is ${y2} − ${y1} = ${d}.`,
-      label(d),
+      `Both points are at ${a} on the horizontal axis, so only their heights differ. Compare the vertical values.`,
+      `"How much taller" asks for the difference, so subtract. Point A is at ${y1} and point B is at ${y2}: ${y2} − ${y1} = ${d}.`,
+      ctx.unit === "centimeter"
+        ? `Plant B is ${label(d)} taller than Plant A.`
+        : ctx.unit === "dollar"
+          ? `Leo has saved ${label(d)} more than Mia.`
+          : ctx.unit === "block"
+            ? `The park is ${label(d)} farther north than the library.`
+            : `Team B has ${label(d)} more than Team A.`,
     ],
     hint: `The two points are straight above one another, so only the vertical values differ. Read the vertical values of A and of B above ${a} on the horizontal axis, then find the gap.`,
     hintCue: [step("Read the height of A.", act.highlight("g.point.0"))],
@@ -954,8 +978,9 @@ function patternPairRelationship(r: Random): Built {
         ],
       ]),
       explanation: [
+        `Each pattern starts at its first number and adds the same amount each time. List the terms in order.`,
         `Pattern A: ${A.slice(0, n).join(", ")}. Pattern B: ${B.slice(0, n).join(", ")}.`,
-        `The ${ordinal(n)} terms are ${A[n - 1]} and ${B[n - 1]}.`,
+        `Matching terms sit in the same position. The ${ordinal(n)} terms are ${A[n - 1]} and ${B[n - 1]}.`,
         `The ordered pair is ${correct}.`,
       ],
       hint: `Write out the first ${n} terms of each pattern, starting with ${sa} for A and ${sb} for B. The ${ordinal(n)} pair uses the ${ordinal(n)} term of each.`,
@@ -1000,7 +1025,7 @@ function patternPairRelationship(r: Random): Built {
             .join(
               ", ",
             )}${sa === 0 ? ". The first pair is (0, 0)." : `, and ${B[0]} ÷ ${A[0]} = ${k}.`}`,
-          correct,
+          `The same factor works for every pair, so: ${correct.charAt(0).toLowerCase()}${correct.slice(1)}`,
         ],
         hint: `Look at one pair, such as (${A[1]}, ${B[1]}), and ask how to get the second number from the first. Check it on the next pair.`,
         tags: [variant],
@@ -1028,8 +1053,10 @@ function patternPairRelationship(r: Random): Built {
         ],
       ]),
       explanation: [
+        `From term 1 to term ${n} there are ${n - 1} steps, and each step of A adds ${da}.`,
         `The ${ordinal(n)} term of A is ${sa} + ${n - 1} × ${da} = ${An}.`,
         `Each B term is ${k} times the matching A term: ${k} × ${An} = ${Bn}.`,
+        `The ${ordinal(n)} term of Pattern B is ${Bn}.`,
       ],
       hint: `First find the ${ordinal(n)} term of Pattern A: start at ${sa} and add ${da} a total of ${n - 1} times. Then use the rule for B.`,
       tags: [variant],
@@ -1049,7 +1076,7 @@ function patternPairRelationship(r: Random): Built {
       ],
       [
         `Each term of A is ${c} more than the matching term of B.`,
-        "The terms of B are the larger ones.",
+        "This reverses the patterns. The terms of B are the larger ones, so B is more than A.",
       ],
       [
         `Each term of B is ${da} more than the matching term of A.`,
@@ -1061,8 +1088,8 @@ function patternPairRelationship(r: Random): Built {
       ],
     ]),
     explanation: [
-      `Subtract each A term from the matching B term: ${B.map((y, i) => `${y} − ${A[i]} = ${c}`).join(", ")}.`,
-      correct,
+      `To see how much more one number is than another, subtract. Subtract each A term from the matching B term: ${B.map((y, i) => `${y} − ${A[i]} = ${c}`).join(", ")}.`,
+      `The difference is ${c} every time, so: ${correct.charAt(0).toLowerCase()}${correct.slice(1)}`,
     ],
     hint: `Both patterns add ${da} each time. Subtract the A term from the B term in the first pair and then in the second pair.`,
     tags: [variant],
@@ -1177,8 +1204,10 @@ function triangleUniqueness(r: Random): Built {
       prompt: `Which set of measures determines exactly one triangle ${M(`${P}${Q}${R}`)}? Triangles with the same size and shape count as one.`,
       choices: options(correct, wrongs),
       explanation: [
+        "A set of measures determines one triangle when exactly one size and shape fits. A set can fail by fitting none, or by fitting many.",
         why,
         `Each of the other sets fails: ${wrongs.map(([, reason]) => reason).join(" ")}`,
+        `So the set that determines exactly one triangle is ${correct}.`,
       ],
       hint: "For each set, ask whether a triangle can be drawn at all and, if so, whether the measures leave any choice in its size or shape.",
       tags: [variant, goodKind],
@@ -1222,13 +1251,23 @@ function triangleUniqueness(r: Random): Built {
                 : `${a} cm is at least ${b} cm, so only one of the two places where the side meets the line is on the ray: exactly one triangle.`,
         ]
       : [
-          `${M(`\\angle ${P}`)} is ${angleA > 90 ? "obtuse" : "a right angle"}. The side opposite the largest angle is the longest side, so ${M(`${Q}${R}`)} must be longer than ${M(`${P}${R}`)}.`,
+          `${M(`\\angle ${P}`)} is ${angleA > 90 ? "obtuse, which means more than 90°" : "a right angle, exactly 90°"}. A triangle can have only one such angle, so it is the largest angle.`,
+          `The side opposite the largest angle is the longest side, so ${M(`${Q}${R}`)} must be longer than ${M(`${P}${R}`)}.`,
           count === 1
             ? `${a} cm is longer than ${b} cm, so exactly one triangle fits.`
             : `${a} cm is not longer than ${b} cm, so no triangle fits.`,
         ];
+  // Name what the chosen count gets wrong, then the deciding comparison.
+  const claim = (i: number) =>
+    i === 0
+      ? "These measures do make a triangle."
+      : count === 0
+        ? "These measures make no triangle at all."
+        : i === 1
+          ? "The side can land in more than one place here."
+          : "Only one place for the side works here.";
   const feedbackFor = (i: number) =>
-    i === count ? undefined : reason[reason.length - 1]!;
+    i === count ? undefined : `${claim(i)} ${reason[reason.length - 1]!}`;
   return {
     prompt: `A triangle ${M(`${P}${Q}${R}`)} has ${given}. Side ${M(`${Q}${R}`)} is opposite ${M(`\\angle ${P}`)}. How many different triangles fit these measures? Triangles with the same size and shape count as one.`,
     choices: options(
@@ -1246,7 +1285,10 @@ function triangleUniqueness(r: Random): Built {
         )
         .filter((w): w is Wrong => w !== null),
     ),
-    explanation: [...reason, `Answer: ${answer.toLowerCase()}.`],
+    explanation: [
+      ...reason,
+      `So ${answer.toLowerCase()} ${count === 2 ? "fit" : "fits"} these measures.`,
+    ],
     hint: `The angle ${M(P)} is not between the two given sides, so the measures can leave a choice. Draw ${M(`\\angle ${P}`)}, mark ${M(`${P}${R}`)} on one ray, and ask where a side of length ${a} cm from ${M(R)} can land on the other ray.`,
     tags: [variant],
     model: { angleA, a, b, count },
@@ -1309,8 +1351,10 @@ function percentApplications(r: Random): Built {
           ],
         ]),
         explanation: [
+          `Sales tax is extra money added to a price. Percent means "out of 100", so ${rate}% of an amount is that amount × ${rate}/100.`,
           `Tax = ${rate}% of ${price} = ${price} × ${rate}/100 = ${usd(price * rate)}.`,
-          `Total = ${word(price)} + ${usd(price * rate)} = ${usd(total)}.`,
+          `Tax is added on top of the price: ${word(price)} + ${usd(price * rate)} = ${usd(total)}.`,
+          `The total cost is ${usd(total)}.`,
         ],
         hint: `Find ${rate}% of ${price} dollars first, then decide whether tax is added to or taken from the price.`,
         tags: [variant],
@@ -1342,8 +1386,10 @@ function percentApplications(r: Random): Built {
           ],
         ]),
         explanation: [
+          `A tip is extra money paid on top of a bill. Percent means "out of 100", so ${rate}% of an amount is that amount × ${rate}/100.`,
           `Tip = ${rate}% of ${bill} = ${bill} × ${rate}/100 = ${usd(bill * rate)}.`,
-          `Total = ${word(bill)} + ${usd(bill * rate)} = ${usd(total)}.`,
+          `The tip is paid as well as the bill: ${word(bill)} + ${usd(bill * rate)} = ${usd(total)}.`,
+          `The total paid is ${usd(total)}.`,
         ],
         hint: `Work out ${rate}% of the ${bill}-dollar bill, then think about whether the tip is part of what you pay.`,
         tags: [variant],
@@ -1371,8 +1417,10 @@ function percentApplications(r: Random): Built {
           ],
         ]),
         explanation: [
+          `A commission is pay that is a percent of the sales made, not of the base pay. Percent means "out of 100", so ${rate}% of an amount is that amount × ${rate}/100.`,
           `Commission = ${rate}% of ${sales} = ${sales} × ${rate}/100 = ${usd(comm)}.`,
-          `Total pay = ${word(base)} + ${usd(comm)} = ${usd(total)}.`,
+          `Add the base pay: ${word(base)} + ${usd(comm)} = ${usd(total)}.`,
+          `The total pay is ${usd(total)}.`,
         ],
         hint: `The commission is ${rate}% of the sales of ${word(sales)}, not of the base pay of ${word(base)}. Find it, then add the base pay.`,
         tags: [variant],
@@ -1401,8 +1449,10 @@ function percentApplications(r: Random): Built {
           ],
         ]),
         explanation: [
+          `A markup is the amount a store adds to what it paid, so the price goes up. Percent means "out of 100", so ${rate}% of an amount is that amount × ${rate}/100.`,
           `Markup = ${rate}% of ${cost} = ${cost} × ${rate}/100 = ${usd(cost * rate)}.`,
-          `Selling price = ${word(cost)} + ${usd(cost * rate)} = ${usd(price)}.`,
+          `Add the markup to the cost: ${word(cost)} + ${usd(cost * rate)} = ${usd(price)}.`,
+          `The selling price is ${usd(price)}.`,
         ],
         hint: `The markup is a percent of the store's cost. Find that amount, then decide how it changes the price.`,
         tags: [variant],
@@ -1431,8 +1481,10 @@ function percentApplications(r: Random): Built {
           ],
         ]),
         explanation: [
+          `A markdown takes a percent off the price, so the price goes down. Percent means "out of 100", so ${rate}% of an amount is that amount × ${rate}/100.`,
           `Amount off = ${rate}% of ${orig} = ${orig} × ${rate}/100 = ${usd(orig * rate)}.`,
-          `Sale price = ${word(orig)} − ${usd(orig * rate)} = ${usd(sale)}.`,
+          `Take it off the price: ${word(orig)} − ${usd(orig * rate)} = ${usd(sale)}.`,
+          `The sale price is ${usd(sale)}.`,
         ],
         hint: `Find ${rate}% of the ${orig}-dollar price. That amount is taken off the price.`,
         tags: [variant],
@@ -1465,8 +1517,10 @@ function percentApplications(r: Random): Built {
           ],
         ]),
         explanation: [
+          `The percent off compares the dollars taken off with the original price, as a number out of 100.`,
           `Amount taken off = ${orig} − ${sale} = ${off} dollars.`,
-          `Percent off = ${off} ÷ ${orig} = ${off / orig} = ${rate}%.`,
+          `Divide by the original price: ${off} ÷ ${orig} = ${off / orig}, which is ${rate} out of 100, or ${rate}%.`,
+          `The price was marked down ${rate}%.`,
         ],
         hint: `First find how many dollars were taken off. Then divide that amount by the original price, ${orig} dollars.`,
         tags: [variant],
@@ -1508,11 +1562,15 @@ function percentApplications(r: Random): Built {
           ],
         ]),
         explanation: [
-          `Each year earns ${rate}% of ${p} = ${(p * rate) / 100} dollars.`,
+          `Simple interest is money an account earns: the same percent of the money put in, every year.`,
+          `Each year earns ${rate}% of ${p} = ${p} × ${rate}/100 = ${(p * rate) / 100} dollars.`,
           `For ${t} years: ${t} × ${(p * rate) / 100} = ${i} dollars of interest.`,
           ...(balance
-            ? [`Account total: ${p} + ${i} = ${p + i} dollars.`]
-            : []),
+            ? [
+                `The account keeps the money put in and adds the interest: ${p} + ${i} = ${p + i} dollars.`,
+                `The account holds ${p + i} dollars.`,
+              ]
+            : [`The interest earned is ${i} dollars.`]),
         ],
         hint: `Find the interest for one year: ${rate}% of ${p} dollars. Then think about how many years it is earned.`,
         tags: [variant],
@@ -1542,8 +1600,10 @@ function percentApplications(r: Random): Built {
           ],
         ]),
         explanation: [
+          `The interest rate is the percent of the money put in that the account earns each year.`,
           `Over ${t} years the interest is ${i} dollars out of ${p} dollars: ${i} ÷ ${p} = ${i / p}, which is ${pct(rate * t, 1)}.`,
           `That is for ${t} years, so one year is ${pct(rate * t, 1)} ÷ ${t} = ${pct(rate, 1)}.`,
+          `The interest rate is ${pct(rate, 1)} per year.`,
         ],
         hint: `Compare the interest, ${i} dollars, with the money put in, ${p} dollars, to get a percent. That percent covers all ${t} years.`,
         tags: [variant],
@@ -1583,8 +1643,10 @@ function percentApplications(r: Random): Built {
         prompt: `A scale shows ${measured} ${g} for an object whose true amount is ${actual} ${g}. What is the percent error, the size of the error as a percent of the true amount?`,
         choices: options(pct(e, 1), wrong),
         explanation: [
-          `Error = |${measured} − ${actual}| = ${d} ${d === 1 ? g.slice(0, -1) : g}.`,
-          `Percent error = ${d} ÷ ${actual} = ${d / actual}, which is ${pct(e, 1)}.`,
+          `Percent error tells how far off a measurement is, compared with the true amount, as a percent.`,
+          `The error is the size of the difference, ignoring sign: ${measured} − ${actual} gives ${d} ${d === 1 ? g.slice(0, -1) : g}.`,
+          `Divide by the true amount, because that is the standard: ${d} ÷ ${actual} = ${d / actual}, which is ${pct(e, 1)}.`,
+          `The percent error is ${pct(e, 1)}.`,
         ],
         hint: `Find the size of the difference between the measured ${measured} ${g} and the true ${actual} ${g}. Then divide by the amount that is the standard: the true one.`,
         tags: [variant],
@@ -1787,9 +1849,11 @@ function compoundEventSimulation(r: Random): Built {
         prompt: `${ctx.intro} Here are ${N} trials: ${text}. Based on these trials, what is the estimated probability that ${event.text}?`,
         choices: options(correct, candidates),
         explanation: [
+          `A simulation uses random digits to act out a chance event many times. Each group of ${ctx.digits} digits is one trial.`,
           `Go through each of the ${N} trials and count the ${ctx.unitWord}.`,
           `Trials where ${event.text}: ${hitTrials.join(", ")}. That is ${hits} of the ${N} trials.`,
-          `The estimate is ${hits} out of ${N}, which is ${correct}.`,
+          `An estimated probability is the number of times the event happened divided by the number of trials.`,
+          `The estimated probability is ${hits} out of ${N}, which is ${correct}.`,
         ],
         hint: `Treat each group of ${ctx.digits} digits as one trial. For each trial, count the ${ctx.markWord}, and decide if the event happened. Then compare the number of trials where it did with all ${N} trials.`,
         tags: [variant, ctx.id],
@@ -1864,9 +1928,10 @@ function compoundEventSimulation(r: Random): Built {
           .map(([n, d, why]): Wrong => [M(fracTex(n, d)), why]),
       ),
       explanation: [
-        `List the sample space: ${sampleLines(exp)}. That is ${total} equally likely outcomes.`,
+        `The sample space is the list of every possible outcome. List it in order so none is missed: ${sampleLines(exp)}. That is ${total} equally likely outcomes.`,
         `Outcomes where ${event.text}: ${fav.map((o) => (exp.id === "coins" ? o.join("") : outcomeText(o))).join(", ")}. That is ${fav.length}.`,
-        `Probability = ${fav.length}/${total} = ${correct}.`,
+        `With equally likely outcomes, probability = favorable outcomes ÷ all outcomes = ${fav.length}/${total} = ${correct}.`,
+        `The probability is ${correct}.`,
       ],
       hint: `Make an organized list or table of every outcome of the experiment (there are ${exp.stages.join(" × ")} = ${total} in all). Then mark the ones where ${event.text}.`,
       tags: [variant, exp.id],
@@ -1921,7 +1986,7 @@ function compoundEventSimulation(r: Random): Built {
     ]),
     explanation: [
       `The experimental probability is the number of times it happened divided by the number of trials: ${observed}/${N}.`,
-      `Compare with ${num}/${total}: ${observed} × ${total} = ${observed * total} and ${num} × ${N} = ${num * N}.`,
+      `The theoretical probability, ${num}/${total}, is what chance predicts. To compare two fractions, cross-multiply: ${observed} × ${total} = ${observed * total} and ${num} × ${N} = ${num * N}.`,
       statements[truth],
     ],
     hint: `Write the experimental probability as ${observed} out of ${N}. To compare it with ${num}/${total}, compare ${observed} × ${total} with ${num} × ${N}, or use decimals.`,
