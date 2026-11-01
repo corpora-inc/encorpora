@@ -79,21 +79,11 @@
     "level balance": 1
   },
   "balance-one-step": {
-    "balance": 10,
-    "balances": 10,
     "change": 1,
-    "cube": 2,
-    "cubes": 36,
-    "level balance": 1,
     "mean": 18
   },
   "balance-two-step": {
-    "balance": 19,
-    "balances": 16,
     "change": 1,
-    "cube": 11,
-    "cubes": 46,
-    "level balance": 1,
     "mean": 11,
     "side": 7
   },
@@ -766,12 +756,6 @@
     "sides": 2,
     "square": 1
   },
-  "equation-after-one-step": {
-    "change": 1,
-    "factor": 9,
-    "inverse": 1,
-    "opposite": 7
-  },
   "equation-solution-count": {
     "mean": 1,
     "side": 1,
@@ -1154,25 +1138,12 @@
     "side": 5,
     "square": 9
   },
-  "inequality-context-bound": {
-    "boundary": 5,
-    "more than": 7
-  },
-  "inequality-from-number-line": {
-    "boundary": 15
-  },
-  "inequality-number-line-choice": {
-    "boundary": 1
-  },
   "inequality-solution-blanks": {
     "change": 1,
     "term": 1
   },
   "inequality-solution-set": {
-    "boundary": 2,
-    "rules": 6,
-    "side": 2,
-    "whole": 23
+    "rules": 6
   },
   "inline-linear-features": {
     "change": 60,
@@ -1447,23 +1418,11 @@
     "population": 2
   },
   "lesson:balance-one-step": {
-    "balance": 5,
-    "balances": 3,
-    "cube": 2,
-    "cubes": 12,
-    "level balance": 2,
-    "rule": 1,
-    "side": 1
+    "rule": 1
   },
   "lesson:balance-two-step": {
-    "balance": 4,
-    "balances": 2,
     "change": 2,
-    "cube": 5,
-    "cubes": 16,
-    "level balance": 2,
     "one third": 1,
-    "side": 1,
     "squares": 1
   },
   "lesson:bar-chart-comparison": {
@@ -3376,32 +3335,14 @@
     "product": 1
   },
   "lesson:inequality-from-context": {
-    "boundaries": 1,
-    "boundary": 10,
     "mean": 1,
-    "more than": 5,
-    "rule": 1,
     "rules": 2
-  },
-  "lesson:inequality-from-number-line": {
-    "boundary": 9,
-    "unit": 1
-  },
-  "lesson:inequality-number-line-choice": {
-    "boundaries": 1,
-    "boundary": 10
   },
   "lesson:inequality-solution-blanks": {
     "boundary": 2,
     "change": 1,
     "side": 2,
     "sides": 4
-  },
-  "lesson:inequality-solution-set": {
-    "boundary": 7,
-    "rules": 1,
-    "side": 2,
-    "whole": 2
   },
   "lesson:inline-linear-features": {
     "change": 3
@@ -4247,16 +4188,6 @@
     "sides": 8,
     "third": 1
   },
-  "lesson:one-step-equation": {
-    "balance": 2,
-    "balances": 2,
-    "cubes": 5,
-    "inverse": 2,
-    "level balance": 1,
-    "scale": 1,
-    "side": 1,
-    "sides": 15
-  },
   "lesson:one-step-equation-results": {
     "balance": 1,
     "change": 2,
@@ -4267,14 +4198,6 @@
     "sides": 11,
     "term": 4,
     "whole": 2
-  },
-  "lesson:one-step-equation-story": {
-    "model": 1,
-    "models": 1,
-    "parts": 1,
-    "side": 2,
-    "sides": 2,
-    "whole": 1
   },
   "lesson:one-step-expression-results": {
     "factor": 2,
@@ -7194,17 +7117,8 @@
     "squared": 2,
     "squaring": 6
   },
-  "lesson:two-step-equation-model": {
-    "part": 1,
-    "sides": 1,
-    "unit": 1,
-    "whole": 1
-  },
   "lesson:two-step-word-problem": {
-    "difference": 1,
-    "sides": 3,
-    "unit": 2,
-    "whole": 1
+    "difference": 1
   },
   "lesson:two-variable-models": {
     "boundary": 2,
@@ -7810,18 +7724,6 @@
     "rule": 1,
     "unit": 1
   },
-  "one-step-equation": {
-    "inverse": 2,
-    "leaves": 10,
-    "side": 17,
-    "sides": 43
-  },
-  "one-step-equation-story": {
-    "models": 2,
-    "parts": 1,
-    "side": 1,
-    "sides": 21
-  },
   "open-number-line-to-1000": {
     "difference": 1,
     "more than": 3
@@ -8387,17 +8289,6 @@
   "shifted-ruler-length": {
     "unit": 2
   },
-  "show-work-box-cost": {
-    "product": 1,
-    "whole": 32
-  },
-  "show-work-percent-count": {
-    "difference": 1,
-    "part": 5
-  },
-  "show-work-rental-plans": {
-    "more than": 7
-  },
   "signed-changes-sum": {
     "net": 33,
     "terms": 2
@@ -8689,10 +8580,6 @@
     "parts": 4,
     "whole": 51
   },
-  "story-for-subtraction-sentence": {
-    "changes": 1,
-    "leaves": 1
-  },
   "story-graph-match": {
     "interval": 1,
     "left side": 1,
@@ -8926,13 +8813,7 @@
     "opposite": 1
   },
   "two-step-equation-model": {
-    "part": 1,
-    "sides": 42,
-    "unit": 1
-  },
-  "two-step-word-problem": {
-    "sides": 44,
-    "unit": 1
+    "sides": 42
   },
   "two-way-association-choice": {
     "difference": 1,
@@ -8998,12 +8879,6 @@
     "difference": 1,
     "rename": 20,
     "renaming": 1
-  },
-  "variable-in-situation": {
-    "change": 13,
-    "changes": 4,
-    "more than": 1,
-    "part": 7
   },
   "variation-constant": {
     "change": 1,

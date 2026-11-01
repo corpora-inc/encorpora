@@ -965,18 +965,15 @@
     },
     "lesson:balance-one-step": {
       "terms": [
-        "division",
         "equal-groups",
-        "gram",
-        "multiplication"
+        "gram"
       ],
       "long": []
     },
     "lesson:balance-two-step": {
       "terms": [
         "equal-groups",
-        "gram",
-        "isolate"
+        "gram"
       ],
       "long": []
     },
@@ -2670,16 +2667,6 @@
       ],
       "long": []
     },
-    "lesson:equations-preserve-equality": {
-      "terms": [
-        "distribute",
-        "division",
-        "isolate",
-        "multiplier",
-        "solution"
-      ],
-      "long": []
-    },
     "lesson:equivalent-expressions-check": {
       "terms": [
         "distribute",
@@ -3272,18 +3259,6 @@
       ],
       "long": []
     },
-    "lesson:functions-and-graph-meaning": {
-      "terms": [
-        "constant",
-        "coordinate",
-        "function",
-        "origin",
-        "output",
-        "proportional-relationship",
-        "real-number"
-      ],
-      "long": []
-    },
     "lesson:gauss-3x3-solve": {
       "terms": [
         "coefficient",
@@ -3705,12 +3680,9 @@
         "at-most",
         "inequality",
         "kilogram",
-        "negative-number",
-        "solution"
+        "negative-number"
       ],
-      "long": [
-        "An inequality compares two values: x > 2"
-      ]
+      "long": []
     },
     "lesson:inequality-from-number-line": {
       "terms": [
@@ -3718,12 +3690,9 @@
         "inequality",
         "negative-number",
         "ray",
-        "solution",
         "solution-set"
       ],
-      "long": [
-        "An inequality compares two values: x > 2"
-      ]
+      "long": []
     },
     "lesson:inequality-number-blanks": {
       "terms": [
@@ -3736,14 +3705,11 @@
     "lesson:inequality-number-line-choice": {
       "terms": [
         "closed-circle",
-        "inequality",
         "negative-number",
         "ray",
         "solution-set"
       ],
-      "long": [
-        "An inequality compares two values: x > 2"
-      ]
+      "long": []
     },
     "lesson:inequality-solution-blanks": {
       "terms": [
@@ -3767,9 +3733,7 @@
         "variable",
         "whole-number"
       ],
-      "long": [
-        "An inequality compares two values: x > 2"
-      ]
+      "long": []
     },
     "lesson:inline-linear-features": {
       "terms": [
@@ -4036,17 +4000,6 @@
         "line",
         "number-line",
         "tick-mark"
-      ],
-      "long": []
-    },
-    "lesson:linear-change-per-unit": {
-      "terms": [
-        "constant",
-        "corresponding",
-        "extrapolation",
-        "input",
-        "output",
-        "rate"
       ],
       "long": []
     },
@@ -4885,32 +4838,13 @@
     "lesson:one-step-equation": {
       "terms": [
         "decimal",
-        "division",
-        "inverse-operation",
-        "isolate",
-        "multiplication",
-        "solution",
-        "substitute",
-        "variable",
-        "whole-number"
-      ],
-      "long": []
-    },
-    "lesson:one-step-equation-results": {
-      "terms": [
-        "constant",
         "solution"
       ],
       "long": []
     },
     "lesson:one-step-equation-story": {
       "terms": [
-        "division",
-        "equal-groups",
-        "inverse-operation",
-        "multiplication",
-        "strip-diagram",
-        "whole-number"
+        "equal-groups"
       ],
       "long": []
     },
@@ -5284,18 +5218,6 @@
     "lesson:place-value-forms-select-lesson": {
       "terms": [
         "expression"
-      ],
-      "long": []
-    },
-    "lesson:plans-ties-and-thresholds": {
-      "terms": [
-        "domain",
-        "input",
-        "integer",
-        "rate",
-        "round",
-        "strict-inequality",
-        "whole-number"
       ],
       "long": []
     },
@@ -7240,15 +7162,6 @@
       ],
       "long": []
     },
-    "lesson:repair-a-plotted-function": {
-      "terms": [
-        "coordinate",
-        "coordinate-plane",
-        "input",
-        "output"
-      ],
-      "long": []
-    },
     "lesson:repeating-shape-pattern-lesson": {
       "terms": [
         "pattern",
@@ -7956,26 +7869,6 @@
       ],
       "long": []
     },
-    "lesson:show-work-box-cost": {
-      "terms": [
-        "expression",
-        "function"
-      ],
-      "long": []
-    },
-    "lesson:show-work-percent-count": {
-      "terms": [
-        "proportion"
-      ],
-      "long": []
-    },
-    "lesson:show-work-rental-plans": {
-      "terms": [
-        "inequality",
-        "rate"
-      ],
-      "long": []
-    },
     "lesson:signed-addition": {
       "terms": [
         "negative-number",
@@ -8284,55 +8177,6 @@
         "expression",
         "leading-coefficient",
         "square-root"
-      ],
-      "long": []
-    },
-    "lesson:solve-justify-formula": {
-      "terms": [
-        "area",
-        "coefficient",
-        "division",
-        "divisor",
-        "height",
-        "multiplication",
-        "property-of-equality",
-        "reciprocal",
-        "symmetry"
-      ],
-      "long": []
-    },
-    "lesson:solve-justify-inequality": {
-      "terms": [
-        "coefficient",
-        "constant",
-        "distribute",
-        "distributive-property",
-        "division",
-        "inequality",
-        "negative-number",
-        "reciprocal",
-        "reverse-inequality-sign",
-        "solution-set",
-        "variable"
-      ],
-      "long": []
-    },
-    "lesson:solve-justify-linear": {
-      "terms": [
-        "distribute",
-        "distributive-property",
-        "division",
-        "like-terms",
-        "property-of-equality",
-        "solution"
-      ],
-      "long": []
-    },
-    "lesson:solve-justify-quadratic": {
-      "terms": [
-        "common-factor",
-        "expression",
-        "property-of-equality"
       ],
       "long": []
     },
@@ -9360,13 +9204,10 @@
     },
     "lesson:two-step-equation-model": {
       "terms": [
-        "decimal",
         "equal-groups",
         "liter",
-        "perimeter",
         "strip-diagram",
-        "variable",
-        "whole-number"
+        "variable"
       ],
       "long": []
     },
@@ -9381,10 +9222,7 @@
     },
     "lesson:two-step-word-problem": {
       "terms": [
-        "decimal",
         "equal-groups",
-        "perimeter",
-        "strip-diagram",
         "whole-number"
       ],
       "long": []
@@ -9526,14 +9364,6 @@
         "mean-absolute-deviation",
         "median",
         "quartile"
-      ],
-      "long": []
-    },
-    "lesson:variable-in-situation-lesson": {
-      "terms": [
-        "constant",
-        "rate",
-        "variable"
       ],
       "long": []
     },
@@ -10044,8 +9874,7 @@
     },
     "practice:balance-two-step": {
       "terms": [
-        "equal-groups",
-        "isolate"
+        "equal-groups"
       ],
       "long": []
     },
@@ -10159,7 +9988,6 @@
       "terms": [
         "coefficient",
         "constant",
-        "isolate",
         "variable"
       ],
       "long": []
@@ -10274,7 +10102,6 @@
     },
     "practice:check-equation-candidate": {
       "terms": [
-        "isolate",
         "substitute"
       ],
       "long": []
@@ -11751,8 +11578,7 @@
     },
     "practice:distance-graph-meaning": {
       "terms": [
-        "constant",
-        "function"
+        "constant"
       ],
       "long": []
     },
@@ -12001,9 +11827,7 @@
     "practice:equation-after-one-step": {
       "terms": [
         "division",
-        "multiplication",
-        "solution",
-        "variable"
+        "multiplication"
       ],
       "long": []
     },
@@ -12457,14 +12281,6 @@
       "terms": [
         "quadrilateral",
         "right-angle"
-      ],
-      "long": []
-    },
-    "practice:first-cheaper-whole-input": {
-      "terms": [
-        "input",
-        "rate",
-        "whole-number"
       ],
       "long": []
     },
@@ -13649,7 +13465,6 @@
     },
     "practice:grouped-linear-equation": {
       "terms": [
-        "isolate",
         "variable"
       ],
       "long": []
@@ -13823,7 +13638,6 @@
     },
     "practice:inequality-number-line-choice": {
       "terms": [
-        "closed-circle",
         "inequality",
         "ray"
       ],
@@ -13853,7 +13667,6 @@
       "terms": [
         "decimal",
         "inequality",
-        "substitute",
         "variable"
       ],
       "long": []
@@ -15043,9 +14856,7 @@
       "terms": [
         "coefficient",
         "constant",
-        "isolate",
-        "multiplication",
-        "solution"
+        "multiplication"
       ],
       "long": []
     },
@@ -15344,19 +15155,15 @@
         "division",
         "inequality",
         "inverse-operation",
-        "isolate",
         "multiplication",
         "solution",
-        "substitute",
         "variable"
       ],
       "long": []
     },
     "practice:one-step-equation-story": {
       "terms": [
-        "equal-groups",
-        "solution",
-        "variable"
+        "solution"
       ],
       "long": []
     },
@@ -16114,10 +15921,7 @@
     },
     "practice:predict-linear-output": {
       "terms": [
-        "input",
-        "linear-function",
-        "output",
-        "rate"
+        "linear-function"
       ],
       "long": []
     },
@@ -16236,10 +16040,8 @@
       "terms": [
         "constant",
         "constant-of-proportionality",
-        "function",
         "multiplier",
-        "origin",
-        "proportional-relationship"
+        "origin"
       ],
       "long": []
     },
@@ -16980,8 +16782,6 @@
     },
     "practice:recover-linear-intercept": {
       "terms": [
-        "input",
-        "rate",
         "slope-intercept-form",
         "substitute"
       ],
@@ -17107,20 +16907,10 @@
       ],
       "long": []
     },
-    "practice:relation-function-choice": {
-      "terms": [
-        "function",
-        "input",
-        "output"
-      ],
-      "long": []
-    },
     "practice:relation-point-removal": {
       "terms": [
         "at-most",
-        "coordinate",
-        "input",
-        "output"
+        "coordinate"
       ],
       "long": []
     },
@@ -17978,9 +17768,7 @@
     },
     "practice:shared-plan-input": {
       "terms": [
-        "expression",
-        "input",
-        "rate"
+        "expression"
       ],
       "long": []
     },
@@ -18022,28 +17810,6 @@
         "remainder",
         "substitute",
         "trinomial",
-        "variable"
-      ],
-      "long": []
-    },
-    "practice:show-work-box-cost": {
-      "terms": [
-        "discount",
-        "division",
-        "expression"
-      ],
-      "long": []
-    },
-    "practice:show-work-percent-count": {
-      "terms": [
-        "percent",
-        "proportion"
-      ],
-      "long": []
-    },
-    "practice:show-work-rental-plans": {
-      "terms": [
-        "rate",
         "variable"
       ],
       "long": []
@@ -18401,58 +18167,6 @@
       ],
       "long": []
     },
-    "practice:solve-justify-formula": {
-      "terms": [
-        "area",
-        "division",
-        "expression",
-        "height",
-        "multiplication",
-        "property-of-equality",
-        "rate",
-        "variable"
-      ],
-      "long": []
-    },
-    "practice:solve-justify-inequality": {
-      "terms": [
-        "coefficient",
-        "constant",
-        "distribute",
-        "inequality",
-        "like-terms",
-        "negative-number",
-        "reverse-inequality-sign",
-        "solution-set",
-        "variable"
-      ],
-      "long": []
-    },
-    "practice:solve-justify-linear": {
-      "terms": [
-        "coefficient",
-        "constant",
-        "distribute",
-        "distributive-property",
-        "expression",
-        "like-terms",
-        "parentheses",
-        "property-of-equality",
-        "variable"
-      ],
-      "long": []
-    },
-    "practice:solve-justify-quadratic": {
-      "terms": [
-        "at-least",
-        "coefficient",
-        "common-factor",
-        "polynomial",
-        "quadratic",
-        "real-number"
-      ],
-      "long": []
-    },
     "practice:solve-square-cube-equation": {
       "terms": [
         "cube-root",
@@ -18801,14 +18515,6 @@
       "terms": [
         "stem-and-leaf-plot",
         "tenth"
-      ],
-      "long": []
-    },
-    "practice:step-reason-table": {
-      "terms": [
-        "distributive-property",
-        "property-of-equality",
-        "solution"
       ],
       "long": []
     },
@@ -19671,8 +19377,7 @@
     },
     "practice:two-step-word-problem": {
       "terms": [
-        "equal-groups",
-        "variable"
+        "equal-groups"
       ],
       "long": []
     },
@@ -19696,10 +19401,7 @@
     },
     "practice:unequal-step-rate": {
       "terms": [
-        "constant",
-        "input",
-        "output",
-        "rate"
+        "constant"
       ],
       "long": []
     },
@@ -19819,12 +19521,6 @@
         "common-denominator",
         "denominator",
         "numerator"
-      ],
-      "long": []
-    },
-    "practice:variable-in-situation": {
-      "terms": [
-        "rate"
       ],
       "long": []
     },

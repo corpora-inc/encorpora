@@ -93,7 +93,7 @@ export const oneStepResultPrinciples: Record<string, string> = {
   "factor-out-choice":
     "By the distributive property $g(p+q)=gp+gq$, so $gp+gq$ can be written $g(p+q)$ for any nonzero $g$. Factoring is dividing each term by $g$: $\\frac{gp}{g}=p$. A negative $g$ reverses the sign of each quotient.",
   "step-reason-table":
-    "The addition, subtraction, multiplication and division properties of equality say that doing the same operation to both sides keeps an equation's solutions. Multiplying or dividing must use a number other than 0. The distributive property, as in $3(x + 2) = 3x + 6$, rewrites one side without changing its value. A justified solution names one such property for each step.",
+    "The addition, subtraction, multiplication and division properties of equality say that doing the same operation to both sides keeps an equation's solutions. Multiplying or dividing must use a number other than 0. The distributive property, as in $3(x + 2) = 3x + 6$, rewrites one part of a line without changing its value. A justified solution names one such property for each step.",
 };
 
 export const oneStepResultLessons = [
