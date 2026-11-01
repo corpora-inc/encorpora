@@ -2083,7 +2083,7 @@ function scalingDirectionChoice(r: Random): Built {
     return {
       variant,
       prompt: `Without calculating, which product is ${greater ? "greater" : "less"} than ${N}?`,
-      hint: `Compare each multiplier with 1. Multiplying ${N} by a number ${greater ? "greater" : "less"} than 1 gives a result ${greater ? "greater" : "less"} than ${N}.`,
+      hint: `Compare each multiplier with 1. Multiplying ${N} by a number ${greater ? "greater" : "less"} than 1 makes the result ${greater ? "greater" : "less"} than ${N}.`,
       explanation: [
         `${frText(odd)} is ${greater ? "greater" : "less"} than 1, so ${expr(odd)} is ${greater ? "greater" : "less"} than ${N}.`,
         `The other multipliers are ${greater ? "less" : "greater"} than 1, so their products are ${greater ? "less" : "greater"} than ${N}.`,
@@ -2149,7 +2149,7 @@ function scalingDirectionChoice(r: Random): Built {
       `${label} is ${kind === "less" ? "less than" : kind === "more" ? "greater than" : "equal to"} 1.`,
       kind === "equal"
         ? `Multiplying by 1 does not change ${N}, so the product equals ${N}.`
-        : `Multiplying by a number ${kind === "less" ? "less" : "greater"} than 1 gives a result ${kind === "less" ? "less" : "greater"} than ${N}.`,
+        : `Multiplying by a number ${kind === "less" ? "less" : "greater"} than 1 makes the result ${kind === "less" ? "less" : "greater"} than ${N}.`,
     ],
     choices: choicesFrom(correct, pool),
   };
