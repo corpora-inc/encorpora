@@ -749,7 +749,7 @@ export function loanCompareOptionsCase(seed: string): FinanceCase {
         given: { P, n1, p1, n2, p2, fee },
         value: c(diff),
         problem: finish(m, seed, r, {
-          prompt: `${who} needs ${usd(c(P))}. Offer 1 has no fee: ${n1} monthly payments of ${usd(c(p1))}. Offer 2 has a ${usd(c(fee))} fee paid at the start, then ${n2} monthly payments of ${usd(c(p2))}. Counting the fee, which offer costs less overall, and by how much?`,
+          prompt: `${who} needs ${usd(c(P))}. Offer 1 has no fee: ${n1} monthly payments of ${usd(c(p1))}. Offer 2 has ${article(usd(c(fee)))} ${usd(c(fee))} fee paid at the start, then ${n2} monthly payments of ${usd(c(p2))}. Counting the fee, which offer costs less overall, and by how much?`,
           hint: `Offer 2's cost is its fee plus ${n2} payments of ${usd(c(p2))}. Offer 1's cost is only its payments. Compare the two totals.`,
           explanation: [
             `Offer 1: ${n1} × ${p1} = ${group(T1)} dollars.`,
@@ -1262,7 +1262,7 @@ export function creditCostConceptsCase(seed: string): FinanceCase {
       given: { B, apr, purchases, fee, pay },
       value: nb,
       problem: finish(m, seed, r, {
-        prompt: `${who}'s card statement starts at ${usd(B)}. The APR is ${apr}% (monthly rate ${mr}). During the month, interest is charged on the starting balance, rounded to the nearest cent. ${who} also buys ${usd(purchases * 100)} of items, is charged a ${usd(fee * 100)} late fee, and makes a ${usd(pay * 100)} payment. What is the new balance?`,
+        prompt: `${who}'s card statement starts at ${usd(B)}. The APR is ${apr}% (monthly rate ${mr}). During the month, interest is charged on the starting balance, rounded to the nearest cent. ${who} also buys ${usd(purchases * 100)} of items, is charged ${article(usd(fee * 100))} ${usd(fee * 100)} late fee, and makes ${article(usd(pay * 100))} ${usd(pay * 100)} payment. What is the new balance?`,
         hint: `Start from ${usd(B)}. Add the month's interest (${mr} of ${usd(B)}), the purchases and the late fee, then subtract the payment.`,
         explanation: [
           `Interest: ${mr} of ${usd(B)} = ${usd(i)}.`,

@@ -1267,7 +1267,7 @@ function sectionAreaCase(r: Random): Case {
   if (plane === "parallel-base") {
     answer = l * w;
     explanation = [
-      `A slice parallel to the base copies the base: a ${l} ${u} by ${w} ${u} rectangle.`,
+      `A slice parallel to the base copies the base: ${article(l)} ${l} ${u} by ${w} ${u} rectangle.`,
       `Area = ${l} × ${w} = ${answer} ${squares}.`,
     ];
   } else if (plane === "perpendicular-front") {
