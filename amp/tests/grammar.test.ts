@@ -68,6 +68,18 @@ test("polish keeps short words that end in s after 1", async () => {
     polish("it uses the slope 1 as the intercept"),
     "it uses the slope 1 as the intercept",
   );
+  // A verb after a bare 1 keeps its s; a plural noun loses it.
+  assert.equal(polish("Adding 1 moves 1 right."), "Adding 1 moves 1 right.");
+  assert.equal(polish("So the key 1 means 101."), "So the key 1 means 101.");
+  assert.equal(
+    polish("9 − 1 needs no regrouping."),
+    "9 − 1 needs no regrouping.",
+  );
+  assert.equal(
+    polish("Adding 0 to 1 adds nothing."),
+    "Adding 0 to 1 adds nothing.",
+  );
+  assert.equal(polish("There are 1 trays."), "There is 1 tray.");
 });
 
 test("a describing word between 1 and its noun does not hide the plural", () => {
