@@ -5,9 +5,8 @@ const entries: FormatLessonEntry[] = [
   {
     id: "graph-of-paired-values",
     title: "Match paired values with their graph",
-    // "rule" is the sentence that gives y from x; "3 more than" is ordinary prose.
-    senses: { rule: "rule" },
-    noLink: ["more than", "changes", "leaves"],
+    senses: { rule: "rule", "more than": "more-than" },
+    noLink: ["changes", "leaves"],
     summary:
       "An ordered pair is two numbers, like (2, 5), that name one point. The right graph has a dot for every pair, and no other dots.",
     objectives: [

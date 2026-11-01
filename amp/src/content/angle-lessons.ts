@@ -15,17 +15,9 @@ export const angleLessons: Lesson[] = [
       quarter: "fourth",
       center: "center",
       square: "square-shape",
+      "more than": "more-than",
     },
-    noLink: [
-      "scale",
-      "scales",
-      "part",
-      "parts",
-      "whole",
-      "more than",
-      "side",
-      "edge",
-    ],
+    noLink: ["scale", "scales", "part", "parts", "whole", "side", "edge"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Explain a degree as 1 of 360 equal pieces of a full turn, and find an angle that is part of a turn.",
@@ -38,7 +30,7 @@ export const angleLessons: Lesson[] = [
         paragraphs: [
           "Lay a pencil flat on a table and spin it around one end. A small spin makes a small angle. A bigger spin makes a bigger angle. How long the pencil is does not matter. Only the amount of turn does.",
           "Turn all the way around, back to where you started. That is a full turn: 360 degrees, written 360°. So 1 degree is 1 of 360 equal pieces of a full turn.",
-          "A protractor is a see-through half circle with degree numbers printed around its curved edge. It has two rows of numbers. The outer row counts up from 0 on the left. The inner row counts up from 0 on the right.",
+          "A protractor is a see-through half circle with degree numbers printed around its curved edge. It has two rows of numbers. On the protractors in these lessons, the outer row counts up from 0 on the left. The inner row counts up from 0 on the right.",
         ],
       },
       {
@@ -104,7 +96,7 @@ export const angleLessons: Lesson[] = [
       square: "square-shape",
       side: "side",
     },
-    noLink: ["plane", "part", "sort", "edges"],
+    noLink: ["part", "sort", "edges"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Name lines, rays and line segments, and sort angles and triangles by their angles.",
@@ -173,18 +165,12 @@ export const angleLessons: Lesson[] = [
     summary:
       "Fold a paper shape in half. If the two halves match exactly, the fold line is a line of symmetry. A shape can have one line of symmetry, several, or none at all.",
     templateIds: ["symmetry-line-count", "symmetry-line-check"],
-    senses: { side: "side", square: "square-shape" },
-    noLink: [
-      "edge",
-      "leaves",
-      "opposite",
-      "models",
-      "image",
-      "images",
-      "parts",
-      "face",
-      "faces",
-    ],
+    senses: {
+      side: "side",
+      square: "square-shape",
+      image: "image-transformation",
+    },
+    noLink: ["edge", "leaves", "opposite", "parts", "face", "faces"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Decide whether a line is a line of symmetry.",
@@ -346,8 +332,12 @@ export const angleMethods: Record<string, ProblemMethod> = {
     goal: "Count the lines of symmetry of a shape.",
     intuition:
       "A line of symmetry is a fold line where the two halves of a shape match exactly. Each half is the mirror image of the other. To test a fold, every side and corner on one half must land on a side or corner of the other half.",
-    senses: { side: "side", square: "square-shape" },
-    noLink: ["leaves", "opposite", "edge", "image"],
+    senses: {
+      side: "side",
+      square: "square-shape",
+      image: "image-transformation",
+    },
+    noLink: ["leaves", "opposite", "edge"],
     terms: terms.symmetry,
     method: [
       "Try every fold that could work. Fold through two corners, through the middles of two sides, and from a corner to the middle of a side.",
@@ -360,8 +350,12 @@ export const angleMethods: Record<string, ProblemMethod> = {
     goal: "Choose the dashed line that is a line of symmetry of a shape.",
     intuition:
       "A line of symmetry is a fold line where the two halves of a shape match exactly. Each half is the mirror image of the other. To test a fold, every side and corner on one half must land on a side or corner of the other half.",
-    senses: { side: "side", square: "square-shape" },
-    noLink: ["opposite", "edge", "image"],
+    senses: {
+      side: "side",
+      square: "square-shape",
+      image: "image-transformation",
+    },
+    noLink: ["opposite", "edge"],
     terms: terms.symmetry,
     method: [
       "Imagine folding the shape along each dashed line.",
