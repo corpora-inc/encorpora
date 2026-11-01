@@ -131,9 +131,11 @@ test("proof and rational-equation lessons lead with meaning, then example, metho
     {
       lesson: geometryProofLessons[0]!,
       headings: [
-        "What makes a reason fit?",
+        "Angles and how to name them",
+        "Statements, reasons and givens",
+        "Four rules about angles",
         "A worked example",
-        "Why the triangle sum is a straight angle",
+        "Why the angles of a triangle add to 180°",
         "Watch for",
         "The precise statements",
       ],

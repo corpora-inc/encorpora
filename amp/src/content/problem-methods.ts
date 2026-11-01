@@ -1310,13 +1310,17 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   // Integers, expressions, equations
   "integer-addition": {
-    goal: "Given two signed numbers, find their sum.",
+    goal: "Add two integers: whole numbers or their negatives, such as 4 or $-9$.",
+    intuition:
+      "An integer is a whole number (0, 1, 2, 3 and so on) or its negative, such as $-4$. A number's sign says whether it is positive (more than 0) or negative (less than 0). On a number line, a line with evenly spaced marks for numbers, adding a positive number moves right and adding a negative number moves left. Moves of the same size in opposite directions cancel.",
     method: [
-      "Same signs: add the sizes, keep the sign.",
-      "Different signs: subtract the smaller size from the larger, keep the sign of the larger.",
+      "Find the size of each number: its distance from 0, ignoring the sign. The size of $-8$ is 8.",
+      "Same signs: both moves go the same way, so add the sizes and keep that sign. $(-4) + (-5) = -9$.",
+      "Different signs: the moves partly cancel. Subtract the smaller size from the larger to see what is left, and keep the sign of the number with the larger size. $(-8) + 3 = -5$.",
+      "Equal sizes with different signs cancel completely: $(-3) + 3 = 0$.",
     ],
     watch:
-      "With different signs, the answer takes the sign of the number farther from 0: −8 + 3 = −5.",
+      "With different signs, the answer takes the sign of the number farther from 0. $-8 + 3 = -5$, not 5.",
   },
   "number-line-distance": {
     goal: "Given two points on a number line, find the distance between them.",
@@ -1351,33 +1355,44 @@ const legacyMethods: Record<string, ProblemMethod> = {
     watch: "Multiply before adding: 2 + 3 × 4 is 14, not 20.",
   },
   "substitute-linear-expression": {
-    goal: "Given an expression and a value of $x$, find the expression's value.",
+    goal: "Find the value of an expression when $x$ is a given number.",
+    intuition:
+      "An expression, such as $-5x + 2$, is a math phrase that has a value. Here $-5x$ means $-5$ times $x$. To substitute means to replace $x$ with the given number. Put the number in parentheses, the curved brackets ( ), so its sign stays attached. Then do the arithmetic (the multiplying and adding), multiplying before adding.",
     method: [
-      "Replace $x$ with the value in parentheses, sign included: 3x − 4 at x = −2 is 3 × (−2) − 4.",
-      "Multiply before adding.",
+      "Replace $x$ with the value, in parentheses and with its sign. $3x - 4$ at $x = -2$ becomes $3 \\times (-2) - 4$.",
+      "Multiply first, because multiplication comes before addition and subtraction: $3 \\times (-2) = -6$.",
+      "Then add or subtract: $-6 - 4 = -10$.",
     ],
-    watch: "Keep the sign of the value: 3 × (−2) is −6, not 6.",
+    watch:
+      "Keep the sign of the value. A positive number times a negative number is negative, so $3 \\times (-2)$ is $-6$, not 6.",
   },
   "distributive-expression-choice": {
-    goal: "Given a number times a sum in parentheses, choose the equal expression.",
+    goal: "Choose the expression that equals a number times a group in parentheses, for every value of $x$.",
+    intuition:
+      "An expression is a math phrase made of numbers, letters and operations, such as $x + 2$. A number written right before parentheses, the curved brackets ( ), multiplies everything inside them. So $3(x + 2)$ means 3 groups of $x + 2$, which is $3x + 6$. The parts joined by + or − are called terms. Multiplying the outside number by each term inside is called distributing. Two expressions are equivalent when they have the same value for every number put in for $x$.",
     method: [
-      "Multiply the outside number by every term inside.",
-      "Keep each sign: −2(x + 4) = −2x − 8.",
+      "Multiply the outside number by every term inside the parentheses.",
+      "Keep each sign. Treat subtraction as adding a negative: $-2(x - 4) = (-2) \\times x + (-2) \\times (-4) = -2x + 8$.",
+      "Pick the choice that matches both new terms.",
     ],
-    watch: "Multiply the constant too: 3(x + 5) is 3x + 15, not 3x + 5.",
+    watch:
+      "Multiply the constant (the term with no letter) too. $3(x + 5)$ is $3x + 15$, not $3x + 5$.",
   },
   "combine-like-coefficient": {
-    goal: "Given an expression, find the coefficient of $x$ after combining like terms.",
+    goal: "Combine like terms in an expression, then find the coefficient of $x$: the number multiplying $x$.",
+    intuition:
+      "An expression is a math phrase made of numbers, letters (variables) and operations, such as $6x - 8x + 3$. The parts joined by + or − are called terms. Like terms have the same letter part, such as $6x$ and $-8x$. The coefficient is the number multiplying the letter: in $6x$ it is 6. A constant is a term with no letter, such as 3. Think of $x$ as one kind of item: adding 6 of them and subtracting 8 of them is the same as subtracting 2 in all, because $6 - 8 = -2$.",
     terms: [
       ["coefficient", "The number multiplying $x$."],
       ["like terms", "Terms with the same variable part, like −2x and −6x."],
     ],
     method: [
-      "Find the $x$ terms; each coefficient keeps its sign: 5x − 2x has 5 and −2.",
-      "Add those coefficients: 5 + (−2) = 3.",
-      "Ignore the constants.",
+      "Find the $x$ terms. Each coefficient keeps the sign in front of it: $5x - 2x$ has coefficients 5 and $-2$.",
+      "Add those coefficients: $5 + (-2) = 3$, so $5x - 2x = 3x$.",
+      "Leave the constants out. They are not numbers of $x$'s, so they do not change the coefficient.",
     ],
-    watch: "The constant is not an $x$ term; never add it to the coefficient.",
+    watch:
+      "A constant is not an $x$ term. When you combine like terms, leave it out of the coefficient.",
   },
   "linear-equation": {
     goal: "Given an equation like ax + b = c, find $x$.",
@@ -1446,11 +1461,13 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "When the $x$ terms cancel, check the numbers left; 0 = 0 means every number works, not that x = 0.",
   },
   "linear-system-x": {
-    goal: "Given two equations in $x$ and $y$, find $x$.",
+    goal: "Two equations use the same unknowns $x$ and $y$. Find the value of $x$ in the pair that makes both equations true.",
+    intuition:
+      "A system is two equations about the same unknown numbers. Its solution is the pair that makes both true at once. The coefficient of $y$ is the number multiplying $y$. When both equations have the same coefficient of $y$, subtracting one equation from the other removes $y$. In a system with exactly one solution, the $x$ parts do not also cancel, so an equation in $x$ alone is left.",
     method: [
-      "Multiply the equations so the $y$ coefficients match.",
-      "Subtract one equation from the other to remove $y$.",
-      "Solve for $x$.",
+      "Make the $y$ coefficients match. Multiply each whole equation, every term (each part joined by + or −) on both sides, by a number that is not 0. For $5y$ and $4y$, multiply the first equation by 4 and the second by 5, so both have $20y$.",
+      "Subtract one equation from the other, term by term on both sides. The $y$ terms cancel: they subtract to 0.",
+      "Solve the equation that is left for $x$.",
     ],
     watch:
       "Multiply every term of an equation, including the number on the right side.",
@@ -1472,15 +1489,18 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "$x$ is the across distance and comes first; do not swap it with $y$.",
   },
   "line-slope": {
-    goal: "Given two points, find the slope of the line through them.",
+    goal: "Find the slope of the line through two given points.",
+    intuition:
+      "A point such as $(3, 0)$ gives two numbers called coordinates. The first, the $x$-coordinate, says how far right of the starting point $(0, 0)$ to go; a negative number means left. The second, the $y$-coordinate, says how far up; a negative number means down. Slope measures how steep a line is: the change in $y$ divided by the change in $x$ between two points on the line.",
     terms: [["slope", "Change in $y$ divided by change in $x$."]],
     method: [
-      "Subtract the $y$-values: y₂ − y₁.",
-      "Subtract the $x$-values in the same order: x₂ − x₁.",
-      "Divide.",
+      "Call one point point 1 and the other point 2. In each, the first number is $x$ and the second is $y$.",
+      "Change in $y$: subtract point 1's $y$ from point 2's $y$.",
+      "Change in $x$: subtract point 1's $x$ from point 2's $x$, in the same order.",
+      "Divide the change in $y$ by the change in $x$. Simplify the fraction by dividing its top and bottom by any number that goes into both.",
     ],
     watch:
-      "Use the same point first in both subtractions; mixing the order flips the sign.",
+      "Use the same point first in both subtractions. Mixing the order gives the opposite sign (positive instead of negative, or the reverse) whenever the slope is not 0.",
   },
   "graphed-line-slope": {
     goal: "Given a line on a grid through two marked points, find its slope.",

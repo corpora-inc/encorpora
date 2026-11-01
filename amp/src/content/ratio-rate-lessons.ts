@@ -5,8 +5,9 @@ const rates: Lesson["sections"][number] = {
   stage: "intuition",
   title: "Shrink a group to one unit",
   paragraphs: [
-    "Suppose a printer makes 132 pages in 6 minutes at a steady speed. Split both the pages and the time into 6 equal groups. One group is 1 minute and 22 pages. That tells you how many pages the printer makes in each minute.",
-    "The amount for one unit is called a unit rate. The word per means for each one: 22 pages per minute means 22 pages for each 1 minute. The question can put either quantity at one. Minutes per page asks how much of a minute goes with 1 page instead.",
+    "A printer makes 132 pages in 6 minutes. It works at a steady speed, so it prints the same number of pages every minute. To find that number, split both amounts into 6 equal groups, one group for each minute. Each group is 1 minute and 132 ÷ 6 = 22 pages.",
+    "A rate compares two amounts measured in different units, such as pages and minutes. A unit is the thing being counted or measured: a page, a minute, a mile. The amount that goes with exactly 1 unit is called a unit rate. The word per means for each one, so the unit rate here is 22 pages per minute: 22 pages for each 1 minute.",
+    "The other unit can be the one instead. Minutes per page asks how much time goes with 1 page. Now split both amounts into 132 equal groups, one for each page. Each group is 1 page and 6 ÷ 132 = $\\tfrac{1}{22}$ of a minute.",
   ],
 };
 const ratios: Lesson["sections"][number] = {
@@ -37,12 +38,12 @@ export const ratioRateLessons: Lesson[] = [
     id: "unit-rate",
     title: "Unit rates: the amount for 1",
     summary:
-      "If several equal units go with one amount, share that amount equally to find what goes with one unit.",
+      "A unit is the thing you count or measure, such as a page, a minute or a mile. A unit rate is the amount that goes with exactly 1 unit, such as 22 pages for each 1 minute. To find it, share the amounts into equal groups until there is just 1 of the unit you care about. Dividing does that sharing in one step.",
     templateIds: ["unit-rate"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Explain why dividing two quantities gives the amount for 1 unit.",
-      "Find unit rates in whole numbers, decimals and fractions, in the direction the question asks.",
+      "Explain why dividing one amount by the other gives the amount for 1 unit.",
+      "Find unit rates that are whole numbers, decimals or fractions, putting at 1 the unit the question asks about.",
     ],
     sections: [
       rates,
@@ -50,8 +51,10 @@ export const ratioRateLessons: Lesson[] = [
         stage: "method",
         title: "Divide in the direction the question asks",
         paragraphs: [
-          "First say which unit should be one. For pages per minute, divide pages by minutes. For minutes per page, divide minutes by pages. This lesson uses division of whole numbers and decimals.",
-          "On the double number line, each pair of marks shows the pages printed by a matching time. Split 6 minutes and 132 pages into 6 equal parts: 132 ÷ 6 = 22 pages for 1 minute. At that speed, 4 minutes gives 4 × 22 = 88 pages. In the other direction, 6 ÷ 132 = 1/22 minute for 1 page.",
+          "First decide which unit the question puts at 1. It is the unit named after the word per. Then divide the other amount by the amount of that unit.",
+          "For pages per minute, the minutes become 1. So divide pages by minutes: 132 ÷ 6 = 22 pages per minute. For minutes per page, the pages become 1. So divide minutes by pages: 6 ÷ 132 = $\\tfrac{1}{22}$ minute per page.",
+          "A number line is a line with evenly spaced marks for numbers. A double number line is two of them side by side: the top one counts minutes and the bottom one counts pages. Marks that line up go together. Split 6 minutes and 132 pages into 6 equal parts, and 1 minute lines up with 22 pages. The unit rate then predicts other amounts: 4 minutes lines up with 4 × 22 = 88 pages.",
+          "A unit rate does not have to be a whole number (0, 1, 2, 3 and so on). It can be a decimal, a number with a decimal point such as 8.5. It can also be a fraction, a number of equal parts of 1, such as $\\tfrac{9}{4}$ (nine fourths).",
         ],
         illustration: "rate-double-line",
       },
@@ -61,8 +64,8 @@ export const ratioRateLessons: Lesson[] = [
         stage: "formal",
         title: "Rate and unit rate",
         paragraphs: [
-          "A rate compares quantities with different units. If $a$ units of one quantity correspond to $b$ units of another at a constant rate and $b$ is nonzero, then the first quantity per unit of the second is $a/b$. Reversing the direction gives $b/a$ when $a$ is also nonzero.",
-          "Keep the units in the quotient. For 132 pages in 6 minutes, $132/6 = 22$ pages per minute; $6/132 = 1/22$ minute per page. These are different questions about the same relationship.",
+          "A rate compares two quantities (amounts that can be measured or counted) with different units. Suppose $a$ units of one quantity go with $b$ units of another, at a constant (steady) rate. If $b$ is not 0, the first quantity per 1 unit of the second is $a \\div b$, also written $\\tfrac{a}{b}$. Going the other way gives $b \\div a$, when $a$ is not 0.",
+          "Keep the units in the answer. For 132 pages in 6 minutes, $132 \\div 6 = 22$ pages per minute, and $6 \\div 132 = \\tfrac{1}{22}$ minute per page. These answer two different questions about the same printer.",
         ],
       },
     ],
@@ -70,20 +73,20 @@ export const ratioRateLessons: Lesson[] = [
       prompt:
         "A runner runs 4 miles in 34 minutes at a steady pace. How many minutes does it take the runner to run 1 mile?",
       steps: [
-        "The question puts 1 mile at the unit, so divide the minutes by the miles.",
-        "34 ÷ 4 = 8.5, because 4 × 8.5 = 34.",
-        "The runner takes 8.5 minutes for each mile.",
+        "The question asks for the minutes that go with 1 mile. So split the 34 minutes into 4 equal groups, one for each mile. That is division: 34 ÷ 4.",
+        "34 ÷ 4 = 8.5. Check by multiplying back: 4 × 8.5 = 34, so 4 miles at 8.5 minutes each takes 34 minutes.",
+        "The runner takes 8.5 minutes for each mile. That is written 8.5 minutes per mile.",
       ],
       answer: "8.5",
       answerUnit: "minutes per mile",
     },
     pitfalls: [
-      "For minutes per mile, divide minutes by miles; read the units before dividing.",
-      "Keep the units with the number: write 22 pages per minute, not just 22.",
-      "Allow a fractional unit rate: 9 cups of flour for 4 loaves is 9/4 cups per loaf.",
+      "Read the units before you divide. Minutes per mile means minutes ÷ miles, not miles ÷ minutes.",
+      "Keep the units with the number. Write 22 pages per minute, not just 22.",
+      "A unit rate can be a fraction. 9 cups of flour for 4 loaves is 9 ÷ 4 = $\\tfrac{9}{4}$ cups per loaf, which is 2.25 cups.",
     ],
     parentGuide:
-      "Time how many sit-ups or jumping jacks are done in 3 minutes. Divide to find the number per minute, then predict the number for 5 minutes and test it.",
+      "Count how many jumping jacks the learner does in 3 minutes. Divide by 3 to find jumping jacks per minute. Then use that unit rate to predict the count for 5 minutes, and test the prediction.",
   },
   {
     id: "better-buy",
@@ -436,20 +439,20 @@ export const ratioRateLessons: Lesson[] = [
 
 export const ratioRateMethods: Record<string, ProblemMethod> = {
   "unit-rate": {
-    goal: "Find the amount of one quantity for exactly 1 unit of the other.",
+    goal: "Find how much of one quantity goes with exactly 1 unit of the other.",
     intuition:
-      "Share both quantities into equal groups until the unit named after ‘per’ is one. The other group's amount is the unit rate.",
+      "A unit is the thing being counted or measured, such as a page or a minute. A unit rate is the amount that goes with exactly 1 unit, such as 22 pages for each 1 minute. The word per means for each one. To find it, split both amounts into equal groups until the unit named after per is 1.",
     terms: [
       ["rate", "A comparison of two quantities in different units."],
       ["unit rate", "The amount for exactly 1 unit; per means for each 1."],
     ],
     method: [
-      "Find which quantity the question puts at 1.",
-      "Divide the other quantity by it.",
-      "State the result with both units, such as pages per minute.",
+      "Find the unit the question puts at 1. It is the one named after the word per.",
+      "Divide the other amount by the amount of that unit. For pages per minute, divide pages by minutes.",
+      "Write the answer with both units, such as 22 pages per minute.",
     ],
     watch:
-      "Divide in the order the question asks; minutes per mile is minutes ÷ miles.",
+      "Divide in the order the question asks. Minutes per mile means minutes ÷ miles.",
   },
   "better-buy": {
     goal: "Decide which of two packages costs less per item.",
@@ -542,7 +545,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
 
 export const ratioRatePrinciples: Record<string, string> = {
   "unit-rate":
-    "A unit rate is the amount for 1 unit: if a quantity a goes with $b$ units, a ÷ b goes with 1 unit.",
+    "A unit rate is the amount for 1 unit. If an amount $a$ goes with $b$ units, and $b$ is not 0, then $a \\div b$ goes with 1 unit.",
   "better-buy":
     "Packages compare fairly only at the same size; the unit price, total price ÷ number of items, puts every package at 1 item.",
   "ratio-table-missing":

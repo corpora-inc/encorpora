@@ -12,7 +12,9 @@ const terms: [string, string][] = [
 ];
 export const rightTriangleMethods: Record<string, ProblemMethod> = {
   "right-triangle": {
-    goal: "Given both legs of a right triangle, find its hypotenuse length.",
+    goal: "A right triangle's two legs are given. Find the length of its hypotenuse, the longest side.",
+    intuition:
+      "A triangle is a flat shape with three straight sides. A right triangle has one square corner, called a right angle: a quarter-turn, 90 degrees. Its legs are the two sides that meet there. The hypotenuse is the longest side, across from that corner. Squaring a number means multiplying it by itself, shown by a small raised 2: $6^2 = 6 \\times 6 = 36$. The square root goes back: $\\sqrt{36}$ is the number that times itself makes 36, which is 6. In every right triangle, the two legs squared and added give the hypotenuse squared.",
     terms: [
       ...terms,
       [
@@ -21,12 +23,13 @@ export const rightTriangleMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Use the same length unit for both legs. Let $a$ and $b$ be their lengths and $c$ the hypotenuse length.",
-      "Square each leg length and add: c² = a² + b².",
-      "Take the positive square root to find $c$. Square the result to check the equation, and report a length unit.",
+      "Use the same length unit for both legs, such as cm (centimeters). Let $a$ and $b$ be the leg lengths and $c$ the hypotenuse length.",
+      "Square each leg length and add: $c^2 = a^2 + b^2$.",
+      "Take the positive square root to find $c$, because a length cannot be negative.",
+      "Check: square your answer and compare it with $a^2 + b^2$. They should be equal. Give the answer in the length unit.",
     ],
     watch:
-      "Add the squares, not the leg lengths. The hypotenuse is opposite the right angle even when the triangle is rotated.",
+      "Add the squares, not the leg lengths. The hypotenuse is across from the right angle, even when the triangle is turned.",
   },
   "right-triangle-missing-leg": {
     goal: "Given a right triangle's hypotenuse and one leg, find its other leg.",
@@ -65,7 +68,7 @@ export const rightTriangleMethods: Record<string, ProblemMethod> = {
 };
 export const rightTrianglePrinciples: Record<string, string> = {
   "right-triangle":
-    "Pythagorean theorem: if $a$ and $b$ are the leg lengths and $c$ is the hypotenuse length of a right triangle in the same unit, a² + b² = c².",
+    "Pythagorean theorem (a proved rule): in a right triangle, let $a$ and $b$ be the leg lengths and $c$ the hypotenuse length. Use the same unit for all three. Then $a^2 + b^2 = c^2$.",
   "right-triangle-missing-leg":
     "Subtracting the same quantity from both sides preserves equality. Thus a² + x² = c² gives x² = c² − a²; a side length is the positive square root.",
   "pythagorean-converse":
@@ -75,32 +78,32 @@ export const rightTrianglePrinciples: Record<string, string> = {
 const triangleDefinitions: Lesson["sections"][number] = {
   title: "Triangle, right angle, legs, hypotenuse",
   paragraphs: [
-    "A triangle is a closed flat shape with three straight sides. Two sides meet at each corner, called a vertex. An angle measures the turn from one side to the other at a vertex. One full turn measures 360 degrees, written 360°. A quarter-turn measures 90° and is called a right angle. A square is a flat shape with four equal sides and four right angles.",
-    "The abbreviation cm means centimeters, a unit of length. A right triangle has a right angle. Its two sides that meet at that angle are the legs. They are perpendicular: they meet at 90°. The third side, opposite the right angle, is the hypotenuse. It is the longest side. The small square drawn at a corner marks a right angle; it is not a measurement of side length.",
-    "Turning or flipping a triangle changes neither its lengths nor its angles. Identify the hypotenuse by the right angle, not by whether a side looks slanted, horizontal, or vertical.",
+    "A triangle is a closed flat shape with three straight sides. Two sides meet at each corner, called a vertex. An angle is the amount of turn between two sides that meet at a vertex. Angles are measured in degrees, written with a small circle: one full turn is 360 degrees, written 360°. A quarter-turn is 360 ÷ 4 = 90°, and it is called a right angle. A square is a flat shape with four equal sides and four right angles.",
+    "The abbreviation cm means centimeters, a unit of length. A right triangle is a triangle with one right angle. The two sides that meet at the right angle are called the legs. They are perpendicular, which means they meet at 90°. The third side, across from the right angle, is called the hypotenuse. It is always the longest side. A small square drawn in a corner marks a right angle; it is not a length.",
+    "Turning or flipping a triangle changes neither its side lengths nor its angles. So find the hypotenuse by looking for the right angle, not by whether a side looks slanted, flat or upright.",
   ],
 };
 const squareDefinitions: Lesson["sections"][number] = {
   title: "A squared length represents an area",
   paragraphs: [
-    "To square a number means to multiply it by itself. The raised 2 records that operation: 6² = 6 × 6 = 36. Squaring 6 does not mean doubling it; 2 × 6 = 12.",
-    "A square's area measures how much surface it covers. A square centimeter is the area of a square measuring 1 cm on each side. A square with side 6 cm contains 6 rows of 6 such squares, so its area is 36 square centimeters, written 36 cm². Its side length is 6 cm, not 36 cm.",
-    "Measure all triangle sides in the same unit. Let \\($a$\\) and \\($b$\\) stand for the numerical lengths of its legs and \\($c$\\) for the numerical length of its hypotenuse. The squares built on these sides have numerical areas a², b², and c² in the corresponding square unit.",
+    "To square a number means to multiply it by itself. A small raised 2 shows this: $6^2 = 6 \\times 6 = 36$, read 6 squared. Squaring is not doubling, which means multiplying by 2: doubling 6 gives $2 \\times 6 = 12$.",
+    "Area is the amount of flat surface a shape covers. A square centimeter is the area of a square that is 1 cm long on each side. A square with 6 cm sides holds 6 rows of 6 such squares, so its area is 36 square centimeters, written 36 cm². Its side is still 6 cm long, not 36 cm.",
+    "Measure all three sides of the triangle in the same unit. Let $a$ and $b$ stand for the lengths of the legs, and $c$ for the length of the hypotenuse. The squares built on those sides then have areas $a^2$, $b^2$ and $c^2$, in square units.",
   ],
 };
 const relationship: Lesson["sections"][number] = {
   title: "The Pythagorean relationship",
   paragraphs: [
-    "In every right triangle, the square on the hypotenuse has the same area as the squares on the two legs together. This statement is the Pythagorean theorem: a² + b² = c². A theorem is a mathematical statement established by reasoning, not merely by checking a few examples.",
-    "For legs 6 cm and 8 cm, the leg squares have areas 36 cm² and 64 cm². Their combined area is 100 cm². The hypotenuse square therefore has area 100 cm². We must still find its side length.",
+    "In every right triangle, the square on the hypotenuse has the same area as the squares on the two legs put together. In symbols, $a^2 + b^2 = c^2$. A theorem is a math statement that has been proved true by careful reasoning, not just checked on a few examples. This one is called the Pythagorean theorem, after Pythagoras, a mathematician of ancient Greece.",
+    "For legs 6 cm and 8 cm, the leg squares have areas 36 cm² and 64 cm². Together they cover 36 + 64 = 100 cm². So the square on the hypotenuse also has area 100 cm². We still need its side length, which is the hypotenuse itself.",
   ],
 };
 const roots: Lesson["sections"][number] = {
   title: "From the square back to its side",
   paragraphs: [
-    "A square root reverses squaring for nonnegative numbers: numbers that are zero or greater. The symbol √100 means the nonnegative number whose square is 100. Since 10 × 10 = 100, √100 = 10. The equation x² = 100 also has the number −10 as a solution, but a triangle cannot have a negative side length. Use the positive value for a side.",
-    "First finish the addition under the root: √(36 + 64) = √100 = 10. Taking separate roots and adding would give 6 + 8 = 14, whose square is 196, not 100. The root covers the entire sum.",
-    "Not every square root is a whole number. Legs of 1 cm and 1 cm give a hypotenuse of √2 cm. This is an exact length between 1 cm and 2 cm because 1² = 1 is less than 2, while 2² = 4 is greater than 2. Do not replace an exact root by a rounded decimal unless a question asks for an approximation.",
+    "A square root undoes squaring. The symbol $\\sqrt{100}$ means the number, zero or greater, whose square is 100. Since 10 × 10 = 100, $\\sqrt{100} = 10$. It is also true that $(-10) \\times (-10) = 100$. But a side of a triangle cannot have a negative length, so use the positive value.",
+    "Finish the addition under the root sign before taking the root: $\\sqrt{36 + 64} = \\sqrt{100} = 10$. Taking each root first and then adding would give 6 + 8 = 14. But $14^2 = 196$, not 100, so that is wrong. The root applies to the whole total.",
+    "Not every square root is a whole number (0, 1, 2, 3 and so on). Legs of 1 cm and 1 cm give $c^2 = 1^2 + 1^2 = 2$, so the hypotenuse is $\\sqrt{2}$ cm long. That length is between 1 cm and 2 cm, because $1^2 = 1$ is less than 2 and $2^2 = 4$ is more. Leave it as $\\sqrt{2}$, its exact value. A rounded decimal such as 1.41 is only close, because 1.41 × 1.41 = 1.9881, not 2. Write one only when a question asks for an approximate (close, not exact) answer.",
   ],
 };
 
@@ -108,21 +111,23 @@ export const pythagoreanLesson: Lesson = {
   id: "pythagorean-theorem",
   title: "Find the hypotenuse of a right triangle",
   summary:
-    "A right triangle has one square corner. Its two sides meeting there are the legs; the opposite, longest side is the hypotenuse. Squares built on the legs together cover the same area as a square built on the hypotenuse.",
+    "A triangle is a flat shape with three straight sides. A right triangle has one square corner, called a right angle. The two sides that meet at that corner are the legs. The longest side, across from the corner, is the hypotenuse. Draw a square (a shape with four equal sides and four square corners) on each side. The two leg squares together cover the same area, or amount of flat surface, as the hypotenuse square.",
   templateIds: ["right-triangle"],
   includeGeneratedRepresentation: false,
   objectives: [
-    "Identify a right triangle's legs and hypotenuse in any orientation.",
-    "Explain the square relationship by rearranging equal pieces.",
-    "Find and check a hypotenuse length.",
+    "Find the legs and the hypotenuse of a right triangle, however it is turned.",
+    "Explain, by rearranging equal pieces, why the two leg squares match the hypotenuse square.",
+    "Find a hypotenuse length and check it.",
   ],
   sections: [
     {
       stage: "intuition",
       title: "Before calculating",
       paragraphs: [
-        "A right triangle has a square corner. Its two sides meeting at that corner are the legs; the opposite, longest side is the hypotenuse. A square built on a side has area equal to that side's length multiplied by itself.",
-        "The two leg squares together have the same area as the hypotenuse square. Use lengths in one unit, then take a positive square root to recover the hypotenuse's length from its square.",
+        "The abbreviation cm means centimeters, a unit of length. Picture a right triangle with legs 3 cm and 4 cm long. On each side, build a square that uses that side as one of its edges. A square is a shape with four equal sides and four square corners.",
+        "Area is the amount of flat surface a shape covers. It is counted in square centimeters: one square centimeter is a small square 1 cm long on each side. The square on the 3 cm leg holds 3 rows of 3 of these small squares. So its area is 3 × 3 = 9 square centimeters. The square on the 4 cm leg has area 4 × 4 = 16 square centimeters. Together the two leg squares cover 9 + 16 = 25 square centimeters.",
+        "The square on the hypotenuse covers exactly the same area: 25 square centimeters. Its side must be a number that, times itself, makes 25. That number is 5, so the hypotenuse is 5 cm long. This works for every right triangle, and the lesson shows why.",
+        "Two symbols make this quicker to write. Multiplying a number by itself is called squaring it, and a small raised 2 shows it: $5^2$ (5 squared) means 5 × 5 = 25. Going back from 25 to 5 is called taking the square root. The square root of a number is the number that, times itself, gives it, written with a root sign: $\\sqrt{25} = 5$. A negative number works too, since $(-5) \\times (-5) = 25$. But a length is positive (greater than 0), so for a length always use the positive square root.",
       ],
     },
     { ...triangleDefinitions, illustration: "right-triangle-orientation" },
@@ -131,10 +136,10 @@ export const pythagoreanLesson: Lesson = {
     {
       title: "Why rearranging the pieces proves the relationship",
       paragraphs: [
-        "Compare two squares with the same side length a + b. Each contains four copies of the same right triangle. Sliding or turning a piece preserves its area. Remove these four triangles from each outer square. Because the whole areas are equal and the removed areas are equal, the uncovered areas must be equal.",
-        "In the first arrangement, the uncovered middle shape has four sides of length \\($c$\\): each is a triangle's hypotenuse. Its corners are right angles. To see why, a triangle's three angles total 180°, so the two angles other than its 90° angle total 90°. At each middle corner those two angles and the uncovered angle together make a straight angle of 180°. The uncovered angle is therefore 180° − 90° = 90°. Thus the middle shape is a square, with area c².",
-        "In the second arrangement, the uncovered shapes are squares with side lengths \\($a$\\) and \\($b$\\), so their total area is a² + b². Equal uncovered areas give c² = a² + b². The arrangement works for any positive leg lengths \\($a$\\) and \\($b$\\); it does not depend on the example's numbers.",
-        "In the pictured example, $a = 3$ and $b = 4$, so each outer square has side 7 and area 49. Each triangle is half of a 3-by-4 rectangle, with area 12 ÷ 2 = 6. Four triangles cover 24. Either arrangement leaves $49 - 24 = 25$: a 5-by-5 square, or a 3-by-3 square and a 4-by-4 square together.",
+        "Here is why the theorem holds for every right triangle. Take two large squares, each with sides $a + b$ long, so they have the same area. Place four copies of the same right triangle inside each one, arranged two different ways. Sliding or turning a piece does not change its area. In each large square, the uncovered area is the large square minus the four triangles. The large squares are equal and the triangles are equal, so the uncovered areas are equal too.",
+        "In the first arrangement, the uncovered middle shape has four sides, each of length $c$, because each one is a triangle's hypotenuse. Its corners are right angles. Here is why. A triangle's three angles always add to 180°. One angle is 90°, so the other two add to 90°. At each corner of the middle shape, those two angles and the uncovered corner sit along one straight edge. A straight edge makes a straight angle, a half-turn of 180°. So the uncovered corner is 180° − 90° = 90°. The middle shape is a square, with area $c^2$.",
+        "In the second arrangement, the uncovered parts are two squares, with sides $a$ and $b$. Their total area is $a^2 + b^2$. The uncovered areas are equal, so $c^2 = a^2 + b^2$. Nothing here used particular numbers, so the argument works for any right triangle.",
+        "In the picture, $a = 3$ and $b = 4$. Each large square has side 7 and area 7 × 7 = 49. A rectangle is a four-sided shape with four right angles. Each triangle is half of a 3-by-4 rectangle, whose area is 3 × 4 = 12, so the triangle's area is 12 ÷ 2 = 6. Four triangles cover 24. Either way, $49 - 24 = 25$ is left uncovered: one 5-by-5 square, or a 3-by-3 square and a 4-by-4 square together (9 + 16 = 25).",
       ],
       illustration: "pythagorean-rearrangement",
     },
@@ -144,12 +149,12 @@ export const pythagoreanLesson: Lesson = {
     prompt:
       "A right triangle has legs of 6 cm and 8 cm. Find its hypotenuse length.",
     steps: [
-      "The legs meet at the right angle. Let \\($c$\\) be the hypotenuse length in centimeters, opposite that angle.",
-      "Write the Pythagorean relationship: 6² + 8² = c².",
-      "Square each leg length: 6² = 6 × 6 = 36 and 8² = 8 × 8 = 64.",
-      "Add the two squares: c² = 36 + 64 = 100.",
-      "Find the positive square root: c = √100 = 10, since 10 × 10 = 100.",
-      "Check the relationship: 10² = 100 and 6² + 8² = 100. The hypotenuse is longer than either leg, as it must be.",
+      "The legs, 6 cm and 8 cm, meet at the right angle. Let $c$ be the length of the hypotenuse in centimeters. It is the side across from the right angle.",
+      "Use the Pythagorean theorem. A theorem is a math rule that has been proved, and this one is the square rule for right triangles: $6^2 + 8^2 = c^2$.",
+      "Square each leg: $6^2 = 6 \\times 6 = 36$ and $8^2 = 8 \\times 8 = 64$. These are the areas of the squares on the legs.",
+      "Add the two squares: $c^2 = 36 + 64 = 100$. This is the area of the square on the hypotenuse.",
+      "Take the positive square root to get the side length: $c = \\sqrt{100} = 10$, since 10 × 10 = 100.",
+      "Check: $10^2 = 100$ and $6^2 + 8^2 = 100$. The hypotenuse, 10 cm, is longer than either leg, as it must be.",
     ],
     answer: "10",
     answerUnit: "centimeters",
@@ -162,12 +167,12 @@ export const pythagoreanLesson: Lesson = {
     },
   ],
   pitfalls: [
-    "The Pythagorean equation a² + b² = c² applies only to right triangles, with \\($c$\\) opposite the right angle. Two given side lengths alone do not establish a right angle.",
-    "Square each leg separately. (6 + 8)² = 196, whereas 6² + 8² = 100.",
-    "The sum of the squares gives the square of the missing length. Take its positive square root and report centimeters, not square centimeters.",
+    "The rule $a^2 + b^2 = c^2$ works only for right triangles, with $c$ across from the right angle. Knowing two side lengths does not tell you that a triangle has a right angle.",
+    "Square each leg separately, then add. $(6 + 8)^2 = 196$, but $6^2 + 8^2 = 100$.",
+    "The sum (total) of the squares is the hypotenuse's square, not the hypotenuse. Take its positive square root, and report centimeters, not square centimeters.",
   ],
   parentGuide:
-    "Cut out four identical right triangles and rearrange them inside two equal squares as shown. Ask which areas stay equal and why. Rotate one triangle and ask the learner to identify its hypotenuse from the right-angle marker.",
+    "Cut out four identical right triangles. Arrange them inside one square as in the first picture, then rearrange the same four as in the second. Ask which areas stay equal and why. Then turn one triangle and ask the learner to find its hypotenuse from the right-angle mark.",
 };
 
 export const missingLegLesson: Lesson = {
