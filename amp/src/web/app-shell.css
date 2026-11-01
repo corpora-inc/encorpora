@@ -124,10 +124,10 @@
 .shell input:not([type="checkbox"]):not([type="radio"]) {
   min-height: 48px;
   min-width: 0;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--color-answer-border);
   border-radius: 12px;
-  background: var(--color-surface-raised);
-  color: var(--color-on-surface);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
   padding: 10px 14px;
   font-size: 16px;
 }

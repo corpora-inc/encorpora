@@ -20,6 +20,11 @@
   --color-on-surface-raised: #183e3a;
   --color-surface-sunken: #efeee5;
   --color-on-surface-sunken: #183e3a;
+  /* Where a learner writes or reads an answer: plain paper with a clear
+     border, never a tint. */
+  --color-answer: #ffffff;
+  --color-on-answer: #183e3a;
+  --color-answer-border: #78887f;
   --color-menu: #fffefa;
   --color-on-menu: #183e3a;
   --color-primary: #1f5f55;
@@ -97,6 +102,9 @@
     --color-on-surface-raised: #e9f0e8;
     --color-surface-sunken: #233c36;
     --color-on-surface-sunken: #e9f0e8;
+    --color-answer: #122522;
+    --color-on-answer: #e9f0e8;
+    --color-answer-border: #6f8c80;
     --color-menu: #223a34;
     --color-on-menu: #eef5ed;
     --color-primary: #8bd1b5;
@@ -172,6 +180,9 @@
   --color-on-surface-raised: #e9f0e8;
   --color-surface-sunken: #233c36;
   --color-on-surface-sunken: #e9f0e8;
+  --color-answer: #122522;
+  --color-on-answer: #e9f0e8;
+  --color-answer-border: #6f8c80;
   --color-menu: #223a34;
   --color-on-menu: #eef5ed;
   --color-primary: #8bd1b5;
