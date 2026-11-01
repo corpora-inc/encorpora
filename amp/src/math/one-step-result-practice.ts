@@ -158,7 +158,7 @@ export const equationAfterOneStep = chainFamily({
       wrong = [
         {
           label: m(`${a}x=${c + b}`),
-          feedback: `The constant ${m(String(b))} was moved with the wrong sign. Use the opposite operation on both sides.`,
+          feedback: `The right side was changed the wrong way: ${b > 0 ? `${sb} was added to` : `${sb} was taken from`} ${m(String(c))}. Do the same operation, ${b > 0 ? "subtract" : "add"} ${m(String(sb))}, on both sides.`,
         },
         {
           label: m(`${a}x=${c}`),
@@ -166,7 +166,7 @@ export const equationAfterOneStep = chainFamily({
         },
         {
           label: m(`${poly([a], ["x"], 2 * b)}=${c + b}`),
-          feedback: `This applies the same operation to both sides, but it doubles the constant instead of removing it.`,
+          feedback: `This ${b > 0 ? "adds" : "subtracts"} ${m(String(sb))} instead of undoing it, so the left constant doubles. Use the opposite operation to make it 0.`,
         },
         {
           label: m(`x=${c - b}`),
@@ -175,8 +175,10 @@ export const equationAfterOneStep = chainFamily({
       ];
       hint = `The left side has ${mx(a)} and the constant ${m(String(b))}. Use the opposite of that constant on both sides, and leave the ${mx(a)} alone.`;
       why = [
-        `${move} ${m(String(sb))} ${b > 0 ? "from" : "to"} both sides: $${poly([a], ["x"], b)}${b > 0 ? "-" : "+"}${sb}=${c}${b > 0 ? "-" : "+"}${sb}$.`,
-        `The constant cancels on the left, leaving $${a}x=${c - b}$.`,
+        `An equation is like a balance: both sides have the same value. Whatever you do to one side, do to the other, so it stays balanced.`,
+        `The constant term, ${m(String(b))}, is the number with no ${m("x")} beside it.`,
+        `${b > 0 ? "Subtracting" : "Adding"} ${m(String(sb))} undoes it, so ${move.toLowerCase()} ${m(String(sb))} ${b > 0 ? "from" : "to"} both sides: $${poly([a], ["x"], b)}${b > 0 ? "-" : "+"}${sb}=${c}${b > 0 ? "-" : "+"}${sb}$.`,
+        `On the left the constant becomes 0, leaving $${a}x$. On the right, $${c}${b > 0 ? "-" : "+"}${sb}=${c - b}$.`,
       ];
     } else if (ax.form === "divide-grouped") {
       const q = c / a;
@@ -205,8 +207,10 @@ export const equationAfterOneStep = chainFamily({
       ];
       hint = `The factor ${m(String(a))} multiplies the whole group ${m(poly([1], ["x"], b))}. Divide both sides of the equation by ${m(String(a))}, and keep the group together.`;
       why = [
-        `Divide both sides by ${m(String(a))}: $\\frac{${a}(${poly([1], ["x"], b)})}{${a}}=\\frac{${c}}{${a}}$.`,
-        `The factor ${a} cancels on the left, and $${c}\\div ${a}=${q}$, so $${poly([1], ["x"], b)}=${q}$.`,
+        `An equation is like a balance: both sides have the same value. Whatever you do to one side, do to the other, so it stays balanced.`,
+        `${m(`${a}(${poly([1], ["x"], b)})`)} means ${a} times the whole group in the parentheses.`,
+        `Dividing undoes multiplying, so divide both sides by ${m(String(a))}: $\\frac{${a}(${poly([1], ["x"], b)})}{${a}}=\\frac{${c}}{${a}}$.`,
+        `On the left, ${a} divided by ${a} is 1, so only the group is left. On the right, $${c}\\div ${a}=${q}$.`,
       ];
     } else {
       step =
@@ -236,13 +240,15 @@ export const equationAfterOneStep = chainFamily({
       ];
       hint = `The term ${m("x")} is divided by ${m(String(a))}. Multiply every term on both sides, including ${m(String(b))} and ${m(String(c))}, by ${m(String(a))}.`;
       why = [
-        `Multiply both sides by ${a}: $${a}\\left(\\frac{x}{${a}}${b < 0 ? "-" : "+"}${sb}\\right)=${a}\\cdot ${c < 0 ? `(${c})` : c}$.`,
-        `Distribute: $x${a * b < 0 ? "-" : "+"}${Math.abs(a * b)}=${a * c}$.`,
+        `An equation is like a balance: both sides have the same value. Whatever you do to one side, do to the other, so it stays balanced.`,
+        `${m(`\\frac{x}{${a}}`)} means ${m("x")} divided by ${a}. Multiplying undoes dividing, so multiply both sides by ${a}.`,
+        `The ${a} must multiply every term on the left, not only ${m(`\\frac{x}{${a}}`)}: $${a}\\left(\\frac{x}{${a}}${b < 0 ? "-" : "+"}${sb}\\right)=${a}\\cdot ${c < 0 ? `(${c})` : c}$.`,
+        `Multiply each term (distribute): ${m(`${a}\\cdot\\frac{x}{${a}}=x`)}, ${m(`${a}\\cdot ${sb}=${a * sb}`)} and ${m(`${a}\\cdot ${c < 0 ? `(${c})` : c}=${a * c}`)}.`,
       ];
     }
     return finish(r, `${step} Which equation results?`, correct, wrong, hint, [
       ...why,
-      `Only that one step was done, so the answer is ${correct}.`,
+      `The question asks for one step only, so stop here. The resulting equation is ${correct}.`,
     ]);
   },
 });
@@ -307,15 +313,15 @@ export const expressionAfterFirstStep = chainFamily({
         },
         {
           label: m(`${dt(a)}${out}${dt(innerValue)}`),
-          feedback: `This finishes the whole bracket. The question asks for only the first step.`,
+          feedback: `This does two steps: the multiplication and then the ${inner === "sum" ? "addition" : "subtraction"} inside the parentheses. The question asks for only the first step.`,
         },
         {
           label: m(`${dt(left)}${op}${times}`),
-          feedback: `The parentheses come first. Working left to right ignores them.`,
+          feedback: `This works left to right outside the parentheses first. The parentheses come first, so start inside them.`,
         },
         {
           label: m(`${dt(a)}${out}(${dt(b)}${op}${dt(p * 10)})`),
-          feedback: `The product ${m(times)} has its decimal point in the wrong place.`,
+          feedback: `${m(times)} is ${dt(p)}, not ${dt(p * 10)}, which is 10 times too big.${p % 10 ? " Tenths times a whole number is still tenths, so keep the decimal point where it belongs." : " Check the zeros: multiply the digits, then count the places."}`,
         },
       ];
       return finish(
@@ -325,9 +331,11 @@ export const expressionAfterFirstStep = chainFamily({
         wrong,
         `Look inside the parentheses at ${dt(b)} ${op} ${dt(c)} × ${d}. Decide which operation is done first, and rewrite only that part.`,
         [
-          `Parentheses come first. Inside them, multiplication comes before ${inner === "sum" ? "addition" : "subtraction"}.`,
-          `$${times}=${dt(p)}$.`,
-          `Rewrite with only that product replaced: ${correct}.`,
+          `The order of operations is the agreed order for working out an expression, so everyone gets the same answer.`,
+          `Work inside the parentheses first. Inside them, multiply before you ${inner === "sum" ? "add" : "subtract"}.`,
+          `So the first step is the multiplication: $${times}=${dt(p)}$.`,
+          `Replace only that part and copy everything else: ${correct}.`,
+          `The expression after the first step is ${correct}.`,
         ],
       );
     }
@@ -363,7 +371,7 @@ export const expressionAfterFirstStep = chainFamily({
     const fb = (n: number) =>
       n < bad
         ? `Line ${n} follows from the line before it by one correct step, so the first mistake comes later.`
-        : `A mistake appears earlier, so this is not the first line with a mistake.`;
+        : `Line ${bad} already has a mistake, so Line ${n} is not the first line with one.`;
     const correct = `Line ${bad}`;
     const wrong: Wrong[] = [
       ...options
@@ -374,7 +382,7 @@ export const expressionAfterFirstStep = chainFamily({
         })),
       {
         label: "No line has a mistake",
-        feedback: `Check Line ${bad} against the line before it: it does not follow from it.`,
+        feedback: `Redo Line ${bad} from the line before it. Your result will not match what the student wrote.`,
       },
     ];
     const work = [L1, ...lines]
@@ -383,17 +391,21 @@ export const expressionAfterFirstStep = chainFamily({
     const why =
       e.error === "bracket-line-2"
         ? [
-            `Parentheses come first, and inside them ${wc} × ${wd} comes before adding ${wb}.`,
-            `Line 2 added ${wb} and ${wc} first, which skips the multiplication inside the bracket. That is the first mistake.`,
+            `The order of operations says: work inside the parentheses first, and inside them multiply before you add.`,
+            `So the first step is ${wc} × ${wd} = ${P}, and Line 2 should be ${m(`${wa}-(${wb}+${P})`)}.`,
+            `Line 2 added ${wb} and ${wc} first, which skips the multiplication inside the parentheses. That is the first mistake.`,
           ]
         : e.error === "bracket-line-3"
           ? [
-              `Line 2 correctly replaces ${wc} × ${wd} with ${P}.`,
-              `Line 3 should finish the bracket, ${wb} + ${P} = ${Q}, giving ${wa}-${Q}. It instead subtracted ${wb} outside the bracket, so the bracket was skipped.`,
+              `The order of operations says: work inside the parentheses first, and inside them multiply before you add.`,
+              `Line 2 is correct: it replaces ${wc} × ${wd} with ${P}.`,
+              `Line 3 should finish the parentheses: ${wb} + ${P} = ${Q}, giving ${m(`${wa}-${Q}`)}.`,
+              `Instead it took ${wb} away from ${wa} and left ${P} outside the parentheses, so the parentheses were broken apart. That is the first mistake.`,
             ]
           : [
+              `The order of operations says: work inside the parentheses first, and inside them multiply before you add.`,
               `Lines 2 and 3 are correct: ${wc} × ${wd} = ${P}, then ${wb} + ${P} = ${Q}.`,
-              `The subtraction ${wa} - ${Q} is ${R}, but Line 4 shows ${R + e.slip}. That is the first mistake.`,
+              `The subtraction ${m(`${wa}-${Q}`)} is ${R}, but Line 4 shows ${R + e.slip}. That is the first mistake.`,
             ];
     return finish(
       r,
@@ -458,15 +470,15 @@ export const factorOutChoice = chainFamily({
     const wrong: Wrong[] = [
       {
         label: label(withAt(last, orig[last]!)),
-        feedback: `The last term was not divided by ${g}. Every term inside the parentheses is divided by ${g}.`,
+        feedback: `The last term, ${orig[last]}, was copied without dividing by ${g}. Every term inside the parentheses is divided by ${g}.`,
       },
       {
         label: label(withAt(0, orig[0]!)),
-        feedback: `The first term was not divided by ${g}. Every term inside the parentheses is divided by ${g}.`,
+        feedback: `The first term was copied without dividing by ${g}. Every term inside the parentheses is divided by ${g}.`,
       },
       {
         label: label(withAt(last, -inner[last]!)),
-        feedback: `The sign of the last term changed. Dividing by ${g} keeps the sign of ${orig[last]} relative to the factor.`,
+        feedback: `The sign of the last term flipped. ${orig[last]} divided by ${g} is ${inner[last]}, so its sign inside the parentheses is ${inner[last]! < 0 ? "minus" : "plus"}.`,
       },
       {
         label: label(withAt(last, inner[last]! + (inner[last]! > 0 ? 1 : -1))),
@@ -476,7 +488,7 @@ export const factorOutChoice = chainFamily({
     if (vars.length > 1)
       wrong.push({
         label: label(withAt(1, orig[1]!)),
-        feedback: `The middle term was not divided by ${g}. Every term is divided.`,
+        feedback: `The middle term was copied without dividing by ${g}. Every term inside the parentheses is divided by ${g}.`,
       });
     const expr = lin(orig, vars);
     const correct = label(inner);
@@ -487,9 +499,12 @@ export const factorOutChoice = chainFamily({
       wrong,
       `Divide each term of ${m(expr)} by ${m(String(g))}: start with ${m(String(orig[0]))} and ${m(String(orig[last]))}. The quotients go inside the parentheses.`,
       [
-        `Divide each term by $${g}$: ${orig.map((c, i) => `$${c}\\div ${g < 0 ? `(${g})` : g}=${inner[i]}$`).join(", ")}.`,
-        `Write the quotients inside parentheses after the factor: ${correct}.`,
-        `Check by distributing: $${g}$ times each term inside gives back ${m(expr)}.`,
+        `Factoring out ${m(String(g))} means writing ${m(expr)} as ${m(String(g))} times a group in parentheses.`,
+        `A term is one part of the expression between the plus and minus signs. Each term must be ${m(String(g))} times something.`,
+        `So divide each term by ${m(String(g))}: ${orig.map((c, i) => `$${c}\\div ${g < 0 ? `(${g})` : g}=${inner[i]}$`).join(", ")}.`,
+        `Write those results inside the parentheses, after ${m(String(g))}: ${correct}.`,
+        `Check by multiplying ${m(String(g))} by each term inside (distributing). You get back ${m(expr)}.`,
+        `So the equivalent expression is ${correct}.`,
       ],
     );
   },

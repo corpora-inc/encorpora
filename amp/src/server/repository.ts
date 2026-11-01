@@ -75,6 +75,8 @@ import type { GeneratedProblem, ProblemVariant } from "../math/contracts";
 import type { PracticeSkip } from "../learning/skip";
 import type { ProblemFlag } from "../feedback/problem-flags";
 import type { WorkbookRecord } from "../workbook/contracts";
+import { purgeWorkbookPdfs } from "../workbook/retention.js";
+import { RETENTION } from "../privacy/retention-periods.js";
 import type {
   StartingBand,
   PracticeStartingPoint,
@@ -178,7 +180,16 @@ export interface LearnerTransaction {
    * returns the stored one either way. */
   saveWorkbook(workbook: WorkbookRecord): Promise<WorkbookRecord>;
   setWorkbookPaper(id: string, paper: WorkbookRecord["paper"]): Promise<void>;
+  /** A rendered PDF of exactly this document, while it is retained. */
+  workbookPdf(key: WorkbookPdfKey): Promise<Buffer | undefined>;
+  /** Stores a rendered PDF and drops every expired one. */
+  saveWorkbookPdf(key: WorkbookPdfKey, pdf: Buffer): Promise<void>;
 }
+export type WorkbookPdfKey = {
+  workbookId: string;
+  format: "Letter" | "A4";
+  documentSha256: string;
+};
 export interface Repository {
   /** The anonymous free-trial allowance and its placement length. */
   readonly limits?: TrialLimits;
@@ -884,6 +895,30 @@ export class PgTransaction implements LearnerTransaction {
     await this.db.query(
       "UPDATE amp_workbooks SET paper=$3 WHERE learner_id=$1 AND id=$2",
       [this.learnerId, id, paper],
+    );
+  }
+  async workbookPdf(key: WorkbookPdfKey) {
+    const result = await this.db.query(
+      `SELECT p.pdf FROM amp_workbook_pdfs p JOIN amp_workbooks w ON w.id=p.workbook_id
+        WHERE w.learner_id=$1 AND p.workbook_id=$2 AND p.format=$3 AND p.document_sha256=$4
+        AND p.created_at>now()-make_interval(hours=>$5)`,
+      [
+        this.learnerId,
+        key.workbookId,
+        key.format,
+        key.documentSha256,
+        RETENTION.workbookPdfHours,
+      ],
+    );
+    return result.rows[0]?.pdf as Buffer | undefined;
+  }
+  async saveWorkbookPdf(key: WorkbookPdfKey, pdf: Buffer) {
+    await purgeWorkbookPdfs(this.db);
+    await this.db.query(
+      `INSERT INTO amp_workbook_pdfs(workbook_id,format,document_sha256,pdf)
+        SELECT id,$3,$4,$5 FROM amp_workbooks WHERE learner_id=$1 AND id=$2
+        ON CONFLICT(workbook_id,format,document_sha256) DO UPDATE SET pdf=EXCLUDED.pdf,created_at=now()`,
+      [this.learnerId, key.workbookId, key.format, key.documentSha256, pdf],
     );
   }
   async trialRemaining() {

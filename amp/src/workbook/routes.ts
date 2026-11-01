@@ -1,5 +1,5 @@
 import type { FastifyInstance } from "fastify";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { z } from "zod";
 import { skills } from "../curriculum/catalog.js";
 import { lessons } from "../content/lessons.js";
@@ -23,7 +23,8 @@ import {
   type WorkbookRecord,
   type WorkbookSummary,
 } from "./contracts.js";
-import { workbookHtml } from "./render.js";
+import { workbookFooter, workbookHtml } from "./render.js";
+import { RendererUnavailable, type WorkbookRenderer } from "./pdf.js";
 
 const DAY = 86_400_000;
 const templateVersion = new Map(templates.map((t) => [t.id, t.version]));
@@ -100,6 +101,8 @@ export function registerWorkbookRoutes(
     parent: Authenticator;
     development?: boolean;
     now?: () => number;
+    /** Null or absent: PDF requests answer 503 (and are logged). */
+    renderer?: WorkbookRenderer | null;
   },
 ) {
   const now = options.now ?? Date.now;
@@ -128,7 +131,11 @@ export function registerWorkbookRoutes(
       .parse(request.query);
     return options.repository.transaction(accountId, learnerId, async (tx) => {
       await access(tx);
-      return { workbooks: (await tx.workbooks(date)).map(workbookSummary) };
+      return {
+        workbooks: (await tx.workbooks(date)).map(workbookSummary),
+        /** Whether downloads are PDFs; otherwise the printable document. */
+        pdf: !!options.renderer,
+      };
     });
   });
 
@@ -187,7 +194,8 @@ export function registerWorkbookRoutes(
     return reply.code(result.status).send(result.body);
   });
 
-  /** The printable workbook as one self-contained HTML document. */
+  /** The printable workbook as one HTML document, printed from the
+   * parent's browser. The download when no PDF renderer is configured. */
   app.get(
     "/api/v1/learners/:learnerId/workbooks/:workbookId/document",
     async (request, reply) => {
@@ -228,6 +236,109 @@ export function registerWorkbookRoutes(
           `attachment; filename="amp-workbook-${record.date}-${record.number}.html"`,
         )
         .send(html);
+    },
+  );
+
+  /** The printed workbook as a PDF, rendered on first request and kept
+   * briefly (RETENTION.workbookPdfHours). Rendering happens outside the
+   * learner transaction; a renderer that is down answers 503. */
+  app.get(
+    "/api/v1/learners/:learnerId/workbooks/:workbookId/pdf",
+    async (request, reply) => {
+      const accountId = await account(request);
+      const { learnerId, workbookId } = workbookParams.parse(request.params);
+      const query = z
+        .object({ format: z.enum(["Letter", "A4"]).optional() })
+        .strict()
+        .parse(request.query);
+      const learnerName = (await options.repository.list(accountId)).find(
+        (l) => l.id === learnerId,
+      )?.name;
+      const lookup = await options.repository.transaction(
+        accountId,
+        learnerId,
+        async (tx) => {
+          await access(tx);
+          const record = await tx.workbook(workbookId);
+          if (!record) throw new ApiError(404, "Workbook not found");
+          if (!workbookIsCurrent(record.spec))
+            throw new ApiError(
+              410,
+              "Some problems in this workbook have been updated since it was made. Make today's workbook instead.",
+            );
+          const format =
+            query.format ?? (record.paper === "a4" ? "A4" : "Letter");
+          const html = workbookHtml(record.spec, {
+            lessons,
+            skillTitle,
+            learnerName,
+            paper: format === "A4" ? "a4" : "letter",
+          });
+          const footer = workbookFooter(record.spec);
+          const key = {
+            workbookId,
+            format,
+            documentSha256: createHash("sha256")
+              .update(`${html}\u0000${footer}`)
+              .digest("hex"),
+          } as const;
+          return {
+            record,
+            html,
+            footer,
+            key,
+            cached: await tx.workbookPdf(key),
+          };
+        },
+      );
+      let pdf = lookup.cached;
+      if (!pdf) {
+        const started = Date.now();
+        try {
+          if (!options.renderer)
+            throw new RendererUnavailable("No workbook renderer configured");
+          pdf = await options.renderer.render({
+            html: lookup.html,
+            format: lookup.key.format,
+            footer: lookup.footer,
+          });
+        } catch (error) {
+          request.log.error(
+            {
+              err: error instanceof Error ? error.message : String(error),
+              durationMs: Date.now() - started,
+            },
+            "Workbook PDF render failed",
+          );
+          throw new ApiError(
+            503,
+            "Your workbook is being prepared; try again in a minute.",
+          );
+        }
+        request.log.info(
+          { durationMs: Date.now() - started, bytes: pdf.length },
+          "Workbook PDF rendered",
+        );
+        const rendered = pdf;
+        // The cache is optional: a failed save still sends the PDF.
+        await options.repository
+          .transaction(accountId, learnerId, (tx) =>
+            tx.saveWorkbookPdf(lookup.key, rendered),
+          )
+          .catch((error) =>
+            request.log.error(
+              { err: error instanceof Error ? error.message : String(error) },
+              "Workbook PDF cache save failed",
+            ),
+          );
+      }
+      return reply
+        .type("application/pdf")
+        .header(
+          "Content-Disposition",
+          `attachment; filename="amp-workbook-${lookup.record.date}-${lookup.record.number}-${lookup.key.format}.pdf"`,
+        )
+        .send(pdf);
     },
   );
 }
