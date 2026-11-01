@@ -35,7 +35,7 @@ test("successive percent change has one stable numeric contract", () => {
     assert.match(problem.answer, /^\d+\.\d{2}$/);
     assert.ok(problem.hint.includes("starting price"));
     assert.ok(problem.hint.includes("price after the first change"));
-    assert.equal(problem.explanation.length, 4);
+    assert.equal(problem.explanation.length, 6);
     assert.ok(tags.length >= 3);
     assert.ok(caseKey.length > 0);
   }
@@ -83,9 +83,9 @@ test("fixed public cases cover changing bases, exact cents, ties, and three-deci
     const { problem, tags } = successivePercentChangeCase(example.seed);
     assert.equal(problem.answer, example.answer);
     assert.ok(tags.includes(example.tag), example.seed);
-    assert.ok(problem.explanation[0]!.includes(example.first));
-    assert.ok(problem.explanation[2]!.includes(example.exact));
-    assert.ok(problem.explanation[3]!.includes(example.answer));
+    assert.ok(problem.explanation[1]!.includes(example.first));
+    assert.ok(problem.explanation[3]!.includes(example.exact));
+    assert.ok(problem.explanation[5]!.includes(example.answer));
   }
   assert.match(
     successivePercentChangeCase("sample-18").problem.public.prompt,
