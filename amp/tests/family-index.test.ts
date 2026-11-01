@@ -51,7 +51,12 @@ test("each descriptor is named for its file", async () => {
 test("registries append families after their legacy entries, in family-id order", () => {
   const tail = <T>(list: readonly T[], part: readonly T[]) =>
     assert.deepEqual(list.slice(list.length - part.length), [...part]);
-  tail(templates, familyRegistry.templates);
+  // The engine merges each template's glossary senses into a copy
+  // (math/template-glossary.ts), so order is checked by id.
+  tail(
+    templates.map((t) => t.id),
+    familyRegistry.templates.map((t) => t.id),
+  );
   tail(lessons, familyRegistry.lessons);
   tail(actualFacetMappings, familyRegistry.facetMappings);
   tail(archetypes, familyRegistry.archetypes);
