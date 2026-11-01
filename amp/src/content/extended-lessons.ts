@@ -231,35 +231,44 @@ export const extendedLessons: Lesson[] = [
   },
   {
     id: "dividing-fractions",
+    senses: {
+      fourths: "fourth",
+      eighth: "eighth",
+      eighths: "eighth",
+      parts: "part",
+      whole: "whole",
+    },
     title: "How many fractional groups fit?",
     summary:
-      "Dividing by a fraction asks how many groups of that size fit. Multiply by the divisor's reciprocal, made by swapping its top and bottom numbers.",
+      "A fraction is a number of equal parts of 1 whole, such as $\\tfrac{3}{4}$: 3 of 4 equal parts. Dividing by a fraction asks how many groups of that size fit. For example, $\\tfrac{3}{4} \\div \\tfrac{1}{8}$ asks how many eighths fit in three fourths, and the answer is 6. A quick way to get it is to multiply by the reciprocal, the fraction flipped upside down.",
     templateIds: ["divide-fractions"],
     objectives: [
-      "Interpret division by a fraction.",
-      "Use the reciprocal of a nonzero divisor.",
+      "Explain dividing by a fraction as counting how many groups of that size fit.",
+      "Divide by multiplying by the reciprocal of the number you divide by, which must not be 0.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Count how many small groups fit",
         paragraphs: [
-          "Three fourths contains six eighths.",
-          "That means six groups of one eighth fit into three fourths. The answer can be larger than the amount you began with because the groups are smaller than one whole.",
+          "A fraction is a number of equal parts of 1 whole. The bottom number, the denominator, says how many equal parts make 1 whole. The top number, the numerator, says how many parts you have. So $\\tfrac{3}{4}$ is 3 parts when the whole is cut into 4.",
+          "Cut each fourth in half, and the whole is now 8 equal parts called eighths. Each fourth becomes 2 eighths, so three fourths is the same as six eighths: $\\tfrac{3}{4} = \\tfrac{6}{8}$.",
+          "So six groups of one eighth fit into three fourths. The answer, 6, is bigger than $\\tfrac{3}{4}$. That happens because each group is smaller than 1 whole.",
         ],
       },
       {
         title: "Measure in smaller groups",
         paragraphs: [
-          "Three fourths divided by one eighth asks how many eighth-sized pieces fit in three fourths. Since three fourths is six eighths, the answer is six.",
-          "A quotient can exceed the dividend when groups are smaller than one. The question counts groups, not the amount in one group.",
+          "Division can ask how many groups of a given size fit into an amount. For example, 12 ÷ 3 asks how many 3s fit into 12. In the same way, $\\tfrac{3}{4} \\div \\tfrac{1}{8}$ asks how many pieces of size $\\tfrac{1}{8}$ fit into $\\tfrac{3}{4}$. Since three fourths is six eighths, the answer is 6.",
+          "The answer of a division is called the quotient. The number being divided is the dividend, and the number you divide by is the divisor. When the divisor is less than 1, the quotient is bigger than the dividend. The question counts groups, not the amount in one group.",
         ],
       },
       {
         title: "Why the reciprocal works",
         paragraphs: [
-          "Multiplying by the reciprocal of the divisor changes that divisor to one. This measures the dividend in units of the divisor.",
-          "For a/b divided by c/d, multiply a/b by d/c. The divisor must be nonzero, so $c$ cannot be zero.",
+          "The reciprocal of a fraction swaps its top and bottom numbers. The reciprocal of $\\tfrac{1}{8}$ is $\\tfrac{8}{1}$, which is 8. A number times its reciprocal is always 1: $\\tfrac{1}{8} \\times 8 = 1$.",
+          "How many eighths fit in 1 whole? Eight. So the number of eighths in $\\tfrac{3}{4}$ is $\\tfrac{3}{4} \\times 8 = 6$. Multiplying by the reciprocal counts groups of the divisor's size.",
+          "In general, to divide $\\tfrac{a}{b}$ by $\\tfrac{c}{d}$, multiply $\\tfrac{a}{b}$ by $\\tfrac{d}{c}$. Here $a$, $b$, $c$ and $d$ stand for whole numbers. The divisor must not be 0, so $c$ cannot be 0, and no denominator can be 0.",
         ],
       },
     ],
@@ -268,57 +277,60 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Count groups of a fractional size",
         paragraphs: [
-          "For a fraction $a/b$ and a nonzero fraction $c/d$ with nonzero denominators, $(a/b)\\div(c/d)=(a/b)(d/c)$. Multiplying by the reciprocal counts how many groups of size $c/d$ fit into $a/b$.",
+          "Let $\\tfrac{a}{b}$ be a fraction and $\\tfrac{c}{d}$ a fraction that is not 0, with $b$ and $d$ not 0. Then $\\tfrac{a}{b} \\div \\tfrac{c}{d} = \\tfrac{a}{b} \\times \\tfrac{d}{c}$. Multiplying by the reciprocal counts how many groups of size $\\tfrac{c}{d}$ fit into $\\tfrac{a}{b}$.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 3/4 ÷ 1/8?",
       steps: [
-        "Rename 3/4 as 6/8.",
-        "Six groups of 1/8 fit in 6/8.",
-        "Equivalently, 3/4 × 8/1 = 6.",
+        "Write both fractions in eighths so the pieces are the same size. Each fourth is 2 eighths, so $\\tfrac{3}{4} = \\tfrac{6}{8}$.",
+        "Count the groups: 6 pieces of size $\\tfrac{1}{8}$ fit in $\\tfrac{6}{8}$.",
+        "Check with the reciprocal: the reciprocal of $\\tfrac{1}{8}$ is $\\tfrac{8}{1}$, and $\\tfrac{3}{4} \\times \\tfrac{8}{1} = \\tfrac{24}{4} = 6$.",
       ],
       answer: "6",
     },
     pitfalls: [
-      "Take the reciprocal of the divisor, not the dividend.",
-      "Dividing by zero is undefined.",
+      "Flip the number you divide by, the divisor, not the first number.",
+      "Dividing by 0 has no answer.",
+      "The answer can be bigger than the number you started with when you divide by a fraction less than 1.",
     ],
     parentGuide:
-      "Use a strip divided into eighths, shade six parts, and count how many one-eighth groups are shaded.",
+      "Use a paper strip folded into eighths. Shade six parts to show three fourths, then count how many one-eighth groups are shaded.",
   },
   {
     id: "equivalent-ratios",
+    senses: { parts: "part" },
+    noLink: ["changes", "factor"],
     title: "Scale both parts of a ratio",
     summary:
-      "A bigger batch can keep the same mix when both amounts grow together.",
+      "A ratio compares two amounts, such as 2 cups of blue paint for every 3 cups of white. To make a bigger batch with the same color, multiply both amounts by the same number. That number is called the scale factor. Doubling both gives 4 cups blue to 6 cups white, the same mix. Ratios that describe the same mix are called equivalent ratios.",
     templateIds: ["ratio-missing"],
     objectives: [
-      "Identify a ratio’s two quantities.",
-      "Apply the same scale factor to both quantities.",
+      "Name the two amounts a ratio compares, in order.",
+      "Multiply both amounts by the same scale factor to find a missing amount.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Keep the mix the same",
         paragraphs: [
-          "A mix with two cups of blue paint for every three cups of white paint keeps the same color if you double both amounts.",
-          "Four to six is a bigger batch with the same relationship.",
+          "A paint mix uses 2 cups of blue paint for every 3 cups of white paint. Make the same mix twice, and you use 2 × 2 = 4 cups of blue and 2 × 3 = 6 cups of white. The color stays exactly the same.",
+          "So 4 cups to 6 cups is a bigger batch of the same mix. Both amounts grew by the same multiplier, 2.",
         ],
       },
       {
         title: "Keep the relationship",
         paragraphs: [
-          "A mix with two cups of blue for every three cups of white has blue-to-white ratio 2:3. Doubling both amounts makes 4:6, with the same color proportions.",
-          "Order matters: blue-to-white and white-to-blue describe inverse relationships. Label the quantities before calculating.",
+          "A ratio compares two amounts. The mix with 2 cups of blue for every 3 cups of white has a blue-to-white ratio of 2 : 3, read “2 to 3”. Doubling both amounts gives 4 : 6. Ratios like these, which describe the same mix, are called equivalent ratios.",
+          "Order matters. Blue-to-white is 2 : 3, but white-to-blue is 3 : 2, a different comparison. Label the amounts before you calculate.",
         ],
       },
       {
         title: "Find the scale factor",
         paragraphs: [
-          "If the white amount increases from three to twelve, it is multiplied by four. Multiply the blue amount by four as well.",
-          "Adding the same number to both quantities usually changes the ratio. Scaling multiplies both quantities by the same positive factor.",
+          "Suppose the white paint goes from 3 cups to 12 cups. Since 12 ÷ 3 = 4, the white was multiplied by 4. The number both amounts are multiplied by is called the scale factor. Multiply the blue by 4 as well: 2 × 4 = 8 cups.",
+          "Adding the same number to both amounts usually changes the ratio. Adding 9 cups to each gives 11 : 12, which is almost half blue, a bluer color than 2 : 3. Scaling multiplies both amounts by the same positive number instead.",
         ],
       },
     ],
@@ -327,7 +339,7 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Scale both quantities",
         paragraphs: [
-          "Multiplying both entries of a ratio by the same positive factor preserves the comparison. For nonzero second entries, the quotient of the first entry by the second stays constant across equivalent ratios.",
+          "Multiplying both numbers of a ratio by the same positive number keeps the comparison the same. When the second number is not 0, the first number divided by the second stays the same in every equivalent ratio. For 2 : 3 and 8 : 12, both give $\\tfrac{2}{3}$.",
         ],
       },
     ],
@@ -335,49 +347,57 @@ export const extendedLessons: Lesson[] = [
       prompt:
         "A mix uses 2 cups blue per 3 cups white. How much blue goes with 12 cups white?",
       steps: [
-        "12 ÷ 3 = 4, so scale the recipe by four.",
-        "2 × 4 = 8 cups blue.",
+        "Find the scale factor from the white paint: 12 ÷ 3 = 4. So the recipe is made 4 times as big.",
+        "Multiply the blue by the same scale factor so the color stays the same: 2 × 4 = 8 cups of blue.",
       ],
       answer: "8",
     },
     pitfalls: [
-      "Match each quantity with its correct label.",
-      "Additive changes do not generally preserve ratios.",
+      "Match each number with its correct label, in the order the ratio gives.",
+      "Adding the same amount to both parts usually changes the ratio. Multiply instead.",
     ],
     parentGuide:
-      "Build several identical groups of two blue counters and three white counters, then count totals.",
+      "Build several identical groups of two blue counters and three white counters. Count the totals of each color and compare them with 2 : 3.",
   },
   {
     id: "percent-quantity",
+    senses: {
+      changes: "change",
+      "more than": "more-than",
+      "one fourth": "fourth",
+      parts: "part",
+      whole: "whole",
+      wholes: "whole",
+    },
     title: "Percent means per hundred",
     summary:
-      "A percent counts parts out of one hundred equal parts of a chosen whole.",
+      "Percent means per hundred, and the sign % stands for percent. So 25% means 25 out of every 100, which is $\\tfrac{25}{100}$, or one fourth. A percent is always a percent of some whole amount. To find 25% of 80, find one fourth of 80, which is 20.",
     templateIds: ["percent-of"],
     objectives: [
-      "Convert a percent to a fraction.",
-      "Calculate a percentage of a stated whole.",
+      "Write a percent as a fraction out of 100.",
+      "Find a percent of a given whole amount.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Find the whole behind the percent",
         paragraphs: [
-          "Twenty-five percent means twenty-five parts out of one hundred equal parts of a whole.",
-          "One fourth of a small cake and one fourth of a large cake are different amounts, so name the whole before finding a percent of it.",
+          "Imagine a whole cut into 100 equal parts. Twenty-five percent means 25 of those parts. That is $\\tfrac{25}{100}$, which is the same as $\\tfrac{1}{4}$, one fourth of the whole.",
+          "One fourth of a small cake and one fourth of a large cake are different amounts of cake. In the same way, 25% of 40 is 10, but 25% of 80 is 20. So always name the whole before you find a percent of it.",
         ],
       },
       {
         title: "Identify the whole",
         paragraphs: [
-          "Twenty-five percent means twenty-five out of each hundred, or 25/100 = 1/4. A percent needs a whole to determine an actual quantity.",
-          "Twenty-five percent of eighty and twenty-five percent of forty have different amounts because the wholes differ.",
+          "Twenty-five percent means 25 out of each hundred: $25\\% = \\tfrac{25}{100} = \\tfrac{1}{4}$. A percent alone does not tell you an amount. It needs a whole to be a percent of.",
+          "Twenty-five percent of 80 and twenty-five percent of 40 are different amounts, because the wholes are different.",
         ],
       },
       {
         title: "Multiply by the fraction",
         paragraphs: [
-          "To find $p$ percent of a quantity, multiply the quantity by p/100. Simplifying first can make the calculation easier.",
-          "For a positive whole and a percentage between zero and one hundred, the result lies between zero and the whole. Use that as a reasonableness check.",
+          "To find $p$ percent of an amount, where $p$ stands for the percent number, multiply the amount by $\\tfrac{p}{100}$. For 25% of 80: $80 \\times \\tfrac{25}{100} = 80 \\times \\tfrac{1}{4} = 20$. Simplifying the fraction first can make the arithmetic easier.",
+          "If the whole is more than 0 and the percent is between 0 and 100, the answer is between 0 and the whole. Use that to check that your answer makes sense.",
         ],
       },
     ],
@@ -386,21 +406,24 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Percent means per hundred",
         paragraphs: [
-          "A percent $p$ of a whole $W$ is $(p/100)W$. The numerical part changes when the whole changes, even if the percent stays the same; identify the whole before calculating.",
+          "A percent $p$ of a whole $W$ is $\\tfrac{p}{100} \\times W$. The same percent gives a different amount when the whole changes. So find the whole before you calculate.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 25% of 80?",
-      steps: ["25% = 25/100 = 1/4.", "One fourth of 80 is 80 ÷ 4 = 20."],
+      steps: [
+        "Percent means per hundred, so 25% = $\\tfrac{25}{100}$. Divide the top and bottom by 25 to simplify: $\\tfrac{25}{100} = \\tfrac{1}{4}$.",
+        "The whole is 80. One fourth of 80 means 80 split into 4 equal parts: 80 ÷ 4 = 20.",
+      ],
       answer: "20",
     },
     pitfalls: [
-      "25% is 0.25, not 25, as a multiplier.",
-      "Always identify which amount is the whole.",
+      "To multiply by 25%, use 0.25 or $\\tfrac{1}{4}$, not 25.",
+      "Always find which amount is the whole.",
     ],
     parentGuide:
-      "Divide eighty objects or a drawn bar into four equal groups and connect one group with twenty-five percent.",
+      "Split 80 small objects, or a drawn bar, into four equal groups. Show that one group is twenty-five percent of the whole.",
   },
   {
     id: "signed-addition",
@@ -579,35 +602,36 @@ export const extendedLessons: Lesson[] = [
   },
   {
     id: "equally-likely-probability",
+    senses: { certain: "certain", event: "event", impossible: "impossible" },
     title: "Count favorable outcomes",
     summary:
-      "Probability means chance. When outcomes are equally likely, divide the favorable count by the count of all possible outcomes.",
+      "Probability means chance: how likely something is to happen. An outcome is one possible result, such as drawing one counter from a bag. When every outcome is equally likely, count the outcomes you want, called favorable outcomes. Divide by the number of all possible outcomes. For 3 red and 5 blue counters, the chance of red is $\\tfrac{3}{8}$.",
     templateIds: ["simple-probability"],
     objectives: [
-      "Identify the event and the sample space.",
-      "Express a probability as an exact fraction.",
+      "Name the event (the result you want) and the sample space (the list of all possible outcomes).",
+      "Write a probability as an exact fraction.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Count the ways a result can happen",
         paragraphs: [
-          "If a bag holds three red and five blue counters and each counter is equally likely to be picked, three of the eight possible picks are red.",
-          "The probability, or chance, of red is three out of eight.",
+          "A bag holds 3 red counters and 5 blue counters, 8 in all. You reach in without looking and pull one out. Each counter has the same chance of being picked, so we say the picks are equally likely.",
+          "Three of the eight possible picks are red. So the probability, or chance, of red is 3 out of 8, written $\\tfrac{3}{8}$.",
         ],
       },
       {
         title: "Count all possible objects",
         paragraphs: [
-          "A bag with three red and five blue counters contains eight counters. If every counter is equally likely to be drawn, each contributes one equally likely outcome.",
-          "Drawing red has three favorable outcomes. Divide three by all eight outcomes, not just by the five blue counters.",
+          "An outcome is one possible result. Here each counter is one outcome, so there are 8 outcomes. The list of all possible outcomes is called the sample space. The result you are asking about, such as drawing red, is called the event.",
+          "Outcomes that make the event happen are called favorable outcomes. Drawing red has 3 favorable outcomes. Divide 3 by all 8 outcomes, not by the 5 blue counters.",
         ],
       },
       {
         title: "Interpret the probability",
         paragraphs: [
-          "A probability lies between zero and one. Zero describes an impossible event and one describes a certain event.",
-          "A probability of 3/8 does not promise exactly three red results in every eight draws. It describes the chance on each draw under the stated conditions.",
+          "A probability is always from 0 to 1. A probability of 0 means the event is impossible, such as drawing green from this bag. A probability of 1 means it is certain, such as drawing a counter that is red or blue.",
+          "A probability of $\\tfrac{3}{8}$ does not promise exactly 3 reds in every 8 draws. It describes the chance on each single draw, under the stated conditions.",
         ],
       },
     ],
@@ -616,7 +640,7 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Count favorable outcomes",
         paragraphs: [
-          "For a finite set of equally likely outcomes, probability is favorable outcome count divided by total outcome count. The result lies between 0 and 1 inclusive; if outcomes are not equally likely, simple counting alone does not give probability.",
+          "Suppose there is a countable, limited list of outcomes and each is equally likely. Then the probability of an event is the number of favorable outcomes divided by the total number of outcomes. The result is from 0 to 1, including both. If the outcomes are not equally likely, counting alone does not give the probability.",
         ],
       },
     ],
@@ -624,49 +648,56 @@ export const extendedLessons: Lesson[] = [
       prompt:
         "A bag contains 3 red and 5 blue equally likely counters. What is the probability of red?",
       steps: [
-        "There are 3 + 5 = 8 counters in total.",
-        "Three are favorable, giving probability 3/8.",
+        "Count all possible outcomes. Each counter is one outcome: 3 + 5 = 8 counters in total.",
+        "Count the favorable outcomes, the red counters: 3. Divide by all outcomes: the probability of red is $\\tfrac{3}{8}$.",
       ],
       answer: "3/8",
     },
     pitfalls: [
-      "The denominator includes favorable and unfavorable outcomes.",
-      "Counting outcomes works this way only when the outcomes are equally likely.",
+      "The bottom number counts every outcome, the ones you want and the ones you do not.",
+      "Counting outcomes gives the probability only when the outcomes are equally likely.",
     ],
     parentGuide:
-      "Predict the chance, then perform repeated draws with replacement. Discuss why short runs can differ from the predicted proportion.",
+      "Predict the chance of red. Then draw a counter, put it back, and repeat many times. Talk about why a short run can differ from the prediction.",
   },
   {
     id: "arithmetic-sequence-terms",
+    senses: {
+      difference: "difference-subtract",
+      jump: "jump",
+      jumps: "jump",
+      term: "term-sequence",
+      terms: "term-sequence",
+    },
     title: "Repeated addition in a sequence",
     summary:
-      "A sequence is an ordered list of numbers called terms. An arithmetic sequence adds the same amount, its common difference, to get each next term.",
+      "A sequence is a list of numbers in order, and each number in it is called a term. In an arithmetic sequence, you add the same amount each time to get the next term. That amount is called the common difference. In 4, 7, 10, 13, the common difference is 3. To find a later term, count how many jumps of 3 it takes from the first term.",
     templateIds: ["arithmetic-term"],
     objectives: [
-      "Generate terms with a common difference.",
-      "Use the correct number of steps from term one.",
+      "Write the terms of a sequence from its first term and common difference.",
+      "Use the correct number of jumps from term 1 to reach a later term.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Repeat the same change",
         paragraphs: [
-          "The numbers 4, 7, 10, 13 rise by three each time.",
-          "Four is the first term; reaching the fourth term takes three jumps of three. Counting jumps carefully finds later terms.",
+          "The numbers 4, 7, 10, 13 go up by 3 each time. A list of numbers in order like this is called a sequence, and each number is a term.",
+          "The first term is 4. To reach the 2nd term takes 1 jump of 3. To reach the 4th term takes 3 jumps of 3: 4 + 3 + 3 + 3 = 13. So the number of jumps is one less than the term number.",
         ],
       },
       {
         title: "Find the fixed change",
         paragraphs: [
-          "The sequence 4, 7, 10, 13 adds three each time. Its first term is four and its common difference is three.",
-          "A negative common difference produces a decreasing sequence. A zero difference repeats the same number.",
+          "A sequence that adds the same amount each time is called an arithmetic sequence. The amount added is called the common difference. The sequence 4, 7, 10, 13 has first term 4 and common difference 3.",
+          "The common difference can be negative. Then the terms go down, as in 20, 15, 10, 5, with common difference $-5$. A common difference of 0 repeats the same number.",
         ],
       },
       {
         title: "Jump to a later term",
         paragraphs: [
-          "Term $n$ is a₁ + (n − 1)d when the first term is numbered one. There is one fewer jump than the term number.",
-          "For the fifth term, begin at the first value and make four jumps. This also explains why multiplying the first term by the term number is generally wrong.",
+          "Let $a_1$ (read “$a$ sub 1”) stand for the first term, and let $d$ stand for the common difference. Term number $n$ is $a_1 + (n - 1)d$, where $(n - 1)d$ means $n - 1$ times $d$. There is one fewer jump than the term number.",
+          "For the 5th term, start at the first term and make 4 jumps. For example, 4 + 4 × 3 = 16. Multiplying the first term by the term number, 4 × 5 = 20, is wrong, because the sequence adds; it does not multiply.",
         ],
       },
     ],
@@ -675,56 +706,59 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Fixed differences",
         paragraphs: [
-          "An arithmetic sequence has a fixed difference $d$ between successive terms. If its first term is $a_1$, then its term at positive whole position $n$ is $a_n=a_1+(n-1)d$.",
+          "An arithmetic sequence has the same difference $d$ between each term and the next. If its first term is $a_1$, then its term at position $n$, for $n = 1, 2, 3$ and so on, is $a_n = a_1 + (n - 1)d$.",
         ],
       },
     ],
     workedExample: {
       prompt: "First term 4, common difference 3: what is term 5?",
       steps: [
-        "Make four jumps of three after the first term.",
-        "4 + 4 × 3 = 16.",
+        "Term 5 is 4 jumps after term 1, because the number of jumps is one less than the term number: 5 − 1 = 4.",
+        "Each jump adds 3, so add 4 jumps of 3 to the first term: 4 + 4 × 3 = 4 + 12 = 16.",
       ],
       answer: "16",
     },
     pitfalls: [
-      "Use n − 1 jumps when the first term is term one.",
-      "Do not confuse a common difference with a common ratio.",
+      "Use $n - 1$ jumps, one less than the term number, when the first term is term 1.",
+      "Do not mix up a common difference, which is added, with a common ratio, which is multiplied.",
     ],
     parentGuide:
-      "Write term numbers above their values and draw a labeled arrow for each addition step.",
+      "Write the term numbers above their values. Draw a labeled arrow for each jump of the common difference.",
   },
   {
     id: "function-input-output",
+    senses: { part: "part", rule: "rule", squared: "square-number" },
+    noLink: ["mean", "whole"],
     title: "Substitute an input into a function",
     summary:
-      "A function assigns one output to each allowed input. In $f(x)$, $x$ is the input and $f(x)$ is its output.",
+      "A function is a rule that takes a number in, called the input, and gives exactly one number out, called the output. We write $f(x)$, read “$f$ of $x$”, for the output when the input is $x$. So $f(-2)$ means the output when the input is $-2$. To find it, put $-2$ in place of every $x$ in the rule and work it out.",
     templateIds: ["function-evaluation"],
     objectives: [
-      "Interpret function notation.",
-      "Substitute consistently and follow operation order.",
+      "Read function notation: $f(x)$ is the output of the rule $f$ for the input $x$.",
+      "Substitute the same input everywhere, then follow the order of operations.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Put a number into a rule",
         paragraphs: [
-          "A function rule takes an allowed input and gives one output.",
-          "If the rule doubles a number and adds one, input three gives seven. Write $f(x)$ for the output when the input is $x$; $f(-2)$ asks for the output at input −2. Use that input in every place the rule asks for it.",
+          "A function is a rule that takes a number in and gives exactly one number out. The number that goes in is the input. The number that comes out is the output.",
+          "Say the rule is: double the number, then add 1. Input 3 gives 2 × 3 + 1 = 7.",
+          "If the rule is named $f$, we write $f(x)$, read “$f$ of $x$”, for the output when the input is $x$. This rule is $f(x) = 2x + 1$, where $2x$ means 2 times $x$. Then $f(3) = 7$, and $f(-2)$ asks for the output when the input is $-2$: $2 \\times (-2) + 1 = -3$. Use the input everywhere the rule has $x$.",
         ],
       },
       {
         title: "The input belongs everywhere",
         paragraphs: [
-          "The notation f(−2) asks for the output of $f$ when the input is negative two. Replace every $x$ in the rule with (−2).",
-          "Parentheses around negative inputs keep the sign attached to the number, especially when raising it to a power.",
+          "The notation $f(-2)$ asks for the output of $f$ when the input is negative two. Replace every $x$ in the rule with $(-2)$, in parentheses. Putting a number in place of a letter is called substituting.",
+          "The parentheses keep the minus sign attached to the number. This matters most with powers. In $x^2$ ($x$ squared, $x$ times $x$), putting in $(-2)$ gives $(-2)^2 = (-2) \\times (-2) = 4$. Without parentheses, $-2^2$ would mean $-(2 \\times 2) = -4$.",
         ],
       },
       {
         title: "Evaluate in order",
         paragraphs: [
-          "Calculate powers before multiplication, then combine terms. For a quadratic, the squared input and the linear input can contribute terms with different signs.",
-          "Function notation does not mean $f$ multiplied by the input. It names a rule and supplies that rule’s input.",
+          "Work out powers first, then multiplication, then addition and subtraction. A rule with an $x^2$ part is called a quadratic. Its $x^2$ part and its $x$ part can come out with different signs for a negative input.",
+          "Function notation does not mean $f$ times the input. The letter $f$ names the rule, and the parentheses hold the input.",
         ],
       },
     ],
@@ -733,56 +767,58 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "One output per allowed input",
         paragraphs: [
-          "A function assigns exactly one output to each input in its domain. Evaluating a rule at an input means replacing every occurrence of the input variable by that value, with grouping preserved.",
+          "A function gives exactly one output for each allowed input. The set of allowed inputs is called the domain. To evaluate a rule at an input, replace every copy of the input letter with that value, keeping parentheses around it.",
         ],
       },
     ],
     workedExample: {
       prompt: "If f(x) = 2x² + 3x + 1, find f(−2).",
       steps: [
-        "Substitute: 2(−2)² + 3(−2) + 1.",
-        "The squared term is 2 × 4 = 8.",
-        "8 − 6 + 1 = 3.",
+        "Put $(-2)$ in place of every $x$: $2(-2)^2 + 3(-2) + 1$.",
+        "Work out the power first: $(-2)^2 = 4$, so the first part is $2 \\times 4 = 8$. The middle part is $3 \\times (-2) = -6$.",
+        "Add and subtract from left to right: $8 - 6 + 1 = 3$.",
       ],
       answer: "3",
     },
     pitfalls: [
-      "Replace every occurrence of $x$ with the same input.",
-      "(−2)² is positive four.",
+      "Replace every $x$ with the same input.",
+      "$(-2)^2$ is positive 4, because a negative times a negative is positive.",
     ],
     parentGuide:
-      "Ask the learner to write the full substituted expression before calculating; check signs separately from arithmetic.",
+      "Ask the learner to write out the whole expression with the input put in before calculating. Check the signs separately from the arithmetic.",
   },
   {
     id: "unit-cost",
+    senses: { "more than": "more-than", unit: "unit", units: "unit" },
     title: "Find one, then scale",
-    summary: "Divide a total cost by the item count to find cost per item.",
+    summary:
+      "The unit cost is the price of 1 item. To find it, divide the total cost by the number of items. Then multiply the unit cost by any number of items to find their total cost. For example, 4 notebooks for 12 dollars is 12 ÷ 4 = 3 dollars each, so 7 notebooks cost 7 × 3 = 21 dollars.",
     templateIds: ["unit-price"],
     objectives: [
-      "Calculate a price per item.",
-      "Scale a unit price to a new quantity.",
+      "Find the price of 1 item from a total price.",
+      "Multiply the price of 1 item to find the cost of a new number of items.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Find the cost of one",
         paragraphs: [
-          "Four identical notebooks cost twelve dollars in all.",
-          "Sharing the cost equally gives three dollars for one notebook. That one-item cost can then predict the cost of another number of notebooks.",
+          "Four identical notebooks cost 12 dollars in all.",
+          "Share the 12 dollars equally among the 4 notebooks: 12 ÷ 4 = 3 dollars for one notebook. Once you know the cost of one, you can find the cost of any number of notebooks.",
         ],
       },
       {
         title: "Divide to find the unit",
         paragraphs: [
-          "If four identical notebooks cost twelve dollars, each costs twelve divided by four, or three dollars. Dollars per notebook is the unit rate.",
-          "The constant-rate assumption matters. Quantity discounts or fixed fees would require a different model.",
+          "If four identical notebooks cost 12 dollars, each costs 12 ÷ 4 = 3 dollars. The amount for exactly 1 item is called a unit rate. Here it is 3 dollars per notebook, where per means for each one.",
+          "This only works if every notebook costs the same. A discount for buying many, or a one-time fee, would need a different plan.",
         ],
       },
       {
         title: "Multiply to find the total",
         paragraphs: [
-          "At three dollars per notebook, seven notebooks cost seven times three dollars. The unit rate connects any allowed number of notebooks to its total price.",
-          "Keep units visible: dollars per notebook multiplied by notebooks gives dollars. This helps distinguish division from multiplication.",
+          "At 3 dollars per notebook, 7 notebooks cost 7 × 3 = 21 dollars. The unit rate links any number of notebooks to its total price.",
+          "Keep the units in view. Dollars per notebook times notebooks gives dollars. That tells you to divide to find the unit rate, and multiply to find a total.",
         ],
       },
     ],
@@ -791,22 +827,25 @@ export const extendedLessons: Lesson[] = [
         stage: "formal",
         title: "Constant cost per item",
         paragraphs: [
-          "In a proportional price relationship with positive item count, unit cost is total cost divided by item count. If the unit cost stays fixed, total cost equals unit cost times item count and the graph passes through the origin.",
+          "Suppose every item costs the same, and the number of items is more than 0. Then the unit cost is the total cost divided by the number of items. The total cost is the unit cost times the number of items. On a graph, the points lie on a straight line through 0 items and 0 dollars.",
         ],
       },
     ],
     workedExample: {
       prompt:
         "Four notebooks cost 12 dollars. What do seven cost at the same unit price?",
-      steps: ["12 ÷ 4 = 3 dollars per notebook.", "7 × 3 = 21 dollars."],
+      steps: [
+        "Find the cost of 1 notebook. Share 12 dollars among 4 notebooks: 12 ÷ 4 = 3 dollars per notebook.",
+        "Each of the 7 notebooks costs 3 dollars, so multiply: 7 × 3 = 21 dollars.",
+      ],
       answer: "21",
     },
     pitfalls: [
-      "Do not multiply by the original total price as though it were the unit price.",
-      "The problem assumes the same price per item.",
+      "Do not multiply by the original total price as if it were the price of one.",
+      "This method assumes every item costs the same.",
     ],
     parentGuide:
-      "Create a table of item counts and prices. Ask what stays constant when the table grows.",
+      "Make a table of numbers of items and their prices. Ask what stays the same as the table grows.",
   },
   {
     id: "multiplying-decimals",
