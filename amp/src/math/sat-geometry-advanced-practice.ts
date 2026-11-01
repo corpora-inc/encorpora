@@ -185,21 +185,23 @@ function correspondingCase(r: Random): SatGeometryAdvancedCase {
         ],
         [
           180 - t,
-          "The corresponding angle is not the supplement. Similar figures keep every angle the same size.",
+          "This subtracts from $180^\\circ$, as if the angles made a straight line. Matching angles of similar triangles are equal, so nothing is subtracted.",
         ],
         [
           90 - t,
-          "The complement applies to the two acute angles of one right triangle, not to a corresponding pair.",
+          "This subtracts from $90^\\circ$. That works for the two sharp angles of one right triangle, not for a matching pair in two triangles.",
         ],
         [
           180 - 2 * t,
-          "Do not subtract from the angle sum here. Corresponding angles of similar triangles are equal.",
+          "This uses the triangle's angle sum. Here the angle you want matches a known angle, so it is simply equal to it.",
         ],
       ]);
       steps = [
+        `The symbol $\\sim$ means similar: the same shape, possibly a different size. The order of the letters tells which corners match.`,
         `In ${statement}, the letters match in order: ${match(i)}.`,
-        `Corresponding angles of similar triangles are equal, so ${angle(second[i]!)} has the same measure as ${angle(first[i]!)}.`,
-        `The side scale factor ${k} multiplies lengths only. ${angle(second[i]!)} measures ${deg(t)}.`,
+        `Matching (corresponding) angles of similar triangles are equal. Growing a shape makes its sides longer but does not open or close its corners.`,
+        `So the scale factor ${k} changes only the side lengths. ${angle(second[i]!)} has the same measure as ${angle(first[i]!)}.`,
+        `${angle(second[i]!)} measures ${deg(t)}.`,
       ];
     } else if (tag === "similar-third" || tag === "congruent-direct") {
       let a = r(30, 80);
@@ -220,30 +222,39 @@ function correspondingCase(r: Random): SatGeometryAdvancedCase {
       wrong = wrongAngles(correct, [
         [
           angles[other]!,
-          `That is the measure at $${first[other]}$. $${first[other]}$ corresponds to $${second[other]}$, not to $${second[i]}$.`,
+          `This is the angle at $${first[other]}$, which matches $${second[other]}$, not $${second[i]}$. Read the matching from the order of the letters.`,
         ],
         [
           direct ? c : a + b,
           direct
-            ? "That is the third angle of the triangle. Use the angle that corresponds to the vertex named."
-            : "That is the sum of the two given angles. The third angle is what remains of 180° after subtracting both.",
+            ? "This is the third angle of the triangle, a different corner. Use the angle at the corner that matches the one named."
+            : "This adds the two given angles. The third angle is what is left of 180° after subtracting both.",
         ],
-        [180 - correct, "Corresponding angles are equal, not supplementary."],
+        [
+          180 - correct,
+          "This subtracts from 180°, as if the angles made a straight line. Matching angles of the two triangles are equal.",
+        ],
         [
           direct ? 90 - correct : angles[1]!,
-          "Read the correspondence from the order of the letters in the statement.",
+          "This matches the wrong corners. The first letter matches the first letter, the second the second, and the third the third.",
         ],
       ]);
+      const symWords = similar
+        ? "The symbol $\\sim$ means similar: the same shape, possibly a different size."
+        : "The symbol $\\cong$ means congruent: the same size and shape.";
       steps = direct
         ? [
+            `${symWords} The order of the letters tells which corners match.`,
             `In ${statement}, the letters match in order: ${match(i)}.`,
-            `Corresponding angles of ${word} triangles are equal, so ${angle(second[i]!)} has the same measure as ${angle(first[i]!)}.`,
+            `Matching (corresponding) angles of ${word} triangles are equal, so ${angle(second[i]!)} has the same measure as ${angle(first[i]!)}.`,
             `${angle(second[i]!)} measures ${deg(correct)}.`,
           ]
         : [
+            `${symWords} The order of the letters tells which corners match.`,
             `In ${statement}, the letters match in order: ${match(2)}.`,
-            `The angles of triangle $${first.join("")}$ add to 180°, so ${angle(first[2]!)} measures $180-${a}-${b}=${c}$ degrees.`,
-            `Corresponding angles are equal, so ${angle(second[2]!)} measures ${deg(correct)}.`,
+            `The three angles of any triangle add to 180°. So ${angle(first[2]!)} measures $180-${a}-${b}=${c}$ degrees.`,
+            `Matching (corresponding) angles are equal, so ${angle(second[2]!)} has that same measure.`,
+            `${angle(second[2]!)} measures ${deg(correct)}.`,
           ];
     } else {
       const a = r(25, 65);
@@ -258,22 +269,27 @@ function correspondingCase(r: Random): SatGeometryAdvancedCase {
       wrong = wrongAngles(correct, [
         [
           a,
-          `That is the measure at $${first[givenAt]}$, which corresponds to $${second[givenAt]}$.`,
+          `This is the angle at $${first[givenAt]}$, which matches $${second[givenAt]}$, a different corner. Find the angle that matches the one named.`,
         ],
         [
           90 + a,
-          "The two acute angles of a right triangle add to 90°, not 180°.",
+          "This adds instead of subtracting. The two sharp (acute) angles of a right triangle add to 90°, so subtract the given angle from 90°.",
         ],
         [
           180 - a,
-          "The acute angles are complementary in a right triangle. Subtract from 90°.",
+          "This subtracts from 180°. The right angle already uses 90°, so the two sharp angles share the other 90°. Subtract from 90°.",
         ],
-        [90 - a + 10, "Compute 90° minus the given angle exactly."],
+        [
+          90 - a + 10,
+          "This is 10° too big, an arithmetic slip. Subtract the given angle from 90° carefully.",
+        ],
       ]);
       steps = [
-        `In ${statement}, the letters match in order, so ${angle(second[askAt]!)} corresponds to ${angle(first[askAt]!)}.`,
-        `Triangle $${first.join("")}$ has a right angle, so its two acute angles add to 90°. ${angle(first[askAt]!)} measures $90-${a}=${correct}$ degrees.`,
-        `Corresponding angles are equal, so ${angle(second[askAt]!)} measures ${deg(correct)}.`,
+        `${similar ? "The symbol $\\sim$ means similar: the same shape, possibly a different size." : "The symbol $\\cong$ means congruent: the same size and shape."} The order of the letters tells which corners match.`,
+        `In ${statement}, the letters match in order, so ${angle(second[askAt]!)} matches ${angle(first[askAt]!)}.`,
+        `A right angle is 90°, and a triangle's angles add to 180°. So the other two angles of triangle $${first.join("")}$ share the remaining 90°.`,
+        `${angle(first[askAt]!)} measures $90-${a}=${correct}$ degrees.`,
+        `Matching angles are equal, so ${angle(second[askAt]!)} measures ${deg(correct)}.`,
       ];
     }
     const label = deg(correct);
@@ -289,7 +305,7 @@ function correspondingCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt: `${setup} What is the measure of ${angle(askVertex)}?`,
         answer: "",
-        hint: `${hintLead} Find the vertex of triangle $${first.join("")}$ that sits in the same position as $${askVertex}$ in ${statement}, then use what is known about that triangle (${known}) to find that angle.`,
+        hint: `${hintLead} Find the corner of triangle $${first.join("")}$ in the same position as $${askVertex}$ in ${statement}. Then use what you know (${known}) to find that angle.`,
         explanation: steps,
         choices,
       },
@@ -358,9 +374,14 @@ function crossingCase(r: Random): SatGeometryAdvancedCase {
       answer: String(answer),
       hint: `Look for triangles $AEC$ and $BED$. The angles at $E$ are vertical angles, so they are equal, and the premise supplies a second equal pair. Match the vertices in order, $A$ with $B$, $E$ with $E$, $C$ with $D$; ${hintAsk}. Put ${given} into the ratio of matching sides.`,
       explanation: [
-        `The angles $\\angle AEC$ and $\\angle BED$ are vertical angles, so they are equal. ${reason}. Two equal angle pairs make triangle $AEC$ similar to triangle $BED$, with $A\\leftrightarrow B$, $E\\leftrightarrow E$ and $C\\leftrightarrow D$.`,
-        `Corresponding sides of similar triangles are in equal ratios: ${ratioLine}`,
-        `Cross-multiply and divide: the missing length is ${answer}.`,
+        `Where the segments cross at $E$, $\\angle AEC$ and $\\angle BED$ are vertical angles, the opposite angles at a crossing. Vertical angles are always equal.`,
+        premise.includes("parallel")
+          ? `${reason}. Alternate interior angles sit between the parallel segments, on opposite sides of the crossing line.`
+          : `${reason}.`,
+        `Two pairs of equal angles make the triangles similar: the same shape, different sizes. Triangle $AEC$ matches triangle $BED$, with $A\\leftrightarrow B$, $E\\leftrightarrow E$ and $C\\leftrightarrow D$.`,
+        `In similar triangles every side is scaled by the same number, so matching sides form equal ratios: ${ratioLine}`,
+        `Cross-multiply, multiplying each side by both denominators, then divide to get the unknown alone.`,
+        `The length of segment ${ask} is ${answer}.`,
       ],
     },
   };
@@ -392,12 +413,14 @@ function chainCase(r: Random): SatGeometryAdvancedCase {
         draft: {
           prompt: `Lines $\\ell$ and $m$ are parallel and are cut by transversal $t$. At the point where $t$ meets $\\ell$, two vertical angles measure $(${c1})^\\circ$ and $(${c2})^\\circ$. The first angle lies between $\\ell$ and $m$. What is the measure, in degrees, of the angle between $\\ell$ and $m$ on the same side of $t$ as the first angle, at the point where $t$ meets $m$?`,
           answer: String(180 - value),
-          hint: `Vertical angles are equal, so set $${c1}=${c2}$ and solve for $x$ first. Then use the fact that two interior angles on the same side of a transversal that cuts parallel lines add to 180 degrees.`,
+          hint: `Vertical angles, the opposite angles where two lines cross, are equal. So set $${c1}=${c2}$ and solve for $x$ first.`,
           explanation: [
-            `Vertical angles are equal: $${c1}=${c2}$.`,
-            `Collect the $x$ terms: $${p - s}x=${u - q}$, so $x=${x}$.`,
+            `A transversal is a line that crosses two other lines, here $t$ crossing $\\ell$ and $m$. Vertical angles are the opposite angles where two lines cross, and they are equal.`,
+            `So set the two expressions equal: $${c1}=${c2}$.`,
+            `Subtract $${s === 1 ? "" : s}x$ and ${q < 0 ? "add" : "subtract"} ${Math.abs(q)} on both sides: $${p - s === 1 ? "" : p - s}x=${u - q}$, so $x=${x}$.`,
             `The first angle measures $${p}\\cdot ${x}${q < 0 ? "-" : "+"}${Math.abs(q)}=${value}$ degrees.`,
-            `The angle at $m$ on the same side of $t$ is a same-side interior angle, so it is supplementary: $180-${value}=${180 - value}$ degrees.`,
+            `The angle you want is a same-side interior angle: between the parallel lines, on the same side of $t$. Such a pair adds to 180°.`,
+            `So subtract: $180-${value}=${180 - value}$. The angle measures ${180 - value} degrees.`,
           ],
         },
       };
@@ -418,10 +441,11 @@ function chainCase(r: Random): SatGeometryAdvancedCase {
         answer: String(answer),
         hint: `Find $\\angle C$ from the triangle angle sum, using ${deg(a)} and ${right ? "the right angle" : deg(b)}. Because $\\overline{DE}\\parallel\\overline{AC}$, the angle at $E$ inside triangle $DBE$ matches $\\angle C$. Then $\\angle DEC$ and that angle form a straight line.`,
         explanation: [
-          `The angles of triangle $ABC$ add to 180°, so $\\angle C=180-${a}-${b}=${c}$ degrees.`,
-          `$\\overline{DE}\\parallel\\overline{AC}$ with transversal $\\overline{BC}$, so $\\angle DEB$ and $\\angle ACB$ are corresponding angles and are equal: $\\angle DEB=${c}$ degrees.`,
-          `$\\angle DEB$ and $\\angle DEC$ form a straight angle along $\\overline{BC}$: $180-${c}=${answer}$ degrees.`,
-          `This is more than 90°, so it is the obtuse angle.`,
+          `The three angles of any triangle add to 180°. So $\\angle C=180-${a}-${b}=${c}$ degrees.`,
+          `$\\overline{DE}$ is parallel to $\\overline{AC}$, and $\\overline{BC}$ crosses both. Corresponding angles, in matching positions at each crossing, are equal.`,
+          `So $\\angle DEB$ matches $\\angle ACB$: $\\angle DEB=${c}$ degrees.`,
+          `$\\angle DEB$ and $\\angle DEC$ sit side by side on the straight line $\\overline{BC}$, so they add to 180°: $180-${c}=${answer}$.`,
+          `$\\angle DEC$ measures ${answer} degrees, more than 90°, so it is the obtuse angle.`,
         ],
       },
     };
@@ -462,8 +486,8 @@ function claimCase(r: Random): SatGeometryAdvancedCase {
       const wrong: Option[] = pool.map((v) => [
         deg(v),
         possible
-          ? `The other two angles must add to ${bound}°, so each is less than ${bound}°. ${v} is not less than ${bound}.`
-          : `An angle of ${v}° leaves ${bound - v}° for the third angle, so it is possible.`,
+          ? `This is too big. $\\angle B$ and $\\angle C$ share ${bound}°, and $\\angle C$ needs some of it, so $\\angle B$ must be less than ${bound}°. ${v}° is not.`
+          : `This is possible: ${v}° leaves ${bound - v}° for $\\angle C$, and every angle just needs to be more than 0°.`,
       ]);
       const choices = choose(deg(correct), wrong);
       if (!choices) continue;
@@ -472,13 +496,16 @@ function claimCase(r: Random): SatGeometryAdvancedCase {
         draft: {
           prompt: `In triangle $ABC$, $\\angle A$ measures ${deg(a)}. Which of the following ${possible ? "could be" : "cannot be"} the measure of $\\angle B$?`,
           answer: "",
-          hint: `The three angles add to 180°, and every angle of a triangle is positive. Find what the angles at $B$ and $C$ must add to, then use that every part of a positive sum is smaller than the sum.`,
+          hint: `The three angles add to 180°, and every angle is more than 0°. Start with ${deg(a)}: find what $\\angle B$ and $\\angle C$ must add to.`,
           explanation: [
-            `The angles of a triangle add to 180°, so $\\angle B+\\angle C=180-${a}=${bound}$ degrees.`,
-            `Both $\\angle B$ and $\\angle C$ are positive, so $\\angle B$ must be less than ${bound}°.`,
+            `The three angles of any triangle add to 180°. So $\\angle B+\\angle C=180-${a}=${bound}$ degrees.`,
+            `Every angle of a triangle is more than 0°. So $\\angle C$ takes some of the ${bound}°, and $\\angle B$ must be less than ${bound}°.`,
             possible
-              ? `Only ${correct}° is less than ${bound}° (and leaves ${bound - correct}° for $\\angle C$).`
-              : `${correct}° is not less than ${bound}°, so no triangle has it as $\\angle B$.`,
+              ? `Only ${correct}° is less than ${bound}°. It leaves ${bound - correct}° for $\\angle C$, which works.`
+              : `${correct}° is not less than ${bound}°, so it would leave nothing (or less than nothing) for $\\angle C$.`,
+            possible
+              ? `So ${correct}° could be the measure of $\\angle B$.`
+              : `So ${correct}° cannot be the measure of $\\angle B$.`,
           ],
           choices,
         },
@@ -503,12 +530,12 @@ function claimCase(r: Random): SatGeometryAdvancedCase {
           .map((k): Option => [
             names[k]!,
             k === "unknown"
-              ? "Two lines that cross fix every angle once one is known, and the measure of $\\angle Y$ is given."
+              ? "It can be determined. When two lines cross, knowing one angle fixes all four, and $\\angle Y$ is given."
               : vertical
-                ? "Vertical angles are always equal, not unequal."
+                ? "Vertical angles, the opposite angles at a crossing, are always equal. Neither one is greater."
                 : k === "equal"
-                  ? "Adjacent angles on a line add to 180°. They are equal only when each is 90°, and $\\angle Y$ is not 90°."
-                  : "Compare the measure of $\\angle Y$ with its supplement, 180° minus that measure.",
+                  ? "Angles that make a straight line add to 180°. They are equal only when each is 90°, and $\\angle Y$ is not 90°."
+                  : "Find $\\angle X$ first: it is 180° minus $\\angle Y$. Then compare the two numbers.",
           ]),
       );
       if (!choices) continue;
@@ -524,16 +551,18 @@ function claimCase(r: Random): SatGeometryAdvancedCase {
             : `Adjacent angles on a straight line add to 180°. Find $\\angle X$ from the ${deg(d)} angle $\\angle Y$ and compare the two.`,
           explanation: vertical
             ? [
-                "Vertical angles are opposite each other where two lines cross.",
-                `They are always equal, so $\\angle X$ measures ${deg(d)} too.`,
-                "The two angles have equal measures.",
+                "Vertical angles are the angles opposite each other where two lines cross.",
+                "Each one makes a straight line with the same neighbor angle, so they are always equal.",
+                `So $\\angle X$ measures ${deg(d)}, the same as $\\angle Y$.`,
+                "The true statement: $\\angle X$ and $\\angle Y$ have equal measures.",
               ]
             : [
-                `Adjacent angles that form a straight line add to 180°, so $\\angle X=180-${d}=${180 - d}$ degrees.`,
-                `Compare ${180 - d}° with ${d}°.`,
+                "Adjacent angles share a side. These two together make a straight line, which is 180°.",
+                `So $\\angle X=180-${d}=${180 - d}$ degrees.`,
+                `Compare: ${180 - d}° and ${d}°.`,
                 d > 90
-                  ? "$\\angle Y$ is the greater angle."
-                  : "$\\angle X$ is the greater angle.",
+                  ? "The true statement: $\\angle Y$ has the greater measure."
+                  : "The true statement: $\\angle X$ has the greater measure.",
               ],
           choices,
         },
@@ -555,12 +584,15 @@ function claimCase(r: Random): SatGeometryAdvancedCase {
     const allowed = [
       [
         doubled,
-        `Two vertical copies of the angle add to $2(${e})$, which is $${doubled}$.`,
+        `This sum is possible. Choose the angle and its vertical twin, the equal angle across the crossing: $2(${e})=${doubled}$.`,
       ],
-      ["180", "An adjacent pair on a line always adds to 180."],
+      [
+        "180",
+        "This sum is possible. Two neighboring angles make a straight line, which is always 180°.",
+      ],
       [
         supp,
-        `Two copies of the supplement add to $2(180-(${e}))$, which is $${supp}$.`,
+        `This sum is possible. Choose the two other angles, each $180-(${e})$: $2(180-(${e}))=${supp}$.`,
       ],
     ] as const;
     const choices = choose(
@@ -576,11 +608,13 @@ function claimCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt: `Two lines intersect, forming four angles. One of the angles measures $(${e})^\\circ$. Two of the four angles are chosen. Which of the following cannot be the sum of the measures of the two chosen angles, in degrees?`,
         answer: "",
-        hint: `Two crossing lines form two pairs of vertical (equal) angles, and each adjacent pair adds to 180. List every way to choose two angles: two equal to the given angle, two equal to its supplement, or one of each.`,
+        hint: `Two crossing lines make two pairs of equal opposite angles, and neighbors add to 180°. Starting from $(${e})^\\circ$, list every way to choose two of the four angles.`,
         explanation: [
-          `The four angles are $${e}$, its vertical copy $${e}$, and two copies of the supplement $180-(${e})$.`,
-          `Two copies of the given angle add to $${doubled}$. One of each kind adds to 180. Two copies of the supplement add to $${supp}$.`,
-          `So only those three sums are possible. $${correctExpr}$ is none of them.`,
+          "Where two lines cross, opposite angles (vertical angles) are equal. Neighboring angles make a straight line, so they add to 180°.",
+          `So the four angles are $${e}$, its opposite twin $${e}$, and two angles of $180-(${e})$ each. The second kind is the supplement, what makes 180° with it.`,
+          `Two of the given kind add to $${doubled}$. One of each kind adds to 180. Two supplements add to $${supp}$.`,
+          `Those are the only three possible sums. $${correctExpr}$ is not one of them.`,
+          `So $${correctExpr}$ cannot be the sum of the two chosen angles.`,
         ],
         choices,
       },
@@ -613,9 +647,10 @@ function radiiCase(r: Random): SatGeometryAdvancedCase {
           answer: String(theta),
           hint: `$\\overline{OA}$ and $\\overline{OB}$ are both radii. What does that say about the angles opposite them in triangle $OAB$? Then use the angle sum with the ${deg(base)} base angle.`,
           explanation: [
-            `$OA$ and $OB$ are radii of the same circle, so they are equal and triangle $OAB$ is isosceles.`,
-            `The angles opposite equal sides are equal: $\\angle OBA=\\angle OAB=${base}$ degrees.`,
-            `The three angles add to 180°: $\\angle AOB=180-${base}-${base}=${theta}$ degrees.`,
+            `A radius is a segment from the center to the circle. $OA$ and $OB$ are both radii, so they are equal.`,
+            `A triangle with two equal sides is isosceles. The angles across from the equal sides are equal: $\\angle OBA=\\angle OAB=${base}$ degrees.`,
+            `The three angles of a triangle add to 180°: $\\angle AOB=180-${base}-${base}=${theta}$.`,
+            `$\\angle AOB$ measures ${theta} degrees.`,
           ],
         },
       };
@@ -633,12 +668,13 @@ function radiiCase(r: Random): SatGeometryAdvancedCase {
         explanation: [
           ...(arc
             ? [
-                `A central angle has the same measure as its arc, so $\\angle AOB=${theta}$ degrees.`,
+                `A central angle has its corner at the center. It measures the same as the arc it cuts off, so $\\angle AOB=${theta}$ degrees.`,
               ]
             : []),
-          `$OA$ and $OB$ are radii, so triangle $OAB$ is isosceles with equal base angles at $A$ and $B$.`,
-          `The base angles add to $180-${theta}=${180 - theta}$ degrees, so each is half of that.`,
-          `$\\angle OAB=${180 - theta}\\div 2=${base}$ degrees.`,
+          `A radius is a segment from the center to the circle. $OA$ and $OB$ are both radii, so they are equal.`,
+          `A triangle with two equal sides is isosceles, and the angles across from those sides are equal. So $\\angle OAB=\\angle OBA$.`,
+          `The three angles add to 180°, so the two equal angles share $180-${theta}=${180 - theta}$ degrees.`,
+          `Each gets half: $\\angle OAB=${180 - theta}\\div 2=${base}$. So $\\angle OAB$ measures ${base} degrees.`,
         ],
       },
     };
@@ -654,9 +690,11 @@ function radiiCase(r: Random): SatGeometryAdvancedCase {
         answer: String(chord),
         hint: `Two sides of triangle $OAB$ are radii of the circle. Subtract their lengths (${rad} each) from the perimeter ${per}.`,
         explanation: [
-          `$OA$ and $OB$ are radii, so each has length ${rad}.`,
-          `The perimeter is $OA+OB+AB=${per}$, so $AB=${per}-${rad}-${rad}$.`,
-          `$AB=${chord}$.`,
+          `A radius runs from the center to the circle. $OA$ and $OB$ are both radii, so each is ${rad} long.`,
+          `A chord is a segment joining two points on the circle, here $\\overline{AB}$.`,
+          `The perimeter is the distance around the triangle: $OA+OB+AB=${per}$.`,
+          `Subtract the two radii: $AB=${per}-${rad}-${rad}=${chord}$.`,
+          `Chord $\\overline{AB}$ has length ${chord}.`,
         ],
       },
     };
@@ -667,9 +705,10 @@ function radiiCase(r: Random): SatGeometryAdvancedCase {
       answer: String(rad),
       hint: `$OA$ and $OB$ are radii, so they have the same length. Write the perimeter ${per} using one unknown for that length and the chord ${chord}.`,
       explanation: [
-        `Let the radius be $r$. Then $OA=OB=r$ and the perimeter is $r+r+${chord}=${per}$.`,
-        `So $2r=${per}-${chord}=${per - chord}$.`,
-        `$r=${rad}$.`,
+        `A radius runs from the center to the circle, so $OA$ and $OB$ are both radii and have the same length. Call it $r$.`,
+        `The perimeter is the distance around: $r+r+${chord}=${per}$.`,
+        `Subtract the chord: $2r=${per}-${chord}=${per - chord}$.`,
+        `Divide by 2: $r=${rad}$. The radius of the circle is ${rad}.`,
       ],
     },
   };
@@ -703,11 +742,13 @@ function shiftCase(r: Random): SatGeometryAdvancedCase {
         draft: {
           prompt: `The function $f$ is defined by $f(x)=${rule}$, and the function $g$ is defined by $g(x)=f(${inner})$. At what value of $x$ does the graph of $g$ reach its ${kind}? Enter the $x$-value.`,
           answer: String(answer),
-          hint: `First find where the graph of $f$ reaches its ${kind}: the vertex is at $x=-\\dfrac{b}{2a}$. Then think about which way replacing $x$ by $${inner}$ slides the graph.`,
+          hint: `First find where the graph of $f$ reaches its ${kind}. Its turning point, the vertex, is at $x=-\\dfrac{b}{2a}$, where $a$ and $b$ are the numbers in front of $x^2$ and $x$.`,
           explanation: [
-            `For $f$, the ${kind} occurs at $x=-\\dfrac{b}{2a}=-\\dfrac{${b < 0 ? `(${b})` : b}}{${2 * a}}=${h}$.`,
-            `$g(x)=f(${inner})$ takes the value of $f$ at $${inner}$. The output of $g$ is at its ${kind} when $${inner}=${h}$.`,
-            `Solving, $x=${h}${s < 0 ? "+" : "-"}${Math.abs(s)}=${answer}$. The graph of $g$ is the graph of $f$ shifted ${Math.abs(s)} ${Math.abs(s) === 1 ? "unit" : "units"} ${s < 0 ? "right" : "left"}.`,
+            `The graph of $f$ is a parabola, a U-shaped curve. Its ${kind}, the ${a > 0 ? "lowest" : "highest"} point, is at the vertex, its turning point.`,
+            `For $ax^2+bx+c$ the vertex is at $x=-\\dfrac{b}{2a}$. Here $a=${a}$ and $b=${b}$, so $x=-\\dfrac{${b < 0 ? `(${b})` : b}}{${2 * a}}=${h}$.`,
+            `$g(x)=f(${inner})$ means: to get $g$ at some $x$, put $${inner}$ into $f$. So $g$ hits the ${kind} when $${inner}$ equals ${h}.`,
+            `Solve $${inner}=${h}$: $x=${h}${s < 0 ? "+" : "-"}${Math.abs(s)}=${answer}$. The graph of $g$ is the graph of $f$ shifted ${Math.abs(s)} ${Math.abs(s) === 1 ? "unit" : "units"} ${s < 0 ? "right" : "left"}.`,
+            `The graph of $g$ reaches its ${kind} at $x=${answer}$.`,
           ],
         },
       };
@@ -726,11 +767,14 @@ function shiftCase(r: Random): SatGeometryAdvancedCase {
         draft: {
           prompt: `The function $f$ is defined by $f(x)=${rule}$, and the function $g$ is defined by $g(x)=f(${inner})$. What is the sum of the $x$-intercepts of the graph of $g$ in the $xy$-plane?`,
           answer: String(answer),
-          hint: `The $x$-intercepts of $f$ are the values that make a factor zero. The graph of $g$ is the graph of $f$ slid horizontally; decide which direction $${inner}$ slides it, then shift each intercept.`,
+          hint: `The $x$-intercepts of $f$, where its graph crosses the $x$-axis, are the values that make a factor of $${rule}$ zero. Find those first, then decide which way $${inner}$ slides them.`,
           explanation: [
-            `The $x$-intercepts of $f$ are ${[p, q, z].join(", ")}.`,
-            `$g(x)=0$ when $${inner}$ is one of those values, so each intercept of $g$ is the intercept of $f$ ${s > 0 ? "plus" : "minus"} ${Math.abs(s)}: ${[p, q, z].map((v) => v + s).join(", ")}.`,
-            `The sum is $${p + s}+${q + s < 0 ? `(${q + s})` : q + s}+${z + s < 0 ? `(${z + s})` : z + s}=${answer}$.`,
+            `An $x$-intercept is where a graph crosses the $x$-axis, so the output is 0. A product is 0 exactly when one factor is 0.`,
+            `So the $x$-intercepts of $f$ are the values that make each factor 0: ${[p, q, z].join(", ")}.`,
+            `$g(x)=f(${inner})$ is 0 when $${inner}$ equals one of those values. Solve each: $x$ is that value ${s > 0 ? "plus" : "minus"} ${Math.abs(s)}.`,
+            `So the intercepts of $g$ are ${[p, q, z].map((v) => v + s).join(", ")}: the graph slid ${Math.abs(s)} ${Math.abs(s) === 1 ? "unit" : "units"} ${s > 0 ? "right" : "left"}.`,
+            `Add them: $${p + s}+${q + s < 0 ? `(${q + s})` : q + s}+${z + s < 0 ? `(${z + s})` : z + s}=${answer}$.`,
+            `The sum of the $x$-intercepts of $g$ is ${answer}.`,
           ],
         },
       };
@@ -744,11 +788,13 @@ function shiftCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt: `The function $f$ is defined by $f(x)=${rule}$, and the function $g$ is defined by $g(x)=f(x)${k < 0 ? "-" : "+"}${Math.abs(k)}$. What is the value of $g(0)$?`,
         answer: String(answer),
-        hint: `The graph of $g$ is the graph of $f$ moved vertically, so $g(0)$ is $f(0)$ changed by the same amount. Find $f(0)$ by replacing $x$ by 0 in each factor.`,
+        hint: `$g(0)$, read "$g$ of 0", is the output of $g$ when $x=0$, and $g$ ${k < 0 ? `subtracts ${-k} from` : `adds ${k} to`} $f$. Find $f(0)$ first by putting 0 in for $x$ in each factor of $${rule}$.`,
         explanation: [
-          `$f(0)=${[p, q, z].map((v) => (-v < 0 ? `(${-v})` : String(-v))).join("\\cdot")}=${f0}$.`,
-          `$g(0)=f(0)${k < 0 ? "-" : "+"}${Math.abs(k)}$.`,
+          `$f(0)$, read "$f$ of 0", is the output of $f$ when the input $x$ is 0.`,
+          `Put 0 in for $x$ in each factor and multiply: $f(0)=${[p, q, z].map((v) => (-v < 0 ? `(${-v})` : String(-v))).join("\\cdot")}=${f0}$.`,
+          `$g$ is $f$ with ${Math.abs(k)} ${k < 0 ? "subtracted" : "added"}, which moves the graph ${Math.abs(k)} ${Math.abs(k) === 1 ? "unit" : "units"} ${k < 0 ? "down" : "up"}. So $g(0)=f(0)${k < 0 ? "-" : "+"}${Math.abs(k)}$.`,
           `$g(0)=${f0}${k < 0 ? "-" : "+"}${Math.abs(k)}=${answer}$.`,
+          `The value of $g(0)$ is ${answer}.`,
         ],
       },
     };
@@ -795,9 +841,11 @@ function radicalCase(r: Random): SatGeometryAdvancedCase {
         answer: f(lb),
         hint: `The hypotenuse squared is the sum of the two leg squares. Square the hypotenuse ${f(hyp)} and the leg ${f(la)}, subtract the smaller square from the larger, and take the square root. Check that the result is positive.`,
         explanation: [
-          `The hypotenuse $c=${f(hyp)}$ and a leg $a=${f(la)}$, so the other leg $b$ satisfies $b^2=c^2-a^2$.`,
+          `The hypotenuse is the longest side, across from the right angle. The legs are the two sides that form the right angle.`,
+          `The Pythagorean theorem says $a^2+b^2=c^2$: the squares of the legs add to the square of the hypotenuse $c$.`,
+          `Here $c=${f(hyp)}$ and one leg $a=${f(la)}$. Subtract to get the other leg's square: $b^2=c^2-a^2$.`,
           `$b^2=${f(hyp)}^2-${f(la)}^2=${Number((hyp * hyp * scale * scale).toFixed(4))}-${Number((la * la * scale * scale).toFixed(4))}=${Number((lb * lb * scale * scale).toFixed(4))}$.`,
-          `$b=${f(lb)}$ centimeters.`,
+          `Take the square root: $b=${f(lb)}$. The other leg is ${cm(lb)} long.`,
         ],
       },
     };
@@ -814,11 +862,13 @@ function radicalCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt: `In right triangle $ABC$, the legs have lengths ${a} and ${b}. The length of the hypotenuse can be written in simplest radical form as $m\\sqrt{n}$, where $m$ and $n$ are positive integers and $n$ has no perfect-square factor other than 1. What is the value of $${coefficient ? "m" : "n"}$?`,
         answer: String(coefficient ? m : n),
-        hint: `Add the squares of the legs ${a} and ${b} to find the square of the hypotenuse. Then pull out the largest perfect square factor to write the square root as $m\\sqrt{n}$.`,
+        hint: `The legs are the two sides that form the right angle. Add the squares of the legs ${a} and ${b} to find the square of the hypotenuse, then simplify its square root.`,
         explanation: [
-          `By the Pythagorean theorem, $c^2=${a}^2+${b}^2=${a * a}+${b * b}=${sumSq}$.`,
-          `$${sumSq}=${m * m}\\cdot ${n}$, where ${m * m} is the largest perfect square factor.`,
-          `$c=\\sqrt{${sumSq}}=${m}\\sqrt{${n}}$, so $m=${m}$ and $n=${n}$.`,
+          `The legs are the two sides that form the right angle. The hypotenuse $c$ is the longest side, across from it.`,
+          `The Pythagorean theorem says leg² + leg² = hypotenuse². So $c^2=${a}^2+${b}^2=${a * a}+${b * b}=${sumSq}$.`,
+          `To simplify $\\sqrt{${sumSq}}$, find the largest perfect square (a number like 4, 9 or 16 that is a whole number squared) that divides it: $${sumSq}=${m * m}\\cdot ${n}$.`,
+          `The square root of ${m * m} is ${m}, so it comes out front: $c=\\sqrt{${sumSq}}=${m}\\sqrt{${n}}$.`,
+          `Simplest radical form means no perfect square is left inside the root, so $m=${m}$ and $n=${n}$. The value of $${coefficient ? "m" : "n"}$ is ${coefficient ? m : n}.`,
         ],
       },
     };
@@ -846,32 +896,36 @@ function specialCase(r: Random): SatGeometryAdvancedCase {
       answer = 45;
       prompt = `In triangle $${A}${B}${C}$, $\\angle ${B}$ is a right angle and $${A}${B}=${B}${C}=${n}$. What is the measure, in degrees, of $\\angle ${A}$?`;
       steps = [
-        `The legs $${A}${B}$ and $${B}${C}$ are equal, so the triangle is isosceles and its base angles at $${A}$ and $${C}$ are equal.`,
-        `The acute angles add to $180-90=90$ degrees, so each is $90\\div 2=45$ degrees.`,
-        `$\\angle ${A}$ measures 45 degrees.`,
+        `The legs are the two sides that form the right angle at $${B}$: $${A}${B}$ and $${B}${C}$. They are equal.`,
+        `A triangle with two equal sides is isosceles, so the angles across from those sides, at $${C}$ and $${A}$, are equal.`,
+        `The three angles add to 180°, and the right angle takes 90°. The other two share $180-90=90$ degrees.`,
+        `Equal shares: $90\\div 2=45$. So $\\angle ${A}$ measures 45 degrees.`,
       ];
     } else if (kind === 1) {
       answer = 30;
       prompt = `In triangle $${A}${B}${C}$, $\\angle ${B}$ is a right angle, $${A}${B}=${n}$ and $${B}${C}=${n}\\sqrt{3}$. What is the measure, in degrees, of $\\angle ${C}$?`;
       steps = [
-        `The legs are in the ratio $1:\\sqrt{3}$, which is the ratio of a 30-60-90 triangle.`,
-        `The shorter leg is opposite the smaller acute angle. $${A}${B}$ is the shorter leg and it is opposite $\\angle ${C}$.`,
-        `$\\angle ${C}$ measures 30 degrees.`,
+        `The legs are the two sides that form the right angle at $${B}$: $${A}${B}=${n}$ and $${B}${C}=${n}\\sqrt{3}$.`,
+        `Their ratio is $1:\\sqrt{3}$. That is the side pattern of a 30-60-90 triangle, a right triangle with angles 30°, 60° and 90°.`,
+        `In any triangle, the shorter side is across from the smaller angle. The shorter leg, $${A}${B}$, is across from $\\angle ${C}$.`,
+        `So $\\angle ${C}$ is the 30° angle. It measures 30 degrees.`,
       ];
     } else if (kind === 2) {
       answer = 60;
       prompt = `In triangle $${A}${B}${C}$, $\\angle ${B}$ is a right angle, $${A}${B}=${n}$ and $${B}${C}=${n}\\sqrt{3}$. What is the measure, in degrees, of $\\angle ${A}$?`;
       steps = [
-        `The legs are in the ratio $1:\\sqrt{3}$, which is the ratio of a 30-60-90 triangle.`,
-        `The longer leg is opposite the larger acute angle. $${B}${C}$ is the longer leg and it is opposite $\\angle ${A}$.`,
-        `$\\angle ${A}$ measures 60 degrees.`,
+        `The legs are the two sides that form the right angle at $${B}$: $${A}${B}=${n}$ and $${B}${C}=${n}\\sqrt{3}$.`,
+        `Their ratio is $1:\\sqrt{3}$. That is the side pattern of a 30-60-90 triangle, a right triangle with angles 30°, 60° and 90°.`,
+        `In any triangle, the longer side is across from the larger angle. The longer leg, $${B}${C}$, is across from $\\angle ${A}$.`,
+        `So $\\angle ${A}$ is the 60° angle. It measures 60 degrees.`,
       ];
     } else {
       answer = 30;
       prompt = `In triangle $${A}${B}${C}$, $\\angle ${B}$ is a right angle, the hypotenuse $${A}${C}=${2 * n}$ and $${B}${C}=${n}$. What is the measure, in degrees, of $\\angle ${A}$?`;
       steps = [
-        `The hypotenuse is twice the leg $${B}${C}$, which is the ratio of a 30-60-90 triangle: the leg opposite the 30° angle is half the hypotenuse.`,
-        `$${B}${C}$ is opposite $\\angle ${A}$.`,
+        `The hypotenuse is the longest side, across from the right angle: $${A}${C}=${2 * n}$. The leg $${B}${C}=${n}$ is exactly half of it.`,
+        `In a 30-60-90 triangle, the leg across from the 30° angle is half the hypotenuse. No other right triangle has a leg exactly half the hypotenuse.`,
+        `$${B}${C}$ is across from $\\angle ${A}$, so $\\angle ${A}$ is the 30° angle.`,
         `$\\angle ${A}$ measures 30 degrees.`,
       ];
     }
@@ -880,7 +934,7 @@ function specialCase(r: Random): SatGeometryAdvancedCase {
       draft: {
         prompt,
         answer: String(answer),
-        hint: `Compare the sides. Equal legs, legs in the ratio $1:\\sqrt{3}$, or a leg half the hypotenuse each identify a special right triangle. In every right triangle the smaller angle sits opposite the shorter side.`,
+        hint: `Compare the given sides, starting with ${n}. Equal legs, legs in the ratio $1:\\sqrt{3}$, or a leg half the hypotenuse each mark a special right triangle. The smaller angle is always across from the shorter side.`,
         explanation: steps,
       },
     };
@@ -895,9 +949,11 @@ function specialCase(r: Random): SatGeometryAdvancedCase {
         answer: String(k),
         hint: `Find one side from the perimeter ${per}. The altitude splits the triangle into two 30-60-90 right triangles, and the altitude is the longer leg.`,
         explanation: [
-          `The three sides are equal, so each side is $${per}\\div 3=${2 * k}$.`,
-          `The altitude bisects the base into two segments of length ${k}, forming a 30-60-90 triangle with hypotenuse ${2 * k} and short leg ${k}.`,
-          `The longer leg is the short leg times $\\sqrt{3}$: $${k}\\sqrt{3}$. So $c=${k}$.`,
+          `An equilateral triangle has three equal sides and three 60° angles. The perimeter is the distance around, so each side is $${per}\\div 3=${2 * k}$.`,
+          `The altitude is the height line from a corner straight down to the opposite side, meeting it at a right angle. It cuts that side in half: two pieces of ${k}.`,
+          `That makes a 30-60-90 triangle: hypotenuse ${2 * k} (a full side), short leg ${k} (half a side), and the altitude as the long leg.`,
+          `In a 30-60-90 triangle the long leg is the short leg times $\\sqrt{3}$. So the altitude is $${k}\\sqrt{3}$.`,
+          `So $c=${k}$.`,
         ],
       },
     };
@@ -914,9 +970,11 @@ function specialCase(r: Random): SatGeometryAdvancedCase {
         answer: String(2 * k),
         hint: `A diagonal of the square passes through the center, so it is a diameter: ${byDiameter ? `here $${2 * k}\\sqrt{2}$` : `twice the radius $${k}\\sqrt{2}$`}. A diagonal splits the square into two 45-45-90 triangles whose legs are the sides.`,
         explanation: [
-          `A diagonal of an inscribed square is a diameter of the circle, so the diagonal is ${byDiameter ? `$${2 * k}\\sqrt{2}$` : `$2\\cdot ${k}\\sqrt{2}=${2 * k}\\sqrt{2}$`}.`,
-          `The diagonal is the hypotenuse of a 45-45-90 triangle whose legs are sides of the square, so the diagonal is the side times $\\sqrt{2}$.`,
-          `Side $=${2 * k}\\sqrt{2}\\div\\sqrt{2}=${2 * k}$ units.`,
+          `Inscribed means the square sits inside the circle with all four corners on it. A diagonal joins opposite corners and passes through the center.`,
+          `A segment through the center from one side of a circle to the other is a diameter, twice the radius. So the diagonal is ${byDiameter ? `$${2 * k}\\sqrt{2}$` : `$2\\cdot ${k}\\sqrt{2}=${2 * k}\\sqrt{2}$`}.`,
+          `The diagonal cuts the square into two 45-45-90 triangles. Two sides of the square are the legs, and the diagonal is the hypotenuse.`,
+          `In a 45-45-90 triangle the hypotenuse is a leg times $\\sqrt{2}$. So divide: side $=${2 * k}\\sqrt{2}\\div\\sqrt{2}=${2 * k}$.`,
+          `The side length of the square is ${2 * k} units.`,
         ],
       },
     };
@@ -929,9 +987,11 @@ function specialCase(r: Random): SatGeometryAdvancedCase {
       answer: String(k),
       hint: `Find a side from the perimeter ${9 * k}. The center of the circle is also the center of the triangle, and joining it to each vertex and dropping a perpendicular to a side makes 30-60-90 triangles.`,
       explanation: [
-        `Each side is $${9 * k}\\div 3=${3 * k}$. The radius runs from the center to a vertex.`,
+        `An equilateral triangle has three equal sides and three 60° angles. Each side is $${9 * k}\\div 3=${3 * k}$.`,
+        `Inscribed means all three corners lie on the circle. The radius runs from the center to a corner.`,
         `Join the center to a vertex and drop a perpendicular from the center to a side. The perpendicular bisects the side, and the radius to the vertex bisects the 60° vertex angle, giving a 30-60-90 triangle. Its longer leg is half a side, ${(3 * k) / 2}.`,
-        `The longer leg is the shorter leg times $\\sqrt{3}$, so the shorter leg is $\\dfrac{${(3 * k) / 2}}{\\sqrt{3}}=\\dfrac{${k}\\sqrt{3}}{2}$. The radius is the hypotenuse, twice the shorter leg: $${k}\\sqrt{3}$, so $c=${k}$.`,
+        `The longer leg is the shorter leg times $\\sqrt{3}$, so the shorter leg is $\\dfrac{${(3 * k) / 2}}{\\sqrt{3}}=\\dfrac{${k}\\sqrt{3}}{2}$.`,
+        `The radius is the hypotenuse, twice the shorter leg: $${k}\\sqrt{3}$. So $c=${k}$.`,
       ],
     },
   };
