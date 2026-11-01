@@ -123,15 +123,13 @@
   .practice-surface:has(> .feedback) > .answer-dock {
     border-left-color: transparent;
   }
-  /* The sheet is as tall as what it says and centred in the answer column,
-     where Check was, instead of spreading its result and Next to the
-     column's two ends. */
+  /* The sheet is as tall as what it says, anchored at the column's foot
+     where Next has always been, instead of spreading its result and Next
+     to the column's two ends. Growing (See why) moves its top edge only. */
   .practice-surface > .feedback {
-    top: 0;
-    height: fit-content;
+    top: auto;
     min-height: 0;
     max-height: 100%;
-    margin-block: auto;
     overflow: hidden;
   }
   /* The column is narrower than a stacked prompt line; one step smaller reads
