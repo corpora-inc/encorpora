@@ -95,6 +95,13 @@
   color: var(--color-on-danger);
   background: var(--color-danger);
 }
+/* Edit name: outlined, the same size and type as its neighbours. */
+.family-actions .secondary {
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-primary);
+  font-size: inherit;
+}
 .family-secondary,
 .family-access {
   font-size: 13px;
