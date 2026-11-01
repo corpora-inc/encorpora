@@ -251,7 +251,7 @@ export const extendedLessons: Lesson[] = [
         stage: "intuition",
         title: "Count how many small groups fit",
         paragraphs: [
-          "A fraction is a number of equal parts of 1 whole. The bottom number, the denominator, says how many equal parts make 1 whole. The top number, the numerator, says how many parts you have. So $\\tfrac{3}{4}$ is 3 parts when the whole is cut into 4.",
+          "A fraction is a number of equal parts of 1 whole. The denominator, the bottom number, says how many equal parts make 1 whole. The numerator, the top number, says how many parts you have. So $\\tfrac{3}{4}$ is 3 parts when the whole is cut into 4.",
           "Cut each fourth in half, and the whole is now 8 equal parts called eighths. Each fourth becomes 2 eighths, so three fourths is the same as six eighths: $\\tfrac{3}{4} = \\tfrac{6}{8}$.",
           "So six groups of one eighth fit into three fourths. The answer, 6, is bigger than $\\tfrac{3}{4}$. That happens because each group is smaller than 1 whole.",
         ],
@@ -259,7 +259,7 @@ export const extendedLessons: Lesson[] = [
       {
         title: "Measure in smaller groups",
         paragraphs: [
-          "Division can ask how many groups of a given size fit into an amount. For example, 12 ÷ 3 asks how many 3s fit into 12. In the same way, $\\tfrac{3}{4} \\div \\tfrac{1}{8}$ asks how many pieces of size $\\tfrac{1}{8}$ fit into $\\tfrac{3}{4}$. Since three fourths is six eighths, the answer is 6.",
+          "Division is the operation that splits an amount into groups of the same size. It can ask how many groups of a given size fit into an amount. For example, 12 ÷ 3 asks how many 3s fit into 12. In the same way, $\\tfrac{3}{4} \\div \\tfrac{1}{8}$ asks how many pieces of size $\\tfrac{1}{8}$ fit into $\\tfrac{3}{4}$. Since three fourths is six eighths, the answer is 6.",
           "The answer of a division is called the quotient. The number being divided is the dividend, and the number you divide by is the divisor. When the divisor is less than 1, the quotient is bigger than the dividend. The question counts groups, not the amount in one group.",
         ],
       },
@@ -316,7 +316,7 @@ export const extendedLessons: Lesson[] = [
         title: "Keep the mix the same",
         paragraphs: [
           "A paint mix uses 2 cups of blue paint for every 3 cups of white paint. Make the same mix twice, and you use 2 × 2 = 4 cups of blue and 2 × 3 = 6 cups of white. The color stays exactly the same.",
-          "So 4 cups to 6 cups is a bigger batch of the same mix. Both amounts grew by the same multiplier, 2.",
+          "So 4 cups to 6 cups is a bigger batch of the same mix. A multiplier is a number you multiply by. Both amounts grew by the same multiplier, 2.",
         ],
       },
       {
@@ -653,7 +653,7 @@ export const extendedLessons: Lesson[] = [
       {
         title: "Interpret the probability",
         paragraphs: [
-          "A probability is always from 0 to 1. A probability of 0 means the event is impossible, such as drawing green from this bag. A probability of 1 means it is certain, such as drawing a counter that is red or blue.",
+          "A probability is always from 0 to 1. A probability of 0 means the event is impossible, which means it cannot happen, such as drawing green from this bag. A probability of 1 means it is certain, which means sure to happen, such as drawing a counter that is red or blue.",
           "A probability of $\\tfrac{3}{8}$ does not promise exactly 3 reds in every 8 draws. It describes the chance on each single draw, under the stated conditions.",
         ],
       },
@@ -774,7 +774,7 @@ export const extendedLessons: Lesson[] = [
         title: "The input belongs everywhere",
         paragraphs: [
           "The notation $f(-2)$ asks for the output of $f$ when the input is negative two. Replace every $x$ in the rule with $(-2)$, in parentheses. Putting a number in place of a letter is called substituting.",
-          "The parentheses keep the minus sign attached to the number. This matters most with powers. In $x^2$ ($x$ squared, $x$ times $x$), putting in $(-2)$ gives $(-2)^2 = (-2) \\times (-2) = 4$. Without parentheses, $-2^2$ would mean $-(2 \\times 2) = -4$.",
+          "The parentheses keep the minus sign attached to the number. This matters most with powers. In $x^2$, read “$x$ squared”, the input is multiplied by itself. Putting in $(-2)$ gives $(-2)^2 = (-2) \\times (-2) = 4$. Without parentheses, $-2^2$ would mean $-(2 \\times 2) = -4$.",
         ],
       },
       {

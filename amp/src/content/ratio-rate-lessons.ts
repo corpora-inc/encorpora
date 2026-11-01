@@ -190,7 +190,7 @@ export const ratioRateLessons: Lesson[] = [
       {
         title: "Every column is a multiple of the simplest ratio",
         paragraphs: [
-          "The simplest ratio uses the smallest whole numbers that keep the same relationship. To find it, divide both numbers in a column by the largest number that divides both of them evenly. That number is called their greatest common factor. 4 and 6 can both be divided evenly by 2: 4 ÷ 2 = 2 and 6 ÷ 2 = 3. So the simplest ratio is 2 : 3.",
+          "The simplest ratio uses the smallest whole numbers (the numbers 0, 1, 2, 3 and so on) that keep the same relationship. To find it, divide both numbers in a column by the largest number that divides both of them evenly. That number is called their greatest common factor. 4 and 6 can both be divided evenly by 2: 4 ÷ 2 = 2 and 6 ÷ 2 = 3. So the simplest ratio is 2 : 3.",
           "Every column is the simplest ratio times one multiplier. The figure shows 2 : 3 multiplied by 2, by 5 and by 7. That gives the columns 4 : 6, 10 : 15 and 14 : 21.",
           "To fill a missing cell, find the multiplier from the number you know in that column. Then use the same multiplier on the other row. If flour is 14, then 14 = 7 × 2, so the multiplier is 7. Sugar is 7 × 3 = 21.",
           "Adding the same number to both rows usually changes the ratio. Adding 12 gives 2 + 12 = 14 and 3 + 12 = 15. The ratio 14 : 15 is a different mixture, with almost as much flour as sugar.",
@@ -203,7 +203,7 @@ export const ratioRateLessons: Lesson[] = [
         stage: "formal",
         title: "Equivalent ratio columns",
         paragraphs: [
-          "Take a pair of amounts greater than 0 in a ratio table. Multiply or divide both by the same number, not 0. The result is an equivalent pair, with the same relationship. That number is called the scale factor. In every column, the bottom amount divided by the top amount gives the same quotient (the answer to a division).",
+          "Take a pair of amounts greater than 0 in a ratio table. Multiply or divide both by the same number, not 0. The result is an equivalent pair, with the same relationship. That number is called the scale factor. In every column, the bottom amount divided by the top amount gives the same quotient: the answer when you divide.",
         ],
       },
     ],
@@ -244,7 +244,7 @@ export const ratioRateLessons: Lesson[] = [
         title: "Two scales tell one story",
         paragraphs: [
           "A train travels at a steady speed. It goes 45 miles in 3 hours. Draw one line for miles on top and one line for hours below it. The mark for 45 miles sits right above the mark for 3 hours, because they happen together.",
-          "At a steady speed, twice the time gives twice the miles. A third of the time gives a third of the miles. So both lines always change by the same multiplier.",
+          "At a steady speed, twice the time gives twice the miles. A third of the time gives a third of the miles. A multiplier is a number you multiply by. So both lines always change by the same multiplier.",
         ],
       },
       {
@@ -319,13 +319,13 @@ export const ratioRateLessons: Lesson[] = [
         paragraphs: [
           "A fraction is a number of equal parts of 1 whole. In $\\tfrac{3}{4}$, the bottom number 4 says the whole is split into 4 equal parts. The top number 3 says how many of those parts you have.",
           "Suppose $\\tfrac{3}{4}$ of a batch needs 6 cups of flour. That is 3 equal parts. So $\\tfrac{1}{4}$ of the batch, 1 part, needs 6 ÷ 3 = 2 cups. A whole batch is 4 parts, so it needs 4 × 2 = 8 cups.",
-          "Those two steps divide 6 by $\\tfrac{3}{4}$. A shortcut does the same work: to divide by a fraction (not 0), multiply by its reciprocal. The reciprocal is the fraction with its top and bottom numbers swapped. The reciprocal of $\\tfrac{3}{4}$ is $\\tfrac{4}{3}$, and $6 \\times \\tfrac{4}{3} = 8$ cups.",
+          "Those two steps divide 6 by $\\tfrac{3}{4}$. A shortcut does the same work: to divide by a fraction (not 0), multiply by its reciprocal, the fraction turned upside down. The reciprocal of $\\tfrac{3}{4}$ is $\\tfrac{4}{3}$, and $6 \\times \\tfrac{4}{3} = 8$ cups.",
         ],
       },
       {
         title: "A unit rate from fractions",
         paragraphs: [
-          "This lesson uses fraction multiplication. A rate compares two amounts with different units, such as miles and hours. A unit rate is the amount for exactly 1 unit, even when the given amounts are fractions.",
+          "This lesson uses fraction multiplication. A rate is a comparison of two amounts with different units, such as miles and hours. A unit rate is the amount for exactly 1 unit, even when the given amounts are fractions.",
           "For example, a walker goes $\\tfrac{1}{2}$ mile in $\\tfrac{1}{4}$ hour. The unit rate is the distance walked in 1 hour. As with whole numbers, divide the amount by the number of units: $\\tfrac{1}{2} \\div \\tfrac{1}{4}$.",
           "The top number of a fraction is called the numerator, and the bottom number is called the denominator. The reciprocal swaps them. So the reciprocal of $\\tfrac{1}{4}$ is $\\tfrac{4}{1}$, which is 4. The next section shows why dividing by $\\tfrac{1}{4}$ gives the same result as multiplying by 4.",
         ],
@@ -507,7 +507,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
     noLink: ["changes", "factor"],
     goal: "Find the missing number in a table of equivalent ratios.",
     intuition:
-      "A ratio compares two amounts, such as 2 cups of flour for every 3 cups of sugar. Equivalent ratios keep that comparison at a bigger or smaller size. Each column of the table is the simplest ratio (smallest whole numbers) times one multiplier.",
+      "A ratio compares two amounts, such as 2 cups of flour for every 3 cups of sugar. Equivalent ratios keep that comparison at a bigger or smaller size. Each column of the table is the simplest ratio times one multiplier. The simplest ratio uses the smallest whole numbers (the numbers 0, 1, 2, 3 and so on) that keep the same comparison.",
     terms: ["equivalent-ratios", "simplest-ratio"],
     method: [
       "Find the simplest ratio. Divide both numbers in a full column by the largest number that divides both evenly.",
@@ -530,7 +530,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
       "To find a missing top value, multiply the unit rate by the bottom value. To find a missing bottom value, divide the top value by the unit rate.",
     ],
     watch:
-      "Change both lines by the same multiplier. Never add the same amount to both.",
+      "Change both lines by the same multiplier, the number you multiply by. Never add the same amount to both.",
   },
   "fraction-unit-rate": {
     senses: { part: "part", unit: "unit", units: "unit" },

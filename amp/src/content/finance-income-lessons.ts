@@ -33,7 +33,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     noLink: ["jumps", "whole"],
     goal: "Use a three-bracket tax table to find the tax owed or the tax on part of an income.",
     intuition:
-      "An income tax is money paid to the government from what you earn. A bracket table cuts income into slices called brackets. Each slice has its own rate, a percent taken from only the dollars in that slice. Earning more puts only the new dollars at a higher rate.",
+      "An income tax is a tax on what you earn: money paid to the government. A bracket table cuts income into slices called brackets. Each slice has its own rate, a percent taken from only the dollars in that slice. Earning more puts only the new dollars at a higher rate.",
     terms: [
       "tax-bracket",
       "taxable-income",
@@ -45,7 +45,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     method: [
       "If a deduction (an amount you may subtract) is given, subtract it from earned income. What is left is the taxable income.",
       "Fill the rows in order. Put as much income as fits into the first row, then into the next row, then the rest. Skip rows the income does not reach.",
-      "Multiply each slice by its row's rate, written as a decimal (12% is 0.12). Then add the results.",
+      "Multiply each slice by its row's rate, written as a decimal (a number with a decimal point, such as 0.12 for 12%). Then add the results.",
     ],
     watch:
       "Do not tax all of the income at the top row's rate. Only the part of income inside a row is taxed at that row's rate.",
@@ -70,7 +70,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "For a percent tax, write the percent as a decimal and multiply: 6% of 500 dollars is 0.06 × 500 = 30 dollars.",
+      "For a percent tax, write the percent as a decimal (a number with a decimal point, such as 0.12) and multiply: 6% of 500 dollars is 0.06 × 500 = 30 dollars.",
       "Net pay is the pay left after taxes: subtract every tax from gross pay, the pay before taxes. For a sales total, tax only the taxable items, then add all prices and the tax.",
       "For property tax, subtract any exemption from the value. Divide by 100 to count the hundreds, then multiply by the rate for each 100.",
     ],
@@ -98,7 +98,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Share of the budget = category amount ÷ total. Multiply by 100 to write it as a percent.",
-      "Dollar amount of a category = its percent as a decimal × the total.",
+      "Write the percent as a decimal (a number with a decimal point, such as 0.12). Dollar amount of a category = that decimal × the total.",
       "To combine categories, add their amounts or percents first. A missing percent is 100% minus the others.",
     ],
     watch:
@@ -280,7 +280,7 @@ export const financeIncomeLessons: Lesson[] = [
     noLink: ["edge", "jumps"],
     title: "Income tax from a bracket table",
     summary:
-      "An income tax is money paid to the government from what you earn. A tax table cuts income into slices called brackets. Each slice has its own rate, a percent taken from only the dollars in that slice. To find the tax, work out the tax on each slice, then add them.",
+      "An income tax is a tax on what you earn: money paid to the government. A tax table cuts income into slices called brackets. Each slice has its own rate, a percent taken from only the dollars in that slice. To find the tax, work out the tax on each slice, then add them.",
     templateIds: ["tax-bracket-owed"],
     objectives: [
       "Split an income into the slices, or brackets, of a tax table.",
@@ -341,7 +341,7 @@ export const financeIncomeLessons: Lesson[] = [
     noLink: ["rule"],
     title: "Payroll, sales and property tax amounts",
     summary:
-      "A tax is money paid to the government. Percent means per hundred, so an 8% tax takes 8 dollars from every 100 dollars. A payroll tax comes out of a paycheck. A sales tax is added to a price. A property tax, on land and buildings, is often a set number of dollars for each 100 dollars of value.",
+      "A tax is money paid to the government. Percent means per hundred, so an 8% tax takes 8 dollars from every 100 dollars. A payroll tax is a tax taken out of a paycheck. A sales tax is added to a price. A property tax, on land and buildings, is often a set number of dollars for each 100 dollars of value.",
     templateIds: ["payroll-property-tax"],
     objectives: [
       "Find a percent tax, the pay left after two taxes are taken out, and a sales total that includes an untaxed item.",
@@ -375,7 +375,7 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "method",
         title: "Other cases",
         paragraphs: [
-          "Net pay with two taxes withheld: subtract both taxes from gross pay. Or multiply gross pay by 1 minus the two percents as decimals. With 8% and 12% withheld from 400 dollars, the taxes add to 20%, so net pay is $400\\times(1-0.20)=320$ dollars.",
+          "Net pay with two taxes withheld: subtract both taxes from gross pay. Or multiply gross pay by 1 minus the two percents, each written as a decimal (a number with a decimal point, such as 0.12). With 8% and 12% withheld from 400 dollars, the taxes add to 20%, so net pay is $400\\times(1-0.20)=320$ dollars.",
           "Sales tax on one taxable item: tax only that item's price. Then add every price and the tax.",
           "An exemption is an amount subtracted from a property's value before the tax is figured. Subtract it first, then count the hundreds.",
         ],
@@ -418,7 +418,7 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "intuition",
         title: "Parts of one whole",
         paragraphs: [
-          "A budget plans how income, the money that comes in, is used. An expense is money spent. Fixed expenses stay the same each month, such as rent. Variable expenses can change, such as food or fun. Savings is money set aside.",
+          "A budget plans how income, the money that comes in, is used. An expense is the money spent on something. Fixed expenses stay the same each month, such as rent. Variable expenses can change, such as food or fun. Savings is money set aside.",
           "A category's share is its part divided by the whole budget. Writing it per hundred makes it a percent. For example, 80 dollars of an 800-dollar budget is 80 ÷ 800 = 0.10, which is 10%.",
           "In a complete budget every dollar is planned. So all the shares add to 100%.",
         ],
@@ -440,7 +440,7 @@ export const financeIncomeLessons: Lesson[] = [
         stage: "method",
         title: "Groups, missing shares and deficits",
         paragraphs: [
-          "To find a group's share, such as all fixed expenses, add their amounts first. Then divide by the total. To find a dollar amount from a percent, multiply the total by the percent as a decimal. A missing share is 100% minus the others.",
+          "To find a group's share, such as all fixed expenses, add their amounts first. Then divide by the total. To find a dollar amount from a percent, multiply the total by the percent written as a decimal (a number with a decimal point, such as 0.12). A missing share is 100% minus the others.",
           "A deficit means spending more than comes in. Then expenses are more than 100% of income. Expenses of 440 dollars on an income of 400 dollars are $440\\div400=1.10$, which is 110% of income.",
         ],
       },

@@ -13,7 +13,7 @@ export const percentChainMethods: Record<string, ProblemMethod> = {
     },
     goal: "Work with two percent changes in a row: undo both to find the start, combine them into one, or apply them in order.",
     intuition:
-      "Percent means per hundred. A percent change multiplies an amount by one number, called its factor. A 20% decrease keeps 80%, so its factor is 0.8. A 25% increase gives 125%, so its factor is 1.25. The second change is taken of the amount after the first, so multiply the factors. Do not add the percents.",
+      "Percent means per hundred. A percent change multiplies an amount by one number, called the factor. A 20% decrease keeps 80%, so its factor is 0.8. A 25% increase gives 125%, so its factor is 1.25. The second change is taken of the amount after the first, so multiply the factors. Do not add the percents.",
     terms: [
       [
         "factor-number",
@@ -46,7 +46,7 @@ export const percentChainLessons = [
       id: "percent-chain",
       title: "Chain two percent changes",
       summary:
-        "Percent means per hundred. A percent change multiplies an amount by one number, called its factor: a 20% decrease multiplies by 0.8, because 80% is left. When two changes happen in a row, the second one acts on the new amount. So multiply by both factors in order. To go backward, divide by them in reverse order.",
+        "Percent means per hundred. A percent change is a change by some percent of an amount. It multiplies the amount by one number, called the factor: a 20% decrease multiplies by 0.8, because 80% is left. When two changes happen in a row, the second one acts on the new amount. So multiply by both factors in order. To go backward, divide by them in reverse order.",
       templateIds: ["percent-chain"],
       objectives: [
         "Write each percent change as a factor, and apply the factors in order, each to the amount it changes.",
@@ -55,14 +55,14 @@ export const percentChainLessons = [
       openingTitle: "The second percent is taken of a new amount",
       opening: [
         "A 100-dollar coat goes on sale for 20% off. 20% of 100 is 20, so the sale price is 80 dollars. Then the price goes up by 20%. This time the 20% is taken of 80, not 100. 20% of 80 is 16, so the price becomes 96 dollars, not 100.",
-        "A factor is the number an amount is multiplied by. A decrease of 20% leaves 80% of the amount, so it multiplies by 0.8. An increase of 25% gives 125% of the amount, so it multiplies by 1.25. In general the factor is 1 plus the percent as a decimal for an increase, or 1 minus it for a decrease.",
+        "A factor is the number an amount is multiplied by. A decrease of 20% leaves 80% of the amount, so it multiplies by 0.8. An increase of 25% gives 125% of the amount, so it multiplies by 1.25. In general the factor is 1 plus the percent written as a decimal (a number with a decimal point, such as 0.25 for 25%) for an increase, or 1 minus it for a decrease.",
         "So two changes in a row are two multiplications in order. The 20% cut and then the 20% rise multiply by $0.8\\times1.2=0.96$. That is 96% of the start, which is 4% below it. The percents do not simply add to 0.",
       ],
       example: {
         prompt:
           "A coat's price was reduced by 20% for a sale. Later the sale price was increased by 50%, and the coat now costs 120 dollars. What was the price before the sale?",
         steps: [
-          "Undo the last change first. An increase of 50% multiplies the sale price by $1.5$. So $120=1.5\\times\\text{sale price}$. Divide both sides by $1.5$ to undo it: the sale price is $120\\div1.5=80$ dollars.",
+          "Undo the last change first. An increase of 50% multiplies the sale price by $1.5$. So $120=1.5\\times\\text{sale price}$. Divide both sides (the parts on each side of the equal sign) by $1.5$ to undo it: the sale price is $120\\div1.5=80$ dollars.",
           "Now undo the first change. A reduction of 20% leaves 80%, so it multiplies the original price by $0.8$. So $80=0.8\\times\\text{original price}$, and the original price is $80\\div0.8=100$ dollars.",
           "Check by going forward: $100\\times0.8=80$, and $80\\times1.5=120$, the price given.",
         ],
@@ -77,7 +77,7 @@ export const percentChainLessons = [
       formalTitle: "Why factors multiply",
       formal: [
         "A start amount $A$ changed by $p\\%$ becomes $A(1\\pm p/100)$. The sign $\\pm$ means plus for an increase and minus for a decrease. A second change of $q\\%$ is taken of that new amount. So the result is $A(1\\pm p/100)(1\\pm q/100)$.",
-        "When each decrease is less than 100%, each factor is greater than 0. So dividing by it is allowed, and it undoes the change exactly. Swapping the order of the two factors does not change their product. But the order does change the amount in between.",
+        "When each decrease is less than 100%, each factor is greater than 0. So dividing by it is allowed, and it undoes the change exactly. Swapping the order of the two factors does not change their product, the result of multiplying. But the order does change the amount in between.",
       ],
       pitfalls: [
         "Do not add the percents. Multiply the factors.",

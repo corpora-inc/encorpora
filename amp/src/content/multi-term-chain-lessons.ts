@@ -26,11 +26,11 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
     },
     goal: "Write a fraction as a decimal, or a decimal as a fraction, then add, subtract or multiply; read decimal weights from a table.",
     intuition:
-      "A fraction and a decimal can name the same number: $\\frac{2}{5}$ and $0.4$ are equal. When a problem mixes them, write every number the same way first. To rename a fraction as a decimal, divide its top number by its bottom number. Multiply before you add or subtract.",
+      "A decimal is a number written with a decimal point, such as 0.4. A fraction and a decimal can name the same number: $\\frac{2}{5}$ and $0.4$ are equal. When a problem mixes them, write every number the same way first. To rename means to write a number another way. To rename a fraction as a decimal, divide its top number by its bottom number. Multiply before you add or subtract.",
     terms: ["rename", "mixed-number"],
     method: [
       "Choose one form. Decimals are easiest when the bottom numbers are 2, 4, 5, 10, 20 or 25.",
-      "Rename each fraction by dividing its top number by its bottom number. A mixed number such as $1\\frac{1}{4}$ means $1+\\frac{1}{4}$, which is $1.25$.",
+      "Rename each fraction by dividing its top number by its bottom number. A mixed number is a whole number with a fraction, such as $1\\frac{1}{4}$, which means $1+\\frac{1}{4} = 1.25$.",
       "Multiply before you add or subtract. Line up the decimal points to add or subtract.",
       "For a table, add the weights that go together first, then subtract. For a missing weight, subtract the known weights from the total.",
     ],
@@ -68,7 +68,7 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
     noLink: ["net"],
     goal: "Add five to seven gains and losses from a table to find the net change, or the count after the changes.",
     intuition:
-      "A gain moves a count up, and a loss moves it down. A loss of 8 is written $-8$, a negative number (below 0). The net change is the total of all the changes: how far the count ends up from where it started. You can add in any order, so add the gains together and the losses together.",
+      "A gain moves a count up, and a loss moves it down. A negative number is a number below 0, such as $-8$, the way we write a loss of 8. The net change is the total of all the changes: how far the count ends up from where it started. You can add in any order, so add the gains together and the losses together.",
     terms: [
       [
         "sum",
@@ -96,7 +96,7 @@ export const multiTermChainPrinciples: Record<string, string> = {
   "dollar-rate-scale":
     "If the charge is proportional to the hours, charge $=r\\times$ hours with unit rate $r=\\frac{\\text{charge}}{\\text{hours}}$, the same for every column of the table. The hours for a charge are $\\frac{\\text{charge}}{r}$.",
   "signed-changes-sum":
-    "Integers are whole numbers and their negatives. When you add integers, the order and the grouping do not change the total. So the sum of all the changes equals the sum of the gains plus the sum of the losses. The final count is the start plus that net change.",
+    "Integers are the whole numbers and their negatives. When you add integers, the order and the grouping do not change the total. So the sum of all the changes equals the sum of the gains plus the sum of the losses. The final count is the start plus that net change.",
 };
 
 export const multiTermChainLessons = [
@@ -159,8 +159,8 @@ export const multiTermChainLessons = [
       ],
       openingTitle: "One name for every number",
       opening: [
-        "A fraction is a number of equal parts of 1 whole. The bottom number, the denominator, says how many equal parts make 1. The top number, the numerator, says how many parts you have. So $\\frac{2}{5}$ is 2 of 5 equal parts.",
-        "A fraction also means division: $\\frac{2}{5}$ is $2\\div5=0.4$. So $\\frac{2}{5}$ and $0.4$ are two names for the same number. To rename a fraction as a decimal, divide its top number by its bottom number. Decimals come out quickest when the bottom number is 2, 4, 5, 10, 20 or 25.",
+        "A fraction is a number of equal parts of 1 whole. The denominator, the bottom number, says how many equal parts make 1. The numerator, the top number, says how many parts you have. So $\\frac{2}{5}$ is 2 of 5 equal parts.",
+        "A fraction also means division: $\\frac{2}{5}$ is $2\\div5=0.4$. So $\\frac{2}{5}$ and $0.4$ are two names for the same number. To rename means to write a number another way without changing its value. To rename a fraction as a decimal, divide its top number by its bottom number. Decimals come out quickest when the bottom number is 2, 4, 5, 10, 20 or 25.",
         "A mixed number is a whole number with a fraction, such as $1\\frac{1}{4}$. It means $1+\\frac{1}{4}$, which is $1+0.25=1.25$.",
         "If a problem mixes fractions and decimals, pick one form for every number first. In an expression (a group of numbers joined by operations), always multiply before you add or subtract.",
       ],
@@ -179,7 +179,7 @@ export const multiTermChainLessons = [
       ],
       formalTitle: "Why renaming does not change the value",
       formal: [
-        "A power of ten is 10, 100, 1000 and so on, written $10^k$ for $k$ tens multiplied together. If the bottom number $q$ of a fraction $\\frac{p}{q}$ divides $10^k$ evenly, then $\\frac{p}{q}=\\frac{p\\cdot 10^k/q}{10^k}$, a decimal with $k$ places. Here $\\cdot$ means times. For example, $\\frac{2}{5}=\\frac{4}{10}=0.4$.",
+        "A power of ten is a number like 10, 100 or 1000, written $10^k$ for $k$ tens multiplied together. If the bottom number $q$ of a fraction $\\frac{p}{q}$ divides $10^k$ evenly, then $\\frac{p}{q}=\\frac{p\\cdot 10^k/q}{10^k}$, a decimal with $k$ places. Here $\\cdot$ means times. For example, $\\frac{2}{5}=\\frac{4}{10}=0.4$.",
         "The order of operations makes every expression mean just one thing: multiply before you add or subtract. A difference is negative, below 0, when the amount taken away is larger.",
       ],
       pitfalls: [
@@ -245,7 +245,7 @@ export const multiTermChainLessons = [
       id: "signed-changes-sum",
       title: "Add many gains and losses",
       summary:
-        "A gain moves a count up and a loss moves it down. We write a gain of 9 as $+9$ and a loss of 4 as $-4$, a negative number. The net change is the total of all the changes. It tells how far the count ends up from where it started. Add it to the start to get the final count.",
+        "A gain moves a count up and a loss moves it down. A negative number is a number below 0, written with a minus sign. We write a gain of 9 as $+9$ and a loss of 4 as $-4$. The net change is the total of all the changes. It tells how far the count ends up from where it started. Add it to the start to get the final count.",
       templateIds: ["signed-changes-sum"],
       objectives: [
         "Add a list of five to seven positive and negative changes.",
@@ -274,7 +274,7 @@ export const multiTermChainLessons = [
       ],
       formalTitle: "Why the order does not matter",
       formal: [
-        "Integers are whole numbers and their negatives. When you add integers, you may change the order (the commutative property). You may also change the grouping (the associative property). The sum stays the same either way. Putting the positive numbers in one group and the negative numbers in another is one such grouping.",
+        "Integers are the whole numbers and their negatives. When you add integers, you may change the order: this is called the commutative property. You may also change the grouping: this is called the associative property. The sum stays the same either way. Putting the positive numbers in one group and the negative numbers in another is one such grouping.",
       ],
       pitfalls: [
         "Include every change in the list.",

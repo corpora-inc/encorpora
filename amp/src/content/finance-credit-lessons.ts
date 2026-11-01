@@ -12,7 +12,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     noLink: ["whole"],
     goal: "Compare a simple-interest account with a compound-interest account over several years, in exact cents.",
     intuition:
-      "Interest is money a bank pays you for keeping your money there. The principal is the money you first put in. Simple interest is figured on the principal only, so the same amount is added every year. Compound interest is figured on the whole current balance, including interest already earned, so each year adds more than the last.",
+      "Interest is the money a bank pays you for keeping your money there. The principal is the money you first put in. Simple interest is figured on the principal only, so the same amount is added every year. Compound interest is figured on the balance, the amount now in the account, including interest already earned. So each year adds more than the last.",
     terms: ["principal", "simple-interest", "compound-interest"],
     method: [
       "Simple interest: find one year's interest, the rate times the principal. Multiply it by the number of years and add the principal.",
@@ -26,7 +26,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     senses: { difference: "difference-subtract", "more than": "more-than" },
     goal: "From a loan's equal payment and length, find the total repaid and the finance charge, or compare loans.",
     intuition:
-      "A loan is money you borrow and pay back later. The principal is the amount borrowed. With equal monthly payments, every month adds the same payment to the total you have repaid. Whatever you pay beyond the principal is called the finance charge: the price of borrowing.",
+      "A loan is an amount of money you borrow and pay back later. The principal is the amount borrowed. With equal monthly payments, every month adds the same payment to the total you have repaid. Whatever you pay beyond the principal is called the finance charge: the price of borrowing.",
     terms: [
       "principal",
       ["loan", "The term is how many months or years the loan lasts."],
@@ -44,7 +44,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     senses: { change: "change" },
     goal: "Choose the cheaper of two loan offers by total paid, counting any upfront fee, and say by how much.",
     intuition:
-      "A loan is money you borrow and pay back in monthly payments. It has two prices: the payment each month and the total you pay altogether. They can disagree. Spreading a loan over more months lowers each payment but adds more payments. An upfront fee is a charge paid once at the start.",
+      "A loan is an amount of money you borrow and pay back in monthly payments. It has two prices: the payment each month and the total you pay altogether. They can disagree. Spreading a loan over more months lowers each payment but adds more payments. An upfront fee is a charge paid once at the start.",
     terms: [
       [
         "loan",
@@ -64,7 +64,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     senses: { balance: "balance-account" },
     goal: "From a card's balance, APR and payments, find the monthly interest and the balance over a few months, to the cent.",
     intuition:
-      "A credit card lets you buy now and pay later. The balance is the amount you owe. APR, short for annual percentage rate, is a yearly interest rate. Each month the card charges one twelfth of it on the balance. That interest is added to what you owe, so next month's interest is figured on a bigger balance.",
+      "A credit card lets you buy now and pay later. The balance is the amount you owe. APR is short for annual percentage rate. It is a yearly interest rate. Each month the card charges one twelfth of it on the balance. That interest is added to what you owe, so next month's interest is figured on a bigger balance.",
     terms: [
       "apr",
       "balance-account",
@@ -91,7 +91,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     noLink: ["leaves", "whole"],
     goal: "Turn a credit choice into numbers: change the rate, find interest on the unpaid part, compare cards, and count fees.",
     intuition:
-      "Credit is borrowed money: the card company pays now, and you pay it back later. It costs interest on any part you do not repay in time. A debit card spends money you already have, so it costs no interest. APR is a yearly rate, and the monthly rate is APR ÷ 12.",
+      "Credit is borrowed money: the card company pays now, and you pay it back later. It costs interest on any part you do not repay in time. A debit card is a card that spends money you already have, so it costs no interest. The balance is the amount you owe on a credit card. APR is a yearly rate, and the monthly rate is APR ÷ 12.",
     terms: [
       "debit-card",
       "minimum-payment",
@@ -139,7 +139,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     },
     goal: "From two year-end balance tables, tell simple from compound interest, extend the simple account, or find one year's interest.",
     intuition:
-      "Interest is money an account pays you, and the balance is how much the account holds. Simple interest adds the same amount every year, so the balances rise by equal steps. Compound interest adds more each year, because it pays interest on earlier interest too. So its steps grow.",
+      "Interest is the money an account pays you, and the balance is how much the account holds. Simple interest adds the same amount every year, so the balances rise by equal steps. Compound interest adds more each year, because it pays interest on earlier interest too. So its steps grow.",
     terms: [
       [
         "interest",
@@ -168,7 +168,7 @@ export const financeCreditPrinciples: Record<string, string> = {
   "credit-cost-concepts":
     "For a monthly rate $i$, the APR is $12i$. Interest on an unpaid amount $U$ for one month is $iU$. Interest, purchases and fees raise a balance, and payments lower it.",
   "savings-plan-growth":
-    "With starting amount $S$ and a deposit of $d$ each month, the balance after $n$ deposits is $S+dn$. It grows by $d$ each month from the starting value $S$. When $d>0$ and the goal $G$ is more than $S$, it first reaches $G$ after $(G-S)/d$ deposits, rounded up to a whole number.",
+    "With starting amount $S$ and a deposit of $d$ each month, the balance after $n$ deposits is $S+dn$. It grows by $d$ each month from the starting value $S$. When $d>0$ and the goal $G$ is more than $S$, it first reaches $G$ after $(G-S)/d$ deposits, rounded up if it is not an exact count.",
   "interest-table-type":
     "Simple interest rises by the same amount $Pr$ between neighbouring year-end balances. Compound interest rises by $P(1+r)^{t-1}r$ in year $t$, before rounding, which grows each year when $r>0$.",
 };
@@ -218,7 +218,7 @@ export const financeCreditLessons: Lesson[] = [
     ],
     title: "Simple and compound interest side by side",
     summary:
-      "Interest is money a bank pays you for keeping your money there. The principal is the money you first put in. Simple interest pays on the principal only, so it adds the same amount every year. Compound interest pays on the whole balance, including interest already earned. So it adds a little more each year.",
+      "Interest is the money a bank pays you for keeping your money there. The principal is the money you first put in. Simple interest pays on the principal only, so it adds the same amount every year. Compound interest pays on the whole balance, the amount now in the account, including interest already earned. So it adds a little more each year.",
     templateIds: ["interest-compare-years"],
     objectives: [
       "Find the balance, the amount in the account, for a simple-interest account and a compound-interest account after several years.",
@@ -274,7 +274,7 @@ export const financeCreditLessons: Lesson[] = [
     ],
     title: "The total cost of a loan",
     summary:
-      "A loan is money you borrow now and pay back later. The principal is the amount you borrow. If you pay the same amount every month, the total you pay back is the payment times the number of months. The finance charge is the extra you pay beyond the principal. It is the price of borrowing.",
+      "A loan is an amount of money you borrow now and pay back later. The principal is the amount you borrow. If you pay the same amount every month, the total you pay back is the payment times the number of months. The finance charge is the extra you pay beyond the principal. It is the price of borrowing.",
     templateIds: ["loan-total-cost"],
     objectives: [
       "Find the total repaid and the finance charge from a monthly payment and a term, the length of the loan.",
@@ -284,7 +284,7 @@ export const financeCreditLessons: Lesson[] = [
     intuition: [
       "Suppose you borrow 1,000 dollars and pay back 100 dollars a month for 12 months. You pay back 12 × 100 = 1,200 dollars in all. That is 200 dollars more than you borrowed.",
       "The amount you borrow is called the principal. You pay it back in equal monthly payments. Each payment adds the same amount to the total you have repaid. So the total repaid is the payment times the number of payments.",
-      "The finance charge is the total repaid minus the principal, here 1,200 − 1,000 = 200 dollars. It is the price of borrowing. For the same amount borrowed, a higher interest rate raises the payment. At the same rate, a longer term, the length of the loan, lowers the payment but adds more payments.",
+      "The finance charge is the total repaid minus the principal, here 1,200 − 1,000 = 200 dollars. It is the price of borrowing. Interest is the extra money a lender charges for a loan. For the same amount borrowed, a higher interest rate raises the payment. At the same rate, a longer term, the length of the loan, lowers the payment but adds more payments.",
     ],
     workedExample: {
       prompt:
@@ -292,7 +292,7 @@ export const financeCreditLessons: Lesson[] = [
       steps: [
         "Find the total repaid. There are 48 equal payments, so multiply: 48 × 188 = 9,024 dollars.",
         "The finance charge is what was paid beyond the amount borrowed: 9,024 − 8,000 = 1,024 dollars.",
-        "Check the multiplication another way: 48 × 188 = 48 × 200 − 48 × 12 = 9,600 − 576 = 9,024.",
+        "Check the answer another way: 48 × 188 = 48 × 200 − 48 × 12 = 9,600 − 576 = 9,024.",
       ],
       answer: "1,024 dollars",
     },
@@ -328,7 +328,7 @@ export const financeCreditLessons: Lesson[] = [
     ],
     title: "Choosing between two loans",
     summary:
-      "A loan is money you borrow and pay back in monthly payments. To compare two loan offers, find the total cost of each: the payment times the number of months, plus any fee. A fee is an extra charge. The smaller total is the cheaper loan, even if its monthly payment is bigger.",
+      "A loan is an amount of money you borrow and pay back in monthly payments. To compare two loan offers, find the total cost of each: the payment times the number of months, plus any fee. A fee is an extra charge. The smaller total is the cheaper loan, even if its monthly payment is bigger.",
     templateIds: ["loan-compare-options"],
     objectives: [
       "Work out each offer's total cost and choose the cheaper one.",
@@ -389,7 +389,7 @@ export const financeCreditLessons: Lesson[] = [
       "Find how much of a payment actually lowers the debt.",
     ],
     intuition: [
-      "A credit card balance is the amount you owe on the card. The card states an APR, short for annual percentage rate. Annual means yearly, so the APR is a yearly interest rate. Each month the card charges one twelfth of the APR on the balance. An APR of 18% means 18% ÷ 12 = 1.5% each month.",
+      "A credit card balance is the amount you owe on the card. An interest rate is the percent charged for borrowing. Each card has a yearly interest rate called the APR, short for annual percentage rate. Annual means yearly, so the APR is a yearly interest rate. Each month the card charges one twelfth of the APR on the balance. An APR of 18% means 18% ÷ 12 = 1.5% each month.",
       "If you pay only part of what you owe, the rest stays on the balance, and so does the interest. Next month's interest is figured on that balance.",
       "Part of each payment covers the month's interest first. Only the rest lowers the debt. So a small payment on a large balance may barely lower it.",
     ],
@@ -447,8 +447,8 @@ export const financeCreditLessons: Lesson[] = [
     ],
     intuition: [
       "With a credit card, the card company pays the store now, and you pay the company later. A debit card takes money straight from your own bank account, so there is nothing to borrow and no interest.",
-      "Each month a credit card sends a statement, a bill showing what you owe. If you pay it in full by its due date, this lesson counts the interest as 0. Interest is charged only on the part left unpaid.",
-      "The card's APR, short for annual percentage rate, is a yearly rate. The monthly rate is the APR divided by 12. So an APR of 24% is 2% a month, and the APR is 12 times the monthly rate.",
+      "Each month a credit card sends a statement, a bill showing what you owe. The amount you owe is called the balance. If you pay it in full by its due date, this lesson counts the interest as 0. Interest is charged only on the part left unpaid.",
+      "An interest rate is the percent charged for borrowing. APR is short for annual percentage rate, the card's yearly interest rate. The monthly rate is the APR divided by 12. So an APR of 24% is 2% a month, and the APR is 12 times the monthly rate.",
     ],
     workedExample: {
       prompt:
@@ -519,11 +519,11 @@ export const financeCreditLessons: Lesson[] = [
       "Balance after $n$ deposits = start + deposit × $n$.",
       "Months to a goal: divide (goal − start) by the deposit, then round up to a whole month.",
       "Deposit needed for $n$ months: (goal − start) ÷ $n$.",
-      "The starting gap is how much more one plan starts with. If the other plan deposits more each month, the balances are equal after starting gap ÷ difference in monthly deposits months. Round up if that is not a whole number.",
+      "The starting gap is how much more one plan starts with. If the other plan deposits more each month, the balances are equal after starting gap ÷ difference in monthly deposits months. If that is not an exact count of months, round up.",
     ],
     formal: [
       "Let $S$ be the starting amount and $d$ the monthly deposit. The balance after $n$ deposits is $B(n)=S+dn$, read “$B$ of $n$ equals $S$ plus $d$ times $n$”. It starts at $S$ and rises by $d$ dollars each month, so its graph is a straight line.",
-      "For $d>0$ and a goal $G$ that is at least $S$, the balance first reaches $G$ after $(G-S)/d$ deposits, rounded up to the next whole number if it is not whole.",
+      "For $d>0$ and a goal $G$ that is at least $S$, the balance first reaches $G$ after $(G-S)/d$ deposits, rounded up if it is not an exact count.",
     ],
     pitfalls: [
       "Subtract the starting amount before dividing by the deposit.",
@@ -548,7 +548,7 @@ export const financeCreditLessons: Lesson[] = [
     ],
     title: "Simple or compound? Read the table",
     summary:
-      "Interest is money an account pays you, and the balance is how much the account holds. To tell the kind of interest from a table, subtract each balance from the next one. That gives each year's rise. If the rises are equal, it is simple interest. If they grow, it is compound interest, which pays interest on earlier interest.",
+      "Interest is the money an account pays you, and the balance is how much the account holds. To tell the kind of interest from a table, subtract each balance from the next one. That gives each year's rise. If the rises are equal, it is simple interest. If they grow, it is compound interest, which pays interest on earlier interest.",
     templateIds: ["interest-table-type"],
     objectives: [
       "Tell simple interest from compound interest in a table of balances.",
@@ -576,7 +576,7 @@ export const financeCreditLessons: Lesson[] = [
       "A year's interest = the balance at the end of that year minus the balance at the end of the year before.",
     ],
     formal: [
-      "Let $P$ be the principal and $r$ the yearly rate as a decimal. With simple interest, neighbouring year-end balances always differ by the same amount, $Pr$.",
+      "Let $P$ be the principal and $r$ the yearly rate written as a decimal (a number with a decimal point, such as 0.12). With simple interest, neighbouring year-end balances always differ by the same amount, $Pr$.",
       "With compound interest, the rise in year $t$ is $P(1+r)^{t-1}r$, where $(1+r)^{t-1}$ means $t-1$ copies of $(1+r)$ multiplied together. When $r>0$, these rises grow each year. Rounding to cents can change the last digit.",
     ],
     pitfalls: [

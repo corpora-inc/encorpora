@@ -33,7 +33,7 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
     senses: { change: "change", part: "part", terms: "term-expression" },
     goal: "Choose the equation for a flat fee that covers the first hours plus a rate for each extra hour, grouped or multiplied out.",
     intuition:
-      "The charge is the flat fee plus the rate times the extra hours. If $h$ is the hours booked, the extra hours are $h$ minus the hours the flat fee covers. A number written right next to parentheses multiplies them: $9(h - 2)$ means 9 times $(h - 2)$.",
+      "The charge is the flat fee plus the rate times the extra hours. If $h$ is the hours booked, the extra hours are $h$ minus the hours the flat fee covers. Parentheses are the curved brackets ( ). A number written right next to them multiplies what is inside: $9(h - 2)$ means 9 times $(h - 2)$.",
     terms: [
       [
         "expression",
@@ -56,7 +56,7 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
     senses: { sides: "side-of-equation" },
     goal: "Write the inequality for a one-time fee plus a cost per item that must fit a budget, or choose its solution.",
     intuition:
-      "A budget is the most money you plan to spend. The cost of $x$ items is the fee plus the cost per item times $x$. The sign $\\le$ means is less than or equal to, for at most. The sign $<$ means is less than, for under. Solving shows which counts fit. The largest whole number that fits is the most items you can buy.",
+      "A budget is the most money you plan to spend. The cost of $x$ items is the fee plus the cost per item times $x$. The sign $\\le$ means is less than or equal to, for at most. The sign $<$ means is less than, for under. Solving shows which counts fit. The answer is the largest whole number (the numbers 0, 1, 2 and so on) that fits.",
     terms: [
       "at-most",
       [
@@ -67,7 +67,7 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
     method: [
       "Write the cost as the fee plus the cost per item times $x$.",
       "Compare the cost with the budget. Use $\\le$ for at most and $<$ for under.",
-      "To solve, subtract the fee from both sides. Then divide both sides by the cost per item, a positive number.",
+      "To solve, subtract the fee from both sides (the parts on each side of the sign). Then divide both sides by the cost per item, a positive number.",
     ],
     watch:
       "Subtract the fee from the budget before you divide by the cost per item. Dividing the budget alone ignores the fee.",
@@ -120,12 +120,12 @@ export const feeChainLessons = [
       method: [
         "Find the extra hours: the hours booked minus the hours the flat fee covers. Find the rate: the charge beyond the flat fee divided by the extra hours.",
         "A budget is the most money you plan to spend. Call the budget $B$, the fee $F$, and the cost per item $r$. Then $x$ items cost $F+rx$, meaning $F$ plus $r$ times $x$.",
-        "The sign $\\le$ means is less than or equal to, so use it for at most. The sign $<$ means is less than, so use it for under. Subtract $F$ from both sides, then divide both sides by $r$. That shows which counts fit. For a count of items, the answer is the largest whole number allowed. With $<$, the boundary itself is not allowed.",
+        "The sign $\\le$ means is less than or equal to, so use it for at most. The sign $<$ means is less than, so use it for under. Subtract $F$ from both sides (the parts on each side of the sign), then divide both sides by $r$. That shows which counts fit. For a count of items, the answer is the largest whole number allowed. With $<$, the boundary, the number where the allowed counts stop, is not allowed itself.",
       ],
       formalTitle: "The line behind the charge",
       formal: [
         "Let $h_0$ (read “$h$ sub zero”) be the hours the flat fee covers. For $h\\ge h_0$ the charge is $C(h)=F+r(h-h_0)$. Its graph is a line. The slope, the rise in charge for each extra hour, is $r$. The intercept, the plain number when multiplied out, is $F-rh_0$. Two points $(h_0, F)$ and $(H, T)$ on the line give $r=(T-F)/(H-h_0)$.",
-        "Since $r>0$, the inequality $F+rx\\le B$ means the same as $x\\le(B-F)/r$. Dividing both sides by a positive number keeps the sign pointing the same way. For a count of items, only whole numbers are solutions.",
+        "Since $r>0$, the inequality $F+rx\\le B$ means the same as $x\\le(B-F)/r$. Dividing both sides by a positive number keeps the sign pointing the same way. For a count of items, the answer must be a whole number.",
       ],
       pitfalls: [
         "Subtract the flat fee from the total before dividing by the extra hours.",

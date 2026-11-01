@@ -76,7 +76,7 @@ const fractionWork: Lesson["sections"][number] = {
   title: "Work exactly with fractions",
   paragraphs: [
     "To multiply a whole number by a fraction, multiply the top number and keep the bottom number: $48 \\times \\tfrac{1}{8} = \\tfrac{48}{8} = 6$. To add fractions, write them with parts of the same size: $1 + \\tfrac{1}{8} = \\tfrac{8}{8} + \\tfrac{1}{8} = \\tfrac{9}{8}$. Subtracting works the same way: $1 - \\tfrac{1}{4} = \\tfrac{4}{4} - \\tfrac{1}{4} = \\tfrac{3}{4}$.",
-    "The reciprocal of a number (not 0) is the number you multiply it by to get 1. For a fraction, swap the top and bottom. The reciprocal of $\\tfrac{3}{4}$ is $\\tfrac{4}{3}$, because $\\tfrac{3}{4} \\times \\tfrac{4}{3} = 1$. Dividing by $\\tfrac{3}{4}$ is the same as multiplying by $\\tfrac{4}{3}$: $60 \\div \\tfrac{3}{4} = 60 \\times \\tfrac{4}{3} = \\tfrac{240}{3} = 80$. Dividing by 0 has no answer.",
+    "The reciprocal is the number you multiply another number (not 0) by to get 1. For a fraction, swap the top and bottom. The reciprocal of $\\tfrac{3}{4}$ is $\\tfrac{4}{3}$, because $\\tfrac{3}{4} \\times \\tfrac{4}{3} = 1$. Dividing by $\\tfrac{3}{4}$ is the same as multiplying by $\\tfrac{4}{3}$: $60 \\div \\tfrac{3}{4} = 60 \\times \\tfrac{4}{3} = \\tfrac{240}{3} = 80$. Dividing by 0 has no answer.",
     "A percent can include a fraction or decimal of its own. For 12.5%, divide 12.5 by 100: $\\tfrac{12.5}{100} = \\tfrac{125}{1000} = \\tfrac{1}{8}$. A change of $\\tfrac{1}{3}$ is exactly $\\tfrac{100}{3}$ percent, because $\\tfrac{1}{3} \\times 100 = \\tfrac{100}{3}$. Writing 33.3% would round it. When a decimal goes on forever, keep the fraction.",
   ],
 };
@@ -274,7 +274,7 @@ export const percentChangeLessons: Lesson[] = [
     noLink: ["base"],
     title: "Recover the original quantity",
     summary:
-      "Sometimes you know the new amount and the percent change, but not the original amount, the amount before the change. The percent was taken of that unknown original. After a 25% decrease, the new amount is the 75% that is left. So divide the new amount by $\\tfrac{3}{4}$ (75%) to get back the original.",
+      "A percent change is a change measured as a percent of the original amount, the amount before the change. Sometimes you know the new amount and the percent change, but not the original. The percent was taken of that unknown original. After a 25% decrease, the new amount is the 75% that is left. So divide the new amount by $\\tfrac{3}{4}$ (75%) to get back the original.",
     templateIds: ["percent-change-original"],
     includeGeneratedRepresentation: false,
     objectives: [

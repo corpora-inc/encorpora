@@ -13,7 +13,7 @@ export const countRelationMethods: Record<string, ProblemMethod> = {
     noLink: ["leaves"],
     goal: "Put a known count into a value equation to find the other count, or solve a “times as many” and “more than” pair.",
     intuition:
-      "A variable is a letter that stands for an unknown number. An equation says two amounts are equal. In $3p+5q=87$, $3p$ means 3 times $p$. Once one count is known, only one unknown is left. A story saying “4 times as many” and “36 more” gives two facts about the same two counts.",
+      "A variable is a letter that stands for an unknown number. An equation says two amounts are equal. In $3p+5q=87$, $3p$ means 3 times $p$. Once one count is known, only one unknown is left. “4 times as many” means four copies of the other count. A story saying “4 times as many” and “36 more” gives two facts about the same two counts.",
     terms: [
       [
         "equation",
@@ -60,7 +60,7 @@ export const countRelationLessons = [
         steps: [
           "Let $x$ stand for Lia's stamps. Dev has 4 times as many, so Dev has $4x$.",
           "Dev has 36 more than Lia, so the difference is 36: $4x-x=36$. Four $x$'s take away one $x$ leaves three, so $3x=36$.",
-          "Divide both sides by 3: $x=12$. So Lia has 12, and Dev has $4\\times12=48$.",
+          "Divide both sides (the parts on each side of the equal sign) by 3: $x=12$. So Lia has 12, and Dev has $4\\times12=48$.",
           "The question asks for both together: $12+48=60$ stamps. Check: 48 is 4 times 12, and $48-12=36$.",
         ],
         answer: "60 stamps",
