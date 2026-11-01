@@ -899,7 +899,6 @@
     },
     "lesson:area-probability": {
       "terms": [
-        "area",
         "equally-likely",
         "perimeter",
         "radius"
@@ -979,11 +978,7 @@
     "lesson:bearings": {
       "terms": [
         "bearing",
-        "compass",
         "cosine",
-        "leg",
-        "quadrant",
-        "right-triangle",
         "sine"
       ],
       "long": []
@@ -1058,8 +1053,7 @@
       "terms": [
         "inequality",
         "liter",
-        "rate",
-        "variable"
+        "rate"
       ],
       "long": []
     },
@@ -1616,7 +1610,6 @@
       "terms": [
         "dilation",
         "ray",
-        "reflection",
         "rigid-motion",
         "scale-factor"
       ],
@@ -1912,10 +1905,7 @@
     },
     "lesson:counterexamples": {
       "terms": [
-        "conjecture",
-        "counterexample",
         "proof",
-        "rhombus",
         "right-angle"
       ],
       "long": []
@@ -2026,11 +2016,9 @@
     },
     "lesson:cylinder-prism-surface-area": {
       "terms": [
-        "area",
         "circumference",
         "height",
-        "radius",
-        "surface-area"
+        "radius"
       ],
       "long": []
     },
@@ -2513,10 +2501,6 @@
       "terms": [
         "absolute-value",
         "constant",
-        "denominator",
-        "midpoint",
-        "rate",
-        "rational-equation",
         "speed"
       ],
       "long": []
@@ -2648,9 +2632,6 @@
     },
     "lesson:experimental-probability": {
       "terms": [
-        "expected-count",
-        "probability",
-        "theoretical-probability",
         "times-as-many"
       ],
       "long": []
@@ -2673,16 +2654,12 @@
     },
     "lesson:exponential-domain-and-range": {
       "terms": [
-        "domain",
         "exponential-function",
-        "function",
         "inequality",
         "input",
-        "logarithm",
         "negative-number",
         "output",
-        "real-number",
-        "strict-inequality"
+        "real-number"
       ],
       "long": []
     },
@@ -2759,12 +2736,6 @@
         "output",
         "quadratic",
         "rate",
-        "variable"
-      ],
-      "long": []
-    },
-    "lesson:expressions-and-equations": {
-      "terms": [
         "variable"
       ],
       "long": []
@@ -3064,15 +3035,8 @@
     },
     "lesson:gauss-3x3-solve": {
       "terms": [
-        "coefficient",
-        "constant",
         "elimination",
-        "equivalent",
-        "row-operation",
-        "solution",
-        "solution-of-a-system",
-        "substitute",
-        "variable"
+        "equivalent"
       ],
       "long": []
     },
@@ -3451,9 +3415,7 @@
     },
     "lesson:independent-dependent": {
       "terms": [
-        "function",
-        "height",
-        "independent-variable"
+        "height"
       ],
       "long": []
     },
@@ -3547,9 +3509,7 @@
     },
     "lesson:integer-multiply-divide": {
       "terms": [
-        "negative-number",
-        "quotient",
-        "whole-number"
+        "quotient"
       ],
       "long": []
     },
@@ -3679,12 +3639,6 @@
       ],
       "long": []
     },
-    "lesson:lifetime-income": {
-      "terms": [
-        "constant"
-      ],
-      "long": []
-    },
     "lesson:likelihood-words-lesson": {
       "terms": [
         "equally-likely"
@@ -3714,10 +3668,6 @@
       "terms": [
         "common-denominator",
         "coordinate",
-        "distribute",
-        "negative-reciprocal",
-        "parallel",
-        "perpendicular",
         "slope",
         "slope-intercept-form"
       ],
@@ -4173,8 +4123,6 @@
     "lesson:measurement-error-bound": {
       "terms": [
         "at-most",
-        "decimal-places",
-        "error-limit",
         "mass",
         "percent",
         "round"
@@ -4234,7 +4182,6 @@
     "lesson:metric-customary-conversion": {
       "terms": [
         "area",
-        "conversion-factor",
         "customary-units",
         "decimal",
         "kilogram",
@@ -4255,14 +4202,6 @@
       "terms": [
         "equal-groups",
         "multiplication"
-      ],
-      "long": []
-    },
-    "lesson:model-quantity-roles": {
-      "terms": [
-        "liter",
-        "substitute",
-        "variable"
       ],
       "long": []
     },
@@ -4818,12 +4757,6 @@
       ],
       "long": []
     },
-    "lesson:percent-grids-conversions": {
-      "terms": [
-        "decimal"
-      ],
-      "long": []
-    },
     "lesson:perimeter-area-chain": {
       "terms": [
         "solution",
@@ -4842,8 +4775,6 @@
     },
     "lesson:pi-ratio": {
       "terms": [
-        "diameter",
-        "radius",
         "ratio",
         "round"
       ],
@@ -5335,14 +5266,9 @@
     },
     "lesson:quadratic-inequality-interval": {
       "terms": [
-        "constant",
-        "expression",
         "inequality",
         "interval-notation",
-        "leading-coefficient",
-        "parabola",
-        "quadratic",
-        "strict-inequality"
+        "quadratic"
       ],
       "long": []
     },
@@ -5541,9 +5467,7 @@
     },
     "lesson:rational-area-volume-equations": {
       "terms": [
-        "area",
-        "substitute",
-        "volume"
+        "area"
       ],
       "long": []
     },
@@ -6703,13 +6627,8 @@
     },
     "lesson:regular-polygon-area": {
       "terms": [
-        "apothem",
-        "area",
         "equilateral",
-        "height",
-        "midpoint",
-        "perimeter",
-        "regular-polygon"
+        "midpoint"
       ],
       "long": []
     },
@@ -7725,8 +7644,7 @@
         "arc",
         "area",
         "parallel",
-        "proportional-relationship",
-        "right-angle"
+        "proportional-relationship"
       ],
       "long": []
     },
@@ -7775,9 +7693,6 @@
     "lesson:staar-decimal-stories": {
       "terms": [
         "decimal",
-        "decimal-places",
-        "quotient",
-        "unit-fraction",
         "whole-number"
       ],
       "long": []
@@ -7785,9 +7700,7 @@
     "lesson:staar-experimental-probability": {
       "terms": [
         "experimental-probability",
-        "outcome",
-        "probability",
-        "with-replacement"
+        "outcome"
       ],
       "long": []
     },
@@ -7805,14 +7718,6 @@
       ],
       "long": []
     },
-    "lesson:staar-lines-from-data": {
-      "terms": [
-        "integer",
-        "intercept",
-        "slope"
-      ],
-      "long": []
-    },
     "lesson:staar-money-words": {
       "terms": [
         "credit",
@@ -7827,22 +7732,13 @@
       "terms": [
         "coefficient",
         "denominator",
-        "distribute",
-        "like-terms",
-        "parentheses",
-        "solution",
-        "substitute",
-        "variable"
+        "parentheses"
       ],
       "long": []
     },
     "lesson:staar-number-sets": {
       "terms": [
-        "decimal",
-        "integer",
-        "quotient",
-        "rational-number",
-        "whole-number"
+        "decimal"
       ],
       "long": []
     },
@@ -7885,10 +7781,7 @@
     },
     "lesson:staar-ratio-forms": {
       "terms": [
-        "equivalent",
-        "part-to-part-ratio",
         "ratio",
-        "unit-rate",
         "whole-number"
       ],
       "long": []
@@ -7904,8 +7797,6 @@
     },
     "lesson:staar-rename-forms": {
       "terms": [
-        "mixed-number",
-        "percent",
         "tenth",
         "whole-number"
       ],
@@ -8004,10 +7895,7 @@
     },
     "lesson:stem-leaf-read": {
       "terms": [
-        "decimal-places",
-        "median",
-        "stem-and-leaf-plot",
-        "tenth"
+        "median"
       ],
       "long": []
     },
@@ -8165,7 +8053,6 @@
     },
     "lesson:systems-from-representations": {
       "terms": [
-        "rate",
         "slope"
       ],
       "long": []
@@ -8367,15 +8254,9 @@
     },
     "lesson:trapezoid-consequences": {
       "terms": [
-        "base-angle",
-        "expression",
         "midpoint",
         "parallel",
-        "substitute",
-        "supplementary",
-        "symmetry",
-        "transversal",
-        "trapezoid"
+        "symmetry"
       ],
       "long": []
     },
@@ -9178,8 +9059,7 @@
     "practice:area-probability": {
       "terms": [
         "area",
-        "perimeter",
-        "probability"
+        "perimeter"
       ],
       "long": []
     },
@@ -9302,11 +9182,9 @@
     },
     "practice:bearing-trig-problem": {
       "terms": [
-        "bearing",
         "component",
         "cosine",
         "leg",
-        "quadrant",
         "right-triangle",
         "sine",
         "vector"
@@ -9381,7 +9259,6 @@
       "terms": [
         "coefficient",
         "constant",
-        "isolate",
         "variable"
       ],
       "long": []
@@ -9485,7 +9362,6 @@
     },
     "practice:check-equation-candidate": {
       "terms": [
-        "isolate",
         "substitute"
       ],
       "long": []
@@ -10483,8 +10359,6 @@
     },
     "practice:counterexample-choice": {
       "terms": [
-        "conjecture",
-        "counterexample",
         "prime-number",
         "proof"
       ],
@@ -10596,15 +10470,12 @@
     },
     "practice:curved-solid-surface-area": {
       "terms": [
-        "area",
         "base-area",
         "composite-number",
         "height",
-        "lateral-area",
         "pyramid",
         "radius",
-        "slant-height",
-        "surface-area"
+        "slant-height"
       ],
       "long": []
     },
@@ -10628,7 +10499,6 @@
     "practice:cylinder-prism-surface-area": {
       "terms": [
         "height",
-        "hypotenuse",
         "leg",
         "radius"
       ],
@@ -10899,8 +10769,7 @@
     },
     "practice:distance-graph-meaning": {
       "terms": [
-        "constant",
-        "function"
+        "constant"
       ],
       "long": []
     },
@@ -11278,7 +11147,6 @@
         "experiment",
         "outcome",
         "probability",
-        "theoretical-probability",
         "times-as-many"
       ],
       "long": []
@@ -11302,9 +11170,7 @@
         "asymptote",
         "exponential-function",
         "function",
-        "horizontal-asymptote",
         "input",
-        "logarithm",
         "output",
         "real-number"
       ],
@@ -11550,14 +11416,6 @@
       ],
       "long": []
     },
-    "practice:first-cheaper-whole-input": {
-      "terms": [
-        "input",
-        "rate",
-        "whole-number"
-      ],
-      "long": []
-    },
     "practice:first-quadrant-coordinates": {
       "terms": [
         "coordinate"
@@ -11668,7 +11526,6 @@
     },
     "practice:fl-integer-multiply-divide": {
       "terms": [
-        "dividend",
         "division",
         "quotient"
       ],
@@ -11691,7 +11548,6 @@
         "expression",
         "midpoint",
         "quadrilateral",
-        "segment",
         "supplementary"
       ],
       "long": []
@@ -11997,10 +11853,8 @@
     },
     "practice:gauss-3x3-solve": {
       "terms": [
-        "coefficient",
         "elimination",
         "equivalent",
-        "solution",
         "variable"
       ],
       "long": []
@@ -12522,8 +12376,6 @@
     "practice:graph-estimate-system-solution": {
       "terms": [
         "coordinate",
-        "input",
-        "ordered-pair",
         "parallel"
       ],
       "long": []
@@ -12721,7 +12573,6 @@
     },
     "practice:grouped-linear-equation": {
       "terms": [
-        "isolate",
         "variable"
       ],
       "long": []
@@ -12831,8 +12682,6 @@
     },
     "practice:independent-dependent-roles": {
       "terms": [
-        "dependent-variable",
-        "function",
         "independent-variable"
       ],
       "long": []
@@ -13154,18 +13003,12 @@
     },
     "practice:line-equation-forms": {
       "terms": [
-        "coefficient",
-        "common-denominator",
         "common-factor",
         "coordinate",
-        "distribute",
         "integer",
-        "intercept",
         "point-slope-form",
         "slope",
-        "slope-intercept-form",
-        "substitute",
-        "variable"
+        "slope-intercept-form"
       ],
       "long": []
     },
@@ -13220,14 +13063,11 @@
     "practice:line-relationship-equations": {
       "terms": [
         "coordinate",
-        "intercept",
-        "negative-reciprocal",
         "parallel",
         "perpendicular",
         "reciprocal",
         "right-angle",
-        "slope",
-        "substitute"
+        "slope"
       ],
       "long": []
     },
@@ -13737,9 +13577,7 @@
     "practice:measurement-error-bound": {
       "terms": [
         "at-most",
-        "error-limit",
-        "gram",
-        "mass"
+        "gram"
       ],
       "long": []
     },
@@ -13837,11 +13675,8 @@
     },
     "practice:model-quantity-roles": {
       "terms": [
-        "dependent-variable",
-        "independent-variable",
         "rate",
-        "substitute",
-        "variable"
+        "substitute"
       ],
       "long": []
     },
@@ -14043,9 +13878,7 @@
       "terms": [
         "coefficient",
         "constant",
-        "isolate",
-        "multiplication",
-        "solution"
+        "multiplication"
       ],
       "long": []
     },
@@ -14251,7 +14084,6 @@
       "terms": [
         "denominator",
         "integer",
-        "natural-number",
         "rational-number",
         "whole-number"
       ],
@@ -14674,10 +14506,7 @@
     },
     "practice:percent-forms-and-parts": {
       "terms": [
-        "decimal",
-        "denominator",
-        "numerator",
-        "percent"
+        "decimal"
       ],
       "long": []
     },
@@ -14716,8 +14545,6 @@
     },
     "practice:pi-as-ratio": {
       "terms": [
-        "circumference",
-        "diameter",
         "radius",
         "ratio",
         "segment"
@@ -15055,10 +14882,7 @@
     },
     "practice:predict-linear-output": {
       "terms": [
-        "input",
-        "linear-function",
-        "output",
-        "rate"
+        "linear-function"
       ],
       "long": []
     },
@@ -15168,10 +14992,8 @@
       "terms": [
         "constant",
         "constant-of-proportionality",
-        "function",
         "multiplier",
-        "origin",
-        "proportional-relationship"
+        "origin"
       ],
       "long": []
     },
@@ -15304,7 +15126,6 @@
     },
     "practice:quadratic-inequality-interval": {
       "terms": [
-        "constant",
         "expression",
         "function",
         "inequality",
@@ -15611,7 +15432,6 @@
     "practice:rational-area-volume-equation": {
       "terms": [
         "area",
-        "inverse-operation",
         "mixed-number",
         "prism",
         "rational-number",
@@ -15647,8 +15467,6 @@
     "practice:rational-equation-formulate": {
       "terms": [
         "denominator",
-        "rate",
-        "rational-equation",
         "speed",
         "variable"
       ],
@@ -15879,8 +15697,6 @@
     },
     "practice:recover-linear-intercept": {
       "terms": [
-        "input",
-        "rate",
         "slope-intercept-form",
         "substitute"
       ],
@@ -15957,12 +15773,10 @@
     },
     "practice:regular-polygon-area": {
       "terms": [
-        "apothem",
         "area",
         "height",
         "midpoint",
-        "perimeter",
-        "regular-polygon"
+        "perimeter"
       ],
       "long": []
     },
@@ -15997,20 +15811,10 @@
       ],
       "long": []
     },
-    "practice:relation-function-choice": {
-      "terms": [
-        "function",
-        "input",
-        "output"
-      ],
-      "long": []
-    },
     "practice:relation-point-removal": {
       "terms": [
         "at-most",
-        "coordinate",
-        "input",
-        "output"
+        "coordinate"
       ],
       "long": []
     },
@@ -16792,9 +16596,7 @@
     },
     "practice:shared-plan-input": {
       "terms": [
-        "expression",
-        "input",
-        "rate"
+        "expression"
       ],
       "long": []
     },
@@ -17293,9 +17095,6 @@
     "practice:staar-decimal-operations": {
       "terms": [
         "decimal",
-        "decimal-places",
-        "dividend",
-        "equal-groups",
         "hundredth",
         "numerator",
         "unit-fraction",
@@ -17318,7 +17117,6 @@
     "practice:staar-experiment-probability": {
       "terms": [
         "outcome",
-        "probability",
         "with-replacement"
       ],
       "long": []
@@ -17346,9 +17144,7 @@
         "coefficient",
         "common-denominator",
         "denominator",
-        "distribute",
         "distributive-property",
-        "equivalent-equations",
         "parentheses",
         "solution",
         "variable"
@@ -17374,9 +17170,7 @@
     "practice:staar-number-sets": {
       "terms": [
         "decimal",
-        "denominator",
-        "quotient",
-        "whole-number"
+        "denominator"
       ],
       "long": []
     },
@@ -17416,10 +17210,8 @@
     },
     "practice:staar-ratio-statements": {
       "terms": [
-        "division",
         "equivalent",
         "greatest-common-factor",
-        "part-to-part-ratio",
         "rate",
         "ratio"
       ],
@@ -17427,18 +17219,13 @@
     },
     "practice:staar-rename-percent-fraction-decimal": {
       "terms": [
-        "decimal",
-        "denominator",
-        "division",
-        "numerator"
+        "decimal"
       ],
       "long": []
     },
     "practice:staar-salary-percent": {
       "terms": [
         "amount-of-change",
-        "constant",
-        "hundredth",
         "percent"
       ],
       "long": []
@@ -17735,10 +17522,8 @@
       "terms": [
         "coefficient",
         "input",
-        "intercept",
         "output",
         "rate",
-        "rate-of-change",
         "slope",
         "solution",
         "variable"
@@ -17972,12 +17757,9 @@
       "terms": [
         "coordinate",
         "dilation",
-        "function-notation",
-        "origin",
         "reflection",
         "rigid-motion",
-        "scale-factor",
-        "transformation"
+        "scale-factor"
       ],
       "long": []
     },
@@ -18335,10 +18117,7 @@
     },
     "practice:unequal-step-rate": {
       "terms": [
-        "constant",
-        "input",
-        "output",
-        "rate"
+        "constant"
       ],
       "long": []
     },
