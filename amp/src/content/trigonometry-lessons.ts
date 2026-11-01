@@ -67,12 +67,10 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
         "range-function",
         "For arcsin, the outputs are the angles from $-\\frac{\\pi}{2}$ to $\\frac{\\pi}{2}$.",
       ],
-      "inverse-trig-function",
       [
         "range-function",
         "For arccos, the outputs are the angles from 0 to $\\pi$.",
       ],
-      "inverse-trig-function",
       [
         "range-function",
         "For arctan, the outputs are the angles strictly between $-\\frac{\\pi}{2}$ and $\\frac{\\pi}{2}$.",

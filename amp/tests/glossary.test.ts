@@ -180,13 +180,18 @@ test("method terms, senses and lesson senses name existing entries", () => {
   assert.deepEqual(problems, []);
 });
 
-test("a method lists each term once", () => {
+test("a method names each term once; repeats only add notes", () => {
   const repeated: string[] = [];
   for (const [id, method] of Object.entries(methods)) {
-    const ids = (method.terms ?? []).map(methodTermId);
-    for (const termId of new Set(ids))
-      if (ids.filter((x) => x === termId).length > 1)
+    const bare = (method.terms ?? []).filter((t) => typeof t === "string");
+    for (const termId of new Set(bare))
+      if (bare.filter((x) => x === termId).length > 1)
         repeated.push(`${id}: ${termId}`);
+    const notes = (method.terms ?? []).flatMap((t) =>
+      typeof t === "string" ? [] : [`${t[0]}|${t[1]}`],
+    );
+    if (new Set(notes).size !== notes.length)
+      repeated.push(`${id}: repeated note`);
   }
   assert.deepEqual(repeated, []);
 });
