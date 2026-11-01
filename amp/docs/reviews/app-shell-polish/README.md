@@ -21,7 +21,7 @@ The audit visits 24 screens in Chromium and WebKit. Each runs at 320×640, 390×
 - an axe scan (WCAG 2.2 AA), a keyboard walk for a visible focus indicator, and refresh restoring the same screen (at 390 and 1280);
 - back and forward through the main screens.
 
-The before run is 208 WebKit and 264 Chromium screen captures. Its findings are below, ranked by how much they cost a parent or learner.
+The before run covered 253 Chromium and 207 WebKit screen states (WebKit at 320, 390, 768 and 1280). Its findings are below, ranked by how much they cost a parent or learner.
 
 `scripts/verify-app-shell-ui.ts` (`npm run test:app-shell-ui`) asserts each fix, measured rather than inspected. It also asserts no overflow, no overlapping controls and no broken words on every screen at every width and theme.
 
@@ -50,10 +50,11 @@ Clean before the work: axe found no violations on any screen in either engine. E
 | 17 | The reader put three stacked download buttons before the lesson, pushing the lesson below the fold on phones. | lesson reader | Fixed: the lesson comes first and its printable copies follow |
 | 18 | Family's page title was a small 22 px word at the far right of the header, opposite Back. | Family | Fixed: the title sits beside Back at heading size |
 | 19 | The toast's message showed a focus box when it took focus to be announced. | `Toast` | Fixed |
-| 20 | The lesson library lists every problem type in a math area as one flat grid (over 100 in Numbers), with no search. The 842 reference lessons are one long list in a disclosure. | `LessonIndex`, `LegacyApp` | Deferred: needs a search-and-group design. Grouping by grade touches #1781 |
-| 21 | The pathways graph crashed a Chromium renderer once (320×640, dark) under the audit's parallel load. | `Graph.tsx` | Deferred: not reproduced in isolation; watch in `test:pathways-ui` |
-| 22 | Home's two stacked segmented bars (Practice/Lessons/Progress, then Level/Pathways/Inventory) read as two equal navigation levels. | Home, Pathways, Inventory | Deferred: an information-architecture change, beyond polish |
-| 23 | Brand lockup varies: "AMP" on sign-in and sign-up, "AMP · Adaptive Math Pathways" on assessment cards, and "Adaptive Math PATHWAYS" on the atlas. | frames | Deferred: brand decision |
+| 20 | **A stale level-map response logged a page error.** If the account session changed while Home's level map was loading, the response was reported with `console.error` ("Frontier map failed to load … Your account session changed"). Other suites count that as a page error. | `LegacyApp` | Fixed: an account change raises a typed `AccountSessionChanged`. The loader discards it, and any response for a learner no longer on screen, with an info note. Real failures are still errors (`lib/__tests__/frontier-load.test.ts`) |
+| 21 | The lesson library lists every problem type in a math area as one flat grid (over 100 in Numbers), with no search. The 842 reference lessons are one long list in a disclosure. | `LessonIndex`, `LegacyApp` | Deferred: needs a search-and-group design. Grouping by grade touches #1781 |
+| 22 | The pathways graph crashed a Chromium renderer once (320×640, dark) under the audit's parallel load. | `Graph.tsx` | Deferred: not reproduced in isolation; watch in `test:pathways-ui` |
+| 23 | Home's two stacked segmented bars (Practice/Lessons/Progress, then Level/Pathways/Inventory) read as two equal navigation levels. | Home, Pathways, Inventory | Deferred: an information-architecture change, beyond polish |
+| 24 | Brand lockup varies: "AMP" on sign-in and sign-up, "AMP · Adaptive Math Pathways" on assessment cards, and "Adaptive Math PATHWAYS" on the atlas. | frames | Deferred: brand decision |
 
 Not defects:
 
@@ -73,4 +74,4 @@ These screens show grade numbers to learners. The copy is left as is pending tha
 
 ## Screenshots
 
-`before/` and `after/` hold the same screens at 390 and 1280 px, light and dark, captured by the audit and the verification.
+`before/` (from the audit, production bundle before the fixes) and `after/` (from the verification, production bundle with them) hold the same Chromium screens at 390 and 1280 px, light and dark. In the before set, `home`, `progress` and `inventory` show their settled state. The shifts happened during loading and are recorded in the findings above.
