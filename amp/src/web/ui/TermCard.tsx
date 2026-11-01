@@ -50,6 +50,7 @@ export function TermCard({
   // The term a learner drilled from, refocused when they come back.
   const returnTo = useRef<TermId | null>(null);
   const closing = useRef(false);
+  const pressedScrim = useRef(false);
   const side = useRef<"below" | "above" | null>(null);
   const current = cards.get(trail.at(-1)!)!;
   const previous = trail.length > 1 ? cards.get(trail.at(-2)!) : undefined;
@@ -180,9 +181,16 @@ export function TermCard({
         event.stopPropagation();
         finish();
       }}
+      // The scrim closes the card only when a press starts and ends on it, so
+      // selecting text and releasing outside the card never closes it.
+      onPointerDown={(event) => {
+        pressedScrim.current = event.target === event.currentTarget;
+      }}
       onClick={(event) => {
         event.stopPropagation();
-        if (event.target === event.currentTarget) finish();
+        if (event.target === event.currentTarget && pressedScrim.current)
+          finish();
+        pressedScrim.current = false;
       }}
       onKeyDown={(event) => event.stopPropagation()}
     >

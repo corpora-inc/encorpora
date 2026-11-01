@@ -9,7 +9,7 @@ import {
 import userEvent from "@testing-library/user-event";
 import { renderToStaticMarkup } from "react-dom/server";
 import { glossaryPayload } from "../../../glossary/resolve";
-import type { LinkContext } from "../../../glossary/link";
+import { termsIn, type LinkContext } from "../../../glossary/link";
 import { MathText } from "../../MathText";
 import { Glossary, GlossaryProvider } from "../Glossary";
 afterEach(cleanup);
@@ -185,7 +185,13 @@ test("Close and the scrim close the card; a click inside does not", async () => 
   await user.click(within(dialog).getByRole("button", { name: "Close" }));
   expect(screen.queryByRole("dialog")).toBeNull();
   await user.click(term("hypotenuse")[0]!);
-  fireEvent.click(screen.getByRole("dialog"));
+  // A press inside that ends on the scrim (selecting text) keeps it open.
+  const open = screen.getByRole("dialog");
+  fireEvent.pointerDown(open.querySelector(".term-card-plain")!);
+  fireEvent.click(open);
+  expect(screen.queryByRole("dialog")).not.toBeNull();
+  fireEvent.pointerDown(open);
+  fireEvent.click(open);
   expect(screen.queryByRole("dialog")).toBeNull();
 });
 
@@ -209,4 +215,20 @@ test("Escape in a card never closes the panel beneath it", async () => {
   );
   expect(outerCancels).toBe(0);
   expect(screen.queryByRole("dialog", { name: "hypotenuse" })).toBeNull();
+});
+
+test("links exactly the terms the server's linker finds, around formulas too", () => {
+  for (const text of [
+    "Mark ($y$)-intercept and the slope.",
+    "The value $x = 3$, an integer, is a solution.",
+    "Its $y$-intercept is 4, so the line crosses the $y$-axis there.",
+    "Halve $\\frac{1}{2}$: the numerator stays, the denominator doubles.",
+  ]) {
+    cleanup();
+    render(<Linked texts={[text]} />);
+    const shown = [...document.querySelectorAll<HTMLElement>(".glossary-term")]
+      .map((el) => el.dataset.termId)
+      .filter((id, i, all) => all.indexOf(id) === i);
+    expect(shown, text).toEqual(termsIn(text));
+  }
 });

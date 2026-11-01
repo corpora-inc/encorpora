@@ -20,17 +20,23 @@ export function MathText({ text }: { text: string }) {
   // to its card; formulas are never linked. Elsewhere, text is unchanged.
   const index = glossary && block ? block.texts.indexOf(text) : -1;
   const linked = new Set<TermId>();
-  const prose = (run: string) => {
-    if (!glossary || !block || index < 0) return run;
+  // `run` is the segment as the server's linker read it; the first `cut`
+  // characters (punctuation set with the formula before) are not shown.
+  const prose = (run: string, cut: number) => {
+    if (!glossary || !block || index < 0) return run.slice(cut);
+    let skip = cut;
     return linkProse(run, glossary.lexicon).map((piece, j) => {
+      const shown = piece.text.slice(skip);
+      skip = Math.max(0, skip - piece.text.length);
       const id = piece.id;
       if (
         !id ||
+        shown !== piece.text ||
         linked.has(id) ||
         !glossary.cards.has(id) ||
         block.first.get(id) !== index
       )
-        return piece.text;
+        return shown;
       linked.add(id);
       return <Term key={j} id={id} text={piece.text} />;
     });
@@ -45,7 +51,11 @@ export function MathText({ text }: { text: string }) {
             prev?.math && !BARE_SYMBOL.test(prev.text)
               ? segment.text.replace(CLOSING, "")
               : segment.text;
-          return text ? <span key={i}>{prose(text)}</span> : null;
+          return text ? (
+            <span key={i}>
+              {prose(segment.text, segment.text.length - text.length)}
+            </span>
+          ) : null;
         }
         const next = parts[i + 1];
         // Closing punctuation is set with its formula so a line never starts

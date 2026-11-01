@@ -55,7 +55,7 @@ Lessons, answer explanations and hints carry their cards as two additive fields 
 - `glossary: GlossaryCard[]`: every entry the payload's texts use, then every entry reachable through `uses`, so a learner can drill down without another request. A card's figure is a built scenes-v1 `Scene`.
 - `glossaryLexicon`: every form the linker matched in the payload's texts, mapped to the entry it means there or to `null` (an ordinary word, or ambiguous with no sense). Each card carries the same for its own definition and example in `lexicon`.
 
-`glossaryPayload(texts, context)` (`src/glossary/resolve.ts`) builds both. The server adds them to `ProblemLessonView`, to every hint (the batch's preloaded hints and `POST …/hints`), and to attempt and skip responses (`withGlossary` in `src/server/app.ts`), using the template's `lessonGlossaryContext`. They are never stored with an attempt.
+`glossaryPayload(texts, context)` (`src/glossary/resolve.ts`) builds both. The server adds them to `ProblemLessonView`, to every hint (the batch's preloaded hints and `POST …/hints`), and to attempt and skip responses (`withGlossary` in `src/server/app.ts`), using the template's `lessonGlossaryContext`. They are never stored with an attempt. The web hint panel links the cards of the hint preloaded with its batch; `POST …/hints` carries the same fields for other clients.
 
 The client never loads the glossary. `linkProse(text, lexicon)` (`src/glossary/scan.ts`) matches only the lexicon's forms with the linker's own boundaries, longest first. Every form the server's linker found is in the lexicon, so this reproduces its links exactly.
 
