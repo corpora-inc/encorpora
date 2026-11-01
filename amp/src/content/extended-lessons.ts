@@ -459,7 +459,7 @@ export const extendedLessons: Lesson[] = [
     pitfalls: [
       "A minus sign belongs to its number. In $5 + (-3)$, the $-3$ is a move of 3 steps to the left.",
       "Adding a negative number moves left, even though you are adding. $5 + (-3) = 2$, which is less than 5.",
-      "With different signs, the answer takes the sign of the number farther from 0. $(-8) + 3 = -5$, not 5.",
+      "With different signs, the answer takes the sign of the number farther from 0: $(-8) + 3 = -5$, not 5. If both are the same distance from 0, the answer is 0.",
     ],
     parentGuide:
       "Use counters in two colors, one for positive and one for negative. Build a sum such as $(-7) + 12$ and remove matching pairs. Ask the learner what is left, and why the answer is positive or negative.",

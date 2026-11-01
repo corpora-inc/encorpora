@@ -1320,7 +1320,7 @@ const legacyMethods: Record<string, ProblemMethod> = {
       "Equal sizes with different signs cancel completely: $(-3) + 3 = 0$.",
     ],
     watch:
-      "With different signs, the answer takes the sign of the number farther from 0. $-8 + 3 = -5$, not 5.",
+      "With different signs, the answer takes the sign of the number farther from 0: $-8 + 3 = -5$, not 5. If both are the same distance from 0, the answer is 0.",
   },
   "number-line-distance": {
     goal: "Given two points on a number line, find the distance between them.",
