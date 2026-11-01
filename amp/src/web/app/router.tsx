@@ -432,6 +432,17 @@ const workbookDay = createRoute({
     "WorkbookDayScreen",
   ),
 });
+const workbookResults = createRoute({
+  getParentRoute: () => root,
+  path: "/learners/$learnerId/workbooks/$workbookId/results",
+  beforeLoad: () => {
+    if (nativeRuntime) throw redirect({ to: "/" });
+  },
+  component: lazyRouteComponent(
+    () => import("../features/workbooks/WorkbookResultsScreen"),
+    "WorkbookResultsScreen",
+  ),
+});
 const funded = createRoute({
   getParentRoute: () => root,
   path: "/purchase/arkansas-efa",
@@ -514,6 +525,7 @@ export const router = createRouter({
     pathwaySkill,
     workbookHistory,
     workbookDay,
+    workbookResults,
     funded,
     fundedNewHampshire,
     fundedArizona,

@@ -17,8 +17,10 @@ import { buildApp } from "../src/server/app";
 import {
   ApiError,
   type LearnerTransaction,
+  type Outcome,
   type Repository,
 } from "../src/server/repository";
+import { defaultPracticeSettings } from "../src/learning/practice-settings";
 import type { WorkbookRecord } from "../src/workbook/contracts";
 import { sampleLearners, simulateLearner } from "../src/workbook/synthetic";
 import { retentionNotice } from "../src/family/contracts";
@@ -41,6 +43,7 @@ const simulated = simulateLearner(
   Date.now(),
 );
 const rows: WorkbookRecord[] = [];
+const attempts: Outcome[] = [];
 const repository = {
   hasConsent: async () => true,
   list: async () => [{ id: learnerId, name: "Maya", birthYear: 2017 }],
@@ -86,8 +89,17 @@ const repository = {
       ) => {
         rows.find((r) => r.id === workbookId)!.paper = paper;
       },
-      workbookPdf: async () => undefined,
-      saveWorkbookPdf: async () => undefined,
+      workbookByCode: async (code: string) => rows.find((r) => r.code === code),
+      recentWorkbooks: async () => rows,
+      practiceSettings: async () => defaultPracticeSettings(),
+      attemptByRequest: async (requestId: string) =>
+        attempts.find((a) => a.requestId === requestId),
+      attemptByProblem: async (problemId: string) =>
+        attempts.find((a) => a.problemId === problemId),
+      saveProblem: async () => undefined,
+      saveAttempt: async (outcome: Outcome) => {
+        attempts.push(outcome);
+      },
     } as unknown as LearnerTransaction);
   },
 } as unknown as Repository;
@@ -190,6 +202,8 @@ const me = fixtureMe(
 
 /** "pdf": the renderer is down; "all": the API cannot serve the file. */
 let failNextDownload: false | "pdf" | "all" = false;
+/** Every workbook read fails until cleared (the API is unreachable). */
+let failLoads = false;
 async function fixture(page: Page) {
   const errors: string[] = [];
   page.on("console", (message) => {
@@ -199,6 +213,11 @@ async function fixture(page: Page) {
   await page.route("**/api/v1/**", async (route) => {
     const request = route.request();
     const url = new URL(request.url());
+    if (url.pathname.includes("/workbooks") && failLoads)
+      return route.fulfill({
+        status: 503,
+        json: { error: "Workbooks are unavailable right now. Try again." },
+      });
     if (url.pathname.includes("/workbooks")) {
       const failing =
         failNextDownload &&
@@ -268,6 +287,64 @@ async function assertLayout(page: Page, label: string) {
   );
   assert.deepEqual(clipped, [], `${label}: clipped text`);
 }
+/** The length and paper choices: equal cells of equal height, every label
+ * and detail centred and on one line, and the selected outline at the same
+ * inset on every side of its group. */
+async function assertSegments(page: Page, label: string) {
+  const problems = await page.evaluate(() => {
+    const found: string[] = [];
+    for (const group of document.querySelectorAll("main [role=radiogroup]")) {
+      const name = group.getAttribute("aria-label");
+      const cells = [...group.querySelectorAll<HTMLElement>("[role=radio]")];
+      const boxes = cells.map((c) => c.getBoundingClientRect());
+      const widths = boxes.map((b) => b.width);
+      const heights = boxes.map((b) => b.height);
+      if (Math.max(...widths) - Math.min(...widths) > 1)
+        found.push(`${name}: unequal widths ${widths.map(Math.round)}`);
+      if (Math.max(...heights) - Math.min(...heights) > 1)
+        found.push(`${name}: unequal heights ${heights.map(Math.round)}`);
+      cells.forEach((cell, i) => {
+        const box = boxes[i]!;
+        for (const part of cell.querySelectorAll<HTMLElement>("span")) {
+          if (!part.textContent?.trim() || !part.getClientRects().length)
+            continue;
+          const range = document.createRange();
+          range.selectNodeContents(part);
+          const rects = [...range.getClientRects()].filter((r) => r.width);
+          const left = Math.min(...rects.map((r) => r.left));
+          const right = Math.max(...rects.map((r) => r.right));
+          if (Math.abs(left - box.left - (box.right - right)) > 1)
+            found.push(
+              `${name}: "${part.textContent}" off centre by ${Math.round(left - box.left - (box.right - right))}px`,
+            );
+          if (new Set(rects.map((r) => Math.round(r.top))).size > 1)
+            found.push(`${name}: "${part.textContent}" wraps`);
+          // At least 12 px of clear space between text and border, each side.
+          if (left < box.left + 12 || right > box.right - 12)
+            found.push(
+              `${name}: "${part.textContent}" has ${Math.round(left - box.left)}px left, ${Math.round(box.right - right)}px right`,
+            );
+        }
+      });
+      const selected = group.querySelector("[aria-checked=true]");
+      if (selected) {
+        const g = group.getBoundingClientRect();
+        const b = selected.getBoundingClientRect();
+        const style = getComputedStyle(group);
+        const inner = {
+          top: b.top - g.top - parseFloat(style.borderTopWidth),
+          bottom: g.bottom - b.bottom - parseFloat(style.borderBottomWidth),
+        };
+        if (Math.abs(inner.top - inner.bottom) > 1)
+          found.push(
+            `${name}: selected outline inset ${Math.round(inner.top)} top vs ${Math.round(inner.bottom)} bottom`,
+          );
+      }
+    }
+    return found;
+  });
+  assert.deepEqual(problems, [], `${label}: segmented controls`);
+}
 /** Positions of the controls that must never move. */
 const controlBoxes = (page: Page) =>
   page.evaluate(() =>
@@ -284,7 +361,7 @@ const controlBoxes = (page: Page) =>
 const browser = await chromium.launch();
 const summary: string[] = [];
 try {
-  for (const width of [320, 390, 768, 1280])
+  for (const width of [320, 360, 390, 768, 1280])
     for (const colorScheme of ["light", "dark"] as const) {
       const label = `${width}-${colorScheme}`;
       const context = await browser.newContext({
@@ -295,6 +372,7 @@ try {
       const page = await context.newPage();
       const errors = await fixture(page);
       rows.splice(2);
+      attempts.length = 0;
       await page.goto(`${origin}/learners/${learnerId}/workbooks/${today}`);
       await page
         .getByRole("heading", { name: "No. 1" })
@@ -307,6 +385,29 @@ try {
           throw error;
         });
       await assertLayout(page, label);
+      await assertSegments(page, label);
+      // The date heading keeps its word spaces.
+      const space = await page.evaluate(() => {
+        const h1 = document.querySelector("main h1")!;
+        const text = h1.firstChild!;
+        const at = text.textContent!.indexOf(" ");
+        const range = document.createRange();
+        range.setStart(text, at);
+        range.setEnd(text, at + 1);
+        return range.getBoundingClientRect().width;
+      });
+      assert.ok(space >= 4, `${label}: title word space is ${space}px`);
+      // No empty band between the actions and the contents card.
+      const gap = await page.evaluate(() => {
+        const actions = document
+          .querySelector("main [data-workbook-actions]")!
+          .getBoundingClientRect();
+        const contents = document
+          .querySelector("main [aria-label='Workbook contents']")!
+          .getBoundingClientRect();
+        return contents.top - actions.bottom;
+      });
+      assert.ok(gap <= 24, `${label}: ${Math.round(gap)}px gap above contents`);
       const before = await controlBoxes(page);
       assert.ok(before.length >= 4, "controls found");
       await page.screenshot({
@@ -356,12 +457,21 @@ try {
         .filter({ hasText: "didn't download" })
         .waitFor();
       assert.deepEqual(await controlBoxes(page), before, `${label}: error`);
+      // The message sits next to the actions, fully on screen.
+      const alertBox = await page
+        .getByRole("alert")
+        .filter({ hasText: "didn't download" })
+        .boundingBox();
+      assert.ok(
+        alertBox && alertBox.x >= 0 && alertBox.x + alertBox.width <= width,
+        `${label}: download message is off screen`,
+      );
       assert.ok(
         errors.some((e) => e.includes("AMP action failed")),
         "download failure is logged",
       );
       errors.length = 0;
-      if (width === 390)
+      if (width <= 390)
         await page.screenshot({ path: `${output}download-error-${label}.png` });
 
       // A download succeeds and clears the message.
@@ -402,6 +512,66 @@ try {
         path: `${output}history-${label}.png`,
         fullPage: true,
       });
+
+      // Results: open by the printed code, enter a typed answer and a mark,
+      // save; the rows lock as recorded and nothing moves.
+      const code = rows.find((r) => r.date === today)!.code;
+      await page
+        .getByLabel("Enter results with the workbook code")
+        .fill(code.toLowerCase().replace("-", ""));
+      await page.getByRole("button", { name: "Open", exact: true }).click();
+      await page.waitForURL(/\/results$/);
+      await page.getByRole("list", { name: "Problems" }).waitFor();
+      await assertLayout(page, `${label} results`);
+      const save = page.getByRole("button", { name: /result/ });
+      assert.equal(await save.isDisabled(), true);
+      const answer = page.getByRole("textbox", { name: "Answer" }).first();
+      await answer.fill("12345");
+      await page
+        .getByRole("radiogroup", { name: /^Mark problem/ })
+        .last()
+        .getByRole("radio", { name: "Right" })
+        .click();
+      await page.getByRole("button", { name: "Save 2 results" }).click();
+      // Radix also mirrors a toast into a live region: either copy will do.
+      await page
+        .getByText("2 results saved. Progress is updated.")
+        .first()
+        .waitFor();
+      assert.equal(attempts.length, 2);
+      assert.ok(attempts.every((a) => a.evidenceSource === "paper"));
+      await page.getByText(/^Not yet · answer 12345$/).waitFor();
+      await page.getByText(/^Right · marked$/).waitFor();
+      await assertLayout(page, `${label} results saved`);
+      await page.screenshot({
+        path: `${output}results-${label}.png`,
+        fullPage: true,
+      });
+      // Reload restores the screen and the recorded rows from the URL.
+      await page.reload();
+      await page.getByText(/^Right · marked$/).waitFor();
+
+      // A day that cannot load says so inside the contents card, with the
+      // one action that can recover; the controls above do not move.
+      failLoads = true;
+      await page.goto(
+        `${origin}/learners/${learnerId}/workbooks/${today}?minutes=30`,
+      );
+      const failure = page.getByLabel("Workbook contents").getByRole("alert");
+      await failure.waitFor();
+      await assertLayout(page, `${label} load error`);
+      await assertSegments(page, `${label} load error`);
+      assert.deepEqual(
+        await controlBoxes(page),
+        before,
+        `${label}: load error moved the controls`,
+      );
+      if (width <= 390)
+        await page.screenshot({ path: `${output}load-error-${label}.png` });
+      failLoads = false;
+      await failure.getByRole("button", { name: "Try again" }).click();
+      await page.getByRole("heading", { name: /^No\. / }).waitFor();
+      errors.length = 0;
 
       // A learner without practice access is sent to set it up, never to a
       // download that would fail.

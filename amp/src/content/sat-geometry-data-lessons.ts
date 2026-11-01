@@ -1,4 +1,5 @@
 import type { Lesson } from "./lessons";
+import { withTemplateGlossary } from "../math/template-glossary";
 import type { ProblemMethod } from "./problem-lessons";
 import {
   satGeometryDataTemplates,
@@ -141,9 +142,35 @@ export const satGeometryDataMethods: Record<string, ProblemMethod> =
 export const satGeometryDataPrinciples = Object.fromEntries(
   Object.entries(instruction).map(([id, value]) => [id, value.principle]),
 );
+const referenceNoLink: Record<string, string[]> = {
+  "circle-segment-lengths": [
+    "center",
+    "product",
+    "products",
+    "square",
+    "squared",
+    "squares",
+    "squaring",
+    "tangent",
+    "tangents",
+  ],
+  "independence-test": ["mean", "average", "averages"],
+  "midpoint-endpoint": ["square", "squared", "squares", "squaring"],
+  "space-diagonal": [
+    "root",
+    "roots",
+    "square",
+    "squared",
+    "squares",
+    "squaring",
+  ],
+  "trig-context-triangle": ["degree", "degrees", "tangent"],
+};
 export const satGeometryDataLessons: Lesson[] = satGeometryDataTemplates.map(
   (meta) => {
     const text = instruction[meta.id]!;
+    // The worked example is generated text: link its words as the template does.
+    const glossary = withTemplateGlossary(meta);
     const example = generateSatGeometryDataProblem(meta.id, "sat-reference");
     const response = example.public.response;
     const answer =
@@ -155,6 +182,13 @@ export const satGeometryDataLessons: Lesson[] = satGeometryDataTemplates.map(
       title: meta.title,
       summary: text.intuition,
       templateIds: [meta.id],
+      senses: glossary.glossarySenses,
+      // Until these reference lessons define the words at first use, the
+      // generated worked example links them only on the practice screen.
+      noLink: [
+        ...(glossary.glossaryNoLink ?? []),
+        ...(referenceNoLink[meta.id] ?? []),
+      ],
       includeGeneratedRepresentation: false,
       objectives: [text.goal, text.method[0]!],
       sections: [],

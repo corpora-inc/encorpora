@@ -24,6 +24,9 @@ import {
   type WorkbookItem,
   type WorkbookSpec,
 } from "./compose";
+import { glossaryEntry } from "../glossary/index";
+import { termsIn } from "../glossary/link";
+import type { GlossaryEntry } from "../glossary/types";
 import { workbookFontCss } from "./fonts";
 import { workbookLayoutScript } from "./layout-script";
 import { workbookResultsUrl } from "./links";
@@ -221,9 +224,32 @@ function cardParagraphs(section: Section): string[] {
   return out;
 }
 
+/** Glossary words the card's own text uses, in first-use order, at most
+ * six: the lesson's senses decide ambiguous words. */
+export function cardWords(lesson: Lesson): GlossaryEntry[] {
+  const section = cardSection(lesson);
+  const example = lesson.workedExample;
+  const texts = [
+    lesson.title,
+    lesson.summary,
+    ...(section ? cardParagraphs(section) : []),
+    example.prompt,
+    ...example.steps,
+    example.answer,
+    lesson.pitfalls[0] ?? "",
+  ];
+  const context = { senses: lesson.senses, noLink: lesson.noLink };
+  const ids: string[] = [];
+  for (const text of texts)
+    for (const id of termsIn(text, context))
+      if (!ids.includes(id)) ids.push(id);
+  return ids.slice(0, 6).map(glossaryEntry);
+}
+
 function LessonCard({ lesson }: { lesson: Lesson }) {
   const section = cardSection(lesson);
   const example = lesson.workedExample;
+  const words = cardWords(lesson);
   const visual = section?.illustration;
   const idea = section && (
     <div className="wb-lesson-idea">
@@ -288,6 +314,21 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
         <div className="wb-lesson-grid">
           {idea}
           {worked}
+        </div>
+      )}
+      {words.length > 0 && (
+        <div className="wb-words" data-trim="4">
+          <h4 className="wb-lesson-label">Words to know</h4>
+          <dl>
+            {words.map((w) => (
+              <div key={w.id}>
+                <dt>{w.term}</dt>
+                <dd>
+                  <PrintMathText text={w.plain} />
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       )}
       {lesson.pitfalls[0] && (
@@ -978,6 +1019,8 @@ background-image:linear-gradient(var(--grid-line) 0.7px,transparent 0.7px),linea
 .wb-lesson-idea p{margin:0 0 5px}
 .wb-lesson-visual{display:flex;justify-content:center;min-width:0}
 .wb .wb-lesson [data-trimmed]{display:none}
+.wb-lesson--stacked .wb-lesson-grid{grid-template-columns:minmax(0,1fr)!important}
+.wb-lesson--stacked .wb-example{margin-top:0.08in}
 .wb-lesson--visual:has(.wb-lesson-visual[data-trimmed]) .wb-lesson-grid{grid-template-columns:minmax(0,1fr)}
 .wb-lesson-visual svg,.wb-lesson-visual .figure{max-width:100%;max-height:2.3in;margin:0 auto}
 .wb-example{background:color-mix(in srgb,var(--accent) 6%,transparent);border-radius:var(--radius);padding:0.1in 0.13in}
@@ -992,10 +1035,17 @@ background-image:linear-gradient(var(--grid-line) 0.7px,transparent 0.7px),linea
 .wb-example-answer{margin:6px 0 0!important;font-weight:700}
 .wb-example-answer-label,.wb-watch-label{display:inline-block;margin-right:6px;padding:1px 7px;border-radius:999px;font-size:var(--small);font-weight:800;letter-spacing:0.05em;text-transform:uppercase;line-height:1.5}
 .wb-example-answer-label{background:var(--accent);color:var(--color-on-primary)}
+.wb-words{margin:0.1in 0 0;padding:0.08in 0.12in 0.06in;border:1px solid var(--rule-strong);border-radius:var(--radius)}
+.wb-words dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:0.22in;row-gap:3px;margin:2px 0 0}
+.wb-words dl>div{display:block;min-width:0;font-size:calc(var(--body) * 0.9);line-height:1.38}
+.wb-words dt{display:inline;font-weight:700;margin-right:5px}
+.wb-words dd{display:inline;margin:0}
+.wb--early .wb-words dl{grid-template-columns:minmax(0,1fr)}
 .wb-watch{margin:0.1in 0 0;padding:0.06in 0 0.02in 0.12in;border-left:3px solid var(--color-danger-accent);font-size:calc(var(--body) * 0.96)}
 .wb-watch-label{border:1.3px solid var(--color-danger-accent);color:var(--color-danger-accent)}
 
 .wb-try{border-bottom:none}
+.wb .wb-try .wb-work{min-height:calc(0.6in + var(--wb-grow,0px))}
 .wb-try-inner{flex:1 1 auto;display:flex;flex-direction:column;padding:0.12in 0 0.04in}
 .wb-try-label{margin:0 0 2px;font-size:var(--small);color:var(--muted)}
 .wb-try-label .wb-lesson-label{display:inline;margin-right:6px}

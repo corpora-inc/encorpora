@@ -210,43 +210,50 @@ export const equationLessons: Lesson[] = [
     id: "two-step-equation",
     title: "Solve two-step equations",
     summary:
-      "Undo the operations in the reverse of the order they were applied, doing each step to both sides.",
+      "An equation says two amounts are equal, like $3x + 5 = 20$. The letter $x$ stands for an unknown number. In a two-step equation, two things were done to $x$. To find $x$, undo them in reverse order, the last one first. Do each step to both sides so they stay equal.",
     templateIds: ["two-step-equation"],
+    senses: { side: "side-of-equation" },
+    noLink: ["leaves", "mean", "part"],
     objectives: [
-      "Explain why a two-step equation is solved by undoing its operations in reverse order.",
-      "Solve $px + q = r$ and p(x + q) = r with positive and negative integers and decimals, and check the solution.",
+      "Explain why a two-step equation is solved by undoing its two operations (actions such as multiply or add) in reverse order.",
+      "Solve equations like $3x + 5 = 20$ and $4(x - 3) = 28$ with positive and negative numbers and decimals, and check the solution.",
     ],
     sections: [
       {
         stage: "intuition",
-        title: "Reverse the order of operations",
+        title: "Undo the last step first",
         paragraphs: [
-          "This lesson uses arithmetic with positive and negative numbers. In an equation, a variable such as $x$ stands for an unknown number, and 3x means 3 × x. A solution is a value of $x$ that makes both sides equal. Doing the same operation to both sides keeps them equal, so each step gives an equation with the same solution.",
-          "Read 3x + 5 = 20 as a sequence: start with $x$, multiply by 3, then add 5, and the result is 20. To get back to $x$, undo the last operation first: subtract 5 to get 20 − 5 = 15, then divide by 3 to get 15 ÷ 3 = 5. Shoes put on after socks come off first.",
+          "An equation is a statement that two amounts are equal. It has an equals sign, with a left side and a right side. A variable is a letter, such as $x$, that stands for an unknown number. Writing $3x$ means 3 times $x$. A solution is a value of $x$ that makes the two sides equal.",
+          "Read $3x + 5 = 20$ as a story about a number. Start with $x$. Multiply it by 3. Then add 5. The result is 20. To get back to $x$, undo the steps in reverse order, the last one first.",
+          "The last step was add 5, so subtract 5: 20 − 5 = 15. Before that came multiply by 3, so divide by 3: 15 ÷ 3 = 5. So $x = 5$. Check: 3 × 5 + 5 = 15 + 5 = 20. It is like socks and shoes: socks go on first, so they come off last.",
+          "Each undo step is done to both sides of the equation. If two amounts are equal and you subtract 5 from each, they are still equal. So every new equation has the same solution as the one before it.",
         ],
         illustration: "undo-chain",
       },
       {
         title: "Parentheses change the order",
         paragraphs: [
-          "In 4(x − 3) = 28, the parentheses come first: subtract 3 from $x$, then multiply by 4. Undo in reverse: divide both sides by 4 to get x − 3 = 28 ÷ 4 = 7, then add 3 to get x = 7 + 3 = 10.",
-          "You may also distribute first, because 4(x − 3) = 4x − 12. Then 4x − 12 = 28 gives 4x = 28 + 12 = 40 and x = 40 ÷ 4 = 10. Both routes give the same solution because every step keeps the sides equal.",
+          "Parentheses, the curved brackets ( ), mean do this part first. A number written right before parentheses multiplies everything inside them. So in $4(x - 3) = 28$, the steps were: subtract 3 from $x$, then multiply by 4.",
+          "Undo in reverse. The last step was multiply by 4, so divide both sides by 4: $x - 3 = 28 \\div 4 = 7$. Then undo the subtraction by adding 3 to both sides: $x = 7 + 3 = 10$.",
+          "Another route is to distribute first, which means multiplying the outside number by each part inside: $4(x - 3) = 4x - 12$. Then $4x - 12 = 28$. Add 12 to both sides to undo the − 12: $4x = 40$. Divide both sides by 4 to undo the multiplication: $x = 10$. Both routes agree, because every step kept the two sides equal.",
         ],
       },
       {
         title: "Negative numbers and decimals",
         paragraphs: [
-          "The steps do not change when numbers are negative. For −2x + 7 = 19, subtract 7: −2x = 19 − 7 = 12. Divide by −2: x = 12 ÷ (−2) = −6. Dividing numbers with different signs gives a negative result.",
-          "Check by substituting into the original equation: −2 × (−6) + 7 = 12 + 7 = 19. With decimals, as in 0.5x − 1.5 = 2.5, add 1.5 to get 0.5x = 2.5 + 1.5 = 4, then divide: x = 4 ÷ 0.5 = 8.",
+          "The steps are the same when numbers are negative (less than 0). In $-2x + 7 = 19$, the number multiplying $x$ is $-2$. The number multiplying the variable $x$, sign included (positive or negative), is called the coefficient. First undo the + 7 by subtracting 7 from both sides: $-2x = 12$. Then undo the multiplication by $-2$: divide both sides by $-2$, which leaves $x$ alone. That gives $x = 12 \\div (-2) = -6$. A positive number divided by a negative number gives a negative answer.",
+          "Check by putting $-6$ back into the original equation: $-2 \\times (-6) + 7 = 12 + 7 = 19$. Both sides are 19, so $-6$ is the solution, the value that makes the two sides equal.",
+          "Decimals work the same way. In $0.5x - 1.5 = 2.5$, add 1.5 to both sides to undo the − 1.5: $0.5x = 4$. Divide both sides by 0.5 to undo the multiplication: $x = 4 \\div 0.5 = 8$, because 0.5 fits into 4 eight times. Check: $0.5 \\times 8 - 1.5 = 4 - 1.5 = 2.5$.",
         ],
       },
     ],
     workedExample: {
       prompt: "Solve for x: −3(x + 4) = 18.",
       steps: [
-        "The parentheses are multiplied by −3, the last operation. Divide both sides by −3: x + 4 = 18 ÷ (−3) = −6.",
-        "Subtract 4 from both sides: x = −6 − 4 = −10.",
-        "Check: −3 × (−10 + 4) = −3 × (−6) = 18.",
+        "Parentheses, the curved brackets ( ), group a part to do first, and a number written right before them multiplies everything inside. So first 4 was added to $x$, then the result was multiplied by $-3$. Multiplying by $-3$ came last, so undo it first.",
+        "Divide both sides by $-3$: $x + 4 = 18 \\div (-3) = -6$. A positive number (greater than 0) divided by a negative number (less than 0) is negative.",
+        "Undo the + 4 by subtracting 4 from both sides: $x = -6 - 4 = -10$.",
+        "Check in the original equation: $-3 \\times (-10 + 4) = -3 \\times (-6) = 18$. A negative times a negative is positive, so the left side is 18, the same as the right side.",
       ],
       answer: "−10",
     },
@@ -255,17 +262,17 @@ export const equationLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "Operations applied to $x$ are undone in reverse order, and each step done to both sides keeps the equation's solution unchanged.",
+          "Adding the same number to both sides of an equation, or subtracting it from both sides, keeps exactly the same solutions. So does multiplying or dividing both sides by the same number, as long as that number is not 0. Because of this, the operations (adding, subtracting, multiplying, dividing) applied to $x$ can be undone in reverse order. Undo one step at a time, on both sides.",
         ],
       },
     ],
     pitfalls: [
-      "Undo addition or subtraction before multiplication: for 3x + 5 = 20, do not divide 20 by 3 first.",
-      "Keep the sign with the coefficient: in 7 − 2x = 1 the coefficient of $x$ is −2, so −2x = 1 − 7 = −6 and x = 3.",
-      "When distributing, multiply every term inside the parentheses: 4(x − 3) is 4x − 12, not 4x − 3.",
+      "Undo the last operation first. In $3x + 5 = 20$, the + 5 came last, so subtract 5 before dividing by 3. In $4(x - 3) = 28$, the multiplication came last, so divide by 4 first.",
+      "Keep the sign with the coefficient. In $7 - 2x = 1$, the coefficient of $x$ is $-2$. Subtract 7 from both sides to undo the 7: $-2x = -6$. Then divide both sides by $-2$: $x = 3$.",
+      "When distributing, multiply every part inside the parentheses. $4(x - 3)$ is $4x - 12$, not $4x - 3$.",
     ],
     parentGuide:
-      "Play “guess my number”: “I multiplied my number by 3, added 5 and got 20.” Take turns inventing and solving these, working backward one step at a time.",
+      "Play “guess my number”: “I multiplied my number by 3, added 5 and got 20.” Take turns inventing and solving these. Work backward one step at a time, and say which step is being undone.",
   },
   {
     id: "two-step-word-problem",
@@ -681,15 +688,17 @@ export const equationMethods: Record<string, ProblemMethod> = {
     watch: "Change both pans in the same way, never one pan alone.",
   },
   "two-step-equation": {
-    goal: "Solve $px + q = r$ or p(x + q) = r for $x$.",
+    goal: "Find the unknown number $x$ in an equation where two operations were done to it, such as $3x + 5 = 20$ or $4(x - 3) = 28$.",
+    senses: { side: "side-of-equation" },
     terms: ["coefficient"],
     method: [
-      "Name the last operation applied to $x$ and undo it on both sides.",
-      "Undo the remaining operation on both sides.",
-      "Check by substituting into the original equation.",
+      "List what was done to $x$, in order. In $3x + 5$, $x$ was multiplied by 3 and then 5 was added. In $4(x - 3)$, 3 was subtracted and then the result was multiplied by 4.",
+      "Undo the last operation (adding, subtracting or multiplying) on both sides. Subtract what was added, add what was subtracted, divide by the number that multiplied, or multiply by the number that divided.",
+      "Undo the remaining operation on both sides. Now $x$ stands alone.",
+      "Check: put your answer into the original equation and confirm both sides are equal.",
     ],
     watch:
-      "For $px + q$, undo the + $q$ first; for p(x + q), divide by $p$ first.",
+      "In $3x + 5$, undo the + 5 first. In $4(x - 3)$, divide by 4 first, because that multiplication happened last.",
   },
   "two-step-word-problem": {
     goal: "Write and solve a two-step equation for a story.",
@@ -794,7 +803,7 @@ export const equationPrinciples: Record<string, string> = {
   "balance-one-step":
     "Removing equal weights from both pans, or splitting both pans into the same number of equal groups, keeps a balance level.",
   "two-step-equation":
-    "Operations applied to $x$ are undone in reverse order, and each step done to both sides keeps the equation's solution unchanged.",
+    "Doing the same operation to both sides of an equation keeps its solution, the value of $x$ that makes it true. This works for adding, subtracting, and multiplying or dividing by the same number other than 0. So the operations applied to $x$ are undone in reverse order.",
   "two-step-word-problem":
     "A repeated amount multiplies the unknown and a one-time amount is added once: $px + q = r$. Equal groups that each contain the unknown give p(x + q) = r.",
   "two-step-equation-model":

@@ -151,7 +151,7 @@ The check runs as the image’s unprivileged user. It validates the complete cat
 
 ### Workbook render service
 
-Daily workbook PDFs are rendered on request, so they need a browser, and the API image has none. The `render` image (`docker build --target render`, `src/render-service/`) is a small internal service: HTML in, PDF out, through headless Chromium. The API checks the parent's access, builds the document and posts it with a shared secret. It caches each PDF for `RETENTION.workbookPdfHours` (24) in `amp_workbook_pdfs`, and deletes it earlier with the learner's learning data.
+Daily workbook PDFs are rendered on request, so they need a browser, and the API image has none. The `render` image (`docker build --target render`, `src/render-service/`) is a small internal service: HTML in, PDF out, through headless Chromium. The API checks the parent's access, builds the document and posts it with a shared secret. Rendered PDFs are not stored anywhere: each download renders afresh (about 0.4–1 s) and streams to the parent. Only the workbook spec, which is practice data, is kept.
 
 | Setting | Where | Value |
 | --- | --- | --- |
@@ -169,7 +169,7 @@ Daily workbook PDFs are rendered on request, so they need a browser, and the API
 - Logs are one JSON object per line: render time, size and format, or the failure. They never include document content.
 - Sizing: 1 vCPU and 1 GB of memory serve the default concurrency of 2. A 45-minute workbook renders in about 0.5 to 1 s on one CPU.
 
-If `AMP_RENDER_URL` is not set in hosted mode, the API logs a warning at startup. Workbook history then reports `pdf: false`, and downloads fall back to the printable HTML document, which the parent prints from the browser; no download button fails. When the service is configured but unreachable or failing, a PDF request is logged and answers 503: "Your workbook is being prepared; try again in a minute." The screen then downloads the printable document instead, so the parent still gets a workbook to print. A PDF that renders but fails to cache is still sent; the cache failure is logged. Requests waiting longer than `AMP_RENDER_TIMEOUT_MS` for a free slot get 503, and a request whose caller has gone is not rendered. Development without `AMP_RENDER_URL` renders in the API process with the local Playwright Chromium (`npx playwright install chromium`).
+If `AMP_RENDER_URL` is not set in hosted mode, the API logs a warning at startup. Workbook history then reports `pdf: false`, and downloads fall back to the printable HTML document, which the parent prints from the browser; no download button fails. When the service is configured but unreachable or failing, a PDF request is logged and answers 503: "Your workbook is being prepared; try again in a minute." The screen then downloads the printable document instead, so the parent still gets a workbook to print. Requests waiting longer than `AMP_RENDER_TIMEOUT_MS` for a free slot get 503, and a request whose caller has gone is not rendered. Development without `AMP_RENDER_URL` renders in the API process with the local Playwright Chromium (`npx playwright install chromium`).
 
 Acceptance for a render image:
 
