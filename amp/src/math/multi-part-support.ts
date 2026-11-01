@@ -6,6 +6,7 @@ import type {
 } from "./contracts";
 import { random, shuffle, type Random } from "./distribution-practice";
 import {
+  cardRows,
   multiPartChoiceResponseSchema,
   serializeMultiPart,
   type MultiPartBlank,
@@ -76,7 +77,10 @@ function blankOf(r: Random, slot: Slot): MultiPartBlank {
 
 export interface Built {
   prompt: string;
-  layout: "inline" | "table" | "slots";
+  layout: "inline" | "table" | "slots" | "cards";
+  /** Cards: a card may fill more than one box. Otherwise each box of a tray
+   * row takes a different card, so the key never repeats one. */
+  reuse?: boolean;
   /** The label above the controls. */
   label: string;
   slots: readonly Slot[];
@@ -107,13 +111,18 @@ export function multiPartProblem(
   r: Random,
   built: Built,
 ): GeneratedProblem {
+  const cards = built.layout === "cards";
+  if (cards && !built.slots.every((s) => s.fixed))
+    throw new Error(`${meta.id}: every card box draws from a fixed tray row`);
+  if (built.reuse && !cards)
+    throw new Error(`${meta.id}: only cards can be reused`);
   const blanks = built.slots.map((s) => blankOf(r, s));
   const response: MultiPartChoiceResponse = {
     kind: "multi-part-choice",
     label: built.label,
     layout: built.layout,
     blanks,
-    ...(built.layout === "inline"
+    ...(built.layout === "inline" || cards
       ? {
           sentence: built.sentence?.map((part) =>
             "text" in part ? { text: texCommas(part.text) } : part,
@@ -121,8 +130,16 @@ export function multiPartProblem(
         }
       : {}),
     ...(built.layout === "table" ? { rowHeader: built.rowHeader } : {}),
+    ...(built.reuse ? { reuse: true as const } : {}),
   };
   multiPartChoiceResponseSchema.parse(response);
+  if (cards && !built.reuse)
+    for (const row of cardRows(response)) {
+      const used = row.blanks.map((b) =>
+        tidy(built.slots[blanks.indexOf(b)]!.correct),
+      );
+      need(new Set(used).size === used.length, "a different card per box");
+    }
   const key = Object.fromEntries(
     blanks.map((b, i) => [
       b.id,
@@ -242,6 +259,43 @@ export function inlineSentence(parts: readonly (string | Slot)[]): {
   }
   return { sentence, slots };
 }
+
+/** The numeric value of a card label: 12, −3, 1,250, 0.75, $\frac{2}{3}$,
+ * $-\frac{5}{4}$; null for a symbol or a variable. */
+export function cardValue(label: string): number | null {
+  const text = label
+    .replaceAll("$", "")
+    .replaceAll("−", "-")
+    .replaceAll("{,}", "")
+    .replaceAll(",", "")
+    .trim();
+  const fraction = /^(-?)\\d?frac\{(\d+)\}\{(\d+)\}$/.exec(text);
+  if (fraction)
+    return (fraction[1] ? -1 : 1) * (Number(fraction[2]) / Number(fraction[3]));
+  return /^-?\d+(\.\d+)?$/.test(text) ? Number(text) : null;
+}
+/** A tray row of number cards: each label once, least to greatest, so the
+ * order says nothing about which card goes where. Labels that are not
+ * numbers (a variable) follow in the order given. */
+export function cardTray(labels: readonly (string | number)[]): string[] {
+  const unique = [...new Set(labels.map((l) => tidy(String(l))))];
+  const numbers = unique.filter((l) => cardValue(l) !== null);
+  need(
+    new Set(numbers.map((l) => cardValue(l))).size === numbers.length,
+    "cards of different values",
+  );
+  return [
+    ...numbers.sort((a, b) => cardValue(a)! - cardValue(b)!),
+    ...unique.filter((l) => cardValue(l) === null),
+  ];
+}
+/** A box filled from a tray row. */
+export const cardSlot = (
+  id: string,
+  label: string,
+  correct: string | number,
+  tray: readonly string[],
+): Slot => ({ id, label, correct: tidy(String(correct)), fixed: tray });
 
 /** English list: "a, b and c". */
 export const listOf = (items: readonly string[]) =>

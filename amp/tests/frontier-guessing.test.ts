@@ -174,14 +174,33 @@ test("guess chance comes from each family's answer schema and is never understat
           chance >= 1 / response.options.length - 1e-12,
           `${template.id} seed ${i}: ${response.options.length} options, chance ${chance}`,
         );
-      if (response.kind === "multi-part-choice")
-        // One combination of one option per blank among all combinations.
+      if (response.kind === "multi-part-choice") {
+        // Count the answers a blind learner can submit: one option per
+        // blank, and for cards used once, blanks that share a tray row take
+        // different cards (counted here by enumeration, not the formula).
+        const rows = new Map<string, number>();
+        for (const b of response.blanks) {
+          const key = JSON.stringify(b.options);
+          rows.set(key, (rows.get(key) ?? 0) + 1);
+        }
+        const once = response.layout === "cards" && !response.reuse;
+        let answers = 1;
+        for (const [key, boxes] of rows) {
+          const n = (JSON.parse(key) as unknown[]).length;
+          let count = 0;
+          const walk = (depth: number, used: Set<number>) => {
+            if (depth === boxes) return void count++;
+            for (let c = 0; c < n; c++)
+              if (!once || !used.has(c)) walk(depth + 1, new Set([...used, c]));
+          };
+          walk(0, new Set());
+          answers *= count;
+        }
         assert.ok(
-          chance >=
-            1 / response.blanks.reduce((n, b) => n * b.options.length, 1) -
-              1e-12,
-          template.id,
+          chance >= 1 / answers - 1e-12,
+          `${template.id} seed ${i}: 1/${answers} > ${chance}`,
         );
+      }
       if (response.kind === "multi-select") {
         // Enumerate permitted sets independently of the binomial implementation.
         const possibilities = Array.from(

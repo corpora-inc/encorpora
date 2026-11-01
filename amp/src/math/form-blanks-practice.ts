@@ -1,6 +1,7 @@
 import type { TemplateMetadata } from "./contracts";
 import { defineAxis } from "./variation/axes";
 import {
+  cardTray,
   defineGenerate,
   entry,
   frac,
@@ -346,7 +347,7 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
     ({ meta, seed, r, axes }) => {
       const factor = pick(r, [0.9, 0.91]);
       const amount = axes.amount === "tens" ? r(2, 9) * 10 : r(2, 9) * 100;
-      const bank = shuffle(r, ["1", dec(factor), String(amount), "$x$"]);
+      const bank = cardTray(["1", dec(factor), String(amount), "$x$"]);
       const slots: Slot[] = [
         {
           id: "a",
@@ -369,7 +370,7 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
         { id: "d", label: "The meters to find", correct: "$x$", fixed: bank },
       ];
       const built = inlineSentence([
-        "Yards to meters: ",
+        "Yards to meters:\n",
         slots[0]!,
         " : ",
         slots[1]!,
@@ -380,8 +381,8 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
       ]);
       return multiPartProblem(meta, seed, r, {
         prompt: `One yard is about ${dec(factor)} meter. The first ratio in the proportion is the conversion factor, yards to meters. Complete the proportion that finds $x$, the number of meters in ${amount} yards.`,
-        layout: "inline",
-        label: "Choose a number or $x$ for each gap",
+        layout: "cards",
+        label: "Put a card in each box",
         slots: built.slots,
         sentence: built.sentence,
         hint: `A proportion says two ratios are equal. Both ratios compare yards to meters, so yards go on the left of each colon. The conversion factor is 1 yard to ${dec(factor)} meter; the other ratio uses ${amount} yards and the unknown $x$.`,

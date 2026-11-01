@@ -967,28 +967,29 @@ export const statementBlanksGenerate = defineGenerate(
           r,
           four.map((x) => `$${x.tex}$`),
         );
+        // The tray keeps its shuffled order: ordered cards would give the
+        // least and the greatest away.
         const built = inlineSentence([
-          "First statement: ",
           {
             id: "less",
             label: "The number for the first statement",
             correct: `$${b1.tex}$`,
             fixed: labels,
           } as Slot,
-          ` $<${b2.tex}$. Second statement: `,
+          ` $<${b2.tex}$\n`,
           {
             id: "more",
             label: "The number for the second statement",
             correct: `$${b4.tex}$`,
             fixed: labels,
           } as Slot,
-          ` $>${b3.tex}$.`,
+          ` $>${b3.tex}$`,
         ]);
         return multiPartProblem(meta, seed, r, {
           prompt:
-            "Choose a number from the bank to make each inequality true. Each statement has exactly one number that works.",
-          layout: "inline",
-          label: "Choose a number for each statement",
+            "Make both inequalities true. Exactly one of the four numbers works in each.",
+          layout: "cards",
+          label: "Put a card in each box",
           slots: built.slots,
           sentence: built.sentence,
           hint: `Compare each bank number with $${b2.tex}$ for the first statement: only one number is to the left of it on the number line. For the second statement, compare with $${b3.tex}$ and look to the right.`,

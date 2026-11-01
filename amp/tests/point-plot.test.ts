@@ -597,6 +597,7 @@ test("clients without point-plot-v1 are never served these families, online or o
       "multi-part-choice-v1",
       "figure-choice-v1",
       "structured-work-v1",
+      "multi-part-cards-v1",
     ],
   );
   for (const client of [

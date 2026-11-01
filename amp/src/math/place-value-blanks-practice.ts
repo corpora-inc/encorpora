@@ -605,17 +605,18 @@ export const placeValueBlanksGenerate = defineGenerate(
           fixed: SYMBOLS,
         }));
         const built = inlineSentence([
-          `First comparison: $${rows[0]!.left.replaceAll(",", "{,}")}$ `,
+          `$${rows[0]!.left.replaceAll(",", "{,}")}$ `,
           slots[0]!,
-          ` $${rows[0]!.right.replaceAll(",", "{,}").replaceAll(" + ", "+")}$.  Second comparison: $${rows[1]!.left.replaceAll(",", "{,}")}$ `,
+          ` $${rows[0]!.right.replaceAll(",", "{,}").replaceAll(" + ", "+")}$\n$${rows[1]!.left.replaceAll(",", "{,}")}$ `,
           slots[1]!,
-          ` $${rows[1]!.right.replaceAll(",", "{,}").replaceAll(" + ", "+")}$.`,
+          ` $${rows[1]!.right.replaceAll(",", "{,}").replaceAll(" + ", "+")}$`,
         ]);
         return multiPartProblem(meta, seed, r, {
           prompt:
             "Choose the symbol that makes each comparison true: less than, equal to or greater than.",
-          layout: "inline",
-          label: "Choose a symbol for each comparison",
+          layout: "cards",
+          reuse: true,
+          label: "Put a symbol card in each box",
           slots: built.slots,
           sentence: built.sentence,
           hint: `In the pair with ${rows[0]!.left}, compare the digits from the left and stop at the first place that differs. If one number is written as a sum, add its parts first.`,

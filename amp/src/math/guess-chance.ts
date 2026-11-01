@@ -18,16 +18,19 @@ const STRUCTURED_SEEDS = 128;
  * are rarer than the deterministic sample. Keep these in sync with the
  * generator-variation audit in frontier-guessing.test.ts. */
 const MULTI_PART_GUESS_FLOOR: Readonly<Record<string, number>> = {
-  "booth-equation-slots": 1 / 16,
   "circle-estimate-blanks": 1 / 8,
   "round-decimal-blanks": 1 / 8,
   "quotient-remainder-blanks": 1 / 8,
   "unit-rate-pair-blanks": 1 / 8,
-  "table-equation-slots": 1 / 24,
   "decimal-mixed-number-blanks": 1 / 48,
   "round-place-blanks": 1 / 36,
   "round-addends-sum": 1 / 36,
   "expanded-decimal-slots": 1 / 54,
+  // Answers given before these families moved to cards were inline picks
+  // with fewer combinations; the estimator rescores them with today's value.
+  "square-root-solutions-slots": 1 / 16,
+  "dilation-rule-slots": 1 / 16,
+  "budget-inequality-slots": 1 / 36,
 };
 /** An unregistered choice family is scored as the most guessable choice: two
  * options. Overstating the guess chance only discounts a correct answer. */

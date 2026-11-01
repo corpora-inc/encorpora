@@ -298,6 +298,34 @@ test(
       assert.equal(flag.response_kind, "multi-part-choice");
       assert.equal(flag.response, oneWrong);
 
+      // An equation built from cards reaches a client that draws cards as
+      // cards, and an older client as the same blanks inline; both grade.
+      for (const [capabilities, layout] of [
+        [[...current, "multi-part-cards-v1"], "cards"],
+        [current, "inline"],
+      ] as const) {
+        const r = await batch({
+          count: 1,
+          templateId: "array-division-slots",
+          responseCapabilities: capabilities,
+          figureCapabilities: ["scenes-v1"],
+        });
+        assert.equal(r.statusCode, 200, r.body);
+        const problem = r.json().problems[0] as PublicProblem;
+        assert.equal(
+          problem.response.kind === "multi-part-choice" &&
+            problem.response.layout,
+          layout,
+        );
+        const saved = (
+          await repository.pool.query(
+            "SELECT content FROM amp_instances WHERE id=$1",
+            [problem.id],
+          )
+        ).rows[0]!.content;
+        assert.equal(saved.public.response.layout, layout, "stored as served");
+      }
+
       // Mixed practice for an older client never issues a multi-part item.
       for (let i = 0; i < 6; i++) {
         const r = await batch({

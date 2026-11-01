@@ -50,6 +50,7 @@ export const clientResponseCapabilities = [
   "multi-part-choice-v1",
   "figure-choice-v1",
   "structured-work-v1",
+  "multi-part-cards-v1",
 ];
 /** Figure capabilities an API may predate. An older API rejects the value;
  * the client then asks without it and receives the legacy figure surfaces. */

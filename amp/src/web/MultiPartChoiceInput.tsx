@@ -1,9 +1,18 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { useId, useState, type CSSProperties, type FormEvent } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type CSSProperties,
+  type FormEvent,
+} from "react";
 import { MathText, spokenMath } from "./MathText";
 import {
+  cardRows,
   chooseOption,
   chosenCount,
+  clearChoice,
   draftChoices,
   multiPartMarks,
   type MultiPartBlank,
@@ -13,9 +22,10 @@ import {
 
 /* Multi-part choice: one option per blank, row or slot. Every control keeps
    its size from the first frame (a blank is as wide as its widest option),
-   menus open over the page, and review marks are drawn inside the controls,
-   so choosing, checking and feedback never move anything. Styles live in
-   multi-part-choice.css; this module also loads under Node. */
+   menus open over the page, cards leave their outline in the tray, and
+   review marks are drawn inside the controls, so choosing, checking and
+   feedback never move anything. Styles live in multi-part-choice.css; this
+   module also loads under Node. */
 
 const capitalize = (text: string) =>
   text.charAt(0).toUpperCase() + text.slice(1);
@@ -152,6 +162,194 @@ function BlankPicker({
   );
 }
 
+/** A sentence text run; in a cards sentence a line break starts a line. */
+function SentenceText({ text }: { text: string }) {
+  const lines = text.split(/\s*\n\s*/);
+  return (
+    <span aria-hidden="true">
+      {lines.map((line, i) => (
+        <span key={i}>
+          {i > 0 && <br />}
+          {line && <MathText text={line} />}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+/** An equation with boxes and a tray of cards under it. Tapping a card puts
+ * it in the selected box, or else the first empty box its row fills; tapping
+ * a filled box takes its card back and selects the box. A placed card leaves
+ * its outline in the tray unless cards are reused. */
+function CardEquation({
+  response,
+  value,
+  onChange,
+  locked,
+  review,
+}: {
+  response: MultiPartChoiceResponse;
+  value: string;
+  onChange: (value: string) => void;
+  locked: boolean;
+  review: PartMark[] | null;
+}) {
+  const [selected, setSelected] = useState<string | null>(null);
+  const tray = useRef<HTMLDivElement>(null);
+  // A placed card is disabled under the keyboard; focus moves to the next
+  // card that can be placed, or to the box it filled.
+  const refocus = useRef<string | null>(null);
+  useEffect(() => {
+    const filled = refocus.current;
+    refocus.current = null;
+    if (!filled) return;
+    const next =
+      tray.current?.querySelector<HTMLButtonElement>(
+        ".multi-part-card:not(:disabled)",
+      ) ??
+      document.querySelector<HTMLButtonElement>(
+        `.multi-part-box[data-blank="${filled}"]`,
+      );
+    next?.focus();
+  }, [value]);
+  const chosen = draftChoices(response, value);
+  const rows = cardRows(response);
+  const empty = (b: MultiPartBlank) => chosen[b.id] === undefined;
+  const current =
+    (selected && response.blanks.find((b) => b.id === selected && empty(b))) ||
+    response.blanks.find(empty);
+  const targetIn = (row: (typeof rows)[number]) =>
+    current && row.blanks.includes(current) ? current : row.blanks.find(empty);
+  const total = response.blanks.length;
+  const place = (
+    row: (typeof rows)[number],
+    optionId: string,
+    card: HTMLButtonElement,
+  ) => {
+    const box = targetIn(row);
+    if (locked || !box) return;
+    if (document.activeElement === card) refocus.current = box.id;
+    onChange(chooseOption(response, value, box.id, optionId));
+    // A box aimed at in another row stays aimed at.
+    if (box.id === selected) setSelected(null);
+  };
+  const box = (blank: MultiPartBlank) => {
+    const n = response.blanks.indexOf(blank) + 1;
+    const row = rows.find((x) => x.blanks.includes(blank))!;
+    const pick = row.options.find((o) => o.id === chosen[blank.id]);
+    const mark = review?.find((m) => m.blank.id === blank.id);
+    const state = !mark
+      ? undefined
+      : mark.correct
+        ? "correct"
+        : pick
+          ? "incorrect"
+          : "missed";
+    const name = mark
+      ? `${capitalize(spokenMath(blank.label))}: ${pick ? spokenMath(pick.label) : "empty"}${
+          mark.correct
+            ? ", correct"
+            : `, ${pick ? "incorrect" : "not answered"}. The answer is ${spokenMath(mark.expected.label)}`
+        }`
+      : pick
+        ? `Box ${n} of ${total}: ${spokenMath(pick.label)}. Activate to take the card back`
+        : `Box ${n} of ${total}, empty${blank === current ? ", next to fill" : ""}`;
+    return (
+      <button
+        key={blank.id}
+        type="button"
+        className="multi-part-blank multi-part-box"
+        data-blank={blank.id}
+        data-filled={pick ? "" : undefined}
+        data-current={!locked && blank === current ? "" : undefined}
+        data-mark={state}
+        disabled={locked}
+        aria-label={name}
+        onClick={() => {
+          if (pick) onChange(clearChoice(response, value, blank.id));
+          setSelected(blank.id);
+        }}
+      >
+        {/* Every card of the row in one cell; only the placed one shows. */}
+        <span className="multi-part-blank-stack" aria-hidden="true">
+          {row.options.map((o) => (
+            <span
+              key={o.id}
+              className="multi-part-blank-value"
+              data-shown={o.id === pick?.id ? "" : undefined}
+            >
+              <MathText text={o.label} />
+            </span>
+          ))}
+        </span>
+        {state && (
+          <span className="multi-part-mark" aria-hidden="true">
+            {state === "correct" ? "✓" : "✕"}
+          </span>
+        )}
+      </button>
+    );
+  };
+  return (
+    <div
+      className="multi-part"
+      data-layout="cards"
+      role="group"
+      aria-label={spokenMath(response.label)}
+    >
+      <p className="multi-part-sentence">
+        {(response.sentence ?? []).map((part, i) =>
+          "text" in part ? (
+            <SentenceText key={i} text={part.text} />
+          ) : (
+            box(response.blanks.find((b) => b.id === part.blank)!)
+          ),
+        )}
+      </p>
+      <p className="sr-only">
+        {spokenMath(
+          (response.sentence ?? [])
+            .map((part) => ("text" in part ? part.text : " box "))
+            .join("")
+            .replace(/\s*\n\s*/g, ". "),
+        )}
+      </p>
+      <div className="multi-part-tray" ref={tray}>
+        {rows.map((row, r) => (
+          <div
+            key={r}
+            className="multi-part-tray-row"
+            role="group"
+            aria-label={rows.length > 1 ? `Cards, set ${r + 1}` : "Cards"}
+          >
+            {row.options.map((o) => {
+              const used =
+                !response.reuse &&
+                row.blanks.some((b) => chosen[b.id] === o.id);
+              const target = targetIn(row);
+              return (
+                <button
+                  key={o.id}
+                  type="button"
+                  className="multi-part-card"
+                  data-used={used ? "" : undefined}
+                  disabled={locked || used || !target}
+                  aria-label={`${spokenMath(o.label)}${used ? ", placed" : target ? `, place in box ${response.blanks.indexOf(target) + 1}` : ""}`}
+                  onClick={(event) => place(row, o.id, event.currentTarget)}
+                >
+                  <span className="multi-part-card-label" aria-hidden="true">
+                    <MathText text={o.label} />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /** The blanks, table or slots of the problem itself. */
 export function MultiPartChoiceInput({
   response,
@@ -168,6 +366,16 @@ export function MultiPartChoiceInput({
   review: PartMark[] | null;
 }) {
   const group = useId();
+  if (response.layout === "cards")
+    return (
+      <CardEquation
+        response={response}
+        value={value}
+        onChange={onChange}
+        locked={locked}
+        review={review}
+      />
+    );
   const chosen = draftChoices(response, value);
   const choose = (blankId: string, optionId: string) => {
     if (!locked) onChange(chooseOption(response, value, blankId, optionId));
