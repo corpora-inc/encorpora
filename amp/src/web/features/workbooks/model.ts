@@ -59,7 +59,7 @@ export function workbookMessage(error: unknown, fallback: string): string {
     error instanceof AppError &&
     error.code &&
     error.code !== "Invalid request" &&
-    [400, 403, 404, 409, 503].includes(error.status ?? 0)
+    [400, 403, 404, 409, 410, 503].includes(error.status ?? 0)
   )
     return error.code;
   return error instanceof Error && error.message ? error.message : fallback;

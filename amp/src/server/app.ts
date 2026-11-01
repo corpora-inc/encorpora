@@ -11,6 +11,7 @@ import {
 import fp from "fastify-plugin";
 import { registerBookRoutes } from "../books/routes.js";
 import { registerWorkbookRoutes } from "../workbook/routes.js";
+import type { WorkbookRenderer } from "../workbook/pdf.js";
 import { readFile } from "node:fs/promises";
 import Fastify, { type FastifyInstance } from "fastify";
 import rateLimit from "@fastify/rate-limit";
@@ -122,6 +123,8 @@ type AppOptions = {
   /** Load-balancer addresses (CIDRs) whose X-Forwarded-For is believed, so
    * rate limits apply per visitor rather than per proxy. Empty: none. */
   trustedProxies?: readonly string[];
+  /** Renders workbook PDFs (src/workbook/pdf.ts); null: none configured. */
+  workbookRenderer?: WorkbookRenderer | null;
 };
 export function buildApp(options: AppOptions) {
   if (options.practicePolicy) assertPracticePolicy(options.practicePolicy);
@@ -975,5 +978,6 @@ function routes(app: FastifyInstance, options: AppOptions) {
     repository: options.repository,
     parent,
     development: options.development,
+    renderer: options.workbookRenderer,
   });
 }
