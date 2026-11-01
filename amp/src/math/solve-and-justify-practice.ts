@@ -138,6 +138,20 @@ const quadraticLine: ParseOptions = {
   powers: true,
 };
 
+/** What each reason does, in a short plain clause (issue #1781). */
+const MEANING: Record<string, string> = {
+  ad: "adding the same amount to both sides",
+  su: "subtracting the same amount from both sides",
+  mu: "multiplying both sides by the same nonzero number",
+  di: "dividing both sides by the same nonzero number",
+  dp: "multiplying a number outside brackets by each term inside",
+  cl: "adding terms that have the same variable part",
+  co: "swapping the order of two terms, which never changes a sum",
+  sy: "swapping the two sides, which keeps them equal",
+  fa: "rewriting the expression as a product of brackets",
+  zp: "using the fact that a product is 0 only when one of its factors is 0",
+};
+
 /** Shared rendering of a derivation: prompt by mode, worked explanation. */
 function render(
   m: DerivationModel & { bank: readonly { id: string; label: string }[] },
@@ -166,12 +180,14 @@ function render(
     r,
     mode === "order" ? "Order the steps" : "Your solution",
   );
+  const inequality = m.bank.some((x) => x.label.endsWith("of inequality"));
   const explanation = [
     `Start from ${startTex}.`,
-    ...m.path.map(
-      ([line, reason]) =>
-        `$${tex(line, m.line)}$ — ${reasonLabel(m.bank, reason)}.`,
-    ),
+    "Each line must follow from the line before it by a rule that keeps it true. That rule is the line's reason.",
+    ...m.path.flatMap(([line, reason]) => [
+      `$${tex(line, m.line)}$ — ${reasonLabel(m.bank, reason)}.`,
+      `${reasonLabel(m.bank, reason)} means ${MEANING[reason] ?? "a rule that keeps the statement true"}${inequality && (reason === "mu" || reason === "di") ? "; with a negative number the inequality sign reverses" : ""}.`,
+    ]),
     copy.check,
     "Other valid orders of steps are also correct: each line must follow from the line before it by the reason you name.",
   ];

@@ -1,4 +1,5 @@
 @import "./ui/tokens.css";
+@import "./ui/glossary.css";
 /* AMP visual system. Loaded after the structural stylesheets: it owns colour,
    type and surface treatment. Neutral surfaces, one accent, colour only where
    it carries meaning (strand, correct, incorrect). */
@@ -284,11 +285,13 @@ header {
   font-size: 22px;
   font-weight: 600;
   border-radius: 12px;
-  background: var(--color-surface-sunken);
+  border: 2px solid var(--color-answer-border);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
 }
 .workspace-answer-row input:focus {
   border-color: var(--color-primary);
-  background: var(--color-surface-raised);
+  background: var(--color-answer);
 }
 .answer-action,
 .choice-submit,
@@ -673,9 +676,10 @@ header {
 }
 .lesson-example {
   padding: 14px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: 14px;
-  background: var(--color-surface-sunken);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
 }
 .lesson-example .figure {
   display: block;
@@ -1212,7 +1216,8 @@ button:focus:not(:focus-visible) {
 }
 .lesson-example,
 .lesson-watch {
-  background: var(--color-surface-sunken);
+  background: var(--color-surface);
+  color: var(--color-on-surface);
 }
 .frontier-heading {
   margin-bottom: 16px;

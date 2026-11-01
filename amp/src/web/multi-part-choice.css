@@ -246,10 +246,10 @@
   gap: var(--space-3);
   min-height: 56px;
   padding: var(--space-1) var(--space-1) var(--space-1) var(--space-3);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-answer-border);
   border-radius: var(--radius-control);
-  background: var(--color-surface-sunken);
-  color: var(--color-on-surface-sunken);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
 }
 .multi-part-slot-label {
   flex: 1 1 auto;
@@ -477,10 +477,6 @@
 .multi-part[data-layout="cards"] .multi-part-sentence {
   font-size: clamp(20px, 2.6vw, 26px);
   line-height: 1.9;
-}
-/* A line breaks between a formula and a box, never inside a formula. */
-.multi-part[data-layout="cards"] .multi-part-sentence .katex {
-  white-space: nowrap;
 }
 .multi-part-box {
   min-width: 64px;

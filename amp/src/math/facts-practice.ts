@@ -112,12 +112,13 @@ export function generateFactsProblem(
         explanation =
           b === 0 || a === 0
             ? [
-                `Adding 0 adds nothing: ${a} + ${b} = ${answer}.`,
-                `${Math.max(a, b)} stays ${answer}.`,
+                `Adding 0 means adding nothing, so the number stays the same.`,
+                `So ${a} + ${b} = ${answer}.`,
               ]
             : [
-                `Start at ${Math.max(a, b)} and count on ${Math.min(a, b)}: ${counts(Math.max(a, b), Math.min(a, b), 1).join(", ")}.`,
-                `${a} + ${b} = ${answer}.`,
+                `Start at the greater number, ${Math.max(a, b)}, so there are fewer counts to make.`,
+                `Count on ${Math.min(a, b)}, one number for each: ${counts(Math.max(a, b), Math.min(a, b), 1).join(", ")}.`,
+                `The last number you say is the total, so ${a} + ${b} = ${answer}.`,
               ];
       } else {
         const a = r(1, 5),
@@ -126,8 +127,9 @@ export function generateFactsProblem(
         answer = a - b;
         hint = `Think of the addition: ${b} + □ = ${a}.`;
         explanation = [
+          `Subtraction undoes addition. For ${a} − ${b}, ask what you add to ${b} to reach ${a}.`,
           `${b} + ${answer} = ${a}, so ${answer} ${answer === 1 ? "is" : "are"} left when ${b} ${b === 1 ? "is" : "are"} taken from ${a}.`,
-          `${a} − ${b} = ${answer}.`,
+          `So ${a} − ${b} = ${answer}.`,
         ];
       }
       break;
@@ -153,8 +155,10 @@ export function generateFactsProblem(
       prompt = `Start at ${start}. Count ${on ? "on" : "back"} ${steps}. What number do you land on?`;
       hint = `Start at ${start} and jump ${steps === 1 ? "once" : `${steps} times`} to the ${on ? "right" : "left"}, one step each time. Do not count ${start} itself.${cross ? " You will cross ten." : ""}`;
       explanation = [
+        `Counting ${on ? "on" : "back"} means saying the numbers ${on ? "after" : "before"} ${start}, one for each step. ${start} itself is not a step.`,
         `Count ${on ? "on" : "back"} ${steps} from ${start}: ${counts(start, steps, on ? 1 : -1).join(", ")}.`,
-        `${steps === 1 ? "That 1 count" : `Those ${steps} counts`} ${on ? "add" : "subtract"}${steps === 1 ? "s" : ""} ${steps}: ${start} ${on ? "+" : "−"} ${steps} = ${answer}.`,
+        `Each count ${on ? "adds" : "takes away"} 1, so this is ${start} ${on ? "+" : "−"} ${steps} = ${answer}.`,
+        `You land on ${answer}.`,
       ];
       break;
     }
@@ -169,8 +173,10 @@ export function generateFactsProblem(
       answer = steps;
       hint = `${start} is the starting point, not a step. Count only the numbers said after it.`;
       explanation = [
-        `The counts after ${start} are ${said.join(", ")}: ${steps} numbers.`,
-        `Each count is one more${on ? "" : " taken away"}, so ${start} ${on ? "+" : "−"} ${steps} = ${said.at(-1)}.`,
+        `${start} is where you start, so it is not a step. Each number said after it is one step.`,
+        `The numbers said after ${start} are ${said.join(", ")}. That is ${steps} numbers.`,
+        `Each step ${on ? "adds" : "takes away"} 1, so ${start} ${on ? "+" : "−"} ${steps} = ${said.at(-1)}.`,
+        `${steps} ${on ? "were added to" : "were subtracted from"} ${start}.`,
       ];
       break;
     }
@@ -184,9 +190,11 @@ export function generateFactsProblem(
       answer = a + b;
       hint = `Fill the first frame to make ten, then add what is left of ${b}.`;
       explanation = [
+        `Ten is easy to add to, so fill the first frame to make 10.`,
         `${a} needs ${need} more to make 10.`,
-        `Split ${b} into ${need} and ${rest}.`,
-        `10 + ${rest} = ${answer}.`,
+        `Split ${b} into ${need} and ${rest}, and move the ${need} into the first frame.`,
+        `Now there is 10 and ${rest} more: 10 + ${rest} = ${answer}.`,
+        `So ${a} + ${b} = ${answer}.`,
       ];
       break;
     }
@@ -204,16 +212,18 @@ export function generateFactsProblem(
       prompt = `What is ${whole} − ${part}?`;
       hint = `Think of the addition fact: ${part} + □ = ${whole}.`;
       explanation =
-        whole - part >= 10
+        whole - part >= 10 && whole < 20
           ? [
-              `${whole} is 10 and ${whole - 10}. Take ${part} from the ${whole - 10} ones.`,
+              `${whole} is 1 ten and ${whole - 10} ones.`,
+              `There are enough ones to take ${part} from, so the ten can stay.`,
               `${whole - 10} − ${part} = ${whole - 10 - part}, and 10 + ${whole - 10 - part} = ${answer}.`,
-              `Check: ${part} + ${answer} = ${whole}.`,
+              `Check: ${part} + ${answer} = ${whole}. So ${whole} − ${part} = ${answer}.`,
             ]
           : [
-              `Think ${part} + □ = ${whole}. From ${part}, ${10 - part} more makes 10.`,
-              `From 10, ${whole - 10} more makes ${whole}. In all, ${10 - part} + ${whole - 10} = ${answer}.`,
-              `So ${part} + ${answer} = ${whole} and ${whole} − ${part} = ${answer}.`,
+              `Subtraction undoes addition, so think: ${part} + □ = ${whole}.`,
+              `Count up in two jumps through 10. From ${part}, ${10 - part} more makes 10.`,
+              `From 10, ${whole - 10} more makes ${whole}. In all you added ${10 - part} + ${whole - 10} = ${answer}.`,
+              `So ${part} + ${answer} = ${whole}, and ${whole} − ${part} = ${answer}.`,
             ];
       break;
     }
@@ -240,13 +250,16 @@ export function generateFactsProblem(
               ? `${n} has no tens to take, so trade 1 hundred for 10 tens first.`
               : `${n} has ${tens} tens. ${up ? "Adding" : "Taking away"} 10 changes only the tens digit.`;
       explanation = [
-        `${n} is ${places(n)}.`,
+        `Each digit's place gives its value: hundreds, tens, then ones. ${n} is ${places(n)}.`,
+        crossed
+          ? `${up ? "Adding" : "Taking away"} 10 changes the tens by 1. Here that also changes the hundreds.`
+          : `${up ? "Adding" : "Taking away"} ${step} changes the ${step === 10 ? "tens" : "hundreds"} by 1 and leaves the other places alone.`,
         crossed
           ? up
             ? `One more ten makes 10 tens, which is 1 more hundred: ${places(answer)}.`
             : `There are no tens to take, so trade 1 hundred for 10 tens and take 1: ${places(answer)}.`
           : `${up ? "One more" : "One fewer"} ${step === 10 ? "ten" : "hundred"}: ${places(answer)}.`,
-        `${n} ${sign} ${step} = ${formatWhole(answer)}.`,
+        `So ${n} ${sign} ${step} = ${formatWhole(answer)}.`,
       ];
       break;
     }
