@@ -1024,9 +1024,7 @@
     },
     "lesson:best-display-choice": {
       "terms": [
-        "circle-graph",
         "height",
-        "histogram",
         "line-graph",
         "scatterplot",
         "stem-and-leaf-plot"
@@ -1136,8 +1134,6 @@
         "conditional-relative-frequency",
         "joint-relative-frequency",
         "marginal-relative-frequency",
-        "percent",
-        "reflection",
         "variable"
       ],
       "long": []
@@ -1152,12 +1148,9 @@
     "lesson:causal-claims": {
       "terms": [
         "association",
-        "causal-inference",
         "causation",
         "correlation-coefficient",
         "observational-study",
-        "outcome",
-        "pattern",
         "percent",
         "random-assignment",
         "variable"
@@ -1252,10 +1245,8 @@
     },
     "lesson:circle-graph-read": {
       "terms": [
-        "central-angle",
         "circle-graph",
-        "percent",
-        "sector"
+        "percent"
       ],
       "long": []
     },
@@ -1350,11 +1341,7 @@
     "lesson:compare-distributions": {
       "terms": [
         "box-plot",
-        "interquartile-range",
-        "mean-absolute-deviation",
-        "proof",
-        "quartile",
-        "ratio"
+        "quartile"
       ],
       "long": []
     },
@@ -1758,12 +1745,8 @@
     },
     "lesson:conditional-and-multiplication-rule": {
       "terms": [
-        "conditional-probability",
-        "denominator",
-        "numerator",
         "outcome",
-        "probability",
-        "sample-space"
+        "probability"
       ],
       "long": []
     },
@@ -2013,8 +1996,7 @@
     "lesson:counting-principle": {
       "terms": [
         "at-least",
-        "equal-groups",
-        "multiplication"
+        "equal-groups"
       ],
       "long": []
     },
@@ -2366,10 +2348,7 @@
       "terms": [
         "at-least",
         "box-plot",
-        "histogram",
-        "maximum",
-        "median",
-        "minimum"
+        "median"
       ],
       "long": []
     },
@@ -2716,8 +2695,6 @@
     },
     "lesson:events-and-addition-rule": {
       "terms": [
-        "mutually-exclusive",
-        "outcome",
         "probability",
         "union"
       ],
@@ -3588,13 +3565,9 @@
     "lesson:independent-events-probability": {
       "terms": [
         "at-least",
-        "common-factor",
-        "denominator",
         "equally-likely",
         "independent-events",
         "mutually-exclusive",
-        "numerator",
-        "probability",
         "without-replacement"
       ],
       "long": []
@@ -3743,9 +3716,7 @@
         "denominator",
         "division",
         "maximum",
-        "midpoint",
         "minimum",
-        "negative-number",
         "numerator",
         "tenth"
       ],
@@ -3837,8 +3808,7 @@
     },
     "lesson:likelihood-words-lesson": {
       "terms": [
-        "equally-likely",
-        "outcome"
+        "equally-likely"
       ],
       "long": []
     },
@@ -4319,7 +4289,6 @@
     "lesson:measure-meaning-lesson": {
       "terms": [
         "maximum",
-        "median",
         "minimum"
       ],
       "long": []
@@ -4369,7 +4338,6 @@
         "decimal",
         "denominator",
         "division",
-        "negative-number",
         "numerator",
         "round",
         "tenth"
@@ -5390,14 +5358,6 @@
       ],
       "long": []
     },
-    "lesson:probability-line-lesson": {
-      "terms": [
-        "equally-likely",
-        "numerator",
-        "outcome"
-      ],
-      "long": []
-    },
     "lesson:probability-missing-count": {
       "terms": [
         "complementary-angles",
@@ -5739,11 +5699,6 @@
     "lesson:range-data": {
       "terms": [
         "decimal",
-        "division",
-        "height",
-        "maximum",
-        "minimum",
-        "negative-number",
         "pattern",
         "tenth"
       ],
@@ -6037,9 +5992,7 @@
     "lesson:regents-abs-equals-linear": {
       "terms": [
         "absolute-value",
-        "expression",
-        "solution",
-        "substitute"
+        "expression"
       ],
       "long": []
     },
@@ -6063,11 +6016,8 @@
     },
     "lesson:regents-average-rate-table": {
       "terms": [
-        "average-rate-of-change",
-        "denominator",
         "function",
         "input",
-        "numerator",
         "output",
         "rate"
       ],
@@ -6088,7 +6038,6 @@
     },
     "lesson:regents-budget-whole-items": {
       "terms": [
-        "quotient",
         "round",
         "whole-number"
       ],
@@ -6144,11 +6093,7 @@
     },
     "lesson:regents-correlation-causation": {
       "terms": [
-        "causation",
-        "correlation-coefficient",
-        "experiment",
-        "lurking-variable",
-        "scatterplot"
+        "experiment"
       ],
       "long": []
     },
@@ -6207,16 +6152,8 @@
     },
     "lesson:regents-exponential-models": {
       "terms": [
-        "common-ratio",
-        "constant",
         "decimal",
-        "exponent",
-        "exponential-decay",
         "function",
-        "initial-value",
-        "input",
-        "quotient",
-        "substitute",
         "whole-number"
       ],
       "long": []
@@ -6718,8 +6655,7 @@
     },
     "lesson:regents-quartile-list": {
       "terms": [
-        "interquartile-range",
-        "median"
+        "interquartile-range"
       ],
       "long": []
     },
@@ -6938,18 +6874,10 @@
       ],
       "long": []
     },
-    "lesson:regents-two-way-share": {
-      "terms": [
-        "conditional-relative-frequency",
-        "percent"
-      ],
-      "long": []
-    },
     "lesson:regression-interpretation": {
       "terms": [
         "height",
         "input",
-        "intercept",
         "mass"
       ],
       "long": []
@@ -7037,19 +6965,16 @@
     },
     "lesson:residuals-correlation": {
       "terms": [
-        "association",
         "correlation-coefficient",
         "residual-plot",
-        "speed",
-        "variable"
+        "speed"
       ],
       "long": []
     },
     "lesson:return-claim-check": {
       "terms": [
         "percent",
-        "rate",
-        "rate-of-return"
+        "rate"
       ],
       "long": []
     },
@@ -7514,12 +7439,8 @@
     },
     "lesson:scatterplots": {
       "terms": [
-        "input",
-        "line-of-best-fit",
-        "output",
         "pattern",
-        "scatterplot",
-        "slope"
+        "scatterplot"
       ],
       "long": []
     },
@@ -8298,8 +8219,7 @@
     "lesson:statistical-questions": {
       "terms": [
         "height",
-        "statistical-question",
-        "variability"
+        "statistical-question"
       ],
       "long": []
     },
@@ -8318,13 +8238,11 @@
     "lesson:statistical-summary-comparison": {
       "terms": [
         "box-plot",
-        "distribution",
         "interquartile-range",
         "maximum",
         "minimum",
         "quartile",
         "skewed-right",
-        "standard-deviation",
         "symmetry"
       ],
       "long": []
@@ -8339,7 +8257,6 @@
     "lesson:stem-leaf-construct": {
       "terms": [
         "decimal-places",
-        "stem-and-leaf-plot",
         "whole-number"
       ],
       "long": []
@@ -9077,8 +8994,7 @@
     },
     "lesson:two-way-tables": {
       "terms": [
-        "association",
-        "proportion"
+        "association"
       ],
       "long": []
     },
@@ -9182,15 +9098,6 @@
         "length",
         "strip-diagram",
         "unknown"
-      ],
-      "long": []
-    },
-    "lesson:variability": {
-      "terms": [
-        "interquartile-range",
-        "mean-absolute-deviation",
-        "median",
-        "quartile"
       ],
       "long": []
     },
@@ -9325,10 +9232,7 @@
       "terms": [
         "absolute-value",
         "expression",
-        "function",
-        "isolate",
-        "solution",
-        "substitute"
+        "solution"
       ],
       "long": []
     },
@@ -9451,7 +9355,6 @@
     },
     "practice:addition-rule-probability": {
       "terms": [
-        "outcome",
         "probability",
         "substitute"
       ],
@@ -9760,17 +9663,10 @@
     },
     "practice:best-display-choice": {
       "terms": [
-        "distribution",
         "height",
-        "histogram",
-        "line-graph",
-        "scatterplot",
-        "stem-and-leaf-plot",
-        "variable"
+        "stem-and-leaf-plot"
       ],
-      "long": [
-        "Pick the display by asking what the data"
-      ]
+      "long": []
     },
     "practice:binomial-area-product": {
       "terms": [
@@ -9829,11 +9725,8 @@
     "practice:box-plot-read": {
       "terms": [
         "box-plot",
-        "interquartile-range",
         "maximum",
-        "median",
-        "minimum",
-        "quartile"
+        "minimum"
       ],
       "long": []
     },
@@ -9896,9 +9789,6 @@
       "terms": [
         "association",
         "causation",
-        "lurking-variable",
-        "pattern",
-        "random-assignment",
         "variable"
       ],
       "long": []
@@ -10013,7 +9903,6 @@
     },
     "practice:circle-graph-read": {
       "terms": [
-        "central-angle",
         "circle-graph",
         "percent"
       ],
@@ -10191,12 +10080,6 @@
         "decimal",
         "hundredth",
         "tenth"
-      ],
-      "long": []
-    },
-    "practice:compare-distributions-choice": {
-      "terms": [
-        "median"
       ],
       "long": []
     },
@@ -10655,15 +10538,12 @@
       "terms": [
         "association",
         "joint-relative-frequency",
-        "percent",
-        "proportion",
-        "reflection"
+        "percent"
       ],
       "long": []
     },
     "practice:conditional-probability-value": {
       "terms": [
-        "denominator",
         "outcome",
         "probability",
         "sample-space"
@@ -10906,9 +10786,7 @@
     },
     "practice:correlation-causation-choice": {
       "terms": [
-        "correlation-coefficient",
         "height",
-        "lurking-variable",
         "proof",
         "variable"
       ],
@@ -10917,7 +10795,6 @@
     "practice:correlation-choice": {
       "terms": [
         "association",
-        "coordinate",
         "correlation-coefficient"
       ],
       "long": []
@@ -11499,29 +11376,9 @@
       ],
       "long": []
     },
-    "practice:dot-plot-iqr": {
-      "terms": [
-        "median",
-        "quartile"
-      ],
-      "long": []
-    },
-    "practice:dot-plot-mad": {
-      "terms": [
-        "plus-or-minus"
-      ],
-      "long": []
-    },
-    "practice:dot-plot-mean": {
-      "terms": [
-        "median"
-      ],
-      "long": []
-    },
     "practice:double-box-compare": {
       "terms": [
-        "box-plot",
-        "median"
+        "box-plot"
       ],
       "long": []
     },
@@ -11587,12 +11444,6 @@
       "terms": [
         "area",
         "unit-square"
-      ],
-      "long": []
-    },
-    "practice:equal-chance-choice": {
-      "terms": [
-        "equally-likely"
       ],
       "long": []
     },
@@ -11736,8 +11587,6 @@
     },
     "practice:event-set-count": {
       "terms": [
-        "outcome",
-        "probability",
         "sample-space",
         "union"
       ],
@@ -11808,11 +11657,8 @@
     },
     "practice:exponential-decay-table": {
       "terms": [
-        "constant",
-        "exponential-decay",
         "geometric-sequence",
-        "pattern",
-        "ratio"
+        "pattern"
       ],
       "long": []
     },
@@ -11829,14 +11675,10 @@
     },
     "practice:exponential-initial-value": {
       "terms": [
-        "exponent",
         "exponential-decay",
-        "initial-value",
         "input",
         "output",
-        "percent",
-        "rate",
-        "substitute"
+        "rate"
       ],
       "long": []
     },
@@ -11900,9 +11742,7 @@
     },
     "practice:exponential-passes-linear": {
       "terms": [
-        "at-most",
         "decimal-places",
-        "function",
         "input",
         "linear-function"
       ],
@@ -13307,11 +13147,7 @@
     },
     "practice:histogram-read": {
       "terms": [
-        "at-least",
-        "box-plot",
-        "height",
-        "histogram",
-        "median"
+        "at-least"
       ],
       "long": []
     },
@@ -13377,9 +13213,7 @@
       "terms": [
         "at-least",
         "equally-likely",
-        "independent-events",
-        "outcome",
-        "probability"
+        "independent-events"
       ],
       "long": []
     },
@@ -13553,8 +13387,7 @@
     },
     "practice:interquartile-range-data": {
       "terms": [
-        "box-plot",
-        "median"
+        "box-plot"
       ],
       "long": []
     },
@@ -14275,18 +14108,6 @@
       ],
       "long": []
     },
-    "practice:mean-missing-value": {
-      "terms": [
-        "median"
-      ],
-      "long": []
-    },
-    "practice:means-in-mads": {
-      "terms": [
-        "box-plot"
-      ],
-      "long": []
-    },
     "practice:measurable-attribute-choice": {
       "terms": [
         "capacity",
@@ -14497,7 +14318,6 @@
     },
     "practice:multiplication-rule-probability": {
       "terms": [
-        "outcome",
         "probability"
       ],
       "long": []
@@ -15008,7 +14828,6 @@
     },
     "practice:outlier-center-shift": {
       "terms": [
-        "median",
         "quartile"
       ],
       "long": []
@@ -15740,13 +15559,6 @@
       ],
       "long": []
     },
-    "practice:probability-on-number-line": {
-      "terms": [
-        "equally-likely",
-        "outcome"
-      ],
-      "long": []
-    },
     "practice:product-of-powers-exponent": {
       "terms": [
         "exponent",
@@ -16064,12 +15876,6 @@
       ],
       "long": []
     },
-    "practice:quartile-list": {
-      "terms": [
-        "median"
-      ],
-      "long": []
-    },
     "practice:quotient-of-powers-exponent": {
       "terms": [
         "division",
@@ -16190,13 +15996,6 @@
         "proportion",
         "random-assignment",
         "re-randomization"
-      ],
-      "long": []
-    },
-    "practice:range-data": {
-      "terms": [
-        "maximum",
-        "minimum"
       ],
       "long": []
     },
@@ -16579,18 +16378,10 @@
       ],
       "long": []
     },
-    "practice:regression-coefficient-meaning": {
-      "terms": [
-        "input",
-        "variable"
-      ],
-      "long": []
-    },
     "practice:regression-line-predict": {
       "terms": [
         "input",
-        "intercept",
-        "substitute"
+        "intercept"
       ],
       "long": []
     },
@@ -16658,12 +16449,6 @@
         "coordinate",
         "input",
         "output"
-      ],
-      "long": []
-    },
-    "practice:relative-frequency-percent": {
-      "terms": [
-        "percent"
       ],
       "long": []
     },
@@ -16759,12 +16544,6 @@
         "residual",
         "residual-plot",
         "variable"
-      ],
-      "long": []
-    },
-    "practice:residual-value": {
-      "terms": [
-        "substitute"
       ],
       "long": []
     },
@@ -17341,12 +17120,7 @@
     "practice:scatter-association-choice": {
       "terms": [
         "height",
-        "input",
-        "line-of-best-fit",
-        "output",
-        "pattern",
-        "scatterplot",
-        "slope"
+        "scatterplot"
       ],
       "long": []
     },
@@ -17777,7 +17551,6 @@
       "terms": [
         "box-plot",
         "interquartile-range",
-        "median",
         "quartile",
         "skewed-right",
         "standard-deviation",
@@ -18254,18 +18027,10 @@
       ],
       "long": []
     },
-    "practice:statistical-question-choice": {
-      "terms": [
-        "statistical-question"
-      ],
-      "long": []
-    },
     "practice:stem-leaf-construct": {
       "terms": [
         "decimal-places",
-        "stem-and-leaf-plot",
-        "tenth",
-        "whole-number"
+        "stem-and-leaf-plot"
       ],
       "long": []
     },
@@ -18390,10 +18155,7 @@
     "practice:study-design-choice": {
       "terms": [
         "association",
-        "causal-inference",
         "causation",
-        "outcome",
-        "pattern",
         "percent",
         "random-assignment"
       ],
@@ -18805,23 +18567,13 @@
     },
     "practice:trend-line-predict": {
       "terms": [
-        "input",
-        "line-of-best-fit",
-        "output",
-        "pattern",
-        "scatterplot",
-        "slope"
+        "scatterplot"
       ],
       "long": []
     },
     "practice:trend-slope-meaning": {
       "terms": [
-        "input",
-        "line-of-best-fit",
-        "output",
-        "pattern",
-        "scatterplot",
-        "slope"
+        "scatterplot"
       ],
       "long": []
     },
@@ -19142,21 +18894,9 @@
       ],
       "long": []
     },
-    "practice:two-way-association-choice": {
-      "terms": [
-        "proportion"
-      ],
-      "long": []
-    },
     "practice:two-way-share": {
       "terms": [
         "conditional-relative-frequency"
-      ],
-      "long": []
-    },
-    "practice:typical-value-choice": {
-      "terms": [
-        "quartile"
       ],
       "long": []
     },
