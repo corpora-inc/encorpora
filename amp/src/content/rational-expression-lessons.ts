@@ -10,59 +10,121 @@ const terms: MethodTerm[] = [
   ],
   "factor-number",
 ];
+const senses: Lesson["senses"] = {
+  factor: "factor-number",
+  factors: "factor-number",
+  product: "product-multiply",
+  term: "term-expression",
+  terms: "term-expression",
+  square: "square-number",
+  squared: "square-number",
+  hole: "hole",
+  unit: "unit",
+  units: "unit",
+  average: "mean-average",
+  base: "base-exponent",
+  bases: "base-exponent",
+  opposite: "opposite-number",
+  opposites: "opposite-number",
+  identity: "identity-equation",
+  "standard form": "standard-form-polynomial",
+  decreasing: "decreasing",
+  increasing: "increasing",
+  "left side": "side-of-equation",
+  "right side": "side-of-equation",
+  rule: "rule",
+  rules: "rule",
+};
+const noLink = [
+  "part",
+  "parts",
+  "whole",
+  "change",
+  "changes",
+  "leaves",
+  "key",
+  "jumps",
+  "jump",
+  "third",
+  "mean",
+  "means",
+  "sort",
+  "image",
+  "images",
+  "solid",
+  "scales",
+  "net",
+  "inverse",
+  "population",
+  "more than",
+  "period",
+  "periods",
+  "quarter",
+  "quarters",
+  "one quarter",
+  "mirror image",
+];
 export const rationalExpressionMethods: Record<string, ProblemMethod> = {
   "rational-expression-domain": {
-    goal: "Find every input that makes the original denominator zero.",
+    goal: "Find every value of $x$ that makes the bottom of the fraction equal to 0. Those inputs are not allowed.",
     intuition:
-      "A rational expression is a fraction of expressions. Its numerator is above the bar and its denominator is below. Its domain is the inputs where that bottom expression is not zero. A factor is one part of a product; a denominator becomes zero when any of its factors is zero.",
+      "A rational expression is a fraction with an expression in $x$ on top and below, like $\\frac{x - 3}{(x - 2)(x - 4)}$. The top is the numerator and the bottom is the denominator. Dividing by 0 has no answer, so an input that makes the denominator 0 is not allowed. The allowed inputs are called the domain. The parts being multiplied in the denominator are its factors. A product is 0 when any one of its factors is 0, so each factor gives an excluded input.",
     terms,
+    senses,
+    noLink,
     method: [
-      "Set each factor of the original denominator equal to 0 and solve the resulting equations.",
-      "List each distinct excluded value once. Keep it excluded even if the same factor appears in the numerator.",
+      "Factor the original denominator. Set each factor equal to 0 and solve each small equation.",
+      "List each different excluded value once. It stays excluded even if the same factor also appears on top.",
     ],
     watch:
-      "A zero numerator is allowed when the denominator is nonzero; exclusions come from the denominator.",
+      "A top of 0 is fine as long as the bottom is not 0. Only the bottom decides which inputs are excluded.",
   },
   "rational-expression-simplify": {
-    goal: "Simplify the fraction and keep the original excluded inputs.",
+    goal: "Simplify the fraction, and keep every input the original fraction did not allow.",
     intuition:
-      "The numerator is above a fraction bar and the denominator is below it. A factor is one part of a product. You may divide both parts by a shared nonzero factor, but the original denominator still excludes every input that made it zero; those allowed inputs are the expression’s domain.",
+      "A rational expression is a fraction with an expression in $x$ on top (the numerator) and below (the denominator). The parts being multiplied in each are called factors. Just as $\\frac{6}{10} = \\frac{3}{5}$ because 6 and 10 share a factor 2, you may divide the top and bottom by a shared factor that is not 0. But any input that made the original bottom 0 is still not allowed. The allowed inputs are called the domain.",
     terms,
+    senses,
+    noLink,
     method: [
-      "Factor the original numerator and denominator. Find every input that makes the original denominator zero and record those exclusions.",
-      "Divide numerator and denominator by a common nonzero factor. Keep all original exclusions with the simplified expression.",
-      "Check that the remaining numerator and denominator have not been inverted and that the cancelled factor’s zero is still excluded.",
+      "Factor the original top and bottom. Find every input that makes the original bottom 0, and write those down as excluded.",
+      "Divide the top and bottom by a factor they share. Keep all the original exclusions with the simplified fraction.",
+      "Check that top and bottom have not swapped places, and that the cancelled factor's zero is still listed as excluded.",
     ],
     watch:
-      "Cancel common factors of a product, not individual terms of a sum. Factoring first exposes the factors.",
+      "Cancel factors that are multiplied, never terms that are added or subtracted. Factor first so the factors are visible.",
   },
 };
 export const rationalExpressionPrinciples: Record<string, string> = {
   "rational-expression-domain":
-    "A rational expression is defined exactly where its original denominator is nonzero. A product is zero if at least one factor is zero.",
+    "A rational expression is defined exactly where its original denominator is not 0. A product is 0 when at least one of its factors is 0, so each denominator factor gives excluded inputs.",
   "rational-expression-simplify":
-    "Dividing a fraction’s numerator and denominator by the same nonzero factor preserves its value on its original domain. Cancelling a factor does not restore an excluded input.",
+    "Dividing a fraction's top and bottom by the same factor keeps its value wherever that factor is not 0. Cancelling a factor does not make an excluded input allowed again.",
 };
 export const rationalExpressionLessons: Lesson[] = [
   {
     id: "rational-expressions-and-excluded-inputs",
     title: "Simplify the fraction, keep its boundaries",
     summary:
-      "Find the inputs a fraction cannot accept, then simplify without losing those restrictions.",
+      "You cannot divide by 0. So in a fraction like $\\frac{x - 3}{x - 4}$, the input $x = 4$ is not allowed: it makes the bottom $4 - 4 = 0$. First find every input that makes the bottom 0. Then simplify the fraction by dividing top and bottom by a shared part. The inputs you ruled out at the start stay ruled out.",
     templateIds: ["rational-expression-domain", "rational-expression-simplify"],
     includeGeneratedRepresentation: false,
+    senses,
+    noLink,
     objectives: [
-      "Find excluded inputs from denominator factors.",
-      "Simplify a rational expression while retaining its original domain.",
+      "Find the excluded inputs: the values of $x$ that make a factor of the bottom equal to 0.",
+      "Simplify a fraction of expressions while keeping every input the original did not allow.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Which inputs are allowed?",
         paragraphs: [
-          "You need to solve simple linear equations and factor quadratics. A variable stands for a number. A polynomial is an expression such as $x^2 - 5x + 6$, built from sums of constant multiples of whole-number powers of a variable. A rational expression is a quotient of two polynomials: a fraction with these expressions above and below its bar.",
-          "The numerator is above the bar; the denominator is below it. A fraction is defined only when its denominator is nonzero. Its domain is the set of inputs for which it is defined. To find excluded inputs, ask which values make the original denominator 0. A numerator of 0 is allowed when the denominator is nonzero.",
-          "A factor is an expression multiplied by another to make a product. Just as $6/10 = 3/5$ because both parts share a nonzero factor of 2, a rational expression can have a shared factor divided out. A variable factor can be zero, however. Record the exclusions before simplifying.",
+          "You will need to solve small equations like $x - 2 = 0$ and to factor quadratics. A variable, like $x$, stands for a number. An expression such as $x^2 - 5x + 6$, made of whole-number powers of $x$ times numbers, added together, is called a polynomial.",
+          "A rational expression is a fraction with a polynomial on top and a polynomial on the bottom. The top is called the numerator. The bottom is called the denominator.",
+          "Dividing by 0 has no answer. So a fraction only makes sense when its denominator is not 0. The inputs where it makes sense are called its domain. To find the inputs that are not allowed (the excluded inputs), ask which values of $x$ make the original denominator 0. A numerator of 0 is fine, as long as the denominator is not 0.",
+          "A factor is a part that is multiplied by another part. In $(x - 2)(x - 4)$, the factors are $x - 2$ and $x - 4$. A product is 0 when any one factor is 0, so this is 0 at $x = 2$ and at $x = 4$.",
+          "Fractions can be simplified by dividing top and bottom by a shared factor: $\\frac{6}{10} = \\frac{3}{5}$, dividing both by 2. A rational expression works the same way. But a factor with $x$ in it can be 0 for some input. So write down the excluded inputs before you simplify.",
         ],
       },
     ],
@@ -70,10 +132,10 @@ export const rationalExpressionLessons: Lesson[] = [
       prompt:
         "Simplify $\\dfrac{x^2 - 5x + 6}{x^2 - 6x + 8}$ and state all excluded inputs.",
       steps: [
-        "Factor both parts: $x^2 - 5x + 6 = (x - 2)(x - 3)$ and $x^2 - 6x + 8 = (x - 2)(x - 4)$.",
-        "The denominator is 0 when $x - 2 = 0$ or $x - 4 = 0$. Thus $x = 2$ and $x = 4$ are excluded.",
-        "At any allowed input, $x - 2$ is nonzero. Divide numerator and denominator by that factor: $\\dfrac{(x - 2)(x - 3)}{(x - 2)(x - 4)} = \\dfrac{x - 3}{x - 4}$.",
-        "Keep both exclusions. At $x = 2$, the simplified formula gives $\\frac{-1}{-2} = \\frac{1}{2}$, but the original expression gives $0/0$, which is undefined. Cancelling does not fill that missing input.",
+        "Factor the top and the bottom. Look for two numbers that multiply to the last number and add to the middle one: $x^2 - 5x + 6 = (x - 2)(x - 3)$ and $x^2 - 6x + 8 = (x - 2)(x - 4)$.",
+        "Find the excluded inputs from the original bottom. It is 0 when $x - 2 = 0$ or $x - 4 = 0$, so $x = 2$ and $x = 4$ are excluded.",
+        "At every allowed input, $x - 2$ is not 0. So divide the top and bottom by it: $\\dfrac{(x - 2)(x - 3)}{(x - 2)(x - 4)} = \\dfrac{x - 3}{x - 4}$.",
+        "Keep both exclusions. At $x = 2$, the simplified fraction gives $\\frac{-1}{-2} = \\frac{1}{2}$. But the original gives $\\frac{0}{0}$, which has no value. Cancelling does not fill in that missing input.",
       ],
       answer:
         "$\\dfrac{x - 3}{x - 4}$; excluded inputs: $\\left\\{2, 4\\right\\}$.",
@@ -83,24 +145,25 @@ export const rationalExpressionLessons: Lesson[] = [
         stage: "method",
         title: "See the missing input",
         paragraphs: [
-          "The curve follows the simplified rule $y = (x - 3)/(x - 4)$. The open circle at $\\left(2, \\frac{1}{2}\\right)$ removes the value that the original expression cannot take. The dashed marker at $x = 4$ marks the other excluded input; there is no point of the curve at that input.",
+          "The curve follows the simplified rule $y = \\frac{x - 3}{x - 4}$. The open circle at $\\left(2, \\frac{1}{2}\\right)$ marks the point the original expression cannot reach. A gap like this is called a hole.",
+          "The dashed line at $x = 4$ marks the other excluded input. The curve has no point there at all.",
         ],
         illustration: "rational-expression-hole",
       },
       {
         title: "The precise rule",
         paragraphs: [
-          "Let $P$, $Q$, $C$, $F$ and $G$ be polynomials in the real variable $x$, with $P(x) = C(x)F(x)$ and $Q(x) = C(x)G(x)$. The domain of $P(x)/Q(x)$ is exactly the real inputs satisfying $Q(x) \\ne 0$.",
-          "For every input in that original domain, both $C(x)$ and $G(x)$ are nonzero, so $\\dfrac{P(x)}{Q(x)} = \\dfrac{C(x)F(x)}{C(x)G(x)} = \\dfrac{F(x)}{G(x)}$. The simplified formula must carry the original restriction $Q(x) \\ne 0$ to describe the same expression on the same inputs. The formula $F(x)/G(x)$ by itself may have a larger domain.",
+          "Let $P$, $Q$, $C$, $F$ and $G$ be polynomials in $x$, where $x$ is a real number (a number on the number line). Suppose $P(x) = C(x)F(x)$ and $Q(x) = C(x)G(x)$. Here $P(x)$, read “$P$ of $x$”, means the value of $P$ at $x$. The domain of $\\frac{P(x)}{Q(x)}$ is exactly the inputs where $Q(x) \\ne 0$ ($\\ne$ means is not equal to).",
+          "For every input in that domain, $C(x)$ and $G(x)$ are both not 0. So $\\dfrac{P(x)}{Q(x)} = \\dfrac{C(x)F(x)}{C(x)G(x)} = \\dfrac{F(x)}{G(x)}$. The simplified fraction must keep the original condition $Q(x) \\ne 0$ to describe the same expression. On its own, $\\frac{F(x)}{G(x)}$ may allow more inputs.",
         ],
       },
     ],
     pitfalls: [
-      "Find exclusions from the original denominator before cancelling.",
-      "Cancel common multiplicative factors; do not cross out terms joined by addition or subtraction.",
-      "A cancelled denominator factor still contributes an excluded input.",
+      "Find the excluded inputs from the original bottom before cancelling anything.",
+      "Cancel factors that are multiplied. Never cross out terms that are added or subtracted.",
+      "A cancelled factor from the bottom still gives an excluded input.",
     ],
     parentGuide:
-      "Ask which inputs make the original denominator zero, and why the simplified formula can sometimes accept more inputs. Have the learner test the cancelled input in both forms.",
+      "Ask which inputs make the original bottom 0, and why the simplified fraction can sometimes accept more inputs. Have the learner try the cancelled input, $x = 2$, in both forms.",
   },
 ];

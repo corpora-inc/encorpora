@@ -3,6 +3,30 @@ import type { ProblemMethod } from "./problem-lessons";
 
 const r = String.raw;
 
+const focusSenses = {
+  vertex: "vertex-parabola",
+  focus: "focus",
+  square: "square-shape",
+  side: "side",
+  squared: "square-number",
+  squaring: "square-number",
+  unit: "unit",
+  units: "unit",
+  average: "mean-average",
+  base: "base-exponent",
+  bases: "base-exponent",
+  opposite: "opposite-number",
+  opposites: "opposite-number",
+  identity: "identity-equation",
+  "standard form": "standard-form-polynomial",
+  decreasing: "decreasing",
+  increasing: "increasing",
+  "left side": "side-of-equation",
+  "right side": "side-of-equation",
+  rule: "rule",
+  rules: "rule",
+};
+
 export const complexConicsMethods: Record<string, ProblemMethod> = {
   "complex-plane-forms": {
     goal: "Given a complex number as a point, a sum of points, a modulus request or a polar form, find the requested exact value.",
@@ -130,8 +154,8 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
     watch: r`The sign inside the parentheses is opposite the coordinate. Divide by the leading coefficient before halving, and take the square root of a denominator to get a distance.`,
   },
   "parabola-focus-directrix": {
-    goal: "Given a focus and directrix, or a parabola equation, find the vertex, equation, focus or directrix.",
-    intuition: r`A parabola is every point that is the same distance from a fixed point (the focus) and a fixed line (the directrix). The vertex is the point of the curve closest to both, halfway between them.`,
+    goal: "From a focus and directrix, or from a parabola's equation, find the vertex, the equation, the focus or the directrix.",
+    intuition: r`A parabola is a U-shaped curve. It is every point that is the same distance from a fixed point, called the focus, and a fixed line, called the directrix. The turning point of the curve, called the vertex, is halfway between the focus and the directrix. Let $p$ be the distance from the vertex to the focus, with a minus sign if the focus is below (or left of) the vertex. A parabola that opens up or down with vertex $(h, k)$ has the equation $(x - h)^2 = 4p(y - k)$.`,
     terms: [
       "focus",
       "directrix",
@@ -140,12 +164,42 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
         "$p$ is the signed distance from the vertex to the focus, along the axis of symmetry.",
       ],
     ],
-    method: [
-      r`The vertex is the midpoint of the focus and the nearest point of the directrix; $p$ is the distance from the vertex to the focus, positive when the parabola opens up (or right).`,
-      r`Write $(x-h)^2=4p(y-k)$ for a vertical parabola, or $(y-k)^2=4p(x-h)$ for a horizontal one.`,
-      r`To read an equation, match it to the form: the vertex is $(h,k)$, the bracket coefficient is $4p$, the focus is $p$ from the vertex and the directrix is $p$ on the other side.`,
+    senses: focusSenses,
+    noLink: [
+      "part",
+      "parts",
+      "change",
+      "changes",
+      "leaves",
+      "key",
+      "jumps",
+      "jump",
+      "third",
+      "mean",
+      "means",
+      "sort",
+      "image",
+      "images",
+      "solid",
+      "scales",
+      "net",
+      "inverse",
+      "population",
+      "whole",
+      "more than",
+      "period",
+      "periods",
+      "quarter",
+      "quarters",
+      "one quarter",
+      "mirror image",
     ],
-    watch: r`The coefficient is $4p$, not $p$; $p$ is half the distance from focus to directrix; and the vertex is halfway, not at the focus.`,
+    method: [
+      r`The vertex is halfway between the focus and the nearest point of the directrix. The number $p$ is the distance from the vertex to the focus: positive if the parabola opens up (or right), negative if it opens down (or left).`,
+      r`Write $(x - h)^2 = 4p(y - k)$ for a parabola that opens up or down, or $(y - k)^2 = 4p(x - h)$ for one that opens sideways.`,
+      r`To read an equation, match it to the form. The vertex is $(h, k)$ and the number in front of the bracket is $4p$. The focus is $p$ from the vertex, and the directrix is $p$ on the other side.`,
+    ],
+    watch: r`The number in front of the bracket is $4p$, not $p$. The vertex is halfway between the focus and the directrix, not at the focus.`,
   },
 };
 
@@ -158,7 +212,7 @@ export const complexConicsPrinciples: Record<string, string> = {
   "polar-cartesian-conversion": r`For $(r,\theta)$, $x=r\cos\theta$ and $y=r\sin\theta$; conversely $r^2=x^2+y^2$. The pairs $(r,\theta)$, $(r,\theta+2\pi)$ and $(-r,\theta+\pi)$ name the same point.`,
   "parametric-linear-motion": r`For $x(t)=x_0+at$ and $y(t)=y_0+bt$ the object moves along a line with slope $\frac{b}{a}$ (when $a\ne0$) at constant speed $\sqrt{a^2+b^2}$.`,
   "conic-standard-form": r`Each conic is the set of points satisfying a second-degree equation. $(x-h)^2+(y-k)^2=r^2$ is a circle, $\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1$ with $a\ne b$ is an ellipse, and a minus sign between the squared terms gives a hyperbola. An equation with one squared variable is a parabola.`,
-  "parabola-focus-directrix": r`The parabola with focus $(h,k+p)$ and directrix $y=k-p$ is $(x-h)^2=4p(y-k)$: a point $(x,y)$ is equally far from the focus and the directrix exactly when this holds.`,
+  "parabola-focus-directrix": r`The parabola with focus $(h, k + p)$ and directrix $y = k - p$ is $(x - h)^2 = 4p(y - k)$. A point $(x, y)$ is the same distance from the focus and the directrix exactly when this equation holds.`,
 };
 
 type Spec = {
@@ -561,49 +615,85 @@ export const complexConicsLessons: Lesson[] = [
     ],
     parentGuide: r`Ask the learner what happens to $(x-3)^2+(y+2)^2=25$ if the plus becomes a minus.`,
   }),
-  lesson({
-    id: "parabola-focus-directrix",
-    title: "Parabolas from focus and directrix",
-    summary: r`A parabola is the set of points equally far from a focus and a directrix; its equation comes from the vertex and $p$.`,
-    objectives: [
-      "Find the vertex, $p$ and the equation from a focus and directrix.",
-      "Find the focus and directrix from an equation, including a sideways parabola.",
+  {
+    ...lesson({
+      id: "parabola-focus-directrix",
+      title: "Parabolas from focus and directrix",
+      summary: r`Pick a point and a line. Mark every spot that is exactly as far from the point as from the line. Those spots form a U-shaped curve called a parabola. The point is called the focus and the line is called the directrix. This lesson turns a focus and directrix into the parabola's equation, and back again.`,
+      objectives: [
+        "Find the vertex, the number $p$ and the equation from a focus and a directrix.",
+        "Find the focus and the directrix from an equation, including a parabola that opens sideways.",
+      ],
+      intuition: {
+        title: "Equal distance to a point and a line",
+        paragraphs: [
+          r`Pick a point, called the focus, and a line that does not pass through it, called the directrix. The distance from a point to a line is measured straight across, at a right angle (a square corner) to the line. All the points that are the same distance from the focus as from the directrix form a parabola.`,
+          r`The turning point of the parabola is called the vertex. It is the point of the curve nearest the directrix, and it sits exactly halfway between the focus and the directrix.`,
+          r`Let $p$ be the distance from the vertex to the focus. Give it a minus sign if the focus is below the vertex. A parabola that opens up or down, with vertex $(h, k)$, has the equation $(x - h)^2 = 4p(y - k)$. The closing section shows where this comes from.`,
+          r`For example, with vertex $(0, 0)$ and $p = 1$, the equation is $x^2 = 4y$. The point $(2, 1)$ is on it, because $2^2 = 4 = 4 \times 1$.`,
+        ],
+      },
+      example: {
+        prompt: r`Find the equation of the parabola with focus $(1,5)$ and directrix $y=1$.`,
+        steps: [
+          r`Find the vertex. The directrix $y = 1$ is horizontal, so measure straight up from it, along $x = 1$, to the focus at height 5. Halfway between heights 1 and 5 is 3, so the vertex is $(1, 3)$.`,
+          r`Find $p$, the distance from the vertex up to the focus: $p = 5 - 3 = 2$. It is positive because the focus is above the vertex. So $4p = 8$.`,
+          r`Put $h = 1$, $k = 3$ and $4p = 8$ into $(x - h)^2 = 4p(y - k)$: $(x - 1)^2 = 8(y - 3)$.`,
+          r`Check with the point $(5, 5)$. Its distance to the focus $(1, 5)$ is $5 - 1 = 4$, and its distance down to the line $y = 1$ is $5 - 1 = 4$. They match. The equation agrees: $(5 - 1)^2 = 16$ and $8(5 - 3) = 16$.`,
+        ],
+        answer: r`$(x-1)^2=8(y-3)$`,
+      },
+      method: {
+        title: "Vertex, focal distance, equation",
+        paragraphs: [
+          r`From a focus and directrix: find the vertex first, then $p$ (positive if the focus is above the vertex), then write the equation.`,
+          r`From an equation: the vertex is $(h, k)$, and the number in front of the bracket is $4p$, so divide it by 4 to get $p$. The focus is $p$ from the vertex, and the directrix is $p$ away on the other side.`,
+          r`For $(y - k)^2 = 4p(x - h)$, the roles of $x$ and $y$ swap. The parabola opens sideways, and the focus is $(h + p, k)$.`,
+        ],
+      },
+      formal: {
+        title: "Derivation",
+        paragraphs: [
+          r`Put the focus at $(h, k + p)$ and the directrix at $y = k - p$, so the vertex $(h, k)$ is halfway between. A point $(x, y)$ is on the parabola when its distance to the focus equals its distance to the line: $\sqrt{(x - h)^2 + (y - k - p)^2} = |y - k + p|$. The left side uses the distance formula, and the bars mean the distance is never negative.`,
+          r`Squaring both sides and multiplying out, the $(y - k)^2$ and $p^2$ parts cancel. What is left is $(x - h)^2 = 4p(y - k)$.`,
+        ],
+      },
+      pitfalls: [
+        r`The number in front of the bracket is $4p$, not $p$.`,
+        r`The vertex is halfway between the focus and the directrix, not at the focus.`,
+        r`For a parabola that opens sideways, the focus moves left or right, not up or down.`,
+      ],
+      parentGuide: r`Ask the learner to pick a point on the parabola, measure its distance to the focus and to the directrix, and check that they are equal.`,
+    }),
+    senses: focusSenses,
+    noLink: [
+      "part",
+      "parts",
+      "change",
+      "changes",
+      "leaves",
+      "key",
+      "jumps",
+      "jump",
+      "third",
+      "mean",
+      "means",
+      "sort",
+      "image",
+      "images",
+      "solid",
+      "scales",
+      "net",
+      "inverse",
+      "population",
+      "whole",
+      "more than",
+      "period",
+      "periods",
+      "quarter",
+      "quarters",
+      "one quarter",
+      "mirror image",
     ],
-    intuition: {
-      title: "Equal distance to a point and a line",
-      paragraphs: [
-        r`Pick a point (the focus) and a line (the directrix) that does not contain it. The points that are the same distance from the focus as from the line form a parabola. The vertex is the point of the curve nearest both, halfway between the focus and the line.`,
-        r`Let $p$ be the signed distance from the vertex to the focus. A parabola with a vertical axis then has the equation $(x-h)^2=4p(y-k)$, with the vertex $(h,k)$.`,
-      ],
-    },
-    example: {
-      prompt: r`Find the equation of the parabola with focus $(1,5)$ and directrix $y=1$.`,
-      steps: [
-        r`The vertex is halfway between $y=5$ and $y=1$ on the line $x=1$: $(1,3)$.`,
-        r`$p$ is the vertex-to-focus distance, upward, so $p=5-3=2$ and $4p=8$.`,
-        r`Substitute into $(x-h)^2=4p(y-k)$: $(x-1)^2=8(y-3)$.`,
-        r`Check with the point $(5,5)$ on the curve: distance to the focus is $4$ and distance to the line $y=1$ is $4$, and $(5-1)^2=16=8(5-3)$.`,
-      ],
-      answer: r`$(x-1)^2=8(y-3)$`,
-    },
-    method: {
-      title: "Vertex, focal distance, equation",
-      paragraphs: [
-        r`From focus and directrix: vertex first, then $p$ (positive if the focus is above the vertex), then the equation. From an equation: the vertex is $(h,k)$, the bracket coefficient is $4p$, the focus is $p$ from the vertex and the directrix is $p$ on the other side.`,
-        r`For $(y-k)^2=4p(x-h)$ the roles of $x$ and $y$ swap: the axis is horizontal and the focus is $(h+p,k)$.`,
-      ],
-    },
-    formal: {
-      title: "Derivation",
-      paragraphs: [
-        r`With focus $(h,k+p)$ and directrix $y=k-p$, equal distances give $\sqrt{(x-h)^2+(y-k-p)^2}=|y-k+p|$. Squaring and simplifying gives $(x-h)^2=4p(y-k)$.`,
-      ],
-    },
-    pitfalls: [
-      r`The coefficient is $4p$, not $p$.`,
-      r`The vertex is halfway between the focus and the directrix, not at the focus.`,
-      r`For a sideways parabola the focus moves horizontally.`,
-    ],
-    parentGuide: r`Ask the learner to pick a point on the parabola and measure its distance to the focus and to the directrix.`,
-  }),
+  },
 ];
