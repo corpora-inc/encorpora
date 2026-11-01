@@ -6,15 +6,7 @@ export const geometryProofMethods: Record<string, ProblemMethod> = {
     goal: "Match a proof statement to a theorem whose conditions follow from the givens.",
     intuition:
       "A proof explains why a conclusion follows from given facts. Each step states a claim and gives a reason. A theorem is a proved rule you may use when its conditions hold. For angles, equal measures mean congruent angles; measures adding to $180^\\circ$ mean supplementary angles.",
-    terms: [
-      [
-        "proof",
-        "A chain of justified statements showing why a conclusion follows from given facts.",
-      ],
-      ["theorem", "A mathematical statement established by a proof."],
-      ["congruent angles", "Angles with equal measures."],
-      ["supplementary angles", "Two angles whose measures add to 180 degrees."],
-    ],
+    terms: ["proof", "theorem", "congruent", "supplementary"],
     method: [
       "Read the exact target: does it assert equal angle measures or a sum? Identify every angle named in it.",
       "Check the givens for a crossing, a straight angle, parallel lines, or a triangle. Choose the theorem whose conditions and conclusion both match.",

@@ -165,30 +165,33 @@ export const nonmonicComplexQuadratic = chainFamily({
         { label: sol(m.b, m.n, 2 * m.a), correct: true },
         {
           label: sol(m.b, m.n, 2 * m.a, "real"),
-          feedback: `The discriminant $b^2-4ac=${D}$ is negative, so the square root is of a negative number and produces an $i$. These solutions would be real.`,
+          feedback: `This drops the $i$. The discriminant, $b^2-4ac=${D}$, is negative, and the square root of a negative number is imaginary: $\\sqrt{${D}}=i\\sqrt{${m.n}}$.`,
         },
         {
           label: sol(m.b, m.n, 2 * m.a, "i", true),
-          feedback: `The formula starts with $-b$. Here $b=${m.b}$, so the leading term is $${-m.b}$, not $${m.b}$.`,
+          feedback: `This is a sign error in the first term. The formula starts with $-b$, the opposite of $b$. Here $b=${m.b}$, so the first term is $${-m.b}$.`,
         },
         {
           label: sol(m.b, m.n, m.a),
-          feedback: `The denominator of the quadratic formula is $2a=${2 * m.a}$, not $a$.`,
+          feedback: `This divides by $a$ only. The denominator of the quadratic formula is $2a$, two times $a$, which is ${2 * m.a}.`,
         },
         ...(4 * m.a * m.c !== m.n
           ? [
               {
                 label: sol(m.b, 4 * m.a * m.c, 2 * m.a),
-                feedback: `The radicand is $b^2-4ac$ with the sign flipped, $4ac-b^2=${m.n}$. This answer leaves out the $b^2$ term.`,
+                feedback: `This leaves out the $b^2$ term. The radicand, the number under the square root, is $b^2-4ac=${D}$, which gives $i\\sqrt{${m.n}}$.`,
               },
             ]
           : []),
       ],
       hint: `Identify $a=${m.a}$, $b=${m.b}$, $c=${m.c}$ and find the discriminant $b^2-4ac$ first. Its sign tells whether the solutions are real.`,
       explanation: [
-        `Here $a=${m.a}$, $b=${m.b}$, $c=${m.c}$ in $ax^2+bx+c=0$.`,
-        `The discriminant is $b^2-4ac=${m.b * m.b}-${4 * m.a * m.c}=${D}$, which is negative, so the solutions are nonreal.`,
-        `$x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a}=\\dfrac{${-m.b}\\pm\\sqrt{${D}}}{${2 * m.a}}=\\dfrac{${-m.b}\\pm i\\sqrt{${m.n}}}{${2 * m.a}}$, and ${m.n} has no square factor, so the radical is simplified.`,
+        `${ax.arrangement === "zero-right" ? "The equation already has 0 on one side." : `Add ${m.c} to both sides so one side is 0: $${polyTex([m.a, m.b, m.c])}=0$.`} Compare it with $ax^2+bx+c=0$: $a=${m.a}$, $b=${m.b}$ and $c=${m.c}$.`,
+        `The quadratic formula solves any such equation: $x=\\dfrac{-b\\pm\\sqrt{b^2-4ac}}{2a}$. The sign $\\pm$ means "plus or minus", giving two solutions.`,
+        `First find the discriminant, the part under the square root: $b^2-4ac=${m.b * m.b}-${4 * m.a * m.c}=${D}$.`,
+        `It is negative, so the solutions are not real numbers. The square root of a negative number uses $i$, where $i^2=-1$: $\\sqrt{${D}}=i\\sqrt{${m.n}}$.`,
+        `Substitute: $x=\\dfrac{${-m.b}\\pm i\\sqrt{${m.n}}}{${2 * m.a}}$. ${m.n} has no square factor, so the root is fully simplified.`,
+        `The solutions are $x=\\dfrac{${-m.b}\\pm i\\sqrt{${m.n}}}{${2 * m.a}}$.`,
       ],
     });
   },
@@ -232,26 +235,27 @@ export const inverseExponentialRoot = chainFamily({
           { label: `$f^{-1}(x)=\\log_{${b}} x$`, correct: true },
           {
             label: `$f^{-1}(x)=\\log_{x} ${b}$`,
-            feedback: `The base of the logarithm stays ${b}; $x$ is the number whose logarithm we take.`,
+            feedback: `This swaps the base and the input. The base of the logarithm stays ${b}, and $x$ is the number we take the logarithm of.`,
           },
           {
             label: `$f^{-1}(x)=x^{${b}}$`,
-            feedback: `$x^{${b}}$ is a different function (a power of $x$). The inverse of an exponential is a logarithm.`,
+            feedback: `This swaps the base and the exponent. $x^{${b}}$ raises $x$ to a fixed power, a different function. The inverse of an exponential is a logarithm.`,
           },
           {
             label: `$f^{-1}(x)=\\dfrac{1}{${b}^{x}}$`,
             feedback:
-              "This is the reciprocal of $f(x)$, not its inverse. The reciprocal undoes nothing; the inverse swaps input and output.",
+              "This is the reciprocal, one over $f(x)$. The $-1$ in $f^{-1}$ does not mean a power here. The inverse undoes $f$: it swaps inputs and outputs.",
           },
           {
             label: `$f^{-1}(x)=\\dfrac{x}{${b}}$`,
-            feedback: `Dividing by ${b} undoes multiplication by ${b}, but $f$ raises ${b} to the power $x$.`,
+            feedback: `This undoes multiplying by ${b}. But $f$ raises ${b} to the power $x$, which only a logarithm undoes.`,
           },
         ],
         hint: `Write $y=${b}^{x}$, swap $x$ and $y$ to get $x=${b}^{y}$, then ask which logarithm solves for $y$.`,
         explanation: [
-          `Write $y=${b}^{x}$ and swap the variables: $x=${b}^{y}$.`,
-          `By the definition of a logarithm, $y=\\log_{${b}} x$.`,
+          `The inverse $f^{-1}$, read "$f$ inverse", undoes $f$. It sends each output of $f$ back to its input.`,
+          `To find it, write $y=${b}^{x}$ and swap $x$ and $y$: $x=${b}^{y}$. Swapping trades inputs and outputs.`,
+          `Now solve for $y$. $y$ is the power of ${b} that gives $x$, and a logarithm names that power: $y=\\log_{${b}} x$.`,
           `So $f^{-1}(x)=\\log_{${b}} x$.`,
         ],
       });
@@ -265,26 +269,27 @@ export const inverseExponentialRoot = chainFamily({
           },
           {
             label: `$f^{-1}(x)=\\dfrac{\\log_{${b}} x}{${a}}$`,
-            feedback: `The ${a} multiplies the power, so it must be divided out before taking the logarithm; it does not divide the logarithm.`,
+            feedback: `This divides the logarithm by ${a}. But ${a} multiplies the power, so divide it out first. Then take the logarithm of $\\dfrac{x}{${a}}$.`,
           },
           {
             label: `$f^{-1}(x)=${a}\\log_{${b}} x$`,
-            feedback: `The ${a} is divided out first, inside the logarithm. It does not multiply the logarithm.`,
+            feedback: `This multiplies by ${a} instead of dividing. Undo multiplying by ${a} by dividing, inside the logarithm.`,
           },
           {
             label: `$f^{-1}(x)=\\log_{${b}} x-${a}$`,
-            feedback: `${a} multiplies $${b}^x$, so undo it by dividing, not by subtracting.`,
+            feedback: `This subtracts ${a}. But ${a} multiplies $${b}^x$, so undo it by dividing, not by subtracting.`,
           },
           {
             label: `$f^{-1}(x)=\\log_{${a}}\\left(\\dfrac{x}{${b}}\\right)$`,
-            feedback: `The base of the logarithm is the base of the power, ${b}, and ${a} is the coefficient.`,
+            feedback: `This swaps the base and the coefficient, the number in front. The base of the logarithm is the base of the power, ${b}.`,
           },
         ],
         hint: `Write $y=${a}\\cdot${b}^{x}$, swap to $x=${a}\\cdot${b}^{y}$ and isolate $${b}^{y}$ by dividing by ${a} before using a logarithm.`,
         explanation: [
-          `Swap the variables in $y=${a}\\cdot${b}^{x}$: $x=${a}\\cdot${b}^{y}$.`,
-          `Divide by ${a}: $${b}^{y}=\\dfrac{x}{${a}}$.`,
-          `Take $\\log_{${b}}$: $f^{-1}(x)=\\log_{${b}}\\left(\\dfrac{x}{${a}}\\right)$.`,
+          `The inverse $f^{-1}$, read "$f$ inverse", undoes $f$. To find it, write $y=${a}\\cdot${b}^{x}$ and swap $x$ and $y$: $x=${a}\\cdot${b}^{y}$.`,
+          `Now solve for $y$. First get the power alone: ${a} multiplies it, so divide both sides by ${a}. That gives $${b}^{y}=\\dfrac{x}{${a}}$.`,
+          `$y$ is the power of ${b} that gives $\\dfrac{x}{${a}}$. A logarithm names that power: $y=\\log_{${b}}\\left(\\dfrac{x}{${a}}\\right)$.`,
+          `So $f^{-1}(x)=\\log_{${b}}\\left(\\dfrac{x}{${a}}\\right)$.`,
         ],
       });
     if (ax.kind === "shifted-exponential")
@@ -297,28 +302,29 @@ export const inverseExponentialRoot = chainFamily({
           },
           {
             label: `$f^{-1}(x)=\\log_{${b}}x ${sh(k)}$`,
-            feedback: `The constant ${k < 0 ? "−" : "+"}${Math.abs(k)} sits on the outside of $f$, so it is removed from $x$ before the logarithm, inside the parentheses.`,
+            feedback: `This removes ${Math.abs(k)} after taking the logarithm. In $f$ the ${Math.abs(k)} is ${k < 0 ? "subtracted" : "added"} last, so the inverse undoes it first, inside the parentheses.`,
           },
           {
             label: `$f^{-1}(x)=\\log_{${b}}\\left(x ${sh(-k)}\\right)$`,
-            feedback: `Undo ${k < 0 ? "subtracting" : "adding"} ${Math.abs(k)} by ${k < 0 ? "adding" : "subtracting"} it; this has the opposite sign.`,
+            feedback: `This is a sign error. Undo ${k < 0 ? "subtracting" : "adding"} ${Math.abs(k)} by ${k < 0 ? "adding" : "subtracting"} it.`,
           },
           {
             label: `$f^{-1}(x)=\\dfrac{\\log_{${b}}x}{${k}}$`,
             feedback:
-              "A constant added to the power is undone by subtracting it, not by dividing the logarithm.",
+              "This divides by the constant. A constant added to the power is undone by subtracting it, not by dividing the logarithm.",
           },
           {
             label: `$f^{-1}(x)=${b}^{x}${k < 0 ? "+" : "-"}${Math.abs(k)}$`,
             feedback:
-              "An inverse of an exponential is a logarithm. Swap $x$ and $y$ and solve for $y$.",
+              "This only flips the sign of the constant and keeps the power. The inverse of an exponential is a logarithm: swap $x$ and $y$ and solve for $y$.",
           },
         ],
         hint: `Write $y=${b}^{x}${k < 0 ? "-" : "+"}${Math.abs(k)}$, swap $x$ and $y$, then remove the ${Math.abs(k)} from the side with $${b}^{y}$ before using a logarithm.`,
         explanation: [
-          `Swap: $x=${b}^{y}${k < 0 ? "-" : "+"}${Math.abs(k)}$.`,
-          `Isolate the power: $${b}^{y}=x ${sh(k)}$.`,
-          `Take $\\log_{${b}}$: $f^{-1}(x)=\\log_{${b}}\\left(x ${sh(k)}\\right)$.`,
+          `The inverse $f^{-1}$, read "$f$ inverse", undoes $f$. To find it, write $y=${b}^{x}${k < 0 ? "-" : "+"}${Math.abs(k)}$ and swap $x$ and $y$: $x=${b}^{y}${k < 0 ? "-" : "+"}${Math.abs(k)}$.`,
+          `Now solve for $y$. First get the power alone by ${k < 0 ? "adding" : "subtracting"} ${Math.abs(k)} on both sides: $${b}^{y}=x ${sh(k)}$.`,
+          `$y$ is the power of ${b} that gives $x ${sh(k)}$. A logarithm names that power: $y=\\log_{${b}}\\left(x ${sh(k)}\\right)$.`,
+          `So $f^{-1}(x)=\\log_{${b}}\\left(x ${sh(k)}\\right)$.`,
         ],
       });
     // from the cube-root inverse
@@ -333,27 +339,29 @@ export const inverseExponentialRoot = chainFamily({
         { label: lab(String(mm ** 3), -kk), correct: true },
         {
           label: lab(String(mm), -kk),
-          feedback: `Solving $y=\\dfrac{\\sqrt[3]{x${kk < 0 ? "-" : "+"}${Math.abs(kk)}}}{${mm}}$ for $x$ multiplies by ${mm} and then cubes, so the coefficient is $${mm}^3=${mm ** 3}$, not ${mm}.`,
+          feedback: `This forgets to cube the ${mm}. Solving for $x$ multiplies by ${mm} and then cubes both sides, so the coefficient is $${mm}^3=${mm ** 3}$.`,
         },
         {
           label: lab(String(mm ** 3), kk),
-          feedback: `Cubing gives $x${kk < 0 ? "-" : "+"}${Math.abs(kk)}=(${mm}y)^3$; moving the constant to the other side changes its sign.`,
+          feedback: `This is a sign error. Cubing gives $x${kk < 0 ? "-" : "+"}${Math.abs(kk)}=(${mm}y)^3$, and moving the constant to the other side changes its sign.`,
         },
         {
           label: lab("\\frac{1}{" + String(mm ** 3) + "}", -kk),
-          feedback: `Solving for $x$ multiplies by ${mm} before cubing. It does not divide by $${mm}^3$.`,
+          feedback: `This divides by $${mm}^3$ instead of multiplying. Undo dividing by ${mm} by multiplying by ${mm}, then cube.`,
         },
         {
           label: lab("", -kk).replace("x^{3}", "x^{3}"),
           feedback:
-            "The factor from dividing by the denominator of the inverse must appear in $f$.",
+            "This drops the coefficient. The inverse divides by a number, so $f$ must multiply by that number cubed.",
         },
       ],
       hint: `Set $y=${gtext}$, swap $x$ and $y$ (or solve for $x$), then multiply by ${mm} and cube both sides to undo the cube root.`,
       explanation: [
-        `Write $y=${gtext}$ and solve for $x$.`,
-        `Multiply by ${mm}: $${mm}y=\\sqrt[3]{x${kk < 0 ? "-" : "+"}${Math.abs(kk)}}$. Cube both sides: $${mm ** 3}y^3=x${kk < 0 ? "-" : "+"}${Math.abs(kk)}$.`,
-        `Then $x=${mm ** 3}y^3${-kk < 0 ? "-" : "+"}${Math.abs(kk)}$, so $f(x)=${mm ** 3}x^3${-kk < 0 ? "-" : "+"}${Math.abs(kk)}$.`,
+        `$f$ and $f^{-1}$ undo each other, so $f$ is the inverse of $f^{-1}$. Write $y=${gtext}$ and solve for $x$.`,
+        `Undo the division first: multiply both sides by ${mm}. That gives $${mm}y=\\sqrt[3]{x${kk < 0 ? "-" : "+"}${Math.abs(kk)}}$.`,
+        `Undo the cube root, $\\sqrt[3]{\\ }$, by cubing both sides, raising them to the power 3: $${mm ** 3}y^3=x${kk < 0 ? "-" : "+"}${Math.abs(kk)}$.`,
+        `${kk < 0 ? "Add" : "Subtract"} ${Math.abs(kk)} on both sides: $x=${mm ** 3}y^3${-kk < 0 ? "-" : "+"}${Math.abs(kk)}$.`,
+        `Renaming the input as $x$ gives $f(x)=${mm ** 3}x^3${-kk < 0 ? "-" : "+"}${Math.abs(kk)}$.`,
       ],
     });
   },
@@ -478,28 +486,30 @@ export const circleLineSystem = chainFamily({
           { label: set(P, Q), correct: true },
           {
             label: set(P, m.extra),
-            feedback: `The point $${ptText(m.extra)}$ is on the circle but not on the line $${eqL}$. A solution must satisfy both equations.`,
+            feedback: `This checks only the circle. The point $${ptText(m.extra)}$ is on the circle but not on the line $${eqL}$. A solution must make both equations true.`,
           },
           {
             label: set([-P[0], -P[1]], [-Q[0], -Q[1]]),
-            feedback: `These points are on the circle but the line $${eqL}$ does not pass through them; check each point in the line equation.`,
+            feedback: `This flips the signs of both coordinates. These points are on the circle, but the line $${eqL}$ does not pass through them. Check each point in the line equation.`,
           },
           {
             label: set([P[0], -P[1]], [Q[0], -Q[1]]),
             feedback:
-              "Changing the sign of a $y$-coordinate gives other points of the circle; test each point in the line equation too.",
+              "This flips the sign of each $y$-coordinate. That gives other points of the circle, but they miss the line. Test each point in the line equation too.",
           },
           {
             label: set([P[1], P[0]], [Q[1], Q[0]]),
             feedback:
-              "Swapping the coordinates gives points of the circle but not necessarily of the line; test them in the line equation.",
+              "This swaps the $x$- and $y$-coordinates. That gives points of the circle, but they miss the line. Test them in the line equation.",
           },
         ],
         hint: `Solve $${eqL}$ for one variable and substitute it into $x^{2}+y^{2}=${m.R ** 2}$. Or test each pair of points in both equations.`,
         explanation: [
-          `A solution must satisfy both $x^{2}+y^{2}=${m.R ** 2}$ and $${eqL}$.`,
+          `$x^{2}+y^{2}=${m.R ** 2}$ is a circle centered at $(0, 0)$ with radius ${m.R}. $${eqL}$ is a straight line.`,
+          `A solution of the system is a point on both, where the line crosses the circle. It must make both equations true.`,
           `$${ptText(P)}$: $${par(P[0])}^2+${par(P[1])}^2=${m.R ** 2}$ and $${m.A}\\cdot${par(P[0])}+${par(m.B)}\\cdot${par(P[1])}=${m.C}$. It satisfies both.`,
-          `$${ptText(Q)}$: $${par(Q[0])}^2+${par(Q[1])}^2=${m.R ** 2}$ and $${m.A}\\cdot${par(Q[0])}+${par(m.B)}\\cdot${par(Q[1])}=${m.C}$. It satisfies both, so these are the two intersection points.`,
+          `$${ptText(Q)}$: $${par(Q[0])}^2+${par(Q[1])}^2=${m.R ** 2}$ and $${m.A}\\cdot${par(Q[0])}+${par(m.B)}\\cdot${par(Q[1])}=${m.C}$. It satisfies both.`,
+          `A line meets a circle at most twice, so these are all the solutions. The solution set is ${set(P, Q)}.`,
         ],
       });
     }
@@ -535,7 +545,7 @@ export const circleLineSystem = chainFamily({
         .filter((c) => c !== cls)
         .map((c) => ({
           label: labels[c],
-          feedback: `Substituting gives a value under the root of $${R2}-${par(d)}^{2}=${disc}$, which is ${actual}. This description does not fit.`,
+          feedback: `Substitute $x=${xline}$ and solve for the squared $y$-part. It equals $${R2}-${par(d)}^{2}=${disc}$, which is ${actual}. So this description does not fit.`,
         })),
     ];
     return choiceSurface(r, {
@@ -543,15 +553,17 @@ export const circleLineSystem = chainFamily({
       options,
       hint: `Substitute $x=${xline}$ into the circle equation: its $x$-part becomes ${d * d}. Compare that with the right side, ${R2}, to decide whether the squared $y$-part is positive, zero or negative.`,
       explanation: [
+        `The first equation is a circle and $x=${xline}$ is a vertical line. Solutions are the points on both, so put $x=${xline}$ into the circle's equation.`,
         `Substitute $x=${xline}$: $${h === 0 ? `${xline}^{2}` : `(${xline}${h < 0 ? "+" : "-"}${Math.abs(h)})^{2}`}+${k === 0 ? "y^{2}" : `(y${k < 0 ? "+" : "-"}${Math.abs(k)})^{2}`}=${R2}$.`,
         `The $x$-part equals $${d * d}$, so $${k === 0 ? "y" : `(y${k < 0 ? "+" : "-"}${Math.abs(k)})`}^{2}=${R2}-${d * d}=${disc}$.`,
         disc < 0
-          ? `A square cannot equal ${disc}, so the solutions are nonreal: $y${k === 0 ? "" : `${k < 0 ? "+" : "-"}${Math.abs(k)}`}=\\pm i\\sqrt{${-disc}}$.`
+          ? `The square of a real number is never negative, so it cannot equal ${disc}. The solutions are nonreal: $y${k === 0 ? "" : `${k < 0 ? "+" : "-"}${Math.abs(k)}`}=\\pm i\\sqrt{${-disc}}$, where $i^2=-1$. The line misses the circle.`
           : disc === 0
-            ? "The square equals zero, so there is exactly one solution and the line is tangent."
+            ? "Only 0 squares to 0, so there is exactly one solution. The line is tangent: it touches the circle at one point."
             : isPerfectSquare(disc)
-              ? `The square root of ${disc} is ${Math.sqrt(disc)}, so there are two real solutions with rational coordinates.`
-              : `${disc} is not a perfect square, so $\\sqrt{${disc}}$ is irrational and there are two real solutions with irrational $y$-coordinates.`,
+              ? `Two numbers square to ${disc}: ${Math.sqrt(disc)} and its opposite. ${disc} is a perfect square, so both solutions have rational coordinates, numbers that can be written as fractions.`
+              : `Two numbers square to ${disc}: $\\pm\\sqrt{${disc}}$. ${disc} is not a perfect square, so $\\sqrt{${disc}}$ is irrational: it cannot be written as a fraction.`,
+        `So the system has: ${labels[cls].charAt(0).toLowerCase()}${labels[cls].slice(1)}.`,
       ],
     });
   },
@@ -597,23 +609,25 @@ export const rationalTwoDenominators = chainFamily({
         { label: `$x=${m.s}$ only`, correct: true },
         {
           label: `$x=${m.r}$ only`,
-          feedback: `$x=${m.r}$ makes the denominator $${F2}$ equal to zero, so it is excluded. The remaining root is the solution.`,
+          feedback: `This keeps the wrong root. $x=${m.r}$ makes the denominator $${F2}$ equal to zero, and dividing by zero is undefined, so it is excluded.`,
         },
         {
           label: `$x=${m.s}$ and $x=${m.r}$`,
-          feedback: `$x=${m.r}$ comes from the quadratic but makes $${F2}$ equal to zero, so it must be rejected.`,
+          feedback: `This keeps an extraneous root, one that comes from the algebra but fails the original equation. $x=${m.r}$ makes $${F2}$ equal to zero, so it must be rejected.`,
         },
         {
           label: "No solution",
-          feedback: `$x=${m.s}$ does not make any denominator zero and satisfies the original equation, so there is a solution.`,
+          feedback: `This rejects both roots. $x=${m.s}$ does not make any denominator zero and makes the original equation true, so there is a solution.`,
         },
       ],
       hint: `Multiply both sides by $(${F1})(${F2})$. Before you finish, list the $x$-values that make $${F1}$ or $${F2}$ equal to zero.`,
       explanation: [
-        `The denominators are zero at $x=${-m.p}$ and $x=${m.r}$, so these values are excluded.`,
-        `Multiplying by $(${F1})(${F2})$ gives $x(${F2}) ${op} ${Math.abs(m.s)}(${F1})=${m.M}$.`,
-        `This simplifies to $${polyTex([1, -(m.r + m.s), m.r * m.s])}=0$, which factors as $(${fac(-m.s)})(${fac(-m.r)})=0$.`,
-        `The roots are $x=${m.s}$ and $x=${m.r}$. The value $x=${m.r}$ makes $${F2}$ zero, so it is extraneous. The solution is $x=${m.s}$.`,
+        `Dividing by zero is undefined. So first list the $x$-values that make a denominator, a bottom of a fraction, zero: $x=${-m.p}$ and $x=${m.r}$. These cannot be solutions.`,
+        `Clear the fractions by multiplying every term by $(${F1})(${F2})$, the common denominator. That gives $x(${F2}) ${op} ${Math.abs(m.s)}(${F1})=${m.M}$.`,
+        `Multiply out and move everything to one side: $${polyTex([1, -(m.r + m.s), m.r * m.s])}=0$.`,
+        `This factors as $(${fac(-m.s)})(${fac(-m.r)})=0$. A product is zero only when a factor is zero, so $x=${m.s}$ or $x=${m.r}$.`,
+        `$x=${m.r}$ makes $${F2}$ zero, so it is extraneous: it came from the algebra but does not work in the original equation.`,
+        `The solution set is $x=${m.s}$ only.`,
       ],
     });
   },
@@ -675,26 +689,29 @@ export const trinomialProduct = chainFamily({
         {
           label: tex(wrongSame),
           feedback:
-            "Multiplying only the matching terms leaves out the cross products. Every term in the first factor must multiply every term in the second.",
+            "This multiplies only the matching terms, first with first and so on. That leaves out the cross products. Every term in the first factor must multiply every term in the second.",
         },
         {
           label: tex(noMid),
-          feedback: `The $x^2$ coefficient has three products: $a f$, $b e$ and $c d$. This answer is missing the product of the two $x$ terms, $${b}\\cdot${par(e)}$.`,
+          feedback: `This misses one of the three products that make $x^2$. The two $x$ terms also multiply to an $x^2$ term: $(${polyTex([b, 0])})(${polyTex([e, 0])})$.`,
         },
         {
           label: tex(signSlip),
-          feedback: `The $x$ coefficient is the sum $b f + c e$ of two products. Check the sign of each product before adding.`,
+          feedback: `This has a sign error in the $x$ term. Two products make $x$ terms: the first factor's $x$ term times the second's constant, and its constant times the second's $x$ term. Check each sign before adding.`,
         },
         {
           label: tex(crossSlip),
-          feedback: `The $x^3$ coefficient is $a e + b d$, the sum of two products. Check the sign of each product.`,
+          feedback: `This has a sign error in the $x^3$ term. Two products make $x^3$: each $x^2$ term times the other factor's $x$ term. Check each sign before adding.`,
         },
       ],
-      hint: `Multiply each term of $${p1}$ by every term of the second factor ($${m.square ? p1 : q1}$), starting with $${a === 1 ? "" : a}x^{2}$ times each, then combine terms with the same power of $x$.`,
+      hint: `Multiply each term of $${p1}$ by every term of the second factor ($${m.square ? p1 : q1}$), starting with $${a === 1 ? "" : a === -1 ? "-" : a}x^{2}$ times each, then combine terms with the same power of $x$.`,
       explanation: [
-        `Distribute: each of the 3 terms of the first factor multiplies each of the 3 terms of the second, giving 9 products.`,
-        `Group by power of $x$: $x^4$: $${a * d}$; $x^3$: $${a * e + b * d}$; $x^2$: $${a * f + b * e + c * d}$; $x$: $${b * f + c * e}$; constant: $${c * f}$.`,
-        `The product is $${polyTex(good)}$.`,
+        `${m.square ? `Squaring means multiplying a thing by itself, so this is $(${p1})(${p1})$.` : `The two factors are multiplied.`} To distribute, multiply every term of the first factor by every term of the second.`,
+        `Each factor has 3 terms, so there are $3 \\times 3 = 9$ products. Multiplying powers of $x$ adds their exponents, for example $x^2\\cdot x=x^3$.`,
+        `Like terms have the same power of $x$. Add the products for each power.`,
+        `The $x^4$ coefficient, the number multiplying $x^4$, is $${a * d}$. For $x^3$ it is $${a * e + b * d}$, and for $x^2$ it is $${a * f + b * e + c * d}$.`,
+        `For $x$ it is $${b * f + c * e}$, and the constant term, with no $x$, is $${c * f}$.`,
+        `So the product is $${polyTex(good)}$.`,
       ],
     });
   },
@@ -749,27 +766,29 @@ export const cubicQuotientRemainder = chainFamily({
         {
           label: `$${quo(m.q)} ${m.R < 0 ? "-" : "+"} ${Math.abs(m.R)}$`,
           feedback:
-            "The remainder is still divided by the divisor. Write it as the remainder over the divisor, not as a separate constant.",
+            "This adds the remainder as a plain number. The remainder is still divided by the divisor, so write it as a fraction: the remainder over the divisor.",
         },
         {
           label: `$${quo([b0, b1, b2])} ${frac2(Rw)}$`,
-          feedback: `Synthetic division uses the zero of the divisor $${D}$, which is $x=${-k}$. This used $${k}$, which belongs to the other divisor.`,
+          feedback: `This used ${k} in synthetic division, the wrong sign. Use the zero of the divisor, the $x$ that makes $${D}$ zero, which is $x=${-k}$.`,
         },
         {
           label: `$${quo(m.q)} ${frac2(-m.R)}$`,
           feedback:
-            "The sign of the remainder is its sign when the division stops. Keep that sign in the fraction.",
+            "This flips the remainder's sign. Keep the sign the remainder has when the division stops.",
         },
         {
           label: `$${quo(m.q)} ${frac2(m.R, fac(-k))}$`,
-          feedback: `The remainder fraction has the divisor as denominator. The divisor here is $${D}$.`,
+          feedback: `This puts the wrong binomial under the remainder. The remainder fraction has the divisor, $${D}$, as its denominator.`,
         },
       ],
       hint: `Divide $${polyTex(dividend)}$ by $${D}$. With synthetic division, use the zero of the divisor, $x=${-k}$, and bring down ${dividend[0]} first.`,
       explanation: [
-        `The zero of $${D}$ is $x=${-k}$. Synthetic division with ${-k} on coefficients ${dividend.join(", ")}:`,
-        `bring down ${dividend[0]}; ${dividend[1]! + -k * dividend[0]!}; ${q0}; and the remainder is ${m.R}. (The quotient coefficients are ${m.q.join(", ")}.)`,
-        `So the quotient is $${quo(m.q)}$ with remainder ${m.R}, and the expression equals $${quo(m.q)} ${frac2(m.R)}$.`,
+        `Dividing a polynomial gives a quotient, the main result, and a remainder, what is left over. Synthetic division is a short way to divide by a binomial like $${D}$.`,
+        `It uses the zero of the divisor, the $x$ that makes $${D}$ zero: $x=${-k}$. Write the dividend's coefficients, the numbers in front of each power: ${dividend.join(", ")}.`,
+        `Bring down the first coefficient, ${dividend[0]}. Then repeat: multiply by ${-k}, add to the next coefficient. This gives ${dividend[1]! + -k * dividend[0]!}, then ${q0}, then ${m.R}.`,
+        `The last number, ${m.R}, is the remainder. The others, ${m.q.join(", ")}, are the quotient's coefficients, one power lower: $${quo(m.q)}$.`,
+        `The remainder is still divided by the divisor, so it becomes a fraction. The expression equals $${quo(m.q)} ${frac2(m.R)}$.`,
       ],
     });
   },
@@ -869,19 +888,19 @@ export const powersOfISum = chainFamily({
     const wrongs = [
       {
         v: evenWrong,
-        f: "Check the even powers: $i^2=-1$, so $i^{4k+2}=-1$, not 1.",
+        f: "This treats $i^2$ as 1. In fact $i^2=-1$, so any power 2 more than a multiple of 4 is also $-1$.",
       },
       {
         v: oddWrong,
-        f: "Check the powers of 3 more than a multiple of 4: $i^3=-i$, not $i$.",
+        f: "This treats $i^3$ as $i$. In fact $i^3=i^2\\cdot i=-i$, so any power 3 more than a multiple of 4 is $-i$.",
       },
       {
         v: swap,
-        f: "The real part collects the terms where $i$ reduces to 1 or -1; the imaginary part collects those that reduce to $i$ or $-i$.",
+        f: "This swaps the real and imaginary parts. The real part collects terms whose power of $i$ becomes 1 or $-1$. The imaginary part collects those that become $i$ or $-i$.",
       },
       {
         v: conjugate,
-        f: "Check each odd power: $i^{4k+1}=i$ but $i^{4k+3}=-i$.",
+        f: "This has the wrong sign on the imaginary part. Check each odd power: 1 more than a multiple of 4 gives $i$, but 3 more gives $-i$.",
       },
     ].filter((w) => valid(w.v));
     const lines = m.terms.map((t) => {
@@ -896,8 +915,11 @@ export const powersOfISum = chainFamily({
       ],
       hint: `Reduce each power of $i$ first. The powers of $i$ repeat every 4: $i^1=i$, $i^2=-1$, $i^3=-i$, $i^4=1$. Start with $i^{${m.terms[0]!.e}}$, then collect real and imaginary parts.`,
       explanation: [
-        `Divide each exponent by 4 and use the remainder: ${lines.join(", ")}.`,
-        `Substitute and collect terms: the real part is $${polyTex([good.re[0]!, good.re[1]!], m.v)}$ and the imaginary coefficient is $${polyTex([good.im[0]!, good.im[1]!], m.v)}$.`,
+        `$i$ is the imaginary unit: $i^2=-1$. Its powers repeat in a cycle of 4: $i^1=i$, $i^2=-1$, $i^3=-i$, $i^4=1$, then $i^5=i$ again.`,
+        `So only the remainder after dividing the exponent by 4 matters. Every $i^4$ is 1 and drops out.`,
+        `Reduce each power: ${lines.join(", ")}.`,
+        `Substitute these values. Terms with no $i$ left form the real part, and terms with $i$ form the imaginary part.`,
+        `The real part is $${polyTex([good.re[0]!, good.re[1]!], m.v)}$ and the number multiplying $i$ is $${polyTex([good.im[0]!, good.im[1]!], m.v)}$.`,
         `The sum is $${iText(good, m.v)}$.`,
       ],
     });
@@ -969,9 +991,11 @@ export const twoRadicalEquation = chainFamily({
       label: "Answer ($x$)",
       hint: `Isolate one radical, for example $\\sqrt{${R1}}=${m.c}+\\sqrt{${R2}}$, then square both sides. One radical remains; isolate it and square again. Test both candidates in $${eq}$.`,
       explanation: [
-        `Isolate $\\sqrt{${R1}}$: $\\sqrt{${R1}}=${m.c}+\\sqrt{${R2}}$. Square both sides: $${R1}=${m.c * m.c}+${2 * m.c}\\sqrt{${R2}}+${R2}$.`,
-        `Isolate the radical: $${lin}=${2 * m.c}\\sqrt{${R2}}$. Square again: $(${lin})^{2}=${4 * m.c * m.c}(${R2})$.`,
-        `Write in standard form: $${polyTex([A, B, C])}=0$, so $x=${m.good}$ or $x=${m.bad}$.`,
+        `A radical is a root sign, here a square root. Squaring undoes a square root, but it works best with one radical alone on a side.`,
+        `Isolate $\\sqrt{${R1}}$: $\\sqrt{${R1}}=${m.c}+\\sqrt{${R2}}$. Square both sides. The right side is a binomial, so use $(p+q)^2=p^2+2pq+q^2$: $${R1}=${m.c * m.c}+${2 * m.c}\\sqrt{${R2}}+${R2}$.`,
+        `One radical remains. Move everything else to the left: $${lin}=${2 * m.c}\\sqrt{${R2}}$. Square again: $(${lin})^{2}=${4 * m.c * m.c}(${R2})$.`,
+        `Multiply out and collect terms in standard form: $${polyTex([A, B, C])}=0$. Solving gives $x=${m.good}$ or $x=${m.bad}$.`,
+        `Squaring can create extraneous solutions, answers that fail the original equation. So check both.`,
         `Check $x=${m.good}$: $\\sqrt{${m.p * m.good + m.a}}-\\sqrt{${m.good + m.b}}=${Math.sqrt(m.p * m.good + m.a)}-${Math.sqrt(m.good + m.b)}=${m.c}$. It works.`,
         badNeg
           ? `Check $x=${m.bad}$: it makes a radicand negative, so it is not a solution.`
@@ -1053,23 +1077,23 @@ export const absoluteValueLinear = chainFamily({
       { label: setLabel(good), correct: true as const },
       {
         label: setLabel([m.x1, m.x2]),
-        feedback: `Each case answer must be checked in the original equation. ${why(!m.v1 ? m.x1 : m.x2)}`,
+        feedback: `This keeps both case answers without checking them. An absolute value is never negative, so one answer can fail. ${why(!m.v1 ? m.x1 : m.x2)}`,
       },
       {
         label: setLabel([m.x1]),
         feedback: m.v2
-          ? `The second case also gives a solution. ${why(m.x2)}`
+          ? `This misses the second case, where the inside is negative. It also gives a solution. ${why(m.x2)}`
           : `${why(m.x1)}`,
       },
       {
         label: setLabel([m.x2]),
         feedback: m.v1
-          ? `The first case also gives a solution. ${why(m.x1)}`
+          ? `This misses the first case, where the inside is positive. It also gives a solution. ${why(m.x1)}`
           : `${why(m.x2)}`,
       },
       {
         label: "No solution",
-        feedback: `Some value does satisfy the equation. ${why(good[0]!)}`,
+        feedback: `This rejects every answer, but one value does make the equation true. ${why(good[0]!)}`,
       },
     ];
     return choiceSurface(rnd, {
@@ -1080,13 +1104,15 @@ export const absoluteValueLinear = chainFamily({
       options,
       hint: `Split into two cases: $${inner}=${lin}$ and $${inner}=-(${lin})$. Solve each, then check both answers in the original equation, since $|${inner}|$ cannot be negative.`,
       explanation: [
-        `Case 1: $${inner}=${lin}$ gives $x=${m.x1}$.`,
-        `Case 2: $${inner}=-(${lin})$ gives $x=${m.x2}$.`,
+        `The absolute value $|${inner}|$ is the distance of $${inner}$ from 0, so it is never negative. The inside can be the right side, or its opposite.`,
+        `Case 1, the inside equals the right side: $${inner}=${lin}$ gives $x=${m.x1}$.`,
+        `Case 2, the inside equals the opposite of the right side: $${inner}=-(${lin})$ gives $x=${m.x2}$.`,
+        `The right side may be negative at one of these, which an absolute value can never equal. So check both in the original equation.`,
         `Check $x=${m.x1}$. ${why(m.x1)}`,
         `Check $x=${m.x2}$. ${why(m.x2)}`,
         good.length === 2
           ? `Both work, so the solution set is ${setLabel(good)}.`
-          : `Only $x=${good[0]}$ works; the other value is extraneous.`,
+          : `Only $x=${good[0]}$ works. The other value is extraneous, an answer from the algebra that fails the original equation. The solution set is ${setLabel(good)}.`,
       ],
     });
   },
@@ -1152,20 +1178,20 @@ export const shiftedTrinomialFactor = chainFamily({
       { label: f(good[0]!, good[1]!), correct: true as const },
       {
         label: f(binomial(p, q), binomial(r, s)),
-        feedback: `That factors the trinomial in terms of $u=${shifted(k)}$ but then writes $u$ as $x$. Substitute $${shifted(k)}$ for $u$ in each factor.`,
+        feedback: `This factors correctly in terms of $u=${shifted(k)}$, but then writes $u$ as $x$. Substitute $${shifted(k)}$ back for $u$ in each factor.`,
       },
       {
         label: f(binomial(p, q + p * k), binomial(r, s + r * k)),
-        feedback: `A factor $pu+q$ with $u=${shifted(k)}$ becomes $px+(q-pk)$. Here $k=${k}$; this answer added $pk$ instead of subtracting it.`,
+        feedback: `This is a sign error when substituting back. A factor $pu+q$ with $u=${shifted(k)}$ becomes $px+(q-pk)$. Here $k=${k}$, and this answer added $pk$ instead of subtracting it.`,
       },
       {
         label: f(binomial(p, q - k), binomial(r, s - k)),
-        feedback: `Distribute the leading coefficient of each factor over $${shifted(k)}$ too: a factor $pu+q$ becomes $px+(q-pk)$, so the constant changes by $p$ times ${k}, not by ${k}.`,
+        feedback: `This multiplied only the first term of $${shifted(k)}$ by the factor's coefficient. Distribute over both terms: a factor $pu+q$ becomes $px+(q-pk)$, so the constant changes by $p$ times ${k}, not by ${k}.`,
       },
       {
         label: f(binomial(p, -q - p * k), binomial(r, -s - r * k)),
         feedback:
-          "The signs of the constants come from factoring the trinomial in $u$: the product and sum conditions fix them. Negating them gives a different trinomial.",
+          "This flips the signs of the constants. Those signs come from factoring the trinomial in $u$: the constants must multiply and add to the right numbers. Negating them gives a different trinomial.",
       },
     ];
     const hint = m.lead
@@ -1176,9 +1202,14 @@ export const shiftedTrinomialFactor = chainFamily({
       options: opts,
       hint,
       explanation: [
-        `Let $u=${shifted(k)}$. The expression is $${polyTex([A, B, C], "u")}$.`,
-        `Factor: $${polyTex([A, B, C], "u")}=(${binomial(p, q, "u")})(${binomial(r, s, "u")})$.`,
-        `Replace $u$ by $${shifted(k)}$: $(${binomial(p, q, `(${shifted(k)})`)})(${binomial(r, s, `(${shifted(k)})`)})$, and simplify each factor: $${f(good[0]!, good[1]!).replaceAll("$", "")}$.`,
+        `The group $${u}$ appears twice, like one variable. Name it $u=${shifted(k)}$ so the structure is easy to see.`,
+        `With that name the expression is $${polyTex([A, B, C], "u")}$, an ordinary trinomial, an expression with three terms.`,
+        m.lead
+          ? `Factor it as a product of two binomials, expressions with two terms: $${polyTex([A, B, C], "u")}=(${binomial(p, q, "u")})(${binomial(r, s, "u")})$. Multiplying back checks it.`
+          : `Find two numbers that multiply to ${C} and add to ${B}: ${q} and ${s}. So $${polyTex([A, B, C], "u")}=(${binomial(p, q, "u")})(${binomial(r, s, "u")})$.`,
+        `Replace $u$ by $${shifted(k)}$: $(${binomial(p, q, `(${shifted(k)})`)})(${binomial(r, s, `(${shifted(k)})`)})$.`,
+        `Distribute and combine the numbers in each factor: $${f(good[0]!, good[1]!).replaceAll("$", "")}$.`,
+        `So the expression is equivalent to ${f(good[0]!, good[1]!)}.`,
       ],
     });
   },
@@ -1237,28 +1268,31 @@ export const rationalExponentProduct = chainFamily({
           {
             label: `$${pw(4 + m.P12 + m.Q12)}$`,
             feedback:
-              "Dividing powers with the same base subtracts the exponents. This added the exponent of the denominator.",
+              "This added the denominator's exponent. Dividing powers with the same base subtracts the exponents.",
           },
           {
             label: `$${pw(m.P12 - m.Q12)}$`,
             feedback:
-              "The cube root of $a$ is $a^{1/3}$ and it also contributes to the exponent. It was left out.",
+              "This leaves out the cube root. $\\sqrt[3]{a}$ is $a^{1/3}$, and its exponent $\\frac13$ joins the sum.",
           },
           {
             label: `$${pw(36 + m.P12 - m.Q12)}$`,
-            feedback: "The cube root of $a$ is $a^{1/3}$, not $a^{3}$.",
+            feedback:
+              "This treats the cube root as cubing. The cube root of $a$ is $a^{1/3}$, not $a^{3}$.",
           },
           {
             label: `$${pw(m.Q12 - m.P12 - 4)}$`,
             feedback:
-              "The denominator's exponent is subtracted from the numerator's, not the other way around.",
+              "This subtracts in the wrong order. The denominator's exponent is subtracted from the numerator's.",
           },
         ],
         hint: `Write $\\sqrt[3]{a}$ as $a^{1/3}$. Then add it to the exponent $${exp12(m.P12)}$ in the numerator and subtract the exponent of the denominator, $${exp12(m.Q12)}$.`,
         explanation: [
-          `$\\sqrt[3]{a}=a^{1/3}$.`,
-          `The numerator is $a^{1/3}\\cdot ${P}=a^{1/3+${exp12(m.P12)}}$ and dividing by $${Q}$ subtracts its exponent.`,
-          `The exponent is $\\frac13+${exp12(m.P12)}-${exp12(m.Q12)}=${exp12(e)}$ so the expression equals $${pw(e)}$.`,
+          `Write every factor as a power of $a$, so exponent rules apply. A cube root is the power $\\frac13$: $\\sqrt[3]{a}=a^{1/3}$, since three factors of $a^{1/3}$ multiply to $a$.`,
+          `Multiplying powers of the same base adds the exponents. The numerator is $a^{1/3}\\cdot ${P}=a^{1/3+${exp12(m.P12)}}$.`,
+          `Dividing powers of the same base subtracts the exponents. So subtract the exponent of $${Q}$.`,
+          `The exponent is $\\frac13+${exp12(m.P12)}-${exp12(m.Q12)}=${exp12(e)}$. Use twelfths, a common denominator, to add these fractions.`,
+          `So the expression equals $${pw(e)}$.`,
         ],
       });
     }
@@ -1274,25 +1308,27 @@ export const rationalExponentProduct = chainFamily({
         { label: lab(c * d, e3, 3), correct: true },
         {
           label: lab(c * d ** 3, e3, 3),
-          feedback: `The cube root also applies to the coefficient: $\\sqrt[3]{${d ** 3}}=${d}$, so ${c} is multiplied by ${d}, not ${d ** 3}.`,
+          feedback: `This leaves ${d ** 3} outside the cube root. The root applies to the number too: $\\sqrt[3]{${d ** 3}}=${d}$, so ${c} is multiplied by ${d}, not ${d ** 3}.`,
         },
         {
           label: lab(c * d, 3 * P + mm, 1),
-          feedback: `The cube root gives the exponent $\\frac{${mm}}{3}$, so the exponent of $x$ after adding is $${P}+\\frac{${mm}}{3}$, not $${P}+${mm}$.`,
+          feedback: `This forgets to divide the inner exponent by 3. The cube root gives the exponent $\\frac{${mm}}{3}$, so the total is $${P}+\\frac{${mm}}{3}$, not $${P}+${mm}$.`,
         },
         {
           label: lab(c * d, P * mm, 3),
-          feedback: `Exponents of powers of the same base are added when multiplying, not multiplied: $${P}+\\frac{${mm}}{3}$.`,
+          feedback: `This multiplies the exponents. When multiplying powers of the same base, add the exponents: $${P}+\\frac{${mm}}{3}$.`,
         },
         {
           label: lab(c * d, 3 * P + mm, 9),
-          feedback: `The factor $${c}x^{${P}}$ is outside the radical, so its exponent ${P} is not divided by 3.`,
+          feedback: `This puts $${c}x^{${P}}$ under the root too. It is outside the radical, so its exponent ${P} is not divided by 3.`,
         },
       ],
       hint: `Take the cube root of ${d ** 3} separately, and write $\\sqrt[3]{x^{${mm}}}$ as a power of $x$ with exponent $\\frac{${mm}}{3}$. Then combine the powers of $x$.`,
       explanation: [
-        `$\\sqrt[3]{${d ** 3}x^{${mm}}}=\\sqrt[3]{${d ** 3}}\\cdot x^{${mm}/3}=${d}x^{${mm}/3}$.`,
-        `Multiply by $${c}x^{${P}}$: the coefficient is $${c}\\cdot${d}=${c * d}$ and the exponent is $${P}+\\frac{${mm}}{3}=${expTex(e3, 3)}$.`,
+        `A cube root, $\\sqrt[3]{\\ }$, undoes cubing. It applies to each factor under it, the number and the power of $x$.`,
+        `The number: $${d}^3=${d ** 3}$, so $\\sqrt[3]{${d ** 3}}=${d}$. The power: a cube root is the power $\\frac13$, so $\\sqrt[3]{x^{${mm}}}=x^{${mm}/3}$.`,
+        `So $\\sqrt[3]{${d ** 3}x^{${mm}}}=${d}x^{${mm}/3}$.`,
+        `Multiply by $${c}x^{${P}}$. Multiply the coefficients, the numbers in front: $${c}\\cdot${d}=${c * d}$. Add the exponents of $x$: $${P}+\\frac{${mm}}{3}=${expTex(e3, 3)}$.`,
         `So the expression equals $${c * d}x^{${expTex(e3, 3)}}$.`,
       ],
     });

@@ -19,18 +19,12 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "Every circle is an enlargement of every other circle. When a circle is enlarged by a factor $k$, every length in it is multiplied by $k$, including the radius and the arc cut off by a fixed central angle. So for one angle, arc length divided by radius is the same number in every circle. That number measures the angle.",
     terms: [
-      [
-        "central angle",
-        "An angle whose vertex is the center of a circle. It cuts off an arc of the circle.",
-      ],
+      "central-angle",
       [
         "radian",
-        "The measure of a central angle that cuts off an arc exactly as long as the radius. A central angle of $\\theta$ radians cuts off an arc of length $\\theta r$.",
+        "A central angle of $\\theta$ radians cuts off an arc of length $\\theta r$.",
       ],
-      [
-        "sector",
-        "The region between two radii and the arc they cut off. Its area is the same fraction of the disk as its angle is of a full turn.",
-      ],
+      "sector",
     ],
     method: [
       "For a proportion between two circles, divide each arc by its own radius and set the two ratios equal.",
@@ -46,15 +40,9 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "A complex number $a+bi$ is the point with $a$ across (the real part) and $b$ up (the imaginary part). Adding complex numbers adds the arrows from the origin, so the sum is the far corner of a parallelogram. Subtracting gives the arrow between the two points. The conjugate flips the sign of the imaginary part, which reflects the point in the horizontal axis. Multiplying by $i$ turns the point a quarter turn counterclockwise about the origin.",
     terms: [
-      ["modulus", "The distance of a point from the origin, written $|z|$."],
-      [
-        "argument",
-        "The counterclockwise angle from the positive real axis to the arrow from the origin to the point.",
-      ],
-      [
-        "conjugate",
-        "The conjugate of $a+bi$ is $a-bi$, written $\\overline{z}$.",
-      ],
+      "modulus",
+      "argument",
+      ["complex-conjugate", "It is written $\\overline{z}$."],
     ],
     method: [
       "Read each number as a point: real part across, imaginary part up.",
@@ -69,17 +57,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
     goal: "Read statements about rates as conditional probabilities, tell $P(A\\mid B)$ from $P(B\\mid A)$, and decide independence from described rates.",
     intuition:
       "A conditional probability $P(A\\mid B)$ is the chance of $A$ when you look only at the cases where $B$ happened. The group you restrict to goes after the bar. Two events are independent when learning that $B$ happened does not change the chance of $A$.",
-    terms: [
-      [
-        "conditional probability",
-        "The probability of one event inside a smaller group: $P(A\\mid B)$ is the share of the cases with $B$ that also have $A$.",
-      ],
-      [
-        "independent events",
-        "Events $A$ and $B$ with $P(A\\mid B)=P(A)$, which is the same as $P(A\\cap B)=P(A)\\,P(B)$.",
-      ],
-      ["intersection", "The event that both happen, written $A\\cap B$."],
-    ],
+    terms: ["conditional-probability", "independent-events", "intersection"],
     method: [
       'Find the group the percentage is taken of. "Among those who $B$" names the condition: the probability is $P(\\cdot\\mid B)$.',
       "To compute from counts, divide the count with both events by the size of the condition group.",
@@ -94,18 +72,12 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "A rigid motion moves a figure without stretching it: a translation slides, a rotation turns, a reflection flips. Lengths and angles stay the same. Two figures are congruent when some sequence of rigid motions carries one exactly onto the other.",
     terms: [
+      "rigid-motion",
       [
-        "rigid motion",
-        "A translation, rotation or reflection, or a sequence of them. It preserves every distance and angle.",
+        "corresponding",
+        "If $A \\to D$, $B \\to E$ and $C \\to F$, then $AB$ corresponds to $DE$ and $\\angle C$ to $\\angle F$.",
       ],
-      [
-        "corresponding parts",
-        "The sides and angles that land on each other. If $A\\to D$, $B\\to E$ and $C\\to F$, then $AB$ corresponds to $DE$ and $\\angle C$ to $\\angle F$.",
-      ],
-      [
-        "orientation",
-        "The direction $A\\to B\\to C$ runs around a triangle, clockwise or counterclockwise. A reflection reverses it.",
-      ],
+      "orientation",
     ],
     method: [
       "Compare sides: if matching lengths differ, no rigid motion exists and the triangles are not congruent.",
@@ -121,10 +93,10 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "Two fixed points called foci define these curves. An ellipse is every point whose distances to the two foci add to a constant. A hyperbola is every point whose distances to the two foci differ by a constant. The foci lie on the axis that holds the vertices, at distance $c$ from the center.",
     terms: [
-      ["foci", "The two fixed points used to define an ellipse or hyperbola."],
+      ["focus", "An ellipse or a hyperbola has two foci."],
       [
-        "$a$, $b$ and $c$",
-        "For an ellipse or hyperbola centered at the origin, $a$ is the distance from the center to a vertex on the axis through the foci, $c$ is the distance from the center to a focus, and the other denominator is $b^2$.",
+        "focus",
+        "For a conic centered at the origin, $a$ runs center to vertex, $c$ center to focus, and the other denominator is $b^2$.",
       ],
     ],
     method: [
@@ -143,11 +115,11 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
     terms: [
       [
         "interval",
-        "A range of values of equal width. In a histogram a value equal to the left end of an interval is counted in that interval.",
+        "In a histogram, a value equal to an interval's left end is counted in that interval.",
       ],
       [
-        "quartiles",
-        "The medians of the lower and upper halves of the ordered data. With an odd number of values the overall median is left out of both halves.",
+        "quartile",
+        "With an odd number of values, the overall median is left out of both halves.",
       ],
     ],
     method: [
@@ -163,16 +135,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the dilation and rigid motions that map one triangle onto another, and decide similarity by whether such a sequence exists.",
     intuition:
       "A dilation enlarges or shrinks a figure by a scale factor about a center without changing its shape. Two figures are similar when some dilation followed by rigid motions maps one onto the other. The scale factor is the ratio of corresponding side lengths.",
-    terms: [
-      [
-        "dilation",
-        "A transformation about a center that multiplies every distance from the center by a scale factor $k$. It keeps angles and multiplies lengths by $k$.",
-      ],
-      [
-        "similar figures",
-        "Figures that a sequence of dilations and rigid motions maps onto each other.",
-      ],
-    ],
+    terms: ["dilation", "similar-figures"],
     method: [
       "Compare one pair of corresponding sides to find the scale factor $k$, and check the other sides give the same $k$.",
       "Dilate about the origin by $k$, then find the rigid motion (reflection, rotation, translation) that lands one vertex on its image.",
@@ -186,13 +149,10 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "The angles of every triangle add to $180^\\circ$, so two angles fix the third. If two angles of one triangle equal two angles of another, all three match and the triangles have the same shape. They are similar, and the vertices with equal angles correspond.",
     terms: [
+      "aa-similarity",
       [
-        "AA similarity",
-        "If two angles of one triangle equal two angles of another triangle, the triangles are similar.",
-      ],
-      [
-        "correspondence",
-        "The matching of vertices. In $\\triangle ABC\\sim\\triangle EFD$, $A$ matches $E$, $B$ matches $F$ and $C$ matches $D$.",
+        "corresponding",
+        "In $\\triangle ABC \\sim \\triangle EFD$, $A$ matches $E$, $B$ matches $F$ and $C$ matches $D$.",
       ],
     ],
     method: [

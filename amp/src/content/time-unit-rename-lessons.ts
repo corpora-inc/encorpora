@@ -8,10 +8,10 @@ export const timeUnitRenameMethods: Record<string, ProblemMethod> = {
     intuition:
       "Time units are groups of smaller units: 1 hour is a group of 60 minutes. Renaming changes how the same amount of time is counted, so the amount does not change, only the size of the unit.",
     terms: [
-      ["rename", "Write the same amount of time with a different unit."],
+      "rename",
       [
-        "group",
-        "The number of small units in one large unit, such as 60 minutes in 1 hour.",
+        "conversion-factor",
+        "Here, a group is how many small units make one large unit, such as 60 minutes in 1 hour.",
       ],
     ],
     method: [

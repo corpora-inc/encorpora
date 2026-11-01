@@ -7,10 +7,7 @@ export const dataMeasureMethods: Record<string, ProblemMethod> = {
     goal: "Find the mode, the value that appears most often in a list or in a table of counts.",
     intuition:
       "The mode is the most popular number in a set of data. Count how many times each number appears and pick the one with the greatest count. A table of counts has already done the counting for you: look for the greatest count.",
-    terms: [
-      ["data", "Numbers collected by counting or measuring."],
-      ["mode", "The value that appears most often in a set of data."],
-    ],
+    terms: ["data", "mode-statistics"],
     method: [
       "Go through the list and count how many times each different number appears. A tally mark for each one helps.",
       "Find the greatest count. In a table, read the row of counts.",
@@ -23,12 +20,7 @@ export const dataMeasureMethods: Record<string, ProblemMethod> = {
     goal: "Match mean, median, mode and range to what each one tells about a set of numbers.",
     intuition:
       "Four numbers describe a set of data in different ways. The mean is the fair share, the median is the middle number, the mode is the number that appears most often, and the range tells how far apart the greatest and least are.",
-    terms: [
-      ["mean", "The amount each would have if the total were shared equally."],
-      ["median", "The middle number when the numbers are in order."],
-      ["mode", "The number that appears most often."],
-      ["range", "The greatest number minus the least number."],
-    ],
+    terms: ["mean-average", "median", "mode-statistics", "range-statistics"],
     method: [
       "Put the numbers in order from least to greatest.",
       "Match the words to a measure: shared equally is the mean, the middle is the median, most often is the mode, and the difference between greatest and least is the range.",

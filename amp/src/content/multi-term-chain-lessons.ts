@@ -7,16 +7,7 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
     goal: "Combine three or four fractions, mixed numbers or decimals with different denominators by writing every term over one common denominator.",
     intuition:
       "Pieces can be added or taken away only when they are the same size. With three or four amounts, find one piece size that fits all of them, rewrite every amount in those pieces, and then just count pieces.",
-    terms: [
-      [
-        "common denominator",
-        "A number that every denominator divides into evenly, such as 12 for thirds, fourths and sixths.",
-      ],
-      [
-        "improper fraction",
-        "A fraction whose top number is at least its bottom number, such as $\\frac{9}{4}$ for $2\\frac{1}{4}$.",
-      ],
-    ],
+    terms: ["common-denominator", "improper-fraction"],
     method: [
       "List the denominators and choose a common denominator that all of them divide into.",
       "Rewrite every term, including a whole number or a decimal, as a fraction over that denominator.",
@@ -30,16 +21,7 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
     goal: "Write a fraction as a decimal, or a decimal as a fraction, then add, subtract or multiply; read decimal weights from a table.",
     intuition:
       "A fraction and a decimal are two names for one number. When a problem mixes them, pick one name for every term first. Then the arithmetic is one you already know. In an expression, multiplication is done before subtraction.",
-    terms: [
-      [
-        "rename",
-        "Write a number in another form that has the same value, such as $\\frac{2}{5}=0.4$.",
-      ],
-      [
-        "mixed number",
-        "A whole number and a fraction together, such as $2\\frac{1}{4}$.",
-      ],
-    ],
+    terms: ["rename", "mixed-number"],
     method: [
       "Choose one form for the problem. Decimals are easiest when the denominators are 2, 4, 5, 10, 20 or 25.",
       "Rename each fraction by dividing its top number by its bottom number.",
@@ -66,12 +48,7 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
     goal: "Use a table of charges for two numbers of hours at one price per hour to find another charge, or the hours for a charge.",
     intuition:
       "When every hour costs the same, the charge for any number of hours is that many hourly prices. A table gives the price of two stays. Dividing one of them by its hours shows the price of one hour.",
-    terms: [
-      [
-        "unit rate",
-        "The charge for one hour, found as charge divided by hours.",
-      ],
-    ],
+    terms: ["unit-rate"],
     method: [
       "Divide a charge in the table by its hours to find the price of 1 hour, and check it against the other column.",
       "To find a charge, multiply the unit rate by the new number of hours.",
@@ -86,8 +63,8 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
       "A gain moves a count up and a loss moves it down. The net change is where the count ends up compared with the start. Gains and losses can be added in any order, so group the gains together and the losses together.",
     terms: [
       [
-        "net change",
-        "The total of all the gains and losses, positive or negative.",
+        "sum",
+        "The net change adds all the gains and losses, counting each loss as negative.",
       ],
     ],
     method: [

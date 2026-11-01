@@ -144,12 +144,7 @@ export const bivariateLessons: Lesson[] = [
 export const bivariateMethods: Record<string, ProblemMethod> = {
   "scatter-association-choice": {
     goal: "Describe the association in a scatter plot.",
-    terms: [
-      [
-        "association",
-        "A pattern in how two quantities vary together, so one helps predict the other.",
-      ],
-    ],
+    terms: ["association"],
     method: [
       "Read the points left to right as $x$ increases.",
       "Ask whether $y$ tends to rise, fall, follow a curve, or show no trend.",

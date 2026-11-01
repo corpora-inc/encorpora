@@ -13,16 +13,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "An equation is a balance: both sides have the same value. Rewriting one side in an equal form (distributing, combining like terms) keeps it balanced, and so does doing the same operation to both sides. Each line of a solution is one such move, and its reason names which move it was.",
-    terms: [
-      [
-        "property of equality",
-        "Adding, subtracting, multiplying or dividing both sides by the same number (not dividing by 0) keeps an equation true.",
-      ],
-      [
-        "like terms",
-        "Terms with the same variable part, such as $3x$ and $-5x$, or two constants.",
-      ],
-    ],
+    terms: ["property-of-equality", "like-terms"],
     method: [
       "Simplify each side: distribute a number over parentheses (distributive property) and combine like terms.",
       "Gather the variable terms on one side by adding or subtracting a term on both sides (addition or subtraction property of equality).",
@@ -70,16 +61,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "Adding the same amount to two numbers keeps their order: if $a<b$ then $a+5<b+5$. Multiplying by a positive number keeps it too. Multiplying by a negative number flips the number line, so the larger number becomes the smaller: $2<3$ but $-2>-3$.",
-    terms: [
-      [
-        "reverse the sign",
-        "Change $<$ to $>$, $>$ to $<$, $\\le$ to $\\ge$ or $\\ge$ to $\\le$.",
-      ],
-      [
-        "solution set",
-        "All values that make the inequality true, such as every number greater than 4.",
-      ],
-    ],
+    terms: ["reverse-inequality-sign", "solution-set"],
     method: [
       "Distribute and combine like terms on each side.",
       "Add or subtract terms on both sides to get the variable terms on one side and the constants on the other. The sign stays the same.",
@@ -127,12 +109,12 @@ const entries: WorkEntry[] = [
       "In $A=bh$, the height $h$ is multiplied by the base $b$. To get $h$ alone, undo that multiplication by dividing both sides by $b$, just as you would divide by 5 in $20=5h$. The other letters stay in the answer.",
     terms: [
       [
-        "solve for $h$",
-        "Rewrite the formula so that $h$ is alone on one side and does not appear on the other.",
+        "isolate",
+        "To solve for $h$, isolate $h$ so it appears on one side only.",
       ],
       [
-        "undo",
-        "Apply the inverse operation in the reverse order: the last operation done to the variable is undone first.",
+        "inverse-operation",
+        "To undo several steps, apply inverse operations in reverse order: undo the last operation first.",
       ],
     ],
     method: [
@@ -182,10 +164,10 @@ const entries: WorkEntry[] = [
     intuition:
       "If two numbers multiply to 0, one of them must be 0. So once $(x-2)(x+5)=0$, either $x-2=0$ or $x+5=0$. That works only with 0 on one side: $(x-2)(x+5)=6$ says nothing about either factor alone.",
     terms: [
-      ["zero-product property", "If $ab=0$, then $a=0$ or $b=0$."],
+      "zero-product-property",
       [
-        "standard form",
-        "$ax^2+bx+c=0$, with every term on one side and 0 on the other.",
+        "standard-form-polynomial",
+        "For a quadratic equation, $ax^2 + bx + c = 0$, with every term on one side and 0 on the other.",
       ],
     ],
     method: [

@@ -4,11 +4,11 @@ export const assessmentGapMethods: Record<string, ProblemMethod> = {
   "measurement-error-bound": {
     goal: "Find the smallest or greatest possible actual measurement.",
     terms: [
-      ["reported value", "The measurement displayed by an instrument."],
       [
-        "error limit",
-        "The largest allowed distance between a reported value and the actual value.",
+        "error-limit",
+        "The reported value is the measurement the instrument displays.",
       ],
+      "error-limit",
     ],
     method: [
       "Express the error limit in the same units as the reported measurement. If it is a percentage, take that percentage of the stated base.",
@@ -19,14 +19,7 @@ export const assessmentGapMethods: Record<string, ProblemMethod> = {
   },
   "margin-of-error-interval": {
     goal: "Find the interval centered on an estimate with a stated margin of error.",
-    terms: [
-      ["population", "The whole group being studied."],
-      ["sample", "The part of that group actually observed."],
-      [
-        "margin of error",
-        "The distance from an estimate to each endpoint of its reported interval.",
-      ],
-    ],
+    terms: ["population", "sample", "margin-of-error"],
     method: [
       "Identify the sample estimate and express the margin of error in the same units. A percentage estimate uses percentage points.",
       "Subtract the margin for the lower endpoint and add it for the upper endpoint. Interpret the interval as an estimate for the population quantity.",
@@ -36,11 +29,7 @@ export const assessmentGapMethods: Record<string, ProblemMethod> = {
   },
   "radian-arc-ratio": {
     goal: "Measure a swept angle by comparing its arc length with the radius.",
-    terms: [
-      ["radius", "The distance from the center of a circle to its boundary."],
-      ["arc", "A connected portion of the circle’s boundary."],
-      ["radian", "The angle that sweeps an arc equal in length to the radius."],
-    ],
+    terms: ["radius", "arc", "radian"],
     method: [
       "Identify the arc that the angle sweeps, including its direction, and put its length and the radius in the same units.",
       "Divide the arc length by the positive radius. Keep an exact fraction, then check by multiplying the angle by the radius.",

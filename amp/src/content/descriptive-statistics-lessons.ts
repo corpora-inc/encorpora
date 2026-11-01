@@ -248,11 +248,11 @@ export const descriptiveStatisticsMethods: Record<string, ProblemMethod> = {
     intuition:
       "The median is the middle value after sorting all recorded values, keeping repeats. If two values share the middle, average them.",
     terms: [
+      "median",
       [
-        "median",
-        "The middle value of ordered data, or the mean of the two middle values.",
+        "mean-average",
+        "For two values, add them and divide by 2; the result is halfway between them.",
       ],
-      ["mean of two values", "Their sum divided by 2."],
     ],
     method: [
       "Order every observation from least to greatest, retaining repetitions.",
@@ -263,11 +263,7 @@ export const descriptiveStatisticsMethods: Record<string, ProblemMethod> = {
   },
   "range-data": {
     goal: "Find the full numerical span of a dataset.",
-    terms: [
-      ["minimum", "The least value."],
-      ["maximum", "The greatest value."],
-      ["range", "Maximum minus minimum."],
-    ],
+    terms: ["minimum", "maximum", "range-statistics"],
     method: [
       "Identify the least and greatest observations.",
       "Subtract minimum from maximum. Subtracting a negative adds its positive opposite.",
@@ -278,15 +274,12 @@ export const descriptiveStatisticsMethods: Record<string, ProblemMethod> = {
   "interquartile-range-data": {
     goal: "Measure the distance between the medians of the lower and upper halves.",
     terms: [
+      "median",
       [
-        "median",
-        "The middle value of ordered data, or the sum of its two middle values divided by 2.",
+        "quartile",
+        "Follow the problem's stated convention for whether the median joins the halves.",
       ],
-      [
-        "quartiles",
-        "Q1 is the lower half's median; Q3 is the upper half's median under the stated convention.",
-      ],
-      ["interquartile range", "Q3 minus Q1."],
+      "interquartile-range",
     ],
     method: [
       "Order every observation, including repetitions.",

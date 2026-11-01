@@ -13,8 +13,8 @@ const instruction: Record<string, Instruction> = {
       "A population is the whole group of interest; a sample is the smaller group observed. A simple random sample gives every group of the chosen size an equal chance of selection. Its average can estimate the population average, with uncertainty because another sample can give a different result.",
     terms: [
       [
-        "sample mean",
-        "The sum of observed values divided by the number observed.",
+        "mean-average",
+        "Here, the mean of the values observed in a sample, used to estimate the population mean.",
       ],
     ],
     method: [
@@ -30,12 +30,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Recover an unknown count from an event probability.",
     intuition:
       "For equally likely objects, a probability is the number of favorable objects divided by the total number. If the favorable count is unknown, the total may contain that same unknown. Express both counts before solving.",
-    terms: [
-      [
-        "complement",
-        "The outcomes outside the chosen event; the event and its complement exhaust the possibilities.",
-      ],
-    ],
+    terms: ["complement-probability"],
     method: [
       "Name the unknown event count and add the known complementary count to express the total.",
       "Set favorable count divided by total equal to the stated probability. Solve and substitute the count into the original ratio.",
@@ -51,8 +46,8 @@ const instruction: Record<string, Instruction> = {
       "The mean is the sum of the values divided by their count. Standard deviation measures spread around that mean. Large values need not have large spread: moving every value the same distance leaves their spacing unchanged.",
     terms: [
       [
-        "standard deviation",
-        "The square root of an average of squared distances from the mean; compare both sets using the same convention.",
+        "standard-deviation",
+        "Compare two data sets using the same convention: dividing by $n$ or by $n - 1$.",
       ],
     ],
     method: [
@@ -68,12 +63,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Explain how a larger comparable random sample affects margin of error.",
     intuition:
       "A sample is the part of a population that we observe. Different random samples give different estimates. A margin of error describes sampling uncertainty around an estimate; information from more people generally reduces that uncertainty.",
-    terms: [
-      [
-        "confidence level",
-        "The long-run coverage rate of a confidence-interval procedure under its assumptions.",
-      ],
-    ],
+    terms: ["confidence-level"],
     method: [
       "Check that the population, random sampling method, confidence level, and quantity estimated are comparable.",
       "Under comparable conditions, choose the larger sample for a generally smaller margin of error. Keep bias separate from random sampling uncertainty.",
@@ -87,12 +77,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Convert all dimensions of a compound measurement while preserving the quantity.",
     intuition:
       "A unit conversion changes how we count the same quantity. A square has two length dimensions; a cube has three. A rate compares two quantities, so its numerator and denominator may both need conversion.",
-    terms: [
-      [
-        "derived unit",
-        "A unit built by multiplying or dividing other units, such as square centimeters or meters per second.",
-      ],
-    ],
+    terms: ["derived-unit"],
     method: [
       "Write the desired units and multiply by conversion ratios equal to one so the old units cancel.",
       "Square a length conversion for area and cube it for volume. Convert both parts of a rate; multiply power by time to obtain energy.",
@@ -106,9 +91,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Express the same angle in degrees or radians.",
     intuition:
       "An angle measures a turn. A full turn is 360 degrees. A radian is the turn sweeping an arc as long as the radius, so a full turn is $2\\pi$ radians. Both units describe the same turn.",
-    terms: [
-      ["radian", "The angle sweeping an arc whose length equals the radius."],
-    ],
+    terms: ["radian"],
     method: [
       "Use the equivalence of 180 degrees and $\\pi$ radians.",
       "For degrees to radians, multiply by $\\pi/180$. For radians to degrees, multiply by $180/\\pi$. Keep exact fractions.",
@@ -122,12 +105,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Find an endpoint coordinate on a unit circle using a reference triangle and a quadrant.",
     intuition:
       "The unit circle is centered at the origin and has radius one. Measure an angle counterclockwise from the positive horizontal axis. Its endpoint's horizontal coordinate is cosine and its vertical coordinate is sine. A reference angle is the acute angle between the radius and the horizontal axis.",
-    terms: [
-      [
-        "quadrant",
-        "One of the four regions bounded by the coordinate axes; numbered counterclockwise from the upper right.",
-      ],
-    ],
+    terms: ["quadrant"],
     method: [
       "Find the acute reference angle. A 30–60–90 triangle has side ratio $1:\\sqrt{3}:2$; a 45–45–90 triangle has ratio $1:1:\\sqrt{2}$.",
       "Divide the relevant leg by the hypotenuse to get the magnitude. Give the horizontal or vertical coordinate its quadrant sign.",
@@ -141,12 +119,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Connect corresponding lengths and volumes of similar solids.",
     intuition:
       "Similar solids have the same shape, with every corresponding length multiplied by one scale factor. Volume counts three dimensions, so the length factor acts three times.",
-    terms: [
-      [
-        "scale factor",
-        "The ratio of a new corresponding length to the old length.",
-      ],
-    ],
+    terms: ["scale-factor"],
     method: [
       "Find the ratio of corresponding lengths; cube that ratio to obtain the volume ratio.",
       "If volumes are given instead, take the positive cube root of their ratio to recover the length ratio, then scale the requested edge.",
@@ -160,12 +133,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Isolate a positive quantity that appears squared in a formula.",
     intuition:
       "A formula is an equation connecting quantities. To find one quantity, undo the operations around it while preserving equality. A positive radius or speed selects the positive square root.",
-    terms: [
-      [
-        "principal square root",
-        "The nonnegative square root of a nonnegative number.",
-      ],
-    ],
+    terms: ["principal-square-root"],
     method: [
       "Multiply or divide both sides by the stated nonzero factors until the squared unknown is isolated.",
       "Take the positive square root when the domain requires it. Substitute the result into the original formula to check.",
@@ -179,12 +147,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Build a quadratic and interpret its physically meaningful solution or maximum.",
     intuition:
       "A quadratic contains the square of an unknown. It can arise when two changing lengths are multiplied, or when a height rises and then falls. Define the unknown with units before writing the equation.",
-    terms: [
-      [
-        "vertex",
-        "The turning point of a parabola; the maximum for a downward-opening quadratic.",
-      ],
-    ],
+    terms: ["vertex-parabola"],
     method: [
       "Express each quantity in terms of the unknown and translate the relationship, such as area equals length times width.",
       "Solve or find the vertex as requested. Substitute to obtain the requested quantity and reject values outside the context's domain.",
@@ -198,7 +161,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Interpret a growth or decay factor over its stated time interval.",
     intuition:
       "Exponential change multiplies by the same positive factor over equal time intervals. The exponent counts those intervals. Changing the time unit changes the factor per unit without changing the modeled population.",
-    terms: [["initial value", "The modeled amount at time zero."]],
+    terms: ["initial-value"],
     method: [
       "Identify the initial value and the length of time that increases the exponent by one.",
       "Compare the model at two times one such interval apart. For a per-unit factor, take the positive root matching the interval length.",
@@ -212,12 +175,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Write roots as powers with fractional exponents on a positive domain.",
     intuition:
       "An exponent records repeated multiplication; a root reverses a power. A fractional exponent combines these operations. A positive base avoids sign and domain complications of roots of negative numbers.",
-    terms: [
-      [
-        "root index",
-        "The positive integer naming which power the root reverses.",
-      ],
-    ],
+    terms: ["nth-root"],
     method: [
       "Write an nth root as a power with exponent $1/n$, then multiply by any exponent already on the base.",
       "A reciprocal negates the exponent. Keep the base's domain and reduce the exponent fraction.",
@@ -231,12 +189,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Combine fractions containing a variable without changing their allowed inputs.",
     intuition:
       "A rational expression is a quotient of polynomials. Like numerical fractions, these need a common denominator before addition or subtraction. A denominator cannot be zero, even if simplification cancels its factor.",
-    terms: [
-      [
-        "excluded input",
-        "A value that makes an original denominator zero and cannot be used in the expression.",
-      ],
-    ],
+    terms: ["excluded-value"],
     method: [
       "Record excluded inputs. For addition or subtraction, rewrite both fractions over a common denominator, then combine numerators.",
       "For multiplication, multiply numerators and denominators and cancel common nonzero factors. Retain the original exclusions.",
@@ -250,12 +203,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Select the model with the smallest total squared discrepancy from observations.",
     intuition:
       "A model predicts an output from an input. Real observations can differ from predictions. A residual is observed minus predicted output. Squaring prevents positive and negative discrepancies from cancelling and gives larger discrepancies more weight.",
-    terms: [
-      [
-        "sum of squared residuals",
-        "The total obtained by squaring each observed-minus-predicted difference and adding.",
-      ],
-    ],
+    terms: ["sum-of-squared-residuals"],
     method: [
       "For each candidate, predict the output at every observed input and subtract from the observation.",
       "Square each residual and add. Choose the smallest total; check that every observation was included.",
@@ -269,12 +217,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Find a coefficient that gives a quadratic exactly one distinct real root.",
     intuition:
       "A quadratic graph can cross the horizontal axis twice, touch it once, or miss it. A single distinct root occurs when the graph just touches the axis, so the two quadratic-formula values coincide.",
-    terms: [
-      [
-        "discriminant",
-        "The quantity $b^2-4ac$ in the quadratic formula for $ax^2+bx+c=0$.",
-      ],
-    ],
+    terms: ["discriminant"],
     method: [
       "Identify signed coefficients and check that the leading coefficient is nonzero. Set the discriminant equal to zero.",
       "Solve for the unknown coefficient and substitute it back. Verify a repeated root.",
@@ -288,7 +231,7 @@ const instruction: Record<string, Instruction> = {
     goal: "Connect a fractional rule with input-output pairs while respecting its excluded input.",
     intuition:
       "A function assigns an output to each allowed input. A variable denominator can exclude an input where the denominator is zero. A table gives sample pairs, which can be checked by substitution.",
-    terms: [["domain", "The set of inputs allowed by the rule and context."]],
+    terms: ["domain"],
     method: [
       "Exclude any input making a zero denominator. Substitute a table input into each proposed rule and compare outputs.",
       "To recover an input, undo the outside addition before solving the fraction equation. Check in the original rule.",

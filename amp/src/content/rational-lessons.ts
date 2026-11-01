@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -269,21 +270,15 @@ export const rationalLessons: Lesson[] = [
   },
 ];
 
-const fractionTerms: [string, string][] = [
-  ["Numerator", "The number above a fraction bar; it counts equal parts."],
-  [
-    "Denominator",
-    "The nonzero number below a fraction bar; it names the size of the parts.",
-  ],
-  ["Lowest terms", "No common factor greater than 1 remains."],
+const fractionTerms: MethodTerm[] = [
+  "numerator",
+  "denominator",
+  "lowest-terms",
 ];
 export const rationalMethods: Record<string, ProblemMethod> = {
   "signed-fraction-sum": {
     goal: "Find the exact sum or difference of two signed fractions.",
-    terms: [
-      ...fractionTerms,
-      ["Opposite", "The number the same distance from 0 on the other side."],
-    ],
+    terms: [...fractionTerms, "opposite-number"],
     method: [
       "Rewrite subtraction as adding the opposite.",
       "Rename both fractions with the least common denominator.",
@@ -296,10 +291,7 @@ export const rationalMethods: Record<string, ProblemMethod> = {
     goal: "Find the exact product or quotient of two signed fractions.",
     intuition:
       "First multiply or divide the fraction sizes, then use their signs. For division, multiply by the nonzero divisor's reciprocal: swap its top and bottom numbers. Two negative factors make a positive result.",
-    terms: [
-      ...fractionTerms,
-      ["Reciprocal", "The fraction flipped over; a number times it equals 1."],
-    ],
+    terms: [...fractionTerms, "reciprocal"],
     method: [
       "To divide, multiply by the reciprocal of the divisor.",
       "Same signs give a positive result; opposite signs give a negative one.",
@@ -315,8 +307,8 @@ export const rationalMethods: Record<string, ProblemMethod> = {
     terms: [
       ...fractionTerms,
       [
-        "Main fraction bar",
-        "The longest bar; it divides everything above by everything below.",
+        "fraction-bar",
+        "In a fraction with fractions inside it, the main fraction bar is the longest one.",
       ],
     ],
     method: [
@@ -331,10 +323,7 @@ export const rationalMethods: Record<string, ProblemMethod> = {
     goal: "Find the exact value of a positive fraction raised to a fractional exponent.",
     intuition:
       "A root undoes a power: the fourth root of 16 is 2 because 2 to the fourth power is 16. In a fractional exponent, the bottom number names the root and the top number names the power. A negative exponent takes the reciprocal, swapping the top and bottom of the result.",
-    terms: [
-      ...fractionTerms,
-      ["nth root", "The positive number whose nth power is the given number."],
-    ],
+    terms: [...fractionTerms, "nth-root"],
     method: [
       "Read the exponent m/n: $n$ names the root, $m$ the power.",
       "Take the nth root of the numerator and of the denominator.",

@@ -11,16 +11,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "A story with a total and parts can be written in more than one way. If a stand has $300$ apples and sells $90$ and then $60$, the apples left come from taking away $90$ and then $60$, or from taking away $90+60$ at once.",
     more: "A number sentence with a box for the unknown also has several forms. If a trip is $340$ miles and $120$ miles are left, then $340-120=\\square$ and $\\square+120=340$ both find the miles already driven.",
-    terms: [
-      [
-        "expression",
-        "Numbers and operations without an equals sign, such as $300-90-60$.",
-      ],
-      [
-        "number sentence",
-        "An equation with a box for the unknown, such as $\\square+120=340$.",
-      ],
-    ],
+    terms: ["expression", "number-sentence"],
     steps: [
       "Say the story in words: what is the whole, and what is taken away or put together?",
       "For each expression, say in order what its operations do, and compare with the story.",
@@ -67,16 +58,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "Parentheses tell you which operation to do first. In $3\\times(9-4)$ the subtraction comes first, so the value is $3\\times5=15$.",
     more: "A rewrite keeps the value when it only changes the order of factors or shares a multiplication over the parentheses, as in $3\\times9-3\\times4$. Dropping the parentheses, as in $3\\times9-4$, changes the value.",
-    terms: [
-      [
-        "parentheses",
-        "Marks that group part of an expression so it is worked out first.",
-      ],
-      [
-        "order of operations",
-        "Parentheses first, then multiplication and division from left to right, then addition and subtraction from left to right.",
-      ],
-    ],
+    terms: ["parentheses", "order-of-operations"],
     steps: [
       "Find the value of the given expression, doing the parentheses first.",
       "Find the value of each choice in the same order.",
@@ -122,13 +104,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "A larger unit is made of smaller ones: $1$ yard is $3$ feet or $36$ inches, $1$ gallon is $4$ quarts, and $1$ pound is $16$ ounces. A measurement can be written in one unit or in two, such as $5$ yards $3$ feet.",
     more: "To compare, change every measurement to the same small unit and compare the numbers. Many different forms name the same length.",
-    terms: [
-      [
-        "customary units",
-        "Units such as inches, feet and yards, or cups, pints, quarts and gallons, or ounces and pounds.",
-      ],
-      ["equal measurements", "Measurements that name the same amount."],
-    ],
+    terms: ["customary-units", "equivalent"],
     steps: [
       "Change the stated measurement to the smallest unit in the choices by multiplying by the size of its unit.",
       "Change each choice to that unit: multiply each count by its unit's size and add the parts of a two-unit measurement.",
@@ -174,16 +150,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "In the rule $y=7x$, every $y$ is $7$ times its $x$, so it is multiplicative. In the rule $y=x+7$, every $y$ is $7$ more than its $x$, so it is additive. The two rules give different values: for $x=3$, the first gives $21$ and the second gives $10$.",
     more: "A quick test is to compare $y$ with $x$ for two values of $x$. If $y\\div x$ is the same each time, the rule multiplies. If $y-x$ is the same each time, the rule adds.",
-    terms: [
-      [
-        "multiplicative rule",
-        "A rule in which $y$ is always the same number times $x$.",
-      ],
-      [
-        "additive rule",
-        "A rule in which $y$ is always $x$ plus the same number.",
-      ],
-    ],
+    terms: ["multiplicative-rule", "additive-rule"],
     steps: [
       "Find $y$ for two values of $x$ from each rule, such as $x=1$ and $x=2$.",
       "Check whether $y\\div x$ stays the same (multiplicative) or $y-x$ stays the same (additive).",
@@ -229,14 +196,7 @@ const specs: SelectContentSpec[] = [
     intuition:
       "A trinomial such as $x^2+5x+6$ and the product $(x+2)(x+3)$ are two forms of one expression. Expanding the product multiplies every term of one factor by every term of the other and combines like terms.",
     more: "A form can be partly expanded, such as $x(x+5)+6$ or $x(x+3)+2(x+3)$. Each is equal to the trinomial. A form with a sign changed or two numbers exchanged usually is not.",
-    terms: [
-      ["trinomial", "An expression with three terms, such as $x^2+5x+6$."],
-      [
-        "factored form",
-        "An expression written as a product, such as $(x+2)(x+3)$.",
-      ],
-      ["coefficient", "The number multiplying a power of $x$."],
-    ],
+    terms: ["trinomial", "factored-form", "coefficient"],
     steps: [
       "Expand each factored or partly factored choice: multiply every term of one factor by every term of the other.",
       "Combine the $x$ terms to get one trinomial in the form $ax^2+bx+c$.",
@@ -283,12 +243,12 @@ const specs: SelectContentSpec[] = [
       "A line of best fit is an equation $\\hat{y}=mx+b$ that predicts $y$ from $x$ for data that follow a linear pattern. The symbol $\\hat{y}$ is the predicted value. Putting a value of $x$ into the equation gives a prediction.",
     more: "The slope $m$ is the predicted change in $y$ for each added unit of $x$. The intercept $b$ is the prediction for $x=0$.",
     terms: [
+      "line-of-best-fit",
+      "slope",
       [
-        "line of best fit",
-        "A line that follows the trend of the data and is used to predict $y$ from $x$.",
+        "y-intercept",
+        "On a line of best fit, it is the predicted $y$ when $x$ is 0.",
       ],
-      ["slope", "The predicted change in $y$ when $x$ increases by $1$."],
-      ["intercept", "The predicted value of $y$ when $x$ is $0$."],
     ],
     steps: [
       "For a prediction at a given $x$, substitute it into the equation and compute $\\hat{y}$.",
@@ -338,10 +298,10 @@ const specs: SelectContentSpec[] = [
       "A function gives each input exactly one output. On a graph, each $x$ value has only one point above or below it. A relation with the points $(2,5)$ and $(2,7)$ is not a function, because the input $2$ has two outputs.",
     more: "To add a point and keep a function, use an $x$ value that is not on the graph yet. A new point at an $x$ that already has a point makes a second output for that input.",
     terms: [
-      ["function", "A relation in which each input has exactly one output."],
+      "function",
       [
-        "ordered pair",
-        "A point written $(x,y)$: the input first, then the output.",
+        "ordered-pair",
+        "For a function, the input comes first and the output second.",
       ],
     ],
     steps: [
@@ -391,11 +351,11 @@ const specs: SelectContentSpec[] = [
       "A square root such as $\\sqrt{76}$ is not a whole number, but it sits on the number line between two whole numbers: $8^2=64$ and $9^2=81$, so it is between $8$ and $9$. A number line with ticks every $0.1$ shows how far past $8$ it is.",
     more: "To read a point, find the whole number to its left and count the tenths. If the point is between two tenth marks, it is closer to the nearer one.",
     terms: [
+      "square-root",
       [
-        "square root",
-        "$\\sqrt{n}$ is the positive number that multiplies by itself to give $n$.",
+        "round",
+        "To the nearest tenth means to the closest number with one decimal place.",
       ],
-      ["nearest tenth", "The closest value with one decimal place."],
     ],
     steps: [
       "Find the whole number at the left end of the line; each small space is $0.1$.",
@@ -445,11 +405,11 @@ const specs: SelectContentSpec[] = [
       "A dot plot shows each value as a dot above a number line. A taller stack means the value happened more often. The stacks add up to the number of values, here $30$.",
     more: "Statements about the data can be tested with the counts: how many dots are at one value, how many are at or above a value, which stack is tallest, and whether a group holds more than half of the dots.",
     terms: [
+      "dot-plot",
       [
-        "dot plot",
-        "A display with one dot for each value, stacked above a number line.",
+        "mode-statistics",
+        "On a dot plot, it is the value with the tallest stack.",
       ],
-      ["most common value", "The value with the tallest stack."],
     ],
     steps: [
       "Count the dots above each value and write the counts; check that they add to the number of values.",

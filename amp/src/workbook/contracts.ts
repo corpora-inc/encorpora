@@ -74,4 +74,7 @@ export const workbookSummarySchema = z.object({
 export type WorkbookSummary = z.infer<typeof workbookSummarySchema>;
 export const workbookHistorySchema = z.object({
   workbooks: z.array(workbookSummarySchema),
+  /** True when the server renders PDFs; false: download the printable
+   * document and print it from the browser. */
+  pdf: z.boolean().default(false),
 });

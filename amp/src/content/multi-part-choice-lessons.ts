@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -7,7 +8,7 @@ type Entry = {
   summary: string;
   objectives: [string, string];
   intuition: string;
-  terms: [string, string][];
+  terms: MethodTerm[];
   method: string[];
   watch: string;
   principle: string;
@@ -31,16 +32,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "Walk along a line from left to right. The slope says how far you rise (or fall) for each step to the right; the same for every step, which is what makes it a line. The $y$-intercept is the height where the line crosses the $y$-axis, at $x = 0$. Together they are the $m$ and $b$ of $y = mx + b$.",
-    terms: [
-      [
-        "slope",
-        "The change in $y$ divided by the change in $x$ between any two points of the line.",
-      ],
-      [
-        "$y$-intercept",
-        "The $y$-value where the line crosses the $y$-axis, the output when $x = 0$.",
-      ],
-    ],
+    terms: ["slope", "y-intercept"],
     method: [
       "Take two points of the line. Subtract in the same order: slope $m = \\frac{y_2 - y_1}{x_2 - x_1}$.",
       "If a point has $x = 0$, its $y$ is the intercept. Otherwise put one point and $m$ into $y = mx + b$ and solve for $b$.",
@@ -86,16 +78,7 @@ const entries: Entry[] = [
     ],
     intuition:
       "In a proportional relationship, doubling $x$ doubles $y$, and zero of one means zero of the other, like the cost of apples at one price per pound. Adding a fixed fee breaks it: two pounds no longer cost twice as much as one.",
-    terms: [
-      [
-        "constant of proportionality",
-        "The fixed ratio $k = \\frac{y}{x}$ in $y = kx$.",
-      ],
-      [
-        "proportional",
-        "Every pair has the same ratio $\\frac{y}{x}$; the graph is a line through the origin.",
-      ],
-    ],
+    terms: ["constant-of-proportionality", "proportional-relationship"],
     method: [
       "Rewrite each equation as $y = \\dots$ and simplify: $2y = 8x$ becomes $y = 4x$, and $y = 3(x + 2) - 6$ becomes $y = 3x$.",
       "Proportional equations have the form $y = kx$: no added constant, no $x^2$, no $x$ in a denominator.",
@@ -143,19 +126,10 @@ const entries: Entry[] = [
     intuition:
       "Read $4x + 9y + 2$ like a shopping list: 4 of item $x$, 9 of item $y$, and 2 more on their own. Each listed item is a term. The count in front of a variable is its coefficient, and the lone number is the constant term.",
     terms: [
-      [
-        "term",
-        "A part of an expression joined to the rest by $+$ or −: $4x$, $9y$ and 2 in $4x + 9y + 2$.",
-      ],
-      [
-        "coefficient",
-        "The number that multiplies a variable: 4 in $4x$, and 5 in $5x^2$.",
-      ],
-      ["constant term", "A term with no variable; its value never changes."],
-      [
-        "factor",
-        "One of the quantities multiplied in a product: 3 and $(x + 6)$ in $3(x + 6)$.",
-      ],
+      "term-expression",
+      "coefficient",
+      "constant-term",
+      ["factor-number", "In $3(x + 6)$, the factors are 3 and $(x + 6)$."],
     ],
     method: [
       "Split the expression at each $+$ or − outside parentheses to list its terms.",

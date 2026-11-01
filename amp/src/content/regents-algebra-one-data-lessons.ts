@@ -7,13 +7,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     goal: "Read the starting value of an exponential model, including when the exponent is shifted.",
     intuition:
       "In $a\\cdot b^t$, the number $a$ is the value when $t=0$, because $b^0=1$. The factor $b$ says what happens at each step. If the exponent is $t+2$, the model has already run two steps at $t=0$.",
-    terms: [
-      ["initial value", "The value of the model when $t=0$."],
-      [
-        "growth factor",
-        "The number each value is multiplied by to get the next.",
-      ],
-    ],
+    terms: ["initial-value", "growth-factor"],
     method: [
       "Substitute $t=0$ into the exponent.",
       "Evaluate the factor raised to that power; it is 1 when the exponent is 0.",
@@ -28,10 +22,10 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
       "Exponential change multiplies by the same number at each step. For decay that number is between 0 and 1, so the values shrink by a larger amount at first and by smaller amounts later. A linear pattern subtracts the same amount instead.",
     terms: [
       [
-        "constant ratio",
-        "The same quotient of each value and the one before it.",
+        "common-ratio",
+        "In a table, it is the same quotient of each value and the one before it.",
       ],
-      ["decay", "Values decreasing by a constant ratio between 0 and 1."],
+      "exponential-decay",
     ],
     method: [
       "Divide each value by the one before it.",
@@ -45,13 +39,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     goal: "Find the first whole input at which an exponential function exceeds a linear function.",
     intuition:
       "A linear function adds the same amount each step; an exponential multiplies by the same factor. Even if the line is ahead at first, the exponential eventually overtakes it. Evaluating both at successive inputs shows where.",
-    terms: [
-      [
-        "exponential function",
-        "A function of the form $a\\cdot b^x$ with a constant factor $b$.",
-      ],
-      ["linear function", "A function of the form $cx+d$."],
-    ],
+    terms: ["exponential-function", "linear-function"],
     method: [
       "Make a table of $f(x)$ and $g(x)$ for increasing whole $x$.",
       "Find the first row where $f(x)>g(x)$.",
@@ -64,13 +52,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     goal: "Choose the right total to divide by in a two-way table and round the percent.",
     intuition:
       "A percent is a part out of a whole, so the first step is naming the whole. 'Percent of everyone' uses the table total. 'Percent of the juniors' uses the junior row total. 'Of those who have a job' uses that column total.",
-    terms: [
-      ["joint percent", "A cell as a percent of the table total."],
-      [
-        "conditional percent",
-        "A cell as a percent of its row or column total.",
-      ],
-    ],
+    terms: ["joint-relative-frequency", "conditional-relative-frequency"],
     method: [
       "Find the count of the group in the question.",
       "Name the whole: the table total, a row total or a column total.",
@@ -83,10 +65,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     goal: "Find the upper or lower quartile of a list by ordering the data and taking the median of a half.",
     intuition:
       "The median splits ordered data into two halves. The lower quartile is the middle of the lower half and the upper quartile is the middle of the upper half. Each quartile marks a quarter of the data.",
-    terms: [
-      ["quartile", "A value that marks a quarter of the ordered data."],
-      ["median", "The middle value, or the mean of the two middle values."],
-    ],
+    terms: ["quartile", "median"],
     method: [
       "Order the data from least to greatest, keeping repeated values.",
       "Split the ordered list into two equal halves.",
@@ -99,13 +78,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     goal: "Compute an average rate of change from two rows of a table and round as asked.",
     intuition:
       "An average rate of change is how much the quantity changes per unit of the input, over an interval. It is the slope of the line through the two points, even when the table rows are not evenly spaced.",
-    terms: [
-      [
-        "average rate of change",
-        "The change in the output divided by the change in the input.",
-      ],
-      ["interval", "The part of the input between two values."],
-    ],
+    terms: ["average-rate-of-change", "interval"],
     method: [
       "Pick the two rows at the ends of the interval.",
       "Subtract the outputs and subtract the inputs in the same order.",
@@ -118,10 +91,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     goal: "Decide the direction of a correlation and whether it shows that one quantity causes the other.",
     intuition:
       "Two quantities have a positive correlation when they rise together and a negative correlation when one rises as the other falls. Causation means one change produces the other. A third factor can make two quantities move together without either causing the other.",
-    terms: [
-      ["correlation", "How two quantities move together."],
-      ["causation", "One quantity directly producing a change in the other."],
-    ],
+    terms: ["correlation", "causation"],
     method: [
       "Decide whether the quantities rise together or move in opposite directions.",
       "Ask whether one could directly produce the other, or whether a third factor drives both.",
@@ -135,10 +105,10 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     intuition:
       "A fixed cost comes off the budget first. What is left buys items one at a time, and you cannot buy part of an item, so the answer is the whole number of times the price fits into what is left.",
     terms: [
-      ["fixed cost", "A cost paid once, whatever the number of items."],
+      "fixed-cost",
       [
-        "greatest whole number",
-        "The largest integer that does not go over a limit.",
+        "whole-number",
+        "Here, the largest whole number that does not go over the limit.",
       ],
     ],
     method: [
@@ -153,16 +123,7 @@ export const regentsAlgebraOneDataMethods: Record<string, ProblemMethod> = {
     goal: "Solve an equation that sets an absolute-value expression equal to a linear expression, checking each case.",
     intuition:
       "The absolute value of an expression equals the expression when it is positive, and its opposite when it is negative. So an equation with an absolute value splits into two cases, and any solution must be checked against the case's condition.",
-    terms: [
-      [
-        "absolute value",
-        "The distance of a number from 0, so it is never negative.",
-      ],
-      [
-        "extraneous solution",
-        "A solution of a case that does not satisfy the original equation.",
-      ],
-    ],
+    terms: ["absolute-value", "extraneous-solution"],
     method: [
       "Isolate the absolute value expression on one side.",
       "Write the two equations: expression equals the other side, and its opposite equals the other side.",
