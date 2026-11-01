@@ -820,13 +820,9 @@
     "lesson:angle-relationships": {
       "terms": [
         "adjacent-angles",
-        "complementary-angles",
         "expression",
         "ray",
-        "right-angle",
-        "straight-angle",
-        "substitute",
-        "supplementary"
+        "straight-angle"
       ],
       "long": []
     },
@@ -850,7 +846,6 @@
         "decimal",
         "hundredth",
         "multiplication",
-        "perfect-square",
         "round",
         "square-root",
         "tenth",
@@ -871,13 +866,9 @@
       "terms": [
         "arc-length",
         "area",
-        "central-angle",
-        "circumference",
         "coefficient",
         "corresponding",
         "decimal",
-        "denominator",
-        "diameter",
         "division",
         "multiplication",
         "numerator",
@@ -1017,8 +1008,7 @@
       "terms": [
         "discount",
         "round",
-        "tax",
-        "tenth"
+        "tax"
       ],
       "long": []
     },
@@ -1196,14 +1186,12 @@
       "terms": [
         "area",
         "circumference",
-        "coefficient",
         "decimal",
         "diameter",
         "division",
         "height",
         "multiplication",
         "numerator",
-        "radius",
         "unit-square"
       ],
       "long": []
@@ -1215,8 +1203,7 @@
         "division",
         "multiplication",
         "numerator",
-        "radius",
-        "ratio"
+        "radius"
       ],
       "long": []
     },
@@ -1422,7 +1409,6 @@
     },
     "lesson:comparing-powers": {
       "terms": [
-        "exponent",
         "multiplication",
         "parentheses"
       ],
@@ -1555,14 +1541,10 @@
     },
     "lesson:complex-fraction": {
       "terms": [
-        "common-denominator",
         "common-factor",
-        "denominator",
         "dividend",
         "division",
-        "fraction-bar",
         "lowest-terms",
-        "numerator",
         "quotient",
         "reciprocal"
       ],
@@ -1661,32 +1643,10 @@
       ],
       "long": []
     },
-    "lesson:composite-area": {
-      "terms": [
-        "area",
-        "composite-figure",
-        "multiplication",
-        "right-angle",
-        "right-triangle"
-      ],
-      "long": []
-    },
-    "lesson:composite-face-prism-surface-area": {
-      "terms": [
-        "base-area",
-        "surface-area",
-        "unit-square",
-        "volume"
-      ],
-      "long": []
-    },
     "lesson:composite-face-prism-volume": {
       "terms": [
-        "base-area",
         "composite-number",
         "parallel",
-        "perpendicular",
-        "prism",
         "unit-square"
       ],
       "long": []
@@ -1711,10 +1671,7 @@
     },
     "lesson:compound-event-simulation": {
       "terms": [
-        "at-least",
-        "experiment",
-        "outcome",
-        "simulation"
+        "at-least"
       ],
       "long": []
     },
@@ -1778,13 +1735,8 @@
     "lesson:cone-sphere-volume": {
       "terms": [
         "apex",
-        "area",
-        "base-area",
-        "circumference",
         "height",
-        "proof",
-        "radius",
-        "volume"
+        "proof"
       ],
       "long": []
     },
@@ -2094,16 +2046,8 @@
     },
     "lesson:cylinder-volume": {
       "terms": [
-        "area",
-        "circumference",
-        "cross-section",
-        "diameter",
-        "height",
-        "parallel",
-        "prism",
         "radius",
-        "unit-cube",
-        "volume"
+        "unit-cube"
       ],
       "long": []
     },
@@ -2605,17 +2549,12 @@
     },
     "lesson:equivalent-expressions-check": {
       "terms": [
-        "distribute",
-        "distributive-property",
         "equivalent",
         "expression",
         "input",
-        "like-terms",
-        "multiplier",
         "parentheses",
         "proof",
-        "substitute",
-        "variable"
+        "substitute"
       ],
       "long": []
     },
@@ -2951,12 +2890,9 @@
     },
     "lesson:fraction-edge-volume": {
       "terms": [
-        "base-area",
-        "common-factor",
         "denominator",
         "mixed-number",
-        "numerator",
-        "volume"
+        "numerator"
       ],
       "long": []
     },
@@ -3396,10 +3332,8 @@
       "terms": [
         "area",
         "common-factor",
-        "distributive-property",
         "division",
         "multiplication",
-        "multiplicity",
         "prime-number",
         "quotient",
         "whole-number"
@@ -3788,12 +3722,9 @@
     "lesson:least-common-multiple": {
       "terms": [
         "at-least",
-        "common-factor",
         "divisible-by",
         "equal-groups",
-        "greatest-common-factor",
         "multiplication",
-        "pattern",
         "whole-number"
       ],
       "long": []
@@ -4069,9 +4000,7 @@
         "dividend",
         "division",
         "divisor",
-        "multiplication",
-        "round",
-        "whole-number"
+        "round"
       ],
       "long": []
     },
@@ -4428,11 +4357,7 @@
       "terms": [
         "decimal",
         "decimal-places",
-        "dividend",
-        "division",
-        "divisor",
         "hundredth",
-        "multiplication",
         "power-of-10",
         "tenth",
         "whole-number"
@@ -4525,16 +4450,9 @@
     },
     "lesson:negative-integer-power": {
       "terms": [
-        "corresponding",
         "decimal",
-        "denominator",
-        "division",
-        "exponent",
-        "integer",
-        "negative-exponent",
         "parentheses",
         "pattern",
-        "reciprocal",
         "round"
       ],
       "long": []
@@ -4546,13 +4464,6 @@
         "natural-number",
         "rational-number",
         "whole-number"
-      ],
-      "long": []
-    },
-    "lesson:net-surface-area": {
-      "terms": [
-        "height",
-        "unit-square"
       ],
       "long": []
     },
@@ -4940,12 +4851,9 @@
     },
     "lesson:percent-applications": {
       "terms": [
-        "discount",
         "gram",
         "interest",
-        "markup",
         "mass",
-        "percent",
         "percent-error",
         "tax"
       ],
@@ -5104,12 +5012,8 @@
     },
     "lesson:polygon-area-decompose": {
       "terms": [
-        "area",
-        "height",
-        "multiplication",
         "parallel",
-        "perpendicular",
-        "segment"
+        "perpendicular"
       ],
       "long": []
     },
@@ -5296,11 +5200,7 @@
     },
     "lesson:power-of-power-exponent": {
       "terms": [
-        "denominator",
-        "division",
-        "exponent",
         "expression",
-        "integer",
         "negative-exponent",
         "parentheses",
         "pattern",
@@ -5370,10 +5270,6 @@
     },
     "lesson:product-of-powers-exponent": {
       "terms": [
-        "denominator",
-        "division",
-        "exponent",
-        "integer",
         "negative-exponent",
         "pattern",
         "reciprocal"
@@ -5391,8 +5287,7 @@
       "terms": [
         "proportional-relationship",
         "slope",
-        "times-as-many",
-        "unit-rate"
+        "times-as-many"
       ],
       "long": []
     },
@@ -5427,13 +5322,8 @@
     },
     "lesson:pythagorean-converse": {
       "terms": [
-        "biconditional",
         "converse",
-        "degree-angle",
-        "proof",
-        "radius",
-        "right-angle",
-        "square-number"
+        "radius"
       ],
       "long": []
     },
@@ -5638,11 +5528,8 @@
     },
     "lesson:quotient-of-powers-exponent": {
       "terms": [
-        "denominator",
         "division",
-        "exponent",
         "fraction-bar",
-        "integer",
         "negative-exponent",
         "parentheses",
         "pattern",
@@ -5854,18 +5741,13 @@
     "lesson:rational-irrational-numbers": {
       "terms": [
         "circumference",
-        "common-factor",
         "decimal",
         "denominator",
         "diameter",
         "division",
-        "irrational-number",
         "perfect-square",
         "power-of-10",
-        "real-number",
-        "repeating-block",
-        "square-root",
-        "whole-number"
+        "square-root"
       ],
       "long": []
     },
@@ -6980,9 +6862,6 @@
     },
     "lesson:right-triangle-missing-leg": {
       "terms": [
-        "degree-angle",
-        "right-triangle",
-        "square-number",
         "square-root",
         "whole-number"
       ],
@@ -7447,12 +7326,9 @@
     "lesson:scientific-notation": {
       "terms": [
         "at-least",
-        "coefficient",
-        "exponent",
         "hundredth",
         "negative-number",
         "power-of-10",
-        "quotient",
         "scientific-notation",
         "tenth",
         "thousandth",
@@ -7473,10 +7349,7 @@
     "lesson:scientific-operations": {
       "terms": [
         "at-least",
-        "coefficient",
         "decimal",
-        "division",
-        "integer",
         "power-of-10",
         "quotient"
       ],
@@ -7498,11 +7371,8 @@
     },
     "lesson:sector-area-coefficient": {
       "terms": [
-        "arc",
         "area",
-        "central-angle",
         "decimal",
-        "denominator",
         "diameter",
         "division",
         "height",
@@ -7640,13 +7510,10 @@
     "lesson:signed-fraction-product": {
       "terms": [
         "common-factor",
-        "denominator",
         "dividend",
         "division",
         "lowest-terms",
-        "numerator",
         "quotient",
-        "reciprocal",
         "reflection"
       ],
       "long": []
@@ -7664,7 +7531,6 @@
     },
     "lesson:signed-numbers": {
       "terms": [
-        "absolute-value",
         "height",
         "negative-number"
       ],
@@ -7673,9 +7539,7 @@
     "lesson:signed-stories": {
       "terms": [
         "decimal",
-        "initial-value",
-        "multiplication",
-        "negative-number"
+        "multiplication"
       ],
       "long": []
     },
@@ -7866,11 +7730,9 @@
     "lesson:solid-cross-sections": {
       "terms": [
         "apex",
-        "cross-section",
         "parallel",
         "perpendicular",
-        "right-angle",
-        "trapezoid"
+        "right-angle"
       ],
       "long": []
     },
@@ -8020,8 +7882,6 @@
         "cube-root",
         "multiplication",
         "negative-number",
-        "perfect-cube",
-        "perfect-square",
         "solution",
         "square-root"
       ],
@@ -8285,14 +8145,6 @@
       "terms": [
         "expression",
         "liter"
-      ],
-      "long": []
-    },
-    "lesson:story-graph-match": {
-      "terms": [
-        "constant",
-        "input",
-        "output"
       ],
       "long": []
     },
@@ -8651,20 +8503,14 @@
         "corresponding",
         "parallel",
         "right-angle",
-        "same-side-interior-angles",
-        "straight-angle"
+        "same-side-interior-angles"
       ],
       "long": []
     },
     "lesson:triangle-area-base-height": {
       "terms": [
-        "height",
-        "multiplication",
         "obtuse-angle",
-        "parallel",
-        "parallelogram",
-        "right-triangle",
-        "segment"
+        "parallel"
       ],
       "long": []
     },
@@ -8704,13 +8550,6 @@
         "ssa",
         "supply",
         "translation"
-      ],
-      "long": []
-    },
-    "lesson:triangle-construction": {
-      "terms": [
-        "rigid-motion",
-        "triangle-inequality"
       ],
       "long": []
     },
@@ -8768,10 +8607,8 @@
       "terms": [
         "acute-angle",
         "at-most",
-        "hypotenuse",
         "radius",
         "ray",
-        "right-angle",
         "right-triangle",
         "ssa"
       ],
@@ -9005,7 +8842,6 @@
         "kilometer",
         "mass",
         "rate",
-        "ratio",
         "speed",
         "volume",
         "whole-number"
@@ -9033,15 +8869,6 @@
       "terms": [
         "discount",
         "unit-price"
-      ],
-      "long": []
-    },
-    "lesson:unit-fraction-cube-packing": {
-      "terms": [
-        "base-area",
-        "denominator",
-        "numerator",
-        "volume"
       ],
       "long": []
     },
@@ -9198,8 +9025,6 @@
     },
     "lesson:whole-number-powers": {
       "terms": [
-        "division",
-        "exponent",
         "whole-number"
       ],
       "long": []
@@ -9440,8 +9265,7 @@
     "practice:angle-pair-measure": {
       "terms": [
         "adjacent-angles",
-        "right-angle",
-        "vertical-angles"
+        "right-angle"
       ],
       "long": []
     },
@@ -9464,10 +9288,8 @@
     "practice:arc-length-coefficient": {
       "terms": [
         "area",
-        "central-angle",
         "circumference",
         "coefficient",
-        "diameter",
         "radius",
         "segment",
         "variable"
@@ -9655,9 +9477,7 @@
     },
     "practice:benchmark-percent-estimate": {
       "terms": [
-        "discount",
-        "round",
-        "tenth"
+        "round"
       ],
       "long": []
     },
@@ -9853,7 +9673,6 @@
     },
     "practice:circle-area-coefficient": {
       "terms": [
-        "area",
         "diameter",
         "radius",
         "segment",
@@ -9955,11 +9774,9 @@
     },
     "practice:classify-real-number": {
       "terms": [
-        "cube-root",
         "decimal",
         "denominator",
-        "irrational-number",
-        "perfect-square"
+        "irrational-number"
       ],
       "long": []
     },
@@ -10118,7 +9935,6 @@
     },
     "practice:compare-irrational-values": {
       "terms": [
-        "perfect-square",
         "tenth"
       ],
       "long": []
@@ -10430,15 +10246,7 @@
     },
     "practice:composite-area": {
       "terms": [
-        "area",
         "volume"
-      ],
-      "long": []
-    },
-    "practice:composite-face-prism-surface-area": {
-      "terms": [
-        "area",
-        "surface-area"
       ],
       "long": []
     },
@@ -10493,8 +10301,6 @@
     },
     "practice:compound-event-simulation": {
       "terms": [
-        "outcome",
-        "probability",
         "simulation"
       ],
       "long": []
@@ -10570,8 +10376,7 @@
       "terms": [
         "diameter",
         "height",
-        "radius",
-        "volume"
+        "radius"
       ],
       "long": []
     },
@@ -10980,14 +10785,11 @@
     },
     "practice:cylinder-volume": {
       "terms": [
-        "area",
-        "circumference",
         "diameter",
         "height",
         "prism",
         "radius",
-        "segment",
-        "volume"
+        "segment"
       ],
       "long": []
     },
@@ -11345,7 +11147,6 @@
     "practice:division-remainder-story": {
       "terms": [
         "dividend",
-        "division",
         "divisor",
         "equal-groups"
       ],
@@ -11517,7 +11318,6 @@
         "input",
         "multiplier",
         "parentheses",
-        "proof",
         "substitute",
         "variable"
       ],
@@ -12376,8 +12176,6 @@
     "practice:gcf-factor-sum": {
       "terms": [
         "common-factor",
-        "distributive-property",
-        "factor-out",
         "greatest-common-factor",
         "quotient",
         "whole-number"
@@ -13031,9 +12829,7 @@
     "practice:greatest-common-factor": {
       "terms": [
         "expression",
-        "prime-number",
-        "remainder",
-        "whole-number"
+        "remainder"
       ],
       "long": []
     },
@@ -13336,12 +13132,6 @@
       ],
       "long": []
     },
-    "practice:integer-power": {
-      "terms": [
-        "exponent"
-      ],
-      "long": []
-    },
     "practice:intercept-point-choice": {
       "terms": [
         "coefficient",
@@ -13499,12 +13289,6 @@
     "practice:larger-share": {
       "terms": [
         "half"
-      ],
-      "long": []
-    },
-    "practice:least-common-multiple": {
-      "terms": [
-        "pattern"
       ],
       "long": []
     },
@@ -14267,8 +14051,6 @@
     },
     "practice:multidigit-decimal-product": {
       "terms": [
-        "decimal",
-        "decimal-places",
         "tenth",
         "whole-number"
       ],
@@ -14276,19 +14058,14 @@
     },
     "practice:multidigit-decimal-quotient": {
       "terms": [
-        "decimal",
         "dividend",
         "divisor",
-        "power-of-10",
-        "quotient"
+        "power-of-10"
       ],
       "long": []
     },
     "practice:multidigit-decimal-sum": {
       "terms": [
-        "decimal",
-        "hundredth",
-        "inverse-operation",
         "tenth"
       ],
       "long": []
@@ -14442,12 +14219,9 @@
     "practice:negative-integer-power": {
       "terms": [
         "denominator",
-        "exponent",
         "integer",
-        "negative-exponent",
         "numerator",
-        "parentheses",
-        "reciprocal"
+        "parentheses"
       ],
       "long": []
     },
@@ -14462,13 +14236,6 @@
     "practice:nested-bag-total": {
       "terms": [
         "associative-property"
-      ],
-      "long": []
-    },
-    "practice:net-surface-area": {
-      "terms": [
-        "area",
-        "pattern"
       ],
       "long": []
     },
@@ -14936,8 +14703,7 @@
         "corresponding",
         "parallel",
         "same-side-interior-angles",
-        "supplementary",
-        "transversal"
+        "supplementary"
       ],
       "long": []
     },
@@ -15045,9 +14811,7 @@
     },
     "practice:percent-applications": {
       "terms": [
-        "discount",
         "interest",
-        "markup",
         "percent-error",
         "principal",
         "rate",
@@ -15238,7 +15002,6 @@
     },
     "practice:polygon-area-decompose": {
       "terms": [
-        "area",
         "height",
         "parallel",
         "quadrilateral"
@@ -15417,44 +15180,22 @@
       ],
       "long": []
     },
-    "practice:power-compare": {
-      "terms": [
-        "exponent"
-      ],
-      "long": []
-    },
-    "practice:power-doubling-story": {
-      "terms": [
-        "exponent"
-      ],
-      "long": []
-    },
     "practice:power-missing-exponent": {
       "terms": [
-        "exponent",
         "multiplication"
       ],
       "long": []
     },
     "practice:power-of-power-exponent": {
       "terms": [
-        "exponent",
-        "integer",
-        "reciprocal"
+        "integer"
       ],
       "long": []
     },
     "practice:power-order-trap": {
       "terms": [
-        "exponent",
         "multiplication",
         "parentheses"
-      ],
-      "long": []
-    },
-    "practice:power-repeated-product": {
-      "terms": [
-        "exponent"
       ],
       "long": []
     },
@@ -15561,9 +15302,7 @@
     },
     "practice:product-of-powers-exponent": {
       "terms": [
-        "exponent",
-        "integer",
-        "reciprocal"
+        "integer"
       ],
       "long": []
     },
@@ -15630,12 +15369,7 @@
     "practice:pythagorean-converse": {
       "terms": [
         "area",
-        "biconditional",
-        "converse",
-        "hypotenuse",
-        "pythagorean-theorem",
-        "right-angle",
-        "right-triangle"
+        "hypotenuse"
       ],
       "long": []
     },
@@ -15878,11 +15612,7 @@
     },
     "practice:quotient-of-powers-exponent": {
       "terms": [
-        "division",
-        "exponent",
-        "integer",
-        "quotient",
-        "reciprocal"
+        "integer"
       ],
       "long": []
     },
@@ -16504,7 +16234,6 @@
     "practice:repeating-decimal-to-fraction": {
       "terms": [
         "decimal",
-        "denominator",
         "power-of-10",
         "repeating-block",
         "whole-number"
@@ -16716,9 +16445,7 @@
     },
     "practice:right-triangle-missing-leg": {
       "terms": [
-        "area",
-        "right-triangle",
-        "square-root"
+        "area"
       ],
       "long": []
     },
@@ -16740,17 +16467,9 @@
       ],
       "long": []
     },
-    "practice:root-between-integers": {
-      "terms": [
-        "perfect-square",
-        "tenth"
-      ],
-      "long": []
-    },
     "practice:root-nearest-tenth": {
       "terms": [
         "halfway-point",
-        "perfect-square",
         "round",
         "tenth",
         "whole-number"
@@ -17136,8 +16855,6 @@
     },
     "practice:scientific-operations": {
       "terms": [
-        "at-least",
-        "coefficient",
         "exponent",
         "power-of-10"
       ],
@@ -17145,11 +16862,9 @@
     },
     "practice:scientific-times-larger": {
       "terms": [
-        "coefficient",
         "exponent",
         "integer",
-        "power-of-10",
-        "quotient"
+        "power-of-10"
       ],
       "long": []
     },
@@ -17194,9 +16909,7 @@
     },
     "practice:sector-area-coefficient": {
       "terms": [
-        "arc",
         "area",
-        "central-angle",
         "circumference",
         "coefficient",
         "diameter",
@@ -17339,7 +17052,6 @@
     },
     "practice:signed-context-order": {
       "terms": [
-        "absolute-value",
         "decimal",
         "negative-number",
         "real-number"
@@ -17349,8 +17061,6 @@
     "practice:signed-fraction-product": {
       "terms": [
         "denominator",
-        "division",
-        "divisor",
         "lowest-terms",
         "numerator",
         "whole-number"
@@ -17721,10 +17431,8 @@
     },
     "practice:solve-square-cube-equation": {
       "terms": [
-        "cube-root",
         "inequality",
         "perfect-square",
-        "square-root",
         "variable"
       ],
       "long": []
@@ -18580,16 +18288,6 @@
     "practice:triangle-angle-sum": {
       "terms": [
         "expression",
-        "interior-angle",
-        "right-angle",
-        "straight-angle"
-      ],
-      "long": []
-    },
-    "practice:triangle-area-base-height": {
-      "terms": [
-        "area",
-        "parallelogram",
         "right-angle"
       ],
       "long": []
@@ -18609,24 +18307,10 @@
       ],
       "long": []
     },
-    "practice:triangle-conditions": {
-      "terms": [
-        "triangle-inequality"
-      ],
-      "long": []
-    },
     "practice:triangle-congruence-criteria": {
       "terms": [
         "included-angle",
         "proof"
-      ],
-      "long": []
-    },
-    "practice:triangle-exterior-angle": {
-      "terms": [
-        "exterior-angle",
-        "interior-angle",
-        "straight-angle"
       ],
       "long": []
     },
@@ -18684,8 +18368,7 @@
         "ray",
         "right-angle",
         "right-triangle",
-        "ssa",
-        "triangle-inequality"
+        "ssa"
       ],
       "long": []
     },
@@ -18912,7 +18595,6 @@
     "practice:unit-chain-conversion": {
       "terms": [
         "area",
-        "conversion-factor",
         "rate",
         "ratio"
       ],
@@ -18945,8 +18627,7 @@
     "practice:unit-fraction-cube-packing": {
       "terms": [
         "height",
-        "numerator",
-        "unit-cube"
+        "numerator"
       ],
       "long": []
     },
