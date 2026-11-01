@@ -2089,8 +2089,11 @@ jobs:
           components: rustfmt, clippy
       - run: npm ci
         working-directory: amp
+      # The type check needs more than Node's default heap on the macOS runner.
       - run: npm run build
         working-directory: amp
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
       - run: cargo fmt --check
       - run: cargo check --locked
       - run: cargo clippy --locked --all-targets -- -D warnings
