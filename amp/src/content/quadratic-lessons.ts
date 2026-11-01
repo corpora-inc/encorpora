@@ -141,8 +141,6 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
       "right side": "side-of-equation",
     },
     noLink: [
-      "square",
-      "squared",
       "part",
       "parts",
       "change",

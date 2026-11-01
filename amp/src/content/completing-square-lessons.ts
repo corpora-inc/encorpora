@@ -308,7 +308,7 @@ export const completingSquareMethods: Record<string, ProblemMethod> = {
     intuition: `${intuitionBase} To rewrite $x^2 + bx + c$, take $h$ as half of $b$. Add $h^2$ and subtract it again, which keeps the value. The leftover number is $k$.`,
     terms,
     senses: methodSenses,
-    noLink: [...noLink, "term"],
+    noLink,
     method: [
       "Halve the coefficient of $x$ to find $h$.",
       "Add $h^2$ and subtract $h^2$. Together they add 0, so the value stays the same.",
