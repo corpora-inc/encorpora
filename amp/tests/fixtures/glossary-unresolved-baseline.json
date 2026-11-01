@@ -54,6 +54,9 @@
     "rename": 19,
     "whole": 2
   },
+  "add-ones-regroup": {
+    "more than": 17
+  },
   "add-three-digit": {
     "more than": 1
   },
@@ -62,6 +65,10 @@
   },
   "add-with-regrouping": {
     "more than": 11
+  },
+  "add-within-20": {
+    "change": 1,
+    "changes": 3
   },
   "addition-rule-probability": {
     "difference": 5,
@@ -170,7 +177,9 @@
   },
   "area-model-product": {
     "edges": 21,
-    "parts": 1
+    "parts": 1,
+    "product": 2,
+    "whole": 1
   },
   "area-probability": {
     "base": 3,
@@ -206,6 +215,9 @@
     "terms": 18,
     "third": 1
   },
+  "arithmetic-term": {
+    "term": 49
+  },
   "array-division-slots": {
     "factor": 2
   },
@@ -240,7 +252,9 @@
     "unit": 1
   },
   "bag-totals-chain": {
-    "third": 2
+    "parts": 4,
+    "third": 2,
+    "whole": 12
   },
   "balance-mass": {
     "balance": 1,
@@ -265,6 +279,10 @@
     "mean": 11,
     "side": 7
   },
+  "balanced-addition": {
+    "side": 2,
+    "sides": 16
+  },
   "bar-chart-difference": {
     "difference": 2,
     "scale": 3
@@ -282,6 +300,7 @@
   "benchmark-fraction-estimate": {
     "changes": 1,
     "difference": 3,
+    "more than": 1,
     "parts": 3,
     "whole": 1
   },
@@ -590,16 +609,20 @@
     "more than": 3
   },
   "compare-decimals-hundredths": {
+    "change": 12,
     "mean": 1,
     "more than": 1,
     "unit": 1
   },
   "compare-decimals-thousandths": {
-    "change": 1,
+    "change": 18,
     "mean": 1
   },
   "compare-distributions-choice": {
     "center": 1
+  },
+  "compare-fractions": {
+    "rename": 16
   },
   "compare-fractions-reason-blanks": {
     "eighths": 1,
@@ -618,7 +641,10 @@
   },
   "compare-irrational-values": {
     "intervals": 3,
-    "mean": 1
+    "mean": 1,
+    "root": 2,
+    "roots": 2,
+    "squaring": 1
   },
   "compare-lengths": {
     "edge": 1
@@ -627,6 +653,7 @@
     "whole": 20
   },
   "compare-like-numerators": {
+    "more than": 12,
     "whole": 36
   },
   "compare-money-sets": {
@@ -657,6 +684,7 @@
     "more than": 10
   },
   "compare-unlike-fractions": {
+    "more than": 4,
     "rename": 36,
     "renaming": 1,
     "whole": 2
@@ -678,6 +706,8 @@
   "compatible-number-estimate": {
     "change": 1,
     "factor": 1,
+    "multiple": 1,
+    "multiples": 36,
     "product": 1,
     "scale": 9
   },
@@ -875,9 +905,12 @@
   },
   "compound-event-simulation": {
     "difference": 1,
+    "event": 9,
     "more than": 1,
     "product": 2,
-    "tails": 2
+    "tails": 2,
+    "trial": 5,
+    "trials": 34
   },
   "compound-growth": {
     "balance": 4,
@@ -1013,6 +1046,9 @@
     "rule": 1,
     "whole": 1
   },
+  "continue-count-to-120": {
+    "more than": 19
+  },
   "conversion-chain-story": {
     "change": 18,
     "factor": 1,
@@ -1122,6 +1158,9 @@
     "difference": 21,
     "leaves": 10,
     "term": 21
+  },
+  "count-sequence-missing": {
+    "more than": 3
   },
   "count-sides-corners": {
     "side": 11,
@@ -1258,7 +1297,8 @@
     "part": 1,
     "rename": 13,
     "unit": 9,
-    "units": 8
+    "units": 8,
+    "whole": 6
   },
   "cylinder-prism-surface-area": {
     "base": 6,
@@ -1310,17 +1350,20 @@
     "third": 4
   },
   "decimal-grid-read": {
+    "part": 3,
+    "parts": 6,
     "square": 1,
-    "squares": 18
+    "squares": 18,
+    "whole": 2
   },
   "decimal-line-point": {
-    "interval": 1,
-    "intervals": 4,
+    "interval": 4,
+    "intervals": 37,
     "whole": 5
   },
   "decimal-mixed-number-blanks": {
-    "part": 24,
-    "whole": 3
+    "part": 33,
+    "whole": 12
   },
   "decimal-money-change": {
     "change": 31,
@@ -1334,12 +1377,15 @@
   },
   "decimal-rename-chain": {
     "difference": 1,
-    "rename": 1,
+    "product": 8,
+    "rename": 8,
     "term": 1
   },
   "decompose-flat-shape": {
     "part": 12,
-    "parts": 19,
+    "parts": 25,
+    "side": 13,
+    "sides": 17,
     "square": 11,
     "squares": 2
   },
@@ -1438,6 +1484,10 @@
   "divide-fractions": {
     "change": 1
   },
+  "divide-power-of-ten": {
+    "factor": 1,
+    "factors": 3
+  },
   "divisibility-rule-check": {
     "leaves": 2,
     "multiple": 91,
@@ -1495,11 +1545,16 @@
     "parts": 5
   },
   "eighths-and-parts-beyond-one": {
+    "eighth": 2,
+    "eighths": 11,
     "fourths": 7,
     "more than": 3,
     "one fourth": 2,
     "one third": 1,
-    "thirds": 2
+    "part": 8,
+    "parts": 15,
+    "thirds": 2,
+    "whole": 25
   },
   "elapsed-time-hm": {
     "leaves": 1,
@@ -1529,9 +1584,14 @@
     "trials": 2
   },
   "equal-area-fraction": {
+    "part": 18,
+    "parts": 13,
+    "squares": 13,
     "whole": 3
   },
   "equal-area-part-size": {
+    "part": 12,
+    "parts": 9,
     "side": 1,
     "whole": 3
   },
@@ -1543,10 +1603,17 @@
     "square": 1
   },
   "equation-after-one-step": {
+    "balance": 1,
     "change": 1,
-    "factor": 9,
+    "factor": 16,
     "inverse": 1,
-    "opposite": 7
+    "left side": 6,
+    "opposite": 7,
+    "side": 4,
+    "sides": 44,
+    "term": 20,
+    "terms": 1,
+    "whole": 7
   },
   "equation-solution-count": {
     "mean": 1,
@@ -1561,9 +1628,10 @@
     "terms": 2
   },
   "equivalent-denominator": {
-    "changes": 1,
+    "changes": 8,
     "factor": 1,
-    "rename": 1
+    "rename": 1,
+    "whole": 1
   },
   "equivalent-expressions-check": {
     "multiples": 3,
@@ -1580,6 +1648,8 @@
   "equivalent-fractions-select": {
     "factor": 10,
     "multiple": 1,
+    "part": 1,
+    "parts": 19,
     "scale": 1,
     "whole": 2
   },
@@ -1749,7 +1819,8 @@
   "expression-after-first-step": {
     "difference": 1,
     "leaves": 2,
-    "product": 1,
+    "part": 12,
+    "product": 12,
     "whole": 2
   },
   "expression-or-equation": {
@@ -1768,9 +1839,15 @@
   },
   "factor-out-choice": {
     "changes": 1,
-    "factor": 3,
+    "factor": 23,
     "multiple": 1,
-    "product": 1
+    "product": 1,
+    "term": 66
+  },
+  "factor-partner": {
+    "factor": 4,
+    "factors": 1,
+    "product": 4
   },
   "facts-to-five": {
     "leaves": 2,
@@ -1806,11 +1883,13 @@
     "quarters": 30
   },
   "find-equal-shares": {
+    "parts": 9,
     "quarters": 12,
     "rule": 1,
     "whole": 4
   },
   "find-equal-thirds": {
+    "parts": 12,
     "quarters": 14,
     "rule": 1,
     "thirds": 13,
@@ -1938,6 +2017,10 @@
     "more than": 8
   },
   "fraction-choice-compare": {
+    "more than": 2,
+    "part": 13,
+    "parts": 1,
+    "whole": 10,
     "wholes": 1
   },
   "fraction-distance-gap": {
@@ -1945,6 +2028,9 @@
   },
   "fraction-division-expression": {
     "model": 1,
+    "unit": 13,
+    "units": 41,
+    "whole": 57,
     "wholes": 2
   },
   "fraction-edge-volume": {
@@ -1963,6 +2049,13 @@
     "factors": 1,
     "whole": 1
   },
+  "fraction-group-count": {
+    "part": 21
+  },
+  "fraction-line-names-select": {
+    "part": 6,
+    "parts": 32
+  },
   "fraction-line-plot": {
     "fourth": 1,
     "leaf": 8,
@@ -1971,7 +2064,12 @@
     "unit": 1
   },
   "fraction-line-position": {
-    "intervals": 1
+    "intervals": 1,
+    "whole": 12
+  },
+  "fraction-model": {
+    "parts": 14,
+    "whole": 11
   },
   "fraction-of-quantity": {
     "part": 1,
@@ -1992,13 +2090,15 @@
     "mean": 1
   },
   "fraction-share-amount": {
+    "part": 5,
+    "parts": 11,
     "whole": 1
   },
   "fraction-term-chain": {
     "change": 2,
     "changes": 1,
     "multiple": 1,
-    "term": 7,
+    "term": 27,
     "terms": 2,
     "unit": 1
   },
@@ -2006,7 +2106,8 @@
     "eighths": 13
   },
   "fraction-unit-count": {
-    "change": 5
+    "change": 5,
+    "whole": 17
   },
   "fraction-unit-rate": {
     "part": 6,
@@ -2014,7 +2115,9 @@
     "units": 2
   },
   "fraction-whole-as-parts": {
-    "fourths": 3
+    "fourths": 3,
+    "whole": 11,
+    "wholes": 15
   },
   "fractional-ruler-length": {
     "eighth": 2,
@@ -2078,6 +2181,7 @@
     "third": 5
   },
   "gcf-factor-sum": {
+    "factor": 25,
     "leaves": 1
   },
   "geo-altitude-hypotenuse": {
@@ -2490,6 +2594,7 @@
   "greatest-common-factor": {
     "edge": 6,
     "edges": 6,
+    "factors": 58,
     "multiple": 1,
     "product": 3,
     "side": 24,
@@ -2557,11 +2662,13 @@
     "scale": 3
   },
   "hundred-chart-missing": {
-    "part": 1
+    "part": 1,
+    "square": 55
   },
   "hundreds-model": {
     "base": 1,
-    "cubes": 3
+    "cubes": 3,
+    "squares": 9
   },
   "identify-rigid-motion": {
     "change": 2,
@@ -2577,7 +2684,13 @@
     "vertices": 2
   },
   "improper-fractional-part": {
-    "part": 3
+    "part": 3,
+    "whole": 13,
+    "wholes": 2
+  },
+  "improper-whole-part": {
+    "whole": 20,
+    "wholes": 6
   },
   "independence-test": {
     "change": 2,
@@ -2618,6 +2731,8 @@
   },
   "inequality-solution-blanks": {
     "change": 1,
+    "side": 1,
+    "sides": 87,
     "term": 1
   },
   "inequality-solution-point": {
@@ -2651,7 +2766,13 @@
     "vertex": 2,
     "vertices": 4
   },
+  "integer-addition": {
+    "changes": 20
+  },
   "integer-power": {
+    "base": 2,
+    "factor": 5,
+    "factors": 25,
     "square": 3
   },
   "interest-compare-years": {
@@ -2730,7 +2851,8 @@
     "whole": 1
   },
   "join-within-10": {
-    "parts": 16
+    "parts": 32,
+    "square": 16
   },
   "label-expression-parts": {
     "factor": 5,
@@ -2743,12 +2865,16 @@
   },
   "larger-share": {
     "mean": 1,
-    "one quarter": 6,
+    "one quarter": 7,
     "part": 1,
     "parts": 1,
-    "quarters": 2
+    "quarters": 2,
+    "whole": 4,
+    "wholes": 3
   },
   "least-common-multiple": {
+    "multiple": 8,
+    "multiples": 56,
     "product": 1,
     "whole": 3
   },
@@ -9092,7 +9218,8 @@
     "unit": 1
   },
   "like-fraction-missing-part": {
-    "inverse": 1
+    "inverse": 1,
+    "part": 1
   },
   "likelihood-in-words": {
     "certain": 5,
@@ -9144,6 +9271,12 @@
   "line-relationship-equations": {
     "change": 1,
     "product": 3
+  },
+  "line-slope": {
+    "change": 78
+  },
+  "linear-equation": {
+    "sides": 24
   },
   "linear-function-choice": {
     "changes": 76,
@@ -9297,7 +9430,12 @@
     "quarters": 6
   },
   "make-hundred": {
+    "jumps": 2,
     "part": 1
+  },
+  "make-ten-remainder": {
+    "part": 15,
+    "parts": 14
   },
   "margin-of-error-interval": {
     "center": 20,
@@ -9475,6 +9613,10 @@
   "mcas-true-quotient-equations": {
     "product": 1
   },
+  "mean-data": {
+    "arithmetic mean": 1,
+    "mean": 3
+  },
   "mean-median-blanks": {
     "fourth": 1,
     "mean": 58,
@@ -9491,6 +9633,7 @@
     "mean": 6
   },
   "measurable-attribute-choice": {
+    "key": 7,
     "third": 1,
     "unit": 3
   },
@@ -9544,6 +9687,7 @@
   },
   "mental-ten-hundred": {
     "change": 2,
+    "changes": 14,
     "unit": 1
   },
   "meters-to-kilometers-blanks": {
@@ -9577,9 +9721,13 @@
     "parts": 3
   },
   "mixed-fraction-difference": {
+    "difference": 1,
     "part": 1,
+    "parts": 1,
     "rename": 18,
-    "units": 1
+    "units": 1,
+    "whole": 21,
+    "wholes": 1
   },
   "mixed-length-total": {
     "rename": 20,
@@ -9594,7 +9742,9 @@
   },
   "mixed-to-improper-numerator": {
     "change": 1,
-    "units": 1
+    "units": 1,
+    "whole": 28,
+    "wholes": 10
   },
   "mixed-unit-border": {
     "change": 1,
@@ -9644,12 +9794,13 @@
   },
   "multidigit-decimal-product": {
     "factors": 2,
-    "product": 21
+    "product": 61
   },
   "multidigit-decimal-quotient": {
     "changes": 1,
     "leaves": 1,
-    "scale": 1
+    "scale": 1,
+    "whole": 21
   },
   "multiplication-division-equation-truth": {
     "left side": 20,
@@ -9676,24 +9827,27 @@
   },
   "multiply-by-one-digit": {
     "factor": 2,
+    "part": 41,
     "product": 1
   },
   "multiply-by-tens": {
     "multiple": 2,
-    "product": 1
+    "product": 16
   },
   "multiply-facts": {
+    "factors": 2,
     "product": 2,
     "products": 1,
     "quarter": 14
   },
   "multiply-fractions": {
     "factor": 10,
-    "product": 1
+    "product": 33
   },
   "multiply-multidigit": {
     "factor": 1,
     "multiple": 1,
+    "part": 20,
     "product": 1
   },
   "multiply-power-of-ten": {
@@ -9716,6 +9870,13 @@
     "square": 19,
     "whole": 1
   },
+  "name-equal-share": {
+    "one quarter": 4,
+    "part": 8,
+    "parts": 11,
+    "quarters": 8,
+    "square": 4
+  },
   "name-flat-shape": {
     "change": 2,
     "edge": 4,
@@ -9726,6 +9887,16 @@
   "name-polygon": {
     "change": 1,
     "sides": 24
+  },
+  "name-share": {
+    "one quarter": 3,
+    "one third": 4,
+    "part": 10,
+    "parts": 20,
+    "quarters": 7,
+    "square": 7,
+    "thirds": 9,
+    "whole": 6
   },
   "name-solid-shape": {
     "cube": 3,
@@ -9757,6 +9928,8 @@
   "neighbor-product-change": {
     "change": 1,
     "product": 1,
+    "products": 17,
+    "squares": 29,
     "whole": 2
   },
   "net-surface-area": {
@@ -9860,16 +10033,30 @@
     "mean": 1,
     "more than": 1
   },
+  "number-bond-missing": {
+    "leaves": 1,
+    "part": 47,
+    "whole": 41
+  },
+  "number-line-between-hundreds": {
+    "more than": 1
+  },
   "number-line-distance": {
     "sides": 7,
     "unit": 16,
     "units": 14
   },
   "number-line-hops": {
+    "changes": 1,
     "units": 1
   },
+  "number-line-jump-story": {
+    "jump": 126,
+    "jumps": 24
+  },
   "number-line-missing-hop": {
-    "difference": 1
+    "difference": 1,
+    "jumps": 20
   },
   "number-set-venn": {
     "whole": 15
@@ -9939,15 +10126,25 @@
     "more than": 3
   },
   "operation-property-identify": {
-    "factor": 2,
+    "change": 12,
+    "changes": 10,
+    "factor": 6,
+    "factors": 4,
     "identity": 2,
     "leaves": 3,
     "left side": 20,
+    "opposite": 2,
+    "product": 4,
+    "products": 3,
     "right side": 20,
+    "rule": 2,
     "rules": 1,
-    "sides": 28
+    "sides": 29
   },
   "operation-sentence-choice": {
+    "jump": 6,
+    "jumps": 35,
+    "product": 6,
     "terms": 1
   },
   "opposite-on-line": {
@@ -9979,6 +10176,9 @@
     "difference": 1,
     "leaves": 1,
     "mean": 66
+  },
+  "pairing-leftover": {
+    "leaves": 2
   },
   "parabola-axis": {
     "average": 2,
@@ -10089,7 +10289,9 @@
   "pattern-pair-relationship": {
     "more than": 3,
     "rule": 8,
-    "rules": 1
+    "rules": 1,
+    "term": 66,
+    "terms": 11
   },
   "pattern-rule-choice": {
     "change": 19,
@@ -10122,6 +10324,7 @@
     "whole": 2
   },
   "percent-applications": {
+    "base": 18,
     "changes": 1,
     "difference": 2,
     "part": 2
@@ -10379,18 +10582,40 @@
     "terms": 63
   },
   "power-compare": {
+    "base": 2,
+    "changes": 2,
+    "factors": 28,
     "mean": 1,
     "product": 1
   },
+  "power-doubling-story": {
+    "factor": 13,
+    "factors": 11
+  },
   "power-missing-exponent": {
-    "base": 3
+    "base": 3,
+    "factor": 2,
+    "factors": 25
   },
   "power-of-power-exponent": {
+    "base": 1,
+    "factors": 1,
     "product": 1
   },
   "power-order-trap": {
     "base": 1,
-    "product": 5
+    "product": 7,
+    "square": 17,
+    "squares": 2,
+    "squaring": 7,
+    "whole": 2
+  },
+  "power-repeated-product": {
+    "base": 15,
+    "factor": 20,
+    "factors": 25,
+    "product": 3,
+    "products": 1
   },
   "powers-of-i-sum": {
     "terms": 22
@@ -10414,10 +10639,21 @@
     "part": 1
   },
   "prime-composite-sort": {
+    "factor": 4,
+    "factors": 30,
     "more than": 2
   },
   "prime-factorization-exponents": {
-    "base": 1
+    "base": 1,
+    "factor": 27,
+    "factors": 20,
+    "product": 5
+  },
+  "prime-factorization-value": {
+    "base": 5,
+    "factor": 19,
+    "factors": 10,
+    "product": 9
   },
   "prism-missing-edge": {
     "edge": 22,
@@ -10449,8 +10685,10 @@
     "impossible": 1
   },
   "product-of-powers-exponent": {
+    "base": 19,
+    "factors": 2,
     "product": 1,
-    "rule": 1
+    "rule": 2
   },
   "profit-cost-breakeven": {
     "change": 1,
@@ -10480,7 +10718,7 @@
     "scales": 1
   },
   "purchase-change": {
-    "change": 18
+    "change": 24
   },
   "pythagorean-converse": {
     "opposite": 1,
@@ -10618,6 +10856,9 @@
     "mean": 13,
     "more than": 20,
     "quarter": 1
+  },
+  "quotient-of-powers-exponent": {
+    "base": 21
   },
   "radian-arc-ratio": {
     "units": 21
@@ -10833,6 +11074,8 @@
   },
   "rectangle-area": {
     "side": 1,
+    "square": 39,
+    "squares": 19,
     "unit": 2
   },
   "rectangle-border-length": {
@@ -10916,7 +11159,7 @@
     "factors": 16,
     "inverse": 1,
     "multiple": 1,
-    "product": 17,
+    "product": 31,
     "whole": 1
   },
   "related-patterns-relationship": {
@@ -10927,10 +11170,14 @@
   },
   "related-subtraction": {
     "difference": 2,
+    "jumps": 1,
     "whole": 3
   },
   "related-subtraction-sentence": {
-    "inverse": 1
+    "inverse": 1,
+    "part": 52,
+    "parts": 32,
+    "whole": 68
   },
   "relation-point-removal": {
     "leaves": 25
@@ -10970,7 +11217,9 @@
   },
   "repeating-decimal-to-fraction": {
     "leaves": 1,
-    "tails": 40
+    "tail": 2,
+    "tails": 40,
+    "whole": 19
   },
   "repeating-shape-pattern": {
     "part": 33,
@@ -11099,6 +11348,7 @@
   "right-triangle": {
     "opposite": 20,
     "right side": 19,
+    "side": 19,
     "square": 2,
     "squares": 1,
     "unit": 3
@@ -11126,7 +11376,10 @@
   "root-nearest-tenth": {
     "root": 1,
     "roots": 40,
-    "side": 1
+    "side": 1,
+    "square": 64,
+    "squares": 2,
+    "squaring": 1
   },
   "round-decimal-blanks": {
     "multiple": 1
@@ -11140,11 +11393,11 @@
     "side": 1
   },
   "round-to-hundred": {
-    "multiple": 1
+    "multiple": 2
   },
   "round-to-ten": {
     "change": 1,
-    "multiple": 1
+    "multiple": 6
   },
   "rounds-to-select": {
     "boundaries": 24,
@@ -11189,6 +11442,10 @@
   "same-share-different-shape": {
     "one quarter": 6,
     "one third": 5,
+    "part": 9,
+    "parts": 5,
+    "square": 3,
+    "squares": 1,
     "whole": 6,
     "wholes": 1
   },
@@ -11383,9 +11640,11 @@
   "scale-drawing-work": {
     "factor": 2,
     "inverse": 1,
-    "scale": 39,
+    "scale": 43,
     "scales": 2,
-    "square": 21
+    "square": 21,
+    "unit": 4,
+    "units": 3
   },
   "scale-factor-effects-blanks": {
     "changes": 1,
@@ -11416,8 +11675,15 @@
   "scientific-notation-work": {
     "change": 1
   },
+  "scientific-operations": {
+    "factors": 3,
+    "product": 1
+  },
   "scientific-times-larger": {
     "parts": 20,
+    "standard form": 1
+  },
+  "scientific-to-standard": {
     "standard form": 1
   },
   "scope-of-inference-choice": {
@@ -11471,6 +11737,8 @@
     "square": 4
   },
   "share-remainder-fractions": {
+    "part": 20,
+    "parts": 5,
     "period": 1,
     "periodic": 2,
     "periods": 4,
@@ -11523,7 +11791,8 @@
     "part": 5
   },
   "show-work-rental-plans": {
-    "more than": 7
+    "more than": 7,
+    "side": 4
   },
   "sigma-notation-represent": {
     "difference": 1,
@@ -11533,7 +11802,9 @@
     "terms": 54
   },
   "signed-changes-sum": {
-    "net": 33,
+    "change": 40,
+    "changes": 4,
+    "net": 40,
     "terms": 2
   },
   "signed-context-order": {
@@ -11542,19 +11813,23 @@
     "side": 7
   },
   "signed-fraction-product": {
+    "factor": 12,
+    "factors": 3,
     "opposite": 2,
     "product": 14
   },
   "signed-fraction-sum": {
     "difference": 1,
     "opposite": 18,
-    "part": 1
+    "part": 1,
+    "rename": 41
   },
   "signed-jumps": {
     "change": 55,
     "changes": 35
   },
   "signed-quantity": {
+    "opposite": 53,
     "units": 13
   },
   "signed-story": {
@@ -11702,7 +11977,8 @@
     "tail": 21
   },
   "skip-count-missing": {
-    "difference": 1
+    "difference": 1,
+    "more than": 19
   },
   "slope-triangle-statements": {
     "change": 2,
@@ -11718,7 +11994,9 @@
     "units": 36
   },
   "small-array-total": {
-    "edge": 1
+    "edge": 1,
+    "square": 2,
+    "squares": 22
   },
   "solid-bottom-face-shape": {
     "base": 2,
@@ -11843,7 +12121,9 @@
     "opposite": 12,
     "product": 12,
     "root": 8,
-    "roots": 1
+    "roots": 1,
+    "square": 12,
+    "squares": 1
   },
   "sort-shapes-count": {
     "sort": 19,
@@ -11907,7 +12187,7 @@
     "vertices": 1
   },
   "split-array-part": {
-    "part": 1,
+    "part": 17,
     "squares": 23,
     "whole": 1
   },
@@ -12062,6 +12342,7 @@
     "whole": 1
   },
   "standard-to-scientific": {
+    "change": 19,
     "standard form": 1
   },
   "stem-leaf-construct": {
@@ -12120,8 +12401,12 @@
   },
   "story-graph-match": {
     "change": 2,
+    "changes": 6,
+    "decreasing": 23,
+    "increasing": 18,
     "interval": 1,
     "left side": 1,
+    "part": 17,
     "parts": 8,
     "scale": 2
   },
@@ -12203,6 +12488,10 @@
   },
   "subtract-three-digit": {
     "difference": 1
+  },
+  "subtract-through-ten": {
+    "part": 1,
+    "parts": 15
   },
   "subtract-two-digit-regroup": {
     "difference": 1
@@ -12294,6 +12583,7 @@
     "whole": 4
   },
   "tally-and-t-chart": {
+    "difference": 2,
     "jump": 1,
     "part": 1
   },
@@ -12319,15 +12609,22 @@
     "complements": 1
   },
   "ten-more-or-less": {
-    "change": 2
+    "change": 2,
+    "changes": 1,
+    "more than": 1
   },
   "tens-contribution": {
     "factor": 1,
-    "product": 1
+    "part": 23,
+    "product": 21
   },
   "tens-ones-model": {
     "base": 1,
-    "cubes": 4
+    "cubes": 4,
+    "square": 9
+  },
+  "tenths-as-hundredths": {
+    "rename": 9
   },
   "theoretical-distribution-expectation": {
     "average": 4,
@@ -12335,10 +12632,13 @@
     "units": 1
   },
   "three-addend-story": {
-    "change": 1
+    "change": 2,
+    "third": 1
   },
   "three-digit-symbol": {
-    "more than": 7
+    "faces": 1,
+    "more than": 7,
+    "side": 1
   },
   "tide-cosine-equation": {
     "period": 4
@@ -12354,7 +12654,8 @@
     "factor": 4,
     "factors": 1,
     "more than": 6,
-    "part": 1
+    "part": 1,
+    "product": 13
   },
   "total-and-cost-equation": {
     "right side": 1
@@ -12612,7 +12913,9 @@
     "vertices": 2
   },
   "two-digit-symbol": {
-    "more than": 8
+    "faces": 1,
+    "more than": 8,
+    "side": 1
   },
   "two-radical-equation": {
     "right side": 1,
@@ -12637,6 +12940,8 @@
     "whole": 1
   },
   "two-step-change": {
+    "change": 19,
+    "changes": 9,
     "inverse": 1,
     "opposite": 1
   },
@@ -12712,7 +13017,12 @@
     "whole": 13
   },
   "unit-fraction-share": {
+    "part": 16,
     "whole": 16
+  },
+  "unit-piece-size": {
+    "part": 1,
+    "whole": 33
   },
   "unit-price": {
     "scale": 20
@@ -12734,14 +13044,20 @@
     "units": 8
   },
   "unit-size-and-count": {
-    "changes": 1
+    "changes": 1,
+    "unit": 42,
+    "units": 19
+  },
+  "unknown-addend-story": {
+    "part": 40,
+    "whole": 20
   },
   "unknown-dividend": {
     "mean": 1
   },
   "unlike-fraction-difference": {
     "changes": 1,
-    "difference": 1,
+    "difference": 20,
     "rename": 20,
     "renaming": 1
   },
@@ -12788,8 +13104,12 @@
   "whole-number-equality-choice": {
     "difference": 1,
     "factors": 4,
+    "left side": 1,
     "product": 3,
     "products": 1,
+    "right side": 1,
+    "side": 83,
+    "sides": 61,
     "third": 1,
     "whole": 1
   },
@@ -12805,6 +13125,7 @@
     "whole": 23
   },
   "whole-sharing-fraction": {
+    "part": 11,
     "units": 1,
     "whole": 3
   },
@@ -12814,7 +13135,7 @@
   },
   "whole-unit-groups": {
     "unit": 1,
-    "units": 2,
+    "units": 17,
     "whole": 4,
     "wholes": 3
   },
@@ -12825,6 +13146,7 @@
     "squared": 24
   },
   "zero-one-groups": {
+    "factor": 1,
     "identity": 1,
     "product": 1
   },
