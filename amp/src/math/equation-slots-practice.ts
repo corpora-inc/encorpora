@@ -1171,9 +1171,12 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         sentence: built.sentence,
         hint: `The square of $x ${minus ? "-" : "+"} ${h}$ is ${k * k}. Take the square root of both sides, remembering that there are two square roots of ${k * k}, then solve for $x$.`,
         explanation: [
-          `Take the square root of both sides: $x ${minus ? "-" : "+"} ${h} = \\pm ${k}$.`,
-          `Solve $x ${minus ? "-" : "+"} ${h} = ${k}$: $x=${high}$. Solve $x ${minus ? "-" : "+"} ${h} = -${k}$: $x=${low}$.`,
-          `Check: $(${high} ${minus ? "-" : "+"} ${h})^2 = ${k * k}$ and $(${low} ${minus ? "-" : "+"} ${h})^2 = ${k * k}$.`,
+          `Squaring a number means multiplying it by itself. So $(x ${minus ? "-" : "+"} ${h})^2 = ${k * k}$ says that $x ${minus ? "-" : "+"} ${h}$ is a number whose square is ${k * k}.`,
+          `A positive number has two square roots, one positive and one negative, because $${k}^2 = ${k * k}$ and $(-${k})^2 = ${k * k}$. Take the square root of both sides: $x ${minus ? "-" : "+"} ${h} = \\pm ${k}$, where $\\pm$ means "plus or minus".`,
+          `Solve $x ${minus ? "-" : "+"} ${h} = ${k}$ by ${minus ? `adding ${h} to` : `subtracting ${h} from`} both sides: $x=${high}$.`,
+          `Solve $x ${minus ? "-" : "+"} ${h} = -${k}$ the same way: $x=${low}$.`,
+          `Check both in the equation: $(${high} ${minus ? "-" : "+"} ${h})^2 = ${k * k}$ and $(${low} ${minus ? "-" : "+"} ${h})^2 = ${k * k}$.`,
+          `So the lesser solution is $x = ${low}$ and the greater solution is $x = ${high}$.`,
         ],
       });
     },
