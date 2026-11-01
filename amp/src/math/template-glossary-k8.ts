@@ -15,6 +15,14 @@ export const k8TemplateGlossary: Record<
     noLink: ["mean", "units"],
   },
   "add-within-20": { noLink: ["change"] },
+  "adjacent-angles": {
+    senses: { parts: "part", whole: "whole" },
+    noLink: ["side"],
+  },
+  "angle-classify": { senses: { square: "square-shape" } },
+  "angle-equation": { noLink: ["opposite"] },
+  "angle-pair-measure": { senses: { side: "side" } },
+  "approximate-unit-factor": { senses: { unit: "unit" } },
   "area-model-product": {
     senses: { product: "product-multiply" },
     noLink: ["whole"],
@@ -28,7 +36,25 @@ export const k8TemplateGlossary: Record<
     noLink: ["scale"],
   },
   "benchmark-fraction-estimate": { senses: { "more than": "more-than" } },
+  "border-or-cover-unit": {
+    senses: { face: "face-solid", sides: "side", unit: "unit" },
+    noLink: ["square"],
+  },
+  "circle-area-coefficient": {
+    senses: {
+      center: "center",
+      "more than": "more-than",
+      square: "square-number",
+    },
+    noLink: ["edge"],
+  },
   "circle-estimate-blanks": { senses: { center: "center" }, noLink: ["edge"] },
+  "classify-quadrilateral": {
+    senses: { sides: "side", square: "square-shape" },
+  },
+  "classify-triangle-angles": {
+    senses: { "more than": "more-than", side: "side", square: "square-shape" },
+  },
   "clock-minute-match": { senses: { "more than": "more-than" } },
   "compare-decimals-hundredths": { noLink: ["changes"] },
   "compare-decimals-thousandths": { noLink: ["changes"] },
@@ -41,18 +67,34 @@ export const k8TemplateGlossary: Record<
   "compare-three-digit": { noLink: ["change"] },
   "compare-two-digit": { noLink: ["change"] },
   "compare-unlike-fractions": { senses: { "more than": "more-than" } },
+  "compare-weights": { senses: { balance: "balance-scale" }, noLink: ["side"] },
   "compatible-number-estimate": {
     senses: { multiple: "multiple", multiples: "multiple" },
   },
+  "complete-the-shape": { noLink: ["change"] },
+  "composite-face-prism-surface-area": { noLink: ["opposite", "square"] },
+  "composite-face-prism-volume": { noLink: ["opposite", "square"] },
+  "composite-prism-volume": { senses: { solid: "solid-shape" } },
   "compound-event-simulation": {
     senses: { event: "event", trial: "trial", trials: "trial" },
   },
+  "congruent-fourths-pair": { senses: { "one fourth": "fourth" } },
   "continue-count-to-120": {
     senses: { "more than": "more-than" },
     noLink: ["changes"],
   },
+  "conversion-chain-story": { senses: { unit: "unit" }, noLink: ["change"] },
   "coordinate-context-points": { senses: { "more than": "more-than" } },
+  "correct-unit-measure": { senses: { cubes: "cube" } },
   "count-sequence-missing": { senses: { "more than": "more-than" } },
+  "count-sides-corners": {
+    senses: { side: "side", sides: "side", vertex: "vertex" },
+    noLink: ["edge"],
+  },
+  "cross-section-area": {
+    senses: { base: "base-shape", plane: "plane", solid: "solid-shape" },
+  },
+  "cube-layer-count": { senses: { cubes: "cube" } },
   "customary-unit-reverse": { noLink: ["whole"] },
   "decimal-grid-read": { senses: { part: "part", whole: "whole" } },
   "decimal-rename-chain": { senses: { part: "part", parts: "part" } },
@@ -61,6 +103,7 @@ export const k8TemplateGlossary: Record<
   "eighths-and-parts-beyond-one": {
     senses: { eighths: "eighth", part: "part", parts: "part", whole: "whole" },
   },
+  "elapsed-time-hm": { senses: { jumps: "jump" }, noLink: ["whole"] },
   "equal-area-fraction": {
     senses: { part: "part", parts: "part", squares: "square-shape" },
   },
@@ -90,6 +133,7 @@ export const k8TemplateGlossary: Record<
   },
   "find-equal-shares": { senses: { parts: "part" } },
   "find-equal-thirds": { senses: { parts: "part" } },
+  "find-quadrilateral": { senses: { sides: "side", square: "square-shape" } },
   "fraction-choice-compare": {
     senses: { "more than": "more-than", multiple: "multiple" },
     noLink: ["part", "parts", "whole"],
@@ -111,20 +155,27 @@ export const k8TemplateGlossary: Record<
   "fraction-whole-as-parts": { senses: { whole: "whole" } },
   "full-kits": { noLink: ["leaves"] },
   "gcf-factor-sum": { senses: { factor: "factor-number" } },
+  "graph-of-linear-rule": { noLink: ["changes"] },
   "greater-numeral": { noLink: ["faces", "side"] },
   "greatest-common-factor": {
     senses: { factor: "factor-number", factors: "factor-number" },
   },
+  "hierarchy-statement": { noLink: ["rules"] },
   "hundred-chart-missing": { noLink: ["square"] },
   "hundreds-model": {
     senses: { parts: "part", square: "square-shape", squares: "square-shape" },
     noLink: ["model"],
   },
+  "identify-rigid-motion": { senses: { image: "image-transformation" } },
   "improper-fractional-part": { senses: { whole: "whole", wholes: "whole" } },
   "improper-whole-part": { senses: { whole: "whole", wholes: "whole" } },
   "inequality-solution-blanks": {
     senses: { sides: "side-of-equation" },
     noLink: ["rule"],
+  },
+  "inherited-property": {
+    senses: { sides: "side", square: "square-shape" },
+    noLink: ["opposite"],
   },
   "integer-power": {
     senses: {
@@ -141,6 +192,11 @@ export const k8TemplateGlossary: Record<
   },
   "like-fraction-difference": { senses: { whole: "whole" } },
   "like-fraction-missing-part": { senses: { part: "part" } },
+  "line-pair-select": { senses: { square: "square-shape" } },
+  "line-relationship": {
+    senses: { square: "square-shape" },
+    noLink: ["quarter"],
+  },
   "line-slope": { senses: { change: "change" }, noLink: ["changes"] },
   "linear-equation": { senses: { sides: "side-of-equation" } },
   "make-hundred": {
@@ -150,7 +206,10 @@ export const k8TemplateGlossary: Record<
   "make-ten-remainder": { senses: { part: "part" } },
   "mean-data": { senses: { mean: "mean-average" } },
   "measurable-attribute-choice": { noLink: ["key"] },
+  "measure-with-units": { senses: { cube: "cube" } },
   "mental-ten-hundred": { noLink: ["changes", "leaves"] },
+  "metric-length-rename": { senses: { unit: "unit" }, noLink: ["change"] },
+  "metric-length-reverse": { senses: { unit: "unit" }, noLink: ["change"] },
   "mixed-fraction-difference": {
     senses: { difference: "difference-subtract", whole: "whole" },
     noLink: ["parts"],
@@ -158,6 +217,8 @@ export const k8TemplateGlossary: Record<
   "mixed-to-improper-numerator": {
     senses: { whole: "whole", wholes: "whole" },
   },
+  "mixed-unit-border": { senses: { side: "side", sides: "side" } },
+  "money-total-dollars": { noLink: ["whole"] },
   "multidigit-decimal-quotient": { noLink: ["whole"] },
   "multidigit-decimal-sum": { noLink: ["changes"] },
   "multiply-by-one-digit": { senses: { part: "part", parts: "part" } },
@@ -169,6 +230,7 @@ export const k8TemplateGlossary: Record<
     senses: { part: "part", parts: "part", whole: "whole" },
   },
   "multiply-multidigit": { senses: { part: "part" } },
+  "name-cut-shape-pieces": { senses: { sides: "side" } },
   "name-equal-share": {
     senses: {
       "one quarter": "fourth",
@@ -178,6 +240,8 @@ export const k8TemplateGlossary: Record<
       square: "square-shape",
     },
   },
+  "name-flat-shape": { senses: { sides: "side" } },
+  "name-polygon": { senses: { sides: "side" } },
   "name-share": {
     senses: {
       part: "part",
@@ -196,6 +260,7 @@ export const k8TemplateGlossary: Record<
   "number-line-hops": { noLink: ["changes"] },
   "number-line-jump-story": { senses: { jump: "jump" } },
   "number-line-missing-hop": { senses: { jumps: "jump" } },
+  "object-for-measure": { noLink: ["quarter"] },
   "operation-order": { noLink: ["rule"] },
   "operation-property-identify": {
     senses: { part: "part" },
@@ -212,6 +277,8 @@ export const k8TemplateGlossary: Record<
     },
   },
   "percent-applications": { noLink: ["base"] },
+  "perimeter-area-chain": { senses: { sides: "side", square: "square-shape" } },
+  "polygon-with-angles": { senses: { sides: "side" } },
   "power-compare": {
     senses: {
       base: "base-exponent",
@@ -262,6 +329,8 @@ export const k8TemplateGlossary: Record<
       product: "product-multiply",
     },
   },
+  "prism-missing-edge": { senses: { edge: "edge" } },
+  "prism-volume-edges": { senses: { cubes: "cube", edge: "edge" } },
   "product-of-powers-exponent": {
     senses: {
       base: "base-exponent",
@@ -269,7 +338,24 @@ export const k8TemplateGlossary: Record<
       factors: "factor-number",
     },
   },
+  "protractor-reading": {
+    senses: { degrees: "degree-angle" },
+    noLink: ["scale"],
+  },
   "purchase-change": { noLink: ["more than"] },
+  "pythagorean-converse": {
+    senses: {
+      side: "side",
+      sides: "side",
+      square: "square-number",
+      squares: "square-number",
+      squaring: "square-number",
+    },
+  },
+  "quadrilateral-names": {
+    senses: { "more than": "more-than" },
+    noLink: ["rules"],
+  },
   "quotient-of-powers-exponent": {
     senses: {
       base: "base-exponent",
@@ -278,20 +364,38 @@ export const k8TemplateGlossary: Record<
     },
     noLink: ["rule"],
   },
+  "read-thermometer": { senses: { degrees: "degree-temperature" } },
+  "reasonable-measure-choice": { senses: { unit: "unit" } },
   "rectangle-area": { senses: { squares: "square-shape" } },
+  "rectangle-border-length": {
+    senses: { side: "side", sides: "side" },
+    noLink: ["opposite"],
+  },
+  "rectangle-existence-choice": { senses: { side: "side", sides: "side" } },
+  "rectangle-missing-area-side": {
+    senses: { side: "side", squares: "square-shape" },
+  },
+  "rectangle-missing-border-side": { senses: { side: "side", sides: "side" } },
+  "rectangle-two-constraints-choice": {
+    senses: { side: "side", sides: "side" },
+  },
   "related-division-sentence": { senses: { side: "side-of-equation" } },
   "related-subtraction": { senses: { jumps: "jump" } },
   "related-subtraction-sentence": {
     senses: { part: "part", whole: "whole" },
     noLink: ["leaves"],
   },
+  "rename-time-units": { senses: { unit: "unit" } },
   "repeating-decimal-to-fraction": { noLink: ["tail", "whole"] },
   "right-triangle": { senses: { side: "side", sides: "side" } },
+  "right-triangle-missing-leg": { senses: { side: "side" }, noLink: ["sides"] },
   "root-between-integers": { senses: { factor: "factor-number" } },
   "root-nearest-tenth": { senses: { squaring: "square-number" } },
   "round-large": { noLink: ["rule"] },
   "round-to-hundred": { noLink: ["changes", "rule"] },
   "round-to-ten": { noLink: ["changes", "rule"] },
+  "same-area-border-choice": { senses: { sides: "side" } },
+  "same-border-area-choice": { senses: { side: "side" } },
   "same-share-different-shape": {
     senses: { part: "part", parts: "part", squares: "square-shape" },
   },
@@ -313,8 +417,38 @@ export const k8TemplateGlossary: Record<
     senses: { factor: "factor-number", rename: "rename" },
   },
   "signed-quantity": { noLink: ["opposite"] },
+  "similar-triangles-side": {
+    senses: { side: "side", "similar triangles": "similar-figures" },
+  },
   "skip-count-missing": { senses: { "more than": "more-than" } },
   "small-array-total": { senses: { squares: "square-shape" } },
+  "solid-bottom-face-shape": { senses: { sides: "side" }, noLink: ["square"] },
+  "solid-parts": {
+    senses: {
+      edge: "edge",
+      edges: "edge",
+      face: "face-solid",
+      faces: "face-solid",
+      "more than": "more-than",
+      solid: "solid-shape",
+      vertex: "vertex",
+      vertices: "vertex",
+    },
+  },
+  "solid-property-select": {
+    senses: {
+      base: "base-shape",
+      bases: "base-shape",
+      cube: "cube",
+      edge: "edge",
+      edges: "edge",
+      face: "face-solid",
+      faces: "face-solid",
+      solid: "solid-shape",
+      solids: "solid-shape",
+    },
+    noLink: ["side", "square"],
+  },
   "solve-square-cube-equation": {
     senses: { factor: "factor-number", squaring: "square-number" },
   },
@@ -338,9 +472,20 @@ export const k8TemplateGlossary: Record<
   "three-addend-story": { noLink: ["third"] },
   "three-digit-symbol": { noLink: ["change", "faces", "side"] },
   "times-table-pattern": { senses: { product: "product-multiply" } },
+  "triangle-angle-sum": { noLink: ["side"] },
+  "triangle-conditions": { noLink: ["parts"] },
+  "triangle-exterior-angle": { senses: { side: "side" } },
+  "triangle-side-test": { senses: { side: "side" } },
+  "triangle-third-side": { senses: { sides: "side" } },
   "triangle-uniqueness": { senses: { "more than": "more-than" } },
+  "turn-degrees": {
+    senses: { degree: "degree-angle", part: "part" },
+    noLink: ["unit"],
+  },
   "two-digit-symbol": { noLink: ["change", "faces", "side"] },
   "two-step-change": { senses: { changes: "change" } },
+  "unit-cube-volume": { senses: { cubes: "cube", solid: "solid-shape" } },
+  "unit-fraction-cube-packing": { senses: { solid: "solid-shape" } },
   "unit-fraction-share": { senses: { part: "part", parts: "part" } },
   "unit-piece-size": {
     senses: { part: "part", whole: "whole" },
@@ -355,5 +500,6 @@ export const k8TemplateGlossary: Record<
     noLink: ["leaves"],
   },
   "whole-number-equality-choice": { senses: { sides: "side-of-equation" } },
+  "whole-pack-ribbon-choice": { noLink: ["whole"] },
   "whole-sharing-fraction": { senses: { part: "part", parts: "part" } },
 };
