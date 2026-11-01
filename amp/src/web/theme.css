@@ -64,18 +64,25 @@ button {
   background: var(--color-primary);
   color: var(--color-on-primary);
   border-radius: 12px;
-  transition:
-    background 0.12s ease,
-    filter 0.12s ease,
-    transform 0.06s ease;
+}
+/* State changes ease only for learners who allow motion; with reduced motion
+   a fill (Check enabling, a hover) changes at once and a press does not
+   shrink. */
+@media (prefers-reduced-motion: no-preference) {
+  button {
+    transition:
+      background 0.12s ease,
+      filter 0.12s ease,
+      transform 0.06s ease;
+  }
+  button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
 }
 /* Hover darkens whatever fill a button has; it never swaps in the primary
    fill, which would leave dark text on a dark surface. */
 button:hover:not(:disabled) {
   filter: brightness(0.92);
-}
-button:active:not(:disabled) {
-  transform: scale(0.98);
 }
 button:disabled {
   cursor: default;
