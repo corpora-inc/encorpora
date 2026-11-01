@@ -27,7 +27,9 @@ for claim in ['', '$', '6 ÷', '(4 + 3', '5 ÷ 0']:
 assert r.value('$1/22$') == Fraction(1, 22)
 assert r.equalities('So divide minutes by pages: 6 ÷ 132 = $\\\\tfrac{1}{22}$ minute per page.') == 1
 assert r.equalities('For 132 pages, $132 \\\\div 6 = 22$ pages per minute.') == 1
-for claim in ['6 ÷ 132 = $\\\\tfrac{1}{21}$ minute.', '6 ÷ 132 = $ minute.']:
+assert r.equalities('Multiply: $\\\\tfrac{3}{4} \\\\times \\\\tfrac{3}{2} = \\\\tfrac{3 \\\\times 3}{4 \\\\times 2} = \\\\tfrac{9}{8}$.') == 2
+assert r.equalities('So 6 ÷ $\\\\tfrac{1}{22}$ = 132 pages.') == 1
+for claim in ['6 ÷ 132 = $\\\\tfrac{1}{21}$ minute.', '6 ÷ 132 = $ minute.', 'So 6 ÷ $\\\\tfrac{1}{22}$ = 6/22 pages.']:
     try:
         r.equalities(claim)
     except ValueError:

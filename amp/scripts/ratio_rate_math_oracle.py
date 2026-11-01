@@ -368,17 +368,22 @@ TRAILING = re.compile(r'[$(\d][\d ().$×÷+/−]*$')
 LEADING = re.compile(r'^[$(\d−][\d ().$×÷+/−]*')
 
 
-# Typeset arithmetic reads as its plain symbols: $\tfrac{1}{22}$ is 1/22 and
-# $132 \div 6$ is 132 ÷ 6, so a typeset claim is checked, not skipped.
-TEX_FRACTION = re.compile(r'\\[td]?frac\{(\d+(?:\.\d+)?)\}\{(\d+(?:\.\d+)?)\}')
-TEX_OPERATORS = {r'\div': '÷', r'\times': '×', r'\cdot': '×'}
+# Typeset arithmetic reads as its plain symbols: $\tfrac{3 \times 3}{4 \times 2}$
+# is ((3 × 3)/(4 × 2)) and $132 \div 6$ is 132 ÷ 6, so a typeset claim is
+# checked, not skipped. A whole fraction is grouped: 6 ÷ \tfrac{1}{22} is 132.
+TEX_FRACTION = re.compile(r'\\[td]?frac\{([^{}]*)\}\{([^{}]*)\}')
+TEX_OPERATORS = {r'\div': '÷', r'\times': '×', r'\cdot': '×', r'\left': '', r'\right': ''}
 
 
 def plain_arithmetic(step):
-    text = TEX_FRACTION.sub(r'\1/\2', step)
+    text = step
     for tex, symbol in TEX_OPERATORS.items():
         text = re.sub(re.escape(tex) + r'(?![A-Za-z])', symbol, text)
-    return text
+    while True:
+        grouped = TEX_FRACTION.sub(r'((\1)/(\2))', text)
+        if grouped == text:
+            return text
+        text = grouped
 
 
 def equalities(step):
@@ -660,7 +665,8 @@ def review_content_mutations():
     # moves a paragraph cannot turn a mutant into an unchanged copy.
     for old, new in [('= 88', '= 86'), (r'= $\tfrac{1}{22}$', r'= $\tfrac{1}{21}$'), (r'= $\tfrac{1}{22}$', '= $')]:
         bad = copy.deepcopy(data)
-        paragraphs = next(section['paragraphs'] for lesson in bad['lessons'] for section in lesson['sections'] if any(old in x for x in section['paragraphs']))
+        paragraphs = next((section['paragraphs'] for lesson in bad['lessons'] for section in lesson['sections'] if any(old in x for x in section['paragraphs'])), None)
+        require(paragraphs is not None, 'Missing lesson mutation target: ' + old)
         index = next(i for i, x in enumerate(paragraphs) if old in x)
         paragraphs[index] = paragraphs[index].replace(old, new, 1)
         mutants.append(bad)
