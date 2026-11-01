@@ -260,7 +260,7 @@ export const algebraLessons: Lesson[] = [
         paragraphs: [
           "A rule is called proportional when the output is always the same number times the input. We write it $y = kx$, where $x$ is the input, $y$ is the output and $k$ is the fixed number. For $y = 3x$, input 1 gives 3, input 2 gives 6 and input 4 gives 12. Doubling the input doubles the output.",
           "At input 0 the output is $k \\times 0 = 0$. So the graph, the picture of all the pairs as points on a grid, passes through the point $(0, 0)$, called the origin. For every input except 0, the output divided by the input is the same number $k$, because $kx \\div x = k$. At input 0, dividing like this is not allowed, since dividing by 0 has no answer.",
-          "A fixed added amount other than 0 breaks this. The rule $y = 3x + 2$ has a straight-line graph, but at input 0 its output is 2, not 0. So it is not proportional. The fixed number $k$ may be negative, as in $y = -2x$, when the inputs can be any number. A real situation may allow only some inputs, such as numbers of people.",
+          "A fixed added amount other than 0 breaks this. The rule $y = 3x + 2$ has a straight-line graph, but at input 0 its output is 2, not 0. So it is not proportional. The fixed number $k$ may be negative, as in $y = -2x$. The inputs can be any number. A real situation may allow only some inputs, such as numbers of people.",
         ],
       },
       {
