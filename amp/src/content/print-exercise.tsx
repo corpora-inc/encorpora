@@ -86,13 +86,30 @@ const printCard = {
 function PrintMultiPart({
   response,
   answer,
+  drawnBoxes = false,
 }: {
   response: MultiPartChoiceResponse;
   answer?: string;
+  /** Daily workbooks: drawn boxes in an aligned grid of options. Lesson
+   * editions keep the glyph markup byte for byte. */
+  drawnBoxes?: boolean;
 }) {
   const key = answer ? draftChoices(response, answer) : {};
-  const box = (blankId: string, optionId: string) =>
-    key[blankId] === optionId ? "☑" : "☐";
+  const box = (blankId: string, optionId: string): ReactNode =>
+    drawnBoxes ? (
+      <span
+        className={
+          key[blankId] === optionId
+            ? "print-check print-check--on"
+            : "print-check"
+        }
+        aria-hidden="true"
+      />
+    ) : key[blankId] === optionId ? (
+      "☑"
+    ) : (
+      "☐"
+    );
   const number = (blankId: string) =>
     response.blanks.findIndex((b) => b.id === blankId) + 1;
   if (response.layout === "table") {
@@ -188,23 +205,62 @@ function PrintMultiPart({
           )}
         </p>
       )}
-      <ol className="print-parts print-choices">
-        {response.blanks.map((b) => (
-          <li key={b.id}>
-            <PrintMathText
-              text={b.label.charAt(0).toUpperCase() + b.label.slice(1)}
-            />
-            :{" "}
-            {b.options.map((o) => (
-              <span key={o.id} className="print-part-option">
-                {box(b.id, o.id)} <PrintMathText text={o.label} />
+      {drawnBoxes ? (
+        <ol className="print-parts print-parts--grid">
+          {response.blanks.map((b) => (
+            <li key={b.id}>
+              <span className="print-part-label">
+                <PrintMathText
+                  text={b.label.charAt(0).toUpperCase() + b.label.slice(1)}
+                />
               </span>
-            ))}
-          </li>
-        ))}
-      </ol>
+              <span
+                className={`print-part-options print-part-options--${optionColumns(b.options.map((o) => o.label))}`}
+              >
+                {b.options.map((o) => (
+                  <span key={o.id} className="print-part-option">
+                    {box(b.id, o.id)}
+                    <span className="print-part-text">
+                      <PrintMathText text={o.label} />
+                    </span>
+                  </span>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ol>
+      ) : (
+        <ol className="print-parts print-choices">
+          {response.blanks.map((b) => (
+            <li key={b.id}>
+              <PrintMathText
+                text={b.label.charAt(0).toUpperCase() + b.label.slice(1)}
+              />
+              :{" "}
+              {b.options.map((o) => (
+                <span key={o.id} className="print-part-option">
+                  {box(b.id, o.id)} <PrintMathText text={o.label} />
+                </span>
+              ))}
+            </li>
+          ))}
+        </ol>
+      )}
     </>
   );
+}
+/** Options of one printed blank: four across when every label is short, two
+ * when they fit half a column, otherwise one per line. */
+function optionColumns(labels: string[]): 1 | 2 | 4 {
+  const longest = Math.max(
+    ...labels.map(
+      (l) =>
+        l
+          .replace(/\\(frac|dfrac)\{([^}]*)\}\{([^}]*)\}/g, "$2/$3")
+          .replace(/\\[a-zA-Z]+|[{}$^_]/g, "").length,
+    ),
+  );
+  return longest <= 7 ? 4 : longest <= 18 ? 2 : 1;
 }
 /** Structured work on paper. The workbook prints every step with blank
  * lines for the learner's fields (and the banks to choose from, lettered);
@@ -364,6 +420,7 @@ export function PrintExerciseBody({
   solutions,
   workspace,
   numberLabel,
+  drawnBoxes = false,
 }: {
   number: number;
   problem: GeneratedProblem;
@@ -371,6 +428,9 @@ export function PrintExerciseBody({
   workspace?: ReactNode;
   /** Replaces the default "7. " prefix; lesson editions never pass it. */
   numberLabel?: ReactNode;
+  /** Drawn checkboxes in an aligned grid for multi-part items (daily
+   * workbooks); lesson editions never pass it. */
+  drawnBoxes?: boolean;
 }) {
   return (
     <>
@@ -394,6 +454,7 @@ export function PrintExerciseBody({
         <PrintMultiPart
           response={problem.public.response}
           answer={solutions ? problem.answer : undefined}
+          drawnBoxes={drawnBoxes}
         />
       )}
       {problem.public.response.kind === "structured-work" && (

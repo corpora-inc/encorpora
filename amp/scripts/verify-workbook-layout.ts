@@ -56,7 +56,8 @@ for (const engine of [firefox, webkit]) {
       const page = await other.newPage();
       await page.emulateMedia({ media: "print" });
       await page.setContent(html, { waitUntil: "load" });
-      await waitForWorkbookLayout(page);
+      // Firefox composes a long workbook in about ten seconds.
+      await waitForWorkbookLayout(page, 90_000);
       const failures = layoutFailures(await checkWorkbookLayout(page));
       await page.close();
       if (failures.length) failed++;

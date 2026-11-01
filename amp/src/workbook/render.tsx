@@ -217,9 +217,7 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
   const visual = section?.illustration;
   const idea = section && (
     <div className="wb-lesson-idea">
-      <h4 className="wb-lesson-label">
-        <PrintMathText text={section.title} />
-      </h4>
+      <h4 className="wb-lesson-label">The idea</h4>
       {cardParagraphs(section).map((p, i) => (
         <p key={i}>
           <PrintMathText text={p} />
@@ -443,6 +441,7 @@ export function workbookHtml(
         }
         problem={entry.problem}
         solutions={false}
+        drawnBoxes
         workspace={<Workspace item={entry.item} problem={entry.problem} />}
       />
     </section>
@@ -856,7 +855,20 @@ body{margin:0}
 .wb-item .print-choices{grid-template-columns:minmax(0,1fr);column-gap:14px;row-gap:0;line-height:1.5;margin:4px 0;padding-left:24px}
 .wb-item--short-choices .print-choices{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 .wb-item .print-choices li::marker{font-weight:700}
-.wb-item .print-part-option{white-space:normal}
+.wb-item .print-parts--grid{list-style:decimal;margin:6px 0 2px;padding-left:24px;line-height:1.4}
+.wb-item .print-parts--grid>li{margin:0 0 7px}
+.wb-item .print-parts--grid>li::marker{font-weight:700}
+.print-part-label{display:block;margin:0 0 3px}
+.print-part-options{display:grid;column-gap:14px;row-gap:5px}
+.print-part-options--4{grid-template-columns:repeat(4,max-content)}
+.print-part-options--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.print-part-options--1{grid-template-columns:minmax(0,1fr)}
+.wb-item .print-parts--grid .print-part-option{display:flex;align-items:baseline;gap:6px;margin:0;white-space:normal}
+.wb-row .print-part-options--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+.print-check{flex:none;display:inline-block;width:0.15in;height:0.15in;border:1.4px solid var(--ink);border-radius:3px;position:relative;top:0.02in;box-sizing:border-box}
+.wb--early .print-check{width:0.2in;height:0.2in}
+.print-part-text{min-width:0}
+.wb-item .print-match td .print-check{top:0}
 .wb--early .wb-item .print-choices{line-height:1.6}
 .wb--early .wb-row .wb-item .figure{max-height:1.25in}
 .wb--early .wb-row .wb-item svg:not(.katex svg){max-height:1.6in!important}
