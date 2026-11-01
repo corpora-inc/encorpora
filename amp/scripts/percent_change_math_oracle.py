@@ -378,45 +378,62 @@ def check_explanation(public, steps):
     for step in steps:
         numeric_equalities(step)
     token = r'([0-9]+(?:\.[0-9]+)?(?:/[1-9][0-9]*)?)'
-    def calculation(index, expected, operation):
+    def calculations(index, *expected):
+        """Each worked operation in the step, in order, with its givens/base/factor."""
         matches = re.findall(token + r'\s*([+−×÷])\s*' + token + r'\s*=\s*' + token, steps[index])
-        require(len(matches) == 1, 'Missing or ambiguous worked operation')
-        a, op, c, result = matches[0]
-        require(op == operation and (Q(a), Q(c), Q(result)) == expected, 'Worked operation uses wrong givens/base/factor')
+        require(len(matches) == len(expected), 'Missing or ambiguous worked operation')
+        for (a, op, c, result), (operands, operation) in zip(matches, expected):
+            require(op == operation and (Q(a), Q(c), Q(result)) == operands, 'Worked operation uses wrong givens/base/factor')
+    def calculation(index, operands, operation):
+        calculations(index, (operands, operation))
     sign = '−' if v['direction'] == 'decrease' else '+'
+    noun = {'share': 'share', 'dollars': 'price', 'units': 'quantity'}[v['context']]
+    unit = lambda x: ('%' if v['context'] == 'share' else
+                      ' ' + {'dollars': 'dollar', 'units': 'unit'}[v['context']] + ('' if x == 1 else 's'))
+    check = lambda index: (calculations(index) if p == 0 else
+                           calculations(index, ((b, r, delta), '×'), ((b, delta, f), sign)))
     if v['template'].endswith('rate'):
         require(len(steps) == 7, 'Missing percent-rate reasoning/check')
-        base = re.fullmatch(r'The original (quantity|share), '+token+r'(%)?, is the base for this change\.', steps[0])
-        require(base and Q(base[2]) == b and (base[1] == 'share') == (v['context'] == 'share') and bool(base[3]) == (v['context'] == 'share'), 'Wrong original base/unit statement')
-        calculation(1, (max(b,f), min(b,f), delta), '−')
-        calculation(2, (delta,b,r), '÷')
-        calculation(3, (r,Q(100),p), '×')
-        conclusion = ('The quantity is unchanged, so the percent change is 0%.' if p == 0 else None)
-        if conclusion:
-            require(steps[4] == conclusion, 'Incorrect zero-change conclusion')
+        require('base' in steps[0], 'Missing base definition')
+        base = re.match(r'The starting (quantity|share|price), '+token+r'(%)?, is the base\b', steps[1])
+        require(base and base[1] == noun and Q(base[2]) == b and bool(base[3]) == (v['context'] == 'share'), 'Wrong original base/unit statement')
+        calculation(2, (max(b,f), min(b,f), delta), '−')
+        calculation(3, (delta,b,r), '÷')
+        calculation(4, (r,Q(100),p), '×')
+        check(5)
+        if p == 0:
+            require(steps[6] == 'Nothing changed, so the percent change is 0%.', 'Incorrect zero-change conclusion')
         else:
-            found = re.fullmatch(r'The relative (increase|decrease) is ('+PERCENT+r')\.', steps[4])
-            require(found and found[1] == v['direction'] and percent(found[2]) == p, 'Wrong percentage conclusion')
-        calculation(5, (b,r,delta), '×')
-        calculation(6, (b,delta,f), sign)
-        require(('percentage point' in steps[1]) == (v['context'] == 'share'), 'Amount/percentage-point unit confusion')
+            found = re.fullmatch(r'The (quantity|share|price) (increases|decreases) by ('+PERCENT+r') of its starting value\.', steps[6])
+            require(found and found[1] == noun and found[2] == v['direction'] + 's' and percent(found[3]) == p, 'Wrong percentage conclusion')
+        require(('percentage point' in steps[2]) == (v['context'] == 'share'), 'Amount/percentage-point unit confusion')
+        return
+    calculation(0, (p,Q(100),r), '÷')
+    if p:
+        calculation(1, (Q(1),r,m), sign)
     else:
-        require(len(steps) == 5, 'Missing percent quantity reasoning/check')
-        calculation(0, (p,Q(100),r), '÷')
+        require(steps[1] == 'A 0% change adds or removes nothing, so the final amount equals the original.', 'Wrong zero-change multiplier')
+    if v['template'].endswith('final'):
+        require(len(steps) == 6, 'Missing percent quantity reasoning/check')
+        calculation(2, (b,r,delta), '×')
+        calculation(3, (b,delta,f), sign)
         if p:
-            calculation(1, (Q(1),r,m), sign)
-        else:
-            require(steps[1] == 'A 0% change leaves the original quantity unchanged; its multiplier is 1.', 'Wrong zero-change multiplier')
-        if v['template'].endswith('final'):
-            calculation(2, (b,r,delta), '×')
-            calculation(3, (b,delta,f), sign)
             calculation(4, (b,m,f), '×')
         else:
-            divisor = re.match(r'Divide the final quantity by '+token+r'\. Multiply by its reciprocal: ', steps[2])
-            require(divisor and Q(divisor[1]) == m, 'Wrong inverse divisor')
+            calculations(4)
+        found = re.fullmatch(r'The final (quantity|price) is '+token+r'( dollars?| units?)\.', steps[5])
+        require(found and found[1] == noun and Q(found[2]) == f and found[3] == unit(f), 'Wrong final quantity conclusion')
+    else:
+        require(len(steps) == 5, 'Missing percent quantity reasoning/check')
+        if p:
+            require('not of the final' in steps[1], 'Missing different-base warning')
             calculation(2, (f,1/m,b), '×')
-            calculation(3, (b,r,delta), '×')
-            calculation(4, (b,delta,f), sign)
+            check(3)
+        else:
+            calculations(2)
+            calculations(3)
+        found = re.fullmatch(r'The original (quantity|price) was '+token+r'( dollars?| units?)\.', steps[4])
+        require(found and found[1] == noun and Q(found[2]) == b and found[3] == unit(b), 'Wrong original quantity conclusion')
 
 
 def check_diagram(html, reverse):
@@ -537,10 +554,10 @@ def content_mutations(records):
     problem = next(r['problem'] for r in records if r['kind']=='percent-runtime')
     steps = problem['explanation']
     rejected(lambda: check_explanation(problem['public'], steps[:-1]))
-    bad = steps.copy();bad[2] = 'Change as a fraction of the original: 1 ÷ 1 = 1.'
+    bad = steps.copy();bad[2] = 'Find the change by subtracting: 1 − 1 = 0.' if problem['public']['templateId'].endswith('rate') else 'The final amount is the original plus 1 of it: 1 + 1 = 2 of the original.'
     rejected(lambda: check_explanation(problem['public'], bad))
-    original = next(r['problem'] for r in records if r['kind']=='percent-runtime' and r['templateId'].endswith('original'))
-    bad = original['explanation'].copy();bad[2] = re.sub(r'by [0-9./]+\.', 'by 99.', bad[2], count=1)
+    original = next(r['problem'] for r in records if r['kind']=='percent-runtime' and r['templateId'].endswith('original') and parsed(r['problem']['public'])['direction']!='unchanged')
+    bad = original['explanation'].copy();bad[2] = re.sub(r'× [0-9./]+ =', '× 99 =', bad[2], count=1)
     rejected(lambda: check_explanation(original['public'], bad))
     worksheet = next(r for r in records if r['kind']=='percent-worksheet')
     publics = [p['public'] for p in worksheet['problems']]

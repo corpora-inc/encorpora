@@ -468,7 +468,7 @@ const legacyPrinciples: Record<string, string> = {
   "quadratic-vertex":
     "Vertex form: $f(x) = a(x - h)^2 + k$. The square $(x - h)^2$ is never negative, and it is 0 at $x = h$. So when $a > 0$ ($a$ is positive), the minimum value of $f$ is $k$, reached at $x = h$. The point $(h, k)$ is called the vertex. When $a > 0$, it is the lowest point of the graph.",
   "logarithm-integer":
-    "Definition of a logarithm: $\\log_b N = p$ exactly when $b^p = N$, where $b > 0$, $b \\neq 1$ and $N > 0$.",
+    "Definition of a logarithm: $\\log_b N = p$ exactly when $b^p = N$, where $b > 0$, $b \\neq 1$ ($\\neq$ means is not equal to) and $N > 0$.",
 };
 /** Frozen legacy entries, then families from src/families/. */
 export const principles: Record<string, string> = withFamilyEntries(

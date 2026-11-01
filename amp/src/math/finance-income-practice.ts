@@ -181,9 +181,11 @@ export function profitCase(seed: string) {
       answer: "",
       hint: `Revenue is ${n} × ${wd(price)}. Total cost is the fixed costs (${f1} + ${f2}) plus ${n} × ${wd(unitCost)} for making them. Compare the two.`,
       explanation: [
-        `Revenue: ${n} × ${price} = ${wd(revenue)}.`,
-        `Total cost: fixed ${f1} + ${f2} = ${fixedTotal}, and variable ${n} × ${unitCost} = ${n * unitCost}, so ${wd(costOf(n))}.`,
-        `Profit = revenue − total cost = ${revenue} − ${costOf(n)} = ${profit}. The result: ${ok.toLowerCase()}.`,
+        `Revenue is the money taken in from sales: ${n} × ${price} = ${wd(revenue)}.`,
+        `Fixed costs are paid once: ${f1} + ${f2} = ${wd(fixedTotal)}.`,
+        `Variable costs are paid for each one made: ${n} × ${unitCost} = ${wd(n * unitCost)}. Total cost: ${fixedTotal} + ${n * unitCost} = ${wd(costOf(n))}.`,
+        `Profit is revenue minus total cost: ${revenue} − ${costOf(n)} = ${profit}. ${profit > 0 ? "A positive result is a profit." : profit < 0 ? "A negative result is a loss." : "Zero means the sales exactly pay the costs."}`,
+        `The result is ${/^(loss|profit)/i.test(ok) ? "a " : ""}${ok[0]!.toLowerCase()}${ok.slice(1)}.`,
       ],
       choices: options(ok, [
         wrong(
@@ -225,9 +227,11 @@ export function profitCase(seed: string) {
       answer: "",
       hint: `The fixed costs are paid once. The variable cost is ${wd(unitCost)} for each of the ${n} made, so multiply, then add the fixed costs.`,
       explanation: [
+        `Total cost has two parts: fixed costs, paid once, and variable costs, paid for each one made.`,
         `Fixed costs: ${f1} + ${f2} = ${wd(fixedTotal)}.`,
-        `Variable cost: ${n} × ${unitCost} = ${wd(n * unitCost)}.`,
-        `Total cost = ${fixedTotal} + ${n * unitCost} = ${ok}.`,
+        `Variable cost: ${wd(unitCost)} for each of ${n}, so ${n} × ${unitCost} = ${wd(n * unitCost)}.`,
+        `Add the two parts: ${fixedTotal} + ${n * unitCost} = ${n * unitCost + fixedTotal}.`,
+        `The total cost of making ${count(n)} is ${ok}.`,
       ],
       choices: options(ok, [
         wrong(wd(n * unitCost), "This leaves out the fixed costs."),
@@ -257,9 +261,11 @@ export function profitCase(seed: string) {
       answer: "",
       hint: `Each sale brings in ${wd(price)} but costs ${wd(unitCost)} to make. Find how much of each sale is left to pay the ${wd(fixedTotal)} of fixed costs.`,
       explanation: [
-        `Each one sold leaves ${price} − ${unitCost} = ${wd(margin)} after its own making cost.`,
-        `The fixed costs total ${f1} + ${f2} = ${wd(fixedTotal)}.`,
-        `Break-even number = ${fixedTotal} ÷ ${margin} = ${star}. Check: revenue ${star} × ${price} = ${star * price}; cost ${fixedTotal} + ${star} × ${unitCost} = ${costOf(star)}.`,
+        `Each sale must first pay for making that item. Each one sold leaves ${price} − ${unitCost} = ${wd(margin)} after its own making cost.`,
+        `Those leftover dollars pay the fixed costs, which total ${f1} + ${f2} = ${wd(fixedTotal)}.`,
+        `Count how many groups of ${margin} cover ${fixedTotal}: ${fixedTotal} ÷ ${margin} = ${star}.`,
+        `Check: revenue ${star} × ${price} = ${star * price}; cost ${fixedTotal} + ${star} × ${unitCost} = ${costOf(star)}. They are equal.`,
+        `${ok[0]!.toUpperCase()}${ok.slice(1)} must be sold to break even.`,
       ],
       choices: options(ok, [
         wrong(
@@ -295,7 +301,8 @@ export function profitCase(seed: string) {
       answer: "",
       hint: `Imagine making twice as many ${biz.items}. Would the ${wd(amounts[0]!)} for ${biz.fixedTitles[0]!.toLowerCase()} change? A cost that stays at the same amount is fixed; a cost that doubles is variable. Test each listed cost this way.`,
       explanation: [
-        `If twice as many are made, the ${biz.fixed.join(", ")} costs stay the same, so they are fixed costs.`,
+        `A fixed cost stays the same however many are made. A variable cost grows with the number made.`,
+        `Test each cost by imagining twice as many made. The ${biz.fixed.join(", ")} costs stay the same, so they are fixed.`,
         `The cost of ${biz.make} is ${wd(unitCost)} for each one, so it doubles when twice as many are made.`,
         `The variable cost is ${ok.toLowerCase()}.`,
       ],
@@ -318,9 +325,11 @@ export function profitCase(seed: string) {
       answer: "",
       hint: `First find how much of each sale is left after its making cost: ${wd(price)} − ${wd(unitCost)}. Use it to find the break-even number, then account for the ${sold} already sold.`,
       explanation: [
-        `Each sale leaves ${price} − ${unitCost} = ${wd(margin)}. Fixed costs: ${fixedTotal}.`,
-        `Break-even number = ${fixedTotal} ÷ ${margin} = ${star}.`,
-        `${star} − ${sold} = ${star - sold} more must be sold.`,
+        `The break-even number is how many must be sold so that money in equals total cost.`,
+        `Each sale leaves ${price} − ${unitCost} = ${wd(margin)} after its making cost. That money pays the fixed costs of ${wd(fixedTotal)}.`,
+        `Break-even number: ${fixedTotal} ÷ ${margin} = ${star}.`,
+        `Subtract the ${count(sold)} already sold: ${star} − ${sold} = ${star - sold}.`,
+        `${ok[0]!.toUpperCase()}${ok.slice(1)} more must be sold.`,
       ],
       choices: options(ok, [
         wrong(
@@ -522,7 +531,15 @@ export function bracketCase(seed: string) {
         );
     });
     const total = bracketTaxCents(income, b);
-    lines.push(`Add the rows: tax owed = ${cd(total)}.`);
+    const parts = s
+      .map((amount, i) => (amount > 0 ? cd(rates[i]! * amount) : ""))
+      .filter(Boolean);
+    lines.push(
+      parts.length === 1
+        ? `Only one row has income, so the total tax is ${cd(total)}.`
+        : `Add the tax from every row: ${parts.join(" + ")} = ${cd(total)}.`,
+      `The tax owed is ${cd(total)}.`,
+    );
     return { lines, total };
   };
   const topOf = (income: number) => (income <= t1 ? 0 : income <= t2 ? 1 : 2);
@@ -569,10 +586,12 @@ export function bracketCase(seed: string) {
       answer: "",
       hint: `The first ${commas(t1)} dollars is taxed at ${r1}%. Find how much of ${commas(income)} lies in each later row, and tax each part at its own rate.`,
       explanation: [
+        `Each rate applies only to the dollars inside its own row, so split the income into row parts.`,
         `Split ${commas(income)} dollars by row: ${s
           .filter((x) => x > 0)
           .map((x) => commas(x))
           .join(", ")}.`,
+        `A percent means hundredths, so ${rates[0]}% of an amount is ${rates[0]} hundredths of it. Tax each part at its row's rate.`,
         ...lines,
       ],
       choices: options(ok, taxWrongs(income)),
@@ -586,8 +605,10 @@ export function bracketCase(seed: string) {
       answer: "",
       hint: `The middle row starts after ${commas(t1)} dollars and ends at ${commas(t2)} dollars. Because the income is above ${commas(t2)} dollars, the whole row is filled.`,
       explanation: [
-        `The income ${commas(income)} is above ${commas(t2)}, so the whole middle row is used.`,
-        `Its size is ${commas(t2)} − ${commas(t1)} = ${ok}.`,
+        `The middle row holds the income from ${commas(t1)} up to ${commas(t2)} dollars.`,
+        `The income ${commas(income)} is above ${commas(t2)}, so it fills the whole middle row.`,
+        `The size of the row is its top minus its bottom: ${commas(t2)} − ${commas(t1)} = ${commas(t2 - t1)}.`,
+        `So ${ok} of the income is taxed at the middle rate.`,
       ],
       choices: options(ok, [
         wrong(
@@ -618,7 +639,9 @@ export function bracketCase(seed: string) {
       answer: "",
       hint: `The table applies to taxable income, which is earned income minus the deduction: ${commas(gross)} − ${commas(deduction)}. Find that first, then tax each part at its row's rate.`,
       explanation: [
-        `Taxable income = ${commas(gross)} − ${commas(deduction)} = ${wd(taxable)}.`,
+        `A deduction is subtracted from earned income before any tax is figured. What is left is the taxable income.`,
+        `Taxable income: ${commas(gross)} − ${commas(deduction)} = ${commas(taxable)} dollars.`,
+        `Each rate applies only to the dollars inside its own row, so tax each row's part of ${commas(taxable)} separately.`,
         ...lines,
       ],
       choices: options(ok, [
@@ -647,7 +670,8 @@ export function bracketCase(seed: string) {
       answer: "",
       hint: `${commas(income)} dollars is exactly the top of its row, so no income lies in the next row. Tax each part that lies in a row at that row's rate.`,
       explanation: [
-        `No income lies above ${commas(income)}, so the next row is not used.`,
+        `Each rate applies only to the dollars inside its own row.`,
+        `${commas(income)} is exactly the top of its row. No income lies above it, so the next row is not used.`,
         ...lines,
       ],
       choices: options(ok, taxWrongs(income)),
@@ -669,9 +693,11 @@ export function bracketCase(seed: string) {
       answer: "",
       hint: `Only the ${commas(raise)} dollars of new income is taxed more. Find which row it lies in and use that row's rate.`,
       explanation: [
+        `The tax on the old income does not change, so only the new ${commas(raise)} dollars add tax.`,
         `Both ${commas(income)} and ${commas(income + raise)} are in the same row, whose rate is ${rate}%.`,
         `The raise is taxed at that rate: ${commas(raise)} × ${rate}% = ${ok}.`,
         `Check with totals: ${cd(after)} − ${cd(before)} = ${ok}.`,
+        `The raise adds ${ok} in tax.`,
       ],
       choices: options(ok, [
         wrong(
@@ -720,8 +746,10 @@ export function payrollPropertyCase(seed: string) {
       answer: "",
       hint: `${rate}% means ${rate} per 100. Find ${rate}% of ${commas(gross)} dollars; the answer is the tax, not the pay that remains.`,
       explanation: [
-        `${rate}% = ${rate} ÷ 100 = ${rate / 100}.`,
-        `Tax = ${gross} × ${rate / 100} = ${ok}.`,
+        `Gross pay is pay before anything is taken out. A payroll tax is a part of it that is withheld, or kept back.`,
+        `Percent means "out of 100," so ${rate}% = ${rate} ÷ 100 = ${rate / 100}.`,
+        `To find ${rate}% of the pay, multiply: ${gross} × ${rate / 100} = ${ok}.`,
+        `The payroll tax withheld is ${ok}.`,
       ],
       choices: options(ok, [
         wrong(
@@ -757,9 +785,11 @@ export function payrollPropertyCase(seed: string) {
       answer: "",
       hint: `Find each tax as a percent of ${commas(gross)} dollars, or add the two percents first. Net pay is gross pay minus everything withheld.`,
       explanation: [
-        `Payroll tax: ${gross} × ${a / 100} = ${cd(gross * a)}. Income tax: ${gross} × ${b / 100} = ${cd(gross * b)}.`,
+        `Gross pay is pay before taxes. Net pay is what the worker keeps after the taxes are withheld.`,
+        `Both taxes are percents of gross pay. Payroll tax: ${gross} × ${a / 100} = ${cd(gross * a)}.`,
+        `Income tax: ${gross} × ${b / 100} = ${cd(gross * b)}.`,
         `Total withheld: ${cd(gross * a)} + ${cd(gross * b)} = ${cd(gross * (a + b))}.`,
-        `Net pay = ${gross} − ${cents(gross * (a + b))} = ${ok}.`,
+        `Subtract it from gross pay: ${gross} − ${cents(gross * (a + b))} = ${cents(net)}. The net pay is ${ok}.`,
       ],
       choices: options(ok, [
         wrong(
@@ -795,8 +825,10 @@ export function payrollPropertyCase(seed: string) {
       answer: "",
       hint: `Find the tax on the ${wd(taxable)} jacket only, because groceries are not taxed. Then add the tax and both prices.`,
       explanation: [
-        `Tax on the jacket: ${taxable} × ${rate / 100} = ${cd(taxable * rate)}. Groceries: no tax.`,
-        `Total = ${taxable} + ${exempt} + ${cents(taxable * rate)} = ${ok}.`,
+        `A sales tax is a percent of the price, added when you buy. Here only clothing is taxed.`,
+        `Groceries have no tax. The jacket's tax is ${rate}% of ${taxable}: ${taxable} × ${rate / 100} = ${cd(taxable * rate)}.`,
+        `Add both prices and the tax: ${taxable} + ${exempt} + ${cents(taxable * rate)} = ${cents(total)}.`,
+        `The total with tax is ${ok}.`,
       ],
       choices: options(ok, [
         wrong(
@@ -832,13 +864,15 @@ export function payrollPropertyCase(seed: string) {
     const explain =
       exemption > 0
         ? [
-            `Taxable value = ${commas(value)} − ${commas(exemption)} = ${wd(taxable)}.`,
-            `Number of hundreds = ${commas(taxable)} ÷ 100 = ${commas(taxable / 100)}.`,
-            `Tax = ${commas(taxable / 100)} × ${cents(rateCents)} = ${ok}.`,
+            `An exemption is an amount the tax does not count. Subtract it first: ${commas(value)} − ${commas(exemption)} = ${commas(taxable)} dollars of taxable value.`,
+            `The tax is charged for each 100 dollars, so count the hundreds: ${commas(taxable)} ÷ 100 = ${commas(taxable / 100)}.`,
+            `Each hundred costs ${cents(rateCents)} dollars: ${commas(taxable / 100)} × ${cents(rateCents)} = ${cents(tax)}.`,
+            `The yearly property tax is ${ok}.`,
           ]
         : [
-            `Number of hundreds = ${commas(value)} ÷ 100 = ${commas(value / 100)}.`,
-            `Tax = ${commas(value / 100)} × ${cents(rateCents)} = ${ok}.`,
+            `The tax is charged for each 100 dollars of value, so count the hundreds: ${commas(value)} ÷ 100 = ${commas(value / 100)}.`,
+            `Each hundred costs ${cents(rateCents)} dollars: ${commas(value / 100)} × ${cents(rateCents)} = ${cents(tax)}.`,
+            `The yearly property tax is ${ok}.`,
           ];
     draft = {
       prompt:
@@ -960,9 +994,10 @@ export function budgetShareCase(seed: string) {
       answer: "",
       hint: `Compare ${commas(target.amount)} dollars with the whole budget, ${commas(total)} dollars: divide the part by the whole, then write the quotient as a percent.`,
       explanation: [
-        `The whole budget is ${commas(total)} dollars.`,
-        `${commas(target.amount)} ÷ ${commas(total)} = ${target.share / 100}.`,
-        `${target.share / 100} = ${ok}.`,
+        `A percent compares a part with the whole, counted out of 100. Here the whole is the budget, ${commas(total)} dollars.`,
+        `Divide the part by the whole: ${commas(target.amount)} ÷ ${commas(total)} = ${target.share / 100}.`,
+        `To write it as a percent, multiply by 100: ${target.share / 100} × 100 = ${target.share}.`,
+        `So ${ok} of the budget goes to this category.`,
       ],
       choices: options(ok, [
         wrong(pc(other.share), "This is the percent for a different category."),
@@ -1005,8 +1040,9 @@ export function budgetShareCase(seed: string) {
       answer: "",
       hint: `${target.name} is ${pc(target.share)} of ${commas(total)} dollars. Write ${pc(target.share)} as a decimal or as ${target.share} per 100, then take that part of the income.`,
       explanation: [
-        `${pc(target.share)} = ${target.share} ÷ 100 = ${target.share / 100}.`,
-        `${commas(total)} × ${target.share / 100} = ${ok}.`,
+        `Percent means "out of 100," so ${pc(target.share)} = ${target.share} ÷ 100 = ${target.share / 100}.`,
+        `To take a percent of an amount, multiply: ${commas(total)} × ${target.share / 100} = ${commas(target.amount)}.`,
+        `The amount is ${ok}.`,
       ],
       choices: options(ok, [
         wrong(
@@ -1051,9 +1087,11 @@ export function budgetShareCase(seed: string) {
       answer: "",
       hint: `Add only the rows marked Fixed: ${rows[0]!.name} and ${rows[1]!.name}. Then divide that total by ${commas(total)} dollars and write the result as a percent.`,
       explanation: [
+        `Fixed expenses stay the same each month, so add only the rows marked Fixed.`,
         `Fixed rows: ${commas(rows[0]!.amount)} + ${commas(rows[1]!.amount)} = ${commas(amount)} dollars.`,
-        `${commas(amount)} ÷ ${commas(total)} = ${fixedShare / 100}.`,
-        `${fixedShare / 100} = ${ok}.`,
+        `A percent compares a part with the whole. Divide by the whole income: ${commas(amount)} ÷ ${commas(total)} = ${fixedShare / 100}.`,
+        `Multiply by 100 to get a percent: ${fixedShare / 100} × 100 = ${fixedShare}.`,
+        `So ${ok} of the income goes to fixed expenses.`,
       ],
       choices: options(ok, [
         wrong(
@@ -1116,8 +1154,10 @@ export function budgetShareCase(seed: string) {
       answer: "",
       hint: `The categories together must make 100% of the income. Add the four given percents, then find what is left of 100%.`,
       explanation: [
-        `Given percents: ${given.map((x) => x.share).join(" + ")} = ${known}%.`,
-        `Savings = 100% − ${known}% = ${ok}.`,
+        `All of the income is planned, so the parts add up to the whole, 100%.`,
+        `Add the given percents: ${given.map((x) => x.share).join(" + ")} = ${known}.`,
+        `Savings is what is left of 100%: 100 − ${known} = ${100 - known}.`,
+        `Savings is ${ok} of the income.`,
       ],
       choices: options(ok, [
         wrong(
@@ -1157,8 +1197,10 @@ export function budgetShareCase(seed: string) {
       answer: "",
       hint: `Divide the expenses, ${commas(expenses)} dollars, by the income, ${commas(income)} dollars, and write the quotient as a percent. The spending is more than the income, so expect more than 100%.`,
       explanation: [
-        `${commas(expenses)} ÷ ${commas(income)} = ${(100 + over) / 100}.`,
-        `${(100 + over) / 100} = ${ok}, so spending is ${over}% more than income: a deficit of ${wd(expenses - income)}.`,
+        `A percent compares a part with a whole. Here compare the expenses with the income, so divide by the income.`,
+        `${commas(expenses)} ÷ ${commas(income)} = ${(100 + over) / 100}. Multiply by 100 to get a percent: ${100 + over}.`,
+        `Over 100% means spending is more than income. A deficit is the amount spent beyond income: ${commas(expenses)} − ${commas(income)} = ${commas(expenses - income)}.`,
+        `The expenses are ${ok} of the income, a deficit of ${wd(expenses - income)}.`,
       ],
       choices: options(ok, [
         wrong(
@@ -1258,9 +1300,11 @@ export function netWorthCase(seed: string) {
         answer: "",
         hint: `Sort the five items into assets (owned) and liabilities (owed). Add each group separately, then subtract the liabilities from the assets.`,
         explanation: [
+          `Assets are things owned that have value. Liabilities are money owed. Net worth is what is left if every debt were paid.`,
           `Assets: ${assets.map(([, v]) => v).join(" + ")} = ${wd(A)}.`,
           `Liabilities: ${debts.map(([, v]) => v).join(" + ")} = ${wd(L)}.`,
-          `Net worth = assets − liabilities = ${A} − ${L} = ${ok}.`,
+          `Net worth is assets minus liabilities: ${A} − ${L} = ${A - L}.`,
+          `The net worth is ${ok}.`,
         ],
         choices: options(ok, [
           wrong(
@@ -1297,10 +1341,11 @@ export function netWorthCase(seed: string) {
         ? "For each item ask: does the person own it, or does the person owe it? A liability is on the owing side."
         : "For each item ask: does the person own it, or does the person owe it? An asset is on the owning side.",
       explanation: [
+        `An asset is something owned that has value. A liability is money owed to someone else.`,
         askLiability
           ? `${bad.join(", ")} are things the person owns, so they are assets.`
           : `${bad.join(", ")} are amounts the person owes, so they are liabilities.`,
-        `${good} is ${askLiability ? "money owed, a liability" : "owned and has value, an asset"}.`,
+        `${good} is ${askLiability ? "money owed, so it is the liability" : "owned and has value, so it is the asset"}.`,
       ],
       choices: options(
         good,
@@ -1324,7 +1369,8 @@ export function netWorthCase(seed: string) {
       answer: "",
       hint: `Net worth, ${wd(net)}, is assets, ${wd(A)}, minus liabilities. Rearrange this for the liabilities: they are the assets minus the net worth.`,
       explanation: [
-        `Net worth = assets − liabilities, so liabilities = assets − net worth.`,
+        `Net worth is assets minus liabilities, the money owed.`,
+        `So liabilities are the gap between assets and net worth: liabilities = assets − net worth.`,
         `${A} − (${net}) = ${L}. The liabilities are ${ok}.`,
       ],
       choices: options(ok, [
@@ -1449,6 +1495,7 @@ export function incentiveCase(seed: string) {
       answer: "",
       hint: `Find how many dollars each offer saves: the coupon saves ${a}, the rebate returns ${b}, and the percent discount is ${p}% of ${P}. The offer that saves the most gives the lowest final cost.`,
       explanation: [
+        `Find the final cost of each offer, then pick the lowest, because the lowest cost saves the most.`,
         `Coupon: saves ${wd(a)}, so the cost is ${P} − ${a} = ${wd(P - a)}.`,
         `Percent discount: ${p}% of ${P} = ${P} × ${p / 100} = ${wd(sp)}, so the cost is ${P} − ${sp} = ${wd(P - sp)}.`,
         `Rebate: ${wd(b)} comes back, so the cost is ${P} − ${b} = ${wd(P - b)}.`,
@@ -1489,12 +1536,16 @@ export function incentiveCase(seed: string) {
         : `Do the steps in the stated order. First subtract the coupon from ${P}. Then take ${p}% of that reduced price and subtract it.`,
       explanation: percentFirst
         ? [
-            `${p}% of ${P} = ${cd(P * p)}, so the price becomes ${cd(afterPercent)}.`,
-            `Subtract the coupon: ${cents(afterPercent)} − ${a} = ${ok}.`,
+            `Order matters: the percent is taken of the price at that moment. Here the percent comes first, so it is taken of ${P}.`,
+            `${p}% of ${P} is ${P} × ${p / 100} = ${cd(P * p)}. The price becomes ${P} − ${cents(P * p)} = ${cd(afterPercent)}.`,
+            `Subtract the coupon: ${cents(afterPercent)} − ${a} = ${cents(afterPercent - a * 100)}.`,
+            `The final cost is ${ok}.`,
           ]
         : [
+            `Order matters: the percent is taken of the price at that moment. Here the coupon comes first.`,
             `After the coupon the price is ${P} − ${a} = ${wd(P - a)}.`,
-            `${p}% of ${P - a} = ${cd((P - a) * p)}, so the final cost is ${cents((P - a) * 100)} − ${cents((P - a) * p)} = ${ok}.`,
+            `${p}% of ${P - a} is ${P - a} × ${p / 100} = ${cd((P - a) * p)}. Subtract it: ${cents((P - a) * 100)} − ${cents((P - a) * p)} = ${cents((P - a) * (100 - p))}.`,
+            `The final cost is ${ok}.`,
           ],
       choices: options(ok, [
         wrong(
@@ -1553,9 +1604,11 @@ export function incentiveCase(seed: string) {
       answer: "",
       hint: `Find each store's final price: for Store A subtract ${p}% of ${PA} from ${PA}; for Store B subtract ${a} from ${PB}. Then compare the two final prices.`,
       explanation: [
-        `Store A: ${PA} − ${p}% of ${PA} = ${PA} − ${cents(PA * p)} = ${cd(finalA)}.`,
-        `Store B: ${PB} − ${a} = ${cd(finalB)}.`,
-        `${aWins ? "Store A" : "Store B"} charges less, by ${cents(Math.max(finalA, finalB))} − ${cents(Math.min(finalA, finalB))} = ${cd(gap)}.`,
+        `The list prices differ, so compare the final prices, not the amounts taken off.`,
+        `Store A: ${p}% of ${PA} is ${PA} × ${p / 100} = ${cents(PA * p)}. The final price is ${PA} − ${cents(PA * p)} = ${cd(finalA)}.`,
+        `Store B: the coupon takes ${a} off, so ${PB} − ${a} = ${cd(finalB)}.`,
+        `Find the difference: ${cents(Math.max(finalA, finalB))} − ${cents(Math.min(finalA, finalB))} = ${cents(gap)}.`,
+        `${aWins ? "Store A" : "Store B"} charges less, by ${cd(gap)}.`,
       ],
       choices: options(
         ok,
