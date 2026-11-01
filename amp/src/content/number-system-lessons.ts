@@ -371,10 +371,7 @@ export const numberSystemLessons: Lesson[] = [
 export const numberSystemMethods: Record<string, ProblemMethod> = {
   "greatest-common-factor": {
     goal: "Find the largest whole number that divides both given numbers.",
-    terms: [
-      ["factor", "A whole number that divides another with no remainder."],
-      ["GCF", "The greatest factor two numbers have in common."],
-    ],
+    terms: ["factor-number", "greatest-common-factor"],
     method: [
       "List the factors of each number, or write each as a product of primes.",
       "Find the common factors, or the primes both numbers share.",
@@ -385,10 +382,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
   },
   "least-common-multiple": {
     goal: "Find the smallest positive number that both given numbers divide.",
-    terms: [
-      ["multiple", "A number times a whole number: 8, 16, 24, …"],
-      ["LCM", "The least positive multiple two numbers have in common."],
-    ],
+    terms: ["multiple", "least-common-multiple"],
     method: [
       "List multiples of the larger number.",
       "Stop at the first one that the smaller number divides.",
@@ -400,10 +394,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
     goal: "Rewrite a sum of two whole numbers as their greatest common factor times a sum.",
     intuition:
       "A factor divides a whole number evenly. If both numbers in a sum share a factor, move it outside parentheses: 12 + 18 = 6(2 + 3), meaning six times the sum 2 + 3. This uses the distributive property, and 6 is the greatest factor 12 and 18 share.",
-    terms: [
-      ["distributive property", "a × b + a × c = a(b + c)."],
-      ["factor out", "Write a sum as a common factor times the remaining sum."],
-    ],
+    terms: ["distributive-property", "factor-out"],
     method: [
       "Find the greatest common factor of the two numbers.",
       "Divide each number by it.",
@@ -414,10 +405,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
   },
   "long-division-quotient": {
     goal: "Divide a multidigit whole number by a two-digit divisor.",
-    terms: [
-      ["dividend", "The number being divided."],
-      ["quotient", "The result of the division."],
-    ],
+    terms: ["dividend", "quotient"],
     method: [
       "Take the first part of the dividend that is at least the divisor.",
       "Write the largest digit whose product with the divisor fits, then subtract.",
@@ -429,9 +417,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
   },
   "division-remainder-story": {
     goal: "Divide in a story and use the remainder the way the story needs.",
-    terms: [
-      ["remainder", "What is left after the largest number of full groups."],
-    ],
+    terms: ["remainder"],
     method: [
       "Divide to find the quotient and remainder.",
       "If every item needs a place, add 1 group for the remainder.",
@@ -443,8 +429,11 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
   "signed-quantity": {
     goal: "Write a signed number for a quantity with a direction from 0.",
     terms: [
-      ["negative number", "A number less than 0, written with a minus sign."],
-      ["opposite quantities", "Equal sizes in opposite directions."],
+      "negative-number",
+      [
+        "opposite-number",
+        "Opposite quantities have equal sizes in opposite directions, such as a gain of 5 and a loss of 5.",
+      ],
     ],
     method: [
       "Identify the positive direction and what 0 means.",
@@ -455,12 +444,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
   },
   "opposite-on-line": {
     goal: "Read an integer on a number line and find its opposite.",
-    terms: [
-      [
-        "opposite",
-        "The number the same distance from 0 on the other side of 0.",
-      ],
-    ],
+    terms: ["opposite-number"],
     method: [
       "Count unit ticks from 0 to read the number at the point.",
       "Move the same distance to the other side of 0 for its opposite.",
@@ -470,9 +454,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
   },
   "signed-story": {
     goal: "Solve a multistep story with signed decimals exactly.",
-    terms: [
-      ["change", "An amount added to a value; negative when it decreases."],
-    ],
+    terms: [["change", "A decrease is a negative change."]],
     method: [
       "Choose the positive direction and write the starting value with its sign.",
       "Write each change with its sign; multiply repeated changes.",
@@ -485,8 +467,8 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
     goal: "Find where a sequence of signed changes ends on a number line.",
     terms: [
       [
-        "signed change",
-        "A positive change moves right; a negative change moves left.",
+        "number-line",
+        "A positive change moves right on it; a negative change moves left.",
       ],
     ],
     method: [

@@ -1,3 +1,4 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -273,18 +274,11 @@ export const partWholeLessons: Lesson[] = [
   },
 ];
 
-const shareTerms: [string, string][] = [
-  ["Whole", "One complete shape or thing that is being shared."],
-  ["Equal parts", "Parts that are all exactly the same size."],
-];
+const shareTerms: MethodTerm[] = ["whole", "equal-parts"];
 export const partWholeMethods: Record<string, ProblemMethod> = {
   "find-equal-shares": {
     goal: "Pick the shape that is cut into halves or quarters.",
-    terms: [
-      ...shareTerms,
-      ["Halves", "Two equal parts of one whole."],
-      ["Quarters", "Four equal parts of one whole; also called fourths."],
-    ],
+    terms: [...shareTerms, "half", "fourth"],
     method: [
       "Rule out any shape whose parts are different sizes.",
       "Count the equal parts of each remaining shape.",
@@ -314,7 +308,7 @@ export const partWholeMethods: Record<string, ProblemMethod> = {
   },
   "find-equal-thirds": {
     goal: "Pick the shape cut into halves, thirds or quarters.",
-    terms: [...shareTerms, ["Thirds", "Three equal parts of one whole."]],
+    terms: [...shareTerms, "third"],
     method: [
       "Rule out any shape whose parts are different sizes.",
       "Count the equal parts of each remaining shape.",
@@ -345,10 +339,7 @@ export const partWholeMethods: Record<string, ProblemMethod> = {
   },
   "equal-area-fraction": {
     goal: "Name one equal-area part of a rectangle as a fraction of its area.",
-    terms: [
-      ["Area", "The flat space a shape covers, counted in unit squares."],
-      ["Unit fraction", "A fraction with numerator 1, such as 1/4."],
-    ],
+    terms: ["area", "unit-fraction"],
     method: [
       "Count the parts; they have equal area even if their shapes differ.",
       "One of $n$ equal parts is 1/n of the whole area.",
@@ -359,8 +350,11 @@ export const partWholeMethods: Record<string, ProblemMethod> = {
   "equal-area-part-size": {
     goal: "Find the area of one part of a rectangle split into equal-area parts.",
     terms: [
-      ["Area", "The flat space a shape covers, counted in unit squares."],
-      ["Equal area", "Covering the same number of unit squares."],
+      "area",
+      [
+        "equal-parts",
+        "Parts with equal area cover the same number of unit squares.",
+      ],
     ],
     method: [
       "Count the equal-area parts.",
@@ -371,10 +365,7 @@ export const partWholeMethods: Record<string, ProblemMethod> = {
   },
   "compare-like-denominators": {
     goal: "Choose the greater or lesser of two fractions of one whole with the same denominator.",
-    terms: [
-      ["Denominator", "The number of equal pieces in the whole."],
-      ["Numerator", "How many of those pieces the fraction counts."],
-    ],
+    terms: ["denominator", "numerator"],
     method: [
       "Same denominator: the pieces are the same size.",
       "Compare the numerators: more pieces is more of the whole.",
@@ -384,10 +375,7 @@ export const partWholeMethods: Record<string, ProblemMethod> = {
   },
   "compare-like-numerators": {
     goal: "Choose the greater or lesser of two fractions of one whole with the same numerator.",
-    terms: [
-      ["Denominator", "The number of equal pieces in the whole."],
-      ["Numerator", "How many of those pieces the fraction counts."],
-    ],
+    terms: ["denominator", "numerator"],
     method: [
       "Same numerator: both fractions have the same number of pieces.",
       "The smaller denominator cuts the whole into fewer, larger pieces.",
@@ -397,13 +385,7 @@ export const partWholeMethods: Record<string, ProblemMethod> = {
   },
   "compare-unlike-fractions": {
     goal: "Choose the greater or lesser of two fractions with different numerators and denominators.",
-    terms: [
-      ["Denominator", "The number of equal pieces in the whole."],
-      [
-        "Common denominator",
-        "A shared number of pieces that both denominators divide into evenly.",
-      ],
-    ],
+    terms: ["denominator", "common-denominator"],
     method: [
       "Try a benchmark: is one fraction below 1/2 and the other above?",
       "Otherwise rename both with a common denominator.",

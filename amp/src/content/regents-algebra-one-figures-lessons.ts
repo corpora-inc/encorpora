@@ -7,13 +7,7 @@ export const regentsAlgebraOneFigureMethods: Record<string, ProblemMethod> = {
     goal: "Read the vertex of a graphed parabola and write the equation of its axis of symmetry.",
     intuition:
       "A parabola is a mirror image of itself across a line through its turning point. That turning point is the vertex, the lowest point if the parabola opens up and the highest if it opens down. The mirror line is vertical, so its equation says which $x$ value it passes through.",
-    terms: [
-      ["vertex", "The point where a parabola turns."],
-      [
-        "axis of symmetry",
-        "The vertical line through the vertex that splits the parabola into mirror images.",
-      ],
-    ],
+    terms: ["vertex-parabola", "axis-of-symmetry"],
     method: [
       "Find the turning point and read its coordinates as $(x, y)$.",
       "Write the axis as $x =$ the vertex's first coordinate.",
@@ -27,11 +21,12 @@ export const regentsAlgebraOneFigureMethods: Record<string, ProblemMethod> = {
     intuition:
       "A function gives each input exactly one output. On a graph, the input is the position left or right, and the output is the height. If a vertical line touches a graph in two places, one input has two outputs, so the graph is not a function.",
     terms: [
+      "vertical-line-test",
       [
-        "vertical line test",
-        "A graph is a function exactly when no vertical line crosses it more than once.",
+        "input",
+        "Here the input is a point's $x$-value and the output is its $y$-value.",
       ],
-      ["input and output", "The $x$ value and the $y$ value of a point."],
+      "output",
     ],
     method: [
       "Picture a vertical line sliding across the graph from left to right.",
@@ -45,10 +40,7 @@ export const regentsAlgebraOneFigureMethods: Record<string, ProblemMethod> = {
     goal: "Solve an inequality with the variable on both sides and choose the number line with the right boundary and direction.",
     intuition:
       "Solving an inequality uses the same steps as an equation, with one extra rule: multiplying or dividing both sides by a negative number reverses the inequality sign. The answer is a boundary number and a direction, and the circle at the boundary is open if the number itself is not a solution.",
-    terms: [
-      ["boundary", "The number where the solutions start or stop."],
-      ["open circle", "A circle that marks a boundary that is not included."],
-    ],
+    terms: ["boundary", "open-circle"],
     method: [
       "Collect the variable terms on one side and the constants on the other.",
       "Divide by the coefficient, reversing the sign if it is negative.",

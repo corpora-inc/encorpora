@@ -7,16 +7,7 @@ export const similarSolidChainMethods: Record<string, ProblemMethod> = {
     goal: "From surface areas of similar prisms find the length scale, then the other volume, the total volume, or the other surface area.",
     intuition:
       "Two similar solids have the same shape and differ by a length scale: every length of one is the same multiple of the matching length of the other. Areas are made of two lengths, so they scale by the square of that multiple. Volumes are made of three lengths, so they scale by the cube.",
-    terms: [
-      [
-        "length scale",
-        "The number each length of one solid is multiplied by to get the matching length of the other.",
-      ],
-      [
-        "similar solids",
-        "Solids with the same shape whose matching lengths are in one ratio.",
-      ],
-    ],
+    terms: ["scale-factor", "similar-figures"],
     method: [
       "Write the ratio of the two given quantities and reduce it. A surface-area ratio is the square of the length ratio; a volume ratio is its cube.",
       "Take the square root (for areas) or cube root (for volumes) to get the length ratio.",

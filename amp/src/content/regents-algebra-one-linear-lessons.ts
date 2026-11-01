@@ -8,8 +8,11 @@ export const regentsAlgebraOneLinearMethods: Record<string, ProblemMethod> = {
     intuition:
       "A decimal such as $0.4$ is four tenths, and the same balance rules apply: whatever you do to one side you do to the other. Collect the variable terms on one side, the constants on the other, then divide.",
     terms: [
-      ["variable term", "A term containing the unknown, such as $0.4x$."],
-      ["balance", "Doing the same operation to both sides keeps them equal."],
+      [
+        "term-expression",
+        "A variable term contains the unknown, such as $0.4x$.",
+      ],
+      "property-of-equality",
     ],
     method: [
       "Subtract the smaller variable term from both sides so the $x$ terms are on one side.",
@@ -23,13 +26,7 @@ export const regentsAlgebraOneLinearMethods: Record<string, ProblemMethod> = {
     goal: "Distribute a factor over a group, combine the variable terms of both sides, and solve.",
     intuition:
       "A group such as $3(x-4)$ means three copies of $x-4$, so it equals $3x-12$. After distributing, the equation is an ordinary equation with $x$ on both sides.",
-    terms: [
-      [
-        "distribute",
-        "Multiply every term inside the parentheses by the factor outside.",
-      ],
-      ["like terms", "Terms with the same variable part, which can be added."],
-    ],
+    terms: ["distribute", "like-terms"],
     method: [
       "Distribute the factor to every term in the group.",
       "Combine like terms on each side.",
@@ -42,16 +39,7 @@ export const regentsAlgebraOneLinearMethods: Record<string, ProblemMethod> = {
     goal: "Find the slope from two points and write the point-slope equation using one of the points.",
     intuition:
       "A line is fixed by one point and its steepness. Two points give both: the slope is rise over run between them, and either point can anchor the equation.",
-    terms: [
-      [
-        "slope",
-        "The change in $y$ divided by the change in $x$ between two points.",
-      ],
-      [
-        "point-slope form",
-        "$y-y_1=m(x-x_1)$ for a line with slope $m$ through $(x_1,y_1)$.",
-      ],
-    ],
+    terms: ["slope", "point-slope-form"],
     method: [
       "Subtract the $y$ values and the $x$ values in the same order to get $m$.",
       "Choose one point $(x_1,y_1)$ and write $y-y_1=m(x-x_1)$.",
@@ -64,13 +52,7 @@ export const regentsAlgebraOneLinearMethods: Record<string, ProblemMethod> = {
     goal: "Write one equation in one variable for two kinds of item from their prices, their count and their total cost.",
     intuition:
       "When two quantities add to a known total, call one of them $n$ and the other is the total minus $n$. Each group's money is its price times its count, and the two amounts add to the total money.",
-    terms: [
-      ["unknown", "The quantity the variable stands for."],
-      [
-        "total",
-        "The sum of both groups: the number of items, or the money they bring in.",
-      ],
-    ],
+    terms: ["unknown", "sum"],
     method: [
       "Let $n$ be the count of one kind; the other kind is the total count minus $n$.",
       "Write price times count for each kind.",
@@ -84,10 +66,10 @@ export const regentsAlgebraOneLinearMethods: Record<string, ProblemMethod> = {
     intuition:
       "Solving a formula uses the same steps as solving an equation, with letters as the numbers. Remove the terms added to the variable's term first, then divide by everything that multiplies the variable.",
     terms: [
-      ["isolate", "Get one variable alone on one side."],
+      "isolate",
       [
         "coefficient",
-        "The factor that multiplies the variable, which may contain other letters.",
+        "Here it may contain other letters: in $(a + b)h$, the coefficient of $h$ is $a + b$.",
       ],
     ],
     method: [
@@ -102,10 +84,7 @@ export const regentsAlgebraOneLinearMethods: Record<string, ProblemMethod> = {
     goal: "Solve one equation of a system for $y$ and substitute into the other equation, keeping signs correct.",
     intuition:
       "If $y$ equals an expression, wherever $y$ appears you may write the expression instead. Substitution turns two equations in two variables into one equation in one variable.",
-    terms: [
-      ["substitute", "Replace a variable by an expression equal to it."],
-      ["system", "Two equations that must hold at the same time."],
-    ],
+    terms: ["substitute", "system-of-equations"],
     method: [
       "Get $y$ alone from one equation; when its coefficient is $-1$ every sign changes as you move it.",
       "Replace $y$ in the other equation with the whole expression in parentheses.",

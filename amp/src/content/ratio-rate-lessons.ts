@@ -439,10 +439,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
     goal: "Find the amount of one quantity for exactly 1 unit of the other.",
     intuition:
       "Share both quantities into equal groups until the unit named after ‘per’ is one. The other group's amount is the unit rate.",
-    terms: [
-      ["rate", "A comparison of two quantities in different units."],
-      ["unit rate", "The amount for exactly 1 unit; per means for each 1."],
-    ],
+    terms: ["rate", "unit-rate"],
     method: [
       "Find which quantity the question puts at 1.",
       "Divide the other quantity by it.",
@@ -453,7 +450,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
   },
   "better-buy": {
     goal: "Decide which of two packages costs less per item.",
-    terms: [["unit price", "The price of 1 item or 1 unit of measure."]],
+    terms: ["unit-price"],
     method: [
       "Divide each total price by its number of items.",
       "Compare the two unit prices.",
@@ -463,13 +460,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
   },
   "ratio-table-missing": {
     goal: "Find the missing number in a table of equivalent ratios.",
-    terms: [
-      [
-        "equivalent ratios",
-        "Ratios made by multiplying both quantities by the same number.",
-      ],
-      ["simplest ratio", "A ratio whose two numbers have no common factor."],
-    ],
+    terms: ["equivalent-ratios", "simplest-ratio"],
     method: [
       "Divide a complete column by its greatest common factor to get the simplest ratio.",
       "Find the multiplier from the known entry in the column with the question mark.",
@@ -479,12 +470,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
   },
   "double-number-line-missing": {
     goal: "Find a missing value on a double number line.",
-    terms: [
-      [
-        "double number line",
-        "Two number lines with a shared 0; aligned marks are equivalent pairs.",
-      ],
-    ],
+    terms: ["double-number-line"],
     method: [
       "Read a complete pair straight across the two lines.",
       "Divide both values by the bottom value to find the amount for 1 unit.",
@@ -496,10 +482,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
     goal: "Find a unit rate when the quantities are fractions.",
     intuition:
       "A unit rate tells what goes with one unit. Divide the given amount by its fraction of a unit; dividing by a nonzero fraction means multiplying by its reciprocal, made by swapping its top and bottom numbers.",
-    terms: [
-      ["unit rate", "The amount for exactly 1 unit."],
-      ["reciprocal", "The fraction with numerator and denominator swapped."],
-    ],
+    terms: ["unit-rate", "reciprocal"],
     method: [
       "Divide the amount by the number of units.",
       "Multiply by the reciprocal of the divisor and simplify.",
@@ -509,12 +492,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
   },
   "story-operation-choice": {
     goal: "Choose the equation that models an equal-groups story.",
-    terms: [
-      [
-        "equal groups",
-        "Groups that each hold the same number, such as rows of chairs.",
-      ],
-    ],
+    terms: ["equal-groups"],
     method: [
       "Name the number of groups, the size of each group and the total.",
       "Find which of the three the story leaves out.",
@@ -525,12 +503,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
   },
   "multiplication-division-story": {
     goal: "Solve an equal-groups, array or measurement story.",
-    terms: [
-      [
-        "equal groups",
-        "Groups that each hold the same number, such as rows of chairs.",
-      ],
-    ],
+    terms: ["equal-groups"],
     method: [
       "Name the number of groups, the size of each group and the total.",
       "Unknown total: multiply. Known total: divide it by the other known number.",

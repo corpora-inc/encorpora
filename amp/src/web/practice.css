@@ -158,6 +158,16 @@ nav button {
   flex: 0 1 auto;
   min-height: 0;
 }
+/* While a feedback sheet rises above the dock it replaces, the stage scrolls
+   that much further: PracticeWorkspace places this spacer below the problem
+   at the overlap's height. Out of flow, so a centred problem does not move. */
+.feedback-spacer {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  pointer-events: none;
+  visibility: hidden;
+}
 .problem-content .question {
   flex: none;
   font-size: clamp(22px, 3vw, 34px);
@@ -349,6 +359,11 @@ nav button {
   background: var(--color-scrim);
   backdrop-filter: blur(3px);
 }
+/* The problem stays legible behind its hint. */
+.practice-dialog.hint-dialog::backdrop {
+  background: color-mix(in srgb, var(--color-scrim) 55%, transparent);
+  backdrop-filter: none;
+}
 .dialog-heading {
   display: flex;
   align-items: center;
@@ -497,7 +512,7 @@ nav button {
     margin-left: 5px;
   }
   .answer-dock label {
-    font-size: 11px;
+    font-size: var(--text-small);
     margin-bottom: 3px;
   }
   .workspace-answer-row {
@@ -878,9 +893,9 @@ nav button {
     min-height: 52px;
   }
   .choice-letter {
-    width: 21px;
-    height: 21px;
-    font-size: 11px;
+    width: 22px;
+    height: 22px;
+    font-size: 12px;
   }
   .choice-model .figure {
     height: 110px;
@@ -918,6 +933,14 @@ nav button {
 .choice-entry-dialog .compact-choice-scene .scene-figure {
   display: block;
   margin: 0 auto 4px;
+}
+/* Check stays on screen while a figure and four statements scroll above it,
+   on a shelf of the sheet's own surface. */
+.choice-entry-dialog:not(.multi-select-entry-dialog) .choice-submit {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  box-shadow: 0 0 0 var(--space-2) var(--color-surface-raised);
 }
 .choice-entry-dialog .answer-prompt-summary {
   line-height: 1.35;

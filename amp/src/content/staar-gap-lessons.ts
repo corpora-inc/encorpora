@@ -8,13 +8,10 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "Grouping symbols tell you what to do first. Parentheses and brackets mark a part of the expression that is worked out as one number before the rest. Words such as “the sum of 42 and 6” describe the same kind of group.",
     terms: [
       [
-        "bracket",
-        "A grouping symbol, [ ], used around an expression that already contains parentheses.",
+        "parentheses",
+        "Brackets $[\\;]$ go around an expression that already contains parentheses.",
       ],
-      [
-        "order of operations",
-        "The agreed order: grouping first, then multiplication and division from left to right, then addition and subtraction from left to right.",
-      ],
+      "order-of-operations",
     ],
     method: [
       "Find the innermost groups and work them out first.",
@@ -29,13 +26,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Evaluate an integer expression with negative numbers, parentheses, a squared number, products, sums and differences.",
     intuition:
       "A square multiplies a number by itself. It is done before multiplication and before adding or subtracting. A negative number times a negative number is positive, so a difference that is negative can turn a minus sign into a plus.",
-    terms: [
-      ["square", "A number multiplied by itself. $5^{2}=5\\times5=25$."],
-      [
-        "opposite",
-        "The number the same distance from 0 on the other side. The opposite of 9 is $-9$.",
-      ],
-    ],
+    terms: ["square-number", "opposite-number"],
     method: [
       "Work out what is inside parentheses first, keeping any negative result.",
       "Do exponents next. The exponent applies only to the number or group right before it.",
@@ -49,16 +40,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the words for a number in expanded form, or the number named by counts of hundreds, tens and ones.",
     intuition:
       "A digit's place decides its value. To say a number in words, say the part in the thousands as a number and then the word “thousand”, then say the rest. A zero holds a place and says nothing aloud. A decimal is read as a whole number followed by its place name, such as thousandths.",
-    terms: [
-      [
-        "expanded form",
-        "A number written as a sum of the value of each digit, such as $400+30+2$.",
-      ],
-      [
-        "word form",
-        "A number written in words, such as four hundred thirty-two.",
-      ],
-    ],
+    terms: ["expanded-form", "word-form"],
     method: [
       "Add the terms to write the number in digits. Keep a zero in each place with no term.",
       "Read the digits in groups of three from the right: the thousands group, then the ones group.",
@@ -72,13 +54,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Rename a percent as a decimal, a fraction as a decimal or percent, or a decimal as a mixed number.",
     intuition:
       "Percent means per hundred, so 35% is 35 hundredths, or 0.35. A fraction bar means division, and a fraction greater than 1 is a number greater than 1. A decimal such as 4.58 is the whole number 4 plus 58 hundredths.",
-    terms: [
-      ["percent", "A number out of 100. The symbol % means “per hundred”."],
-      [
-        "mixed number",
-        "A whole number and a fraction written together, such as $4\\frac{58}{100}$.",
-      ],
-    ],
+    terms: ["percent", "mixed-number"],
     method: [
       "Percent to decimal: divide by 100, which moves the decimal point two places left.",
       "Fraction to decimal: divide the numerator by the denominator. To get a percent, multiply the decimal by 100.",
@@ -92,13 +68,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Write a ratio from two counts in simplest form, use a part-to-part ratio with a total, or find a unit rate.",
     intuition:
       "A ratio compares two amounts by division. You can divide both amounts by the same number without changing the comparison, just as you simplify a fraction. A unit rate is a ratio in which the second amount is 1.",
-    terms: [
-      [
-        "ratio",
-        "A comparison of two amounts, written $a:b$ or “$a$ to $b$”, in the order stated.",
-      ],
-      ["unit rate", "The amount for one unit, such as 9 miles per hour."],
-    ],
+    terms: ["ratio", "unit-rate"],
     method: [
       "Write the amounts in the order the question asks. “Red to blue” puts red first.",
       "Divide both amounts by their greatest common factor to simplify.",
@@ -112,16 +82,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the equation or expression that fits a story, or the one that does not.",
     intuition:
       "An equation says that two amounts are equal. To model a story, say what each group or part is, decide how the parts combine, and write that combination equal to the total. Division and multiplication facts come in families: if $4\\times n=36$ then $36\\div4=n$ and $36\\div n=4$.",
-    terms: [
-      [
-        "unknown",
-        "A letter standing for the number the story does not tell you.",
-      ],
-      [
-        "fact family",
-        "Related multiplication and division equations that use the same three numbers.",
-      ],
-    ],
+    terms: ["unknown", "fact-family"],
     method: [
       "Name the unknown and say in words what the story combines.",
       "Write the combination as an equation: equal groups use multiplication, joining parts uses addition.",
@@ -137,8 +98,8 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "At a steady rate the amount grows by the same number for every unit. Dividing the total by the number of units gives the amount for one unit. The amount for any number of units is that rate times the number of units.",
     terms: [
       [
-        "steady rate",
-        "An amount that changes by the same number for each unit, such as pounds per day.",
+        "rate",
+        "A steady rate stays the same for every unit, such as 2 pounds per day.",
       ],
     ],
     method: [
@@ -153,12 +114,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Order four decimals that have different numbers of places, or find the decimal in a given position.",
     intuition:
       "A decimal with more places is not always greater. To compare, give every number the same number of decimal places by adding zeros to the right, and then compare place by place from the left.",
-    terms: [
-      [
-        "place value",
-        "The value of a digit because of where it sits: tenths, hundredths, thousandths.",
-      ],
-    ],
+    terms: ["place-value"],
     method: [
       "Write every number with the same number of decimal places, using zeros on the right.",
       "Compare the tenths digits first. If they match, compare the hundredths, then the thousandths.",
@@ -172,12 +128,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Order signed fractions and decimals, a fraction, percent, decimal and root, or choose the true comparison.",
     intuition:
       "To compare numbers in different forms, write each one as a decimal. A fraction is the numerator divided by the denominator, a percent is divided by 100, and a square root is estimated between two whole numbers. On a number line, the number farther left is less.",
-    terms: [
-      [
-        "square root",
-        "A number that gives the radicand when multiplied by itself. $\\sqrt{7}$ is between 2 and 3 because $2^2=4$ and $3^2=9$.",
-      ],
-    ],
+    terms: ["square-root"],
     method: [
       "Rewrite every number as a decimal, estimating roots to two decimal places.",
       "Place the numbers on a number line. Negative numbers are less than positive numbers.",
@@ -191,9 +142,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Multiply, divide, add and subtract decimals in money and measurement stories, including a unit fraction.",
     intuition:
       "Decimal operations work like whole-number operations once the decimal point is placed. Hundredths multiplied by a whole number stay hundredths. Dividing a decimal total by a whole number keeps the decimal point straight above. A unit fraction can be written as a decimal first.",
-    terms: [
-      ["unit fraction", "A fraction with 1 on top, such as $\\frac{1}{4}$."],
-    ],
+    terms: ["unit-fraction"],
     method: [
       "Decide the operation from the story: equal amounts each time divide, equal groups multiply, how many more subtracts.",
       "Multiply as whole numbers, then give the answer as many decimal places as the factors have in all.",
@@ -208,10 +157,10 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "A percent of a number is that many hundredths of it. For a raise, find 1 percent by dividing the salary by 100 and multiply by the percent. A difference in yearly pay, repeated for each year, gives the difference over many years.",
     terms: [
-      ["salary", "Money a worker earns in a year."],
+      ["income", "A salary is a fixed amount of pay for a year of work."],
       [
-        "raise",
-        "An increase in pay. A 3 percent raise is 3 percent of the old salary.",
+        "percent-change",
+        "A raise is an increase in pay; a 3% raise adds 3% of the old salary.",
       ],
     ],
     method: [
@@ -226,16 +175,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Chain perimeter and area: find a missing side first, or work with decimal sides and a square.",
     intuition:
       "Perimeter is the distance around a shape and area is the space it covers. When one is given and the other is asked, a side length connects them. A square has four equal sides, so its perimeter divided by 4 is its side.",
-    terms: [
-      [
-        "perimeter",
-        "The distance around a shape: for a rectangle, two lengths plus two widths.",
-      ],
-      [
-        "area",
-        "The number of unit squares that cover a shape: for a rectangle, length times width.",
-      ],
-    ],
+    terms: ["perimeter", "area"],
     method: [
       "Write what the shape's perimeter or area says about its sides.",
       "Subtract the sides you know from the perimeter and split the rest to find a missing side.",
@@ -251,8 +191,8 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "A two-step story needs a first result before the question can be answered. Find the quantity the story gives indirectly, write it down, and then use it in the second step.",
     terms: [
       [
-        "full serving",
-        "A group of exactly the stated size. Leftover pieces that do not make a full group are not counted.",
+        "remainder",
+        "Only full servings count; leftover pieces that do not make a full serving are the remainder.",
       ],
     ],
     method: [
@@ -268,16 +208,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the slope and intercept of a line from two points, the equation from a slope and a point, or the slope of $Ax+By=C$.",
     intuition:
       "A line is described by its slope, the change in $y$ for each change in $x$, and its $y$-intercept, the value of $y$ when $x=0$. Two points give the slope. One point and the slope give the intercept.",
-    terms: [
-      [
-        "slope",
-        "The change in $y$ divided by the change in $x$ between two points of a line.",
-      ],
-      [
-        "$y$-intercept",
-        "The value of $y$ where the line crosses the $y$-axis, when $x=0$.",
-      ],
-    ],
+    terms: ["slope", "y-intercept"],
     method: [
       "Slope: subtract the $y$-values and the $x$-values in the same order and divide.",
       "Put one point into $y=mx+b$ with the slope and solve for $b$.",
@@ -291,10 +222,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Read a stem-and-leaf plot with its key, then add the two greatest values or subtract the second-least from the greatest.",
     intuition:
       "In a stem-and-leaf plot each value is split into a stem, its leading digits, and a leaf, its last digit. The key shows how to put them back together. Values are in order, so the least are at the top left and the greatest at the bottom right.",
-    terms: [
-      ["stem", "The leading digit or digits of a value, listed in a column."],
-      ["leaf", "The last digit of a value, listed in the row of its stem."],
-    ],
+    terms: ["stem", "leaf"],
     method: [
       "Read the key: it shows what a stem and a leaf stand for together.",
       "Write the values you need as numbers, joining each stem with its leaf.",
@@ -308,12 +236,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Count every dot at or beyond a stated value on a dot plot.",
     intuition:
       "A dot plot puts one dot above a value for each data item. The number of items with a property is the total number of dots above all the values with that property.",
-    terms: [
-      [
-        "dot plot",
-        "A display with one dot above a number line value for each data item.",
-      ],
-    ],
+    terms: ["dot-plot"],
     method: [
       "Write which values count: less than, at least or greater than the stated value.",
       "Count the dots above each counted value.",
@@ -325,14 +248,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Recognize credit, and tell variable expenses from fixed expenses using monthly amounts.",
     intuition:
       "Credit lets a person get something now and pay for it later, so the money is borrowed. A fixed expense costs the same each month, such as rent. A variable expense changes, such as the amount spent on groceries.",
-    terms: [
-      [
-        "credit",
-        "Borrowing money, or buying now and paying later, usually with a promise to pay back more.",
-      ],
-      ["fixed expense", "A cost that is the same amount every month."],
-      ["variable expense", "A cost that changes from month to month."],
-    ],
+    terms: ["credit", "fixed-cost", "variable-cost"],
     method: [
       "For credit, ask whether the person gets the item before paying for it all.",
       "For fixed or variable, compare the amounts in a row. Equal amounts mean fixed.",
@@ -345,12 +261,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the table in which every pair of values follows a stated add or multiply rule.",
     intuition:
       "A rule such as “multiply by 6” or $y=x+4$ must work for every pair. To test a table, apply the rule to each input and compare it with the output in the table.",
-    terms: [
-      [
-        "input and output",
-        "The input is the number put into the rule, $x$. The output is the result, $y$.",
-      ],
-    ],
+    terms: ["input", "output"],
     method: [
       "Apply the rule to each input $x$ to find the outputs you expect.",
       "Compare the expected outputs with each table, pair by pair.",
@@ -363,16 +274,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Solve an equation by distributing, combining like terms or clearing fractions, with the variable possibly on both sides.",
     intuition:
       "To solve an equation, keep both sides equal while you get $x$ alone. First simplify each side: distribute over parentheses, combine like terms, or multiply by the denominator to clear fractions.",
-    terms: [
-      [
-        "like terms",
-        "Terms with the same variable part, such as $2x$ and $4x$.",
-      ],
-      [
-        "distribute",
-        "Multiply each term inside parentheses by the factor outside, including its sign.",
-      ],
-    ],
+    terms: ["like-terms", "distribute"],
     method: [
       "Simplify each side: distribute, combine like terms, or multiply every term by the common denominator.",
       "Move the $x$ terms to one side and the numbers to the other by adding or subtracting the same thing on both sides.",
@@ -386,16 +288,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Find an experimental probability from a table, or the probability of two draws with replacement.",
     intuition:
       "An experimental probability is what actually happened: how many times the outcome occurred out of all the trials. When a draw is put back, the next draw has the same chances, so the probability of two draws in order is the product of the two probabilities.",
-    terms: [
-      [
-        "experimental probability",
-        "The number of times an outcome happened divided by the number of trials.",
-      ],
-      [
-        "with replacement",
-        "Each item is put back before the next draw, so the draws do not change each other.",
-      ],
-    ],
+    terms: ["experimental-probability", "with-replacement"],
     method: [
       "For two outcomes, add their counts from the table, then divide by the number of trials.",
       "For two draws with replacement, find the probability of each draw from the same set and multiply.",
@@ -408,13 +301,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     goal: "Place a number among whole numbers, integers and rational numbers, or say where a quotient belongs.",
     intuition:
       "The whole numbers 0, 1, 2, … are inside the integers, which also include the negatives. The integers are inside the rational numbers, which are all numbers that can be written as a fraction of integers. To place a number, first work out its value.",
-    terms: [
-      ["integer", "A whole number or its opposite: …, −2, −1, 0, 1, 2, …."],
-      [
-        "rational number",
-        "A number that can be written as a fraction of two integers, such as $\\frac{3}{4}$ or $-2.5$.",
-      ],
-    ],
+    terms: ["integer", "rational-number"],
     method: [
       "Work out the value of the number, especially a quotient such as $\\frac{24}{3}$.",
       "If it is 0 or positive and has no fraction part, it is a whole number.",

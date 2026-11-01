@@ -1,25 +1,17 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
-const terms: [string, string][] = [
-  [
-    "right angle",
-    "A quarter-turn, measuring 90°; the angle at a square's corner.",
-  ],
-  ["legs", "The two sides of a right triangle that meet at its right angle."],
-  ["hypotenuse", "The side opposite the right angle; it is the longest side."],
-  ["square", "To square a number, multiply it by itself: 6² = 6 × 6 = 36."],
+const terms: MethodTerm[] = [
+  "right-angle",
+  "leg",
+  "hypotenuse",
+  "square-number",
 ];
 export const rightTriangleMethods: Record<string, ProblemMethod> = {
   "right-triangle": {
     goal: "Given both legs of a right triangle, find its hypotenuse length.",
-    terms: [
-      ...terms,
-      [
-        "square root",
-        "The nonnegative number whose square is the given number: √36 = 6.",
-      ],
-    ],
+    terms: [...terms, "square-root"],
     method: [
       "Use the same length unit for both legs. Let $a$ and $b$ be their lengths and $c$ the hypotenuse length.",
       "Square each leg length and add: c² = a² + b².",
@@ -30,13 +22,7 @@ export const rightTriangleMethods: Record<string, ProblemMethod> = {
   },
   "right-triangle-missing-leg": {
     goal: "Given a right triangle's hypotenuse and one leg, find its other leg.",
-    terms: [
-      ...terms,
-      [
-        "square root",
-        "The nonnegative number whose square is the given number: √36 = 6.",
-      ],
-    ],
+    terms: [...terms, "square-root"],
     method: [
       "Use one length unit. Let $c$ be the hypotenuse length, a the known leg length, and $x$ the missing leg length.",
       "Write x² + a² = c². Subtract a² from both sides: x² = c² − a².",
@@ -47,13 +33,7 @@ export const rightTriangleMethods: Record<string, ProblemMethod> = {
   },
   "pythagorean-converse": {
     goal: "Given the three side lengths of a triangle, decide whether it has a right angle.",
-    terms: [
-      ...terms,
-      [
-        "converse",
-        "A statement formed by exchanging a condition and its conclusion; its truth needs its own justification.",
-      ],
-    ],
+    terms: [...terms, "converse"],
     method: [
       "Use the same unit for all three lengths. Name the longest length $c$ and the other lengths $a$ and $b$.",
       "Calculate a² + b² and c² separately.",

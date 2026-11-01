@@ -466,6 +466,34 @@ header {
   font-weight: 500;
   color: var(--color-muted-text);
 }
+/* A statement, selection or worked lines: body size, so a long answer never
+   pushes progress, connections and Next out of the sheet. */
+.feedback-title .solution-answer[data-long] {
+  font-size: 17px;
+  line-height: 1.35;
+}
+.feedback-title .solution-answer[data-long] strong {
+  font-weight: 600;
+}
+/* The longest answers (every value of skipped work) scroll inside the head;
+   progress, Next and the tools below keep their full size. */
+.feedback-head:has(.solution-answer[data-long]) {
+  /* Top-aligned, so an answer taller than the head starts at its first line. */
+  align-items: flex-start;
+  flex: 0 1 auto;
+  min-height: 4.5em;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.solution-rows {
+  margin: var(--space-1) 0 0;
+  padding-left: var(--space-5);
+  font-size: 16px;
+  font-weight: 500;
+}
+.solution-rows li + li {
+  margin-top: var(--space-1);
+}
 .feedback-note {
   margin: 0;
   font-size: 13px;
@@ -1285,15 +1313,26 @@ html:has(.shell.flow)::-webkit-scrollbar {
   padding: 10px 16px;
   border-radius: 12px;
   font-size: 14px;
+  /* A tool is one line: "Try easier" never breaks into two. */
+  white-space: nowrap;
 }
 .text-button {
   border-radius: 10px;
 }
-.practice-tools .text-button:hover,
 .home-birth-year:hover,
 .lesson-sheet-bar .text-button:hover {
   background: var(--color-secondary);
   text-decoration: none;
+}
+/* Only a real pointer hovers: a tap must not leave the pill on whatever
+   tool appears under the finger (Skip becomes Try easier in place). */
+.practice-tools .text-button:hover {
+  text-decoration: none;
+}
+@media (hover: hover) {
+  .practice-tools .text-button:hover {
+    background: var(--color-secondary);
+  }
 }
 .home-birth-year,
 .lesson-sheet-bar .text-button {
@@ -2193,6 +2232,7 @@ html[data-input="pointer"] :focus-visible {
     min-width: 0;
     padding-inline: 8px;
   }
+
   .shell.immersive .calculator {
     left: 0;
     right: 0;
@@ -2201,6 +2241,18 @@ html[data-input="pointer"] :focus-visible {
     border-width: 1px 0 0;
     border-radius: 20px 20px 0 0;
     padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+}
+/* A skipped answer adds Try easier: four tools on the narrowest phones keep
+   one line each beside the 44 px flag. */
+@media (max-width: 360px) {
+  .shell.immersive .practice-tools {
+    gap: var(--space-1);
+  }
+  .shell.immersive .practice-tools button,
+  .shell.immersive .feedback .practice-tools button {
+    padding-inline: var(--space-1);
+    font-size: var(--text-small);
   }
 }
 /* A correct answer with nothing more to read centres its result in the
@@ -2298,6 +2350,20 @@ html[data-input="pointer"] :focus-visible {
     min-height: 0;
     overflow: auto;
     overscroll-behavior: contain;
+  }
+  /* A hint is a few lines: a sheet sized to them, rising from the bottom
+     edge, with the problem still readable above it. */
+  dialog.practice-dialog.hint-dialog {
+    top: auto;
+    height: auto;
+    max-height: min(85dvh, 100dvh - 96px);
+    padding-top: 0;
+    border-top: 1px solid var(--color-border);
+    border-radius: var(--radius-panel) var(--radius-panel) 0 0;
+    box-shadow: 0 -8px 40px var(--color-shadow);
+  }
+  dialog.practice-dialog.hint-dialog .dialog-content {
+    flex: 0 1 auto;
   }
 }
 
