@@ -383,7 +383,7 @@ export const algebra2Entries: GlossaryEntry[] = [
     id: "perfect-cube",
     term: "perfect cube",
     forms: ["perfect cube", "perfect cubes"],
-    plain: "A number that is an integer multiplied by itself three times.",
+    plain: "A number that is an integer times itself, times itself again.",
     example: "8 = 2 × 2 × 2 and 27 = 3 × 3 × 3 are perfect cubes; so is −64.",
     uses: ["integer"],
     band: "algebra-2",

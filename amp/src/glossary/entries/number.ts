@@ -211,9 +211,9 @@ export const numberEntries: GlossaryEntry[] = [
     term: "exponent",
     forms: ["exponent", "exponents"],
     plain:
-      "A small raised number written after a number. It tells how many copies of that number to multiply together.",
+      "A small raised number written after a number. When it is a whole number, it tells how many copies of that number to multiply together.",
     example: "$2^3 = 2 \\times 2 \\times 2 = 8$. The exponent is 3.",
-    uses: [],
+    uses: ["whole-number"],
     band: "4",
   },
   {
