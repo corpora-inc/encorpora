@@ -65,27 +65,43 @@ export function anotherWorkbook(
   });
 }
 
-/** Saves the printable workbook. */
+/** Saves the workbook in the chosen paper size: the PDF when the server
+ * renders them, otherwise (or when rendering is unavailable right now) the
+ * printable document, which prints from the browser. */
 export async function downloadWorkbook(
   session: AuthSession,
   learnerId: string,
   workbook: WorkbookSummary,
   paper: WorkbookPaper,
+  pdf: boolean,
 ) {
-  let response: Response;
-  try {
-    response = await fetch(
-      `/api/v1${workbookPath(learnerId)}/${encodeURIComponent(workbook.id)}/document?paper=${paper}`,
-      { headers: { Authorization: `Bearer ${session.token}` } },
-    );
-  } catch {
-    const error = new AppError(
-      "network",
-      "The workbook didn't download. Check your connection and try again.",
-      true,
-    );
-    error.log();
-    throw error;
+  const base = `/api/v1${workbookPath(learnerId)}/${encodeURIComponent(workbook.id)}`;
+  const fetchFile = async (path: string) => {
+    try {
+      return await fetch(`${base}/${path}`, {
+        headers: { Authorization: `Bearer ${session.token}` },
+      });
+    } catch {
+      const error = new AppError(
+        "network",
+        "The workbook didn't download. Check your connection and try again.",
+        true,
+      );
+      error.log();
+      throw error;
+    }
+  };
+  let response = pdf
+    ? await fetchFile(`pdf?format=${paper === "a4" ? "A4" : "Letter"}`)
+    : null;
+  let kind: "pdf" | "html" = "pdf";
+  if (!response || response.status === 503) {
+    if (response)
+      console.warn("Workbook PDF unavailable; downloading the printable copy", {
+        requestId: response.headers.get("x-request-id"),
+      });
+    response = await fetchFile(`document?paper=${paper}`);
+    kind = "html";
   }
   if (!response.ok) {
     const data: unknown = await response.json().catch(() => null);
@@ -95,12 +111,14 @@ export async function downloadWorkbook(
         : "";
     const error = new AppError(
       response.status >= 500 ? "unavailable" : "validation",
-      response.status === 503 && message
+      [404, 410].includes(response.status) && message
         ? message
         : "The workbook didn't download. Try again in a moment.",
       response.status >= 500,
       response.headers.get("x-request-id"),
-      message || null,
+      // Only a missing or outdated workbook has a server message worth
+      // showing; anything else is a failed download.
+      [404, 410].includes(response.status) ? message || null : null,
       response.status,
     );
     error.log();
@@ -110,7 +128,7 @@ export async function downloadWorkbook(
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `amp-workbook-${workbook.date}-${workbook.number}.html`;
+  link.download = `amp-workbook-${workbook.date}-${workbook.number}.${kind}`;
   document.body.append(link);
   link.click();
   link.remove();

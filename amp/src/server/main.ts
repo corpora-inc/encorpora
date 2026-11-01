@@ -32,6 +32,7 @@ import {
   registerUnavailableBilling,
 } from "../billing/stripe/routes.js";
 import { buildApp } from "./app";
+import { workbookRendererFromEnv } from "../workbook/pdf.js";
 import { developmentAuth, oidcAuth } from "./auth";
 import {
   accountsAuth,
@@ -103,7 +104,12 @@ const app = buildApp({
   development,
   logger: true,
   trustedProxies: trustedProxies(process.env.AMP_TRUSTED_PROXIES),
+  workbookRenderer: await workbookRendererFromEnv(process.env, development),
 });
+if (!development && !process.env.AMP_RENDER_URL)
+  app.log.warn(
+    "AMP_RENDER_URL is not set: workbook PDF downloads answer 503 until the render service is configured",
+  );
 if (accounts) await registerAccountRoutes(app, accounts, authenticate);
 // Without AMP accounts, the browser uses the development or OIDC flow.
 else

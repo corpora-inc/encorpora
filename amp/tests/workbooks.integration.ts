@@ -7,9 +7,13 @@ import { PostgresRepository } from "../src/server/repository.js";
 import { buildApp } from "../src/server/app.js";
 import { FamilyRepository } from "../src/family/repository.js";
 import { generateProblem } from "../src/math/engine.js";
+import { existsSync } from "node:fs";
+import { chromium } from "playwright-core";
+import { localRenderer } from "../src/workbook/pdf.js";
+import { purgeWorkbookPdfs } from "../src/workbook/retention.js";
 
 test(
-  "workbooks persist once per date, number and length, follow the learner's evidence, export, and are deleted with learning data",
+  "workbooks persist once per date, number and length, follow the learner's evidence, render and cache PDFs, export, and are deleted with learning data",
   { skip: !process.env.AMP_TEST_DATABASE_URL },
   async () => {
     const url = process.env.AMP_TEST_DATABASE_URL!;
@@ -20,9 +24,18 @@ test(
     const repository = new PostgresRepository(scoped.href, {
       development: true,
     });
+    // In-process Chromium when installed, as development runs; otherwise a
+    // stand-in, so storage and deletion are still covered.
+    const renderer = existsSync(chromium.executablePath())
+      ? localRenderer()
+      : {
+          render: async () => Buffer.from("%PDF-1.7 stand-in"),
+          close: async () => undefined,
+        };
     const app = buildApp({
       repository,
       development: true,
+      workbookRenderer: renderer,
       authenticate: async (request) =>
         String(request.headers["x-test-account"] ?? "workbook-parent"),
     });
@@ -102,11 +115,31 @@ test(
         history.json().workbooks.map((w: { number: number }) => w.number),
         [4, 3, 2, 1],
       );
-      const document = await app.inject({
-        url: `${base}/workbooks/${first.json().id}/document`,
-      });
-      assert.equal(document.statusCode, 200);
-      assert.ok(document.body.includes(first.json().code));
+      const pdfUrl = `${base}/workbooks/${first.json().id}/pdf`;
+      const pdf = await app.inject({ url: pdfUrl });
+      assert.equal(pdf.statusCode, 200, pdf.body);
+      assert.equal(pdf.rawPayload.subarray(0, 5).toString(), "%PDF-");
+      const cached = await pool.query(
+        "SELECT format,octet_length(pdf) AS bytes FROM amp_workbook_pdfs WHERE workbook_id=$1",
+        [first.json().id],
+      );
+      assert.deepEqual(
+        cached.rows.map((r) => r.format),
+        ["Letter"],
+      );
+      assert.equal(cached.rows[0].bytes, pdf.rawPayload.length);
+      // Served from the cache: byte-identical.
+      const fromCache = await app.inject({ url: pdfUrl });
+      assert.ok(fromCache.rawPayload.equals(pdf.rawPayload));
+      assert.equal(
+        (await app.inject({ url: `${pdfUrl}?format=A4` })).statusCode,
+        200,
+      );
+      // An expired copy is not served and is purged by the next render.
+      await pool.query(
+        "UPDATE amp_workbook_pdfs SET created_at=now()-interval '25 hours' WHERE format='A4'",
+      );
+      assert.equal(await purgeWorkbookPdfs(pool), 1);
 
       // Another household cannot see or make this learner's workbooks.
       const foreign = { "x-test-account": "someone-else" };
@@ -119,7 +152,7 @@ test(
       assert.equal(
         (
           await app.inject({
-            url: `${base}/workbooks/${first.json().id}/document`,
+            url: `${base}/workbooks/${first.json().id}/pdf`,
             headers: foreign,
           })
         ).statusCode,
@@ -135,6 +168,12 @@ test(
       );
 
       await family.deleteLearning("workbook-parent", learner.id);
+      assert.equal(
+        (await pool.query("SELECT count(*)::int AS n FROM amp_workbook_pdfs"))
+          .rows[0].n,
+        0,
+        "rendered PDFs go with the learning data",
+      );
       assert.equal(
         (
           await pool.query(
@@ -165,6 +204,7 @@ test(
       );
     } finally {
       await app.close();
+      await renderer.close();
       await pool.end();
       await repository.close();
       await admin.query(`DROP SCHEMA IF EXISTS ${schema} CASCADE`);
