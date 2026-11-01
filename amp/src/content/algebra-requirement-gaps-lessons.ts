@@ -404,6 +404,15 @@ const complexPartsLesson: Lesson = {
 
 const interpretLinearParametersMethod: ProblemMethod = {
   goal: "A linear model describes a real situation. Say what its slope and its initial value mean there, with units.",
+  senses: {
+    rule: "rule",
+    balance: "balance-account",
+    change: "change",
+    model: "model",
+    unit: "unit",
+    term: "term-expression",
+  },
+  noLink: ["mean", "population"],
   intuition:
     "A linear model is a rule in which each extra 1 of input changes the output by the same amount, like $C = 39h + 63$. In general it is written $y = mx + b$. You choose the input $x$, and the rule gives the output $y$. The slope $m$, the number multiplying $x$, says how much $y$ changes each time $x$ goes up by 1. The initial value $b$, the number standing alone, is the output when $x$ is 0. That 0 may stand for a starting moment, such as the year 2018 or the moment a drain opens.",
   terms: [
@@ -435,6 +444,14 @@ const interpretLinearParametersLesson: Lesson = {
   summary:
     "A linear model is a rule, like $C = 39h + 63$, in which each extra 1 of input adds the same amount to the output. Here the input $h$ is hours worked, and the output $C$ is the charge in dollars. The 39 is the slope: each extra hour adds 39 dollars. The 63 is the starting value: the charge when $h = 0$. Always say what each number means, with its units, such as dollars or hours.",
   templateIds: ["interpret-linear-parameters"],
+  senses: {
+    balance: "balance-account",
+    change: "change",
+    model: "model",
+    unit: "unit",
+    rule: "rule",
+  },
+  noLink: ["mean", "parts", "whole"],
   objectives: [
     "Explain the slope as the change in the output for each increase of 1 in the input, with units, including a decrease.",
     "Explain the starting value as the output when the input is 0, including when 0 stands for a starting year.",

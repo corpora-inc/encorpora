@@ -4,6 +4,12 @@ import type { ProblemMethod } from "./problem-lessons";
 export const geometryProofMethods: Record<string, ProblemMethod> = {
   "geometry-proof-step": {
     goal: "A proof step makes a claim about angles. Choose the rule (theorem) that proves it from the given facts.",
+    senses: {
+      degrees: "degree-angle",
+      "corresponding angles": "corresponding-angles",
+      side: "side",
+    },
+    noLink: ["rule", "opposite", "plane"],
     intuition:
       "A proof explains why a conclusion, the claim being proved, follows from facts you are given, called givens. Each step states a claim and gives a reason. A theorem is a rule already proved. You may use it when its conditions, the things it needs, are known to be true. An angle is formed by two rays (lines that start at a point and go on in one direction) with the same starting point. Its measure is its size in degrees (°), and a straight line makes 180°. Angles with equal measures are congruent. Two angles whose measures add to $180^\\circ$ are supplementary.",
     terms: ["proof", "theorem", "congruent", "supplementary"],
@@ -27,6 +33,13 @@ export const geometryProofLessons: Lesson[] = [
     summary:
       "A proof shows, step by step, why something must be true. Each step makes a claim and gives a reason, such as a rule that has already been proved. A rule fits a step only when two things hold. What the rule needs must already be known, from the given facts or from earlier steps. And what the rule says must match the claim.",
     templateIds: ["geometry-proof-step"],
+    senses: {
+      degrees: "degree-angle",
+      side: "side",
+      vertex: "vertex",
+      "corresponding angles": "corresponding-angles",
+    },
+    noLink: ["argument", "part", "rule", "rules", "third", "opposite"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Tell apart a proof step's statement (its claim) and its reason (why the claim is true).",

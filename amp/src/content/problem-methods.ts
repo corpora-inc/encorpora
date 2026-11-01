@@ -1255,6 +1255,8 @@ const legacyMethods: Record<string, ProblemMethod> = {
   // Integers, expressions, equations
   "integer-addition": {
     goal: "Add two integers: whole numbers or their negatives, such as 4 or $-9$.",
+    senses: { change: "change" },
+    noLink: ["more than", "opposite"],
     intuition:
       "An integer is a whole number (0, 1, 2, 3 and so on) or its negative, such as $-4$. A number's sign says whether it is positive (more than 0) or negative (less than 0). On a number line, a line with evenly spaced marks for numbers, adding a positive number moves right and adding a negative number moves left. Moves of the same size in opposite directions cancel.",
     method: [
@@ -1309,6 +1311,8 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "distributive-expression-choice": {
     goal: "Choose the expression that equals a number times a group in parentheses, for every value of $x$.",
+    senses: { term: "term-expression" },
+    noLink: ["part", "parts", "side"],
     intuition:
       "An expression is a math phrase made of numbers, letters and operations, such as $x + 2$. A number written right before parentheses, the curved brackets ( ), multiplies everything inside them. So $3(x + 2)$ means 3 groups of $x + 2$, which is $3x + 6$. The parts joined by + or − are called terms. Multiplying the outside number by each term inside is called distributing. Two expressions are equivalent when they have the same value for every number put in for $x$.",
     method: [
@@ -1321,6 +1325,8 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "combine-like-coefficient": {
     goal: "Combine like terms in an expression, then find the coefficient of $x$: the number multiplying $x$.",
+    senses: { term: "term-expression" },
+    noLink: ["change", "part", "parts"],
     intuition:
       "An expression is a math phrase made of numbers, letters (variables) and operations, such as $6x - 8x + 3$. The parts joined by + or − are called terms. Like terms have the same letter part, such as $6x$ and $-8x$. The coefficient is the number multiplying the letter: in $6x$ it is 6. A constant is a term with no letter, such as 3. Think of $x$ as one kind of item: adding 6 of them and subtracting 8 of them is the same as subtracting 2 in all, because $6 - 8 = -2$.",
     terms: ["coefficient", "like-terms"],
@@ -1400,6 +1406,12 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "linear-system-x": {
     goal: "Two equations use the same unknowns $x$ and $y$. Find the value of $x$ in the pair that makes both equations true.",
+    senses: {
+      side: "side-of-equation",
+      term: "term-expression",
+      difference: "difference-subtract",
+    },
+    noLink: ["part", "parts", "whole"],
     intuition:
       "A system is two equations about the same unknown numbers. Its solution is the pair that makes both true at once. The coefficient of $y$ is the number multiplying $y$. When both equations have the same coefficient of $y$, subtracting one equation from the other removes $y$. In a system with exactly one solution, the $x$ parts do not also cancel, so an equation in $x$ alone is left.",
     method: [
@@ -1428,6 +1440,8 @@ const legacyMethods: Record<string, ProblemMethod> = {
   },
   "line-slope": {
     goal: "Find the slope of the line through two given points.",
+    senses: { change: "change" },
+    noLink: ["opposite"],
     intuition:
       "A point such as $(3, 0)$ gives two numbers called coordinates. The first, the $x$-coordinate, says how far right of the starting point $(0, 0)$ to go; a negative number means left. The second, the $y$-coordinate, says how far up; a negative number means down. Slope measures how steep a line is: the change in $y$ divided by the change in $x$ between two points on the line.",
     terms: ["slope"],

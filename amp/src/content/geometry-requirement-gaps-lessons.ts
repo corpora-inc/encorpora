@@ -69,6 +69,13 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
   },
   "congruence-by-rigid-motion": {
     goal: "Find the rigid motions (slides, turns and flips) that carry one triangle onto another, and decide whether the triangles are congruent.",
+    senses: {
+      side: "side",
+      vertices: "vertex",
+      image: "image-transformation",
+      change: "change",
+    },
+    noLink: ["corresponding angles", "opposite", "scale"],
     intuition:
       "A rigid motion moves a figure without stretching it. A translation slides it in one direction. A rotation turns it around a fixed point. A reflection flips it across a line, like a mirror. Side lengths and angles (the amount of turn at each corner) stay the same. Two figures are congruent when some list of rigid motions carries one exactly onto the other.",
     terms: [
@@ -146,6 +153,14 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
   },
   "aa-similarity": {
     goal: "Use given angles to decide whether two triangles are similar (the same shape), match their corners, and pair up the matching sides.",
+    noLink: ["third"],
+    senses: {
+      side: "side",
+      similar: "similar-figures",
+      degrees: "degree-angle",
+      image: "image-transformation",
+      vertex: "vertex",
+    },
     intuition:
       "A triangle is a flat shape with three straight sides and three corners. An angle is the amount of turn at a corner, measured in degrees (°); a full turn is 360°. A triangle's three angles always add to $180^\\circ$, so two angles fix the third. Similar triangles have the same shape: every length of one is multiplied by the same number to give the other. If two angles of one triangle equal two angles of another, all three match, and the triangles are similar. This is the AA (angle-angle) test. Corners (vertices) with equal angles correspond, meaning they match up.",
     terms: [
@@ -387,6 +402,23 @@ export const geometryRequirementGapLessons: Lesson[] = [
     summary:
       "Two shapes are congruent when they are exactly the same size and shape: one could be laid exactly on top of the other. Sliding, turning or flipping a shape never changes its side lengths or its angles (the amount of turn at each corner). So two triangles are congruent when some list of slides, turns and flips carries one exactly onto the other.",
     templateIds: ["congruence-by-rigid-motion"],
+    senses: {
+      side: "side",
+      vertices: "vertex",
+      degrees: "degree-angle",
+      image: "image-transformation",
+    },
+    noLink: [
+      "change",
+      "changes",
+      "corresponding angles",
+      "mean",
+      "opposite",
+      "parts",
+      "third",
+      "unit",
+      "units",
+    ],
     objectives: [
       "Choose a list of slides, turns and flips (rigid motions) that carries one triangle onto another.",
       "Follow a point through a list of motions, in order, to find where it lands.",
@@ -633,6 +665,14 @@ export const geometryRequirementGapLessons: Lesson[] = [
     summary:
       "A triangle is a flat shape with three straight sides. Two triangles are similar when they have the same shape, though maybe not the same size: one is an enlarged or shrunken copy of the other. An angle is the amount of turn at a corner, measured in degrees (°). The three angles of any triangle add to 180°. So if two angles of one triangle match two angles of another, the third angles match too, and the triangles are similar.",
     templateIds: ["aa-similarity"],
+    senses: {
+      degrees: "degree-angle",
+      side: "side",
+      similar: "similar-figures",
+      image: "image-transformation",
+      vertices: "vertex",
+    },
+    noLink: ["third"],
     objectives: [
       "Decide from two given angles whether two triangles are similar.",
       "Match the corners that have equal angles, and write the matching sides as equal fractions.",

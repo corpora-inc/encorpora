@@ -10,6 +10,8 @@ export const algebraLessons: Lesson[] = [
       "distributive-expression-choice",
       "combine-like-coefficient",
     ],
+    senses: { term: "term-expression" },
+    noLink: ["change", "part", "parts", "rule", "side", "changes"],
     objectives: [
       "Put a number in place of a letter, keeping its sign, and find the expression's value.",
       "Multiply a number by every part inside parentheses.",

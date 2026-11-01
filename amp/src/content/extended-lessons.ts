@@ -408,6 +408,7 @@ export const extendedLessons: Lesson[] = [
     summary:
       "A number line is a line with evenly spaced marks for numbers. Numbers to the right of 0 are positive, meaning greater than 0. Numbers to the left are negative, meaning less than 0, and are written with a minus sign, like $-7$. Adding a positive number moves right, and adding a negative number moves left. Moves of the same length in opposite directions cancel, meaning they undo each other.",
     templateIds: ["integer-addition"],
+    senses: { change: "change", opposite: "opposite-number" },
     objectives: [
       "Show a sum of positive and negative numbers as moves on a number line.",
       "Cancel opposite pairs to find a sum, and explain why the answer has its sign.",
@@ -470,6 +471,8 @@ export const extendedLessons: Lesson[] = [
     summary:
       "Slope tells how steep a line is and which way it tilts. Pick two points on the line. Find how far the line goes up or down between them, and how far it goes across. Slope is the up-or-down change divided by the across change. A slope of 2 means up 2 for every 1 step to the right.",
     templateIds: ["line-slope"],
+    senses: { change: "change" },
+    noLink: ["mean", "part", "parts", "whole", "leaves"],
     objectives: [
       "Find the change in $x$ and the change in $y$ between two points, subtracting in the same order.",
       "Explain what a positive, negative or zero slope says about the line.",
@@ -535,6 +538,8 @@ export const extendedLessons: Lesson[] = [
     summary:
       "A system is two equations about the same two unknown numbers, such as $x$ and $y$. Its solution is the pair of numbers that makes both equations true at the same time. To find it, combine the equations so one unknown disappears. Solve for the other one, then go back for the first.",
     templateIds: ["linear-system-x"],
+    senses: { side: "side-of-equation", term: "term-expression" },
+    noLink: ["change", "leaves", "mean", "part", "whole"],
     objectives: [
       "Remove one unknown by subtracting one equation from the other, after making its coefficients (the numbers multiplying it) match.",
       "Find the remaining unknown, and check the pair in both original equations.",

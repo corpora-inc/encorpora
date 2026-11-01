@@ -11,8 +11,16 @@ const terms: MethodTerm[] = [
 export const rightTriangleMethods: Record<string, ProblemMethod> = {
   "right-triangle": {
     goal: "A right triangle's two legs are given. Find the length of its hypotenuse, the longest side.",
+    senses: {
+      side: "side",
+      square: "square-number",
+      degrees: "degree-angle",
+      unit: "unit",
+      "right side": "side-of-equation",
+    },
+    noLink: ["rule", "opposite"],
     intuition:
-      "A triangle is a flat shape with three straight sides. A right triangle has one square corner, called a right angle: a quarter-turn, 90 degrees. Its legs are the two sides that meet there. The hypotenuse is the longest side, across from that corner. Squaring a number means multiplying it by itself, shown by a small raised 2: $6^2 = 6 \\times 6 = 36$. The square root goes back: $\\sqrt{36}$ is the number that times itself makes 36, which is 6. In every right triangle, the two legs squared and added give the hypotenuse squared.",
+      "A triangle is a flat shape with three straight sides. A right triangle has one corner shaped like the corner of a page, called a right angle: a quarter-turn, 90 degrees. Its legs are the two sides that meet there. The hypotenuse is the longest side, across from that corner. Squaring a number means multiplying it by itself, shown by a small raised 2: $6^2 = 6 \\times 6 = 36$. The square root goes back: $\\sqrt{36}$ is the number that times itself makes 36, which is 6. In every right triangle, the two legs squared and added give the hypotenuse squared.",
     terms: [...terms, "square-root"],
     method: [
       "Use the same length unit for both legs, such as cm (centimeters). Let $a$ and $b$ be the leg lengths and $c$ the hypotenuse length.",
@@ -93,6 +101,18 @@ export const pythagoreanLesson: Lesson = {
   summary:
     "A triangle is a flat shape with three straight sides. A right triangle has one square corner, called a right angle. The two sides that meet at that corner are the legs. The longest side, across from the corner, is the hypotenuse. Draw a square (a shape with four equal sides and four square corners) on each side. The two leg squares together cover the same area, or amount of flat surface, as the hypotenuse square.",
   templateIds: ["right-triangle"],
+  senses: {
+    square: "square-shape",
+    squared: "square-number",
+    squaring: "square-number",
+    root: "root-radical",
+    side: "side",
+    degrees: "degree-angle",
+    edge: "edge",
+    unit: "unit",
+    vertex: "vertex",
+  },
+  noLink: ["argument", "change", "parts", "rule", "changes", "third", "whole"],
   includeGeneratedRepresentation: false,
   objectives: [
     "Find the legs and the hypotenuse of a right triangle, however it is turned.",

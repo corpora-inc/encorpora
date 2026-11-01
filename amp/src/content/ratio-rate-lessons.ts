@@ -40,6 +40,8 @@ export const ratioRateLessons: Lesson[] = [
     summary:
       "A unit is the thing you count or measure, such as a page, a minute or a mile. A unit rate is the amount that goes with exactly 1 unit, such as 22 pages for each 1 minute. To find it, share the amounts into equal groups until there is just 1 of the unit you care about. Dividing does that sharing in one step.",
     templateIds: ["unit-rate"],
+    senses: { unit: "unit", fourths: "fourth" },
+    noLink: ["side"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Explain why dividing one amount by the other gives the amount for 1 unit.",
@@ -440,6 +442,7 @@ export const ratioRateLessons: Lesson[] = [
 export const ratioRateMethods: Record<string, ProblemMethod> = {
   "unit-rate": {
     goal: "Find how much of one quantity goes with exactly 1 unit of the other.",
+    senses: { unit: "unit" },
     intuition:
       "A unit is the thing being counted or measured, such as a page or a minute. A unit rate is the amount that goes with exactly 1 unit, such as 22 pages for each 1 minute. The word per means for each one. To find it, split both amounts into equal groups until the unit named after per is 1.",
     terms: ["rate", "unit-rate"],

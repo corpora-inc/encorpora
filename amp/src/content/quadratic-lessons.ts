@@ -9,6 +9,13 @@ export const quadraticMethods: Record<string, ProblemMethod> = {
   "quadratic-irrational-solutions": quadraticIrrationalMethod,
   "quadratic-factored-solutions": {
     goal: "The equation is a product of factors (parts being multiplied) set equal to zero. Find every value of $x$ that makes it true.",
+    senses: {
+      factor: "factor-number",
+      side: "side-of-equation",
+      product: "product-multiply",
+      root: "root-equation",
+    },
+    noLink: ["leaves", "parts"],
     terms: ["factor-number", "root-equation", "repeated-root"],
     method: [
       "A product (the result of multiplying) is 0 only when one of its factors is 0. So set each factor equal to 0, which gives two small equations.",
@@ -71,6 +78,14 @@ export const quadraticLessons: Lesson[] = [
     summary:
       "If two numbers multiply to make zero, at least one of them is zero. Two brackets written side by side are multiplied. In $(x - 2)(x + 3) = 0$, the factors (the parts being multiplied) are $x - 2$ and $x + 3$. So either $x - 2 = 0$, which gives $x = 2$, or $x + 3 = 0$, which gives $x = -3$. A value that makes the equation true is called a solution. This method finds every solution.",
     templateIds: ["quadratic-factored-solutions"],
+    senses: {
+      factor: "factor-number",
+      product: "product-multiply",
+      side: "side-of-equation",
+      squared: "square-number",
+      root: "root-equation",
+    },
+    noLink: ["more than", "part", "parts", "whole"],
     objectives: [
       "Set each factor (each part being multiplied) equal to zero, and solve each small equation.",
       "Keep every solution, including 0 and fractions, and list a solution that two factors share only once.",

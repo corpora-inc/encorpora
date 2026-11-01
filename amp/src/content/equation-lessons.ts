@@ -212,6 +212,8 @@ export const equationLessons: Lesson[] = [
     summary:
       "An equation says two amounts are equal, like $3x + 5 = 20$. The letter $x$ stands for an unknown number. In a two-step equation, two things were done to $x$. To find $x$, undo them in reverse order, the last one first. Do each step to both sides so they stay equal.",
     templateIds: ["two-step-equation"],
+    senses: { side: "side-of-equation" },
+    noLink: ["leaves", "mean", "part"],
     objectives: [
       "Explain why a two-step equation is solved by undoing its two operations (actions such as multiply or add) in reverse order.",
       "Solve equations like $3x + 5 = 20$ and $4(x - 3) = 28$ with positive and negative numbers and decimals, and check the solution.",
@@ -687,6 +689,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
   },
   "two-step-equation": {
     goal: "Find the unknown number $x$ in an equation where two operations were done to it, such as $3x + 5 = 20$ or $4(x - 3) = 28$.",
+    senses: { side: "side-of-equation" },
     terms: ["coefficient"],
     method: [
       "List what was done to $x$, in order. In $3x + 5$, $x$ was multiplied by 3 and then 5 was added. In $4(x - 3)$, 3 was subtracted and then the result was multiplied by 4.",
