@@ -5,39 +5,43 @@ export const choiceLessons: Lesson[] = [
     id: "fraction-renaming",
     title: "Cut the pieces, keep the amount",
     summary:
-      "The same shaded amount can have different fraction names when every part is cut equally.",
+      "A fraction names equal parts of a whole. The denominator, the bottom number, says how many equal parts make the whole. The numerator, the top number, counts the parts you have. Cut every part into the same number of smaller equal parts, and the amount stays the same. Equivalent means naming the same amount. Fractions like 2/3 and 4/6 are called equivalent fractions.",
     templateIds: ["fraction-equivalence-choice"],
+    senses: {
+      whole: "whole",
+      part: "part",
+      third: "third",
+      "more than": "more-than",
+    },
+    noLink: ["change", "changes", "changed"],
     objectives: [
-      "Recognize equivalent fractions by scaling both counts.",
-      "Explain why adding to both counts does not preserve an amount.",
+      "Find equivalent fractions by multiplying the top and bottom numbers by the same number.",
+      "Explain why adding the same number to the top and bottom usually changes the amount.",
     ],
     sections: [
       {
         stage: "intuition",
-        title: "Cut each piece without changing the shade",
+        title: "Cut each piece without changing the shading",
         paragraphs: [
-          "Shade two thirds of one rectangle. If every third is cut into two equal pieces, the same shaded region now has four pieces and the whole has six. Only the pieces' names and counts changed.",
+          "Look at one rectangle cut into 3 equal strips. Shade 2 strips, which means color them in. The shaded amount is two thirds, written 2/3.",
+          "Now cut every strip into 2 equal pieces: the shaded strips and the white one too. Nothing new is shaded, and the rectangle is the same size.",
+          "Count again. The whole has 6 small pieces, so each piece is a sixth. The shaded part is 4 of them, so it is four sixths, 4/6. The shaded amount did not change. Only the names and the counts changed. So 2/3 = 4/6.",
         ],
       },
       {
-        title: "One picture, two names",
+        title: "Both numbers must grow the same way",
         paragraphs: [
-          "Shade two of three equal strips in one rectangle. The amount is two thirds. Cut every strip in half, including the unshaded strip. You have not moved the outside edge or shaded anything new.",
-          "The whole has six small pieces and the shaded part has four. Two thirds and four sixths name the same area. The denominator counts all the equal pieces in one whole; the numerator counts the pieces you have.",
+          "Suppose every piece is cut into 3 equal smaller pieces. Each old piece becomes 3 small pieces. So the number of pieces in the whole is multiplied by 3. The number of shaded pieces is multiplied by 3 too. So multiply both the numerator and the denominator by 3.",
+          "If you multiply only the numerator, you take more pieces of the old size, so the amount grows. If you multiply only the denominator, the pieces get smaller but you do not take more of them, so the amount shrinks.",
+          "Adding the same number to the top and bottom is different. Add 2 to the top and bottom of 2/3, and you get 4/5. Four fifths leaves 1 fifth white. Two thirds leaves 1 third white. A fifth is smaller than a third, so the white gaps are different sizes. So 2/3 and 4/5 are not the same amount.",
         ],
       },
       {
-        title: "Both counts must scale",
+        title: "Check each choice",
         paragraphs: [
-          "If every piece splits into three, there are three times as many pieces in the whole and three times as many in the shaded part. Multiplying only the numerator takes more pieces of the old size. Multiplying only the denominator makes the pieces smaller without taking enough of them.",
-          "Adding the same number to numerator and denominator does something different. Two thirds becomes four fifths if you add two. Four fifths leaves only one fifth unshaded, while two thirds leaves one third. Those gaps are different, so the amounts cannot match.",
-        ],
-      },
-      {
-        title: "Read choices as claims",
-        paragraphs: [
-          "For each proposed fraction, ask what happened to the piece size and the shaded count. Look for a common scale factor. You can also sketch equal-length bars; keep the whole the same size in each sketch.",
-          "Once you choose, explain the change in units aloud. Recognizing a printed fraction is useful practice; drawing a new representation and explaining why it works are separate skills to practice too.",
+          "For each choice, ask: was every piece cut into the same number of smaller pieces? If so, both numbers were multiplied by the same number, and the choice names the same amount.",
+          "You can also go the other way. Group small pieces into bigger ones by dividing both numbers by the same number, other than 0. 4/6 becomes 2/3 when you divide the top and bottom by 2.",
+          "You can also draw bars to check. Keep the whole the same size in each drawing.",
         ],
       },
     ],
@@ -46,25 +50,26 @@ export const choiceLessons: Lesson[] = [
         stage: "formal",
         title: "Equivalent fraction names",
         paragraphs: [
-          "Multiplying a fraction's numerator and positive denominator by the same nonzero whole number subdivides every part equally, so the fraction's value is unchanged. Conversely, dividing both by a common positive factor groups equal small parts into larger ones.",
+          "Pick a number such as 2, 3 or 4. Multiply the numerator and the denominator of a fraction by it. This cuts every part into equal smaller parts, so the amount does not change.",
+          "You can also divide the numerator and the denominator by the same number, other than 0, when it divides both of them evenly. This groups small parts into bigger ones, so the amount does not change either.",
         ],
       },
     ],
     workedExample: {
       prompt: "Which names the same amount as 2/3: 4/6, 4/5, 4/3, or 2/6?",
       steps: [
-        "Split each third into two sixths.",
-        "Two shaded thirds become four shaded sixths, while the whole has six sixths.",
-        "Choose 4/6. Both counts doubled, and the area stayed fixed.",
+        "Picture 2/3: a whole cut into 3 equal parts, with 2 shaded. Cut each third into 2 equal pieces. The whole now has 6 pieces, so each piece is a sixth.",
+        "The 2 shaded thirds become 4 shaded sixths, and the whole is 6 sixths. So 2/3 = 4/6. Both numbers were multiplied by 2.",
+        "Check the other choices. 4/5 adds 2 to the top and bottom, which changes the amount. 4/3 is more than a whole. 2/6 is only 2 of the smaller pieces. So the answer is 4/6.",
       ],
       answer: "4/6",
     },
     pitfalls: [
-      "Equal fractions must refer to the same-sized whole when comparing physical amounts.",
-      "Adding the same number to both counts is not the same as scaling both counts.",
+      "To compare real amounts, the fractions must be parts of wholes of the same size.",
+      "Adding the same number to the top and bottom usually changes the amount. Multiply or divide both by the same number instead.",
     ],
     parentGuide:
-      "Use one paper rectangle. Fold it into thirds and shade two. Fold each third in half and have the learner explain both names before looking at the answer choices. Ask for another equivalent name without offering choices.",
+      "Use one paper rectangle. Fold it into thirds and shade two. Fold each third in half. Ask your child to name the shaded part both ways before looking at the choices. Then ask for another name for the same amount, without any choices.",
   },
   {
     id: "equation-solution-sets",

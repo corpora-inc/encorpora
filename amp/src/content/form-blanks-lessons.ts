@@ -50,45 +50,45 @@ const entries: FormatLessonEntry[] = [
     id: "decimal-mixed-number-blanks",
     title: "A decimal as a mixed number",
     summary:
-      "The whole part stays; the digits after the point become a fraction over 10 or 100.",
+      "A decimal, a number with a decimal point, can be written as a mixed number: a count of wholes plus a fraction.",
     objectives: [
       "Write a decimal with tenths or hundredths as a mixed number.",
-      "Choose the denominator 10 or 100 from the number of decimal places.",
+      "Choose the denominator 10 or 100 from the number of digits after the decimal point.",
     ],
     intuition:
-      "A mixed number has a whole part and a fraction part. The digits left of the decimal point give the whole part. The digits right of it are tenths if there is one digit and hundredths if there are two: 3.7 is 3 and $\\frac{7}{10}$, and 4.25 is 4 and $\\frac{25}{100}$. The denominator is 10 or 100 because the places are tenths and hundredths.",
+      "A decimal is a number written with a decimal point, such as 3.7. A whole number is one of 0, 1, 2, 3 and so on. A mixed number is a whole number and a fraction written together, such as $3\\frac{7}{10}$. The top number of a fraction is called the numerator, and the bottom number is called the denominator. A tenth is one of 10 equal parts of one whole, and a hundredth is one of 100 equal parts. In a decimal, the digits left of the point give the whole number. The digits right of the point are tenths if there is one digit, and hundredths if there are two. So 3.7 is 3 and $\\frac{7}{10}$, and 4.25 is 4 and $\\frac{25}{100}$.",
     terms: ["mixed-number", "tenth", "hundredth"],
     method: [
-      "Write the whole number from the left of the point.",
+      "Write the whole number from the left of the decimal point.",
       "Write the digits right of the point as the numerator.",
-      "Use 10 as the denominator for one digit and 100 for two digits.",
+      "Use 10 as the denominator for one digit, and 100 for two digits.",
     ],
     watch:
-      "Keep the whole number out of the numerator: 3.7 is $3\\frac{7}{10}$, not $\\frac{37}{10}$ in a mixed number.",
+      "Keep the whole number out of the numerator: as a mixed number, 3.7 is $3\\frac{7}{10}$, not $\\frac{37}{10}$.",
     principle:
-      "A decimal $w.d_1d_2$ equals $w+\\frac{d_1d_2}{100}$ and $w.d_1$ equals $w+\\frac{d_1}{10}$, written $w\\frac{d_1d_2}{100}$ as a mixed number.",
+      "A decimal with two digits after the point equals its whole number plus those two digits over 100: $4.25=4+\\frac{25}{100}=4\\frac{25}{100}$. A decimal with one digit after the point equals its whole number plus that digit over 10: $3.7=3+\\frac{7}{10}=3\\frac{7}{10}$.",
     example: {
       prompt: "Write 6.08 as a mixed number.",
       steps: [
-        "The whole part is 6.",
-        "The digits after the point are 08, which is 8 hundredths: $\\frac{8}{100}$.",
-        "So $6.08=6\\frac{8}{100}$.",
+        "The digit left of the point is 6, so the whole number is 6.",
+        "There are two digits after the point, 0 and 8, so they count hundredths. 08 hundredths is 8 hundredths: $\\frac{8}{100}$.",
+        "Put the whole number and the fraction together: $6.08=6\\frac{8}{100}$.",
       ],
       answer: "$6\\frac{8}{100}$.",
     },
-    methodTitle: "Whole part, then the places",
+    methodTitle: "The whole number, then the places",
     methodText: [
-      "Count the decimal places: one place means tenths, two places mean hundredths.",
-      "The fraction part can be reduced afterward, but the first form uses 10 or 100.",
+      "Count the digits after the decimal point. One digit counts tenths, so the denominator is 10. Two digits count hundredths, so the denominator is 100.",
+      "You can simplify the fraction later, but first write it over 10 or 100.",
     ],
     formal:
-      "By place value, $0.d_1d_2=\\frac{d_1}{10}+\\frac{d_2}{100}=\\frac{10d_1+d_2}{100}$, so the numerator is the two-digit number $d_1d_2$.",
+      "Each digit after the point is worth its place: the first counts tenths and the second counts hundredths. So $0.25=\\frac{2}{10}+\\frac{5}{100}=\\frac{20}{100}+\\frac{5}{100}=\\frac{25}{100}$. That is why the two digits together, 25, become the numerator over 100.",
     pitfalls: [
-      "Do not use 10 for a decimal with two places.",
-      "Do not include the whole number in the numerator.",
+      "Do not use 10 as the denominator when there are two digits after the point.",
+      "Do not put the whole number into the numerator.",
     ],
     parentGuide:
-      "Shade a tenths bar and a hundredths grid to see 0.7 and 0.25 as fractions of one whole.",
+      "Shade a bar cut into 10 equal parts and a square grid of 100 small squares. Use them to show your child 0.7 and 0.25 as fractions of one whole.",
   },
   {
     id: "inequality-solution-blanks",
@@ -274,9 +274,28 @@ const entries: FormatLessonEntry[] = [
   },
 ];
 
+/** How each lesson and its practice screen read ambiguous words. */
+const glossaryContext: Record<
+  string,
+  { senses?: Record<string, string>; noLink?: string[] }
+> = {
+  "decimal-mixed-number-blanks": {
+    senses: { whole: "whole", part: "part", square: "square-shape" },
+    noLink: ["mean", "means"],
+  },
+};
+
 const built = formatLessons(entries);
-export const formBlanksLessons = built.lessons;
-export const formBlanksMethods = built.methods;
+export const formBlanksLessons = built.lessons.map((lesson) => ({
+  ...lesson,
+  ...glossaryContext[lesson.id],
+}));
+export const formBlanksMethods = Object.fromEntries(
+  Object.entries(built.methods).map(([id, method]) => [
+    id,
+    { ...method, ...glossaryContext[id] },
+  ]),
+);
 export const formBlanksPrinciples = built.principles;
 
 const partial = (

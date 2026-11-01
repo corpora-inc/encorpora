@@ -1,6 +1,14 @@
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
+const budgetSenses = {
+  change: "change",
+  difference: "difference-subtract",
+  "more than": "more-than",
+};
+const budgetNoLink = ["balance", "balances", "increasing"];
+const payNoLink = ["net"];
+
 export const remainingGapMethods: Record<string, ProblemMethod> = {
   "triangle-law-reasoning": {
     goal: "Choose a step in deriving the law of sines or cosines, the law that starts a given triangle, or the number of triangles the data allow.",
@@ -53,30 +61,33 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
   },
   "budget-category-balance": {
     goal: "Given an income and categorized expenses in dollars and cents, find a missing category, the surplus or deficit, or the change that balances.",
+    senses: budgetSenses,
+    noLink: budgetNoLink,
     intuition:
-      "A budget balances when the income equals the total of the expenses. If expenses are less than income, the difference is a surplus. If expenses are more than income, the difference is a deficit. Money amounts are decimals: add and subtract them with the decimal points lined up.",
+      "Income is the money coming in. An expense is the money spent on one category, such as rent or food. A budget is a plan for the money, and it balances when the income equals the total of the expenses. If expenses are less than income, the money left over is called a surplus. If expenses are more than income, the amount missing is called a deficit. Money amounts are decimals: numbers with a decimal point. Add and subtract them with the decimal points lined up.",
     terms: ["income", "expense", "surplus", "deficit"],
     method: [
-      "Add all the expenses you know, lining up the decimal points.",
-      "Subtract the smaller of the income and the total from the larger. A missing category is income minus the known expenses.",
-      "Name the result: income larger is a surplus, expenses larger is a deficit.",
-      "To balance a deficit, reduce spending by exactly the deficit. To balance a surplus, add spending or savings equal to the surplus.",
+      "Add all the expenses you know, with the decimal points lined up.",
+      "Compare the total with the income, and subtract the smaller from the larger. If the budget must balance and one category is missing, that category is the income minus the known expenses.",
+      "Name the result. If the income is larger, the difference is a surplus. If the expenses are larger, it is a deficit.",
+      "To fix a deficit, cut spending by exactly the deficit. To use up a surplus, add spending or savings equal to the surplus.",
     ],
     watch:
-      "Include every category in the total. A deficit is not a negative expense: it is a name for expenses exceeding income.",
+      "Include every category in the total. A deficit is not an expense. It is the amount by which the expenses are more than the income.",
   },
   "gross-net-pay": {
     goal: "Given gross pay, deductions and net pay in dollars and cents, find net pay, gross pay or a missing deduction, or the take-home amount.",
+    noLink: payNoLink,
     intuition:
-      "Gross pay is what a worker earns before anything is taken out. Deductions, such as taxes and a health plan, are amounts withheld from it. Net pay, or take-home pay, is what remains: gross pay minus all the deductions.",
+      "Gross pay is the amount a worker earns before anything is taken out. A tax is the money people pay to the government. A deduction is an amount taken out of pay, such as a tax or a health plan payment. Net pay, also called take-home pay, is what is left: gross pay minus all the deductions. Pay amounts are decimals: numbers with a decimal point, such as 52.40 dollars.",
     terms: ["gross-pay", "deduction", "net-pay"],
     method: [
-      "If pay is by the hour, multiply the hours by the hourly pay to get gross pay.",
-      "Add the deductions into one total with the decimal points lined up.",
-      "Net pay is gross pay minus total deductions. Gross pay is net pay plus total deductions. A missing deduction is gross minus net minus the known deductions.",
+      "If pay is by the hour, multiply the hours by the pay for one hour to get gross pay.",
+      "Add the deductions into one total, with the decimal points lined up.",
+      "Net pay is gross pay minus the total deductions. Gross pay is net pay plus the total deductions. A missing deduction is gross pay minus net pay minus the known deductions.",
     ],
     watch:
-      "Net pay is smaller than gross pay. Subtract every listed deduction, and add them back, not subtract again, when going from net to gross.",
+      "Net pay is never more than gross pay. Subtract every deduction. To go from net pay back to gross pay, add the deductions back instead of subtracting them again.",
   },
 };
 
@@ -88,9 +99,9 @@ export const remainingGapPrinciples: Record<string, string> = {
   "stem-leaf-read":
     "In a stem-and-leaf plot, each value is its stem followed by its leaf, read according to the key. The values are arranged in increasing order, with each leaf repeated for each occurrence of its value. The median of $n$ ordered values is the value in position $\\frac{n+1}{2}$ when $n$ is odd and the mean of the values in positions $\\frac{n}{2}$ and $\\frac{n}{2}+1$ when $n$ is even.",
   "budget-category-balance":
-    "For income $I$ and expenses $E_1,\\dots,E_k$, the balance is $I-(E_1+\\dots+E_k)$. A positive balance is a surplus and a negative balance is a deficit of its absolute value. The budget balances exactly when the balance is $0$.",
+    "For income $I$ and expenses $E_1, \\dots, E_k$, income minus expenses is $I-(E_1+\\dots+E_k)$. Here $E_1$ is the first expense, $E_2$ the second, and so on up to $E_k$, the last. When income minus expenses is more than 0, it is a surplus. When it is less than 0, the deficit is the expenses minus the income. The budget balances exactly when income minus expenses is $0$.",
   "gross-net-pay":
-    "If gross pay is $G$ and the deductions are $D_1,\\dots,D_k$, then net pay is $N=G-(D_1+\\dots+D_k)$. Equivalently, $G=N+(D_1+\\dots+D_k)$ and the total deductions equal $G-N$.",
+    "If gross pay is $G$ and the deductions are $D_1, \\dots, D_k$, then net pay is $N=G-(D_1+\\dots+D_k)$. Here $D_1$ is the first deduction, $D_2$ the second, and so on up to $D_k$, the last. In the same way, $G=N+(D_1+\\dots+D_k)$, and the total deductions are $G-N$.",
 };
 
 export const remainingGapLessons: Lesson[] = [
@@ -276,11 +287,13 @@ export const remainingGapLessons: Lesson[] = [
     id: "budget-category-balance",
     title: "Balance a budget with dollars and cents",
     summary:
-      "Add the expenses, compare them with the income, and name or fix the difference.",
+      "Income is the money coming in. An expense is the money spent on one thing, such as rent or food. A budget balances when the expenses add up to exactly the income. Add the expenses, compare the total with the income, and name or fix the difference.",
     templateIds: ["budget-category-balance"],
+    senses: budgetSenses,
+    noLink: budgetNoLink,
     objectives: [
-      "Find a missing expense category by subtraction.",
-      "Name a surplus or deficit and find its amount.",
+      "Find a missing expense category by subtracting.",
+      "Name a surplus or a deficit, and find its amount.",
       "Choose the change that balances the budget.",
     ],
     sections: [
@@ -288,8 +301,9 @@ export const remainingGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Income in, expenses out",
         paragraphs: [
-          "Income is the money coming in. An expense is money going out to one category, such as rent or food. A budget balances when the expenses add up to exactly the income.",
-          "If the expenses are less, the leftover is a surplus. If the expenses are more, the shortfall is a deficit. Dollars and cents are decimals: line up the decimal points before adding or subtracting.",
+          "Income is the money coming in. An expense is the money going out for one category, such as rent or food. A category is one kind of spending. A budget is a plan for the money, and it balances when the expenses add up to exactly the income.",
+          "If the expenses are less than the income, the money left over is called a surplus. If the expenses are more than the income, the amount missing is called a deficit.",
+          "Dollars and cents are decimals: numbers with a decimal point. Line up the decimal points before you add or subtract, so cents line up with cents.",
         ],
       },
     ],
@@ -297,9 +311,9 @@ export const remainingGapLessons: Lesson[] = [
       prompt:
         "Monthly income is 640.00 dollars. Rent is 310.50, food is 148.25 and transport is 62.75 dollars. How much is left for other spending?",
       steps: [
-        "Add the expenses: $310.50+148.25+62.75=521.50$.",
-        "Subtract from the income: $640.00-521.50=118.50$.",
-        "Check: $521.50+118.50=640.00$.",
+        "Add the expenses, with the decimal points lined up: $310.50+148.25+62.75=521.50$.",
+        "The money left is the income minus the expenses: $640.00-521.50=118.50$.",
+        "Check by adding back: $521.50+118.50=640.00$, the income.",
       ],
       answer: "118.50",
       answerUnit: "dollars",
@@ -309,31 +323,33 @@ export const remainingGapLessons: Lesson[] = [
         stage: "method",
         title: "Surplus, deficit and balancing",
         paragraphs: [
-          "If the total of all expenses is 700.00 dollars and the income is 680.00 dollars, expenses exceed income by 20.00 dollars. That is a deficit of 20.00 dollars. Reducing one category by exactly 20.00 dollars makes the budget balance. Raising a category would make the deficit larger.",
+          "Suppose all the expenses total 700.00 dollars and the income is 680.00 dollars. The expenses are more than the income by 20.00 dollars. That is a deficit of 20.00 dollars.",
+          "To balance the budget, cut one category by exactly 20.00 dollars. Raising a category would make the deficit bigger.",
         ],
       },
       {
         stage: "formal",
         title: "Definition",
         paragraphs: [
-          "The balance is income minus the total of the expenses. A positive balance is a surplus, a negative balance is a deficit of its absolute value, and a balance of 0 means the budget balances.",
+          "The balance of a budget is the income minus the total of the expenses. When the balance is more than 0, it is a surplus. When it is less than 0, the expenses are more than the income, and the deficit is the expenses minus the income. A balance of 0 means the budget balances.",
         ],
       },
     ],
     pitfalls: [
       "Include every category in the total.",
       "Line up the decimal points so cents are added to cents.",
-      "A deficit is fixed by reducing spending, not by increasing a category.",
+      "Fix a deficit by cutting spending, not by raising a category.",
     ],
     parentGuide:
-      "Ask the learner to make a small budget for a month and say whether the plan has a surplus, a deficit or a balance.",
+      "Ask your child to make a small budget for one month. Then ask whether the plan has a surplus, a deficit or a balance.",
   },
   {
     id: "gross-net-pay",
     title: "Gross pay and net pay",
     summary:
-      "Gross pay is earnings before deductions; net pay is what remains after them.",
+      "Gross pay is what a worker earns before anything is taken out. A tax is the money people pay to the government. A deduction is an amount taken out of pay, such as a tax. Net pay is what is left after all the deductions. So net pay is gross pay minus the deductions.",
     templateIds: ["gross-net-pay"],
+    noLink: payNoLink,
     objectives: [
       "Tell gross pay from net pay.",
       "Find net pay, gross pay or a missing deduction.",
@@ -341,10 +357,11 @@ export const remainingGapLessons: Lesson[] = [
     sections: [
       {
         stage: "intuition",
-        title: "Earned, withheld, kept",
+        title: "Earned, taken out, kept",
         paragraphs: [
-          "Gross pay is the amount a worker earns before anything is taken out. Deductions, such as taxes or a health plan, are amounts the employer withholds. Net pay, also called take-home pay, is what the worker receives: gross pay minus the deductions.",
-          "Pay amounts are decimals in dollars and cents, so line up the decimal points when adding the deductions and subtracting.",
+          "Gross pay is the amount a worker earns before anything is taken out. A tax is the money people pay to the government. A deduction is an amount the employer takes out of pay, such as a tax or a health plan payment.",
+          "Net pay, also called take-home pay, is what the worker gets: gross pay minus the deductions.",
+          "Pay amounts are decimals: numbers with a decimal point. Line up the decimal points when you add the deductions and when you subtract.",
         ],
       },
     ],
@@ -352,9 +369,9 @@ export const remainingGapLessons: Lesson[] = [
       prompt:
         "A worker's gross pay is 420.00 dollars. Deductions are 52.40 for federal tax, 21.30 for state tax and 18.50 for a health plan. Find the net pay.",
       steps: [
-        "Add the deductions: $52.40+21.30+18.50=92.20$.",
-        "Subtract from gross pay: $420.00-92.20=327.80$.",
-        "Check: $327.80+92.20=420.00$, the gross pay.",
+        "Add the deductions, with the decimal points lined up: $52.40+21.30+18.50=92.20$.",
+        "Net pay is gross pay minus the deductions: $420.00-92.20=327.80$.",
+        "Check by adding back: $327.80+92.20=420.00$, the gross pay.",
       ],
       answer: "327.80",
       answerUnit: "dollars",
@@ -364,23 +381,25 @@ export const remainingGapLessons: Lesson[] = [
         stage: "method",
         title: "Going the other way",
         paragraphs: [
-          "To find gross pay from net pay, add the deductions back: gross pay equals net pay plus total deductions. To find one missing deduction, subtract net pay from gross pay to get all deductions, then subtract the known deductions. If pay is by the hour, multiply hours by hourly pay to get gross pay first.",
+          "To find gross pay from net pay, add the deductions back: gross pay equals net pay plus the total deductions.",
+          "To find one missing deduction, subtract net pay from gross pay. That gives all the deductions together. Then subtract the deductions you know.",
+          "If pay is by the hour, first multiply the hours by the pay for one hour to get gross pay.",
         ],
       },
       {
         stage: "formal",
         title: "Relationship",
         paragraphs: [
-          "Net pay $N$, gross pay $G$ and total deductions $D$ satisfy $N=G-D$, so $G=N+D$ and $D=G-N$.",
+          "Let $N$ be net pay, $G$ gross pay and $D$ the total deductions. Then $N=G-D$. So $G=N+D$, and $D=G-N$.",
         ],
       },
     ],
     pitfalls: [
-      "Net pay is smaller than gross pay.",
+      "Net pay is never more than gross pay.",
       "Subtract every listed deduction.",
-      "Going from net to gross, add the deductions; do not subtract them again.",
+      "Going from net pay to gross pay, add the deductions back. Do not subtract them again.",
     ],
     parentGuide:
-      "Show the learner a sample pay stub and ask which amount is earned, which amounts are withheld and which amount is kept.",
+      "Show your child a pay stub, the paper that comes with a paycheck. Ask which amount is earned, which amounts are taken out and which amount is kept.",
   },
 ];

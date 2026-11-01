@@ -2,15 +2,24 @@ import type { FacetMapping } from "./coverage";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
+const benchmarkSenses = {
+  whole: "whole",
+  part: "part",
+  difference: "difference-subtract",
+  "more than": "more-than",
+};
+
 export const benchmarkEstimateMethods: Record<string, ProblemMethod> = {
   "benchmark-fraction-estimate": {
     goal: "Round each fraction to 0, one half or 1, then add or subtract the benchmarks to estimate a sum, a difference or the amount left.",
+    senses: benchmarkSenses,
+    noLink: ["change", "changes"],
     intuition:
-      "A benchmark fraction is an easy fraction to think with: 0, one half and 1. A fraction like $\\frac{5}{9}$ is just a little more than $\\frac{1}{2}$, so it can stand in for one half when you only need to know about how much. Rounding first makes the sum or difference easy to do in your head.",
+      "A fraction names equal parts of a whole. Its numerator, the top number, counts the parts. Its denominator, the bottom number, says how many equal parts make the whole. A benchmark fraction is an easy number to compare with: 0, one half or 1. Rounding means replacing a number with the nearest easy number. $\\frac{5}{9}$ is just a little more than $\\frac{1}{2}$, so it rounds to one half. An estimate is a close answer, not an exact one.",
     terms: ["benchmark-fraction", "estimate"],
     method: [
-      "Decide which benchmark each fraction is closest to: compare its numerator with half of its denominator.",
-      "Replace each fraction with its benchmark and add or subtract the benchmarks. For the amount left from a whole, subtract the used amount from 1.",
+      "Decide which benchmark each fraction is closest to. Compare its numerator with half of its denominator: near half means one half, much less means 0, and nearly all means 1.",
+      "Replace each fraction with its benchmark. Then add or subtract the benchmarks. For the amount left from a whole, subtract the amount used from 1.",
       "Choose the answer that matches this estimate.",
     ],
     watch:
@@ -20,53 +29,58 @@ export const benchmarkEstimateMethods: Record<string, ProblemMethod> = {
 
 export const benchmarkEstimatePrinciples: Record<string, string> = {
   "benchmark-fraction-estimate":
-    "A fraction $\\frac{a}{b}$ is close to 0 when $a$ is much smaller than $\\frac{b}{2}$, close to $\\frac{1}{2}$ when $a$ is about $\\frac{b}{2}$, and close to 1 when $a$ is about $b$. Replacing each fraction by its nearest benchmark changes each by less than about $\\frac{1}{8}$, so a sum or difference of two is within about $\\frac{1}{4}$ of the estimate.",
+    "A fraction $\\frac{a}{b}$ is close to 0 when $a$ is much smaller than $\\frac{b}{2}$, close to $\\frac{1}{2}$ when $a$ is about $\\frac{b}{2}$, and close to 1 when $a$ is about $b$. In these problems each fraction is within $\\frac{1}{10}$ of its benchmark. So a sum or difference of two of them is within $\\frac{2}{10}$ of the estimate.",
 };
 
 export const benchmarkEstimateLessons = [
-  chainLesson({
-    id: "benchmark-fraction-estimate-lesson",
-    title: "Estimating with 0, one half and 1",
-    summary:
-      "Round fractions to the nearest benchmark to estimate sums, differences and amounts left.",
-    templateIds: ["benchmark-fraction-estimate"],
-    objectives: [
-      "Decide whether a fraction is closest to 0, one half or 1.",
-      "Use the benchmarks to estimate a sum, a difference or the amount left.",
-    ],
-    openingTitle: "Round to an easy fraction first",
-    opening: [
-      "The numbers 0, one half and 1 are benchmarks: easy fractions to compare with. To see which one a fraction is near, compare its top number with half of its bottom number. For $\\frac{5}{9}$, half of 9 is 4 and a half, and 5 is just above, so $\\frac{5}{9}$ is close to one half.",
-      "Once each fraction is replaced by its benchmark, the arithmetic is easy. Two fractions near one half make about 1. A fraction near 1 minus a fraction near 0 is about 1.",
-    ],
-    example: {
-      prompt:
-        "About how much of a pizza is left after friends eat $\\frac{4}{9}$ and $\\frac{1}{10}$ of it?",
-      steps: [
-        "$\\frac{4}{9}$ is close to $\\frac{1}{2}$, and $\\frac{1}{10}$ is close to 0.",
-        "The amount eaten is about $\\frac{1}{2}+0=\\frac{1}{2}$.",
-        "The amount left is about $1-\\frac{1}{2}=\\frac{1}{2}$.",
+  {
+    ...chainLesson({
+      id: "benchmark-fraction-estimate-lesson",
+      title: "Estimating with 0, one half and 1",
+      summary:
+        "A benchmark is an easy number to compare with. For fractions, the benchmarks are 0, one half and 1. Rounding means replacing a fraction with the nearest benchmark. Then sums and differences are easy to work out in your head. The answer is an estimate: close, but not exact.",
+      templateIds: ["benchmark-fraction-estimate"],
+      objectives: [
+        "Decide whether a fraction is closest to 0, one half or 1.",
+        "Use the benchmarks to estimate a sum, a difference or the amount left.",
       ],
-      answer: "About one half",
-    },
-    methodTitle: "Round, compute, answer",
-    method: [
-      "Round each fraction to 0, one half or 1.",
-      "Add or subtract the benchmarks. For the amount left from one whole, subtract the used amount from 1.",
-    ],
-    formalTitle: "Benchmarks and error",
-    formal: [
-      "$\\frac{a}{b}$ is closest to 0, $\\frac{1}{2}$ or 1 depending on whether $a$ is nearest to 0, $\\frac{b}{2}$ or $b$.",
-      "If each fraction is within $\\frac{1}{8}$ of its benchmark, a sum or difference of two is within $\\frac{1}{4}$ of the benchmark sum or difference.",
-    ],
-    pitfalls: [
-      "Giving the amount used when the question asks for the amount left.",
-      "Rounding a fraction to the wrong benchmark. Compare the top number with half of the bottom number.",
-      "Treating the estimate as exact.",
-    ],
-    parentGuide:
-      "Ask your learner whether each fraction is about none, about half or about all of a whole before they combine them.",
-  }),
+      openingTitle: "Round to an easy fraction first",
+      opening: [
+        "A fraction names equal parts of a whole. Its numerator, the top number, counts the parts. Its denominator, the bottom number, says how many equal parts make the whole.",
+        "To see which benchmark a fraction is near, compare its numerator with half of its denominator. For $\\frac{5}{9}$, half of 9 is 4 and a half. 5 is just above that, so $\\frac{5}{9}$ is close to one half. For $\\frac{1}{10}$, 1 is much less than half of 10, so $\\frac{1}{10}$ is close to 0. For $\\frac{8}{9}$, 8 is almost all of 9, so $\\frac{8}{9}$ is close to 1.",
+        "After each fraction is replaced by its benchmark, the adding or subtracting is easy. Two fractions near one half make about 1. A fraction near 1 minus a fraction near 0 is about 1.",
+      ],
+      example: {
+        prompt:
+          "About how much of a pizza is left after friends eat $\\frac{4}{9}$ and $\\frac{1}{10}$ of it?",
+        steps: [
+          "Round $\\frac{4}{9}$: half of 9 is 4 and a half, and 4 is just below it. So $\\frac{4}{9}$ is close to $\\frac{1}{2}$. Round $\\frac{1}{10}$: 1 is much less than half of 10, so $\\frac{1}{10}$ is close to 0.",
+          "Add the benchmarks to estimate the amount eaten: about $\\frac{1}{2}+0=\\frac{1}{2}$ of the pizza.",
+          "The whole pizza is 1. Subtract the amount eaten to find the amount left: about $1-\\frac{1}{2}=\\frac{1}{2}$.",
+        ],
+        answer: "About one half",
+      },
+      methodTitle: "Round, work it out, answer",
+      method: [
+        "Round each fraction to 0, one half or 1.",
+        "Add or subtract the benchmarks. For the amount left from one whole, subtract the amount used from 1.",
+      ],
+      formalTitle: "How close the estimate is",
+      formal: [
+        "$\\frac{a}{b}$ is closest to 0, to $\\frac{1}{2}$ or to 1 when $a$ is nearest to 0, to $\\frac{b}{2}$ or to $b$.",
+        "The gap between a fraction and its benchmark is how far off the estimate can be. In these problems, each fraction is within $\\frac{1}{10}$ of its benchmark. So a sum or difference of two of them is within $\\frac{2}{10}$ of the estimate.",
+      ],
+      pitfalls: [
+        "Giving the amount used when the question asks for the amount left. Subtract the amount used from 1.",
+        "Rounding a fraction to the wrong benchmark. Compare the top number with half of the bottom number.",
+        "Treating the estimate as exact. It is only close.",
+      ],
+      parentGuide:
+        "Before your child adds or subtracts, ask whether each fraction is about none, about half or about all of a whole.",
+    }),
+    senses: benchmarkSenses,
+    noLink: ["change", "changes"],
+  },
 ];
 
 export const benchmarkEstimateFacetMappings: FacetMapping[] = [
