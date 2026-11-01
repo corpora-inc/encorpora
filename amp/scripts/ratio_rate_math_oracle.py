@@ -339,7 +339,12 @@ def value(source):
     text = source.strip().replace('$', '')
     text = re.sub(r'(\d+(?:\.\d+)?)/(\d+)', r'(\1/\2)', text)
     text = text.replace('−', '-').replace('×', '*').replace('÷', '/')
-    tree = ast.parse(text, mode='eval')
+    try:
+        tree = ast.parse(text, mode='eval')
+    except SyntaxError:
+        # A malformed claim (empty, dangling operator, unbalanced bracket) is a
+        # rejection of the content, never a crash of the review.
+        raise ValueError('Unparseable arithmetic claim: ' + repr(source)) from None
 
     def visit(node):
         if isinstance(node, ast.Constant) and type(node.value) in (int, float):
@@ -352,7 +357,9 @@ def value(source):
             if op is ast.Add: return a + b
             if op is ast.Sub: return a - b
             if op is ast.Mult: return a * b
-            if op is ast.Div: return a / b
+            if op is ast.Div:
+                require(b != 0, 'Division by zero in arithmetic claim: ' + source)
+                return a / b
         raise ValueError('Unsupported arithmetic claim: ' + source)
     return visit(tree.body)
 
@@ -361,9 +368,27 @@ TRAILING = re.compile(r'[$(\d][\d ().$×÷+/−]*$')
 LEADING = re.compile(r'^[$(\d−][\d ().$×÷+/−]*')
 
 
+# Typeset arithmetic reads as its plain symbols: $\tfrac{3 \times 3}{4 \times 2}$
+# is ((3 × 3)/(4 × 2)) and $132 \div 6$ is 132 ÷ 6, so a typeset claim is
+# checked, not skipped. A whole fraction is grouped: 6 ÷ \tfrac{1}{22} is 132.
+TEX_FRACTION = re.compile(r'\\[td]?frac\{([^{}]*)\}\{([^{}]*)\}')
+TEX_OPERATORS = {r'\div': '÷', r'\times': '×', r'\cdot': '×', r'\left': '', r'\right': ''}
+
+
+def plain_arithmetic(step):
+    text = step
+    for tex, symbol in TEX_OPERATORS.items():
+        text = re.sub(re.escape(tex) + r'(?![A-Za-z])', symbol, text)
+    while True:
+        grouped = TEX_FRACTION.sub(r'((\1)/(\2))', text)
+        if grouped == text:
+            return text
+        text = grouped
+
+
 def equalities(step):
     """Check each adjacent pair in every 'a = b = c' chain; '= ?' marks an unknown."""
-    parts = step.split(' = ')
+    parts = plain_arithmetic(step).split(' = ')
     checked = 0
     for left, right in zip(parts, parts[1:]):
         if right.startswith('?'):
@@ -636,7 +661,15 @@ def review_content_mutations():
     bad = copy.deepcopy(data); bad['worksheets'][0]['problems'][1] = bad['worksheets'][0]['problems'][0]; mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][0]['problems'][0]['explanation'].append('A false check: 4 × 3 = 13.'); mutants.append(bad)
     bad = copy.deepcopy(data); bad['worksheets'][-1]['problems'][0]['answer'] = '999'; mutants.append(bad)
-    bad = copy.deepcopy(data); bad['lessons'][0]['sections'][1]['paragraphs'][1] = bad['lessons'][0]['sections'][1]['paragraphs'][1].replace('= 88', '= 86'); mutants.append(bad)
+    # Lesson prose is located by its text, not its position, so a rewrite that
+    # moves a paragraph cannot turn a mutant into an unchanged copy.
+    for old, new in [('= 88', '= 86'), (r'= $\tfrac{1}{22}$', r'= $\tfrac{1}{21}$'), (r'= $\tfrac{1}{22}$', '= $')]:
+        bad = copy.deepcopy(data)
+        paragraphs = next((section['paragraphs'] for lesson in bad['lessons'] for section in lesson['sections'] if any(old in x for x in section['paragraphs'])), None)
+        require(paragraphs is not None, 'Missing lesson mutation target: ' + old)
+        index = next(i for i, x in enumerate(paragraphs) if old in x)
+        paragraphs[index] = paragraphs[index].replace(old, new, 1)
+        mutants.append(bad)
     for index, kind in enumerate(f['kind'] for f in data['figures']):
         bad = copy.deepcopy(data)
         html = bad['figures'][index]['html']
@@ -649,6 +682,7 @@ def review_content_mutations():
     item['html'] = re.sub(r'(<g data-column="1"><line x1=")([\d.]+)', lambda m: m[1] + str(float(m[2]) + 7), item['html'], count=1)
     mutants.append(bad)
     for bad in mutants:
+        require(bad != data, 'Content mutation did not apply')
         try:
             review_ratio_rate_content(bad)
         except (ValueError, KeyError, TypeError, StopIteration, AttributeError):
