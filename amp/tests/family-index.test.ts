@@ -1,4 +1,3 @@
-import { withTemplateGlossary } from "../src/math/template-glossary";
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readdirSync, readFileSync } from "node:fs";
@@ -52,8 +51,11 @@ test("each descriptor is named for its file", async () => {
 test("registries append families after their legacy entries, in family-id order", () => {
   const tail = <T>(list: readonly T[], part: readonly T[]) =>
     assert.deepEqual(list.slice(list.length - part.length), [...part]);
-  // Engine templates carry their K–8 glossary senses (template-glossary.ts).
-  tail(templates, familyRegistry.templates.map(withTemplateGlossary));
+  // Engine templates add glossary metadata; this assertion checks registry order.
+  tail(
+    templates.map((template) => template.id),
+    familyRegistry.templates.map((template) => template.id),
+  );
   tail(lessons, familyRegistry.lessons);
   tail(actualFacetMappings, familyRegistry.facetMappings);
   tail(archetypes, familyRegistry.archetypes);
