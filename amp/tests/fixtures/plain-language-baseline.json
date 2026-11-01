@@ -1410,6 +1410,7 @@
       "terms": [
         "cent",
         "coin",
+        "decimal",
         "hundredth",
         "less-than",
         "tenth"
@@ -3878,7 +3879,8 @@
         "isosceles",
         "leg",
         "median",
-        "perimeter"
+        "perimeter",
+        "right-triangle"
       ],
       "long": []
     },
@@ -8896,6 +8898,7 @@
     "lesson:total-minus-parts": {
       "terms": [
         "decimal",
+        "denominator",
         "improper-fraction",
         "least-common-multiple",
         "mixed-number",
@@ -14097,6 +14100,7 @@
         "at-least",
         "coefficient",
         "constant",
+        "coordinate",
         "ordered-pair",
         "solution",
         "substitute",
@@ -15778,7 +15782,8 @@
         "like-terms",
         "polynomial",
         "quadratic",
-        "trinomial"
+        "trinomial",
+        "variable"
       ],
       "long": []
     },
@@ -19194,6 +19199,7 @@
         "perpendicular",
         "ratio",
         "right-angle",
+        "right-triangle",
         "sine",
         "substitute",
         "theorem"
