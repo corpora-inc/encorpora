@@ -1,97 +1,99 @@
 /**
  * Shrinks the plain-language baseline (tests/fixtures/plain-language-baseline.json).
  *
- *   npm run plain:baseline                  remove fixed violations; refuse new ones
- *   npm run plain:baseline -- --new-terms   also record violations of glossary
- *                                           terms the baseline has never named
- *                                           (a glossary entry added since)
- *   npm run plain:baseline -- --report      print counts per band; write nothing
+ *   npm run plain:baseline              remove fixed violations; refuse new ones
+ *   npm run plain:baseline -- --new-terms=id,id
+ *                                       also record violations of these glossary
+ *                                       terms, which must be entries added since
+ *                                       the baseline was written
+ *   npm run plain:baseline -- --report  print counts per band; write nothing
+ *   npm run plain:baseline -- --init    create the file when it does not exist
  *
- * The baseline only shrinks. A new violation is fixed where the text lives:
- * define the term in the sentence where it first appears on that screen, or
- * split the long sentence. `tests/plain-language.test.ts` fails on new and on
- * stale entries.
+ * The baseline only shrinks. Fix a new violation where the text lives: define
+ * the term in the sentence where it first appears on that screen, or split the
+ * long sentence. `tests/plain-language.test.ts` fails on new and stale entries.
+ * After a merge conflict in the file, take main's copy and run this again:
+ *   git checkout origin/main -- tests/fixtures/plain-language-baseline.json
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import {
   currentBaseline,
   diffBaseline,
+  plainLanguageViolations,
+  violationText,
   type PlainLanguageBaseline,
 } from "../src/content/plain-language-check";
-import { lessonUnits } from "../src/content/lesson-units";
 import { gradeBandOrder } from "../src/content/lesson-text";
+import { hasGlossaryEntry } from "../src/glossary/index";
 
 const path = new URL(
   "../tests/fixtures/plain-language-baseline.json",
   import.meta.url,
 );
 const args = process.argv.slice(2);
+const newTermsArg = args.find((a) => a.startsWith("--new-terms="));
 for (const a of args)
-  if (!["--new-terms", "--report"].includes(a))
+  if (a !== newTermsArg && !["--report", "--init"].includes(a))
     throw new Error(`Unknown option ${a}`);
 
-const current = currentBaseline();
-const baseline: PlainLanguageBaseline = existsSync(path)
-  ? JSON.parse(readFileSync(path, "utf8"))
-  : {};
-
 if (args.includes("--report")) {
-  const band = new Map(lessonUnits().map((u) => [u.id, u.band]));
-  const rows = gradeBandOrder.map((b) => {
-    const ids = Object.keys(current).filter((id) => band.get(id) === b);
-    const units = [...band.values()].filter((x) => x === b).length;
-    const terms = ids.reduce((n, id) => n + current[id]!.undefined.length, 0);
-    const long = ids.reduce((n, id) => n + current[id]!.long, 0);
-    return `| ${b} | ${units} | ${units - ids.length} | ${terms} | ${long} |`;
-  });
-  const all = Object.values(current);
+  const all = plainLanguageViolations();
+  const row = (
+    label: string,
+    screens: typeof all extends Map<string, infer V> ? V[] : never,
+  ) =>
+    `| ${label} | ${screens.length} | ${screens.filter((v) => !v.terms.length && !v.long.length).length} | ${screens.reduce((n, v) => n + v.terms.length, 0)} | ${screens.reduce((n, v) => n + v.long.length, 0)} |`;
   console.log(
     [
-      "| Band | Lessons | Clear | Undefined first uses | Long sentences |",
+      "| Band | Screens | Clear | Undefined first uses | Long sentences |",
       "| --- | ---: | ---: | ---: | ---: |",
-      ...rows,
-      `| all | ${band.size} | ${band.size - all.length} | ${all.reduce((n, v) => n + v.undefined.length, 0)} | ${all.reduce((n, v) => n + v.long, 0)} |`,
+      ...gradeBandOrder.map((b) =>
+        row(
+          b,
+          [...all.values()].filter((v) => v.band === b),
+        ),
+      ),
+      row("all", [...all.values()]),
     ].join("\n"),
   );
   process.exit(0);
 }
 
-const existed = existsSync(path);
-const { grown, stale } = diffBaseline(current, baseline);
-const known = new Set(
-  Object.values(baseline).flatMap((v) =>
-    v.undefined.map((t) => t.split("/").at(-1)!),
-  ),
-);
-// A glossary entry added after the baseline was written is new to every
-// lesson; --new-terms records those, and nothing else.
-const newTerm = (line: string) =>
-  args.includes("--new-terms") &&
-  !line.includes("long sentences") &&
-  !known.has(line.split("/").at(-1)!);
-const refused = existed ? grown.filter((g) => !newTerm(g)) : [];
+const current = currentBaseline();
+if (!existsSync(path)) {
+  if (!args.includes("--init"))
+    throw new Error(
+      "No baseline: take main's copy (git checkout origin/main -- tests/fixtures/plain-language-baseline.json); --init only creates it the first time",
+    );
+  writeFileSync(path, JSON.stringify(current, null, 2) + "\n");
+  console.log(
+    `Created the baseline: ${Object.keys(current.screens).length} screens.`,
+  );
+  process.exit(0);
+}
+const baseline: PlainLanguageBaseline = JSON.parse(readFileSync(path, "utf8"));
+const newTerms = (newTermsArg?.slice("--new-terms=".length) ?? "")
+  .split(",")
+  .filter(Boolean);
+for (const id of newTerms) {
+  if (!hasGlossaryEntry(id)) throw new Error(`No glossary entry ${id}`);
+  if (baseline.glossary.includes(id))
+    throw new Error(
+      `${id} was in the glossary when the baseline was written; define it where it is used`,
+    );
+}
+const { grown, stale } = diffBaseline(current.screens, baseline.screens);
+const allowed = (v: { term?: string }) => !!v.term && newTerms.includes(v.term);
+const refused = grown.filter((v) => !allowed(v));
 if (refused.length) {
   console.error(
-    `Refusing to grow the plain-language baseline. Define each term in the sentence where it first appears on that screen ("X is called …", "X means …", "X, the …,"), or split the sentence:\n${refused.join("\n")}`,
+    `Refusing to grow the plain-language baseline. Define each term in the sentence where it first appears on that screen ("X is called …", "X means …", "X, the …,"), or split the sentence:\n${refused.map(violationText).join("\n")}`,
   );
   process.exit(1);
 }
-// Keep only what the baseline already records, plus allowed new terms.
-const next: PlainLanguageBaseline = {};
-for (const [id, v] of Object.entries(current)) {
-  const was = baseline[id] ?? { undefined: [], long: 0 };
-  const undefinedTerms = existed
-    ? v.undefined.filter(
-        (t) => was.undefined.includes(t) || newTerm(`${id}: ${t}`),
-      )
-    : v.undefined;
-  const long = existed ? Math.min(v.long, was.long) : v.long;
-  if (undefinedTerms.length || long)
-    next[id] = { undefined: undefinedTerms, long };
-}
-writeFileSync(path, JSON.stringify(next, null, 2) + "\n");
+// Every current violation is now recorded or allowed, so the current state
+// is the shrunk baseline.
+writeFileSync(path, JSON.stringify(current, null, 2) + "\n");
 console.log(
-  existed
-    ? `Wrote ${Object.keys(next).length} lessons; removed ${stale.length} fixed violations${grown.length ? `, recorded ${grown.length} for new glossary terms` : ""}.`
-    : `Created the baseline: ${Object.keys(next).length} lessons.`,
+  `Wrote ${Object.keys(current.screens).length} screens: removed ${stale.length} fixed violations${grown.length ? `, recorded ${grown.length} for new glossary terms ${newTerms.join(", ")}` : ""}.`,
 );

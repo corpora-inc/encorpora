@@ -1,5 +1,8 @@
 import { templates } from "../math/engine";
-import { templateReplacements } from "../math/historical-templates";
+import {
+  historicalTemplates,
+  templateReplacements,
+} from "../math/historical-templates";
 import { linkTerms, type LinkContext } from "../glossary/link";
 import { methodTermDefinitions } from "../glossary/resolve";
 import type { TermId } from "../glossary/types";
@@ -7,13 +10,13 @@ import type { GradeBand } from "../curriculum/types";
 import { lessons, type Lesson } from "./lessons";
 import { methods } from "./problem-methods";
 import { principles } from "./problem-principles";
-import { lessonGlossaryContext } from "./problem-lessons";
+import { hasProblemLesson, lessonGlossaryContext } from "./problem-lessons";
 import {
   gradeBandOrder,
   referenceLessonBlocks,
   type LessonTextBlock,
 } from "./lesson-text";
-import { glossaryEntry } from "../glossary/index";
+import { glossary, glossaryEntry } from "../glossary/index";
 import { lessonUnits } from "./lesson-units";
 
 /** The plain-language rules a machine can check (`src/content/AGENTS.md`,
@@ -31,13 +34,13 @@ import { lessonUnits } from "./lesson-units";
  * changes with its generator, and `npm run review:plain` judges it. */
 export const MAX_WORDS = 35;
 
-export type PlainLanguageViolations = {
-  /** `<screen>/<term id>`: a term whose first use on that screen is not in a
-   * defining sentence. The screen is `lesson` or a template id. */
-  undefined: string[];
-  /** Sentences in a summary, intuition, opening or goal over `MAX_WORDS`. */
-  long: number;
-};
+/** One screen's violations: glossary terms whose first use there is not in a
+ * defining sentence, and the over-long sentences of its summary, intuition,
+ * opening or goal (each named by its first eight words). */
+export type ScreenViolations = { terms: TermId[]; long: string[] };
+
+/** A screen is `lesson:<lesson id>` or `practice:<template id>`. */
+export type ScreenId = string;
 
 /** Sentences of a text, split after . ! ? or ; outside `$…$`. A decimal
  * point or an abbreviation does not end a sentence. */
@@ -72,6 +75,10 @@ export function wordCount(sentence: string) {
     .filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
 }
 
+/** A long sentence's name in the baseline: its first eight words. */
+export const sentenceKey = (sentence: string) =>
+  sentence.replace(/\s+/g, " ").trim().split(" ").slice(0, 8).join(" ");
+
 const before = [
   // "… is called a hypotenuse", "we write $x^2$", "let … be"
   String.raw`(?:called|named|known as|we write|written|stands? for|denoted|let)\s+(?:an?\s+|the\s+)?["“‘']?$`,
@@ -85,8 +92,9 @@ const after = [
   // "x is a …", "factors are …", "x means …", "x stands for …", "x is called"
   String.raw`^["”’']?\s*(?:\)|s)?\s*(?:is|are)\s+(?:called\s+|also\s+)?(?:a|an|the|one|two|how|what|when|where|any|each|every|all)\b`,
   String.raw`^["”’']?\s*(?:are|means?|stands? for|refers? to|tells|names?|is short for|is written|is read|has|have)\b`,
-  // An appositive: "x, the …," "x (the …)", "x, meaning …", "x, or …", "x —"
-  String.raw`^["”’']?\s*(?:,|\(|—|–)\s*(?:the|a|an|which|that is|meaning|or|also|one|its|their|how|what|where|when|any|each|every|all)\b`,
+  // An appositive: "x, the …," "x (the …)", "x, meaning …", "x —". A list
+  // ("the slope, the intercept and the vertex") is not one.
+  String.raw`^["”’']?\s*(?:,|\(|—|–)\s*(?:the|a|an|which|that is|meaning|or|also|one|its|their|how|what|where|when|any|each|every|all)\b(?![^,;:.)]*\b(?:and|or)\b[^,;:.)]*[.;]?$)`,
   // A colon definition: "x: …"
   String.raw`^["”’']?\s*:`,
 ].map((p) => new RegExp(p, "iu"));
@@ -98,19 +106,30 @@ export function definesAt(sentence: string, start: number, end: number) {
   return before.some((p) => p.test(head)) || after.some((p) => p.test(tail));
 }
 
-/** Glossary terms in a sentence with their positions in it. */
+const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** Glossary terms in a sentence with their positions in it. The linker
+ * returns spans, not offsets (a formula span need not keep its source text),
+ * so each term is found again in the sentence: as a whole word, outside
+ * `$…$`, after the previous term. */
 function termsInSentence(sentence: string, context: LinkContext) {
   const found: { id: TermId; start: number; end: number }[] = [];
-  // Formula spans may not keep their source text, so each term is located
-  // in the sentence itself, after the previous one.
-  const lower = sentence.toLowerCase().replace(/’/g, "'");
+  const prose = sentence
+    .replace(/’/g, "'")
+    // A hyphen after a formula starts a word, as in the linker: "$y$-intercept".
+    .replace(/\$[^$]*\$-?/g, (m) => " ".repeat(m.length));
   let at = 0;
   for (const span of linkTerms(sentence, context)) {
     if (span.kind !== "term") continue;
-    const start = lower.indexOf(span.text.toLowerCase().replace(/’/g, "'"), at);
-    if (start < 0) continue;
-    found.push({ id: span.id, start, end: start + span.text.length });
-    at = start + span.text.length;
+    const word = new RegExp(
+      `(?<![\\p{L}\\p{N}'-])${escape(span.text.replace(/’/g, "'"))}(?![\\p{L}\\p{N}'-])`,
+      "giu",
+    );
+    word.lastIndex = at;
+    const match = word.exec(prose);
+    if (!match) throw new Error(`"${span.text}" not found in "${sentence}"`);
+    found.push({ id: span.id, start: match.index, end: word.lastIndex });
+    at = word.lastIndex;
   }
   return found;
 }
@@ -128,42 +147,57 @@ export function mustDefine(term: TermId, band: GradeBand) {
   );
 }
 
-/** Violations on one screen, in render order. */
+/** A block of a screen. `lengthOnly`: held to the sentence limit but not on
+ * screen. `measuredElsewhere`: its sentences are measured on another screen. */
+export type ScreenBlock = LessonTextBlock & {
+  lengthOnly?: boolean;
+  measuredElsewhere?: boolean;
+};
+
+/** Violations on one screen, walked in render order. */
 export function screenViolations(
-  screen: string,
-  blocks: LessonTextBlock[],
+  blocks: ScreenBlock[],
   context: LinkContext,
   band: GradeBand,
-): PlainLanguageViolations {
+): ScreenViolations {
   const seen = new Set<TermId>();
-  const undefinedTerms: string[] = [];
-  let long = 0;
+  const terms: TermId[] = [];
+  const long: string[] = [];
   for (const block of blocks) {
     if (block.stage === "partner") continue;
     for (const line of block.lines) {
       if (/^(Figure|Illustration): /.test(line)) continue;
       const prose = line.replace(/^(Problem|Step \d+|Choice \d+|Answer): /, "");
       for (const sentence of sentences(prose)) {
-        if (lengthStages.has(block.stage) && wordCount(sentence) > MAX_WORDS)
-          long++;
+        if (
+          lengthStages.has(block.stage) &&
+          !block.measuredElsewhere &&
+          wordCount(sentence) > MAX_WORDS
+        )
+          long.push(sentenceKey(sentence));
+        if (block.lengthOnly) continue;
         for (const { id, start, end } of termsInSentence(sentence, context)) {
           if (seen.has(id) || !mustDefine(id, band)) continue;
           seen.add(id);
-          if (!definesAt(sentence, start, end))
-            undefinedTerms.push(`${screen}/${id}`);
+          if (!definesAt(sentence, start, end)) terms.push(id);
         }
       }
     }
   }
-  return { undefined: undefinedTerms, long };
+  return { terms, long };
 }
 
+const templateById = new Map(
+  [...templates, ...historicalTemplates].map((t) => [t.id, t]),
+);
+
 /** A practice lesson's authored text in render order, as `problemLesson()`
- * builds it, without the generated example. Its goal is checked for length
- * only; the screen shows its opening. */
-export function practiceBlocks(templateId: string): LessonTextBlock[] {
+ * builds it, without the generated example. The goal is not on screen; it is
+ * held to the sentence limit only. Sentences the reference summary already
+ * shows are measured there, not again. */
+export function practiceBlocks(templateId: string): ScreenBlock[] {
   const id = templateReplacements[templateId] ?? templateId;
-  const template = templates.find((t) => t.id === templateId);
+  const template = templateById.get(templateId);
   const authored = methods[id];
   const reference = lessons.find((l) => l.templateIds.includes(id));
   const goal = authored?.goal ?? template?.description ?? "";
@@ -173,12 +207,13 @@ export function practiceBlocks(templateId: string): LessonTextBlock[] {
   const principle = principles[id];
   const terms = methodTermDefinitions(authored?.terms ?? []);
   return [
-    { stage: "intuition", label: "opening", lines: [opening] },
     {
-      stage: "method",
-      label: "method",
-      lines: authored?.method ?? [goal],
+      stage: "intuition",
+      label: "opening",
+      lines: [opening],
+      ...(opening === reference?.summary ? { measuredElsewhere: true } : {}),
     },
+    { stage: "method", label: "method", lines: authored?.method ?? [goal] },
     ...(watch
       ? [{ stage: "watch" as const, label: "watch for", lines: [watch] }]
       : []),
@@ -190,8 +225,16 @@ export function practiceBlocks(templateId: string): LessonTextBlock[] {
         ...terms.map((t) => `${t.term}: ${t.meaning}`),
       ],
     },
-    // Not rendered beside the opening; held to the sentence limit only.
-    ...(goal ? [{ stage: "goal" as const, label: "goal", lines: [goal] }] : []),
+    ...(goal && goal !== opening
+      ? [
+          {
+            stage: "goal" as const,
+            label: "goal",
+            lines: [goal],
+            lengthOnly: true,
+          },
+        ]
+      : []),
   ];
 }
 
@@ -200,88 +243,94 @@ const lessonContext = (lesson: Lesson): LinkContext => ({
   noLink: lesson.noLink,
 });
 
-/** Every lesson unit's violations, keyed by unit id (`lessonUnits()`). */
-export function plainLanguageViolations(): Record<
-  string,
-  PlainLanguageViolations & { band: GradeBand }
+/** Every screen's violations and band: each reference lesson, then the
+ * practice lesson of every template. */
+export function plainLanguageViolations(): Map<
+  ScreenId,
+  ScreenViolations & { band: GradeBand }
 > {
-  const out: Record<string, PlainLanguageViolations & { band: GradeBand }> = {};
+  const out = new Map<ScreenId, ScreenViolations & { band: GradeBand }>();
   for (const unit of lessonUnits()) {
-    const screens: PlainLanguageViolations[] = [];
     if (unit.lesson)
-      screens.push(
-        screenViolations(
-          "lesson",
+      out.set(`lesson:${unit.lesson.id}`, {
+        band: unit.band,
+        ...screenViolations(
           referenceLessonBlocks(unit.lesson),
           lessonContext(unit.lesson),
           unit.band,
         ),
-      );
+      });
     for (const templateId of unit.templateIds) {
-      const blocks = practiceBlocks(templateId);
+      if (!hasProblemLesson(templateId)) continue;
       const context = lessonGlossaryContext(
         templateReplacements[templateId] ?? templateId,
+        templateById.get(templateId),
       );
-      // The goal is not on screen: it only counts toward sentence length.
-      const shown = screenViolations(
-        templateId,
-        blocks.filter((b) => b.stage !== "goal"),
-        context,
-        unit.band,
-      );
-      const goalLong = blocks
-        .filter((b) => b.stage === "goal")
-        .flatMap((b) => b.lines.flatMap(sentences))
-        .filter((s) => wordCount(s) > MAX_WORDS).length;
-      screens.push({ undefined: shown.undefined, long: shown.long + goalLong });
+      out.set(`practice:${templateId}`, {
+        band: unit.band,
+        ...screenViolations(practiceBlocks(templateId), context, unit.band),
+      });
     }
-    out[unit.id] = {
-      band: unit.band,
-      undefined: screens.flatMap((s) => s.undefined),
-      long: screens.reduce((n, s) => n + s.long, 0),
-    };
   }
   return out;
 }
 
-/** The recorded violations: unit id → its violations. Units with none are
- * left out. */
-export type PlainLanguageBaseline = Record<string, PlainLanguageViolations>;
+/** The recorded violations. `glossary` lists the glossary ids when it was
+ * written, so a term added later can be told apart; `screens` holds every
+ * screen with a violation. */
+export type PlainLanguageBaseline = {
+  glossary: TermId[];
+  screens: Record<ScreenId, ScreenViolations>;
+};
 
 /** The current violations in baseline form, sorted for stable diffs. */
 export function currentBaseline(): PlainLanguageBaseline {
-  const out: PlainLanguageBaseline = {};
+  const screens: Record<ScreenId, ScreenViolations> = {};
   const all = plainLanguageViolations();
-  for (const id of Object.keys(all).sort()) {
-    const v = all[id]!;
-    if (v.undefined.length || v.long)
-      out[id] = { undefined: [...new Set(v.undefined)].sort(), long: v.long };
+  for (const id of [...all.keys()].sort()) {
+    const v = all.get(id)!;
+    if (v.terms.length || v.long.length)
+      screens[id] = { terms: [...v.terms].sort(), long: [...v.long].sort() };
   }
-  return out;
+  return { glossary: glossary.map((e) => e.id).sort(), screens };
 }
 
-/** What changed against the baseline: violations it does not record (grown)
- * and recorded ones that are gone (stale). */
+/** A violation, as the test and the baseline script name it. */
+export type Violation = { screen: ScreenId; term?: TermId; long?: string };
+export const violationText = (v: Violation) =>
+  v.term
+    ? `${v.screen}: "${v.term}" is not defined where it is first used`
+    : `${v.screen}: sentence over ${MAX_WORDS} words: "${v.long}…"`;
+
+/** Violations the baseline does not record (grown) and recorded ones that
+ * are gone (stale). A long sentence counts once per occurrence. */
 export function diffBaseline(
-  current: PlainLanguageBaseline,
-  baseline: PlainLanguageBaseline,
+  current: PlainLanguageBaseline["screens"],
+  baseline: PlainLanguageBaseline["screens"],
 ) {
-  const grown: string[] = [];
-  const stale: string[] = [];
-  for (const id of new Set([
+  const grown: Violation[] = [];
+  const stale: Violation[] = [];
+  const minus = (a: string[], b: string[]) => {
+    const rest = [...b];
+    return a.filter((x) => {
+      const i = rest.indexOf(x);
+      if (i < 0) return true;
+      rest.splice(i, 1);
+      return false;
+    });
+  };
+  for (const screen of new Set([
     ...Object.keys(current),
     ...Object.keys(baseline),
   ])) {
-    const now = current[id] ?? { undefined: [], long: 0 };
-    const was = baseline[id] ?? { undefined: [], long: 0 };
-    for (const term of now.undefined)
-      if (!was.undefined.includes(term)) grown.push(`${id}: ${term}`);
-    for (const term of was.undefined)
-      if (!now.undefined.includes(term)) stale.push(`${id}: ${term}`);
-    if (now.long > was.long)
-      grown.push(`${id}: ${now.long} long sentences (baseline ${was.long})`);
-    if (now.long < was.long)
-      stale.push(`${id}: ${now.long} long sentences (baseline ${was.long})`);
+    const now = current[screen] ?? { terms: [], long: [] };
+    const was = baseline[screen] ?? { terms: [], long: [] };
+    for (const term of minus(now.terms, was.terms))
+      grown.push({ screen, term });
+    for (const term of minus(was.terms, now.terms))
+      stale.push({ screen, term });
+    for (const long of minus(now.long, was.long)) grown.push({ screen, long });
+    for (const long of minus(was.long, now.long)) stale.push({ screen, long });
   }
   return { grown, stale };
 }

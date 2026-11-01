@@ -9,6 +9,7 @@ import {
   screenViolations,
   sentences,
   wordCount,
+  violationText,
   type PlainLanguageBaseline,
 } from "../src/content/plain-language-check";
 
@@ -76,7 +77,6 @@ test("only the first use on a screen must define; K–2 words are known from gra
   ];
   assert.deepEqual(
     screenViolations(
-      "lesson",
       blocks([
         "The denominator is the bottom number.",
         "Divide by the denominator.",
@@ -84,38 +84,63 @@ test("only the first use on a screen must define; K–2 words are known from gra
       ]),
       {},
       "4",
-    ).undefined,
-    ["lesson/numerator"],
+    ).terms,
+    ["numerator"],
   );
   assert.equal(mustDefine("equal", "4"), false);
   assert.equal(mustDefine("equal", "1"), true);
   assert.equal(mustDefine("denominator", "algebra-1"), true);
-  const long = Array.from({ length: 36 }, () => "word").join(" ") + ".";
-  assert.equal(screenViolations("lesson", blocks([long]), {}, "4").long, 1);
-  assert.equal(
+  // A term inside a longer word is not its use.
+  assert.deepEqual(
     screenViolations(
-      "lesson",
+      blocks(["To separate is the first step before you divide by the rate."]),
+      {},
+      "6",
+    ).terms,
+    ["rate"],
+  );
+  const long = Array.from({ length: 36 }, () => "word").join(" ") + ".";
+  assert.deepEqual(screenViolations(blocks([long]), {}, "4").long, [
+    "word word word word word word word word",
+  ]);
+  assert.deepEqual(
+    screenViolations(
       [{ stage: "method", label: "method", lines: [long] }],
       {},
       "4",
     ).long,
-    0,
+    [],
     "sentence length is held in openings and goals only",
   );
 });
 
+test("the baseline diff names each new and fixed violation", () => {
+  const was = { "lesson:a": { terms: ["slope"], long: ["one two"] } };
+  const now = { "lesson:a": { terms: ["ratio"], long: ["one two", "three"] } };
+  const { grown, stale } = diffBaseline(now, was);
+  assert.deepEqual(grown, [
+    { screen: "lesson:a", term: "ratio" },
+    { screen: "lesson:a", long: "three" },
+  ]);
+  assert.deepEqual(stale, [{ screen: "lesson:a", term: "slope" }]);
+});
+
 test("plain-language violations only shrink (tests/fixtures/plain-language-baseline.json)", () => {
-  const baseline: PlainLanguageBaseline = existsSync(BASELINE)
-    ? JSON.parse(readFileSync(BASELINE, "utf8"))
-    : {};
-  const { grown, stale } = diffBaseline(currentBaseline(), baseline);
-  assert.deepEqual(
-    grown,
-    [],
-    'New violations. Define each term in the sentence where it first appears on that screen ("X is called …", "X means …", "X, the …,", "X: …"), or split the sentence (35 words at most). A term is "<screen>/<term id>": the screen is the reference lesson or a template\'s practice lesson',
+  assert.ok(existsSync(BASELINE), "the baseline exists");
+  const baseline: PlainLanguageBaseline = JSON.parse(
+    readFileSync(BASELINE, "utf8"),
+  );
+  const { grown, stale } = diffBaseline(
+    currentBaseline().screens,
+    baseline.screens,
   );
   assert.deepEqual(
-    stale,
+    grown.map(violationText),
+    [],
+    'New violations. Define each term in the sentence where it first appears on that screen ("X is called …", "X means …", "X, the …,", "X: …"), or split the sentence (35 words at most). A screen is a reference lesson (lesson:<id>) or a template\'s practice lesson (practice:<id>)',
+  );
+  assert.deepEqual(
+    stale.map(violationText),
     [],
     "Fixed violations are still in the baseline: run npm run plain:baseline to shrink it",
   );
