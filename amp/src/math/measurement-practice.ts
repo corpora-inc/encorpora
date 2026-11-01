@@ -383,7 +383,7 @@ export function generateMeasurementProblem(
       hint = reverse
         ? `Every ${factor} ${small} make 1 ${large}. How many groups of ${factor} are in ${n}?`
         : n === 1
-          ? `How many ${small} make 1 ${large}? ${length ? `A ${word[small]} is much shorter, so the count is large.` : `A ${word[small]} is much smaller than a ${word[large]}, so the count is large.`}`
+          ? `How many ${word[small]}s make 1 ${word[large]}? ${length ? `A ${word[small]} is much shorter, so the count is large.` : `A ${word[small]} is much smaller than a ${word[large]}, so the count is large.`}`
           : `Each ${large} is ${factor} ${small}, and you have ${n} of them: ${n} groups of ${factor}.`;
       explanation = reverse
         ? [

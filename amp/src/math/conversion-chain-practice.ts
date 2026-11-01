@@ -126,7 +126,7 @@ export const conversionChain = chainFamily({
         `The ribbon is in meters but each bow is in centimeters. Use one unit before you divide.`,
         `1 meter is 100 centimeters, so the ribbon is $${v}\\times100=${cm}$ centimeters long.`,
         `Each bow uses ${m.piece} centimeters, so divide to see how many bows fit: $${cm}\\div${m.piece}$ is ${pieces} with ${cm - used} left over (the remainder).`,
-        `Check: ${pieces} bows use $${pieces}\\times${m.piece}=${used}$ centimeters. The ${cm - used} centimeters left are less than one bow needs, so they make no whole bow.`,
+        `Check: ${pieces} bows use $${pieces}\\times${m.piece}=${used}$ centimeters. ${cm - used === 1 ? "The 1 centimeter left is" : `The ${cm - used} centimeters left are`} less than one bow needs, so ${cm - used === 1 ? "it makes" : "they make"} no whole bow.`,
         `${pieces} whole bows can be made.`,
       ],
       label: "Answer (bows)",
