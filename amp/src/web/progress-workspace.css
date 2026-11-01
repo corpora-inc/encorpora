@@ -97,6 +97,8 @@
   color: var(--color-on-surface-raised);
 }
 .progress-card-stage {
+  /* A card with a one-line title; page sizes are counted in these. */
+  --progress-card-estimate: 141px;
   flex: 1;
   min-height: 0;
   overflow: auto;
@@ -413,6 +415,13 @@
   .progress-skill-card {
     padding: 14px;
     gap: 7px;
+  }
+  /* Phone cards are shorter, and a tighter gap fits one more on a page. */
+  .progress-card-stage {
+    --progress-card-estimate: 132px;
+  }
+  .progress-cards {
+    gap: 10px;
   }
   .progress-card-title {
     font-size: 1.125rem;
