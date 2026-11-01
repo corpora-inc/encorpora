@@ -490,14 +490,21 @@ export function FamilyCenter({
       <div className="family-body" ref={body}>
         {section === "security" && accountsEnabled && <AccountSecurity />}
         <Toast message={error} onDismiss={() => setError("")} />
-        {/* Confirmations overlay the page instead of pushing it down. */}
-        <Toast
-          tone="status"
-          className="family-notice"
-          message={notice}
-          persist={notice.length > 60}
-          onDismiss={() => setNotice("")}
-        />
+        {/* A short confirmation overlays the page and closes by itself. A
+            consent or deletion receipt is a record the parent reads in full:
+            it stays in place, where it cannot cover the tabs. */}
+        {notice.length > 60 ? (
+          <p className="family-notice" role="status">
+            {notice}
+          </p>
+        ) : (
+          <Toast
+            tone="status"
+            className="family-notice"
+            message={notice}
+            onDismiss={() => setNotice("")}
+          />
+        )}
         {!family ? (
           <div aria-busy="true">
             <p>Loading family details…</p>
