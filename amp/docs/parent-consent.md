@@ -78,12 +78,13 @@ Withdrawal and account-wide learning deletion cancel pending enrollment within t
 
 | Records | Deleted |
 |---|---|
-| Learner profile name, birth year, starting level, generated problems, answers, skill estimates, offline packs | 24 months after the latest of the learner's last practice activity, the family's last purchase activity (order, checkout, payment or funding request) and the scheduled end of the family's latest licence or entitlement. Uses the parent deletion path: the learner profile keeps only an opaque "Deleted learner" reference. Names on verified financial invoices follow the financial period below. |
+| Learner profile name, birth year, starting level, generated problems, answers, skill estimates, offline packs, daily workbooks | 24 months after the latest of the learner's last practice activity, the family's last purchase activity (order, checkout, payment or funding request) and the scheduled end of the family's latest licence or entitlement. Uses the parent deletion path: the learner profile keeps only an opaque "Deleted learner" reference. Names on verified financial invoices follow the financial period below. |
 | Free trial and its answers before learner setup | 14 days after it starts |
 | Trial milestone events and trial records, saved or not | 90 days after creation; a saved trial's learner follows learner retention |
 | Funnel analytics events, visitor records and checkout attribution | 90 days (`funnelEventDays`): events from when they occurred, visitor records from their last event, checkout links from creation. A converted visitor's events first add to monthly counts by event, source, device and grade band, with no visitor ID |
 | Orders, payments, refunds, licences, entitlements, webhook receipts, linked funded invoices (including a required student billing name) and their learner references | 7 years after the later of the last transaction and the end of the licence period bought. A checkout that is still the evidence of a purchase consent first follows the consent-evidence period below. |
 | Offline packs and offline answers | 30 days after the pack expires |
+| Printed workbook PDFs (copies of a learner's daily workbooks) | 24 hours after each is made; earlier with the learner's learning data |
 | "Report a problem" reports | Notes: 90 days after sending (`problemFlagNoteDays`). Reports: 365 days (`problemFlagDays`). Deleting a learner's learning data, by a parent or by retention, unlinks their reports and erases the notes first |
 | Meta browser confirmation context | At most seven days after verified payment (`advertisingContextDays`), or earlier on permission expiry or withdrawal. No query strings or learner-page context are retained |
 | First-party ad acquisition | At most 90 days per browser journey; provider withdrawal removes its account-associated evidence. The privacy worker deletes expired journeys; family exports include owned evidence without cookie handles |

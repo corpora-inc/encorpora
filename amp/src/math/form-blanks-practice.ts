@@ -221,9 +221,11 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
         sentence: built.sentence,
         hint: `Divide the numerator ${n} by the denominator ${d} to get the decimal. A percent is that decimal multiplied by 100, so move the decimal point two places to the right.`,
         explanation: [
-          `Divide: $${n}\\div ${d}=${decimalText}$.`,
-          `Multiply by 100 to write it as a percent: $${decimalText}\\times 100=${dec(percent)}$, so ${percentText}.`,
-          `Check: ${percentText} means ${dec(percent)} out of 100, which is $${frac(n, d)}$ in lowest terms.`,
+          `A fraction bar means divide: $${frac(n, d)}$ is the top number, ${n}, divided by the bottom number, ${d}.`,
+          `Divide: $${n}\\div ${d}=${decimalText}$, so the decimal is ${decimalText}.`,
+          `A percent means "out of 100", so multiply the decimal by 100: $${decimalText}\\times 100=${dec(percent)}$.`,
+          `Check: ${percentText} means ${dec(percent)} out of 100, which simplifies back to $${frac(n, d)}$.`,
+          `So $${frac(n, d)}$ is ${decimalText} as a decimal and ${percentText} as a percent.`,
         ],
       });
     },
@@ -280,9 +282,10 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
         sentence: built.sentence,
         hint: `In ${text}, the digits to the left of the decimal point give the whole number. Count the digits to the right of the point: that count tells whether the fraction part is in tenths or hundredths.`,
         explanation: [
-          `The whole part is ${whole}.`,
+          `A mixed number is a whole number and a fraction together. The digits left of the decimal point give the whole number, ${whole}.`,
           `The digits after the decimal point are ${hundredths ? `${String(frac100).padStart(2, "0")}, which is ${frac100} ${frac100 === 1 ? "hundredth" : "hundredths"}` : `${frac100}, which is ${frac100} ${frac100 === 1 ? "tenth" : "tenths"}`}, written as $${frac(frac100, den)}$.`,
-          `So ${text} $=${whole}\\frac{${frac100}}{${den}}$.`,
+          `Put the whole number and the fraction together: ${text} $=${whole}\\frac{${frac100}}{${den}}$.`,
+          `So ${text} written as a mixed number is $${whole}\\frac{${frac100}}{${den}}$.`,
         ],
       });
     },
@@ -334,10 +337,16 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
         label: "Choose the solution of each inequality",
         slots,
         hint: `In $${tex(first)}$ the coefficient of $x$ is ${mn(first.a)}, a negative number. Undo the constant first, then divide both sides by ${mn(first.a)}, and think about what dividing by a negative number does to the direction of the inequality.`,
-        explanation: [first, second].map((q) => {
-          const moved = q.c - q.b;
-          return `$${tex(q)}$: ${q.b === 0 ? "" : `${q.b > 0 ? `subtract ${q.b}` : `add ${-q.b}`} on both sides to get $${q.a}x${rel[q.op]}${moved}$, then `}divide both sides by ${mn(q.a)} and reverse the symbol: $x${rel[flip(q.op)]}${q.sol}$.`;
-        }),
+        explanation: [
+          `An inequality compares two sides with a symbol such as $<$ or $>$. Its solution is every value of $x$ that makes it true.`,
+          `Do the same thing to both sides, as with an equation. One rule is new: multiplying or dividing both sides by a negative number reverses the symbol.`,
+          `It reverses because negatives flip order: $2<3$, but $-2>-3$.`,
+          ...[first, second].map((q) => {
+            const moved = q.c - q.b;
+            return `$${tex(q)}$: ${q.b === 0 ? "" : `${q.b > 0 ? `subtract ${q.b}` : `add ${-q.b}`} on both sides to get $${q.a}x${rel[q.op]}${moved}$. Then `}divide both sides by ${mn(q.a)}, a negative number, so reverse the symbol: $x${rel[flip(q.op)]}${q.sol}$.`;
+          }),
+          `The solutions are $x${rel[flip(first.op)]}${first.sol}$ and $x${rel[flip(second.op)]}${second.sol}$.`,
+        ],
       });
     },
   ),
@@ -387,9 +396,11 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
         sentence: built.sentence,
         hint: `A proportion says two ratios are equal. Both ratios compare yards to meters, so yards go on the left of each colon. The conversion factor is 1 yard to ${dec(factor)} meter; the other ratio uses ${amount} yards and the unknown $x$.`,
         explanation: [
-          `The conversion factor is the ratio 1 yard : ${dec(factor)} meter.`,
-          `The amount to convert is ${amount} yards : $x$ meters, with yards first in both ratios.`,
-          `So the proportion is $1 : ${dec(factor)} = ${amount} : x$, and $x = ${dec(factor * amount)}$ meters.`,
+          `A ratio compares two amounts, such as yards to meters. A proportion says two ratios are equal.`,
+          `The conversion factor is the ratio 1 yard : ${dec(factor)} meter, so it goes first.`,
+          `The amount to convert is ${amount} yards : $x$ meters. Keep yards first in both ratios so they compare the same way.`,
+          `So the proportion is $1 : ${dec(factor)} = ${amount} : x$.`,
+          `${amount} yards is ${amount} times 1 yard, so $x = ${amount}\\times ${dec(factor)} = ${dec(factor * amount)}$. So ${amount} yards is about ${dec(factor * amount)} meters.`,
         ],
       });
     },
@@ -496,8 +507,11 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
           sentence: built.sentence,
           hint: `The ${diameter} feet is the distance across the circle. Halve it to find the radius, then use the area formula $A=\\pi r^2$ with 3.14 in place of $\\pi$.`,
           explanation: [
-            `The radius is half the diameter: $${diameter}\\div 2=${radius}$ feet.`,
-            `The area is $A=\\pi r^2\\approx 3.14\\times ${radius}^2=3.14\\times ${radius * radius}=${dec(area)}$ square feet.`,
+            `The distance across a circle through its center is the diameter. The radius is half of it: center to edge.`,
+            `So the radius is $${diameter}\\div 2=${radius}$ feet.`,
+            `The area of a circle is $A=\\pi r^2$, where $r^2$ means the radius times itself. Use 3.14 for $\\pi$.`,
+            `$A\\approx 3.14\\times ${radius}^2=3.14\\times ${radius * radius}=${dec(area)}$.`,
+            `The sign's area is about ${dec(area)} square feet.`,
           ],
         });
       }
@@ -543,8 +557,10 @@ export const formBlanksGenerate = defineGenerate(formBlanksTemplates, {
         sentence: built.sentence,
         hint: `The number $\\pi$ is the ratio of two lengths of a circle. Use the measurements ${dec(circumference)} and ${diameter}, decide which goes on top, and divide.`,
         explanation: [
-          `$\\pi$ is the ratio of the circumference to the diameter: $\\pi=C\\div d$.`,
-          `$${dec(circumference)}\\div ${diameter}=${quotient}$, so $\\pi$ is about ${quotient}.`,
+          `The circumference $C$ is the distance around a circle. The diameter $d$ is the distance across it through the center.`,
+          `For every circle, the circumference divided by the diameter is the same number, called $\\pi$: $\\pi=C\\div d$.`,
+          `$${dec(circumference)}\\div ${diameter}\\approx ${quotient}$, rounded to hundredths.`,
+          `So this circle shows that $\\pi$ is about ${quotient}.`,
         ],
       });
     },

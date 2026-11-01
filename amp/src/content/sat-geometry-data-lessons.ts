@@ -1,4 +1,5 @@
 import type { Lesson } from "./lessons";
+import { withTemplateGlossary } from "../math/template-glossary";
 import type { ProblemMethod } from "./problem-lessons";
 import {
   satGeometryDataTemplates,
@@ -144,6 +145,8 @@ export const satGeometryDataPrinciples = Object.fromEntries(
 export const satGeometryDataLessons: Lesson[] = satGeometryDataTemplates.map(
   (meta) => {
     const text = instruction[meta.id]!;
+    // The worked example is generated text: link its words as the template does.
+    const glossary = withTemplateGlossary(meta);
     const example = generateSatGeometryDataProblem(meta.id, "sat-reference");
     const response = example.public.response;
     const answer =
@@ -155,6 +158,8 @@ export const satGeometryDataLessons: Lesson[] = satGeometryDataTemplates.map(
       title: meta.title,
       summary: text.intuition,
       templateIds: [meta.id],
+      senses: glossary.glossarySenses,
+      noLink: glossary.glossaryNoLink,
       includeGeneratedRepresentation: false,
       objectives: [text.goal, text.method[0]!],
       sections: [],

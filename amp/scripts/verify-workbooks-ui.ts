@@ -86,12 +86,19 @@ const repository = {
       ) => {
         rows.find((r) => r.id === workbookId)!.paper = paper;
       },
+      workbookPdf: async () => undefined,
+      saveWorkbookPdf: async () => undefined,
     } as unknown as LearnerTransaction);
   },
 } as unknown as Repository;
 const api = buildApp({
   repository,
   development: true,
+  // The PDF path, with a stand-in renderer (the render service has its own
+  // tests); the 503 case is injected per request below.
+  workbookRenderer: {
+    render: async ({ format }) => Buffer.from(`%PDF-1.7 ${format}`),
+  },
   authenticate: async () => "parent-one",
 });
 // Earlier workbooks for the history list, composed as the API would.
@@ -181,7 +188,8 @@ const me = fixtureMe(
   "parent-one",
 );
 
-let failNextDownload = false;
+/** "pdf": the renderer is down; "all": the API cannot serve the file. */
+let failNextDownload: false | "pdf" | "all" = false;
 async function fixture(page: Page) {
   const errors: string[] = [];
   page.on("console", (message) => {
@@ -192,8 +200,13 @@ async function fixture(page: Page) {
     const request = route.request();
     const url = new URL(request.url());
     if (url.pathname.includes("/workbooks")) {
-      if (url.pathname.endsWith("/document") && failNextDownload) {
-        failNextDownload = false;
+      const failing =
+        failNextDownload &&
+        (url.pathname.endsWith("/pdf") ||
+          (failNextDownload === "all" && url.pathname.endsWith("/document")));
+      if (failing) {
+        if (url.pathname.endsWith("/document") || failNextDownload === "pdf")
+          failNextDownload = false;
         return route.fulfill({
           status: 503,
           json: {
@@ -321,12 +334,26 @@ try {
       );
       assert.deepEqual(await controlBoxes(page), before, `${label}: another`);
 
-      // A failed download explains itself in place and is logged.
-      failNextDownload = true;
+      // A renderer outage still gives the parent a printable copy.
+      failNextDownload = "pdf";
+      const [fallback] = await Promise.all([
+        page.waitForEvent("download"),
+        page.getByRole("button", { name: "Download workbook" }).click(),
+      ]);
+      assert.equal(
+        fallback.suggestedFilename(),
+        `amp-workbook-${today}-2.html`,
+      );
+      assert.equal(await page.getByRole("alert").count(), 0);
+      assert.deepEqual(await controlBoxes(page), before, `${label}: fallback`);
+
+      // A download that cannot be served explains itself in place and is
+      // logged.
+      failNextDownload = "all";
       await page.getByRole("button", { name: "Download workbook" }).click();
       await page
         .getByRole("alert")
-        .filter({ hasText: "being prepared" })
+        .filter({ hasText: "didn't download" })
         .waitFor();
       assert.deepEqual(await controlBoxes(page), before, `${label}: error`);
       assert.ok(
@@ -342,13 +369,10 @@ try {
         page.waitForEvent("download"),
         page.getByRole("button", { name: "Download workbook" }).click(),
       ]);
-      assert.equal(
-        download.suggestedFilename(),
-        `amp-workbook-${today}-2.html`,
-      );
+      assert.equal(download.suggestedFilename(), `amp-workbook-${today}-2.pdf`);
       await page
         .getByRole("alert")
-        .filter({ hasText: "being prepared" })
+        .filter({ hasText: "didn't download" })
         .waitFor({ state: "detached" });
       assert.deepEqual(await controlBoxes(page), before, `${label}: download`);
 

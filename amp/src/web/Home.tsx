@@ -1,5 +1,3 @@
-import { nativeRuntime } from "./native-runtime";
-import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { strandNames } from "./BirthYearPrompt";
 
@@ -35,21 +33,12 @@ export function Home(props: Props) {
       <section className="home-hero">
         <div>
           <h1>{props.name}</h1>
-          {f && f.overall.answered > 0 && (
-            <div className="home-level">
-              <LevelReadout estimate={f.overall} />
-            </div>
-          )}
+          <HomeLevel frontier={f} />
         </div>
         <button className="go-button" disabled={props.busy} onClick={props.go}>
           {props.resuming ? "Continue" : "Go"}
         </button>
       </section>
-      {!nativeRuntime && (
-        <Link to="/pathways" className="text-button">
-          Explore your pathways →
-        </Link>
-      )}
       <FrontierMap
         name={props.name}
         frontier={props.frontier}
@@ -62,6 +51,35 @@ export function Home(props: Props) {
         Change birth year
       </button>
     </main>
+  );
+}
+
+/** The working level, in space reserved from the first frame: while the
+ * estimate loads an invisible readout holds its place, and before any answer
+ * a short line takes that same place, so the action below never moves. */
+function HomeLevel({ frontier }: { frontier: FrontierMap | null }) {
+  const measured = !!frontier && frontier.overall.answered > 0;
+  return (
+    <div className="home-level" aria-busy={!frontier}>
+      <div
+        className="home-level-readout"
+        aria-hidden={!measured}
+        style={{ visibility: measured ? "visible" : "hidden" }}
+      >
+        <LevelReadout
+          estimate={
+            measured && frontier
+              ? frontier.overall
+              : { level: frontier?.expected ?? 4, sd: 1 }
+          }
+        />
+      </div>
+      {frontier && !measured && (
+        <p className="home-level-empty">
+          Your level appears after a few problems.
+        </p>
+      )}
+    </div>
   );
 }
 

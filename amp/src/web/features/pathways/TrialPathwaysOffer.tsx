@@ -76,7 +76,8 @@ export function TrialPathwaysOffer({
       </div>
       <div className={styles.footer}>
         <p>
-          {session.data
+          {/* While the session loads, hold the signed-in line's space. */}
+          {session.data || session.isPending
             ? "Your free practice carries into your family account. Keep building from here."
             : "Explore connected ideas, one problem at a time."}
         </p>

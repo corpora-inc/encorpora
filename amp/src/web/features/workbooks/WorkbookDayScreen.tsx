@@ -139,6 +139,8 @@ function Today({
   }, [current?.id, current?.paper, history.data]);
   const [message, setMessage] = useState("");
   const [downloading, setDownloading] = useState(false);
+  // A failed history load means no PDF flag: the printable copy still works.
+  const ready = !!current && (!!history.data || !!history.error);
   const another = useMutation({
     mutationFn: () =>
       anotherWorkbook(session, learner.id, { date, minutes, paper }),
@@ -181,7 +183,13 @@ function Today({
     setMessage("");
     setDownloading(true);
     try {
-      await downloadWorkbook(session, learner.id, current, paper);
+      await downloadWorkbook(
+        session,
+        learner.id,
+        current,
+        paper,
+        history.data?.pdf ?? false,
+      );
     } catch (error) {
       setMessage(
         workbookMessage(error, "The workbook didn't download. Try again."),
@@ -229,15 +237,11 @@ function Today({
         <Button
           variant="primary"
           className={styles.download}
-          disabled={!current || downloading}
-          aria-busy={downloading || !current}
+          disabled={!ready || downloading}
+          aria-busy={downloading || !ready}
           onClick={() => void download()}
         >
-          {downloading
-            ? "Preparing…"
-            : current
-              ? "Download workbook"
-              : "Preparing…"}
+          {ready && !downloading ? "Download workbook" : "Preparing…"}
         </Button>
         <Button
           variant="secondary"

@@ -498,7 +498,9 @@ function classifyCase(r: Random): Case {
     prompt: `Which number is ${wantIrrational ? "irrational" : "rational"}?`,
     answer: all.map((k) => ({ label: label(k), feedback: k.reason })),
     explanation: [
-      "A rational number can be written as a quotient of two integers $\\frac{a}{b}$ with $b \\neq 0$. Its decimal either ends or repeats forever. A number that cannot be written this way is irrational.",
+      "Integers are the whole numbers and their negatives. A quotient is the answer to a division.",
+      "A rational number can be written as a quotient of two integers, $\\frac{a}{b}$ with $b \\neq 0$. Its decimal either ends or repeats forever.",
+      "A number that cannot be written this way is irrational: its decimal goes on forever without repeating.",
       ...order.map((i) => all[i]!.reason),
       `The ${wantIrrational ? "irrational" : "rational"} number is ${math(correct.tex)}.`,
     ],
@@ -561,8 +563,14 @@ function repeatingCase(r: Random): Case {
       `Both tails are the same repeating block, so subtracting cancels them: $${10 ** (s + p)}x - 10x = ${big} - ${small}$, so $${denominator}x = ${numerator}$.`,
     );
   const reduced = frac(numerator, denominator);
+  explanation.splice(
+    1,
+    0,
+    "Multiplying by 10 moves every digit one place to the left. Shifting by whole repeating blocks makes two numbers with the same endless tail.",
+  );
   explanation.push(
-    `Divide by ${denominator}: $x = \\frac{${numerator}}{${denominator}}${reduced === `\\frac{${numerator}}{${denominator}}` ? "" : ` = ${reduced}`}$.`,
+    `Divide by ${denominator} to get $x$ alone: $x = \\frac{${numerator}}{${denominator}}${reduced === `\\frac{${numerator}}{${denominator}}` ? "" : ` = ${reduced}`}$.`,
+    `As a fraction in simplest form, $${tex}$ is $${reduced}$.`,
   );
   return {
     prompt: `Write $${tex}$ as a fraction in simplest form.`,
@@ -591,8 +599,11 @@ function betweenCase(r: Random): Case {
     answer: String(larger ? k + 1 : k),
     explanation: [
       `Find the perfect ${word} on either side of ${n}: $${k}^${index} = ${k ** index}$ and $${k + 1}^${index} = ${(k + 1) ** index}$.`,
+      index === 2
+        ? `A perfect square is a whole number times itself. The square root of a number is the value that, times itself, makes that number.`
+        : `A perfect cube is a whole number used as a factor three times. The cube root of a number is the value that, used three times as a factor, makes that number.`,
       `$${k ** index} < ${n} < ${(k + 1) ** index}$. A larger number has a larger ${index === 2 ? "square" : "cube"} root, so $${k} < ${root} < ${k + 1}$.`,
-      `The ${larger ? "larger" : "smaller"} whole number is ${larger ? k + 1 : k}.`,
+      `So $${root}$ lies between ${k} and ${k + 1}, and the ${larger ? "larger" : "smaller"} whole number is ${larger ? k + 1 : k}.`,
     ],
     tags: [index === 2 ? "square" : "cube", larger ? "larger" : "smaller"],
     givens: { kind: "root", radicand: n, index },
@@ -620,8 +631,9 @@ function tenthCase(r: Random): Case {
     prompt: `Find $\\sqrt{${n}}$ to the nearest tenth.`,
     answer: tenth(nearest),
     explanation: [
-      `$${k}^2 = ${k * k}$ and $${k + 1}^2 = ${(k + 1) ** 2}$. Since $${k * k} < ${n} < ${(k + 1) ** 2}$, $\\sqrt{${n}}$ is between ${k} and ${k + 1}.`,
-      `Square tenths between them: $${tenth(t)}^2 = ${squared(t, 1)}$ and $${tenth(t + 1)}^2 = ${squared(t + 1, 1)}$. Since $${squared(t, 1)} < ${n} < ${squared(t + 1, 1)}$, $\\sqrt{${n}}$ is between ${tenth(t)} and ${tenth(t + 1)}.`,
+      `$\\sqrt{${n}}$, the square root of ${n}, is the number that times itself makes ${n}. A bigger number always has a bigger square root.`,
+      `First find whole numbers around it. $${k}^2 = ${k * k}$ and $${k + 1}^2 = ${(k + 1) ** 2}$. Since $${k * k} < ${n} < ${(k + 1) ** 2}$, $\\sqrt{${n}}$ is between ${k} and ${k + 1}.`,
+      `Now narrow it to tenths by squaring tenths between them: $${tenth(t)}^2 = ${squared(t, 1)}$ and $${tenth(t + 1)}^2 = ${squared(t + 1, 1)}$. Since $${squared(t, 1)} < ${n} < ${squared(t + 1, 1)}$, $\\sqrt{${n}}$ is between ${tenth(t)} and ${tenth(t + 1)}.`,
       `The halfway point is ${midText}, and $${midText}^2 = ${midSquare}$. Since $${n} ${up ? ">" : "<"} ${midSquare}$, $\\sqrt{${n}}$ is ${up ? "above" : "below"} the halfway point, so it is closer to ${tenth(nearest)}.`,
       `To the nearest tenth, $\\sqrt{${n}} \\approx ${tenth(nearest)}$.`,
     ],
@@ -716,6 +728,7 @@ function compareCase(r: Random): Case {
     })),
     explanation: [
       `Every number here is between ${k} and ${k + 1}. Place each one between consecutive tenths.`,
+      `To place a square root, square tenths until you pass the number under the root. To place a fraction, divide its top by its bottom.`,
       ...values.map((v) => v.locate),
       `Each number is in a different tenth, so the order from least to greatest is $${ordered.map((v) => v.tex).join(" < ")}$.`,
       `The ${greatest ? "greatest" : "least"} number is ${math(target.tex)}.`,
@@ -821,6 +834,7 @@ function equationCase(r: Random): Case {
     index === 2
       ? [
           `A solution is a number whose square is ${pText}.`,
+          `Squaring a number means multiplying it by itself.`,
           form === "square-irrational"
             ? `${n} is not a perfect square, so write its positive square root with the root symbol: $(\\sqrt{${n}})^2 = ${n}$.`
             : `$${power(root)}^2 = ${p}$.`,
@@ -829,6 +843,7 @@ function equationCase(r: Random): Case {
         ]
       : [
           `A solution is a number whose cube is ${pText}.`,
+          `Cubing a number means using it as a factor three times.`,
           form === "cube-irrational"
             ? `${n} is not a perfect cube, so write its cube root with the root symbol: $(\\sqrt[3]{${n}})^3 = ${n}$.`
             : `$${power(root)}^3 = ${paren(Number(root))} \\times ${paren(Number(root))} \\times ${paren(Number(root))} = ${p}$.`,
@@ -863,8 +878,10 @@ function toStandardCase(r: Random): Case {
     answer: plain(value),
     explanation: [
       shiftSentence(c, n),
-      `Fill the empty places with zeros: $${sciTex(c, n)} = ${standardTex(value)}$.`,
+      `Standard form means the number written out with ordinary digits, with no power of 10.`,
+      `Move the point, and fill any empty places with zeros so each digit keeps its new place: $${sciTex(c, n)} = ${standardTex(value)}$.`,
       `Check: the leading digit ${String(c.m)[0]} is now in the ${placeWords[n]} place, and that place has value $10^{${n}}$.`,
+      `In standard form, $${sciTex(c, n)}$ is ${standardText(value)}.`,
     ],
     tags: [
       n > 0 ? "positive-exponent" : "negative-exponent",
@@ -927,12 +944,13 @@ function toScientificCase(r: Random): Case {
     prompt: `Write ${standardText(value)} in scientific notation.`,
     answer: [{ label: `$${correct}$` }, ...picked],
     explanation: [
-      "Scientific notation writes a number as $a \\times 10^{n}$, where $1 \\le a < 10$ and $n$ is an integer.",
+      "Scientific notation writes a number as $a \\times 10^{n}$. The coefficient $a$ is at least 1 and less than 10, and the exponent $n$ is an integer.",
       `Move the decimal point so one nonzero digit is to its left: ${standardText(value)} becomes ${plain(c)}. The digits do not change.`,
       n > 0
         ? `The point moved ${places(n)} to the left, so ${plain(c)} must be multiplied by $10^{${n}}$ to restore the value.`
         : `The point moved ${places(-n)} to the right, so ${plain(c)} must be multiplied by $10^{${n}}$, which divides by $10^{${-n}}$, to restore the value.`,
       `$${standardTex(value)} = ${correct}$.`,
+      `In scientific notation, ${standardText(value)} is $${correct}$.`,
     ],
     tags: [n > 0 ? "large" : "small"],
     givens: {
@@ -982,6 +1000,8 @@ function timesCase(r: Random): Case {
       answer: plain(answer),
       explanation: [
         `Divide $${A}$ by $${B}$: $\\frac{${A}}{${B}} = \\frac{${plain(a)}}{${plain(b)}} \\times \\frac{10^{${m}}}{10^{${n}}}$.`,
+        `"How many times as large" asks what to multiply one number by to get the other, so divide.`,
+        `Dividing powers of 10 subtracts the exponents, because the bottom's factors of 10 cancel some of the top's.`,
         `$\\frac{${plain(a)}}{${plain(b)}} = ${plain(ratio)}$ and $\\frac{10^{${m}}}{10^{${n}}} = 10^{${m} - ${paren(n)}} = 10^{${k}}$.`,
         `$${plain(ratio)} \\times 10^{${k}} = ${standardTex(answer)}$, so $${A}$ is ${standardTex(answer).replaceAll("{,}", ",")} times as large as $${B}$.`,
       ],
@@ -1055,8 +1075,11 @@ function operationCase(r: Random): Case {
           ? `Regroup the factors: $(${X}) \\times (${Y}) = (${plain(a)} \\times ${plain(b)}) \\times (10^{${p}} \\times 10^{${q}})$.`
           : `Divide coefficients and powers of 10 separately: $\\frac{${X}}{${Y}} = \\frac{${plain(a)}}{${plain(b)}} \\times \\frac{10^{${p}}}{10^{${q}}}$.`,
         op === "multiply"
-          ? `$${plain(a)} \\times ${plain(b)} = ${plain(coef)}$ and $10^{${p}} \\times 10^{${q}} = 10^{${p} + ${paren(q)}} = 10^{${exponent}}$.`
-          : `$\\frac{${plain(a)}}{${plain(b)}} = ${plain(coef)}$ and $\\frac{10^{${p}}}{10^{${q}}} = 10^{${p} - ${paren(q)}} = 10^{${exponent}}$.`,
+          ? `The order of factors does not change a product, so the coefficients and the powers of 10 can be multiplied separately.`
+          : `The coefficient is the number in front of the power of 10. Each part divides on its own, then the two results combine.`,
+        op === "multiply"
+          ? `Multiplying powers of 10 adds the exponents, because each exponent counts factors of 10. $${plain(a)} \\times ${plain(b)} = ${plain(coef)}$ and $10^{${p}} \\times 10^{${q}} = 10^{${p} + ${paren(q)}} = 10^{${exponent}}$.`
+          : `Dividing powers of 10 subtracts the exponents, because the divisor's factors of 10 cancel. $\\frac{${plain(a)}}{${plain(b)}} = ${plain(coef)}$ and $\\frac{10^{${p}}}{10^{${q}}} = 10^{${p} - ${paren(q)}} = 10^{${exponent}}$.`,
         s === 0
           ? `The coefficient ${plain(coef)} is already at least 1 and less than 10, so the result is $${sciTex(C, E)}$.`
           : s > 0
@@ -1108,6 +1131,7 @@ function operationCase(r: Random): Case {
         p === q
           ? `Both numbers have the power $10^{${p}}$, so ${op === "add" ? "add" : "subtract"} the coefficients.`
           : `Write both numbers with the power $10^{${p}}$: $${Y} = ${plain(yAligned)} \\times 10^{${p}}$. The exponent rises from ${math(String(q))} to ${math(String(p))}, so the decimal point moves ${places(p - q)} to the left, giving ${plain(yAligned)}.`,
+        `Coefficients can be added or subtracted only when the powers of 10 match, like adding tens to tens.`,
         `$${plain(a)} ${symbol} ${plain(yAligned)} = ${plain(sum)}$, so the result is $${plain(sum)} \\times 10^{${p}}$.`,
         lead(sum) === 0
           ? `The coefficient ${plain(sum)} is already at least 1 and less than 10: the result is $${sciTex(C, E)}$.`
@@ -1162,7 +1186,7 @@ function operationCase(r: Random): Case {
       answer: options,
       explanation: [
         ...explanation,
-        `Check the form: ${plain(C)} is at least 1 and less than 10.`,
+        `Check the form: ${plain(C)} is at least 1 and less than 10, so the answer is $${sciTex(C, E)}$.`,
       ],
       tags: [op, adjusted ? "adjust" : "no-adjust"],
     };
