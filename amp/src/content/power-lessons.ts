@@ -23,7 +23,7 @@ export const powerLessons: Lesson[] = [
       "power-missing-exponent",
     ],
     senses: powerSenses,
-    noLink: ["fourth", "change"],
+    noLink: ["changes", "fourth", "change"],
     objectives: [
       "Write a repeated multiplication as a power, and a power as a repeated multiplication.",
       "Find the value of a power by building it from a smaller power.",

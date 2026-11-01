@@ -319,6 +319,7 @@ export const rationalMethods: Record<string, ProblemMethod> = {
     goal: "Add or subtract two signed fractions (fractions with plus or minus signs) and give the exact answer.",
     terms: [...fractionTerms, "opposite-number"],
     senses: {
+      fourths: "fourth",
       rename: "rename",
       opposite: "opposite-number",
       factor: "factor-number",
