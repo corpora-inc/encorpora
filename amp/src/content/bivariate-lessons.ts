@@ -105,7 +105,7 @@ export const bivariateLessons: Lesson[] = [
         paragraphs: [
           "Each row of a two-way table is one group, such as dog owners. The row total counts everyone in that group. A box inside the table, called a cell, counts the people in the group who gave one answer, such as walking daily.",
           "A percent tells how many out of 100. Divide the cell count by the row total, then multiply by 100. If 12 of 20 dog owners walk daily, $12 \\div 20 = 0.6$ and $0.6 \\times 100 = 60$. So 60% of dog owners walk daily.",
-          "Compare this with the same percent among people without dogs. If the percents are far apart, the answer is clearly more common in one group. Then we say the two questions are associated in this table. Percents within a few points of each other show no clear association.",
+          "Compare this with the same percent among people without dogs. If the percents are far apart, the answer is clearly more common in one group. Then we say the two questions are associated in this table. Percents only a few points apart count as about the same.",
         ],
       },
       {
@@ -247,7 +247,7 @@ export const bivariateMethods: Record<string, ProblemMethod> = {
     terms: ["two-way-table", "percent"],
     method: [
       "Find the “Yes” percent within each row.",
-      "Compare the percents. A large gap, such as 20 percentage points or more, shows association. Percents within a few points of each other show no clear association.",
+      "Compare the percents. A percentage point is a difference of 1 between two percents, so 60% and 30% are 30 points apart. Here, percents 20 or more points apart count as associated. Percents only a few points apart count as about the same.",
     ],
     watch:
       "Compare percents, not raw counts, when the rows have different totals.",

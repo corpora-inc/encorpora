@@ -42,7 +42,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         title: "Shape decides the measures",
         paragraphs: [
           "A box plot draws five numbers. The box holds the middle half of the data. It runs from the lower quartile, $Q_1$, to the upper quartile, $Q_3$: the middles of the lower half and the upper half. The line inside the box is the median. The whiskers, the lines out from the box, reach the least value (minimum) and the greatest value (maximum).",
-          "The shape of a set of data is how its values are spread out. It is skewed right when the right whisker and the right part of the box are much longer. That long side, stretching toward higher values, is called a tail. It is skewed left when the long side is on the left. It looks roughly symmetric when the two sides match.",
+          "The shape of a set of data is how its values are spread out. A box plot suggests the data are skewed right when the right whisker and the right part of the box are much longer. That long side, stretching toward higher values, is called a tail. It suggests the data are skewed left when the long side is on the left. It looks roughly symmetric when the two sides match.",
           "A long tail tends to pull the mean toward it. The standard deviation is a measure of how far values usually are from the mean. Extreme values can make it larger too.",
           "The interquartile range is $\\text{IQR} = Q_3 - Q_1$, the width of the box. It measures how spread out the middle half is. For skewed data or data with outliers, compare medians and IQRs. For roughly symmetric data without outliers, means and standard deviations work well too.",
           "The range is the maximum minus the minimum, so it uses only the two most extreme values. One long tail can give a group the larger range even when its middle half is narrower.",
@@ -109,7 +109,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         paragraphs: [
           "A categorical variable sorts people or things into named groups, such as grade 9 or grade 12. A two-way table counts two such variables at once. Here they are a student's grade and how the student gets to school.",
           "Each row and each column adds to its total, written at the edge of the table. That edge is called the margin. The corner holds everyone surveyed, 100 students.",
-          "A percent from a table is a part divided by a whole, times 100. A relative frequency is the same thing: a count divided by a total. There are three kinds, named by their whole.",
+          "A percent from a table is a part divided by a whole, times 100. A relative frequency is the same thing: a count divided by a total. There are three kinds, depending on the part and the whole you use.",
           "A joint percent divides one inside cell by everyone. 30 of the 100 students are ninth graders who ride the bus, so that is 30%. A marginal percent divides a total in the margin by everyone. 40 of the 100 ride the bus, so that is 40%.",
           "A conditional percent divides by one row or one column only. Of the 50 ninth graders, 30 ride the bus: $30 \\div 50 = 60\\%$. Of the 40 bus riders, 30 are ninth graders: $30 \\div 40 = 75\\%$. The words after “of” name the whole.",
         ],
@@ -120,7 +120,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         paragraphs: [
           "Two variables are associated when one answer is clearly more common in one group than in another.",
           "In another survey, more twelfth graders than ninth graders ride the bus: 21 against 18. But there are 70 twelfth graders and only 30 ninth graders. Counts and joint percents also depend on how big each group is.",
-          "So find each row's percent, as if each row were its own 100%. $18 \\div 30 = 60\\%$ of ninth graders ride the bus, but only $21 \\div 70 = 30\\%$ of twelfth graders. These conditional percents are far apart, so the variables are associated in this data. A large gap, such as 20 percentage points or more, shows association. Percents within a few points of each other show no clear association.",
+          "So find each row's percent, as if each row were its own 100%. $18 \\div 30 = 60\\%$ of ninth graders ride the bus, but only $21 \\div 70 = 30\\%$ of twelfth graders. These conditional percents are far apart, so the variables are associated in this data. A percentage point is a difference of 1 between two percents, so 60% and 30% are 30 points apart. Here, percents 20 or more points apart count as associated. Percents only a few points apart count as about the same.",
         ],
         illustration: "scene-conditional-renormalize",
       },
@@ -422,11 +422,11 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "For each plot, compare the two whiskers and the two parts of the box on either side of the median.",
-      "The longer side is the tail: skewed right or skewed left. If the sides about match, the data look roughly symmetric.",
+      "A clearly longer side suggests a tail: skewed right or skewed left. If the sides about match, the data look roughly symmetric.",
       "For skewed data, compare medians and IQRs. Read the range from the whisker ends and the IQR from the box.",
     ],
     watch:
-      "A long whisker makes the range large, but it does not change the IQR. The IQR is the width of the box.",
+      "A long whisker makes the range large. The IQR depends only on the box. The IQR is the width of the box.",
   },
   "relative-frequency-percent": {
     goal: "Find a joint, marginal or conditional percent from a two-way table.",
@@ -461,7 +461,7 @@ export const algebraStatisticsMethods: Record<string, ProblemMethod> = {
     method: [
       "For a percent, find the group named after “of”. Its row or column total is what you divide by.",
       "For association, find the percent within each row who give the same answer.",
-      "A large gap, such as 20 percentage points or more, shows association. Percents within a few points of each other show no clear association.",
+      "A percentage point is a difference of 1 between two percents, so 60% and 30% are 30 points apart. Here, percents 20 or more points apart count as associated. Percents only a few points apart count as about the same.",
     ],
     watch:
       "Counts and joint percents depend on group size. Compare percents within each row.",

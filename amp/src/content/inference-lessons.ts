@@ -76,7 +76,7 @@ export const inferenceLessons: Lesson[] = [
       },
     ],
     pitfalls: [
-      "A large sample chosen in a biased way is still biased. Choosing at random matters more than size.",
+      "A large sample chosen in a biased way is still biased. Choosing at random matters, and so does size.",
       "An estimate from a sample is not exact. A different random sample could give a different answer.",
       "Multiply the sample's fraction by the population size, not by the sample size.",
     ],

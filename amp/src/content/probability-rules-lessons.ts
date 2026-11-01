@@ -126,7 +126,7 @@ export const probabilityRulesLessons: Lesson[] = [
         title: "Reversing the condition changes the probability",
         paragraphs: [
           "Swap the condition and the sample space changes. Given that a student prefers online classes, only that column of 32 students is left. 14 of them are in grade 10. So $P(\\text{grade 10} \\mid \\text{online}) = \\frac{14}{32} = \\frac{7}{16}$.",
-          "Both answers have 14 on top, the students in both groups. The bottom number is always the size of the given event. So read which event comes after the bar.",
+          "Before simplifying, both fractions have 14 on top, the students in both groups. The bottom number is the size of the given event. So read which event comes after the bar.",
         ],
         illustration: "probability-table-reverse",
       },
