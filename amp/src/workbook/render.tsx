@@ -24,7 +24,7 @@ import {
   type WorkbookItem,
   type WorkbookSpec,
 } from "./compose";
-import { workbookFontCss, workbookFontFamilies } from "./fonts";
+import { workbookFontCss } from "./fonts";
 import { workbookLayoutScript } from "./layout-script";
 import { workbookResultsUrl } from "./links";
 
@@ -757,7 +757,7 @@ function documentHtml(options: {
   return (
     "<!doctype html>" +
     renderToStaticMarkup(
-      <html lang="en" data-fonts={workbookFontFamilies(early).join("|")}>
+      <html lang="en">
         <head>
           <meta charSet="utf-8" />
           <title>{options.title}</title>

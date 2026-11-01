@@ -67,9 +67,3 @@ export function workbookFontCss(early: boolean): string {
   cache.set(key, css);
   return css;
 }
-
-/** Families the layout waits for before it measures a page. */
-export const workbookFontFamilies = (early: boolean) =>
-  early
-    ? ["WB Reading", "WB Display", "WB Early"]
-    : ["WB Reading", "WB Display"];

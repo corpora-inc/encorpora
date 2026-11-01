@@ -21,7 +21,6 @@
  */
 export const workbookLayoutScript = String.raw`(function () {
   var root = document.documentElement;
-  var families = (root.getAttribute("data-fonts") || "").split("|").filter(Boolean);
   function fail(error) {
     // Put the unpaged blocks back, so a failed layout still prints whole
     // through CSS page breaks rather than half composed.
@@ -261,12 +260,20 @@ export const workbookLayoutScript = String.raw`(function () {
     root.setAttribute("data-layout", "ready");
   }
   try {
-    // Lay out once the embedded fonts have loaded, so measurements are final.
-    document.body.getBoundingClientRect();
-    Promise.all(families.map(function (f) {
-      return Promise.all([document.fonts.load('400 16px "' + f + '"'), document.fonts.load('700 16px "' + f + '"')]);
-    })).then(function () { return document.fonts.ready; }).then(function () {
+    // Lay out once every embedded font has loaded, so measurements are
+    // final. The workbook is hidden meanwhile: a browser that reflows the
+    // whole document as each font arrives (Firefox) would otherwise spend
+    // seconds on it.
+    var wb = document.querySelector(".wb");
+    wb.style.display = "none";
+    var faces = [];
+    document.fonts.forEach(function (face) { faces.push(face.load()); });
+    Promise.all(faces).then(function () {
+      wb.style.display = "";
       try { layout(); } catch (e) { fail(e); }
-    }, fail);
+    }, function (error) {
+      wb.style.display = "";
+      fail(error);
+    });
   } catch (e) { fail(e); }
 })();`;
