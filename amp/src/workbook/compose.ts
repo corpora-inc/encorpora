@@ -448,11 +448,27 @@ export function workbookMinutes(spec: WorkbookSpec): number {
   );
 }
 
+/** JSON with object keys sorted, so a spec read back from storage (JSONB
+ * reorders keys) hashes the same as the one composed. */
+export function canonicalJson(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  if (value && typeof value === "object")
+    return `{${Object.keys(value)
+      .filter((k) => (value as Record<string, unknown>)[k] !== undefined)
+      .sort()
+      .map(
+        (k) =>
+          `${JSON.stringify(k)}:${canonicalJson((value as Record<string, unknown>)[k])}`,
+      )
+      .join(",")}}`;
+  return JSON.stringify(value);
+}
+
 /** A short code printed on the workbook so results can be entered against
  * exactly these problems later. */
 export function workbookCode(spec: WorkbookSpec): string {
   const alphabet = "ABCDEFGHJKMNPQRSTVWXYZ23456789";
-  const digest = createHash("sha256").update(JSON.stringify(spec)).digest();
+  const digest = createHash("sha256").update(canonicalJson(spec)).digest();
   const chars = Array.from(
     digest.subarray(0, 8),
     (b) => alphabet[b % alphabet.length],
