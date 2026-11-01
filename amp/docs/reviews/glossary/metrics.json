@@ -1,0 +1,722 @@
+[
+  {
+    "browser": "chromium",
+    "width": 320,
+    "colorScheme": "light",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 320,
+    "colorScheme": "light",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 320,
+    "colorScheme": "light",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 320,
+    "colorScheme": "light",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 320,
+    "colorScheme": "dark",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 320,
+    "colorScheme": "dark",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 320,
+    "colorScheme": "dark",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 320,
+    "colorScheme": "dark",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "colorScheme": "light",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "colorScheme": "light",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "colorScheme": "light",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "colorScheme": "light",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "colorScheme": "dark",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "colorScheme": "dark",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "colorScheme": "dark",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 390,
+    "colorScheme": "dark",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 768,
+    "colorScheme": "light",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 768,
+    "colorScheme": "light",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 768,
+    "colorScheme": "light",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 768,
+    "colorScheme": "light",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 768,
+    "colorScheme": "dark",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 768,
+    "colorScheme": "dark",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 768,
+    "colorScheme": "dark",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 768,
+    "colorScheme": "dark",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1024,
+    "colorScheme": "light",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1024,
+    "colorScheme": "light",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1024,
+    "colorScheme": "light",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1024,
+    "colorScheme": "light",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1024,
+    "colorScheme": "dark",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1024,
+    "colorScheme": "dark",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1024,
+    "colorScheme": "dark",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1024,
+    "colorScheme": "dark",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1280,
+    "colorScheme": "light",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1280,
+    "colorScheme": "light",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1280,
+    "colorScheme": "light",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1280,
+    "colorScheme": "light",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1280,
+    "colorScheme": "dark",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1280,
+    "colorScheme": "dark",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1280,
+    "colorScheme": "dark",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "chromium",
+    "width": 1280,
+    "colorScheme": "dark",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 320,
+    "colorScheme": "light",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 320,
+    "colorScheme": "light",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 320,
+    "colorScheme": "light",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 320,
+    "colorScheme": "light",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 320,
+    "colorScheme": "dark",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 320,
+    "colorScheme": "dark",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 320,
+    "colorScheme": "dark",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 320,
+    "colorScheme": "dark",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "colorScheme": "light",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "colorScheme": "light",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "colorScheme": "light",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "colorScheme": "light",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "colorScheme": "dark",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "colorScheme": "dark",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "colorScheme": "dark",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 390,
+    "colorScheme": "dark",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 768,
+    "colorScheme": "light",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 768,
+    "colorScheme": "light",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 768,
+    "colorScheme": "light",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 768,
+    "colorScheme": "light",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 768,
+    "colorScheme": "dark",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 768,
+    "colorScheme": "dark",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 768,
+    "colorScheme": "dark",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 768,
+    "colorScheme": "dark",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1024,
+    "colorScheme": "light",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1024,
+    "colorScheme": "light",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1024,
+    "colorScheme": "light",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1024,
+    "colorScheme": "light",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1024,
+    "colorScheme": "dark",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1024,
+    "colorScheme": "dark",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1024,
+    "colorScheme": "dark",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1024,
+    "colorScheme": "dark",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1280,
+    "colorScheme": "light",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1280,
+    "colorScheme": "light",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1280,
+    "colorScheme": "light",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1280,
+    "colorScheme": "light",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1280,
+    "colorScheme": "dark",
+    "mode": "lesson",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1280,
+    "colorScheme": "dark",
+    "mode": "modal",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1280,
+    "colorScheme": "dark",
+    "mode": "explanation",
+    "term": "hypotenuse",
+    "drilled": "side",
+    "cls": 0
+  },
+  {
+    "browser": "webkit",
+    "width": 1280,
+    "colorScheme": "dark",
+    "mode": "hint",
+    "term": "denominator",
+    "drilled": "fraction",
+    "cls": 0
+  }
+]
