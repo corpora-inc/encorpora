@@ -2,6 +2,7 @@ import {
   satCompletionTemplates,
   generateSatCompletionProblem,
 } from "./sat-completion-practice";
+import { withTemplateGlossary } from "./template-glossary";
 import {
   satGeometryDataTemplates,
   generateSatGeometryDataProblem,
@@ -634,7 +635,7 @@ export const templates: readonly TemplateMetadata[] = [
   // Frozen legacy list above. New families register through src/families/
   // (docs/content-family-playbook.md) and append here in family-id order.
   ...familyRegistry.templates,
-];
+].map(withTemplateGlossary);
 
 function gcd(a: bigint, b: bigint): bigint {
   a = a < 0n ? -a : a;

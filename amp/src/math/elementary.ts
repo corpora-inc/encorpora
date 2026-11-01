@@ -445,7 +445,7 @@ export function generateElementaryProblem(
       answer = values.reduce((s, v) => s + v, 0);
       hint = `Add the tens, ${values.map((v) => v - (v % 10)).join(" + ")}, and the ones, ${values.map((v) => v % 10).join(" + ")}, separately. Then combine them.`;
       explanation = [
-        `Each number has tens (groups of ten) and ones (single units). In ${values[0]}, the ${Math.floor(values[0]! / 10)} means ${Math.floor(values[0]! / 10)} tens, or ${values[0]! - (values[0]! % 10)}.`,
+        `Each number has tens (groups of ten) and ones. In ${values[0]}, the tens digit is ${Math.floor(values[0]! / 10)}: it stands for ${values[0]! - (values[0]! % 10)}.`,
         `Add tens with tens and ones with ones, so each place stays separate.`,
         `Tens: ${values.map((v) => v - (v % 10)).join(" + ")} = ${tens * 10}.`,
         `Ones: ${values.map((v) => v % 10).join(" + ")} = ${ones}.`,
