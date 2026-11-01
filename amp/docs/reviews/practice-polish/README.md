@@ -178,8 +178,7 @@ problem state, on any axe violation and on any invisible focus.
    × 10 with a raised blank for the exponent. `powerBase` and `powerTex` in
    `src/math/structured-work.ts` are the one rule for screen and paper.
    Covered by a render test in `tests/structured-work.test.ts`.
-   `npm run workbook:audit` still reports only the six templates already in
-   `paper-exclusions.ts`.
+   `npm run workbook:audit` passes: 0 of 1,151 templates fail on paper.
 4. **Sentence-case skill titles from one source.** Skill titles were
    built from ids in title case ("Count To 20", "Ten More Less"). Problem-type
    titles are sentence case (1,148 of 1,151). `skillTitle` in
