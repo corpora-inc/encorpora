@@ -94,8 +94,9 @@ export const volumeCoordinateLessons: Lesson[] = [
       product: "product-multiply",
       unit: "unit",
       square: "square-shape",
+      side: "side",
     },
-    noLink: ["part", "parts"],
+    noLink: ["part", "parts", "whole"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Use $V = l \\times w \\times h$, and $V = B \\times h$ with $B$ the base area, to find a volume.",
@@ -247,6 +248,7 @@ const cubeSenses = {
 };
 const prismSenses = {
   cube: "cube",
+  square: "square-shape",
   face: "face-solid",
   edge: "edge",
   base: "base-shape",

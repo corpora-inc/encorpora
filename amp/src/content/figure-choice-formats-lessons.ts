@@ -5,6 +5,9 @@ const entries: FormatLessonEntry[] = [
   {
     id: "graph-of-paired-values",
     title: "Match paired values with their graph",
+    // "rule" is the sentence that gives y from x; "3 more than" is ordinary prose.
+    senses: { rule: "rule" },
+    noLink: ["more than", "changes", "leaves"],
     summary:
       "An ordered pair is two numbers, like (2, 5), that name one point. The right graph has a dot for every pair, and no other dots.",
     objectives: [
@@ -154,16 +157,6 @@ const entries: FormatLessonEntry[] = [
 ];
 
 const built = formatLessons(entries);
-// "rule" here is the sentence that gives y from x; "3 more than" is ordinary prose.
-const pairedValues = {
-  senses: { rule: "rule" },
-  noLink: ["more than", "changes"],
-};
-Object.assign(built.methods["graph-of-paired-values"]!, pairedValues);
-Object.assign(
-  built.lessons.find((l) => l.id === "graph-of-paired-values")!,
-  pairedValues,
-);
 export const figureChoiceFormatsLessons = built.lessons;
 export const figureChoiceFormatsMethods = built.methods;
 export const figureChoiceFormatsPrinciples = built.principles;

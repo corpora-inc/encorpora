@@ -16,7 +16,7 @@ export const shapeLessons: Lesson[] = [
       solid: "solid-shape",
       cube: "cube",
     },
-    noLink: ["change"],
+    noLink: ["change", "part"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Name circles, triangles, squares, rectangles and hexagons of any size, turned any way.",
@@ -86,7 +86,7 @@ export const shapeLessons: Lesson[] = [
       "You can join small shapes to make a bigger shape. Fit them together with no gaps and no overlaps. An overlap is where one piece covers part of another. The new shape's name comes from its outline, the border all the way around the outside. A side is one straight part of that outline. A corner is where two sides meet.",
     templateIds: ["compose-shape-name", "complete-the-shape"],
     senses: { side: "side", square: "square-shape" },
-    noLink: ["part", "whole"],
+    noLink: ["part", "whole", "leaves", "third"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Name the bigger shape that smaller shapes make together.",
@@ -151,7 +151,7 @@ export const shapeLessons: Lesson[] = [
       "A side is one straight part of a flat shape's outline. A corner is where two sides meet. A triangle is a flat shape with 3 sides and 3 corners. A triangle can be big or small, tall or wide, or turned any way. It is still a triangle, because it still has 3 sides and 3 corners.",
     templateIds: ["count-sides-corners", "defining-attribute"],
     senses: { side: "side", vertex: "vertex" },
-    noLink: ["change"],
+    noLink: ["change", "part", "more than"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Count the sides and corners (vertices) of a closed shape with straight sides.",
@@ -240,7 +240,7 @@ export const shapeMethods: Record<string, ProblemMethod> = {
     intuition:
       "A side is one straight part of a flat shape's outline. A corner is the point where two sides meet. Each shape name means a set number of sides and corners. A hexagon is a shape with 6 sides and 6 corners. A circle is a perfectly round shape with no sides and no corners.",
     senses: { side: "side", square: "square-shape" },
-    noLink: ["edge"],
+    noLink: ["edge", "part"],
     terms: terms.flat,
     method: [
       "Say what the named shape must have, such as 6 straight sides for a hexagon.",
@@ -261,7 +261,7 @@ export const shapeMethods: Record<string, ProblemMethod> = {
       square: "square-shape",
       edge: "edge",
     },
-    noLink: ["side"],
+    noLink: ["side", "part", "sides"],
     terms: terms.solid,
     method: [
       "Is it perfectly round all over, with no flat faces? It is a sphere.",
@@ -276,7 +276,7 @@ export const shapeMethods: Record<string, ProblemMethod> = {
     intuition:
       "Pieces that fit with no gaps and no overlaps make one new shape. An overlap is where one piece covers another. A seam is a place inside where two pieces touch. The outline is the border around the outside. A side is one straight part of the outline. A corner is where two sides meet. A triangle is a shape with 3 sides and 3 corners.",
     senses: { side: "side", square: "square-shape" },
-    noLink: ["edge", "whole"],
+    noLink: ["edge", "whole", "part"],
     terms: terms.compose,
     method: [
       "Skip the seams inside. They are not part of the outline.",
@@ -290,7 +290,7 @@ export const shapeMethods: Record<string, ProblemMethod> = {
     intuition:
       "A gap is the empty space where a piece is missing. A side is one straight part of the gap's border. A corner is where two sides meet. A square is a shape with 4 equally long sides and 4 square corners. The right piece has the same sides and corners as the gap, and the same size. You may turn it to make it fit.",
     senses: { side: "side", square: "square-shape" },
-    noLink: ["edge"],
+    noLink: ["edge", "part"],
     terms: terms.compose,
     method: [
       "Look at the gap. Count its sides and see which are long and which are short.",
@@ -305,6 +305,7 @@ export const shapeMethods: Record<string, ProblemMethod> = {
     intuition:
       "A side is one straight part of a flat shape's outline. A corner is the point where two sides meet. Another name for a corner is a vertex. A closed shape is a shape whose outline has no gaps. In a closed shape, each side ends at a corner. So there are as many corners as sides.",
     senses: { side: "side", vertex: "vertex" },
+    noLink: ["part"],
     terms: terms.flat,
     method: [
       "Start at one corner and remember it.",
@@ -318,7 +319,7 @@ export const shapeMethods: Record<string, ProblemMethod> = {
     intuition:
       "A side is one straight part of a flat shape's outline. A corner is the point where two sides meet. A defining attribute is a feature every shape of one kind must have. A triangle is a shape with 3 sides and 3 corners, whatever its size or direction.",
     senses: { side: "side", square: "square-shape" },
-    noLink: ["change"],
+    noLink: ["change", "part"],
     terms: terms.flat,
     method: [
       "Test each sentence on every shape shown.",

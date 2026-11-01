@@ -14,8 +14,18 @@ export const angleLessons: Lesson[] = [
       vertex: "vertex",
       quarter: "fourth",
       center: "center",
+      square: "square-shape",
     },
-    noLink: ["scale", "scales", "part", "parts", "whole", "more than"],
+    noLink: [
+      "scale",
+      "scales",
+      "part",
+      "parts",
+      "whole",
+      "more than",
+      "side",
+      "edge",
+    ],
     includeGeneratedRepresentation: false,
     objectives: [
       "Explain a degree as 1 of 360 equal pieces of a full turn, and find an angle that is part of a turn.",
@@ -88,8 +98,13 @@ export const angleLessons: Lesson[] = [
       "line-relationship",
       "classify-triangle-angles",
     ],
-    senses: { vertex: "vertex", quarter: "fourth", square: "square-shape" },
-    noLink: ["plane"],
+    senses: {
+      vertex: "vertex",
+      quarter: "fourth",
+      square: "square-shape",
+      side: "side",
+    },
+    noLink: ["plane", "part", "sort", "edges"],
     includeGeneratedRepresentation: false,
     objectives: [
       "Name lines, rays and line segments, and sort angles and triangles by their angles.",
@@ -159,7 +174,17 @@ export const angleLessons: Lesson[] = [
       "Fold a paper shape in half. If the two halves match exactly, the fold line is a line of symmetry. A shape can have one line of symmetry, several, or none at all.",
     templateIds: ["symmetry-line-count", "symmetry-line-check"],
     senses: { side: "side", square: "square-shape" },
-    noLink: ["edge", "leaves", "opposite", "models"],
+    noLink: [
+      "edge",
+      "leaves",
+      "opposite",
+      "models",
+      "image",
+      "images",
+      "parts",
+      "face",
+      "faces",
+    ],
     includeGeneratedRepresentation: false,
     objectives: [
       "Decide whether a line is a line of symmetry.",
@@ -267,7 +292,7 @@ export const angleMethods: Record<string, ProblemMethod> = {
     goal: "Sort an angle as acute, right, obtuse or straight.",
     intuition: `${angleOpening} A right angle is a square corner, like the corner of a page. It measures 90 degrees, where 360 degrees make a full turn. Other angles are named by comparing them with a right angle.`,
     senses: { vertex: "vertex", degree: "degree-angle" },
-    noLink: ["change", "opposite"],
+    noLink: ["change", "opposite", "sort"],
     terms: terms.lines,
     method: [
       "Compare the opening with a square corner.",
@@ -281,6 +306,7 @@ export const angleMethods: Record<string, ProblemMethod> = {
     goal: "Name a straight figure as a line, a ray or a line segment.",
     intuition:
       "Capital letters name points, the exact places marked with dots. A line is a straight path that goes on forever both ways. A ray is a straight path that starts at one point and goes on forever one way. A segment is the straight part between two endpoints, the points where it stops.",
+    noLink: ["part"],
     terms: terms.lines,
     method: [
       "Look at each end. An arrow means the path keeps going. A dot with no arrow beyond it means the path stops there.",
@@ -307,7 +333,7 @@ export const angleMethods: Record<string, ProblemMethod> = {
     intuition:
       "A triangle is a flat shape with 3 straight sides and 3 angles. A right angle is a square corner. An acute angle is an angle narrower than a square corner. An obtuse angle is an angle wider than a square corner. A triangle is named by its largest angle.",
     senses: { side: "side", square: "square-shape" },
-    noLink: ["opposite"],
+    noLink: ["opposite", "sort"],
     terms: terms.lines,
     method: [
       "Find the largest angle. It is the one across from the longest side.",
@@ -321,7 +347,7 @@ export const angleMethods: Record<string, ProblemMethod> = {
     intuition:
       "A line of symmetry is a fold line where the two halves of a shape match exactly. Each half is the mirror image of the other. To test a fold, every side and corner on one half must land on a side or corner of the other half.",
     senses: { side: "side", square: "square-shape" },
-    noLink: ["leaves", "opposite", "edge"],
+    noLink: ["leaves", "opposite", "edge", "image"],
     terms: terms.symmetry,
     method: [
       "Try every fold that could work. Fold through two corners, through the middles of two sides, and from a corner to the middle of a side.",
@@ -335,7 +361,7 @@ export const angleMethods: Record<string, ProblemMethod> = {
     intuition:
       "A line of symmetry is a fold line where the two halves of a shape match exactly. Each half is the mirror image of the other. To test a fold, every side and corner on one half must land on a side or corner of the other half.",
     senses: { side: "side", square: "square-shape" },
-    noLink: ["opposite", "edge"],
+    noLink: ["opposite", "edge", "image"],
     terms: terms.symmetry,
     method: [
       "Imagine folding the shape along each dashed line.",

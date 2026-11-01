@@ -8,6 +8,7 @@ export const polygonLessons: Lesson[] = [
     title: "Polygons, faces, edges and vertices",
     summary:
       "A side is one straight part of a flat shape's outline. A polygon is a closed flat shape with straight sides. Closed means its outline has no gaps. A solid shape is a shape that takes up space, like a box. A face is one flat surface of a solid. An edge is where two faces meet. A vertex is a corner, where edges meet.",
+    noLink: ["part"],
     templateIds: ["name-polygon", "polygon-with-angles", "solid-parts"],
     senses: {
       side: "side",
@@ -85,6 +86,7 @@ export const polygonLessons: Lesson[] = [
     title: "Squares, rectangles and rhombuses",
     summary:
       "A quadrilateral is a flat shape with 4 straight sides. Some quadrilaterals have special names. You tell them apart by their corners and by the lengths of their sides.",
+    noLink: ["change"],
     templateIds: ["classify-quadrilateral", "find-quadrilateral"],
     senses: { side: "side", square: "square-shape" },
     includeGeneratedRepresentation: false,
@@ -245,7 +247,7 @@ export const polygonMethods: Record<string, ProblemMethod> = {
     intuition:
       "A polygon is a closed flat shape with straight sides. A side is one straight part of its outline. A corner is where two sides meet. A polygon is named by how many sides it has. A triangle is a polygon with 3 sides. A quadrilateral is a polygon with 4 sides.",
     senses: { side: "side" },
-    noLink: ["change"],
+    noLink: ["change", "part"],
     terms: terms.polygon,
     method: [
       "Start at one corner. Count the sides once around.",
@@ -269,14 +271,15 @@ export const polygonMethods: Record<string, ProblemMethod> = {
   "solid-parts": {
     goal: "Count the faces, edges or vertices of a prism or a pyramid.",
     intuition:
-      "A face is one flat surface of a solid shape. An edge is where two faces meet. A vertex is a corner, where edges meet. A side is one straight part of a flat shape's outline. A triangle is a flat shape with 3 sides. A prism has two matching ends joined by flat faces. A pyramid has triangle faces that meet at a tip. A pyramid's base is the face its triangles stand on.",
+      "A solid shape is a shape that takes up space, like a box. A face is one flat surface of a solid. An edge is where two faces meet. A vertex is a corner, where edges meet. A side is one straight part of a flat shape's outline. A triangle is a flat shape with 3 sides. A prism has two matching ends joined by flat faces. A pyramid has triangle faces that meet at a tip. A pyramid's base is the face its triangles stand on.",
     senses: {
       base: "base-shape",
       cube: "cube",
       square: "square-shape",
       side: "side",
+      solid: "solid-shape",
     },
-    noLink: ["parts"],
+    noLink: ["parts", "part"],
     terms: terms.solid,
     method: [
       "Find the base and count its sides.",
