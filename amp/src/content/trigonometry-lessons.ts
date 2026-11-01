@@ -6,20 +6,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
     goal: "For a special angle in degrees or radians, find the exact sine, cosine or tangent, or where its terminal side meets the unit circle.",
     intuition:
       "The unit circle has radius 1. An angle $\\theta$ starts on the positive $x$-axis and turns counterclockwise (or clockwise if negative). Where it stops, the point on the circle is $(\\cos\\theta,\\sin\\theta)$. The size of each coordinate depends only on the acute angle between the terminal side and the $x$-axis; the quadrant decides the signs.",
-    terms: [
-      [
-        "terminal side",
-        "The ray where the angle stops after turning from the positive $x$-axis.",
-      ],
-      [
-        "reference angle",
-        "The acute angle between the terminal side and the $x$-axis.",
-      ],
-      [
-        "coterminal angles",
-        "Angles that differ by whole turns ($360^\\circ$ or $2\\pi$) and so end at the same point.",
-      ],
-    ],
+    terms: ["terminal-side", "reference-angle", "coterminal-angles"],
     method: [
       "Subtract or add whole turns so the angle is between $0$ and a full turn.",
       "Name the quadrant and find the reference angle. On an axis, read the point $(\\pm1,0)$ or $(0,\\pm1)$ directly.",
@@ -34,14 +21,11 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
     intuition:
       "On the unit circle the angle $\\theta$ marks a point $(\\cos\\theta,\\sin\\theta)$. Turning the angle to $-\\theta$ reflects the point across the $x$-axis. Adding $\\pi$ moves it to the opposite side of the circle. Adding $2\\pi$ returns to the same point. Each move changes the coordinates in a simple, predictable way.",
     terms: [
+      ["odd-function", "Sine and tangent are odd."],
+      ["even-function", "Cosine is even: $\\cos(-x)=\\cos x$."],
       [
-        "odd function",
-        "A function with $f(-x)=-f(x)$. Sine and tangent are odd.",
-      ],
-      ["even function", "A function with $f(-x)=f(x)$. Cosine is even."],
-      [
-        "periodic",
-        "A function that repeats after a fixed shift. Sine and cosine repeat every $2\\pi$; tangent every $\\pi$.",
+        "period",
+        "Sine and cosine repeat every $2\\pi$; tangent repeats every $\\pi$.",
       ],
     ],
     method: [
@@ -57,21 +41,12 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
     intuition:
       "The graph of $y=\\sin x$ rises and falls between $-1$ and $1$ and repeats every $2\\pi$. Each constant in $y=A\\sin(B(x-h))+k$ changes one feature: $A$ stretches the height, $B$ squeezes the width, $h$ slides the graph sideways and $k$ lifts it.",
     terms: [
+      ["amplitude", "In $y=A\\sin(B(x-h))+k$ it is $|A|$."],
+      ["midline", "In $y=A\\sin(B(x-h))+k$ it is $y=k$."],
+      "period",
       [
-        "amplitude",
-        "The distance from the midline to a maximum or minimum, $|A|$.",
-      ],
-      [
-        "midline",
-        "The horizontal line $y=k$ halfway between the maximum and minimum.",
-      ],
-      [
-        "period",
-        "The horizontal length of one full cycle, $\\frac{2\\pi}{B}$ for $B>0$.",
-      ],
-      [
-        "phase shift",
-        "The horizontal slide $h$: right when the bracket is $x-h$ with $h>0$.",
+        "phase-shift",
+        "In $y=A\\sin(B(x-h))+k$ it is $h$: to the right when $h>0$.",
       ],
     ],
     method: [
@@ -89,14 +64,20 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
       "Many angles have the same sine, so the sine function has no inverse until we agree on one interval of angles. $\\arcsin v$ answers: which angle in that agreed interval has sine $v$? The same idea defines $\\arccos$ and $\\arctan$ on their own intervals.",
     terms: [
       [
-        "range of arcsin",
-        "Angles from $-\\frac{\\pi}{2}$ to $\\frac{\\pi}{2}$.",
+        "range-function",
+        "For arcsin, the outputs are the angles from $-\\frac{\\pi}{2}$ to $\\frac{\\pi}{2}$.",
       ],
-      ["range of arccos", "Angles from $0$ to $\\pi$."],
+      "inverse-trig-function",
       [
-        "range of arctan",
-        "Angles strictly between $-\\frac{\\pi}{2}$ and $\\frac{\\pi}{2}$.",
+        "range-function",
+        "For arccos, the outputs are the angles from 0 to $\\pi$.",
       ],
+      "inverse-trig-function",
+      [
+        "range-function",
+        "For arctan, the outputs are the angles strictly between $-\\frac{\\pi}{2}$ and $\\frac{\\pi}{2}$.",
+      ],
+      "inverse-trig-function",
     ],
     method: [
       "State the range of the inverse function you need.",
@@ -113,12 +94,12 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
       "A trigonometric equation asks which angles have a given sine, cosine or tangent. Because the unit circle repeats, one value usually occurs at two places in each turn. The interval tells how many turns to search.",
     terms: [
       [
-        "solution set",
-        "Every angle in the stated interval that makes the equation true.",
+        "solution-set",
+        "Here, every angle in the stated interval that makes the equation true.",
       ],
       [
-        "half-open interval",
-        "$[0,2\\pi)$ includes 0 but not $2\\pi$, so the same point is not counted twice.",
+        "interval-notation",
+        "$[0,2\\pi)$ includes 0 but not $2\\pi$, so the same angle is not counted twice.",
       ],
     ],
     method: [
@@ -134,16 +115,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
     goal: "Use $\\sin^2\\theta+\\cos^2\\theta=1$ with a quadrant, the angle-sum formulas for exact values, or $\\sin x=\\cos\\left(\\frac{\\pi}{2}-x\\right)$.",
     intuition:
       "A point $(\\cos\\theta,\\sin\\theta)$ lies on the unit circle, so its coordinates satisfy $x^2+y^2=1$. That is the Pythagorean identity. When two angles are added, the new point is found from the points of the two parts, which gives the sum formulas.",
-    terms: [
-      [
-        "identity",
-        "An equation true for every angle where both sides are defined.",
-      ],
-      [
-        "cofunction",
-        "Sine and cosine of complementary angles are equal, because their angles sum to $\\frac{\\pi}{2}$.",
-      ],
-    ],
+    terms: ["identity-equation", "cofunction-identity"],
     method: [
       "Pythagorean: solve $\\sin^2\\theta+\\cos^2\\theta=1$ for the missing size, take the square root, and choose the sign from the quadrant. Then $\\tan\\theta=\\frac{\\sin\\theta}{\\cos\\theta}$.",
       "Angle sum: write the angle as a sum or difference of special angles and use $\\sin(A\\pm B)=\\sin A\\cos B\\pm\\cos A\\sin B$, $\\cos(A\\pm B)=\\cos A\\cos B\\mp\\sin A\\sin B$.",
@@ -156,13 +128,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
     goal: "Use the law of sines or the law of cosines to find a side or angle of a non-right triangle, or count triangles in the SSA case.",
     intuition:
       "In any triangle the longest side is across from the largest angle. The law of sines says side lengths are proportional to the sines of the opposite angles. The law of cosines extends the Pythagorean theorem with a correction for the angle between two sides.",
-    terms: [
-      ["oblique triangle", "A triangle with no right angle."],
-      [
-        "SSA",
-        "Two sides and an angle not between them. It can give no triangle, one triangle or two.",
-      ],
-    ],
+    terms: ["oblique-triangle", "ssa"],
     method: [
       "Law of sines: $\\frac{a}{\\sin A}=\\frac{b}{\\sin B}=\\frac{c}{\\sin C}$, when an angle and its opposite side are known.",
       "Law of cosines: $c^2=a^2+b^2-2ab\\cos C$, for two sides and the included angle, or $\\cos C=\\frac{a^2+b^2-c^2}{2ab}$ for three sides.",
@@ -176,7 +142,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
     goal: "Find the area of a triangle from two sides and the angle between them, or find a side from the area.",
     intuition:
       "The area of a triangle is half its base times its height. If $a$ is the base and $b$ is another side meeting it at angle $C$, the height is $b\\sin C$. So the area is $\\frac12ab\\sin C$.",
-    terms: [["included angle", "The angle between the two known sides."]],
+    terms: ["included-angle"],
     method: [
       "Identify the two sides and the angle between them.",
       "Compute $\\frac12ab\\sin C$ with the exact or rounded value of $\\sin C$.",
@@ -189,10 +155,7 @@ export const trigonometryMethods: Record<string, ProblemMethod> = {
     goal: "From a maximum, minimum, period and starting position, build or use a model $h(t)=A\\cos(Bt)+k$ or $A\\sin(Bt)+k$.",
     intuition:
       "Tides, wheels and springs repeat. A sinusoid models them: it swings equally above and below a middle level. Three facts fix the model: how high and low it goes, how long one cycle takes, and where it starts.",
-    terms: [
-      ["midline", "The middle level, halfway between maximum and minimum."],
-      ["amplitude", "Half the distance from minimum to maximum."],
-    ],
+    terms: ["midline", "amplitude"],
     method: [
       "Midline $k=\\frac{\\max+\\min}{2}$; amplitude $A=\\frac{\\max-\\min}{2}$; $B=\\frac{2\\pi}{\\text{period}}$.",
       "Choose the form from the start: maximum at $t=0$ gives $+A\\cos$; minimum gives $-A\\cos$; midline moving up gives $+A\\sin$.",

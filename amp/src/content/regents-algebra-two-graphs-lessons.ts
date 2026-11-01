@@ -6,13 +6,7 @@ export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
   "log-base-fraction-graph": m(
     "Choose the graph of a logarithm whose base is between 0 and 1.",
     "Every logarithm graph passes through $(1,0)$ and stays to the right of the $y$-axis. With a base greater than 1 it rises; with a base between 0 and 1 it falls, because larger inputs give smaller logarithms.",
-    [
-      [
-        "logarithm",
-        "$\\log_b x$ is the power to which $b$ is raised to get $x$.",
-      ],
-      ["base", "The number $b$ in $\\log_b x$."],
-    ],
+    ["logarithm", "logarithm"],
     [
       "Check that the graph passes through $(1,0)$ and lies right of the $y$-axis.",
       "Decide from the base whether it rises or falls.",
@@ -23,13 +17,7 @@ export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
   "remainder-zero-graph": m(
     "Use the remainder theorem to find the graph with remainder 0.",
     "Dividing $p(x)$ by $x-r$ leaves the remainder $p(r)$. The remainder is zero exactly when the graph meets the $x$-axis at $x=r$.",
-    [
-      [
-        "remainder theorem",
-        "The remainder of $p(x)$ divided by $x-r$ is $p(r)$.",
-      ],
-      ["zero", "An input where the graph meets the $x$-axis."],
-    ],
+    ["remainder-theorem", "zero-of-a-function"],
     [
       "Write the remainder as $p(r)$.",
       "Read the height of each graph at $x=r$.",
@@ -40,10 +28,7 @@ export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
   "repeated-zero-rule": m(
     "Write a factored rule from a graph's zeros, the way it meets the axis there, and its end behavior.",
     "A graph that touches the axis and turns back at a zero comes from a squared factor. A graph that crosses comes from a factor that appears once. The sign of the leading coefficient follows the right-hand end of the graph.",
-    [
-      ["multiplicity", "The number of times a factor appears."],
-      ["leading coefficient", "The coefficient of the highest power."],
-    ],
+    ["multiplicity", "leading-coefficient"],
     [
       "List the zeros and mark which ones the graph touches and which it crosses.",
       "Write a factor $(x-r)$ for each zero and square the touching one.",
@@ -54,13 +39,7 @@ export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
   "sinusoid-compare-rule": m(
     "Compare the maximum and frequency of a graphed sine with those of a function given by a rule.",
     "For $A\\sin(Bx)$ the maximum is $A$ and the period is $\\frac{2\\pi}{B}$. Frequency is how many cycles fit in a unit of length, the reciprocal of the period, so a shorter period means a greater frequency.",
-    [
-      ["amplitude", "The distance from the midline to the maximum."],
-      [
-        "frequency",
-        "The number of cycles per unit, the reciprocal of the period.",
-      ],
-    ],
+    ["amplitude", "frequency-wave"],
     [
       "Read the maximum and the period from the graph.",
       "Find them for the rule: maximum $A$, period $\\frac{2\\pi}{B}$.",
@@ -71,13 +50,7 @@ export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
   "tide-cosine-equation": m(
     "Write $y=A\\cos(Bx)+D$ from the maximum, minimum and period of a graph.",
     "The midline is halfway between the minimum and the maximum, and the amplitude is half their distance. The period gives $B=\\frac{2\\pi}{\\text{period}}$. A graph that starts at a maximum is a cosine, and one that starts at a minimum is a negative cosine.",
-    [
-      [
-        "midline",
-        "The horizontal line halfway between the maximum and the minimum.",
-      ],
-      ["period", "The length of one full cycle."],
-    ],
+    ["midline", "period"],
     [
       "Compute the midline and amplitude from the extremes.",
       "Compute $B$ from the period.",
@@ -88,16 +61,7 @@ export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
   "cubic-graph-statement": m(
     "Read end behavior, zeros with multiplicity and increasing intervals from the graph of a cubic.",
     "A graph that touches the axis and turns back has a zero of multiplicity 2, and one that crosses has multiplicity 1. The function increases where the graph goes up from left to right, and the turning points mark where that changes.",
-    [
-      [
-        "end behavior",
-        "What the graph does far to the left and far to the right.",
-      ],
-      [
-        "increasing interval",
-        "An interval over which the graph rises from left to right.",
-      ],
-    ],
+    ["end-behavior", "increasing"],
     [
       "Find the zeros and whether the graph touches or crosses.",
       "Find the turning points.",

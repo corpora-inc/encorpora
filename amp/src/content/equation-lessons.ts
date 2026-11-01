@@ -650,13 +650,7 @@ export const equationLessons: Lesson[] = [
 export const equationMethods: Record<string, ProblemMethod> = {
   "one-step-equation": {
     goal: "Find the value of the variable in an equation with one operation.",
-    terms: [
-      ["solution", "A value of the variable that makes the equation true."],
-      [
-        "inverse operation",
-        "The operation that undoes another: − undoes +, ÷ undoes ×.",
-      ],
-    ],
+    terms: ["solution", "inverse-operation"],
     method: [
       "Name the operation applied to the variable.",
       "Do its inverse to both sides of the equation.",
@@ -667,10 +661,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
   },
   "one-step-equation-story": {
     goal: "Choose the equation that models a story and the value that solves it.",
-    terms: [
-      ["variable", "A letter for the unknown quantity the story describes."],
-      ["equation", "A statement that two expressions are equal."],
-    ],
+    terms: ["variable", "equation"],
     method: [
       "Find the one action applied to the unknown: add, take away, equal groups or sharing.",
       "Write that operation on the variable, equal to the reported result.",
@@ -681,12 +672,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
   },
   "balance-one-step": {
     goal: "Find the weight of one $x$ block on a level balance with one step.",
-    terms: [
-      [
-        "level balance",
-        "Both pans hold equal weight, like the two sides of an equation.",
-      ],
-    ],
+    terms: ["balance-scale"],
     method: [
       "Write the equation the pans show.",
       "Remove the loose cubes from both pans, or split both pans into one group per block.",
@@ -696,12 +682,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
   },
   "two-step-equation": {
     goal: "Solve $px + q = r$ or p(x + q) = r for $x$.",
-    terms: [
-      [
-        "coefficient",
-        "The number multiplying the variable, with its sign: −2 in −2x.",
-      ],
-    ],
+    terms: ["coefficient"],
     method: [
       "Name the last operation applied to $x$ and undo it on both sides.",
       "Undo the remaining operation on both sides.",
@@ -714,8 +695,8 @@ export const equationMethods: Record<string, ProblemMethod> = {
     goal: "Write and solve a two-step equation for a story.",
     terms: [
       [
-        "repeated amount",
-        "An amount that occurs once per unit of the unknown or per group.",
+        "rate",
+        "Here, the amount repeats once for each unit of the unknown or each group, so it multiplies the variable.",
       ],
     ],
     method: [
@@ -728,9 +709,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
   },
   "two-step-equation-model": {
     goal: "Choose the equation that represents a two-step story.",
-    terms: [
-      ["one-time amount", "An amount added or subtracted once, such as a fee."],
-    ],
+    terms: ["fixed-cost"],
     method: [
       "Find the amount that repeats for each unit of the unknown.",
       "Decide whether the extra amount occurs once or once in every group.",
@@ -742,8 +721,8 @@ export const equationMethods: Record<string, ProblemMethod> = {
     goal: "Find the weight of one $x$ block on a level balance with two steps.",
     terms: [
       [
-        "bag",
-        "A group holding one $x$ block and some cubes; all bags are identical.",
+        "variable",
+        "Here a bag holds one $x$ block and some cubes, and all bags are identical.",
       ],
     ],
     method: [
@@ -755,7 +734,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
   },
   "inequality-context-bound": {
     goal: "Write the inequality for a condition stated in words.",
-    terms: [["boundary", "The number the condition compares with."]],
+    terms: ["boundary"],
     method: [
       "Decide whether allowed values are greater or less than the boundary.",
       "Decide whether the boundary itself is allowed.",
@@ -766,10 +745,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
   },
   "inequality-from-number-line": {
     goal: "Name the inequality that a number-line graph shows.",
-    terms: [
-      ["open circle", "The boundary is not a solution."],
-      ["filled circle", "The boundary is a solution."],
-    ],
+    terms: ["open-circle", "closed-circle"],
     method: [
       "Read the boundary number under the circle.",
       "Open circle: > or <. Filled circle: ≥ or ≤.",
@@ -782,7 +758,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
     terms: [
       [
         "ray",
-        "The thick half-line that covers every solution and continues without end.",
+        "On a number line graph, a thick ray shows every solution and continues without end.",
       ],
     ],
     method: [
@@ -794,7 +770,7 @@ export const equationMethods: Record<string, ProblemMethod> = {
   },
   "inequality-solution-set": {
     goal: "Decide which numbers solve an inequality, and how many solutions it has.",
-    terms: [["solution", "A number that makes the inequality true."]],
+    terms: ["solution"],
     method: [
       "Substitute each number and decide whether the comparison is true.",
       "Test the boundary: it is a solution only for ≥ or ≤.",

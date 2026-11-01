@@ -182,7 +182,7 @@ export const earlyDataLessons: Lesson[] = [
 export const earlyDataMethods: Record<string, ProblemMethod> = {
   "sort-shapes-count": {
     goal: "Count the shapes in one group after sorting by kind.",
-    terms: [["sort", "Put each object in the one group it matches."]],
+    terms: ["sort"],
     method: [
       "Make a group for each kind of shape.",
       "Count the group the question names, touching each shape once.",
@@ -208,9 +208,7 @@ export const earlyDataMethods: Record<string, ProblemMethod> = {
   },
   "scaled-picture-graph": {
     goal: "Read a picture graph whose symbol stands for 2, 5 or 10 and compare rows.",
-    terms: [
-      ["key", "What one symbol stands for. Half a symbol is half the key."],
-    ],
+    terms: [["key", "Half a symbol stands for half the key's amount."]],
     method: [
       "Read the key.",
       "For each row, multiply whole symbols by the key and add half the key for a half symbol.",
@@ -221,8 +219,11 @@ export const earlyDataMethods: Record<string, ProblemMethod> = {
   "scaled-bar-graph": {
     goal: "Read bars on a scale of 2, 5 or 10 and solve one- or two-step comparisons.",
     terms: [
-      ["scale", "The amount between neighboring grid lines."],
-      ["halfway", "Half a scale step above the line below."],
+      "scale-axis",
+      [
+        "scale",
+        "A bar ending halfway between two grid lines is half a scale step above the lower line.",
+      ],
     ],
     method: [
       "Find the scale from the axis labels.",

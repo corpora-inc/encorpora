@@ -5,6 +5,8 @@ import { generateProblem, templates } from "../../src/math/engine";
 import { methods } from "../../src/content/problem-methods";
 import { principles } from "../../src/content/problem-principles";
 import { lessons } from "../../src/content/lessons";
+import { glossary } from "../../src/glossary/index";
+import { methodTermDefinitions } from "../../src/glossary/resolve";
 
 /** Mathematical typography: every symbol, variable, expression or equation a
  * learner reads is typeset as math (src/content/AGENTS.md). A text is read by
@@ -254,7 +256,7 @@ export function learnerTexts(): LearnerText[] {
     if (m) {
       add(t.id, "method goal", m.goal);
       add(t.id, "method intuition", m.intuition);
-      (m.terms ?? []).forEach(([term, meaning]) => {
+      methodTermDefinitions(m.terms ?? []).forEach(({ term, meaning }) => {
         add(t.id, "method term", term);
         add(t.id, "method term", meaning);
       });
@@ -262,6 +264,12 @@ export function learnerTexts(): LearnerText[] {
       add(t.id, "method watch", m.watch);
     }
     add(t.id, "principle", principles[t.id]);
+  }
+  for (const e of glossary) {
+    const owner = `glossary:${e.id}`;
+    title(owner, "glossary term", e.term);
+    add(owner, "glossary plain", e.plain);
+    add(owner, "glossary example", e.example);
   }
   for (const l of lessons) {
     const owner = `lesson:${l.id}`;

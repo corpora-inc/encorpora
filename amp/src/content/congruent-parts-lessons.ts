@@ -7,13 +7,7 @@ export const congruentPartsMethods: Record<string, ProblemMethod> = {
     goal: "Pick the figures of the same size and shape whose shaded part is one fourth of the whole, even when the parts are cut in different ways.",
     intuition:
       "One fourth means the whole is cut into 4 parts of the same size and 1 part is shaded. Two same-size squares can be cut in different ways, for example into strips or into a grid, and each part is still one fourth of its square.",
-    terms: [
-      ["one fourth", "One of 4 equal parts of a whole."],
-      [
-        "equal parts",
-        "Parts that cover the same amount of the whole, even if their shapes differ.",
-      ],
-    ],
+    terms: ["fourth", "equal-parts"],
     method: [
       "Count the parts in each figure and check whether they are all the same size.",
       "Count the shaded parts. One fourth is 1 shaded part of 4 equal parts.",

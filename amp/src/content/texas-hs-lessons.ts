@@ -7,20 +7,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Write a line's equation in point-slope, slope-intercept or standard form from a point and slope, two points, or another form.",
     intuition:
       "A line is fixed by one point and a slope. Each form of its equation shows that information differently: point-slope form shows a point and the slope, slope-intercept form shows the slope and the $y$-intercept, and standard form $Ax+By=C$ keeps whole-number coefficients.",
-    terms: [
-      [
-        "slope",
-        "The change in $y$ divided by the change in $x$ between any two points on the line.",
-      ],
-      [
-        "point-slope form",
-        "$y-y_1=m(x-x_1)$ for the line through $(x_1, y_1)$ with slope $m$.",
-      ],
-      [
-        "standard form",
-        "$Ax+By=C$ with integer $A$, $B$, $C$ and no common factor, usually with $A>0$.",
-      ],
-    ],
+    terms: ["slope", "point-slope-form", "standard-form-line"],
     method: [
       "If two points are given, find the slope as the change in $y$ over the change in $x$.",
       "Put the slope and one point into $y-y_1=m(x-x_1)$, subtracting each coordinate from its own variable.",
@@ -34,20 +21,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Write the line through a point parallel or perpendicular to a given line or an axis, and name slopes of horizontal and vertical lines.",
     intuition:
       "Parallel lines point the same way, so they have the same slope. Perpendicular lines meet at a right angle, so their slopes are negative reciprocals. Horizontal lines have slope 0 and vertical lines have an undefined slope, because their run is 0.",
-    terms: [
-      [
-        "negative reciprocal",
-        "For a slope $\\frac{a}{b}$, the number $-\\frac{b}{a}$. The product of perpendicular slopes is $-1$.",
-      ],
-      [
-        "horizontal line",
-        "A line $y=c$. Every point has the same $y$-coordinate, and the slope is 0.",
-      ],
-      [
-        "vertical line",
-        "A line $x=c$. Every point has the same $x$-coordinate, and the slope is undefined.",
-      ],
-    ],
+    terms: ["negative-reciprocal", "horizontal-line", "vertical-line"],
     method: [
       "Read the slope of the given line. For $Ax+By=C$, solve for $y$: the slope is $-\\frac{A}{B}$.",
       "Use the same slope for a parallel line, or the negative reciprocal for a perpendicular line.",
@@ -62,15 +36,12 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "Each quantity that changes at a steady rate from a starting value gives one equation $y=mx+b$. The rate multiplies $x$, and the starting value is the constant. A system is the pair of equations, one for each quantity.",
     terms: [
-      [
-        "system of equations",
-        "Two or more equations about the same variables.",
-      ],
+      "system-of-equations",
       [
         "rate",
-        "How much $y$ changes when $x$ increases by 1; the coefficient of $x$.",
+        "Here it is how much $y$ changes when $x$ increases by 1: the coefficient of $x$.",
       ],
-      ["starting value", "The value of $y$ when $x=0$; the constant term."],
+      "initial-value",
     ],
     method: [
       "For a table, find how much each row changes when $x$ increases by 1, then find the value at $x=0$.",
@@ -86,13 +57,10 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "Each line shows one quantity as it changes. Where the lines cross, the two quantities are equal at the same input, so that point answers questions such as when two costs are the same.",
     terms: [
-      [
-        "intersection",
-        "The point where two graphs meet. Its coordinates satisfy both equations.",
-      ],
+      "intersection-graphs",
       [
         "estimate",
-        "A value read from a graph, which may fall between grid lines.",
+        "Here it is a value read from a graph, which may fall between grid lines.",
       ],
     ],
     method: [
@@ -107,14 +75,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Write the domain and range of an exponential function or model as inequalities.",
     intuition:
       "You can raise a positive base to any real power, so an exponential function accepts every input unless a situation restricts it. Its outputs get close to a boundary line, the horizontal asymptote, without reaching it.",
-    terms: [
-      ["domain", "The set of allowed inputs."],
-      ["range", "The set of outputs the function produces."],
-      [
-        "horizontal asymptote",
-        "A horizontal line the graph approaches but, for an exponential function, never reaches.",
-      ],
-    ],
+    terms: ["domain", "range-function", "horizontal-asymptote"],
     method: [
       "State the domain: all real numbers, unless a situation limits the input, such as $t\\ge0$.",
       "Find the boundary of the range, the number added to $a\\cdot b^x$.",
@@ -129,11 +90,11 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "The absolute value $|x-c|$ is the distance between $x$ and $c$ on the number line. An equation $|x-c|=d$ asks for every number exactly $d$ units from $c$, which gives one solution on each side of $c$.",
     terms: [
+      ["absolute-value", "$|x - c|$ is the distance from $x$ to $c$."],
       [
-        "absolute value",
-        "The distance from a number to 0, or $|x-c|$ for the distance from $x$ to $c$.",
+        "center",
+        "Here the center is the number $c$ that distances are measured from.",
       ],
-      ["center", "The number $c$ that distances are measured from."],
     ],
     method: [
       "Identify the center, the point the distance is measured from.",
@@ -147,13 +108,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Write the rational equation that models a work-together, current-speed or two-speed travel situation.",
     intuition:
       "Rates tell how much happens in one unit of time. Time equals distance divided by speed, and a worker who finishes a job in $h$ hours does $\\frac{1}{h}$ of it per hour. Putting the unknown in a denominator gives a rational equation.",
-    terms: [
-      ["rate", "The amount done or distance traveled per unit of time."],
-      [
-        "rational equation",
-        "An equation containing a fraction whose denominator has the variable.",
-      ],
-    ],
+    terms: ["rate", "rational-equation"],
     method: [
       "Name the unknown and decide what each fraction measures: a rate or a time.",
       "For work, add the rates of workers who work together and set the sum equal to the team's rate, $\\frac{1}{x}$.",
@@ -167,13 +122,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Solve $x^{p/q}=k$ by raising both sides to the reciprocal power, with its sign and domain cases.",
     intuition:
       "A power $p/q$ means a $q$th root and then a $p$th power. To undo it, raise both sides to the reciprocal power $q/p$. An even power of $x$ cannot tell $x$ from $-x$, and an even root needs $x\\ge0$.",
-    terms: [
-      ["rational exponent", "$x^{p/q}=\\left(\\sqrt[q]{x}\\right)^p$."],
-      [
-        "reciprocal",
-        "The fraction turned upside down; the reciprocal of $\\frac{p}{q}$ is $\\frac{q}{p}$.",
-      ],
-    ],
+    terms: ["rational-exponent", "reciprocal"],
     method: [
       "Raise both sides to the power $\\frac{q}{p}$. The left side becomes $x$.",
       "Evaluate the right side, using a root and a power.",
@@ -187,20 +136,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Find the image of a point after a rigid motion and a dilation about a center other than the origin.",
     intuition:
       "A rigid motion moves a figure without changing its size, and a dilation scales distances from a center. Each step acts on the result of the step before, so the order can change the answer.",
-    terms: [
-      [
-        "rigid motion",
-        "A translation, reflection or rotation; it preserves distances and angles.",
-      ],
-      [
-        "dilation",
-        "A transformation that multiplies each distance from a fixed center by a scale factor.",
-      ],
-      [
-        "center of dilation",
-        "The fixed point of the dilation; it can be any point in the plane.",
-      ],
-    ],
+    terms: ["rigid-motion", "dilation", "center-of-dilation"],
     method: [
       "Do the steps in the order stated.",
       "Apply a rigid motion to the coordinates directly.",
@@ -213,13 +149,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Choose the case that satisfies a conjecture's hypothesis but fails its conclusion.",
     intuition:
       "A conjecture says that whenever one condition holds, another does too. One example where the first holds and the second fails shows the conjecture is false. Examples that agree with it prove nothing.",
-    terms: [
-      ["conjecture", "A statement believed true but not yet proven."],
-      [
-        "counterexample",
-        "A case that makes the hypothesis true and the conclusion false.",
-      ],
-    ],
+    terms: ["conjecture", "counterexample"],
     method: [
       "Split the conjecture into its hypothesis (the if part) and its conclusion (the then part).",
       "For each choice, test whether the hypothesis is true.",
@@ -234,12 +164,12 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "On a sphere the straightest paths are great circles, circles centered at the center of the sphere. Many facts of plane geometry change because every two great circles meet.",
     terms: [
       [
-        "great circle",
-        "A circle on a sphere whose center is the sphere's center, such as the equator.",
+        "sphere",
+        "A great circle is a circle on the sphere centered at the sphere's center, such as the equator.",
       ],
       [
-        "spherical geometry",
-        "Geometry on a sphere, where a line is a great circle.",
+        "sphere",
+        "In geometry on a sphere, the lines are great circles: circles centered at the sphere's center.",
       ],
     ],
     method: [
@@ -255,10 +185,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Find the area of a regular polygon from its apothem and perimeter, from a hexagon's side, or find a missing apothem or side.",
     intuition:
       "A regular polygon splits into identical triangles from its center. Each has base equal to a side and height equal to the apothem, so the total area is half the apothem times the perimeter.",
-    terms: [
-      ["regular polygon", "A polygon with equal sides and equal angles."],
-      ["apothem", "The distance from the center to the midpoint of a side."],
-    ],
+    terms: ["regular-polygon", "apothem"],
     method: [
       "Find the perimeter: the number of sides times the side length.",
       "Find or read the apothem. For a regular hexagon with side $s$, it is $\\frac{s\\sqrt3}{2}$.",
@@ -272,11 +199,11 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "Surface area adds the areas of the surfaces you could touch from the outside. When two solids are joined, the faces where they meet are hidden and are not counted.",
     terms: [
+      "slant-height",
       [
-        "slant height",
-        "The distance along a cone's side from its tip to the edge of its base.",
+        "surface-area",
+        "Count only the exposed surfaces, the ones on the outside of the solid.",
       ],
-      ["exposed surface", "A surface on the outside of the solid."],
     ],
     method: [
       "List the outside surfaces: bases, curved sides and the hemisphere's curved surface.",
@@ -291,12 +218,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Find the probability that a randomly chosen point lies in part of a region as a ratio of areas.",
     intuition:
       "When every point of a region is equally likely, the chance of landing in a part is the fraction of the total area that part covers.",
-    terms: [
-      [
-        "geometric probability",
-        "A probability found as a ratio of lengths or areas.",
-      ],
-    ],
+    terms: ["geometric-probability"],
     method: [
       "Find the area of the target part.",
       "Find the area of the whole region.",
@@ -309,16 +231,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Compare $f(g(x))$ with $g(f(x))$ for given functions and decide whether they are equal.",
     intuition:
       "In $f(g(x))$ the function $g$ acts first and $f$ acts on the result. Switching the order usually changes the result, but some pairs, such as two scalings or two shifts, give the same result both ways.",
-    terms: [
-      [
-        "composition",
-        "Using the output of one function as the input of another: $f(g(x))$.",
-      ],
-      [
-        "commute",
-        "Two functions commute when $f(g(x))=g(f(x))$ for every $x$.",
-      ],
-    ],
+    terms: ["composition", "commute"],
     method: [
       "For $f(g(x))$, replace each $x$ in $f$ with the whole expression for $g(x)$ and simplify.",
       "For $g(f(x))$, replace each $x$ in $g$ with the whole expression for $f(x)$ and simplify.",
@@ -331,14 +244,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Describe what $f(x)$ approaches from the left and the right of a vertical asymptote, a hole or a jump.",
     intuition:
       "Near a break in the graph, the two sides can behave differently. Left-sided behavior, written $x\\to c^-$, uses $x$ values just below $c$, and right-sided behavior, $x\\to c^+$, uses values just above $c$.",
-    terms: [
-      [
-        "vertical asymptote",
-        "A vertical line the graph approaches while $f$ grows without bound.",
-      ],
-      ["hole", "A single missing point where a common factor cancels."],
-      ["jump", "A break where the two sides approach different values."],
-    ],
+    terms: ["vertical-asymptote", "hole", "jump-discontinuity"],
     method: [
       "For a rational function, cancel common factors first. A canceled factor gives a hole whose height comes from the simplified expression.",
       "For an asymptote, test the sign of $f$ just left and just right of the zero of the denominator.",
@@ -354,10 +260,13 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "Parametric equations give $x$ and $y$ separately as functions of a parameter $t$. Removing $t$ leaves one equation linking $x$ and $y$ whose graph is the same path.",
     terms: [
       [
-        "parameter",
-        "A variable, usually $t$, that both $x$ and $y$ depend on.",
+        "parametric-equations",
+        "Here the parameter is $t$; both $x$ and $y$ depend on it.",
       ],
-      ["rectangular equation", "An equation in $x$ and $y$ only."],
+      [
+        "parametric-equations",
+        "A rectangular equation uses only $x$ and $y$; remove the parameter to get it.",
+      ],
     ],
     method: [
       "Solve one equation for $t$, or for $\\cos t$ and $\\sin t$.",
@@ -372,11 +281,11 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "One revolution is an angle of $2\\pi$ radians. A point at distance $r$ from the center travels $r$ units for each radian, so its speed is $r$ times the angular speed.",
     terms: [
+      "angular-speed",
       [
-        "angular speed",
-        "The angle turned per unit of time, such as radians per second.",
+        "speed",
+        "Linear speed is how far a point on a turning object travels per unit of time.",
       ],
-      ["linear speed", "The distance a point travels per unit of time."],
     ],
     method: [
       "Convert revolutions to radians with $2\\pi$ radians per revolution, and change time units if needed.",
@@ -390,20 +299,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Find the reference angle, quadrant or coterminal angle of an angle in standard position, including negative and multi-turn angles.",
     intuition:
       "An angle in standard position starts on the positive $x$-axis and turns counterclockwise if positive, clockwise if negative. Full turns do not change where it ends, and the reference angle is the acute angle from the terminal side to the $x$-axis.",
-    terms: [
-      [
-        "standard position",
-        "Vertex at the origin and initial side on the positive $x$-axis.",
-      ],
-      [
-        "coterminal",
-        "Having the same terminal side; angles differ by full turns.",
-      ],
-      [
-        "reference angle",
-        "The acute angle between the terminal side and the $x$-axis.",
-      ],
-    ],
+    terms: ["standard-position", "coterminal-angles", "reference-angle"],
     method: [
       "Add or subtract full turns until the angle is between 0 and one turn.",
       "Name the quadrant.",
@@ -417,11 +313,11 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     intuition:
       "A bearing gives a direction as an angle from north. A trip along it is the hypotenuse of a right triangle whose legs point north-south and east-west.",
     terms: [
+      "bearing",
       [
-        "bearing",
-        "An angle measured clockwise from north, written with three digits.",
+        "component",
+        "Here they are the north-south and east-west parts of a trip.",
       ],
-      ["component", "The north-south or east-west part of a displacement."],
     ],
     method: [
       "Sketch north, the direction of travel, and the right triangle.",
@@ -436,16 +332,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Choose the sigma notation that represents an arithmetic or geometric series listed by its first and last terms.",
     intuition:
       "Sigma notation $\\sum_{k=a}^{b}t(k)$ adds the terms $t(a), t(a+1), \\ldots, t(b)$. The rule $t(k)$ gives the term in each position, and the bounds say how many terms.",
-    terms: [
-      [
-        "sigma notation",
-        "A compact way to write a sum, with an index, bounds and a rule.",
-      ],
-      [
-        "index",
-        "The counting variable $k$ that runs from the lower to the upper bound.",
-      ],
-    ],
+    terms: ["sigma-notation", "index-summation"],
     method: [
       "Find the common difference $d$ or the common ratio $r$.",
       "Write the rule: first term plus $d(k-1)$, or first term times $r^{k-1}$, for an index starting at 1.",
@@ -461,13 +348,10 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "If each term is a fraction of the one before, the terms shrink and the running total settles on one number. If the ratio is 1 or larger in size, the terms do not shrink and the total never settles.",
     terms: [
       [
-        "infinite geometric series",
-        "A sum $a+ar+ar^2+\\cdots$ with no last term.",
+        "geometric-series",
+        "An infinite geometric series $a+ar+ar^2+\\cdots$ has no last term; it has a total only when $|r|<1$.",
       ],
-      [
-        "common ratio",
-        "The number each term is multiplied by to get the next.",
-      ],
+      "common-ratio",
     ],
     method: [
       "Find the first term $a$ the series starts with, and the ratio $r$.",
@@ -481,16 +365,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Choose the interval-notation solution of a polynomial inequality, including repeated roots and non-strict inequalities.",
     intuition:
       "A polynomial can change sign only at its zeros. Between consecutive zeros it stays positive or stays negative, so testing one number in each interval shows where the inequality holds.",
-    terms: [
-      [
-        "interval notation",
-        "Writing a set of numbers with endpoints, using parentheses for excluded endpoints and brackets for included ones.",
-      ],
-      [
-        "multiplicity",
-        "How many times a factor repeats; an even multiplicity touches zero without changing sign.",
-      ],
-    ],
+    terms: ["interval-notation", "multiplicity"],
     method: [
       "Factor completely and find the zeros.",
       "Test one number in each interval between zeros, and keep the intervals where the sign matches the inequality.",
@@ -504,16 +379,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     goal: "Choose the interval-notation solution of a rational inequality, excluding values that make the denominator zero.",
     intuition:
       "A fraction can change sign only where its numerator is 0 or its denominator is 0. Between these values it keeps one sign, so one test number in each interval is enough.",
-    terms: [
-      [
-        "excluded value",
-        "A value that makes the denominator 0; the expression is undefined there.",
-      ],
-      [
-        "interval notation",
-        "Writing a set of numbers with endpoints, using parentheses for excluded endpoints and brackets for included ones.",
-      ],
-    ],
+    terms: ["excluded-value", "interval-notation"],
     method: [
       "Find the zeros of the numerator and of the denominator.",
       "Test one number in each interval and keep the intervals with the right sign.",

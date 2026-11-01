@@ -2,12 +2,9 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const terms: ProblemMethod["terms"] = [
-  [
-    "polynomial",
-    "A sum of terms consisting of a number times a nonnegative integer power of a variable; constants are included.",
-  ],
-  ["coefficient", "The number multiplying a power of the variable."],
-  ["like terms", "Terms with the same variable raised to the same power."],
+  "polynomial",
+  "coefficient",
+  "like-terms",
 ];
 export const polynomialMethods: Record<string, ProblemMethod> = {
   "polynomial-addition": {
@@ -34,10 +31,7 @@ export const polynomialMethods: Record<string, ProblemMethod> = {
   },
   "polynomial-multiplication": {
     goal: "Expand a product of polynomials and combine like terms.",
-    terms: [
-      ...terms,
-      ["distribute", "Multiply a term by every term of a sum."],
-    ],
+    terms: [...terms, "distribute"],
     method: [
       "Multiply each term of the first factor by every term of the second factor.",
       "For each term product, multiply the coefficients and add exponents on powers of x: x^m × x^n = x^(m+n).",

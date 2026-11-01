@@ -301,12 +301,7 @@ export const functionToolkitLessons: Lesson[] = [
 export const functionToolkitMethods: Record<string, ProblemMethod> = {
   "piecewise-evaluate": {
     goal: "Evaluate a function defined by different rules on different intervals.",
-    terms: [
-      [
-        "piecewise function",
-        "A function with a separate rule for each part of its domain.",
-      ],
-    ],
+    terms: ["piecewise-function"],
     method: [
       "Test the input in each condition; exactly one is true.",
       "At a boundary, $\\le$ and $\\ge$ include it, $<$ and $>$ do not; on a graph, use the filled dot.",
@@ -326,12 +321,7 @@ export const functionToolkitMethods: Record<string, ProblemMethod> = {
   },
   "transform-equation": {
     goal: "Match a shifted, stretched or reflected graph with its equation.",
-    terms: [
-      [
-        "parent graph",
-        "The simplest graph of a family, such as $y = x^2$ or $y = |x|$.",
-      ],
-    ],
+    terms: ["parent-graph"],
     method: [
       "A shift of $h$ right replaces $x$ with $x - h$; a shift left uses $x + h$.",
       "A vertical stretch by $a$ multiplies the whole output by $a$; a negative $a$ also reflects across the $x$-axis.",
@@ -351,9 +341,7 @@ export const functionToolkitMethods: Record<string, ProblemMethod> = {
   },
   "composition-value": {
     goal: "Evaluate a composition such as $f(g(2))$ from formulas, tables or graphs.",
-    terms: [
-      ["composition", "$(f \\circ g)(x) = f(g(x))$: apply $g$, then $f$."],
-    ],
+    terms: ["composition"],
     method: [
       "Find the inner value first: $g(2)$ from its formula, table or graph.",
       "Use that value as the input of the outer function.",
@@ -372,7 +360,7 @@ export const functionToolkitMethods: Record<string, ProblemMethod> = {
   },
   "inverse-value": {
     goal: "Find a value of an inverse function from a formula, a table or a graph.",
-    terms: [["inverse", "$f^{-1}(b) = a$ exactly when $f(a) = b$."]],
+    terms: ["inverse-function"],
     method: [
       "$f^{-1}(b)$ is the input with output $b$: set $f(x) = b$.",
       "Solve the equation, or find $b$ among the outputs of a table or the heights of a graph.",

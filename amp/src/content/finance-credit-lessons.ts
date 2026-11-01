@@ -6,17 +6,7 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     goal: "Compare a simple-interest account with a compound-interest account over several years, in exact cents.",
     intuition:
       "Interest is money the bank pays for holding your deposit. Simple interest is calculated on the original deposit only, so the same amount is added every year. Compound interest is calculated on the whole current balance, including interest already earned, so each year's addition is larger than the last.",
-    terms: [
-      ["principal", "The original amount deposited or borrowed."],
-      [
-        "simple interest",
-        "Interest equal to the principal times the yearly rate, added each year; it never earns interest itself.",
-      ],
-      [
-        "compound interest",
-        "Interest added to the balance each period, so later interest is calculated on principal plus earlier interest.",
-      ],
-    ],
+    terms: ["principal", "simple-interest", "compound-interest"],
     method: [
       "For simple interest, find one year's interest, principal times the rate, and multiply it by the number of years.",
       "For compound interest, repeat: this year's interest is the rate times the balance at the start of the year, rounded to the cent. Add it to get the new balance.",
@@ -30,12 +20,9 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     intuition:
       "Equal payments make total repaid grow in a straight line: every month adds the same payment. The amount you borrowed is only part of what you hand back. Whatever you pay beyond it is the price of borrowing.",
     terms: [
-      ["principal", "The amount borrowed."],
-      ["term", "How many months or years the loan lasts."],
-      [
-        "finance charge",
-        "The total repaid minus the principal: the cost of borrowing.",
-      ],
+      "principal",
+      ["loan", "The term is how many months or years the loan lasts."],
+      "finance-charge",
     ],
     method: [
       "Put the term in months. A loan of $y$ years has $12y$ monthly payments.",
@@ -51,13 +38,10 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
       "A loan has two prices: how much you pay each month and how much you pay altogether. They can disagree, because stretching a loan over more months lowers each payment but adds more payments.",
     terms: [
       [
-        "fee",
-        "A charge paid at the start of a loan, in addition to the payments.",
+        "loan",
+        "A fee is a charge paid at the start of the loan, on top of the payments.",
       ],
-      [
-        "total cost",
-        "All the money paid for the loan: every payment plus any fee.",
-      ],
+      ["loan", "The total cost of a loan is every payment plus any fee."],
     ],
     method: [
       "For each offer, compute payment × months, then add any fee.",
@@ -72,14 +56,11 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     intuition:
       "A credit card lets you owe money. The balance is what you owe. APR, the annual percentage rate, is a yearly rate; the card charges one twelfth of it each month on the balance. Interest is added to the balance, so unpaid interest becomes debt that itself earns interest next month.",
     terms: [
+      "apr",
+      "balance-account",
       [
-        "APR",
-        "The yearly percentage rate. Divide it by 12 for the monthly rate.",
-      ],
-      ["balance", "The amount currently owed."],
-      [
-        "finance charge",
-        "The interest charged for a billing month: monthly rate times the balance at the start of the month.",
+        "finance-charge",
+        "On a credit card, it is the monthly rate times the balance at the start of the month.",
       ],
     ],
     method: [
@@ -95,15 +76,12 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     intuition:
       "Credit is borrowed money, so it costs interest unless you repay in time. Debit spends money you already have, so it costs no interest. The numbers in a credit decision are rates, balances and fees, and each one has a plain arithmetic effect.",
     terms: [
+      "debit-card",
+      "minimum-payment",
       [
-        "debit card",
-        "A card that takes the price from your own account right away.",
+        "credit-card",
+        "A late fee is a charge added to the balance when a payment arrives after the due date.",
       ],
-      [
-        "minimum payment",
-        "The smallest payment the card requires by the due date; interest is charged on what remains unpaid.",
-      ],
-      ["late fee", "A charge added to the balance when a payment is late."],
     ],
     method: [
       "Convert between APR and monthly rate: APR is the monthly rate × 12.",
@@ -118,8 +96,8 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
     intuition:
       "A saving plan with a regular deposit grows by the same amount every month, so its balance is a straight-line pattern. The starting amount is added once; the deposit is added again each month.",
     terms: [
-      ["deposit", "Money you add to the account."],
-      ["goal", "The balance you want to reach."],
+      "deposit",
+      ["balance-account", "The goal is the balance you want to reach."],
     ],
     method: [
       "Balance after $n$ months = starting amount + deposit × $n$.",
@@ -135,8 +113,8 @@ export const financeCreditMethods: Record<string, ProblemMethod> = {
       "A table shows the pattern. Simple interest adds the same amount every year, so the balances rise by equal steps. Compound interest adds more each year, so the steps themselves grow.",
     terms: [
       [
-        "year's interest",
-        "The balance at the end of a year minus the balance at the end of the year before.",
+        "interest",
+        "A year's interest is the balance at the end of that year minus the balance a year earlier.",
       ],
     ],
     method: [

@@ -14,7 +14,7 @@ APPLICATION_AREAS = (
 )
 
 
-CONTENT_TESTS = ('amp/tests/grammar.test.ts', 'amp/tests/math-typography.test.ts', 'amp/tests/publications.test.ts', 'amp/tests/instance-hints.test.ts', 'amp/tests/problem-lessons.test.ts')
+CONTENT_TESTS = ('amp/tests/grammar.test.ts', 'amp/tests/math-typography.test.ts', 'amp/tests/publications.test.ts', 'amp/tests/instance-hints.test.ts', 'amp/tests/problem-lessons.test.ts', 'amp/tests/glossary.test.ts')
 
 
 def requires_inventory(paths):

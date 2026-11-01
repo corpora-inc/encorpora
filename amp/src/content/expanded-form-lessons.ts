@@ -7,16 +7,7 @@ export const expandedFormMethods: Record<string, ProblemMethod> = {
     goal: "Write a number in standard form from a sum of products of digits and place values, with a zero in each place that has no product.",
     intuition:
       "Standard form writes a number with digits. Each digit has a place, and the place decides what the digit is worth. A sum such as $7\\times 1{,}000+4\\times 100$ names the digits and their places one by one. A place with no product holds a 0.",
-    terms: [
-      [
-        "place value",
-        "The value of a place: ones, tens, hundreds, thousands, and tenths, hundredths and thousandths after the decimal point.",
-      ],
-      [
-        "expanded form",
-        "A number written as a sum of each digit times its place value.",
-      ],
-    ],
+    terms: ["place-value", "expanded-form"],
     method: [
       "For each product, name the place of its place value and write its digit there.",
       "List the places from the greatest to the least. Where a place has no product, write a 0.",
@@ -29,10 +20,7 @@ export const expandedFormMethods: Record<string, ProblemMethod> = {
     goal: "Choose the sum of digit-times-place-value products that equals a number written in digits or in words.",
     intuition:
       "To write a number in expanded form, name the place of each digit and multiply the digit by the value of its place. A digit that is 0 contributes nothing, so its place has no product, but it still holds the later digits in their places.",
-    terms: [
-      ["standard form", "The number written with digits, such as 4,205.36."],
-      ["expanded form", "The sum of each digit times its place value."],
-    ],
+    terms: ["standard-form-number", "expanded-form"],
     method: [
       "If the number is in words, write it in standard form first: read the whole part, then the decimal part with its last place name.",
       "Name the place of each digit and the value of that place.",

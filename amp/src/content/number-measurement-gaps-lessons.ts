@@ -6,16 +6,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     goal: "Compare signed numbers in debts, elevations or temperatures: which is greater, larger in size or farther from zero, and say it correctly.",
     intuition:
       "A negative number can mean a debt, a depth below sea level, or a temperature below zero. Two questions sound alike but ask different things. Which number is greater asks about position on the number line: farther right is greater. How large is it, how much is owed, or how far from zero asks about the absolute value $|x|$, the distance from 0.",
-    terms: [
-      [
-        "absolute value",
-        "The distance of a number from 0 on the number line. It is never negative: $|-7|=7$ and $|7|=7$.",
-      ],
-      [
-        "order",
-        "Of two numbers, the one farther right on the number line is greater. The one farther left is less.",
-      ],
-    ],
+    terms: ["absolute-value", "number-line"],
     method: [
       "Mark the numbers on a number line, or write fractions as decimals so they can be compared.",
       "If the question asks which is greater, higher, warmer or less cold, compare positions: farther left is less.",
@@ -29,20 +20,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     goal: "Given a linear expression, decide which other expressions have the same value for every value of $x$.",
     intuition:
       "Two expressions are equivalent when they give the same number for every value of $x$. You can rewrite an expression into an equivalent one by distributing a multiplier over a sum and by combining like terms, which are terms with the same variable part. Substituting a value of $x$ is a quick test, but only in one direction: different values prove two expressions are not equivalent, while matching values at a single input prove nothing.",
-    terms: [
-      [
-        "equivalent expressions",
-        "Expressions that have the same value for every value of the variable.",
-      ],
-      [
-        "like terms",
-        "Terms with the same variable part, such as $3x$ and $5x$, or two plain numbers. They combine by adding coefficients.",
-      ],
-      [
-        "distributive property",
-        "$a(b+c)=ab+ac$. The multiplier $a$ multiplies every term inside the parentheses.",
-      ],
-    ],
+    terms: ["equivalent-expressions", "like-terms", "distributive-property"],
     method: [
       "Rewrite the given expression: distribute each multiplier over every term in its parentheses, keeping signs.",
       "Combine the $x$ terms together and the plain numbers together.",
@@ -57,13 +35,10 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "Area is the number of unit squares that cover a shape with no gaps and no overlaps. A rectangle with 5 rows of 7 squares has $5\\times7=35$ squares. If a line splits the rectangle into two smaller rectangles, count each part and add. The total does not change, because every square is in exactly one part.",
     terms: [
+      "unit-square",
       [
-        "unit square",
-        "A square with sides of length 1. It has an area of 1 square unit.",
-      ],
-      [
-        "rectilinear figure",
-        "A figure whose sides meet at right angles, such as an L-shape.",
+        "composite-figure",
+        "A rectilinear figure's sides all meet at right angles, like an L-shape.",
       ],
     ],
     method: [
@@ -80,13 +55,10 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "An estimate is a number close to the exact answer that is easy to find. To estimate, round each number to a place where the arithmetic is easy, then do the operation the story calls for. An estimate cannot confirm every digit of an answer, but it can show that an answer is the wrong size, such as ten times too large.",
     terms: [
+      "estimate",
       [
         "estimate",
-        "A number close to the exact answer, found with rounded numbers.",
-      ],
-      [
-        "reasonable",
-        "Close enough to an estimate that the answer could be right. An answer far from the estimate has an error.",
+        "An answer is reasonable when it is close to the estimate; one far from it likely has an error.",
       ],
     ],
     method: [
@@ -102,16 +74,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     goal: "Given a quantity in one set of units and the conversion facts, find it in the requested units by multiplying through a chain of conversions.",
     intuition:
       "A conversion fact such as $1\\text{ km}=1000\\text{ m}$ gives two ratios equal to 1, such as $\\frac{1000\\text{ m}}{1\\text{ km}}$. Multiplying by a ratio equal to 1 changes the units but not the amount. Write the units in each factor and arrange the ratios so the unit you want to remove appears once on top and once on the bottom and cancels.",
-    terms: [
-      [
-        "conversion ratio",
-        "A fraction equal to 1 built from a unit fact, with the same quantity in the numerator and denominator in different units.",
-      ],
-      [
-        "dimensional analysis",
-        "Tracking units through every step of a calculation so that they cancel to the units you want.",
-      ],
-    ],
+    terms: ["conversion-factor", "dimensional-analysis"],
     method: [
       "Write the starting quantity with its units, and the units you need at the end.",
       "Choose conversion ratios so that each unwanted unit cancels, one fact at a time.",
@@ -128,11 +91,11 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     terms: [
       [
         "denominator",
-        "The bottom number of a fraction. It is the number of equal groups the set is split into.",
+        "For a fraction of a set, it is the number of equal groups the set is split into.",
       ],
       [
         "numerator",
-        "The top number of a fraction. It is how many of the equal groups are taken.",
+        "For a fraction of a set, it is how many of the equal groups are taken.",
       ],
     ],
     method: [
