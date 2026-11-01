@@ -145,7 +145,7 @@ export const partWholeLessons: Lesson[] = [
         stage: "formal",
         title: "Names for equal shares",
         paragraphs: [
-          "A fraction is a number that names equal parts of one whole. One half, two thirds and three quarters are fractions. Two fractions with different names can be the same amount, like 1 half and 2 quarters. This works only when both wholes are the same size.",
+          "A fraction is a number that names equal parts of one whole. One half, two thirds and three quarters are fractions. Two fractions with different names can be the same amount, like 1 half and 2 quarters. To compare amounts of real things, like bread, by their fraction names alone, both wholes must be the same size.",
         ],
       },
     ],
@@ -401,7 +401,7 @@ export const partWholeMethods: Record<string, ProblemMethod> = {
     method: [
       "Count the equal parts in each whole, and name each shaded share.",
       "Same name and same-size wholes: the shares are the same amount, whatever their shapes.",
-      "Different names: the whole cut into fewer equal parts has bigger parts.",
+      "Different names, same-size wholes: the whole cut into fewer equal parts has bigger parts.",
     ],
     watch:
       "Judge a share by its name, not by whether it looks tall, wide or pointed.",

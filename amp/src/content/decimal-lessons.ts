@@ -200,7 +200,7 @@ export const decimalLessons: Lesson[] = [
         paragraphs: [
           "To round 2.37 to the nearest tenth, find the tenths just below and just above it: 2.3 and 2.4. The halfway point between them is 2.35.",
           "Look at the picture. 2.37 is past the halfway point, so it is nearer 2.4. So 2.37 rounds to 2.4.",
-          "A number exactly at the halfway point is just as near to both. The rule everyone uses is that it rounds up.",
+          "A number exactly at the halfway point is just as near to both. In this lesson it rounds up, which is the usual rule.",
         ],
         illustration: "decimal-rounding-line",
       },
@@ -224,7 +224,7 @@ export const decimalLessons: Lesson[] = [
       answer: "4.86",
     },
     pitfalls: [
-      "An empty place still needs its 0. 3 + 6/10 + 8/1000 is 3.608, not 3.68.",
+      "An empty place between other digits still needs its 0. 3 + 6/10 + 8/1000 is 3.608, not 3.68.",
       "Rounding to the nearest tenth keeps one digit after the point. 2.37 rounds to 2.4. Rounding it to 2 would be rounding to the nearest whole number instead.",
     ],
     parentGuide:
@@ -405,7 +405,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
     method: [
       "Find how far apart the two labeled numbers are.",
       "The space between two tick marks next to each other is called an interval. Divide the distance by the number of intervals to find the size of one interval.",
-      "Count the intervals from the left label to the point, and add that much to the left label.",
+      "Count the intervals from the left label to the point. Multiply that count by the size of one interval, and add the result to the left label.",
     ],
     watch: "Count the spaces between tick marks, not the tick marks.",
   },
@@ -453,7 +453,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
     intuition: roundIntuition,
     terms: ["round", "halfway-point"],
     method: [
-      "Find the two nearby numbers with the number of places the question asks for, one below and one above.",
+      "Find the two nearby numbers with the number of places the question asks for, one below and one above. If the number already equals one of them, like 5.20 = 5.2 for tenths, it rounds to itself.",
       "Find the halfway point between them.",
       "Below halfway, round down to the lower one. At halfway or above, round up to the upper one.",
     ],
@@ -507,7 +507,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
 };
 export const decimalPrinciples: Record<string, string> = {
   "decimal-grid-read":
-    "One tenth is 10 hundredths. So a decimal can be read as tenths and hundredths, or as hundredths alone.",
+    "One tenth is 10 hundredths. So a decimal with digits only in the tenths and hundredths places can be read as tenths and hundredths, or as hundredths alone.",
   "tenths-as-hundredths":
     "Cutting each tenth into 10 equal parts renames tenths as hundredths without changing the amount.",
   "decimal-line-point":

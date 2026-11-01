@@ -19,7 +19,7 @@ export const fractionChoiceMethods: Record<string, ProblemMethod> = {
       "A fraction names equal parts of a whole, like $\\frac{3}{4}$. Its denominator, the bottom number, says how many equal parts make the whole. Its numerator, the top number, counts the parts. To compare two fractions, give them a common denominator, a bottom number they share. Then their parts are the same size. A whole number is one of the numbers 0, 1, 2, 3 and so on. It can be written as a fraction too: 2 is $\\frac{8}{4}$. A mixed number is a whole number and a fraction written together, such as $2\\frac{1}{4}$.",
     terms: ["common-denominator", "mixed-number"],
     method: [
-      "Rewrite the stated number and the choice with a common denominator. For a whole number, write it over the choice's denominator: 2 in fourths is $\\frac{8}{4}$.",
+      "Rewrite the stated number and the choice with a common denominator. For a whole number, multiply it by the choice's denominator and write the result over that denominator: 2 wholes are 2 × 4 = 8 fourths, or $\\frac{8}{4}$.",
       "Compare the numerators. Over the same denominator, the bigger numerator is the bigger fraction.",
       "Check every choice. For mixed numbers with the same whole number, compare only the fraction parts.",
     ],
@@ -65,7 +65,7 @@ export const fractionChoiceLessons = [
       methodTitle: "Common denominator, then numerators",
       method: [
         "Multiply the two denominators to get a common denominator. Then multiply the top and bottom of each fraction by the same number, so it has that denominator. This cuts each part into smaller equal parts without changing the amount.",
-        "Compare the numerators. To compare a whole number with a fraction, first write the whole number over the fraction's denominator. 2 wholes in fourths are 2 × 4 = 8 fourths, or $\\frac{8}{4}$.",
+        "Compare the numerators. To compare a whole number with a fraction, first multiply the whole number by the fraction's denominator, and write the result over that denominator. 2 wholes in fourths are 2 × 4 = 8 fourths, or $\\frac{8}{4}$.",
       ],
       formalTitle: "Comparing fractions",
       formal: [
@@ -74,7 +74,7 @@ export const fractionChoiceLessons = [
       ],
       pitfalls: [
         "Do not pick the bigger numerator or the bigger denominator alone. First give both fractions a common denominator.",
-        "Do not compare a whole number with a numerator. Write the whole number over the same denominator first.",
+        "Do not compare a whole number with a numerator. First write the whole number as a fraction with the same denominator.",
         "Check every choice against the stated number, not just the first one.",
       ],
       parentGuide:

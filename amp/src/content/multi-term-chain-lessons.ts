@@ -66,7 +66,7 @@ export const multiTermChainMethods: Record<string, ProblemMethod> = {
       "Write the answer in dollars and cents. Check that it is more than either part.",
     ],
     watch:
-      "Multiply the sum of both prices by the number of people, not just one price. A person who buys a ticket and a drink pays both prices.",
+      "When everyone buys the same pair, multiply the two prices added together by the number of people, not just one price. A person who buys a ticket and a drink pays both prices.",
   },
   "dollar-rate-scale": {
     goal: "Use a table of charges for two numbers of hours at one price per hour to find another charge, or the hours for a charge.",
@@ -262,7 +262,7 @@ export const multiTermChainLessons = [
         "When every hour costs the same, charge ÷ hours is the same number in every column of the table. That number is the unit rate.",
       ],
       pitfalls: [
-        "Multiply the cost of the pair by the number of people, not just one price.",
+        "When everyone buys the same pair, multiply the cost of the pair by the number of people, not just one price.",
         "Check the unit rate against both columns of the table.",
         "To find hours from a charge, divide the charge by the price of 1 hour.",
       ],

@@ -66,7 +66,7 @@ export const choiceLessons: Lesson[] = [
     },
     pitfalls: [
       "To compare real amounts, the fractions must be parts of wholes of the same size.",
-      "Adding the same number to the top and bottom usually changes the amount. Multiply or divide both by the same number instead.",
+      "Adding the same number to the top and bottom usually changes the amount. Multiply or divide both by the same number, other than 0, instead.",
     ],
     parentGuide:
       "Use one paper rectangle. Fold it into thirds and shade two. Fold each third in half. Ask your child to name the shaded part both ways before looking at the choices. Then ask for another name for the same amount, without any choices.",

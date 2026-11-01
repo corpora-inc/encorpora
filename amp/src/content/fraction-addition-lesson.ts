@@ -85,7 +85,7 @@ export const fractionAdditionLesson: Lesson = {
       paragraphs: [
         "Simplifying means writing the same amount with smaller numbers. It undoes the cutting: you group small parts into bigger equal parts. For 6/8, group every 2 eighths into one fourth. The whole has 8 ÷ 2 = 4 groups, and the amount has 6 ÷ 2 = 3 groups. So 6/8 = 3/4.",
         "A common factor is a whole number that divides both the numerator and the denominator evenly, with nothing left over. Divide both by the same common factor, and the amount stays the same. A fraction is in simplest form when no common factor bigger than 1 is left.",
-        "To check small numbers, try each whole number from 2 up to the smaller of the two numbers. If one divides both evenly, divide both by it. Then check again with the smaller numbers. Stop when none divides both.",
+        "When the top and bottom numbers are both more than 0, try each whole number from 2 up to the smaller of the two. If one divides both evenly, divide both by it. Then check again with the smaller numbers. Stop when none divides both.",
         "For example, take 21/30. 2 does not divide 21 evenly, but 3 divides both: 21 ÷ 3 = 7 and 30 ÷ 3 = 10. So 21/30 = 7/10. The only whole numbers that divide 7 evenly are 1 and 7, and 7 does not divide 10 evenly. So 7/10 is in simplest form. The same check shows that 7/12 is in simplest form, because 7 does not divide 12 evenly either.",
         "A sum can be more than one whole. For example, 3/4 + 2/3 = 9/12 + 8/12 = 17/12. Twelve twelfths make one whole, leaving five twelfths: 17/12 = 1 + 5/12. Both name the same amount.",
       ],
@@ -119,7 +119,7 @@ export const fractionAdditionLesson: Lesson = {
   pitfalls: [
     "Use a whole of the same size for every fraction before you add amounts.",
     "The denominator tells the size of a part, by saying how many equal parts make one whole. After you rewrite both fractions with one denominator, add the numerators and keep that denominator.",
-    "Rewriting a fraction must keep its amount. When you cut parts smaller, multiply both numbers by the same whole number. When you simplify, divide both by the same number that divides each of them evenly.",
+    "Rewriting a fraction must keep its amount. When you cut parts smaller, multiply both numbers by the same whole number, other than 0. When you simplify, divide both by the same number that divides each of them evenly.",
   ],
   parentGuide:
     "Use two paper strips of the same length. Mark thirds on one and fourths on the other. Then mark both into twelfths. Ask your child to explain why the amounts do not change, and why the sum is seven twelfths. Use the brackets in the picture to check.",

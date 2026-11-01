@@ -15,7 +15,7 @@ export const congruentPartsMethods: Record<string, ProblemMethod> = {
     goal: "Pick the figures of the same size and shape whose shaded part is one fourth of the whole, even when the parts are cut in different ways.",
     senses: fourthSenses,
     intuition:
-      "One fourth means the whole is cut into 4 parts of the same size, and 1 part is shaded, or colored in. Two squares of the same size can be cut in different ways, such as into strips or into a 2 by 2 grid. Each part is still one fourth of its square. Area is how much flat space a shape covers. One fourth of a square covers the same area however the square is cut.",
+      "When a whole is cut into 4 parts of the same size, each part is one fourth. Here 1 of those parts is shaded, or colored in. Two squares of the same size can be cut in different ways, such as into 4 equal strips or into a 2 by 2 grid of equal squares. Each part is still one fourth of its square. Area is how much flat space a shape covers. One fourth of a square covers the same area however the square is cut.",
     terms: ["fourth", "equal-parts"],
     method: [
       "Count the parts in each figure. Check that they are all the same size.",
@@ -38,7 +38,7 @@ export const congruentPartsLessons = [
       id: "congruent-fourths-lesson",
       title: "One fourth of figures of the same size",
       summary:
-        "A fraction names equal parts of a whole. One fourth means the whole is cut into 4 parts of the same size, and 1 part is shaded, or colored in. Two figures of the same size can be cut in different ways. Their parts can have different shapes and still each be one fourth.",
+        "A fraction names equal parts of a whole. When a whole is cut into 4 parts of the same size, each part is one fourth. Here 1 of those parts is shaded, or colored in. Two figures of the same size can be cut in different ways. Their parts can have different shapes and still each be one fourth.",
       templateIds: ["congruent-fourths-pair"],
       objectives: [
         "Say what makes a shaded part one fourth of a whole.",

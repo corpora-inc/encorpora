@@ -131,7 +131,7 @@ export const expandedFormLessons = [
       formalTitle: "Expanded form",
       formal: [
         "Suppose a number has a digit $d$ in a place with value $p$. That digit is worth $d\\times p$. The expanded form adds up $d\\times p$ for every digit that is not 0.",
-        "The place values are called powers of ten: 1, 10, 100 and 1,000, and also 0.1, 0.01 and 0.001. Each one is 10 times the next one to its right.",
+        "The place values are called powers of ten: 1,000, 100, 10 and 1, then 0.1, 0.01 and 0.001. Each one is 10 times the next one in this list.",
       ],
       pitfalls: [
         "Putting a digit in the next place over.",
