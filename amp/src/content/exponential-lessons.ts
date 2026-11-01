@@ -446,7 +446,7 @@ export const exponentialLessons: Lesson[] = [
         title: "Three parts of a power",
         paragraphs: [
           "In $3^4 = 81$, 3 is the base, 4 is the exponent, and 81 is the result. The exponent counts how many times the base is multiplied: $3 \\times 3 \\times 3 \\times 3 = 81$. A logarithm asks for the exponent when the base and the result are known.",
-          "The statement $\\log_3 81 = 4$ means exactly the same as $3^4 = 81$. It does not mean 81 divided by 3. The base must be positive and not 1. The number inside the logarithm, called the argument, must be positive.",
+          "The statement $\\log_3 81 = 4$ means exactly the same as $3^4 = 81$. It does not mean 81 divided by 3. The base must be positive and different from one. The number inside the logarithm, called the argument, must be positive.",
         ],
       },
       {
