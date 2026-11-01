@@ -327,7 +327,9 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
       id: "home",
       path: "/",
       state: "paid",
-      ready: (p) => p.locator(".frontier-map").waitFor(),
+      // Settled once the working level has loaded (aria-busy clears).
+      ready: (p) =>
+        p.locator(".home-level:not([aria-busy=true])").first().waitFor(),
     },
     {
       id: "drawer",

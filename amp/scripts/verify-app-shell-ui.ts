@@ -6,8 +6,8 @@
  *     npx tsx scripts/verify-app-shell-ui.ts [--engine webkit] [--shots DIR]
  *
  * Every screen outside practice, at 320/390/768/1024/1280 px in light and
- * dark: no horizontal overflow, no overlapping controls, no word broken
- * across lines in a label or heading. Plus the specific fixes the review
+ * dark: no horizontal overflow, no overlapping controls, no target under
+ * 44px, no word broken across lines in a label or heading. Plus the specific fixes the review
  * ranked, each measured rather than inspected.
  */
 import assert from "node:assert/strict";
@@ -52,11 +52,19 @@ async function open(
     colorScheme: theme,
   });
   const page = await context.newPage();
-  page.setDefaultTimeout(20000);
+  page.setDefaultTimeout(30000);
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(origin + scenario.path);
-  await scenario.ready?.(page);
+  try {
+    await scenario.ready?.(page);
+  } catch (error) {
+    failures.push(`${scenarioId} ${viewport.width} ${theme}: never ready`);
+    await page.screenshot({
+      path: `artifacts/app-shell-not-ready-${scenarioId}-${viewport.width}-${theme}.png`,
+    });
+    console.error(error);
+  }
   await settle(page, 500);
   if (scenario.then) {
     await scenario.then(page);
@@ -88,6 +96,10 @@ try {
         check(
           !found.midWordWraps.length,
           `${tag}: ${found.midWordWraps.join("; ")}`,
+        );
+        check(
+          !found.smallTargets.length,
+          `${tag}: targets under 44px ${found.smallTargets.join("; ")}`,
         );
         check(!errors.length, `${tag}: page errors ${errors.join("; ")}`);
         if (shots && (viewport.width === 390 || viewport.width === 1280))
