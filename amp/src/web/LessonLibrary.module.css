@@ -61,7 +61,9 @@
   stroke-width: 1.7;
   stroke-linecap: round;
 }
-.search input {
+/* Two classes: the field sits flush inside its frame, over any global
+   input rule. */
+.bar .search .input:not([type="radio"]) {
   flex: 1;
   min-width: 0;
   height: 100%;
@@ -69,16 +71,18 @@
   margin: 0;
   padding: 0;
   border: 0;
+  border-radius: 0;
   background: transparent;
+  box-shadow: none;
   color: inherit;
   /* 16px keeps phones from zooming into the field. */
   font-size: 16px;
 }
-.search input:focus {
+.bar .search .input:not([type="radio"]):focus {
   outline: none;
   box-shadow: none;
 }
-.search input::-webkit-search-cancel-button {
+.search .input::-webkit-search-cancel-button {
   display: none;
 }
 /* The clear control's place is kept while hidden, so typing the first

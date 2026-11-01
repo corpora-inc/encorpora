@@ -29,8 +29,7 @@ const lessons = [
     templateIds: ["pyth-missing"],
     sections: [
       {
-        title: "Squares on sides",
-        paragraphs: ["The hypotenuses face the right angle."],
+        title: "Hypotenuses face the right angle",
       },
     ],
   },
@@ -89,6 +88,22 @@ describe("lesson library index", () => {
   });
 
   it("finds lessons by the glossary terms they use, plural forms included", () => {
+    // A word that only appears in passing in a paragraph does not count.
+    expect(
+      buildLibrary(
+        [
+          {
+            id: "lesson.passing",
+            title: "Areas",
+            summary: "Count squares.",
+            templateIds: ["add-facts"],
+          },
+        ],
+        templates,
+        skills,
+        order,
+      ).find((i) => i.id === "lesson.passing")!.words,
+    ).not.toContain("hypotenuse");
     const withTerms = attachTerms(items, glossary);
     expect(withTerms.find((i) => i.id === "lesson.pyth")!.terms).toEqual([
       "hypotenuse",

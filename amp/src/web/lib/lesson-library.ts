@@ -13,7 +13,7 @@ export type LibraryLesson = {
   summary: string;
   templateIds: readonly string[];
   objectives?: readonly string[];
-  sections?: readonly { title: string; paragraphs: readonly string[] }[];
+  sections?: readonly { title: string }[];
 };
 export type LibraryTemplate = {
   id: string;
@@ -88,7 +88,9 @@ export function buildLibrary(
           lesson.title,
           lesson.summary,
           ...(lesson.objectives ?? []),
-          ...(lesson.sections ?? []).flatMap((s) => [s.title, ...s.paragraphs]),
+          // Section titles, not their paragraphs: a word in passing in a
+          // long explanation is not what the lesson is about.
+          ...(lesson.sections ?? []).map((section) => section.title),
         ].join(" "),
       ),
       terms: [],

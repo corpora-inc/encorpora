@@ -123,6 +123,13 @@ try {
     const { page, context } = await open({ width: 390, height: 844 }, "light");
     const all = await visibleRows(page);
     check(all > 500, `library lists every lesson and type (${all})`);
+    // The field sits flush in its frame: one border, not a box in a box.
+    check(
+      (await search(page).evaluate(
+        (el) => getComputedStyle(el).borderTopWidth,
+      )) === "0px",
+      "the search field draws a second border inside its frame",
+    );
     const bar = page.locator("[role=search]");
     const before = {
       bar: await bar.boundingBox(),

@@ -152,6 +152,7 @@ export function LessonLibrary(props: {
           </svg>
           <input
             type="search"
+            className={styles.input}
             aria-label="Search lessons"
             placeholder="Search lessons and math words"
             maxLength={80}
@@ -210,7 +211,7 @@ export function LessonLibrary(props: {
         <ul className={styles.words} aria-label="Math words">
           {words.map((entry) => (
             <li key={entry.id}>
-              <strong>{entry.term}</strong> {entry.plain}
+              <strong>{entry.term}</strong> <MathText text={entry.plain} />
             </li>
           ))}
         </ul>
