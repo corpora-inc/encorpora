@@ -7,39 +7,54 @@ export const successivePercentChangeLesson: Lesson = {
   id: templateId,
   title: "Two percent changes to a price",
   summary:
-    "Each percentage uses the price at that moment. A percent means parts per hundred: after the first price change, use the new price for the second one.",
+    "Percent means per hundred, and the sign % stands for percent. So 20% of a price is 20 out of every 100 parts of it. When a price changes twice, the second percent is taken of the new price, not the starting one. A price of 60 dollars that drops 20% becomes 48 dollars. A 20% rise then adds 20% of 48, which is 9.60 dollars, so the final price is 57.60 dollars.",
   templateIds: [templateId],
   includeGeneratedRepresentation: false,
+  noLink: [
+    "whole",
+    "change",
+    "changes",
+    "base",
+    "leaves",
+    "more than",
+    "parts",
+    "rule",
+  ],
   objectives: [
-    "Use the price after the first change as the base for the second percentage.",
-    "Find the final price after two increases or decreases, including a discount followed by tax.",
-    "Convert fractional percents exactly and round a final money amount to cents only after both changes.",
+    "Take the second percent of the price after the first change.",
+    "Find the final price after two increases or decreases, such as a discount and then an added charge.",
+    "Change a percent such as 8.875% into a number by dividing by 100, and keep every digit until the final answer in cents.",
   ],
   sections: [
     {
       stage: "intuition",
-      title: "The whole changes after the first step",
+      title: "The price changes after the first step",
       paragraphs: [
-        "A discount is a price decrease. A 20% discount removes 20 of every 100 parts of the starting price. A later 20% increase adds 20 of every 100 parts of the smaller, discounted price. These amounts differ because the prices used as their wholes differ.",
+        "A discount is a price decrease. A 20% discount takes away 20 of every 100 parts of the starting price. A later 20% increase adds 20 of every 100 parts of the new, smaller price.",
+        "The two changes are not the same size. Each percent is taken of a different price, so the same 20% gives a different number of dollars. That is why a 20% drop and then a 20% rise do not get you back to the start.",
       ],
     },
     {
       stage: "method",
-      title: "Use each new price as the next base",
+      title: "Use each new price for the next percent",
       paragraphs: [
-        "The base is the price used to calculate a percentage. Find the price after the first change, then use that price as the base for the second. A multiplier is the number you multiply a base by to get its changed price. A 20% decrease leaves 80% of its base, so its multiplier is 0.80; a 20% increase has multiplier 1.20.",
-        "A discount followed by tax works the same way when tax is stated to apply to the discounted price. A 25% discount on 80 dollars leaves $80\\times0.75=60$ dollars. A tax of 8.875% means $8.875/100=0.08875$ of the 60-dollar base, so the exact final amount is $60\\times1.08875=65.325$ dollars. Round this final amount to 65.33 dollars: the third decimal digit is 5, so the cents round up.",
+        "The base is the price a percent is taken of. Find the price after the first change. That price is the base for the second change.",
+        "A multiplier is the number you multiply a price by to get the changed price. A 20% decrease leaves 80% of the price, so its multiplier is $1 - 0.20 = 0.80$. A 20% increase gives 120% of the price, so its multiplier is $1 + 0.20 = 1.20$. To write a percent as a decimal, a number with a decimal point, divide it by 100: $20\\% = 20 \\div 100 = 0.20$.",
+        "A tax is an extra charge added to a price. A discount followed by a tax works the same way, when the tax is charged on the discounted price. A 25% discount on 80 dollars leaves $80 \\times 0.75 = 60$ dollars. A tax of 8.875% is $8.875 \\div 100 = 0.08875$ of the 60-dollar base. So the final amount is $60 \\times 1.08875 = 65.325$ dollars.",
+        "Keeping fewer digits and choosing the closest value is called rounding. Rounding to cents keeps two digits after the decimal point. Here 65.325 is exactly halfway between 65.32 and 65.33. The rule in these problems is that halfway rounds up, so the price is 65.33 dollars. Round only once, at the end.",
       ],
     },
   ],
   closingSections: [
     {
       stage: "formal",
-      title: "Successive percentage multipliers",
+      title: "Successive percent multipliers",
       paragraphs: [
-        "A percent is one hundredth of a named base: $p$% means $p/100$ of that base. Let $P_0\\ge0$ be the starting price. For a nonnegative numerical percent rate $p_1$, the first multiplier $m_1$ is $1+p_1/100$ for an increase or $1-p_1/100$ for a decrease. Define $m_2$ from the second rate $p_2$ in the same way. The exact prices are $P_1=P_0m_1$ and $P_2=P_1m_2=P_0m_1m_2$. For a nonnegative price, a decrease rate is at most 100%; an increase rate may exceed 100%.",
-        "The second rate is applied to $P_1$, even though the factors may be multiplied together without changing the exact product. For a positive starting price, equal decrease and increase rates $p$ do not undo one another: $(1-p/100)(1+p/100)=1-(p/100)^2$, which is less than 1 when $p>0$ and $p\\le100$.",
-        "For a money answer, keep the intermediate and final calculations exact until the requested cent rounding. Round the final nonnegative dollar amount to the nearest hundredth; if it is exactly halfway between two cents, choose the higher cent. Apply an earlier rounding step only if the problem states one.",
+        "A percent is $\\tfrac{1}{100}$ of a base: $p\\%$ means $\\tfrac{p}{100}$ of that base. Let $P_0$ be the starting price, a number 0 or greater. The small numbers below the letters count the steps: $P_1$ is the price after one change and $P_2$ after two.",
+        "For a percent $p_1$ that is 0 or greater, the first multiplier $m_1$ is $1 + \\tfrac{p_1}{100}$ for an increase. It is $1 - \\tfrac{p_1}{100}$ for a decrease. The second multiplier $m_2$ comes from the second percent $p_2$ in the same way. A decrease can be 100% or less, so the price never goes below 0. An increase may be more than 100%.",
+        "Then $P_1 = P_0 \\times m_1$ and $P_2 = P_1 \\times m_2 = P_0 \\times m_1 \\times m_2$. The second percent is taken of $P_1$, even though the three numbers can be multiplied in any order.",
+        "Equal decrease and increase percents do not undo each other. For a percent $p$ from 1 to 100, $(1 - \\tfrac{p}{100}) \\times (1 + \\tfrac{p}{100}) = 1 - (\\tfrac{p}{100})^2$, which is less than 1. For example, $0.80 \\times 1.20 = 0.96$. So a positive price ends lower than it started.",
+        "For a money answer, keep every digit until the final step. Then round the final amount to the nearest cent. One cent is $\\tfrac{1}{100}$ of a dollar. An amount exactly halfway between two cents rounds up. Round earlier only if the problem says to.",
       ],
     },
   ],
@@ -47,41 +62,51 @@ export const successivePercentChangeLesson: Lesson = {
     prompt:
       "A price of 60 dollars falls by 20%, then rises by 20%. What is the final price, in dollars?",
     steps: [
-      "The discount is 20 of every 100 parts of 60 dollars: $20/100=0.20$, and $60\\times0.20=12$ dollars are removed.",
-      "The price after the discount is $60-12=48$ dollars. This is the whole for the second change.",
-      "The increase is 20% of 48 dollars: $48\\times0.20=9.60$ dollars. Add it to the discounted price: $48+9.60=57.60$ dollars.",
-      "Check with the amounts kept and added: $60\\times0.80\\times1.20=57.60$. The increase adds 9.60 dollars, less than the 12 dollars removed, because it uses the smaller base.",
+      "Find the first change. 20% is $20 \\div 100 = 0.20$, and $60 \\times 0.20 = 12$ dollars, so the drop takes away 12 dollars.",
+      "Subtract it from the starting price: $60 - 12 = 48$ dollars. This new price is the base for the second change.",
+      "Find the second change on the new base: $48 \\times 0.20 = 9.60$ dollars. Add it to the discounted price: $48 + 9.60 = 57.60$ dollars.",
+      "Check by multiplying. A 20% drop keeps $1 - 0.20 = 0.80$ of the price, and a 20% rise makes $1 + 0.20 = 1.20$ of it. $60 \\times 0.80 \\times 1.20 = 57.60$. The rise added only 9.60 dollars, because 20% of 48 is less than 20% of 60.",
     ],
     answer: "57.60",
     answerUnit: "dollars",
   },
   pitfalls: [
-    "Use the changed price as the base for the second percent. Applying both changes to the starting price gives the wrong second change.",
-    "Keep exact intermediate amounts when the problem asks for one final cent rounding. A fractional percent such as 8.875% gives a change fraction of 0.08875, not 0.8875 or 8.875.",
+    "Take the second percent of the changed price. Taking both percents of the starting price gives the wrong second change.",
+    "Keep every digit until the final rounding. Write a percent as a decimal by dividing by 100: 8.875% is 0.08875, not 0.8875 or 8.875.",
   ],
   parentGuide:
-    "Compare the 12 dollars removed from 60 with the 9.60 dollars added to 48. Ask which price counts as the whole for each 20%, then check $60\\times0.80\\times1.20=57.60$ dollars.",
+    "Compare the 12 dollars taken off 60 with the 9.60 dollars added to 48. Ask which price each 20% was taken of, then check $60 \\times 0.80 \\times 1.20 = 57.60$ dollars.",
 };
 
 export const successivePercentChangeMethod: ProblemMethod = {
-  goal: "Find the final price after two stated percentage changes.",
+  goal: "Find the final price after two percent changes, each taken of the price at that moment.",
+  noLink: [
+    "whole",
+    "change",
+    "changes",
+    "base",
+    "leaves",
+    "more than",
+    "parts",
+    "rule",
+  ],
   intuition:
-    "A percent means parts per hundred of a price. Change the starting price once, then use that new price for the next change.",
+    "Percent means per hundred, and the sign % stands for percent. So 20% of a price is 20 out of every 100 parts of it. The base is the price a percent is taken of. When a price changes twice, the base for the second change is the new price. A multiplier is the number you multiply a price by to get the changed price: 0.80 for a 20% decrease, 1.20 for a 20% increase.",
   terms: [
     ["percent", "The base is the whole that the percent is taken of."],
     [
       "multiplier",
-      "For a percent change, add the percent to 1 for an increase or subtract it from 1 for a decrease: 1.20 or 0.80.",
+      "For a change by a percent, write the percent as a decimal. Add it to 1 for an increase, or subtract it from 1 for a decrease. For 20%, that gives 1.20 or 0.80.",
     ],
   ],
   method: [
-    "Divide the first numerical percent by 100 to get its change fraction. Add it to 1 for an increase or subtract it from 1 for a decrease, then multiply the starting price.",
-    "Use that exact changed price as the base for the second percent. Form its increase or decrease multiplier and multiply again.",
-    "Keep any extra decimal places during both changes. Round only the final money amount to cents, with an exact halfway value rounding up.",
+    "Write the first percent as a decimal, a number with a decimal point, by dividing by 100: $7.5\\% = 0.075$. Add it to 1 for an increase or subtract it from 1 for a decrease. Multiply the starting price by the result.",
+    "Use that changed price, with all its digits, as the base for the second percent. Make its multiplier the same way and multiply again.",
+    "Round only the final price. Keeping fewer digits and choosing the closest value is called rounding. Rounding to cents keeps two digits after the decimal point. An amount exactly halfway rounds up.",
   ],
   watch:
-    "Apply the second percent to the price after the first change. Two equal but opposite percentages use different bases, so they usually do not cancel.",
+    "Take the second percent of the price after the first change. A 20% drop and then a 20% rise use different bases, so they do not cancel.",
 };
 
 export const successivePercentChangePrinciple =
-  "For starting price $P_0\\ge0$, let $p_i$ be the numerical percent rate and $m_i=1+p_i/100$ for an increase, or $m_i=1-p_i/100$ for a decrease, with $i=1,2$. Each $p_i\\ge0$; a decrease has $p_i\\le100$. The exact final price is $P_2=P_0m_1m_2$; the second percentage uses $P_1=P_0m_1$ as its base. Round the final nonnegative money result to cents, choosing the higher cent at an exact halfway value, unless the problem specifies an earlier rounding step.";
+  "Let $P_0$ be a starting price, 0 or greater, and let $p_1$ and $p_2$ be two percents, each 0 or greater. Each multiplier is $1 + \\tfrac{p}{100}$ for an increase or $1 - \\tfrac{p}{100}$ for a decrease, where a decrease is 100% or less. The price after the first change is $P_1 = P_0 \\times m_1$. The final price is $P_2 = P_1 \\times m_2 = P_0 \\times m_1 \\times m_2$. Here $m_1$ and $m_2$ are the two multipliers, and the small numbers count the steps. Round the final money amount to cents, with an exact halfway amount rounding up, unless the problem rounds earlier.";
