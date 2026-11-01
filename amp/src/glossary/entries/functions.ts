@@ -59,7 +59,7 @@ export const functionsEntries: GlossaryEntry[] = [
     term: "common ratio",
     forms: ["common ratio", "common ratios", "constant ratio"],
     plain:
-      "The fixed number each term of a geometric sequence is multiplied by to get the next term. Divide any term by the one before it.",
+      "The fixed number each term of a geometric sequence is multiplied by to get the next term. Divide a term by the one before it (not 0).",
     example: "In 2, 6, 18, 54, the common ratio is 3.",
     uses: ["term-sequence", "geometric-sequence"],
     band: "algebra-1",

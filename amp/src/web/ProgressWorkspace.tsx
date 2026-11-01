@@ -47,10 +47,8 @@ const areaNames: Record<string, string> = {
 const areaName = (name: string) =>
   areaNames[name] ??
   name.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase());
-const title = (skill: Skill) =>
-  skill.id === "statistics-mean"
-    ? "Mean of a data set"
-    : skill.title.toLowerCase().replace(/^./, (c) => c.toUpperCase());
+/** The catalog's title (skillTitle), as every screen shows it. */
+const title = (skill: Skill) => skill.title;
 export function reviewSuggested(
   skill: LearnerSkillProgress,
   asOf: string,
@@ -171,12 +169,27 @@ export function ProgressWorkspace({
       const columns = grid
         ? getComputedStyle(grid).gridTemplateColumns.split(" ").length
         : 1;
+      // Rows come from the card height the stylesheet declares for this
+      // layout, never from the cards on screen: the page size then depends
+      // only on the screen, so a page keeps its cards when a parent opens
+      // one and comes back. The overflow guard below still drops a row if a
+      // long title makes a page's cards taller.
+      const card =
+        Number.parseFloat(
+          getComputedStyle(target).getPropertyValue("--progress-card-estimate"),
+        ) || 9.5 * font;
+      const gap = grid
+        ? Number.parseFloat(getComputedStyle(grid).rowGap) || 0
+        : 12;
       setCapacity(
         largeText
           ? 1
           : Math.max(
               1,
-              Math.min(3, Math.floor(target.clientHeight / (9.5 * font))),
+              Math.min(
+                3,
+                Math.floor((target.clientHeight + gap) / (card + gap)),
+              ),
             ) * columns,
       );
     };
