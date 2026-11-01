@@ -1360,7 +1360,7 @@ const OPENERS: Record<string, string[]> = {
     "To undo a square root, square both sides. Squaring can add false answers, called extraneous solutions, so check each candidate in the original equation.",
   ],
   "sat-entry-rational-equation": [
-    "A rational equation has the unknown in a denominator, the bottom of a fraction. A value that makes a denominator 0 is never allowed, because dividing by 0 is undefined.",
+    "A rational equation has the unknown in a denominator, the bottom of a fraction. A value that makes a denominator 0 is never allowed, because dividing by 0 has no answer.",
   ],
   "sat-entry-polynomial-zeros": [
     "A zero of $f$ is an input $x$ that makes $f(x) = 0$. In factored form, a product is 0 only when one of its factors is 0.",
