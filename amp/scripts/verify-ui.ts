@@ -459,8 +459,23 @@ try {
       for (const target of await page
         .locator(".solution-panel button:visible")
         .all()) {
-        const b = (await target.boundingBox())!;
-        assert.ok(b.height >= 44 && b.width >= 44, `${label}: feedback target`);
+        // A glossary word in the explanation keeps the line box of plain
+        // text; its 44 px target is its ::after hit area (glossary.css,
+        // hit-tested by verify-glossary-ui).
+        const b = await target.evaluate((el) => {
+          const box = el.getBoundingClientRect();
+          if (!el.classList.contains("glossary-term"))
+            return { width: box.width, height: box.height };
+          const hit = getComputedStyle(el, "::after");
+          return {
+            width: Math.max(box.width, parseFloat(hit.width) || 0),
+            height: Math.max(box.height, parseFloat(hit.height) || 0),
+          };
+        });
+        assert.ok(
+          b.height >= 44 && b.width >= 44,
+          `${label}: feedback target ${await target.innerText()} is ${b.width}×${b.height}`,
+        );
       }
       await shot("feedback");
       await page.emulateMedia({ colorScheme: "dark" });
