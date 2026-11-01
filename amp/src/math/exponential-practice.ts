@@ -254,11 +254,15 @@ function roundedGrowth(r: Rand): Draft {
         ? `A savings account holds ${start} dollars and earns ${p}% interest, added to the balance at the end of each year. With no withdrawals, how many dollars will it hold after ${t} years? Round to the nearest cent.`
         : `A delivery van is worth ${start} dollars and loses ${p}% of its value each year. How many dollars is it worth after ${t} years? Round to the nearest cent.`,
       answer: money(cents),
-      hint: `${growth ? `Growing by ${p}%` : `Losing ${p}%`} multiplies the amount by ${f} each year. Multiply ${start} by ${f} once for each of the ${t} years, using a calculator's power key, and round only at the end.`,
+      hint: `${growth ? `Growing by ${p}%` : `Losing ${p}%`} each year multiplies the amount by ${f}, the growth factor. Multiply ${start} by ${f} once for each of the ${t} years, using a calculator's power key, and round only at the end.`,
       explanation: [
-        `${[8, 11, 18].includes(p) ? "An" : "A"} ${p}% ${growth ? "increase" : "decrease"} multiplies by $${growth ? `1 + ${p / 100}` : `1 - ${p / 100}`} = ${f}$ each year.`,
-        `After ${t} years: $${a} \\times ${f}^{${t}} \\approx ${fourPlaces.toFixed(4)}$.`,
-        `Rounded to the nearest cent, the amount is ${money(cents)} dollars.`,
+        growth
+          ? `Each year the balance keeps all of itself, 100%, and adds ${p}% more. That is ${100 + p}% of the old balance.`
+          : `Each year the van keeps what it did not lose: $100\\% - ${p}\\% = ${100 - p}\\%$ of its old value.`,
+        `As a decimal, ${growth ? 100 + p : 100 - p}% is $${growth ? `1 + ${p / 100}` : `1 - ${p / 100}`} = ${f}$. This number, the growth factor, multiplies the amount once each year.`,
+        `Multiplying by ${f} once for each of ${t} years is the same as multiplying by $${f}^{${t}}$. The exponent ${t}, the small raised number, counts the years.`,
+        `So the amount is $${a} \\times ${f}^{${t}} \\approx ${fourPlaces.toFixed(4)}$. Round only now, so no rounding error builds up.`,
+        `${growth ? "The account will hold" : "The van is worth"} ${money(cents)} dollars after ${t} years, to the nearest cent.`,
       ],
       label: "Dollars",
     };
@@ -281,8 +285,11 @@ function modelValue(r: Rand, axes: Record<string, string> = {}): Draft {
       answer: `${a * b ** k}`,
       hint: `Each row multiplies $y$ by ${b}. From $x = 3$, where $y = ${ys[3]}$, keep multiplying by ${b} until $x = ${k}$.`,
       explanation: [
-        `Each time $x$ increases by 1, $y$ is multiplied by ${b}, starting from $y = ${a}$ at $x = 0$. So $y = ${a} \\cdot ${b}^{x}$.`,
-        `At $x = ${k}$: $${a} \\cdot ${b}^{${k}} = ${a} \\times ${b ** k} = ${a * b ** k}$.`,
+        `An exponential function multiplies by the same number at each step. Here each time $x$ goes up by 1, $y$ is multiplied by ${b}.`,
+        `The starting value, $y$ at $x = 0$, is ${a}. So $y = ${a} \\cdot ${b}^{x}$, where the exponent $x$ counts how many times we multiply by ${b}.`,
+        `At $x = ${k}$ we multiply by ${b} ${k} times: $${b}^{${k}} = ${b ** k}$.`,
+        `Then $y = ${a} \\times ${b ** k} = ${a * b ** k}$.`,
+        `When $x = ${k}$, $y$ is ${a * b ** k}.`,
       ],
     };
   }
@@ -305,8 +312,11 @@ function modelValue(r: Rand, axes: Record<string, string> = {}): Draft {
       answer: `${end}`,
       hint: `Growing by ${p}% keeps the whole amount and adds ${p}% of it, so each year multiplies by ${f}. Multiply ${start.toLocaleString("en-US")} by ${f} once for each of the ${t} years.`,
       explanation: [
-        `A ${p}% increase multiplies by $1 + ${p / 100} = ${f}$ each year.`,
-        `After ${t} years: $${start} \\times ${f}^{${t}} = ${end}$.`,
+        `Growing by ${p}% keeps the whole amount, 100%, and adds ${p}% more. That makes ${100 + p}% of the amount.`,
+        `As a decimal, ${100 + p}% is $1 + ${p / 100} = ${f}$. This growth factor multiplies the amount once each year.`,
+        `After ${t} years we have multiplied by ${f} ${t} times, which is $${f}^{${t}}$.`,
+        `So the amount is $${start} \\times ${f}^{${t}} = ${end}$.`,
+        `After ${t} years ${town ? `the town will have ${end.toLocaleString("en-US")} residents` : `the account will hold ${end.toLocaleString("en-US")} dollars`}.`,
       ],
     };
   }
@@ -319,8 +329,11 @@ function modelValue(r: Rand, axes: Record<string, string> = {}): Draft {
       answer: `${m / 2 ** t}`,
       hint: `First count the halvings: ${h * t} hours ÷ ${h} hours. Then halve ${m} mg that many times.`,
       explanation: [
-        `${h * t} ÷ ${h} = ${t}, so the amount halves ${words[t]} times.`,
-        `$${m} \\times \\left(\\frac{1}{2}\\right)^{${t}} = \\frac{${m}}{${2 ** t}} = ${m / 2 ** t}$ mg.`,
+        `The amount halves once every ${h} hours. ${h} hours is the half-life, the time for half of it to leave the body.`,
+        `Count the halvings: ${h * t} ÷ ${h} = ${t}. So the amount halves ${words[t]} times.`,
+        `Halving ${t} times means multiplying by $\\frac{1}{2}$ ${t} times, which is $\\left(\\frac{1}{2}\\right)^{${t}} = \\frac{1}{${2 ** t}}$.`,
+        `So $${m} \\times \\frac{1}{${2 ** t}} = \\frac{${m}}{${2 ** t}} = ${m / 2 ** t}$.`,
+        `After ${h * t} hours, ${m / 2 ** t} mg of the medicine remain.`,
       ],
     };
   }
@@ -342,8 +355,10 @@ function modelValue(r: Rand, axes: Record<string, string> = {}): Draft {
     answer: `${value}`,
     hint: `Replace $t$ with ${t}: raise ${baseText} to the power ${t} first, then multiply by ${a}.`,
     explanation: [
-      `$f(${t}) = ${a} \\cdot ${base}^{${t}}$, and $${base}^{${t}} = ${ftex(bn ** t, bd ** t)}$.`,
-      `$${a} \\times ${ftex(bn ** t, bd ** t)} = ${value}$.`,
+      `$f(${t})$, read "$f$ of ${t}", is the output when the input $t$ is ${t}. So replace $t$ with ${t}: $f(${t}) = ${a} \\cdot ${base}^{${t}}$.`,
+      `Do the power first, because exponents come before multiplication. The exponent ${t} means multiply ${baseText} by itself ${t} times: $${base}^{${t}} = ${ftex(bn ** t, bd ** t)}$.`,
+      `Then multiply by ${a}: $${a} \\times ${ftex(bn ** t, bd ** t)} = ${value}$.`,
+      `So $f(${t}) = ${value}$.`,
     ],
   };
 }
@@ -377,25 +392,26 @@ function modelRule(r: Rand): Draft {
       ),
       hint: `At $x = 0$ the equation must give ${a}. Then compare $y = ${ys[1]}$ at $x = 1$ with $y = ${ys[2]}$ at $x = 2$: is that an added amount or a factor?`,
       explanation: [
-        `At $x = 0$, $y = ${a}$, so the starting value is ${a}.`,
-        `Each step in $x$ multiplies $y$ by ${b}: ${ys
+        `An exponential rule $y = a \\cdot b^{x}$ has two numbers. The starting value $a$ is $y$ at $x = 0$. The factor $b$ multiplies $y$ at each step.`,
+        `At $x = 0$, $y = ${a}$, so the starting value is ${a}. This is because $b^{0} = 1$ for any base.`,
+        `Each step of 1 in $x$ multiplies $y$ by ${b}: ${ys
           .slice(0, frame === 0 ? 4 : 3)
-          .join(", ")}.`,
-        `So ${eq(a, b)}.`,
+          .join(", ")}. So the factor is ${b}.`,
+        `The equation is ${eq(a, b)}.`,
       ],
       choices: [
         { label: eq(a, b), correct: true },
         {
           label: eq(b, a),
-          feedback: `This swaps the numbers. At $x = 0$ it gives ${b}, but $y$ starts at ${a}; ${b} is the repeated factor.`,
+          feedback: `This swaps the starting value and the factor. At $x = 0$ it gives ${b}, but $y$ starts at ${a}. The number in front is the start, and ${b} is the repeated factor.`,
         },
         {
           label: `$y = ${d}x + ${a}$`,
-          feedback: `This line adds ${d} each step. It fits $x = 0$ and $x = 1$, but from $x = 1$ to $x = 2$, $y$ is multiplied by ${b}, not increased by ${d}.`,
+          feedback: `This is a linear rule: it adds ${d} each step. It fits $x = 0$ and $x = 1$, but from $x = 1$ to $x = 2$, $y$ is multiplied by ${b}, not increased by ${d}. Exponential growth multiplies.`,
         },
         {
           label: eq(a * b, b),
-          feedback: `At $x = 0$ this gives ${a * b}, the value at $x = 1$. The starting value is ${a}.`,
+          feedback: `This starts from the value at $x = 1$. At $x = 0$ it gives ${a * b}, but the starting value, $y$ at $x = 0$, is ${a}.`,
         },
       ],
     };
@@ -413,15 +429,17 @@ function modelRule(r: Rand): Draft {
       prompt: `A colony of bacteria starts with ${a} thousand cells and ${verb} every hour. Which equation gives the number of cells $y$, in thousands, after $x$ hours?`,
       hint: `Check $x = 0$: the colony has ${a} thousand cells. After each hour the count ${verb}, so ask what happens to $y$ at each step.`,
       explanation: [
-        `At $x = 0$ there are ${a} thousand cells, so the starting value is ${a}.`,
-        `Each hour multiplies the count by ${b}, so after $x$ hours it has been multiplied by $${b}^{x}$.`,
-        `${eq(a, b)}.`,
+        `An exponential rule $y = a \\cdot b^{x}$ starts at $a$ and multiplies by the factor $b$ at each step.`,
+        `At $x = 0$ hours there are ${a} thousand cells, so the starting value is ${a}.`,
+        `The colony ${verb} every hour, so each hour multiplies the count by ${b}.`,
+        `After $x$ hours it has been multiplied by ${b} a total of $x$ times. That is $${b}^{x}$, where the exponent $x$ counts the hours.`,
+        `So the number of cells, in thousands, is ${eq(a, b)}.`,
       ],
       choices: [
         { label: eq(a, b), correct: true },
         {
           label: eq(b, a),
-          feedback: `At $x = 0$ this gives ${b} thousand, but the colony starts at ${a} thousand.`,
+          feedback: `This swaps the start and the factor. At $x = 0$ it gives ${b} thousand, but the colony starts at ${a} thousand. The start goes in front, and the factor ${b} is the base of the power.`,
         },
         {
           label: `$y = ${a} + ${b}x$`,
@@ -429,7 +447,7 @@ function modelRule(r: Rand): Draft {
         },
         {
           label: `$y = ${a}x^{${b}}$`,
-          feedback: `Here the hours are the base. In repeated multiplication the number of hours is the exponent.`,
+          feedback: `Here the hours are the base, the number being multiplied. In repeated multiplication the factor ${b} is the base and the number of hours is the exponent.`,
         },
       ],
     };
@@ -444,18 +462,21 @@ function modelRule(r: Rand): Draft {
     prompt: `A car is worth ${shown} dollars and loses ${p}% of its value each year. Which equation gives its value $y$, in dollars, after $x$ years?`,
     hint: `Losing ${p}% each year leaves the rest of the value: what percent of ${shown} dollars is left after one year?`,
     explanation: [
-      `Losing ${p}% keeps $100\\% - ${p}\\% = ${100 - p}\\%$ each year, a factor of ${keep}.`,
-      `Starting from ${shown}: $y = ${value} \\cdot ${keep}^{x}$.`,
+      `An exponential rule $y = a \\cdot b^{x}$ starts at $a$ and multiplies by the factor $b$ each year.`,
+      `Losing ${p}% each year keeps the rest: $100\\% - ${p}\\% = ${100 - p}\\%$ of the value.`,
+      `As a decimal, ${100 - p}% is ${keep}. So each year multiplies the value by ${keep}.`,
+      `The starting value, at $x = 0$ years, is ${shown} dollars.`,
+      `So the value after $x$ years is $y = ${value} \\cdot ${keep}^{x}$.`,
     ],
     choices: [
       { label: eq(value, keep), correct: true },
       {
         label: eq(value, lose),
-        feedback: `A factor of ${lose} keeps only ${p}% each year. The car loses ${p}%, so it keeps ${100 - p}%.`,
+        feedback: `This uses the percent lost as the factor. A factor of ${lose} keeps only ${p}% each year. The car loses ${p}%, so it keeps ${100 - p}%.`,
       },
       {
         label: eq(value, grow),
-        feedback: `A factor of ${grow} grows the value by ${p}% each year. A loss multiplies by less than 1.`,
+        feedback: `This adds ${p}% instead of taking it away. A factor of ${grow} grows the value each year. A loss multiplies by a number less than 1.`,
       },
       {
         label: `$y = ${value} - ${(value * p) / 100}x$`,
@@ -512,17 +533,24 @@ function linearOrExponential(r: Rand): Draft {
       ),
       hint: `The $x$-values go up by ${dx} each row. Find how $y$ changes from ${ys[0]} to ${ys[1]} and from ${ys[1]} to ${ys[2]}: compare the differences, then the ratios.`,
       explanation: [
-        `Differences in $y$: ${d.map(s).join(", ")}.`,
+        `A linear function adds the same amount each step: equal differences. An exponential function multiplies by the same number each step: equal ratios.`,
+        `The $x$-values go up by the same step, ${dx}, so we can compare the $y$-values row to row.`,
+        `Subtract each $y$ from the next. The differences are ${d.map(s).join(", ")}.`,
         kind === "linear"
-          ? `Every difference is ${s(d[0]!)} for equal steps in $x$, so the function is linear.`
+          ? `Every difference is ${s(d[0]!)}, so the same amount is added each step.`
           : kind === "exponential"
-            ? `The differences change, but each $y$ is ${ys[1]! > ys[0]! ? `${ys[1]! / ys[0]!} times` : `1/${ys[0]! / ys[1]!} of`} the one before: equal ratios, so the function is exponential.`
-            : `The differences change, and so do the ratios (${ys[1]}/${ys[0]} is not ${ys[2]}/${ys[1]}), so it is neither linear nor exponential.`,
+            ? `The differences change. But each $y$ is ${ys[1]! > ys[0]! ? `${ys[1]! / ys[0]!} times` : `1/${ys[0]! / ys[1]!} of`} the one before, so the ratios are equal.`
+            : `The differences change. The ratios change too: ${ys[1]}/${ys[0]} is not ${ys[2]}/${ys[1]}.`,
+        kind === "linear"
+          ? `The table shows a linear function.`
+          : kind === "exponential"
+            ? `The table shows an exponential function.`
+            : `The table shows neither a linear nor an exponential function.`,
       ],
       choices: kindChoices(kind, {
-        linear: `The differences are ${d.map(s).join(", ")}: not all equal, so it is not linear.`,
-        exponential: `Equal ratios would mean ${ys[1]}/${ys[0]} = ${ys[2]}/${ys[1]}, which is false here.`,
-        neither: `Check again: the ${kind === "linear" ? "differences are all equal" : "ratios are all equal"}.`,
+        linear: `Linear means equal differences. Here the differences are ${d.map(s).join(", ")}, which are not all equal.`,
+        exponential: `Exponential means equal ratios, each $y$ divided by the one before. Here ${ys[1]}/${ys[0]} and ${ys[2]}/${ys[1]} are not equal.`,
+        neither: `A pattern is there: the ${kind === "linear" ? "differences between rows are all equal, which makes it linear" : "ratios between rows are all equal, which makes it exponential"}.`,
       }),
       keepOrder: true,
     };
@@ -550,22 +578,28 @@ function linearOrExponential(r: Rand): Draft {
     prompt: `${story} Which kind of function models ${what} over time?`,
     hint: `Track ${what} from one ${period} to the next, starting at ${start} ${unit}: is the same amount added each ${period}, or is it multiplied by the same factor each ${period}?`,
     explanation: [
+      `A linear model adds the same amount each ${period}. An exponential model multiplies by the same number, the factor, each ${period}.`,
       kind === "linear"
-        ? `The same ${plant ? `${step} cm` : `${step} dollars`} is added each ${period}: a constant difference, so the model is linear.`
+        ? `Here the same ${plant ? `${step} cm` : `${step} dollars`} is added each ${period}. The difference from one ${period} to the next never changes.`
         : kind === "exponential"
-          ? `A ${pct}% increase multiplies by ${factor(pct)} each ${period}: a constant ratio, so the model is exponential.`
-          : `The amount added grows by the same step each ${period}, so neither the differences nor the ratios are constant. The model is neither linear nor exponential.`,
+          ? `Here a ${pct}% increase keeps the whole amount and adds ${pct}% of it. That multiplies by ${factor(pct)} each ${period}, so the ratio never changes.`
+          : `Here the amount added grows each ${period}, so the differences change. The ratios change too, because no single factor gives this pattern.`,
+      kind === "linear"
+        ? `So ${what} is modeled by a linear function.`
+        : kind === "exponential"
+          ? `So ${what} is modeled by an exponential function.`
+          : `So ${what} is modeled by neither a linear nor an exponential function.`,
     ],
     choices: kindChoices(kind, {
       linear:
         kind === "exponential"
-          ? `${pct}% of a growing amount is more each ${period}, so the increase is not the same.`
-          : `The amount added changes each ${period}, so the differences are not equal.`,
+          ? `Linear would add the same amount each ${period}. But ${pct}% of a growing amount is more each ${period}, so the increase is not the same.`
+          : `Linear would add the same amount each ${period}. Here the amount added changes, so the differences are not equal.`,
       exponential:
         kind === "linear"
-          ? `The same amount is added each ${period}; that is an equal difference, not an equal factor.`
-          : `The ${period}ly increases go up by a fixed step, which does not multiply ${what} by one factor.`,
-      neither: `Look at the change each ${period}: it ${kind === "linear" ? "adds the same amount" : "multiplies by the same factor"}.`,
+          ? `Exponential would multiply by the same factor. Here the same amount is added each ${period}, which is an equal difference.`
+          : `Exponential would multiply by the same factor. Here the increases go up by a fixed step, which no single factor produces.`,
+      neither: `There is a steady pattern: each ${period} ${kind === "linear" ? "adds the same amount, which is linear" : "multiplies by the same factor, which is exponential"}.`,
     }),
     keepOrder: true,
   };
@@ -590,9 +624,12 @@ function overtakes(r: Rand): Draft {
     (frame > 0 && (X < 5 || X > 9))
   );
   const steps = [
-    `Compare $f(x) = ${m}x + ${c}$ with $g(x) = ${b}^{x}$ at each whole $x$.`,
-    `At $x = ${X - 1}$: $f = ${m * (X - 1) + c}$ and $g = ${b ** (X - 1)}$, so $g$ is not yet greater.`,
-    `At $x = ${X}$: $f = ${m * X + c}$ and $g = ${b ** X}$, so $g > f$ for the first time. Past this point $g$ multiplies while $f$ only adds ${m}, so $g$ stays ahead.`,
+    `$f(x) = ${m}x + ${c}$ is linear: it adds ${m} each time $x$ goes up by 1. $g(x) = ${b}^{x}$ is exponential: it multiplies by ${b} each time.`,
+    `Adding wins at first, but multiplying grows faster and faster. So try each whole $x$ and compare the two outputs.`,
+    `At $x = ${X - 1}$: $f = ${m * (X - 1) + c}$ and $g = ${b ** (X - 1)}$. Here $g$ is not yet greater.`,
+    `At $x = ${X}$: $f = ${m * X + c}$ and $g = ${b ** X}$. Now $g > f$ for the first time.`,
+    `After this, $g$ keeps multiplying by ${b} while $f$ only adds ${m}, so $g$ stays ahead.`,
+    `The least whole number with $g(x) > f(x)$ is $x = ${X}$.`,
   ];
   if (frame === 0)
     return {
@@ -627,9 +664,12 @@ function overtakes(r: Rand): Draft {
       answer: `${X}`,
       hint: `Continue both patterns past day 3: Offer A adds ${m} to its ${c + 3 * m} coins each day, and Offer B doubles its 8 coins each day. Compare the totals day by day.`,
       explanation: [
-        `On day $d$, Offer A has $${c} + ${m}d$ coins and Offer B has $2^{d}$.`,
+        `Offer A adds the same ${m} coins each day, so on day $d$ it has $${c} + ${m}d$ coins. That is linear growth.`,
+        `Offer B doubles each day, so on day $d$ it has $2^{d}$ coins. The exponent $d$ counts the doublings. That is exponential growth.`,
+        `Keep both patterns going past day 3 and compare the totals day by day.`,
         `Day ${X - 1}: Offer A has ${c + m * (X - 1)} and Offer B has ${2 ** (X - 1)}, so B is not yet ahead.`,
-        `Day ${X}: Offer A has ${c + m * X} and Offer B has ${2 ** X}, so B is ahead for the first time. After that B doubles while A adds only ${m}, so B stays ahead.`,
+        `Day ${X}: Offer A has ${c + m * X} and Offer B has ${2 ** X}, so B is ahead for the first time.`,
+        `After that B doubles while A adds only ${m}, so B stays ahead. Offer B's total is first greater on day ${X}.`,
       ],
     };
   const xs = [0, 1, 2, 3];
@@ -649,7 +689,7 @@ function overtakes(r: Rand): Draft {
     answer: `${X}`,
     hint: `$f$ adds ${m} each step from ${c + 3 * m}, and $g$ doubles from 8. Extend both columns one row at a time.`,
     explanation: [
-      `From the table, $f(x) = ${m}x + ${c}$ and $g(x) = 2^{x}$.`,
+      `From the table, $f$ starts at ${c} and adds ${m} each step, so $f(x) = ${m}x + ${c}$. $g$ starts at 1 and doubles, so $g(x) = 2^{x}$.`,
       ...steps.slice(1),
     ],
   };
@@ -671,9 +711,11 @@ function sameBase(r: Rand): Draft {
       answer: exact(n - c),
       hint: `Write ${b ** n} as a power of ${b}. Then the exponents must be equal: $${side}$ equals that power.`,
       explanation: [
-        `$${b ** n} = ${b}^{${n}}$, so $${b}^{${side}} = ${b}^{${n}}$.`,
-        `Equal powers of the same base have equal exponents: $${side} = ${n}$.`,
-        `$x = ${s(n - c)}$.`,
+        `The unknown $x$ sits in the exponent, the small raised number. To reach it, write both sides as powers of the same base, ${b}.`,
+        `Multiply ${b} by itself until you reach ${b ** n}: $${b ** n} = ${b}^{${n}}$. So the equation is $${b}^{${side}} = ${b}^{${n}}$.`,
+        `Two powers of the same base are equal only when their exponents are equal. So $${side} = ${n}$.`,
+        `${c > 0 ? "Subtract" : "Add"} ${Math.abs(c)} ${c > 0 ? "from" : "to"} both sides: $x = ${s(n - c)}$.`,
+        `The solution is $x = ${s(n - c)}$.`,
       ],
     };
   }
@@ -691,9 +733,11 @@ function sameBase(r: Rand): Draft {
       answer: exact(q, p),
       hint: `${b ** p} and ${b ** q} are both powers of one prime base. Rewrite each side with that base, then set the exponents equal.`,
       explanation: [
-        `$${b ** p} = ${b}^{${p}}$ and $${b ** q} = ${b}^{${q}}$, so $${b}^{${p}x} = ${b}^{${q}}$.`,
-        `Set the exponents equal: $${p}x = ${q}$.`,
-        `$x = ${ftex(q, p)}$.`,
+        `The unknown $x$ is in the exponent. To reach it, write both sides as powers of one base, ${b}.`,
+        `$${b ** p} = ${b}^{${p}}$ and $${b ** q} = ${b}^{${q}}$.`,
+        `A power of a power multiplies the exponents: $(${b}^{${p}})^{x} = ${b}^{${p}x}$. So the equation is $${b}^{${p}x} = ${b}^{${q}}$.`,
+        `Two powers of the same base are equal only when their exponents are equal: $${p}x = ${q}$.`,
+        `Divide both sides by ${p}. The solution is $x = ${ftex(q, p)}$.`,
       ],
     };
   }
@@ -707,9 +751,11 @@ function sameBase(r: Rand): Draft {
       answer: exact(c - n, k),
       hint: `$\\frac{1}{${b ** n}}$ is the reciprocal of ${b ** n}: write it as ${b} to a negative power, then set the exponents equal.`,
       explanation: [
-        `$\\frac{1}{${b ** n}} = ${b}^{-${n}}$.`,
-        `Set the exponents equal: $${k}x - ${c} = -${n}$, so $${k}x = ${s(c - n)}$.`,
-        `$x = ${ftex(c - n, k)}$.`,
+        `The unknown $x$ is in the exponent. To reach it, write the right side as a power of ${b} too.`,
+        `$${b ** n} = ${b}^{${n}}$. A negative exponent means "one over": $${b}^{-${n}} = \\frac{1}{${b}^{${n}}}$. So $\\frac{1}{${b ** n}} = ${b}^{-${n}}$.`,
+        `Two powers of the same base are equal only when their exponents are equal: $${k}x - ${c} = -${n}$.`,
+        `Add ${c} to both sides: $${k}x = ${s(c - n)}$. Then divide by ${k}.`,
+        `The solution is $x = ${ftex(c - n, k)}$.`,
       ],
     };
   }
@@ -724,9 +770,11 @@ function sameBase(r: Rand): Draft {
     answer: exact(p, q - p),
     hint: `Rewrite ${b ** p} and ${b ** q} as powers of one prime base, multiply out the exponents, then solve the linear equation in $x$.`,
     explanation: [
-      `$${b ** p} = ${b}^{${p}}$ and $${b ** q} = ${b}^{${q}}$, so $${b}^{${p}(x + 1)} = ${b}^{${q}x}$.`,
-      `Set the exponents equal: $${p}x + ${p} = ${q}x$, so $${q - p === 1 ? "" : q - p}x = ${p}$.`,
-      `$x = ${ftex(p, q - p)}$.`,
+      `The unknown $x$ is in the exponents. To reach it, write both bases as powers of one base, ${b}: $${b ** p} = ${b}^{${p}}$ and $${b ** q} = ${b}^{${q}}$.`,
+      `A power of a power multiplies the exponents. So the left side is $${b}^{${p === 1 ? "x + 1" : `${p}(x + 1)`}}$ and the right side is $${b}^{${q}x}$.`,
+      `Two powers of the same base are equal only when their exponents are equal: $${p === 1 ? "x + 1" : `${p}(x + 1)`} = ${q}x$.`,
+      `${p === 1 ? "" : `Multiply out the bracket: $${p}x + ${p} = ${q}x$. `}Subtract $${p === 1 ? "" : p}x$ from both sides: $${q - p === 1 ? "" : q - p}x = ${p}$.`,
+      `The solution is $x = ${ftex(p, q - p)}$.`,
     ],
   };
 }
@@ -748,22 +796,24 @@ function logSolution(r: Rand): Draft {
       prompt: `Which is the exact solution of $${a} \\cdot ${b}^{x} = ${c}$?`,
       hint: `Divide both sides by ${a} first, so the power $${b}^{x}$ stands alone. Then ask: ${b} to what power is the result?`,
       explanation: [
-        `Divide by ${a}: $${b}^{x} = ${k}$.`,
-        `A logarithm names that exponent: $x = ${lg(b)} ${k}$.`,
+        `The unknown $x$ is in the exponent. First get the power $${b}^{x}$ alone on one side.`,
+        `${a} multiplies the power, so divide both sides by ${a}: $${b}^{x} = ${k}$.`,
+        `${k} is not a whole-number power of ${b}, so we name the exponent with a logarithm. $${lg(b)} ${k}$ means "the power of ${b} that gives ${k}".`,
+        `The exact solution is $x = ${lg(b)} ${k}$.`,
       ],
       choices: [
         { label: `$x = ${lg(b)} ${k}$`, correct: true },
         {
           label: `$x = \\log_{${k}} ${b}$`,
-          feedback: `This asks for the power of ${k} that gives ${b}. The base of the power is ${b}, so the base of the logarithm is ${b}.`,
+          feedback: `This swaps the base and the result. It asks for the power of ${k} that gives ${b}. The base of the power is ${b}, so the base of the logarithm is ${b}.`,
         },
         {
           label: `$x = ${lg(b)} ${c - a}$`,
-          feedback: `${a} multiplies the power, so divide by it; subtracting ${a} does not undo multiplication.`,
+          feedback: `This subtracts ${a}, but ${a} multiplies the power. Undo multiplying by dividing both sides by ${a}.`,
         },
         {
           label: `$x = \\frac{${lg(b)} ${c}}{${a}}$`,
-          feedback: `Divide by ${a} before taking the logarithm. The log of a product is a sum, so ${a} cannot be divided out of $${lg(b)} ${c}$ afterward.`,
+          feedback: `This takes the logarithm before removing ${a}. The log of a product is a sum, not a product, so ${a} cannot be divided out of $${lg(b)} ${c}$ afterward. Divide by ${a} first.`,
         },
       ],
     };
@@ -776,22 +826,24 @@ function logSolution(r: Rand): Draft {
       prompt: `Which is the exact solution of $${b}^{x + ${h}} = ${k}$?`,
       hint: `The exponent $x + ${h}$ is the power of ${b} that gives ${k}. Write that exponent as a logarithm, then undo the + ${h}.`,
       explanation: [
-        `By the definition of a logarithm, $x + ${h} = ${lg(b)} ${k}$.`,
-        `Subtract ${h}: $x = ${lg(b)} ${k} - ${h}$.`,
+        `A logarithm names an exponent: $${lg(b)} ${k}$ means "the power of ${b} that gives ${k}".`,
+        `Here the whole exponent $x + ${h}$ is the power of ${b} that gives ${k}. So $x + ${h} = ${lg(b)} ${k}$.`,
+        `To get $x$ alone, subtract ${h} from both sides: $x = ${lg(b)} ${k} - ${h}$.`,
+        `The exact solution is $x = ${lg(b)} ${k} - ${h}$.`,
       ],
       choices: [
         { label: `$x = ${lg(b)} ${k} - ${h}$`, correct: true },
         {
           label: `$x = ${lg(b)} (${k} - ${h})$`,
-          feedback: `The ${h} is part of the exponent, not of ${k}. Take the logarithm first, then subtract ${h}.`,
+          feedback: `This subtracts ${h} from ${k}, but the ${h} is part of the exponent, not of ${k}. Write the exponent as a logarithm first, then subtract ${h}.`,
         },
         {
           label: `$x = ${lg(b)} ${k} + ${h}$`,
-          feedback: `$x + ${h}$ equals the logarithm, so undo the + ${h} by subtracting.`,
+          feedback: `This is a sign error. $x + ${h}$ equals the logarithm, so undo the + ${h} by subtracting ${h}, not adding it.`,
         },
         {
           label: `$x = \\log_{${k}} ${b} - ${h}$`,
-          feedback: `The base of the power, ${b}, is the base of the logarithm.`,
+          feedback: `This swaps the base and the result. The base of the power, ${b}, is the base of the logarithm, and ${k} goes inside.`,
         },
       ],
     };
@@ -803,22 +855,24 @@ function logSolution(r: Rand): Draft {
       prompt: `Which is the exact solution of $e^{${rate}t} = ${k}$?`,
       hint: `Take the natural logarithm of both sides; $\\ln e^{${rate}t}$ is just the exponent $${rate}t$.`,
       explanation: [
-        `$\\ln$ undoes $e$: $${rate}t = \\ln ${k}$.`,
-        `Divide by ${rate}: $t = \\frac{\\ln ${k}}{${rate}}$.`,
+        `$e$ is a special number, about 2.718. $\\ln$, the natural logarithm, is the logarithm with base $e$.`,
+        `$\\ln$ undoes a power of $e$: $\\ln e^{${rate}t} = ${rate}t$. So take $\\ln$ of both sides: $${rate}t = \\ln ${k}$.`,
+        `$${rate}t$ means ${rate} times $t$, so divide both sides by ${rate}: $t = \\frac{\\ln ${k}}{${rate}}$.`,
+        `The exact solution is $t = \\frac{\\ln ${k}}{${rate}}$.`,
       ],
       choices: [
         { label: `$t = \\frac{\\ln ${k}}{${rate}}$`, correct: true },
         {
           label: `$t = \\ln \\frac{${k}}{${rate}}$`,
-          feedback: `Divide by ${rate} after taking the logarithm: $${rate}t = \\ln ${k}$.`,
+          feedback: `This divides ${k} by ${rate} inside the logarithm. But ${rate} multiplies $t$ in the exponent. Take $\\ln$ first to get $${rate}t = \\ln ${k}$, then divide by ${rate}.`,
         },
         {
           label: `$t = ${rate}\\ln ${k}$`,
-          feedback: `$${rate}t = \\ln ${k}$, so $t$ is $\\ln ${k}$ divided by ${rate}, not multiplied.`,
+          feedback: `This multiplies by ${rate} instead of dividing. $${rate}t = \\ln ${k}$, so $t$ is $\\ln ${k}$ divided by ${rate}.`,
         },
         {
           label: `$t = \\frac{${k}}{${rate}e}$`,
-          feedback: `$e$ is the base of the power. Undo it with $\\ln$; dividing by $e$ does not undo an exponent.`,
+          feedback: `This treats $e$ as a factor. $e$ is the base of the power, so undo it with $\\ln$. Dividing by $e$ does not undo an exponent.`,
         },
       ],
     };
@@ -830,22 +884,24 @@ function logSolution(r: Rand): Draft {
     prompt: `An account grows by ${pct}% each year, so a balance $B$ becomes $B \\cdot ${f}^{t}$ after $t$ years. Which expression gives the exact number of years for the balance to double?`,
     hint: `Doubling means $B \\cdot ${f}^{t} = 2B$, so $B$ cancels: ${f} to what power is 2?`,
     explanation: [
-      `Set $B \\cdot ${f}^{t} = 2B$ and divide by $B$: $${f}^{t} = 2$.`,
-      `The exponent that turns ${f} into 2 is $t = \\log_{${f}} 2$, about ${(Math.log(2) / Math.log(1 + pct / 100)).toFixed(1)} years.`,
+      `To double, the balance must become $2B$, twice the start. So set $B \\cdot ${f}^{t} = 2B$.`,
+      `Divide both sides by $B$: $${f}^{t} = 2$. The starting amount does not matter.`,
+      `The unknown $t$ is an exponent. A logarithm names it: $\\log_{${f}} 2$ means "the power of ${f} that gives 2".`,
+      `The exact time to double is $t = \\log_{${f}} 2$ years, about ${(Math.log(2) / Math.log(1 + pct / 100)).toFixed(1)} years.`,
     ],
     choices: [
       { label: `$\\log_{${f}} 2$`, correct: true },
       {
         label: `$\\log_{2} ${f}$`,
-        feedback: `This is the power of 2 that gives ${f}. The repeated factor ${f} is the base.`,
+        feedback: `This swaps the base and the result: it is the power of 2 that gives ${f}. The repeated factor ${f} is the base of the logarithm.`,
       },
       {
         label: `$\\frac{2}{${f}}$`,
-        feedback: `$t$ is an exponent, so solving for it needs a logarithm, not a quotient.`,
+        feedback: `This divides as if $t$ multiplied ${f}. But $t$ is an exponent, so solving for it needs a logarithm, not a quotient.`,
       },
       {
         label: `$\\frac{\\log 2}{${rate}}$`,
-        feedback: `The yearly factor is ${f}, not ${rate}; this quotient also does not undo the power.`,
+        feedback: `This uses the rate ${rate} in place of the yearly factor ${f}. The balance is multiplied by ${f}, and the time is $\\log_{${f}} 2$.`,
       },
     ],
   };
@@ -865,8 +921,11 @@ function logEquation(r: Rand): Draft {
       answer: `${b ** n - c}`,
       hint: `Rewrite the logarithm as a power: $${arg} = ${b}^{${n}}$.`,
       explanation: [
-        `$${lg(b)}(${arg}) = ${n}$ means $${arg} = ${b}^{${n}} = ${b ** n}$.`,
-        `$x = ${b ** n} ${c > 0 ? "-" : "+"} ${Math.abs(c)} = ${s(b ** n - c)}$, and $${arg} = ${b ** n} > 0$, so the logarithm is defined.`,
+        `A logarithm is an exponent. $${lg(b)}(${arg}) = ${n}$ says ${b} is the base and ${n} is the exponent: $${b}^{${n}} = ${arg}$.${b === 10 ? " A log with no base written has base 10." : ""}`,
+        `So rewrite it as a power: $${arg} = ${b}^{${n}} = ${b ** n}$.`,
+        `${c > 0 ? "Subtract" : "Add"} ${Math.abs(c)} ${c > 0 ? "from" : "to"} both sides: $x = ${b ** n} ${c > 0 ? "-" : "+"} ${Math.abs(c)} = ${s(b ** n - c)}$.`,
+        `Check: a logarithm needs a positive input. Here $${arg} = ${b ** n}$, which is positive.`,
+        `The solution is $x = ${s(b ** n - c)}$.`,
       ],
     };
   }
@@ -884,9 +943,12 @@ function logEquation(r: Rand): Draft {
       answer: `${x}`,
       hint: `Combine the logs into one: $${lg(b)} \\big(x(x + ${d})\\big) = ${n}$, so $x(x + ${d}) = ${b}^{${n}}$. Keep only a solution that makes both logarithms defined.`,
       explanation: [
-        `The sum of logs is the log of the product: $x(x + ${d}) = ${b}^{${n}} = ${b ** n}$.`,
-        `$x^2 + ${d}x - ${b ** n} = 0$ factors as $(x - ${x})(x + ${x + d}) = 0$, so $x = ${x}$ or $x = ${s(other)}$.`,
-        `$${lg(b)} x$ needs $x > 0$, so $x = ${s(other)}$ is rejected. The solution is $x = ${x}$.`,
+        `Adding two logs with the same base gives the log of the product, the result of multiplying: $${lg(b)} \\big(x(x + ${d})\\big) = ${n}$.`,
+        `A logarithm is an exponent, so rewrite it as a power: $x(x + ${d}) = ${b}^{${n}} = ${b ** n}$.`,
+        `Multiply out and move ${b ** n} to the left: $x^2 + ${d === 1 ? "" : d}x - ${b ** n} = 0$.`,
+        `This factors as $(x - ${x})(x + ${x + d}) = 0$. A product is 0 only when a factor is 0, so $x = ${x}$ or $x = ${s(other)}$.`,
+        `A logarithm needs a positive input, so $${lg(b)} x$ needs $x > 0$. That rejects $x = ${s(other)}$.`,
+        `The solution is $x = ${x}$.`,
       ],
     };
   }
@@ -899,9 +961,12 @@ function logEquation(r: Rand): Draft {
     answer: `${m * b ** n}`,
     hint: `Combine into one logarithm: $${lg(b)} \\frac{x}{x - ${d}} = ${n}$, so $\\frac{x}{x - ${d}} = ${b}^{${n}}$.`,
     explanation: [
-      `The difference of logs is the log of the quotient: $\\frac{x}{x - ${d}} = ${b ** n}$.`,
-      `$x = ${b ** n}(x - ${d})$, so $${b ** n - 1}x = ${b ** n * d}$ and $x = ${m * b ** n}$.`,
-      `Check the domain: $x = ${m * b ** n}$ and $x - ${d} = ${m}$ are both positive, so both logarithms are defined.`,
+      `Subtracting two logs with the same base gives the log of the quotient, the result of dividing: $${lg(b)} \\frac{x}{x - ${d}} = ${n}$.`,
+      `A logarithm is an exponent, so rewrite it as a power: $\\frac{x}{x - ${d}} = ${b}^{${n}} = ${b ** n}$.`,
+      `Multiply both sides by $x - ${d}$ to clear the fraction: $x = ${b ** n}(x - ${d})$.`,
+      `Multiply out: $x = ${b ** n}x - ${b ** n * d}$. Collect the $x$ terms: $${b ** n - 1 === 1 ? "" : b ** n - 1}x = ${b ** n * d}$, so $x = ${m * b ** n}$.`,
+      `Check: a logarithm needs a positive input. $x = ${m * b ** n}$ and $x - ${d} = ${m}$ are both positive.`,
+      `The solution is $x = ${m * b ** n}$.`,
     ],
   };
 }
@@ -919,22 +984,29 @@ function seriesSum(r: Rand): Draft {
     const terms = Array.from({ length: n }, (_, i) => a * b ** i);
     const total = (a * (b ** n - 1)) / (b - 1);
     const steps = [
-      `There are ${n} terms, the first is ${a} and the ratio is ${b}.`,
-      `$S_{${n}} = \\frac{${a}(${b}^{${n}} - 1)}{${b} - 1} = \\frac{${a} \\times ${b ** n - 1}}{${b - 1}} = ${total}$.`,
+      `Each term is ${b} times the one before, so this is a geometric series: a sum where each term multiplies the last by the same ratio.`,
+      `The first term is $a_1 = ${a}$, the ratio is $r = ${b}$, and there are $n = ${n}$ terms: ${terms.join(", ")}.`,
+      `The sum of the first $n$ terms is $${grows}$. It works because multiplying the sum by $r$ shifts every term one place, and subtracting cancels all but two terms.`,
+      `Substitute: $S_{${n}} = \\frac{${a}(${b}^{${n}} - 1)}{${b} - 1} = \\frac{${a} \\times ${b ** n - 1}}{${b - 1}} = ${total}$.`,
+      `Check by adding: $${terms.join(" + ")} = ${total}$.`,
     ];
     if (frame === 0)
       return {
         prompt: `Find the sum $${terms.slice(0, 3).join(" + ")} + \\cdots + ${terms.at(-1)}$.`,
         answer: `${total}`,
         hint: `Each term is ${b} times the one before. Count the terms from ${a} to ${terms.at(-1)} first; then use $${grows}$.`,
-        explanation: steps,
+        explanation: [...steps, `The sum is ${total}.`],
       };
     if (frame === 2)
       return {
         prompt: `What is $\\sum_{k=1}^{${n}} ${a === 1 ? "" : `${a} \\cdot `}${b}^{k-1}$?`,
         answer: `${total}`,
         hint: `The sum has ${n} terms. $k = 1$ gives ${a}, and each next term multiplies by ${b}.`,
-        explanation: [`The terms are ${terms.join(", ")}.`, ...steps],
+        explanation: [
+          `$\\sum$, the capital Greek letter sigma, means "add up". Put $k = 1, 2, \\ldots, ${n}$ into $${a === 1 ? "" : `${a} \\cdot `}${b}^{k-1}$ and add the results.`,
+          ...steps,
+          `The value of the sum is ${total}.`,
+        ],
       };
     return {
       prompt: `A jar starts empty. On day 1, ${plural(a, "coin")} ${a === 1 ? "goes" : "go"} in. Each day after that, ${b} times as many coins go in as the day before. The bars show each day's coins. How many coins are in the jar after day ${n}?`,
@@ -947,7 +1019,7 @@ function seriesSum(r: Rand): Draft {
       ),
       answer: `${total}`,
       hint: `The daily amounts ${a}, ${a * b}, ${a * b * b}, … form a geometric sequence with ratio ${b}. Add all ${n} days, or use $${grows}$.`,
-      explanation: steps,
+      explanation: [...steps, `After day ${n}, the jar holds ${total} coins.`],
     };
   }
   // A described sequence, sometimes with ratio 1/2.
@@ -963,8 +1035,11 @@ function seriesSum(r: Rand): Draft {
     answer: exact(tn, td),
     hint: `Use $${formula}$ with $a_1 = ${a}$, $r = ${ratio}$ and $n = ${n}$; work out $r^{${n}}$ first.`,
     explanation: [
-      `$r^{${n}} = ${ftex(rn ** n, rd ** n)}$.`,
-      `$S_{${n}} = \\frac{${a}\\left(1 - ${ftex(rn ** n, rd ** n)}\\right)}{1 - ${ratio}} = ${ftex(tn, td)}$.`,
+      `A geometric sequence multiplies each term by the same number, the common ratio $r$. Here $a_1 = ${a}$, the first term, and $r = ${ratio}$.`,
+      `The sum of the first $n$ terms is $${formula}$. It works because multiplying the sum by $r$ shifts every term one place, and subtracting cancels all but two terms.`,
+      `Work out the power first: $r^{${n}} = ${ftex(rn ** n, rd ** n)}$.`,
+      `Substitute: $S_{${n}} = \\frac{${a}\\left(1 - ${ftex(rn ** n, rd ** n)}\\right)}{1 - ${ratio}} = ${ftex(tn, td)}$.`,
+      `The sum of the first ${n} terms is $${ftex(tn, td)}$.`,
     ],
   };
 }
@@ -988,8 +1063,11 @@ function logRules(r: Rand): Draft {
       answer: `${k}`,
       hint: `Adding logs with the same base multiplies their arguments: ${m} × ${n}. Then ask which power of ${b} that product is.`,
       explanation: [
-        `Product rule: $${lg(b)} ${m} + ${lg(b)} ${n} = ${lg(b)} (${m} \\cdot ${n}) = ${lg(b)} ${m * n}$.`,
-        `$${m * n} = ${b}^{${k}}$, so the value is ${k}.`,
+        `A logarithm answers one question: what power of the base gives this number? Here the base is ${b}.`,
+        `Adding two logs with the same base gives the log of the product, the result of multiplying. This is the product rule, and it works because multiplying powers adds their exponents.`,
+        `So $${lg(b)} ${m} + ${lg(b)} ${n} = ${lg(b)} (${m} \\cdot ${n}) = ${lg(b)} ${m * n}$.`,
+        `${k === 1 ? `${b} to the power 1 is ${b}` : `$${b}^{${k}} = ${m * n}$`}, so $${lg(b)} ${m * n} = ${k}$.`,
+        `The value of $${lg(b)} ${m} + ${lg(b)} ${n}$ is ${k}.`,
       ],
     };
   }
@@ -1009,8 +1087,13 @@ function logRules(r: Rand): Draft {
       answer: `${flip ? -k : k}`,
       hint: `Subtracting logs with the same base divides their arguments: ${p} ÷ ${q}. Write that quotient as a power of ${b}.`,
       explanation: [
-        `Quotient rule: $${lg(b)} ${p} - ${lg(b)} ${q} = ${lg(b)} ${ftex(p, q)}$.`,
-        `$${ftex(p, q)} = ${b}^{${flip ? -k : k}}$, so the value is ${s(flip ? -k : k)}.`,
+        `A logarithm answers one question: what power of the base gives this number? Here the base is ${b}.`,
+        `Subtracting two logs with the same base gives the log of the quotient, the result of dividing. This is the quotient rule.`,
+        `So $${lg(b)} ${p} - ${lg(b)} ${q} = ${lg(b)} \\frac{${p}}{${q}} = ${lg(b)} ${ftex(p, q)}$.`,
+        flip
+          ? `$${q / p} = ${b}^{${k}}$, and a negative exponent means "one over". So $${ftex(p, q)} = ${b}^{-${k}}$.`
+          : `Multiply ${b} by itself: $${b}^{${k}} = ${p / q}$.`,
+        `So the power of ${b} is ${s(flip ? -k : k)}. The value of $${lg(b)} ${p} - ${lg(b)} ${q}$ is ${s(flip ? -k : k)}.`,
       ],
     };
   }
@@ -1026,9 +1109,11 @@ function logRules(r: Rand): Draft {
     answer: `${p * j}`,
     hint: `Move the ${p} inside as an exponent: $${p}${lg(b)} ${m} = ${lg(b)} ${m}^{${p}}$. Then the difference of logs is the log of a quotient.`,
     explanation: [
-      `Power rule: $${p}${lg(b)} ${m} = ${lg(b)} ${m}^{${p}} = ${lg(b)} ${m ** p}$.`,
-      `Quotient rule: $${lg(b)} ${m ** p} - ${lg(b)} ${c ** p} = ${lg(b)} ${m ** p / c ** p}$.`,
-      `$${m ** p / c ** p} = ${b}^{${p * j}}$, so the value is ${p * j}.`,
+      `A logarithm answers one question: what power of the base gives this number? Here the base is ${b}.`,
+      `A number in front of a log can move inside as an exponent. This is the power rule: $${p}${lg(b)} ${m} = ${lg(b)} ${m}^{${p}} = ${lg(b)} ${m ** p}$.`,
+      `Subtracting two logs with the same base gives the log of the quotient, the result of dividing: $${lg(b)} ${m ** p} - ${lg(b)} ${c ** p} = ${lg(b)} \\frac{${m ** p}}{${c ** p}}$.`,
+      `Divide: $\\frac{${m ** p}}{${c ** p}} = ${m ** p / c ** p}$, and $${m ** p / c ** p} = ${b}^{${p * j}}$.`,
+      `So the value of the expression is ${p * j}.`,
     ],
   };
 }
@@ -1049,9 +1134,11 @@ function logExpand(r: Rand): Draft {
       prompt: `Which expression is equivalent to $${lg(b)} \\frac{x^{${p}}y}{z^{${q}}}$ for positive $x$, $y$ and $z$?`,
       hint: `Split the quotient first, then the product: the log of $\\frac{x^{${p}}y}{z^{${q}}}$ is the log of $x^{${p}}y$ minus the log of $z^{${q}}$. Bring each exponent, ${p} and ${q}, down in front.`,
       explanation: [
-        `Quotient rule: $${lg(b)} (x^{${p}}y) - ${lg(b)} z^{${q}}$.`,
-        `Product rule: $${lg(b)} x^{${p}} + ${L("y")} - ${lg(b)} z^{${q}}$.`,
-        `Power rule: $${p}${L("x")} + ${L("y")} - ${q}${L("z")}$.`,
+        `Three rules turn one log into several. They come from how exponents work, since a logarithm is an exponent.`,
+        `The log of a quotient, a division, is a difference of logs: $${lg(b)} (x^{${p}}y) - ${lg(b)} z^{${q}}$.`,
+        `The log of a product, a multiplication, is a sum of logs: $${lg(b)} x^{${p}} + ${L("y")} - ${lg(b)} z^{${q}}$.`,
+        `An exponent inside a log comes out in front as a multiplier: $${p}${L("x")} + ${L("y")} - ${q}${L("z")}$.`,
+        `So the equivalent expression is $${p}${L("x")} + ${L("y")} - ${q}${L("z")}$.`,
       ],
       choices: [
         {
@@ -1060,15 +1147,15 @@ function logExpand(r: Rand): Draft {
         },
         {
           label: `$${p}${L("x")} + ${L("y")} + ${q}${L("z")}$`,
-          feedback: `$z^{${q}}$ is in the denominator. Dividing subtracts its logarithm.`,
+          feedback: `This adds the log of $z$, but $z^{${q}}$ is in the denominator. Dividing inside a log means subtracting its logarithm.`,
         },
         {
           label: `$${p}(${L("x")} + ${L("y")}) - ${q}${L("z")}$`,
-          feedback: `The exponent ${p} belongs to $x$ only, so it multiplies $${L("x")}$ alone.`,
+          feedback: `This spreads the exponent ${p} over $y$ as well. The exponent belongs to $x$ only, so it multiplies $${L("x")}$ alone.`,
         },
         {
           label: `$${Lp(`${p}x`)} + ${L("y")} - ${Lp(`${q}z`)}$`,
-          feedback: `An exponent comes out as a coefficient in front of the log; it does not become a factor inside it.`,
+          feedback: `This keeps the exponent inside as a multiplier. An exponent comes out in front of the log as a coefficient, the number multiplying the log.`,
         },
       ],
     };
@@ -1083,22 +1170,25 @@ function logExpand(r: Rand): Draft {
       prompt: `Which single logarithm equals $${p}${L("x")} - ${q}${L("y")} + ${L("z")}$ for positive $x$, $y$ and $z$?`,
       hint: `First move the coefficients ${p} and ${q} inside as exponents. Then a sum of logs multiplies and a difference divides.`,
       explanation: [
-        `Power rule: $${lg(b)} x^{${p}} - ${lg(b)} y^{${q}} + ${L("z")}$.`,
-        `Sums multiply and differences divide: $${lg(b)} \\dfrac{x^{${p}}z}{y^{${q}}}$.`,
+        `To condense means to write several logs as one. Use the log rules backward. They come from how exponents work, since a logarithm is an exponent.`,
+        `A coefficient, the number multiplying a log, moves inside as an exponent: $${lg(b)} x^{${p}} - ${lg(b)} y^{${q}} + ${L("z")}$.`,
+        `A sum of logs is the log of a product, so $x^{${p}}$ and $z$ multiply. A difference of logs is the log of a quotient, so $y^{${q}}$ divides.`,
+        `Together: $${lg(b)} \\dfrac{x^{${p}}z}{y^{${q}}}$.`,
+        `The single logarithm is $${lg(b)} \\dfrac{x^{${p}}z}{y^{${q}}}$.`,
       ],
       choices: [
         { label: `$${lg(b)} \\dfrac{x^{${p}}z}{y^{${q}}}$`, correct: true },
         {
           label: `$${lg(b)} (x^{${p}}y^{${q}}z)$`,
-          feedback: `$${q}${L("y")}$ is subtracted, so $y^{${q}}$ divides rather than multiplies.`,
+          feedback: `This multiplies all three, ignoring the minus sign. $${q}${L("y")}$ is subtracted, so $y^{${q}}$ divides rather than multiplies.`,
         },
         {
           label: `$${lg(b)} \\dfrac{${p}xz}{${q}y}$`,
-          feedback: `A coefficient in front of a log becomes an exponent inside it, not a factor.`,
+          feedback: `This keeps the coefficients as multipliers. A coefficient in front of a log becomes an exponent inside it: $${p}${L("x")} = ${lg(b)} x^{${p}}$.`,
         },
         {
           label: `$\\dfrac{${lg(b)} (x^{${p}}z)}{${lg(b)} y^{${q}}}$`,
-          feedback: `A difference of logs is the log of a quotient, not a quotient of logs.`,
+          feedback: `This divides two logs. A difference of logs is the log of a quotient, one log with a fraction inside, not a quotient of logs.`,
         },
       ],
     };
@@ -1110,22 +1200,25 @@ function logExpand(r: Rand): Draft {
     prompt: `Which expression is equivalent to $${lg(b)} \\sqrt{xy^{${k}}}$ for positive $x$ and $y$?`,
     hint: `A square root is the power $\\frac{1}{2}$ of everything under it: write $\\sqrt{xy^{${k}}}$ as $x^{1/2}y^{${k}/2}$ first.`,
     explanation: [
-      `$\\sqrt{xy^{${k}}} = (xy^{${k}})^{1/2} = x^{1/2}y^{${k}/2}$.`,
-      `Product and power rules: $${coef(half)}${L("x")} + ${kHalf}${L("y")}$.`,
+      `A square root is the same as the power $\\frac{1}{2}$. So $\\sqrt{xy^{${k}}} = (xy^{${k}})^{1/2}$.`,
+      `A power of a product applies to each factor, and a power of a power multiplies the exponents: $x^{1/2}y^{${k}/2}$.`,
+      `The log of a product is a sum of logs: $${lg(b)} x^{1/2} + ${lg(b)} y^{${k}/2}$.`,
+      `An exponent inside a log comes out in front as a multiplier: $${coef(half)}${L("x")} + ${kHalf}${L("y")}$.`,
+      `So the equivalent expression is $${half}${L("x")} + ${kHalf}${L("y")}$.`,
     ],
     choices: [
       { label: `$${half}${L("x")} + ${kHalf}${L("y")}$`, correct: true },
       {
         label: `$${half}${L("x")} + ${k}${L("y")}$`,
-        feedback: `The square root halves every factor under it, $y^{${k}}$ included.`,
+        feedback: `This halves only the $x$ part. The square root is the power $\\frac{1}{2}$ of everything under it, so $y^{${k}}$ becomes $y^{${k}/2}$ too.`,
       },
       {
         label: `$2${L("x")} + ${2 * k}${L("y")}$`,
-        feedback: `A square root is the power $\\frac{1}{2}$, so it halves the coefficients rather than doubling them.`,
+        feedback: `This treats the square root as squaring. A square root is the power $\\frac{1}{2}$, so it halves the coefficients rather than doubling them.`,
       },
       {
         label: `$${half}${L("x")} \\cdot ${kHalf}${L("y")}$`,
-        feedback: `The log of a product is a sum of logs, not a product.`,
+        feedback: `This multiplies the two logs. The log of a product is a sum of logs, not a product of logs.`,
       },
     ],
   };
@@ -1147,9 +1240,12 @@ function changeOfBase(r: Rand): Draft {
       answer: exact(q, p),
       hint: `Write ${b ** p} and $${arg}$ as powers of one base, then divide: $\\log_{${b ** p}} ${arg} = \\frac{\\log ${arg}}{\\log ${b ** p}}$ in any base.`,
       explanation: [
-        `$${b ** p} = ${b}^{${p}}$ and $${arg} = ${b}^{${q}}$.`,
-        `$\\log_{${b ** p}} ${arg} = \\frac{\\log_{${b}} ${arg}}{\\log_{${b}} ${b ** p}} = ${eqFrac(q, p)}$.`,
+        `$\\log_{${b ** p}} ${arg}$ asks: ${b ** p} to what power gives $${arg}$? Neither is a simple power of the other, so use a smaller base, ${b}.`,
+        `Write both as powers of ${b}: $${b ** p} = ${b}^{${p}}$ and $${arg} = ${b}^{${q}}$.${q < 0 ? ` A negative exponent means "one over".` : ""}`,
+        `The change-of-base rule says a log equals a quotient of logs in any one base: $\\log_{${b ** p}} ${arg} = \\frac{\\log_{${b}} ${arg}}{\\log_{${b}} ${b ** p}}$.`,
+        `In base ${b} those logs are just the exponents ${q} and ${p}, so the value is $${eqFrac(q, p)}$.`,
         `Check: $${b ** p}^{${ftex(q, p)}} = ${b}^{${q}} = ${arg}$.`,
+        `So $\\log_{${b ** p}} ${arg} = ${ftex(q, p)}$.`,
       ],
     };
   }
@@ -1165,8 +1261,11 @@ function changeOfBase(r: Rand): Draft {
       answer: `${k}`,
       hint: `Write each factor as a quotient of logs in one base: $\\frac{\\log ${c}}{\\log ${a}} \\cdot \\frac{\\log ${a ** k}}{\\log ${c}}$. What cancels?`,
       explanation: [
-        `Change of base: $\\log_{${a}} ${c} = \\frac{\\log ${c}}{\\log ${a}}$ and $\\log_{${c}} ${a ** k} = \\frac{\\log ${a ** k}}{\\log ${c}}$.`,
-        `$\\log ${c}$ cancels, leaving $\\frac{\\log ${a ** k}}{\\log ${a}} = \\log_{${a}} ${a ** k} = ${k}$.`,
+        `The change-of-base rule writes any log as a quotient of logs in one shared base. Here use base 10, written $\\log$ with no base.`,
+        `So $\\log_{${a}} ${c} = \\frac{\\log ${c}}{\\log ${a}}$ and $\\log_{${c}} ${a ** k} = \\frac{\\log ${a ** k}}{\\log ${c}}$.`,
+        `Multiply the two fractions. $\\log ${c}$ is on top of one and the bottom of the other, so it cancels.`,
+        `That leaves $\\frac{\\log ${a ** k}}{\\log ${a}}$, which is $\\log_{${a}} ${a ** k}$ by the same rule read backward.`,
+        `$${a}^{${k}} = ${a ** k}$, so the value of the product is ${k}.`,
       ],
     };
   }
@@ -1180,8 +1279,11 @@ function changeOfBase(r: Rand): Draft {
       answer: exact(m, p),
       hint: `Change to base ${b}: $\\log_{${b ** p}} x = \\frac{\\log_{${b}} x}{\\log_{${b}} ${b ** p}}$.`,
       explanation: [
-        `$\\log_{${b ** p}} x = \\frac{\\log_{${b}} x}{\\log_{${b}} ${b ** p}}$, and $\\log_{${b}} ${b ** p} = ${p}$.`,
+        `We know the log of $x$ in base ${b}, so rewrite the new log in base ${b}.`,
+        `The change-of-base rule writes a log as a quotient of logs in one base: $\\log_{${b ** p}} x = \\frac{\\log_{${b}} x}{\\log_{${b}} ${b ** p}}$.`,
+        `The top is given: $\\log_{${b}} x = ${m}$. The bottom is ${p}, because $${b}^{${p}} = ${b ** p}$.`,
         `So $\\log_{${b ** p}} x = ${eqFrac(m, p)}$.`,
+        `The value of $\\log_{${b ** p}} x$ is $${ftex(m, p)}$.`,
       ],
     };
   }
@@ -1193,8 +1295,10 @@ function changeOfBase(r: Rand): Draft {
     answer: `${k}`,
     hint: `A quotient of logs in the same base is one logarithm: $\\frac{\\log ${b ** k}}{\\log ${b}} = \\log_{${b}} ${b ** k}$.`,
     explanation: [
-      `Change of base, read backward: $\\frac{\\log ${b ** k}}{\\log ${b}} = \\log_{${b}} ${b ** k}$.`,
-      `$${b ** k} = ${b}^{${k}}$, so the value is ${k}.`,
+      `$\\log$ with no base written means base 10. The change-of-base rule says a quotient of logs in one base is a single log.`,
+      `The bottom number becomes the new base: $\\frac{\\log ${b ** k}}{\\log ${b}} = \\log_{${b}} ${b ** k}$.`,
+      `$\\log_{${b}} ${b ** k}$ asks: ${b} to what power is ${b ** k}? Multiply ${b} by itself: $${b}^{${k}} = ${b ** k}$.`,
+      `So the value of the quotient is ${k}.`,
     ],
   };
 }
@@ -1213,8 +1317,10 @@ function logValue(r: Rand): Draft {
       answer: `${-k}`,
       hint: `$\\frac{1}{${b ** k}}$ is a reciprocal, so the exponent is negative. First write ${b ** k} as a power of ${b}.`,
       explanation: [
-        `$${b ** k} = ${b}^{${k}}$, so $\\frac{1}{${b ** k}} = ${b}^{-${k}}$.`,
-        `The logarithm is that exponent: $${lg(b)} \\frac{1}{${b ** k}} = -${k}$.`,
+        `A logarithm is an exponent. $${lg(b)} \\frac{1}{${b ** k}}$ asks: ${b} to what power gives $\\frac{1}{${b ** k}}$?${b === 10 ? " A log with no base written has base 10." : ""}`,
+        `First, $${b ** k} = ${b}^{${k}}$.`,
+        `A negative exponent means "one over": $${b}^{-${k}} = \\frac{1}{${b}^{${k}}}$. So $\\frac{1}{${b ** k}} = ${b}^{-${k}}$.`,
+        `The logarithm is that exponent. So $${lg(b)} \\frac{1}{${b ** k}} = -${k}$.`,
       ],
     };
   }
@@ -1231,8 +1337,11 @@ function logValue(r: Rand): Draft {
       answer: exact(k, q),
       hint: `Write the root as a fractional power, and ${b ** k} as a power of ${b}. Then multiply the exponents.`,
       explanation: [
-        `$${b ** k} = ${b}^{${k}}$, and a ${q === 2 ? "square" : "cube"} root is the power $\\frac{1}{${q}}$.`,
-        `$${root} = ${b}^{${k}/${q}}$, so the logarithm is $${ftex(k, q)}$.`,
+        `A logarithm is an exponent. $${lg(b)} ${root}$ asks: ${b} to what power gives $${root}$?`,
+        `First, $${b ** k} = ${b}^{${k}}$${k === 1 ? `, the power 1` : ""}.`,
+        `A ${q === 2 ? "square" : "cube"} root is the same as the power $\\frac{1}{${q}}$, because ${q === 2 ? "two" : "three"} equal factors of it multiply back to the number.`,
+        `A power of a power multiplies the exponents: $${root} = (${b}^{${k}})^{1/${q}} = ${b}^{${k}/${q}}$.`,
+        `So $${lg(b)} ${root} = ${ftex(k, q)}$.`,
       ],
     };
   }
@@ -1247,8 +1356,10 @@ function logValue(r: Rand): Draft {
       answer: `${k}`,
       hint: `On this curve, $y$ is the power of ${b} that gives $x$. Ask: ${b} to what power is ${at}?`,
       explanation: [
-        `The point on the curve has $y = \\log_{${b}} ${at}$.`,
-        `$${b}^{${k}} = ${at}$, so $y = ${k}$.`,
+        `On the graph of $y = \\log_{${b}} x$, each $y$ is the power of ${b} that gives $x$.`,
+        `The dashed line meets the curve where $x = ${at}$, so $y = \\log_{${b}} ${at}$.`,
+        `Ask: ${b} to what power is ${at}? ${k === 1 ? `${b} to the power 1 is ${b}` : `$${b}^{${k}} = ${at}$`}.`,
+        `So the curve meets the dashed line at $y = ${k}$.`,
       ],
     };
   }
@@ -1259,7 +1370,16 @@ function logValue(r: Rand): Draft {
     prompt: `What is $\\log ${value}$?`,
     answer: `${k}`,
     hint: `$\\log$ with no base means base 10. Write ${value} as a power of 10 by counting ${k < 0 ? "the places after the decimal point" : "its zeros"}.`,
-    explanation: [`$${value} = 10^{${k}}$.`, `So $\\log ${value} = ${s(k)}$.`],
+    explanation: [
+      `$\\log$ with no base written means base 10. So $\\log ${value}$ asks: 10 to what power is ${value}?`,
+      k < 0
+        ? `${value} has ${-k} places after the decimal point, so it is $\\frac{1}{${10 ** -k}}$.`
+        : `${value} is 1 followed by ${k} zeros, so it is ${k} tens multiplied together.`,
+      k < 0
+        ? `A negative exponent means "one over": $\\frac{1}{${10 ** -k}} = 10^{${k}}$.`
+        : `So $${value} = 10^{${k}}$.`,
+      `The logarithm is that exponent. So $\\log ${value} = ${s(k)}$.`,
+    ],
   };
 }
 
@@ -1277,22 +1397,24 @@ function logForm(r: Rand): Draft {
         prompt: `Which equation means the same as $${lg(b)} ${N} = ${p}$?`,
         hint: `A logarithm is an exponent. In $${lg(b)} ${N} = ${p}$, name the base, the exponent and the result, then write the power.`,
         explanation: [
-          `$\\log_{b} N = p$ means $b^{p} = N$: the base stays the base, and the logarithm is the exponent.`,
+          `A logarithm is an exponent. $${lg(b)} ${N} = ${p}$ is read "the log base ${b} of ${N} is ${p}". It says ${p} is the power of ${b} that gives ${N}.`,
+          `In general $\\log_{b} N = p$ means $b^{p} = N$. The base stays the base, and the logarithm becomes the exponent.`,
           `So $${lg(b)} ${N} = ${p}$ means $${b}^{${p}} = ${N}$.`,
+          `The equation with the same meaning is $${b}^{${p}} = ${N}$.`,
         ],
         choices: [
           { label: `$${b}^{${p}} = ${N}$`, correct: true },
           {
             label: `$${p}^{${b}} = ${N}$`,
-            feedback: `The base of the logarithm, ${b}, is the base of the power; the value ${p} is the exponent.`,
+            feedback: `This swaps the base and the exponent. The base of the logarithm, ${b}, is the base of the power, and the value ${p} is the exponent.`,
           },
           {
             label: `$${N}^{${p}} = ${b}$`,
-            feedback: `${N} is the result of the power, not its base.`,
+            feedback: `This uses ${N} as the base. ${N} is the result of the power, the number the logarithm is taken of.`,
           },
           {
             label: `$${b}^{${N}} = ${p}$`,
-            feedback: `The logarithm, ${p}, is the exponent, and ${N} is the result.`,
+            feedback: `This swaps the exponent and the result. The logarithm, ${p}, is the exponent, and ${N} is the result.`,
           },
         ],
       };
@@ -1300,22 +1422,24 @@ function logForm(r: Rand): Draft {
       prompt: `Which equation means the same as $${b}^{${p}} = ${N}$?`,
       hint: `In $${b}^{${p}} = ${N}$, the base of the power becomes the base of the logarithm, and the logarithm equals the exponent. Name each part first.`,
       explanation: [
-        `$b^{p} = N$ means $\\log_{b} N = p$: the logarithm is the exponent.`,
-        `So $${b}^{${p}} = ${N}$ means $${lg(b)} ${N} = ${p}$.`,
+        `A logarithm is an exponent. $\\log_{b} N$ means "the power of $b$ that gives $N$".`,
+        `In $${b}^{${p}} = ${N}$, the base is ${b}, the exponent is ${p}, and the result is ${N}.`,
+        `In general $b^{p} = N$ means $\\log_{b} N = p$. The base stays the base, and the logarithm equals the exponent.`,
+        `So $${b}^{${p}} = ${N}$ means $${lg(b)} ${N} = ${p}$.${b === 10 ? " A log with no base written has base 10." : ""}`,
       ],
       choices: [
         { label: `$${lg(b)} ${N} = ${p}$`, correct: true },
         {
           label: `$\\log_{${p}} ${N} = ${b}$`,
-          feedback: `The base of the power, ${b}, is the base of the logarithm.`,
+          feedback: `This swaps the base and the exponent. The base of the power, ${b}, is the base of the logarithm, and the exponent ${p} is the value.`,
         },
         {
           label: `$${lg(b)} ${p} = ${N}$`,
-          feedback: `The logarithm equals the exponent ${p}, and its argument is the result ${N}.`,
+          feedback: `This swaps the exponent and the result. The logarithm equals the exponent ${p}, and the number inside it is the result ${N}.`,
         },
         {
           label: `$\\log_{${N}} ${b} = ${p}$`,
-          feedback: `${N} is the result of the power, so it goes inside the logarithm, not in its base.`,
+          feedback: `This uses ${N} as the base. ${N} is the result of the power, so it goes inside the logarithm, not in its base.`,
         },
       ],
     };
@@ -1331,15 +1455,18 @@ function logForm(r: Rand): Draft {
     prompt: `Between which two consecutive whole numbers is $${lg(b)} ${N}$?`,
     hint: `List powers of ${b}: ${b}, ${b * b}, ${b ** 3}, … until you pass ${N}. The logarithm lies between the two exponents on either side of ${N}.`,
     explanation: [
+      `A logarithm is an exponent. $${lg(b)} ${N}$ is the power of ${b} that gives ${N}.${b === 10 ? " A log with no base written has base 10." : ""}`,
+      `${N} is not a whole-number power of ${b}, so find the powers just below and just above it.`,
       `$${b}^{${k}} = ${b ** k}$ and $${b}^{${k + 1}} = ${b ** (k + 1)}$.`,
-      `${b ** k} < ${N} < ${b ** (k + 1)}, so $${lg(b)} ${N}$ is between ${k} and ${k + 1}.`,
+      `${b ** k} < ${N} < ${b ** (k + 1)}. Bigger powers give bigger results, so the exponent is between ${k} and ${k + 1}.`,
+      `So $${lg(b)} ${N}$ is between ${k} and ${k + 1}.`,
     ],
     choices: pairs.map((lo) =>
       lo === k
         ? { label: `${lo} and ${lo + 1}`, correct: true as const }
         : {
             label: `${lo} and ${lo + 1}`,
-            feedback: `$${b}^{${lo}} = ${b ** lo}$ and $${b}^{${lo + 1}} = ${b ** (lo + 1)}$; ${N} is not between them.`,
+            feedback: `Check these powers: $${b}^{${lo}} = ${b ** lo}$ and $${b}^{${lo + 1}} = ${b ** (lo + 1)}$. ${N} is not between them, so the logarithm is not between ${lo} and ${lo + 1}.`,
           },
     ),
     keepOrder: true,
@@ -1360,8 +1487,11 @@ function decimalRecursion(r: Rand): Draft {
     answer: `${terms.at(-1)}`,
     hint: `Each term is ${text.replace("-", "−")} times the one before. Starting from ${a}, multiply by ${text.replace("-", "−")} once for each step from $a_1$ to $a_{${k}}$, keeping the sign and the decimal.`,
     explanation: [
+      `$a_n$ names term number $n$ of the sequence. The rule $a_n = ${text}a_{n-1}$ says each term is ${text.replace("-", "−")} times the term before it.`,
+      `Start at $a_1 = ${a}$ and multiply by ${text.replace("-", "−")} each step.${ratio < 0 ? " A negative ratio flips the sign every step." : ""}`,
       `The terms are ${terms.map(s).join(", ")}.`,
-      `Equivalently, $a_{${k}} = ${a} \\cdot ${ratio < 0 ? `(${ratio})` : ratio}^{${k - 1}} = ${terms.at(-1)}$.`,
+      `Check with a power: from $a_1$ to $a_{${k}}$ is ${k - 1} steps, so $a_{${k}} = ${a} \\cdot ${ratio < 0 ? `(${ratio})` : ratio}^{${k - 1}} = ${terms.at(-1)}$.`,
+      `So $a_{${k}} = ${terms.at(-1)}$.`,
     ],
   };
 }
@@ -1397,8 +1527,10 @@ function sequenceRule(r: Rand, axes: Record<string, string> = {}): Draft {
       answer: exact(rn, rd),
       hint: `Divide a term by the term before it: ${s(terms[1]!)} ÷ ${paren(terms[0]!)}. Check that ${s(terms[2]!)} ÷ ${paren(terms[1]!)} gives the same.`,
       explanation: [
+        `In a geometric sequence each term is the one before times the same number. That number is the common ratio.`,
+        `To find it, divide a term by the term before it.`,
         `$\\frac{${terms[1]}}{${terms[0]}} = ${ftex(rn, rd)}$, $\\frac{${terms[2]}}{${terms[1]}} = ${ftex(rn, rd)}$ and $\\frac{${terms[3]}}{${terms[2]}} = ${ftex(rn, rd)}$.`,
-        `Every term is $${ftex(rn, rd)}$ times the one before, so the common ratio is $${ftex(rn, rd)}$.`,
+        `Every quotient is the same, as it must be. The common ratio is $${ftex(rn, rd)}$.`,
       ],
     };
   }
@@ -1419,8 +1551,11 @@ function sequenceRule(r: Rand, axes: Record<string, string> = {}): Draft {
       answer: `${(a * rn) / rd}`,
       hint: `${third} is ${a} multiplied by the ratio twice, so ${third} ÷ ${a} is the ratio squared. Find the ratio, then multiply ${a} by it once.`,
       explanation: [
-        `$\\frac{${third}}{${a}} = ${ftex(rn * rn, rd * rd)} = r^2$, so $r = ${ftex(rn, rd)}$ (the terms are positive).`,
-        `The missing term is $${a} \\times ${ftex(rn, rd)} = ${(a * rn) / rd}$.`,
+        `In a geometric sequence each term is the one before times the same number $r$, the common ratio.`,
+        `Going from ${a} to ${third} multiplies by $r$ twice, so $${a} \\cdot r^2 = ${third}$.`,
+        `Divide: $r^2 = \\frac{${third}}{${a}} = ${ftex(rn * rn, rd * rd)}$. The terms are positive, so take the positive square root: $r = ${ftex(rn, rd)}$.`,
+        `The missing term is one step after ${a}: $${a} \\times ${ftex(rn, rd)} = ${(a * rn) / rd}$.`,
+        `The missing term is ${(a * rn) / rd}.`,
       ],
     };
   }
@@ -1435,8 +1570,11 @@ function sequenceRule(r: Rand, axes: Record<string, string> = {}): Draft {
       answer: `${terms.at(-1)}`,
       hint: `Each term is ${s(ratio)} times the one before. Start at ${a} and multiply by ${s(ratio)} once for each step from $a_1$ to $a_{${k}}$.`,
       explanation: [
+        `$a_n$ names term number $n$. The rule $a_n = ${ratio}a_{n-1}$ says each term is ${s(ratio)} times the term before it.`,
+        `Start at $a_1 = ${a}$ and multiply by ${s(ratio)} each step.${ratio < 0 ? " A negative ratio flips the sign every step." : ""}`,
         `The terms are ${terms.map(s).join(", ")}.`,
-        `Equivalently, $a_{${k}} = ${a} \\cdot ${ratio < 0 ? `(${ratio})` : ratio}^{${k - 1}} = ${terms.at(-1)}$.`,
+        `Check with a power: from $a_1$ to $a_{${k}}$ is ${k - 1} steps, so $a_{${k}} = ${a} \\cdot ${ratio < 0 ? `(${ratio})` : ratio}^{${k - 1}} = ${terms.at(-1)}$.`,
+        `So $a_{${k}} = ${terms.at(-1)}$.`,
       ],
     };
   }
@@ -1448,8 +1586,11 @@ function sequenceRule(r: Rand, axes: Record<string, string> = {}): Draft {
     answer: `${a}`,
     hint: `From $a_2$ to $a_5$ is three steps, so ${s(a * ratio ** 4)} ÷ ${paren(a * ratio)} is the ratio cubed. Find the ratio, then step back once from $a_2$.`,
     explanation: [
-      `$r^3 = \\frac{${a * ratio ** 4}}{${a * ratio}} = ${ratio ** 3}$, so $r = ${ratio}$.`,
-      `$a_1 = \\frac{a_2}{r} = \\frac{${a * ratio}}{${ratio}} = ${a}$.`,
+      `In a geometric sequence each term is the one before times the common ratio $r$.`,
+      `From $a_2$ to $a_5$ is three steps, so $a_5 = a_2 \\cdot r^3$.`,
+      `Divide: $r^3 = \\frac{${a * ratio ** 4}}{${a * ratio}} = ${ratio ** 3}$. The cube root of ${ratio ** 3} is ${ratio}, so $r = ${ratio}$.`,
+      `$a_1$ is one step before $a_2$, so divide by $r$: $a_1 = \\frac{${a * ratio}}{${ratio}} = ${a}$.`,
+      `So $a_1 = ${a}$.`,
     ],
   };
 }
