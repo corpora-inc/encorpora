@@ -175,13 +175,6 @@
     "change": 1,
     "difference": 8
   },
-  "choose-the-plot": {
-    "boundary": 1,
-    "interval": 12,
-    "intervals": 7,
-    "sort": 4,
-    "sorting": 2
-  },
   "circle-area-coefficient": {
     "scale": 1
   },
@@ -1271,17 +1264,6 @@
     "vertex": 1,
     "whole": 2
   },
-  "lesson:arc-sector-derivation": {
-    "center": 2,
-    "degrees": 2,
-    "factor": 2,
-    "scale": 1,
-    "scales": 2,
-    "similar": 1,
-    "square": 2,
-    "vertex": 1,
-    "whole": 1
-  },
   "lesson:area": {
     "boundary": 2,
     "product": 1,
@@ -1444,19 +1426,6 @@
   "lesson:categorical-summaries": {
     "mode": 6
   },
-  "lesson:cavalieri-volume-reasoning": {
-    "base": 1,
-    "bases": 1,
-    "change": 1,
-    "one third": 1,
-    "plane": 1,
-    "planes": 2,
-    "scale": 1,
-    "side": 3,
-    "solid": 4,
-    "solids": 7,
-    "terms": 1
-  },
   "lesson:change-tens-and-ones": {
     "changes": 2,
     "cubes": 1,
@@ -1466,13 +1435,6 @@
   "lesson:check-registers": {
     "balance": 12,
     "balances": 1
-  },
-  "lesson:choose-the-plot": {
-    "changes": 1,
-    "fourth": 1,
-    "interval": 4,
-    "intervals": 4,
-    "sort": 1
   },
   "lesson:circle-area-coefficient": {
     "boundary": 4,
@@ -1504,16 +1466,6 @@
     "unit": 2,
     "units": 1,
     "whole": 2
-  },
-  "lesson:circle-dilation-scaling": {
-    "center": 10,
-    "changes": 2,
-    "factor": 5,
-    "image": 1,
-    "scale": 2,
-    "scales": 1,
-    "similar": 2,
-    "square": 1
   },
   "lesson:circle-estimate-blanks": {
     "square": 3
@@ -1647,12 +1599,6 @@
     "square": 2,
     "squaring": 1,
     "whole": 1
-  },
-  "lesson:compass-straightedge-reasoning": {
-    "argument": 1,
-    "corresponding angles": 1,
-    "key": 1,
-    "more than": 1
   },
   "lesson:compatible-number-estimate": {
     "change": 3,
@@ -1899,12 +1845,6 @@
     "unit": 5,
     "units": 5
   },
-  "lesson:conditional-everyday-reasoning": {
-    "change": 2,
-    "event": 3,
-    "events": 6,
-    "product": 1
-  },
   "lesson:conditional-statements": {
     "inverse": 4,
     "parts": 1,
@@ -2034,15 +1974,6 @@
     "units": 6,
     "vertex": 1,
     "vertices": 2
-  },
-  "lesson:coordinate-quadrilateral-claims": {
-    "multiple": 1,
-    "opposite": 3,
-    "side": 2,
-    "sides": 10,
-    "square": 4,
-    "squared": 3,
-    "vertex": 1
   },
   "lesson:coordinate-reading": {
     "scale": 4,
@@ -2214,14 +2145,6 @@
   "lesson:delivery-operations-slots": {
     "change": 2,
     "changes": 3
-  },
-  "lesson:density-context": {
-    "cubes": 1,
-    "population": 4,
-    "sides": 2,
-    "square": 2,
-    "unit": 2,
-    "units": 3
   },
   "lesson:density-volume-steps": {
     "base": 1,
@@ -2828,29 +2751,6 @@
     "sides": 2,
     "terms": 1
   },
-  "lesson:geometric-design-constraint": {
-    "cube": 1,
-    "edges": 1,
-    "more than": 1,
-    "part": 1,
-    "rule": 1,
-    "side": 1,
-    "sides": 4,
-    "square": 8,
-    "unit": 2
-  },
-  "lesson:geometric-model-choice": {
-    "base": 1,
-    "faces": 1,
-    "model": 4,
-    "models": 1,
-    "part": 1,
-    "side": 2,
-    "sides": 1,
-    "solid": 4,
-    "solids": 1,
-    "terms": 1
-  },
   "lesson:geometric-rule-forms": {
     "jumps": 1,
     "rule": 1,
@@ -3097,15 +2997,6 @@
   "lesson:inline-linear-features": {
     "change": 3
   },
-  "lesson:inscribed-polygon-reasoning": {
-    "center": 5,
-    "degrees": 1,
-    "side": 4,
-    "sides": 1,
-    "square": 2,
-    "vertex": 4,
-    "vertices": 3
-  },
   "lesson:integer-multiply-divide": {
     "changes": 1,
     "inverse": 1,
@@ -3178,13 +3069,6 @@
   "lesson:lifetime-income": {
     "change": 1,
     "difference": 3
-  },
-  "lesson:line-angle-proof-reasons": {
-    "corresponding angles": 1,
-    "face": 2,
-    "opposite": 1,
-    "side": 2,
-    "sides": 1
   },
   "lesson:line-equations-from-conditions": {
     "change": 3,
@@ -3513,23 +3397,6 @@
     "scale": 1,
     "unit": 1,
     "units": 2
-  },
-  "lesson:measurement-formula-justifications": {
-    "argument": 3,
-    "base": 3,
-    "boundary": 1,
-    "cube": 4,
-    "edge": 1,
-    "face": 1,
-    "faces": 1,
-    "one third": 2,
-    "side": 5,
-    "similar": 1,
-    "solid": 1,
-    "square": 1,
-    "terms": 1,
-    "vertex": 2,
-    "whole": 1
   },
   "lesson:measuring-angles": {
     "center": 2,
@@ -3923,13 +3790,6 @@
     "square": 1,
     "vertex": 2
   },
-  "lesson:parallelogram-property-consequences": {
-    "opposite": 11,
-    "parts": 2,
-    "side": 2,
-    "sides": 5,
-    "whole": 1
-  },
   "lesson:parallelogram-types-trapezoid-angles": {
     "opposite": 2,
     "side": 1,
@@ -4085,16 +3945,6 @@
     "sides": 17,
     "squares": 1
   },
-  "lesson:polygon-symmetry-counts": {
-    "center": 6,
-    "degrees": 1,
-    "identity": 2,
-    "multiple": 1,
-    "sides": 4,
-    "square": 2,
-    "vertex": 3,
-    "vertices": 4
-  },
   "lesson:polygons-and-solids": {
     "base": 2,
     "edge": 1,
@@ -4240,14 +4090,6 @@
   "lesson:powers-of-ten": {
     "change": 1,
     "changes": 1
-  },
-  "lesson:precise-geometric-definitions": {
-    "boundary": 1,
-    "degrees": 1,
-    "plane": 9,
-    "sides": 1,
-    "terms": 1,
-    "vertex": 1
   },
   "lesson:price-and-rate-chain": {
     "scale": 2,
@@ -5476,14 +5318,6 @@
     "rules": 1,
     "units": 1
   },
-  "lesson:section-revolution-solid": {
-    "base": 1,
-    "more than": 1,
-    "plane": 8,
-    "side": 6,
-    "solid": 8,
-    "terms": 1
-  },
   "lesson:sector-area-coefficient": {
     "boundary": 4,
     "center": 7,
@@ -5626,19 +5460,6 @@
     "opposite": 4,
     "product": 1
   },
-  "lesson:similar-solid-scale-chain": {
-    "cube": 1,
-    "cubes": 1,
-    "face": 1,
-    "root": 1,
-    "scale": 10,
-    "scales": 1,
-    "similar": 1,
-    "similar solids": 2,
-    "solid": 2,
-    "square": 2,
-    "squares": 1
-  },
   "lesson:similar-solid-volume": {
     "cube": 2,
     "edge": 6,
@@ -5660,39 +5481,6 @@
     "sort": 1,
     "third": 1,
     "vertex": 1
-  },
-  "lesson:similarity-by-transformation": {
-    "center": 2,
-    "change": 1,
-    "corresponding angles": 1,
-    "factor": 2,
-    "factors": 1,
-    "image": 1,
-    "scale": 4,
-    "sides": 2,
-    "similar": 6,
-    "similar figures": 1,
-    "vertex": 1
-  },
-  "lesson:similarity-proof-aa": {
-    "corresponding angle": 1,
-    "corresponding angles": 2,
-    "factor": 2,
-    "side": 1,
-    "sides": 1,
-    "similar": 1,
-    "similar triangles": 1,
-    "similarity": 5,
-    "third": 2,
-    "vertices": 2
-  },
-  "lesson:similarity-theorem-length": {
-    "side": 4,
-    "sides": 4,
-    "similar": 3,
-    "similar triangles": 1,
-    "term": 1,
-    "whole": 3
   },
   "lesson:simplify-square-root": {
     "changes": 1,
@@ -5798,19 +5586,6 @@
     "square": 2,
     "vertex": 1,
     "vertices": 2
-  },
-  "lesson:solid-volume-context": {
-    "base": 1,
-    "factor": 1,
-    "one third": 4,
-    "parts": 1,
-    "solid": 2,
-    "solids": 1,
-    "squared": 1,
-    "squaring": 1,
-    "terms": 1,
-    "unit": 1,
-    "units": 1
   },
   "lesson:solve-by-completing-square": {
     "base": 1,
@@ -6206,13 +5981,6 @@
     "difference": 2,
     "part": 1
   },
-  "lesson:tangent-circle-computation": {
-    "center": 4,
-    "point of tangency": 2,
-    "squares": 1,
-    "tangent": 13,
-    "tangents": 2
-  },
   "lesson:tens-and-extra-ones": {
     "cubes": 1,
     "model": 2,
@@ -6269,20 +6037,6 @@
     "parts": 6,
     "third": 1
   },
-  "lesson:transformation-invariant-claims": {
-    "center": 5,
-    "change": 2,
-    "changes": 2,
-    "factor": 2,
-    "factors": 1,
-    "images": 1,
-    "plane": 3,
-    "scale": 1,
-    "scales": 1,
-    "side": 7,
-    "sides": 3,
-    "squared": 3
-  },
   "lesson:transformation-rule-slots": {
     "change": 1,
     "changes": 1,
@@ -6293,15 +6047,6 @@
     "rule": 4,
     "rules": 4,
     "vertex": 1
-  },
-  "lesson:transformation-sequence-mapping": {
-    "change": 1,
-    "changes": 2,
-    "factor": 1,
-    "image": 4,
-    "side": 2,
-    "similar": 1,
-    "vertex": 5
   },
   "lesson:trapezoid-consequences": {
     "average": 3,
@@ -6329,32 +6074,6 @@
     "square": 8,
     "vertex": 2,
     "whole": 1
-  },
-  "lesson:triangle-circle-centers": {
-    "center": 5,
-    "degrees": 1,
-    "intersection": 2,
-    "opposite": 4,
-    "sides": 8,
-    "tangent": 1,
-    "vertices": 7,
-    "whole": 1
-  },
-  "lesson:triangle-congruence-givens": {
-    "change": 1,
-    "changes": 2,
-    "corresponding angle": 1,
-    "corresponding angles": 2,
-    "parts": 1,
-    "plane": 1,
-    "side": 16,
-    "sides": 9,
-    "similar triangles": 1,
-    "similarity": 1,
-    "third": 2,
-    "vertex": 6,
-    "vertices": 4,
-    "whole": 2
   },
   "lesson:triangle-construction": {
     "base": 1,
@@ -6390,17 +6109,6 @@
     "square": 1,
     "squared": 2,
     "whole": 2
-  },
-  "lesson:triangle-theorem-consequences": {
-    "one third": 1,
-    "opposite": 2,
-    "opposite side": 1,
-    "part": 1,
-    "side": 3,
-    "sides": 5,
-    "third": 2,
-    "thirds": 2,
-    "vertex": 3
   },
   "lesson:triangle-uniqueness": {
     "opposite": 2,
@@ -6470,17 +6178,6 @@
     "events": 2,
     "models": 2,
     "part": 1
-  },
-  "lesson:two-column-angle-proof": {
-    "corresponding angle": 2,
-    "corresponding angles": 4,
-    "opposite": 1
-  },
-  "lesson:two-column-congruence-proof": {
-    "parts": 4,
-    "side": 1,
-    "sides": 3,
-    "vertices": 1
   },
   "lesson:two-radical-steps": {
     "opposite": 1,
