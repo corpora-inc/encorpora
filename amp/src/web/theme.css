@@ -1288,6 +1288,15 @@ html:has(.shell.flow)::-webkit-scrollbar {
 .lesson-sheet-bar .text-button {
   padding: 10px 14px;
 }
+/* Quiet actions outside practice are still full-size targets. */
+.home-birth-year,
+.lesson-sheet-bar .text-button,
+.lesson-reader .card-top .text-button,
+.book-list .text-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
 
 /* Content starts the same distance below the tabs on every section. */
 .app-shell > main.progress-workspace {

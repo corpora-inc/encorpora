@@ -205,8 +205,12 @@ export async function probe(page: Page): Promise<ShellProbe> {
     for (const el of labelled) {
       const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
       for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+        // Visually hidden text (a clipped 1px label) is not laid out to read.
+        const holder = node.parentElement!.getBoundingClientRect();
+        if (holder.width <= 2 || holder.height <= 2) continue;
         const text = node.textContent ?? "";
-        const re = /[^\s]+/g;
+        // A compound may wrap at its hyphen; a word may not wrap inside.
+        const re = /[^\s\-‐–—/]+/g;
         for (let m = re.exec(text); m; m = re.exec(text)) {
           if (m[0].length < 4) continue;
           const range = document.createRange();
@@ -242,10 +246,29 @@ export async function probe(page: Page): Promise<ShellProbe> {
       )
         truncated.push(describe(el));
     }
-    const boxes = controls.map((el) => ({
-      el,
-      r: el.getBoundingClientRect(),
-    }));
+    // Overlap counts only what is visible: each box is clipped by its
+    // scrolling or clipping ancestors.
+    const clipped = (el: HTMLElement) => {
+      const b = el.getBoundingClientRect();
+      let [left, top, right, bottom] = [b.left, b.top, b.right, b.bottom];
+      for (
+        let a = el.parentElement;
+        a && a !== document.body;
+        a = a.parentElement
+      ) {
+        const st = getComputedStyle(a);
+        if (st.overflowX === "visible" && st.overflowY === "visible") continue;
+        const c = a.getBoundingClientRect();
+        left = Math.max(left, c.left);
+        top = Math.max(top, c.top);
+        right = Math.min(right, c.right);
+        bottom = Math.min(bottom, c.bottom);
+      }
+      return { left, top, right, bottom };
+    };
+    const boxes = controls
+      .map((el) => ({ el, r: clipped(el) }))
+      .filter(({ r }) => r.right - r.left > 1 && r.bottom - r.top > 1);
     const overlaps: string[] = [];
     for (let i = 0; i < boxes.length; i++)
       for (let j = i + 1; j < boxes.length; j++) {
@@ -297,9 +320,15 @@ export async function focusWalk(page: Page, steps = 24) {
         .slice(0, 40);
       const label = `<${el.tagName.toLowerCase()}> "${name}"`;
       const style = getComputedStyle(el);
-      const ring =
-        (style.outlineStyle !== "none" && parseFloat(style.outlineWidth) > 0) ||
-        (style.boxShadow && style.boxShadow !== "none");
+      const shows = (node: Element) => {
+        const s = getComputedStyle(node);
+        return (
+          (s.outlineStyle !== "none" && parseFloat(s.outlineWidth) > 0) ||
+          (s.boxShadow && s.boxShadow !== "none")
+        );
+      };
+      // A field may draw its ring on its wrapper (:focus-within).
+      const ring = shows(el) || (!!el.parentElement && shows(el.parentElement));
       const r = el.getBoundingClientRect();
       const onScreen =
         r.bottom > 0 &&

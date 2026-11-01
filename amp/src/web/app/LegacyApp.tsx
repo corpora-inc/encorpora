@@ -1407,7 +1407,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         />
       ) : familyOpen && token ? (
         <FamilyCenter
-          accountsEnabled={authMode === "accounts"}
+          // Until the sign-in mode is known, keep the Security tab's place:
+          // hosted AMP always uses accounts, so the tabs never reflow.
+          accountsEnabled={authMode === undefined || authMode === "accounts"}
           onConsentEnrollment={() => openConsent()}
           onContinueSetup={
             nativeRuntime ? undefined : () => navigate("/start/plan")
@@ -1854,6 +1856,8 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
               <h2 ref={readerHeading} tabIndex={-1}>
                 {readingLesson.title}
               </h2>
+              <ReferenceLesson lesson={readingLesson} />
+              {/* The lesson comes first; its printable copies follow it. */}
               {!nativeRuntime && (
                 <section
                   className="reader-downloads"
@@ -1876,7 +1880,6 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
                   </div>
                 </section>
               )}
-              <ReferenceLesson lesson={readingLesson} />
             </article>
           )}
         </main>
