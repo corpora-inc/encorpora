@@ -18,7 +18,9 @@
  *                         a name resumes it: units already judged on the same
  *                         text are skipped, failed ones are retried
  *   --concurrency n       parallel `codex exec` processes (default 8)
- *   --model m             Codex model (default: the Codex config's)
+ *   --model m             Codex model (default: the one ~/.codex/config.toml
+ *                         names; the rest of that config, such as its MCP
+ *                         servers, is not loaded)
  *   --effort e            minimal|low|medium|high|xhigh (default high); a resumed
  *                         run keeps its model and effort
  *   --print               print the rendered text and exit without judging
@@ -41,7 +43,7 @@ import {
   rm,
   writeFile,
 } from "node:fs/promises";
-import { tmpdir } from "node:os";
+import { homedir, tmpdir } from "node:os";
 import { join, relative, resolve } from "node:path";
 import {
   lessonUnits,
@@ -173,6 +175,16 @@ type Run = {
   results: Record<string, Result>;
   failures: Record<string, { error: string; at: string }>;
 };
+
+/** The model the user's Codex config names, or null for Codex's default. */
+function configuredModel() {
+  const home = process.env.CODEX_HOME ?? join(homedir(), ".codex");
+  const config = join(home, "config.toml");
+  if (!existsSync(config)) return null;
+  return (
+    /^model\s*=\s*"([^"]+)"/m.exec(readFileSync(config, "utf8"))?.[1] ?? null
+  );
+}
 
 /** Where each lesson id and template id is written, from the source text. */
 function sourceIndex() {
@@ -334,6 +346,9 @@ async function askCodex(
     "read-only",
     "-C",
     workdir,
+    // The judge only reads text. The user's config would also start its MCP
+    // servers in every process, so it is skipped and its model passed on.
+    "--ignore-user-config",
     "-c",
     `model_reasoning_effort="${effort}"`,
     ...(model ? ["-m", model] : []),
@@ -456,7 +471,7 @@ async function main() {
   const runName = flag("run") ?? new Date().toISOString().replace(/[:.]/g, "-");
   if (!/^[A-Za-z0-9._-]+$/.test(runName))
     throw new Error("--run may use letters, digits, '.', '_' and '-'");
-  const model = flag("model") ?? null;
+  const model = flag("model") ?? configuredModel();
   const effort = flag("effort") ?? "high";
   if (!efforts.includes(effort))
     throw new Error(`--effort must be one of ${efforts.join(", ")}`);
