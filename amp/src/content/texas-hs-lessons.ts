@@ -6,35 +6,49 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
   "line-equation-forms": {
     goal: "Write a line's equation in point-slope, slope-intercept or standard form from a point and slope, two points, or another form.",
     intuition:
-      "A line is fixed by one point and a slope. Each form of its equation shows that information differently: point-slope form shows a point and the slope, slope-intercept form shows the slope and the $y$-intercept, and standard form $Ax+By=C$ keeps whole-number coefficients.",
+      "The slope $m$ is how much $y$ changes when $x$ goes up by 1. One point and the slope fix a line. Point-slope form $y - y_1 = m(x - x_1)$ shows a known point $(x_1, y_1)$ and the slope. Slope-intercept form $y = mx + b$ shows the slope and $b$, the value of $y$ at $x = 0$. The form $Ax+By=C$ is called standard form, with integers $A$, $B$, $C$ ($A$ and $B$ not both 0).",
+    senses: {
+      "standard form": "standard-form-line",
+      side: "side-of-equation",
+      term: "term-expression",
+    },
+    noLink: ["change", "changes", "factor"],
     terms: ["slope", "point-slope-form", "standard-form-line"],
     method: [
-      "If two points are given, find the slope as the change in $y$ over the change in $x$.",
-      "Put the slope and one point into $y-y_1=m(x-x_1)$, subtracting each coordinate from its own variable.",
-      "To change form, distribute and solve for $y$ for slope-intercept form, or multiply by a common denominator and collect $x$ and $y$ on the left for standard form.",
-      "Check by substituting the given point or points.",
+      "If two points are given, find the slope: the change in $y$ divided by the change in $x$.",
+      "Put the slope and one point into $y-y_1=m(x-x_1)$, subtracting each coordinate from its own letter.",
+      "To change form, multiply out and solve for $y$ for slope-intercept form. For standard form, clear fractions and gather $x$ and $y$ on the left.",
+      "Check by putting in the given point or points.",
     ],
     watch:
-      "Subtract the point's coordinates: a point with $x_1=-2$ gives the factor $x+2$. Multiply every term, including the constant, when clearing fractions.",
+      "Subtract the point's coordinates: a point with $x_1=-2$ gives $x+2$. When clearing fractions, multiply every term (each piece joined by + or −), including the plain number.",
   },
   "line-relationship-equations": {
-    goal: "Write the line through a point parallel or perpendicular to a given line or an axis, and name slopes of horizontal and vertical lines.",
+    goal: "Write the line through a point parallel or perpendicular to a given line or an axis, and name slopes of flat and upright lines.",
     intuition:
-      "Parallel lines point the same way, so they have the same slope. Perpendicular lines meet at a right angle, so their slopes are negative reciprocals. Horizontal lines have slope 0 and vertical lines have an undefined slope, because their run is 0.",
+      "Two different non-vertical lines are parallel, pointing the same way and never meeting, exactly when they have the same slope. Perpendicular lines cross at a right angle. If neither is vertical, their slopes are negative reciprocals: flip the fraction and change the sign, so 2 pairs with $-\\frac{1}{2}$. Their product, the result of multiplying them, is $-1$. A horizontal (flat) line has slope 0. A vertical (upright) line has undefined slope, because its change in $x$ is 0.",
+    senses: {
+      "standard form": "standard-form-line",
+      side: "side-of-equation",
+      product: "product-multiply",
+    },
+    noLink: ["change", "changes"],
     terms: ["negative-reciprocal", "horizontal-line", "vertical-line"],
     method: [
-      "Read the slope of the given line. For $Ax+By=C$, solve for $y$: the slope is $-\\frac{A}{B}$.",
-      "Use the same slope for a parallel line, or the negative reciprocal for a perpendicular line.",
-      "Substitute the given point into $y=mx+b$ to find $b$.",
-      "For a line parallel or perpendicular to a horizontal or vertical line, decide whether the new line is horizontal or vertical, then keep the matching coordinate of the point.",
+      "Read the slope of the given line. For $Ax+By=C$ with $B$ not 0, solve for $y$: $By = -Ax + C$, so $y = -\\frac{A}{B}x + \\frac{C}{B}$ and the slope is $-\\frac{A}{B}$.",
+      "Use the same slope for a parallel line, or the negative reciprocal for a perpendicular line. If the given line is horizontal or vertical, use the last step instead.",
+      "Put the given point into $y=mx+b$ and solve for $b$, the value of $y$ at $x = 0$.",
+      "A horizontal line is a flat line; a vertical line is an upright one. For a line parallel or perpendicular to one of these, decide which kind the new line is. Then keep the matching coordinate of the point.",
     ],
     watch:
-      "A perpendicular slope needs both steps: flip the fraction and change the sign. The point's $y$-coordinate is not the intercept unless the point is on the $y$-axis.",
+      "A perpendicular slope needs both moves: flip the fraction and change the sign. The point's $y$-coordinate is not $b$ unless the point is on the $y$-axis.",
   },
   "system-equation-choice": {
-    goal: "Choose the system of two linear equations that matches a situation, a pair of tables or a graph.",
+    goal: "Choose the pair of linear equations (a system) that matches a situation, a pair of tables or a graph.",
     intuition:
-      "Each quantity that changes at a steady rate from a starting value gives one equation $y=mx+b$. The rate multiplies $x$, and the starting value is the constant. A system is the pair of equations, one for each quantity.",
+      "An amount that starts at some value and grows by the same rate each step is written $y = mx + b$. The rate $m$ multiplies $x$, and the starting value $b$ is added on. For 10 dollars to join plus 4 dollars a month, $y = 4x + 10$. A system is a pair of such equations, one for each amount.",
+    senses: { model: "model" },
+    noLink: ["change", "changes", "mean", "balances"],
     terms: [
       "system-of-equations",
       [
@@ -44,18 +58,20 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "initial-value",
     ],
     method: [
-      "For a table, find how much each row changes when $x$ increases by 1, then find the value at $x=0$.",
-      "For a graph, read each line's $y$-intercept and count rise over run for its slope.",
+      "For a table, find how much $y$ changes when $x$ goes up by 1. Then find the value at $x=0$.",
+      "For a graph, read where each line crosses the vertical axis, and count rise over run for its slope.",
       "For a story with two unknown counts, write one equation for the total number and one for the total value, multiplying each count by its price.",
       "Pair each rate with its own starting value.",
     ],
     watch:
-      "Keep each rate and starting value together in one equation. The value at $x=1$ is not the starting value unless the table starts there.",
+      "Keep each rate and starting value together in one equation. The starting value is the value at $x = 0$, even when a table begins at $x = 1$.",
   },
   "graph-estimate-system-solution": {
-    goal: "Read two plotted lines and estimate the point where they meet, then say what it means in the situation.",
+    goal: "Read two plotted lines, estimate the point where they meet, and say what it means in the situation.",
     intuition:
-      "Each line shows one quantity as it changes. Where the lines cross, the two quantities are equal at the same input, so that point answers questions such as when two costs are the same.",
+      "Each line shows one amount as it changes. A point on a graph is written $(x, y)$: the across value, then the up value. Where the two lines cross, both amounts have the same $x$ and the same $y$. So that point answers questions such as “when do the two plans cost the same?”",
+    senses: { model: "model" },
+    noLink: ["change", "changes", "mean", "balances"],
     terms: [
       "intersection-graphs",
       [
@@ -72,23 +88,33 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "Do not round the crossing to the nearest grid corner, and keep the order $(x, y)$.",
   },
   "exponential-domain-range": {
-    goal: "Write the domain and range of an exponential function or model as inequalities.",
+    goal: "Write the domain (allowed inputs) and range (possible outputs) of an exponential function or model as inequalities.",
     intuition:
-      "You can raise a positive base to any real power, so an exponential function accepts every input unless a situation restricts it. Its outputs get close to a boundary line, the horizontal asymptote, without reaching it.",
+      "In $2^x$, the base, the number being multiplied, is 2. The exponent is the small raised $x$. When it is a counting number, it says how many times: $2^3 = 2 \\times 2 \\times 2$. A positive base can be raised to any real power, so every input is allowed unless a situation limits it. Take the base positive and not 1 (a base of 1 always gives 1). The outputs creep toward a boundary line, called the horizontal asymptote, but never reach it. For $a \\cdot b^x + k$, the boundary is $y = k$.",
+    senses: {
+      term: "term-expression",
+      boundary: "boundary",
+      base: "base-exponent",
+      range: "range-function",
+      model: "model",
+    },
+    noLink: ["side"],
     terms: ["domain", "range-function", "horizontal-asymptote"],
     method: [
-      "State the domain: all real numbers, unless a situation limits the input, such as $t\\ge0$.",
-      "Find the boundary of the range, the number added to $a\\cdot b^x$.",
-      "If $a>0$ the outputs lie above the boundary, and if $a<0$ they lie below it. A boundary that is not reached uses $<$ or $>$.",
-      "For a model, include the starting value when the domain starts at 0.",
+      "State the domain: all real numbers, unless a situation limits the input, such as time $t\\ge0$.",
+      "Find the boundary of the range: the number $k$ added to $a\\cdot b^x$.",
+      "If $a>0$ the outputs lie above the boundary; if $a<0$ they lie below it. The boundary is never reached, so use $<$ or $>$.",
+      "For a model, an equation that stands for a real situation, include the starting value when the domain starts at 0.",
     ],
     watch:
-      "Exponential functions have no restriction on $x$; $x>0$ belongs to logarithms. The asymptote itself is not an output.",
+      "Exponential functions allow every real $x$, including negatives. The boundary itself is never an output.",
   },
   "absolute-value-equation-formulate": {
-    goal: "Write an absolute value equation from a distance, two given solutions or a measurement that differs from a target by a fixed amount.",
+    goal: "Write an absolute value equation from a distance, from two given solutions, or from a measurement that may miss a target by a fixed amount.",
     intuition:
-      "The absolute value $|x-c|$ is the distance between $x$ and $c$ on the number line. An equation $|x-c|=d$ asks for every number exactly $d$ units from $c$, which gives one solution on each side of $c$.",
+      "The absolute value $|x - c|$ is the distance between $x$ and $c$ on the number line. So $|x - c| = d$ asks for every number exactly $d$ away from $c$. When $d$ is greater than 0, there are two answers, one $d$ above $c$ and one $d$ below. The middle number $c$ is called the center.",
+    senses: { unit: "unit", difference: "difference-subtract" },
+    noLink: ["center", "side"],
     terms: [
       ["absolute-value", "$|x - c|$ is the distance from $x$ to $c$."],
       [
@@ -97,26 +123,28 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Identify the center, the point the distance is measured from.",
-      "Identify the distance.",
-      "Write $|x-c|=d$. For two given solutions, the center is their midpoint and $d$ is the distance from it to either solution.",
+      "Find the center, the number the distance is measured from.",
+      "Find the distance.",
+      "Write $|x-c|=d$. For two given solutions, the center is halfway between them and $d$ is the distance from it to either one.",
     ],
     watch:
-      "A center of $-3$ gives $|x+3|$. The right side is the distance, not the center.",
+      "A center of $-3$ gives $|x+3|$. The number after the equals sign is the distance, not the center.",
   },
   "rational-equation-formulate": {
-    goal: "Write the rational equation that models a work-together, current-speed or two-speed travel situation.",
+    goal: "Write the equation with fractions that models a work-together, river-current or two-speed travel story.",
     intuition:
-      "Rates tell how much happens in one unit of time. Time equals distance divided by speed, and a worker who finishes a job in $h$ hours does $\\frac{1}{h}$ of it per hour. Putting the unknown in a denominator gives a rational equation.",
+      "A rate is how much happens in one unit of time. A worker who keeps a steady pace and finishes a job in $h$ hours does $\\frac{1}{h}$ of it per hour. For travel, time equals distance divided by speed. When the unknown ends up in the bottom of a fraction, the equation is called a rational equation.",
+    senses: { model: "model", unit: "unit" },
+    noLink: ["part", "parts", "whole", "change"],
     terms: ["rate", "rational-equation"],
     method: [
-      "Name the unknown and decide what each fraction measures: a rate or a time.",
-      "For work, add the rates of workers who work together and set the sum equal to the team's rate, $\\frac{1}{x}$.",
-      "For travel, write each time as distance over speed, adding or subtracting the current or speed change inside the denominator.",
-      "State what the equation compares: equal times, or times that add to a total.",
+      "Name the unknown, and decide what each fraction measures: a rate or a time.",
+      "For work, add the rates of workers who work together. Set the sum equal to the team's rate, $\\frac{1}{x}$.",
+      "For travel, write each time as distance over speed. Add a current to the speed going with it, and subtract it going against.",
+      "Say what the equation compares: equal times, or times that add to a total.",
     ],
     watch:
-      "Rates add for workers at the same time; times of separate parts add for a trip. Distance over speed gives time, not speed over distance.",
+      "Rates add for workers at the same time; times of separate parts add for a trip. Distance divided by speed gives time, not speed divided by distance.",
   },
   "rational-exponent-equation": {
     goal: "Solve $x^{p/q}=k$ by raising both sides to the reciprocal power, with its sign and domain cases.",
@@ -133,9 +161,11 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "Undo a power by raising to the reciprocal, not by multiplying by it. Check the sign cases before listing solutions.",
   },
   "transformation-composition-image": {
-    goal: "Find the image of a point after a rigid motion and a dilation about a center other than the origin.",
+    goal: "Find where a point lands after a rigid motion (slide, flip or turn) and then a dilation about a center other than $(0, 0)$.",
     intuition:
-      "A rigid motion moves a figure without changing its size, and a dilation scales distances from a center. Each step acts on the result of the step before, so the order can change the answer.",
+      "A rigid motion slides, flips or turns a figure without changing its size. A dilation resizes it: every distance from a fixed center point is multiplied by the scale factor. The point you end with is the image. Each step acts on the result of the step before, so the order can change the answer.",
+    senses: { image: "image-transformation", unit: "unit" },
+    noLink: ["center", "scale", "scales", "change"],
     terms: ["rigid-motion", "dilation", "center-of-dilation"],
     method: [
       "Do the steps in the order stated.",
@@ -143,25 +173,39 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "For a dilation, subtract the center from the point, multiply by the scale factor, and add the center back.",
     ],
     watch:
-      "A center that is not the origin must be subtracted first and added back after. Scaling the coordinates directly moves the center as well.",
+      "A center that is not $(0, 0)$ must be subtracted first and added back after. Multiplying the coordinates directly scales from $(0, 0)$ instead.",
   },
   "counterexample-choice": {
-    goal: "Choose the case that satisfies a conjecture's hypothesis but fails its conclusion.",
+    goal: "Choose the case that makes a conjecture's “if” part true but its “then” part false.",
     intuition:
-      "A conjecture says that whenever one condition holds, another does too. One example where the first holds and the second fails shows the conjecture is false. Examples that agree with it prove nothing.",
+      "A conjecture is a claim that something is always true, often “if $p$, then $q$.” The “if” part is the hypothesis and the “then” part is the conclusion. One case where the hypothesis is true and the conclusion is false shows the claim is wrong. That case is a counterexample. Cases that agree with the claim do not prove it in general.",
+    senses: {
+      square: "square-shape",
+      side: "side",
+      product: "product-multiply",
+    },
+    noLink: ["legs", "part", "parts", "third"],
     terms: ["conjecture", "counterexample"],
     method: [
-      "Split the conjecture into its hypothesis (the if part) and its conclusion (the then part).",
+      "Split the conjecture into its hypothesis (the “if” part) and its conclusion (the “then” part).",
       "For each choice, test whether the hypothesis is true.",
       "Among those, keep the one where the conclusion is false.",
     ],
     watch:
-      "A case that fails the hypothesis does not test the conjecture, and a case that satisfies both parts supports it. Only a hypothesis-true, conclusion-false case refutes it.",
+      "A case that fails the “if” part does not test the conjecture, and a case where both parts are true agrees with it. Only “if” true and “then” false disproves it.",
   },
   "spherical-geometry-compare": {
-    goal: "State how parallel lines, triangle angle sums, right angles and shortest paths differ on a sphere from the plane.",
+    goal: "Say how parallel lines, triangle angle sums, right angles and shortest paths on a sphere differ from those on a flat plane.",
     intuition:
-      "On a sphere the straightest paths are great circles, circles centered at the center of the sphere. Many facts of plane geometry change because every two great circles meet.",
+      "A sphere is the surface of a ball. Its straightest paths are great circles: circles whose center is the center of the sphere, such as the equator. They act as the sphere's lines. Any two great circles cross, so many flat-plane facts change.",
+    senses: {
+      plane: "plane",
+      vertex: "vertex",
+      side: "side",
+      center: "center",
+      "more than": "more-than",
+    },
+    noLink: ["opposite", "quarter", "change", "changes"],
     terms: [
       [
         "sphere",
@@ -174,30 +218,39 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     ],
     method: [
       "Use great circles as the lines of the sphere.",
-      "Any two great circles cross in two opposite points, so there are no parallel lines.",
-      "A triangle on a sphere has an angle sum greater than $180^\\circ$, and it can have three right angles.",
-      "The shortest route between two points follows the shorter arc of a great circle.",
+      "Any two great circles cross at two points directly across the sphere, so there are no parallel lines.",
+      "A triangle on a sphere has angles adding to more than $180^\\circ$, and it can have three right angles ($90^\\circ$ each).",
+      "The shortest route between two points follows the shorter arc of a great circle. For two points directly opposite each other, any half great circle between them is equally short.",
     ],
     watch:
-      "Do not apply the plane's facts to the sphere. Facts for a saddle-shaped surface, such as sums below $180^\\circ$, are also different from the sphere's.",
+      "Do not carry the plane's facts to the sphere. Facts for a saddle-shaped surface, such as angle sums below $180^\\circ$, differ from the sphere's too.",
   },
   "regular-polygon-area": {
-    goal: "Find the area of a regular polygon from its apothem and perimeter, from a hexagon's side, or find a missing apothem or side.",
+    goal: "Find the area of a regular polygon from its apothem and perimeter or a hexagon's side, or find a missing apothem or side.",
     intuition:
-      "A regular polygon splits into identical triangles from its center. Each has base equal to a side and height equal to the apothem, so the total area is half the apothem times the perimeter.",
+      "A regular polygon is a flat shape with equal straight sides and equal angles. Lines from its center to each corner cut it into identical triangles. Each triangle has one side of the polygon as its bottom and the apothem, the distance from the center to the middle of a side, as its height. So the area is half the apothem times the perimeter.",
+    senses: { side: "side", vertex: "vertex" },
+    noLink: ["center", "square", "squared", "base", "part", "whole", "factor"],
     terms: ["regular-polygon", "apothem"],
     method: [
       "Find the perimeter: the number of sides times the side length.",
-      "Find or read the apothem. For a regular hexagon with side $s$, it is $\\frac{s\\sqrt3}{2}$.",
-      "Use $A=\\frac12ap$. To find a missing part, solve this equation for it.",
+      "Find or read the apothem. For a regular hexagon with side $s$, it is $\\frac{s\\sqrt3}{2}$. Here $\\sqrt3$ is the square root of 3: the positive number that times itself gives 3, about 1.73.",
+      "Use $A=\\frac12ap$, with apothem $a$ and perimeter $p$. To find a missing part, solve this equation for it.",
     ],
-    watch:
-      "Use the whole perimeter, not one side, and keep the factor $\\frac12$.",
+    watch: "Use the whole perimeter, not one side, and keep the $\\frac12$.",
   },
   "curved-solid-surface-area": {
-    goal: "Find the exposed surface area of a cone or a cylinder joined to a hemisphere or a cone.",
+    goal: "Find the outside surface area of a cone, or of a cylinder joined to a dome (hemisphere) or a cone.",
     intuition:
-      "Surface area adds the areas of the surfaces you could touch from the outside. When two solids are joined, the faces where they meet are hidden and are not counted.",
+      "Surface area is the total area of the outside of a solid, the parts you could paint. When two solids are joined, the surfaces that touch are hidden and not counted. With radius $r$ and $\\pi$ about 3.14, a flat circle has area $\\pi r^2$ ($r^2$ means $r$ times $r$). A cone's wall uses its slant height $\\ell$, the distance from the tip down the wall to the base edge.",
+    senses: {
+      base: "base-shape",
+      edge: "edge",
+      face: "face-solid",
+      solid: "solid-shape",
+      center: "center",
+    },
+    noLink: ["side", "sides", "square", "part", "bases", "parts"],
     terms: [
       "slant-height",
       [
@@ -206,23 +259,31 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "List the outside surfaces: bases, curved sides and the hemisphere's curved surface.",
-      "Use $\\pi r^2$ for a circular base, $2\\pi rh$ for a cylinder's side, $\\pi r\\ell$ for a cone's side and $2\\pi r^2$ for a hemisphere.",
-      "For a cone, use the slant height; if only the height is given, find it from $\\ell=\\sqrt{r^2+h^2}$.",
-      "Add the areas and leave out the faces that are joined.",
+      "List the outside surfaces: flat circles, curved walls and any dome. Leave out any part of a surface that is covered where two solids touch.",
+      "Use $\\pi r^2$ for a circle, $2\\pi rh$ for a cylinder's wall, $\\pi r\\ell$ for a cone's wall and $2\\pi r^2$ for a hemisphere's dome.",
+      "For a right circular cone, use the slant height. If you know the radius $r$ and height $h$ but not $\\ell$, find it from $\\ell=\\sqrt{r^2+h^2}$. The sign $\\sqrt{\\ }$ means square root: the number, 0 or greater, that times itself gives the number under the sign.",
+      "Add the areas.",
     ],
     watch:
-      "Do not count joined faces, and do not use the vertical height where the formula needs the slant height.",
+      "Do not count joined surfaces, and do not use the straight-up height where the formula needs the slant height.",
   },
   "area-probability": {
-    goal: "Find the probability that a randomly chosen point lies in part of a region as a ratio of areas.",
+    goal: "Find the probability that a random point lands in part of a region, as the part's area divided by the whole area.",
     intuition:
-      "When every point of a region is equally likely, the chance of landing in a part is the fraction of the total area that part covers.",
+      "Probability is a number from 0 to 1 that tells how likely something is. When every spot in a region is equally likely, the chance of landing in a part is the fraction of the total area that part covers. A part covering a quarter of the area has probability $\\frac{1}{4}$.",
+    senses: {
+      part: "part",
+      whole: "whole",
+      square: "square-shape",
+      side: "side",
+      center: "center",
+    },
+    noLink: ["base", "squared", "quarter"],
     terms: ["geometric-probability"],
     method: [
       "Find the area of the target part.",
       "Find the area of the whole region.",
-      "Divide the part by the whole and simplify. For the outside of the part, subtract the part's probability from 1.",
+      "Divide the part by the whole and simplify. For landing outside the part, subtract the part's probability from 1.",
     ],
     watch:
       "Compare areas, not lengths or perimeters. The target part must be inside the whole region.",
@@ -309,9 +370,11 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
       "A reference angle is always acute and is measured to the $x$-axis. A negative angle turns clockwise.",
   },
   "bearing-trig-problem": {
-    goal: "Resolve a travel distance on a compass bearing into north-south and east-west parts, or find the bearing from the two parts.",
+    goal: "Split a trip on a compass bearing into its north-south and east-west parts, or find the bearing from the two parts.",
     intuition:
-      "A bearing gives a direction as an angle from north. A trip along it is the hypotenuse of a right triangle whose legs point north-south and east-west.",
+      "A bearing is a direction given as an angle turned clockwise from north: east is $090^\\circ$. Unless the trip goes straight north, south, east or west, it is the hypotenuse (longest side) of a right triangle whose legs point north-south and east-west. For one of the two smaller angles in that triangle, the leg touching it is adjacent and the leg across from it is opposite. Opposite = hypotenuse × sine, adjacent = hypotenuse × cosine.",
+    senses: { side: "side" },
+    noLink: ["tangent", "opposite", "plane", "parts", "part"],
     terms: [
       "bearing",
       [
@@ -322,11 +385,11 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     method: [
       "Sketch north, the direction of travel, and the right triangle.",
       "Find the angle between the path and the north-south line.",
-      "The leg along the north-south line is adjacent to that angle (cosine); the east-west leg is opposite (sine).",
-      "Name each direction from the quadrant of the bearing.",
+      "The north-south leg touches that angle, so use cosine. The east-west leg is across from it, so use sine.",
+      "Name each direction, north or south and east or west, from where the path points.",
     ],
     watch:
-      "Measure from north, not from the east axis. Decide adjacent or opposite from the angle in your sketch.",
+      "Measure from north, not from east. Decide adjacent or opposite from the angle in your sketch.",
   },
   "sigma-notation-represent": {
     goal: "Choose the sigma notation that represents an arithmetic or geometric series listed by its first and last terms.",
@@ -393,33 +456,33 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
 
 export const texasHsPrinciples: Record<string, string> = {
   "line-equation-forms":
-    "The line through $(x_1, y_1)$ with slope $m$ is $y-y_1=m(x-x_1)$. Through two points, $m=\\frac{y_2-y_1}{x_2-x_1}$ when $x_1\\ne x_2$. The standard form $Ax+By=C$ has slope $-\\frac{A}{B}$ when $B\\ne0$.",
+    "The line through the point $(x_1, y_1)$ with slope $m$ is $y-y_1=m(x-x_1)$. Through two points, $m=\\frac{y_2-y_1}{x_2-x_1}$ when $x_1\\ne x_2$ (the $x$-values differ). The standard form $Ax+By=C$ has slope $-\\frac{A}{B}$ when $B\\ne0$.",
   "line-relationship-equations":
-    "Two nonvertical lines are parallel when their slopes are equal and perpendicular when the product of their slopes is $-1$. A horizontal line $y=c$ has slope 0 and is perpendicular to every vertical line $x=k$; a vertical line has undefined slope.",
+    "Two different lines that are not vertical (upright) are parallel when their slopes are equal. They are perpendicular when their slopes multiply to $-1$. A horizontal line is a flat line $y=c$. It has slope 0 and is perpendicular to every vertical line $x=k$. A vertical line has undefined slope.",
   "system-equation-choice":
-    "A quantity with a constant rate of change $m$ from starting value $b$ is modeled by $y=mx+b$. A system of two such equations has a solution where both quantities are equal at the same $x$. A total-and-value pair $x+y=T$, $px+cy=V$ models two counts with prices $p$ and $c$.",
+    "An amount that changes at a steady rate $m$ from a starting value $b$ is modeled by $y=mx+b$. A pair $(x, y)$ that makes both equations true is called a solution of the system. When both equations give $y$ from $x$, it is where the two amounts are equal at the same $x$. Two lines with the same rate and different starting values never meet, so that system has no solution. Two counts $x$ and $y$ with total $T$, priced $p$ and $c$ each, with total value $V$, give $x+y=T$ and $px+cy=V$.",
   "graph-estimate-system-solution":
-    "The solution of a system is every ordered pair that satisfies both equations. For two lines that are not parallel, it is the single point where their graphs meet, and its coordinates can be read approximately from a graph.",
+    "A solution of a system is an ordered pair $(x, y)$ that makes both equations true. For two lines that are not parallel, it is the single point where their graphs meet, and its coordinates can be read approximately from a graph.",
   "exponential-domain-range":
-    "For $f(x)=a\\cdot b^x+k$ with $b>0$, $b\\ne1$, $a\\ne0$, the domain is all real numbers and the range is $y>k$ if $a>0$, or $y<k$ if $a<0$. A model restricted to $t\\ge0$ has range between $f(0)$ and the asymptote.",
+    "For $f(x)=a\\cdot b^x+k$ with $b>0$, $b\\ne1$ and $a\\ne0$, the domain is all real numbers. The range is $y>k$ if $a>0$, or $y<k$ if $a<0$; the line $y=k$ is the horizontal asymptote. A model restricted to $t\\ge0$ has range starting at $f(0)$, included: between $f(0)$ and the asymptote value if the outputs approach it, or from $f(0)$ outward if they grow away from it.",
   "absolute-value-equation-formulate":
-    "For $d>0$, $|x-c|=d$ means $x=c+d$ or $x=c-d$, the two numbers at distance $d$ from $c$. Two solutions $x_1$ and $x_2$ have center $\\frac{x_1+x_2}{2}$ and distance $\\frac{|x_1-x_2|}{2}$.",
+    "For $d>0$, $|x-c|=d$ means $x=c+d$ or $x=c-d$: the two numbers at distance $d$ from $c$. Two solutions $x_1$ and $x_2$ have center $\\frac{x_1+x_2}{2}$ (halfway between them) and distance $\\frac{|x_1-x_2|}{2}$ from that center.",
   "rational-equation-formulate":
-    "Distance equals rate times time, so time equals distance divided by rate. If two workers finish a job alone in $a$ and $b$ hours, working together they finish in $x$ hours when $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{x}$.",
+    "Distance equals speed times time, so time equals distance divided by speed. If two workers finish a job alone in $a$ and $b$ hours, then working together they finish in $x$ hours, where $\\frac{1}{a}+\\frac{1}{b}=\\frac{1}{x}$.",
   "rational-exponent-equation":
     "For $x^{p/q}=k$ in lowest terms with $q>0$, raising both sides to $\\frac{q}{p}$ gives $x=k^{q/p}$ when $p$ is odd. When $p$ is even, $x^{p/q}=k>0$ has solutions $x=\\pm k^{q/p}$, and when $q$ is even, $x^{p/q}$ is defined only for $x\\ge0$.",
   "transformation-composition-image":
-    "The dilation with center $C$ and scale factor $k$ sends $P$ to $C+k(P-C)$. Compositions are applied right to left in function notation, and in general the order of a rigid motion and a dilation matters.",
+    "The dilation with center $C$ and scale factor $k$ sends a point $P$ to $C+k(P-C)$. When transformations are done one after another, each acts on the previous result, and in general the order of a rigid motion and a dilation matters.",
   "counterexample-choice":
-    'A conditional statement "if $p$ then $q$" is false when some case has $p$ true and $q$ false. One such case, a counterexample, is enough to refute it; any number of cases where it holds does not prove it.',
+    "The statement “if $p$, then $q$” is false when some case has $p$ true and $q$ false. One such case, called a counterexample, is enough to refute (disprove) it. Cases where the statement holds do not prove it, unless every possible case is checked.",
   "spherical-geometry-compare":
-    "On a sphere, lines are great circles. Any two meet, so there are no parallel lines; a triangle's angle sum is greater than $180^\\circ$ and less than $540^\\circ$; and the shortest path between two points is an arc of a great circle.",
+    "On a sphere, lines are great circles. Any two meet, so there are no parallel lines. For a triangle smaller than half the sphere, the angle sum is greater than $180^\\circ$ and less than $540^\\circ$. The shortest path between two points is an arc of a great circle.",
   "regular-polygon-area":
-    "A regular polygon with perimeter $p$ and apothem $a$ has area $A=\\frac12ap$. A regular hexagon with side $s$ has apothem $\\frac{s\\sqrt3}{2}$ and area $\\frac{3\\sqrt3}{2}s^2$.",
+    "A regular polygon with perimeter $p$ and apothem $a$ has area $A=\\frac12ap$. A regular hexagon with side $s$ has apothem $\\frac{s\\sqrt3}{2}$ and area $\\frac{3\\sqrt3}{2}s^2$, where $s^2$ means $s$ times $s$.",
   "curved-solid-surface-area":
-    "A cone with radius $r$ and slant height $\\ell$ has lateral area $\\pi r\\ell$ and base area $\\pi r^2$, with $\\ell=\\sqrt{r^2+h^2}$. A cylinder has lateral area $2\\pi rh$, and a hemisphere's curved surface is $2\\pi r^2$. The surface area of a composite counts only exposed faces.",
+    "A right circular cone (tip straight above the middle of its base) with radius $r$, height $h$ and slant height $\\ell=\\sqrt{r^2+h^2}$ has side area $\\pi r\\ell$ and base area $\\pi r^2$. A cylinder has side area $2\\pi rh$, and a hemisphere's curved surface is $2\\pi r^2$. The surface area of a joined (composite) solid counts only the outside surfaces.",
   "area-probability":
-    "If a point is chosen at random in a region of area $A$, the probability that it lies in a part of area $B$ is $\\frac{B}{A}$, and the probability that it lies outside the part is $1-\\frac{B}{A}$.",
+    "If a point is chosen at random, every spot equally likely, in a region of positive area $A$, the probability that it lies in a part of area $B$ is $\\frac{B}{A}$. The probability that it lies outside the part is $1-\\frac{B}{A}$.",
   "composition-order-choice":
     "$(f\\circ g)(x)=f(g(x))$ applies $g$ first. In general $f(g(x))\\ne g(f(x))$; for example, if $f(x)=2x$ and $g(x)=x+1$, then $f(g(x))=2x+2$ but $g(f(x))=2x+1$.",
   "one-sided-behavior-choice":
@@ -431,7 +494,7 @@ export const texasHsPrinciples: Record<string, string> = {
   "reference-angle-standard-position":
     "An angle in standard position has its vertex at the origin and initial side on the positive $x$-axis. Angles differing by a multiple of $360^\\circ$ (or $2\\pi$) are coterminal. The reference angle of an angle not on an axis is the acute angle between its terminal side and the $x$-axis.",
   "bearing-trig-problem":
-    "A displacement of length $d$ on a bearing $B$ measured clockwise from north has east component $d\\sin B$ and north component $d\\cos B$, with signs negative for west and south.",
+    "A trip of length $d$ on a bearing $B$, measured clockwise from north, has east component $d\\sin B$ and north component $d\\cos B$. A negative east component means west, and a negative north component means south.",
   "sigma-notation-represent":
     "$\\sum_{k=a}^{b}t(k)=t(a)+t(a+1)+\\cdots+t(b)$ has $b-a+1$ terms. An arithmetic series with first term $a_1$ and difference $d$ has terms $a_1+d(k-1)$, and a geometric series with ratio $r$ has terms $a_1r^{k-1}$.",
   "infinite-geometric-sum":
@@ -454,6 +517,7 @@ type LessonInput = {
   formal: { title: string; paragraphs: string[] };
   pitfalls: string[];
   parentGuide: string;
+  senses?: Lesson["senses"];
   noLink?: string[];
 };
 const lesson = (x: LessonInput): Lesson => ({
@@ -472,6 +536,7 @@ const lesson = (x: LessonInput): Lesson => ({
   ],
   pitfalls: x.pitfalls,
   parentGuide: x.parentGuide,
+  ...(x.senses ? { senses: x.senses } : {}),
   ...(x.noLink ? { noLink: x.noLink } : {}),
 });
 
@@ -480,182 +545,231 @@ export const texasHsLessons: Lesson[] = [
     id: "line-equations-from-conditions",
     title: "Write the equation of a line",
     summary:
-      "A point and a slope fix a line. Use point-slope, slope-intercept or standard form, and use slopes to build parallel and perpendicular lines.",
+      "On a grid, $x$ counts how far across and $y$ counts how far up. The slope of a line tells how steep it is: how much $y$ goes up when $x$ goes up by 1. One point on the line and the slope are enough to pin down the line. A line that is not vertical (straight up and down) can be written in three common ways, and each shows the same line. Two different non-vertical lines never meet, and are called parallel, exactly when their slopes are equal. Two lines that cross at a square corner are called perpendicular. When neither is vertical, their slopes are like $2$ and $-\\frac{1}{2}$: flip the fraction and change the sign.",
+    senses: {
+      "standard form": "standard-form-line",
+      side: "side-of-equation",
+      term: "term-expression",
+      product: "product-multiply",
+    },
+    noLink: ["change", "changes", "factor", "square", "part"],
     templateIds: ["line-equation-forms", "line-relationship-equations"],
     objectives: [
-      "Write a line in point-slope, slope-intercept or standard form from a point and slope or two points.",
-      "Write the line through a point parallel or perpendicular to a given line, or parallel to an axis.",
+      "Write a line's equation in point-slope, slope-intercept or standard form from a point and a slope, or from two points.",
+      "Write the line through a point that is parallel or perpendicular to a given line, or parallel to an axis.",
     ],
     intuition: [
-      "The slope of a line is the change in $y$ divided by the change in $x$ between two of its points. A line is determined by one point and its slope, and every form of its equation shows that same information.",
-      "Parallel lines have the same slope. Perpendicular lines have slopes that are negative reciprocals, such as $2$ and $-\\frac12$. A horizontal line has slope 0, and a vertical line has an undefined slope because its run is 0.",
+      "A point $(x, y)$ names a place on a grid: first how far across, then how far up. The slope of a line is the change in $y$ divided by the change in $x$ between two of its points. From $(1, 2)$ to $(3, 6)$, $y$ changes by 4 and $x$ changes by 2, so the slope is $4 \\div 2 = 2$. We call the slope $m$.",
+      "A line is fixed by one point on it and its slope. Its equation can be written three ways. Slope-intercept form is $y = mx + b$, where $mx$ means $m$ times $x$ and $b$ is the $y$-intercept, the value of $y$ when $x = 0$. The form $y - y_1 = m(x - x_1)$ is called point-slope form, where $(x_1, y_1)$ (read “$x$ one, $y$ one”) is a known point. The form $Ax + By = C$ is called standard form. Here $A$, $B$ and $C$ are numbers, with $A$ and $B$ not both 0. They are usually integers (the numbers 0, 1, 2, 3, … and their negatives).",
+      "Parallel lines point the same way and never meet. Two different lines that are not vertical are parallel exactly when they have the same slope. Perpendicular lines cross at a right angle, a square corner. If neither is vertical, their slopes are negative reciprocals: flip the fraction and change its sign. The negative reciprocal of 2 (which is $\\frac{2}{1}$) is $-\\frac{1}{2}$.",
+      "A horizontal line is a line that runs flat, like the floor. It has slope 0 because $y$ never changes. A vertical line is a line that runs straight up and down. It has no slope (we say it is undefined), because $x$ does not change and we cannot divide by 0.",
     ],
     example: {
       prompt:
         "Write, in point-slope form, the line through $(1, 5)$ perpendicular to $y=2x-3$.",
       steps: [
-        "The given line has slope 2, so a perpendicular line has slope $-\\frac12$.",
-        "Use $(x_1, y_1)=(1, 5)$ in $y-y_1=m(x-x_1)$.",
-        "The equation is $y-5=-\\frac12(x-1)$.",
-        "Check: at $x=1$ the right side is 0, so $y=5$, and the point is on the line.",
+        "Read the slope of the given line. In $y = 2x - 3$, the number multiplying $x$ is 2, so its slope is 2.",
+        "A perpendicular line has the negative reciprocal slope. Flip 2 to get $\\frac{1}{2}$, then change the sign: $m = -\\frac12$.",
+        "Put the point and slope into point-slope form, $y - y_1 = m(x - x_1)$, with $x_1 = 1$ and $y_1 = 5$. The equation is $y-5=-\\frac12(x-1)$.",
+        "Check that the point is on the line. At $x = 1$, the right side, the part after the equals sign, is $-\\frac12 \\times 0 = 0$. So $y - 5 = 0$ and $y = 5$. The point $(1, 5)$ fits.",
       ],
       answer: "$y-5=-\\frac12(x-1)$",
     },
     method: {
       title: "Choose the form that fits the givens",
       paragraphs: [
-        "With a point and a slope, point-slope form needs no solving. To reach slope-intercept form, distribute and add $y_1$. To reach standard form, multiply by a common denominator and collect $x$ and $y$ on the left.",
-        "With two points, find the slope first. For a parallel or perpendicular line, take the slope from the given line, using $-\\frac{A}{B}$ for $Ax+By=C$.",
+        "With two points, find the slope first: change in $y$ divided by change in $x$, subtracting in the same order.",
+        "With a point and a slope, point-slope form needs no solving. To get slope-intercept form, multiply out the parentheses, the curved brackets ( ). Then add $y_1$ to both sides. A term is one piece joined by + or −. To get standard form, multiply every term by a common denominator to clear fractions, then gather $x$ and $y$ on the left.",
+        "For a parallel or perpendicular line, take the slope from the given line. If it is written $Ax + By = C$ with $B$ not 0, solve for $y$. Subtract $Ax$ from both sides and divide by $B$: $y = -\\frac{A}{B}x + \\frac{C}{B}$. So the slope is $-\\frac{A}{B}$.",
+        "For a line parallel to an axis: parallel to the $x$-axis means horizontal, $y =$ the point's $y$-value. Parallel to the $y$-axis means vertical, $x =$ the point's $x$-value.",
       ],
     },
     formal: {
       title: "Slope conditions",
       paragraphs: [
-        "Two nonvertical lines with slopes $m_1$ and $m_2$ are parallel exactly when $m_1=m_2$, and perpendicular exactly when $m_1m_2=-1$. The line $y=c$ is horizontal, $x=k$ is vertical, and each is perpendicular to the other kind.",
+        "Let two lines that are not vertical have slopes $m_1$ and $m_2$. Two different such lines are parallel exactly when $m_1 = m_2$. They are perpendicular exactly when $m_1 m_2 = -1$, which means the two slopes multiply to $-1$.",
+        "The line $y = c$, for a number $c$, is horizontal. The line $x = k$ is vertical. Every horizontal line is perpendicular to every vertical line.",
       ],
     },
     pitfalls: [
-      "Subtract the coordinates in point-slope form: the point $(-2, 3)$ gives $x+2$ and $y-3$.",
-      "A perpendicular slope is the negative reciprocal: flip the fraction and change the sign.",
-      "Slope 0 is a horizontal line; an undefined slope is a vertical line.",
+      "Point-slope form subtracts the point's coordinates. The point $(-2, 3)$ gives $x - (-2) = x + 2$ and $y - 3$.",
+      "A perpendicular slope needs both moves: flip the fraction and change the sign.",
+      "Slope 0 is a horizontal line. An undefined slope is a vertical line.",
     ],
     parentGuide:
-      "Ask the learner to name the slope of the line $x=4$ and of the line $y=4$, and to say which is horizontal.",
+      "Ask the learner for the slope of the line $x=4$ and of the line $y=4$, and which one is horizontal.",
   }),
   lesson({
     id: "systems-from-representations",
     title: "Write and read a system of two lines",
     summary:
-      "Match a system to a story, tables or a graph, and estimate where two plotted lines cross.",
+      "Many situations have an amount that starts somewhere and grows by the same amount each step. A gym plan costs 10 dollars to join plus 4 dollars a month. After $x$ months, its total cost $y$ is $y = 4x + 10$ dollars. Two such plans give two equations. Together they are called a system. On a graph, each plan is a line, and where the lines cross, the two costs are equal.",
+    senses: { model: "model", side: "side-of-equation" },
+    noLink: ["change", "changes", "mean", "balances"],
     templateIds: ["system-equation-choice", "graph-estimate-system-solution"],
     objectives: [
-      "Write the system for two quantities that change at steady rates.",
-      "Estimate where two graphed lines meet and say what it means.",
+      "Write the system of two equations for two amounts that change at steady rates, from a story, tables or a graph.",
+      "Estimate where two graphed lines meet, and say what that point means.",
     ],
     intuition: [
-      "Each quantity that starts at a value and changes by the same amount each step is a line $y=mx+b$: the rate $m$ multiplies $x$ and the starting value $b$ is the constant. Two such quantities form a system.",
-      "On a graph, the point where the lines cross is the one input where both quantities are equal.",
+      "A variable is a letter that stands for a number. In $y = 4x + 10$, $x$ is the number of months and $y$ is the total cost. Writing $4x$ means 4 times $x$.",
+      "The rate is how much the amount grows for each step, here 4 dollars a month. It multiplies $x$. The starting value is the amount when $x = 0$, here the 10-dollar joining fee. It is the number added on. So a steady amount is $y = mx + b$: rate $m$ times $x$, plus starting value $b$.",
+      "A system of equations is two or more equations about the same variables at once. A solution of the system is a pair of values, written $(x, y)$, that makes every equation true.",
+      "Each equation's graph is a straight line. Where the two lines cross, both equations have the same $x$ and the same $y$. In the gym story, that is the month when both plans cost the same.",
     ],
     example: {
       prompt:
         "Plan A costs 10 dollars to join plus 4 dollars a month. Plan B costs 4 dollars to join plus 6 dollars a month. Write the system and estimate when the costs are equal.",
       steps: [
-        "Plan A: $y=4x+10$. Plan B: $y=6x+4$.",
-        "Set the costs equal: $4x+10=6x+4$, so $2x=6$ and $x=3$.",
-        "At 3 months both cost $4(3)+10=22$ dollars.",
-        "On a graph the lines would cross at $(3, 22)$.",
+        "Write each plan as rate times months plus starting fee. Plan A: $y=4x+10$. Plan B: $y=6x+4$.",
+        "The costs are equal when the two right sides are equal: $4x+10=6x+4$. Subtract $4x$ and 4 from both sides: $2x=6$. Divide both sides by 2: $x=3$.",
+        "Find the cost at 3 months, using either plan: $4 \\times 3 + 10 = 22$ dollars. Check with Plan B: $6 \\times 3 + 4 = 22$.",
+        "On a graph, the two lines would cross at the point $(3, 22)$: 3 months, 22 dollars.",
       ],
       answer: "$y=4x+10$ and $y=6x+4$; equal at $(3, 22)$",
     },
     method: {
       title: "Read rates and starting values",
       paragraphs: [
-        "From a table, the change per row is the rate and the value at $x=0$ is the start. From a graph, the $y$-intercept is the start and rise over run is the rate. From a story, pair each fee with its own rate.",
-        "To estimate a crossing, find it on the grid, read $x$ on the horizontal axis and $y$ on the vertical axis, and allow positions between grid lines.",
+        "From a table: the change from one row to the next, when $x$ goes up by 1, is the rate. The value at $x = 0$ is the starting value.",
+        "From a graph: where the line crosses the vertical axis is the starting value. Rise over run, how far up for each step across, is the rate.",
+        "From a story about two kinds of item: write one equation for the total count and one for the total value, multiplying each count by its price. Keep each fee with its own rate.",
+        "To estimate a crossing on a graph, find where the lines meet. Read $x$ on the horizontal axis and $y$ on the vertical axis. The point may fall between grid lines.",
       ],
     },
     formal: {
       title: "Solutions of a system",
       paragraphs: [
-        "A solution of a system is an ordered pair that satisfies every equation. Two lines with different slopes meet at exactly one point, which is the solution.",
+        "A solution of a system is an ordered pair $(x, y)$ that makes every equation true.",
+        "Two lines with different slopes (different rates) meet at exactly one point. That point is the solution of the system.",
       ],
     },
     pitfalls: [
-      "Keep the rate and the starting value of the same plan together.",
-      "Report the point as $(x, y)$, with the input first.",
+      "Keep the rate and the starting value of the same plan together in one equation.",
+      "The starting value is the value at $x = 0$. A table may begin at $x = 1$, so do not read its first row as the starting value.",
+      "Report the point as $(x, y)$, with the input, the number you choose, first.",
     ],
     parentGuide:
-      "Ask the learner what the starting value and the rate mean in a story with a sign-up fee.",
+      "Ask the learner what the starting value and the rate mean in a story with a sign-up fee and a monthly charge.",
   }),
   lesson({
     id: "exponential-domain-and-range",
     title: "Domain and range of exponential functions",
     summary:
-      "An exponential function accepts every real input unless a situation restricts it, and its outputs stay on one side of a boundary.",
+      "In $2^3$, the small raised 3 says how many 2s to multiply: $2 \\times 2 \\times 2 = 8$. A function is a rule that turns each input into one output. In $2^x$, the input $x$ is the raised number, called the exponent. That makes $2^x$ an exponential function. The domain is the set of inputs you may use, and the range is the set of outputs you can get. For $2^x$, any input works, but the outputs are always above 0 and never reach it.",
+    senses: {
+      term: "term-expression",
+      boundary: "boundary",
+      base: "base-exponent",
+      range: "range-function",
+      model: "model",
+    },
+    noLink: ["side", "rule", "mean"],
     templateIds: ["exponential-domain-range"],
     objectives: [
-      "Write the domain and range of an exponential function as inequalities.",
-      "Restrict the domain for a model that starts at $t=0$.",
+      "Write the domain (allowed inputs) and range (possible outputs) of an exponential function as inequalities.",
+      "Restrict the domain for a real-world model that starts at time $t=0$.",
     ],
     intuition: [
-      "A positive base can be raised to any real power, so $2^x$ is defined for every $x$. The outputs are always positive and get as close to 0 as you like without reaching it.",
-      "Multiplying by a negative number turns the outputs negative, and adding a number $k$ moves the boundary to $y=k$.",
+      "In $2^x$, the 2 is the base and $x$ is the exponent. When $x$ is a counting number, the exponent says how many 2s to multiply. So $2^3 = 8$ and $2^1 = 2$. By agreement $2^0 = 1$, and a negative exponent means divide: $2^{-1} = \\frac{1}{2}$. A positive base can also be raised to a fraction, so $2^x$ has a value for every real number $x$. A real number is any number on the number line.",
+      "We often name a function $f$ and write $f(x)$, read “$f$ of $x$,” for its output at input $x$.",
+      "Look at the outputs of $2^x$: … $\\frac{1}{4}$, $\\frac{1}{2}$, 1, 2, 4, 8, …. They are always positive. As $x$ goes far to the left, they get closer and closer to 0 but never reach it. The line $y = 0$ that the graph creeps toward is called a horizontal asymptote. This line is also called the boundary.",
+      "Changing the function can flip the graph or move the boundary. Multiplying by a negative number, as in $-3(2)^x$, flips the outputs below 0. Adding a number $k$ moves the boundary to $y = k$. So the range is everything on one side of $k$, never $k$ itself.",
+      "We write these sets with inequalities. $y < 4$ means “$y$ is less than 4.” The symbols $-\\infty < x < \\infty$ mean $x$ can be any real number; $\\infty$ (infinity) means “without end.”",
     ],
     example: {
       prompt: "Find the domain and range of $f(x)=-3(2)^x+4$ as inequalities.",
       steps: [
-        "Every real $x$ is allowed: $-\\infty<x<\\infty$.",
-        "$2^x>0$, so $-3(2)^x<0$.",
-        "Adding 4 gives $f(x)<4$, and 4 is never reached.",
+        "Domain: $2^x$ has a value for every real $x$, and multiplying and adding never fail. So every input is allowed: $-\\infty<x<\\infty$.",
+        "Start from $2^x$, which is always greater than 0: $2^x > 0$. Multiplying by $-3$ makes it always less than 0: $-3(2)^x<0$.",
+        "Adding 4 moves everything up by 4, so $f(x)<4$. The output gets close to 4 but never equals it, so the range is $y < 4$.",
       ],
       answer: "Domain $-\\infty<x<\\infty$; range $y<4$",
     },
     method: {
       title: "Boundary, side and strictness",
       paragraphs: [
-        "The boundary is the added constant. The coefficient's sign picks the side. The boundary is not an output, so use $<$ or $>$. In a model with $t\\ge0$, the starting value is an output and the domain is $t\\ge0$.",
+        "The domain is all real numbers, unless the situation limits the input.",
+        "The boundary of the range is the number added at the end, $k$. The sign of the number in front of the power picks the side: positive means above $k$, negative means below.",
+        "The boundary is never reached, so use $<$ or $>$, not $\\le$ or $\\ge$.",
+        "A model is an equation that stands for a real situation. In a model of time that starts at $t = 0$, the domain is usually $t \\ge 0$, read “$t$ is greater than or equal to 0.” If the situation ends at some time, that also limits $t$ from above. The starting value $f(0)$ is then a real output, so the range starts at $f(0)$ and includes it. If the outputs shrink toward the boundary, the range lies between $f(0)$ and the boundary. If they grow away from it, the range goes from $f(0)$ outward, without end if time has no end.",
       ],
     },
     formal: {
       title: "The exponential function",
       paragraphs: [
-        "For $b>0$, $b\\ne1$, the function $b^x$ has domain all real numbers and range $y>0$. The function $a\\cdot b^x+k$ has range $y>k$ if $a>0$ and $y<k$ if $a<0$.",
+        "Let $b$ be a positive number other than 1. The function $b^x$ has domain all real numbers and range $y > 0$.",
+        "For a number $a \\ne 0$ and any number $k$, the function $a \\cdot b^x + k$ has range $y > k$ if $a > 0$, and $y < k$ if $a < 0$.",
       ],
     },
     pitfalls: [
-      "Do not restrict $x$ to positive numbers; that is the domain of a logarithm.",
-      "Use a strict inequality at the boundary.",
+      "Do not limit $x$ to positive numbers. Every real input works for an exponential function.",
+      "Use a strict sign, $<$ or $>$, at the boundary, because it is never an output.",
+      "A negative number in front flips the range to below the boundary.",
     ],
     parentGuide:
-      "Ask the learner why $2^x$ never equals 0 or a negative number.",
+      "Ask the learner to list $2^x$ for $x = 3, 2, 1, 0, -1, -2$, and say why it never reaches 0 or goes negative.",
   }),
   lesson({
     id: "equations-from-situations",
     title: "Write equations from situations",
     summary:
-      "Turn distances, rates and travel stories into absolute value and rational equations.",
+      "Some stories turn into special equations. A number line is a line with numbers marked in order, evenly spaced. The absolute value of a number is its distance from 0 on the number line, so the absolute value of $-3$ is 3. We write $|x - c|$, read “the absolute value of $x$ minus $c$,” for the distance between $x$ and $c$. So $|x - 5| = 3$ means “3 away from 5,” which is 2 or 8. Work and travel stories turn into equations with the unknown in the bottom of a fraction, such as $\\frac{1}{3} + \\frac{1}{6} = \\frac{1}{x}$.",
+    senses: {
+      unit: "unit",
+      difference: "difference-subtract",
+      model: "model",
+    },
+    noLink: ["center", "part", "parts", "whole", "change", "side"],
     templateIds: [
       "absolute-value-equation-formulate",
       "rational-equation-formulate",
     ],
     objectives: [
-      "Write $|x-c|=d$ for numbers a given distance from a center.",
-      "Write rational equations for work and travel situations.",
+      "Write $|x-c|=d$ for the numbers a given distance $d$ from a middle number $c$.",
+      "Write equations with fractions for work-together and travel stories.",
     ],
     intuition: [
-      "The absolute value $|x-c|$ is the distance between $x$ and $c$ on the number line. Setting it equal to $d$ describes the two numbers exactly $d$ away from $c$.",
-      "A rate is an amount per unit of time. A worker who finishes in $h$ hours does $\\frac{1}{h}$ of the job per hour, and the time to travel a distance is the distance divided by the speed.",
+      "The absolute value of a number is its distance from 0, so $|-4| = 4$ and $|4| = 4$. In the same way, $|x - c|$ is the distance between $x$ and $c$ on the number line.",
+      "So $|x - c| = d$ asks for every number exactly $d$ away from $c$. When $d$ is greater than 0, there are two: one $d$ above $c$ and one $d$ below. (If $d$ is 0, the only answer is $c$.) The number $c$ is called the center, because it sits halfway between them. For $|x - 5| = 3$, the answers are $5 + 3 = 8$ and $5 - 3 = 2$.",
+      "A rate is an amount per unit of time, such as $\\frac{1}{3}$ of a pool per hour. A pipe that fills a pool in 3 hours, at a steady rate, fills $\\frac{1}{3}$ of it each hour. In general, a worker who works at a steady pace and finishes a job in $h$ hours does $\\frac{1}{h}$ of the job per hour.",
+      "For travel, distance equals speed times time. So time equals distance divided by speed: 12 miles at 4 miles per hour takes $12 \\div 4 = 3$ hours. When the unknown is in the bottom of a fraction, the equation is called a rational equation.",
     ],
     example: {
       prompt:
         "Two pipes fill a pool in 3 hours and 6 hours alone. Write an equation for the hours $x$ they take together.",
       steps: [
-        "The pipes fill $\\frac13$ and $\\frac16$ of the pool per hour.",
-        "Together they fill $\\frac{1}{x}$ of the pool per hour.",
-        "Rates add: $\\frac13+\\frac16=\\frac1x$.",
-        "Solving gives $x=2$ hours.",
+        "Write each pipe's rate. The first fills the pool in 3 hours, so it fills $\\frac13$ of the pool per hour. The second fills $\\frac16$ per hour.",
+        "Together they fill the pool in $x$ hours, so together they fill $\\frac{1}{x}$ of it per hour.",
+        "When both run at once, their work in one hour adds up. So the rates add: $\\frac13+\\frac16=\\frac1x$.",
+        "Check by solving: $\\frac13 + \\frac16 = \\frac26 + \\frac16 = \\frac36 = \\frac12$, so $x = 2$ hours. That is faster than either pipe alone, which makes sense.",
       ],
       answer: "$\\frac13+\\frac16=\\frac1x$",
     },
     method: {
       title: "Name what each piece measures",
       paragraphs: [
-        "For absolute value, find the center and the distance and write $|x-c|=d$. Two solutions have a center at their midpoint.",
-        "For a rational equation, decide whether each fraction is a rate or a time. Rates of workers who work together add. Times of separate parts of a trip add, with speeds in the denominators.",
+        "For absolute value, find the center $c$ and the distance $d$, then write $|x - c| = d$. If you are given the two answers, the center is halfway between them, and $d$ is the distance from the center to either one.",
+        "A center of $-3$ gives $|x - (-3)| = |x + 3|$.",
+        "For a rational equation, decide whether each fraction is a rate or a time. Rates add for workers who work at the same time. Times add for separate parts of one trip.",
+        "For a boat on a river, the current adds to the speed going with it and subtracts going against it. A boat at speed $s$ in a current of 2 takes $\\frac{12}{s + 2}$ hours to go 12 miles downstream.",
       ],
     },
     formal: {
       title: "Distance and rate",
       paragraphs: [
-        "For $d>0$, $|x-c|=d$ exactly when $x=c\\pm d$. For constant rate $r$, distance $=r\\cdot$ time, so time $=\\frac{\\text{distance}}{r}$.",
+        "For $d > 0$, $|x - c| = d$ exactly when $x = c + d$ or $x = c - d$. This is often written $x = c \\pm d$. The sign $\\pm$ stands for “plus or minus”: add, and also subtract.",
+        "For a constant speed $r$, distance $= r \\times$ time, so time $= \\frac{\\text{distance}}{r}$.",
+        "If two workers finish alone in $a$ and $b$ hours, together they finish in $x$ hours where $\\frac{1}{a} + \\frac{1}{b} = \\frac{1}{x}$.",
       ],
     },
     pitfalls: [
-      "A center of $-4$ gives $|x+4|$.",
+      "A center of $-4$ gives $|x+4|$, because $x - (-4) = x + 4$.",
+      "The number on the right of $|x - c| = d$ is the distance, not the center.",
       "Do not add the hours of two workers; add their rates.",
     ],
     parentGuide:
-      "Ask the learner how far apart 2 and 8 are, and where the midpoint is.",
+      "Ask the learner how far apart 2 and 8 are, and which number is halfway between them.",
   }),
   lesson({
     id: "rational-exponent-equations",
@@ -702,260 +816,337 @@ export const texasHsLessons: Lesson[] = [
     id: "compose-transformations",
     title: "Rigid motions followed by dilations",
     summary:
-      "Apply each step in order, scaling distances from the center of the dilation.",
+      "A transformation is a change that moves or resizes a shape on a grid. A rigid motion slides, flips or turns it without changing its size. A dilation resizes it from a fixed center point: every distance from the center is multiplied by the same number. When two transformations are done one after another, do them in the order given. The second step starts from where the first one left the point.",
+    senses: { image: "image-transformation", unit: "unit" },
+    noLink: ["center", "scale", "scales", "change", "changes"],
     templateIds: ["transformation-composition-image"],
     objectives: [
-      "Find the image of a point under a rigid motion and a dilation with any center.",
-      "Apply the two motions in the stated order.",
+      "Find where a point lands after a rigid motion and then a dilation, even when the dilation's center is not $(0, 0)$.",
+      "Apply the two steps in the stated order.",
     ],
     intuition: [
-      "A rigid motion slides, flips or turns a figure and keeps its size. A dilation enlarges or shrinks it about a fixed center point.",
-      "Each point moves along the ray from the center, and its distance from the center is multiplied by the scale factor.",
+      "A point on a grid is written $(x, y)$: how far across, then how far up. The point $(0, 0)$, where the axes cross, is called the origin.",
+      "A rigid motion moves a figure without stretching it. A slide is called a translation, a flip is a reflection and a turn is a rotation. Reflecting across the $y$-axis (the up-down axis) changes the sign of $x$: $(2, 3)$ goes to $(-2, 3)$.",
+      "A dilation resizes a figure from a fixed point called the center of dilation. The scale factor says how much: 2 doubles every distance from the center, and $\\frac{1}{2}$ halves it. The center stays put. Every other point moves along a straight line away from or toward the center, unless the scale factor is 1.",
+      "The point a transformation produces is called the image. We often add a small mark, so the image of $P$ is written $P'$. The mark is called “prime,” so $P'$ is read “$P$ prime.”",
+      "The coordinates are the two numbers $x$ and $y$ that name a point. If the center is the origin, multiply both coordinates by the scale factor. If the center is somewhere else, measure from the center instead. Find how far the point is from the center, multiply that, then add the center back.",
     ],
     example: {
       prompt:
         "Reflect $A=(2, 3)$ across the $y$-axis, then dilate with center $(1, 1)$ and scale factor 2.",
       steps: [
-        "Reflecting across the $y$-axis gives $(-2, 3)$.",
-        "Subtract the center: $(-3, 2)$.",
-        "Multiply by 2: $(-6, 4)$.",
-        "Add the center back: $(-5, 5)$.",
+        "Do the reflection first, as stated. Reflecting across the $y$-axis changes the sign of $x$: $(2, 3)$ becomes $(-2, 3)$.",
+        "Measure from the center $(1, 1)$. Subtract it: $(-2 - 1, 3 - 1) = (-3, 2)$. So the point is 3 left of and 2 above the center.",
+        "Multiply that distance by the scale factor 2: $(-6, 4)$. Now it is twice as far from the center, in the same direction.",
+        "Add the center back to return to grid positions: $(-6 + 1, 4 + 1) = (-5, 5)$.",
       ],
       answer: "$(-5, 5)$",
     },
     method: {
       title: "Scale from the center",
       paragraphs: [
-        "Use $P'=C+k(P-C)$. Do the steps in the order given. The same two steps in the other order can give a different point.",
+        "Do the steps in the order given. The same two steps in the other order can give a different point.",
+        "Apply a rigid motion straight to the coordinates.",
+        "For a dilation with center $C$ and scale factor $k$, use $P' = C + k(P - C)$. In words: subtract the center, multiply by $k$, add the center back.",
       ],
     },
     formal: {
       title: "Dilation formula",
       paragraphs: [
-        "A dilation with center $C$ and scale factor $k>0$ sends $P$ to the point $P'$ on ray $CP$ with $CP'=k\\cdot CP$, so $P'=C+k(P-C)$. Dilation preserves angles and multiplies lengths by $k$.",
+        "A dilation with center $C$ and scale factor $k > 0$ keeps $C$ fixed and sends each other point $P$ to the point $P'$ on ray $CP$ (the half-line from $C$ through $P$). Its distance from the center is $CP' = k \\times CP$. In coordinates, $P' = C + k(P - C)$.",
+        "A dilation keeps every angle the same and multiplies every length by $k$. A rigid motion keeps both angles and lengths the same.",
       ],
     },
     pitfalls: [
-      "Subtract the center before scaling and add it back after.",
-      "Reflect or turn the original point, not the dilated one, when the motion comes first.",
+      "Subtract the center before scaling, and add it back after. Multiplying the coordinates directly only works when the center is $(0, 0)$.",
+      "Do the steps in the order stated. Use the result of the first step as the start of the second.",
     ],
-    parentGuide: "Ask the learner what a dilation with scale factor 1 does.",
+    parentGuide:
+      "Ask the learner what a dilation with scale factor 1 does, and what scale factor 2 does to a point 3 units from the center.",
   }),
   lesson({
     id: "counterexamples",
     title: "Refute a conjecture with a counterexample",
     summary:
-      "A counterexample makes the hypothesis true and the conclusion false.",
+      "A conjecture is a guess that something is always true. Here is one: if a shape has four equal sides, then it is a square. (A square has four equal sides and four square corners.) To show a conjecture is false, you need only one case where the “if” part is true and the “then” part is false. That case is called a counterexample. A rhombus is a shape with four equal sides, like a tilted diamond. One with no square corners is a counterexample here.",
+    senses: {
+      square: "square-shape",
+      side: "side",
+      product: "product-multiply",
+      degree: "degree-angle",
+      unit: "unit",
+    },
+    noLink: ["legs", "part", "parts", "third"],
     templateIds: ["counterexample-choice"],
     objectives: [
-      "Pick the case that disproves a geometric conjecture.",
-      "Explain why a case that fails the hypothesis does not refute the conjecture.",
+      "Pick the case that disproves a geometry conjecture (a claim that something is always true).",
+      "Explain why a case where the “if” part is false does not disprove the conjecture.",
     ],
     intuition: [
-      'A conjecture of the form "if $p$, then $q$" claims $q$ whenever $p$ is true. To show it is false, find one case where $p$ is true and $q$ is false.',
-      "Cases where $p$ is false say nothing about the conjecture, and cases where both are true only agree with it.",
+      "Many conjectures have the form “if $p$, then $q$,” where $p$ and $q$ are statements. The part after “if” is the hypothesis. The part after “then” is the conclusion. The conjecture claims: every time $p$ is true, $q$ is true too.",
+      "To show the claim is false, you need just one case where $p$ is true but $q$ is false. That case is a counterexample. One is enough, because the claim said “every time.”",
+      "Other cases do not help. A case where $p$ is false does not test the claim at all, because the claim only talks about cases where $p$ holds. A case where both are true agrees with the claim, but agreeing examples do not prove it for every case, unless they check every possible case.",
     ],
     example: {
       prompt:
         "Conjecture: if a quadrilateral has four equal sides, then it is a square. Find a counterexample.",
       steps: [
-        "The hypothesis is four equal sides; the conclusion is being a square.",
-        "A rhombus with angles $60^\\circ$ and $120^\\circ$ has four equal sides.",
-        "Its angles are not right angles, so it is not a square.",
+        "A quadrilateral is a shape with four straight sides. Split the conjecture into parts. The hypothesis is “it has four equal sides.” The conclusion is “it is a square,” which means four equal sides and four right angles (square corners).",
+        "Find a shape where the hypothesis is true. A rhombus is a quadrilateral with four equal sides. One with angles of $60^\\circ$ and $120^\\circ$ works. Here $^\\circ$ means degrees, the unit for angles, and a right angle is $90^\\circ$.",
+        "Check that the conclusion is false. Its angles are $60^\\circ$ and $120^\\circ$, not $90^\\circ$, so it is not a square. The hypothesis is true and the conclusion is false, so it is a counterexample.",
       ],
       answer: "A rhombus with angles $60^\\circ$ and $120^\\circ$",
     },
     method: {
       title: "Test both parts",
       paragraphs: [
-        "For each option, first ask whether the hypothesis holds. Keep only those, then ask whether the conclusion fails.",
+        "Split the conjecture into its hypothesis (the “if” part) and its conclusion (the “then” part).",
+        "For each choice, first ask whether the hypothesis is true. Throw out the choices where it is false.",
+        "Among the rest, pick the one where the conclusion is false. That is the counterexample.",
       ],
     },
     formal: {
       title: "Logic of refutation",
       paragraphs: [
-        'The statement "if $p$ then $q$" is false exactly when some case has $p$ true and $q$ false. Examples that satisfy the statement do not prove it for all cases.',
+        "To refute a statement means to show it is false. The statement “if $p$, then $q$” is false exactly when some case has $p$ true and $q$ false.",
+        "Examples where the statement holds, however many, do not prove it for all cases, unless they cover every possible case.",
       ],
     },
     pitfalls: [
-      "Do not choose a case that fails the hypothesis.",
-      "Do not choose a case that satisfies both parts.",
+      "Do not choose a case where the “if” part is false. It does not test the conjecture.",
+      "Do not choose a case where both parts are true. It agrees with the conjecture.",
     ],
     parentGuide:
-      'Ask the learner for a counterexample to "all animals with four legs are dogs."',
-    noLink: ["legs"],
+      "Ask the learner for a counterexample to “if an animal has four legs, then it is a dog.”",
   }),
   lesson({
     id: "spherical-geometry",
     title: "Geometry on a sphere",
     summary:
-      "On a sphere, lines are great circles, and several facts of plane geometry change.",
+      "Flat geometry happens on a plane, a flat surface that goes on forever. A sphere is the surface of a ball, like the Earth. On a sphere, the straightest paths are great circles: the biggest circles you can draw, like the equator, the circle around the middle of the Earth. Treat great circles as the “lines” of the sphere. Then some flat facts change. There are no parallel lines, lines that never meet. A degree is one 360th of a full turn, written $1^\\circ$. A triangle's three corner angles add to more than $180^\\circ$, not exactly $180^\\circ$.",
+    senses: {
+      plane: "plane",
+      vertex: "vertex",
+      side: "side",
+      center: "center",
+      "more than": "more-than",
+      degree: "degree-angle",
+      unit: "unit",
+    },
+    noLink: ["opposite", "quarter", "change", "changes", "square", "third"],
     templateIds: ["spherical-geometry-compare"],
     objectives: [
-      "Compare parallels, triangle angle sums, right angles and shortest paths in the plane and on a sphere.",
-      "State which plane facts about parallels and angle sums change on a sphere.",
+      "Compare parallel lines, triangle angle sums, right angles and shortest paths on a flat plane and on a sphere.",
+      "Say which flat-geometry facts about parallel lines and angle sums change on a sphere.",
     ],
     intuition: [
-      "A great circle is a circle on a sphere whose center is the center of the sphere, like the equator or a line of longitude. These are the straightest paths on a sphere, so they play the role of lines.",
-      "Any two great circles cross in two opposite points, so no two lines are parallel.",
+      "A sphere is the surface of a ball. Every point on it is the same distance from one middle point, called the center. The unit for measuring angles is the degree, written $^\\circ$. A right angle, a square corner, is $90^\\circ$.",
+      "A great circle is a circle on the sphere whose center is the center of the sphere. The equator is one. So is a full circle through both poles, made of a line of longitude and its matching line around the back of the globe. Great circles are the straightest paths on a sphere, so they play the role of lines.",
+      "On a flat plane, parallel lines never meet. On a sphere, any two great circles cross. They meet at two points, directly across the sphere from each other. So a sphere has no parallel lines.",
+      "On a flat plane, a triangle's three angles always add to $180^\\circ$. On a sphere, they add to more than $180^\\circ$. A sphere triangle can even have three right angles.",
+      "The shortest path between two points on a sphere runs along a great circle, taking the shorter of its two arcs. (For two points directly opposite each other, both halves are equally short.) That is why long airplane routes look curved on a flat map.",
     ],
     example: {
       prompt:
         "A triangle has its vertex at the north pole and two vertices on the equator a quarter of the way around from each other. What are its angles?",
       steps: [
-        "Lines of longitude meet the equator at right angles, so two angles are $90^\\circ$.",
-        "The two longitudes are a quarter turn apart, so they meet at the pole at $90^\\circ$.",
-        "The angles total $270^\\circ$, more than the plane's $180^\\circ$.",
+        "A vertex is a corner of the triangle. Two sides run from the north pole down lines of longitude to the equator. The third side runs along the equator.",
+        "Lines of longitude cross the equator at right angles. So the two angles on the equator are each $90^\\circ$.",
+        "At the pole, the two longitudes are a quarter of a full turn apart. A full turn is $360^\\circ$, and a quarter of it is $360^\\circ \\div 4 = 90^\\circ$. So the angle at the pole is $90^\\circ$.",
+        "The angles add to $90^\\circ + 90^\\circ + 90^\\circ = 270^\\circ$, which is more than the plane's $180^\\circ$.",
       ],
       answer: "$90^\\circ$, $90^\\circ$, $90^\\circ$",
     },
     method: {
       title: "Use great circles",
       paragraphs: [
-        'Replace "line" by "great circle". Shortest paths follow the shorter arc of a great circle. Triangles have angle sums between $180^\\circ$ and $540^\\circ$.',
+        "Replace “line” with “great circle.” Then ask how the plane fact changes.",
+        "Parallel lines: none, because every two great circles meet. Triangle angle sums: more than $180^\\circ$, and less than $540^\\circ$ for a triangle smaller than half the sphere. Shortest paths: along the shorter arc of a great circle.",
       ],
     },
     formal: {
       title: "Spherical and Euclidean geometry",
       paragraphs: [
-        "Euclidean geometry has exactly one parallel to a line through an outside point, and angle sum $180^\\circ$. Spherical geometry has no parallels, angle sums above $180^\\circ$, and area proportional to the excess over $180^\\circ$.",
+        "Euclidean geometry is the geometry of the flat plane. There, through a point not on a line, exactly one line is parallel to it, and a triangle's angles add to $180^\\circ$.",
+        "Spherical geometry is the geometry of the sphere, with great circles as lines. It has no parallel lines, and triangle angle sums are more than $180^\\circ$. The larger the triangle, the larger the extra amount above $180^\\circ$; its area is proportional to that extra amount.",
       ],
     },
     pitfalls: [
-      "A circle of latitude other than the equator is not a line of the sphere.",
-      "Angle sums below $180^\\circ$ do not occur on a sphere.",
+      "A circle of latitude other than the equator is not a great circle, so it is not a line of the sphere.",
+      "Angle sums below $180^\\circ$ never happen on a sphere. They belong to saddle-shaped surfaces.",
+      "Do not carry flat-plane facts over to the sphere without checking them.",
     ],
     parentGuide:
-      "Ask the learner why airplane routes between distant cities look curved on a flat map.",
+      "Look at a globe together. Ask why airplane routes between distant cities look curved on a flat map.",
   }),
   lesson({
     id: "regular-polygon-area",
     title: "Area of a regular polygon",
     summary:
-      "Split a regular polygon into triangles from its center: area is half the apothem times the perimeter.",
+      "A polygon is a flat shape with straight sides. It is regular when all its sides are equal and all its corner angles are equal, like a stop sign. Lines from its middle point to each corner cut it into matching triangles, three-sided shapes. Each triangle's height is the apothem, the distance from the middle straight to the middle of a side. Area is the flat space inside, and the perimeter is the distance around. Adding the triangles gives area = half × apothem × perimeter.",
+    senses: { side: "side", vertex: "vertex" },
+    noLink: ["center", "square", "squared", "base", "part", "whole", "factor"],
     templateIds: ["regular-polygon-area"],
     objectives: [
-      "Use $A=\\frac12ap$ and find a missing apothem or side.",
-      "Find the apothem of a regular polygon from its side length.",
+      "Use $A = \\frac12 ap$ (half the apothem times the perimeter) to find an area, or a missing apothem or side.",
+      "Find the apothem of a regular hexagon from its side length.",
     ],
     intuition: [
-      "A regular polygon has equal sides and equal angles. Joining its center to each vertex cuts it into identical triangles.",
-      "Each triangle has a side of the polygon as its base and the apothem, the distance from the center to the midpoint of a side, as its height.",
+      "A regular polygon has equal sides and equal angles. A regular hexagon has 6 equal sides. Its perimeter is the distance all the way around: the number of sides times the side length.",
+      "The center is the point in the middle, the same distance from every corner. A corner is called a vertex (plural vertices). Draw a line from the center to each vertex. That cuts the polygon into identical triangles, one for each side.",
+      "The apothem is the distance from the center straight to the midpoint (middle) of a side. It meets the side at a right angle, a square corner of $90^\\circ$. So it is the height of each triangle, with the side as the triangle's bottom.",
+      "A triangle's area is $\\frac{1}{2}$ × bottom × height. Each triangle is $\\frac12 \\times$ side $\\times$ apothem. Add all of them: $\\frac12 \\times$ apothem $\\times$ (all the sides together), which is $\\frac12 \\times$ apothem $\\times$ perimeter.",
+      "For a number 0 or greater, its square root is the number, 0 or greater, that times itself gives it. The symbol $\\sqrt{3}$ means the square root of 3. So $\\sqrt{3}$ times $\\sqrt{3}$ is 3, and $\\sqrt{3}$ is about 1.73.",
     ],
     example: {
       prompt: "Find the area of a regular hexagon with side 4 cm.",
       steps: [
-        "The center and two neighboring vertices form an equilateral triangle with side 4.",
-        "Its height, the apothem, is $2\\sqrt3$ cm from a $30^\\circ$-$60^\\circ$-$90^\\circ$ triangle.",
-        "The perimeter is $6\\times4=24$ cm.",
-        "$A=\\frac12(2\\sqrt3)(24)=24\\sqrt3\\text{ cm}^2$.",
+        "Cut the hexagon into 6 triangles from the center. In a regular hexagon, each one has all three sides equal to 4 cm, an equilateral triangle.",
+        "The apothem is the height of one triangle. It splits the triangle into two halves with angles $30^\\circ$, $60^\\circ$ and $90^\\circ$. In such a half, the short side is 2 and the longest side is 4, so the height is $2\\sqrt3$ cm. Check: $2^2 + (2\\sqrt3)^2 = 4 + 12 = 16 = 4^2$.",
+        "The perimeter is 6 sides times 4 cm: $6\\times4=24$ cm.",
+        "Use area = half × apothem × perimeter: $A=\\frac12 \\times 2\\sqrt3 \\times 24 = 24\\sqrt3$ square centimeters.",
       ],
       answer: "$24\\sqrt3$ square centimeters",
     },
     method: {
       title: "Perimeter, apothem, one half",
       paragraphs: [
-        "Add the areas of the $n$ triangles: $n\\cdot\\frac12 s a=\\frac12 a(ns)$. To find a missing apothem or side, solve $A=\\frac12ap$ for it.",
+        "Find the perimeter: number of sides times side length.",
+        "Find or read the apothem. For a regular hexagon with side $s$, the apothem is $\\frac{s\\sqrt3}{2}$.",
+        "Use $A = \\frac12 ap$, where $a$ is the apothem and $p$ is the perimeter. To find a missing apothem or side, put in what you know and solve for the unknown.",
       ],
     },
     formal: {
       title: "The area formula",
       paragraphs: [
-        "A regular polygon with $n$ sides of length $s$ and apothem $a$ has area $A=\\frac12a\\cdot ns=\\frac12ap$. For a hexagon, $a=\\frac{s\\sqrt3}{2}$.",
+        "A regular polygon with $n$ sides of length $s$ and apothem $a$ splits into $n$ triangles, each of area $\\frac12 sa$. So its area is $A = n \\times \\frac12 sa = \\frac12 a(ns) = \\frac12 ap$, because the perimeter is $p = ns$.",
+        "A regular hexagon with side $s$ has apothem $\\frac{s\\sqrt3}{2}$ and area $\\frac{3\\sqrt3}{2}s^2$, where $s^2$ means $s$ times $s$.",
       ],
     },
     pitfalls: [
-      "Use the whole perimeter in the formula.",
-      "The apothem is not the side length.",
+      "Use the whole perimeter in the formula, not one side.",
+      "Keep the $\\frac12$.",
+      "The apothem is not the side length, and it is not the distance to a corner.",
     ],
     parentGuide:
-      "Ask the learner to cut a regular hexagon into six triangles and describe one of them.",
+      "Ask the learner to cut a paper regular hexagon into six triangles and describe one of them.",
   }),
   lesson({
     id: "composite-surface-area",
     title: "Surface area of cones and composite solids",
     summary:
-      "Add the outside surfaces and leave out the faces where solids are joined.",
+      "Area is the amount of flat space a surface covers. A solid is a shape that takes up space, like a can. Surface area is the total area of the outside of a solid, the parts you could paint. A solid made by joining simple solids, like a cylinder (a can shape) with a dome on top, is called a composite solid. Where two solids are joined, the touching surfaces are hidden inside, so they are not counted. Add the outside surfaces only.",
+    senses: {
+      base: "base-shape",
+      edge: "edge",
+      face: "face-solid",
+      solid: "solid-shape",
+    },
+    noLink: ["side", "square", "part", "parts", "center", "squared", "whole"],
     templateIds: ["curved-solid-surface-area"],
     objectives: [
       "Find the surface area of a cone and of solids joined to a cylinder.",
-      "Leave out the faces that are joined together.",
+      "Leave out the surfaces where two solids are joined.",
     ],
     intuition: [
-      "Surface area is the total area of the faces you could touch from outside. Where two solids are joined, the faces that meet are hidden inside and do not count.",
-      "A cone has a circular base and a curved side. The side opens flat into part of a circle whose radius is the slant height.",
+      "A cylinder is a can shape: two circles joined by a curved wall. A cone is a party-hat shape: a circle base with a curved wall rising to a point. A hemisphere is half of a ball, a dome.",
+      "Each piece has an area formula. Here $r$ is the radius, the distance from the center of the circle to its edge, and $\\pi$ (pi) is about 3.14. A circle has area $\\pi r^2$, where $r^2$ ($r$ squared) means $r$ times $r$. A cylinder's curved wall, $h$ tall, has area $2\\pi rh$. A hemisphere's curved surface has area $2\\pi r^2$, half of a ball's $4\\pi r^2$.",
+      "The slant height is the distance from a cone's tip down its wall to the edge of the base. Call it $\\ell$. For a right circular cone, one whose tip is straight above the center of its circle base, the curved wall has area $\\pi r\\ell$. If you only know the straight-up height $h$, the radius, height and slant height form a triangle with a square corner. A triangle with a $90^\\circ$ corner is called a right triangle. So $\\ell = \\sqrt{r^2 + h^2}$. The sign $\\sqrt{\\ }$ means square root: the number, 0 or greater, that times itself gives the number under the sign.",
+      "When solids are joined, the surfaces that touch are covered. When a dome's flat circle exactly matches a cylinder's top, the dome covers that top, and the dome's own flat bottom is hidden too.",
     ],
     example: {
       prompt:
         "A cylinder of radius 3 cm and height 5 cm has a hemisphere of radius 3 cm on top. Find the outside surface area.",
       steps: [
-        "Bottom circle: $\\pi(3)^2=9\\pi$.",
-        "Cylinder side: $2\\pi(3)(5)=30\\pi$.",
-        "Hemisphere: $2\\pi(3)^2=18\\pi$. The cylinder's top is covered.",
-        "Total: $9\\pi+30\\pi+18\\pi=57\\pi\\text{ cm}^2$.",
+        "List the outside surfaces: the bottom circle, the cylinder's curved wall and the dome's curved surface. The cylinder's top is covered by the dome, so it is left out.",
+        "Bottom circle: $\\pi \\times 3^2 = 9\\pi$.",
+        "Cylinder wall: $2\\pi \\times 3 \\times 5 = 30\\pi$.",
+        "Dome, half of a ball: $2\\pi \\times 3^2 = 18\\pi$.",
+        "Add the outside surfaces: $9\\pi+30\\pi+18\\pi=57\\pi$ square centimeters.",
       ],
       answer: "$57\\pi$ square centimeters",
     },
     method: {
       title: "List, then add",
       paragraphs: [
-        "List every outside surface. Use $\\pi r\\ell$ for a cone's side with slant height $\\ell$, found from $\\sqrt{r^2+h^2}$ when only $h$ is given.",
+        "List every outside surface first. Leave out any part of a surface that is covered where two solids touch.",
+        "Use $\\pi r^2$ for a flat circle, $2\\pi rh$ for a cylinder's wall, $\\pi r\\ell$ for a cone's wall and $2\\pi r^2$ for a dome.",
+        "For a right circular cone, use the slant height $\\ell$. If you know the radius $r$ and height $h$ but not $\\ell$, find $\\ell = \\sqrt{r^2 + h^2}$ first.",
       ],
     },
     formal: {
       title: "Surface area formulas",
       paragraphs: [
-        "Cone: $\\pi r\\ell$ for the side plus $\\pi r^2$ for the base. Cylinder side: $2\\pi rh$. Sphere: $4\\pi r^2$, so a hemisphere's curved surface is $2\\pi r^2$.",
+        "Right circular cone (tip straight above the center of the base) with radius $r$, height $h$ and slant height $\\ell = \\sqrt{r^2 + h^2}$: side area $\\pi r\\ell$. The base area, the area of its flat circle, is $\\pi r^2$.",
+        "Cylinder: side area $2\\pi rh$. Sphere: $4\\pi r^2$, so a hemisphere's curved surface is $2\\pi r^2$.",
+        "The surface area of a composite solid counts only the surfaces on the outside.",
       ],
     },
     pitfalls: [
-      "Do not count faces that are joined.",
-      "Use the slant height, not the vertical height, for a cone's side.",
+      "Do not count surfaces where two solids are joined.",
+      "Use the slant height, not the straight-up height, for a cone's curved wall.",
+      "A dome's curved surface is $2\\pi r^2$, half of a whole ball, not $4\\pi r^2$.",
     ],
     parentGuide:
-      "Ask the learner which faces of a toy rocket, a cylinder with a cone on top, are outside.",
+      "Ask the learner which surfaces of a toy rocket, a cylinder with a cone on top, are on the outside.",
   }),
   lesson({
     id: "area-probability",
     title: "Probability from area",
     summary:
-      "For a random point in a region, probability is the fraction of the area that is the target.",
+      "Probability is a number from 0 to 1 that tells how likely something is. Area is the amount of flat space a shape covers. Throw a dart that is equally likely to land anywhere on a board. The chance it lands in one part is that part's area divided by the board's whole area. If a circle covers $\\frac{1}{4}$ of the board's area, the chance of hitting it is $\\frac{1}{4}$.",
+    senses: {
+      part: "part",
+      whole: "whole",
+      square: "square-shape",
+      side: "side",
+      center: "center",
+      "more than": "more-than",
+      unit: "unit",
+    },
+    noLink: ["base", "squared", "edge"],
     templateIds: ["area-probability"],
     objectives: [
-      "Find geometric probabilities as ratios of areas.",
-      "Subtract an area for the outside of a region.",
+      "Find a probability by dividing the area of a part by the area of the whole region.",
+      "Find the chance of landing outside a part by subtracting from 1.",
     ],
     intuition: [
-      "If a dart is equally likely to land anywhere on a target, the chance of landing in a part is how much of the target's area that part covers.",
+      "Area is the amount of flat space a shape covers. It is counted in square units: a square unit is a square 1 unit on each side, such as a square centimeter.",
+      "Picture a dart that lands at a random spot, with every spot equally likely. A part that covers more area gets hit more often. So the chance of landing in a part is the fraction of the total area it covers: part area divided by whole area.",
+      "A square 10 cm on each side has area $10 \\times 10 = 100$ square centimeters. A circle's middle point is called the center. A circle with radius $r$ (the distance from its center to its edge) has area $\\pi r^2$. Here $\\pi$ (pi) is about 3.14 and $r^2$ means $r$ times $r$.",
+      "The chance of missing the part is 1 minus the chance of hitting it, because the dart must land either inside or outside.",
     ],
     example: {
       prompt:
         "A dart lands at random on a 10 cm by 10 cm square. A circle of radius 2 cm is inside it. What is the probability it lands in the circle?",
       steps: [
-        "The square's area is $100\\text{ cm}^2$.",
-        "The circle's area is $\\pi(2)^2=4\\pi\\text{ cm}^2$.",
-        "$P=\\frac{4\\pi}{100}=\\frac{\\pi}{25}$.",
+        "Find the whole region's area. The square is 10 by 10, so its area is $100$ square centimeters.",
+        "Find the target's area. The circle has radius 2, so its area is $\\pi \\times 2^2 = 4\\pi$ square centimeters.",
+        "Divide part by whole: $P=\\frac{4\\pi}{100}$. Divide top and bottom by 4: $\\frac{\\pi}{25}$. That is about 0.13, a little more than 1 in 8.",
       ],
       answer: "$\\frac{\\pi}{25}$",
     },
     method: {
       title: "Part over whole",
       paragraphs: [
-        "Find the area of the target and of the whole region, divide, and simplify. For the probability of missing the target, subtract from 1.",
+        "Find the area of the target part. Find the area of the whole region. Divide the part by the whole and simplify.",
+        "For the probability of missing the target, subtract the probability of hitting it from 1.",
       ],
     },
     formal: {
       title: "Geometric probability",
       paragraphs: [
-        "If a point is chosen uniformly in a region of area $A$, the probability that it lies in a subregion of area $B$ is $\\frac{B}{A}$, where $0\\le B\\le A$.",
+        "Choose a point uniformly at random in a region of area $A$, where $A$ is greater than 0. Uniformly means every spot is equally likely.",
+        "The probability that the point lies in a part of area $B$ inside the region is $\\frac{B}{A}$, where $0 \\le B \\le A$. The probability it lies outside is $1 - \\frac{B}{A}$.",
       ],
     },
     pitfalls: [
-      "Compare areas, not perimeters.",
-      "Use the radius squared for a circle.",
+      "Compare areas, not lengths or perimeters.",
+      "For a circle, square the radius: area is $\\pi r^2$, not $2\\pi r$.",
+      "The target must sit inside the whole region.",
     ],
     parentGuide:
-      "Ask the learner what fraction of a square a rectangle covers if it takes up half of its width and half of its height.",
+      "Ask the learner what fraction of a square is covered by a rectangle half as wide and half as tall.",
   }),
   lesson({
     id: "composition-and-one-sided-behavior",
@@ -1090,45 +1281,67 @@ export const texasHsLessons: Lesson[] = [
     id: "bearings",
     title: "Directional bearings",
     summary:
-      "Split a trip on a bearing into north-south and east-west legs of a right triangle.",
+      "A bearing gives a direction as an angle, an amount of turn. One degree is one 360th of a full turn, written $1^\\circ$. Start facing north and turn clockwise, the way clock hands move. East is a quarter turn, written $090^\\circ$ with three digits, and south is $180^\\circ$. A trip along a bearing can be split into how far it goes north or south and how far east or west. Unless the trip goes straight north, south, east or west, those two parts and the trip form a triangle with a square corner. A ratio is a comparison of two numbers by dividing. Two triangle ratios, sine and cosine, then find the parts.",
+    senses: {
+      side: "side",
+      degree: "degree-angle",
+      "opposite leg": "opposite-side-angle",
+      unit: "unit",
+    },
+    noLink: [
+      "tangent",
+      "opposite",
+      "plane",
+      "parts",
+      "part",
+      "quarter",
+      "change",
+      "square",
+    ],
     templateIds: ["bearing-trig-problem"],
     objectives: [
-      "Resolve a bearing trip into components and find a bearing from components.",
-      "Convert between three-digit bearings and compass-quadrant bearings.",
+      "Split a bearing trip into its north-south and east-west parts, and find a bearing from those parts.",
+      "Change between three-digit bearings and compass bearings such as $\\mathrm{N}\\,60^\\circ\\,\\mathrm{W}$.",
     ],
     intuition: [
-      "A bearing is a direction given as an angle clockwise from north, written with three digits: east is $090^\\circ$ and west is $270^\\circ$.",
-      "A trip along a bearing together with its north-south and east-west parts forms a right triangle.",
-      "A compass bearing such as $\\mathrm{N}\\,60^\\circ\\,\\mathrm{W}$ means $60^\\circ$ from north toward west, which is the three-digit bearing $300^\\circ$. $\\mathrm{N}\\,60^\\circ\\,\\mathrm{E}$ is $060^\\circ$, $\\mathrm{S}\\,60^\\circ\\,\\mathrm{E}$ is $120^\\circ$ and $\\mathrm{S}\\,60^\\circ\\,\\mathrm{W}$ is $240^\\circ$.",
+      "The unit for measuring angles is the degree, written $^\\circ$. A full turn is $360^\\circ$, and a right angle, a square corner, is $90^\\circ$. Clockwise means turning the way clock hands move.",
+      "A bearing is a direction measured clockwise from north, written with three digits. North is $000^\\circ$, east is $090^\\circ$, south is $180^\\circ$ and west is $270^\\circ$.",
+      "Another style names a starting direction, an angle, and which way to turn. $\\mathrm{N}\\,60^\\circ\\,\\mathrm{W}$ means start facing north and turn $60^\\circ$ toward west. That is the three-digit bearing $360^\\circ - 60^\\circ = 300^\\circ$. Likewise $\\mathrm{N}\\,60^\\circ\\,\\mathrm{E}$ is $060^\\circ$, $\\mathrm{S}\\,60^\\circ\\,\\mathrm{E}$ is $120^\\circ$ and $\\mathrm{S}\\,60^\\circ\\,\\mathrm{W}$ is $240^\\circ$.",
+      "Unless the trip goes straight north, south, east or west, the trip, its north-south part and its east-west part form a right triangle, a triangle with a square corner. The trip is the hypotenuse, the longest side, across from the $90^\\circ$ corner. The other two sides are the legs.",
+      "In a right triangle, pick one of the other angles. The leg touching that angle is the adjacent leg, and the leg across from it is the opposite leg. A ratio is a comparison of two numbers by dividing. Sine and cosine are fixed ratios for each angle: opposite leg = hypotenuse × sine of the angle, and adjacent leg = hypotenuse × cosine of the angle. We write them $\\sin$ and $\\cos$.",
     ],
     example: {
       prompt:
         "A ship sails 40 km on a bearing of $060^\\circ$. How far east has it gone?",
       steps: [
-        "The path makes a $60^\\circ$ angle with the north-south line.",
-        "The east leg is opposite that angle, so it is $40\\sin60^\\circ=20\\sqrt3$ km.",
-        "The north leg is $40\\cos60^\\circ=20$ km.",
+        "Sketch it. The ship turns $60^\\circ$ clockwise from north, so its path makes a $60^\\circ$ angle with the north-south line.",
+        "The east leg is across from that $60^\\circ$ angle, so it is the opposite leg. Opposite = hypotenuse × sine: $40\\sin60^\\circ = 40 \\times \\frac{\\sqrt3}{2} = 20\\sqrt3$ km, about 34.6 km. Here $\\sqrt3$ is the square root of 3, the positive number that times itself gives 3. It is about 1.73.",
+        "For comparison, the north leg touches the angle, so it uses cosine: $40\\cos60^\\circ = 40 \\times \\frac12 = 20$ km.",
       ],
       answer: "$20\\sqrt3$ km east",
     },
     method: {
       title: "Sketch, then pick sine or cosine",
       paragraphs: [
-        "Mark north, draw the path, and drop legs to the north-south line. The leg along the north-south line is adjacent to the angle, so it uses cosine; the east-west leg is opposite, so it uses sine.",
+        "Mark north, draw the path, and drop a line from the end of the path to the north-south line. That makes the right triangle.",
+        "Find the angle between the path and the north-south line. The leg along the north-south line touches that angle, so it uses cosine. The east-west leg is across from it, so it uses sine.",
+        "Name each direction from where the path points: north or south, and east or west.",
       ],
     },
     formal: {
       title: "Components",
       paragraphs: [
-        "For bearing $B$ and distance $d$, east $=d\\sin B$ and north $=d\\cos B$, where a negative east value means west and a negative north value means south.",
+        "The two parts of a trip are called its components. For a distance $d$ on a bearing $B$, the east component is $d\\sin B$ and the north component is $d\\cos B$.",
+        "A negative east value means west, and a negative north value means south.",
       ],
     },
     pitfalls: [
-      "Measure from north, clockwise.",
-      "Check the direction of each leg from the quadrant.",
+      "Measure from north, turning clockwise, not from east.",
+      "Decide adjacent or opposite from the angle in your sketch.",
+      "Check the direction of each leg from where the path points.",
     ],
     parentGuide:
-      "Ask the learner which direction is on a bearing of $180^\\circ$.",
+      "Ask the learner which direction a bearing of $180^\\circ$ points, and which one $270^\\circ$ points.",
   }),
   lesson({
     id: "series-notation-and-infinite-sums",
