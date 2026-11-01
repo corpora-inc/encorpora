@@ -257,6 +257,7 @@ function Today({
       <Contents
         workbook={workbook.data}
         stale={!current}
+        learnerId={learner.id}
         failure={
           loadError && !workbook.data
             ? {
@@ -283,10 +284,12 @@ function Today({
 function Contents({
   workbook,
   stale,
+  learnerId,
   failure,
 }: {
   workbook?: WorkbookSummary;
   stale: boolean;
+  learnerId: string;
   /** A load that failed: said in the card's reserved space, with a retry. */
   failure?: { text: string; retry: () => void };
 }) {
@@ -322,6 +325,13 @@ function Contents({
               </li>
             ))}
           </ol>
+          <Link
+            to="/learners/$learnerId/workbooks/$workbookId/results"
+            params={{ learnerId, workbookId: workbook.id }}
+            className={styles.resultsLink}
+          >
+            Enter results
+          </Link>
         </>
       ) : failure ? (
         <div className={styles.failure} role="alert">
