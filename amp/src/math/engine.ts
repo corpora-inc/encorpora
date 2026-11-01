@@ -2,7 +2,6 @@ import {
   satCompletionTemplates,
   generateSatCompletionProblem,
 } from "./sat-completion-practice";
-import { withTemplateGlossary } from "./template-glossary";
 import {
   satGeometryDataTemplates,
   generateSatGeometryDataProblem,
@@ -12,6 +11,7 @@ import {
   generateSatGeometryAdvancedProblem,
 } from "./sat-geometry-advanced-practice";
 import { normalizeSelection } from "./selection-response";
+import { withTemplateGlossary } from "./template-glossary";
 import { historicalTrueEquationChoice } from "./operation-sentence-practice";
 import { historicalEqualFactorFamily } from "./multiselect-number-practice";
 import { sceneCapabilitiesIn } from "./scene/capability";
