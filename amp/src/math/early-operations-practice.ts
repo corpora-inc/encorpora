@@ -130,7 +130,9 @@ export function generateEarlyOperationsProblem(
           ? `One part is already all ${whole}. What is left for the other part?`
           : `The whole is ${whole} and one part is ${part}. Count on from ${part} to ${whole}.`;
       explanation = [
-        `The whole is the total. The two parts together make the whole.`,
+        frame === 2
+          ? `In a number bond, the whole is the total, and the two parts together make the whole.`
+          : `The box □ stands for the missing number. The whole is the total, and the two parts together make the whole.`,
         `Here the whole is ${whole} and one part is ${part}, so the missing part is what you add to ${part} to reach ${whole}.`,
         part === whole
           ? `${part} is already the whole, so nothing is left for the other part.`
@@ -162,7 +164,7 @@ export function generateEarlyOperationsProblem(
               : `□ + ${start} = ${total}. What number belongs in the box?`;
       hint = `Write it as ${start} + □ = ${total}. Count up from ${start} to ${total} and keep track of how many you count.`;
       explanation = [
-        `The total, ${total}, is the whole. ${start} is one part, and the other part is missing.`,
+        `${frame === 1 || frame === 3 ? "The box □ stands for the missing number. " : ""}The total, ${total}, is the whole. ${start} is one part, and the other part is missing.`,
         `A missing part is the whole minus the part you know, because the two parts make the whole.`,
         total - start <= 5
           ? `Count up from ${start} to ${total}: ${countOn(start, total)}. That is ${added} counts.`
@@ -183,7 +185,7 @@ export function generateEarlyOperationsProblem(
         prompt = `□ = ${a} + ${b}. What number belongs in the box?`;
         hint = `The equal sign means both sides have the same value. Find ${a} + ${b}.`;
         explanation = [
-          `The equal sign (=) means both sides have the same value. It does not mean "the answer comes next".`,
+          `The box □ stands for the missing number. The equal sign (=) means both sides have the same value.`,
           `So the box must have the same value as ${a} + ${b}.`,
           `${a} + ${b} = ${sum}, so ${sum} belongs in the box.`,
         ];
@@ -203,7 +205,7 @@ export function generateEarlyOperationsProblem(
           : `${a} + ${b} = ${boxSide}. What number makes both sides equal?`;
       hint = `First find ${a} + ${b}. The box and ${c} together must make that same total.`;
       explanation = [
-        `The equal sign (=) means both sides have the same value, like a balanced scale.`,
+        `The box □ stands for the missing number. The equal sign (=) means both sides have the same value, like a balanced scale.`,
         `${a} + ${b} = ${sum}, so ${boxSide} must also be ${sum}.`,
         `What adds to ${c} to reach ${sum}? ${sum} − ${c} = ${answer}.`,
         `Check: both sides equal ${sum}. The box holds ${answer}.`,

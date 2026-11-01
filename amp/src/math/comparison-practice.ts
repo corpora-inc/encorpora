@@ -177,8 +177,10 @@ function placeSteps(a: number, b: number): string[] {
     ).join(", ");
   const matched = placeNames.slice(deciding + 1, places).reverse();
   return [
+    `Each digit is worth a different amount because of its place: a ten is 10 ones${places > 2 ? ", and a hundred is 10 tens" : ""}.`,
     `Line up the places. ${a} is ${describe(a)}. ${b} is ${describe(b)}.`,
     `${matched.length ? `The ${matched.join(" and the ")} match, so they cannot decide. ` : ""}Compare the ${placeNames[deciding]}: ${unit(digitAt(a, deciding), deciding)} ${digitAt(a, deciding) < digitAt(b, deciding) ? "is less than" : "is more than"} ${unit(digitAt(b, deciding), deciding)}.`,
+    `${deciding > 0 ? `The places to the right cannot change that, because all the smaller places together are worth less than 1 more ${placeNames[deciding]!.replace(/s$/, "")}.` : `That is the last place, so it decides.`}`,
   ];
 }
 
@@ -421,7 +423,8 @@ export function generateComparisonProblem(
             ]
           : [
               ...placeSteps(a, b),
-              `So ${a} ${symbolOf(a, b)} ${b}: ${a} is ${a < b ? "less than" : "greater than"} ${b}.`,
+              `So ${a} is ${a < b ? "less than" : "greater than"} ${b}. The sign ${symbolOf(a, b)} means "is ${a < b ? "less than" : "greater than"}"; its open side faces the greater number.`,
+              `The true statement is ${a} ${symbolOf(a, b)} ${b}.`,
             ];
       break;
     }

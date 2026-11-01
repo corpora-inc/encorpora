@@ -135,7 +135,8 @@ function additionSteps(a: number, b: number): string[] {
   const x = digits(a),
     y = digits(b),
     steps: string[] = [
-      `Line the numbers up by place value, so ones add to ones and tens to tens. Start with the ones.`,
+      `A digit's place gives its value: ones, then tens (groups of 10), then hundreds (groups of 100).`,
+      `Line the numbers up by place, so ones add to ones and tens to tens. Start with the ones, because a trade there can add to the tens.`,
     ];
   let carry = 0;
   const n = Math.max(x.length, y.length);
@@ -169,7 +170,8 @@ function subtractionSteps(a: number, b: number): string[] {
     original = digits(a),
     bottom = digits(b),
     steps: string[] = [
-      `Line the numbers up by place value and subtract one place at a time, starting with the ones.`,
+      `A digit's place gives its value: ones, then tens (groups of 10), then hundreds (groups of 100).`,
+      `Line the numbers up by place and subtract one place at a time. Start with the ones, because a trade there takes from the tens.`,
     ];
   const lastNonzero = digits(a - b).length - 1;
   for (let p = 0; p < top.length; p++) {
@@ -197,7 +199,7 @@ function subtractionSteps(a: number, b: number): string[] {
     );
   }
   steps.push(
-    `So ${formatWhole(a)} − ${formatWhole(b)} = ${formatWhole(a - b)}. Check: ${formatWhole(a - b)} + ${formatWhole(b)} = ${formatWhole(a)}.`,
+    `So ${formatWhole(a)} − ${formatWhole(b)} = ${formatWhole(a - b)}. Check by adding back, because addition undoes subtraction: ${formatWhole(a - b)} + ${formatWhole(b)} = ${formatWhole(a)}.`,
   );
   return steps;
 }

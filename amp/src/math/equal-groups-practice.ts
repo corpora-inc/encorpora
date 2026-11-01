@@ -381,7 +381,8 @@ export function generateEqualGroupsProblem(
       explanation = [
         `Splitting ${number} into ${tens * 10} + ${ones} breaks one hard multiplication into two easier ones. Each one is a partial product.`,
         `The ${tens} in ${number} is in the tens place, so it means ${tens * 10}, not ${tens}.`,
-        `${tens * 10} × ${factor} is ${tens} × ${factor} = ${tens * factor} tens, which is ${answer}.`,
+        `${tens * 10} is ${tens} tens, so ${tens * 10} × ${factor} is ${factor} groups of ${tens} tens: ${tens} × ${factor} = ${tens * factor}, so that is ${tens * factor} tens.`,
+        `${tens * factor} tens is ${tens * factor} × 10 = ${answer}.`,
         `The tens partial product is ${answer}. The ones part, ${ones} × ${factor}, is added later.`,
       ];
       break;
