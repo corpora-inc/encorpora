@@ -24,7 +24,8 @@ export type Finding = {
     | "system-keyboard"
     | "skip-miss-mark"
     | "feedback-gap"
-    | "motion-under-reduce";
+    | "motion-under-reduce"
+    | "tinted-answer";
   selector: string;
   text: string;
   detail: string;
@@ -471,6 +472,26 @@ export async function probe(page: Page): Promise<Finding[]> {
             });
         }
       }
+    // Answer fields are plain paper with a clear border: their fill is the
+    // answer role (white in light, the page in dark), never a cream tint.
+    const probeColor = document.createElement("span");
+    probeColor.style.color = "var(--color-answer)";
+    document.body.appendChild(probeColor);
+    const answerFill = getComputedStyle(probeColor).color;
+    probeColor.remove();
+    for (const field of document.querySelectorAll(
+      ".workspace-answer-row input, .answer-row input, .work-input, .multi-part-slots li",
+    )) {
+      if (!visible(field)) continue;
+      const fill = getComputedStyle(field).backgroundColor;
+      if (fill !== answerFill)
+        found.push({
+          kind: "tinted-answer",
+          selector: name(field),
+          text: text(field),
+          detail: `${fill}, expected ${answerFill}`,
+        });
+    }
     return found;
   }) as Promise<Finding[]>;
 }

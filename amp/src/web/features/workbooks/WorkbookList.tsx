@@ -85,6 +85,14 @@ export function WorkbookList({
                   {workbook.minutes} min · {workbook.problems} problems ·{" "}
                   <span className={styles.code}>{workbook.code}</span>
                 </span>
+                <Link
+                  to="/learners/$learnerId/workbooks/$workbookId/results"
+                  params={{ learnerId, workbookId: workbook.id }}
+                  className={styles.resultsLink}
+                  aria-label={`Enter results for workbook ${workbook.code}`}
+                >
+                  Enter results
+                </Link>
               </div>
               <Button
                 variant="secondary"
