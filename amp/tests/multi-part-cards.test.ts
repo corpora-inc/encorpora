@@ -98,6 +98,7 @@ test("a client without the cards capability gets the same blanks inline", () => 
   const old = responseForClient(problem, ["multi-part-choice-v1"]);
   const response = old.response as MultiPartChoiceResponse;
   assert.equal(response.layout, "inline");
+  assert.equal(response.label, "Choose an option for each gap");
   assert.equal("reuse" in response, false);
   assert.deepEqual(response.blanks, cards.blanks);
   assert.equal(

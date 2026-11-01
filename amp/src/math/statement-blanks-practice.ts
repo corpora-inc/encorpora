@@ -987,7 +987,7 @@ export const statementBlanksGenerate = defineGenerate(
         ]);
         return multiPartProblem(meta, seed, r, {
           prompt:
-            "Put a card in each box to make both inequalities true. Exactly one card works in each.",
+            "Make both inequalities true. Exactly one of the four numbers works in each.",
           layout: "cards",
           label: "Put a card in each box",
           slots: built.slots,

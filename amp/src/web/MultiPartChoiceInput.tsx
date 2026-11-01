@@ -1,5 +1,12 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { useId, useState, type CSSProperties, type FormEvent } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type CSSProperties,
+  type FormEvent,
+} from "react";
 import { MathText, spokenMath } from "./MathText";
 import {
   cardRows,
@@ -188,6 +195,23 @@ function CardEquation({
   review: PartMark[] | null;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
+  const tray = useRef<HTMLDivElement>(null);
+  // A placed card is disabled under the keyboard; focus moves to the next
+  // card that can be placed, or to the box it filled.
+  const refocus = useRef<string | null>(null);
+  useEffect(() => {
+    const filled = refocus.current;
+    refocus.current = null;
+    if (!filled) return;
+    const next =
+      tray.current?.querySelector<HTMLButtonElement>(
+        ".multi-part-card:not(:disabled)",
+      ) ??
+      document.querySelector<HTMLButtonElement>(
+        `.multi-part-box[data-blank="${filled}"]`,
+      );
+    next?.focus();
+  }, [value]);
   const chosen = draftChoices(response, value);
   const rows = cardRows(response);
   const empty = (b: MultiPartBlank) => chosen[b.id] === undefined;
@@ -197,11 +221,17 @@ function CardEquation({
   const targetIn = (row: (typeof rows)[number]) =>
     current && row.blanks.includes(current) ? current : row.blanks.find(empty);
   const total = response.blanks.length;
-  const place = (row: (typeof rows)[number], optionId: string) => {
+  const place = (
+    row: (typeof rows)[number],
+    optionId: string,
+    card: HTMLButtonElement,
+  ) => {
     const box = targetIn(row);
     if (locked || !box) return;
+    if (document.activeElement === card) refocus.current = box.id;
     onChange(chooseOption(response, value, box.id, optionId));
-    setSelected(null);
+    // A box aimed at in another row stays aimed at.
+    if (box.id === selected) setSelected(null);
   };
   const box = (blank: MultiPartBlank) => {
     const n = response.blanks.indexOf(blank) + 1;
@@ -284,7 +314,7 @@ function CardEquation({
             .replace(/\s*\n\s*/g, ". "),
         )}
       </p>
-      <div className="multi-part-tray">
+      <div className="multi-part-tray" ref={tray}>
         {rows.map((row, r) => (
           <div
             key={r}
@@ -305,7 +335,7 @@ function CardEquation({
                   data-used={used ? "" : undefined}
                   disabled={locked || used || !target}
                   aria-label={`${spokenMath(o.label)}${used ? ", placed" : target ? `, place in box ${response.blanks.indexOf(target) + 1}` : ""}`}
-                  onClick={() => place(row, o.id)}
+                  onClick={(event) => place(row, o.id, event.currentTarget)}
                 >
                   <span className="multi-part-card-label" aria-hidden="true">
                     <MathText text={o.label} />

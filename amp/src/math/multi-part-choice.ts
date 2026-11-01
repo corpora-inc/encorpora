@@ -153,6 +153,8 @@ export function responseForClient<T extends { response: unknown }>(
     response: {
       ...rest,
       layout: "inline",
+      // The cards wording ("Put a card in each box") fits pickers no more.
+      label: "Choose an option for each gap",
       sentence: rest.sentence?.map((part) =>
         "text" in part ? { text: lineBreaksJoined(part.text) } : part,
       ),

@@ -372,6 +372,20 @@ try {
           `${tag}: the card is back in the tray`,
         );
         assert.equal(await box(page, 0).getAttribute("data-current"), "");
+        // A card from another row fills its own row's box; the aimed box
+        // stays aimed at.
+        const other = response.blanks.findIndex(
+          (b) => !rowOf(0).blanks.includes(b),
+        );
+        if (other >= 0) {
+          await press(page, card(page, response, other, plan[other]!), touch);
+          assert.notEqual(await shown(page, other), "", `${tag}: other row`);
+          assert.equal(
+            await box(page, 0).getAttribute("data-current"),
+            "",
+            `${tag}: the aimed box is still next`,
+          );
+        }
 
         if (plan.length >= 3) {
           // Aim at the last box first: the next card goes there.
@@ -397,6 +411,16 @@ try {
           if (i === 1 && width === 1280) {
             await target.focus();
             await page.keyboard.press("Enter");
+            // The placed card is disabled; focus moves on, never to <body>.
+            assert.ok(
+              await page.evaluate(
+                () =>
+                  document.activeElement?.matches(
+                    ".multi-part-card:not(:disabled), .multi-part-box",
+                  ) ?? false,
+              ),
+              `${tag}: keyboard focus stays in the problem`,
+            );
           } else await press(page, target, touch);
           assert.notEqual(
             await shown(page, i),
