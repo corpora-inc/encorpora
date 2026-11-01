@@ -119,7 +119,8 @@ export function generateRightTriangleProblem(
     response = { kind: "number", label: "Missing leg length in centimeters" };
     hint = `The ${H} cm side is the hypotenuse, opposite the right angle. Write $x^2 + ${K}^2 = ${H}^2$, subtract $${K}^2$ from $${H}^2$, then find which two tenths the square root lies between.`;
     explanation = [
-      `Let $x$ be the missing leg length in centimeters. The Pythagorean theorem gives $x^2 + ${K}^2 = ${H}^2$.`,
+      `In a right triangle, the legs are the two sides that form the right angle. The hypotenuse is the longest side, across from the right angle.`,
+      `The Pythagorean theorem says leg² + leg² = hypotenuse². Let $x$ be the missing leg in centimeters: $x^2 + ${K}^2 = ${H}^2$.`,
       `$${H}^2 = ${exactDecimal(hypotenuse ** 2, 100)}$ and $${K}^2 = ${exactDecimal(known ** 2, 100)}$, so $x^2 = ${exactDecimal(hypotenuse ** 2, 100)} - ${exactDecimal(known ** 2, 100)} = ${leg2}$.`,
       `$${low}^2 \\le ${leg2} < ${high}^2$, so $x$ is between ${low} and ${high}. The midpoint is ${mid}, and $${mid}^2 = ${midSquare}$.`,
       `Since ${leg2} is ${up ? "greater" : "less"} than ${midSquare}, $x$ is ${up ? "above" : "below"} ${mid}. The missing leg is about ${answer} cm.`,
@@ -134,9 +135,10 @@ export function generateRightTriangleProblem(
     response = { kind: "number", label: "Missing leg length in centimeters" };
     hint = `The ${c} cm side is the hypotenuse, opposite the right angle. Write x² + ${known}² = ${c}², then subtract ${known}² from ${c}².`;
     explanation = [
-      `Let $x$ be the missing leg length in centimeters. The Pythagorean theorem gives x² + ${known}² = ${c}².`,
+      `In a right triangle, the legs are the two sides that form the right angle. The hypotenuse is the longest side, across from the right angle.`,
+      `The Pythagorean theorem says leg² + leg² = hypotenuse². Let $x$ be the missing leg in centimeters: x² + ${known}² = ${c}².`,
       `Square the known lengths: ${known}² = ${known} × ${known} = ${known * known} and ${c}² = ${c} × ${c} = ${c * c}.`,
-      `Subtract ${known * known} from both sides: x² = ${c * c} − ${known * known} = ${missing * missing}.`,
+      `Subtract ${known * known} from both sides, so the equation stays balanced: x² = ${c * c} − ${known * known} = ${missing * missing}.`,
       `Since ${missing} × ${missing} = ${missing * missing} and a length is positive, x = ${missing}. The missing leg is ${missing} cm long.`,
       `Check: ${missing}² + ${known}² = ${missing * missing} + ${known * known} = ${c * c} = ${c}².`,
     ];
@@ -163,6 +165,7 @@ export function generateRightTriangleProblem(
     response = { kind: "choice", label: "Choose one classification", options };
     hint = `The longest side is ${c} cm. Compare ${c}² with ${a}² + ${b}²: the triangle is right exactly when they are equal.`;
     explanation = [
+      `A triangle is right exactly when the squares of its two shorter sides add to the square of its longest side. Squaring a number means multiplying it by itself.`,
       `The longest side is ${c} cm. If the triangle were right, this side would be its hypotenuse.`,
       `Square the other two lengths and add: ${a}² + ${b}² = ${a * a} + ${b * b} = ${a * a + b * b}.`,
       `Square the longest length: ${c}² = ${c} × ${c} = ${c * c}.`,
@@ -176,8 +179,8 @@ export function generateRightTriangleProblem(
         .map((option) => [
           option.id,
           category === 0
-            ? "The sum of the two smaller squares equals the largest square. That equality guarantees a right angle opposite the longest side."
-            : "Use the longest side for the square on its own. The two results are unequal, so the triangle cannot have a right angle.",
+            ? `The two smaller squares add to the largest square: ${a * a} + ${b * b} = ${c * c}. That equality guarantees a right angle across from the ${c} cm side.`
+            : `A right triangle needs ${a}² + ${b}² to equal ${c}², with the longest side squared on its own. Here ${a * a + b * b} ≠ ${c * c}, so there is no right angle.`,
         ]),
     );
   }

@@ -109,20 +109,25 @@ export const congruentFourths = chainFamily({
         "is cut into 4 parts that are not all the same size, so a shaded part is not one fourth of the whole",
     };
     const oddLetter = letters[at("odd")]!;
+    const oddPick: Record<Odd, string> = {
+      thirds: `Figure ${oddLetter} has 1 part shaded, but it is cut into only 3 equal parts. 1 of 3 equal parts is one third, not one fourth.`,
+      "two-fourths": `Figure ${oddLetter} is cut into 4 equal parts, but 2 of them are shaded. That is two fourths, not one fourth.`,
+      unequal: `Figure ${oddLetter} has 4 parts with 1 shaded, but the parts are not the same size. Fourths must be 4 equal parts.`,
+    };
     const key = pair(at("fourth-a"), at("fourth-b"));
     const options = [
       { label: key, correct: true as const },
       {
         label: pair(at("fourth-a"), at("odd")),
-        feedback: `Figure ${oddLetter} ${oddWhy[m.odd]}.`,
+        feedback: oddPick[m.odd],
       },
       {
         label: pair(at("fourth-b"), at("odd")),
-        feedback: `Figure ${oddLetter} ${oddWhy[m.odd]}.`,
+        feedback: oddPick[m.odd],
       },
       {
         label: "None of the pairs",
-        feedback: `Two of the ${m.shape}s each show one fourth shaded. Check how many equal parts each has and how many are shaded.`,
+        feedback: `Equal parts can have different shapes, such as strips or triangles, and still be fourths. Two of the ${m.shape}s are each cut into 4 equal parts with 1 shaded.`,
       },
     ];
     const ordered = [
@@ -137,6 +142,7 @@ export const congruentFourths = chainFamily({
         `One fourth is 1 of 4 equal parts of the whole. Equal parts can be cut in different ways and still be fourths of same-size ${m.shape}s.`,
         `Figures ${key} are each cut into 4 equal parts with 1 shaded.`,
         `Figure ${oddLetter} ${oddWhy[m.odd]}.`,
+        `So figures ${key} each show one fourth shaded.`,
       ],
     });
     return (

@@ -244,8 +244,8 @@ const article = (word: string) => (/^[aeiou]/.test(word) ? "an" : "a");
 /** "A square", "An oval": the sentence-initial article and noun. */
 const An = (word: string) => `${/^[aeiou]/.test(word) ? "An" : "A"} ${word}`;
 const sides: Record<FlatName, string> = {
-  circle: "one curved edge and no corners",
-  oval: "one curved edge and no corners",
+  circle: "one curved edge, equally round all the way around, and no corners",
+  oval: "one curved edge, longer one way than the other, and no corners",
   triangle: "3 straight sides and 3 corners",
   square: "4 equal straight sides and 4 square corners",
   rectangle: "4 straight sides and 4 square corners",
@@ -598,7 +598,8 @@ export function generateShapeProblem(
           "Count the straight sides once around. Turning the shape does not change the count.",
       }[target as "circle" | "triangle" | "square" | "rectangle" | "hexagon"];
       explanation = [
-        `The shape has ${sides[target]}.`,
+        `A flat shape is named by its sides and corners, not by its size or which way it is turned.`,
+        `Count once around: the shape has ${sides[target]}.`,
         `A shape with ${sides[target]} is ${article(target)} ${target}, whichever way it is turned.`,
       ];
       // A square is also a rectangle, so a square never offers "rectangle".
@@ -903,8 +904,10 @@ export function generateShapeProblem(
       prompt = `Which piece fills the empty space to complete the ${design.result}? A piece may be turned.`;
       hint = `The empty space has ${local.length} sides. Find the piece with ${local.length} sides of the same lengths, then check it is not bigger, smaller or stretched.`;
       explanation = [
+        `A piece fills a gap only if it has the same shape and the same size. Turning a piece does not change either.`,
         `The empty space is ${article(gapName)} ${gapName}.`,
-        `Piece ${right} is the same ${gapName}, turned. It fits the gap exactly and completes the ${design.result}.`,
+        `Piece ${right} is the same ${gapName}, turned. It fits the gap exactly, with no gaps or overlaps.`,
+        `Piece ${right} completes the ${design.result}.`,
       ];
       keepOrder = true;
       choices = pieces.map((p, i) =>
@@ -937,8 +940,9 @@ export function generateShapeProblem(
       });
       hint = `Start at the highest corner and ${corners ? "touch each corner" : "trace each side"} once as you go around; stop when you are back at the start.${inward ? " Corners that point inward count too." : ""}`;
       explanation = [
+        `A side is a straight edge of the shape. A corner, or vertex, is where two sides meet.`,
         `Going around the shape once, there are ${n} straight sides.`,
-        `Each side ends at a corner, so a closed shape has as many corners as sides: ${n}.`,
+        `Each straight side ends at a corner, so a closed shape made of straight sides has as many corners as sides: ${n}.`,
         corners ? `The shape has ${n} corners.` : `The shape has ${n} sides.`,
       ];
       break;

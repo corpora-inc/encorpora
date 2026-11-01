@@ -224,6 +224,7 @@ export const congruentFigures = chainFamily({
           `Congruent figures can be matched exactly by ${m.move === "turn" ? "turning" : "flipping and turning"} one of them: same side lengths, same angles.`,
           `Figures ${letters[at("target")]} and ${letters[at("copy")]} match exactly; one is a ${m.move === "turn" ? "turn" : "flip"} of the other.`,
           `Figure ${letters[at("bigger")]} has the same shape but is ${size}, and figure ${letters[at("changed")]} has a corner moved, so neither is congruent to the others.`,
+          `So figures ${letters[at("target")]} and ${letters[at("copy")]} are congruent.`,
         ],
       })!,
       figure: { kind: "plane-shapes" as const, items },
@@ -681,6 +682,14 @@ function choiceFrom(
   sides: number[],
 ) {
   const pieces = names.length;
+  const named = (label: string) =>
+    [...label.matchAll(/(a|\d) (?:triangle|square|rectangle|trapezoid)/g)]
+      .map(([, n]) => (n === "a" ? 1 : Number(n)))
+      .reduce((sum, n) => sum + n, 0);
+  const why = (w: string) =>
+    named(w) !== pieces
+      ? `"${w}" names ${named(w)} ${named(w) === 1 ? "piece" : "pieces"}, but the figure has ${pieces}. Count each colored piece once.`
+      : `"${w}" has the right number of pieces, but the wrong kinds. Name each piece by its sides: a triangle has 3, and a rectangle has 4 with square corners.`;
   const s = choiceSurface(r, {
     prompt:
       "A flat figure is cut along straight lines into pieces. The pieces are shown in different colors. What are the pieces?",
@@ -688,11 +697,12 @@ function choiceFrom(
       { label: answer, correct: true },
       ...wrong.map((w) => ({
         label: w,
-        feedback: `Count the pieces and their corners. The figure has ${pieces} ${pieces === 1 ? "piece" : "pieces"}, and each piece is named by its number of sides and its square corners, so ${w} does not match.`,
+        feedback: why(w),
       })),
     ],
     hint: `Count the pieces first: there are ${pieces}. Then count the sides of each piece, and look for square corners.`,
     explanation: [
+      `A flat shape is named by its sides and corners. Name each piece on its own.`,
       `There are ${pieces} pieces.`,
       names
         .map(

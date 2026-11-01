@@ -941,6 +941,7 @@ function identifyCase(r: Random): Case {
       options: [correct, ...distractors.map((d) => d[0])],
       feedback: Object.fromEntries(distractors),
       explanation: [
+        `A rigid motion moves a figure without changing its size or shape: a slide (translation), a flip (reflection) or a turn (rotation). The image is the figure after the move.`,
         `Compare each vertex with its image: ${pts.map((p, i) => `${pt(p)} → ${pt(images[i]!)}`).join(", ")}.`,
         motion.kind === "translate"
           ? `Every $x$-coordinate changes by ${n(motion.dx)} and every $y$-coordinate changes by ${n(motion.dy)}, so each point slides the same distance in the same direction.`
@@ -1166,6 +1167,7 @@ function similarCase(r: Random): Case {
       prompt: `Triangle $${first}$ is similar to triangle $${second}$, with ${list([...first].map((v, i) => `$${v}$ corresponding to $${second[i]}$`))}. In ${unitWords[unit][0]}, ${list(given)}. What is ${sideName(second, asked)}, in ${unitWords[unit][0]}?`,
       answer: askedValue,
       explanation: [
+        `Similar triangles have the same shape: matching angles are equal, and every side is multiplied by the same number, the scale factor.`,
         `Corresponding sides join corresponding vertices: ${correspond}.`,
         `The known pair ${sideName(first, known)} and ${sideName(second, known)} gives the scale factor from ${first} to $${second}$: ${knownImage} ÷ ${sides[known]} = ${k}.`,
         `Every side of $${second}$ is ${k} times its corresponding side of $${first}$, so $${sideName(second, asked)} = ${sideName(first, asked)} × ${k} = ${sides[asked]} × ${k} = ${askedValue}$.`,
