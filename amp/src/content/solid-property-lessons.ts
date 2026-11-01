@@ -4,14 +4,31 @@ import { chainLesson } from "./chain-lesson-kit";
 
 export const solidPropertyMethods: Record<string, ProblemMethod> = {
   "solid-property-select": {
-    goal: "Select the prisms and pyramids that have a stated property by checking each solid's faces, edges and bases.",
+    goal: "Select the prisms and pyramids with a stated property by checking their faces, edges and bases.",
     intuition:
-      "A solid has flat faces that meet along edges, and edges meet at corners called vertices. A prism has two bases that are the same size and shape and parallel to each other, joined by rectangular sides. A pyramid has one base, and its other faces are triangles that meet at one point.",
-    terms: ["face-solid", "edge", "base-shape", "congruent"],
+      "A solid shape is a shape that takes up space, like a box. A face is one flat surface of a solid. An edge is where two faces meet. A corner is a point where edges meet. It is called a vertex. Congruent means exactly the same size and shape. Parallel means running the same way and never meeting, like a floor and a ceiling. Sides are the straight parts of a flat shape's outline. A prism is a solid with two congruent, parallel ends, called bases. A triangle is a flat shape with 3 sides. A pyramid is a solid with one base and triangle faces that meet at one top corner.",
+    senses: {
+      solid: "solid-shape",
+      face: "face-solid",
+      edge: "edge",
+      base: "base-shape",
+      vertex: "vertex",
+      side: "side",
+      square: "square-shape",
+    },
+    terms: [
+      "face-solid",
+      "edge",
+      [
+        "base-shape",
+        "In a prism, the bases are the two matching ends. In a pyramid, the base is the face across from the top corner.",
+      ],
+      "congruent",
+    ],
     method: [
-      "Say what the property needs: a count of faces or edges, or a kind of face.",
-      "Check each solid in turn: for a count, count the faces or edges; for bases, say how many bases it has and what shapes its other faces are.",
-      "Select exactly the solids that meet the property, and check that you have selected the stated number.",
+      "Read what the property needs: a number of faces or edges, or a kind of face.",
+      "Check each solid. Count its faces or edges from its base. A prism has 2 more faces than its base has sides, and a pyramid has 1 more.",
+      "Select exactly the solids that have the property. Check that you chose the number asked for.",
     ],
     watch:
       "Check every solid. A solid with the right kind of bases can still have the wrong number of faces or edges.",
@@ -20,53 +37,68 @@ export const solidPropertyMethods: Record<string, ProblemMethod> = {
 
 export const solidPropertyPrinciples: Record<string, string> = {
   "solid-property-select":
-    "A prism has two congruent parallel bases and rectangular side faces. A pyramid has one base and triangular side faces that meet at one vertex. An $n$-sided prism has $n+2$ faces, $3n$ edges and $2n$ vertices; an $n$-sided pyramid has $n+1$ faces, $2n$ edges and $n+1$ vertices.",
+    "A prism has two congruent, parallel bases joined by side faces, one for each side of a base. A pyramid has one base and triangle faces that meet at one vertex. If the base has $n$ sides, a prism has $n + 2$ faces, $3n$ edges and $2n$ vertices. A pyramid has $n + 1$ faces, $2n$ edges and $n + 1$ vertices. Here $3n$ means 3 times $n$.",
 };
 
 export const solidPropertyLessons = [
-  chainLesson({
-    id: "solid-property-select-lesson",
-    title: "Faces, edges and bases of prisms and pyramids",
-    summary:
-      "Choose the solids with a stated property by checking bases, faces and edges.",
-    templateIds: ["solid-property-select"],
-    objectives: [
-      "Tell a prism from a pyramid by their bases and side faces.",
-      "Count the faces and edges of a prism or a pyramid from its base.",
-    ],
-    openingTitle: "Bases and side faces",
-    opening: [
-      "A solid is a shape with faces that are flat surfaces. A prism has two bases of the same size and shape that are parallel, joined by rectangles. A pyramid has one base, and its side faces are triangles that meet at one point.",
-      "The base tells you the counts. A triangular prism has 2 triangle bases and 3 rectangles, so 5 faces. A square pyramid has 1 square base and 4 triangles, so 5 faces.",
-    ],
-    example: {
-      prompt:
-        "Does a pentagonal pyramid have two congruent parallel faces, and how many faces does it have?",
-      steps: [
-        "A pyramid has one base, so it does not have two parallel bases.",
-        "The base is a pentagon with 5 sides, so there are 5 triangular side faces.",
-        "The faces are 1 base and 5 triangles: 6 faces. It has no two congruent parallel faces.",
+  {
+    ...chainLesson({
+      id: "solid-property-select-lesson",
+      title: "Faces, edges and bases of prisms and pyramids",
+      summary:
+        "A solid shape is a shape that takes up space, like a box or a tent. A face is one flat surface of a solid. An edge is where two faces meet, like the fold on a box. You can check a solid by counting its faces and edges.",
+      templateIds: ["solid-property-select"],
+      objectives: [
+        "Tell a prism from a pyramid by their bases and side faces.",
+        "Count the faces and edges of a prism or a pyramid from its base.",
       ],
-      answer: "No; it has 6 faces",
+      openingTitle: "Bases and side faces",
+      opening: [
+        "Congruent means exactly the same size and shape. Parallel means running the same way and never meeting, like a floor and a ceiling. A side is one straight part of a flat shape's outline. A corner is where two sides meet.",
+        "A prism is a solid with two congruent, parallel ends, called bases. Think of the two ends of a box. Flat side faces join the two bases, one for each side of a base.",
+        "A triangle is a flat shape with 3 sides. A pyramid is a solid with just one base. Its other faces are triangles. The triangles all meet at one top corner. A corner of a solid is called a vertex.",
+        "The base tells you the counts. A triangular prism has 2 triangle bases and 3 side faces, so it has 2 + 3 = 5 faces. A square is a flat shape with 4 equally long sides and 4 square corners. A square pyramid has 1 square base and 4 triangles, so it has 1 + 4 = 5 faces.",
+      ],
+      example: {
+        prompt:
+          "A pentagon is a flat shape with 5 sides. Does a pentagonal pyramid have two congruent parallel faces? How many faces does it have?",
+        steps: [
+          "A pyramid has only one base. Its triangles all lean in to meet at the top corner. So no two faces are parallel, and the answer to the first part is no.",
+          "The base is a pentagon, with 5 sides. One triangle stands on each side of the base, so there are 5 triangle faces.",
+          "Add the base: 1 + 5 = 6 faces.",
+        ],
+        answer: "No; it has 6 faces",
+      },
+      methodTitle: "Check each solid against the property",
+      method: [
+        "Faces: a prism has 2 bases plus one side face for each side of a base. A triangular prism has 2 + 3 = 5 faces. A pyramid has 1 base plus one triangle for each side of the base. A square pyramid has 1 + 4 = 5 faces.",
+        "Edges: a prism has one edge along each side of each base. It also has one edge joining each pair of matching corners. A triangular prism has 3 + 3 + 3 = 9 edges. A pyramid has one edge along each side of the base. It also has one edge from each base corner up to the tip. A square pyramid has 4 + 4 = 8 edges.",
+        "Check each solid in turn. Select exactly as many solids as the question asks for.",
+      ],
+      formalTitle: "Prisms and pyramids",
+      formal: [
+        "A prism has two congruent, parallel bases. A parallelogram is a four-sided shape whose opposite sides are parallel. A prism's side faces are parallelograms. A rectangle is a four-sided shape with 4 square corners. In a prism like a box, the side faces are rectangles. A pyramid has one base. Its side faces are triangles that meet at one vertex.",
+        "Let $n$ stand for the number of sides of the base. A prism has $n + 2$ faces, $3n$ edges and $2n$ vertices. Here $3n$ means 3 times $n$. A pyramid has $n + 1$ faces, $2n$ edges and $n + 1$ vertices.",
+      ],
+      pitfalls: [
+        "A pyramid never has two parallel faces. It has only one base.",
+        "Count every face. Include the base, or both bases for a prism.",
+        "Select exactly as many solids as the question asks for.",
+      ],
+      parentGuide:
+        "Use a cereal box and a toy pyramid. Ask your learner how many flat faces each has. Then ask which faces match in size and face each other.",
+    }),
+    senses: {
+      solid: "solid-shape",
+      face: "face-solid",
+      edge: "edge",
+      base: "base-shape",
+      vertex: "vertex",
+      side: "side",
+      square: "square-shape",
     },
-    methodTitle: "Check each solid against the property",
-    method: [
-      "A prism: 2 congruent parallel bases, so a base with $n$ sides gives $n+2$ faces and $3n$ edges. A pyramid: 1 base, so $n+1$ faces and $2n$ edges.",
-      "Check each solid in turn and select exactly the number the question asks for.",
-    ],
-    formalTitle: "Prisms and pyramids",
-    formal: [
-      "A prism has two congruent, parallel bases and parallelogram side faces. A pyramid has one base and triangular side faces that meet at a vertex.",
-      "For an $n$-sided base, a prism has $n+2$ faces, $3n$ edges and $2n$ vertices; a pyramid has $n+1$ faces, $2n$ edges and $n+1$ vertices.",
-    ],
-    pitfalls: [
-      "Choosing a pyramid for two parallel faces: a pyramid has only one base.",
-      "Counting only the side faces and leaving out the base or bases.",
-      "Choosing more or fewer solids than the question asks for.",
-    ],
-    parentGuide:
-      "Use a box and a tent: ask your learner how many flat faces each has and which faces are the same size.",
-  }),
+    noLink: ["opposite"],
+  },
 ];
 
 export const solidPropertyFacetMappings: FacetMapping[] = [

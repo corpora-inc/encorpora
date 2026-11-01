@@ -7,11 +7,19 @@ export const shapeLessons: Lesson[] = [
     id: "naming-shapes",
     title: "Naming flat and solid shapes",
     summary:
-      "Name a shape from its sides, corners, and surfaces, even when it is turned.",
+      "Every shape has a name. A flat shape is a shape you can draw on paper. A side is one straight part of a flat shape's outline. A corner is where two sides meet. To name a flat shape, count its sides and corners. Turning a shape or making it bigger does not change its name.",
     templateIds: ["name-flat-shape", "find-named-shape", "name-solid-shape"],
+    senses: {
+      side: "side",
+      square: "square-shape",
+      face: "face-solid",
+      solid: "solid-shape",
+      cube: "cube",
+    },
+    noLink: ["change"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Name circles, triangles, squares, rectangles and hexagons in any size or orientation.",
+      "Name circles, triangles, squares, rectangles and hexagons of any size, turned any way.",
       "Name cubes, cones, cylinders and spheres, and tell a flat shape from a solid one.",
     ],
     sections: [
@@ -19,22 +27,27 @@ export const shapeLessons: Lesson[] = [
         stage: "intuition",
         title: "Turn it and keep its name",
         paragraphs: [
-          "A square can stand flat or on one corner. It still has four equal straight sides and four square corners. Notice those features, rather than the direction the shape faces, when naming it.",
+          "A square is a flat shape with 4 sides that are all equally long. Its corners are square corners, like the corners of a sheet of paper.",
+          "Now turn the square so it stands on one corner. It looks like a diamond, but nothing about it changed. It still has 4 equally long sides. It still has 4 square corners. So it is still a square.",
+          "A shape's name comes from its sides and corners. Which way it is turned does not matter.",
         ],
       },
       {
         title: "Flat shapes",
         paragraphs: [
-          "A triangle has 3 straight sides and 3 corners. A rectangle has 4 straight sides and 4 square corners; a square is a rectangle whose 4 sides are all the same length. A hexagon has 6 straight sides. A circle has one curved edge and no corners.",
-          "Turning a shape or making it bigger does not change its name. A square standing on a corner is still a square.",
+          "Look at the picture. Each shape has its name under it.",
+          "A triangle has 3 straight sides and 3 corners. A rectangle has 4 straight sides and 4 square corners. A square is a rectangle whose 4 sides are all equally long. A hexagon has 6 straight sides and 6 corners.",
+          "A circle is a perfectly round flat shape. Every spot on its outline is just as far from the middle. It has no straight sides and no corners. An oval is round too, but it is stretched, so it is not a circle.",
+          "In the picture, one square stands on a corner. It is still a square. A bigger or smaller triangle is still a triangle.",
         ],
         illustration: "flat-shape-names",
       },
       {
         title: "Solid shapes",
         paragraphs: [
-          "A flat shape lies on paper. A solid shape takes up space and can be picked up. Its flat surfaces are faces.",
-          "A cube has 6 square faces. A cylinder has two circle faces joined by a curved surface. A cone has one circle face and a point. A sphere is round every way, like a ball.",
+          "A solid shape is a shape that is not flat. It takes up space, like a block, a can or a ball. You cannot draw all of it flat on paper.",
+          "A face is one flat part of a solid shape's outside. You could set a box down on any of its faces. Some solid shapes also have a curved surface. A curved surface is a part that bends, like the outside of a can.",
+          "A cube is a solid shape like a toy block. It has 6 square faces, all the same size. A cylinder is a solid shape like a can. It has 2 flat circle faces with a curved surface wrapped around them. A cone is a solid shape like a party hat. It has 1 flat circle face, a curved surface and a pointed tip. A sphere is a solid shape like a ball. It is perfectly round all over, with no flat faces.",
         ],
         illustration: "solid-shape-names",
       },
@@ -42,122 +55,131 @@ export const shapeLessons: Lesson[] = [
     closingSections: [
       {
         stage: "formal",
-        title: "Shape properties",
+        title: "What a shape's name depends on",
         paragraphs: [
-          "A flat shape is classified by properties of its boundary, such as straight sides and corners. A solid is classified by its surfaces and edges. Rotating or resizing a shape without distortion preserves these defining properties.",
+          "A flat shape is named by its sides and corners. Count how many there are. Check whether the sides are equally long and whether the corners are square.",
+          "A solid shape is named by its faces and curved surfaces. Look at what shape they are and how many. A cone's pointed tip is a clue too. Turning a shape keeps all of these the same. So does making it bigger or smaller without stretching it. So the shape keeps its name.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "A shape has 4 straight sides of the same length and 4 square corners. It stands on one corner. What is it?",
+        "A shape has 4 straight sides that are all equally long. It has 4 square corners. It stands on one corner. What is it?",
       steps: [
-        "4 straight sides and 4 square corners make a rectangle.",
-        "All 4 sides are the same length, so it is a square.",
-        "Standing on a corner does not change the name.",
+        "Count first: 4 straight sides and 4 square corners. A shape like that is called a rectangle.",
+        "All 4 sides are equally long. A rectangle with 4 equally long sides is a square.",
+        "Standing on a corner only turns the shape. Turning does not change its sides or its corners, so it is still a square.",
       ],
       answer: "a square",
     },
     pitfalls: [
-      "A square turned on its corner is not a new shape; it is still a square.",
-      "A circle is flat; a sphere is solid. A square is flat; a cube is solid.",
+      "A square turned onto one corner is still a square. Only its direction changed.",
+      "Flat or solid? A circle is flat and a sphere is solid. A square is flat and a cube is solid.",
     ],
     parentGuide:
-      "Hunt for shapes at home: a door is a rectangle, a can is a cylinder, a ball is a sphere. Turn a square cracker on its corner and ask whether it is still a square.",
+      "Go on a shape hunt at home. A door is a rectangle, a can is a cylinder and a ball is a sphere. Turn a square cracker onto one corner and ask: is it still a square? Why?",
   },
   {
     id: "composing-shapes",
     title: "Putting shapes together",
     summary:
-      "Joined pieces make a new shape whose name comes from its outside boundary.",
+      "You can join small shapes to make a bigger shape. Fit them together with no gaps and no overlaps. An overlap is where one piece covers part of another. The new shape's name comes from its outline, the border all the way around the outside. A side is one straight part of that outline. A corner is where two sides meet.",
     templateIds: ["compose-shape-name", "complete-the-shape"],
+    senses: { side: "side", square: "square-shape" },
+    noLink: ["part", "whole"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Name the larger shape that smaller shapes make together.",
-      "Choose the piece that completes a shape, turning it if needed.",
+      "Name the bigger shape that smaller shapes make together.",
+      "Choose the piece that fills a gap in a shape, turning it if needed.",
     ],
     sections: [
       {
         stage: "intuition",
-        title: "Look at the new outside edge",
+        title: "Look at the new outline",
         paragraphs: [
-          "Join two flat shapes along an edge. The shared edge is inside the new figure. Trace only the boundary that remains outside to see what larger shape you made.",
+          "A square is a flat shape with 4 equally long sides and 4 square corners. A paper napkin is a square. A triangle is a flat shape with 3 straight sides and 3 corners. Cut a square of paper from one corner to the far corner. You get two matching triangles. Slide them back together until their longest sides touch.",
+          "The sides that touch are now inside the new shape. They make a seam, the place where two pieces meet. Trace only around the outside with your finger. You trace 4 equally long sides and 4 square corners. You made the square again.",
         ],
       },
       {
         title: "Trace the outside",
         paragraphs: [
-          "When shapes are joined with no gaps and no overlaps, the lines inside are only seams. The new shape is the outside edge: count its sides and corners.",
-          "Two triangles can make a square, a rectangle or a larger triangle. Six triangles can make a hexagon.",
+          "When pieces fit with no gaps and no overlaps, the marks inside are only seams. The new shape is everything inside its outline. Count the outline's sides and corners to name it.",
+          "Look at the picture. Two triangles make a square. Six triangles make a hexagon, a flat shape with 6 straight sides and 6 corners.",
+          "Turned another way, the same two triangles make a bigger triangle instead. The pieces decide what shapes you can make. A rectangle has 4 straight sides and 4 square corners. Two triangles cut from a long rectangle can make that rectangle again.",
         ],
         illustration: "compose-outline",
       },
       {
         title: "Fill a gap",
         paragraphs: [
-          "The piece that fills a gap has the same number of sides, the same side lengths and the same corners as the empty space.",
-          "A piece can be turned to fit. A piece of the right kind but the wrong size does not fit.",
+          "Sometimes a shape has a gap, an empty space where a piece is missing. The piece that fills it must match the gap. It needs the same number of sides and the same corners. Its sides must be just as long as the gap's sides.",
+          "You may turn a piece to make it fit. A piece of the right kind but the wrong size leaves a gap or sticks out.",
         ],
       },
     ],
     closingSections: [
       {
         stage: "formal",
-        title: "The boundary of a composition",
+        title: "The outline of a joined shape",
         paragraphs: [
-          "When pieces join without gaps or overlaps, their shared interior edges are not part of the new figure's boundary. The outside boundary determines the composed shape's sides and corners.",
+          "Pieces can join with no gaps and no overlaps. Then the sides they share are inside the new shape. They do not belong to its outline. The outline alone gives the new shape's sides and corners, so it gives the shape's name.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "Six triangles meet at a point in the middle. What shape is the outside edge?",
+        "Six matching triangles, each with 3 equally long sides, fit around one spot in the middle with no gaps. What shape is the outline?",
       steps: [
-        "Each triangle gives one side to the outside edge.",
-        "Around the outside there are 6 straight sides and 6 corners.",
-        "The six triangles make a hexagon.",
+        "Each triangle has one corner at the middle spot. The 2 sides next to that corner touch the neighboring triangles, so they are seams inside.",
+        "Each triangle's third side is on the outside. Count around the outside: 6 straight sides, with a corner where each pair of neighbors meets.",
+        "A flat shape with 6 straight sides and 6 corners is called a hexagon. So the six triangles make a hexagon.",
       ],
       answer: "a hexagon",
     },
     pitfalls: [
-      "Name the whole shape, not the pieces: two triangles can make a square.",
-      "A piece that is the right kind but the wrong size leaves a gap or sticks out.",
+      "Name the whole new shape, not the pieces. Two triangles can make a square.",
+      "A piece of the right kind but the wrong size leaves a gap or sticks out.",
     ],
     parentGuide:
-      "Cut a square of paper along its diagonal and ask what the two pieces are, then what they make together again. Try making a larger triangle or a rectangle from the same pieces.",
+      "Fold a square of paper from one corner to the far corner, then cut along the fold. Ask what the two pieces are, and what they make together. Then try making a bigger triangle from the same two pieces.",
   },
   {
     id: "shape-attributes",
     title: "What makes a shape a triangle",
     summary:
-      "A triangle may change size or direction, but it keeps three straight sides and three corners.",
+      "A side is one straight part of a flat shape's outline. A corner is where two sides meet. A triangle is a flat shape with 3 sides and 3 corners. A triangle can be big or small, tall or wide, or turned any way. It is still a triangle, because it still has 3 sides and 3 corners.",
     templateIds: ["count-sides-corners", "defining-attribute"],
+    senses: { side: "side", vertex: "vertex" },
+    noLink: ["change"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Count the sides and corners (vertices) of a closed straight-sided shape.",
-      "Tell defining attributes from attributes that can change.",
+      "Count the sides and corners (vertices) of a closed shape with straight sides.",
+      "Tell defining attributes, which every shape of a kind has, from features that can change.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Ask what has to stay the same",
         paragraphs: [
-          "A triangle can be tall, wide, small, or turned over. It remains a triangle because it keeps three straight sides meeting at three corners. Those are the features that define it.",
+          "Think of three triangles. One is tall and thin. One is short and wide. One is upside down. They look different. Count each one's sides: 3, 3 and 3. Count the corners: 3, 3 and 3.",
+          "A defining attribute is a feature every shape of one kind must have. Having 3 straight sides is a defining attribute of a triangle. Size and direction are not. They can change, and the shape is still a triangle.",
         ],
       },
       {
         title: "Count once around",
         paragraphs: [
-          "Start at one corner and go around the shape, counting each straight side, until you are back at the start. Each side ends at a corner, so a closed shape has as many corners as sides.",
-          "A corner is also called a vertex. The plural is vertices.",
+          "Look at the picture. Start at the dot and go around the shape. Count each straight side as you pass it. Stop when you are back at the dot.",
+          "A closed shape is a shape whose outline has no gaps or openings. Each side ends at a corner, so a closed shape has as many corners as sides. The shape in the picture has 5 sides, so it has 5 corners.",
+          "Another name for a corner is a vertex. When there is more than one, we say vertices.",
         ],
         illustration: "count-around",
       },
       {
         title: "What can change, and what cannot",
         paragraphs: [
-          "Every triangle has exactly 3 straight sides and 3 corners. That is what makes it a triangle.",
-          "A triangle can be big or small, point any way, and be tall or wide. Its sides do not have to be the same length. None of these change what it is.",
+          "Every triangle has exactly 3 straight sides and 3 corners. Those are its defining attributes.",
+          "A triangle can be big or small. It can be turned any way, and it can be tall or wide. Its sides do not have to be equally long. None of these change what it is.",
         ],
       },
     ],
@@ -166,26 +188,26 @@ export const shapeLessons: Lesson[] = [
         stage: "formal",
         title: "Defining and changeable attributes",
         paragraphs: [
-          "A triangle is a closed flat figure with exactly three straight sides meeting at three vertices. Size, orientation, and side lengths can change while those defining attributes stay the same.",
+          "A triangle is a closed flat shape with exactly 3 straight sides. They meet at 3 corners, called vertices. Its size, its direction and how long each side is can all be different. Its defining attributes stay the same.",
         ],
       },
     ],
     workedExample: {
       prompt:
-        "One triangle is small and points down. Another is large and points up. Which of these is true of both: they have 3 sides, or they point up?",
+        "One triangle is small, with its tip at the bottom. Another is large, with its tip at the top. Which is true of both: they have 3 sides, or they have a tip at the top?",
       steps: [
-        "The first one points down, so pointing up is not true of both.",
-        "Both have exactly 3 straight sides and 3 corners.",
-        "Having 3 sides is true of every triangle.",
+        "The first triangle has its tip at the bottom. So having a tip at the top is not true of both.",
+        "Count the sides of each one. Both have exactly 3 straight sides and 3 corners.",
+        "Every triangle has 3 sides. That is a defining attribute, so it is true of both.",
       ],
       answer: "They have 3 sides.",
     },
     pitfalls: [
-      "Count a corner only where the edge turns, and stop when you are back at the start.",
-      "A triangle does not need a flat bottom or equal sides to be a triangle.",
+      "Count a corner only where the outline turns. Stop when you are back at the start.",
+      "A triangle does not need a flat bottom or equally long sides to be a triangle.",
     ],
     parentGuide:
-      "Make triangles from straws or sticks: long, short, thin, turned upside down. Ask each time whether it is still a triangle, and why.",
+      "Make triangles from straws or sticks: long, short, thin and upside down. Each time, ask whether it is still a triangle, and why.",
   },
 ];
 
@@ -199,92 +221,127 @@ const terms = {
 } satisfies Record<string, MethodTerm[]>;
 export const shapeMethods: Record<string, ProblemMethod> = {
   "name-flat-shape": {
-    goal: "Given one flat shape, name it.",
+    goal: "Name a flat shape by counting its sides and corners.",
+    intuition:
+      "A flat shape is a shape you can draw on paper. A side is one straight part of its outline. A corner is the point where two sides meet. A circle is a perfectly round shape with no sides. A square has 4 equally long sides and 4 square corners, like the corners of a page. Turning a shape does not change its name.",
+    senses: { side: "side", square: "square-shape" },
+    noLink: ["change", "edge", "part"],
     terms: terms.flat,
     method: [
-      "Is the edge curved with no corners? It is a circle.",
-      "Otherwise count the straight sides: 3 is a triangle, 6 is a hexagon.",
-      "For 4 sides with square corners: equal sides make a square, otherwise a rectangle.",
+      "Is the outline perfectly round, with no corners? Then it is a circle.",
+      "If not, count the straight sides. With 3 sides, it is a triangle. With 6 sides, it is a hexagon.",
+      "With 4 sides and 4 square corners, it is a square if all 4 sides are equally long. If they are not, it is a rectangle.",
     ],
-    watch: "Ignore size and direction: a tilted square is still a square.",
+    watch:
+      "Size and direction do not matter. A tilted square is still a square.",
   },
   "find-named-shape": {
-    goal: "Given a shape name, choose the one shape of that kind.",
+    goal: "Given a shape's name, choose the one shape of that kind.",
+    intuition:
+      "A side is one straight part of a flat shape's outline. A corner is the point where two sides meet. Each shape name means a set number of sides and corners. A hexagon is a shape with 6 sides and 6 corners. A circle is a perfectly round shape with no sides and no corners.",
+    senses: { side: "side", square: "square-shape" },
+    noLink: ["edge"],
     terms: terms.flat,
     method: [
-      "Say what the named shape must have, such as 6 straight sides.",
-      "Check each shape for exactly that.",
-      "Choose the one that has it, whatever its size or direction.",
+      "Say what the named shape must have, such as 6 straight sides for a hexagon.",
+      "Check each shape for exactly that number of sides and corners.",
+      "Choose the one that has it. Its size and direction do not matter.",
     ],
     watch:
-      "Near misses matter: a 5-sided shape is not a hexagon, and an oval is not a circle.",
+      "Count carefully. A shape with 5 sides is not a hexagon, and an oval, a stretched circle, is not a circle.",
   },
   "name-solid-shape": {
-    goal: "Given a solid shape, name it.",
+    goal: "Name a solid shape by looking at its faces and surfaces.",
+    intuition:
+      "A solid shape is a shape that is not flat, like a block or a ball. A face is one flat part of its outside. A curved surface is a part that bends, like the outside of a can. A circle is a perfectly round flat shape. A corner is where two sides meet. A square is a flat shape with 4 equally long sides and 4 square corners.",
+    senses: {
+      solid: "solid-shape",
+      face: "face-solid",
+      cube: "cube",
+      square: "square-shape",
+      edge: "edge",
+    },
+    noLink: ["side"],
     terms: terms.solid,
     method: [
-      "No flat faces at all: a sphere.",
-      "One circle face and a point: a cone. Two circle faces and a curved side: a cylinder.",
-      "Six square faces: a cube.",
+      "Is it perfectly round all over, with no flat faces? It is a sphere.",
+      "Does it have 1 flat circle face, a curved surface and a pointed tip? It is a cone.",
+      "Does it have 2 flat circle faces with a curved surface between them? It is a cylinder.",
+      "Does it have 6 square faces, all the same size? It is a cube.",
     ],
-    watch: "A cube's face is a square, but the cube itself is solid.",
+    watch: "A cube's faces are flat squares, but the cube itself is solid.",
   },
   "compose-shape-name": {
-    goal: "Given pieces fitted together, name the whole shape.",
+    goal: "Name the whole shape that fitted pieces make together.",
+    intuition:
+      "Pieces that fit with no gaps and no overlaps make one new shape. An overlap is where one piece covers another. A seam is a place inside where two pieces touch. The outline is the border around the outside. A side is one straight part of the outline. A corner is where two sides meet. A triangle is a shape with 3 sides and 3 corners.",
+    senses: { side: "side", square: "square-shape" },
+    noLink: ["edge", "whole"],
     terms: terms.compose,
     method: [
-      "Ignore the seams inside.",
-      "Trace the outside edge and count its sides and corners.",
-      "Name the shape the outside edge makes.",
+      "Skip the seams inside. They are not part of the outline.",
+      "Trace the outline and count its sides and corners.",
+      "Name the shape the outline makes, such as a hexagon for 6 sides.",
     ],
-    watch: "Name the whole, not the pieces.",
+    watch: "Name the whole shape, not the pieces inside it.",
   },
   "complete-the-shape": {
-    goal: "Given a shape with a gap, choose the piece that fills it.",
+    goal: "Choose the piece that fills the gap in a shape.",
+    intuition:
+      "A gap is the empty space where a piece is missing. A side is one straight part of the gap's border. A corner is where two sides meet. A square is a shape with 4 equally long sides and 4 square corners. The right piece has the same sides and corners as the gap, and the same size. You may turn it to make it fit.",
+    senses: { side: "side", square: "square-shape" },
+    noLink: ["edge"],
     terms: terms.compose,
     method: [
-      "Look at the gap: count its sides and compare their lengths.",
-      "Find the piece with the same sides and corners, turned if needed.",
-      "Check it is the same size as the gap.",
+      "Look at the gap. Count its sides and see which are long and which are short.",
+      "Find the piece with the same sides and corners. It may be turned.",
+      "Check that it is the same size as the gap.",
     ],
     watch:
-      "A piece of the right kind that is bigger, smaller or stretched does not fit.",
+      "A piece of the right kind that is bigger, smaller or stretched will not fit.",
   },
   "count-sides-corners": {
-    goal: "Given a closed straight-sided shape, count its sides or corners.",
+    goal: "Count the sides or corners of a closed shape with straight sides.",
+    intuition:
+      "A side is one straight part of a flat shape's outline. A corner is the point where two sides meet. Another name for a corner is a vertex. A closed shape is a shape whose outline has no gaps. In a closed shape, each side ends at a corner. So there are as many corners as sides.",
+    senses: { side: "side", vertex: "vertex" },
     terms: terms.flat,
     method: [
-      "Start at one corner.",
-      "Count each side as you go around.",
-      "Stop when you are back at the start; there are as many corners as sides.",
+      "Start at one corner and remember it.",
+      "Go around the shape, counting each side as you pass it.",
+      "Stop when you are back at the start. There are as many corners as sides.",
     ],
-    watch: "Count each side once: mark where you started.",
+    watch: "Count each side once. Mark where you started.",
   },
   "defining-attribute": {
-    goal: "Given several shapes of one kind, choose what is true of every shape of that kind.",
+    goal: "Choose the sentence that is true of every shape of one kind.",
+    intuition:
+      "A side is one straight part of a flat shape's outline. A corner is the point where two sides meet. A defining attribute is a feature every shape of one kind must have. A triangle is a shape with 3 sides and 3 corners, whatever its size or direction.",
+    senses: { side: "side", square: "square-shape" },
+    noLink: ["change"],
     terms: terms.flat,
     method: [
       "Test each sentence on every shape shown.",
-      "Drop a sentence as soon as one shape breaks it.",
-      "The sentence left is about sides and corners: that is what defines the shape.",
+      "Cross out a sentence as soon as one shape breaks it.",
+      "The sentence left is about sides and corners. That is the defining attribute.",
     ],
     watch:
-      "Size, direction and stretching can change without changing the shape's name.",
+      "Size, direction and stretching can change, and the shape keeps its name.",
   },
 };
 export const shapePrinciples: Record<string, string> = {
   "name-flat-shape":
-    "A flat shape is named by its sides and corners, not by its size or direction.",
+    "A flat shape is named by its sides and corners, not by its size or the way it is turned.",
   "find-named-shape":
-    "Every shape of a kind has that kind's sides and corners, however it is drawn.",
+    "Every shape of one kind has the same number of sides and corners, however it is drawn.",
   "name-solid-shape":
-    "A solid shape is named by its faces: flat or curved, and how many.",
+    "A solid shape is named by its flat faces and curved surfaces: what shape they are and how many.",
   "compose-shape-name":
-    "Shapes joined edge to edge make a new shape whose name comes from its outside edge.",
+    "Shapes joined with no gaps make a new shape. Its name comes from its outline.",
   "complete-the-shape":
-    "A piece fits a gap when its sides and corners match the gap's; turning it does not change it.",
+    "A piece fits a gap when its sides and corners match the gap's. Turning the piece does not change it.",
   "count-sides-corners":
-    "Going once around a closed shape meets every side once, and each side ends at a corner.",
+    "Going once around a closed shape passes every side once, and each side ends at a corner.",
   "defining-attribute":
-    "Defining attributes, such as the number of sides, belong to every shape of a kind; size and direction do not.",
+    "Every shape of one kind has its defining attributes, such as its number of sides. Size and direction can be different.",
 };
