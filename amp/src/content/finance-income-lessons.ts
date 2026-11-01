@@ -33,7 +33,7 @@ export const financeIncomeMethods: Record<string, ProblemMethod> = {
     noLink: ["jumps", "whole"],
     goal: "Use a three-bracket tax table to find the tax owed or the tax on part of an income.",
     intuition:
-      "An income tax is a tax on what you earn: money paid to the government. A bracket table cuts income into slices called brackets. Each slice has its own rate, a percent taken from only the dollars in that slice. Earning more puts only the new dollars at a higher rate.",
+      "An income tax is a tax on what you earn: money paid to the government. A bracket table cuts income into slices called brackets. Each slice has its own rate, a percent taken from only the dollars in that slice. If extra earnings reach a higher bracket, only those new dollars get the higher rate.",
     terms: [
       "tax-bracket",
       "taxable-income",
@@ -156,7 +156,7 @@ export const financeIncomePrinciples: Record<string, string> = {
   "payroll-property-tax":
     "A tax of $p\\%$ on an amount $A$ is $A\\cdot p/100$, where $\\cdot$ means times. If gross pay $G$ has taxes of $p\\%$ and $q\\%$ withheld, net pay is $G(1-(p+q)/100)$. A property tax of $k$ dollars for each 100 dollars of taxable value $V$ is $kV/100$.",
   "budget-percent-share":
-    "For a total $T$ and a part $A$, the share is $100A/T$ percent. A part with a share of $s\\%$ of $T$ is $sT/100$. The shares of all parts of a whole add to $100\\%$. A part larger than the total it is compared with has a share above $100\\%$.",
+    "For a total $T$ and a part $A$, the share is $100A/T$ percent. A part with a share of $s\\%$ of $T$ is $sT/100$. The shares of all parts of a whole add to $100\\%$. An amount larger than the total it is compared with, such as expenses above income, is more than $100\\%$ of it.",
   "net-worth-statement":
     "Net worth is $N=A-L$ for total assets $A$ and total liabilities $L$. The symbol $\\Delta$ (delta) means change in. A purchase or payment that changes assets by $\\Delta A$ and liabilities by $\\Delta L$ changes net worth by $\\Delta A-\\Delta L$.",
   "incentive-compare":
@@ -293,7 +293,7 @@ export const financeIncomeLessons: Lesson[] = [
         paragraphs: [
           "Percent means per hundred, so a rate of 10% takes 10 dollars from every 100 dollars. An income tax table cuts income into slices called brackets. Each bracket has a rate.",
           "Income inside the first bracket is taxed at the first rate. Income inside the second bracket is taxed at the second rate, and so on. For example, if the first 10,000 dollars is taxed at 10%, that slice costs 10,000 × 0.10 = 1,000 dollars, whatever else you earn.",
-          "Earning more puts only the new dollars at a higher rate. The dollars below are taxed exactly as before.",
+          "If extra earnings reach a higher bracket, only those new dollars are taxed at the higher rate. The dollars below are taxed exactly as before.",
         ],
       },
     ],

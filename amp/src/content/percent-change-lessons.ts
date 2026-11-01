@@ -37,7 +37,7 @@ export const percentChangeMethods: Record<string, ProblemMethod> = {
       "Add it for an increase, or subtract it for a decrease. Check that the answer moved the right way.",
     ],
     watch:
-      "The change and the new amount are different numbers. An increase of 25% leaves 125% of the original. A decrease of 25% leaves 75%.",
+      "The change and the new amount answer different questions. An increase of 25% leaves 125% of the original. A decrease of 25% leaves 75%.",
   },
   "percent-change-original": {
     senses: { change: "change" },
@@ -173,7 +173,7 @@ export const percentChangeLessons: Lesson[] = [
     },
     pitfalls: [
       "Divide by the original amount. Dividing by the new amount answers a different question.",
-      "A percent and its decimal are different numbers for the same thing. 12.5% is 0.125.",
+      "A percent and its decimal are two ways to write the same number: 12.5% is 0.125. Multiply by 0.125, not by 12.5.",
       "For a percent that repeats forever, enter an exact fraction such as 100/3, not a rounded decimal.",
     ],
     parentGuide:
@@ -329,7 +329,7 @@ export const percentChangeLessons: Lesson[] = [
       prompt:
         "A price decreases by 25% to 60 dollars. What was the original price, in dollars?",
       steps: [
-        "Write the percent as a fraction: 25% = $\\tfrac{25}{100} = \\tfrac{1}{4}$ of the original price.",
+        "Write the percent as a fraction: 25% is $\\tfrac{25}{100}$, which is $\\tfrac{1}{4}$. So the price fell by $\\tfrac{1}{4}$ of the original price.",
         "Find the fraction that is left after the decrease: $1 - \\tfrac{1}{4} = \\tfrac{4}{4} - \\tfrac{1}{4} = \\tfrac{3}{4}$. So 60 dollars is $\\tfrac{3}{4}$ of the original.",
         "Divide the new price by that fraction to undo the multiplying: $60 \\div \\tfrac{3}{4} = 60 \\times \\tfrac{4}{3} = \\tfrac{240}{3} = 80$.",
         "Check the amount removed: $80 \\times \\tfrac{1}{4} = 20$ dollars.",

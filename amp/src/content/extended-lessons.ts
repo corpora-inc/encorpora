@@ -232,6 +232,7 @@ export const extendedLessons: Lesson[] = [
   {
     id: "dividing-fractions",
     senses: {
+      "more than": "more-than",
       fourths: "fourth",
       eighth: "eighth",
       eighths: "eighth",
@@ -260,13 +261,13 @@ export const extendedLessons: Lesson[] = [
         title: "Measure in smaller groups",
         paragraphs: [
           "Division is the operation that splits an amount into groups of the same size. It can ask how many groups of a given size fit into an amount. For example, 12 ÷ 3 asks how many 3s fit into 12. In the same way, $\\tfrac{3}{4} \\div \\tfrac{1}{8}$ asks how many pieces of size $\\tfrac{1}{8}$ fit into $\\tfrac{3}{4}$. Since three fourths is six eighths, the answer is 6.",
-          "The answer of a division is called the quotient. The number being divided is the dividend, and the number you divide by is the divisor. When the divisor is less than 1, the quotient is bigger than the dividend. The question counts groups, not the amount in one group.",
+          "The answer of a division is called the quotient. The number being divided is the dividend, and the number you divide by is the divisor. When the divisor is between 0 and 1 and the dividend is more than 0, the quotient is bigger than the dividend. The question counts groups, not the amount in one group.",
         ],
       },
       {
         title: "Why the reciprocal works",
         paragraphs: [
-          "The reciprocal of a fraction swaps its top and bottom numbers. The reciprocal of $\\tfrac{1}{8}$ is $\\tfrac{8}{1}$, which is 8. A number times its reciprocal is always 1: $\\tfrac{1}{8} \\times 8 = 1$.",
+          "The reciprocal of a fraction (not 0) swaps its top and bottom numbers. The reciprocal of $\\tfrac{1}{8}$ is $\\tfrac{8}{1}$, which is 8. A number times its reciprocal is always 1: $\\tfrac{1}{8} \\times 8 = 1$.",
           "How many eighths fit in 1 whole? Eight. So the number of eighths in $\\tfrac{3}{4}$ is $\\tfrac{3}{4} \\times 8 = 6$. Multiplying by the reciprocal counts groups of the divisor's size.",
           "In general, to divide $\\tfrac{a}{b}$ by $\\tfrac{c}{d}$, multiply $\\tfrac{a}{b}$ by $\\tfrac{d}{c}$. Here $a$, $b$, $c$ and $d$ stand for whole numbers. The divisor must not be 0, so $c$ cannot be 0, and no denominator can be 0.",
         ],

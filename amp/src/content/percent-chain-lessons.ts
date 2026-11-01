@@ -7,17 +7,16 @@ export const percentChainMethods: Record<string, ProblemMethod> = {
     senses: {
       change: "change",
       changes: "change",
-      factor: "factor-number",
-      factors: "factor-number",
       "more than": "more-than",
     },
+    noLink: ["factor", "factors"],
     goal: "Work with two percent changes in a row: undo both to find the start, combine them into one, or apply them in order.",
     intuition:
       "Percent means per hundred. A percent change multiplies an amount by one number, called the factor. A 20% decrease keeps 80%, so its factor is 0.8. A 25% increase gives 125%, so its factor is 1.25. The second change is taken of the amount after the first, so multiply the factors. Do not add the percents.",
     terms: [
       [
-        "factor-number",
-        "For a percent change, the factor is 1 plus the rate for an increase, or 1 minus the rate for a decrease.",
+        "multiplier",
+        "For a percent change, the multiplier, also called the factor, is 1 plus the rate for an increase, or 1 minus the rate for a decrease.",
       ],
       [
         "percent",
@@ -88,12 +87,12 @@ export const percentChainLessons = [
         "Ask your learner to say the factor for each change aloud. Then ask them to explain why a 20% cut followed by a 20% rise ends below the start.",
     }),
     senses: {
-      factor: "factor-number",
       change: "change",
+      part: "part",
       product: "product-multiply",
       sides: "side-of-equation",
     },
-    noLink: ["leaves"],
+    noLink: ["factor", "factors", "leaves"],
   },
 ];
 

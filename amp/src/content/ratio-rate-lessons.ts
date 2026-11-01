@@ -191,7 +191,7 @@ export const ratioRateLessons: Lesson[] = [
         title: "Every column is a multiple of the simplest ratio",
         paragraphs: [
           "The simplest ratio uses the smallest whole numbers (the numbers 0, 1, 2, 3 and so on) that keep the same relationship. To find it, divide both numbers in a column by the largest number that divides both of them evenly. That number is called their greatest common factor. 4 and 6 can both be divided evenly by 2: 4 ÷ 2 = 2 and 6 ÷ 2 = 3. So the simplest ratio is 2 : 3.",
-          "Every column is the simplest ratio times one multiplier. The figure shows 2 : 3 multiplied by 2, by 5 and by 7. That gives the columns 4 : 6, 10 : 15 and 14 : 21.",
+          "Every column is the simplest ratio times its own multiplier. The figure shows 2 : 3 multiplied by 2, by 5 and by 7. That gives the columns 4 : 6, 10 : 15 and 14 : 21.",
           "To fill a missing cell, find the multiplier from the number you know in that column. Then use the same multiplier on the other row. If flour is 14, then 14 = 7 × 2, so the multiplier is 7. Sugar is 7 × 3 = 21.",
           "Adding the same number to both rows usually changes the ratio. Adding 12 gives 2 + 12 = 14 and 3 + 12 = 15. The ratio 14 : 15 is a different mixture, with almost as much flour as sugar.",
         ],
@@ -228,7 +228,7 @@ export const ratioRateLessons: Lesson[] = [
   {
     id: "double-number-line-missing",
     senses: { third: "third", unit: "unit" },
-    noLink: ["change", "scale"],
+    noLink: ["change", "changes", "scale"],
     title: "Read a double number line",
     summary:
       "A number line is a line with evenly spaced marks for numbers. A double number line is two number lines, one above the other, for two amounts that grow together, such as miles and hours. Marks that line up go together. Divide both amounts to find the amount for 1 unit. Then multiply to find any other matching pair.",
@@ -284,7 +284,7 @@ export const ratioRateLessons: Lesson[] = [
       answer: "75",
     },
     pitfalls: [
-      "Change both lines by the same multiplier. Never add the same amount to both lines.",
+      "Change both lines by the same multiplier. Adding the same amount to both lines usually changes how the amounts compare.",
       "Read each pair straight up and down. A value goes with the mark directly above or below it.",
       "When the bottom value is missing, divide the top value by the unit rate.",
     ],
@@ -507,7 +507,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
     noLink: ["changes", "factor"],
     goal: "Find the missing number in a table of equivalent ratios.",
     intuition:
-      "A ratio compares two amounts, such as 2 cups of flour for every 3 cups of sugar. Equivalent ratios keep that comparison at a bigger or smaller size. Each column of the table is the simplest ratio times one multiplier. The simplest ratio uses the smallest whole numbers (the numbers 0, 1, 2, 3 and so on) that keep the same comparison.",
+      "A ratio compares two amounts, such as 2 cups of flour for every 3 cups of sugar. Equivalent ratios keep that comparison at a bigger or smaller size. Each column of the table is the simplest ratio times its own multiplier. The simplest ratio uses the smallest whole numbers (the numbers 0, 1, 2, 3 and so on) that keep the same comparison.",
     terms: ["equivalent-ratios", "simplest-ratio"],
     method: [
       "Find the simplest ratio. Divide both numbers in a full column by the largest number that divides both evenly.",
@@ -519,7 +519,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
   },
   "double-number-line-missing": {
     senses: { unit: "unit" },
-    noLink: ["change", "scale"],
+    noLink: ["change", "changes", "scale"],
     goal: "Find a missing value on a double number line.",
     intuition:
       "A double number line is two number lines, one above the other, for two amounts that grow together. Marks that line up go together. The unit rate is the amount that goes with exactly 1 unit of the other amount.",
@@ -530,7 +530,7 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
       "To find a missing top value, multiply the unit rate by the bottom value. To find a missing bottom value, divide the top value by the unit rate.",
     ],
     watch:
-      "Change both lines by the same multiplier, the number you multiply by. Never add the same amount to both.",
+      "Change both lines by the same multiplier, the number you multiply by. Adding the same amount to both usually changes how the amounts compare.",
   },
   "fraction-unit-rate": {
     senses: { part: "part", unit: "unit", units: "unit" },
@@ -574,11 +574,11 @@ export const ratioRatePrinciples: Record<string, string> = {
   "better-buy":
     "Packages compare fairly only at the same size. The unit price, total price ÷ number of items, puts every package at 1 item.",
   "ratio-table-missing":
-    "Multiplying both amounts of a ratio by the same number, not 0, gives an equivalent ratio. So every column is the simplest ratio times one number.",
+    "Multiplying both amounts of a ratio by the same number, not 0, gives an equivalent ratio. So every column is the simplest ratio times its own number.",
   "double-number-line-missing":
     "Matching pairs grow together. Multiplying or dividing both values by the same number, not 0, keeps them lined up. So from any pair other than 0 and 0 you can reach the unit rate, the amount for 1.",
   "fraction-unit-rate":
-    "Dividing by a fraction $\\tfrac{c}{d}$, with $c$ and $d$ not 0, is the same as multiplying by its reciprocal $\\tfrac{d}{c}$. It counts how many copies of $\\tfrac{c}{d}$ of a unit make 1 unit.",
+    "Dividing by a fraction $\\tfrac{c}{d}$, with $c$ and $d$ not 0, is the same as multiplying by its reciprocal $\\tfrac{d}{c}$. The reciprocal $\\tfrac{d}{c}$ is how many copies of $\\tfrac{c}{d}$ make 1.",
   "story-operation-choice":
     "In equal groups, total = number of groups × size of each group; an unknown total is found by multiplying, and an unknown factor by dividing the total by the known factor.",
   "multiplication-division-story":

@@ -3,7 +3,7 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const entry =
-  "Type a whole number, a negative number, a fraction such as 7/2, or a decimal such as 3.5. Any exact form with the same value is accepted. The SAT answer box holds 5 characters, or 6 for a negative answer. A fraction such as 2/3 is correct as typed. A decimal that never ends must fill the box: cut it off or round it. So 2/3 can be .6666, .6667, 0.666 or 0.667, but not .67 or 0.66. Never type a mixed number (a whole number with a fraction) such as 3 1/2. Type 7/2 or 3.5.";
+  "To enter the answer, type a whole number (one of 0, 1, 2, 3 and so on), a negative number (a number below 0), a fraction such as 7/2, or a decimal such as 3.5. Any way of writing the exact same value is accepted. The SAT answer box holds 5 characters, or 6 for a negative answer. A fraction such as 2/3 is correct as typed. A decimal that never ends must fill the box: cut it off or round it. So 2/3 can be .6666, .6667, 0.666 or 0.667, but not .67 or 0.66. Never type a mixed number (a whole number with a fraction) such as 3 1/2. Type 7/2 or 3.5.";
 
 type Entry = {
   id: string;
@@ -43,13 +43,13 @@ const entries: Entry[] = [
     title: "Enter a variable from a 2×2 system",
     goal: "Make one letter cancel by giving it opposite numbers in front, solve what is left, and type the value, even a fraction.",
     summary:
-      "A system of equations is two equations that must both be true for the same $x$ and $y$. To find $x$, make the $y$ parts cancel out. Multiply one equation so the numbers in front of $y$ are opposites (a pair like $3$ and $-3$ that adds to 0). Then add the equations. Only $x$ is left, so solve for it. The answer may be a fraction.",
+      "A system of equations is two equations that must both be true for the same $x$ and $y$. To find $x$, make the $y$ parts cancel out. Multiply one equation so the numbers in front of $y$ are opposites (a pair like $3$ and $-3$ that adds to 0). Then add the equations. These systems have exactly one answer pair, so only $y$ cancels and $x$ is left. Solve for it. The answer may be a fraction.",
     objectives: [
       "Remove one variable (letter) from two equations by multiplying and adding them.",
       "Enter the exact value of $x$ or $y$, including a negative or fractional value.",
     ],
     intuition:
-      "A system of equations is two equations that must both be true for the same $x$ and $y$. A coefficient is the number multiplying a variable: in $3y$, the coefficient is 3. Opposites are numbers like 3 and $-3$ that add to 0. If the $y$ coefficients are opposites, adding the two equations removes $y$ and leaves one equation with only $x$.",
+      "A system of equations is two equations that must both be true for the same $x$ and $y$. A coefficient is the number multiplying a variable: in $3y$, the coefficient is 3. Opposites are numbers like 3 and $-3$ that add to 0. If the $y$ coefficients are opposites, adding the two equations removes $y$. These systems have exactly one answer pair, so one equation with only $x$ is left.",
     terms: ["system-of-equations", "elimination"],
     method: [
       "Pick the letter the question does not ask for. Multiply one or both equations by a number (not 0) so that letter has opposite coefficients.",
@@ -88,6 +88,7 @@ const entries: Entry[] = [
   {
     id: "sat-entry-system-expression",
     senses: {
+      part: "part",
       difference: "difference-subtract",
       differences: "difference-subtract",
       "left side": "side-of-equation",
@@ -228,7 +229,7 @@ const entries: Entry[] = [
       "Rewrite $\\frac1p+\\frac1q$ or $p^2+q^2$ using only $p+q$ and $pq$.",
     ],
     intuition:
-      "In $ax^2+bx+c=0$, the coefficients $a$, $b$ and $c$ are the numbers in the equation: $a$ multiplies $x^2$, $b$ multiplies $x$, and $c$ stands alone. Each term, a part joined to the rest by + or −, has a coefficient. If $p$ and $q$ are the solutions, the left side (the part before the equal sign) equals $a(x-p)(x-q)$. Multiplying that out gives $ax^2-a(p+q)x+apq$. So $b$ holds the sum $p+q$ and $c$ holds the product (the result of multiplying) $pq$.",
+      "In $ax^2+bx+c=0$, the coefficients $a$, $b$ and $c$ are the numbers in the equation: $a$ multiplies $x^2$, $b$ multiplies $x$, and $c$ stands alone. Each term, a part joined to the rest by + or −, has a coefficient. If $p$ and $q$ are the solutions, the left side (the part before the equal sign) equals $a(x-p)(x-q)$. Multiplying that out gives $ax^2-a(p+q)x+apq$. So $b=-a(p+q)$ and $c=apq$. Divide by $a$ and fix the sign: the sum is $p+q=-\\frac ba$, and the product (the result of multiplying) is $pq=\\frac ca$.",
     terms: ["coefficient"],
     method: [
       "Find $a$, $b$ and $c$ in $ax^2+bx+c=0$.",
@@ -267,6 +268,7 @@ const entries: Entry[] = [
   {
     id: "sat-entry-absolute-equation",
     senses: {
+      part: "part",
       "left side": "side-of-equation",
       opposite: "opposite-number",
       "right side": "side-of-equation",
@@ -533,9 +535,9 @@ const entries: Entry[] = [
         entry,
     ],
     watch:
-      "Add rates, not times. A drain subtracts its rate. Two machines together always take less time than the faster one alone.",
+      "When machines work at the same time, add their rates, not their times. A drain subtracts its rate. When they work one after another, add the time for each part.",
     principle:
-      "If an amount of work $W$ is done at a rate $r$, the time is $\\frac Wr$. Steady rates working together add. In a mixture, amount of substance = volume $\\times$ concentration, and the total amount of substance stays the same when mixtures are combined.",
+      "If an amount of work $W$ is done at a rate $r$, the time is $\\frac Wr$. Steady rates working together add. In a mixture, amount of substance = volume $\\times$ concentration (a percent by volume), and the total amount of substance stays the same when mixtures are combined.",
     example: {
       prompt:
         "Working alone, one machine finishes a job in 4 hours and a second machine finishes the same job in 6 hours. Working together at these constant rates, how many hours do they need to finish the job?",
@@ -608,6 +610,7 @@ const entries: Entry[] = [
   {
     id: "sat-entry-inequality-integer",
     senses: {
+      part: "part",
       boundary: "boundary",
       side: "side-of-equation",
       sides: "side-of-equation",
@@ -627,8 +630,7 @@ const entries: Entry[] = [
     method: [
       "Solve for $x$ as you would an equation. Flip the sign when you multiply or divide both sides by a negative number.",
       "Look at the boundary number: it counts for $\\le$ and $\\ge$, but not for $<$ and $>$.",
-      "Pick the greatest or least integer in the range, or count them. " +
-        entry,
+      "Pick the greatest or least integer in the range, or count them. Type the integer, with a minus sign if it is negative.",
     ],
     watch:
       "If the boundary is an integer and the sign is strict, step one integer inside. For $x<4$, the greatest integer is 3.",
@@ -646,8 +648,8 @@ const entries: Entry[] = [
     methodTitle: "Boundary, then integers",
     methodText: [
       "After solving, picture the boundary on a number line, a line with evenly spaced marks for numbers. Shade the side where the solutions are.",
-      "A count of positive integers starts at 1. If the boundary is below 1, the count is 0. " +
-        entry,
+      "To count the positive integers below a boundary, start at 1. If the boundary is 1 or less, there are none, so the count is 0.",
+      "Type the integer or the count. Type a negative integer with its minus sign.",
     ],
     formal:
       "Let $b$ be a real-number boundary. The symbol $\\lfloor b\\rfloor$ means the greatest integer that is $b$ or less, and $\\lceil b\\rceil$ means the least integer that is $b$ or more. The greatest integer with $x\\le b$ is $\\lfloor b\\rfloor$. With $x<b$, it is $\\lceil b\\rceil-1$. The least integer with $x>b$ is $\\lfloor b\\rfloor+1$.",

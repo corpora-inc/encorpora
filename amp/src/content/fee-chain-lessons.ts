@@ -30,6 +30,7 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
       "Subtract the flat fee before dividing, and divide by the extra hours only. For 1 unit every 8 days, multiply the change by 8. Do not divide.",
   },
   "fee-rule-choice": {
+    noLink: ["rule"],
     senses: { change: "change", part: "part", terms: "term-expression" },
     goal: "Choose the equation for a flat fee that covers the first hours plus a rate for each extra hour, grouped or multiplied out.",
     intuition:
@@ -53,7 +54,7 @@ export const feeChainMethods: Record<string, ProblemMethod> = {
       "Only the hours after the covered ones cost the rate. Multiplying out $40 + 9(h - 2)$ gives $9h + 22$, so the plain number is 22, not 40.",
   },
   "fee-budget-inequality": {
-    senses: { sides: "side-of-equation" },
+    senses: { part: "part", sides: "side-of-equation" },
     goal: "Write the inequality for a one-time fee plus a cost per item that must fit a budget, or choose its solution.",
     intuition:
       "A budget is the most money you plan to spend. The cost of $x$ items is the fee plus the cost per item times $x$. The sign $\\le$ means is less than or equal to, for at most. The sign $<$ means is less than, for under. Solving shows which counts fit. The answer is the largest whole number (the numbers 0, 1, 2 and so on) that fits.",
@@ -78,7 +79,7 @@ export const feeChainPrinciples: Record<string, string> = {
   "fee-plan-chain":
     "A charge made of a flat fee $F$ for the first $h_0$ hours and a rate $r$ for each hour after is $F+r(h-h_0)$ for $h\\ge h_0$. One known pair of $H$ hours and total $T$, with $H>h_0$, gives $r=(T-F)/(H-h_0)$. An amount that changes by 1 unit every $k$ days takes $kd$ days, $k$ times $d$, to change by $d$ units.",
   "fee-rule-choice":
-    "A flat fee $F$ for the first $h_0$ hours plus rate $r$ for each extra hour gives $C=F+r(h-h_0)=rh+(F-rh_0)$ for $h\\ge h_0$. As a line, its slope (the change in $C$ for each extra hour) is $r$, and its intercept (the plain number) is $F-rh_0$.",
+    "A flat fee $F$ for the first $h_0$ hours plus rate $r$ for each extra hour gives $C=F+r(h-h_0)=rh+(F-rh_0)$ for $h\\ge h_0$. As a line, its slope (the change in $C$ for each extra hour) is $r$, and its intercept (the plain number) is $F-rh_0$. The rule only applies for $h\\ge h_0$, so the intercept is not itself a booking price.",
   "fee-budget-inequality":
     "For a positive cost per item $r$, the cost $F+rx$ is at most $B$ exactly when $x\\le(B-F)/r$. It is under $B$ exactly when $x<(B-F)/r$. Subtracting $F$ and dividing by a positive $r$ keep the inequality sign pointing the same way.",
 };
@@ -124,7 +125,7 @@ export const feeChainLessons = [
       ],
       formalTitle: "The line behind the charge",
       formal: [
-        "Let $h_0$ (read “$h$ sub zero”) be the hours the flat fee covers. For $h\\ge h_0$ the charge is $C(h)=F+r(h-h_0)$. Its graph is a line. The slope, the rise in charge for each extra hour, is $r$. The intercept, the plain number when multiplied out, is $F-rh_0$. Two points $(h_0, F)$ and $(H, T)$ on the line give $r=(T-F)/(H-h_0)$.",
+        "Let $h_0$ (read “$h$ sub zero”) be the hours the flat fee covers. For $h\\ge h_0$ the charge is $C(h)=F+r(h-h_0)$. Its graph is part of a line, starting at $h_0$ hours. The slope, the rise in charge for each extra hour, is $r$. The intercept, the plain number when multiplied out, is $F-rh_0$. Two points $(h_0, F)$ and $(H, T)$ on the line give $r=(T-F)/(H-h_0)$.",
         "Since $r>0$, the inequality $F+rx\\le B$ means the same as $x\\le(B-F)/r$. Dividing both sides by a positive number keeps the sign pointing the same way. For a count of items, the answer must be a whole number.",
       ],
       pitfalls: [
