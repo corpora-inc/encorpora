@@ -3950,13 +3950,22 @@ const glossary: Record<
 export function withTemplateGlossary(
   template: TemplateMetadata,
 ): TemplateMetadata {
-  const g = glossary[template.id] ?? k8TemplateGlossary[template.id];
-  if (!g) return template;
+  const hs = glossary[template.id],
+    k8 = k8TemplateGlossary[template.id];
+  if (!hs && !k8) return template;
   return {
     ...template,
-    glossarySenses: { ...g.senses, ...template.glossarySenses },
+    glossarySenses: {
+      ...k8?.senses,
+      ...hs?.senses,
+      ...template.glossarySenses,
+    },
     glossaryNoLink: [
-      ...new Set([...(g.noLink ?? []), ...(template.glossaryNoLink ?? [])]),
+      ...new Set([
+        ...(k8?.noLink ?? []),
+        ...(hs?.noLink ?? []),
+        ...(template.glossaryNoLink ?? []),
+      ]),
     ],
   };
 }
