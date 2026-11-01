@@ -383,30 +383,30 @@ export function composeWorkbook(options: {
       Number(confident.indexOf(strandOf(b)) >= 3) || rank(a.id) - rank(b.id);
   const inPool = (t: TemplateMetadata) => challengePool.has(t.id);
   const challengePick = (() => {
-    // Gather pool problems from the nearest bands until there are a few to
-    // choose from, so the challenge varies from day to day.
+    // Pool problems at or above the strand level, from the nearest bands,
+    // until there are a few to choose from, so the challenge varies from day
+    // to day. Then any template above the level; only at the very top of the
+    // catalog does a pool problem below the level serve.
     const near: TemplateMetadata[] = [];
     for (const [lo, hi] of [
       [0.5, 1.3],
       [0.2, 1.6],
       [0, 2],
-      [-1.5, 2.5],
-      [-2.5, 2.5],
     ] as const) {
       for (const t of band(lo, hi, inPool)) if (!near.includes(t)) near.push(t);
       if (near.length >= 4) break;
     }
     if (near.length) return near.sort(byConfidence)[0];
-    for (const [lo, hi] of [
-      [0.3, 2],
-      [0, 13],
+    for (const [lo, hi, extra] of [
+      [0.3, 2, undefined],
+      [0, 13, undefined],
+      [-1.5, 0, inPool],
+      [-13, 13, undefined],
     ] as const) {
-      const candidates = band(lo, hi);
+      const candidates = band(lo, hi, extra);
       if (candidates.length) return candidates.sort(byConfidence)[0];
     }
-    return band(-13, 13).sort(
-      (a, b) => gradeOf.get(b.id)! - gradeOf.get(a.id)!,
-    )[0];
+    return undefined;
   })();
 
   const challengeSection: WorkbookSection = {

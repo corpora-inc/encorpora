@@ -112,7 +112,8 @@ function longestFormula(problem: GeneratedProblem): number {
 const fullWidth = (problem: GeneratedProblem) =>
   problem.public.response.kind === "structured-work" ||
   (problem.public.response.kind === "multi-part-choice" &&
-    problem.public.response.layout === "table") ||
+    (problem.public.response.layout === "table" ||
+      problem.public.response.blanks.length >= 4)) ||
   longestFormula(problem) > 20;
 
 /** Two problems to a row, row by row; a wide problem takes its own row. Each
@@ -228,7 +229,7 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
     <div className="wb-lesson-idea">
       <h4 className="wb-lesson-label">The idea</h4>
       {cardParagraphs(section).map((p, i) => (
-        <p key={i}>
+        <p key={i} data-trim={i > 0 ? "1" : undefined}>
           <PrintMathText text={p} />
         </p>
       ))}
@@ -277,7 +278,7 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
         <>
           <div className="wb-lesson-grid">
             {idea}
-            <div className="wb-lesson-visual">
+            <div className="wb-lesson-visual" data-trim="2">
               <LessonIllustration kind={visual} print />
             </div>
           </div>
@@ -290,7 +291,7 @@ function LessonCard({ lesson }: { lesson: Lesson }) {
         </div>
       )}
       {lesson.pitfalls[0] && (
-        <p className="wb-watch">
+        <p className="wb-watch" data-trim="3">
           <span className="wb-watch-label">Watch for</span>{" "}
           <PrintMathText text={lesson.pitfalls[0]} />
         </p>
@@ -542,6 +543,7 @@ export function workbookHtml(
           key="lesson-card"
           className="wb-block wb-lesson-block"
           data-group={group}
+          data-fit=""
         >
           <LessonCard lesson={lesson} />
         </div>,
@@ -731,6 +733,23 @@ export function workbookHtml(
       </div>
     </article>
   );
+  return documentHtml({
+    title: `${brand.name} daily workbook · ${spec.date} · No. ${spec.number}`,
+    early,
+    paper,
+    body,
+  });
+}
+
+/** The printable document around a workbook body: embedded fonts and
+ * styles, the page geometry and the page composition script. */
+function documentHtml(options: {
+  title: string;
+  early: boolean;
+  paper: (typeof pageGeometry)[PaperSize];
+  body: ReactNode;
+}): string {
+  const { paper, early } = options;
   const pageCss =
     `@page{size:${paper.size};margin:0}` +
     `@page wb-flow{size:${paper.size};margin:${paper.padding}}` +
@@ -741,7 +760,7 @@ export function workbookHtml(
       <html lang="en" data-fonts={workbookFontFamilies(early).join("|")}>
         <head>
           <meta charSet="utf-8" />
-          <title>{`${brand.name} daily workbook · ${spec.date} · No. ${spec.number}`}</title>
+          <title>{options.title}</title>
           <style>{workbookFontCss(early)}</style>
           <style>{printMathCss()}</style>
           <style>{printTokens()}</style>
@@ -751,13 +770,59 @@ export function workbookHtml(
         </head>
         <body>
           <div
-            dangerouslySetInnerHTML={{ __html: renderToStaticMarkup(body) }}
+            dangerouslySetInnerHTML={{
+              __html: renderToStaticMarkup(options.body),
+            }}
           />
           <script dangerouslySetInnerHTML={{ __html: workbookLayoutScript }} />
         </body>
       </html>,
     )
   );
+}
+
+/** Every lesson card as it would print at one working level, each after its
+ * section heading, composed by the same layout: the check that no card is
+ * taller than a page (`verify-workbook-layout.ts`). */
+export function lessonCardProofHtml(
+  lessons: readonly Lesson[],
+  options: { level: number; paper?: PaperSize },
+): string {
+  const band = workbookBand(options.level);
+  const body = (
+    <article
+      className={`wb wb--${band}`}
+      data-foot="Lesson card proof"
+      data-foot-key="Lesson card proof"
+      data-foot-results="Lesson card proof"
+    >
+      <div className="wb-flow" data-flow="student">
+        {lessons.flatMap((lesson) => [
+          <SectionHead
+            key={`${lesson.id}-head`}
+            index={2}
+            kind="lesson"
+            numbers={[1]}
+            minutes={5}
+          />,
+          <div
+            key={lesson.id}
+            className="wb-block wb-lesson-block"
+            data-fit=""
+            data-lesson={lesson.id}
+          >
+            <LessonCard lesson={lesson} />
+          </div>,
+        ])}
+      </div>
+    </article>
+  );
+  return documentHtml({
+    title: "Lesson card proof",
+    early: band === "early",
+    paper: pageGeometry[options.paper ?? "letter"],
+    body,
+  });
 }
 
 /** Footers are composed into each page by the layout; a browser footer
@@ -912,6 +977,8 @@ background-image:linear-gradient(var(--grid-line) 0.7px,transparent 0.7px),linea
 .wb-lesson-label{margin:0 0 3px;font-size:var(--small);font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:var(--accent)}
 .wb-lesson-idea p{margin:0 0 5px}
 .wb-lesson-visual{display:flex;justify-content:center;min-width:0}
+.wb .wb-lesson [data-trimmed]{display:none}
+.wb-lesson--visual:has(.wb-lesson-visual[data-trimmed]) .wb-lesson-grid{grid-template-columns:minmax(0,1fr)}
 .wb-lesson-visual svg,.wb-lesson-visual .figure{max-width:100%;max-height:2.3in;margin:0 auto}
 .wb-example{background:color-mix(in srgb,var(--accent) 6%,transparent);border-radius:var(--radius);padding:0.1in 0.13in}
 .wb-lesson--visual .wb-example{margin-top:0.1in}

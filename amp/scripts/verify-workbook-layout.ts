@@ -9,8 +9,9 @@
 import { chromium, firefox, webkit } from "playwright";
 import type { WorkbookMinutes } from "../src/workbook/compose";
 import { printWorkbookPdf, waitForWorkbookLayout } from "../src/workbook/pdf";
-import type { PaperSize } from "../src/workbook/render";
+import { lessonCardProofHtml, type PaperSize } from "../src/workbook/render";
 import { sampleLearners } from "../src/workbook/synthetic";
+import { lessons } from "../src/content/lessons";
 import {
   checkWorkbookLayout,
   layoutFailures,
@@ -45,6 +46,49 @@ try {
 } finally {
   await browser.close();
 }
+// Every lesson card fits one page with its heading, at every band.
+{
+  const proof = await chromium.launch({ headless: true });
+  try {
+    for (const [level, paper] of [
+      [1, "letter"],
+      [4, "letter"],
+      [7, "letter"],
+      [10, "letter"],
+      [1, "a4"],
+    ] as [number, PaperSize][]) {
+      const page = await proof.newPage();
+      await page.emulateMedia({ media: "print" });
+      await page.setContent(lessonCardProofHtml(lessons, { level, paper }), {
+        waitUntil: "load",
+      });
+      await waitForWorkbookLayout(page, 300_000);
+      const over = await page.evaluate(() =>
+        [...document.querySelectorAll(".wb-page")]
+          .filter(
+            (p) =>
+              p.querySelector(".wb-page-content")!.getBoundingClientRect()
+                .height >
+              p.querySelector(".wb-page-body")!.getBoundingClientRect().height +
+                1,
+          )
+          .flatMap((p) =>
+            [...p.querySelectorAll("[data-lesson]")].map((el) =>
+              el.getAttribute("data-lesson"),
+            ),
+          ),
+      );
+      await page.close();
+      if (over.length) failed++;
+      console.log(
+        `${over.length ? "FAIL" : "ok  "} ${lessons.length} lesson cards at level ${level} on ${paper}${over.length ? `: taller than a page: ${over.join(", ")}` : ""}`,
+      );
+    }
+  } finally {
+    await proof.close();
+  }
+}
+
 // Parents may open the HTML and print from their own browser: the pages must
 // compose the same way in Firefox and WebKit.
 for (const engine of [firefox, webkit]) {
@@ -71,8 +115,8 @@ for (const engine of [firefox, webkit]) {
 }
 if (failed) {
   console.error(
-    `${failed} of ${cases.length + 6} workbooks failed the layout check`,
+    `${failed} of ${cases.length + 11} workbooks failed the layout check`,
   );
   process.exit(1);
 }
-console.log(`${cases.length + 6} workbooks pass the layout check`);
+console.log(`${cases.length + 11} workbooks pass the layout check`);

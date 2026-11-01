@@ -23,13 +23,19 @@ export const workbookLayoutScript = String.raw`(function () {
   var root = document.documentElement;
   var families = (root.getAttribute("data-fonts") || "").split("|").filter(Boolean);
   function fail(error) {
+    // Put the unpaged blocks back, so a failed layout still prints whole
+    // through CSS page breaks rather than half composed.
+    var wb = document.querySelector(".wb");
+    if (backup && wb) wb.parentNode.replaceChild(backup, wb);
     root.setAttribute("data-layout", "error");
     console.error("Workbook layout failed:", error && error.stack ? error.stack : error);
   }
   function list(nodes) { return Array.prototype.slice.call(nodes); }
   function height(el) { return el.getBoundingClientRect().height; }
+  var backup = null;
   function layout() {
     var wb = document.querySelector(".wb");
+    backup = wb.cloneNode(true);
     var pages = document.createElement("div");
     pages.className = "wb-pages";
     wb.appendChild(pages);
@@ -100,6 +106,23 @@ export const workbookLayoutScript = String.raw`(function () {
       }
       // A single block taller than a page stays; the layout check reports it.
     }
+    // A lesson card must fit one page with its heading. A long one drops,
+    // in order, its extra paragraphs, its diagram and its pitfall, then
+    // prints slightly smaller (never below 75%).
+    var probe = newPage("student");
+    var pageHeight = height(probe.body);
+    pages.removeChild(probe.page);
+    made.pop();
+    list(flow.querySelectorAll("[data-fit]")).forEach(function (block) {
+      var limit = pageHeight - 0.8 * 96;
+      for (var level = 1; level <= 3 && height(block) > limit; level++)
+        list(block.querySelectorAll('[data-trim="' + level + '"]')).forEach(function (el) {
+          el.setAttribute("data-trimmed", "");
+        });
+      for (var zoom = 0.95; zoom >= 0.749 && height(block) > limit; zoom -= 0.05)
+        block.style.zoom = zoom.toFixed(2);
+    });
+
     // A problem too wide for half the page (a long formula, a wide table)
     // takes its own full-width row.
     list(flow.querySelectorAll(".wb-row")).forEach(function (row) {
