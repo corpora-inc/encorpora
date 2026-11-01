@@ -1158,8 +1158,21 @@ export function rowText(
   values: string[],
 ): string {
   const parts = shape.fields.map((f, j) => fieldText(r, f, values[j] ?? ""));
+  // A coefficient whose unit is a power base ("× 10^") reads as one number
+  // with the next field as its exponent: $3.6\times10^{6}$, never the
+  // caret text the two entry boxes show.
+  shape.fields.forEach((f, j) => {
+    const next = shape.fields[j + 1];
+    const power = /^×\s*(\d+)\s*\^$/.exec(f.unit ?? "");
+    const a = f.given ?? values[j] ?? "";
+    const n = next?.given ?? values[j + 1] ?? "";
+    if (f.kind !== "number" || !power || next?.kind !== "number") return;
+    if (!a || !n) return;
+    parts[j] = `$${numberTex(a)}\\times${power[1]}^{${numberTex(n)}}$`;
+    parts[j + 1] = "";
+  });
   if (r.layout === "proof") return `${parts[0]} (${parts[1]})`;
-  const body = parts.join(" — ");
+  const body = parts.filter(Boolean).join(" — ");
   return shape.label ? `${shape.label}: ${body}` : body;
 }
 /** The rows of a response (or the answer key) in order, as readable text. */
