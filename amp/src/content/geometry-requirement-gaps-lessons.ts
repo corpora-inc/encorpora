@@ -22,6 +22,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       degrees: "degree-angle",
       side: "side",
       radius: "radius",
+      multiple: "multiple",
       center: "center",
       squared: "square-number",
     },
@@ -36,7 +37,6 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "rule",
       "part",
       "factors",
-      "multiple",
     ],
     intuition:
       "The middle point of a circle is called the center. A circle's radius is the distance from the center to the circle. A central angle has its corner at the center. The piece of the circle between its two sides is called an arc. Every circle is an enlarged or shrunken copy of every other circle. Enlarge a circle by a factor $k$, so every length is multiplied by $k$. Then the radius and the arc of a fixed angle are both multiplied by $k$. So for one angle, arc length divided by radius is the same in every circle. That number measures the angle in radians. A sector is the pie-slice region between the two radii and the arc.",
@@ -206,7 +206,6 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "change",
       "mean",
       "square",
-      "multiple",
       "scale",
     ],
     intuition:
@@ -309,6 +308,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
       degrees: "degree-angle",
       side: "side",
       radius: "radius",
+      multiple: "multiple",
       center: "center",
       squared: "square-number",
     },
@@ -323,7 +323,6 @@ export const geometryRequirementGapLessons: Lesson[] = [
       "rule",
       "part",
       "factors",
-      "multiple",
     ],
     objectives: [
       "Use similar circles, enlarged copies of each other, to scale an arc length to a different radius.",
@@ -750,7 +749,6 @@ export const geometryRequirementGapLessons: Lesson[] = [
       "change",
       "mean",
       "square",
-      "multiple",
       "scale",
     ],
     objectives: [
