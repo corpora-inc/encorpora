@@ -301,39 +301,49 @@ export const decimalLessons: Lesson[] = [
     id: "multidigit-decimal-operations",
     title: "Multidigit decimal operations",
     summary:
-      "Decimal calculations work by keeping track of place-value units, including parts smaller than one.",
+      "In a decimal such as 12.75, each place after the point is a smaller piece: 7 tenths and 5 hundredths. Every decimal calculation keeps track of those piece sizes. To add, line up the decimal points so tenths meet tenths. To multiply, multiply as whole numbers, then count decimal places to place the point. To divide by a decimal, multiply both numbers by 10, 100 or 1000 until the number you divide by is whole.",
     templateIds: [
       "multidigit-decimal-sum",
       "multidigit-decimal-product",
       "multidigit-decimal-quotient",
     ],
     includeGeneratedRepresentation: false,
+    senses: {
+      place: "place-value",
+      places: "place-value",
+      factor: "factor-number",
+      product: "product-multiply",
+      quotient: "quotient",
+    },
+    noLink: ["like", "whole", "change", "changes"],
     objectives: [
       "Add and subtract decimals by lining up the decimal points.",
       "Place the decimal point in a product by counting decimal places.",
-      "Divide by a decimal by scaling both numbers to make the divisor whole.",
+      "Divide by a decimal by multiplying both numbers by 10, 100 or 1000 so the divisor is a whole number.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Keep track of the size of each piece",
         paragraphs: [
-          "You can combine tenths with tenths or hundredths with hundredths. If an operation changes the size of the pieces, name the new size before writing the decimal point. This is why place value matters in every decimal calculation.",
+          "Place value means a digit's worth depends on its place. After the decimal point, the first place counts tenths. The next counts hundredths, which are tenths cut into 10 equal parts. Then come thousandths, which are hundredths cut into 10 equal parts. Each piece is one tenth the size of the piece to its left.",
+          "You can add tenths to tenths, or hundredths to hundredths, just as you add apples to apples. Multiplying can change the size of the pieces: a tenth of a hundredth is a thousandth. So name the new piece size before writing the decimal point.",
         ],
       },
       {
         title: "Add and subtract: same places",
         paragraphs: [
-          "Only like places add: tenths to tenths, hundredths to hundredths. Lining up the decimal points lines up the places, and zeros fill any empty place on the right.",
-          "Then add or subtract as with whole numbers, regrouping 10 hundredths as 1 tenth and 10 tenths as 1 one.",
+          "Only matching places add: tenths to tenths, hundredths to hundredths. Lining up the decimal points lines up the places. A zero fills any empty place on the right without changing the value, since 12.5 = 12.50.",
+          "Then add or subtract as with whole numbers. Regroup when a place passes 9: 10 hundredths make 1 tenth, and 10 tenths make 1 one.",
         ],
         illustration: "decimal-aligned-sum",
       },
       {
         title: "Multiply and divide: count the scale",
         paragraphs: [
-          "1.2 × 0.35 is 12/10 × 35/100 = 420/1000. So multiply 12 × 35 = 420, then put in as many decimal places as the factors have together, 1 + 2 = 3: 0.420 = 0.42.",
-          "Multiplying both numbers in a division by the same power of ten keeps the quotient: 0.84 ÷ 0.02 = 84 ÷ 2 = 42. Make the divisor whole, then divide.",
+          "The numbers being multiplied are called factors, and the answer is the product. In 1.2 × 0.35, 1.2 is 12 tenths and 0.35 is 35 hundredths. Tenths times hundredths make thousandths: $\\frac{12}{10} \\times \\frac{35}{100} = \\frac{420}{1000}$.",
+          "So multiply the digits as whole numbers, 12 × 35 = 420. Then count the decimal places in both factors together: 1 + 2 = 3. Give the product 3 decimal places: 0.420, which is 0.42.",
+          "In a division, the divisor is the number you divide by, and the answer is the quotient. Multiplying both numbers by the same power of ten (10, 100, 1000, …) keeps the quotient the same: 0.84 ÷ 0.02 = 84 ÷ 2 = 42. So make the divisor a whole number first, then divide.",
         ],
       },
     ],
@@ -342,22 +352,24 @@ export const decimalLessons: Lesson[] = [
         stage: "formal",
         title: "Operations preserve place units",
         paragraphs: [
-          "For addition and subtraction, combine like decimal place units after aligning decimal points. For multiplication, multiply the whole-number counts of smallest place units, then name the product's unit. For division, scaling dividend and divisor by the same nonzero power of ten preserves their quotient.",
+          "To add or subtract decimals, line up the decimal points and combine matching places. To multiply, multiply the whole-number counts of the smallest pieces, then name the product's piece size; its decimal places are the factors' places added. To divide, multiply the dividend (the number being divided) and the divisor by the same power of ten; the quotient stays the same.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is 12.5 + 3.75?",
       steps: [
-        "Line up the decimal points and fill the empty place: 12.50 + 3.75.",
-        "Add hundredths, tenths, ones and tens: 12.50 + 3.75 = 16.25.",
-        "Check: 16.25 − 3.75 = 12.5.",
+        "Line up the decimal points so tenths sit under tenths. 12.5 has no hundredths digit, so write a 0 there: 12.50 + 3.75. The value does not change.",
+        "Add from the right. Hundredths: 0 + 5 = 5. Tenths: 5 + 7 = 12 tenths, which is 1 one and 2 tenths, so write 2 and carry 1.",
+        "Ones: 2 + 3 + 1 carried = 6. Tens: 1. The sum is 16.25.",
+        "Check by subtracting, which undoes adding: 16.25 − 3.75 = 12.5.",
       ],
       answer: "16.25",
     },
     pitfalls: [
       "Line up the decimal points, not the last digits.",
-      "A product of decimals less than 1 is smaller than either factor: 0.5 × 0.4 = 0.2.",
+      "Multiplying two positive decimals that are each less than 1 gives a product smaller than either factor: 0.5 × 0.4 = 0.2.",
+      "When dividing, multiply both numbers by the same power of ten, or the quotient can change.",
     ],
     parentGuide:
       "Add two prices with different numbers of decimal places, such as 12.5 and 3.75, writing one above the other with the points lined up.",
@@ -473,36 +485,55 @@ export const decimalMethods: Record<string, ProblemMethod> = {
       "Include the lower halfway point, but leave out the upper one, because halfway rounds up.",
   },
   "multidigit-decimal-sum": {
-    goal: "Add or subtract decimals with different numbers of places.",
+    noLink: ["changes", "opposite"],
+    goal: "Add or subtract decimals that have different numbers of decimal places.",
     terms: ["regroup"],
+    senses: {
+      difference: "difference-subtract",
+      place: "place-value",
+      places: "place-value",
+    },
+    intuition:
+      "After the decimal point, the first place counts tenths. The next counts hundredths, which are tenths cut into 10 equal parts, and then thousandths, which are hundredths cut into 10. Only matching places add: tenths to tenths. Lining up the decimal points lines up the places, and a 0 can fill an empty place: 12.5 = 12.50.",
     method: [
-      "Line up the decimal points; fill empty places with 0.",
-      "Add or subtract place by place from the right, regrouping as needed.",
-      "Check with the inverse operation.",
+      "Line up the decimal points. Fill empty places on the right with 0.",
+      "Add or subtract place by place from the right. Regroup when needed: 10 hundredths make 1 tenth.",
+      "Check with the opposite operation: subtract to check a sum, add to check a difference.",
     ],
     watch: "Line up the points, not the last digits.",
   },
   "multidigit-decimal-product": {
-    goal: "Multiply two decimals.",
+    goal: "Multiply two decimals and place the decimal point in the answer correctly.",
     terms: ["decimal-places"],
+    senses: {
+      factor: "factor-number",
+      product: "product-multiply",
+      places: "place-value",
+    },
+    intuition:
+      "The numbers being multiplied are called factors, and the answer is called the product. Decimal places are the digits after the point: 1.2 has one and 0.35 has two. Hundredths, which are 1 out of 100, are smaller than tenths. Thousandths, which are 1 out of 1000, are smaller still. Tenths times hundredths make thousandths, so 1.2 × 0.35 has 1 + 2 = 3 decimal places: 0.420.",
     method: [
       "Multiply the digits as whole numbers.",
       "Count the decimal places in both factors together.",
       "Give the product that many decimal places.",
     ],
     watch:
-      "Count places in the factors, then drop final zeros only after placing the point.",
+      "Count places in the factors first. Drop zeros at the end only after placing the point: 0.420 = 0.42.",
   },
   "multidigit-decimal-quotient": {
-    goal: "Divide a decimal by a decimal.",
+    noLink: ["change", "whole", "changes", "leaves"],
+    goal: "Divide a decimal by a decimal, by first making the divisor a whole number.",
     terms: ["divisor"],
+    senses: { quotient: "quotient" },
+    intuition:
+      "In 0.84 ÷ 0.02, the divisor 0.02 is the number you divide by, and the answer is the quotient. Multiplying both numbers by the same power of ten (10, 100, 1000, …) keeps the quotient the same. So 0.84 ÷ 0.02 = 84 ÷ 2 = 42.",
     method: [
       "Multiply both numbers by the power of ten that makes the divisor whole.",
       "Divide by the whole-number divisor.",
       "Check: quotient × divisor = dividend.",
     ],
     watch:
-      "Scale both numbers by the same power of ten, or the quotient changes.",
+      "Multiply both numbers by the same power of ten, or the quotient can change.",
   },
 };
 export const decimalPrinciples: Record<string, string> = {
@@ -527,7 +558,7 @@ export const decimalPrinciples: Record<string, string> = {
   "multidigit-decimal-sum":
     "Only like places combine, so lining up the decimal points lines up tenths with tenths and hundredths with hundredths.",
   "multidigit-decimal-product":
-    "Tenths times hundredths are thousandths: the product's decimal places are the factors' places together.",
+    "Tenths times hundredths are thousandths, so the product's decimal places are the factors' decimal places added together.",
   "multidigit-decimal-quotient":
-    "Multiplying the dividend and divisor by the same number leaves the quotient unchanged.",
+    "Multiplying the dividend and divisor by the same number, other than 0, leaves the quotient unchanged.",
 };

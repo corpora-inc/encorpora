@@ -167,9 +167,11 @@ function simplifyCase(r: Random, zero = false, given?: number): Case {
             `Check: $${answer} \\times ${answer} = ${n}$. The root is nonnegative.`,
           ]
         : [
-            `Factor the radicand using its largest square factor: $${n} = ${a * a} \\times ${b}$.`,
-            `For nonnegative numbers, the square root of a product is the product of their square roots: $\\sqrt{${n}} = \\sqrt{${a * a}}\\sqrt{${b}} = ${answer}$.`,
-            `Check: $${answer} \\times ${answer} = ${n}$. The root is nonnegative.`,
+            `The square root of a number is the nonnegative number that, times itself, gives it. The number under the root sign is the radicand, here ${n}.`,
+            `Simplest form takes every perfect square (such as 4, 9, 16, 25) out of the radicand. Find the largest one that divides ${n}: $${n} = ${a * a} \\times ${b}$.`,
+            `The square root of a product is the product of the square roots, so the roots can be taken separately: $\\sqrt{${n}} = \\sqrt{${a * a}}\\sqrt{${b}} = ${answer}$.`,
+            `$\\sqrt{${a * a}}$ is ${a} because ${a} × ${a} = ${a * a}. The ${b} has no square factor greater than 1 left, so it stays under the root.`,
+            `Check: $${answer} \\times ${answer} = ${n}$. In simplest form, $\\sqrt{${n}}$ is $${answer}$.`,
           ];
   return {
     prompt: `Simplify $\\sqrt{${n}}$.`,
@@ -223,8 +225,10 @@ function combineCase(
     [un, rn] = root(n);
   const opening = `${rawTerm(a, m)} ${b < 0 ? "-" : "+"} ${rawTerm(Math.abs(b), n)}`;
   const explanation = [
-    `Extract square factors from the first term: $${rawTerm(a, m)} = ${text(first)}$.`,
-    `Extract square factors from the second signed term: $${rawTerm(b, n)} = ${text(second)}$.`,
+    "Square roots combine like terms only when the numbers under the root, the radicands, match. Then add the numbers in front, as with $3x + 2x$.",
+    "So first simplify each root: take every perfect square factor (4, 9, 16, …) out from under the root sign.",
+    `First term: $${rawTerm(a, m)} = ${text(first)}$.`,
+    `Second term, with its sign: $${rawTerm(b, n)} = ${text(second)}$.`,
     rm === rn
       ? `The radical parts match. Add the signed coefficients: $${a * um} ${b * un < 0 ? "-" : "+"} ${Math.abs(b * un)} = ${a * um + b * un}$. Thus $${opening} = ${text(value)}$.`
       : `The simplified terms have different radical parts, so they remain separate: $${opening} = ${text(value)}$.`,
@@ -267,9 +271,12 @@ function multiplyCase(
     value = term(q(product), m * n),
     source = `(${rawTerm(a, m)})(${rawTerm(b, n)})`;
   const explanation = [
-    `Multiply the signed coefficients: $${a < 0 ? `(${a})` : a} \\times ${b < 0 ? `(${b})` : b} = ${product}$.`,
-    `The radicands are nonnegative, so $\\sqrt{${m}}\\sqrt{${n}} = \\sqrt{${m * n}}$.`,
-    `Factor the new radicand: $${m * n} = ${factor * factor} \\times ${remaining}$. Therefore $${rawTerm(product, m * n)} = ${text(value)}$.`,
+    "Each term is a coefficient, the number in front, times a square root. Multiply the coefficients together and the roots together.",
+    `Multiply the coefficients, keeping their signs: $${a < 0 ? `(${a})` : a} \\times ${b < 0 ? `(${b})` : b} = ${product}$.`,
+    `The root of one number times the root of another is the root of their product, so $\\sqrt{${m}}\\sqrt{${n}} = \\sqrt{${m * n}}$.`,
+    factor === 1
+      ? `Look for a perfect square factor (4, 9, 16, …) in ${m * n}. There is none, so the root stays as it is.`
+      : `Take out the largest perfect square factor: $${m * n} = ${factor * factor} \\times ${remaining}$, and $\\sqrt{${factor * factor}} = ${factor}$. So $${rawTerm(product, m * n)} = ${text(value)}$.`,
     `The simplified product is $${source} = ${text(value)}$.`,
   ];
   return {
@@ -300,8 +307,12 @@ function rationalizeCase(r: Random, given?: [number, number, number]): Case {
   const source = `\\frac{${a}}{${denominator}}`;
   const coefficient = q(a, denominatorCoefficient * remaining);
   const explanation = [
-    `Simplify the root in the denominator: $\\sqrt{${n}} = ${text(term(q(1), n))}$. The denominator is $${denominator} = ${simplifiedDenominator}$.`,
-    `Multiply numerator and denominator by $\\sqrt{${remaining}}$. This multiplies the fraction by $\\frac{\\sqrt{${remaining}}}{\\sqrt{${remaining}}} = 1$, because the square root is nonzero.`,
+    "Rationalizing the denominator means rewriting the fraction so no square root is left in its bottom, the denominator.",
+    factor === 1
+      ? `The root in the denominator, $\\sqrt{${n}}$, has no perfect square factor to take out, so it is already simple.`
+      : `First simplify the root in the denominator: $\\sqrt{${n}} = ${text(term(q(1), n))}$. The denominator is $${denominator} = ${simplifiedDenominator}$.`,
+    `Multiply the top and the bottom by $\\sqrt{${remaining}}$. That multiplies the fraction by $\\frac{\\sqrt{${remaining}}}{\\sqrt{${remaining}}} = 1$, so its value does not change.`,
+    `In the bottom, $\\sqrt{${remaining}} \\times \\sqrt{${remaining}} = ${remaining}$, a whole number, so the root is gone.`,
     `$${source} = \\frac{${rawTerm(a, remaining)}}{${denominatorCoefficient * remaining}} = ${text(value)}$. The denominator is rational and the coefficient is reduced.`,
     `Check by multiplying by the original denominator: $(${text(value)})(${denominator}) = ${a}$.`,
   ];
