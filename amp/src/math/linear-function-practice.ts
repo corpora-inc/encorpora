@@ -341,16 +341,21 @@ function graphDomainRange(r: Random): Case {
   const steps =
     ask === "domain"
       ? [
-          `The domain is every $x$-value that has a point on the graph. Read it along the $x$-axis from the left end to the right end.`,
+          `The domain of a function is the set of all its inputs, the $x$-values it uses. On a graph, read it along the $x$-axis, left to right.`,
           `The left end is ${endWords(a!, fa, ends![0])}. The right end is ${endWords(b!, fb, ends![1])}.`,
-          `Every $x$ between them has a point, so the domain is ${domain}.`,
+          `A filled dot means that point is part of the graph. An open dot means the graph comes right up to it but skips it.`,
+          `The graph has no gaps, so every $x$ between the two ends has a point. That is why the domain is one unbroken stretch.`,
+          `The domain of $f$ is ${domain}.`,
         ]
       : [
-          `The range is every $y$-value the graph reaches. Read it up the $y$-axis from the lowest point to the highest.`,
+          `The range of a function is the set of all its outputs, the $y$-values the graph reaches. Read it up the $y$-axis, bottom to top.`,
           turn
-            ? `The ends are (${n(a!)}, ${n(fa)}) and (${n(b!)}, ${n(fb)}), and the turning point is (${n(turn[0])}, ${n(turn[1])}). The lowest $y$-value is ${n(yMin)} and the highest is ${n(yMax)}.`
-            : `One end is ${endWords(a!, fa, ends![0])}; the other is ${endWords(b!, fb, ends![1])}. The line passes every $y$-value between them.`,
-          `So the range is ${range}.`,
+            ? `The ends are (${n(a!)}, ${n(fa)}) and (${n(b!)}, ${n(fb)}). The turning point, where the graph changes direction, is (${n(turn[0])}, ${n(turn[1])}).`
+            : `One end is ${endWords(a!, fa, ends![0])}. The other is ${endWords(b!, fb, ends![1])}.`,
+          turn
+            ? `Compare all three heights. The lowest $y$-value is ${n(yMin)} and the highest is ${n(yMax)}. A turning point can be lower or higher than both ends, so always check it.`
+            : `A line with no gaps passes every $y$-value between its two ends. A filled dot keeps its $y$-value; an open dot leaves it out.`,
+          `The range of $f$ is ${range}.`,
         ];
   return {
     prompt: `The graph shows the whole function $f$. What is the ${ask} of $f$?`,
@@ -435,11 +440,13 @@ function contextDomainRange(r: Random): Case {
       prompt: `${ctx.setup(cap, price)} Which describes the ${ask} of $${ctx.f}$ in this situation?`,
       choices: options,
       explanation: [
-        `The input $${ctx.v}$ counts ${ctx.unit}, so it is a whole number, and there are at most ${cap}: the domain is the whole numbers from 0 to ${cap}.`,
-        `Each output is ${price} times an input: ${price} × 0 = 0, ${price} × 1 = ${price}, …, ${price} × ${cap} = ${top}.`,
+        `The domain is the set of inputs that make sense in the story. The range is the set of outputs those inputs give.`,
+        `The input $${ctx.v}$ counts ${ctx.unit}. You cannot have half of one, so $${ctx.v}$ is a whole number: 0, 1, 2, and so on.`,
+        `There are at most ${cap} ${ctx.unit}, so the inputs stop at ${cap}. The domain is the whole numbers from 0 to ${cap}.`,
+        `Each output is ${price} times an input: ${price} × 0 = 0, ${price} × 1 = ${price}, and so on up to ${price} × ${cap} = ${top}. Amounts in between never happen.`,
         ask === "domain"
-          ? `So the ${ask} is the whole numbers from 0 to ${cap}.`
-          : `So the range is the multiples of ${price} from 0 to ${top}.`,
+          ? `The domain of $${ctx.f}$ is the whole numbers from 0 to ${cap}.`
+          : `The range of $${ctx.f}$ is the multiples of ${price} from 0 to ${top}, the numbers you get by multiplying ${price} by a whole number.`,
       ],
       hint: `${ask === "domain" ? `The inputs are numbers of ${ctx.unit}` : `The outputs are ${price} times a number of ${ctx.unit}`}: can there be half of one, and can there be more than ${cap}?`,
       tags: [kind, ask],
@@ -501,11 +508,13 @@ function contextDomainRange(r: Random): Case {
     prompt: `${ctx.setup(total, rate)} Which describes the ${ask} of $${F}$ in this situation?`,
     choices: options,
     explanation: [
-      `The function starts at t = 0 and stops when ${F}(t) = 0: ${total} − ${rate}t = 0 gives t = ${total} ÷ ${rate} = ${end}.`,
-      `Time passes continuously, so the domain is 0 ≤ t ≤ ${end}.`,
+      `The domain is the set of inputs that make sense in the story, here the times $t$. The range is the set of outputs, here the ${ctx.what}.`,
+      `The story starts at $t = 0$. It ends when nothing is left, when $${F}(t) = 0$, read "$${F}$ of $t$ equals 0".`,
+      `Solve ${total} − ${rate}t = 0: add ${rate}t to both sides, then divide by ${rate}. That gives t = ${total} ÷ ${rate} = ${end} ${ctx.unit}.`,
+      `Time flows without jumps, so $t$ can be any number from 0 to ${end}, including values such as 2.5. That gives 0 ≤ t ≤ ${end}.`,
       ask === "domain"
-        ? `So the domain is 0 ≤ t ≤ ${end}.`
-        : `Over that time the ${ctx.what} falls steadily from ${F}(0) = ${total} to ${F}(${end}) = 0, so the range is 0 ≤ ${F} ≤ ${total}.`,
+        ? `The domain of $${F}$ is 0 ≤ t ≤ ${end}: every time from the start until the ${ctx.what} runs out.`
+        : `Over that time the ${ctx.what} falls steadily from ${F}(0) = ${total} to ${F}(${end}) = 0. The range of $${F}$ is 0 ≤ ${F} ≤ ${total}.`,
     ],
     hint: `Find when the situation ends: solve $${total} − ${rate}t = 0$. Then ask which values the ${ask === "domain" ? `time $t$` : ctx.what} takes from $t = 0$ until then.`,
     tags: [kind, ask],
@@ -564,17 +573,21 @@ function functionRelation(r: Random): Case {
       prompt: `Which relation ${is ? "is" : "is not"} a function of $x$? Each ordered pair is $(x, y)$.`,
       choices,
       explanation: [
-        `A relation is a function when each input $x$ is paired with exactly one output $y$. Look for an $x$ that appears twice with different $y$-values.`,
+        `A relation is any set of ordered pairs $(x, y)$. The first number $x$ is the input and the second number $y$ is the output.`,
+        `A relation is a function when each input has exactly one output. So look for an $x$-value that appears twice with two different $y$-values.`,
         is
-          ? `In ${pairSet(correct)} no input repeats (${correct.map(([x]) => n(x)).join(", ")}), so each input has one output. The repeated output ${n(correct[1]![1])} is allowed.`
-          : `In ${pairSet(correct)} the input ${n(rep![0])} is paired with two different outputs.`,
+          ? `In ${pairSet(correct)} the inputs are ${correct.map(([x]) => n(x)).join(", ")}. No input repeats, so each input has just one output.`
+          : `In ${pairSet(correct)} the input ${n(rep![0])} is used twice, with two different outputs. One input with two outputs breaks the rule.`,
         is
-          ? `Each other set repeats an input with two different outputs.`
-          : `Each other set uses every input once, so each is a function.`,
+          ? `The output ${n(correct[1]![1])} is repeated, and that is allowed. Two inputs may share an output; one input may not have two.`
+          : `Each other set uses every input only once, so each of those is a function.`,
+        is
+          ? `Each other set repeats an input with two different outputs, so none of them is a function. The function is ${pairSet(correct)}.`
+          : `The relation that is not a function is ${pairSet(correct)}.`,
       ],
       hint: is
-        ? `In each set, read the first numbers, the $x$-values. A set that repeats an $x$-value with two different $y$-values is not a function; a repeated $y$-value is allowed.`
-        : `In each set, read the first numbers, the $x$-values, and look for one that appears twice with two different $y$-values. A repeated $y$-value alone does not break a function.`,
+        ? `In each set, read the first numbers, the $x$-values or inputs. A set that repeats an $x$-value with two different $y$-values is not a function. A repeated $y$-value is allowed.`
+        : `In each set, read the first numbers, the $x$-values or inputs. Look for one that appears twice with two different $y$-values. A repeated $y$-value alone does not break a function.`,
       tags: [frame, "pairs"],
     };
   }
@@ -625,17 +638,21 @@ function functionRelation(r: Random): Case {
       })),
     ],
     explanation: [
-      `$y$ is a function of $x$ when every $x$-value gives exactly one $y$-value. Test an equation by looking for one $x$ that gives two values of $y$.`,
+      `$y$ is a function of $x$ when every input $x$ gives exactly one output $y$. To test an equation, look for one $x$ that gives two values of $y$.`,
+      `Watch for $y$ squared or inside absolute value bars, | |. Then $y$ and its opposite, $-y$, give the same result, so one $x$ can get two $y$-values.`,
       is
-        ? `In ${right[0]}, ${right[1]}, so it defines a function.`
-        : `In ${right[0]}, ${right[1]}, so it does not define a function.`,
+        ? `In ${right[0]}, ${right[1]}. So it defines $y$ as a function of $x$.`
+        : `In ${right[0]}, ${right[1]}. One input with two outputs means it does not define a function.`,
       is
-        ? `In each other equation, $y$ is squared or inside an absolute value, so $y$ and −y give the same $x$.`
-        : `Each other equation gives $y$ directly from $x$, so every $x$ gives one $y$.`,
+        ? `In each other equation, $y$ is squared or inside absolute value bars, so some $x$ pairs with both $y$ and $-y$.`
+        : `Each other equation works out $y$ directly from $x$, so every $x$ gives just one $y$.`,
+      is
+        ? `The equation that defines $y$ as a function of $x$ is ${right[0]}.`
+        : `The equation that does not define $y$ as a function of $x$ is ${right[0]}.`,
     ],
     hint: is
-      ? `For each equation, pick an $x$-value and ask how many $y$-values make it true. Where $y$ is squared or inside | |, both $y$ and −y can work.`
-      : `Pick an $x$-value for each equation and count the $y$-values that make it true: an equation where both $y$ and −y work gives one $x$ two outputs.`,
+      ? `For each equation, pick an $x$-value and ask how many $y$-values make it true. Where $y$ is squared or inside | |, both $y$ and $-y$ can work.`
+      : `Pick an $x$-value for each equation and count the $y$-values that make it true. An equation where both $y$ and $-y$ work gives one $x$ two outputs.`,
     tags: [frame, "equations"],
   };
 }
@@ -660,9 +677,11 @@ function averageRateFormula(r: Random): Case {
       prompt: `A function $f$ has f(${n(p0)}) = ${n(fp)} and f(${n(q0)}) = ${n(fq)}. What is the average rate of change of $f$ from x = ${n(p0)} to x = ${n(q0)}?`,
       answer: ans,
       explanation: [
-        `The average rate of change is the change in $f$ divided by the change in $x$: $(f(${n(q0)}) − f(${n(p0)})) ÷ (${n(q0)} − ${p(p0)})$.`,
-        `Change in $f$: ${n(fq)} − ${p(fp)} = ${n(fq - fp)}. Change in $x$: ${n(q0)} − ${p(p0)} = ${q0 - p0}.`,
-        `Average rate of change: ${quotient(fq - fp, q0 - p0)}.`,
+        `$f(${n(p0)}) = ${n(fp)}$, read "$f$ of ${n(p0)}", means the output of $f$ is ${n(fp)} when the input $x$ is ${n(p0)}.`,
+        `The average rate of change tells how much the output changes, on average, for each 1 that $x$ increases. It is the change in output divided by the change in input.`,
+        `Change in output: ${n(fq)} − ${p(fp)} = ${n(fq - fp)}. Subtract in the same order for both, end minus start.`,
+        `Change in input: ${n(q0)} − ${p(p0)} = ${q0 - p0}.`,
+        `Divide: ${quotient(fq - fp, q0 - p0)}. The average rate of change of $f$ from $x = ${n(p0)}$ to $x = ${n(q0)}$ is ${fraction(ans)}.`,
       ],
       hint: `Subtract in the same order: the change in $f$ is ${n(fq)} − ${p(fp)}, and the change in $x$ is ${n(q0)} − ${p(p0)}. Divide the first by the second.`,
       tags: [frame, ans.d === 1 ? "integer" : "fraction"],
@@ -716,9 +735,12 @@ function averageRateFormula(r: Random): Case {
     prompt: context,
     answer: ans,
     explanation: [
-      `Evaluate at both ends: $${name}(${n(q0)}) = ${sub(q0)} = ${n(fq)}$ and $${name}(${n(p0)}) = ${sub(p0)} = ${n(fp)}$.`,
-      `The average rate of change is $(${name}(${n(q0)}) − ${name}(${n(p0)})) ÷ (${n(q0)} − ${p(p0)}) = (${n(fq)} − ${p(fp)}) ÷ ${q0 - p0} = ${quotient(fq - fp, q0 - p0)}$.`,
-      `So it is ${fraction(ans)}${unit ? ` ${unit}` : ""}: the slope of the line through (${n(p0)}, ${n(fp)}) and (${n(q0)}, ${n(fq)}).`,
+      `The average rate of change is the change in output divided by the change in input. It tells how much $${name}$ changes, on average, for each 1 that $${v}$ increases.`,
+      `First find the output at each end. Substitute each input for $${v}$ in the rule: $${name}(${n(q0)}) = ${sub(q0)} = ${n(fq)}$.`,
+      `$${name}(${n(p0)}) = ${sub(p0)} = ${n(fp)}$.`,
+      `Divide the change in output by the change in input, end minus start in both: $(${n(fq)} − ${p(fp)}) ÷ (${n(q0)} − ${p(p0)}) = ${quotient(fq - fp, q0 - p0)}$.`,
+      `This is also the slope, or steepness, of the straight line through (${n(p0)}, ${n(fp)}) and (${n(q0)}, ${n(fq)}).`,
+      `The average rate of change from $${v} = ${n(p0)}$ to $${v} = ${n(q0)}$ is ${fraction(ans)}${unit ? ` ${unit}` : ""}.`,
     ],
     hint: `Find $${name}(${n(q0)})$ and $${name}(${n(p0)})$ from ${rule} first. Then divide their difference by the change in $${v}$, ${n(q0)} − ${p(p0)}.`,
     tags: [frame, ans.d === 1 ? "integer" : "fraction"],
@@ -778,9 +800,12 @@ function averageRateDisplay(r: Random): Case {
         answer: ans,
         scene,
         explanation: [
+          `The average rate of change is the change in $y$ divided by the change in $x$ between two points. It tells how much $f$ changes, on average, for each 1 that $x$ increases.`,
           `Read the coordinates from the grid: $A = (${n(p0)}, ${n(fp)})$ and $B = (${n(q0)}, ${n(fq)})$.`,
-          `The average rate of change is the slope of the secant line $AB$: (${n(fq)} − ${p(fp)}) ÷ (${n(q0)} − ${p(p0)}) = ${quotient(fq - fp, q0 - p0)}.`,
-          `So it is ${fraction(ans)}. A curve does not change at one constant rate, but from $A$ to $B$, $f$ changes by ${fraction(ans)} for each 1 that $x$ increases on average.`,
+          `The rise, the change in $y$, is ${n(fq)} − ${p(fp)} = ${n(fq - fp)}. The run, the change in $x$, is ${n(q0)} − ${p(p0)} = ${q0 - p0}.`,
+          `Rise ÷ run = ${quotient(fq - fp, q0 - p0)}. This is the slope of the secant line, the straight line through $A$ and $B$.`,
+          `A curve does not change at one steady rate. The average rate describes the whole trip from $A$ to $B$ as if it were straight.`,
+          `The average rate of change of $f$ from $x = ${n(p0)}$ to $x = ${n(q0)}$ is ${fraction(ans)}.`,
         ],
         hint: `Read the $y$-values of $A$ (at $x = ${n(p0)}$) and $B$ (at $x = ${n(q0)}$) from the grid. The average rate is the rise from $A$ to $B$ divided by the run, ${n(q0)} − ${p(p0)}.`,
         tags: [frame, a > 0 ? "opens-up" : "opens-down"],
@@ -829,9 +854,11 @@ function averageRateDisplay(r: Random): Case {
       answer: ans,
       scene,
       explanation: [
-        `From the table, f(${n(p0)}) = ${n(fp)} and f(${n(q0)}) = ${n(fq)}.`,
-        `Average rate of change = (${n(fq)} − ${p(fp)}) ÷ (${n(q0)} − ${p(p0)}) = ${quotient(fq - fp, q0 - p0)}.`,
-        `The values between the two columns do not enter: an average rate uses only the ends of the interval.`,
+        `The average rate of change is the change in output divided by the change in input. It tells how much $f(x)$ changes, on average, for each 1 that $x$ increases.`,
+        `From the table, $f(${n(p0)}) = ${n(fp)}$ and $f(${n(q0)}) = ${n(fq)}$. Here $f(${n(p0)})$, read "$f$ of ${n(p0)}", is the output when $x = ${n(p0)}$.`,
+        `Change in output: ${n(fq)} − ${p(fp)} = ${n(fq - fp)}. Change in input: ${n(q0)} − ${p(p0)} = ${q0 - p0}.`,
+        `Divide: ${quotient(fq - fp, q0 - p0)}. The columns between the two ends do not matter, because an average rate uses only the start and the end.`,
+        `The average rate of change of $f$ from $x = ${n(p0)}$ to $x = ${n(q0)}$ is ${fraction(ans)}.`,
       ],
       hint: `Use only the shaded columns, x = ${n(p0)} and x = ${n(q0)}: divide the change in $f(x)$ between them by ${n(q0)} − ${p(p0)}.`,
       tags: [frame, exp ? "exponential" : "quadratic"],
@@ -898,9 +925,11 @@ function averageRateDisplay(r: Random): Case {
     answer: ans,
     scene,
     explanation: [
-      `${ctx.when(p0)[0]!.toUpperCase()}${ctx.when(p0).slice(1)}, ${ctx.heads[1]} = ${n(fp)}; ${ctx.when(q0)}, ${ctx.heads[1]} = ${n(fq)}.`,
-      `Average rate of change = (${n(fq)} − ${p(fp)}) ÷ (${q0} − ${p0}) = ${quotient(fq - fp, q0 - p0)}.`,
-      `So $${ctx.heads[1]}$ changed on average by ${fraction(ans)} ${ratEqOne(ans) ? ctx.unit.replace("degrees", "degree").replace("thousand people", "thousand people") : ctx.unit}, though it did not change by the same amount in every step.`,
+      `The average rate of change is the change in $${ctx.heads[1]}$ divided by the time it took. It tells how much $${ctx.heads[1]}$ changed, on average, in each unit of time.`,
+      `${ctx.when(p0)[0]!.toUpperCase()}${ctx.when(p0).slice(1)}, $${ctx.heads[1]} = ${n(fp)}$. ${ctx.when(q0)[0]!.toUpperCase()}${ctx.when(q0).slice(1)}, $${ctx.heads[1]} = ${n(fq)}$.`,
+      `Change in $${ctx.heads[1]}$: ${n(fq)} − ${p(fp)} = ${n(fq - fp)}. Time between them: ${q0} − ${p0} = ${q0 - p0}.`,
+      `Divide: ${quotient(fq - fp, q0 - p0)}. The steps in between may differ, but the average spreads the total change evenly.`,
+      `On average, $${ctx.heads[1]}$ changed by ${fraction(ans)} ${ratEqOne(ans) ? ctx.unit.replace("degrees", "degree") : ctx.unit}.`,
     ],
     hint: `Take $${ctx.heads[1]}$ ${ctx.when(p0)} and ${ctx.when(q0)} from the shaded columns. Divide their difference by the time between them, ${q0} − ${p0}.`,
     tags: [frame, ctx.heads[1]!, ans.d === 1 ? "integer" : "fraction"],
@@ -960,10 +989,13 @@ function linearModelValue(r: Random): Case {
       prompt: `${opening}. ${did}. ${ctx.ask}`,
       answer: rat(k),
       explanation: [
-        `Let $${ctx.v}$ be the number of ${ctx.unit}. The fixed ${usd(fee)} plus ${usd(rate)} for each of the $${ctx.v}$ ${ctx.unit} is the total: ${fee} + ${rate}${ctx.v} = ${total}.`,
-        `Subtract ${fee} from both sides: ${rate}${ctx.v} = ${total - fee}.`,
-        `Divide both sides by ${rate}: ${ctx.v} = ${k}.`,
-        `Check: ${fee} + ${rate} × ${k} = ${total}.`,
+        `Let $${ctx.v}$ be the number of ${ctx.unit}, the unknown we want. A letter that stands for an unknown number is called a variable.`,
+        `The ${usd(fee)} is paid once. The ${usd(rate)} is paid once for each of the $${ctx.v}$ ${ctx.unit}, which is ${rate}${ctx.v} dollars.`,
+        `Together they make the total: ${fee} + ${rate}${ctx.v} = ${total}.`,
+        `Undo the one-time charge first. Subtract ${fee} from both sides, which keeps them equal: ${rate}${ctx.v} = ${total - fee}.`,
+        `${rate}${ctx.v} means ${rate} times $${ctx.v}$, so undo it by dividing both sides by ${rate}: ${ctx.v} = ${k}.`,
+        `Check in the story: ${fee} + ${rate} × ${k} = ${total}, the amount paid.`,
+        `The answer is ${k} ${ctx.unit}.`,
       ],
       hint: `Call the number of ${ctx.unit} $${ctx.v}$: the ${usd(fee)} is paid once and the ${usd(rate)} is paid $${ctx.v}$ times, so ${fee} + ${rate}${ctx.v} = ${total}. Undo the one-time ${usd(fee)} first.`,
       tags: [frame],
@@ -984,10 +1016,14 @@ function linearModelValue(r: Random): Case {
       prompt: `${ctx[0]} ${usd(a1)} plus ${usd(b1)} ${ctx[2]}. ${ctx[1]} ${usd(a2)} plus ${usd(b2)} ${ctx[2]}. After how many ${ctx[3]} do they cost the same?`,
       answer: rat(k),
       explanation: [
-        `Let $${ctx[4]}$ be the number of ${ctx[3]}. The costs are ${a1} + ${b1}${ctx[4]} and ${a2} + ${b2}${ctx[4]}; set them equal: ${a1} + ${b1}${ctx[4]} = ${a2} + ${b2}${ctx[4]}.`,
-        `Subtract ${b1}${ctx[4]} and ${a2} from both sides: ${a1 - a2} = ${b2 - b1}${ctx[4]}.`,
-        `Divide by ${b2 - b1}: ${ctx[4]} = ${k}.`,
-        `Check: ${a1} + ${b1} × ${k} = ${a1 + b1 * k} and ${a2} + ${b2} × ${k} = ${a2 + b2 * k}.`,
+        `Let $${ctx[4]}$ be the number of ${ctx[3]}. A letter that stands for an unknown number is called a variable.`,
+        `Each cost is a one-time charge plus a charge for each of the ${ctx[3]}. The first costs ${a1} + ${b1}${ctx[4]} and the second costs ${a2} + ${b2}${ctx[4]}.`,
+        `"Cost the same" means the two costs are equal, so set them equal: ${a1} + ${b1}${ctx[4]} = ${a2} + ${b2}${ctx[4]}.`,
+        `Gather the $${ctx[4]}$ terms on one side. Subtract ${b1}${ctx[4]} from both sides: ${a1} = ${a2} + ${b2 - b1}${ctx[4]}.`,
+        `Subtract ${a2} from both sides: ${a1 - a2} = ${b2 - b1}${ctx[4]}. Doing the same thing to both sides keeps them equal.`,
+        `Divide both sides by ${b2 - b1}: ${ctx[4]} = ${k}.`,
+        `Check: ${a1} + ${b1} × ${k} = ${a1 + b1 * k} and ${a2} + ${b2} × ${k} = ${a2 + b2 * k}. The costs match.`,
+        `They cost the same after ${k} ${ctx[3]}.`,
       ],
       hint: `Write each cost with $${ctx[4]}$ for the number of ${ctx[3]}, ${a1} + ${b1}${ctx[4]} and ${a2} + ${b2}${ctx[4]}, and set the two expressions equal.`,
       tags: [frame],
@@ -1007,10 +1043,14 @@ function linearModelValue(r: Random): Case {
       prompt: `A rectangle's length is ${rel}. Its perimeter is ${P} cm. What is its width, in centimeters?`,
       answer: rat(w),
       explanation: [
-        `Let $w$ be the width. The length is ${linearText(c, d, "w")}, and the perimeter is twice length plus width: 2(${linearText(c, d, "w")} + w) = ${P}.`,
-        `Combine inside the parentheses: 2(${linearText(c + 1, d, "w")}) = ${P}, so ${linearText(2 * c + 2, 2 * d, "w")} = ${P}.`,
-        `Subtract ${2 * d}: ${2 * c + 2}w = ${P - 2 * d}. Divide by ${2 * c + 2}: w = ${w}.`,
+        `Let $w$ be the width in centimeters. The length is ${rel.replace(" its width", " the width")}, so the length is ${linearText(c, d, "w")}.`,
+        `The perimeter is the distance all the way around. A rectangle has two lengths and two widths, so perimeter = 2(length + width).`,
+        `Substitute: 2(${linearText(c, d, "w")} + w) = ${P}.`,
+        `Combine the $w$ terms inside the parentheses: 2(${linearText(c + 1, d, "w")}) = ${P}.`,
+        `Multiply each term inside by 2. This is the distributive property, multiplying every term in the brackets: ${linearText(2 * c + 2, 2 * d, "w")} = ${P}.`,
+        `Subtract ${2 * d} from both sides: ${2 * c + 2}w = ${P - 2 * d}. Divide both sides by ${2 * c + 2}: w = ${w}.`,
         `Check: the length is ${l} cm, and 2(${l} + ${w}) = ${P}.`,
+        `The width is ${w} cm.`,
       ],
       hint: `Write the length in terms of the width $w$, as ${linearText(c, d, "w")}. A perimeter adds each side twice: 2(length + width) = ${P}.`,
       tags: [frame, c === 1 ? "plus" : "times-plus"],
@@ -1047,9 +1087,13 @@ function linearModelValue(r: Random): Case {
     prompt: `${ctx[0].replace("$E$ dollars", usd(e)).replace("R dollars", usd(rate))}. ${ctx[1].replace("B dollars", usd(B))}. ${ctx[2]}`,
     answer: rat(k),
     explanation: [
-      `Let $${ctx[4]}$ be the number of ${ctx[3]}. The cost may not exceed the money available: ${e} + ${rate}${ctx[4]} ≤ ${B}.`,
-      `Subtract ${e}: ${rate}${ctx[4]} ≤ ${B - e}. Divide by ${rate}: ${ctx[4]} ≤ ${fraction(rat(B - e, rate))}.`,
-      `The number of ${ctx[3]} is a whole number, so the greatest is ${k}. Check: ${e} + ${rate} × ${k} = ${e + rate * k} ≤ ${B}, but ${e} + ${rate} × ${k + 1} = ${e + rate * (k + 1)} > ${B}.`,
+      `Let $${ctx[4]}$ be the number of ${ctx[3]}. The cost is the one-time ${usd(e)} plus ${usd(rate)} for each of the ${ctx[3]}: ${e} + ${rate}${ctx[4]}.`,
+      `The cost may not be more than the money available. The sign ≤ means "is less than or equal to": ${e} + ${rate}${ctx[4]} ≤ ${B}.`,
+      `Solve it like an equation. Subtract ${e} from both sides: ${rate}${ctx[4]} ≤ ${B - e}.`,
+      `Divide both sides by ${rate}. Dividing by a positive number keeps the sign the same way: ${ctx[4]} ≤ ${fraction(rat(B - e, rate))}.`,
+      `The number of ${ctx[3]} must be a whole number, so take the greatest whole number that fits: ${k}.`,
+      `Check: ${e} + ${rate} × ${k} = ${e + rate * k} ≤ ${B}, but ${e} + ${rate} × ${k + 1} = ${e + rate * (k + 1)} > ${B}, which is too much.`,
+      `The greatest number is ${k} ${ctx[3]}.`,
     ],
     hint: `The cost ${e} + ${rate}${ctx[4]} must be at most ${B}: solve ${e} + ${rate}${ctx[4]} ≤ ${B}, then take the greatest whole number that fits.`,
     tags: [frame, "inequality"],
@@ -1191,9 +1235,13 @@ function linearModelEquation(r: Random): Case {
     choices: [{ label: correct, correct: true }, ...wrong],
     scene,
     explanation: [
+      `A linear model changes by the same amount for each step of 1 in $${x}$. It needs two numbers: the starting amount and the rate.`,
+      `The starting amount is the value of $${y}$ when $${x} = 0$. The rate is how much $${y}$ changes for each 1 that $${x}$ increases.`,
       first,
-      `A linear model is $${y} = \\text{(starting amount)} + \\text{(rate)} \\cdot ${x}$, so ${correct}.`,
+      `The rate is applied once for each unit of $${x}$, so it multiplies $${x}$. The starting amount is added on: $${y} = \\text{(starting amount)} + \\text{(rate)} \\cdot ${x}$.`,
+      `Put in the numbers: ${correct}.`,
       `Check: at $${x} = 2$ the equation gives ${y} = ${b + 2 * s * m}${ctx.kind === "fall" ? `, which is ${b} − 2 × ${m}` : `, which is ${b} + 2 × ${m}`}.`,
+      `The equation that gives $${y}$ in terms of $${x}$ is ${correct}.`,
     ],
     hint,
     tags: [frame, ctx.y],
@@ -1678,8 +1726,11 @@ function formulaIsolate(r: Random): Case {
       ...fc.wrong.map(([label, feedback]) => ({ label, feedback })),
     ],
     explanation: [
-      `Treat $${fc.target}$ as the unknown and every other letter as a known number. Undo what is done to $${fc.target}$, in reverse order, on both sides.`,
+      `A formula is an equation that links several quantities. Solving it for $${fc.target}$ means getting $${fc.target}$ alone on one side.`,
+      `Treat $${fc.target}$ as the unknown and every other letter as a known number that is not zero, so dividing by it is allowed. Then solve exactly as you would with numbers.`,
+      `Undo what is done to $${fc.target}$ in reverse order, like unwrapping a parcel. Do each step to both sides, so they stay equal.`,
       ...fc.steps,
+      `The formula that gives $${fc.target}$ in terms of ${fc.others.replaceAll("$", "").replace(/\b([A-Za-z])\b/g, "$$$1$$")} is ${fc.correct}.`,
     ],
     hint: `In ${fc.formula}, list what is done to $${fc.target}$, then undo the last of those steps first on both sides.`,
     tags: [fc.family, fc.target],
@@ -1703,9 +1754,11 @@ function formulaValue(r: Random): Case {
       prompt: `A rectangle's perimeter is P = 2l + 2w. Find the width $w$ when P = ${P} and the length l = ${l}.`,
       answer: rat(w),
       explanation: [
-        `Solve for $w$: subtract 2l, then divide by 2, so w = (P − 2l)/2.`,
-        `Substitute: w = (${P} − 2 × ${l})/2 = ${P - 2 * l}/2.`,
-        `w = ${w}.`,
+        `In $P = 2l + 2w$, $P$ is the perimeter, the distance around. $l$ is the length and $w$ is the width.`,
+        `Substitute the known values: ${P} = 2 × ${l} + 2w, so ${P} = ${2 * l} + 2w.`,
+        `Subtract ${2 * l} from both sides to undo the added length: ${P - 2 * l} = 2w.`,
+        `2w means 2 times $w$, so divide both sides by 2: w = ${P - 2 * l} ÷ 2 = ${w}.`,
+        `The width is ${w}.`,
       ],
       hint: `Substitute P = ${P} and l = ${l} into P = 2l + 2w, then undo the + 2l and the × 2 to isolate $w$.`,
       tags: [frame],
@@ -1718,9 +1771,12 @@ function formulaValue(r: Random): Case {
       prompt: `Temperatures satisfy F = 9C/5 + 32. What Celsius temperature $C$ equals ${n(F)} degrees Fahrenheit?`,
       answer: rat(C),
       explanation: [
-        `Solve for $C$: subtract 32, then multiply by 5/9, so C = 5(F − 32)/9.`,
-        `Substitute: C = 5(${n(F)} − 32)/9 = 5 × ${n(F - 32)}/9.`,
-        `C = ${n(C)}.`,
+        `In $F = 9C/5 + 32$, $F$ is the temperature in degrees Fahrenheit and $C$ is the same temperature in degrees Celsius.`,
+        `Substitute F = ${n(F)}: ${n(F)} = 9C/5 + 32.`,
+        `Undo the last step first. Subtract 32 from both sides: ${n(F - 32)} = 9C/5.`,
+        `Multiply both sides by 5 to undo the division by 5: ${n(5 * (F - 32))} = 9C.`,
+        `Divide both sides by 9: C = ${n(5 * (F - 32))} ÷ 9 = ${n(C)}.`,
+        `${n(F)} degrees Fahrenheit equals ${n(C)} degrees Celsius.`,
       ],
       hint: `Put F = ${n(F)} into F = 9C/5 + 32. Subtract 32 from both sides before undoing the 9/5.`,
       tags: [frame, C < 0 ? "negative" : "positive"],
@@ -1736,9 +1792,11 @@ function formulaValue(r: Random): Case {
       prompt: `A trapezoid's area is $A$ = ½(b₁ + b₂)h. Find the height $h$ when A = ${A}, b₁ = ${b1} and b₂ = ${b2}.`,
       answer: rat(h),
       explanation: [
-        `Solve for $h$: multiply by 2, then divide by b₁ + b₂, so h = 2A/(b₁ + b₂).`,
-        `Substitute: h = 2 × ${A}/(${b1} + ${b2}) = ${2 * A}/${sum}.`,
-        `h = ${h}.`,
+        `In this formula, $A$ is the area, b₁ and b₂ are the two parallel sides (the bases), and $h$ is the height between them.`,
+        `Substitute the values. The bases add to ${b1} + ${b2} = ${sum}, so ${A} = ½ · ${sum}h.`,
+        `Half of ${sum} is ${sum / 2}, so ${A} = ${sum / 2}h.`,
+        `${sum / 2}h means ${sum / 2} times $h$, so divide both sides by ${sum / 2}: h = ${A} ÷ ${sum / 2} = ${h}.`,
+        `The height is ${h}.`,
       ],
       hint: `Substitute A = ${A}, b₁ = ${b1} and b₂ = ${b2}: ${A} = ½(${b1} + ${b2})h. Add the bases first, then isolate $h$.`,
       tags: [frame],
@@ -1753,9 +1811,12 @@ function formulaValue(r: Random): Case {
       prompt: `A cart's speed is $v$ = $u$ + at. Find its acceleration a when v = ${v}, u = ${u} and t = ${t}.`,
       answer: rat(a),
       explanation: [
-        `Solve for $a$: subtract $u$, then divide by $t$, so a = (v − u)/t.`,
-        `Substitute: a = (${v} − ${u})/${t} = ${v - u}/${t}.`,
-        `a = ${a}.`,
+        `In $v = u + at$, $v$ is the final speed, $u$ is the starting speed, and $t$ is the time.`,
+        `$a$ is the acceleration, the speed gained in each unit of time.`,
+        `Substitute the known values: ${v} = ${u} + ${t}a.`,
+        `Subtract ${u} from both sides to undo the starting speed: ${v - u} = ${t}a.`,
+        `${t}a means ${t} times $a$, so divide both sides by ${t}: a = ${v - u} ÷ ${t} = ${a}.`,
+        `The acceleration is ${a}.`,
       ],
       hint: `Substitute v = ${v}, u = ${u} and t = ${t} into $v$ = $u$ + at, then subtract ${u} from both sides first.`,
       tags: [frame],
@@ -1769,9 +1830,12 @@ function formulaValue(r: Random): Case {
     prompt: `Simple interest is $I = Prt$. Find the time $t$, in years, when $I = ${I}$, $P = ${P}$ and $r = ${rate / 100}$.`,
     answer: rat(t),
     explanation: [
-      `Solve for $t$: divide by $P$ and by $r$, so t = I/(Pr).`,
-      `Substitute: Pr = ${P} × ${rate / 100} = ${(P * rate) / 100}, so t = ${I}/${(P * rate) / 100}.`,
-      `t = ${t}.`,
+      `In $I = Prt$, $I$ is the interest earned and $P$ is the principal, the amount first saved or borrowed.`,
+      `$r$ is the yearly interest rate written as a decimal, and $t$ is the time in years.`,
+      `Letters written side by side are multiplied, so $Prt$ means $P × r × t$.`,
+      `Substitute and multiply the known values first: ${P} × ${rate / 100} = ${(P * rate) / 100}. So ${I} = ${(P * rate) / 100}t.`,
+      `Divide both sides by ${(P * rate) / 100} to get $t$ alone: t = ${I} ÷ ${(P * rate) / 100} = ${t}.`,
+      `The time is ${t} years.`,
     ],
     hint: `Substitute $I = ${I}$, $P = ${P}$ and $r = ${rate / 100}$ into $I = Prt$. Multiply ${P} × ${rate / 100} first, then divide.`,
     tags: [frame],
@@ -1888,9 +1952,11 @@ function solutionPointChoice(r: Random): Case {
         })),
       ],
       explanation: [
-        `The graph of an equation is every point $(x, y)$ whose coordinates make the equation true. Substitute each pair, $x$ first.`,
-        `For ${pair([x0, y0])}: ${check(x0, y0)}, so it is on the graph.`,
+        `A point $(x, y)$ lists its $x$-coordinate first and its $y$-coordinate second. These are its coordinates, its position across and up.`,
+        `The graph of an equation is every point whose coordinates make the equation true. So test each pair by substituting it.`,
+        `For ${pair([x0, y0])}, put ${n(x0)} in for $x$ and ${n(y0)} in for $y$: ${check(x0, y0)}. Both sides agree, so it is on the graph.`,
         `Each other pair makes the two sides differ, so those points are off the graph.`,
+        `The point on the graph is ${pair([x0, y0])}.`,
       ],
       hint: `Put each pair into ${formula(eq.text)}, the first number for $x$ and the second for $y$, and keep the one that makes it true.`,
       tags: [frame],
@@ -1919,9 +1985,11 @@ function solutionCoordinate(r: Random): Case {
       answer: rat(k),
       scene,
       explanation: [
-        `A point is on the graph exactly when its coordinates make the equation true, so substitute x = ${n(x0)}.`,
-        `k = ${sq} = ${n(k)}.`,
-        `The parabola meets the dashed line x = ${n(x0)} at (${n(x0)}, ${n(k)}).`,
+        `A point is on the graph exactly when its coordinates make the equation true. Here the $x$-coordinate is ${n(x0)} and the $y$-coordinate is the unknown $k$.`,
+        `So substitute x = ${n(x0)} and y = k into the equation.`,
+        `Follow the order of operations: square ${n(x0)} first, then multiply, then add or subtract. k = ${sq} = ${n(k)}.`,
+        `On the graph, the parabola (the U-shaped curve) meets the dashed line x = ${n(x0)} at (${n(x0)}, ${n(k)}).`,
+        `So $k = ${n(k)}$.`,
       ],
       hint: `Substitute $x = ${n(x0)}$ into ${formula(text)}; square ${n(x0)} before multiplying${a < 0 ? " by −1" : ""}.`,
       tags: [frame],
@@ -1968,9 +2036,13 @@ function solutionCoordinate(r: Random): Case {
       answer: ans,
       scene,
       explanation: [
-        `Points on the graph are exactly the pairs that make the equation true. Substitute ${findY ? "x" : "y"} = ${n(known)}: ${sub} = ${n(c)}.`,
-        `Then ${n(moved)} ${coeff < 0 ? "−" : "+"} ${Math.abs(coeff) === 1 ? "" : Math.abs(coeff)}k = ${n(c)}, so ${coeff === 1 ? "" : coeff === -1 ? "−" : n(coeff)}k = ${n(c - moved)}.`,
-        `k = ${quotient(c - moved, coeff)}. Check: ${check} = ${n(c)}. The graph crosses the dashed line ${findY ? "x" : "y"} = ${n(known)} at ${findY ? `(${n(known)}, ${qt(ans)})` : `(${qt(ans)}, ${n(known)})`}.`,
+        `Points on the graph are exactly the pairs that make the equation true. The known coordinate is ${findY ? "x" : "y"} = ${n(known)}, and $k$ is the unknown one.`,
+        `Substitute ${findY ? "x" : "y"} = ${n(known)} and ${findY ? "y" : "x"} = k: ${sub} = ${n(c)}.`,
+        `Multiply out the known part: ${n(moved)} ${coeff < 0 ? "−" : "+"} ${Math.abs(coeff) === 1 ? "" : Math.abs(coeff)}k = ${n(c)}.`,
+        `${moved < 0 ? `Add ${n(-moved)} to` : `Subtract ${n(moved)} from`} both sides to leave the $k$ term alone: ${coeff === 1 ? "" : coeff === -1 ? "−" : n(coeff)}k = ${n(c - moved)}.`,
+        `Divide both sides by ${n(coeff)}, the number multiplying $k$: k = ${quotient(c - moved, coeff)}.`,
+        `Check: ${check} = ${n(c)}. The graph crosses the dashed line ${findY ? "x" : "y"} = ${n(known)} at ${findY ? `(${n(known)}, ${qt(ans)})` : `(${qt(ans)}, ${n(known)})`}.`,
+        `So $k = ${qt(ans)}$.`,
       ],
       hint: `Substitute ${findY ? "x" : "y"} = ${n(known)} into ${text}, then solve the one-variable equation for $k$.`,
       tags: [frame, ans.d === 1 ? "integer" : "fraction"],

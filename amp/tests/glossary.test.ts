@@ -47,10 +47,6 @@ const BANDS = [
   "precalculus",
 ];
 const band = (id: TermId) => BANDS.indexOf(glossaryEntry(id).band);
-const BASELINE = new URL(
-  "./fixtures/glossary-unresolved-baseline.json",
-  import.meta.url,
-);
 
 test("every entry has a valid id, term, forms, plain definition and band", () => {
   const problems: string[] = [];

@@ -690,6 +690,15 @@ async function verifySearchFilters() {
       });
       await input.waitFor();
       assert.equal(await input.inputValue(), "L");
+      // The map's stylesheet arrives with its lazy route chunk; under load
+      // the field can paint a frame before it. Readable once styled.
+      await page
+        .waitForFunction(
+          (el) => parseFloat(getComputedStyle(el!).fontSize) >= 16,
+          await input.elementHandle(),
+          { timeout: 5000 },
+        )
+        .catch(() => undefined);
       assert(
         (await input.evaluate((el) =>
           parseFloat(getComputedStyle(el).fontSize),
