@@ -321,7 +321,7 @@ export const expressionAfterFirstStep = chainFamily({
         },
         {
           label: m(`${dt(a)}${out}(${dt(b)}${op}${dt(p * 10)})`),
-          feedback: `${m(times)} is ${dt(p)}, not ${dt(p * 10)}: the decimal point moved one place. Tenths times a whole number is still tenths.`,
+          feedback: `${m(times)} is ${dt(p)}, not ${dt(p * 10)}, which is 10 times too big.${p % 10 ? " Tenths times a whole number is still tenths, so keep the decimal point where it belongs." : " Check the zeros: multiply the digits, then count the places."}`,
         },
       ];
       return finish(

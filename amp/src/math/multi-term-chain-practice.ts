@@ -341,11 +341,14 @@ const fractionTermChain = chainFamily({
       const g = gcd(t, L);
       const whole = Math.floor(t / L);
       const tail = unit ? ` ${unit}` : "";
-      if (t % L === 0)
+      if (t % L === 0) {
+        const one = t / L === 1;
+        const oneUnit = unit === "inches" ? "inch" : unit?.replace(/s$/, "");
         return [
-          `$\\frac{${t}}{${L}}$ is ${t / L} wholes, because $${t}\\div ${L}=${t / L}$.`,
-          `The answer is ${t / L}${tail}.`,
+          `$\\frac{${t}}{${L}}$ is ${t / L} ${one ? "whole" : "wholes"}, because $${t}\\div ${L}=${t / L}$.`,
+          `The answer is ${t / L}${unit ? ` ${one ? oneUnit : unit}` : ""}.`,
         ];
+      }
       return [
         ...(g > 1
           ? [
@@ -374,7 +377,8 @@ const fractionTermChain = chainFamily({
         .slice(1)
         .map((p) => ` ${p.sign > 0 ? "+" : "-"} ${toL(p)}`)
         .join("");
-      return `Now the pieces match, so add and take away the top numbers (the numerators): $\\frac{${first}${rest}}{${L}}=\\frac{${t}}{${L}}$.`;
+      const verb = ps.some((p) => p.sign < 0) ? "add and take away" : "add";
+      return `Now the pieces match, so ${verb} the top numbers (the numerators): $\\frac{${first}${rest}}{${L}}=\\frac{${t}}{${L}}$.`;
     };
     const dens = [...new Set(ps.filter((p) => p.d > 1).map((p) => p.d))];
     const denList = list(dens.map(String));
@@ -927,8 +931,12 @@ const signedChangesSum = chainFamily({
     );
     const steps = [
       `A positive change (+) is a gain and a negative change (−) is a loss. The net change is all the changes added together.`,
-      `Group the gains: ${list(gains.map((v) => `+${v}`))} add to $+${gainSum}$.`,
-      `Group the losses: ${list(losses.map((v) => `−${-v}`))} add to $-${-lossSum}$.`,
+      gains.length === 1
+        ? `The only gain is $+${gainSum}$.`
+        : `Group the gains: ${list(gains.map((v) => `+${v}`))} add to $+${gainSum}$.`,
+      losses.length === 1
+        ? `The only loss is $-${-lossSum}$.`
+        : `Group the losses: ${list(losses.map((v) => `−${-v}`))} add to $-${-lossSum}$.`,
       `Combine the two groups. Adding a negative number takes away: $${gainSum}+(${lossSum})=${net}$.`,
     ];
     if (m.ask === "net-change") {

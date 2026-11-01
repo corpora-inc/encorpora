@@ -31,7 +31,14 @@ const fractionAxes = {
   ask: defineAxis("ask", ["remaining-part", "periods-total"] as const),
 };
 const wholes = [
-  { unit: "days", total: "the season", be: "were ", a: "sunny", b: "rainy", rest: "snowy" },
+  {
+    unit: "days",
+    total: "the season",
+    be: "were ",
+    a: "sunny",
+    b: "rainy",
+    rest: "snowy",
+  },
   {
     unit: "cookies",
     total: "the batch",
