@@ -331,6 +331,10 @@ const entries: Entry[] = [
 
 /** How every SAT function lesson and method reads ambiguous glossary words. */
 const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
   base: "base-exponent",
   root: "root-radical",
   roots: "root-radical",
@@ -360,12 +364,6 @@ const noLink = [
   "periods",
   "population",
   "certain",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
 ];
 
 const stripFormat = (e: Entry): ProblemMethod => ({

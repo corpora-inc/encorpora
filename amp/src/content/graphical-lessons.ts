@@ -1,6 +1,10 @@
 import type { Lesson } from "./lessons.js";
 /** Glossary readings for the grade 6 and 8 graph lessons. */
 const GRID_SENSES = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
   unit: "unit",
   units: "unit",
   difference: "difference-subtract",
@@ -20,12 +24,6 @@ const GRID_NO_LINK = [
   "rule",
   "center",
   "scale",
-  "sides",
-  "side",
-  "left side",
-  "right side",
-  "term",
-  "terms",
   "rules",
 ];
 

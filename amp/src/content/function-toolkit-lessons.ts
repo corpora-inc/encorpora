@@ -3,6 +3,10 @@ import type { ProblemMethod } from "./problem-lessons";
 
 /** Glossary readings for the piecewise lesson and its two methods. */
 const PIECE_SENSES = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
   boundary: "boundary",
   vertex: "vertex-parabola",
 } as const;
@@ -18,12 +22,6 @@ const PIECE_NO_LINK = [
   "rule",
   "rules",
   "leaves",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
 ];
 
 /** The function toolkit: functions defined in pieces, transformations of

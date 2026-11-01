@@ -4,6 +4,10 @@ import { chainLesson } from "./chain-lesson-kit";
 
 /** Glossary readings for the Regents linear lessons and methods. */
 const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
   difference: "difference-subtract",
   factor: "factor-number",
   base: "base-shape",
@@ -25,12 +29,6 @@ const noLink = [
   "kind",
   "kinds",
   "certain",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
 ];
 
 /** What an equation and its two sides are, said on every screen. */

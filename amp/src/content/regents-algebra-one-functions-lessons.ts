@@ -4,6 +4,10 @@ import { chainLesson } from "./chain-lesson-kit";
 
 /** Glossary readings for the Regents function lessons and methods. */
 const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
   difference: "difference-subtract",
   product: "product-multiply",
   products: "product-multiply",
@@ -30,12 +34,6 @@ const noLink = [
   "leaves",
   "image",
   "more than",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
 ];
 
 export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {

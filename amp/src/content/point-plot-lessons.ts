@@ -184,7 +184,14 @@ const entries: Entry[] = [
   {
     id: "place-transformed-image",
     title: "Place the image of a rigid motion",
-    senses: { vertex: "vertex", vertices: "vertex" },
+    senses: {
+      side: "side-of-equation",
+      sides: "side-of-equation",
+      term: "term-expression",
+      terms: "term-expression",
+      vertex: "vertex",
+      vertices: "vertex",
+    },
     goal: "Move a figure by a slide, flip or turn, and place each new corner under its matching label.",
     summary:
       "A rigid motion moves a shape without stretching or bending it. A translation slides it, a reflection flips it over a line, and a rotation turns it around a point. A point's coordinates $(x, y)$ say how far across and how far up it is from $(0, 0)$, in that order. Each motion has a rule for the coordinates. Apply the rule to each corner. The new corner of $A$ is named $A'$, read “A prime”.",
@@ -487,6 +494,10 @@ const entries: Entry[] = [
 
 /** How every lesson and method here reads ambiguous glossary words. */
 const senses = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
   unit: "unit",
   units: "unit",
   squared: "square-number",
@@ -511,12 +522,6 @@ const noLink = [
   "leaves",
   "difference",
   "increasing",
-  "side",
-  "sides",
-  "left side",
-  "right side",
-  "term",
-  "terms",
   "image",
   "images",
   "plane",
@@ -525,7 +530,14 @@ const noLink = [
 
 const stripFormat = (e: Entry): ProblemMethod => ({
   goal: e.goal ?? e.summary,
-  senses: { ...senses, ...e.senses },
+  senses: {
+    side: "side-of-equation",
+    sides: "side-of-equation",
+    term: "term-expression",
+    terms: "term-expression",
+    ...senses,
+    ...e.senses,
+  },
   noLink,
   intuition: e.intuition,
   terms: e.terms,
@@ -544,7 +556,14 @@ export const pointPlotLessons: Lesson[] = entries.map((e) => ({
   id: e.id,
   title: e.title,
   summary: e.summary,
-  senses: { ...senses, ...e.senses },
+  senses: {
+    side: "side-of-equation",
+    sides: "side-of-equation",
+    term: "term-expression",
+    terms: "term-expression",
+    ...senses,
+    ...e.senses,
+  },
   noLink,
   templateIds: [e.id],
   objectives: [...e.objectives],
