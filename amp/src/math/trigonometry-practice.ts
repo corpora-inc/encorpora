@@ -1496,7 +1496,14 @@ export function trigEquationCase(seed: string) {
         : `The interval $0\\le x<2\\pi$ is one turn of the unit circle. It leaves out $2\\pi$, which is the same point as 0.`,
       offGrid
         ? `Tangent has period $\\pi$, so $u=2x$ takes the value $${pickT.tex}$ once in each half turn of $u$ (for example $u=${target > 0 ? "\\frac{\\pi}{4}" : "\\frac{3\\pi}{4}"}+n\\pi$).`
-        : `The equation is satisfied at $x\\in\\{${setTex(found, true)}\\}$ in $[0,2\\pi)$.`,
+        : doubled
+          ? `The equation is satisfied at $x\\in\\{${setTex(found, true)}\\}$ in $[0,2\\pi)$.`
+          : `On the unit circle, ${fn === "sin" ? "sine is the $y$-coordinate of the point" : fn === "cos" ? "cosine is the $x$-coordinate of the point" : "tangent is the $y$-coordinate divided by the $x$-coordinate"}. Check each angle of one turn where that equals $${pickT.tex}$.`,
+      ...(offGrid || doubled || count === 0
+        ? []
+        : [
+            `The angles that work are $x\\in\\{${setTex(found, true)}\\}$, read "$x$ is one of", in $[0,2\\pi)$.`,
+          ]),
       `So $${equationTex}$ has ${count} solution${count === 1 ? "" : "s"} with $0\\le x<2\\pi$.`,
     ];
     if (count === 0)
@@ -2221,7 +2228,9 @@ export function trigAreaCase(seed: string) {
       {
         label: math(radTex(a * b * m, 8, rad)),
         feedback:
-          "This halves twice. Multiply $\\frac12ab$ by $\\sin C$ once; the $\\frac12$ inside $\\sin C$ is not a second halving.",
+          C === 90
+            ? "This halves twice. The area is $\\frac12ab\\sin C$, and $\\sin 90^\\circ=1$, so halve only once."
+            : "This halves twice. Multiply $\\frac12ab$ by $\\sin C$ once; the $\\frac12$ inside the value of $\\sin C$ is not a second halving.",
       },
       {
         label: math(
@@ -2466,7 +2475,9 @@ export function periodicModelCase(seed: string) {
         feedback:
           variant === 1
             ? "This starts at the top. The ride starts at its lowest point, so the cosine must be flipped with a minus sign."
-            : "This starts at the bottom. Plain cosine starts at its maximum, which matches the start here.",
+            : variant === 2
+              ? "This starts on the midline going down. The model starts on the midline going up, so the number in front must be positive."
+              : "This starts at the bottom. Plain cosine starts at its maximum, which matches the start here.",
       },
       {
         label: math(model(lead0, bTex, k, opposite as "sin" | "cos")),

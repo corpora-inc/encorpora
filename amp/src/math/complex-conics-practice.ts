@@ -318,8 +318,8 @@ function planeCase(r: Random): Spec {
       explanation: [
         COMPLEX,
         PLANE,
-        `$P$ is ${Math.abs(a)} units ${a > 0 ? "right" : "left"} of 0, so the real part is $${a}$.`,
-        `$P$ is ${Math.abs(b)} units ${b > 0 ? "up" : "down"} from 0, so the imaginary part is $${b}$.`,
+        `$P$ is ${Math.abs(a)} unit${Math.abs(a) === 1 ? "" : "s"} ${a > 0 ? "right" : "left"} of 0, so the real part is $${a}$.`,
+        `$P$ is ${Math.abs(b)} unit${Math.abs(b) === 1 ? "" : "s"} ${b > 0 ? "up" : "down"} from 0, so the imaginary part is $${b}$.`,
         `So $z=${cxInt(a, b)}$.`,
       ],
       correct: M(cxInt(a, b)),
@@ -369,7 +369,7 @@ function planeCase(r: Random): Spec {
       hint: `The point for ${M(cxInt(a, b))} is ${Math.abs(a)} across and ${Math.abs(b)} up or down from 0. Use the Pythagorean theorem on that right triangle.`,
       explanation: [
         MODULUS,
-        `The point for $${cxInt(a, b)}$ is ${Math.abs(a)} units across and ${Math.abs(b)} units ${b > 0 ? "up" : "down"} from 0. Those are the legs of a right triangle.`,
+        `The point for $${cxInt(a, b)}$ is ${Math.abs(a)} unit${Math.abs(a) === 1 ? "" : "s"} across and ${Math.abs(b)} unit${Math.abs(b) === 1 ? "" : "s"} ${b > 0 ? "up" : "down"} from 0. Those are the legs of a right triangle.`,
         "The distance from 0 is the hypotenuse, the long side. The Pythagorean theorem says its square is the sum of the squares of the legs.",
         `So $|z|=\\sqrt{(${a})^2+(${b})^2}=\\sqrt{${a * a}+${b * b}}=\\sqrt{${n}}$.`,
         `In simplest form, $|${cxInt(a, b)}|=${sqrtTex(n)}$.`,
@@ -1090,7 +1090,7 @@ function factorCase(r: Random): Spec {
     return {
       variant,
       prompt: `Solve $${monic(b, c)}=0$ over the complex numbers. Choose the exact solutions.`,
-      hint: `Use $x=\\frac{-b\\pm\\sqrt{b^2-4c}}{2}$ with $b=${b}$ and $c=${c}. Find the discriminant, the part under the square root, first; its sign tells you whether $i$ appears.`,
+      hint: `Use $x=\\frac{-b\\pm\\sqrt{b^2-4c}}{2}$ with $b=${b}$ and $c=${c}$. Find the discriminant, the part under the square root, first; its sign tells you whether $i$ appears.`,
       explanation: [
         `For $x^2+bx+c=0$, the quadratic formula gives $x=\\frac{-b\\pm\\sqrt{b^2-4c}}{2}$. Here $b=${b}$ and $c=${c}$.`,
         `The discriminant, the part under the square root, is $b^2-4c=${b * b}-${4 * c}=${-D}$. It is negative.`,
@@ -2205,7 +2205,7 @@ function parabolaCase(r: Random): Spec {
         PARABOLA,
         PARABOLA_FORM,
         `Match the equation: the vertex is $${pt(h, k)}$ and $4p=${4 * p}$. Divide by 4: $p=${p}$.`,
-        `${p > 0 ? "A positive" : "A negative"} $p$ means the parabola opens ${p > 0 ? "upward" : "downward"}, so the focus is ${Math.abs(p)} units ${p > 0 ? "above" : "below"} the vertex.`,
+        `${p > 0 ? "A positive" : "A negative"} $p$ means the parabola opens ${p > 0 ? "upward" : "downward"}, so the focus is ${Math.abs(p)} unit${Math.abs(p) === 1 ? "" : "s"} ${p > 0 ? "above" : "below"} the vertex.`,
         `So the focus is $${pt(h, focusY)}$.`,
       ],
       correct: M(pt(h, focusY)),
