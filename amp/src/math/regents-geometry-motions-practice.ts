@@ -414,7 +414,15 @@ export const motionChain = chainFamily({
       kind === "translation"
         ? `Every vertex moves the same amount: ${f.move.replace(/ and .*/, "")}, and so do the other two vertices. A slide like that is a translation.`
         : kind === "reflection"
-          ? `The labels ${f.from.split("").map((c) => `$${c}$`).join(", ")} run ${turn(f.u)}, but ${f.to.split("").map((c) => `$${c}$`).join(", ")} run ${turn(f.v)}. Only a reflection, a flip, reverses that direction.`
+          ? `The labels ${f.from
+              .split("")
+              .map((c) => `$${c}$`)
+              .join(", ")} run ${turn(f.u)}, but ${f.to
+              .split("")
+              .map((c) => `$${c}$`)
+              .join(
+                ", ",
+              )} run ${turn(f.v)}. Only a reflection, a flip, reverses that direction.`
           : `The vertices do not all move the same amount: ${f.move}. So it is not a slide. The labels keep their direction, ${turn(f.u)}, so it is not a flip. That leaves a rotation, a turn.`;
     const misfit = (f: (typeof steps)[number], claimed: string) =>
       claimed === "translation"

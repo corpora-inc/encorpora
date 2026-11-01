@@ -290,7 +290,8 @@ export const centroidMedian = chainFamily({
         },
         {
           label: tex(whole),
-          feedback: "This is the whole median. $G$ cuts it into two pieces, and the question asks for one of them.",
+          feedback:
+            "This is the whole median. $G$ cuts it into two pieces, and the question asks for one of them.",
         },
       ],
       hint: `The whole median $\\overline{${vm}}$ is ${whole}. The centroid cuts it into 3 equal sections, and $${vg}$ takes 2 of them while $${gm}$ takes 1. Find the length of one section.`,
