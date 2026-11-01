@@ -126,7 +126,7 @@ const creditTerms: [RegExp, string][] = [
   ],
   [
     /compound/i,
-    "Compound interest is figured on the whole balance, so earlier interest earns interest too.",
+    "Compound interest is figured on the whole balance (the amount in the account now), so earlier interest earns interest too.",
   ],
   [
     /finance charge|cost of borrowing/i,

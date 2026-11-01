@@ -178,7 +178,7 @@ export const k8TemplateGlossary: Record<
       factors: "factor-number",
     },
   },
-  "interest-table-type": { noLink: ["balance", "whole"] },
+  "interest-table-type": { noLink: ["whole"] },
   "join-within-10": { noLink: ["square"] },
   "kit-leftovers": { noLink: ["leaves"] },
   "larger-share": { noLink: ["whole", "wholes"] },
