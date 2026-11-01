@@ -756,8 +756,30 @@ async function probeSelfTest(browser: Browser) {
   await page.setContent(sentence(false));
   await page.evaluate(shim);
   const failing = await probe(page);
+  // A small inline control below the fold, and a row of small inline
+  // controls whose neighbours cover each other, are still caught; a hidden
+  // "$" beside an input (no named control around it) is still text.
+  await page.setContent(`<main class="practice-workspace"><style>
+      .s{display:inline-flex;width:20px;height:24px;padding:0;border:0}
+      .m{font-size:9px}</style>
+      <p style="width:120px;margin:20px">${Array.from({ length: 12 }, (_, i) => `<button class="s">${i}</button>`).join("")}</p>
+      <p style="margin-top:900px">Below <button class="s">x</button> the fold</p>
+      <p><span class="m" aria-hidden="true">$</span><input aria-label="Dollars"></p></main>`);
+  await page.evaluate(shim);
+  const crowded = await probe(page);
   await page.close();
   const kinds = (f: Finding[]) => f.map((x) => `${x.kind}:${x.text}`);
+  const small = crowded
+    .filter((f) => f.kind === "small-target")
+    .map((f) => f.text);
+  if (!small.includes("6") || !small.includes("x"))
+    throw new Error(
+      `Probe misses crowded or off-screen inline controls: ${small}`,
+    );
+  if (!crowded.some((f) => f.kind === "tiny-text" && f.text === "$"))
+    throw new Error(
+      "Probe exempts a hidden symbol that is not inside a named control",
+    );
   if (passing.some((f) => f.kind === "small-target"))
     throw new Error(
       `Probe rejects an inline word with a 44 px hit area: ${kinds(passing)}`,

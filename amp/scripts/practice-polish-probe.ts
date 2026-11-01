@@ -97,6 +97,20 @@ export async function probe(page: Page): Promise<Finding[]> {
             detail: `x ${Math.round(r.left)}..${Math.round(r.right)} of ${innerWidth}`,
           });
       }
+    /** A control's effective size: its box, or its absolutely placed
+     * ::after hit area when that is larger. */
+    const inlineSize = (el: Element) => {
+      const r = el.getBoundingClientRect();
+      const after = getComputedStyle(el, "::after");
+      const has =
+        after.content !== "none" &&
+        after.position === "absolute" &&
+        after.pointerEvents !== "none";
+      return {
+        w: Math.max(r.width, has ? parseFloat(after.width) || 0 : 0),
+        h: Math.max(r.height, has ? parseFloat(after.height) || 0 : 0),
+      };
+    };
     const interactive =
       'button, a[href], input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]), select, summary, [role="button"], [role="menuitemradio"], label.choice-option, label.figure-choice-card, [role="radio"]';
     for (const root of roots)
@@ -110,61 +124,73 @@ export async function probe(page: Page): Promise<Finding[]> {
           continue;
         const r = e.getBoundingClientRect();
         // A control set inline in a sentence (a glossary word) keeps the
-        // text's line height; its target is an invisible hit area around
-        // the word (WCAG 2.5.8's inline case). Measure that area by hit
-        // testing 21 px out from the word's centre each way, not the text
-        // box. Another inline word may win an overlap; anything else fails.
+        // text's line height; its target is an invisible hit area around the
+        // word (WCAG 2.5.8's inline case), drawn by an absolutely placed
+        // ::after. Its effective size is the larger of its box and that
+        // area, measured from layout wherever it is (on screen or not).
         // (A button set to display: inline computes to inline-block.)
         const inline =
           getComputedStyle(e).display.startsWith("inline") &&
           !!e.parentElement?.closest("p, li, h1, h2, h3, legend, label, dd");
         if (inline) {
-          const cx = r.left + r.width / 2,
-            cy = r.top + r.height / 2;
-          let clip: Element | null = e.parentElement;
-          while (
-            clip &&
-            !/(auto|scroll|hidden)/.test(getComputedStyle(clip).overflowY)
-          )
-            clip = clip.parentElement;
-          const box = clip?.getBoundingClientRect() ?? {
-            left: 0,
-            top: 0,
-            right: innerWidth,
-            bottom: innerHeight,
-          };
-          const misses = [
-            [0, -21],
-            [0, 21],
-            [-21, 0],
-            [21, 0],
-          ].filter(([dx, dy]) => {
-            const x = cx + dx!,
-              y = cy + dy!;
-            if (
-              x < box.left ||
-              y < box.top ||
-              x >= box.right ||
-              y >= box.bottom
-            )
-              return false;
-            const hit = document.elementFromPoint(x, y);
-            if (!hit) return true;
-            if (e.contains(hit)) return false;
-            const other = hit.closest(interactive);
-            return !(
-              other &&
-              other !== e &&
-              getComputedStyle(other).display.startsWith("inline")
-            );
-          });
-          if (misses.length)
+          const { w, h } = inlineSize(e);
+          if (w < 43.5 || h < 43.5)
             found.push({
               kind: "small-target",
               selector: name(e),
               text: text(e),
-              detail: `inline hit area under 44 px: misses ${misses.map((m) => m.join(",")).join(" ")}`,
+              detail: `inline target ${Math.round(w)}×${Math.round(h)}`,
             });
+          // On screen, the area must also be the control's own: 21 px out
+          // from the word's centre lands on it, or on another word's
+          // invisible area (overlapping inline areas), never on open text
+          // or on another control's visible box.
+          const cx = r.left + r.width / 2,
+            cy = r.top + r.height / 2;
+          const points = [
+            [0, -21],
+            [0, 21],
+            [-21, 0],
+            [21, 0],
+          ].map(([dx, dy]) => [cx + dx!, cy + dy!] as const);
+          const onScreen = points.every(
+            ([x, y]) => x >= 0 && y >= 0 && x < innerWidth && y < innerHeight,
+          );
+          let clipped = false;
+          for (let p = e.parentElement; p; p = p.parentElement)
+            if (/(auto|scroll|hidden)/.test(getComputedStyle(p).overflowY)) {
+              const b = p.getBoundingClientRect();
+              if (
+                points.some(
+                  ([x, y]) =>
+                    x < b.left || y < b.top || x >= b.right || y >= b.bottom,
+                )
+              )
+                clipped = true;
+            }
+          if (onScreen && !clipped) {
+            const misses = points.filter(([x, y]) => {
+              const hit = document.elementFromPoint(x, y);
+              if (!hit) return true;
+              if (e.contains(hit)) return false;
+              // Overlapping a neighbouring word's area is fine when that
+              // word is itself a full inline target; open text, a boxed
+              // control or a small inline one is not.
+              const other = hit.closest(interactive);
+              if (!other || other === e) return true;
+              if (!getComputedStyle(other).display.startsWith("inline"))
+                return true;
+              const size = inlineSize(other);
+              return size.w < 43.5 || size.h < 43.5;
+            });
+            if (misses.length)
+              found.push({
+                kind: "small-target",
+                selector: name(e),
+                text: text(e),
+                detail: `inline hit area not its own at ${misses.map(([x, y]) => `${Math.round(x - cx)},${Math.round(y - cy)}`).join(" ")}`,
+              });
+          }
         } else if (r.width < 43.5 || r.height < 43.5)
           found.push({
             kind: "small-target",
@@ -221,7 +247,10 @@ export async function probe(page: Page): Promise<Finding[]> {
           // numbers (choice letters) are still held to the size.
           const glyph =
             !!parent.closest('[aria-hidden="true"]') &&
-            /^[^\p{L}\p{N}]$/u.test(n.textContent.trim());
+            !!parent.closest(
+              "button[aria-label], a[aria-label], [role='button'][aria-label]",
+            ) &&
+            /^[^\p{L}\p{N}]$/u.test((parent.textContent ?? "").trim());
           if (size < 12 && !glyph)
             found.push({
               kind: "tiny-text",
