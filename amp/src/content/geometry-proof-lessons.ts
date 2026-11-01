@@ -9,9 +9,9 @@ export const geometryProofMethods: Record<string, ProblemMethod> = {
       "corresponding angles": "corresponding-angles",
       side: "side",
     },
-    noLink: ["rule", "opposite", "plane"],
+    noLink: ["rule", "opposite", "plane", "parts"],
     intuition:
-      "A proof explains why a conclusion, the claim being proved, follows from facts you are given, called givens. Each step states a claim and gives a reason. A theorem is a rule already proved. You may use it when its conditions, the things it needs, are known to be true. An angle is formed by two rays (lines that start at a point and go on in one direction) with the same starting point. Its measure is its size in degrees (°), and a straight line makes 180°. Angles with equal measures are congruent. Two angles whose measures add to $180^\\circ$ are supplementary.",
+      "A proof explains why a conclusion, the claim being proved, follows from facts you are given, called givens. Each step states a claim and gives a reason. A theorem is a rule already proved. You may use it when its conditions, the things it needs, are known to be true. An angle is formed by two rays (parts of a line that start at one point and go on in one direction) with the same starting point. Its measure is its size in degrees (°), and a straight line makes 180°. Angles with equal measures are congruent. Two angles whose measures add to $180^\\circ$ are supplementary.",
     terms: ["proof", "theorem", "congruent", "supplementary"],
     method: [
       "Read the claim exactly. Does it say two angle measures are equal, or that measures add to a total? Find every angle it names.",
@@ -67,9 +67,9 @@ export const geometryProofLessons: Lesson[] = [
         stage: "intuition",
         title: "Four rules about angles",
         paragraphs: [
-          "Two angles that sit side by side and together fill a straight line form a linear pair. For example, points $A$, $B$ and $D$ lie on one straight line, in that order, and ray $BC$ points off the line. Then $\\angle ABC$ and $\\angle CBD$ form a linear pair. Their measures add to 180°, so they are supplementary. If one is 110°, the other is 70°.",
+          "Two angles that sit next to each other and together fill a straight line form a linear pair. For example, points $A$, $B$ and $D$ lie on one straight line, in that order, and ray $BC$ points off the line. Then $\\angle ABC$ and $\\angle CBD$ form a linear pair. Their measures add to 180°, so they are supplementary. If one is 110°, the other is 70°.",
           "When two straight lines cross, they make four angles. Two angles across from each other are called vertical angles, and they have equal measures. For example, if one angle is 40°, its neighbor is 180° − 40° = 140°. The angle across from the first is 180° − 140° = 40° again, because both form a linear pair with the same neighbor.",
-          "Two lines are parallel when they run side by side and never meet, like train rails. A third line crossing both is called a transversal. At each crossing it makes four angles. Angles in the same position at the two crossings, such as both upper right, are called corresponding angles. They are equal when the two crossed lines are parallel. If the crossed lines are not parallel, they are not equal.",
+          "Two lines are parallel when they run alongside each other and never meet, like train rails. A third line crossing both is called a transversal. At each crossing it makes four angles. Angles in the same position at the two crossings, such as both upper right, are called corresponding angles. They are equal when the two crossed lines are parallel. If the crossed lines are not parallel, they are not equal.",
           "The three angles inside a triangle are called its interior angles. Their sum, the total you get by adding them, is always 180°, as in 50° + 60° + 70° = 180°. This is the triangle angle-sum rule.",
         ],
       },
@@ -87,7 +87,7 @@ export const geometryProofLessons: Lesson[] = [
     closingSections: [
       {
         stage: "method",
-        title: "Why the angles of a triangle add to 180°",
+        title: "Why the angles of a triangle add to 180 degrees",
         paragraphs: [
           "Here is why the triangle rule is true. The picture shows a triangle with angles $50^\\circ$, $60^\\circ$ and $70^\\circ$. Through corner $C$, draw a line parallel to side $AB$, the side joining $A$ and $B$.",
           "Side $AC$ crosses both parallel lines, so it is a transversal. A transversal makes equal angles on opposite sides of itself, between the two parallel lines; these are called alternate interior angles. So side $AC$ makes an angle at $C$ equal to the angle at $A$. In the same way, side $BC$ makes an angle at $C$ equal to the angle at $B$.",

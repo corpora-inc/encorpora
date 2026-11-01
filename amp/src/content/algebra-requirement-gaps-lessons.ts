@@ -442,7 +442,7 @@ const interpretLinearParametersLesson: Lesson = {
   id: "interpret-linear-parameters",
   title: "What the slope and starting value mean",
   summary:
-    "A linear model is a rule, like $C = 39h + 63$, in which each extra 1 of input adds the same amount to the output. Here the input $h$ is hours worked, and the output $C$ is the charge in dollars. The 39 is the slope: each extra hour adds 39 dollars. The 63 is the starting value: the charge when $h = 0$. Always say what each number means, with its units, such as dollars or hours.",
+    "A linear model is a rule, like $C = 39h + 63$, in which each extra 1 of input changes the output by the same amount. Here the input $h$ is hours worked, and the output $C$ is the charge in dollars. The 39 is the slope: each extra hour adds 39 dollars. The 63 is the starting value: the charge when $h = 0$. Always say what each number means, with its units, such as dollars or hours.",
   templateIds: ["interpret-linear-parameters"],
   senses: {
     balance: "balance-account",

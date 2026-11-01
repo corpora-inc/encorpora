@@ -135,7 +135,7 @@ test("proof and rational-equation lessons lead with meaning, then example, metho
         "Statements, reasons and givens",
         "Four rules about angles",
         "A worked example",
-        "Why the angles of a triangle add to 180°",
+        "Why the angles of a triangle add to 180 degrees",
         "Watch for",
         "The precise statements",
       ],

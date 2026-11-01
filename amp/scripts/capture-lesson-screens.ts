@@ -11,6 +11,7 @@
  */
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 import { createServer } from "vite";
 import { chromium } from "playwright";
@@ -40,6 +41,7 @@ const output = values.out;
 await mkdir(output, { recursive: true });
 
 const server = await createServer({
+  root: fileURLToPath(new URL("..", import.meta.url)),
   logLevel: "error",
   server: { host: "127.0.0.1", port: 0 },
   plugins: [
@@ -49,7 +51,13 @@ const server = await createServer({
         vite.middlewares.use(async (req, res, next) => {
           const url = new URL(req.url ?? "/", "http://localhost");
           if (!url.pathname.startsWith("/__lesson-screens/")) return next();
-          const lesson = samples[Number(url.searchParams.get("sample"))]!;
+          const lesson = samples[Number(url.searchParams.get("sample"))];
+          if (!lesson) {
+            console.error(`Unknown sample in ${req.url}`);
+            res.statusCode = 400;
+            res.end("Unknown sample");
+            return;
+          }
           const template = url.searchParams.get("template");
           const payload = template
             ? problemLesson(template, "lesson-screens")
@@ -93,6 +101,11 @@ try {
       page.on("pageerror", (error) => {
         errors.push(error.message);
         console.error(error.message);
+      });
+      page.on("console", (message) => {
+        if (message.type() !== "error") return;
+        errors.push(message.text());
+        console.error(message.text());
       });
       for (const view of views) {
         await page.goto(

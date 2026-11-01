@@ -105,10 +105,10 @@ export const pythagoreanLesson: Lesson = {
     square: "square-shape",
     squared: "square-number",
     squaring: "square-number",
+    squares: "square-shape",
     root: "root-radical",
     side: "side",
     degrees: "degree-angle",
-    edge: "edge",
     unit: "unit",
     vertex: "vertex",
   },
@@ -124,7 +124,7 @@ export const pythagoreanLesson: Lesson = {
       stage: "intuition",
       title: "Before calculating",
       paragraphs: [
-        "The abbreviation cm means centimeters, a unit of length. Picture a right triangle with legs 3 cm and 4 cm long. On each side, build a square that uses that side as one of its edges. A square is a shape with four equal sides and four square corners.",
+        "The abbreviation cm means centimeters, a unit of length. Picture a right triangle with legs 3 cm and 4 cm long. On each side, build a square that uses that side as one of its own sides. A square is a shape with four equal sides and four square corners.",
         "Area is the amount of flat surface a shape covers. It is counted in square centimeters: one square centimeter is a small square 1 cm long on each side. The square on the 3 cm leg holds 3 rows of 3 of these small squares. So its area is 3 × 3 = 9 square centimeters. The square on the 4 cm leg has area 4 × 4 = 16 square centimeters. Together the two leg squares cover 9 + 16 = 25 square centimeters.",
         "The square on the hypotenuse covers exactly the same area: 25 square centimeters. Its side must be a number that, times itself, makes 25. That number is 5, so the hypotenuse is 5 cm long. This works for every right triangle, and the lesson shows why.",
         "Two symbols make this quicker to write. Multiplying a number by itself is called squaring it, and a small raised 2 shows it: $5^2$ (5 squared) means 5 × 5 = 25. Going back from 25 to 5 is called taking the square root. The square root of a number is the number that, times itself, gives it, written with a root sign: $\\sqrt{25} = 5$. A negative number works too, since $(-5) \\times (-5) = 25$. But a length is positive (greater than 0), so for a length always use the positive square root.",
@@ -137,7 +137,7 @@ export const pythagoreanLesson: Lesson = {
       title: "Why rearranging the pieces proves the relationship",
       paragraphs: [
         "Here is why the theorem holds for every right triangle. Take two large squares, each with sides $a + b$ long, so they have the same area. Place four copies of the same right triangle inside each one, arranged two different ways. Sliding or turning a piece does not change its area. In each large square, the uncovered area is the large square minus the four triangles. The large squares are equal and the triangles are equal, so the uncovered areas are equal too.",
-        "In the first arrangement, the uncovered middle shape has four sides, each of length $c$, because each one is a triangle's hypotenuse. Its corners are right angles. Here is why. A triangle's three angles always add to 180°. One angle is 90°, so the other two add to 90°. At each corner of the middle shape, those two angles and the uncovered corner sit along one straight edge. A straight edge makes a straight angle, a half-turn of 180°. So the uncovered corner is 180° − 90° = 90°. The middle shape is a square, with area $c^2$.",
+        "In the first arrangement, the uncovered middle shape has four sides, each of length $c$, because each one is a triangle's hypotenuse. Its corners are right angles. Here is why. A triangle's three angles always add to 180°. One angle is 90°, so the other two add to 90°. At each corner of the middle shape, those two angles and the uncovered corner sit along one straight line. A straight line makes a straight angle, a half-turn of 180°. So the uncovered corner is 180° − 90° = 90°. The middle shape is a square, with area $c^2$.",
         "In the second arrangement, the uncovered parts are two squares, with sides $a$ and $b$. Their total area is $a^2 + b^2$. The uncovered areas are equal, so $c^2 = a^2 + b^2$. Nothing here used particular numbers, so the argument works for any right triangle.",
         "In the picture, $a = 3$ and $b = 4$. Each large square has side 7 and area 7 × 7 = 49. A rectangle is a four-sided shape with four right angles. Each triangle is half of a 3-by-4 rectangle, whose area is 3 × 4 = 12, so the triangle's area is 12 ÷ 2 = 6. Four triangles cover 24. Either way, $49 - 24 = 25$ is left uncovered: one 5-by-5 square, or a 3-by-3 square and a 4-by-4 square together (9 + 16 = 25).",
       ],
@@ -151,7 +151,7 @@ export const pythagoreanLesson: Lesson = {
     steps: [
       "The legs, 6 cm and 8 cm, meet at the right angle. Let $c$ be the length of the hypotenuse in centimeters. It is the side across from the right angle.",
       "Use the Pythagorean theorem. A theorem is a math rule that has been proved, and this one is the square rule for right triangles: $6^2 + 8^2 = c^2$.",
-      "Square each leg: $6^2 = 6 \\times 6 = 36$ and $8^2 = 8 \\times 8 = 64$. These are the areas of the squares on the legs.",
+      "Multiply each leg length by itself: $6^2 = 6 \\times 6 = 36$ and $8^2 = 8 \\times 8 = 64$. These are the areas of the squares on the legs.",
       "Add the two squares: $c^2 = 36 + 64 = 100$. This is the area of the square on the hypotenuse.",
       "Take the positive square root to get the side length: $c = \\sqrt{100} = 10$, since 10 × 10 = 100.",
       "Check: $10^2 = 100$ and $6^2 + 8^2 = 100$. The hypotenuse, 10 cm, is longer than either leg, as it must be.",
@@ -168,7 +168,7 @@ export const pythagoreanLesson: Lesson = {
   ],
   pitfalls: [
     "The rule $a^2 + b^2 = c^2$ works only for right triangles, with $c$ across from the right angle. Knowing two side lengths does not tell you that a triangle has a right angle.",
-    "Square each leg separately, then add. $(6 + 8)^2 = 196$, but $6^2 + 8^2 = 100$.",
+    "Multiply each leg by itself separately, then add. $(6 + 8)^2 = 196$, but $6^2 + 8^2 = 100$.",
     "The sum (total) of the squares is the hypotenuse's square, not the hypotenuse. Take its positive square root, and report centimeters, not square centimeters.",
   ],
   parentGuide:
@@ -181,6 +181,7 @@ export const missingLegLesson: Lesson = {
   summary:
     "In a right triangle, two sides meet at its square corner; these are the legs. The opposite, longest side is the hypotenuse. Its square matches the two leg squares together. Subtract the known leg's square to find the missing leg's square, then take the positive length whose square is that result.",
   templateIds: ["right-triangle-missing-leg"],
+  senses: { degrees: "degree-angle", side: "side", squared: "square-number" },
   objectives: [
     "Distinguish a known hypotenuse from a known leg.",
     "Use subtraction and a positive square root to find the other leg.",
@@ -214,7 +215,7 @@ export const missingLegLesson: Lesson = {
       title: "Remove the known part",
       paragraphs: [
         "Suppose the hypotenuse is 13 cm and one leg is 5 cm. Let \\($x$\\) stand for the other leg's length in centimeters. The two leg squares together equal the hypotenuse square: x² + 5² = 13².",
-        "The hypotenuse square has area 169 cm². One leg square has area 25 cm². The other leg square supplies the rest: 169 − 25 = 144 cm². In the equation, subtract the same number from both sides to preserve equality: x² + 25 − 25 = 169 − 25, so x² = 144.",
+        "The hypotenuse square has area 169 cm². One leg square has area 25 cm². The other leg square supplies the rest: 169 − 25 = 144 cm². In the equation, subtract the same number on the left and on the right of the equals sign, so the two stay equal: x² + 25 − 25 = 169 − 25, so x² = 144.",
         "A square root is the nonnegative number (zero or greater) whose square is a given number. Since 12 × 12 = 144, √144 = 12. A side has positive length, so x = 12 and the missing side is 12 cm long. The value −12 also squares to 144, but it cannot be a side length.",
         "This is subtraction because the hypotenuse square is the total and one leg square is a known part. Adding 169 and 25 would find a larger total instead of the missing part. Subtract the squares, not the lengths: 13 − 5 = 8, and 8² + 5² = 89, not 169.",
       ],
@@ -233,7 +234,7 @@ export const missingLegLesson: Lesson = {
     steps: [
       "Let \\($x$\\) be the missing leg length in centimeters. The hypotenuse is 13 cm, so x² + 5² = 13².",
       "Calculate 5² = 25 and 13² = 169: x² + 25 = 169.",
-      "Subtract 25 from both sides: x² = 169 − 25 = 144.",
+      "Subtract 25 on the left and on the right of the equals sign: x² = 169 − 25 = 144.",
       "Take the positive square root: x = √144 = 12, since 12 × 12 = 144.",
       "Check: 12² + 5² = 144 + 25 = 169 = 13². The leg 12 cm is shorter than the hypotenuse 13 cm.",
     ],
@@ -262,6 +263,7 @@ export const converseLesson: Lesson = {
   summary:
     "A comparison of three squares determines whether a triangle has a right angle.",
   templateIds: ["pythagorean-converse"],
+  senses: { degrees: "degree-angle", side: "side", squared: "square-number" },
   objectives: [
     "Find the longest side regardless of listing order.",
     "Use equality of squared lengths to identify right triangles.",

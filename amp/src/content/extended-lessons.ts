@@ -406,7 +406,7 @@ export const extendedLessons: Lesson[] = [
     id: "signed-addition",
     title: "Combine positive and negative changes",
     summary:
-      "A number line is a line with evenly spaced marks for numbers. Numbers to the right of 0 are positive, meaning greater than 0. Numbers to the left are negative, meaning less than 0, and are written with a minus sign, like $-7$. Adding a positive number moves right, and adding a negative number moves left. Moves of the same length in opposite directions cancel, meaning they undo each other.",
+      "A number line is a line with evenly spaced marks for numbers. Numbers to the right of 0 are positive, meaning greater than 0. Numbers to the left are negative, meaning less than 0, and are written with a minus sign, like $-7$. Adding a positive number moves right, and adding a negative number moves left. Moves of the same length that go opposite ways cancel, meaning they undo each other.",
     templateIds: ["integer-addition"],
     senses: { change: "change", opposite: "opposite-number" },
     objectives: [
@@ -420,7 +420,7 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "A number line is a straight line with evenly spaced marks, where each step from one mark to the next is a change of 1. Zero is marked on it. Numbers to the right of 0 are positive, meaning greater than 0. Numbers to the left are negative, meaning less than 0. The number $-2$ is read negative two, and it sits 2 steps left of 0. Whether a number is positive or negative is called its sign. Zero is neither.",
           "Think of each number you add as a move. Adding 3 means move 3 steps right. Adding $-2$ means move 2 steps left. Start at 0 and make both moves: 3 steps right, then 2 steps back. You stop 1 step right of 0, so $3 + (-2) = 1$.",
-          "The two moves partly cancel. The 2 left steps undo 2 of the right steps, and 1 right step is left over. The counting numbers 0, 1, 2, 3 and so on are called whole numbers. The whole numbers and their negatives, such as $-3$, 0 and 5, are called integers.",
+          "The two moves partly cancel. The 2 left steps undo 2 of the right steps, and 1 right step is left over. The numbers 0, 1, 2, 3 and so on are called whole numbers. The whole numbers and their negatives, such as $-3$, 0 and 5, are called integers.",
         ],
       },
       {
@@ -567,7 +567,7 @@ export const extendedLessons: Lesson[] = [
         paragraphs: [
           "The number multiplying a variable is called its coefficient. In $3x + 5y$, the coefficient of $y$ is 5. Subtracting removes $y$ only when its coefficients are the same in both equations.",
           "If they differ, multiply a whole equation by a number first. Multiply every term on both sides, so the two sides stay equal and the solutions do not change. The number must not be 0, because multiplying by 0 turns any equation into $0 = 0$ and loses its information.",
-          "For $3x + 5y = -5$ and $3x + 4y = -7$, multiply the first equation by 4 and the second by 5. Now both have $20y$: $12x + 20y = -20$ and $15x + 20y = -35$. Subtract the second from the first: $12x - 15x = -3x$, and $-20 - (-35) = -20 + 35 = 15$, since subtracting a negative is the same as adding. So $-3x = 15$. Dividing both sides by $-3$ undoes the multiplication and gives $x = -5$.",
+          "For $3x + 5y = -5$ and $3x + 4y = -7$, multiply the first equation by 4 and the second by 5. The $x$ coefficients already match here, so subtracting right away would remove $x$. But the question asks for $x$, so remove $y$ instead. Now both have $20y$: $12x + 20y = -20$ and $15x + 20y = -35$. Subtract the second from the first: $12x - 15x = -3x$, and $-20 - (-35) = -20 + 35 = 15$, since subtracting a negative is the same as adding. So $-3x = 15$. Dividing both sides by $-3$ undoes the multiplication and gives $x = -5$.",
           "Some systems have no solution, and some have infinitely many solutions, meaning endlessly many pairs. Every system in this practice has exactly one solution.",
         ],
       },
