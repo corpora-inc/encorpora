@@ -8,7 +8,7 @@ const describing =
 /** Words ending in s that follow such a word but are not plural nouns
  * ("1 square is left", "1 whole contains 8 pieces"). */
 const notPlural =
-  "is|as|has|was|its|this|thus|contains|makes|holds|uses|gives|stays|remains|equals|means|goes|does|leaves|takes|needs|fits|shows|sits|lies|ends|starts|stands|represents|awards";
+  "is|as|has|was|its|this|thus|plus|minus|times|less|contains|makes|holds|uses|gives|stays|remains|equals|means|goes|does|leaves|takes|needs|fits|shows|sits|lies|ends|starts|stands|represents|awards";
 /** Generated text must read correctly for every count, including 1. */
 const rules: [RegExp, string][] = [
   [

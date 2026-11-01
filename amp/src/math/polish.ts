@@ -34,7 +34,7 @@ const describing =
   "red|blue|green|yellow|orange|purple|pink|black|white|gray|brown|round|square|cubic|long|short|tall|small|big|large|shaded|unshaded|extra|complete|full|empty|equal|whole";
 /** Words ending in s after a describing word that are not plural nouns. */
 const notPlural =
-  "is|as|has|was|its|this|thus|contains|makes|holds|uses|gives|stays|remains|equals|means|goes|does|leaves|takes|needs|fits|shows|sits|lies|ends|starts|stands|represents|awards";
+  "is|as|has|was|its|this|thus|plus|minus|times|less|contains|makes|holds|uses|gives|stays|remains|equals|means|goes|does|leaves|takes|needs|fits|shows|sits|lies|ends|starts|stands|represents|awards";
 const describedPlural = new RegExp(
   `(^|[^\\d./−+×÷*-]\\s|^\\s|[^\\d./−+×÷*\\s-])1 (${describing}) (?!(?:${notPlural})\\b)([a-z]+s)\\b( (?:contain|use|have|are|make|remain|hold|become|give|cover)\\b)?`,
   "g",
