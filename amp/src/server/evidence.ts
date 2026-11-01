@@ -10,6 +10,7 @@ export type PracticeObservation = Pick<
   | "assisted"
   | "createdAt"
   | "ingestionSequence"
+  | "evidenceWeight"
 >;
 export type OrderedPracticeObservation = PracticeObservation & {
   ingestionSequence: string;
@@ -33,6 +34,10 @@ export function projectSkillEvidence(
 ): SkillEvidence[] {
   const result = new Map<string, SkillEvidence>();
   for (const [index, source] of observations.entries()) {
+    // Paper marks without the learner's answer weigh less than 1
+    // (src/workbook/results.ts): a "right" mark is practice, not independent
+    // evidence, and leaves the review schedule alone. Mirrors migration 0079.
+    const weight = source.evidenceWeight ?? 1;
     const observation: OrderedPracticeObservation = {
       ingestionSequence: source.ingestionSequence ?? String(index + 1),
       id: source.id,
@@ -41,20 +46,24 @@ export function projectSkillEvidence(
       correct: source.correct,
       assisted: source.assisted,
       createdAt: source.createdAt,
+      ...(weight < 1 ? { evidenceWeight: weight } : {}),
     };
     const old = result.get(source.skillId);
-    const independent = source.correct && !source.assisted;
+    const independent = source.correct && !source.assisted && weight >= 1;
+    const partial = source.correct && !source.assisted && weight < 1;
     const at = Date.parse(source.createdAt);
     if (!Number.isFinite(at)) throw new Error("Invalid observation time");
     const recentOutcomes = [...(old?.recentOutcomes ?? []), observation].slice(
       -5,
     );
     const recentIndependentCorrect = recentOutcomes.filter(
-      (a) => a.correct && !a.assisted,
+      (a) => a.correct && !a.assisted && (a.evidenceWeight ?? 1) >= 1,
     ).length;
     let creditedRetrievals = old?.creditedRetrievals ?? 0;
     let creditedAtMs = old?.creditedAtMs ?? null;
-    if (!independent) {
+    if (partial) {
+      // Unchanged.
+    } else if (!independent) {
       creditedRetrievals = 0;
       creditedAtMs = null;
     } else if (
@@ -74,7 +83,9 @@ export function projectSkillEvidence(
       status:
         independent && attempts >= 5 && recentIndependentCorrect >= 4
           ? "review-ready"
-          : "practicing",
+          : partial && old?.status === "review-ready"
+            ? "review-ready"
+            : "practicing",
       lastPracticedAt: source.createdAt,
       recentOutcomes,
       latestIndependent: independent
@@ -82,7 +93,10 @@ export function projectSkillEvidence(
         : (old?.latestIndependent ?? null),
       creditedRetrievals,
       creditedAtMs,
-      reviewDueAt: at + RETRIEVAL_INTERVALS[creditedRetrievals]!,
+      reviewDueAt:
+        partial && old?.reviewDueAt != null
+          ? old.reviewDueAt
+          : at + RETRIEVAL_INTERVALS[creditedRetrievals]!,
     });
   }
   return [...result.values()];

@@ -78,3 +78,33 @@ export const workbookHistorySchema = z.object({
    * document and print it from the browser. */
   pdf: z.boolean().default(false),
 });
+
+/** One printed problem on the results screen. */
+export const workbookResultRowSchema = z.object({
+  n: z.number().int(),
+  section: z.enum(workbookSectionKinds),
+  skillId: z.string(),
+  prompt: z.string(),
+  /** Type the answer, pick the printed letter, or mark only. */
+  entry: z.enum(["number", "choice", "mark"]),
+  options: z
+    .array(z.object({ id: z.string(), letter: z.string(), label: z.string() }))
+    .optional(),
+  recorded: z
+    .object({
+      method: z.enum(["answer", "mark"]),
+      correct: z.boolean(),
+      response: z.string().nullable(),
+    })
+    .nullable(),
+});
+export type WorkbookResultRow = z.infer<typeof workbookResultRowSchema>;
+export const workbookResultsSchema = z.object({
+  workbook: workbookSummarySchema,
+  rows: z.array(workbookResultRowSchema),
+  /** On save: how many results were new. */
+  recorded: z.number().int().optional(),
+});
+export type WorkbookResults = z.infer<typeof workbookResultsSchema>;
+export type WorkbookResultEntry =
+  { n: number; answer: string } | { n: number; mark: "right" | "not-yet" };
