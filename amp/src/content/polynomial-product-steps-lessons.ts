@@ -13,20 +13,7 @@ const entries: WorkEntry[] = [
     ],
     intuition:
       "A product such as $(x+2)(x+3)$ is the area of a rectangle $x+2$ wide and $x+3$ tall. Cut each side into its two parts and the rectangle splits into four pieces: $x\\cdot x$, $x\\cdot3$, $2\\cdot x$ and $2\\cdot3$. Each term of the first factor meets each term of the second, so a binomial times a binomial gives 4 products, and a binomial times a trinomial gives 6.",
-    terms: [
-      [
-        "term",
-        "A number, a letter, or a product of both, joined to the others by $+$ or $-$. In $2x-5$ the terms are $2x$ and $-5$.",
-      ],
-      [
-        "like terms",
-        "Terms with the same letter to the same power, such as $5x$ and $-2x$. Only like terms combine into one term.",
-      ],
-      [
-        "standard form",
-        "A polynomial written with the highest power first and the constant last, such as $x^2+5x+6$.",
-      ],
-    ],
+    terms: ["term-expression", "like-terms", "standard-form-polynomial"],
     method: [
       "Write the factors and count the terms in each; the number of products is the product of those counts.",
       "Multiply each term of the first factor by each term of the second, keeping the sign in front of every term.",

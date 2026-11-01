@@ -266,13 +266,7 @@ export const quadraticStructureLessons: Lesson[] = [
 export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   "parabola-vertex": {
     goal: "Find the vertex $(h, k)$ of a parabola from its equation or its graph.",
-    terms: [
-      [
-        "vertex",
-        "The turning point: lowest when the parabola opens up, highest when it opens down.",
-      ],
-      ["vertex form", "y = a(x − h)² + k, whose vertex is $(h, k)$."],
-    ],
+    terms: ["vertex-parabola", "vertex-form"],
     method: [
       "Vertex form: $h$ is the $x$ that makes the squared factor 0, and $k$ is the constant added outside.",
       "Standard form y = ax² + bx + c: find x = −b/(2a), then substitute it to find $y$.",
@@ -283,9 +277,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   },
   "parabola-axis": {
     goal: "Find the vertical line a parabola is symmetric about.",
-    terms: [
-      ["axis of symmetry", "The vertical line x = h through the vertex."],
-    ],
+    terms: ["axis-of-symmetry"],
     method: [
       "From two points at the same height, such as the two zeros, take the $x$ halfway between them: their average.",
       "From y = ax² + bx + c, use x = −b/(2a).",
@@ -308,8 +300,8 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
     goal: "Expand a product of two binomials.",
     terms: [
       [
-        "area model",
-        "A rectangle whose sides are the factors, split into one region per pair of terms.",
+        "area-model",
+        "Here the sides are binomials, with one region for each pair of terms.",
       ],
     ],
     method: [
@@ -332,10 +324,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   },
   "structure-rewrite": {
     goal: "Rewrite an expression as a product by seeing a difference of squares or a perfect square in it.",
-    terms: [
-      ["difference of squares", "A² − B² = (A − B)(A + B)."],
-      ["perfect square", "A² + 2AB + B² = (A + B)²."],
-    ],
+    terms: ["difference-of-squares", "perfect-square-trinomial"],
     method: [
       "Name $A$ and $B$: what is being squared in each square term (A can be x², or $x + 3$).",
       "Write the matching product: (A − B)(A + B) or (A + B)².",
@@ -345,12 +334,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   },
   "zeros-from-factors": {
     goal: "Connect the factors of a polynomial with its zeros and $x$-intercepts.",
-    terms: [
-      [
-        "zero",
-        "A value of $x$ that makes the polynomial 0: an $x$-intercept of its graph.",
-      ],
-    ],
+    terms: ["zero-of-a-function"],
     method: [
       "Each factor (x − r) is 0 at x = r; set each factor equal to 0.",
       "To build a polynomial, turn each zero $r$ into the factor (x − r).",
@@ -370,9 +354,7 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   },
   "remainder-theorem": {
     goal: "Find the remainder of p(x) ÷ (x − a), or a coefficient that makes $x - a a$ factor.",
-    terms: [
-      ["remainder theorem", "The remainder of p(x) ÷ (x − a) is $p(a)$."],
-    ],
+    terms: ["remainder-theorem"],
     method: [
       "Read a from the divisor: x − a uses $a$, and x + a uses −a.",
       "Evaluate $p(a)$, or carry out synthetic division and read its last number.",
@@ -382,7 +364,12 @@ export const quadraticStructureMethods: Record<string, ProblemMethod> = {
   },
   "polynomial-quotient": {
     goal: "Divide a cubic by x − a to get its quotient and remainder.",
-    terms: [["quotient", "The polynomial $q(x)$ with p(x) = (x − a)q(x) + R."]],
+    terms: [
+      [
+        "quotient",
+        "Here the quotient is the polynomial $q(x)$ with $p(x) = (x - a)q(x) + R$.",
+      ],
+    ],
     method: [
       "Write $a$ and the coefficients of $p$, with 0 for a missing power.",
       "Bring down the first coefficient; multiply by $a$, add to the next, and repeat.",

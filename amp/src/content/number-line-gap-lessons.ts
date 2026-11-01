@@ -7,13 +7,7 @@ export const numberLineGapMethods: Record<string, ProblemMethod> = {
     goal: "Read the whole number a point names on a number line between two neighboring hundreds by counting tick marks of 10.",
     intuition:
       "A number line between two hundreds is cut into equal steps. Here each tick mark is worth 10, and the halfway mark is 50 more than the left end. To read a point, decide whether it is before or after the halfway mark and then count the tick marks from the left end.",
-    terms: [
-      ["tick mark", "A short line that marks an equal step on a number line."],
-      [
-        "halfway mark",
-        "The tick exactly between the two ends: the left end plus half of the distance.",
-      ],
-    ],
+    terms: ["tick-mark", "halfway-point"],
     method: [
       "Find the value of one tick mark: the distance between the ends divided by the number of steps.",
       "Count the tick marks from the left end to the point and multiply the count by the tick value.",
@@ -27,11 +21,8 @@ export const numberLineGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "A jump to the right adds and a jump to the left takes away. A number line with two jumps tells a story in order: it starts at a number, then the first jump happens, then the second. The lengths of the jumps are the amounts.",
     terms: [
-      [
-        "jump",
-        "An arc on the number line that shows adding (right) or taking away (left).",
-      ],
-      ["start", "The number where the first jump begins."],
+      "jump",
+      ["number-line", "The start is the number where the first jump begins."],
     ],
     method: [
       "Read the start and the length and direction of each jump, in order.",

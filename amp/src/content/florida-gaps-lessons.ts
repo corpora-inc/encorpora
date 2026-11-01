@@ -1,16 +1,8 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
-const truthTerms: [string, string][] = [
-  [
-    "equation",
-    "Two expressions joined by an equal sign, such as $9-1=7+1$. The sign says both sides have the same value.",
-  ],
-  [
-    "true or false",
-    "An equation is true when the value of its left side equals the value of its right side, and false when the values differ.",
-  ],
-];
+const truthTerms: MethodTerm[] = ["equation", "true-equation"];
 const truthMethod = (
   goal: string,
   watch: string,
@@ -57,17 +49,14 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       "The decimal 0.1 is one tenth and 0.01 is one hundredth. Adding or subtracting one tenth changes the digit in the tenths place by 1, and one hundredth changes the digit in the hundredths place by 1. Other digits stay the same unless a digit passes 9 or 0.",
     terms: [
       [
-        "tenths place",
-        "The first digit right of the decimal point; it counts tenths.",
+        "place",
+        "The tenths place is the first place right of the decimal point; each count there is worth 0.1.",
       ],
       [
-        "hundredths place",
-        "The second digit right of the decimal point; it counts hundredths.",
+        "place",
+        "The hundredths place is the second place right of the decimal point; each count there is worth 0.01.",
       ],
-      [
-        "regroup",
-        "Carry or borrow between places, as when 9 tenths plus 1 tenth makes 1 whole.",
-      ],
+      "regroup",
     ],
     method: [
       "Write the number with two decimal places so every place has a digit.",
@@ -83,8 +72,8 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       "Multiplying by 0.1 takes one tenth of a number, which is the same as dividing by 10. Multiplying by 0.01 takes one hundredth, the same as dividing by 100. Dividing by 0.1 asks how many tenths fit, which is the same as multiplying by 10. Dividing by 0.01 is the same as multiplying by 100.",
     terms: [
       [
-        "place-value shift",
-        "Each digit moves to a place worth 10 times more, or one tenth as much, so the digits stay in the same order.",
+        "place-value",
+        "Multiplying by 10 moves every digit one place left, worth 10 times as much; dividing by 10 moves it one place right.",
       ],
     ],
     method: [
@@ -101,13 +90,10 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       "A written description such as “add 3 and 4, then multiply by 5” names the operations in the order they happen. Parentheses in an expression show which operation happens first. Without them, multiplication and division happen before addition and subtraction.",
     terms: [
       [
-        "numerical expression",
-        "Numbers joined by operations, with or without parentheses, such as $5\\times(3+4)$.",
+        "expression",
+        "A numerical expression has numbers only, no variables, such as $5 \\times (3 + 4)$.",
       ],
-      [
-        "order of operations",
-        "Parentheses first, then multiplication and division, then addition and subtraction from left to right.",
-      ],
+      "order-of-operations",
     ],
     method: [
       "Read the description (or expression) and list its operations in the order they happen.",
@@ -121,13 +107,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose the equation with a variable and two different operations that models a whole-number story.",
     intuition:
       "A story with equal groups and one more step has two operations. Name the unknown with a letter, write what happens to it in the order of the story, and set that equal to the total the story gives.",
-    terms: [
-      ["variable", "A letter that stands for an unknown number."],
-      [
-        "equal groups",
-        "Several groups with the same number in each. $6n$ means 6 groups of $n$.",
-      ],
-    ],
+    terms: ["variable", ["equal-groups", "$6n$ means 6 groups of $n$."]],
     method: [
       "Say what the letter stands for.",
       "Write what happens to the unknown in the order of the story: multiply for equal groups, add or subtract for the extra step.",
@@ -140,16 +120,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     goal: "Use a stated conversion factor to convert a measure or an amount of money between systems.",
     intuition:
       "A conversion factor such as $1\\text{ inch}=2.54\\text{ centimeters}$ says how many of one unit make one of the other. A measure is the same size in either unit, so a larger unit has a smaller number, and a smaller unit has a larger number.",
-    terms: [
-      [
-        "conversion factor",
-        "The number of one unit that equals one of another unit, given in the problem.",
-      ],
-      [
-        "customary and metric",
-        "Two measurement systems. Customary units include inches, pounds and gallons. Metric units include centimeters, kilograms and liters.",
-      ],
-    ],
+    terms: ["conversion-factor", "customary-units", "metric-units"],
     method: [
       "Write the factor as “1 of the given unit equals $k$ of the wanted unit.”",
       "If you are going from the unit written on the left of the factor to the unit on the right, multiply by $k$. If you are going back, divide by $k$.",
@@ -162,16 +133,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     goal: "Multiply or divide two integers, using the sign rules and zero.",
     intuition:
       "An integer is a whole number, its opposite, or zero. Multiply or divide the numbers without their signs first. The product or quotient is positive when the signs are the same and negative when they are different. Zero times any number is 0, and 0 divided by a nonzero number is 0.",
-    terms: [
-      [
-        "opposite",
-        "The number the same distance from 0 on the other side, such as $-5$ and 5.",
-      ],
-      [
-        "quotient",
-        "The result of division. Division is the inverse of multiplication, so it follows the same sign rules.",
-      ],
-    ],
+    terms: ["opposite-number", "quotient"],
     method: [
       "Ignore the signs and multiply or divide the numbers.",
       "Same signs: the result is positive. Different signs: the result is negative.",
@@ -185,17 +147,11 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "The dot product of two vectors multiplies matching components and adds the results, so it is a single number, not a vector. It is 0 exactly when the vectors are perpendicular. Divided by the length of a vector, it measures how far the other vector reaches along it.",
     terms: [
-      [
-        "dot product",
-        "For $\\langle a,b\\rangle$ and $\\langle c,d\\rangle$, the number $ac+bd$.",
-      ],
-      [
-        "scalar projection",
-        "The signed length of the shadow of $\\mathbf{u}$ on $\\mathbf{v}$: $\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|}$.",
-      ],
+      "dot-product",
+      "scalar-projection",
       [
         "perpendicular",
-        "Meeting at a right angle. Two nonzero vectors are perpendicular exactly when their dot product is 0.",
+        "Two nonzero vectors are perpendicular exactly when their dot product is 0.",
       ],
     ],
     method: [
@@ -212,13 +168,15 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       "The dot product also equals the lengths times the cosine of the angle between the vectors. Solving for the cosine gives the angle. A dot product of 0 means a right angle, and when one vector is a multiple of the other the angle is $0^\\circ$ or $180^\\circ$.",
     terms: [
       [
-        "angle between vectors",
-        "The angle $\\theta$ from $0^\\circ$ to $180^\\circ$ between two vectors drawn from the same point.",
+        "angle",
+        "Between two vectors drawn from the same point, it is the angle $\\theta$ from $0^\\circ$ to $180^\\circ$.",
       ],
+      "vector",
       [
-        "parallel vectors",
-        "Vectors where one is a nonzero multiple of the other. The multiple is positive when they point the same way.",
+        "vector",
+        "Parallel vectors are nonzero multiples of each other: a positive multiple points the same way, a negative one the opposite way.",
       ],
+      "parallel",
     ],
     method: [
       "Compute the dot product and the two lengths.",
@@ -232,16 +190,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     goal: "Use $f(-x)$ to classify a polynomial function as even, odd or neither, or choose a function with a stated symmetry.",
     intuition:
       "Replacing $x$ by $-x$ reflects a graph across the $y$-axis. If the function is unchanged, its graph is symmetric about the $y$-axis and it is even. If every output changes sign, the graph is symmetric about the origin and it is odd.",
-    terms: [
-      [
-        "even function",
-        "A function with $f(-x)=f(x)$ for every $x$ in its domain.",
-      ],
-      [
-        "odd function",
-        "A function with $f(-x)=-f(x)$ for every $x$ in its domain.",
-      ],
-    ],
+    terms: ["even-function", "odd-function"],
     method: [
       "Replace every $x$ by $-x$. A term $kx^n$ becomes $k(-x)^n$, which keeps its sign when $n$ is even and changes sign when $n$ is odd.",
       "Simplify and compare with $f(x)$ and with $-f(x)$.",
@@ -256,12 +205,12 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       "Two functions can be combined by doing the operation to their outputs. For $f$ and $g$, $(f+g)(x)$ means $f(x)+g(x)$, and so on. A quotient $\\frac{f(x)}{g(x)}$ is undefined where $g(x)=0$, so those inputs are left out of its domain.",
     terms: [
       [
-        "$(f+g)(x)$, $(f-g)(x)$, $(fg)(x)$, $(f/g)(x)$",
-        "$f(x)+g(x)$, $f(x)-g(x)$, $f(x)\\cdot g(x)$ and $\\frac{f(x)}{g(x)}$ at the same input $x$.",
+        "function",
+        "Here $(f+g)(x)=f(x)+g(x)$; subtract, multiply or divide the same way, using both outputs at the same input $x$.",
       ],
       [
         "domain",
-        "The set of inputs for which the expression is defined. For a quotient, it excludes every $x$ with $g(x)=0$.",
+        "For $\\frac{f(x)}{g(x)}$, also leave out every $x$ with $g(x)=0$.",
       ],
     ],
     method: [
@@ -277,12 +226,15 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "A trapezoid has one pair of parallel sides, the bases. The segment joining the midpoints of the two legs is the midsegment. It is parallel to the bases and its length is the average of theirs. In an isosceles trapezoid the legs are equal, which makes the base angles equal and the diagonals equal.",
     terms: [
+      "trapezoid",
+      [
+        "midsegment",
+        "In a trapezoid, the midsegment joins the midpoints of the two legs, and its length is the average of the two bases.",
+      ],
       [
         "trapezoid",
-        "A quadrilateral with exactly one pair of parallel sides, the bases; the other two sides are the legs.",
+        "In an isosceles trapezoid, the two legs are equal in length.",
       ],
-      ["midsegment", "The segment joining the midpoints of the two legs."],
-      ["isosceles trapezoid", "A trapezoid whose legs are congruent."],
     ],
     method: [
       "Midsegment: its length is half the sum of the bases, $\\frac{b_1+b_2}{2}$.",

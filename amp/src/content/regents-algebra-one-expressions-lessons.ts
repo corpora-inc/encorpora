@@ -8,13 +8,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
       goal: "Cancel matching units in a chain of conversion factors and name the unit that remains.",
       intuition:
         "A conversion factor is a fraction equal to 1, such as $\\frac{5280\\ \\text{feet}}{1\\ \\text{mile}}$, so multiplying by it changes the unit but not the amount. A unit that appears once on top and once underneath cancels, like a common factor.",
-      terms: [
-        [
-          "conversion factor",
-          "A fraction whose top and bottom are the same amount in different units.",
-        ],
-        ["rate", "A quantity per unit of another, such as miles per hour."],
-      ],
+      terms: ["conversion-factor", "rate"],
       method: [
         "Write the starting rate and each factor as fractions with their units.",
         "Cancel a unit that appears in a numerator and a denominator.",
@@ -27,13 +21,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
       goal: "Raise a monomial with a negative coefficient to a power by raising each factor.",
       intuition:
         "A power of a product is the product of the powers: $(ab)^k=a^kb^k$. The negative sign belongs to the coefficient, so it is raised to the power too. An odd number of negative factors gives a negative result, an even number a positive one.",
-      terms: [
-        [
-          "monomial",
-          "A product of a number and powers of variables, such as $-2x^3$.",
-        ],
-        ["coefficient", "The number multiplying the variable part."],
-      ],
+      terms: ["monomial", "coefficient"],
       method: [
         "Raise the coefficient, including its sign, to the power.",
         "Multiply the variable's exponent by the power.",
@@ -46,10 +34,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
       goal: "Simplify a square root so it matches another radicand, add the like radicals, and keep the unlike one separate.",
       intuition:
         "Square roots add like objects: $3\\sqrt{5}+2\\sqrt{5}=5\\sqrt{5}$, just as 3 fives plus 2 fives is 5 fives. Different radicands, such as $\\sqrt{5}$ and $\\sqrt{3}$, are different objects and stay separate. A radical such as $\\sqrt{45}$ can hide a like radical: $\\sqrt{45}=3\\sqrt{5}$.",
-      terms: [
-        ["radicand", "The number under the root sign."],
-        ["like radicals", "Radicals with the same radicand."],
-      ],
+      terms: ["radicand", "like-radicals"],
       method: [
         "Pull out any perfect-square factor: $\\sqrt{45}=\\sqrt{9\\cdot5}=3\\sqrt{5}$.",
         "Add the coefficients of the radicals that now have the same radicand.",
@@ -62,16 +47,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
       goal: "Complete the square on a monic quadratic equation and keep both sides balanced.",
       intuition:
         "The expression $x^2+bx$ becomes a perfect square when you add $(\\frac{b}{2})^2$: for example $x^2+6x+9=(x+3)^2$. Adding a number to one side changes the equation, so add it to both sides.",
-      terms: [
-        [
-          "perfect square trinomial",
-          "A trinomial that is the square of a binomial, such as $x^2+6x+9$.",
-        ],
-        [
-          "completing the square",
-          "Adding the number that turns $x^2+bx$ into a perfect square.",
-        ],
-      ],
+      terms: ["perfect-square-trinomial", "completing-the-square"],
       method: [
         "Move the constant to the right side.",
         "Add $(\\frac{b}{2})^2$ to both sides.",
@@ -84,16 +60,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
       goal: "Name the property of equality behind a step of completing the square.",
       intuition:
         "An equation is a balance. A step that does the same thing to both sides keeps it balanced. Adding or subtracting the same number is the addition property of equality; multiplying or dividing both sides by the same nonzero number is the multiplication property of equality.",
-      terms: [
-        [
-          "property of equality",
-          "A rule saying which operations on both sides keep an equation true.",
-        ],
-        [
-          "balance",
-          "The two sides stay equal when the same operation is applied to both.",
-        ],
-      ],
+      terms: ["property-of-equality", "balance-scale"],
       method: [
         "Compare the equation before and after the step.",
         "Decide what was done to both sides: a number added or subtracted, or a factor multiplied or divided.",
@@ -106,11 +73,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
       goal: "Read the degree, leading coefficient and constant term of a polynomial written out of order.",
       intuition:
         "A polynomial is a sum of terms. The degree is the largest exponent of $x$, and the leading coefficient is the number multiplying that highest power, wherever it is written. The constant term is the one with no $x$.",
-      terms: [
-        ["degree", "The largest exponent of the variable."],
-        ["leading coefficient", "The coefficient of the term with the degree."],
-        ["constant term", "The term without a variable."],
-      ],
+      terms: ["degree-polynomial", "leading-coefficient", "constant-term"],
       method: [
         "Find the highest exponent: that is the degree.",
         "Read the coefficient, with its sign, of that term.",

@@ -14,13 +14,10 @@ const entries: WorkEntry[] = [
     intuition:
       "A photo and its enlargement have the same angles, and every length is multiplied by the same number. If a side of 8 cm becomes 12 cm, the factor is $\\frac{12}{8}=\\frac{3}{2}$, and every other side is also multiplied by $\\frac{3}{2}$.",
     terms: [
+      "corresponding",
       [
-        "corresponding",
-        "Matching places in similar figures: the vertices, angles and sides that are in the same position.",
-      ],
-      [
-        "scale factor",
-        "The number that multiplies each side of one triangle to give the corresponding side of the other. Name the direction: from the first triangle to the second.",
+        "scale-factor",
+        "Name the direction: from the first triangle to the second.",
       ],
     ],
     method: [
@@ -69,11 +66,8 @@ const entries: WorkEntry[] = [
     intuition:
       "If 1 cm on a plan stands for 5 ft, a wall drawn 4 cm long is $4\\times5=20$ ft long. To find an area, first find the actual length and width, then multiply them: $20\\times12=240$ square feet. Multiplying the drawing's area by 5 would be wrong, because area grows by the factor twice.",
     terms: [
-      [
-        "scale",
-        "The statement of how a length in the drawing compares with the actual length, such as $1\\text{ cm}=5\\text{ ft}$.",
-      ],
-      ["actual size", "The size of the real object, in the real unit."],
+      "scale",
+      ["scale", "The actual size is the real object's size, in real units."],
     ],
     method: [
       "Multiply the drawing's length and width by the number of actual units one drawing unit stands for.",
@@ -124,11 +118,11 @@ const entries: WorkEntry[] = [
     terms: [
       [
         "coefficient",
-        "The number $a$ in $a\\times10^n$, at least 1 and less than 10.",
+        "In scientific notation $a \\times 10^n$, the coefficient $a$ is at least 1 and less than 10.",
       ],
       [
-        "power of 10",
-        "$10^n$: for positive $n$ it is 1 followed by $n$ zeros; for negative $n$ it is $\\frac{1}{10^{|n|}}$.",
+        "power-of-10",
+        "For a negative exponent, $10^{-n} = \\frac{1}{10^n}$, such as $10^{-2} = 0.01$.",
       ],
     ],
     method: [

@@ -8,22 +8,10 @@ export const congruenceMethods: Record<string, ProblemMethod> = {
     intuition:
       "Congruent triangles have the same side lengths and angle measures. Corresponding parts are sides or angles paired by the stated vertex matching. $S$ means a side pair and $A$ an angle pair: SSS matches three sides; SAS uses two sides and the angle between them; ASA uses two angles and the side between them; AAS uses two angles and another side.",
     terms: [
-      [
-        "congruent triangles",
-        "Triangles that match exactly after translations, rotations or reflections.",
-      ],
-      [
-        "corresponding parts",
-        "Sides or angles paired by the stated vertex matching.",
-      ],
-      [
-        "included angle",
-        "The angle at the shared endpoint of two specified sides.",
-      ],
-      [
-        "included side",
-        "The side joining the vertices of two specified angles.",
-      ],
+      "congruent",
+      "corresponding",
+      "included-angle",
+      ["side", "The included side joins the vertices of the two given angles."],
     ],
     method: [
       "Use the vertex correspondence to pair sides and angles. Count only the equalities that are stated or marked.",

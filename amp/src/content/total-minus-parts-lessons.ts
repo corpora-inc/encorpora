@@ -8,11 +8,8 @@ export const totalMinusPartsMethods: Record<string, ProblemMethod> = {
     intuition:
       "Some stories join two amounts and then take some away, and others take two parts out of a whole. In both, the first step is to add the two amounts that go together, and the second step is a subtraction with that sum.",
     terms: [
-      [
-        "regrouping",
-        "Carrying in addition or borrowing in subtraction when a place value column needs more than 9 or fewer than 0.",
-      ],
-      ["the rest", "What is left of the whole after the parts are taken out."],
+      "regroup",
+      ["whole", "The rest is the whole minus all the parts already named."],
     ],
     method: [
       "Add the two amounts that are joined or removed together, using regrouping.",
@@ -26,16 +23,7 @@ export const totalMinusPartsMethods: Record<string, ProblemMethod> = {
     goal: "Add two measures given as mixed numbers with unlike denominators, or as a fraction and a decimal, and subtract the sum from a total.",
     intuition:
       "To add or subtract fractions the pieces must be the same size, so rewrite them with a common denominator. A fraction and a decimal are two ways to write a number, so write both the same way before combining them.",
-    terms: [
-      [
-        "common denominator",
-        "A denominator that every fraction can be rewritten with, such as 16 for eighths and sixteenths.",
-      ],
-      [
-        "mixed number",
-        "A whole number and a fraction together, such as $2\\frac{1}{8}$.",
-      ],
-    ],
+    terms: ["common-denominator", "mixed-number"],
     method: [
       "Rewrite each measure in one form: improper fractions with a common denominator, or decimals.",
       "Add the two measures that go together, then subtract that sum from the total.",

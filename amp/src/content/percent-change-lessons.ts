@@ -2,14 +2,11 @@ import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 const terms: NonNullable<ProblemMethod["terms"]> = [
   [
-    "base quantity",
-    "The original quantity used as the reference for the percentage.",
+    "percent-change",
+    "The base quantity is the original amount, the one the change is divided by.",
   ],
-  ["percent", "Per hundred: 25% of a quantity means 25/100 of that quantity."],
-  [
-    "amount of change",
-    "The difference between the original and final quantities, measured in the same units.",
-  ],
+  "percent",
+  "amount-of-change",
 ];
 export const percentChangeMethods: Record<string, ProblemMethod> = {
   "percent-change-rate": {
@@ -36,13 +33,7 @@ export const percentChangeMethods: Record<string, ProblemMethod> = {
   },
   "percent-change-original": {
     goal: "Recover the original quantity from a final quantity and a stated percentage change.",
-    terms: [
-      ...terms,
-      [
-        "multiplier",
-        "The number multiplying the original quantity to give the final quantity.",
-      ],
-    ],
+    terms: [...terms, "multiplier"],
     method: [
       "Divide the percentage by 100, then add it to 1 for an increase or subtract it from 1 for a decrease.",
       "Divide the final quantity by this nonzero multiplier.",

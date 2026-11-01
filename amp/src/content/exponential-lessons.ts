@@ -1,19 +1,14 @@
+import type { MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
 const terms = {
-  exponential: [
-    "exponential function",
-    "$y = a·b$ˣ: it starts at $a$ and multiplies by the growth factor $b$ for each step of 1 in $x$.",
-  ] as [string, string],
+  exponential: "exponential-function" as MethodTerm,
   logarithm: [
     "logarithm",
-    "log_b N is the exponent $p$ with b^p = N; log with no base means base 10, and ln means base $e$.",
-  ] as [string, string],
-  ratio: [
-    "common ratio",
-    "The number $r$ each term is multiplied by to get the next.",
-  ] as [string, string],
+    "$\\log$ with no base means base 10, and $\\ln$ means base $e$.",
+  ] as MethodTerm,
+  ratio: "common-ratio" as MethodTerm,
 };
 
 export const exponentialLessons: Lesson[] = [

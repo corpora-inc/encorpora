@@ -6,17 +6,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
     goal: "Choose a step in deriving the law of sines or cosines, the law that starts a given triangle, or the number of triangles the data allow.",
     intuition:
       "An altitude is a segment from a vertex perpendicular to the opposite side. It cuts a triangle into right triangles, where sine and cosine are ratios of sides. Writing the same altitude in two ways, or Pythagoras' theorem in two right triangles, links the original sides and angles.",
-    terms: [
-      [
-        "altitude",
-        "A segment from a vertex perpendicular to the line containing the opposite side.",
-      ],
-      [
-        "opposite side",
-        "The side that does not touch the named angle. Side $a$ is opposite angle $A$.",
-      ],
-      ["included angle", "The angle formed by two given sides, between them."],
-    ],
+    terms: ["altitude", "opposite-side-angle", "included-angle"],
     method: [
       "Draw the altitude and name the two right triangles it makes. In each, identify the hypotenuse and the leg you want.",
       "To derive a law, write the same quantity (the altitude, or the foot's distance along the base) with sine or cosine in each right triangle, then equate or substitute.",
@@ -30,20 +20,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
     goal: "Given a situation to model, choose the variable definitions with units, the rate, a unit that matches the rate, or which quantities vary.",
     intuition:
       "A model relates quantities that can be measured. Before writing any equation, decide what each letter measures and in what unit. The quantity you choose or change is independent; the quantity that responds is dependent. A rate says how much the dependent quantity changes for each one unit of the independent quantity.",
-    terms: [
-      [
-        "independent quantity",
-        "The quantity you choose or change, such as time.",
-      ],
-      [
-        "dependent quantity",
-        "The quantity that responds, such as a total cost.",
-      ],
-      [
-        "rate",
-        "A ratio of two units, such as dollars per hour, that stays constant in a linear model.",
-      ],
-    ],
+    terms: ["independent-variable", "dependent-variable", "rate"],
     method: [
       "Name the quantity the question asks you to predict. It is the dependent quantity.",
       "Name the quantity that changes it. It is the independent quantity.",
@@ -58,17 +35,11 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
     intuition:
       "A stem-and-leaf plot writes each data value in two pieces. The stem holds the leading digits and the leaf holds the last digit. The key tells you what a stem and leaf mean together, including where the decimal point goes. The values increase down the plot and from left to right, so the plot is already in order.",
     terms: [
-      [
-        "stem",
-        "The leading digit or digits of a value, listed once in the left column.",
-      ],
-      [
-        "leaf",
-        "The last digit of a value, listed in a row to the right of its stem.",
-      ],
+      "stem",
+      "leaf",
       [
         "key",
-        "The line that shows how to read a stem and leaf as a number, such as $3\\mid 5$ means $3.5$.",
+        "In a stem-and-leaf plot, the key shows how to read a row: $3 \\mid 5$ means 3.5.",
       ],
     ],
     method: [
@@ -84,12 +55,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
     goal: "Given an income and categorized expenses in dollars and cents, find a missing category, the surplus or deficit, or the change that balances.",
     intuition:
       "A budget balances when the income equals the total of the expenses. If expenses are less than income, the difference is a surplus. If expenses are more than income, the difference is a deficit. Money amounts are decimals: add and subtract them with the decimal points lined up.",
-    terms: [
-      ["income", "The money coming in during the period."],
-      ["expense", "Money planned or spent on one category."],
-      ["surplus", "The amount by which income exceeds total expenses."],
-      ["deficit", "The amount by which total expenses exceed income."],
-    ],
+    terms: ["income", "expense", "surplus", "deficit"],
     method: [
       "Add all the expenses you know, lining up the decimal points.",
       "Subtract the smaller of the income and the total from the larger. A missing category is income minus the known expenses.",
@@ -103,11 +69,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
     goal: "Given gross pay, deductions and net pay in dollars and cents, find net pay, gross pay or a missing deduction, or the take-home amount.",
     intuition:
       "Gross pay is what a worker earns before anything is taken out. Deductions, such as taxes and a health plan, are amounts withheld from it. Net pay, or take-home pay, is what remains: gross pay minus all the deductions.",
-    terms: [
-      ["gross pay", "Total earnings before deductions."],
-      ["deduction", "An amount withheld from gross pay, such as a tax."],
-      ["net pay", "Take-home pay: gross pay minus all deductions."],
-    ],
+    terms: ["gross-pay", "deduction", "net-pay"],
     method: [
       "If pay is by the hour, multiply the hours by the hourly pay to get gross pay.",
       "Add the deductions into one total with the decimal points lined up.",
