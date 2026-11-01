@@ -403,7 +403,7 @@ const legacyPrinciples: Record<string, string> = {
     "A proportional relationship has the form y = kx, with constant of proportionality $k$; its graph passes through the origin.",
   // Integers, expressions, equations
   "integer-addition":
-    "Adding integers: with like signs, add absolute values and keep the sign; with unlike signs, subtract absolute values and take the sign of the larger.",
+    "Adding integers (whole numbers and their negatives): with the same sign, add the absolute values (distances from 0) and keep that sign. With different signs, subtract the smaller absolute value from the larger, and take the sign of the number with the larger absolute value. If the absolute values are equal, the sum is 0.",
   "number-line-distance":
     "The distance between $a$ and $b$ on the number line is |a − b|.",
   "integer-power":
@@ -411,11 +411,11 @@ const legacyPrinciples: Record<string, string> = {
   "operation-order":
     "Order of operations: grouping symbols, then exponents, then multiplication and division left to right, then addition and subtraction left to right.",
   "substitute-linear-expression":
-    "Substitution: replacing a variable with a value evaluates the expression at that value.",
+    "Substitution: replace the variable (the letter standing for a number) with the given value, then do the arithmetic. The result is the expression's value at that number.",
   "distributive-expression-choice":
-    "Distributive property of multiplication over addition: $a(b + c) = ab + ac$, for all real numbers $a$, $b$, $c$.",
+    "Distributive property: writing letters side by side, as in $ab$, means multiply. Then $a(b + c) = ab + ac$ for all real numbers $a$, $b$ and $c$. In words, a number times a sum (the result of adding) equals the number times each part, added together.",
   "combine-like-coefficient":
-    "Distributive property: ax + bx = (a + b)x, so like terms combine by adding their coefficients.",
+    "Like terms (terms with the same letter part) combine by adding their coefficients. With letters, $ax + bx = (a + b)x$, where $ax$ means $a$ times $x$. For example, $6x - 8x = (6 - 8)x = -2x$.",
   "linear-equation":
     "Properties of equality: adding, subtracting, multiplying or dividing both sides by the same number (nonzero for division) preserves the solutions.",
   "negative-coefficient-equation":
@@ -431,10 +431,10 @@ const legacyPrinciples: Record<string, string> = {
   "equation-solution-count":
     "A linear equation reduces to ax = b: one solution if a ≠ 0; none if a = 0 and b ≠ 0; infinitely many if a = 0 and b = 0.",
   "linear-system-x":
-    "Elimination: adding multiples of equations produces an equivalent system; choose multiples that eliminate one variable.",
+    "Elimination means removing one variable (unknown letter) by combining the equations. Multiplying an equation by any number except 0 keeps the same solutions. So does replacing one equation with the sum or difference of the two. Choose the numbers to multiply by so that one variable cancels.",
   // Lines and functions
   "line-slope":
-    "Slope: m = (y₂ − y₁)/(x₂ − x₁), the rate of change of $y$ with respect to $x$.",
+    "Slope: $m = \\frac{y_2 - y_1}{x_2 - x_1}$. Here $m$ stands for the slope, and the small numbers 1 and 2 mark which point each coordinate comes from: $(x_1, y_1)$ and $(x_2, y_2)$. The two $x$-coordinates must be different ($x_1 \\ne x_2$). The slope is how much $y$ changes for each increase of 1 in $x$.",
   "graphed-line-slope":
     "Slope: $m = \\frac{\\text{rise}}{\\text{run}} = \\frac{y_2 - y_1}{x_2 - x_1}$. It is constant along a line.",
   "unequal-step-rate":

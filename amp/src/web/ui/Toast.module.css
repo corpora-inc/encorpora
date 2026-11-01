@@ -51,3 +51,8 @@
   top: calc(var(--space-4) + env(safe-area-inset-top, 0px));
   bottom: auto;
 }
+/* The message takes focus only to be announced and scrolled into view; it is
+   not a control, so it shows no focus ring. */
+.content [tabindex="-1"]:focus {
+  outline: none;
+}

@@ -24,6 +24,7 @@ function fakeBrowser(delay = 0, onRender?: (html: string) => void) {
         route: async () => undefined,
         setContent: async (html: string) => onRender?.(html),
         emulateMedia: async () => undefined,
+        waitForFunction: async () => ({ jsonValue: async () => "none" }),
         pdf: async () => {
           rendering++;
           peak = Math.max(peak, rendering);
@@ -207,6 +208,56 @@ test(
     } finally {
       await service.close();
       beacon.close();
+    }
+  },
+);
+
+test(
+  "real Chromium prints a composed workbook: a daily workbook, and a failed composition is refused",
+  { skip: !existsSync(chromium.executablePath()) && "Chromium not installed" },
+  async () => {
+    const { skills } = await import("../src/curriculum/catalog.js");
+    const { lessons } = await import("../src/content/lessons.js");
+    const { templates } = await import("../src/math/engine.js");
+    const { estimateFrontier, initialLevel } =
+      await import("../src/learning/frontier.js");
+    const { composeWorkbook } = await import("../src/workbook/compose.js");
+    const { workbookHtml } = await import("../src/workbook/render.js");
+    const now = Date.parse("2026-10-31T13:00:00Z");
+    const spec = composeWorkbook({
+      templates,
+      skills,
+      lessons,
+      frontier: estimateFrontier({
+        start: initialLevel({ birthYear: 2017, now }),
+        observations: [],
+        gradeOf: () => undefined,
+        strandOf: (id) => id,
+        guessOf: () => 0,
+        now,
+      }),
+      evidence: [],
+      date: "2026-10-31",
+      minutes: 30,
+      learnerKey: "render-service",
+      now,
+    });
+    const html = workbookHtml(spec, { lessons, skillTitle: (id) => id });
+    const { service, render } = await start({ token, timeoutMs: 60_000 });
+    try {
+      const response = await render({ html, format: "Letter" });
+      assert.equal(response.status, 200);
+      const pdf = Buffer.from(await response.arrayBuffer());
+      const pages = (pdf.toString("latin1").match(/\/Type\s*\/Page[^s]/g) ?? [])
+        .length;
+      assert.ok(pages >= 4, `${pages} composed pages`);
+      const failed = await render({
+        html: `<!doctype html><html data-compose><body><p>x</p><script>document.documentElement.dataset.layout = "error"</script></body></html>`,
+        format: "Letter",
+      });
+      assert.equal(failed.status, 422);
+    } finally {
+      await service.close();
     }
   },
 );

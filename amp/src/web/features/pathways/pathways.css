@@ -698,8 +698,9 @@
 .pathways-footer {
   flex-shrink: 0;
 }
+/* Two lines of status: a longer message never pushes the map down. */
 .pathways-status {
-  min-height: 44px;
+  min-height: 52px;
 }
 .pathways-workspace {
   flex: 1;
