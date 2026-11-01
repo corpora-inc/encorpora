@@ -201,7 +201,7 @@ export function generateElementaryProblem(
       figure = { kind: "ten-frame", first: a, second: b, capacity: 10 };
       prompt = `There ${isAre(a)} ${count(a, "round counter")} and ${count(b, "square counter")}. How many counters altogether?`;
       answer = a + b;
-      hint = `Say ${a} for the ${a} round counters. Then count on one number for each of the ${b} square counters.`;
+      hint = `Say ${a} for the ${count(a, "round counter")}. Then count on one number for each of the ${count(b, "square counter")}.`;
       explanation = [
         `"Altogether" means put the two groups together, so add.`,
         `There ${isAre(a)} ${a} round and ${b} square: those are the two parts.`,
@@ -270,7 +270,7 @@ export function generateElementaryProblem(
       explanation = [
         `Every block that was in the box either was taken out or stayed.`,
         `So put the two groups back together: ${removed} + ${left} = ${total}.`,
-        `Check: start with ${total}, take out ${removed}, and ${left} stay.`,
+        `Check: start with ${total} and take out ${removed}; then ${left} ${isAre(left)} left in the box.`,
         `There were ${count(total, "block")} in the box at first.`,
       ];
       break;
@@ -285,7 +285,7 @@ export function generateElementaryProblem(
       hint = `Split ${b} into two parts: the ${needed} that moves to the ${a}, and the part that stays.`;
       explanation = [
         `Making a ten first helps, because 10 plus a number is easy to read.`,
-        `${a} needs ${needed} more to make 10, so ${needed} moves from the ${b}.`,
+        `${a} needs ${needed} more to make 10, so move ${needed} from the ${b} to the ${a}.`,
         `What stays is ${b} − ${needed} = ${answer}, because ${needed} + ${answer} = ${b}.`,
         `So ${a} + ${b} = 10 + ${answer} = ${a + b}. The part of ${b} left is ${answer}.`,
       ];
@@ -336,7 +336,7 @@ export function generateElementaryProblem(
       explanation = [
         `${n} is ${count(Math.floor(n / 10), "ten")} and ${count(n % 10, "one")}.`,
         `Ten ${more ? "more adds" : "less takes away"} exactly one ten, so only the tens digit changes.`,
-        `${count(Math.floor(n / 10), "ten")} ${more ? "plus" : "minus"} 1 ten is ${count(Math.floor(answer / 10), "ten")}; the ${count(n % 10, "one")} stay.`,
+        `${count(Math.floor(n / 10), "ten")} ${more ? "plus" : "minus"} 1 ten is ${count(Math.floor(answer / 10), "ten")}. The ones digit stays ${n % 10}.`,
         `Ten ${more ? "more" : "less"} than ${n} is ${answer}.`,
       ];
       break;
@@ -486,6 +486,7 @@ export function generateElementaryProblem(
       explanation.push(
         `Subtract one place at a time, starting with the ones. Trade from the next place when a place is too small.`,
       );
+      const tradedHundred = tt === 0;
       if (tt === 0) {
         hh--;
         tt = 10;
@@ -496,7 +497,9 @@ export function generateElementaryProblem(
       tt--;
       oo += 10;
       explanation.push(
-        `You cannot take ${count(b % 10, "one")} from ${count(o, "one")}, so trade 1 ten for 10 ones. Now there ${isAre(tt)} ${count(tt, "ten")} and ${count(oo, "one")}.`,
+        tradedHundred
+          ? `Now trade 1 of those tens for 10 ones. That leaves ${count(tt, "ten")} and ${count(oo, "one")}.`
+          : `You cannot take ${count(b % 10, "one")} from ${count(o, "one")}, so trade 1 ten for 10 ones. Now there ${isAre(tt)} ${count(tt, "ten")} and ${count(oo, "one")}.`,
       );
       if (tt < Math.floor(b / 10) % 10) {
         hh--;

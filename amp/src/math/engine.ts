@@ -1249,7 +1249,7 @@ function generateRawProblem(
                 `Nothing is left, so ${a} − ${b} = 0.`,
               ]
             : [
-                `Subtracting ${b} means taking ${b} away from ${a}.`,
+                `To subtract ${b}, take ${b} away from ${a}.`,
                 `Count back ${b} from ${a}, or ask what number goes with ${b} to reach ${a}.`,
                 `${b} + ${a - b} = ${a}, so ${a} − ${b} = ${answer}.`,
               ];

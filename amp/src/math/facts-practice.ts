@@ -212,7 +212,7 @@ export function generateFactsProblem(
       prompt = `What is ${whole} − ${part}?`;
       hint = `Think of the addition fact: ${part} + □ = ${whole}.`;
       explanation =
-        whole - part >= 10
+        whole - part >= 10 && whole < 20
           ? [
               `${whole} is 1 ten and ${whole - 10} ones.`,
               `There are enough ones to take ${part} from, so the ten can stay.`,

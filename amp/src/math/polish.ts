@@ -29,9 +29,37 @@ function atMostOne(token: string) {
   if (fraction) return Number(fraction[1]) <= Number(fraction[2]);
   return Number(token) === 1;
 }
+/** Words that describe a counted noun: "1 square counters" → "1 square counter". */
+const describing =
+  "red|blue|green|yellow|orange|purple|pink|black|white|gray|brown|round|square|cubic|long|short|tall|small|big|large|shaded|unshaded|extra|complete|full|empty|equal|whole";
+/** Words ending in s after a describing word that are not plural nouns. */
+const notPlural =
+  "is|as|has|was|its|this|thus|contains|makes|holds|uses|gives|stays|remains|equals|means|goes|does|leaves|takes|needs|fits|shows|sits|lies|ends|starts|stands|represents|awards";
+const describedPlural = new RegExp(
+  `(^|[^\\d./−+×÷*-]\\s|^\\s|[^\\d./−+×÷*\\s-])1 (${describing}) (?!(?:${notPlural})\\b)([a-z]+s)\\b( (?:contain|use|have|are|make|remain|hold|become|give|cover)\\b)?`,
+  "g",
+);
+/** A noun shared by a list keeps its plural: "3 purple and 1 green sections". */
+const sharedByList = /\d [a-z]+,? (?:and|or) $/;
 export function polish(text: string): string {
   return (
     text
+      // "1 square counters" → "1 square counter"
+      .replace(
+        describedPlural,
+        (
+          match: string,
+          before: string,
+          word: string,
+          noun: string,
+          verb: string | undefined,
+          offset: number,
+          whole: string,
+        ) =>
+          sharedByList.test(whole.slice(0, offset + before.length))
+            ? match
+            : `${before}1 ${word} ${singular(noun)}${verb ? agree(verb) : ""}`,
+      )
       // "There are 1 dots" → "There is 1 dot"
       .replace(/\b([Tt]here) are 1 /g, "$1 is 1 ")
       .replace(/\b([Tt]here) were 1 /g, "$1 was 1 ")

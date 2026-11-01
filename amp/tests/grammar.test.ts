@@ -2,6 +2,13 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { templates, generateProblem } from "../src/math/engine";
 
+/** Words that describe a counted noun ("1 square counter", "1 red counter"). */
+const describing =
+  "red|blue|green|yellow|orange|purple|pink|black|white|gray|brown|round|square|cubic|long|short|tall|small|big|large|shaded|unshaded|extra|complete|full|empty|equal|whole";
+/** Words ending in s that follow such a word but are not plural nouns
+ * ("1 square is left", "1 whole contains 8 pieces"). */
+const notPlural =
+  "is|as|has|was|its|this|thus|contains|makes|holds|uses|gives|stays|remains|equals|means|goes|does|leaves|takes|needs|fits|shows|sits|lies|ends|starts|stands|represents|awards";
 /** Generated text must read correctly for every count, including 1. */
 const rules: [RegExp, string][] = [
   [
@@ -12,6 +19,12 @@ const rules: [RegExp, string][] = [
   [
     /(?<![\d./−+×÷=*-]\s?)\b1 (were|are|have)\b/,
     "plural verb directly after 1",
+  ],
+  [
+    new RegExp(
+      `(?<![\\d./−+×÷*-]\\s?)(?<!\\d [a-z]+,? (?:and|or) )\\b1 (?:${describing}) (?!(?:${notPlural})\\b)[a-z]+(?<!s)s\\b`,
+    ),
+    "plural noun after 1 and a describing word",
   ],
   [/\([a-z]*s\)|[a-z]\(s\)/, "“(s)” plural placeholder"],
   [
@@ -47,4 +60,21 @@ test("a word ending in ss is not a plural noun", () => {
   assert.equal(plural.test("1 across and 5 up"), false);
   assert.equal(plural.test("1 miss and 2 makes"), false);
   assert.equal(plural.test("1 liters"), true);
+});
+
+test("a describing word between 1 and its noun does not hide the plural", () => {
+  const plural = rules[3]![0];
+  // Founder report from a printed workbook (join-within-10).
+  assert.equal(
+    plural.test("There are 3 round counters and 1 square counters."),
+    true,
+  );
+  assert.equal(plural.test("1 red counters and 3 blue counters"), true);
+  assert.equal(plural.test("The area is 1 square centimeters."), true);
+  assert.equal(plural.test("1 square counter and 3 round counters"), false);
+  assert.equal(plural.test("2 pairs form, and 1 square is left over."), false);
+  assert.equal(plural.test("1 whole contains 8 pieces"), false);
+  assert.equal(plural.test("2 + 1 equal parts"), false);
+  // The noun is shared by a list: "6 orange, 3 purple and 1 green sections".
+  assert.equal(plural.test("6 orange, 3 purple and 1 green sections"), false);
 });

@@ -273,8 +273,8 @@ export function generateEqualGroupsProblem(
           : each === 0
             ? `Every tray is empty, so adding 0 again and again still gives 0.`
             : groups === 1
-              ? `1 group of ${each} is just ${each}: multiplying by 1 keeps the other number the same.`
-              : `Each tray has 1 counter, so there is 1 counter per tray: multiplying by 1 keeps the other number the same.`,
+              ? `1 group of ${each} is just ${each}: multiplying by 1 leaves the other number unchanged.`
+              : `Each tray has 1 counter, so there is 1 counter per tray: multiplying by 1 leaves the other number unchanged.`,
         `${groups} × ${each} = ${answer}, so there ${answer === 1 ? "is 1 counter" : `are ${answer} counters`} altogether.`,
       ];
       break;
