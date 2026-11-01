@@ -269,7 +269,7 @@ export const linearFunctionLessons: Lesson[] = [
         stage: "intuition",
         title: "Undo in reverse order",
         paragraphs: [
-          "A triangle's area, the amount of flat space inside it, is $A=\\frac{bh}{2}$. Here $b$ is the base (the bottom side), $h$ is the height (the straight-up distance to the top corner), both more than 0, and $bh$ means $b$ times $h$. To find $h$ from the others, undo what was done to it. First $h$ was multiplied by $b$, then divided by 2.",
+          "A triangle's area, the amount of flat space inside it, is $A=\\frac{bh}{2}$. Here $b$ is the base, the side it stands on. The height is the shortest distance from the line of the base to the opposite corner, written $h$. Both are more than 0, and $bh$ means $b$ times $h$. To find $h$ from the others, undo what was done to it. First $h$ was multiplied by $b$, then divided by 2.",
           "Undo the last step first: multiply both sides by 2 to get $2A=bh$. Then divide both sides by $b$, which is not 0: $h=\\frac{2A}{b}$. Each step can be reversed, so the formula stays true.",
           "In $v=u+at$, $u$ is the starting speed, $v$ is the final speed, $a$ is the change in speed per unit of time, and $t$ is the time that passed. To find $a$ when $t$ is not 0, subtract $u$ from both sides, then divide both sides by $t$: $a=\\frac{v-u}{t}$. The whole difference $v-u$ is divided by $t$, so it goes on top together.",
         ],
@@ -305,7 +305,7 @@ export const linearFunctionLessons: Lesson[] = [
     pitfalls: [
       "Divide every term (each part joined by + or −) by the number: $\\frac{P - 2l}{2}$ is $\\frac{P}{2} - l$, not $\\frac{P}{2} - 2l$.",
       "Undo the steps in reverse order. In $C = \\frac{5(F - 32)}{9}$, 32 was subtracted first, so to find $F$ you multiply both sides by $\\tfrac{9}{5}$ first and add 32 last.",
-      "Keep the division the right way up. From $d = rt$, $t = \\frac{d}{r}$, not $\\frac{r}{d}$.",
+      "Keep the division the right way up. From $d = rt$ with $r \\ne 0$, $t = \\frac{d}{r}$, not $\\frac{r}{d}$.",
     ],
     parentGuide:
       "Take a formula your learner already uses, such as distance equals rate times time. Ask how long a 150-mile trip at 50 miles per hour takes. Then ask for a formula that gives the time directly, and check it with the same numbers.",
@@ -460,7 +460,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "The rate is how much the output changes each time the input goes up by 1. A linear model is written output $=$ rate $\\times$ input $+$ starting amount, like $y = 2x + 3$. The starting amount is the output when the input is 0. On a graph, it is where the line meets the up-and-down axis. The rate is how much the output changes each time the input goes up by 1.",
+      "The rate is how much the output changes each time the input goes up by 1. A linear model is written output $=$ rate $\\times$ input $+$ starting amount, like $y = 2x + 3$. The starting amount is the output when the input is 0. On a graph, it is where the line meets the up-and-down axis.",
     method: [
       "Find the starting amount: the output when the input is 0, where the graph meets the up-and-down axis.",
       "Find the rate: the change in output for each increase of 1 in the input. It is negative if the output goes down.",
@@ -474,7 +474,7 @@ export const linearFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A formula is an equation that links amounts with letters. For a triangle, $A = \\frac{bh}{2}$, where $bh$ means $b$ times $h$. The area is the amount of flat space inside the triangle, written $A$. The base $b$ is its bottom side. The height is the straight-up distance to the top corner, written $h$. To get one letter alone, treat every other letter as a known number. Then undo what was done to your letter, last step first, doing the same to both sides.",
+      "A formula is an equation that links amounts with letters. For a triangle, $A = \\frac{bh}{2}$, where $bh$ means $b$ times $h$. The area is the amount of flat space inside the triangle, written $A$. The base $b$ is the side it stands on. The height is the shortest distance from the line of the base to the opposite corner, written $h$. To get one letter alone, treat every other letter as a known number. Then undo what was done to your letter, last step first, doing the same to both sides.",
     method: [
       "Treat every other letter as a known number. List what is done to the chosen letter, in order.",
       "Undo those steps in reverse order, doing the same thing to both sides each time.",

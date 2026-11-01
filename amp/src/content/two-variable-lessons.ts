@@ -111,7 +111,7 @@ export const twoVariableLessons: Lesson[] = [
     id: "half-plane-regions",
     title: "Inequalities in two variables",
     summary:
-      "An inequality compares two amounts. The sign $<$ means “is less than”, so $y < 2x - 1$ says $y$ is less than $2x - 1$. It is true for some points on a grid and false for others; a point $(x, y)$ means go $x$ across, then $y$ up. The points where the two sides are equal form a straight line, called the boundary. The points that make it true fill one whole side of that line. Draw the line, then test one point to see which side to shade.",
+      "An inequality compares two amounts. The sign $<$ means “is less than”, so $y < 2x - 1$ says $y$ is less than $2x - 1$. It is true for some points on a grid and false for others; a point $(x, y)$ means go $x$ across, then $y$ up. For an inequality like this one, the points where the two sides are equal form a straight line, called the boundary. The points that make it true fill one whole side of that line. Draw the line, then test one point to see which side to shade.",
     templateIds: ["half-plane-inequality", "inequality-solution-point"],
     includeGeneratedRepresentation: false,
     senses,
@@ -210,7 +210,7 @@ export const twoVariableLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "The rules for keeping both sides equal work for every value of a letter coefficient, with two limits. You may divide only by a letter that is not 0. Dividing an inequality by a negative number, one less than 0, flips its sign.",
+          "The rules for keeping both sides equal work for every value of a letter coefficient, with two limits. You may divide only by a letter that is not 0. Dividing an inequality by a negative number, a number less than 0, flips its sign.",
           "An equation $ax = b$ has no solution when $a = 0$ and $b \\ne 0$. Every $x$ is a solution when $a = 0$ and $b = 0$.",
         ],
       },
@@ -274,9 +274,9 @@ export const twoVariableLessons: Lesson[] = [
       },
     ],
     pitfalls: [
-      "Do not do an operation to one side only.",
+      "When you add, subtract, multiply or divide, do it to both sides, not one. Rewriting one side as something equal is the only change made to one side alone.",
       "Distribute to every part inside the parentheses.",
-      "Subtracting a negative number, one less than 0, is the same as adding. Name the operation that was really done.",
+      "Subtracting a negative number, a number less than 0, is the same as adding. Name the operation that was really done.",
     ],
     parentGuide:
       "Solve an equation aloud together, saying the reason for each step before writing it. Then write a solution with one deliberate mistake and ask your learner to find it.",
@@ -416,7 +416,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
     method: [
       "Gather the $x$ terms on one side and the plain numbers on the other.",
       "No solution: the number in front of $x$ is 0 and the plain numbers differ. Endlessly many: both sides are exactly the same.",
-      "For a system of two line equations: no solution when the lines are parallel (same steepness) and different.",
+      "For a system of two line equations: no solution when the lines are parallel (lines that never meet) and different.",
     ],
     watch:
       "Equal numbers in front of $x$ are not enough. Compare the plain numbers too.",
@@ -426,7 +426,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "Each step in solving an equation is one of two kinds. Either one side is rewritten as something equal, or the same number is added to or subtracted from both sides, or both sides are multiplied or divided by the same number that is not 0. Distributing means multiplying a number by each part inside parentheses, the curved brackets ( ). Like terms are parts with the same letter, such as $5x$ and $2x$; combining them gives $7x$. Doing the same to both sides has names, such as the addition property of equality.",
+      "Each step in solving an equation is one of two kinds. Either one side is rewritten as something equal, or the same number is added to or subtracted from both sides, or both sides are multiplied or divided by the same number that is not 0. Distributing means multiplying a number by each part inside parentheses, the curved brackets ( ). Like terms are parts with exactly the same letter part, such as $5x$ and $2x$; combining them gives $7x$. Doing the same to both sides has names, such as the addition property of equality.",
     method: [
       "Compare the two lines. Was one side rewritten, or was the same thing done to both sides?",
       "Name it: the distributive property, combining like terms, or the addition, subtraction, multiplication or division property of equality.",
@@ -442,7 +442,7 @@ export const twoVariableMethods: Record<string, ProblemMethod> = {
     intuition:
       "A system is two equations about the same unknowns $x$ and $y$. If both are true, adding them, left side to left side and right side to right side, gives another true equation. When one letter has opposite numbers in front of it, like $2y$ and $-2y$, adding makes it cancel. This is called elimination.",
     method: [
-      "Multiply a whole equation, both sides, by a number so one letter has opposite numbers in front of it.",
+      "Multiply a whole equation, both sides, by a number (not 0) so one letter has opposite numbers in front of it.",
       "Add the left sides together and the right sides together. That letter cancels.",
       "Keep one original equation beside the sum. The new system has the same solutions as the old one.",
     ],

@@ -10,7 +10,7 @@ const terms: NonNullable<ProblemMethod["terms"]> = [
 /** The words every inequality practice screen needs, said once in plain
  * language: the four signs, a solution, the solution set and the boundary. */
 const signsIntuition =
-  "An inequality is a statement that compares two amounts. The sign $<$ means “is less than” and $>$ means “is greater than”. The sign $\\le$ means “is less than or equal to” and $\\ge$ means “is greater than or equal to”. A solution is a number that makes the comparison true when you put it in for $x$. The solution set is all of those numbers together. It is usually a whole stretch of the number line. The number where that stretch starts is called the boundary.";
+  "An inequality is a statement that compares two amounts. The sign $<$ means “is less than” and $>$ means “is greater than”. The sign $\\le$ means “is less than or equal to” and $\\ge$ means “is greater than or equal to”. A solution is a number that makes the comparison true when you put it in for $x$. The solution set is all of those numbers together. It is usually a whole stretch of the number line. The number where that stretch ends is called the boundary.";
 
 export const inequalityMethods: Record<string, ProblemMethod> = {
   "affine-linear-inequality": {
@@ -144,7 +144,7 @@ const foundations: Lesson["sections"][number] = {
   title: "What the comparison means",
   paragraphs: [
     "This lesson uses adding, subtracting, multiplying and dividing with positive and negative numbers and fractions. A real number is any number that has a point on the number line. That includes whole numbers, negative numbers, fractions and decimals. Numbers get larger as you move right. A variable is a letter, such as $x$, that stands for a number.",
-    "An inequality is a statement that compares two amounts. The sign $<$ means “is less than”, and $>$ means “is greater than”. The sign $\\le$ means “is less than or equal to”, and $\\ge$ means “is greater than or equal to”. So $2 < 5$ is true, $5 < 5$ is false, and $5 \\le 5$ is true. The open mouth of the sign faces the larger amount.",
+    "An inequality is a statement that compares two amounts. The sign $<$ means “is less than”, and $>$ means “is greater than”. The sign $\\le$ means “is less than or equal to”, and $\\ge$ means “is greater than or equal to”. So $2 < 5$ is true, $5 < 5$ is false, and $5 \\le 5$ is true. When the amounts differ, the open mouth of the sign faces the larger amount.",
     "A solution is a value of $x$ that makes the comparison true when you put it in for $x$. The solution set is every solution together. For $x < 2$, the numbers 1, 0, $-3$ and 1.5 are solutions, but 2 and 5 are not. The number 2 is called the boundary: it separates the numbers that work from the numbers that do not. The sign $<$ leaves the boundary out, and $\\le$ includes it.",
     "A short list of examples is not the whole solution set. There are endlessly many numbers less than 2, including fractions such as 1.9 and 1.99. So the answer is written as a statement like $x < 2$.",
   ],
@@ -186,9 +186,9 @@ export const inequalityLessons: Lesson[] = [
       {
         title: "Get the unknown alone without changing the solutions",
         paragraphs: [
-          "In $-3x + 2$, $-3x$ means $-3$ times $x$, and then 2 is added. The number multiplying $x$, sign included, is called the coefficient; here it is $-3$. The 2 is called a constant, a plain number with no $x$. An inequality like this, where $x$ is only multiplied by numbers (no $x^2$, meaning $x$ times $x$), is called linear.",
+          "In $-3x + 2$, $-3x$ means $-3$ times $x$, and then 2 is added. The number multiplying $x$, sign included, is called the coefficient; here it is $-3$. The 2 is called a constant, a plain number with no $x$. An inequality built from parts like this, where $x$ is only multiplied by numbers (no $x^2$, meaning $x$ times $x$), is called linear.",
           "To isolate $x$ means to get $x$ alone on one side. First undo the adding or subtracting, by doing the opposite step to both sides. Then undo the multiplying, by dividing both sides by the coefficient. The coefficient must not be 0. Every step can be undone, so the new inequality has exactly the same solutions as the old one.",
-          "The numbers may be fractions. In $\\tfrac{3}{2}$, the bottom number 2 (the denominator) splits one whole into 2 equal parts. The top number 3 (the numerator) counts 3 of those parts. Keep an exact fraction such as $\\tfrac{5}{3}$; do not round it to 1.67. Rounding means cutting a number short, like writing 1.67 for $\\tfrac{5}{3}$. A rounded boundary changes which nearby numbers count as solutions.",
+          "The numbers may be fractions. In $\\tfrac{3}{2}$, the bottom number 2 (the denominator) splits one whole into 2 equal parts. The top number 3 (the numerator) counts 3 of those parts. Keep an exact fraction such as $\\tfrac{5}{3}$; do not round it to 1.67. Rounding means swapping a number for a nearby shorter one, like writing 1.67 for $\\tfrac{5}{3}$. A rounded boundary changes which nearby numbers count as solutions.",
         ],
       },
       order,

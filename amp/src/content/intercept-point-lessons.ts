@@ -33,7 +33,7 @@ export const interceptPointMethods: Record<string, ProblemMethod> = {
     method: [
       "For the $y$-intercept, put $x = 0$ into the equation and solve for $y$. For the $x$-intercept, put $y = 0$ and solve for $x$. On a graph, read where the line meets that axis.",
       "Solve the one-letter equation exactly. Move the plain number to the other side first, then divide by the number multiplying the letter. A fraction stays a fraction.",
-      "Answer in the form asked: a point $(x, y)$ with $x$ first, a zero (an $x$ value where $y$ is 0), or the sum of the two intercept numbers that are not 0, signs included.",
+      "Answer in the form asked: a point $(x, y)$ with $x$ first, a zero (an $x$ value where $y$ is 0), or the sum of the $x$-intercept's $x$ and the $y$-intercept's $y$, signs included.",
     ],
     watch:
       "Do not swap the numbers. A point on the $y$-axis is $(0, y)$, and a point on the $x$-axis is $(x, 0)$.",
@@ -63,7 +63,7 @@ export const interceptPointLessons = [
       opening: [
         "A point is written as an ordered pair, a pair of numbers in a set order: $(x, y)$. The first number, $x$, says how far across from the starting point $(0, 0)$, called the origin. The second, $y$, says how far up. Negative numbers mean left or down.",
         "The $y$-axis is the up-and-down line where every point has $x = 0$. A line that is not vertical crosses it at one point, written $(0, b)$. That point is called the $y$-intercept.",
-        "The $x$-axis is the across line where every point has $y = 0$. A line that is not horizontal crosses it at one point, $(a, 0)$, called the $x$-intercept. A function is a rule that gives one output $y$ for each input $x$. For a line that is not vertical, the number $a$ alone is called a zero of the function: the input that makes the output 0.",
+        "The $x$-axis is the across line where every point has $y = 0$. A line that is not horizontal crosses it at one point, $(a, 0)$, called the $x$-intercept. A function is a rule that gives one output $y$ for each input $x$. For a line that is not vertical and crosses the $x$-axis once, the number $a$ alone is called a zero of the function: the input that makes the output 0.",
       ],
       example: {
         prompt: "Which ordered pair is the $x$-intercept of $3x - 4y = 10$?",
@@ -78,7 +78,7 @@ export const interceptPointLessons = [
       method: [
         "$y$-intercept: put $x = 0$ into the equation and solve for $y$. In $y = mx + k$ the point is $(0, k)$, because $m \\times 0 = 0$.",
         "$x$-intercept: put $y = 0$ and solve for $x$. In $y = mx + k$ with $m \\ne 0$, $0 = mx + k$ gives $mx = -k$, so $x = -k \\div m$. So divide by $m$, the slope (the number multiplying $x$), which may be a fraction.",
-        "On a graph, find where the line meets the axis and read that one number. If the question asks for a sum, add the two intercept numbers that are not 0, signs included.",
+        "On a graph, find where the line meets the axis and read that one number. If the question asks for a sum, add the $x$ value of the $x$-intercept and the $y$ value of the $y$-intercept, signs included.",
       ],
       formalTitle: "Intercepts of a line",
       formal: [

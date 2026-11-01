@@ -128,7 +128,7 @@ export const absoluteValueLessons: Lesson[] = [
     id: "absolute-value-direct-equation",
     title: "Absolute-value equations: distance from zero",
     summary:
-      "A number line shows numbers in order, evenly spaced, with 0 in the middle. The absolute value of a number is its distance from 0 on the number line. We write it with two bars: $|-3| = 3$. So $|x| = 3$ asks which numbers are 3 steps from 0. There are two, 3 and $-3$. A distance of 0 gives one number, 0. A negative distance gives none, because distances are never negative.",
+      "A number line shows numbers in order, evenly spaced, with 0 marked and negative numbers to its left. The absolute value of a number is its distance from 0 on the number line. We write it with two bars: $|-3| = 3$. So $|x| = 3$ asks which numbers are 3 steps from 0. There are two, 3 and $-3$. A distance of 0 gives one number, 0. A negative distance gives none, because distances are never negative.",
     templateIds: ["absolute-value-direct-equation"],
     includeGeneratedRepresentation: false,
     senses,

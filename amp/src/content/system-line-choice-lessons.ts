@@ -78,7 +78,7 @@ export const systemLineChoiceMethods: Record<string, ProblemMethod> = {
       "Write $y = mx + b$ with your two numbers and find it among the choices.",
     ],
     watch:
-      "Keep the slope exactly, sign included. Flipping it and changing its sign gives a perpendicular line (one that meets at a square corner), not a parallel one.",
+      "Keep the slope exactly, sign included. Turning a slope that is not 0 upside down and changing its sign gives a perpendicular line (one that meets at a square corner), not a parallel one.",
   },
   "table-standard-form": {
     goal: "Write a line from a table with uneven or fraction inputs in standard form, or shift its rule up or down.",
@@ -130,7 +130,7 @@ export const systemLineChoiceLessons = [
       opening: [
         "A system of equations is two equations about the same unknown numbers $x$ and $y$. A solution of the system is a point $(x, y)$ that makes both equations true. On a graph, that is a point on both lines.",
         "If the lines cross, they share exactly one point. If one line lies on top of the other, they share every point. If they run in the same direction without touching, they are called parallel, and they share no point.",
-        "In $2x - 3y = 6$, the coefficient of $x$ (the number multiplying $x$) is 2, and the coefficient of $y$ is $-3$. The slope of a line is how steep it is. If the coefficients of one equation are the same multiple of the other's, the slopes match. Lines that tilt differently always cross once. Lines that tilt the same way are either the same line or parallel, and the numbers on the right decide which.",
+        "In $2x - 3y = 6$, the coefficient of $x$ (the number multiplying $x$) is 2, and the coefficient of $y$ is $-3$. The slope of a line is how steep it is. If the coefficients of one equation are the same multiple of the other's, the lines tilt the same way. Lines that tilt differently always cross once. Lines that tilt the same way are either the same line or parallel, and the numbers on the right decide which.",
       ],
       example: {
         prompt:
@@ -178,7 +178,7 @@ export const systemLineChoiceLessons = [
       openingTitle: "Same slope, different position",
       opening: [
         "The slope of a line says how steep it is: how much $y$ changes each time $x$ goes up by 1. In $y = mx + b$, the number $m$ is the slope. The number $b$ is the $y$-intercept, the height where the line crosses the $y$-axis. This way of writing a line is called slope-intercept form.",
-        "Parallel lines rise or fall at the same rate, so they have equal slopes. So the new line takes the given line's slope.",
+        "Parallel lines that are not vertical rise or fall at the same rate, so they have equal slopes. So the new line takes the given line's slope.",
         "What changes is where the new line sits. An intercept is a point where a line crosses an axis. A point on the new line, such as an intercept, fixes $b$.",
       ],
       example: {
@@ -202,7 +202,7 @@ export const systemLineChoiceLessons = [
         "Lines that are not vertical are parallel exactly when their slopes are equal and their $y$-intercepts differ. The line with slope $m$ through $(x_0, y_0)$ is $y - y_0 = m(x - x_0)$.",
       ],
       pitfalls: [
-        "Flipping the slope and changing its sign. That gives a perpendicular line, one that meets the first at a square corner.",
+        "Turning the slope fraction upside down and changing its sign. For a slope that is not 0, that gives a perpendicular line, one that meets the first at a square corner.",
         "Using the given line's own $y$-intercept. The new line passes through a different point.",
         "Using $h$ from $(h, 0)$ as $b$. Put both numbers of the point into the equation.",
       ],
@@ -247,7 +247,7 @@ export const systemLineChoiceLessons = [
       ],
       formalTitle: "Two points determine a line",
       formal: [
-        "A line through $(x_1, y_1)$ and $(x_2, y_2)$ with $x_1 \\ne x_2$ has slope $\\frac{y_2 - y_1}{x_2 - x_1}$. Any two different points of the line give the same slope. Standard form is $Ax + By = C$, where $A$, $B$ and $C$ are integers that no number greater than 1 divides evenly.",
+        "A line through $(x_1, y_1)$ and $(x_2, y_2)$ with $x_1 \\ne x_2$ has slope $\\frac{y_2 - y_1}{x_2 - x_1}$. Any two different points of the line give the same slope. Standard form is $Ax + By = C$, where $A$, $B$ and $C$ are integers and no whole number greater than 1 divides all three evenly.",
       ],
       pitfalls: [
         "Dividing the change in $y$ by 1 because the columns sit next to each other. Divide by the change in $x$.",

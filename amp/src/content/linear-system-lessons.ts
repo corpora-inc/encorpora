@@ -75,7 +75,7 @@ export const linearSystemMethods: Record<string, ProblemMethod> = {
     method: [
       "If one equation already gives $x$ or $y$, put it into the other equation. Then find the other letter, or see whether the plain numbers left are equal.",
       "Otherwise, line up the $x$ terms, $y$ terms and plain numbers. Multiply a whole equation by a number (not 0) if needed, then add or subtract to remove one letter.",
-      "If a letter is left with a coefficient that is not 0, it has one value. Find the other letter from an original equation. There is exactly one shared pair.",
+      "If a letter is left with a coefficient that is not 0, it has one value. Put it into an original equation; if that gives the other letter one value too, there is exactly one shared pair.",
       "If both letters cancel and the numbers left are unequal, like $0 = 2$, no pair works. If they are equal, like $0 = 0$, both equations are the same line: endlessly many pairs on that line work, but not every pair.",
     ],
     watch:

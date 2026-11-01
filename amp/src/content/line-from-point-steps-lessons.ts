@@ -51,7 +51,7 @@ const entries: WorkEntry[] = [
 ];
 
 const work = workContent(entries);
-/** The lesson and method read “parallel” and “part” in their plain senses. */
+/** Ordinary words in this lesson and method that are not glossary links. */
 const glossary = {
   noLink: [
     "part",
