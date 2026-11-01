@@ -1,5 +1,7 @@
 import { track } from "./lib/analytics";
 import { ProblemLesson } from "./ProblemLesson";
+import { Glossary } from "./ui/Glossary";
+import type { HintedProblem } from "./lib/problem-hints";
 import { MathText, spokenMath } from "./MathText";
 import { Calculator, type CalculatorDismissal } from "./Calculator";
 import {
@@ -160,7 +162,8 @@ export function usePracticeViewport(active: boolean) {
 }
 
 type Props = {
-  problem: PublicProblem;
+  /** With the batch's hint, when it sent one (its term cards included). */
+  problem: HintedProblem;
   meta?: TemplateMetadata;
   lesson: Lesson | null;
   response: string;
@@ -1026,18 +1029,20 @@ export function PracticeWorkspace(props: Props) {
         </div>
         {!editorInDock && progressFeedback()}
         {((!outcome.correct && !deferSteps) || (showWhy && !editorInDock)) && (
-          <ol
-            className="feedback-steps"
-            // It scrolls when long, so keyboards must be able to reach it.
-            tabIndex={0}
-            aria-label="Explanation"
-          >
-            {outcome.explanation.map((step, index) => (
-              <li key={index} data-text={step}>
-                <MathText text={step} />
-              </li>
-            ))}
-          </ol>
+          <Glossary payload={outcome} texts={outcome.explanation}>
+            <ol
+              className="feedback-steps"
+              // It scrolls when long, so keyboards must be able to reach it.
+              tabIndex={0}
+              aria-label="Explanation"
+            >
+              {outcome.explanation.map((step, index) => (
+                <li key={index} data-text={step}>
+                  <MathText text={step} />
+                </li>
+              ))}
+            </ol>
+          </Glossary>
         )}
       </>
     );
@@ -1446,13 +1451,15 @@ export function PracticeWorkspace(props: Props) {
       {outcome && editorInDock && showWhy && (
         <FocusDialog title="Explanation" close={() => setShowWhy(false)}>
           {progressFeedback()}
-          <ol className="feedback-steps" aria-label="Explanation">
-            {outcome.explanation.map((step, index) => (
-              <li key={index}>
-                <MathText text={step} />
-              </li>
-            ))}
-          </ol>
+          <Glossary payload={outcome} texts={outcome.explanation}>
+            <ol className="feedback-steps" aria-label="Explanation">
+              {outcome.explanation.map((step, index) => (
+                <li key={index}>
+                  <MathText text={step} />
+                </li>
+              ))}
+            </ol>
+          </Glossary>
         </FocusDialog>
       )}
       {outcome && props.error && (
@@ -1538,15 +1545,24 @@ export function PracticeWorkspace(props: Props) {
         >
           {panel === "hint" && (
             <>
-              <p className="hint">
-                {hint ? (
-                  <MathText text={hint} />
-                ) : busy ? (
-                  "Finding your hint…"
-                ) : (
-                  "Your hint could not be loaded. Close this panel and try again."
-                )}
-              </p>
+              <Glossary
+                payload={
+                  hint && problem.hintSupport?.hint === hint
+                    ? problem.hintSupport
+                    : null
+                }
+                texts={[hint]}
+              >
+                <p className="hint">
+                  {hint ? (
+                    <MathText text={hint} />
+                  ) : busy ? (
+                    "Finding your hint…"
+                  ) : (
+                    "Your hint could not be loaded. Close this panel and try again."
+                  )}
+                </p>
+              </Glossary>
               {hintScene && (
                 <ScenePlayer
                   scene={hintScene}
