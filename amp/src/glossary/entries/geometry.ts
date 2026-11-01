@@ -1094,7 +1094,7 @@ export const geometryEntries: GlossaryEntry[] = [
   },
   {
     id: "pi",
-    term: "pi",
+    term: "$\\pi$",
     forms: [],
     plain:
       "The number you get by dividing any circle's circumference by its diameter, about 3.14. It is the same for every circle.",
@@ -1827,7 +1827,7 @@ export const geometryEntries: GlossaryEntry[] = [
   },
   {
     id: "x-axis",
-    term: "x-axis",
+    term: "$x$-axis",
     forms: ["x-axis", "x-axes"],
     plain:
       "The horizontal axis of a graph: a line of numbers running left to right. Each point on it has $y$-coordinate 0.",
@@ -1837,7 +1837,7 @@ export const geometryEntries: GlossaryEntry[] = [
   },
   {
     id: "y-axis",
-    term: "y-axis",
+    term: "$y$-axis",
     forms: ["y-axis", "y-axes"],
     plain:
       "The vertical axis of a graph: a line of numbers running up and down. Each point on it has $x$-coordinate 0.",

@@ -267,7 +267,7 @@ export function learnerTexts(): LearnerText[] {
   }
   for (const e of glossary) {
     const owner = `glossary:${e.id}`;
-    title(owner, "glossary term", e.term);
+    add(owner, "glossary term", e.term);
     add(owner, "glossary plain", e.plain);
     add(owner, "glossary example", e.example);
   }

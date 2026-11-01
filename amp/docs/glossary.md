@@ -7,7 +7,7 @@ Every term a lesson uses is defined once, in `src/glossary/`, and linked where i
 `src/glossary/entries/<strand>.ts` holds one `GlossaryEntry` per meaning (`src/glossary/types.ts`):
 
 - `id`: kebab-case, one per meaning (`hypotenuse`, `range-function`).
-- `term`: the word as shown.
+- `term`: the word as shown, typeset like lesson text (`$y$-intercept`, `$\pi$`).
 - `forms`: lowercase words matched in prose, with plurals and variants. Leave it empty for notation (`pi`, `union`) and for words too common to link; such an entry is still reachable from a method's term list.
 - `plain`: at most 30 words, in everyday language, for a learner one level below `band`. Say what the thing is and how to recognise it.
 - `example`: one concrete case, typeset like any lesson text (`src/content/AGENTS.md`, "Mathematical typography").

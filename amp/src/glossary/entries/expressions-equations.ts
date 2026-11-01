@@ -1271,7 +1271,7 @@ export const expressionsEquationsEntries: GlossaryEntry[] = [
   },
   {
     id: "y-intercept",
-    term: "y-intercept",
+    term: "$y$-intercept",
     forms: ["y-intercept", "y-intercepts"],
     plain:
       "Where a graph crosses the $y$-axis. There $x = 0$, so the point is $(0, b)$, and $b$ is the $y$-intercept.",

@@ -1112,7 +1112,7 @@ export const statisticsProbabilityEntries: GlossaryEntry[] = [
   },
   {
     id: "z-score",
-    term: "z-score",
+    term: "$z$-score",
     forms: ["z-score", "z-scores"],
     plain:
       "How many standard deviations a value is above the mean (positive) or below it (negative).",

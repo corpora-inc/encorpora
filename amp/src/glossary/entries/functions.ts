@@ -559,7 +559,7 @@ export const functionsEntries: GlossaryEntry[] = [
   },
   {
     id: "x-intercept",
-    term: "x-intercept",
+    term: "$x$-intercept",
     forms: ["x-intercept", "x-intercepts"],
     plain:
       "A point where a graph crosses or touches the $x$-axis. Its $y$-coordinate is 0, so it is written $(a, 0)$.",
