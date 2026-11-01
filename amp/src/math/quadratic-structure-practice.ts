@@ -208,34 +208,41 @@ function parabolaVertex(r: Random): Case {
         ? [
             {
               label: pt(-h, at(-h)),
-              feedback: `x = ${n(-h)} is b/(2a) without its minus sign; the vertex is at x = −b/(2a).`,
+              feedback: `This drops the minus sign: x = ${n(-h)} is b/(2a). The vertex is at x = −b/(2a).`,
             },
             {
               label: pt(h, c),
-              feedback: `${n(c)} is the $y$-intercept, the value at x = 0, not at the vertex.`,
+              feedback: `This uses the constant term. ${n(c)} is the $y$-intercept, the value of $y$ at x = 0, not at the vertex.`,
             },
             {
               label: pt(-h, k),
-              feedback: "Check the sign of x: −b/(2a) is the vertex.",
+              feedback:
+                "This has the wrong sign on the $x$-coordinate. The vertex is at x = −b/(2a); keep both minus signs.",
             },
-            { label: pt(k, h), feedback: "The coordinates are reversed." },
+            {
+              label: pt(k, h),
+              feedback:
+                "This swaps the coordinates. A point is written ($x$, $y$): across first, then up.",
+            },
           ]
         : [
             {
               label: pt(-h, k),
-              feedback: `In ${vertexForm(a, h, k)} the factor ${factor(h)} is 0 at x = ${n(h)}, not ${n(-h)}.`,
+              feedback: `This takes the sign inside the brackets as it looks. In ${vertexForm(a, h, k)} the bracket ${factor(h)} is 0 at x = ${n(h)}, not ${n(-h)}.`,
             },
             {
               label: pt(k, h),
-              feedback: "The $x$- and $y$-coordinates are reversed.",
+              feedback:
+                "This swaps the coordinates. A point is written ($x$, $y$): across first, then up.",
             },
             {
               label: pt(h, -k),
-              feedback: `Check the sign of the $y$-coordinate: ${n(k)}.`,
+              feedback: `This flips the sign of the $y$-coordinate. The number added outside the square is ${n(k)}, and that is the $y$-coordinate.`,
             },
             {
               label: pt(-h, -k),
-              feedback: "Both signs are reversed.",
+              feedback:
+                "This flips both signs. Only the number inside the brackets changes sign; the number outside keeps its sign.",
             },
           ];
     const choices = options(correct, wrong);
@@ -247,9 +254,11 @@ function parabolaVertex(r: Random): Case {
         choices,
         scene: parabolaOnGrid(a, h, k),
         explanation: [
-          `The parabola opens ${a > 0 ? "up" : "down"}, so its vertex is its ${turn} point.`,
-          `That point is ${correct}: x = ${n(h)} on the $x$-axis and y = ${n(k)} on the $y$-axis.`,
-          `The graph is y = ${vertexForm(a, h, k)}, symmetric about the line x = ${n(h)}.`,
+          `A parabola is the U-shaped graph of a quadratic. Its vertex is the turning point, where it changes direction.`,
+          `This parabola opens ${a > 0 ? "up" : "down"}, so its vertex is its ${turn} point.`,
+          `Read straight down to the $x$-axis: x = ${n(h)}. Read across to the $y$-axis: y = ${n(k)}.`,
+          `The graph is y = ${vertexForm(a, h, k)}. It is symmetric, a mirror image, about the line x = ${n(h)}.`,
+          `The vertex is ${correct}.`,
         ],
         hint: `This parabola opens ${a > 0 ? "up" : "down"}: find its ${turn} point, read straight down to the $x$-axis for $x$ and across to the $y$-axis for $y$.`,
         hintCue: [
@@ -265,10 +274,11 @@ function parabolaVertex(r: Random): Case {
         prompt: `What is the vertex of the graph of y = ${vertexForm(a, h, k)}?`,
         choices,
         explanation: [
-          "In y = a(x − h)² + k the squared term is 0 at x = h and has one sign everywhere else, so $y$ is " +
+          "The vertex is the turning point of a parabola, its highest or lowest point. The form y = a(x − h)² + k, called vertex form, shows it directly.",
+          "A square is never negative. So the squared term is 0 at x = h and has one sign everywhere else. That makes $y$ " +
             (a > 0 ? "least" : "greatest") +
-            " there: the vertex is $(h, k)$.",
-          `${factor(h)} is 0 when x = ${n(h)}; then y = ${n(k)}.`,
+            " at x = h, so the vertex is $(h, k)$.",
+          `Here ${factor(h)} is 0 when x = ${n(h)}. Then the squared term is 0, so y = ${n(k)}.`,
           `The vertex is ${correct}.`,
         ],
         hint: `Match y = ${vertexForm(a, h, k)} to y = a(x − h)² + k. Ask which $x$ makes ${factor(h)} zero, then what $y$ is there.`,
@@ -285,8 +295,10 @@ function parabolaVertex(r: Random): Case {
       prompt: `What is the vertex of the graph of y = ${std}?`,
       choices,
       explanation: [
-        `The vertex is on the axis of symmetry, x = −b/(2a) = ${quotient(-b, 2 * a)}.`,
-        `Substitute: y = ${quadAtText(a, b, c, h)} = ${n(k)}.`,
+        `The vertex is the turning point of the parabola. It sits on the axis of symmetry, the vertical mirror line of the graph.`,
+        `For y = ax² + bx + c, the axis is x = −b/(2a). Here a = ${n(a)} and b = ${n(b)}, the numbers multiplying $x^2$ and $x$.`,
+        `So x = −b/(2a) = ${quotient(-b, 2 * a)}.`,
+        `Substitute that $x$ to find the height: y = ${quadAtText(a, b, c, h)} = ${n(k)}.`,
         `The vertex is ${correct}. Check: ${std} is the expanded form of ${vertexForm(a, h, k)}.`,
       ],
       hint: `For y = ${std}, the vertex lies on x = −b/(2a) with a = ${n(a)} and b = ${n(b)}. Find that $x$, then substitute it.`,
@@ -320,9 +332,10 @@ function parabolaAxis(r: Random): Case {
       prompt: `The graph of y = ${std} is a parabola. Its axis of symmetry is the line x = k. What is $k$?`,
       answer: axis,
       explanation: [
-        "A parabola y = ax² + bx + c is symmetric about the line x = −b/(2a).",
-        `Here a = ${n(a)} and b = ${n(b)}: x = −b/(2a) = ${quotient(-b, 2 * a)}.`,
-        `So k = ${qt(axis)}.`,
+        "The axis of symmetry is the vertical line that splits a parabola into two mirror halves. It passes through the vertex, the turning point.",
+        "For y = ax² + bx + c, the axis is the line x = −b/(2a). Here $a$ is the number multiplying x², and $b$ is the number multiplying $x$.",
+        `In this equation a = ${n(a)} and b = ${n(b)}. So x = −b/(2a) = ${quotient(-b, 2 * a)}.`,
+        `The axis is the line x = ${qt(axis)}, so k = ${qt(axis)}.`,
       ],
       hint: `In y = ${std}, a = ${n(a)} and b = ${n(b)}. The axis is x = −b/(2a): mind the minus sign.`,
       tags: [frame, axis.d === 1 ? "integer" : "fraction"],
@@ -335,9 +348,9 @@ function parabolaAxis(r: Random): Case {
   const axis = rat(lo + hi, 2);
   const mid = `(${n(lo)} + ${p(hi)}) ÷ 2 = ${qt(axis)}`;
   const explain = [
-    "A parabola is symmetric about a vertical line, so two points at the same height are mirror images across it.",
-    `The axis is halfway between x = ${n(lo)} and x = ${n(hi)}: ${mid}.`,
-    `So k = ${qt(axis)}.`,
+    "The axis of symmetry is the vertical line that splits a parabola into two mirror halves. Two points at the same height are mirror images across it.",
+    `So the axis is halfway between x = ${n(lo)} and x = ${n(hi)}. Halfway is the average, the sum divided by 2: ${mid}.`,
+    `The axis is the line x = ${qt(axis)}, so k = ${qt(axis)}.`,
   ];
   const tags = [frame, axis.d === 1 ? "integer" : "fraction"];
   if (frame === "factored") {
@@ -347,8 +360,8 @@ function parabolaAxis(r: Random): Case {
       prompt: `The graph of y = ${form} is a parabola. Its axis of symmetry is the line x = k. What is $k$?`,
       answer: axis,
       explanation: [
-        `y = 0 when a factor is 0: at x = ${n(lo)} and x = ${n(hi)}. Both zeros are on the $x$-axis, at height 0.`,
-        ...explain.slice(1),
+        `A product is 0 when one of its factors is 0. So y = 0 at x = ${n(lo)} and x = ${n(hi)}. These zeros are on the $x$-axis, both at height 0.`,
+        ...explain,
       ],
       hint: `Find the two zeros of $y = ${form}$ (each factor equal to 0), then the number halfway between them.`,
       walkthrough: vertexGraph(
@@ -379,7 +392,7 @@ function parabolaAxis(r: Random): Case {
     scene: zerosGraph(a, [lo, hi]),
     explanation: [
       `The parabola crosses the $x$-axis at x = ${n(lo)} and x = ${n(hi)}, two points at height 0.`,
-      ...explain.slice(1),
+      ...explain,
     ],
     hint: `Read the two $x$-intercepts on the $x$-axis. The axis of symmetry is halfway between them.`,
     hintCue: [
@@ -406,20 +419,21 @@ function parabolaShift(r: Random): Case {
       const choices = options(`It moves ${moves(h, k)}.`, [
         {
           label: `It moves ${moves(-h, k)}.`,
-          feedback: `(x − h)² moves the graph $h$ to the right: ${factor(h)} gives h = ${n(h)}.`,
+          feedback: `This reads the sideways move backward. (x − h)² moves the graph $h$ to the right, so ${factor(h)} gives h = ${n(h)}.`,
         },
         {
           label: `It moves ${moves(h, -k)}.`,
-          feedback: `Adding ${n(k)} outside the square changes every $y$-value by ${n(k)}.`,
+          feedback: `This reverses the up-down move. Adding ${n(k)} outside the square changes every $y$-value by ${n(k)}.`,
         },
         {
           label: `It moves ${moves(k, h)}.`,
           feedback:
-            "The number inside the parentheses moves the graph sideways; the number outside moves it up or down.",
+            "This swaps the two moves. The number inside the brackets moves the graph sideways, and the number outside moves it up or down.",
         },
         {
           label: `It moves ${moves(-h, -k)}.`,
-          feedback: "Both directions are reversed.",
+          feedback:
+            "This reverses both moves. Only the number inside the brackets acts opposite to its sign; the number outside keeps its sign.",
         },
       ]);
       if (!choices) continue;
@@ -427,8 +441,9 @@ function parabolaShift(r: Random): Case {
         prompt: `How does the graph of ${eq(h, k)} compare with the graph of y = x²?`,
         choices,
         explanation: [
-          "In y = (x − h)² + k every point of y = x² moves $h$ across and $k$ up: the vertex (0, 0) goes to $(h, k)$.",
-          `Here ${factor(h)} gives h = ${n(h)}, and the constant outside the square gives k = ${n(k)}.`,
+          "In y = (x − h)² + k, every point of y = x² moves $h$ across and $k$ up. The vertex, the turning point (0, 0), goes to $(h, k)$.",
+          "The inside number acts opposite to its sign: x − h is 0 at x = h, so the graph moves to $h$.",
+          `Here ${factor(h)} gives h = ${n(h)}, and the number outside the square gives k = ${n(k)}.`,
           `So the graph moves ${moves(h, k)}, with its vertex at ${pt(h, k)}.`,
         ],
         hint: `Find where the vertex (0, 0) of y = x² goes: which $x$ makes ${factor(h)} zero, and what is added outside?`,
@@ -439,17 +454,22 @@ function parabolaShift(r: Random): Case {
     const choices = options(eq(h, k), [
       {
         label: eq(-h, k),
-        feedback: `A move ${h > 0 ? "right" : "left"} by ${Math.abs(h)} subtracts ${n(h)} from x: x − (${n(h)}).`,
+        feedback: `This moves the graph the wrong way sideways. For a move ${h > 0 ? "right" : "left"} of ${Math.abs(h)}: ${h > 0 ? `subtract ${n(h)} from` : `add ${n(-h)} to`} $x$ inside the square.`,
       },
       {
         label: eq(k, h),
-        feedback: "The horizontal and vertical moves are swapped.",
+        feedback:
+          "This swaps the moves. The sideways move goes inside the square with $x$; the up-down move is added outside.",
       },
       {
         label: eq(h, -k),
-        feedback: `The vertical move is ${n(k)}: add ${n(k)} outside the square.`,
+        feedback: `This reverses the up-down move. The vertical move is ${n(k)}, so add ${n(k)} outside the square.`,
       },
-      { label: eq(-h, -k), feedback: "Both signs are reversed." },
+      {
+        label: eq(-h, -k),
+        feedback:
+          "This reverses both moves. Right means subtract inside the square, and up means add outside.",
+      },
     ]);
     if (!choices) continue;
     if (frame === "words")
@@ -457,7 +477,9 @@ function parabolaShift(r: Random): Case {
         prompt: `The graph of y = x² is moved ${moves(h, k)}. Which equation describes the new graph?`,
         choices,
         explanation: [
-          `Moving ${Math.abs(h)} ${h > 0 ? "right" : "left"} replaces $x$ with ${factor(h).slice(1, -1)}; moving ${Math.abs(k)} ${k > 0 ? "up" : "down"} adds ${n(k)}.`,
+          `Start from the vertex, the turning point, of y = x²: (0, 0). Moving the graph moves the vertex to ${pt(h, k)}.`,
+          `A sideways move goes inside the square and acts opposite to its sign. Moving ${Math.abs(h)} ${h > 0 ? "right" : "left"} replaces $x$ with ${factor(h).slice(1, -1)}, which is 0 at x = ${n(h)}.`,
+          `An up-down move is added outside. Moving ${Math.abs(k)} ${k > 0 ? "up" : "down"} adds ${n(k)} to every $y$.`,
           `The new vertex is ${pt(h, k)}, so the equation is ${eq(h, k)}.`,
           `Check: at x = ${n(h)}, $y = 0² ${constText(k).trim()} = ${n(k)}$, the moved vertex.`,
         ],
@@ -471,8 +493,9 @@ function parabolaShift(r: Random): Case {
       choices,
       scene: shiftedParabola(h, k),
       explanation: [
-        `The vertex moved from (0, 0) to ${pt(h, k)}: ${moves(h, k)}.`,
-        `Moving $h$ across and $k$ up gives y = (x − h)² + k, so the equation is ${eq(h, k)}.`,
+        `The vertex is the turning point. It moved from (0, 0) to ${pt(h, k)}: ${moves(h, k)}.`,
+        `Moving $h$ across and $k$ up gives y = (x − h)² + k. The sideways move goes inside the square with its sign flipped; the up-down move is added outside.`,
+        `So the equation is ${eq(h, k)}.`,
         `Check: the point (${n(h + 1)}, ${n(k + 1)}) on the solid curve is (1, 1) on y = x², moved the same way.`,
       ],
       hint: `Read the solid curve's vertex and compare it with (0, 0): how far across and how far up did it move?`,
@@ -500,25 +523,26 @@ function areaModelProduct(r: Random): Case {
     const choices = options(right1, [
       {
         label: polyText([a * b, 0, s * u]),
-        feedback: `This leaves out the two $x$-regions, $${termText(a * u, "x")}$ and $${termText(b * s, "x")}$.`,
+        feedback: `This multiplies only first with first and last with last. It leaves out the two $x$-regions, $${termText(a * u, "x")}$ and $${termText(b * s, "x")}$.`,
       },
       {
         label: polyText([a * b, a * u - b * s, s * u]),
-        feedback: `One $x$-region has the wrong sign: ${termText(a, "x")} × ${p(u)} and ${n(s)} × ${termText(b, "x")}.`,
+        feedback: `This has a sign error in one $x$-region. Recheck ${termText(a, "x")} × ${p(u)} and ${n(s)} × ${termText(b, "x")}. Keep the sign of each product: a negative times a positive is negative, and two of the same sign give a positive.`,
       },
       {
         label: polyText([a * b, mid, -s * u]),
-        feedback: `${n(s)} × ${p(u)} = ${n(s * u)}.`,
+        feedback: `This has the wrong sign on the constant. ${n(s)} × ${p(u)} = ${n(s * u)}.`,
       },
       {
         label: polyText([a * b, s + u, s * u]),
         feedback:
-          "Each $x$-region is a coefficient times the other side's constant.",
+          "This adds the two constants for the $x$ term. Each $x$-region is an $x$ term times the other side's constant, so multiply before adding.",
       },
     ]);
     if (!choices) continue;
     const explanation = [
-      `Each term of ${left} multiplies each term of ${right}: four regions.`,
+      `The area of a rectangle is length times width. Split each side into its terms, and the rectangle splits into four regions.`,
+      `Each term of ${left} multiplies each term of ${right}. This is the distributive property: every term meets every other term once.`,
       `${termText(a, "x")} × ${termText(b, "x")} = ${termText(a * b, "x²")}; ${termText(a, "x")} × ${p(u)} = ${termText(a * u, "x")}; ${n(s)} × ${termText(b, "x")} = ${termText(b * s, "x")}; ${n(s)} × ${p(u)} = ${n(s * u)}.`,
       `Combine the $x$-regions: ${termText(a * u, "x")}${termText(b * s, "x", false)} = ${mid === 0 ? "0" : termText(mid, "x")}. The product is ${right1}.`,
     ];
@@ -607,15 +631,16 @@ function structureMeaning(r: Random): Case {
           label,
           feedback:
             label === labels.one
-              ? `At t = 1, h = −16 + ${v} + ${s} = ${-16 + v + s}, not one term alone.`
+              ? `This mixes up one term with the whole height. At t = 1, h = −16 + ${v} + ${s} = ${-16 + v + s}, which uses every term.`
               : label === labels.top
-                ? `The greatest height is at the vertex, t = ${v}/32, not a coefficient.`
-                : "Set t = 0 to see which term is the release height.",
+                ? `This confuses a number in the rule with the peak. The greatest height is at the vertex, the turning point, when t = ${v}/32.`
+                : "This mixes up the two numbers. Set t = 0: the term left over is the release height, and the number multiplying $t$ is the starting speed.",
         })),
       ],
       explanation: [
-        `At release, t = 0: h = −16(0)² + ${v}(0) + ${s} = ${s}. The constant term is the starting height.`,
-        `The term ${v}t grows by ${v} feet each second at first: ${v} is the upward speed at release, in feet per second. −16t² is gravity slowing the ball.`,
+        `Each term of the rule has a meaning. The constant term is the number with no $t$. The coefficient of $t$ is the number multiplying $t$.`,
+        `At release, t = 0: h = −16(0)² + ${v}(0) + ${s} = ${s}. So the constant term is the starting height, in feet.`,
+        `The term ${v}t grows by ${v} feet each second at first. So ${v} is the upward speed at release, in feet per second. The term −16t² is gravity slowing the ball.`,
         `So ${askHeight ? s : v} is ${correct.toLowerCase()}.`,
       ],
       hint: `Put t = 0 into ${rule}: which term is left? Then ask what the term with $t$ alone adds each second.`,
@@ -650,11 +675,12 @@ function structureMeaning(r: Random): Case {
           label,
           feedback:
             label === labels.first
-              ? `One ${job[1]} costs ${fee} + ${rate} = ${fee + rate} dollars in all.`
-              : "Ask which number changes the cost when the count changes.",
+              ? `This adds the two numbers. That is the total for one ${job[1]}: ${fee} + ${rate} = ${fee + rate} dollars. Each number alone has its own meaning.`
+              : "This mixes up the parts. The fixed charge is paid even at zero; the number multiplying the count is added for each one.",
         })),
       ],
       explanation: [
+        `In a rule like this, the constant term is paid no matter what. The coefficient, the number multiplying $${job[2]}$, is the cost of each one.`,
         `When ${job[2]} = 0, C = ${fee}: ${fee} dollars is charged before any ${job[3]}.`,
         `Each extra ${job[1]} adds ${rate} dollars, since $${rate}${job[2]}$ grows by ${rate} when $${job[2]}$ grows by 1.`,
         `So ${askFee ? fee : rate} is ${correct.toLowerCase()}.`,
@@ -686,14 +712,15 @@ function structureMeaning(r: Random): Case {
         label,
         feedback:
           label === labels.add
-            ? "The exponent $t$ means repeated multiplication, not repeated addition."
+            ? "This treats the factor as an amount added. The exponent $t$ means repeated multiplication, not repeated addition."
             : label === labels.after
-              ? `After one year P = ${start} × ${factorText}, a product of both numbers.`
-              : "Put t = 0, then t = 1, and compare.",
+              ? `This confuses one number with the value after a year. After one year P = ${start} × ${factorText}, a product of both numbers.`
+              : "This mixes up the start and the factor. Put t = 0, then t = 1, and compare: the start appears alone at t = 0.",
       })),
     ],
     explanation: [
-      `At t = 0, ${factorText}⁰ = 1, so P = ${start}: the starting population.`,
+      `In P = a(b)^t, the number in front, $a$, is the starting amount. The base $b$, the number raised to the power $t$, is the yearly growth factor.`,
+      `At t = 0, ${factorText}⁰ = 1, because any number to the power 0 is 1. So P = ${start}: the starting population.`,
       `Each added year multiplies $P$ by ${factorText} once more. ${factorText} = 1 + 0.0${pct}, an increase of ${pct}% a year.`,
       `So ${askFactor ? factorText : start} is ${correct[0]!.toLowerCase()}${correct.slice(1)}.`,
     ],
@@ -716,19 +743,20 @@ function structureRewrite(r: Random): Case {
       const choices = options(`(x² − ${sq})(x² + ${sq})`, [
         {
           label: `(x² − ${sq})²`,
-          feedback: `(x² − ${sq})² = x⁴ − ${2 * sq}x² + ${sq * sq}: it has a middle term.`,
+          feedback: `This squares one factor instead of using two. (x² − ${sq})² = x⁴ − ${2 * sq}x² + ${sq * sq}, which has a middle term.`,
         },
         {
           label: `(x − ${sq})(x + ${sq})`,
-          feedback: `(x − ${sq})(x + ${sq}) = x² − ${sq * sq}, a square of $x$, not x⁴.`,
+          feedback: `This uses $x$ where x² belongs. (x − ${sq})(x + ${sq}) = x² − ${sq * sq}, not x⁴ − ${sq * sq}.`,
         },
         {
           label: `(x² − ${m})(x² + ${m})`,
-          feedback: `(x² − ${m})(x² + ${m}) = x⁴ − ${sq}.`,
+          feedback: `This takes one square root too many. (x² − ${m})(x² + ${m}) = x⁴ − ${sq}, but the number is ${sq * sq} = ${sq}².`,
         },
         {
           label: `(x⁴ − ${sq})(x⁴ + ${sq})`,
-          feedback: "x⁴ is (x²)², so each factor holds x², not x⁴.",
+          feedback:
+            "This keeps x⁴ in each factor. x⁴ is (x²)², so each factor holds x², the thing being squared.",
         },
       ]);
       if (!choices) continue;
@@ -736,8 +764,9 @@ function structureRewrite(r: Random): Case {
         prompt: `Write x⁴ − ${sq * sq} as a difference of two squares. Which product is equal to it?`,
         choices,
         explanation: [
+          `A difference of two squares is one square minus another. It always factors: A² − B² = (A − B)(A + B). Multiplying back, the middle terms cancel.`,
           `x⁴ = (x²)² and ${sq * sq} = ${sq}², so x⁴ − ${sq * sq} = (x²)² − ${sq}².`,
-          `A² − B² = (A − B)(A + B) with A = x² and B = ${sq}.`,
+          `Use the pattern with A = x² and B = ${sq}.`,
           `So x⁴ − ${sq * sq} = (x² − ${sq})(x² + ${sq}). The first factor is itself (x − ${m})(x + ${m}).`,
         ],
         hint: `Look at x⁴ − ${sq * sq} as (something)² − (something)²: x⁴ is the square of what, and ${sq * sq} is the square of what?`,
@@ -757,19 +786,20 @@ function structureRewrite(r: Random): Case {
       const choices = options(label(lo, hi), [
         {
           label: label(-lo, -hi),
-          feedback: `Expanding gives x² ${-2 * pp < 0 ? "−" : "+"} ${Math.abs(2 * pp)}x ${pp * pp - q * q < 0 ? "−" : "+"} ${Math.abs(pp * pp - q * q)}: the signs are reversed.`,
+          feedback: `This reverses the signs of the constants. Expanding gives x² ${-2 * pp < 0 ? "−" : "+"} ${Math.abs(2 * pp)}x ${pp * pp - q * q < 0 ? "−" : "+"} ${Math.abs(pp * pp - q * q)}, a different expression.`,
         },
         {
           label: label(pp - q * q, pp + q * q),
-          feedback: `${q * q} is ${q}²: $B$ is ${q}, not ${q * q}.`,
+          feedback: `This forgets to take the square root of ${q * q}. ${q * q} is ${q}², so $B$ is ${q}, not ${q * q}.`,
         },
         {
           label: `${fac(pp - q)}²`,
-          feedback: "A difference of squares has two different factors.",
+          feedback:
+            "This writes a perfect square. A difference of squares factors into two different factors: one with minus and one with plus.",
         },
         {
           label: label(q - pp, q + pp),
-          feedback: `$A = x ${pp < 0 ? "−" : "+"} ${Math.abs(pp)}$: keep its sign.`,
+          feedback: `This flips the sign of the number inside the group. $A = x ${pp < 0 ? "−" : "+"} ${Math.abs(pp)}$: keep its sign.`,
         },
       ]);
       if (!choices) continue;
@@ -777,7 +807,8 @@ function structureRewrite(r: Random): Case {
         prompt: `Treat ${inner} as a single quantity. Which product equals ${inner}² − ${q * q}?`,
         choices,
         explanation: [
-          `Let $A = x${constText(pp)}$. Then ${inner}² − ${q * q} = A² − ${q}².`,
+          `A difference of two squares is one square minus another. It factors: A² − B² = (A − B)(A + B).`,
+          `The group ${inner} acts like one number. Call it $A = x${constText(pp)}$. Then ${inner}² − ${q * q} = A² − ${q}², since ${q * q} = ${q}².`,
           `$A² − ${q}² = (A − ${q})(A + ${q}) = (x${constText(pp)} − ${q})(x${constText(pp)} + ${q})$.`,
           `Combine the constants: ${label(lo, hi)}.`,
         ],
@@ -794,19 +825,19 @@ function structureRewrite(r: Random): Case {
     const choices = options(sq(m, k), [
       {
         label: sq(m * m, k * k),
-        feedback: `(${termText(m * m, "x")}${constText(k * k)})² starts with ${m ** 4}x².`,
+        feedback: `This forgets the square roots. (${termText(m * m, "x")}${constText(k * k)})² starts with ${m ** 4}x², not ${m * m}x².`,
       },
       {
         label: sq(m, -k),
-        feedback: `The middle term's sign is the sign of the constant inside: ${n(2 * m * k)}x.`,
+        feedback: `This has the wrong sign inside. The middle term's sign matches the sign of the constant inside, and here it is ${n(2 * m * k)}x.`,
       },
       {
         label: sq(m * m, k),
-        feedback: `${m * m}x² is (${m}x)², so the first term inside is ${m}x.`,
+        feedback: `This forgets the square root of ${m * m}x². It is (${m}x)², so the first term inside is ${m}x.`,
       },
       {
         label: sq(m, k * k),
-        feedback: `${k * k} is (${n(k)})², so the constant inside is ${n(k)}.`,
+        feedback: `This forgets the square root of ${k * k}. It is (${n(k)})², so the constant inside is ${n(k)}.`,
       },
     ]);
     if (!choices) continue;
@@ -814,6 +845,7 @@ function structureRewrite(r: Random): Case {
       prompt: `Which square is equal to ${expr}?`,
       choices,
       explanation: [
+        `A perfect square trinomial is what you get by squaring a binomial, a two-term expression. Look for squares at both ends.`,
         `${m * m}x² = (${m}x)² and ${k * k} = ${p(k)}².`,
         `A perfect square (A + B)² = A² + 2AB + B². With A = ${m}x and B = ${n(k)}, 2AB = 2 × ${m}x × ${p(k)} = ${termText(2 * m * k, "x")}, the middle term.`,
         `So ${expr} = ${sq(m, k)}.`,
@@ -862,19 +894,19 @@ function zerosFromFactors(r: Random): Case {
       const choices = options(set(sorted), [
         {
           label: set(sorted.map((z) => -z)),
-          feedback: `${factor(sorted[0]!)} is 0 when x = ${n(sorted[0]!)}, the opposite of the number shown.`,
+          feedback: `This takes the numbers in the factors as they look. ${factor(sorted[0]!)} is 0 when x = ${n(sorted[0]!)}, the opposite of the number shown.`,
         },
         {
           label: set([sorted[0]!, sorted[1]!, -sorted[2]!]),
-          feedback: `Check ${factor(sorted[2]!)}: it is 0 at x = ${n(sorted[2]!)}.`,
+          feedback: `This has a sign error for one factor. ${factor(sorted[2]!)} is 0 at x = ${n(sorted[2]!)}.`,
         },
         {
           label: set([-sorted[0]!, sorted[1]!, sorted[2]!]),
-          feedback: `Check ${factor(sorted[0]!)}: it is 0 at x = ${n(sorted[0]!)}.`,
+          feedback: `This has a sign error for one factor. ${factor(sorted[0]!)} is 0 at x = ${n(sorted[0]!)}.`,
         },
         {
           label: set([sorted[0]!, -sorted[1]!, sorted[2]!]),
-          feedback: `Check ${factor(sorted[1]!)}: it is 0 at x = ${n(sorted[1]!)}.`,
+          feedback: `This has a sign error for one factor. ${factor(sorted[1]!)} is 0 at x = ${n(sorted[1]!)}.`,
         },
       ]);
       if (!choices) continue;
@@ -882,8 +914,9 @@ function zerosFromFactors(r: Random): Case {
         prompt: `What are the zeros of ${form(roots).replace("y = ", "y = ")}?`,
         choices,
         explanation: [
-          "A product is 0 exactly when one of its factors is 0.",
-          sorted.map((z) => `${factor(z)} = 0 when x = ${n(z)}`).join("; ") +
+          "A zero of a function is an $x$ where $y$ is 0, where the graph meets the $x$-axis.",
+          "A product is 0 exactly when one of its factors is 0. So set each factor equal to 0.",
+          sorted.map((z) => `${factor(z)} = 0 when x = ${n(z)}`).join(". ") +
             ".",
           `The zeros are ${set(sorted)}.`,
         ],
@@ -896,19 +929,19 @@ function zerosFromFactors(r: Random): Case {
       const choices = options(form(sorted), [
         {
           label: form(sorted.map((z) => -z)),
-          feedback: `This is 0 at ${set(sorted.map((z) => -z))}.`,
+          feedback: `This flips every sign. It is 0 at ${set(sorted.map((z) => -z))}. A zero at $r$ needs the factor (x − r).`,
         },
         {
           label: form([sorted[0]!, sorted[1]!, -sorted[2]!]),
-          feedback: `This is 0 at x = ${n(-sorted[2]!)}, not ${n(sorted[2]!)}.`,
+          feedback: `This has a sign error in one factor: it is 0 at x = ${n(-sorted[2]!)}, not ${n(sorted[2]!)}.`,
         },
         {
           label: form([-sorted[0]!, sorted[1]!, sorted[2]!]),
-          feedback: `This is 0 at x = ${n(-sorted[0]!)}, not ${n(sorted[0]!)}.`,
+          feedback: `This has a sign error in one factor: it is 0 at x = ${n(-sorted[0]!)}, not ${n(sorted[0]!)}.`,
         },
         {
           label: form([sorted[0]!, -sorted[1]!, sorted[2]!]),
-          feedback: `This is 0 at x = ${n(-sorted[1]!)}, not ${n(sorted[1]!)}.`,
+          feedback: `This has a sign error in one factor: it is 0 at x = ${n(-sorted[1]!)}, not ${n(sorted[1]!)}.`,
         },
       ]);
       if (!choices) continue;
@@ -916,10 +949,11 @@ function zerosFromFactors(r: Random): Case {
         prompt: `Which polynomial has zeros at ${sorted.map((z) => `x = ${n(z)}`).join(", ")} and nowhere else?`,
         choices,
         explanation: [
-          "A zero at x = r comes from the factor (x − r), which is 0 exactly at $r$.",
+          "A zero of a polynomial is an $x$ where its value is 0. A product is 0 exactly when one factor is 0.",
+          "So a zero at x = r comes from the factor (x − r), which is 0 exactly at $r$. Note the sign flips: a zero at −2 gives (x + 2).",
           sorted
-            .map((z) => `the factor for x = ${n(z)} is ${factor(z)}`)
-            .join("; ") + ".",
+            .map((z) => `The factor for x = ${n(z)} is ${factor(z)}`)
+            .join(". ") + ".",
           `So the polynomial is ${form(sorted)}.`,
         ],
         hint: `Each zero $r$ needs a factor (x − r). Write the factor for x = ${n(sorted[0]!)} first: watch its sign.`,
@@ -931,19 +965,19 @@ function zerosFromFactors(r: Random): Case {
       {
         label: form(sorted.map((z) => -z)),
         feedback:
-          "Each factor (x − r) is 0 at $r$; these factors are 0 at the opposite numbers.",
+          "This flips every sign. Each factor (x − r) is 0 at $r$, but these factors are 0 at the opposite numbers.",
       },
       {
         label: form(sorted, -lc),
-        feedback: `The graph ${lc > 0 ? "rises" : "falls"} to the right, so the leading coefficient is ${lc > 0 ? "positive" : "negative"}.`,
+        feedback: `This has the wrong leading sign. The graph ${lc > 0 ? "rises" : "falls"} to the right, so the leading coefficient, the number in front, is ${lc > 0 ? "positive" : "negative"}.`,
       },
       {
         label: form([sorted[0]!, sorted[1]!, sorted[2]! + 1]),
-        feedback: `This is 0 at x = ${n(sorted[2]! + 1)}; the graph crosses at x = ${n(sorted[2]!)}.`,
+        feedback: `This misreads one intercept by 1. It is 0 at x = ${n(sorted[2]! + 1)}, but the graph crosses at x = ${n(sorted[2]!)}.`,
       },
       {
         label: form([sorted[0]! - 1, sorted[1]!, sorted[2]!]),
-        feedback: `This is 0 at x = ${n(sorted[0]! - 1)}; the graph crosses at x = ${n(sorted[0]!)}.`,
+        feedback: `This misreads one intercept by 1. It is 0 at x = ${n(sorted[0]! - 1)}, but the graph crosses at x = ${n(sorted[0]!)}.`,
       },
     ]);
     if (!choices) continue;
@@ -952,8 +986,9 @@ function zerosFromFactors(r: Random): Case {
       choices,
       scene: zerosGraph(lc, sorted),
       explanation: [
-        `The graph crosses the $x$-axis at ${sorted.map(n).join(", ")}: each needs a factor (x − r).`,
-        `It ${lc > 0 ? "rises" : "falls"} to the right, so the leading coefficient is ${lc > 0 ? "positive" : "negative"}.`,
+        `Each $x$-intercept, where the graph crosses the $x$-axis, is a zero: there $y$ is 0. A zero at $r$ comes from a factor (x − r).`,
+        `The graph crosses at ${sorted.map(n).join(", ")}, so each of these needs its own factor (x − r).`,
+        `It ${lc > 0 ? "rises" : "falls"} to the right. For a cubic that means the leading coefficient, the number in front, is ${lc > 0 ? "positive" : "negative"}.`,
         `So the equation is ${form(sorted)}.`,
       ],
       hint: "Read the three $x$-intercepts and turn each into a factor (x − r). Then check whether the graph rises or falls on the right.",
@@ -985,6 +1020,7 @@ function zeroMultiplicity(r: Random): Case {
       ].join(" and ");
     const desc = (t: number[], c: number[]) => `The graph ${how(t, c)}.`;
     const explanation = [
+      "A zero is an $x$ where the graph meets the $x$-axis. How it meets the axis depends on the power of its factor.",
       "Near a zero from a squared factor, (x − r)² is never negative, so $y$ keeps one sign on both sides: the graph touches the axis and turns back.",
       "A factor to the first power changes sign at its zero, so the graph crosses there.",
       `In ${form(d, s)}: $${factor(d)}^2$ touches at $x = ${n(d)}$; $${factor(s)}$ crosses at $x = ${n(s)}$.`,
@@ -995,20 +1031,21 @@ function zeroMultiplicity(r: Random): Case {
         [
           {
             label: desc([s], [d]),
-            feedback: `The squared factor is ${factor(d)}²: the touching zero is x = ${n(d)}.`,
+            feedback: `This swaps touch and cross. The squared factor is ${factor(d)}², so the touching zero is x = ${n(d)}.`,
           },
           {
             label: `The graph crosses the $x$-axis at x = ${n(d)} and at x = ${n(s)}.`,
-            feedback: `${factor(d)}² does not change sign at x = ${n(d)}.`,
+            feedback: `This ignores the square. ${factor(d)}² is never negative, so it does not change sign at x = ${n(d)}: the graph touches there.`,
           },
           {
             label: `The graph touches the $x$-axis at x = ${n(d)} and at x = ${n(s)}.`,
-            feedback: `$${factor(s)}$ changes sign at $x = ${n(s)}$.`,
+            feedback: `This treats the single factor as squared. $${factor(s)}$ changes sign at $x = ${n(s)}$, so the graph crosses there.`,
           },
         ].concat([
           {
             label: desc([-d], [-s]),
-            feedback: "Each factor (x − r) is 0 at $r$, not at −r.",
+            feedback:
+              "This flips the signs of the zeros. Each factor (x − r) is 0 at $r$, not at −r.",
           },
         ]),
       );
@@ -1025,19 +1062,21 @@ function zeroMultiplicity(r: Random): Case {
       const choices = options(form(d, s, 1), [
         {
           label: form(s, d, 1),
-          feedback: `This touches at $x = ${n(s)}$ and crosses at $x = ${n(d)}$.`,
+          feedback: `This squares the wrong factor. It touches at $x = ${n(s)}$ and crosses at $x = ${n(d)}$.`,
         },
         {
           label: `y = ${factor(d)}${factor(s)}`,
-          feedback: "With no squared factor the graph crosses at both zeros.",
+          feedback:
+            "This has no squared factor, so the graph would cross at both zeros. Touching needs a squared factor.",
         },
         {
           label: form(-d, -s, 1),
-          feedback: "Each factor (x − r) is 0 at $r$, not at −r.",
+          feedback:
+            "This flips the signs of the zeros. Each factor (x − r) is 0 at $r$, not at −r.",
         },
         {
           label: `y = ${factor(d)}${factor(s)}²`,
-          feedback: `This touches at $x = ${n(s)}$.`,
+          feedback: `This squares the wrong factor, so it touches at $x = ${n(s)}$ instead.`,
         },
       ]);
       if (!choices) continue;
@@ -1052,19 +1091,20 @@ function zeroMultiplicity(r: Random): Case {
     const choices = options(form(d, s), [
       {
         label: form(s, d),
-        feedback: `The graph touches at $x = ${n(d)}$: that factor is the squared one.`,
+        feedback: `This squares the wrong factor. The graph touches at $x = ${n(d)}$, so that factor is the squared one.`,
       },
       {
         label: `y = ${lead(lc)}${factor(d)}${factor(s)}`,
-        feedback: `A parabola would cross at x = ${n(d)}; this graph only touches there.`,
+        feedback: `This has no squared factor. That parabola would cross at x = ${n(d)}, but this graph only touches there.`,
       },
       {
         label: form(d, s, -lc),
-        feedback: `Check the right end: the graph ${lc > 0 ? "rises" : "falls"}.`,
+        feedback: `This has the wrong leading sign. Check the right end: the graph ${lc > 0 ? "rises" : "falls"}.`,
       },
       {
         label: form(-d, -s),
-        feedback: "Each factor (x − r) is 0 at $r$, not at −r.",
+        feedback:
+          "This flips the signs of the zeros. Each factor (x − r) is 0 at $r$, not at −r.",
       },
     ]);
     if (!choices) continue;
@@ -1117,8 +1157,8 @@ function remainderTheorem(r: Random): Case {
         prompt: `For which number $k$ is $${div}$ a factor of $p(x) = ${shown}$?`,
         answer: rat(k),
         explanation: [
-          `x − a is a factor exactly when $p(a) = 0$ (the factor theorem). Here a = ${n(a)}.`,
-          `$p(${n(a)}) = ${p(a)}³${b ? ` ${b < 0 ? "−" : "+"} ${Math.abs(b)} × ${p(a)}²` : ""} + k × ${p(a)}${constText(d)} = ${n(a ** 3 + b * a * a + d)} ${a < 0 ? "−" : "+"} ${Math.abs(a)}k$.`,
+          `A factor divides a polynomial with remainder 0. The factor theorem says x − a is a factor exactly when $p(a) = 0$. Here a = ${n(a)}, the value that makes ${div} zero.`,
+          `$p(${n(a)}) = ${p(a)}³${b ? ` ${b < 0 ? "−" : "+"} ${Math.abs(b)} × ${p(a)}²` : ""} + k × ${p(a)}${constText(d)} = ${n(a ** 3 + b * a * a + d)} ${a < 0 ? "−" : "+"} ${Math.abs(a) === 1 ? "" : Math.abs(a)}k$.`,
           `Set it to 0: ${Math.abs(a) === 1 ? "" : Math.abs(a)}k = ${n(a < 0 ? a ** 3 + b * a * a + d : -(a ** 3 + b * a * a + d))}, so k = ${n(k)}.`,
         ],
         hint: `${div} is a factor when p(${n(a)}) = 0. Substitute x = ${n(a)} into ${shown} and solve for $k$.`,
@@ -1130,7 +1170,7 @@ function remainderTheorem(r: Random): Case {
   const rem = evalDesc(desc, a);
   const shown = polyText(desc);
   const steps = [
-    `The remainder of p(x) ÷ (x − a) is $p(a)$ (the remainder theorem). Here a = ${n(a)}.`,
+    `$p(x)$, read "$p$ of $x$", names the polynomial. The remainder theorem says dividing $p(x)$ by x − a leaves remainder $p(a)$, its value at $a$. Here a = ${n(a)}, since ${div} is zero there.`,
     `p(${n(a)}) = ${substituted(desc, a)} = ${n(rem)}.`,
     `The remainder is ${n(rem)}${rem === 0 ? `, so ${div} is a factor` : ""}.`,
   ];
@@ -1141,6 +1181,7 @@ function remainderTheorem(r: Random): Case {
       answer: rat(rem),
       scene: t.scene,
       explanation: [
+        `Synthetic division divides by ${div} using its zero, ${n(a)}, the value that makes it 0. The top row holds the coefficients, the numbers in front of each power.`,
         `Bring down ${n(desc[0]!)}. Then repeatedly multiply by ${n(a)} and add down each column: the bottom row is ${t.sums.map(n).join(", ")}.`,
         `The last number, ${n(rem)}, is the remainder. Check with the remainder theorem: ${steps[1]}`,
       ],
@@ -1176,28 +1217,29 @@ function polynomialQuotient(r: Random): Case {
     const choices = options(label(q, rem), [
       {
         label: label(neg.slice(0, 3), neg[3]!),
-        feedback: `Dividing by ${div} uses ${n(a)}, the zero of the divisor, not ${n(-a)}.`,
+        feedback: `This uses the wrong sign in synthetic division. For ${div}, use ${n(a)}, the zero of the divisor, not ${n(-a)}.`,
       },
       {
         label: label(noShift, desc[3]!),
         feedback:
-          "These are p's own first coefficients: multiply and add across before reading the bottom row.",
+          "This copies the top row. Those are the polynomial's own coefficients; multiply and add across before reading the bottom row.",
       },
       {
         label: label(q, -rem),
-        feedback: `The remainder is p(${n(a)}) = ${n(rem)}.`,
+        feedback: `This flips the remainder's sign. The remainder is p(${n(a)}) = ${n(rem)}.`,
       },
       {
         label: label([q[0]!, q[1]!, -q[2]!], rem),
         feedback:
-          "Check the last coefficient of the quotient: add each column.",
+          "This has a sign slip in the quotient's last coefficient. Add each column, keeping signs.",
       },
     ]);
     if (!choices) continue;
     const shown = polyText(desc);
     const explanation = [
-      `To divide by ${div}, use ${n(a)} in synthetic division: bring down ${n(desc[0]!)}, then multiply by ${n(a)} and add down each column.`,
-      `The bottom row is ${sums.map(n).join(", ")}. The first three are the quotient's coefficients and the last is the remainder.`,
+      `Dividing gives a quotient, the main result, and a remainder, what is left over. Synthetic division is a short way to divide by ${div}.`,
+      `It uses ${n(a)}, the zero of the divisor, the value that makes ${div} zero. Bring down ${n(desc[0]!)}, then multiply by ${n(a)} and add down each column.`,
+      `The bottom row is ${sums.map(n).join(", ")}. The first three are the quotient's coefficients, one power lower than $p$'s. The last is the remainder.`,
       `So ${shown} = (${div})(${polyText(q)})${constText(rem)}: quotient ${polyText(q)}, remainder ${n(rem)}.`,
     ];
     const walkthrough = syntheticTableau(a, desc, "filled").scene;
@@ -1217,7 +1259,7 @@ function polynomialQuotient(r: Random): Case {
         choices,
         explanation: [
           `R = p(${n(a)}) by the remainder theorem: ${substituted(desc, a)} = ${n(rem)}.`,
-          ...explanation.slice(0, 2),
+          ...explanation.slice(0, 3),
           `So q(x) = ${polyText(q)} and R = ${n(rem)}.`,
         ],
         hint: `$R$ is the value of ${shown} at x = ${n(a)}. For $q(x)$, divide by ${div} with ${n(a)} in the synthetic layout.`,

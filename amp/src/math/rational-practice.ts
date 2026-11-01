@@ -337,8 +337,9 @@ function powerCase(r: Random): Case {
     powered = q(root.n ** Math.abs(m), root.d ** Math.abs(m)),
     source = `${baseText}^{${m}/${n}}`;
   const explanation = [
-    `In the exponent $${m < 0 ? "-" : ""}\\frac{${Math.abs(m)}}{${n}}$, the denominator ${n} calls for a ${rootName} and the numerator gives the power, ${Math.abs(m)}${m < 0 ? "; the negative sign calls for a reciprocal" : ""}.`,
-    `Take the ${rootName}: $${radical} = ${tex(root)}$, because $${rootText}^{${n}} = ${tex(base)}$.`,
+    `The exponent, the small raised number, is a fraction: $${m < 0 ? "-" : ""}\\frac{${Math.abs(m)}}{${n}}$. Each part of it has a job.`,
+    `The bottom number, ${n}, means take the ${rootName}. The top number, ${Math.abs(m)}, is the power to raise it to.${m < 0 ? " The minus sign means take the reciprocal, one over the result." : ""}`,
+    `Take the ${rootName} first, which keeps the numbers small: $${radical} = ${tex(root)}$, because $${rootText}^{${n}} = ${tex(base)}$.`,
     Math.abs(m) === 1
       ? `The power is 1, so the value stays $${tex(root)}$.`
       : `Raise the root to the power ${Math.abs(m)}: $${rootText}^{${Math.abs(m)}} = ${tex(powered)}$.`,
