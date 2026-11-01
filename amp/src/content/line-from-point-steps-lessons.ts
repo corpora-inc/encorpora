@@ -6,51 +6,78 @@ const entries: WorkEntry[] = [
     id: "line-from-point-steps",
     title: "Write a line from its slope and a point",
     summary:
-      "Put a point on the line into $y=mx+b$ to find $b$, then write the equation with the slope and $b$.",
+      "Write the equation $y = mx + b$ of a line from its slope $m$ and one point on it, by finding $b$, where the line crosses the $y$-axis.",
     objectives: [
-      "Find the slope of a line from two points and the $y$-intercept from the slope and one point.",
-      "Write the equation of the line in slope-intercept form, $y=mx+b$.",
+      "Find the slope of a line from two points, and find $b$ from the slope and one point.",
+      "Write the line as $y = mx + b$, called slope-intercept form.",
     ],
     intuition:
-      "A line with slope $\\frac{2}{3}$ goes up 2 for every 3 across. That fixes its steepness but not its place: many parallel lines have that slope. One point on the line pins it down. The point's $x$ and $y$ must make $y=\\frac{2}{3}x+b$ true, and only one value of $b$ does.",
+      "The slope of a line says how steep it is: how much $y$ changes for each step of 1 in $x$. A slope of $\\frac{2}{3}$ means the line goes up 2 for every 3 across. A line that is not vertical can be written $y = mx + b$. Here $m$ is the slope, $mx$ means $m$ times $x$, and $b$ is the $y$-intercept, the $y$ value where the line crosses the $y$-axis. The slope fixes the steepness but not the place: many lines share that slope. Lines like these, which never meet, are called parallel. One point on the line pins it down. The point's $x$ and $y$ must make $y = \\frac{2}{3}x + b$ true, and only one value of $b$ does that.",
     terms: ["slope", "y-intercept", "slope-intercept-form"],
     method: [
-      "If two points are given, find the slope $m=\\frac{y_2-y_1}{x_2-x_1}$ and reduce it.",
-      "Write $y=mx+b$ and substitute $m$ and the $x$ and $y$ of one point.",
-      "Multiply the slope by the point's $x$, then solve for $b$.",
-      "Write $y=mx+b$ with the numbers for $m$ and $b$, and check the other point if there is one.",
+      "If two points with different $x$ values are given, find the slope: $m = \\frac{y_2 - y_1}{x_2 - x_1}$, the change in $y$ over the change in $x$. The small 1 and 2 mark which point a number comes from. Simplify the fraction.",
+      "Write $y = mx + b$. Put in the number for $m$, and the $x$ and $y$ of one point.",
+      "Multiply the slope by the point's $x$. Then subtract that from the point's $y$ to find $b$.",
+      "Write $y = mx + b$ with your numbers for $m$ and $b$. If there is a second point, check it.",
     ],
     watch:
-      "Subtract the same way in the numerator and the denominator: start from the same point in both. Put $x$ and $y$ in the right places; swapping them finds a different line.",
+      "Start from the same point on the top and the bottom of the slope fraction. Put the point's $x$ in for $x$ and its $y$ in for $y$; swapping them usually finds a different line.",
     principle:
-      "A line with slope $m$ through $(x_1,y_1)$ has $y=mx+b$ with $b=y_1-mx_1$. Exactly one line has a given slope and passes through a given point.",
+      "A line with slope $m$ through the point $(x_1, y_1)$ is $y = mx + b$ with $b = y_1 - mx_1$. Exactly one line has a given slope and passes through a given point.",
     example: {
       prompt:
         "A line has slope $-\\frac{3}{4}$ and passes through $(8,2)$. Write its equation in slope-intercept form.",
       steps: [
-        "Slope times $x$: $-\\frac{3}{4}\\cdot8=-6$.",
-        "Substitute into $y=mx+b$: $2=-6+b$, so $b=8$.",
-        "The equation is $y=-\\frac{3}{4}x+8$.",
+        "The point $(8, 2)$ has $x = 8$ and $y = 2$. Multiply the slope by its $x$, since $mx$ is part of the equation: $-\\frac{3}{4} \\cdot 8 = -6$.",
+        "Put $y = 2$ and $mx = -6$ into $y = mx + b$: $2 = -6 + b$. Add 6 to both sides to get $b$ alone: $b = 8$.",
+        "Put $m$ and $b$ back into $y = mx + b$. The equation is $y = -\\frac{3}{4}x + 8$.",
       ],
       answer: "$y=-\\frac{3}{4}x+8$",
     },
     methodTitle: "Check the point",
     methodText: [
-      "Put the point's $x$ into your equation. The $y$ that comes out must be the point's $y$: $-\\frac{3}{4}\\cdot8+8=2$.",
-      "When the slope is a fraction, a point whose $x$ is a multiple of the denominator keeps every step a whole number.",
+      "Put the point's $x$ into your equation. The $y$ that comes out must be the point's $y$: $-\\frac{3}{4} \\cdot 8 + 8 = 2$. So the point is on the line.",
+      "When the slope is a fraction, a point whose $x$ is a multiple of the bottom number makes the slope times $x$ come out whole. Here 8 is a multiple of 4.",
     ],
     formal:
-      "The line through $(x_1,y_1)$ with slope $m$ is the set of points with $\\frac{y-y_1}{x-x_1}=m$. Solving for $y$ gives $y=mx+(y_1-mx_1)$, so $b=y_1-mx_1$.",
+      "The line through $(x_1, y_1)$ with slope $m$ is every point $(x, y)$ with $\\frac{y - y_1}{x - x_1} = m$, together with $(x_1, y_1)$ itself. Solving for $y$ gives $y = mx + (y_1 - mx_1)$, so $b = y_1 - mx_1$.",
     pitfalls: [
-      "Subtract the slope term from $y$ to find $b$; adding it finds the wrong intercept.",
+      "To find $b$, subtract the slope times $x$ from $y$. Adding it instead gives the wrong $b$ whenever the slope times $x$ is not 0.",
       "Use the point's $y$ for $y$ and its $x$ for $x$.",
     ],
     parentGuide:
-      "Ask your learner to put the point back into the finished equation to see that it is on the line.",
+      "Ask your learner to put the point back into the finished equation, to see that it is on the line.",
   },
 ];
 
-export const lineFromPointContent = workContent(entries);
+const work = workContent(entries);
+/** Ordinary words in this lesson and method that are not glossary links. */
+const glossary = {
+  senses: { side: "side-of-equation", sides: "side-of-equation" },
+  noLink: [
+    "part",
+    "whole",
+    "change",
+    "changes",
+    "multiple",
+    "place",
+    "rule",
+    "rules",
+  ],
+};
+export const lineFromPointContent = {
+  ...work,
+  methods: Object.fromEntries(
+    Object.entries(work.methods).map(([id, m]) => [id, { ...m, ...glossary }]),
+  ),
+  // The reference lesson opens with a fuller summary than the short practice goal.
+  lessons: work.lessons.map((l) => ({
+    ...l,
+    ...glossary,
+    summary:
+      "The slope of a line says how steep it is: how much $y$ goes up for each step of 1 to the right. A negative slope means it goes down. A line that is not vertical can be written $y = mx + b$, where $m$ is the slope. The number $b$ is the height where the line crosses the $y$-axis. If you know the slope and one point on the line, put them in and solve for $b$. Then write the equation.",
+  })),
+};
 
 export const lineFromPointFacetMappings: FacetMapping[] = [
   {
