@@ -1217,7 +1217,7 @@ function eighthsAndBeyond(r: Random): Built {
           x === d
             ? `${d} is the number of ${unitOf(d, 2)} in one whole. Count the shaded parts in both bars.`
             : x === extra
-              ? `${extra} counts only the shaded parts in the second bar. Count the shaded parts in both bars.`
+              ? `That counts only the ${extra} shaded ${extra === 1 ? "part" : "parts"} in the second bar. Count the shaded parts in both bars.`
               : "Count every shaded part once, in both bars.",
       }));
     return {

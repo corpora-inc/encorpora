@@ -32,6 +32,11 @@
   text-decoration: none;
   white-space: nowrap;
 }
+/* The link's padding is a touch area, not an indent: its text lines up
+   with the eyebrow when the two wrap onto separate lines. */
+.head .textLink {
+  margin-inline: calc(-1 * var(--space-2));
+}
 .textLink:hover {
   background: var(--color-surface-sunken);
 }
@@ -45,6 +50,8 @@
   margin: 0;
   font-size: clamp(var(--text-title-min), 6vw, var(--text-title-max));
   line-height: 1.15;
+  /* Relative to the title's size: words keep their spaces at 320 px. */
+  letter-spacing: -0.01em;
 }
 .lede {
   margin: 0;
@@ -71,6 +78,7 @@
   align-self: stretch;
   text-align: center;
 }
+/* History rows: a reserved line for a load or download error. */
 .message {
   display: flex;
   flex-wrap: wrap;
@@ -80,6 +88,18 @@
   margin: calc(-1 * var(--space-2)) 0;
   color: var(--color-danger-accent);
   font-size: var(--text-small);
+}
+.failure {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+  color: var(--color-on-surface);
+}
+.failure p {
+  margin: 0;
+}
+.failure .retry {
+  margin-inline: calc(-1 * var(--space-2));
 }
 .retry {
   min-height: var(--target-size);
@@ -99,6 +119,10 @@
   border-radius: var(--radius-panel);
   background: var(--color-surface-sunken);
   transition: opacity var(--motion-fast) var(--ease-standard);
+}
+/* Focus moves here only to keep a retry's place; it is not a control. */
+.contents:focus {
+  outline: none;
 }
 .stale {
   opacity: 0.6;
@@ -217,6 +241,13 @@
   height: var(--target-size);
   border-radius: var(--radius-control);
   background: var(--color-surface-hover);
+}
+/* The narrowest phones: less padding around the nested controls, so the
+   choices get the width. */
+@media (max-width: 360px) {
+  .card {
+    --frame-card-padding: var(--space-3);
+  }
 }
 @media (max-width: 380px) {
   .actions {
