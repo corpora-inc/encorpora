@@ -1043,6 +1043,7 @@ background-image:linear-gradient(var(--grid-line) 0.7px,transparent 0.7px),linea
 .wb-watch-label{border:1.3px solid var(--color-danger-accent);color:var(--color-danger-accent)}
 
 .wb-try{border-bottom:none}
+.wb .wb-try .wb-work{min-height:calc(0.6in + var(--wb-grow,0px))}
 .wb-try-inner{flex:1 1 auto;display:flex;flex-direction:column;padding:0.12in 0 0.04in}
 .wb-try-label{margin:0 0 2px;font-size:var(--small);color:var(--muted)}
 .wb-try-label .wb-lesson-label{display:inline;margin-right:6px}

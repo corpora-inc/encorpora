@@ -166,7 +166,7 @@ export const workbookLayoutScript = String.raw`(function () {
       made.forEach(function (p) {
         var card = p.content.querySelector(".wb-lesson-block");
         if (!card || growable(p).length || block.parentNode) return;
-        if (height(p.body) - height(p.content) < 1.4 * 96) return;
+        if (height(p.body) - height(p.content) < 1 * 96) return;
         card.parentNode.insertBefore(block, card.nextSibling);
         if (!fits(p)) detach([block]);
       });
