@@ -1,4 +1,4 @@
-import type { MethodTerm } from "../glossary/types";
+import type { GlossarySenses, MethodTerm } from "../glossary/types";
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
@@ -20,6 +20,8 @@ export type WorkEntry = {
   formal: string;
   pitfalls: string[];
   parentGuide: string;
+  senses?: GlossarySenses;
+  noLink?: string[];
 };
 
 export function workContent(entries: readonly WorkEntry[]) {
@@ -32,6 +34,8 @@ export function workContent(entries: readonly WorkEntry[]) {
         terms: e.terms,
         method: e.method,
         watch: e.watch,
+        ...(e.senses && { senses: e.senses }),
+        ...(e.noLink && { noLink: e.noLink }),
       },
     ]),
   );
@@ -62,6 +66,8 @@ export function workContent(entries: readonly WorkEntry[]) {
     ],
     pitfalls: e.pitfalls,
     parentGuide: e.parentGuide,
+    ...(e.senses && { senses: e.senses }),
+    ...(e.noLink && { noLink: e.noLink }),
   }));
   return { methods, principles, lessons };
 }
