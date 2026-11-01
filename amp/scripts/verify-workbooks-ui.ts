@@ -436,7 +436,11 @@ try {
         .getByRole("radio", { name: "Right" })
         .click();
       await page.getByRole("button", { name: "Save 2 results" }).click();
-      await page.getByText("2 results saved. Progress is updated.").waitFor();
+      // Radix also mirrors a toast into a live region: either copy will do.
+      await page
+        .getByText("2 results saved. Progress is updated.")
+        .first()
+        .waitFor();
       assert.equal(attempts.length, 2);
       assert.ok(attempts.every((a) => a.evidenceSource === "paper"));
       await page.getByText(/^Not yet · answer 12345$/).waitFor();
