@@ -3953,13 +3953,12 @@ export function withTemplateGlossary(
   const hs = glossary[template.id],
     k8 = k8TemplateGlossary[template.id];
   if (!hs && !k8) return template;
+  // The K–8 table decides for K–8 templates: its ordinary words are never linked.
+  const senses = { ...hs?.senses, ...k8?.senses };
+  for (const form of k8?.noLink ?? []) delete senses[form];
   return {
     ...template,
-    glossarySenses: {
-      ...k8?.senses,
-      ...hs?.senses,
-      ...template.glossarySenses,
-    },
+    glossarySenses: { ...senses, ...template.glossarySenses },
     glossaryNoLink: [
       ...new Set([
         ...(k8?.noLink ?? []),

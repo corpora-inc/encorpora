@@ -1,6 +1,7 @@
 /** Final copy-edit for generated text. Generators build sentences from
  * numbers; this pass makes them read correctly for every number, including 1. */
-const invariant = new Set([
+/** Words after a bare 1 that keep their final s (not plural nouns). */
+export const keptAfterOne: readonly string[] = [
   "is",
   "as",
   "us",
@@ -48,7 +49,8 @@ const invariant = new Set([
   "represents",
   "fits",
   "gets",
-]);
+];
+const invariant = new Set(keptAfterOne);
 function singular(word: string) {
   if (word === "buses") return "bus";
   if (invariant.has(word) || word.endsWith("ss")) return word;

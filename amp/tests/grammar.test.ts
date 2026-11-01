@@ -1,6 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { templates, generateProblem } from "../src/math/engine";
+import { keptAfterOne } from "../src/math/polish";
 
 /** Words that describe a counted noun ("1 square counter", "1 red counter"). */
 const describing =
@@ -12,7 +13,9 @@ const notPlural =
 /** Generated text must read correctly for every count, including 1. */
 const rules: [RegExp, string][] = [
   [
-    /(?<![\d./−-])\b1 (?!is\b|was\b|has\b|as\b|its\b|thus\b|us\b|plus\b|minus\b|times\b|and\b|more\b|less\b|of\b|or\b)[a-z]+(?<!s)s\b/,
+    new RegExp(
+      `(?<![\\d./−-])\\b1 (?!(?:${[...keptAfterOne, "and", "more", "of", "or"].join("|")})\\b)[a-z]+(?<!s)s\\b`,
+    ),
     "plural noun after 1",
   ],
   [/\b[Tt]here (are|were) 1\b/, "plural verb before 1"],

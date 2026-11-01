@@ -26,6 +26,15 @@ test("every K–8 template sense names a real template, form and glossary entry"
 });
 
 test("engine templates carry their K–8 senses", () => {
-  const t = templates.find((x) => x.id === "balanced-addition")!;
-  assert.equal(t.glossarySenses?.["sides"], "side-of-equation");
+  for (const [id, { senses = {}, noLink = [] }] of Object.entries(
+    k8TemplateGlossary,
+  )) {
+    const t = templates.find((x) => x.id === id)!;
+    for (const [form, term] of Object.entries(senses))
+      assert.equal(t.glossarySenses?.[form], term, `${id}: ${form}`);
+    for (const form of noLink) {
+      assert.ok(t.glossaryNoLink?.includes(form), `${id}: ${form}`);
+      assert.equal(t.glossarySenses?.[form], undefined, `${id}: ${form}`);
+    }
+  }
 });
