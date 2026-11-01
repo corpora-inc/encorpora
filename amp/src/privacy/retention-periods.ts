@@ -19,9 +19,6 @@ export const RETENTION = {
   financialRecordYears: 7,
   /** Offline packs and their offline answers, after the pack expires. */
   offlinePackDaysAfterExpiry: 30,
-  /** Rendered workbook PDFs, from when they were made. The workbook itself
-   * is learning data and can be printed again. */
-  workbookPdfHours: 24,
   /** Funnel analytics events, from when they occurred, and visitor records,
    * from their last event. A converted visitor's events leave only monthly
    * aggregate counts with no visitor ID. */

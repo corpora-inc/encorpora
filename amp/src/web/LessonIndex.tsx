@@ -1,25 +1,26 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAppRoute } from "./app-routes";
 import { useLoggedError } from "./feedback";
 import type { TemplateMetadata } from "../math/contracts";
 import type { ProblemLessonView } from "../content/problem-lessons";
-import { gradeOrder, strandNames } from "./BirthYearPrompt";
+import type { Lesson } from "../content/lessons";
 import { ProblemLesson } from "./ProblemLesson";
-import { Select } from "./ui/Select";
+import { LessonLibrary, type LibrarySkillRow } from "./LessonLibrary";
 
 type Props = {
   templates: readonly TemplateMetadata[];
-  skills: readonly { id: string; gradeBand: string; strand: string }[];
+  skills: readonly LibrarySkillRow[];
+  references: readonly Lesson[];
+  openReference: (lesson: Lesson, trigger: HTMLElement) => void;
   busy: boolean;
   loadLesson: (templateId: string) => Promise<ProblemLessonView>;
   practice: (templateId: string) => void;
 };
 
-/** Every problem type, grouped by strand, each with its own short lesson. */
+/** The lesson library, and one problem type's short lesson (`?topic=`). */
 export function LessonIndex(props: Props) {
   const { location, navigate } = useAppRoute();
   const params = new URLSearchParams(location.search);
-  const strand = params.get("strand") ?? "number";
   const topic = params.get("topic");
   const select = (key: "strand" | "topic", value: string | null) => {
     const next = new URLSearchParams(location.search);
@@ -51,33 +52,6 @@ export function LessonIndex(props: Props) {
       current = false;
     };
   }, [topic]);
-  const groups = useMemo(() => {
-    const skills = new Map(props.skills.map((skill) => [skill.id, skill]));
-    const byStrand = new Map<
-      string,
-      { template: TemplateMetadata; rank: number }[]
-    >();
-    for (const template of props.templates) {
-      const skill = skills.get(template.skillId);
-      const key = skill?.strand ?? "number";
-      const list = byStrand.get(key) ?? [];
-      list.push({ template, rank: gradeOrder.indexOf(skill?.gradeBand ?? "") });
-      byStrand.set(key, list);
-    }
-    return Object.keys(strandNames)
-      .filter((key) => byStrand.has(key))
-      .map((key) => ({
-        key,
-        topics: byStrand
-          .get(key)!
-          .sort(
-            (a, b) =>
-              a.rank - b.rank ||
-              a.template.title.localeCompare(b.template.title),
-          )
-          .map((entry) => entry.template),
-      }));
-  }, [props.templates, props.skills]);
 
   if (topic)
     return (
@@ -113,46 +87,12 @@ export function LessonIndex(props: Props) {
       </section>
     );
   return (
-    <section className="lesson-index" aria-label="Lessons by problem type">
-      <div className="lesson-library-heading">
-        <h1>Lessons</h1>
-        <Select
-          aria-label="Math area"
-          value={strand}
-          onValueChange={(value) => select("strand", value)}
-        >
-          {groups.map((group) => (
-            <option key={group.key} value={group.key}>
-              {strandNames[group.key]}
-            </option>
-          ))}
-        </Select>
-      </div>
-      {groups.map((group) => (
-        <ul
-          key={group.key}
-          className="topic-list"
-          data-strand={group.key}
-          aria-label={strandNames[group.key]}
-          hidden={group.key !== strand}
-        >
-          {group.topics.map((template) => (
-            <li key={template.id}>
-              <button
-                data-template={template.id}
-                onClick={() => select("topic", template.id)}
-              >
-                {template.title}
-              </button>
-            </li>
-          ))}
-        </ul>
-      ))}
-      {error && (
-        <p className="workspace-error" role="alert">
-          {error}
-        </p>
-      )}
-    </section>
+    <LessonLibrary
+      templates={props.templates}
+      skills={props.skills}
+      references={props.references}
+      openReference={props.openReference}
+      openTopic={(id) => select("topic", id)}
+    />
   );
 }
