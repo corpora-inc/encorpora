@@ -224,8 +224,66 @@ def solve(public):
     return kit.answer(public, verdicts(public))
 
 
+def explanation_frame(public):
+    """Recognize teaching prose using independently read prompt/figure givens.
+
+The per-option verdicts are checked separately. Unknown prose, including an
+extra mathematical claim before or after those verdicts, must not be ignored.
+"""
+    template, prompt = public['templateId'], public['prompt']
+    if template == 'place-value-forms-select':
+        if 'true comparisons' in prompt:
+            return (["To compare numbers, write each one in digits. Then compare place by place, starting from the greatest place."],
+                    ["The comparisons marked true state the correct order of the numbers."])
+        target = only_span(prompt)
+        return (["Each digit's value depends on its place: ones, tens, hundreds, thousands and ten-thousands.",
+                 f"To test an expression, work out what it adds up to and compare that with ${target}$."],
+                [f"The expressions marked true are the ones whose value is exactly ${target}$."])
+    if template == 'equivalent-fractions-select':
+        target = only_span(prompt)
+        return (["Equivalent fractions name the same amount. Multiply the top (the numerator) and the bottom (the denominator) by the same number to make one.",
+                 "Changing only one part, or adding the same number to both parts, changes the amount."],
+                [f"The fractions marked true are equivalent to ${target}$."])
+    if template == 'fraction-line-names-select':
+        (line,) = [e for e in kit.elements(public) if e['type'] == 'numberLine']
+        parts = line['denominator']
+        count = round(line['marks'][0]['at'] * parts)
+        unit, target = f'\\frac{{1}}{{{parts}}}', f'\\frac{{{count}}}{{{parts}}}'
+        return ([f"The line from 0 to 1 is cut into {parts} equal parts, so each part is ${unit}$. Point $P$ is {count} parts from 0, at ${target}$.",
+                 f"Any fraction equivalent to ${target}$ (the same amount) also names point $P$."],
+                ["The fractions marked true all name point $P$."])
+    if template == 'equivalent-ratios-select':
+        m = re.search(r'\$(\d+)\$ .+? for every \$(\d+)\$', prompt)
+        ratio = f'{m[1]}:{m[2]}'
+        return ([f"A ratio such as ${ratio}$ compares two amounts. An equivalent ratio multiplies both amounts by the same number.",
+                 "Adding the same number to both amounts does not keep the ratio."],
+                [f"The groups marked true keep the ratio ${ratio}$."])
+    if template == 'rounds-to-select':
+        m = re.fullmatch(r'Select the \d+ numbers that round to (\$[\d.]+\$) at the nearest (whole number|tenth|hundredth)\.', prompt)
+        target, place = m[1], m[2]
+        return ([f"Rounding to the nearest {place} means replacing a number with the closest {place} value.",
+                 f"A number rounds to {target} when it is less than half a {place} away from it. A number exactly halfway rounds up."],
+                [f"The numbers marked true round to {target}."])
+    if template == 'compare-to-pi-select':
+        m = re.fullmatch(r'Select the \d+ numbers that are (less|greater) than \$(.+)\$\.', prompt)
+        direction, target = m[1], m[2]
+        if target == '\\pi':
+            lead = "$\\pi$ is the distance around any circle divided by the distance across it. It is about 3.14159."
+        else:
+            radicand = re.fullmatch(r'\\sqrt\{(\d+)\}', target)[1]
+            approximation = format(Decimal(radicand).sqrt().quantize(Decimal('0.00001')), 'f').rstrip('0')
+            lead = f"${target}$ is the number that times itself makes {radicand}. It is about {approximation}."
+        return ([lead, "Write each choice as a decimal, then compare place by place from the left."],
+                [f"The numbers marked true are {direction} than ${target}$."])
+    if template == 'multiplication-fact-grid-select':
+        target = only_span(prompt)
+        return ([f"A multiplication fact such as $3\\times4=12$ multiplies two numbers. Find the answer of each fact and compare it with ${target}$."],
+                [f"The facts marked true multiply to ${target}$."])
+    return [], []
+
+
 def review_problem(problem):
-    return kit.review(problem, verdicts)
+    return kit.review(problem, verdicts, explanation_frame)
 
 
 def _public(template, prompt, labels, count, label, figure=None):

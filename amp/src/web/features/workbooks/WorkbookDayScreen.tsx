@@ -233,10 +233,12 @@ function Today({
           variant="primary"
           className={styles.download}
           disabled={!ready || downloading}
-          aria-busy={downloading || !ready}
+          aria-busy={downloading || (!ready && !loadError)}
           onClick={() => void download()}
         >
-          {ready && !downloading ? "Download workbook" : "Preparing…"}
+          {(ready || loadError) && !downloading
+            ? "Download workbook"
+            : "Preparing…"}
         </Button>
         <Button
           variant="secondary"
@@ -255,6 +257,7 @@ function Today({
       <Contents
         workbook={workbook.data}
         stale={!current}
+        learnerId={learner.id}
         failure={
           loadError && !workbook.data
             ? {
@@ -263,6 +266,10 @@ function Today({
                   "Today's workbook couldn't be prepared. Try again.",
                 ),
                 retry: () => {
+                  // Focus stays in the card the retry replaces.
+                  document
+                    .querySelector<HTMLElement>("[data-workbook-contents]")
+                    ?.focus();
                   void history.refetch();
                   void workbook.refetch();
                 },
@@ -277,16 +284,20 @@ function Today({
 function Contents({
   workbook,
   stale,
+  learnerId,
   failure,
 }: {
   workbook?: WorkbookSummary;
   stale: boolean;
+  learnerId: string;
   /** A load that failed: said in the card's reserved space, with a retry. */
   failure?: { text: string; retry: () => void };
 }) {
   return (
     <div
       className={`${styles.contents} ${stale && !failure ? styles.stale : ""}`}
+      data-workbook-contents
+      tabIndex={-1}
       aria-label="Workbook contents"
     >
       {workbook ? (
@@ -314,6 +325,13 @@ function Contents({
               </li>
             ))}
           </ol>
+          <Link
+            to="/learners/$learnerId/workbooks/$workbookId/results"
+            params={{ learnerId, workbookId: workbook.id }}
+            className={styles.resultsLink}
+          >
+            Enter results
+          </Link>
         </>
       ) : failure ? (
         <div className={styles.failure} role="alert">

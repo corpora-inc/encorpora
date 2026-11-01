@@ -78,6 +78,17 @@
   align-self: stretch;
   text-align: center;
 }
+/* History rows: a reserved line for a load or download error. */
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: calc(var(--target-size) + var(--space-2));
+  margin: calc(-1 * var(--space-2)) 0;
+  color: var(--color-danger-accent);
+  font-size: var(--text-small);
+}
 .failure {
   display: grid;
   justify-items: start;
@@ -108,6 +119,10 @@
   border-radius: var(--radius-panel);
   background: var(--color-surface-sunken);
   transition: opacity var(--motion-fast) var(--ease-standard);
+}
+/* Focus moves here only to keep a retry's place; it is not a control. */
+.contents:focus {
+  outline: none;
 }
 .stale {
   opacity: 0.6;
@@ -244,4 +259,179 @@
   .rowDownload {
     width: 100%;
   }
+}
+.resultRows {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.resultRow {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+.resultHead {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.number {
+  display: inline-grid;
+  place-items: center;
+  min-width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--color-surface-sunken);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.resultSection {
+  color: var(--color-muted-text);
+  font-size: var(--text-small);
+  font-weight: 700;
+}
+.prompt {
+  margin: 0;
+  overflow-wrap: break-word;
+}
+.resultControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-2) var(--space-3);
+}
+.answerField {
+  display: grid;
+  gap: var(--space-1);
+  flex: 1 1 140px;
+  max-width: 220px;
+  font-size: var(--text-small);
+  font-weight: 700;
+}
+.answerField input {
+  box-sizing: border-box;
+  min-height: var(--target-size);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-raised);
+  color: var(--color-on-surface);
+  font: inherit;
+  font-weight: 400;
+}
+.answerField input:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+.answerField input[aria-invalid="true"] {
+  border-color: var(--color-danger-accent);
+}
+.picker {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius-control) + var(--space-1));
+  background: var(--color-surface-sunken);
+}
+.pick {
+  min-width: var(--target-size);
+  min-height: var(--target-size);
+  padding: 0 var(--space-3);
+  border: 2px solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-on-surface);
+  font: inherit;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.pick:hover:not(:disabled) {
+  background: var(--color-surface-raised);
+}
+.pick[aria-checked="true"] {
+  border-color: var(--color-primary);
+  background: var(--color-surface-raised);
+}
+.pick:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.recorded {
+  justify-self: start;
+  margin: 0;
+  padding: var(--space-1) var(--space-3);
+  border-radius: 999px;
+  font-size: var(--text-small);
+  font-weight: 700;
+}
+.right {
+  background: var(--color-success);
+  color: var(--color-on-success);
+}
+.notYet {
+  background: var(--color-warning);
+  color: var(--color-on-warning);
+}
+.rowError {
+  min-height: 1.4em;
+  margin: 0;
+  color: var(--color-danger-accent);
+  font-size: var(--text-small);
+}
+.saveBar {
+  position: sticky;
+  bottom: 0;
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3) 0 var(--space-2);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface-raised);
+}
+.codeForm {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-2);
+}
+.codeForm input {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.resultsLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
+  margin-top: var(--space-2);
+  color: var(--color-primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+.resultsLink:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* Aligns with the field's input, above its reserved error line. */
+.codeButton {
+  min-height: var(--target-size);
+  margin-bottom: calc(1.4em + var(--space-1));
+  white-space: nowrap;
+}
+.pickField {
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--text-small);
+  font-weight: 700;
 }
