@@ -436,13 +436,13 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "formal",
         title: "Why the factor is squared or cubed",
         paragraphs: [
-          "Take any two length units with $1\\text{ A} = k\\text{ B}$. A square with sides $1\\text{ A}$ long has sides $k\\text{ B}$ long, so its area is $k \\times k = k^2\\text{ B}^2$. A cube with edges $1\\text{ A}$ long has edges $k\\text{ B}$ long, so its volume is $k \\times k \\times k = k^3\\text{ B}^3$.",
+          "Take any two length units with $1\\text{ A} = k\\text{ B}$. A square with sides $1\\text{ A}$ long has sides $k\\text{ B}$ long, so its area is $k\\text{ B} \\times k\\text{ B} = k^2\\text{ B}^2$. A cube with edges $1\\text{ A}$ long has edges $k\\text{ B}$ long, so its volume is $k\\text{ B} \\times k\\text{ B} \\times k\\text{ B} = k^3\\text{ B}^3$.",
           "Multiplying a quantity by a ratio equal to 1, such as $\\frac{k\\text{ B}}{1\\text{ A}}$, does not change the quantity, only the units used to write it.",
         ],
       },
     ],
     pitfalls: [
-      "Use $100^2 = 10{,}000$ or $100^3 = 1{,}000{,}000$, not 100, when converting square or cubic meters to centimeters.",
+      "Use $100^2 = 10{,}000$ or $100^3 = 1{,}000{,}000$, not 100, when converting square or cubic meters to square or cubic centimeters.",
       "Convert time as well when a rate mixes hours with minutes.",
       "Check the final units, not only the arithmetic.",
     ],

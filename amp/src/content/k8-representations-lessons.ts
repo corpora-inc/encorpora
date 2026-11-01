@@ -143,7 +143,7 @@ const specs: Spec[] = [
     ],
     formalTitle: "Rate of change from a graph",
     formal: [
-      t`The input is the quantity across the bottom, here time, and the output is the quantity going up. On a piece that is a line segment (a straight piece with two ends), the slope is the change in the output divided by the change in the input. The bars in $|\text{slope}|$ mean the size of the slope, ignoring its sign. Suppose the input changes by the same amount on two pieces. The piece whose output changes by more, ignoring direction, has the larger $|\text{slope}|$. So the output changes faster there. A sign tells direction: positive is increasing and negative is decreasing. Without numbers on the axes, a graph can only be compared by direction and steepness.`,
+      t`The input is the quantity across the bottom, here time, and the output is the quantity going up. On a piece that is a line segment (a straight piece with two ends), the slope is the change in the output divided by the change in the input. The bars in $|\text{slope}|$ mean the size of the slope, ignoring its sign. Suppose the input changes by the same amount on two pieces. The piece whose output changes by more, ignoring direction, has the larger $|\text{slope}|$. So the output changes faster there. A sign tells direction: positive is increasing and negative is decreasing. Without numbers on the axes, you cannot read exact values, but you can still compare direction, steepness and how high each part sits.`,
     ],
     pitfalls: [
       "Read from left to right: left is earlier.",
@@ -282,7 +282,7 @@ const specs: Spec[] = [
     templateId: "triangle-uniqueness",
     title: "How many triangles fit these measures",
     summary:
-      "A triangle has three sides and three angles. An angle is the turn at a corner, measured in degrees, the unit for turns. Given some of these measures, you can ask how many different triangles fit them. Some sets of measures fix exactly one triangle. Some fit none, because the sides cannot meet. Two sides and an angle that is not between them can fit two. Three angles alone fit triangles of every size.",
+      "A triangle has three sides and three angles. An angle is the turn at a corner, measured in degrees, the unit for turns. Given some of these measures, you can ask how many different triangles fit them. Some sets of measures fix exactly one triangle. Some fit none, because the sides cannot meet. Two sides and an angle that is not between them can fit two. Three angles that add to 180° fit triangles of every size.",
     objectives: [
       "Decide whether a set of side and angle measures gives no triangle, one or two.",
       "Name which sets of measures fix exactly one triangle.",
@@ -309,7 +309,7 @@ const specs: Spec[] = [
       "Name what is given: sides, angles, and where each is. Is the angle between the two sides?",
       "Check whether a triangle can exist: the sides pass the triangle inequality, and any two given angles add to less than 180°.",
       "If two sides and an angle not between them are given, draw the angle and lay one side along one of its rays (straight paths from the corner). The other side swings from the end of that side like a gate. See where it can land on the other ray.",
-      "Count the places it lands: none, one or two.",
+      "Count the landing places that make a real triangle: none, one or two. A landing at the starting corner does not count.",
     ],
     watch:
       "Two sides and an angle that is not between them do not always fix one triangle. Check the swing. Also, equal angles alone never fix the size.",

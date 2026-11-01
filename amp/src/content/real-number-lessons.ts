@@ -58,7 +58,7 @@ export const realNumberLessons: Lesson[] = [
       {
         title: "Repeating decimals as fractions",
         paragraphs: [
-          "Every repeating decimal is rational, and a subtraction shows which fraction it is. Call the number $x$. Multiplying by 10 moves every digit one place to the left. If the repeating block has 2 digits, multiply by $10^2 = 10 \\times 10 = 100$ instead. That moves the digits two places, so $100x$ (100 times $x$) has exactly the same endless tail after the decimal point as $x$.",
+          "Every repeating decimal is rational, and a subtraction shows which fraction it is. Call the number $x$. Multiplying by 10 moves every digit one place to the left. Suppose the repeating block has 2 digits and starts right after the point. Then multiply by $10^2 = 10 \\times 10 = 100$ instead. That moves the digits two places, so $100x$ (100 times $x$) has exactly the same endless tail as $x$.",
           "For $x = 0.\\overline{27} = 0.272727\\ldots$, $100x = 27.272727\\ldots$. Subtracting cancels the tails: $100x - x = 27$, so $99x = 27$ and $x = \\frac{27}{99} = \\frac{3}{11}$. Check by dividing: $3 \\div 11 = 0.2727\\ldots$.",
           "If a digit comes before the repeating block, first move it to the left of the point. For $x = 0.1\\overline{6} = 0.1666\\ldots$, $10x = 1.666\\ldots$ and $100x = 16.666\\ldots$. Then $100x - 10x = 16 - 1 = 15$, so $90x = 15$ and $x = \\frac{15}{90} = \\frac{1}{6}$.",
         ],
@@ -212,7 +212,7 @@ export const realNumberLessons: Lesson[] = [
         title: "Exactly one cube root",
         paragraphs: [
           "$x^3$ ($x$ cubed) means $x \\times x \\times x$. Cubing keeps the sign: $4^3 = 64$ and $(-4)^3 = (-4) \\times (-4) \\times (-4) = -64$. So $x^3 = 64$ has the single solution $x = 4$, and $x^3 = -64$ has the single solution $x = -4$. A larger number always has a larger cube, so no other number has the same cube.",
-          "A perfect cube is a whole number cubed, like 64. When the number is not a perfect cube, write the answer with a cube root sign. The equation $x^3 = 20$ has one real solution, $x = \\sqrt[3]{20}$. It is between 2 and 3, because $2^3 = 8$ and $3^3 = 27$.",
+          "A perfect cube is a whole number cubed, like 64, or the negative of one, like −64. When the number is not a perfect cube, write the answer with a cube root sign. The equation $x^3 = 20$ has one real solution, $x = \\sqrt[3]{20}$. It is between 2 and 3, because $2^3 = 8$ and $3^3 = 27$.",
         ],
       },
     ],
@@ -314,7 +314,7 @@ export const realNumberLessons: Lesson[] = [
       },
     ],
     pitfalls: [
-      "The exponent is the number of places the point moves, not the number of zeros to write: $3.07 \\times 10^5 = 307{,}000$ has only three zeros.",
+      "The size of the exponent is the number of places the point moves, not the number of zeros to write: $3.07 \\times 10^5 = 307{,}000$ has only three zeros.",
       "A coefficient of 10 or more, as in $30.7 \\times 10^{4}$, is not scientific notation.",
       "A negative exponent makes a small number, not a negative number.",
     ],
@@ -325,7 +325,7 @@ export const realNumberLessons: Lesson[] = [
     id: "scientific-operations",
     title: "Calculate with scientific notation",
     summary:
-      "Scientific notation is a way to write a number as a coefficient from 1 up to 10 times a power of 10, like $3 \\times 10^4 = 30{,}000$. To multiply or divide two such numbers, work on the coefficients and the powers of 10 separately. To add or subtract, first rewrite them with the same power of 10, just as you add hundreds to hundreds. Then fix the coefficient so its size, ignoring any minus sign, is from 1 up to 10 again.",
+      "Scientific notation is a way to write a number as a coefficient (a number that is 1 or more and less than 10) times a power of 10, like $3 \\times 10^4 = 30{,}000$. To multiply or divide two such numbers, work on the coefficients and the powers of 10 separately. To add or subtract, first rewrite them with the same power of 10, just as you add hundreds to hundreds. Then fix the coefficient so its size, ignoring any minus sign, is from 1 up to 10 again.",
     templateIds: ["scientific-operations"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -405,7 +405,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       "A square root is the number, zero or greater, that times itself gives a number: $\\sqrt{49} = 7$. A cube root is the number whose three copies multiply to make a given number: $\\sqrt[3]{8} = 2$. An integer is a whole number (one of 0, 1, 2, 3, …) or its negative. A rational number is a number that can be written as a fraction of two integers, with a bottom number that is not 0. Its decimal ends or repeats. An irrational number cannot be written that way; its decimal never ends and never repeats. A perfect square is a whole number times itself, like 49, so $\\sqrt{49} = 7$ is rational.",
     method: [
       "For a square root of a whole number, check whether the number is a perfect square. For a cube root, check whether it is a perfect cube, a whole number cubed. If so, the root is a whole number.",
-      "Fractions, integers and decimals that end or repeat are rational.",
+      "Fractions of two integers, integers, and decimals that end or repeat are rational.",
       "Square roots of whole numbers that are not perfect squares, cube roots of whole numbers that are not perfect cubes, $\\pi$ times a rational number other than 0, and decimals that never end and never repeat are irrational.",
     ],
     watch:
@@ -416,7 +416,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     terms: ["repeating-block"],
     noLink: ["whole", "tails", "tail", "leaves", "place", "places"],
     intuition:
-      "A repeating decimal repeats a block of digits forever. A bar marks the block: $0.\\overline{27} = 0.272727\\ldots$. Call the decimal $x$. For a 2-digit block, multiplying by 100 shifts every digit two places left, so $100x$ and $x$ have the same endless tail. For a 3-digit block, use 1000. If digits come before the block, first multiply by 10 for each of them: for $0.1\\overline{6}$, use $100x - 10x = 15$. Subtracting cancels the tail.",
+      "A repeating decimal repeats a block of digits forever. A bar marks the block: $0.\\overline{27} = 0.272727\\ldots$. Call the decimal $x$. For a 2-digit block that starts right after the point, multiplying by 100 shifts every digit two places left, so $100x$ and $x$ have the same endless tail. For a 3-digit block, use 1000. If digits come before the block, first multiply by 10 for each of them: for $0.1\\overline{6}$, use $100x - 10x = 15$. Subtracting cancels the tail.",
     method: [
       "Call the decimal $x$ and write out a few repetitions.",
       "Multiply $x$ by powers of 10 so that two copies have the same tail after the point.",
@@ -569,7 +569,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       product: "product-multiply",
     },
     intuition:
-      "A number in scientific notation is a coefficient from 1 up to 10 times a power of 10, like $3.2 \\times 10^5$. Multiplying powers of 10 adds exponents, and dividing subtracts them. A product is the answer when you multiply. An integer is a whole number (one of 0, 1, 2, …) or its negative. Adding works only when the powers of 10 match, like adding hundreds to hundreds.",
+      "A number in scientific notation is a coefficient (a number that is 1 or more and less than 10) times a power of 10, like $3.2 \\times 10^5$. Multiplying powers of 10 adds exponents, and dividing subtracts them. A product is the answer when you multiply. An integer is a whole number (one of 0, 1, 2, …) or its negative. To add the coefficients directly, the powers of 10 must match, like adding hundreds to hundreds.",
     method: [
       "Multiply or divide: combine coefficients, then add or subtract exponents.",
       "Add or subtract: first rewrite both numbers with the same power of 10.",

@@ -717,7 +717,7 @@ export const areaVolumeLessons: Lesson[] = [
         stage: "formal",
         title: "Circular layers",
         paragraphs: [
-          "Take a right circular cylinder, one whose height meets its circular bases at a right angle. Let its radius be $r$ and its height $h$, both greater than 0. Every slice cut straight across, facing the same way as the base, is a circle of area $\\pi r^2$. Stacking those equal layers gives volume $V = \\pi r^2 h$ cubic units.",
+          "Take a right circular cylinder, one that does not lean: the line joining the centers of its two circular bases meets them at a right angle. Let its radius be $r$ and its height $h$, both greater than 0. Every slice cut straight across, facing the same way as the base, is a circle of area $\\pi r^2$. Stacking those equal layers gives volume $V = \\pi r^2 h$ cubic units.",
         ],
       },
     ],

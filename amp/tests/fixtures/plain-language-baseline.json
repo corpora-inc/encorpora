@@ -7704,7 +7704,6 @@
     "lesson:scientific-operations": {
       "terms": [
         "at-least",
-        "coefficient",
         "decimal",
         "power-of-10",
         "quotient"
@@ -7872,7 +7871,6 @@
     "lesson:signed-fraction-product": {
       "terms": [
         "common-factor",
-        "denominator",
         "dividend",
         "division",
         "lowest-terms",

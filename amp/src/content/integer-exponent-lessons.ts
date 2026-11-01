@@ -114,7 +114,7 @@ export const integerExponentLessons: Lesson[] = [
         title: "Join the factors",
         paragraphs: [
           "A product is the answer when you multiply. In $x^2 \\times x^3$, the first power gives two factors of $x$ and the second gives three. Together there are five: $(x \\times x) \\times (x \\times x \\times x) = x^5$. The base stays $x$. Only the count of factors changes, and the counts add: 2 + 3 = 5.",
-          "In letters: for any $x$ other than 0 and integer exponents $m$ and $n$, $x^{m} \\times x^{n} = x^{m + n}$. The bases must be the same. In $2^3 \\times 5^2$ the factors are 2s and 5s, so adding 3 and 2 gives neither a power of 2 nor a power of 5.",
+          "In letters: for any $x$ other than 0 and integer exponents $m$ and $n$, $x^{m} \\times x^{n} = x^{m + n}$. The bases must be the same. In $2^3 \\times 5^2$ the factors are 2s and 5s. Adding the exponents does not work here, because $2^5$ and $5^5$ are both wrong answers.",
         ],
       },
       {
@@ -259,7 +259,7 @@ export const integerExponentLessons: Lesson[] = [
       },
     ],
     pitfalls: [
-      "Add exponents for a product of powers, $x^2 \\times x^3 = x^5$. Multiply exponents for a power of a power, $(x^2)^3 = x^6$.",
+      "Add exponents when multiplying powers with the same base, $x^2 \\times x^3 = x^5$. Multiply exponents for a power of a power, $(x^2)^3 = x^6$.",
       "A negative outer exponent takes a reciprocal; it does not just flip a sign.",
       "These rules need integer exponents and a base other than 0. Do not use them on expressions that have no value, such as $0^{-2}$.",
     ],
