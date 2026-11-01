@@ -80,7 +80,7 @@ export const algebra2Entries: GlossaryEntry[] = [
     term: "cube root",
     forms: ["cube root", "cube roots"],
     plain:
-      "The number that, multiplied by itself three times, gives the original number. It is written $\\sqrt[3]{a}$.",
+      "The number that gives the original number when three copies of it are multiplied together. It is written $\\sqrt[3]{a}$.",
     example: "$\\sqrt[3]{8}=2$ because 2 × 2 × 2 = 8, and $\\sqrt[3]{-8}=-2$.",
     uses: [],
     band: "8",
@@ -383,7 +383,7 @@ export const algebra2Entries: GlossaryEntry[] = [
     id: "perfect-cube",
     term: "perfect cube",
     forms: ["perfect cube", "perfect cubes"],
-    plain: "A number that is an integer multiplied by itself three times.",
+    plain: "A number that is an integer times itself, times itself again.",
     example: "8 = 2 × 2 × 2 and 27 = 3 × 3 × 3 are perfect cubes; so is −64.",
     uses: ["integer"],
     band: "algebra-2",
