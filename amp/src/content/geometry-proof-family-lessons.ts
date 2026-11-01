@@ -1144,8 +1144,8 @@ const specs: Spec[] = [
       "prime",
     ],
     intuition: [
-      t`A circle's radius is a segment from its center to the circle. A tangent is a line that touches a circle at exactly one point, called the point of tangency. The tangent is perpendicular to the radius drawn to that point: they meet at a right angle, $90^\circ$.`,
-      t`So the tangent segment, the radius, and the segment from the center to the outside point form a right triangle. In a right triangle, the two sides that form the right angle are the legs. The longest side, across from the right angle, is the hypotenuse. The Pythagorean theorem is the rule $a^2+b^2=c^2$, where $a$ and $b$ are the legs, $c$ is the hypotenuse, and $a^2$ means $a\times a$. A square root is a number that times itself gives a given number. A length uses the positive one: the square root of 144 is 12.`,
+      t`A segment is a straight piece of a line between two endpoints. A circle's radius is a segment from its center to the circle. A tangent is a line that touches a circle at exactly one point, called the point of tangency. The tangent is perpendicular to the radius drawn to that point: they meet at a right angle, $90^\circ$.`,
+      t`Take a point outside the circle on the tangent. The tangent segment is the piece of the tangent from that point to the point of tangency. The tangent segment, the radius, and the segment from the center to the outside point form a right triangle. In a right triangle, the two sides that form the right angle are the legs. The longest side, across from the right angle, is the hypotenuse. The Pythagorean theorem is the rule $a^2+b^2=c^2$, where $a$ and $b$ are the legs, $c$ is the hypotenuse, and $a^2$ means $a\times a$. A square root is a number that times itself gives a given number. A length uses the positive one: the square root of 144 is 12.`,
       t`From one point outside a circle you can draw two tangents. The two tangent segments, from that point to where they touch the circle, have the same length.`,
     ],
     terms: ["tangent-line", "hypotenuse"],
@@ -1180,7 +1180,7 @@ const specs: Spec[] = [
     pitfalls: [
       "The hypotenuse is the segment from the center to the outside point.",
       "To find a leg, subtract squares, $c^2-a^2$, then take the square root.",
-      "Solve for $x$ first, then substitute into the segment asked for.",
+      "Solve for $x$ first, then use it to find the segment asked for.",
     ],
     parentGuide:
       "Ask the learner to sketch the radius to the point of tangency and mark the right angle.",

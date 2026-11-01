@@ -122,7 +122,7 @@ const entries: WorkEntry[] = [
       "Find the two angles. Are they at the same crossing or at different ones? Which side of the transversal are they on, and above or below each line?",
       "Find a middle angle linked to both. It might be vertical to one and corresponding to the other, or form a linear pair with one and correspond to the other.",
       "Write the given. Then write one line for each link, with its reason.",
-      "Combine them. For equal angles, use the transitive property: two things equal to the same thing are equal to each other. For a sum of $180^\\circ$, substitute and use the definition of supplementary angles.",
+      "Combine them. For equal angles, use the transitive property: two things equal to the same thing are equal to each other. For a sum of $180^\\circ$, substitute (replace an angle by its equal partner) and use the definition of supplementary angles.",
     ],
     watch:
       "Corresponding angles are equal only when the lines are parallel. To prove lines parallel, use the converse: it starts from equal corresponding angles and concludes that the lines are parallel.",
@@ -135,7 +135,7 @@ const entries: WorkEntry[] = [
         "1. $\\ell\\parallel m$ — Given.",
         "2. $\\angle 3\\cong\\angle 2$ — Vertical angles are congruent. They sit across from each other at the same crossing.",
         "3. $\\angle 2\\cong\\angle 6$ — Corresponding angles of parallel lines are congruent. They hold the same position at the two crossings, and line 1 says the lines are parallel.",
-        "4. $\\angle 3\\cong\\angle 6$ — Transitive property of congruence. Lines 2 and 3 show that both are congruent to $\\angle 2$.",
+        "4. $\\angle 3\\cong\\angle 6$ — Transitive property of congruence: two angles congruent to the same angle are congruent to each other. Lines 2 and 3 show that both are congruent to $\\angle 2$.",
       ],
       answer: "$\\angle 3\\cong\\angle 6$",
     },
