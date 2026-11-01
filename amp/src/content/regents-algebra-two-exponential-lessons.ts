@@ -30,42 +30,69 @@ export const regentsAlgebraTwoExponentialMethods: Record<
 > = {
   "geometric-series-total": {
     goal: "Add the first $n$ terms of a geometric sequence with a fractional ratio, or a run of payments that each grow by a percent.",
+    senses: { term: "term-sequence" },
+    noLink: ["period"],
     intuition:
-      "In a geometric sequence each term is the previous one times a fixed ratio. Adding $n$ terms one by one is slow, so a formula does it at once. A payment that grows by 8% each year is a term whose ratio is 1.08.",
+      "A geometric sequence is a list where each term is the one before it times a fixed number. That number is called the common ratio, $r$. The sum of its first $n$ terms is called a geometric series. $a_1$, read “$a$ sub 1”, is the first term. A payment that grows by 8% each year is 1.08 times the one before, so the common ratio is 1.08.",
     terms: ["common-ratio", "geometric-series"],
     method: [
-      "Find $a_1$ and $r$. A percent increase of $p\\%$ gives $r=1+\\frac{p}{100}$.",
-      "Use $S_n=\\dfrac{a_1(1-r^n)}{1-r}$, which works for any $r\\ne1$.",
-      "Count terms carefully, then round only at the end.",
+      "Find $a_1$ and $r$. Get $r$ by dividing a term by the one before it (one that is not 0), or turn an increase of $p\\%$ into $r = 1 + \\tfrac{p}{100}$.",
+      "If $r$ is not 1, use $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$, where $n$ is the number of terms.",
+      "Count the terms carefully, and round only the final answer.",
     ],
     watch:
-      "The exponent is the number of terms, $n$. Keep the denominator $1-r$, and round only the final answer.",
+      "The exponent is the number of terms, $n$. In this form the top has $1 - r^n$ and the bottom has $1 - r$: keep both in the same order. Round only the final answer.",
   },
   "common-base-exponential": {
     goal: "Write both sides of an exponential equation as powers of one base, set the exponents equal and solve.",
+    senses: {
+      side: "side-of-equation",
+      base: "base-exponent",
+      term: "term-expression",
+    },
+    noLink: ["part", "whole"],
     intuition:
-      "Different numbers such as 27 and 9 can be powers of the same base: $27=3^3$ and $9=3^2$. When both sides are powers of 3, they are equal exactly when their exponents are equal.",
-    terms: ["base-exponent", "exponent"],
+      "An exponent is the small raised number in a power: $3^2 = 3 \\times 3 = 9$. Different numbers such as 27 and 9 can be powers of the same base: $27 = 3^3$ and $9 = 3^2$. Two powers of the same positive base, other than 1, are equal exactly when their exponents are equal. A negative exponent means one divided by the power: $3^{-2} = \\tfrac{1}{9}$.",
+    terms: [
+      "base-exponent",
+      [
+        "exponent",
+        "A negative exponent means one divided by the matching power: $3^{-2} = \\tfrac{1}{9}$.",
+      ],
+    ],
     method: [
-      "Rewrite each side with the same base.",
-      "Use a power of a power: $(b^m)^k=b^{mk}$, so multiply the exponent of the base by the whole exponent expression.",
-      "Set the exponents equal and solve the linear equation. Check by substituting.",
+      "Rewrite each side, meaning the part on the left or the right of the equals sign, as a power of the same base.",
+      "Use a power of a power, $(b^m)^k = b^{mk}$: multiply the base's exponent by the whole exponent.",
+      "Set the exponents equal and solve. Check by putting the answer back in.",
     ],
     watch:
-      "Setting the exponents equal before the bases match gives a wrong equation. Multiply by the power of the base first.",
+      "Setting the exponents equal before the bases match gives a wrong equation. Rewrite the bases first, and multiply by the base's exponent.",
   },
   "exponential-parameter-log": {
-    goal: "Isolate the exponential, take a base-10 logarithm and read $x$, with letters or numbers as parameters.",
+    goal: "Get the power of 10 alone, take a base-10 logarithm and find $x$. Letters may stand for fixed numbers.",
+    senses: {
+      factor: "factor-number",
+      side: "side-of-equation",
+      base: "base-exponent",
+      parameter: "parameter",
+    },
+    noLink: ["whole"],
     intuition:
-      "A logarithm undoes a power: $\\log 10^k=k$. First get $10^{(\\text{exponent})}$ alone by dividing out any multiplier, then take the log.",
-    terms: ["logarithm", "parameter"],
+      "A logarithm is a missing exponent. The exponent is the small raised number in a power like $10^3$, and the base is the number being raised, here 10. The base-10 logarithm of a number, written $\\log$, is the exponent that turns 10 into that number, so $\\log 10^k = k$. A power of 10, meaning 10 raised to some exponent, is undone by it. In $3 \\cdot 10^x = 45$, where the dot means times, first get $10^x$ alone by dividing by 3. Then take the logarithm. A letter that stands for a fixed number, like $a$ in $a \\cdot 10^x = b$, is called a parameter.",
+    terms: [
+      [
+        "logarithm",
+        "The base is positive and not 1, and the number inside is positive. $\\log$ with no base means base 10.",
+      ],
+      "parameter",
+    ],
     method: [
-      "Divide both sides by any factor that multiplies $10^{(\\cdot)}$.",
-      "Take $\\log$ of both sides so the exponent comes down.",
-      "Divide by any coefficient of $x$ in the exponent.",
+      "Divide both sides, meaning the left and the right of the equals sign, by the number or parameter that multiplies the power of 10. In these problems it is positive, never 0.",
+      "Take $\\log$ of both sides, so the exponent comes down.",
+      "If a number multiplies $x$ inside the exponent, divide both sides by it last. It is never 0 here.",
     ],
     watch:
-      "A factor outside the power is divided out before the log; a factor inside the exponent is divided out after it.",
+      "A number that multiplies the whole power is divided away before the logarithm. A number that multiplies $x$ inside the exponent is divided away after it.",
   },
   "exponential-target-time": {
     goal: "Find the time when an exponential model reaches a target amount, and round as the question asks.",
@@ -303,7 +330,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
 
 export const regentsAlgebraTwoExponentialPrinciples: Record<string, string> = {
   "geometric-series-total":
-    "For a geometric sequence with first term $a_1$ and ratio $r\\ne1$, the sum of the first $n$ terms is $S_n=\\dfrac{a_1(1-r^n)}{1-r}$. A $p\\%$ increase each period gives $r=1+\\frac{p}{100}$.",
+    "For a geometric sequence with first term $a_1$ and common ratio $r\\ne1$ ($\\ne$ means is not equal to), the sum of the first $n$ terms is $S_n=\\dfrac{a_1(1-r^n)}{1-r}$. A $p\\%$ increase each period gives $r=1+\\frac{p}{100}$.",
   "common-base-exponential":
     "For $b>0$ and $b\\ne1$, $b^u=b^v$ exactly when $u=v$. Also $(b^m)^k=b^{mk}$, which lets a power of a power be written in the base $b$.",
   "exponential-parameter-log":
@@ -323,123 +350,142 @@ export const regentsAlgebraTwoExponentialLessons = [
     id: "regents-geometric-series-total",
     title: "Totals of geometric series",
     summary:
-      "Add the first terms of a geometric sequence with a fractional ratio or yearly percent growth.",
+      "A geometric sequence is a list where each term, each number in the list, is the one before it times the same number, called the common ratio. For 4, 2, 1, each term is half the one before, so the common ratio is $\\tfrac{1}{2}$. The sum of the first few terms is called a geometric series. A formula adds them all at once. It also handles payments that grow each year by the same percent, meaning a number of parts out of 100.",
+    senses: {
+      term: "term-sequence",
+      side: "side-of-equation",
+    },
+    noLink: ["change", "parts", "whole", "period", "mean"],
     templateIds: ["geometric-series-total"],
     objectives: [
-      "Identify $a_1$, $r$ and $n$ from a sequence or from percent growth.",
-      "Apply $S_n=\\frac{a_1(1-r^n)}{1-r}$ and round the total only at the end.",
+      "Find the first term $a_1$ (read “$a$ sub 1”), the ratio $r$ and the number of terms $n$, from a list or from a yearly percent increase.",
+      "Use the sum formula, and round the total only at the very end.",
     ],
     openingTitle: "A fixed ratio makes the sum short",
     opening: [
-      "In a geometric sequence every term is the previous term times a fixed ratio $r$. The sum of the first $n$ terms is a geometric series.",
-      "Payments that each rise by 8% over the last are such a sequence with $r=1.08$. A ratio below 1 such as $\\frac34$ makes the terms shrink.",
+      "In a geometric sequence, every term is the term before it times a fixed number $r$, the common ratio. The first term is written $a_1$: the small 1 is a label for position 1. The sum of the first $n$ terms is called a geometric series, written $S_n$.",
+      "When the first term is positive, a common ratio between 0 and 1, like $\\tfrac{3}{4}$, makes the terms shrink. A common ratio above 1 makes them grow. Percent (%) means out of 100. A payment that rises 8% each year keeps the whole amount and adds 0.08 of it, so each payment is 1.08 times the last: $r = 1.08$.",
+      "The sum formula is $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$, for any common ratio $r$ that is not 1. Here $r^n$ means $n$ copies of $r$ multiplied together. That exponent, the small raised $n$, is the number of terms.",
     ],
     example: {
       prompt:
         "A geometric sequence has $a_1=4$ and $r=\\frac12$. What is the sum of the first 3 terms?",
       steps: [
-        "The terms are $4,2,1$.",
-        "Formula: $\\frac{4(1-(1/2)^3)}{1-1/2}=\\frac{4\\cdot\\frac78}{\\frac12}=7$.",
-        "Both ways give $7$.",
+        "List the terms first. Start at 4 and halve each time: 4, 2, 1. Adding them gives $4 + 2 + 1 = 7$.",
+        "Now use the formula with $a_1 = 4$, $r = \\tfrac{1}{2}$ and $n = 3$. First, $r^3 = \\tfrac{1}{2} \\times \\tfrac{1}{2} \\times \\tfrac{1}{2} = \\tfrac{1}{8}$, so $1 - r^3 = \\tfrac{7}{8}$. Also $1 - r = \\tfrac{1}{2}$.",
+        "So $S_3 = \\tfrac{4 \\times \\tfrac{7}{8}}{\\tfrac{1}{2}} = \\tfrac{7}{2} \\div \\tfrac{1}{2} = 7$. Dividing by $\\tfrac{1}{2}$ is the same as multiplying by 2.",
+        "Both ways give 7. For three terms, listing is quick. For 20 terms, the formula saves the work.",
       ],
       answer: "$7$",
     },
     methodTitle: "Identify, substitute, round last",
     method: [
-      "Name $a_1$, $r$ and $n$. For a percent increase of $p\\%$, $r=1+p/100$.",
-      "Substitute into $S_n$, compute $r^n$ exactly or with a calculator, and round last.",
+      "Name $a_1$, $r$ and $n$. For an increase of $p\\%$ each period, $r = 1 + \\tfrac{p}{100}$, so 8% gives $r = 1.08$.",
+      "Put them into $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$. Work out $r^n$ exactly, or with a calculator. Rounding means keeping fewer digits. Round only the final total, because rounding early can change the last digit.",
     ],
     formalTitle: "Why the formula works",
     formal: [
-      "Let $S=a_1+a_1r+\\cdots+a_1r^{n-1}$. Then $rS-S=a_1r^n-a_1$, so $S(r-1)=a_1(r^n-1)$.",
-      "Dividing by $r-1$ gives $S_n=\\frac{a_1(1-r^n)}{1-r}$ when $r\\ne1$.",
+      "Let $S = a_1 + a_1 r + \\cdots + a_1 r^{n-1}$, where the dots mean the list goes on in the same way. Multiply every term by $r$: $rS = a_1 r + a_1 r^2 + \\cdots + a_1 r^n$. Subtract $S$ from $rS$. Every shared term cancels, so $rS - S = a_1 r^n - a_1$.",
+      "Take out the common factors: $S(r - 1) = a_1(r^n - 1)$. When $r \\neq 1$ ($\\neq$ means is not equal to), divide both sides, meaning the left and the right of the equals sign, by $r - 1$. That gives $S_n = \\tfrac{a_1(r^n - 1)}{r - 1}$, which equals $\\tfrac{a_1(1 - r^n)}{1 - r}$.",
     ],
     pitfalls: [
-      "Use $n$ terms: the exponent is $n$, not $n-1$.",
-      "The infinite-sum formula $\\frac{a_1}{1-r}$ does not apply to a fixed number of terms.",
-      "Rounding $r^n$ early can change the final dollar.",
+      "Use $n$, the number of terms, as the exponent in the formula, not $n - 1$.",
+      "The formula $\\tfrac{a_1}{1 - r}$ is for an endless list whose common ratio is between $-1$ and 1. It does not give the sum of a fixed number of terms.",
+      "Rounding $r^n$ early can change the final dollar amount.",
     ],
     parentGuide:
-      "Ask your learner to list the first three terms before using the formula, to see what the ratio does.",
+      "Ask your learner to list the first three terms before using the formula, and to say what the ratio does to each term. Then check that the formula gives the same total.",
   }),
   chainLesson({
     id: "regents-common-base-exponential",
     title: "Exponential equations with a common base",
     summary:
-      "Rewrite 9, 27, 4 or 8 as powers of one base to equate the exponents.",
+      "In $27^x$, the 27 is the base and $x$ is the exponent, the small raised number. For a whole number, the exponent says how many 27s are multiplied together. Different numbers can be powers of the same base: $27 = 3^3$ and $9 = 3^2$. When both sides, meaning the left and the right of the equals sign, are powers of 3, they are equal exactly when their exponents are equal. That turns the equation into a simpler one with no exponents.",
+    senses: { base: "base-exponent", side: "side-of-equation", rule: "rule" },
+    noLink: ["whole"],
     templateIds: ["common-base-exponential"],
     objectives: [
       "Write both sides of an equation as powers of the same base.",
-      "Equate the exponents after distributing the power, and solve the linear equation.",
+      "Multiply out the exponents, set them equal, and solve the equation that results.",
     ],
     openingTitle: "Same base, same exponent",
     opening: [
-      "A power such as $27^{x}$ can be written $(3^3)^x=3^{3x}$. When both sides are written with base 3, the equation holds exactly when the exponents are equal.",
-      "Writing powers in one base turns an exponential equation into a linear one.",
+      "A power is a base with an exponent, like $3^3 = 3 \\times 3 \\times 3 = 27$. A power of a power multiplies the exponents: $(3^3)^x = 3^{3x}$, because $x$ copies of three 3s make $3x$ threes. So $27^x = 3^{3x}$.",
+      "Two powers of the same base are equal exactly when their exponents are equal, as long as the base is positive and not 1. So if $3^{3x} = 3^{2(x + 3)}$, then $3x = 2(x + 3)$. The exponential equation has become a linear one, with no exponents.",
+      "A negative exponent means one divided by the power: $3^{-2} = \\tfrac{1}{3^2} = \\tfrac{1}{9}$.",
     ],
     example: {
       prompt: "Solve $27^{x}=9^{x+3}$.",
       steps: [
-        "$27=3^3$ and $9=3^2$, so $3^{3x}=3^{2(x+3)}$.",
-        "Equal bases: $3x=2x+6$.",
-        "$x=6$. Check: $3\\cdot6=18$ and $2\\cdot9=18$.",
+        "Write both bases as powers of 3: $27 = 3^3$ and $9 = 3^2$. Then $27^x = (3^3)^x = 3^{3x}$, and $9^{x+3} = (3^2)^{x+3} = 3^{2(x+3)}$.",
+        "The bases now match, so the exponents must be equal: $3x = 2(x + 3)$.",
+        "Multiply out the bracket: $3x = 2x + 6$. Subtract $2x$ from both sides: $x = 6$.",
+        "Check the exponents in base 3: $3 \\times 6 = 18$, and $2 \\times (6 + 3) = 18$. They match, so both sides equal $3^{18}$.",
       ],
       answer: "$x=6$",
     },
-    methodTitle: "Base, distribute, solve",
+    methodTitle: "Base, multiply exponents, solve",
     method: [
-      "Find the base that makes both numbers powers of it.",
-      "Multiply each exponent expression by the power of the base.",
-      "Set the exponents equal and solve.",
+      "Find a base that makes both numbers powers of it, such as 3 for 9 and 27, or 2 for 4 and 8.",
+      "Multiply the whole exponent by the base's own exponent: $9 = 3^2$, so $9^{x+3} = 3^{2(x+3)}$.",
+      "Set the exponents equal and solve. Check by putting the answer back into both exponents.",
     ],
     formalTitle: "The rule",
     formal: [
-      "For $b>0$, $b\\ne1$: $b^u=b^v\\iff u=v$, because $b^x$ is one-to-one.",
-      "The rule needs a single common base on both sides.",
+      "For a base $b > 0$ with $b \\neq 1$ ($\\neq$ means is not equal to): $b^u = b^v$ exactly when $u = v$. This works because $b^x$ never gives the same result for two different values of $x$.",
+      "This needs a single common base on both sides. A power of a power follows $(b^m)^k = b^{mk}$.",
     ],
     pitfalls: [
-      "Do not equate exponents while the bases differ.",
-      "Multiply the whole exponent by the power: $2(x+3)$, not $2x+3$.",
+      "Do not set the exponents equal while the bases are different.",
+      "Multiply the whole exponent by the inner exponent: $2(x + 3)$, not $2x + 3$.",
     ],
     parentGuide:
-      "Have your learner substitute the answer back and write both exponents to see that they match.",
+      "After both sides are rewritten in base 3, have your learner put the answer into both new exponents and see that they match.",
   }),
   chainLesson({
     id: "regents-exponential-parameter-log",
     title: "Base-10 equations with parameters",
-    summary: "Solve $a\\cdot10^x=b$ and $10^{ax}=b$ with logarithms.",
+    summary:
+      "In $10^x = 15$, the unknown $x$ is an exponent, the small raised number. A power of 10, meaning 10 raised to some exponent, can be any positive number: $10^2 = 100$, and $10^x = 15$ for an $x$ between 1 and 2. The base-10 logarithm is the exponent that turns 10 into a given number. It is written $\\log$, so $x = \\log 15$. To solve, get the power of 10 alone, then take the logarithm. Sometimes letters such as $a$ and $b$ stand for fixed numbers. Letters like these are called parameters.",
+    senses: { parameter: "parameter", side: "side-of-equation" },
+    noLink: ["whole", "part"],
     templateIds: ["exponential-parameter-log"],
     objectives: [
-      "Isolate the power of 10 before taking a logarithm.",
-      "Tell a multiplier of the power apart from a multiplier of the exponent.",
+      "Get the power of 10 alone before taking a logarithm.",
+      "Tell a number that multiplies the whole power, as in $a \\cdot 10^x$, apart from a number that multiplies $x$ inside the exponent, as in $10^{ax}$.",
     ],
-    openingTitle: "Log undoes the power of ten",
+    openingTitle: "A logarithm undoes a power of ten",
     opening: [
-      "The base-10 logarithm of $10^k$ is $k$. To solve for an exponent, get the power alone and take the log of both sides.",
-      "A factor outside the power, as in $a\\cdot10^x$, is divided out first. A factor inside the exponent, as in $10^{ax}$, is divided out after the log.",
+      "The base-10 logarithm of $10^k$ is $k$: $\\log 10^3 = 3$, because $10^3 = 1000$. So taking $\\log$ of both sides, meaning the left and the right of the equals sign, brings an exponent down to an ordinary number.",
+      "In $3 \\cdot 10^x = 45$, the dot means times, and 3 multiplies the whole power. Divide both sides by 3 first, to get $10^x = 15$. Then take the logarithm: $x = \\log 15$.",
+      "In $10^{2x} = 15$, the 2 multiplies $x$ inside the exponent. Take the logarithm first: $2x = \\log 15$. Then divide both sides by 2: $x = \\tfrac{\\log 15}{2}$.",
+      "A parameter is a letter that stands for a fixed number, like $a$ in $a \\cdot 10^x = b$. In these problems the parameters are positive, so dividing by them is allowed and the logarithm exists.",
     ],
     example: {
       prompt: "Solve $3\\cdot10^{x}=45$ for $x$.",
-      steps: ["Divide by 3: $10^x=15$.", "Take the log: $x=\\log 15$."],
+      steps: [
+        "The 3 multiplies the whole power, so divide both sides by 3 first: $10^x = \\tfrac{45}{3} = 15$. Dividing both sides by the same number, other than 0, keeps them equal.",
+        "Take the base-10 logarithm of both sides. Since $\\log 10^x = x$, this gives $x = \\log 15$, which is about 1.18.",
+      ],
       answer: "$x=\\log 15$",
     },
     methodTitle: "Isolate, log, divide",
     method: [
-      "Divide both sides by the multiplier of the power.",
-      "Take $\\log$.",
-      "Divide by any coefficient on $x$ in the exponent.",
+      "Divide both sides by the number or parameter that multiplies the power of 10. In these problems it is never 0.",
+      "Take $\\log$ of both sides, so the exponent comes down: $\\log 10^u = u$.",
+      "If a number multiplies $x$ inside the exponent, divide both sides by it last. It is never 0 here either.",
     ],
     formalTitle: "Conditions",
     formal: [
-      "$\\log$ is defined for positive numbers, so the right side after dividing must be positive.",
-      "$\\log(10^u)=u$ for every real $u$.",
+      "$\\log$ is defined only for positive numbers, so the right side after dividing must be positive.",
+      "$\\log(10^u) = u$ for every number $u$ on the number line. For $y > 0$, $10^u = y$ exactly when $u = \\log y$.",
     ],
     pitfalls: [
-      "$\\log\\frac{d}{c}$ is not $\\log d-c$.",
-      "A coefficient in the exponent divides the whole log, not just one part.",
+      "$\\log \\tfrac{d}{c}$ is not $\\log d - c$. It equals $\\log d - \\log c$.",
+      "A number that multiplies $x$ in the exponent divides the whole logarithm, not just one part.",
     ],
     parentGuide:
-      "Ask which numbers sit outside the power and which sit in the exponent.",
+      "Ask which numbers sit outside the power of 10 and which sit inside the exponent. Then ask which one is divided away before taking the logarithm, and which one after.",
   }),
   {
     ...chainLesson({
