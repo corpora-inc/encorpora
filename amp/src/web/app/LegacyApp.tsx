@@ -25,6 +25,8 @@ import {
 import { consumeInitialConsentChallenge } from "../consent-entry";
 import { useLoggedError, requestMessage } from "../feedback";
 import { Toast } from "../ui/Toast";
+import { AccountSessionChanged } from "../lib/account-session";
+import { loadFrontier } from "../lib/frontier-load";
 import { Navigate } from "@tanstack/react-router";
 import { useAppRoute } from "../app-routes";
 import { Select } from "../PremiumControls";
@@ -490,8 +492,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     const epoch = authEpoch.current;
     const result = await learningRequest(path, tokenRef.current, body);
     const data = await result.json();
-    if (epoch !== authEpoch.current)
-      throw new Error("Your account session changed.");
+    if (epoch !== authEpoch.current) throw new AccountSessionChanged();
     if (!result.ok)
       throw new HttpError(
         result.status,
@@ -1159,11 +1160,15 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   useEffect(() => {
     if (!learner || tab !== "practice" || !exploring) return;
     const id = learner.id;
-    api<FrontierMap>(`/learners/${id}/frontier`)
-      .then((map) => {
-        if (learnerRef.current === id) setFrontierMap(map);
-      })
-      .catch((error) => console.error("Frontier map failed to load", error));
+    let active = true;
+    void loadFrontier(
+      () => api<FrontierMap>(`/learners/${id}/frontier`),
+      () => active && learnerRef.current === id,
+      setFrontierMap,
+    );
+    return () => {
+      active = false;
+    };
   }, [learner?.id, learner?.birthYear, tab, exploring]);
   // Practice is immersive: no header or tabs, one exit back to everything else.
   // `/?sign-in` (or a password-reset link) shows AMP's own sign-in screen.
