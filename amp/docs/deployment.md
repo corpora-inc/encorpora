@@ -165,7 +165,7 @@ Daily workbook PDFs are rendered on request, so they need a browser, and the API
 - The service listens on port 8080 (`AMP_RENDER_HOST`/`AMP_RENDER_PORT`).
 - `GET /healthz` answers 200 while the browser is connected; the image declares it as its health check.
 - It runs as UID 65532 and writes only to `/tmp`. Give it a read-only root with a tmpfs at `/tmp` (256 MB is plenty), no capabilities and no inbound route from the internet.
-- Pages render with JavaScript off and all network requests blocked, so a document cannot fetch anything.
+- Pages render offline with every network request blocked, so a document cannot fetch anything. Scripts run only so a document can compose its own pages: a daily workbook (`<html data-compose>`) is printed once it reports `data-layout="ready"`, and refused with 422 if it reports an error.
 - Logs are one JSON object per line: render time, size and format, or the failure. They never include document content.
 - Sizing: 1 vCPU and 1 GB of memory serve the default concurrency of 2. A 45-minute workbook renders in about 0.5 to 1 s on one CPU.
 
