@@ -105,6 +105,7 @@ const app = buildApp({
   logger: true,
   trustedProxies: trustedProxies(process.env.AMP_TRUSTED_PROXIES),
   workbookRenderer: await workbookRendererFromEnv(process.env, development),
+  publicUrl: accounts?.config.baseURL,
 });
 if (!development && !process.env.AMP_RENDER_URL)
   app.log.warn(
