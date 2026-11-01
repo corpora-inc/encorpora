@@ -1064,7 +1064,7 @@ export const satFunctionFormsTemplates: readonly TemplateMetadata[] = defs.map(
  * with every term defined at first use (issue #1781). */
 const OPENERS: Record<string, string[]> = {
   "sat-entry-fn-linear-notation": [
-    "Function notation names a rule: $C(h)$, read \"$C$ of $h$\", is the output of the rule $C$ for the input $h$. Setting it equal to a value asks which input gives that output.",
+    'Function notation names a rule: $C(h)$, read "$C$ of $h$", is the output of the rule $C$ for the input $h$. Setting it equal to a value asks which input gives that output.',
   ],
   "sat-fn-line-equation-choice": [
     "A line can be written $y=mx+b$. The slope $m$ is the steepness, the change in $y$ for each 1 that $x$ increases. The $y$-intercept $b$ is where the line crosses the $y$-axis, the value of $y$ when $x=0$.",
