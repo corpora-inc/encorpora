@@ -53,19 +53,26 @@ try {
     await page.emulateMedia({ media: "print" });
     await page.setContent(workbookHtml(spec, { lessons, skillTitle }));
     await waitForWorkbookLayout(page, 120_000);
+    // Measure each problem at its own size, without the spare page height
+    // the layout shares out as workspace.
+    await page.addStyleTag({ content: ".wb-row{--wb-grow:0px!important}" });
     const found = await page.evaluate(() => {
-      const width = document.documentElement.clientWidth;
       return [...document.querySelectorAll(".wb-item")].map((item) => {
         const reasons: string[] = [];
         const column = item.getBoundingClientRect();
+        const width = item
+          .closest(".wb-page-body")!
+          .getBoundingClientRect().right;
         const wide = [...item.querySelectorAll("*")].some(
           (el) =>
-            !el.parentElement?.closest("svg") &&
+            // An SVG clips its shapes; KaTeX's MathML copy is hidden.
+            !el.parentElement?.closest("svg, .katex-mathml") &&
             (el.getBoundingClientRect().right > column.right + 2 ||
               el.getBoundingClientRect().right > width + 1),
         );
         if (wide) reasons.push("wider than its column");
-        if (column.height > 9.6 * 96) reasons.push("taller than a page");
+        const page = item.closest(".wb-page-body")!.getBoundingClientRect();
+        if (column.height > page.height) reasons.push("taller than a page");
         const unstyled = [
           ...item.querySelectorAll(
             "svg rect, svg path, svg circle, svg polygon, svg ellipse",

@@ -100,6 +100,19 @@ export const workbookLayoutScript = String.raw`(function () {
       }
       // A single block taller than a page stays; the layout check reports it.
     }
+    // A problem too wide for half the page (a long formula, a wide table)
+    // takes its own full-width row.
+    list(flow.querySelectorAll(".wb-row")).forEach(function (row) {
+      var items = list(row.children);
+      if (items.length < 2) return;
+      var tooWide = items.some(function (item) {
+        return item.scrollWidth > item.clientWidth + 1;
+      });
+      if (!tooWide) return;
+      var next = row.cloneNode(false);
+      next.appendChild(items[1]);
+      row.parentNode.insertBefore(next, row.nextSibling);
+    });
     var optional = list(flow.querySelectorAll("[data-optional]"));
     detach(optional);
     units(list(flow.children), true).forEach(function (u) { place(u, true); });

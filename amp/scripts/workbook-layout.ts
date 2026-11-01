@@ -85,7 +85,7 @@ export async function checkWorkbookLayout(page: Page) {
           `page ${n}: ${Math.round(content.height - body.height)}px`,
         );
       for (const el of p.querySelectorAll(".wb-page-content *")) {
-        if (el.parentElement?.closest("svg")) continue;
+        if (el.parentElement?.closest("svg, .katex-mathml")) continue;
         const box = el.getBoundingClientRect();
         if (box.width === 0 && box.height === 0) continue;
         const column = el.closest(".wb-item, .wb-key-col, .wb-tile");

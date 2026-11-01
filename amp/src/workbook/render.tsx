@@ -48,16 +48,25 @@ export const workbookBand = (level: number): WorkbookBand =>
  * than the paper so rounding never spills a blank page. */
 export const pageGeometry: Record<
   PaperSize,
-  { size: string; width: string; height: string; padding: string }
+  {
+    size: string;
+    width: string;
+    height: string;
+    padding: string;
+    /** Width inside the side margins, where blocks are measured. */
+    content: string;
+  }
 > = {
   letter: {
     size: "letter",
+    content: "7.3in",
     width: "8.5in",
     height: "10.98in",
     padding: "0.5in 0.6in 0.42in",
   },
   a4: {
     size: "A4",
+    content: "182mm",
     width: "210mm",
     height: "296.5mm",
     padding: "12mm 14mm 10.5mm",
@@ -725,7 +734,7 @@ export function workbookHtml(
   const pageCss =
     `@page{size:${paper.size};margin:0}` +
     `@page wb-flow{size:${paper.size};margin:${paper.padding}}` +
-    `:root{--sheet-w:${paper.width};--sheet-h:${paper.height};--sheet-pad:${paper.padding}}`;
+    `:root{--sheet-w:${paper.width};--sheet-h:${paper.height};--sheet-pad:${paper.padding};--content-w:${paper.content}}`;
   return (
     "<!doctype html>" +
     renderToStaticMarkup(
@@ -790,7 +799,7 @@ body{margin:0}
 /* Badges, grids and answer boxes print even with a browser's background
    graphics turned off. */
 .wb,.wb *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.wb-flow{page:wb-flow}
+.wb-flow{page:wb-flow;width:var(--content-w)}
 /* Unpaged fallback (no script): blocks flow with page-break rules. */
 .wb-flow>*{break-inside:avoid}
 .wb-flow--key,.wb-flow--results{break-before:page}
@@ -865,6 +874,14 @@ body{margin:0}
 .print-part-options--1{grid-template-columns:minmax(0,1fr)}
 .wb-item .print-parts--grid .print-part-option{display:flex;align-items:baseline;gap:6px;margin:0;white-space:normal}
 .wb-row .print-part-options--4{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* A full-width problem puts each blank's options beside its label. */
+.wb-row>.wb-item:only-child .print-parts--grid>li{display:grid;grid-template-columns:fit-content(42%) minmax(0,1fr);column-gap:16px;align-items:baseline}
+.wb-row>.wb-item:only-child .print-part-label{margin:0}
+.wb-row>.wb-item:only-child .print-part-options--4{grid-template-columns:repeat(4,max-content)}
+.wb-item:has(.print-work) .figure{max-height:1.8in}
+/* Shown work is written in its table; extra room comes only from the page. */
+.wb-item:has(.print-work,.print-work-order) .wb-work{min-height:var(--wb-grow,0px);margin-top:0}
+.wb-item:has(.print-work) svg:not(.katex svg){max-height:1.8in!important}
 .print-check{flex:none;display:inline-block;width:0.15in;height:0.15in;border:1.4px solid var(--ink);border-radius:3px;position:relative;top:0.02in;box-sizing:border-box}
 .wb--early .print-check{width:0.2in;height:0.2in}
 .print-part-text{min-width:0}
