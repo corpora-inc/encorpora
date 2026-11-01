@@ -33,16 +33,7 @@ export function ProblemLesson({ lesson }: { lesson: ProblemLessonView }) {
   return (
     <GlossaryProvider payload={lesson}>
       <article className="problem-lesson">
-        <KeyWords
-          texts={[
-            opening,
-            ...lesson.example.steps,
-            ...lesson.method,
-            ...(lesson.watch ? [lesson.watch] : []),
-            ...formal,
-          ]}
-          named={lesson.terms.map((t) => t.term)}
-        />
+        <KeyWords key={lesson.templateId} ids={lesson.keyWords ?? []} />
         <GlossaryBlock texts={[opening]}>
           <p className="lesson-goal">
             <MathText text={opening} />

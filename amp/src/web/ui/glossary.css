@@ -76,32 +76,19 @@
 .key-words h3 {
   margin: 0 0 var(--space-2);
 }
-/* A phone shows one row that scrolls sideways; wider screens wrap. A chip's
-   focus ring is drawn inside it, so the scroller never clips it. */
-.key-words ul {
+/* At most six words in at most two rows (KeyWords.tsx); "+N more" opens the
+   rest as a card. */
+.key-words ul,
+.term-card-list {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-2);
   margin: 0;
   padding: 0;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  scrollbar-width: none;
   list-style: none;
 }
-.key-words ul::-webkit-scrollbar {
-  display: none;
-}
-.key-words li {
-  flex: none;
-  scroll-snap-align: start;
-}
-@media (min-width: 768px) {
-  .key-words ul {
-    flex-wrap: wrap;
-    overflow-x: visible;
-  }
-}
-.problem-lesson .key-words li {
+.problem-lesson .key-words li,
+.term-card-list li {
   margin: 0;
 }
 .key-word {
@@ -132,7 +119,16 @@
 }
 .key-word:focus-visible {
   outline: 2px solid var(--color-focus-ring);
-  outline-offset: -4px;
+  outline-offset: 2px;
+}
+.key-word-more,
+.key-word-more:hover:not(:disabled) {
+  border-color: var(--color-border-strong);
+  background: transparent;
+  color: var(--color-on-surface);
+}
+.term-card-list {
+  margin-top: var(--space-3);
 }
 .key-word .glossary-term-mark {
   top: 0;

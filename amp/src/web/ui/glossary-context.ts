@@ -14,6 +14,8 @@ export type GlossaryValue = {
   lexicon: GlossaryLexicon;
   /** Opens a term's card; `origin` takes focus back when it closes. */
   open: (id: TermId, origin: HTMLElement) => void;
+  /** Opens a card listing these terms, each opening its own card. */
+  openList: (ids: readonly TermId[], origin: HTMLElement) => void;
 };
 export const GlossaryContext = createContext<GlossaryValue | null>(null);
 

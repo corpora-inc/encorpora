@@ -12,7 +12,7 @@ import {
   GlossaryContext,
   type GlossaryValue,
 } from "./glossary-context";
-import { TermCard } from "./TermCard";
+import { KEY_WORDS, TermCard } from "./TermCard";
 
 /** Term cards for one payload (a lesson, an answer's explanation, a hint).
  * Every MathText inside a `GlossaryBlock` below links its words to their
@@ -28,6 +28,7 @@ export function GlossaryProvider({
   const [opened, setOpened] = useState<{
     id: TermId;
     origin: HTMLElement;
+    list?: readonly TermId[];
   } | null>(null);
   const glossary = payload?.glossary;
   const lexicon = payload?.glossaryLexicon;
@@ -35,22 +36,33 @@ export function GlossaryProvider({
     (id: TermId, origin: HTMLElement) => setOpened({ id, origin }),
     [],
   );
+  const openList = useCallback(
+    (ids: readonly TermId[], origin: HTMLElement) =>
+      setOpened({ id: KEY_WORDS, origin, list: ids }),
+    [],
+  );
   const value = useMemo<GlossaryValue | null>(
     () =>
       glossary?.length && lexicon
-        ? { cards: new Map(glossary.map((c) => [c.id, c])), lexicon, open }
+        ? {
+            cards: new Map(glossary.map((c) => [c.id, c])),
+            lexicon,
+            open,
+            openList,
+          }
         : null,
-    [glossary, lexicon, open],
+    [glossary, lexicon, open, openList],
   );
   // Always the same tree, so a payload arriving never remounts its texts.
   return (
     <GlossaryContext.Provider value={value}>
       {children}
-      {value && opened && value.cards.has(opened.id) && (
+      {value && opened && (opened.list || value.cards.has(opened.id)) && (
         <TermCard
           key={`${opened.id}`}
           cards={value.cards}
           start={opened.id}
+          list={opened.list}
           origin={opened.origin}
           close={() => setOpened(null)}
         />

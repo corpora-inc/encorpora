@@ -20,7 +20,9 @@ import { createServer } from "vite";
 import {
   lessonGlossaryContext,
   problemLesson,
+  screenBand,
 } from "../src/content/problem-lessons";
+import { glossary } from "../src/glossary/index";
 import { glossaryPayload } from "../src/glossary/resolve";
 import { generateProblem } from "../src/math/engine";
 
@@ -28,14 +30,33 @@ const TEMPLATE = "pythagorean-converse";
 const lesson = problemLesson(TEMPLATE, "glossary-review");
 const problem = generateProblem(TEMPLATE, "glossary-review");
 const context = lessonGlossaryContext(TEMPLATE);
+const band = screenBand(TEMPLATE);
 const explanation = {
   explanation: problem.explanation,
-  ...glossaryPayload(problem.explanation, context),
+  ...glossaryPayload(problem.explanation, context, [], band),
 };
+// This lesson's hints use only words a grade 8 learner knows, so the hint
+// view uses a problem type whose hint names a word it teaches.
+const HINT_TEMPLATE = "add-fractions";
+const hintProblem = generateProblem(HINT_TEMPLATE, "glossary-review");
 const hint = {
-  hint: problem.hint,
-  ...glossaryPayload([problem.hint], context),
+  hint: hintProblem.hint,
+  ...glossaryPayload(
+    [hintProblem.hint],
+    lessonGlossaryContext(HINT_TEMPLATE),
+    [],
+    screenBand(HINT_TEMPLATE),
+  ),
 };
+// Words a grade 3+ screen already knows: never linked on it, only in cards.
+const known = glossary
+  .filter((entry) => ["K", "1", "2"].includes(entry.band))
+  .map((entry) => entry.id);
+assert.ok(band && !["K", "1", "2"].includes(band), "a grade 3+ lesson");
+assert.ok(
+  lesson.keyWords && lesson.keyWords.length > 6,
+  "the lesson has more key words than the strip shows",
+);
 for (const [name, payload] of [
   ["lesson", lesson],
   ["explanation", explanation],
@@ -117,6 +138,11 @@ const kept = (
   step: string,
 ) =>
   (engine === "chromium" && mode === "modal" && step === "open") ||
+  (engine === "chromium" && mode === "lesson" && step === "page") ||
+  (engine === "chromium" &&
+    mode === "lesson" &&
+    step === "list" &&
+    [390, 1280].includes(width)) ||
   ([390, 1280].includes(width) &&
     ((engine === "chromium" &&
       ((mode === "modal" && step === "drill") ||
@@ -238,6 +264,88 @@ async function assertNoOverflow(page: Page, label: string) {
   assert.deepEqual(overflow, [], `${label}: horizontal overflow`);
 }
 
+/** Only words the screen is teaching are linked; the key-word strip shows at
+ * most six words in at most two rows, none clipped. */
+async function assertDensity(page: Page, label: string, mode: string) {
+  const found = await page.evaluate((known) => {
+    const linked = [
+      ...document.querySelectorAll<HTMLElement>(".glossary-term"),
+    ].map((el) => el.dataset.termId!);
+    const chips = [
+      ...document.querySelectorAll<HTMLElement>(
+        ".key-words .key-word:not(.key-word-more)",
+      ),
+    ];
+    const more = document.querySelector<HTMLElement>(".key-word-more");
+    const strip = document.querySelector(".key-words ul");
+    const box = strip?.getBoundingClientRect();
+    const items = [...(strip?.children ?? [])] as HTMLElement[];
+    return {
+      known: linked.filter((id) => known.includes(id)),
+      linked: linked.length,
+      chips: chips.length,
+      ids: chips.map((c) => c.dataset.termId!),
+      more: more?.textContent ?? null,
+      rows: new Set(items.map((i) => Math.round(i.getBoundingClientRect().top)))
+        .size,
+      clipped: [...chips, ...(more ? [more] : [])]
+        .filter((c) => {
+          const r = c.getBoundingClientRect();
+          return (
+            !box ||
+            r.left < box.left - 0.5 ||
+            r.right > box.right + 0.5 ||
+            c.scrollWidth > c.clientWidth + 1
+          );
+        })
+        .map((c) => c.textContent),
+    };
+  }, known);
+  assert.deepEqual(found.known, [], `${label}: known words are linked`);
+  assert.ok(found.linked > 0, `${label}: no words linked`);
+  if (mode !== "lesson" && mode !== "modal") return;
+  const words = lesson.keyWords!;
+  assert.ok(
+    found.chips >= 1 && found.chips <= 6,
+    `${label}: ${found.chips} chips`,
+  );
+  assert.ok(found.rows <= 2, `${label}: key words take ${found.rows} rows`);
+  assert.deepEqual(found.ids, words.slice(0, found.chips), `${label}: order`);
+  assert.equal(found.more, `+${words.length - found.chips} more`);
+  assert.deepEqual(found.clipped, [], `${label}: clipped key words`);
+}
+
+/** "+N more" opens every key word as a card; a word drills down and Back
+ * returns to the list. */
+async function assertMoreList(
+  page: Page,
+  label: string,
+  shot: (step: string) => Promise<void>,
+) {
+  const more = page.locator(".key-word-more");
+  const before = await snapshot(page);
+  await more.click();
+  const dialog = page.locator(".term-dialog[open]");
+  await dialog.getByRole("heading", { name: "Key words" }).waitFor();
+  await page.waitForTimeout(350); // let the sheet finish rising
+  const listed = await dialog
+    .locator(".term-card-list .key-word")
+    .evaluateAll((els) => els.map((el) => (el as HTMLElement).dataset.termId));
+  assert.deepEqual(listed, lesson.keyWords, `${label}: the full list`);
+  await shot("list");
+  await assertCard(page, `${label} list`, page.viewportSize()!.width);
+  await dialog.locator(".term-card-list .key-word").last().click();
+  await dialog.getByRole("button", { name: "Back to Key words" }).click();
+  await dialog.getByRole("heading", { name: "Key words" }).waitFor();
+  assert.equal(await snapshot(page), before, `${label}: list shifts`);
+  await page.keyboard.press("Escape");
+  await dialog.waitFor({ state: "detached" });
+  assert.ok(
+    await more.evaluate((el) => el === document.activeElement),
+    `${label}: the list returns focus to "+N more"`,
+  );
+}
+
 const metrics: unknown[] = [];
 try {
   for (const engine of [chromium, webkit]) {
@@ -286,7 +394,10 @@ try {
             };
             await assertNoOverflow(page, label);
             await assertTargets(page, label);
+            await assertDensity(page, label, mode);
             await shot("page");
+            if (mode === "lesson" || mode === "modal")
+              await assertMoreList(page, label, shot);
 
             // The word to open: hypotenuse where it is linked, else the first.
             const origin = (await page

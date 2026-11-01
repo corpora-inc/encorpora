@@ -49,6 +49,7 @@ import {
   hasProblemLesson,
   lessonGlossaryContext,
   problemLesson,
+  screenBand,
 } from "../content/problem-lessons";
 import { glossaryPayload } from "../glossary/resolve";
 import { lessons } from "../content/lessons";
@@ -990,6 +991,8 @@ function hintSupport(problem: GeneratedProblem): ProblemHint {
     ...glossaryPayload(
       [problem.hint],
       lessonGlossaryContext(problem.public.templateId),
+      [],
+      screenBand(problem.public.templateId),
     ),
   };
 }
@@ -1002,6 +1005,8 @@ function withGlossary(outcome: Outcome): Outcome {
     ...glossaryPayload(
       outcome.explanation,
       lessonGlossaryContext(outcome.templateId),
+      [],
+      screenBand(outcome.templateId),
     ),
   };
 }

@@ -16,6 +16,9 @@ import {
   type GlossaryValue,
 } from "./glossary-context";
 
+/** The step that lists a lesson's key words (never a glossary id). */
+export const KEY_WORDS = "\u0000key-words";
+
 /** A card wider than a phone sits beside its term; a phone gets a sheet. */
 const ANCHORED = "(min-width: 768px)";
 const GAP = 10;
@@ -33,11 +36,14 @@ type Motion = "open" | "forward" | "back";
 export function TermCard({
   cards,
   start,
+  list,
   origin,
   close,
 }: {
   cards: ReadonlyMap<TermId, GlossaryCard>;
+  /** A term, or `KEY_WORDS` to open on the list of `list`. */
   start: TermId;
+  list?: readonly TermId[];
   origin: HTMLElement;
   close: () => void;
 }) {
@@ -52,8 +58,12 @@ export function TermCard({
   const closing = useRef(false);
   const pressedScrim = useRef(false);
   const side = useRef<"below" | "above" | null>(null);
-  const current = cards.get(trail.at(-1)!)!;
-  const previous = trail.length > 1 ? cards.get(trail.at(-2)!) : undefined;
+  const top = trail.at(-1)!;
+  // The key-word list is a step of its own: a card of words to open.
+  const current = top === KEY_WORDS ? undefined : cards.get(top);
+  const titleOf = (id: TermId) =>
+    id === KEY_WORDS ? "Key words" : cards.get(id)!.term;
+  const previous = trail.length > 1 ? titleOf(trail.at(-2)!) : undefined;
 
   const finish = () => {
     if (closing.current) return;
@@ -124,18 +134,23 @@ export function TermCard({
   const inner = useMemo<GlossaryValue>(
     () => ({
       cards,
-      lexicon: current.lexicon ?? {},
+      lexicon: current?.lexicon ?? {},
       open: (id) => {
         if (!cards.has(id)) return;
         returnTo.current = id;
         setMotion("forward");
         setTrail((t) => [...t, id]);
       },
+      // A list inside a card never opens another list.
+      openList: () => {},
     }),
     [cards, current],
   );
   const texts = useMemo(
-    () => [current.plain, ...(current.example ? [current.example] : [])],
+    () =>
+      current
+        ? [current.plain, ...(current.example ? [current.example] : [])]
+        : [],
     [current],
   );
   const block = useMemo(() => blockValue(texts, inner), [texts, inner]);
@@ -214,7 +229,7 @@ export function TermCard({
               type="button"
               className="term-card-back"
               onClick={back}
-              aria-label={`Back to ${spokenMath(previous.term)}`}
+              aria-label={`Back to ${spokenMath(previous)}`}
             >
               <svg viewBox="0 0 20 20" aria-hidden="true">
                 <path d="M12.5 4.5 7 10l5.5 5.5" />
@@ -226,14 +241,14 @@ export function TermCard({
               <p className="term-card-trail">
                 {trail.slice(0, -1).map((id) => (
                   <span key={id}>
-                    <MathText text={cards.get(id)!.term} />
+                    <MathText text={titleOf(id)} />
                     <span aria-hidden="true"> › </span>
                   </span>
                 ))}
               </p>
             )}
             <h2 id={titleId} ref={heading} tabIndex={-1}>
-              <MathText text={current.term} />
+              <MathText text={titleOf(top)} />
             </h2>
           </div>
           <button
@@ -248,20 +263,38 @@ export function TermCard({
           </button>
         </div>
         <div className="term-card-body">
-          <GlossaryContext.Provider value={inner}>
-            <GlossaryBlockContext.Provider value={block}>
-              <p className="term-card-plain">
-                <MathText text={current.plain} />
-              </p>
-              {current.example && (
-                <p className="term-card-example">
-                  <span className="term-card-label">Example</span>
-                  <MathText text={current.example} />
+          {!current && (
+            <ul className="term-card-list">
+              {(list ?? []).map((id) => (
+                <li key={id}>
+                  <button
+                    type="button"
+                    className="key-word"
+                    data-term-id={id}
+                    onClick={() => inner.open(id, panel.current!)}
+                  >
+                    <MathText text={cards.get(id)!.term} />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+          {current && (
+            <GlossaryContext.Provider value={inner}>
+              <GlossaryBlockContext.Provider value={block}>
+                <p className="term-card-plain">
+                  <MathText text={current.plain} />
                 </p>
-              )}
-            </GlossaryBlockContext.Provider>
-          </GlossaryContext.Provider>
-          {current.figure && (
+                {current.example && (
+                  <p className="term-card-example">
+                    <span className="term-card-label">Example</span>
+                    <MathText text={current.example} />
+                  </p>
+                )}
+              </GlossaryBlockContext.Provider>
+            </GlossaryContext.Provider>
+          )}
+          {current?.figure && (
             <div className="term-card-figure">
               <SceneFigure scene={current.figure} maxHeight={170} />
             </div>
