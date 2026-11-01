@@ -85,8 +85,11 @@ export function generateAlgebraProblem(
       const times = a === 1 ? "" : a === -1 ? "−" : `${a} × `;
       hint = `Replace $x$ with ${paren(x)}: ${times}${paren(x)} ${signed(b)}. Multiply first, keeping the signs.`;
       explanation = [
-        `Substitute: ${a} × ${paren(x)} ${signed(b)}.`,
-        `Multiply first: ${fraction(a * n, 2)} ${signed(b)} = ${answer}.`,
+        `To substitute means to put the number in place of the letter. Write ${paren(x)} wherever $x$ appears.`,
+        `$${term(a)}$ means ${a} times $x$, so the expression becomes ${a} × ${paren(x)} ${signed(b)}.`,
+        `Multiply before adding, by the order of operations: ${a} × ${paren(x)} = ${fraction(a * n, 2)}.`,
+        `Then ${fraction(a * n, 2)} ${signed(b)} = ${answer}.`,
+        `The expression has the value ${answer} when x = ${x}.`,
       ];
       break;
     }
@@ -101,17 +104,18 @@ export function generateAlgebraProblem(
         { label: linear(aa, aa * b), correct: true },
         {
           label: linear(aa, b),
-          feedback: `The constant also needs multiplying by ${aa}.`,
+          feedback: `You multiplied only the $x$ by ${aa}. The ${aa} multiplies everything inside the parentheses, so ${b} must be multiplied by ${aa} too: ${aa} × ${paren(String(b))} = ${aa * b}.`,
         },
         {
           label: linear(aa, -aa * b),
-          feedback:
-            "The constant has the opposite sign from the product. Multiply its two signed factors carefully.",
+          feedback: `The sign of the second term is flipped. ${aa} × ${paren(String(b))} = ${aa * b}: ${aa < 0 === b < 0 ? "two numbers with the same sign multiply to a positive number" : "a positive times a negative is negative"}.`,
         },
       ];
       explanation = [
-        `$${aa}(x ${signed(b)}) = ${aa} × x + ${aa} × ${paren(String(b))}$.`,
-        `The equivalent expression is ${linear(aa, aa * b)}. Both terms were multiplied.`,
+        `A number written right before parentheses multiplies everything inside them.`,
+        `So multiply ${aa} by each term (each part joined by + or −): ${aa} × x and ${aa} × ${paren(String(b))}.`,
+        `${aa} × x = ${term(aa)}, and ${aa} × ${paren(String(b))} = ${aa * b}, because ${aa < 0 === b < 0 ? "same signs multiply to a positive" : "opposite signs multiply to a negative"}.`,
+        `So $${aa}(x ${signed(b)})$ equals ${linear(aa, aa * b)} for every $x$.`,
       ];
       break;
     }
@@ -122,15 +126,18 @@ export function generateAlgebraProblem(
       prompt = `Combine like terms in ${term(a)} ${b < 0 ? "−" : "+"} ${term(Math.abs(b))} ${signed(c)}. What is the coefficient of $x$?`;
       answer = String(a + b);
       label = "Coefficient of $x$";
-      hint = `The $x$ terms are $${term(a)}$ and $${term(b)}$. Add their signed coefficients, ${a} + ${paren(String(b))}; ${c ? `the ${c} is not an $x$ term` : "the constant is not an $x$ term"}.`;
+      hint = `The $x$ terms are $${term(a)}$ and $${term(b)}$. Add their signed coefficients, ${a} + ${paren(String(b))}; the plain number is not an $x$ term.`;
       explanation = [
-        `${a} copies of $x$ plus ${b} copies of $x$ gives ${a + b} copies of $x$.`,
-        `The coefficient is ${answer}. The constant ${c} does not contribute to it.`,
+        `Like terms have the same letter part, so they can be added. The coefficient is the number that multiplies $x$.`,
+        `The $x$ terms are $${term(a)}$ and $${term(b)}$. Think of them as ${a} of $x$ and ${b} of $x$.`,
+        `Add the coefficients, keeping their signs: ${a} + ${paren(String(b))} = ${a + b}.`,
+        `The number ${c} has no $x$, so it is not a like term and does not change the coefficient.`,
         ...(a + b === 0
           ? [
-              "The $x$ terms cancel; zero is the coefficient, even though the $x$ term can be omitted.",
+              "The $x$ terms cancel to 0 copies of $x$, so the coefficient is 0.",
             ]
           : []),
+        `The coefficient of $x$ is ${answer}.`,
       ];
       break;
     }
@@ -143,9 +150,13 @@ export function generateAlgebraProblem(
       label = "x";
       hint = `Undo the multiplication by ${a} first: divide both sides of $${a}(x ${signed(b)}) = ${c}$ by ${a}.`;
       explanation = [
-        `Divide both sides by ${a}: $x ${signed(b)} = ${fraction(c, a)}$.`,
-        `Subtract ${paren(String(b))}: x = ${answer}.`,
-        `Check: ${a} × ${paren(fraction(c, a))} = ${c}.`,
+        `To solve means to find the $x$ that makes both sides equal. Undo the steps done to $x$, last step first.`,
+        `$${a}(x ${signed(b)})$ means ${a} times the group $(x ${signed(b)})$. The multiplying happened last, so undo it first.`,
+        `Divide both sides by ${a}, so they stay equal: $x ${signed(b)} = ${fraction(c, a)}$.`,
+        b === 0
+          ? `Nothing is added to $x$, so x = ${answer}.`
+          : `Now undo the ${signed(b)}: ${b > 0 ? `subtract ${b} from` : `add ${-b} to`} both sides. x = ${answer}.`,
+        `Check: ${a} × ${paren(fraction(c, a))} = ${c}. So x = ${answer}.`,
       ];
       break;
     }
@@ -160,9 +171,12 @@ export function generateAlgebraProblem(
         ? `Undo the ${signed(b)} first on both sides, then divide both sides by ${a}, sign included.`
         : `Divide both sides by ${a}, sign included: ${c} ÷ ${paren(String(a))}.`;
       explanation = [
-        `Subtract ${paren(String(b))} from both sides: ${term(a)} = ${c - b}.`,
-        `Divide by ${a}: x = ${answer}.`,
-        `Substitute into the original: ${a} × ${paren(answer)} ${signed(b)} = ${c - b} ${signed(b)} = ${c}.`,
+        `To solve means to find the $x$ that makes both sides equal. Undo the steps done to $x$, last step first.`,
+        b === 0
+          ? `Nothing is added to ${term(a)}, so go straight to the multiplying.`
+          : `First undo the ${signed(b)}: ${b > 0 ? `subtract ${b} from` : `add ${-b} to`} both sides, so they stay equal. That gives ${term(a)} = ${c - b}.`,
+        `${term(a)} means ${a} times $x$. Divide both sides by ${a}, keeping its negative sign: x = ${c - b} ÷ ${paren(String(a))} = ${answer}.`,
+        `Check in the original: ${a} × ${paren(answer)} ${signed(b)} = ${c - b} ${signed(b)} = ${c}. So x = ${answer}.`,
       ];
       break;
     }
@@ -179,9 +193,13 @@ export function generateAlgebraProblem(
         ? `Undo the ${signed(b)} first on both sides. Then multiply both sides by the reciprocal of ${coefficient}.`
         : `Multiply both sides by the reciprocal of ${coefficient}, so the $x$ stands alone.`;
       explanation = [
-        `Subtract ${paren(String(b))}: (${coefficient})x = ${c - b}.`,
-        `Multiply by ${fraction(q, p)}: x = ${answer}.`,
-        `Check: (${coefficient}) × ${paren(answer)} ${signed(b)} = ${c - b} ${signed(b)} = ${c}.`,
+        `To solve means to find the $x$ that makes both sides equal. Undo the steps done to $x$, last step first.`,
+        b === 0
+          ? `Nothing is added, so only the fraction multiplies $x$: (${coefficient})x = ${c}.`
+          : `First undo the ${signed(b)}: ${b > 0 ? `subtract ${b} from` : `add ${-b} to`} both sides. That gives (${coefficient})x = ${c - b}.`,
+        `The reciprocal of a fraction is the fraction flipped over: the reciprocal of ${coefficient} is ${fraction(q, p)}. A number times its reciprocal is 1.`,
+        `So multiplying both sides by ${fraction(q, p)} leaves $x$ alone: x = ${c - b} × ${paren(fraction(q, p))} = ${answer}.`,
+        `Check: (${coefficient}) × ${paren(answer)} ${signed(b)} = ${c - b} ${signed(b)} = ${c}. So x = ${answer}.`,
       ];
       break;
     }
@@ -196,9 +214,13 @@ export function generateAlgebraProblem(
       label = "x";
       hint = `Collect the $x$ terms on one side: subtract $${term(c)}$ from both sides of $${linear(a, b)} = ${linear(c, d)}$.`;
       explanation = [
-        `Subtract $${term(c)}$ and ${paren(String(b))} from both sides: $${term(a - c)} = ${d - b}$.`,
-        `The coefficient ${a - c} is nonzero, so divide: x = ${answer}.`,
-        `Both original sides become ${fraction(a * (d - b) + b * (a - c), a - c)} at this value.`,
+        `$x$ appears on both sides. Get all the $x$ terms on one side and the plain numbers on the other.`,
+        `Subtract $${term(c)}$ from both sides, so they stay equal. The $x$ terms combine to $${term(a - c)}$.`,
+        b === 0
+          ? `The left side has no plain number, so $${term(a - c)} = ${d}$.`
+          : `Then ${b > 0 ? `subtract ${b} from` : `add ${-b} to`} both sides to move the plain number: $${term(a - c)} = ${d - b}$.`,
+        `Divide both sides by ${a - c}: x = ${d - b} ÷ ${paren(String(a - c))} = ${answer}.`,
+        `Check: both original sides equal ${fraction(a * (d - b) + b * (a - c), a - c)} when x = ${answer}. So x = ${answer}.`,
       ];
       break;
     }
@@ -216,21 +238,21 @@ export function generateAlgebraProblem(
         { label: check(lhs, c), correct: true },
         {
           label: check(lhs + a, c),
-          feedback:
-            "Substitute the proposed value into the entire left expression. This left-side calculation is incorrect.",
+          feedback: `The left side was worked out wrongly. Put ${x} in for $x$, multiply first, ${a} × ${paren(String(x))} = ${a * x}, then ${signed(b)}: the left side is ${lhs}.`,
         },
         {
           label: check(lhs, c + 1),
-          feedback:
-            "The right side is the original constant; substitution does not change it.",
+          feedback: `The right side is just the number ${c}. It has no $x$, so putting in a value for $x$ does not change it.`,
         },
       ];
       hint = `Put x = ${x} into the left side, ${a} × ${paren(String(x))} ${signed(b)}, and work it out. Then compare it with the right side, ${c}.`;
       explanation = [
-        `Left: ${a} × ${paren(String(x))} ${signed(b)} = ${lhs}. Right: ${c}.`,
+        `A value satisfies an equation when putting it in for $x$ makes both sides equal.`,
+        `Left side: put ${x} in for $x$ and multiply first: ${a} × ${paren(String(x))} ${signed(b)} = ${a * x} ${signed(b)} = ${lhs}.`,
+        `Right side: ${c}. It has no $x$, so it stays ${c}.`,
         ok
-          ? "The two sides agree, so this proposed value is a solution."
-          : "The sides differ, so this proposed value is not a solution.",
+          ? `${lhs} equals ${c}, so x = ${x} satisfies the equation.`
+          : `${lhs} does not equal ${c}, so x = ${x} does not satisfy the equation.`,
       ];
       break;
     }
@@ -246,11 +268,15 @@ export function generateAlgebraProblem(
       prompt = `A linear rule gives (${x}, ${y(x)}), (${x + h}, ${y(x + h)}), and (${x + h + k}, ${y(x + h + k)}). What is its output change per input unit?`;
       answer = fraction(p, q);
       label = "Rate of change";
-      hint = `The inputs ${x}, ${x + h} and ${x + h + k} are not equally spaced. Divide the output change from (${x}, ${y(x)}) to (${x + h}, ${y(x + h)}) by the input change between them, not by 1.`;
+      hint = `The inputs ${x}, ${x + h} and ${x + h + k} are not equally spaced. Divide the output change from (${x}, ${y(x)}) to (${x + h}, ${y(x + h)}) by the input change between them, not by one.`;
       explanation = [
-        `The first input step is ${h}; its output change is ${fraction(p * h, q)}.`,
-        `Rate = ${fraction(p * h, q)} ÷ ${h} = ${answer}.`,
-        `The second step gives ${fraction(p * k, q)} ÷ ${k} = ${answer}, confirming the same rate.`,
+        `The output change per input unit (the rate of change) is how much the output changes when the input goes up by 1.`,
+        `From (${x}, ${y(x)}) to (${x + h}, ${y(x + h)}), the input goes up ${h} and the output changes by ${fraction(p * h, q)}.`,
+        h === 1
+          ? `The input moved exactly 1, so the rate is ${fraction(p * h, q)} ÷ 1 = ${answer}.`
+          : `The input moved ${h}, not 1, so share the change over ${h} units: ${fraction(p * h, q)} ÷ ${h} = ${answer}.`,
+        `Check with the next pair: ${fraction(p * k, q)} ÷ ${k} = ${answer}. A linear rule keeps one rate.`,
+        `The output changes by ${answer} per input unit.`,
       ];
       break;
     }
@@ -265,9 +291,10 @@ export function generateAlgebraProblem(
       label = "Output at zero";
       hint = `Going back from input ${x} to input 0 takes away ${x} steps of ${fraction(p, q)}. Subtract ${x} × ${paren(fraction(p, q))} from ${y}.`;
       explanation = [
-        `Use y = mx + b: ${y} = (${fraction(p, q)}) × ${x} + b.`,
-        `Subtract the accumulated change ${fraction(p * x, q)}: b = ${answer}.`,
-        `At input zero, the rate contributes zero; the output is ${answer}.`,
+        `A rate of ${fraction(p, q)} means the output changes by ${fraction(p, q)} each time the input goes up by 1.`,
+        `From input 0 to input ${x} is ${x} steps, so the output changed by ${x} × ${paren(fraction(p, q))} = ${fraction(p * x, q)}.`,
+        `To go back to input 0, undo that change: ${y} − ${paren(fraction(p * x, q))} = ${answer}.`,
+        `The output is ${answer} when the input is 0.`,
       ];
       break;
     }
@@ -284,9 +311,11 @@ export function generateAlgebraProblem(
       label = "Predicted output";
       hint = `Find the rate from (${x1}, ${y(x1)}) to (${x2}, ${y(x2)}): output change ÷ input change. Then extend it from input ${x2} to input ${x3}.`;
       explanation = [
-        `Rate = (${y(x2)} − ${paren(y(x1))}) ÷ (${x2} − ${x1}) = ${fraction(p, q)}.`,
-        `From input ${x2} to ${x3}, the output changes by ${fraction(p * (x3 - x2), q)}.`,
-        `Add this to ${y(x2)} to get ${answer}. The prediction depends on the stated linear assumption.`,
+        `A linear rule changes the output by the same amount for each input unit. That amount is the rate.`,
+        `Rate = output change ÷ input change = (${y(x2)} − ${paren(y(x1))}) ÷ (${x2} − ${x1}) = ${fraction(p, q)}.`,
+        `From input ${x2} to ${x3} is ${x3 - x2} units, so the output changes by ${x3 - x2} × ${paren(fraction(p, q))} = ${fraction(p * (x3 - x2), q)}.`,
+        `Add that change to the output at ${x2}: ${y(x2)} + ${paren(fraction(p * (x3 - x2), q))} = ${answer}.`,
+        `The output at input ${x3} is ${answer}.`,
       ];
       break;
     }
@@ -319,7 +348,7 @@ export function generateAlgebraProblem(
             [x, y + 1],
             [x + 1, y + 1],
           ]),
-          feedback: `Input ${x} is paired with two different outputs, ${y} and ${y + 1}.`,
+          feedback: `Input ${x} is paired with two different outputs, ${y} and ${y + 1}. A function gives each input only one output.`,
         },
         {
           label: pairs([
@@ -327,16 +356,18 @@ export function generateAlgebraProblem(
             [x + 1, y],
             [x + 1, y + 2],
           ]),
-          feedback: `Input ${x + 1} is paired with two different outputs, ${y} and ${y + 2}.`,
+          feedback: `Input ${x + 1} is paired with two different outputs, ${y} and ${y + 2}. A function gives each input only one output.`,
         },
       ];
       prompt = "Which list of (input, output) pairs represents a function?";
       hint = `In each list, check the inputs ${x} and ${x + 1}: is either one paired with two different outputs? Repeating the very same pair is allowed.`;
       explanation = [
+        "A function is a rule that gives each input exactly one output.",
+        "So look for an input that appears with two different outputs. That breaks the rule.",
         duplicate
-          ? "The repeated identical pair records the same assignment twice. It does not introduce a second output."
-          : "The different inputs share one output, which is allowed.",
-        "Every input in the selected list has exactly one output. The other lists assign conflicting outputs to a repeated input.",
+          ? `In the correct list, (${x}, ${y}) appears twice, but it is the same pair, so input ${x} still has only one output.`
+          : `In the correct list, the inputs ${x}, ${x + 1} and ${x + 2} share the output ${y}. Different inputs may share an output.`,
+        "In each other list, one input has two different outputs, so that list is not a function.",
       ];
       break;
     }
@@ -370,7 +401,7 @@ export function generateAlgebraProblem(
         { label: correct, correct: true },
         {
           label: pair(others[0]!.label, others[1]!.label),
-          feedback: `Both points at input ${sharedX} remain, so that input still has two outputs.`,
+          feedback: `Removing either of these points keeps both points at input ${sharedX}, so that input still has two outputs.`,
         },
         {
           label: pair(conflicting[0]!.label, others[0]!.label),
@@ -400,8 +431,11 @@ export function generateAlgebraProblem(
       prompt = `The graph shows four points, including two at $x = ${sharedX}$. Which choice lists every point that could be removed, one at a time, so the remaining relation is a function?`;
       hint = `At $x = ${sharedX}$, compare the outputs of the two plotted points. For each possible removal, ask whether that input would have just one output afterward.`;
       explanation = [
-        `At $x = ${sharedX}$, $${conflicting[0]!.label}$ and $${conflicting[1]!.label}$ have different outputs. This is the only input with a conflict.`,
-        `Removing either $${conflicting[0]!.label}$ or $${conflicting[1]!.label}$ leaves one output for $x = ${sharedX}$. Removing either other point leaves both conflicting points in place. The complete answer is ${correct}.`,
+        `A relation (a set of input-output pairs) is a function when each input has exactly one output.`,
+        `At $x = ${sharedX}$, points $${conflicting[0]!.label}$ and $${conflicting[1]!.label}$ have different outputs. That one input breaks the rule.`,
+        `Removing either $${conflicting[0]!.label}$ or $${conflicting[1]!.label}$ leaves only one output for $x = ${sharedX}$.`,
+        `Removing any other point leaves both of those points, so the problem stays.`,
+        `The points that could be removed are ${correct}.`,
       ];
       break;
     }
@@ -414,16 +448,18 @@ export function generateAlgebraProblem(
         { label: `y = ${term(k)}`, correct: true },
         {
           label: `y = ${linear(k, b)}`,
-          feedback: `At input zero, this rule gives ${b}, not zero.`,
+          feedback: `This rule adds ${b}, so at x = 0 it gives y = ${b}, not 0. A proportional rule only multiplies $x$ by one number.`,
         },
         {
           label: `y = ${linear(-k, -b)}`,
-          feedback: `This rule has a fixed added amount, ${-b}; it does not pass through the origin.`,
+          feedback: `This rule adds ${-b}, so at x = 0 it gives y = ${-b}, not 0. Its graph misses the origin, (0, 0), so it is not proportional.`,
         },
       ];
       explanation = [
-        `The selected rule has the form y = kx, with constant multiplier ${k}.`,
-        `For every nonzero $x$, y/x = ${k}; at x = 0, y = 0. Negative multipliers are allowed in this real-valued algebraic setting.`,
+        `A rule is proportional when $y$ is always the same number times $x$: y = kx, for one number $k$.`,
+        `Then x = 0 always gives y = 0, and the graph is a line through (0, 0).`,
+        `y = ${term(k)} only multiplies $x$ by ${k}, so it is proportional. The multiplier may be negative.`,
+        `The other rules add a number, so x = 0 does not give 0. The proportional rule is y = ${term(k)}.`,
       ];
       break;
     }
@@ -444,15 +480,18 @@ export function generateAlgebraProblem(
         ? `First find the tie: ${fee} + ${low}x = ${high}x. A is strictly cheaper only for inputs after the tie.`
         : `Set the costs equal, ${fee} + ${low}x = ${high}x, then collect the $x$ terms on one side.`;
       explanation = [
-        `Equal costs mean ${fee} + ${low}x = ${high}x, so ${fee} = ${delta}x.`,
-        `The tie is at x = ${cross}. Each additional input saves ${delta} dollars under A.`,
+        `The plans cost the same when their cost expressions are equal: ${fee} + ${low}x = ${high}x.`,
+        `Subtract $${term(low)}$ from both sides, so they stay equal: $${fee} = ${term(delta)}$.`,
+        `Divide both sides by ${delta}: x = ${cross}. That is where the costs tie.`,
         ...(whole
           ? [
-              `A is strictly cheaper when x > ${cross}. The first whole input is ${answer}.`,
-              `At x = ${answer}, A costs ${fee + low * Number(answer)} dollars and $B$ costs ${high * Number(answer)} dollars. At x = ${Number(answer) - 1}, A is not strictly cheaper.`,
+              `B grows ${delta} dollars faster per unit, so after the tie A is cheaper. "Strictly cheaper" means less, not equal, so $x$ must be greater than ${cross}.`,
+              `The first whole number greater than ${cross} is ${answer}. Check: at x = ${answer}, A costs ${fee + low * Number(answer)} dollars and B costs ${high * Number(answer)} dollars.`,
+              `A is first strictly cheaper at x = ${answer}.`,
             ]
           : [
-              `At this input both costs equal ${fraction(high * fee, delta)} dollars.`,
+              `Check: at x = ${cross}, both plans cost ${fraction(high * fee, delta)} dollars.`,
+              `The plans cost the same at x = ${cross}.`,
             ]),
       ];
       break;
@@ -487,24 +526,25 @@ export function generateAlgebraProblem(
             ? "Distance from home increases."
             : "The traveler must be standing still.",
           feedback: drop
-            ? "Read the vertical coordinate as time increases; it gets smaller."
-            : "Someone could move around a circle centered on home while keeping the same distance.",
+            ? `The height of the graph is the distance from home. It goes down from ${start} at $A$ to ${end} at $B$, so the distance gets smaller, not larger.`
+            : "A level graph means the distance from home does not change. Someone could still be moving, for example walking around home in a circle.",
         },
         {
           label: drop
             ? "Distance from home stays constant."
             : "Distance from home decreases.",
           feedback: drop
-            ? "The endpoints have different vertical coordinates, so the distance changes."
-            : "A level segment has the same vertical coordinate throughout.",
+            ? `The graph is not level: it goes from ${start} meters at $A$ down to ${end} meters at $B$, so the distance changes.`
+            : "The graph is level, so its height, the distance from home, stays the same. It does not go down.",
         },
       ];
       hint = `At $A$ the graph is at ${start} meters from home. Read the height at $B$, then compare: $y$ is distance from home, not the route.`;
       explanation = [
-        `At 0 minutes the distance is ${start} meters; at 4 minutes it is ${end} meters.`,
+        `The height of a point on this graph ($y$) is the distance from home. Left to right is time passing.`,
+        `At $A$, after 0 minutes, the distance is ${start} meters. At $B$, after 4 minutes, it is ${end} meters.`,
         drop
-          ? "The graph falls, so distance from home decreases. This alone does not specify the route or the total distance traveled."
-          : "The graph is level, so distance from home is constant. It does not prove the traveler is stationary.",
+          ? `${end} is less than ${start}, so the graph goes down. The traveler got closer to home: the distance from home decreases.`
+          : `The height stays at ${start}, so the graph is level. The distance from home stays constant, though the traveler might still be moving.`,
       ];
       break;
     }

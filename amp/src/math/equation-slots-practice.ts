@@ -440,9 +440,10 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       sentence: built.sentence,
       hint: `${rate} dollars is charged for each ${unit}, so it is multiplied by $${v}$. Ask whether the ${one} dollars changes with $${v}$ or is paid only once.`,
       explanation: [
-        `The charge for $${v}$ ${units} is $${rate}${v}$, because each ${unit} costs ${rate} dollars.`,
-        `The ${fee ? "fixed fee" : "discount"} of ${one} dollars happens once, so it is ${fee ? "added to" : "subtracted from"} $${rate}${v}$.`,
-        `The total is ${total} dollars, so the equation is $${axes.form === "expression-first" ? `${rate}${v}${fee ? "+" : "-"}${one}=${total}` : `${total}=${rate}${v}${fee ? "+" : "-"}${one}`}$.`,
+        `The letter $${v}$ stands for the number of ${units}, which we do not know yet.`,
+        `Each ${unit} costs ${rate} dollars, so $${v}$ ${units} cost ${rate} times $${v}$, written $${rate}${v}$.`,
+        `The ${fee ? "fixed fee" : "discount"} of ${one} dollars happens once, whatever $${v}$ is, so it is ${fee ? "added to" : "subtracted from"} $${rate}${v}$, not multiplied.`,
+        `The group pays ${total} dollars in all, so the equation is $${axes.form === "expression-first" ? `${rate}${v}${fee ? "+" : "-"}${one}=${total}` : `${total}=${rate}${v}${fee ? "+" : "-"}${one}`}$.`,
       ],
     });
   }),
@@ -496,9 +497,9 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       hint: `The words "${wording}" name the inequality symbol: ask whether the amounts can be equal to ${limit} dollars. The ${known} dollars is added to $${v}$.`,
       explanation: [
         spend
-          ? `The ticket and the snacks cost $${known}+s$ dollars together.`
-          : `The money after saving more is $${known}+d$ dollars.`,
-        `"${wording}" means ${wording === "at most" ? "less than or equal to" : wording === "at least" ? "greater than or equal to" : wording} ${limit}, so the symbol is ${symbol}.`,
+          ? `The letter $s$ is the snack money, which can change. The ticket and the snacks cost $${known}+s$ dollars together.`
+          : `The letter $d$ is the extra money saved, which can change. After saving more she has $${known}+d$ dollars.`,
+        `An inequality compares amounts that need not be equal. "${wording}" means ${wording === "at most" ? `less than or equal to ${limit}: ${limit} itself is allowed` : wording === "at least" ? `greater than or equal to ${limit}: ${limit} itself is allowed` : `${wording} ${limit}, and ${limit} itself is not allowed`}, so the symbol is ${symbol}.`,
         `The inequality is $${known}+${v}${wording === "at most" ? "\\le" : wording === "at least" ? "\\ge" : wording === "less than" ? "<" : ">"}${limit}$.`,
       ],
     });
@@ -537,7 +538,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
           hint: `Sharing $${frac(1, d)}$ equally among ${g} people cuts each of those parts into ${g} smaller equal parts. Decide which operation does that.`,
           explanation: [
             `Sharing equally is division: the amount, $${frac(1, d)}$, is divided by the number of people, ${g}.`,
-            `Cutting each part into ${g} smaller parts makes parts of size $${frac(1, d * g)}$, so $${frac(1, d)}\\div ${g}=${frac(1, d * g)}$.`,
+            `Cutting each $${frac(1, d)}$ part into ${g} smaller equal parts makes ${d} × ${g} = ${d * g} of those parts in a whole.`,
+            `So each share is $${frac(1, d * g)}$, and $${frac(1, d)}\\div ${g}=${frac(1, d * g)}$.`,
           ],
         });
       }
@@ -566,8 +568,9 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
           sentence: built.sentence,
           hint: `Each mile holds $${d}$ laps of $${frac(1, d)}$ mile. To count how many laps of $${frac(1, d)}$ mile fit in ${w} miles, decide whether to divide or multiply.`,
           explanation: [
-            `The number of laps is the distance divided by the length of one lap: $${w}\\div ${frac(1, d)}$.`,
-            `Each mile has ${d} laps, so ${w} miles have $${w}\\times ${d}=${w * d}$ laps.`,
+            `To find how many laps fit, divide the distance by the length of one lap: $${w}\\div ${frac(1, d)}$.`,
+            `A lap is $${frac(1, d)}$ mile, so ${d} laps make 1 mile.`,
+            `${w} miles hold ${w} groups of ${d} laps: $${w}\\times ${d}=${w * d}$. So $${w}\\div ${frac(1, d)}=${w * d}$ laps.`,
           ],
         });
       }
@@ -594,7 +597,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         sentence: built.sentence,
         hint: `The jug is $${frac(1, d)}$ liter, and each of its parts is cut into as many smaller parts as there are people. Count how many of the smaller parts make a whole liter.`,
         explanation: [
-          `Dividing $${frac(1, d)}$ liter among ${g} people cuts each of the ${d} parts of a liter into ${g} smaller parts.`,
+          `Sharing equally is division, so the share is $${frac(1, d)}\\div ${g}$.`,
+          `Think of a liter cut into ${d} equal parts. Sharing one part among ${g} people cuts every part into ${g} smaller parts.`,
           `A whole liter then has $${d}\\times ${g}=${d * g}$ of the smaller parts, so each share is $${frac(1, d * g)}$ liter.`,
         ],
       });
@@ -646,8 +650,10 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       },
       hint: `The array has ${rows} rows and ${cols} counters in each row. First find how many counters there are in all, then ask which of the two numbers you divide by.`,
       explanation: [
-        `The array holds $${rows}\\times ${cols}=${total}$ counters.`,
-        `Dividing the total by ${divisor} ${axes.ask === "rows" ? "counters in a row" : "rows"} gives ${quotient}, so $${total}\\div ${divisor}=${quotient}$.`,
+        `An array is counters in equal rows. ${rows} rows of ${cols} hold $${rows}\\times ${cols}=${total}$ counters.`,
+        `Division undoes multiplication: it splits the total into equal groups.`,
+        `Dividing the ${total} counters by ${divisor} ${axes.ask === "rows" ? "counters in a row" : "rows"} gives ${quotient}, ${axes.ask === "rows" ? "the number of rows" : "the number in each row"}.`,
+        `The division is $${total}\\div ${divisor}=${quotient}$.`,
       ],
     });
   }),
@@ -700,6 +706,7 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       sentence: built.sentence,
       hint: `Think about what ${nums[0]} and ${nums[1]} stand for in the story, and whether they are groups of the same size or amounts to combine.`,
       explanation: [
+        `Multiply when the story has equal groups; add or subtract when it combines or removes amounts.`,
         `In this story ${words}.`,
         `The equation is $${nums[0]}${axes.shape === "product-of-three" ? "\\times" : want[0] === "*" ? "\\times" : "+"}${nums[1]}${want[1] === "*" ? "\\times" : want[1] === "+" ? "+" : "-"}${nums[2]}=${total}$.`,
       ],
@@ -758,6 +765,7 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         sentence: built.sentence,
         hint: `Start from ${nums[0]} tulips and read the story in order. For each number that follows, ask whether it adds tulips to the shop or takes them away.`,
         explanation: [
+          `Tulips that wilt and are thrown away make fewer, so subtract. Deliveries bring more, so add.`,
           `Read the story in order: ${want.map((op, i) => `${op === "+" ? "add" : "subtract"} ${nums[i + 1]}`).join(", ")}.`,
           `The equation is $${nums[0]}${want.map((op, i) => `${op}${nums[i + 1]}`).join("")}=${total}$.`,
         ],
@@ -819,7 +827,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
             : `When $x$ goes up by ${step}, $y$ goes up by ${ys[1]! - ys[0]!}. Use that to find the number multiplied by $x$,`
         } then use the first pair, $x = ${xs[0]}$ and $y = ${ys[0]}$, to find the constant.`,
         explanation: [
-          `Each time $x$ increases by ${step}, $y$ increases by ${a * step}, so the multiplier is $${a * step}\\div ${step}=${a}$.`,
+          `In $y = mx + b$, $m$ is the number multiplying $x$ and $b$ is a constant, a fixed number added or subtracted.`,
+          `Each time $x$ increases by ${step}, $y$ increases by ${a * step}. So each 1 step in $x$ adds $${a * step}\\div ${step}=${a}$ to $y$: the multiplier is ${a}.`,
           `For $x=${xs[0]}$: $${a}\\cdot ${xs[0]}=${a * xs[0]!}$, and $y=${ys[0]}$, so the constant is ${minus ? "subtracted" : "added"}: ${b}.`,
           `The equation is $y=${a}x${minus ? "-" : "+"}${b}$, which fits every pair.`,
         ],
@@ -897,8 +906,9 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       figure: tableFigure(header, `Table for the rule ${rule}`),
       hint: `To find $y$ for $x=${first}$, put ${first} into the rule $${rule}$. To find $x$ when $y$ is known, undo the rule with the opposite operation.`,
       explanation: [
+        `A rule turns each $x$ into its $y$. To find a missing $y$, put the $x$ into the rule.`,
         `For each missing $y$, put $x$ into $${rule}$: ${[0, 1].map((i) => `$x=${xs[i]}$ gives $y=${ys[i]}$`).join(", ")}.`,
-        `For each missing $x$, undo the rule: ${[2, 3].map((i) => `$y=${ys[i]}$ gives $x=${xs[i]}$`).join(", ")}.`,
+        `To find a missing $x$, undo the rule with the opposite operation: ${[2, 3].map((i) => `$y=${ys[i]}$ gives $x=${xs[i]}$`).join(", ")}.`,
       ],
     });
   }),
@@ -950,7 +960,8 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         sentence: built.sentence,
         hint: `The price of one pair is the ${show(total)} dollars shared equally among the ${count} pairs. Decide which number is divided and which number it is divided by.`,
         explanation: [
-          `A unit price is the total cost divided by the number of items: ${show(total)} dollars $\\div$ ${count} pairs.`,
+          `A unit price is the cost of one item. Every pair costs the same, so share the total equally.`,
+          `Divide the total cost by the number of items: ${show(total)} dollars $\\div$ ${count} pairs.`,
           `$${show(total)}\\div ${count}=${show(u)}$, so one pair costs ${show(u)} dollars.`,
         ],
       });
@@ -992,8 +1003,10 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       explanation: [
         axes.given === "diameter"
           ? `${shown} feet is the distance across the circle, the diameter, so the radius is $${shown}\\div 2=${radius}$ feet.`
-          : `${shown} feet is the radius.`,
-        `The volume of a cylinder is the area of the base times the height: $V=\\pi\\times ${radius}\\times ${radius}\\times ${depth}$.`,
+          : `${shown} feet from the center to the edge is the radius, $r$.`,
+        `The pool is a cylinder: a circle base with straight sides. Its volume, the space inside, is the base area times the height.`,
+        `The base is a circle, with area $\\pi r^2 = \\pi\\times ${radius}\\times ${radius}$. The height is the depth, ${depth} feet.`,
+        `So $V=\\pi\\times ${radius}\\times ${radius}\\times ${depth}$ cubic feet.`,
       ],
     });
   }),
@@ -1042,7 +1055,7 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       sentence: built.sentence,
       hint: `Compare the $x$-coordinate ${x0} of $A$ with the $x$-coordinate ${x1} of $A'$: by what number is ${x0} multiplied to get ${x1}? Check it on the $y$-coordinates.`,
       explanation: [
-        `A dilation centered at the origin multiplies both coordinates by the scale factor $k$.`,
+        `A dilation resizes a figure. Centered at the origin, it multiplies both coordinates by the same number, the scale factor $k$.`,
         `$${x1}\\div ${x0}$ and $${y1}\\div ${y0}$ both equal $${enlarge ? k[0] : frac(1, k[1])}$, so $k=${enlarge ? k[0] : frac(1, k[1])}$.`,
         `The rule is $(x, y)\\to(${enlarge ? k[0] : frac(1, k[1])}x, ${enlarge ? k[0] : frac(1, k[1])}y)$.`,
       ],
@@ -1088,10 +1101,13 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
         label: "Choose the rule for each transformation",
         slots,
         hint: `Test a point such as $(${probe[0]}, ${probe[1]})$. Where does ${slots[0]!.label.replace("The rule for ", "")} send it, and which rule gives that image?`,
-        explanation: slots.map((s) => {
-          const name = s.label.replace("The rule for ", "");
-          return `${name[0]!.toUpperCase()}${name.slice(1)} gives $(x, y)\\to ${s.correct.replaceAll("$", "")}$.`;
-        }),
+        explanation: [
+          `A rule $(x, y)\\to(\\ldots)$ says where each point lands. Testing one point, such as $(${probe[0]}, ${probe[1]})$, shows which rule fits.`,
+          ...slots.map((s) => {
+            const name = s.label.replace("The rule for ", "");
+            return `${name[0]!.toUpperCase()}${name.slice(1)} gives $(x, y)\\to ${s.correct.replaceAll("$", "")}$.`;
+          }),
+        ],
       });
     },
   ),
@@ -1135,8 +1151,14 @@ export const equationSlotsGenerate = defineGenerate(equationSlotsTemplates, {
       sentence: built.sentence,
       hint: `Treat the coefficients ${a} and ${b} and the powers of $${v}$ separately. Divide ${a} by ${b}, and for the powers $${v}^{${m}}$ and $${v}^{${n}}$ subtract the exponents in the right order.`,
       explanation: [
-        `Divide the coefficients: $${a}\\div ${b}=${q}$.`,
-        `Divide the powers with the same base by subtracting exponents, numerator minus denominator: $${v}^{${m}}\\div ${v}^{${n}}=${v}^{${m}-${n}}=${v}^{${e}}$.`,
+        `The coefficients are the plain numbers in front, ${a} and ${b}. Divide them: $${a}\\div ${b}=${q}$.`,
+        `An exponent counts how many times $${v}$ is multiplied. Dividing cancels matching factors of $${v}$ from top and bottom.`,
+        `That means subtract the exponents, top minus bottom: $${v}^{${m}}\\div ${v}^{${n}}=${v}^{${m}-${n}}=${v}^{${e}}$.`,
+        ...(e < 0
+          ? [
+              `A negative exponent means the leftover factors of $${v}$ are on the bottom of the fraction.`,
+            ]
+          : []),
         `So the quotient is $${q}${v}^{${e}}$.`,
       ],
     });

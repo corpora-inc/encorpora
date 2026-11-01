@@ -173,7 +173,7 @@ export const patternRuleChoice = chainFamily({
                 .map((v, i, l) => (i ? `${l[i - 1]} × ${m.rule.p} = ${v}` : ""))
                 .filter(Boolean)
                 .join(", ")}.`
-            : `The changes between neighbors are ${diffs.join(", ")}.`,
+            : `A pattern's rule tells how to get each term from the one before. Subtract neighbors to see the changes: ${diffs.join(", ")}.`,
           m.rule.kind === "grow"
             ? `The change grows by 1 each time, starting with ${m.rule.p}.`
             : m.rule.kind === "add"
@@ -196,9 +196,10 @@ export const patternRuleChoice = chainFamily({
       }),
       hint: `Find the rule of ${shown} first: subtract each term from the next, starting with ${m.list[1]} − ${m.list[0]}, or divide for a multiple. Then check each choice with that rule.`,
       explanation: [
-        `The pattern ${shown} follows "${ruleText(m.rule).toLowerCase()}".`,
-        `The pattern ${terms(m.options[m.correct]!.start, m.rule, 5).join(", ")} follows the same rule from a different start.`,
-        "Each other pattern changes by a different amount, or in a different way.",
+        `A pattern's rule tells how to get each term from the one before. Find it by comparing neighbors, starting with ${m.list[0]} and ${m.list[1]}: subtract them, or divide for a multiple.`,
+        `Checking every neighbor, the pattern ${shown} follows "${ruleText(m.rule).toLowerCase()}".`,
+        `Two patterns can follow the same rule from different starting numbers.`,
+        `The pattern ${terms(m.options[m.correct]!.start, m.rule, 5).join(", ")} follows the same rule, so it is the answer.`,
       ],
     });
   },
@@ -290,7 +291,7 @@ export const patternTerm = chainFamily({
       answer: String(m.answer),
       hint: `Find how the pattern changes: ${m.list[1]} − ${m.list[0]} is ${signed(m.list[1]! - m.list[0]!)}. Do the same for the next neighbors in ${shown} and see whether the change stays the same or changes by one.`,
       explanation: [
-        `The changes between terms are ${diffs.map(signed).join(", ")}.`,
+        `To find a pattern's rule, subtract each term from the next. The changes between terms are ${diffs.map(signed).join(", ")}.`,
         m.step === 0
           ? `The change is the same every time, ${signed(diffs[0]!)}, so keep adding ${signed(diffs[0]!)}.`
           : `Each change is 1 ${m.step > 0 ? "more" : "less"} than the one before, so the next changes are ${tail.map((v, i) => signed(v - full[m.list.length - 1 + i]!)).join(", ")}.`,

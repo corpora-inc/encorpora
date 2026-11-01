@@ -333,7 +333,7 @@ function oneStepCase(r: Random): Case {
         ? `${show(total, mode)} ÷ ${p} = ${total.n}/${total.d * p}${q(total.n, total.d * p).d === total.d * p ? "" : ` = ${show(x, mode)}`}`
         : `${show(total, mode)} ÷ ${p} = ${show(x, mode)}`;
     explanation.push(
-      `${p}${v} means ${p} × ${v}. Division undoes multiplication, so divide both sides by ${p}. Dividing two equal amounts into ${p} equal parts gives equal parts.`,
+      `${p}${v} means ${p} × ${v}. Division undoes multiplication, so divide both sides by ${p}. Splitting two equal amounts into ${p} equal parts keeps the parts equal, so the sides stay equal.`,
       `${v} = ${quotient}.`,
       `Check: ${p} × ${show(x, mode)} = ${show(total, mode)}.`,
     );

@@ -148,7 +148,9 @@ function generateInequalityCase(
     op = relations[r(0, 3)]!;
   const tags = [`operator:${op}`];
   let left: string, right: string, hint: string;
-  const explanation: string[] = [];
+  const explanation: string[] = [
+    "Solve an inequality like an equation: do the same thing to both sides. One extra rule: multiplying or dividing both sides by a negative number flips the sign.",
+  ];
   let candidates: { label: string; correct: boolean; feedback?: string }[];
   let feedback: string;
   if (templateId === "cancelled-linear-inequality") {
@@ -170,21 +172,24 @@ function generateInequalityCase(
     right = linear(q(coefficient), q(rhs));
     hint = `Distribute ${number(q(factor))} across (${linear(q(a), q(b))}) first: the $x$ terms on the two sides then match. Remove ${term(q(coefficient))} from both sides and check whether the numbers left make a true comparison.`;
     explanation.push(
-      `Distribute ${number(q(factor))} across the parentheses: ${linear(q(coefficient), q(factor * b))}${constant(q(d))} ${op} ${right}.`,
+      `The number before the parentheses multiplies each term inside (distribute it): ${linear(q(coefficient), q(factor * b))}${constant(q(d))} ${op} ${right}.`,
       ...(d === 0
         ? []
         : [
-            `Combine the constants: ${linear(q(coefficient), q(lhs))} ${op} ${right}.`,
+            `Combine the plain numbers, called constants: ${linear(q(coefficient), q(lhs))} ${op} ${right}.`,
           ]),
-      `${remove(q(coefficient), true)}: ${lhs < 0 ? number(q(lhs)) : lhs} ${op} ${number(q(rhs))}.`,
-      `This comparison is ${truth ? "true" : "false"}. No $x$ remains, so ${truth ? "every real value of $x$ makes the original inequality true" : "no real value of $x$ makes the original inequality true"}.`,
+      `Both sides now have the same $x$ term. ${remove(q(coefficient), true)}: ${lhs < 0 ? number(q(lhs)) : lhs} ${op} ${number(q(rhs))}.`,
+      `No $x$ is left, and ${number(q(lhs))} ${op} ${number(q(rhs))} is ${truth ? "true" : "false"} whatever $x$ was.`,
+      truth
+        ? "So every real number is a solution: all real numbers."
+        : "So no number is a solution: no real numbers.",
     );
     const correct = truth ? "All real numbers" : "No real numbers";
     candidates = ["All real numbers", "No real numbers"].map((label) => ({
       label,
       correct: label === correct,
     }));
-    feedback = `After the variable terms cancel, ${number(q(lhs))} ${op} ${number(q(rhs))} is ${truth ? "true" : "false"}. Therefore ${truth ? "every real number" : "no real number"} satisfies the original inequality.`;
+    feedback = `Once the $x$ terms cancel, ${number(q(lhs))} ${op} ${number(q(rhs))} is left, and it is ${truth ? "true" : "false"}. It does not depend on $x$, so ${truth ? "every real number is a solution" : "no number is a solution"}.`;
   } else {
     const pair = boundaries(r);
     let target: Rational;
@@ -214,13 +219,13 @@ function generateInequalityCase(
       left = `${number(q(k))}(${linear(q(a), q(b))})${constant(q(d))}`;
       right = linear(other, rhsConstant);
       explanation.push(
-        `Distribute ${number(q(k))} across the parentheses: ${linear(q(k * a), q(k * b))}${constant(q(d))} ${op} ${right}.`,
+        `The number before the parentheses multiplies each term inside (distribute it): ${linear(q(k * a), q(k * b))}${constant(q(d))} ${op} ${right}.`,
         ...(d === 0
           ? []
           : [
-              `Combine the constants: ${linear(q(k * a), lhsConstant)} ${op} ${right}.`,
+              `Combine the plain numbers, called constants: ${linear(q(k * a), lhsConstant)} ${op} ${right}.`,
             ]),
-        `${remove(other, true)}. The $x$ coefficient becomes ${difference(q(k * a), other)} = ${number(coefficient)}, giving ${linear(coefficient, lhsConstant)} ${op} ${number(rhsConstant)}.`,
+        `Gather the $x$ terms on the left. ${remove(other, true)}. The number multiplying $x$ (its coefficient) becomes ${difference(q(k * a), other)} = ${number(coefficient)}, giving ${linear(coefficient, lhsConstant)} ${op} ${number(rhsConstant)}.`,
       );
     }
     const remaining = sub(rhsConstant, lhsConstant);
@@ -233,7 +238,7 @@ function generateInequalityCase(
     );
     if (lhsConstant.n !== 0)
       explanation.push(
-        `${remove(lhsConstant)}: ${term(coefficient)} ${op} ${difference(rhsConstant, lhsConstant)} = ${number(remaining)}.`,
+        `Move the plain number off the $x$ side. ${remove(lhsConstant)}: ${term(coefficient)} ${op} ${difference(rhsConstant, lhsConstant)} = ${number(remaining)}.`,
       );
     else
       explanation.push(
@@ -241,11 +246,10 @@ function generateInequalityCase(
       );
     if (!equal(coefficient, q(1)))
       explanation.push(
-        `Divide both sides by ${number(coefficient)}. ${coefficient.n < 0 ? "This number is negative, so reverse the comparison sign" : "This number is positive, so keep the comparison sign"}. Multiply by the reciprocal, ${number(q(coefficient.d, coefficient.n))}: ${operand(remaining)} × ${operand(q(coefficient.d, coefficient.n))} = ${number(target)}. Therefore $x ${solvedOp} ${number(target)}$.`,
+        `Divide both sides by ${number(coefficient)}, the number multiplying $x$. ${coefficient.n < 0 ? `It is negative, so flip the sign: ${op} becomes ${solvedOp}. Dividing by a negative swaps which side is bigger` : "It is positive, so the sign stays the same"}.`,
+        `Dividing by ${number(coefficient)} is the same as multiplying by its flip (reciprocal), ${number(q(coefficient.d, coefficient.n))}: ${operand(remaining)} × ${operand(q(coefficient.d, coefficient.n))} = ${number(target)}. So $x ${solvedOp} ${number(target)}$.`,
       );
-    explanation.push(
-      `The solution is $x ${solvedOp} ${number(target)}$: all numbers ${{ "<": "less than", "≤": "less than or equal to", ">": "greater than", "≥": "greater than or equal to" }[solvedOp]} ${number(target)}.`,
-    );
+    const solution = `The solution is $x ${solvedOp} ${number(target)}$: all numbers ${{ "<": "less than", "≤": "less than or equal to", ">": "greater than", "≥": "greater than or equal to" }[solvedOp]} ${number(target)}.`;
     const pointsLeft = solvedOp === "<" || solvedOp === "≤";
     // Use zero when it is strictly inside; otherwise choose the nearest interior
     // multiple of the coefficient denominator, so the check product is an integer.
@@ -260,7 +264,9 @@ function generateInequalityCase(
               : Math.floor(boundaryInMultiples) + 1),
     );
     explanation.push(
-      `Check the boundary: ${operand(coefficient)} × ${operand(target)} = ${number(remaining)}, so equality occurs there. For the equivalent inequality ${term(coefficient)} ${op} ${number(remaining)}, substitute the interior value x = ${number(test)}. The left side is ${operand(coefficient)} × ${operand(test)} = ${number(mul(coefficient, test))}; the comparison ${number(mul(coefficient, test))} ${op} ${number(remaining)} is true.`,
+      `Check with ${term(coefficient)} ${op} ${number(remaining)}. At the boundary x = ${number(target)}, ${operand(coefficient)} × ${operand(target)} = ${number(remaining)}: the two sides are equal there.`,
+      `Now try a number on the solution side, x = ${number(test)}: ${operand(coefficient)} × ${operand(test)} = ${number(mul(coefficient, test))}, and ${number(mul(coefficient, test))} ${op} ${number(remaining)} is true.`,
+      solution,
     );
     const low: Relation = op === "<" || op === ">" ? "<" : "≤";
     const high = reverse[low];
@@ -269,10 +275,10 @@ function generateInequalityCase(
         label: `x ${direction} ${number(boundary)}`,
         correct: equal(boundary, target) && direction === solvedOp,
         feedback: equal(boundary, target)
-          ? `The boundary ${number(target)} is correct, but the direction is reversed. ${coefficient.n < 0 ? "Dividing by the negative coefficient reverses the original comparison" : "Dividing by the positive coefficient keeps the original comparison"}, giving $x$ ${solvedOp} ${number(target)}.`
+          ? `The boundary ${number(target)} is right, but the sign points the wrong way. ${coefficient.n < 0 ? `You divided by ${number(coefficient)}, a negative number, so the sign must flip` : `You divided by ${number(coefficient)}, a positive number, so the sign must not flip`}. The solution is $x$ ${solvedOp} ${number(target)}.`
           : direction === solvedOp
-            ? `The direction is correct, but the boundary is not. Divide ${number(remaining)} by ${number(coefficient)} to obtain ${number(target)}.`
-            : `Check both the boundary and the direction. Dividing ${number(remaining)} by ${number(coefficient)} gives ${number(target)}; ${coefficient.n < 0 ? "the negative divisor reverses" : "the positive divisor preserves"} the comparison, giving $x$ ${solvedOp} ${number(target)}.`,
+            ? `The sign points the right way, but the boundary number is wrong. After moving the plain number, divide ${number(remaining)} by ${number(coefficient)}: that gives ${number(target)}.`
+            : `Both the boundary number and the sign are wrong. Divide ${number(remaining)} by ${number(coefficient)} to get ${number(target)}, and ${coefficient.n < 0 ? "flip the sign because you divided by a negative" : "keep the sign because you divided by a positive"}: $x$ ${solvedOp} ${number(target)}.`,
       })),
     );
     const divide = `When you divide by the $x$ coefficient, ${number(coefficient)}, ask whether it is negative.`;

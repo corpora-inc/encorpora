@@ -366,8 +366,9 @@ export const quantityPairBlanksGenerate = defineGenerate(
           sentence: built.sentence,
           hint: `Find how many groups of ${size} fit in ${total}: estimate with tens, such as ${size} times ${[Math.floor((q - 1) / 10) * 10, 10, 5, 2].find((n) => n >= 2 && n !== q && n !== rem)}, then adjust. The leftover is what remains after those groups are removed.`,
           explanation: [
-            `Divide ${total} by ${size}: $${total}\\div ${size}=${q}$ with a remainder, because $${size}\\times ${q}=${size * q}$.`,
-            `The leftover is $${total}-${size * q}=${rem}$, which is less than ${size}, so no more full group fits.`,
+            `Filling groups of ${size} asks how many groups of ${size} fit in ${total}: that is division.`,
+            `$${size}\\times ${q}=${size * q}$ and $${size}\\times ${q + 1}=${size * (q + 1)}$, which is too many, so ${q} full groups fit.`,
+            `The leftover (the remainder) is $${total}-${size * q}=${rem}$. It is less than ${size}, so it cannot make another full group.`,
             `So ${q} ${story.filled} are filled and ${rem} are left over.`,
           ],
         });
@@ -423,8 +424,9 @@ export const quantityPairBlanksGenerate = defineGenerate(
           sentence: built.sentence,
           hint: `Add ${parts[0]} and ${parts[1]} first, then ${parts[2]}. Every 1,000 meters is 1 kilometer, so see how many thousands are in the sum and how many meters remain.`,
           explanation: [
-            `Add the distances: $${parts[0]}+${parts[1]}+${parts[2]}=${total}$ meters.`,
-            `Since $1{,}000$ meters make 1 kilometer, $${total}=${km}\\times 1{,}000+${m}$.`,
+            `The total distance is all three parts together, so add: $${parts[0]}+${parts[1]}+${parts[2]}=${total}$ meters.`,
+            `$1{,}000$ meters make 1 kilometer, so find how many whole thousands are in ${total}: $${total}=${km}\\times 1{,}000+${m}$.`,
+            `Each thousand meters is 1 kilometer, and the ${m} meters left over stay as meters.`,
             `The total is ${km} kilometers and ${m} meters.`,
           ],
         });
@@ -479,7 +481,8 @@ export const quantityPairBlanksGenerate = defineGenerate(
         sentence: built.sentence,
         hint: `Simple interest is the principal times the rate times the number of years. Write ${rate}% as a decimal and multiply by ${grouped(principal)} and by ${years}; the total also includes the original deposit.`,
         explanation: [
-          `One year earns $${grouped(principal)}\\times ${frac(rate, 100)}=${grouped(oneYear)}$ dollars.`,
+          `Interest is money the bank pays you for keeping your money there. Simple interest pays the same amount every year, a percent of the deposit.`,
+          `${rate}% means ${rate} out of 100, so one year earns $${grouped(principal)}\\times ${frac(rate, 100)}=${grouped(oneYear)}$ dollars.`,
           `For ${years} years the interest is $${oneYear}\\times ${years}=${grouped(interest)}$ dollars.`,
           `The total amount is the deposit plus the interest: $${grouped(principal)}+${grouped(interest)}=${grouped(total)}$ dollars.`,
         ],
@@ -535,6 +538,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
         sentence: built.sentence,
         hint: `Find the interest at Harbor Bank first: ${grouped(principal)} times ${a.rate}% times ${a.years} years. Then find the interest at Summit Bank the same way and compare the two amounts.`,
         explanation: [
+          `Interest is the extra money paid for borrowing. Simple interest is the amount borrowed times the yearly percent times the number of years.`,
           `Harbor Bank: $${grouped(principal)}\\times ${frac(a.rate, 100)}\\times ${a.years}=${grouped(ca)}$ dollars.`,
           `Summit Bank: $${grouped(principal)}\\times ${frac(b.rate, 100)}\\times ${b.years}=${grouped(cb)}$ dollars.`,
           `${winner} costs less, by $${grouped(Math.max(ca, cb))}-${grouped(Math.min(ca, cb))}=${grouped(diff)}$ dollars.`,
@@ -582,6 +586,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
           sentence: built.sentence,
           hint: `Find the perimeter and the area of the ${l} by ${w} rectangle, then the sides of the image. Compare the new perimeter with the old one, and the new area with the old one.`,
           explanation: [
+            `A dilation by a scale factor multiplies every length of a shape by that number. Perimeter is the distance around; area is the space inside.`,
             `The original has perimeter $2(${l}+${w})=${2 * (l + w)}$ and area $${l}\\times ${w}=${l * w}$.`,
             `Every length is multiplied by $${kTex}$, so the perimeter, a sum of lengths, is multiplied by $${kTex}$.`,
             `The area is a product of two lengths, so it is multiplied by $${kTex}\\times ${kTex}=${kkTex}$.`,
@@ -639,8 +644,9 @@ export const quantityPairBlanksGenerate = defineGenerate(
         sentence: built.sentence,
         hint: `Count how many of the 10 equal sections show ${target}. That count out of 10 is the probability. Then multiply the probability by ${spins} spins.`,
         explanation: [
-          `${c} of the 10 equal sections show ${target}, so the probability is $${frac(c, 10)}$, which is ${prob.replaceAll("$", "").includes("frac") ? `$${prob.replaceAll("$", "")}$` : prob} in lowest terms.`,
-          `The expected number of times is $${frac(c, 10)}\\times ${spins}=${expected}$.`,
+          `Probability is the fraction of equally likely outcomes that give what you want.`,
+          `${c} of the 10 equal sections ${c === 1 ? "shows" : "show"} ${target}, so the probability is $${frac(c, 10)}$${frac(c, 10) === prob.replaceAll("$", "") ? "" : `, which is ${prob.replaceAll("$", "").includes("frac") ? `$${prob.replaceAll("$", "")}$` : prob} in lowest terms`}.`,
+          `The expected count is the probability times the number of spins: $${frac(c, 10)}\\times ${spins}=${expected}$. Expect to land on ${target} about ${expected} times.`,
         ],
       });
     }),
@@ -700,6 +706,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
           sentence: built.sentence,
           hint: `A unit rate is the amount for one minute. For the first rate, divide the ${p1} ${noun} by the ${m1} minutes; for the second, divide ${p2} by ${m2}.`,
           explanation: [
+            `A unit rate is the amount for one unit, here one minute. Divide the amount by the minutes to share it out evenly.`,
             `${a[0]!.toUpperCase()}${a.slice(1)}: $${p1}\\div ${m1}=${dec(r1)}$ ${noun} per minute.`,
             `${b[0]!.toUpperCase()}${b.slice(1)}: $${p2}\\div ${m2}=${dec(r2)}$ ${noun} per minute.`,
           ],
@@ -763,6 +770,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
         sentence: built.sentence,
         hint: `Use the ${yellow} yellow gumballs to find how many gumballs one part of the ratio stands for: divide ${yellow} by the ratio number for yellow. Then use that for the blue part and for the whole.`,
         explanation: [
+          `A ratio of ${yellowParts} to ${blueParts} means that for every ${yellowParts} yellow there are ${blueParts} blue. Think of equal-sized parts.`,
           `The yellow gumballs are ${yellowParts} parts, so one part is $${yellow}\\div ${yellowParts}=${f}$ gumballs.`,
           `Blue is ${blueParts} parts: $${blueParts}\\times ${f}=${blue}$ gumballs.`,
           `In all there are $${blueParts}+${yellowParts}=${blueParts + yellowParts}$ parts, so $${blueParts + yellowParts}\\times ${f}=${total}$ gumballs, or $${blue}+${yellow}=${total}$.`,
@@ -824,7 +832,9 @@ export const quantityPairBlanksGenerate = defineGenerate(
         sentence: built.sentence,
         hint: `For the mean, add all six times, starting ${dec(tenths[0]! / 10)} + ${dec(tenths[1]! / 10)}, and divide by 6. For the median, first write the times in order from least to greatest.`,
         explanation: [
+          `The mean is the fair-share value: add all the values, then divide by how many there are.`,
           `The sum is ${dec(sum / 10)}, so the mean is $${dec(sum / 10)}\\div 6=${dec(mean)}$ seconds.`,
+          `The median is the middle value once the values are in order.`,
           `In order the times are ${sorted.map((t) => dec(t / 10)).join(", ")}.`,
           `With six values the median is the mean of the two middle values: $(${dec(sorted[2]! / 10)}+${dec(sorted[3]! / 10)})\\div 2=${dec(med)}$ seconds.`,
         ],
@@ -882,6 +892,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
           sentence: built.sentence,
           hint: `Write each list in order from least to greatest before you pick the middle value; the Hawks list starts ${x.slice(0, 3).join(", ")}. The mode is the value that appears most often in a list.`,
           explanation: [
+            `The median is the middle value of a list in order. The mode is the value that appears most often.`,
             `Hawks in order: ${[...x].sort((a, b) => a - b).join(", ")}; the median is ${median(x)} and the mode is ${modesOf(x)[0]}.`,
             `Owls in order: ${[...y].sort((a, b) => a - b).join(", ")}; the median is ${median(y)} and the mode is ${modesOf(y)[0]}.`,
             `The Hawks' median is ${relation} the Owls' median, and the modes ${match ? "match" : "do not match"}.`,
@@ -935,8 +946,10 @@ export const quantityPairBlanksGenerate = defineGenerate(
           sentence: built.sentence,
           hint: `The area of a rectangle is length times width. Use the area ${area} and the width ${width} to find the length first; the perimeter needs both sides.`,
           explanation: [
-            `Area is length times width, so the length is $${area}\\div ${width}=${length}$ ${unit}.`,
-            `The perimeter is twice the sum of the length and the width: $2\\times(${length}+${width})=${perimeter}$ ${unit}.`,
+            `Area is the space inside: length times width. So length times ${width} is ${area}.`,
+            `Division undoes multiplication, so the length is $${area}\\div ${width}=${length}$ ${unit}.`,
+            `The perimeter is the distance around: two lengths and two widths, $2\\times(${length}+${width})=${perimeter}$ ${unit}.`,
+            `The length is ${length} ${unit}, and the perimeter is ${perimeter} ${unit}.`,
           ],
         });
       },
@@ -996,6 +1009,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
         ),
         hint: `Compare the net pay after ${hrs(hours[0]!)}, which is ${fmt(net[0]!)}, with the net pay after ${hrs(hours[1]!)}, which is ${fmt(net[1]!)}: the change shows what ${hrs(hours[1]! - hours[0]!)} of work earn. Then undo the first hours of pay to see the cost.`,
         explanation: [
+          `Net pay is the money earned minus the uniform cost. Only the earned part grows, so the change in net pay comes from the hours worked.`,
           `From ${hrs(hours[0]!)} to ${hrs(hours[1]!)} the net pay changes by $${fmt(net[1]!)}-${net[0]! < 0 ? `(${fmt(net[0]!)})` : fmt(net[0]!)}=${net[1]! - net[0]!}$, which is the pay for ${hrs(hours[1]! - hours[0]!)}, so the wage is $${net[1]! - net[0]!}\\div ${hours[1]! - hours[0]!}=${wage}$ dollars per hour.`,
           `After ${hrs(hours[0]!)} the worker has earned $${wage}\\times ${hours[0]}=${wage * hours[0]!}$ dollars but the net pay is ${fmt(net[0]!)}, so the uniform cost $${wage * hours[0]!}-(${fmt(net[0]!)})=${cost}$ dollars.`,
         ],
@@ -1043,6 +1057,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
             sentence: built.sentence,
             hint: `A percent is a part of 100. To find ${p1}% of ${total}, multiply ${total} by the decimal for ${p1}%, and do the same with ${p2}% for the second group.`,
             explanation: [
+              `A percent is a number out of 100, so ${p1}% of ${total} is $${total}\\times ${frac(p1, 100)}$.`,
               `Fiction: $${total}\\times ${frac(p1, 100)}=${c1}$ books.`,
               `Mystery: $${total}\\times ${frac(p2, 100)}=${c2}$ books.`,
             ],
@@ -1108,6 +1123,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
           sentence: built.sentence,
           hint: `Find ${rp}% of ${grouped(income)} by multiplying by the decimal for ${rp}%, then compare the result with the limit of ${grouped(rentLimit)}. Do the same for insurance with ${ip}%.`,
           explanation: [
+            `A percent is a number out of 100, so ${rp}% of the income is the income times $${frac(rp, 100)}$.`,
             `Rent: $${grouped(income)}\\times ${frac(rp, 100)}=${grouped(rent)}$ dollars, which is ${rent <= rentLimit ? "not more than" : "more than"} the limit of ${grouped(rentLimit)}.`,
             `Insurance: $${grouped(income)}\\times ${frac(ip, 100)}=${grouped(insurance)}$ dollars, which is ${insurance <= insLimit ? "not more than" : "more than"} the limit of ${grouped(insLimit)}.`,
           ],
@@ -1195,6 +1211,7 @@ export const quantityPairBlanksGenerate = defineGenerate(
         figure: tableFigure(rows, "Check register", "row"),
         hint: `The balance after a line is the balance before it plus the line's amount. Start with the balance of ${bl(start)} and the first amount ${sg(steps[0]!)}.`,
         explanation: [
+          `A deposit adds money and a withdrawal takes it away. Each new balance is the old balance plus that line's amount.`,
           `Line 1: $${bl(start)}${steps[0]! < 0 ? "-" : "+"}${Math.abs(steps[0]!)}=${bl(balances[0]!)}$.`,
           `Line 2: the balance went from ${bl(balances[0]!)} to ${bl(balances[1]!)}, so the amount is $${bl(balances[1]!)}-${pr(balances[0]!)}=${sg(steps[1]!)}$.`,
           `Line 3: $${bl(balances[1]!)}${steps[2]! < 0 ? "-" : "+"}${Math.abs(steps[2]!)}=${bl(balances[2]!)}$.`,

@@ -555,6 +555,7 @@ export const statementBlanksGenerate = defineGenerate(
           ),
           hint: `${axes.property === "identity" ? "Multiplying by 1 or adding 0 does not change a value." : "Regrouping a product or a sum does not change its value."} Simplify $${tex(base)}$ first, then try the same value, such as $${v} = 3$, in each row.`,
           explanation: [
+            `Two expressions are equivalent when they have the same value for every value of $${v}$. One value that gives different results proves they are not.`,
             `Simplify the given expression: $${tex(base)}$ equals $${tex([...rows].filter((x) => x.equivalent).sort((p, q) => p.e[0].length - q.e[0].length)[0]!.e)}$ for every value of $${v}$.`,
             ...rows.map(
               (row) =>
