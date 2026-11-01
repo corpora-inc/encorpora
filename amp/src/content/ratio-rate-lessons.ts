@@ -13,8 +13,9 @@ const rates: Lesson["sections"][number] = {
 const ratios: Lesson["sections"][number] = {
   title: "Ratios and equivalent ratios",
   paragraphs: [
-    "A ratio compares two quantities, such as 2 cups of flour for every 3 cups of sugar. It is written 2 : 3 and read “2 to 3”; the order matches the order of the words, so flour comes first.",
-    "Equivalent ratios describe the same relationship at a different size. Multiplying both quantities by the same number keeps the relationship: a double batch uses 2 × 2 = 4 cups of flour and 2 × 3 = 6 cups of sugar, so 4 : 6 is equivalent to 2 : 3. Every equivalent ratio has the same unit rate: 3/2 cups of sugar for each cup of flour.",
+    "A ratio compares two amounts, such as 2 cups of flour for every 3 cups of sugar. It is written 2 : 3 and read “2 to 3”. The order matches the order of the words, so flour comes first.",
+    "Equivalent ratios describe the same relationship at a different size. Multiply both amounts by the same number (not 0) and the relationship stays the same. A double batch uses 2 × 2 = 4 cups of flour and 2 × 3 = 6 cups of sugar. So 4 : 6 is equivalent to 2 : 3.",
+    "Every equivalent ratio has the same unit rate, the amount for exactly 1 unit. Here it is $\\tfrac{3}{2}$ cups of sugar for each cup of flour, because 3 ÷ 2 = 6 ÷ 4 = 1.5.",
   ],
 };
 const equalGroups: Lesson["sections"][number] = {
@@ -92,35 +93,45 @@ export const ratioRateLessons: Lesson[] = [
   },
   {
     id: "better-buy",
+    senses: {
+      part: "part",
+      parts: "part",
+      unit: "unit",
+      units: "unit",
+    },
+    noLink: ["product", "scale"],
     title: "Find the better buy",
     summary:
-      "Compare the cost of one item in each package to decide which gives more for the money.",
+      "The better buy is the package that gives you more for your money. A bigger box can cost more in all and still be cheaper for each item. So find what 1 item costs in each package. That cost is called the unit price. The package with the lower unit price is the better buy.",
     templateIds: ["better-buy"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Find a unit price by dividing a total price by the number of items or units.",
-      "Choose the lower unit price, or recognize equal unit prices.",
+      "Find a unit price, the cost of 1 item, by dividing the total price by the number of items.",
+      "Choose the package with the lower unit price, or say that both are equally good when the unit prices are equal.",
     ],
     sections: [
       {
         stage: "intuition",
-        title: "Make the packages the same size in your mind",
+        title: "Compare the price of one item",
         paragraphs: [
-          "A box of eight bars may cost more than a box of six bars but less for each bar. Find what one bar costs in each box. Then you can compare equal amounts of the same item.",
+          "A box of 6 granola bars costs 4.50 dollars. A box of 8 granola bars costs 5.60 dollars. The 8-pack costs more in all, but it also holds more bars. Comparing the two totals is unfair, because the boxes hold different amounts.",
+          "To compare fairly, find what 1 bar costs in each box. Share the price equally among the bars. That is division: 4.50 ÷ 6 = 0.75 dollars for each bar in the 6-pack, and 5.60 ÷ 8 = 0.70 dollars for each bar in the 8-pack. Each bar in the 8-pack costs less.",
         ],
       },
       {
         title: "Unit price",
         paragraphs: [
-          "This lesson uses division with dollars and cents. A unit price is the cost of 1 item, or of 1 unit of measure such as 1 ounce. It is a unit rate in dollars per item, found by dividing the total price by the number of items.",
-          "Comparing total prices does not compare value: a smaller pack usually costs less in all because it holds less. Unit prices put both packs on the same footing, the price of exactly 1 item. The lower unit price is the better buy.",
+          "This lesson uses division with dollars and cents. A unit price is the cost of 1 item, or of 1 unit of measure such as 1 ounce. An ounce is a small unit of weight. To find a unit price, divide the total price by the number of items or units.",
+          "A unit price is a kind of unit rate: an amount for exactly 1 unit, here dollars for 1 item. The word per means for each one, so 0.70 dollars per bar means 0.70 dollars for each bar.",
+          "A smaller pack usually costs less in all, because it holds less. So the lower total price does not tell you which pack is cheaper. Unit prices put both packs at exactly 1 item. Then the lower unit price is the better buy.",
         ],
       },
       {
         title: "Seeing the comparison",
         paragraphs: [
-          "Each bar in the figure is a total price drawn to scale and split into one equal part per granola bar. The 6-pack costs 4.50 dollars, so each of its 6 parts is 4.50 ÷ 6 = 0.75 dollars. The 8-pack costs 5.60 dollars, so each of its 8 parts is 5.60 ÷ 8 = 0.70 dollars.",
-          "The 8-pack's bar is longer, but its parts are shorter: each granola bar costs less. When the unit prices are equal, neither pack is a better buy per item; the larger pack costs more in all only because it holds more.",
+          "In the figure, each bar is the total price of one box, drawn to scale. Drawn to scale means a longer bar stands for more money. Each bar is split into equal parts, one part for each granola bar in the box.",
+          "The 6-pack costs 4.50 dollars, so each of its 6 parts is 4.50 ÷ 6 = 0.75 dollars. The 8-pack costs 5.60 dollars, so each of its 8 parts is 5.60 ÷ 8 = 0.70 dollars. The 8-pack's bar is longer, but its parts are shorter. So each granola bar in the 8-pack costs less.",
+          "Sometimes the unit prices are equal. Then neither pack is a better buy for each item. The larger pack costs more in all only because it holds more.",
         ],
         illustration: "unit-price-tapes",
       },
@@ -130,7 +141,7 @@ export const ratioRateLessons: Lesson[] = [
         stage: "formal",
         title: "Compare equal quantities",
         paragraphs: [
-          "For a positive number of items, unit price equals total price divided by item count. When packages contain the same kind and quality of item, the lower unit price is the lower cost for any common quantity.",
+          "For a number of items greater than 0, the unit price is the total price divided by the number of items. Suppose two packages hold the same kind and quality of item. Then the package with the lower unit price costs less for any equal number of items.",
         ],
       },
     ],
@@ -138,29 +149,31 @@ export const ratioRateLessons: Lesson[] = [
       prompt:
         "Store A sells a 12-ounce box of cereal for 3.00 dollars. Store B sells a 20-ounce box of cereal for 4.40 dollars. Which is the better buy, with the lower price per ounce?",
       steps: [
-        "Store A: 3.00 ÷ 12 = 0.25 dollars per ounce.",
-        "Store B: 4.40 ÷ 20 = 0.22 dollars per ounce.",
-        "0.22 dollars is less than 0.25 dollars, so Store B has the better buy, even though its box costs more in all.",
+        "Store A: the question asks for the price of 1 ounce, so share 3.00 dollars among 12 ounces. 3.00 ÷ 12 = 0.25 dollars per ounce.",
+        "Store B: share 4.40 dollars among 20 ounces the same way. 4.40 ÷ 20 = 0.22 dollars per ounce.",
+        "Compare the unit prices: 0.22 dollars is less than 0.25 dollars. So Store B is the better buy, even though its box costs more in all.",
       ],
       answer: "Store B",
     },
     pitfalls: [
-      "Do not choose the lower total price; the cheaper pack may hold much less.",
-      "A bigger package is not always cheaper per item; check the unit prices.",
-      "Divide the price by the number of items, not the number of items by the price.",
+      "Do not choose the lower total price. The cheaper pack may hold much less.",
+      "A bigger package is not always cheaper for each item. Check the unit prices.",
+      "Divide the price by the number of items, not the number of items by the price. Price ÷ items gives dollars per item.",
     ],
     parentGuide:
-      "At a store, pick two sizes of the same product and use the shelf tags to find the price per ounce or per item. Decide which is the better buy before reading the tag's unit price.",
+      "At a store, pick two sizes of the same product. Use the price tags to find the price per ounce or per item for each size. Decide which is the better buy before reading the unit price printed on the shelf tag.",
   },
   {
     id: "ratio-table-missing",
+    senses: { parts: "part", third: "third", unit: "unit" },
+    noLink: ["changes", "factor"],
     title: "Complete a ratio table",
     summary:
-      "In a ratio table, both quantities grow or shrink by the same factor.",
+      "A ratio compares two amounts, such as 2 cups of flour for every 3 cups of sugar. A ratio table lists matching amounts for bigger or smaller batches. To keep the recipe the same, multiply both amounts by the same number. That number is called the multiplier. So to fill a gap, find the multiplier and use it on the other amount.",
     templateIds: ["ratio-table-missing"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Find the simplest ratio from a column of a ratio table.",
+      "Find the simplest ratio, the version with the smallest whole numbers, from one column of a ratio table.",
       "Find a missing value by multiplying both parts of the simplest ratio by the same number.",
     ],
     sections: [
@@ -168,15 +181,18 @@ export const ratioRateLessons: Lesson[] = [
         stage: "intuition",
         title: "Keep both amounts moving together",
         paragraphs: [
-          "A ratio compares two amounts in a fixed order: two cups of juice for every three cups of water is a 2-to-3 ratio. A double batch uses four cups and six cups. A ratio table keeps matching amounts together as a batch grows or shrinks.",
+          "A recipe uses 2 cups of flour for every 3 cups of sugar. A double batch uses twice as much of each: 2 × 2 = 4 cups of flour and 2 × 3 = 6 cups of sugar. A triple batch uses 3 × 2 = 6 cups of flour and 3 × 3 = 9 cups of sugar. The mixture tastes the same each time, because both amounts grew by the same multiplier.",
+          "A ratio table keeps these matching amounts together. Each column is one batch size. The top row is one amount, such as flour. The bottom row is the other amount, such as sugar.",
         ],
       },
       ratios,
       {
         title: "Every column is a multiple of the simplest ratio",
         paragraphs: [
-          "A ratio table lists equivalent ratios in columns: the top row gives one quantity and the bottom row the other. To find the simplest ratio, divide both numbers in a column by their greatest common factor. 4 and 6 share the factor 2: 4 ÷ 2 = 2 and 6 ÷ 2 = 3, so the simplest ratio is 2 : 3. The figure shows each column as 2 : 3 multiplied by 2, 5 or 7.",
-          "To fill a missing cell, find the multiplier from the known entry in its column and apply it to the other row. If flour is 14 = 7 × 2, then sugar is 7 × 3 = 21. Adding the same number to both rows does not keep the ratio: 2 + 12 = 14 and 3 + 12 = 15 give 14 : 15, a different mixture.",
+          "The simplest ratio uses the smallest whole numbers (the numbers 0, 1, 2, 3 and so on) that keep the same relationship. To find it, divide both numbers in a column by the largest number that divides both of them evenly. That number is called their greatest common factor. 4 and 6 can both be divided evenly by 2: 4 ÷ 2 = 2 and 6 ÷ 2 = 3. So the simplest ratio is 2 : 3.",
+          "Every column is the simplest ratio times its own multiplier. The figure shows 2 : 3 multiplied by 2, by 5 and by 7. That gives the columns 4 : 6, 10 : 15 and 14 : 21.",
+          "To fill a missing cell, find the multiplier from the number you know in that column. Then use the same multiplier on the other row. If flour is 14, then 14 = 7 × 2, so the multiplier is 7. Sugar is 7 × 3 = 21.",
+          "Adding the same number to both rows usually changes the ratio. Adding 12 gives 2 + 12 = 14 and 3 + 12 = 15. The ratio 14 : 15 is a different mixture, with almost as much flour as sugar.",
         ],
         illustration: "ratio-table-scaling",
       },
@@ -186,7 +202,7 @@ export const ratioRateLessons: Lesson[] = [
         stage: "formal",
         title: "Equivalent ratio columns",
         paragraphs: [
-          "A pair of positive quantities in a ratio table can be multiplied or divided by the same nonzero scale factor to make an equivalent pair. The quotient of corresponding quantities stays constant across all columns.",
+          "Take a pair of amounts greater than 0 in a ratio table. Multiply or divide both by the same number greater than 0. The result is an equivalent pair, with the same relationship. That number is called the scale factor. In every column, the bottom amount divided by the top amount gives the same quotient: the answer when you divide.",
         ],
       },
     ],
@@ -194,51 +210,55 @@ export const ratioRateLessons: Lesson[] = [
       prompt:
         "A table of equivalent ratios of flour to sugar, in cups, has the columns 4 and 6, 10 and 15, and 14 and a missing amount of sugar. How many cups of sugar go with 14 cups of flour?",
       steps: [
-        "4 ÷ 2 = 2 and 6 ÷ 2 = 3, so the simplest ratio is 2 : 3.",
-        "In the third column, flour is 14 = 7 × 2, so that column is 7 times the simplest ratio.",
-        "Sugar is 7 × 3 = 21.",
+        "Find the simplest ratio from a full column. 4 and 6 can both be divided by 2: 4 ÷ 2 = 2 and 6 ÷ 2 = 3. So the simplest ratio is 2 : 3.",
+        "Find the multiplier for the third column from the amount you know. Flour is 14, and 14 = 7 × 2. So that column is the simplest ratio times 7.",
+        "Use the same multiplier on sugar, so the mixture stays the same: 7 × 3 = 21.",
       ],
       answer: "21",
     },
     pitfalls: [
-      "Multiply both rows by the same number; adding the same number changes the ratio.",
-      "Find the multiplier from the row that is known in the missing column.",
-      "Keep the rows in their order: the top row stays flour and the bottom row stays sugar.",
+      "Multiply both rows by the same number. Adding the same number to both rows usually changes the ratio.",
+      "Find the multiplier from the row you know in the column with the missing number.",
+      "Keep the rows in their order. The top row stays flour and the bottom row stays sugar.",
     ],
     parentGuide:
-      "Make a drink with 2 scoops of mix for every 3 cups of water. Write the amounts for 2, 4 and 5 batches in a table, and ask what changes and what stays the same.",
+      "Make a drink with 2 scoops of mix for every 3 cups of water. Write the amounts for 2, 4 and 5 batches in a table. Ask what changes from column to column and what stays the same.",
   },
   {
     id: "double-number-line-missing",
+    senses: { third: "third", unit: "unit" },
+    noLink: ["change", "changes", "scale"],
     title: "Read a double number line",
     summary:
-      "Aligned marks on a double number line show matching amounts that scale together.",
+      "A number line is a line with evenly spaced marks for numbers. A double number line is two number lines, one above the other, for two amounts that grow together, such as miles and hours. Marks that line up go together. Divide both amounts to find the amount for 1 unit. Then multiply to find any other matching pair.",
     templateIds: ["double-number-line-missing"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Read aligned marks on a double number line as equivalent pairs.",
-      "Find a missing value by going through the amount for 1 unit.",
+      "Read marks that line up on a double number line as matching pairs of amounts.",
+      "Find a missing value by first finding the amount for 1 unit.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Two scales tell one story",
         paragraphs: [
-          "Put minutes on one line and pages printed on a line above it. Marks aligned vertically describe the same moment. If the printer works steadily, doubling the time doubles the pages, and halving the time halves the pages.",
+          "A train travels at a steady speed. It goes 45 miles in 3 hours. Draw one line for miles on top and one line for hours below it. The mark for 45 miles sits right above the mark for 3 hours, because they happen together.",
+          "At a steady speed, twice the time gives twice the miles. A third of the time gives a third of the miles. A multiplier is a number you multiply by. So both lines always change by the same multiplier.",
         ],
       },
       {
         title: "Two lines, one scale",
         paragraphs: [
-          "A double number line is two number lines drawn one above the other, both starting at 0, one for each quantity. A mark on the top line and the mark directly below it form an equivalent pair, such as 45 miles and 3 hours. All the pairs share one ratio.",
-          "The lines are drawn to scale: a mark twice as far from 0 shows twice as much on both lines. That is why the marks stay aligned when both values are multiplied or divided by the same number.",
+          "A double number line is two number lines drawn one above the other. Both start at 0, and each line is for one amount. A mark on the top line and the mark directly below it go together. Such a matching pair is called an equivalent pair, such as 45 miles and 3 hours. All the pairs have the same ratio, the same comparison of the two amounts.",
+          "Each line is drawn to scale. That means a mark twice as far from 0 shows twice as much, on both lines. So the marks stay lined up when both values are multiplied or divided by the same number.",
         ],
       },
       {
         title: "Go through 1",
         paragraphs: [
-          "In the figure, 45 miles is aligned with 3 hours. Dividing both values by 3 moves the pair to 15 miles and 1 hour: the unit rate, 15 miles per hour. Multiplying both values by 5 moves it to 75 miles and 5 hours.",
-          "When the number of hours is the unknown, divide by the unit rate instead: 105 miles at 15 miles per hour takes 105 ÷ 15 = 7 hours. Check by multiplying: 7 × 15 = 105.",
+          "In the figure, 45 miles lines up with 3 hours. Divide both values by 3, and the pair becomes 15 miles and 1 hour. The amount for exactly 1 unit is called the unit rate, here 15 miles per hour. Per means for each one.",
+          "From the unit rate, multiply to reach other pairs. Multiply both values by 5, and the pair becomes 75 miles and 5 hours.",
+          "Sometimes the number of hours is the missing value. Then divide the miles by the unit rate. 105 miles at 15 miles per hour takes 105 ÷ 15 = 7 hours. Check by multiplying back: 7 × 15 = 105.",
         ],
         illustration: "rate-through-one",
       },
@@ -246,9 +266,9 @@ export const ratioRateLessons: Lesson[] = [
     closingSections: [
       {
         stage: "formal",
-        title: "Aligned pairs scale together",
+        title: "Matching pairs scale together",
         paragraphs: [
-          "At a constant ratio, an aligned pair on a double number line represents corresponding quantities. Multiplying or dividing both values by the same positive number gives another aligned pair; their quotient remains the unit rate.",
+          "Suppose two amounts keep a constant (unchanging) ratio. Then each pair of lined-up marks on a double number line shows matching amounts. Multiply or divide both values by the same number greater than 0, and you get another lined-up pair. In every pair except 0 and 0, the top value divided by the bottom value is the same unit rate.",
         ],
       },
     ],
@@ -256,51 +276,65 @@ export const ratioRateLessons: Lesson[] = [
       prompt:
         "A train travels at a constant speed. It goes 45 miles in 3 hours. How many miles does it travel in 5 hours?",
       steps: [
-        "Find the miles in 1 hour: 45 ÷ 3 = 15.",
-        "Multiply by the number of hours: 15 × 5 = 75.",
-        "Both lines changed by the same factors, ÷ 3 and then × 5, so 75 miles is aligned with 5 hours.",
+        "Find the miles in 1 hour. Divide both values by 3 so the hours become 1: 45 ÷ 3 = 15 miles in 1 hour.",
+        "Now go from 1 hour to 5 hours. Multiply both values by 5: 15 × 5 = 75 miles.",
+        "Both lines changed by the same steps, ÷ 3 and then × 5. So 75 miles lines up with 5 hours.",
       ],
       answer: "75",
     },
     pitfalls: [
-      "Change both lines by the same factor; never add the same amount to both.",
-      "Read the pair straight down: a value goes with the mark directly below or above it.",
-      "When the bottom value is unknown, divide the top value by the unit rate.",
+      "Change both lines by the same multiplier. Adding the same amount to both lines usually changes how the amounts compare.",
+      "Read each pair straight up and down. A value goes with the mark directly above or below it.",
+      "When the bottom value is missing, divide the top value by the unit rate.",
     ],
     parentGuide:
-      "Draw two lines on paper for cups of rice and cups of water. Mark 1 cup of rice with 2 cups of water, then mark 2, 3 and 4 cups of rice and fill in the water.",
+      "Draw two lines on paper, one for cups of rice and one for cups of water. Mark 1 cup of rice above 2 cups of water. Then mark 2, 3 and 4 cups of rice, and fill in the water that lines up with each.",
   },
   {
     id: "fraction-unit-rate",
+    senses: {
+      fourths: "fourth",
+      "more than": "more-than",
+      part: "part",
+      parts: "part",
+      thirds: "third",
+      unit: "unit",
+      units: "unit",
+      whole: "whole",
+    },
     title: "Unit rates with fractions",
     summary:
-      "Use a known fractional amount to find what goes with one whole unit.",
+      "A unit rate is the amount that goes with exactly 1 unit, such as miles in 1 hour. Sometimes you know the amount for only part of a unit, such as $\\tfrac{1}{4}$ hour. Then count how many of those parts make 1 whole unit. To find the unit rate, divide the amount by the number of units, even when both are fractions.",
     templateIds: ["fraction-unit-rate"],
     includeGeneratedRepresentation: false,
     objectives: [
-      "Find a unit rate when the given quantities are fractions.",
-      "Explain dividing by a fraction as counting copies of a part to reach 1 whole unit.",
+      "Find a unit rate when the given amounts are fractions.",
+      "Explain dividing by a fraction as counting how many copies of a part make 1 whole unit.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "A part of a unit can reveal a full unit",
         paragraphs: [
-          "If three-fourths of a batch needs six cups of flour, one-fourth needs two cups. Four such parts make a whole batch, so the whole needs eight cups. To find the amount for one unit, divide one amount by the other. Dividing by a nonzero fraction means multiplying by its reciprocal: swap its top and bottom numbers.",
+          "A fraction is a number of equal parts of 1 whole. In $\\tfrac{3}{4}$, the bottom number 4 says the whole is split into 4 equal parts. The top number 3 says how many of those parts you have.",
+          "Suppose $\\tfrac{3}{4}$ of a batch needs 6 cups of flour. That is 3 equal parts. So $\\tfrac{1}{4}$ of the batch, 1 part, needs 6 ÷ 3 = 2 cups. A whole batch is 4 parts, so it needs 4 × 2 = 8 cups.",
+          "Those two steps divide 6 by $\\tfrac{3}{4}$. A shortcut does the same work: to divide by a fraction (not 0), multiply by its reciprocal, the fraction turned upside down. The reciprocal of $\\tfrac{3}{4}$ is $\\tfrac{4}{3}$, and $6 \\times \\tfrac{4}{3} = 8$ cups.",
         ],
       },
       {
         title: "A unit rate from fractions",
         paragraphs: [
-          "This lesson uses fraction multiplication. A unit rate is the amount for 1 unit, even when the given amounts are fractions: walking 1/2 mile in 1/4 hour is a rate, and its unit rate is the distance walked in 1 hour.",
-          "As with whole numbers, divide the amount by the number of units: 1/2 ÷ 1/4. The reciprocal of a fraction swaps its numerator and denominator; the reciprocal of 1/4 is 4/1 = 4. Dividing by a fraction gives the same result as multiplying by its reciprocal, as the next section shows.",
+          "This lesson uses fraction multiplication. A rate is a comparison of two amounts with different units, such as miles and hours. A unit rate is the amount for exactly 1 unit, even when the given amounts are fractions.",
+          "For example, a walker goes $\\tfrac{1}{2}$ mile in $\\tfrac{1}{4}$ hour. The unit rate is the distance walked in 1 hour. As with whole numbers, divide the amount by the number of units: $\\tfrac{1}{2} \\div \\tfrac{1}{4}$.",
+          "The top number of a fraction is called the numerator, and the bottom number is called the denominator. The reciprocal swaps them. So the reciprocal of $\\tfrac{1}{4}$ is $\\tfrac{4}{1}$, which is 4. The next section shows why dividing by $\\tfrac{1}{4}$ gives the same result as multiplying by 4.",
         ],
       },
       {
         title: "Count copies to reach 1",
         paragraphs: [
-          "In the figure, the hours line is split into quarters. In each quarter hour the walker covers 1/2 mile. One hour holds 4 quarters, so the distance in 1 hour is 4 copies of 1/2 mile: 4 × 1/2 = 2 miles. That is 1/2 ÷ 1/4 = 1/2 × 4 = 2 miles per hour.",
-          "When the time is not a single part, such as 2/3 hour, first find the amount for 1/3 hour by dividing by 2, then multiply by 3 to fill the hour. Together those steps multiply by 3/2, the reciprocal of 2/3: 3/4 mile in 2/3 hour gives 3/4 × 3/2 = 9/8 miles per hour.",
+          "In the figure, the hours line is split into quarters (fourths) of an hour. In each quarter hour the walker covers $\\tfrac{1}{2}$ mile. One hour holds 4 quarters. So the distance in 1 hour is 4 copies of $\\tfrac{1}{2}$ mile: $4 \\times \\tfrac{1}{2} = 2$ miles. That is $\\tfrac{1}{2} \\div \\tfrac{1}{4} = \\tfrac{1}{2} \\times 4 = 2$ miles per hour.",
+          "Sometimes the time is more than one part, such as $\\tfrac{2}{3}$ hour, which is 2 thirds. Say the walker goes $\\tfrac{3}{4}$ mile in $\\tfrac{2}{3}$ hour. First find the distance for $\\tfrac{1}{3}$ hour: divide by 2. Then fill the hour with 3 thirds: multiply by 3.",
+          "Dividing by 2 and then multiplying by 3 is the same as multiplying by $\\tfrac{3}{2}$. That is the reciprocal of $\\tfrac{2}{3}$. So the unit rate is $\\tfrac{3}{4} \\times \\tfrac{3}{2} = \\tfrac{9}{8}$ miles per hour.",
         ],
         illustration: "fraction-rate-copies",
       },
@@ -310,7 +344,7 @@ export const ratioRateLessons: Lesson[] = [
         stage: "formal",
         title: "A rate for one whole unit",
         paragraphs: [
-          "For a nonzero fractional number of units $b$, the amount $a$ per one unit is $a\\div b$. Dividing by $c/d$, where $c$ and $d$ are nonzero, is equivalent to multiplying by $d/c$.",
+          "Suppose an amount $a$ goes with $b$ units, where $b$ is a fraction other than 0. Then the amount per 1 unit is $a \\div b$. Dividing by $\\tfrac{c}{d}$, where $c$ and $d$ are not 0, gives the same result as multiplying by its reciprocal $\\tfrac{d}{c}$.",
         ],
       },
     ],
@@ -318,19 +352,19 @@ export const ratioRateLessons: Lesson[] = [
       prompt:
         "A recipe uses 3/4 cup of sugar for every 2/3 cup of flour. How many cups of sugar does it use for 1 cup of flour?",
       steps: [
-        "Divide the sugar by the flour: 3/4 ÷ 2/3.",
-        "Multiply by the reciprocal of 2/3: 3/4 × 3/2 = 9/8.",
-        "Check: 2/3 × 9/8 = 18/24 = 3/4, the sugar given.",
+        "The question puts 1 cup of flour at 1 unit. So divide the sugar by the flour: $\\tfrac{3}{4} \\div \\tfrac{2}{3}$.",
+        "To divide by $\\tfrac{2}{3}$, multiply by its reciprocal $\\tfrac{3}{2}$, made by swapping top and bottom: $\\tfrac{3}{4} \\times \\tfrac{3}{2} = \\tfrac{3 \\times 3}{4 \\times 2} = \\tfrac{9}{8}$.",
+        "Check by multiplying back. $\\tfrac{2}{3}$ cup of flour times $\\tfrac{9}{8}$ cups per cup is $\\tfrac{18}{24} = \\tfrac{3}{4}$, the sugar given.",
       ],
       answer: "9/8",
     },
     pitfalls: [
-      "Divide the amount by the units, not the units by the amount.",
-      "Take the reciprocal of the divisor only: 3/4 ÷ 2/3 = 3/4 × 3/2.",
-      "A unit rate can be more than the given amount when less than 1 unit is given.",
+      "Divide the amount by the number of units, not the units by the amount.",
+      "Take the reciprocal of the number you divide by only: $\\tfrac{3}{4} \\div \\tfrac{2}{3} = \\tfrac{3}{4} \\times \\tfrac{3}{2}$.",
+      "The unit rate can be bigger than the given amount. That happens when less than 1 unit is given.",
     ],
     parentGuide:
-      "Pour 1/4 cup of water four times into a measuring cup to make 1 cup. Then ask: if 1/4 cup of rice needs 1/2 cup of water, how much water does 1 cup of rice need?",
+      "Pour $\\tfrac{1}{4}$ cup of water into a measuring cup four times to make 1 cup. Then ask: if $\\tfrac{1}{4}$ cup of rice needs $\\tfrac{1}{2}$ cup of water, how much water does 1 cup of rice need?",
   },
   {
     id: "story-operation-choice",
@@ -455,46 +489,60 @@ export const ratioRateMethods: Record<string, ProblemMethod> = {
       "Divide in the order the question asks. Minutes per mile means minutes ÷ miles.",
   },
   "better-buy": {
-    goal: "Decide which of two packages costs less per item.",
+    goal: "Decide which of two packages costs less for each item.",
+    intuition:
+      "A bigger package can cost more in all and still be cheaper for each item. The unit price is the cost of exactly 1 item: the total price divided by the number of items. The package with the lower unit price is the better buy.",
     terms: ["unit-price"],
     method: [
-      "Divide each total price by its number of items.",
+      "Find each unit price. Divide each total price by its number of items.",
       "Compare the two unit prices.",
-      "The lower unit price is the better buy; equal unit prices are equally good.",
+      "The lower unit price is the better buy. If the unit prices are equal, both are equally good.",
     ],
-    watch: "Compare unit prices, not total prices.",
+    watch:
+      "Compare unit prices, not total prices. The cheaper box may just hold less.",
   },
   "ratio-table-missing": {
+    senses: { part: "part" },
+    noLink: ["changes", "factor"],
     goal: "Find the missing number in a table of equivalent ratios.",
+    intuition:
+      "A ratio compares two amounts, such as 2 cups of flour for every 3 cups of sugar. Equivalent ratios keep that comparison at a bigger or smaller size. Each column of the table is the simplest ratio times its own multiplier. The simplest ratio uses the smallest whole numbers (the numbers 0, 1, 2, 3 and so on) that keep the same comparison.",
     terms: ["equivalent-ratios", "simplest-ratio"],
     method: [
-      "Divide a complete column by its greatest common factor to get the simplest ratio.",
-      "Find the multiplier from the known entry in the column with the question mark.",
+      "Find the simplest ratio. Divide both numbers in a full column by the largest number that divides both evenly.",
+      "In the column with the question mark, find the multiplier: known number ÷ its part of the simplest ratio.",
       "Multiply the other part of the simplest ratio by that multiplier.",
     ],
-    watch: "Multiply both rows by the same number; do not add.",
+    watch:
+      "Multiply both rows by the same number. Adding the same number usually changes the ratio.",
   },
   "double-number-line-missing": {
+    senses: { unit: "unit" },
+    noLink: ["change", "changes", "scale"],
     goal: "Find a missing value on a double number line.",
+    intuition:
+      "A double number line is two number lines, one above the other, for two amounts that grow together. Marks that line up go together. The unit rate is the amount that goes with exactly 1 unit of the other amount.",
     terms: ["double-number-line"],
     method: [
-      "Read a complete pair straight across the two lines.",
-      "Divide both values by the bottom value to find the amount for 1 unit.",
-      "Multiply the unit rate by the bottom value asked for, or divide a top value by it.",
+      "Read a complete pair: a mark and the mark directly across from it.",
+      "Divide both values by the bottom value (use a pair other than 0 and 0). That gives the top amount for 1 bottom unit, the unit rate.",
+      "To find a missing top value, multiply the unit rate by the bottom value. To find a missing bottom value, divide the top value by the unit rate.",
     ],
-    watch: "Change both lines by the same factor; never add the same amount.",
+    watch:
+      "Change both lines by the same multiplier, the number you multiply by. Adding the same amount to both usually changes how the amounts compare.",
   },
   "fraction-unit-rate": {
-    goal: "Find a unit rate when the quantities are fractions.",
+    senses: { part: "part", unit: "unit", units: "unit" },
+    goal: "Find a unit rate when the amounts are fractions.",
     intuition:
-      "A unit rate tells what goes with one unit. Divide the given amount by its fraction of a unit; dividing by a nonzero fraction means multiplying by its reciprocal, made by swapping its top and bottom numbers.",
+      "A unit rate is the amount that goes with exactly 1 unit. Divide the amount by the number of units, even when both are fractions. To divide by a fraction (not 0), multiply by its reciprocal: the fraction with its top and bottom numbers swapped.",
     terms: ["unit-rate", "reciprocal"],
     method: [
       "Divide the amount by the number of units.",
-      "Multiply by the reciprocal of the divisor and simplify.",
-      "Check: the unit rate times the given units equals the given amount.",
+      "Multiply by the reciprocal of the number you divide by, then simplify.",
+      "Check: the unit rate times the given number of units equals the given amount.",
     ],
-    watch: "Take the reciprocal of the divisor only.",
+    watch: "Flip only the number you divide by, not the first fraction.",
   },
   "story-operation-choice": {
     goal: "Choose the equation that models an equal-groups story.",
@@ -523,13 +571,13 @@ export const ratioRatePrinciples: Record<string, string> = {
   "unit-rate":
     "A unit rate is the amount for 1 unit. If an amount $a$ goes with $b$ units, and $b$ is not 0, then $a \\div b$ goes with 1 unit.",
   "better-buy":
-    "Packages compare fairly only at the same size; the unit price, total price ÷ number of items, puts every package at 1 item.",
+    "Packages compare fairly only at the same size. The unit price, total price ÷ number of items, puts every package at 1 item.",
   "ratio-table-missing":
-    "Multiplying both quantities of a ratio by the same number gives an equivalent ratio, so every column is the simplest ratio times one number.",
+    "Multiplying both amounts of a ratio by the same number, not 0, gives an equivalent ratio. So every column is the simplest ratio times its own number.",
   "double-number-line-missing":
-    "Equivalent pairs scale together: dividing or multiplying both values by the same number keeps them aligned, so every pair passes through the unit rate at 1.",
+    "Matching pairs grow together. Multiplying or dividing both values by the same number, not 0, keeps them lined up. So from any pair other than 0 and 0 you can reach the unit rate, the amount for 1.",
   "fraction-unit-rate":
-    "Dividing by a fraction c/d is multiplying by its reciprocal d/c: it counts how many copies of c/d unit make 1 unit.",
+    "Dividing by a fraction $\\tfrac{c}{d}$, with $c$ and $d$ not 0, is the same as multiplying by its reciprocal $\\tfrac{d}{c}$. The reciprocal $\\tfrac{d}{c}$ is how many copies of $\\tfrac{c}{d}$ make 1.",
   "story-operation-choice":
     "In equal groups, total = number of groups × size of each group; an unknown total is found by multiplying, and an unknown factor by dividing the total by the known factor.",
   "multiplication-division-story":
