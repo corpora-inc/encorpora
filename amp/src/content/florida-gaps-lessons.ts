@@ -126,10 +126,10 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     method: [
       "Write the factor as “1 of one unit = $k$ of the other,” where $k$ is the number in the factor.",
       "Going from the unit with the 1 to the other unit, multiply by $k$. Going the other way, divide by $k$.",
-      "Check the size: the answer in the smaller unit must be the larger number.",
+      "Check the size: for an amount above 0, the answer in the smaller unit must be the larger number.",
     ],
     watch:
-      "For $1\\text{ pound}=0.45\\text{ kilogram}$, 10 pounds is $10\\times0.45=4.5$ kilograms. Going from kilograms to pounds, divide by 0.45.",
+      "For $1\\text{ pound} \\approx 0.45\\text{ kilogram}$ ($\\approx$ means “is about”), 10 pounds is about $10\\times0.45=4.5$ kilograms. Going from kilograms to pounds, divide by 0.45.",
   },
   "fl-integer-multiply-divide": {
     goal: "Multiply or divide two integers (whole numbers, their negatives and 0), choosing the right sign.",
@@ -617,17 +617,17 @@ export const floridaGapLessons: Lesson[] = [
         paragraphs: [
           "Let $A$ and $B$ be two units, and let $k$ be a positive number with $1\\,A = k\\,B$.",
           "Then $x$ of unit $A$ equals $kx$ of unit $B$. And $y$ of unit $B$ equals $\\frac{y}{k}$ of unit $A$, which means $y$ divided by $k$.",
-          "Many factors are rounded, which means shortened to a close, simpler number, such as $1\\text{ pound} = 0.45\\text{ kilogram}$. Use the factor the problem gives, so the answer matches its rounding.",
+          "Many factors are rounded, which means shortened to a close, simpler number, such as $1\\text{ pound} \\approx 0.45\\text{ kilogram}$. The sign $\\approx$ means “is about.” Use the factor the problem gives, so the answer matches its rounding.",
         ],
       },
     ],
     pitfalls: [
-      "Going to the smaller unit must give a bigger number. Use the factor to decide whether to multiply or divide, then check the size of your answer.",
+      "For an amount above 0, going to the smaller unit must give a bigger number. Use the factor to decide whether to multiply or divide, then check the size of your answer.",
       "Use the factor the problem gives, even if you remember a slightly different one.",
       "For area, use a square-unit factor. A length factor such as 2.54 does not convert square inches.",
     ],
     parentGuide:
-      "Using $1\\text{ pound}=0.45\\text{ kilogram}$, ask whether 10 pounds is more or less than 10 kilograms, and why.",
+      "Using $1\\text{ pound} \\approx 0.45\\text{ kilogram}$ (about 0.45), ask whether 10 pounds is more or less than 10 kilograms, and why.",
   }),
   build({
     id: "integer-multiply-divide",

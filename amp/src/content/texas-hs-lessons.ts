@@ -261,7 +261,7 @@ export const texasHsMethods: Record<string, ProblemMethod> = {
     method: [
       "List the outside surfaces: flat circles, curved walls and any dome. Leave out any part of a surface that is covered where two solids touch.",
       "Use $\\pi r^2$ for a circle, $2\\pi rh$ for a cylinder's wall, $\\pi r\\ell$ for a cone's wall and $2\\pi r^2$ for a hemisphere's dome.",
-      "For a cone, use the slant height. If you know the radius $r$ and height $h$ but not $\\ell$, find it from $\\ell=\\sqrt{r^2+h^2}$. The sign $\\sqrt{\\ }$ means square root: the number, 0 or greater, that times itself gives the number under the sign.",
+      "For a right circular cone, use the slant height. If you know the radius $r$ and height $h$ but not $\\ell$, find it from $\\ell=\\sqrt{r^2+h^2}$. The sign $\\sqrt{\\ }$ means square root: the number, 0 or greater, that times itself gives the number under the sign.",
       "Add the areas.",
     ],
     watch:
@@ -692,7 +692,7 @@ export const texasHsLessons: Lesson[] = [
         "The domain is all real numbers, unless the situation limits the input.",
         "The boundary of the range is the number added at the end, $k$. The sign of the number in front of the power picks the side: positive means above $k$, negative means below.",
         "The boundary is never reached, so use $<$ or $>$, not $\\le$ or $\\ge$.",
-        "A model is an equation that stands for a real situation. In a model of time that starts at $t = 0$, the domain is usually $t \\ge 0$, read “$t$ is greater than or equal to 0.” A situation that ends at some time also limits $t$ from above. The starting value $f(0)$ is then a real output, so the range starts at $f(0)$ and includes it. If the outputs shrink toward the boundary, the range lies between $f(0)$ and the boundary. If they grow away from it, the range goes from $f(0)$ outward without end.",
+        "A model is an equation that stands for a real situation. In a model of time that starts at $t = 0$, the domain is usually $t \\ge 0$, read “$t$ is greater than or equal to 0.” A situation that ends at some time also limits $t$ from above. The starting value $f(0)$ is then a real output, so the range starts at $f(0)$ and includes it. If the outputs shrink toward the boundary, the range lies between $f(0)$ and the boundary. If they grow away from it, the range goes from $f(0)$ outward, without end if time has no end.",
       ],
     },
     formal: {
@@ -827,7 +827,7 @@ export const texasHsLessons: Lesson[] = [
     intuition: [
       "A point on a grid is written $(x, y)$: how far across, then how far up. The point $(0, 0)$, where the axes cross, is called the origin.",
       "A rigid motion moves a figure without stretching it. A slide is called a translation, a flip is a reflection and a turn is a rotation. Reflecting across the $y$-axis (the up-down axis) changes the sign of $x$: $(2, 3)$ goes to $(-2, 3)$.",
-      "A dilation resizes a figure from a fixed point called the center of dilation. The scale factor says how much: 2 doubles every distance from the center, and $\\frac{1}{2}$ halves it. Each point moves straight away from (or toward) the center.",
+      "A dilation resizes a figure from a fixed point called the center of dilation. The scale factor says how much: 2 doubles every distance from the center, and $\\frac{1}{2}$ halves it. The center stays put. Every other point moves along a straight line away from or toward the center, unless the scale factor is 1.",
       "The point a transformation produces is called the image. We often add a small mark, so the image of $P$ is written $P'$. The mark is called “prime,” so $P'$ is read “$P$ prime.”",
       "The coordinates are the two numbers $x$ and $y$ that name a point. If the center is the origin, multiply both coordinates by the scale factor. If the center is somewhere else, measure from the center instead. Find how far the point is from the center, multiply that, then add the center back.",
     ],
@@ -1052,7 +1052,7 @@ export const texasHsLessons: Lesson[] = [
       "A cylinder is a can shape: two circles joined by a curved wall. A cone is a party-hat shape: a circle base with a curved wall rising to a point. A hemisphere is half of a ball, a dome.",
       "Each piece has an area formula. Here $r$ is the radius, the distance from the center of the circle to its edge, and $\\pi$ (pi) is about 3.14. A circle has area $\\pi r^2$, where $r^2$ ($r$ squared) means $r$ times $r$. A cylinder's curved wall, $h$ tall, has area $2\\pi rh$. A hemisphere's curved surface has area $2\\pi r^2$, half of a ball's $4\\pi r^2$.",
       "The slant height is the distance from a cone's tip down its wall to the edge of the base. Call it $\\ell$. For a right circular cone, one whose tip is straight above the center of its circle base, the curved wall has area $\\pi r\\ell$. If you only know the straight-up height $h$, the radius, height and slant height form a triangle with a square corner. A triangle with a $90^\\circ$ corner is called a right triangle. So $\\ell = \\sqrt{r^2 + h^2}$. The sign $\\sqrt{\\ }$ means square root: the number, 0 or greater, that times itself gives the number under the sign.",
-      "When solids are joined, the surfaces that touch are covered. A dome sitting on a cylinder covers the cylinder's top circle, and the dome's own flat bottom is hidden too.",
+      "When solids are joined, the surfaces that touch are covered. When a dome's flat circle exactly matches a cylinder's top, the dome covers that top, and the dome's own flat bottom is hidden too.",
     ],
     example: {
       prompt:
@@ -1071,7 +1071,7 @@ export const texasHsLessons: Lesson[] = [
       paragraphs: [
         "List every outside surface first. Leave out any part of a surface that is covered where two solids touch.",
         "Use $\\pi r^2$ for a flat circle, $2\\pi rh$ for a cylinder's wall, $\\pi r\\ell$ for a cone's wall and $2\\pi r^2$ for a dome.",
-        "For a cone, use the slant height $\\ell$. If you know the radius $r$ and height $h$ but not $\\ell$, find $\\ell = \\sqrt{r^2 + h^2}$ first.",
+        "For a right circular cone, use the slant height $\\ell$. If you know the radius $r$ and height $h$ but not $\\ell$, find $\\ell = \\sqrt{r^2 + h^2}$ first.",
       ],
     },
     formal: {
