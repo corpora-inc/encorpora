@@ -143,7 +143,7 @@ export const realNumberLessons: Lesson[] = [
         title: "Compare numbers in different forms",
         paragraphs: [
           "To compare roots, fractions and decimals, place each one between consecutive tenths. $\\sqrt{30}$ is between 5.4 and 5.5 because $5.4^2 = 29.16$ and $5.5^2 = 30.25$. $\\sqrt[3]{170}$ is between 5.5 and 5.6 because $5.5^3 = 166.375$ and $5.6^3 = 175.616$. Dividing, $\\frac{16}{3} = 5.333\\ldots$, between 5.3 and 5.4.",
-          "An interval is the stretch of numbers between two values. Numbers in different intervals are ordered by their intervals: $\\frac{16}{3} < \\sqrt{30} < \\sqrt[3]{170}$. If two numbers share an interval, zoom again to hundredths. A larger number under the root sign does not mean a larger value: $\\sqrt[3]{170}$ is about 5.5, less than $\\sqrt{40}$, which is about 6.3.",
+          "An interval is the stretch of numbers between two values. Numbers in intervals that do not overlap are ordered by their intervals: $\\frac{16}{3} < \\sqrt{30} < \\sqrt[3]{170}$. If two numbers share an interval, zoom again to hundredths. A larger number under the root sign does not mean a larger value: $\\sqrt[3]{170}$ is about 5.5, less than $\\sqrt{40}$, which is about 6.3.",
         ],
       },
     ],
@@ -164,7 +164,7 @@ export const realNumberLessons: Lesson[] = [
         paragraphs: [
           "Squares and cubes keep order: if $a^2 < n < b^2$ for $a$ and $b$ zero or greater, then $a < \\sqrt{n} < b$.",
           "Because squaring keeps order for nonnegative numbers, comparing $n$ with the square of a halfway point shows which side of it $\\sqrt{n}$ lies on.",
-          "Numbers that lie in different intervals of a number line are ordered by those intervals.",
+          "Numbers that lie in intervals of a number line that do not overlap are ordered by those intervals.",
         ],
       },
     ],
@@ -436,7 +436,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       cubes: "cube",
     },
     intuition:
-      "A square root is the positive number that times itself makes a given number: $\\sqrt{20}$ times itself makes 20. A cube root is the number whose three copies multiply to make a given number: $\\sqrt[3]{20}$ is that number for 20. Squaring means multiplying a number by itself. A perfect square is a whole number times itself, like 16 or 25. Since 20 is between 16 and 25, $\\sqrt{20}$ is between 4 and 5.",
+      "A square root is the number, zero or greater, that times itself makes a given number: $\\sqrt{20}$ times itself makes 20. A cube root is the number whose three copies multiply to make a given number: $\\sqrt[3]{20}$ is that number for 20. Squaring means multiplying a number by itself. A perfect square is a whole number times itself, like 16 or 25. Since 20 is between 16 and 25, $\\sqrt{20}$ is between 4 and 5.",
     method: [
       "List perfect squares (or cubes) near the number under the root.",
       "Find the two that the number lies between.",
@@ -453,7 +453,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["root", "roots", "side", "half"],
     intuition:
-      "A square root is the positive number that times itself makes a given number: $\\sqrt{20}$ times itself makes 20. Squaring means multiplying a number by itself: $4.4^2 = 4.4 \\times 4.4 = 19.36$. Bigger numbers have bigger squares, so squares show where the root sits.",
+      "A square root is the number, zero or greater, that times itself makes a given number: $\\sqrt{20}$ times itself makes 20. Squaring means multiplying a number by itself: $4.4^2 = 4.4 \\times 4.4 = 19.36$. For numbers zero or greater, bigger numbers have bigger squares, so squares show where the root sits.",
     method: [
       "Find the consecutive whole numbers around the root.",
       "Square tenths between them until the number is between two squares.",
@@ -473,7 +473,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       cube: "cube",
     },
     intuition:
-      "A square root is the positive number that times itself makes a given number, written $\\sqrt{n}$. A cube root is the number whose three copies multiply to make a given number, written $\\sqrt[3]{n}$. Squaring means multiplying a number by itself. To compare numbers in different forms, find the tenths each one lies between, for example 5.4 and 5.5.",
+      "A square root is the number, zero or greater, that times itself makes a given number, written $\\sqrt{n}$. A cube root is the number whose three copies multiply to make a given number, written $\\sqrt[3]{n}$. Squaring means multiplying a number by itself. To compare numbers in different forms, find the tenths each one lies between, for example 5.4 and 5.5.",
     method: [
       "Place each root between consecutive tenths by squaring or cubing tenths.",
       "Divide each fraction to find its tenths.",
@@ -514,9 +514,9 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       place: "place-value",
     },
     intuition:
-      "Scientific notation is a way to write a number as $a \\times 10^{n}$. The coefficient, the number in front, is $a$, from 1 up to 10. It is multiplied by a power of 10. Multiplying by 10 moves the decimal point one place right, and dividing by 10 moves it one place left. The exponent $n$ counts those moves.",
+      "Scientific notation is a way to write a number as $a \\times 10^{n}$. The coefficient, the number in front, is $a$: 1 or more, and less than 10. It is multiplied by a power of 10. Multiplying by 10 moves the decimal point one place right, and dividing by 10 moves it one place left. The exponent $n$ counts those moves.",
     method: [
-      "Move the decimal point $n$ places: right if $n$ is positive, left if $n$ is negative.",
+      "Move the decimal point as many places as the size of $n$: right if $n$ is positive, left if $n$ is negative.",
       "Fill any empty places with zeros.",
     ],
     watch:
@@ -536,7 +536,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     method: [
       "Move the decimal point until exactly one digit that is not 0 is to its left.",
       "Count the places moved: that count is the size of the exponent.",
-      "Make the exponent positive for numbers of 10 or more, negative for numbers less than 1.",
+      "Make the exponent positive for numbers of 10 or more, negative for positive numbers less than 1, and 0 for numbers from 1 up to (not including) 10.",
     ],
     watch:
       "A coefficient of 10 or more, or less than 1, is not scientific notation.",
@@ -590,7 +590,7 @@ export const realNumberPrinciples: Record<string, string> = {
   "root-nearest-tenth":
     "Squaring keeps order for numbers zero or greater. So comparing $n$ with the square of a halfway point shows which side of it $\\sqrt{n}$ lies on.",
   "compare-irrational-values":
-    "Numbers that lie in different intervals of a number line are ordered by those intervals.",
+    "Numbers that lie in intervals of a number line that do not overlap are ordered by those intervals.",
   "solve-square-cube-equation":
     "For $p > 0$, $x^2 = p$ has exactly two real solutions, $\\sqrt{p}$ and $-\\sqrt{p}$. For any real $p$, $x^3 = p$ has exactly one real solution, $\\sqrt[3]{p}$.",
   "scientific-to-standard":
