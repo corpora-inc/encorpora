@@ -887,9 +887,12 @@
     },
     "lesson:arc-sector-derivation": {
       "terms": [
+        "arc",
         "arc-length",
+        "proportional-relationship",
         "radian",
-        "radius"
+        "radius",
+        "sector"
       ],
       "long": []
     },
@@ -923,9 +926,7 @@
     },
     "lesson:arithmetic-sequence-terms": {
       "terms": [
-        "arithmetic-sequence",
-        "common-difference",
-        "common-ratio"
+        "arithmetic-sequence"
       ],
       "long": []
     },
@@ -1028,18 +1029,10 @@
     },
     "lesson:best-display-choice": {
       "terms": [
-        "circle-graph",
         "height",
-        "histogram",
         "line-graph",
         "scatterplot",
         "stem-and-leaf-plot"
-      ],
-      "long": []
-    },
-    "lesson:better-buy": {
-      "terms": [
-        "division"
       ],
       "long": []
     },
@@ -1116,13 +1109,6 @@
       ],
       "long": []
     },
-    "lesson:budget-percent-share": {
-      "terms": [
-        "hundredth",
-        "percent"
-      ],
-      "long": []
-    },
     "lesson:buy-enough-compare-the-bills": {
       "terms": [
         "discount",
@@ -1154,8 +1140,6 @@
         "conditional-relative-frequency",
         "joint-relative-frequency",
         "marginal-relative-frequency",
-        "percent",
-        "reflection",
         "variable"
       ],
       "long": []
@@ -1170,12 +1154,9 @@
     "lesson:causal-claims": {
       "terms": [
         "association",
-        "causal-inference",
         "causation",
         "correlation-coefficient",
         "observational-study",
-        "outcome",
-        "pattern",
         "percent",
         "random-assignment",
         "variable"
@@ -1184,8 +1165,10 @@
     },
     "lesson:cavalieri-volume-reasoning": {
       "terms": [
+        "area",
         "base-area",
         "height",
+        "oblique",
         "parallel",
         "prism",
         "pyramid",
@@ -1210,7 +1193,8 @@
     "lesson:choose-the-plot": {
       "terms": [
         "box-plot",
-        "histogram"
+        "histogram",
+        "median"
       ],
       "long": []
     },
@@ -1244,6 +1228,7 @@
     },
     "lesson:circle-dilation-scaling": {
       "terms": [
+        "composition",
         "diameter",
         "dilation",
         "radius",
@@ -1266,10 +1251,8 @@
     },
     "lesson:circle-graph-read": {
       "terms": [
-        "central-angle",
         "circle-graph",
-        "percent",
-        "sector"
+        "percent"
       ],
       "long": []
     },
@@ -1364,11 +1347,7 @@
     "lesson:compare-distributions": {
       "terms": [
         "box-plot",
-        "interquartile-range",
-        "mean-absolute-deviation",
-        "proof",
-        "quartile",
-        "ratio"
+        "quartile"
       ],
       "long": []
     },
@@ -1458,14 +1437,18 @@
     "lesson:compass-straightedge-reasoning": {
       "terms": [
         "arc",
+        "bisect",
         "compass",
         "equidistant",
+        "midpoint",
         "parallel",
         "perpendicular",
         "perpendicular-bisector",
         "radius",
+        "ray",
         "right-angle",
         "segment",
+        "straightedge",
         "transversal"
       ],
       "long": []
@@ -1769,18 +1752,15 @@
     },
     "lesson:conditional-and-multiplication-rule": {
       "terms": [
-        "conditional-probability",
-        "denominator",
-        "numerator",
         "outcome",
-        "probability",
-        "sample-space"
+        "probability"
       ],
       "long": []
     },
     "lesson:conditional-everyday-reasoning": {
       "terms": [
-        "independent-events"
+        "independent-events",
+        "rate"
       ],
       "long": []
     },
@@ -1960,9 +1940,13 @@
       "terms": [
         "coordinate",
         "dot-product",
+        "parallelogram",
         "perpendicular",
         "proof",
-        "right-angle"
+        "quadrilateral",
+        "rhombus",
+        "right-angle",
+        "vector"
       ],
       "long": []
     },
@@ -1984,10 +1968,7 @@
     },
     "lesson:count-relation-chain": {
       "terms": [
-        "solution",
-        "substitute",
-        "times-as-many",
-        "variable"
+        "times-as-many"
       ],
       "long": []
     },
@@ -2025,8 +2006,7 @@
     "lesson:counting-principle": {
       "terms": [
         "at-least",
-        "equal-groups",
-        "multiplication"
+        "equal-groups"
       ],
       "long": []
     },
@@ -2041,16 +2021,13 @@
       "terms": [
         "credit-card",
         "decimal",
-        "interest",
-        "round",
-        "sequence"
+        "round"
       ],
       "long": []
     },
     "lesson:credit-cost-concepts": {
       "terms": [
         "debit-card",
-        "interest",
         "minimum",
         "round"
       ],
@@ -2216,8 +2193,6 @@
     "lesson:decimal-rename-chain": {
       "terms": [
         "decimal",
-        "denominator",
-        "expression",
         "multiplication",
         "order-of-operations"
       ],
@@ -2267,9 +2242,12 @@
     },
     "lesson:density-context": {
       "terms": [
+        "area",
         "gram",
         "kilogram",
-        "perimeter"
+        "mass",
+        "perimeter",
+        "volume"
       ],
       "long": []
     },
@@ -2382,10 +2360,7 @@
       "terms": [
         "at-least",
         "box-plot",
-        "histogram",
-        "maximum",
-        "median",
-        "minimum"
+        "median"
       ],
       "long": []
     },
@@ -2405,16 +2380,6 @@
         "multiplication",
         "quotient",
         "remainder"
-      ],
-      "long": []
-    },
-    "lesson:dividing-fractions": {
-      "terms": [
-        "denominator",
-        "dividend",
-        "divisor",
-        "quotient",
-        "reciprocal"
       ],
       "long": []
     },
@@ -2486,13 +2451,7 @@
     "lesson:double-number-line-missing": {
       "terms": [
         "constant",
-        "corresponding",
-        "double-number-line",
-        "equivalent",
-        "quotient",
-        "ratio",
-        "speed",
-        "unit-rate"
+        "speed"
       ],
       "long": []
     },
@@ -2588,7 +2547,6 @@
     },
     "lesson:equally-likely-probability": {
       "terms": [
-        "denominator",
         "equally-likely"
       ],
       "long": []
@@ -2698,10 +2656,6 @@
     },
     "lesson:equivalent-ratios": {
       "terms": [
-        "constant",
-        "equivalent-ratios",
-        "proportion",
-        "quotient",
         "ratio"
       ],
       "long": []
@@ -2757,8 +2711,6 @@
     },
     "lesson:events-and-addition-rule": {
       "terms": [
-        "mutually-exclusive",
-        "outcome",
         "probability",
         "union"
       ],
@@ -2788,9 +2740,7 @@
     },
     "lesson:expected-count-blanks": {
       "terms": [
-        "equally-likely",
-        "expected-count",
-        "probability"
+        "equally-likely"
       ],
       "long": []
     },
@@ -2977,13 +2927,7 @@
     "lesson:fee-chain": {
       "terms": [
         "at-most",
-        "equivalent",
-        "inequality",
-        "intercept",
-        "rate",
-        "slope",
-        "solution-set",
-        "whole-number"
+        "inequality"
       ],
       "long": []
     },
@@ -3125,11 +3069,7 @@
     },
     "lesson:fraction-unit-rate": {
       "terms": [
-        "denominator",
-        "divisor",
-        "equivalent",
         "multiplication",
-        "numerator",
         "whole-number"
       ],
       "long": []
@@ -3211,15 +3151,9 @@
     },
     "lesson:function-input-output": {
       "terms": [
-        "domain",
-        "function",
         "function-notation",
-        "input",
         "multiplication",
-        "output",
-        "parentheses",
-        "quadratic",
-        "variable"
+        "parentheses"
       ],
       "long": []
     },
@@ -3281,8 +3215,11 @@
     },
     "lesson:geometric-design-constraint": {
       "terms": [
+        "area",
         "height",
         "parallel",
+        "perimeter",
+        "surface-area",
         "volume"
       ],
       "long": []
@@ -3290,12 +3227,17 @@
     "lesson:geometric-model-choice": {
       "terms": [
         "area",
+        "circumference",
         "height",
         "lateral-area",
         "perimeter",
+        "radius",
+        "surface-area",
         "volume"
       ],
-      "long": []
+      "long": [
+        "You need the names of the basic solids:"
+      ]
     },
     "lesson:geometric-rule-forms": {
       "terms": [
@@ -3661,13 +3603,9 @@
     "lesson:independent-events-probability": {
       "terms": [
         "at-least",
-        "common-factor",
-        "denominator",
         "equally-likely",
         "independent-events",
         "mutually-exclusive",
-        "numerator",
-        "probability",
         "without-replacement"
       ],
       "long": []
@@ -3754,11 +3692,15 @@
     },
     "lesson:inscribed-polygon-reasoning": {
       "terms": [
+        "base-angle",
+        "central-angle",
         "compass",
         "diameter",
         "equilateral",
         "inscribed-polygon",
-        "radius"
+        "perpendicular",
+        "radius",
+        "regular-polygon"
       ],
       "long": []
     },
@@ -3783,13 +3725,7 @@
     "lesson:interest-compare-years": {
       "terms": [
         "compound-interest",
-        "constant",
         "decimal",
-        "deposit",
-        "exponential-function",
-        "interest",
-        "linear-function",
-        "principal",
         "round",
         "simple-interest"
       ],
@@ -3797,8 +3733,6 @@
     },
     "lesson:interest-table-type": {
       "terms": [
-        "compound-interest",
-        "constant",
         "principal",
         "rate",
         "round",
@@ -3822,9 +3756,7 @@
         "denominator",
         "division",
         "maximum",
-        "midpoint",
         "minimum",
-        "negative-number",
         "numerator",
         "tenth"
       ],
@@ -3922,18 +3854,26 @@
     },
     "lesson:likelihood-words-lesson": {
       "terms": [
-        "equally-likely",
-        "outcome"
+        "equally-likely"
       ],
       "long": []
     },
     "lesson:line-angle-proof-reasons": {
       "terms": [
+        "adjacent-angles",
+        "alternate-interior-angles",
         "bisect",
+        "converse",
         "equidistant",
         "expression",
+        "midpoint",
+        "parallel",
         "perpendicular-bisector",
-        "proof"
+        "proof",
+        "right-angle",
+        "supplementary",
+        "theorem",
+        "vertical-angles"
       ],
       "long": []
     },
@@ -4145,25 +4085,13 @@
     "lesson:loan-compare-options": {
       "terms": [
         "interest",
-        "loan",
-        "principal",
         "rate"
-      ],
-      "long": []
-    },
-    "lesson:loan-offer-compare-blanks": {
-      "terms": [
-        "principal",
-        "rate",
-        "simple-interest"
       ],
       "long": []
     },
     "lesson:loan-total-cost": {
       "terms": [
-        "loan",
-        "rate",
-        "rate-of-change"
+        "rate"
       ],
       "long": []
     },
@@ -4400,12 +4328,6 @@
       ],
       "long": []
     },
-    "lesson:mean-median-blanks": {
-      "terms": [
-        "median"
-      ],
-      "long": []
-    },
     "lesson:measurable-attribute-choice": {
       "terms": [
         "capacity",
@@ -4417,7 +4339,6 @@
     "lesson:measure-meaning-lesson": {
       "terms": [
         "maximum",
-        "median",
         "minimum"
       ],
       "long": []
@@ -4444,8 +4365,13 @@
       "terms": [
         "apex",
         "area",
+        "base-area",
         "height",
-        "proof"
+        "prism",
+        "proof",
+        "radius",
+        "sector",
+        "volume"
       ],
       "long": []
     },
@@ -4464,17 +4390,9 @@
         "decimal",
         "denominator",
         "division",
-        "negative-number",
         "numerator",
         "round",
         "tenth"
-      ],
-      "long": []
-    },
-    "lesson:median-mode-compare-blanks": {
-      "terms": [
-        "function",
-        "median"
       ],
       "long": []
     },
@@ -4998,8 +4916,10 @@
     "lesson:parallelogram-property-consequences": {
       "terms": [
         "bisect",
+        "parallel",
         "right-angle",
-        "segment"
+        "segment",
+        "supplementary"
       ],
       "long": []
     },
@@ -5072,19 +4992,10 @@
     "lesson:payroll-property-tax": {
       "terms": [
         "hundredth",
-        "net-pay",
-        "percent",
         "property-tax",
         "rate",
         "sales-tax",
         "tax"
-      ],
-      "long": []
-    },
-    "lesson:percent-amounts-blanks": {
-      "terms": [
-        "percent",
-        "proportional-relationship"
       ],
       "long": []
     },
@@ -5101,24 +5012,11 @@
       ],
       "long": []
     },
-    "lesson:percent-chain": {
-      "terms": [
-        "round"
-      ],
-      "long": []
-    },
     "lesson:percent-change-final": {
       "terms": [
         "decimal",
-        "denominator",
-        "division",
         "liter",
-        "multiplication",
-        "numerator",
-        "percent",
         "percent-change",
-        "rate",
-        "ratio",
         "tax",
         "whole-number"
       ],
@@ -5127,17 +5025,10 @@
     "lesson:percent-change-original": {
       "terms": [
         "decimal",
-        "denominator",
-        "division",
         "liter",
-        "multiplication",
         "multiplier",
-        "numerator",
         "percent",
-        "rate",
-        "ratio",
         "round",
-        "segment",
         "strip-diagram",
         "whole-number"
       ],
@@ -5145,18 +5036,9 @@
     },
     "lesson:percent-change-rate": {
       "terms": [
-        "corresponding",
         "decimal",
-        "denominator",
-        "division",
         "hundredth",
         "liter",
-        "magnitude",
-        "multiplication",
-        "numerator",
-        "percent",
-        "percent-change",
-        "ratio",
         "round",
         "whole-number"
       ],
@@ -5165,13 +5047,6 @@
     "lesson:percent-grids-conversions": {
       "terms": [
         "decimal"
-      ],
-      "long": []
-    },
-    "lesson:percent-quantity": {
-      "terms": [
-        "multiplier",
-        "percent"
       ],
       "long": []
     },
@@ -5321,6 +5196,11 @@
     },
     "lesson:polygon-symmetry-counts": {
       "terms": [
+        "horizontal-line",
+        "interior-angle",
+        "reflection",
+        "regular-polygon",
+        "rotation",
         "symmetry"
       ],
       "long": []
@@ -5510,6 +5390,7 @@
       "terms": [
         "at-most",
         "parallel",
+        "segment",
         "skew-lines"
       ],
       "long": []
@@ -5543,14 +5424,6 @@
         "prism",
         "unit-cube",
         "volume"
-      ],
-      "long": []
-    },
-    "lesson:probability-line-lesson": {
-      "terms": [
-        "equally-likely",
-        "numerator",
-        "outcome"
       ],
       "long": []
     },
@@ -5900,11 +5773,6 @@
     "lesson:range-data": {
       "terms": [
         "decimal",
-        "division",
-        "height",
-        "maximum",
-        "minimum",
-        "negative-number",
         "pattern",
         "tenth"
       ],
@@ -5922,23 +5790,11 @@
       ],
       "long": []
     },
-    "lesson:ratio-pair-blanks": {
-      "terms": [
-        "ratio"
-      ],
-      "long": []
-    },
     "lesson:ratio-table-missing": {
       "terms": [
-        "constant",
-        "corresponding",
         "equivalent",
         "equivalent-ratios",
-        "greatest-common-factor",
-        "multiplier",
-        "quotient",
         "ratio",
-        "scale-factor",
         "simplest-ratio"
       ],
       "long": []
@@ -6212,9 +6068,7 @@
     "lesson:regents-abs-equals-linear": {
       "terms": [
         "absolute-value",
-        "expression",
-        "solution",
-        "substitute"
+        "expression"
       ],
       "long": []
     },
@@ -6238,11 +6092,8 @@
     },
     "lesson:regents-average-rate-table": {
       "terms": [
-        "average-rate-of-change",
-        "denominator",
         "function",
         "input",
-        "numerator",
         "output",
         "rate"
       ],
@@ -6263,7 +6114,6 @@
     },
     "lesson:regents-budget-whole-items": {
       "terms": [
-        "quotient",
         "round",
         "whole-number"
       ],
@@ -6319,11 +6169,7 @@
     },
     "lesson:regents-correlation-causation": {
       "terms": [
-        "causation",
-        "correlation-coefficient",
-        "experiment",
-        "lurking-variable",
-        "scatterplot"
+        "experiment"
       ],
       "long": []
     },
@@ -6382,16 +6228,8 @@
     },
     "lesson:regents-exponential-models": {
       "terms": [
-        "common-ratio",
-        "constant",
         "decimal",
-        "exponent",
-        "exponential-decay",
         "function",
-        "initial-value",
-        "input",
-        "quotient",
-        "substitute",
         "whole-number"
       ],
       "long": []
@@ -6893,8 +6731,7 @@
     },
     "lesson:regents-quartile-list": {
       "terms": [
-        "interquartile-range",
-        "median"
+        "interquartile-range"
       ],
       "long": []
     },
@@ -7113,18 +6950,10 @@
       ],
       "long": []
     },
-    "lesson:regents-two-way-share": {
-      "terms": [
-        "conditional-relative-frequency",
-        "percent"
-      ],
-      "long": []
-    },
     "lesson:regression-interpretation": {
       "terms": [
         "height",
         "input",
-        "intercept",
         "mass"
       ],
       "long": []
@@ -7217,19 +7046,16 @@
     },
     "lesson:residuals-correlation": {
       "terms": [
-        "association",
         "correlation-coefficient",
         "residual-plot",
-        "speed",
-        "variable"
+        "speed"
       ],
       "long": []
     },
     "lesson:return-claim-check": {
       "terms": [
         "percent",
-        "rate",
-        "rate-of-return"
+        "rate"
       ],
       "long": []
     },
@@ -7444,11 +7270,8 @@
       "terms": [
         "absolute-value",
         "decimal",
-        "equivalent",
         "expression",
-        "mixed-number",
-        "solution",
-        "substitute"
+        "solution"
       ],
       "long": []
     },
@@ -7487,11 +7310,7 @@
     },
     "lesson:sat-entry-inequality-integer": {
       "terms": [
-        "coefficient",
-        "decimal",
-        "equivalent",
         "inequality",
-        "mixed-number",
         "solution"
       ],
       "long": []
@@ -7523,12 +7342,7 @@
     },
     "lesson:sat-entry-quadratic-solution": {
       "terms": [
-        "binomial",
         "decimal",
-        "equivalent",
-        "leading-coefficient",
-        "mixed-number",
-        "quadratic",
         "solution"
       ],
       "long": []
@@ -7558,10 +7372,7 @@
       "terms": [
         "constant",
         "decimal",
-        "equivalent",
-        "mixed-number",
-        "percent",
-        "rate"
+        "percent"
       ],
       "long": []
     },
@@ -7582,39 +7393,22 @@
     "lesson:sat-entry-root-relations": {
       "terms": [
         "coefficient",
-        "constant",
         "decimal",
-        "equivalent",
-        "leading-coefficient",
-        "mixed-number",
-        "quadratic",
-        "solution",
-        "substitute",
-        "symmetry"
+        "quadratic"
       ],
       "long": []
     },
     "lesson:sat-entry-system-expression": {
       "terms": [
-        "coefficient",
         "decimal",
-        "equivalent",
         "expression",
-        "mixed-number",
-        "multiplier",
         "solution"
       ],
       "long": []
     },
     "lesson:sat-entry-system-solve": {
       "terms": [
-        "coefficient",
-        "constant",
-        "decimal",
-        "equivalent",
-        "mixed-number",
-        "numerator",
-        "variable"
+        "decimal"
       ],
       "long": []
     },
@@ -7694,11 +7488,8 @@
       "terms": [
         "at-least",
         "deposit",
-        "initial-value",
         "interest",
-        "linear-function",
         "pattern",
-        "rate",
         "round"
       ],
       "long": []
@@ -7723,26 +7514,14 @@
     },
     "lesson:scale-factor-effects-blanks": {
       "terms": [
-        "arc-length",
-        "area",
-        "determinant",
-        "dilation",
-        "perimeter",
-        "scale-factor",
         "times-as-many"
       ],
-      "long": [
-        "Doubling the sides of a 2 by 3"
-      ]
+      "long": []
     },
     "lesson:scatterplots": {
       "terms": [
-        "input",
-        "line-of-best-fit",
-        "output",
         "pattern",
-        "scatterplot",
-        "slope"
+        "scatterplot"
       ],
       "long": []
     },
@@ -7789,9 +7568,12 @@
         "diameter",
         "height",
         "hypotenuse",
+        "isosceles",
         "leg",
+        "perpendicular",
         "right-triangle",
-        "rotation"
+        "rotation",
+        "volume"
       ],
       "long": []
     },
@@ -7927,12 +7709,6 @@
       ],
       "long": []
     },
-    "lesson:signed-changes-sum": {
-      "terms": [
-        "integer"
-      ],
-      "long": []
-    },
     "lesson:signed-context-order": {
       "terms": [
         "decimal",
@@ -7987,7 +7763,9 @@
     "lesson:similar-solid-scale-chain": {
       "terms": [
         "area",
+        "cube-root",
         "ratio",
+        "square-root",
         "surface-area"
       ],
       "long": []
@@ -8013,9 +7791,11 @@
     },
     "lesson:similarity-by-transformation": {
       "terms": [
+        "biconditional",
         "coordinate",
         "dilation",
         "leg",
+        "origin",
         "reflection",
         "rigid-motion",
         "rotation",
@@ -8026,15 +7806,24 @@
     },
     "lesson:similarity-proof-aa": {
       "terms": [
+        "aa-similarity",
+        "corresponding",
+        "dilation",
         "proof",
         "proportional-relationship",
-        "ratio"
+        "ratio",
+        "reflexive-property",
+        "right-angle",
+        "rigid-motion"
       ],
       "long": []
     },
     "lesson:similarity-theorem-length": {
       "terms": [
+        "acute-angle",
+        "altitude",
         "equivalent-ratios",
+        "hypotenuse",
         "parallel",
         "proof",
         "proportion",
@@ -8048,10 +7837,7 @@
       "terms": [
         "deposit",
         "interest",
-        "loan",
-        "percent",
-        "rate",
-        "slope"
+        "loan"
       ],
       "long": []
     },
@@ -8197,11 +7983,14 @@
     "lesson:solid-volume-context": {
       "terms": [
         "area",
+        "diameter",
         "height",
         "liter",
         "prism",
         "pyramid",
-        "substitute"
+        "radius",
+        "substitute",
+        "volume"
       ],
       "long": []
     },
@@ -8539,8 +8328,7 @@
     "lesson:statistical-questions": {
       "terms": [
         "height",
-        "statistical-question",
-        "variability"
+        "statistical-question"
       ],
       "long": []
     },
@@ -8559,13 +8347,11 @@
     "lesson:statistical-summary-comparison": {
       "terms": [
         "box-plot",
-        "distribution",
         "interquartile-range",
         "maximum",
         "minimum",
         "quartile",
         "skewed-right",
-        "standard-deviation",
         "symmetry"
       ],
       "long": []
@@ -8580,7 +8366,6 @@
     "lesson:stem-leaf-construct": {
       "terms": [
         "decimal-places",
-        "stem-and-leaf-plot",
         "whole-number"
       ],
       "long": []
@@ -8818,6 +8603,7 @@
     },
     "lesson:tangent-circle-computation": {
       "terms": [
+        "hypotenuse",
         "perpendicular",
         "radius",
         "right-triangle",
@@ -8827,13 +8613,7 @@
     },
     "lesson:tax-bracket-owed": {
       "terms": [
-        "deduction",
-        "hundredth",
-        "income-tax",
         "percent",
-        "rate",
-        "slope",
-        "tax",
         "taxable-income"
       ],
       "long": []
@@ -8933,10 +8713,12 @@
         "dilation",
         "ray",
         "reflection",
+        "rigid-motion",
         "rotation",
         "scale-factor",
         "transformation",
-        "translation"
+        "translation",
+        "vector"
       ],
       "long": []
     },
@@ -9015,8 +8797,10 @@
         "incenter",
         "inscribed-angle",
         "inscribed-polygon",
+        "intercept",
         "leg",
         "perpendicular-bisector",
+        "quadrilateral",
         "radius",
         "right-triangle",
         "segment",
@@ -9027,7 +8811,11 @@
     "lesson:triangle-congruence-givens": {
       "terms": [
         "corresponding",
+        "counterexample",
         "included-angle",
+        "inequality",
+        "interior-angle",
+        "orientation",
         "proof",
         "ray",
         "reflection",
@@ -9091,7 +8879,9 @@
         "segment",
         "straight-angle"
       ],
-      "long": []
+      "long": [
+        "These facts let you turn one measurement into"
+      ]
     },
     "lesson:triangle-uniqueness": {
       "terms": [
@@ -9223,24 +9013,36 @@
     },
     "lesson:two-column-angle-proof": {
       "terms": [
+        "converse",
         "corresponding",
         "linear-pair",
         "proof",
         "same-side-interior-angles",
+        "substitute",
         "supplementary",
-        "transitive-property"
+        "theorem",
+        "transitive-property",
+        "transversal",
+        "vertical-angles"
       ],
       "long": []
     },
     "lesson:two-column-congruence-proof": {
       "terms": [
         "alternate-interior-angles",
+        "corresponding",
         "cpctc",
+        "midpoint",
         "parallel",
         "proof",
-        "ssa"
+        "rigid-motion",
+        "segment",
+        "ssa",
+        "vertical-angles"
       ],
-      "long": []
+      "long": [
+        "A proof gathers those parts one line at"
+      ]
     },
     "lesson:two-radical-steps": {
       "terms": [
@@ -9311,8 +9113,7 @@
     },
     "lesson:two-way-tables": {
       "terms": [
-        "association",
-        "proportion"
+        "association"
       ],
       "long": []
     },
@@ -9350,10 +9151,6 @@
     "lesson:unit-cost": {
       "terms": [
         "discount",
-        "division",
-        "multiplication",
-        "origin",
-        "proportional-relationship",
         "unit-price"
       ],
       "long": []
@@ -9396,8 +9193,6 @@
     },
     "lesson:unit-rate-pair-blanks": {
       "terms": [
-        "constant",
-        "decimal",
         "proportional-relationship",
         "rate"
       ],
@@ -9422,15 +9217,6 @@
         "length",
         "strip-diagram",
         "unknown"
-      ],
-      "long": []
-    },
-    "lesson:variability": {
-      "terms": [
-        "interquartile-range",
-        "mean-absolute-deviation",
-        "median",
-        "quartile"
       ],
       "long": []
     },
@@ -9519,9 +9305,7 @@
     },
     "lesson:wage-and-cost-blanks": {
       "terms": [
-        "linear-function",
-        "net-pay",
-        "slope"
+        "net-pay"
       ],
       "long": []
     },
@@ -9567,10 +9351,7 @@
       "terms": [
         "absolute-value",
         "expression",
-        "function",
-        "isolate",
-        "solution",
-        "substitute"
+        "solution"
       ],
       "long": []
     },
@@ -9693,7 +9474,6 @@
     },
     "practice:addition-rule-probability": {
       "terms": [
-        "outcome",
         "probability",
         "substitute"
       ],
@@ -9815,10 +9595,16 @@
     },
     "practice:arc-sector-derivation": {
       "terms": [
+        "arc",
         "arc-length",
         "area",
+        "central-angle",
+        "proportion",
         "proportional-relationship",
         "radian",
+        "radius",
+        "ratio",
+        "sector",
         "unit-square"
       ],
       "long": []
@@ -9999,21 +9785,8 @@
     },
     "practice:best-display-choice": {
       "terms": [
-        "distribution",
         "height",
-        "histogram",
-        "line-graph",
-        "scatterplot",
-        "stem-and-leaf-plot",
-        "variable"
-      ],
-      "long": [
-        "Pick the display by asking what the data"
-      ]
-    },
-    "practice:better-buy": {
-      "terms": [
-        "unit-price"
+        "stem-and-leaf-plot"
       ],
       "long": []
     },
@@ -10074,11 +9847,8 @@
     "practice:box-plot-read": {
       "terms": [
         "box-plot",
-        "interquartile-range",
         "maximum",
-        "median",
-        "minimum",
-        "quartile"
+        "minimum"
       ],
       "long": []
     },
@@ -10106,9 +9876,7 @@
     },
     "practice:budget-percent-share": {
       "terms": [
-        "expense",
-        "hundredth",
-        "percent"
+        "expense"
       ],
       "long": []
     },
@@ -10143,15 +9911,13 @@
       "terms": [
         "association",
         "causation",
-        "lurking-variable",
-        "pattern",
-        "random-assignment",
         "variable"
       ],
       "long": []
     },
     "practice:cavalieri-volume-reasoning": {
       "terms": [
+        "cross-section",
         "height",
         "parallel",
         "prism",
@@ -10183,17 +9949,11 @@
       ],
       "long": []
     },
-    "practice:check-register-blanks": {
-      "terms": [
-        "deposit",
-        "withdrawal"
-      ],
-      "long": []
-    },
     "practice:choose-the-plot": {
       "terms": [
         "box-plot",
         "histogram",
+        "maximum",
         "median"
       ],
       "long": []
@@ -10236,6 +9996,7 @@
       "terms": [
         "diameter",
         "dilation",
+        "radius",
         "ratio",
         "scale-factor",
         "translation",
@@ -10264,7 +10025,6 @@
     },
     "practice:circle-graph-read": {
       "terms": [
-        "central-angle",
         "circle-graph",
         "percent"
       ],
@@ -10445,12 +10205,6 @@
       ],
       "long": []
     },
-    "practice:compare-distributions-choice": {
-      "terms": [
-        "median"
-      ],
-      "long": []
-    },
     "practice:compare-fractions": {
       "terms": [
         "numerator"
@@ -10575,6 +10329,7 @@
     "practice:compass-straightedge-reasoning": {
       "terms": [
         "arc",
+        "bisect",
         "compass",
         "equidistant",
         "parallel",
@@ -10893,9 +10648,11 @@
     },
     "practice:conditional-everyday-reasoning": {
       "terms": [
+        "conditional-probability",
         "independent-events",
         "outcome",
-        "percent"
+        "percent",
+        "probability"
       ],
       "long": []
     },
@@ -10903,15 +10660,12 @@
       "terms": [
         "association",
         "joint-relative-frequency",
-        "percent",
-        "proportion",
-        "reflection"
+        "percent"
       ],
       "long": []
     },
     "practice:conditional-probability-value": {
       "terms": [
-        "denominator",
         "outcome",
         "probability",
         "sample-space"
@@ -11109,7 +10863,10 @@
         "component",
         "dot-product",
         "parallel",
+        "parallelogram",
         "perpendicular",
+        "rhombus",
+        "right-angle",
         "trapezoid",
         "vector"
       ],
@@ -11151,9 +10908,7 @@
     },
     "practice:correlation-causation-choice": {
       "terms": [
-        "correlation-coefficient",
         "height",
-        "lurking-variable",
         "proof",
         "variable"
       ],
@@ -11162,7 +10917,6 @@
     "practice:correlation-choice": {
       "terms": [
         "association",
-        "coordinate",
         "correlation-coefficient"
       ],
       "long": []
@@ -11187,13 +10941,6 @@
     "practice:count-on-back": {
       "terms": [
         "count-on"
-      ],
-      "long": []
-    },
-    "practice:count-relation-chain": {
-      "terms": [
-        "substitute",
-        "variable"
       ],
       "long": []
     },
@@ -11225,19 +10972,15 @@
       "terms": [
         "credit-card",
         "decimal",
-        "interest",
         "loan",
-        "percent",
         "round"
       ],
       "long": []
     },
     "practice:credit-cost-concepts": {
       "terms": [
-        "apr",
         "credit-card",
         "interest",
-        "rate",
         "round"
       ],
       "long": []
@@ -11486,10 +11229,8 @@
     },
     "practice:decimal-rename-chain": {
       "terms": [
-        "expression",
         "multiplication",
-        "power-of-10",
-        "whole-number"
+        "power-of-10"
       ],
       "long": []
     },
@@ -11531,6 +11272,8 @@
         "area",
         "gram",
         "kilogram",
+        "kilometer",
+        "mass",
         "perimeter",
         "volume"
       ],
@@ -11761,38 +11504,15 @@
       ],
       "long": []
     },
-    "practice:dot-plot-iqr": {
-      "terms": [
-        "median",
-        "quartile"
-      ],
-      "long": []
-    },
-    "practice:dot-plot-mad": {
-      "terms": [
-        "plus-or-minus"
-      ],
-      "long": []
-    },
-    "practice:dot-plot-mean": {
-      "terms": [
-        "median"
-      ],
-      "long": []
-    },
     "practice:double-box-compare": {
       "terms": [
-        "box-plot",
-        "median"
+        "box-plot"
       ],
       "long": []
     },
     "practice:double-number-line-missing": {
       "terms": [
-        "double-number-line",
-        "equivalent",
-        "ratio",
-        "unit-rate"
+        "ratio"
       ],
       "long": []
     },
@@ -11852,12 +11572,6 @@
       "terms": [
         "area",
         "unit-square"
-      ],
-      "long": []
-    },
-    "practice:equal-chance-choice": {
-      "terms": [
-        "equally-likely"
       ],
       "long": []
     },
@@ -12001,8 +11715,6 @@
     },
     "practice:event-set-count": {
       "terms": [
-        "outcome",
-        "probability",
         "sample-space",
         "union"
       ],
@@ -12042,8 +11754,6 @@
     "practice:expected-count-blanks": {
       "terms": [
         "equally-likely",
-        "independent-events",
-        "outcome",
         "probability"
       ],
       "long": []
@@ -12076,11 +11786,8 @@
     },
     "practice:exponential-decay-table": {
       "terms": [
-        "constant",
-        "exponential-decay",
         "geometric-sequence",
-        "pattern",
-        "ratio"
+        "pattern"
       ],
       "long": []
     },
@@ -12099,14 +11806,10 @@
     },
     "practice:exponential-initial-value": {
       "terms": [
-        "exponent",
         "exponential-decay",
-        "initial-value",
         "input",
         "output",
-        "percent",
-        "rate",
-        "substitute"
+        "rate"
       ],
       "long": []
     },
@@ -12170,9 +11873,7 @@
     },
     "practice:exponential-passes-linear": {
       "terms": [
-        "at-most",
         "decimal-places",
-        "function",
         "input",
         "linear-function"
       ],
@@ -12292,22 +11993,18 @@
       "terms": [
         "at-most",
         "inequality",
-        "rate",
-        "solution",
-        "solution-set"
+        "solution"
       ],
       "long": []
     },
     "practice:fee-plan-chain": {
       "terms": [
-        "elapsed-time",
         "rate"
       ],
       "long": []
     },
     "practice:fee-rule-choice": {
       "terms": [
-        "constant",
         "rate"
       ],
       "long": []
@@ -12688,10 +12385,8 @@
     "practice:fraction-unit-rate": {
       "terms": [
         "denominator",
-        "divisor",
         "numerator",
-        "rate",
-        "reciprocal"
+        "rate"
       ],
       "long": []
     },
@@ -13196,6 +12891,7 @@
     "practice:geometric-design-constraint": {
       "terms": [
         "area",
+        "perimeter",
         "surface-area",
         "volume"
       ],
@@ -13203,7 +12899,12 @@
     },
     "practice:geometric-model-choice": {
       "terms": [
-        "substitute"
+        "area",
+        "lateral-area",
+        "perimeter",
+        "substitute",
+        "surface-area",
+        "volume"
       ],
       "long": []
     },
@@ -13583,11 +13284,7 @@
     },
     "practice:histogram-read": {
       "terms": [
-        "at-least",
-        "box-plot",
-        "height",
-        "histogram",
-        "median"
+        "at-least"
       ],
       "long": []
     },
@@ -13627,8 +13324,7 @@
       "terms": [
         "discount",
         "percent",
-        "rebate",
-        "sequence"
+        "rebate"
       ],
       "long": []
     },
@@ -13656,9 +13352,7 @@
       "terms": [
         "at-least",
         "equally-likely",
-        "independent-events",
-        "outcome",
-        "probability"
+        "independent-events"
       ],
       "long": []
     },
@@ -13764,11 +13458,13 @@
     "practice:inscribed-polygon-reasoning": {
       "terms": [
         "arc",
+        "base-angle",
         "circumference",
         "diameter",
         "equilateral",
         "inscribed-polygon",
-        "perimeter"
+        "perimeter",
+        "perpendicular"
       ],
       "long": []
     },
@@ -13801,11 +13497,8 @@
     "practice:interest-compare-years": {
       "terms": [
         "compound-interest",
-        "constant",
         "decimal",
         "deposit",
-        "interest",
-        "principal",
         "rate",
         "round",
         "simple-interest"
@@ -13815,11 +13508,8 @@
     "practice:interest-table-type": {
       "terms": [
         "compound-interest",
-        "constant",
-        "pattern",
         "percent",
         "principal",
-        "round",
         "simple-interest"
       ],
       "long": []
@@ -13836,8 +13526,7 @@
     },
     "practice:interquartile-range-data": {
       "terms": [
-        "box-plot",
-        "median"
+        "box-plot"
       ],
       "long": []
     },
@@ -13986,10 +13675,16 @@
     },
     "practice:line-angle-proof-reasons": {
       "terms": [
+        "alternate-interior-angles",
+        "biconditional",
         "converse",
         "equidistant",
+        "expression",
+        "midpoint",
+        "parallel",
         "perpendicular-bisector",
-        "proof"
+        "proof",
+        "right-angle"
       ],
       "long": []
     },
@@ -14204,22 +13899,9 @@
       ],
       "long": []
     },
-    "practice:loan-offer-compare-blanks": {
-      "terms": [
-        "percent",
-        "principal",
-        "rate",
-        "simple-interest"
-      ],
-      "long": []
-    },
     "practice:loan-total-cost": {
       "terms": [
-        "finance-charge",
         "interest",
-        "loan",
-        "principal",
-        "rate",
         "simple-interest"
       ],
       "long": []
@@ -14574,18 +14256,6 @@
       ],
       "long": []
     },
-    "practice:mean-missing-value": {
-      "terms": [
-        "median"
-      ],
-      "long": []
-    },
-    "practice:means-in-mads": {
-      "terms": [
-        "box-plot"
-      ],
-      "long": []
-    },
     "practice:measurable-attribute-choice": {
       "terms": [
         "capacity",
@@ -14615,7 +14285,9 @@
         "area",
         "central-angle",
         "height",
-        "proof"
+        "prism",
+        "proof",
+        "volume"
       ],
       "long": []
     },
@@ -14799,7 +14471,6 @@
     },
     "practice:multiplication-rule-probability": {
       "terms": [
-        "outcome",
         "probability"
       ],
       "long": []
@@ -15311,7 +14982,6 @@
     },
     "practice:outlier-center-shift": {
       "terms": [
-        "median",
         "quartile"
       ],
       "long": []
@@ -15521,10 +15191,6 @@
     },
     "practice:payroll-property-tax": {
       "terms": [
-        "gross-pay",
-        "hundredth",
-        "net-pay",
-        "percent",
         "property-tax",
         "rate",
         "tax"
@@ -15545,38 +15211,29 @@
     },
     "practice:percent-chain": {
       "terms": [
-        "percent",
         "percent-change",
-        "rate",
-        "remainder"
+        "rate"
       ],
       "long": []
     },
     "practice:percent-change-final": {
       "terms": [
-        "amount-of-change",
-        "percent"
+        "amount-of-change"
       ],
       "long": []
     },
     "practice:percent-change-original": {
       "terms": [
         "amount-of-change",
-        "division",
         "multiplication",
-        "multiplier",
         "percent"
       ],
       "long": []
     },
     "practice:percent-change-rate": {
       "terms": [
-        "amount-of-change",
-        "denominator",
         "hundredth",
-        "percent",
-        "percent-change",
-        "ratio"
+        "percent-change"
       ],
       "long": []
     },
@@ -15979,6 +15636,7 @@
         "midpoint",
         "parallel",
         "perpendicular",
+        "ray",
         "right-angle"
       ],
       "long": []
@@ -16057,13 +15715,6 @@
         "outcome",
         "ratio",
         "substitute"
-      ],
-      "long": []
-    },
-    "practice:probability-on-number-line": {
-      "terms": [
-        "equally-likely",
-        "outcome"
       ],
       "long": []
     },
@@ -16385,12 +16036,6 @@
       ],
       "long": []
     },
-    "practice:quartile-list": {
-      "terms": [
-        "median"
-      ],
-      "long": []
-    },
     "practice:quotient-of-powers-exponent": {
       "terms": [
         "division",
@@ -16514,13 +16159,6 @@
       ],
       "long": []
     },
-    "practice:range-data": {
-      "terms": [
-        "maximum",
-        "minimum"
-      ],
-      "long": []
-    },
     "practice:rate-combination-model": {
       "terms": [
         "average-speed",
@@ -16550,19 +16188,11 @@
       ],
       "long": []
     },
-    "practice:ratio-pair-blanks": {
-      "terms": [
-        "ratio"
-      ],
-      "long": []
-    },
     "practice:ratio-table-missing": {
       "terms": [
         "equivalent-ratios",
-        "greatest-common-factor",
         "multiplier",
-        "ratio",
-        "simplest-ratio"
+        "ratio"
       ],
       "long": []
     },
@@ -16911,18 +16541,10 @@
       ],
       "long": []
     },
-    "practice:regression-coefficient-meaning": {
-      "terms": [
-        "input",
-        "variable"
-      ],
-      "long": []
-    },
     "practice:regression-line-predict": {
       "terms": [
         "input",
-        "intercept",
-        "substitute"
+        "intercept"
       ],
       "long": []
     },
@@ -16992,12 +16614,6 @@
         "coordinate",
         "input",
         "output"
-      ],
-      "long": []
-    },
-    "practice:relative-frequency-percent": {
-      "terms": [
-        "percent"
       ],
       "long": []
     },
@@ -17093,12 +16709,6 @@
         "residual",
         "residual-plot",
         "variable"
-      ],
-      "long": []
-    },
-    "practice:residual-value": {
-      "terms": [
-        "substitute"
       ],
       "long": []
     },
@@ -17442,11 +17052,8 @@
       "terms": [
         "absolute-value",
         "decimal",
-        "equivalent",
-        "mixed-number",
         "real-number",
-        "solution",
-        "substitute"
+        "solution"
       ],
       "long": []
     },
@@ -17489,12 +17096,7 @@
     },
     "practice:sat-entry-inequality-integer": {
       "terms": [
-        "decimal",
-        "equivalent",
         "inequality",
-        "mixed-number",
-        "negative-number",
-        "reverse-inequality-sign",
         "solution"
       ],
       "long": []
@@ -17531,9 +17133,7 @@
       "terms": [
         "binomial",
         "decimal",
-        "equivalent",
         "inequality",
-        "mixed-number",
         "quadratic",
         "solution",
         "trinomial",
@@ -17567,12 +17167,8 @@
     },
     "practice:sat-entry-rate-numeric": {
       "terms": [
-        "concentration",
-        "constant",
         "decimal",
-        "equivalent",
         "liter",
-        "mixed-number",
         "percent",
         "rate",
         "volume"
@@ -17598,35 +17194,22 @@
     "practice:sat-entry-root-relations": {
       "terms": [
         "coefficient",
-        "constant",
         "decimal",
-        "equivalent",
-        "leading-coefficient",
-        "mixed-number",
         "quadratic",
-        "solution",
         "variable"
       ],
       "long": []
     },
     "practice:sat-entry-system-expression": {
       "terms": [
-        "coefficient",
         "decimal",
-        "equivalent",
-        "expression",
-        "mixed-number",
-        "multiplier"
+        "expression"
       ],
       "long": []
     },
     "practice:sat-entry-system-solve": {
       "terms": [
-        "constant",
-        "equivalent-equations",
-        "solution",
-        "substitute",
-        "variable"
+        "solution"
       ],
       "long": []
     },
@@ -17658,10 +17241,7 @@
     "practice:savings-plan-growth": {
       "terms": [
         "deposit",
-        "initial-value",
-        "linear-function",
-        "round",
-        "slope"
+        "round"
       ],
       "long": []
     },
@@ -17683,14 +17263,10 @@
     },
     "practice:scale-factor-effects-blanks": {
       "terms": [
-        "dilation",
-        "scale-factor",
         "times-as-many",
         "transformation"
       ],
-      "long": [
-        "Doubling the sides of a 2 by 3"
-      ]
+      "long": []
     },
     "practice:scaled-bar-graph": {
       "terms": [
@@ -17709,12 +17285,7 @@
     "practice:scatter-association-choice": {
       "terms": [
         "height",
-        "input",
-        "line-of-best-fit",
-        "output",
-        "pattern",
-        "scatterplot",
-        "slope"
+        "scatterplot"
       ],
       "long": []
     },
@@ -17772,10 +17343,16 @@
     },
     "practice:section-revolution-solid": {
       "terms": [
+        "cross-section",
         "diameter",
         "hypotenuse",
+        "leg",
         "parallel",
+        "perpendicular",
         "radius",
+        "right-triangle",
+        "rotation",
+        "segment",
         "volume"
       ],
       "long": []
@@ -17925,12 +17502,6 @@
       ],
       "long": []
     },
-    "practice:signed-changes-sum": {
-      "terms": [
-        "integer"
-      ],
-      "long": []
-    },
     "practice:signed-context-order": {
       "terms": [
         "absolute-value",
@@ -17969,8 +17540,11 @@
     },
     "practice:similar-solid-scale-chain": {
       "terms": [
+        "corresponding",
         "cube-root",
-        "square-root"
+        "ratio",
+        "square-root",
+        "surface-area"
       ],
       "long": []
     },
@@ -18016,13 +17590,16 @@
     },
     "practice:similarity-by-transformation": {
       "terms": [
+        "common-ratio",
         "coordinate",
         "dilation",
         "leg",
+        "origin",
         "reflection",
         "rigid-motion",
         "rotation",
         "scale-factor",
+        "sequence",
         "transformation",
         "translation"
       ],
@@ -18030,13 +17607,15 @@
     },
     "practice:similarity-proof-aa": {
       "terms": [
+        "aa-similarity",
         "corresponding",
         "perpendicular",
         "proof",
         "proportion",
         "proportional-relationship",
         "ratio",
-        "reflexive-property"
+        "reflexive-property",
+        "right-angle"
       ],
       "long": []
     },
@@ -18044,12 +17623,14 @@
       "terms": [
         "altitude",
         "area",
+        "hypotenuse",
         "leg",
         "parallel",
         "perpendicular",
         "proportion",
         "ratio",
         "right-angle",
+        "right-triangle",
         "segment"
       ],
       "long": []
@@ -18057,11 +17638,7 @@
     "practice:simple-interest-blanks": {
       "terms": [
         "decimal",
-        "deposit",
-        "interest",
-        "loan",
-        "percent",
-        "simple-interest"
+        "interest"
       ],
       "long": []
     },
@@ -18139,7 +17716,6 @@
       "terms": [
         "box-plot",
         "interquartile-range",
-        "median",
         "quartile",
         "skewed-right",
         "standard-deviation",
@@ -18217,10 +17793,12 @@
     },
     "practice:solid-volume-context": {
       "terms": [
+        "diameter",
         "height",
         "liter",
         "pyramid",
         "radius",
+        "ratio",
         "segment",
         "substitute"
       ],
@@ -18629,18 +18207,10 @@
       ],
       "long": []
     },
-    "practice:statistical-question-choice": {
-      "terms": [
-        "statistical-question"
-      ],
-      "long": []
-    },
     "practice:stem-leaf-construct": {
       "terms": [
         "decimal-places",
-        "stem-and-leaf-plot",
-        "tenth",
-        "whole-number"
+        "stem-and-leaf-plot"
       ],
       "long": []
     },
@@ -18765,10 +18335,7 @@
     "practice:study-design-choice": {
       "terms": [
         "association",
-        "causal-inference",
         "causation",
-        "outcome",
-        "pattern",
         "percent",
         "random-assignment"
       ],
@@ -18972,6 +18539,7 @@
     "practice:tangent-circle-computation": {
       "terms": [
         "expression",
+        "leg",
         "perpendicular",
         "right-angle",
         "right-triangle"
@@ -18997,14 +18565,7 @@
     },
     "practice:tax-bracket-owed": {
       "terms": [
-        "deduction",
-        "function",
-        "hundredth",
-        "percent",
-        "rate",
-        "slope",
-        "tax",
-        "taxable-income"
+        "percent"
       ],
       "long": []
     },
@@ -19152,6 +18713,7 @@
     },
     "practice:transformation-invariant-claims": {
       "terms": [
+        "coordinate",
         "dilation",
         "reflection",
         "rotation",
@@ -19179,6 +18741,7 @@
         "function",
         "origin",
         "reflection",
+        "rigid-motion",
         "rotation",
         "sequence",
         "transformation",
@@ -19189,23 +18752,13 @@
     },
     "practice:trend-line-predict": {
       "terms": [
-        "input",
-        "line-of-best-fit",
-        "output",
-        "pattern",
-        "scatterplot",
-        "slope"
+        "scatterplot"
       ],
       "long": []
     },
     "practice:trend-slope-meaning": {
       "terms": [
-        "input",
-        "line-of-best-fit",
-        "output",
-        "pattern",
-        "scatterplot",
-        "slope"
+        "scatterplot"
       ],
       "long": []
     },
@@ -19228,12 +18781,16 @@
     },
     "practice:triangle-circle-centers": {
       "terms": [
+        "altitude",
         "bisect",
         "circumcenter",
+        "hypotenuse",
         "incenter",
         "inscribed-polygon",
         "median",
-        "perpendicular-bisector"
+        "perpendicular-bisector",
+        "quadrilateral",
+        "segment"
       ],
       "long": []
     },
@@ -19291,9 +18848,12 @@
         "parallel",
         "ratio",
         "segment",
-        "substitute"
+        "substitute",
+        "theorem"
       ],
-      "long": []
+      "long": [
+        "These facts let you turn one measurement into"
+      ]
     },
     "practice:triangle-third-side": {
       "terms": [
@@ -19444,18 +19004,27 @@
         "proof",
         "ray",
         "substitute",
-        "supplementary"
+        "supplementary",
+        "transitive-property",
+        "transversal"
       ],
       "long": []
     },
     "practice:two-column-congruence-proof": {
       "terms": [
+        "alternate-interior-angles",
         "corresponding",
+        "midpoint",
+        "parallel",
         "pattern",
         "proof",
-        "segment"
+        "segment",
+        "theorem",
+        "vertical-angles"
       ],
-      "long": []
+      "long": [
+        "A proof gathers those parts one line at"
+      ]
     },
     "practice:two-digit-symbol": {
       "terms": [
@@ -19510,21 +19079,9 @@
       ],
       "long": []
     },
-    "practice:two-way-association-choice": {
-      "terms": [
-        "proportion"
-      ],
-      "long": []
-    },
     "practice:two-way-share": {
       "terms": [
         "conditional-relative-frequency"
-      ],
-      "long": []
-    },
-    "practice:typical-value-choice": {
-      "terms": [
-        "quartile"
       ],
       "long": []
     },
@@ -19612,8 +19169,7 @@
     },
     "practice:unit-rate-pair-blanks": {
       "terms": [
-        "rate",
-        "unit-rate"
+        "rate"
       ],
       "long": []
     },

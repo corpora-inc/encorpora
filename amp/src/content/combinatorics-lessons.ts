@@ -5,8 +5,9 @@ const stages: Lesson["sections"][number] = {
   stage: "intuition",
   title: "Stages, options and outcomes",
   paragraphs: [
-    "This lesson uses whole-number multiplication. A counting problem describes a process made of stages. At each stage you make one choice from a list of options. An outcome is one complete result of the whole process: one choice at every stage. Two outcomes are different when at least one stage has a different choice.",
-    "For an outfit made of one shirt and one pair of pants, the stages are “choose a shirt” and “choose pants”. Shirt A with pants 1 is one outcome; shirt A with pants 2 is another. Counting outcomes means counting complete results, not counting the items on the lists.",
+    "This lesson uses multiplying, such as $3 \\times 2 = 6$. Picture getting dressed. First you choose a shirt, then you choose pants. Each of these choices is called a stage. The things you can pick from at a stage are its options.",
+    "An outcome is one complete result: one choice at every stage. Shirt $A$ with pants 1 is one outfit. Shirt $A$ with pants 2 is a different outfit. Two outcomes are different when at least one stage has a different choice.",
+    "Counting outcomes means counting complete outfits, not counting the shirts and pants on the lists.",
   ],
 };
 const probability: Lesson["sections"][number] = {
@@ -16,6 +17,16 @@ const probability: Lesson["sections"][number] = {
     "An experiment is a process with an uncertain result, such as rolling a number cube. Its outcomes are the possible results. Outcomes are equally likely when none is favored: each face of a fair cube has the same chance. An event is a set of outcomes, such as “an even number”, which contains 2, 4 and 6.",
     "When the outcomes are equally likely, the probability of an event is the number of outcomes in the event divided by the number of all outcomes. For an even number on a cube, that is 3/6 = 1/2. A probability is between 0 and 1: 0 means the event cannot happen and 1 means it must. Reduce the fraction by dividing its numerator and denominator by a common factor; the value does not change.",
     "The complement of an event is the set of outcomes not in it. Every outcome is in exactly one of the two, so their probabilities add to 1. The probability that an event does not happen is 1 minus its probability: for “not even” on a cube, 1 − 1/2 = 1/2.",
+  ],
+};
+const probabilityBasics: Lesson["sections"][number] = {
+  stage: "intuition",
+  title: "Probability from equally likely outcomes",
+  paragraphs: [
+    "An experiment is an action whose result you cannot know ahead of time, such as rolling a number cube. A number cube is a die with 6 faces numbered 1 to 6. Each possible result is called an outcome.",
+    "Outcomes are equally likely when each has the same chance. Each face of a fair cube is equally likely. An event is a group of outcomes you ask about, such as “an even number”: 2, 4 or 6.",
+    "When the outcomes are equally likely, the probability of an event is the number of outcomes in it divided by the number of all outcomes. For an even number on a cube, that is $\\frac{3}{6} = \\frac{1}{2}$. A probability is between 0 and 1. A probability of 0 means the event cannot happen, and 1 means it must.",
+    "For an event, the complement is every outcome not in it. For “even”, the complement is “odd”: 1, 3 or 5. Every outcome is in exactly one of the two, so their probabilities add to 1. So the probability that an event does not happen is 1 minus its probability: $1 - \\frac{1}{2} = \\frac{1}{2}$.",
   ],
 };
 const groups: Lesson["sections"][number] = {
@@ -31,29 +42,38 @@ export const combinatoricsLessons: Lesson[] = [
     id: "counting-principle",
     title: "Count choices by multiplying",
     summary:
-      "When every option at one stage combines with every option at the others, multiply the numbers of options.",
+      "Picture choosing an outfit: one shirt from 3, then one pair of pants from 2. Each choice is a stage, and the things you can pick are its options. Every shirt can go with every pair of pants, so there are 3 groups of 2 outfits: $3 \\times 2 = 6$. When every option at one stage goes with every option at the others, multiply the numbers of options.",
     templateIds: ["counting-principle"],
     includeGeneratedRepresentation: false,
+    senses: {
+      product: "product-multiply",
+      factor: "factor-number",
+      factors: "factor-number",
+      whole: "whole",
+    },
+    noLink: ["third"],
     objectives: [
       "Explain why the numbers of options at separate stages multiply.",
-      "Count the outcomes of two to four stages, including codes in which symbols may repeat.",
+      "Count the outcomes of two to four stages, including codes where symbols may repeat.",
     ],
     sections: [
       stages,
       {
         title: "Why the counts multiply",
         paragraphs: [
-          "A tree diagram draws one branch for each option at each stage. In the figure, 3 branches lead to shirts $A$, $B$ and $C$. From each shirt, 2 branches lead to pants 1 and 2. Every path from the start to the right end is one outfit, and every outfit has exactly one path.",
-          "Each shirt carries the same 2 pants branches, so the paths form 3 equal groups of 2. Equal groups are counted by multiplication: 3 × 2 = 6 outfits. Adding a third stage, such as 4 hats, gives each of the 6 paths 4 new branches: 6 × 4 = 24.",
-          "This is the multiplication principle. If a process has stages, and the number of options at each stage does not depend on what was chosen earlier, the number of outcomes is the product of the numbers of options. The order in which you multiply does not matter: 3 × 2 × 4 = 2 × 4 × 3.",
+          "A tree diagram draws one branch for each option at each stage. In the figure, 3 branches lead to shirts $A$, $B$ and $C$. From each shirt, 2 branches lead to pants 1 and 2. Each path from the start to the right end is one outfit, and each outfit has exactly one path.",
+          "Each shirt has the same 2 pants branches. So the paths form 3 equal groups of 2, and equal groups are counted by multiplying: $3 \\times 2 = 6$ outfits.",
+          "Add a third stage, such as 4 hats. Each of the 6 paths gets 4 new branches: $6 \\times 4 = 24$ outfits.",
+          "This is called the multiplication principle. Suppose a process has stages, and the number of options at each stage does not depend on earlier choices. Then the number of outcomes is the product of the numbers of options. The product is the answer when you multiply. The order you multiply in does not matter: $3 \\times 2 \\times 4 = 2 \\times 4 \\times 3$.",
         ],
         illustration: "counting-tree",
       },
       {
         title: "Repeated symbols and when not to multiply",
         paragraphs: [
-          "A code is a sequence of positions, each filled with a symbol. When symbols may repeat, every position has the full set of options. A 3-position code using the digits 0 through 9 has 10 × 10 × 10 = 1000 possibilities, from 000 to 999. Use one factor for each position.",
-          "Multiply only when one choice is made at every stage. If you choose one item from a single combined list, such as one sandwich or one soup from 4 sandwiches and 3 soups, there is one stage: add the lists, giving 4 + 3 = 7 options. If an earlier choice removes options from a later stage, multiply the numbers actually available; that case is called an arrangement without repetition.",
+          "A code is a row of positions, each filled with a symbol such as a digit. When symbols may repeat, every position has all the options. A 3-digit code using the digits 0 to 9 has $10 \\times 10 \\times 10 = 1000$ possible codes, from 000 to 999. Each number you multiply, here each 10, is called a factor. Use one factor for each position.",
+          "Multiply only when one choice is made at every stage. Sometimes you choose just one item from one combined list, such as one sandwich or one soup from 4 sandwiches and 3 soups. That is a single stage, so add: $4 + 3 = 7$ options.",
+          "If an earlier choice always removes the same number of options from a later stage, multiply the numbers that are actually left.",
         ],
       },
     ],
@@ -61,10 +81,10 @@ export const combinatoricsLessons: Lesson[] = [
       prompt:
         "A café's lunch special has one sandwich, one soup and one drink. There are 4 sandwiches, 3 soups and 2 drinks to choose from. How many different lunch specials are possible?",
       steps: [
-        "There are three stages: choose a sandwich, choose a soup and choose a drink. Each special makes one choice at every stage.",
-        "Each of the 4 sandwiches can go with any of the 3 soups: 4 × 3 = 12 sandwich-and-soup pairs.",
-        "Each of those 12 pairs can go with any of the 2 drinks: 12 × 2 = 24.",
-        "Changing any one choice gives a different special, and none is counted twice, so there are 4 × 3 × 2 = 24 specials.",
+        "Name the stages. There are three: choose a sandwich, choose a soup and choose a drink. Each special makes one choice at every stage.",
+        "Each of the 4 sandwiches can go with any of the 3 soups. That makes 4 equal groups of 3: $4 \\times 3 = 12$ sandwich-and-soup pairs.",
+        "Each of those 12 pairs can go with either of the 2 drinks: $12 \\times 2 = 24$.",
+        "Changing any one choice gives a different special, and no special is counted twice. So there are $4 \\times 3 \\times 2 = 24$ specials.",
       ],
       answer: "24",
     },
@@ -73,14 +93,14 @@ export const combinatoricsLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "Multiplication principle: if one choice is made at each stage and the number of options at a stage does not depend on earlier choices, the number of outcomes is the product of the numbers of options.",
+          "Multiplication principle: suppose one choice is made at each stage, and the number of options at a stage does not depend on earlier choices. Then the number of outcomes is the product of the numbers of options.",
         ],
       },
     ],
     pitfalls: [
-      "Do not add the numbers of options when one choice is made at every stage: 4 + 3 + 2 counts menu items, not complete specials.",
-      "Use one factor for every stage, including a stage with only 2 options.",
-      "For a code, multiply one factor per position: 3 positions with 10 digits give 10 × 10 × 10, not 3 × 10.",
+      "Do not add the numbers of options when one choice is made at every stage. $4 + 3 + 2$ counts menu items, not complete specials.",
+      "Use one factor for every stage, even a stage with only 2 options.",
+      "For a code, use one factor per position. 3 positions with 10 digits give $10 \\times 10 \\times 10$, not $3 \\times 10$.",
     ],
     parentGuide:
       "Lay out 3 shirts and 2 pairs of pants, or cards naming them. Build every outfit one at a time and count. Then add 2 hats and predict the new total before building it.",
@@ -268,30 +288,47 @@ export const combinatoricsLessons: Lesson[] = [
     id: "independent-events-probability",
     title: "Independent events: both, neither and at least one",
     summary:
-      "Two events are independent when knowing one result does not change the chance of the other. Multiply their chances to find the chance of both. To find at least one, subtract the chance of neither from 1.",
+      "An event is a result you ask about, and its probability is how likely it is, from 0 to 1. Two events are independent when one result does not change the chance of the other, like rolling a die and tossing a coin. To find the chance that both happen, multiply their chances. To find the chance that at least one happens, find the chance that neither happens and subtract it from 1.",
     templateIds: ["independent-events-probability"],
     includeGeneratedRepresentation: false,
+    senses: {
+      event: "event",
+      events: "event",
+      cube: "cube",
+      face: "face-solid",
+      faces: "face-solid",
+      complement: "complement-probability",
+      complements: "complement-probability",
+      product: "product-multiply",
+      change: "change",
+      changes: "change",
+    },
+    noLink: ["mean"],
     objectives: [
       "Find the probability that two independent events both happen, or that neither happens.",
       "Find the probability of at least one event as 1 minus the probability of neither.",
     ],
     sections: [
-      probability,
+      probabilityBasics,
       {
         title: "Independent results multiply",
         paragraphs: [
-          "Two events are independent when knowing whether one happened does not change the probability of the other. A cube roll and a separate spin are independent: the cube cannot affect the spinner. Drawing two marbles without putting the first back is not independent, because the first draw changes what remains.",
-          "Pair every cube result with every spinner result. A cube has 6 results and a 5-section spinner has 5, so there are 6 × 5 = 30 equally likely pairs. In the grid, “even cube result and spinner greater than 3” fills 3 columns of 2 cells: 3 × 2 = 6 pairs. The probability is 6/30, which equals 3/6 × 2/5.",
-          "That is why, for independent events $A$ and $B$, the probability that both happen is the product of their probabilities. Independent is different from mutually exclusive. Mutually exclusive events cannot happen together, like an even and an odd result on one roll. Independent events with positive probabilities can happen together, as the hatched cells show.",
+          "Two events are independent when knowing whether one happened does not change the probability of the other. A cube roll and a separate spin are independent, because the cube cannot affect the spinner.",
+          "Drawing two marbles without putting the first one back is not independent. The first draw changes what is left for the second.",
+          "Pair every cube result with every spinner result. A cube has 6 results and a spinner with 5 equal sections has 5. So there are $6 \\times 5 = 30$ equally likely pairs.",
+          "In the grid, “even cube result and spinner greater than 3” fills 3 columns of 2 cells: $3 \\times 2 = 6$ pairs. The probability is $\\frac{6}{30}$, which equals $\\frac{3}{6} \\times \\frac{2}{5}$.",
+          "That is why, for independent events $A$ and $B$, the probability that both happen is the product of their probabilities. The product is the answer when you multiply.",
+          "Independent is not the same as mutually exclusive. Mutually exclusive events cannot happen together, like an even and an odd result on one roll. Independent events with probabilities above 0 can happen together, as the shaded cells show.",
         ],
         illustration: "independent-grid",
       },
       {
         title: "Neither and at least one",
         paragraphs: [
-          "If $A$ and $B$ are independent, so are their complements. The probability that neither happens is the probability that $A$ fails times the probability that $B$ fails. With 1/2 for an even cube result and 2/5 for a spin above 3, the failures have probabilities 1 − 1/2 = 1/2 and 1 − 2/5 = 3/5, so neither happens with probability 1/2 × 3/5 = 3/10.",
-          "“At least one happens” is the complement of “neither happens”: every pair is in exactly one of the two. So its probability is 1 − 3/10 = 7/10.",
-          "Adding the two probabilities does not work: 1/2 + 2/5 = 9/10 counts the 6 pairs where both happen twice. Subtracting that overlap once gives 9/10 − 1/5 = 7/10, the same answer.",
+          "If $A$ and $B$ are independent, then “not $A$” and “not $B$” are independent too. So the chance that neither happens is the chance $A$ fails times the chance $B$ fails.",
+          "An even cube result has probability $\\frac{1}{2}$, and a spin above 3 has probability $\\frac{2}{5}$. They fail with probabilities $1 - \\frac{1}{2} = \\frac{1}{2}$ and $1 - \\frac{2}{5} = \\frac{3}{5}$. So neither happens with probability $\\frac{1}{2} \\times \\frac{3}{5} = \\frac{3}{10}$.",
+          "“At least one happens” is the complement of “neither happens”: every pair is in exactly one of the two. So its probability is $1 - \\frac{3}{10} = \\frac{7}{10}$.",
+          "Simply adding does not work: $\\frac{1}{2} + \\frac{2}{5} = \\frac{9}{10}$ counts the 6 pairs where both happen twice. Subtracting that overlap once, $\\frac{6}{30} = \\frac{1}{5}$, gives $\\frac{9}{10} - \\frac{1}{5} = \\frac{7}{10}$, the same answer.",
         ],
       },
     ],
@@ -299,10 +336,10 @@ export const combinatoricsLessons: Lesson[] = [
       prompt:
         "A fair number cube with faces numbered 1 through 6 is rolled, and a spinner with 5 equal sections numbered 1 through 5 is spun. The two results are independent. What is the probability that at least one of these happens: the cube shows an even number; the spinner lands on a number greater than 3?",
       steps: [
-        "An even number is 2, 4 or 6, so its probability is 3/6 = 1/2. A spin greater than 3 is 4 or 5, so its probability is 2/5.",
-        "Each event fails with probability 1 − 1/2 = 1/2 and 1 − 2/5 = 3/5.",
-        "The results are independent, so neither happens with probability 1/2 × 3/5 = 3/10.",
-        "At least one happens exactly when it is not true that neither happens: 1 − 3/10 = 7/10.",
+        "Find each event's probability. An even number is 2, 4 or 6, so its probability is $\\frac{3}{6} = \\frac{1}{2}$. A spin greater than 3 is 4 or 5, so its probability is $\\frac{2}{5}$.",
+        "Find the chance each event fails, by subtracting from 1: $1 - \\frac{1}{2} = \\frac{1}{2}$ and $1 - \\frac{2}{5} = \\frac{3}{5}$.",
+        "The results are independent, so multiply the failures to get the chance that neither happens: $\\frac{1}{2} \\times \\frac{3}{5} = \\frac{3}{10}$.",
+        "At least one happens exactly when it is not true that neither happens. So subtract from 1: $1 - \\frac{3}{10} = \\frac{7}{10}$.",
       ],
       answer: "7/10",
     },
@@ -311,17 +348,17 @@ export const combinatoricsLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "For independent events, $P(A \\text{ and } B) = P(A) \\times P(B)$. The complements are independent too, and $P(\\text{at least one}) = 1 - P(\\text{neither})$.",
+          "$P(A)$ means the probability of event $A$. For independent events, $P(A \\text{ and } B) = P(A) \\times P(B)$. Their complements are independent too, and $P(\\text{at least one}) = 1 - P(\\text{neither})$.",
         ],
       },
     ],
     pitfalls: [
-      "Do not add the probabilities for “at least one”; the pairs where both happen would be counted twice.",
-      "Multiply only for independent results; a draw without replacement changes the second probability.",
-      "Independent does not mean mutually exclusive: independent events can happen together.",
+      "Do not just add the probabilities for “at least one”. The pairs where both happen would be counted twice.",
+      "Multiply only for independent results. A draw without replacement changes the second probability.",
+      "Independent does not mean mutually exclusive. Independent events can happen together.",
     ],
     parentGuide:
-      "Roll a cube and toss a coin together 20 times, tallying even-and-heads. Then draw the 12 equally likely pairs and compare the tally with 3/12.",
+      "Roll a cube and toss a coin together 20 times, and tally even-and-heads. Then list the 12 equally likely pairs and compare the share of tries, the tally ÷ 20, with $\\frac{3}{12}$.",
   },
   {
     id: "expected-value",
@@ -392,6 +429,13 @@ export const combinatoricsLessons: Lesson[] = [
 export const combinatoricsMethods: Record<string, ProblemMethod> = {
   "counting-principle": {
     goal: "Count complete outcomes of a process with one choice at each stage.",
+    senses: {
+      factor: "factor-number",
+      factors: "factor-number",
+      product: "product-multiply",
+    },
+    intuition:
+      "A stage is one choice in a process, such as choosing a sandwich. Its options are the things you can pick. An outcome is one complete result, with one choice at every stage. When every option at one stage can go with every option at the others, the outcomes form groups of the same size. So multiply: 8 sandwiches and 5 soups make $8 \\times 5 = 40$ lunches.",
     terms: [
       [
         "outcome",
@@ -402,9 +446,9 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
     method: [
       "List the stages and the number of options at each.",
       "Check that every option at one stage can go with every option at the others.",
-      "Multiply the numbers of options; for a code, use one factor per position.",
+      "Multiply the numbers of options. For a code, use one number per position.",
     ],
-    watch: "Add only when one choice is made from a single combined list.",
+    watch: "Add only when you choose one item from a single combined list.",
   },
   "permutation-count": {
     goal: "Count ways to fill distinct positions without using an item twice.",
@@ -443,13 +487,23 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
   },
   "independent-events-probability": {
     goal: "Find both, neither or at-least-one probabilities for two independent results.",
+    senses: {
+      event: "event",
+      complements: "complement-probability",
+      cube: "cube",
+      change: "change",
+    },
+    noLink: ["tails", "multiple"],
+    intuition:
+      "An event is a result you ask about, such as the coin landing heads up. Its probability is the number of outcomes in it divided by all the equally likely outcomes. Two events are independent when one result does not change the chance of the other. The chance that an event fails is 1 minus its chance. For both, multiply the chances. For neither, multiply the chances of failing. At least one is everything except neither.",
     terms: ["independent-events", "complement-probability"],
     method: [
       "Find each event's probability from its equally likely outcomes.",
-      "For both, multiply the probabilities.",
-      "For neither, multiply the complements; for at least one, subtract neither from 1.",
+      "For both, multiply the two probabilities.",
+      "For neither, multiply the chances of failing. For at least one, subtract the chance of neither from 1.",
     ],
-    watch: "Do not add probabilities for at least one: that counts both twice.",
+    watch:
+      "Do not add the probabilities for at least one. That counts both twice.",
   },
   "expected-value": {
     goal: "Find the long-run average payoff of one play, after any cost.",
@@ -466,7 +520,7 @@ export const combinatoricsMethods: Record<string, ProblemMethod> = {
 
 export const combinatoricsPrinciples: Record<string, string> = {
   "counting-principle":
-    "Multiplication principle: if one choice is made at each stage and the number of options at a stage does not depend on earlier choices, the number of outcomes is the product of the numbers of options.",
+    "Multiplication principle: suppose one choice is made at each stage, and the number of options at a stage does not depend on earlier choices. Then the number of outcomes is the product of the numbers of options.",
   "permutation-count":
     "Arranging $r$ of $n$ different items without repetition gives $n \\times (n - 1) \\times \\cdots \\times (n - r + 1) = n! \\div (n - r)!$ arrangements.",
   "combination-count":
