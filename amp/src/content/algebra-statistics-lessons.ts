@@ -178,7 +178,7 @@ export const algebraStatisticsLessons: Lesson[] = [
         stage: "intuition",
         title: "The slope is a rate",
         paragraphs: [
-          "A scatter plot shows one dot per student: $x$ (the amount across) is hours of practice, and $y$ (the amount up) is test score. A fitted line follows the dots. The usual one is the least-squares line. It is the line that makes the dots' vertical gaps from it as small as possible: the sum of the squared gaps is smallest.",
+          "A scatter plot shows one dot per student: $x$ (the amount across) is hours of practice, and $y$ (the amount up) is test score. A fitted line follows the dots. The usual one is the least-squares line. It is the line that makes the dots' vertical gaps from it as small as possible: the total of the gaps, each multiplied by itself, is smallest.",
           "Software writes the line as $\\hat{y} = mx + b$. The hat on $\\hat{y}$ (read “$y$ hat”) means a predicted value, not a measured one. The number $m$ multiplying $x$ is the slope. The number $b$ added at the end is the $y$-intercept.",
           "For practice and score, the line $\\hat{y} = 4x + 42$ has slope 4. Each extra hour of practice goes with a predicted score 4 points higher. Its units are points per hour: units of $y$ for each unit of $x$.",
           "The slope describes a trend across students. It is not a promise for one student. Real scores scatter above and below the line.",

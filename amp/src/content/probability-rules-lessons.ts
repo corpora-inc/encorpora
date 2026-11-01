@@ -235,7 +235,7 @@ export const probabilityRulesMethods: Record<string, ProblemMethod> = {
     terms: terms.addition,
     method: [
       "Write the addition rule: $P(A \\text{ or } B) = P(A) + P(B) - P(A \\text{ and } B)$.",
-      "Find the probability of the overlap: when outcomes are equally likely, count the outcomes in both and divide by the total, or read it from the givens.",
+      "Find the probability of the overlap: when each outcome has the same chance, count the outcomes in both and divide by the total, or read it from the givens.",
       "Substitute and subtract the overlap once. If the overlap is the unknown, rearrange the rule to find it.",
     ],
     watch:

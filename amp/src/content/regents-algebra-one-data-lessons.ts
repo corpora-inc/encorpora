@@ -460,7 +460,7 @@ export const regentsAlgebraOneDataLessons: Lesson[] = [
         "Ask the learner for a third thing that could explain a pattern between two amounts.",
     }),
     senses: { correlated: "correlation" },
-    noLink: ["factor", "third"],
+    noLink: ["factor", "third", "change"],
   },
   {
     ...chainLesson({
