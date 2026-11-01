@@ -163,7 +163,6 @@
   grid-column: 2;
   grid-row: 1;
   align-self: center;
-  justify-self: end;
 }
 .shell .family-center:has([data-security-tab]) .family-heading h1 {
   font-size: 1.2rem;
