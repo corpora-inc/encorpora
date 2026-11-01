@@ -173,7 +173,7 @@ export function generateMeasurementProblem(
           ]
         : [
             `Length is how far it is from one end to the other end.`,
-            `Each centimeter is cut into ${denominator} equal spaces, so each small space is 1/${denominator} cm.`,
+            `Each centimeter is cut into ${denominator} equal spaces, so each small space is 1/${denominator} cm: 1 of ${denominator} equal parts of a centimeter.`,
             `$A$ is at ${rational(start, denominator)} cm and $B$ is at ${rational(end, denominator)} cm. There ${end - start === 1 ? "is 1 small space" : `are ${end - start} small spaces`} between them.`,
             `${end - start === 1 ? "1 space" : `${end - start} spaces`} of 1/${denominator} cm ${end - start === 1 ? "is" : "make"} ${end - start}/${denominator} cm${`${end - start}/${denominator}` === answer ? "" : `, which is ${answer} cm`}.`,
             `The strip is ${answer} cm long.`,
