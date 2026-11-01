@@ -10,9 +10,9 @@ A daily workbook is a printable document of about 30, 45 or 60 minutes of work, 
 | Today's idea | One lesson, taught | A lesson card (summary, one method section with its diagram, worked example, one pitfall), then guided problems from the lesson's own templates. Started-but-unsecured skills come first, then new skills near the frontier |
 | Practice | Moderate challenge | 0.8 below to 0.2 above, at most two per strand, round-robin across strands, filling the remaining time |
 | Review | Spaced retrieval | Skills whose `reviewDueAt` has passed, oldest first, on a different template than last time when possible |
-| Challenge | Just beyond reach | 0.5–1.3 above, in the strand with the most independent evidence, preferring multi-step or figure problems |
+| Challenge | Just beyond reach | One problem from the curated challenge pool (several steps or a figure to reason about), from the nearest bands at or above the strand level (0.5–1.3 first), shared among the three strands with the most independent evidence so it changes day to day. Then any template above the level; a pool problem below the level only at the top of the catalog |
 
-A detachable answer key (answer plus worked steps for every problem, and the lesson's parent note) and a results page (a right/not-yet mark per problem, plus the workbook code) follow the student pages.
+A detachable answer key (answer plus worked steps for every problem, and the lesson's parent note) and a results page (a Right / Not yet box per problem, the workbook code, and a QR code that opens the results entry) follow the student pages.
 
 Selection is a scheduling heuristic, like mixed practice. Success levels per section are targets, not measurements. Problem times in `minutesFor` are editorial estimates, to be calibrated against in-app response times.
 
@@ -22,7 +22,13 @@ Selection is a scheduling heuristic, like mixed practice. Success levels per sec
 
 ## Rendering
 
-`workbookHtml` (`src/workbook/render.tsx`) prints with the same exercise component as the lesson workbooks (`src/content/print-exercise.tsx`), and Chromium makes the PDF. Problems sit two to a row. Worked steps, tables and long formulas take a full row. Each row is one block that a page break never splits. Early levels use larger type and more room.
+`workbookHtml` (`src/workbook/render.tsx`) prints with the same exercise component as the lesson workbooks (`src/content/print-exercise.tsx`), and Chromium makes the PDF. The render service (`src/render-service/server.ts`) and `printWorkbookPdf` (`src/workbook/pdf.ts`) run the document's composition script in an offline context that refuses every request, wait for `data-layout="ready"` on a document marked `<html data-compose>`, and refuse one that reports an error (the service answers 422). They print backgrounds and draw no browser header or footer.
+
+- **Pages.** A script in the HTML (`src/workbook/layout-script.ts`) measures the typeset blocks once the embedded fonts load and builds explicit Letter or A4 pages. A section heading always travels with the block after it. The lesson card stays on one page with its guided problems when they fit. A page's spare height becomes extra workspace in its rows, so pages end level. A page that has nothing to grow (a lesson card alone) takes rows from the end of the page before. The key and results pages never share a page with student work. Every page has a footer with the workbook code and "Page n of N". Without scripts the same blocks still print in order through CSS page breaks.
+- **Bands.** The working level sets the print scale: kindergarten to grade 2 (Andika, the single-storey letters children learn to write; 14–15 pt; round badges and large answer boxes), grades 3–5 (12 pt, graph-paper workspace), grades 6–8 (11 pt) and high school (10.75 pt, dot-grid workspace, outlined number badges and a single ink colour). Reading text is IBM Plex Sans (1, l and I differ; 0 is a plain oval); headings are Fraunces. All are embedded (SIL OFL 1.1), so every renderer prints the same letters.
+- **Problems.** Problems sit two to a row with a hanging number badge coloured by section. Worked steps, tables and long formulas take a full row. Each row is one block that a page break never splits. Workspace is a light grid sized to the work: a short answer zone for choices, room to work for typed answers, a large area for the challenge.
+- **Today's idea.** The lesson card shows the summary, one explanation under "The idea" (an illustrated section, else the plain-words introduction), its diagram when the lesson has one, the worked example with numbered steps, and the first pitfall. A card always fits one page with its heading: a long one drops its extra paragraphs, then its pitfall, then its diagram, then prints at no less than 75%. When the card's page has room left, a "Your turn" space follows it. Multi-part items print each blank's options as an aligned grid of drawn boxes.
+- **Results.** Pass `results: { baseUrl, learnerId, workbookId }` to print a QR code for `<baseUrl>/learners/<learnerId>/workbooks/<workbookId>/results` (`src/workbook/links.ts`). The code is drawn as SVG from the `qrcode` package's module matrix.
 
 ## Storage and API
 
@@ -49,7 +55,10 @@ A stored spec never changes when evidence changes later; the next number is comp
 
 ## Checks
 
-- `npm run workbook:audit` prints three problems from every template in the workbook layout. It fails on content wider than its column, a problem taller than a page, or a figure shape that lost its styles. Known failures are listed in `src/workbook/paper-exclusions.ts` and skipped by the composer; any new failure fails the audit.
-- `npm run workbook:samples -- [30|45|60] [learner…]` writes PDFs for synthetic learners (`src/workbook/synthetic.ts`) to `artifacts/workbooks/` and runs the same layout checks on every page.
-- `tests/workbook.test.ts` covers determinism, structure at every level and length, time targets, due review, a learner with no answers, and key placement.
+- `npm run workbook:audit` prints three problems from every template in the workbook layout (and kindergarten to grade 2 templates again at the early scale). It fails on content wider than its column, a problem taller than a page, or a figure shape that lost its styles. Known failures are listed in `src/workbook/paper-exclusions.ts` and skipped by the composer; any new failure fails the audit.
+- `npm run workbook:samples -- [30|45|60|all] [--paper letter|a4|all] [--png] [--gray] [learner…]` writes PDFs for synthetic learners (`src/workbook/synthetic.ts`) to `artifacts/workbooks/` and checks every composed page: no overflow or split problem, no heading ending a page, student pages at least 90% full (except the last), key and results never mixed with student pages, the PDF page count equal to the composed pages, no word broken across lines, 4.5:1 text contrast (which is also the grayscale contrast), and no unstyled figure shape. `--png` renders every page with Poppler for review.
+- `npm run test:workbook-paper-ui` runs the same checks on a fixed set of learners, lengths and paper sizes in CI, composes every lesson card at each print scale and fails on any taller than a page, and composes three workbooks in Firefox and WebKit, because parents also print the HTML from their own browser.
+- `npx tsx scripts/workbook-challenge-pool.ts --write` regenerates `src/workbook/challenge-pool.ts` and documents its scoring; curate with its `routine` list.
+- `tests/workbook.test.ts` covers determinism, structure at every level and length, time targets, due review, a learner with no answers, key placement, the results link and the challenge pool.
 - `tests/workbooks.test.ts` covers the API with an in-memory repository; `tests/workbooks.integration.ts` covers storage, concurrency, export and deletion on PostgreSQL.
+- Review pages of representative learners are in `docs/reviews/workbooks/` (`paper-*.png`).
