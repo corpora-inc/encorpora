@@ -295,7 +295,7 @@ function lcmCase(r: Random): Case {
       explanation: [
         `Whole packs give multiples of ${a} ${first[1]} and multiples of ${b} ${second[1]}. The amounts must be equal, so the number is a common multiple of ${a} and ${b}.`,
         ...listing,
-        `The least common multiple is ${lcm}: ${lcm / a} ${lcm / a === 1 ? "pack" : "packs"} of ${first[1]} and ${lcm / b} ${lcm / b === 1 ? "pack" : "packs"} of ${second[1]}. The least number of each is ${lcm}.`,
+        `The least common multiple, the smallest positive number that is a multiple of both, is ${lcm}: ${lcm / a} ${lcm / a === 1 ? "pack" : "packs"} of ${first[1]} and ${lcm / b} ${lcm / b === 1 ? "pack" : "packs"} of ${second[1]}. The least number of each is ${lcm}.`,
       ],
       tags,
     };
@@ -319,7 +319,7 @@ function lcmCase(r: Random): Case {
           "rings",
         ),
         ...listing,
-        `The least common multiple is ${lcm}, so they next ${verb} together in ${lcm} ${unit}.`,
+        `The least common multiple, the smallest positive number that is a multiple of both, is ${lcm}, so they next ${verb} together in ${lcm} ${unit}.`,
       ],
       tags,
     };
@@ -329,7 +329,7 @@ function lcmCase(r: Random): Case {
     answer: String(lcm),
     hint,
     explanation: [
-      `The least common multiple of two numbers is the smallest number that is a multiple of both.`,
+      `The least common multiple of two numbers is the smallest positive number that is a multiple of both.`,
       ...listing,
       `The first multiple of ${big} that ${small} also divides is ${lcm}, so the least common multiple of ${a} and ${b} is ${lcm}.`,
     ],
