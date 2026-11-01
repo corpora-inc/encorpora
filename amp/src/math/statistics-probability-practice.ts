@@ -208,6 +208,15 @@ function bellCounts(
 }
 
 // ------------------------------------------------------- normal-distributions
+/** Plain meanings repeated at first use in every explanation. */
+const NORMAL =
+  "A normal distribution is a symmetric, bell-shaped spread of values. The mean, the average, sits at the center. The standard deviation (SD) is the typical distance of a value from the mean.";
+const RULE =
+  "The 68–95–99.7 rule says that in a normal distribution about 68% of values lie within 1 SD of the mean, 95% within 2 SD, and 99.7% within 3 SD.";
+const RANDOM_VARIABLE =
+  "A random variable, such as $X$, is a number decided by chance. $P(X=k)$, read \"the probability that $X$ equals $k$\", is the chance it takes the value $k$.";
+const EXPECTED =
+  "The expected value is the long-run average: multiply each possible value by its probability and add the results.";
 const inside: Record<number, number> = { 1: 68, 2: 95, 3: 99.7 };
 const half: Record<number, number> = { 1: 34, 2: 47.5, 3: 49.85 };
 const tail: Record<number, number> = { 1: 16, 2: 2.5, 3: 0.15 };
@@ -291,9 +300,11 @@ function normalCase(r: Random): Built {
         answer: correct,
         hint: `The mean is ${m} and one standard deviation is ${s} ${ctx.unit}. Find how many standard deviations ${m + ks} is above ${m}, then use the matching percent in the rule.`,
         explanation: [
-          `${m + ks} − ${m} = ${ks} ${ctx.unit}, which is ${k} standard deviation${k > 1 ? "s" : ""} (${ks} ÷ ${s}). Likewise ${m} − ${m - ks} = ${ks}.`,
-          `So the interval is the mean ± ${k} standard deviation${k > 1 ? "s" : ""}.`,
-          `The empirical rule says about ${correct} of a normal distribution lies within ${k} standard deviation${k > 1 ? "s" : ""} of the mean.`,
+          NORMAL,
+          RULE,
+          `Measure each end from the mean ${m}. ${m + ks} − ${m} = ${ks} ${ctx.unit}, which is ${ks} ÷ ${s} = ${k} SD. Likewise ${m} − ${m - ks} = ${ks}.`,
+          `So the interval reaches ${k} SD on both sides of the mean.`,
+          `By the rule, about ${correct} of values lie between ${m - ks} and ${m + ks} ${ctx.unit}.`,
         ],
         choices: options(r, correct, [
           ...others.map((o) => ({
@@ -326,9 +337,12 @@ function normalCase(r: Random): Built {
         answer: correct,
         hint: `Split the interval at the mean ${m}. The left part reaches ${k1 * s} ${ctx.unit} below it and the right part ${k2 * s} ${ctx.unit} above it; each part is a different number of standard deviations (${s} ${ctx.unit}).`,
         explanation: [
-          `The left end is ${k1} standard deviation${k1 > 1 ? "s" : ""} below the mean and the right end is ${k2} above.`,
-          `The rule gives half of the symmetric percent on each side: ${pct(half[k1]!)} between the mean and ${k1} SD below, and ${pct(half[k2]!)} between the mean and ${k2} SD above.`,
-          `${half[k1]} + ${half[k2]} = ${+(half[k1]! + half[k2]!).toFixed(2)}, so about ${correct}.`,
+          NORMAL,
+          RULE,
+          `The left end is ${k1 * s} ÷ ${s} = ${k1} SD below the mean, and the right end is ${k2 * s} ÷ ${s} = ${k2} SD above. The two sides differ, so split at the mean.`,
+          `The bell is symmetric, so each side holds half of the rule's percent: ${pct(half[k1]!)} from the mean down to ${k1} SD below, and ${pct(half[k2]!)} from the mean up to ${k2} SD above.`,
+          `Add the two sides: ${half[k1]} + ${half[k2]} = ${+(half[k1]! + half[k2]!).toFixed(2)}.`,
+          `So about ${correct} of values lie between ${m - k1 * s} and ${m + k2 * s} ${ctx.unit}.`,
         ],
         choices: options(r, correct, [
           {
@@ -376,11 +390,14 @@ function normalCase(r: Random): Built {
         answer: correct,
         hint: `${boundary} is ${k * s} ${ctx.unit} ${upperBoundary ? "above" : "below"} the mean ${m}. Find how many standard deviations that is, then decide which side of ${boundary} the question asks about.`,
         explanation: [
-          `${boundary} is ${k} standard deviation${k > 1 ? "s" : ""} ${upperBoundary ? "above" : "below"} the mean (${k * s} ÷ ${s} = ${k}).`,
-          `Within ${k} SD of the mean lies ${pct(inside[k]!)}, so ${pct(100 - inside[k]!)} lies outside and splits equally into two tails of ${pct(tail[k]!)}.`,
+          NORMAL,
+          RULE,
+          `${boundary} is ${k * s} ÷ ${s} = ${k} SD ${upperBoundary ? "above" : "below"} the mean ${m}.`,
+          `Within ${k} SD of the mean lies ${pct(inside[k]!)}. The other ${pct(100 - inside[k]!)} lies outside, split equally into two tails (the ends of the bell) of ${pct(tail[k]!)} each.`,
           smallSide
-            ? `Values ${word} ${boundary} form one outer tail: ${correct}.`
+            ? `Values ${word} ${boundary} form one outer tail: ${pct(tail[k]!)}.`
             : `Values ${word} ${boundary} are everything except the far tail: 100% − ${pct(tail[k]!)} = ${correct}.`,
+          `So about ${correct} of values are ${word} ${boundary} ${ctx.unit}.`,
         ],
         choices: options(r, correct, [
           {
@@ -419,9 +436,12 @@ function normalCase(r: Random): Built {
         answer: correct,
         hint: `The rule links ${inside[k]}% to a number of standard deviations either side of the mean ${m}. Find that number, then multiply it by ${s} ${ctx.unit} to build both ends.`,
         explanation: [
-          `The rule says ${inside[k]}% lies within ${k} standard deviation${k > 1 ? "s" : ""} of the mean.`,
-          `${k} × ${s} = ${k * s} ${ctx.unit}.`,
-          `The ends are ${m} − ${k * s} = ${m - k * s} and ${m} + ${k * s} = ${m + k * s}.`,
+          NORMAL,
+          RULE,
+          `So ${inside[k]}% lies within ${k} SD of the mean, on both sides.`,
+          `${k} SD is ${k} × ${s} = ${k * s} ${ctx.unit}.`,
+          `Go that far each way from the mean: ${m} − ${k * s} = ${m - k * s} and ${m} + ${k * s} = ${m + k * s}.`,
+          `So about ${inside[k]}% of values lie from ${correct}.`,
         ],
         choices: options(r, correct, [
           ...others.map((o) => ({
@@ -468,9 +488,11 @@ function normalCase(r: Random): Built {
         answer: correct,
         hint: `Raw scores ${xA} and ${xB} come from different exams. Convert each to the number of standard deviations from its own mean: subtract the mean, then divide by the standard deviation.`,
         explanation: [
+          "The exams have different averages, called means, and different typical spreads, called standard deviations. So raw scores cannot be compared directly.",
+          "A $z$-score puts them on one scale: how many standard deviations a score is above or below its own mean.",
           `${nameA}: $z=(${xA}-${mA})\\div${sA}=${zs(zA)}$.`,
           `${nameB}: $z=(${xB}-${mB})\\div${sB}=${zs(zB)}$.`,
-          `A larger $z$-score is farther above the mean in standard deviations, so ${nameA} did better relative to the ${subA} group, even though ${nameB} has the higher raw score.`,
+          `A larger $z$-score is farther above the mean. So ${nameA} scored higher relative to the ${subA} group, even though ${nameB} has the higher raw score.`,
         ],
         choices: options(r, correct, [
           {
@@ -502,9 +524,11 @@ function normalCase(r: Random): Built {
       answer: normalText,
       hint: "The 68–95–99.7 rule needs a normal curve, which is symmetric with one peak, so its mean equals its median. Check each description for the shape and for the mean compared with the median.",
       explanation: [
-        "A normal model fits data that are symmetric and mound-shaped, with the mean close to the median.",
-        `${normalText} matches that description.`,
+        "A normal model is a symmetric bell curve with one peak. Its mean (the average) equals its median (the middle value).",
+        "So it fits data that are symmetric and mound-shaped. Skewed data, with a long tail on one side, pull the mean away from the median.",
+        `${normalText} matches the bell shape.`,
         "The other descriptions are skewed or have two peaks, so the 68–95–99.7 percents would not describe them.",
+        `So the normal model is most appropriate for: ${normalText.replace(/\.$/, "")}.`,
       ],
       choices: options(
         r,
@@ -539,9 +563,11 @@ function randomVariableCase(r: Random): Built {
           answer: correct,
           hint: `List which of the ${total} equally likely sequences of ${n} tosses have exactly ${k} head${k === 1 ? "" : "s"}. $X=${k}$ is an event made of several outcomes, not a single one.`,
           explanation: [
-            `The ${n} tosses have $2^{${n}}=${total}$ equally likely sequences.`,
-            `Sequences with exactly ${k} head${k === 1 ? "" : "s"}: $\\binom{${n}}{${k}}=${ways}$.`,
-            `$P(X=${k})=\\frac{${ways}}{${total}}$${gcd(ways, total) > 1 ? `, which reduces to ${correct}` : ""}.`,
+            RANDOM_VARIABLE,
+            `Each toss has 2 results, so ${n} tosses have $2^{${n}}=${total}$ equally likely sequences.`,
+            `$\\binom{${n}}{${k}}$, read "${n} choose ${k}", counts the ways to pick which ${k} of the ${n} tosses are heads. Here it is ${ways}.`,
+            `Probability is favorable outcomes over all outcomes: $P(X=${k})=\\frac{${ways}}{${total}}$${gcd(ways, total) > 1 ? `, which reduces to ${correct}` : ""}.`,
+            `So $P(X=${k})=${frac(ways, total)}$.`,
           ],
           choices: options(r, correct, [
             {
@@ -565,11 +591,11 @@ function randomVariableCase(r: Random): Built {
             {
               label: f(ways + 1, total),
               feedback:
-                "Count the sequences exactly; there is no extra sequence.",
+                "The count is one too high. Count the sequences with this many heads exactly.",
             },
             {
               label: f(ways, total + 1),
-              feedback: `There are exactly $2^{${n}}=${total}$ equally likely sequences.`,
+              feedback: `The total is one too high. There are exactly $2^{${n}}=${total}$ equally likely sequences.`,
             },
           ]),
         },
@@ -584,15 +610,18 @@ function randomVariableCase(r: Random): Built {
         answer: correct,
         hint: `There are 36 equally likely pairs. Count the pairs in which the larger number is exactly ${k}: both dice at most ${k}, but not both at most ${k - 1}.`,
         explanation: [
-          `Pairs with both dice at most ${k}: $${k}^2=${k * k}$.`,
-          `Pairs with both dice at most ${k - 1}: $${k - 1}^2=${(k - 1) ** 2}$.`,
-          `Pairs with larger number exactly ${k}: ${k * k} − ${(k - 1) ** 2} = ${2 * k - 1}, so $P(X=${k})=\\frac{${2 * k - 1}}{36}$.`,
+          RANDOM_VARIABLE,
+          "Two dice give $6\\times6=36$ equally likely pairs. Count the pairs whose larger number is exactly the target by subtracting.",
+          `Pairs with both dice at most ${k}: $${k}^2=${k * k}$. In these, the larger number is ${k} or less.`,
+          `Pairs with both dice at most ${k - 1}: $${k - 1}^2=${(k - 1) ** 2}$. Removing them leaves pairs whose larger number is exactly ${k}.`,
+          `${k * k} − ${(k - 1) ** 2} = ${2 * k - 1} pairs, out of 36.`,
+          `So $P(X=${k})=\\frac{${2 * k - 1}}{36}$.`,
         ],
         choices: options(r, correct, [
           {
             label: f(1, 6),
             feedback:
-              "The values of $X$ are not equally likely; larger values can happen in more ways.",
+              "This treats the six values of $X$ as equally likely. Larger values can happen in more ways, so count pairs.",
           },
           {
             label: f(k, 36),
@@ -600,14 +629,18 @@ function randomVariableCase(r: Random): Built {
           },
           {
             label: f(k * k, 36),
-            feedback: `That is $P(X\\le ${k})$, which includes smaller larger-numbers.`,
+            feedback: `That is $P(X\\le ${k})$: it also counts pairs whose larger number is smaller. Subtract those.`,
           },
           {
             label: f(2 * k + 1, 36),
             feedback:
-              "Count carefully: the number of pairs is one less than twice the value.",
+              "The count is two too high. The number of pairs is one less than twice the value.",
           },
-          { label: f(1, 36), feedback: "That counts one pair only." },
+          {
+            label: f(1, 36),
+            feedback:
+              "That counts only the pair where both dice match. Count every pair whose larger number is this value.",
+          },
           {
             label: f(2 * (7 - k) - 1, 36),
             feedback:
@@ -696,9 +729,11 @@ function randomVariableCase(r: Random): Built {
         answer: item.good,
         hint: "A random variable assigns exactly one number to each outcome. Test each choice by asking whether every outcome gets a single number you could list in a table of values and probabilities.",
         explanation: [
-          "A random variable is a rule that assigns one number to each possible outcome.",
-          `${item.good} gives each outcome one count, so its values can be listed with their probabilities.`,
+          "A random variable is a rule that gives each possible outcome of an experiment exactly one number.",
+          "That number lets us list the values in a table with their probabilities, the chance of each.",
+          `${item.good} gives each outcome one count.`,
           "The other choices give labels, pairs or yes/no answers instead of a single number.",
+          `So the numerical random variable is: ${item.good}.`,
         ],
         choices: options(
           r,
@@ -744,9 +779,11 @@ function randomVariableCase(r: Random): Built {
         answer: correct,
         hint: hintText,
         explanation: [
-          `Total outcomes: ${counts.join(" + ")} = ${total}.`,
+          RANDOM_VARIABLE,
+          "The outcomes are equally likely, so a probability is the number of outcomes in the event divided by the total number of outcomes.",
+          `Total outcomes, all the bar heights: ${counts.join(" + ")} = ${total}.`,
           steps,
-          `${question} = ${c}/${total}${gcd(c, total) > 1 ? ` = ${correct.slice(1, -1)}` : ""}. Because the outcomes are equally likely, a probability is a count divided by ${total}.`,
+          `So ${question} = $\\frac{${c}}{${total}}$${gcd(c, total) > 1 ? ` = ${correct}` : ""}.`,
         ],
         choices: options(r, correct, [
           {
@@ -760,7 +797,8 @@ function randomVariableCase(r: Random): Built {
           },
           {
             label: f(total - c, total),
-            feedback: "That is the probability of the opposite event.",
+            feedback:
+              "That is the probability of the opposite event: every outcome not in this one.",
           },
           {
             label: f(c, 5),
@@ -769,7 +807,8 @@ function randomVariableCase(r: Random): Built {
           },
           {
             label: f(c + 1, total),
-            feedback: "Add the bar heights exactly, with no extra outcome.",
+            feedback:
+              "The count is one too high. Add the bar heights exactly.",
           },
         ]),
       },
@@ -796,9 +835,10 @@ function randomVariableCase(r: Random): Built {
       answer: correct,
       hint: `The probabilities of all possible values of $X$ must add to 1. Add the three given probabilities (they share the denominator ${d}), then find what is left.`,
       explanation: [
-        "A probability distribution lists every value of $X$, and the probabilities add to 1.",
-        `The given probabilities add to $\\frac{${givenSum}}{${d}}$.`,
-        `$a=1-\\frac{${givenSum}}{${d}}=\\frac{${left}}{${d}}$${gcd(left, d) > 1 ? `, which reduces to ${correct}` : ""}.`,
+        "A probability distribution lists every value of $X$ with its probability. $X$ must take one of these values, so the probabilities add to 1, which means certain.",
+        `Add the three given probabilities: they share the denominator ${d}, so add the tops: $\\frac{${givenSum}}{${d}}$.`,
+        `The missing one is what is left of 1: $a=1-\\frac{${givenSum}}{${d}}=\\frac{${left}}{${d}}$${gcd(left, d) > 1 ? `, which reduces to ${correct}` : ""}.`,
+        `So $a=${frac(left, d)}$.`,
       ],
       choices: options(r, correct, [
         {
@@ -814,16 +854,16 @@ function randomVariableCase(r: Random): Built {
         {
           label: f(left + 1, d),
           feedback:
-            "Subtract exactly: 1 minus the sum of the given probabilities.",
+            "This is one too high. Subtract exactly: 1 minus the sum of the given probabilities.",
         },
         {
           label: f(left, d + 1),
-          feedback: `The denominator is ${d}, as in the other probabilities.`,
+          feedback: `The denominator changed. Keep ${d}, as in the other probabilities.`,
         },
         {
           label: f(left - 1 > 0 ? left - 1 : left + 2, d),
           feedback:
-            "Subtract exactly: 1 minus the sum of the given probabilities.",
+            "This is off by an arithmetic slip. Subtract exactly: 1 minus the sum of the given probabilities.",
         },
       ]),
     },
@@ -872,17 +912,19 @@ function theoreticalCase(r: Random): Built {
         answer: correct,
         hint: `Build the distribution of the sum from the 36 equally likely pairs. Count the pairs with ${atLeast ? `a sum of ${s} or more` : `sum exactly ${s}`}; pairs such as (1, ${s - 1}) and (${s - 1}, 1) count separately.`,
         explanation: [
-          "There are $6\\times6=36$ equally likely ordered pairs. Sum $t$ occurs in $6-|t-7|$ ways.",
+          RANDOM_VARIABLE,
+          "Two dice give $6\\times6=36$ equally likely ordered pairs; (1, 2) and (2, 1) are different pairs. A sum of 7 has the most pairs, 6, and each step away from 7 loses one.",
           atLeast
-            ? `Add the ways for sums ${s} through 12: ${count}.`
-            : `Sum ${s} occurs in ${count} way${count === 1 ? "" : "s"}.`,
-          `$P(${event})=\\frac{${count}}{36}$${gcd(count, 36) > 1 ? `, which reduces to ${correct}` : ""}.`,
+            ? `Add the pairs for sums ${s} through 12: ${count}.`
+            : `A sum of ${s} occurs in ${count} pair${count === 1 ? "" : "s"}.`,
+          `Probability is favorable outcomes over all outcomes: $P(${event})=\\frac{${count}}{36}$${gcd(count, 36) > 1 ? `, which reduces to ${correct}` : ""}.`,
+          `So $P(${event})=${frac(count, 36)}$.`,
         ],
         choices: options(r, correct, [
           {
             label: f(1, 11),
             feedback:
-              "The 11 possible sums are not equally likely; middle sums occur in more ways.",
+              "This treats the 11 possible sums as equally likely. Middle sums occur in more ways, so count pairs out of 36.",
           },
           {
             label: f(1, 36),
@@ -896,12 +938,13 @@ function theoreticalCase(r: Random): Built {
           },
           {
             label: f(36 - count, 36),
-            feedback: "That is the probability of the opposite event.",
+            feedback:
+              "That is the probability of the opposite event: every outcome not in this one.",
           },
           {
             label: f(s, 36),
             feedback:
-              "The number of ways is not the sum itself; count the pairs.",
+              "This uses the sum itself as the count. Count the pairs that give that sum.",
           },
         ]),
       },
@@ -921,9 +964,10 @@ function theoreticalCase(r: Random): Built {
         answer: correct,
         hint: `There are 36 equally likely outcomes, and ${ev.text} in ${ev.ways} of them. Multiply each payoff (${w} and −${l}) by its probability, then add.`,
         explanation: [
-          `$P(\\text{win})=\\frac{${ev.ways}}{36}$ and $P(\\text{lose})=\\frac{${36 - ev.ways}}{36}$.`,
+          EXPECTED,
+          `${ev.text.charAt(0).toUpperCase()}${ev.text.slice(1)} in ${ev.ways} of the 36 equally likely pairs. So $P(\\text{win})=\\frac{${ev.ways}}{36}$ and $P(\\text{lose})=\\frac{${36 - ev.ways}}{36}$.`,
           `$E(X)=${w}\\cdot\\frac{${ev.ways}}{36}+(-${l})\\cdot\\frac{${36 - ev.ways}}{36}=\\frac{${ev.ways * w}-${(36 - ev.ways) * l}}{36}=\\frac{${num}}{36}$.`,
-          `In lowest terms, $E(X)=${frac(num, 36)}$ dollars per game.`,
+          `In lowest terms, $E(X)=${frac(num, 36)}$. On average you ${num >= 0 ? "gain" : "lose"} that many dollars per game over many games.`,
         ],
         choices: options(r, correct, [
           {
@@ -944,7 +988,7 @@ function theoreticalCase(r: Random): Built {
           {
             label: `$${num}$ dollars`,
             feedback:
-              "Divide the total by the 36 equally likely outcomes to get an expected value per game.",
+              "This forgets to divide. Divide the total by the 36 equally likely outcomes to get an expected value per game.",
           },
         ]),
       },
@@ -966,9 +1010,12 @@ function theoreticalCase(r: Random): Built {
         answer: correct,
         hint: `One specific order with ${k} make${k === 1 ? "" : "s"} and ${3 - k} miss${3 - k === 1 ? "" : "es"} has probability (the make probability)$^{${k}}$ times (the miss probability)$^{${3 - k}}$, where a make has probability $${p}$. Then count how many orders give ${k} make${k === 1 ? "" : "s"}.`,
         explanation: [
+          RANDOM_VARIABLE,
+          `Independent means one shot does not affect another, so probabilities multiply. A miss has probability $1-${p}=\\frac{${b - a}}{${b}}$.`,
           `One order with ${k} make${k === 1 ? "" : "s"} and ${3 - k} miss${3 - k === 1 ? "" : "es"} has probability $\\left(${p}\\right)^{${k}}\\left(\\frac{${b - a}}{${b}}\\right)^{${3 - k}}=\\frac{${a ** k * (b - a) ** (3 - k)}}{${denom}}$.`,
-          `The number of orders is $\\binom{3}{${k}}=${choose(3, k)}$.`,
-          `$P(X=${k})=\\frac{${nums[k]}}{${denom}}$${gcd(nums[k]!, denom) > 1 ? `, which reduces to ${correct}` : ""}.`,
+          `$\\binom{3}{${k}}$, read "3 choose ${k}", counts the orders: which ${k} of the 3 shots are makes. It is ${choose(3, k)}.`,
+          `Multiply: $P(X=${k})=${choose(3, k)}\\cdot\\frac{${a ** k * (b - a) ** (3 - k)}}{${denom}}=\\frac{${nums[k]}}{${denom}}$${gcd(nums[k]!, denom) > 1 ? `, which reduces to ${correct}` : ""}.`,
+          `So $P(X=${k})=${frac(nums[k]!, denom)}$.`,
         ],
         choices: options(r, correct, [
           {
@@ -979,7 +1026,7 @@ function theoreticalCase(r: Random): Built {
           {
             label: f(choose(3, k) * a ** k, b ** k),
             feedback:
-              "Include the probability of each miss as well as each make.",
+              "This leaves out the misses. Multiply in the probability of each miss as well as each make.",
           },
           {
             label: f(1, 4),
@@ -994,7 +1041,7 @@ function theoreticalCase(r: Random): Built {
           {
             label: f(choose(3, k) * a * (b - a), b * b),
             feedback:
-              "Raise the make and miss probabilities to the number of makes and misses.",
+              "This uses each probability once. Raise the make probability to the number of makes and the miss probability to the number of misses.",
           },
         ]),
       },
@@ -1013,6 +1060,7 @@ function theoreticalCase(r: Random): Built {
       answer: correct,
       hint: `Multiply each value of $X$ (0, 1, 2, 3) by its own probability from the list, then add the four products. The denominators are all ${denom}.`,
       explanation: [
+        EXPECTED,
         `$E(X)=0\\cdot P(0)+1\\cdot P(1)+2\\cdot P(2)+3\\cdot P(3)$.`,
         `The numerators give $0\\cdot${nums[0]}+1\\cdot${nums[1]}+2\\cdot${nums[2]}+3\\cdot${nums[3]}=${total}$ over ${denom}.`,
         `$E(X)=\\frac{${total}}{${denom}}$${gcd(total, denom) > 1 ? `, which reduces to ${correct}` : ""} shots made out of 3, on average.`,
@@ -1100,9 +1148,11 @@ function empiricalCase(r: Random): Built {
         answer: correct,
         hint: `Read the bar at ${values[i]} and divide its height by the total number of ${ctx.plural}, ${N}.`,
         explanation: [
-          `The bar at ${values[i]} has height ${counts[i]}.`,
-          `The relative frequency is ${counts[i]} ÷ ${N} = ${correct}.`,
-          "Observed relative frequency estimates the probability.",
+          "A relative frequency is the fraction of all observations that had a given value: its count divided by the total.",
+          `The bar at ${values[i]} has height ${counts[i]}, so ${counts[i]} of the ${N} ${ctx.plural} had that value.`,
+          `Divide: ${counts[i]} ÷ ${N} = ${correct}.`,
+          "An observed relative frequency estimates the probability of that value.",
+          `So the relative frequency is ${correct}.`,
         ],
         choices: options(r, correct, [
           {
@@ -1124,7 +1174,8 @@ function empiricalCase(r: Random): Built {
           },
           {
             label: shown(counts[i]! + 1, N),
-            feedback: "Read the bar's height exactly before dividing.",
+            feedback:
+              "This misreads the bar. Read the bar's height exactly before dividing.",
           },
         ]),
       },
@@ -1140,9 +1191,11 @@ function empiricalCase(r: Random): Built {
         answer: correct,
         hint: `Weight each value by how often it occurred: multiply each value by its bar height, add, and divide by the ${N} ${ctx.plural}.`,
         explanation: [
-          `Products of value and count: ${values.map((v, i) => `${v}×${counts[i]}=${v * counts[i]!}`).join(", ")}.`,
-          `Their sum is ${totalX}.`,
-          `${totalX} ÷ ${N} = ${correct} ${ctx.x} per ${ctx.unit}, the same as adding each value times its relative frequency.`,
+          `${EXPECTED} From data, use how often each value occurred.`,
+          `Multiply each value by its bar height, the number of ${ctx.plural}: ${values.map((v, i) => `${v}×${counts[i]}=${v * counts[i]!}`).join(", ")}.`,
+          `Add them for the total number of ${ctx.x}: ${totalX}.`,
+          `Divide by the ${N} ${ctx.plural}: ${totalX} ÷ ${N} = ${correct}.`,
+          `So the expected value is ${correct} ${ctx.x} per ${ctx.unit}.`,
         ],
         choices: options(r, correct, [
           {
@@ -1188,9 +1241,11 @@ function empiricalCase(r: Random): Built {
       answer: correct,
       hint: `First find the expected number of ${ctx.x} for one ${ctx.unit} from the observed counts. Then scale that expected value up to ${H} ${ctx.plural}.`,
       explanation: [
-        `Sum of value × count in the sample: ${totalX}.`,
+        EXPECTED,
+        `From the chart, multiply each value by its bar height and add: the ${N} observed ${ctx.plural} had ${totalX} ${ctx.x} in all.`,
         `Expected per ${ctx.unit}: ${totalX} ÷ ${N} = ${shown(totalX, N)}.`,
-        `For ${H} ${ctx.plural}: ${shown(totalX, N)} × ${H} = ${answer}.`,
+        `If the same pattern holds, each of the ${H} ${ctx.plural} averages that much: ${shown(totalX, N)} × ${H} = ${answer}.`,
+        `So expect about ${answer} ${ctx.x} in total.`,
       ],
       choices: options(r, correct, [
         {
@@ -1256,13 +1311,17 @@ function strategyCase(r: Random): Built {
           prompt: `Four games are offered. ${lines} Which game has the greatest expected net gain per play (prize chance times prize, minus the cost)?`,
           answer: correct,
           hint: `For one game, such as the one with a ${games[0]!.w}-dollar prize at probability $${frac(games[0]!.k, games[0]!.d)}$ and cost ${games[0]!.c}, multiply the prize by its probability and subtract the cost. Do that for each game and compare.`,
-          explanation: games
-            .map(
-              (g, i) =>
-                `Game $${names[i]}$: $${g.w}\\cdot${frac(g.k, g.d)}-${g.c}=${frac(nets[i]!.n, nets[i]!.d)}$ dollars.`,
+          explanation: [
+            `${EXPECTED} For each game: prize times its chance, minus the cost you always pay.`,
+          ]
+            .concat(
+              games.map(
+                (g, i) =>
+                  `Game $${names[i]}$: $${g.w}\\cdot${frac(g.k, g.d)}-${g.c}=${frac(nets[i]!.n, nets[i]!.d)}$ dollars.`,
+              ),
             )
             .concat([
-              `The greatest expected net gain is ${bestText} dollars, so the answer is ${correct}.`,
+              `The greatest expected net gain is ${bestText} dollars, so the best choice is ${correct}.`,
             ]),
           choices: names.map((name, i) =>
             i === bestIndex
@@ -1299,8 +1358,9 @@ function strategyCase(r: Random): Built {
         answer: correct,
         hint: `Expected repair cost without the warranty = repair bill × probability of needing it: ${R} × $${frac(k, d)}$. Compare that expected cost with the ${price}-dollar price.`,
         explanation: [
-          `Expected cost without the warranty: $${R}\\cdot${frac(k, d)}=${exp}$ dollars (the other outcome costs 0).`,
-          `The warranty costs ${price} dollars.`,
+          EXPECTED,
+          `Without the warranty, you pay ${R} dollars with probability $${frac(k, d)}$, and 0 otherwise. Expected cost: $${R}\\cdot${frac(k, d)}=${exp}$ dollars.`,
+          `With the warranty, you pay ${price} dollars for sure.`,
           `${exp} dollars is ${buy ? "more" : "less"} than ${price} dollars, so on average ${buy ? "buying the warranty costs less." : "skipping the warranty costs less."}`,
         ],
         choices: options(r, correct, [
@@ -1351,7 +1411,8 @@ function strategyCase(r: Random): Built {
       answer: correct,
       hint: `Expected value of the gamble: ${W} times $${frac(k, d)}$, plus the other payoff (−${-L}) times the leftover probability. Compare that total with the sure ${S}.`,
       explanation: [
-        `The losing probability is $1-${frac(k, d)}=${frac(d - k, d)}$.`,
+        EXPECTED,
+        `The losing probability is what is left of 1: $1-${frac(k, d)}=${frac(d - k, d)}$.`,
         `Expected value of the gamble: $${W}\\cdot${frac(k, d)}+(${L})\\cdot${frac(d - k, d)}=${frac(num, d)}$ dollars.`,
         `${correct}`,
       ],
@@ -1373,7 +1434,8 @@ function strategyCase(r: Random): Built {
         },
         {
           label: claim(k * W + (d - k) * L + 5 * d, d),
-          feedback: "Recompute the weighted sum of the payoffs exactly.",
+          feedback:
+            "This has an arithmetic slip. Recompute each payoff times its probability, then add.",
         },
       ]),
     },
@@ -1694,6 +1756,8 @@ function simulationCase(r: Random): Built {
       answer: correct,
       hint: `Under the model the expected count is 10, and the observed ${x} is ${Math.abs(x - 10)} from it. Add the heights of the bars ${variant === "one-sided" ? `from ${x} upward` : `that are that far or farther from 10 on both sides`}, then compare that percent with ${cutoff}%.`,
       explanation: [
+        "A simulation runs the model many times by chance, to show which results the model usually produces.",
+        "If few simulated runs are at least as extreme (at least as far from the expected value) as the real result, the result is unusual for the model.",
         `Add the bar heights for counts that are at least as extreme as the observed ${x}: ${T}.`,
         `That is ${T} of 100 simulated sets, or ${T}%.`,
         `${T}% is ${inconsistent(T) ? "less than" : cutoff === T ? "equal to" : "not less than"} the ${cutoff}% cutoff, so the result is ${inconsistent(T) ? "not consistent" : "consistent"} with the model.`,
@@ -1797,6 +1861,8 @@ function randomizationCase(r: Random): Built {
       answer: correct,
       hint: `The reshuffles show what random assignment alone produces. Add the bar heights ${twoSided ? `at ${D} and above and at −${D} and below` : `at ${D} and above`}, divide by 200, and compare with ${cutoff}%.`,
       explanation: [
+        "Reshuffling the group labels many times shows the differences that random assignment alone produces, with no real treatment effect.",
+        "If few reshuffles give a difference at least as large as the real one, chance is an unlikely explanation. Then the difference is called significant.",
         `Add the bar heights ${twoSided ? `for differences of ${D} or more and −${D} or less` : `for differences of ${D} or more`}: ${T}.`,
         `${T} of 200 is ${shown(T, 2)}%.`,
         `${shown(T, 2)}% is ${significant ? "less than" : percent === cutoff ? "equal to" : "not less than"} ${cutoff}%, so the difference is ${significant ? "significant: reshuffling rarely produces a difference this large" : "not significant: reshuffling often produces a difference this large"}.`,
@@ -1913,9 +1979,11 @@ function reportCase(r: Random): Built {
         answer: correct,
         hint: `Check the report piece by piece: how the ${n} ${ctx.people} were reached, whether ${n} is enough, whether the report states how precise ${pA}% is, and where the chart's axis starts.`,
         explanation: [
-          "Check four things in turn: how people were chosen, how many there are, whether a margin of error is given, and how the graph's axis is drawn.",
+          "A trustworthy survey picks people at random from the whole group, uses enough people, states a margin of error, and draws its graph honestly.",
+          "A margin of error says how far the sample's percent may be from the true percent for everyone.",
+          "Check those four things in turn: how people were chosen, how many there are, whether a margin of error is given, and where the graph's axis starts.",
           `Only one of them fails here: ${flawNames[flaw]}.`,
-          `So the flaw is ${flawNames[flaw]}.`,
+          `So the flaw that most weakens the headline is ${flawNames[flaw]}.`,
         ],
         choices: options(
           r,
@@ -1962,9 +2030,11 @@ function reportCase(r: Random): Built {
       answer: correct,
       hint: `Check the report piece by piece: how the ${n} ${ctx.people} were reached, whether ${n} is enough, whether the report states how precise ${pA}% is, and where the chart's axis starts. Two of the four checks fail.`,
       explanation: [
-        "Check four things in turn: how people were chosen, how many there are, whether a margin of error is given, and how the graph's axis is drawn.",
+        "A trustworthy survey picks people at random from the whole group, uses enough people, states a margin of error (how far its percent may be from the truth), and draws its graph honestly.",
+        "Check those four things in turn: how people were chosen, how many there are, whether a margin of error is given, and where the graph's axis starts.",
         `Two fail here: ${flawNames[correctPair[0]!]} and ${flawNames[correctPair[1]!]}.`,
         "A pair is correct only if both of its flaws are present.",
+        `So the report's flaws are ${flawNames[correctPair[0]!]} and ${flawNames[correctPair[1]!]}.`,
       ],
       choices: options(
         r,
@@ -2017,6 +2087,7 @@ function modelCase(r: Random): Built {
         answer: correct,
         hint: `Read the residual column from $x=1$ to $x=7$ and watch its sign. The residuals add to 0, but ask whether they look random or follow a shape.`,
         explanation: [
+          "A residual is observed minus predicted: how far the model missed each data point. A good model leaves residuals that scatter randomly around 0.",
           `The residuals are ${resid.map(signed).join(", ")}.`,
           `Their signs run ${first}, ${mid}, ${first}. That is a pattern, not random scatter.`,
           "A systematic pattern in the residuals means the straight line is the wrong form, so a curved model should be tried.",
@@ -2060,6 +2131,7 @@ function modelCase(r: Random): Built {
         answer: correct,
         hint: `Read the residual column from $x=1$ to $x=7$. Compare their size with the observed values, which are all above ${intercept}, and watch whether the signs follow any shape.`,
         explanation: [
+          "A residual is observed minus predicted: how far the model missed each data point. A good model leaves small residuals that scatter randomly around 0.",
           `The residuals are ${resid.map(signed).join(", ")}.`,
           "Their signs switch back and forth with no shape, and each is small compared with the observed values.",
           "That scatter is what a suitable model leaves behind, so a line is reasonable for these values of $x$.",
@@ -2096,9 +2168,11 @@ function modelCase(r: Random): Built {
         answer: correct,
         hint: `Compare ${X} with the $x$-values in the table, 1 to 7. Ask what the small residuals tell you about $x$-values the data never reached.`,
         explanation: [
-          "The small, patternless residuals show the line fits for $x$ from 1 to 7.",
+          "A residual is observed minus predicted. Small residuals with no pattern show the line fits, but only where there is data.",
+          "Here the data run from $x=1$ to $x=7$, so the residuals support the line in that range.",
           `The prediction at x = ${X} is $\\hat y=${slope}(${X})+${intercept}=${slope * X + intercept}$, far outside that range.`,
-          "The data say nothing about whether the same trend continues out there, so the prediction is an unsupported extrapolation.",
+          "Predicting far outside the data is called extrapolation. The data say nothing about whether the trend continues out there.",
+          "So the prediction is an unsupported extrapolation, and these residuals do not show it is reliable.",
         ],
         choices: options(r, correct, [
           {
@@ -2150,6 +2224,7 @@ function modelCase(r: Random): Built {
       answer: correct,
       hint: `For the first list, ${listA.map(signed).join(", ")}, add the residuals and also square each residual before adding. Notice what happens to positive and negative residuals when you only add.`,
       explanation: [
+        "A residual is observed minus predicted: how far the model missed each point. A better model has residuals closer to 0 overall.",
         `Model ${nameZero}: residuals add to ${signed(sum(zero))}, but the sum of squares is ${zero.map((e) => `${e * e}`).join(" + ")} = ${sq(zero)}.`,
         `Model ${nameSmall}: residuals add to ${signed(sum(small))}, and the sum of squares is ${small.map((e) => `${e * e}`).join(" + ")} = ${sq(small)}.`,
         `Squaring stops positive and negative residuals from canceling. The smaller sum of squares, ${sq(small)}, means Model ${nameSmall} stays closer to the data.`,
