@@ -1,4 +1,4 @@
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { useAppRoute } from "./app-routes";
 import type { TemplateMetadata } from "../math/contracts";
 import type { Lesson } from "../content/lessons";
@@ -48,7 +48,13 @@ export function LessonLibrary(props: {
   // entry, so Back leaves the library rather than undoing keystrokes) and
   // wins when it changes from outside (Back, Forward, a shared link).
   const [text, setText] = useState(urlQuery);
+  // Values this field wrote itself. Navigation is asynchronous, so the URL
+  // can still show "sl" after "slo" has been typed; an echo of our own write
+  // must never overwrite newer typing. Only a value from elsewhere (Back,
+  // Forward, a shared link) replaces the field.
+  const written = useRef(new Set<string>());
   useEffect(() => {
+    if (written.current.has(urlQuery)) return;
     setText((current) =>
       current.trim() === urlQuery.trim() ? current : urlQuery,
     );
@@ -58,6 +64,7 @@ export function LessonLibrary(props: {
     for (const [key, value] of Object.entries(next))
       if (value) search.set(key, value);
       else search.delete(key);
+    if ("q" in next) written.current.add(next.q ?? "");
     navigate(
       { pathname: "/lessons", search: search.toString() },
       { replace: "q" in next },

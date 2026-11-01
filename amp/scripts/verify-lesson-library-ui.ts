@@ -149,6 +149,18 @@ try {
       );
     }
     await page.waitForURL((url) => url.searchParams.get("q") === "slope");
+    // Fast typing: every keystroke lands, though the URL follows behind.
+    await search(page).fill("");
+    await search(page).pressSequentially("pythagorean", { delay: 5 });
+    await settle(page, 300);
+    check(
+      (await search(page).inputValue()) === "pythagorean",
+      `fast typing lost keystrokes: "${await search(page).inputValue()}"`,
+    );
+    await page.waitForURL((url) => url.searchParams.get("q") === "pythagorean");
+    await search(page).fill("slope");
+    await page.waitForURL((url) => url.searchParams.get("q") === "slope");
+    await settle(page, 200);
     const sloped = await visibleRows(page);
     check(sloped > 0 && sloped < all, `"slope" narrows the list (${sloped})`);
     check(
