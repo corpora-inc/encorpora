@@ -692,7 +692,7 @@ export const texasHsLessons: Lesson[] = [
         "The domain is all real numbers, unless the situation limits the input.",
         "The boundary of the range is the number added at the end, $k$. The sign of the number in front of the power picks the side: positive means above $k$, negative means below.",
         "The boundary is never reached, so use $<$ or $>$, not $\\le$ or $\\ge$.",
-        "A model is an equation that stands for a real situation. In a model of time that starts at $t = 0$, the domain is usually $t \\ge 0$, read “$t$ is greater than or equal to 0.” A situation that ends at some time also limits $t$ from above. The starting value $f(0)$ is then a real output, so the range starts at $f(0)$ and includes it. If the outputs shrink toward the boundary, the range lies between $f(0)$ and the boundary. If they grow away from it, the range goes from $f(0)$ outward, without end if time has no end.",
+        "A model is an equation that stands for a real situation. In a model of time that starts at $t = 0$, the domain is usually $t \\ge 0$, read “$t$ is greater than or equal to 0.” If the situation ends at some time, that also limits $t$ from above. The starting value $f(0)$ is then a real output, so the range starts at $f(0)$ and includes it. If the outputs shrink toward the boundary, the range lies between $f(0)$ and the boundary. If they grow away from it, the range goes from $f(0)$ outward, without end if time has no end.",
       ],
     },
     formal: {
