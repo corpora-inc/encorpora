@@ -123,10 +123,15 @@
   .practice-surface:has(> .feedback) > .answer-dock {
     border-left-color: transparent;
   }
+  /* The sheet is as tall as what it says and centred in the answer column,
+     where Check was, instead of spreading its result and Next to the
+     column's two ends. */
   .practice-surface > .feedback {
     top: 0;
+    height: fit-content;
     min-height: 0;
-    max-height: none;
+    max-height: 100%;
+    margin-block: auto;
     overflow: hidden;
   }
   /* The column is narrower than a stacked prompt line; one step smaller reads
@@ -147,6 +152,15 @@
   .problem-content .figure {
     height: min(50dvh, 420px);
     max-height: min(420px, var(--figure-cap-height, 420px));
+  }
+  /* Large tablets and desktops: a third more room for the figure, so it is
+     not a phone-sized drawing in a wide card. Its labels stay below the
+     prompt's size. */
+  @media (min-width: 1200px) and (min-height: 760px) {
+    .problem-content .figure {
+      height: min(55dvh, 520px);
+      max-height: min(520px, calc(var(--figure-cap-height, 400px) * 1.3));
+    }
   }
   .practice-surface:has(> .editor-dock) > .feedback {
     top: auto;
@@ -185,5 +199,22 @@
   .editor-dock ~ .feedback > .next-action,
   .editor-dock ~ .feedback > .practice-tools {
     flex: none;
+  }
+}
+
+/* Tall portrait tablets (iPad Pro, 900 px and wider screens on end): the
+   stacked problem has a third of the screen to itself before the dock, so
+   its figure draws larger instead of floating small in white space. Labels
+   stay below the prompt's size. */
+@media (orientation: portrait) and (min-width: 760px) and (min-height: 1100px) {
+  .problem-content .figure {
+    height: min(34dvh, 460px);
+    max-height: min(460px, calc(var(--figure-cap-height, 354px) * 1.3));
+  }
+  .answer-dock {
+    width: min(100%, 680px);
+  }
+  .feedback {
+    width: min(calc(100% - 24px), 680px);
   }
 }

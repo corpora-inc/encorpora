@@ -357,7 +357,10 @@ header {
   flex-direction: column;
   gap: 10px;
   width: min(calc(100% - 24px), 620px);
-  min-height: min(calc(var(--dock-height, 12px) - 12px), 72%);
+  /* Sized to what it says, anchored at the bottom where Check was: Next
+     stays in the thumb zone and no empty band opens above it when the dock
+     it replaces was taller (multi-select, keypad). */
+  min-height: 0;
   max-height: max(min(72%, 440px), var(--dock-height, 0px));
   margin: 0 auto;
   padding: 16px;
@@ -2142,7 +2145,7 @@ html[data-input="pointer"] :focus-visible {
     right: 0;
     bottom: 0;
     width: 100%;
-    min-height: var(--dock-height, 0px);
+    min-height: 0;
     max-height: max(78%, var(--dock-height, 0px));
     padding: 16px 16px calc(12px + env(safe-area-inset-bottom, 0px));
     border-width: 1px 0 0;
