@@ -129,7 +129,7 @@ const entries: Entry[] = [
     title: "Scientific notation: write, divide and multiply",
     goal: "Write numbers in scientific notation, then divide and multiply numbers written that way.",
     summary:
-      "A power of 10 is a product of 10s: $10^{5}=100{,}000$. Scientific notation is a way to write a number as a number from 1 up to 10 times a power of 10, such as $3\\times10^{5}$. The power of 10 sets the size, and the first number carries the digits.",
+      "A power of 10 is a product of 10s: $10^{5}=100{,}000$. Scientific notation is a way to write a number as a number that is 1 or more and less than 10, times a power of 10, such as $3\\times10^{5}$. The power of 10 sets the size, and the first number carries the digits.",
     noLink: ["change"],
     senses: { product: "product-multiply", factors: "factor-number" },
     objectives: [
@@ -137,7 +137,7 @@ const entries: Entry[] = [
       "Divide two numbers in scientific notation to compare them, and multiply a count by one to find a total.",
     ],
     intuition:
-      "300,000 is 3 times 100,000, and $100{,}000=10^{5}$, so 300,000 is $3\\times10^{5}$. The small raised 5 is called the exponent. It counts the places the decimal point moves when you multiply by $10^{5}$. A negative exponent means dividing: $10^{-3}=\\frac{1}{1000}=0.001$. So 0.001 is $1\\times10^{-3}$. For a small number, count how many places right the point moves to reach the first nonzero digit, and make that count negative. The first number is called the coefficient. It must be 1 or more and less than 10.",
+      "300,000 is 3 times 100,000, and $100{,}000=10^{5}$, so 300,000 is $3\\times10^{5}$. The small raised 5 is called the exponent. It counts the places the decimal point moves when you multiply by $10^{5}$. A negative exponent means dividing: $10^{-3}=\\frac{1}{1000}=0.001$. So 0.001 is $1\\times10^{-3}$. For a small number, count how many places right the point moves until it sits just after the first nonzero digit, and make that count negative. The first number is called the coefficient. It must be 1 or more and less than 10.",
     terms: [
       [
         "coefficient",
@@ -151,13 +151,13 @@ const entries: Entry[] = [
     method: [
       "Count the places the decimal point moves to leave one nonzero digit in front of it. Moving left gives a positive exponent; moving right gives a negative one.",
       "To find how many times greater one number is, write each as an ordinary number and divide. Or divide the coefficients and subtract the exponents.",
-      "To find a total, multiply the count by the coefficient. Then make the coefficient between 1 and 10 by changing the exponent.",
+      "To find a total, multiply the count by the coefficient. Then make the coefficient 1 or more and less than 10 by changing the exponent.",
       "Write the answer as $a\\times10^n$ and check that $a$ is 1 or more and less than 10.",
     ],
     watch:
       "A coefficient of 20 or 0.5 is not scientific notation: $20\\times10^4$ is $2\\times10^5$. Shift the point and change the exponent together.",
     principle:
-      "$a\\times10^m\\div(b\\times10^k)=\\frac{a}{b}\\times10^{m-k}$ and $c\\times(a\\times10^m)=ca\\times10^m$. Each result is then rewritten with a coefficient from 1 up to 10, by moving the decimal point and changing the exponent to keep the value.",
+      "$a\\times10^m\\div(b\\times10^k)=\\frac{a}{b}\\times10^{m-k}$ and $c\\times(a\\times10^m)=ca\\times10^m$. Each result is then rewritten with a coefficient that is 1 or more and less than 10, by moving the decimal point and changing the exponent to keep the value.",
     example: {
       prompt:
         "A whale weighs 300,000 pounds. A mouse weighs 0.05 pound. A seal weighs $1\\times10^{4}$ pounds and a dog $5\\times10^{1}$ pounds. How many times as heavy is the seal as the dog, and what do 1,200 seals weigh in all?",

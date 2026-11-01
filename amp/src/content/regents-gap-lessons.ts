@@ -257,7 +257,7 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
     terms: ["altitude", "geometric-mean"],
     method: [
       "Name the given leg, the whole hypotenuse and the part of the hypotenuse next to that leg.",
-      "Use $\\text{leg}^{2}=(\\text{whole hypotenuse})(\\text{part next to the leg})$ to find the whole hypotenuse.",
+      "Use $\\text{leg}^{2}=\\text{whole}\\times\\text{part}$ to find the whole hypotenuse. Here “whole” is the whole hypotenuse and “part” is the part next to that leg.",
       "Subtract the known part to find the other part, and round at the end.",
     ],
     watch:
@@ -799,7 +799,7 @@ export const regentsGapLessons: Lesson[] = [
     id: "triangle-lengths-area-decimals",
     title: "Triangle lengths and areas to the nearest tenth",
     summary:
-      "A right triangle is a triangle with a square corner, called a right angle. If its two short sides are equal, its longest side is about 1.414 times as long as each. A triangle's area, the space inside it, can be found from two sides and the angle between them. A line from the square corner to the longest side splits that side into parts you can find. Round only at the end.",
+      "A right triangle is a triangle with a square corner, called a right angle. If its two short sides are equal, its longest side is about 1.414 times as long as each. A triangle's area, the space inside it, can be found from two sides and the angle between them. The line from the square corner that meets the longest side at a right angle splits that side into parts you can find. Round only at the end.",
     senses: {
       side: "side",
       sides: "side",

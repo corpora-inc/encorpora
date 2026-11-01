@@ -139,7 +139,7 @@ const entries: Entry[] = [
     title: "Solve an inequality and choose its graph",
     goal: "Solve a one- or two-step inequality and choose the number line that shows every solution.",
     summary:
-      "An inequality is a statement that compares two amounts with a sign such as $<$ (less than) or $\\ge$ (greater than or equal to). A solution is a number that makes it true. Solve it like an equation, doing the same to both sides (the amounts on each side of the sign). Multiplying or dividing both sides by a negative number, one less than 0, reverses the sign. Then a number line shows every solution.",
+      "An inequality is a statement that compares two amounts with a sign such as $<$ (less than) or $\\ge$ (greater than or equal to). A solution is a number that makes it true. Solve it like an equation, doing the same to both sides (the amounts on each side of the sign). Multiplying or dividing both sides by a negative number, a number less than 0, reverses the sign. Then a number line shows every solution.",
     senses: {
       side: "side-of-equation",
       sides: "side-of-equation",

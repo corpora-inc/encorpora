@@ -230,7 +230,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-sci-notation-select": {
     goal: "Choose the true equations that write a digit times a power of ten as a standard numeral.",
     intuition:
-      "A power of 10 is a product of 10s, 10 multiplied by itself some number of times: $10^{3}=10\\times10\\times10=1000$. The small raised 3 is called the exponent. Scientific notation is a way to write a number as a number from 1 up to 10 times a power of 10, such as $2\\times10^{3}=2000$. Multiplying by 10 moves the decimal point one place right. A negative exponent means dividing instead: $10^{-1}=\\frac{1}{10}$. So multiplying by $10^{-1}$ moves the point one place left. For a positive number, a positive exponent makes it larger. A negative exponent makes it smaller, but it stays positive: $2\\times10^{-3}=0.002$.",
+      "A power of 10 is a product of 10s, 10 multiplied by itself some number of times: $10^{3}=10\\times10\\times10=1000$. The small raised 3 is called the exponent. Scientific notation is a way to write a number as a number that is 1 or more and less than 10, times a power of 10, such as $2\\times10^{3}=2000$. Multiplying by 10 moves the decimal point one place right. A negative exponent means dividing instead: $10^{-1}=\\frac{1}{10}$. So multiplying by $10^{-1}$ moves the point one place left. For a positive number, a positive exponent makes it larger. A negative exponent makes it smaller, but it stays positive: $2\\times10^{-3}=0.002$.",
     senses: { product: "product-multiply" },
     terms: [
       "scientific-notation",
@@ -298,7 +298,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
   "mcas-circle-equation-select": {
     goal: "From the equation of a circle, choose the true statements about its center, radius, points and the origin.",
     intuition:
-      "A circle is all the points at one distance from a point called the center. That distance is called the radius. Coordinates are the two numbers $(x,y)$ that locate a point: across $x$, then up $y$. The origin is the point $(0,0)$. The equation $(x-h)^{2}+(y-k)^{2}=r^{2}$ says a point $(x,y)$ is at distance $r$ from the center $(h,k)$. For example, $(x-2)^{2}+(y+1)^{2}=9$ has center $(2,-1)$ and radius 3. The opposite of a number has the other sign: the opposite of 2 is $-2$. The numbers inside the parentheses are the opposites of the center's coordinates. The right side, the part after the equals sign, is the radius squared: $3\\times3=9$. A square root is a number that times itself gives a given number, so the radius is the square root of the right side.",
+      "A circle is all the points at one distance from a point called the center. That distance is called the radius. Coordinates are the two numbers $(x,y)$ that locate a point: across $x$, then up $y$. The origin is the point $(0,0)$. The equation $(x-h)^{2}+(y-k)^{2}=r^{2}$ says a point $(x,y)$ is at distance $r$ from the center $(h,k)$. For example, $(x-2)^{2}+(y+1)^{2}=9$ has center $(2,-1)$ and radius 3. The opposite of a number has the other sign: the opposite of 2 is $-2$. Each coordinate of the center is the number that makes its parentheses 0: $x-2=0$ at $x=2$, and $y+1=0$ at $y=-1$. So each is the opposite of the number written inside. The right side, the part after the equals sign, is the radius squared: $3\\times3=9$. A square root is a number that times itself gives a given number, so the radius is the square root of the right side.",
     senses: {
       center: "center",
       opposite: "opposite-number",
@@ -315,7 +315,7 @@ export const mcasGapMethods: Record<string, ProblemMethod> = {
       "radius",
     ],
     method: [
-      "Read $h$ and $k$ as the opposites of the numbers in the parentheses. The radius $r$ is the square root of the right side.",
+      "Read $h$ and $k$ as the numbers that make each parentheses 0, the opposites of the numbers written inside. The radius $r$ is the square root of the right side.",
       "A point is on the circle if putting its coordinates into the left side gives the right side.",
       "The origin is inside if its distance from the center is less than $r$, outside if it is greater, and on the circle if it equals $r$.",
       selectStep,
@@ -731,7 +731,7 @@ export const mcasGapLessons: Lesson[] = [
       [
         "A fraction bar means division: $\\frac{3}{4}$ is $3\\div4$. The top number is called the numerator, and the bottom number is called the denominator. A negative divided by a positive is negative, and so is a positive divided by a negative. A negative divided by a negative is positive.",
         "An integer is a whole number or its negative, such as $-3$, 0 or 7. A rational number is a number that can be written as one integer divided by another, not by 0. An irrational number is a number that cannot be written that way, such as $\\sqrt{2}$ or $\\pi$. A square root is a number that times itself gives the number inside: $\\sqrt{49}=7$. A perfect square is a whole number times itself, such as 49.",
-        "A power of 10 is a product of 10s, such as $10^{3}=10\\times10\\times10=1000$. Scientific notation is a way to write a number as a number from 1 up to 10 times a power of 10, such as $2\\times10^{3}$. The small raised number is called the exponent. A negative exponent means dividing by 10 that many times: $10^{-2}=\\frac{1}{100}$.",
+        "A power of 10 is a product of 10s, such as $10^{3}=10\\times10\\times10=1000$. Scientific notation is a way to write a number as a number that is 1 or more and less than 10, times a power of 10, such as $2\\times10^{3}$. The small raised number is called the exponent. A negative exponent means dividing by 10 that many times: $10^{-2}=\\frac{1}{100}$.",
       ],
     ],
     workedExample: {
@@ -750,7 +750,7 @@ export const mcasGapLessons: Lesson[] = [
         "For scientific notation, move the decimal point right for a positive exponent and left for a negative one.",
       ]),
       formal("Rules", [
-        "For integers $a$ and $b$ with $b\\neq0$: $-\\frac{a}{b}=\\frac{-a}{b}=\\frac{a}{-b}$ and $\\frac{-a}{-b}=\\frac{a}{b}$. Multiplying $c$ by $10^{k}$ moves its decimal point $k$ places: right when $k>0$, left when $k<0$.",
+        "For integers $a$ and $b$ with $b\\neq0$: $-\\frac{a}{b}=\\frac{-a}{b}=\\frac{a}{-b}$ and $\\frac{-a}{-b}=\\frac{a}{b}$. Multiplying $c$ by $10^{k}$ moves its decimal point right $k$ places when $k>0$, and left $|k|$ places when $k<0$. Here $|k|$ is $k$ without its sign.",
       ]),
     ],
     pitfalls: [

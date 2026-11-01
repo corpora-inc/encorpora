@@ -23,7 +23,7 @@ export const regentsAlgebraOneFigureMethods: Record<string, ProblemMethod> = {
     goal: "Use the vertical line test to decide which graph shows a function.",
     intuition:
       "A function is a rule that turns each input, the number you put in, into exactly one output, the number you get out. On a graph, the input is the position left or right, and the output is the height. A vertical line is a line straight up and down. If some vertical line touches a graph in two places, one input has two outputs, so the graph is not a function. At most means no more than: at most once is once or not at all.",
-    noLink: ["more than", "rule"],
+    noLink: ["more than", "rule", "side"],
     terms: [
       "vertical-line-test",
       [
@@ -43,7 +43,7 @@ export const regentsAlgebraOneFigureMethods: Record<string, ProblemMethod> = {
   "inequality-both-sides-number-line": {
     goal: "Solve an inequality with the variable on both sides, and choose the number line with the right boundary and direction.",
     intuition:
-      "An inequality is a statement that compares two amounts with a sign such as $<$ (less than) or $\\ge$ (greater than or equal to). It has two sides: the amounts to the left and right of its sign. A variable is a letter that stands for a number. A solution is a number that makes the inequality true. A term is one piece of a side, joined to the others by + or −. Solve with the same steps as an equation, plus one rule. To reverse the inequality sign means to turn it around: $<$ becomes $>$. Multiplying or dividing both sides by a negative number, one less than 0, reverses the inequality sign. In these problems the solutions are every number on one side of a boundary number. An open circle is a hollow dot at the boundary: the boundary is not a solution. A closed circle is a filled dot: the boundary is a solution.",
+      "An inequality is a statement that compares two amounts with a sign such as $<$ (less than) or $\\ge$ (greater than or equal to). It has two sides: the amounts to the left and right of its sign. A variable is a letter that stands for a number. A solution is a number that makes the inequality true. A term is one piece of a side, joined to the others by + or −. Solve with the same steps as an equation, plus one rule. To reverse the inequality sign means to turn it around: $<$ becomes $>$. Multiplying or dividing both sides by a negative number, a number less than 0, reverses the inequality sign. In these problems the solutions are every number on one side of a boundary number. An open circle is a hollow dot at the boundary: the boundary is not a solution. A closed circle is a filled dot: the boundary is a solution.",
     senses: {
       side: "side-of-equation",
       sides: "side-of-equation",
@@ -166,14 +166,14 @@ export const regentsAlgebraOneFigureLessons: Lesson[] = [
         "Have your learner hold a pencil upright and slide it across each graph.",
     }),
     senses: { center: "center" },
-    noLink: ["more than", "rule", "units"],
+    noLink: ["more than", "rule", "units", "side"],
   },
   {
     ...chainLesson({
       id: "regents-inequality-both-sides-number-line",
       title: "Inequalities with the variable on both sides",
       summary:
-        "An inequality is a statement that compares two amounts with a sign such as $<$ (less than) or $\\ge$ (greater than or equal to). It has two sides: the amounts left and right of its sign. A variable is a letter that stands for a number. When the variable is on both sides, collect the variable parts on one side, then divide. If you divide by a negative number, one less than 0, reverse the sign: $<$ becomes $>$. A solution is a number that makes the inequality true, and a number line shows them all. The boundary, where the solutions start, may sit halfway between two marks.",
+        "An inequality is a statement that compares two amounts with a sign such as $<$ (less than) or $\\ge$ (greater than or equal to). It has two sides: the amounts left and right of its sign. A variable is a letter that stands for a number. When the variable is on both sides, collect the variable parts on one side, then divide. If you divide by a negative number, a number less than 0, reverse the sign: $<$ becomes $>$. A solution is a number that makes the inequality true, and a number line shows them all. The boundary, where the solutions start, may sit halfway between two marks.",
       templateIds: ["inequality-both-sides-number-line"],
       objectives: [
         "Collect variable terms on one side and constants on the other.",
