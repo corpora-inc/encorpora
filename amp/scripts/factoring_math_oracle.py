@@ -230,7 +230,8 @@ def review_explanation(problem):
     chains = sum(review_equalities(step) for step in steps)
     require(chains >= 2, 'Factoring explanation lacks explicit equality steps')
     labels = {option['id']: option['label'] for option in public['response']['options']}
-    require(labels[key] in ' '.join(steps), 'Explanation omits the factored answer')
+    # The closing summary restates the answer; the derivation before it must reach it too.
+    require(labels[key] in ' '.join(steps[:-1]), 'Explanation omits the factored answer')
     feedback = problem.get('choiceFeedback', {})
     require(set(feedback) == set(labels)-{key}, 'Missing or extraneous choice feedback')
     for option, text in feedback.items():
@@ -242,10 +243,12 @@ def review_explanation(problem):
         common, power = greatest_monomial(target)
         divisors = [d for d in range(1, common+1) if all(v % d == 0 for v in target)]
         expected = 'Common positive coefficient factors: '+', '.join(map(str, divisors))+f'. The greatest is {common}.'
-        require(steps[0] == expected, 'Incorrect common coefficient factors')
+        derived = [step for step in steps if step.startswith('Common positive coefficient factors: ')]
+        require(derived == [expected], 'Incorrect common coefficient factors')
+        after = steps[steps.index(expected) + 1]
         expected = (f'The smallest exponent of $x$ among the nonzero terms is {power}. The common variable factor is $'+{1:'x',2:'x²'}[power]+'$.'
                     if power else 'A nonzero constant term has no factor $x$, so no power of $x$ is common to every term.')
-        require(steps[1] == expected, 'Incorrect common variable factor')
+        require(after == expected, 'Incorrect common variable factor')
     else:
         require(len(public['response']['options']) >= 3, 'Quadratic practice must have at least three distinct middle coefficients')
         claim = [step for step in steps if step.startswith('For ')]
@@ -261,7 +264,8 @@ def review_explanation(problem):
         if public['templateId'] == 'nonmonic-quadratic-factorization':
             common, _ = greatest_monomial(target)
             magnitudes = ', '.join(str(abs(int(value))) for value in reversed(target) if value)
-            require(steps[0] == f'The GCF of the nonzero coefficient magnitudes {magnitudes} is {common}.',
+            gcf_steps = [step for step in steps if step.startswith('The GCF of the nonzero coefficient magnitudes ')]
+            require(gcf_steps == [f'The GCF of the nonzero coefficient magnitudes {magnitudes} is {common}.'],
                     'Incorrect or missing numerical-content derivation')
             sign_step = 'The leading coefficient is negative. Extract the negative of the coefficient GCF to leave a positive leading coefficient inside.'
             require((sign_step in steps) == (target[2] < 0), 'Wrong explanation for extracting a negative common factor')
