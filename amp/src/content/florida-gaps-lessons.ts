@@ -145,10 +145,10 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
     method: [
       "Ignore the signs and multiply or divide the numbers.",
       "Same signs: the result is positive. Different signs: the result is negative.",
-      "If a number being multiplied, or the number being divided, is 0, the result is 0.",
+      "If a number being multiplied is 0, the result is 0. Zero divided by a number other than 0 is 0. Dividing by 0 is not allowed.",
     ],
     watch:
-      "Two negatives give a positive product: $(-4)\\times(-5)=20$. A negative number divided by $-1$ is positive.",
+      "Two negatives give a positive product: $(-4)\\times(-5)=20$. A negative number, one less than 0, divided by $-1$ is positive.",
   },
   "fl-vector-dot-product": {
     goal: "Compute a dot product, a perpendicular condition, or a scalar projection for two-dimensional vectors.",
@@ -232,7 +232,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
   "fl-trapezoid-consequences": {
     goal: "Use the midsegment of a trapezoid and the equal angles and diagonals of an isosceles trapezoid to find a length, angle or $x$.",
     intuition:
-      "A trapezoid has four sides with exactly one pair of parallel sides, the bases. The other two sides are the legs. The midsegment joins the midpoints (halfway points) of the legs. Its length is the average of the bases. An isosceles trapezoid has equal legs, so it is symmetric: its base angles match and its two diagonals are equal.",
+      "A trapezoid has four sides with exactly one pair of parallel sides, the bases. The other two sides are the legs. The midsegment is the segment joining the midpoints of the legs; a midpoint is the point halfway along. Its length is the average of the bases. An isosceles trapezoid has equal legs, so it is symmetric: its base angles match and its two diagonals are equal.",
     senses: { average: "mean-average", side: "side" },
     noLink: ["base", "bases"],
     terms: [
@@ -252,7 +252,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       "Isosceles trapezoid diagonals are equal. Set their expressions equal, solve for $x$, then find the length.",
     ],
     watch:
-      "The two angles on the same leg add to $180^\\circ$ because the bases are parallel; they are not equal. The equal angles are the two on the same base.",
+      "The two angles on the same leg add to $180^\\circ$ because the bases are parallel. Set their sum to $180^\\circ$; they are equal only if both are $90^\\circ$. In an isosceles trapezoid, the equal angles are the two on the same base.",
   },
 };
 
@@ -276,9 +276,9 @@ export const floridaGapPrinciples: Record<string, string> = {
   "fl-two-step-story-equation":
     "If each of $g$ equal groups holds $n$ objects, the total is $gn$. Adding $e$ objects outside the groups gives $gn+e$. Adding $e$ objects to every group gives $g(n+e)=gn+ge$, a different total.",
   "fl-metric-customary-conversion":
-    "If $1\\,A=k\\,B$ for units $A$ and $B$ and a positive number $k$, then $x\\,A=kx\\,B$ and $y\\,B=\\frac{y}{k}\\,A$. For areas, use a factor between square units, such as $1\\text{ in}^2=6.45\\text{ cm}^2$ (square inches and square centimeters).",
+    "If $1\\,A=k\\,B$ for units $A$ and $B$ and a positive number $k$, then $x\\,A=kx\\,B$ and $y\\,B=\\frac{y}{k}\\,A$. For areas, the amount of flat space covered, use a factor between square units, such as $1\\text{ in}^2=6.45\\text{ cm}^2$ (square inches and square centimeters).",
   "fl-integer-multiply-divide":
-    "For integers $a$ and $b$, $(-a)b=-(ab)$ and $(-a)(-b)=ab$, where $ab$ means $a$ times $b$. Division by a number $b\\ne0$ ($b$ is not 0) undoes multiplication by $b$, so the quotient of two integers has the same sign their product would have. $0\\cdot a=0$, and division by 0 is undefined (it has no answer).",
+    "For integers $a$ and $b$, $(-a)b=-(ab)$ and $(-a)(-b)=ab$, where $ab$ means $a$ times $b$. Division by a number $b\\ne0$ ($b$ is not 0) undoes multiplying by $b$, so the quotient of two integers has the same sign their product would have. $0\\cdot a=0$, and division by 0 is undefined (it has no answer).",
   "fl-vector-dot-product":
     "For vectors $\\mathbf{u}=\\langle u_1,u_2\\rangle$ and $\\mathbf{v}=\\langle v_1,v_2\\rangle$, $\\mathbf{u}\\cdot\\mathbf{v}=u_1v_1+u_2v_2$. Nonzero vectors are perpendicular exactly when $\\mathbf{u}\\cdot\\mathbf{v}=0$. The scalar projection of $\\mathbf{u}$ on $\\mathbf{v}$ is $\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|}$.",
   "fl-vector-angle":
@@ -566,8 +566,16 @@ export const floridaGapLessons: Lesson[] = [
     title: "Convert between customary and metric units",
     summary:
       "The same length can be measured in inches or in centimeters. A conversion factor tells how the two units compare, such as “1 inch = 2.54 centimeters.” To change inches into centimeters, multiply by 2.54. To change centimeters back into inches, divide by 2.54. The smaller unit always needs the bigger number.",
-    senses: { unit: "unit" },
-    noLink: ["factor", "factors", "square", "squares", "change", "changes"],
+    senses: { unit: "unit", "more than": "more-than" },
+    noLink: [
+      "factor",
+      "factors",
+      "square",
+      "squares",
+      "change",
+      "changes",
+      "side",
+    ],
     templateIds: ["fl-metric-customary-conversion"],
     objectives: [
       "Read a conversion factor (a statement like “1 inch = 2.54 centimeters”) and use it in either direction.",
@@ -577,7 +585,7 @@ export const floridaGapLessons: Lesson[] = [
       "A factor tells how many of one unit make one of another",
       [
         "You need to multiply and divide decimals. A unit is a fixed amount used to measure, such as an inch or a kilogram.",
-        "There are two main families of units. Customary units, such as inches, pounds and gallons, are used in the United States. Metric units, such as centimeters, kilograms and liters, are used in most of the world.",
+        "There are two main families of units. Customary units, such as inches, pounds and gallons, are used in the United States. Metric units, such as centimeters, kilograms and liters (a liter is a little more than a quart), are used in most of the world.",
         "A conversion factor links a unit in one family to a unit in the other. The factor $1\\text{ inch} = 2.54\\text{ centimeters}$ says that one inch is as long as 2.54 centimeters.",
         "Converting does not change how long something is. It only changes the unit we count with. A centimeter is smaller than an inch, so it takes more centimeters to cover the same ribbon. So the number in centimeters is larger.",
       ],
@@ -600,7 +608,7 @@ export const floridaGapLessons: Lesson[] = [
           "Write the factor as “1 of one unit = $k$ of the other.” Here $k$ stands for the number in the factor, such as 2.54.",
           "Going from the unit with the 1 to the other unit, multiply by $k$. Each one of the first unit becomes $k$ of the second.",
           "Going the other way, divide by $k$. For example, 50.8 centimeters is $50.8 \\div 2.54 = 20$ inches.",
-          "Area is measured in square units, such as square inches. For area, use a factor between square units, such as $1\\text{ square inch} = 6.45\\text{ square centimeters}$. Money works the same way with a stated exchange rate, such as 1 dollar = 0.9 euro.",
+          "Area is counted in square units, the little squares 1 unit on each side, such as square inches. For area, use a factor between square units, such as $1\\text{ square inch} = 6.45\\text{ square centimeters}$. Money works the same way with a stated exchange rate, such as 1 dollar = 0.9 euro.",
         ],
       },
       {
@@ -609,12 +617,12 @@ export const floridaGapLessons: Lesson[] = [
         paragraphs: [
           "Let $A$ and $B$ be two units, and let $k$ be a positive number with $1\\,A = k\\,B$.",
           "Then $x$ of unit $A$ equals $kx$ of unit $B$. And $y$ of unit $B$ equals $\\frac{y}{k}$ of unit $A$, which means $y$ divided by $k$.",
-          "Many factors are rounded, such as $1\\text{ pound} = 0.45\\text{ kilogram}$. Use the factor the problem gives, so the answer matches its rounding.",
+          "Many factors are rounded, which means shortened to a close, simpler number, such as $1\\text{ pound} = 0.45\\text{ kilogram}$. Use the factor the problem gives, so the answer matches its rounding.",
         ],
       },
     ],
     pitfalls: [
-      "Going to the smaller unit gives a bigger number, so multiply. Dividing would make the number smaller, which cannot be right.",
+      "Going to the smaller unit must give a bigger number. Use the factor to decide whether to multiply or divide, then check the size of your answer.",
       "Use the factor the problem gives, even if you remember a slightly different one.",
       "For area, use a square-unit factor. A length factor such as 2.54 does not convert square inches.",
     ],
@@ -625,7 +633,7 @@ export const floridaGapLessons: Lesson[] = [
     id: "integer-multiply-divide",
     title: "Multiply and divide integers",
     summary:
-      "Integers are the whole numbers, their negatives and zero: …, −2, −1, 0, 1, 2, …. To multiply or divide two of them, first ignore the minus signs and work with the sizes. Then decide the sign. If both numbers have the same sign, the answer is positive. If their signs are different, the answer is negative. So $(-3) \\times 4 = -12$, and $(-3) \\times (-4) = 12$.",
+      "Integers are the whole numbers, their negatives and zero: …, −2, −1, 0, 1, 2, …. To multiply or divide two of them, first ignore the minus signs and work with the sizes. Then decide the sign. If both numbers have the same sign, the answer is positive. If their signs are different, the answer is negative. So $(-3) \\times 4 = -12$, and $(-3) \\times (-4) = 12$. Zero is neither positive nor negative: any number times 0 is 0, and dividing by 0 is not allowed.",
     senses: {
       opposite: "opposite-number",
       product: "product-multiply",
@@ -641,10 +649,10 @@ export const floridaGapLessons: Lesson[] = [
       "Sign rules from repeated groups",
       [
         "You need to multiply and divide whole numbers and know what negative numbers are. A negative number is less than 0, like $-4$. It is written with a minus sign.",
-        "An integer is a whole number, its negative, or 0. The opposite of a number is the number the same distance from 0 on the other side, so the opposite of 4 is $-4$.",
-        "Multiplying means adding equal groups. $3 \\times (-4)$ means 3 groups of $-4$: $-4 + (-4) + (-4) = -12$. One negative number gives a negative answer.",
-        "Now look at a pattern. $3 \\times (-4) = -12$, $2 \\times (-4) = -8$, $1 \\times (-4) = -4$, $0 \\times (-4) = 0$. Each time the first number goes down by 1, the answer goes up by 4. Keep going: $(-1) \\times (-4) = 4$ and $(-2) \\times (-4) = 8$. Two negatives give a positive answer.",
-        "Division undoes multiplication. Since $(-6) \\times 8 = -48$, we know $(-48) \\div (-6) = 8$. So division follows the same sign rule as multiplication.",
+        "An integer is a whole number, its negative, or 0. Two numbers the same distance from 0 in different directions are called opposites. So the opposite of 4 is $-4$.",
+        "Multiplication is a way of adding equal groups, which are groups of the same size. $3 \\times (-4)$ means 3 groups of $-4$: $-4 + (-4) + (-4) = -12$. One negative number gives a negative answer.",
+        "Now look at a pattern, a list that changes the same way each step. $3 \\times (-4) = -12$, $2 \\times (-4) = -8$, $1 \\times (-4) = -4$, $0 \\times (-4) = 0$. Each time the first number goes down by 1, the answer goes up by 4. Keep going: $(-1) \\times (-4) = 4$ and $(-2) \\times (-4) = 8$. Two negatives give a positive answer.",
+        "Division is the reverse of multiplication: it undoes it. Since $(-6) \\times 8 = -48$, we know $(-48) \\div (-6) = 8$. So division follows the same sign rule as multiplication.",
       ],
     ],
     workedExample: {
@@ -672,7 +680,7 @@ export const floridaGapLessons: Lesson[] = [
         paragraphs: [
           "Let $a$ and $b$ be positive numbers. A positive times a negative is negative: $a \\times (-b) = -(ab)$, where $ab$ means $a$ times $b$.",
           "Multiplying by $-a$ instead of $a$ takes the opposite again. The opposite of $-(ab)$ is $ab$. So $(-a)(-b) = ab$, a positive number.",
-          "Division by a number other than 0 undoes multiplication by it. So a quotient has the same sign that the product would have.",
+          "Division by a number other than 0 undoes multiplication by it. So a quotient has the same sign as the product, the answer you would get by multiplying the same two numbers.",
         ],
       },
     ],
@@ -841,7 +849,7 @@ export const floridaGapLessons: Lesson[] = [
     id: "trapezoid-consequences",
     title: "Trapezoid midsegment, angles and diagonals",
     summary:
-      "A trapezoid is a four-sided shape with exactly one pair of parallel sides, sides that run in the same direction and never meet. Those two sides are its bases. The segment across the middle, joining the midpoints of the other two sides, is the midsegment. Its length is the average of the two bases: for bases 8 and 20, it is (8 + 20) ÷ 2 = 14. When the two non-parallel sides are equal, the shape is symmetric, so matching angles and the two diagonals are equal too.",
+      "A trapezoid is a four-sided shape with exactly one pair of parallel sides, sides that run in the same direction and never meet. Those two sides are its bases. A segment is a straight piece of a line with two ends. The segment across the middle, joining the midpoints of the other two sides, is the midsegment. Its length is the average of the two bases: for bases 8 and 20, it is (8 + 20) ÷ 2 = 14. When the two non-parallel sides are equal, the shape is symmetric, so matching angles and the two diagonals are equal too.",
     senses: {
       average: "mean-average",
       side: "side",
@@ -861,7 +869,7 @@ export const floridaGapLessons: Lesson[] = [
         "A trapezoid has four straight sides and exactly one pair of parallel sides. Parallel means the two sides point the same way and never meet, however far they are extended. The parallel sides are the bases. The other two sides are the legs.",
         "Problems use short symbols. $\\overline{AB}$ means the segment from point $A$ to point $B$, and $AB$ means its length. The sign $\\parallel$ means “is parallel to.”",
         "The midpoint of a leg is the point halfway along it. The midsegment is the segment that joins the midpoints of the two legs. It runs parallel to the bases, halfway between them. Its length is the average of the two bases: add them and divide by 2. So it is longer than the short base and shorter than the long base.",
-        "A trapezoid is isosceles when its two legs are equal in length. Then it is symmetric: fold it down the middle and the two halves match. So the two angles at the ends of each base are equal. Those are called base angles. The two diagonals, the segments joining opposite corners, are equal in length too.",
+        "A trapezoid whose two legs are equal in length is called isosceles. Then it is symmetric: fold it down the middle and the two halves match. So the two angles at the ends of each base are equal. Those are called base angles. The two diagonals, the segments joining opposite corners, are equal in length too.",
         "Two angles that add to $180^\\circ$ are called supplementary. Here $^\\circ$ means degrees, the unit for angles. Along one leg, the angle at the top and the angle at the bottom are supplementary. That is true because the bases are parallel, the same reason the inside angles on one side of a line crossing two parallel lines add to $180^\\circ$.",
       ],
     ],
@@ -880,7 +888,7 @@ export const floridaGapLessons: Lesson[] = [
         stage: "method",
         title: "Choose the theorem",
         paragraphs: [
-          "A theorem is a statement that has been proved true. Pick the one that fits what is given.",
+          "A theorem is a statement that has been shown true by careful reasoning. Pick the one that fits what is given.",
           "Midsegment given or asked: use $m = \\frac{b_1 + b_2}{2}$. Here $m$ is the midsegment's length, and $b_1$ and $b_2$ (read “$b$ one” and “$b$ two”) are the two bases.",
           "Angles in an isosceles trapezoid: the two angles on the same base are equal. The two angles on the same leg add to $180^\\circ$.",
           "Diagonals of an isosceles trapezoid: they are equal, so set their lengths equal.",
@@ -899,7 +907,7 @@ export const floridaGapLessons: Lesson[] = [
     ],
     pitfalls: [
       "The midsegment is the average of the bases, not their sum. Divide the sum by 2.",
-      "Angles on the same leg add to $180^\\circ$. Do not set them equal; the equal angles are the two on the same base.",
+      "Angles on the same leg add to $180^\\circ$, so set their sum equal to $180^\\circ$. In an isosceles trapezoid, the equal angles are the two on the same base.",
       "Equal base angles and equal diagonals hold only when the trapezoid is isosceles.",
     ],
     parentGuide:

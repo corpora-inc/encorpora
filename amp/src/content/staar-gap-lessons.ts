@@ -53,7 +53,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-rename-percent-fraction-decimal": {
     goal: "Rename a percent as a decimal, a fraction as a decimal or percent, or a decimal as a mixed number (a whole number plus a fraction).",
     intuition:
-      "Renaming writes the same amount another way. Percent means “out of 100,” so 35% is 35 hundredths, or 0.35. A fraction bar means divide: $\\frac{9}{4}$ is $9 \\div 4 = 2.25$. A decimal such as 4.58 is 4 wholes plus 58 hundredths, the mixed number $4\\frac{58}{100}$.",
+      "Renaming means writing the same amount another way. Percent means “out of 100,” so 35% is 35 hundredths, or 0.35. A fraction bar means divide: $\\frac{9}{4}$ is $9 \\div 4 = 2.25$. A decimal such as 4.58 is 4 wholes plus 58 hundredths. A mixed number is a whole number with a fraction beside it, here $4\\frac{58}{100}$.",
     senses: { rename: "rename", "more than": "more-than" },
     noLink: ["whole", "part", "wholes"],
     terms: ["percent", "mixed-number"],
@@ -61,7 +61,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "Percent to decimal: divide by 100, which moves the decimal point two places left.",
       "Fraction to decimal: divide the top number by the bottom number. For a percent, multiply that decimal by 100.",
       "Decimal to mixed number: keep the whole number. Put the digits after the point over 10 for one digit, or over 100 for two.",
-      "Check the size: a percent over 100% is more than 1, and so is a fraction whose top is bigger than its bottom.",
+      "Check the size: a percent over 100% is more than 1, and so is a fraction of positive numbers whose top is bigger than its bottom.",
     ],
     watch:
       "Keep a zero in the tenths place when it is there: 4.07 is $4\\frac{7}{100}$, not $4\\frac{7}{10}$.",
@@ -69,7 +69,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-ratio-statements": {
     goal: "Write a ratio from two counts in simplest form, split a total using a ratio, or find a unit rate (an amount for one unit).",
     intuition:
-      "A ratio compares two amounts in a set order. 12 red to 18 blue is written $12:18$, read “12 to 18.” Dividing both numbers by the same number keeps the comparison, so $12:18$ is the same as $2:3$. A unit rate says how much goes with 1 of the second amount, such as 9 miles per hour.",
+      "A ratio compares two amounts in a set order. 12 red to 18 blue is written $12:18$, read “12 to 18.” Dividing both numbers by the same number keeps the comparison, so $12:18$ is the same as $2:3$. A unit rate is the amount that goes with 1 of the second amount, such as 9 miles per hour.",
     senses: { part: "part", whole: "whole", unit: "unit" },
     terms: ["ratio", "unit-rate"],
     method: [
@@ -155,7 +155,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "To add or subtract, line up the points. Write a whole number such as 6 as 6.0.",
     ],
     watch:
-      "Write 6 as 6.0 before subtracting 2.4. Lining up the decimal points keeps tenths under tenths: $6.0 - 2.4 = 3.6$.",
+      "Write 6 as 6.0 before subtracting 2.4. Lining up the decimal points keeps tenths (the first digit after the point) under tenths: $6.0 - 2.4 = 3.6$.",
   },
   "staar-salary-percent": {
     goal: "Find a percent raise of a salary, the new salary, or how much more one job earns than another over several years.",
@@ -213,7 +213,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-line-from-points": {
     goal: "Find a line's slope and intercept from two points, its equation from a slope and a point, or the slope of $Ax+By=C$.",
     intuition:
-      "A line $y = mx + b$ ($mx$ means $m$ times $x$) is set by two numbers. The slope $m$ is how much $y$ changes when $x$ goes up by 1: the change in $y$ divided by the change in $x$. The $y$-intercept $b$ is the value of $y$ when $x = 0$. Two points give the slope. One point and the slope give $b$.",
+      "A line $y = mx + b$ ($mx$ means $m$ times $x$) is set by two numbers. The slope is how much $y$ changes when $x$ goes up by 1: the change in $y$ divided by the change in $x$. We call it $m$. The $y$-intercept is the value of $y$ when $x = 0$. We call it $b$. Two points give the slope. One point and the slope give $b$.",
     senses: {
       term: "term-expression",
       side: "side-of-equation",
@@ -286,7 +286,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-multistep-equations": {
     goal: "Solve an equation by multiplying out parentheses, combining like terms or clearing fractions, with $x$ possibly on both sides.",
     intuition:
-      "An equation says its left side equals its right side. To solve it, get $x$ alone while keeping both sides equal. First tidy each side. Distribute: a number before parentheses multiplies every term inside, sign included. Combine like terms, pieces with the same letter part such as $2x + 4x = 6x$. Clear a fraction by multiplying every term by its denominator.",
+      "An equation says its left side (the part before the equals sign) equals its right side. To solve it, get $x$ alone while keeping both sides equal. First tidy each side. A term is one piece joined by + or −. Distribute: a number before parentheses, called the factor, multiplies every term inside, sign included. Like terms are pieces with the same letter part; combine them, such as $2x + 4x = 6x$. Clear a fraction by multiplying every term by its denominator.",
     senses: {
       term: "term-expression",
       side: "side-of-equation",
@@ -301,7 +301,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
       "Check by putting the answer back into the original equation.",
     ],
     watch:
-      "Distributing a negative number changes the sign of every term inside: $-5(x+3)=-5x-15$.",
+      "Distributing a negative number, one less than 0, changes the sign of every term inside: $-5(x+3)=-5x-15$.",
   },
   "staar-experiment-probability": {
     goal: "Find an experimental probability from a table of results, or the probability of two draws when the first is put back.",
@@ -311,7 +311,7 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
     noLink: ["change"],
     terms: ["experimental-probability", "with-replacement"],
     method: [
-      "If either of two outcomes counts, add their counts from the table. Divide by the total number of trials.",
+      "If either of two outcomes counts and no trial can show both, add their counts from the table. Divide by the total number of trials.",
       "For two draws with replacement, find each draw's probability from the same full set, then multiply.",
       "Write the fraction in simplest form.",
     ],
@@ -321,15 +321,15 @@ export const staarGapMethods: Record<string, ProblemMethod> = {
   "staar-number-sets": {
     goal: "Place a number among the whole numbers, integers and rational numbers, or say where a quotient (a division answer) belongs.",
     intuition:
-      "The whole numbers are 0, 1, 2, and so on. They sit inside the integers, which also include the negatives, such as $-4$. The integers sit inside the rational numbers: every number that can be written as a fraction of integers, with a bottom that is not 0. To place a number, first work out its value.",
+      "The whole numbers are 0, 1, 2, and so on. They sit inside the integers, which also include their opposites, the negatives such as $-4$. The integers sit inside the rational numbers: every number that can be written as a fraction of integers, with a bottom that is not 0. To place a number, first work out its value.",
     senses: { opposite: "opposite-number" },
     noLink: ["part"],
     terms: ["integer", "rational-number"],
     method: [
-      "Work out the value of the number, especially a division such as $\\frac{24}{3}$.",
+      "Work out the value of the number. A fraction bar means divide, so $\\frac{24}{3}$ is $24 \\div 3$.",
       "If it is 0 or positive with no fraction part, it is a whole number.",
       "If it has no fraction part but is negative, it is an integer that is not a whole number.",
-      "If it is a fraction or decimal with a part left over, it is rational but not an integer.",
+      "If it is a fraction of integers, or a decimal that ends or repeats, with a part left over, it is rational but not an integer.",
     ],
     watch:
       "A fraction can be a whole number: $\\frac{24}{3}=8$. Divide before you decide.",
@@ -344,9 +344,9 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-number-word-form":
     "A number is the sum of each digit times its place value, so $305{,}062=300{,}000+5{,}000+60+2$. A decimal $0.d_1d_2d_3$ with $n$ digits is the whole number $d_1d_2d_3$ divided by $10^{n}$, read with the place name of the last digit.",
   "staar-rename-percent-fraction-decimal":
-    "For any number $p$, $p\\%=\\frac{p}{100}$. A fraction $\\frac{a}{b}$ with $b\\neq0$ ($b$ is not 0) means $a\\div b$, and its percent form is $100\\times(a\\div b)$ percent. A decimal with $n$ digits after the point equals those digits over $10^{n}$ (1 followed by $n$ zeros), so $4.58=4\\frac{58}{100}$.",
+    "For any number $p$, $p\\%=\\frac{p}{100}$. A fraction $\\frac{a}{b}$ with $b\\neq0$ ($b$ is not 0) means $a\\div b$, and its percent form is $100\\times(a\\div b)$ percent. A decimal with $n$ digits after the point is its whole-number part plus those digits over $10^{n}$ (1 followed by $n$ zeros), so $4.58=4\\frac{58}{100}$.",
   "staar-ratio-statements":
-    "Ratios $a:b$ and $ka:kb$ are equivalent for any number $k\\neq0$ ($k$ is not 0). If two parts are in the ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b}\\times T$. A unit rate is $a\\div b$, the amount of the first quantity for 1 unit of the second.",
+    "For positive amounts $a$ and $b$, the ratios $a:b$ and $ka:kb$ are equivalent for any number $k\\neq0$ ($k$ is not 0). If two parts are in the ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b}\\times T$. A unit rate is $a\\div b$, the amount of the first quantity for 1 unit of the second.",
   "staar-story-model-choice":
     "If $g$ equal groups of $n$ make a total $T$, then $gn=T$, $T\\div g=n$ and $T\\div n=g$. If parts $a$, $b$ and $f$ make a total $T$, then $a+b+f=T$. An equation models a story exactly when it is true for the story's values.",
   "staar-rate-equation-choice":
@@ -356,7 +356,7 @@ export const staarGapPrinciples: Record<string, string> = {
   "staar-order-mixed-forms":
     "Real numbers are ordered by their position on the number line. Fractions, percents and roots can be compared through their decimal values. For $a>0$, $\\sqrt{a}$ is the positive number whose square is $a$, so $n<\\sqrt{a}<n+1$ when $n^2<a<(n+1)^2$.",
   "staar-decimal-operations":
-    "Hundredths times a whole number are hundredths: $0.01m\\times n=0.01(mn)$, where $mn$ means $m$ times $n$. So a product of hundredths and a whole number has two digits after the point. A unit fraction $\\frac1q$ ($q$ not 0) equals $1\\div q$. Sharing a total $T$ equally among $n$ groups gives $T\\div n$ in each.",
+    "Hundredths times a whole number are hundredths: $0.01m\\times n=0.01(mn)$, where $mn$ means $m$ times $n$. So the answer has two digits after the point. A unit fraction $\\frac1q$ ($q$ not 0) equals $1\\div q$. Sharing a total $T$ equally among $n$ groups gives $T\\div n$ in each.",
   "staar-salary-percent":
     "$p$ percent of an amount $S$ is $\\frac{p}{100}\\times S$. After a raise of $p$ percent, the new amount is $S+\\frac{p}{100}\\times S$. If one salary is $d$ dollars more every year, then over $n$ years it earns $n\\times d$ dollars more.",
   "staar-measure-chains":
@@ -485,7 +485,7 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-rename-forms",
     title: "Rename percents, fractions and decimals",
     summary:
-      "One amount can be written in different ways. Percent means “out of 100,” so 35% is 35 hundredths, or 0.35. A fraction bar means divide, so $\\frac{7}{4}$ is $7 \\div 4 = 1.75$. Multiply a decimal by 100 to get a percent: 1.75 is 175%. Renaming changes how a number looks, never how much it is.",
+      "One amount can be written in different ways. Percent means “out of 100,” so 35% is 35 hundredths, or 0.35. A fraction bar means divide, so $\\frac{7}{4}$ is $7 \\div 4 = 1.75$. A decimal is a number written with a decimal point. Multiply a decimal by 100 to get a percent: 1.75 is 175%. Renaming means writing a number another way. It changes how the number looks, never how much it is.",
     senses: { rename: "rename", "more than": "more-than" },
     noLink: ["whole", "part", "changes", "wholes"],
     templateIds: ["staar-rename-percent-fraction-decimal"],
@@ -499,7 +499,7 @@ export const staarGapLessons: Lesson[] = [
       [
         "You need to divide whole numbers. To rename a number means to write the same amount another way.",
         "Percent means “out of 100.” The sign % is read “percent.” So 35% is 35 out of 100, which is 35 hundredths, written 0.35. And 100% is 100 hundredths, which is 1 whole.",
-        "A fraction has a top number, the numerator, and a bottom number, the denominator. The fraction bar means divide the top by the bottom. So $\\frac{9}{4}$ is $9 \\div 4 = 2.25$. When the top is bigger than the bottom, the fraction is more than 1.",
+        "A fraction has two numbers. The numerator is the top number. The denominator is the bottom number. The fraction bar means divide the top by the bottom. So $\\frac{9}{4}$ is $9 \\div 4 = 2.25$. When both numbers are positive and the top is bigger than the bottom, the fraction is more than 1.",
         "In a decimal, the digits after the point are tenths, then hundredths. So 4.58 is 4 wholes and 58 hundredths. As a mixed number, a whole number with a fraction beside it, that is $4\\frac{58}{100}$.",
       ],
     ],
@@ -521,7 +521,7 @@ export const staarGapLessons: Lesson[] = [
       formal("Equivalent forms", [
         "Let $p$ be any number. Then $p\\% = \\frac{p}{100}$.",
         "A fraction $\\frac{a}{b}$, with $b$ not 0, means $a \\div b$. Its percent is $100 \\times (a \\div b)$ percent.",
-        "A decimal with $n$ digits after the point equals those digits over $10^{n}$, which means 1 followed by $n$ zeros. So $0.58 = \\frac{58}{100}$.",
+        "A decimal with $n$ digits after the point is its whole-number part plus those digits over $10^{n}$, which means 1 followed by $n$ zeros. So $0.58 = \\frac{58}{100}$ and $4.58 = 4\\frac{58}{100}$.",
       ]),
     ],
     pitfalls: [
@@ -537,7 +537,12 @@ export const staarGapLessons: Lesson[] = [
     title: "Write ratios and unit rates",
     summary:
       "A ratio compares two amounts, such as 12 red beads to 18 blue beads. We write it $12:18$, read “12 to 18,” in the order the question names them. Dividing both numbers by the same number keeps the comparison the same, so $12:18$ is also $2:3$. A unit rate tells how much for one, like 9 miles for each 1 hour.",
-    senses: { part: "part", whole: "whole", unit: "unit" },
+    senses: {
+      part: "part",
+      whole: "whole",
+      unit: "unit",
+      average: "mean-average",
+    },
     templateIds: ["staar-ratio-statements"],
     objectives: [
       "Write a ratio from two counts and simplify it.",
@@ -548,9 +553,9 @@ export const staarGapLessons: Lesson[] = [
       "A ratio compares two amounts",
       [
         "You need to multiply and divide whole numbers. A ratio compares two amounts in a set order. With 12 red beads and 18 blue beads, the ratio of red to blue is $12:18$. The colon : is read “to.”",
-        "Picture the beads in equal groups of 6. There are 2 groups of red and 3 groups of blue. So for every 2 red there are 3 blue, and $12:18$ is the same comparison as $2:3$. Dividing both numbers by the same number keeps the ratio the same, just like simplifying a fraction.",
+        "Picture the beads in groups of 6, all the same size. There are 2 groups of red and 3 groups of blue. So for every 2 red there are 3 blue, and $12:18$ is the same comparison as $2:3$. Dividing both numbers by the same number keeps the ratio the same, just like simplifying a fraction.",
         "A ratio in simplest form cannot be divided further by any whole number larger than 1. The largest number that divides both is called the greatest common factor. For 12 and 18 it is 6.",
-        "A unit rate says how much of the first amount goes with 1 of the second. If a car goes 63 miles in 7 hours, it goes $63 \\div 7 = 9$ miles in each hour: 9 miles per hour.",
+        "A unit rate says how much of the first amount goes with 1 of the second. If a car goes 63 miles in 7 hours, its unit rate is $63 \\div 7 = 9$ miles per hour on average, which means as if every hour were the same.",
       ],
     ],
     workedExample: {
@@ -570,7 +575,7 @@ export const staarGapLessons: Lesson[] = [
         "For a unit rate, divide the first amount by the second. Say the units in the order asked: miles per hour means miles for each 1 hour.",
       ]),
       formal("Equivalent ratios", [
-        "Let $a$, $b$ and $k$ be numbers, with $k$ not 0. Then $a:b$ and $ka:kb$ are equivalent ratios. Here $ka$ means $k$ times $a$.",
+        "Let $a$ and $b$ be positive numbers, and $k$ a number other than 0. Then $a:b$ and $ka:kb$ are equivalent ratios, which are ratios that make the same comparison. Here $ka$ means $k$ times $a$.",
         "If two parts are in the ratio $a:b$ and the total is $T$, the first part is $\\frac{a}{a+b} \\times T$.",
         "A unit rate is $a \\div b$, the amount of the first quantity for 1 unit of the second.",
       ]),
@@ -682,7 +687,7 @@ export const staarGapLessons: Lesson[] = [
     intuition: [
       "Place the decimal point with care",
       [
-        "You need to multiply, divide, add and subtract whole numbers. In a decimal, the first digit after the point counts tenths and the second counts hundredths. So 0.18 is 18 hundredths.",
+        "You need to multiply, divide, add and subtract whole numbers. A tenth is one of 10 equal parts, and a hundredth is one of 100 equal parts. In a decimal, the first digit after the point counts tenths and the second counts hundredths. So 0.18 is 18 hundredths.",
         "Multiplying works like whole numbers. 59 times 0.18 is 59 times 18 hundredths. That is 1,062 hundredths, which is 10.62.",
         "Dividing a decimal by a whole number also works like whole numbers. Keep the decimal point in the answer straight above the point in the number being divided.",
         "To add or subtract, line up the decimal points so tenths sit under tenths. A whole number has a point at its end, so 6 is the same as 6.0. Then $6.0 - 2.4 = 3.6$.",
@@ -695,13 +700,13 @@ export const staarGapLessons: Lesson[] = [
       steps: [
         "The same amount each week means the total is shared equally among 6 weeks. Sharing equally is division: $44.40 \\div 6$.",
         "Divide as with whole numbers and keep the point straight above: $44.40 \\div 6 = 7.40$, which is the same as 7.4.",
-        "Check by multiplying back, because multiplication undoes division: $6 \\times 7.4 = 44.4$. That matches 44.40 dollars.",
+        "Check by multiplying back, because multiplying undoes dividing: $6 \\times 7.4 = 44.4$. That matches 44.40 dollars.",
       ],
       answer: "$7.4$ dollars",
     },
     closingSections: [
       method("Count places, line up points", [
-        "For a product, the answer to a multiplication, multiply as if there were no points. Then count the digits after the point in both numbers together. Give the answer that many digits after its point. For $59 \\times 0.18$, there are 2 such digits, so 1062 becomes 10.62.",
+        "For a product, the answer when you multiply, work as if there were no points. Then count the digits after the point in both numbers together. Give the answer that many digits after its point. For $59 \\times 0.18$, there are 2 such digits, so 1062 becomes 10.62.",
         "For division by a whole number, keep the point above the point.",
         "To add or subtract, line up the points and fill empty places with zeros.",
       ]),
@@ -723,7 +728,7 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-raises-and-earnings",
     title: "Find a raise and compare earnings",
     summary:
-      "A salary is the pay for one year of work. A raise is an increase in pay, often given as a percent of the salary. Percent means “out of 100,” so 1 percent of 40,000 dollars is $40{,}000 \\div 100 = 400$ dollars. A 3 percent raise is 3 of those, 1,200 dollars. If one job pays 5,000 dollars more each year, over 10 years it pays 50,000 dollars more.",
+      "A salary is the pay for one year of work. A raise is an increase in pay. Raises are often given in percent, which means “out of 100.” So 1 percent of 40,000 dollars is $40{,}000 \\div 100 = 400$ dollars. A 3 percent raise is 3 of those, 1,200 dollars. If one job pays 5,000 dollars more each year, over 10 years it pays 50,000 dollars more.",
     senses: { difference: "difference-subtract" },
     noLink: ["part", "parts"],
     templateIds: ["staar-salary-percent"],
@@ -764,7 +769,7 @@ export const staarGapLessons: Lesson[] = [
     ],
     pitfalls: [
       "The raise is only the extra pay. Add it to the old salary only when the question asks for the new salary.",
-      "To compare jobs over years, multiply the yearly difference, not each salary.",
+      "To compare jobs over years, multiply the yearly difference by the years, or find each job's total and subtract. Do not subtract one yearly salary from the other job's total.",
     ],
     parentGuide:
       "Ask what 1 percent of 50,000 is, and how to use that to find 4 percent.",
@@ -855,13 +860,13 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-lines-from-data",
     title: "Find a line's slope and intercept",
     summary:
-      "A straight line on a graph can be described by two numbers. The slope tells how much $y$ goes up (or down) each time $x$ goes up by 1. The $y$-intercept is the value of $y$ where the line crosses the $y$-axis, which is where $x = 0$. For the points $(1, 5)$ and $(3, 11)$, $y$ rises 6 while $x$ rises 2, so the slope is $6 \\div 2 = 3$.",
+      "A straight line on a graph that is not vertical (straight up and down) can be described by two numbers. The slope tells how much $y$ goes up (or down) each time $x$ goes up by 1. The $y$-intercept is the value of $y$ where the line crosses the $y$-axis, which is where $x = 0$. For the points $(1, 5)$ and $(3, 11)$, $y$ rises 6 while $x$ rises 2, so the slope is $6 \\div 2 = 3$.",
     senses: {
       term: "term-expression",
       side: "side-of-equation",
       "standard form": "standard-form-line",
     },
-    noLink: ["change", "changes"],
+    noLink: ["change", "changes", "parts"],
     templateIds: ["staar-line-from-points"],
     objectives: [
       "Find the slope and the $y$-intercept of a line from two points on it.",
@@ -871,7 +876,7 @@ export const staarGapLessons: Lesson[] = [
     intuition: [
       "Slope and starting value",
       [
-        "You need to subtract and divide integers, which are whole numbers, their negatives and 0. A point $(x, y)$ gives two numbers: first how far across, then how far up.",
+        "You need to subtract and divide integers: the numbers 0, 1, 2, 3 and so on, and their negatives. A point $(x, y)$ gives two numbers: first how far across, then how far up.",
         "The slope of a line is how much $y$ changes when $x$ goes up by 1. We call it $m$. Find it from two points: divide the change in $y$ by the change in $x$. From $(1, 5)$ to $(3, 11)$, $y$ changes by $11 - 5 = 6$ and $x$ changes by $3 - 1 = 2$. So $m = 6 \\div 2 = 3$.",
         "The $y$-intercept is the value of $y$ when $x = 0$, where the line crosses the $y$-axis. We call it $b$.",
         "Every non-vertical line can be written $y = mx + b$. Here $mx$ means $m$ times $x$. For example, $y = 3x + 2$ has slope 3 and $y$-intercept 2.",
@@ -882,7 +887,7 @@ export const staarGapLessons: Lesson[] = [
       steps: [
         "Find the slope: change in $y$ divided by change in $x$, subtracting in the same order. $m=\\frac{11-5}{3-1}=\\frac{6}{2}=3$.",
         "Find $b$. The point $(1, 5)$ is on the line, so $x = 1$ and $y = 5$ make $y = 3x + b$ true. Put them in: $5 = 3 \\times 1 + b$, so $5 = 3 + b$.",
-        "Subtract 3 from both sides to get $b$ alone: $b = 2$. Check with the other point: $3 \\times 3 + 2 = 11$. It works.",
+        "Subtract 3 from both sides (the parts before and after the equals sign) to get $b$ alone: $b = 2$. Check with the other point: $3 \\times 3 + 2 = 11$. It works.",
       ],
       answer: "$m=3,\\ b=2$",
     },
@@ -893,7 +898,7 @@ export const staarGapLessons: Lesson[] = [
       ]),
       method("Lines in standard form", [
         "A line can also be written $Ax + By = C$, where $A$, $B$ and $C$ are numbers. This is called standard form. Here $Ax$ means $A$ times $x$.",
-        "To read the slope, get $y$ alone. Subtract $Ax$ from both sides, then divide every term by $B$ (when $B$ is not 0). The result is $y = -\\frac{A}{B}x + \\frac{C}{B}$. So the slope is $-\\frac{A}{B}$.",
+        "To read the slope, get $y$ alone. Subtract $Ax$ from both sides. Then divide every term, each piece joined by + or −, by $B$ (when $B$ is not 0). The result is $y = -\\frac{A}{B}x + \\frac{C}{B}$. So the slope is $-\\frac{A}{B}$.",
         "For example, $2x + 4y = 8$ becomes $4y = -2x + 8$, then $y = -\\frac{1}{2}x + 2$. The slope is $-\\frac{1}{2}$, so $y$ goes down a half each time $x$ goes up by 1.",
       ]),
       formal("Slope-intercept form", [
@@ -1033,14 +1038,14 @@ export const staarGapLessons: Lesson[] = [
     id: "staar-multistep-linear",
     title: "Solve equations that need simplifying first",
     summary:
-      "An equation says two amounts are equal, like $-2(x + 3) = x + 9$. Some equations must be tidied before you can solve them. Multiply out parentheses, gather matching pieces, or clear fractions. Then move all the $x$ pieces to one side and the plain numbers to the other. Whatever you do to one side, do to the other, so they stay equal.",
+      "An equation says two amounts are equal, like $-2(x + 3) = x + 9$. Some equations must be tidied before you can solve them. Multiply out parentheses, gather matching pieces, or clear fractions. The parts before and after the equals sign are called the sides. Move all the $x$ pieces to one side and the plain numbers to the other. Whatever you do to one side, do to the other, so they stay equal.",
     senses: {
       term: "term-expression",
       side: "side-of-equation",
       factor: "factor-number",
       product: "product-multiply",
     },
-    noLink: ["changes", "part"],
+    noLink: ["changes", "part", "parts", "rule"],
     templateIds: ["staar-multistep-equations"],
     objectives: [
       "Multiply a negative number through parentheses and solve with $x$ on both sides.",
@@ -1051,7 +1056,7 @@ export const staarGapLessons: Lesson[] = [
       "Simplify, then undo",
       [
         "You need to solve two-step equations such as $3x + 5 = 20$. An equation has a left side and a right side with an equals sign between. A solution is a value of $x$ that makes both sides equal.",
-        "A term is one piece of an expression joined by + or −, such as $2x$, $-6$ or $x$. Like terms have the same letter part, so $2x$ and $4x$ are like terms: $2x + 4x = 6x$. Plain numbers are also like terms with each other.",
+        "An expression is a math phrase such as $2x - 6$. A term is one piece of an expression joined by + or −, such as $2x$, $-6$ or $x$. Like terms have the same letter part, so $2x$ and $4x$ are like terms: $2x + 4x = 6x$. Plain numbers are also like terms with each other.",
         "Parentheses group a part. A number right before them multiplies every term inside, sign included. This is called distributing. So $-2(x + 3) = -2x - 6$, because $-2 \\times x = -2x$ and $-2 \\times 3 = -6$.",
         "If an equation has a fraction such as $\\frac{x}{4}$, multiply every term on both sides by 4. The 4 cancels the fraction, and the two sides stay equal.",
         "Doing the same thing to both sides keeps them equal: adding, subtracting, or multiplying or dividing by a number other than 0.",
@@ -1075,7 +1080,7 @@ export const staarGapLessons: Lesson[] = [
       ]),
       formal("Linear equations", [
         "Adding or subtracting the same number on both sides, or multiplying or dividing both sides by the same number other than 0, gives an equation with the same solutions.",
-        "The distributive property says $a(b + c) = ab + ac$: a number times a sum equals the sum of the separate products.",
+        "The distributive property is the rule $a(b + c) = ab + ac$: a number times a sum equals the sum of the separate results.",
         "An equation $ax + b = cx + d$ with $a \\neq c$ ($a$ not equal to $c$) has exactly one solution, $x=\\frac{d-b}{a-c}$.",
       ]),
     ],
@@ -1102,7 +1107,7 @@ export const staarGapLessons: Lesson[] = [
     intuition: [
       "What happened, out of all trials",
       [
-        "You need to write and simplify fractions, and multiply fractions. A trial is one try of an experiment, such as one draw of a tile from a bag. An outcome is what happens on a trial, such as getting red.",
+        "You need to write and simplify fractions, and multiply fractions. An experiment is a test you repeat and record. A trial is one try of an experiment, such as one draw of a tile from a bag. An outcome is what happens on a trial, such as getting red.",
         "An experimental probability is what actually happened. It is the number of times the outcome happened divided by the total number of trials. Red 6 times out of 20 draws gives $\\frac{6}{20}$, which simplifies to $\\frac{3}{10}$.",
         "If either of two outcomes counts, such as red or blue, add their counts first. Then divide by the total number of trials.",
         "“With replacement” means the tile is put back after each draw. Then the bag is the same for the next draw, so the chances do not change. To find the chance of one result and then another, multiply the two probabilities. If red has chance $\\frac{1}{2}$ on each draw, red then red has chance $\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}$.",
@@ -1125,14 +1130,14 @@ export const staarGapLessons: Lesson[] = [
       ]),
       formal("Independent events", [
         "The experimental probability of an outcome is how many times it happened divided by the number of trials.",
-        "Two events are independent when one does not change the chances of the other. Draws with replacement are independent.",
-        "$P(A)$ is read “the probability of $A$.” For independent events $A$ and $B$, $P(A\\text{ then }B) = P(A) \\times P(B)$.",
+        "Draws with replacement are independent.",
+        "$P(A)$ is read “the probability of $A$.” An event is a result you might get, such as red. Two events are called independent events when one does not change the chances of the other. For two such events $A$ and $B$, $P(A\\text{ then }B) = P(A) \\times P(B)$.",
       ]),
     ],
     pitfalls: [
       "Divide by all the trials, not by the count of the other outcomes.",
       "When two colors count, add both counts before dividing.",
-      "Multiply only when the first item is put back. Without replacement, the second draw uses a smaller set.",
+      "Without replacement, the second draw uses a smaller set. You can still multiply, but the second probability must count what is left after the first draw.",
     ],
     parentGuide:
       "Ask why putting the card back keeps the chances for the second draw the same.",
@@ -1153,7 +1158,7 @@ export const staarGapLessons: Lesson[] = [
       "Sets inside sets",
       [
         "You need to divide integers. A set is a group of numbers that belong together.",
-        "The whole numbers are 0, 1, 2, 3, and so on without end. The integers are the whole numbers together with their negatives: …, −3, −2, −1, 0, 1, 2, 3, …. A negative number is less than 0.",
+        "The whole numbers are 0, 1, 2, 3, and so on without end. The integers are the whole numbers together with their negatives: …, −3, −2, −1, 0, 1, 2, 3, …. A negative number is a number less than 0.",
         "The rational numbers are all the numbers that can be written as a fraction with an integer on top and a nonzero integer on the bottom. That includes $\\frac{1}{2}$, 2.5 (which is $\\frac{5}{2}$) and $-\\frac{3}{4}$.",
         "Each set fits inside the next. Every whole number is an integer, and every integer is rational, because 7 can be written $\\frac{7}{1}$. Picture three circles, one inside another: whole numbers in the middle, then integers, then rational numbers.",
         "A fraction does not always land outside the integers. $\\frac{24}{3}$ equals 8, which is a whole number. So work out the value first.",
@@ -1171,7 +1176,7 @@ export const staarGapLessons: Lesson[] = [
       method("Ask in order", [
         "First find the value. Then ask: is it 0 or positive with no fraction part? Then it is a whole number.",
         "Is it negative with no fraction part? Then it is an integer but not a whole number.",
-        "Does it have a part left over, like $\\frac{1}{2}$ or 0.5? Then it is rational but not an integer.",
+        "Is it a fraction of integers, or a decimal that ends or repeats, with a part left over, like $\\frac{1}{2}$ or 0.5? Then it is rational but not an integer.",
       ]),
       formal("Number sets", [
         "A number is rational if it equals $\\frac{p}{q}$, where $p$ and $q$ are integers and $q$ is not 0.",

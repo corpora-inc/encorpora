@@ -20,7 +20,7 @@ export const assessmentGapMethods: Record<string, ProblemMethod> = {
       "“At most” allows the error to equal the limit, so both ends of the range count.",
     ],
     watch:
-      "Turn a percent error into grams before you add or subtract it. An error of 2% of 80 g is 1.6 g, not 2 g.",
+      "A percent error is a limit given as a percent of the reading. Turn it into grams (g) before you add or subtract it. An error of 2% of 80 g is 1.6 g, not 2 g.",
   },
   "margin-of-error-interval": {
     goal: "Find the interval centered on an estimate with a stated margin of error.",
@@ -45,7 +45,7 @@ export const assessmentGapMethods: Record<string, ProblemMethod> = {
 };
 export const assessmentGapPrinciples: Record<string, string> = {
   "measurement-error-bound":
-    "If the reported value is $m$ and the error is at most $e$ (with $e \\ge 0$, read “$e$ is at least 0”), the actual value $x$ satisfies $m-e \\le x \\le m+e$. The symbol $\\le$ means “is less than or equal to.” An error limit of $p$% of a positive reading $m$ gives $e = m \\times p \\div 100$.",
+    "If the reported value is $m$ and the error is at most $e$ (with $e \\ge 0$, read “$e$ is greater than or equal to 0”), the actual value $x$ satisfies $m-e \\le x \\le m+e$. The symbol $\\le$ means “is less than or equal to.” An error limit of $p$% of a positive reading $m$ gives $e = m \\times p \\div 100$.",
   "margin-of-error-interval":
     "An estimate $c$ with a symmetric margin of error $e$ gives the interval $[c-e,c+e]$. A 95% confidence procedure covers the fixed population parameter in about 95% of repeated samples when its assumptions hold.",
   "radian-arc-ratio":
@@ -72,7 +72,7 @@ export const assessmentGapLessons: Lesson[] = [
         paragraphs: [
           "You need addition, subtraction and percents. A percent means “out of 100,” so 2.5% means 2.5 out of every 100.",
           "Put a bag on a kitchen scale and it shows 80 g. That shown number is the reported value. The real mass of the bag is the actual value. The two may not match exactly.",
-          "The error limit is the largest difference allowed between them. It is measured in the same unit as the reading, here grams. “The error is at most 2 g” means the actual mass is no more than 2 g below the reading and no more than 2 g above it.",
+          "The error limit is the largest difference allowed between them. It is measured in the same unit as the reading. Here the unit is grams (the gram is a small unit of mass, how heavy something is), written g. “The error is at most 2 g” means the actual mass is no more than 2 g below the reading and no more than 2 g above it.",
           "So the actual mass sits in a range around the reading. The range reaches the same distance down as up.",
         ],
       },
@@ -100,7 +100,7 @@ export const assessmentGapLessons: Lesson[] = [
         title: "The precise rule",
         paragraphs: [
           "Let $m$ be the reported value, $x$ the actual value, and $e$ the error limit, a number 0 or greater in the same unit. The symbol $\\le$ means “is less than or equal to.”",
-          "The rule is $m - e \\le x \\le m + e$. It says the actual value is at least $m - e$ and at most $m + e$.",
+          "The rule is $m - e \\le x \\le m + e$. It says the actual value is no less than $m - e$ and no more than $m + e$.",
           "If the error limit is $p$% of a positive reading $m$, then $e = m \\times p \\div 100$.",
           "These bounds use a stated error limit. A value that was rounded, such as “to the nearest tenth,” follows a separate rule about its ends.",
         ],
@@ -118,7 +118,7 @@ export const assessmentGapLessons: Lesson[] = [
       answerUnit: "g",
     },
     pitfalls: [
-      "Change a percent error into the reading's unit before adding or subtracting. Then the numbers measure the same thing.",
+      "A percent error is an error limit given as a percent of the reading. Change it into the reading's unit before adding or subtracting. Then the numbers measure the same thing.",
       "Take the percent of the amount the question names, usually the reported value.",
       "Use the error limit once on each side. The full range is twice the limit wide.",
     ],

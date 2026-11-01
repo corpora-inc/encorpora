@@ -19,7 +19,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
   "model-quantity-roles": {
     goal: "Read a situation and choose the right variable definitions and units, the rate, a matching unit, or which quantities vary.",
     intuition:
-      "A model is an equation that stands for a real situation. A variable is a letter for a quantity that can vary, measured in a unit such as hours or dollars. The quantity you choose is the independent quantity. The quantity that results from it is the dependent quantity. A rate, such as 6 dollars per hour, says how much the dependent quantity grows for each one unit of the independent quantity.",
+      "A model is an equation that stands for a real situation. A variable is a letter for a quantity that can vary, measured in a unit such as hours or dollars. The quantity you choose is the independent quantity. The quantity that results from it is the dependent quantity. A rate, such as 6 dollars per hour, says how much the dependent quantity changes for each one unit of the independent quantity.",
     senses: { model: "model", unit: "unit" },
     noLink: ["change", "changes", "sort", "leaves"],
     terms: ["independent-variable", "dependent-variable", "rate"],
@@ -35,7 +35,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
   "stem-leaf-read": {
     goal: "Read a stem-and-leaf plot with its key to find a value, the range, median or mode, a count above a value, or a difference.",
     intuition:
-      "A stem-and-leaf plot lists data values in two pieces. The stem is the first digit or digits, on the left. The leaf is the last digit, on the right, and each leaf is one value. The key says how to join them, for example $3 \\mid 5$ means 35 or 3.5. Values grow down the plot and left to right, so they are already in order.",
+      "A stem-and-leaf plot lists data values in two pieces. The stem is the first digit or digits, on the left. The leaf is the last digit, on the right, and each leaf is one value. The key is the note that says how to join them, for example $3 \\mid 5$ means 35 or 3.5. Values grow down the plot and left to right, so they are already in order.",
     senses: {
       key: "key",
       stem: "stem",
@@ -58,7 +58,7 @@ export const remainingGapMethods: Record<string, ProblemMethod> = {
     method: [
       "Read the key first. Decide whether each leaf is the ones digit or the tenths digit.",
       "Join each leaf to its stem to read a value. A leaf written twice is a value that appears twice.",
-      "Use the order. The first leaf is the least value and the last is the greatest. The median is the middle value, or the mean of the two middle values.",
+      "Use the order. The first leaf is the least value and the last is the greatest. The median is the middle value. With two middle values, it is their mean, which means their sum divided by 2.",
       "Count leaves, not rows, to find how many values there are or how many are greater than a number.",
     ],
     watch:
@@ -243,7 +243,7 @@ export const remainingGapLessons: Lesson[] = [
     id: "stem-leaf-read",
     title: "Read a stem-and-leaf plot",
     summary:
-      "A stem-and-leaf plot is a way to list numbers in order. Each number is split in two. The stem is the first digit or digits, written on the left. The leaf is the last digit, written on the right. A key, such as “2 | 4 means 24,” tells how to join them. Once you can read the numbers, you can find the smallest, the largest, the middle and more.",
+      "A stem-and-leaf plot is a way to list numbers in order. Each number is split in two. The stem is the first digit or digits, written on the left. The leaf is the last digit, written on the right. A key is a note, such as “2 | 4 means 24,” that tells how to join them. Once you can read the numbers, you can find the smallest, the largest and the middle. You can also find the range: the largest minus the smallest.",
     senses: {
       key: "key",
       stem: "stem",
@@ -266,9 +266,9 @@ export const remainingGapLessons: Lesson[] = [
         stage: "intuition",
         title: "A list of values written in two pieces",
         paragraphs: [
-          "Data are numbers collected about something, such as heights of plants. Each number is one value.",
+          "Data are numbers collected about something, such as how tall some plants are. Each number is one value.",
           "A stem-and-leaf plot writes each value in two pieces. The stem is the leading digit or digits, on the left of the line. The leaf is the last digit, on the right. Each leaf in a row is one value.",
-          "The key tells what the pieces mean together. If the key says $2 \\mid 4$ means 24, the stem 2 is the tens digit. So row 2 holds values from 20 to 29. If the key says $2 \\mid 4$ means 2.4, the leaf is the tenths digit, the first digit after the decimal point.",
+          "The key is the note that tells how to read the pieces together. If the key says $2 \\mid 4$ means 24, the stem 2 is the tens digit. So row 2 holds values from 20 to 29. If the key says $2 \\mid 4$ means 2.4, the leaf is the tenths digit, the first digit after the decimal point.",
           "The values go from smallest to largest. They grow down the plot and from left to right along each row. If a leaf is written twice in a row, that value appears twice in the data.",
         ],
       },
@@ -292,7 +292,7 @@ export const remainingGapLessons: Lesson[] = [
           "The least value is the first leaf in the top row. The greatest value is the last leaf in the bottom row.",
           "The mode is the value that appears most often. In a plot, look for a leaf repeated in the same row.",
           "To count values greater than a given value, find its row. Count the leaves in that row that are larger than its leaf. Then add every leaf in the rows below. A value equal to the given value is not greater, so do not count it.",
-          "When two middle values differ, the median is their mean. The mean of two numbers is their sum divided by 2. For 2.0 and 2.3, it is (2.0 + 2.3) ÷ 2 = 2.15.",
+          "When two middle values differ, the median is their mean: their sum divided by 2. For 2.0 and 2.3, it is (2.0 + 2.3) ÷ 2 = 2.15.",
         ],
       },
       {

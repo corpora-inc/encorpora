@@ -121,7 +121,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "number-set-venn": {
     goal: "Place numbers in rings of natural numbers, whole numbers, integers and rational numbers, and judge “every … is a …” statements.",
     intuition:
-      "Natural numbers are the counting numbers 1, 2, 3, …. Whole numbers add 0. Integers add the negatives, such as $-3$. Rational numbers add every fraction of integers (with a bottom that is not 0), such as $\\frac{1}{2}$. Each set sits inside the next, like rings inside rings.",
+      "Natural numbers are the counting numbers 1, 2, 3, …. Whole numbers add 0. Integers add the negatives, such as $-3$. Rational numbers add every fraction of integers (with a bottom that is not 0), such as $\\frac{1}{2}$. Each set sits inside the next. Picture each set as a ring, a loop drawn around its numbers, with rings inside rings.",
     noLink: ["whole", "sort"],
     terms: ["natural-number", "whole-number", "integer", "rational-number"],
     method: [
@@ -130,7 +130,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "A statement “every $X$ is a $Y$” is true only when the ring for $X$ lies inside the ring for $Y$.",
     ],
     watch:
-      "Zero is whole but not natural. Negative numbers are integers but not whole. A fraction that simplifies to an integer is an integer.",
+      "Zero is whole but not natural. Negative whole amounts, like $-3$, are integers but not whole numbers. A fraction that simplifies to an integer is an integer.",
   },
   "reciprocal-division-choice": {
     goal: "Choose the multiplication that equals a division by a fraction or whole number, using the reciprocal.",
@@ -161,7 +161,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "percent-grid-model": {
     goal: "Read the percent, fraction or decimal for the shaded part of a grid of 10 rows and 10 columns.",
     intuition:
-      "Percent means “out of 100,” and % is read “percent.” Each 10 by 10 grid has 100 equal squares, so each square is 1% of the grid. The number of shaded squares is the percent. As a fraction it is that number over 100. As a decimal it is that many hundredths.",
+      "Percent means “out of 100,” and % is read “percent.” Each 10 by 10 grid has 100 equal squares, so each square is 1% of the grid. The number of shaded squares is the percent. As a fraction it is that number over 100. A hundredth is one of 100 equal parts, so as a decimal it is that many hundredths.",
     senses: { part: "part", whole: "whole", square: "square-shape" },
     noLink: ["change"],
     terms: ["percent"],
@@ -192,7 +192,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       "To find a whole, divide the part by the percent to get 1%, then multiply by 100. To find a percent, divide the part by the whole and multiply by 100.",
     ],
     watch:
-      "Keep part and whole in the right order. The percent that 12 is of 48 is $12\\div48$, not $48\\div12$.",
+      "Keep part and whole in the right order. The percent that 12 is of 48 comes from $12\\div48 = 0.25$, which is 25%, not from $48\\div12$.",
   },
   "independent-dependent-roles": {
     goal: "Name the independent quantity (the one you choose) and the dependent quantity (the one that follows) in a table.",
@@ -225,7 +225,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "rational-area-volume-equation": {
     goal: "Write the equation for the area or volume of a shape whose measures are fractions, with one measure unknown.",
     intuition:
-      "A formula is a rule that gives an area or volume from a shape's measures, such as area of a rectangle = length × width. A formula is already an equation. Put the known measures and the given total into it, and keep a letter for the unknown measure. Fractions go in just like whole numbers.",
+      "A formula is a rule that gives an area or volume from a shape's measures, such as area of a rectangle = length × width. A formula is already an equation. Put the known measures and the given total into it, and keep a letter for the unknown measure. Fractions go in just like whole numbers (the numbers 0, 1, 2 and so on).",
     senses: {
       edge: "edge",
       face: "face-solid",
@@ -240,12 +240,12 @@ export const texas38Methods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write the formula: triangle area $\\tfrac12bh$ (half of base times height), rectangle area $lw$ (length times width), box volume $lwh$.",
+      "Write the formula: triangle area $\\tfrac12bh$ (half of base times height, the straight-up distance to the top), rectangle area $lw$ (length times width), box volume $lwh$.",
       "Replace the known measures and the area or volume with the given numbers.",
       "Leave the unknown as a letter. Do not change the operations to make the numbers easier.",
     ],
     watch:
-      "A triangle is half of a rectangle, so its equation keeps the $\\tfrac12$. Volume multiplies all three edge lengths; surface area adds the areas of the faces.",
+      "A triangle has half the area of a rectangle with the same base and height, so its equation keeps the $\\tfrac12$. A box's volume multiplies all three edge lengths; surface area adds the areas of the faces.",
   },
   "categorical-summary": {
     goal: "Find the mode, a relative frequency as a percent, and a category count from a percent bar.",
@@ -263,7 +263,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "check-register-balance": {
     goal: "Find a running balance or a missing amount in a check register with deposits, checks, transfers and fees.",
     intuition:
-      "A check register is a table that tracks a bank account in order. The balance is the money in the account right now. A deposit puts money in, so add it. A check, a transfer out or a fee takes money out, so subtract it. Each new balance is the one just above it, plus or minus the entry.",
+      "A check register is a table that tracks a bank account in order. The balance is the money in the account right now. A deposit puts money in, so add it. A check, a transfer out or a fee takes money out, so subtract it. Each new balance is the one just above it, with the entry added or taken away.",
     senses: {
       balance: "balance-account",
       difference: "difference-subtract",
@@ -298,7 +298,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "pi-as-ratio": {
     goal: "Describe $\\pi$ as a circle's circumference divided by its diameter, and work it out from a measured circle.",
     intuition:
-      "The circumference is the distance around a circle. The diameter is the distance across it through the center, twice the radius. For every circle, circumference divided by diameter is the same number, a little more than 3. That number is called $\\pi$ (pi), about 3.14.",
+      "The circumference is the distance around a circle. The center is the middle point. The diameter is the distance across through the center, twice the radius. For every circle, circumference divided by diameter is the same number, a little more than 3. That number is called $\\pi$ (pi), about 3.14.",
     senses: { center: "center", "more than": "more-than" },
     noLink: ["scales", "change"],
     terms: ["circumference", "diameter", "pi"],
@@ -313,7 +313,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "experimental-probability-predict": {
     goal: "Find an experimental probability from trials, predict counts for more trials, and compare with the counts theory expects.",
     intuition:
-      "A trial is one try of an experiment, such as one spin. The experimental probability of an event is the number of times it happened divided by the number of trials. Use it to predict: multiply it by a new number of trials. The theoretical probability is what the setup says should happen, such as $\\frac{1}{2}$ for heads on a fair coin.",
+      "A trial is one try of an experiment, such as one spin. An event is the result you are counting, such as landing on blue. An experimental probability is the number of times it happened divided by the number of trials. Use it to predict: multiply it by a new number of trials. The theoretical probability is what the setup says should happen, such as $\\frac{1}{2}$ for heads on a fair coin.",
     senses: { trial: "trial", event: "event" },
     noLink: ["scale", "side"],
     terms: ["experimental-probability", "theoretical-probability"],
@@ -343,7 +343,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "both-sides-situation-equation": {
     goal: "Write an equation or inequality for two situations that each have a starting amount and a rate.",
     intuition:
-      "Each situation's total is an expression: its starting amount, plus or minus its rate times the variable. For 20 dollars to join and 5 dollars a visit, $v$ visits cost $20 + 5v$ ($5v$ means 5 times $v$). Setting two totals equal, or comparing them with $<$ (less than) or $>$ (greater than), puts the variable on both sides.",
+      "Each situation's total is an expression: its starting amount, plus or minus its rate times the variable. For 20 dollars to join and 5 dollars a visit, $v$ visits cost $20 + 5v$ ($5v$ means 5 times $v$). Setting two totals equal, or comparing them with $<$ (less than) or $>$ (greater than), puts the variable on both sides: to the left and to the right of the sign.",
     senses: {
       side: "side-of-equation",
       unit: "unit",
@@ -354,7 +354,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     noLink: ["changes"],
     terms: ["rate"],
     method: [
-      "Write each situation as its starting amount, then plus (if increasing) or minus (if decreasing) its rate times the variable.",
+      "Write each situation as its starting amount, then plus its rate times the variable if the amount is increasing (that is, getting larger). Subtract it if the amount is decreasing (that is, getting smaller).",
       "Join the two expressions with $=$ for equal, or with $<$ or $>$ for less than or more than.",
       "Keep each starting amount with its own rate. Do not combine fees and rates.",
     ],
@@ -395,7 +395,7 @@ export const texas38Principles: Record<string, string> = {
   "expression-or-equation":
     "An expression is built from numbers, variables (letters that stand for numbers) and operations. An equation is a statement $E_1=E_2$ that two expressions $E_1$ and $E_2$ are equal. It may be true, false, or true only for some values of its variables.",
   "rational-area-volume-equation":
-    "Area of a triangle $=\\tfrac12bh$ (base $b$, height $h$); area of a rectangle $=lw$ (length $l$, width $w$); volume of a rectangular prism $=lwh$. These equations hold for fraction lengths too, and an unknown measure is found by undoing the multiplication.",
+    "Area of a triangle $=\\tfrac12bh$ (base $b$, height $h$); area of a rectangle $=lw$ (length $l$, width $w$); volume of a rectangular prism $=lwh$. These equations hold for fraction lengths too, and an unknown measure is found by dividing, which undoes multiplying.",
   "categorical-summary":
     "For categorical data the mode is the category with the greatest frequency. The relative frequency of a category is its frequency divided by the total, and $p\\%$ of a total $N$ is $\\tfrac{p}{100}N$.",
   "check-register-balance":
@@ -407,7 +407,7 @@ export const texas38Principles: Record<string, string> = {
   "experimental-probability-predict":
     "If an event happens $s$ times in $n$ trials, its experimental probability is $s\\div n$. A prediction for $N$ trials is $N\\times s\\div n$. As $n$ grows, the experimental probability tends to get closer to the theoretical probability (this is called the law of large numbers).",
   "cylinder-prism-surface-area":
-    "A cylinder of radius $r$ and height $h$ has lateral area $2\\pi rh$ and total surface area $2\\pi r^2+2\\pi rh$. A right triangular prism whose triangles have legs $p$ and $q$ and longest side $c$, with length $L$, has total surface area $2\\times\\tfrac12pq+(p+q+c)L$.",
+    "A cylinder of radius $r$ and height $h$ has lateral area $2\\pi rh$ and total surface area $2\\pi r^2+2\\pi rh$. A triangular prism whose end triangles have a square corner between legs $p$ and $q$, and longest side $c$, with length $L$, has total surface area $2\\times\\tfrac12pq+(p+q+c)L$.",
   "both-sides-situation-equation":
     "A quantity with starting amount $a$ that changes by $r$ for each unit has value $a+rx$ after $x$ units, with $r$ negative for a decreasing quantity. Two such quantities are equal when $a_1+r_1x=a_2+r_2x$, and the first is less when $a_1+r_1x<a_2+r_2x$. The small 1 and 2 label the two situations.",
 };
@@ -786,7 +786,7 @@ export const texas38Lessons: Lesson[] = [
     id: "nested-number-sets",
     title: "Nested sets of numbers",
     summary:
-      "Numbers come in families, and each family fits inside a bigger one. The counting numbers 1, 2, 3, … are the natural numbers. Add 0 and you get the whole numbers. Add the negatives, like $-3$, and you get the integers. Add fractions and decimals, like $\\frac{1}{2}$ and 0.75, and you get the rational numbers. To place a number, simplify it first: $12/4$ is 3, a natural number.",
+      "Numbers come in families, and each family fits inside a bigger one. The counting numbers 1, 2, 3, … are the natural numbers; the dots mean “and so on.” Add 0 and you get the whole numbers. Add the negatives of those, numbers below 0 like $-3$, and you get the integers. Add the fractions of integers, like $\\frac{1}{2}$, and decimals that end or repeat, like 0.75, and you get the rational numbers. To place a number, first simplify it, which means work out its simplest value: $12/4$ is 3, a natural number.",
     noLink: ["whole", "sort", "mean"],
     templateIds: ["number-set-venn"],
     objectives: [
@@ -798,7 +798,7 @@ export const texas38Lessons: Lesson[] = [
         stage: "intuition",
         title: "Each set holds the one before it",
         paragraphs: [
-          "A set is a group of numbers that belong together. Picture it as a ring with the numbers inside.",
+          "A set is a group of numbers that belong together. Picture each set as a ring, a closed loop drawn around its numbers.",
           "The natural numbers are the counting numbers 1, 2, 3, and so on. The three dots … mean “keep going the same way.”",
           "The whole numbers are the natural numbers plus 0: 0, 1, 2, 3, ….",
           "The integers are the whole numbers plus their negatives, the numbers less than 0: …, −2, −1, 0, 1, 2, ….",
@@ -898,7 +898,7 @@ export const texas38Lessons: Lesson[] = [
     id: "percent-grids-conversions",
     title: "Percent models, conversions and parts",
     summary:
-      "Percent means “out of 100,” and the sign % is read “percent.” Picture a grid of 10 rows and 10 columns has 100 small squares. If 35 are shaded, 35% is shaded. The same amount can also be written as a fraction, $\\frac{35}{100}$, or a decimal, 0.35. If you know a part and its percent, you can find the whole: when 30% is 45, 1% is 1.5, so 100% is 150.",
+      "Percent means “out of 100,” and the sign % is read “percent.” Picture a grid of 10 rows and 10 columns: it has 100 small squares. If 35 are shaded, 35% is shaded. The same amount can also be written as a fraction (a part over a whole), $\\frac{35}{100}$, or as a decimal (a number with a decimal point), 0.35. If you know a part and what percent it is, you can find the whole. When 30% of something is 45, then 1% is $45 \\div 30 = 1.5$, so 100% is 150.",
     senses: { part: "part", whole: "whole", square: "square-shape" },
     noLink: ["change"],
     templateIds: ["percent-grid-model", "percent-forms-and-parts"],
@@ -914,7 +914,7 @@ export const texas38Lessons: Lesson[] = [
         paragraphs: [
           "Percent means “out of 100.” So 35% means 35 out of every 100.",
           "A 10 by 10 grid has 100 equal squares, so each square is 1% of the grid. If 35 squares are shaded, the shaded part is 35%. Count full columns of 10 first, then the extra squares.",
-          "The same amount has three names. As a fraction it is $\\frac{35}{100}$, which simplifies to $\\frac{7}{20}$ by dividing top and bottom by 5. As a decimal it is 35 hundredths, 0.35. As a percent it is 35%.",
+          "The same amount has three names. As a fraction it is $\\frac{35}{100}$, which simplifies to $\\frac{7}{20}$ by dividing top and bottom by 5. As a decimal it is 0.35. A hundredth is one of 100 equal parts, so 0.35 is 35 hundredths. As a percent it is 35%.",
           "To turn a fraction into a percent, divide the top by the bottom, then multiply by 100. For $\\frac{3}{8}$: $3 \\div 8 = 0.375$, and $0.375 \\times 100 = 37.5$, so it is 37.5%.",
           "The whole is the full amount, which is 100%. A part is a piece of it. If a part is 30% of the whole, the whole is bigger than the part.",
         ],
@@ -950,7 +950,7 @@ export const texas38Lessons: Lesson[] = [
     ],
     pitfalls: [
       "Name the shaded part, not the part left over. The unshaded part is 100% minus the shaded percent.",
-      "Keep part and whole in order: the percent that 12 is of 48 is $12 \\div 48$, not $48 \\div 12$.",
+      "Keep part and whole in order: the percent that 12 is of 48 comes from $12 \\div 48 = 0.25$, which is 25%. It does not come from $48 \\div 12$.",
       "A whole found from a part should be bigger than the part when the percent is less than 100%.",
     ],
     parentGuide:
@@ -960,7 +960,7 @@ export const texas38Lessons: Lesson[] = [
     id: "independent-dependent",
     title: "Independent and dependent quantities",
     summary:
-      "When two amounts are linked, one often decides the other. The cost of tickets depends on how many tickets you buy. The amount you choose, the number of tickets, is called the independent quantity. The amount that follows from it, the cost, is called the dependent quantity, because it depends on the first.",
+      "When two amounts are linked, one often decides the other. An amount you can measure or count is called a quantity. The cost of tickets depends on how many tickets you buy. The quantity you choose, the number of tickets, is called the independent quantity. The quantity that follows from it, the cost, is called the dependent quantity, because it depends on the first.",
     senses: { square: "square-shape", side: "side" },
     templateIds: ["independent-dependent-roles"],
     objectives: [
@@ -1074,7 +1074,7 @@ export const texas38Lessons: Lesson[] = [
     id: "rational-area-volume-equations",
     title: "Equations for area and volume with fractions",
     summary:
-      "A formula is a rule written with letters, such as “area of a rectangle = length × width.” Every formula is already an equation. When one measure is unknown, put the numbers you know into the formula and keep a letter for the unknown. Fractions and mixed numbers, like $1\\tfrac{1}{2}$, go in just like whole numbers.",
+      "A formula is a rule written with letters, such as “area of a rectangle = length × width.” Every formula is already an equation. When one measure is unknown, put the numbers you know into the formula and keep a letter for the unknown. A mixed number is a whole number with a fraction, like $1\\tfrac{1}{2}$. Fractions and mixed numbers go into a formula just like whole numbers (the numbers 0, 1, 2 and so on).",
     senses: {
       edge: "edge",
       face: "face-solid",
@@ -1082,7 +1082,7 @@ export const texas38Lessons: Lesson[] = [
       side: "side",
       solid: "solid-shape",
     },
-    noLink: ["base", "change", "rule"],
+    noLink: ["base", "change", "rule", "square"],
     templateIds: ["rational-area-volume-equation"],
     objectives: [
       "Write an equation for a triangle's area, a rectangle's area or a box's volume when the measures are fractions.",
@@ -1095,7 +1095,7 @@ export const texas38Lessons: Lesson[] = [
         paragraphs: [
           "Area is the amount of flat space inside a shape. Volume is the amount of space inside a solid, such as a box. A mixed number, such as $2\\tfrac{1}{2}$, is a whole number and a fraction together: 2 and one half.",
           "Each shape has a formula, a rule that gives its area or volume from its measures. Letters stand for the measures. Writing two letters next to each other, such as $lw$, means multiply them.",
-          "A rectangle's area is $lw$: length times width. A triangle's area is $\\tfrac12 bh$: half of the base times the height. The base is the side it sits on, and the height is the straight-up distance to the top corner. A rectangular prism, a box shape, has volume $lwh$: length times width times height.",
+          "A rectangle's area is $lw$: length times width. Any side of a triangle can be its base; picture the triangle resting on it. The height is the straight-up distance from the base to the top corner, measured square to the base, like a wall standing on a floor. A triangle's area is $\\tfrac12 bh$: half of the base times the height. A rectangular prism, a box shape, has volume $lwh$: length times width times height.",
           "A formula is already an equation. If a triangle's area is $1\\tfrac{9}{16}$ and its base is $2\\tfrac12$, put those in and keep $h$ for the height: $\\tfrac12 \\times 2\\tfrac12 \\times h = 1\\tfrac{9}{16}$. Fractions do not change the formula.",
         ],
       },
@@ -1123,13 +1123,13 @@ export const texas38Lessons: Lesson[] = [
         title: "Formulas",
         paragraphs: [
           "Triangle: $A = \\tfrac12 bh$, where $b$ is the base and $h$ is the height. Rectangle: $A = lw$, length times width. Rectangular prism: $V = lwh$, length times width times height.",
-          "These formulas work for fraction lengths too. An unknown measure can then be found by undoing the multiplication.",
+          "These formulas work for fraction lengths too. An unknown measure can then be found by dividing, which undoes multiplying.",
         ],
       },
     ],
     pitfalls: [
-      "A triangle is half of a rectangle, so its equation needs the $\\tfrac12$.",
-      "Volume multiplies all three measures. Adding them, or using only two, gives the wrong amount.",
+      "A triangle has half the area of a rectangle with the same base and height, so its equation needs the $\\tfrac12$.",
+      "A box's volume multiplies all three measures. Adding them, or using only two, gives the wrong amount.",
     ],
     parentGuide:
       "Have the learner say the formula in words, such as “length times width,” before writing it with the numbers.",
@@ -1187,7 +1187,7 @@ export const texas38Lessons: Lesson[] = [
     id: "check-registers",
     title: "Balancing a check register",
     summary:
-      "A bank account holds money. Its balance is how much money is in it right now. A check register is a table that lists every change to the account in order. Money put in, a deposit, makes the balance go up. Money taken out, such as a check or a fee, makes it go down. Each row's balance is the row before, plus or minus that entry.",
+      "A bank account holds money. Its balance is how much money is in it right now. A check register is a table that lists every change to the account in order. Money put in, a deposit, makes the balance go up. Money taken out makes it go down, such as a check (a written payment) or a fee (a charge from the bank). Each row's balance is the balance in the row before, with that entry added or taken away.",
     senses: {
       balance: "balance-account",
       difference: "difference-subtract",
@@ -1203,7 +1203,7 @@ export const texas38Lessons: Lesson[] = [
         stage: "intuition",
         title: "Add what comes in, subtract what goes out",
         paragraphs: [
-          "You need to add and subtract decimals. Money amounts have two digits for cents after the point: 38.75 dollars is 38 dollars and 75 cents.",
+          "You need to add and subtract decimals, which are numbers with a decimal point. Money amounts have two digits for cents after the point: 38.75 dollars is 38 dollars and 75 cents.",
           "A deposit puts money into the account, so the balance goes up. Add it.",
           "A check is a written note that pays someone from the account. A transfer out moves money to another account. A fee is a charge from the bank. Each one takes money out, so the balance goes down. Subtract it.",
           "The register goes row by row. Each new balance starts from the balance just above it.",
@@ -1261,7 +1261,7 @@ export const texas38Lessons: Lesson[] = [
         stage: "intuition",
         title: "The same pay, year after year",
         paragraphs: [
-          "You need to multiply and subtract whole numbers. A salary is a fixed amount of pay for one year of work. Some jobs state pay per month instead. There are 12 months in a year, so a year's pay is 12 times the monthly pay.",
+          "You need to multiply and subtract whole numbers (the numbers 0, 1, 2 and so on). A salary is a fixed amount of pay for one year of work. Some jobs state pay per month instead. There are 12 months in a year, so a year's pay is 12 times the monthly pay.",
           "If someone earns 62,000 dollars every year for 40 years, the total is $62{,}000 \\times 40 = 2{,}480{,}000$ dollars.",
           "Now suppose a second job pays 6,000 dollars more each year. That extra is earned again every year. Over 40 years it adds $6{,}000 \\times 40 = 240{,}000$ dollars.",
           "The number of years worked is the age at the end minus the age at the start. Working from age 22 to age 62 is $62 - 22 = 40$ years.",
@@ -1308,7 +1308,7 @@ export const texas38Lessons: Lesson[] = [
     id: "pi-ratio",
     title: "The circumference-to-diameter ratio",
     summary:
-      "The circumference of a circle is the distance around it. The diameter is the distance straight across it, through the center. For every circle, big or small, the circumference divided by the diameter is the same number, a little more than 3. This number is called $\\pi$ (pi), and it is about 3.14.",
+      "The circumference is the distance around a circle. The center is the circle's middle point. The diameter is the distance straight across, through the center. For every circle, big or small, the circumference divided by the diameter is the same number, a little more than 3. This number is called $\\pi$ (pi), and it is about 3.14.",
     senses: { center: "center", "more than": "more-than" },
     noLink: ["scales", "change", "edge"],
     templateIds: ["pi-as-ratio"],
@@ -1323,7 +1323,7 @@ export const texas38Lessons: Lesson[] = [
         paragraphs: [
           "A circle is a round shape where every point is the same distance from a middle point, the center. The circumference is the distance around the circle. The diameter is the distance across, passing through the center. The radius is the distance from the center to the edge, half the diameter.",
           "Wrap a string around a can to measure its circumference. Then measure straight across the top for the diameter. Divide the circumference by the diameter. You get about 3.14.",
-          "Try a tiny coin and then a giant wheel. The numbers you measure are very different, but the division gives the same answer each time. A ratio compares two amounts by dividing. This ratio, the same for every circle, is called $\\pi$ (pi).",
+          "Try a tiny coin and then a giant wheel. The numbers you measure are very different, but dividing gives the same answer each time. A ratio compares two amounts by dividing. This ratio, the same for every circle, is called $\\pi$ (pi).",
           "$\\pi$ is a little more than 3. So the distance around any circle is a little more than 3 times the distance across.",
         ],
       },
@@ -1367,7 +1367,7 @@ export const texas38Lessons: Lesson[] = [
     id: "experimental-probability",
     title: "Experimental probability and predictions",
     summary:
-      "Probability tells how likely something is. An experimental probability comes from doing an experiment many times. Count how often something happened and divide by the number of tries. A spinner landed on blue 18 times in 60 spins, so the experimental probability of blue is $\\frac{18}{60} = 0.3$. You can use it to predict: in 200 spins, expect about $0.3 \\times 200 = 60$ blues.",
+      "Probability tells how likely something is. An experiment is a test you repeat and record, like spinning a spinner. An experimental probability is a probability found from what actually happened in an experiment. Count how often something happened and divide by the number of tries. A spinner landed on blue 18 times in 60 spins, so the experimental probability of blue is $\\frac{18}{60} = 0.3$. You can use it to predict: in 200 spins, expect about $0.3 \\times 200 = 60$ blues.",
     senses: { trial: "trial", event: "event" },
     noLink: ["scale", "side", "sides"],
     templateIds: ["experimental-probability-predict"],
@@ -1380,7 +1380,7 @@ export const texas38Lessons: Lesson[] = [
         stage: "intuition",
         title: "What happened, and what will happen",
         paragraphs: [
-          "You need to work with fractions and decimals. A trial is one try of an experiment, such as one spin of a spinner. An event is the result you are counting, such as landing on blue.",
+          "You need to work with fractions and decimals (which are numbers with a decimal point). A trial is one try of an experiment, such as one spin of a spinner. An event is the result you are counting, such as landing on blue.",
           "The experimental probability of an event is the number of times it happened divided by the number of trials. Blue 18 times in 60 spins gives $\\frac{18}{60} = 0.3$.",
           "To predict, assume the same share will happen again. In 200 spins, about 0.3 of them should be blue: $0.3 \\times 200 = 60$.",
           "The theoretical probability is what the setup says should happen. A fair coin has 2 equal sides, so heads has theoretical probability $\\frac{1}{2}$. In 40 tosses, theory expects $\\frac{1}{2} \\times 40 = 20$ heads.",
@@ -1429,8 +1429,13 @@ export const texas38Lessons: Lesson[] = [
     id: "cylinder-prism-surface-area",
     title: "Surface area of cylinders and triangular prisms",
     summary:
-      "Surface area is the total area of all the outside surfaces of a solid. Area is measured in square units, such as square centimeters. Imagine unrolling a can: the label lays flat as a rectangle, and the top and bottom are circles. Add the areas of those pieces to get the surface area.",
-    senses: { base: "base-shape", face: "face-solid", solid: "solid-shape" },
+      "Surface area is the total area of all the outside surfaces of a solid. Area is counted in square units, the little squares 1 unit on each side, such as square centimeters. Imagine unrolling a can: the label lays flat as a rectangle, and the top and bottom are circles. Add the areas of those pieces to get the surface area.",
+    senses: {
+      base: "base-shape",
+      face: "face-solid",
+      solid: "solid-shape",
+      unit: "unit",
+    },
     noLink: [
       "side",
       "square",
@@ -1440,6 +1445,8 @@ export const texas38Lessons: Lesson[] = [
       "squared",
       "part",
       "whole",
+      "squares",
+      "sides",
     ],
     templateIds: ["cylinder-prism-surface-area"],
     objectives: [
@@ -1484,7 +1491,7 @@ export const texas38Lessons: Lesson[] = [
         title: "Formulas",
         paragraphs: [
           "Cylinder with radius $r$ and height $h$: lateral area $2\\pi rh$, total surface area $2\\pi r^2 + 2\\pi rh$.",
-          "Right triangular prism whose triangles have legs $p$ and $q$, longest side $c$, and length $L$: total surface area $pq + (p + q + c)L$. The $pq$ is the two triangles, each $\\tfrac12 pq$.",
+          "Take a triangular prism whose end triangles each have a square corner. The legs are the two sides that form that corner, $p$ and $q$. The longest side is $c$, and the prism's length is $L$. Its total surface area is $pq + (p + q + c)L$. The $pq$ is the two triangles, each $\\tfrac12 pq$.",
         ],
       },
     ],
@@ -1499,7 +1506,7 @@ export const texas38Lessons: Lesson[] = [
     id: "both-sides-situations",
     title: "Equations with a variable on both sides from a situation",
     summary:
-      "Two plans can each have a starting amount and a rate, an amount added or taken away each time. Gym A costs 20 dollars to join plus 5 dollars a visit, so $v$ visits cost $20 + 5v$. Gym B costs $8 + 8v$. Writing $20 + 5v = 8 + 8v$ asks when the costs are equal. The letter $v$ appears on both sides of the equals sign.",
+      "Two plans can each have a starting amount and a rate, an amount added or taken away each time. Gym A costs 20 dollars to join plus 5 dollars a visit, so $v$ visits cost $20 + 5v$. Gym B costs $8 + 8v$. Writing $20 + 5v = 8 + 8v$ asks when the costs are equal. The parts to the left and right of the equals sign are called the sides of the equation. The letter $v$ appears on both sides.",
     senses: {
       side: "side-of-equation",
       unit: "unit",
@@ -1507,7 +1514,7 @@ export const texas38Lessons: Lesson[] = [
       decreasing: "decreasing",
       "more than": "more-than",
     },
-    noLink: ["changes"],
+    noLink: ["changes", "parts"],
     templateIds: ["both-sides-situation-equation"],
     objectives: [
       "Write an expression for each situation, then join the two with $=$, $<$ (less than) or $>$ (greater than).",
