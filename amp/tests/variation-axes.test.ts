@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
+import { legacySurface } from "./fixtures/legacy-surface";
 import { readFileSync } from "node:fs";
 import {
   axisRecord,
@@ -436,8 +437,7 @@ test("migrated families keep every pre-axis output byte for byte at legacy axis 
       )
         return;
       legacy++;
-      const { variant, ...before } = problem;
-      void variant;
+      const before = legacySurface(problem);
       assert.equal(
         createHash("sha256")
           .update(JSON.stringify(before))
