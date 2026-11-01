@@ -65,17 +65,23 @@ export function anotherWorkbook(
   });
 }
 
-/** Saves the workbook PDF in the chosen paper size. */
+/** Saves the workbook in the chosen paper size: the PDF when the server
+ * renders them, otherwise the printable document. */
 export async function downloadWorkbook(
   session: AuthSession,
   learnerId: string,
   workbook: WorkbookSummary,
   paper: WorkbookPaper,
+  pdf: boolean,
 ) {
   let response: Response;
   try {
     response = await fetch(
-      `/api/v1${workbookPath(learnerId)}/${encodeURIComponent(workbook.id)}/pdf?format=${paper === "a4" ? "A4" : "Letter"}`,
+      `/api/v1${workbookPath(learnerId)}/${encodeURIComponent(workbook.id)}/${
+        pdf
+          ? `pdf?format=${paper === "a4" ? "A4" : "Letter"}`
+          : `document?paper=${paper}`
+      }`,
       { headers: { Authorization: `Bearer ${session.token}` } },
     );
   } catch {
@@ -110,7 +116,7 @@ export async function downloadWorkbook(
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `amp-workbook-${workbook.date}-${workbook.number}.pdf`;
+  link.download = `amp-workbook-${workbook.date}-${workbook.number}.${pdf ? "pdf" : "html"}`;
   document.body.append(link);
   link.click();
   link.remove();

@@ -268,6 +268,9 @@ export function createRenderService(options: RenderServiceOptions): {
   });
   server.requestTimeout = timeoutMs + 10_000;
   server.headersTimeout = 15_000;
+  // Longer than client and proxy idle timeouts, so a pooled connection is
+  // never closed by this side just as a request is sent on it.
+  server.keepAliveTimeout = 65_000;
 
   return {
     server,

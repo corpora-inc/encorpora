@@ -18,6 +18,7 @@ import {
   type WorkbookMinutes,
 } from "./compose.js";
 import {
+  workbookPapers,
   workbookRequestSchema,
   type WorkbookRecord,
   type WorkbookSummary,
@@ -130,7 +131,11 @@ export function registerWorkbookRoutes(
       .parse(request.query);
     return options.repository.transaction(accountId, learnerId, async (tx) => {
       await access(tx);
-      return { workbooks: (await tx.workbooks(date)).map(workbookSummary) };
+      return {
+        workbooks: (await tx.workbooks(date)).map(workbookSummary),
+        /** Whether downloads are PDFs; otherwise the printable document. */
+        pdf: !!options.renderer,
+      };
     });
   });
 
@@ -188,6 +193,51 @@ export function registerWorkbookRoutes(
     // Answer only after the transaction commits.
     return reply.code(result.status).send(result.body);
   });
+
+  /** The printable workbook as one HTML document, printed from the
+   * parent's browser. The download when no PDF renderer is configured. */
+  app.get(
+    "/api/v1/learners/:learnerId/workbooks/:workbookId/document",
+    async (request, reply) => {
+      const accountId = await account(request);
+      const { learnerId, workbookId } = workbookParams.parse(request.params);
+      const { paper } = z
+        .object({ paper: z.enum(workbookPapers).optional() })
+        .strict()
+        .parse(request.query);
+      const learnerName = (await options.repository.list(accountId)).find(
+        (l) => l.id === learnerId,
+      )?.name;
+      const record = await options.repository.transaction(
+        accountId,
+        learnerId,
+        async (tx) => {
+          await access(tx);
+          const found = await tx.workbook(workbookId);
+          if (!found) throw new ApiError(404, "Workbook not found");
+          return found;
+        },
+      );
+      if (!workbookIsCurrent(record.spec))
+        throw new ApiError(
+          410,
+          "Some problems in this workbook have been updated since it was made. Make today's workbook instead.",
+        );
+      const html = workbookHtml(record.spec, {
+        lessons,
+        skillTitle,
+        learnerName,
+        paper: paper ?? record.paper,
+      });
+      return reply
+        .type("text/html; charset=utf-8")
+        .header(
+          "Content-Disposition",
+          `attachment; filename="amp-workbook-${record.date}-${record.number}.html"`,
+        )
+        .send(html);
+    },
+  );
 
   /** The printed workbook as a PDF, rendered on first request and kept
    * briefly (RETENTION.workbookPdfHours). Rendering happens outside the

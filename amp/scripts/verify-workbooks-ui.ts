@@ -86,12 +86,19 @@ const repository = {
       ) => {
         rows.find((r) => r.id === workbookId)!.paper = paper;
       },
+      workbookPdf: async () => undefined,
+      saveWorkbookPdf: async () => undefined,
     } as unknown as LearnerTransaction);
   },
 } as unknown as Repository;
 const api = buildApp({
   repository,
   development: true,
+  // The PDF path, with a stand-in renderer (the render service has its own
+  // tests); the 503 case is injected per request below.
+  workbookRenderer: {
+    render: async ({ format }) => Buffer.from(`%PDF-1.7 ${format}`),
+  },
   authenticate: async () => "parent-one",
 });
 // Earlier workbooks for the history list, composed as the API would.
@@ -192,7 +199,7 @@ async function fixture(page: Page) {
     const request = route.request();
     const url = new URL(request.url());
     if (url.pathname.includes("/workbooks")) {
-      if (url.pathname.endsWith("/document") && failNextDownload) {
+      if (url.pathname.endsWith("/pdf") && failNextDownload) {
         failNextDownload = false;
         return route.fulfill({
           status: 503,
@@ -342,10 +349,7 @@ try {
         page.waitForEvent("download"),
         page.getByRole("button", { name: "Download workbook" }).click(),
       ]);
-      assert.equal(
-        download.suggestedFilename(),
-        `amp-workbook-${today}-2.html`,
-      );
+      assert.equal(download.suggestedFilename(), `amp-workbook-${today}-2.pdf`);
       await page
         .getByRole("alert")
         .filter({ hasText: "being prepared" })

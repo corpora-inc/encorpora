@@ -410,3 +410,32 @@ test("a workbook whose templates changed version is not reprinted as if unchange
   });
   assert.equal(history.statusCode, 400);
 });
+
+test("without a renderer, history says so and the printable document downloads instead", async () => {
+  const auth = async (request: { headers: Record<string, unknown> }) =>
+    String(request.headers.authorization ?? "").replace(/^Bearer /, "");
+  const server = app(memoryRepository().repository, true, auth, null);
+  const made = (
+    await server.inject({
+      method: "POST",
+      url,
+      headers,
+      payload: { date: today, minutes: 30, paper: "a4" },
+    })
+  ).json();
+  assert.equal((await server.inject({ url, headers })).json().pdf, false);
+  const document = await server.inject({
+    url: `${url}/${made.id}/document`,
+    headers,
+  });
+  assert.equal(document.statusCode, 200);
+  assert.match(document.headers["content-type"] as string, /text\/html/);
+  assert.match(
+    document.headers["content-disposition"] as string,
+    new RegExp(`amp-workbook-${today}-1\\.html`),
+  );
+  assert.ok(document.body.includes(made.code));
+  assert.ok(document.body.includes("size:A4"));
+  const rendering = app(memoryRepository().repository);
+  assert.equal((await rendering.inject({ url, headers })).json().pdf, true);
+});

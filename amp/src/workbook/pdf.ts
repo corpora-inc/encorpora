@@ -23,9 +23,8 @@ export function remoteRenderer(options: {
   const endpoint = new URL("/render", options.url).href;
   return {
     async render(input) {
-      let response: Response;
-      try {
-        response = await fetch(endpoint, {
+      const send = () =>
+        fetch(endpoint, {
           method: "POST",
           headers: {
             Authorization: `Bearer ${options.token}`,
@@ -34,9 +33,18 @@ export function remoteRenderer(options: {
           body: JSON.stringify(input),
           signal: AbortSignal.timeout(options.timeoutMs ?? 30_000),
         });
+      let response: Response;
+      try {
+        // Rendering has no side effects: one retry covers a pooled
+        // connection that closed as the request went out.
+        response = await send().catch((error) => {
+          if (error instanceof Error && error.name === "TimeoutError")
+            throw error;
+          return send();
+        });
       } catch (error) {
         throw new RendererUnavailable(
-          `Render service unreachable: ${error instanceof Error ? error.message : String(error)}`,
+          `Render service unreachable: ${error instanceof Error ? `${error.message} ${String((error as { cause?: unknown }).cause ?? "")}` : String(error)}`,
         );
       }
       if (!response.ok) {
