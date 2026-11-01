@@ -97,12 +97,6 @@
     "more than": 1,
     "scale": 13
   },
-  "benchmark-fraction-estimate": {
-    "changes": 1,
-    "difference": 3,
-    "parts": 3,
-    "whole": 1
-  },
   "benchmark-length-estimate": {
     "unit": 1
   },
@@ -126,13 +120,6 @@
     "side": 7,
     "sides": 1,
     "units": 2
-  },
-  "budget-category-balance": {
-    "balance": 6,
-    "balances": 9,
-    "change": 7,
-    "difference": 2,
-    "more than": 15
   },
   "cancelled-linear-inequality": {
     "sides": 61,
@@ -186,14 +173,6 @@
   "compare-capacity": {
     "more than": 3
   },
-  "compare-decimals-hundredths": {
-    "mean": 1,
-    "more than": 1,
-    "unit": 1
-  },
-  "compare-decimals-thousandths": {
-    "mean": 1
-  },
   "compare-fractions-reason-blanks": {
     "eighths": 1,
     "part": 1,
@@ -211,12 +190,6 @@
   },
   "compare-lengths": {
     "edge": 1
-  },
-  "compare-like-denominators": {
-    "whole": 20
-  },
-  "compare-like-numerators": {
-    "whole": 36
   },
   "compare-money-sets": {
     "more than": 1,
@@ -238,11 +211,6 @@
   },
   "compare-two-digit": {
     "more than": 10
-  },
-  "compare-unlike-fractions": {
-    "rename": 36,
-    "renaming": 1,
-    "whole": 2
   },
   "compare-weights": {
     "sides": 1
@@ -276,14 +244,6 @@
     "side": 17,
     "sides": 12,
     "similar": 1
-  },
-  "congruent-fourths-pair": {
-    "one third": 3,
-    "part": 10,
-    "parts": 65,
-    "square": 13,
-    "squares": 2,
-    "whole": 25
   },
   "conversion-chain-story": {
     "factor": 1,
@@ -402,22 +362,6 @@
     "squares": 12,
     "whole": 11
   },
-  "decimal-digit-value": {
-    "third": 4
-  },
-  "decimal-grid-read": {
-    "square": 1,
-    "squares": 18
-  },
-  "decimal-line-point": {
-    "interval": 1,
-    "intervals": 4,
-    "whole": 5
-  },
-  "decimal-mixed-number-blanks": {
-    "part": 24,
-    "whole": 3
-  },
   "decimal-money-change": {
     "change": 31,
     "difference": 7,
@@ -525,13 +469,6 @@
   "elapsed-time-hm": {
     "leaves": 1
   },
-  "equal-area-fraction": {
-    "whole": 3
-  },
-  "equal-area-part-size": {
-    "side": 1,
-    "whole": 3
-  },
   "equal-factor-truth-select": {
     "factor": 3,
     "product": 20,
@@ -587,12 +524,6 @@
   "expanded-decimal-slots": {
     "part": 67
   },
-  "expanded-sum-to-standard": {
-    "changes": 1,
-    "product": 109,
-    "products": 1,
-    "standard form": 23
-  },
   "expanded-whole-slots": {
     "leaves": 1,
     "part": 56,
@@ -638,17 +569,6 @@
     "change": 28,
     "quarter": 9,
     "quarters": 30
-  },
-  "find-equal-shares": {
-    "quarters": 12,
-    "rule": 1,
-    "whole": 4
-  },
-  "find-equal-thirds": {
-    "quarters": 14,
-    "rule": 1,
-    "thirds": 13,
-    "whole": 7
   },
   "find-named-shape": {
     "edge": 3,
@@ -774,14 +694,6 @@
   "fraction-share-amount": {
     "whole": 1
   },
-  "fraction-term-chain": {
-    "change": 2,
-    "changes": 1,
-    "multiple": 1,
-    "term": 7,
-    "terms": 2,
-    "unit": 1
-  },
   "fraction-total-minus-parts": {
     "eighths": 13
   },
@@ -838,9 +750,6 @@
   },
   "greater-numeral": {
     "more than": 1
-  },
-  "gross-net-pay": {
-    "net": 7
   },
   "grouped-linear-equation": {
     "right side": 1,
@@ -908,9 +817,6 @@
   "integer-power": {
     "square": 3
   },
-  "inverse-round-decimal": {
-    "side": 1
-  },
   "join-within-10": {
     "parts": 16
   },
@@ -922,13 +828,6 @@
     "term": 26,
     "terms": 31,
     "whole": 5
-  },
-  "larger-share": {
-    "mean": 1,
-    "one quarter": 6,
-    "part": 1,
-    "parts": 1,
-    "quarters": 2
   },
   "lesson:absolute-compound-inequality": {
     "more than": 1,
@@ -1126,11 +1025,6 @@
     "opposite": 2,
     "parts": 1
   },
-  "lesson:benchmark-fraction-estimate-lesson": {
-    "difference": 3,
-    "differences": 1,
-    "whole": 2
-  },
   "lesson:benchmark-length-estimate": {
     "unit": 2
   },
@@ -1163,13 +1057,6 @@
     "more than": 1,
     "sides": 1,
     "units": 1
-  },
-  "lesson:budget-category-balance": {
-    "balance": 6,
-    "balances": 3,
-    "change": 1,
-    "difference": 1,
-    "increasing": 1
   },
   "lesson:buy-enough-compare-the-bills": {
     "change": 1,
@@ -1294,15 +1181,6 @@
     "more than": 2,
     "side": 1,
     "unit": 1
-  },
-  "lesson:compare-decimals": {
-    "change": 1,
-    "more than": 2,
-    "part": 1,
-    "parts": 1,
-    "rename": 1,
-    "unit": 1,
-    "whole": 3
   },
   "lesson:compare-fractions-reason-blanks": {
     "eighths": 4,
@@ -1569,17 +1447,6 @@
     "sides": 4,
     "similar": 1
   },
-  "lesson:congruent-fourths-lesson": {
-    "fourths": 2,
-    "one fourth": 7,
-    "one third": 1,
-    "part": 4,
-    "parts": 11,
-    "square": 5,
-    "squares": 2,
-    "thirds": 1,
-    "whole": 2
-  },
   "lesson:conic-foci": {
     "center": 1,
     "difference": 5,
@@ -1772,23 +1639,11 @@
     "factor": 2,
     "whole": 2
   },
-  "lesson:decimal-mixed-number-blanks": {
-    "mean": 1,
-    "part": 6,
-    "whole": 5
-  },
   "lesson:decimal-money-change": {
     "change": 12,
     "one quarter": 1,
     "quarters": 3,
     "whole": 1
-  },
-  "lesson:decimal-place-value": {
-    "changes": 1,
-    "part": 1,
-    "side": 2,
-    "unit": 1,
-    "whole": 2
   },
   "lesson:decimal-tenth-hundredth-step": {
     "change": 6,
@@ -1970,15 +1825,6 @@
     "trial": 2,
     "trials": 2
   },
-  "lesson:equal-area-parts": {
-    "mean": 1,
-    "part": 7,
-    "parts": 12,
-    "side": 1,
-    "squares": 10,
-    "unit": 1,
-    "whole": 8
-  },
   "lesson:equal-both-sides": {
     "balance": 1,
     "left side": 2,
@@ -2082,11 +1928,6 @@
     "index": 1,
     "part": 1,
     "parts": 3
-  },
-  "lesson:expanded-sum-to-standard-lesson": {
-    "product": 8,
-    "products": 1,
-    "standard form": 2
   },
   "lesson:expanded-whole-slots": {
     "leaves": 1,
@@ -2207,38 +2048,11 @@
     "changes": 3,
     "sort": 1
   },
-  "lesson:fraction-addition": {
-    "change": 2,
-    "changes": 1,
-    "eighths": 1,
-    "factor": 1,
-    "fourth": 5,
-    "fourths": 4,
-    "more than": 3,
-    "multiple": 5,
-    "multiples": 2,
-    "one fourth": 8,
-    "one third": 7,
-    "part": 6,
-    "parts": 19,
-    "rename": 1,
-    "rule": 1,
-    "third": 5,
-    "thirds": 9,
-    "unit": 1,
-    "whole": 30
-  },
   "lesson:fraction-benchmarks": {
     "change": 1,
     "difference": 1,
     "fourths": 1,
     "parts": 2
-  },
-  "lesson:fraction-choice-compare-lesson": {
-    "eighths": 1,
-    "more than": 2,
-    "part": 1,
-    "wholes": 1
   },
   "lesson:fraction-line-names-select-lesson": {
     "parts": 5,
@@ -2276,19 +2090,6 @@
     "mean": 3,
     "unit": 1
   },
-  "lesson:fraction-renaming": {
-    "change": 1,
-    "edge": 1,
-    "factor": 1,
-    "leaves": 2,
-    "one third": 1,
-    "part": 4,
-    "parts": 1,
-    "third": 3,
-    "thirds": 7,
-    "units": 1,
-    "whole": 7
-  },
   "lesson:fraction-scaling-reciprocals": {
     "change": 1,
     "changes": 1,
@@ -2297,14 +2098,6 @@
     "part": 1,
     "product": 2,
     "whole": 1
-  },
-  "lesson:fraction-term-chain": {
-    "change": 1,
-    "fourths": 2,
-    "multiple": 1,
-    "rename": 2,
-    "term": 3,
-    "thirds": 4
   },
   "lesson:fractions": {
     "change": 1,
@@ -2315,20 +2108,6 @@
     "part": 2,
     "parts": 6,
     "whole": 9
-  },
-  "lesson:fractions-of-one-whole": {
-    "eighths": 2,
-    "fourths": 2,
-    "more than": 1,
-    "one fourth": 1,
-    "parts": 6,
-    "quarter": 1,
-    "quarters": 1,
-    "rename": 3,
-    "renaming": 1,
-    "third": 1,
-    "thirds": 1,
-    "whole": 10
   },
   "lesson:frequency-table-build": {
     "interval": 4,
@@ -2510,10 +2289,6 @@
     "term": 10,
     "terms": 10
   },
-  "lesson:gross-net-pay": {
-    "net": 1,
-    "sample": 1
-  },
   "lesson:gross-net-sentence": {
     "sample": 1
   },
@@ -2552,29 +2327,6 @@
     "sides": 2,
     "solid": 6,
     "sort": 1
-  },
-  "lesson:halves-and-quarters": {
-    "changes": 1,
-    "fourths": 1,
-    "one quarter": 5,
-    "part": 5,
-    "parts": 7,
-    "quarters": 16,
-    "square": 4,
-    "thirds": 2,
-    "whole": 11
-  },
-  "lesson:halves-thirds-and-quarters": {
-    "fourths": 1,
-    "more than": 1,
-    "one quarter": 1,
-    "one third": 3,
-    "part": 11,
-    "parts": 9,
-    "quarters": 5,
-    "square": 6,
-    "thirds": 8,
-    "whole": 12
   },
   "lesson:hours-and-half-hours": {
     "whole": 1
@@ -2634,15 +2386,6 @@
   "lesson:intercept-point-lesson": {
     "rule": 2,
     "sides": 1
-  },
-  "lesson:inverse-decimal-rounding": {
-    "boundaries": 2,
-    "boundary": 1,
-    "changes": 1,
-    "part": 2,
-    "range": 1,
-    "rule": 1,
-    "side": 1
   },
   "lesson:inverse-functions": {
     "inverse": 5,
@@ -3674,10 +3417,6 @@
     "sides": 1,
     "terms": 1,
     "vertex": 1
-  },
-  "lesson:price-and-rate-chain": {
-    "scale": 2,
-    "whole": 1
   },
   "lesson:prime-composite-factorization": {
     "change": 1,
@@ -4862,15 +4601,6 @@
   "lesson:share-or-group": {
     "factor": 1
   },
-  "lesson:share-remainder-chain": {
-    "difference": 2,
-    "one fourth": 1,
-    "part": 8,
-    "parts": 5,
-    "period": 1,
-    "periods": 5,
-    "whole": 13
-  },
   "lesson:show-work-box-cost": {
     "factors": 1,
     "whole": 1
@@ -5237,11 +4967,6 @@
     "range": 2,
     "squared": 1
   },
-  "lesson:standard-to-expanded-choice-lesson": {
-    "part": 1,
-    "product": 1,
-    "products": 1
-  },
   "lesson:statistical-report-critique": {
     "certain": 1,
     "change": 1,
@@ -5436,16 +5161,6 @@
     "model": 2,
     "more than": 1,
     "squares": 3
-  },
-  "lesson:tenths-and-hundredths": {
-    "intervals": 4,
-    "part": 1,
-    "parts": 1,
-    "rename": 2,
-    "renamed": 1,
-    "square": 4,
-    "squares": 4,
-    "whole": 7
   },
   "lesson:theoretical-distributions": {
     "average": 4,
@@ -6250,9 +5965,6 @@
     "changes": 20,
     "intervals": 1
   },
-  "price-count-chain": {
-    "part": 1
-  },
   "prime-composite-sort": {
     "more than": 2
   },
@@ -6444,12 +6156,6 @@
     "product": 1,
     "square": 39
   },
-  "same-share-different-shape": {
-    "one quarter": 6,
-    "one third": 5,
-    "whole": 6,
-    "wholes": 1
-  },
   "scale-drawing": {
     "scale": 32,
     "side": 14,
@@ -6488,17 +6194,6 @@
     "change": 1,
     "sides": 12,
     "square": 4
-  },
-  "share-remainder-fractions": {
-    "period": 1,
-    "periodic": 2,
-    "periods": 4,
-    "scale": 1,
-    "whole": 16
-  },
-  "share-remainder-percent": {
-    "difference": 15,
-    "whole": 2
   },
   "shared-plan-input": {
     "mean": 20,
@@ -6716,13 +6411,6 @@
   "staar-table-rule-choice": {
     "rule": 56,
     "rules": 15
-  },
-  "standard-to-expanded-choice": {
-    "part": 9,
-    "product": 2,
-    "products": 3,
-    "standard form": 8,
-    "whole": 1
   },
   "stem-leaf-match-select": {
     "leaf": 3,

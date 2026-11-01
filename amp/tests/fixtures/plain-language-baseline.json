@@ -991,12 +991,6 @@
       ],
       "long": []
     },
-    "lesson:benchmark-fraction-estimate-lesson": {
-      "terms": [
-        "round"
-      ],
-      "long": []
-    },
     "lesson:benchmark-length-estimate": {
       "terms": [
         "estimate"
@@ -1063,13 +1057,6 @@
         "liter",
         "rate",
         "variable"
-      ],
-      "long": []
-    },
-    "lesson:budget-category-balance": {
-      "terms": [
-        "absolute-value",
-        "expense"
       ],
       "long": []
     },
@@ -1301,18 +1288,6 @@
         "greater-than",
         "less-than",
         "line",
-        "whole-number"
-      ],
-      "long": []
-    },
-    "lesson:compare-decimals": {
-      "terms": [
-        "absolute-value",
-        "corresponding",
-        "decimal",
-        "hundredth",
-        "tenth",
-        "thousandth",
         "whole-number"
       ],
       "long": []
@@ -1767,13 +1742,6 @@
       ],
       "long": []
     },
-    "lesson:congruent-fourths-lesson": {
-      "terms": [
-        "area",
-        "unit-fraction"
-      ],
-      "long": []
-    },
     "lesson:conic-foci": {
       "terms": [
         "constant",
@@ -2084,33 +2052,12 @@
       ],
       "long": []
     },
-    "lesson:decimal-mixed-number-blanks": {
-      "terms": [
-        "decimal",
-        "denominator",
-        "hundredth",
-        "numerator",
-        "tenth",
-        "whole-number"
-      ],
-      "long": []
-    },
     "lesson:decimal-money-change": {
       "terms": [
         "coin",
         "digit",
         "line",
         "unknown"
-      ],
-      "long": []
-    },
-    "lesson:decimal-place-value": {
-      "terms": [
-        "decimal",
-        "hundredth",
-        "round",
-        "tenth",
-        "thousandth"
       ],
       "long": []
     },
@@ -2425,14 +2372,6 @@
       ],
       "long": []
     },
-    "lesson:equal-area-parts": {
-      "terms": [
-        "denominator",
-        "numerator",
-        "unit-square"
-      ],
-      "long": []
-    },
     "lesson:equal-both-sides": {
       "terms": [
         "equal-sign",
@@ -2629,14 +2568,6 @@
         "decimal",
         "hundredth",
         "tenth"
-      ],
-      "long": []
-    },
-    "lesson:expanded-sum-to-standard-lesson": {
-      "terms": [
-        "hundredth",
-        "tenth",
-        "thousandth"
       ],
       "long": []
     },
@@ -2846,34 +2777,9 @@
       ],
       "long": []
     },
-    "lesson:fraction-addition": {
-      "terms": [
-        "common-factor",
-        "division",
-        "equal-groups",
-        "equivalent",
-        "integer",
-        "liter",
-        "multiplication",
-        "remainder",
-        "volume",
-        "whole-number"
-      ],
-      "long": []
-    },
     "lesson:fraction-benchmarks": {
       "terms": [
         "denominator"
-      ],
-      "long": []
-    },
-    "lesson:fraction-choice-compare-lesson": {
-      "terms": [
-        "common-denominator",
-        "denominator",
-        "mixed-number",
-        "numerator",
-        "whole-number"
       ],
       "long": []
     },
@@ -2931,17 +2837,6 @@
       ],
       "long": []
     },
-    "lesson:fraction-renaming": {
-      "terms": [
-        "area",
-        "denominator",
-        "numerator",
-        "scale-factor",
-        "times-as-many",
-        "whole-number"
-      ],
-      "long": []
-    },
     "lesson:fraction-scaling-reciprocals": {
       "terms": [
         "division",
@@ -2950,14 +2845,6 @@
         "multiplication",
         "multiplier",
         "reciprocal"
-      ],
-      "long": []
-    },
-    "lesson:fraction-term-chain": {
-      "terms": [
-        "decimal",
-        "mixed-number",
-        "whole-number"
       ],
       "long": []
     },
@@ -2974,12 +2861,6 @@
         "denominator",
         "equivalent",
         "integer",
-        "numerator"
-      ],
-      "long": []
-    },
-    "lesson:fractions-of-one-whole": {
-      "terms": [
         "numerator"
       ],
       "long": []
@@ -3346,15 +3227,6 @@
       ],
       "long": []
     },
-    "lesson:gross-net-pay": {
-      "terms": [
-        "decimal",
-        "deduction",
-        "gross-pay",
-        "tax"
-      ],
-      "long": []
-    },
     "lesson:gross-net-sentence": {
       "terms": [
         "deduction",
@@ -3416,26 +3288,6 @@
         "solution",
         "strict-inequality",
         "substitute"
-      ],
-      "long": []
-    },
-    "lesson:halves-and-quarters": {
-      "terms": [
-        "circle",
-        "equal-parts",
-        "half",
-        "rectangle"
-      ],
-      "long": []
-    },
-    "lesson:halves-thirds-and-quarters": {
-      "terms": [
-        "circle",
-        "corner",
-        "equal-parts",
-        "half",
-        "line",
-        "numerator"
       ],
       "long": []
     },
@@ -3635,17 +3487,6 @@
         "maximum",
         "minimum",
         "numerator",
-        "tenth"
-      ],
-      "long": []
-    },
-    "lesson:inverse-decimal-rounding": {
-      "terms": [
-        "at-least",
-        "decimal",
-        "halfway-point",
-        "hundredth",
-        "round",
         "tenth"
       ],
       "long": []
@@ -5224,16 +5065,6 @@
         "parallel",
         "segment",
         "skew-lines"
-      ],
-      "long": []
-    },
-    "lesson:price-and-rate-chain": {
-      "terms": [
-        "distributive-property",
-        "proportional-relationship",
-        "rate",
-        "ratio",
-        "unit-rate"
       ],
       "long": []
     },
@@ -7125,8 +6956,6 @@
       "terms": [
         "constant",
         "decimal",
-        "equivalent",
-        "mixed-number",
         "multiplier",
         "polynomial",
         "quadratic"
@@ -7138,9 +6967,7 @@
         "axis-of-symmetry",
         "completing-the-square",
         "decimal",
-        "equivalent",
         "maximum",
-        "mixed-number",
         "parabola",
         "substitute"
       ],
@@ -7156,8 +6983,6 @@
     "lesson:sat-entry-radian-conversion": {
       "terms": [
         "decimal",
-        "equivalent",
-        "mixed-number",
         "radian"
       ],
       "long": []
@@ -7166,7 +6991,6 @@
       "terms": [
         "decimal",
         "equivalent",
-        "mixed-number",
         "quadratic",
         "radical",
         "radicand",
@@ -7188,9 +7012,7 @@
         "denominator",
         "division",
         "domain",
-        "equivalent",
         "excluded-value",
-        "mixed-number",
         "numerator",
         "solution"
       ],
@@ -7467,15 +7289,6 @@
         "division",
         "equal-groups",
         "quotient"
-      ],
-      "long": []
-    },
-    "lesson:share-remainder-chain": {
-      "terms": [
-        "decimal",
-        "denominator",
-        "numerator",
-        "tenth"
       ],
       "long": []
     },
@@ -8098,15 +7911,6 @@
       ],
       "long": []
     },
-    "lesson:standard-to-expanded-choice-lesson": {
-      "terms": [
-        "decimal",
-        "hundredth",
-        "power-of-10",
-        "tenth"
-      ],
-      "long": []
-    },
     "lesson:statistical-questions": {
       "terms": [
         "height",
@@ -8403,16 +8207,6 @@
       "terms": [
         "ten-frame",
         "whole-number"
-      ],
-      "long": []
-    },
-    "lesson:tenths-and-hundredths": {
-      "terms": [
-        "decimal",
-        "equivalent",
-        "hundredth",
-        "tenth",
-        "thousandth"
       ],
       "long": []
     },
@@ -9382,8 +9176,7 @@
     },
     "practice:arithmetic-term": {
       "terms": [
-        "arithmetic-sequence",
-        "common-difference"
+        "arithmetic-sequence"
       ],
       "long": []
     },
@@ -9484,14 +9277,6 @@
       ],
       "long": []
     },
-    "practice:benchmark-fraction-estimate": {
-      "terms": [
-        "denominator",
-        "numerator",
-        "round"
-      ],
-      "long": []
-    },
     "practice:benchmark-length-estimate": {
       "terms": [
         "estimate"
@@ -9570,13 +9355,6 @@
         "box-plot",
         "maximum",
         "minimum"
-      ],
-      "long": []
-    },
-    "practice:budget-category-balance": {
-      "terms": [
-        "absolute-value",
-        "expense"
       ],
       "long": []
     },
@@ -9903,21 +9681,6 @@
       ],
       "long": []
     },
-    "practice:compare-decimals-hundredths": {
-      "terms": [
-        "decimal",
-        "whole-number"
-      ],
-      "long": []
-    },
-    "practice:compare-decimals-thousandths": {
-      "terms": [
-        "decimal",
-        "hundredth",
-        "tenth"
-      ],
-      "long": []
-    },
     "practice:compare-fractions": {
       "terms": [
         "numerator"
@@ -9961,12 +9724,6 @@
       "terms": [
         "length",
         "line"
-      ],
-      "long": []
-    },
-    "practice:compare-like-numerators": {
-      "terms": [
-        "denominator"
       ],
       "long": []
     },
@@ -10022,13 +9779,6 @@
         "digit",
         "equal",
         "place"
-      ],
-      "long": []
-    },
-    "practice:compare-unlike-fractions": {
-      "terms": [
-        "common-denominator",
-        "denominator"
       ],
       "long": []
     },
@@ -10430,13 +10180,6 @@
         "point",
         "sequence",
         "triangle"
-      ],
-      "long": []
-    },
-    "practice:congruent-fourths-pair": {
-      "terms": [
-        "area",
-        "unit-fraction"
       ],
       "long": []
     },
@@ -10865,42 +10608,6 @@
       ],
       "long": []
     },
-    "practice:decimal-digit-value": {
-      "terms": [
-        "decimal",
-        "hundredth",
-        "tenth",
-        "thousandth"
-      ],
-      "long": []
-    },
-    "practice:decimal-grid-read": {
-      "terms": [
-        "decimal",
-        "hundredth",
-        "tenth"
-      ],
-      "long": []
-    },
-    "practice:decimal-line-point": {
-      "terms": [
-        "decimal",
-        "hundredth",
-        "tenth"
-      ],
-      "long": []
-    },
-    "practice:decimal-mixed-number-blanks": {
-      "terms": [
-        "decimal",
-        "denominator",
-        "hundredth",
-        "numerator",
-        "tenth",
-        "whole-number"
-      ],
-      "long": []
-    },
     "practice:decimal-money-change": {
       "terms": [
         "addition",
@@ -11116,8 +10823,7 @@
     "practice:divide-fractions": {
       "terms": [
         "denominator",
-        "numerator",
-        "reciprocal"
+        "numerator"
       ],
       "long": []
     },
@@ -11163,15 +10869,6 @@
         "dividend",
         "divisor",
         "equal-groups"
-      ],
-      "long": []
-    },
-    "practice:dollar-rate-scale": {
-      "terms": [
-        "division",
-        "proportional-relationship",
-        "rate",
-        "unit-rate"
       ],
       "long": []
     },
@@ -11241,21 +10938,6 @@
         "expected-value",
         "percent",
         "probability"
-      ],
-      "long": []
-    },
-    "practice:equal-area-fraction": {
-      "terms": [
-        "area",
-        "numerator",
-        "unit-square"
-      ],
-      "long": []
-    },
-    "practice:equal-area-part-size": {
-      "terms": [
-        "area",
-        "unit-square"
       ],
       "long": []
     },
@@ -11405,15 +11087,6 @@
       "terms": [
         "equivalent",
         "regroup"
-      ],
-      "long": []
-    },
-    "practice:expanded-decimal": {
-      "terms": [
-        "decimal",
-        "hundredth",
-        "tenth",
-        "thousandth"
       ],
       "long": []
     },
@@ -11694,19 +11367,6 @@
       ],
       "long": []
     },
-    "practice:find-equal-shares": {
-      "terms": [
-        "equal-parts",
-        "half"
-      ],
-      "long": []
-    },
-    "practice:find-equal-thirds": {
-      "terms": [
-        "equal-parts"
-      ],
-      "long": []
-    },
     "practice:find-named-shape": {
       "terms": [
         "circle",
@@ -11925,14 +11585,6 @@
       ],
       "long": []
     },
-    "practice:fraction-choice-compare": {
-      "terms": [
-        "common-denominator",
-        "mixed-number",
-        "whole-number"
-      ],
-      "long": []
-    },
     "practice:fraction-distance-gap": {
       "terms": [
         "denominator"
@@ -11955,15 +11607,6 @@
         "mixed-number",
         "numerator",
         "whole-number"
-      ],
-      "long": []
-    },
-    "practice:fraction-equivalence-choice": {
-      "terms": [
-        "denominator",
-        "equivalent",
-        "equivalent-fractions",
-        "numerator"
       ],
       "long": []
     },
@@ -12027,18 +11670,6 @@
     "practice:fraction-share-amount": {
       "terms": [
         "numerator"
-      ],
-      "long": []
-    },
-    "practice:fraction-term-chain": {
-      "terms": [
-        "common-denominator",
-        "decimal",
-        "denominator",
-        "lowest-terms",
-        "mixed-number",
-        "numerator",
-        "whole-number"
       ],
       "long": []
     },
@@ -12114,10 +11745,7 @@
     "practice:function-evaluation": {
       "terms": [
         "coefficient",
-        "function",
-        "input",
         "multiplication",
-        "output",
         "parentheses",
         "substitute"
       ],
@@ -12856,13 +12484,6 @@
       ],
       "long": []
     },
-    "practice:gross-net-pay": {
-      "terms": [
-        "deduction",
-        "tax"
-      ],
-      "long": []
-    },
     "practice:gross-net-sentence": {
       "terms": [
         "deduction",
@@ -13206,15 +12827,6 @@
       ],
       "long": []
     },
-    "practice:inverse-round-decimal": {
-      "terms": [
-        "at-least",
-        "decimal",
-        "halfway-point",
-        "round"
-      ],
-      "long": []
-    },
     "practice:inverse-trig-value": {
       "terms": [
         "cosine",
@@ -13277,12 +12889,6 @@
         "parentheses",
         "remainder",
         "variable"
-      ],
-      "long": []
-    },
-    "practice:larger-share": {
-      "terms": [
-        "half"
       ],
       "long": []
     },
@@ -14172,12 +13778,6 @@
       ],
       "long": []
     },
-    "practice:name-equal-share": {
-      "terms": [
-        "half"
-      ],
-      "long": []
-    },
     "practice:name-flat-shape": {
       "terms": [
         "corner",
@@ -14194,13 +13794,6 @@
         "quadrilateral",
         "rectangle",
         "triangle"
-      ],
-      "long": []
-    },
-    "practice:name-share": {
-      "terms": [
-        "equal-parts",
-        "half"
       ],
       "long": []
     },
@@ -14866,12 +14459,6 @@
       ],
       "long": []
     },
-    "practice:percent-of": {
-      "terms": [
-        "percent"
-      ],
-      "long": []
-    },
     "practice:perimeter-area-chain": {
       "terms": [
         "unit-square"
@@ -15238,12 +14825,6 @@
         "linear-function",
         "output",
         "rate"
-      ],
-      "long": []
-    },
-    "practice:price-count-chain": {
-      "terms": [
-        "distributive-property"
       ],
       "long": []
     },
@@ -16486,16 +16067,6 @@
       ],
       "long": []
     },
-    "practice:round-decimal": {
-      "terms": [
-        "decimal",
-        "halfway-point",
-        "hundredth",
-        "round",
-        "tenth"
-      ],
-      "long": []
-    },
     "practice:round-decimal-blanks": {
       "terms": [
         "at-least",
@@ -16568,12 +16139,6 @@
         "logarithm",
         "multiplication",
         "reciprocal"
-      ],
-      "long": []
-    },
-    "practice:same-share-different-shape": {
-      "terms": [
-        "equal-parts"
       ],
       "long": []
     },
@@ -16662,10 +16227,8 @@
       "terms": [
         "constant",
         "decimal",
-        "equivalent",
         "expression",
         "function",
-        "mixed-number",
         "multiplicity",
         "polynomial"
       ],
@@ -16675,9 +16238,7 @@
       "terms": [
         "axis-of-symmetry",
         "decimal",
-        "equivalent",
         "height",
-        "mixed-number",
         "parabola",
         "substitute",
         "symmetry",
@@ -16703,8 +16264,6 @@
         "arc",
         "coefficient",
         "decimal",
-        "equivalent",
-        "mixed-number",
         "radian",
         "radius"
       ],
@@ -16713,9 +16272,7 @@
     "practice:sat-entry-radical-equation": {
       "terms": [
         "decimal",
-        "equivalent",
         "isolate",
-        "mixed-number",
         "quadratic",
         "square-root",
         "substitute"
@@ -16742,7 +16299,6 @@
         "excluded-value",
         "expression",
         "input",
-        "mixed-number",
         "numerator",
         "solution"
       ],
@@ -16953,19 +16509,6 @@
         "division",
         "equal-groups",
         "multiplication"
-      ],
-      "long": []
-    },
-    "practice:share-remainder-fractions": {
-      "terms": [
-        "denominator",
-        "numerator"
-      ],
-      "long": []
-    },
-    "practice:share-remainder-percent": {
-      "terms": [
-        "decimal"
       ],
       "long": []
     },
@@ -17736,12 +17279,6 @@
       ],
       "long": []
     },
-    "practice:standard-to-expanded-choice": {
-      "terms": [
-        "decimal"
-      ],
-      "long": []
-    },
     "practice:standard-to-scientific": {
       "terms": [
         "coefficient",
@@ -18144,14 +17681,6 @@
     "practice:tens-ones-model": {
       "terms": [
         "place-value"
-      ],
-      "long": []
-    },
-    "practice:tenths-as-hundredths": {
-      "terms": [
-        "decimal",
-        "hundredth",
-        "tenth"
       ],
       "long": []
     },
