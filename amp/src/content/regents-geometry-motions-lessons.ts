@@ -141,7 +141,7 @@ export const regentsGeometryMotionMethods: Record<string, ProblemMethod> = {
 
 export const regentsGeometryMotionPrinciples: Record<string, string> = {
   "geo-dilation-center":
-    "A dilation with center $O$ and scale factor $k>0$ sends each point $P$ to the point $P'$ on ray $OP$ with $OP'=k\\cdot OP$. In coordinates, $P'=O+k(P-O)$. So when $k\\ne1$, the center is $O=\\frac{P'-kP}{1-k}$.",
+    "A dilation with center $O$ and scale factor $k>0$ sends each point $P$ to the point $P'$ on ray $OP$, the half-line from $O$ through $P$, with $OP'=k\\cdot OP$. In coordinates, $P'=O+k(P-O)$. So when $k\\ne1$, the center is $O=\\frac{P'-kP}{1-k}$.",
   "geo-dilation-line-center":
     "A dilation sends a line to a parallel line or to itself. It sends the line to itself exactly when the center is on the line. For the line $y=mx+b$, a center $(c,d)$ and scale factor $k$, the image is $y=mx+b'$, where $b'=(1-k)(d-mc)+kb$.",
   "geo-motion-chain":
@@ -189,7 +189,7 @@ export const regentsGeometryMotionLessons = [
       ],
       formalTitle: "Dilations in coordinates",
       formal: [
-        "With center $O$ and scale factor $k$, the image of $P$ is $P'=O+k(P-O)$: start at the center and go $k$ times as far toward $P$. When $k\\ne1$, meaning $k$ is not 1, the center is the only point that stays put.",
+        "With center $O$ and scale factor $k$, the image of $P$ is $P'=O+k(P-O)$: start at the center and go $k$ times as far, in the direction of $P$. When $k\\ne1$, meaning $k$ is not 1, the center is the only point that stays put.",
         "A dilation keeps angle measures and sends each line to a parallel line or to itself, so slopes do not change.",
       ],
       pitfalls: [

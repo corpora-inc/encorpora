@@ -132,7 +132,7 @@ export const similarityTrigLessons: Lesson[] = [
         stage: "intuition",
         title: "The angle fixes the ratio",
         paragraphs: [
-          "A right triangle has one square corner and two smaller, acute angles. Right triangles with the same acute angle $A$ are similar: a dilation together with a rigid motion can map one onto the other. The ratio of the side opposite $A$ to the hypotenuse (the side opposite the square corner) is the same in all of them: $3/5$, $6/10$, and $9/15$ are one number.",
+          "A right triangle has one square corner and two smaller angles, called acute because each is under 90°. Right triangles with the same acute angle $A$ are similar: one is a scaled copy of the other. The ratio of the side opposite $A$ to the hypotenuse (the side opposite the square corner) is the same in all of them: $3/5$, $6/10$, and $9/15$ are one number.",
           "That shared ratio depends only on the angle, so it can be named after the angle. It is the sine of $A$.",
         ],
         illustration: "trig-similar-scaling",
@@ -167,7 +167,7 @@ export const similarityTrigLessons: Lesson[] = [
         "In a 30°-60°-90° triangle, the hypotenuse has length 14. The longer leg is c√3. What is $c$?",
       steps: [
         "The shorter leg, opposite 30°, is half the hypotenuse: 14 ÷ 2 = 7.",
-        "The longer leg is the shorter leg times √3: 7√3.",
+        "The longer leg is the shorter leg times $\\sqrt3$, the number that times itself makes 3: $7\\sqrt3$.",
         "So c = 7.",
       ],
       answer: "7",

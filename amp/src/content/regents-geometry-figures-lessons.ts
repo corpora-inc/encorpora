@@ -232,7 +232,7 @@ export const regentsGeometryFiguresLessons = [
       id: "regents-geometry-triangle-segments",
       title: "Segments inside a triangle",
       summary:
-        "Some segments drawn inside a triangle cut off smaller triangles of the same shape. Triangles of the same shape are called similar. Their sides are in proportion: each side is the same multiple of its partner. That turns a length question into a proportion: an equation of two equal fractions. A third kind of segment, from a corner to the middle of the side across, meets the others at a point two thirds of the way along.",
+        "Some segments drawn inside a triangle cut off smaller triangles of the same shape. Triangles of the same shape are called similar. Their sides are in proportion: each side is the same multiple of its partner. That turns a length question into a proportion: an equation of two equal fractions. A segment from a corner to the middle of the side across is called a median. The three medians meet at one point, two thirds of the way along each.",
       templateIds: [
         "geo-altitude-hypotenuse",
         "geo-parallel-segment-length",
