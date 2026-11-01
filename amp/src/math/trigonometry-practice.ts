@@ -541,7 +541,8 @@ export function symmetryCase(seed: string) {
     moves.push(
       `Adding or subtracting $${Math.abs(k)}\\pi$ is ${Math.abs(k) / 2} whole turn${Math.abs(k) === 2 ? "" : "s"}, since one turn is $2\\pi$. A whole turn brings the point back to the same place.`,
     );
-  const factor = askFn === "sin" ? half * sigma : askFn === "cos" ? half : sigma;
+  const factor =
+    askFn === "sin" ? half * sigma : askFn === "cos" ? half : sigma;
   const effect =
     askFn === "tan"
       ? `Tangent is $\\frac{\\sin}{\\cos}$, the $y$-coordinate divided by the $x$-coordinate. ${factor === 1 ? "Here the signs of $x$ and $y$ change together or not at all, so the tangent keeps its sign." : "Here exactly one of $x$ and $y$ changes sign, so the tangent changes sign."}`
@@ -1006,9 +1007,12 @@ const toTwelfths = (radians: number) => {
 };
 /** What the restricted range of each inverse covers on the unit circle. */
 const invHalf: Record<Inv, string> = {
-  arcsin: "the right half of the unit circle, from straight down to straight up",
-  arccos: "the top half of the unit circle, from the positive $x$-axis to the negative $x$-axis",
-  arctan: "the right half of the unit circle, not including straight up or down",
+  arcsin:
+    "the right half of the unit circle, from straight down to straight up",
+  arccos:
+    "the top half of the unit circle, from the positive $x$-axis to the negative $x$-axis",
+  arctan:
+    "the right half of the unit circle, not including straight up or down",
 };
 const invName: Record<Inv, string> = {
   arcsin: "the inverse sine",
@@ -2490,7 +2494,13 @@ export function periodicModelCase(seed: string) {
       hint = `Starting at the midline and rising is the pattern of $A\\sin(Bt)+k$. Midline $k$ is halfway between ${min} and ${max}; $A$ is half their difference; $B=2\\pi\\div ${P}$.`;
     }
     const unitWord =
-      variant === 0 ? (context ? "feet" : "cm") : variant === 1 ? "meters" : "cm";
+      variant === 0
+        ? context
+          ? "feet"
+          : "cm"
+        : variant === 1
+          ? "meters"
+          : "cm";
     explanation = [
       "A sinusoidal model is a wave: $h(t)=A\\cos(Bt)+k$ or $A\\sin(Bt)+k$. Here $k$ is the midline, $A$ the amplitude, and $B$ sets the period.",
       `The midline is the center height, halfway between the highest and lowest: $k=\\frac{${max}+${min}}{2}=${k}$.`,

@@ -157,7 +157,7 @@ const CONJUGATE =
 const POLAR =
   "Polar coordinates $(r,\\theta)$ name a point by its distance $r$ from the origin and its angle $\\theta$, measured counterclockwise from the positive $x$-axis.";
 const PARAMETRIC =
-  "Parametric equations give each coordinate as its own function of time $t$: $x(t)$, read \"$x$ of $t$\", is the $x$-coordinate at time $t$, and likewise $y(t)$.";
+  'Parametric equations give each coordinate as its own function of time $t$: $x(t)$, read "$x$ of $t$", is the $x$-coordinate at time $t$, and likewise $y(t)$.';
 const CONIC =
   "A conic section is a curve made by slicing a cone: a circle, an ellipse (an oval), a parabola (a U-shaped curve) or a hyperbola (two opposite curves).";
 const PARABOLA =
@@ -1698,10 +1698,7 @@ function parametricCase(r: Random): Spec {
           unit(String(Math.abs(sa) + Math.abs(sb))),
           "This adds the two changes. The step is diagonal, so combine them with the Pythagorean theorem.",
         ],
-        [
-          unit(String(n)),
-          "That is the speed squared. Take the square root.",
-        ],
+        [unit(String(n)), "That is the speed squared. Take the square root."],
         [
           unit(String(Math.max(Math.abs(sa), Math.abs(sb)))),
           "This uses only the larger change. Both coordinates change, so both contribute to the speed.",

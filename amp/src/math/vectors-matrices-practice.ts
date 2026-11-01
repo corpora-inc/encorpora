@@ -401,7 +401,10 @@ function vectorComponentsOnce(seed: string, attempt: number) {
     if (r(0, 1)) [dx, dy] = [dy || 3, dx];
     // Keep both P and Q strictly inside the plotted axes so the arrow is fully visible.
     const inside = (d: number) =>
-      [Math.max(-4, -(W - 1) - Math.min(0, d)), Math.min(4, W - 1 - Math.max(0, d))] as const;
+      [
+        Math.max(-4, -(W - 1) - Math.min(0, d)),
+        Math.min(4, W - 1 - Math.max(0, d)),
+      ] as const;
     const [xlo, xhi] = inside(dx);
     const [ylo, yhi] = inside(dy);
     const px = r(xlo, xhi);
@@ -915,8 +918,7 @@ function matrixDataOnce(seed: string, attempt: number) {
         },
         {
           label: `The total of all items at ${stores[i]}`,
-          feedback:
-            "This is a row total. An entry is one number in one cell.",
+          feedback: "This is a row total. An entry is one number in one cell.",
         },
       ],
     });
@@ -1060,13 +1062,11 @@ function matrixOperationOnce(seed: string, attempt: number) {
         alts: [
           {
             label: lbl(madd(A, B, -1)),
-            feedback:
-              "That is $A-B$, a subtraction. Add the matching entries.",
+            feedback: "That is $A-B$, a subtraction. Add the matching entries.",
           },
           {
             label: lbl(hadamard(A, B)),
-            feedback:
-              "This multiplies matching entries. For a sum, add them.",
+            feedback: "This multiplies matching entries. For a sum, add them.",
           },
           {
             label: lbl(
@@ -1243,8 +1243,7 @@ function matrixOperationOnce(seed: string, attempt: number) {
         },
         {
           label: lbl(mscale(fr(-1), P)),
-          feedback:
-            "Every sign is flipped. Recheck the signs of the products.",
+          feedback: "Every sign is flipped. Recheck the signs of the products.",
         },
         {
           label: lbl(bump(P)),
@@ -2047,8 +2046,7 @@ function matrixTransformOnce(seed: string, attempt: number) {
         },
         {
           label: ptl(mscale(fr(-1), v)),
-          feedback:
-            "Every sign is flipped. Recheck the signs of the products.",
+          feedback: "Every sign is flipped. Recheck the signs of the products.",
         },
       ],
     });
@@ -2145,8 +2143,7 @@ function matrixTransformOnce(seed: string, attempt: number) {
         },
         {
           label: dollar(`${Math.abs(D) * Math.abs(D) * area}`),
-          feedback:
-            "This scales twice. Areas are scaled by $|\\det|$ once.",
+          feedback: "This scales twice. Areas are scaled by $|\\det|$ once.",
         },
         {
           label: dollar(`${area}`),
@@ -2155,8 +2152,7 @@ function matrixTransformOnce(seed: string, attempt: number) {
         },
         {
           label: dollar(Math.abs(D) === 0 ? "1" : tex(fr(area, Math.abs(D)))),
-          feedback:
-            "This divides. Multiply the original area by $|\\det M|$.",
+          feedback: "This divides. Multiply the original area by $|\\det M|$.",
         },
         {
           label: dollar(`${Math.abs(a) + Math.abs(d)}`),
