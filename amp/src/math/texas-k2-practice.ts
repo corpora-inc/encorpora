@@ -689,8 +689,9 @@ function measurableAttribute(r: Random): Built {
       answer: "",
       hint: `${ATTRIBUTE_MEANING[attr]} Find the question with key words that ask about it.`,
       explanation: [
+        "An attribute is something about an object that you can measure, like how long or how heavy it is.",
         ATTRIBUTE_MEANING[attr],
-        `"${asks[attr]}" asks about the ${attr}.`,
+        `"${asks[attr]}" uses those key words, so it asks about the ${attr}.`,
       ],
       choices: choicesFrom(
         r,
@@ -714,8 +715,9 @@ function measurableAttribute(r: Random): Built {
       ? "Ask what the goal needs to know: how long something is, how much it can hold, or how heavy it is. Then pick that attribute."
       : hint,
     explanation: [
+      "An attribute is something about an object that you can measure, like how long or how heavy it is.",
       ATTRIBUTE_MEANING[attr],
-      `${deciding ? "The goal" : "The question"} asks about the ${attr}.`,
+      `${deciding ? "The goal" : "The question"} asks about the ${attr}, so you measure the ${attr}.`,
     ],
     choices: choicesFrom(
       r,
@@ -836,12 +838,14 @@ function dotGroupCompare(r: Random): Built {
       ? "Count the dots in the Start group first. Then count each lettered group and compare it with that number."
       : `Count the dots in each group. Then compare each count with ${N}: is it more, fewer or the same?`,
     explanation: [
-      `${withGroup ? "The Start group has" : "Compare with"} ${N}${withGroup ? " dots" : ""}.`,
+      withGroup
+        ? `First count the Start group: it has ${N} dots. Then count each lettered group and compare.`
+        : `Count the dots in each group, then compare each count with ${N}.`,
       ...groups.map(
         (g) =>
           `Group ${g.label} has ${count(g.n, "dot")}, which is ${relation(g.n, N)} ${target}.`,
       ),
-      `Group ${correctLetter} has ${wantRel} ${target}, so it is the answer.`,
+      `Only Group ${correctLetter} has ${wantRel} ${target}, so the answer is Group ${correctLetter}.`,
     ],
     choices: [
       { label: correctLetter, correct: true as const },
@@ -971,7 +975,11 @@ function storySentenceMatch(r: Random, big: boolean): Built {
       prompt: `Which number sentence matches this story? ${box} ${storyText(story, a, b, obj)}`,
       answer: "",
       hint: `The story tells you ${storyNumbers(story, a, b, obj)} ${obj}. Ask what happens to the ${obj}: are they put together, taken away or compared? Then find the number the story does not tell you.`,
-      explanation: [STORY_REASON[type], `The number sentence is ${correct}.`],
+      explanation: [
+        "A number sentence uses numbers and signs to tell what happens in a story. The box □ stands for the number the story asks for.",
+        STORY_REASON[type],
+        `So the number sentence that matches the story is ${correct}.`,
+      ],
       choices: choicesFrom(r, correct, wrongs),
     };
   }
@@ -992,9 +1000,10 @@ function storySentenceMatch(r: Random, big: boolean): Built {
     answer: "",
     hint: `Read ${sentence} aloud. Is the box the total, a part that is added or the number left? Find the story with its unknown number in the same place.`,
     explanation: [
-      `In ${sentence} the box stands for the unknown number.`,
+      `A number sentence uses numbers and signs to tell what happens. In ${sentence} the box □ stands for the number to find.`,
+      `Read the sentence as a story and find the story where the unknown number is in the same place.`,
       STORY_REASON[type],
-      "That story matches the sentence.",
+      `So the matching story is: "${storyText(story, a, b, obj)}"`,
     ],
     choices: choicesFrom(r, storyText(story, a, b, obj), wrongs),
   };
@@ -1040,18 +1049,20 @@ function openNumberLine(r: Random, lines: Line[]): Built {
   const ticks = (a: number, b: number) => Math.abs(a - b) / step;
   if (variant === "read-point") {
     const v = pick(r, values);
+    const nearest = labels.reduce((best, l) =>
+      Math.abs(l - v) < Math.abs(best - v) ? l : best,
+    );
     const pool = [v + step, v - step, min + max - v, v + 2 * step, v - 2 * step]
       .filter((x) => x > min && x < max && x !== v)
       .map((x) => ({
         label: `${x}`,
         feedback:
           x === v + step || x === v - step
-            ? "That is one tick mark away. Count the tick marks from a labeled number to the point."
-            : "Count the tick marks from a labeled number to the point $P$, and check which way you counted.",
+            ? `${x} is one tick mark ${x > v ? "past" : "before"} $P$. Start at ${nearest} and touch each tick mark once as you count by ${step}.`
+            : x === min + max - v
+              ? `${x} is where $P$ would be if you counted from the other end of the line. Start at the labeled number nearest $P$, ${nearest}.`
+              : `${x} is two tick marks ${x > v ? "past" : "before"} $P$. Each tick mark is ${step} more than the one before it; count them one by one from ${nearest}.`,
       }));
-    const nearest = labels.reduce((best, l) =>
-      Math.abs(l - v) < Math.abs(best - v) ? l : best,
-    );
     return {
       variant,
       prompt: "Which number is at point $P$ on the number line?",
@@ -1059,8 +1070,9 @@ function openNumberLine(r: Random, lines: Line[]): Built {
       answer: "",
       hint: `Find the labeled number nearest to $P$. Count the tick marks from there to $P$, and count by the size of each step (each step is ${step} here).`,
       explanation: [
-        `Each tick mark is ${step} more than the one before it.`,
-        `Start at ${nearest}. Count ${count(ticks(nearest, v), "tick mark")} ${v > nearest ? "right" : "left"}, ${step} at a time.`,
+        `Tick marks are the small lines on a number line. Here each tick mark is ${step} more than the one before it.`,
+        `Start at the labeled number nearest $P$, ${nearest}, so there is less to count.`,
+        `Count ${count(ticks(nearest, v), "tick mark")} ${v > nearest ? "right" : "left"}, ${step} at a time. Going ${v > nearest ? "right adds" : "left takes away"} ${step} each time.`,
         `Point $P$ is at ${v}.`,
       ],
       choices: choicesFrom(r, `${v}`, pool),
@@ -1084,9 +1096,10 @@ function openNumberLine(r: Random, lines: Line[]): Built {
     answer: "",
     hint: `Start at the labeled number nearest to ${v}. Count along the tick marks, ${step} at a time, until you reach ${v}, then see which point is there.`,
     explanation: [
-      `Each tick mark is ${step} more than the one before it.`,
-      `Start at ${nearest} and count ${step} at a time ${v > nearest ? "right" : "left"} to ${v}: that takes ${count(ticks(nearest, v), "tick mark")}.`,
-      `Point $${correct}$ is at ${v}.`,
+      `Tick marks are the small lines on a number line. Here each tick mark is ${step} more than the one before it.`,
+      `Start at the labeled number nearest ${v}, which is ${nearest}, so there is less to count.`,
+      `Count ${step} at a time ${v > nearest ? "right" : "left"} to ${v}: that takes ${count(ticks(nearest, v), "tick mark")}.`,
+      `Point $${correct}$ is at ${v}, so the answer is point $${correct}$.`,
     ],
     choices: [
       { label: `$${correct}$`, correct: true as const },
@@ -1143,7 +1156,7 @@ function eighthsAndBeyond(r: Random): Built {
     const wrongs: Wrong[] = [
       {
         label: `${d - k} ${unitOf(d, d - k)}`,
-        feedback: `That counts the parts that are not shaded. Count the shaded parts: there are ${k}.`,
+        feedback: `That counts the parts that are not shaded. Count only the shaded parts: ${k}.`,
       },
       ...others.map((o) => ({
         label: `${k} ${unitOf(o, k)}`,
@@ -1161,9 +1174,10 @@ function eighthsAndBeyond(r: Random): Built {
       answer: "",
       hint: `Count all the equal parts in the bar first. That number gives the name of each part. Then count the shaded parts.`,
       explanation: [
+        `The number of equal parts in the whole gives each part its name.`,
         `The bar has ${d} equal parts, so each part is one ${unitOf(d, 1)}.`,
-        `${k} of the parts are shaded.`,
-        `${cap(count(k, unitOf(d, 1), unitOf(d, 2)))} ${k === 1 ? "is" : "are"} shaded.`,
+        `Count only the shaded parts: ${k}.`,
+        `So ${count(k, unitOf(d, 1), unitOf(d, 2))} of the bar ${k === 1 ? "is" : "are"} shaded.`,
       ],
       choices: choicesFrom(r, correct, wrongs),
     };
@@ -1183,8 +1197,9 @@ function eighthsAndBeyond(r: Random): Built {
       answer: "",
       hint: "One whole is the whole bar. Count the equal parts that fill it from end to end.",
       explanation: [
+        `The number of equal parts in the whole gives each part its name.`,
         `The whole bar is cut into ${d} equal parts, and each part is one ${unitOf(d, 1)}.`,
-        `${cap(count(d, unitOf(d, 1), unitOf(d, 2)))} make one whole.`,
+        `All ${d} parts together fill the bar, so ${count(d, unitOf(d, 1), unitOf(d, 2))} make one whole.`,
       ],
       choices: choicesFrom(r, `${d}`, pool),
     };
@@ -1212,9 +1227,10 @@ function eighthsAndBeyond(r: Random): Built {
       answer: "",
       hint: "Count the shaded parts in the first bar. Then keep counting the shaded parts in the second bar.",
       explanation: [
+        `Both bars are cut into ${unitOf(d, 2)}, so you can count all the shaded parts together.`,
         `The first bar has ${count(d, unitOf(d, 1), unitOf(d, 2))}, all shaded.`,
         `The second bar has ${count(extra, unitOf(d, 1), unitOf(d, 2))} shaded.`,
-        `${d} + ${extra} = ${s}, so ${count(s, unitOf(d, 1), unitOf(d, 2))} are shaded in all.`,
+        `Add them: ${d} + ${extra} = ${s}, so ${count(s, unitOf(d, 1), unitOf(d, 2))} are shaded in all.`,
       ],
       choices: choicesFrom(r, `${s}`, pool),
     };
@@ -1247,8 +1263,9 @@ function eighthsAndBeyond(r: Random): Built {
     answer: "",
     hint: "Check whether the first bar is completely shaded. Then count the shaded parts in the second bar.",
     explanation: [
+      `Each bar is one whole, cut into ${d} equal parts.`,
       `The first bar is full: that is ${whole(1)}, which is ${count(d, unitOf(d, 1), unitOf(d, 2))}.`,
-      `The second bar has ${count(extra, unitOf(d, 1), unitOf(d, 2))} shaded.`,
+      `The second bar has ${count(extra, unitOf(d, 1), unitOf(d, 2))} shaded, which is less than a whole.`,
       `Together that is ${correct}.`,
     ],
     choices: choicesFrom(r, correct, wrongs),
@@ -1338,8 +1355,8 @@ function decomposeFlatShape(r: Random): Built {
     hint: `The ${shape} is cut ${cutWords[cut]}. Count the parts the cuts make. Then pick one part and count its sides and corners to name its shape.`,
     explanation: [
       `The ${shape} is cut ${cutWords[cut]}. The cut makes ${parts} parts.`,
-      `Each part has ${KIND_FACT[kind]}.`,
-      `The parts are ${correct}.`,
+      `To name a shape, count its straight sides and corners. Each part has ${KIND_FACT[kind]}.`,
+      `So the new shapes are ${correct}.`,
     ],
     choices: choicesFrom(r, correct, wrongs),
   };
@@ -1455,8 +1472,9 @@ function unitSizeAndCount(r: Random): Built {
       hint: `Each long unit covers ${k} small units. Count how many groups of ${k} small units fit along the ribbon.`,
       explanation: [
         `The ribbon is ${length} small units long.`,
-        `Each long unit covers ${k} small units.`,
-        `${length} ÷ ${k} = ${n}, so ${n} long units cover the ribbon.`,
+        `Each long unit covers ${k} small units, so count how many groups of ${k} fit into ${length}.`,
+        `Finding how many groups fit is division: ${length} ÷ ${k} = ${n}.`,
+        `So ${n} long units cover the ribbon.`,
       ],
       choices: choicesFrom(r, `${n}`, pool),
     };
@@ -1538,6 +1556,7 @@ function unitSizeAndCount(r: Random): Built {
       "Both rows cover the same ribbon, so the length is the same.",
       `One copy of unit $${shorter}$ is shorter than one copy of unit $${longer}$.`,
       `A shorter unit covers less each time, so more copies are needed.`,
+      `So row $${shorter}$ uses more units because unit $${shorter}$ is shorter.`,
     ],
     choices: choicesFrom(
       r,
@@ -1743,8 +1762,9 @@ function benchmarkEstimate(r: Random): Built {
       answer: "",
       hint: "Think of a length you know: a ruler is 12 inches, one big step is about 1 foot, and a paper clip is about 3 centimeters. Which choice is close to the real object?",
       explanation: [
-        `${cap(item.what)} is about ${item.right}.`,
+        "An estimate is a close guess. Compare each choice with a length you know: a ruler is 12 inches, and one foot is about the length of a big step.",
         "The other choices are much too long or much too short for this object.",
+        `So the best estimate is that ${item.what} is about ${item.right}.`,
       ],
       choices: choicesFrom(r, item.right, item.wrong),
     };
@@ -1824,6 +1844,7 @@ function clockMinuteMatch(r: Random): Built {
       answer: "",
       hint: `For ${t}, the short hand is near ${h} and the long hand is ${count(m, "minute")} after 12. Count by fives to the numeral before the long hand, then count single minutes.`,
       explanation: [
+        "On a clock, the short hand shows the hour and the long hand shows the minutes.",
         `${t} means ${count(m, "minute")} after ${h} o'clock.`,
         `Clock ${correct} has its short hand just past ${h} and its long hand ${count(m, "minute")} after 12.`,
       ],
@@ -1880,6 +1901,7 @@ function clockMinuteMatch(r: Random): Built {
       answer: "",
       hint: "Look at the long hand. Count by fives for each numeral from 12, then count single minutes with the small tick marks until you reach the hand.",
       explanation: [
+        "The long hand shows the minutes. Each numeral on the clock is 5 minutes more than the one before it.",
         Math.floor(m / 5) === 0
           ? "The long hand has not reached the 1, so there are no full fives."
           : `The long hand has passed ${count(Math.floor(m / 5), "numeral")} after the 12, and each numeral is 5 minutes: ${5 * Math.floor(m / 5)} minutes.`,
@@ -1934,9 +1956,10 @@ function clockMinuteMatch(r: Random): Built {
     answer: "",
     hint: "Read the hour from the short hand: the numeral it has passed. Then read the minutes from the long hand by counting by fives and then single minutes.",
     explanation: [
-      `The short hand has passed ${h}, so the hour is ${h}.`,
-      `The long hand is ${count(m, "minute")} after 12.`,
-      `The digital time is ${t}.`,
+      "On a clock, the short hand shows the hour and the long hand shows the minutes.",
+      `The short hand has passed ${h} but not reached the next numeral, so the hour is ${h}.`,
+      `Count the long hand by fives for each numeral after 12, then single minutes: ${count(m, "minute")}.`,
+      `A digital time writes the hour, a colon, then the minutes. The digital time is ${t}.`,
     ],
     choices: choicesFrom(r, t, wrongs),
   };
@@ -2077,8 +2100,7 @@ function tallyAndTChart(r: Random): Built {
       },
       {
         label: chart([counts[0]!, counts[1]! + 1, counts[2]! + 1]),
-        feedback:
-          "Some counts are too high. Cross out each answer as you count it.",
+        feedback: `${cap(things[1]!)} and ${things[2]} are each counted one too many times. Cross out each answer as you count it.`,
       },
     ];
     const total = counts.reduce((x, y) => x + y, 0);
@@ -2090,7 +2112,7 @@ function tallyAndTChart(r: Random): Built {
       explanation: [
         `Count each answer in the list: ${things.map((t, i) => `${t} ${counts[i]}`).join(", ")}.`,
         `The counts add to ${total}, the number of children asked.`,
-        `The T-chart is: ${correct}.`,
+        `A T-chart lists each choice with its count. The T-chart is: ${correct}.`,
       ],
       choices: choicesFrom(r, correct, wrongs),
     };
@@ -2139,6 +2161,7 @@ function tallyAndTChart(r: Random): Built {
       prompt: `The tally chart shows each child's ${topic.asked}. How many children chose ${row.label}?`,
       hint: tallyHint,
       explanation: [
+        "Each tally mark is one child. A group of five is four lines with one line across them.",
         `For ${row.label}: ${g(row.n)} ${g(row.n) === 1 ? "group" : "groups"} of five is ${g(row.n) * 5}${row.n % 5 ? `, and ${row.n % 5} more lines` : ""}.`,
         `${row.n} children chose ${row.label}.`,
       ],
@@ -2162,15 +2185,16 @@ function tallyAndTChart(r: Random): Built {
             ? "That adds the two counts. To find how many more, subtract the smaller count from the greater."
             : v === hi.n || v === lo.n
               ? "That is one of the counts. Find the difference between the two counts."
-              : "That is close. Count each chart carefully, then subtract.",
+              : "One count is off by one. Count each group of five as 5, then the lines left over, and subtract again.",
       }));
     return {
       ...base,
       prompt: `The tally chart shows each child's ${topic.asked}. How many more children chose ${hi.label} than ${lo.label}?`,
       hint: `${tallyHint} Then find how much greater one count is than the other.`,
       explanation: [
+        "Each tally mark is one child. A group of five is four lines with one line across them.",
         `${cap(hi.label)} has ${hi.n} and ${lo.label} has ${lo.n}.`,
-        `${hi.n} − ${lo.n} = ${diff}.`,
+        `"How many more" asks for the difference, so subtract the smaller count from the greater: ${hi.n} − ${lo.n} = ${diff}.`,
         `${diff === 1 ? "1 more child chose" : `${diff} more children chose`} ${hi.label}.`,
       ],
       choices: choicesFrom(r, `${diff}`, pool),
@@ -2192,13 +2216,14 @@ function tallyAndTChart(r: Random): Built {
           ? "That is only the greatest count. Add the counts from every row."
           : v === total - rows[0]!.n
             ? "That leaves out one row. Add the counts from every row."
-            : "That is close. Count each row carefully, then add all the rows.",
+            : "One row's count is off. Count each group of five as 5, then the lines left over, and add all the rows again.",
     }));
   return {
     ...base,
     prompt: `The tally chart shows each child's ${topic.asked}. How many children answered in all?`,
     hint: `${tallyHint} Then add the counts of every row.`,
     explanation: [
+      "Each tally mark is one child, so add every row to find how many answered.",
       `The rows are ${rows.map((row) => `${row.label} ${row.n}`).join(", ")}.`,
       `${rows.map((row) => row.n).join(" + ")} = ${total}.`,
       `${total} children answered in all.`,
@@ -2357,7 +2382,7 @@ function earlyMoneyDecisions(r: Random): Built {
         answer: "",
         hint: `Each week adds the same amount. Count how many ${dollars(week)} amounts are added in ${weeks} weeks.`,
         explanation: [
-          `Each week adds ${dollars(week)}.`,
+          `Saving means keeping money to use later. Each week adds ${dollars(week)}.`,
           `${weeks} weeks: ${Array.from({ length: weeks }, () => week).join(" + ")} = ${total}.`,
           `${n} has saved ${dollars(total)}.`,
         ],
@@ -2391,7 +2416,7 @@ function earlyMoneyDecisions(r: Random): Built {
         answer: "",
         hint: `Find how much ${n} adds in ${weeks} weeks first. Then remember the money ${n} already had.`,
         explanation: [
-          `In ${weeks} weeks ${n} adds ${weeks} × ${week} = ${week * weeks}.`,
+          `The same amount is added each week, so multiply: in ${weeks} weeks ${n} adds ${weeks} × ${week} = ${week * weeks}.`,
           `${n} already had ${start}, so ${start} + ${week * weeks} = ${total}.`,
           `${n} has ${dollars(total)}.`,
         ],
@@ -2426,6 +2451,7 @@ function earlyMoneyDecisions(r: Random): Built {
       answer: "",
       hint: `Start with ${dollars(bal)}. A deposit puts money in, so the balance goes up. A withdrawal takes money out, so the balance goes down. Change the balance one step at a time.`,
       explanation: [
+        "A deposit puts money into an account, and a withdrawal takes money out.",
         `The deposit adds ${dep}: ${bal} + ${dep} = ${bal + dep}.`,
         `The withdrawal takes away ${wd}: ${bal + dep} − ${wd} = ${total}.`,
         `The account has ${dollars(total)}.`,
@@ -2466,6 +2492,7 @@ function earlyMoneyDecisions(r: Random): Built {
       answer: "",
       hint: "A producer makes goods or services to sell. A consumer buys and uses them. Ask who makes the item and who buys it.",
       explanation: [
+        "A producer makes goods to sell. A consumer buys goods to use them.",
         `${n} makes the item and sells it, so ${n} is a producer.`,
         `${other} buys the item to use it, so ${other} is a consumer.`,
       ],

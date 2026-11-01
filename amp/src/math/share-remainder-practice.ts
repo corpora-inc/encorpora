@@ -147,9 +147,13 @@ export const shareRemainderFractions = chainFamily({
         answer: String(total),
         hint: `Find one ${c.per}'s share first: split ${m.whole} into ${m.d1} equal parts and take ${m.k1} of them.`,
         explanation: [
-          `One ${c.per}'s share is ${tex(m.k1, m.d1)} of ${m.whole}: $${m.whole}\\div${m.d1}=${m.whole / m.d1}$ for one part, and $${m.whole / m.d1}\\times${m.k1}=${part}$.`,
-          `The share repeats each ${c.per}, so ${m.count} ${c.per}s give $${part}\\times${m.count}=${total}$.`,
-          `${total} ${c.unit} go toward ${c.to}.`,
+          `${tex(m.k1, m.d1)} of an amount means: cut it into ${m.d1} equal parts (the bottom number) and take ${m.k1} of them (the top number).`,
+          `Cut one ${c.per}'s ${m.whole} into ${m.d1} equal parts: $${m.whole}\\div${m.d1}=${m.whole / m.d1}$ in each part.`,
+          m.k1 === 1
+            ? `Take 1 part, so one ${c.per}'s share is ${part}.`
+            : `Take ${m.k1} parts: $${m.whole / m.d1}\\times${m.k1}=${part}$, so one ${c.per}'s share is ${part}.`,
+          `The same share goes each ${c.per}, so multiply by the ${m.count} ${c.per}s: $${part}\\times${m.count}=${total}$.`,
+          `${total} ${c.unit} go toward ${c.to} in ${m.count} ${c.per}s.`,
         ],
         label: `Answer (${c.unit})`,
       });
@@ -163,9 +167,10 @@ export const shareRemainderFractions = chainFamily({
       answer: String(rest),
       hint: `Begin with the first group, ${tex(m.k1, m.d1)} of ${m.whole}: split ${m.whole} into ${m.d1} equal parts and take ${m.k1}.`,
       explanation: [
-        `${c.a}: ${tex(m.k1, m.d1)} of ${m.whole} is $${m.whole}\\div${m.d1}\\times${m.k1}=${a}$.`,
+        `A fraction of an amount means: cut it into equal parts (the bottom number) and take some of them (the top number).`,
+        `${c.a}: ${tex(m.k1, m.d1)} of ${m.whole} is ${m.whole} cut into ${m.d1} parts, times ${m.k1}: $${m.whole}\\div${m.d1}\\times${m.k1}=${a}$.`,
         `${c.b}: ${tex(m.k2, m.d2)} of ${m.whole} is $${m.whole}\\div${m.d2}\\times${m.k2}=${b}$.`,
-        `The rest is what remains of the whole: $${m.whole}-${a}-${b}=${rest}$.`,
+        `The rest is the whole minus both shares: $${m.whole}-${a}-${b}=${rest}$.`,
         `${rest} ${c.unit} ${c.be}${c.rest}.`,
       ],
       label: `Answer (${c.unit})`,
@@ -211,7 +216,9 @@ export const shareRemainderPercent = chainFamily({
     const hint = `Add the three given percents first: ${p1}, ${p2} and ${p3}.`;
     const intro = `A survey asked ${m.total} people how they get to work. ${given}. The rest bike.`;
     const common = [
-      `The three given shares total $${p1}+${p2}+${p3}=${p1 + p2 + p3}$ percent, so the bike share is $100-${p1 + p2 + p3}=${p4}$ percent.`,
+      `A percent means "out of 100". Everyone in the survey together is 100%.`,
+      `The three given shares total $${p1}+${p2}+${p3}=${p1 + p2 + p3}$ percent.`,
+      `The bikers are the rest of the 100%: $100-${p1 + p2 + p3}=${p4}$ percent.`,
     ];
     if (m.ask === "remaining-share")
       return numberSurface({
@@ -220,7 +227,7 @@ export const shareRemainderPercent = chainFamily({
         hint,
         explanation: [
           ...common,
-          `${p4}% of ${m.total} is $${m.total}\\times${p4 / 100}=${count(p4)}$.`,
+          `${p4}% is ${p4} hundredths, or ${p4 / 100} as a decimal. So ${p4}% of ${m.total} is $${m.total}\\times${p4 / 100}=${count(p4)}$.`,
           `${count(p4)} people bike.`,
         ],
         label: "Answer (people)",
@@ -231,8 +238,9 @@ export const shareRemainderPercent = chainFamily({
       hint,
       explanation: [
         ...common,
+        `To find a percent of a number, write the percent as a decimal and multiply: ${p1}% is ${p1 / 100}.`,
         `Drivers: ${p1}% of ${m.total} is $${m.total}\\times${p1 / 100}=${count(p1)}$. Bikers: ${p4}% of ${m.total} is $${m.total}\\times${p4 / 100}=${count(p4)}$.`,
-        `The difference is $${count(p1)}-${count(p4)}=${count(p1) - count(p4)}$.`,
+        `"How many more" asks for the difference, so subtract: $${count(p1)}-${count(p4)}=${count(p1) - count(p4)}$.`,
         `${count(p1) - count(p4)} more people drive than bike.`,
       ],
       label: "Answer (people)",

@@ -104,6 +104,9 @@ const cellQ = (n: number, d: number) => {
   return whole ? `${whole} ${rest}/${d}` : `${rest}/${d}`;
 };
 const improperTex = (n: number, d: number) => `\\frac{${n}}{${d}}`;
+/** "1 book", "3 books". */
+const count = (n: number, plural: string) =>
+  `${n} ${n === 1 ? plural.replace(/s$/, "") : plural}`;
 const list = (items: string[]) =>
   items.length < 2
     ? items.join("")
@@ -333,17 +336,37 @@ const fractionTermChain = chainFamily({
     const ps = m.parts;
     const answer = ratioText(m.total, L);
     const t = m.total;
-    const resultLine = () => {
+    /** Simplify, name the mixed number, and answer in a full sentence. */
+    const resultLines = (unit?: string) => {
       const g = gcd(t, L);
       const whole = Math.floor(t / L);
-      return t % L === 0
-        ? `The result is $${t / L}$.`
-        : whole
-          ? `In lowest terms the result is $\\frac{${t / g}}{${L / g}}$, or $${texQ(t, L)}$ as a mixed number.`
-          : `In lowest terms the result is $\\frac{${t / g}}{${L / g}}$.`;
+      const tail = unit ? ` ${unit}` : "";
+      if (t % L === 0)
+        return [
+          `$\\frac{${t}}{${L}}$ is ${t / L} wholes, because $${t}\\div ${L}=${t / L}$.`,
+          `The answer is ${t / L}${tail}.`,
+        ];
+      return [
+        ...(g > 1
+          ? [
+              `Simplify: divide the top and the bottom by ${g}, so $\\frac{${t}}{${L}}=\\frac{${t / g}}{${L / g}}$ in lowest terms.`,
+            ]
+          : []),
+        ...(whole
+          ? [
+              `As a mixed number (a whole number and a fraction), $\\frac{${t / g}}{${L / g}}=${texQ(t / g, L / g)}$.`,
+            ]
+          : []),
+        `The answer is $\\frac{${t / g}}{${L / g}}$${tail}.`,
+      ];
     };
+    const dens0 = [...new Set(ps.filter((p) => p.d > 1).map((p) => p.d))];
+    const opening = [
+      `The bottom number of a fraction (the denominator) tells the size of each piece. Pieces can be added or taken away only when they are the same size.`,
+      `${L} is a common denominator: ${list(dens0.map(String))} each divide into ${L} evenly, so every amount can be cut into pieces of size $\\frac{1}{${L}}$.`,
+    ];
     const rewriteLine = (rename: (p: Part) => string) =>
-      `Rewrite every term with the common denominator $${L}$: ${list(ps.map(rename))}.`;
+      `Rewrite each amount in pieces of size $\\frac{1}{${L}}$: ${list(ps.filter((p) => p.d !== L).map(rename))}.`;
     const toL = (p: Part) => (p.n * L) / p.d;
     const sumLine = () => {
       const first = `${toL(ps[0]!)}`;
@@ -351,7 +374,7 @@ const fractionTermChain = chainFamily({
         .slice(1)
         .map((p) => ` ${p.sign > 0 ? "+" : "-"} ${toL(p)}`)
         .join("");
-      return `Combine the numerators: $\\frac{${first}${rest}}{${L}}=\\frac{${t}}{${L}}$.`;
+      return `Now the pieces match, so add and take away the top numbers (the numerators): $\\frac{${first}${rest}}{${L}}=\\frac{${t}}{${L}}$.`;
     };
     const dens = [...new Set(ps.filter((p) => p.d > 1).map((p) => p.d))];
     const denList = list(dens.map(String));
@@ -364,9 +387,10 @@ const fractionTermChain = chainFamily({
         answer,
         hint: baseHint,
         explanation: [
+          ...opening,
           rewriteLine((p) => `$${texQ(p.n, p.d)}=${improperTex(toL(p), L)}$`),
           sumLine(),
-          resultLine(),
+          ...resultLines(c.unit),
         ],
         fraction: true,
         label: `Answer (${c.unit})`,
@@ -389,9 +413,11 @@ const fractionTermChain = chainFamily({
         answer,
         hint: `Start from ${ps[0]!.n}. The three amounts have denominators ${denList}, so rewrite each with a common denominator such as ${L} and take them away one at a time or all together.`,
         explanation: [
+          ...opening,
+          `Start from ${ps[0]!.n} and take away the three amounts.`,
           rewriteLine((p) => `$${texQ(p.n, p.d)}=${improperTex(toL(p), L)}$`),
           sumLine(),
-          resultLine(),
+          ...resultLines(c.unit),
         ],
         fraction: true,
         label: `Answer (${c.unit})`,
@@ -415,9 +441,10 @@ const fractionTermChain = chainFamily({
         answer,
         hint: `The denominators are ${denList}. Find a number that all three divide into, such as ${L}, and rewrite $${f(a)}$, $${f(b)}$ and $${f(c)}$ with it.`,
         explanation: [
+          ...opening,
           rewriteLine((p) => `$${f(p)}=${improperTex(toL(p), L)}$`),
           sumLine(),
-          resultLine(),
+          ...resultLines(),
         ],
         fraction: true,
         label: "Answer (fraction, decimal, or whole number)",
@@ -435,13 +462,15 @@ const fractionTermChain = chainFamily({
         answer,
         hint: `The four amounts used have denominators ${denList}. Rewrite them all with ${L} as the denominator, add the uses, and take that total away from ${ps[0]!.n}.`,
         explanation: [
+          ...opening,
+          `Start from ${ps[0]!.n} ${c.unit} and take away the four amounts used.`,
           rewriteLine((p) =>
             p.d === 1
               ? `$${p.n}=${improperTex(toL(p), L)}$`
               : `$${improperTex(p.n, p.d)}=${improperTex(toL(p), L)}$`,
           ),
           sumLine(),
-          resultLine(),
+          ...resultLines(c.unit),
         ],
         fraction: true,
         label: `Answer (${c.unit})`,
@@ -457,10 +486,11 @@ const fractionTermChain = chainFamily({
       answer,
       hint: `One distance is the decimal ${decText}. Write it as a fraction, ${dec.n} over ${dec.d}, so all three distances are fractions, then use a common denominator such as ${L}.`,
       explanation: [
-        `Write ${decText} as a fraction: $${decText}=${improperTex(dec.n, dec.d)}$.`,
+        `One distance is a decimal. Write it as a fraction so all three distances are fractions: $${decText}=${improperTex(dec.n, dec.d)}$.`,
+        ...opening,
         rewriteLine((p) => `$${texQ(p.n, p.d)}=${improperTex(toL(p), L)}$`),
         sumLine(),
-        resultLine(),
+        ...resultLines(c.unit),
       ],
       fraction: true,
       label: `Answer (${c.unit})`,
@@ -579,8 +609,10 @@ const decimalRenameChain = chainFamily({
         answer: dec(result),
         hint: `The fraction $${mixedTexVal}$ has denominator ${m.den}. Write it as a decimal first: divide ${m.whole * m.den + m.num} by ${m.den}. Then ${m.plus ? "add" : "subtract"} the two decimals.`,
         explanation: [
-          `Rename the fraction as a decimal: $${mixedTexVal}=${asDecimal}$.`,
-          `${m.plus ? "Add" : "Subtract"} with the decimal points lined up: $${dec(m.a)}${op}${asDecimal}=${dec(result)}$.`,
+          `A fraction and a decimal are hard to ${m.plus ? "add" : "subtract"} as they are, so write both as decimals first.`,
+          `A fraction bar means divide: $\\frac{${m.whole * m.den + m.num}}{${m.den}}$ is $${m.whole * m.den + m.num}\\div ${m.den}$, so $${mixedTexVal}=${asDecimal}$.`,
+          `Line up the decimal points so tenths sit under tenths and hundredths under hundredths.`,
+          `${m.plus ? "Add" : "Subtract"}: $${dec(m.a)}${op}${asDecimal}=${dec(result)}$.`,
           `The value is $${dec(result)}$.`,
         ],
       });
@@ -595,9 +627,11 @@ const decimalRenameChain = chainFamily({
         answer: dec(result),
         hint: `Multiply before you subtract: find $${mixedVal}\\times ${m.times}$ first. Write $${mixedVal}$ as the improper fraction $${improper}$, or as a decimal, to multiply by ${m.times}.`,
         explanation: [
-          `Multiplication comes before subtraction: $${mixedVal}\\times ${m.times}=${improper}\\times ${m.times}=${dec(productValue)}$.`,
-          `Subtract the product from ${dec(m.a)}: $${dec(m.a)}-${dec(productValue)}=${dec(result)}$.`,
-          `The value is $${dec(result)}$${result < 0 ? ", a negative number because the product is larger" : ""}.`,
+          `The order of operations says to multiply before you subtract, so find $${mixedVal}\\times ${m.times}$ first.`,
+          `Write the mixed number as one fraction (an improper fraction): $${mixedVal}=${improper}$.`,
+          `Multiply: $${improper}\\times ${m.times}=${dec(productValue)}$.`,
+          `Now subtract, with the decimal points lined up: $${dec(m.a)}-${dec(productValue)}=${dec(result)}$.`,
+          `The value is $${dec(result)}$${result < 0 ? ", a negative number because the amount taken away is larger" : ""}.`,
         ],
       });
     }
@@ -609,9 +643,10 @@ const decimalRenameChain = chainFamily({
         answer: dec(result),
         hint: `Add the two weights that were added, ${dec(m.a)} and ${dec(m.b)}, lining up the decimal points. Then take away ${dec(m.c)}.`,
         explanation: [
-          `Add the weights collected on the first two days: $${dec(m.a)}+${dec(m.b)}=${dec(m.a + m.b)}$.`,
-          `Take away Wednesday's weight: $${dec(m.a + m.b)}-${dec(m.c)}=${dec(result)}$.`,
-          `The amount left is ${dec(result)} ${unit}.`,
+          `Weight was added on Monday and Tuesday, so add those first. Line up the decimal points so each place matches.`,
+          `Added: $${dec(m.a)}+${dec(m.b)}=${dec(m.a + m.b)}$ ${unit}.`,
+          `Wednesday's weight was taken away, so subtract it: $${dec(m.a + m.b)}-${dec(m.c)}=${dec(result)}$.`,
+          `${dec(result)} ${unit} of ${ctx.stuff} are left.`,
         ],
         label: `Answer (${unit})`,
       });
@@ -632,9 +667,11 @@ const decimalRenameChain = chainFamily({
       answer: dec(m.c),
       hint: `The three days add to ${dec(total)}. Add the two known weights ${dec(m.a)} and ${dec(m.b)}, then subtract that sum from ${dec(total)}.`,
       explanation: [
-        `The first two days added $${dec(m.a)}+${dec(m.b)}=${dec(m.a + m.b)}$.`,
-        `Subtract from the total: $${dec(total)}-${dec(m.a + m.b)}=${dec(m.c)}$.`,
-        `The weight added on Wednesday is ${dec(m.c)} ${unit}.`,
+        `The three days' weights add up to the total, ${dec(total)} ${unit}. Wednesday is the missing part.`,
+        `Add the two known days, lining up the decimal points: $${dec(m.a)}+${dec(m.b)}=${dec(m.a + m.b)}$.`,
+        `The missing part is the total minus the known parts: $${dec(total)}-${dec(m.a + m.b)}=${dec(m.c)}$.`,
+        `Check: $${dec(m.a + m.b)}+${dec(m.c)}=${dec(total)}$.`,
+        `${dec(m.c)} ${unit} were added on Wednesday.`,
       ],
       label: `Answer (${unit})`,
     });
@@ -721,8 +758,10 @@ const priceCountChain = chainFamily({
         answer: d(total),
         hint: `Find what one person spends first: add ${d(m.first)} and ${d(m.second)}. Then think about ${m.people} people each spending that amount.`,
         explanation: [
-          `One person spends $${d(m.first)}+${d(m.second)}=${d(each)}$ dollars.`,
-          `${m.people} people spend $${m.people}\\times ${d(each)}=${d(total)}$ dollars.`,
+          `Every person buys the same two things, so find what one person spends first.`,
+          `One ${g.a} and one ${g.b}: $${d(m.first)}+${d(m.second)}=${d(each)}$ dollars.`,
+          `${m.people} people each spend that same amount. Equal amounts repeated is multiplication.`,
+          `$${m.people}\\times ${d(each)}=${d(total)}$ dollars.`,
           `They spend ${money(total)} in all.`,
         ],
         label: "Answer (dollars)",
@@ -736,9 +775,11 @@ const priceCountChain = chainFamily({
       answer: d(total),
       hint: `The two kinds cost different amounts. Multiply ${d(m.first)} by ${m.people} for the ${g.as}, and ${d(m.second)} by ${m.others} for the ${g.bs}, then combine.`,
       explanation: [
-        `The ${g.as} cost $${m.people}\\times ${d(m.first)}=${d(costA)}$ dollars.`,
-        `The ${g.bs} cost $${m.others}\\times ${d(m.second)}=${d(costB)}$ dollars.`,
-        `Together: $${d(costA)}+${d(costB)}=${d(total)}$ dollars.`,
+        `The two kinds of item have different prices and different counts, so find the cost of each kind separately.`,
+        `${m.people} ${g.as} at ${money(m.first)} each: $${m.people}\\times ${d(m.first)}=${d(costA)}$ dollars.`,
+        `${m.others} ${g.bs} at ${money(m.second)} each: $${m.others}\\times ${d(m.second)}=${d(costB)}$ dollars.`,
+        `Add the two costs for the whole group: $${d(costA)}+${d(costB)}=${d(total)}$ dollars.`,
+        `They spend ${money(total)} in all.`,
       ],
       label: "Answer (dollars)",
     });
@@ -798,8 +839,11 @@ const dollarRateScale = chainFamily({
           answer: d(m.target * m.rate),
           hint: `${unitStep} Then use that price for ${m.target} hours.`,
           explanation: [
-            `Each hour costs $${d(m.h1 * m.rate)}\\div ${m.h1}=${d(m.rate)}$ dollars. Check: $${m.h2}\\times ${d(m.rate)}=${d(m.h2 * m.rate)}$, as in the table.`,
-            `${m.target} hours cost $${m.target}\\times ${d(m.rate)}=${d(m.target * m.rate)}$ dollars.`,
+            `The price is the same for every hour, so first find the price of 1 hour (the unit rate).`,
+            `${m.h1} hours cost ${money(m.h1 * m.rate)}, so 1 hour costs $${d(m.h1 * m.rate)}\\div ${m.h1}=${d(m.rate)}$ dollars.`,
+            `Check with the other column: $${m.h2}\\times ${d(m.rate)}=${d(m.h2 * m.rate)}$, as in the table.`,
+            `${m.target} hours is ${m.target} of those hourly prices: $${m.target}\\times ${d(m.rate)}=${d(m.target * m.rate)}$.`,
+            `The charge for ${m.target} hours is ${money(m.target * m.rate)}.`,
           ],
           label: "Answer (dollars)",
         }),
@@ -812,8 +856,11 @@ const dollarRateScale = chainFamily({
         answer: String(m.target),
         hint: `${unitStep} Then count how many of those hourly prices make up ${d(m.target * m.rate)}.`,
         explanation: [
-          `Each hour costs $${d(m.h1 * m.rate)}\\div ${m.h1}=${d(m.rate)}$ dollars.`,
-          `The customer paid $${d(m.target * m.rate)}$ dollars, so the number of hours is $${d(m.target * m.rate)}\\div ${d(m.rate)}=${m.target}$.`,
+          `The price is the same for every hour, so first find the price of 1 hour (the unit rate).`,
+          `${m.h1} hours cost ${money(m.h1 * m.rate)}, so 1 hour costs $${d(m.h1 * m.rate)}\\div ${m.h1}=${d(m.rate)}$ dollars.`,
+          `Now ask how many hourly prices fit into ${money(m.target * m.rate)}. That is division.`,
+          `$${d(m.target * m.rate)}\\div ${d(m.rate)}=${m.target}$. Check: $${m.target}\\times ${d(m.rate)}=${d(m.target * m.rate)}$.`,
+          `The customer paid for ${m.target} hours.`,
         ],
         label: "Answer (hours)",
       }),
@@ -879,9 +926,10 @@ const signedChangesSum = chainFamily({
       "column",
     );
     const steps = [
-      `The gains are ${list(gains.map((v) => `+${v}`))}, which add to $+${gainSum}$.`,
-      `The losses are ${list(losses.map((v) => `−${-v}`))}, which add to $-${-lossSum}$.`,
-      `The net change is $${gainSum}+(${lossSum})=${net}$.`,
+      `A positive change (+) is a gain and a negative change (−) is a loss. The net change is all the changes added together.`,
+      `Group the gains: ${list(gains.map((v) => `+${v}`))} add to $+${gainSum}$.`,
+      `Group the losses: ${list(losses.map((v) => `−${-v}`))} add to $-${-lossSum}$.`,
+      `Combine the two groups. Adding a negative number takes away: $${gainSum}+(${lossSum})=${net}$.`,
     ];
     if (m.ask === "net-change") {
       return {
@@ -889,7 +937,10 @@ const signedChangesSum = chainFamily({
           prompt: `The table shows how the number of ${c.thing} changed on each of ${n} days. What was the net change over the ${n} days?`,
           answer: String(net),
           hint: `Add all ${n} changes, not just the first two. Group the gains together and the losses together, then combine the two totals.`,
-          explanation: steps,
+          explanation: [
+            ...steps,
+            `The net change over the ${n} days is ${net}${net > 0 ? `, a gain of ${count(net, c.noun)}` : net < 0 ? `, a loss of ${count(-net, c.noun)}` : ""}.`,
+          ],
           label: `Net change (${c.noun})`,
         }),
         figure,
@@ -903,6 +954,7 @@ const signedChangesSum = chainFamily({
         explanation: [
           ...steps,
           `Start with ${m.start} and apply the net change: $${m.start}${net < 0 ? `+(${net})` : `+${net}`}=${m.start + net}$.`,
+          `There were ${m.start + net} ${c.noun} after ${n} days.`,
         ],
         label: `Answer (${c.noun})`,
       }),
