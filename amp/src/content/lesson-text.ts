@@ -1,3 +1,6 @@
+import type { SemanticFigure } from "../math/contracts";
+import { describeScene } from "../math/scene/layout";
+import { isPorted, legacyScene } from "../math/scene/legacy";
 import type { GradeBand } from "../curriculum/types";
 import type { Lesson } from "./lessons";
 import type { ProblemLessonView } from "./problem-lessons";
@@ -21,6 +24,22 @@ export type LessonTextBlock = {
   label: string;
   lines: string[];
 };
+
+/** What a figure shows, for a reader who cannot see it: the scene's own
+ * accessible description, or the figure's data for an older figure kind.
+ * Lines starting "Figure:" or "Illustration:" are not prose the learner reads. */
+export function figureText(figure: SemanticFigure) {
+  const scene =
+    figure.kind === "scene"
+      ? figure.scene
+      : isPorted(figure)
+        ? legacyScene(figure)
+        : null;
+  const text = scene
+    ? describeScene(scene, true)
+    : `${figure.kind} ${JSON.stringify(figure)}`;
+  return `Figure: ${text.length > 800 ? `${text.slice(0, 800)}…` : text}`;
+}
 
 /** Grade bands from youngest to oldest, in the order a learner reaches them. */
 export const gradeBandOrder: readonly GradeBand[] = [
@@ -77,7 +96,10 @@ export function referenceLessonBlocks(lesson: Lesson): LessonTextBlock[] {
       .map((s) => ({
         stage,
         label: `${stage}: ${s.title}`,
-        lines: s.paragraphs,
+        lines: [
+          ...s.paragraphs,
+          ...(s.illustration ? [`Illustration: ${s.illustration}`] : []),
+        ],
       }));
   const example = lesson.workedExample;
   return [
@@ -88,6 +110,7 @@ export function referenceLessonBlocks(lesson: Lesson): LessonTextBlock[] {
       label: "worked example",
       lines: [
         `Problem: ${example.prompt}`,
+        ...(example.figure ? [figureText(example.figure)] : []),
         ...(example.choices ?? []).map((c, i) => `Choice ${i + 1}: ${c}`),
         ...example.steps.map((s, i) => `Step ${i + 1}: ${s}`),
         `Answer: ${[example.answer, example.answerUnit].filter(Boolean).join(" ")}`,
@@ -123,6 +146,7 @@ export function problemLessonBlocks(
       label: "example",
       lines: [
         `Problem: ${view.example.prompt}`,
+        ...(view.example.figure ? [figureText(view.example.figure)] : []),
         ...(view.example.choices ?? []).map((c, i) => `Choice ${i + 1}: ${c}`),
         ...view.example.steps.map((s, i) => `Step ${i + 1}: ${s}`),
         `Answer: ${view.example.answer}`,

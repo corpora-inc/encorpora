@@ -58,6 +58,7 @@ function assertOrder(blocks: LessonTextBlock[], html: string, id: string) {
   let checked = 0;
   for (const block of blocks)
     for (const line of block.lines) {
+      if (/^(Figure|Illustration): /.test(line)) continue;
       const a = anchor(line);
       if (!a) continue;
       const found = page.indexOf(a, at);

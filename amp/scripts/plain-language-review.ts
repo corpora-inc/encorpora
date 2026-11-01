@@ -93,7 +93,7 @@ const list = (name: string) =>
     .map((s) => s.trim())
     .filter(Boolean);
 
-const RUBRIC_VERSION = 3;
+const RUBRIC_VERSION = 4;
 const efforts = ["minimal", "low", "medium", "high", "xhigh"];
 
 const SCHEMA = {
@@ -292,6 +292,8 @@ You are ${reader}. This lesson is written for ${gradeBandName(unit.band)}. Read 
 What you know: the everyday words of a learner your age, and the symbols a typical learner at your level uses fluently. Numerals and counting come by kindergarten, + − and = by grade 1, × ÷ by grade 3, fractions written 3/4 and decimals by grade 5, negative numbers, a letter standing for an unknown number, $2x$ meaning 2 times $x$, and an equation with its two sides by grade 7. Do not flag those, or plain everyday words. You do not reliably remember technical vocabulary from earlier grades (denominator, product, factor, expression, coefficient, integer, …): flag it when the text uses it without restating its meaning.
 
 The standard: the summary and opening use everyday words and define every term they use; each term is defined at its first use, in that sentence, even if it is defined again later; a definition is repeated after a gap; basic words from earlier grades are restated in a clause; one idea per sentence; concrete numbers before letters, with the formal statement last. The "for a parent or learning partner" block is read by an adult: flag only mathematical errors or jargon a parent without mathematics training would not know.
+
+A line starting "Figure:" describes the picture the learner sees at that point; a line starting "Illustration:" names a drawn diagram. Use them to follow the lesson, but do not review their wording.
 
 Each practice lesson is shown on its own screen, so a term it uses must be defined there too, not only in the reference lesson. Report a problem once per screen: do not repeat it for every later use of the same word.
 
