@@ -29,13 +29,16 @@ const fixture = await startShellFixture({
 });
 const { origin } = fixture;
 const browser = await (engine === "webkit" ? webkit : chromium).launch();
+const widths = (argument("widths") ?? "320,390,768,1024,1280")
+  .split(",")
+  .map(Number);
 const viewports = [
   { width: 320, height: 640 },
   { width: 390, height: 844 },
   { width: 768, height: 1024 },
   { width: 1024, height: 768 },
   { width: 1280, height: 800 },
-];
+].filter((v) => widths.includes(v.width));
 const failures: string[] = [];
 const check = (ok: unknown, message: string) => {
   if (!ok) failures.push(message);
@@ -294,27 +297,28 @@ try {
     await context.close();
   }
 
-  // 7. Progress fills a page: never a card's worth of empty space.
-  for (const viewport of [
-    { width: 390, height: 844 },
-    { width: 1280, height: 800 },
-  ]) {
-    const { page, context } = await open("progress", viewport, "light");
-    await page.waitForTimeout(300);
-    const room = await page.evaluate(() => {
-      const stage =
-        document.querySelector<HTMLElement>(".progress-cards")!.parentElement!;
-      const cards = [...document.querySelectorAll(".progress-skill-card")];
-      const last = cards.at(-1)!.getBoundingClientRect();
-      const tallest = Math.max(
-        ...cards.map((c) => c.getBoundingClientRect().height),
-      );
-      const bottom = stage.getBoundingClientRect().top + stage.clientHeight;
-      return { spare: bottom - last.bottom, tallest };
+  // 6b. A failed family load can be dismissed without stranding the parent
+  //     on a loading frame: the recovery action stays on screen.
+  {
+    const scenario = shellScenarios(fixture).find((s) => s.id === "progress")!;
+    const context = await fixture.context(browser, "paid", {
+      viewport: { width: 390, height: 844 },
     });
+    const page = await context.newPage();
+    page.setDefaultTimeout(30000);
+    await page.route("**/api/v1/me", (route) =>
+      route.fulfill({
+        status: 503,
+        json: { error: "temporarily_unavailable" },
+      }),
+    );
+    await page.goto(origin + scenario.path);
+    await page.getByRole("alert").waitFor();
+    await page.getByRole("button", { name: "Dismiss message" }).click();
+    await page.waitForTimeout(500);
     check(
-      room.spare < room.tallest + 12,
-      `progress ${viewport.width}: ${Math.round(room.spare)}px left empty under the cards`,
+      await page.getByRole("button", { name: "Try again" }).isVisible(),
+      "progress: after dismissing a failed load there is no way to retry",
     );
     await context.close();
   }

@@ -162,49 +162,31 @@ export function ProgressWorkspace({
     measure();
     return () => observer.disconnect();
   }, []);
-  // Rows that proved to overflow at a stage height: a later measurement at
-  // that height never asks for more, so a page's cards stay put.
-  const fitted = useRef<{ height: number; rows: number } | null>(null);
-  const measured = useRef(false);
   useLayoutEffect(() => {
     const target = list.current;
     if (!target) return;
     const measure = () => {
       const font = Number.parseFloat(getComputedStyle(target).fontSize) || 16;
       const grid = target.querySelector(".progress-cards");
-      // No cards on screen (a detail view, an empty state): keep the
-      // capacity the list was paged with.
-      if (!grid && measured.current) return;
       const columns = grid
         ? getComputedStyle(grid).gridTemplateColumns.split(" ").length
         : 1;
-      // Once cards are on screen, size rows from the tallest one, so a
-      // phone fills its page instead of leaving a card's worth of space.
-      const cards = grid ? [...grid.children] : [];
-      const tallest = Math.max(
-        0,
-        ...cards.map((card) => card.getBoundingClientRect().height),
+      setCapacity(
+        largeText
+          ? 1
+          : Math.max(
+              1,
+              Math.min(3, Math.floor(target.clientHeight / (9.5 * font))),
+            ) * columns,
       );
-      const gap = grid
-        ? Number.parseFloat(getComputedStyle(grid).rowGap) || 0
-        : 0;
-      let rows = tallest
-        ? Math.floor((target.clientHeight + gap) / (tallest + gap))
-        : Math.floor(target.clientHeight / (9.5 * font));
-      if (fitted.current?.height === target.clientHeight)
-        rows = Math.min(rows, fitted.current.rows);
-      if (tallest) measured.current = true;
-      setCapacity(largeText ? 1 : Math.max(1, Math.min(3, rows)) * columns);
     };
     const observer = new ResizeObserver(measure);
     observer.observe(target);
     measure();
     return () => observer.disconnect();
-    // Re-measure once cards exist: the catalog can arrive after the snapshot.
-  }, [view.skillId, !!snapshot, largeText, skills.length, view.filter]);
+  }, [view.skillId, !!snapshot, largeText]);
   // The estimate above cannot know how card text wraps; if a page still
-  // overflows, show one row fewer so cards never scroll inside the stage,
-  // and remember that limit for this stage height.
+  // overflows, show one row fewer so cards never scroll inside the stage.
   useLayoutEffect(() => {
     const stage = list.current;
     if (!stage || capacity <= 1) return;
@@ -213,12 +195,7 @@ export function ProgressWorkspace({
       const columns = grid
         ? getComputedStyle(grid).gridTemplateColumns.split(" ").length
         : 1;
-      const next = Math.max(1, capacity - columns);
-      fitted.current = {
-        height: stage.clientHeight,
-        rows: Math.max(1, Math.floor(next / columns)),
-      };
-      setCapacity(next);
+      setCapacity(Math.max(1, capacity - columns));
     }
   });
   const entries = (snapshot?.skills ?? []).flatMap((evidence) => {

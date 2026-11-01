@@ -412,6 +412,7 @@ export function Graph({
           p.z,
         ).unproject(reference);
     };
+    const labelSizes: { width: number; height: number }[] = [];
     const moveAreas = () => {
       if (!labelHost.current) return;
       camera.updateMatrixWorld();
@@ -429,8 +430,13 @@ export function Graph({
         label.style.top = `${p.y}px`;
         // A callout shows whole or not at all: never cut by the map's edge
         // or under its toolbar when the camera is close in.
-        const half = label.offsetWidth / 2,
-          tall = label.offsetHeight / 2;
+        // Callout text never changes: measure each once, not every frame.
+        const size = (labelSizes[i] ??= {
+          width: label.offsetWidth,
+          height: label.offsetHeight,
+        });
+        const half = size.width / 2,
+          tall = size.height / 2;
         const inside =
           p.x - half >= 4 &&
           p.x + half <= width - 4 &&

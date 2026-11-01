@@ -219,6 +219,9 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   const token = session?.token ?? null;
   const accountId = session?.accountId ?? null;
   const [catalog, setCatalog] = useState<Catalog | null>(null);
+  // A failed first load. Unlike `error`, dismissing the message does not
+  // clear it, so the screen never falls back to an endless loading frame.
+  const [loadFailed, setLoadFailed] = useState(false);
   const familySummary = useFamilyCache(accountId);
   const setFamilySummary = (summary: FamilySummary | null) =>
     setNativeFamilySnapshot(accountRef.current, summary);
@@ -526,16 +529,21 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   useEffect(() => {
     void learningCatalog()
       .then(setCatalog)
-      .catch((e) => setError(String(e)));
+      .catch((e) => {
+        setError(String(e));
+        setLoadFailed(true);
+      });
   }, []);
   useEffect(() => {
     if (!token) return;
     const epoch = authEpoch.current;
     void loadFamily(false).catch(() => {
-      if (epoch === authEpoch.current)
+      if (epoch === authEpoch.current) {
         setError(
           "Family details could not be refreshed. Check your connection and try again.",
         );
+        setLoadFailed(true);
+      }
     });
   }, [accountId, route.location.pathname]);
   useEffect(() => {
@@ -675,6 +683,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   }
   function acceptFamily(summary: FamilySummary) {
     familyRequest.current++;
+    setLoadFailed(false);
     setFamilySummary(summary);
     const available = summary.learners.filter((entry) => !entry.deletedAt);
 
@@ -710,7 +719,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     !!token &&
     route.location.pathname === "/" &&
     (!familySummary
-      ? !error
+      ? !error && !loadFailed
       : !learners.length ||
         (!learningAllowed && familySummary.consent.status !== "withdrawn"));
   // Once leaving, this screen stays the skeleton until the destination
@@ -1175,7 +1184,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
   // Development sign-in has no session to end, so it offers no sign-out.
   const [authMode, setAuthMode] = useState<AuthConfig["mode"]>();
   useEffect(() => {
-    void authConfig().then((config) => setAuthMode(config.mode));
+    void authConfig()
+      .then((config) => setAuthMode(config.mode))
+      .catch((failure) =>
+        console.error("Sign-in configuration could not be loaded", failure),
+      );
   }, []);
   const signingIn =
     route.signingIn &&
@@ -1200,11 +1213,16 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
     firstRunHome ||
     leavingHome.current ||
     // The welcome states the configured free allowance: paint it once.
-    (!token && !nativeRuntime && !catalog && !error) ||
+    (!token && !nativeRuntime && !catalog && !error && !loadFailed) ||
     (starting && token && !familySummary) ||
     // Signed in, the family loads behind the same first-paint frame: never
     // the signed-out welcome or a placeholder card in between.
-    (!!token && !nativeRuntime && !familySummary && !error && !familyOpen)
+    (!!token &&
+      !nativeRuntime &&
+      !familySummary &&
+      !error &&
+      !loadFailed &&
+      !familyOpen)
   )
     return (
       <LoadingScreen

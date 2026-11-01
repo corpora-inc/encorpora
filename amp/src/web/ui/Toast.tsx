@@ -11,7 +11,6 @@ export function Toast({
   title,
   placement,
   takeFocus = false,
-  className = "",
 }: {
   message: string;
   onDismiss: () => void;
@@ -20,7 +19,6 @@ export function Toast({
   placement?: "top" | "bottom";
   /** Failed forms can bring feedback into view and dismiss the phone keyboard. */
   takeFocus?: boolean;
-  className?: string;
 }) {
   const description = useCallback(
     (node: HTMLDivElement | null) => {
@@ -38,7 +36,7 @@ export function Toast({
         }}
         duration={tone === "status" ? 4000 : Infinity}
         type={tone === "status" ? "background" : "foreground"}
-        className={`${styles.toast} ${title ? styles.titled : ""} ${className}`}
+        className={`${styles.toast} ${title ? styles.titled : ""}`}
       >
         {/* Radix announces a toast politely; an error is also an alert. */}
         <div className={styles.content}>
