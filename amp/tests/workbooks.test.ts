@@ -321,7 +321,9 @@ test("the PDF is rendered once per paper size from the stored workbook, then ser
   assert.ok(calls[0]!.html.includes("size:A4"));
   assert.ok(calls[0]!.html.includes(made.code));
   assert.ok(calls[0]!.html.includes("Sample learner"));
-  assert.ok(calls[0]!.footer?.includes(made.code));
+  // Each composed page prints its own footer with the code; no browser footer.
+  assert.ok(!calls[0]!.footer);
+  assert.ok(calls[0]!.html.includes("data-compose"));
   // Cached: the same document is not rendered again.
   const again = await server.inject({ url: `${url}/${made.id}/pdf`, headers });
   assert.equal(again.body, "%PDF-1.7 A4 1");
