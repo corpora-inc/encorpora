@@ -161,7 +161,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "percent-grid-model": {
     goal: "Read the percent, fraction or decimal for the shaded part of a grid of 10 rows and 10 columns.",
     intuition:
-      "Percent means “out of 100,” and % is read “percent.” A 10 by 10 grid has 100 equal squares, so each square is 1% of the grid. The number of shaded squares is the percent. As a fraction it is that number over 100. As a decimal it is that many hundredths.",
+      "Percent means “out of 100,” and % is read “percent.” Each 10 by 10 grid has 100 equal squares, so each square is 1% of the grid. The number of shaded squares is the percent. As a fraction it is that number over 100. As a decimal it is that many hundredths.",
     senses: { part: "part", whole: "whole", square: "square-shape" },
     noLink: ["change"],
     terms: ["percent"],
@@ -176,7 +176,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "percent-forms-and-parts": {
     goal: "Change among fractions, decimals and percents, and find a whole or a percent from a part.",
     intuition:
-      "Percent means “out of 100.” A fraction, a decimal and a percent can name the same amount: $\\frac{1}{4}$, 0.25 and 25%. The whole is the full amount, which is 100%. A part is a piece of it. If you know what percent a part is, you can find 1% and then the whole.",
+      "Percent means “out of 100.” So a fraction, a decimal and a percent can all name the same amount: $\\frac{1}{4}$, 0.25 and 25%. The whole is the full amount, which is 100%. A part is a piece of it. If you know what percent a part is, you can find 1% and then the whole.",
     senses: { part: "part", whole: "whole", square: "square-shape" },
     noLink: ["change"],
     terms: [
@@ -898,7 +898,7 @@ export const texas38Lessons: Lesson[] = [
     id: "percent-grids-conversions",
     title: "Percent models, conversions and parts",
     summary:
-      "Percent means “out of 100,” and the sign % is read “percent.” A grid of 10 rows and 10 columns has 100 small squares. If 35 are shaded, 35% is shaded. The same amount can also be written as a fraction, $\\frac{35}{100}$, or a decimal, 0.35. If you know a part and its percent, you can find the whole: when 30% is 45, 1% is 1.5, so 100% is 150.",
+      "Percent means “out of 100,” and the sign % is read “percent.” Picture a grid of 10 rows and 10 columns has 100 small squares. If 35 are shaded, 35% is shaded. The same amount can also be written as a fraction, $\\frac{35}{100}$, or a decimal, 0.35. If you know a part and its percent, you can find the whole: when 30% is 45, 1% is 1.5, so 100% is 150.",
     senses: { part: "part", whole: "whole", square: "square-shape" },
     noLink: ["change"],
     templateIds: ["percent-grid-model", "percent-forms-and-parts"],
@@ -1074,7 +1074,7 @@ export const texas38Lessons: Lesson[] = [
     id: "rational-area-volume-equations",
     title: "Equations for area and volume with fractions",
     summary:
-      "A formula is a rule written with letters, such as “area of a rectangle = length × width.” A formula is already an equation. When one measure is unknown, put the numbers you know into the formula and keep a letter for the unknown. Fractions and mixed numbers, like $1\\tfrac{1}{2}$, go in just like whole numbers.",
+      "A formula is a rule written with letters, such as “area of a rectangle = length × width.” Every formula is already an equation. When one measure is unknown, put the numbers you know into the formula and keep a letter for the unknown. Fractions and mixed numbers, like $1\\tfrac{1}{2}$, go in just like whole numbers.",
     senses: {
       edge: "edge",
       face: "face-solid",
