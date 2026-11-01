@@ -96,6 +96,8 @@ approval to that export's hash; a later render needs its own verification.
 Keep superseded versions explicitly labeled. Approval for one format does not
 prove another crop is readable.
 
+Every paid concept must satisfy the [complete format and campaign requirements](youtube-publishing.md#paid-video-format-and-campaign-requirements). Run the shared delivery check on final exports; require live Excellent asset-group ratings and resolve campaign recommendations after changes and during daily review.
+
 ## Distribution and daily operation
 
 Use the shared YouTube calendar and the existing platform receipts to avoid
