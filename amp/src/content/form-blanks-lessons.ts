@@ -101,7 +101,7 @@ const entries: FormatLessonEntry[] = [
       "Turn the inequality sign around when dividing both sides by a negative number.",
     ],
     intuition:
-      "An inequality compares two sides with a sign: $<$ (is less than), $>$ (is greater than), $\\le$ (is less than or equal to) or $\\ge$ (is greater than or equal to). Its solution is every value of $x$ that makes it true. The number multiplying $x$ is called the coefficient: in $-3x$, it is $-3$. You solve an inequality like an equation, by doing the same thing to both sides, with one change. Multiplying or dividing both sides by a negative number flips the order. For example, $2<5$, but $-2>-5$, because $-2$ is to the right of $-5$ on a number line. So in $-3x>12$, dividing both sides by $-3$ gives $x<-4$, with the sign turned around. Check with $x=-5$: $-3\\times(-5)=15$, and 15 is greater than 12. First undo any added or subtracted number, then divide.",
+      "An inequality compares two amounts with a sign: $<$ (is less than), $>$ (is greater than), $\\le$ (is less than or equal to) or $\\ge$ (is greater than or equal to). Its two sides are the amounts left and right of the sign. A term is one part joined to the rest by $+$ or $-$, such as $-2x$ in $-2x+4$. Its solution is every value of $x$ that makes it true. The number multiplying $x$ is called the coefficient: in $-3x$, it is $-3$. You solve an inequality like an equation, by doing the same thing to both sides, with one change. Multiplying or dividing both sides by a negative number flips the order. For example, $2<5$, but $-2>-5$, because $-2$ is to the right of $-5$ on a number line. So in $-3x>12$, dividing both sides by $-3$ gives $x<-4$, with the sign turned around. Check with $x=-5$: $-3\\times(-5)=15$, and 15 is greater than 12. First undo any added or subtracted number, then divide.",
     terms: ["coefficient", "solution-set"],
     method: [
       "Add or subtract the same number on both sides so the $x$-term stands alone.",
@@ -135,7 +135,7 @@ const entries: FormatLessonEntry[] = [
     parentGuide:
       "Try a value on each side of the boundary in the original inequality to see which side is true.",
     senses: { side: "side-of-equation", term: "term-expression", rule: "rule" },
-    noLink: ["change", "changes"],
+    noLink: ["change", "changes", "part"],
   },
   {
     id: "conversion-proportion-blanks",
@@ -157,7 +157,7 @@ const entries: FormatLessonEntry[] = [
     watch:
       "Keep the units in the same order in both ratios: yards first and meters second in each.",
     principle:
-      "If two kinds of quantity are in proportion, then $a:b=c:d$, where $a$ and $c$ use one unit and $b$ and $d$ use the other. Then $d=\\frac{bc}{a}$, as long as $a$ is not 0.",
+      "If two kinds of quantity are in proportion, then $a:b=c:d$, where $a$ and $c$ use one unit and $b$ and $d$ use the other. Then $d=\\frac{bc}{a}$, as long as $a$, $b$ and $d$ are not 0.",
     example: {
       prompt:
         "One yard is about 0.9 meter. Set up the proportion for the meters $x$ in 50 yards.",
@@ -174,7 +174,7 @@ const entries: FormatLessonEntry[] = [
       "The unknown always sits in the place of its unit.",
     ],
     formal:
-      "Two equal ratios $\\frac{a}{b}=\\frac{c}{d}$, with $a$, $b$ and $d$ not 0, give $d=\\frac{bc}{a}$. So a unit conversion is multiplying by the same fixed number, $\\frac{b}{a}$, every time.",
+      "Equal ratios are ratios with the same value. Two equal ratios $\\frac{a}{b}=\\frac{c}{d}$, with $a$, $b$ and $d$ not 0, give $d=\\frac{bc}{a}$. So a unit conversion is multiplying by the same fixed number, $\\frac{b}{a}$, every time.",
     pitfalls: [
       "Do not put the meters of one ratio against the yards of the other.",
       "Do not leave out the unknown. It takes the place of the converted amount.",
@@ -194,7 +194,7 @@ const entries: FormatLessonEntry[] = [
       "Find the percent growth or decay (shrinking) each period from the base.",
     ],
     intuition:
-      "In $P(t)=800(0.94)^t$, read “$P$ of $t$”, $P(t)$ is the amount after $t$ years. The small raised $t$ is an exponent: it says how many times to multiply by 0.94. So the amount is the starting amount times 0.94, multiplied $t$ times. At $t=0$ nothing has been multiplied yet, since $0.94^0=1$. So the starting amount is 800. The number being raised, 0.94, is called the base. Each year the amount is multiplied by 0.94, which is $1-0.06$. So it loses 0.06, or 6 percent, each year. A base above 1, such as 1.25, is $1+0.25$. It means growth of 25 percent each year. In general, $a\\cdot b^t$ has starting amount $a$ and base $b$. The dot means multiply, and one period is one step of $t$, such as one year.",
+      "A model is a formula that describes a real amount as time passes. In $P(t)=800(0.94)^t$, read “$P$ of $t$”, $P(t)$ is the amount after $t$ years. The small raised $t$ is an exponent: it says how many times to multiply by 0.94. So the amount is the starting amount times 0.94, multiplied $t$ times. At $t=0$ nothing has been multiplied yet, since $0.94^0=1$. So the starting amount is 800. The number being raised, 0.94, is called the base. Each year the amount is multiplied by 0.94, which is $1-0.06$. Multiplying by 0.94 keeps 94 percent of the amount, so 6 percent of it is lost each year. In the first year that is $800\\times0.06=48$. A base above 1, such as 1.25, is $1+0.25$. It means growth of 25 percent each year. In general, $a\\cdot b^t$ has starting amount $a$ and base $b$. The dot means multiply, and one period is one step of $t$, such as one year.",
     terms: [
       ["initial-value", "Here it is $a$ in $a\\cdot b^t$."],
       "growth-factor",
@@ -205,7 +205,7 @@ const entries: FormatLessonEntry[] = [
     ],
     method: [
       "Put $t=0$ into the model. Since $b^0=1$, the starting amount is $a$.",
-      "Compare the base $b$ with 1. Greater than 1 means the amount grows. Less than 1 means it shrinks.",
+      "Compare the base $b$ with 1. Greater than 1 means the amount grows. Between 0 and 1 means it shrinks.",
       "The percent change each period is the distance from $b$ to 1, written as a percent.",
     ],
     watch:
@@ -224,10 +224,10 @@ const entries: FormatLessonEntry[] = [
     methodTitle: "Start, then compare with 1",
     methodText: [
       "Check with the next year: $2{,}000\\times1.08=2{,}160$. That is 160 more, and 160 is 8 percent of 2,000.",
-      "The base (here 1.08) and the percent rate (here 8 percent) are different numbers.",
+      "The percent rate is the percent change each period. The base (here 1.08) and the percent rate (here 8 percent) are different numbers.",
     ],
     formal:
-      "Write $b=1+r$, where $r$ is the fraction the amount changes by each period. Then $y=a(1+r)^t$, and each period's amount is $1+r$ times the one before. When $r$ is negative, the amount shrinks, which is called decay.",
+      "Write $b=1+r$, where $r$ is the fraction the amount changes by each period. Then $y=a(1+r)^t$, and each period's amount is $1+r$ times the one before. When $r$ is between $-1$ and 0, a positive amount shrinks each period, which is called decay.",
     pitfalls: [
       "Do not read the base as the percent.",
       "Do not use the starting amount as the amount after one period.",
@@ -247,7 +247,7 @@ const entries: FormatLessonEntry[] = [
       "Estimate $\\pi$ by dividing a circumference by a diameter.",
     ],
     intuition:
-      "The diameter of a circle is the distance across it through the center. The radius $r$ is half of that, the distance from the center to the circle. The circumference is the distance around the circle. For every circle, the circumference divided by the diameter is the same number, about 3.14. That number is called $\\pi$ (pi). The area of a circle, the space inside it, is $\\pi r^2$. Here $r^2$ ($r$ squared) means $r\\times r$. To estimate, use 3.14 in place of $\\pi$. A sign 10 feet across has a radius of 5 feet. Its area is about $3.14\\times5\\times5=3.14\\times25=78.5$ square feet. Using the diameter in place of the radius would give four times too much, because $10\\times10$ is four times $5\\times5$.",
+      "The center is the point in the middle of a circle. The diameter is the distance across the circle through the center. The radius $r$ is half of that, the distance from the center to the circle. The circumference is the distance around the circle. For every circle, the circumference divided by the diameter is the same number, about 3.14. That number is called $\\pi$ (pi). The area of a circle, the space inside it, is $\\pi r^2$. Squared means multiplied by itself: $r^2$, read “$r$ squared”, is $r\\times r$. To estimate, use 3.14 in place of $\\pi$. A sign 10 feet across has a radius of 5 feet. Its area is about $3.14\\times5\\times5=3.14\\times25=78.5$ square feet. Using the diameter in place of the radius would give four times too much, because $10\\times10$ is four times $5\\times5$.",
     terms: ["circumference", "diameter", "radius"],
     method: [
       "Find the radius: divide the diameter by 2.",

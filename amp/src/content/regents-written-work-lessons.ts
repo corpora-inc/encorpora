@@ -12,7 +12,7 @@ const entries: WorkEntry[] = [
       "Find a later term by working out every term in order, without skipping ahead.",
     ],
     intuition:
-      "A sequence is a list of numbers in order. Each number in the list is called a term. A recursive rule is a recipe that makes the next term from the term just before it. The terms get names with a small number written low after the letter, called a subscript. So $a_1$ (read “$a$ sub 1”) is the first term, $a_2$ is the second, and $a_n$ is the term in position $n$. The term just before $a_n$ is written $a_{n-1}$. Squaring a number means multiplying it by itself: $3^2 = 3 \\times 3 = 9$. Suppose $a_1 = 3$ and the rule is $a_n = (a_{n-1})^2 + 1$. In words: square the term before, then add 1. The second term is $3^2 + 1 = 9 + 1 = 10$. For the third term, use 10, the term just before it, not 3: $10^2 + 1 = 100 + 1 = 101$. Each new term is the input for the next one, so you cannot skip ahead.",
+      "A sequence is a list of numbers in order. Each number in the list is called a term. A recursive rule is a recipe that makes the next term from the term just before it. The terms get names with a small number written low after the letter, called a subscript. So $a_1$ (read “$a$ sub 1”) is the first term, $a_2$ is the second, and $a_n$ is the term in position $n$. The term just before $a_n$ is written $a_{n-1}$. Squared means multiplied by itself: $3^2 = 3 \\times 3 = 9$. Suppose $a_1 = 3$ and the rule is $a_n = (a_{n-1})^2 + 1$. In words: square the term before, then add 1. The second term is $3^2 + 1 = 9 + 1 = 10$. For the third term, use 10, the term just before it, not 3: $10^2 + 1 = 100 + 1 = 101$. Each new term is the input for the next one, so find each term in order.",
     terms: [
       "recursive-rule",
       [
@@ -46,15 +46,15 @@ const entries: WorkEntry[] = [
       "Squares grow fast. By the third term the number can have three or four digits, so check each square with care: $27^2 = 27 \\times 27 = 729$.",
     ],
     formal:
-      "A rule like $a_n = (a_{n-1})^2 + k$ squares the term before. So the terms do not go up by the same amount each time (an arithmetic sequence), or by the same factor each time (a geometric sequence). No simple formula jumps straight to a far term. The terms are found by applying the rule in order.",
+      "A rule like $a_n = (a_{n-1})^2 + k$ squares the term before. A list that adds the same number each time is called an arithmetic sequence. A list that multiplies by the same number each time is called a geometric sequence. The terms 3, 10, 101 do neither: they go up by 7, then by 91, and $\\frac{10}{3}$ is not $\\frac{101}{10}$. So these terms are found by applying the rule in order.",
     pitfalls: [
       "Use the term just before in every step, not the first term.",
       "Square before you multiply, and multiply before you add or subtract. This is the order of operations.",
     ],
     parentGuide:
       "Ask your learner to write each term on its own line and to say which term it came from.",
-    senses: { term: "term-sequence", rule: "rule", square: "square-number" },
-    noLink: ["third", "whole", "factor", "jumps"],
+    senses: { term: "term-sequence", square: "square-number" },
+    noLink: ["third", "whole", "factor", "jumps", "rule"],
   },
   {
     id: "remainder-steps",
@@ -122,7 +122,7 @@ const entries: WorkEntry[] = [
       "Find the percent in neither group by subtracting from 100%, the whole group.",
     ],
     intuition:
-      "A percent is a number out of 100: 58% means 58 out of every 100 people. Suppose 58% of a school speak English and 24% speak Mandarin. Some people speak both. Each of them is counted in the 58% and again in the 24%. So the sum, 58 + 24 = 82, counts those people twice. The people in both groups are called the overlap. If 16% speak both, take 16 away once, and everyone is counted exactly once: 82 − 16 = 66. So 66% speak English or Mandarin. Here “or” means at least one of the two: English, Mandarin, or both. Everyone else, 100 − 66 = 34, makes 34% who speak neither.",
+      "A percent is a number out of 100: 58% means 58 out of every 100 people. Suppose 58% of a school speak English and 24% speak Mandarin. Some people speak both. Each of them is counted in the 58% and again in the 24%. So the sum, 58 + 24 = 82, counts those people twice. The people in both groups are called the overlap. If 16% speak both, take 16 away once, and each person who speaks English, Mandarin or both is counted exactly once: 82 − 16 = 66. So 66% speak English or Mandarin. Here “or” means in one of the two groups, or in both. Everyone else, 100 − 66 = 34, makes 34% who speak neither.",
     terms: [
       ["union", "A person in both groups counts once."],
       [
@@ -139,24 +139,24 @@ const entries: WorkEntry[] = [
     watch:
       "Subtract the overlap, the people in both groups, once. Subtracting it twice leaves those people out entirely.",
     principle:
-      "For two events $A$ and $B$ (things that may happen), $P(A\\text{ or }B)=P(A)+P(B)-P(A\\text{ and }B)$. Here $P$ means the probability, the share of the whole group. The probability of neither is $1-P(A\\text{ or }B)$, where 1 stands for the whole group, 100%.",
+      "Call two events, the things that may happen, $A$ and $B$. Then $P(A\\text{ or }B)=P(A)+P(B)-P(A\\text{ and }B)$. Here $P$ means the probability, the share of the whole group. The probability of neither is $1-P(A\\text{ or }B)$, where 1 stands for the whole group, 100%.",
     example: {
       prompt:
         "At a club, 40% play chess, 35% play checkers and 15% play both. What percent play chess or checkers? What percent play neither?",
       steps: [
         "Add the two percents: $40+35=75$. The 15% who play both are counted in each, so 75 counts them twice.",
-        "Subtract the overlap once: $75-15=60$. So 60% play chess or checkers, at least one of the two.",
+        "Subtract the overlap once: $75-15=60$. So 60% play chess or checkers, one or both of the two.",
         "The whole club is 100%. Everyone else plays neither game: $100-60=40$, so 40% play neither.",
       ],
       answer: "60% play chess or checkers; 40% play neither",
     },
     methodTitle: "Check with the parts",
     methodText: [
-      "Split the club into three groups that do not overlap. Only chess: $40-15=25$. Only checkers: $35-15=20$. Both: 15. Together $25+20+15=60$, the same answer.",
+      "Split the people who play chess or checkers into three groups that do not overlap. Only chess: $40-15=25$. Only checkers: $35-15=20$. Both: 15. Together $25+20+15=60$, the same answer.",
       "The percent in either group can never be less than the larger single percent. It can never be more than 100%.",
     ],
     formal:
-      "Call the two groups $A$ and $B$. The people in both are written $A\\cap B$ (read “$A$ and $B$”). The people in at least one are written $A\\cup B$ (read “$A$ or $B$”). Bars around a group, as in $|A|$, mean the number of people in it. Then $|A\\cup B|=|A|+|B|-|A\\cap B|$. Dividing every count by the size of the whole group gives the same rule for percents.",
+      "Call the two groups $A$ and $B$. The people in both are written $A\\cap B$ (read “$A$ and $B$”). The people in one or both groups are written $A\\cup B$ (read “$A$ or $B$”). Bars around a group, as in $|A|$, mean the number of people in it. Then $|A\\cup B|=|A|+|B|-|A\\cap B|$. Dividing every count by the size of the whole group gives the same rule for percents.",
     pitfalls: [
       "Subtract the overlap. Do not add it.",
       "Subtract the overlap only once, from the sum, not from each group.",
@@ -204,7 +204,7 @@ const entries: WorkEntry[] = [
       "Round after dividing. Rounding the values first can change the answer.",
     ],
     formal:
-      "The average rate of change is the slope of the secant line, the straight line through two points of the graph, $(a,f(a))$ and $(b,f(b))$. For a linear function, whose graph is a straight line, it is the same for every pair of inputs.",
+      "The average rate of change is the slope of the secant line, the straight line through two points of the graph, $(a,f(a))$ and $(b,f(b))$. A linear function is a rule whose graph is a straight line. For a linear function, the rate is the same for every pair of inputs, the values put into the rule.",
     pitfalls: [
       "Subtract in the same order on top and on the bottom: later minus earlier both times.",
       "Divide by the number of years between the two rows, not by the number of rows.",
@@ -212,7 +212,7 @@ const entries: WorkEntry[] = [
     parentGuide:
       "Ask your learner which two rows they used and how many years apart they are.",
     senses: { change: "change" },
-    noLink: ["population", "average"],
+    noLink: ["population", "average", "rule"],
   },
   {
     id: "budget-items-steps",
@@ -224,7 +224,7 @@ const entries: WorkEntry[] = [
       "Find the greatest or least whole number of items that makes the inequality true.",
     ],
     intuition:
-      "A budget is the most money you can spend. A goal is an amount you want to reach or pass. Abby has 20 dollars and first spends 8.50 dollars on lunch. That leaves $20 - 8.50 = 11.50$ dollars for tickets at 2.25 dollars each. Five tickets cost $5 \\times 2.25 = 11.25$ dollars, which fits. Six tickets cost $6 \\times 2.25 = 13.50$ dollars, which is too much. Dividing gives $11.50 \\div 2.25 \\approx 5.11$, where $\\approx$ means “is about”. You cannot buy part of a ticket, so the answer is a whole number (0, 1, 2, 3 and so on): 5 tickets. With $n$ for the number of tickets, the cost is $8.50 + 2.25n$, where $2.25n$ means 2.25 times $n$. The statement $8.50 + 2.25n \\le 20$ is called an inequality. The sign $\\le$ means “is less than or equal to”, or “at most”. The sign $\\ge$ means “at least”.",
+      "A budget is the most money you can spend. A goal is an amount you want to reach or pass. Abby has 20 dollars and first spends 8.50 dollars on lunch. That leaves $20 - 8.50 = 11.50$ dollars for tickets at 2.25 dollars each. Five tickets cost $5 \\times 2.25 = 11.25$ dollars, which fits. Six tickets cost $6 \\times 2.25 = 13.50$ dollars, which is too much. Dividing gives $11.50 \\div 2.25 \\approx 5.11$, where $\\approx$ means “is about”. You cannot buy part of a ticket, so the answer is a whole number (0, 1, 2, 3 and so on): 5 tickets. With $n$ for the number of tickets, the cost is $8.50 + 2.25n$, where $2.25n$ means 2.25 times $n$. The statement $8.50 + 2.25n \\le 20$ is called an inequality. Its two sides are the amounts left and right of the sign. The sign $\\le$ means “is less than or equal to”. “At most” means the same thing. The sign $\\ge$ means “is greater than or equal to”, and “at least” means the same thing.",
     terms: ["inequality", "whole-number"],
     method: [
       "Write the total: the fixed amount plus the price times $n$, the number of items.",
@@ -235,7 +235,7 @@ const entries: WorkEntry[] = [
     watch:
       "Round the way the condition needs. About 5.1 tickets means 5 under a budget, but 6 to reach a goal.",
     principle:
-      "When the price $p$ is greater than 0, $f+pn\\le B$ is true exactly when $n\\le\\frac{B-f}{p}$. Here $f$ is the fixed amount and $B$ is the budget. So the greatest whole number of items is $\\frac{B-f}{p}$ rounded down. For a goal $G$, $f+pn\\ge G$ needs $n\\ge\\frac{G-f}{p}$, so the least whole number is $\\frac{G-f}{p}$ rounded up.",
+      "When the price $p$ is greater than 0, $f+pn\\le B$ is true exactly when $n\\le\\frac{B-f}{p}$. Here $f$ is the fixed amount and $B$ is the budget. If $f$ is more than $B$, no number of items fits. Otherwise the greatest whole number of items is $\\frac{B-f}{p}$ rounded down. For a goal $G$ that $f$ has not reached, $f+pn\\ge G$ needs $n\\ge\\frac{G-f}{p}$, so the least whole number is $\\frac{G-f}{p}$ rounded up.",
     example: {
       prompt:
         "A club has 50 dollars to spend. A banner costs 12 dollars, and each poster costs 3.50 dollars. What is the greatest number of posters it can buy?",
@@ -253,7 +253,7 @@ const entries: WorkEntry[] = [
       "For a goal, test the answer and the whole number just below it. The answer should reach the goal, and the number below it should not.",
     ],
     formal:
-      "When $p>0$, the solutions of $f+pn\\le B$ are all $n\\le\\frac{B-f}{p}$. The whole-number solutions are 0, 1, 2 and so on, up to $\\frac{B-f}{p}$ rounded down. Rounding down is written $\\lfloor x\\rfloor$, the floor of $x$. So the greatest number of items is $\\lfloor\\frac{B-f}{p}\\rfloor$.",
+      "When $p>0$, the inequality $f+pn\\le B$ has solutions, the values of $n$ that make it true. They are all $n\\le\\frac{B-f}{p}$. If $f\\le B$, the whole-number solutions are 0, 1, 2 and so on, up to $\\frac{B-f}{p}$ rounded down. Rounding down is written $\\lfloor x\\rfloor$, the floor of $x$. So the greatest number of items is $\\lfloor\\frac{B-f}{p}\\rfloor$.",
     pitfalls: [
       "Subtract the fixed amount before dividing by the price.",
       "Round down for a budget and up for a goal. Do not round to the nearest whole number.",

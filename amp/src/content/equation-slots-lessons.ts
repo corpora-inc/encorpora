@@ -12,7 +12,7 @@ const entries: FormatLessonEntry[] = [
       "Write an equation such as $12s+30=126$ for a story, and read it from either side.",
     ],
     intuition:
-      "An equation says two amounts are equal, using an equals sign. A letter such as $b$ can stand for an unknown number, and $15b$ means 15 times $b$. Some charges come once for each item, such as 15 dollars for each booth. They grow with the number of items, so multiply them by the count. A fee is paid only once, so it is added a single time. A discount is taken off once, so it is subtracted once. The total is what is paid in all. If a fair charges 15 dollars for each booth plus a fee of 40 dollars, then $b$ booths cost $15b+40$ dollars. If the total was 190 dollars, the equation is $15b+40=190$. The two sides of an equals sign can swap places: $190=15b+40$ says the same thing.",
+      "An equation says two amounts are equal. Its two sides are the amounts left and right of the equals sign. A letter such as $b$ can stand for an unknown number, and $15b$ means 15 times $b$. Some charges come once for each item, such as 15 dollars for each booth. They grow with the number of items, so multiply them by the count. A fee is paid only once, so it is added a single time. A discount is taken off once, so it is subtracted once. The total is what is paid in all. If a fair charges 15 dollars for each booth plus a fee of 40 dollars, then $b$ booths cost $15b+40$ dollars. If the total was 190 dollars, the equation is $15b+40=190$. The two sides of an equals sign can swap places: $190=15b+40$ says the same thing.",
     terms: ["rate", "fixed-cost", "equation"],
     method: [
       "Name the unknown count with a letter. Multiply the price for each item by that letter.",
@@ -39,21 +39,21 @@ const entries: FormatLessonEntry[] = [
       "A discount lowers the total, so the equation subtracts it: $12s-30=t$, where $t$ is the total.",
     ],
     formal:
-      "The cost $C(n)=an+c$, read “$C$ of $n$”, is a linear function of the count $n$: its graph is a straight line. Its slope, or steepness, is $a$, the cost per item. Its intercept, the starting value, is $c$, the amount paid for zero items. Solving $C(n)=t$ gives $n=\\frac{t-c}{a}$.",
+      "The cost $C(n)=an+c$, read “$C$ of $n$”, is a linear function of the count $n$: its graph is a straight line. Its slope, or steepness, is $a$, the cost per item. Its intercept, the starting value, is $c$, the amount paid for zero items. When the price $a$ is more than 0, solving $C(n)=t$ gives $n=\\frac{t-c}{a}$.",
     pitfalls: [
-      "Keep the total by itself on one side. It is the value of the whole expression, not part of the multiplication.",
+      "Keep the total by itself on one side. It is the value of the whole expression, not one of the numbers being multiplied.",
       "Do not switch the two numbers. The price for each item goes with the unknown, and the fee stands alone.",
     ],
     parentGuide:
       "Ask your learner to say how much one item costs and what is paid only once, and to check the equation with a small count such as 2.",
-    senses: { side: "side-of-equation" },
+    senses: { side: "side-of-equation", "more than": "more-than" },
     noLink: ["part"],
   },
   {
     id: "budget-inequality-slots",
     title: "Write an inequality for a money limit",
     summary:
-      "Add the unknown amount to the known one. Then choose the sign that matches the words about the limit, such as at most or at least.",
+      "Add the unknown amount to the known one. Then pick the sign from the words: at most means no more than, at least means no less than.",
     objectives: [
       "Choose $<$, $\\le$, $>$ or $\\ge$ from the words less than, at most, more than or at least.",
       "Write the inequality for spending within a budget or saving toward a goal.",
@@ -82,14 +82,14 @@ const entries: FormatLessonEntry[] = [
     },
     methodTitle: "Words to sign",
     methodText: [
-      "Test a value to check the direction. If $d=45$, then $35+45=80$, which meets the goal of at least 80.",
-      "The unknown is added to the known amount. The limit stands alone on the other side.",
+      "Test a number to check the direction. If $d=50$, she has $35+50=85$ dollars, which meets the goal, and $85\\ge80$ is true. With $d=40$ she has 75 dollars, which misses it, and $75\\ge80$ is false.",
+      "The unknown is added to the known amount. The limit stands alone after the sign.",
     ],
     formal:
-      "For real numbers, $a\\le b$ means $a<b$ or $a=b$. The solutions of $k+s\\le L$ are all $s\\le L-k$: every number up to and including $L-k$.",
+      "For real numbers, $a\\le b$ means $a<b$ or $a=b$. The inequality $k+s\\le L$ has solutions, the values of $s$ that make it true. They are all $s\\le L-k$: every number up to and including $L-k$.",
     pitfalls: [
       "Do not use $<$ for at most. Equal amounts are allowed, so the sign needs the line under it, $\\le$.",
-      "Do not swap the two numbers. The limit goes after the sign.",
+      "Keep the total first and the limit after the sign. Writing $80\\le35+d$ also works, because it means the same thing, but $35+d\\le80$ does not.",
     ],
     parentGuide:
       "Ask what happens if the amounts are exactly equal, and whether the words in the story allow that.",
@@ -320,7 +320,7 @@ const entries: FormatLessonEntry[] = [
     formal:
       "A relationship with a constant rate of change $a$ (the same change in $y$ for each step of 1 in $x$) has the form $y=ax+b$. The number $b$ is the value of $y$ when $x=0$, and it may be negative.",
     pitfalls: [
-      "Do not use the first $y$, or the gap between two $y$ values, as the multiplier unless $x$ goes up by 1.",
+      "The first $y$ alone does not give the multiplier. Use the change in $y$ for each step of 1 in $x$.",
       "Do not mix up adding and subtracting the constant. Work out the multiplier times $x$ first, then compare it with $y$.",
     ],
     parentGuide:
@@ -396,7 +396,7 @@ const entries: FormatLessonEntry[] = [
         "6 pairs of socks cost 21 dollars in all. What does one pair cost?",
       steps: [
         "The total cost is 21 dollars and the number of pairs is 6.",
-        "Share the total equally: $21\\div6=3.5$. Money is written with two decimal places, so one pair costs 3.50 dollars.",
+        "Share the total equally: $21\\div6=3.5$. Money is written with two decimal places, the two digits after the point. So one pair costs 3.50 dollars.",
         "Check: $6\\times3.50=21$, the total.",
       ],
       answer: "$21\\div 6=3.50$ dollars per pair.",
@@ -425,7 +425,7 @@ const entries: FormatLessonEntry[] = [
       "Fill in the radius twice and the height once in the volume equation.",
     ],
     intuition:
-      "A cylinder is a can shape: a circle at the bottom, stacked straight up to a height. Volume is the amount of space inside, measured in cubic units. The radius $r$ is the distance from the center of the circle to the circle itself. The diameter is the distance all the way across through the center, so it is twice the radius. The circle's area is $\\pi r^2$, where $\\pi$ (pi) is a number close to 3.14 and $r^2$ ($r$ squared) means $r\\times r$. The volume is that area times the height: $V=\\pi\\times r\\times r\\times h$. If a problem gives the length across, halve it first to get the radius.",
+      "A cylinder is a can shape: a circle at the bottom, stacked straight up to a height. Volume is the amount of space inside. It is measured in cubic units, the number of 1-by-1-by-1 cubes that fill it. The center is the point in the middle of the circle. The radius is the distance from the center to the circle itself, and we write it $r$. The diameter is the distance all the way across through the center, so it is twice the radius. Squared means multiplied by itself: $r^2$, read “$r$ squared”, is $r\\times r$. The circle's area is $\\pi r^2$, where $\\pi$ (pi) is a number close to 3.14. The volume is that area times the height: $V=\\pi\\times r\\times r\\times h$. If a problem gives the length across, halve it first to get the radius.",
     terms: ["radius", "diameter", "cylinder"],
     method: [
       "Find the radius. If the length across the circle is given, divide it by 2.",
@@ -465,28 +465,29 @@ const entries: FormatLessonEntry[] = [
       solid: "solid-shape",
       base: "base-shape",
     },
+    noLink: ["cubes"],
   },
   {
     id: "dilation-rule-slots",
     title: "Write the rule of a dilation",
     summary:
-      "A dilation from the origin multiplies both coordinates by the same scale factor. Find it by dividing the new coordinate by the old one.",
+      "A dilation from the origin multiplies both coordinates by one scale factor. Divide a new coordinate by its old one (not 0) to find it.",
     objectives: [
       "Find the scale factor from a point and the point it moves to.",
       "Write the rule $(x,y)\\to(kx,ky)$, where $k$ is the scale factor.",
     ],
     intuition:
-      "A point on a grid is named by two coordinates, $(x,y)$: $x$ steps across and $y$ steps up from the origin, the point $(0,0)$. A dilation makes a figure bigger or smaller from a center point. The moved figure is called the image, and a prime mark names its points: $A'$ (read “$A$ prime”) is where $A$ lands. When the center is the origin, a dilation multiplies both coordinates by the same number $k$, called the scale factor. If the point $(2,3)$ lands on $(8,12)$, then $8\\div2=4$ and $12\\div3=4$, so $k=4$. The rule is written $(x,y)\\to(4x,4y)$. The arrow means “goes to”, and $4x$ means 4 times $x$. A scale factor greater than 1 makes the figure bigger. A scale factor between 0 and 1 makes it smaller.",
+      "A point on a grid is named by two coordinates, $(x,y)$: $x$ steps across and $y$ steps up from the origin, the point $(0,0)$. A dilation makes a figure bigger or smaller from a center point, or leaves it the same size. The moved figure is called the image, and a prime mark names its points: $A'$ (read “$A$ prime”) is where $A$ lands. When the center is the origin, a dilation multiplies both coordinates by the same number $k$, called the scale factor. If the point $(2,3)$ lands on $(8,12)$, then $8\\div2=4$ and $12\\div3=4$, so $k=4$. The rule is written $(x,y)\\to(4x,4y)$. The arrow means “goes to”, and $4x$ means 4 times $x$. A scale factor greater than 1 makes the figure bigger. A scale factor between 0 and 1 makes it smaller.",
     terms: ["dilation", "scale-factor", "image-transformation"],
     method: [
       "Divide the image's $x$-coordinate by the original point's $x$-coordinate.",
-      "Divide the $y$-coordinates the same way. Both results must be the same number, $k$.",
+      "Divide the $y$-coordinates the same way. Skip a coordinate that is 0 in the original point. The results must all be the same number, $k$.",
       "Write the rule $(x,y)\\to(kx,ky)$, with $k$ in both places.",
     ],
     watch:
       "Divide the image by the original, not the other way round. Dividing the original by the image gives $\\frac{1}{k}$, one over the scale factor.",
     principle:
-      "A dilation with center $O$ and scale factor $k>0$ moves each point $P$ to the point $P'$ on the ray from $O$ through $P$, with $OP'=k\\cdot OP$. So $P'$ is $k$ times as far from $O$ as $P$ is. With $O$ at the origin, the rule is $(x,y)\\to(kx,ky)$.",
+      "A dilation with center $O$ and scale factor $k>0$ keeps $O$ in place and moves every other point $P$ to the point $P'$ on the ray from $O$ through $P$, with $OP'=k\\cdot OP$. So $P'$ is $k$ times as far from $O$ as $P$ is. With $O$ at the origin, the rule is $(x,y)\\to(kx,ky)$.",
     example: {
       prompt:
         "A dilation centered at the origin takes $A(6,9)$ to $A'(2,3)$. Write its rule.",
@@ -503,27 +504,27 @@ const entries: FormatLessonEntry[] = [
       "Check the rule on the given point: $\\frac{1}{3}\\times6=2$ and $\\frac{1}{3}\\times9=3$.",
     ],
     formal:
-      "In coordinates, the dilation centered at the origin with scale factor $k$ is $D_k(x,y)=(kx,ky)$. It multiplies every distance by $k$ and keeps every angle the same, so the image has the same shape.",
+      "In coordinates, the dilation centered at the origin with scale factor $k$ is $D_k(x,y)=(kx,ky)$. For $k>0$, it multiplies every distance by $k$ and keeps every angle the same, so the image has the same shape.",
     pitfalls: [
-      "Do not add the same number to both coordinates. That slides the figure (a translation) instead of resizing it.",
+      "Do not add the same number to both coordinates. A translation, a slide, moves the figure without resizing it.",
       "Do not use different multipliers for $x$ and $y$.",
     ],
     parentGuide:
       "Plot the point and its image on a grid, draw the line from the origin through both, and compare the distances from the origin.",
     senses: { image: "image-transformation", rule: "rule" },
-    noLink: ["factor"],
+    noLink: ["factor", "prime", "part", "leaves"],
   },
   {
     id: "transformation-rule-slots",
     title: "Match transformations to rules",
     summary:
-      "Test one point to match a flip or a turn about the origin with its coordinate rule, such as $(x,y)\\to(-x,y)$.",
+      "Test one point to match a flip or a turn about the origin with its rule, which says where each point goes.",
     objectives: [
       "Recall the rules for reflections (flips) over the two axes and over the line $y=x$.",
       "Match rotations (turns) of 90 and 180 degrees about the origin to their rules.",
     ],
     intuition:
-      "A point on a grid is named $(x,y)$: $x$ across and $y$ up from the origin, $(0,0)$. The $x$-axis is the horizontal number line, and the $y$-axis is the vertical one. A transformation moves each point to a new place, called its image. A rule such as $(x,y)\\to(x,-y)$ says where each point goes, and the arrow means “goes to”. A reflection flips a figure over a line, like a mirror. Reflecting over the $x$-axis changes the sign of $y$: $(x,-y)$. Reflecting over the $y$-axis changes the sign of $x$: $(-x,y)$. Reflecting over the line $y=x$, the slanted line through the origin, swaps the coordinates: $(y,x)$. A rotation turns a figure around a point. A half turn, 180 degrees, about the origin changes both signs: $(-x,-y)$. A quarter turn, 90 degrees, counterclockwise (against the way a clock's hands move) sends $(x,y)$ to $(-y,x)$. A test point such as $(2,3)$ shows which rule is which.",
+      "A point on a grid is named $(x,y)$: $x$ across and $y$ up from the origin, $(0,0)$. The $x$-axis is the horizontal number line, and the $y$-axis is the vertical one. A transformation sends each point to a place, which may be new or the same. That place is called the image of the point. A rule tells where each point goes, as in $(x,y)\\to(x,-y)$. The arrow means “goes to”. A reflection flips a figure over a line, like a mirror. Reflecting over the $x$-axis changes the sign of $y$: $(x,-y)$. Reflecting over the $y$-axis changes the sign of $x$: $(-x,y)$. Reflecting over the line $y=x$, the slanted line through the origin, swaps the coordinates: $(y,x)$. A degree is a small unit for measuring turns, and a full turn is 360 degrees. A rotation turns a figure around a point. A half turn, 180 degrees, about the origin changes both signs: $(-x,-y)$. A quarter turn, 90 degrees, counterclockwise (against the way a clock's hands move) sends $(x,y)$ to $(-y,x)$. A test point such as $(2,3)$ shows which rule is which.",
     terms: ["reflection", "rotation", "image-transformation"],
     method: [
       "Choose a test point with two different positive coordinates, such as $(2,3)$.",
@@ -546,7 +547,7 @@ const entries: FormatLessonEntry[] = [
     },
     methodTitle: "One test point",
     methodText: [
-      "Use the same test point for every row, so you can compare the images.",
+      "Use $(2,3)$, or another point with two different positive coordinates, for every row. A point like $(0,0)$ stays put under every rule, so it cannot tell them apart.",
       "Two rules can look alike. In $(-x,y)$ the $x$ changes sign, and in $(x,-y)$ the $y$ changes sign.",
     ],
     formal:
@@ -561,6 +562,7 @@ const entries: FormatLessonEntry[] = [
       image: "image-transformation",
       degree: "degree-angle",
       rule: "rule",
+      unit: "unit",
     },
     noLink: ["changes", "quarter", "side"],
   },
@@ -582,7 +584,7 @@ const entries: FormatLessonEntry[] = [
       "Write the new coefficient and the letter with the new exponent. Keep the minus sign if the exponent is negative.",
     ],
     watch:
-      "Subtract in the right order: top minus bottom. Reversing the order gives the wrong sign.",
+      "Subtract in the right order: top minus bottom. When the exponents differ, reversing the order gives the wrong sign.",
     principle:
       "For $a\\ne0$ ($a$ not 0) and integers $m$ and $n$, $\\frac{a^{m}}{a^{n}}=a^{m-n}$. If $m<n$, the exponent is negative, and $a^{m-n}=\\frac{1}{a^{n-m}}$.",
     example: {
@@ -600,10 +602,10 @@ const entries: FormatLessonEntry[] = [
       "If the top exponent is greater, the exponent of the result is positive.",
     ],
     formal:
-      "When $m\\ge n$, $\\frac{a^m}{a^n}=a^{m-n}$, because $n$ of the $a$'s on top cancel all $n$ on the bottom. Defining $a^{-k}=\\frac{1}{a^{k}}$ makes the same rule work for every pair of integers $m$ and $n$.",
+      "For whole-number exponents with $m\\ge n$ and $a$ not 0, $\\frac{a^m}{a^n}=a^{m-n}$, because $n$ of the $a$'s on top cancel all $n$ on the bottom. Defining $a^{-k}=\\frac{1}{a^{k}}$ makes the same subtraction work for every pair of integers $m$ and $n$, as long as $a$ is not 0. For example, $\\frac{2^{-2}}{2^{-3}}=\\frac{1/4}{1/8}=2=2^{-2-(-3)}$.",
     pitfalls: [
       "Do not divide the exponents or add them.",
-      "Do not forget to divide the coefficients. The exponent rule is only for the letter.",
+      "Do not forget to divide the coefficients. Subtract exponents only when both powers repeat the same letter or number, as in $\\frac{2^5}{2^3}=2^2$.",
     ],
     parentGuide:
       "Write out the $x$'s on top and on the bottom and cross out pairs to see what is left.",
@@ -614,13 +616,13 @@ const entries: FormatLessonEntry[] = [
     id: "square-root-solutions-slots",
     title: "Solve a squared binomial",
     summary:
-      "If something squared equals a positive number, it is the positive or the negative square root of that number. Solve for $x$ both ways.",
+      "Squared means multiplied by itself. If something squared is a positive number, it is that number's positive or negative square root.",
     objectives: [
       "Take the positive and the negative square root of both sides of an equation such as $(x+2)^2=36$.",
       "Solve the two resulting equations and name the lesser and the greater solution.",
     ],
     intuition:
-      "Squaring a number means multiplying it by itself: $5^2=5\\times5=25$. A square root undoes squaring: the square root of 25, written $\\sqrt{25}$, is 5. But $(-5)^2=(-5)\\times(-5)=25$ too. So if a number squared is 25, the number is 5 or $-5$. The sign $\\pm$, read “plus or minus”, stands for both. Now look at $(x-3)^2=25$. A binomial is an expression with two terms, like $x-3$. Here the binomial squared is 25, so $x-3=5$ or $x-3=-5$. Add 3 to both sides of each: $x=8$ or $x=-2$. There are two solutions, values of $x$ that make the equation true. Check each one in the original equation.",
+      "Squared means multiplied by itself: $5^2=5\\times5=25$. A square root undoes squaring: the square root of 25, written $\\sqrt{25}$, is 5. A negative number is a number below 0, like $-5$. And $(-5)^2=(-5)\\times(-5)=25$ too. So if a number squared is 25, the number is 5 or $-5$. “Plus or minus” is how we read the sign $\\pm$, which stands for both. Now look at $(x-3)^2=25$. A binomial is an expression with two terms, the parts joined by plus or minus, like $x-3$. Here the binomial squared is 25, so $x-3=5$ or $x-3=-5$. An equation's two sides are the parts left and right of the equals sign. Add 3 to both sides of each: $x=8$ or $x=-2$. There are two solutions, values of $x$ that make the equation true. Check each one in the original equation.",
     terms: ["binomial", "square-root"],
     method: [
       "Take the square root of both sides. Write $\\pm$ in front of the root on the right, because a positive and a negative number both square to it.",
@@ -642,13 +644,13 @@ const entries: FormatLessonEntry[] = [
     methodTitle: "Two equations from one",
     methodText: [
       "The two solutions are the same distance from the number that makes the binomial zero. Here $x+2=0$ when $x=-2$, and 4 and $-8$ are each 6 away from $-2$.",
-      "Do not multiply out the square for this method. Taking the root is simpler.",
+      "Do not multiply out the square for this method. Taking the square root is simpler.",
     ],
     formal:
-      "$u^2=k^2$ is the same as $(u-k)(u+k)=0$. When two numbers multiply to zero, at least one of them is zero; this is the zero-product property. So $u=k$ or $u=-k$. Putting back $u=x-h$ gives the two solutions.",
+      "$u^2=k^2$ is the same as $(u-k)(u+k)=0$. When two numbers multiply to zero, one or both of them must be zero; this is the zero-product property. So $u=k$ or $u=-k$. Putting back $u=x-h$ gives the two solutions.",
     pitfalls: [
-      "Watch the sign of the number in the binomial. For $(x+2)^2$, subtract 2 from each root.",
-      "Do not give $k^2$ or $\\sqrt{k}$ as a solution.",
+      "Watch the sign of the number in the binomial. For $(x+2)^2$, subtract 2 from each square root.",
+      "Do not stop at the square roots. The answer is the value of $x$, found from both of them.",
     ],
     parentGuide:
       "Ask your learner to substitute each answer back in and see that both give the number on the right.",
@@ -658,18 +660,19 @@ const entries: FormatLessonEntry[] = [
       square: "square-number",
       root: "root-radical",
     },
+    noLink: ["parts"],
   },
   {
     id: "function-shift-sentence",
     title: "Describe a function shift",
     summary:
-      "In $g(x)=f(x-h)+k$, the number inside the parentheses moves the graph sideways, against its sign. The number outside moves it up or down.",
+      "In $g(x)=f(x-h)+k$, the number inside the brackets moves the graph sideways, against its sign. The number outside moves it up or down.",
     objectives: [
       "Read the sideways shift from the number inside the parentheses.",
       "Read the up-or-down shift from the number added or subtracted outside.",
     ],
     intuition:
-      "A function is a rule that turns each input $x$ into one output. We write $f(x)$, read “$f$ of $x$”, for the output of the function $f$ at input $x$. Its graph is every point $(x,f(x))$: the input across and the output up. A new function $g$ can be built from $f$. In $g(x)=f(x-6)+2$, $g$ first subtracts 6 from the input, then uses $f$, then adds 2. At $x=6$, $g$ gives $f(0)+2$: what $f$ gave at 0, plus 2. So every point of the graph of $f$ moves right 6 and up 2. Inside the parentheses, a minus moves the graph right, against what you might expect. A plus inside, as in $f(x+6)$, moves it left. Outside, a plus moves the graph up and a minus moves it down. A slide like this is called a translation.",
+      "A function is a rule. An input is a number you put into the function, and an output is the number you get back. A function gives exactly one output for each input. We write $f(x)$, read “$f$ of $x$”, for the output of the function $f$ at input $x$. Its graph is every point $(x,f(x))$: the input across and the output up. A new function $g$ can be built from $f$. In $g(x)=f(x-6)+2$, $g$ first subtracts 6 from the input, then uses $f$, then adds 2. At $x=6$, $g$ gives $f(0)+2$: what $f$ gave at 0, plus 2. So every point of the graph of $f$ moves right 6 and up 2. Inside the parentheses, a minus moves the graph right, against what you might expect. A plus inside, as in $f(x+6)$, moves it left. Outside, a plus moves the graph up and a minus moves it down. A slide like this is called a translation.",
     terms: ["translation", "function-notation"],
     method: [
       "Look inside the parentheses. $x-h$ shifts the graph right by $h$, and $x+h$ shifts it left by $h$.",

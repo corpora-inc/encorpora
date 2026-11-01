@@ -50,13 +50,13 @@ const entries: FormatLessonEntry[] = [
     id: "pythagorean-sort-table",
     title: "Is it a right triangle?",
     summary:
-      "A triangle has a right angle exactly when the two shorter sides, each multiplied by itself, add up to the longest side times itself.",
+      "A triangle has a right angle, a page-corner angle, exactly when its two shorter sides times themselves add to the longest side times itself.",
     objectives: [
       "Test three side lengths by checking whether $a^2+b^2=c^2$, where $c$ is the longest side.",
       "Tell right triangles from sets of sides that only come close.",
     ],
     intuition:
-      "A right angle is an angle of $90^\\circ$ (90 degrees), like the corner of a sheet of paper. A right triangle is a triangle with one right angle. Its longest side, across from the right angle, is called the hypotenuse. Squaring a number means multiplying it by itself, written with a small raised 2: $3^2=3\\times3=9$. In every right triangle, the squares of the two shorter sides add up to the square of the longest side. This also works backward. If the two shorter sides squared add up to the longest side squared, the triangle has a right angle. If not, it has no right angle. Try 3, 4 and 5: $3^2+4^2=9+16=25$, and $5^2=25$. They match, so it is a right triangle. Try 3, 4 and 6: $9+16=25$, but $6^2=36$. They do not match, so it is not. With letters, call the shorter sides $a$ and $b$ and the longest side $c$. The test is whether $a^2+b^2=c^2$.",
+      "A degree is a small unit for measuring angles. A right angle is an angle of 90 degrees, written $90^\\circ$, like the corner of a sheet of paper. A right triangle is a triangle with one right angle. Its longest side, across from the right angle, is called the hypotenuse. Squared means multiplied by itself, written with a small raised 2: $3^2=3\\times3=9$. In every right triangle, the squares of the two shorter sides add up to the square of the longest side. This also works backward. If the two shorter sides squared add up to the longest side squared, the triangle has a right angle. If not, it has no right angle. Try 3, 4 and 5: $3^2+4^2=9+16=25$, and $5^2=25$. They match, so it is a right triangle. Try 3, 4 and 6: $9+16=25$, but $6^2=36$. They do not match, so it is not. With letters, call the shorter sides $a$ and $b$ and the longest side $c$. The test is whether $a^2+b^2=c^2$.",
     terms: ["hypotenuse", "pythagorean-triple"],
     method: [
       "Find the longest side and call it $c$. Call the other two sides $a$ and $b$.",
@@ -66,7 +66,7 @@ const entries: FormatLessonEntry[] = [
     watch:
       "Square the longest side on its own. Adding the sides without squaring, or using a shorter side as $c$, gives the wrong test.",
     principle:
-      "This is the converse, the backward form, of the Pythagorean theorem. If a triangle has sides $a\\le b<c$ and $a^2+b^2=c^2$, it is a right triangle, with the right angle across from $c$. If $a^2+b^2\\ne c^2$ ($\\ne$ means “is not equal to”), it is not a right triangle.",
+      "The Pythagorean theorem is the rule $a^2+b^2=c^2$ for every right triangle. This test is its converse, the same rule read backward. If a triangle has sides $a\\le b<c$ and $a^2+b^2=c^2$, it is a right triangle, with the right angle across from $c$. If $a^2+b^2\\ne c^2$ ($\\ne$ means “is not equal to”), it is not a right triangle.",
     example: {
       prompt:
         "Is a triangle with sides 9, 12 and 15 a right triangle? What about 9, 12 and 16?",
@@ -90,7 +90,13 @@ const entries: FormatLessonEntry[] = [
     ],
     parentGuide:
       "Check a few sets on a calculator together and see that the two results match exactly only for right triangles.",
-    senses: { side: "side", square: "square-number", degree: "degree-angle" },
+    senses: {
+      side: "side",
+      square: "square-number",
+      degree: "degree-angle",
+      unit: "unit",
+      rule: "rule",
+    },
     noLink: ["opposite"],
   },
   {
@@ -103,7 +109,7 @@ const entries: FormatLessonEntry[] = [
       "Test a coordinate rule on two points.",
     ],
     intuition:
-      "Two figures are congruent when one fits exactly on top of the other: same size and same shape. A transformation is a rule that moves every point of a figure to a new place. The moved figure is called the image. A translation slides a figure, a reflection flips it over a line, and a rotation turns it around a point. These three are called rigid motions. They never change a distance or an angle, so the image is congruent. A dilation makes a figure bigger or smaller. A stretch pulls it in one direction, and a shear slants it. Each of these changes some distance, so the image is not congruent. A rule like $(x,y)\\to(x,2y)$ says where each point goes. Here $(x,y)$ is a point, $x$ across and $y$ up, and the arrow points to where it lands. This rule keeps $x$ and doubles $y$. To test a rule, apply it to two points, and compare the distance between them before and after.",
+      "Two figures are congruent when one fits exactly on top of the other: same size and same shape. A transformation is a rule that moves every point of a figure to a new place. The moved figure is called the image. A translation slides a figure, a reflection flips it over a line, and a rotation turns it around a point. These three are called rigid motions. They never change a distance or an angle, so the image is congruent. A dilation makes a figure bigger or smaller. A stretch pulls it in one direction, and a shear slants it. Each of these can change distances, so it does not always give a congruent image. A rule like $(x,y)\\to(x,2y)$ says where each point goes. Here $(x,y)$ is a point, $x$ across and $y$ up, and the arrow points to where it lands. The two numbers $x$ and $y$ are its coordinates. This rule keeps $x$ and doubles $y$. To test a rule, apply it to two points, and compare the distance between them before and after.",
     terms: ["congruent", "rigid-motion"],
     method: [
       "Choose two points, such as $(0,0)$ and $(0,1)$, and use the rule to find where each one lands.",
@@ -111,7 +117,7 @@ const entries: FormatLessonEntry[] = [
       "If any pair of points changes distance, the rule does not keep figures congruent. A slide, flip or turn keeps every distance, so it does.",
     ],
     watch:
-      "Test a stretch or a dilation with a pair of points. A rule that multiplies a coordinate by a number other than 1 or $-1$ changes distances.",
+      "Test a stretch or a dilation with a pair of points. A rule that multiplies just one coordinate by a number other than 1 or $-1$, and leaves the other alone, changes some distances.",
     principle:
       "A transformation keeps figures congruent exactly when it keeps every distance: for all points $P$ and $Q$, the distance between their images equals the distance $PQ$. Translations, reflections and rotations do this, and so does doing several of them in a row.",
     example: {
@@ -127,7 +133,7 @@ const entries: FormatLessonEntry[] = [
     methodTitle: "Test the distance",
     methodText: [
       "Name the transformation when you can. Changing the sign of one coordinate, as in $(x,y)\\to(x,-y)$, is a reflection. Swapping the coordinates, $(x,y)\\to(y,x)$, is a reflection too. Swapping and changing one sign, $(x,y)\\to(-y,x)$, is a quarter-turn rotation.",
-      "A rule that multiplies a coordinate by a number other than 1 or $-1$ changes distances.",
+      "A rule that multiplies just one coordinate by a number other than 1 or $-1$, and leaves the other alone, changes some distances.",
     ],
     formal:
       "A rule of the form $(x,y)\\mapsto(ax+by+e,\\,cx+dy+f)$ keeps every distance exactly when the matrix $\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}$ is orthogonal. That means its columns, $(a,c)$ and $(b,d)$, each have length 1 and are perpendicular.",
@@ -138,7 +144,7 @@ const entries: FormatLessonEntry[] = [
     parentGuide:
       "Cut out a small shape, move it in each way, and see which moves leave it fitting on the original.",
     senses: { rule: "rule", image: "image-transformation", unit: "unit" },
-    noLink: ["quarter"],
+    noLink: ["quarter", "leaves"],
   },
   {
     id: "equivalent-expressions-table",
@@ -146,14 +152,15 @@ const entries: FormatLessonEntry[] = [
     summary:
       "Two expressions are equivalent when they give the same value for every number you put in for the variable.",
     objectives: [
-      "Rewrite an expression using two rules: times 1 or plus 0 changes nothing, and the grouping of a product or sum does not matter.",
+      "Rewrite an expression using two rules: times 1 or plus 0 changes nothing, and the order and grouping of a product do not matter.",
       "Tell an equivalent expression from a different one by trying a number.",
     ],
     intuition:
-      "An expression is a math phrase made of numbers, letters and operations, such as $2x+3$. The letter $x$ is a variable: it stands for a number that can change. Writing $2x$ means 2 times $x$, and a raised dot, as in $x\\cdot1$, also means times. Two expressions are equivalent when they give the same value whatever number $x$ is. Multiplying by 1 or adding 0 does not change a number. So $x\\cdot1$, $1\\cdot x$ and $x$ are equivalent. This rule is called the identity property. When you only multiply, you can group and order the numbers any way you like. So $(2x)\\cdot3$, which is 2 times $x$ times 3, equals $2\\cdot3\\cdot x=6x$. Regrouping like this is called the associative property. An expression such as $x+1$ is different from $x$: it is always 1 more. Trying a number such as 3 in both expressions shows a difference quickly.",
+      "An expression is a math phrase made of numbers, letters and operations, such as $2x+3$. The letter $x$ is a variable: it stands for a number that can change. Writing $2x$ means 2 times $x$, and a raised dot, as in $x\\cdot1$, also means times. A product is the answer when you multiply. Two expressions are equivalent when they give the same value whatever number $x$ is. Multiplying by 1 or adding 0 does not change a number. So $x\\cdot1$, $1\\cdot x$ and $x$ are equivalent. This rule is called the identity property. When you only multiply, you can change the order: $x\\cdot3=3\\cdot x$. This rule is called the commutative property. You can also change the grouping: $(2\\cdot3)\\cdot x=2\\cdot(3\\cdot x)$. This rule is called the associative property. Using both, $(2x)\\cdot3$, which is 2 times $x$ times 3, equals $2\\cdot3\\cdot x=6x$. An expression such as $x+1$ is different from $x$: it is always 1 more. Trying a number such as 3 in both expressions shows a difference quickly.",
     terms: [
       "equivalent-expressions",
       "identity-property",
+      "commutative-property",
       "associative-property",
     ],
     method: [
@@ -164,11 +171,11 @@ const entries: FormatLessonEntry[] = [
     watch:
       "One number that matches does not prove two expressions are equivalent, but one number that gives different results proves they are not. Test a number other than 0 or 1.",
     principle:
-      "For every number $x$: $x\\cdot1=1\\cdot x=x$ and $x+0=x$. For any numbers $a$, $b$ and $c$: $(a\\cdot b)\\cdot c=a\\cdot(b\\cdot c)$ and $(a+b)+c=a+(b+c)$. Expressions are equivalent when they agree for every value of $x$.",
+      "For every number $x$: $x\\cdot1=1\\cdot x=x$ and $x+0=x$. For any numbers $a$, $b$ and $c$: $a\\cdot b=b\\cdot a$, $(a\\cdot b)\\cdot c=a\\cdot(b\\cdot c)$ and $(a+b)+c=a+(b+c)$. Expressions are equivalent when they agree for every value of $x$.",
     example: {
       prompt: "Is $(2x)\\cdot3$ equivalent to $6x$? To $2x+3$?",
       steps: [
-        "$(2x)\\cdot3$ is 2 times $x$ times 3. Group the numbers and multiply them first: $2\\cdot3\\cdot x=6x$. So $(2x)\\cdot3$ is equivalent to $6x$.",
+        "$(2x)\\cdot3$ is 2 times $x$ times 3. Change the order and grouping so the numbers come first, then multiply them: $2\\cdot3\\cdot x=6x$. So $(2x)\\cdot3$ is equivalent to $6x$.",
         "For $2x+3$, try $x=3$. The given expression is $(2\\cdot3)\\cdot3=6\\cdot3=18$. The choice is $2\\cdot3+3=6+3=9$.",
         "18 and 9 differ, so $2x+3$ is not equivalent to $(2x)\\cdot3$.",
       ],
@@ -180,7 +187,7 @@ const entries: FormatLessonEntry[] = [
       "Equivalent expressions can look different, like $x\\cdot1$ and $x$.",
     ],
     formal:
-      "Two expressions are equivalent exactly when they give the same output for every input $x$. The identity and associative properties are basic rules of arithmetic with real numbers. Every equivalence here follows from them.",
+      "Think of each expression as a machine: an input is the number put in, and an output is the result. Two expressions are equivalent exactly when they give the same output for every input. The identity, commutative and associative properties are basic rules of arithmetic with real numbers. Every equivalence here follows from them.",
     pitfalls: [
       "Do not call $x+1$ equivalent to $x\\cdot1$ just because both contain a 1.",
       "Do not judge by how alike two expressions look. Compare their values.",
@@ -426,7 +433,7 @@ const entries: FormatLessonEntry[] = [
       "Pick the one number from a list that makes each inequality true.",
     ],
     intuition:
-      "An inequality compares two numbers. The sign $<$ means “is less than”, and $>$ means “is greater than”. A number line puts numbers in order, smaller to the left and larger to the right. Negative numbers, below 0, sit to the left of 0. The box $\\square$ is a blank for the number you choose. So $\\square<-\\frac{1}{2}$ asks for a number to the left of $-\\frac{1}{2}$. To compare a decimal with a fraction, write both as decimals: $-\\frac{1}{2}=-0.5$, because 1 divided by 2 is 0.5. Of two negative numbers, the one farther from 0 is the smaller. For example, $-1.2<-0.5$. Once the numbers are in order, the one that fits each statement stands out.",
+      "An inequality compares two numbers. The sign $<$ means “is less than”, and $>$ means “is greater than”. A number line puts numbers in order, smaller to the left and larger to the right. Negative numbers are numbers below 0, and they sit to the left of 0. The box $\\square$ is a blank for the number you choose. So $\\square<-\\frac{1}{2}$ asks for a number to the left of $-\\frac{1}{2}$. To compare a decimal with a fraction, write both as decimals: $-\\frac{1}{2}=-0.5$, because 1 divided by 2 is 0.5. Of two negative numbers, the one farther from 0 is the smaller. For example, $-1.2<-0.5$. Once the numbers are in order, the one that fits each statement stands out.",
     terms: ["inequality", "number-line"],
     method: [
       "Write every number as a decimal. For a fraction, divide the top number by the bottom number.",
@@ -453,7 +460,7 @@ const entries: FormatLessonEntry[] = [
       "Check each choice by reading the inequality aloud, such as “negative 1.2 is less than negative one half”.",
     ],
     formal:
-      "Any two different real numbers can be compared, so any short list can be put in order. For a sorted list $b_1<b_2<b_3<b_4$, the statement $x<b_2$ has exactly one solution in the list, $b_1$. The statement $x>b_3$ has exactly one, $b_4$.",
+      "Real numbers are all the numbers on the number line, including fractions and decimals. Any two different real numbers can be compared, so any short list can be put in order. For a sorted list $b_1<b_2<b_3<b_4$, the statement $x<b_2$ has exactly one solution in the list, $b_1$. The statement $x>b_3$ has exactly one, $b_4$.",
     pitfalls: [
       "Do not pick the number equal to the one in the statement.",
       "Do not compare negative numbers by their digits as if they were positive: $-1.2$ is less than $-0.5$, even though 1.2 is more than 0.5.",

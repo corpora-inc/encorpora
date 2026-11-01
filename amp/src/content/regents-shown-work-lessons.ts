@@ -6,13 +6,13 @@ const entries: WorkEntry[] = [
     id: "density-volume-steps",
     title: "Find a weight, mass or count from a volume and a density",
     summary:
-      "Density tells how much one cubic unit of a material weighs. Find the volume first, then multiply by the density to get the weight.",
+      "Density is the weight of one cubic unit, a 1-by-1-by-1 cube, of a material. Find the volume, then multiply by the density.",
     objectives: [
       "Find the volume of a cylinder, a pyramid, or a prism with a pyramid on top, in the unit the density uses.",
       "Multiply a volume by a density to get a weight or mass, or divide a total mass by one object's mass to count objects.",
     ],
     intuition:
-      "Volume is the amount of space a solid takes up, measured in cubic units such as cubic feet. Density tells how much one cubic unit of a material weighs, such as 90 pounds per cubic foot. “Per cubic foot” means for each cubic foot. So 2 cubic feet of that soil weigh $2\\times90=180$ pounds. Every weight problem has two parts: first find the volume, then multiply by the density. The volume's unit must match the unit in the density. A cylinder is a can shape with a circle at each end. Its volume is the area of the circle times the height: $V=\\pi r^2h$. Here $r$ is the radius, the distance from the center of the circle to the circle itself. The radius is half the diameter, the distance across. $r^2$ ($r$ squared) means $r\\times r$, and $\\pi$ (pi) is a number close to 3.14. A pyramid has a flat base and slanted faces that meet at a point. Its volume is one third of the base area $B$ times the height $h$: $V=\\frac{1}{3}Bh$.",
+      "Volume is the amount of space a solid takes up, measured in cubic units such as cubic feet. Density tells how much one cubic unit of a material weighs, such as 90 pounds per cubic foot. “Per cubic foot” means for each cubic foot. So 2 cubic feet of that soil weigh $2\\times90=180$ pounds. Every weight problem has two parts: first find the volume, then multiply by the density. The volume's unit must match the unit in the density. A cylinder is a can shape with a circle at each end. Its volume is the area of the circle times the height: $V=\\pi r^2h$. The center is the point in the middle of the circle. Here $r$ is the radius, the distance from the center to the circle itself. The radius is half the diameter, the distance across. Squared means multiplied by itself: $r^2$, read “$r$ squared”, is $r\\times r$. The number $\\pi$ (pi) is close to 3.14. A pyramid has a flat base and slanted faces that meet at a point. The base area, the area of its flat bottom, is called $B$. Its volume is one third of $B$ times the height $h$: $V=\\frac{1}{3}Bh$.",
     terms: [
       "density",
       [
@@ -52,7 +52,7 @@ const entries: WorkEntry[] = [
       "Estimate with 3 in place of $\\pi$: $3\\times4\\times3=36$ cubic feet, close to 37.7. So an answer near 3,700 pounds makes sense.",
     ],
     formal:
-      "Density is mass per unit of volume, $\\rho=\\frac{m}{V}$, so $m=\\rho V$. A cylinder's volume is its base area $\\pi r^2$ times its height. A pyramid holds one third of the volume of the prism with the same base and the same height. (A prism is a solid with the same shape at both ends.)",
+      "Density is mass per unit of volume, $\\rho=\\frac{m}{V}$, so $m=\\rho V$. A cylinder's volume is its base area $\\pi r^2$ times its height. A prism is a solid with two matching flat ends joined by flat sides, like a box. A pyramid holds one third of the volume of the prism with the same base and the same height.",
     pitfalls: [
       "Use the radius, half of the diameter, in $\\pi r^2h$.",
       "Change the units of the mass or the length first, then divide or multiply.",
@@ -70,7 +70,7 @@ const entries: WorkEntry[] = [
       square: "square-number",
       faces: "face-solid",
     },
-    noLink: ["change", "whole", "parts"],
+    noLink: ["change", "whole", "parts", "cube"],
   },
   {
     id: "sas-area-steps",
@@ -134,7 +134,7 @@ const entries: WorkEntry[] = [
       "Multiply the hypotenuse by the ratio to find the leg, with the calculator in degree mode.",
     ],
     intuition:
-      "A right triangle has one right angle, a square corner of $90^\\circ$ (90 degrees). The longest side, across from the right angle, is called the hypotenuse. The other two sides are called legs. Pick one of the other angles, say angle $A$. The leg across from $A$, not touching it, is the opposite leg. The leg that touches $A$ and is not the hypotenuse is the adjacent leg. For a given angle, the opposite leg divided by the hypotenuse is the same number in every right triangle, big or small. That number is called the sine of the angle, written $\\sin A$. The adjacent leg divided by the hypotenuse is called the cosine, written $\\cos A$. For $30^\\circ$ the sine is 0.5, so a hypotenuse of 10 gives an opposite leg of $10\\times0.5=5$. A calculator finds sine and cosine. It must be in degree mode, the setting that measures angles in degrees. In a problem, $m\\angle A$ means the size of angle $A$, and $\\approx$ means “is about”.",
+      "A degree is a small unit for measuring angles. A right triangle has one right angle, a square corner of 90 degrees, written $90^\\circ$. The longest side, across from the right angle, is called the hypotenuse. The other two sides are called legs. Pick one of the other angles, say angle $A$. The leg across from $A$, not touching it, is the opposite leg. The leg that touches $A$ and is not the hypotenuse is the adjacent leg. For a given angle, the opposite leg divided by the hypotenuse is the same number in every right triangle, big or small. That number is called the sine of the angle, written $\\sin A$. The adjacent leg divided by the hypotenuse is called the cosine, written $\\cos A$. For $30^\\circ$ the sine is 0.5, so a hypotenuse of 10 gives an opposite leg of $10\\times0.5=5$. A calculator finds sine and cosine. It must be in degree mode, the setting that measures angles in degrees. In a problem, $m\\angle A$ means the size of angle $A$, and $\\approx$ means “is about”.",
     terms: ["opposite-side-angle", "adjacent-leg"],
     method: [
       "Mark the given angle, the hypotenuse and the leg you want.",
@@ -152,7 +152,7 @@ const entries: WorkEntry[] = [
       steps: [
         "The right angle is at $C$, so the hypotenuse, across from it, is $AB=20$.",
         "$BC$ does not touch $\\angle A$, so it is the leg opposite $\\angle A$. Use sine. In degree mode, $\\sin40^\\circ\\approx0.6428$.",
-        "The opposite leg is the hypotenuse times the sine: $BC=20\\times0.6428\\approx12.86$. To the nearest tenth, that is 12.9.",
+        "The opposite leg is the hypotenuse times the sine: $BC=20\\times\\sin40^\\circ\\approx20\\times0.6428\\approx12.86$. To the nearest tenth, that is 12.9.",
       ],
       answer: "12.9",
     },
@@ -162,7 +162,7 @@ const entries: WorkEntry[] = [
       "For a small angle, the opposite leg is short and the adjacent leg is almost as long as the hypotenuse.",
     ],
     formal:
-      "All right triangles with the same acute angle $A$ are similar: one is a scaled copy of the other. So the fraction $\\frac{\\text{opposite}}{\\text{hypotenuse}}$ is the same number for all of them. That number is $\\sin A$. In the same way, $\\frac{\\text{adjacent}}{\\text{hypotenuse}}=\\cos A$.",
+      "An acute angle is an angle greater than $0^\\circ$ and smaller than $90^\\circ$. All right triangles with the same acute angle $A$ are similar: one is a scaled copy of the other. So the fraction $\\frac{\\text{opposite}}{\\text{hypotenuse}}$ is the same number for all of them. That number is $\\sin A$. In the same way, $\\frac{\\text{adjacent}}{\\text{hypotenuse}}=\\cos A$.",
     pitfalls: [
       "Name the leg as opposite or adjacent to the given angle before choosing sine or cosine.",
       "Keep the calculator in degree mode.",
@@ -174,6 +174,7 @@ const entries: WorkEntry[] = [
       side: "side",
       degree: "degree-angle",
       similar: "similar-figures",
+      unit: "unit",
     },
     noLink: ["opposite", "mode", "square"],
   },
@@ -182,13 +183,13 @@ const entries: WorkEntry[] = [
     title:
       "Find a height from an angle of elevation and an angle of depression",
     summary:
-      "A level line at eye height splits a tall object into a part above and a part below. Find each part with the tangent of its angle, then add.",
+      "A level line at eye height splits a tall object into a part above and a part below. Find each part, then add the two.",
     objectives: [
       "Draw the level line through the observer, and find the part of the height above it and the part below it.",
       "Use the tangent of each angle with the horizontal distance, and add the two parts.",
     ],
     intuition:
-      "Stand at a lookout and look at a tower. Imagine a horizontal line, perfectly level, straight out from your eye. The angle you raise your eyes above that line to see the top is called the angle of elevation. The angle you lower your eyes below it to see the bottom is called the angle of depression. The level line splits the tower into an upper part and a lower part. Each part is a leg of a right triangle, a triangle with a square $90^\\circ$ corner. In each triangle, the tower part is the leg across from your angle, called the opposite leg. The other leg is the horizontal distance to the tower, which touches your angle. It is called the adjacent leg. The tangent of an angle, written $\\tan$, is the opposite leg divided by the adjacent leg. So each part of the tower is the horizontal distance times the tangent of its angle. A calculator gives the tangent, and $\\approx$ means “is about”.",
+      "Stand at a lookout and look at a tower. Imagine a horizontal line, perfectly level, straight out from your eye. The angle you raise your eyes above that line to see the top is called the angle of elevation. The angle you lower your eyes below it to see the bottom is called the angle of depression. The level line splits the tower into an upper part and a lower part. Each part is a leg of a right triangle, a triangle with a square $90^\\circ$ corner. In each triangle, the tower part is the leg across from your angle, called the opposite leg. The other leg is the horizontal distance to the tower, which touches your angle. It is called the adjacent leg. The tangent is a ratio for an angle: the opposite leg divided by the adjacent leg, written $\\tan$. So each part of the tower is the horizontal distance times the tangent of its angle. A calculator gives the tangent, and $\\approx$ means “is about”.",
     terms: ["angle-of-elevation", "angle-of-depression"],
     method: [
       "Draw the horizontal line from the lookout to the object, and the two right triangles.",
@@ -215,7 +216,7 @@ const entries: WorkEntry[] = [
       "Draw a dashed horizontal line from the lookout to the tower. Mark the angle of elevation above it and the angle of depression below it. Both triangles share that horizontal leg, the distance to the tower.",
     ],
     formal:
-      "In a right triangle, $\\tan\\theta=\\frac{\\text{opposite}}{\\text{adjacent}}$, where $\\theta$ (theta) names an acute angle. The adjacent side is the horizontal distance $d$ in both triangles. So each opposite side is $d\\tan\\theta$, and the height is the sum of the two.",
+      "In a right triangle, $\\tan\\theta=\\frac{\\text{opposite}}{\\text{adjacent}}$, where $\\theta$ (theta) names an acute angle, an angle more than $0^\\circ$ but less than $90^\\circ$. The adjacent side is the horizontal distance $d$ in both triangles. So each opposite side is $d\\tan\\theta$, and the height is the sum of the two.",
     pitfalls: [
       "Add the upper and lower parts. Do not use only one angle.",
       "Use tangent with the horizontal distance, not sine with a slanted distance.",
@@ -236,7 +237,7 @@ const entries: WorkEntry[] = [
       "Use tangent for half the base and cosine for an equal side, then add the three sides.",
     ],
     intuition:
-      "An isosceles triangle has two equal sides. The corner between the two equal sides is called the apex, and the angle there is the apex angle. The third side is the base. The altitude is the segment from the apex straight down to the base, meeting it at a right angle ($90^\\circ$). In an isosceles triangle, the altitude cuts the triangle into two matching right triangles. So it splits the apex angle in half and the base in half. In each right triangle, the altitude is the leg touching the half angle, called the adjacent leg. Half the base is the leg across from it, called the opposite leg. An equal side is the hypotenuse, the longest side. The tangent of an angle, $\\tan$, is the opposite leg divided by the adjacent leg. The cosine, $\\cos$, is the adjacent leg divided by the hypotenuse. The perimeter is the distance around: the base plus the two equal sides.",
+      "An isosceles triangle has two equal sides. The corner between the two equal sides is called the apex, and the angle there is the apex angle. The third side is the base. The altitude is the segment from the apex straight down to the base, meeting it at a right angle, an angle of $90^\\circ$. In an isosceles triangle, the altitude cuts the triangle into two matching right triangles, the kind of triangle with a $90^\\circ$ corner. So it splits the apex angle in half and the base in half. In each right triangle, the altitude is the leg touching the half angle, called the adjacent leg. Half the base is the leg across from it, called the opposite leg. An equal side is the hypotenuse, the longest side. The tangent is a ratio for an angle: the opposite leg divided by the adjacent leg, written $\\tan$. The cosine is a second ratio: the adjacent leg divided by the hypotenuse, written $\\cos$. The perimeter is the distance around: the base plus the two equal sides.",
     terms: [
       [
         "angle",
@@ -271,10 +272,10 @@ const entries: WorkEntry[] = [
     },
     methodTitle: "Check with the Pythagorean theorem",
     methodText: [
-      "In a right triangle, the two legs squared add up to the hypotenuse squared. This rule is the Pythagorean theorem. Check: $10^2+5.774^2\\approx100+33.3=133.3$, and $11.547^2\\approx133.3$. They match.",
+      "Squared means multiplied by itself. In a right triangle, the two legs squared add up to the hypotenuse squared. This rule is the Pythagorean theorem. Check: $10^2+5.774^2\\approx100+33.3=133.3$, and $11.547^2\\approx133.3$. They match.",
     ],
     formal:
-      "The altitude from the apex of an isosceles triangle is perpendicular to the base (it meets the base at a right angle) and cuts the base in half. It also cuts the apex angle in half. So the two right triangles are congruent, the same size and shape, each with acute angle $\\theta$ at the apex.",
+      "Perpendicular means meeting at a right angle. The altitude from the apex of an isosceles triangle is perpendicular to the base. It also cuts the base in half. It also cuts the apex angle in half. So the two right triangles are congruent, the same size and shape, each with acute angle $\\theta$ at the apex.",
     pitfalls: [
       "Use half the apex angle in the right triangle, not the whole angle.",
       "Add two equal sides and the whole base for the perimeter.",
@@ -294,13 +295,13 @@ const entries: WorkEntry[] = [
     id: "ring-area-steps",
     title: "Find the area of a ring around a circle",
     summary:
-      "A ring is the space between two circles with the same center. Its area is the big circle's area minus the small circle's area.",
+      "A ring is the space between two circles that share a middle point. Its area is the big circle's area minus the small circle's area.",
     objectives: [
       "Find the radius of the larger circle by adding the border's width to the inner radius.",
       "Square the two radii, subtract, multiply by $\\pi$ and round.",
     ],
     intuition:
-      "A circle's area is the space inside it. It equals $\\pi r^2$, where $r$ is the radius, the distance from the center to the circle. Here $r^2$ ($r$ squared) means $r\\times r$, and $\\pi$ (pi) is a number close to 3.14. A walkway around a round pool is a ring: the space inside a bigger circle but outside the pool. Its area is the big circle's area minus the pool's area. Call the big radius $R$ and the small radius $r$. The walkway's width is the gap between the two circles, so $R$ is $r$ plus the width. The ring's area is $\\pi R^2-\\pi r^2$, which is the same as $\\pi(R^2-r^2)$.",
+      "A circle's area is the space inside it. The center is the point in the middle of a circle. The area equals $\\pi r^2$, where $r$ is the radius, the distance from the center to the circle. Squared means multiplied by itself: $r^2$, read “$r$ squared”, is $r\\times r$. The number $\\pi$ (pi) is close to 3.14. A walkway around a round pool is a ring: the space inside a bigger circle but outside the pool. Its area is the big circle's area minus the pool's area. Call the big radius $R$ and the small radius $r$. The walkway's width is the gap between the two circles, so $R$ is $r$ plus the width. The ring's area is $\\pi R^2-\\pi r^2$, which is the same as $\\pi(R^2-r^2)$.",
     terms: [
       "ring",
       [
@@ -346,13 +347,13 @@ const entries: WorkEntry[] = [
     id: "parallelogram-angle-steps",
     title: "Find an angle in a parallelogram with a perpendicular segment",
     summary:
-      "A segment at a right angle to a side makes a right triangle. Its other two angles add to 90 degrees, so subtract the one you know.",
+      "A segment from a corner, meeting a side's line at a right angle, forms a right triangle. Its two other angles add to $90^\\circ$.",
     objectives: [
       "Find the triangle's angle at the parallelogram's corner, using a straight line when the point lies outside.",
       "Use the fact that the two smaller angles of a right triangle add to 90 degrees to find the angle asked.",
     ],
     intuition:
-      "A parallelogram is a four-sided shape made of two pairs of parallel sides, like a slanted rectangle. A right angle is a square corner of $90^\\circ$ (90 degrees). Two segments are perpendicular when they meet at a right angle, and $\\perp$ means “is perpendicular to”. The three angles of any triangle add to $180^\\circ$. In a right triangle, one angle is $90^\\circ$, so the other two add to $180-90=90$ degrees. If you know one of them, subtract it from 90 to get the other. Angles that together make a straight line add to $180^\\circ$, and they are called supplementary. In a problem, $m\\angle ABC$ means the size of angle $ABC$, the angle at point $B$.",
+      "Parallel means always the same distance apart, never meeting. A parallelogram is a four-sided shape made of two pairs of parallel sides, like a slanted rectangle. A degree is a small unit for measuring angles. A right angle is a square corner of 90 degrees, written $90^\\circ$. Two segments are perpendicular when they, or the lines they lie on, meet at a right angle, and $\\perp$ means “is perpendicular to”. The three angles of any triangle add to $180^\\circ$. In a right triangle, one angle is $90^\\circ$, so the other two add to $180-90=90$ degrees. If you know one of them, subtract it from 90 to get the other. Angles that together make a straight line add to $180^\\circ$, and they are called supplementary. In a problem, $m\\angle ABC$ means the size of angle $ABC$, the angle at point $B$.",
     terms: ["supplementary", "perpendicular"],
     method: [
       "Find the triangle's angle at the parallelogram's corner. If the point is on the side, it is the parallelogram's angle. If the point is on the side's line past the corner, it is $180^\\circ$ minus that angle.",
@@ -368,7 +369,7 @@ const entries: WorkEntry[] = [
         "In parallelogram $ABCD$, $m\\angle ABC=120^\\circ$. Point $E$ is on line $BC$ so that $B$ is between $E$ and $C$ and $\\overline{AE}\\perp\\overline{BC}$. Find $m\\angle BAE$.",
       steps: [
         "$E$ lies on line $BC$ past $B$. So $\\angle ABE$ and $\\angle ABC$ together make a straight line, and they add to $180^\\circ$: $m\\angle ABE=180-120=60$ degrees.",
-        "$\\overline{AE}\\perp\\overline{BC}$ means segment $AE$ meets line $BC$ at a right angle, at $E$. So triangle $ABE$ has a $90^\\circ$ angle at $E$.",
+        "$\\overline{AE}\\perp\\overline{BC}$ means segment $AE$ meets the line through $B$ and $C$, extended past $B$, at a right angle at $E$. So triangle $ABE$ has a $90^\\circ$ angle at $E$.",
         "The other two angles of triangle $ABE$ add to 90 degrees: $m\\angle BAE=90-60=30$ degrees.",
       ],
       answer: "$30^\\circ$",
@@ -380,12 +381,17 @@ const entries: WorkEntry[] = [
     formal:
       "Points $E$, $B$ and $C$ lie on one line, so $m\\angle ABE+m\\angle ABC=180^\\circ$. In triangle $ABE$ the angle at $E$ is $90^\\circ$, and the three angles add to $180^\\circ$. So the other two angles add to $90^\\circ$.",
     pitfalls: [
-      "Use the supplement, 180 minus the angle, when the foot of the perpendicular is outside the parallelogram.",
+      "If the foot of the perpendicular lies on the side's line past the corner you use, take the supplement: 180 minus the parallelogram's angle there.",
       "In a right triangle, subtract from 90, not from 180.",
     ],
     parentGuide:
       "Ask your learner to draw the figure and label every angle they can find before answering.",
-    senses: { degree: "degree-angle", side: "side", vertex: "vertex" },
+    senses: {
+      degree: "degree-angle",
+      side: "side",
+      vertex: "vertex",
+      unit: "unit",
+    },
     noLink: ["third", "square"],
   },
   {
@@ -395,11 +401,11 @@ const entries: WorkEntry[] = [
     summary:
       "A segment parallel to one side of a triangle cuts the other two sides in the same ratio, so one scale factor gives the missing length.",
     objectives: [
-      "Write the scale factor from the pieces of one side and the matching piece of the other.",
-      "Multiply the remaining piece by the factor, and add pieces for a whole side.",
+      "Divide the two pieces that start at the shared corner to get the side ratio.",
+      "Multiply the remaining piece by that ratio, and add pieces for a whole side.",
     ],
     intuition:
-      "Two segments are parallel when they run in the same direction and never meet. The symbol $\\parallel$ means “is parallel to”, and $\\overline{DE}$ names the segment from $D$ to $E$. In triangle $ABC$, put $D$ on side $AB$ and $E$ on side $AC$. If $\\overline{DE}\\parallel\\overline{BC}$, the small triangle $ADE$ is a scaled copy of the big triangle $ABC$. Each length in one is the same number times the matching length in the other. That number is called the scale factor. Point $D$ cuts side $AB$ into two pieces, $AD$ and $DB$. Point $E$ cuts side $AC$ into $AE$ and $EC$. The pieces match in the same ratio: if $AE$ is twice $AD$, then $EC$ is twice $DB$.",
+      "Two segments in a flat surface are parallel when the straight lines they lie on never meet, however far they are extended. The symbol $\\parallel$ means “is parallel to”, and $\\overline{DE}$ names the segment from $D$ to $E$. In triangle $ABC$, put $D$ on side $AB$ and $E$ on side $AC$. If $\\overline{DE}\\parallel\\overline{BC}$, the small triangle $ADE$ is a scaled copy of the big triangle $ABC$. Each length in one is the same number times the matching length in the other. That number is called the scale factor. Point $D$ cuts side $AB$ into two pieces, $AD$ and $DB$. Point $E$ cuts side $AC$ into $AE$ and $EC$. The pieces match in the same ratio: if $AE$ is twice $AD$, then $EC$ is twice $DB$.",
     terms: [
       "scale-factor",
       [
@@ -409,20 +415,20 @@ const entries: WorkEntry[] = [
       "segment",
     ],
     method: [
-      "Divide the two known pieces that start at $A$: the scale factor is $\\frac{AE}{AD}$.",
-      "Multiply the other piece of the first side, $DB$, by that factor to get $EC$.",
+      "Divide the two known pieces that start at $A$: $\\frac{AE}{AD}$. Call this the side ratio.",
+      "Multiply the other piece of the first side, $DB$, by that ratio to get $EC$.",
       "For a whole side, add its two pieces, such as $AE+EC$.",
     ],
     watch:
-      "Match pieces that start at the same corner: $AD$ with $AE$, and $DB$ with $EC$.",
+      "Match the pieces next to $A$: $AD$ with $AE$. Then match the other pieces: $DB$ with $EC$.",
     principle:
-      "A segment joining points on two sides of a triangle is parallel to the third side exactly when it cuts those two sides in the same ratio: $\\frac{AD}{DB}=\\frac{AE}{EC}$.",
+      "A segment joining points on two sides of a triangle is parallel to the third side exactly when it cuts those two sides in the same ratio: $\\frac{AD}{DB}=\\frac{AE}{EC}$. The two points must lie between the corners, not on them.",
     example: {
       prompt:
         "In triangle $ABC$, $D$ is on $\\overline{AB}$ and $E$ is on $\\overline{AC}$, with $AD=3$, $DB=4$ and $AE=6$. Find $EC$ so that $\\overline{DE}\\parallel\\overline{BC}$.",
       steps: [
-        "$AD$ and $AE$ both start at $A$. Divide them to get the scale factor: $\\frac{AE}{AD}=\\frac63=2$. So each piece of side $AC$ is twice the matching piece of side $AB$.",
-        "$EC$ matches $DB$, so multiply by the same factor: $EC=2\\times DB=2\\times4=8$.",
+        "$AD$ and $AE$ both start at $A$. Divide them to get the side ratio: $\\frac{AE}{AD}=\\frac63=2$. So each piece of side $AC$ is twice the matching piece of side $AB$.",
+        "$EC$ matches $DB$, so multiply by the same ratio: $EC=2\\times DB=2\\times4=8$.",
       ],
       answer: "$EC=8$",
     },
@@ -431,7 +437,7 @@ const entries: WorkEntry[] = [
       "$\\frac{AD}{DB}=\\frac34$ and $\\frac{AE}{EC}=\\frac68=\\frac34$. The ratios are equal, so $\\overline{DE}$ is parallel to $\\overline{BC}$.",
     ],
     formal:
-      "This is the side-splitter theorem and its converse, the same statement read backward: $\\overline{DE}\\parallel\\overline{BC}$ exactly when $\\frac{AD}{DB}=\\frac{AE}{EC}$. The same equality can be rearranged to $\\frac{AE}{AD}=\\frac{EC}{DB}$, which is the scale factor form.",
+      "This is the side-splitter theorem and its converse, the same statement read backward: $\\overline{DE}\\parallel\\overline{BC}$ exactly when $\\frac{AD}{DB}=\\frac{AE}{EC}$. The same equality can be rearranged to $\\frac{AE}{AD}=\\frac{EC}{DB}$, which is the side-ratio form. Here $D$ lies strictly between $A$ and $B$, and $E$ strictly between $A$ and $C$.",
     pitfalls: [
       "Compare $AD$ with $AE$, and $DB$ with $EC$. Do not pair $AD$ with $EC$.",
       "For the whole side, add both pieces, $AE+EC$.",
@@ -495,13 +501,13 @@ const entries: WorkEntry[] = [
     title:
       "Solve a linear equation with a grouped term and variables on both sides",
     summary:
-      "Multiply out the parentheses first. Then gather the $x$ parts on one side of the equals sign and the plain numbers on the other.",
+      "Multiply out the parentheses first. Then gather the $x$ parts on the left of the equals sign and the plain numbers on the right.",
     objectives: [
       "Distribute a number across parentheses (multiply it by each part inside), including a negative number inside.",
       "Gather the $x$-terms on one side and the numbers on the other, then divide.",
     ],
     intuition:
-      "An equation says two amounts are equal. It has a left side and a right side of the equals sign. The letter $x$ stands for an unknown number, and $3x$ means 3 times $x$. Parentheses group a part together, and a number written right before them multiplies everything inside. So $3(x+2)$ means three copies of $x+2$, which is $3x+6$. Multiplying out like this is called distributing. A term is one part of a sum, such as $3x$ or 6. Like terms are terms of the same kind. The $x$-terms $3x$ and $x$ add to $4x$, and plain numbers add to a number. After distributing, there are $x$-terms and numbers on both sides. Adding or subtracting the same thing on both sides keeps them equal. Use that to move all the $x$-terms to one side and all the numbers to the other.",
+      "An equation says two amounts are equal. Its two sides are the amounts left and right of the equals sign. The letter $x$ stands for an unknown number, and $3x$ means 3 times $x$. Parentheses group a part together, and a number written right before them multiplies everything inside. So $3(x+2)$ means three copies of $x+2$, which is $3x+6$. Multiplying out like this is called distributing. A term is one part of a sum, such as $3x$ or 6. Like terms are terms of the same kind. The $x$-terms $3x$ and $x$ add to $4x$, and plain numbers add to a number. After distributing, there are $x$-terms and numbers on both sides. Adding or subtracting the same thing on both sides keeps them equal. Use that to move all the $x$-terms to one side and all the numbers to the other. A solution is a value of $x$ that makes the two sides equal.",
     terms: ["distribute", "like-terms"],
     method: [
       "Distribute the number outside the parentheses to every term inside. Then combine like terms on that side.",
@@ -510,7 +516,7 @@ const entries: WorkEntry[] = [
       "Divide both sides by the number multiplying $x$. Check in the original equation.",
     ],
     watch:
-      "Multiply the number outside by every term inside the parentheses, and keep the sign of a negative number inside.",
+      "Multiply the number outside by every term inside the parentheses, sign included: $-2(x-3)=-2x+6$, because $-2$ times $-3$ is $+6$.",
     principle:
       "Adding or subtracting the same amount on both sides of an equation keeps the same solution. So does dividing both sides by the same number, as long as that number is not 0.",
     example: {
@@ -528,7 +534,7 @@ const entries: WorkEntry[] = [
       "Put $x=2$ into the original equation. Left: $3(2+2)+2=3\\times4+2=14$. Right: $2\\times2+10=14$. The sides are equal, so $x=2$ is the solution.",
     ],
     formal:
-      "The distributive property says $a(x+b)=ax+ab$: a number times a sum equals the sum of the separate products. Each later step adds, subtracts or divides on both sides, which keeps the same solutions. So the final value is the only solution, as long as the number multiplying $x$ at the end is not 0.",
+      "The distributive property says $a(x+b)=ax+ab$: a number times a sum equals the sum of the separate products, the results of multiplying each part. Each later step adds, subtracts or divides on both sides, which keeps the same solutions. So the final value is the only solution, as long as the number multiplying $x$ at the end is not 0.",
     pitfalls: [
       "Multiply the number outside by the number inside the parentheses too: $3(x+2)$ is $3x+6$, not $3x+2$.",
       "To move a term to the other side, subtract it from both sides (or add it, if it was subtracted). So $+2x$ on the right becomes $-2x$ on the left.",
@@ -552,7 +558,7 @@ const entries: WorkEntry[] = [
       "Use a natural logarithm to solve for the time in the exponent, and round to the place asked.",
     ],
     intuition:
-      "An exponent is a small raised number that says how many times to multiply a number by itself: $2^3=2\\times2\\times2=8$. In $N(t)=100\\cdot2^t$, read “$N$ of $t$”, the amount starts at 100 and doubles each time unit. The dot means multiply, and $t$ is the time. The unknown time is in the exponent, so adding, subtracting, multiplying and dividing alone cannot get it out. A logarithm undoes an exponent. The natural logarithm, written $\\ln$, is the LN key on a calculator. It follows the rule $\\ln(b^t)=t\\ln b$: it brings the exponent down in front as a multiplier. So if $2^t=8$, then $t\\ln2=\\ln8$, and $t=\\frac{\\ln8}{\\ln2}=3$. Some models use the number $e$, about 2.718, and $\\ln(e^{kt})=kt$. First get the power alone by dividing by the starting amount. Then take the natural logarithm of both sides.",
+      "An exponent is a small raised number that says how many times to multiply a number by itself: $2^3=2\\times2\\times2=8$. In $N(t)=100\\cdot2^t$, read “$N$ of $t$”, the amount starts at 100 and doubles each time unit. The dot means multiply, and $t$ is the time. The unknown time is in the exponent, so adding, subtracting, multiplying and dividing alone cannot get it out. A logarithm undoes an exponent. The natural logarithm, written $\\ln$, is the LN key on a calculator. It follows the rule $\\ln(b^t)=t\\ln b$: it brings the exponent down in front, where it multiplies. So if $2^t=8$, then $t\\ln2=\\ln8$, and $t=\\frac{\\ln8}{\\ln2}=3$. Some models, the formulas that describe real situations, use the number $e$, about 2.718, and $\\ln(e^{kt})=kt$. First get the power alone by dividing by the starting amount. Then take the natural logarithm of both sides, the two parts that the equals sign separates.",
     terms: ["natural-logarithm", "growth-factor"],
     method: [
       "Set the model equal to the target.",
@@ -561,9 +567,9 @@ const entries: WorkEntry[] = [
       "Divide by $\\ln b$, or by $k$, to get $t$. Round as asked.",
     ],
     watch:
-      "Divide by the starting amount before taking the logarithm. $\\ln(A\\cdot b^t)$ is not $t\\ln b$.",
+      "Divide by the starting amount before taking the logarithm. Unless $A$ is 1, $\\ln(A\\cdot b^t)$ is not $t\\ln b$.",
     principle:
-      "If $A\\,b^t=T$, then $b^t=\\frac TA$ and $t=\\frac{\\ln(T/A)}{\\ln b}$. Here $A$ is the starting amount, $T$ is the target, and $b$ is the growth factor, the number the amount is multiplied by each time unit ($b$ positive and not 1). For $Ae^{kt}=T$, $t=\\frac{\\ln(T/A)}{k}$.",
+      "If $A\\,b^t=T$, then $b^t=\\frac TA$ and $t=\\frac{\\ln(T/A)}{\\ln b}$. Here $A$ is the starting amount, $T$ is the target, and $b$ is the growth factor, the number the amount is multiplied by each time unit. $A$ and $T$ are positive, and $b$ is positive and not 1. For $Ae^{kt}=T$ with $k$ not 0, $t=\\frac{\\ln(T/A)}{k}$.",
     example: {
       prompt:
         "A population is modeled by $P(t)=50\\cdot1.2^t$. When does it reach 150?",
@@ -579,7 +585,7 @@ const entries: WorkEntry[] = [
       "Check: $1.2^{6.03}\\approx3.00$, and $50\\times3=150$. The model reaches the target at that time.",
     ],
     formal:
-      "Taking natural logarithms of $b^t=r$ gives $t\\ln b=\\ln r$, by the power rule $\\ln(b^t)=t\\ln b$. When $b$ is positive and not 1, $\\ln b\\neq0$ ($\\ln b$ is not 0), so dividing is allowed: $t=\\frac{\\ln r}{\\ln b}$.",
+      "Taking natural logarithms of $b^t=r$ gives $t\\ln b=\\ln r$, by the power rule $\\ln(b^t)=t\\ln b$. When $r$ is positive, $\\ln r$ has a value. When $b$ is positive and not 1, $\\ln b\\neq0$ ($\\ln b$ is not 0), so dividing is allowed: $t=\\frac{\\ln r}{\\ln b}$.",
     pitfalls: [
       "Divide both sides by the starting amount before taking logarithms.",
       "Divide the two logarithms. Do not subtract them.",
@@ -587,7 +593,7 @@ const entries: WorkEntry[] = [
     parentGuide:
       "Ask your learner to check the answer by putting it back into the model.",
     senses: { side: "side-of-equation", model: "model", unit: "unit" },
-    noLink: ["part", "population", "rule", "key"],
+    noLink: ["part", "population", "rule", "key", "parts"],
   },
 ];
 
