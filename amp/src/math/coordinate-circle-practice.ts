@@ -663,7 +663,7 @@ function slopeCase(r: Random, form = "two-points"): Case {
         /− −/g,
         "+ ",
       ),
-      `Add ${n(C[1])} to both sides. The value that makes $j$ perpendicular to $ℓ$ is $k = ${n(D[1])}$.`,
+      `${C[1] === 0 ? "So" : C[1] > 0 ? `Add ${n(C[1])} to both sides. So` : `Subtract ${n(-C[1])} from both sides. So`} the value that makes $j$ perpendicular to $ℓ$ is $k = ${n(D[1])}$.`,
     ],
     hint: `${byEquation ? `${slopeHint} $j$ must have the negative reciprocal of that slope.` : "$j$ must have slope −1 ÷ (slope of $ℓ$)."} Write $j$'s slope from $C$ and $D$ with $k$ in it, and set the two equal.`,
     tags: ["missing-coordinate"],
@@ -690,7 +690,7 @@ function circleAngleCase(r: Random): Case {
       answer: q(fromCentral ? inscribed : central),
       explanation: [
         "A central angle has its corner at the center $O$. An inscribed angle has its corner on the circle itself.",
-        "When both open onto the same arc, the inscribed angle is half the central angle. The corner on the circle is farther away, so it sees the arc at half the angle.",
+        "When both open onto the same arc, the inscribed angle is half the central angle. Drawing the diameter through $C$ splits the figure into isosceles triangles, triangles with two equal sides, and their equal angles show why.",
         fromCentral
           ? `$\\angle ACB$ = ${central}° ÷ 2 = ${inscribed}°.`
           : `So the central angle is double: $\\angle AOB$ = 2 × ${inscribed}° = ${central}°.`,

@@ -182,7 +182,7 @@ function trigCase(r: Random): SatGeometryDataCase {
     const sides =
       "In a right triangle, the leg opposite an angle is across from it, the adjacent leg touches it, and the hypotenuse is the longest side, across from the right angle.";
     const ratios =
-      "Tangent is opposite ÷ adjacent, sine is opposite ÷ hypotenuse, and cosine is adjacent ÷ hypotenuse.";
+      "The tangent of an angle is the opposite side divided by the adjacent side. The sine is the opposite side divided by the hypotenuse, and the cosine is the adjacent side divided by the hypotenuse.";
     const unitMixup =
       "The angle is measured from the horizontal, so the horizontal leg is adjacent to it and the vertical leg is opposite it.";
     if (tag === "elevation-height" || tag === "elevation-eye-height") {
@@ -258,8 +258,8 @@ function trigCase(r: Random): SatGeometryDataCase {
         `That level line is parallel to the sea. Alternate interior angles, between parallel lines on opposite sides of the line of sight, are equal. So the angle at the boat is also ${t}°.`,
         sides,
         dist
-          ? `From the boat, the cliff is opposite and the distance is adjacent. Tangent is opposite ÷ adjacent: $\\tan ${t}^\\circ=\\frac{${base}}{\\text{distance}}$.`
-          : `From the boat, the distance is adjacent and the cliff is opposite. Tangent is opposite ÷ adjacent: $\\tan ${t}^\\circ=\\frac{\\text{height}}{${base}}$.`,
+          ? `From the boat, the cliff is opposite and the distance is adjacent. The tangent of an angle is the opposite side divided by the adjacent side: $\\tan ${t}^\\circ=\\frac{${base}}{\\text{distance}}$.`
+          : `From the boat, the distance is adjacent and the cliff is opposite. The tangent of an angle is the opposite side divided by the adjacent side: $\\tan ${t}^\\circ=\\frac{\\text{height}}{${base}}$.`,
         dist
           ? `Solve for the distance: distance $=\\frac{${base}}{\\tan ${t}^\\circ}\\approx ${ans.toFixed(2)}$.`
           : `Multiply both sides by ${base}: height $=${base}\\tan ${t}^\\circ\\approx ${ans.toFixed(2)}$.`,
@@ -380,7 +380,7 @@ function trigCase(r: Random): SatGeometryDataCase {
       explanation = [
         sides,
         `Call the angle at the ground $\\theta$ (theta). The ${rise} is the opposite leg, across from it, and ${run} is the adjacent leg, touching it.`,
-        `Tangent is opposite ÷ adjacent, so $\\tan\\theta=\\frac{${rise}}{${run}}$.`,
+        `The tangent of an angle is the opposite side divided by the adjacent side, so $\\tan\\theta=\\frac{${rise}}{${run}}$.`,
         `The inverse tangent, $\\tan^{-1}$, works backward from a ratio to its angle: $\\theta=\\tan^{-1}\\!\\left(\\frac{${rise}}{${run}}\\right)\\approx ${a.toFixed(2)}^\\circ$.`,
         tag === "ramp-angle"
           ? `The ramp makes an angle of about ${a.toFixed(1)}° with the ground.`
@@ -411,7 +411,7 @@ function trigCase(r: Random): SatGeometryDataCase {
         `The angle of elevation of the sun is how high the sun is above level: ${t}°. It sits at the tip of the shadow.`,
         sides,
         `The pole, ${h} feet, is opposite that angle. The shadow touches it, so the shadow is adjacent.`,
-        `Tangent is opposite ÷ adjacent: $\\tan ${t}^\\circ=\\frac{${h}}{\\text{shadow}}$. Solve: shadow $=\\frac{${h}}{\\tan ${t}^\\circ}\\approx ${ans.toFixed(2)}$.`,
+        `The tangent of an angle is the opposite side divided by the adjacent side: $\\tan ${t}^\\circ=\\frac{${h}}{\\text{shadow}}$. Solve: shadow $=\\frac{${h}}{\\tan ${t}^\\circ}\\approx ${ans.toFixed(2)}$.`,
         `The shadow is about ${ans.toFixed(1)} feet long.`,
       ];
     } else {

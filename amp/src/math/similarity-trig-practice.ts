@@ -959,7 +959,7 @@ function complementaryCase(r: Random): Case {
       explanation: [
         "In a right triangle, the side opposite one acute angle is adjacent to the other. So for acute angles, the sine of one equals the cosine of the other exactly when the angles add to 90°.",
         `(${term(p, b)}) + (${term(s, c)}) = 90, so ${p + s}x ${b + c < 0 ? "−" : "+"} ${Math.abs(b + c)} = 90.`,
-        `${b + c < 0 ? "Add" : "Subtract"} ${Math.abs(b + c)} on both sides: ${p + s}x = ${90 - b - c}. Divide by ${p + s}: x = ${x}.`,
+        `${b + c === 0 ? "" : `${b + c < 0 ? "Add" : "Subtract"} ${Math.abs(b + c)} on both sides: ${p + s}x = ${90 - b - c}. `}Divide by ${p + s}: x = ${x}.`,
       ],
       hint: `The two angles, ${term(p, b)} and ${term(s, c)}, must be complementary. Set their sum equal to 90.`,
       tags: ["equation"],

@@ -557,7 +557,7 @@ export const parallelSegment = chainFamily({
         `The symbol $\\parallel$ means parallel: the segments never meet. A segment is parallel to one side of a triangle exactly when it cuts the other two sides in the same ratio.`,
         `So we need $\\frac{AD}{DB}=\\frac{AE}{EC}$, which is $\\frac{${m.a}}{${m.b}}=\\frac{${c}}{EC}$.`,
         `Cross-multiply, multiplying both sides by both denominators: $${m.a}\\cdot EC=${m.b}\\cdot${c}$, so $EC=\\frac{${m.b}\\cdot${c}}{${m.a}}=${ec}$.`,
-        `Check: $\\frac{${c}}{${ec}}$ simplifies to $\\frac{${m.a}}{${m.b}}$, so the ratios match.`,
+        `Check: $\\frac{${c}}{${ec}}$ equals $\\frac{${m.a}}{${m.b}}$, so the ratios match.`,
         `$\\overline{EC}$ must be ${ec} long for $\\overline{DE}$ to be parallel to $\\overline{BC}$.`,
       ],
       label: "Length of EC",

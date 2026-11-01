@@ -403,7 +403,10 @@ export const motionChain = chainFamily({
       const d = [0, 1, 2].map((i) => shift(u, v, i));
       const same = d.every((x) => x[0] === d[0]![0] && x[1] === d[0]![1]);
       const flips = turn(u) !== turn(v);
-      const move = `$${from[0]}$ moves by $${pt(d[0]![0], d[0]![1])}$ and $${from[1]}$ moves by $${pt(d[1]![0], d[1]![1])}$`;
+      // Name a second vertex that moves differently from the first when one exists.
+      const j =
+        [1, 2].find((i) => d[i]![0] !== d[0]![0] || d[i]![1] !== d[0]![1]) ?? 1;
+      const move = `$${from[0]}$ moves by $${pt(d[0]![0], d[0]![1])}$ and $${from[j]}$ moves by $${pt(d[j]![0], d[j]![1])}$`;
       return { same, flips, move, from, to, u, v };
     };
     const steps = [

@@ -471,7 +471,7 @@ export const elevationDepression = chainFamily({
         `Draw a level (horizontal) line from the lookout to the ${thing}. It splits the ${thing} into a top part and a bottom part.`,
         `The angle of elevation is how far you look up from level, ${m.up}°. The angle of depression is how far you look down from level, ${m.down}°.`,
         `Each part is a right triangle. The level distance, ${m.d} feet, is the leg adjacent to (touching) the angle. The part of the ${thing} is the leg opposite it.`,
-        `Tangent is opposite ÷ adjacent, so opposite = adjacent × tangent. Top part: $${m.d}\\tan ${m.up}^\\circ\\approx${roundText(m.d * tanD(m.up), 2)}$ feet.`,
+        `The tangent of an angle is the opposite side divided by the adjacent side, so the opposite side equals the adjacent side times the tangent. Top part: $${m.d}\\tan ${m.up}^\\circ\\approx${roundText(m.d * tanD(m.up), 2)}$ feet.`,
         `Bottom part: $${m.d}\\tan ${m.down}^\\circ\\approx${roundText(m.d * tanD(m.down), 2)}$ feet.`,
         `Add the two parts for the whole height: $${roundText(m.d * tanD(m.up), 2)}+${roundText(m.d * tanD(m.down), 2)}\\approx${roundText(h, 2)}$ feet.`,
         `The ${thing} is about ${roundText(h, places)} feet tall, to the nearest ${unit}.`,

@@ -417,7 +417,7 @@ function chainCase(r: Random): SatGeometryAdvancedCase {
           explanation: [
             `A transversal is a line that crosses two other lines, here $t$ crossing $\\ell$ and $m$. Vertical angles are the opposite angles where two lines cross, and they are equal.`,
             `So set the two expressions equal: $${c1}=${c2}$.`,
-            `Subtract $${s === 1 ? "" : s}x$ and ${q < 0 ? "add" : "subtract"} ${Math.abs(q)} on both sides: $${p - s === 1 ? "" : p - s}x=${u - q}$, so $x=${x}$.`,
+            `Subtract $${s === 1 ? "" : s}x$${q === 0 ? "" : ` and ${q < 0 ? "add" : "subtract"} ${Math.abs(q)}`} on both sides: $${p - s === 1 ? "" : p - s}x=${u - q}$, so $x=${x}$.`,
             `The first angle measures $${p}\\cdot ${x}${q < 0 ? "-" : "+"}${Math.abs(q)}=${value}$ degrees.`,
             `The angle you want is a same-side interior angle: between the parallel lines, on the same side of $t$. Such a pair adds to 180°.`,
             `So subtract: $180-${value}=${180 - value}$. The angle measures ${180 - value} degrees.`,
