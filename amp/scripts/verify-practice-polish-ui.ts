@@ -515,7 +515,8 @@ async function runCase(
     viewport: { width, height },
     colorScheme: theme,
     // Motion is reduced so screenshots are stable; AUDIT_MOTION=1 keeps it.
-    reducedMotion: process.env.AUDIT_MOTION === "1" ? "no-preference" : "reduce",
+    reducedMotion:
+      process.env.AUDIT_MOTION === "1" ? "no-preference" : "reduce",
     hasTouch: phone,
     isMobile: phone && browserName === "chromium",
   });
@@ -733,12 +734,49 @@ async function axeDialog(page: Page) {
   }));
 }
 
+/** The probe's inline-target and glyph rules, on known markup: a word with
+ * a 44 px invisible hit area passes and one without fails; a hidden "?"
+ * badge is exempt from the text size and a hidden letter is not. */
+async function probeSelfTest(browser: Browser) {
+  const page = await browser.newPage({ viewport: { width: 390, height: 600 } });
+  await page.addInitScript("globalThis.__name ??= (f) => f");
+  const sentence = (hitArea: boolean) =>
+    `<main class="practice-workspace"><style>
+      .t{display:inline;position:relative;padding:0;border:0;background:none;font:inherit}
+      ${hitArea ? ".t::after{content:'';position:absolute;left:50%;top:50%;width:max(100%,44px);height:44px;transform:translate(-50%,-50%)}" : ""}
+      .m{font-size:9px}
+    </style><p style="font:16px/1.5 sans-serif;margin:120px 20px">Find the
+      <button class="t" aria-label="ratio, what does this mean?">ratio<span class="m" aria-hidden="true">?</span></button>
+      of the two lengths <span class="m" aria-hidden="true">A</span>.</p></main>`;
+  // tsx names functions with __name; probe() runs in the page.
+  const shim = "globalThis.__name ??= (f) => f";
+  await page.setContent(sentence(true));
+  await page.evaluate(shim);
+  const passing = await probe(page);
+  await page.setContent(sentence(false));
+  await page.evaluate(shim);
+  const failing = await probe(page);
+  await page.close();
+  const kinds = (f: Finding[]) => f.map((x) => `${x.kind}:${x.text}`);
+  if (passing.some((f) => f.kind === "small-target"))
+    throw new Error(
+      `Probe rejects an inline word with a 44 px hit area: ${kinds(passing)}`,
+    );
+  if (!failing.some((f) => f.kind === "small-target"))
+    throw new Error("Probe accepts an inline word without a hit area");
+  if (passing.some((f) => f.kind === "tiny-text" && f.text === "?"))
+    throw new Error("Probe holds a hidden icon glyph to the text size");
+  if (!passing.some((f) => f.kind === "tiny-text" && f.text === "A"))
+    throw new Error("Probe exempts a hidden letter from the text size");
+}
+
 const started = Date.now();
 try {
   for (const name of browsers) {
     const browser = await ({ chromium, webkit } as const)[
       name as "chromium" | "webkit"
     ].launch();
+    await probeSelfTest(browser);
     const jobs: (() => Promise<void>)[] = [];
     for (const size of sizes)
       for (const theme of themes) {

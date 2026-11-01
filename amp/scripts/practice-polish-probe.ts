@@ -108,7 +108,63 @@ export async function probe(page: Page): Promise<Finding[]> {
         if (document.querySelector(".feedback") && e.closest(".problem-stage"))
           continue;
         const r = e.getBoundingClientRect();
-        if (r.width < 43.5 || r.height < 43.5)
+        // A control set inline in a sentence (a glossary word) keeps the
+        // text's line height; its target is an invisible hit area around
+        // the word (WCAG 2.5.8's inline case). Measure that area by hit
+        // testing 21 px out from the word's centre each way, not the text
+        // box. Another inline word may win an overlap; anything else fails.
+        // (A button set to display: inline computes to inline-block.)
+        const inline =
+          getComputedStyle(e).display.startsWith("inline") &&
+          !!e.parentElement?.closest("p, li, h1, h2, h3, legend, label, dd");
+        if (inline) {
+          const cx = r.left + r.width / 2,
+            cy = r.top + r.height / 2;
+          let clip: Element | null = e.parentElement;
+          while (
+            clip &&
+            !/(auto|scroll|hidden)/.test(getComputedStyle(clip).overflowY)
+          )
+            clip = clip.parentElement;
+          const box = clip?.getBoundingClientRect() ?? {
+            left: 0,
+            top: 0,
+            right: innerWidth,
+            bottom: innerHeight,
+          };
+          const misses = [
+            [0, -21],
+            [0, 21],
+            [-21, 0],
+            [21, 0],
+          ].filter(([dx, dy]) => {
+            const x = cx + dx!,
+              y = cy + dy!;
+            if (
+              x < box.left ||
+              y < box.top ||
+              x >= box.right ||
+              y >= box.bottom
+            )
+              return false;
+            const hit = document.elementFromPoint(x, y);
+            if (!hit) return true;
+            if (e.contains(hit)) return false;
+            const other = hit.closest(interactive);
+            return !(
+              other &&
+              other !== e &&
+              getComputedStyle(other).display.startsWith("inline")
+            );
+          });
+          if (misses.length)
+            found.push({
+              kind: "small-target",
+              selector: name(e),
+              text: text(e),
+              detail: `inline hit area under 44 px: misses ${misses.map((m) => m.join(",")).join(" ")}`,
+            });
+        } else if (r.width < 43.5 || r.height < 43.5)
           found.push({
             kind: "small-target",
             selector: name(e),
@@ -159,7 +215,13 @@ export async function probe(page: Page): Promise<Finding[]> {
         if (!seen.has(parent)) {
           seen.add(parent);
           const size = parseFloat(s.fontSize);
-          if (size < 12)
+          // An icon glyph hidden from assistive tech ("?", "✓", "→") is a
+          // signifier beside a named control, not text to read; letters and
+          // numbers (choice letters) are still held to the size.
+          const glyph =
+            !!parent.closest('[aria-hidden="true"]') &&
+            /^[^\p{L}\p{N}]$/u.test(n.textContent.trim());
+          if (size < 12 && !glyph)
             found.push({
               kind: "tiny-text",
               selector: name(parent),
