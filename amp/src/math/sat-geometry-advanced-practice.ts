@@ -496,7 +496,7 @@ function claimCase(r: Random): SatGeometryAdvancedCase {
         draft: {
           prompt: `In triangle $ABC$, $\\angle A$ measures ${deg(a)}. Which of the following ${possible ? "could be" : "cannot be"} the measure of $\\angle B$?`,
           answer: "",
-          hint: `The three angles add to 180°, and every angle is more than 0°. Start with ${deg(a)}: find what $\\angle B$ and $\\angle C$ must add to.`,
+          hint: `The three angles add to 180°, and every angle is more than 0°. Start from $\\angle A$: subtract it from 180° to find what $\\angle B$ and $\\angle C$ must add to.`,
           explanation: [
             `The three angles of any triangle add to 180°. So $\\angle B+\\angle C=180-${a}=${bound}$ degrees.`,
             `Every angle of a triangle is more than 0°. So $\\angle C$ takes some of the ${bound}°, and $\\angle B$ must be less than ${bound}°.`,
