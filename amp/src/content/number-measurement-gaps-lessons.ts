@@ -3,32 +3,41 @@ import type { ProblemMethod } from "./problem-lessons";
 
 export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
   "signed-context-order": {
+    senses: { balance: "balance-account" },
     goal: "Compare signed numbers in debts, elevations or temperatures: which is greater, larger in size or farther from zero, and say it correctly.",
     intuition:
-      "A negative number can mean a debt, a depth below sea level, or a temperature below zero. Two questions sound alike but ask different things. Which number is greater asks about position on the number line: farther right is greater. How large is it, how much is owed, or how far from zero asks about the absolute value $|x|$, the distance from 0.",
+      "A negative number, written with a minus sign, is less than 0. It can mean a debt, a depth below sea level, or a temperature below zero. Two questions sound alike but ask different things. “Which is greater?” asks about position on the number line: farther right is greater. “How much is owed?” or “How far from zero?” asks about the absolute value, the distance from 0, written $|x|$.",
     terms: ["absolute-value", "number-line"],
+    noLink: ["side", "mean", "positions", "position"],
     method: [
-      "Mark the numbers on a number line, or write fractions as decimals so they can be compared.",
-      "If the question asks which is greater, higher, warmer or less cold, compare positions: farther left is less.",
+      "Mark the numbers on a number line, or write fractions as decimals so they are easy to compare.",
+      "If the question asks which number is greater, higher, warmer or less cold, compare positions: farther left is less. A greater debt is a size question, not an order question.",
       "If the question asks for the size of a debt, a depth or a distance from 0, compare absolute values.",
       "Write the comparison with $<$ or $>$ and read it aloud to check that the symbol and the words agree.",
     ],
     watch:
-      "Among negative numbers the greater absolute value is the lesser number: $-8<-3$ even though $8>3$. A debt of 8 is more debt, and a temperature of $-8$ is colder.",
+      "Among negative numbers, the one with the greater absolute value is the lesser number: $-8<-3$ even though $8>3$. A debt of 8 is more debt, and a temperature of $-8$ is colder.",
   },
   "equivalent-expressions-check": {
+    noLink: ["part", "parts"],
     goal: "Given a linear expression, decide which other expressions have the same value for every value of $x$.",
     intuition:
-      "Two expressions are equivalent when they give the same number for every value of $x$. You can rewrite an expression into an equivalent one by distributing a multiplier over a sum and by combining like terms, which are terms with the same variable part. Substituting a value of $x$ is a quick test, but only in one direction: different values prove two expressions are not equivalent, while matching values at a single input prove nothing.",
+      "An expression is a group of numbers and letters joined by operations, like $3(x + 4) - x$. The letter $x$, a variable, stands for a number. Two expressions are equivalent when they give the same number for every value of $x$. Two moves rewrite an expression without changing its value. Distributing multiplies each term (each part joined by + or −) inside parentheses by the number outside: $3(x + 4) = 3x + 12$. Like terms are terms with the same letter part, and combining them adds them: $3x - x = 2x$.",
     terms: ["equivalent-expressions", "like-terms", "distributive-property"],
+    senses: {
+      multiples: "multiple",
+      product: "product-multiply",
+      terms: "term-expression",
+      term: "term-expression",
+    },
     method: [
       "Rewrite the given expression: distribute each multiplier over every term in its parentheses, keeping signs.",
       "Combine the $x$ terms together and the plain numbers together.",
       "Compare each choice with the simplified form. To test a doubtful choice, substitute the same value of $x$ into both expressions.",
-      "If two values of $x$ give different results, the expressions are not equivalent.",
+      "If the two expressions give different results for the same value of $x$, they are not equivalent.",
     ],
     watch:
-      "Agreeing at one value of $x$ does not make expressions equivalent. Check a second value, or simplify both. Also make sure the multiplier reaches every term inside the parentheses.",
+      "Agreeing at one value of $x$ does not make expressions equivalent: $2(x + 3)$ and $x + 6$ both give 6 at $x = 0$. Check a second value, or simplify both. Make sure the multiplier reaches every term inside the parentheses.",
   },
   "area-tiling-distributive": {
     goal: "Given a rectangle tiled with unit squares, a rectangle split into two parts, or an L-shaped figure, use the parts to find or write its area.",
@@ -73,16 +82,26 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
   "unit-chain-conversion": {
     goal: "Given a quantity in one set of units and the conversion facts, find it in the requested units by multiplying through a chain of conversions.",
     intuition:
-      "A conversion fact such as $1\\text{ km}=1000\\text{ m}$ gives two ratios equal to 1, such as $\\frac{1000\\text{ m}}{1\\text{ km}}$. Multiplying by a ratio equal to 1 changes the units but not the amount. Write the units in each factor and arrange the ratios so the unit you want to remove appears once on top and once on the bottom and cancels.",
+      "A unit is a fixed amount used to measure, like a meter. A kilometer is a length of 1000 meters, written km. A conversion fact such as $1\\text{ km} = 1000\\text{ m}$ means both name the same length. So the fraction $\\frac{1000\\text{ m}}{1\\text{ km}}$ equals 1. Multiplying by something equal to 1 changes the units but not the amount. Arrange each fraction so the unit you want to remove appears once on top and once on the bottom. Then it cancels, like a number divided by itself.",
     terms: ["conversion-factor", "dimensional-analysis"],
+    senses: {
+      edges: "edge",
+      sides: "side",
+      side: "side",
+      unit: "unit",
+      units: "unit",
+      factor: "factor-number",
+      square: "square-shape",
+    },
+    noLink: ["solid", "change", "changes"],
     method: [
       "Write the starting quantity with its units, and the units you need at the end.",
-      "Choose conversion ratios so that each unwanted unit cancels, one fact at a time.",
-      "For squared or cubed units, apply the length factor two or three times: $1\\text{ m}^2=100^2\\text{ cm}^2$.",
+      "Choose conversion fractions so that each unwanted unit cancels, one fact at a time.",
+      "Volume, the space a solid takes up, uses the length fact three times; area uses it twice: $1\\text{ m}^2 = 100^2\\text{ cm}^2$.",
       "Multiply and divide the numbers. Check that only the requested units remain.",
     ],
     watch:
-      "A length factor must be squared for area and cubed for volume: $1\\text{ m}^3$ is $100^3=1{,}000{,}000\\text{ cm}^3$, not 100. Convert time units too when a rate mixes hours and minutes.",
+      "For area, multiply by the length number twice; for volume, three times: $1\\text{ m}^3 = 100^3\\text{ cm}^3 = 1{,}000{,}000\\text{ cm}^3$, not 100. Convert time units too when a rate mixes hours and minutes.",
   },
   "fraction-of-set": {
     goal: "Given a set of objects and a fraction, find how many objects the fraction names.",
@@ -118,18 +137,20 @@ export const numberMeasurementGapPrinciples: Record<string, string> = {
   "estimate-reasonableness":
     "Rounding a number to the nearest ten changes it by at most 5, so an operation on rounded numbers gives a value close to the exact result. An estimate that differs from a calculated result by a factor of about 10 shows a place-value or operation error. An estimate cannot verify exact digits.",
   "unit-chain-conversion":
-    "If $1\\text{ A}=k\\text{ B}$, then $\\frac{k\\text{ B}}{1\\text{ A}}=1$, and multiplying a quantity by this ratio changes its units without changing its size. For lengths, $1\\text{ A}^2=k^2\\text{ B}^2$ and $1\\text{ A}^3=k^3\\text{ B}^3$.",
+    "If $1\\text{ A} = k\\text{ B}$, then $\\frac{k\\text{ B}}{1\\text{ A}} = 1$, and multiplying a quantity by this ratio changes its units without changing its size. For lengths, $1\\text{ A}^2 = k^2\\text{ B}^2$ and $1\\text{ A}^3 = k^3\\text{ B}^3$.",
   "fraction-of-set":
     "For whole numbers $a$, $b$ and $n$ with $b$ dividing $n$, $\\frac{a}{b}$ of $n$ objects is $a\\times\\frac{n}{b}$. The unit fraction $\\frac{1}{b}$ of $n$ is one of $b$ equal groups, and $\\frac{a}{b}$ is $a$ of them.",
 };
 
 export const numberMeasurementGapLessons: Lesson[] = [
   {
+    senses: { balance: "balance-account", "more than": "more-than" },
     id: "signed-context-order",
     title: "Compare signed numbers in context",
     summary:
-      "Greater means farther right on the number line. Size, debt and distance use the absolute value, the distance from 0.",
+      "A negative number is less than 0, like a debt of 12 dollars written as −12. On a number line, numbers grow to the right, so the number farther right is greater: −7 is greater than −12. But the debt of 12 dollars is the bigger debt. The size of a number, its distance from 0, is called its absolute value. Order uses position; size, debt and distance use absolute value.",
     templateIds: ["signed-context-order"],
+    noLink: ["mean", "positions", "position"],
     objectives: [
       "Tell apart which number is greater and which has the larger absolute value.",
       "Order signed fractions and decimals and state the order in words.",
@@ -139,7 +160,8 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Order and size are different questions",
         paragraphs: [
-          "You need to compare whole numbers and read a number line. A negative number can mean a debt, a depth below sea level, or a temperature below zero. The absolute value of a number, written $|x|$, is its distance from 0, so it is never negative.",
+          "You need to compare whole numbers and read a number line, a line with numbers in order at equal steps. Negative numbers, written with a minus sign, sit to the left of 0. A negative number can mean a debt, a depth below sea level, or a temperature below zero.",
+          "An account balance is the amount of money in an account, and a negative balance means money is owed. The absolute value of a number is its distance from 0, so it is never negative. It is written with two upright bars: $|-12| = 12$ and $|7| = 7$.",
           "Asking which number is greater is about position: the number farther right on the number line is greater. Asking how much is owed, or how far something is from sea level, is about size: it uses the absolute value.",
         ],
       },
@@ -148,9 +170,9 @@ export const numberMeasurementGapLessons: Lesson[] = [
       prompt:
         "Ana's account balance is $-12$ dollars and Ben's is $-7$ dollars. Who has the greater debt, and who has the greater balance?",
       steps: [
-        "A negative balance is a debt. The size of each debt is the absolute value: $|-12|=12$ dollars and $|-7|=7$ dollars.",
-        "Since $12>7$, Ana owes more.",
-        "For the balance, compare positions. On the number line $-12$ is to the left of $-7$, so $-12<-7$.",
+        "A negative balance is a debt. “Greater debt” asks about size, so use absolute value, the distance from 0: $|-12| = 12$ dollars and $|-7| = 7$ dollars.",
+        "12 is more than 7, so Ana owes more and has the greater debt.",
+        "“Greater balance” asks about order, so compare positions. On the number line $-12$ is to the left of $-7$, so $-12 < -7$, read “−12 is less than −7”.",
         "Check: Ben owes less, so his balance is closer to 0 and is the greater number.",
       ],
       answer:
@@ -161,7 +183,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "method",
         title: "Choose the question first",
         paragraphs: [
-          "Underline what the question asks. Words such as greater, higher, warmer and less cold ask about order, so compare positions on the number line. Words such as debt, depth, distance from sea level and how far ask about size, so compare absolute values.",
+          "Underline what the question asks. Words such as greater balance, higher, warmer and less cold ask about order, so compare positions on the number line. Words such as debt, depth, distance from sea level and how far ask about size, so compare absolute values.",
           "To order fractions and decimals, write each as a decimal, for example $-\\frac{3}{4}=-0.75$. Place the negative numbers to the left of 0 and put the one with the greater absolute value farthest left.",
         ],
       },
@@ -169,46 +191,53 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "formal",
         title: "Absolute value and order",
         paragraphs: [
-          "For a real number $x$, $|x|=x$ when $x\\ge0$ and $|x|=-x$ when $x<0$. It is the distance from $x$ to 0. The number $a$ is less than $b$ exactly when $a$ is left of $b$ on the number line.",
+          "For a real number $x$, $|x| = x$ when $x \\ge 0$ ($x$ is 0 or more), and $|x| = -x$ when $x < 0$. It is the distance from $x$ to 0. The number $a$ is less than $b$ exactly when $a$ is left of $b$ on the number line.",
           "For two negative numbers $a$ and $b$, $a<b$ exactly when $|a|>|b|$. A negative number is always less than a positive number, whatever their absolute values.",
         ],
       },
     ],
     pitfalls: [
-      "Do not conclude $-8>-3$ because $8>3$. $-8$ is farther left.",
+      "Do not conclude that −8 is greater than −3 because 8 is greater than 3. On the number line −8 is farther left, so $-8 < -3$.",
       "Do not say a position below sea level cannot be compared. Its distance is its absolute value.",
       "When listing least to greatest, check that the direction matches the question.",
     ],
     parentGuide:
-      "Ask the learner whether $-9$ dollars or $-4$ dollars is the greater debt, and which is the greater balance, and to explain why the answers differ.",
+      "Ask the learner whether a balance of −9 dollars or −4 dollars is the greater debt, and which is the greater balance. Then ask why the answers differ.",
   },
   {
+    noLink: ["parts", "part", "rule"],
     id: "equivalent-expressions-check",
     title: "Test whether expressions are equivalent",
     summary:
-      "Equivalent expressions have the same value for every $x$. Distribute, combine like terms, and use substitution carefully.",
+      "An expression is numbers and letters joined by operations, such as $3(x + 4) - x$. The letter $x$, called a variable, stands for a number. Two expressions are equivalent when they give the same value for every value of $x$. To check, rewrite one step at a time: multiply out the parentheses, then collect matching parts. Trying one number for $x$ can show two expressions differ, but it cannot prove they match.",
     templateIds: ["equivalent-expressions-check"],
+    senses: {
+      terms: "term-expression",
+      term: "term-expression",
+      product: "product-multiply",
+    },
     objectives: [
-      "Rewrite a linear expression by distributing and combining like terms.",
-      "Use substitution to show that expressions are not equivalent, and know why one matching value is not proof.",
+      "Rewrite a linear expression (one where $x$ is never multiplied by $x$, such as $3x + 2$) by multiplying out parentheses and combining like terms.",
+      "Use substitution, putting a number in place of $x$, to show that expressions are not equivalent, and explain why one matching value is not proof.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Same value for every input",
         paragraphs: [
-          "You need to evaluate an expression such as $2x+5$ when $x$ has a value, and to multiply a number by a sum. Two expressions are equivalent when they give the same value for every value of $x$.",
-          "The distributive property says $a(b+c)=ab+ac$: the multiplier outside multiplies every term inside. Like terms are terms with the same variable part, such as $3x$ and $5x$. They combine by adding coefficients: $3x+5x=8x$.",
+          "You need to find the value of an expression such as $2x + 5$ when $x$ has a value: for $x = 3$, it is $2 \\times 3 + 5 = 11$. Here $2x$ means 2 times $x$. Two expressions are equivalent when they give the same value for every value of $x$.",
+          "A number right before parentheses multiplies everything inside: $3(x + 4) = 3 \\times x + 3 \\times 4 = 3x + 12$. This rule, $a(b + c) = ab + ac$, is called the distributive property. The parts joined by + or − are called terms.",
+          "Like terms have the same letter part, such as $3x$ and $5x$. The number in front of the letter is its coefficient. Like terms combine by adding their coefficients: $3x + 5x = 8x$, because 3 of something plus 5 of the same thing is 8 of it.",
         ],
       },
     ],
     workedExample: {
       prompt: "Is $3(x+4)-x$ equivalent to $2x+12$?",
       steps: [
-        "Distribute the 3: $3(x+4)=3x+12$. The expression becomes $3x+12-x$.",
-        "Combine the $x$ terms: $3x-x=2x$. The expression is $2x+12$.",
-        "Check with $x=5$: $3(5+4)-5=27-5=22$ and $2(5)+12=22$.",
-        "Check with $x=0$: $3(4)-0=12$ and $2(0)+12=12$. Both inputs agree, as they must.",
+        "Multiply out the parentheses: the 3 multiplies both $x$ and 4, so $3(x + 4) = 3x + 12$. The expression becomes $3x + 12 - x$.",
+        "Combine the like terms $3x$ and $-x$: 3 of $x$ minus 1 of $x$ is $2x$. The expression is $2x + 12$, the same as the other one.",
+        "Check with $x = 5$: $3(5 + 4) - 5 = 27 - 5 = 22$, and $2 \\times 5 + 12 = 22$.",
+        "Check with $x = 0$: $3 \\times 4 - 0 = 12$, and $2 \\times 0 + 12 = 12$. Both inputs agree, as they must.",
       ],
       answer: "Yes, they are equivalent.",
     },
@@ -217,7 +246,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "method",
         title: "Simplify, then substitute only to find a difference",
         paragraphs: [
-          "Distribute first, keeping the sign of each product, then combine like terms. Two expressions that simplify to the same form are equivalent.",
+          "Multiply out parentheses first, keeping the sign of each product (the answer when you multiply). Then combine like terms. Two expressions that simplify to the same form are equivalent.",
           "To test a suspicious pair quickly, substitute the same value of $x$ into both. If the values differ, the expressions are not equivalent. If they match, try another value or simplify; for example $2(x+3)$ and $x+6$ both equal 6 at $x=0$ but are different expressions, because at $x=1$ they give 8 and 7.",
         ],
       },
@@ -225,13 +254,13 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "formal",
         title: "Why two inputs settle linear expressions",
         paragraphs: [
-          "Expressions are equivalent when they have equal values for every allowed $x$. The expressions $mx+k$ and $m'x+k'$ agree at $x=0$ exactly when $k=k'$, and at $x=1$ exactly when $m+k=m'+k'$. If they agree at both inputs, then $m=m'$ and $k=k'$, so they are the same expression.",
-          "For other kinds of expressions, agreement at finitely many inputs does not prove equivalence.",
+          "Expressions are equivalent when they have equal values for every allowed $x$. Take two linear expressions $mx + k$ and $nx + j$, where $m$, $k$, $n$ and $j$ are numbers. They agree at $x = 0$ exactly when $k = j$. They agree at $x = 1$ exactly when $m + k = n + j$. If they agree at both inputs, then $m = n$ and $k = j$, so they are the same expression.",
+          "For other kinds of expressions, such as ones with $x^2$, agreeing at two inputs is not enough.",
         ],
       },
     ],
     pitfalls: [
-      "A multiplier outside parentheses multiplies every term inside, not only the first.",
+      "A number outside parentheses multiplies every term inside, not only the first: $3(x + 4) = 3x + 12$, not $3x + 4$.",
       "A minus sign before a term subtracts it: $3x+12-x$ has $3x-x=2x$.",
       "Matching at one input proves nothing, but different values at one input prove the expressions differ.",
     ],
@@ -356,19 +385,30 @@ export const numberMeasurementGapLessons: Lesson[] = [
     id: "unit-chain-conversion",
     title: "Convert through a chain of units",
     summary:
-      "Treat each conversion fact as a ratio equal to 1, arrange the ratios so unwanted units cancel, and use squared or cubed factors for area and volume.",
+      "A unit is a fixed amount used to measure, like a meter or a kilogram. A conversion fact such as 1 kilometer = 1000 meters means both name the same length. So the fraction $\\frac{1000\\text{ m}}{1\\text{ km}}$ equals 1, and multiplying by it changes the units but not the amount. Chain several such fractions so each unwanted unit cancels. For area, use a length fact twice; for volume, three times.",
     templateIds: ["unit-chain-conversion"],
+    senses: {
+      sides: "side",
+      edges: "edge",
+      unit: "unit",
+      units: "unit",
+      factor: "factor-number",
+      square: "square-shape",
+      cube: "cube",
+    },
+    noLink: ["change", "changes"],
     objectives: [
-      "Build a chain of conversion ratios that cancels to the requested units.",
-      "Apply a length factor twice for area and three times for volume.",
+      "Build a chain of conversion fractions that cancels to the requested units.",
+      "Use a length fact twice for area and three times for volume.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Multiply by ratios equal to 1",
         paragraphs: [
-          "You need to multiply and divide whole numbers and know that a rate such as 15 milligrams per kilogram compares two quantities. A conversion fact such as $1\\text{ km}=1000\\text{ m}$ gives the ratio $\\frac{1000\\text{ m}}{1\\text{ km}}$, which equals 1.",
-          "Multiplying by a ratio equal to 1 changes the units but not the amount. Chain several ratios so that every unit except the one you want appears once on top and once on the bottom and cancels.",
+          "You need to multiply and divide whole numbers. A rate compares two quantities with different units, such as 15 milligrams (mg) per kilogram (kg). A ratio is a comparison of two amounts, and it can be written as a fraction.",
+          "A conversion fact such as $1\\text{ km} = 1000\\text{ m}$ says that 1 kilometer and 1000 meters are the same length. So the ratio $\\frac{1000\\text{ m}}{1\\text{ km}}$ is a length divided by the same length, which equals 1.",
+          "Multiplying by a ratio equal to 1 changes the units but not the amount. Chain several ratios so that every unit except the one you want appears once on top and once on the bottom. Then it cancels, just as $\\frac{5}{5} = 1$.",
         ],
       },
     ],
@@ -376,10 +416,10 @@ export const numberMeasurementGapLessons: Lesson[] = [
       prompt:
         "A doctor orders 15 milligrams of a medicine per kilogram of body mass per day. A patient has a mass of 24 kilograms. The daily amount is split into 3 equal doses. How many milligrams are in one dose?",
       steps: [
-        "Write the rate with its units: $15\\frac{\\text{mg}}{\\text{kg}\\cdot\\text{day}}$.",
-        "Multiply by the patient's mass: $15\\frac{\\text{mg}}{\\text{kg}\\cdot\\text{day}}\\times24\\text{ kg}=360\\text{ mg per day}$. The kilograms cancel.",
-        "Divide by the number of doses: $360\\text{ mg}\\div3\\text{ doses}=120\\text{ mg per dose}$.",
-        "Check: 3 doses of 120 mg make 360 mg, and $15\\times24=360$.",
+        "Write the rate with its units, so we can see what cancels: 15 milligrams for each kilogram, each day, written $15\\frac{\\text{mg}}{\\text{kg}\\cdot\\text{day}}$. The dot means “times”.",
+        "Multiply by the patient's mass to get milligrams per day: $15\\frac{\\text{mg}}{\\text{kg}\\cdot\\text{day}} \\times 24\\text{ kg} = 360\\text{ mg per day}$. Kilograms appear on the bottom and on the top, so they cancel.",
+        "The day's amount is split into 3 equal doses, so divide: $360\\text{ mg} \\div 3\\text{ doses} = 120\\text{ mg per dose}$.",
+        "Check: 3 doses of 120 mg make 360 mg, and $15 \\times 24 = 360$. Only milligrams per dose remain, the units asked for.",
       ],
       answer: "120 milligrams per dose",
     },
@@ -388,21 +428,21 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "method",
         title: "Follow the units",
         paragraphs: [
-          "Write every number with its units and cross out matching units on the top and bottom. If a unit does not cancel, the ratio is upside down. A speed in kilometers per hour used for minutes needs $\\frac{1\\text{ h}}{60\\text{ min}}$ too.",
-          "For area and volume, square or cube the length factor. Since $1\\text{ m}=100\\text{ cm}$, $1\\text{ m}^2=100^2\\text{ cm}^2=10{,}000\\text{ cm}^2$ and $1\\text{ m}^3=100^3\\text{ cm}^3=1{,}000{,}000\\text{ cm}^3$. Then use any further fact, such as $1\\text{ L}=1000\\text{ cm}^3$.",
+          "Write every number with its units and cross out matching units on the top and bottom. If an unwanted unit does not cancel, flip that ratio or add another conversion fact. A speed in kilometers per hour used for minutes needs $\\frac{1\\text{ h}}{60\\text{ min}}$ too.",
+          "For area and volume, square or cube the length factor (the number in the length fact). Since $1\\text{ m}=100\\text{ cm}$, $1\\text{ m}^2=100^2\\text{ cm}^2=10{,}000\\text{ cm}^2$ and $1\\text{ m}^3=100^3\\text{ cm}^3=1{,}000{,}000\\text{ cm}^3$. Then use any further fact, such as $1\\text{ L}=1000\\text{ cm}^3$.",
         ],
       },
       {
         stage: "formal",
         title: "Why the factor is squared or cubed",
         paragraphs: [
-          "If $1\\text{ A}=k\\text{ B}$, then a square with side $1\text{ A}$ has side $k\text{ B}$, so its area is $k^2\\text{ B}^2$. A cube with edge $1\text{ A}$ has edge $k\text{ B}$ and volume $k^3\\text{ B}^3$.",
+          "Take any two length units with $1\\text{ A} = k\\text{ B}$. A square with sides $1\\text{ A}$ long has sides $k\\text{ B}$ long, so its area is $k\\text{ B} \\times k\\text{ B} = k^2\\text{ B}^2$. A cube with edges $1\\text{ A}$ long has edges $k\\text{ B}$ long, so its volume is $k\\text{ B} \\times k\\text{ B} \\times k\\text{ B} = k^3\\text{ B}^3$.",
           "Multiplying a quantity by a ratio equal to 1, such as $\\frac{k\\text{ B}}{1\\text{ A}}$, does not change the quantity, only the units used to write it.",
         ],
       },
     ],
     pitfalls: [
-      "Use $100^2$ or $100^3$, not 100, when converting square or cubic meters to centimeters.",
+      "Use $100^2 = 10{,}000$ or $100^3 = 1{,}000{,}000$, not 100, when converting square or cubic meters to square or cubic centimeters.",
       "Convert time as well when a rate mixes hours with minutes.",
       "Check the final units, not only the arithmetic.",
     ],
