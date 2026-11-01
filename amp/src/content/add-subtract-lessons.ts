@@ -32,7 +32,7 @@ export const addSubtractLessons: Lesson[] = [
         paragraphs: [
           "Look at the picture. 47 is written above 38, with ones under ones and tens under tens. Start with the ones: 7 + 8 = 15. Write the 5 under the ones. Carry the 1 ten: write a small 1 above the tens.",
           "Then add the tens, and include the carried ten: 1 + 4 + 3 = 8. The sum is 85.",
-          "You can check by counting on. Counting on means starting at a number and counting forward. Start at 47. Count on 3 tens: 57, 67, 77. Then count on 8 ones: 78, 79, 80, 81, 82, 83, 84, 85.",
+          "Counting on means starting at a number and counting forward. You can check the sum by counting on. Start at 47. Count on 3 tens: 57, 67, 77. Then count on 8 ones: 78, 79, 80, 81, 82, 83, 84, 85.",
         ],
         illustration: "column-addition",
       },
@@ -79,8 +79,12 @@ export const addSubtractLessons: Lesson[] = [
     title: "Subtract within 100 by regrouping a ten",
     summary:
       "A ten is a group of 10 ones. To take away, take ones from ones and tens from tens. Sometimes there are not enough ones. Then break 1 ten into 10 ones. This is called regrouping. The number keeps its value.",
-    senses: { part: "part", difference: "difference-subtract" },
-    noLink: ["change", "cube", "cubes", "leaves"],
+    senses: {
+      part: "part",
+      difference: "difference-subtract",
+      cube: "cube",
+    },
+    noLink: ["change", "leaves"],
     templateIds: ["subtract-two-digit-regroup"],
     objectives: [
       "Take a number from 10 to 99 away from a number up to 100.",
@@ -99,7 +103,7 @@ export const addSubtractLessons: Lesson[] = [
       {
         title: "Trade before you take",
         paragraphs: [
-          "Base-ten blocks are blocks for building numbers. Look at them in the picture. A long rod is 1 ten, and a small cube is 1 one. 82 is 8 rods and 2 cubes. One rod is traded for 10 cubes, so 82 is now 7 tens and 12 ones.",
+          "Base-ten blocks are blocks for building numbers. Look at them in the picture. A long rod is 1 ten. A small cube, a block with 6 square faces, is 1 one. 82 is 8 rods and 2 cubes. One rod is traded for 10 cubes, so 82 is now 7 tens and 12 ones.",
           "Now take away ones from ones: 12 − 7 = 5. Then take away tens from tens: 7 − 4 = 3. 3 tens and 5 ones is 35, so 82 − 47 = 35.",
         ],
         illustration: "base-ten-trade",
@@ -287,7 +291,7 @@ export const addSubtractMethods: Record<string, ProblemMethod> = {
       "Add the ones. If they make 10 or more, write the ones left over and carry 1 ten to the tens.",
       "Add the tens, and include the ten you carried. The answer to adding is the sum.",
     ],
-    watch: "Carry the new ten. Do not write two digits in the ones place.",
+    watch: "Carry the new ten. Do not write two digits for the ones.",
   },
   "make-hundred": {
     goal: "Find the number that joins a number below 100 to make 100.",

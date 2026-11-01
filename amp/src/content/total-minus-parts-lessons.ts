@@ -24,7 +24,7 @@ export const totalMinusPartsMethods: Record<string, ProblemMethod> = {
   "fraction-total-minus-parts": {
     goal: "Add two measures given as mixed numbers with unlike denominators, or as a fraction and a decimal, and subtract the sum from a total.",
     intuition:
-      "A fraction names equal pieces of a whole, like $\\frac{3}{8}$. The bottom number, the denominator, says how many pieces make one whole. The top number, the numerator, counts the pieces. A mixed number is a whole number and a fraction together, like $2\\frac{1}{8}$. You can only add pieces of the same size, so rewrite eighths as sixteenths: $\\frac{1}{8} = \\frac{2}{16}$. A decimal is a number written with a decimal point, like 0.25. It is another way to write a fraction: $\\frac{1}{4} = 0.25$. A fraction whose top is the same as its bottom or bigger is called an improper fraction.",
+      "A fraction names equal pieces of a whole, like $\\frac{3}{8}$. The denominator is the bottom number. It says how many pieces make one whole. The numerator is the top number. It counts the pieces. A mixed number is a whole number and a fraction together, like $2\\frac{1}{8}$. You can only add pieces of the same size, so rewrite eighths as sixteenths: $\\frac{1}{8} = \\frac{2}{16}$. A decimal is a number written with a decimal point, like 0.25. It is another way to write a fraction: $\\frac{1}{4} = 0.25$. A fraction whose top is the same as its bottom or bigger is called an improper fraction.",
     senses: { eighths: "eighth", eighth: "eighth", whole: "whole" },
     terms: ["common-denominator", "mixed-number"],
     method: [
@@ -50,7 +50,7 @@ export const totalMinusPartsLessons: Lesson[] = [
       id: "total-minus-parts",
       title: "Add the parts, then take them from the total",
       summary:
-        "Some stories give a total and two parts that both come off it. Add the two parts first. Then subtract that sum from the total. Other stories join two amounts and then take some away: add first, then subtract. The amounts can be whole numbers, fractions (equal pieces of a whole) or decimals (numbers like 0.25).",
+        "Some stories give a total and two parts that both come off it. Add the two parts first. Then subtract that sum from the total. Other stories join two amounts and then take some away: add first, then subtract. The same steps work for amounts in equal pieces, like halves and eighths.",
       templateIds: ["bag-totals-chain", "fraction-total-minus-parts"],
       objectives: [
         "Add two amounts and subtract a third, or subtract the sum of two parts from a total, regrouping as needed.",
@@ -60,7 +60,7 @@ export const totalMinusPartsLessons: Lesson[] = [
       opening: [
         "A whole number is one of 0, 1, 2, 3 and so on. Say a shop has 900 cups. It sells 300 and gives away 200. Both amounts come off the 900. First add them: 300 + 200 = 500. Then subtract: 900 − 500 = 400. Taking away 300 and then 200 gives the same answer.",
         "Other stories join two amounts and then set some aside. Add the two amounts first, then subtract.",
-        "Some amounts are fractions. A fraction names equal pieces of one whole, like $\\frac{3}{8}$. The bottom number, the denominator, says how many equal pieces make one whole. The top number, the numerator, counts the pieces you have.",
+        "Some amounts are fractions. A fraction names equal pieces of one whole, like $\\frac{3}{8}$. The denominator is the bottom number. It says how many equal pieces make one whole. The numerator is the top number. It counts the pieces you have.",
         "A mixed number is a whole number and a fraction together, like $2\\frac{1}{8}$, read “2 and one eighth”. It means 2 wholes and 1 more eighth.",
         "You can only add pieces of the same size. One eighth is the same amount as two sixteenths: $\\frac{1}{8} = \\frac{2}{16}$. So rewrite eighths as sixteenths, then add the sixteenths. A common denominator is a bottom number that two fractions share.",
         "A mixed number can be written as one fraction. $2\\frac{1}{8}$ is 2 wholes and 1 eighth, and each whole is 8 eighths. So it is $\\frac{17}{8}$. A fraction whose top is the same as its bottom or bigger is called an improper fraction.",

@@ -347,5 +347,5 @@ export const factsPrinciples: Record<string, string> = {
   "related-subtraction":
     "A box, □, stands for a missing number. 15 − 8 is the missing number in 8 + □ = 15: the number that joins 8 to make 15.",
   "mental-ten-hundred":
-    "Each place is worth 10 of the place to its right. Adding 10 adds 1 to the tens place, and adding 100 adds 1 to the hundreds place. Ten of one place regroup as 1 of the next.",
+    "Each place is worth 10 of the place to its right. Adding 10 adds 1 ten, and adding 100 adds 1 hundred. Ten of one place trade for 1 of the next.",
 };

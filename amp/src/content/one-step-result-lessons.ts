@@ -44,7 +44,7 @@ export const oneStepResultMethods: Record<string, ProblemMethod> = {
   "factor-out-choice": {
     goal: "Factor a given number, positive or negative, out of something like $6x - 12$, and choose the result.",
     intuition:
-      "An expression is a mix of numbers and letters joined by operations such as + and −, with no equal sign. A term is one part of an expression joined to the rest by + or −, with its sign. In $6x - 12$, the terms are $6x$ and $-12$. The letter $x$ stands for a number, and $6x$ means 6 times $x$. A number written just before parentheses multiplies everything inside: $6(x - 2) = 6x - 12$. There 6 is a factor, a number being multiplied. Factoring out 6 goes the other way. Divide each term by 6 and write the answers inside the parentheses.",
+      "An expression is a mix of numbers and letters joined by operations such as + and −, with no equal sign. A term is one part of an expression joined to the rest by + or −, with its sign. In $6x - 12$, the terms are $6x$ and $-12$. The letter $x$ is a variable, a letter that stands for a number, and $6x$ means 6 times $x$. Parentheses are the curved marks $(\\;)$ that group part of an expression. A number written just before parentheses multiplies everything inside: $6(x - 2) = 6x - 12$. There 6 is a factor, a number being multiplied. Factoring out 6 means going the other way. Divide each term by 6 and write the answers inside the parentheses.",
     senses: {
       term: "term-expression",
       terms: "term-expression",
@@ -60,7 +60,7 @@ export const oneStepResultMethods: Record<string, ProblemMethod> = {
       "Check by multiplying back: the number times each answer must give the original term.",
     ],
     watch:
-      "Divide every term, including the number with no letter, and keep the signs. Factoring out a negative number flips the sign of each answer: $-6x + 12 = -6(x - 2)$.",
+      "Divide every term, including the number with no letter, and keep the signs. A negative number is a number less than 0. Factoring out a negative number flips the sign of each answer: $-6x + 12 = -6(x - 2)$.",
   },
   "step-reason-table": {
     goal: "Choose the list of properties that justifies each line of a shown linear equation solution.",
@@ -81,7 +81,7 @@ export const oneStepResultPrinciples: Record<string, string> = {
   "equation-after-one-step":
     "If $A=B$, then $A+k=B+k$, $A-k=B-k$, $kA=kB$ and, for $k\\ne 0$, $A/k=B/k$. The new equation has the same solution as the old one, provided the same operation is applied to every term of both sides.",
   "expression-after-first-step":
-    "Work out parentheses first, then multiplication and division from left to right, then addition and subtraction from left to right. Each step replaces one operation with its value. The value of the expression stays the same.",
+    "Work out parentheses first, then multiply and divide from left to right, then add and subtract from left to right. Each step replaces one operation with its value. The value of the expression stays the same.",
   "factor-out-choice":
     "A number before parentheses multiplies each term inside: $g(p + q) = gp + gq$, where $gp$ means $g$ times $p$. This is called the distributive property. Read backwards, $gp + gq = g(p + q)$ for any $g$ that is not 0. Factoring divides each term by $g$. A negative $g$ flips the sign of each answer.",
   "step-reason-table":
@@ -136,7 +136,7 @@ export const oneStepResultLessons: Lesson[] = [
       id: "one-step-expression-results",
       title: "What one step does to an expression",
       summary:
-        "An expression is a mix of numbers joined by operations such as +, −, × and ÷, with no equal sign. When it has several operations, an agreed order says which comes first. That order is called the order of operations. Doing only the first step works out one operation and copies the rest. Factoring out a number is another single step that rewrites an expression without changing its value.",
+        "An expression is a mix of numbers joined by operations such as +, −, × and ÷, with no equal sign. When it has several operations, an agreed order says which comes first. That order is called the order of operations. Doing only the first step works out one operation and copies the rest. Factoring out a number is a single step that writes an expression as that number times a group, without changing its value.",
       templateIds: ["expression-after-first-step", "factor-out-choice"],
       objectives: [
         "Rewrite an expression after only the first step of the order of operations, including decimals and a product inside parentheses.",
@@ -145,7 +145,7 @@ export const oneStepResultLessons: Lesson[] = [
       openingTitle: "One move, everything else the same",
       opening: [
         "The order of operations works like this. First work inside parentheses, the curved marks $(\\;)$ around part of an expression. Then multiply and divide, from left to right. Then add and subtract, from left to right.",
-        "Inside parentheses the same order applies. In $1.2 + 0.4 \\times 6$, the multiplication $0.4 \\times 6$ comes before the addition. Its answer is called a product.",
+        "Inside parentheses the same order applies. In $1.2 + 0.4 \\times 6$, multiplying $0.4 \\times 6$ comes before adding. The answer to a multiplication is called a product.",
         "Doing only the first step means working out that one operation. Copy everything else exactly as it was. The value of the whole expression does not change.",
         "Factoring out a number is another single step. A term is one part of an expression joined to the rest by + or −, with its sign. In $6x + 12$, the terms are $6x$ and 12. The letter $x$ stands for a number, and $6x$ means 6 times $x$.",
         "A number written just before parentheses multiplies everything inside: $6(x + 2) = 6x + 12$. Factoring goes the other way. Both terms of $6x + 12$ are 6 times something, so write 6 once in front. Then divide each term by 6: $6x + 12 = 6(x + 2)$.",
@@ -167,7 +167,7 @@ export const oneStepResultLessons: Lesson[] = [
       ],
       formalTitle: "The order of operations and factoring",
       formal: [
-        "Work out parentheses first, then multiplication and division, then addition and subtraction. Each step keeps the value of the whole expression the same.",
+        "Work out parentheses first, then multiply and divide, then add and subtract. Each step keeps the value of the whole expression the same.",
         "A number before parentheses multiplies each term inside: $g(p + q) = gp + gq$. Here the letters stand for numbers, and $gp$ means $g$ times $p$. This rule is called the distributive property.",
         "Read backwards, $gp + gq = g(p + q)$, which is factoring out $g$. A negative $g$ gives the terms inside the opposite signs, as in $-4x + 12 = -4(x - 3)$.",
       ],

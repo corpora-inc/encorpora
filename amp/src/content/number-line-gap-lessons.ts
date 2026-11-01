@@ -7,7 +7,7 @@ export const numberLineGapMethods: Record<string, ProblemMethod> = {
   "number-line-between-hundreds": {
     goal: "Read the whole number a point names on a number line between two neighboring hundreds, where each step between tick marks is 10.",
     intuition:
-      "A number line is a line with numbers in order, evenly spaced. Short lines called tick marks cross it. Here the line runs from one hundred to the next, such as 900 to 1,000. It is cut into 10 equal steps, so each step from one tick mark to the next adds 10. The halfway mark sits exactly in the middle, 50 past the left end.",
+      "A number line is a line with numbers in order, evenly spaced. Short lines called tick marks cross it. Here the line runs from one hundred to the next, such as 900 to 1,000. It is cut into 10 equal steps, so each step from one tick mark to the next adds 10. The halfway mark is the tick mark exactly in the middle, 50 past the left end.",
     senses: { "more than": "more-than" },
     terms: ["tick-mark", "halfway-point"],
     method: [
@@ -21,7 +21,7 @@ export const numberLineGapMethods: Record<string, ProblemMethod> = {
   "number-line-jump-story": {
     goal: "Match a number line with one jump left and one jump right to the story with the same actions and amounts, in the same order.",
     intuition:
-      "A number line is a line with numbers in order, evenly spaced, getting bigger to the right. A jump is a curved arrow that shows a move along it. A jump to the right adds, and a jump to the left takes away. The length of a jump, how many numbers it moves, is the amount added or taken away.",
+      "A number line is a line with numbers in order, evenly spaced, getting bigger to the right. A jump is a curved arrow that shows a move along it. A jump to the right adds, and a jump to the left takes away. The length of a jump is how many numbers it moves. That is the amount added or taken away.",
     senses: { jump: "jump", jumps: "jump" },
     terms: [
       "jump",
@@ -99,7 +99,7 @@ export const numberLineGapLessons: Lesson[] = [
       id: "number-line-jump-story-lesson",
       title: "Jumps on a number line tell a story",
       summary:
-        "A number line is a line with numbers in order, evenly spaced. Bigger numbers are to the right. A jump is a curved arrow that shows a move along it. A jump to the right adds. A jump to the left takes away. The length of a jump, how far it goes, is the amount.",
+        "A number line is a line with numbers in order, evenly spaced. Bigger numbers are to the right. A jump is a curved arrow that shows a move along it. A jump to the right adds. A jump to the left takes away. The length of a jump is how far it goes. It is the amount.",
       templateIds: ["number-line-jump-story"],
       objectives: [
         "Say what a jump to the left and a jump to the right mean.",

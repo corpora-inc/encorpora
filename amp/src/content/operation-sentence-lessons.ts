@@ -13,7 +13,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
     method: [
       "Find the number of groups and the size of each group, from the story, the picture or the jumps.",
       "Choose the sentence that joins that many equal groups. Multiplication in either order works, and so does adding the group size once per group.",
-      "A division also fits when the total, $n$, is the number being split. $n \\div 5 = 3$ says the total split into fives makes 3 groups.",
+      "Division is splitting a total into equal groups. A division also fits when the total, $n$, is the number being split. $n \\div 5 = 3$ says the total split into fives makes 3 groups.",
       "To find the sentence that cannot work, test every sentence the same way.",
     ],
     watch:
@@ -22,7 +22,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
   "related-division-sentence": {
     goal: "Choose the division sentence a multiplication fact helps solve, or the multiplication sentence that helps solve a division, including tens.",
     intuition:
-      "Multiplication, written ×, joins equal groups: 6 × 7 = 42 means 6 groups of 7 make 42. The numbers multiplied, 6 and 7, are called factors. The answer, 42, is called the product. Division, written ÷, splits the product back into equal groups: 42 ÷ 6 = 7. Numbers like 20, 30 and 40 are called multiples of ten.",
+      "Multiplication is joining equal groups, written ×. 6 × 7 = 42 means 6 groups of 7 make 42. The numbers multiplied, 6 and 7, are called factors. The answer, 42, is called the product. Division is splitting the product back into equal groups, written ÷: 42 ÷ 6 = 7. Numbers like 20, 30 and 40 are called multiples of ten.",
     senses: {
       factor: "factor-number",
       factors: "factor-number",
@@ -43,7 +43,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
   "related-subtraction-sentence": {
     goal: "Choose the subtraction sentence that an addition fact within 20 helps solve, among subtraction, addition, multiplication and division.",
     intuition:
-      "Addition, written +, puts two parts together to make a whole: 8 + 5 = 13. A part is one of the amounts being added, and the whole is the total. Subtraction, written −, takes a part away from the whole. Then the other part is left: 13 − 8 = 5.",
+      "Addition is putting two parts together to make a whole, written +: 8 + 5 = 13. A part is one of the amounts being added, and the whole is the total. Subtraction is taking a part away from the whole, written −. Then the other part is left: 13 − 8 = 5.",
     senses: { part: "part", parts: "part", whole: "whole" },
     noLink: ["inverse", "leaves"],
     terms: [
@@ -61,7 +61,7 @@ export const operationSentenceMethods: Record<string, ProblemMethod> = {
   "whole-number-equality-choice": {
     goal: "Choose the one true equation when a product equals a sum or difference, or when two products of three factors are compared.",
     intuition:
-      "An equation is two amounts joined by an equal sign, =. A side is what is written to the left or to the right of the equal sign. The equation is true when both sides work out to the same number. A product, the answer to a multiplication, can equal a sum or a difference, the answers to adding and subtracting. Numbers being multiplied are called factors.",
+      "An equation is two amounts joined by an equal sign, =. A side is what is written to the left or to the right of the equal sign. The equation is true when both sides work out to the same number. Multiplication is joining equal groups, written ×. A product, the answer to a multiplication, can equal a sum or a difference, the answers to adding and subtracting. Numbers being multiplied are called factors.",
     senses: {
       side: "side-of-equation",
       sides: "side-of-equation",
@@ -112,7 +112,7 @@ export const operationSentenceLessons: Lesson[] = [
         "A letter can stand for a number you want to find. In $4 \\times 6 = n$, the letter $n$ stands for the total.",
         "A number line is a line with numbers in order, evenly spaced. A jump is a curved arrow along it. Four equal jumps of 6 from 0 show 4 groups of 6.",
         "A picture can show the same groups as dots or objects. Count how many groups there are and how big each one is. Then pick the sentence that uses those two numbers to find the total.",
-        "Division, written ÷, splits a total into equal groups. $n \\div 6 = 4$ says the total split into groups of 6 makes 4 groups. That is also true when $n = 24$, so it fits too.",
+        "Division is splitting a total into equal groups, written ÷. $n \\div 6 = 4$ says the total split into groups of 6 makes 4 groups. That is also true when $n = 24$, so it fits too.",
       ],
       example: {
         prompt:
@@ -164,10 +164,10 @@ export const operationSentenceLessons: Lesson[] = [
       ],
       openingTitle: "Facts come in families",
       opening: [
-        "A part is one of the amounts you add. Addition, written +, puts two parts together. The whole is all of it. In 8 + 5 = 13, the parts are 8 and 5. The whole is 13.",
-        "Subtraction, written −, takes a part away from the whole. Then the other part is left. So 13 − 8 = 5 and 13 − 5 = 8.",
+        "A part is one of the amounts you add. Addition is putting parts together, written +. The whole is all of it. In 8 + 5 = 13, the parts are 8 and 5. The whole is 13.",
+        "Subtraction is taking a part away from the whole, written −. Then the other part is left. So 13 − 8 = 5 and 13 − 5 = 8.",
         "Equal groups are groups with the same number in each. Joining equal groups is called multiplication, written ×. 6 × 7 = 42 means 6 groups of 7 make 42. The numbers being multiplied, 6 and 7, are called factors. The answer, 42, is called the product.",
-        "Division, written ÷, splits the product into equal groups. So 42 ÷ 6 = 7 and 42 ÷ 7 = 6.",
+        "Division is splitting the product into equal groups, written ÷. So 42 ÷ 6 = 7 and 42 ÷ 7 = 6.",
         "Subtraction starts from the whole. Division starts from the product.",
         "Numbers like 20, 30 and 40 are called multiples of ten. 40 is 4 tens. Since 4 × 6 = 24, 4 tens times 6 is 24 tens. That is 240, so 40 × 6 = 240.",
       ],
@@ -185,7 +185,7 @@ export const operationSentenceLessons: Lesson[] = [
       method: [
         "Find the whole or the product. It is the number subtraction or division starts with.",
         "Write the subtraction or division that starts there and uses one of the other two numbers.",
-        "To solve a division, write a multiplication. The number you divide by is one factor, and the total is the product. Keep every digit of a multiple of ten: 40, not 4.",
+        "To solve a division, write a multiplication. The number you divide by is one factor, and the total is the product. Keep the 0 of a multiple of ten: 40, not 4.",
       ],
       formalTitle: "Undoing an operation",
       formal: [
@@ -224,7 +224,7 @@ export const operationSentenceLessons: Lesson[] = [
       ],
       openingTitle: "The equal sign means the same value",
       opening: [
-        "One side can be a product, the answer to a multiplication, like 3 × 5. The other side can be a sum, the answer to an addition. It can also be a difference, the answer to a subtraction.",
+        "Multiplication is joining equal groups, written ×. One side can be a product, the answer to a multiplication, like 3 × 5. The other side can be a sum, the answer to an addition. It can also be a difference, the answer to a subtraction.",
         "The two sides can still be equal: 3 × 5 = 10 + 5 is true, because both sides are 15.",
         "Work out the left side. Work out the right side. If the numbers match, the equation is true. If not, it is false.",
         "Some sides multiply three numbers, like 2 × 6 × 3. The numbers being multiplied are called factors. Multiply the first two, then multiply by the third: 2 × 6 = 12 and 12 × 3 = 36.",
