@@ -1,4 +1,5 @@
 import type { FacetMapping } from "./coverage";
+import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 import { chainLesson } from "./chain-lesson-kit";
 
@@ -37,7 +38,7 @@ export const regentsAlgebraOneFigureMethods: Record<string, ProblemMethod> = {
       "Choose the graph where every vertical line touches it at most once.",
     ],
     watch:
-      "A circle, a sideways U and a vertical line all fail, because some vertical line meets each of them more than once. A graph can go up and down and still be a function.",
+      "A circle, a parabola turned on its side and a vertical line all fail, because some vertical line meets each of them more than once. A graph can go up and down and still be a function.",
   },
   "inequality-both-sides-number-line": {
     goal: "Solve an inequality with the variable on both sides, and choose the number line with the right boundary and direction.",
@@ -71,7 +72,7 @@ export const regentsAlgebraOneFigurePrinciples: Record<string, string> = {
     "Adding or subtracting the same quantity on both sides of an inequality keeps its direction. Multiplying or dividing by a positive number keeps it, and by a negative number reverses it. The solutions of $x>c$ or $x<c$ leave out $c$ (open circle). The solutions of $x\\ge c$ or $x\\le c$ include $c$ (closed circle).",
 };
 
-export const regentsAlgebraOneFigureLessons = [
+export const regentsAlgebraOneFigureLessons: Lesson[] = [
   {
     ...chainLesson({
       id: "regents-parabola-axis-vertex-graph",
@@ -159,7 +160,7 @@ export const regentsAlgebraOneFigureLessons = [
       pitfalls: [
         "A parabola, a U-shaped curve, turns around but can still be a function.",
         "A vertical line itself is not a function.",
-        "A sideways U fails, even though it is a curve.",
+        "A parabola turned on its side fails, even though it is a curve.",
       ],
       parentGuide:
         "Have your learner hold a pencil upright and slide it across each graph.",

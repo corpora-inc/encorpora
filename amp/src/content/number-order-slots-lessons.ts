@@ -1,12 +1,9 @@
 import type { FacetMapping } from "./coverage";
-import type { GlossarySenses } from "../glossary/types";
 import { formatLessons, type FormatLessonEntry } from "./format-lesson-entry";
 
 type Entry = FormatLessonEntry & {
   /** The practice-screen task, at most 140 characters; defaults to the summary. */
   goal?: string;
-  senses?: GlossarySenses;
-  noLink?: string[];
 };
 
 const entries: Entry[] = [
@@ -156,22 +153,11 @@ const entries: Entry[] = [
 ];
 
 const built = formatLessons(entries);
-const glossaryFields = (e: Entry) => ({
-  ...(e.senses ? { senses: e.senses } : {}),
-  ...(e.noLink ? { noLink: e.noLink } : {}),
-});
-export const numberOrderSlotsLessons = built.lessons.map((lesson, i) => ({
-  ...lesson,
-  ...glossaryFields(entries[i]!),
-}));
+export const numberOrderSlotsLessons = built.lessons;
 export const numberOrderSlotsMethods = Object.fromEntries(
   entries.map((e) => [
     e.id,
-    {
-      ...built.methods[e.id]!,
-      ...(e.goal ? { goal: e.goal } : {}),
-      ...glossaryFields(e),
-    },
+    { ...built.methods[e.id]!, ...(e.goal ? { goal: e.goal } : {}) },
   ]),
 );
 export const numberOrderSlotsPrinciples = built.principles;

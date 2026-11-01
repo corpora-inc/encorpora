@@ -215,8 +215,9 @@ export const regentsGapMethods: Record<string, ProblemMethod> = {
       sides: "side",
       degree: "degree-angle",
       base: "base-shape",
+      unit: "unit",
     },
-    noLink: ["opposite", "mode", "unit"],
+    noLink: ["opposite", "mode"],
     terms: ["included-angle"],
     method: [
       "Find the angle between the two given sides.",
@@ -807,6 +808,7 @@ export const regentsGapLessons: Lesson[] = [
       squared: "square-number",
       square: "square-shape",
       base: "base-shape",
+      unit: "unit",
     },
     noLink: [
       "whole",
@@ -816,7 +818,6 @@ export const regentsGapLessons: Lesson[] = [
       "product",
       "opposite",
       "opposite side",
-      "unit",
     ],
     templateIds: [
       "rg-isosceles-right-decimal",
