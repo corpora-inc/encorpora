@@ -1241,7 +1241,7 @@ function generateRawProblem(
         b === 0
           ? [
               `Taking away 0 means taking away nothing.`,
-              `All ${a} are still there, so ${a} − 0 = ${a}.`,
+              `Nothing was taken, so ${a} − 0 = ${a}.`,
             ]
           : b === a
             ? [
@@ -1250,7 +1250,7 @@ function generateRawProblem(
               ]
             : [
                 `Subtracting ${b} means taking ${b} away from ${a}.`,
-                `Count back ${b} from ${a}, or ask what number added to ${b} makes ${a}.`,
+                `Count back ${b} from ${a}, or ask what number goes with ${b} to reach ${a}.`,
                 `${b} + ${a - b} = ${a}, so ${a} − ${b} = ${answer}.`,
               ];
       break;
