@@ -3,7 +3,8 @@ import { createRequire } from "node:module";
 
 /** Workbook type, embedded so every renderer (a laptop, CI, the server's
  * Chromium) prints the same letters with no font request:
- * - Atkinson Hyperlegible Next for reading: 1, l and I, and 0 and O, differ.
+ * - IBM Plex Sans for reading: 1, l and I differ, and 0 is a plain oval, as
+ *   in children's textbooks.
  * - Andika for kindergarten to grade 2: the single-storey a and g that
  *   children learn to write.
  * - Fraunces for headings, soft for young learners and plain for older ones.
@@ -13,14 +14,14 @@ const faces = {
   reading: [
     {
       family: "WB Reading",
-      weight: "200 800",
-      file: "@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-normal.woff2",
+      weight: "100 700",
+      file: "@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2",
     },
     {
       family: "WB Reading",
-      weight: "200 800",
+      weight: "100 700",
       style: "italic",
-      file: "@fontsource-variable/atkinson-hyperlegible-next/files/atkinson-hyperlegible-next-latin-wght-italic.woff2",
+      file: "@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-italic.woff2",
     },
   ],
   early: [

@@ -48,7 +48,7 @@ export const workbookLayoutScript = String.raw`(function () {
       foot.className = "wb-page-foot";
       var left = document.createElement("span");
       left.className = "wb-foot-left";
-      left.textContent = wb.getAttribute(kind === "student" ? "data-foot" : "data-foot-key");
+      left.textContent = wb.getAttribute(kind === "student" ? "data-foot" : "data-foot-" + kind);
       var right = document.createElement("span");
       right.className = "wb-foot-page";
       right.textContent = "Page 00 of 00";

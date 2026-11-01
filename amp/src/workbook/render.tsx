@@ -710,6 +710,7 @@ export function workbookHtml(
       className={`wb wb--${band}`}
       data-foot={footBase}
       data-foot-key={`Answer key · ${footBase}`}
+      data-foot-results={`Results · ${footBase}`}
     >
       <div className="wb-flow" data-flow="student">
         {studentBlocks}
@@ -762,7 +763,7 @@ const workbookCss = `
 .wb{--ink:var(--color-on-surface);--muted:var(--color-muted-text);--rule:var(--color-border);--rule-strong:var(--color-border-strong);--accent:var(--color-primary);
 --body:11pt;--prompt:11.5pt;--small:9pt;--h-section:17pt;--h-card:15pt;--num:0.27in;--gutter:0.4in;--gap:0.3in;--radius:7px;--soft:30;--display-weight:560;
 --work-answer:0.48in;--work-standard:1.2in;--work-roomy:2.4in;--answer-w:1.15in;--answer-h:0.4in;
---grid:0.25in;--grid-line:var(--color-figure-grid);
+--grid:0.25in;--grid-line:color-mix(in srgb,var(--color-figure-grid) 80%,transparent);
 font-family:"WB Reading",Arial,Helvetica,sans-serif;font-size:var(--body);line-height:1.45;color:var(--ink);font-variant-numeric:lining-nums}
 .wb--early{--body:14pt;--prompt:15pt;--small:10.5pt;--h-section:23pt;--h-card:19pt;--num:0.38in;--gutter:0.52in;--gap:0.34in;--radius:14px;--soft:100;--display-weight:640;
 --work-answer:0.66in;--work-standard:1.35in;--work-roomy:2.6in;--answer-w:1.35in;--answer-h:0.56in;font-family:"WB Early","WB Reading",Arial,sans-serif;line-height:1.4}
