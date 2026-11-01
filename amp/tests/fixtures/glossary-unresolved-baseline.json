@@ -2655,14 +2655,6 @@
     "parts": 1,
     "unit": 1
   },
-  "lesson:equations-preserve-equality": {
-    "changes": 1,
-    "left side": 1,
-    "right side": 1,
-    "side": 1,
-    "sides": 12,
-    "term": 1
-  },
   "lesson:equivalent-expressions-check": {
     "part": 1,
     "product": 1,
@@ -3073,10 +3065,6 @@
     "change": 3,
     "changes": 4,
     "vertex": 1
-  },
-  "lesson:functions-and-graph-meaning": {
-    "mean": 1,
-    "rule": 5
   },
   "lesson:gauss-3x3-solve": {
     "multiple": 5,
@@ -3520,17 +3508,6 @@
   "lesson:line-plots": {
     "difference": 1,
     "leaves": 1
-  },
-  "lesson:linear-change-per-unit": {
-    "change": 3,
-    "changes": 5,
-    "differences": 1,
-    "mean": 1,
-    "model": 2,
-    "rule": 6,
-    "rules": 1,
-    "unit": 1,
-    "units": 2
   },
   "lesson:linear-equations": {
     "change": 2,
@@ -4188,17 +4165,6 @@
     "sides": 8,
     "third": 1
   },
-  "lesson:one-step-equation-results": {
-    "balance": 1,
-    "change": 2,
-    "difference": 1,
-    "inverse": 1,
-    "opposite": 1,
-    "side": 3,
-    "sides": 11,
-    "term": 4,
-    "whole": 2
-  },
   "lesson:one-step-expression-results": {
     "factor": 2,
     "multiple": 1,
@@ -4450,16 +4416,6 @@
     "change": 2,
     "face": 2,
     "parts": 2
-  },
-  "lesson:plans-ties-and-thresholds": {
-    "difference": 1,
-    "intersection": 1,
-    "range": 1,
-    "rule": 1,
-    "rules": 1,
-    "unit": 1,
-    "units": 1,
-    "whole": 7
   },
   "lesson:plot-points": {
     "plane": 1,
@@ -5677,9 +5633,6 @@
     "unit": 10,
     "units": 9
   },
-  "lesson:repair-a-plotted-function": {
-    "leaves": 5
-  },
   "lesson:repeating-shape-pattern-lesson": {
     "part": 12,
     "square": 10,
@@ -6148,22 +6101,6 @@
     "periods": 5,
     "whole": 13
   },
-  "lesson:show-work-box-cost": {
-    "factors": 1,
-    "whole": 1
-  },
-  "lesson:show-work-percent-count": {
-    "change": 1,
-    "changes": 1,
-    "part": 7,
-    "third": 1,
-    "whole": 1
-  },
-  "lesson:show-work-rental-plans": {
-    "more than": 1,
-    "side": 1,
-    "sides": 1
-  },
   "lesson:signed-changes-sum": {
     "change": 9,
     "changes": 5,
@@ -6418,32 +6355,6 @@
     "sides": 7,
     "square": 5,
     "whole": 1
-  },
-  "lesson:solve-justify-formula": {
-    "base": 1,
-    "side": 1,
-    "sides": 4,
-    "whole": 1
-  },
-  "lesson:solve-justify-inequality": {
-    "factor": 1,
-    "sides": 1,
-    "term": 1,
-    "terms": 1
-  },
-  "lesson:solve-justify-linear": {
-    "balance": 1,
-    "side": 1,
-    "sides": 8,
-    "term": 2
-  },
-  "lesson:solve-justify-quadratic": {
-    "factor": 5,
-    "factors": 4,
-    "opposite": 1,
-    "product": 2,
-    "side": 6,
-    "term": 1
   },
   "lesson:sort-and-count": {
     "sort": 5,
@@ -7215,11 +7126,6 @@
     "mean": 15,
     "more than": 1,
     "range": 1
-  },
-  "lesson:variable-in-situation-lesson": {
-    "change": 1,
-    "changes": 1,
-    "units": 1
   },
   "lesson:variation-constant": {
     "change": 1,
