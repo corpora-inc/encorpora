@@ -244,11 +244,6 @@
     "change": 32,
     "changes": 13
   },
-  "compare-groups": {
-    "change": 14,
-    "square": 5,
-    "squares": 48
-  },
   "compare-irrational-values": {
     "intervals": 3,
     "mean": 1
@@ -272,16 +267,9 @@
     "parts": 22,
     "standard form": 1
   },
-  "compare-three-digit": {
-    "more than": 7,
-    "unit": 1
-  },
   "compare-to-pi-select": {
     "square": 1,
     "squaring": 3
-  },
-  "compare-two-digit": {
-    "more than": 10
   },
   "compare-unlike-fractions": {
     "rename": 36,
@@ -639,9 +627,6 @@
   },
   "division-remainder-story": {
     "more than": 20
-  },
-  "dot-group-compared-to-number": {
-    "more than": 40
   },
   "dot-plot-arithmetic": {
     "fourths": 2,
@@ -1001,9 +986,6 @@
   "graphed-line-slope": {
     "change": 42
   },
-  "greater-numeral": {
-    "more than": 1
-  },
   "greatest-common-factor": {
     "edge": 6,
     "edges": 6,
@@ -1031,9 +1013,6 @@
   },
   "hierarchy-statement": {
     "square": 21
-  },
-  "hundred-chart-missing": {
-    "part": 1
   },
   "hundreds-model": {
     "base": 1,
@@ -1572,13 +1551,6 @@
     "term": 5,
     "terms": 6
   },
-  "lesson:compare-by-place": {
-    "difference": 1,
-    "faces": 1,
-    "more than": 2,
-    "side": 1,
-    "unit": 1
-  },
   "lesson:compare-decimals": {
     "change": 1,
     "more than": 2,
@@ -1600,22 +1572,11 @@
     "rule": 2,
     "units": 2
   },
-  "lesson:compare-groups": {
-    "change": 1,
-    "changes": 1,
-    "square": 4,
-    "squares": 3
-  },
   "lesson:compare-money-sets": {
     "mean": 1,
     "more than": 1,
     "quarter": 2,
     "quarters": 2
-  },
-  "lesson:compare-numerals": {
-    "faces": 2,
-    "more than": 1,
-    "side": 2
   },
   "lesson:compare-symbol-blanks": {
     "base": 1,
@@ -2054,26 +2015,10 @@
   "lesson:coordinate-terms-slots": {
     "plane": 2
   },
-  "lesson:count-to-100": {
-    "changes": 1,
-    "jump": 1,
-    "square": 4
-  },
   "lesson:counterexamples": {
     "parts": 1,
     "sides": 3,
     "square": 3
-  },
-  "lesson:counting": {
-    "change": 2,
-    "whole": 1
-  },
-  "lesson:counting-steps": {
-    "change": 1,
-    "changes": 2,
-    "rule": 1,
-    "term": 4,
-    "whole": 1
   },
   "lesson:cross-representation-comparison": {
     "change": 2,
@@ -2322,9 +2267,6 @@
     "multiples": 1,
     "range": 12,
     "square": 1
-  },
-  "lesson:dot-group-compared-to-number": {
-    "more than": 6
   },
   "lesson:dot-plot-arithmetic-lesson": {
     "leaves": 1,
@@ -3856,11 +3798,6 @@
     "whole": 2
   },
   "lesson:open-number-line-to-1000": {
-    "changes": 1,
-    "difference": 1,
-    "jumps": 1
-  },
-  "lesson:open-number-line-to-120": {
     "changes": 1,
     "difference": 1,
     "jumps": 1
@@ -5850,10 +5787,6 @@
     "side": 6,
     "term": 1
   },
-  "lesson:sort-and-count": {
-    "sort": 5,
-    "squares": 4
-  },
   "lesson:special-angle-exact-value": {
     "change": 1,
     "degrees": 1,
@@ -6212,12 +6145,6 @@
     "squares": 1,
     "tangent": 13,
     "tangents": 2
-  },
-  "lesson:tens-and-extra-ones": {
-    "cubes": 1,
-    "model": 2,
-    "more than": 1,
-    "squares": 3
   },
   "lesson:tenths-and-hundredths": {
     "intervals": 4,
@@ -6633,10 +6560,6 @@
     "factors": 3,
     "product": 3
   },
-  "lesson:write-numerals": {
-    "more than": 1,
-    "parts": 1
-  },
   "lesson:zeros-nonmonic-grouping": {
     "factor": 12,
     "leaves": 1,
@@ -7024,8 +6947,6 @@
     "more than": 3
   },
   "open-number-line-to-120": {
-    "difference": 1,
-    "jumps": 1,
     "more than": 3
   },
   "operation-property-identify": {
@@ -7609,19 +7530,6 @@
     "root": 8,
     "roots": 1
   },
-  "sort-shapes-count": {
-    "sort": 19,
-    "sorting": 2,
-    "square": 5,
-    "squares": 20,
-    "whole": 1
-  },
-  "sort-shapes-most": {
-    "sort": 4,
-    "sorting": 1,
-    "square": 1,
-    "squares": 22
-  },
   "split-array-part": {
     "part": 1,
     "squares": 23,
@@ -7924,9 +7832,6 @@
   "three-addend-story": {
     "change": 1
   },
-  "three-digit-symbol": {
-    "more than": 7
-  },
   "times-as-many-blanks": {
     "more than": 40,
     "third": 7
@@ -7999,9 +7904,6 @@
   },
   "turn-degrees": {
     "center": 10
-  },
-  "two-digit-symbol": {
-    "more than": 8
   },
   "two-step-change": {
     "change": 11,

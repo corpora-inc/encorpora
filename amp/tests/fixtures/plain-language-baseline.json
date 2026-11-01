@@ -1321,17 +1321,6 @@
       ],
       "long": []
     },
-    "lesson:compare-by-place": {
-      "terms": [
-        "digit",
-        "equal",
-        "greater-than",
-        "less-than",
-        "line",
-        "whole-number"
-      ],
-      "long": []
-    },
     "lesson:compare-decimals": {
       "terms": [
         "absolute-value",
@@ -1371,13 +1360,6 @@
       ],
       "long": []
     },
-    "lesson:compare-groups": {
-      "terms": [
-        "circle",
-        "equal-groups"
-      ],
-      "long": []
-    },
     "lesson:compare-money-sets": {
       "terms": [
         "cent",
@@ -1386,15 +1368,6 @@
         "hundredth",
         "less-than",
         "tenth"
-      ],
-      "long": []
-    },
-    "lesson:compare-numerals": {
-      "terms": [
-        "greater-than",
-        "less-than",
-        "natural-number",
-        "point"
       ],
       "long": []
     },
@@ -1972,14 +1945,6 @@
       ],
       "long": []
     },
-    "lesson:count-to-100": {
-      "terms": [
-        "digit",
-        "regroup",
-        "whole-number"
-      ],
-      "long": []
-    },
     "lesson:counterexamples": {
       "terms": [
         "conjecture",
@@ -1987,12 +1952,6 @@
         "proof",
         "rhombus",
         "right-angle"
-      ],
-      "long": []
-    },
-    "lesson:counting": {
-      "terms": [
-        "point"
       ],
       "long": []
     },
@@ -2007,13 +1966,6 @@
       "terms": [
         "at-least",
         "equal-groups"
-      ],
-      "long": []
-    },
-    "lesson:counting-steps": {
-      "terms": [
-        "pattern",
-        "sequence"
       ],
       "long": []
     },
@@ -2424,13 +2376,6 @@
       "long": [
         "An equation defines $y$ as a function of"
       ]
-    },
-    "lesson:dot-group-compared-to-number": {
-      "terms": [
-        "less-than",
-        "whole-number"
-      ],
-      "long": []
     },
     "lesson:dot-plot-arithmetic-lesson": {
       "terms": [
@@ -4803,13 +4748,6 @@
     "lesson:open-number-line-to-1000": {
       "terms": [
         "line",
-        "number-line",
-        "point"
-      ],
-      "long": []
-    },
-    "lesson:open-number-line-to-120": {
-      "terms": [
         "number-line",
         "point"
       ],
@@ -7319,8 +7257,6 @@
       "terms": [
         "constant",
         "decimal",
-        "equivalent",
-        "mixed-number",
         "multiplier",
         "polynomial",
         "quadratic"
@@ -7332,9 +7268,7 @@
         "axis-of-symmetry",
         "completing-the-square",
         "decimal",
-        "equivalent",
         "maximum",
-        "mixed-number",
         "parabola",
         "substitute"
       ],
@@ -7350,8 +7284,6 @@
     "lesson:sat-entry-radian-conversion": {
       "terms": [
         "decimal",
-        "equivalent",
-        "mixed-number",
         "radian"
       ],
       "long": []
@@ -7360,7 +7292,6 @@
       "terms": [
         "decimal",
         "equivalent",
-        "mixed-number",
         "quadratic",
         "radical",
         "radicand",
@@ -7382,9 +7313,7 @@
         "denominator",
         "division",
         "domain",
-        "equivalent",
         "excluded-value",
-        "mixed-number",
         "numerator",
         "solution"
       ],
@@ -8053,13 +7982,6 @@
       ],
       "long": []
     },
-    "lesson:sort-and-count": {
-      "terms": [
-        "circle",
-        "triangle"
-      ],
-      "long": []
-    },
     "lesson:space-diagonal": {
       "terms": [
         "height",
@@ -8623,13 +8545,6 @@
         "payroll-tax",
         "property-tax",
         "tax"
-      ],
-      "long": []
-    },
-    "lesson:tens-and-extra-ones": {
-      "terms": [
-        "ten-frame",
-        "whole-number"
       ],
       "long": []
     },
@@ -9323,13 +9238,6 @@
       ],
       "long": []
     },
-    "lesson:write-numerals": {
-      "terms": [
-        "digit",
-        "ten-frame"
-      ],
-      "long": []
-    },
     "lesson:zeros-nonmonic-grouping": {
       "terms": [
         "at-least",
@@ -9654,8 +9562,7 @@
     },
     "practice:arithmetic-term": {
       "terms": [
-        "arithmetic-sequence",
-        "common-difference"
+        "arithmetic-sequence"
       ],
       "long": []
     },
@@ -10230,14 +10137,6 @@
       ],
       "long": []
     },
-    "practice:compare-groups": {
-      "terms": [
-        "circle",
-        "equal-groups",
-        "length"
-      ],
-      "long": []
-    },
     "practice:compare-irrational-values": {
       "terms": [
         "perfect-square",
@@ -10284,15 +10183,6 @@
       ],
       "long": []
     },
-    "practice:compare-three-digit": {
-      "terms": [
-        "digit",
-        "equal",
-        "line",
-        "place"
-      ],
-      "long": []
-    },
     "practice:compare-to-pi-select": {
       "terms": [
         "at-least",
@@ -10302,14 +10192,6 @@
         "diameter",
         "radical",
         "square-root"
-      ],
-      "long": []
-    },
-    "practice:compare-two-digit": {
-      "terms": [
-        "digit",
-        "equal",
-        "place"
       ],
       "long": []
     },
@@ -10779,13 +10661,6 @@
       ],
       "long": []
     },
-    "practice:continue-count-to-120": {
-      "terms": [
-        "pattern",
-        "place"
-      ],
-      "long": []
-    },
     "practice:conversion-chain-story": {
       "terms": [
         "conversion-factor",
@@ -10933,7 +10808,6 @@
     },
     "practice:count-objects": {
       "terms": [
-        "natural-number",
         "point"
       ],
       "long": []
@@ -11428,8 +11302,7 @@
     "practice:divide-fractions": {
       "terms": [
         "denominator",
-        "numerator",
-        "reciprocal"
+        "numerator"
       ],
       "long": []
     },
@@ -11485,14 +11358,6 @@
         "proportional-relationship",
         "rate",
         "unit-rate"
-      ],
-      "long": []
-    },
-    "practice:dot-group-compared-to-number": {
-      "terms": [
-        "equal",
-        "less-than",
-        "whole-number"
       ],
       "long": []
     },
@@ -12436,10 +12301,7 @@
     "practice:function-evaluation": {
       "terms": [
         "coefficient",
-        "function",
-        "input",
         "multiplication",
-        "output",
         "parentheses",
         "substitute"
       ],
@@ -13156,12 +13018,6 @@
         "solution",
         "theorem",
         "variable"
-      ],
-      "long": []
-    },
-    "practice:greater-numeral": {
-      "terms": [
-        "natural-number"
       ],
       "long": []
     },
@@ -14823,12 +14679,6 @@
       ],
       "long": []
     },
-    "practice:numeral-for-quantity": {
-      "terms": [
-        "count-on"
-      ],
-      "long": []
-    },
     "practice:object-for-measure": {
       "terms": [
         "customary-units",
@@ -14913,9 +14763,7 @@
     },
     "practice:open-number-line-to-120": {
       "terms": [
-        "line",
-        "point",
-        "tick-mark"
+        "line"
       ],
       "long": []
     },
@@ -15249,12 +15097,6 @@
     "practice:percent-grid-model": {
       "terms": [
         "decimal"
-      ],
-      "long": []
-    },
-    "practice:percent-of": {
-      "terms": [
-        "percent"
       ],
       "long": []
     },
@@ -17105,10 +16947,8 @@
       "terms": [
         "constant",
         "decimal",
-        "equivalent",
         "expression",
         "function",
-        "mixed-number",
         "multiplicity",
         "polynomial"
       ],
@@ -17118,9 +16958,7 @@
       "terms": [
         "axis-of-symmetry",
         "decimal",
-        "equivalent",
         "height",
-        "mixed-number",
         "parabola",
         "substitute",
         "symmetry",
@@ -17146,8 +16984,6 @@
         "arc",
         "coefficient",
         "decimal",
-        "equivalent",
-        "mixed-number",
         "radian",
         "radius"
       ],
@@ -17156,9 +16992,7 @@
     "practice:sat-entry-radical-equation": {
       "terms": [
         "decimal",
-        "equivalent",
         "isolate",
-        "mixed-number",
         "quadratic",
         "square-root",
         "substitute"
@@ -17185,7 +17019,6 @@
         "excluded-value",
         "expression",
         "input",
-        "mixed-number",
         "numerator",
         "solution"
       ],
@@ -17723,12 +17556,6 @@
       ],
       "long": []
     },
-    "practice:skip-count-missing": {
-      "terms": [
-        "pattern"
-      ],
-      "long": []
-    },
     "practice:slope-triangle-statements": {
       "terms": [
         "acute-angle",
@@ -17891,12 +17718,6 @@
         "perfect-square",
         "square-root",
         "variable"
-      ],
-      "long": []
-    },
-    "practice:sort-shapes-count": {
-      "terms": [
-        "circle"
       ],
       "long": []
     },
@@ -18577,13 +18398,6 @@
       ],
       "long": []
     },
-    "practice:teen-frame-compose": {
-      "terms": [
-        "count-on",
-        "ten-frame"
-      ],
-      "long": []
-    },
     "practice:ten-more-or-less": {
       "terms": [
         "regroup"
@@ -18594,12 +18408,6 @@
       "terms": [
         "distributive-property",
         "multiplication"
-      ],
-      "long": []
-    },
-    "practice:tens-ones-model": {
-      "terms": [
-        "place-value"
       ],
       "long": []
     },
@@ -18624,15 +18432,6 @@
     "practice:three-addend-story": {
       "terms": [
         "addend"
-      ],
-      "long": []
-    },
-    "practice:three-digit-symbol": {
-      "terms": [
-        "digit",
-        "equal",
-        "place",
-        "place-value"
       ],
       "long": []
     },
@@ -19025,14 +18824,6 @@
       "long": [
         "A proof gathers those parts one line at"
       ]
-    },
-    "practice:two-digit-symbol": {
-      "terms": [
-        "digit",
-        "equal",
-        "place"
-      ],
-      "long": []
     },
     "practice:two-radical-equation": {
       "terms": [

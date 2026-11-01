@@ -123,7 +123,7 @@ export const elementaryLessons: Lesson[] = [
     id: "tens-and-extra-ones",
     title: "One ten and extra ones",
     summary:
-      "A one is a single thing, like one counter. Ten ones can be put together to make one ten. A ten-frame is a box with 10 spaces, in 2 rows of 5, so a full one is a ten. A cube is a little block shaped like a die. A rod is 10 small cubes stuck together, so a rod is a ten too. Count the tens first. Then count on: keep counting the extra ones from where the tens end. A digit is one of the symbols 0 to 9. In 16, the 1 means one ten and the 6 means 6 ones: this is called place value.",
+      "A one is a single thing, like one block. Ten ones can be put together to make one ten. A ten-frame is a box with 10 spaces, in 2 rows of 5, so a full one is a ten. A cube is a little block shaped like a die. A rod is 10 small cubes stuck together, so a rod is a ten too. Count the tens first. Then count on: keep counting the extra ones from where the tens end. A digit is one of the symbols 0 to 9. In 16, the 1 means one ten and the 6 means 6 ones: this is called place value.",
     templateIds: ["teen-frame-compose", "tens-ones-model"],
     senses: { cube: "cube", cubes: "cube" },
     objectives: [
@@ -169,7 +169,7 @@ export const elementaryLessons: Lesson[] = [
       prompt:
         "A picture shows 2 ten rods and 5 single cubes. What number is shown?",
       steps: [
-        "Each rod is a ten. Count the rods by tens: 10, 20. So 2 rods are 20.",
+        "Each rod is a ten. The first rod is 10. The second rod is 10 more, so the 2 rods together are 20.",
         "Each single cube is a one. There are 5 of them.",
         "Count on from 20 for the 5 ones: 21, 22, 23, 24, 25. So 20 + 5 = 25.",
       ],
@@ -180,7 +180,7 @@ export const elementaryLessons: Lesson[] = [
       "Write the tens digit first, then the ones digit. 2 tens and 5 ones is 25, not 52.",
     ],
     parentGuide:
-      "Start with one ten-frame and teen numbers. Move to several groups of ten once that feels easy. Bundle 10 sticks with a rubber band, or snap 10 blocks together, to show that a ten is made of ten ones.",
+      "Start with one ten-frame, a box of 10 spaces, and the teen numbers 11 to 19. Move to several groups of ten once that feels easy. Bundle 10 sticks with a rubber band, or snap 10 blocks together, to show that a ten is made of ten ones.",
   },
   {
     id: "unknown-story-parts",
@@ -647,9 +647,9 @@ export const elementaryLessons: Lesson[] = [
     closingSections: [
       {
         stage: "formal",
-        title: "A constant step",
+        title: "The same step every time",
         paragraphs: [
-          "In a counting pattern with a fixed step, each number is the number before it plus the step. Each number in the list is called a term. In 5, 10, 15, 20, 25, going from the first term, 5, to the fifth term, 25, takes 4 hops of 5. In general, reaching the term in position $n$ takes $n - 1$ steps from the 1st term.",
+          "In a counting pattern with a fixed step, each number is the number before it plus the step. Each number in the list is called a term. In 5, 10, 15, 20, 25, going from the first term, 5, to the fifth term, 25, takes 4 hops of 5. A term's position is its place in the list, counting from 1. The number of hops from the first term is always the position take away 1. The letter $n$ can stand for any position. Then the term in position $n$ is $n - 1$ hops after the first term.",
         ],
       },
     ],
@@ -658,7 +658,7 @@ export const elementaryLessons: Lesson[] = [
       steps: [
         "The numbers go up by 10 each time: 170, 180, 190. So the step is 10.",
         "Add the step to the last number: 190 + 10 = 200.",
-        "190 is 1 hundred and 9 tens. One more ten makes 10 tens, which is another hundred. So 1 hundred and 1 more hundred make 200.",
+        "A hundred is 10 tens. 190 is 1 hundred and 9 tens. One more ten makes 10 tens, which is another hundred. So 1 hundred and 1 more hundred make 200.",
       ],
       answer: "200",
     },

@@ -143,7 +143,7 @@ export const texasK2Methods: Record<string, ProblemMethod> = {
   "open-number-line-to-120": {
     goal: "On a number line with only three labels, find the point at a given number or read the number at a marked point, up to 120.",
     intuition:
-      "A number line is a row of numbers in order, with equal spaces between them. Tick marks are the short marks where the numbers sit, and only a few have their number written. A jump is a move from one tick to the next. Each jump adds the same amount, called the step. A point is a dot that marks one spot, named with a letter. Labeled means the number is written. Count by the step from a labeled tick to find the number at any tick.",
+      "A number line is a row of numbers in order, with equal spaces between them. Tick marks are the short marks where the numbers sit, and only a few have their number written. A jump is a move from one tick to the next. Each jump to the right adds the same amount, called the step, and each jump to the left takes it away. A point is a dot that marks one spot, named with a letter. Labeled means the number is written. From a labeled tick, count by the step, such as 10, 20, 30 for a step of 10, to find the number at any tick.",
     senses: { jump: "jump", jumps: "jump" },
     terms: [
       "tick-mark",
@@ -297,7 +297,7 @@ export const texasK2Principles: Record<string, string> = {
   "story-sentence-match-1000":
     "A story that joins parts has the form part + part = whole. A story that takes away has the form whole − part = part. The unknown number can be in any position, and the sentence matches the story by what happens and where the unknown is.",
   "open-number-line-to-120":
-    "On a number line the tick marks are equally spaced, so each jump adds the same step. Adding the step once for each jump takes you from one label to the next. A point a few jumps right of a label is that label plus one step per jump. A point to the left is the label minus one step per jump.",
+    "On a number line the tick marks are equally spaced, so each jump to the right adds the same step. Adding the step once for each jump takes you from a label to the next label on its right. A point a few jumps right of a label is that label plus one step per jump. A point to the left is the label minus one step per jump.",
   "open-number-line-to-1000":
     "On a number line the tick marks are equally spaced. If two ticks labeled $a$ and $b$ are $n$ steps apart, each step is $(b-a)\\div n$, and the number at $k$ steps from $a$ is $a+k\\cdot\\text{step}$.",
   "eighths-and-parts-beyond-one":
@@ -442,7 +442,7 @@ export const texasK2Lessons: Lesson[] = [
     id: "dot-group-compared-to-number",
     title: "More, fewer or the same",
     summary:
-      "To compare a group with a number, first count the group. Touch each dot once. More than means a bigger number. Fewer than means a smaller number. The same as means the count and the number match.",
+      "More than means a bigger number. Fewer than means a smaller number. To compare a group with a number means to find whether the group has more, fewer or the same. First count the group, touching each dot once. The same as means the count and the number match.",
     senses: { "more than": "more-than" },
     objectives: [
       "Count groups of up to 20 dots.",
@@ -566,7 +566,7 @@ export const texasK2Lessons: Lesson[] = [
     id: "open-number-line-to-120",
     title: "Open number lines to 120",
     summary:
-      "A number line is a row of numbers in order, with equal spaces between them. Tick marks are the short marks where the numbers sit. Only a few ticks are labeled, which means their number is written. Each tick adds the same amount, called the step. Find the step. Then start at a labeled tick and count the jumps, the moves from one tick to the next.",
+      "A number line is a row of numbers in order, with equal spaces between them. Tick marks are the short marks where the numbers sit. Only a few ticks are labeled, which means their number is written. Moving one tick to the right adds the same amount each time, called the step. Find the step. Then start at a labeled tick and count the jumps, the moves from one tick to the next.",
     senses: { jump: "jump", jumps: "jump" },
     objectives: [
       "Read the number at a marked point on a number line labeled at three numbers.",
@@ -597,7 +597,7 @@ export const texasK2Lessons: Lesson[] = [
     ],
     formalTitle: "Equal spacing",
     formal: [
-      "On a number line, equal spaces stand for equal steps between the numbers. Say two labels are some jumps apart. Each jump adds the same step. So adding the step once for each jump takes you from the smaller label to the larger one.",
+      "On a number line, equal spaces stand for equal steps between the numbers. Say two labels are some jumps apart. Each jump to the right adds the same step. So adding the step once for each jump takes you from the smaller label to the larger one.",
     ],
     pitfalls: [
       "Count the jumps between ticks, not the ticks themselves.",

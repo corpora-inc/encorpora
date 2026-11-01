@@ -6,9 +6,8 @@ export const numberSenseLessons: Lesson[] = [
     id: "count-to-100",
     title: "Count to 100 by ones and tens",
     summary:
-      "Counting by ones means each number is 1 more than the one before, so you add 1 each time: 57, 58, 59, 60. Counting by tens means each number is 10 more: 20, 30, 40. A hundred chart shows the numbers 1 to 100 in rows of 10. It helps you find a missing number.",
+      "Counting by ones means each number is the one before and 1 more: 57, 58, 59, 60. Counting by tens means each number is the one before and 10 more: 20, 30, 40. A hundred chart shows the numbers 1 to 100 in rows of 10. It helps you find a missing number.",
     templateIds: ["count-sequence-missing", "hundred-chart-missing"],
-    senses: { "more than": "more-than" },
     noLink: ["square", "squares"],
     objectives: [
       "Continue counts by ones and by tens within 100, including across a ten.",
@@ -19,7 +18,7 @@ export const numberSenseLessons: Lesson[] = [
         stage: "intuition",
         title: "Keep counting through a new ten",
         paragraphs: [
-          "A one is a single thing, like one counter. A ten is a group of 10 ones. A digit is one of the symbols 0 to 9 we use to write numbers. The number 68 has two digits. The 6 means 6 tens, or 60. The 8 means 8 ones, 8 single things.",
+          "A one is a single thing, like one apple. A ten is a group of 10 ones. A digit is one of the symbols 0 to 9 we use to write numbers. The number 68 has two digits. The 6 means 6 tens, or 60. The 8 means 8 ones, 8 single things.",
           "Start at 68 and count one more: 69. That is 6 tens and 9 ones. One more one makes 10 ones. Ten ones make a new ten.",
           "So after 69 comes 70: 7 tens and 0 ones. The box □ in a count stands for a missing number. The sign + means add, or put more with. The sign = means makes, or is the same as. So 58 + 1 = 59 says 58 and 1 more make 59.",
         ],
@@ -29,7 +28,7 @@ export const numberSenseLessons: Lesson[] = [
         paragraphs: [
           "In 64, the tens digit, 6, tells how many tens. The ones digit, 4, tells how many ones. Count by ones: 64, 65, 66. The ones digit goes up by 1 each time.",
           "After a 9 in the ones, the ones digit goes back to 0, and there is one more ten: 68, 69, 70, 71.",
-          "Count by tens: 20, 30, 40, 50. Each number is one more ten, so the tens digit goes up by 1. The ones digit stays the same: 23, 33, 43.",
+          "Count by tens: 20, 30, 40, 50. Each number is one more ten. Up to 90, the tens digit goes up by 1 each time, and the ones digit stays the same: 23, 33, 43.",
           "Keep counting by tens: 70, 80, 90, 100. After 9 tens, one more ten makes 10 tens. Ten tens make one hundred, written 100.",
         ],
       },
@@ -54,7 +53,7 @@ export const numberSenseLessons: Lesson[] = [
     workedExample: {
       prompt: "Count by ones: 57, 58, □, 60. What number is missing?",
       steps: [
-        "Counting by ones means each number is 1 more than the one before.",
+        "Counting by ones means each number is the one before and 1 more.",
         "The number just before the box is 58. One more is 58 + 1 = 59.",
         "Check with the number after the box: 59 + 1 = 60. It fits, so 59 is right.",
       ],
@@ -125,11 +124,11 @@ export const numberSenseLessons: Lesson[] = [
       answer: "14",
     },
     pitfalls: [
-      "Write the 1 for the ten first, then the ones. Fourteen is 14, not 41.",
+      "For a teen number, from 11 to 19, write the 1 for the ten first, then the ones. Fourteen is 14, not 41.",
       "A full frame is always 10. You do not need to count it again.",
     ],
     parentGuide:
-      "Put 13 coins in an egg carton with 10 cups. Ask how many coins there are without counting each one. Then ask the learner to write the number.",
+      "Put 13 coins on a table: a row of 10 and 3 more. Ask how many coins there are without counting each one. Then ask the learner to write the number.",
   },
   {
     id: "number-line-moves",
@@ -319,7 +318,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
       "If a number comes after the box, add the step again. You should land on that number.",
     ],
     watch:
-      "After 9 ones, one more one makes a new ten, a group of 10. So after 69 comes 70, not 610.",
+      "After 9 single ones, one more makes 10 ones, which is a new ten. So after 69 comes 70, not 610.",
   },
   "hundred-chart-missing": {
     goal: "Find the number that belongs in an empty square of the hundred chart.",
@@ -341,7 +340,7 @@ export const numberSenseMethods: Record<string, ProblemMethod> = {
     method: [
       "A full frame is 10 and a full row is 5. You do not need to count them one by one.",
       "For the rest, count on: start at 10 or 5 and keep counting each extra counter.",
-      "Write the number. A teen number, from 11 to 19, is 1 ten and some ones: 14 is 1 ten, a full frame, and 4 ones.",
+      "Write the number. A teen number, from 11 to 19, is 1 full frame and some more counters. So 14 is 1 ten, the full frame, and 4 ones, the 4 single counters.",
     ],
     watch: "Fourteen is written 14, not 41. The 1 stands for the full ten.",
   },

@@ -139,7 +139,7 @@ export const comparisonLessons: Lesson[] = [
     id: "compare-by-place",
     title: "Compare numbers place by place",
     summary:
-      "A digit is one of the symbols 0 to 9 we use to write numbers. A one is a single thing, a ten is 10 ones, and a hundred is 10 tens. In 382, the 3 means 3 hundreds, the 8 means 8 tens and the 2 means 2 ones. To compare two numbers means to find which is greater, meaning bigger. Start with the biggest place, the one on the left. If those digits match, move one place to the right. The first place where the digits differ tells which number is greater.",
+      "A digit is one of the symbols 0 to 9 we use to write numbers. A one is a single thing, a ten is 10 ones, and a hundred is 10 tens. In 382, the 3 means 3 hundreds, the 8 means 8 tens and the 2 means 2 ones. A digit's place is its spot: ones on the right, then tens, then hundreds. To compare two numbers means to find which is greater (bigger), which is less (smaller), or that they are equal. For two numbers with the same number of digits, start with the biggest place, the one on the left. If those digits match, move one place to the right. The first place where the digits differ tells which number is greater.",
     templateIds: [
       "compare-two-digit",
       "two-digit-symbol",
@@ -157,7 +157,7 @@ export const comparisonLessons: Lesson[] = [
         stage: "intuition",
         title: "Begin with the biggest pieces",
         paragraphs: [
-          "Think of blocks. A one is a single small cube, a little block shaped like a die. A ten is a rod of 10 cubes. A hundred is a flat of 10 rods, which is 100 cubes.",
+          "Think of blocks. A one is a single small cube, a little block shaped like a die. A ten is a rod of 10 cubes. A hundred is 10 rods laid together in a flat piece, which is 100 cubes.",
           "Say one number has 5 hundreds and another has 4 hundreds. The first number is bigger, whatever the tens and ones are. The tens and ones can make 99 or less, which is not enough for one more hundred.",
           "If the hundreds are the same, look at the tens. If the tens are the same too, look at the ones.",
           "Greater than means bigger, and we write it with the sign >. Less than means smaller, and we write it with the sign <. Equal to means the same amount, and we write it with the sign =. The open side of > or < faces the greater number.",
@@ -270,9 +270,9 @@ export const comparisonLessons: Lesson[] = [
 const placeTerms: MethodTerm[] = ["place", "greater-than", "less-than"];
 const symbolTerms: MethodTerm[] = [...placeTerms, "equal"];
 const twoDigitPlaces =
-  "A digit is one of the symbols 0 to 9 we use to write numbers. A one is a single thing, and a ten is a group of 10 ones. To compare two numbers means to find which is greater or less. In 64, the 6 is in the tens place, the spot for tens, so it means 6 tens. The 4 is in the ones place, the spot for ones, so it means 4 ones. Nine ones are not enough to make another ten. So the number with more tens is greater, meaning bigger.";
+  "A digit is one of the symbols 0 to 9 we use to write numbers. A one is a single thing, and a ten is a group of 10 ones. To compare two numbers means to find which is greater (bigger), which is less (smaller), or that they are equal. In 64, the 6 is in the tens place, the spot for tens, so it means 6 tens. The 4 is in the ones place, the spot for ones, so it means 4 ones. Nine ones are not enough to make another ten. So the number with more tens is greater, meaning bigger.";
 const threeDigitPlaces =
-  "A digit is one of the symbols 0 to 9 we use to write numbers. A one is a single thing, a ten is a group of 10 ones, and a hundred is a group of 10 tens. To compare two numbers means to find which is greater or less. In 382, the 3 is in the hundreds place, the spot for hundreds. The 8 is in the tens place, the spot for tens. The 2 is in the ones place, the spot for ones. The biggest digit is 9. So the tens and ones make 99 or less, which is not enough for one more hundred. In the same way, the ones make 9 or less, which is not enough for one more ten.";
+  "A digit is one of the symbols 0 to 9 we use to write numbers. A one is a single thing, a ten is a group of 10 ones, and a hundred is a group of 10 tens. To compare two numbers means to find which is greater (bigger), which is less (smaller), or that they are equal. In 382, the 3 is in the hundreds place, the spot for hundreds. The 8 is in the tens place, the spot for tens. The 2 is in the ones place, the spot for ones. The biggest digit is 9. So the tens and ones make 99 or less, which is not enough for one more hundred. In the same way, the ones make 9 or less, which is not enough for one more ten.";
 const signs =
   "Greater than means bigger, and we write it with the sign >. Less than means smaller, and we write it with the sign <. Equal to means the same amount, and we write it with the sign =.";
 export const comparisonMethods: Record<string, ProblemMethod> = {
