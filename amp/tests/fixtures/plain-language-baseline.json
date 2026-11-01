@@ -917,9 +917,7 @@
     },
     "lesson:arithmetic-sequence-terms": {
       "terms": [
-        "arithmetic-sequence",
-        "common-difference",
-        "common-ratio"
+        "arithmetic-sequence"
       ],
       "long": []
     },
@@ -1030,12 +1028,6 @@
       ],
       "long": []
     },
-    "lesson:better-buy": {
-      "terms": [
-        "division"
-      ],
-      "long": []
-    },
     "lesson:binomial-coefficient": {
       "terms": [
         "binomial",
@@ -1106,13 +1098,6 @@
         "inequality",
         "round",
         "solution-set"
-      ],
-      "long": []
-    },
-    "lesson:budget-percent-share": {
-      "terms": [
-        "hundredth",
-        "percent"
       ],
       "long": []
     },
@@ -1952,10 +1937,7 @@
     },
     "lesson:count-relation-chain": {
       "terms": [
-        "solution",
-        "substitute",
-        "times-as-many",
-        "variable"
+        "times-as-many"
       ],
       "long": []
     },
@@ -2009,16 +1991,13 @@
       "terms": [
         "credit-card",
         "decimal",
-        "interest",
-        "round",
-        "sequence"
+        "round"
       ],
       "long": []
     },
     "lesson:credit-cost-concepts": {
       "terms": [
         "debit-card",
-        "interest",
         "minimum",
         "round"
       ],
@@ -2176,8 +2155,6 @@
     "lesson:decimal-rename-chain": {
       "terms": [
         "decimal",
-        "denominator",
-        "expression",
         "multiplication",
         "order-of-operations"
       ],
@@ -2371,16 +2348,6 @@
       ],
       "long": []
     },
-    "lesson:dividing-fractions": {
-      "terms": [
-        "denominator",
-        "dividend",
-        "divisor",
-        "quotient",
-        "reciprocal"
-      ],
-      "long": []
-    },
     "lesson:divisibility-rules": {
       "terms": [
         "divisible-by",
@@ -2449,13 +2416,7 @@
     "lesson:double-number-line-missing": {
       "terms": [
         "constant",
-        "corresponding",
-        "double-number-line",
-        "equivalent",
-        "quotient",
-        "ratio",
-        "speed",
-        "unit-rate"
+        "speed"
       ],
       "long": []
     },
@@ -2551,7 +2512,6 @@
     },
     "lesson:equally-likely-probability": {
       "terms": [
-        "denominator",
         "equally-likely"
       ],
       "long": []
@@ -2656,10 +2616,6 @@
     },
     "lesson:equivalent-ratios": {
       "terms": [
-        "constant",
-        "equivalent-ratios",
-        "proportion",
-        "quotient",
         "ratio"
       ],
       "long": []
@@ -2746,9 +2702,7 @@
     },
     "lesson:expected-count-blanks": {
       "terms": [
-        "equally-likely",
-        "expected-count",
-        "probability"
+        "equally-likely"
       ],
       "long": []
     },
@@ -2935,13 +2889,7 @@
     "lesson:fee-chain": {
       "terms": [
         "at-most",
-        "equivalent",
-        "inequality",
-        "intercept",
-        "rate",
-        "slope",
-        "solution-set",
-        "whole-number"
+        "inequality"
       ],
       "long": []
     },
@@ -3080,11 +3028,7 @@
     },
     "lesson:fraction-unit-rate": {
       "terms": [
-        "denominator",
-        "divisor",
-        "equivalent",
         "multiplication",
-        "numerator",
         "whole-number"
       ],
       "long": []
@@ -3166,15 +3110,9 @@
     },
     "lesson:function-input-output": {
       "terms": [
-        "domain",
-        "function",
         "function-notation",
-        "input",
         "multiplication",
-        "output",
-        "parentheses",
-        "quadratic",
-        "variable"
+        "parentheses"
       ],
       "long": []
     },
@@ -3748,13 +3686,7 @@
     "lesson:interest-compare-years": {
       "terms": [
         "compound-interest",
-        "constant",
         "decimal",
-        "deposit",
-        "exponential-function",
-        "interest",
-        "linear-function",
-        "principal",
         "round",
         "simple-interest"
       ],
@@ -3762,8 +3694,6 @@
     },
     "lesson:interest-table-type": {
       "terms": [
-        "compound-interest",
-        "constant",
         "principal",
         "rate",
         "round",
@@ -4116,25 +4046,13 @@
     "lesson:loan-compare-options": {
       "terms": [
         "interest",
-        "loan",
-        "principal",
         "rate"
-      ],
-      "long": []
-    },
-    "lesson:loan-offer-compare-blanks": {
-      "terms": [
-        "principal",
-        "rate",
-        "simple-interest"
       ],
       "long": []
     },
     "lesson:loan-total-cost": {
       "terms": [
-        "loan",
-        "rate",
-        "rate-of-change"
+        "rate"
       ],
       "long": []
     },
@@ -4369,12 +4287,6 @@
       ],
       "long": []
     },
-    "lesson:mean-median-blanks": {
-      "terms": [
-        "median"
-      ],
-      "long": []
-    },
     "lesson:measurable-attribute-choice": {
       "terms": [
         "capacity",
@@ -4442,13 +4354,6 @@
         "numerator",
         "round",
         "tenth"
-      ],
-      "long": []
-    },
-    "lesson:median-mode-compare-blanks": {
-      "terms": [
-        "function",
-        "median"
       ],
       "long": []
     },
@@ -5030,19 +4935,10 @@
     "lesson:payroll-property-tax": {
       "terms": [
         "hundredth",
-        "net-pay",
-        "percent",
         "property-tax",
         "rate",
         "sales-tax",
         "tax"
-      ],
-      "long": []
-    },
-    "lesson:percent-amounts-blanks": {
-      "terms": [
-        "percent",
-        "proportional-relationship"
       ],
       "long": []
     },
@@ -5056,24 +4952,11 @@
       ],
       "long": []
     },
-    "lesson:percent-chain": {
-      "terms": [
-        "round"
-      ],
-      "long": []
-    },
     "lesson:percent-change-final": {
       "terms": [
         "decimal",
-        "denominator",
-        "division",
         "liter",
-        "multiplication",
-        "numerator",
-        "percent",
         "percent-change",
-        "rate",
-        "ratio",
         "tax",
         "whole-number"
       ],
@@ -5082,17 +4965,10 @@
     "lesson:percent-change-original": {
       "terms": [
         "decimal",
-        "denominator",
-        "division",
         "liter",
-        "multiplication",
         "multiplier",
-        "numerator",
         "percent",
-        "rate",
-        "ratio",
         "round",
-        "segment",
         "strip-diagram",
         "whole-number"
       ],
@@ -5100,18 +4976,9 @@
     },
     "lesson:percent-change-rate": {
       "terms": [
-        "corresponding",
         "decimal",
-        "denominator",
-        "division",
         "hundredth",
         "liter",
-        "magnitude",
-        "multiplication",
-        "numerator",
-        "percent",
-        "percent-change",
-        "ratio",
         "round",
         "whole-number"
       ],
@@ -5120,13 +4987,6 @@
     "lesson:percent-grids-conversions": {
       "terms": [
         "decimal"
-      ],
-      "long": []
-    },
-    "lesson:percent-quantity": {
-      "terms": [
-        "multiplier",
-        "percent"
       ],
       "long": []
     },
@@ -5862,23 +5722,11 @@
       ],
       "long": []
     },
-    "lesson:ratio-pair-blanks": {
-      "terms": [
-        "ratio"
-      ],
-      "long": []
-    },
     "lesson:ratio-table-missing": {
       "terms": [
-        "constant",
-        "corresponding",
         "equivalent",
         "equivalent-ratios",
-        "greatest-common-factor",
-        "multiplier",
-        "quotient",
         "ratio",
-        "scale-factor",
         "simplest-ratio"
       ],
       "long": []
@@ -7376,11 +7224,8 @@
       "terms": [
         "absolute-value",
         "decimal",
-        "equivalent",
         "expression",
-        "mixed-number",
-        "solution",
-        "substitute"
+        "solution"
       ],
       "long": []
     },
@@ -7419,11 +7264,7 @@
     },
     "lesson:sat-entry-inequality-integer": {
       "terms": [
-        "coefficient",
-        "decimal",
-        "equivalent",
         "inequality",
-        "mixed-number",
         "solution"
       ],
       "long": []
@@ -7455,12 +7296,7 @@
     },
     "lesson:sat-entry-quadratic-solution": {
       "terms": [
-        "binomial",
         "decimal",
-        "equivalent",
-        "leading-coefficient",
-        "mixed-number",
-        "quadratic",
         "solution"
       ],
       "long": []
@@ -7490,10 +7326,7 @@
       "terms": [
         "constant",
         "decimal",
-        "equivalent",
-        "mixed-number",
-        "percent",
-        "rate"
+        "percent"
       ],
       "long": []
     },
@@ -7514,39 +7347,22 @@
     "lesson:sat-entry-root-relations": {
       "terms": [
         "coefficient",
-        "constant",
         "decimal",
-        "equivalent",
-        "leading-coefficient",
-        "mixed-number",
-        "quadratic",
-        "solution",
-        "substitute",
-        "symmetry"
+        "quadratic"
       ],
       "long": []
     },
     "lesson:sat-entry-system-expression": {
       "terms": [
-        "coefficient",
         "decimal",
-        "equivalent",
         "expression",
-        "mixed-number",
-        "multiplier",
         "solution"
       ],
       "long": []
     },
     "lesson:sat-entry-system-solve": {
       "terms": [
-        "coefficient",
-        "constant",
-        "decimal",
-        "equivalent",
-        "mixed-number",
-        "numerator",
-        "variable"
+        "decimal"
       ],
       "long": []
     },
@@ -7626,11 +7442,8 @@
       "terms": [
         "at-least",
         "deposit",
-        "initial-value",
         "interest",
-        "linear-function",
         "pattern",
-        "rate",
         "round"
       ],
       "long": []
@@ -7655,17 +7468,9 @@
     },
     "lesson:scale-factor-effects-blanks": {
       "terms": [
-        "arc-length",
-        "area",
-        "determinant",
-        "dilation",
-        "perimeter",
-        "scale-factor",
         "times-as-many"
       ],
-      "long": [
-        "Doubling the sides of a 2 by 3"
-      ]
+      "long": []
     },
     "lesson:scatterplots": {
       "terms": [
@@ -7853,12 +7658,6 @@
       ],
       "long": []
     },
-    "lesson:signed-changes-sum": {
-      "terms": [
-        "integer"
-      ],
-      "long": []
-    },
     "lesson:signed-context-order": {
       "terms": [
         "decimal",
@@ -7981,10 +7780,7 @@
       "terms": [
         "deposit",
         "interest",
-        "loan",
-        "percent",
-        "rate",
-        "slope"
+        "loan"
       ],
       "long": []
     },
@@ -8752,13 +8548,7 @@
     },
     "lesson:tax-bracket-owed": {
       "terms": [
-        "deduction",
-        "hundredth",
-        "income-tax",
         "percent",
-        "rate",
-        "slope",
-        "tax",
         "taxable-income"
       ],
       "long": []
@@ -9281,10 +9071,6 @@
     "lesson:unit-cost": {
       "terms": [
         "discount",
-        "division",
-        "multiplication",
-        "origin",
-        "proportional-relationship",
         "unit-price"
       ],
       "long": []
@@ -9318,8 +9104,6 @@
     },
     "lesson:unit-rate-pair-blanks": {
       "terms": [
-        "constant",
-        "decimal",
         "proportional-relationship",
         "rate"
       ],
@@ -9441,9 +9225,7 @@
     },
     "lesson:wage-and-cost-blanks": {
       "terms": [
-        "linear-function",
-        "net-pay",
-        "slope"
+        "net-pay"
       ],
       "long": []
     },
@@ -9932,12 +9714,6 @@
         "Pick the display by asking what the data"
       ]
     },
-    "practice:better-buy": {
-      "terms": [
-        "unit-price"
-      ],
-      "long": []
-    },
     "practice:binomial-area-product": {
       "terms": [
         "coefficient",
@@ -10027,9 +9803,7 @@
     },
     "practice:budget-percent-share": {
       "terms": [
-        "expense",
-        "hundredth",
-        "percent"
+        "expense"
       ],
       "long": []
     },
@@ -10102,13 +9876,6 @@
     "practice:check-register-balance": {
       "terms": [
         "deposit"
-      ],
-      "long": []
-    },
-    "practice:check-register-blanks": {
-      "terms": [
-        "deposit",
-        "withdrawal"
       ],
       "long": []
     },
@@ -11105,13 +10872,6 @@
       ],
       "long": []
     },
-    "practice:count-relation-chain": {
-      "terms": [
-        "substitute",
-        "variable"
-      ],
-      "long": []
-    },
     "practice:count-sides-corners": {
       "terms": [
         "corner",
@@ -11140,19 +10900,15 @@
       "terms": [
         "credit-card",
         "decimal",
-        "interest",
         "loan",
-        "percent",
         "round"
       ],
       "long": []
     },
     "practice:credit-cost-concepts": {
       "terms": [
-        "apr",
         "credit-card",
         "interest",
-        "rate",
         "round"
       ],
       "long": []
@@ -11398,10 +11154,8 @@
     },
     "practice:decimal-rename-chain": {
       "terms": [
-        "expression",
         "multiplication",
-        "power-of-10",
-        "whole-number"
+        "power-of-10"
       ],
       "long": []
     },
@@ -11702,10 +11456,7 @@
     },
     "practice:double-number-line-missing": {
       "terms": [
-        "double-number-line",
-        "equivalent",
-        "ratio",
-        "unit-rate"
+        "ratio"
       ],
       "long": []
     },
@@ -11954,8 +11705,6 @@
     "practice:expected-count-blanks": {
       "terms": [
         "equally-likely",
-        "independent-events",
-        "outcome",
         "probability"
       ],
       "long": []
@@ -12204,22 +11953,18 @@
       "terms": [
         "at-most",
         "inequality",
-        "rate",
-        "solution",
-        "solution-set"
+        "solution"
       ],
       "long": []
     },
     "practice:fee-plan-chain": {
       "terms": [
-        "elapsed-time",
         "rate"
       ],
       "long": []
     },
     "practice:fee-rule-choice": {
       "terms": [
-        "constant",
         "rate"
       ],
       "long": []
@@ -12600,10 +12345,8 @@
     "practice:fraction-unit-rate": {
       "terms": [
         "denominator",
-        "divisor",
         "numerator",
-        "rate",
-        "reciprocal"
+        "rate"
       ],
       "long": []
     },
@@ -13541,8 +13284,7 @@
       "terms": [
         "discount",
         "percent",
-        "rebate",
-        "sequence"
+        "rebate"
       ],
       "long": []
     },
@@ -13711,11 +13453,8 @@
     "practice:interest-compare-years": {
       "terms": [
         "compound-interest",
-        "constant",
         "decimal",
         "deposit",
-        "interest",
-        "principal",
         "rate",
         "round",
         "simple-interest"
@@ -13725,11 +13464,8 @@
     "practice:interest-table-type": {
       "terms": [
         "compound-interest",
-        "constant",
-        "pattern",
         "percent",
         "principal",
-        "round",
         "simple-interest"
       ],
       "long": []
@@ -14114,22 +13850,9 @@
       ],
       "long": []
     },
-    "practice:loan-offer-compare-blanks": {
-      "terms": [
-        "percent",
-        "principal",
-        "rate",
-        "simple-interest"
-      ],
-      "long": []
-    },
     "practice:loan-total-cost": {
       "terms": [
-        "finance-charge",
         "interest",
-        "loan",
-        "principal",
-        "rate",
         "simple-interest"
       ],
       "long": []
@@ -15415,10 +15138,6 @@
     },
     "practice:payroll-property-tax": {
       "terms": [
-        "gross-pay",
-        "hundredth",
-        "net-pay",
-        "percent",
         "property-tax",
         "rate",
         "tax"
@@ -15437,38 +15156,29 @@
     },
     "practice:percent-chain": {
       "terms": [
-        "percent",
         "percent-change",
-        "rate",
-        "remainder"
+        "rate"
       ],
       "long": []
     },
     "practice:percent-change-final": {
       "terms": [
-        "amount-of-change",
-        "percent"
+        "amount-of-change"
       ],
       "long": []
     },
     "practice:percent-change-original": {
       "terms": [
         "amount-of-change",
-        "division",
         "multiplication",
-        "multiplier",
         "percent"
       ],
       "long": []
     },
     "practice:percent-change-rate": {
       "terms": [
-        "amount-of-change",
-        "denominator",
         "hundredth",
-        "percent",
-        "percent-change",
-        "ratio"
+        "percent-change"
       ],
       "long": []
     },
@@ -16409,19 +16119,11 @@
       ],
       "long": []
     },
-    "practice:ratio-pair-blanks": {
-      "terms": [
-        "ratio"
-      ],
-      "long": []
-    },
     "practice:ratio-table-missing": {
       "terms": [
         "equivalent-ratios",
-        "greatest-common-factor",
         "multiplier",
-        "ratio",
-        "simplest-ratio"
+        "ratio"
       ],
       "long": []
     },
@@ -17290,11 +16992,8 @@
       "terms": [
         "absolute-value",
         "decimal",
-        "equivalent",
-        "mixed-number",
         "real-number",
-        "solution",
-        "substitute"
+        "solution"
       ],
       "long": []
     },
@@ -17337,12 +17036,7 @@
     },
     "practice:sat-entry-inequality-integer": {
       "terms": [
-        "decimal",
-        "equivalent",
         "inequality",
-        "mixed-number",
-        "negative-number",
-        "reverse-inequality-sign",
         "solution"
       ],
       "long": []
@@ -17379,9 +17073,7 @@
       "terms": [
         "binomial",
         "decimal",
-        "equivalent",
         "inequality",
-        "mixed-number",
         "quadratic",
         "solution",
         "trinomial",
@@ -17415,12 +17107,8 @@
     },
     "practice:sat-entry-rate-numeric": {
       "terms": [
-        "concentration",
-        "constant",
         "decimal",
-        "equivalent",
         "liter",
-        "mixed-number",
         "percent",
         "rate",
         "volume"
@@ -17446,35 +17134,22 @@
     "practice:sat-entry-root-relations": {
       "terms": [
         "coefficient",
-        "constant",
         "decimal",
-        "equivalent",
-        "leading-coefficient",
-        "mixed-number",
         "quadratic",
-        "solution",
         "variable"
       ],
       "long": []
     },
     "practice:sat-entry-system-expression": {
       "terms": [
-        "coefficient",
         "decimal",
-        "equivalent",
-        "expression",
-        "mixed-number",
-        "multiplier"
+        "expression"
       ],
       "long": []
     },
     "practice:sat-entry-system-solve": {
       "terms": [
-        "constant",
-        "equivalent-equations",
-        "solution",
-        "substitute",
-        "variable"
+        "solution"
       ],
       "long": []
     },
@@ -17506,10 +17181,7 @@
     "practice:savings-plan-growth": {
       "terms": [
         "deposit",
-        "initial-value",
-        "linear-function",
-        "round",
-        "slope"
+        "round"
       ],
       "long": []
     },
@@ -17531,14 +17203,10 @@
     },
     "practice:scale-factor-effects-blanks": {
       "terms": [
-        "dilation",
-        "scale-factor",
         "times-as-many",
         "transformation"
       ],
-      "long": [
-        "Doubling the sides of a 2 by 3"
-      ]
+      "long": []
     },
     "practice:scaled-bar-graph": {
       "terms": [
@@ -17773,12 +17441,6 @@
       ],
       "long": []
     },
-    "practice:signed-changes-sum": {
-      "terms": [
-        "integer"
-      ],
-      "long": []
-    },
     "practice:signed-context-order": {
       "terms": [
         "decimal",
@@ -17912,11 +17574,7 @@
     "practice:simple-interest-blanks": {
       "terms": [
         "decimal",
-        "deposit",
-        "interest",
-        "loan",
-        "percent",
-        "simple-interest"
+        "interest"
       ],
       "long": []
     },
@@ -18853,14 +18511,7 @@
     },
     "practice:tax-bracket-owed": {
       "terms": [
-        "deduction",
-        "function",
-        "hundredth",
-        "percent",
-        "rate",
-        "slope",
-        "tax",
-        "taxable-income"
+        "percent"
       ],
       "long": []
     },
@@ -19459,8 +19110,7 @@
     },
     "practice:unit-rate-pair-blanks": {
       "terms": [
-        "rate",
-        "unit-rate"
+        "rate"
       ],
       "long": []
     },
