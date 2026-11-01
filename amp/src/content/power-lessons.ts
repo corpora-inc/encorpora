@@ -34,7 +34,7 @@ export const powerLessons: Lesson[] = [
         stage: "intuition",
         title: "Factors, not repeated addition",
         paragraphs: [
-          "A factor is a number being multiplied, and the product is the answer to a multiplication. In $3^4$, the base 3 is the factor that repeats. The exponent 4, written small and raised, counts the factors: $3^4 = 3 \\times 3 \\times 3 \\times 3 = 81$.",
+          "A factor is a number being multiplied, and the product is the answer when you multiply. In $3^4$, the base 3 is the factor that repeats. The exponent 4, written small and raised, counts the factors: $3^4 = 3 \\times 3 \\times 3 \\times 3 = 81$.",
           "The exponent does not multiply the base by 4. $3 \\times 4 = 12$ is four 3s added: 3 + 3 + 3 + 3. A power multiplies the 3s instead, which grows much faster.",
           "Each step up in the exponent multiplies by the base one more time: $3^1 = 3$, $3^2 = 3 \\times 3 = 9$, $3^3 = 9 \\times 3 = 27$. Each step down divides by the base: 27 ÷ 3 = 9, then 9 ÷ 3 = 3, then 3 ÷ 3 = 1. That is why $3^0 = 1$. Any base other than 0 gives 1 for the exponent 0.",
         ],
@@ -64,7 +64,7 @@ export const powerLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "For a number $b$ and a positive whole number $n$ (1, 2, 3 and so on), the power $b^n$ is the product of $n$ factors, each equal to $b$. The base is $b$ and the exponent is $n$.",
-          "For $b$ greater than 1, the equation $b^n = v$ means that dividing $v$ by $b$ exactly $n$ times reaches 1. This division check does not work when the base is 0 or 1, because powers of 0 and 1 never change.",
+          "For $b$ greater than 1, the equation $b^n = v$ means that dividing $v$ by $b$ exactly $n$ times reaches 1. This check needs a base greater than 1. You cannot divide by 0, and dividing by 1 never changes a number.",
         ],
       },
     ],
@@ -147,10 +147,10 @@ export const powerMethods: Record<string, ProblemMethod> = {
     goal: "A base and the value of a power are given. Find the exponent, the count of repeated factors that makes that value.",
     senses: powerSenses,
     intuition:
-      "A power such as $2^5$ multiplies the same number again and again. The big number 2 is the base, the number that repeats. The small raised 5 is the exponent: it counts how many 2s are multiplied. So $2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32$. To find a missing exponent, count how many times the base fits in as a factor.",
+      "A power such as $2^5$ multiplies the same number again and again. The big number 2 is the base, the number that repeats. The small raised 5 is the exponent: it counts how many 2s are multiplied. So $2^5 = 2 \\times 2 \\times 2 \\times 2 \\times 2 = 32$. A factor is a number being multiplied. To find a missing exponent, count how many times the base appears as a factor.",
     method: [
       "Divide the value by the base, then divide the result by the base again. Keep going until you reach 1.",
-      "Count the divisions. That count is the exponent, because each division removes one factor of the base.",
+      "Count how many times you divided. That count is the exponent, because dividing once removes one factor of the base.",
       "Check by multiplying that many copies of the base. You should get the value back.",
     ],
     watch:
@@ -160,11 +160,11 @@ export const powerMethods: Record<string, ProblemMethod> = {
     goal: "Match a repeated multiplication to its power, or a power to its repeated multiplication.",
     senses: powerSenses,
     intuition:
-      "A factor is a number being multiplied. When the same factor repeats, we can write it as a power. In $5^4$, the big number 5 is the base, the factor that repeats. The small raised 4 is the exponent, which counts the factors: $5^4 = 5 \\times 5 \\times 5 \\times 5$.",
+      "A factor is a number being multiplied, and the product is the answer when you multiply. When the same factor repeats, we can write it as a power. In $5^4$, the big number 5 is the base, the factor that repeats. The small raised 4 is the exponent, which counts the factors: $5^4 = 5 \\times 5 \\times 5 \\times 5$.",
     method: [
       "Find the repeated factor. It is the base.",
       "Count how many times it is multiplied. That count is the exponent: $5 \\times 5 \\times 5 \\times 5 = 5^4$.",
-      "Reject the look-alikes: $5 \\times 4$ and $5 + 5 + 5 + 5$ are not $5^4$, because they multiply or add instead of repeating the factor.",
+      "Reject the look-alikes. $5 \\times 4$ multiplies 5 by the count, and $5 + 5 + 5 + 5$ adds four 5s. Only $5^4$ multiplies four 5s together.",
     ],
     watch: "Do not swap them: four factors of 5 is $5^4$, not $4^5$.",
   },
@@ -173,7 +173,7 @@ export const powerMethods: Record<string, ProblemMethod> = {
     senses: { ...powerSenses, "more than": "more-than" },
     noLink: ["changes", "mean"],
     intuition:
-      "A power multiplies the same number again and again. In $2^5$, the base 2 is the number that repeats, and the small raised 5, the exponent, counts the 2s: $2^5 = 32$. A product is the answer to a multiplication. To compare, find each value first.",
+      "A power multiplies the same number again and again. In $2^5$, 2 is the number that repeats, called the base. The small raised 5 is called the exponent, and it counts the 2s: $2^5 = 32$. A factor is a number being multiplied, and a product is the answer when you multiply. To compare, find each value first.",
     method: [
       "Write each power as its repeated factors.",
       "Find each value. Build from small powers you know: $2^6 = 2^3 \\times 2^3 = 8 \\times 8 = 64$.",
@@ -187,7 +187,7 @@ export const powerMethods: Record<string, ProblemMethod> = {
     senses: powerSenses,
     noLink: ["whole"],
     intuition:
-      "In $3^2$, the small raised 2 is an exponent. It means multiply 3 by itself: $3^2 = 3 \\times 3 = 9$, read “3 squared”. An exponent applies only to the number, or the group in parentheses, just before it.",
+      "In $3^2$, 3 is called the base and the small raised 2 is called the exponent. Multiplying 3 by itself like this is called squaring it: $3^2 = 3 \\times 3 = 9$, read “3 squared”. An exponent applies only to the number, or the group in parentheses, just before it.",
     method: [
       "Work inside parentheses first.",
       "Then work out powers. An exponent applies only to the number or group just before it.",
@@ -202,7 +202,7 @@ export const powerMethods: Record<string, ProblemMethod> = {
     intuition:
       "Doubling means multiplying by 2. A count that starts at 1 and doubles 3 times becomes $2 \\times 2 \\times 2 = 8$, written $2^3$. The small raised 3, called the exponent, counts how many times we multiply by 2. Tripling means multiplying by 3 each step.",
     method: [
-      "Find the amount at step 0, the start. After $n$ steps, multiply the start by the step factor (2 for doubling, 3 for tripling) $n$ times. If it starts at 1, the result is the factor to the power $n$.",
+      "Find the amount at step 0, the start. After $n$ steps, multiply the start by 2 for each step of doubling, or by 3 for each step of tripling: $n$ times in all. If it starts at 1, the result is that number to the power $n$.",
       "Build the power from the last value shown: $2^7 = 2^3 \\times 2^4 = 8 \\times 16 = 128$.",
     ],
     watch:
@@ -212,9 +212,9 @@ export const powerMethods: Record<string, ProblemMethod> = {
 
 export const powerPrinciples: Record<string, string> = {
   "power-missing-exponent":
-    "For a base $b$ greater than 1 and a positive whole number $n$, $b^n = v$ means that dividing $v$ by $b$ exactly $n$ times reaches 1.",
+    "For a base $b$ greater than 1 and $n$ equal to 1, 2, 3 and so on, $b^n = v$ means that dividing $v$ by $b$ exactly $n$ times reaches 1.",
   "power-repeated-product":
-    "A product of $n$ equal factors, each equal to $b$, is the power $b^n$. The base $b$ is the repeated factor, and the exponent $n$ is the count.",
+    "Multiplying $n$ equal factors, each equal to $b$, gives the power $b^n$. The base $b$ is the repeated factor, and the exponent $n$ is the count.",
   "power-compare":
     "Powers are compared by their values. Exchanging the base and the exponent usually changes the value.",
   "power-order-trap":

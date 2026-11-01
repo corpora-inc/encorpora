@@ -32,23 +32,45 @@ export const rightTriangleMethods: Record<string, ProblemMethod> = {
       "Add the squares, not the leg lengths. The hypotenuse is across from the right angle, even when the triangle is turned.",
   },
   "right-triangle-missing-leg": {
-    goal: "Given a right triangle's hypotenuse and one leg, find its other leg.",
+    goal: "A right triangle's hypotenuse (longest side) and one leg are given. Find the length of its other leg.",
+    senses: {
+      side: "side",
+      square: "square-number",
+      squares: "square-number",
+      degrees: "degree-angle",
+      unit: "unit",
+      difference: "difference-subtract",
+    },
+    noLink: ["rule", "opposite"],
+    intuition:
+      "A right triangle has one corner shaped like the corner of a page, called a right angle. Turns are measured in degrees, the unit for angles, and a right angle is 90 degrees. Its legs are the two sides that meet there, and the hypotenuse is the longest side, across from that corner. Squaring means multiplying a number by itself: $5^2 = 5 \\times 5 = 25$. In every right triangle, the two leg squares add up to the hypotenuse square. So when the hypotenuse is known, subtract the known leg's square from the hypotenuse's square to get the missing leg's square.",
     terms: [...terms, "square-root"],
     method: [
-      "Use one length unit. Let $c$ be the hypotenuse length, a the known leg length, and $x$ the missing leg length.",
-      "Write x² + a² = c². Subtract a² from both sides: x² = c² − a².",
-      "Calculate the difference, then take its positive square root. Check x² + a² = c² and report the length unit.",
+      "Use one length unit. Let $c$ be the hypotenuse length, $a$ the known leg length, and $x$ the missing leg length.",
+      "The leg squares add to the hypotenuse square: $x^2 + a^2 = c^2$. Subtract $a^2$ from both sides: $x^2 = c^2 - a^2$.",
+      "Work out the difference, then take its positive square root, the positive number that times itself gives it.",
+      "Check that $x^2 + a^2 = c^2$, and give the length unit.",
     ],
     watch:
       "Subtract the known leg's square from the hypotenuse's square. The missing leg must be shorter than the hypotenuse.",
   },
   "pythagorean-converse": {
-    goal: "Given the three side lengths of a triangle, decide whether it has a right angle.",
+    goal: "The three side lengths of a triangle are given. Decide whether it has a right angle, a square corner.",
+    senses: {
+      side: "side",
+      square: "square-number",
+      squares: "square-number",
+      degrees: "degree-angle",
+      unit: "unit",
+    },
+    noLink: ["rule", "opposite"],
+    intuition:
+      "Turns are measured in degrees, the unit for angles. A right angle is a corner like the corner of a page, a quarter-turn of 90 degrees. Squaring means multiplying a number by itself: $5^2 = 25$. In a right triangle, the squares of the two shorter sides add up to the square of the longest side. The reverse is also true: if they add up exactly, the triangle has a right angle. So compare the two results.",
     terms: [...terms, "converse"],
     method: [
-      "Use the same unit for all three lengths. Name the longest length $c$ and the other lengths $a$ and $b$.",
-      "Calculate a² + b² and c² separately.",
-      "If they are equal, the converse of the Pythagorean theorem guarantees a right triangle. If they differ, the Pythagorean theorem rules out a right triangle.",
+      "Use the same unit for all three lengths. Name the longest length $c$ and the other two $a$ and $b$.",
+      "Work out $a^2 + b^2$ and $c^2$ separately.",
+      "If they are equal, the triangle has a right angle, across from the longest side. If they differ, it has no right angle.",
     ],
     watch:
       "The longest side is not necessarily listed last. Do not call it a hypotenuse until a right angle is established.",
@@ -58,9 +80,9 @@ export const rightTrianglePrinciples: Record<string, string> = {
   "right-triangle":
     "Pythagorean theorem (a proved rule): in a right triangle, let $a$ and $b$ be the leg lengths and $c$ the hypotenuse length. Use the same unit for all three. Then $a^2 + b^2 = c^2$.",
   "right-triangle-missing-leg":
-    "Subtracting the same quantity from both sides preserves equality. Thus a² + x² = c² gives x² = c² − a²; a side length is the positive square root.",
+    "Subtracting the same amount from both sides keeps an equation true. So $a^2 + x^2 = c^2$ gives $x^2 = c^2 - a^2$. A side length is the positive square root: $x = \\sqrt{c^2 - a^2}$.",
   "pythagorean-converse":
-    "For a triangle with longest side length $c$ and other side lengths $a$ and $b$, all in one unit, a² + b² = c² if and only if the triangle has a right angle opposite $c$.",
+    "For a triangle with longest side length $c$ and other side lengths $a$ and $b$, all in one unit: if $a^2 + b^2 = c^2$, the triangle has a right angle across from $c$. If not, it has no right angle.",
 };
 
 const triangleDefinitions: Lesson["sections"][number] = {
@@ -179,11 +201,22 @@ export const missingLegLesson: Lesson = {
   id: "right-triangle-missing-leg",
   title: "Find a missing leg of a right triangle",
   summary:
-    "In a right triangle, two sides meet at its square corner; these are the legs. The opposite, longest side is the hypotenuse. Its square matches the two leg squares together. Subtract the known leg's square to find the missing leg's square, then take the positive length whose square is that result.",
+    "A right triangle has one corner shaped like the corner of a page, called a right angle. The two sides that meet there are the legs. The longest side, across from the corner, is the hypotenuse. Draw a square (a shape with four equal sides and four square corners) on each side. The square on the hypotenuse has the same area, or amount of flat surface, as the two leg squares together. So if you know the hypotenuse and one leg, subtract to find the other leg's square. Then find the positive number that times itself gives that square.",
   templateIds: ["right-triangle-missing-leg"],
-  senses: { degrees: "degree-angle", side: "side", squared: "square-number" },
+  senses: {
+    difference: "difference-subtract",
+    degrees: "degree-angle",
+    side: "side",
+    squared: "square-number",
+    squaring: "square-number",
+    square: "square-shape",
+    squares: "square-shape",
+    unit: "unit",
+    vertex: "vertex",
+  },
+  noLink: ["parts", "part", "whole", "rule", "third", "opposite", "root"],
   objectives: [
-    "Distinguish a known hypotenuse from a known leg.",
+    "Tell whether a given length is the hypotenuse or a leg.",
     "Use subtraction and a positive square root to find the other leg.",
   ],
   sections: [
@@ -191,8 +224,9 @@ export const missingLegLesson: Lesson = {
       stage: "intuition",
       title: "What you will use",
       paragraphs: [
-        "In a right triangle, the two legs meet at the square corner and the hypotenuse lies opposite it. The hypotenuse is longest. Its square is the total area of the two leg squares, so subtract the known leg's square to find the missing leg's square.",
-        "Keep all lengths in the same unit. A side length is positive, so take the positive square root of the area you find.",
+        "A right angle is a quarter-turn. Turns are measured in degrees, the unit for angles, so a right angle is 90 degrees. Picture a right triangle with a hypotenuse of 5 cm and one leg of 3 cm. Build a square on each side. Area is the amount of flat surface a shape covers. The square on the hypotenuse has area 5 × 5 = 25 square centimeters. The square on the known leg has area 3 × 3 = 9.",
+        "In every right triangle, the two leg squares together cover exactly the hypotenuse square. So the missing leg's square is what is left: 25 − 9 = 16 square centimeters. Its side is the number that times itself makes 16, which is 4. The missing leg is 4 cm long.",
+        "Two symbols make this quicker. Squaring means multiplying a number by itself, and a small raised 2 shows it: $4^2 = 4 \\times 4 = 16$. Going back is called taking the square root, written with a root sign: $\\sqrt{16} = 4$. A side length is positive, so use the positive square root. Keep all lengths in the same unit.",
       ],
     },
     {
@@ -207,24 +241,24 @@ export const missingLegLesson: Lesson = {
     {
       title: "The hypotenuse square is the whole",
       paragraphs: [
-        "In every right triangle, the square on the hypotenuse has the same area as the two leg squares together. This is the Pythagorean theorem. A theorem is a mathematical statement established by reasoning.",
-        "When the hypotenuse is known, its square gives the whole area. The known leg square supplies one part. Subtract that part from the whole to find the area of the missing leg square.",
+        "In every right triangle, the square on the hypotenuse has the same area as the two leg squares together. A theorem is a math statement proved true by careful reasoning, and this one is called the Pythagorean theorem.",
+        "When the hypotenuse is known, its square gives the whole area. The known leg square is one part. Subtract that part from the whole to find the area of the missing leg square.",
       ],
     },
     {
       title: "Remove the known part",
       paragraphs: [
-        "Suppose the hypotenuse is 13 cm and one leg is 5 cm. Let \\($x$\\) stand for the other leg's length in centimeters. The two leg squares together equal the hypotenuse square: x² + 5² = 13².",
-        "The hypotenuse square has area 169 cm². One leg square has area 25 cm². The other leg square supplies the rest: 169 − 25 = 144 cm². In the equation, subtract the same number on the left and on the right of the equals sign, so the two stay equal: x² + 25 − 25 = 169 − 25, so x² = 144.",
-        "A square root is the nonnegative number (zero or greater) whose square is a given number. Since 12 × 12 = 144, √144 = 12. A side has positive length, so x = 12 and the missing side is 12 cm long. The value −12 also squares to 144, but it cannot be a side length.",
-        "This is subtraction because the hypotenuse square is the total and one leg square is a known part. Adding 169 and 25 would find a larger total instead of the missing part. Subtract the squares, not the lengths: 13 − 5 = 8, and 8² + 5² = 89, not 169.",
+        "Suppose the hypotenuse is 13 cm and one leg is 5 cm. Let $x$ stand for the other leg's length in centimeters. The two leg squares together equal the hypotenuse square: $x^2 + 5^2 = 13^2$.",
+        "The hypotenuse square has area $13^2 = 169$ cm². One leg square has area $5^2 = 25$ cm². The other leg square is the rest: 169 − 25 = 144 cm². In the equation, subtract 25 on the left and on the right of the equals sign, so the two sides stay equal: $x^2 + 25 - 25 = 169 - 25$, so $x^2 = 144$.",
+        "The root sign means the square root that is zero or greater: $\sqrt{144}$ is the number, zero or greater, whose square is 144. Since 12 × 12 = 144, $\\sqrt{144} = 12$. A side has positive length, so $x = 12$ and the missing side is 12 cm long. The value −12 also squares to 144, but it cannot be a side length.",
+        "This is subtraction because the hypotenuse square is the total and one leg square is a known part. Adding 169 and 25 would give a bigger total, not the missing part. Subtract the squares, not the lengths: 13 − 5 = 8, and $8^2 + 5^2 = 89$, not 169.",
       ],
     },
     {
       title: "Either leg can be unknown",
       paragraphs: [
-        "The letters are names for lengths, not fixed positions on the page. With hypotenuse \\($c$\\), known leg \\($a$\\), and missing leg \\($x$\\), use x² = c² − a². The hypotenuse must exceed the known leg, so the difference is positive.",
-        "A root need not be a whole number. A hypotenuse of 3 cm and leg of 1 cm give x² = 9 − 1 = 8 and x = √8. The missing side is √8 cm long. Keep this exact form unless asked to round. Check any proposed length by squaring it and restoring the original sum.",
+        "The letters are names for lengths, not fixed places on the page. With hypotenuse $c$, known leg $a$ and missing leg $x$, use $x^2 = c^2 - a^2$. The hypotenuse is longer than the known leg, so this difference is positive.",
+        "A square root need not be a whole number. A hypotenuse of 3 cm and a leg of 1 cm give $x^2 = 9 - 1 = 8$, so $x = \\sqrt{8}$. The missing side is $\\sqrt{8}$ cm long, a little less than 3 cm. Keep this exact form unless the question asks you to round. Check any answer by squaring it and adding the known leg's square.",
       ],
     },
   ],
@@ -232,11 +266,11 @@ export const missingLegLesson: Lesson = {
     prompt:
       "A right triangle has a hypotenuse of 13 cm and one leg of 5 cm. Find the other leg.",
     steps: [
-      "Let \\($x$\\) be the missing leg length in centimeters. The hypotenuse is 13 cm, so x² + 5² = 13².",
-      "Calculate 5² = 25 and 13² = 169: x² + 25 = 169.",
-      "Subtract 25 on the left and on the right of the equals sign: x² = 169 − 25 = 144.",
-      "Take the positive square root: x = √144 = 12, since 12 × 12 = 144.",
-      "Check: 12² + 5² = 144 + 25 = 169 = 13². The leg 12 cm is shorter than the hypotenuse 13 cm.",
+      "The 13 cm side is the hypotenuse, the longest side, and 5 cm is a leg. Let $x$ be the missing leg length in centimeters. The two leg squares add to the hypotenuse square: $x^2 + 5^2 = 13^2$.",
+      "Work out the known squares: $5^2 = 5 \\times 5 = 25$ and $13^2 = 13 \\times 13 = 169$. So $x^2 + 25 = 169$.",
+      "Subtract 25 on the left and on the right of the equals sign, so $x^2$ stands alone and the sides stay equal: $x^2 = 169 - 25 = 144$.",
+      "Take the positive square root, because a length is positive: $x = \\sqrt{144} = 12$, since 12 × 12 = 144.",
+      "Check: $12^2 + 5^2 = 144 + 25 = 169 = 13^2$. The leg, 12 cm, is shorter than the hypotenuse, 13 cm, as it must be.",
     ],
     answer: "12",
     answerUnit: "centimeters",
@@ -249,9 +283,9 @@ export const missingLegLesson: Lesson = {
     },
   ],
   pitfalls: [
-    "Identify the hypotenuse before choosing addition or subtraction.",
-    "Subtract squared lengths, then take the square root of the difference.",
-    "A side length must be positive. A zero difference would not give a triangle.",
+    "Find the hypotenuse, the side across from the right angle, before choosing to add or subtract.",
+    "Subtract the squared lengths, then take the square root of the difference.",
+    "A side length must be positive. A difference of zero would not give a triangle.",
   ],
   parentGuide:
     "Give a hypotenuse of 10 cm and a leg of 6 cm. Ask the learner to explain which square is the whole and which is the known part, then verify the missing length of 8 cm by substitution.",
@@ -261,45 +295,71 @@ export const converseLesson: Lesson = {
   id: "pythagorean-converse",
   title: "Recognize a right triangle from its side lengths",
   summary:
-    "A comparison of three squares determines whether a triangle has a right angle.",
+    "A right angle is a square corner. You can tell whether a triangle has one from its three side lengths alone. Square each length, which means multiply it by itself. Add the squares of the two shorter sides. If the total equals the square of the longest side, the triangle has a right angle. For sides 5, 12 and 13: 25 + 144 = 169, and 13 × 13 = 169, so it does.",
   templateIds: ["pythagorean-converse"],
-  senses: { degrees: "degree-angle", side: "side", squared: "square-number" },
+  senses: {
+    "more than": "more-than",
+    degrees: "degree-angle",
+    side: "side",
+    sides: "side",
+    squared: "square-number",
+    squaring: "square-number",
+    square: "square-number",
+    squares: "square-number",
+    unit: "unit",
+    vertex: "vertex",
+    radius: "radius",
+  },
+  noLink: [
+    "changes",
+    "part",
+    "center",
+    "base",
+    "images",
+    "rule",
+    "third",
+    "opposite",
+    "whole",
+  ],
   objectives: [
-    "Find the longest side regardless of listing order.",
-    "Use equality of squared lengths to identify right triangles.",
-    "Explain why the converse is justified.",
+    "Find the longest side, whatever order the lengths are listed in.",
+    "Compare squared lengths to decide whether a triangle has a right angle.",
+    "Explain why equal squares guarantee a right angle.",
   ],
   sections: [
     {
       stage: "intuition",
       title: "Begin with a triangle",
       paragraphs: [
-        "A right triangle has a square corner. The side opposite it is the longest. To tell whether a triangle is right from its side lengths, compare the square of the longest length with the sum of the other two squares.",
-        "The question gives a triangle with all lengths in one unit. For proposed lengths, first check that the shorter two add to more than the longest; otherwise they cannot enclose a triangle.",
+        "Turns are measured in degrees, the unit for angles. A right triangle is a triangle with one square corner, called a right angle: a quarter-turn, 90 degrees. The side across from that corner is the longest. Squaring a number means multiplying it by itself, shown by a small raised 2: $5^2 = 5 \\times 5 = 25$.",
+        "To tell whether a triangle is right from its side lengths, compare two numbers. One is the square of the longest length. The other is the two shorter lengths squared and added. For 3, 4 and 5 cm: $3^2 + 4^2 = 9 + 16 = 25$ and $5^2 = 25$. They match, so the triangle has a right angle.",
+        "All lengths must use one unit. For lengths you make up, first check that the two shorter ones add to more than the longest; otherwise they cannot close up into a triangle.",
       ],
     },
     { ...triangleDefinitions, illustration: "right-triangle-orientation" },
     {
       title: "Compare squares of lengths",
       paragraphs: [
-        "Squaring means multiplying a number by itself: 5² = 5 × 5 = 25. Let \\($c$\\) name the longest numerical side length and \\($a$\\) and \\($b$\\) the other two, all measured in one unit. Calculate a² + b² and c² separately.",
-        "The Pythagorean theorem says that every right triangle satisfies a² + b² = c². Therefore, if these two results differ, the given triangle is not right. For lengths 4 cm, 5 cm, and 6 cm, compare 4² + 5² = 16 + 25 = 41 with 6² = 36. Since 41 ≠ 36, there is no right angle.",
-        "The converse says that if a triangle satisfies a² + b² = c², then it has a right angle opposite its longest side. A converse exchanges a statement's condition and conclusion. It needs justification: reversing a true statement does not automatically produce another true statement.",
+        "Squaring means multiplying a number by itself: $5^2 = 5 \\times 5 = 25$. Let $c$ be the longest side length and $a$ and $b$ the other two, all in one unit. Work out $a^2 + b^2$ and $c^2$ separately.",
+        "A theorem is a math statement proved true by reasoning. One theorem, called the Pythagorean theorem, says that every right triangle has $a^2 + b^2 = c^2$. So if the two results differ, the triangle is not right. For lengths 4 cm, 5 cm and 6 cm, compare $4^2 + 5^2 = 16 + 25 = 41$ with $6^2 = 36$. The sign $\\ne$ means “is not equal to”. Since $41 \\ne 36$, there is no right angle.",
+        "The converse goes the other way: if a triangle has $a^2 + b^2 = c^2$, then it has a right angle across from its longest side. A converse swaps a statement's “if” part and “then” part. It needs its own reason, because reversing a true statement does not always give a true statement.",
       ],
     },
     {
       title: "Why equality guarantees a right angle",
       paragraphs: [
-        "Construct a separate right triangle with legs of lengths \\($a$\\) and \\($b$\\). Call its hypotenuse length \\($h$\\). The Pythagorean theorem gives h² = a² + b². If the original triangle satisfies a² + b² = c², then h² = c². Because \\($h$\\) and \\($c$\\) are positive lengths, h = c.",
-        "The constructed right triangle and the original triangle now have the same three side lengths. Three fixed side lengths determine a triangle's angles: a circle consists of points at a fixed distance, called its radius, from a point called its center. Fix one side as a base. A vertex at the required distances from the base endpoints must lie on both circles centered at those endpoints, with radii equal to the other two side lengths. Two distinct circles intersect at no more than two points. For a triangle, the two possible meeting points lie on opposite sides of the base and are mirror images. Thus the triangles have equal corresponding angles. This fact is called side-side-side congruence; congruent figures have the same shape and size. The original triangle therefore has the constructed triangle's right angle.",
+        "Build a separate right triangle with legs of lengths $a$ and $b$. Call its hypotenuse length $h$. The Pythagorean theorem gives $h^2 = a^2 + b^2$. If the original triangle has $a^2 + b^2 = c^2$, then $h^2 = c^2$. Both $h$ and $c$ are positive lengths, so $h = c$.",
+        "The new right triangle and the original triangle now have the same three side lengths. Three side lengths fix a triangle's angles. Here is why. A circle is all the points at a fixed distance, called its radius, from one point, called its center.",
+        "Lay one side down as a base. The third corner, or vertex, must be at the right distance from each end of the base. So it lies on two circles, one centered at each end, with radii equal to the other two side lengths. Two different circles cross at no more than two points. Those two points are mirror images across the base, so either one gives the same angles.",
+        "Figures with the same shape and size are called congruent, and this fact is called side-side-side congruence. So the two triangles have equal matching angles, and the original triangle has the new triangle's right angle.",
       ],
     },
     {
       title: "Equality is the test",
       paragraphs: [
-        "For lengths 13 cm, 5 cm, and 12 cm, the longest is 13 cm even though it is listed first. Compare 5² + 12² = 25 + 144 = 169 with 13² = 169. They are equal, so the triangle is right.",
-        "Unequal results can occur in either direction. For 4 cm, 5 cm, and 6 cm, the sum 41 exceeds 36. For 2 cm, 3 cm, and 4 cm, the sum 4 + 9 = 13 is below 16. Both triangles are not right. The test asks for equality, not which result is greater.",
-        "Do not use \\($c$\\) as a name for an arbitrary listed side. In a right triangle the hypotenuse is the longest, so only the longest side can occupy that role in the test. Until the equality is established, call it the longest side rather than a hypotenuse.",
+        "For lengths 13 cm, 5 cm and 12 cm, the longest is 13 cm even though it is listed first. Compare $5^2 + 12^2 = 25 + 144 = 169$ with $13^2 = 169$. They are equal, so the triangle is right.",
+        "Unequal results can go either way. For 4 cm, 5 cm and 6 cm, the sum 41 is more than 36. For 2 cm, 3 cm and 4 cm, the sum 4 + 9 = 13 is less than 16. Neither triangle is right. The test asks whether they are equal, not which is greater.",
+        "Do not use $c$ for whichever side is listed last. The hypotenuse of a right triangle (the side across from the right angle) is always the longest, so only the longest side can play that part. Until the squares are shown equal, call it the longest side, not a hypotenuse.",
       ],
     },
   ],
@@ -307,10 +367,10 @@ export const converseLesson: Lesson = {
     prompt:
       "A triangle has side lengths 13 cm, 5 cm, and 12 cm. Is it a right triangle?",
     steps: [
-      "The longest side is 13 cm. Compare its square with the sum of the other two squares.",
-      "Square the other lengths: 5² = 25 and 12² = 144. Add: 25 + 144 = 169.",
-      "Square the longest length: 13² = 169.",
-      "The results are equal: 5² + 12² = 13². By the converse of the Pythagorean theorem, the triangle has a right angle opposite the 13 cm side.",
+      "Find the longest side first, because only it can be across from a right angle: 13 cm, even though it is listed first.",
+      "Square the two shorter lengths, multiplying each by itself, and add: $5^2 = 25$ and $12^2 = 144$, so $25 + 144 = 169$.",
+      "Square the longest length: $13^2 = 13 \\times 13 = 169$.",
+      "The results are equal: $5^2 + 12^2 = 13^2$. When the squares match like this, the triangle has a right angle, across from the 13 cm side.",
     ],
     answer: "Right triangle",
   },
@@ -324,7 +384,7 @@ export const converseLesson: Lesson = {
   pitfalls: [
     "Use the longest length for the square on its own, regardless of listing order.",
     "Compare exact values. Nearly equal squares do not prove an exactly right angle.",
-    "Three positive numbers need not be triangle side lengths. The sum of the two shorter lengths must exceed the longest.",
+    "Three positive numbers need not be the sides of a triangle. The two shorter lengths must add to more than the longest.",
   ],
   parentGuide:
     "Compare triangles with lengths 3, 4, 5 and 3, 4, 6 in one unit. Ask the learner to identify the longest side, calculate both results, and explain why only the first triangle is right. A sketch's appearance is not proof.",

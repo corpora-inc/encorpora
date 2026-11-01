@@ -54,8 +54,8 @@ const specs: Spec[] = [
     method: [
       "Say what each axis shows, with its unit.",
       "Read a labeled point as (first quantity, second quantity), and say it in a sentence with the units.",
-      "To find the unit rate, divide the second number of the point by the first. The graph passes through $(1, r)$.",
-      "To decide if the graph is proportional, check two things: it is a straight line, and it passes through $(0, 0)$.",
+      "To find the unit rate, pick a point other than $(0, 0)$ and divide its second number by its first. The graph passes through $(1, r)$.",
+      "To decide if the graph is proportional, check two things: it is a straight line that is not straight up and down, and it passes through $(0, 0)$.",
     ],
     watch:
       "A line that goes up is not always proportional. If it meets the vertical axis above 0, something is already there at the start, like a fixed fee. Also, the second number of a point is a total, not the rate.",
@@ -75,7 +75,7 @@ const specs: Spec[] = [
     ],
     formalTitle: "Why the test works",
     formal: [
-      t`If $y = rx$, then $y \div x = r$ for every $x \neq 0$ ($x$ not equal to 0), and $x = 0$ gives $y = 0$. So every point is on the line through $(0, 0)$ with slope $r$. Going the other way, if a graph is a line through $(0, 0)$, every point has $y/x$ equal to the same number, so $y = rx$. A line missing $(0, 0)$ has a nonzero starting value $b$, so $y/x = r + b/x$ changes with $x$.`,
+      t`If $y = rx$, then $y \div x = r$ for every $x \neq 0$ ($x$ not equal to 0), and $x = 0$ gives $y = 0$. So every point is on the line through $(0, 0)$ with slope $r$. Going the other way, take a line through $(0, 0)$ that is not straight up and down. Every point on it other than $(0, 0)$ has the same value of $y \div x$; call it $r$. So $y = rx$. A line missing $(0, 0)$ has a starting value $b$ that is not 0. Then $y \div x = r + b \div x$, which changes with $x$.`,
     ],
     pitfalls: [
       "Read the pair in the order (first quantity, second quantity).",
@@ -97,7 +97,7 @@ const specs: Spec[] = [
     templateId: "story-graph-match",
     title: "Match a story to a graph",
     summary:
-      "A graph can tell a story even without numbers. Time runs from left to right. Where the line goes up, the amount is increasing (getting bigger). Where it is level, the amount is constant: it stays the same. Where it goes down, the amount is decreasing (getting smaller). A steeper piece, one that rises or falls more sharply, means the amount is changing faster.",
+      "A graph can tell a story even without numbers. Time runs from left to right. Where the line goes up, the amount is increasing, which means getting bigger. Where it is level, the amount is constant: it stays the same. Where it goes down, the amount is decreasing, which means getting smaller. A steeper piece, one that rises or falls more sharply, means the amount is changing faster.",
     objectives: [
       "Describe a graph as increasing, constant and decreasing parts in order.",
       "Match a story to a graph and find where a quantity changes fastest or slowest.",
@@ -105,7 +105,7 @@ const specs: Spec[] = [
     goal: "Match a story to a graph with no scale and describe where the quantity increases, decreases, stays constant, or changes fastest or slowest.",
     figure: true,
     intuition: [
-      t`Some graphs have no numbers. They show how one quantity changes over time. Time runs from left to right, so the left side of the graph is the beginning. When the line goes up, the quantity is increasing. When the line is level, the quantity is constant, which means it stays the same. When the line goes down, the quantity is decreasing.`,
+      t`Some graphs have no scale, the numbers marked along the axes. They show how one quantity changes over time. Time runs from left to right, so the left side of the graph is the beginning. Increasing means getting bigger: when the line goes up, the quantity is increasing. When the line is level, the quantity is constant, which means it stays the same. Decreasing means getting smaller: when the line goes down, the quantity is decreasing.`,
       t`A graph is read in order, one piece at a time. A story is matched to a graph by checking each part of the story against the piece that is at the same place.`,
     ],
     terms: [
@@ -139,11 +139,11 @@ const specs: Spec[] = [
     },
     methodTitle: "Which part is fastest",
     methodText: [
-      t`Suppose a graph has four pieces, each covering the same amount of time. Compare how much each piece rises or falls. The piece that rises or falls the most is the steepest, so the quantity changes fastest there. A gentle piece changes slowly. A level piece is not changing. Fast decreasing is also fast: a steep piece going down changes as fast as a steep piece going up.`,
+      t`Suppose a graph has four pieces, each covering the same amount of time. Compare how much each piece rises or falls. The piece that rises or falls the most is the steepest, so the quantity changes fastest there. A gentle piece changes slowly. A level piece is not changing. Fast decreasing is also fast: a piece going down changes as fast as an equally steep piece going up.`,
     ],
     formalTitle: "Rate of change from a graph",
     formal: [
-      t`The input is the quantity across the bottom, here time, and the output is the quantity going up. On a piece that is a line segment (a straight piece with two ends), the slope is the change in the output divided by the change in the input. The bars in $|\text{slope}|$ mean the size of the slope, ignoring its sign. When the input changes by the same amount on two pieces, the one with the larger change in output has the larger $|\text{slope}|$, so the output changes faster there. A sign tells direction: positive is increasing and negative is decreasing. Without numbers on the axes, a graph can only be compared by direction and steepness.`,
+      t`The input is the quantity across the bottom, here time, and the output is the quantity going up. On a piece that is a line segment (a straight piece with two ends), the slope is the change in the output divided by the change in the input. The bars in $|\text{slope}|$ mean the size of the slope, ignoring its sign. Suppose the input changes by the same amount on two pieces. The piece whose output changes by more, ignoring direction, has the larger $|\text{slope}|$. So the output changes faster there. A sign tells direction: positive is increasing and negative is decreasing. Without numbers on the axes, a graph can only be compared by direction and steepness.`,
     ],
     pitfalls: [
       "Read from left to right: left is earlier.",
@@ -277,19 +277,19 @@ const specs: Spec[] = [
       "more than": "more-than",
       vertex: "vertex",
     },
-    noLink: ["opposite", "third", "rule", "square"],
+    noLink: ["opposite", "third", "rule", "square", "unit"],
     id: "triangle-uniqueness",
     templateId: "triangle-uniqueness",
     title: "How many triangles fit these measures",
     summary:
-      "A triangle has three sides and three angles (corners, measured in degrees, °). Given some of these measures, you can ask how many different triangles fit them. Some sets of measures fix exactly one triangle. Some fit none, because the sides cannot meet. Two sides and an angle that is not between them can fit two. Three angles alone fit triangles of every size.",
+      "A triangle has three sides and three angles. An angle is the turn at a corner, measured in degrees, the unit for turns. Given some of these measures, you can ask how many different triangles fit them. Some sets of measures fix exactly one triangle. Some fit none, because the sides cannot meet. Two sides and an angle that is not between them can fit two. Three angles alone fit triangles of every size.",
     objectives: [
       "Decide whether a set of side and angle measures gives no triangle, one or two.",
       "Name which sets of measures fix exactly one triangle.",
     ],
     goal: "Decide how many different triangles have the given side and angle measures, and which sets of measures fix exactly one triangle.",
     intuition: [
-      t`A triangle has three straight sides and three angles. An angle is the amount of turn between two sides that meet at a corner, measured in degrees (°). The three angles of any triangle add to 180°.`,
+      t`A triangle has three straight sides and three angles. An angle is the amount of turn between two sides that meet at a corner. It is measured in degrees, the unit for turns, written °. The three angles of any triangle add to 180°.`,
       t`Triangles that match exactly in size and shape, called congruent triangles, count as one triangle. Some sets of measures leave no choice, so there is one triangle. Some cannot be drawn, so there is no triangle. Some leave a choice, so there are two, or many.`,
       t`Three side lengths fix a triangle if the two shorter sides together are longer than the longest side. That rule is called the triangle inequality. Two angles and the side between them fix a triangle if the two angles add to less than 180°.`,
       t`An angle between two given sides is called the included angle. Two sides and their included angle fix a triangle. Three angles that add to 180° fix the shape but not the size, so many triangles fit.`,
@@ -307,13 +307,13 @@ const specs: Spec[] = [
     ],
     method: [
       "Name what is given: sides, angles, and where each is. Is the angle between the two sides?",
-      "Check whether a triangle can exist: the sides satisfy the triangle inequality, and the angles total less than 180°.",
+      "Check whether a triangle can exist: the sides pass the triangle inequality, and any two given angles add to less than 180°.",
       "If two sides and an angle not between them are given, draw the angle and lay one side along one of its rays (straight paths from the corner). The other side swings from the end of that side like a gate. See where it can land on the other ray.",
       "Count the places it lands: none, one or two.",
     ],
     watch:
       "Two sides and an angle that is not between them do not always fix one triangle. Check the swing. Also, equal angles alone never fix the size.",
-    principle: t`SSS (when the triangle inequality holds), SAS, ASA and AAS each fix exactly one triangle, up to size and shape. AAA fixes the shape but not the size. For SSA with the angle $A$ and sides $b = AC$ and $a = BC$: if $A$ is right or obtuse there is one triangle when $a > b$ and none otherwise. If $A$ is acute, let $h$ be the shortest distance from $C$ to the other ray: there is no triangle when $a < h$, one when $a = h$ or $a \ge b$, and two when $h < a < b$. When $A = 30^\circ$, $h = b/2$.`,
+    principle: t`When the measures can form a triangle, SSS, SAS, ASA and AAS each fix exactly one triangle: its size and shape are fixed. AAA fixes the shape but not the size. For SSA with the angle $A$ and sides $b = AC$ and $a = BC$: if $A$ is right or obtuse there is one triangle when $a > b$ and none otherwise. If $A$ is acute, let $h$ be the shortest distance from $C$ to the other ray: there is no triangle when $a < h$, one when $a = h$ or $a \ge b$, and two when $h < a < b$. When $A = 30^\circ$, $h = b/2$.`,
     example: {
       prompt: t`A triangle $ABC$ has $\angle A = 30^\circ$, $AC = 10$ cm and $BC = 7$ cm. How many different triangles fit?`,
       steps: [
@@ -326,16 +326,16 @@ const specs: Spec[] = [
     },
     methodTitle: "The swinging side",
     methodText: [
-      t`Fix $\angle A = 30^\circ$ (the angle at $A$ is 30°) and $AC = 10$ cm. Let $h = 5$ cm be the shortest distance from $C$ to the other ray. a side $BC$ shorter than 5 cm cannot reach the other ray, so there is no triangle. A side of exactly 5 cm just touches it at one point: one triangle. A side between 5 cm and 10 cm reaches in two places: two triangles. A side of 10 cm or more reaches the ray in only one place that is on the ray: one triangle.`,
+      t`Fix $\angle A = 30^\circ$ (the angle at $A$ is 30°) and $AC = 10$ cm. Let $h = 5$ cm be the shortest distance from $C$ to the other ray. a side $BC$ shorter than 5 cm cannot reach the other ray, so there is no triangle. A side of exactly 5 cm just touches it at one point: one triangle. A side between 5 cm and 10 cm reaches in two places: two triangles. A side longer than 10 cm reaches the ray in only one place in front of $A$: one triangle. At exactly 10 cm, the second landing point is $A$ itself, so again there is one triangle.`,
     ],
     formalTitle: "Why SSA is different",
     formal: [
-      t`Short names list what is given, in order around the triangle: S for a side and A for an angle. SAS is two sides and the angle between them. ASA is two angles and the side between them. SSS is three sides, and SSA is two sides and an angle not between them. For SAS, ASA and SSS, the measures leave no freedom. The third vertex is where two circles or rays meet at one point on the correct side. In SSA, the third vertex is where a circle of radius $a$ about $C$ meets a ray from $A$, and a circle can meet a ray in 0, 1 or 2 points. If the angle at $A$ is right or obtuse, the side opposite it must be the longest, so at most one point works. For an acute angle with $h < a < b$, both points are on the ray, so two non-congruent triangles have the same given measures.`,
+      t`Short names list what is given, in order around the triangle: S for a side and A for an angle. SAS is two sides and the angle between them. ASA is two angles and the side between them. SSS is three sides, and SSA is two sides and an angle not between them. When SAS, ASA or SSS measures can form a triangle at all, they leave no freedom. The third vertex is where two circles or rays meet at one point on the correct side. In SSA, the third vertex is where a circle of radius $a$ about $C$ meets a ray from $A$, and a circle can meet a ray in 0, 1 or 2 points. If the angle at $A$ is right or obtuse, the side opposite it must be the longest, so at most one point works. For an acute angle with $h < a < b$, both points are on the ray, so two non-congruent triangles have the same given measures.`,
     ],
     pitfalls: [
       "Angles alone fix the shape, not the size.",
       "Two sides and an angle not between them (SSA) can give none, one or two triangles.",
-      "Check that the sides can meet and that the given angles add to less than 180°.",
+      "Check that the sides can meet. Two given angles must add to less than 180°, and three given angles must add to exactly 180°.",
     ],
     parentGuide:
       "Ask your learner to describe in words how the third side of the triangle can swing, and where it can land.",
@@ -347,7 +347,7 @@ const specs: Spec[] = [
     templateId: "percent-applications",
     title: "Percent in tax, tips, sales and interest",
     summary:
-      "A percent is a number out of 100: 8% means 8 out of every 100. To find 8% of 40 dollars, multiply 40 by $\\frac{8}{100}$ to get 3.20 dollars. The amount you take the percent of is called the base. Then add the result (tax, tip), take it away (a markdown, or price cut), or repeat it for each year (simple interest). Percent error compares a measuring mistake with the true amount.",
+      "A percent is a number out of 100: 8% means 8 out of every 100. To find 8% of 40 dollars, multiply 40 by $\\frac{8}{100}$ to get 3.20 dollars. The amount you take the percent of is called the base. Then add the result (a tax or tip), or take it away (a markdown, or price cut). Simple interest is a percent of saved money, earned once each year. Percent error compares a measuring mistake with the true amount.",
     objectives: [
       "Find a tax, tip, commission, markup or markdown and the amount it produces.",
       "Calculate simple interest and percent error.",
@@ -423,7 +423,7 @@ const specs: Spec[] = [
     ],
     goal: "Find a compound event's probability from its sample space, estimate it from random-digit trials, and compare experimental with theoretical.",
     intuition: [
-      t`An outcome is one possible result of a chance process, like the number a die lands on. An event is the outcome or outcomes you are asking about, such as “the sum is 5”. Probability tells how likely an event is, from 0 (impossible) to 1 (certain).`,
+      t`An outcome is one possible result of a chance process, like the number a die lands on. An event is the outcome or outcomes you are asking about, such as “the sum is 5”. Probability tells how likely an event is, as a number from 0 to 1. Impossible means it cannot happen, with probability 0. Certain means it is sure to happen, with probability 1.`,
       t`A compound event has more than one stage, such as rolling two dice or flipping a coin three times. The sample space is the list of all possible outcomes. When every outcome is equally likely, the probability of an event is the number of outcomes where it happens, divided by the number of outcomes in all.`,
       t`If it is hard to list outcomes, you can estimate a probability with a simulation, acting out the chance process many times. Random digits are digits picked by chance, each equally likely. Let them stand for the outcomes, run many trials (one full run each), and count how often the event happens. That is the experimental probability: the number of trials where the event happened, divided by the number of trials. The exact value from the sample space is the theoretical probability. The two are usually close, but not equal.`,
     ],

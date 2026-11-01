@@ -235,7 +235,7 @@ export const k8StateNumberPrinciples: Record<string, string> = {
   "compatible-number-estimate":
     "An estimate replaces numbers by nearby numbers that make the calculation easy. Replacing $a$ by a multiple of the divisor $d$ makes $a\\div d$ a whole number; front-end estimation keeps the leading digit and place value of each addend.",
   "benchmark-percent-estimate":
-    "For a base amount $B$, $10\\%$ of $B$ is $B \\div 10$, $5\\%$ is $B \\div 20$, $25\\%$ is $B \\div 4$ and $50\\%$ is $B \\div 2$. Other percents are sums or multiples of these. A discount of $p\\%$ leaves $(100 - p)\\%$ of the price.",
+    "For a base amount $B$, $10\\%$ of $B$ is $B \\div 10$, $5\\%$ is $B \\div 20$, $25\\%$ is $B \\div 4$ and $50\\%$ is $B \\div 2$. Other percents are built by adding or doubling these. A discount of $p\\%$ leaves $(100 - p)\\%$ of the price.",
 };
 
 export const k8StateNumberLessons: Lesson[] = [
@@ -683,7 +683,7 @@ export const k8StateNumberLessons: Lesson[] = [
         stage: "formal",
         title: "Benchmarks from the base",
         paragraphs: [
-          "Call the starting amount $B$, the base. Then $10\\%$ of $B$ is $B \\div 10$, $5\\%$ is $B \\div 20$, $25\\%$ is $B \\div 4$ and $50\\%$ is $B \\div 2$. Other percents are sums or multiples of these, such as $15\\% = 10\\% + 5\\%$. A discount of $p\\%$ takes off $p\\%$ of the price and leaves $(100 - p)\\%$ of it.",
+          "Call the starting amount $B$, the base. Then $10\\%$ of $B$ is $B \\div 10$, $5\\%$ is $B \\div 20$, $25\\%$ is $B \\div 4$ and $50\\%$ is $B \\div 2$. Other percents are built by adding or doubling these, such as $15\\% = 10\\% + 5\\%$ and $20\\% = 2 \\times 10\\%$. A discount of $p\\%$ takes off $p\\%$ of the price and leaves $(100 - p)\\%$ of it.",
         ],
       },
     ],

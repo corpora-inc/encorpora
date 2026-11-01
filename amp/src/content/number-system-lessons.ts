@@ -6,7 +6,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "greatest-common-factor",
     title: "Greatest common factor",
     summary:
-      "A factor of a whole number divides it with nothing left over: 6 is a factor of 48, because 48 ÷ 6 = 8 exactly. A common factor of two numbers is a factor of both. The greatest common factor, or GCF, is the largest one. For 48 and 72 it is 24. It tells you the most equal groups two amounts can be split into.",
+      "A factor is a number that divides another with nothing left over: 6 is a factor of 48, because 48 ÷ 6 = 8 exactly. A common factor of two numbers is a factor of both. The greatest common factor, or GCF, is the largest one. For 48 and 72 it is 24. It tells you the greatest number of same-size groups two amounts can be split into.",
     templateIds: ["greatest-common-factor", "gcf-factor-sum"],
     includeGeneratedRepresentation: false,
     senses: {
@@ -36,7 +36,7 @@ export const numberSystemLessons: Lesson[] = [
       {
         title: "Factors and common factors",
         paragraphs: [
-          "This lesson uses whole-number multiplication and division. A factor of a whole number divides it with no remainder (nothing left over): 6 is a factor of 48 because 48 ÷ 6 = 8. Factors come in pairs whose product, the answer when you multiply them, is the number. Since 48 = 1 × 48 = 2 × 24 = 3 × 16 = 4 × 12 = 6 × 8, the factors of 48 are 1, 2, 3, 4, 6, 8, 12, 16, 24 and 48.",
+          "This lesson uses whole-number multiplication and division. A factor of a whole number divides it with no remainder, the amount left over: 6 is a factor of 48 because 48 ÷ 6 = 8. Factors come in pairs whose product, the answer when you multiply them, is the number. Since 48 = 1 × 48 = 2 × 24 = 3 × 16 = 4 × 12 = 6 × 8, the factors of 48 are 1, 2, 3, 4, 6, 8, 12, 16, 24 and 48.",
           "A common factor of two numbers is a factor of both. The greatest common factor, or GCF, is the largest common factor. The factors of 72 are 1, 2, 3, 4, 6, 8, 9, 12, 18, 24, 36 and 72. The numbers in both lists are 1, 2, 3, 4, 6, 8, 12 and 24, so the GCF of 48 and 72 is 24.",
         ],
       },
@@ -87,7 +87,7 @@ export const numberSystemLessons: Lesson[] = [
       answer: "24",
     },
     pitfalls: [
-      "The GCF is never larger than the smaller number. A result larger than both numbers is a multiple (a number times a whole number), not a factor.",
+      "The GCF is never larger than the smaller number, so an answer larger than that cannot be the GCF.",
       "A common factor is not always the greatest: 12 divides 48 and 72, but the quotients 4 and 6 still share 2.",
       "Divide both numbers by the factor: 4(9 + 8) is 36 + 32, not 36 + 8.",
     ],
@@ -98,7 +98,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "least-common-multiple",
     title: "Least common multiple",
     summary:
-      "A multiple of a number is that number times a whole number. The multiples of 6 are 6, 12, 18, 24 and so on, like counting by 6s. A common multiple of two numbers is on both lists. The least common multiple, or LCM, is the smallest positive one. For 6 and 8 it is 24. It tells you when two repeating counts first line up.",
+      "A multiple is a number times a whole number. The multiples of 6 are 6, 12, 18, 24 and so on, like counting by 6s. A common multiple of two numbers is on both lists. The least common multiple, or LCM, is the smallest positive one. For 6 and 8 it is 24. It tells you when two repeating counts first line up.",
     templateIds: ["least-common-multiple"],
     includeGeneratedRepresentation: false,
     senses: {
@@ -164,7 +164,7 @@ export const numberSystemLessons: Lesson[] = [
     },
     pitfalls: [
       "The product is a common multiple but not always the least: 6 × 8 = 48, while 24 is smaller.",
-      "The LCM is at least as large as the larger number. A result smaller than both numbers is a factor, not a multiple.",
+      "The LCM is at least as large as the larger number, so an answer smaller than that cannot be the LCM.",
       "Do not confuse the LCM with the GCF. Lining up repeating counts asks for a multiple. Splitting into equal groups asks for a factor.",
     ],
     parentGuide:
@@ -201,14 +201,14 @@ export const numberSystemLessons: Lesson[] = [
       {
         title: "Dividend, divisor, quotient and remainder",
         paragraphs: [
-          "This lesson uses multiplication facts, place value and subtraction. In 8736 ÷ 24 = 364, the dividend 8736 is the amount being divided, the divisor 24 is the size of each group, and the quotient 364 is the number of groups. Division undoes multiplication: 364 × 24 = 8736, which is how any quotient is checked.",
+          "This lesson uses multiplication facts, place value and subtraction. In 8736 ÷ 24 = 364, the dividend 8736 is the amount being divided, the divisor 24 is the size of each group, and the quotient 364 is the number of groups. Division undoes multiplication: 364 × 24 = 8736. So multiplying back checks a quotient. When there is a remainder, add it after multiplying.",
           "When the divisor does not fit exactly, the amount left over is the remainder, and it is always less than the divisor. For example, 437 ÷ 52 is 8 with remainder 21, because 8 × 52 = 416 and 437 − 416 = 21.",
         ],
       },
       {
         title: "The standard algorithm",
         paragraphs: [
-          "Long division, the standard written method, finds the quotient one place at a time, starting from the left. The first part of 8736 that is at least 24 is 87, which stands for 87 hundreds. The largest multiple of 24 that fits in 87 is 24 × 3 = 72, because 24 × 4 = 96 is too big. Write 3 in the hundreds place of the quotient and subtract: 87 − 72 = 15.",
+          "Long division, the standard written method, finds the quotient one place at a time, starting from the left. The first part of 8736 that is at least 24 is 87, which stands for 87 hundreds. Multiples are a number times whole numbers: 24, 48, 72 and 96 are multiples of 24. The largest multiple of 24 that fits in 87 is 24 × 3 = 72, because 24 × 4 = 96 is too big. Write 3 in the hundreds place of the quotient and subtract: 87 − 72 = 15.",
           "Bring down the next digit, 3, to make 153 tens. 24 × 6 = 144 fits and 24 × 7 = 168 does not, so write 6 and subtract: 153 − 144 = 9. Bring down 6 to make 96 ones. 24 × 4 = 96, so write 4; the remainder is 0 and the quotient is 364.",
           "Each step shares one place value: 3 hundreds of 24 use 7200, 6 tens of 24 use 1440 and 4 ones of 24 use 96, and 7200 + 1440 + 96 = 8736. After each subtraction the remainder must be less than the divisor. If a number brought down makes a part smaller than the divisor, write 0 in that place of the quotient and bring down the next digit.",
         ],
@@ -253,7 +253,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "signed-numbers",
     title: "Signed numbers and opposites",
     summary:
-      "A number line is a line with numbers marked in order at equal steps. Positive numbers sit to the right of 0. Negative numbers, written with a minus sign like −20, sit to the left. They describe amounts in two opposite directions, such as above and below sea level. The opposite of a number is the same distance from 0 on the other side: the opposite of 6 is −6.",
+      "A number line is a line with numbers marked in order at equal steps. Positive numbers sit to the right of 0. Negative numbers, written with a minus sign like −20, sit to the left. They describe amounts that go two ways from 0, such as above and below sea level. A number's opposite is the number the same distance from 0 on the other side: the opposite of 6 is −6.",
     templateIds: ["signed-quantity", "opposite-on-line"],
     includeGeneratedRepresentation: false,
     senses: {
@@ -280,7 +280,7 @@ export const numberSystemLessons: Lesson[] = [
       {
         title: "Positive, negative and zero",
         paragraphs: [
-          "Many quantities have two opposite directions: above or below sea level, above or below zero degrees, money put into or taken out of an account, yards gained or lost. Choose one direction to be positive. The opposite direction is negative, written with a minus sign: −20 is read “negative twenty”. The number 0 is the reference point, such as sea level, and is neither positive nor negative.",
+          "Many quantities have two opposite directions: above or below sea level, above or below zero on a thermometer, money put into or taken out of an account, yards gained or lost. Choose one direction to be positive. The opposite direction is negative, written with a minus sign: −20 is read “negative twenty”. The number 0 is the reference point, such as sea level, and is neither positive nor negative.",
           "In the figure, sea level is 0 and up is positive. A gull 30 meters above sea level is at 30, and a diver 20 meters below sea level is at −20. The sign gives the direction, and the number without its sign gives the distance from 0.",
         ],
         illustration: "elevation-line",
@@ -306,7 +306,7 @@ export const numberSystemLessons: Lesson[] = [
         stage: "formal",
         title: "Position and opposite",
         paragraphs: [
-          "Every signed number (a number with a plus or minus sign, or 0) has a position on the number line, measured from zero. Its opposite lies the same distance from zero on the other side. That distance, which is never negative, is called its absolute value. Of two different numbers, the one farther right is greater.",
+          "Every signed number (a positive or negative number, or 0) has a position on the number line, measured from zero. Its opposite lies the same distance from zero on the other side. That distance, which is never negative, is called its absolute value. Of two different numbers, the one farther right is greater.",
         ],
       },
     ],
@@ -332,7 +332,7 @@ export const numberSystemLessons: Lesson[] = [
     id: "signed-stories",
     title: "Stories with signed numbers",
     summary:
-      "A signed number is a number with a plus or minus sign: 7.25 is positive and −4.5 is negative. In a story, pick one direction, such as warmer, to be positive. A change the other way, such as colder, is negative. Write the start and each change with its sign, then add them all. The change from one reading to another is the end minus the start.",
+      "A signed number is a positive or negative number: 7.25 is positive and −4.5 is negative. In a story, pick one direction, such as warmer, to be positive. A change the other way, such as colder, is negative. Write the start and each change with its sign, then add them all. The change from one reading to another is the end minus the start.",
     templateIds: ["signed-story", "signed-jumps"],
     includeGeneratedRepresentation: false,
     senses: {
@@ -361,7 +361,7 @@ export const numberSystemLessons: Lesson[] = [
       {
         title: "Model each change with a sign",
         paragraphs: [
-          "This lesson uses addition, subtraction and multiplication of decimals. In a story, first choose the positive direction: up, warmer, or money added. A change in the opposite direction is negative. A starting value can be negative too, such as a temperature of −4.5°C or an account balance of −32.50 dollars, which means 32.50 dollars is owed.",
+          "This lesson uses addition, subtraction and multiplication of decimals. In a story, first choose the positive direction: up, warmer, or money added. A change the other way is negative. A starting value can be negative too, such as a temperature of −4.5°C or an account balance (the money in an account) of −32.50 dollars, which means 32.50 dollars is owed.",
           "A repeated change is a product, the answer to a multiplication. Falling 1.5°C each hour for 3 hours is 3 × (−1.5) = −4.5. A positive number times a negative number is negative, because it adds the same negative change several times: (−1.5) + (−1.5) + (−1.5) = −4.5.",
         ],
       },
@@ -376,7 +376,7 @@ export const numberSystemLessons: Lesson[] = [
       {
         title: "Change between two values",
         paragraphs: [
-          "The change from a starting value to an ending value is the end minus the start. From −7.5°C to 4.25°C the change is 4.25 − (−7.5) = 4.25 + 7.5 = 11.75 degrees. Subtracting a negative number adds its opposite, the same size with the other sign. Taking away a drop is the same as adding a rise.",
+          "The change from a starting value to an ending value is the end minus the start. From −7.5°C to 4.25°C the change is 4.25 − (−7.5) = 4.25 + 7.5 = 11.75°C. Subtracting a negative number adds its opposite, the same size with the other sign. Taking away a drop is the same as adding a rise.",
           "The vertical distance between a ledge at 26.5 meters and a diver at −16.5 meters is 26.5 − (−16.5) = 43 meters, the 26.5 meters above sea level plus the 16.5 meters below it.",
         ],
       },
@@ -426,14 +426,14 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
       multiple: "multiple",
     },
     intuition:
-      "A factor of a number divides it with nothing left over: 6 is a factor of 48, since 48 ÷ 6 = 8. A common factor divides both numbers. The greatest common factor (GCF) is the largest of these. A prime number has only two factors, 1 and itself, like 2, 3 or 5.",
+      "A factor is a number that divides another with nothing left over: 6 is a factor of 48, since 48 ÷ 6 = 8. A common factor is a factor of both numbers. The largest of these is called the greatest common factor, or GCF. A prime number has only two factors, 1 and itself, like 2, 3 or 5.",
     method: [
       "List the factors of each number, or write each as primes multiplied together.",
       "Find the factors both lists share, or the primes both numbers share.",
       "The GCF is the largest shared factor, or the shared primes multiplied together.",
     ],
     watch:
-      "The GCF is never larger than the smaller number. A larger answer is a multiple, not a factor.",
+      "The GCF is never larger than the smaller number, so an answer larger than that cannot be right.",
   },
   "least-common-multiple": {
     noLink: ["whole"],
@@ -445,7 +445,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
       factor: "factor-number",
     },
     intuition:
-      "A multiple of a number is that number times a whole number: the multiples of 6 are 6, 12, 18, 24, and so on. A common multiple is on both lists. The least common multiple (LCM) is the smallest positive one: for 6 and 8 it is 24.",
+      "A multiple is a number times a whole number: the multiples of 6 are 6, 12, 18, 24, and so on. A common multiple is on both lists. The smallest positive one is called the least common multiple, or LCM: for 6 and 8 it is 24. A product is the answer when you multiply.",
     method: [
       "List multiples of the larger number.",
       "Stop at the first one that the smaller number divides.",
@@ -457,7 +457,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
     noLink: ["rule", "leaves"],
     goal: "Rewrite a sum of two whole numbers as their greatest common factor times a sum.",
     intuition:
-      "A factor divides a whole number evenly, with nothing left over. A number written right before parentheses means multiply: 6(2 + 3) means 6 × (2 + 3). Since 12 = 6 × 2 and 18 = 6 × 3, the sum 12 + 18 = 6(2 + 3). Both give 30. Pulling out a shared factor like this is called factoring out, and the rule behind it is the distributive property. Here 6 is the greatest factor that 12 and 18 share.",
+      "A factor is a number that divides a whole number evenly, with nothing left over. A number written right before parentheses means multiply: 6(2 + 3) means 6 × (2 + 3). Since 12 = 6 × 2 and 18 = 6 × 3, the sum 12 + 18 = 6(2 + 3). Both give 30. Pulling out a shared factor like this is called factoring out, and the rule behind it is the distributive property. Here 6 is the greatest factor that 12 and 18 share.",
     terms: ["distributive-property", "factor-out"],
     senses: { factor: "factor-number", quotient: "quotient" },
     method: [
@@ -478,12 +478,12 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["part"],
     intuition:
-      "In 8736 ÷ 24, the dividend 8736 is the number being divided, and the divisor 24 is the number you divide by. The answer, 364, is called the quotient. Long division finds it one digit at a time, from the left: hundreds, then tens, then ones.",
+      "In 8736 ÷ 24, the dividend 8736 is the number being divided, and the divisor 24 is the number you divide by. The answer, 364, is called the quotient. Long division finds it one digit at a time, from the left: hundreds, then tens, then ones. The amount left over at a step is called the remainder.",
     method: [
       "Take the first part of the dividend, from the left, that is at least the divisor.",
-      "Write the largest digit whose product with the divisor fits in that part, then subtract.",
+      "Write the largest digit that, times the divisor, fits in that part. Then subtract.",
       "Bring down the next digit and repeat. Write 0 when the divisor does not fit.",
-      "Check by multiplying: quotient × divisor = dividend.",
+      "Check by multiplying: quotient × divisor + remainder = dividend.",
     ],
     watch:
       "Each remainder must be less than the divisor, and every brought-down digit needs a quotient digit.",
@@ -496,7 +496,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
       "437 ÷ 52 is 8 groups, called the quotient, with 21 left over, called the remainder. A story decides what to do with the leftover. If every student needs a bus seat, 21 more students need a 9th bus. If only full boxes count, the 21 are dropped.",
     method: [
       "Divide to find the quotient and remainder.",
-      "If every item needs a place, add 1 group for the remainder.",
+      "If every item needs a place and the remainder is not 0, add 1 more group for the leftover items.",
       "If only full groups count, drop the remainder. If the story asks what is left over, answer with the remainder.",
     ],
     watch:
@@ -512,7 +512,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["direction", "directions"],
     intuition:
-      "Positive numbers are above 0, and negative numbers, written with a minus sign like −20, are below 0. Many amounts go two opposite ways from a starting point 0, such as above or below sea level, or money in or out. Choose one way to be positive; the other way is negative.",
+      "Negative numbers are the numbers below 0, written with a minus sign like −20. Positive numbers are above 0. Many amounts go two ways from a starting point 0, such as above or below sea level, or money in or out. Choose one way to be positive; the other way is negative.",
     terms: [
       "negative-number",
       [
@@ -526,7 +526,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
       "Make the number negative if the amount goes the other way.",
     ],
     watch:
-      "Amounts of the same size going opposite ways have opposite signs: a gain of 5 is 5, a loss of 5 is −5.",
+      "Amounts of the same size going different ways have different signs: a gain of 5 is 5, a loss of 5 is −5.",
   },
   "opposite-on-line": {
     noLink: ["right side", "left side", "side"],
@@ -534,7 +534,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
     terms: ["opposite-number"],
     senses: { unit: "unit", units: "unit", opposite: "opposite-number" },
     intuition:
-      "An integer is a whole number or its negative: …, −2, −1, 0, 1, 2, …. A number line has numbers in order at equal steps, with negatives to the left of 0. The opposite of a number is the same distance from 0 on the other side: the opposite of −7 is 7.",
+      "An integer is a whole number or its negative: …, −2, −1, 0, 1, 2, …. A number line has numbers in order at equal steps, with negatives to the left of 0. A number's opposite is the number the same distance from 0 on the other side: the opposite of −7 is 7.",
     method: [
       "Find what one space between tick marks is worth, then count spaces from 0 to read the number at the point.",
       "Move the same distance to the other side of 0 to find its opposite.",
@@ -555,7 +555,7 @@ export const numberSystemMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["direction"],
     intuition:
-      "A signed number has a plus or minus sign: −4.5 is 4.5 below zero. In a story, choose one direction, such as warmer, as positive. A change the other way is negative. A change that repeats, like falling 1.5 degrees each hour for 3 hours, is a multiplication: 3 × (−1.5) = −4.5.",
+      "A signed number is a positive or negative number: −4.5 is 4.5 below zero. In a story, choose one direction, such as warmer, as positive. A change the other way is negative. A change that repeats, like falling 1.5°C each hour for 3 hours, is a multiplication: 3 × (−1.5) = −4.5.",
     method: [
       "Choose the positive direction, and write the starting value with its sign.",
       "Write each change with its sign. Multiply a change that repeats.",
@@ -596,7 +596,7 @@ export const numberSystemPrinciples: Record<string, string> = {
   "division-remainder-story":
     "Dividend = quotient × divisor + remainder, with the remainder less than the divisor. The story decides whether the answer is the quotient, the quotient plus 1, or the remainder.",
   "signed-quantity":
-    "Amounts in opposite directions from a starting point 0 have opposite signs. The number without its sign is the distance from 0.",
+    "Amounts in different directions from a starting point 0 have different signs. The number without its sign is the distance from 0.",
   "opposite-on-line":
     "The opposite of a number is the same distance from 0 on the other side of 0, so $-(-a) = a$.",
   "signed-story":

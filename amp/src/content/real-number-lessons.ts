@@ -12,7 +12,6 @@ export const realNumberLessons: Lesson[] = [
     senses: {
       multiple: "multiple",
       sides: "side-of-equation",
-      root: "root-radical",
       square: "square-number",
       squares: "square-number",
       factor: "factor-number",
@@ -21,6 +20,8 @@ export const realNumberLessons: Lesson[] = [
       whole: "whole",
     },
     noLink: [
+      "root",
+      "roots",
       "tail",
       "tails",
       "cube",
@@ -40,7 +41,7 @@ export const realNumberLessons: Lesson[] = [
         stage: "intuition",
         title: "Rational numbers",
         paragraphs: [
-          "A half, three quarters and the whole number 5 can all be written as fractions: $\\frac{1}{2}$, $\\frac{3}{4}$ and $\\frac{5}{1}$. Numbers like these are called rational. This lesson uses fractions, decimals and long division. An integer is a whole number or the opposite of one, the same size with a minus sign: …, −2, −1, 0, 1, 2, ….",
+          "A half, three quarters and the whole number 5 can all be written as fractions: $\\frac{1}{2}$, $\\frac{3}{4}$ and $\\frac{5}{1}$. Numbers like these are called rational. This lesson uses fractions, decimals and long division. An integer is a whole number or its opposite, the whole number with a minus sign: …, −2, −1, 0, 1, 2, ….",
           "Precisely, a rational number is a quotient (the answer to a division) $\\frac{a}{b}$ of integers $a$ and $b$, where $b \\ne 0$ ($b$ is not equal to 0). Every integer is rational, because $5 = \\frac{5}{1}$ and $-8 = \\frac{-8}{1}$. A terminating decimal, one that ends, is rational too: $0.25 = \\frac{25}{100}$.",
           "Why must the decimal end or repeat? Write the fraction with a positive denominator (bottom number), moving any minus sign out front. Long division then gives its decimal. Each remainder, the amount left over at a step, is a whole number less than the denominator. If a remainder is 0, the decimal ends. If not, there are only so many possible remainders, so one comes back. From then on, the same block of digits repeats forever.",
           "A bar over digits marks the block that repeats: $\\frac{7}{9} = 0.777\\ldots = 0.\\overline{7}$ and $\\frac{3}{11} = 0.272727\\ldots = 0.\\overline{27}$.",
@@ -50,7 +51,7 @@ export const realNumberLessons: Lesson[] = [
         title: "Irrational numbers",
         paragraphs: [
           "A number on the number line that is not rational is called irrational. Its decimal never ends and never repeats. The rational and irrational numbers together make up the real numbers: every point on the number line.",
-          "The square root of a number is the number, zero or greater, that times itself gives it: $\\sqrt{16} = 4$ because 4 × 4 = 16. The square root of a whole number that is not a perfect square is irrational. A perfect square is a whole number times itself, such as 16 or 49. So $\\sqrt{2}$, $\\sqrt{12}$ and $\\sqrt{50}$ are irrational, but $\\sqrt{16} = 4$ and $\\sqrt{49} = 7$ are rational: a root sign alone does not make a number irrational. The same holds for cube roots. The cube root $\\sqrt[3]{27}$ is the number that, used as a factor three times, gives 27. It is 3, because $3^3 = 3 \\times 3 \\times 3 = 27$, so it is rational. No whole number cubed gives 20, so $\\sqrt[3]{20}$ is irrational.",
+          "The square root of a number is the number, zero or greater, that times itself gives it: $\\sqrt{16} = 4$ because 4 × 4 = 16. The square root of a whole number that is not a perfect square is irrational. A perfect square is a whole number times itself, such as 16 or 49. So $\\sqrt{2}$, $\\sqrt{12}$ and $\\sqrt{50}$ are irrational, but $\\sqrt{16} = 4$ and $\\sqrt{49} = 7$ are rational: a root sign alone does not make a number irrational. A cube root is the number that gives a number when three copies of it are multiplied. The cube root of 27, written $\\sqrt[3]{27}$, is 3, because $3^3 = 3 \\times 3 \\times 3 = 27$, so it is rational. Cube roots follow the same rule as square roots. No whole number cubed gives 20, so $\\sqrt[3]{20}$ is irrational.",
           "The number $\\pi$, the circumference of any circle divided by its diameter, is irrational. The fraction $\\frac{22}{7}$ and the decimal 3.14 are close to $\\pi$ but not equal to it; both are rational. A decimal built by a rule that never repeats, such as $0.1010010001\\ldots$ with one more 0 each time, is also irrational.",
         ],
       },
@@ -70,7 +71,7 @@ export const realNumberLessons: Lesson[] = [
         "Call the number $x$, so $x = 0.\\overline{36} = 0.363636\\ldots$. The bar shows that the block 36 repeats. It has two digits.",
         "Multiply by $10^{2} = 100$ to shift the digits two places: $100x = 36.363636\\ldots$. Now $100x$ and $x$ have the same tail after the point.",
         "Subtract $x$ from $100x$ so the endless tails cancel: $100x - x = 36.3636\\ldots - 0.3636\\ldots = 36$. So $99x = 36$.",
-        "Divide both sides by 99 to get $x$ alone: $x = \\frac{36}{99}$. Then simplify by dividing top and bottom by 9, a number that divides both: $x = \\frac{4}{11}$.",
+        "Divide both sides (the amounts left and right of the equals sign) by 99 to get $x$ alone: $x = \\frac{36}{99}$. Then simplify by dividing top and bottom by 9, a number that divides both: $x = \\frac{4}{11}$.",
         "Check by dividing: 4 ÷ 11 = 0.3636…, the decimal we started with.",
       ],
       answer: "4/11",
@@ -80,7 +81,7 @@ export const realNumberLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "A number is rational exactly when it is a quotient of integers with a nonzero denominator; its decimal then ends or repeats. The square or cube root of a whole number that is not a perfect square or cube is irrational, and so is $\\pi$.",
+          "A number is rational exactly when it is a quotient of integers with a nonzero denominator; its decimal then ends or repeats. A square root of a whole number that is not a perfect square is irrational. So is a cube root of a whole number that no whole number cubed gives, and so is $\\pi$.",
           "Multiplying by a suitable power of 10 aligns the repeating tails after the decimal point. Subtracting the two aligned copies cancels that tail and leaves a whole number.",
         ],
       },
@@ -98,7 +99,7 @@ export const realNumberLessons: Lesson[] = [
     id: "approximate-roots",
     title: "Approximate square and cube roots",
     summary:
-      "The square root of 20, written $\\sqrt{20}$, is the positive number that times itself makes 20. No whole number does: $4 \\times 4 = 16$ is too small and $5 \\times 5 = 25$ is too big. So $\\sqrt{20}$ is between 4 and 5. Squaring tenths such as 4.4 and 4.5 narrows it further. Cube roots work the same way with numbers used as a factor three times.",
+      "The square root of 20, written $\\sqrt{20}$, is the positive number that times itself makes 20. No whole number does: $4 \\times 4 = 16$ is too small and $5 \\times 5 = 25$ is too big. So $\\sqrt{20}$ is between 4 and 5. Squaring means multiplying a number by itself. Squaring tenths such as 4.4 and 4.5 narrows it further. Cube roots work the same way, using three copies of a number multiplied together.",
     templateIds: [
       "root-between-integers",
       "root-nearest-tenth",
@@ -113,15 +114,13 @@ export const realNumberLessons: Lesson[] = [
     senses: {
       interval: "interval",
       intervals: "interval",
-      root: "root-radical",
-      roots: "root-radical",
       square: "square-number",
       squares: "square-number",
       squaring: "square-number",
       factor: "factor-number",
       cube: "cube",
     },
-    noLink: ["scales", "mean", "side", "place", "half"],
+    noLink: ["root", "roots", "scales", "mean", "side", "place", "half"],
     sections: [
       {
         stage: "intuition",
@@ -178,15 +177,14 @@ export const realNumberLessons: Lesson[] = [
       "Draw a number line from 4 to 5 marked in tenths. Have the learner square 4.4 and 4.5 with pencil and paper. Then mark where $\\sqrt{20}$ must lie, and say whether it is nearer 4.4 or 4.5.",
   },
   {
+    noLink: ["root", "roots"],
     id: "square-cube-equations",
     title: "Solve square and cube equations",
     summary:
-      "To solve $x^2 = 49$ means to find every number $x$ that, times itself, makes 49. Both 7 and −7 work, because a negative times a negative is positive. So a positive number has two square roots, one positive and one negative. To solve $x^3 = 64$, find the number used as a factor three times to make 64. Only 4 works. Every number has exactly one cube root.",
+      "To solve $x^2 = 49$ means to find every number $x$ that, times itself, makes 49. Both 7 and −7 work, because a negative times a negative is positive. So a positive number has two square roots, one positive and one negative. To solve $x^3 = 64$, find the number whose three copies multiply to make 64. Only 4 works. Every number has exactly one cube root.",
     templateIds: ["solve-square-cube-equation"],
     includeGeneratedRepresentation: false,
     senses: {
-      root: "root-radical",
-      roots: "root-radical",
       square: "square-number",
       squares: "square-number",
       factor: "factor-number",
@@ -203,8 +201,8 @@ export const realNumberLessons: Lesson[] = [
         stage: "intuition",
         title: "Square roots come in pairs",
         paragraphs: [
-          "This lesson uses multiplication of signed numbers (positive and negative numbers). A solution of an equation is a value of $x$ that makes it true. $x^2$ ($x$ squared) means $x \\times x$. So for $x^2 = 49$ we need numbers whose square is 49. $7^2 = 7 \\times 7 = 49$. Also $(-7)^2 = (-7) \\times (-7) = 49$, because the product of two negative numbers is positive.",
-          "So $x^2 = 49$ has two solutions: $x = 7$ or $x = -7$. This is also written $x = \\pm 7$, where $\\pm$ is read “plus or minus”.",
+          "This lesson uses multiplication of signed numbers (positive and negative numbers). A solution of an equation is a value of $x$ that makes it true. Squared means multiplied by itself: $x^2$ ($x$ squared) is $x \\times x$. So for $x^2 = 49$ we need numbers whose square is 49. $7^2 = 7 \\times 7 = 49$. Also $(-7)^2 = (-7) \\times (-7) = 49$, because a negative number times a negative number is positive.",
+          "So $x^2 = 49$ has two solutions: $x = 7$ or $x = -7$. This is also written $x = \\pm 7$, where $\\pm$ stands for “plus or minus”.",
           "No other number works. A positive number greater than 7 has a square greater than 49, and one less than 7 has a smaller square. The same is true of their opposites, the matching negative numbers.",
           "A perfect square is a whole number times itself, like 49. When the number is not a perfect square, write the solutions with the root sign: $x^2 = 12$ gives $x = \\sqrt{12}$ or $x = -\\sqrt{12}$. The symbol $\\sqrt{12}$ alone means only the positive root. A square is never negative, so $x^2 = -9$ has no real solution.",
         ],
@@ -223,7 +221,7 @@ export const realNumberLessons: Lesson[] = [
       steps: [
         "A solution is a number that, times itself, gives $\\frac{9}{25}$. Both 9 and 25 are perfect squares, so try the fraction of their square roots.",
         "$\\left(\\frac{3}{5}\\right)^2 = \\frac{3 \\times 3}{5 \\times 5} = \\frac{9}{25}$, so $\\frac{3}{5}$ works.",
-        "Its negative works too: $\\left(-\\frac{3}{5}\\right)^2 = \\frac{9}{25}$, because the product of two negative numbers is positive.",
+        "Its negative works too: $\\left(-\\frac{3}{5}\\right)^2 = \\frac{9}{25}$, because a negative number times a negative number is positive.",
         "A square equation with a positive number has exactly these two solutions: $x = \\frac{3}{5}$ or $x = -\\frac{3}{5}$.",
       ],
       answer: "$x = \\frac{3}{5}$ or $x = -\\frac{3}{5}$",
@@ -233,14 +231,14 @@ export const realNumberLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "For a positive number $p$, the equation $x^2 = p$ has exactly two real solutions, $\\sqrt{p}$ and $-\\sqrt{p}$. For any real number $p$, the equation $x^3 = p$ has exactly one real solution, $\\sqrt[3]{p}$.",
+          "A real number is any number on the number line. For a positive real number $p$, the equation $x^2 = p$ has exactly two real solutions, $\\sqrt{p}$ and $-\\sqrt{p}$. For any real number $p$, the equation $x^3 = p$ has exactly one real solution, $\\sqrt[3]{p}$.",
         ],
       },
     ],
     pitfalls: [
       "$x^2$ means $x \\times x$, not $2x$: $x^2 = 49$ is not solved by $\\frac{49}{2}$.",
       "Do not drop the negative square root of a positive number.",
-      "Do not add a negative solution to a cube equation: $(-4)^3 = -64$, not 64.",
+      "A cube equation has one solution, with the same sign as the number: $x^3 = 64$ gives only 4, because $(-4)^3 = -64$.",
     ],
     parentGuide:
       "Ask for two different numbers whose square is 36, then for a number whose cube is −8. Talk about why the second question has only one answer.",
@@ -281,7 +279,7 @@ export const realNumberLessons: Lesson[] = [
       {
         title: "Scientific notation and standard form",
         paragraphs: [
-          "A number is in scientific notation when it is written as $a \\times 10^{n}$. The number in front, $a$, is called the coefficient, and it is at least 1 and less than 10. The exponent $n$ is an integer, a whole number or its negative. Standard form is the ordinary way of writing the number, with digits and a decimal point.",
+          "A number is in scientific notation when it is written as $a \\times 10^{n}$. The number in front, $a$, is called the coefficient, and it is at least 1 and less than 10. The exponent $n$ is an integer: a whole number (one of 0, 1, 2, …) or its negative. Standard form is the ordinary way of writing the number, with digits and a decimal point.",
           "To write $3.07 \\times 10^{5}$ in standard form, move the decimal point 5 places to the right and fill the empty places with zeros: 307,000. For $3.07 \\times 10^{-4}$, move it 4 places to the left: 0.000307. To go the other way, move the point until exactly one digit that is not 0 is to its left, and count the places moved. 0.000307 becomes 3.07 after 4 places to the right, so $0.000307 = 3.07 \\times 10^{-4}$.",
           "Numbers of 10 or more have positive exponents; numbers between 0 and 1 have negative exponents. A negative exponent makes a small positive number, not a negative number.",
         ],
@@ -291,7 +289,7 @@ export const realNumberLessons: Lesson[] = [
         title: "How many times as large",
         paragraphs: [
           "To compare $6 \\times 10^{8}$ with $2 \\times 10^{5}$, divide: $\\frac{6 \\times 10^{8}}{2 \\times 10^{5}} = \\frac{6}{2} \\times \\frac{10^{8}}{10^{5}} = 3 \\times 10^{3} = 3000$. So $6 \\times 10^{8}$ is 3000 times as large as $2 \\times 10^{5}$. Dividing powers of 10 subtracts exponents, because $10^{8} \\div 10^{5}$ cancels five factors of 10 and leaves three.",
-          "When the first coefficient is smaller, dividing the coefficients gives a number less than 1: $\\frac{2 \\times 10^{7}}{5 \\times 10^{3}} = 0.4 \\times 10^{4} = 4000$. So subtracting the exponents alone can be off by a factor of 10.",
+          "When the first coefficient is smaller, dividing the coefficients gives a number less than 1: $\\frac{2 \\times 10^{7}}{5 \\times 10^{3}} = 0.4 \\times 10^{4} = 4000$. So subtracting the exponents alone can give the wrong answer: here it gives $10^4 = 10{,}000$, not 4000.",
         ],
       },
     ],
@@ -327,7 +325,7 @@ export const realNumberLessons: Lesson[] = [
     id: "scientific-operations",
     title: "Calculate with scientific notation",
     summary:
-      "Scientific notation writes a number as a coefficient from 1 up to 10 times a power of 10, like $3 \\times 10^4 = 30{,}000$. To multiply or divide two such numbers, work on the coefficients and the powers of 10 separately. To add or subtract, first rewrite them with the same power of 10, just as you add hundreds to hundreds. Then fix the coefficient so it is from 1 up to 10 again.",
+      "Scientific notation is a way to write a number as a coefficient from 1 up to 10 times a power of 10, like $3 \\times 10^4 = 30{,}000$. To multiply or divide two such numbers, work on the coefficients and the powers of 10 separately. To add or subtract, first rewrite them with the same power of 10, just as you add hundreds to hundreds. Then fix the coefficient so its size, ignoring any minus sign, is from 1 up to 10 again.",
     templateIds: ["scientific-operations"],
     includeGeneratedRepresentation: false,
     objectives: [
@@ -346,8 +344,8 @@ export const realNumberLessons: Lesson[] = [
         stage: "intuition",
         title: "Multiply and divide",
         paragraphs: [
-          "This lesson uses decimal arithmetic. A number in scientific notation is written $a \\times 10^{n}$. The coefficient $a$ is at least 1 and less than 10. The exponent $n$ is an integer (a whole number or its negative), and it counts the factors of 10.",
-          "Numbers being multiplied, called factors, can be multiplied in any order and grouping. So $(3 \\times 10^{4}) \\times (4 \\times 10^{6}) = (3 \\times 4) \\times (10^{4} \\times 10^{6})$. Multiplying powers of 10 adds their exponents: $10^{4} \\times 10^{6}$ has $4 + 6 = 10$ factors of 10. The product, the answer to the multiplication, is $12 \\times 10^{10}$.",
+          "This lesson uses decimal arithmetic. A number in scientific notation is written $a \\times 10^{n}$. The coefficient $a$ is at least 1 and less than 10. The small raised number $n$ is called the exponent. It is an integer: a whole number (one of 0, 1, 2, …) or its negative. When it is positive, it counts how many 10s are multiplied. A negative exponent divides by 10 that many times instead.",
+          "Numbers being multiplied, called factors, can be multiplied in any order and grouping. So $(3 \\times 10^{4}) \\times (4 \\times 10^{6}) = (3 \\times 4) \\times (10^{4} \\times 10^{6})$. Multiplying powers of 10 adds their exponents: $10^{4} \\times 10^{6}$ has $4 + 6 = 10$ factors of 10. The product, the answer when you multiply, is $12 \\times 10^{10}$.",
           "The coefficient 12 is not less than 10, so rewrite it: $12 = 1.2 \\times 10^{1}$, and $12 \\times 10^{10} = 1.2 \\times 10^{11}$. Dividing works the same way, but subtracts the exponents. For example, $(8 \\times 10^{9}) \\div (2 \\times 10^{3}) = 4 \\times 10^{6}$. When the coefficient quotient is less than 1, as in $(2 \\times 10^{9}) \\div (8 \\times 10^{3}) = 0.25 \\times 10^{6}$, rewrite $0.25 = 2.5 \\times 10^{-1}$ to get $2.5 \\times 10^{5}$.",
         ],
         illustration: "scientific-regroup",
@@ -391,24 +389,24 @@ export const realNumberLessons: Lesson[] = [
 
 export const realNumberMethods: Record<string, ProblemMethod> = {
   "classify-real-number": {
+    noLink: ["root", "roots"],
     goal: "Pick the one rational (or irrational) number from four given numbers.",
     terms: [
       ["rational-number", "Its decimal either ends or repeats."],
       "irrational-number",
     ],
     senses: {
-      root: "root-radical",
       square: "square-number",
       squares: "square-number",
       cube: "cube",
       whole: "whole",
     },
     intuition:
-      "A rational number can be written as a fraction of two integers (whole numbers or their negatives), with a bottom number that is not 0. Its decimal ends or repeats. An irrational number cannot be written that way; its decimal never ends and never repeats. A perfect square is a whole number times itself, like 49, so $\\sqrt{49} = 7$ is rational.",
+      "A square root is the number, zero or greater, that times itself gives a number: $\\sqrt{49} = 7$. A cube root is the number whose three copies multiply to make a given number: $\\sqrt[3]{8} = 2$. An integer is a whole number (one of 0, 1, 2, 3, …) or its negative. A rational number is a number that can be written as a fraction of two integers, with a bottom number that is not 0. Its decimal ends or repeats. An irrational number cannot be written that way; its decimal never ends and never repeats. A perfect square is a whole number times itself, like 49, so $\\sqrt{49} = 7$ is rational.",
     method: [
-      "Under a root sign, check for a perfect square or cube: if so, the root is a whole number.",
+      "For a square root of a whole number, check whether the number is a perfect square. For a cube root, check whether it is a perfect cube, a whole number cubed. If so, the root is a whole number.",
       "Fractions, integers and decimals that end or repeat are rational.",
-      "Roots of numbers that are not perfect squares or cubes, $\\pi$ times a rational number other than 0, and decimals that never repeat are irrational.",
+      "Square roots of whole numbers that are not perfect squares, cube roots of whole numbers that are not perfect cubes, $\\pi$ times a rational number other than 0, and decimals that never end and never repeat are irrational.",
     ],
     watch:
       "A root sign or an endless decimal alone does not make a number irrational.",
@@ -418,7 +416,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     terms: ["repeating-block"],
     noLink: ["whole", "tails", "tail", "leaves", "place", "places"],
     intuition:
-      "A repeating decimal repeats a block of digits forever. A bar marks the block: $0.\\overline{27} = 0.272727\\ldots$. Multiplying by 100 shifts every digit two places left, so $100x$ and $x$ have the same endless tail. Subtracting them cancels the tail.",
+      "A repeating decimal repeats a block of digits forever. A bar marks the block: $0.\\overline{27} = 0.272727\\ldots$. Call the decimal $x$. For a 2-digit block, multiplying by 100 shifts every digit two places left, so $100x$ and $x$ have the same endless tail. For a 3-digit block, use 1000. Subtracting cancels the tail.",
     method: [
       "Call the decimal $x$ and write out a few repetitions.",
       "Multiply $x$ by powers of 10 so that two copies have the same tail after the point.",
@@ -427,19 +425,18 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
     watch: "Use 10 raised to the length of the repeating block, not always 10.",
   },
   "root-between-integers": {
-    noLink: ["side"],
+    noLink: ["root", "roots", "side"],
     goal: "Find the two whole numbers next to each other that a square root or cube root lies between.",
     terms: ["perfect-square"],
     senses: {
       factor: "factor-number",
-      root: "root-radical",
       square: "square-number",
       squares: "square-number",
       cube: "cube",
       cubes: "cube",
     },
     intuition:
-      "The square root $\\sqrt{20}$ is the positive number that times itself makes 20. The cube root $\\sqrt[3]{20}$ is the number used three times as a factor to make 20. A perfect square is a whole number times itself, like 16 or 25. Since 20 is between 16 and 25, $\\sqrt{20}$ is between 4 and 5.",
+      "A square root is the positive number that times itself makes a given number: $\\sqrt{20}$ times itself makes 20. A cube root is the number whose three copies multiply to make a given number: $\\sqrt[3]{20}$ is that number for 20. Squaring means multiplying a number by itself. A perfect square is a whole number times itself, like 16 or 25. Since 20 is between 16 and 25, $\\sqrt{20}$ is between 4 and 5.",
     method: [
       "List perfect squares (or cubes) near the number under the root.",
       "Find the two that the number lies between.",
@@ -451,13 +448,12 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
   "root-nearest-tenth": {
     goal: "Approximate a square root to the nearest tenth without a calculator.",
     senses: {
-      root: "root-radical",
       square: "square-number",
       squares: "square-number",
     },
-    noLink: ["side", "half"],
+    noLink: ["root", "roots", "side", "half"],
     intuition:
-      "The square root $\\sqrt{20}$ is the positive number that times itself makes 20. Squaring a number means multiplying it by itself: $4.4^2 = 4.4 \\times 4.4 = 19.36$. Bigger numbers have bigger squares, so squares show where the root sits.",
+      "A square root is the positive number that times itself makes a given number: $\\sqrt{20}$ times itself makes 20. Squaring means multiplying a number by itself: $4.4^2 = 4.4 \\times 4.4 = 19.36$. Bigger numbers have bigger squares, so squares show where the root sits.",
     method: [
       "Find the consecutive whole numbers around the root.",
       "Square tenths between them until the number is between two squares.",
@@ -467,19 +463,17 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       "Decide rounding with the halfway point's square, not by guessing from the two squares.",
   },
   "compare-irrational-values": {
-    noLink: ["mean"],
+    noLink: ["root", "roots", "mean"],
     goal: "Find the greatest or least of four roots, fractions and decimals.",
     senses: {
       factor: "factor-number",
       intervals: "interval",
-      root: "root-radical",
-      roots: "root-radical",
       square: "square-number",
       squaring: "square-number",
       cube: "cube",
     },
     intuition:
-      "A square root $\\sqrt{n}$ is the positive number that times itself makes $n$. A cube root $\\sqrt[3]{n}$ is the number used three times as a factor to make $n$. To compare numbers in different forms, find the tenths each one lies between, for example 5.4 and 5.5.",
+      "A square root is the positive number that times itself makes a given number, written $\\sqrt{n}$. A cube root is the number whose three copies multiply to make a given number, written $\\sqrt[3]{n}$. Squaring means multiplying a number by itself. To compare numbers in different forms, find the tenths each one lies between, for example 5.4 and 5.5.",
     method: [
       "Place each root between consecutive tenths by squaring or cubing tenths.",
       "Divide each fraction to find its tenths.",
@@ -489,21 +483,20 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       "A larger number under the root sign does not mean a larger value when the roots differ.",
   },
   "solve-square-cube-equation": {
+    noLink: ["root", "roots"],
     goal: "Find every real solution of $x^2 = p$ or $x^3 = p$.",
     terms: ["solution", "plus-or-minus"],
     senses: {
       opposite: "opposite-number",
       product: "product-multiply",
       factor: "factor-number",
-      root: "root-radical",
-      roots: "root-radical",
       square: "square-number",
       squares: "square-number",
       cube: "cube",
       cubes: "cube",
     },
     intuition:
-      "$x^2$ ($x$ squared) means $x \\times x$, and $x^3$ ($x$ cubed) means $x \\times x \\times x$. A solution is a value of $x$ that makes the equation true. Both 7 and −7 square to 49, because a negative times a negative is positive. But only 4 cubes to 64, since $(-4)^3 = -64$.",
+      "Squared means multiplied by itself: $x^2$ ($x$ squared) is $x \\times x$. Cubed means three copies multiplied: $x^3$ ($x$ cubed) is $x \\times x \\times x$. A solution is a value of $x$ that makes the equation true. Both 7 and −7 square to 49, because a negative times a negative is positive. But only 4 cubes to 64, since $(-4)^3 = -64$.",
     method: [
       "For $x^2 = p$ with $p > 0$, the solutions are $\\sqrt{p}$ and $-\\sqrt{p}$.",
       "For $x^3 = p$, the one solution is $\\sqrt[3]{p}$, with the same sign as $p$.",
@@ -521,7 +514,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       place: "place-value",
     },
     intuition:
-      "Scientific notation writes a number as $a \\times 10^{n}$: a coefficient $a$ from 1 up to 10, times a power of 10. Multiplying by 10 moves the decimal point one place right, and dividing by 10 moves it one place left. The exponent $n$ counts those moves.",
+      "Scientific notation is a way to write a number as $a \\times 10^{n}$. The coefficient, the number in front, is $a$, from 1 up to 10. It is multiplied by a power of 10. Multiplying by 10 moves the decimal point one place right, and dividing by 10 moves it one place left. The exponent $n$ counts those moves.",
     method: [
       "Move the decimal point $n$ places: right if $n$ is positive, left if $n$ is negative.",
       "Fill any empty places with zeros.",
@@ -539,7 +532,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       place: "place-value",
     },
     intuition:
-      "Scientific notation writes a number as $a \\times 10^{n}$. The coefficient $a$ is at least 1 and less than 10; $1 \\le a < 10$ says that in symbols. The exponent $n$ counts how many places the decimal point moved. So $4500 = 4.5 \\times 10^3$.",
+      "Scientific notation writes a number as $a \\times 10^{n}$. The coefficient $a$ is 1 or more, and less than 10; $1 \\le a < 10$ says that in symbols. The exponent $n$ counts how many places the decimal point moved. So $4500 = 4.5 \\times 10^3$.",
     method: [
       "Move the decimal point until exactly one digit that is not 0 is to its left.",
       "Count the places moved: that count is the size of the exponent.",
@@ -576,11 +569,11 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
       product: "product-multiply",
     },
     intuition:
-      "A number in scientific notation is a coefficient from 1 up to 10 times a power of 10, like $3.2 \\times 10^5$. Multiplying powers of 10 adds exponents, and dividing subtracts them. Adding works only when the powers of 10 match, like adding hundreds to hundreds.",
+      "A number in scientific notation is a coefficient from 1 up to 10 times a power of 10, like $3.2 \\times 10^5$. Multiplying powers of 10 adds exponents, and dividing subtracts them. A product is the answer when you multiply. An integer is a whole number (one of 0, 1, 2, …) or its negative. Adding works only when the powers of 10 match, like adding hundreds to hundreds.",
     method: [
       "Multiply or divide: combine coefficients, then add or subtract exponents.",
       "Add or subtract: first rewrite both numbers with the same power of 10.",
-      "Adjust the coefficient to be at least 1 and less than 10, changing the exponent to keep the value.",
+      "Adjust the coefficient so its size, ignoring any minus sign, is 1 or more and less than 10. Change the exponent to keep the value.",
     ],
     watch:
       "Exponents add for a product, not for a sum; match powers of 10 before adding.",
@@ -589,7 +582,7 @@ export const realNumberMethods: Record<string, ProblemMethod> = {
 
 export const realNumberPrinciples: Record<string, string> = {
   "classify-real-number":
-    "A number is rational exactly when it is a quotient of two integers with a denominator other than 0. Its decimal then ends or repeats. The square or cube root of a whole number that is not a perfect square or cube is irrational, and so is $\\pi$.",
+    "A number is rational exactly when it is a quotient of two integers with a denominator other than 0. Its decimal then ends or repeats. A square root of a whole number that is not a perfect square is irrational. So is a cube root of a whole number that no whole number cubed gives, and so is $\\pi$.",
   "repeating-decimal-to-fraction":
     "Multiplying by suitable powers of 10 aligns the repeating tails after the decimal point. Subtracting the aligned copies cancels that tail and leaves a whole number.",
   "root-between-integers":

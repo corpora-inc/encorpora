@@ -22,7 +22,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
     noLink: ["part", "parts"],
     goal: "Given a linear expression, decide which other expressions have the same value for every value of $x$.",
     intuition:
-      "An expression is numbers and letters joined by operations, like $3(x + 4) - x$. The letter $x$, a variable, stands for a number. Two expressions are equivalent when they give the same number for every value of $x$. Two moves rewrite an expression without changing its value. Distributing multiplies each term inside parentheses by the number outside: $3(x + 4) = 3x + 12$. Combining like terms adds terms with the same letter part: $3x - x = 2x$.",
+      "An expression is a group of numbers and letters joined by operations, like $3(x + 4) - x$. The letter $x$, a variable, stands for a number. Two expressions are equivalent when they give the same number for every value of $x$. Two moves rewrite an expression without changing its value. Distributing multiplies each term (each part joined by + or −) inside parentheses by the number outside: $3(x + 4) = 3x + 12$. Like terms are terms with the same letter part, and combining them adds them: $3x - x = 2x$.",
     terms: ["equivalent-expressions", "like-terms", "distributive-property"],
     senses: {
       multiples: "multiple",
@@ -34,7 +34,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
       "Rewrite the given expression: distribute each multiplier over every term in its parentheses, keeping signs.",
       "Combine the $x$ terms together and the plain numbers together.",
       "Compare each choice with the simplified form. To test a doubtful choice, substitute the same value of $x$ into both expressions.",
-      "If two values of $x$ give different results, the expressions are not equivalent.",
+      "If the two expressions give different results for the same value of $x$, they are not equivalent.",
     ],
     watch:
       "Agreeing at one value of $x$ does not make expressions equivalent: $2(x + 3)$ and $x + 6$ both give 6 at $x = 0$. Check a second value, or simplify both. Make sure the multiplier reaches every term inside the parentheses.",
@@ -82,7 +82,7 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
   "unit-chain-conversion": {
     goal: "Given a quantity in one set of units and the conversion facts, find it in the requested units by multiplying through a chain of conversions.",
     intuition:
-      "A unit is a fixed amount used to measure, like a meter (m) or a kilometer (km). A conversion fact such as $1\\text{ km} = 1000\\text{ m}$ means both name the same length. So the fraction $\\frac{1000\\text{ m}}{1\\text{ km}}$ equals 1. Multiplying by something equal to 1 changes the units but not the amount. Arrange each fraction so the unit you want to remove appears once on top and once on the bottom. Then it cancels, like a number divided by itself.",
+      "A unit is a fixed amount used to measure, like a meter. A kilometer is a length of 1000 meters, written km. A conversion fact such as $1\\text{ km} = 1000\\text{ m}$ means both name the same length. So the fraction $\\frac{1000\\text{ m}}{1\\text{ km}}$ equals 1. Multiplying by something equal to 1 changes the units but not the amount. Arrange each fraction so the unit you want to remove appears once on top and once on the bottom. Then it cancels, like a number divided by itself.",
     terms: ["conversion-factor", "dimensional-analysis"],
     senses: {
       edges: "edge",
@@ -93,15 +93,15 @@ export const numberMeasurementGapMethods: Record<string, ProblemMethod> = {
       factor: "factor-number",
       square: "square-shape",
     },
-    noLink: ["change", "changes"],
+    noLink: ["solid", "change", "changes"],
     method: [
       "Write the starting quantity with its units, and the units you need at the end.",
       "Choose conversion fractions so that each unwanted unit cancels, one fact at a time.",
-      "For square or cubic units (area or volume), use the length fact two or three times: $1\\text{ m}^2 = 100^2\\text{ cm}^2$.",
+      "Volume, the space a solid takes up, uses the length fact three times; area uses it twice: $1\\text{ m}^2 = 100^2\\text{ cm}^2$.",
       "Multiply and divide the numbers. Check that only the requested units remain.",
     ],
     watch:
-      "For area, multiply by the length number twice; for volume, three times: $1\\text{ m}^3 = 100^3 = 1{,}000{,}000\\text{ cm}^3$, not 100. Convert time units too when a rate mixes hours and minutes.",
+      "For area, multiply by the length number twice; for volume, three times: $1\\text{ m}^3 = 100^3\\text{ cm}^3 = 1{,}000{,}000\\text{ cm}^3$, not 100. Convert time units too when a rate mixes hours and minutes.",
   },
   "fraction-of-set": {
     goal: "Given a set of objects and a fraction, find how many objects the fraction names.",
@@ -161,7 +161,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         title: "Order and size are different questions",
         paragraphs: [
           "You need to compare whole numbers and read a number line, a line with numbers in order at equal steps. Negative numbers, written with a minus sign, sit to the left of 0. A negative number can mean a debt, a depth below sea level, or a temperature below zero.",
-          "The absolute value of a number is its distance from 0, so it is never negative. It is written with two upright bars: $|-12| = 12$ and $|7| = 7$.",
+          "An account balance is the amount of money in an account, and a negative balance means money is owed. The absolute value of a number is its distance from 0, so it is never negative. It is written with two upright bars: $|-12| = 12$ and $|7| = 7$.",
           "Asking which number is greater is about position: the number farther right on the number line is greater. Asking how much is owed, or how far something is from sea level, is about size: it uses the absolute value.",
         ],
       },
@@ -237,7 +237,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         "Multiply out the parentheses: the 3 multiplies both $x$ and 4, so $3(x + 4) = 3x + 12$. The expression becomes $3x + 12 - x$.",
         "Combine the like terms $3x$ and $-x$: 3 of $x$ minus 1 of $x$ is $2x$. The expression is $2x + 12$, the same as the other one.",
         "Check with $x = 5$: $3(5 + 4) - 5 = 27 - 5 = 22$, and $2 \\times 5 + 12 = 22$.",
-        "Check with $x = 0$: $3 \\times 4 - 0 = 12$, and $2 \\times 0 + 12 = 12$. Both inputs agree, as equivalent expressions must.",
+        "Check with $x = 0$: $3 \\times 4 - 0 = 12$, and $2 \\times 0 + 12 = 12$. Both inputs agree, as they must.",
       ],
       answer: "Yes, they are equivalent.",
     },
@@ -246,7 +246,7 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "method",
         title: "Simplify, then substitute only to find a difference",
         paragraphs: [
-          "Multiply out parentheses first, keeping the sign of each product, then combine like terms. Two expressions that simplify to the same form are equivalent.",
+          "Multiply out parentheses first, keeping the sign of each product (the answer when you multiply). Then combine like terms. Two expressions that simplify to the same form are equivalent.",
           "To test a suspicious pair quickly, substitute the same value of $x$ into both. If the values differ, the expressions are not equivalent. If they match, try another value or simplify; for example $2(x+3)$ and $x+6$ both equal 6 at $x=0$ but are different expressions, because at $x=1$ they give 8 and 7.",
         ],
       },
@@ -428,15 +428,15 @@ export const numberMeasurementGapLessons: Lesson[] = [
         stage: "method",
         title: "Follow the units",
         paragraphs: [
-          "Write every number with its units and cross out matching units on the top and bottom. If a unit does not cancel, the ratio is upside down. A speed in kilometers per hour used for minutes needs $\\frac{1\\text{ h}}{60\\text{ min}}$ too.",
-          "For area and volume, square or cube the length factor. Since $1\\text{ m}=100\\text{ cm}$, $1\\text{ m}^2=100^2\\text{ cm}^2=10{,}000\\text{ cm}^2$ and $1\\text{ m}^3=100^3\\text{ cm}^3=1{,}000{,}000\\text{ cm}^3$. Then use any further fact, such as $1\\text{ L}=1000\\text{ cm}^3$.",
+          "Write every number with its units and cross out matching units on the top and bottom. If an unwanted unit does not cancel, flip that ratio or add another conversion fact. A speed in kilometers per hour used for minutes needs $\\frac{1\\text{ h}}{60\\text{ min}}$ too.",
+          "For area and volume, square or cube the length factor (the number in the length fact). Since $1\\text{ m}=100\\text{ cm}$, $1\\text{ m}^2=100^2\\text{ cm}^2=10{,}000\\text{ cm}^2$ and $1\\text{ m}^3=100^3\\text{ cm}^3=1{,}000{,}000\\text{ cm}^3$. Then use any further fact, such as $1\\text{ L}=1000\\text{ cm}^3$.",
         ],
       },
       {
         stage: "formal",
         title: "Why the factor is squared or cubed",
         paragraphs: [
-          "Let A and B be two length units, with $1\\text{ A} = k\\text{ B}$. A square with sides $1\\text{ A}$ long has sides $k\\text{ B}$ long, so its area is $k \\times k = k^2$ square B. A cube with edges $1\\text{ A}$ long has edges $k\\text{ B}$ long, so its volume is $k \\times k \\times k = k^3$ cubic B.",
+          "Take any two length units with $1\\text{ A} = k\\text{ B}$. A square with sides $1\\text{ A}$ long has sides $k\\text{ B}$ long, so its area is $k \\times k = k^2\\text{ B}^2$. A cube with edges $1\\text{ A}$ long has edges $k\\text{ B}$ long, so its volume is $k \\times k \\times k = k^3\\text{ B}^3$.",
           "Multiplying a quantity by a ratio equal to 1, such as $\\frac{k\\text{ B}}{1\\text{ A}}$, does not change the quantity, only the units used to write it.",
         ],
       },

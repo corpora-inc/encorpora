@@ -15,8 +15,8 @@ const foundations: Lesson["sections"] = [
     stage: "intuition",
     title: "Read a power",
     paragraphs: [
-      "A factor is a number being multiplied. A power is a short way to write the same factor multiplied again and again: $2^3 = 2 \\times 2 \\times 2 = 8$. The big number 2 is called the base: it is the factor that repeats. The small raised 3 is called the exponent. A positive exponent counts how many times the base is multiplied.",
-      "A letter such as $x$ can stand for a number. In these lessons the base is never 0: it can be any number on the number line except zero, including negative numbers and fractions. You will multiply and divide negative numbers, so remember: a negative times a negative is positive, and a negative times a positive is negative.",
+      "A factor is a number being multiplied, and the product is the answer when you multiply. A power is a short way to write the same factor multiplied again and again: $2^3 = 2 \\times 2 \\times 2 = 8$. The big number 2 is called the base: it is the factor that repeats. The small raised 3 is called the exponent. A positive exponent counts how many times the base is multiplied.",
+      "A letter such as $x$ can stand for a number. In these lessons the base is never 0. It can be any real number, meaning any number on the number line, except zero. That includes negative numbers, which are less than 0, and fractions. You will multiply and divide negative numbers, so remember: a negative times a negative is positive, and a negative times a positive is negative.",
     ],
   },
   {
@@ -35,7 +35,7 @@ export const integerExponentLessons: Lesson[] = [
     id: "negative-integer-power",
     title: "Understand and evaluate negative powers",
     summary:
-      "In $2^3$, the base 2 is multiplied 3 times; the small raised 3 is the exponent. Each step down in the exponent divides by the base: $2^2 = 4$, $2^1 = 2$, $2^0 = 1$. Keep going past zero: $2^{-1} = \\tfrac{1}{2}$ and $2^{-2} = \\tfrac{1}{4}$. A negative exponent means take the reciprocal, the number that multiplies with it to make 1. It does not make the answer negative.",
+      "In $2^3$, 2 is multiplied 3 times: $2 \\times 2 \\times 2$. The repeated number is called the base, and the small raised 3 is called the exponent. Each step down in the exponent divides by the base: $2^2 = 4$, $2^1 = 2$, $2^0 = 1$. Keep going past zero: $2^{-1} = \\tfrac{1}{2}$ and $2^{-2} = \\tfrac{1}{4}$. A negative exponent means: use the matching positive exponent, then take the reciprocal, the number that multiplies with the result to make 1. It does not make the answer negative.",
     templateIds: ["negative-integer-power"],
     includeGeneratedRepresentation: false,
     senses: exponentSenses,
@@ -99,7 +99,7 @@ export const integerExponentLessons: Lesson[] = [
     id: "product-of-powers-exponent",
     title: "Multiply powers with the same base",
     summary:
-      "In $x^2$, the base $x$ is multiplied 2 times; the small raised 2 is the exponent, which counts the factors. So $x^2 \\times x^3$ is two $x$s times three more $x$s. That is five $x$s in all, or $x^5$. When two powers have the same base, multiplying them adds their exponents.",
+      "In $x^2$, $x$ is multiplied 2 times: $x \\times x$. The repeated number is called the base, and the small raised 2 is called the exponent. So $x^2 \\times x^3$ is two $x$s times three more $x$s. That is five $x$s in all, or $x^5$. When two powers have the same base, multiplying them adds their exponents.",
     templateIds: ["product-of-powers-exponent"],
     includeGeneratedRepresentation: false,
     senses: exponentSenses,
@@ -113,7 +113,7 @@ export const integerExponentLessons: Lesson[] = [
       {
         title: "Join the factors",
         paragraphs: [
-          "A product is the answer to a multiplication. In $x^2 \\times x^3$, the first power gives two factors of $x$ and the second gives three. Together there are five: $(x \\times x) \\times (x \\times x \\times x) = x^5$. The base stays $x$. Only the count of factors changes, and the counts add: 2 + 3 = 5.",
+          "A product is the answer when you multiply. In $x^2 \\times x^3$, the first power gives two factors of $x$ and the second gives three. Together there are five: $(x \\times x) \\times (x \\times x \\times x) = x^5$. The base stays $x$. Only the count of factors changes, and the counts add: 2 + 3 = 5.",
           "In letters: for any $x$ other than 0 and integer exponents $m$ and $n$, $x^{m} \\times x^{n} = x^{m + n}$. The bases must be the same. In $2^3 \\times 5^2$ the factors are 2s and 5s, so adding 3 and 2 gives neither a power of 2 nor a power of 5.",
         ],
       },
@@ -156,7 +156,7 @@ export const integerExponentLessons: Lesson[] = [
     id: "quotient-of-powers-exponent",
     title: "Divide powers with the same base",
     summary:
-      "In $x^5$, the base $x$ is multiplied 5 times; the small raised 5 is the exponent. Dividing $x^5$ by $x^2$ cancels two $x$s on top with the two below, because $\\tfrac{x}{x} = 1$. Three $x$s are left, so the answer is $x^3$. When two powers have the same base (not 0), dividing subtracts the bottom exponent from the top one: 5 − 2 = 3.",
+      "In $x^5$, $x$ is multiplied 5 times. The repeated number is called the base, and the small raised 5 is called the exponent. Dividing $x^5$ by $x^2$ cancels two $x$s on top with the two below, because $\\tfrac{x}{x} = 1$. Three $x$s are left, so the answer is $x^3$. When two powers have the same base (not 0), dividing subtracts the bottom exponent from the top one: 5 − 2 = 3.",
     templateIds: ["quotient-of-powers-exponent"],
     includeGeneratedRepresentation: false,
     senses: exponentSenses,
@@ -213,7 +213,7 @@ export const integerExponentLessons: Lesson[] = [
     id: "power-of-power-exponent",
     title: "Raise a power to another power",
     summary:
-      "In $x^2$, the base $x$ is multiplied 2 times; the small raised 2 is the exponent. Then $(x^2)^3$ means three copies of $x^2$ multiplied: $x^2 \\times x^2 \\times x^2$. That is three groups of two $x$s, or six $x$s, so $(x^2)^3 = x^6$. Raising a power to another power multiplies the exponents: 2 × 3 = 6.",
+      "In $x^2$, $x$ is multiplied 2 times. The repeated number is called the base, and the small raised 2 is called the exponent. Then $(x^2)^3$ means three copies of $x^2$ multiplied: $x^2 \\times x^2 \\times x^2$. That is three groups of two $x$s, or six $x$s, so $(x^2)^3 = x^6$. Raising a power to another power multiplies the exponents: 2 × 3 = 6.",
     templateIds: ["power-of-power-exponent"],
     includeGeneratedRepresentation: false,
     senses: exponentSenses,
@@ -277,7 +277,7 @@ const exponentTerms: ProblemMethod["terms"] = [
   "negative-exponent",
 ];
 const exponentIntuition =
-  "A power such as $x^3$ means $x \\times x \\times x$. The base $x$ is the number that repeats, and the small raised 3, the exponent, counts the factors. A negative exponent means take the reciprocal: $x^{-2} = \\tfrac{1}{x^2}$. The base is never 0.";
+  "A power such as $x^3$ means $x \\times x \\times x$. The number that repeats is called the base, and the small raised 3 is called the exponent. A factor is a number being multiplied, and a positive exponent counts the factors. A negative exponent means take the reciprocal: $x^{-2} = \\tfrac{1}{x^2}$. The base is never 0.";
 
 export const integerExponentMethods: Record<string, ProblemMethod> = {
   "negative-integer-power": {
@@ -286,7 +286,7 @@ export const integerExponentMethods: Record<string, ProblemMethod> = {
     senses: exponentSenses,
     noLink: ["change", "whole", "third", "fourth", "rule", "rules"],
     intuition:
-      "In $2^3 = 2 \\times 2 \\times 2$, the base 2 repeats and the small raised 3, the exponent, counts the factors. A negative exponent means take the reciprocal, the number that multiplies with the base to make 1. For a fraction, swap the top and bottom: $\\left(\\tfrac{2}{3}\\right)^{-2} = \\left(\\tfrac{3}{2}\\right)^{2} = \\tfrac{9}{4}$.",
+      "In $2^3 = 2 \\times 2 \\times 2$, the number that repeats is called the base, and the small raised 3 is called the exponent. A factor is a number being multiplied, and a positive exponent counts the factors. A negative exponent means: use the matching positive exponent, then take the reciprocal, the number that multiplies with the result to make 1. For a fraction, swap the top and bottom: $\\left(\\tfrac{2}{3}\\right)^{-2} = \\left(\\tfrac{3}{2}\\right)^{2} = \\tfrac{9}{4}$.",
     method: [
       "Keep any minus sign inside the parentheses with the base.",
       "Flip the base: swap its numerator (top) and denominator (bottom) to take the reciprocal.",
@@ -330,12 +330,12 @@ export const integerExponentMethods: Record<string, ProblemMethod> = {
     noLink: ["change", "whole", "third", "fourth", "rule", "rules"],
     intuition: `${exponentIntuition} $(x^2)^3$ is three copies of $x^2$, three groups of two $x$s, so the exponents multiply: 2 × 3 = 6.`,
     method: [
-      "Find the inner exponent (inside the parentheses) and the outer exponent.",
+      "Parentheses, the curved marks ( ), hold the inner power. Find the inner exponent, inside them, and the outer exponent.",
       "Multiply them, using the sign rules: a negative times a negative is positive.",
       "Enter the exponent $k$, not the value of the power.",
     ],
     watch:
-      "Multiply the exponents for a power of a power. Adding them is the rule for multiplying two powers.",
+      "Multiply the exponents for a power of a power. Adding them is the rule for multiplying two powers with the same base.",
   },
 };
 export const integerExponentPrinciples: Record<string, string> = {

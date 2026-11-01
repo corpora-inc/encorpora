@@ -297,7 +297,7 @@ export const decimalLessons: Lesson[] = [
         stage: "intuition",
         title: "Keep track of the size of each piece",
         paragraphs: [
-          "Place value means a digit's worth depends on its place. After the decimal point, the first place counts tenths, the next hundredths, then thousandths. Each piece is one tenth the size of the piece to its left.",
+          "Place value means a digit's worth depends on its place. After the decimal point, the first place counts tenths. The next counts hundredths, which are tenths cut into 10 equal parts. Then come thousandths, which are hundredths cut into 10 equal parts. Each piece is one tenth the size of the piece to its left.",
           "You can add tenths to tenths, or hundredths to hundredths, just as you add apples to apples. Multiplying can change the size of the pieces: a tenth of a hundredth is a thousandth. So name the new piece size before writing the decimal point.",
         ],
       },
@@ -449,7 +449,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
       places: "place-value",
     },
     intuition:
-      "After the decimal point, the first place counts tenths, the next hundredths, then thousandths. Only matching places add: tenths to tenths. Lining up the decimal points lines up the places, and a 0 can fill an empty place: 12.5 = 12.50.",
+      "After the decimal point, the first place counts tenths. The next counts hundredths, which are tenths cut into 10 equal parts, and then thousandths, which are hundredths cut into 10. Only matching places add: tenths to tenths. Lining up the decimal points lines up the places, and a 0 can fill an empty place: 12.5 = 12.50.",
     method: [
       "Line up the decimal points. Fill empty places on the right with 0.",
       "Add or subtract place by place from the right. Regroup when needed: 10 hundredths make 1 tenth.",
@@ -466,7 +466,7 @@ export const decimalMethods: Record<string, ProblemMethod> = {
       places: "place-value",
     },
     intuition:
-      "The numbers being multiplied are factors, and the answer is the product. Decimal places are the digits after the point: 1.2 has one and 0.35 has two. Tenths times hundredths make thousandths, so 1.2 × 0.35 has 1 + 2 = 3 decimal places: 0.420.",
+      "The numbers being multiplied are called factors, and the answer is called the product. Decimal places are the digits after the point: 1.2 has one and 0.35 has two. Hundredths, which are 1 out of 100, are smaller than tenths. Thousandths, which are 1 out of 1000, are smaller still. Tenths times hundredths make thousandths, so 1.2 × 0.35 has 1 + 2 = 3 decimal places: 0.420.",
     method: [
       "Multiply the digits as whole numbers.",
       "Count the decimal places in both factors together.",
