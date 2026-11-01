@@ -15,7 +15,7 @@ from fractions import Fraction as F
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from multi_part_choice_math_oracle import common_response, compact, pick, require  # noqa: E402
+from multi_part_choice_math_oracle import common_response, check_card_use, compact, pick, require  # noqa: E402
 
 SUPPORTED = frozenset({"digit-place-names", "round-place-blanks", "round-decimal-blanks", "round-addends-sum",
                        "expanded-whole-slots", "expanded-decimal-slots", "compare-symbol-blanks", "digit-value-blanks"})
@@ -168,6 +168,8 @@ def solve_detail(public):
         blanks = common_response(response, "inline", "Choose a symbol for each comparison")
         s = inline_text(response["sentence"])
         m = re.fullmatch(r"First comparison: \$([^$]+)\$ \{c1\} \$([^$]+)\$\.  Second comparison: \$([^$]+)\$ \{c2\} \$([^$]+)\$\.", s)
+        if m is None and response.get("layout") == "cards":
+            m = re.fullmatch(r"\$([^$]+)\$ \{c1\} \$([^$]+)\$\n\$([^$]+)\$ \{c2\} \$([^$]+)\$", s)
         require(m is not None, f"Sentence {s!r}")
         require([b["id"] for b in blanks] == ["c1", "c2"], "Blank ids")
         require([b["label"] for b in blanks] == ["The symbol for the first comparison", "The symbol for the second comparison"], "Blank labels")
@@ -274,6 +276,7 @@ def review_problem(problem):
     expected, facts = solve_detail(public)
     require(problem["answer"] == expected, f"Answer {problem['answer']} disagrees with the wording; expected {expected}")
     key = json.loads(expected)
+    check_card_use(public["response"], key)
     require(list(key) == [b["id"] for b in public["response"]["blanks"]], "Answer keys follow blank order")
     require(grade(public, expected, expected), "The key must grade correct")
     require(all(chr(97 + i) == o["id"] for b in public["response"]["blanks"] for i, o in enumerate(b["options"])), "Option ids")
