@@ -116,7 +116,7 @@ const entries: Entry[] = [
     },
     methodTitle: "Signs give directions",
     methodText: [
-      "The quadrants are numbered I, II, III and IV, going around the opposite way to a clock's hands from the top right. In quadrant I both coordinates are positive. Quadrant II has negative $x$, quadrant III has both negative, and quadrant IV has negative $y$. A point on an axis is in no quadrant.",
+      "The quadrants are numbered I, II, III and IV, going around the opposite way to a clock's hands from the top right. In quadrant I both coordinates are positive. Quadrant II has negative $x$ and positive $y$, quadrant III has both negative, and quadrant IV has positive $x$ and negative $y$. A point on an axis is in no quadrant.",
       "A point described in words works the same way. 4 units left of the $y$-axis means $x = -4$, and 3 units above the $x$-axis means $y = 3$.",
     ],
     formal:
@@ -265,7 +265,7 @@ const entries: Entry[] = [
     title: "Graph a parabola by placing points",
     goal: "Graph a parabola by finding its turning point, the vertex, and then points on both sides of it.",
     summary:
-      "A graph shows, as points $(x, y)$ on a grid, every pair that makes an equation true. An equation with $x^2$ ($x$ times $x$), such as $y = 2(x - 1)^2 - 3$, makes a U-shaped graph called a parabola. Its turning point is called the vertex. The two sides are mirror images of each other. So find the vertex first, then put in integers (the whole numbers and their negatives) next to it to find more points.",
+      "A graph shows, as points $(x, y)$ on a grid, every pair that makes an equation true. An equation with $x^2$ ($x$ times $x$) and no higher power, such as $y = 2(x - 1)^2 - 3$, makes a U-shaped graph called a parabola. Its turning point is called the vertex. The two sides are mirror images of each other. So find the vertex first, then put in integers (the whole numbers and their negatives) next to it to find more points.",
     objectives: [
       "Read the vertex from $y = a(x - h)^2 + k$, and find it from $y = ax^2 + bx + c$ with $x = -\\frac{b}{2a}$.",
       "Find grid points of a parabola by putting in whole numbers for $x$ and using its mirror symmetry.",

@@ -79,7 +79,7 @@ export const graphicalLessons: Lesson[] = [
       prompt:
         "Point $P$ is three units left and two units above the origin. What is its $x$-coordinate?",
       steps: [
-        "The $x$-coordinate is the across position. Left of the origin means a negative number, one less than 0, so 3 units left is $-3$.",
+        "The $x$-coordinate is the across position. Left of the origin means a negative number, a number less than 0, so 3 units left is $-3$.",
         "The point is at $(-3, 2)$: across $-3$, up 2. The question asks only for $x$, which is $-3$.",
       ],
       answer: "−3",
@@ -345,7 +345,7 @@ export const graphicalLessons: Lesson[] = [
       {
         title: "Count spaces between locations",
         paragraphs: [
-          "Each tick marks a number. The distance between neighboring ticks is one unit. Count the spaces traveled, not the tick marks you see: from 1 to 4 passes 4 ticks but only 3 spaces.",
+          "Each tick marks a number. Here the distance between neighboring ticks is one unit. Count the spaces traveled, not the tick marks you see: from 1 to 4 passes 4 ticks but only 3 spaces.",
           "If one point is left of 0 and the other is right of 0, travel to 0 first. Then keep going to the other point. Add those two distances.",
         ],
       },

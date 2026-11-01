@@ -162,7 +162,7 @@ const entries: Entry[] = [
     methodTitle: "Rate times count, then add",
     methodText: [
       "Check units: a price in dollars per item times a number of items gives dollars, the unit of the total.",
-      "Say a full load is $p$ items of one kind alone, or $q$ items of the other kind alone. Then $qx + py = pq$ is true at $(p, 0)$ and at $(0, q)$. Only one line passes through two points, so that is the equation.",
+      "Say a full load is $p$ items of one kind alone, or $q$ items of the other kind alone. Each item uses a fixed share of the load, so the equation is a straight line $ax + by = c$. Then $qx + py = pq$ is true at $(p, 0)$ and at $(0, q)$, and only one line passes through two points.",
     ],
     formal:
       "The line through $(p, 0)$ and $(0, q)$, with $p$ and $q$ not 0, has equation $\\frac{x}{p} + \\frac{y}{q} = 1$. Multiplying both sides by $pq$ gives $qx + py = pq$.",
@@ -236,7 +236,7 @@ const entries: Entry[] = [
       "Find the growth factor from one output, and use it to find the next output.",
     ],
     intuition:
-      "In $b^x$, the small raised $x$ is the exponent: $3^2 = 3 \\times 3 = 9$. A function, a rule that gives one output for each input, written $f(x) = a \\cdot b^x$ is called exponential. Each time the input goes up by 1, the output is multiplied by $b$, called the base. If an amount doubles every 3 years, then after 12 years it has doubled 4 times, so it is 16 times the start. Going back to the start means dividing by 16.",
+      "In $b^x$, the small raised $x$ is the exponent: $3^2 = 3 \\times 3 = 9$. A function, a rule that gives one output for each input, written $f(x) = a \\cdot b^x$ with $a \\ne 0$, $b > 0$ and $b \\ne 1$, is called exponential. Each time the input goes up by 1, the output is multiplied by $b$, called the base. If an amount doubles every 3 years, then after 12 years it has doubled 4 times, so it is 16 times the start. Going back to the start means dividing by 16.",
     terms: [
       [
         "base-exponent",

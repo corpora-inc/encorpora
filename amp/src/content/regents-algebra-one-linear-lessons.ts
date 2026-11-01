@@ -107,7 +107,7 @@ export const regentsAlgebraOneLinearMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A formula is an equation that links amounts with letters, such as $P = 2l + 2w$. Its terms are the parts joined by + or −. To get one letter alone, use the same steps as for any equation, treating the other letters as known numbers. Remove the terms added to your letter's term first. Then divide by everything that multiplies your letter.",
+      "A formula is an equation that links amounts with letters, such as $P = 2l + 2w$. Its terms are the parts joined by + or −. To get one letter alone, use the same steps as for any equation, treating the other letters as known numbers. Undo the steps done to your letter, last one first. Usually that means removing the terms added to your letter's term, then dividing by everything that multiplies your letter.",
     terms: [
       "isolate",
       [

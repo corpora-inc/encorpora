@@ -66,7 +66,7 @@ export const functionToolkitLessons: Lesson[] = [
       {
         title: "Absolute value as two pieces",
         paragraphs: [
-          "The absolute value is a number's distance from 0, written with bars: $|-3| = 3$. So $|u| = u$ when $u \\ge 0$, and $|u| = -u$ when $u < 0$, which turns a negative number (one less than 0) positive.",
+          "The absolute value is a number's distance from 0, written with bars: $|-3| = 3$. So $|u| = u$ when $u \\ge 0$, and $|u| = -u$ when $u < 0$, which turns a negative number (a number less than 0) positive.",
           "That makes $|x - 1| + 2$ a piecewise function. For $x \\ge 1$ it is $(x - 1) + 2 = x + 1$. For $x < 1$ it is $-(x - 1) + 2 = -x + 3$. These are two straight pieces that meet at the corner point $(1, 2)$, called the vertex.",
           "To solve $f(x) = c$ on a graph, draw the flat line $y = c$. The $x$ values where it meets the graph are the solutions, and counting the meeting points tells how many there are. A filled dot on the line counts; an open circle does not.",
         ],

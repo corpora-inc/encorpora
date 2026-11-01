@@ -108,7 +108,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
     senses,
     noLink,
     intuition:
-      "A quadratic function has an $x^2$ term ($x$ times $x$), like $f(x) = x^2 - 8x + 7$. $f(x)$, read “$f$ of $x$”, is the output for input $x$. Asking for $f(x) = -8$ asks which inputs give the output $-8$. Add 8 to both sides so one side is 0. Then factor: two factors multiply to 0 only when one of them is 0.",
+      "A quadratic function has an $x^2$ term ($x$ times $x$) and no higher power, like $f(x) = x^2 - 8x + 7$. $f(x)$, read “$f$ of $x$”, is the output for input $x$. Asking for $f(x) = -8$ asks which inputs give the output $-8$. Add 8 to both sides so one side is 0. Then factor: two factors multiply to 0 only when one of them is 0.",
     terms: [
       "output",
       [
@@ -173,7 +173,7 @@ export const regentsAlgebraOneFunctionMethods: Record<string, ProblemMethod> = {
       "Pick the pair that adds to $b$. Check by multiplying the two factors back out.",
     ],
     watch:
-      "Several pairs multiply to the same number, so check the sum. When $c$ is negative, the larger number takes the sign of $b$.",
+      "Several pairs multiply to the same number, so check the sum. When $c$ is negative and $b$ is not 0, the number with the larger size takes the sign of $b$.",
   },
 };
 
