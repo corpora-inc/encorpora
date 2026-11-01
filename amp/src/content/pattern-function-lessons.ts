@@ -4,8 +4,9 @@ import type { ProblemMethod } from "./problem-lessons";
 const patternWords: Lesson["sections"][number] = {
   title: "Patterns, terms and rules",
   paragraphs: [
-    "This lesson uses addition, subtraction and multiplication of whole numbers. A number pattern is a list of numbers made by following a rule. Each number in the list is called a term. The pattern begins with a starting number, which is the 1st term.",
-    "The rule says how to get each term from the one before it. For the pattern that starts at 3 with the rule “add 4”, the 1st term is 3, the 2nd is 3 + 4 = 7, the 3rd is 7 + 4 = 11, and so on: 3, 7, 11, 15, 19, … The three dots mean the pattern continues by the same rule.",
+    "A number pattern is a list of numbers made by following a rule. A rule tells how to get each number from the one before it. Each number in the list is called a term. The first term is the starting number.",
+    "Say a pattern starts at 3 and the rule is “add 4.” The 1st term is 3. The 2nd term is 3 + 4 = 7. The 3rd term is 7 + 4 = 11. So the pattern is 3, 7, 11, 15, 19, … The three dots mean the pattern keeps going by the same rule.",
+    "We write 1st, 2nd, 3rd and so on to say where a term is in the list. That place is called its position.",
   ],
 };
 const variableWords: Lesson["sections"][number] = {
@@ -28,27 +29,32 @@ export const patternFunctionLessons: Lesson[] = [
     id: "rule-pattern-term",
     title: "Extend a pattern from its rule",
     summary:
-      "Start with the first term, then use the rule once for each move to the next term.",
+      "A number pattern is a list of numbers made by a rule, like “add 6.” Each number in the list is called a term. Start with the first term. Use the rule once to get each next term. Keep going until you reach the term you need.",
     templateIds: ["rule-pattern-term"],
     includeGeneratedRepresentation: false,
+    senses: { term: "term-sequence", rule: "rule" },
     objectives: [
-      "Generate the terms of a pattern from its starting number and rule.",
-      "Find a later term and check it by counting how many times the rule is applied.",
+      "Write the terms of a pattern from its starting number and its rule.",
+      "Find a later term, and check it by counting how many times the rule was used.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Start with the first number",
         paragraphs: [
-          "If a pattern starts at five and says add six, five is already the first term. One use of the rule gives the second term, and another gives the third. Count the steps needed to reach the requested position.",
+          "Say a pattern starts at 5 and the rule is “add 6.” The 5 is already the 1st term. You do not add anything to get it.",
+          "Use the rule once to get the 2nd term: 5 + 6 = 11. Use it again to get the 3rd term: 11 + 6 = 17.",
+          "So count the steps you need to reach the term you want. Each step is one use of the rule.",
         ],
       },
       patternWords,
       {
         title: "Count the steps, not the terms",
         paragraphs: [
-          "The figure shows the pattern 3, 7, 11, 15, 19, 23. Each arrow applies the rule “add 4” once. Six terms need only five arrows, because the 1st term is the start and needs no step. To reach the 6th term, the rule is applied 6 − 1 = 5 times: 3 + 5 × 4 = 23.",
-          "Multiplication rules work the same way. The pattern that starts at 2 with the rule “multiply by 3” is 2, 6, 18, 54, … Its 4th term is reached after 3 steps: 2 × 3 × 3 × 3 = 54. Write the terms in order and count them, so that no step is skipped or added.",
+          "Look at the picture: the pattern 3, 7, 11, 15, 19, 23. Each arrow uses the rule “add 4” once.",
+          "There are 6 terms but only 5 arrows. The 1st term is the start, so it needs no arrow. To reach the 6th term, use the rule 6 − 1 = 5 times. Five jumps of 4 are 5 × 4 = 20, and 3 + 20 = 23.",
+          "Multiplying rules work the same way. A pattern that starts at 2 with the rule “multiply by 3” goes 2, 6, 18, 54, … Its 4th term comes after 3 steps: 2 × 3 × 3 × 3 = 54.",
+          "Write the terms in order and number them. Then no step is skipped or added.",
         ],
         illustration: "pattern-rule-steps",
       },
@@ -58,7 +64,7 @@ export const patternFunctionLessons: Lesson[] = [
         stage: "formal",
         title: "Term position and steps",
         paragraphs: [
-          "For a starting term $a_1$ and a rule $f$ that gives each next term, $a_{n+1}=f(a_n)$ for positive whole $n$. Reaching term $n$ applies the rule exactly $n-1$ times. For an add-$d$ rule, $a_n=a_1+(n-1)d$; for a multiply-by-$r$ rule, $a_n=a_1r^{n-1}$.",
+          "Each term comes from the one before it by the rule. So the term in position $n$, where $n$ is any counting number, is reached by using the rule $n-1$ times on the start. For an “add $d$” rule, that term is the start $+ (n-1) \\times d$. For a “multiply by $r$” rule, it is the start multiplied by $r$, $n-1$ times.",
         ],
       },
     ],
@@ -66,52 +72,60 @@ export const patternFunctionLessons: Lesson[] = [
       prompt:
         "A number pattern starts at 5. Its rule is “add 6.” What is the 8th number in the pattern?",
       steps: [
-        "The 1st term is the start, 5. Each later term is 6 more than the term before it.",
-        "Write the terms: 5, 11, 17, 23, 29, 35, 41, 47. The 8th term is 47.",
-        "Check: from the 1st term to the 8th, the rule is applied 8 − 1 = 7 times, and 5 + 7 × 6 = 47.",
+        "The 1st term is the start, 5. The rule says each next term is 6 more than the one before it.",
+        "Add 6 each time and number the terms: 5, 11, 17, 23, 29, 35, 41, 47. The 8th term is 47.",
+        "Check by counting steps. From the 1st term to the 8th, the rule is used 8 − 1 = 7 times. Seven steps of 6 are 7 × 6 = 42, and 5 + 42 = 47.",
       ],
       answer: "47",
     },
     pitfalls: [
-      "Do not apply the rule as many times as the term's position: the 8th term needs 7 steps, because the start is already the 1st term.",
-      "Do not start counting at the 2nd term. Write the starting number first and number it 1.",
-      "For a subtraction rule, each term is smaller than the one before; check that the terms decrease.",
+      "Do not use the rule as many times as the term's position. The 8th term needs 7 steps, because the start is already the 1st term.",
+      "Do not start counting at the 2nd term. Write the starting number first and call it the 1st term.",
+      "With a subtracting rule, each term is smaller than the one before. Check that the terms get smaller.",
     ],
     parentGuide:
-      "Say a start and a rule, such as “start at 4, add 3”, and take turns saying the next term. Then ask for the 10th term and count the steps on fingers before checking by listing.",
+      "Say a start and a rule, such as “start at 4, add 3.” Take turns saying the next term. Then ask for the 10th term. Count the steps on fingers, then check by listing the terms.",
   },
   {
     id: "rule-pattern-feature",
     title: "What a pattern rule guarantees",
-    summary: "Look for a feature the starting number has and every step keeps.",
+    summary:
+      "Some things stay true for every number in a pattern. Each number in a pattern is called a term. If the starting number has a feature and every step keeps it, every term has it too. Start at 3 and add 4: every term is odd.",
     templateIds: ["rule-pattern-feature"],
     includeGeneratedRepresentation: false,
+    senses: { term: "term-sequence", rule: "rule", multiple: "multiple" },
     objectives: [
-      "Notice features shared by every term of a pattern, such as being odd, being a multiple of a number, or ending in the same digit.",
-      "Explain why the feature continues, using what the rule does to odd and even numbers or to multiples.",
+      "Notice features that every term of a pattern shares, such as being odd, being in the times table of a number, or ending in the same digit.",
+      "Explain why the feature keeps going, using what the rule does to odd and even numbers or to multiples.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Notice what never changes",
         paragraphs: [
-          "A pattern that starts at an odd number and adds four keeps making odd numbers. Each step adds two more pairs and leaves one unpaired. The starting number and the rule together explain the pattern.",
+          "An even number can be split into pairs with none left over, like 6. An odd number has one left over, like 7.",
+          "Start at 3, which is odd, and add 4 each time: 3, 7, 11, 15. Adding 4 adds two more pairs. The one left over is still there.",
+          "So every term stays odd. The starting number and the rule together explain the pattern.",
         ],
       },
       patternWords,
       {
         title: "Why every term is odd",
         paragraphs: [
-          "An even number can be split into pairs with none left over; an odd number has one left over. Adding an even number adds whole pairs, so it never changes whether a number is odd or even. Adding an odd number adds one extra, so it switches odd to even and even to odd.",
-          "The pattern 3, 7, 11, 15, 19, 23 starts at 3, which is odd, and adds 4, which is even. Every step keeps the number odd, so every term is odd, even though the rule “add 4” says nothing about odd numbers. With the rule “add 5”, the terms 3, 8, 13, 18 alternate: odd, even, odd, even.",
+          "Adding an even number adds whole pairs. So it never changes whether a number is odd or even.",
+          "Adding an odd number adds whole pairs and one extra. So it switches odd to even, and even to odd.",
+          "Look at the picture: 3, 7, 11, 15, 19, 23. It starts at 3, which is odd, and adds 4, which is even. Every step keeps the number odd, so every term is odd. The rule “add 4” says nothing about odd numbers, but the start and the rule together make it true.",
+          "With the rule “add 5,” the terms 3, 8, 13, 18 take turns: odd, even, odd, even.",
         ],
         illustration: "pattern-rule-steps",
       },
       {
         title: "Multiples and last digits",
         paragraphs: [
-          "If the start and the step are both multiples of the same number, every term is too. The pattern 6, 15, 24, 33 starts at 6 = 3 × 2 and adds 9 = 3 × 3, so every term is a multiple of 3. The terms are not multiples of 9: the start, 6, is not, and adding 9 keeps the same remainder after dividing by 9.",
-          "Adding a multiple of 10 changes only the tens and higher places. The pattern 37, 77, 117, 157 adds 40, so every term ends in 7, the last digit of the start. The step ending in 0 does not make the terms end in 0.",
+          "A multiple of 3 is a number in the 3 times table: 3, 6, 9, 12 and so on. If the start and the step are both multiples of the same number, every term is too.",
+          "The pattern 6, 15, 24, 33 starts at 6 = 3 × 2 and adds 9 = 3 × 3. So every term is a multiple of 3.",
+          "The terms are not multiples of 9. Split 6 into nines: there are none, and 6 is left over. Adding 9 adds one whole nine, so every term has 6 left over. For example, 15 is one 9 and 6 more.",
+          "Adding a multiple of 10 changes only the tens and bigger places. The pattern 37, 77, 117, 157 adds 40, so every term ends in 7, the last digit of the start. The step ends in 0, but that does not make the terms end in 0.",
         ],
       },
     ],
@@ -120,7 +134,7 @@ export const patternFunctionLessons: Lesson[] = [
         stage: "formal",
         title: "Properties of repeated steps",
         paragraphs: [
-          "A feature holds for every term of a pattern when it is true at the start and one application of the rule preserves it. For example, adding an even number preserves whether a whole number is odd or even.",
+          "A feature holds for every term of a pattern when two things are true. It is true for the starting number. And using the rule once always keeps it. For example, adding an even number keeps a whole number odd if it was odd, and even if it was even.",
         ],
       },
     ],
@@ -128,51 +142,57 @@ export const patternFunctionLessons: Lesson[] = [
       prompt:
         "A number pattern starts at 9. Its rule is “add 6.” Is every number in the pattern odd, is every number even, or do the numbers alternate between odd and even?",
       steps: [
-        "Write the first terms: 9, 15, 21, 27, 33.",
-        "The start, 9, is odd. The step, 6, is even, and adding an even number never changes odd to even.",
+        "Write the first few terms by adding 6: 9, 15, 21, 27, 33.",
+        "The start, 9, is odd. The step, 6, is even. Adding an even number adds whole pairs, so it never changes odd to even.",
         "So every term stays odd, like the start.",
       ],
       answer: "Every number is odd.",
     },
     pitfalls: [
-      "Do not judge from the step alone: “add 4” gives odd terms from an odd start and even terms from an even start.",
-      "A feature of the step is not a feature of the terms: adding 9 does not make every term a multiple of 9 unless the start is one.",
-      "Check a claim against several terms and give a reason that covers every step, not only the terms you wrote.",
+      "Do not judge from the step alone. “Add 4” gives odd terms from an odd start and even terms from an even start.",
+      "A feature of the step is not always a feature of the terms. Adding 9 does not make every term a multiple of 9 unless the start is one.",
+      "Check a claim on several terms. Then give a reason that works for every step, not only the terms you wrote.",
     ],
     parentGuide:
-      "Pick a start and an even step, list five terms together and ask what they have in common. Then change the start from odd to even, or the step from even to odd, and ask the learner to predict what changes before listing.",
+      "Pick a start and an even step, and list five terms together. Ask what they have in common. Then change the start from odd to even, or the step from even to odd. Ask the learner to predict what changes before listing.",
   },
   {
     id: "related-patterns-relationship",
     title: "Relate two patterns",
     summary:
-      "Pair terms in the same positions to compare how two patterns grow.",
+      "Two number patterns can be compared term by term. A term is one number in a pattern. Pair the 1st terms, then the 2nd terms, and so on. Then see how each pair is related, such as the second number being 3 times the first.",
     templateIds: ["related-patterns-relationship"],
     includeGeneratedRepresentation: false,
+    senses: { term: "term-sequence", rule: "rule" },
     objectives: [
-      "Form ordered pairs from matching terms of two patterns and plot them on a coordinate grid.",
-      "State and explain the relationship between matching terms, such as each B-term being 3 times its A-term.",
+      "Pair matching terms of two patterns as ordered pairs, and plot them on a coordinate grid.",
+      "State and explain how matching terms are related, such as each B-term being 3 times its A-term.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Match the same positions",
         paragraphs: [
-          "One pattern starts at zero and adds two; another starts at zero and adds six. At each matching position, the second has grown three times as much. Pair the first terms, the second terms, and so on to see the relationship.",
+          "Pattern A starts at 0 and adds 2: 0, 2, 4, 6, 8. Pattern B starts at 0 and adds 6: 0, 6, 12, 18, 24.",
+          "Match the terms in the same place: 2 with 6, 4 with 12, 6 with 18. Each B-term is 3 times its A-term.",
+          "Here is why. At every step, B grows by 6 and A grows by 2, and 6 is 3 times 2.",
         ],
       },
       {
         title: "Matching terms form ordered pairs",
         paragraphs: [
-          "This lesson uses multiplication and the first quadrant of the coordinate grid. A number pattern is a list of terms made by a rule. Two patterns are related when their terms are matched in order: the 1st term of A with the 1st term of B, the 2nd with the 2nd, and so on. Each match is written as an ordered pair (A-term, B-term).",
-          "Pattern A starts at 0 and adds 2: 0, 2, 4, 6, 8. Pattern B starts at 0 and adds 6: 0, 6, 12, 18, 24. The ordered pairs are (0, 0), (2, 6), (4, 12), (6, 18) and (8, 24). On a grid, (2, 6) means 2 across and 6 up.",
+          "A number pattern is a list of numbers made by a rule, and each number is a term. Matching terms are in the same position, or place, in the two lists: 1st with 1st, 2nd with 2nd, and so on.",
+          "An ordered pair is two numbers written inside ( ), in a set order. Here the order is (A-term, B-term). The pairs are (0, 0), (2, 6), (4, 12), (6, 18) and (8, 24).",
+          "A coordinate grid is a grid of lines with numbers along the bottom and up the left. The point (2, 6) means go 2 across, then 6 up.",
         ],
       },
       {
         title: "Why each B-term is 3 times its A-term",
         paragraphs: [
-          "At every step, A grows by 2 and B grows by 6, and 6 = 3 × 2. Both start at 0, so after the same number of steps B has grown 3 times as much as A: after 4 steps, A is 4 × 2 = 8 and B is 4 × 6 = 24 = 3 × 8.",
-          "On the graph, each point is 3 times as high as it is far across, so the points lie on one straight line through (0, 0). The table shows the same fact row by row: 6 = 3 × 2, 12 = 3 × 4, 18 = 3 × 6. To find the B-term paired with any A-term, multiply by 3.",
+          "At every step, A grows by 2 and B grows by 6, and 6 = 3 × 2. Both start at 0. So after the same number of steps, B has grown 3 times as much as A.",
+          "After 4 steps, A is 4 × 2 = 8 and B is 4 × 6 = 24. And 24 = 3 × 8.",
+          "Look at the graph. Each point is 3 times as high as it is far across. So the points lie on one straight line through (0, 0).",
+          "The table shows the same fact pair by pair: 6 = 3 × 2, 12 = 3 × 4, 18 = 3 × 6. To find the B-term that goes with any A-term, multiply by 3.",
         ],
         illustration: "related-patterns-graph",
       },
@@ -182,7 +202,7 @@ export const patternFunctionLessons: Lesson[] = [
         stage: "formal",
         title: "Paired terms",
         paragraphs: [
-          "If two patterns both start at zero and their constant steps are $a$ and $b$, their terms at the same positive position are $(n-1)a$ and $(n-1)b$. When $b=ka$, the second term is $k$ times the first at every position.",
+          "Two patterns start at 0. One adds $a$ each step, and the other adds $b$. After the same number of steps, $s$, their terms are $s \\times a$ and $s \\times b$. If $b = k \\times a$, the second term is always $k$ times the first.",
         ],
       },
     ],
@@ -190,19 +210,19 @@ export const patternFunctionLessons: Lesson[] = [
       prompt:
         "Pattern A starts at 0 and adds 2 each step. Pattern B starts at 0 and adds 6 each step. Each term of pattern B is how many times the matching term of pattern A?",
       steps: [
-        "Pattern A is 0, 2, 4, 6, 8 and pattern B is 0, 6, 12, 18, 24. The pairs are (0, 0), (2, 6), (4, 12), (6, 18) and (8, 24).",
-        "B's step is 6 and A's step is 2, and 6 = 3 × 2, so B grows 3 times as fast.",
-        "Check two pairs: 12 = 3 × 4 and 24 = 3 × 8. Each B-term is 3 times its A-term.",
+        "List both patterns: A is 0, 2, 4, 6, 8 and B is 0, 6, 12, 18, 24. Pair the terms in order: (0, 0), (2, 6), (4, 12), (6, 18) and (8, 24).",
+        "Compare the steps. B adds 6 and A adds 2, and 6 = 3 × 2. So B grows 3 times as fast.",
+        "Check two pairs: 12 = 3 × 4 and 24 = 3 × 8. So each B-term is 3 times its A-term.",
       ],
       answer: "3",
     },
     pitfalls: [
-      "Compare matching terms, not the steps' difference: 6 − 2 = 4 does not mean each B-term is 4 more than its A-term.",
-      "Match terms in order; the 3rd term of A goes with the 3rd term of B.",
-      "Plot (A, B) with the A-term across and the B-term up.",
+      "Compare matching terms by multiplying. The steps differ by 6 − 2 = 4, but each B-term is not 4 more than its A-term.",
+      "Match terms in order. The 3rd term of A goes with the 3rd term of B.",
+      "Plot each pair with the A-term across and the B-term up.",
     ],
     parentGuide:
-      "Build two towers of blocks side by side, adding 1 block to the first and 3 to the second each turn. After each turn, compare the heights and ask how many times as tall the second tower is.",
+      "Build two towers of blocks next to each other. Each turn, add 1 block to the first tower and 3 to the second. After each turn, ask how many times as tall the second tower is.",
   },
   {
     id: "dependent-variable-equation",
@@ -446,29 +466,37 @@ export const patternFunctionLessons: Lesson[] = [
 
 export const patternFunctionMethods: Record<string, ProblemMethod> = {
   "rule-pattern-term": {
-    goal: "Find a later term of a number pattern from its start and rule.",
+    goal: "Find a later term of a number pattern from its starting number and its rule.",
+    intuition:
+      "A number pattern is a list of numbers made by following a rule. The rule, like “add 6,” tells how to get each number from the one before. Each number in the list is called a term. The starting number is the 1st term. A term's position is its place in the list: 1st, 2nd, 3rd and so on.",
     terms: ["term-sequence", "rule"],
+    senses: { term: "term-sequence", rule: "rule" },
     method: [
-      "Write the start as the 1st term.",
-      "Apply the rule to each term to get the next, numbering the terms as you go.",
-      "Stop at the term asked for; check that the rule was applied one fewer time than its position.",
+      "Write the starting number as the 1st term.",
+      "Use the rule on each term to get the next one. Number the terms as you go.",
+      "Stop at the term asked for. Check: the rule was used one time fewer than the term's position.",
     ],
     watch:
       "The 8th term needs 7 steps, because the start is already the 1st term.",
   },
   "rule-pattern-feature": {
-    goal: "Find a feature that every term of a rule-generated pattern shares.",
+    goal: "Find a feature that every term of a pattern made by a rule shares.",
+    intuition:
+      "A number pattern is a list of numbers made by a rule, like “add 4.” Each number in it is called a term. The amount added each time is called the step. An even number can be split into pairs with none left over. An odd number has one left over. A multiple of 3 is a number in the 3 times table. The last digit is the ones digit, like the 7 in 37.",
     terms: ["even-number", "odd-number"],
+    senses: { term: "term-sequence", rule: "rule", multiple: "multiple" },
     method: [
       "Write the first five or six terms.",
-      "Look for a shared feature: odd or even, a common factor, the same last digit.",
-      "Explain why the start and the step guarantee it for every term.",
+      "Look for something they all share: all odd or all even, all multiples of one number, or the same last digit.",
+      "Explain why the start and the step make it true for every term.",
     ],
     watch:
-      "Decide with both the start and the step: adding an even step keeps the start's parity, adding an odd step alternates it.",
+      "Use both the start and the step. An even step keeps odd terms odd and even terms even. An odd step makes them take turns.",
   },
   "related-patterns-relationship": {
-    goal: "State how the matching terms of two patterns are related.",
+    goal: "State how the matching terms of two number patterns are related.",
+    intuition:
+      "A number pattern is a list of numbers made by a rule. Each number is called a term, and the amount added each time is the step. Matching terms are in the same place in both lists: 1st with 1st, 2nd with 2nd. An ordered pair writes them together in a set order, like (2, 6): the A-term first, then the B-term. On a coordinate grid, (2, 6) is the point 2 across and 6 up.",
     terms: [
       "corresponding-terms",
       [
@@ -476,13 +504,14 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
         "Here the first number is the term of pattern A and the second the term of pattern B.",
       ],
     ],
+    senses: { term: "term-sequence", rule: "rule" },
     method: [
       "Pair the terms in order and read the pairs in the table.",
-      "Compare the steps: B's step divided by A's step.",
-      "Check that every B-term is that many times its A-term, then use it.",
+      "Compare the steps: divide B's step by A's step.",
+      "Check that every B-term is that many times its A-term. Then use it.",
     ],
     watch:
-      "Compare matching terms by multiplying, not by the difference of the steps.",
+      "Compare matching terms by multiplying, not by subtracting the steps.",
   },
   "dependent-variable-equation": {
     goal: "Choose the equation that gives the dependent variable from the independent one.",
@@ -530,11 +559,11 @@ export const patternFunctionMethods: Record<string, ProblemMethod> = {
 
 export const patternFunctionPrinciples: Record<string, string> = {
   "rule-pattern-term":
-    "Each term comes from the one before by the rule, so the nth term is reached by applying the rule n − 1 times to the start.",
+    "Each term comes from the one before it by the rule. So the 8th term is reached by using the rule 8 − 1 = 7 times on the start. In general, the term in position $n$ needs the rule $n-1$ times.",
   "rule-pattern-feature":
-    "A feature of the start that the step preserves holds for every term: an even step keeps the start's parity, and a step that is a multiple of $k$ keeps the start's remainder after division by $k$.",
+    "If the start has a feature and each step keeps it, every term has it. Adding an even step keeps a number odd or even, as the start was. Adding a step that is a multiple of $k$ keeps the same amount left over when you divide by $k$.",
   "related-patterns-relationship":
-    "If two patterns start at 0 and B's step is $k$ times A's step, then after any number of steps each B-term is $k$ times its matching A-term, and the pairs lie on a line through (0, 0).",
+    "If A adds 2 and B adds 6, both starting at 0, each B-term is 3 times its A-term. In general, if two patterns start at 0 and B's step is $k$ times A's step, each B-term is $k$ times its matching A-term. The pairs lie on a straight line through (0, 0).",
   "dependent-variable-equation":
     "An equation states the relationship for every pair: the dependent variable equals the same expression in the independent variable in every row of the table and at every point of the graph.",
   "dependent-variable-value":
