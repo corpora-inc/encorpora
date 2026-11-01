@@ -624,7 +624,7 @@ export const elementaryLessons: Lesson[] = [
         paragraphs: [
           "Look at 4, 7, 10, 13. From 4 to 7 is 3 more. From 7 to 10 is 3 more, and so is 10 to 13. Each hop adds 3, so the step is 3.",
           "To go on, make another hop of 3: 13 + 3 = 16. To go further, keep adding 3, one hop at a time.",
-          "A box □ in a list stands for a missing number. We write 13 + 3 = 16. It says 13 and 3 more make 16.",
+          "A box □ in a list stands for a missing number. The sign + means add, and the sign = means makes. So 13 + 3 = 16 says 13 and 3 more make 16.",
         ],
       },
       {
@@ -667,7 +667,7 @@ export const elementaryLessons: Lesson[] = [
       "The step is not always 10. Find it before you add.",
     ],
     parentGuide:
-      "Practice counting forward by ones first. Then use groups of 5 counters, bundles of 10 sticks and stacks of 100 to show what counting by fives, tens and hundreds means. This practice does not check writing number names.",
+      "Practice counting forward by ones first. Then use groups of 5 counters, bundles of 10 sticks and flat trays of 100 blocks to show what counting by fives, tens and hundreds means. This practice does not check writing number names.",
   },
   {
     id: "two-changes",
