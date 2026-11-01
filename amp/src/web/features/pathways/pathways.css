@@ -1220,6 +1220,10 @@
    stack of summary, views, learner and search rows. The summary sentence
    stays in the page for screen readers. */
 @media (max-width: 650px) {
+  /* Its visible text has moved into the status row: no padding to keep. */
+  .pathways .pathways-heading {
+    padding: 0;
+  }
   .pathways .pathways-heading .pathways-summary {
     position: absolute;
     width: 1px;
