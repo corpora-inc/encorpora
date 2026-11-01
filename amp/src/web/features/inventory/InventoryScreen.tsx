@@ -137,6 +137,15 @@ export function InventoryScreen() {
             Estimated level{" "}
             <strong>{gradeName(view.frontier.overall.level)}</strong>
           </p>
+        ) : !view.frontier && !view.trialMode ? (
+          // Holds the line's place while the estimate loads.
+          <p
+            className={styles.level}
+            aria-hidden="true"
+            style={{ visibility: "hidden" }}
+          >
+            Estimated level <strong>Grade 5</strong>
+          </p>
         ) : null}
       </div>
       <ProgressViews

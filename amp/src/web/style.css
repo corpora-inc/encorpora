@@ -20,6 +20,12 @@ input,
 select {
   font: inherit;
 }
+/* A bare link (prose, footers) uses the brand ink, never the browser's
+   default blue or visited purple. Links styled as controls set their own. */
+a:not([class]) {
+  color: var(--color-primary);
+  text-underline-offset: 0.16em;
+}
 button {
   border: 0;
   border-radius: 9px;
@@ -76,7 +82,8 @@ h2 {
 }
 h1 {
   font-size: 76px;
-  letter-spacing: -3px;
+  /* Relative, so every heading that sets its own size keeps word spaces. */
+  letter-spacing: -0.04em;
   margin-bottom: 16px;
 }
 h1 em {
