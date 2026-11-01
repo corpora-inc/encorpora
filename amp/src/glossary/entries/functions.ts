@@ -17,7 +17,7 @@ export const functionsEntries: GlossaryEntry[] = [
     term: "asymptote",
     forms: ["asymptote", "asymptotes"],
     plain:
-      "A line that a graph gets closer and closer to as it runs far out, never settling onto it.",
+      "A line that a graph gets closer and closer to as it runs far out. The gap between the graph and the line shrinks toward 0.",
     example:
       "The graph of $y=2^x$ gets closer to the $x$-axis, $y=0$, as $x$ goes far to the left.",
     uses: ["line", "x-axis"],
@@ -39,7 +39,7 @@ export const functionsEntries: GlossaryEntry[] = [
     term: "axis of symmetry",
     forms: ["axis of symmetry", "axes of symmetry"],
     plain:
-      "The vertical line through the vertex of a parabola that splits it into two mirror-image halves.",
+      "The line through a parabola's vertex that splits it into two mirror-image halves. For a parabola $y=ax^2+bx+c$, it runs straight up and down.",
     example: "For $y=(x-3)^2+1$, the axis of symmetry is the line $x=3$.",
     uses: ["vertical-line", "line", "vertex-parabola", "parabola", "half"],
     band: "algebra-1",
@@ -183,7 +183,7 @@ export const functionsEntries: GlossaryEntry[] = [
     term: "exponential function",
     forms: ["exponential function", "exponential functions"],
     plain:
-      "A function $y=a\\cdot b^x$, with $b>0$ and $b\\ne1$, that starts at $a$ and multiplies by $b$ each time $x$ goes up by 1.",
+      "A function $y=a\\cdot b^x$, with $a\\ne0$, $b>0$ and $b\\ne1$, that starts at $a$ and multiplies by $b$ each time $x$ goes up by 1.",
     example: "$y=5\\cdot 2^x$ gives 5, 10, 20, 40 for $x$ = 0, 1, 2, 3.",
     uses: ["function"],
     band: "algebra-1",
@@ -365,7 +365,7 @@ export const functionsEntries: GlossaryEntry[] = [
     term: "logarithm",
     forms: ["logarithm", "logarithms", "log", "logs"],
     plain:
-      "$\\log_b N$ is the exponent that turns $b$ into $N$: $b$ raised to it equals $N$. A log with no base written means base 10.",
+      "For $N>0$, $b>0$ and $b\\ne1$, $\\log_b N$ is the exponent that turns $b$ into $N$: $b$ raised to it is $N$. No base written means base 10.",
     example: "$\\log_2 8=3$ because $2^3=8$; $\\log 100=2$ because $10^2=100$.",
     uses: ["exponent", "base-exponent"],
     band: "algebra-1",
