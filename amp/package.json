@@ -21,7 +21,7 @@
     "test:scene-components-ui": "tsx scripts/verify-scene-components-ui.ts",
     "test:app-shell-ui": "tsx scripts/verify-app-shell-ui.ts && tsx scripts/verify-app-shell-ui.ts --engine webkit --widths 390,1280",
     "audit:app-shell": "tsx scripts/audit-app-shell-ui.ts",
-    "tsc": "tsc --noEmit",
+    "tsc": "node --max-old-space-size=6144 node_modules/typescript/bin/tsc --noEmit",
     "workbook:samples": "tsx scripts/workbook-samples.ts",
     "workbook:audit": "tsx scripts/workbook-paper-audit.ts",
     "test:workbooks-ui": "tsx scripts/verify-workbooks-ui.ts",

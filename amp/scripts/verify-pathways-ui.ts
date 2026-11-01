@@ -792,24 +792,24 @@ async function verifySearchFilters() {
       await page.waitForURL(
         (url) => url.searchParams.get("topic") === "linear",
       );
-      await input.fill("Count To 20");
+      await input.fill("Count to 20");
       await page.waitForURL(
-        (url) => url.searchParams.get("topic") === "Count To 20",
+        (url) => url.searchParams.get("topic") === "Count to 20",
       );
-      await page.getByRole("link", { name: /Count To 20/ }).click();
+      await page.getByRole("link", { name: /Count to 20/ }).click();
       await page.waitForURL((url) => url.pathname === "/pathways/count-to-20");
       await page.goBack();
       await input.waitFor();
       assert.equal(
         await input.inputValue(),
-        "Count To 20",
+        "Count to 20",
         "Browser Back restores the search",
       );
       await page.goForward();
       await input.waitFor();
       assert.equal(
         await input.inputValue(),
-        "Count To 20",
+        "Count to 20",
         "Browser Forward restores the search",
       );
       await input.fill("");
@@ -1123,7 +1123,7 @@ try {
   );
   const related = trialPage
     .locator(".pathways-detail a")
-    .filter({ hasText: "Nonlinear Intersection Reading" });
+    .filter({ hasText: "Nonlinear intersection reading" });
   assert.match((await related.getAttribute("href")) ?? "", /context=trial/);
   await related.click();
   await trialPage.waitForURL(/pathways\/nonlinear-intersection-reading/);
@@ -1193,7 +1193,7 @@ try {
   );
   const parentLink = guest
     .locator(".pathways-detail a")
-    .filter({ hasText: "Nonlinear Intersection Reading" });
+    .filter({ hasText: "Nonlinear intersection reading" });
   const parentUrl = new URL((await parentLink.getAttribute("href"))!, origin);
   assert.equal(parentUrl.pathname, "/pathways/nonlinear-intersection-reading");
   assert.equal(parentUrl.searchParams.get("topic"), "systems");
@@ -1594,7 +1594,7 @@ try {
         .getByText("When each kit holds two items", { exact: false })
         .waitFor();
       assert.equal(await related.locator("p").count(), 4);
-      const application = related.getByRole("link", { name: /Event Sets/ });
+      const application = related.getByRole("link", { name: /Event sets/ });
       assert.equal(
         await application.getAttribute("href"),
         "/pathways/event-sets",
@@ -1614,15 +1614,15 @@ try {
       await application.click();
       await parity.waitForURL("**/pathways/event-sets");
       await parity
-        .getByRole("heading", { name: "Event Sets", exact: true })
+        .getByRole("heading", { name: "Event sets", exact: true })
         .waitFor();
       await parity
         .locator(".pathways-connections")
-        .getByRole("link", { name: /Odd And Even/ })
+        .getByRole("link", { name: /Odd and even/ })
         .click();
       await parity.waitForURL("**/pathways/odd-and-even");
       await parity
-        .getByRole("heading", { name: "Odd And Even", exact: true })
+        .getByRole("heading", { name: "Odd and even", exact: true })
         .waitFor();
       await parity.close();
     }
