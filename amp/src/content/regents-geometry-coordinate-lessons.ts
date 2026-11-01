@@ -184,7 +184,7 @@ export const regentsGeometryCoordinateLessons = [
       ],
       formalTitle: "The section formula",
       formal: [
-        "If $AP:PB=a:b$ with $A(x_1,y_1)$ and $B(x_2,y_2)$, then $P=\\left(x_1+\\frac{a}{a+b}(x_2-x_1),\\ y_1+\\frac{a}{a+b}(y_2-y_1)\\right)$. The small 1 and 2 (subscripts) name the two endpoints.",
+        "Let $AP:PB=a:b$ with $A(x_1,y_1)$ and $B(x_2,y_2)$. The small 1 and 2 (subscripts) name the two endpoints. Then $P$ has $x$-coordinate $x_1+\\frac{a}{a+b}(x_2-x_1)$ and $y$-coordinate $y_1+\\frac{a}{a+b}(y_2-y_1)$.",
         "Equal steps along a segment make equal steps in $x$ and equal steps in $y$, because a segment runs in one steady direction.",
       ],
       pitfalls: [
