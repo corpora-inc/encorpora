@@ -111,14 +111,6 @@ function MapView({ session }: { session: TrialSession }) {
         <div className={styles.meterRow}>
           <FreeMeter answered={p.totals.answered} free={p.free} />
         </div>
-        <FrontierMap name="the learner" frontier={frontier} strands={strands} />
-        <Link
-          to="/pathways"
-          search={{ context: "trial" }}
-          className={buttonClass("secondary")}
-        >
-          See your illuminated pathways →
-        </Link>
         <div className={styles.actions}>
           {left > 0 ? (
             <>
@@ -145,6 +137,15 @@ function MapView({ session }: { session: TrialSession }) {
             </Link>
           )}
         </div>
+        {/* The next step sits above the fold; the map is the evidence. */}
+        <FrontierMap name="the learner" frontier={frontier} strands={strands} />
+        <Link
+          to="/pathways"
+          search={{ context: "trial" }}
+          className={buttonClass("quiet")}
+        >
+          See your illuminated pathways →
+        </Link>
         {p.phase !== "placement" && (
           <ShareAssessment
             level={gradeName(frontier.overall.level)}

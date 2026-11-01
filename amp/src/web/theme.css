@@ -985,6 +985,15 @@ header {
   border-radius: 20px;
   background: var(--color-surface-raised);
 }
+/* Tablets and desktops: who and where on the left, the one action on the
+   right, so the button keeps a button's proportions. */
+@media (min-width: 768px) {
+  .home-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(200px, 240px);
+    align-items: end;
+    column-gap: 32px;
+  }
+}
 .home-hero h1 {
   margin: 0;
   font-size: clamp(32px, 6vw, 48px);
@@ -1392,6 +1401,27 @@ html[data-input="pointer"] :focus-visible {
 }
 .frontier-axis span:nth-child(3) {
   right: 0;
+}
+/* The dot is centred on its value: inset the track by its radius so a value
+   at either end stays inside the card, and the end labels with it. */
+.frontier-track {
+  margin-inline: 8px;
+}
+.frontier-axis span:nth-child(1) {
+  left: 8px;
+}
+.frontier-axis span:nth-child(3) {
+  right: 8px;
+}
+/* Three labels need about 240px of track; below that the heading explains
+   the centre line and the two end labels stay clear of each other. */
+.frontier-map {
+  container-type: inline-size;
+}
+@container (max-width: 420px) {
+  .frontier-axis span:nth-child(2) {
+    display: none;
+  }
 }
 .answer-dock > div > .practice-tools {
   margin-top: 8px;
@@ -1851,9 +1881,31 @@ html[data-input="pointer"] :focus-visible {
     display: none;
   }
 }
-/* Signed out: the welcome card sits in the app column. */
+/* Signed out: the welcome card sits in the app column, on the hero's edges,
+   and both of its actions share one control size. */
 .shell.app-shell.flow > section.welcome {
+  max-width: none;
   margin-bottom: 32px;
+}
+.welcome .go-button + .secondary {
+  min-height: 56px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 16px;
+  font-size: 17px;
+}
+/* Brand mark and name read as one unit beside the menu. */
+.shell > header > .brand {
+  margin-right: auto;
+}
+.landing-footer {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+}
+.landing-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-size);
 }
 /* Choose how to pay */
 .shell.purchase-shell > .choose-pay {

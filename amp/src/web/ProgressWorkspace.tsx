@@ -171,13 +171,21 @@ export function ProgressWorkspace({
       const columns = grid
         ? getComputedStyle(grid).gridTemplateColumns.split(" ").length
         : 1;
+      // Once cards are on screen, size rows from the tallest one, so a
+      // phone fills its page instead of leaving a card's worth of space.
+      const cards = grid ? [...grid.children] : [];
+      const tallest = Math.max(
+        0,
+        ...cards.map((card) => card.getBoundingClientRect().height),
+      );
+      const gap = grid
+        ? Number.parseFloat(getComputedStyle(grid).rowGap) || 0
+        : 0;
+      const rows = tallest
+        ? Math.floor((target.clientHeight + gap) / (tallest + gap))
+        : Math.floor(target.clientHeight / (9.5 * font));
       setCapacity(
-        largeText
-          ? 1
-          : Math.max(
-              1,
-              Math.min(3, Math.floor(target.clientHeight / (9.5 * font))),
-            ) * columns,
+        largeText ? 1 : Math.max(1, Math.min(3, rows)) * columns,
       );
     };
     const observer = new ResizeObserver(measure);

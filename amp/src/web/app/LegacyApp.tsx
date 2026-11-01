@@ -24,6 +24,7 @@ import {
 } from "../lib/family-cache";
 import { consumeInitialConsentChallenge } from "../consent-entry";
 import { useLoggedError, requestMessage } from "../feedback";
+import { Toast } from "../ui/Toast";
 import { Navigate } from "@tanstack/react-router";
 import { useAppRoute } from "../app-routes";
 import { Select } from "../PremiumControls";
@@ -1334,11 +1335,12 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
           ))}
         </nav>
       )}
-      {error && !immersive && (
-        <div role="alert" className="error">
-          {error}
-        </div>
-      )}
+      {/* One error pattern: a fixed toast that never moves the screen.
+          Practice shows its own errors beside the problem. */}
+      <Toast
+        message={immersive ? "" : error}
+        onDismiss={() => setError("")}
+      />
       {familyOpen && token && nativeRuntime ? (
         <NativeFamily
           onClose={() => {
@@ -1907,27 +1909,11 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
         />
       )}
       {!learner && !familyOpen && !nativeRuntime && (
-        <footer>
+        <footer className="landing-footer">
           <span>
             {brand.name} · {brand.expansion} · {brand.company}
-            {" · "}
-            <a
-              href="mailto:support@corpora.inc"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                minHeight: "var(--target-size)",
-              }}
-            >
-              support@corpora.inc
-            </a>
           </span>
-          <span>
-            {catalog?.mode === "development"
-              ? "Local development · sample practice"
-              : "Selected curriculum preview"}{" "}
-            · English
-          </span>
+          <a href="mailto:support@corpora.inc">support@corpora.inc</a>
         </footer>
       )}
     </div>
