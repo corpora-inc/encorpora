@@ -577,7 +577,7 @@ function functionRelation(r: Random): Case {
         `A relation is a function when each input has exactly one output. So look for an $x$-value that appears twice with two different $y$-values.`,
         is
           ? `In ${pairSet(correct)} the inputs are ${correct.map(([x]) => n(x)).join(", ")}. No input repeats, so each input has just one output.`
-          : `In ${pairSet(correct)} the input ${n(rep![0])} appears twice, with two different outputs. One input with two outputs breaks the rule.`,
+          : `In ${pairSet(correct)} the input ${n(rep![0])} is used twice, with two different outputs. One input with two outputs breaks the rule.`,
         is
           ? `The output ${n(correct[1]![1])} is repeated, and that is allowed. Two inputs may share an output; one input may not have two.`
           : `Each other set uses every input only once, so each of those is a function.`,
