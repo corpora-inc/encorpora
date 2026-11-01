@@ -14,7 +14,12 @@
 import { spawn } from "node:child_process";
 import { randomUUID } from "node:crypto";
 import pg from "pg";
-import { chromium, type Browser, type BrowserContext, type Page } from "playwright";
+import {
+  chromium,
+  type Browser,
+  type BrowserContext,
+  type Page,
+} from "playwright";
 import { createServer, preview } from "vite";
 import { generateProblem, templates } from "../src/math/engine";
 import { skills } from "../src/curriculum/catalog";
@@ -109,7 +114,11 @@ export async function startShellFixture({
       `${origin}/api/auth/sign-up/email`,
       {
         headers: { Origin: origin },
-        data: { email, password: "synthetic long fixture passphrase", name: "" },
+        data: {
+          email,
+          password: "synthetic long fixture passphrase",
+          name: "",
+        },
       },
     );
     if (!response.ok())
@@ -260,16 +269,66 @@ const heading = (name: RegExp | string) => (page: Page) =>
 /** Every screen outside the practice flow. */
 export function shellScenarios(f: ShellFixture): Scenario[] {
   return [
-    { id: "landing", path: "/", state: "guest", ready: heading(/Try one math problem/) },
-    { id: "sign-in", path: "/sign-in", state: "guest", ready: heading(/^Sign in$/) },
-    { id: "sign-up", path: "/sign-up", state: "guest", ready: heading(/Create your account/) },
-    { id: "forgot-password", path: "/sign-in/forgot", state: "guest", ready: heading(/Reset your password/) },
-    { id: "try-start", path: "/try", state: "guest", ready: heading(/Math that adapts/) },
-    { id: "account-ready", path: "/account/ready", state: "new", ready: heading(/account is ready/) },
-    { id: "try-start-signed-in", path: "/try", state: "new", ready: heading(/See how AMP adapts/) },
-    { id: "trial-map", path: "/try/map", state: "trial", ready: (p) => p.locator(".frontier-map").waitFor() },
-    { id: "trial-plans", path: "/try/plans", state: "trial", ready: heading(/Choose a plan/) },
-    { id: "home", path: "/", state: "paid", ready: (p) => p.locator(".frontier-map").waitFor() },
+    {
+      id: "landing",
+      path: "/",
+      state: "guest",
+      ready: heading(/Try one math problem/),
+    },
+    {
+      id: "sign-in",
+      path: "/sign-in",
+      state: "guest",
+      ready: heading(/^Sign in$/),
+    },
+    {
+      id: "sign-up",
+      path: "/sign-up",
+      state: "guest",
+      ready: heading(/Create your account/),
+    },
+    {
+      id: "forgot-password",
+      path: "/sign-in/forgot",
+      state: "guest",
+      ready: heading(/Reset your password/),
+    },
+    {
+      id: "try-start",
+      path: "/try",
+      state: "guest",
+      ready: heading(/Math that adapts/),
+    },
+    {
+      id: "account-ready",
+      path: "/account/ready",
+      state: "new",
+      ready: heading(/account is ready/),
+    },
+    {
+      id: "try-start-signed-in",
+      path: "/try",
+      state: "new",
+      ready: heading(/See how AMP adapts/),
+    },
+    {
+      id: "trial-map",
+      path: "/try/map",
+      state: "trial",
+      ready: (p) => p.locator(".frontier-map").waitFor(),
+    },
+    {
+      id: "trial-plans",
+      path: "/try/plans",
+      state: "trial",
+      ready: heading(/Choose a plan/),
+    },
+    {
+      id: "home",
+      path: "/",
+      state: "paid",
+      ready: (p) => p.locator(".frontier-map").waitFor(),
+    },
     {
       id: "drawer",
       path: "/",
@@ -282,16 +341,66 @@ export function shellScenarios(f: ShellFixture): Scenario[] {
         await p.waitForTimeout(400);
       },
     },
-    { id: "progress", path: "/progress", state: "paid", ready: (p) => p.locator(".progress-skill-card").first().waitFor() },
-    { id: "pathways", path: "/pathways", state: "paid", ready: (p) => p.locator("[data-progress-views]").waitFor() },
-    { id: "pathway-skill", path: `/pathways/${f.practisedSkill}`, state: "paid", ready: (p) => p.locator("h1").first().waitFor() },
-    { id: "inventory", path: "/inventory", state: "paid", ready: (p) => p.locator("[data-progress-views]").waitFor() },
-    { id: "lessons", path: "/lessons", state: "paid", ready: heading(/^Lessons$/) },
-    { id: "lesson-reader", path: `/lessons/${f.lessonId}`, state: "paid", ready: (p) => p.locator(".lesson-reader h2").first().waitFor() },
-    { id: "family-learners", path: "/family/learners", state: "paid", ready: (p) => p.locator(".family-tabs").waitFor() },
-    { id: "family-access", path: "/family/access", state: "paid", ready: (p) => p.locator(".family-tabs").waitFor() },
-    { id: "family-privacy", path: "/family/privacy", state: "paid", ready: (p) => p.locator(".family-tabs").waitFor() },
-    { id: "family-security", path: "/family/security", state: "paid", ready: (p) => p.locator(".family-tabs").waitFor() },
+    {
+      id: "progress",
+      path: "/progress",
+      state: "paid",
+      ready: (p) => p.locator(".progress-skill-card").first().waitFor(),
+    },
+    {
+      id: "pathways",
+      path: "/pathways",
+      state: "paid",
+      ready: (p) => p.locator("[data-progress-views]").waitFor(),
+    },
+    {
+      id: "pathway-skill",
+      path: `/pathways/${f.practisedSkill}`,
+      state: "paid",
+      ready: (p) => p.locator("h1").first().waitFor(),
+    },
+    {
+      id: "inventory",
+      path: "/inventory",
+      state: "paid",
+      ready: (p) => p.locator("[data-progress-views]").waitFor(),
+    },
+    {
+      id: "lessons",
+      path: "/lessons",
+      state: "paid",
+      ready: heading(/^Lessons$/),
+    },
+    {
+      id: "lesson-reader",
+      path: `/lessons/${f.lessonId}`,
+      state: "paid",
+      ready: (p) => p.locator(".lesson-reader h2").first().waitFor(),
+    },
+    {
+      id: "family-learners",
+      path: "/family/learners",
+      state: "paid",
+      ready: (p) => p.locator(".family-tabs").waitFor(),
+    },
+    {
+      id: "family-access",
+      path: "/family/access",
+      state: "paid",
+      ready: (p) => p.locator(".family-tabs").waitFor(),
+    },
+    {
+      id: "family-privacy",
+      path: "/family/privacy",
+      state: "paid",
+      ready: (p) => p.locator(".family-tabs").waitFor(),
+    },
+    {
+      id: "family-security",
+      path: "/family/security",
+      state: "paid",
+      ready: (p) => p.locator(".family-tabs").waitFor(),
+    },
     { id: "purchase", path: "/purchase", state: "paid" },
     { id: "birth-year", path: "/profile/birth-year", state: "paid" },
   ];

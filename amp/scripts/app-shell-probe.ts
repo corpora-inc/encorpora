@@ -110,7 +110,12 @@ export async function resetRecord(page: Page) {
   await page.evaluate(() => {
     const s = (window as unknown as { __shell?: Record<string, unknown> })
       .__shell as
-      | { shifts: string[]; headings: string[]; cls: number; blankAfterContent: number }
+      | {
+          shifts: string[];
+          headings: string[];
+          cls: number;
+          blankAfterContent: number;
+        }
       | undefined;
     if (!s) return;
     s.shifts.length = 0;
@@ -125,11 +130,7 @@ export async function probe(page: Page): Promise<ShellProbe> {
   await page.evaluate("globalThis.__name ??= (f) => f");
   return page.evaluate(() => {
     const describe = (el: Element) => {
-      const name = (
-        el.getAttribute("aria-label") ??
-        el.textContent ??
-        ""
-      )
+      const name = (el.getAttribute("aria-label") ?? el.textContent ?? "")
         .trim()
         .replace(/\s+/g, " ")
         .slice(0, 50);
@@ -253,7 +254,8 @@ export async function probe(page: Page): Promise<ShellProbe> {
         if (a.el.contains(b.el) || b.el.contains(a.el)) continue;
         const x = Math.min(a.r.right, b.r.right) - Math.max(a.r.left, b.r.left);
         const y = Math.min(a.r.bottom, b.r.bottom) - Math.max(a.r.top, b.r.top);
-        if (x > 1 && y > 1) overlaps.push(`${describe(a.el)} × ${describe(b.el)}`);
+        if (x > 1 && y > 1)
+          overlaps.push(`${describe(a.el)} × ${describe(b.el)}`);
       }
     const h = document.querySelector("h1") ?? document.querySelector("h2");
     return {
@@ -300,14 +302,18 @@ export async function focusWalk(page: Page, steps = 24) {
         (style.boxShadow && style.boxShadow !== "none");
       const r = el.getBoundingClientRect();
       const onScreen =
-        r.bottom > 0 && r.top < innerHeight && r.right > 0 && r.left < innerWidth;
+        r.bottom > 0 &&
+        r.top < innerHeight &&
+        r.right > 0 &&
+        r.left < innerWidth;
       return { label, ring: !!ring, onScreen };
     });
     if (!result) break;
     if (order.includes(result.label) && order[0] === result.label) break;
     order.push(result.label);
     if (!result.ring) problems.push(`${result.label} has no focus indicator`);
-    if (!result.onScreen) problems.push(`${result.label} is focused off screen`);
+    if (!result.onScreen)
+      problems.push(`${result.label} is focused off screen`);
   }
   return { order, problems: [...new Set(problems)] };
 }

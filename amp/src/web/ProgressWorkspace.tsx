@@ -184,9 +184,7 @@ export function ProgressWorkspace({
       const rows = tallest
         ? Math.floor((target.clientHeight + gap) / (tallest + gap))
         : Math.floor(target.clientHeight / (9.5 * font));
-      setCapacity(
-        largeText ? 1 : Math.max(1, Math.min(3, rows)) * columns,
-      );
+      setCapacity(largeText ? 1 : Math.max(1, Math.min(3, rows)) * columns);
     };
     const observer = new ResizeObserver(measure);
     observer.observe(target);

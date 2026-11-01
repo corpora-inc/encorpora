@@ -34,6 +34,9 @@ type Label = {
   anchorY?: number;
 };
 /** GPU-rendered atlas. Geometry is stable; continuous motion stops when hidden or reduced. */
+/** Height of the map toolbar plus its inset; callouts stay below it. */
+const TOOLBAR_CLEARANCE = 64;
+
 export function Graph({
   skills,
   evidence,
@@ -424,9 +427,19 @@ export function Graph({
           anchor = project(areaCenters[i]!);
         label.style.left = `${p.x}px`;
         label.style.top = `${p.y}px`;
-        label.style.visibility = p.visible ? "visible" : "hidden";
+        // A callout shows whole or not at all: never cut by the map's edge
+        // or under its toolbar when the camera is close in.
+        const half = label.offsetWidth / 2,
+          tall = label.offsetHeight / 2;
+        const inside =
+          p.x - half >= 4 &&
+          p.x + half <= width - 4 &&
+          p.y - tall >= TOOLBAR_CLEARANCE &&
+          p.y + tall <= height - 4;
+        const shown = p.visible && inside;
+        label.style.visibility = shown ? "visible" : "hidden";
         leader.style.visibility =
-          p.visible && anchor.visible ? "visible" : "hidden";
+          shown && anchor.visible ? "visible" : "hidden";
         leader.setAttribute("x1", String(anchor.x));
         leader.setAttribute("y1", String(anchor.y));
         leader.setAttribute("x2", String(p.x));

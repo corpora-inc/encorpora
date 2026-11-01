@@ -1337,10 +1337,7 @@ function LegacyScreen({ session }: { session: AuthSession | null }) {
       )}
       {/* One error pattern: a fixed toast that never moves the screen.
           Practice shows its own errors beside the problem. */}
-      <Toast
-        message={immersive ? "" : error}
-        onDismiss={() => setError("")}
-      />
+      <Toast message={immersive ? "" : error} onDismiss={() => setError("")} />
       {familyOpen && token && nativeRuntime ? (
         <NativeFamily
           onClose={() => {

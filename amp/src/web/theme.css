@@ -1895,6 +1895,7 @@ html[data-input="pointer"] :focus-visible {
 }
 /* Brand mark and name read as one unit beside the menu. */
 .shell > header > .brand {
+  min-height: 44px;
   margin-right: auto;
 }
 .landing-footer {

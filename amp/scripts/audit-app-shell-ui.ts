@@ -54,7 +54,9 @@ const scenarios = shellScenarios(fixture).filter(
 );
 const launchers = { chromium, webkit } as const;
 const settleReady = (page: import("playwright").Page) =>
-  page.waitForLoadState("networkidle", { timeout: 6000 }).catch(() => undefined);
+  page
+    .waitForLoadState("networkidle", { timeout: 6000 })
+    .catch(() => undefined);
 
 for (const name of browserNames) {
   const browser = await launchers[name as keyof typeof launchers].launch();
@@ -137,7 +139,10 @@ for (const name of browserNames) {
               await page.reload();
               await (scenario.ready?.(page) ?? settleReady(page));
               await settle(page, 600);
-              const after = { url: page.url(), heading: (await probe(page)).heading };
+              const after = {
+                url: page.url(),
+                heading: (await probe(page)).heading,
+              };
               entry.refresh =
                 before.url === after.url && before.heading === after.heading
                   ? "same"
