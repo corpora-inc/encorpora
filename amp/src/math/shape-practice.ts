@@ -244,8 +244,8 @@ const article = (word: string) => (/^[aeiou]/.test(word) ? "an" : "a");
 /** "A square", "An oval": the sentence-initial article and noun. */
 const An = (word: string) => `${/^[aeiou]/.test(word) ? "An" : "A"} ${word}`;
 const sides: Record<FlatName, string> = {
-  circle: "one curved edge and no corners",
-  oval: "one curved edge and no corners",
+  circle: "one curved edge, equally round all the way around, and no corners",
+  oval: "one curved edge, longer one way than the other, and no corners",
   triangle: "3 straight sides and 3 corners",
   square: "4 equal straight sides and 4 square corners",
   rectangle: "4 straight sides and 4 square corners",
@@ -942,7 +942,7 @@ export function generateShapeProblem(
       explanation = [
         `A side is a straight edge of the shape. A corner, or vertex, is where two sides meet.`,
         `Going around the shape once, there are ${n} straight sides.`,
-        `Each side ends at a corner, so a closed shape has as many corners as sides: ${n}.`,
+        `Each straight side ends at a corner, so a closed shape made of straight sides has as many corners as sides: ${n}.`,
         corners ? `The shape has ${n} corners.` : `The shape has ${n} sides.`,
       ];
       break;
