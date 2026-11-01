@@ -17,7 +17,7 @@ import {
   type WorkbookMinutes,
   type WorkbookSpec,
 } from "../src/workbook/compose";
-import { workbookHtml } from "../src/workbook/render";
+import { cardWords, workbookHtml } from "../src/workbook/render";
 import { sampleLearners, simulateLearner } from "../src/workbook/synthetic";
 
 const now = Date.parse("2026-10-31T13:00:00Z");
@@ -290,4 +290,28 @@ test("the challenge comes from the curated pool, which is printable", () => {
         `${id} ${date}: ${challenge.items[0]!.templateId}`,
       );
     }
+});
+
+test("the lesson card defines up to six glossary words its own text uses", () => {
+  let carded = 0;
+  for (const lesson of lessons) {
+    const words = cardWords(lesson);
+    assert.ok(words.length <= 6, lesson.id);
+    assert.equal(new Set(words.map((w) => w.id)).size, words.length);
+    for (const w of words)
+      assert.ok(w.plain.length > 0, `${lesson.id} ${w.id}`);
+    if (words.length) carded++;
+  }
+  assert.ok(carded > lessons.length / 2, `${carded} cards have words to know`);
+  const interest = lessons.find((l) => l.id === "simple-interest-blanks")!;
+  assert.ok(cardWords(interest).some((w) => w.term === "principal"));
+  const spec = compose("algebra-two");
+  const lessonId = spec.sections.find((s) => s.kind === "lesson")!.lessonId!;
+  const html = workbookHtml(spec, { lessons, skillTitle });
+  const words = cardWords(lessons.find((l) => l.id === lessonId)!);
+  if (words.length) {
+    assert.ok(html.includes("Words to know"));
+    for (const w of words)
+      assert.ok(html.includes(`<dt>${w.term}</dt>`), w.term);
+  }
 });

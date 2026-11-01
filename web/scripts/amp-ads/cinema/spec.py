@@ -25,6 +25,7 @@ FORMATS = {
     'wide': {'size': (1920, 1080), 'aspect': '16:9', 'orientation': 'wide',
              'safe': (0.12, 0.08, 0.20, 0.08)},
 }
+GOOGLE_FORMATS = frozenset(('wide', 'square', 'portrait'))
 # A text box's centre may sit at most this fraction of the frame from the frame centre.
 CENTER_TOLERANCE = 0.03
 XFADE = {'fade', 'dissolve', 'fadeblack', 'fadewhite', 'smoothleft', 'smoothright',
@@ -170,6 +171,8 @@ def validate(spec):
     if not formats or not isinstance(formats, list) or any(f not in FORMATS for f in formats) \
             or len(set(formats)) != len(formats):
         raise SpecError(f'formats must be a list drawn from {sorted(FORMATS)}')
+    if not GOOGLE_FORMATS <= set(formats):
+        raise SpecError('paid video specs require wide, square and portrait; feed is supplemental')
 
     shots = spec.get('shots')
     if not isinstance(shots, list) or not shots:
