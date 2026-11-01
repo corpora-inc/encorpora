@@ -77,13 +77,13 @@ export const regentsAlgebraTwoGraphPrinciples: Record<string, string> = {
   "remainder-zero-graph":
     "The remainder theorem says $p(x)=(x-r)q(x)+p(r)$, so the remainder is $p(r)$ and $x-r$ is a factor exactly when $p(r)=0$, that is, when the graph meets the $x$-axis at $x=r$.",
   "repeated-zero-rule":
-    "If $p(x)=a(x-r)^m q(x)$ with $q(r)\\ne0$, the zero $r$ has multiplicity $m$: the graph crosses the axis at $r$ when $m$ is odd and touches it when $m$ is even. For odd degree, the graph falls to the right when $a<0$.",
+    "If $p(x)=(x-r)^m q(x)$ with $q(r)\\ne0$ ($\\ne$ means is not equal to), the zero $r$ has multiplicity $m$: the graph crosses the axis at $r$ when $m$ is odd and touches it when $m$ is even. The graph falls to the right when the leading coefficient of $p$ is negative.",
   "sinusoid-compare-rule":
     "The function $A\\sin(Bx)$ with $A,B>0$ has maximum $A$, period $\\frac{2\\pi}{B}$ and frequency $\\frac{B}{2\\pi}$, the reciprocal of the period.",
   "tide-cosine-equation":
     "A sinusoid with maximum $M$, minimum $m$ and period $P$ that starts at its maximum is $y=\\frac{M-m}{2}\\cos\\left(\\frac{2\\pi}{P}x\\right)+\\frac{M+m}{2}$; one that starts at its minimum has the negative amplitude.",
   "cubic-graph-statement":
-    "A cubic $k(x-a)^2(x-b)$ has a zero of multiplicity 2 at $a$ and of multiplicity 1 at $b$. If $k>0$ then $f\\to\\infty$ as $x\\to\\infty$ and $f\\to-\\infty$ as $x\\to-\\infty$, and the reverse if $k<0$. Its turning points are where its derivative is zero.",
+    "For different numbers $a$ and $b$ and $k\\ne0$, the cubic $k(x-a)^2(x-b)$ has a zero of multiplicity 2 at $a$ and of multiplicity 1 at $b$. If $k>0$ then $f\\to\\infty$ as $x\\to\\infty$ and $f\\to-\\infty$ as $x\\to-\\infty$, and the reverse if $k<0$. Its turning points are where the graph changes between rising and falling.",
 };
 
 export const regentsAlgebraTwoGraphLessons = [
