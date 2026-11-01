@@ -4,35 +4,52 @@ import { chainLesson } from "./chain-lesson-kit";
 
 export const likelihoodMethods: Record<string, ProblemMethod> = {
   "likelihood-in-words": {
-    goal: "Name an event as certain, likely, as likely as not, unlikely or impossible by comparing the successes with half of all outcomes.",
+    goal: "Say whether an event is certain, likely, as likely as not, unlikely or impossible by comparing its successes with half of all outcomes.",
+    senses: {
+      event: "event",
+      certain: "certain",
+      impossible: "impossible",
+      face: "face-solid",
+      faces: "face-solid",
+      cube: "cube",
+      "more than": "more-than",
+    },
     intuition:
-      "An outcome is one thing that can happen, like one marble coming out of a bag. A success is an outcome that makes the event happen. How likely the event is depends on how many of the outcomes are successes, out of all the outcomes.",
+      "An outcome is one thing that can happen, like one marble coming out of a bag. An event is the result you are asking about, such as picking red. A success is an outcome that makes the event happen. Count the successes and all the outcomes. Then compare the successes with none, with half and with all of the outcomes.",
     terms: ["outcome", "event", "impossible", "certain"],
     method: [
-      "Count the outcomes that make the event happen, and count all the outcomes.",
-      "If none of them do, the event is impossible. If all of them do, it is certain.",
-      "Otherwise compare the successes with half of all outcomes: more than half is likely, exactly half is as likely as not, and fewer than half is unlikely.",
+      "Count the successes, the outcomes that make the event happen. Then count all the outcomes.",
+      "If there are 0 successes, the event is impossible: it cannot happen. If every outcome is a success, it is certain: it must happen.",
+      "Otherwise compare the successes with half of all the outcomes. More than half is likely, exactly half is as likely as not, and fewer than half is unlikely.",
     ],
     watch:
-      "Compare with all the outcomes, not with the other colors. Having the most of one color does not make an event certain unless every outcome is a success.",
+      "Compare the successes with all the outcomes, not with one other color. The biggest color is certain only when every outcome is that color.",
   },
   "probability-on-number-line": {
     goal: "Place the chance of an event on a number line from 0 to 1 as the fraction of outcomes that are successes.",
+    senses: {
+      event: "event",
+      certain: "certain",
+      impossible: "impossible",
+      face: "face-solid",
+      faces: "face-solid",
+    },
     intuition:
-      "The chance of an event is a number from 0 to 1. Impossible is 0, certain is 1, and everything between is a fraction: the successes out of all the equally likely outcomes. A number line from 0 to 1 cut into that many equal spaces puts each fraction at its own mark.",
+      "An outcome is one thing that can happen, like one spin landing on one section. A success is an outcome that makes your event happen. The chance of the event is the successes out of all the outcomes, written as a fraction. This works when every outcome is equally likely, meaning each has the same chance. The chance is 0 when the event is impossible and 1 when it is certain. A number line from 0 to 1, cut into one equal space per outcome, has a mark for each possible chance.",
     terms: ["probability", "equally-likely"],
     method: [
-      "Count the successes and all the outcomes, and write the chance as successes over all outcomes.",
-      "Count the equal spaces on the number line from 0 to 1 and check that it matches the number of outcomes.",
-      "Count the number of successes in spaces up from 0 and find that point.",
+      "Count the successes and all the outcomes. The chance is successes over all outcomes, such as $\\frac{3}{8}$.",
+      "Check that the number line from 0 to 1 has one equal space for each outcome.",
+      "Start at 0 and count one space for each success. That point is the chance.",
     ],
     watch:
-      "Do not choose the chance of the event not happening, which is the mirror point. Count from 0 for the event itself.",
+      "Count the spaces from 0, not from 1. Counting from 1 gives the chance that the event does not happen.",
   },
   "equal-chance-choice": {
     goal: "Choose the bag or spinner whose counts make two colors equally likely, or one color the most or least likely.",
+    senses: { "more than": "more-than" },
     intuition:
-      "When every marble or section is equally likely to be picked, a color's chance depends only on how many there are of it. Equal chances need equal counts. The most likely color has the most; the least likely has the fewest.",
+      "Equally likely means having the same chance. In a bag of same-size marbles, or a spinner with equal sections, each marble or section is equally likely to be picked. Then a color's chance depends only on how many of that color there are. Two colors with equal counts have equal chances. The color with the most has the greatest chance, and the color with the fewest has the least.",
     terms: [
       "equally-likely",
       [
@@ -41,112 +58,137 @@ export const likelihoodMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Write the count of each color for a choice.",
-      "Compare the colors the question names: equal counts for equal chances, the greatest count for most likely, the smallest for least likely.",
-      "Check every choice, because a choice can match the total or look balanced and still fail the comparison.",
+      "For each choice, write how many there are of each color.",
+      "Compare only the colors the question names. Equal counts give equal chances. The greatest count is the most likely, and the smallest count is the least likely.",
+      "Check every choice. A choice can have the right total and still fail the comparison.",
     ],
     watch:
-      "Compare only the colors named in the question. Two choices may both have the right total and still give different chances.",
+      "Compare only the colors named in the question. Two choices with the same total can still give those colors different chances.",
   },
 };
 
 export const likelihoodPrinciples: Record<string, string> = {
   "likelihood-in-words":
-    "For $n$ equally likely outcomes of which $k$ make an event happen, the event is impossible if $k=0$, certain if $k=n$, unlikely if $0<k<\\frac{n}{2}$, as likely as not if $k=\\frac{n}{2}$ and likely if $\\frac{n}{2}<k<n$.",
+    "Suppose there are $n$ equally likely outcomes and $k$ of them are successes. The event is impossible if $k = 0$ and certain if $k = n$. Otherwise it is unlikely if $k < \\frac{n}{2}$, as likely as not if $k = \\frac{n}{2}$, and likely if $k > \\frac{n}{2}$.",
   "probability-on-number-line":
-    "For $n$ equally likely outcomes with $k$ successes, the chance of the event is $\\frac{k}{n}$, a number from 0 to 1. A number line from 0 to 1 cut into $n$ equal spaces shows it $k$ spaces from 0, and the chance of the event not happening is $\\frac{n-k}{n}$.",
+    "With $n$ equally likely outcomes and $k$ successes, the chance of the event is $\\frac{k}{n}$, a number from 0 to 1. On a number line from 0 to 1 cut into $n$ equal spaces, it is $k$ spaces from 0. The chance that the event does not happen is $\\frac{n-k}{n}$, which is $k$ spaces from 1.",
   "equal-chance-choice":
-    "When all outcomes are equally likely, the chance of a color is its count divided by the total, so two colors are equally likely exactly when their counts are equal, and the color with the greatest count is the most likely.",
+    "When all outcomes are equally likely, a color's chance is its count divided by the total. So two colors are equally likely exactly when their counts are equal, and the color with the greatest count is the most likely.",
 };
 
 export const likelihoodLessons = [
-  chainLesson({
-    id: "likelihood-words-lesson",
-    title: "How likely is it?",
-    summary:
-      "Describe an event as certain, likely, as likely as not, unlikely or impossible, and build a bag or spinner for a chance.",
-    templateIds: ["likelihood-in-words", "equal-chance-choice"],
-    objectives: [
-      "Count the successes and all outcomes of a bag, spinner or number cube.",
-      "Name the likelihood by comparing the successes with none, half and all.",
-      "Choose the counts that give equal, greatest or least chance.",
-    ],
-    openingTitle: "Compare the successes with half and with all",
-    opening: [
-      "Picking a marble without looking has as many outcomes as there are marbles, and each marble is equally likely to be picked. An outcome that makes your event happen is a success.",
-      "If no outcome is a success, the event is impossible. If every outcome is a success, it is certain. In between, compare the number of successes with half of all outcomes to say likely, as likely as not, or unlikely.",
-    ],
-    example: {
-      prompt:
-        "A bag holds 5 red marbles and 3 blue marbles. You pick one without looking. How likely is picking a red marble?",
-      steps: [
-        "There are $5+3=8$ marbles, so 8 outcomes, and 5 of them are red.",
-        "Half of 8 is 4, and 5 is more than 4 but not all 8.",
-        "More than half but not all: picking red is likely.",
+  {
+    ...chainLesson({
+      id: "likelihood-words-lesson",
+      title: "How likely is it?",
+      summary:
+        "An outcome is one thing that can happen, like one marble coming out of a bag. An event is the result you ask about, such as picking a red marble. A success is an outcome that makes the event happen. Compare the number of successes with none, with half and with all of the outcomes. That tells you whether the event is impossible, unlikely, as likely as not, likely or certain.",
+      templateIds: ["likelihood-in-words", "equal-chance-choice"],
+      objectives: [
+        "Count the successes and all the outcomes for a bag, a spinner or a number cube.",
+        "Name how likely an event is by comparing the successes with none, half and all of the outcomes.",
+        "Choose the counts that give two colors equal chances, or give one color the greatest or least chance.",
       ],
-      answer: "Likely",
-    },
-    methodTitle: "Count, then compare",
-    method: [
-      "Likelihood words: 0 successes is impossible; all is certain; more than half is likely; exactly half is as likely as not; fewer than half is unlikely.",
-      "To build a bag, make the counts follow the goal: equal counts for equal chances, the largest count for the most likely color, the smallest for the least likely.",
-    ],
-    formalTitle: "Equally likely outcomes",
-    formal: [
-      "With $n$ equally likely outcomes and $k$ successes, the chance of the event is $\\frac{k}{n}$. The words compare $\\frac{k}{n}$ with 0, $\\frac{1}{2}$ and 1.",
-      "Chances depend on counts only when every outcome is equally likely: equal sections on a spinner, same-size marbles in a bag, the six faces of a fair cube.",
-    ],
-    pitfalls: [
-      "Comparing the successes with the other colors instead of with all the outcomes.",
-      "Calling an event certain because it is the most likely color. Certain needs every outcome to be a success.",
-      "Choosing equal totals instead of equal counts for the colors the question names.",
-    ],
-    parentGuide:
-      "Use a real bag of coins or buttons and ask your learner to predict, then try 10 picks.",
-  }),
-  chainLesson({
-    id: "probability-line-lesson",
-    title: "A chance on a number line",
-    summary:
-      "Write the chance of an event as a fraction and place it between 0 and 1.",
-    templateIds: ["probability-on-number-line"],
-    objectives: [
-      "Write a chance as successes over all outcomes.",
-      "Find that fraction on a number line cut into equal spaces.",
-    ],
-    openingTitle: "Chance is a fraction between 0 and 1",
-    opening: [
-      "The chance of an event is the number of successes out of all the equally likely outcomes. It is a fraction from 0, an impossible event, to 1, a certain event.",
-      "A number line from 0 to 1 cut into as many equal spaces as there are outcomes puts the chance of 3 successes at the mark 3 spaces from 0.",
-    ],
-    example: {
-      prompt:
-        "A spinner has 8 equal sections and 3 are red. The number line from 0 to 1 has 8 equal spaces. Where is the chance of landing on red?",
-      steps: [
-        "The chance is 3 out of 8, which is $\\frac{3}{8}$.",
-        "Count 3 spaces up from 0 on the number line with 8 equal spaces.",
-        "The point 3 spaces from 0 is the chance.",
+      openingTitle: "Compare the successes with half and with all",
+      opening: [
+        "A bag holds 5 red marbles and 3 blue marbles of the same size. You pick one without looking. Each marble is one outcome, so there are 8 outcomes. Each marble has the same chance of being picked. We say the outcomes are equally likely.",
+        "Say the event is picking red. The 5 red marbles are the successes, because each one makes the event happen.",
+        "Impossible means the event cannot happen: no outcome is a success. Certain means the event must happen: every outcome is a success.",
+        "In between, compare the successes with half of all the outcomes. More than half is likely. Exactly half is as likely as not. Fewer than half is unlikely.",
+        "A number cube, also called a die, has 6 flat faces numbered 1 to 6. Rolling it has 6 equally likely outcomes. A spinner with equal sections has one outcome per section.",
       ],
-      answer: "3 spaces from 0, at $\\frac{3}{8}$",
+      example: {
+        prompt:
+          "A bag holds 5 red marbles and 3 blue marbles. You pick one without looking. How likely is picking a red marble?",
+        steps: [
+          "Count all the outcomes. There are $5 + 3 = 8$ marbles, so there are 8 outcomes.",
+          "Count the successes. Picking red is the event, and 5 marbles are red, so there are 5 successes.",
+          "Compare with half. Half of 8 is 4. Since 5 is more than 4 but less than all 8, the event is not certain.",
+          "More than half but not all of the outcomes are successes, so picking red is likely.",
+        ],
+        answer: "Likely",
+      },
+      methodTitle: "Count, then compare",
+      method: [
+        "Count the successes and all the outcomes. Then use these words. With 0 successes the event is impossible. With every outcome a success it is certain. More than half is likely, exactly half is as likely as not, and fewer than half is unlikely.",
+        "To build a bag or spinner, choose the counts to fit the goal. Give two colors equal counts for equal chances. Give a color the largest count to make it the most likely, or the smallest count to make it the least likely.",
+      ],
+      formalTitle: "Equally likely outcomes",
+      formal: [
+        "Suppose there are $n$ equally likely outcomes and $k$ of them are successes. The chance of the event is $\\frac{k}{n}$, the fraction of the outcomes that are successes. The words compare $\\frac{k}{n}$ with 0, with $\\frac{1}{2}$ and with 1.",
+        "Counting works only when every outcome is equally likely. That is true for equal sections on a spinner, same-size marbles in a bag, and the 6 faces of a fair number cube.",
+      ],
+      pitfalls: [
+        "Compare the successes with all the outcomes, not with the number of one other color.",
+        "An event is certain only when every outcome is a success. Being the biggest color is not enough.",
+        "For equal chances, look at the counts of the colors the question names. Two bags with equal totals can still give those colors different chances.",
+      ],
+      parentGuide:
+        "Put real coins or buttons in a bag. Ask the learner to say how likely one kind is to come out. Then make 10 picks, putting each one back, and compare.",
+    }),
+    senses: {
+      event: "event",
+      certain: "certain",
+      impossible: "impossible",
+      cube: "cube",
+      faces: "face-solid",
+      "more than": "more-than",
     },
-    methodTitle: "Fraction, then count spaces",
-    method: [
-      "Chance = successes over all outcomes.",
-      "Count that many spaces up from 0. The mark that many spaces from the right end is the chance of the event not happening, which is the mirror point.",
-    ],
-    formalTitle: "Probability as a fraction",
-    formal: [
-      "For equally likely outcomes, $P(\\text{event})=\\frac{k}{n}$ with $0\\le\\frac{k}{n}\\le1$.",
-      "The chance of not having the event is $1-\\frac{k}{n}$, which is the mirror point across $\\frac{1}{2}$.",
-    ],
-    pitfalls: [
-      "Counting spaces from 1 instead of from 0.",
-      "Choosing the chance that the event does not happen, which is the mirror image of the right point.",
-      "Using the number of failures as the numerator.",
-    ],
-    parentGuide:
-      "Ask your learner whether the point should be nearer to 0 or to 1 before counting spaces.",
-  }),
+  },
+  {
+    ...chainLesson({
+      id: "probability-line-lesson",
+      title: "A chance on a number line",
+      summary:
+        "An outcome is one thing that can happen, such as a spinner landing on one section. A success is an outcome that makes your event happen. The chance of the event is the number of successes out of all the outcomes, written as a fraction such as $\\frac{3}{8}$. The chance is always between 0 and 1, so it has a place on a number line from 0 to 1.",
+      templateIds: ["probability-on-number-line"],
+      objectives: [
+        "Write a chance as the number of successes over the number of all outcomes.",
+        "Find that fraction on a number line from 0 to 1 cut into equal spaces.",
+      ],
+      openingTitle: "Chance is a fraction between 0 and 1",
+      opening: [
+        "A spinner has 8 equal sections, and 3 of them are red. Each section is an outcome, so there are 8 outcomes. The sections are the same size, so each outcome has the same chance. We say the outcomes are equally likely.",
+        "Landing on red is the event. The 3 red sections are the successes. The chance of red is 3 out of 8, written $\\frac{3}{8}$. The top number counts the successes and the bottom number counts all the outcomes.",
+        "An impossible event (one that cannot happen) has 0 successes, so its chance is 0. A certain event (one that must happen) has every outcome as a success, so its chance is 1. Every other chance is a fraction between 0 and 1.",
+        "Cut a number line from 0 to 1 into 8 equal spaces, one for each outcome. Each space is $\\frac{1}{8}$. So $\\frac{3}{8}$ is the mark 3 spaces from 0.",
+      ],
+      example: {
+        prompt:
+          "A spinner has 8 equal sections and 3 are red. The number line from 0 to 1 has 8 equal spaces. Where is the chance of landing on red?",
+        steps: [
+          "Count the successes and all the outcomes. 3 of the 8 equal sections are red, so the chance is 3 out of 8, which is $\\frac{3}{8}$.",
+          "The number line has 8 equal spaces, one for each outcome. So each space is $\\frac{1}{8}$.",
+          "Start at 0 and count 3 spaces, one for each red section. That mark is $\\frac{3}{8}$, the chance of landing on red.",
+        ],
+        answer: "3 spaces from 0, at $\\frac{3}{8}$",
+      },
+      methodTitle: "Fraction, then count spaces",
+      method: [
+        "Write the chance as successes over all outcomes.",
+        "Start at 0 and count one space for each success. Counting the same number of spaces back from 1 lands on the other mark, the chance that the event does not happen.",
+      ],
+      formalTitle: "Probability as a fraction",
+      formal: [
+        "The chance of an event is also called its probability, written $P(\\text{event})$. For $n$ equally likely outcomes with $k$ successes, $P(\\text{event}) = \\frac{k}{n}$. It is never less than 0 or more than 1: $0 \\le \\frac{k}{n} \\le 1$, where $\\le$ means is less than or equal to.",
+        "The chance that the event does not happen is $1 - \\frac{k}{n}$. On the number line it is the same distance from 1 as the event's chance is from 0.",
+      ],
+      pitfalls: [
+        "Count the spaces from 0, not from 1.",
+        "Do not pick the chance that the event does not happen. That point is the same distance from 1 as the right point is from 0.",
+        "Put the successes on top of the fraction, not the outcomes that fail.",
+      ],
+      parentGuide:
+        "Before counting spaces, ask the learner whether the point should be nearer to 0 or to 1, and why.",
+    }),
+    senses: {
+      event: "event",
+      certain: "certain",
+      impossible: "impossible",
+      "more than": "more-than",
+    },
+    noLink: ["image"],
+  },
 ];
 
 export const likelihoodFacetMappings: FacetMapping[] = [
