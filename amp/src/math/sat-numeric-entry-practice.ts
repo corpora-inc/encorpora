@@ -946,7 +946,7 @@ function quadraticContext(r: R): Case {
       explanation: [
         `The vertex of $at^2 + bt + c$ lies on its axis of symmetry, the line $t=\\frac{-b}{2a}$ that splits the parabola into mirror halves.`,
         `With $a=-${a}$ and $b=${b}$, the greatest height occurs at $t=\\frac{-${b}}{2(-${a})}=${tex(tMax)}$.`,
-        `The ball reaches its greatest height after $${tex(tMax)}$ seconds.`,
+        `The ball reaches its greatest height after $${tex(tMax)}$ ${nounFor(tex(tMax), "second")}.`,
       ],
       data: { a, b, c, ask: "time" },
     };
