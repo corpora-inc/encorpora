@@ -880,9 +880,13 @@ export function workbookFooter(_spec: WorkbookSpec): string {
  * is one image pattern. Geometry matches the gradients: a 0.7px line on each
  * cell edge. (The radial-gradient dot grids print quickly and stay.) */
 const gridLines = (() => {
-  const grid =
-    /--color-figure-grid:\s*([^;]+);/.exec(printTokens())?.[1]?.trim() ??
-    "currentColor";
+  // The tile is its own SVG document: it needs a literal colour (a CSS
+  // variable or currentColor would print black).
+  const grid = /--color-figure-grid:\s*([^;]+);/
+    .exec(printTokens())?.[1]
+    ?.trim();
+  if (!grid || !/^#[0-9a-f]{3,8}$/i.test(grid))
+    throw new Error("--color-figure-grid must be a hex colour in tokens.css");
   // A 0.25in cell is 24px, so one unit is one CSS pixel.
   const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'><path d='M0 0H24V.7H0zM0 .7H.7V24H0z' fill='${grid}' fill-opacity='.8'/></svg>`;
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
