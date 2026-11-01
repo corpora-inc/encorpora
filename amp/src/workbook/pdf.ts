@@ -111,10 +111,10 @@ export function localRenderer(): WorkbookRenderer & { close(): Promise<void> } {
 /** Hosted: `AMP_RENDER_URL` and `AMP_RENDER_TOKEN` name the render service.
  * Development without them renders in this process. Otherwise none: PDF
  * requests answer 503 and log why. */
-export function workbookRendererFromEnv(
+export async function workbookRendererFromEnv(
   env: NodeJS.ProcessEnv,
   development: boolean,
-): WorkbookRenderer | null {
+): Promise<WorkbookRenderer | null> {
   const url = env.AMP_RENDER_URL?.trim();
   const token = env.AMP_RENDER_TOKEN?.trim();
   if (url || token) {
@@ -127,5 +127,17 @@ export function workbookRendererFromEnv(
       throw new Error("AMP_RENDER_TOKEN must be at least 32 characters");
     return remoteRenderer({ url, token });
   }
-  return development ? localRenderer() : null;
+  if (!development) return null;
+  // Without a local Chromium, downloads use the printable document.
+  try {
+    const { chromium } = await import("playwright-core");
+    const { existsSync } = await import("node:fs");
+    if (existsSync(chromium.executablePath())) return localRenderer();
+  } catch {
+    // playwright-core is a development dependency and may be absent.
+  }
+  console.warn(
+    "No local Chromium (npx playwright install chromium): workbook downloads use the printable document",
+  );
+  return null;
 }

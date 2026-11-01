@@ -18,7 +18,7 @@
  */
 import { createServer, type IncomingMessage, type Server } from "node:http";
 import { createHash, timingSafeEqual } from "node:crypto";
-import type { Browser } from "playwright-core";
+import type { Browser, BrowserContext } from "playwright-core";
 
 export interface RenderServiceOptions {
   token: string;
@@ -60,21 +60,20 @@ async function defaultLaunch(): Promise<Browser> {
 
 function readBody(request: IncomingMessage, limit: number): Promise<Buffer> {
   return new Promise((resolve, reject) => {
-    const declared = Number(request.headers["content-length"] ?? 0);
-    if (declared > limit) {
+    const tooLarge = () => {
+      // Stop reading; the 413 is sent with Connection: close and the socket
+      // closes after it, so the client sees the answer, not a reset.
+      request.removeAllListeners("data");
+      request.pause();
       reject(new HttpError(413, "Document too large"));
-      request.resume();
-      return;
-    }
+    };
+    if (Number(request.headers["content-length"] ?? 0) > limit)
+      return tooLarge();
     const chunks: Buffer[] = [];
     let size = 0;
     request.on("data", (chunk: Buffer) => {
       size += chunk.length;
-      if (size > limit) {
-        reject(new HttpError(413, "Document too large"));
-        request.destroy();
-        return;
-      }
+      if (size > limit) return tooLarge();
       chunks.push(chunk);
     });
     request.on("end", () => resolve(Buffer.concat(chunks)));
@@ -119,14 +118,27 @@ export function createRenderService(options: RenderServiceOptions): {
 
   let active = 0;
   const waiting: (() => void)[] = [];
-  async function slot<T>(run: () => Promise<T>): Promise<T> {
+  /** Runs when a slot is free. A request waits at most `timeoutMs` and
+   * leaves the queue when its caller has gone. */
+  async function slot<T>(run: () => Promise<T>, gone: () => boolean) {
     if (active >= concurrency) {
       if (waiting.length >= queueLimit)
         throw new HttpError(503, "Renderer busy");
-      await new Promise<void>((resolve) => waiting.push(resolve));
+      await new Promise<void>((resolve, reject) => {
+        const wake = () => {
+          clearTimeout(timer);
+          resolve();
+        };
+        const timer = setTimeout(() => {
+          waiting.splice(waiting.indexOf(wake), 1);
+          reject(new HttpError(503, "Renderer busy"));
+        }, timeoutMs);
+        waiting.push(wake);
+      });
     }
     active++;
     try {
+      if (gone()) throw new HttpError(499, "Client closed the request");
       return await run();
     } finally {
       active--;
@@ -139,42 +151,48 @@ export function createRenderService(options: RenderServiceOptions): {
     format: RenderFormat,
     footer: string | undefined,
   ): Promise<Buffer> {
-    const instance = await connected();
-    const context = await instance.newContext({
-      javaScriptEnabled: false,
-      offline: true,
-    });
     let timer: NodeJS.Timeout | undefined;
-    try {
-      const work = (async () => {
-        const page = await context.newPage();
-        // Data URLs never reach the network; anything else is refused.
-        await page.route("**/*", (route) => route.abort());
-        await page.setContent(html, { waitUntil: "load", timeout: timeoutMs });
-        await page.emulateMedia({ media: "print" });
-        return page.pdf({
-          format,
-          printBackground: true,
-          preferCSSPageSize: true,
-          ...(footer
-            ? {
-                displayHeaderFooter: true,
-                headerTemplate: "<span></span>",
-                footerTemplate: footer,
-              }
-            : {}),
-        });
-      })();
-      const timeout = new Promise<never>((_, reject) => {
-        timer = setTimeout(
-          () => reject(new HttpError(504, "Render timed out")),
-          timeoutMs,
-        );
+    let context: BrowserContext | undefined;
+    // The limit covers the whole render, including a browser start.
+    const timeout = new Promise<never>((_, reject) => {
+      timer = setTimeout(
+        () => reject(new HttpError(504, "Render timed out")),
+        timeoutMs,
+      );
+    });
+    const work = (async () => {
+      const instance = await connected();
+      context = await instance.newContext({
+        javaScriptEnabled: false,
+        offline: true,
       });
+      const page = await context.newPage();
+      // Data URLs never reach the network; anything else is refused.
+      await page.route("**/*", (route) => route.abort());
+      await page.setContent(html, { waitUntil: "load", timeout: timeoutMs });
+      await page.emulateMedia({ media: "print" });
+      return page.pdf({
+        format,
+        printBackground: true,
+        preferCSSPageSize: true,
+        ...(footer
+          ? {
+              displayHeaderFooter: true,
+              headerTemplate: "<span></span>",
+              footerTemplate: footer,
+            }
+          : {}),
+      });
+    })();
+    try {
       return await Promise.race([work, timeout]);
     } finally {
       clearTimeout(timer);
-      await context.close().catch(() => undefined);
+      // A context opened after the timeout is closed when it resolves.
+      void work
+        .catch(() => undefined)
+        .finally(() => context?.close().catch(() => undefined));
+      await context?.close().catch(() => undefined);
     }
   }
 
@@ -189,18 +207,25 @@ export function createRenderService(options: RenderServiceOptions): {
 
   const server = createServer(async (request, response) => {
     const started = Date.now();
+    let gone = false;
+    response.on("close", () => {
+      if (!response.writableFinished) gone = true;
+    });
     const send = (
       status: number,
       body: Buffer | string,
       type = "application/json",
+      close = false,
     ) => {
       response.writeHead(status, {
         "Content-Type": type,
         "Content-Length": Buffer.byteLength(body),
         "Cache-Control": "no-store",
         "X-Content-Type-Options": "nosniff",
+        ...(close ? { Connection: "close" } : {}),
       });
       response.end(body);
+      if (close) response.on("finish", () => request.destroy());
     };
     const path = (request.url ?? "/").split("?")[0];
     try {
@@ -234,8 +259,10 @@ export function createRenderService(options: RenderServiceOptions): {
         throw new HttpError(400, "format must be Letter or A4");
       if (footer !== undefined && typeof footer !== "string")
         throw new HttpError(400, "footer must be a string");
-      const pdf = await slot(() =>
-        render(html, format as RenderFormat, footer as string | undefined),
+      const pdf = await slot(
+        () =>
+          render(html, format as RenderFormat, footer as string | undefined),
+        () => gone,
       );
       send(200, pdf, "application/pdf");
       log({
@@ -262,7 +289,12 @@ export function createRenderService(options: RenderServiceOptions): {
         durationMs: Date.now() - started,
       });
       if (!response.headersSent)
-        send(status, JSON.stringify({ error: message }));
+        send(
+          status,
+          JSON.stringify({ error: message }),
+          undefined,
+          status === 413,
+        );
       else response.destroy();
     }
   });

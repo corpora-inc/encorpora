@@ -139,7 +139,8 @@ function Today({
   }, [current?.id, current?.paper, history.data]);
   const [message, setMessage] = useState("");
   const [downloading, setDownloading] = useState(false);
-  const ready = !!current && !!history.data;
+  // A failed history load means no PDF flag: the printable copy still works.
+  const ready = !!current && (!!history.data || !!history.error);
   const another = useMutation({
     mutationFn: () =>
       anotherWorkbook(session, learner.id, { date, minutes, paper }),

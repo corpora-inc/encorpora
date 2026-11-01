@@ -274,12 +274,21 @@ export function registerWorkbookRoutes(
             learnerName,
             paper: format === "A4" ? "a4" : "letter",
           });
+          const footer = workbookFooter(record.spec);
           const key = {
             workbookId,
             format,
-            documentSha256: createHash("sha256").update(html).digest("hex"),
+            documentSha256: createHash("sha256")
+              .update(`${html}\u0000${footer}`)
+              .digest("hex"),
           } as const;
-          return { record, html, key, cached: await tx.workbookPdf(key) };
+          return {
+            record,
+            html,
+            footer,
+            key,
+            cached: await tx.workbookPdf(key),
+          };
         },
       );
       let pdf = lookup.cached;
@@ -291,7 +300,7 @@ export function registerWorkbookRoutes(
           pdf = await options.renderer.render({
             html: lookup.html,
             format: lookup.key.format,
-            footer: workbookFooter(lookup.record.spec),
+            footer: lookup.footer,
           });
         } catch (error) {
           request.log.error(
@@ -311,9 +320,17 @@ export function registerWorkbookRoutes(
           "Workbook PDF rendered",
         );
         const rendered = pdf;
-        await options.repository.transaction(accountId, learnerId, (tx) =>
-          tx.saveWorkbookPdf(lookup.key, rendered),
-        );
+        // The cache is optional: a failed save still sends the PDF.
+        await options.repository
+          .transaction(accountId, learnerId, (tx) =>
+            tx.saveWorkbookPdf(lookup.key, rendered),
+          )
+          .catch((error) =>
+            request.log.error(
+              { err: error instanceof Error ? error.message : String(error) },
+              "Workbook PDF cache save failed",
+            ),
+          );
       }
       return reply
         .type("application/pdf")

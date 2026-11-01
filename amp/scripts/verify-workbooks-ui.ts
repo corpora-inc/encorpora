@@ -188,7 +188,8 @@ const me = fixtureMe(
   "parent-one",
 );
 
-let failNextDownload = false;
+/** "pdf": the renderer is down; "all": the API cannot serve the file. */
+let failNextDownload: false | "pdf" | "all" = false;
 async function fixture(page: Page) {
   const errors: string[] = [];
   page.on("console", (message) => {
@@ -199,8 +200,13 @@ async function fixture(page: Page) {
     const request = route.request();
     const url = new URL(request.url());
     if (url.pathname.includes("/workbooks")) {
-      if (url.pathname.endsWith("/pdf") && failNextDownload) {
-        failNextDownload = false;
+      const failing =
+        failNextDownload &&
+        (url.pathname.endsWith("/pdf") ||
+          (failNextDownload === "all" && url.pathname.endsWith("/document")));
+      if (failing) {
+        if (url.pathname.endsWith("/document") || failNextDownload === "pdf")
+          failNextDownload = false;
         return route.fulfill({
           status: 503,
           json: {
@@ -328,12 +334,26 @@ try {
       );
       assert.deepEqual(await controlBoxes(page), before, `${label}: another`);
 
-      // A failed download explains itself in place and is logged.
-      failNextDownload = true;
+      // A renderer outage still gives the parent a printable copy.
+      failNextDownload = "pdf";
+      const [fallback] = await Promise.all([
+        page.waitForEvent("download"),
+        page.getByRole("button", { name: "Download workbook" }).click(),
+      ]);
+      assert.equal(
+        fallback.suggestedFilename(),
+        `amp-workbook-${today}-2.html`,
+      );
+      assert.equal(await page.getByRole("alert").count(), 0);
+      assert.deepEqual(await controlBoxes(page), before, `${label}: fallback`);
+
+      // A download that cannot be served explains itself in place and is
+      // logged.
+      failNextDownload = "all";
       await page.getByRole("button", { name: "Download workbook" }).click();
       await page
         .getByRole("alert")
-        .filter({ hasText: "being prepared" })
+        .filter({ hasText: "didn't download" })
         .waitFor();
       assert.deepEqual(await controlBoxes(page), before, `${label}: error`);
       assert.ok(
@@ -352,7 +372,7 @@ try {
       assert.equal(download.suggestedFilename(), `amp-workbook-${today}-2.pdf`);
       await page
         .getByRole("alert")
-        .filter({ hasText: "being prepared" })
+        .filter({ hasText: "didn't download" })
         .waitFor({ state: "detached" });
       assert.deepEqual(await controlBoxes(page), before, `${label}: download`);
 

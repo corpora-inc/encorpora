@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
-import { createServer } from "node:http";
+import { createServer, request } from "node:http";
 import type { AddressInfo } from "node:net";
 import type { Browser } from "playwright-core";
 import { chromium } from "playwright-core";
@@ -90,6 +90,18 @@ test("requests need the shared secret and a valid body; logs never hold the docu
       (await render({ html: "x".repeat(5000), format: "A4" })).status,
       413,
     );
+    // A streamed body over the limit gets a 413, not a reset connection.
+    const streamed = await new Promise<number>((resolve, reject) => {
+      const req = request(`${base}/render`, {
+        method: "POST",
+        headers: { authorization: `Bearer ${token}` },
+      });
+      req.on("response", (res) => resolve(res.statusCode ?? 0));
+      req.on("error", reject);
+      for (let i = 0; i < 8; i++) req.write("x".repeat(1024));
+      req.end();
+    });
+    assert.equal(streamed, 413);
     assert.equal((await fetch(`${base}/render`)).status, 405);
     assert.equal((await fetch(`${base}/other`)).status, 404);
     const ok = await render({
