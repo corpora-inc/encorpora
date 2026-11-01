@@ -279,6 +279,9 @@ nav button:hover {
   margin-bottom: 12px;
 }
 .answer-row input {
+  border: 2px solid var(--color-answer-border);
+  background: var(--color-answer);
+  color: var(--color-on-answer);
   min-width: 0;
   width: 100%;
   font-size: 20px;
