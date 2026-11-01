@@ -100,13 +100,8 @@
   "balanced-addition": {
     "side": 2
   },
-  "bar-chart-difference": {
-    "difference": 2,
-    "scale": 3
-  },
   "bar-chart-total": {
-    "more than": 1,
-    "scale": 13
+    "more than": 1
   },
   "benchmark-fraction-estimate": {
     "changes": 1,
@@ -526,7 +521,6 @@
     "edge": 5
   },
   "data-list-for-display": {
-    "range": 19,
     "ranges": 12,
     "sort": 10
   },
@@ -689,9 +683,7 @@
   },
   "equation-solution-count": {
     "mean": 1,
-    "side": 1,
-    "sides": 38,
-    "terms": 3
+    "side": 1
   },
   "equivalent-denominator": {
     "changes": 1,
@@ -702,7 +694,6 @@
     "multiples": 3,
     "part": 1,
     "product": 1,
-    "term": 17,
     "terms": 8
   },
   "equivalent-expressions-table": {
@@ -907,8 +898,6 @@
   },
   "fraction-line-plot": {
     "fourth": 1,
-    "leaf": 8,
-    "leaves": 1,
     "one fourth": 1,
     "unit": 1
   },
@@ -920,12 +909,9 @@
     "whole": 3
   },
   "fraction-of-set": {
-    "part": 4,
     "whole": 1
   },
   "fraction-plot-difference": {
-    "eighths": 6,
-    "fourths": 4,
     "parts": 4
   },
   "fraction-plot-equal-share": {
@@ -6662,20 +6648,14 @@
     "change": 28
   },
   "line-graph-reader": {
-    "change": 8,
     "changes": 7,
     "degrees": 1,
-    "more than": 2,
-    "scale": 26
+    "more than": 2
   },
   "line-pair-select": {
     "edge": 1,
     "opposite": 1,
     "quarter": 6
-  },
-  "line-plot-whole": {
-    "leaf": 4,
-    "leaves": 1
   },
   "linear-function-choice": {
     "changes": 76,
@@ -6988,7 +6968,6 @@
     "more than": 1
   },
   "number-line-distance": {
-    "sides": 7,
     "unit": 16,
     "units": 14
   },
@@ -7116,7 +7095,6 @@
     "scales": 1
   },
   "picture-graph-questions": {
-    "difference": 16,
     "leaves": 1
   },
   "place-transformed-image": {
@@ -7454,8 +7432,7 @@
     "squares": 3
   },
   "scaled-picture-graph": {
-    "key": 21,
-    "whole": 18
+    "key": 21
   },
   "scaling-direction-choice": {
     "change": 2,
@@ -7605,14 +7582,11 @@
     "roots": 1
   },
   "sort-shapes-count": {
-    "sort": 19,
     "sorting": 2,
-    "square": 5,
     "squares": 20,
     "whole": 1
   },
   "sort-shapes-most": {
-    "sort": 4,
     "sorting": 1,
     "square": 1,
     "squares": 22
@@ -7762,7 +7736,6 @@
     "mean": 5,
     "mode": 6,
     "more than": 10,
-    "range": 7,
     "stem": 45
   },
   "story-equation-choice": {
