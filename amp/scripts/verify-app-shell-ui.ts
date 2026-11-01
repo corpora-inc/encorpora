@@ -143,7 +143,8 @@ try {
     await context.close();
   }
 
-  // 3. Bare links use the brand ink in both themes, never browser blue.
+  // 3. Bare links are never the browser's default blue or visited purple;
+  //    the landing footer and "Other programs" use the brand ink.
   for (const theme of ["light", "dark"] as const)
     for (const id of ["landing", "trial-plans"]) {
       const { page, context } = await open(
@@ -151,7 +152,7 @@ try {
         { width: 390, height: 844 },
         theme,
       );
-      const colors = await page.evaluate(() => {
+      const links = await page.evaluate(() => {
         const probe = document.createElement("span");
         probe.style.color = "var(--color-primary)";
         document.body.append(probe);
@@ -160,13 +161,25 @@ try {
         return [...document.querySelectorAll("a:not([class])")]
           .filter((a) => a.getBoundingClientRect().width > 0)
           .map((a) => ({
-            text: a.textContent,
-            ok: getComputedStyle(a).color === primary,
+            text: a.textContent ?? "",
+            color: getComputedStyle(a).color,
+            primary,
           }));
       });
-      check(colors.length > 0, `${id} ${theme}: has a bare link to check`);
-      for (const link of colors)
-        check(link.ok, `${id} ${theme}: "${link.text}" is not brand ink`);
+      check(links.length > 0, `${id} ${theme}: has a bare link to check`);
+      for (const link of links) {
+        check(
+          !["rgb(0, 0, 238)", "rgb(85, 26, 139)"].includes(link.color),
+          `${id} ${theme}: "${link.text}" uses the browser's link color`,
+        );
+      }
+      // The links this review moved off browser blue use the brand ink.
+      const brand = id === "landing" ? "support@corpora.inc" : "Other programs";
+      const fixed = links.find((l) => l.text === brand);
+      check(
+        fixed && fixed.color === fixed.primary,
+        `${id} ${theme}: "${brand}" is not brand ink`,
+      );
       await context.close();
     }
 

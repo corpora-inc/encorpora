@@ -1303,7 +1303,8 @@ html:has(.shell.flow)::-webkit-scrollbar {
 .home-birth-year,
 .lesson-sheet-bar .text-button,
 .lesson-reader .card-top .text-button,
-.book-list .text-button {
+.book-list .text-button,
+.birth-year > .text-button {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -1452,6 +1453,7 @@ html[data-input="pointer"] :focus-visible {
     display: none;
   }
 }
+
 .answer-dock > div > .practice-tools {
   margin-top: 8px;
 }
@@ -2308,5 +2310,22 @@ html[data-input="pointer"] :focus-visible {
     min-height: 0;
     max-height: calc(100dvh - 88px);
     overflow: auto;
+  }
+}
+/* The narrowest cards (a 320px phone inside the assessment card) leave the
+   track under 120px beside the names, too little for its end labels. There
+   each name sits above a full-width track. Last in the file, so it wins over
+   the 360px viewport rule. */
+@container (max-width: 300px) {
+  .frontier-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+  .frontier-axis,
+  .frontier-detail {
+    margin-left: 0;
+  }
+  .frontier-axis span:nth-child(2) {
+    display: block;
   }
 }
