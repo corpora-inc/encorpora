@@ -1,35 +1,66 @@
 import type { Lesson } from "./lessons.js";
+/** Glossary readings for the grade 6 and 8 graph lessons. */
+const GRID_SENSES = {
+  side: "side-of-equation",
+  sides: "side-of-equation",
+  term: "term-expression",
+  terms: "term-expression",
+  unit: "unit",
+  units: "unit",
+  difference: "difference-subtract",
+  square: "square-shape",
+  squares: "square-shape",
+} as const;
+const GRID_NO_LINK = [
+  "whole",
+  "part",
+  "parts",
+  "change",
+  "changes",
+  "opposite",
+  "opposite sides",
+  "mean",
+  "means",
+  "rule",
+  "center",
+  "scale",
+  "rules",
+];
+
 export const graphicalLessons: Lesson[] = [
   {
     id: "coordinate-reading",
     title: "Read a point on a coordinate grid",
     summary:
-      "Read how far a point lies across from zero and how far it lies up or down.",
+      "A number line is a line with evenly spaced numbers. A coordinate grid has two of them that cross at 0: one going across and one going up and down. A point is an exact spot on the grid, named by two numbers written $(x, y)$. Start at the crossing point. The first number, $x$, says how far across (left if negative). The second, $y$, says how far up (down if negative).",
     templateIds: ["coordinate-point-reading"],
+    senses: GRID_SENSES,
+    noLink: GRID_NO_LINK,
     objectives: [
-      "Identify horizontal and vertical coordinates.",
-      "Interpret positive negative and zero coordinates.",
+      "Tell the across number ($x$) of a point from its up-and-down number ($y$).",
+      "Read positive, negative and zero coordinates from a grid.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Two scales locate one point",
         paragraphs: [
-          "The origin is where the two number lines cross at zero. A point's $x$-coordinate tells how far it is left or right of that origin; its $y$-coordinate tells how far it is up or down. Read the two scales separately.",
+          "A coordinate grid has two number lines. The across line is called the $x$-axis, and the up-and-down line is called the $y$-axis. They cross at 0. That crossing point is called the origin.",
+          "A point's $x$-coordinate tells how far it is to the right or left of the origin. Its $y$-coordinate tells how far it is up or down. Read the two number lines one at a time.",
         ],
       },
       {
         title: "Start at the origin",
         paragraphs: [
-          "The origin is where the two zero lines meet. In an ordered pair ($x$, $y$), $x$ describes horizontal position and $y$ describes vertical position.",
-          "Follow the horizontal scale to locate $x$. Positive values are to the right and negative values are to the left. Then use the vertical scale: positive values go up and negative values go down.",
+          "A point is written as an ordered pair $(x, y)$: two numbers in a set order, across first and up-and-down second. The order matters, because $(2, 3)$ and $(3, 2)$ are different points.",
+          "To read $x$, follow the across line. Numbers to the right of the origin are positive, and numbers to the left are negative, less than 0. Then read $y$ on the up-and-down line. Up is positive and down is negative.",
         ],
       },
       {
         title: "Read the requested coordinate",
         paragraphs: [
-          "For a point at (−3, 2), the $x$-coordinate is −3 and the $y$-coordinate is 2. A question asking for just one coordinate needs one number, not both.",
-          "Check the grid scale before counting squares. These practice grids use one unit per step.",
+          "For the point $(-3, 2)$, the $x$-coordinate is $-3$ and the $y$-coordinate is 2. If a question asks for just one coordinate, give one number, not both.",
+          "Check how much each grid square stands for before counting squares. These practice grids use 1 for each square.",
         ],
       },
     ],
@@ -38,7 +69,7 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Coordinates and axes",
         paragraphs: [
-          "An ordered pair $(x,y)$ names a point's horizontal coordinate first and vertical coordinate second. Each axis has its own marked scale; read both positions relative to the shared origin.",
+          "An ordered pair $(x, y)$ names a point's across position first and its up-and-down position second. Each axis has its own number scale. Both positions are measured from the same origin, $(0, 0)$.",
         ],
       },
     ],
@@ -46,48 +77,51 @@ export const graphicalLessons: Lesson[] = [
       prompt:
         "Point $P$ is three units left and two units above the origin. What is its $x$-coordinate?",
       steps: [
-        "Left corresponds to negative horizontal values.",
-        "The horizontal position is −3; the vertical position is 2.",
+        "The $x$-coordinate is the across position. Left of the origin means a negative number, a number less than 0, so 3 units left is $-3$.",
+        "The point is at $(-3, 2)$: across $-3$, up 2. The question asks only for $x$, which is $-3$.",
       ],
       answer: "−3",
     },
     pitfalls: [
-      "Do not reverse $x$ and $y$.",
-      "A point on an axis has one coordinate equal to zero.",
+      "Do not swap $x$ and $y$. The across number comes first.",
+      "A point on an axis has one coordinate equal to 0.",
     ],
     parentGuide:
-      "Place a counter on graph paper and ask the learner to describe horizontal and vertical position separately.",
+      "Place a counter on graph paper and ask your learner to say the across position and the up-and-down position separately.",
   },
   {
     id: "graph-slope",
     title: "Slope measures change",
     summary:
-      "Slope compares a line's vertical change with its horizontal change.",
+      "The slope of a line says how steep it is. Pick two points on the line with different across positions. The rise is how far up you go between them (negative if you go down). The run is how far across you go. The slope is the rise divided by the run. A line going up to the right has a positive slope; going down, negative.",
     templateIds: ["graphed-line-slope"],
+    senses: GRID_SENSES,
+    noLink: GRID_NO_LINK,
     objectives: [
-      "Read two points from a graph.",
-      "Compute an exact signed slope.",
+      "Read the coordinates of two points from a graph.",
+      "Work out the exact slope, with its sign, as a fraction.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Count up compared with across",
         paragraphs: [
-          "A line may rise three units while moving two units right. Its slope is the vertical change divided by the horizontal change, here three divided by two. A point written (−2, 1) lies two units left and one unit up from zero.",
+          "A point is written $(x, y)$. Start at $(0, 0)$, the origin, where the two axes cross. Go across $x$ (left if negative), then up $y$ (down if negative). So $(-2, 1)$ is 2 units left and 1 unit up.",
+          "Say a line rises 3 units while it moves 2 units right. Its slope is the up-and-down change divided by the across change: 3 divided by 2, or $\\frac{3}{2}$. A slope farther from 0, such as 3 or $-3$, means a steeper line.",
         ],
       },
       {
         title: "Use the same direction twice",
         paragraphs: [
-          "Choose a starting point and an ending point. Subtract their $y$-coordinates to find vertical change, then subtract their $x$-coordinates in the same order to find horizontal change.",
-          "Slope is vertical change divided by horizontal change. Moving right along a rising line gives a positive slope; moving right along a falling line gives a negative slope.",
+          "Choose a starting point and an ending point on the line. Subtract their $y$-coordinates to find the up-and-down change, called the rise. Subtract their $x$-coordinates in the same order to find the across change, called the run.",
+          "Slope is the rise divided by the run. Moving right along a line that goes up gives a positive slope. Moving right along a line that goes down gives a negative slope.",
         ],
       },
       {
         title: "Keep the ratio exact",
         paragraphs: [
-          "A rise of three units over a run of four units gives slope 3/4. Fractions can express slope exactly without rounding.",
-          "A horizontal line has zero vertical change and slope zero. A vertical line has zero horizontal change and undefined slope; these practice questions use distinct horizontal coordinates.",
+          "A rise of 3 units over a run of 4 units gives a slope of $\\frac{3}{4}$. A fraction gives the slope exactly, with no rounding.",
+          "A flat (horizontal) line has no rise, so its slope is 0. A straight up-and-down (vertical) line has no run, and you cannot divide by 0, so its slope is undefined. The practice questions always use two points with different $x$-coordinates.",
         ],
       },
     ],
@@ -96,25 +130,25 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Rate of change on a graph",
         paragraphs: [
-          "For two points on a nonvertical line with distinct horizontal coordinates, slope is vertical change divided by horizontal change. Using the same start and end for both changes makes the ratio independent of which two points on that line are chosen.",
+          "For two points on a line that is not vertical, with different $x$-coordinates, the slope is the change in $y$ divided by the change in $x$. Use the same start and end for both changes. Then any two different points on the line give the same slope.",
         ],
       },
     ],
     workedExample: {
       prompt: "A line passes through (−2, 1) and (2, 3). Find its slope.",
       steps: [
-        "Vertical change: 3 − 1 = 2.",
-        "Horizontal change: 2 − (−2) = 4.",
-        "Divide: 2/4 = 1/2.",
+        "Start at $(-2, 1)$ and end at $(2, 3)$. The rise is the change in $y$: $3 - 1 = 2$.",
+        "The run is the change in $x$, in the same order: $2 - (-2) = 2 + 2 = 4$.",
+        "Divide the rise by the run: $\\frac{2}{4} = \\frac{1}{2}$. The slope is positive because the line goes up to the right.",
       ],
       answer: "1/2",
     },
     pitfalls: [
-      "Subtract both coordinates in the same point order.",
-      "Use changes between points, not either point’s $y$/$x$ ratio.",
+      "Subtract both coordinates in the same order: if you start with $(2, 3)$ for $y$, start with it for $x$ too.",
+      "Use the changes between two points, not one point's $y$ divided by its $x$.",
     ],
     parentGuide:
-      "Ask the learner to trace a horizontal move and a vertical move between the two plotted points.",
+      "Ask your learner to trace the across move and then the up-or-down move between the two plotted points, and say each length.",
   },
   {
     id: "bar-chart-totals",
@@ -289,32 +323,35 @@ export const graphicalLessons: Lesson[] = [
     id: "number-line-separation",
     title: "Distance between signed numbers",
     summary:
-      "The spaces between two points show how far apart the numbers are.",
+      "A number line shows numbers in order, with tick marks (short lines) evenly spaced and negative numbers (the numbers less than 0) to the left of 0. When neighboring ticks are 1 apart, each space is one unit. The distance between two numbers is how many units apart they are. Count the spaces between them, not the tick marks. A distance is never negative.",
     templateIds: ["number-line-distance"],
+    senses: GRID_SENSES,
+    noLink: GRID_NO_LINK,
     objectives: [
-      "Locate signed integers.",
-      "Calculate a nonnegative distance.",
+      "Find positive and negative whole numbers on a number line.",
+      "Work out the distance between two of them, which is never negative.",
     ],
     sections: [
       {
         stage: "intuition",
         title: "Count the spaces between points",
         paragraphs: [
-          "From negative two to three, move two spaces to zero and three more to three. The points are five units apart. Count intervals, not the printed labels you pass.",
+          "A number line has evenly spaced marks, called ticks, with 0 in the middle. Negative numbers sit to the left of 0 and positive numbers to the right.",
+          "From $-2$ to 3, move 2 spaces to reach 0, then 3 more to reach 3. So the points are $2 + 3 = 5$ units apart. Count the spaces you move across, not the labels you pass.",
         ],
       },
       {
         title: "Count spaces between locations",
         paragraphs: [
-          "Each tick marks a number. The distance between neighboring ticks is one unit. Count the spaces traveled, not the number of tick marks you see.",
-          "If one point is left of zero and the other is right of zero, travel to zero and then continue to the other point. Add those two distances.",
+          "Each tick marks a number. Here the distance between neighboring ticks is one unit. Count the spaces traveled, not the tick marks you see: from 1 to 4 passes 4 ticks but only 3 spaces.",
+          "If one point is left of 0 and the other is right of 0, travel to 0 first. Then keep going to the other point. Add those two distances.",
         ],
       },
       {
         title: "Subtract positions",
         paragraphs: [
-          "Subtract the left point from the right point to get their distance. Equivalently, use the absolute value of the difference in either order.",
-          "Distance has no direction, so it cannot be negative. The distance from −3 to 4 equals the distance from 4 to −3.",
+          "You can also subtract: the right point minus the left point gives the distance. For $-3$ and 4, that is $4 - (-3) = 4 + 3 = 7$.",
+          "Distance has no direction, so it cannot be negative. The distance from $-3$ to 4 is the same as the distance from 4 to $-3$. The size of a number without its sign is called its absolute value, written with bars: $|-7| = 7$. So subtracting in either order and taking the absolute value also works.",
         ],
       },
     ],
@@ -323,24 +360,24 @@ export const graphicalLessons: Lesson[] = [
         stage: "formal",
         title: "Distance on a number line",
         paragraphs: [
-          "For positions $a$ and $b$ on a number line with equal units, their separation is $|b-a|$. This nonnegative distance counts intervals between the positions, regardless of which one is farther right.",
+          "For numbers $a$ and $b$ on a number line with equal spaces, the distance between them is $|b - a|$, the size of their difference without its sign. When each space is one unit, it counts the spaces between them, whichever one is farther right. It is never negative.",
         ],
       },
     ],
     workedExample: {
       prompt: "What is the distance between −3 and 4?",
       steps: [
-        "From −3 to 0 is 3 units.",
-        "From 0 to 4 is 4 units.",
-        "3 + 4 = 7 units.",
+        "The numbers are on opposite sides of 0, so go through 0. From $-3$ to 0 is 3 units.",
+        "From 0 to 4 is 4 more units.",
+        "Add the two parts: $3 + 4 = 7$ units.",
       ],
       answer: "7",
     },
     pitfalls: [
-      "Do not count both endpoint ticks as extra units.",
-      "A negative position can have a positive distance from another position.",
+      "Do not count the end ticks as extra units. Count spaces, not ticks.",
+      "A negative number can be a positive distance from another number. The distance is never negative.",
     ],
     parentGuide:
-      "Draw a number line and move a counter one interval per step, including journeys across zero.",
+      "Draw a number line and move a counter one space at a time, including trips across 0. Count the moves aloud.",
   },
 ];
