@@ -169,7 +169,7 @@ export const exponentialLessons: Lesson[] = [
         title: "Match the exponents",
         paragraphs: [
           "Two powers of the same base are equal only when their exponents are equal. So if $2^{2x} = 2^5$, then $2x = 5$, and $x = \\tfrac{5}{2}$. This works for any base that is positive and not 1. A base of 1 fails, because $1^2$ and $1^5$ are both 1.",
-          "Often the bases look different at first. $4^x = 32$ has no whole-number answer, but 4 is $2^2$ and 32 is $2^5$. A power of a power multiplies the exponents: $(2^2)^x = 2^{2x}$. For $x = 1, 2, 3$ and so on, you can see why: $x$ copies of $2 \\times 2$ make $2x$ twos. The rule holds for every exponent. So $4^x = 32$ becomes $2^{2x} = 2^5$, and $x = \\tfrac{5}{2}$.",
+          "Often the bases look different at first. $4^x = 32$ has no whole-number answer, but 4 is $2^2$ and 32 is $2^5$. A power of a power multiplies the exponents: $(2^2)^x = 2^{2x}$. For $x = 1, 2, 3$ and so on, you can see why: $x$ copies of $2 \\times 2$ make $2x$ twos. The same holds for every exponent. So $4^x = 32$ becomes $2^{2x} = 2^5$, and $x = \\tfrac{5}{2}$.",
           "A fraction like $\\tfrac{1}{8}$ is also a power of 2. A negative exponent means one divided by the power: $2^{-3} = \\tfrac{1}{2^3} = \\tfrac{1}{8}$.",
         ],
       },
