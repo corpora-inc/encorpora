@@ -188,9 +188,15 @@ export const normalProbability = chainFamily({
         ],
         hint: `Find the area under the normal curve with mean ${fmt(m.mu)} and standard deviation ${fmt(m.sigma)} below ${fmt(m.b)}, then subtract the area below ${fmt(m.a)}.`,
         explanation: [
+          `A normal distribution is the bell-shaped pattern where most values sit near the mean, the average, and fewer sit far from it.`,
+          `The standard deviation, here ${fmt(m.sigma)} ${spec.unit}, is the typical distance of a value from the mean.`,
+          `A $z$-score counts how many standard deviations a value is from the mean. Subtract the mean, then divide by the standard deviation.`,
           `$z$-scores: $z_{${fmt(m.a)}}=\\frac{${fmt(m.a)}-${fmt(m.mu)}}{${fmt(m.sigma)}}=${z(m.a).toFixed(2)}$ and $z_{${fmt(m.b)}}=\\frac{${fmt(m.b)}-${fmt(m.mu)}}{${fmt(m.sigma)}}=${z(m.b).toFixed(2)}$.`,
+          `A calculator or table gives the area under the curve to the left of a $z$-score. That area is the fraction of values below it.`,
           `Area below ${fmt(m.b)}: $${normalCdf(z(m.b)).toFixed(4)}$. Area below ${fmt(m.a)}: $${normalCdf(z(m.a)).toFixed(4)}$.`,
+          `The values between ${fmt(m.a)} and ${fmt(m.b)} are the values below ${fmt(m.b)} minus the values below ${fmt(m.a)}.`,
           `The percent between them is $${normalCdf(z(m.b)).toFixed(4)}-${normalCdf(z(m.a)).toFixed(4)}\\approx${(P * 100).toFixed(1)}\\%$.`,
+          `About ${(P * 100).toFixed(1)}% of these ${spec.what.split(" ")[0]} are between ${fmt(m.a)} and ${fmt(m.b)} ${spec.unit}.`,
         ],
       });
     }
@@ -227,9 +233,15 @@ export const normalProbability = chainFamily({
       ],
       hint: `Find the $z$-score of ${fmt(m.a)} using the mean ${fmt(m.mu)} and standard deviation ${fmt(m.sigma)}, find the area above it, and multiply by ${withCommas(m.n)}.`,
       explanation: [
+        `A normal distribution is the bell-shaped pattern where most values sit near the mean, the average, and fewer sit far from it.`,
+        `A $z$-score counts how many standard deviations, typical distances from the mean, a value lies from the mean. Subtract the mean, then divide by the standard deviation.`,
         `$z=\\frac{${fmt(m.a)}-${fmt(m.mu)}}{${fmt(m.sigma)}}=${zz.toFixed(2)}$.`,
+        `A calculator or table gives the area to the left of a $z$-score, the fraction of values below it. Here that area is $${normalCdf(zz).toFixed(4)}$.`,
+        `The whole area under the curve is 1, so the area to the right is 1 minus the area to the left.`,
         `The area above this $z$-score is $1-${normalCdf(zz).toFixed(4)}=${(1 - normalCdf(zz)).toFixed(4)}$.`,
+        `Multiply that fraction by the sample size to estimate the count.`,
         `Expected count: $${withCommas(m.n)}\\times${(1 - normalCdf(zz)).toFixed(4)}\\approx${withCommas(count(1 - normalCdf(zz)))}$.`,
+        `About ${withCommas(count(1 - normalCdf(zz)))} of the ${withCommas(m.n)} values are greater than ${fmt(m.a)} ${spec.unit}.`,
       ],
     });
   },
@@ -307,7 +319,7 @@ export const tangentQuadrantCosine = chainFamily({
         {
           label: sec(cosNeg),
           feedback:
-            "This is the reciprocal of cosine, $\\sec\\theta$. Cosine is adjacent over hypotenuse.",
+            "This is the reciprocal of cosine, $\\sec\\theta$: the hypotenuse divided by the adjacent side. Cosine is the adjacent side divided by the hypotenuse.",
         },
         ...(exact
           ? []
@@ -320,9 +332,17 @@ export const tangentQuadrantCosine = chainFamily({
       ],
       hint: `Draw a reference right triangle with opposite side ${a} and adjacent side ${b}, find its hypotenuse, and then decide the sign of cosine from Quadrant ${quad}.`,
       explanation: [
-        `$\\tan\\theta=\\frac{\\text{opposite}}{\\text{adjacent}}$, so use legs ${a} and ${b}. The hypotenuse is $\\sqrt{${a}^2+${b}^2}=${exact ? root : `\\sqrt{${n}}`}$.`,
-        `The magnitude of $\\cos\\theta$ is $\\frac{${b}}{${exact ? root : `\\sqrt{${n}}`}}${exact ? "" : `=\\frac{${b}\\sqrt{${n}}}{${n}}`}$.`,
-        `In Quadrant ${quad} cosine is ${cosNeg ? "negative" : "positive"}, so ${cos(cosNeg).replace(/^\$/, "$\\cos\\theta = ")}.`,
+        `In a right triangle, the tangent of an angle is the opposite side divided by the adjacent side: $\\tan\\theta=\\frac{\\text{opposite}}{\\text{adjacent}}$.`,
+        `So draw a reference triangle, the right triangle the angle makes with the $x$-axis, with opposite side ${a} and adjacent side ${b}.${tanNeg ? " Side lengths are positive, so set the minus sign aside for now." : ""}`,
+        `The Pythagorean theorem says the two legs squared add up to the hypotenuse squared. The hypotenuse, the longest side, is $\\sqrt{${a}^2+${b}^2}=${exact ? root : `\\sqrt{${n}}`}$.`,
+        `Cosine is the adjacent side divided by the hypotenuse. So the size of $\\cos\\theta$ is $\\frac{${b}}{${exact ? root : `\\sqrt{${n}}`}}$.`,
+        ...(exact
+          ? []
+          : [
+              `Multiply the top and bottom by $\\sqrt{${n}}$ to clear the square root from the bottom: $\\frac{${b}}{\\sqrt{${n}}}=\\frac{${b === 1 ? "" : b}\\sqrt{${n}}}{${n}}$.`,
+            ]),
+        `In Quadrant ${quad}, $x$-values are ${cosNeg ? "negative" : "positive"}. Cosine has the sign of the $x$-value, so cosine is ${cosNeg ? "negative" : "positive"} there.`,
+        `So ${cos(cosNeg).replace(/^\$/, "$\\cos\\theta = ")}.`,
       ],
     });
   },
@@ -450,14 +470,17 @@ export const specialAngleMatch = chainFamily({
         { label: `$${exprTex(m.correct)}$`, correct: true },
         ...bad.map((e) => ({
           label: `$${exprTex(e)}$`,
-          feedback: `$${exprTex(e)}=${exprValueTex(e)}$, but $${exprTex(m.target)}=${tv}$.`,
+          feedback: `$${exprTex(e)}=${exprValueTex(e)}$, but $${exprTex(m.target)}=${tv}$. Check the size at the reference angle and the sign in its quadrant.`,
         })),
       ],
       hint: `Find the reference angle of $${angleTex[m.target.angle]}$ and the sign of ${m.target.fn === "sin" ? "sine" : "cosine"} in Quadrant II. Then compare each choice by its exact value.`,
       explanation: [
-        `The angle $${angleTex[m.target.angle]}$ is in Quadrant II. Its reference angle is $${angleTex[partner[m.target.angle]!]}$.`,
-        `In Quadrant II sine is positive and cosine is negative, so $${exprTex(m.target)}=${tv}$.`,
-        `The choice $${exprTex(m.correct)}$ equals $${exprValueTex(m.correct)}$, the same value.`,
+        `The angle $${angleTex[m.target.angle]}$ is between $\\frac{\\pi}{2}$ and $\\pi$, so it is in Quadrant II, the upper left part of the plane.`,
+        `Its reference angle, the acute angle back to the $x$-axis, is $${angleTex[partner[m.target.angle]!]}$, because $\\pi$ minus $${angleTex[m.target.angle]}$ leaves $${angleTex[partner[m.target.angle]!]}$.`,
+        `Sine and cosine have the same size as at the reference angle. Only the sign can change.`,
+        `In Quadrant II, sine (the $y$-value) is positive and cosine (the $x$-value) is negative. So $${exprTex(m.target)}=${tv}$.`,
+        `Now find the exact value of each choice and compare. The choice $${exprTex(m.correct)}$ equals $${exprValueTex(m.correct)}$, the same value.`,
+        `The correct choice is $${exprTex(m.correct)}$, because it also equals $${tv}$.`,
       ],
     });
   },
@@ -515,9 +538,14 @@ export const oddSineParameters = chainFamily({
       ],
       hint: `An odd function satisfies $f(-x)=-f(x)$, so its graph passes through the origin. Test $f(0)=${A < 0 ? "-" : ""}${Math.abs(A)}\\sin(-C)+D$ and compare $f(-x)$ with $-f(x)$.`,
       explanation: [
-        `For an odd function, $f(0)=0$. Sine is odd, so $\\sin(${m.B}x)$ is odd and $${rule.replace("-C", "").replace("+D", "")}$ is odd.`,
-        `A vertical shift $D\\ne0$ breaks oddness because $f(0)=D$. A phase shift $C=\\frac{\\pi}{2}$ turns sine into cosine, which is even.`,
+        `An odd function is one where $f(-x)=-f(x)$ for every $x$. Its graph looks the same after a half turn about the origin, the point (0, 0).`,
+        `Put $x=0$ into that rule: $f(0)=-f(0)$. Only 0 equals its own opposite, so an odd function has $f(0)=0$.`,
+        `Sine is odd, because $\\sin(-x)=-\\sin(x)$. So with no shifts, $${rule.replace("-C", "").replace("+D", "")}$ is odd.`,
+        `$D$ is a vertical shift, a slide up or down. If $D\\ne0$, then $f(0)=D$, not 0, so the function is not odd.`,
+        `$C$ is a phase shift, a slide left or right. With $C=\\frac{\\pi}{2}$, sine turns into cosine, which is even: $f(-x)=f(x)$.`,
+        `The other nonzero choices for $C$ make $\\sin(-C)$ nonzero, so $f(0)$ is not 0 even when $D=0$.`,
         "So both shifts must be 0: $C=0$ and $D=0$.",
+        "The function is odd when $C=0$ and $D=0$.",
       ],
     });
   },
@@ -588,9 +616,12 @@ export const parabolaVertexDistance = chainFamily({
       ],
       hint: `The vertex lies on $${axisLine}$ halfway between the directrix $${line}$ and the focus, which is ${m.f} units from the directrix. Find the point ${unitsOf(m.f / 2)} from the directrix on the focus's side.`,
       explanation: [
-        `The axis of symmetry is the line through the focus perpendicular to the directrix: $${axisLine}$.`,
-        `The vertex is halfway between the directrix and the focus, a distance of ${unitsOf(m.f / 2)} from the directrix, ${side} it.`,
+        `A parabola is every point that is the same distance from a fixed point, the focus, and a fixed line, the directrix.`,
+        `The vertex, the turning point, is on the parabola. So it is equally far from the focus and the directrix, which puts it halfway between them.`,
+        `The axis of symmetry, the mirror line of the parabola, goes through the focus at a right angle to the directrix: $${axisLine}$. The vertex lies on it.`,
+        `Half of ${m.f} units is ${unitsOf(m.f / 2)}. So the vertex is ${unitsOf(m.f / 2)} from the directrix, ${side} it, on the focus's side.`,
         `That gives the ${horiz ? `$y$-coordinate $${m.d}${s > 0 ? "+" : "-"}${m.f / 2}=${num(correct)}$` : `$x$-coordinate $${m.d}${s > 0 ? "+" : "-"}${m.f / 2}=${num(correct)}$`}, so the vertex is ${make(correct)}.`,
+        `The vertex of the parabola is the point ${make(correct)}.`,
       ],
     });
   },
@@ -667,9 +698,18 @@ export const eventComplementSet = chainFamily({
           s: m.A,
           f: "These are the members of $A$ itself. The complement lists the members of the sample space that are not in $A$.",
         },
-        { s: comp(m.B), f: "This is the complement of $B$, not of $A$." },
-        { s: union(m.A, m.B), f: "This is the union of $A$ and $B$." },
-        { s: inter(m.A, m.B), f: "This is the intersection of $A$ and $B$." },
+        {
+          s: comp(m.B),
+          f: "This is the complement of $B$, the members not in $B$. The question asks for the members not in $A$.",
+        },
+        {
+          s: union(m.A, m.B),
+          f: "This is the union of $A$ and $B$, the members in either set. The complement of $A$ keeps only the members not in $A$.",
+        },
+        {
+          s: inter(m.A, m.B),
+          f: "This is the intersection of $A$ and $B$, the members in both sets. The complement of $A$ keeps only the members not in $A$.",
+        },
       ];
     } else if (m.ask === "complement-of-union") {
       target = comp(union(m.A, m.B));
@@ -728,12 +768,16 @@ export const eventComplementSet = chainFamily({
       options,
       hint: `Go through the ${U.length} members of $S$ one at a time, starting with ${U[0]}. $A$ = ${setA} and $B$ = ${setB}; keep the members that are ${m.ask === "complement" ? "not in $A$" : m.ask === "complement-of-union" ? "in neither $A$ nor $B$" : "not in both $A$ and $B$"}.`,
       explanation: [
+        `The sample space $S$ lists every possible outcome. An event, like $A$, is a smaller set of those outcomes.`,
+        `The complement of a set, written with a prime mark like $A'$, holds every member of $S$ that is not in that set.`,
         m.ask === "complement"
           ? `$A'$ contains every member of $S$ that is not in $A$.`
           : m.ask === "complement-of-union"
-            ? `First $A\\cup B$ = ${show(union(m.A, m.B))}. Its complement contains the members of $S$ outside that set.`
-            : `First $A\\cap B$ = ${show(inter(m.A, m.B))}. Its complement contains the members of $S$ outside that set.`,
+            ? `The union $A\\cup B$ holds every member that is in $A$, in $B$, or in both. First $A\\cup B$ = ${show(union(m.A, m.B))}. Its complement contains the members of $S$ outside that set.`
+            : `The intersection $A\\cap B$ holds only the members that are in both $A$ and $B$. First $A\\cap B$ = ${show(inter(m.A, m.B))}. Its complement contains the members of $S$ outside that set.`,
+        `Go through the ${U.length} members of $S$ one at a time and keep each one that is outside that set.`,
         `Checking each member of $S$ gives $${question}$ = ${show(target)}.`,
+        `So $${question}$ is the set ${show(target)}.`,
       ],
     });
   },

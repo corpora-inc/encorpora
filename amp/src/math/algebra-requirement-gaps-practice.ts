@@ -117,6 +117,30 @@ type Spec = {
   wrong: Wrong[];
 };
 
+/** One plain opener per template: the key idea, every term defined. */
+const OPENERS: Record<string, string> = {
+  "arithmetic-sequence-as-function":
+    'A sequence is an ordered list of numbers. An arithmetic sequence adds the same number, the common difference, at each step. As a function, $a(n)$, read "$a$ of $n$", is the term in position $n$.',
+  "geometric-sequence-as-function":
+    'A sequence is an ordered list of numbers. A geometric sequence multiplies by the same number, the common ratio, at each step. As a function, $a(n)$, read "$a$ of $n$", is the term in position $n$.',
+  "geometric-rule-forms":
+    "A geometric sequence multiplies each term by the same number, the common ratio, to get the next term. An explicit rule finds any term from its position $n$. A recursive rule gives the first term and how to get each term from the one before.",
+  "solve-by-completing-square":
+    "Completing the square means adding the same number to both sides so that the left side becomes a perfect square, a bracket multiplied by itself. Then a square root undoes the square.",
+  "complex-quadratic-solve":
+    "No real number squares to a negative number. The imaginary unit $i$ is the number whose square is −1, so the square root of a negative number is a real number times $i$.",
+  "complex-parts":
+    "The imaginary unit $i$ is the number whose square is −1. A complex number has a real part and an imaginary part, the real number multiplying $i$.",
+  "interpret-linear-parameters":
+    "In a linear model, the number multiplying the variable is the rate of change, the change for each one-unit step in the input. The constant term is the initial value, the output when the input is 0.",
+  "quadratic-form-conversion":
+    "A quadratic function can be written in several equivalent forms. Factored form shows the zeros, where the graph meets the $x$-axis. Vertex form shows the vertex, the turning point of the parabola.",
+  "rational-extraneous-single":
+    "A value that makes a denominator, the bottom of a fraction, equal 0 is never allowed. An extraneous candidate is a value that the algebra produces but that does not solve the original equation.",
+  "square-root-extraneous":
+    "The square root sign means the principal square root, which is never negative. Squaring both sides can add extraneous candidates, values that solve the squared equation but not the original, so check each one.",
+};
+
 function build(
   meta: TemplateMetadata,
   seed: string,
@@ -141,7 +165,10 @@ function build(
     prompt: spec.prompt,
     answer: "",
     hint: spec.hint,
-    explanation: spec.explanation,
+    explanation: [
+      ...(OPENERS[meta.id] ? [OPENERS[meta.id]!] : []),
+      ...spec.explanation,
+    ],
     choices: [
       { label: spec.correct, correct: true },
       ...wrong.slice(0, 3).map(({ label, feedback }) => ({ label, feedback })),
@@ -237,7 +264,8 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
       explanation: [
         `The input of $a$ is the position $n$ of a term, and the setup lists positions $1,2,3,\\ldots$.`,
         `A list has a first, second, third term and so on, but no term at a fraction, zero or a negative position.`,
-        `The domain is the set of positive integers. The values $${listing},\\ldots$ are outputs, not inputs.`,
+        `The values $${listing},\\ldots$ are outputs, the terms, not inputs.`,
+        `So the domain of $a$, the set of allowed inputs, is the positive integers $1, 2, 3, \\ldots$.`,
       ],
       correct: "The positive integers $1, 2, 3, \\ldots$",
       wrong: [
@@ -281,6 +309,7 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
         `$a(${k})$ means the term in position ${k}: substitute $n=${k}$.`,
         `$a(${k})=${kind === "arithmetic" ? `${seq.first} ${seq.step < 0 ? "-" : "+"} ${Math.abs(seq.step)}(${k - 1})` : `${seq.first}\\cdot ${seq.step < 0 ? `(${seq.step})` : seq.step}^{${k - 1}}`}=${value}$.`,
         `Check by the pattern: the terms begin $${listing},\\ldots$, and position ${k} is ${value}.`,
+        `So $a(${k})$ is ${value}.`,
       ],
       correct: tex(`${value}`),
       wrong: [
@@ -326,7 +355,8 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
           (n) =>
             `$a(${n})$ is defined: the sequence has a term in position $${n}$, and $a(${n})=${t(n)}$.`,
         ),
-        `$a(${bad})$ is undefined: ${bad} is not a positive integer, so there is no term in position ${bad}.`,
+        `$a(${bad})$ is undefined, meaning it has no value: ${bad} is not a positive integer, so there is no term in position ${bad}.`,
+        `So $a(${bad})$ is the expression with no value.`,
       ],
       correct: tex(`a(${bad})`),
       wrong: ints.map((n) => ({
@@ -349,6 +379,7 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
         kind === "arithmetic"
           ? `Each step changes the output by the same amount, ${seq.step}, so the separate points lie on one line. The line itself is not part of the graph.`
           : `Each step multiplies the output by ${seq.step}, so the heights do not change by a constant amount: the separate points do not lie on one line.`,
+        "So the graph is a set of separate points, one for each position, with nothing between them.",
       ],
       correct,
       wrong: [
@@ -407,6 +438,7 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
             `Compute neighboring terms: $a(${k - 1})=${before}$, $a(${k})=${lo}$ and $a(${k + 1})=${hi}$.`,
             `$a(${k})=${target}$, so position ${k} produces $${target}$.`,
             `A value is a term when some position $n=1,2,3,\\ldots$ gives it. Here $n=${k}$, so the answer is yes.`,
+            `So $${target}$ is a term of this sequence, in position ${k}.`,
           ],
           correct: `Yes. ${tex(`a(${k})=${target}`)}.`,
           wrong: [
@@ -431,6 +463,7 @@ function sequenceFunctionCase(meta: TemplateMetadata, seed: string) {
             `Compute neighboring terms: $a(${k})=${lo}$ and $a(${k + 1})=${hi}$.`,
             `The target $${target}$ lies strictly between ${lo} and ${hi}, and the sequence moves in one direction, so no other term equals it.`,
             `There is no whole-number position between ${k} and ${k + 1}, so no term equals $${target}$. The answer is no.`,
+            `So $${target}$ is not a term of this sequence.`,
           ],
           correct: `No. ${tex(`${target}`)} lies between ${tex(`a(${k})=${lo}`)} and ${tex(`a(${k + 1})=${hi}`)}, and no position lies between ${k} and ${k + 1}.`,
           wrong: [
@@ -727,7 +760,8 @@ function solveByCompletingSquareCase(seed: string) {
           : [`Divide both sides by ${a}: ${tex(`${monic}=0`)}.`]),
         `Move the constant: $x^2${h === 0 ? "" : ` ${2 * h < 0 ? "-" : "+"} ${Math.abs(2 * h)}x`}=${-c}$.`,
         `Half of ${2 * h} is ${h}, and $${sqr(h)}=${h * h}$. Add ${h * h} to both sides: $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2=${rhs}$.`,
-        `Take both square roots: $x ${h < 0 ? "-" : "+"} ${Math.abs(h)}=\\pm ${k}$, so $x=${-h}\\pm ${k}$.`,
+        `Adding the square of half the $x$-coefficient, the number multiplying $x$, makes the left side a perfect square.`,
+        `Take both square roots, since a positive number has a positive and a negative square root: $x ${h < 0 ? "-" : "+"} ${Math.abs(h)}=\\pm ${k}$, so $x=${-h}\\pm ${k}$.`,
         `The solutions are $x=${-h + k}$ and $x=${-h - k}$.`,
       ],
       correct: rootPair(-h + k, -h - k),
@@ -768,8 +802,10 @@ function solveByCompletingSquareCase(seed: string) {
       explanation: [
         `Move the constant: $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x=${-c}$.`,
         `Add $${sqr(h)}=${h * h}$ to both sides: $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2=${m}$.`,
-        `Take square roots: $x ${h < 0 ? "-" : "+"} ${Math.abs(h)}=\\pm ${sqrtM}$. ${m} is not a perfect square, so keep the radical.`,
+        `Adding the square of half the $x$-coefficient, the number multiplying $x$, makes the left side a perfect square.`,
+        `Take square roots, both positive and negative: $x ${h < 0 ? "-" : "+"} ${Math.abs(h)}=\\pm ${sqrtM}$. ${m} is not a perfect square, so keep the radical, the square root sign.`,
         `Subtract the shift: $x=${-h}\\pm ${sqrtM}$.`,
+        `So the exact solutions are $x=${-h}\\pm ${sqrtM}$.`,
       ],
       correct: pm(-h, sqrtM),
       wrong: [
@@ -818,6 +854,7 @@ function solveByCompletingSquareCase(seed: string) {
         `Move the constant: $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x=${-c}$.`,
         `Half of ${2 * h} is ${h}; $${sqr(h)}=${h * h}$. Adding ${h * h} to both sides gives $x^2${2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h}=${-c}+${h * h}$.`,
         `The left side factors as $(x ${h < 0 ? "-" : "+"} ${Math.abs(h)})^2$ and the right side is ${rhs}: ${tex(lhs(rhs, h))}.`,
+        `So the equation that results is ${tex(lhs(rhs, h))}.`,
       ],
       correct: tex(lhs(rhs, h)),
       wrong: [
@@ -860,10 +897,11 @@ function solveByCompletingSquareCase(seed: string) {
       prompt: `Solve ${equation} by completing the square. Give the exact solutions.`,
       hint: `Move the constant ${c} to the right. Half of ${b} is $\\frac{${b}}{2}$; add its square, $\\frac{${b * b}}{4}$, to both sides.`,
       explanation: [
-        `Move the constant: $x^2${b < 0 ? "-" : "+"}${Math.abs(b)}x=${-c}$.`,
+        `Move the constant: $x^2${b < 0 ? "-" : "+"}${Math.abs(b) === 1 ? "" : Math.abs(b)}x=${-c}$.`,
         `Add $\\left(\\frac{${b}}{2}\\right)^2=\\frac{${b * b}}{4}$ to both sides: $\\left(x${b < 0 ? "-" : "+"}\\frac{${Math.abs(b)}}{2}\\right)^2=${-c}+\\frac{${b * b}}{4}=\\frac{${d}}{4}$.`,
         `Take square roots: $x${b < 0 ? "-" : "+"}\\frac{${Math.abs(b)}}{2}=\\pm\\frac{${sqrtD}}{2}$, since ${d} is not a perfect square.`,
         `Subtract the shift: ${sol(`${-b}`, sqrtD, 2)}.`,
+        `So the exact solutions are ${sol(`${-b}`, sqrtD, 2)}.`,
       ],
       correct: sol(`${-b}`, sqrtD, 2),
       wrong: [
@@ -1146,6 +1184,7 @@ function complexPartsCase(seed: string) {
       explanation: [
         `${e} divided by 4 leaves remainder ${rem}, so $i^{${e}}=${POWER_I[rem]}$.`,
         `Multiply: $${big}\\cdot ${POWER_I[rem]!.startsWith("-") ? `(${POWER_I[rem]})` : POWER_I[rem]}=${own.im === 0 ? own.re : `${own.im}i`}$.`,
+        `So in $a+bi$ form the value is ${cx(own)}.`,
       ],
       correct: cx(own),
       wrong: values
@@ -1461,7 +1500,7 @@ function interpretLinearParametersCase(seed: string) {
       explanation: [
         `The number ${m} multiplies the variable: ${slope.charAt(0).toLowerCase()}${slope.slice(1)}`,
         `The constant ${b} is the value when the variable is 0: ${initial.charAt(0).toLowerCase()}${initial.slice(1)}`,
-        "State each with its units.",
+        "Each number is stated with its units, so each sentence says what it measures.",
       ],
       correct: `${slopeShort} ${initialShort}`,
       wrong: [
@@ -1550,7 +1589,7 @@ function quadraticFormConversionCase(seed: string) {
       hint: `Factor ${a} out of the two $x$ terms of ${std}, complete the square inside the parentheses, then multiply the added number by ${a} before adjusting the constant.`,
       explanation: [
         `Factor ${a} from the $x$ terms: $y=${lead}(x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x)${plus(c)}$.`,
-        `Add and subtract inside: $${lead}(x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h})$ adds $${a}\\cdot ${h * h}=${a * h * h}$, so subtract $${a * h * h}$ outside: $y=${lead}(x${h > 0 ? "-" : "+"}${Math.abs(h)})^2${plus(c)}${minus(a * h * h)}$.`,
+        `Add and subtract inside: $${lead}(x^2${-2 * h < 0 ? "-" : "+"}${Math.abs(2 * h)}x+${h * h})$ adds $${a}\\cdot ${h * h}=${a * h * h}$, so ${a > 0 ? "subtract" : "add"} ${Math.abs(a * h * h)} outside to keep the value the same: $y=${lead}(x${h > 0 ? "-" : "+"}${Math.abs(h)})^2${plus(c)}${minus(a * h * h)}$.`,
         `Vertex form: ${tex(`y=${vertexForm(a, h, k)}`)}.`,
         a > 0
           ? `The squared term is never negative, so the minimum is the constant ${k}, reached at $x=${h}$.`
@@ -1606,6 +1645,7 @@ function quadraticFormConversionCase(seed: string) {
         `Look for two numbers with product ${p * q} and sum ${-(p + q)}: they are ${-p} and ${-q}.`,
         `Factor: ${tex(`y=(x${-p < 0 ? "-" : "+"}${Math.abs(p)})(x${-q < 0 ? "-" : "+"}${Math.abs(q)})`)}.`,
         `A product is zero only when a factor is zero: $x=${p}$ or $x=${q}$.`,
+        `So the zeros of the function are $x=${p}$ and $x=${q}$.`,
       ],
       correct: zeros(p, q),
       wrong: [
@@ -1762,14 +1802,14 @@ function rationalExtraneousSingleCase(seed: string) {
         hint: `Before trusting a solution from the cleared equation, substitute ${h} into the denominator $${den}$ of the original equation.`,
         explanation: [
           `The original denominator $${den}$ is 0 at $x=${h}$, so $x=${h}$ is not allowed in the original equation.`,
-          `Multiplying both sides by $${den}$ is a valid step only when $${den}\\ne 0$. Multiplying by an expression that is 0 at $x=${h}$ can make the cleared equation true there even though the original is undefined.`,
+          `Multiplying both sides by $${den}$ is a valid step only when $${den}\\ne 0$. Multiplying by an expression that is 0 at $x=${h}$ can make the cleared equation true there even though the original has no value there.`,
           `So $x=${h}$ is extraneous. It was the only candidate, so the original equation has no solution.`,
         ],
         correct: `It is extraneous: it makes the denominator $${den}$ equal to 0, so the equation has no solution.`,
         wrong: [
           {
             label: `It is a solution, because it satisfies the equation after the denominators are cleared.`,
-            feedback: `A value must satisfy the original equation. At $x=${h}$ the original has a zero denominator, so it is undefined.`,
+            feedback: `A value must satisfy the original equation. At $x=${h}$ the original has a zero denominator, so it has no value there.`,
           },
           {
             label: `It is a solution, and there is also a second solution that the student missed.`,
@@ -1790,6 +1830,7 @@ function rationalExtraneousSingleCase(seed: string) {
           `Multiply both sides by $${den}$: $${cleared}$.`,
           `Solving gives $x=${h}$ as the only candidate.`,
           `That value is excluded: it makes the denominator zero. It arises because multiplying by $${den}$ discards the condition $${den}\\ne 0$.`,
+          "So the equation has no solution: its only candidate is extraneous.",
         ],
         correct: noSolution(
           `The only candidate, $x=${h}$, makes the denominator zero.`,
@@ -1797,7 +1838,7 @@ function rationalExtraneousSingleCase(seed: string) {
         wrong: [
           {
             label: tex(`x=${h}`),
-            feedback: `$x=${h}$ makes $${den}$ equal 0, so the original equation is undefined there. Reject it.`,
+            feedback: `$x=${h}$ makes $${den}$ equal 0, so the original equation has no value there. Reject it.`,
           },
           {
             label: tex(`x=${-h}`),
@@ -1878,7 +1919,7 @@ function rationalExtraneousSingleCase(seed: string) {
       ? [
           {
             label: tex(`x=${hh}`),
-            feedback: `$x=${hh}$ makes the denominator zero, so the original equation is undefined there.`,
+            feedback: `$x=${hh}$ makes the denominator zero, so the original equation has no value there.`,
           },
           {
             label: tex(`x=${-hh}`),
@@ -1973,7 +2014,11 @@ function squareRootExtraneousCase(seed: string) {
       ? []
       : [`Isolate the square root: $\\sqrt{${radicand}}=${isolated}$.`]),
     `Square both sides: $${radicand}=${squaredRight}$. Rearranged, $0=${standard}$.`,
-    `Factor: $0=(x${lo < 0 ? "+" : "-"}${Math.abs(lo)})(x${hi < 0 ? "+" : "-"}${Math.abs(hi)})$, so the candidates are $x=${lo}$ and $x=${hi}$.`,
+    `Factor: $0=${[lo, hi]
+      .sort((u, v) => Number(v === 0) - Number(u === 0))
+      .map((z) => (z === 0 ? "x" : `(x${z < 0 ? "+" : "-"}${Math.abs(z)})`))
+      .join("")}$, so the candidates are $x=${lo}$ and $x=${hi}$.`,
+    "Check each candidate in the original equation, because squaring may have added one.",
     checkText(lo),
     checkText(hi),
   ];
@@ -2003,7 +2048,7 @@ function squareRootExtraneousCase(seed: string) {
         },
         {
           label: "There are no real solutions.",
-          feedback: `$x=${valid}$ satisfies the original equation: ${valid === lo ? checkText(lo) : checkText(hi)}`,
+          feedback: `$x=${valid}$ satisfies the original equation. ${valid === lo ? checkText(lo) : checkText(hi)}`,
         },
       ],
     };
@@ -2037,7 +2082,7 @@ function squareRootExtraneousCase(seed: string) {
       prompt: `To solve $\\sqrt{${radicand}}=${isolated}$, a student squares both sides and finds $x=${lo}$ and $x=${hi}$. Why must each candidate be checked in the original equation?`,
       hint: `Squaring turns $A=B$ into $A^2=B^2$. Ask what other equation than $\\sqrt{${radicand}}=${isolated}$ also has the same square.`,
       explanation: [
-        `Squaring gives $(\\sqrt{${radicand}})^2=(${isolated})^2$, and $(-B)^2=B^2$ as well.`,
+        `Squaring gives $(\\sqrt{${radicand}})^2=(${isolated})^2$. But a number and its opposite have the same square.`,
         `So the squared equation is also true when $\\sqrt{${radicand}}=-(${isolated})$, an equation the original does not state.`,
         checkText(lo),
         checkText(hi),

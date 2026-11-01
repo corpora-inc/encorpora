@@ -1216,8 +1216,19 @@ function quadraticOrExponential(seed: string): GeneratedProblem {
       ],
       hint: `In $y = a(x - h)^2 + k$ the vertex is $(h, k)$ and the sign of $a$ says which way it opens. Read $h$, $k$ and $a$ from ${rule}, watching the signs.`,
       explanation: (name) => [
+        "A parabola is the U-shaped graph of a quadratic. Its vertex is the turning point, the lowest or highest point.",
+        `Vertex form $y = a(x - h)^2 + k$ has its vertex at $(h, k)$, and the sign of $a$ says which way it opens.`,
+        ...(h < 0 || k < 0
+          ? [
+              `Watch the signs: ${[
+                ...(h < 0 ? [`$x + ${-h}$ means $x - (${h})$`] : []),
+                ...(k < 0 ? [`$- ${-k}$ means $+ (${k})$`] : []),
+              ].join(", and ")}.`,
+            ]
+          : []),
         `${rule} has the form $y = a(x - h)^2 + k$ with $a = ${tex(a)}$, $h = ${h}$ and $k = ${k}$.`,
-        `The vertex is ${point([h, k])}, and since $a$ is ${a.n > 0 ? "positive" : "negative"} the parabola opens ${a.n > 0 ? "up" : "down"}.`,
+        `The vertex is ${point([h, k])}.`,
+        `Since $a$ is ${a.n > 0 ? "positive" : "negative"}, the parabola opens ${a.n > 0 ? "up" : "down"}.`,
         `${name} is the parabola ${opens(p)} with its vertex at ${point([h, k])}.`,
       ],
       walkthrough: sceneOf(
@@ -1263,8 +1274,10 @@ function quadraticOrExponential(seed: string): GeneratedProblem {
       ],
       hint: `Find the $y$-intercept of ${rule} by putting $x = 0$, then decide whether multiplying by ${plain(g.b)} each step makes the graph rise or fall.`,
       explanation: (name) => [
-        `At $x = 0$, $y = ${g.a}$, so the graph crosses the $y$-axis at ${point([0, g.a])}.`,
-        `Each step to the right multiplies $y$ by ${plain(g.b)}, so at $x = 1$, $y = ${plain(ab)}$. Since ${plain(g.b)} is ${grows ? "greater" : "less"} than 1, the graph ${grows ? "rises ever faster to the right and levels off toward the $x$-axis on the left" : "falls toward the $x$-axis on the right"}.`,
+        `An exponential function multiplies $y$ by the same number, the base, for each step of 1 in $x$. In ${rule} the base is ${plain(g.b)}.`,
+        `At $x = 0$, $y = ${g.a}$, so the graph crosses the $y$-axis at ${point([0, g.a])}. This point is the $y$-intercept.`,
+        `Each step to the right multiplies $y$ by ${plain(g.b)}, so at $x = 1$, $y = ${plain(ab)}$.`,
+        `Since ${plain(g.b)} is ${grows ? "greater" : "less"} than 1, the graph ${grows ? "rises ever faster to the right and levels off toward the $x$-axis on the left" : "falls toward the $x$-axis on the right"}.`,
         `${name} is that curve, through ${point([0, g.a])} and ${point([1, ab.n])}.`,
       ],
       walkthrough: sceneOf(
@@ -1314,7 +1327,9 @@ function quadraticOrExponential(seed: string): GeneratedProblem {
       ],
       hint: `The change inside $f$, $${shiftTex(h)}$, moves the graph horizontally; the change outside, ${k < 0 ? `$- ${-k}$` : `$+ ${k}$`}, moves it vertically. Follow the vertex ${point([0, 0])}.`,
       explanation: (name) => [
-        `Replacing $x$ by $${shiftTex(h)}$ moves the graph ${Math.abs(h)} ${h > 0 ? "right" : "left"}; ${k > 0 ? `adding ${k}` : `subtracting ${-k}`} outside $f$ shifts it ${k > 0 ? "up" : "down"} by ${Math.abs(k)}.`,
+        "A change inside $f$ moves the graph sideways. A change outside $f$ moves it up or down.",
+        `Replacing $x$ by $${shiftTex(h)}$ moves the graph ${Math.abs(h)} ${h > 0 ? "right" : "left"}, because $${shiftTex(h)} = 0$ at $x = ${h}$. The old vertex input 0 now comes from $x = ${h}$.`,
+        `${k > 0 ? `Adding ${k}` : `Subtracting ${-k}`} outside $f$ changes every output by that amount, so the graph shifts ${k > 0 ? "up" : "down"} by ${Math.abs(k)}.`,
         `The vertex moves from ${point([0, 0])} to ${point([h, k])}, and the parabola still opens up.`,
         `${name} is the parabola with its vertex at ${point([h, k])}.`,
       ],
