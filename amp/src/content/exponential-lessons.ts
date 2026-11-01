@@ -95,7 +95,7 @@ export const exponentialLessons: Lesson[] = [
         paragraphs: [
           "A difference is the result of a subtraction. Here a ratio is one value divided by the value before it. To test a table, first check that the inputs, the $x$-values, go up in equal steps, such as 0, 1, 2, 3.",
           "Then subtract each output, each $y$-value, from the next one. If every difference is the same, the pattern is linear: it adds a fixed amount each step. For outputs 5, 8, 11, 14, every difference is 3, so the pattern is linear.",
-          "If the differences change, divide each output by the one before it. If every ratio is the same, the pattern is exponential: it multiplies by a fixed number each step. For outputs 3, 6, 12, 24, every ratio is 2, so the pattern is exponential. If neither the differences nor the ratios stay the same, the pattern is neither.",
+          "If the differences change, divide each output by the one before it (none of the outputs is 0 here). If every ratio is the same positive number, the pattern is exponential: it multiplies by a fixed number each step. For outputs 3, 6, 12, 24, every ratio is 2, so the pattern is exponential. If neither the differences nor the ratios stay the same, the pattern is neither.",
           "Stories work the same way. “Adds 5 each week” is a fixed difference, so it is linear. Percent means out of 100, and its sign is %. So 5% of an amount is 0.05 times it. “Grows by 5% each week” keeps the whole amount and adds 0.05 of it, which multiplies by 1.05 each week: a fixed ratio, so it is exponential. “Adds one more each week than the week before” has neither.",
           "A function is a rule that gives one output for each input. We write $f(x)$, read “$f$ of $x$”, for the output of $f$ when the input is $x$. So $f(x) = 10x + 10$ means: multiply the input by 10, then add 10. In $g(x) = 2^x$, the small raised $x$ is an exponent: it says how many 2s to multiply together, so $2^3 = 2 \\times 2 \\times 2 = 8$, and $2^0 = 1$. The sign $>$ means is greater than, as in $8 > 5$.",
         ],
@@ -358,7 +358,7 @@ export const exponentialLessons: Lesson[] = [
       },
     ],
     pitfalls: [
-      "$\\log(m + n)$ is not $\\log m + \\log n$. The rules turn a product into a sum, not a sum into a sum.",
+      "In general, $\\log(m + n)$ is not $\\log m + \\log n$. The rules turn a product into a sum, not a sum into a sum.",
       "$\\tfrac{\\log m}{\\log n}$ is a change of base, equal to $\\log_n m$. It is not $\\log \\tfrac{m}{n}$.",
       "An exponent multiplies only the logarithm of its own factor: $\\log(2x^3) = \\log 2 + 3\\log x$, not $3\\log(2x)$.",
     ],
@@ -525,7 +525,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     method: [
       "Check that the inputs, the $x$-values, go up in equal steps, such as 0, 1, 2, 3.",
       "Find the differences: subtract each output from the next one. If they are all equal, the relationship is linear.",
-      "If not, find the ratios: divide each output by the one before it. If they are all equal, the relationship is exponential.",
+      "If not, find the ratios: divide each output by the one before it (none of the outputs is 0 here). If they are all the same positive number, the relationship is exponential.",
       "If neither the differences nor the ratios stay the same, the relationship is neither.",
     ],
     watch:
