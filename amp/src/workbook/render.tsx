@@ -30,6 +30,7 @@ import type { GlossaryEntry } from "../glossary/types";
 import { workbookFontCss } from "./fonts";
 import { workbookLayoutScript } from "./layout-script";
 import { workbookResultsUrl } from "./links";
+import { resultLabel } from "./result-labels";
 
 export type PaperSize = "letter" | "a4";
 
@@ -727,7 +728,7 @@ export function workbookHtml(
                 <li key={e.n} className="wb-tile">
                   <span className="wb-tile-num">{e.n}</span>
                   <span className="wb-tile-skill">
-                    {options.skillTitle(e.item.skillId)}
+                    {resultLabel(e.item.templateId)}
                   </span>
                   <span className="wb-tile-marks">
                     <span className="wb-tick">
