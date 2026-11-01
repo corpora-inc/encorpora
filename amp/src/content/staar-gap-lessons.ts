@@ -910,7 +910,7 @@ export const staarGapLessons: Lesson[] = [
     pitfalls: [
       "A point's $y$-value is the intercept only when that point has $x = 0$.",
       "Subtract in the same order on top and bottom: $(11 - 5)$ over $(3 - 1)$, not $(11 - 5)$ over $(1 - 3)$.",
-      "In $Ax + By = C$, the slope is $-\\frac{A}{B}$, not $A$.",
+      "In $Ax + By = C$, the slope is $-\\frac{A}{B}$ (when $B$ is not 0), not $A$.",
     ],
     parentGuide:
       "Ask where $y=2x+5$ crosses the $y$-axis, and what happens to $y$ when $x$ goes up by 1.",

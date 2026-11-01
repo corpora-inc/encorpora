@@ -176,7 +176,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
   "percent-forms-and-parts": {
     goal: "Change among fractions, decimals and percents, and find a whole or a percent from a part.",
     intuition:
-      "Percent means “out of 100.” So a fraction, a decimal and a percent can all name the same amount: $\\frac{1}{4}$, 0.25 and 25%. The whole is the full amount, which is 100%. A part is a piece of it. If you know what percent a part is, you can find 1% and then the whole.",
+      "Percent means “out of 100.” So a fraction, a decimal and a percent can all name the same amount: $\\frac{1}{4}$, 0.25 and 25%. The whole is the full amount, which is 100%. A part is a piece of it. If you know a part's amount and what percent of the whole it is, you can find 1% and then the whole.",
     senses: { part: "part", whole: "whole", square: "square-shape" },
     noLink: ["change"],
     terms: [
@@ -216,7 +216,7 @@ export const texas38Methods: Record<string, ProblemMethod> = {
     terms: ["expression", "equation"],
     method: [
       "Look for an equals sign, or for a word such as “is” or “equals” joining two amounts.",
-      "With one, it is an equation. Without one, it is an expression.",
+      "With one, it is an equation. With no equals sign and no comparison sign such as $<$, it is an expression.",
       "An equation can also be false, such as $2+2=5$; it is still an equation.",
     ],
     watch:
@@ -401,7 +401,7 @@ export const texas38Principles: Record<string, string> = {
   "check-register-balance":
     "If the balance before an entry is $B$ dollars and the entry is $x$ dollars, the new balance is $B+x$ for a deposit and $B-x$ for a payment. So the change in balance across an entry is its amount with a sign: plus for money in, minus for money out.",
   "lifetime-income-salary":
-    "With the same pay $S$ each year for $y$ years, total earnings are $S\\times y$. With a monthly pay $M$, a year earns $12M$ ($12$ times $M$), so $y$ years earn $12\\times M\\times y$. Two constant yearly salaries $S_1$ and $S_2$ differ over $y$ years by $y\\times(S_2-S_1)$.",
+    "With the same pay $S$ each year for $y$ years, total earnings are $S\\times y$. With a monthly pay $M$, a year earns $12M$ ($12$ times $M$), so $y$ years earn $12\\times M\\times y$. Two constant yearly salaries $S_1$ and $S_2$ differ over $y$ years by $y\\times(S_2-S_1)$, when $S_2$ is the larger salary.",
   "pi-as-ratio":
     "For every circle, the circumference $C$ divided by the diameter $d$ is the same number: $\\dfrac{C}{d}=\\pi\\approx3.14159$ ($\\approx$ means “is about”). So $C=\\pi d=2\\pi r$, where $r$ is the radius. Because the ratio is the same for all circles, enlarging a circle multiplies $C$ and $d$ by the same number.",
   "experimental-probability-predict":
@@ -994,7 +994,7 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Ask which follows from which",
         paragraphs: [
-          "Choose a value for one quantity. If the other is then settled, that other one is dependent.",
+          "Find the quantity you choose freely; it is independent. The quantity that is then settled by your choice is dependent.",
           "Do not go by position or size. The first column of a table is not always independent, and the bigger numbers do not decide anything.",
         ],
       },
@@ -1051,7 +1051,7 @@ export const texas38Lessons: Lesson[] = [
         stage: "method",
         title: "Look for equality",
         paragraphs: [
-          "In symbols, look for an equals sign. In words, look for “is” or “equals” joining two amounts. With one, it is an equation. Without one, it is an expression.",
+          "In symbols, look for an equals sign. In words, look for “is” or “equals” joining two amounts. With one, it is an equation. With no equals sign and no comparison sign such as $<$, it is an expression.",
           "An equation can be true, like $3 + 5 = 8$, or false, like $2 + 2 = 5$. Either way it is an equation.",
         ],
       },
@@ -1294,7 +1294,7 @@ export const texas38Lessons: Lesson[] = [
         paragraphs: [
           "With the same yearly pay $S$ for $y$ years, total earnings are $S \\times y$.",
           "With a monthly pay $M$, one year is $12M$ ($12$ times $M$), so $y$ years earn $12 \\times M \\times y$.",
-          "Two yearly salaries $S_1$ and $S_2$ (read “$S$ one” and “$S$ two”) differ over $y$ years by $y \\times (S_2 - S_1)$.",
+          "Two yearly salaries $S_1$ and $S_2$ (read “$S$ one” and “$S$ two”) differ over $y$ years by $y \\times (S_2 - S_1)$, when $S_2$ is the larger salary.",
         ],
       },
     ],
@@ -1324,7 +1324,7 @@ export const texas38Lessons: Lesson[] = [
         paragraphs: [
           "A circle is a round shape where every point is the same distance from a middle point, the center. The circumference is the distance around the circle. The diameter is the distance across, passing through the center. The radius is the distance from the center to the edge, half the diameter.",
           "Wrap a string around a can to measure its circumference. Then measure straight across the top for the diameter. Divide the circumference by the diameter. You get about 3.14.",
-          "Try a tiny coin and then a giant wheel. The numbers you measure are very different, but dividing gives the same answer each time. A ratio compares two amounts by dividing. This ratio, the same for every circle, is called $\\pi$ (pi).",
+          "Try a tiny coin and then a giant wheel. The numbers you measure are very different, but dividing gives about the same answer each time. With perfect measuring it would be exactly the same. A ratio compares two amounts by dividing. This ratio, the same for every circle, is called $\\pi$ (pi).",
           "$\\pi$ is a little more than 3. So the distance around any circle is a little more than 3 times the distance across.",
         ],
       },
