@@ -197,7 +197,7 @@ function timeSurface(m: TimeModel, r: Random): Surface | null {
       `Add the whole hours first, because they move only the hour: ${labelOf(m.start)} + ${h} ${h === 1 ? "hour" : "hours"} = ${labelOf(t1)}.`,
       extra
         ? (t1 % 60) + extra >= 60
-          ? `Then add the ${extra} minutes. ${t1 % 60} + ${extra} is ${(t1 % 60) + extra}, past 60, and 60 minutes make 1 hour. So the time rolls into the next hour: ${labelOf(end)}.`
+          ? `Then add the ${extra} minutes. ${t1 % 60} + ${extra} is ${(t1 % 60) + extra}, ${(t1 % 60) + extra === 60 ? "a full" : "past a full"} 60, and 60 minutes make 1 hour. So the time rolls into the next hour: ${labelOf(end)}.`
           : `Then add the ${extra} minutes: ${labelOf(t1)} + ${extra} minutes = ${labelOf(end)}.`
         : `There are no extra minutes to add.`,
       `The ${e.noun} ends at ${labelOf(end)}.`,
@@ -242,7 +242,9 @@ function timeSurface(m: TimeModel, r: Random): Surface | null {
       `Count back the whole hours first, because they move only the hour: ${labelOf(end)} − ${h} ${h === 1 ? "hour" : "hours"} = ${labelOf(t1)}.`,
       extra
         ? t1 % 60 < extra
-          ? `Then count back the ${extra} minutes. There are only ${t1 % 60} minutes in this hour, so go back past the hour into the one before: ${labelOf(t1)} − ${extra} minutes = ${labelOf(m.start)}.`
+          ? t1 % 60 === 0
+            ? `Then count back the ${extra} minutes. ${labelOf(t1)} is exactly on the hour, so going back goes into the hour before: ${labelOf(t1)} − ${extra} minutes = ${labelOf(m.start)}.`
+            : `Then count back the ${extra} minutes. There are only ${t1 % 60} minutes in this hour, so go back past the hour into the one before: ${labelOf(t1)} − ${extra} minutes = ${labelOf(m.start)}.`
           : `Then count back the ${extra} minutes: ${labelOf(t1)} − ${extra} minutes = ${labelOf(m.start)}.`
         : `There are no extra minutes to count back.`,
       `The ${e.noun} began at ${labelOf(m.start)}.`,
@@ -300,7 +302,7 @@ function timeSurface(m: TimeModel, r: Random): Surface | null {
         : `Count on in friendly jumps. First to the next hour: ${labelOf(m.start)} to ${labelOf(mid)} is ${mid - m.start} minutes. Then ${labelOf(mid)} to ${labelOf(end)} is ${hm(end - mid)}.`,
       m.start % 60 === 0
         ? `Check: ${labelOf(m.start)} + ${hm(m.duration)} = ${labelOf(end)}.`
-        : `Add the jumps: ${mid - m.start} minutes + ${hm(end - mid)} = ${hm(m.duration)}, because 60 minutes make 1 hour.`,
+        : `Add the jumps: ${mid - m.start} minutes + ${hm(end - mid)} = ${hm(m.duration)}${mid - m.start + ((end - mid) % 60) >= 60 ? ", because 60 minutes make 1 hour" : ""}.`,
       `The ${e.noun} lasts ${hm(m.duration)}.`,
     ];
   }

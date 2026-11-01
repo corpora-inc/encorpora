@@ -227,7 +227,7 @@ export const reasonableMeasure = chainFamily({
         `${an(one(unit))[0]!.toUpperCase()}${an(one(unit)).slice(1)} ${one(unit)} suits ${sizeNote(thing.attr, unit)}, and ${thing.phrase} is about that size.`,
         ...m.wrong.map(
           (u) =>
-            `${measure(u)} would be ${n * size[thing.attr][u]! > n * size[thing.attr][unit]! ? "far too much" : "far too little"}, because ${an(one(u))} ${one(u)} suits ${sizeNote(thing.attr, u)}.`,
+            `${measure(u)} would be ${n * size[thing.attr][u]! > n * size[thing.attr][unit]! ? `far too much, because ${an(one(u))} ${one(u)} is much bigger than ${an(one(unit))} ${one(unit)}` : `far too little, because ${an(one(u))} ${one(u)} is much smaller than ${an(one(unit))} ${one(unit)}`}.`,
         ),
         `So the reasonable measurement is ${measure(unit)}.`,
       ],

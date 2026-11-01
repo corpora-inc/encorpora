@@ -174,8 +174,8 @@ export function generateMeasurementProblem(
         : [
             `Length is how far it is from one end to the other end.`,
             `Each centimeter is cut into ${denominator} equal spaces, so each small space is 1/${denominator} cm.`,
-            `$A$ is at ${rational(start, denominator)} cm and $B$ is at ${rational(end, denominator)} cm. There are ${end - start} small spaces between them.`,
-            `${end - start} spaces of 1/${denominator} cm make ${end - start}/${denominator} cm${`${end - start}/${denominator}` === answer ? "" : `, which is ${answer} cm`}.`,
+            `$A$ is at ${rational(start, denominator)} cm and $B$ is at ${rational(end, denominator)} cm. There ${end - start === 1 ? "is 1 small space" : `are ${end - start} small spaces`} between them.`,
+            `${end - start === 1 ? "1 space" : `${end - start} spaces`} of 1/${denominator} cm ${end - start === 1 ? "is" : "make"} ${end - start}/${denominator} cm${`${end - start}/${denominator}` === answer ? "" : `, which is ${answer} cm`}.`,
             `The strip is ${answer} cm long.`,
           ];
       break;
@@ -204,7 +204,7 @@ export function generateMeasurementProblem(
           `A rectangle's opposite sides are equal, so its four sides are ${width}, ${height}, ${width} and ${height} cm.`,
           `Add all four: ${width} + ${height} + ${width} + ${height} = ${perimeter}.`,
           `A shortcut: one long side and one short side make half the trip, so 2 × (${width} + ${height}) = ${perimeter}.`,
-          `${perimeter} cm of ribbon go once around the rectangle.`,
+          `${perimeter} cm of ribbon goes once around the rectangle.`,
         ];
       } else if (fromArea) {
         prompt = `This rectangle covers ${area} square cm. Find its missing side in cm.`;
