@@ -48,6 +48,22 @@ export interface GlossaryCard {
   example?: string;
   figure?: Scene;
   uses: TermId[];
+  /** How the definition and example read their words (see
+   * `GlossaryLexicon`), so a term inside a definition opens its own card. */
+  lexicon?: GlossaryLexicon;
+}
+
+/** Every form the server's linker found in a payload's texts: lowercase
+ * form → the entry it means there, or null where it is an ordinary word.
+ * A client links those texts by matching only these forms. */
+export type GlossaryLexicon = Record<string, TermId | null>;
+
+/** What a payload (a lesson, an answer's explanation, a hint) carries for
+ * its term cards. Both fields are additive: older clients ignore them. */
+export interface GlossaryPayload {
+  /** Every entry the texts use, then every entry their definitions use. */
+  glossary?: GlossaryCard[];
+  glossaryLexicon?: GlossaryLexicon;
 }
 
 /** Which entry a word means in one lesson, method or template: lowercase

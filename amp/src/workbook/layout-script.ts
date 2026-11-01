@@ -106,7 +106,8 @@ export const workbookLayoutScript = String.raw`(function () {
       }
       // A single block taller than a page stays; the layout check reports it.
     }
-    // A lesson card must fit one page with its heading. A long one drops,
+    // A lesson card must fit one page with its heading. A long one stacks
+    // its idea and worked example, then drops,
     // in order, its extra paragraphs, its pitfall, its diagram and its
     // words to know, then
     // prints slightly smaller (never below 75%).
@@ -116,6 +117,9 @@ export const workbookLayoutScript = String.raw`(function () {
     made.pop();
     list(flow.querySelectorAll("[data-fit]")).forEach(function (block) {
       var limit = pageHeight - 0.8 * 96;
+      // A long worked example beside the idea first takes the full width.
+      var card = block.querySelector(".wb-lesson");
+      if (card && height(block) > limit) card.classList.add("wb-lesson--stacked");
       for (var level = 1; level <= 4 && height(block) > limit; level++)
         list(block.querySelectorAll('[data-trim="' + level + '"]')).forEach(function (el) {
           el.setAttribute("data-trimmed", "");

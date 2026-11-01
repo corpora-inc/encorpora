@@ -22,7 +22,9 @@ export type Finding = {
     | "offscreen-action"
     | "full-screen-hint"
     | "system-keyboard"
-    | "skip-miss-mark";
+    | "skip-miss-mark"
+    | "feedback-gap"
+    | "motion-under-reduce";
   selector: string;
   text: string;
   detail: string;
@@ -314,6 +316,41 @@ export async function probe(page: Page): Promise<Finding[]> {
             text: text(e),
             detail: "a skipped part is marked as a miss",
           });
+    // The sheet is as tall as what it says: no empty band inside it.
+    if (sheet && !dialog) {
+      const parts = [...sheet.children].filter(
+        (c) => visible(c) && getComputedStyle(c).position !== "absolute",
+      );
+      for (let k = 1; k < parts.length; k++) {
+        const gap =
+          parts[k]!.getBoundingClientRect().top -
+          parts[k - 1]!.getBoundingClientRect().bottom;
+        if (gap > 64)
+          found.push({
+            kind: "feedback-gap",
+            selector: name(parts[k]!),
+            text: text(parts[k - 1]!).slice(0, 30),
+            detail: `${Math.round(gap)}px empty band in the feedback sheet`,
+          });
+      }
+    }
+    // Reduced motion: buttons change state at once.
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches)
+      for (const e of document.querySelectorAll(
+        ".choice-submit, .answer-action, .next-action, .practice-tools button",
+      )) {
+        if (!visible(e)) continue;
+        const durations = getComputedStyle(e)
+          .transitionDuration.split(",")
+          .map((d) => parseFloat(d));
+        if (durations.some((d) => d > 0))
+          found.push({
+            kind: "motion-under-reduce",
+            selector: name(e),
+            text: text(e),
+            detail: `transition ${getComputedStyle(e).transitionDuration}`,
+          });
+      }
     // The primary action of the current state is fully on screen.
     const action = dialog
       ? dialog.querySelector(".choice-submit, .answer-action")
