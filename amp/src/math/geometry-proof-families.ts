@@ -114,8 +114,11 @@ const lineAngleFamily: Family = {
         ],
         hint: `Find where angles ${a} and ${b} sit relative to the two lines and the transversal: between the lines or outside, same side of $t$ or opposite sides. Then choose the theorem about that position pair.`,
         explanation: [
-          `Angles ${a} and ${b} are between the parallel lines $\\ell$ and $m$ and on opposite sides of transversal $t$, so they are alternate interior angles.`,
-          `Because $\\ell \\parallel m$, alternate interior angles have equal measures. Reason: ${lineReasons.alt}`,
+          `A proof is a chain of statements. Each one needs a reason: a definition or a theorem (a fact already proved).`,
+          `A transversal is a line that crosses two other lines, here $t$ crossing $\\ell$ and $m$. It makes eight angles, four at each crossing.`,
+          `Angles ${a} and ${b} are between the parallel lines (interior) and on opposite sides of $t$ (alternate). So they are alternate interior angles.`,
+          `When the lines are parallel, alternate interior angles have equal measures. That is exactly the claim $m\\angle ${a} = m\\angle ${b}$.`,
+          `The reason is: ${lineReasons.alt}`,
         ],
       };
     },
@@ -147,8 +150,11 @@ const lineAngleFamily: Family = {
         ],
         hint: `Write what is given about line $\\ell$ and about where $P$ is, then compare it with the claim $P${x}=P${y}$: does the claim start from distances or end with them?`,
         explanation: [
-          `$\\ell$ is the perpendicular bisector of $\\overline{${x}${y}}$ and $P$ lies on it, so the given is a position on the bisector.`,
-          `The claim is a conclusion about distances to the endpoints. Reason: ${lineReasons.bis}`,
+          `A proof is a chain of statements. Each one needs a reason: a definition or a theorem (a fact already proved).`,
+          `The perpendicular bisector of a segment crosses it at its midpoint, at a right angle.`,
+          `The given is a position: $P$ is on that bisector. The claim, $P${x} = P${y}$, is about distances: $P$ is equally far from both endpoints.`,
+          `So the reason must start from "on the bisector" and end with "equal distances". The converse goes the other way, so it does not fit.`,
+          `The reason is: ${lineReasons.bis}`,
         ],
       };
     },
@@ -180,8 +186,11 @@ const lineAngleFamily: Family = {
         ],
         hint: `Compare what is given, $P${x}=P${y}$, with what the step concludes. Which theorem begins with that kind of statement?`,
         explanation: [
-          `The given is that $P$ is the same distance from $${x}$ and $${y}$.`,
-          `The conclusion places $P$ on the perpendicular bisector. Reason: ${lineReasons.conv}`,
+          `A proof is a chain of statements. Each one needs a reason: a definition or a theorem (a fact already proved).`,
+          `The perpendicular bisector of a segment crosses it at its midpoint, at a right angle. Equidistant means equally far.`,
+          `The given, $P${x} = P${y}$, says $P$ is equidistant from $${x}$ and $${y}$. The step concludes that $P$ is on the perpendicular bisector.`,
+          `So the reason must start from equal distances and end with "on the bisector". That is the converse of the bisector theorem: the same idea run backward.`,
+          `The reason is: ${lineReasons.conv}`,
         ],
       };
     },
@@ -216,8 +225,11 @@ const lineAngleFamily: Family = {
         ],
         hint: `Rays $OA$ and $OC$ are opposite, and so are $OB$ and $OD$. Decide whether angles $AOB=(${left})^\\circ$ and $COD=(${right})^\\circ$ are opposite angles at $O$ or share a side.`,
         explanation: [
-          `Angles $AOB$ and $COD$ are formed by opposite rays, so they are vertical angles and have equal measures: $${left}=${right}$.`,
-          `Subtracting $${a}x$ from both sides and solving gives $x=${x0}$, so each angle measures $${v}^\\circ$.`,
+          `Rays are half-lines starting at $O$. Rays $OA$ and $OC$ point opposite ways along one line, and so do $OB$ and $OD$.`,
+          `Angles $AOB$ and $COD$ sit across from each other where the lines cross. Such angles are vertical angles, and vertical angles are equal.`,
+          `So the vertical angles theorem justifies setting the measures equal: $${left}=${right}$.`,
+          `Check: subtracting $${a}x$ from both sides and solving gives $x=${x0}$, so each angle measures $${v}^\\circ$.`,
+          `The equation is $${left}=${right}$.`,
         ],
         model: { a, b, c, d: -dd, x0, v },
       };
@@ -264,9 +276,11 @@ const triangleProofFamily: Family = {
         ],
         hint: `Sides $AB$ and $AC$ are equal, so find which two angles are opposite them. The angle sum of the triangle is $180^\\circ$, and $\\angle A$ is already given as $${dg(a)}$.`,
         explanation: [
-          `Since $AB=AC$, the angles opposite them, $\\angle C$ and $\\angle B$, are congruent (base angles of an isosceles triangle).`,
-          `The angles sum to $180^\\circ$, so $m\\angle B+m\\angle C=180-${a}=${180 - a}$.`,
-          `The two base angles are equal, so $m\\angle B=${180 - a}\\div 2=${b}$.`,
+          `A triangle with two equal sides is isosceles. Here $AB=AC$.`,
+          `The angles across from the equal sides are the base angles: $\\angle C$ (across from $AB$) and $\\angle B$ (across from $AC$). Base angles are congruent, meaning equal.`,
+          `The three angles of a triangle add to $180^\\circ$. So $m\\angle B+m\\angle C=180-${a}=${180 - a}$.`,
+          `The two base angles are equal, so each gets half: $m\\angle B=${180 - a}\\div 2=${b}$.`,
+          `$m\\angle B$ is $${b}^\\circ$.`,
         ],
         model: { apex: a, base: b },
       };
@@ -299,9 +313,11 @@ const triangleProofFamily: Family = {
         ],
         hint: `$\\overline{DE}$ joins the midpoints of two sides, so it is a midsegment. Write the relationship between $DE=${lin(p, q)}$ and $BC=${lin(c, d)}$, then use it to find $x$ before computing the length of $BC$.`,
         explanation: [
-          `A midsegment is parallel to the third side and half as long, so $BC=2\\cdot DE$.`,
-          `Set $${lin(c, d)}=2(${lin(p, q)})$ and solve: $x=${x0}$.`,
-          `Then $DE=${t}$ and $BC=2\\cdot ${t}=${2 * t}$.`,
+          `A midsegment joins the midpoints (middle points) of two sides of a triangle. Here $\\overline{DE}$ joins the midpoints of $\\overline{AB}$ and $\\overline{AC}$.`,
+          `The midsegment theorem says it is parallel to the third side and half as long. So $BC=2\\cdot DE$.`,
+          `Write that with the expressions: $${lin(c, d)}=2(${lin(p, q)})$. Distribute the 2 and solve: $x=${x0}$.`,
+          `Substitute: $DE=${t}$, so $BC=2\\cdot ${t}=${2 * t}$.`,
+          `$BC$ is ${2 * t}.`,
         ],
         model: { p, q, c, d, x0, de: t, bc: 2 * t },
       };
@@ -329,15 +345,22 @@ const triangleProofFamily: Family = {
           (v) =>
             [
               m(v),
-              "The medians meet at a point that splits each median into two parts in the ratio $2:1$, with the longer part next to the vertex.",
+              v === (ask ? k : 2 * k)
+                ? "This is the other piece of the median. The point $G$ splits it $2:1$, and the longer piece is next to the vertex $A$."
+                : v === full || v === 4 * k
+                  ? "This uses the wrong ratio. $G$ splits the median into 3 equal sections: $AG$ is 2 of them and $GM$ is 1."
+                  : "The point $G$ splits each median $2:1$, so think of 3 equal sections: $AG$ is 2 of them and $GM$ is 1.",
             ] as Wrong,
         ),
         hint: `$G$ is where the medians meet. Split the median $AM$ into $AG$ and $GM$, and use the ratio in which $G$ divides it, starting from $${givenName}=${givenValue}$.`,
         explanation: [
-          `The medians meet at $G$, which divides each median in the ratio $2:1$ from the vertex: $AG=2\\cdot GM$, so $AM=3\\cdot GM$.`,
+          `A median runs from a corner (vertex) of a triangle to the midpoint of the opposite side. The three medians always meet at one point, the centroid, here $G$.`,
+          `The centroid splits each median in the ratio $2:1$: the piece next to the vertex is twice the other. So $AG=2\\cdot GM$.`,
+          `Think of $\\overline{AM}$ as 3 equal sections. $AG$ is 2 of them and $GM$ is 1, so $AM=3\\cdot GM$.`,
           ask
-            ? `$GM=${full}\\div 3=${k}$, so $AG=2\\cdot ${k}=${2 * k}$.`
+            ? `One section is $GM=${full}\\div 3=${k}$, so $AG=2\\cdot ${k}=${2 * k}$.`
             : `$AM=3\\cdot ${k}=${3 * k}$.`,
+          ask ? `$AG$ is ${2 * k}.` : `$AM$ is ${3 * k}.`,
         ],
         model: { ask, k, full },
       };
@@ -371,8 +394,11 @@ const triangleProofFamily: Family = {
         ],
         hint: `The angles of triangle $ABC$ sum to $180^\\circ$, and the proof uses line $\\ell$ parallel to $AB$. Line $AC$ crosses the two parallel lines. Look at where the two angles lie: between the lines or outside, and on the same or opposite sides of line $AC$.`,
         explanation: [
-          `Line $AC$ is a transversal of the parallel lines $\\ell$ and $AB$. Angles $A'CA$ and $CAB$ lie between those lines on opposite sides of $AC$.`,
-          `They are alternate interior angles, so ${reasons.alt.toLowerCase()}`,
+          `A proof is a chain of statements. Each one needs a reason: a definition or a theorem (a fact already proved).`,
+          `A transversal is a line that crosses two other lines. Line $AC$ crosses the parallel lines $\\ell$ and $AB$.`,
+          `Angles $A'CA$ and $CAB$ lie between those lines (interior) and on opposite sides of $AC$ (alternate). So they are alternate interior angles.`,
+          `Parallel lines make alternate interior angles equal, which is the step's claim.`,
+          `The reason is: ${reasons.alt}`,
         ],
       };
     },
@@ -408,22 +434,22 @@ const parallelogramFamily: Family = {
         bisect: [
           "$ABCD$ is a parallelogram whose diagonals meet at $E$. A proof states $AE = EC$.",
           "Check which segments are named: $A$, $E$ and $C$ lie on one diagonal, and $E$ is where the diagonals cross.",
-          "$\\overline{AC}$ is a diagonal and $E$ is the point where the diagonals meet. $AE=EC$ says that $E$ is the midpoint, so the diagonals bisect each other.",
+          "A diagonal joins opposite corners. $\\overline{AC}$ is a diagonal, and $E$ is where it crosses the other one. $AE=EC$ says $E$ is the midpoint of $\\overline{AC}$: the diagonals cut each other in half, which is what bisect means.",
         ],
         opAngles: [
           "$ABCD$ is a parallelogram. A proof states $m\\angle A = m\\angle C$.",
           "Name the vertices in order around the figure and decide whether $\\angle A$ and $\\angle C$ are adjacent or opposite.",
-          "Vertices $A$ and $C$ are opposite corners of $ABCD$, so $\\angle A$ and $\\angle C$ are opposite angles.",
+          "Going around $ABCD$ in order, $A$ and $C$ are not next to each other: they are opposite corners. So $\\angle A$ and $\\angle C$ are opposite angles, and the step says they are equal.",
         ],
         opSides: [
           "$ABCD$ is a parallelogram. A proof states $AB = DC$.",
           "Name the sides in order around the figure and decide whether $\\overline{AB}$ and $\\overline{DC}$ share an endpoint.",
-          "$\\overline{AB}$ and $\\overline{DC}$ share no endpoint, so they are opposite sides.",
+          "Going around $ABCD$ in order, $\\overline{AB}$ and $\\overline{DC}$ share no corner: they are opposite sides. The step says they are equal, or congruent.",
         ],
         rectDiag: [
           "$ABCD$ is a rectangle. A proof states $AC = BD$.",
           "$\\overline{AC}$ and $\\overline{BD}$ join opposite corners. Check which given figure type makes this claim true.",
-          "$\\overline{AC}$ and $\\overline{BD}$ are the two diagonals, and the figure is given as a rectangle, a special parallelogram.",
+          "A diagonal joins opposite corners, so $\\overline{AC}$ and $\\overline{BD}$ are the two diagonals. The step says they are equal. A general parallelogram's diagonals can differ, but a rectangle (a parallelogram with four right angles) has equal diagonals.",
         ],
       }[kind];
       return {
@@ -443,12 +469,17 @@ const parallelogramFamily: Family = {
               [
                 pReasons[k],
                 kind === "rectDiag" && k !== "rectDiag"
-                  ? "That is true of every parallelogram, but it does not give equal diagonals. Equal diagonals need the rectangle property."
-                  : "That theorem is true, but its conclusion is about a different part of the figure than this step.",
+                  ? "That is true of every parallelogram, but it says nothing about the diagonals having equal lengths. Equal diagonals need the rectangle property."
+                  : `That theorem is true, but it is about ${{ bisect: "the diagonals cutting each other in half", opAngles: "opposite angles", opSides: "opposite sides", rectDiag: "the diagonals of a rectangle" }[k]}. This step is about ${{ bisect: "pieces of one diagonal", opAngles: "two opposite angles", opSides: "two opposite sides", rectDiag: "two whole diagonals" }[kind]}.`,
               ] as Wrong,
           ),
         hint: info[1],
-        explanation: [info[2], `Reason: ${pReasons[kind]}`],
+        explanation: [
+          "A proof is a chain of statements. Each one needs a reason: a definition or a theorem (a fact already proved).",
+          "A parallelogram is a four-sided figure whose opposite sides are parallel.",
+          info[2],
+          `The reason is: ${pReasons[kind]}`,
+        ],
       };
     },
     (r) => {
@@ -480,9 +511,11 @@ const parallelogramFamily: Family = {
         ],
         hint: `The diagonals of a parallelogram meet at $E$. Write the relationship between $AE=${lin(p, q)}$ and $EC=${lin(c, d)}$ as an equation, solve for $x$, and only then find $AC$.`,
         explanation: [
-          `The diagonals of a parallelogram bisect each other, so $AE=EC$: $${lin(p, q)}=${lin(c, d)}$.`,
-          `Solving gives $x=${x0}$, so $AE=EC=${t}$.`,
-          `$AC=AE+EC=${t}+${t}=${2 * t}$.`,
+          `A diagonal joins opposite corners. In a parallelogram the diagonals bisect each other: they cut each other exactly in half.`,
+          `So $E$ is the midpoint of $\\overline{AC}$, and $AE=EC$: $${lin(p, q)}=${lin(c, d)}$.`,
+          `Get the $x$ terms on one side and the numbers on the other. Solving gives $x=${x0}$, so $AE=EC=${t}$.`,
+          `The whole diagonal is both halves: $AC=AE+EC=${t}+${t}=${2 * t}$.`,
+          `$AC$ is ${2 * t}.`,
         ],
         model: { p, q, c, d, x0, half: t },
       };
@@ -519,9 +552,11 @@ const parallelogramFamily: Family = {
         ],
         hint: `The figure is a rectangle, so its diagonals $AC=${lin(p, q)}$ and $BD=${lin(c, d)}$ have a special relationship. Write it as an equation in $x$, solve, then substitute into $AC$.`,
         explanation: [
-          `The diagonals of a rectangle are congruent, so $${lin(p, q)}=${lin(c, d)}$.`,
-          `Solving gives $x=${x0}$.`,
-          `$AC=${p}(${x0})${q < 0 ? "-" : "+"}${Math.abs(q)}=${t}$.`,
+          `A diagonal joins opposite corners. A rectangle's two diagonals are congruent, meaning equal in length.`,
+          `So set the expressions equal: $${lin(p, q)}=${lin(c, d)}$.`,
+          `Get the $x$ terms on one side and the numbers on the other. Solving gives $x=${x0}$.`,
+          `Substitute into $AC$: $AC=${p}(${x0})${q < 0 ? "-" : "+"}${Math.abs(q)}=${t}$.`,
+          `$AC$ is ${t}.`,
         ],
         model: { p, q, c, d, x0, t },
       };
@@ -558,8 +593,11 @@ const parallelogramFamily: Family = {
         ],
         hint: `$m\\angle A=${dg(a)}$, and $\\angle A$ and $\\angle B$ share side $\\overline{AB}$. Sides $\\overline{AD}$ and $\\overline{BC}$ are parallel, with $\\overline{AB}$ as a transversal, so look for a relationship between the angles on the same side of $AB$.`,
         explanation: [
-          `$\\overline{AD}\\parallel\\overline{BC}$ and $\\overline{AB}$ is a transversal, so consecutive angles $\\angle A$ and $\\angle B$ are supplementary.`,
+          `In a parallelogram, opposite sides are parallel: $\\overline{AD}\\parallel\\overline{BC}$.`,
+          `$\\overline{AB}$ crosses both, so it is a transversal. $\\angle A$ and $\\angle B$ are between the parallel sides, on the same side of $\\overline{AB}$.`,
+          `Such angles are supplementary: they add to $180^\\circ$. So consecutive (neighboring) angles of a parallelogram add to $180^\\circ$.`,
           `$m\\angle B=180-${a}=${180 - a}$.`,
+          `$m\\angle B$ is $${180 - a}^\\circ$.`,
         ],
         model: { a },
       };
@@ -626,8 +664,11 @@ const definitionsFamily: Family = {
       ],
       hint: "A definition must include every condition and exclude every other shape. Ask whether each choice says where the points lie, how far they are from the center, and whether the inside counts.",
       explanation: [
-        "A circle has a center and every point on it is the same distance from that center. To exclude spheres, the points must lie in one plane. To exclude the inside, the distance is exactly the radius.",
-        precise.circle,
+        "A precise definition includes every condition the object needs and shuts out every other object.",
+        "A circle has a center, and every point on it is the same distance from that center. That distance is the radius.",
+        "The points must lie in one plane, a flat surface. Otherwise they could form a sphere, like a ball.",
+        "The distance must be exactly the radius, not at most. Otherwise the inside would count too.",
+        `So the precise definition is: ${precise.circle}`,
       ],
     }),
     () => ({
@@ -648,8 +689,11 @@ const definitionsFamily: Family = {
       ],
       hint: "A definition must include every condition and exclude every other pair of lines. Check whether the choice says where the lines lie.",
       explanation: [
-        "In a plane, two distinct lines either meet at one point or never meet. In space, two lines can also miss each other without being parallel, so the definition needs the plane.",
-        precise.parallel,
+        "A precise definition includes every condition the object needs and shuts out every other object.",
+        "On a flat surface (a plane), two different lines either meet at one point or never meet.",
+        "In space, two lines can miss each other while pointing different ways, like a road and a bridge crossing over it. Those are skew lines, not parallel.",
+        "So the definition must say the lines lie in one plane.",
+        `The precise definition is: ${precise.parallel}`,
       ],
     }),
     () => ({
@@ -670,8 +714,10 @@ const definitionsFamily: Family = {
       ],
       hint: "An angle needs a vertex and two sides. Check which choice names exactly those parts.",
       explanation: [
-        "An angle has a vertex, the shared endpoint, and two sides, which are rays.",
-        precise.angle,
+        "A precise definition names exactly the parts an object has.",
+        "A ray is part of a line that starts at one point and goes on forever in one direction.",
+        "An angle is made of two rays that start at the same point. That shared point is the vertex, the corner.",
+        `So the precise definition is: ${precise.angle}`,
       ],
     }),
     (r) => {
@@ -688,11 +734,17 @@ const definitionsFamily: Family = {
           (g) =>
             [
               g,
-              "This definition names every needed condition. Look for the statement that omits one or describes a different object.",
+              "This one is precise: it states every condition, and nothing else fits it. Look for the statement that leaves a condition out or fits a different object.",
             ] as Wrong,
         ),
         hint: "For each statement, ask what shape or object it describes and what else it would also describe. The flawed one fits more than one object or leaves out a condition.",
-        explanation: [`Flawed: ${bad}`, why],
+        explanation: [
+          "A precise definition includes every condition the object needs and shuts out every other object.",
+          "Test each statement: what else would it also describe? A flawed one fits a second object or misses a condition.",
+          `The flawed statement is: ${bad}`,
+          why,
+          `So "${bad}" is the one that is not a precise definition.`,
+        ],
       };
     },
   ],
@@ -796,7 +848,7 @@ const transformationInvariantFamily: Family = {
         wrong: [
           [
             `A dilation with scale factor ${k} about a point`,
-            `A dilation keeps angle measures but multiplies every distance by ${k}.`,
+            `A dilation resizes the figure: it keeps angle measures but multiplies every distance by ${k}.`,
           ],
           [
             `The stretch $(x,y)\\to(${k}x,\\,y)$`,
@@ -809,8 +861,10 @@ const transformationInvariantFamily: Family = {
         ],
         hint: "A transformation preserves distance if the image of every segment is as long as the segment. Test each choice on a segment and on a right angle from the corner of a square.",
         explanation: [
-          "Translations, rotations and reflections are rigid motions: they move every figure without changing any length or angle.",
-          `A dilation changes lengths. A stretch or shear changes lengths and angles. So the answer is: ${good.toLowerCase()}.`,
+          "A rigid motion moves a figure without changing its size or shape. A translation (slide), a rotation (turn) and a reflection (flip) are rigid motions.",
+          "Each one keeps every distance between points and every angle measure the same.",
+          "A dilation resizes, so distances change. A stretch or a shear pulls the figure out of shape, so distances and angles change.",
+          `So the transformation that keeps both is ${good.toLowerCase()}.`,
         ],
       };
     },
@@ -873,12 +927,14 @@ const transformationInvariantFamily: Family = {
           .map((t) => [labels[t], data] as Wrong),
         hint: `Compare the side lengths before and after. Use the distance formula on $P${pt(P)}$ and $Q${pt(Q)}$, then on $P'${pt(P2)}$ and $Q'${pt(Q2)}$, and see whether the length changed.`,
         explanation: [
+          "A rigid motion moves a figure without changing any length. So compare the side lengths before and after.",
+          "The distance formula squares the change in $x$ and the change in $y$ and adds them. That gives each length squared, which is enough to compare.",
           data,
           truth === "rigid"
-            ? "Every side length is unchanged, so the image is congruent to the original and the motion preserves distance."
+            ? "Every side length is unchanged, so the image is congruent (same size and shape). Yes: it is a rigid motion."
             : truth === "dilation"
-              ? `Every squared length is multiplied by ${kk * kk}, so every length is multiplied by ${kk}. Distances are not preserved.`
-              : "The sides change by different factors, so the map does not preserve distance and does not scale the figure uniformly.",
+              ? `Every squared length is multiplied by ${kk * kk}, so every length is multiplied by ${kk}. That is a dilation, a resizing, so no: it is not a rigid motion.`
+              : "The sides change by different factors, so lengths are not kept and the shape is not just resized. No: it is neither a rigid motion nor a dilation.",
         ],
         model: { P, Q, R: Rr, P2, Q2, R2, truth },
       };
@@ -900,21 +956,24 @@ const transformationInvariantFamily: Family = {
         wrong: [
           [
             `Every distance and every angle measure stays the same.`,
-            "A dilation changes size unless the scale factor is 1.",
+            `This would be true only for a scale factor of 1. A scale factor of $${kText}$ multiplies every distance by $${kText}$.`,
           ],
           [
             `Every distance stays the same and every angle measure is multiplied by $${kText}$.`,
-            "A dilation does the opposite: lengths scale and angles are preserved.",
+            "This has it backward. A dilation multiplies lengths and keeps angles the same.",
           ],
           [
             `Every distance and every angle measure is multiplied by $${kText}$.`,
-            "Angle measures are preserved by a dilation, which is why the image is similar to the original.",
+            "Angles are not multiplied. A dilation keeps every angle, which is why the image has the same shape (is similar).",
           ],
         ],
         hint: `Picture a triangle and its dilation from a center point with scale factor $${kText}$. Compare how far apart two vertices are before and after, and whether the corners open wider or narrower.`,
         explanation: [
-          `A dilation about a center with scale factor $${kText}$ multiplies the distance from the center to every point by $${kText}$, so every distance between two image points is $${kText}$ times the original distance.`,
-          "Angle measures do not change, so the image has the same shape as the original and is similar to it.",
+          `A dilation resizes a figure from a center point. The scale factor, here $${kText}$, is the number every distance is multiplied by.`,
+          `Each point moves along the line from the center, ending $${kText}$ times as far away. So every distance between two image points is $${kText}$ times the original.`,
+          "Both sides of each angle are stretched by the same factor, so the angle does not open or close. Angle measures stay the same.",
+          "Same angles with scaled sides means the image is similar to the original: the same shape, a different size.",
+          `So the true statement is: every distance is multiplied by $${kText}$ and every angle measure stays the same.`,
         ],
       };
     },
@@ -928,21 +987,23 @@ const transformationInvariantFamily: Family = {
         wrong: [
           [
             `$m\\angle XCX' = ${dg(t)}$, but $CX'$ may be any length`,
-            "A rotation keeps each point on a circle around the center, so $CX'$ equals $CX$.",
+            "A rotation never changes a point's distance from the center. $X$ moves along a circle around $C$, so $CX'$ equals $CX$.",
           ],
           [
             "$C$ is the midpoint of $\\overline{XX'}$",
-            "That holds only when the rotation is $180^\\circ$.",
+            "That is true only for a half turn, $180^\\circ$, when $X$ ends up straight across from where it started.",
           ],
           [
             "$X'$ is the mirror image of $X$ across a line through $C$",
-            "That describes a reflection. A reflection reverses orientation, a rotation does not.",
+            "That describes a reflection, a flip over a line. A rotation turns the point around $C$ instead.",
           ],
         ],
         hint: `Think of $X$ moving along a circle centered at $C$ through a turn of $${dg(t)}$. What stays the same about the distance from $C$, and what measures the turn?`,
         explanation: [
-          "A rotation about a center turns every point around the center by the same angle without changing its distance from the center.",
-          `So $CX'=CX$ and the angle from ray $CX$ to ray $CX'$ measures $${dg(t)}$.`,
+          "A rotation turns every point around a fixed center by the same angle.",
+          `Picture $X$ moving along a circle centered at $C$. A circle keeps every point the same distance from its center, so $CX'=CX$.`,
+          `The amount of turn is the angle between ray $CX$ and ray $CX'$ (a ray starts at $C$ and goes through the point). That angle is $${dg(t)}$.`,
+          `So both must be true: $CX' = CX$ and $m\\angle XCX' = ${dg(t)}$.`,
         ],
       };
     },
@@ -988,8 +1049,10 @@ const polygonSymmetryFamily: Family = {
         ],
         hint: `The ${n} vertices are equally spaced around the center. A full turn is $360^\\circ$; how is it shared among ${n} equal gaps?`,
         explanation: [
-          `The ${n} vertices are equally spaced around the center, so consecutive vertices are separated by $360^\\circ\\div ${n}$.`,
-          `Rotating by ${f(360 / n)} moves each vertex to the next one, so the polygon lands on itself.`,
+          `A regular polygon has all sides equal and all angles equal. "Carries onto itself" means after the turn it covers exactly the same spot.`,
+          `Its ${n} corners, or vertices, are equally spaced around the center, so a full turn of $360^\\circ$ is shared among ${n} equal gaps.`,
+          `Each gap is $360^\\circ\\div ${n}=${360 / n}^\\circ$. Turning by that much moves each vertex to the next one, so the polygon lands on itself.`,
+          `Any smaller turn would leave the vertices between positions. The smallest rotation is ${f(360 / n)}.`,
         ],
       };
     },
@@ -1099,8 +1162,18 @@ const polygonSymmetryFamily: Family = {
         wrong: f.wrong.map(([v, fb]) => [m(v), fb] as Wrong),
         hint: `Imagine folding ${f.name} along a line so the two halves match exactly. Try lines through opposite vertices, and lines through midpoints of opposite sides.`,
         explanation: [
-          `A line of reflection is a line along which the figure can be folded so the halves coincide.`,
-          `${f.name[0]!.toUpperCase()}${f.name.slice(1)} has exactly ${f.lines} such ${f.lines === 1 ? "line" : "lines"}.`,
+          `A line of reflection (a line of symmetry) is a fold line: fold the figure along it and the two halves match exactly.`,
+          `Test two kinds of lines: through opposite corners, and through the midpoints (middle points) of opposite sides.`,
+          f.lines === 0
+            ? `For ${f.name}, every fold leaves the halves mismatched, because of its slant and unequal sides.`
+            : f.lines === 1
+              ? `For ${f.name}, only the line through the midpoints of the two parallel sides works.`
+              : f.name.includes("rectangle")
+                ? `For ${f.name}, the two lines through midpoints of opposite sides work. The diagonals do not, because the sides are unequal.`
+                : f.name.includes("rhombus")
+                  ? `For ${f.name}, both diagonals work. The lines through side midpoints do not, because the angles are unequal.`
+                  : `For ${f.name}, every line from a vertex or side midpoint through the center works, one line per side.`,
+          `So ${f.name} has exactly ${f.lines} ${f.lines === 1 ? "line" : "lines"} of reflection.`,
         ],
       };
     },
@@ -1136,13 +1209,20 @@ const polygonSymmetryFamily: Family = {
             (k) =>
               [
                 sets[k],
-                `That list belongs to ${owner[k]}, not to ${fig[0]}.`,
+                `That list fits ${owner[k]}, not ${fig[0]}. Test each turn: does every corner land on a corner, with matching side lengths?`,
               ] as Wrong,
           ),
         hint: `Rotate ${fig[0]} in steps between $0^\\circ$ and $360^\\circ$ and ask after each step whether every vertex lands on a vertex and the sides match. Check that each side lands on a side of the same length.`,
         explanation: [
-          `A rotation carries the figure onto itself when each vertex lands on a vertex and each side on a side.`,
-          `For ${fig[0]} the rotations are: ${sets[key]}.`,
+          `A rotation turns the figure around its center. It carries the figure onto itself when each corner lands on a corner and each side on a side of the same length.`,
+          key === "half"
+            ? `For ${fig[0]}, a half turn ($180^\\circ$) swaps opposite corners, which match. A quarter turn would put a long side where a short side was, or tilt the angles wrong.`
+            : key === "square"
+              ? `A square has four equal sides and four right angles, so every quarter turn ($90^\\circ$) lands it on itself.`
+              : key === "none"
+                ? `For ${fig[0]}, the two parallel sides have different lengths. Any turn short of $360^\\circ$ puts a side where a different-length side was.`
+                : `A regular hexagon has six equal sides, so every sixth of a turn ($360^\\circ\\div 6=60^\\circ$) lands it on itself.`,
+          `So for ${fig[0]} the rotations are: ${sets[key]}.`,
         ],
       };
     },
@@ -1173,8 +1253,11 @@ const polygonSymmetryFamily: Family = {
         ],
         hint: `Each rotation moves a fixed vertex to one of the ${n} vertex positions. How many different positions can it reach?`,
         explanation: [
-          `A rotation is decided by where it sends one chosen vertex, and that vertex can land on any of the ${n} vertices.`,
-          `So there are ${n} rotations: the multiples of $${360 / n}^\\circ$ from $0^\\circ$ through $${360 - 360 / n}^\\circ$.`,
+          `A regular polygon has all sides and angles equal. A rotation turns it around its center.`,
+          `Pick one corner (vertex). A rotation that carries the polygon onto itself must send that corner to one of the ${n} corner positions.`,
+          `Each position gives exactly one rotation, so there are ${n} rotations.`,
+          `They are the multiples of $360^\\circ\\div ${n}=${360 / n}^\\circ$, from $0^\\circ$ through $${360 - 360 / n}^\\circ$.`,
+          `So ${n} different rotations carry the polygon onto itself.`,
         ],
       };
     },
@@ -1212,7 +1295,7 @@ function sequenceVariant(
       (ops) =>
         [
           label(ops),
-          `Apply this to $P${pt(P)}$: it ends at $${pt(trace(ops, P).at(-1)!)}$, but $P'$ is $${pt(P2)}$.`,
+          `Test it on one point. Apply this to $P${pt(P)}$: it ends at $${pt(trace(ops, P).at(-1)!)}$, but $P'$ is $${pt(P2)}$, so it does not map the triangle correctly.`,
         ] as Wrong,
     );
   const path = (p: Pt) =>
@@ -1227,8 +1310,11 @@ function sequenceVariant(
     wrong,
     hint: `Compare side $\\overline{PQ}$ from $P${pt(P)}$ to $Q${pt(Q)}$ with $\\overline{P'Q'}$ from $P'${pt(P2)}$ to $Q'${pt(Q2)}$: it goes from $\\langle ${sv(Q[0] - P[0])},${sv(Q[1] - P[1])}\\rangle$ to $\\langle ${sv(Q2[0] - P2[0])},${sv(Q2[1] - P2[1])}\\rangle$. Decide whether its length changed and whether its direction turned or flipped, then account for the shift of $P$.`,
     explanation: [
+      "A sequence of transformations is a list of moves done in order. Each move is a slide (translation), a flip (reflection), a turn (rotation) or a resizing (dilation).",
+      "To check a sequence, follow each vertex through every move and see whether it lands on its primed partner.",
       `Follow $P$: ${path(P)}. Follow $Q$: ${path(Q)}. These match $P'$ and $Q'$.`,
-      `Follow $R$: ${path(Rr)}, which matches $R'$. The sequence is: ${seqText(correct)}.`,
+      `Follow $R$: ${path(Rr)}, which matches $R'$.`,
+      `All three vertices land correctly, so the sequence is: ${seqText(correct)}.`,
     ],
     model: { P, Q, R: Rr, correct, P2, Q2, R2 },
   };
@@ -1332,8 +1418,11 @@ const constructionFamily: Family = {
         ],
         hint: `Points on the perpendicular bisector are the same distance from $${A}$ and $${B}$. Decide what second arc would produce points that are as far from $${B}$ as from $${A}$.`,
         explanation: [
-          `Any point on the first arc is the chosen distance from $${A}$. To find points equally far from $${B}$, use the same opening centered at $${B}$.`,
-          `The two arcs cross above and below the segment; the line through those crossings is the perpendicular bisector.`,
+          `A compass-and-straightedge construction draws figures using only a compass (for circles and arcs) and a straightedge (an unmarked ruler for lines). Nothing is measured.`,
+          `The perpendicular bisector crosses $\\overline{${A}${B}}$ at its midpoint, at a right angle. Every point on it is equally far from $${A}$ and $${B}$.`,
+          `Every point on the first arc is one fixed distance from $${A}$. Using the same opening centered at $${B}$ finds points that same distance from $${B}$.`,
+          `Where the two arcs cross, a point is equally far from $${A}$ and $${B}$. They cross twice, above and below, and the line through those two points is the bisector.`,
+          `So the next step is: keep the same opening and draw an arc centered at $${B}$ that crosses the first arc above and below the segment.`,
         ],
       };
     },
@@ -1360,8 +1449,11 @@ const constructionFamily: Family = {
       ],
       hint: "The bisector is the set of points that are the same distance from both sides of the angle. Decide how to locate one such point inside the angle using equal arcs from $P$ and $Q$.",
       explanation: [
-        "Arcs of equal radius centered at $P$ and $Q$ cross at a point $X$ that is equally far from $P$ and $Q$.",
-        "Because $BP=BQ$ and $XP=XQ$, triangles $BPX$ and $BQX$ are congruent, so ray $BX$ bisects $\\angle ABC$.",
+        "A compass-and-straightedge construction draws figures using only a compass (for circles and arcs) and a straightedge (an unmarked ruler for lines). Nothing is measured.",
+        "To bisect an angle means to split it into two equal angles. The first arc makes $BP=BQ$.",
+        "Next, arcs of the same radius centered at $P$ and $Q$ cross at a point $X$ inside the angle. Then $XP=XQ$.",
+        "Triangles $BPX$ and $BQX$ now have three pairs of equal sides ($BX$ is shared), so they are congruent, exact copies. Their angles at $B$ are equal, so ray $BX$ bisects $\\angle ABC$.",
+        "So the next step is: with one opening, draw arcs centered at $P$ and at $Q$ that cross inside the angle.",
       ],
     }),
     () => ({
@@ -1387,8 +1479,11 @@ const constructionFamily: Family = {
       ],
       hint: "Name the distances that the equal-radius arcs make equal for the crossing point $X$. Then recall which set of points is equally far from $A$ and $B$.",
       explanation: [
-        "$XA=XB$ and $YA=YB$ because each pair is a radius of arcs with the same opening.",
-        "A point equally far from $A$ and $B$ lies on the perpendicular bisector of $\\overline{AB}$, so $X$ and $Y$ both lie on it. Two points determine exactly one line, so $XY$ is the bisector.",
+        "The perpendicular bisector of $\\overline{AB}$ crosses it at its midpoint, at a right angle. Equidistant means equally far.",
+        "The arcs have the same opening, so $XA=XB$ and $YA=YB$: each pair is the same radius.",
+        "Every point equidistant from $A$ and $B$ lies on the perpendicular bisector. So $X$ and $Y$ both lie on it.",
+        "Exactly one line passes through two points, so line $XY$ is the perpendicular bisector.",
+        "The fact that explains it: $X$ and $Y$ are each equidistant from $A$ and $B$, so both lie on the bisector, and two points fix a line.",
       ],
     }),
     () => ({
@@ -1414,8 +1509,10 @@ const constructionFamily: Family = {
       ],
       hint: "The copied angle and the original angle sit in matching positions at the two crossings. Ask which theorem uses equal angles in matching positions to conclude something about the lines.",
       explanation: [
-        "The copy makes the new angle at $P$ congruent to the original angle, and they are corresponding angles for the transversal.",
-        "Congruent corresponding angles imply the lines are parallel, so the new line through $P$ is parallel to $\\ell$.",
+        "A transversal is a line that crosses two other lines. Corresponding angles sit in matching positions at the two crossings.",
+        "Copying the angle makes the new angle at $P$ congruent (equal) to the original, in the matching position. So they are congruent corresponding angles.",
+        "The construction has to prove the lines parallel, so it needs a theorem that ends with \"the lines are parallel\". That is the converse: the familiar theorem run backward.",
+        "The theorem is: if corresponding angles formed by a transversal are congruent, the two lines are parallel.",
       ],
     }),
     (r) => {
@@ -1456,8 +1553,11 @@ const constructionFamily: Family = {
         ],
         hint: "Among Steps 1, 2, 3 and 4, each step uses points made earlier. Find the step that needs nothing else, then the step that uses only that point, and continue.",
         explanation: [
-          `Mark $P$ first. Then arcs from $P$ make $X$ and $Y$ on $\\ell$, which are the same distance from $P$.`,
-          `Arcs from $X$ and $Y$ with equal radii cross at $Z$, which is as far from $X$ as from $Y$, so $Z$ is on the perpendicular bisector of $\\overline{XY}$, which passes through $P$. The line $PZ$ is the perpendicular.`,
+          "Each step of a construction can use only points that earlier steps made. So find the step that needs nothing, then build up.",
+          `Step ${letterOf(0)} comes first: mark $P$. Every later arc or line depends on it.`,
+          `Step ${letterOf(1)} is next: arcs centered at $P$ make $X$ and $Y$ on $\\ell$, the same distance from $P$.`,
+          `Step ${letterOf(2)} follows: equal arcs from $X$ and $Y$ cross at $Z$, which is equally far from $X$ and $Y$. So $Z$ is on the perpendicular bisector of $\\overline{XY}$, which passes through $P$.`,
+          `Step ${letterOf(3)} is last: line $PZ$ is the perpendicular. The correct order is ${order(canonical)}.`,
         ],
       };
     },
