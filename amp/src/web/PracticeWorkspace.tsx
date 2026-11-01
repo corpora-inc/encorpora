@@ -490,18 +490,20 @@ export function PracticeWorkspace(props: Props) {
         ),
       );
     const content = host.querySelector<HTMLElement>(".problem-content");
+    // The problem may shrink below its own content (a flex item at
+    // min-height 0), so its end is where that content ends.
+    const end = () =>
+      content
+        ? content.offsetTop +
+          Math.max(content.offsetHeight, content.scrollHeight)
+        : 0;
     const update = () => {
-      room.style.top = `${content ? content.offsetTop + content.offsetHeight : 0}px`;
+      room.style.top = `${end()}px`;
       room.style.height = `${overlap()}px`;
     };
     update();
     if (reviewInProblem && !outcome.correct) {
-      const hidden = content
-        ? content.offsetTop +
-          content.offsetHeight -
-          host.scrollTop -
-          (host.clientHeight - overlap())
-        : 0;
+      const hidden = end() - host.scrollTop - (host.clientHeight - overlap());
       if (hidden > 0)
         host.scrollBy({
           top: hidden + 8,

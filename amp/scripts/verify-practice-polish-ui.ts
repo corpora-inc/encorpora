@@ -514,7 +514,8 @@ async function runCase(
   const context = await browser.newContext({
     viewport: { width, height },
     colorScheme: theme,
-    reducedMotion: "reduce",
+    // Motion is reduced so screenshots are stable; AUDIT_MOTION=1 keeps it.
+    reducedMotion: process.env.AUDIT_MOTION === "1" ? "no-preference" : "reduce",
     hasTouch: phone,
     isMobile: phone && browserName === "chromium",
   });

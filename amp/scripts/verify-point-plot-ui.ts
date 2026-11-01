@@ -657,13 +657,30 @@ try {
           .click();
         await page.locator(".feedback.skipped").waitFor();
         await page.waitForTimeout(300);
+        // The sheet may rise above the dock (progress and connections keep
+        // their height); the stage then scrolls the circled answer above it.
+        await page.locator(".problem-stage").evaluate(
+          (stage) =>
+            new Promise<void>((done) => {
+              let last = -1,
+                still = 0;
+              const tick = () => {
+                still = stage.scrollTop === last ? still + 1 : 0;
+                last = stage.scrollTop;
+                if (still >= 10) done();
+                else requestAnimationFrame(tick);
+              };
+              tick();
+            }),
+        );
         const sheet = (await page.locator(".feedback").boundingBox())!;
+        const grid = (await page.locator(".point-plot-canvas").boundingBox())!;
         await page.screenshot({
           path: `${shots}/place-transformed-image-${width}-${theme}-skipped.png`,
         });
         assert.ok(
-          sheet.y >= dock.y - 1,
-          `${width} ${theme}: skipped sheet ${sheet.y} covers the grid above dock ${dock.y}`,
+          sheet.y >= dock.y - 1 || grid.y + grid.height <= sheet.y + 1,
+          `${width} ${theme}: skipped sheet ${sheet.y} covers the grid (bottom ${grid.y + grid.height}) above dock ${dock.y}`,
         );
         assert.equal(await page.locator(".point-plot-ring").count(), 3);
         assert.equal(await page.locator(".point-plot-dot").count(), 0);
