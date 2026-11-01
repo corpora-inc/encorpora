@@ -314,9 +314,11 @@ export const repeatedZeroRule = chainFamily({
       ],
       hint: `The graph touches the $x$-axis at $x = ${a}$ and crosses at $x = ${b}$, and it falls to the right. Decide which factor must be squared, then decide the sign of the leading coefficient.`,
       explanation: [
+        `A zero of a polynomial is an $x$ where its graph meets the $x$-axis. Each zero $r$ gives a factor $(x - r)$, because that factor is 0 there.`,
         `The zeros are $x = ${a}$ and $x = ${b}$, so the factors are $(x ${a < 0 ? "+" : "-"} ${Math.abs(a)})$ and $(x ${b < 0 ? "+" : "-"} ${Math.abs(b)})$.`,
         `The graph touches the axis at ${a} without crossing, so $(x ${a < 0 ? "+" : "-"} ${Math.abs(a)})$ is squared; it crosses at ${b}, so that factor appears once.`,
-        "The graph falls to the right, so the leading coefficient is negative.",
+        "The leading coefficient is the number multiplying the highest power of $x$. It decides the far-right end: positive goes up, negative goes down.",
+        "This graph falls to the right, so the leading coefficient is negative.",
         `The equation is ${f(a, b, -1, 2, 1)}.`,
       ],
     });
@@ -376,6 +378,7 @@ export const sinusoidCompareRule = chainFamily({
       ],
       hint: `Read the maximum of $f$ from the graph and its period from the distance between peaks. For $g$ the maximum is the number ${C} in front, and the period is $\\frac{2\\pi}{B}$ for $B = \\frac{2\\pi}{${Q}}$. A shorter period means a greater frequency.`,
       explanation: [
+        `A periodic graph repeats. Its period is the length of one full cycle, and its frequency is how many cycles fit in a fixed length, so a shorter period means a greater frequency.`,
         `The graph of $f$ reaches a maximum of ${A} and repeats every ${P} units, so its period is ${P}.`,
         `For $g$ the maximum is ${C}, and the period is $2\\pi \\div \\frac{2\\pi}{${Q}} = ${Q}$.`,
         `${C} is ${gMaxGreater ? "greater" : "smaller"} than ${A}, and a period of ${Q} compared with ${P} gives $g$ a ${gFreqGreater ? "greater" : "smaller"} frequency.`,
@@ -441,8 +444,9 @@ export const tideCosineEquation = chainFamily({
       ],
       hint: `The graph runs from ${D - A} up to ${D + A}, and one full cycle takes ${P} hours. Use amplitude $\\frac{\\text{maximum} - \\text{minimum}}{2}$, midline $\\frac{\\text{maximum} + \\text{minimum}}{2}$ and $B = \\frac{2\\pi}{\\text{period}}$.`,
       explanation: [
-        `The maximum is ${D + A} and the minimum is ${D - A}, so the amplitude is ${A} and the midline is $y = ${D}$.`,
-        `One cycle takes ${P} hours, so $B = \\frac{2\\pi}{${P}} = \\frac{\\pi}{${half}}$.`,
+        `In $y = A\\cos(Bt) + D$, the midline $y = D$ is the level halfway between the highest and lowest values, and the amplitude $A$ is the distance from the midline to a peak.`,
+        `The maximum is ${D + A} and the minimum is ${D - A}. Halfway between is ${D}, and each is ${A} away, so the amplitude is ${A} and the midline is $y = ${D}$.`,
+        `One full cycle of cosine covers $2\\pi$ of its input. One cycle here takes ${P} hours, so $B = \\frac{2\\pi}{${P}} = \\frac{\\pi}{${half}}$.`,
         `The graph starts at a ${sign > 0 ? "maximum" : "minimum"} at $t = 0$, so it is ${sign > 0 ? "a cosine" : "a negative cosine"}: ${eq(sign * A, "cos", "\\pi", D)}.`,
       ],
     });
@@ -517,6 +521,7 @@ export const cubicGraphStatement = chainFamily({
       ],
       hint: `The graph touches the $x$-axis at $x = ${a}$ and crosses it at $x = ${b}$, and it turns around at $x = ${lo}$ and $x = ${hi}$. Check each statement against what the graph does at those places and at its far left and right.`,
       explanation: [
+        `The multiplicity of a zero is how many times its factor appears. A zero of multiplicity 2 makes the graph touch the axis and turn back. A zero with a single factor makes the graph cross.`,
         `The graph touches the axis at ${a} and crosses at ${b}, so ${a} is a zero of multiplicity 2 and ${b} a zero of multiplicity 1.`,
         `The graph ${k > 0 ? "rises" : "falls"} to the right and ${k > 0 ? "falls" : "rises"} to the left; it turns at $x = ${lo}$ and $x = ${hi}$.`,
         `The true statement is ${correct}.`,
