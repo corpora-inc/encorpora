@@ -75,7 +75,7 @@ export const exponentialLessons: Lesson[] = [
     id: "growth-comparison",
     title: "Exponential growth overtakes linear growth",
     summary:
-      "A pattern can grow by adding or by multiplying. Linear growth adds the same amount each step, like 10, 20, 30, 40. Exponential growth multiplies by the same number each step, like 1, 2, 4, 8. If the multiplying pattern starts above 0 and multiplies by more than 1, it passes the adding pattern in the end, however far behind it starts.",
+      "A pattern, a list of numbers made by repeating one step, can grow by adding or by multiplying. Linear growth adds the same amount each step, like 10, 20, 30, 40. Exponential growth multiplies by the same number each step, like 1, 2, 4, 8. If the multiplying pattern starts above 0 and multiplies by more than 1, it passes the adding pattern in the end, however far behind it starts.",
     senses: {
       difference: "difference-subtract",
       change: "change",
@@ -93,10 +93,10 @@ export const exponentialLessons: Lesson[] = [
         stage: "intuition",
         title: "Differences or ratios",
         paragraphs: [
-          "A difference is the result of a subtraction. A ratio, here, is one value divided by the value before it. To test a table, first check that the inputs, the $x$-values, go up in equal steps, such as 0, 1, 2, 3.",
+          "A difference is the result of a subtraction. Here a ratio is one value divided by the value before it. To test a table, first check that the inputs, the $x$-values, go up in equal steps, such as 0, 1, 2, 3.",
           "Then subtract each output, each $y$-value, from the next one. If every difference is the same, the pattern is linear: it adds a fixed amount each step. For outputs 5, 8, 11, 14, every difference is 3, so the pattern is linear.",
           "If the differences change, divide each output by the one before it. If every ratio is the same, the pattern is exponential: it multiplies by a fixed number each step. For outputs 3, 6, 12, 24, every ratio is 2, so the pattern is exponential. If neither the differences nor the ratios stay the same, the pattern is neither.",
-          "Stories work the same way. “Adds 5 each week” is a fixed difference, so it is linear. Percent (%) means out of 100, so 5% of an amount is 0.05 times it. “Grows by 5% each week” keeps the whole amount and adds 0.05 of it, which multiplies by 1.05 each week: a fixed ratio, so it is exponential. “Adds one more each week than the week before” has neither.",
+          "Stories work the same way. “Adds 5 each week” is a fixed difference, so it is linear. Percent means out of 100, and its sign is %. So 5% of an amount is 0.05 times it. “Grows by 5% each week” keeps the whole amount and adds 0.05 of it, which multiplies by 1.05 each week: a fixed ratio, so it is exponential. “Adds one more each week than the week before” has neither.",
           "A function is a rule that gives one output for each input. We write $f(x)$, read “$f$ of $x$”, for the output of $f$ when the input is $x$. So $f(x) = 10x + 10$ means: multiply the input by 10, then add 10. In $g(x) = 2^x$, the small raised $x$ is an exponent: it says how many 2s to multiply together, so $2^3 = 2 \\times 2 \\times 2 = 8$, and $2^0 = 1$. The sign $>$ means is greater than, as in $8 > 5$.",
         ],
       },
@@ -104,7 +104,7 @@ export const exponentialLessons: Lesson[] = [
         title: "The crossing",
         paragraphs: [
           "Compare the line $y = 10x + 10$ with $y = 2^x$, which doubles each step. The line starts ahead: at $x = 0$ it is 10, while $2^0$ is only 1. The line adds 10 each step, and the exponential doubles.",
-          "At $x = 6$ the line is still ahead, because 70 is greater than 64. At $x = 7$ the exponential passes it, because 128 is greater than 80. After that, each doubling adds at least 128, while the line adds only 10. So the exponential's lead keeps growing.",
+          "At $x = 6$ the line is still ahead, because 70 is greater than 64. At $x = 7$ the exponential passes it, because 128 is greater than 80. After that, each doubling adds 128 or more, while the line adds only 10. So the exponential's lead keeps growing.",
           "To find the first whole number $x$ where the exponential is greater, work out both values at $x = 0, 1, 2, \\dots$ and compare them one step at a time. Stop at the first $x$ where the exponential is bigger.",
         ],
         illustration: "overtake-graph",
@@ -127,7 +127,7 @@ export const exponentialLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "Over equal steps of the input, a linear function $y = mx + c$ has equal differences, and an exponential function $y = a \\cdot b^x$ has equal ratios. Here $m$, $c$, $a$ and $b$ are fixed numbers, and the dot $\\cdot$ means times.",
+          "A linear function is one of the form $y = mx + c$, and an exponential function is one of the form $y = a \\cdot b^x$. Here $m$, $c$, $a$ and $b$ are fixed numbers, and the dot $\\cdot$ means times. Over equal steps of the input, the linear function has the same difference every step, and the exponential function has the same ratio every step.",
           "If $a > 0$ and $b > 1$, then $a \\cdot b^x$ eventually becomes greater than every linear function $mx + c$ as $x$ grows, and stays greater.",
         ],
       },
@@ -143,8 +143,9 @@ export const exponentialLessons: Lesson[] = [
     id: "exponential-equations",
     title: "Solving for an exponent",
     summary:
-      "In $2^x = 8$, the 2 is called the base and the unknown $x$ is the exponent: the small raised number that says how many 2s are multiplied together. A base with an exponent, like $2^3$, is called a power. Since $2 \\times 2 \\times 2 = 8$, the answer is $x = 3$. When both sides can be written as powers of the same base, set the exponents equal. When they cannot, a logarithm names the missing exponent.",
+      "In $2^x = 8$, the 2 is called the base and the unknown $x$ is the exponent: the small raised number that says how many 2s are multiplied together. A base with an exponent, like $2^3$, is called a power. Since $2 \\times 2 \\times 2 = 8$, the answer is $x = 3$. When both sides, meaning the left and the right of the equals sign, can be written as powers of the same base, set the exponents equal. When they cannot, a logarithm names the missing exponent.",
     senses: {
+      rule: "rule",
       base: "base-exponent",
       side: "side-of-equation",
       argument: "argument",
@@ -168,15 +169,15 @@ export const exponentialLessons: Lesson[] = [
         title: "Match the exponents",
         paragraphs: [
           "Two powers of the same base are equal only when their exponents are equal. So if $2^{2x} = 2^5$, then $2x = 5$, and $x = \\tfrac{5}{2}$. This works for any base that is positive and not 1. A base of 1 fails, because $1^2$ and $1^5$ are both 1.",
-          "Often the bases look different at first. $4^x = 32$ has no whole-number answer, but 4 is $2^2$ and 32 is $2^5$. A power of a power multiplies the exponents: $(2^2)^x = 2^{2x}$, because $x$ copies of $2 \\times 2$ make $2x$ twos. So $4^x = 32$ becomes $2^{2x} = 2^5$, and $x = \\tfrac{5}{2}$.",
+          "Often the bases look different at first. $4^x = 32$ has no whole-number answer, but 4 is $2^2$ and 32 is $2^5$. A power of a power multiplies the exponents: $(2^2)^x = 2^{2x}$. For $x = 1, 2, 3$ and so on, you can see why: $x$ copies of $2 \\times 2$ make $2x$ twos. The rule holds for every exponent. So $4^x = 32$ becomes $2^{2x} = 2^5$, and $x = \\tfrac{5}{2}$.",
           "A fraction like $\\tfrac{1}{8}$ is also a power of 2. A negative exponent means one divided by the power: $2^{-3} = \\tfrac{1}{2^3} = \\tfrac{1}{8}$.",
         ],
       },
       {
         title: "When the bases do not match",
         paragraphs: [
-          "In $3 \\cdot 10^x = 21$, the dot means times, and 21 is not a power of 10. First get the power alone. Divide both sides by 3 to get $10^x = 7$. Dividing both sides by the same number, other than 0, keeps them equal.",
-          "Now ask: 10 to what power gives 7? That exponent is called a logarithm. It is written $\\log_{10} 7$ and read “log base 10 of 7”. So $x = \\log_{10} 7$, which is about 0.845. With no base written, $\\log$ means base 10. The natural logarithm $\\ln$ means base $e$, a special number about 2.718.",
+          "In $3 \\cdot 10^x = 21$, the dot means times, and 21 is not a power of 10, meaning 10, 100, 1000 or another number made by multiplying 10s together. First get the power alone. Divide both sides by 3 to get $10^x = 7$. Dividing both sides by the same number, other than 0, keeps them equal.",
+          "Now ask: 10 to what power gives 7? That exponent is called a logarithm. It is written $\\log_{10} 7$ and read “log base 10 of 7”. So $x = \\log_{10} 7$, which is about 0.845. With no base written, $\\log$ means base 10. $\\ln$ stands for the natural logarithm, the logarithm with base $e$, a special number about 2.718.",
           "In general, $b^x = k$ means $x = \\log_b k$. The base of the power becomes the base of the logarithm. This needs the base $b$ to be positive and not 1, and $k$ to be positive.",
         ],
       },
@@ -195,7 +196,7 @@ export const exponentialLessons: Lesson[] = [
       steps: [
         "Write both bases as powers of 2, since $8 = 2^3$ and $16 = 2^4$. A power of a power multiplies the exponents, so $8^{x + 1} = 2^{3(x + 1)}$ and $16^x = 2^{4x}$.",
         "Now both sides are powers of 2, so their exponents must be equal: $3(x + 1) = 4x$.",
-        "Multiply out the bracket: $3x + 3 = 4x$. Subtract $3x$ from both sides to collect the $x$ terms on one side: $3 = x$.",
+        "Multiply out the bracket: $3x + 3 = 4x$. Subtract $3x$ from both sides to collect everything with $x$ on one side: $3 = x$.",
         "Check in the original equation: $8^{3 + 1} = 8^4 = 4096$, and $16^3 = 4096$. Both sides match, so $x = 3$.",
       ],
       answer: "3",
@@ -214,7 +215,7 @@ export const exponentialLessons: Lesson[] = [
     pitfalls: [
       "Divide away the number multiplying the power before you take a logarithm. In $3 \\cdot 2^x = 24$, first get $2^x = 8$, so $x = 3$.",
       "Write both sides with the same base before you compare exponents. $4^x = 8$ does not mean $x = 8 \\div 4$. It means $2^{2x} = 2^3$, so $x = \\tfrac{3}{2}$.",
-      "An answer that makes any logarithm's argument zero or negative is not a solution. Check every answer in the original equation.",
+      "An answer that makes any logarithm's argument zero or negative is not a solution, a value that makes the equation true. Check every answer in the original equation.",
     ],
     parentGuide:
       "Start with 1 and ask how many doublings it takes to pass 1,000. Count together: 2, 4, 8, … After 10 doublings the amount is 1,024. Explain that the number of doublings is an exponent, and a logarithm is the tool that finds it.",
@@ -223,7 +224,7 @@ export const exponentialLessons: Lesson[] = [
     id: "sequence-sums",
     title: "Adding a geometric sequence",
     summary:
-      "A geometric sequence is a list of numbers where each one is the one before it times the same number, like 3, 6, 12, 24 (times 2 each time). That number is called the common ratio. Adding up the terms, the numbers in the list, gives a geometric series. Instead of adding them one by one, use a shortcut: multiply the sum by the ratio and subtract the original sum. Almost every term cancels.",
+      "A geometric sequence is a list of numbers where each one is the one before it times the same number, like 3, 6, 12, 24 (times 2 each time). That number is called the common ratio. The sum of the terms, the numbers in the list, is called a geometric series. Instead of adding them one by one, use a shortcut: multiply the sum by the common ratio and subtract the original sum. Almost every term cancels.",
     senses: { term: "term-sequence", side: "side-of-equation" },
     noLink: ["mean", "leaves"],
     templateIds: ["geometric-series-sum"],
@@ -247,24 +248,24 @@ export const exponentialLessons: Lesson[] = [
         stage: "intuition",
         title: "Why the sum formula works",
         paragraphs: [
-          "Write the sum of $n$ terms: $S_n = a_1 + a_1 r + a_1 r^2 + \\cdots + a_1 r^{n-1}$. The dots $\\cdots$ mean the pattern continues.",
+          "Write the sum of $n$ terms: $S_n = a_1 + a_1 r + a_1 r^2 + \\cdots + a_1 r^{n-1}$. The dots $\\cdots$ mean the list goes on in the same way.",
           "Multiply every term by $r$: $r S_n = a_1 r + a_1 r^2 + \\cdots + a_1 r^{n}$. The two lists share every term except the first term of $S_n$ and the last term of $r S_n$.",
-          "Subtract $S_n$ from $r S_n$. All the shared terms cancel, which leaves $r S_n - S_n = a_1 r^n - a_1$. Take out the common factor on each side: $S_n(r - 1) = a_1(r^n - 1)$.",
-          "If $r$ is not 1, divide both sides by $r - 1$: $S_n = \\tfrac{a_1(r^n - 1)}{r - 1}$. When $r$ is between 0 and 1, the same value can be written $\\tfrac{a_1(1 - r^n)}{1 - r}$, which keeps the top and the bottom positive.",
+          "Subtract $S_n$ from $r S_n$. All the shared terms cancel, which leaves $r S_n - S_n = a_1 r^n - a_1$. Pull $S_n$ out on the left and $a_1$ out on the right: $S_n(r - 1) = a_1(r^n - 1)$.",
+          "If $r$ is not 1, divide both sides, meaning the left and the right of the equals sign, by $r - 1$: $S_n = \\tfrac{a_1(r^n - 1)}{r - 1}$. When $r$ is between 0 and 1, the same value can be written $\\tfrac{a_1(1 - r^n)}{1 - r}$, whose bottom, $1 - r$, is then positive.",
         ],
       },
       {
         title: "Count the terms",
         paragraphs: [
           "In $3 + 6 + 12 + \\cdots + 96$, the last term is term $n$, so $3 \\cdot 2^{n-1} = 96$. The dot means times. Divide both sides by 3: $2^{n-1} = 32$. Since $32 = 2^5$, $n - 1 = 5$, and $n = 6$. There are six terms: 3, 6, 12, 24, 48 and 96.",
-          "Sigma notation writes a sum with one symbol. In $\\sum_{k=1}^{6} 3 \\cdot 2^{k-1}$, the capital Greek letter $\\Sigma$ (sigma) means add up. The counter $k$ takes each whole number from 1, written below the sigma, to 6, written above it. So there are six terms, starting with $3 \\cdot 2^0 = 3$, because any number other than 0 raised to the power 0 is 1.",
+          "Sigma notation is a way to write a sum with one symbol. In $\\sum_{k=1}^{6} 3 \\cdot 2^{k-1}$, the capital Greek letter $\\Sigma$ (sigma) means add up. The counter $k$ takes the values 1, 2, 3 and so on, from 1, written below the sigma, to 6, written above it. So there are six terms, starting with $3 \\cdot 2^0 = 3$, because any number other than 0 raised to the power 0 is 1.",
         ],
       },
     ],
     workedExample: {
       prompt: "Find the sum $3 + 6 + 12 + \\cdots + 96$.",
       steps: [
-        "Find the first term and the ratio. The first term is $a_1 = 3$. Each term is double the one before, so the ratio is $r = 2$. Check: $6 \\div 3 = 2$.",
+        "Find the first term and the common ratio. The first term is $a_1 = 3$. Each term is double the one before, so the common ratio is $r = 2$. Check: $6 \\div 3 = 2$.",
         "Count the terms. The last term is $96 = 3 \\times 32 = 3 \\cdot 2^5$. A term's exponent is one less than its position, so 96 is term 6, and $n = 6$.",
         "Use the sum formula: $S_6 = \\tfrac{3(2^6 - 1)}{2 - 1} = \\tfrac{3 \\times 63}{1}$.",
         "So $S_6 = 189$. Check by adding: $3 + 6 + 12 + 24 + 48 + 96 = 189$.",
@@ -276,7 +277,7 @@ export const exponentialLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "For first term $a_1$, ratio $r \\neq 1$ ($\\neq$ means is not equal to) and a whole number of terms $n$ that is at least 1, the finite geometric sum is $S_n = \\tfrac{a_1(r^n - 1)}{r - 1}$. If $r = 1$, every term is $a_1$, so $S_n = n a_1$.",
+          "For first term $a_1$, common ratio $r \\neq 1$ ($\\neq$ means is not equal to) and a number of terms $n$ that is 1 or more, the finite geometric sum is $S_n = \\tfrac{a_1(r^n - 1)}{r - 1}$. If $r = 1$, every term is $a_1$, so $S_n = n a_1$.",
         ],
       },
     ],
@@ -291,7 +292,7 @@ export const exponentialLessons: Lesson[] = [
     id: "logarithm-properties",
     title: "Logarithm rules",
     summary:
-      "A logarithm answers one question: what exponent turns the base into this number? The exponent is the small raised number in a power like $2^3$, which means three 2s multiplied together. So $\\log_2 8 = 3$, because $2^3 = 8$. Because logarithms are exponents, they follow the exponent rules. Multiplying numbers adds their logarithms, dividing subtracts them, and raising to a power multiplies the logarithm.",
+      "In a power like $2^3$, the base is the number being multiplied, 2, and the exponent is the small raised number, 3: it means three 2s multiplied together. A logarithm is the answer to one question: what exponent turns the base into this number? So $\\log_2 8 = 3$, because $2^3 = 8$. Because logarithms are exponents, they follow the same laws as exponents. Multiplying numbers adds their logarithms, dividing subtracts them, and raising to a power multiplies the logarithm.",
     senses: {
       base: "base-exponent",
       rule: "rule",
@@ -322,9 +323,9 @@ export const exponentialLessons: Lesson[] = [
         stage: "intuition",
         title: "Product, quotient and power",
         paragraphs: [
-          "The product rule: $\\log_b(mn) = \\log_b m + \\log_b n$, where $mn$ means $m$ times $n$. The quotient rule: $\\log_b \\tfrac{m}{n} = \\log_b m - \\log_b n$, because dividing powers subtracts their exponents. A quotient is the result of a division. Both rules need $m$ and $n$ to be positive.",
-          "The power rule: $\\log_b(m^p) = p \\log_b m$. Raising $m$ to the power $p$ multiplies $p$ copies of $m$, so the logarithm of $m$ is added $p$ times.",
-          "These rules can combine logarithms that are not whole numbers on their own. $\\log_6 4$ and $\\log_6 9$ are not whole numbers, but $\\log_6 4 + \\log_6 9 = \\log_6 36 = 2$, because $6^2 = 36$.",
+          "The product rule: $\\log_b(mn) = \\log_b m + \\log_b n$, where $mn$ means $m$ times $n$. A quotient is the result of dividing one number by another. The quotient rule: $\\log_b \\tfrac{m}{n} = \\log_b m - \\log_b n$, because dividing powers subtracts their exponents. Both rules need $m$ and $n$ to be positive.",
+          "The power rule: $\\log_b(m^p) = p \\log_b m$. For $p = 1, 2, 3$ and so on, you can see why: $m^p$ multiplies $p$ copies of $m$, so the logarithm of $m$ is added $p$ times. The rule holds for every number $p$.",
+          "These rules can combine logarithms that are not whole numbers, meaning 0, 1, 2 and so on, on their own. $\\log_6 4$ and $\\log_6 9$ are not whole numbers, but $\\log_6 4 + \\log_6 9 = \\log_6 36 = 2$, because $6^2 = 36$.",
         ],
       },
       {
@@ -350,8 +351,8 @@ export const exponentialLessons: Lesson[] = [
         stage: "formal",
         title: "Precise rule",
         paragraphs: [
-          "For a base $b > 0$ with $b \\neq 1$ ($\\neq$ means is not equal to), and positive numbers $m$ and $n$: $\\log_b(mn) = \\log_b m + \\log_b n$ and $\\log_b \\tfrac{m}{n} = \\log_b m - \\log_b n$. For any real number $p$, $\\log_b(m^p) = p \\log_b m$.",
-          "Logarithms turn products into sums, quotients into differences, and powers into multiples.",
+          "For a base $b > 0$ with $b \\neq 1$ ($\\neq$ means is not equal to), and positive numbers $m$ and $n$: $\\log_b(mn) = \\log_b m + \\log_b n$ and $\\log_b \\tfrac{m}{n} = \\log_b m - \\log_b n$. For any number $p$ on the number line, $\\log_b(m^p) = p \\log_b m$.",
+          "Logarithms turn products into sums, quotients into differences, and powers into a number times the logarithm.",
           "Change of base: for $N > 0$ and bases $b > 0$ and $c > 0$ with $b \\neq 1$ and $c \\neq 1$, $\\log_b N = \\tfrac{\\log_c N}{\\log_c b}$.",
         ],
       },
@@ -422,7 +423,7 @@ export const exponentialLessons: Lesson[] = [
     id: "logarithms",
     title: "Ask for the exponent",
     summary:
-      "A power like $3^4 = 81$ has three parts. The base is 3. The exponent is 4, the small raised number: it means four 3s multiplied together. The result is 81. A logarithm asks for the exponent when you know the base and the result. $\\log_3 81$, read “log base 3 of 81”, asks: 3 to what power gives 81? The answer is 4.",
+      "A power like $3^4 = 81$ has three parts. The base is the number being multiplied, 3. The exponent is the small raised number, 4: it means four 3s multiplied together. The result is 81. A logarithm is the exponent you are looking for when you know the base and the result. $\\log_3 81$, read “log base 3 of 81”, asks: 3 to what power gives 81? The answer is 4.",
     senses: {
       base: "base-exponent",
       argument: "argument",
@@ -453,7 +454,7 @@ export const exponentialLessons: Lesson[] = [
         paragraphs: [
           "On the graph of $y = \\log_2 x$, each doubling of $x$ adds 1 to $y$: $\\log_2 2 = 1$, $\\log_2 4 = 2$ and $\\log_2 8 = 3$. The curve passes through the point $(1, 0)$, because $2^0 = 1$.",
           "Halving $x$ takes 1 away from $y$. So $\\log_2 \\tfrac{1}{2} = -1$, because $2^{-1} = \\tfrac{1}{2}$. A negative exponent means one divided by the power.",
-          "Roots are fractional exponents. A square root is the power $\\tfrac{1}{2}$, so $\\sqrt{8} = 8^{1/2} = (2^3)^{1/2} = 2^{3/2}$. That gives $\\log_2 \\sqrt{8} = \\tfrac{3}{2}$.",
+          "A fractional exponent, an exponent that is a fraction, works like a root, the number that multiplied by itself gives what is inside. A square root is the power $\\tfrac{1}{2}$, so $\\sqrt{8} = 8^{1/2} = (2^3)^{1/2} = 2^{3/2}$. That gives $\\log_2 \\sqrt{8} = \\tfrac{3}{2}$.",
           "A number between two powers has a logarithm between their exponents. The sign $<$ means is less than. Since $8 < 10 < 16$, that is $2^3 < 10 < 2^4$, $\\log_2 10$ is between 3 and 4.",
         ],
         illustration: "log-graph-points",
@@ -474,14 +475,14 @@ export const exponentialLessons: Lesson[] = [
         title: "Precise rule",
         paragraphs: [
           "For a base $b > 0$ with $b \\neq 1$ ($\\neq$ means is not equal to) and a number $N > 0$, the statements $\\log_b N = p$ and $b^p = N$ say the same thing.",
-          "$\\log_b b^k = k$ for every real number $k$, including negative numbers and fractions.",
+          "$\\log_b b^k = k$ for every number $k$ on the number line, including numbers below 0 and fractions.",
         ],
       },
     ],
     pitfalls: [
-      "A logarithm asks for an exponent, not a division. $\\log_3 81$ is 4, not $81 \\div 3$.",
-      "Count how many times the base is multiplied, not the multiplication signs. $3 \\times 3 \\times 3 \\times 3$ has four 3s but only three signs.",
-      "The logarithm of a fraction like $\\tfrac{1}{8}$ is negative: $\\log_2 \\tfrac{1}{8} = -3$, not $\\tfrac{1}{3}$.",
+      "A logarithm asks for an exponent. It is not $81 \\div 3$: $\\log_3 81$ is 4.",
+      "Count how many 3s are multiplied together, not the $\\times$ signs. $3 \\times 3 \\times 3 \\times 3$ has four 3s but only three signs.",
+      "With a base greater than 1, the logarithm of a fraction between 0 and 1 is negative: $\\log_2 \\tfrac{1}{8} = -3$, not $\\tfrac{1}{3}$.",
     ],
     parentGuide:
       "Write a familiar power, like $2^5 = 32$, and cover the exponent. Ask what it must be. Then write the same fact as a logarithm, $\\log_2 32 = 5$, and read it aloud together: “2 to what power gives 32?”",
@@ -520,23 +521,24 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["model", "balance", "whole"],
     intuition:
-      "A linear pattern adds the same amount each step, like 5, 8, 11, 14 (add 3 each time). An exponential pattern multiplies by the same number each step, like 3, 6, 12, 24 (times 2 each time). A pattern that does neither is called neither.",
+      "An input is a number you start with, and an output is the number you get from it. A linear relationship adds the same amount to the output each step, like 5, 8, 11, 14 (add 3 each time). An exponential relationship multiplies the output by the same number each step, like 3, 6, 12, 24 (times 2 each time). One that does neither is called neither.",
     method: [
       "Check that the inputs, the $x$-values, go up in equal steps, such as 0, 1, 2, 3.",
-      "Find the differences: subtract each output from the next one. If they are all equal, the pattern is linear.",
-      "If not, find the ratios: divide each output by the one before it. If they are all equal, the pattern is exponential.",
-      "If neither the differences nor the ratios stay the same, the pattern is neither.",
+      "Find the differences: subtract each output from the next one. If they are all equal, the relationship is linear.",
+      "If not, find the ratios: divide each output by the one before it. If they are all equal, the relationship is exponential.",
+      "If neither the differences nor the ratios stay the same, the relationship is neither.",
     ],
     watch:
       "“Grows by 5 each week” adds a fixed amount, so it is linear. “Grows by 5% each week” multiplies by 1.05 each week, so it is exponential.",
   },
   "exponential-overtakes": {
     goal: "Given a linear and an exponential function, find the first whole number input where the exponential is greater.",
+    senses: { rule: "rule" },
     noLink: ["whole", "jumps"],
     intuition:
-      "A linear function adds the same amount each step. An exponential function multiplies by the same number each step, so its jumps keep getting bigger. We write $f(x)$, read “$f$ of $x$”, for the output of $f$ when the input is $x$. The sign $>$ means is greater than.",
+      "An input is a number you start with, and an output is the number you get. A function is a rule that turns each input into exactly one output. We write $f(x)$, read “$f$ of $x$”, for the output when the input is $x$. A linear function is one that adds the same amount each step. An exponential function is one that multiplies by the same number each step, so when that number is greater than 1, its jumps keep getting bigger. The sign $>$ means is greater than.",
     method: [
-      "Work out both functions at the whole numbers $x = 0, 1, 2, \\dots$, or continue both patterns one step at a time.",
+      "Work out both functions at the whole numbers, meaning 0, 1, 2 and so on, or continue both lists of values one step at a time.",
       "Compare the two values at each step.",
       "The answer is the first whole number where the exponential's value is greater than the linear one.",
     ],
@@ -548,7 +550,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     senses: { base: "base-exponent", side: "side-of-equation" },
     noLink: ["mean"],
     intuition:
-      "An exponential equation has the unknown $x$ in an exponent, the small raised number, as in $4^x = 32$. Two powers of the same base (the number being raised) are equal only when their exponents are equal, as long as the base is positive and not 1. So write both sides as powers of one base, then set the exponents equal.",
+      "An exponential equation has the unknown $x$ in an exponent, the small raised number, as in $4^x = 32$. Two powers of the same base (the number being raised) are equal only when their exponents are equal, as long as the base is positive and not 1. So write both sides, meaning the left and the right of the equals sign, as powers of one base, then set the exponents equal.",
     method: [
       "Write each side as a power of the same base. For example, 4 is $2^2$ and 32 is $2^5$. A fraction like $\\tfrac{1}{8}$ is $2^{-3}$, because a negative exponent means one divided by the power.",
       "A power of a power multiplies the exponents: $(2^2)^x = 2^{2x}$.",
@@ -562,10 +564,10 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     senses: { side: "side-of-equation", base: "base-exponent" },
     noLink: ["balance", "whole", "more than"],
     intuition:
-      "In $3 \\cdot 10^x = 21$, the dot means times, the unknown $x$ is an exponent, and 21 is not a power of 10. A logarithm names the missing exponent: $\\log_b k$, read “log base $b$ of $k$”, is the power of $b$ that gives $k$. So $10^x = 7$ means $x = \\log_{10} 7$.",
+      "In $3 \\cdot 10^x = 21$, the dot means times, the unknown $x$ is an exponent, and 21 is not a power of 10, meaning 10, 100, 1000 or another number made by multiplying 10s together. The base is the number being raised to a power. A logarithm is the missing exponent: $\\log_b k$, read “log base $b$ of $k$”, is the power of $b$ that gives $k$. So $10^x = 7$ means $x = \\log_{10} 7$.",
     terms: [terms.logarithm],
     method: [
-      "Get the power alone. If a number is added to it, subtract that number from both sides. Then divide both sides by the number multiplying it, which is never 0 here.",
+      "Get the power alone. If a number is added to it, subtract that number from both sides, meaning the left and the right of the equals sign. Then divide both sides by the number multiplying it, which is never 0 here.",
       "Name the exponent with a logarithm in the same base: $b^x = k$ gives $x = \\log_b k$.",
       "If the exponent is more than just $x$, such as $x + 2$, set it equal to that logarithm and solve for $x$.",
     ],
@@ -583,7 +585,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       argument: "argument",
     },
     intuition:
-      "$\\log_b A = n$, read “log base $b$ of $A$ equals $n$”, means $b^n = A$: the logarithm is the exponent. The number $A$ inside the logarithm is called its argument. A logarithm exists only when its argument is positive.",
+      "The base is the number being raised to a power, and a logarithm is an exponent. $\\log_b A = n$, read “log base $b$ of $A$ equals $n$”, means $b^n = A$. The number $A$ inside the logarithm is called its argument. A logarithm exists only when its argument is positive.",
     terms: [terms.logarithm],
     method: [
       "If two logarithms with the same base are added, combine them into one by multiplying their arguments. If one is subtracted, divide by its argument instead.",
@@ -591,17 +593,17 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "Put each answer back into every original logarithm. Reject any answer that makes an argument zero or negative.",
     ],
     watch:
-      "Check each answer in the original logarithms. A zero or negative argument has no logarithm, so that answer is not a solution.",
+      "Check each answer in the original logarithms. A zero or negative argument has no logarithm, so that answer is not a solution, a value that makes the equation true.",
   },
   "geometric-series-sum": {
     goal: "Given a finite geometric series, find its sum.",
     senses: { term: "term-sequence" },
     intuition:
-      "A geometric series adds a list where each term is the one before it times the same number, the common ratio $r$, as in $3 + 6 + 12 + 24$ (times 2 each time). $a_1$, read “$a$ sub 1”, is the first term, and $n$ is the number of terms. A shortcut formula avoids adding them one by one.",
+      "A geometric sequence is a list where each term is the one before it times the same number. That number is called the common ratio, $r$. A geometric series is the sum of the terms of a geometric sequence, as in $3 + 6 + 12 + 24$ (times 2 each time). $a_1$, read “$a$ sub 1”, is the first term, and $n$ is the number of terms. A shortcut formula avoids adding them one by one.",
     terms: [terms.ratio],
     method: [
-      "Find the first term $a_1$. Find the ratio $r$ by dividing a term by the one before it (a term that is not 0).",
-      "Count the terms $n$. Term $n$ is $a_1 r^{n-1}$: its exponent is one less than its position. With sigma ($\\Sigma$, meaning add up), count the whole numbers from the bottom limit to the top one.",
+      "Find the first term $a_1$. Find the ratio, the number each term is multiplied by, by dividing a term by the one before it (a term that is not 0).",
+      "Count the terms $n$. Term $n$ is $a_1 r^{n-1}$: its exponent is one less than its position. With sigma ($\\Sigma$, meaning add up), count the whole numbers, meaning 0, 1, 2 and so on, from the bottom limit to the top one.",
       "If $r$ is not 1, use $S_n = \\tfrac{a_1(r^n - 1)}{r - 1}$. When $r$ is between 0 and 1, the same value is $\\tfrac{a_1(1 - r^n)}{1 - r}$. If $r = 1$, every term is $a_1$, so the sum is $n a_1$.",
     ],
     watch:
@@ -618,15 +620,15 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       argument: "argument",
     },
     intuition:
-      "A logarithm is an exponent: $\\log_b m$, read “log base $b$ of $m$”, is the power of $b$ that gives $m$. Adding logarithms with the same base multiplies their arguments, the numbers inside. Subtracting divides them. A number in front, as in $2\\log_3 6$, can move inside as an exponent.",
+      "A logarithm is an exponent, and the base is the number being raised to a power. $\\log_b m$, read “log base $b$ of $m$”, is the power of $b$ that gives $m$. Adding logarithms with the same base multiplies their arguments, the numbers inside. Subtracting divides them. A number in front, as in $2\\log_3 6$, can move inside as an exponent.",
     terms: [terms.logarithm],
     method: [
       "Move any number in front inside as an exponent: $p \\log_b m = \\log_b m^p$.",
       "Combine into one logarithm: a sum multiplies the arguments, and a difference divides them.",
-      "Write the single argument as a power of the base. Its exponent is the value: $\\log_3 9 = 2$ because $3^2 = 9$.",
+      "Write the single argument, the number inside the logarithm, as a power of the base. Its exponent is the value: $\\log_3 9 = 2$ because $3^2 = 9$.",
     ],
     watch:
-      "The rules need one base, and they combine products and quotients. $\\log(m + n)$ cannot be split into two logarithms.",
+      "These laws need one base. They combine products, the results of multiplying, and quotients, the results of dividing. $\\log(m + n)$ cannot be split into two logarithms.",
   },
   "log-expand": {
     goal: "Given a logarithm of a product, quotient or root, or a combination of logarithms, choose the equivalent form.",
@@ -639,9 +641,9 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       multiple: "multiple",
       base: "base-exponent",
     },
-    noLink: ["combination"],
+    noLink: ["part", "combination"],
     intuition:
-      "A logarithm is an exponent, so it follows the exponent rules. The logarithm of a product (a multiplication) is a sum of logarithms, and the logarithm of a quotient (a division) is a difference. The logarithm of a power is a multiple: $\\log(x^3) = 3\\log x$. A square root is the power $\\tfrac{1}{2}$, so $\\log\\sqrt{x} = \\tfrac{1}{2}\\log x$.",
+      "A logarithm is an exponent, so it follows the same laws as exponents. The base is the number being raised to a power. The logarithm of a product (a multiplication) is a sum of logarithms, and the logarithm of a quotient (a division) is a difference. The logarithm of a power is a multiple: $\\log(x^3) = 3\\log x$. A square root is the power $\\tfrac{1}{2}$, so $\\log\\sqrt{x} = \\tfrac{1}{2}\\log x$.",
     terms: [terms.logarithm],
     method: [
       "A product becomes a sum of logarithms. A quotient becomes a difference: the top's logarithm minus the bottom's.",
@@ -649,7 +651,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       "To condense, or combine into one logarithm, reverse the steps: numbers in front become exponents, then sums multiply and differences divide.",
     ],
     watch:
-      "An exponent multiplies only the logarithm of its own factor, and the bottom's logarithm is subtracted.",
+      "An exponent multiplies only the logarithm of its own factor, the part it is attached to, and the bottom's logarithm is subtracted.",
   },
   "change-of-base": {
     goal: "Given a logarithm in an awkward base, or a product or quotient of logs, find its value.",
@@ -661,7 +663,7 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
     },
     noLink: ["change", "leaves"],
     intuition:
-      "$\\log_8 32$, read “log base 8 of 32”, asks: 8 to what power gives 32? That is hard to see directly. The change-of-base rule rewrites it in an easier base: $\\log_8 32 = \\tfrac{\\log_2 32}{\\log_2 8} = \\tfrac{5}{3}$, because $32 = 2^5$ and $8 = 2^3$.",
+      "A logarithm is a missing exponent, and the base is the number being raised to a power. So $\\log_8 32$, read “log base 8 of 32”, asks: 8 to what power gives 32? That is hard to see directly. The change-of-base formula, a way to switch to an easier base, rewrites it: $\\log_8 32 = \\tfrac{\\log_2 32}{\\log_2 8} = \\tfrac{5}{3}$, because $32 = 2^5$ and $8 = 2^3$.",
     terms: [terms.logarithm],
     method: [
       "Use $\\log_b N = \\tfrac{\\log_c N}{\\log_c b}$, where $N$ is positive and both bases $b$ and $c$ are positive and not 1. The old base goes on the bottom.",
@@ -679,25 +681,25 @@ export const exponentialMethods: Record<string, ProblemMethod> = {
       base: "base-exponent",
     },
     intuition:
-      "$\\log_b N$, read “log base $b$ of $N$”, is the exponent that turns the base $b$ into $N$. One over a power has a negative exponent: $\\tfrac{1}{8} = \\tfrac{1}{2^3} = 2^{-3}$. A root has a fractional exponent: $\\sqrt{2} = 2^{1/2}$.",
+      "The base is the number being raised to a power. A logarithm is an exponent: $\\log_b N$, read “log base $b$ of $N$”, is the exponent that turns the base $b$ into $N$. One over a power flips the sign of its exponent: $\\tfrac{1}{8} = \\tfrac{1}{2^3} = 2^{-3}$. A square root is the number that, multiplied by itself, gives what is inside. It has a fractional exponent: $\\sqrt{2} = 2^{1/2}$.",
     terms: [terms.logarithm],
     method: [
       "Write the number inside the logarithm as a power of the base. One over $b^k$ is $b^{-k}$, and a square root of $b^k$ is $b^{k/2}$.",
       "The logarithm is that exponent.",
     ],
     watch:
-      "$\\log_b \\tfrac{1}{b^k}$ is $-k$, not $\\tfrac{1}{k}$: one over a power makes its exponent negative.",
+      "$\\log_b \\tfrac{1}{b^k}$ is $-k$, not $\\tfrac{1}{k}$: one over a power flips the sign of its exponent.",
   },
   "log-exponential-form": {
     goal: "Given a logarithmic or exponential statement, choose its other form, or place a logarithm between whole numbers.",
     senses: { base: "base-exponent", side: "side-of-equation" },
     noLink: ["part"],
     intuition:
-      "A logarithm statement and a power statement can say the same thing. $\\log_2 8 = 3$, read “log base 2 of 8 equals 3”, means $2^3 = 8$: the logarithm is the exponent, the small raised number.",
+      "A logarithm is an exponent, and the base is the number being raised to a power. A logarithm statement and a power statement can say the same thing. $\\log_2 8 = 3$, read “log base 2 of 8 equals 3”, means $2^3 = 8$: the logarithm is the exponent, the small raised number.",
     terms: [terms.logarithm],
     method: [
       "$\\log_b N = p$ and $b^p = N$ say the same thing. The base stays the base, the logarithm's value is the exponent, and $N$ is the result.",
-      "To place $\\log_b N$ between whole numbers, list powers of $b$ until one passes $N$. The logarithm is between the two exponents on either side.",
+      "To place $\\log_b N$ between whole numbers, meaning 0, 1, 2 and so on, take a base greater than 1 and $N$ greater than 1. List the powers $b^1, b^2, b^3, \\dots$ until one passes $N$. If one equals $N$, its exponent is the logarithm exactly. Otherwise the logarithm is between the exponents of the powers just below and just above $N$.",
     ],
     watch:
       "The result $N$ goes inside the logarithm, and the exponent is the logarithm's value.",
@@ -721,7 +723,7 @@ export const exponentialPrinciples: Record<string, string> = {
   "exponential-model-rule":
     "In $y=a\\cdot b^x$ with $b>0$, $a$ is the value at $x=0$. When $a\\ne0$, $b$ is the ratio between values one step apart.",
   "linear-or-exponential":
-    "Over equal steps, linear functions have equal differences and exponential functions have equal ratios.",
+    "Over equal steps, linear functions have equal differences, and exponential functions have ratios that are all the same.",
   "exponential-overtakes":
     "For $a>0$ and $b>1$, $ab^x$ eventually exceeds every linear function of $x$ as $x$ increases.",
   "same-base-equation":
@@ -739,7 +741,7 @@ export const exponentialPrinciples: Record<string, string> = {
   "change-of-base":
     "For $N>0$ and bases $b,c>0$ with $b,c\\ne1$, change of base gives $\\log_b N=\\frac{\\log_c N}{\\log_c b}$.",
   "logarithm-value":
-    "For a base $b > 0$ other than 1, $\\log_b b^k = k$ for every real number $k$, including negative and fractional exponents.",
+    "For a base $b > 0$ other than 1, $\\log_b b^k = k$ for every number $k$ on the number line, including negative and fractional exponents.",
   "log-exponential-form":
     "For a base $b > 0$ other than 1 and a number $N > 0$, $\\log_b N = p$ and $b^p = N$ are the same statement.",
   "geometric-sequence-rule":

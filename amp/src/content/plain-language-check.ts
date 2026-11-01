@@ -92,9 +92,11 @@ const after = [
   // "x is a …", "factors are …", "x means …", "x stands for …", "x is called"
   String.raw`^["”’']?\s*(?:\)|s)?\s*(?:is|are)\s+(?:called\s+|also\s+)?(?:a|an|the|one|two|how|what|when|where|any|each|every|all)\b`,
   String.raw`^["”’']?\s*(?:are|means?|stands? for|refers? to|tells|names?|is short for|is written|is read|has|have)\b`,
-  // An appositive: "x, the …," "x (the …)", "x, meaning …", "x —". A list
+  // An appositive: "x, the …," "x (the …)", "x —". A list of noun phrases
   // ("the slope, the intercept and the vertex") is not one.
-  String.raw`^["”’']?\s*(?:,|\(|—|–)\s*(?:the|a|an|which|that is|meaning|or|also|one|its|their|how|what|where|when|any|each|every|all)\b(?![^,;:.)]*\b(?:and|or)\b[^,;:.)]*[.;]?$)`,
+  String.raw`^["”’']?\s*(?:,|\(|—|–)\s*(?:the|a|an|one|its|their|any|each|every|all)\b(?![^,;:.)]*\b(?:and|or)\b[^,;:.)]*[.;]?$)`,
+  // A defining clause: "x, meaning …", "x, which …", "x, that is …", "x, or …"
+  String.raw`^["”’']?\s*(?:,|\(|—|–)\s*(?:which|that is|meaning|or|also|how|what|where|when)\b`,
   // A colon definition: "x: …"
   String.raw`^["”’']?\s*:`,
 ].map((p) => new RegExp(p, "iu"));

@@ -11,15 +11,15 @@ export const regentsAlgebraTwoExponentialMethods: Record<
     senses: { term: "term-sequence" },
     noLink: ["period"],
     intuition:
-      "A geometric sequence is a list where each term is the one before it times a fixed number, the common ratio $r$. The sum of its first $n$ terms is called a geometric series. $a_1$, read “$a$ sub 1”, is the first term. A payment that grows by 8% each year is 1.08 times the one before, so its ratio is 1.08.",
+      "A geometric sequence is a list where each term is the one before it times a fixed number. That number is called the common ratio, $r$. The sum of its first $n$ terms is called a geometric series. $a_1$, read “$a$ sub 1”, is the first term. A payment that grows by 8% each year is 1.08 times the one before, so the common ratio is 1.08.",
     terms: ["common-ratio", "geometric-series"],
     method: [
-      "Find $a_1$ and $r$. Get $r$ by dividing a term by the one before it, or turn an increase of $p\\%$ into $r = 1 + \\tfrac{p}{100}$.",
+      "Find $a_1$ and $r$. Get $r$ by dividing a term by the one before it (one that is not 0), or turn an increase of $p\\%$ into $r = 1 + \\tfrac{p}{100}$.",
       "If $r$ is not 1, use $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$, where $n$ is the number of terms.",
       "Count the terms carefully, and round only the final answer.",
     ],
     watch:
-      "The exponent is the number of terms, $n$. Keep the bottom as $1 - r$, and round only the final answer.",
+      "The exponent is the number of terms, $n$. In this form the top has $1 - r^n$ and the bottom has $1 - r$: keep both in the same order. Round only the final answer.",
   },
   "common-base-exponential": {
     goal: "Write both sides of an exponential equation as powers of one base, set the exponents equal and solve.",
@@ -28,13 +28,19 @@ export const regentsAlgebraTwoExponentialMethods: Record<
       base: "base-exponent",
       term: "term-expression",
     },
-    noLink: ["whole"],
+    noLink: ["part", "whole"],
     intuition:
       "An exponent is the small raised number in a power: $3^2 = 3 \\times 3 = 9$. Different numbers such as 27 and 9 can be powers of the same base: $27 = 3^3$ and $9 = 3^2$. Two powers of the same positive base, other than 1, are equal exactly when their exponents are equal. A negative exponent means one divided by the power: $3^{-2} = \\tfrac{1}{9}$.",
-    terms: ["base-exponent", "exponent"],
+    terms: [
+      "base-exponent",
+      [
+        "exponent",
+        "A negative exponent means one divided by the matching power: $3^{-2} = \\tfrac{1}{9}$.",
+      ],
+    ],
     method: [
-      "Rewrite each side as a power of the same base.",
-      "Use a power of a power, $(b^m)^k = b^{mk}$: multiply the base's exponent by the whole exponent expression.",
+      "Rewrite each side, meaning the part on the left or the right of the equals sign, as a power of the same base.",
+      "Use a power of a power, $(b^m)^k = b^{mk}$: multiply the base's exponent by the whole exponent.",
       "Set the exponents equal and solve. Check by putting the answer back in.",
     ],
     watch:
@@ -48,8 +54,9 @@ export const regentsAlgebraTwoExponentialMethods: Record<
       base: "base-exponent",
       parameter: "parameter",
     },
+    noLink: ["whole"],
     intuition:
-      "The base-10 logarithm undoes a power of 10: $\\log 10^k = k$. In $3 \\cdot 10^x = 45$, where the dot means times, first get $10^x$ alone by dividing by 3. Then take the logarithm. A letter that stands for a fixed number, like $a$ in $a \\cdot 10^x = b$, is called a parameter.",
+      "A logarithm is a missing exponent. The exponent is the small raised number in a power like $10^3$, and the base is the number being raised, here 10. The base-10 logarithm of a number, written $\\log$, is the power of 10 that gives it, so $\\log 10^k = k$. In $3 \\cdot 10^x = 45$, where the dot means times, first get $10^x$ alone by dividing by 3. Then take the logarithm. A letter that stands for a fixed number, like $a$ in $a \\cdot 10^x = b$, is called a parameter.",
     terms: [
       [
         "logarithm",
@@ -58,12 +65,12 @@ export const regentsAlgebraTwoExponentialMethods: Record<
       "parameter",
     ],
     method: [
-      "Divide both sides by the number or parameter that multiplies the power of 10. In these problems it is positive, never 0.",
+      "Divide both sides, meaning the left and the right of the equals sign, by the number or parameter that multiplies the power of 10. In these problems it is positive, never 0.",
       "Take $\\log$ of both sides, so the exponent comes down.",
       "If a number multiplies $x$ inside the exponent, divide both sides by it last. It is never 0 here.",
     ],
     watch:
-      "A number outside the power is divided away before the logarithm. A number inside the exponent is divided away after it.",
+      "A number that multiplies the whole power is divided away before the logarithm. A number that multiplies $x$ inside the exponent is divided away after it.",
   },
   "exponential-target-time": {
     goal: "Solve an exponential model for the time it reaches a target and round as the question asks.",
@@ -125,7 +132,7 @@ export const regentsAlgebraTwoExponentialMethods: Record<
 
 export const regentsAlgebraTwoExponentialPrinciples: Record<string, string> = {
   "geometric-series-total":
-    "For a geometric sequence with first term $a_1$ and ratio $r\\ne1$, the sum of the first $n$ terms is $S_n=\\dfrac{a_1(1-r^n)}{1-r}$. A $p\\%$ increase each period gives $r=1+\\frac{p}{100}$.",
+    "For a geometric sequence with first term $a_1$ and common ratio $r\\ne1$ ($\\ne$ means is not equal to), the sum of the first $n$ terms is $S_n=\\dfrac{a_1(1-r^n)}{1-r}$. A $p\\%$ increase each period gives $r=1+\\frac{p}{100}$.",
   "common-base-exponential":
     "For $b>0$ and $b\\ne1$, $b^u=b^v$ exactly when $u=v$. Also $(b^m)^k=b^{mk}$, which lets a power of a power be written in the base $b$.",
   "exponential-parameter-log":
@@ -145,7 +152,7 @@ export const regentsAlgebraTwoExponentialLessons = [
     id: "regents-geometric-series-total",
     title: "Totals of geometric series",
     summary:
-      "A geometric sequence is a list where each term, each number in the list, is the one before it times the same number, called the common ratio. For 4, 2, 1, the ratio is $\\tfrac{1}{2}$: each term is half the one before. Adding the first few terms gives a geometric series. A formula adds them all at once, and it also handles payments that grow by the same percent each year.",
+      "A geometric sequence is a list where each term, each number in the list, is the one before it times the same number, called the common ratio. For 4, 2, 1, each term is half the one before, so the common ratio is $\\tfrac{1}{2}$. The sum of the first few terms is called a geometric series. A formula adds them all at once. It also handles payments that grow each year by the same percent, a number out of 100.",
     senses: {
       term: "term-sequence",
       side: "side-of-equation",
@@ -160,14 +167,14 @@ export const regentsAlgebraTwoExponentialLessons = [
     openingTitle: "A fixed ratio makes the sum short",
     opening: [
       "In a geometric sequence, every term is the term before it times a fixed number $r$, the common ratio. The first term is written $a_1$: the small 1 is a label for position 1. The sum of the first $n$ terms is called a geometric series, written $S_n$.",
-      "A ratio below 1, like $\\tfrac{3}{4}$, makes the terms shrink. A ratio above 1 makes them grow. Percent (%) means out of 100. A payment that rises 8% each year keeps the whole amount and adds 0.08 of it, so each payment is 1.08 times the last: $r = 1.08$.",
-      "The sum formula is $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$, for any ratio $r$ that is not 1. Here $r^n$ means $r$ multiplied by itself $n$ times. That exponent, the small raised $n$, is the number of terms.",
+      "A common ratio between 0 and 1, like $\\tfrac{3}{4}$, makes the terms shrink. A common ratio above 1 makes them grow. Percent (%) means out of 100. A payment that rises 8% each year keeps the whole amount and adds 0.08 of it, so each payment is 1.08 times the last: $r = 1.08$.",
+      "The sum formula is $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$, for any common ratio $r$ that is not 1. Here $r^n$ means $r$ multiplied by itself $n$ times. That exponent, the small raised $n$, is the number of terms.",
     ],
     example: {
       prompt:
         "A geometric sequence has $a_1=4$ and $r=\\frac12$. What is the sum of the first 3 terms?",
       steps: [
-        "List the terms to see the pattern. Start at 4 and halve each time: 4, 2, 1. Adding them gives $4 + 2 + 1 = 7$.",
+        "List the terms first. Start at 4 and halve each time: 4, 2, 1. Adding them gives $4 + 2 + 1 = 7$.",
         "Now use the formula with $a_1 = 4$, $r = \\tfrac{1}{2}$ and $n = 3$. First, $r^3 = \\tfrac{1}{2} \\times \\tfrac{1}{2} \\times \\tfrac{1}{2} = \\tfrac{1}{8}$, so $1 - r^3 = \\tfrac{7}{8}$. Also $1 - r = \\tfrac{1}{2}$.",
         "So $S_3 = \\tfrac{4 \\times \\tfrac{7}{8}}{\\tfrac{1}{2}} = \\tfrac{7}{2} \\div \\tfrac{1}{2} = 7$. Dividing by $\\tfrac{1}{2}$ is the same as multiplying by 2.",
         "Both ways give 7. For three terms, listing is quick. For 20 terms, the formula saves the work.",
@@ -177,16 +184,16 @@ export const regentsAlgebraTwoExponentialLessons = [
     methodTitle: "Identify, substitute, round last",
     method: [
       "Name $a_1$, $r$ and $n$. For an increase of $p\\%$ each period, $r = 1 + \\tfrac{p}{100}$, so 8% gives $r = 1.08$.",
-      "Put them into $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$. Work out $r^n$ exactly, or with a calculator. Round only the final total, because rounding early can change the last digit.",
+      "Put them into $S_n = \\tfrac{a_1(1 - r^n)}{1 - r}$. Work out $r^n$ exactly, or with a calculator. Rounding means keeping fewer digits. Round only the final total, because rounding early can change the last digit.",
     ],
     formalTitle: "Why the formula works",
     formal: [
-      "Let $S = a_1 + a_1 r + \\cdots + a_1 r^{n-1}$, where the dots mean the pattern continues. Multiply every term by $r$: $rS = a_1 r + a_1 r^2 + \\cdots + a_1 r^n$. Subtract $S$ from $rS$. Every shared term cancels, so $rS - S = a_1 r^n - a_1$.",
-      "Take out the common factors: $S(r - 1) = a_1(r^n - 1)$. When $r \\neq 1$ ($\\neq$ means is not equal to), divide both sides by $r - 1$. That gives $S_n = \\tfrac{a_1(r^n - 1)}{r - 1}$, which equals $\\tfrac{a_1(1 - r^n)}{1 - r}$.",
+      "Let $S = a_1 + a_1 r + \\cdots + a_1 r^{n-1}$, where the dots mean the list goes on in the same way. Multiply every term by $r$: $rS = a_1 r + a_1 r^2 + \\cdots + a_1 r^n$. Subtract $S$ from $rS$. Every shared term cancels, so $rS - S = a_1 r^n - a_1$.",
+      "Take out the common factors: $S(r - 1) = a_1(r^n - 1)$. When $r \\neq 1$ ($\\neq$ means is not equal to), divide both sides, meaning the left and the right of the equals sign, by $r - 1$. That gives $S_n = \\tfrac{a_1(r^n - 1)}{r - 1}$, which equals $\\tfrac{a_1(1 - r^n)}{1 - r}$.",
     ],
     pitfalls: [
       "Use $n$, the number of terms, as the exponent in the formula, not $n - 1$.",
-      "The formula $\\tfrac{a_1}{1 - r}$ is for an endless list whose ratio is between $-1$ and 1. It does not give the sum of a fixed number of terms.",
+      "The formula $\\tfrac{a_1}{1 - r}$ is for an endless list whose common ratio is between $-1$ and 1. It does not give the sum of a fixed number of terms.",
       "Rounding $r^n$ early can change the final dollar amount.",
     ],
     parentGuide:
@@ -196,7 +203,7 @@ export const regentsAlgebraTwoExponentialLessons = [
     id: "regents-common-base-exponential",
     title: "Exponential equations with a common base",
     summary:
-      "In $27^x$, the 27 is the base and $x$ is the exponent: the small raised number that says how many 27s are multiplied together. Different numbers can be powers of the same base: $27 = 3^3$ and $9 = 3^2$. When both sides of an equation are powers of 3, they are equal exactly when their exponents are equal. That turns the equation into a simpler one with no exponents.",
+      "In $27^x$, the 27 is the base and $x$ is the exponent, the small raised number. For a whole number, the exponent says how many 27s are multiplied together. Different numbers can be powers of the same base: $27 = 3^3$ and $9 = 3^2$. When both sides, meaning the left and the right of the equals sign, are powers of 3, they are equal exactly when their exponents are equal. That turns the equation into a simpler one with no exponents.",
     senses: { base: "base-exponent", side: "side-of-equation", rule: "rule" },
     noLink: ["whole"],
     templateIds: ["common-base-exponential"],
@@ -208,7 +215,7 @@ export const regentsAlgebraTwoExponentialLessons = [
     opening: [
       "A power is a base with an exponent, like $3^3 = 3 \\times 3 \\times 3 = 27$. A power of a power multiplies the exponents: $(3^3)^x = 3^{3x}$, because $x$ copies of three 3s make $3x$ threes. So $27^x = 3^{3x}$.",
       "Two powers of the same base are equal exactly when their exponents are equal, as long as the base is positive and not 1. So if $3^{3x} = 3^{2(x + 3)}$, then $3x = 2(x + 3)$. The exponential equation has become a linear one, with no exponents.",
-      "Some powers have negative exponents. A negative exponent means one divided by the power: $3^{-2} = \\tfrac{1}{3^2} = \\tfrac{1}{9}$.",
+      "A negative exponent means one divided by the power: $3^{-2} = \\tfrac{1}{3^2} = \\tfrac{1}{9}$.",
     ],
     example: {
       prompt: "Solve $27^{x}=9^{x+3}$.",
@@ -223,13 +230,13 @@ export const regentsAlgebraTwoExponentialLessons = [
     methodTitle: "Base, multiply exponents, solve",
     method: [
       "Find a base that makes both numbers powers of it, such as 3 for 9 and 27, or 2 for 4 and 8.",
-      "Multiply the whole exponent by the power of the base: $9^{x+3} = 3^{2(x+3)}$.",
+      "Multiply the whole exponent by the base's own exponent: $9 = 3^2$, so $9^{x+3} = 3^{2(x+3)}$.",
       "Set the exponents equal and solve. Check by putting the answer back into both exponents.",
     ],
     formalTitle: "The rule",
     formal: [
-      "For a base $b > 0$ with $b \\neq 1$ ($\\neq$ means is not equal to): $b^u = b^v$ exactly when $u = v$. This works because each output of $b^x$ comes from only one input.",
-      "The rule needs a single common base on both sides. A power of a power follows $(b^m)^k = b^{mk}$.",
+      "For a base $b > 0$ with $b \\neq 1$ ($\\neq$ means is not equal to): $b^u = b^v$ exactly when $u = v$. This works because $b^x$ never gives the same result for two different values of $x$.",
+      "This needs a single common base on both sides. A power of a power follows $(b^m)^k = b^{mk}$.",
     ],
     pitfalls: [
       "Do not set the exponents equal while the bases are different.",
@@ -242,7 +249,7 @@ export const regentsAlgebraTwoExponentialLessons = [
     id: "regents-exponential-parameter-log",
     title: "Base-10 equations with parameters",
     summary:
-      "In $10^x = 15$, the unknown $x$ is an exponent: the power of 10 that gives 15. The base-10 logarithm, written $\\log$, names that exponent, so $x = \\log 15$. To solve, get the power of 10 alone, then take the logarithm. Sometimes letters such as $a$ and $b$ stand for fixed numbers. Letters like these are called parameters.",
+      "In $10^x = 15$, the unknown $x$ is an exponent, the small raised number. A power of 10 is a number made by multiplying 10 by itself, like $10^2 = 100$. The base-10 logarithm is the exponent that turns 10 into a given number. It is written $\\log$, so $x = \\log 15$. To solve, get the power of 10 alone, then take the logarithm. Sometimes letters such as $a$ and $b$ stand for fixed numbers. Letters like these are called parameters.",
     senses: { parameter: "parameter", side: "side-of-equation" },
     noLink: ["whole", "part"],
     templateIds: ["exponential-parameter-log"],
@@ -252,7 +259,7 @@ export const regentsAlgebraTwoExponentialLessons = [
     ],
     openingTitle: "A logarithm undoes a power of ten",
     opening: [
-      "The base-10 logarithm of $10^k$ is $k$: $\\log 10^3 = 3$, because $10^3 = 1000$. So taking $\\log$ of both sides brings an exponent down to an ordinary number.",
+      "The base-10 logarithm of $10^k$ is $k$: $\\log 10^3 = 3$, because $10^3 = 1000$. So taking $\\log$ of both sides, meaning the left and the right of the equals sign, brings an exponent down to an ordinary number.",
       "In $3 \\cdot 10^x = 45$, the dot means times, and 3 multiplies the whole power. Divide both sides by 3 first, to get $10^x = 15$. Then take the logarithm: $x = \\log 15$.",
       "In $10^{2x} = 15$, the 2 multiplies $x$ inside the exponent. Take the logarithm first: $2x = \\log 15$. Then divide both sides by 2: $x = \\tfrac{\\log 15}{2}$.",
       "A parameter is a letter that stands for a fixed number, like $a$ in $a \\cdot 10^x = b$. In these problems the parameters are positive, so dividing by them is allowed and the logarithm exists.",
@@ -274,7 +281,7 @@ export const regentsAlgebraTwoExponentialLessons = [
     formalTitle: "Conditions",
     formal: [
       "$\\log$ is defined only for positive numbers, so the right side after dividing must be positive.",
-      "$\\log(10^u) = u$ for every real number $u$. For $y > 0$, $10^u = y$ exactly when $u = \\log y$.",
+      "$\\log(10^u) = u$ for every number $u$ on the number line. For $y > 0$, $10^u = y$ exactly when $u = \\log y$.",
     ],
     pitfalls: [
       "$\\log \\tfrac{d}{c}$ is not $\\log d - c$. It equals $\\log d - \\log c$.",

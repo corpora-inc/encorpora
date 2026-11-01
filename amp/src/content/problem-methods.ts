@@ -1600,17 +1600,18 @@ const legacyMethods: Record<string, ProblemMethod> = {
   "logarithm-integer": {
     goal: "Given log base $b$ of $N$, find its value.",
     intuition:
-      "A power like $2^3 = 8$ has a base, 2, and an exponent, 3: the small raised number that counts how many 2s are multiplied together. $\\log_b N$, read “log base $b$ of $N$”, asks for that count: how many copies of $b$ multiply to give $N$? So $\\log_2 8 = 3$.",
+      "A power like $2^3 = 8$ has two parts. The base is the number being multiplied, 2, and the exponent is the small raised number, 3, that counts the copies. A logarithm is the exponent you are looking for. $\\log_b N$ is read “log base $b$ of $N$”. In these problems the answer is a whole number, so it counts how many copies of $b$ multiply to give $N$. So $\\log_2 8 = 3$.",
     senses: {
       base: "base-exponent",
       factor: "factor-number",
       product: "product-multiply",
     },
+    noLink: ["parts"],
     terms: ["logarithm"],
     method: [
       "$\\log_b N$ asks: $b$ to what power gives $N$?",
       "Multiply copies of $b$ together and keep count: one copy is $b$, two copies make $b^2 = b \\times b$, three make $b^3$, and so on.",
-      "The number of copies whose product is $N$ is the logarithm.",
+      "The number of copies that multiply to give $N$ is the logarithm.",
     ],
     watch:
       "The logarithm is the exponent, not $N \\div b$. $\\log_2 8$ is 3, because $2^3 = 8$. It is not 4.",

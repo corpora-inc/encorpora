@@ -53,6 +53,10 @@ test("a defining sentence says what the term means", () => {
     ["Find the quotient, the answer to a division.", "quotient"],
     ["Find the quotient (the answer to a division).", "quotient"],
     ["Exponent: the small raised number.", "exponent"],
+    [
+      "Subtract 3 from both sides, meaning the left and the right of the equals sign.",
+      "sides",
+    ],
     ["We write $|x|$ for the absolute value.", "absolute value"],
   ] as const)
     assert.ok(defines(sentence, term), `"${term}" defined in "${sentence}"`);
@@ -64,6 +68,7 @@ test("a defining sentence says what the term means", () => {
     ["Divide by the coefficient of $x$.", "coefficient"],
     ["Find the slope from two points.", "slope"],
     ["The quotient is 4 here.", "quotient"],
+    ["Find the slope, the intercept and the vertex.", "slope"],
   ] as const)
     assert.ok(
       !defines(sentence, term),

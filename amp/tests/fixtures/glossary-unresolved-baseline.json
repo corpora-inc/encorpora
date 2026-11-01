@@ -417,13 +417,6 @@
     "solids": 9,
     "square": 6
   },
-  "change-of-base": {
-    "base": 31,
-    "bases": 2,
-    "change": 13,
-    "factor": 4,
-    "product": 1
-  },
   "check-equation-candidate": {
     "left side": 22,
     "right side": 21,
@@ -582,13 +575,6 @@
     "factor": 15,
     "root": 1,
     "term": 35
-  },
-  "common-base-exponential": {
-    "base": 18,
-    "bases": 20,
-    "side": 1,
-    "sides": 2,
-    "whole": 1
   },
   "compare-capacity": {
     "more than": 3
@@ -1716,10 +1702,6 @@
     "factor": 18,
     "model": 2
   },
-  "exponential-log-solution": {
-    "base": 5,
-    "sides": 9
-  },
   "exponential-model-rule": {
     "base": 1,
     "factor": 11,
@@ -1731,15 +1713,6 @@
     "model": 2,
     "unit": 1,
     "whole": 1
-  },
-  "exponential-overtakes": {
-    "changes": 1,
-    "whole": 9
-  },
-  "exponential-parameter-log": {
-    "factor": 10,
-    "parameters": 1,
-    "sides": 41
   },
   "exponential-parameters-blanks": {
     "base": 53,
@@ -2441,15 +2414,6 @@
     "term": 25,
     "terms": 18
   },
-  "geometric-series-sum": {
-    "term": 9,
-    "terms": 24
-  },
-  "geometric-series-total": {
-    "period": 1,
-    "term": 3,
-    "terms": 13
-  },
   "geometric-signed-term": {
     "term": 57,
     "terms": 9
@@ -2751,12 +2715,6 @@
     "fourth": 3,
     "mean": 15,
     "third": 3
-  },
-  "inverse-exponential-root": {
-    "cube": 7,
-    "inverse": 7,
-    "side": 4,
-    "sides": 6
   },
   "inverse-expression": {
     "image": 6,
@@ -4436,10 +4394,6 @@
     "range": 5,
     "side": 2
   },
-  "lesson:exponential-equations": {
-    "argument": 1,
-    "base": 4
-  },
   "lesson:exponential-models": {
     "factor": 11,
     "jumps": 1,
@@ -4937,13 +4891,6 @@
     "unit": 2,
     "whole": 1
   },
-  "lesson:growth-comparison": {
-    "difference": 1,
-    "differences": 4,
-    "factor": 1,
-    "mean": 3,
-    "whole": 3
-  },
   "lesson:half-plane-regions": {
     "boundary": 9,
     "change": 2,
@@ -5331,26 +5278,6 @@
     "difference": 2,
     "term": 4,
     "terms": 1
-  },
-  "lesson:logarithm-properties": {
-    "base": 9,
-    "bases": 2,
-    "change": 3,
-    "differences": 1,
-    "factors": 1,
-    "multiples": 1,
-    "product": 3,
-    "products": 3,
-    "rule": 3,
-    "rules": 2,
-    "term": 1
-  },
-  "lesson:logarithms": {
-    "argument": 1,
-    "base": 7,
-    "factors": 2,
-    "mean": 1,
-    "roots": 1
   },
   "lesson:long-division": {
     "more than": 3,
@@ -6834,13 +6761,6 @@
     "leaves": 1,
     "root": 4
   },
-  "lesson:regents-common-base-exponential": {
-    "base": 7,
-    "bases": 2,
-    "rule": 1,
-    "sides": 3,
-    "whole": 1
-  },
   "lesson:regents-complete-square-first-steps": {
     "change": 1,
     "changes": 1,
@@ -6901,13 +6821,6 @@
     "model": 1,
     "multiple": 1
   },
-  "lesson:regents-exponential-parameter-log": {
-    "factor": 2,
-    "part": 1,
-    "right side": 1,
-    "sides": 2,
-    "whole": 1
-  },
   "lesson:regents-exponential-points-statement": {
     "difference": 1,
     "factor": 2,
@@ -6928,11 +6841,6 @@
   },
   "lesson:regents-function-missing-input": {
     "rule": 5
-  },
-  "lesson:regents-geometric-series-total": {
-    "change": 1,
-    "term": 2,
-    "terms": 8
   },
   "lesson:regents-geometric-signed-term": {
     "term": 7,
@@ -7115,13 +7023,6 @@
     "term": 1,
     "terms": 2
   },
-  "lesson:regents-inverse-exponential-root": {
-    "base": 1,
-    "cubes": 1,
-    "inverse": 6,
-    "root": 1,
-    "side": 1
-  },
   "lesson:regents-isolate-two-term-formula": {
     "difference": 1,
     "factor": 1,
@@ -7130,9 +7031,6 @@
     "term": 5,
     "terms": 1,
     "whole": 3
-  },
-  "lesson:regents-log-base-fraction-graph": {
-    "base": 7
   },
   "lesson:regents-nonlinear-recursion-term": {
     "rule": 4,
@@ -7814,10 +7712,6 @@
     "term": 13,
     "terms": 2,
     "third": 1
-  },
-  "lesson:sequence-sums": {
-    "term": 9,
-    "terms": 8
   },
   "lesson:series-notation-and-infinite-sums": {
     "index": 1,
@@ -9134,16 +9028,6 @@
     "unit": 1,
     "units": 1
   },
-  "linear-or-exponential": {
-    "balance": 3,
-    "change": 9,
-    "changes": 12,
-    "difference": 8,
-    "differences": 33,
-    "factor": 7,
-    "mean": 2,
-    "model": 6
-  },
   "linear-system-pair": {
     "opposite": 1,
     "opposites": 10,
@@ -9189,55 +9073,6 @@
     "part": 1,
     "term": 3,
     "terms": 1
-  },
-  "log-base-fraction-graph": {
-    "base": 13,
-    "rule": 1
-  },
-  "log-equation": {
-    "argument": 2,
-    "base": 1,
-    "difference": 6,
-    "factors": 6,
-    "product": 7,
-    "rule": 1
-  },
-  "log-expand": {
-    "base": 1,
-    "combination": 1,
-    "difference": 4,
-    "differences": 7,
-    "factor": 1,
-    "multiples": 1,
-    "product": 13,
-    "products": 1,
-    "root": 1,
-    "rule": 14,
-    "rules": 6
-  },
-  "log-exponential-form": {
-    "base": 14,
-    "part": 2,
-    "side": 11
-  },
-  "log-rules-evaluate": {
-    "argument": 1,
-    "base": 13,
-    "difference": 11,
-    "multiple": 1,
-    "product": 6,
-    "products": 1,
-    "rule": 28,
-    "rules": 1
-  },
-  "logarithm-integer": {
-    "base": 13,
-    "factors": 13
-  },
-  "logarithm-value": {
-    "argument": 1,
-    "base": 13,
-    "root": 7
   },
   "long-division-quotient": {
     "more than": 34,
@@ -11230,13 +11065,6 @@
   "same-area-border-choice": {
     "mean": 13,
     "sides": 12
-  },
-  "same-base-equation": {
-    "base": 24,
-    "bases": 1,
-    "mean": 1,
-    "side": 4,
-    "sides": 1
   },
   "same-border-area-choice": {
     "mean": 20,

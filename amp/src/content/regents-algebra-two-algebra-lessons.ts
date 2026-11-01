@@ -24,18 +24,18 @@ export const regentsAlgebraTwoAlgebraMethods: Record<string, ProblemMethod> = {
   },
   "inverse-exponential-root": {
     goal: "Swap $x$ and $y$ and solve for $y$ to write the inverse of an exponential, or recover $f$ from a cube-root inverse.",
-    senses: { side: "side-of-equation", base: "base-exponent" },
+    senses: { rule: "rule", side: "side-of-equation", base: "base-exponent" },
     noLink: ["inverse", "cube", "renaming"],
     intuition:
-      "An inverse function undoes the original. It is written $f^{-1}$ and read “$f$ inverse”. A logarithm undoes a power: $3^y = k$ means $y = \\log_3 k$, the exponent that turns 3 into $k$. Cubing, multiplying a number by itself three times, undoes a cube root such as $\\sqrt[3]{8} = 2$. To find an inverse, swap the input $x$ and the output $y$, then solve for $y$.",
+      "An input is a number you start with, and an output is the number you get. A function is a rule that turns each input into one output. An inverse function is a function that undoes the original: it turns each output back into its input. It is written $f^{-1}$ and read “$f$ inverse”. The base is the number being raised to a power, and the exponent is the small raised number. A logarithm is the exponent that turns the base into a given number: $3^y = k$ means $y = \\log_3 k$. A cube root is the number whose three copies multiply to give what is inside: $\\sqrt[3]{8} = 2$. Cubing undoes it. To find an inverse, swap the input $x$ and the output $y$, then solve for $y$.",
     terms: ["inverse-function", "logarithm"],
     method: [
       "Write $y = f(x)$ and swap $x$ and $y$.",
-      "Undo the steps in reverse order. For an exponential, get the power alone, then take the logarithm with the same base. For a cube root, cube both sides, then add or subtract.",
+      "Undo the steps in reverse order. For an exponential, get the power alone, then take the logarithm with the same base. For a cube root, cube both sides, meaning the left and the right of the equals sign, then add or subtract.",
       "Check with a number: apply $f$, then the inverse, and see that you return to the start.",
     ],
     watch:
-      "Divide or subtract numbers before taking the logarithm. They end up inside the logarithm, not outside.",
+      "Undo a number that multiplies the power, or is added to it, before taking the logarithm. Those numbers end up inside the logarithm, not outside.",
   },
   "circle-line-system": {
     goal: "Find where a line meets a circle centered at the origin, or decide what kind of numbers the intersections are.",
@@ -243,25 +243,25 @@ export const regentsAlgebraTwoAlgebraLessons = [
     id: "regents-inverse-exponential-root",
     title: "Inverses of exponentials and cube roots",
     summary:
-      "An inverse function undoes another function. If $f$ turns 2 into 18, its inverse turns 18 back into 2. It is written $f^{-1}$, read “$f$ inverse”: here the raised $-1$ is a label, not a power. A logarithm undoes a power, and cubing (multiplying a number by itself three times) undoes a cube root. So the inverse of $2 \\cdot 3^x$ is a logarithm, and the inverse of a cube root is a cube.",
+      "A function is a rule that turns each input, the number you start with, into one output, the number you get. An inverse function is a function that undoes another function. If $f$ turns 2 into 18, its inverse turns 18 back into 2. It is written $f^{-1}$, read “$f$ inverse”: here the raised $-1$ is a label, not a power. A logarithm is an exponent, and it undoes a power. A cube root is the number whose three copies multiply to give what is inside. Cubing undoes a cube root. So the inverse of $2 \\cdot 3^x$ is a logarithm, and the inverse of a cube root is a cube.",
     senses: { rule: "rule", base: "base-exponent", side: "side-of-equation" },
     noLink: ["inverse", "cube"],
     templateIds: ["inverse-exponential-root"],
     objectives: [
       "Find the inverse of functions like $3^x$, $2 \\cdot 3^x$ and $3^x + 4$ by swapping $x$ and $y$, then solving for $y$.",
-      "Recover the original function from an inverse that contains a cube root: the number that, multiplied by itself three times, gives what is inside.",
+      "Recover the original function from an inverse that contains a cube root: the number whose three copies multiply to give what is inside.",
     ],
     openingTitle: "Swap, then undo in reverse",
     opening: [
       "A function is a rule that turns each input $x$ into one output $y$. We write $y = f(x)$, read “$y$ equals $f$ of $x$”. An inverse function runs the rule backward: it turns each output back into its input. In $2 \\cdot 3^x$, the dot means times.",
       "To find an inverse, write $y = f(x)$, then swap the letters $x$ and $y$. Swapping trades the roles of input and output. Then solve for $y$ by undoing the steps in reverse order, the last step first.",
-      "A logarithm undoes a power. $\\log_3 k$, read “log base 3 of $k$”, is the exponent that turns 3 into $k$, so $3^y = k$ means $y = \\log_3 k$. A cube root undoes cubing: $\\sqrt[3]{8} = 2$, because $2^3 = 2 \\times 2 \\times 2 = 8$. Cubing undoes a cube root in the same way.",
+      "The base is the number being raised to a power. A logarithm undoes a power. $\\log_3 k$, read “log base 3 of $k$”, is the exponent that turns 3 into $k$, so $3^y = k$ means $y = \\log_3 k$. A cube root undoes cubing: $\\sqrt[3]{8} = 2$, because $2^3 = 2 \\times 2 \\times 2 = 8$. Cubing undoes a cube root in the same way.",
     ],
     example: {
       prompt: "Find the inverse of $f(x)=2\\cdot3^{x}$.",
       steps: [
         "Write $y = 2 \\cdot 3^x$, then swap $x$ and $y$: $x = 2 \\cdot 3^y$. Now $y$ is the unknown to solve for.",
-        "Get the power alone. The 2 multiplies $3^y$, so divide both sides by 2: $3^y = \\tfrac{x}{2}$.",
+        "Get the power alone. The 2 multiplies $3^y$, so divide both sides, the left and the right of the equals sign, by 2: $3^y = \\tfrac{x}{2}$.",
         "A logarithm with the same base undoes the power: $3^y = \\tfrac{x}{2}$ means $y = \\log_3\\left(\\tfrac{x}{2}\\right)$.",
         "Check with a number. $f(2) = 2 \\cdot 3^2 = 18$. The inverse at 18 gives $\\log_3 9 = 2$, which is back where we started.",
       ],

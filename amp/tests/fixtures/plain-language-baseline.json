@@ -1410,7 +1410,6 @@
       "terms": [
         "cent",
         "coin",
-        "decimal",
         "hundredth",
         "less-than",
         "tenth"
@@ -2866,17 +2865,6 @@
       ],
       "long": []
     },
-    "lesson:exponential-equations": {
-      "terms": [
-        "coefficient",
-        "isolate",
-        "logarithm",
-        "multiplication",
-        "reflection",
-        "solution"
-      ],
-      "long": []
-    },
     "lesson:exponential-models": {
       "terms": [
         "exponential-function",
@@ -3601,17 +3589,6 @@
       ],
       "long": []
     },
-    "lesson:growth-comparison": {
-      "terms": [
-        "at-least",
-        "constant",
-        "function",
-        "linear-function",
-        "ratio",
-        "slope"
-      ],
-      "long": []
-    },
     "lesson:half-plane-regions": {
       "terms": [
         "coordinate",
@@ -3901,8 +3878,7 @@
         "isosceles",
         "leg",
         "median",
-        "perimeter",
-        "right-triangle"
+        "perimeter"
       ],
       "long": []
     },
@@ -4204,24 +4180,6 @@
         "loan",
         "rate",
         "rate-of-change"
-      ],
-      "long": []
-    },
-    "lesson:logarithm-properties": {
-      "terms": [
-        "corresponding",
-        "exponent",
-        "input",
-        "logarithm",
-        "quotient"
-      ],
-      "long": []
-    },
-    "lesson:logarithms": {
-      "terms": [
-        "multiplication",
-        "quotient",
-        "rational-exponent"
       ],
       "long": []
     },
@@ -6337,13 +6295,6 @@
       ],
       "long": []
     },
-    "lesson:regents-common-base-exponential": {
-      "terms": [
-        "exponent",
-        "expression"
-      ],
-      "long": []
-    },
     "lesson:regents-complete-square-first-steps": {
       "terms": [
         "constant",
@@ -6449,15 +6400,6 @@
       ],
       "long": []
     },
-    "lesson:regents-exponential-parameter-log": {
-      "terms": [
-        "coefficient",
-        "exponent",
-        "logarithm",
-        "multiplier"
-      ],
-      "long": []
-    },
     "lesson:regents-exponential-points-statement": {
       "terms": [
         "constant",
@@ -6494,19 +6436,6 @@
         "input",
         "ordered-pair",
         "output"
-      ],
-      "long": []
-    },
-    "lesson:regents-geometric-series-total": {
-      "terms": [
-        "exponent",
-        "geometric-sequence",
-        "percent",
-        "percent-change",
-        "ratio",
-        "round",
-        "sequence",
-        "substitute"
       ],
       "long": []
     },
@@ -6787,16 +6716,6 @@
       ],
       "long": []
     },
-    "lesson:regents-inverse-exponential-root": {
-      "terms": [
-        "constant",
-        "function",
-        "inverse-function",
-        "isolate",
-        "logarithm"
-      ],
-      "long": []
-    },
     "lesson:regents-isolate-two-term-formula": {
       "terms": [
         "coefficient",
@@ -6808,12 +6727,6 @@
         "multiplication",
         "surface-area",
         "variable"
-      ],
-      "long": []
-    },
-    "lesson:regents-log-base-fraction-graph": {
-      "terms": [
-        "logarithm"
       ],
       "long": []
     },
@@ -7877,15 +7790,6 @@
         "natural-number",
         "ratio",
         "substitute"
-      ],
-      "long": []
-    },
-    "lesson:sequence-sums": {
-      "terms": [
-        "equivalent",
-        "exponent",
-        "ratio",
-        "sequence"
       ],
       "long": []
     },
@@ -8992,7 +8896,6 @@
     "lesson:total-minus-parts": {
       "terms": [
         "decimal",
-        "denominator",
         "improper-fraction",
         "least-common-multiple",
         "mixed-number",
@@ -10262,16 +10165,6 @@
       ],
       "long": []
     },
-    "practice:change-of-base": {
-      "terms": [
-        "denominator",
-        "exponent",
-        "logarithm",
-        "prime-number",
-        "quotient"
-      ],
-      "long": []
-    },
     "practice:check-equation-candidate": {
       "terms": [
         "isolate",
@@ -10524,13 +10417,6 @@
         "radical",
         "radicand",
         "square-root"
-      ],
-      "long": []
-    },
-    "practice:common-base-exponential": {
-      "terms": [
-        "expression",
-        "substitute"
       ],
       "long": []
     },
@@ -12222,15 +12108,6 @@
       ],
       "long": []
     },
-    "practice:exponential-log-solution": {
-      "terms": [
-        "coefficient",
-        "isolate",
-        "logarithm",
-        "multiplication"
-      ],
-      "long": []
-    },
     "practice:exponential-model-rule": {
       "terms": [
         "function",
@@ -12249,24 +12126,6 @@
         "pattern",
         "percent",
         "percent-change"
-      ],
-      "long": []
-    },
-    "practice:exponential-overtakes": {
-      "terms": [
-        "input",
-        "linear-function",
-        "pattern",
-        "proof"
-      ],
-      "long": []
-    },
-    "practice:exponential-parameter-log": {
-      "terms": [
-        "coefficient",
-        "exponent",
-        "logarithm",
-        "multiplier"
       ],
       "long": []
     },
@@ -13366,23 +13225,6 @@
       ],
       "long": []
     },
-    "practice:geometric-series-sum": {
-      "terms": [
-        "exponent",
-        "geometric-sequence",
-        "ratio"
-      ],
-      "long": []
-    },
-    "practice:geometric-series-total": {
-      "terms": [
-        "denominator",
-        "geometric-sequence",
-        "percent-change",
-        "ratio"
-      ],
-      "long": []
-    },
     "practice:geometric-signed-term": {
       "terms": [
         "common-ratio",
@@ -13961,19 +13803,6 @@
       ],
       "long": []
     },
-    "practice:inverse-exponential-root": {
-      "terms": [
-        "constant",
-        "cube-root",
-        "function",
-        "input",
-        "inverse-function",
-        "isolate",
-        "logarithm",
-        "output"
-      ],
-      "long": []
-    },
     "practice:inverse-expression": {
       "terms": [
         "coordinate",
@@ -14250,13 +14079,6 @@
       ],
       "long": []
     },
-    "practice:linear-or-exponential": {
-      "terms": [
-        "constant",
-        "linear-function"
-      ],
-      "long": []
-    },
     "practice:linear-system-pair": {
       "terms": [
         "coefficient",
@@ -14275,7 +14097,6 @@
         "at-least",
         "coefficient",
         "constant",
-        "coordinate",
         "ordered-pair",
         "solution",
         "substitute",
@@ -14347,47 +14168,6 @@
         "principal",
         "rate",
         "simple-interest"
-      ],
-      "long": []
-    },
-    "practice:log-base-fraction-graph": {
-      "terms": [
-        "input",
-        "logarithm"
-      ],
-      "long": []
-    },
-    "practice:log-equation": {
-      "terms": [
-        "logarithm",
-        "multiplication",
-        "quotient"
-      ],
-      "long": []
-    },
-    "practice:log-expand": {
-      "terms": [
-        "coefficient",
-        "exponent",
-        "logarithm",
-        "quotient",
-        "square-root"
-      ],
-      "long": []
-    },
-    "practice:log-rules-evaluate": {
-      "terms": [
-        "coefficient",
-        "exponent",
-        "logarithm",
-        "quotient"
-      ],
-      "long": []
-    },
-    "practice:logarithm-value": {
-      "terms": [
-        "exponent",
-        "rational-exponent"
       ],
       "long": []
     },
@@ -15998,8 +15778,7 @@
         "like-terms",
         "polynomial",
         "quadratic",
-        "trinomial",
-        "variable"
+        "trinomial"
       ],
       "long": []
     },
@@ -17522,14 +17301,6 @@
         "input",
         "multiplication",
         "output"
-      ],
-      "long": []
-    },
-    "practice:same-base-equation": {
-      "terms": [
-        "logarithm",
-        "multiplication",
-        "reciprocal"
       ],
       "long": []
     },
@@ -19423,7 +19194,6 @@
         "perpendicular",
         "ratio",
         "right-angle",
-        "right-triangle",
         "sine",
         "substitute",
         "theorem"
