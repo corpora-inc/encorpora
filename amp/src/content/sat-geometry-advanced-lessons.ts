@@ -1,11 +1,58 @@
 import type { Lesson } from "./lessons";
 import type { ProblemMethod } from "./problem-lessons";
 
+const GEO_SENSES = {
+  side: "side",
+  vertex: "vertex",
+  degrees: "degree-angle",
+  "corresponding angles": "corresponding-angles",
+  similar: "similar-figures",
+  image: "image-transformation",
+  center: "center",
+  radius: "radius",
+  plane: "plane",
+  base: "base-shape",
+  face: "face-solid",
+  edge: "edge",
+  solid: "solid-shape",
+  unit: "unit",
+  tangent: "tangent-line",
+} as const;
+const GEO_NOLINK = [
+  "opposite",
+  "part",
+  "parts",
+  "rule",
+  "rules",
+  "third",
+  "whole",
+  "change",
+  "changes",
+  "square",
+  "squares",
+  "factor",
+  "factors",
+  "more than",
+  "leaves",
+  "mean",
+  "product",
+  "term",
+  "terms",
+  "scale",
+  "multiple",
+  "one third",
+  "prime",
+  "opposite side",
+  "root",
+];
+
 export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   "corresponding-angle-transfer": {
     goal: "Given a similarity or congruence statement and some angles, choose the measure of a named angle in the second triangle.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     intuition:
-      "In a statement such as $\\triangle ABC\\sim\\triangle EFD$, the letters match in order: $A$ with $E$, $B$ with $F$, $C$ with $D$. Similar or congruent triangles have equal corresponding angles. A scale factor changes side lengths only.",
+      "Two triangles are called similar when they have the same shape, and congruent when they also have the same size. In a statement such as $\\triangle ABC\\sim\\triangle EFD$, where $\\sim$ means is similar to, the letters match in order: $A$ with $E$, $B$ with $F$, and $C$ with $D$. Angles that match up are called corresponding angles, and in similar or congruent triangles they are equal. A scale factor, the number that multiplies every side, changes side lengths only, never angles.",
     terms: [
       ["corresponding", "Similar triangles have equal corresponding angles."],
       "similar-figures",
@@ -21,12 +68,14 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   },
   "crossing-segment-similarity": {
     goal: "Two segments cross; use the similar triangles they form to find a missing length.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     intuition:
-      "Where two segments cross at $E$, the angles on opposite sides of $E$ are vertical angles and are equal. One more equal pair, from a parallel segment or a stated equal angle, makes the two triangles similar.",
+      "Where two segments cross at $E$, the angles across from each other at $E$ are called vertical angles, and they are equal. One more equal pair, from a parallel segment or a stated equal angle, makes the two triangles similar: the same shape. In similar triangles, every side divided by its matching side gives the same number. So an equation of two such fractions finds a missing side.",
     terms: ["vertical-angles", "alternate-interior-angles"],
     method: [
       "Name the two triangles and pair their vertices: the crossing point matches itself, and the other vertices match through the equal angles.",
-      "Write an equation that sets two ratios of corresponding sides equal, with the unknown in one of them.",
+      "Write an equation that sets two fractions of matching sides equal, with the unknown in one of them.",
       "Cross-multiply and solve. Check that the unknown is the side matched with the side you used in its ratio.",
     ],
     watch:
@@ -34,8 +83,10 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   },
   "angle-chase-chain": {
     goal: "Combine vertical angles, a triangle angle sum and angles made by parallel lines to find one angle.",
+    senses: GEO_SENSES,
+    noLink: [...GEO_NOLINK, "corresponding angle"],
     intuition:
-      "Each fact gives one angle from another: vertical angles are equal, angles on a straight line add to 180°, and a line cutting parallel lines makes equal corresponding angles and supplementary same-side interior angles. A chain uses several of these in a row.",
+      "Each angle fact gives one angle from another. Vertical angles are the angles across from each other at a crossing, and they are equal. Angles along a straight line add to $180^\\circ$. Parallel lines are lines that never meet. When a line crosses two of them, it makes angles at two crossings. Corresponding angles are the angles in matching spots at the two crossings, and they are equal. Its same-side interior angles, between the parallel lines on one side of the crossing line, add to $180^\\circ$. The angles of a triangle add to $180^\\circ$. A chain uses several of these in a row.",
     terms: ["same-side-interior-angles", "corresponding-angles"],
     method: [
       "List what each given fact lets you find: an equation for a variable, or a third angle of a triangle.",
@@ -43,12 +94,14 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
       "Carry that angle across the parallel lines or along the straight line, one fact per step, and stop at the requested angle.",
     ],
     watch:
-      "Equal angles come from vertical and corresponding pairs. Supplementary angles come from straight lines and same-side interior pairs. Decide which before writing the equation.",
+      "Equal angles come from vertical pairs and matching-spot pairs. Supplementary angles come from straight lines and same-side interior pairs. Decide which before writing the equation.",
   },
   "angle-claim-reasoning": {
     goal: "Decide which angle measure is possible, how two angles compare, or which expression cannot be an angle sum.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     intuition:
-      "Some angle questions have a set of allowed values rather than one answer. Every triangle angle is positive, so each angle is less than 180° minus any other angle. Crossing lines make only two kinds of angle: a given angle and its supplement.",
+      "Some angle questions have a set of possible values rather than one answer. Every angle of a triangle is more than $0^\\circ$, and the three add to $180^\\circ$. So each angle is less than $180^\\circ$ minus any other angle. Two crossing lines make only two sizes of angle: a given angle and its supplement, the angle that adds with it to $180^\\circ$.",
     terms: ["supplementary"],
     method: [
       "For a triangle, subtract the known angle from 180°. The other two angles are positive and add to that amount, so each is smaller than it.",
@@ -60,8 +113,10 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   },
   "circle-radii-triangle": {
     goal: "Use equal radii to find an angle or length in the triangle formed by two radii and a chord.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     intuition:
-      "Every radius of a circle has the same length. Two radii and a chord form a triangle with two equal sides, so it is isosceles and the angles opposite the equal sides are equal.",
+      "A circle's radius is a segment from its center to the circle, and every radius has the same length. A chord is a segment joining two points on the circle. Two radii and a chord form a triangle with two equal sides, called an isosceles triangle. Its two angles at the chord are equal. A central angle, the angle at the center, has the same measure as the arc it cuts off.",
     terms: ["chord", "central-angle"],
     method: [
       "Mark both radii equal in the triangle formed by the center and the chord.",
@@ -89,8 +144,10 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   },
   "radical-side-entry": {
     goal: "Find a hypotenuse in simplest radical form and report its radicand or coefficient, or find a leg of a decimal right triangle.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     intuition:
-      "The Pythagorean theorem $a^2+b^2=c^2$ often gives a hypotenuse that is not a whole number. A simplified radical $m\\sqrt{n}$ takes the largest perfect square out of the root.",
+      "In a right triangle, the two sides that form the square corner are the legs, and the longest side is the hypotenuse. The Pythagorean theorem is the rule $a^2+b^2=c^2$, where $c$ is the hypotenuse. It often gives a hypotenuse that is not a whole number, written with a root sign. Simplest radical form is the way of writing a root as $m\\sqrt{n}$, with the largest perfect square, a whole number times itself, taken out: $\\sqrt{72}=\\sqrt{36\\cdot2}=6\\sqrt2$.",
     terms: ["radicand", "simplest-radical-form"],
     method: [
       "Compute $c^2=a^2+b^2$, or $b^2=c^2-a^2$ for a missing leg.",
@@ -102,8 +159,10 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
   },
   "special-triangle-in-figure": {
     goal: "Recognize a 45-45-90 or 30-60-90 triangle in a figure and use its side ratios.",
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     intuition:
-      "Two kinds of right triangle have fixed side ratios. A 45-45-90 triangle has equal legs and a hypotenuse $\\sqrt{2}$ times a leg. A 30-60-90 triangle has legs in the ratio $1:\\sqrt{3}$ and a hypotenuse twice the shorter leg. Squares and equilateral triangles split into these.",
+      "Two kinds of right triangle have fixed side ratios. A triangle with angles $45^\\circ$, $45^\\circ$ and $90^\\circ$ has equal legs, and its longest side is a leg times $\\sqrt{2}$. A triangle with angles $30^\\circ$, $60^\\circ$ and $90^\\circ$ has legs in the ratio $1:\\sqrt{3}$, and its longest side is twice the shorter leg. A square cut along a diagonal makes the first kind. An equilateral triangle, with three equal sides, cut by its altitude (the line from a corner straight down to the opposite side) makes the second.",
     terms: [
       "altitude",
       [
@@ -145,11 +204,13 @@ export const satGeometryAdvancedLessons: Lesson[] = [
     id: "sat-similarity-correspondence",
     title: "Corresponding parts of similar and congruent triangles",
     summary:
-      "Letters in a similarity or congruence statement pair the vertices. Equal corresponding angles then carry measures, and equal angles make triangles in crossing segments similar.",
+      "Two triangles are called similar when they have the same shape, and congruent when they also have the same size. A statement such as $\\triangle ABC\\sim\\triangle EFD$ pairs the corners by the order of the letters. Matching angles are always equal, so an angle in one triangle tells you its partner in the other. Where two segments cross, equal angles can make two similar triangles, and their sides then give a missing length.",
     templateIds: [
       "corresponding-angle-transfer",
       "crossing-segment-similarity",
     ],
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     objectives: [
       "Read the vertex pairing from a similarity or congruence statement and transfer an angle across it.",
       "Use vertical angles and a parallel or equal-angle premise to find a missing length in crossing segments.",
@@ -159,7 +220,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "intuition",
         title: "The statement is a matching list",
         paragraphs: [
-          "Two triangles are similar when their corresponding angles are equal and their corresponding sides have one common ratio. In $\\triangle ABC\\sim\\triangle EFD$ the first letters match, the second letters match and the third letters match: $A$ with $E$, $B$ with $F$, $C$ with $D$. The order of letters carries the whole pairing, not the position in a picture.",
+          "Two triangles are called similar when they have the same shape. Angles that match up are called corresponding angles, and they are equal. Every side divided by its matching side gives one common number. In $\\triangle ABC\\sim\\triangle EFD$ the first letters match, the second letters match and the third letters match: $A$ with $E$, $B$ with $F$, $C$ with $D$. The order of letters carries the whole pairing, not the position in a picture.",
           "A scale factor describes lengths only. If $\\triangle EFD$ has sides twice as long, its angles are still equal to the corresponding angles of $\\triangle ABC$.",
         ],
       },
@@ -168,8 +229,8 @@ export const satGeometryAdvancedLessons: Lesson[] = [
       prompt:
         "$\\triangle ABC\\sim\\triangle EFD$. In $\\triangle ABC$, $\\angle A=48°$ and $\\angle B=67°$. What is $\\angle D$?",
       steps: [
-        "The letters pair in order: $A$ with $E$, $B$ with $F$, $C$ with $D$. So $\\angle D$ corresponds to $\\angle C$.",
-        "The angles of $\\triangle ABC$ add to 180°, so $\\angle C=180-48-67=65$ degrees.",
+        "The letters pair in order: $A$ with $E$, $B$ with $F$, $C$ with $D$. So $\\angle D$ matches $\\angle C$.",
+        "The angles of $\\triangle ABC$ add to 180°, so $\\angle C=180^\\circ-48^\\circ-67^\\circ=65^\\circ$.",
         "Corresponding angles are equal, so $\\angle D=65°$.",
       ],
       answer: "$65°$",
@@ -187,14 +248,14 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "formal",
         title: "Why two angles are enough",
         paragraphs: [
-          "The three angles of a triangle add to 180°, so two equal angle pairs force the third pair to be equal. All three angles equal makes the triangles similar (AA similarity). Congruent triangles are similar with ratio 1, so they share the same correspondence rule.",
+          "The three angles of a triangle add to 180°, so two equal angle pairs force the third pair to be equal. All three angles equal makes the triangles similar (AA similarity). Congruent triangles are similar with ratio 1, so the same letter-matching rule applies to them.",
         ],
       },
     ],
     pitfalls: [
       "Pair vertices by the order of the letters in the statement.",
       "Do not multiply an angle by a side scale factor.",
-      "Set up ratios across the crossing point: $AE$ goes with $BE$ when $A$ corresponds to $B$.",
+      "Set up ratios across the crossing point: $AE$ goes with $BE$ when $A$ matches $B$.",
     ],
     parentGuide:
       "Ask the learner to write the three vertex pairs in $\\triangle ABC\\sim\\triangle EFD$ before looking for any angle.",
@@ -203,8 +264,10 @@ export const satGeometryAdvancedLessons: Lesson[] = [
     id: "sat-angle-chains-and-bounds",
     title: "Angle chains and what angles must or cannot be",
     summary:
-      "Chain vertical, straight-line, parallel-line and triangle facts, and use positive angle sums to rule values in or out.",
+      "A few angle facts link angles to each other. Angles across from each other at a crossing are equal, and angles along a straight line add to 180°. Chain these facts one step at a time to reach the angle you want. The same facts also show what an angle could be, and what it cannot be.",
     templateIds: ["angle-chase-chain", "angle-claim-reasoning"],
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     objectives: [
       "Chain two or three angle facts to reach a requested angle.",
       "Use the triangle angle sum as a bound and list the sums two crossing lines allow.",
@@ -214,7 +277,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "intuition",
         title: "One fact at a time",
         paragraphs: [
-          "Vertical angles are equal. Angles on a straight line add to 180°. A transversal across parallel lines makes equal corresponding angles and same-side interior angles that add to 180°. The angles of a triangle add to 180°. An angle chain uses a few of these in order; each step gives the next angle.",
+          "Vertical angles, the angles across from each other where two lines cross, are equal. Angles on a straight line add to 180°. A transversal is a line that crosses two parallel lines, lines that never meet. Corresponding angles are the angles in matching spots at the two crossings, and they are equal. Same-side interior angles add to 180°. The angles of a triangle add to 180°. An angle chain uses a few of these in order; each step gives the next angle.",
           "Some questions ask what an angle can be rather than what it is. A triangle with a 120° angle leaves 60° to share between the other two angles, so each of those must be less than 60°.",
         ],
       },
@@ -223,9 +286,9 @@ export const satGeometryAdvancedLessons: Lesson[] = [
       prompt:
         "In triangle $ABC$, $\\angle A=50°$ and $\\angle B=60°$. $D$ is on $AB$, $E$ is on $BC$, and $DE\\parallel AC$. Find the obtuse angle $\\angle DEC$.",
       steps: [
-        "The angles of the triangle add to 180°, so $\\angle C=180-50-60=70$ degrees.",
+        "The angles of the triangle add to 180°, so $\\angle C=180^\\circ-50^\\circ-60^\\circ=70^\\circ$.",
         "$DE\\parallel AC$, so corresponding angles are equal: $\\angle DEB=\\angle C=70°$.",
-        "$\\angle DEB$ and $\\angle DEC$ lie on the straight line $BC$, so $\\angle DEC=180-70=110$ degrees.",
+        "$\\angle DEB$ and $\\angle DEC$ lie on the straight line $BC$, so $\\angle DEC=180^\\circ-70^\\circ=110^\\circ$.",
       ],
       answer: "$110°$",
     },
@@ -257,12 +320,14 @@ export const satGeometryAdvancedLessons: Lesson[] = [
     id: "sat-radii-and-special-triangles",
     title: "Radii, right triangles and special triangles in figures",
     summary:
-      "Equal radii form isosceles triangles, radical hypotenuses come from the Pythagorean theorem, and squares and equilateral triangles hide special right triangles.",
+      "Look for a triangle you know inside a figure. Two radii of a circle are equal, so with a chord they make a triangle with two equal sides. A right triangle's longest side comes from the Pythagorean theorem, often written with a root sign. And cutting a square or an equilateral triangle in half makes right triangles with fixed side ratios.",
     templateIds: [
       "circle-radii-triangle",
       "radical-side-entry",
       "special-triangle-in-figure",
     ],
+    senses: GEO_SENSES,
+    noLink: GEO_NOLINK,
     objectives: [
       "Use equal radii to find an angle or a length in the triangle formed by two radii and a chord.",
       "Write a hypotenuse in simplest radical form and find a leg with decimal sides.",
@@ -273,8 +338,8 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "intuition",
         title: "Look for the right or isosceles triangle",
         paragraphs: [
-          "Every radius of a circle has the same length, so two radii and a chord form an isosceles triangle with equal base angles at the chord. A central angle equals its minor arc, so the base angles are half of 180° minus the arc.",
-          "A hypotenuse $c$ of legs $a$ and $b$ satisfies $c^2=a^2+b^2$. When $c^2$ has a perfect-square factor, the root simplifies to $m\\sqrt{n}$. A square cut along a diagonal or an equilateral triangle cut along an altitude produces right triangles with fixed side ratios.",
+          "A circle's center is the point in its middle. A radius is a segment from the center to the circle, and every radius has the same length. A chord joins two points of the circle. So two radii and a chord form an isosceles triangle, a triangle with two equal sides, with equal angles at the chord. A central angle equals its minor arc, so the base angles are half of 180° minus the arc.",
+          "In a right triangle, the hypotenuse is the longest side and the legs are the other two. The Pythagorean theorem is the rule $c^2=a^2+b^2$ for a hypotenuse $c$ and legs $a$ and $b$. When $c^2$ has a perfect-square factor, the root simplifies to $m\\sqrt{n}$. A square cut along a diagonal or an equilateral triangle cut along an altitude produces right triangles with fixed side ratios.",
         ],
       },
     ],
