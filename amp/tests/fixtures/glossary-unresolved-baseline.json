@@ -175,10 +175,7 @@
   },
   "budget-percent-share": {
     "change": 1,
-    "more than": 10,
-    "part": 12,
-    "parts": 1,
-    "whole": 15
+    "more than": 10
   },
   "cancelled-linear-inequality": {
     "sides": 61,
@@ -734,7 +731,6 @@
   "double-number-line-missing": {
     "change": 1,
     "factor": 1,
-    "scale": 19,
     "unit": 1
   },
   "early-money-decisions": {
@@ -1182,7 +1178,6 @@
     "square": 3
   },
   "interest-table-type": {
-    "balance": 33,
     "balances": 3,
     "changes": 7,
     "differences": 2
@@ -7914,25 +7909,23 @@
     "part": 2
   },
   "percent-chain": {
-    "change": 16,
     "changes": 4,
-    "factor": 9,
+    "factor": 7,
     "factors": 6,
     "more than": 5
   },
   "percent-change-final": {
     "change": 4,
     "factor": 2,
-    "leaves": 4
+    "leaves": 3
   },
   "percent-change-original": {
     "base": 1,
-    "change": 64,
-    "leaves": 2
+    "change": 24,
+    "leaves": 1
   },
   "percent-change-rate": {
-    "base": 40,
-    "change": 101,
+    "change": 82,
     "difference": 1
   },
   "percent-forms-and-parts": {
@@ -7942,8 +7935,6 @@
   },
   "percent-grid-model": {
     "part": 14,
-    "square": 1,
-    "squares": 32,
     "whole": 2
   },
   "pi-as-ratio": {
@@ -8128,9 +8119,6 @@
     "part": 55,
     "parts": 58,
     "whole": 19
-  },
-  "ratio-table-missing": {
-    "part": 1
   },
   "rational-area-volume-equation": {
     "base": 23,
@@ -8434,9 +8422,6 @@
     "multiple": 1,
     "vertex": 2
   },
-  "situation-pair-table": {
-    "rule": 10
-  },
   "skip-count-missing": {
     "difference": 1
   },
@@ -8558,9 +8543,6 @@
     "units": 1
   },
   "staar-nested-grouping": {
-    "difference": 25,
-    "part": 1,
-    "product": 17,
     "whole": 1
   },
   "staar-number-sets": {
@@ -8703,7 +8685,7 @@
     "factor": 2,
     "key": 1,
     "leaves": 1,
-    "models": 17
+    "models": 1
   },
   "story-sentence-match-1000": {
     "change": 1,
@@ -8757,9 +8739,9 @@
     "leaves": 1
   },
   "successive-percent-change": {
-    "base": 22,
+    "base": 2,
     "bases": 1,
-    "change": 124,
+    "change": 118,
     "changes": 2,
     "opposite": 1,
     "parts": 1
@@ -8810,7 +8792,6 @@
   },
   "tax-bracket-owed": {
     "increasing": 1,
-    "part": 16,
     "whole": 4
   },
   "ten-frame-complement": {

@@ -34,6 +34,7 @@ export const k8TemplateGlossary: Record<
     senses: { face: "face-solid", sides: "side", unit: "unit" },
     noLink: ["square"],
   },
+  "budget-percent-share": { noLink: ["part", "parts", "whole"] },
   "circle-area-coefficient": {
     senses: { "more than": "more-than" },
     noLink: ["center", "edge", "square"],
@@ -90,6 +91,7 @@ export const k8TemplateGlossary: Record<
   "decimal-rename-chain": { senses: { part: "part", parts: "part" } },
   "decompose-flat-shape": { noLink: ["side", "sides"] },
   "divide-power-of-ten": { noLink: ["factor"] },
+  "double-number-line-missing": { noLink: ["scale"] },
   "eighths-and-parts-beyond-one": {
     senses: { part: "part", parts: "part" },
     noLink: ["eighth", "eighths", "whole"],
@@ -145,6 +147,7 @@ export const k8TemplateGlossary: Record<
   "identify-rigid-motion": { noLink: ["image"] },
   "improper-fractional-part": { senses: { whole: "whole", wholes: "whole" } },
   "improper-whole-part": { senses: { whole: "whole", wholes: "whole" } },
+  "incentive-compare": { noLink: ["difference"] },
   "inequality-solution-blanks": { noLink: ["rule", "side", "sides"] },
   "inherited-property": {
     senses: { sides: "side", square: "square-shape" },
@@ -157,6 +160,7 @@ export const k8TemplateGlossary: Record<
       factors: "factor-number",
     },
   },
+  "interest-table-type": { noLink: ["balance", "whole"] },
   "join-within-10": { noLink: ["square"] },
   "kit-leftovers": { noLink: ["leaves"] },
   "larger-share": { noLink: ["whole", "wholes"] },
@@ -192,6 +196,7 @@ export const k8TemplateGlossary: Record<
   "money-total-dollars": { noLink: ["whole"] },
   "multidigit-decimal-quotient": { noLink: ["whole"] },
   "multidigit-decimal-sum": { noLink: ["changes"] },
+  "multiplication-division-story": { noLink: ["opposite"] },
   "multiply-by-one-digit": { senses: { part: "part", parts: "part" } },
   "multiply-facts": { noLink: ["change", "factors", "whole"] },
   "multiply-fractions": {
@@ -239,7 +244,13 @@ export const k8TemplateGlossary: Record<
       terms: "term-sequence",
     },
   },
+  "payroll-property-tax": { noLink: ["part"] },
   "percent-applications": { noLink: ["base"] },
+  "percent-chain": { noLink: ["change", "population", "product", "whole"] },
+  "percent-change-final": { noLink: ["units"] },
+  "percent-change-original": { noLink: ["part", "units"] },
+  "percent-change-rate": { noLink: ["base", "part"] },
+  "percent-grid-model": { noLink: ["square", "squares"] },
   "perimeter-area-chain": { senses: { sides: "side", square: "square-shape" } },
   "polygon-with-angles": { noLink: ["sides"] },
   "power-compare": {
@@ -274,6 +285,7 @@ export const k8TemplateGlossary: Record<
   "prism-missing-edge": { senses: { edge: "edge" } },
   "prism-volume-edges": { senses: { cubes: "cube", edge: "edge" } },
   "product-of-powers-exponent": { noLink: ["base", "factor", "factors"] },
+  "profit-cost-breakeven": { noLink: ["parts"] },
   "protractor-reading": { noLink: ["degrees", "scale"] },
   "purchase-change": { noLink: ["more than"] },
   "pythagorean-converse": {
@@ -287,6 +299,7 @@ export const k8TemplateGlossary: Record<
   "quotient-of-powers-exponent": {
     noLink: ["base", "factor", "factors", "rule"],
   },
+  "ratio-table-missing": { noLink: ["part"] },
   "read-thermometer": { noLink: ["degrees"] },
   "reasonable-measure-choice": { senses: { unit: "unit" } },
   "rectangle-area": { senses: { squares: "square-shape" } },
@@ -341,6 +354,7 @@ export const k8TemplateGlossary: Record<
   "similar-triangles-side": {
     senses: { side: "side", "similar triangles": "similar-figures" },
   },
+  "situation-pair-table": { noLink: ["rule"] },
   "skip-count-missing": { senses: { "more than": "more-than" } },
   "small-array-total": { noLink: ["squares"] },
   "solid-bottom-face-shape": { senses: { sides: "side" }, noLink: ["square"] },
@@ -364,13 +378,18 @@ export const k8TemplateGlossary: Record<
   "solve-square-cube-equation": {
     senses: { factor: "factor-number", squaring: "square-number" },
   },
+  "staar-line-from-points": { noLink: ["changes"] },
+  "staar-nested-grouping": { noLink: ["difference", "part", "product"] },
+  "staar-order-decimals": { noLink: ["change"] },
   "story-graph-match": {
     noLink: ["change", "changes", "decreasing", "increasing", "part"],
   },
   "subtract-through-ten": { noLink: ["part", "parts"] },
   "subtract-whole-tens": { noLink: ["whole"] },
   "subtract-with-regrouping": { noLink: ["leaves"] },
+  "supply-price-choice": { noLink: ["more than"] },
   "tally-and-t-chart": { noLink: ["difference"] },
+  "tax-bracket-owed": { noLink: ["change", "part", "parts"] },
   "ten-more-or-less": { noLink: ["changes", "more than"] },
   "tens-contribution": { noLink: ["part"] },
   "tens-ones-model": {
@@ -407,6 +426,7 @@ export const k8TemplateGlossary: Record<
     senses: { multiple: "multiple" },
     noLink: ["leaves"],
   },
+  "wallet-purchase-chain": { noLink: ["quarter"] },
   "whole-number-equality-choice": { senses: { sides: "side-of-equation" } },
   "whole-pack-ribbon-choice": { noLink: ["whole"] },
   "whole-sharing-fraction": { senses: { part: "part", parts: "part" } },
