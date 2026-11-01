@@ -70,14 +70,14 @@ export const coordinateCircleLessons: Lesson[] = [
         stage: "intuition",
         title: "A circle is a distance",
         paragraphs: [
-          "A circle is all the points one fixed distance from a center point. That distance is the radius. On a grid, go across and then up from the center to a point on the circle. That path makes a right triangle, a triangle with a square corner. The distances across and up are its two shorter sides, and the radius is its longest side. The Pythagorean theorem is the rule for such triangles: $\\text{across}^2+\\text{up}^2=\\text{radius}^2$, where the raised 2 means a number times itself.",
+          "A circle is all the points one fixed distance from a center point. That distance is the radius. On a grid, go across and then up from the center to a point on the circle. Unless the point is straight across or straight up from the center, that path makes a right triangle, a triangle with a square corner. The distances across and up are its two shorter sides, and the radius is its longest side. The Pythagorean theorem is the rule for such triangles: $\\text{across}^2+\\text{up}^2=\\text{radius}^2$, where the raised 2 means a number times itself.",
         ],
         illustration: "circle-equation-distance",
       },
       {
         title: "Read and rearrange the circle equation",
         paragraphs: [
-          "So a point $(x,y)$ is on the circle with center $(h,k)$ and positive radius $r$ exactly when $(x-h)^2+(y-k)^2=r^2$. Here $x-h$ is the distance across and $y-k$ is the distance up. The right side is the radius squared. Read the center from the signs: $(x+3)$ means $x-(-3)$, so the center's first coordinate is $-3$.",
+          "So a point $(x,y)$ is on the circle with center $(h,k)$ and positive radius $r$ exactly when $(x-h)^2+(y-k)^2=r^2$. Here $x-h$ is the change across and $y-k$ is the change up. Either can be negative, but its square is the same as the squared distance. The right side is the radius squared. Read the center from the signs: $(x+3)$ means $x-(-3)$, so the center's first coordinate is $-3$.",
           "Sometimes the squares are multiplied out, as in $x^2+y^2-4x+6y-12=0$. Completing the square is the way to undo this. Group the $x$ terms and the $y$ terms. For each group, take half of the number in front of the letter, square it, and add it to both sides. Then each group is a perfect square, such as $x^2-4x+4=(x-2)^2$.",
         ],
       },
@@ -85,7 +85,7 @@ export const coordinateCircleLessons: Lesson[] = [
         title: "Lengths and areas from coordinates",
         paragraphs: [
           "A horizontal or vertical side's length is the larger coordinate minus the smaller. A slanted side with run $a$ (change across) and rise $b$ (change up) has length $\\sqrt{a^2+b^2}$, by the Pythagorean theorem.",
-          "For area, draw a rectangle along the grid lines just around the polygon. Then subtract the right triangles left in its corners. This works for any polygon whose corners are on grid points.",
+          "For area, draw a rectangle along the grid lines just around the polygon. Then subtract the pieces of the rectangle that lie outside the polygon, usually right triangles in its corners.",
         ],
       },
       {
@@ -140,7 +140,7 @@ export const coordinateCircleLessons: Lesson[] = [
     id: "angles-in-circles",
     title: "Angles in circles",
     summary:
-      "A central angle has its corner at a circle's center, the point in its middle. An inscribed angle has its corner on the circle itself. When both open onto the same arc, a piece of the circle, the inscribed angle is half the central angle. This one fact explains why an angle drawn in a half circle is always a right angle.",
+      "A central angle has its corner at a circle's center, the point in its middle. An inscribed angle has its corner on the circle itself. When both open onto the same arc, a piece of the circle, the inscribed angle is half the central angle. This one fact explains why an angle with its corner on a half circle, and its sides through the two ends of the diameter, is always a right angle.",
     templateIds: ["circle-angles"],
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
@@ -171,7 +171,7 @@ export const coordinateCircleLessons: Lesson[] = [
     ],
     workedExample: {
       prompt:
-        "In circle $O$, central angle $AOB$ measures 110°, and $C$ is on the longer arc $AB$, on the other side of chord $AB$ from $O$. What is the measure of inscribed angle $ACB$?",
+        "In circle $O$, central angle $AOB$ measures 110°, and $C$ is on the longer arc $AB$. What is the measure of inscribed angle $ACB$?",
       steps: [
         "The central angle $AOB$ opens onto the shorter arc $AB$. Point $C$ is on the longer arc, so angle $ACB$ opens onto the same shorter arc.",
         "An inscribed angle is half the central angle on the same arc: $110^\\circ\\div2=55^\\circ$.",
@@ -259,7 +259,7 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A polygon is a closed shape with straight sides, and its corners are its vertices. A horizontal or vertical side's length is the larger coordinate minus the smaller. A slanted side with run $a$ (change across) and rise $b$ (change up) has length $\\sqrt{a^2+b^2}$. That follows from the Pythagorean theorem, the rule linking the sides of a triangle with a square corner. The perimeter is all the sides added. Area is the space inside. To find it, draw a rectangle along the grid lines just around the polygon, and subtract the corner pieces.",
+      "A polygon is a closed shape with straight sides, and its corners are its vertices. A horizontal or vertical side's length is the larger coordinate minus the smaller. A slanted side with run $a$ (change across) and rise $b$ (change up) has length $\\sqrt{a^2+b^2}$. That follows from the Pythagorean theorem, the rule linking the sides of a triangle with a square corner. The perimeter is all the sides added. Area is the space inside. To find it, draw a rectangle along the grid lines just around the polygon, and subtract the pieces outside the polygon.",
     terms: terms.measure,
     method: [
       "Perimeter: find horizontal and vertical sides by subtracting, and slanted sides with $\\sqrt{\\text{run}^2 + \\text{rise}^2}$. Then add all the sides.",
@@ -288,11 +288,11 @@ export const coordinateCircleMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "Slope is a line's steepness: the rise (change in $y$) divided by the run (change in $x$) between two of its points. Parallel lines are lines that never meet. Perpendicular lines are lines that meet at a right angle. A vertical line is one that goes straight up and down, and a horizontal line is a flat one. Parallel lines that are not vertical have equal slopes. If neither perpendicular line is vertical or horizontal, their slopes are negative reciprocals: flip the fraction and change the sign, so $\\frac23$ goes with $-\\frac32$. A line can be written $y=mx+b$, where $m$ is the slope and $b$ is where it crosses the $y$-axis.",
+      "Slope is a line's steepness: the rise (change in $y$) divided by the run (change in $x$) between two of its points, when the run is not 0. Parallel lines are lines that never meet. Perpendicular lines are lines that meet at a right angle. A vertical line is one that goes straight up and down, and a horizontal line is a flat one. Parallel lines that are not vertical have equal slopes. If neither perpendicular line is vertical or horizontal, their slopes are negative reciprocals: flip the fraction and change the sign, so $\\frac23$ goes with $-\\frac32$. A line that is not vertical can be written $y=mx+b$, where $m$ is the slope and $b$ is where it crosses the $y$-axis.",
     terms: terms.slope,
     method: [
       "Find the given line's slope: rise divided by run.",
-      "A parallel line has the same slope. A perpendicular line has the negative reciprocal: flip it and change its sign.",
+      "A parallel line that is not vertical has the same slope. When neither line is vertical or horizontal, a perpendicular line has the negative reciprocal: flip it and change its sign.",
       "Through a point, put the slope and the point into $y=mx+b$ and solve for $b$. For a missing coordinate, set the slope through the points equal to the slope it must have.",
     ],
     watch:

@@ -101,7 +101,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "Some angle questions have a set of possible values rather than one answer. Every angle of a triangle is more than $0^\\circ$, and the three add to $180^\\circ$. So each angle is less than $180^\\circ$ minus any other angle. Two crossing lines make only two sizes of angle: a given angle and its supplement, the angle that adds with it to $180^\\circ$.",
+      "Some angle questions have a set of possible values rather than one answer. Every angle of a triangle is more than $0^\\circ$, and the three add to $180^\\circ$. So each angle is less than $180^\\circ$ minus any other angle. Two crossing lines make at most two sizes of angle: a given angle and its supplement, the angle that adds with it to $180^\\circ$.",
     terms: ["supplementary"],
     method: [
       "For a triangle, subtract the known angle from 180°. The other two angles are positive and add to that amount, so each is smaller than it.",
@@ -109,7 +109,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
       "Add every possible pair of angles or compare the two angles named, then pick the choice that the list allows or rules out.",
     ],
     watch:
-      "An angle equal to the whole remaining sum would leave 0° for the third angle, so it is not possible. A single angle is not a sum of two.",
+      "An angle equal to the whole remaining sum would leave 0° for the third angle, so it is not possible. A choice that names one angle is not a sum of two of the angles.",
   },
   "circle-radii-triangle": {
     goal: "Use equal radii to find an angle or length in the triangle formed by two radii and a chord.",
@@ -155,14 +155,14 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
       "Read off the requested number. For decimals, work with the decimal squares and take the square root last.",
     ],
     watch:
-      "Take out the largest perfect square. $\\sqrt{72}=6\\sqrt{2}$, not $3\\sqrt{8}$. Subtract squares to find a leg, never the lengths.",
+      "Take out the largest perfect square. $\\sqrt{72}$ simplifies fully to $6\\sqrt{2}$. $3\\sqrt{8}$ is equal but not fully simplified. Subtract squares to find a leg, never the lengths.",
   },
   "special-triangle-in-figure": {
     goal: "Recognize a 45-45-90 or 30-60-90 triangle in a figure and use its side ratios.",
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "Two kinds of right triangle have fixed side ratios. A triangle with angles $45^\\circ$, $45^\\circ$ and $90^\\circ$ has equal legs, and its longest side is a leg times $\\sqrt{2}$. A triangle with angles $30^\\circ$, $60^\\circ$ and $90^\\circ$ has legs in the ratio $1:\\sqrt{3}$, and its longest side is twice the shorter leg. A square cut along a diagonal makes the first kind. An equilateral triangle, with three equal sides, cut by its altitude (the line from a corner straight down to the opposite side) makes the second.",
+      "Two kinds of right triangle have fixed side ratios. A triangle with angles $45^\\circ$, $45^\\circ$ and $90^\\circ$ has equal legs, and its longest side is a leg times $\\sqrt{2}$. A triangle with angles $30^\\circ$, $60^\\circ$ and $90^\\circ$ has legs in the ratio $1:\\sqrt{3}$, and its longest side is twice the shorter leg. A square cut along a diagonal makes the first kind. An equilateral triangle, with three equal sides, cut by its altitude (the segment from a corner that meets the opposite side at a right angle) makes the second.",
     terms: [
       "altitude",
       [
@@ -171,7 +171,7 @@ export const satGeometryAdvancedMethods: Record<string, ProblemMethod> = {
       ],
     ],
     method: [
-      "Find the side the figure gives: a side from a perimeter, or a diagonal as a diameter.",
+      "Find the side the figure gives: a side from a perimeter (the distance around), or a diagonal as a diameter (a chord through the center).",
       "Draw the altitude of an equilateral triangle, or a diagonal of a square. Name the special right triangle that results.",
       "Apply its ratio, then read off the requested number.",
     ],
@@ -277,7 +277,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "intuition",
         title: "One fact at a time",
         paragraphs: [
-          "Vertical angles, the angles across from each other where two lines cross, are equal. Angles on a straight line add to 180°. A transversal is a line that crosses two parallel lines, lines that never meet. Corresponding angles are the angles in matching spots at the two crossings, and they are equal. Same-side interior angles add to 180°. The angles of a triangle add to 180°. An angle chain uses a few of these in order; each step gives the next angle.",
+          "Vertical angles, the angles across from each other where two lines cross, are equal. Angles on a straight line add to 180°. A transversal is a line that crosses two other lines. Here those lines are parallel: they never meet. Corresponding angles are the angles in matching spots at the two crossings, and they are equal. Same-side interior angles add to 180°. The angles of a triangle add to 180°. An angle chain uses a few of these in order; each step gives the next angle.",
           "Some questions ask what an angle can be rather than what it is. A triangle with a 120° angle leaves 60° to share between the other two angles, so each of those must be less than 60°.",
         ],
       },
@@ -297,7 +297,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "method",
         title: "Bounds and lists",
         paragraphs: [
-          "Two crossing lines form four angles: two equal to a given angle $\\theta$ and two equal to $180°-\\theta$. Choosing two of them gives only three sums: $2\\theta$, 180° and $360°-2\\theta$. Any other expression, such as $\\theta+90°$, cannot be the sum.",
+          "Two crossing lines form four angles: two equal to a given angle $\\theta$ and two equal to $180°-\\theta$. Choosing two of them gives only three sums: $2\\theta$, 180° and $360°-2\\theta$. Any other total, such as $\\theta+90°$ when $\\theta$ is not 90°, cannot be the sum.",
           "For a triangle, subtract the known angle from 180°. If a triangle has a 100° angle, the other two angles add to 80°, so one of them could be 30° but could not be 80°, since that would leave 0°.",
         ],
       },
@@ -320,7 +320,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
     id: "sat-radii-and-special-triangles",
     title: "Radii, right triangles and special triangles in figures",
     summary:
-      "Look for a triangle you know inside a figure. Two radii of a circle are equal, so with a chord they make a triangle with two equal sides. A right triangle's longest side comes from the Pythagorean theorem, often written with a root sign. And cutting a square or an equilateral triangle in half makes right triangles with fixed side ratios.",
+      "Look for a triangle you know inside a figure. Two radii of a circle are equal, so with a chord they make a triangle with two equal sides. A right triangle's longest side comes from the Pythagorean theorem, often written with a root sign. And cutting a square along a diagonal, or an equilateral triangle along an altitude, makes right triangles with fixed side ratios.",
     templateIds: [
       "circle-radii-triangle",
       "radical-side-entry",
@@ -338,7 +338,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "intuition",
         title: "Look for the right or isosceles triangle",
         paragraphs: [
-          "A circle's center is the point in its middle. A radius is a segment from the center to the circle, and every radius has the same length. A chord joins two points of the circle. So two radii and a chord form an isosceles triangle, a triangle with two equal sides, with equal angles at the chord. A central angle equals its minor arc, so the base angles are half of 180° minus the arc.",
+          "A circle's center is the point in its middle. A radius is a segment from the center to the circle, and every radius has the same length. A chord joins two points of the circle. So two radii and a chord form an isosceles triangle, a triangle with two equal sides, with equal angles at the chord. A central angle has the same measure in degrees as the arc it cuts off, so the base angles are half of 180° minus the arc.",
           "In a right triangle, the hypotenuse is the longest side and the legs are the other two. The Pythagorean theorem is the rule $c^2=a^2+b^2$ for a hypotenuse $c$ and legs $a$ and $b$. When $c^2$ has a perfect-square factor, the root simplifies to $m\\sqrt{n}$. A square cut along a diagonal or an equilateral triangle cut along an altitude produces right triangles with fixed side ratios.",
         ],
       },
@@ -358,7 +358,7 @@ export const satGeometryAdvancedLessons: Lesson[] = [
         stage: "method",
         title: "Radicals, and the two ratios",
         paragraphs: [
-          "For legs 6 and 8 the hypotenuse is 10. For legs 3 and 9, $c^2=90=9\\cdot10$, so $c=3\\sqrt{10}$: here $m=3$ and $n=10$. For decimals, square each length as a decimal, subtract the squares and take the root. A triangle with hypotenuse 1.3 and leg 0.5 has other leg $\\sqrt{1.69-0.25}=1.2$.",
+          "For legs 6 and 8 the hypotenuse is 10. For legs 3 and 9, $c^2=90=9\\cdot10$, so $c=3\\sqrt{10}$: here $m=3$ and $n=10$. For decimals, square each length, add or subtract the squares as the Pythagorean theorem says, and take the root last. A triangle with hypotenuse 1.3 and leg 0.5 has other leg $\\sqrt{1.69-0.25}=1.2$.",
           "A 45-45-90 triangle has sides in the ratio $1:1:\\sqrt{2}$. A 30-60-90 triangle has sides in the ratio $1:\\sqrt{3}:2$, with the shorter leg opposite 30°. An altitude of an equilateral triangle with side $s$ is the longer leg of such a triangle, so it measures $\\frac{s\\sqrt{3}}{2}$.",
         ],
       },

@@ -63,7 +63,7 @@ const motionTerms: Lesson["sections"][number] = {
   stage: "intuition",
   title: "Transformations and images",
   paragraphs: [
-    "A transformation moves every point of the coordinate plane to a new point. The figure before the move is the pre-image; the figure after it is the image. The image of a point $A$ is named $A'$, read “A prime”, so the image of triangle $ABC$ is triangle $A'B'C'$, and $A'$ is the image of $A$.",
+    "A transformation sends every point of the coordinate plane to a point, which may be a new one or the same one. The figure before the move is the pre-image; the figure after it is the image. The image of a point $A$ is named $A'$, read “A prime”, so the image of triangle $ABC$ is triangle $A'B'C'$, and $A'$ is the image of $A$.",
     "A rigid motion moves a figure without stretching or bending it: every length and every angle stays the same, so the image is congruent to the pre-image, an exact copy in a new position. A translation slides, a reflection flips across a line, and a rotation turns around a fixed point. Each is a rigid motion.",
   ],
 };
@@ -200,7 +200,7 @@ export const transformationLessons: Lesson[] = [
     id: "rigid-motions",
     title: "Translations, reflections and rotations",
     summary:
-      "A rigid motion moves a figure without changing any length or angle. The three kinds are a slide (translation), a flip across a line (reflection) and a turn about a point (rotation). On a grid, each one follows a coordinate rule, such as $(x, y)\\to(x-6, y+2)$ for a slide 6 left and 2 up.",
+      "A rigid motion moves a figure without changing any length or angle. The three basic kinds are a slide (translation), a flip across a line (reflection) and a turn about a point (rotation). On a grid, each one follows a coordinate rule, such as $(x, y)\\to(x-6, y+2)$ for a slide 6 left and 2 up.",
     templateIds: ["transformation-image", "identify-rigid-motion"],
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
@@ -261,7 +261,7 @@ export const transformationLessons: Lesson[] = [
     id: "dilations-similarity",
     title: "Dilations and similar triangles",
     summary:
-      "A dilation resizes a figure from a fixed point, called the center: every distance from the center is multiplied by the same positive number, the scale factor. Angles stay the same, so the shape stays the same. Figures with the same shape are called similar. Each side of one is the scale factor times the matching side of the other.",
+      "A dilation resizes a figure from a fixed point, called the center: every distance from the center is multiplied by the same positive number, the scale factor. Every length is multiplied by the same number and every angle stays the same, so the shape stays the same. Figures with the same shape are called similar. Each side of one is the scale factor times the matching side of the other.",
     templateIds: [
       "dilation-image",
       "dilation-scale-factor",
@@ -280,7 +280,7 @@ export const transformationLessons: Lesson[] = [
         stage: "intuition",
         title: "One scale for every matched side",
         paragraphs: [
-          "A dilation uses a positive multiplier $k$ to move each point farther from or closer to its center. If $k=2$, every side becomes twice as long while the angles stay equal. Figures related by a dilation and a rigid motion are similar. Their corresponding sides match the same corners, and each side of the new figure, called the image, is $k$ times its matching original side.",
+          "A dilation uses a positive multiplier $k$ to move each point other than the center farther from it or closer to it. If $k=2$, every side becomes twice as long while the angles stay equal. Figures related by a dilation and a rigid motion are similar. Their corresponding sides match the same corners, and each side of the new figure, called the image, is $k$ times its matching original side.",
         ],
       },
       {
@@ -388,7 +388,7 @@ export const transformationLessons: Lesson[] = [
       "Keep the units straight: drawing lengths are in the drawing's unit, actual lengths in the real unit.",
     ],
     parentGuide:
-      "Measure a room with a tape measure and draw it on graph paper with one square for each meter. Count the squares for the area, then check against the measured length times width.",
+      "Measure a room with a tape measure and draw it on graph paper with one square for each meter. For a rectangular room, count the squares for the area, then check against the measured length times width.",
   },
 ];
 
@@ -433,7 +433,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. The other two sides, the legs, are the change in $x$ (across) and the change in $y$ (up or down). The Pythagorean theorem is the rule $\\text{leg}^2+\\text{leg}^2=\\text{hypotenuse}^2$, where the raised 2 means a number times itself. So square the two changes, add them, and take the square root: the positive number whose square is that sum.",
+      "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. The other two sides, the legs, are the change in $x$ (across) and the change in $y$ (up or down). The Pythagorean theorem is the rule $\\text{leg}^2+\\text{leg}^2=\\text{hypotenuse}^2$, where the raised 2 means a number times itself. So square the two changes, add them, and take the square root: the number, 0 or more, whose square is that sum.",
     terms: [
       [
         "leg",
@@ -452,7 +452,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. Its legs are the change in $x$ and the change in $y$. By the Pythagorean theorem, the distance squared, the distance times itself, is the sum of the two changes squared. The distance is the square root of that sum: the positive number whose square is the sum. When the sum is not a perfect square, a whole number times itself, such as 20, keep the root and simplify it: $\\sqrt{20}=\\sqrt{4\\times5}=2\\sqrt{5}$, because $\\sqrt{4}=2$.",
+      "The hypotenuse is the longest side of a right triangle, across from its square corner. A slanted segment between two grid points is the hypotenuse of one. Its legs are the change in $x$ and the change in $y$. By the Pythagorean theorem, the distance squared, the distance times itself, is the sum of the two changes squared. The distance is the square root of that sum: the number, 0 or more, whose square is the sum. When the sum is not a perfect square, a whole number times itself, such as 20, keep the root and simplify it: $\\sqrt{20}=\\sqrt{4\\times5}=2\\sqrt{5}$, because $\\sqrt{4}=2$.",
     terms: [
       [
         "distance",
@@ -463,7 +463,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     method: [
       "Find the change in $x$ and the change in $y$.",
       "The distance squared is the sum of their squares.",
-      "Take the square root and remove square factors: √(a² × b) = a√b.",
+      "Take the square root and remove square factors: √(a² × b) = a√b for whole numbers $a$ and $b$.",
     ],
     watch:
       "Subtracting a negative coordinate adds: from $-3$ to 5 the change is $5-(-3)=8$.",
@@ -473,10 +473,10 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A transformation moves every point to a new point, called the image. The image is named with a prime mark: $A'$, read “$A$ prime”. A translation slides every point the same way: $(x,y)\\to(x+a,y+b)$. A reflection over the $x$-axis changes the sign of $y$, so $(x,y)\\to(x,-y)$, and over the $y$-axis it changes the sign of $x$. A half turn about the origin changes both signs. A quarter turn counterclockwise about the origin sends $(x,y)$ to $(-y,x)$.",
+      "A transformation sends every point to a point, called the image, which may be new or the same. The image is named with a prime mark: $A'$, read “$A$ prime”. A translation slides every point the same way: $(x,y)\\to(x+a,y+b)$. A reflection over the $x$-axis changes the sign of $y$, so $(x,y)\\to(x,-y)$, and over the $y$-axis it changes the sign of $x$. A half turn about the origin changes both signs. A quarter turn counterclockwise about the origin sends $(x,y)$ to $(-y,x)$.",
     terms: ["image-transformation", "rigid-motion"],
     method: [
-      "Write the motion's coordinate rule: a translation adds the same amounts, a reflection over an axis changes one sign, and a turn about the origin changes signs or swaps $x$ and $y$.",
+      "Write the motion's coordinate rule: a translation adds the same amounts, a reflection over an axis changes one sign, and a quarter or half turn about the origin changes signs or swaps $x$ and $y$.",
       "Apply the rule to the vertex's coordinates.",
       "Check the image on the grid: it should sit where the motion carries the point.",
     ],
@@ -487,7 +487,7 @@ export const transformationMethods: Record<string, ProblemMethod> = {
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A rigid motion is a slide, flip or turn: it moves a figure without changing lengths or angles. Matching labels show where each corner went: $A$ goes to $A'$, read “$A$ prime”. One rule must fit all three corners. For turns about the origin, the point $(0,0)$, and flips across the axes, one sign change is a flip, and both signs changing is a half turn. Swapping $x$ and $y$ with one sign change is a quarter turn.",
+      "A rigid motion, such as a slide, flip or turn, moves a figure without changing lengths or angles. Matching labels show where each corner went: $A$ goes to $A'$, read “$A$ prime”. One rule must fit all three corners. For turns about the origin, the point $(0,0)$, and flips across the axes, one sign change is a flip, and both signs changing is a half turn. Swapping $x$ and $y$ with one sign change is a quarter turn.",
     terms: ["corresponding"],
     method: [
       "Pair each vertex with its image.",

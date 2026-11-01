@@ -135,7 +135,7 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
       "Answer what is asked: the equation, or the smallest angle of the triangle.",
     ],
     watch:
-      "The angles add to $90^\\circ$. They are not equal, and they do not add to $180^\\circ$. Substitute $x$ back, because $x$ is not an angle.",
+      "The angles add to $90^\\circ$. They are not equal unless both are $45^\\circ$, and they do not add to $180^\\circ$. Substitute $x$ back, because $x$ is not an angle.",
   },
   "geo-polygon-rotation": {
     goal: "Work backward from rotation angles to the regular polygon that maps onto itself.",
@@ -171,14 +171,14 @@ export const regentsGeometryFiguresMethods: Record<string, ProblemMethod> = {
       "An area factor of 1 with a changed side length keeps area but not congruence.",
     ],
     watch:
-      "Keeping area does not mean congruent. Two stretches with factors $k$ and $\\frac1k$ keep area but change the shape.",
+      "Keeping area does not mean congruent. Two stretches with factors $k$ and $\\frac1k$, for a positive $k$ other than 1, keep area but change the shape.",
   },
   "geo-section-impossible": {
     goal: "Decide which shapes a plane can cut from a prism, a cylinder or a cone, and which it cannot.",
     senses: GEO_SENSES,
     noLink: GEO_NOLINK,
     intuition:
-      "A plane is a flat surface that goes on forever. A cross section is the flat shape where a plane cuts through a solid. A face is a flat surface of a solid, like one side of a box. Each face can add at most one straight side to the cut, and a curved surface can add a curve. So the faces of the solid limit which shapes are possible.",
+      "A plane is a flat surface that goes on forever. A cross section is the flat shape where a plane cuts through a solid. A face is a flat surface of a solid, like one side of a box. Each flat face of a prism, cylinder or cone can add at most one straight side to the cut, and a curved surface can add a curve. So the faces of the solid limit which shapes are possible.",
     terms: ["cross-section", "face-solid"],
     method: [
       "List the flat faces and curved surfaces of the solid.",
@@ -299,7 +299,7 @@ export const regentsGeometryFiguresLessons = [
       opening: [
         "A variable is a letter that stands for a number. When angle measures are written with a variable, a geometry fact tells how they are related.",
         "An isosceles triangle has two equal sides, and the angles across from them, the base angles, are equal. That gives an equation of two equal expressions. An exterior angle is the angle outside a corner, made by extending one side. It equals the sum of the two inside angles that are not next to it.",
-        "A right angle is a square corner, and a right triangle has one. The hypotenuse is the longest side, across from that corner. The sine of an angle is the leg across from it divided by the hypotenuse. The cosine is the leg next to it divided by the hypotenuse. A sine equal to a cosine gives two angles that add to $90^\\circ$. Solve the equation for the variable, then substitute to find the actual angles.",
+        "A right angle is a square corner, and a right triangle has one. The hypotenuse is the longest side, across from that corner. The sine of an angle is the leg across from it divided by the hypotenuse. The cosine is the leg next to it divided by the hypotenuse. For two acute angles, a sine equal to a cosine means the angles add to $90^\\circ$. Solve the equation for the variable, then substitute to find the actual angles.",
       ],
       example: {
         prompt:
@@ -323,7 +323,7 @@ export const regentsGeometryFiguresLessons = [
         "For acute angles, under $90^\\circ$, $\\sin A=\\cos B$ exactly when $A+B=90^\\circ$. This is because $\\cos B=\\sin(90^\\circ-B)$, and sine grows steadily as an acute angle grows.",
       ],
       pitfalls: [
-        "Check by putting your $x$ into both expressions. They must match.",
+        "For equal base angles, check by putting your $x$ into both expressions. They must match.",
         "An exterior angle at the apex is the sum of the base angles, not $180^\\circ$ minus their sum.",
         "Complementary angles add to $90^\\circ$, not $180^\\circ$.",
       ],
@@ -361,7 +361,7 @@ export const regentsGeometryFiguresLessons = [
         steps: [
           "A regular polygon with $n$ sides turns onto itself by multiples of $360^\\circ\\div n$.",
           "For a hexagon, with 6 sides, $360\\div6=60$. Both angles are multiples of 60: $120=2\\cdot60$ and $180=3\\cdot60$.",
-          "A triangle (multiples of $120^\\circ$) fails at $180^\\circ$, and a square (multiples of $90^\\circ$) fails at $120^\\circ$. So the answer is the regular hexagon.",
+          "A triangle (multiples of $120^\\circ$) fails at $180^\\circ$, and a square (multiples of $90^\\circ$) fails at $120^\\circ$. So the regular hexagon works, and it is the polygon with the fewest sides that does.",
         ],
         answer: "regular hexagon",
       },
@@ -374,7 +374,7 @@ export const regentsGeometryFiguresLessons = [
       formalTitle: "Why these tests work",
       formal: [
         "A turn maps a regular polygon with $n$ sides onto itself exactly when it carries corners to corners. The corners are $\\frac{360^\\circ}{n}$ apart around the center.",
-        "The rule $(x,y)\\to(ax,by)$ multiplies area by $|ab|$, the size of $ab$ ignoring its sign. A plane meets each flat face in at most one segment, so a cut through a prism has at most as many sides as the prism has faces.",
+        "The rule $(x,y)\\to(ax,by)$ multiplies area by $|ab|$, the size of $ab$ ignoring its sign. A plane meets each flat face of a prism in at most one segment, so a cut through a prism has at most as many sides as the prism has faces.",
       ],
       pitfalls: [
         "A polygon must work for every listed turn, not just one.",
