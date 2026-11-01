@@ -554,7 +554,7 @@ const specs: Spec[] = [
       t`A tangent to a circle is a line that touches the circle at exactly one point, the point of tangency. A radius is a segment from the center to the circle. The tangent is perpendicular to the radius drawn to the point of tangency. So a tangent segment, the radius and the segment from the center to the outside point form a right triangle.`,
       t`From one point outside a circle you can draw two tangents. The two tangent segments from that point to the circle have the same length.`,
     ],
-    terms: ["tangent-line", "tangent-line", "hypotenuse"],
+    terms: ["tangent-line", "hypotenuse"],
     method: [
       "Draw the radius to the point of tangency. It makes a right angle with the tangent.",
       "The segment from the center to the outside point is the hypotenuse. Use $a^2+b^2=c^2$ with the radius and tangent segment as legs.",

@@ -219,9 +219,8 @@ export const earlyDataMethods: Record<string, ProblemMethod> = {
   "scaled-bar-graph": {
     goal: "Read bars on a scale of 2, 5 or 10 and solve one- or two-step comparisons.",
     terms: [
-      "scale-axis",
       [
-        "scale",
+        "scale-axis",
         "A bar ending halfway between two grid lines is half a scale step above the lower line.",
       ],
     ],

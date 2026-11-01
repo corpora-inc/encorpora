@@ -674,9 +674,9 @@ export const geometryEntries: GlossaryEntry[] = [
     term: "focus",
     forms: ["focus"],
     plain:
-      "A fixed point used to draw a curve: every point on the curve is just as far from the focus as from a fixed line.",
-    example: "The curve $y = \\tfrac{1}{4}x^2$ has its focus at (0, 1).",
-    uses: ["point", "line"],
+      "A fixed point used to define a curve. A parabola has one focus; an ellipse or a hyperbola has two.",
+    example: "The parabola $y = \\tfrac{1}{4}x^2$ has its focus at (0, 1).",
+    uses: ["point", "line", "parabola"],
     band: "geometry",
     autoLink: false,
   },

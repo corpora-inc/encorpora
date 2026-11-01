@@ -229,7 +229,7 @@ export const floridaGapMethods: Record<string, ProblemMethod> = {
       "trapezoid",
       [
         "midsegment",
-        "In a trapezoid, the midsegment joins the midpoints of the two legs.",
+        "In a trapezoid, the midsegment joins the midpoints of the two legs, and its length is the average of the two bases.",
       ],
       [
         "trapezoid",

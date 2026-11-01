@@ -454,6 +454,7 @@ type LessonInput = {
   formal: { title: string; paragraphs: string[] };
   pitfalls: string[];
   parentGuide: string;
+  noLink?: string[];
 };
 const lesson = (x: LessonInput): Lesson => ({
   id: x.id,
@@ -471,6 +472,7 @@ const lesson = (x: LessonInput): Lesson => ({
   ],
   pitfalls: x.pitfalls,
   parentGuide: x.parentGuide,
+  ...(x.noLink ? { noLink: x.noLink } : {}),
 });
 
 export const texasHsLessons: Lesson[] = [
@@ -781,6 +783,7 @@ export const texasHsLessons: Lesson[] = [
     ],
     parentGuide:
       'Ask the learner for a counterexample to "all animals with four legs are dogs."',
+    noLink: ["legs"],
   }),
   lesson({
     id: "spherical-geometry",

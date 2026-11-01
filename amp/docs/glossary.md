@@ -17,7 +17,7 @@ Every term a lesson uses is defined once, in `src/glossary/`, and linked where i
 - `autoLink: false`: the word is ordinary English or has another mathematical meaning (`range`, `mean`, `product`, `similar`). It links only where a sense names it.
 - `noLink`: forms that are ordinary words in the entry's own text ("this means").
 
-To add an entry, put it in the strand file, list every glossary term its text uses in `uses`, and run `node --import tsx --test tests/glossary.test.ts`. The test names any missing `uses`, later-band use, cycle or duplicate form.
+To add an entry, put it in the strand file, list every glossary term its text uses in `uses`, and run `node --import tsx --test tests/glossary.test.ts` (a core test, so it gates pull requests). The test names any missing `uses`, later-band use, cycle, duplicate form, or unknown term id in a method.
 
 ## Method terms
 
@@ -41,9 +41,9 @@ A sense maps a lowercase form to an id (`{ range: "range-function" }`); it also 
 
 ## The unresolved baseline
 
-`tests/glossary.test.ts` reads every lesson, method and principle, and the hints and explanations of 20 instances of every template. An ambiguous form with no sense or `noLink` is unresolved. `tests/fixtures/glossary-unresolved-baseline.json` records the occurrences that existed when the glossary landed, per owner and form. It only shrinks:
+`tests/glossary-baseline.test.ts` (a content test) reads every lesson, method and principle, and the hints and explanations of 20 instances of every template. An ambiguous form with no sense or `noLink` is unresolved. `tests/fixtures/glossary-unresolved-baseline.json` records the occurrences that existed when the glossary landed, per owner and form. It only shrinks:
 
 - a new unresolved occurrence fails the test: add a sense or `noLink` where the text lives;
-- a resolved occurrence still in the baseline also fails: run `GLOSSARY_BASELINE=write node --import tsx --test tests/glossary.test.ts` to shrink the file. The write refuses to add occurrences.
+- a resolved occurrence still in the baseline also fails: run `GLOSSARY_BASELINE=write node --import tsx --test tests/glossary-baseline.test.ts` to shrink the file. The write refuses to add occurrences.
 
 The test also requires an entry for each word of its core vocabulary list.

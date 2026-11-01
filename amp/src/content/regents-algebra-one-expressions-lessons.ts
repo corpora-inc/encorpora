@@ -60,7 +60,7 @@ export const regentsAlgebraOneExpressionMethods: Record<string, ProblemMethod> =
       goal: "Name the property of equality behind a step of completing the square.",
       intuition:
         "An equation is a balance. A step that does the same thing to both sides keeps it balanced. Adding or subtracting the same number is the addition property of equality; multiplying or dividing both sides by the same nonzero number is the multiplication property of equality.",
-      terms: ["property-of-equality", "property-of-equality"],
+      terms: ["property-of-equality", "balance-scale"],
       method: [
         "Compare the equation before and after the step.",
         "Decide what was done to both sides: a number added or subtracted, or a factor multiplied or divided.",

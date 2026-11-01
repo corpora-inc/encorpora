@@ -229,4 +229,3 @@ export function toTex(formula: string): string {
       .replace(/√/g, "\\sqrt ")
   );
 }
-

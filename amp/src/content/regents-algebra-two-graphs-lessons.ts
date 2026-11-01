@@ -6,7 +6,7 @@ export const regentsAlgebraTwoGraphMethods: Record<string, ProblemMethod> = {
   "log-base-fraction-graph": m(
     "Choose the graph of a logarithm whose base is between 0 and 1.",
     "Every logarithm graph passes through $(1,0)$ and stays to the right of the $y$-axis. With a base greater than 1 it rises; with a base between 0 and 1 it falls, because larger inputs give smaller logarithms.",
-    ["logarithm", "logarithm"],
+    [["logarithm", "The base is the number $b$ in $\\log_b x$."]],
     [
       "Check that the graph passes through $(1,0)$ and lies right of the $y$-axis.",
       "Decide from the base whether it rises or falls.",

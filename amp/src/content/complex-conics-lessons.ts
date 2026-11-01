@@ -22,7 +22,7 @@ export const complexConicsMethods: Record<string, ProblemMethod> = {
       "complex-conjugate",
       [
         "complex-number",
-        "For a complex number, it is $x + yi$ with $x$ and $y$ real; fractions are allowed.",
+        "Standard form for a complex number is $x + yi$ with $x$ and $y$ real; fractions are allowed.",
       ],
     ],
     method: [

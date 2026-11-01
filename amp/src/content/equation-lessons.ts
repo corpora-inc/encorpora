@@ -709,7 +709,12 @@ export const equationMethods: Record<string, ProblemMethod> = {
   },
   "two-step-equation-model": {
     goal: "Choose the equation that represents a two-step story.",
-    terms: ["fixed-cost"],
+    terms: [
+      [
+        "constant-term",
+        "In a story, a one-time amount such as a fee is added or subtracted once.",
+      ],
+    ],
     method: [
       "Find the amount that repeats for each unit of the unknown.",
       "Decide whether the extra amount occurs once or once in every group.",
