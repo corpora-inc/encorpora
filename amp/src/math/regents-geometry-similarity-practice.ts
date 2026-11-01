@@ -110,6 +110,46 @@ const trig = (fn: string, angle: "A" | "B", L: Record<Seg, number>) => {
   const adj = angle === "A" ? L.AC : L.BC;
   return fn === "sin" ? opp / L.AB : fn === "cos" ? adj / L.AB : opp / adj;
 };
+/** The three right triangles of the figure, read from angle A or angle B:
+ * the angle itself, or the equal angle at C in the other small triangle. */
+type Role = { tri: string; at: string; opp: Seg; adj: Seg; hyp: Seg };
+const roles: Record<"A" | "B", Role[]> = {
+  A: [
+    { tri: "ABC", at: "A", opp: "BC", adj: "AC", hyp: "AB" },
+    { tri: "ACD", at: "A", opp: "CD", adj: "AD", hyp: "AC" },
+    { tri: "BCD", at: "BCD", opp: "BD", adj: "CD", hyp: "BC" },
+  ],
+  B: [
+    { tri: "ABC", at: "B", opp: "AC", adj: "BC", hyp: "AB" },
+    { tri: "BCD", at: "B", opp: "CD", adj: "BD", hyp: "BC" },
+    { tri: "ACD", at: "ACD", opp: "AD", adj: "CD", hyp: "AC" },
+  ],
+};
+const ratioParts = {
+  sin: ["opp", "hyp"],
+  cos: ["adj", "hyp"],
+  tan: ["opp", "adj"],
+} as const;
+const fnName = { sin: "sine", cos: "cosine", tan: "tangent" } as const;
+const ratioWords = {
+  sin: "opposite ÷ hypotenuse",
+  cos: "adjacent ÷ hypotenuse",
+  tan: "opposite ÷ adjacent",
+} as const;
+/** The triangle and trig function a side ratio is, from angle A or B. */
+function readRatio(angle: "A" | "B", pr: [Seg, Seg]) {
+  for (const role of roles[angle])
+    for (const fn of ["sin", "cos", "tan"] as const) {
+      const [top, bottom] = ratioParts[fn];
+      if (role[top] === pr[0] && role[bottom] === pr[1])
+        return { role, fn, flipped: false };
+      if (role[top] === pr[1] && role[bottom] === pr[0])
+        return { role, fn, flipped: true };
+    }
+  return null;
+}
+const angleTex = (role: Role) =>
+  role.at.length === 1 ? `$${role.at}$` : `$\\angle ${role.at}$`;
 export const altitudeRatio = chainFamily({
   template: altitudeRatioTemplate,
   axes: {
@@ -152,17 +192,35 @@ export const altitudeRatio = chainFamily({
       label: "Choose the equation",
       options: [
         { label: tex(good), correct: true },
-        ...bad.map((pr) => ({
-          label: tex(pr),
-          feedback: `$\\frac{${pr[0]}}{${pr[1]}}$ is about ${roundText(L[pr[0]] / L[pr[1]], 3)}, but $\\${m.fn} ${m.angle}$ is about ${roundText(target, 3)}. The ratio uses the wrong sides for the ${fnWord} of angle $${m.angle}$.`,
-        })),
+        ...bad.map((pr) => {
+          const read = readRatio(m.angle, pr);
+          const why = !read
+            ? `$${pr[0]}$ and $${pr[1]}$ are not two sides of one right triangle with an angle equal to angle $${m.angle}$, so this is not a trig ratio of angle $${m.angle}$.`
+            : read.flipped
+              ? `This is upside down: in triangle $${read.role.tri}$ it is the ${fnName[read.fn]} ratio flipped over. The ${fnWord} is ${ratioWords[m.fn]}.`
+              : read.fn !== m.fn
+                ? `In triangle $${read.role.tri}$ this is ${ratioWords[read.fn]}, the ${fnName[read.fn]}, not the ${fnWord}. The ${fnWord} is ${ratioWords[m.fn]}.`
+                : `This uses the wrong sides for the ${fnWord} of angle $${m.angle}$.`;
+          return {
+            label: tex(pr),
+            feedback: `${why} Check: $\\frac{${pr[0]}}{${pr[1]}}\\approx${roundText(L[pr[0]] / L[pr[1]], 3)}$, but $\\${m.fn} ${m.angle}\\approx${roundText(target, 3)}$.`,
+          };
+        }),
       ],
-      hint: `With $AC=${m.p}$ and $BC=${m.q}$, angle $${m.angle}$ is an angle of the small triangles $ACD$ and $BCD$ as well as of $ABC$. In the triangle that contains angle $${m.angle}$ and the altitude, mark the side opposite angle $${m.angle}$, the side adjacent to it and the hypotenuse.`,
-      explanation: [
-        `Angle $${m.angle}$ belongs to the whole triangle and to the small right triangle $${m.angle === "A" ? "ACD" : "BCD"}$ that has the altitude as a side.`,
-        `In triangle $${m.angle === "A" ? "ACD" : "BCD"}$ the ${fnWord} of angle $${m.angle}$ is opposite over hypotenuse, adjacent over hypotenuse, or opposite over adjacent, using that triangle's own sides.`,
-        `The true equation is ${tex(good)}.`,
-      ],
+      hint: `With $AC=${m.p}$ and $BC=${m.q}$, angle $${m.angle}$ is an angle of the whole triangle and of a small triangle made by the altitude. In a triangle that holds angle $${m.angle}$, mark the side opposite angle $${m.angle}$ (across from it), the side adjacent to it (touching it) and the hypotenuse (across from the right angle).`,
+      explanation: (() => {
+        const read = readRatio(m.angle, good)!;
+        const role = read.role;
+        const [top, bottom] = ratioParts[m.fn];
+        const word = { opp: "opposite", adj: "adjacent", hyp: "hypotenuse" };
+        return [
+          `The altitude $\\overline{CD}$ is the segment from $C$ that meets the hypotenuse $\\overline{AB}$ at a right angle. It splits triangle $ABC$ into two smaller right triangles, $ACD$ and $BCD$.`,
+          `All three triangles have the same three angles, so they are similar: the same shape, different sizes. ${role.at.length > 1 ? `In triangle $${role.tri}$, ${angleTex(role)} equals angle $${m.angle}$.` : `Angle $${m.angle}$ is a corner of triangle $${role.tri}$.`}`,
+          `In right triangle $${role.tri}$, look from ${angleTex(role)}. The opposite side, across from it, is $${role.opp}$. The adjacent side, touching it, is $${role.adj}$. The hypotenuse, across from the right angle, is $${role.hyp}$.`,
+          `The ${fnWord} of an angle, written $\\${m.fn}$, is ${ratioWords[m.fn]}. Here that is ${word[top]} $${role[top]}$ over ${word[bottom]} $${role[bottom]}$.`,
+          `The equation that is true is ${tex(good)}.`,
+        ];
+      })(),
     });
   },
 });
@@ -200,17 +258,22 @@ export const parallelPerimeter = chainFamily({
       ax.given === "cut-part"
         ? `${len("AD", AD)}, ${len("DB", DB)}`
         : `${len("AD", AD)} and ${len("AB", AB)}`;
-    const scale = `$\\frac{${AB}}{${AD}}$`;
+    const scale = `\\frac{${AB}}{${AD}}`;
     return numberSurface({
       prompt: `In triangle $ABC$, point $D$ is on $\\overline{AB}$ and point $E$ is on $\\overline{AC}$, with $\\overline{DE}\\parallel\\overline{BC}$. ${given.replace(" and ", ", ")}, ${len("DE", DE)} and ${len("AE", AE)}. What is the perimeter of triangle $ABC$ in centimeters?`,
       answer: String(perimeter),
       label: "Perimeter in centimeters",
-      hint: `Since $\\overline{DE}\\parallel\\overline{BC}$, triangle $ADE$ is similar to triangle $ABC$. Find the whole side $AB$ from $AD=${AD}$ and the rest of the side, then compare $AB$ with $AD$ to find the scale factor.`,
+      hint: `Since $\\overline{DE}\\parallel\\overline{BC}$, triangle $ADE$ is a smaller copy of triangle $ABC$. ${ax.given === "cut-part" ? `First find the whole side $AB$ from $AD=${AD}$ and $DB=${DB}$, then compare` : `Compare`} $AB$ with $AD=${AD}$ to find how many times bigger the large triangle is.`,
       explanation: [
-        `Parallel lines make equal alternate or corresponding angles, and angle $A$ is shared, so triangle $ADE$ is similar to triangle $ABC$.`,
-        `$AB=${AB}$ cm, so the scale factor from $ADE$ to $ABC$ is ${scale}.`,
-        `$BC=${DE}\\cdot${scale}=${BC}$ cm and $AC=${AE}\\cdot${scale}=${AC}$ cm.`,
-        `The perimeter is $${AB}+${BC}+${AC}=${perimeter}$ cm.`,
+        `The symbol $\\parallel$ means parallel: the lines never meet. Parallel lines cut by $\\overline{AB}$ make equal corresponding angles, angles in matching positions, so $\\angle ADE=\\angle ABC$.`,
+        `Angle $A$ is in both triangles. Two pairs of equal angles make the triangles similar: the same shape, with every side scaled by one number.`,
+        ax.given === "cut-part"
+          ? `The whole side is the two pieces together: $AB=${AD}+${DB}=${AB}$ cm.`
+          : `The whole side $AB$ is given: $AB=${AB}$ cm.`,
+        `The scale factor is how many times longer each side of $ABC$ is than the matching side of $ADE$: $\\frac{AB}{AD}=${scale}$.`,
+        `Multiply the small triangle's sides by it. $BC=${DE}\\cdot${scale}=${BC}$ cm and $AC=${AE}\\cdot${scale}=${AC}$ cm.`,
+        `The perimeter is the distance around: $AB+BC+AC=${AB}+${BC}+${AC}=${perimeter}$.`,
+        `The perimeter of triangle $ABC$ is ${perimeter} cm.`,
       ],
     });
   },
@@ -240,22 +303,24 @@ export const parallelStatement = chainFamily({
           },
           {
             label: `$\\triangle ${tri1}\\sim\\triangle ${tri2}$`,
-            feedback: `The parallel lines give $\\angle ${c}${a}${e}\\cong\\angle ${d}${b}${e}$ and the vertical angles at $${e}$ are congruent, so the triangles are similar by AA. This is always true.`,
+            feedback: `This is always true. The parallel lines give $\\angle ${c}${a}${e}\\cong\\angle ${d}${b}${e}$, and the vertical angles at $${e}$ are equal. Two pairs of equal angles (AA) make triangles similar, the same shape.`,
           },
           {
             label: `$\\angle ${c}${a}${e}\\cong\\angle ${d}${b}${e}$`,
-            feedback: `These are alternate interior angles of parallel lines $\\overline{${a}${c}}$ and $\\overline{${b}${d}}$ cut by $\\overline{${a}${b}}$, so this is always true.`,
+            feedback: `This is always true. These are alternate interior angles: between parallel lines $\\overline{${a}${c}}$ and $\\overline{${b}${d}}$, on opposite sides of $\\overline{${a}${b}}$. Such angles are equal.`,
           },
           {
             label: `$\\angle ${a}${e}${c}\\cong\\angle ${b}${e}${d}$`,
-            feedback: `These are vertical angles, so they are always congruent.`,
+            feedback: `This is always true. These are vertical angles, the opposite angles where two lines cross, and vertical angles are always equal.`,
           },
         ],
         hint: `Parallel lines $\\overline{${a}${c}}$ and $\\overline{${b}${d}}$ give equal alternate interior angles, and angles at $${e}$ across from each other are equal. Ask which statement needs the sides to be equal as well, not only the angles.`,
         explanation: [
-          `Alternate interior angles and vertical angles give two pairs of congruent angles, so $\\triangle ${tri1}\\sim\\triangle ${tri2}$.`,
-          "Similar triangles have the same shape but not always the same size, so a congruence statement needs a pair of equal corresponding sides, which is not given.",
-          `The statement $\\triangle ${tri1}\\cong\\triangle ${tri2}$ is not always true.`,
+          `Alternate interior angles sit between the parallel lines on opposite sides of the crossing line. They are equal, so $\\angle ${c}${a}${e}\\cong\\angle ${d}${b}${e}$. The symbol $\\cong$ means congruent: exactly the same size.`,
+          `Vertical angles are the opposite angles where two lines cross, here at $${e}$. They are always equal.`,
+          `Two pairs of equal angles make the triangles similar, written $\\triangle ${tri1}\\sim\\triangle ${tri2}$: the same shape, possibly different sizes.`,
+          `Congruent triangles must also be the same size. Nothing says any pair of matching sides is equal, so the triangles can be different sizes.`,
+          `So the statement that is not always true is $\\triangle ${tri1}\\cong\\triangle ${tri2}$.`,
         ],
       });
     }
@@ -269,22 +334,24 @@ export const parallelStatement = chainFamily({
         { label: `$${d}${e}=${b}${c}$`, correct: true },
         {
           label: `$\\triangle ${tri1}\\sim\\triangle ${tri2}$`,
-          feedback: `Angle $${a}$ is shared and the parallel lines give $\\angle ${a}${d}${e}\\cong\\angle ${a}${b}${c}$, so the triangles are similar. This is always true.`,
+          feedback: `This is always true. Angle $${a}$ is in both triangles, and the parallel lines give $\\angle ${a}${d}${e}\\cong\\angle ${a}${b}${c}$. Two pairs of equal angles make the triangles similar, the same shape.`,
         },
         {
           label: `$\\angle ${a}${d}${e}\\cong\\angle ${a}${b}${c}$`,
-          feedback: `These are corresponding angles of the parallel lines $\\overline{${d}${e}}$ and $\\overline{${b}${c}}$ cut by $\\overline{${a}${b}}$, so this is always true.`,
+          feedback: `This is always true. These are corresponding angles, in matching positions where $\\overline{${a}${b}}$ crosses the parallel lines $\\overline{${d}${e}}$ and $\\overline{${b}${c}}$. Such angles are equal.`,
         },
         {
           label: `$\\frac{${a}${d}}{${a}${b}}=\\frac{${a}${e}}{${a}${c}}$`,
-          feedback: `Corresponding sides of similar triangles are in proportion, so this is always true.`,
+          feedback: `This is always true. In similar triangles, matching sides all grow by the same factor, so their ratios are equal.`,
         },
       ],
       hint: `Because $\\overline{${d}${e}}\\parallel\\overline{${b}${c}}$, the angles at $${d}$ and $${b}$ are corresponding angles and angle $${a}$ is shared. Ask which statement says the two triangles have the same size, rather than the same shape.`,
       explanation: [
-        `Corresponding angles and the shared angle at $${a}$ give $\\triangle ${tri1}\\sim\\triangle ${tri2}$, so corresponding sides are proportional.`,
-        `The small triangle is generally smaller, so $\\overline{${d}${e}}$ is usually shorter than $\\overline{${b}${c}}$. They are equal only if $\\overline{${d}${e}}$ coincides with $\\overline{${b}${c}}$.`,
-        `The statement $${d}${e}=${b}${c}$ is not always true.`,
+        `Corresponding angles sit in matching positions where one line crosses two parallel lines. They are equal, so $\\angle ${a}${d}${e}\\cong\\angle ${a}${b}${c}$. The symbol $\\cong$ means congruent: the same size.`,
+        `Angle $${a}$ is in both triangles. Two pairs of equal angles make the triangles similar, written $\\triangle ${tri1}\\sim\\triangle ${tri2}$: the same shape.`,
+        `Similar triangles have proportional sides: every side of one is the matching side of the other times the same number. So the ratio statement is always true.`,
+        `The small triangle sits inside the large one, so $\\overline{${d}${e}}$ is shorter than $\\overline{${b}${c}}$. They could be equal only if they were the same segment.`,
+        `So the statement that is not always true is $${d}${e}=${b}${c}$.`,
       ],
     });
   },
@@ -329,11 +396,14 @@ export const equalLegs = chainFamily({
             feedback: `This is the hypotenuse $AB$ of the first triangle. $\\overline{DE}$ is in the larger or smaller similar triangle, with $DF=${m.b}$.`,
           },
         ],
-        hint: `Triangle $DEF$ has the same shape as $ABC$, so its legs are equal too: $DF=${m.b}$. By the Pythagorean theorem, with equal legs $${m.b}$, the hypotenuse squared is $${m.b}^2+${m.b}^2$.`,
+        hint: `Triangle $DEF$ has the same shape as $ABC$, so its legs are equal too: $DF=${m.b}$. The Pythagorean theorem says leg squared plus leg squared equals hypotenuse squared: $${m.b}^2+${m.b}^2$.`,
         explanation: [
-          `Similar triangles keep the shape, so triangle $DEF$ also has equal legs: $DF=EF=${m.b}$.`,
-          `$DE^2=${m.b}^2+${m.b}^2=${2 * m.b * m.b}$, so $DE=${m.b}\\sqrt{2}$.`,
-          "In general the hypotenuse of a 45-45-90 triangle is the leg times $\\sqrt{2}$.",
+          `The legs are the two sides that form the right angle. In triangle $ABC$ they are equal: $AC=BC=${m.a}$.`,
+          `Similar triangles have the same shape, so triangle $DEF$ also has equal legs: $DF=EF=${m.b}$.`,
+          `$\\overline{DE}$ is across from the right angle at $F$, so it is the hypotenuse, the longest side.`,
+          `The Pythagorean theorem says leg² + leg² = hypotenuse² in any right triangle. So $DE^2=${m.b}^2+${m.b}^2=${2 * m.b * m.b}$.`,
+          `Take the square root and pull out the perfect square: $DE=\\sqrt{${2 * m.b * m.b}}=\\sqrt{${m.b * m.b}\\cdot2}=${m.b}\\sqrt{2}$.`,
+          `This matches the 45-45-90 pattern: the hypotenuse is a leg times $\\sqrt{2}$. The length of $\\overline{DE}$ is $${rad(m.b)}$.`,
         ],
       });
     }
@@ -362,11 +432,14 @@ export const equalLegs = chainFamily({
           feedback: `$${m.a}$ is a leg of the first triangle. $DF$ is a leg of the similar triangle with hypotenuse $${m.b}$.`,
         },
       ],
-      hint: `Triangle $DEF$ has equal legs too, so $2\\cdot DF^2=DE^2$ with $DE=${m.b}$. Solve for $DF$ and write the result with $\\sqrt{2}$.`,
+      hint: `Triangle $DEF$ has equal legs too, so leg² + leg² = hypotenuse² becomes $2\\cdot DF^2=DE^2$ with $DE=${m.b}$. Solve for $DF$.`,
       explanation: [
-        `Similar triangles keep the shape, so $DF=EF$ in triangle $DEF$.`,
-        `$2\\cdot DF^2=${m.b}^2=${m.b * m.b}$, so $DF^2=${(m.b * m.b) / 2}$ and $DF=${e}\\sqrt{2}$.`,
-        "A leg of a 45-45-90 triangle is the hypotenuse divided by $\\sqrt{2}$.",
+        `The legs are the two sides that form the right angle. In triangle $ABC$ they are equal, $AC=BC$.`,
+        `Similar triangles have the same shape, so triangle $DEF$ also has equal legs: $DF=EF$.`,
+        `$\\overline{DE}$ is across from the right angle at $F$, so it is the hypotenuse, the longest side: $DE=${m.b}$.`,
+        `The Pythagorean theorem says leg² + leg² = hypotenuse². With equal legs that is $DF^2+DF^2=2\\cdot DF^2=${m.b}^2=${m.b * m.b}$.`,
+        `Divide by 2: $DF^2=${(m.b * m.b) / 2}$. Take the square root and pull out the perfect square: $DF=\\sqrt{${(m.b * m.b) / 2}}=${rad(e)}$.`,
+        `This matches the 45-45-90 pattern: a leg is the hypotenuse divided by $\\sqrt{2}$. The length of $\\overline{DF}$ is $${rad(e)}$.`,
       ],
     });
   },
@@ -393,11 +466,15 @@ export const elevationDepression = chainFamily({
       prompt: `A lookout is $${m.d}$ feet from a ${thing}, measured along level ground. From the lookout, the angle of elevation to the top of the ${thing} is $${m.up}^\\circ$ and the angle of depression to its base is $${m.down}^\\circ$. What is the height of the ${thing}, to the nearest ${unit}?`,
       answer: roundText(h, places),
       label: "Height in feet",
-      hint: `Draw a horizontal line through the point. The ${thing}'s height is split into a part above that line and a part below it. Use $\\tan ${m.up}^\\circ$ with $${m.d}$ for the upper part and $\\tan ${m.down}^\\circ$ with $${m.d}$ for the lower part.`,
+      hint: `Draw a level line from the lookout to the ${thing}. It splits the height into a part above the line and a part below it. Each part is a leg of a right triangle with the ${m.d}-foot distance as the other leg.`,
       explanation: [
-        `Above the horizontal line: $${m.d}\\tan ${m.up}^\\circ\\approx${roundText(m.d * tanD(m.up), 2)}$ feet.`,
-        `Below the horizontal line: $${m.d}\\tan ${m.down}^\\circ\\approx${roundText(m.d * tanD(m.down), 2)}$ feet.`,
-        `The total height is about ${roundText(h, places)} feet.`,
+        `Draw a level (horizontal) line from the lookout to the ${thing}. It splits the ${thing} into a top part and a bottom part.`,
+        `The angle of elevation is how far you look up from level, ${m.up}°. The angle of depression is how far you look down from level, ${m.down}°.`,
+        `Each part is a right triangle. The level distance, ${m.d} feet, is the leg adjacent to (touching) the angle. The part of the ${thing} is the leg opposite it.`,
+        `Tangent is opposite ÷ adjacent, so opposite = adjacent × tangent. Top part: $${m.d}\\tan ${m.up}^\\circ\\approx${roundText(m.d * tanD(m.up), 2)}$ feet.`,
+        `Bottom part: $${m.d}\\tan ${m.down}^\\circ\\approx${roundText(m.d * tanD(m.down), 2)}$ feet.`,
+        `Add the two parts for the whole height: $${roundText(m.d * tanD(m.up), 2)}+${roundText(m.d * tanD(m.down), 2)}\\approx${roundText(h, 2)}$ feet.`,
+        `The ${thing} is about ${roundText(h, places)} feet tall, to the nearest ${unit}.`,
       ],
     });
   },
@@ -467,25 +544,27 @@ export const densityRank = chainFamily({
         { label: text(dense), correct: true },
         {
           label: text(byPop),
-          feedback: `This ranks by population alone. Density divides the population by the area, so a large population on a large area may be less dense.`,
+          feedback: `This ranks by population alone. Density is people per square mile, population ÷ area, so a large population spread over a large area can be less dense.`,
         },
         {
           label: text(byArea),
           feedback:
-            "This ranks by area. A small area is not always dense; the number of people matters too.",
+            "This ranks by land area alone. Density is population ÷ area, so a small county with few people is not crowded. Divide before you rank.",
         },
         {
           label: text(reversed),
-          feedback: `This is the reverse order. The ranking asked for starts with the ${greatest ? "most" : "least"} dense county.`,
+          feedback: `This list is in the right density order but backward. The question asks for ${greatest ? "greatest to least" : "least to greatest"}, so start with the ${greatest ? "most" : "least"} dense county.`,
         },
       ],
-      hint: `Divide each population by its area, for example ${group(m.rows[0]!.pop)} people by ${group(m.rows[0]!.area)} square miles for ${m.rows[0]!.name}, then order the four quotients.`,
+      hint: `Population density is people per square mile, so divide each population by its area. For example, divide ${group(m.rows[0]!.pop)} people by ${group(m.rows[0]!.area)} square miles for ${m.rows[0]!.name}.`,
       explanation: [
+        `Population density means how crowded a place is: the number of people for each square mile of land.`,
+        `To find it, divide the population by the area. A big population on a huge area can still be less crowded.`,
         ...byDensity.map(
           (x) =>
             `${x.name}: ${group(x.pop)} ÷ ${group(x.area)} ≈ ${roundText(x.pop / x.area, 1)} people per square mile.`,
         ),
-        `From ${greatest ? "greatest to least" : "least to greatest"}: ${text(dense)}.`,
+        `Ordered from ${greatest ? "greatest to least" : "least to greatest"} density, the counties are ${text(dense)}.`,
       ],
     });
     return surface && { ...surface, figure: { kind: "scene" as const, scene } };

@@ -153,39 +153,43 @@ export const dilationCenter = chainFamily({
         ? [
             {
               label: label(inv, c),
-              feedback: `The image is ${k[0] > k[1] ? "larger" : "smaller"} than the original, so the factor is ${k[0] > k[1] ? "greater" : "less"} than 1. This choice has the reciprocal factor.`,
+              feedback: `This factor is flipped over, the reciprocal. The image is ${k[0] > k[1] ? "larger" : "smaller"} than the original, so the scale factor must be ${k[0] > k[1] ? "greater" : "less"} than 1.`,
             },
           ]
         : []),
       {
         label: label(k, [0, 0]),
-        feedback: `A dilation with its center at the origin would send $A=${pt(tri[0][0], tri[0][1])}$ to $(${frac(tri[0][0] * k[0], k[1])}, ${frac(tri[0][1] * k[0], k[1])})$, not to $A'=${pt(img[0][0], img[0][1])}$.`,
+        feedback: `This assumes the center is the origin, $(0, 0)$. That dilation would send $A=${pt(tri[0][0], tri[0][1])}$ to $(${frac(tri[0][0] * k[0], k[1])}, ${frac(tri[0][1] * k[0], k[1])})$, not to $A'=${pt(img[0][0], img[0][1])}$. Find where the lines through matching points cross.`,
       },
       {
         label: label(k, tri[0]),
-        feedback: `A center at $A$ would keep $A$ fixed, but $A$ and $A'$ are different points.`,
+        feedback: `The center is the one point a dilation does not move. A center at $A$ would keep $A$ in place, but $A$ moved to $A'$.`,
       },
       {
         label: label(k, [-c[0], -c[1]]),
-        feedback: `The lines through corresponding points, such as $A$ and $A'$, meet at the center. They do not meet at ${pt(-c[0], -c[1])}.`,
+        feedback: `This has the center's signs flipped. The lines through matching points, such as $A$ and $A'$, meet at the center, and they do not pass through $${pt(-c[0], -c[1])}$.`,
       },
       {
         label: label(k, img[0]),
         feedback:
-          "Only a point that stays fixed can be the center. $A'$ is the image of $A$, a different point.",
+          "This uses $A'$, an image point, as the center. The center is the one point that stays fixed, and $A'$ is where $A$ moved to.",
       },
     ];
     const surface = choiceSurface(r, {
       prompt: `Triangle $A'B'C'$ is the image of triangle $ABC$ under a dilation. ${factorAndCenter ? "Which choice gives the scale factor and the center of the dilation?" : "Which choice gives the center of the dilation, which has a scale factor of $" + kText(k) + "$?"}`,
       label: "Choose the dilation",
       options,
-      hint: `Draw a line through $A=${pt(tri[0][0], tri[0][1])}$ and $A'=${pt(img[0][0], img[0][1])}$, and another through $B=${pt(tri[1][0], tri[1][1])}$ and $B'=${pt(img[1][0], img[1][1])}$. The center is where such lines cross.${factorAndCenter ? " Compare the length of $A'B'$ with $AB$ for the factor." : ""}`,
+      hint: `A dilation slides each point straight toward or away from the center. Draw a line through $A=${pt(tri[0][0], tri[0][1])}$ and $A'=${pt(img[0][0], img[0][1])}$, and another through $B=${pt(tri[1][0], tri[1][1])}$ and $B'=${pt(img[1][0], img[1][1])}$. The center is where they cross.`,
       explanation: [
-        `A center of dilation, a point that stays fixed, lies on every line through a point and its image.`,
-        `The lines through $A$ and $A'$ and through $B$ and $B'$ cross at ${pt(c[0], c[1])}.`,
+        `A dilation resizes a figure from one fixed point, the center. Each point slides straight toward or away from the center.`,
+        `So the center lies on every line through a point and its image, such as $A$ and $A'$.`,
+        `Draw the line through $A$ and $A'$ and the line through $B$ and $B'$. They cross at $${pt(c[0], c[1])}$, so that is the center.`,
         factorAndCenter
-          ? `The distance from the center to $A'$ is $${kText(k)}$ times the distance to $A$, so the scale factor is $${kText(k)}$.`
-          : `Check with the given factor: $${pt(c[0], c[1])}$ stays fixed and $A$ moves to $A'$ along a line through the center.`,
+          ? `The scale factor is the number each distance from the center is multiplied by. The distance from the center to $A'$ is $${kText(k)}$ times the distance to $A$.`
+          : `Check with the given factor $${kText(k)}$: from the center, $A'$ is $${kText(k)}$ times as far away as $A$, along the same line.`,
+        factorAndCenter
+          ? `The dilation has scale factor $${kText(k)}$ and center $${pt(c[0], c[1])}$.`
+          : `The center of the dilation is $${pt(c[0], c[1])}$.`,
       ],
     });
     if (!surface) return null;
@@ -265,22 +269,22 @@ export const dilationLine = chainFamily({
       {
         label: eqn(m.m * p, q, m.b * 1, 1),
         feedback:
-          "A dilation keeps the direction of every line, so the image of a line is parallel to it and has the same slope. Multiplying the slope by the scale factor is not right.",
+          "This multiplies the slope by the scale factor. A dilation changes size, not direction, so the image line is parallel and has the same slope.",
       },
       {
         label: eqn(m.m, 1, p * m.b, q),
-        feedback: `Multiplying the intercept by the scale factor works only when the center is the origin. Here the center is ${pt(m.c[0], m.c[1])}.`,
+        feedback: `This multiplies the $y$-intercept by the scale factor. That shortcut works only when the center is the origin, because the intercept is measured from the origin. Here the center is $${pt(m.c[0], m.c[1])}$.`,
       },
       {
         label: eqn(m.m * p, q, p * m.b, q),
         feedback:
-          "The slope of the image equals the slope of the line, and the intercept is not simply multiplied by the factor.",
+          "This scales both the slope and the intercept. The slope stays the same, since a dilation keeps directions, and the intercept shortcut needs the center at the origin.",
       },
       ...(!onLine
         ? [
             {
               label: eqn(m.m, 1, m.b, 1),
-              feedback: `The line does not pass through the center ${pt(m.c[0], m.c[1])}, so its image is a different parallel line.`,
+              feedback: `This leaves the line where it is. Only a line through the center stays put, and this line misses the center $${pt(m.c[0], m.c[1])}$, so its image is a different parallel line.`,
             },
           ]
         : []),
@@ -289,18 +293,20 @@ export const dilationLine = chainFamily({
       prompt: `The line $y = ${m.m === 1 ? "" : m.m === -1 ? "-" : m.m}x ${m.b < 0 ? "-" : "+"} ${Math.abs(m.b)}$ is dilated by a scale factor of $${kText2}$ centered at the point $${pt(m.c[0], m.c[1])}$. Which equation is the image of the line?`,
       label: "Choose the equation",
       options,
-      hint: `Substitute the coordinates of the center ${pt(m.c[0], m.c[1])} into the line's equation to see whether the center is on the line. ${onLine ? "A line through the center is sent onto itself." : "If it is not, the image is parallel to the line: dilate one point of the line to find which parallel line."}`,
+      hint: `Put the center's coordinates, $${pt(m.c[0], m.c[1])}$, into the line's equation to see whether the center is on the line. That decides whether the line moves.`,
       explanation: onLine
         ? [
-            `At $x=${m.c[0]}$ the line has $y=${m.m * m.c[0] + m.b}$, so the center ${pt(m.c[0], m.c[1])} is on the line.`,
-            "Every point of the line lies on a ray from the center along the line, so the dilated points stay on the same line.",
-            `The image is the same line: ${eqn(m.m, 1, bn, bd)}.`,
+            `A dilation resizes from a fixed point, the center. Each point slides along the line from the center through it, and its distance from the center is multiplied by the scale factor.`,
+            `Test the center: at $x=${m.c[0]}$ the line gives $y=${m.m * m.c[0] + m.b}$. So the center $${pt(m.c[0], m.c[1])}$ is on the line.`,
+            "Each point of the line slides along that same line, toward or away from the center. So every image point stays on the line.",
+            `The image is the same line, ${eqn(m.m, 1, bn, bd)}.`,
           ]
         : [
-            `At $x=${m.c[0]}$ the line has $y=${m.m * m.c[0] + m.b}$, not ${m.c[1]}, so the center is off the line.`,
-            "A dilation sends a line to a parallel line, so the slope stays the same.",
-            `The point $(0, ${m.b})$ on the line is sent to $(${frac(m.c[0] * (q - p), q)}, ${frac(m.c[1] * (q - p) + p * m.b, q)})$, which is on the image.`,
-            `The image is ${eqn(m.m, 1, bn, bd)}.`,
+            `A dilation resizes from a fixed point, the center. Each point slides along the line from the center through it, and its distance from the center is multiplied by the scale factor.`,
+            `Test the center: at $x=${m.c[0]}$ the line gives $y=${m.m * m.c[0] + m.b}$, not ${m.c[1]}. So the center is off the line, and the line moves.`,
+            "A dilation changes sizes but not directions. So the image is a parallel line, with the same slope.",
+            `To find which parallel line, dilate one point. The point $(0, ${m.b})$ on the line goes to $(${frac(m.c[0] * (q - p), q)}, ${frac(m.c[1] * (q - p) + p * m.b, q)})$.`,
+            `The line with the same slope through that point is the image: ${eqn(m.m, 1, bn, bd)}.`,
           ],
     });
   },
@@ -389,6 +395,35 @@ export const motionChain = chainFamily({
       ...(rev ? [rev] : []),
       ...wrong.filter((p) => p !== rev),
     ].slice(0, 5);
+    const shift = (u: P[], v: P[], i: number) =>
+      [v[i]![0] - u[i]![0], v[i]![1] - u[i]![1]] as P;
+    const turn = (t: P[]) =>
+      cross(t[0]!, t[1]!, t[2]!) > 0 ? "counterclockwise" : "clockwise";
+    const stepFacts = (u: P[], v: P[], from: string, to: string) => {
+      const d = [0, 1, 2].map((i) => shift(u, v, i));
+      const same = d.every((x) => x[0] === d[0]![0] && x[1] === d[0]![1]);
+      const flips = turn(u) !== turn(v);
+      const move = `$${from[0]}$ moves by $${pt(d[0]![0], d[0]![1])}$ and $${from[1]}$ moves by $${pt(d[1]![0], d[1]![1])}$`;
+      return { same, flips, move, from, to, u, v };
+    };
+    const steps = [
+      stepFacts(m.tri, m.t2, "ABC", "DEF"),
+      stepFacts(m.t2, m.t3, "DEF", "GHI"),
+    ];
+    const reason = (f: (typeof steps)[number], kind: string) =>
+      kind === "translation"
+        ? `Every vertex moves the same amount: ${f.move.replace(/ and .*/, "")}, and so do the other two vertices. A slide like that is a translation.`
+        : kind === "reflection"
+          ? `The labels ${f.from.split("").map((c) => `$${c}$`).join(", ")} run ${turn(f.u)}, but ${f.to.split("").map((c) => `$${c}$`).join(", ")} run ${turn(f.v)}. Only a reflection, a flip, reverses that direction.`
+          : `The vertices do not all move the same amount: ${f.move}. So it is not a slide. The labels keep their direction, ${turn(f.u)}, so it is not a flip. That leaves a rotation, a turn.`;
+    const misfit = (f: (typeof steps)[number], claimed: string) =>
+      claimed === "translation"
+        ? `It is not a translation: ${f.move}, and a translation moves every vertex the same amount.`
+        : claimed === "reflection"
+          ? `It is not a reflection: the labels keep their direction around the triangle (${turn(f.u)}), and a reflection would reverse it.`
+          : f.flips
+            ? `It is not a rotation: the labels reverse direction around the triangle, and a rotation keeps it.`
+            : `It is not a rotation: every vertex moves the same amount, which is a translation.`;
     const text = ([x, y]: [string, string]) =>
       `${article(x)[0]!.toUpperCase() + article(x).slice(1)} followed by ${article(y)}`;
     return choiceSurface(r, {
@@ -398,13 +433,15 @@ export const motionChain = chainFamily({
         { label: text([k1, k2]), correct: true },
         ...picks.map((p) => ({
           label: text(p),
-          feedback: `Compare the order of the labels around the triangle and the direction of the sides from one triangle to the next. These facts do not match ${article(p[0] !== k1 ? p[0] : p[1])} for the ${p[0] !== k1 ? "first" : "second"} step.`,
+          feedback: `Check the ${p[0] !== k1 ? "first" : "second"} step, from $${steps[p[0] !== k1 ? 0 : 1]!.from}$ to $${steps[p[0] !== k1 ? 0 : 1]!.to}$. ${misfit(steps[p[0] !== k1 ? 0 : 1]!, p[0] !== k1 ? p[0] : p[1])}`,
         })),
       ],
       hint: `Compare ${verts(m.tri, ["A", "B", "C"])} with ${verts(m.t2, ["D", "E", "F"])} one vertex at a time. If every vertex moves the same amount, the step is a translation. If the order of the labels around the triangle reverses, it is a reflection. Then do the same for the second step.`,
       explanation: [
-        `A reflection reverses the order of the labels around the triangle. A translation moves every vertex by the same amount. A rotation keeps the order but turns the sides.`,
-        `From $ABC$ to $DEF$ the step is ${article(k1)}, and from $DEF$ to $GHI$ it is ${article(k2)}.`,
+        `A rigid motion moves a figure without changing its size or shape. There are three kinds: a translation (slide), a reflection (flip) and a rotation (turn).`,
+        `Two tests tell them apart. A translation moves every vertex the same amount. A reflection reverses the direction the labels run around the triangle, clockwise or counterclockwise.`,
+        `First step, $ABC$ to $DEF$: ${reason(steps[0]!, k1)}`,
+        `Second step, $DEF$ to $GHI$: ${reason(steps[1]!, k2)}`,
         `The sequence is ${text([k1, k2]).toLowerCase()}.`,
       ],
     });
@@ -496,13 +533,15 @@ export const reflectionSide = chainFamily({
         { label: `$\\overline{${key}}$`, correct: true },
         ...wrong.map((v) => ({
           label: `$\\overline{${v}}$`,
-          feedback: `Follow the endpoints of $\\overline{${orig}}$ through both reflections: they land on the points labeled $${key[0]}$ and $${key[1]}$, not on $${v[0]}$ and $${v[1]}$.`,
+          feedback: `Track the two endpoints, not the shape's position. $${orig[0]}$ and $${orig[1]}$ land on the points labeled $${key[0]}$ and $${key[1]}$ after both reflections, not on $${v[0]}$ and $${v[1]}$.`,
         })),
       ],
       hint: `Reflect $${orig[0]}=${pt(m.quad[m.side]![0], m.quad[m.side]![1])}$ over ${lineNames[m.lines[0]]} and then over ${lineNames[m.lines[1]]}, and find which labeled point it lands on. Do the same for $${orig[1]}$.`,
       explanation: [
-        `Reflecting over ${lineNames[m.lines[0]]} then over ${lineNames[m.lines[1]]} sends $${orig[0]}$ to the point labeled $${labelOf(m.side)}$ and $${orig[1]}$ to the point labeled $${labelOf((m.side + 1) % 4)}$.`,
-        "A reflection keeps every segment's endpoints with it, so the image of a side joins the images of its endpoints.",
+        `A reflection flips a figure over a line, like a mirror. Each point lands the same distance from the line, on the other side.`,
+        "A segment's image joins the images of its two endpoints. So follow each endpoint through both reflections.",
+        `Reflecting $${orig[0]}$ over ${lineNames[m.lines[0]]} and then over ${lineNames[m.lines[1]]} lands it on the point labeled $${labelOf(m.side)}$.`,
+        `Doing the same to $${orig[1]}$ lands it on the point labeled $${labelOf((m.side + 1) % 4)}$.`,
         `The image of $\\overline{${orig}}$ is $\\overline{${key}}$.`,
       ],
     });
@@ -579,27 +618,27 @@ export const rigidStatement = chainFamily({
     const fals: Array<[string, string]> = [
       [
         "Each side of $A'B'C'$ is parallel to its corresponding side of $ABC$.",
-        "Rigid motions keep lengths and angles, but a rotation or a reflection turns sides, so corresponding sides need not be parallel.",
+        "Parallel sides are not guaranteed. A rotation or a reflection can turn a side to point a new way, even though its length stays the same.",
       ],
       [
         even
           ? "The vertices of $A'B'C'$ appear in the opposite order, clockwise instead of counterclockwise, from those of $ABC$."
           : "The vertices of $A'B'C'$ appear in the same order, clockwise or counterclockwise, as those of $ABC$.",
         even
-          ? `Reflections number ${m.reflections}, an even number, and they cancel in pairs, so the order of the vertices is unchanged.`
-          : `Reflections number ${m.reflections}, an odd number, and they reverse the order of the vertices.`,
+          ? `There are ${m.reflections} reflections, an even number. Each reflection reverses the order, so pairs of them cancel out and the order stays the same.`
+          : `There ${m.reflections === 1 ? "is 1 reflection" : `are ${m.reflections} reflections`}, an odd number. Each reflection reverses the order, so an odd number leaves it reversed.`,
       ],
       [
         "Triangle $A'B'C'$ is larger than triangle $ABC$.",
-        "Rigid motions never change size. They keep every length.",
+        "A rigid motion never changes size; it keeps every length. Only a dilation makes a figure larger.",
       ],
       [
         "Each vertex of $A'B'C'$ has the same coordinates as the corresponding vertex of $ABC$.",
-        "A rigid motion may move every point, so the coordinates can change.",
+        "Rigid motions move the figure to a new place, so the coordinates usually change. What stays the same is the size and shape.",
       ],
       [
         "Triangle $A'B'C'$ is similar to $ABC$ but not congruent to it.",
-        "Rigid motions keep every length, so the image is congruent, not merely similar.",
+        "Rigid motions keep every length, so the image is congruent: the same size and shape. Similar but not congruent would need a size change.",
       ],
     ];
     return choiceSurface(r, {
@@ -609,10 +648,12 @@ export const rigidStatement = chainFamily({
         { label: key, correct: true },
         ...fals.map(([label, feedback]) => ({ label, feedback })),
       ],
-      hint: `Rigid motions ${m.seq.length === 1 ? "" : "such as "}${listText} each keep distances and angles. Ask what is kept by all ${m.seq.length} motions together, and test each statement against a reflection.`,
+      hint: `A rigid motion moves a figure without changing its size or shape. Ask what stays the same through all ${m.seq.length} motions (${listText}), and test each statement against a reflection.`,
       explanation: [
-        "A translation, a reflection and a rotation each keep every distance and every angle measure, so any sequence of them does too.",
-        `Lengths, angles and area stay the same, so the image is congruent to the original. Parallelism of sides, the order of the vertices and the coordinates can change${even ? "" : ", and the odd number of reflections reverses the order of the vertices"}.`,
+        "A rigid motion moves a figure without stretching or shrinking it. A translation (slide), a reflection (flip) and a rotation (turn) are all rigid motions.",
+        "Each one keeps every length and every angle measure the same. So a chain of them does too.",
+        "Same lengths and angles mean the image is congruent to the original: the same size and shape. Its area is the same as well.",
+        `Other things can change: the position, the coordinates and the direction of each side. ${even ? `The ${m.reflections === 0 ? "lack of reflections keeps" : `${m.reflections} reflections cancel in pairs, keeping`} the order of the vertices.` : "An odd number of reflections reverses the order of the vertices."}`,
         `The statement that must be true is: ${key}`,
       ],
     });
