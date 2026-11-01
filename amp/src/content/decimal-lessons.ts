@@ -449,7 +449,8 @@ export const decimalMethods: Record<string, ProblemMethod> = {
       "Write 0 for a place with nothing in it.",
       "Write the ones, then the decimal point, then the other digits in order.",
     ],
-    watch: "Leaving out a 0 moves every later digit into the wrong place.",
+    watch:
+      "Keep a 0 that sits between other digits. Leaving it out slides digits into the wrong places: 3.608 would become 3.68.",
   },
   "compare-decimals-thousandths": {
     goal: "Choose the greater or lesser of two decimals to thousandths.",
