@@ -187,10 +187,11 @@ TEX_GROUP = r'\{([^{}]*)\}'
 
 def plain_math(text):
     """Read typeset arithmetic as plain symbols: $x^{-3} = \\frac{1}{x^3}$ is
-    x^(-3) = (1)/(x^3), so a typeset claim is checked rather than skipped."""
+    x^(-3) = ((1)/(x^3)), so a typeset claim is checked rather than skipped."""
     def span(found):
         tex = found[1]
-        tex = re.sub(rf'\\[td]?frac{TEX_GROUP}{TEX_GROUP}', r'(\1)/(\2)', tex)
+        # A whole fraction is one value: x ÷ \frac{1}{x^5} divides by 1/x^5.
+        tex = re.sub(rf'\\[td]?frac{TEX_GROUP}{TEX_GROUP}', r'((\1)/(\2))', tex)
         tex = re.sub(rf'\^{TEX_GROUP}', r'^(\1)', tex)
         for command, symbol in ((r'\cdot', '×'), (r'\times', '×'), (r'\div', '÷'), (r'\left', ''), (r'\right', '')):
             tex = re.sub(re.escape(command) + r'(?![A-Za-z])', symbol, tex)
@@ -319,23 +320,43 @@ def check_manifest(record):
     return len(rows)
 
 
+# '1/0 is undefined', plain or typeset as $\tfrac{1}{0}$, or in plain words
+# 'dividing by zero has no answer'.
+UNDEFINED_DIVISION = r'(?:(?:division by zero|1\s*/\s*0|\\[td]?frac\{1\}\{0\})\$?\s+is (?:undefined|not defined)|dividing by zero has no answer)'
+
+
+def lesson_prompt(prompt):
+    """A lesson's typeset worked prompt in the generated prompt's plain form:
+    $\\left(-\\tfrac{2}{3}\\right)^{-3}$ is (−2 / 3)^(−3), and 'every real
+    number $x$ other than 0' is 'every nonzero real x'."""
+    def span(found):
+        tex = found[1].replace(r'\left', '').replace(r'\right', '')
+        tex = re.sub(rf'\\[td]?frac{TEX_GROUP}{TEX_GROUP}', r'\1 / \2', tex)
+        tex = tex.replace('-', '−').replace(r'\times', '×').replace(r'\div', '÷')
+        tex = re.sub(rf'\^{TEX_GROUP}', lambda e: '^(' + e[1] + ')' if e[1].startswith('−') else '^' + e[1], tex)
+        return re.sub(r'\s+', ' ', tex).strip()
+    plain = re.sub(r'\$([^$]+)\$', span, prompt)
+    return plain.replace('For every real number x other than 0,', 'For every nonzero real x,')
+
+
 def check_lesson(record):
     lesson = record['lesson']; template = record['templateId']
     require(lesson['id'] == template and lesson['templateIds'] == [template], 'Missing standalone exponent lesson')
-    worked = lesson['workedExample']; prompt = worked['prompt']
+    worked = lesson['workedExample']; prompt = lesson_prompt(worked['prompt'])
     if template == 'negative-integer-power': prompt += ' Give an exact fraction or whole number.'
     public = fixture(template,prompt); answer = solve_integer_exponent(public)
     require(Fraction(worked['answer'].replace('−','-')) == answer, 'Incorrect lesson worked answer')
     require(sum(equalities(step,answer) for step in worked['steps']) >= 2, 'Missing checked lesson equality chains')
     sections = [*lesson['sections'], *lesson.get('closingSections', [])]
     prose = ' '.join(p for section in sections for p in section['paragraphs'])
-    for term in ['base', 'exponent', 'factor', 'integer', 'nonzero', 'numerator', 'denominator', 'reciprocal']:
-        require(term in prose.lower(), 'Missing standalone exponent definition: ' + term)
-    require(re.search(r'(?:division by zero|1\s*/\s*0)\$?\s+is (?:undefined|not defined)', prose.lower()),
+    # Plain-language lessons may say 'other than 0' or 'except zero' for nonzero.
+    for term in ['base', 'exponent', 'factor', 'integer', 'nonzero|other than 0|except zero|except 0', 'numerator', 'denominator', 'reciprocal']:
+        require(any(word in prose.lower() for word in term.split('|')), 'Missing standalone exponent definition: ' + term)
+    require(re.search(UNDEFINED_DIVISION, prose.lower()),
             'Missing explanation that division by zero is undefined')
     zero_power_values = re.findall(
         r'x\s*\^\s*(?:0|\{0\})\s*=\s*([+-]?\d+(?:\.\d+)?(?:\s*/\s*\d+)?)', prose)
-    require('signed numbers' in prose and zero_power_values,
+    require(('signed numbers' in prose or 'negative numbers' in prose) and zero_power_values,
             'Missing assumed arithmetic or zero-power explanation')
     require(all(Fraction(re.sub(r'\s+', '', value)) == 1 for value in zero_power_values),
             'Incorrect zero-power equality in exponent lesson')
@@ -400,7 +421,7 @@ def review_content_mutations(records):
         require(changed > 0, 'Missing exponent lesson mutation target')
 
     probe(lesson, check_lesson, lambda r: replace_lesson_text(
-        r, r'(?:division by zero|1\s*/\s*0)\$?\s+is (?:undefined|not defined)',
+        r, UNDEFINED_DIVISION,
         'division is allowed'))
     probe(lesson, check_lesson, lambda r: replace_lesson_text(
         r, r'x\s*\^\s*(?:0|\{0\})\s*=\s*1(?!\d|/|\.\d)', 'x^0 = 2'))

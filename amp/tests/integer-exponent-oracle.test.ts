@@ -38,7 +38,7 @@ review = central['review_integer_exponent_explanation']
 cases = json.load(sys.stdin)
 for case in cases:
     review(case['public'], case['explanation'])
-assert o.plain_math('$x^{-3} = \\\\frac{1}{x^3}$') == 'x^(-3) = (1)/(x^3)'
+assert o.plain_math('$x^{-3} = \\\\frac{1}{x^3}$') == 'x^(-3) = ((1)/(x^3))'
 assert o.equalities('Here $x^{-3} = \\\\frac{1}{x^3}$ for every nonzero $x$.', 3) == 1
 typeset = next(c for c in cases if c['public']['templateId'] == 'product-of-powers-exponent' and '\\\\frac{1}{x^3}' in ' '.join(c['explanation']))
 for wrong in ['\\\\frac{1}{x^2}', '\\\\frac{1}{3}', '']:
