@@ -128,17 +128,25 @@ function placeValueModel(r: Random, variant: string) {
       }
     }
     const total = 5;
-    return selectModel({
-      variant,
-      pool,
-      total,
-      k: r(2, 3),
-      context: `The number is $${tex(n)}$.`,
-      ask: (k) => `Select the ${k} true comparisons.`,
-      one: "comparison",
-      hint: () =>
-        `Write each word form as a numeral, thousands group first, then compare it with $${tex(n)}$ one place at a time from the greatest place.`,
-    });
+    return {
+      ...selectModel({
+        variant,
+        pool,
+        total,
+        k: r(2, 3),
+        context: `The number is $${tex(n)}$.`,
+        ask: (k) => `Select the ${k} true comparisons.`,
+        one: "comparison",
+        hint: () =>
+          `Write each word form as a numeral, thousands group first, then compare it with $${tex(n)}$ one place at a time from the greatest place.`,
+      }),
+      lead: [
+        "To compare numbers, write each one in digits. Then compare place by place, starting from the greatest place.",
+      ],
+      tail: [
+        `The comparisons marked true state the correct order of the numbers.`,
+      ],
+    };
   }
   const zero = variant === "inner-zero";
   let n = 0;
@@ -214,17 +222,26 @@ function placeValueModel(r: Random, variant: string) {
     seen.add(f.label);
     add(f.label, f.value, explain(f.label, f.value), explain(f.label, f.value));
   }
-  return selectModel({
-    variant,
-    pool,
-    total: 5,
-    k: r(2, 3),
-    context: `The number is $${tex(n)}$.`,
-    ask: (k) => `Select the ${k} expressions that are equal to it.`,
-    one: "expression",
-    hint: () =>
-      `Find the value of each digit of $${tex(n)}$ by its place: the ${ds[0]} is in the ten-thousands place. Work out what each expression adds up to and compare it with $${tex(n)}$.`,
-  });
+  return {
+    ...selectModel({
+      variant,
+      pool,
+      total: 5,
+      k: r(2, 3),
+      context: `The number is $${tex(n)}$.`,
+      ask: (k) => `Select the ${k} expressions that are equal to it.`,
+      one: "expression",
+      hint: () =>
+        `Find the value of each digit of $${tex(n)}$ by its place: the ${ds[0]} is in the ten-thousands place. Work out what each expression adds up to and compare it with $${tex(n)}$.`,
+    }),
+    lead: [
+      "Each digit's value depends on its place: ones, tens, hundreds, thousands and ten-thousands.",
+      `To test an expression, work out what it adds up to and compare that with $${tex(n)}$.`,
+    ],
+    tail: [
+      `The expressions marked true are the ones whose value is exactly $${tex(n)}$.`,
+    ],
+  };
 }
 
 /* ------------------------------------------------- equivalent fractions */
@@ -274,7 +291,9 @@ function equivalentFractions(r: Random) {
         `$${fr(n, d)}$`,
         holds,
         holds
-          ? `$${fr(n, d)}$ matches: $${n}\\times${b}=${n * b}$ and $${a}\\times${d}=${a * d}$.`
+          ? n >= a
+            ? `$${fr(n, d)}$ is equivalent: multiply the top and bottom of $${fr(a, b)}$ by $${n / a}$ to get $${fr(n, d)}$.`
+            : `$${fr(n, d)}$ is equivalent: divide the top and bottom of $${fr(a, b)}$ by $${a / n}$ to get $${fr(n, d)}$.`
           : `$${fr(n, d)}$ is not equal to $${fr(a, b)}$: ${note}`,
       ),
     );
@@ -296,17 +315,24 @@ function equivalentFractions(r: Random) {
   }
   cand(a + 1, b * 2, "the parts were not scaled by the same factor.");
   cand(a * 2 + 1, b * 2, "the parts were not scaled by the same factor.");
-  return selectModel({
-    variant: b % 2 === 0 ? "even-denominator" : "odd-denominator",
-    pool,
-    total: 5,
-    k: r(2, 3),
-    context: `Look at the fraction $${fr(a, b)}$.`,
-    ask: (k) => `Select the ${k} fractions that are equivalent to it.`,
-    one: "fraction",
-    hint: () =>
-      `Equivalent fractions come from multiplying the numerator and the denominator of $${fr(a, b)}$ by the same number. For each choice, ask whether one number multiplies $${a}$ to give its numerator and $${b}$ to give its denominator.`,
-  });
+  return {
+    ...selectModel({
+      variant: b % 2 === 0 ? "even-denominator" : "odd-denominator",
+      pool,
+      total: 5,
+      k: r(2, 3),
+      context: `Look at the fraction $${fr(a, b)}$.`,
+      ask: (k) => `Select the ${k} fractions that are equivalent to it.`,
+      one: "fraction",
+      hint: () =>
+        `Equivalent fractions come from multiplying the numerator and the denominator of $${fr(a, b)}$ by the same number. For each choice, ask whether one number multiplies $${a}$ to give its numerator and $${b}$ to give its denominator.`,
+    }),
+    lead: [
+      "Equivalent fractions name the same amount. Multiply the top (the numerator) and the bottom (the denominator) by the same number to make one.",
+      "Changing only one part, or adding the same number to both parts, changes the amount.",
+    ],
+    tail: [`The fractions marked true are equivalent to $${fr(a, b)}$.`],
+  };
 }
 
 /* ---------------------------------------- fractions on a number line */
@@ -375,18 +401,25 @@ function fractionLineNames(r: Random) {
   const scene = numberLine({ min: 0, max: 1, denominator: d })
     .mark(p / d, { label: "P" })
     .scene();
-  return selectModel({
-    variant: `${d % 2 === 0 ? "even" : "odd"}-parts`,
-    pool,
-    total: 5,
-    k: r(2, 3),
-    context: `The number line from $0$ to $1$ is cut into ${ticks}. Point $P$ is marked on it.`,
-    ask: (k) => `Select the ${k} fractions that name point $P$.`,
-    one: "fraction",
-    hint: () =>
-      `Count the parts from $0$ to $P$ on the line cut into ${ticks}, and write that count over ${d}. Then look for fractions that are equal to it.`,
-    figure: { kind: "scene", scene },
-  });
+  return {
+    ...selectModel({
+      variant: `${d % 2 === 0 ? "even" : "odd"}-parts`,
+      pool,
+      total: 5,
+      k: r(2, 3),
+      context: `The number line from $0$ to $1$ is cut into ${ticks}. Point $P$ is marked on it.`,
+      ask: (k) => `Select the ${k} fractions that name point $P$.`,
+      one: "fraction",
+      hint: () =>
+        `Count the parts from $0$ to $P$ on the line cut into ${ticks}, and write that count over ${d}. Then look for fractions that are equal to it.`,
+      figure: { kind: "scene", scene },
+    }),
+    lead: [
+      `The line from 0 to 1 is cut into ${d} equal parts, so each part is $${fr(1, d)}$. Point $P$ is ${p} parts from 0, at $${fr(p, d)}$.`,
+      `Any fraction equivalent to $${fr(p, d)}$ (the same amount) also names point $P$.`,
+    ],
+    tail: ["The fractions marked true all name point $P$."],
+  };
 }
 
 /* ------------------------------------------------------ equivalent ratios */
@@ -452,17 +485,24 @@ function equivalentRatios(r: Random) {
   cand(b, a, "the order of the two parts is reversed.");
   cand(a * 4, b * 4 - 1, "the parts were not scaled by the same factor.");
   cand(a * 5 + 1, b * 5, "the parts were not scaled by the same factor.");
-  return selectModel({
-    variant: a > b ? "first-part-greater" : "second-part-greater",
-    pool,
-    total: 5,
-    k: r(2, 3),
-    context: `${c.frame} $${a}$ ${c.a} for every $${b}$ ${c.b}.`,
-    ask: (k) => `Select the ${k} groups that keep this ratio.`,
-    one: "group",
-    hint: () =>
-      `The ratio is $${a}:${b}$. A group keeps it when both amounts are the same multiple of $${a}$ and $${b}$. Find what $${a}$ is multiplied by to give each group's first amount, then check the second.`,
-  });
+  return {
+    ...selectModel({
+      variant: a > b ? "first-part-greater" : "second-part-greater",
+      pool,
+      total: 5,
+      k: r(2, 3),
+      context: `${c.frame} $${a}$ ${c.a} for every $${b}$ ${c.b}.`,
+      ask: (k) => `Select the ${k} groups that keep this ratio.`,
+      one: "group",
+      hint: () =>
+        `The ratio is $${a}:${b}$. A group keeps it when both amounts are the same multiple of $${a}$ and $${b}$. Find what $${a}$ is multiplied by to give each group's first amount, then check the second.`,
+    }),
+    lead: [
+      `A ratio such as $${a}:${b}$ compares two amounts. An equivalent ratio multiplies both amounts by the same number.`,
+      "Adding the same number to both amounts does not keep the ratio.",
+    ],
+    tail: [`The groups marked true keep the ratio $${a}:${b}$.`],
+  };
 }
 
 /* ------------------------------------------------------- inverse rounding */
@@ -528,18 +568,25 @@ function roundsTo(r: Random) {
     ": a value halfway between two roundings rounds up, to the greater one.",
   );
   const unitText = `$${toText(target)}$`;
-  return selectModel({
-    variant: `${variant}-place`,
-    pool,
-    total: 5,
-    k: r(2, 3),
-    context: "",
-    ask: (k) =>
-      `Select the ${k} numbers that round to ${unitText} at the nearest ${name}.`,
-    one: "number",
-    hint: () =>
-      `A number rounds to ${unitText} at the nearest ${name} when it is at least $${toText(target - 50)}$ and less than $${toText(target + 50)}$. Compare each number with those two boundaries, digit by digit.`,
-  });
+  return {
+    ...selectModel({
+      variant: `${variant}-place`,
+      pool,
+      total: 5,
+      k: r(2, 3),
+      context: "",
+      ask: (k) =>
+        `Select the ${k} numbers that round to ${unitText} at the nearest ${name}.`,
+      one: "number",
+      hint: () =>
+        `A number rounds to ${unitText} at the nearest ${name} when it is at least $${toText(target - 50)}$ and less than $${toText(target + 50)}$. Compare each number with those two boundaries, digit by digit.`,
+    }),
+    lead: [
+      `Rounding to the nearest ${name} means replacing a number with the closest ${name} value.`,
+      `A number rounds to ${unitText} when it is less than half a ${name} away from it. A number exactly halfway rounds up.`,
+    ],
+    tail: [`The numbers marked true round to ${unitText}.`],
+  };
 }
 
 /* --------------------------------------------------- compare with π or √ */
@@ -614,20 +661,31 @@ function compareToPi(r: Random) {
       ),
     );
   }
-  return selectModel({
-    variant,
-    pool,
-    total: 5,
-    k: r(2, 3),
-    context: "",
-    ask: (k) =>
-      `Select the ${k} numbers that are ${greater ? "greater" : "less"} than $${refTex}$.`,
-    one: "number",
-    hint: (shown) =>
+  return {
+    ...selectModel({
+      variant,
+      pool,
+      total: 5,
+      k: r(2, 3),
+      context: "",
+      ask: (k) =>
+        `Select the ${k} numbers that are ${greater ? "greater" : "less"} than $${refTex}$.`,
+      one: "number",
+      hint: (shown) =>
+        variant === "root-greater"
+          ? `Find $\\sqrt{${Math.round(ref * ref)}}$ to the nearest hundredth by squaring: it lies between two tenths. Write each choice as a decimal to the same place before comparing.`
+          : `Use $\\pi\\approx3.14159$. Write each choice as a decimal to at least four places, then compare it digit by digit with $\\pi$ as $3.14159\\ldots$. The question asks for ${shown.filter((x) => x.holds).length} numbers.`,
+    }),
+    lead: [
       variant === "root-greater"
-        ? `Find $\\sqrt{${Math.round(ref * ref)}}$ to the nearest hundredth by squaring: it lies between two tenths. Write each choice as a decimal to the same place before comparing.`
-        : `Use $\\pi\\approx3.14159$. Write each choice as a decimal to at least four places, then compare it digit by digit with $\\pi$ as $3.14159\\ldots$. The question asks for ${shown.filter((x) => x.holds).length} numbers.`,
-  });
+        ? `$${refTex}$ is the number that times itself makes ${refTex.slice(6, -1)}. It is about ${ref.toFixed(5).replace(/0+$/, "")}.`
+        : "$\\pi$ is the distance around any circle divided by the distance across it. It is about 3.14159.",
+      "Write each choice as a decimal, then compare place by place from the left.",
+    ],
+    tail: [
+      `The numbers marked true are ${greater ? "greater" : "less"} than $${refTex}$.`,
+    ],
+  };
 }
 
 /* ----------------------------------------------- multiplication fact grid */
@@ -673,18 +731,24 @@ function factGrid(r: Random) {
       cand(x - 1, y);
       cand(x + 2, y);
     }
-  return selectModel({
-    variant: P <= 36 ? "small-product" : "large-product",
-    pool,
-    total: 6,
-    k: r(2, 3),
-    context: "",
-    ask: (k) =>
-      `Select the ${k} multiplication facts that have a product of $${P}$.`,
-    one: "fact",
-    hint: () =>
-      `Ask which numbers from $2$ to $12$ divide $${P}$ evenly: each one has a partner that makes a fact with product $${P}$. Then find the product of every fact in the grid and compare it with $${P}$.`,
-  });
+  return {
+    ...selectModel({
+      variant: P <= 36 ? "small-product" : "large-product",
+      pool,
+      total: 6,
+      k: r(2, 3),
+      context: "",
+      ask: (k) =>
+        `Select the ${k} multiplication facts that have a product of $${P}$.`,
+      one: "fact",
+      hint: () =>
+        `Ask which numbers from $2$ to $12$ divide $${P}$ evenly: each one has a partner that makes a fact with product $${P}$. Then find the product of every fact in the grid and compare it with $${P}$.`,
+    }),
+    lead: [
+      `A multiplication fact such as $3\\times4=12$ multiplies two numbers. Find the answer of each fact and compare it with $${P}$.`,
+    ],
+    tail: [`The facts marked true multiply to $${P}$.`],
+  };
 }
 
 /* ------------------------------------------- equations with equal factors */
