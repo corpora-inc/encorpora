@@ -478,10 +478,6 @@
   font-size: clamp(20px, 2.6vw, 26px);
   line-height: 1.9;
 }
-/* A line breaks between a formula and a box, never inside a formula. */
-.multi-part[data-layout="cards"] .multi-part-sentence .katex {
-  white-space: nowrap;
-}
 .multi-part-box {
   min-width: 64px;
   min-height: 56px;
