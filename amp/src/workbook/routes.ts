@@ -24,9 +24,12 @@ import {
   type WorkbookSummary,
 } from "./contracts.js";
 import { workbookFooter, workbookHtml } from "./render.js";
+import { PaperEntryError, recordPaperResults, resultRows } from "./results.js";
 import { RendererUnavailable, type WorkbookRenderer } from "./pdf.js";
 
 const DAY = 86_400_000;
+const staleWorkbook =
+  "Some problems in this workbook have been updated since it was made. Make today's workbook instead.";
 const templateVersion = new Map(templates.map((t) => [t.id, t.version]));
 /** Problems regenerate from template and seed, so a workbook reprints
  * exactly only while every template is still at the version it named. */
@@ -125,14 +128,30 @@ export function registerWorkbookRoutes(
   app.get("/api/v1/learners/:learnerId/workbooks", async (request) => {
     const accountId = await account(request);
     const { learnerId } = learnerParams.parse(request.params);
-    const { date } = z
-      .object({ date: workbookRequestSchema.shape.date.optional() })
+    const { date, code } = z
+      .object({
+        date: workbookRequestSchema.shape.date.optional(),
+        /** The printed code, any case, with or without its dash. */
+        code: z
+          .string()
+          .trim()
+          .max(20)
+          .transform((value) => value.toUpperCase().replace(/[^A-Z0-9]/g, ""))
+          .pipe(z.string().regex(/^[A-Z0-9]{8}$/, "Enter the 8-character code"))
+          .transform((value) => `${value.slice(0, 4)}-${value.slice(4)}`)
+          .optional(),
+      })
       .strict()
       .parse(request.query);
     return options.repository.transaction(accountId, learnerId, async (tx) => {
       await access(tx);
+      const found = code ? await tx.workbookByCode(code) : undefined;
       return {
-        workbooks: (await tx.workbooks(date)).map(workbookSummary),
+        workbooks: code
+          ? found
+            ? [workbookSummary(found)]
+            : []
+          : (await tx.workbooks(date)).map(workbookSummary),
         /** Whether downloads are PDFs; otherwise the printable document. */
         pdf: !!options.renderer,
       };
@@ -194,6 +213,94 @@ export function registerWorkbookRoutes(
     return reply.code(result.status).send(result.body);
   });
 
+  /** Results entered from the printed workbook: one row per problem. */
+  app.get(
+    "/api/v1/learners/:learnerId/workbooks/:workbookId/results",
+    async (request) => {
+      const accountId = await account(request);
+      const { learnerId, workbookId } = workbookParams.parse(request.params);
+      return options.repository.transaction(
+        accountId,
+        learnerId,
+        async (tx) => {
+          await access(tx);
+          const record = await tx.workbook(workbookId);
+          if (!record) throw new ApiError(404, "Workbook not found");
+          if (!workbookIsCurrent(record.spec))
+            throw new ApiError(410, staleWorkbook);
+          return {
+            workbook: workbookSummary(record),
+            rows: await resultRows(tx, record),
+          };
+        },
+      );
+    },
+  );
+  /** Records results as `paper` evidence. Rows already recorded are kept,
+   * so sending the same results again changes nothing. */
+  app.post(
+    "/api/v1/learners/:learnerId/workbooks/:workbookId/results",
+    async (request, reply) => {
+      const accountId = await account(request);
+      const { learnerId, workbookId } = workbookParams.parse(request.params);
+      const { entries } = z
+        .object({
+          entries: z
+            .array(
+              z.union([
+                z
+                  .object({
+                    n: z.number().int().min(1).max(200),
+                    answer: z.string().trim().min(1).max(200),
+                  })
+                  .strict(),
+                z
+                  .object({
+                    n: z.number().int().min(1).max(200),
+                    mark: z.enum(["right", "not-yet"]),
+                  })
+                  .strict(),
+              ]),
+            )
+            .min(1)
+            .max(200),
+        })
+        .strict()
+        .parse(request.body);
+      try {
+        const result = await options.repository.transaction(
+          accountId,
+          learnerId,
+          async (tx) => {
+            await access(tx);
+            const record = await tx.workbook(workbookId);
+            if (!record) throw new ApiError(404, "Workbook not found");
+            if (!workbookIsCurrent(record.spec))
+              throw new ApiError(410, staleWorkbook);
+            const recorded = await recordPaperResults(
+              tx,
+              record,
+              entries,
+              new Date(now()),
+            );
+            return {
+              recorded,
+              workbook: workbookSummary(record),
+              rows: await resultRows(tx, record),
+            };
+          },
+        );
+        return reply.send(result);
+      } catch (error) {
+        if (error instanceof PaperEntryError)
+          return reply
+            .code(400)
+            .send({ error: error.message, problem: error.problem });
+        throw error;
+      }
+    },
+  );
+
   /** The printable workbook as one HTML document, printed from the
    * parent's browser. The download when no PDF renderer is configured. */
   app.get(
@@ -219,10 +326,7 @@ export function registerWorkbookRoutes(
         },
       );
       if (!workbookIsCurrent(record.spec))
-        throw new ApiError(
-          410,
-          "Some problems in this workbook have been updated since it was made. Make today's workbook instead.",
-        );
+        throw new ApiError(410, staleWorkbook);
       const html = workbookHtml(record.spec, {
         lessons,
         skillTitle,
@@ -262,10 +366,7 @@ export function registerWorkbookRoutes(
           const record = await tx.workbook(workbookId);
           if (!record) throw new ApiError(404, "Workbook not found");
           if (!workbookIsCurrent(record.spec))
-            throw new ApiError(
-              410,
-              "Some problems in this workbook have been updated since it was made. Make today's workbook instead.",
-            );
+            throw new ApiError(410, staleWorkbook);
           const format =
             query.format ?? (record.paper === "a4" ? "A4" : "Letter");
           const html = workbookHtml(record.spec, {

@@ -103,6 +103,11 @@ export type Outcome = {
   skipped?: true;
   /** The instance's realized variant and axis values, for per-axis evidence. */
   variant?: ProblemVariant;
+  /** Where the answer came from; absent for in-app answers. */
+  evidenceSource?: "paper";
+  /** Below 1 for evidence weaker than a graded answer (a parent's mark
+   * without the answer). Absent means 1. */
+  evidenceWeight?: number;
 };
 export type SavedProblem = GeneratedProblem & {
   /** Serving context is private and immutable for evidence interpretation. */
@@ -180,6 +185,10 @@ export interface LearnerTransaction {
    * returns the stored one either way. */
   saveWorkbook(workbook: WorkbookRecord): Promise<WorkbookRecord>;
   setWorkbookPaper(id: string, paper: WorkbookRecord["paper"]): Promise<void>;
+  /** The workbook printed with this code (newest when codes repeat). */
+  workbookByCode(code: string): Promise<WorkbookRecord | undefined>;
+  /** Workbooks made in the last day, whose problems mixed practice holds back. */
+  recentWorkbooks(): Promise<WorkbookRecord[]>;
   /** A rendered PDF of exactly this document, while it is retained. */
   workbookPdf(key: WorkbookPdfKey): Promise<Buffer | undefined>;
   /** Stores a rendered PDF and drops every expired one. */
@@ -653,7 +662,7 @@ export class PgTransaction implements LearnerTransaction {
     const settings = await this.practiceSettings();
     const history = await this.db.query(
       `SELECT a.outcome->>'templateId' AS "templateId",(outcome->>'correct')::boolean AS correct,
-        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision" FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
+        (outcome->>'assisted')::boolean AS assisted,outcome->>'createdAt' AS "createdAt",(outcome->>'evidenceWeight')::float8 AS "evidenceWeight", COALESCE((i.content->>'practiceRevision')::int,0) AS "practiceRevision" FROM amp_attempts a JOIN amp_instances i ON i.id=a.problem_id
         WHERE a.learner_id=$1 AND COALESCE((i.content->>'practiceEpoch')::int,0)=$3 ORDER BY a.evidence_sequence LIMIT $2`,
       [this.learnerId, answers, settings.epoch],
     );
@@ -896,6 +905,22 @@ export class PgTransaction implements LearnerTransaction {
       "UPDATE amp_workbooks SET paper=$3 WHERE learner_id=$1 AND id=$2",
       [this.learnerId, id, paper],
     );
+  }
+  async workbookByCode(code: string) {
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1 AND code=$2
+        ORDER BY created_at DESC LIMIT 1`,
+      [this.learnerId, code],
+    );
+    return result.rows[0] ? workbookRow(result.rows[0]) : undefined;
+  }
+  async recentWorkbooks() {
+    const result = await this.db.query(
+      `SELECT ${workbookColumns} FROM amp_workbooks WHERE learner_id=$1
+        AND created_at>now()-interval '24 hours' ORDER BY created_at DESC LIMIT 20`,
+      [this.learnerId],
+    );
+    return result.rows.map(workbookRow);
   }
   async workbookPdf(key: WorkbookPdfKey) {
     const result = await this.db.query(
