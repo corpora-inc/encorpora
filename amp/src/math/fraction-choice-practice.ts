@@ -143,16 +143,28 @@ export const fractionChoice = chainFamily({
         const best = m.choices[m.correct]!.f;
         return {
           label: lab,
-          feedback: `With the same whole number, compare the fractions with a common denominator. ${tex(c.f)} is less than ${tex(best)}, so ${lab} is not the greatest.`,
+          feedback: `All the heights have the same whole part, so only the fraction parts decide. With a common denominator, ${tex(c.f)} is less than ${tex(best)}, so ${lab} is not the greatest.`,
         };
       }
       const rel = cmp(c.f, A) > 0 ? "greater" : "less";
       const why = m.target.endsWith("whole")
-        ? `${tex(c.f)} is ${rel} than ${A.n}: ${A.n} equals $\\frac{${A.n * c.f.d}}{${c.f.d}}$, and ${c.f.n} is ${rel === "greater" ? "more" : "fewer"} than ${A.n * c.f.d}.`
+        ? `${tex(c.f)} is ${rel} than ${A.n}: ${A.n} is the same as $\\frac{${A.n * c.f.d}}{${c.f.d}}$, and ${c.f.n} is ${rel === "greater" ? "more" : "fewer"} than ${A.n * c.f.d}.`
         : `Use a common denominator ${A.d * c.f.d}: ${tex(c.f)} is $\\frac{${c.f.n * A.d}}{${A.d * c.f.d}}$ and ${tex(A)} is $\\frac{${A.n * c.f.d}}{${A.d * c.f.d}}$, so ${tex(c.f)} is ${rel} than ${tex(A)}.`;
+      // The misleading choice looks right from one number alone.
+      const misled = m.target.endsWith("whole")
+        ? ""
+        : greater && c.f.n > A.n
+          ? `Its top number, ${c.f.n}, is bigger than ${A.n}, but a bigger top number alone does not make a bigger fraction: the bottom number sets the piece size. `
+          : greater && c.f.d < A.d
+            ? `Its pieces are bigger, because ${c.f.d} is less than ${A.d}, but bigger pieces alone do not make a bigger fraction: count the pieces too. `
+            : !greater && c.f.n < A.n
+              ? `Its top number, ${c.f.n}, is smaller than ${A.n}, but a smaller top number alone does not make a smaller fraction: the bottom number sets the piece size. `
+              : !greater && c.f.d > A.d
+                ? `Its pieces are smaller, because ${c.f.d} is more than ${A.d}, but smaller pieces alone do not make a smaller fraction: count the pieces too. `
+                : "";
       return {
         label: lab,
-        feedback: `This is not ${greater ? "greater" : "less"} than ${anchorText(m)}. ${why}`,
+        feedback: `This is not ${greater ? "greater" : "less"} than ${anchorText(m)}. ${misled}${why}`,
       };
     });
     const right = m.choices[m.correct]!;
@@ -171,18 +183,23 @@ export const fractionChoice = chainFamily({
           : `Compare ${tex(A)} with a choice by rewriting both with a common denominator, for example ${A.d * w1.f.d} for ${tex(w1.f)}. Then compare the numerators.`,
       explanation: isMixed
         ? [
-            `Each number has the whole part ${m.choices[0]!.whole}, so the greatest one has the greatest fraction part.`,
-            `Rewrite the fractions with the common denominator 12: ${m.choices.map((c) => `$\\frac{${c.f.n}}{${c.f.d}}=\\frac{${(c.f.n * 12) / c.f.d}}{12}$`).join(", ")}.`,
-            `The greatest is ${label(m, m.correct)}.`,
+            `A mixed number is a whole number plus a fraction. Every height here has the whole part ${m.choices[0]!.whole}, so the fraction parts decide.`,
+            `Fractions are easiest to compare when their pieces are the same size. 12 is a multiple of every bottom number, so use twelfths.`,
+            `Rewrite each fraction part with denominator 12: ${m.choices.map((c) => `$\\frac{${c.f.n}}{${c.f.d}}=\\frac{${(c.f.n * 12) / c.f.d}}{12}$`).join(", ")}.`,
+            `With equal pieces, the most twelfths is the greatest fraction part.`,
+            `The greatest height is ${label(m, m.correct)} inches.`,
           ]
         : [
             m.target.endsWith("whole")
-              ? `${A.n} is the same as $\\frac{${A.n * right.f.d}}{${right.f.d}}$, so compare ${tex(right.f)} with it.`
-              : `Use the common denominator ${A.d * right.f.d} for ${tex(A)} and ${tex(right.f)}.`,
+              ? `To compare a fraction with a whole number, write the whole number as a fraction with the same bottom number.`
+              : `Fractions are easiest to compare when their pieces are the same size. The bottom number, the denominator, sets the piece size.`,
             m.target.endsWith("whole")
-              ? `${right.f.n} is ${greater ? "more" : "fewer"} than ${A.n * right.f.d}, so ${tex(right.f)} is ${greater ? "greater" : "less"} than ${A.n}.`
-              : `${tex(A)} is $\\frac{${A.n * right.f.d}}{${A.d * right.f.d}}$ and ${tex(right.f)} is $\\frac{${right.f.n * A.d}}{${A.d * right.f.d}}$, so ${tex(right.f)} is ${greater ? "greater" : "less"}.`,
-            `The answer is ${label(m, m.correct)}.`,
+              ? `${A.n} is the same as $\\frac{${A.n * right.f.d}}{${right.f.d}}$, because each whole holds ${right.f.d} pieces.`
+              : `${A.d * right.f.d} is a multiple of both ${A.d} and ${right.f.d}, so rewrite both fractions with denominator ${A.d * right.f.d}.`,
+            m.target.endsWith("whole")
+              ? `Now the pieces match, so compare the counts: ${right.f.n} is ${greater ? "more" : "fewer"} than ${A.n * right.f.d}.`
+              : `${tex(A)} is $\\frac{${A.n * right.f.d}}{${A.d * right.f.d}}$ and ${tex(right.f)} is $\\frac{${right.f.n * A.d}}{${A.d * right.f.d}}$. With equal pieces, ${right.f.n * A.d} is ${greater ? "more" : "fewer"} than ${A.n * right.f.d}.`,
+            `So ${label(m, m.correct)} is ${greater ? "greater" : "less"} than ${anchorText(m)}.`,
           ],
     });
   },
