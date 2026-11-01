@@ -50,6 +50,7 @@ export function TermCard({
   // The term a learner drilled from, refocused when they come back.
   const returnTo = useRef<TermId | null>(null);
   const closing = useRef(false);
+  const side = useRef<"below" | "above" | null>(null);
   const current = cards.get(trail.at(-1)!)!;
   const previous = trail.length > 1 ? cards.get(trail.at(-2)!) : undefined;
 
@@ -87,11 +88,16 @@ export function TermCard({
         Math.max(term.left + term.width / 2 - w / 2, MARGIN),
         Math.max(MARGIN, width - w - MARGIN),
       );
-      let top = term.bottom + GAP;
-      if (top + h > height - MARGIN) {
-        const above = term.top - GAP - h;
-        top = above >= MARGIN ? above : Math.max(MARGIN, height - MARGIN - h);
-      }
+      // The first card picks a side of its word; later steps keep that side
+      // so the card grows away from the word instead of jumping across it.
+      side.current ??=
+        term.bottom + GAP + h <= height - MARGIN || term.top - GAP - h < MARGIN
+          ? "below"
+          : "above";
+      const top =
+        side.current === "below"
+          ? Math.max(MARGIN, Math.min(term.bottom + GAP, height - MARGIN - h))
+          : Math.max(MARGIN, term.top - GAP - h);
       card.style.left = `${Math.round(left)}px`;
       card.style.top = `${Math.round(top)}px`;
     };

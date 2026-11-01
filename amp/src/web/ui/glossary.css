@@ -6,6 +6,9 @@
    same as plain text. */
 .glossary-term {
   position: relative;
+  /* Above positioned neighbours (typeset formulas), so the hit area is the
+     word's; below sticky headers. */
+  z-index: 1;
   display: inline;
   margin: 0;
   padding: 0;
@@ -55,13 +58,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.4em;
-  height: 1.4em;
-  margin-left: 0.15em;
+  width: 1.25em;
+  height: 1.25em;
+  margin: 0 -0.1em 0 0.12em;
   border-radius: 50%;
   background: var(--color-secondary);
   color: var(--color-on-secondary);
-  font-size: 0.6em;
+  font-size: 0.62em;
   font-style: normal;
   font-weight: 750;
   line-height: 1;
@@ -73,13 +76,30 @@
 .key-words h3 {
   margin: 0 0 var(--space-2);
 }
+/* A phone shows one row that scrolls sideways; wider screens wrap. A chip's
+   focus ring is drawn inside it, so the scroller never clips it. */
 .key-words ul {
   display: flex;
-  flex-wrap: wrap;
   gap: var(--space-2);
   margin: 0;
   padding: 0;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
   list-style: none;
+}
+.key-words ul::-webkit-scrollbar {
+  display: none;
+}
+.key-words li {
+  flex: none;
+  scroll-snap-align: start;
+}
+@media (min-width: 768px) {
+  .key-words ul {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
 }
 .problem-lesson .key-words li {
   margin: 0;
@@ -112,11 +132,11 @@
 }
 .key-word:focus-visible {
   outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
+  outline-offset: -4px;
 }
 .key-word .glossary-term-mark {
   top: 0;
-  margin-left: 0;
+  margin: 0;
   background: var(--color-surface-raised);
   color: var(--color-on-surface-raised);
   font-size: 0.72em;
@@ -200,13 +220,10 @@
   letter-spacing: -0.01em;
   overflow-wrap: break-word;
 }
+/* The title takes focus so a screen reader starts there; like a panel's
+   title, it is not a control and shows no ring. */
 .term-card-header h2:focus {
   outline: none;
-}
-.term-card-header h2:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
-  border-radius: 4px;
 }
 .term-card-back,
 .term-card-close {

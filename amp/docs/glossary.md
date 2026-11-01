@@ -47,3 +47,23 @@ A sense maps a lowercase form to an id (`{ range: "range-function" }`); it also 
 - a resolved occurrence still in the baseline also fails: run `GLOSSARY_BASELINE=write node --import tsx --test tests/glossary-baseline.test.ts` to shrink the file. The write refuses to add occurrences.
 
 The test also requires an entry for each word of its core vocabulary list.
+
+## Term cards in the app
+
+Lessons, answer explanations and hints carry their cards as two additive fields (`GlossaryPayload` in `src/glossary/types.ts`); older clients ignore them, and offline packs are unchanged:
+
+- `glossary: GlossaryCard[]`: every entry the payload's texts use, then every entry reachable through `uses`, so a learner can drill down without another request. A card's figure is a built scenes-v1 `Scene`.
+- `glossaryLexicon`: every form the linker matched in the payload's texts, mapped to the entry it means there or to `null` (an ordinary word, or ambiguous with no sense). Each card carries the same for its own definition and example in `lexicon`.
+
+`glossaryPayload(texts, context)` (`src/glossary/resolve.ts`) builds both. The server adds them to `ProblemLessonView`, to every hint (the batch's preloaded hints and `POST …/hints`), and to attempt and skip responses (`withGlossary` in `src/server/app.ts`), using the template's `lessonGlossaryContext`. They are never stored with an attempt.
+
+The client never loads the glossary. `linkProse(text, lexicon)` (`src/glossary/scan.ts`) matches only the lexicon's forms with the linker's own boundaries, longest first. Every form the server's linker found is in the lexicon, so this reproduces its links exactly.
+
+On the web:
+
+- `GlossaryProvider` (`src/web/ui/Glossary.tsx`) takes a payload; `GlossaryBlock` marks texts that link only the first use of each term among them. `Glossary` is both, for one list. `MathText` links prose inside a block and leaves formulas alone; outside a block, or with a payload that has no glossary fields, it renders exactly as before.
+- `Term` (`src/web/ui/Term.tsx`) is the word itself: a button set as text, with a dotted underline, a raised "?", and a 44 px hit area drawn by a pseudo-element so the line never changes.
+- `TermCard` (`src/web/ui/TermCard.tsx`) is a native modal dialog, so it stacks above an open practice panel. Below 768 px it is a bottom sheet with a 44 px grab area; from 768 px up it sits beside its word, inside the viewport. Terms in its definition drill down, with Back and a trail. Escape, Close, the scrim or dragging the sheet down close it, and focus returns to the word. Each step replaces the panel inside a transparent full-screen dialog, so nothing on screen shifts.
+- `KeyWords` opens a lesson with its terms in first-use order. "Principle and definitions" still ends the lesson, so definitions repeat on purpose.
+
+Styles are in `src/web/ui/glossary.css` (tokens only). `npm run test:glossary-ui` checks all of this in Chromium and WebKit at 320, 390, 768, 1024 and 1280 px, light and dark; review screenshots are in `docs/reviews/glossary/`.
