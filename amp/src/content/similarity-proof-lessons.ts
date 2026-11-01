@@ -7,7 +7,7 @@ const entries: WorkEntry[] = [
     title: "Prove triangles similar by AA and write the proportion",
     goal: "Prove two triangles similar (the same shape) from two pairs of equal angles, then write matching sides as equal fractions.",
     summary:
-      "Two triangles are similar when they have the same shape, though maybe not the same size. If two angles of one triangle equal two angles of the other, the triangles are similar. This test is called AA, short for angle-angle. Then each side divided by its matching side gives the same number. An equation of equal fractions like this is called a proportion.",
+      "Two triangles are called similar when they have the same shape, though maybe not the same size. If two angles of one triangle equal two angles of the other, the triangles are similar. This test is called AA, short for angle-angle. Then each side divided by its matching side gives the same number. An equation of equal fractions like this is called a proportion.",
     senses: {
       similar: "similar-figures",
       side: "side",
@@ -15,7 +15,7 @@ const entries: WorkEntry[] = [
       degrees: "degree-angle",
       "corresponding angles": "corresponding-angles",
     },
-    noLink: ["third", "factor", "opposite", "rule", "square"],
+    noLink: ["third", "factor", "opposite", "rule", "square", "prime"],
     objectives: [
       "Find two pairs of congruent (equal) angles from perpendicular segments, parallel lines or a shared angle, and give a reason for each.",
       "Conclude that the triangles are similar by AA, and write the proportion of matching sides with the vertices in order.",
@@ -32,14 +32,14 @@ const entries: WorkEntry[] = [
       {
         title: "Where equal angles come from",
         paragraphs: [
-          "Perpendicular segments meet at a right angle, a square corner of $90^\\circ$. Any two right angles are equal.",
-          "Parallel lines never meet. When another line crosses two parallel lines, angles in the same position at the two crossings are equal. These are called corresponding angles.",
+          "Segments are straight pieces of lines. Perpendicular segments are segments that meet at a right angle, a square corner of $90^\\circ$. Any two right angles are equal.",
+          "Parallel lines are lines that never meet. When another line crosses two parallel lines, angles in the same position at the two crossings are equal. These are called corresponding angles.",
           "An angle that both triangles share is equal to itself. This is called the reflexive property, and it can be a reason in a proof.",
         ],
       },
     ],
     intuition:
-      "Similar triangles ($\\sim$) have the same shape: one is a scaled copy of the other, with equal angles. A triangle's three angles add to $180^\\circ$. So if two angles match, the third must match too, and the triangles are similar. This is the AA (angle-angle) test. Equal angles come from right angles, where perpendicular segments meet at $90^\\circ$. They also come from corresponding angles, where a line crosses two parallel lines, or from an angle both triangles share. A proof collects two such pairs one line at a time and states the similarity. Only then does it write the ratio of sides: one length divided by its matching length.",
+      "Two triangles are called similar when they have the same shape: one is a scaled copy of the other, with equal angles. We write $\\sim$ for is similar to. A triangle's three angles add to $180^\\circ$. So if two angles match, the third must match too, and the triangles are similar. This is the AA (angle-angle) test. Equal angles come from right angles, where perpendicular segments meet at $90^\\circ$. They also come from corresponding angles, where a line crosses two parallel lines, or from an angle both triangles share. A proof collects two such pairs one line at a time and states the similarity. Only then does it write the ratio of sides: one length divided by its matching length.",
     terms: ["similar-figures", "aa-similarity", "corresponding"],
     method: [
       "Write the givens first, each with the reason Given.",

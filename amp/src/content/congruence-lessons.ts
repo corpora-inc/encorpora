@@ -21,7 +21,7 @@ export const congruenceMethods: Record<string, ProblemMethod> = {
       "intersection",
     ],
     intuition:
-      "Two triangles are congruent when they have the same size and shape, so one fits exactly on the other. Corresponding parts are the sides and angles that match up when you pair the corners in order. If $A$ goes with $D$ and $B$ with $E$, side $AB$ goes with side $DE$. In the test names, S means a matching pair of sides and A a matching pair of angles. SSS is three pairs of sides. SAS is two pairs of sides and the angle between them. ASA is two pairs of angles and the side between them. AAS is two pairs of angles and a side not between them. Three matching angles (AAA), or two sides and an angle not between them (SSA), do not prove congruence.",
+      "Two triangles are congruent when they have the same size and shape, so one fits exactly on the other. Corresponding parts are the sides and angles that match up when you pair the corners in order. If $A$ goes with $D$ and $B$ with $E$, side $AB$ goes with side $DE$. In the test names, $\\mathrm{S}$ means a matching pair of sides and $\\mathrm{A}$ a matching pair of angles. SSS is three pairs of sides. SAS is two pairs of sides and the angle between them. ASA is two pairs of angles and the side between them. AAS is two pairs of angles and a side not between them. SSA means two sides and an angle that is not between them. AAA means three matching angles. Neither proves congruence in general.",
     terms: [
       "congruent",
       "corresponding",
@@ -102,6 +102,7 @@ export const congruenceLessons: Lesson[] = [
       radius: "radius",
       center: "center",
       image: "image-transformation",
+      unit: "unit",
     },
     noLink: [
       "opposite",
@@ -127,9 +128,9 @@ export const congruenceLessons: Lesson[] = [
         stage: "intuition",
         title: "What must match?",
         paragraphs: [
-          "A triangle has three straight sides and three corners, called vertices (one corner is a vertex). An angle is the opening between two sides at a vertex, measured in degrees (°). The three angles inside any triangle add to $180^\\circ$.",
+          "A triangle has three straight sides and three corners, called vertices (one corner is a vertex). An angle is the opening between two sides at a vertex. A degree is the unit for measuring angles, written °. The three angles inside any triangle add to $180^\\circ$.",
           "Two triangles are congruent when one can be moved exactly onto the other by sliding, turning or flipping, with no stretching. These moves are called rigid motions, because they keep every length and every angle the same. The parts that land on each other are called corresponding parts. If $A$ matches $D$, $B$ matches $E$ and $C$ matches $F$, then side $AB$ matches side $DE$. The angle at $A$, written $\\angle A$, matches $\\angle D$.",
-          "A congruence test, also called a criterion, is a set of matching parts that is enough to fix the whole triangle. In the names, S stands for a side and A for an angle. The included angle of two sides is the angle at the corner they share: for sides $AB$ and $AC$, it is $\\angle A$. The included side of two angles is the side joining their corners: for $\\angle A$ and $\\angle B$, it is side $AB$.",
+          "A congruence test, also called a criterion, is a set of matching parts that is enough to fix the whole triangle. In the names, $\\mathrm{S}$ stands for a side and $\\mathrm{A}$ for an angle. The included angle of two sides is the angle at the corner they share: for sides $AB$ and $AC$, it is $\\angle A$. The included side of two angles is the side joining their corners: for $\\angle A$ and $\\angle B$, it is side $AB$.",
         ],
       },
     ],
@@ -139,7 +140,7 @@ export const congruenceLessons: Lesson[] = [
       steps: [
         "Pair the corners by the order of the letters: $A$ with $D$, $B$ with $E$, $C$ with $F$. Each given equality then compares matching sides.",
         "All three pairs of sides match: 4 cm, 5 cm and 3 cm. Three matching sides is the test side-side-side, written SSS.",
-        "Here is why three sides fix the triangle. Lay the 4 cm sides on top of each other. The third corner must be 3 cm from one end and 5 cm from the other. So it lies where a circle of radius 3 cm around one end crosses a circle of radius 5 cm around the other. (The radius is the distance from a circle's center to any point on the circle.)",
+        "Here is why three sides fix the triangle. Lay the 4 cm sides on top of each other. The third corner must be 3 cm from one end and 5 cm from the other. A circle's radius is the distance from its middle point, called the center, to the circle. So the corner lies where a circle of radius 3 cm around one end crosses a circle of radius 5 cm around the other.",
         "The two circles cross at two points, one on each side of the matched side. Each point is the mirror image (reflection) of the other across that side, so both give congruent triangles.",
         "Check that the lengths can make a triangle: any two sides must add to more than the third. Here $3 + 4 = 7 > 5$, $3 + 5 = 8 > 4$ and $4 + 5 = 9 > 3$.",
       ],
@@ -161,7 +162,7 @@ export const congruenceLessons: Lesson[] = [
           "SAS means two matching sides and the angle between them match. Take sides $AB$ and $AC$ with $\\angle A$ between them. Copy the angle first, so its two rays (half-lines) point the same ways. Then mark each side's length along its ray. Both remaining corners are now fixed. An angle at $B$ would not be between $AB$ and $AC$, so that information would be SSA instead.",
           "ASA means two matching angles and the side between them match. Fix side $AB$ and the angles at $A$ and $B$. A ray leaves each end of the side at its angle. The two rays cross at exactly one point, the third corner. AAS uses a side that is not between the angles, such as $BC$. The missing angle is $180^\\circ$ minus the two given angles, so all three angles are known. Then the given side lies between two known angles, and ASA applies.",
           "AAA means all three matching angles are equal. Doubling every side keeps the angles but changes the size. So AAA shows the triangles are similar (the same shape), not congruent (the same shape and size).",
-          "SSA means two sides and an angle not between them match. Sometimes that fixes one triangle, but sometimes two different triangles fit. Here is an exact example on a grid. Take $A = (0, 0)$ and $B = (7, 0)$. Both $C = (3, 4)$ and $C = (4, 3)$ give $AC = 5$, $AB = 7$ and an angle of $45^\\circ$ at $B$. But side $BC$ is $4\\sqrt{2}$ in the first triangle and $3\\sqrt{2}$ in the second. Here $\\sqrt{2}$, the square root of 2, is the number that times itself makes 2, about 1.41. So SSA is not a test in general.",
+          "SSA means two sides and an angle not between them match. Sometimes that fixes one triangle, but sometimes two different triangles fit. Here is an exact example on a grid. Take $A = (0, 0)$ and $B = (7, 0)$. Both $C = (3, 4)$ and $C = (4, 3)$ give $AC = 5$, $AB = 7$ and an angle of $45^\\circ$ at $B$. But side $BC$ is $4\\sqrt{2}$ in the first triangle and $3\\sqrt{2}$ in the second. Here $\\sqrt{2}$, the square root of 2, is the positive number that times itself makes 2, about 1.41. So SSA is not a test in general.",
         ],
       },
       {

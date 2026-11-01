@@ -39,7 +39,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "multiple",
     ],
     intuition:
-      "A circle's radius is the distance from its center to the circle. A central angle has its corner at the center. The piece of the circle between its two sides is called an arc. Every circle is an enlarged or shrunken copy of every other circle. Enlarge a circle by a factor $k$, so every length is multiplied by $k$. Then the radius and the arc of a fixed angle are both multiplied by $k$. So for one angle, arc length divided by radius is the same in every circle. That number measures the angle in radians. A sector is the pie-slice region between the two radii and the arc.",
+      "The middle point of a circle is called the center. A circle's radius is the distance from the center to the circle. A central angle has its corner at the center. The piece of the circle between its two sides is called an arc. Every circle is an enlarged or shrunken copy of every other circle. Enlarge a circle by a factor $k$, so every length is multiplied by $k$. Then the radius and the arc of a fixed angle are both multiplied by $k$. So for one angle, arc length divided by radius is the same in every circle. That number measures the angle in radians. A sector is the pie-slice region between the two radii and the arc.",
     terms: [
       "central-angle",
       [
@@ -94,7 +94,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "difference",
     ],
     intuition:
-      "A probability is a chance, a number from 0 to 1, and $P(A)$ means the probability that event $A$ happens. A conditional probability is the chance of $A$ when you look only at the cases where $B$ happened. It is written $P(A\\mid B)$ and read “the probability of $A$ given $B$”. The group you look inside goes after the bar. If 20 of 50 bus riders play in the band, then $P(\\text{band}\\mid\\text{bus})=\\frac{20}{50}$. Two events are independent when learning that $B$ happened does not change the chance of $A$.",
+      "An event is a result that may or may not happen, such as a student riding the bus. A probability is a chance, a number from 0 to 1, and $P(A)$ means the probability that event $A$ happens. A conditional probability is the chance of $A$ when you look only at the cases where $B$ happened. It is written $P(A\\mid B)$ and read “the probability of $A$ given $B$”. The group you look inside goes after the bar. If 20 of 50 bus riders play in the band, then $P(\\text{band}\\mid\\text{bus})=\\frac{20}{50}$. Two events are independent when learning that $B$ happened does not change the chance of $A$.",
     terms: ["conditional-probability", "independent-events", "intersection"],
     method: [
       "Find the group the percentage is taken of. A phrase such as “among the bus riders” names the condition, and the condition goes after the bar.",
@@ -169,7 +169,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "boundary",
     ],
     intuition:
-      "A data set is a list of numbers. A dot plot puts one dot above a number line for each value, so you can read every value back. A histogram groups the values into equal intervals, stretches of the number line such as 20 to 30. Its bar heights show only how many values fall in each interval. A box plot shows five numbers: the least value, the lower quartile, the median, the upper quartile and the greatest value. The median is the middle value of the ordered list. The quartiles are the middle values of its lower half and its upper half.",
+      "A data set is a list of numbers. A dot plot puts one dot above a number line for each value, so you can read every value back. A histogram groups the values into equal intervals, stretches of the number line such as 20 to 30. Each bar's height, how tall it is, shows only how many values fall in each interval. A box plot shows five numbers: the least value, the lower quartile, the median, the upper quartile and the greatest value. The median is the middle value of the ordered list. With an even count, the median is halfway between the two middle values. The quartiles are the middle values of its lower half and its upper half.",
     terms: [
       [
         "interval",
@@ -210,7 +210,7 @@ export const geometryRequirementGapMethods: Record<string, ProblemMethod> = {
       "scale",
     ],
     intuition:
-      "A dilation resizes a figure. It multiplies every distance from a fixed center point by the same positive number, the scale factor $k$. It keeps the shape and every angle. A rigid motion moves a figure without changing its size: a slide (translation), a turn (rotation) or a flip (reflection). Two figures are similar, meaning the same shape, when a dilation followed by rigid motions carries one exactly onto the other. The scale factor is then the ratio of matching side lengths: a side of the new figure divided by the matching side of the original.",
+      "A dilation resizes a figure. It multiplies every distance from a fixed center point by the same positive number, the scale factor $k$. It keeps the shape and every angle. A rigid motion moves a figure without changing its size: a slide (translation), a turn (rotation) or a flip (reflection). Two figures are similar, meaning the same shape, when a dilation followed by rigid motions carries one exactly onto the other. The scale factor is then a ratio, the result of dividing two lengths: a side of the new figure divided by the matching side of the original. Matching sides, also called corresponding sides, are sides that land on each other.",
     terms: ["dilation", "similar-figures"],
     method: [
       "Compare one pair of matching sides to find the scale factor $k$. Check that every other pair gives the same $k$.",
@@ -262,7 +262,7 @@ export const geometryRequirementGapPrinciples: Record<string, string> = {
   "conic-foci":
     "For an ellipse with foci $(\\pm c,0)$ and $d_1+d_2=2a$, the equation is $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ with $b^2=a^2-c^2$. For a hyperbola with foci $(\\pm c,0)$ and $|d_1-d_2|=2a$, it is $\\frac{x^2}{a^2}-\\frac{y^2}{b^2}=1$ with $b^2=c^2-a^2$. With foci $(0,\\pm c)$, the roles of $x$ and $y$ swap.",
   "choose-the-plot":
-    "A dot plot shows every value. A histogram shows the count in each interval; a value equal to an interval's left end belongs to that interval. A box plot shows the minimum (least value), the first quartile, the median, the third quartile and the maximum (greatest value). The quartiles are the medians of the lower and upper halves of the ordered data. When the count is odd, the overall median is left out of both halves.",
+    "A dot plot shows every value. A histogram shows the count in each interval; a value equal to an interval's left end belongs to that interval. A box plot shows the minimum (the least value), the first quartile, the median, the third quartile and the maximum (the greatest value). The quartiles are the medians of the lower and upper halves of the ordered data. When the count is odd, the overall median is left out of both halves.",
   "similarity-by-transformation":
     "A dilation about the origin with positive scale factor $k$ sends the point $(x,y)$ to $(kx,ky)$. It multiplies distances by $k$ and keeps angles. Figures are similar exactly when a dilation followed by rigid motions maps one onto the other. Corresponding sides are then all in the same ratio $k$.",
   "aa-similarity":
@@ -301,7 +301,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "arc-sector-derivation",
     title: "Arc length, radians and sector area from proportion",
     summary:
-      "An arc is a piece of a circle. Draw the same angle at the center of a small circle and of a big circle. The big circle is an enlarged copy, so its arc is longer by the same factor as its radius. So arc length divided by radius depends only on the angle. That number is the angle's measure in radians, and it leads to a formula for the area of a pie-slice region.",
+      "An arc is a piece of a circle. Every circle has a middle point, called the center. Draw the same angle at the center of a small circle and of a big circle. The big circle is an enlarged copy, so its arc is longer by the same factor as its radius. So arc length divided by radius depends only on the angle. That number is the angle's measure in radians, and it leads to a formula for a pie-slice region's area, the space it covers.",
     templateIds: ["arc-sector-derivation"],
     senses: {
       similar: "similar-figures",
@@ -336,9 +336,9 @@ export const geometryRequirementGapLessons: Lesson[] = [
         title: "One angle, every circle",
         paragraphs: [
           "A circle is all the points at one distance from a center point. That distance is the radius, $r$. A central angle has its corner (vertex) at the center. The part of the circle between its two sides is called the arc it cuts off. A sector is the pie-slice region between the two radii and the arc.",
-          "The disk is the whole flat region inside the circle. Its area is $\\pi r^2$. Here $\\pi$ (pi), about 3.14, is how many times the diameter fits around the circle, and $r^2$ means $r$ times $r$.",
+          "The disk is the whole flat region inside the circle. Its area is $\\pi r^2$. The diameter is the distance across the circle through the center, twice the radius. Here $\\pi$ (pi), about 3.14, is how many times the diameter fits around the circle, and $r^2$ means $r$ times $r$.",
           "Draw the same angle in a circle of radius 1 cm and in a circle of radius 3 cm. The big circle is the small one enlarged 3 times, so every length in it is 3 times as long. Its radius is 3 times as long, and so is its arc. If the small arc is 2 cm, the big arc is 6 cm.",
-          "So arc length divided by radius is the same for that angle in every circle: $2 \\div 1 = 6 \\div 3 = 2$. This ratio measures the angle, in units called radians. One radian is the angle whose arc is exactly one radius long. We write $\\theta$ (the Greek letter theta) for the angle, $s$ for the arc length and $r$ for the radius.",
+          "So arc length divided by radius is the same for that angle in every circle: $2 \\div 1 = 6 \\div 3 = 2$. This ratio, the result of dividing one length by the other, measures the angle in units called radians. One radian is the angle whose arc is exactly one radius long. We write $\\theta$ (the Greek letter theta) for the angle, $s$ for the arc length and $r$ for the radius.",
         ],
       },
     ],
@@ -348,7 +348,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
       steps: [
         "(1) The new radius is $9 \\div 3 = 3$ times as long, so the arc is 3 times as long too: $4\\times3=12$ cm. Check that arc divided by radius matches: $4/3=12/9$.",
         "(2) Radian measure is arc length divided by radius: $\\theta=4/3$ radians.",
-        "(3) A full turn is $2\\pi$ radians, so the sector is the fraction $\\frac{4/3}{2\\pi}$ of the disk. The disk's area is $\\pi\\cdot3^2=9\\pi$ square centimeters. Multiply: $\\frac{4/3}{2\\pi}\\cdot9\\pi=\\frac{4}{6}\\cdot9=6$.",
+        "(3) One full turn is $2\\pi$ radians, so the sector is the fraction $\\frac{4/3}{2\\pi}$ of the disk. The disk's area is $\\pi\\cdot3^2=9\\pi$ square centimeters. Multiply: $\\frac{4/3}{2\\pi}\\cdot9\\pi=\\frac{4}{6}\\cdot9=6$.",
         "Check with the shortcut $\\tfrac12\\theta r^2=\\tfrac12\\cdot\\tfrac43\\cdot9=6$ square centimeters.",
       ],
       answer: "(1) 12 cm; (2) $\\tfrac43$ radians; (3) 6 square centimeters",
@@ -366,12 +366,12 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "formal",
         title: "Why arc length is proportional to radius",
         paragraphs: [
-          "A dilation by a factor $k$ about the center multiplies every distance from the center by $k$. It maps a circle of radius $r$ to a circle of radius $kr$. It maps an arc of length $s$ to an arc of length $ks$ with the same central angle, because a dilation keeps angles. So $s/r = ks/kr$ depends only on the angle. Radian measure is defined to be this ratio.",
+          "A dilation is a resizing: about the center, by a factor $k$, it multiplies every distance from the center by $k$. It maps a circle of radius $r$ to a circle of radius $kr$. It maps an arc of length $s$ to an arc of length $ks$ with the same central angle, because a dilation keeps angles. So $s/r = ks/kr$ depends only on the angle. Radian measure is defined to be this ratio.",
         ],
       },
     ],
     pitfalls: [
-      "Arc length grows with the radius. Area grows with the radius squared.",
+      "Arc length grows with the radius. Area grows with the radius squared, meaning the radius times itself.",
       "Use $\\theta/2\\pi$ for radians and $d/360$ for degrees.",
       "Radian measure is arc divided by radius, not radius divided by arc.",
     ],
@@ -438,7 +438,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "conditional-everyday-reasoning",
     title: "Conditional probability and independence in everyday situations",
     summary:
-      "A rate like “40% of bus riders play in the band” looks only at one group, the bus riders. The chance of an event inside a group is called a conditional probability. To find it, divide by the size of that group, not of everyone. Then compare it with the rate for everyone. If the two match, the events are called independent: knowing one tells you nothing about the other.",
+      "A rate like “40% of bus riders play in the band” looks only at one group, the bus riders. An event is a result that may or may not happen, such as a student riding the bus. The chance of an event inside a group is called a conditional probability. To find it, divide by the size of that group, not of everyone. Then compare it with the rate for everyone. If the two match, the events are called independent: knowing one tells you nothing about the other.",
     templateIds: ["conditional-everyday-reasoning"],
     senses: {
       event: "event",
@@ -465,7 +465,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "intuition",
         title: "Which group are you looking at?",
         paragraphs: [
-          "A probability is a chance, written as a number from 0 (impossible) to 1 (sure to happen). An event is something that may or may not happen, such as a student playing in the band. $P(\\text{band})$ means the probability that a student chosen at random plays in the band.",
+          "A probability is a chance, written as a number from 0 to 1. Impossible means it cannot happen: an impossible event has probability 0, and a sure event has probability 1. An event is something that may or may not happen, such as a student playing in the band. $P(\\text{band})$ means the probability that a student chosen at random plays in the band.",
           "A rate such as “40% of students on the bus play in the band” looks only at the students on the bus. That is a conditional probability: the chance of one event within the group where another event happened. We write it with a vertical bar, read “given”: $P(\\text{band}\\mid\\text{bus})$. The group you look inside goes after the bar.",
           "Two events are independent when knowing about one does not change the chance of the other. Then the rate inside the group equals the rate for everyone.",
         ],
@@ -679,7 +679,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
         paragraphs: [
           "A data set is a list of numbers, such as test scores. A dot plot puts one dot above a number line for each value. Repeated values make stacks of dots, so you can read every value back.",
           "A histogram splits the number line into equal intervals, stretches such as 20 to 25 and 25 to 30. Each interval gets a bar, and the bar's height is the count of values in that interval. A value on a border, like 25, goes in the interval that starts there.",
-          "A box plot shows only five numbers. First put the list in order. The median is the middle value. The lower quartile is the middle of the lower half, and the upper quartile is the middle of the upper half. Together with the least and greatest values, these make five numbers. The box runs from one quartile to the other, with a line at the median. Lines called whiskers reach out to the least and greatest values.",
+          "A box plot shows only five numbers. First put the list in order. The median is the middle value. With an even count there are two middle values, and the median is halfway between them. The lower quartile is the middle of the lower half, and the upper quartile is the middle of the upper half. Together with the least and greatest values, these make five numbers. The box runs from one quartile to the other, with a line at the median. Lines called whiskers reach out to the least and greatest values.",
           "To match a plot to a list, work out what the plot would show for that list. Then compare it with the picture.",
         ],
       },
@@ -717,7 +717,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "formal",
         title: "What each plot keeps",
         paragraphs: [
-          "A dot plot pins down the data exactly. A histogram keeps only the count in each interval. A box plot keeps only the five-number summary: the minimum, lower quartile, median, upper quartile and maximum. So different lists can give the same histogram or the same box plot. That is why you check a list against the numbers the plot actually shows.",
+          "A dot plot pins down the data exactly. A histogram keeps only the count in each interval. A box plot keeps only the five-number summary. Those are the minimum (the least value), the lower quartile, the median, the upper quartile and the maximum (the greatest value). So different lists can give the same histogram or the same box plot. That is why you check a list against the numbers the plot actually shows.",
         ],
       },
     ],
@@ -733,7 +733,7 @@ export const geometryRequirementGapLessons: Lesson[] = [
     id: "similarity-by-transformation",
     title: "Similarity by dilation and rigid motion",
     summary:
-      "Two triangles are similar when they have the same shape, maybe at different sizes. You can show this with moves. First resize one triangle, multiplying every length by the same number. Then slide, turn or flip it exactly onto the other. That number is called the scale factor: a side of the new triangle divided by the matching side of the old one.",
+      "Two triangles are called similar when they have the same shape, maybe at different sizes. You can show this with moves. First resize one triangle, multiplying every length by the same number. Then slide, turn or flip it exactly onto the other. That number is called the scale factor: a side of the new triangle divided by the matching side of the old one.",
     templateIds: ["similarity-by-transformation"],
     senses: {
       similar: "similar-figures",
@@ -764,8 +764,8 @@ export const geometryRequirementGapLessons: Lesson[] = [
         title: "Same shape, different size",
         paragraphs: [
           "Points on a grid are named by coordinates. The point $(1, 2)$ is 1 unit right of the origin, the point $(0, 0)$, and 2 units up. Negative numbers mean left or down.",
-          "A dilation resizes a figure from a center point. It multiplies every distance from the center by the same number, called the scale factor $k$. If $k$ is bigger than 1, the figure grows. If $k$ is between 0 and 1, it shrinks. Every angle stays the same, so the shape stays the same. A dilation about the origin multiplies both coordinates by $k$: with $k = 2$, the point $(1, 2)$ goes to $(2, 4)$.",
-          "A rigid motion moves a figure without changing its size: a translation slides it, a rotation turns it, and a reflection flips it. Two figures are similar when a dilation followed by rigid motions turns one into the other. Then all matching sides are in the same ratio $k$. If two pairs of matching sides grow by different factors, no dilation can fix that, and the figures are not similar.",
+          "A dilation resizes a figure from a fixed point, called the center. It multiplies every distance from the center by the same number, called the scale factor $k$. If $k$ is bigger than 1, the figure grows. If $k$ is between 0 and 1, it shrinks. Every angle stays the same, so the shape stays the same. A dilation about the origin multiplies both coordinates by $k$: with $k = 2$, the point $(1, 2)$ goes to $(2, 4)$.",
+          "A rigid motion moves a figure without changing its size: a translation slides it, a rotation turns it, and a reflection flips it. Two figures are similar when a dilation followed by rigid motions turns one into the other. Then every side divided by its matching side gives the same number, $k$. Matching sides, also called corresponding sides, are sides that land on each other. If two pairs of matching sides grow by different factors, no dilation can fix that, and the figures are not similar.",
         ],
       },
     ],
@@ -788,14 +788,14 @@ export const geometryRequirementGapLessons: Lesson[] = [
         stage: "method",
         title: "Order matters",
         paragraphs: [
-          "A dilation about the origin multiplies the coordinates, so the simplest order is to dilate first and slide afterward. If you slide first, the dilation also doubles that slide. The same slide then lands the triangle somewhere else, so you would need a different slide. If the image (the moved copy) is flipped or turned, put that motion between the dilation and the slide. Then check every vertex.",
+          "A dilation about the origin multiplies the coordinates, so the simplest order is to dilate first and slide afterward. If you slide first, the dilation also stretches that slide by the scale factor. The same slide then lands the triangle somewhere else, so you would need a different slide. If the image (the moved copy) is flipped or turned, put that motion between the dilation and the slide. Then check every vertex.",
         ],
       },
       {
         stage: "formal",
         title: "The definition",
         paragraphs: [
-          "Two figures are similar exactly when some sequence of dilations and rigid motions maps one onto the other. A dilation with a positive scale factor $k$ multiplies all lengths by $k$ and keeps angles. Rigid motions keep both lengths and angles. So similar figures have equal matching angles, and their matching sides are all in the ratio $k$.",
+          "Two figures are similar exactly when some sequence of dilations and rigid motions maps one onto the other. A dilation with a positive scale factor $k$ multiplies all lengths by $k$ and keeps angles. Rigid motions keep both lengths and angles. So similar figures have equal matching angles, and every side divided by its matching side gives $k$.",
         ],
       },
     ],

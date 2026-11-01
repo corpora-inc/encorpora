@@ -90,9 +90,10 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
-      t`Two lines that cross make four angles. Angles across from each other at the crossing point are called vertical angles, and they are equal. A transversal is a line that crosses two other lines. When those two lines are parallel, meaning they never meet, angles between them on opposite sides of the transversal are called alternate interior angles. They are equal too.`,
+      t`A degree is a small unit of turn, written °, and a full turn is 360 degrees. Two lines that cross make four angles. Angles across from each other at the crossing point are called vertical angles, and they are equal. A transversal is a line that crosses two other lines. When those two lines are parallel, meaning they never meet, angles between them on opposite sides of the transversal are called alternate interior angles. They are equal too.`,
       t`A segment is the straight piece of a line between two endpoints, and its midpoint is the point halfway along. The perpendicular bisector of a segment is the line through its midpoint at a right angle, a square corner of $90^\circ$. A point is equidistant from two points when it is the same distance from each.`,
       t`A proof step has a claim and a reason. The reason can be a given fact, a definition, or a theorem, which is a rule already proved. A theorem fits only when its condition is already known, from the givens or earlier steps, and its conclusion is the claim. Many theorems have a converse, which swaps the condition and the conclusion. The converse is a separate rule, so read which direction the step goes.`,
     ],
@@ -105,7 +106,7 @@ const specs: Spec[] = [
     method: [
       "Mark what the problem gives and what the step claims.",
       "Pick the rule whose condition matches what is known and whose conclusion matches the claim. If they match the other way around, you need the converse.",
-      "For an equation, set the two angle expressions equal. Solve for the unknown, then check both angle measures.",
+      "For an equation, write what the rule says: equal angles, or angles that add to a total. Solve for the unknown, then check both angle measures.",
     ],
     watch:
       "A true rule proves a step only when its condition is already known and its conclusion is the claim. Running it backward needs the converse.",
@@ -129,7 +130,7 @@ const specs: Spec[] = [
     formalTitle: "Why these rules hold",
     formal: [
       t`Vertical angles: each one forms a straight line with the same neighboring angle. So each equals $180^\circ$ minus that neighbor, and they are equal.`,
-      t`Alternate interior angles: when the lines are parallel, corresponding angles, the angles in the same position at the two crossings, are equal. Each alternate interior angle is vertical to one angle of a corresponding pair, so the alternate interior angles are equal too.`,
+      t`Alternate interior angles: when the lines are parallel, corresponding angles, the angles in the same position at the two crossings, are equal. One alternate interior angle is vertical to an angle at the same crossing that sits in the same position as the other one. So the alternate interior angles are equal too.`,
       t`Perpendicular bisector: let $M$ be the midpoint of $\overline{AB}$ and $P$ a point on the bisector. If $P$ is $M$ itself, then $PA=PB$ because $M$ is the midpoint. Otherwise, triangles $PMA$ and $PMB$ have $AM=BM$, right angles at $M$, and the shared side $PM$. So they are congruent (the same size and shape) by SAS, two sides and the angle between them, and $PA=PB$.`,
       t`The converse: suppose $PA=PB$. If $P$ is on line $AB$, it must be the midpoint $M$, which is on the bisector. Otherwise, triangles $PMA$ and $PMB$ are congruent by SSS, three pairs of equal sides. So the two angles at $M$ are equal. Together they make $180^\circ$, so each is a right angle.`,
     ],
@@ -202,6 +203,7 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
       t`A triangle's three angles always add to $180^\circ$. An isosceles triangle has two equal sides. The angles across from those sides are called the base angles, and they are equal.`,
@@ -220,21 +222,21 @@ const specs: Spec[] = [
       prompt: t`In triangle $ABC$, $D$ and $E$ are the midpoints of $\overline{AB}$ and $\overline{AC}$. $DE=2x+3$ and $BC=5x-3$. What is $BC$?`,
       steps: [
         t`$\overline{DE}$ joins two midpoints, so it is a midsegment. A midsegment is half the third side, so the third side is twice it: $BC=2\cdot DE$, where the dot means times.`,
-        t`Substitute the expressions: $5x-3=2(2x+3)=4x+6$. Subtract $4x$ from both sides and add 3 to both sides: $x=9$.`,
+        t`Replace each length by what it equals: $5x-3=2(2x+3)=4x+6$. Subtract $4x$ from both sides and add 3 to both sides: $x=9$.`,
         t`Then $DE=2(9)+3=21$, so $BC=2\times21=42$. Check with the other expression: $5(9)-3=42$.`,
       ],
       answer: "42",
     },
     methodTitle: "Base angles and medians",
     methodText: [
-      t`Suppose $AB=AC$ and $m\angle A=40^\circ$, where $m\angle A$ means the measure of the angle at $A$. The base angles $\angle B$ and $\angle C$ are equal, and all three angles add to 180 degrees. So $\angle B$ and $\angle C$ share $180-40=140$ degrees, and each is $70^\circ$.`,
+      t`Suppose $AB=AC$ and $m\angle A=40^\circ$, where $m\angle A$ means the measure of the angle at $A$. The base angles $\angle B$ and $\angle C$ are equal, and all three angles add to $180^\circ$. So $\angle B$ and $\angle C$ share $180^\circ-40^\circ=140^\circ$, and each is $70^\circ$.`,
       t`Suppose the medians meet at $G$, and the median $AM$ has length 12. Then $AG$, the part next to the vertex, is two thirds of 12, which is 8. The rest, $GM$, is one third of 12, which is 4.`,
     ],
     formalTitle: "Why these rules hold",
     formal: [
       t`Angle sum: draw a line through $C$ parallel to $\overline{AB}$. The angles it makes with $\overline{CA}$ and $\overline{CB}$ equal $\angle A$ and $\angle B$, because alternate interior angles of parallel lines are equal. Together with $\angle C$ they fill a straight angle, $180^\circ$.`,
       t`Base angles: in triangle $ABC$ with $AB=AC$, let $M$ be the midpoint of $\overline{BC}$. Triangles $ABM$ and $ACM$ have three pairs of equal sides, so they are congruent by SSS. So $\angle B=\angle C$.`,
-      t`Midsegment: let $M$ and $N$ be the midpoints of $\overline{AB}$ and $\overline{AC}$. Triangle $AMN$ shares the angle at $A$ with triangle $ABC$, and its two sides there are half as long. So it is a half-size copy, similar with ratio $1:2$. That makes $MN\parallel BC$ and $MN=\tfrac12BC$.`,
+      t`Midsegment: let $M$ and $N$ be the midpoints of $\overline{AB}$ and $\overline{AC}$. Triangle $AMN$ shares the angle at $A$ with triangle $ABC$, and its two sides there are half as long. So it is a half-size copy: the two triangles are called similar, with ratio $1:2$. That makes $MN\parallel BC$ and $MN=\tfrac12BC$.`,
       t`Medians: if medians $BN$ and $CM$ meet at $G$, triangles $GMN$ and $GCB$ are similar with ratio $1:2$. So $GN$ is half of $GB$, which puts $G$ two thirds of the way from $B$ to $N$.`,
     ],
     pitfalls: [
@@ -306,6 +308,7 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
       t`A quadrilateral is a shape with four straight sides. A parallelogram is a quadrilateral whose opposite sides are parallel. A diagonal joins opposite corners. To bisect a segment is to cut it into two equal parts. Consecutive angles are angles next to each other, at the two ends of one side. A rectangle is a parallelogram with four right angles.`,
@@ -322,7 +325,7 @@ const specs: Spec[] = [
       "Solve for the unknown, substitute, and finish the measure asked for.",
     ],
     watch:
-      "Equal diagonals need a rectangle. In a parallelogram that is not a rectangle, the diagonals only bisect each other.",
+      "Among parallelograms, only a rectangle has equal diagonals. In other parallelograms, the diagonals only bisect each other.",
     principle: t`In a parallelogram, opposite sides are congruent (equal), opposite angles are congruent, consecutive angles are supplementary (add to $180^\circ$), and the diagonals bisect each other. The diagonals of a rectangle are congruent.`,
     example: {
       prompt: t`Diagonals $\overline{AC}$ and $\overline{BD}$ of parallelogram $ABCD$ meet at $E$. $AE=3x+4$ and $EC=5x-6$. What is $AC$?`,
@@ -335,12 +338,12 @@ const specs: Spec[] = [
     },
     methodTitle: "Angles and rectangles",
     methodText: [
-      t`Suppose $m\angle A=70^\circ$ in parallelogram $ABCD$, where $m\angle A$ means the measure of the angle at $A$. Then $\angle C=70^\circ$, because opposite angles are equal. And $\angle B$ is $180-70=110$ degrees, because consecutive angles add to $180^\circ$.`,
+      t`Suppose $m\angle A=70^\circ$ in parallelogram $ABCD$, where $m\angle A$ means the measure of the angle at $A$. Then $\angle C=70^\circ$, because opposite angles are equal. And $m\angle B=180^\circ-70^\circ=110^\circ$, because consecutive angles add to $180^\circ$.`,
       t`In rectangle $ABCD$ with $AC=5x-3$ and $BD=3x+9$, the diagonals are equal: $5x-3=3x+9$. So $2x=12$, $x=6$, and $AC=5(6)-3=27$.`,
     ],
     formalTitle: "Why these rules hold",
     formal: [
-      t`Diagonal $\overline{AC}$ splits parallelogram $ABCD$ into triangles $ABC$ and $CDA$. The parallel sides make equal alternate interior angles at $A$ and $C$, and the triangles share side $AC$. So the triangles are congruent by ASA, two angles and the side between them. Hence opposite sides and opposite angles are equal.`,
+      t`Alternate interior angles are angles on opposite sides of a line that crosses two parallel lines, between those lines. They are equal. Diagonal $\overline{AC}$ splits parallelogram $ABCD$ into triangles $ABC$ and $CDA$. The parallel sides make equal alternate interior angles at $A$ and $C$, and the triangles share side $AC$. So the triangles are congruent by ASA, two angles and the side between them. Hence opposite sides and opposite angles are equal.`,
       t`The diagonals cross at $E$. Triangles $AEB$ and $CED$ have $AB=CD$ and equal alternate interior angles at both ends of those sides. So they are congruent by ASA, and $AE=CE$ and $BE=DE$.`,
       t`In rectangle $ABCD$, triangles $ABC$ and $DCB$ have $AB=DC$, the shared side $BC$, and right angles at $B$ and $C$. So they are congruent by SAS, two sides and the angle between them, and $AC=DB$.`,
     ],
@@ -413,15 +416,16 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
       t`A definition says exactly which objects have a name. It is precise when every object it describes has the name and no other object does. A point is a location with no size. A line is a straight path that goes on without end in both directions. A plane is a flat surface that goes on without end. Space means all three dimensions, not just one flat surface.`,
-      t`A ray is part of a line that starts at one point and goes on without end in one direction. A segment is part of a line between two endpoints, including them. Points are equidistant from a point when they are all the same distance from it.`,
+      t`A ray is the part of a line that starts at one point and goes on without end in one direction. A segment is the part of a line between two endpoints, including them. Equidistant means at the same distance: every point of a circle is equidistant from the circle's middle point.`,
       t`A short definition can fail by leaving out a condition. In space, two lines can miss each other without being parallel, like a road and a bridge that crosses over it. Such lines are called skew. So "lines that do not meet" is not enough: parallel lines must also lie in one plane. A circle is flat, so "all points a fixed distance from a point" is not enough either. In space, that describes a sphere, the surface of a ball.`,
     ],
     terms: ["ray", "segment", "skew-lines", "equidistant"],
     method: [
-      "For each choice, ask what other objects it would also describe. If it fits an object that should not have the name, a condition is missing.",
+      "For each choice, ask what other objects it would also describe. If it fits an object that should not have the name, a condition is missing or wrong.",
       "Check where the objects lie (in a plane or in space), how far apart they are, and whether endpoints are included.",
       "Choose the statement that has every needed condition and no extras.",
     ],
@@ -438,7 +442,7 @@ const specs: Spec[] = [
     },
     methodTitle: "Check a circle definition",
     methodText: [
-      t`"All points a given distance from a point" gives a sphere in space, so it needs "in a plane", with the center in that plane. "At most a given distance" includes the inside too, giving a disk, the filled-in region. So it must say exactly that distance. The distance must also be more than 0, or the result is a single point.`,
+      t`"All points a given distance from a point" gives a sphere in space, so it needs "in a plane", with the center, the given point, in that plane. "At most a given distance" includes the inside too, giving a disk, the filled-in region. So it must say exactly that distance. The distance must also be more than 0, or the result is a single point.`,
       t`Only "all points in a plane that are a given positive distance from a given point in the plane" describes a circle and nothing else.`,
     ],
     formalTitle: "The set of precise statements",
@@ -515,17 +519,18 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
-      t`A transformation moves every point of the plane to a new point, called its image. A translation slides every point the same distance in the same direction. A reflection flips the plane across a line, like a mirror. A rotation turns the plane around a center point by a fixed angle. These three are called rigid motions. They keep every distance and every angle, so a figure lands on a congruent figure: the same size and shape.`,
+      t`A plane is a flat surface that goes on forever. A transformation moves every point of the plane to a new point, called the image of that point. A translation slides every point the same distance in the same direction. A reflection flips the plane across a line, like a mirror. A rotation turns the plane around a fixed point, called the center, by a fixed angle. These three are called rigid motions. They keep every distance and every angle, so a figure lands on a congruent figure: the same size and shape.`,
       t`A dilation multiplies every distance from a center by the same positive number $k$, the scale factor. It keeps every angle, so the shape stays the same. The size changes unless $k=1$.`,
-      t`Some transformations change shape. A stretch such as $(x,y)\to(2x,y)$ moves each point $(x,y)$ to $(2x,y)$. It doubles horizontal distances but leaves vertical ones alone. So different lengths change by different amounts, and angles can change too.`,
-      t`To compare lengths on a grid, use squared lengths. The side from $(x_1,y_1)$ to $(x_2,y_2)$ has squared length $(x_2-x_1)^2+(y_2-y_1)^2$. The small 1 and 2 (subscripts) just tell the two points apart, and the raised 2 means a number times itself. This is the side's length times itself, by the Pythagorean theorem.`,
+      t`Some transformations change shape. A point on a grid is named by two numbers, its coordinates: $(x,y)$ is $x$ units across and $y$ units up. A stretch such as $(x,y)\to(2x,y)$ moves each point $(x,y)$ to $(2x,y)$. It doubles horizontal distances but leaves vertical ones alone. So different lengths change by different amounts, and angles can change too.`,
+      t`To compare lengths on a grid, use squared lengths. The side from $(x_1,y_1)$ to $(x_2,y_2)$ has squared length $(x_2-x_1)^2+(y_2-y_1)^2$. The small 1 and 2 (subscripts) just tell the two points apart, and the raised 2 means a number times itself. The Pythagorean theorem, the rule $a^2+b^2=c^2$ for triangles with a square corner, shows this is the side's length times itself.`,
     ],
     terms: ["rigid-motion", "scale-factor", "image-transformation"],
     method: [
       "Find the squared length of each side before and after: $(x_2-x_1)^2+(y_2-y_1)^2$.",
-      "If every squared length is unchanged, the triangles are congruent, so a rigid motion can carry one onto the other. If every one is multiplied by the same $k^2$, every length is multiplied by $k$, as in a dilation. Otherwise it is neither.",
+      "If every squared length is unchanged, the triangles are congruent, so a rigid motion can carry one onto the other. If every one is multiplied by the same $k^2$, every length is multiplied by $k$. Then the new triangle is a scaled copy, like the result of a dilation. Otherwise it is neither.",
       "For a question about definitions, recall which quantity each transformation keeps.",
     ],
     watch:
@@ -536,14 +541,14 @@ const specs: Spec[] = [
       steps: [
         t`Find the squared side lengths before: $PQ^2=3^2=9$, $RP^2=4^2=16$, and $QR^2=3^2+4^2=25$.`,
         t`Find them after: $P'Q'^2=6^2=36$, $R'P'^2=8^2=64$, and $Q'R'^2=6^2+8^2=100$. Each is 4 times the original.`,
-        t`Squared lengths times 4 means lengths times 2, since $2\times2=4$. The sizes changed, so this is a dilation, not a rigid motion.`,
+        t`Squared lengths times 4 means lengths times 2, since $2\times2=4$. The sizes changed, so this is not a rigid motion. Each point's coordinates doubled, which is exactly a dilation by 2 about the point $(0,0)$.`,
       ],
       answer:
         "No. Every side length is multiplied by 2, so it is a dilation, not a rigid motion.",
     },
     methodTitle: "Why a stretch is not rigid",
     methodText: [
-      t`The stretch $(x,y)\to(2x,y)$ doubles every $x$-coordinate and keeps every $y$-coordinate. It sends $(0,0)$, $(3,0)$ and $(0,4)$ to $(0,0)$, $(6,0)$ and $(0,4)$. Side $PQ$ doubles from 3 to 6, and side $PR$ stays 4. Side $QR$ changes from 5 to $\sqrt{52}$, the square root of 52, about 7.2. The sides change by different factors, so the stretch is neither rigid nor a dilation.`,
+      t`The stretch $(x,y)\to(2x,y)$ doubles every $x$-coordinate and keeps every $y$-coordinate. It sends $(0,0)$, $(3,0)$ and $(0,4)$ to $(0,0)$, $(6,0)$ and $(0,4)$. Side $PQ$ doubles from 3 to 6, and side $PR$ stays 4. Side $QR$ changes from 5 to $\sqrt{52}$. A square root is the number that times itself gives a value, so $\sqrt{52}$ is about 7.2. The sides change by different factors, so the stretch is neither rigid nor a dilation.`,
     ],
     formalTitle: "Definitions",
     formal: [
@@ -620,10 +625,11 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
-      t`A symmetry of a figure is a turn (rotation) or a flip (reflection) that carries the figure exactly onto itself. A rotation about the center turns the figure by an angle. The turn of $0^\circ$, doing nothing, always works and is counted as one rotation. A line of symmetry is a mirror line: folding along it makes the two halves match. A regular polygon has equal sides and equal angles.`,
-      t`A regular polygon with $n$ sides has $n$ corners (vertices), equally spaced around its center. So the smallest turn above $0^\circ$ that works is $360^\circ\div n$. The rotations are $0^\circ$ and the multiples of that angle below $360^\circ$, which makes $n$ rotations. A regular polygon also has exactly $n$ lines of symmetry, all through its center.`,
+      t`A degree is a small unit of turn, written °, and a full turn is $360^\circ$. A rotation is a turn, and a reflection is a flip across a line. A symmetry of a figure is a rotation or a reflection that carries the figure exactly onto itself. A rotation turns the figure by an angle around a fixed point, called the center. The turn of $0^\circ$, doing nothing, always works and is counted as one rotation. A line of symmetry is a mirror line: folding along it makes the two halves match. A regular polygon has equal sides and equal angles.`,
+      t`A regular polygon with $n$ sides has $n$ corners (vertices), equally spaced around its center. So the smallest turn above $0^\circ$ that works is $360^\circ\div n$. The rotations are $0^\circ$ and the multiples of that angle below $360^\circ$, which makes $n$ rotations. A regular polygon also has exactly $n$ lines of symmetry, all through its center. A parallelogram is a four-sided shape whose opposite sides run the same direction and never meet.`,
     ],
     terms: ["symmetry", "line-of-symmetry", "regular-polygon"],
     method: [
@@ -646,7 +652,7 @@ const specs: Spec[] = [
     },
     methodTitle: "Other quadrilaterals",
     methodText: [
-      t`A rectangle that is not a square has 2 lines of symmetry. Each passes through the midpoints of two opposite sides. Its diagonals are not lines of symmetry, because folding along one does not match the sides. Its rotations are $0^\circ$ and $180^\circ$; a $90^\circ$ turn would swap its long and short sides. A square has 4 lines and rotations of $0^\circ$, $90^\circ$, $180^\circ$ and $270^\circ$.`,
+      t`A midpoint is the point halfway along a side. A rectangle that is not a square has 2 lines of symmetry. Each passes through the midpoints of two opposite sides. Its diagonals are not lines of symmetry, because folding along one does not match the sides. Its rotations are $0^\circ$ and $180^\circ$; a $90^\circ$ turn would swap its long and short sides. A square has 4 lines and rotations of $0^\circ$, $90^\circ$, $180^\circ$ and $270^\circ$.`,
     ],
     formalTitle: "Why a regular polygon has as many rotations as sides",
     formal: [
@@ -665,7 +671,7 @@ const specs: Spec[] = [
     templateId: "transformation-sequence-mapping",
     title: "Choose the transformations that map one figure to another",
     summary:
-      "A sequence of transformations moves a figure one step at a time: a slide, a turn, a flip or a resize, each applied to the result of the last. To find the sequence, compare the figure with its image. A change of size means a resize, and a turn or flip shows in the way the figure faces. Then follow the corners through the steps in order.",
+      "A sequence of transformations moves a figure one step at a time: a slide, a turn, a flip or a resize, each applied to the result of the last. To find the sequence, compare the figure with its image, the figure after the moves. A change of size means a resize, and a turn or flip shows in the way the figure faces. Then follow the corners through the steps in order.",
     objectives: [
       "Choose a single transformation or a sequence of them from the image's coordinates.",
       "Follow the corners through the steps in the order given.",
@@ -721,11 +727,12 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
       t`A transformation moves every point to a new point, called its image. The image is often named with a prime mark: $P'$, read "$P$ prime". A composition applies one transformation, then another to the result. Order matters: reflecting and then sliding usually gives a different image from sliding and then reflecting.`,
-      t`A translation (slide) by the vector $\langle a,b\rangle$ moves every point $a$ units right and $b$ units up. Negative numbers mean left or down. A reflection flips across a line, a rotation turns about a point, and a dilation resizes from a center point.`,
-      t`To decide which steps are needed, compare the figure with its image. If side lengths change, a dilation is involved. If the figure is turned, a rotation is involved. If its corners run the opposite way around, clockwise instead of counterclockwise, it was flipped, so a reflection is involved. A leftover shift is a translation.`,
+      t`A translation (slide) by the vector $\langle a,b\rangle$ moves every point $a$ units right and $b$ units up. Negative numbers mean left or down. A reflection flips across a line, a rotation turns about a point, and a dilation resizes from a fixed point, called the center.`,
+      t`To decide which steps are needed, compare the figure with its image. If side lengths change, a dilation is involved. If the figure is turned, a rotation can do that. If its corners run the opposite way around, clockwise instead of counterclockwise, it was flipped, so a reflection is involved. A leftover shift is a translation.`,
     ],
     terms: ["composition", "vector", "image-transformation"],
     method: [
@@ -739,7 +746,7 @@ const specs: Spec[] = [
     example: {
       prompt: t`Triangle $PQR$ has $P(1,1)$, $Q(4,1)$ and $R(1,3)$. Its image has $P'(3,4)$, $Q'(6,4)$ and $R'(3,2)$. Which sequence maps $PQR$ onto $P'Q'R'$?`,
       steps: [
-        t`Compare side $PQ$ with side $P'Q'$. Both go 3 units right, written $\langle3,0\rangle$, so the size and direction match. There is no dilation.`,
+        t`Compare side $PQ$ with side $P'Q'$. Both go 3 units right, written $\langle3,0\rangle$, so the size and direction match. No resizing is needed.`,
         t`But $R$ is above side $PQ$, while $R'$ is below side $P'Q'$. So the figure was flipped across a horizontal line.`,
         t`Reflect across the $x$-axis, which changes the sign of $y$: $P(1,1)\to(1,-1)$. To get from $(1,-1)$ to $P'(3,4)$, move 2 right and 5 up. So translate by $\langle2,5\rangle$.`,
         t`Check all three vertices: $P(1,1)\to(1,-1)\to(3,4)=P'$, $Q(4,1)\to(4,-1)\to(6,4)=Q'$, and $R(1,3)\to(1,-3)\to(3,2)=R'$.`,
@@ -752,12 +759,12 @@ const specs: Spec[] = [
     ],
     formalTitle: "Congruent and similar figures",
     formal: [
-      t`Two figures are congruent, the same size and shape, when a sequence of rigid motions carries one onto the other. Two figures are similar, the same shape, when a sequence of rigid motions and dilations does. If the sequence includes one dilation with scale factor $k>0$, every length in the image is $k$ times the original. Two dilations, by $k_1$ and then by $k_2$, multiply lengths by $k_1k_2$.`,
+      t`Two figures are congruent, the same size and shape, when a sequence of rigid motions carries one onto the other. Two figures are similar, the same shape, when a sequence of rigid motions and dilations does. A dilation's scale factor is the number it multiplies lengths by. If the sequence includes one dilation with scale factor $k>0$, every length in the image is $k$ times the original. Two dilations, by $k_1$ and then by $k_2$, multiply lengths by $k_1k_2$.`,
     ],
     pitfalls: [
       "Apply the steps in the stated order.",
       "Check every vertex. One or two can match by coincidence.",
-      "A dilation changes the length of $\\overline{PQ}$, so check the lengths first.",
+      "A dilation that resizes changes the length of $\\overline{PQ}$, so check the lengths first.",
     ],
     parentGuide:
       "Ask the learner to follow one vertex through each step and say where it lands.",
@@ -767,7 +774,7 @@ const specs: Spec[] = [
     templateId: "compass-straightedge-reasoning",
     title: "Reason about a compass-and-straightedge construction",
     summary:
-      "A construction draws a figure with only two tools. A compass draws circles and arcs (parts of circles). A straightedge, a ruler with no markings, draws straight lines. A compass holds one opening, so it can mark points at equal distances. Those equal distances, together with facts about them, prove that the construction works.",
+      "A construction draws a figure with only two tools. A compass draws circles and arcs (parts of circles). A straightedge, a ruler with no markings, draws straight lines. A compass holds one opening, so it can mark points at equal distances. Those equal distances, together with facts about them, show that the construction works.",
     objectives: [
       "Choose the next step, or the order of steps, for a bisector or perpendicular construction.",
       "State the geometric fact that justifies a construction.",
@@ -823,11 +830,12 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
-      t`A compass draws arcs, pieces of a circle, all at one fixed distance (the radius) from its center point. A straightedge draws straight lines but has no markings, so it cannot measure. A construction uses only these two tools. The key move is copying equal lengths with the compass.`,
-      t`To bisect means to cut into two equal parts. A perpendicular line meets another line at a right angle, $90^\circ$. The perpendicular bisector of a segment crosses it at its midpoint at a right angle. Every point equally far from a segment's two ends lies on its perpendicular bisector. An angle bisector is the ray that splits an angle into two equal angles.`,
-      t`Each construction works because its arcs create points with known equal distances. A fact about equal distances then proves the result.`,
+      t`A compass draws arcs, pieces of a circle. Every point of an arc is the same distance, the radius, from the compass point, called the center. A straightedge draws straight lines but has no markings, so it cannot measure. A construction uses only these two tools. The key move is copying equal lengths with the compass.`,
+      t`To bisect means to cut into two equal parts. A perpendicular line meets another line at a right angle, $90^\circ$. A segment's midpoint is the point halfway along it. The perpendicular bisector of a segment crosses it at its midpoint at a right angle. Every point equally far from a segment's two ends lies on its perpendicular bisector. An angle bisector is the ray that splits an angle into two equal angles.`,
+      t`Each construction works because its arcs create points with known equal distances. A fact about equal distances then shows that the result is true.`,
     ],
     terms: ["compass", "straightedge", "arc"],
     method: [
@@ -850,12 +858,12 @@ const specs: Spec[] = [
     },
     methodTitle: "Angle bisector and parallel line",
     methodText: [
-      t`To bisect $\angle ABC$, draw an arc centered at $B$. It marks $P$ on ray $BA$ and $Q$ on ray $BC$, with $BP=BQ$. Then draw arcs with one equal radius, centered at $P$ and at $Q$. They cross at a point $X$ inside the angle, so $XP=XQ$. Triangles $BPX$ and $BQX$ share side $BX$, so they have three pairs of equal sides and are congruent by SSS. So $\angle PBX=\angle QBX$, and ray $BX$ bisects the angle.`,
-      t`To draw a line through $P$ parallel to line $\ell$, first draw a line through $P$ that crosses $\ell$, a transversal. Copy the angle it makes with $\ell$ onto the transversal at $P$, in the matching position. Equal corresponding angles mean the lines are parallel.`,
+      t`To bisect $\angle ABC$, draw an arc centered at $B$. It marks $P$ on ray $BA$ and $Q$ on ray $BC$, with $BP=BQ$. Then draw arcs centered at $P$ and at $Q$ with one equal radius, large enough that they cross. They cross at a point $X$ inside the angle, so $XP=XQ$. Triangles $BPX$ and $BQX$ share side $BX$, so they have three pairs of equal sides and are congruent by SSS. So $\angle PBX=\angle QBX$, and ray $BX$ bisects the angle.`,
+      t`To draw a line parallel to line $\ell$ through a point $P$ not on $\ell$, first draw a line through $P$ that crosses $\ell$, a transversal. Copy the angle it makes with $\ell$ onto the transversal at $P$, in the matching position. Equal corresponding angles mean the lines are parallel.`,
     ],
     formalTitle: "Why each fact holds",
     formal: [
-      t`Suppose $XA=XB$, and let $M$ be the midpoint of $\overline{AB}$. If $X$ is $M$ itself, it is on the perpendicular bisector. Otherwise, triangles $XMA$ and $XMB$ are congruent by SSS, so the two angles at $M$ are equal. They form a straight angle, $180^\circ$, so each is a right angle. Hence line $XM$ is the perpendicular bisector. The converse, that points on the bisector are equally far from $A$ and $B$, follows from SAS.`,
+      t`Suppose $XA=XB$, and let $M$ be the midpoint of $\overline{AB}$. If $X$ is $M$ itself, it is on the perpendicular bisector. Otherwise, triangles $XMA$ and $XMB$ are congruent by SSS, so the two angles at $M$ are equal. They form a straight angle, the angle of a straight line, $180^\circ$. So each is a right angle. Hence line $XM$ is the perpendicular bisector. The converse is the reverse statement: points on the bisector are equally far from $A$ and $B$. It follows from SAS.`,
     ],
     pitfalls: [
       "The arc radius must be more than half the segment, or the arcs will not cross.",
@@ -870,7 +878,7 @@ const specs: Spec[] = [
     templateId: "inscribed-polygon-reasoning",
     title: "Reason about polygons inscribed in a circle",
     summary:
-      "Open a compass to a circle's radius and step it around the circle. After exactly six steps you return to the start, marking a regular hexagon: six equal sides and six equal angles. Each step makes a triangle with the center whose three sides all equal the radius. Its angle at the center is 60°, and six of those fill the full 360°.",
+      "Open a compass to a circle's radius and step it around the circle. After exactly six steps you return to the start, marking a regular hexagon: six equal sides and six equal angles. The middle point of the circle is called the center. Each step makes a triangle with the center whose three sides all equal the radius. Its angle at the center is 60°, and six of those fill the full 360°.",
     objectives: [
       "Explain why a regular hexagon's side equals the circle's radius.",
       "Choose the construction for an inscribed equilateral triangle, square or regular hexagon.",
@@ -926,10 +934,11 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
-      t`A polygon is inscribed in a circle when all its corners (vertices) lie on the circle. A regular polygon has equal sides and equal angles. A chord is a segment joining two points on a circle, so each side of an inscribed polygon is a chord. A central angle has its vertex at the center of the circle. The equal sides of a regular polygon split the full turn at the center, $360^\circ$, into equal central angles.`,
-      t`Take a central angle of $60^\circ$. Its two radii are equal, so the triangle they make with the chord is isosceles, and its other two angles are equal. Those two angles share $180^\circ-60^\circ=120^\circ$, so each is $60^\circ$. All three angles are equal, so the triangle is equilateral, and the chord equals the radius. That is why stepping the radius around a circle closes up after six steps.`,
+      t`A polygon is inscribed in a circle when all its corners (vertices) lie on the circle. A regular polygon has equal sides and equal angles. A chord is a segment joining two points on a circle, so each side of an inscribed polygon is a chord. A central angle has its vertex at the center of the circle. The equal sides of a regular polygon split the full turn at the center, $360^\circ$, into equal central angles. A right angle is a square corner, $90^\circ$.`,
+      t`Take a central angle of $60^\circ$. Its two radii are equal, so the triangle they make with the chord is isosceles, meaning two of its sides are equal. So its other two angles are equal. Those two angles share $180^\circ-60^\circ=120^\circ$, so each is $60^\circ$. All three angles are equal, so the triangle is equilateral, and the chord equals the radius. That is why stepping the radius around a circle closes up after six steps.`,
     ],
     terms: ["inscribed-polygon", "central-angle", "chord"],
     method: [
@@ -971,7 +980,7 @@ const specs: Spec[] = [
     templateId: "triangle-circle-centers",
     title: "Find circles tied to a triangle or quadrilateral",
     summary:
-      "Two special circles belong to every triangle. One passes through all three corners, and its center is equally far from the corners. The other fits inside, touching all three sides, and its center is equally far from the sides. Lines that cut the sides or the angles in half locate these centers.",
+      "Two special circles belong to every triangle. Each circle has a center, the point in its middle. One circle passes through all three corners, and its center is equally far from the corners. The other fits inside, touching all three sides, and its center is equally far from the sides. Lines that cut the sides or the angles in half locate these centers.",
     objectives: [
       "Choose the construction for the center of the circle through a triangle's corners, or of the circle inside it.",
       "Use the fact that opposite angles of a quadrilateral inscribed in a circle add to 180°.",
@@ -1027,12 +1036,13 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
       t`The circumscribed circle of a triangle passes through all three corners (vertices). Its center, the circumcenter, is the same distance from all three vertices. The inscribed circle sits inside the triangle and touches each side at one point. Its center, the incenter, is the same distance from all three sides.`,
-      t`The perpendicular bisector of a side crosses it at its midpoint at a right angle. Points equally far from two vertices lie on the perpendicular bisector of the side joining them. So the circumcenter is where the perpendicular bisectors meet.`,
+      t`A side's midpoint is the point halfway along it. A right angle is a square corner, $90^\circ$. The perpendicular bisector of a side crosses it at its midpoint at a right angle. Points equally far from two vertices lie on the perpendicular bisector of the side joining them. So the circumcenter is where the perpendicular bisectors meet.`,
       t`An angle bisector splits an angle into two equal angles. Inside the triangle, points equally far from two sides lie on the bisector of the angle between them. So the incenter is where the angle bisectors meet.`,
-      t`A quadrilateral, a four-sided shape, is inscribed in a circle when all four corners lie on the circle. Then its opposite angles add to $180^\circ$.`,
+      t`A degree is a small unit of turn, written °. A quadrilateral, a four-sided shape, is inscribed in a circle when all four corners lie on the circle. Then its opposite angles add to $180^\circ$.`,
     ],
     terms: ["circumcenter", "incenter", "inscribed-polygon"],
     method: [
@@ -1075,7 +1085,7 @@ const specs: Spec[] = [
     templateId: "tangent-circle-computation",
     title: "Compute with tangents to a circle",
     summary:
-      "A tangent is a line that touches a circle at exactly one point. It always meets the radius to that point at a right angle. So a tangent, a radius and a line from the center make a right triangle, and the Pythagorean theorem finds missing lengths. Also, the two tangents from one outside point have equal lengths.",
+      "A tangent is a line that touches a circle at exactly one point. A circle's center is the point in its middle, and its radius runs from the center to the circle. A tangent always meets the radius to its point at a right angle, a square corner. So a tangent, a radius and a line from the center make a right triangle. The Pythagorean theorem, a rule linking the three sides of a right triangle, then finds missing lengths. Also, the two tangent pieces from one outside point to the circle have equal lengths.",
     objectives: [
       "Use the Pythagorean theorem in the right triangle made by a tangent and a radius.",
       "Use the fact that two tangent segments from one outside point are equal.",
@@ -1131,10 +1141,11 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
       t`A circle's radius is a segment from its center to the circle. A tangent to a circle is a line that touches the circle at exactly one point, called the point of tangency. The tangent is perpendicular to the radius drawn to that point: they meet at a right angle, $90^\circ$.`,
-      t`So the tangent segment, the radius, and the segment from the center to the outside point form a right triangle. In a right triangle, the two sides that form the right angle are the legs. The longest side, across from the right angle, is the hypotenuse. The Pythagorean theorem says $a^2+b^2=c^2$, where $a$ and $b$ are the legs, $c$ is the hypotenuse, and $a^2$ means $a\times a$.`,
+      t`So the tangent segment, the radius, and the segment from the center to the outside point form a right triangle. In a right triangle, the two sides that form the right angle are the legs. The longest side, across from the right angle, is the hypotenuse. The Pythagorean theorem is the rule $a^2+b^2=c^2$, where $a$ and $b$ are the legs, $c$ is the hypotenuse, and $a^2$ means $a\times a$. A square root is a number that times itself gives a given number. A length uses the positive one: the square root of 144 is 12.`,
       t`From one point outside a circle you can draw two tangents. The two tangent segments, from that point to where they touch the circle, have the same length.`,
     ],
     terms: ["tangent-line", "hypotenuse"],
@@ -1145,21 +1156,21 @@ const specs: Spec[] = [
     ],
     watch:
       "The hypotenuse is the segment from the center to the outside point, not the tangent segment. To find a leg, subtract: $c^2-a^2$ is the leg's square, so then take the square root.",
-    principle: t`A tangent is perpendicular to the radius at the point of tangency. If $T$ is the point of tangency and $P$ is a point outside the circle with center $O$, then $OT^2+PT^2=OP^2$. Two tangent segments to a circle from the same outside point are congruent, meaning equal in length.`,
+    principle: t`A tangent is perpendicular to the radius at the point of tangency. If $T$ is the point of tangency and $P$ is a point on the tangent line, outside the circle with center $O$, then $OT^2+PT^2=OP^2$. Two tangent segments to a circle from the same outside point are congruent, meaning equal in length.`,
     example: {
       prompt:
         "Point $P$ is outside a circle with center $O$ and radius 5. $OP=13$ and $PT$ is tangent to the circle at $T$. What is $PT$?",
       steps: [
         t`The radius $OT$ is perpendicular to the tangent, so triangle $OTP$ has a right angle at $T$. Its hypotenuse, across from that angle, is $OP=13$.`,
         t`The legs are $OT=5$ and $PT$. By the Pythagorean theorem, $5^2+PT^2=13^2$, so $PT^2=169-25=144$.`,
-        t`$PT$ is the positive number whose square is 144: $PT=\sqrt{144}=12$, the square root of 144.`,
+        t`A square root is a number that times itself gives a given number. Both 12 and $-12$ are square roots of 144, and a length uses the positive one. So $PT=\sqrt{144}=12$.`,
       ],
       answer: "12",
     },
     methodTitle: "Equal tangents",
     methodText: [
       t`Suppose $PA=3x+2$ and $PB=5x-6$ are tangent segments from $P$. They are equal, so $3x+2=5x-6$. Subtract $3x$ from both sides and add 6: $8=2x$. So $x=4$ and $PA=3(4)+2=14$.`,
-      t`Suppose $m\angle TOP=40^\circ$ in right triangle $OTP$, where $m\angle TOP$ is the measure of the angle at $O$. The three angles add to $180^\circ$, and the right angle takes $90^\circ$. So $m\angle OPT$ is $90-40=50$ degrees.`,
+      t`Suppose $m\angle TOP=40^\circ$ in right triangle $OTP$, where $m\angle TOP$ is the measure of the angle at $O$. The three angles add to $180^\circ$, and the right angle takes $90^\circ$. So $m\angle OPT=90^\circ-40^\circ=50^\circ$.`,
     ],
     formalTitle: "Why these hold",
     formal: [
@@ -1179,7 +1190,7 @@ const specs: Spec[] = [
     templateId: "circle-dilation-scaling",
     title: "Map one circle onto another by a dilation",
     summary:
-      "Any circle can be moved and resized to fit exactly on any other circle. A slide (translation) moves its center, and a resize (dilation) changes its radius. So all circles have the same shape: they are similar. If the radius is multiplied by a number $k$, every length of the circle is multiplied by $k$, and its area by $k\\times k$.",
+      "Any circle can be moved and resized to fit exactly on any other circle. A slide (translation) moves its center, the middle point, and a resize (dilation) changes its radius. So all circles have the same shape: they are called similar. If the radius is multiplied by a number $k$, every length of the circle is multiplied by $k$, and its area, the space inside, by $k\\times k$.",
     objectives: [
       "Find the scale factor from two radii, and how the circumference and the area change.",
       "Choose the translation and dilation that carry one circle onto another.",
@@ -1235,11 +1246,12 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
-      t`A circle is set by its center and its radius, the distance from the center to the circle. A translation slides every point the same distance in the same direction, so it moves the center. A dilation about a center point multiplies every distance from that point by the same positive number $k$, the scale factor. A dilation about the circle's own center keeps the center and multiplies the radius by $k$.`,
+      t`A transformation is a way of moving or resizing a figure. The new figure it makes is called the image. A circle is set by its center and its radius, the distance from the center to the circle. A translation slides every point the same distance in the same direction, so it moves the center. A dilation about a center point multiplies every distance from that point by the same positive number $k$, the scale factor. A dilation about the circle's own center keeps the center and multiplies the radius by $k$.`,
       t`So any circle can be carried onto any other: slide the center into place, then resize. That is why all circles are similar, meaning the same shape.`,
-      t`Lengths such as the radius, the diameter and the circumference (the distance around) are multiplied by $k$. Area is multiplied by $k^2$, meaning $k\times k$, because area has two directions, length and width.`,
+      t`Lengths such as the radius, the diameter and the circumference (the distance around) are multiplied by $k$. Area, the space inside, is multiplied by $k^2$, meaning $k\times k$, because area has two directions, length and width.`,
     ],
     terms: ["scale-factor", "similar-figures", "center-of-dilation"],
     method: [
@@ -1281,7 +1293,7 @@ const specs: Spec[] = [
     templateId: "coordinate-quadrilateral-claims",
     title: "Decide what coordinates prove about a quadrilateral",
     summary:
-      "Corner coordinates can prove what kind of four-sided shape you have. Arrows along the sides, called vectors, show which sides are parallel. A quick product of two vectors shows a right angle. Squared lengths show equal sides. Then name the most specific shape that every test supports.",
+      "Corner coordinates can prove what kind of four-sided shape you have. Arrows along the sides, called vectors, show which sides are parallel, meaning they point in the same direction. A quick product of two vectors shows a right angle. Squared lengths show equal sides. Then name the most specific shape that every test supports.",
     objectives: [
       "Test for parallel sides, right angles and equal sides from corner coordinates.",
       "Choose the most specific quadrilateral that the tests prove.",
@@ -1337,6 +1349,7 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
       t`A quadrilateral is a shape with four straight sides. The side from $A(x_1,y_1)$ to $B(x_2,y_2)$ has vector $\overrightarrow{AB}=\langle x_2-x_1,y_2-y_1\rangle$: how far right and how far up you move from $A$ to $B$. The small 1 and 2 (subscripts) just tell the two points apart.`,
@@ -1386,7 +1399,7 @@ const specs: Spec[] = [
     templateId: "measurement-formula-justifications",
     title: "Justify circle and solid measurement formulas",
     summary:
-      "A formula can be explained by comparing a shape with one you already know how to measure. Cutting a figure into pieces and rearranging them keeps its area. Cut a circle into thin slices and line them up, and they nearly form a rectangle, which shows why its area is $\\pi r^2$. Likewise, three equal pyramids fill a cube, so each pyramid is one third of it.",
+      "A formula can be explained by comparing a shape with one you already know how to measure. Cutting a figure into pieces and rearranging them keeps its area. Cut a circle into thin slices and line them up, and they nearly form a rectangle, which shows why its area is $\\pi r^2$. A pyramid is a solid with a flat base and triangle faces that meet at one point. Three equal pyramids can fill a cube, so each pyramid is one third of it.",
     objectives: [
       "Use a cut-and-rearrange argument to find the area or volume it justifies.",
       "Choose the argument that proves a circle or solid formula.",
@@ -1442,11 +1455,12 @@ const specs: Spec[] = [
       "key",
       "argument",
       "opposite side",
+      "prime",
     ],
     intuition: [
       t`To explain a formula, find a shape whose measure you already know. Then show that your shape has the same measure. Cutting a figure into pieces and rearranging them keeps its area, because no piece is lost or added.`,
-      t`A circle's radius $r$ is the distance from its center to the circle, and its diameter $d$ is twice that. The circumference $C$ is the distance around. The number $\pi$ (pi), about 3.14, is the circumference divided by the diameter, and it is the same for every circle. A sector is a pie-slice region of a circle, between two radii.`,
-      t`A prism has two matching flat ends joined by flat sides, and its volume is base area times height. A pyramid has a flat base and triangular faces meeting at one point, the apex. Three equal pyramids can fill a cube when their apexes meet at one corner. That shows a pyramid's volume is one third of the prism with the same base and height.`,
+      t`A circle's center is the point in its middle. Its radius is the distance from the center to the circle, written $r$. Its diameter is the distance across through the center, written $d$, which is twice the radius. The circumference is the distance around the circle, written $C$. The number $\pi$ (pi), about 3.14, is the circumference divided by the diameter, and it is the same for every circle. A sector is a pie-slice region of a circle, between two radii.`,
+      t`A prism is a solid with two identical flat ends that face each other, joined by flat sides. Its volume is the base area, the area of one end, times the height. A pyramid has a flat base and triangular faces meeting at one point, the apex. Three equal pyramids can fill a cube when their apexes meet at one corner. That shows it for these pyramids. The same rule holds for every pyramid: its volume is one third of the prism with the same base and height.`,
     ],
     terms: [
       [
@@ -1480,7 +1494,7 @@ const specs: Spec[] = [
     ],
     formalTitle: "What is and is not a proof",
     formal: [
-      t`All circles are similar, the same shape, so the ratio $C/d$ is the same for every circle. This common value is defined as $\pi$, and $C=\pi d$ follows. The sector argument uses a limit: the value the shapes get closer and closer to. The rearranged shape always has the circle's area, and its outline approaches a rectangle. So the circle's area equals the limit of the rectangle areas. Measuring examples can suggest a formula, but cannot prove it.`,
+      t`All circles are similar, the same shape. So the circumference divided by the diameter, $C/d$, is the same for every circle. This number is defined as $\pi$, and $C=\pi d$ follows. The sector argument uses a limit: the value the shapes get closer and closer to. The rearranged shape always has the circle's area, and its outline approaches a rectangle. So the circle's area equals the limit of the rectangle areas. Measuring examples can suggest a formula, but cannot prove it.`,
     ],
     pitfalls: [
       "Half the circumference, not the whole, is the long side of the near-rectangle.",

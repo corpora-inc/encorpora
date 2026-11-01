@@ -48,12 +48,12 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "product",
     ],
     intuition:
-      "Volume is the amount of space inside a solid, counted in unit cubes such as cubic centimeters (cm³). A cylinder, shaped like a can, or a prism is a stack of identical layers. So its volume is the area of one layer, the base, times the height. A cone or pyramid with the same base and height holds exactly one third as much. A sphere (a ball) of radius $r$ holds $\\tfrac43\\pi r^3$. The radius is the distance from the center to the curved surface, $r^3$ means $r \\times r \\times r$, and $\\pi$ (pi) is about 3.14. In a story, first name the solid. Then decide what the question asks for: the volume, a different unit, a number of fill-ups, or a missing length.",
+      "Volume is the amount of space inside a solid. It is counted in unit cubes, the cubes that are 1 unit long, wide and tall, such as cubic centimeters (cm³). A cylinder, shaped like a can, or a prism is a stack of identical layers. So its volume is the area of one layer, the base, times the height. A cone or pyramid with the same base and height holds exactly one third as much. A sphere (a ball) of radius $r$ holds $\\tfrac43\\pi r^3$. The center is the middle point of the sphere. The radius is the distance from the center to the curved surface, $r^3$ means $r \\times r \\times r$, and $\\pi$ (pi) is about 3.14. In a story, first name the solid. Then decide what the question asks for: the volume, a different unit, a number of fill-ups, or a missing length.",
     terms: ["capacity", "radius", "diameter", "composite-figure"],
     method: [
       "Name the solid or solids, and write the volume formula for each.",
       "Find the radius by halving the diameter, the distance straight across through the center. Substitute, keeping $\\pi$ as a symbol unless the problem says to use 3.14.",
-      "Convert units and round only at the end, so early rounding errors do not grow.",
+      "Convert units only at the end. Round, meaning replace a number with a nearby simpler one, only at the end too.",
       "For a missing length, write the formula with the known volume and solve for the unknown.",
     ],
     watch:
@@ -169,7 +169,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "product",
     ],
     intuition:
-      "A real object is rarely a perfect solid, but a simple solid can stand in for it well enough to measure. That stand-in is called a model. A can is close to a cylinder: two equal circles joined by a curved side. Choose the solid by looking at the ends and the sides. Then choose the measure by asking what the task covers or fills. A flat region inside is an area. The distance around is a perimeter. The outside faces of a solid make its surface area. The space inside is its volume.",
+      "A real object is rarely a perfect solid, but a simple solid can stand in for it well enough to measure. That stand-in is called a model. A can is close to a cylinder: two equal circles joined by a curved side. The middle point of a circle is called the center. A cylinder's radius is the distance from the center of an end to the circle around it. Its height is the distance between the two ends. Choose the solid by looking at the ends and the sides. Then choose the measure by asking what the task covers or fills. A flat region inside is an area. The distance around is a perimeter. The total area of a solid's whole outside, flat faces and curved parts, is its surface area. The space inside is its volume.",
     terms: ["model", "surface-area", "lateral-area"],
     method: [
       "Describe the object's ends and sides, then match them to a solid.",
@@ -352,7 +352,7 @@ export const geometryModelingMethods: Record<string, ProblemMethod> = {
       "product",
     ],
     intuition:
-      "Cutting a solid with a flat plane leaves a flat shape on the cut, called the cross-section. Spinning a flat figure one full turn around a line makes a solid. That line is the axis of rotation: points on it stay put, and every other point sweeps out a circle. A rectangle spun about a line along one of its sides makes a cylinder. A right triangle spun about a line along one leg, a side next to the right angle, makes a cone. A semicircle (half a circle) spun about its diameter makes a sphere.",
+      "Cutting a solid with a flat plane leaves a flat shape on the cut, called the cross-section. Spinning a flat figure one full turn around a line makes a solid. That line is the axis of rotation: points on it stay put, and every other point sweeps out a circle. Its height is the distance it covers along the axis. A right angle is a square corner, $90^\\circ$, and a right triangle has one. A rectangle spun about a line along one of its sides makes a cylinder. A right triangle spun about a line along one leg, a side next to the right angle, makes a cone. A semicircle (half a circle) spun about its diameter makes a sphere.",
     terms: [
       [
         "solid-of-revolution",
@@ -513,8 +513,8 @@ export const geometryModelingLessons: Lesson[] = [
         stage: "intuition",
         title: "Volume is the space inside",
         paragraphs: [
-          "Volume is the amount of space inside a solid. It is counted in unit cubes. A cubic centimeter, written cm³, is a cube 1 cm long, 1 cm wide and 1 cm tall.",
-          "A circle's radius, $r$, is the distance from its center to the circle. Its diameter is the distance straight across through the center, so the radius is half the diameter. A circle's area is $\\pi r^2$, where $\\pi$ (pi) is about 3.14 and $r^2$ means $r \\times r$.",
+          "Volume is the amount of space inside a solid. It is counted in unit cubes, the cubes that are 1 unit long, 1 unit wide and 1 unit tall. A cubic centimeter, written cm³, is a cube 1 cm long, 1 cm wide and 1 cm tall.",
+          "The center is the point in the middle of a circle. A circle's radius is the distance from the center to the circle, written $r$. Its diameter is the distance straight across through the center, so the radius is half the diameter. A circle's area is $\\pi r^2$, where $\\pi$ (pi) is about 3.14 and $r^2$ means $r \\times r$.",
           "A cylinder, shaped like a can, is a stack of identical circles. So its volume is the base area times the height: $V = \\pi r^2 h$. A cone, shaped like an ice-cream cone, holds one third of the cylinder with the same base and height. A sphere, a ball, of radius $r$ holds $\\tfrac43\\pi r^3$, where $r^3$ means $r \\times r \\times r$.",
           "Capacity means how much a container holds. One liter is 1000 cm³, so divide a volume in cm³ by 1000 to get liters.",
         ],
@@ -616,8 +616,8 @@ export const geometryModelingLessons: Lesson[] = [
         stage: "intuition",
         title: "How tightly packed",
         paragraphs: [
-          "Area is the flat space a region covers, counted in squares such as square kilometers (km²). Volume is the space inside a solid, counted in cubes such as cubic centimeters (cm³). A rectangle's area is length times width. A box's volume is length times width times height.",
-          "Density tells how much is packed into each unit of space. A county with 5000 people in 50 km² has $5000 \\div 50 = 100$ people in each square kilometer. Mass is how heavy something is, measured in grams (g). A metal with 27 g in each cm³ has a density of 27 g/cm³, read “27 grams per cubic centimeter”.",
+          "Area is the flat space a region covers, counted in squares such as square kilometers (km²). Volume is the space inside a solid, counted in cubes such as cubic centimeters (cm³). A rectangle's area is length times width. A box's height is how tall it is. Its volume is length times width times height.",
+          "A population is the number of people who live in a place. Density tells how much is packed into each unit of space. A county with 5000 people in 50 km² has $5000 \\div 50 = 100$ people in each square kilometer. Mass is how heavy something is, measured in grams. A metal with 27 g in each cm³ has a density of 27 g/cm³, read “27 grams per cubic centimeter”.",
           "Density is a rate, an amount for each one unit, so it works like a price per item. The total is the density times the amount of space.",
         ],
       },
@@ -717,9 +717,9 @@ export const geometryModelingLessons: Lesson[] = [
         stage: "intuition",
         title: "A simple shape that stands in",
         paragraphs: [
-          "A solid is a 3-D shape. A cylinder has two equal circles for ends, joined by a curved side, like a can. A cone narrows from a circle to a point, like a party hat. A sphere is round all over, like a ball. A prism has two matching flat ends joined by flat sides; in the prisms here, those sides are rectangles. A tree trunk is close to a cylinder.",
+          "A solid is a shape with length, width and height. A cylinder has two equal circles for ends, joined by a curved side, like a can. A cone narrows from a circle to a point, like a party hat. A sphere is round all over, like a ball. A prism has two matching flat ends joined by flat sides; in the prisms here, those sides are rectangles. A tree trunk is close to a cylinder.",
           "After you pick the model, decide what the job needs. Covering a lawn needs area, the flat space inside. Fencing it needs perimeter, the distance around. Painting the outside of a box needs surface area, the total area of all its faces (flat surfaces). Filling it with water needs volume, the space inside.",
-          "A circle's radius, $r$, is the distance from its center to the circle. The distance around a circle is its circumference, $2\\pi r$, where $\\pi$ (pi) is about 3.14.",
+          "The center is the point in the middle of a circle. A circle's radius is the distance from the center to the circle, written $r$. The distance around a circle is its circumference, $2\\pi r$, where $\\pi$ (pi) is about 3.14.",
         ],
       },
     ],
@@ -740,7 +740,7 @@ export const geometryModelingLessons: Lesson[] = [
         keepTogetherInPrint: true,
         title: "Choose the measure first",
         paragraphs: [
-          "Ask what the task covers or fills. A flat region is an area. The distance around is a perimeter. The outside faces of a solid make a surface area. The space inside is a volume. Then write the formula for that measure on your model.",
+          "Ask what the task covers or fills. A flat region is an area. The distance around is a perimeter. The whole outside of a solid, flat or curved, has an area: its surface area. The space inside is a volume. Then write the formula for that measure on your model.",
           "A soccer ball modeled as a sphere of radius 8 cm has surface area $4\\pi(8)^2=256\\pi$ cm². That is the leather that covers it. Its volume, $\\tfrac43\\pi(8)^3$, tells how much air fits inside.",
         ],
       },
@@ -921,7 +921,7 @@ export const geometryModelingLessons: Lesson[] = [
         title: "Push the stack sideways",
         paragraphs: [
           "A prism or a cylinder has volume equal to its base area times its height. Imagine a stack of identical coins. Push the stack so it leans. No coin changed, so the volume did not change.",
-          "A slice straight across a solid, parallel to its base, is called a cross-section. A solid that leans is called oblique. Its height is measured straight up, at a right angle to the base, not along the slanted side.",
+          "A slice straight across a solid, parallel to its base, is called a cross-section. A solid that leans is called oblique. A right angle is a square corner, $90^\\circ$. Its height is measured straight up, at a right angle to the base, not along the slanted side.",
           "Cavalieri's principle says this in general. If two solids have the same height, and the cross-sections at every height have equal areas, the two solids have equal volumes.",
         ],
       },
@@ -951,8 +951,8 @@ export const geometryModelingLessons: Lesson[] = [
         stage: "formal",
         title: "Cavalieri's principle",
         paragraphs: [
-          "Suppose two solids lie between the same pair of parallel planes, flat surfaces that never meet. If every plane parallel to those cuts both solids in cross-sections of equal area, the two solids have equal volume. If each cross-section of the first has $k$ times the area of the matching cross-section of the second, the first has $k$ times the volume.",
-          "The principle justifies using base area times height for oblique prisms and cylinders. It also helps prove the volume formulas for cones, pyramids and spheres.",
+          "Suppose two solids lie between the same pair of parallel planes, which are flat surfaces that never meet. If every plane parallel to those cuts both solids in cross-sections of equal area, the two solids have equal volume. If each cross-section of the first has $k$ times the area of the matching cross-section of the second, the first has $k$ times the volume.",
+          "The principle justifies using base area times height for oblique prisms and cylinders. It also helps show why the volume formulas for cones, pyramids and spheres are true.",
         ],
       },
     ],
@@ -968,7 +968,7 @@ export const geometryModelingLessons: Lesson[] = [
     id: "section-revolution-solid",
     title: "Sections and solids of revolution",
     summary:
-      "A flat plane cuts a solid in a flat shape, called a cross-section. Spinning a flat figure around a line sweeps out a solid. A rectangle spun around one of its sides makes a cylinder. A right triangle spun around one of its two shorter sides makes a cone. A half-circle spun around its straight side makes a sphere.",
+      "A plane is a flat surface that goes on forever. When a plane cuts a solid, the cut is a flat shape, called a cross-section. Spinning a flat figure around a line sweeps out a solid. A rectangle spun around one of its sides makes a cylinder. A right triangle spun around one of its two shorter sides makes a cone. A half-circle spun around its straight side makes a sphere.",
     templateIds: ["section-revolution-solid"],
     senses: {
       side: "side",
@@ -1023,7 +1023,7 @@ export const geometryModelingLessons: Lesson[] = [
         title: "Cut it, or spin it",
         paragraphs: [
           "A cylinder is a can shape, a cone narrows from a circle to a point, and a sphere is a ball. Their volumes are $\\pi r^2 h$, $\\tfrac13\\pi r^2 h$ and $\\tfrac43\\pi r^3$. Here $r$ is the radius, $h$ the height, and $\\pi$ (pi) about 3.14.",
-          "A plane is a flat surface that goes on forever. When a plane cuts a solid, the flat shape on the cut is the cross-section. A plane at a right angle to the center line (axis) of a cylinder cuts a circle. A plane containing that center line cuts a rectangle.",
+          "A plane is a flat surface that goes on forever. When a plane cuts a solid, the flat shape on the cut is the cross-section. A right angle is a square corner, $90^\\circ$. A cylinder's axis is the line through the middle of its two circular ends. A plane at a right angle to that axis cuts a circle. A plane containing the axis cuts a rectangle.",
           "Now spin a flat figure one full turn around a line, called the axis of rotation. Points on the axis stay in place. Every other point sweeps out a circle around the axis.",
         ],
       },
@@ -1069,7 +1069,7 @@ export const geometryModelingLessons: Lesson[] = [
     id: "similarity-theorem-length",
     title: "Lengths from similarity theorems",
     summary:
-      "Two triangles are similar when they have the same angles, so one is a scaled copy of the other. A line drawn across a triangle, parallel to one side, cuts off a smaller similar triangle. In a right triangle, a line from the right angle that meets the longest side at a right angle makes similar triangles too. Matching sides of similar triangles are in proportion, so an unknown length can be found from known ones.",
+      "Two triangles are called similar when they have the same angles, so one is a scaled copy of the other. A line drawn across a triangle, parallel to one side, cuts off a smaller similar triangle. In a right triangle, a line from the right angle that meets the longest side at a right angle makes similar triangles too. Sides that match up are called corresponding sides. They are in proportion, so an unknown length can be found from known ones.",
     templateIds: ["similarity-theorem-length"],
     senses: {
       side: "side",
@@ -1137,7 +1137,7 @@ export const geometryModelingLessons: Lesson[] = [
         "Triangles $ACD$ and $ABC$ are similar. They share the angle at $A$, and each has a right angle, at $D$ and at $C$. Two equal angles are enough, because the third angles must then match too.",
         "Match sides through matching corners: $A$ with $A$, $C$ with $B$, $D$ with $C$. So side $AC$ matches $AB$, and $AD$ matches $AC$. That gives $\\tfrac{AC}{AB}=\\tfrac{AD}{AC}$, and cross-multiplying gives $AC^2=AD\\cdot AB$.",
         "The whole hypotenuse is $AB=9+7=16$, so $AC^2=9\\cdot16=144$. The dot $\\cdot$ means times.",
-        "$AC$ is the positive number whose square is 144: $AC=\\sqrt{144}=12$, the square root of 144.",
+        "A square root is a number that times itself gives a given number. Both 12 and $-12$ are square roots of 144, and a length uses the positive one. So $AC=\\sqrt{144}=12$.",
       ],
       answer: "$12$",
     },
@@ -1166,6 +1166,6 @@ export const geometryModelingLessons: Lesson[] = [
       "Equal ratios do not make the lengths themselves equal.",
     ],
     parentGuide:
-      "Ask the learner to name the three similar triangles in a right triangle with its altitude. Then ask which sides match, and how they know.",
+      "Ask the learner to name the three similar triangles made by the altitude from the right angle to the hypotenuse. Then ask which sides match, and how they know.",
   },
 ];

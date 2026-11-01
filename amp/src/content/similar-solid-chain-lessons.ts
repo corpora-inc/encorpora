@@ -23,7 +23,7 @@ export const similarSolidChainMethods: Record<string, ProblemMethod> = {
       "scales",
     ],
     intuition:
-      "Two solids are similar when they have the same shape: every length of one is the same number times the matching length of the other. That number is the length scale, also called the scale factor. A prism is a solid with two matching flat ends joined by flat faces, like a box. Its surface area is the total area of all its faces. Area is counted in squares, which have two lengths, so areas grow by the scale times itself: the scale squared. Volume, the space inside, is counted in cubes, which have three lengths. So volumes grow by the scale cubed, the scale used three times as a factor. With a scale of 2, areas grow 4 times and volumes grow 8 times.",
+      "Two solids are similar when they have the same shape: every length of one is the same number times the matching length of the other. That number is the length scale, also called the scale factor. A prism is a solid with two identical flat ends that face each other, joined by flat four-sided faces, like a box. Its surface area is the total area of all its faces. Area is counted in squares, which have two lengths, so areas grow by the scale times itself: the scale squared. Volume, the space inside, is counted in cubes, which have three lengths. So volumes grow by the scale cubed, the scale used three times as a factor. With a scale of 2, areas grow 4 times and volumes grow 8 times.",
     terms: ["scale-factor", "similar-figures"],
     method: [
       "Divide the two given amounts and simplify the fraction. A surface-area ratio is the length scale squared. A volume ratio is the length scale cubed.",
@@ -46,7 +46,7 @@ export const similarSolidChainLessons = [
       id: "similar-solid-scale-chain",
       title: "Surface area, length scale and volume",
       summary:
-        "Two solids are similar when one is a scaled copy of the other. If every length is 2 times as long, each surface area is $2 \\times 2 = 4$ times as large. The volume, the space inside, is $2 \\times 2 \\times 2 = 8$ times as large. So a ratio of areas or of volumes reveals the length scale. From the length scale you can find any other area or volume.",
+        "Two solids are called similar when one is a scaled copy of the other. If every length is 2 times as long, each surface area is $2 \\times 2 = 4$ times as large. The volume, the space inside, is $2 \\times 2 \\times 2 = 8$ times as large. So a ratio of areas or of volumes reveals the length scale. From the length scale you can find any other area or volume.",
       templateIds: ["similar-solid-scale-chain"],
       objectives: [
         "Find the length scale of two similar solids from a ratio of surface areas or of volumes.",
@@ -54,8 +54,8 @@ export const similarSolidChainLessons = [
       ],
       openingTitle: "Lengths, areas and volumes scale differently",
       opening: [
-        "Two solids are similar when they have the same shape: every length of the larger is the same number times the matching length of the smaller. That number is called the length scale, or scale factor. A prism is a solid with two matching flat ends joined by flat faces, like a box. Its surface area is the total area of all its faces. Its volume is the amount of space inside.",
-        "Suppose every length of the larger box is 3 times as long. Each face is 3 times as long and 3 times as wide, so its area is $3 \\times 3 = 9$ times as large. We write $3^2 = 9$, read “3 squared”. The box is also 3 times as tall, so its volume is $3 \\times 3 \\times 3 = 27$ times as large. We write $3^3 = 27$, read “3 cubed”.",
+        "Two solids are similar when they have the same shape: every length of the larger is the same number times the matching length of the smaller. That number is called the scale factor, or length scale. A prism is a solid with two identical flat ends that face each other, joined by flat four-sided faces, like a box. Its surface area is the total area of all its faces. Its volume is the amount of space inside.",
+        "Suppose every length of the larger box is 3 times as long. Each face is 3 times as long and 3 times as wide, so its area is $3 \\times 3 = 9$ times as large. Multiplying a number by itself is called squaring it: we write $3^2 = 9$, read “3 squared”. The box is also 3 times as tall, so its volume is $3 \\times 3 \\times 3 = 27$ times as large. We write $3^3 = 27$, read “3 cubed”.",
         "Going backward, a ratio of areas hides the length scale. Undo the squaring with a square root: the number that times itself gives the ratio. For example, $\\sqrt{9} = 3$. A ratio of volumes hides it too. Undo the cubing with a cube root: $\\sqrt[3]{27} = 3$, because $3 \\times 3 \\times 3 = 27$. Once you know the length scale, you can move to the other kind of measurement.",
       ],
       example: {
@@ -76,7 +76,7 @@ export const similarSolidChainLessons = [
       ],
       formalTitle: "Why areas square and volumes cube",
       formal: [
-        "Say every length of solid $B$ is $k$ times the matching length of solid $A$. Each face of $B$ has both its length and its width multiplied by $k$. So its area is multiplied by $k \\times k = k^2$, and so is the total surface area. A volume has three directions, length, width and height, so it is multiplied by $k^3$.",
+        "Say every length of solid $B$ is $k$ times the matching length of solid $A$. Each face of $B$ has both its length and its width multiplied by $k$. So its area is multiplied by $k \\times k = k^2$, and so is the total surface area. A volume has three directions: length, width and height, how tall it is. So it is multiplied by $k^3$.",
         "The scale $k$ is positive, so it is the positive square root of the area ratio. The cube root of the volume ratio has only one value, so it gives $k$ directly.",
       ],
       pitfalls: [
